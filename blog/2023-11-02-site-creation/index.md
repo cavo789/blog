@@ -127,3 +127,13 @@ This done, I have thus pushed my files to Github as foresee by Docusaurus i.e., 
 ## Build static version of the blog
 
 In order to build static pages, I run `docker run --rm -it --user $UID:$GID -v ${PWD}/:/project -w /project node /bin/bash` to start an interactive console in my Docker container then, from there, I run `yarn build`.
+
+
+```bash
+(
+    git config --global user.email "cavo789@yahoo.com"
+    git config --global user.name "cavo789"
+    git config --global init.defaultBranch main
+    GIT_USER=cavo789 yarn deploy
+)
+```
