@@ -11,7 +11,7 @@ const config = {
   title: 'Christophe Avonture',
   tagline: 'Personal blog',
   favicon: 'img/favicon.ico',
-
+  
   // Set the production url of your site here
   url: 'https://www.avonture.be',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -41,7 +41,7 @@ const config = {
       ({
         docs: false,
         blog: {
-          routeBasePath: '/',
+          routeBasePath: '/blog',
           showReadingTime: true
         },
         theme: {
@@ -63,6 +63,18 @@ const config = {
           src: 'img/cavo789.jpg',
         },
         items: [
+          { 
+            href: '/blog',
+            label: 'Blog',
+          },
+          { 
+            href: '/blog/tags',
+            label: 'Tags',
+          },
+          { 
+            href: '/resources',
+            label: 'Resources',
+          },
           {
             href: 'https://github.com/cavo789/blog',
             label: 'GitHub',
@@ -71,8 +83,31 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()} Christophe Avonture, Built with Docusaurus.`,
+        style: 'dark',links: [
+          {
+            title: 'Communities',
+            items: [
+              {
+                label: 'Joomla!France',
+                href: 'https://forum.joomla.fr/member/38299-cavo789',
+              },
+              {
+                label: 'Developpez.com',
+                href: 'https://www.developpez.net/forums/u38507/cavo789/',
+              },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'GitHub',
+                href: 'https://github.com/cavo789',
+              },
+            ],
+          },
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} Christophe Avonture. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

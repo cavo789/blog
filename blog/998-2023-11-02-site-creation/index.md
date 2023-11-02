@@ -2,7 +2,7 @@
 slug: site-creation
 title: Site creation
 authors: [christophe]
-tags: [docusaurus, nodejs, docker]
+tags: [docusaurus, nodejs, docker, winscp]
 ---
 # Creation of this blog
 

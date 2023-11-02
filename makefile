@@ -22,6 +22,7 @@ build: # Generate a newer version of the build directory
 deploy: build # Deploy static pages to the webserver
 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Deploy static pages to the webserver"	
 	-"/mnt/c/Program Files (x86)/WinSCP/WinSCP.com" /script="WinSCP_deploy.txt"
+	-@sensible-browser https://www.avonture.be
 
 .PHONY: start
 start: # Start the local webserver and open the webpage

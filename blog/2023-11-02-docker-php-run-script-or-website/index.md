@@ -2,7 +2,7 @@
 slug: docker-php-run-script-or-website
 title: The easiest way to run a PHP script / website
 authors: [christophe]
-tags: [wsl2, docker, php]
+tags: [wsl, docker, php]
 ---
 # The easiest way to run a PHP script / website
 
