@@ -2,6 +2,7 @@
 slug: site-creation
 title: Site creation
 authors: [christophe]
+tags: [docusaurus, nodejs, docker]
 ---
 # Creation of this blog
 

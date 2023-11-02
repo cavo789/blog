@@ -1,41 +1,29 @@
-# Website
+# Christophe Avonture - Blog
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This website is built using [Docusaurus](https://docusaurus.io/).
 
-### Installation
+Below a list of instructions to help when working with the 
 
-```
-$ yarn
-```
+## Open the editor
 
-### Local Development
+Run `make code` to open vscode.
 
-```
-$ yarn start
-```
+## Bash console
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+Run `make bash` if you need to start an interactive console in the Docker container.
 
-### Build
+## Local Development
 
-```
-$ yarn build
-```
+Run `make start` to start the Docusaurus watcher and open the local website.
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+Once started, every changes done in the blog will be reflected to the browser without reloading.
+
+## Build
+
+Optional.
+
+Run `make build` if you wish to rebuild files in the `/build` folder.
 
 ### Deployment
 
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Run `make deploy` to build the static files and then connect to the webserver using ftp and automate the publication of static files.

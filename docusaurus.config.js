@@ -42,11 +42,7 @@ const config = {
         docs: false,
         blog: {
           routeBasePath: '/',
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/cavo789/blog/tree/main/packages/create-docusaurus/templates/shared/',
+          showReadingTime: true
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -59,7 +55,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/social-card.jpg',
       navbar: {
         title: 'Christophe Avonture',
         logo: {
@@ -68,7 +64,7 @@ const config = {
         },
         items: [
           {
-            href: 'https://github.com/cavo789',
+            href: 'https://github.com/cavo789/blog',
             label: 'GitHub',
             position: 'right',
           },
