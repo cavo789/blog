@@ -44,6 +44,12 @@ const config = {
           routeBasePath: '/blog',
           showReadingTime: true
         },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['/blog/tags/**'],
+          filename: 'sitemap.xml',
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -56,7 +62,7 @@ const config = {
       {
         indexDocs: false,
         language: "en",
-      }
+      },
     ],
   ],
   themeConfig:
@@ -120,6 +126,7 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        additionalLanguages: ['bash', 'php']
       },
     }),
 };

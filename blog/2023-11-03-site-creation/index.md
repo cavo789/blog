@@ -6,6 +6,8 @@ tags: [docusaurus, nodejs, docker, winscp]
 ---
 # Creation of this blog
 
+*Updated 2023-11-03, search engine, prism and sitemap added.*
+
 Here are the steps I followed to create this blog. 
 
 ## Using Docusaurus
@@ -109,6 +111,30 @@ Some **content** with _Markdown_ `syntax`.
 :::
 
 To get the entire list of supported features, read [Markdown Features](https://docusaurus.io/docs/markdown-features).
+
+### Adding a search engine
+
+The search engine feature has been added by following this blog article: [https://yoandev.co/une-documentation-avec-docusaurus-et-gitlab-pages/#bonus--ajoutons-un-moteur-de-recherche](https://yoandev.co/une-documentation-avec-docusaurus-et-gitlab-pages/#bonus--ajoutons-un-moteur-de-recherche)
+
+Added by running `yarn add @cmfcmf/docusaurus-search-local` in the Docker container (opened using `make bash`).
+
+### Adding support for PHP and bash in prism
+
+Added by running `yarn swizzle @docusaurus/theme-classic prism-include-languages` in the Docker container (opened using `make bash`). Read more at [Supported Languages](https://docusaurus.io/docs/markdown-features/code-blocks#supported-languages).
+
+### Adding a sitemap
+
+Added by running `yarn add @docusaurus/plugin-sitemap` in the Docker container (opened using `make bash`).
+
+When added, I have also manually created the `static/robots.txt` file to with this content:
+
+```text
+User-Agent: *
+Sitemap: https://www.avonture.be/sitemap.xml
+Disallow: /*index.xml$
+Disallow: /index.json
+Disallow: /search/index.json
+```
 
 ## Push to Github
 

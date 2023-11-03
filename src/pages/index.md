@@ -7,9 +7,9 @@ hide_table_of_contents: true
 
 I am passionate about the world of Open Source, programming since now almost 30+ years in so much languages that I can not remember all.
 
-Over the last few years, I've been focusing more on web development ([php](blog/tags/php)) and I've developed a taste for devOps, creating lots of scripts, procedures and workflows for myself and my team.
+Over the last few years, I've been focusing more on web development ([php](/blog/tags/php)) and I've developed a taste for devOps, creating lots of scripts, procedures and workflows for myself and my team.
 
-I am in love with technologies like [WSL](blog/tags/wsl) and [Docker](blog/tags/docker).
+I am in love with technologies like [WSL](/blog/tags/wsl) and [Docker](/blog/tags/docker).
 
 Also an expert in VBA - Excel that I have been practicing for more than twenty years.
 
