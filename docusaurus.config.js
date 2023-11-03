@@ -42,7 +42,9 @@ const config = {
         docs: false,
         blog: {
           routeBasePath: '/blog',
-          showReadingTime: true
+          showReadingTime: true,
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL'
         },
         sitemap: {
           changefreq: 'weekly',
@@ -57,6 +59,7 @@ const config = {
     ],
   ],
   plugins: [
+    [require.resolve("docusaurus-plugin-image-zoom"), {}],
     [
       require.resolve("@cmfcmf/docusaurus-search-local"),
       {
@@ -88,6 +91,14 @@ const config = {
           { 
             href: '/resources',
             label: 'Resources',
+          },
+          { 
+            href: '/tutorials',
+            label: 'Tutorials',
+          },
+          { 
+            href: 'https://www.avonture.be/v1',
+            label: 'v1',
           },
           {
             href: 'https://github.com/cavo789/blog',
@@ -128,6 +139,16 @@ const config = {
         darkTheme: prismThemes.dracula,
         additionalLanguages: ['bash', 'php']
       },
+      zoom: {
+        selector: '.markdown :not(em) > img',
+        config: {
+          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+          background: {
+            light: 'rgb(255, 255, 255)',
+            dark: 'rgb(50, 50, 50)'
+          }
+        }
+      }
     }),
 };
 

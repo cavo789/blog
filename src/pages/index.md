@@ -1,5 +1,5 @@
 ---
-title: Welcome - Christophe Avonture homepage
+title: Welcome
 hide_table_of_contents: true
 ---
 

@@ -112,17 +112,25 @@ Some **content** with _Markdown_ `syntax`.
 
 To get the entire list of supported features, read [Markdown Features](https://docusaurus.io/docs/markdown-features).
 
-### Adding a search engine
+### Adding plugins
+
+#### Search engine
+
+> [https://github.com/cmfcmf/docusaurus-search-local](https://github.com/cmfcmf/docusaurus-search-local)
 
 The search engine feature has been added by following this blog article: [https://yoandev.co/une-documentation-avec-docusaurus-et-gitlab-pages/#bonus--ajoutons-un-moteur-de-recherche](https://yoandev.co/une-documentation-avec-docusaurus-et-gitlab-pages/#bonus--ajoutons-un-moteur-de-recherche)
 
 Added by running `yarn add @cmfcmf/docusaurus-search-local` in the Docker container (opened using `make bash`).
 
-### Adding support for PHP and bash in prism
+#### Support for PHP and bash in prism
+
+> [https://www.npmjs.com/package/@docusaurus/theme-classic](https://www.npmjs.com/package/@docusaurus/theme-classic)
 
 Added by running `yarn swizzle @docusaurus/theme-classic prism-include-languages` in the Docker container (opened using `make bash`). Read more at [Supported Languages](https://docusaurus.io/docs/markdown-features/code-blocks#supported-languages).
 
-### Adding a sitemap
+#### Sitemap generator
+
+> [https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-sitemap](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-sitemap)
 
 Added by running `yarn add @docusaurus/plugin-sitemap` in the Docker container (opened using `make bash`).
 
@@ -135,6 +143,16 @@ Disallow: /*index.xml$
 Disallow: /index.json
 Disallow: /search/index.json
 ```
+
+#### Image plugins
+
+> [https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-ideal-image](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-ideal-image)
+
+Added by running `yarn add @docusaurus/plugin-ideal-image` in the Docker container (opened using `make bash`). Read more at [Supported Languages](https://docusaurus.io/docs/markdown-features/code-blocks#supported-languages).
+
+> [https://www.npmjs.com/package/docusaurus-plugin-image-zoom](https://www.npmjs.com/package/docusaurus-plugin-image-zoom)
+
+Added by running `yarn add docusaurus-plugin-image-zoom` in the Docker container (opened using `make bash`).
 
 ## Push to Github
 
