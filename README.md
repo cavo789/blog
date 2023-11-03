@@ -12,6 +12,8 @@ Run `make code` to open vscode.
 
 Run `make bash` if you need to start an interactive console in the Docker container.
 
+This is the case when, f.i., you will need to run a `npm` (or `yarn`) command like `yarn add @cmfcmf/docusaurus-search-local`.
+
 ## Local Development
 
 Run `make start` to start the Docusaurus watcher and open the local website.

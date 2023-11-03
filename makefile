@@ -26,6 +26,5 @@ deploy: build # Deploy static pages to the webserver
 
 .PHONY: start
 start: # Start the local webserver and open the webpage
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Run Docusaurus watcher and open the blog on the localhost"	
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Run Docusaurus watcher and open the blog on the localhost. When done, just start a browser and surf to http://localhost:3000"	
 	docker run --rm -it --name blog --user $${UID}:$${GID} -v $${PWD}/:/project -w /project -p 3000:3000 node /bin/bash -c "npx docusaurus start --host 0.0.0.0"
-	@sensible-browser http://localhost:3000
