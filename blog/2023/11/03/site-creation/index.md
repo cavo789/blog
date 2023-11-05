@@ -3,12 +3,16 @@ slug: site-creation
 title: Site creation
 authors: [christophe]
 tags: [docusaurus, nodejs, docker, winscp]
+enableComments: true
 ---
 # Creation of this blog
 
 *Updated 2023-11-03, search engine, prism and sitemap added.*
+*Updated 2023-11-05, adding giscus.*
 
 Here are the steps I followed to create this blog. 
+
+<!-- truncate -->
 
 ## Using Docusaurus
 
@@ -153,6 +157,12 @@ Added by running `yarn add @docusaurus/plugin-ideal-image` in the Docker contain
 > [https://www.npmjs.com/package/docusaurus-plugin-image-zoom](https://www.npmjs.com/package/docusaurus-plugin-image-zoom)
 
 Added by running `yarn add docusaurus-plugin-image-zoom` in the Docker container (opened using `make bash`).
+
+#### Adding a comment area
+
+> [How to add Giscus comments to Docusaurus](https://dev.to/m19v/how-to-add-giscus-comments-to-docusaurus-439h)
+
+Adding Giscus to allow comments and feedback.
 
 ## Push to Github
 

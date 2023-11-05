@@ -3,6 +3,7 @@ slug: wslg-rpd-connection
 title: Opening a RDP connection to the Linux local instance
 authors: [christophe]
 tags: [wsl, wslg, docker, rdp]
+enableComments: true
 ---
 # Opening a RDP connection to the Linux local instance
 
@@ -17,6 +18,8 @@ If you don't have `xrdp` yet, you can install it by running:
 sudo apt update && sudo apt -y upgrade
 sudo apt-get install -y xrdp
 ```
+
+<!-- truncate -->
 
 Also think to change the port number to `3390` by running the command below and some minor changes. *It seems to be required since, using the default 3389 port number, you will get the 'already in use' error with mstsc.*:
 

@@ -3,12 +3,15 @@ slug: docker-volume
 title: Share data between your running Docker container and your computer
 authors: [christophe]
 tags: [docker]
+enableComments: true
 ---
 # Share data between your running Docker container and your computer
 
 > If you don't have Docker yet, please consult my [Install Docker and play with PHP](/blog/install-docker) post first.
 
 When running Docker without specifying a volume, everything done during the execution of Docker is done in memory. In other words: if the PHP script you run from Docker creates folders or files, these will never be created on your disk. They will be created exclusively in memory.
+
+<!-- truncate -->
 
 :::note
 Imagine you wish to play with a malware php script. Running the script *on* your computer is really dangerous since you do not know what the virus will do; where he will create files, ... But, if you are running the virus script in a Docker container with **no attached volume** (which is the default) nothing will be modified on your computer. Everything stay in memory (RAM). By removing the Docker container, everything will be removed. Nice!

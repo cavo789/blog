@@ -3,10 +3,13 @@ slug: apache-htaccess
 title: Apache .htaccess file
 authors: [christophe]
 tags: [apache, .htaccess]
+enableComments: true
 ---
 # Apache .htaccess file
 
 Some tips and tricks for your .htaccess file (Apache)
+
+<!-- truncate -->
 
 ## CSP - Content Security Policy
 

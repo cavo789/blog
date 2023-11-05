@@ -3,12 +3,15 @@ slug: move-wsl-to-another-location
 title: Move WSL to another location
 authors: [christophe]
 tags: [docker, wsl]
+enableComments: true
 ---
 # Move WSL to another location
 
 > [https://dev.to/mefaba/installing-wsl-on-another-drive-in-windows-5c4a](https://dev.to/mefaba/installing-wsl-on-another-drive-in-windows-5c4a)
 
 By default, the Linux distribution is installed on your C: drive. If, like me, you have a D: drive with almost nothing on it, it can be really interesting to move Linux on that second drive.
+
+<!-- truncate -->
 
 To do this, please:
 

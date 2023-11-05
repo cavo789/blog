@@ -3,12 +3,15 @@ slug: keepass-overriding-url
 title: KeePass - Overriding the URL field
 authors: [christophe]
 tags: [keepass, winscp, putty, rdp]
+enableComments: true
 ---
 # KeePass - Overriding the URL field
 
 The `url` field can also be used to start a program and, thus, not only to contains a valid URL.
 
 The official documentation is located here: [https://keepass.info/help/base/autourl.html](https://keepass.info/help/base/autourl.html).
+
+<!-- truncate -->
 
 ## Start Putty from KeePass
 

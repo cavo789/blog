@@ -3,6 +3,7 @@ slug: docker-php-run-script-or-website
 title: The easiest way to run a PHP script / website
 authors: [christophe]
 tags: [wsl, docker, php]
+enableComments: true
 ---
 # The easiest way to run a PHP script / website
 
@@ -19,6 +20,8 @@ echo "<h2>Incorrect, we got an exception</h2>";
 
 print_r(json_decode(utf8_decode("Ipso lorem"), true, 512, JSON_THROW_ON_ERROR));
 ```
+
+<!-- truncate -->
 
 The easiest way is to:
 

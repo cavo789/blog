@@ -2,11 +2,14 @@
 slug: welcome
 title: Welcome
 authors: [christophe]
+enableComments: true
 ---
 
 I have been wanting to try [Docusaurus](https://docusaurus.io/) for a long time, but today I am stuck at home because of storm Ciaran, which is blowing across Belgium this Thursday, November 2, 2023.
 
 Here is my chance to stay behind the computer and play with a green dinosaur!
+
+<!-- truncate -->
 
 ![Docusaurus Plushie](./docusaurus-plushie-banner.jpeg)
 

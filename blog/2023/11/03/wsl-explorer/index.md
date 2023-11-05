@@ -3,6 +3,7 @@ slug: wsl-windows-explorer
 title: Open your Linux folder in Windows Explorer
 authors: [christophe]
 tags: [wsl]
+enableComments: true
 ---
 # Open your Linux folder in Windows Explorer
 
@@ -11,6 +12,8 @@ Did you know it is possible to use the Windows Explorer program and navigate on 
 An easy way to open your current folder in Windows Explorer is to call the `explorer.exe` binary.
 
 So, f.i., in your Linux console, open any existing folder like `cd ~/repositories/blog` and then, just run `explorer.exe .`.
+
+<!-- truncate -->
 
 So, yes!, it's possible to call any Windows program (like the calculator (`calc.exe`)) by typing his name followed by `.exe`. If the program is in the `PATH` then it will be started.
 

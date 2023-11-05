@@ -3,12 +3,15 @@ slug: docker-joomla
 title: Create your own Joomla website using Docker
 authors: [christophe]
 tags: [wsl, docker, joomla, apache, makefile, mysql, postgresql, vscode]
+enableComments: true
 ---
 # Create your own Joomla website using Docker
 
 In this article, we will learn how to use Docker to install Joomla and start a new website **in seconds** *(do not want to wait? jump to the [Final docker-compose.yml](#final-docker-composeyml) chapter)*.
 
 I will use a Linux console *(I am running WSL on my Windows computer and I have chosen Ubuntu for my distribution)* but since Docker can be also used on Windows, you can perfectly run, exactly, the same commands in a MS DOS / Powershell console.
+
+<!-- truncate -->
 
 If you do not have Docker yet, please consult my "[Install Docker and play with PHP](/blog/install-docker)" article to get more information's about Docker and a quite easy introduction guide.
 

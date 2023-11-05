@@ -3,6 +3,7 @@ slug: install-docker
 title: Install Docker and play with PHP
 authors: [christophe]
 tags: [docker, php]
+enableComments: true
 ---
 # Install Docker and play with PHP
 
@@ -11,6 +12,8 @@ Docker can be installed free of charge for personal or small-scale use: [https:/
 You can install it on Linux, Mac or Windows.
 
 The easiest way, under Windows, is to use [Docker Dekstop](https://www.docker.com/products/docker-desktop/).
+
+<!-- truncate -->
 
 ## Why Docker images?
 
