@@ -4,6 +4,10 @@ This website is built using [Docusaurus](https://docusaurus.io/).
 
 Below a list of instructions to help when working with the 
 
+## Clone this repository
+
+Start a console and run `cd ~ && git clone https://github.com/cavo789/blog.git && cd blog` to clone this repository if needed.
+
 ## Open the editor
 
 Run `make code` to open vscode.
@@ -16,7 +20,7 @@ This is the case when, f.i., you will need to run a `npm` (or `yarn`) command li
 
 ## Local Development
 
-Run `make start` to start the Docusaurus watcher and open the local website.
+Run `make watch` to start the Docusaurus watcher and open the local website.
 
 Once started, every changes done in the blog will be reflected to the browser without reloading.
 

@@ -41,7 +41,8 @@ const config = {
       ({
         docs: false,
         blog: {
-          routeBasePath: '/blog',
+          routeBasePath: '/blog',          
+          editUrl: 'https://github.com/cavo789/blog/edit/main/',
           showReadingTime: true,
           blogSidebarTitle: 'All posts',
           blogSidebarCount: 'ALL'
