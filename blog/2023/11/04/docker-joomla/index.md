@@ -1,21 +1,21 @@
 ---
 slug: docker-joomla
-title: Create your own Joomla website using Docker
+title: Create your Joomla website using Docker
 authors: [christophe]
 tags: [wsl, docker, joomla, apache, makefile, mysql, postgresql, vscode]
 enableComments: true
 ---
-# Create your own Joomla website using Docker
+# Create your Joomla website using Docker
 
-In this article, we will learn how to use Docker to install Joomla and start a new website **in seconds** *(do not want to wait? jump to the [Final docker-compose.yml](#final-docker-composeyml) chapter)*.
+In this article, we will learn how to use Docker to install Joomla and start a new website **in seconds** *(don't want to wait? Jump to the [Final docker-compose.yml](#final-docker-composeyml) chapter)*.
 
-I will use a Linux console *(I am running WSL on my Windows computer and I have chosen Ubuntu for my distribution)* but since Docker can be also used on Windows, you can perfectly run, exactly, the same commands in a MS DOS / Powershell console.
+I will use a Linux console *(I'm running WSL on my Windows computer and I have chosen Ubuntu for my distribution)* but since Docker can also be used on Windows, you can perfectly run, exactly, the same commands in an MS-DOS / Powershell console.
 
 <!-- truncate -->
 
-If you do not have Docker yet, please consult my "[Install Docker and play with PHP](/blog/install-docker)" article to get more information's about Docker and a quite easy introduction guide.
+If you don't have Docker yet, please consult my "[Install Docker and play with PHP](/blog/install-docker)" article to get more information about Docker and an easy introduction guide.
 
-**We will assume in this article that you have Docker, and you are working under Linux or using WSL.**
+**We will assume in this article that you have Docker, and you're working under Linux or using WSL.**
 
 ## Before starting
 
@@ -27,16 +27,16 @@ As you know, to be able to run a CMS like Joomla we need three things + 1:
 
 And, of course, we need **Joomla**.
 
-In term of Docker: we need three services. 
+In terms of Docker: we need three services. 
 
 ## Docker compose
 
-When you need more than one service (Apache should be able to communicate with PHP and PHP should be able to request data from MySQL), you need to configure a special file called `docker-compose.yml`. That file should be placed in the root of the project and will defines the list of services required and how they will collaborate together.
+When you need many services (Apache should be able to communicate with PHP and PHP should be able to request data from MySQL), you need to configure a special file called `docker-compose.yml`. That file should be placed in the root of the project and will define the list of services required and how they will collaborate together.
 
 You will find an example of the `docker-compose.yml` file on the Joomla image description page: [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla) *search for `docker-compose` on this page.*
 
 :::info The Docker Joomla image is built on PHP and Apache
-It is for sure too technical right now but if you click on the 
+It's for sure too technical now but if you click on the 
 [https://github.com/joomla-docker/docker-joomla/blob/8cac4ff7ae88b9274870a95f5e22ea3c32f01fd7/5.0/php8.1/apache/Dockerfile#L8](https://github.com/joomla-docker/docker-joomla/blob/8cac4ff7ae88b9274870a95f5e22ea3c32f01fd7/5.0/php8.1/apache/Dockerfile#L8) link, you can see that the Docker image for Joomla 5.0.0 is built on a `php:8.1-apache` image. This means that using this image, you will get PHP, Apache and Joomla, altogether in a single image.
 :::
 
@@ -81,14 +81,14 @@ drwxrwxrwt     - christophe christophe 2023-11-04 09:32 ..
 
 So, I just have one file, and this is our newly, created, `docker-compose.yml` file.
 
-Now, if needed, please start a Linux console, and go to your joomla folder (i.e., `cd /tmp/joomla`). From there, run the command below:
+Now, if needed, please start a Linux console, and go to your joomla folder (i.e. `cd /tmp/joomla`). From there, run the command below:
 
 ```bash
 docker compose up --detach
 ```
 
 :::tip `docker compose up --detach`
-That command is one of the most important to know. It ask Docker to proceed the `docker-compose.yml` file and run services. **In short: run your website and make it up and running**.
+That command is one of the most important to know. It asks Docker to proceed the `docker-compose.yml` file and run services. **In short: run your website and make it up**.
 :::
 
 Docker will start downloading `joomla` and `joomladb`, the two services mentioned in the `docker-compose.yml` file. 
@@ -142,7 +142,7 @@ At the end, once downloaded, the console will show something like this:
  ✔ Container joomla-joomla-1    Started  38.8s
 ```
 
-So, the two images have been downloaded and then,
+So, the two images have been downloaded then,
 
 1. a `joomla_default` network is created,
 2. the `joomla-joomladb-1` container is created (this is our database server) and
@@ -150,7 +150,7 @@ So, the two images have been downloaded and then,
 
 ### Why joomla-joomlaxxx names?
 
-We did not give our project a name, we just created a `docker-compose.yml` file in our `/tmp/joomla` folder. So, Docker has named our project using the folder name (`joomla`) concatenated to service name (refers to the `docker-compose.yml` file, we have two services, one called `joomladb` and one called `joomla` That is why...
+We didn't give our project a name, we just created a `docker-compose.yml` file in our `/tmp/joomla` folder. So, Docker has named our project using the folder name (`joomla`) concatenated to service name (refers to the `docker-compose.yml` file, we have two services, one called `joomladb` and one called `joomla` That is why...
 
 Let us introduce a minor change, we will give a name to our Docker project: edit the `docker-compose.yml` file and add a line with `name: xxxx` where `xxxx` is the name of your choice; for instance:
 
@@ -162,11 +162,11 @@ services:
   [...]
 ```
 
-(We will not be restarting our Docker containers yet. For the time being, the kingsbridge name will not be taken into account. For this to be the case, we would need to launch `docker compose down` followed by `docker compose up --detach`, but let us wait a little longer before doing so.)
+(We won't be restarting our Docker containers yet. For now, the kingsbridge name won't be considered. For this to be the case, we would need to launch `docker compose down` followed by `docker compose up --detach`, but let us wait a little longer before doing so.)
 
 ## Docker images
 
-If you are curious, you can run the `docker image list` command to get the list of Docker images already downloaded on your machine.
+If you're curious, you can run the `docker image list` command to get the list of Docker images already downloaded on your machine.
 
 ```bash
 ❯ docker image list
@@ -177,8 +177,8 @@ mysql        8.0.13    102816b1ee7d   4 years ago   486MB
 
 Ok, so, Docker has downloaded Joomla (in its *latest* version) and MySQL (version 8.0.13).
 
-:::info What about Joomla 5.0 i.e., force a specific version?
-By default, when we do not specify any version number (*which is in fact not recommended*), Docker will download the version known as the `latest` one. `latest`, here, is what Docker call a *tag*. 
+:::info What about Joomla 5.0 i.e. force a version?
+By default, when we don't specify any version number (*which isn't recommended*), Docker will download the version known as the `latest` one. `latest`, here, is what Docker calls a *tag*. 
 
 ```yaml
 version: '3.8'
@@ -192,7 +192,7 @@ services:
 
 To retrieve the list of all tags, please navigate to [https://hub.docker.com/_/joomla/tags](https://hub.docker.com/_/joomla/tags).
 
-At the time of writing this article, Joomla *latest* correspond to Joomla version 4.4.0. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: *5.0.0-php8.2-apache*. So just replace `image: joomla` with `image: joomla:5.0.0-php8.2-apache` in `docker-compose.yml` and it is done. You are forcing a specific version.
+During writing this article, Joomla *latest* correspond to Joomla version 4.4.0. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: *5.0.0-php8.2-apache*. So just replace `image: joomla` with `image: joomla:5.0.0-php8.2-apache` in `docker-compose.yml` and It's done. you're forcing a version.
 
 ```yaml
 version: '3.8'
@@ -207,7 +207,7 @@ services:
 
 ## Docker containers
 
-We are almost done. Please run `docker container list` to get the list of containers created by Docker:
+We're almost done. Please run `docker container list` to get the list of containers created by Docker:
 
 ```bash
 ❯ docker container list
@@ -234,7 +234,7 @@ Let us rewind for a few seconds: to run Joomla, we knew we needed three things +
 
 Back to `http://localhost:8080` and we will continue the installation.
 
-On the first screen, just select your preferred language and the enter a name for your Joomla site:
+On the first screen, just select your preferred language then enter a name for your Joomla site:
 
 ![Name your site](./images/admin_step_1.png)
 
@@ -244,7 +244,7 @@ When Joomla will ask for your admin credentials, just fill in the value of your 
 
 But, for the database configuration, here you need to be strict:
 
-* The database type should be `MySQLi` (since we are using MySQL),
+* The database type should be `MySQLi` (since We're using MySQL),
 * The name of the host should be `joomladb` (the name we have chosen for the database service),
 * The username should be `root` (default value) and
 * The password for that user should be `example`
@@ -287,7 +287,7 @@ Congratulations, you have successfully installed a fresh Joomla website using Do
 
 Let us leave a few minutes the browser and go back to our Linux console.
 
-In the previous chapter we have installed Joomla so we should have Joomla on our computer, right?
+In the previous chapter, we have installed Joomla so we should have Joomla on our computer, right?
 
 Let us verify:
 
@@ -302,9 +302,9 @@ drwxrwxrwt     - christophe christophe 2023-11-04 09:32 ..
 .rw-r--r--   325 christophe christophe 2023-11-04 09:32 docker-compose.yml
 ```
 
-Oh? Nothing... **Nothing has been downloaded in our folder.** We do not have Joomla on our computer. How is this possible?
+Oh? Nothing... **Nothing has been downloaded in our folder.** We don't have Joomla on our computer. How is this possible?
 
-We will discuss this later but yes, by default with Docker, everything happens in memory, nothing on disk. If you cannot wait, please read my "[Share data between your running Docker container and your computer](/blog/docker-volume)" article to better understand why and how.
+We will discuss this later but yes, by default with Docker, everything happens in memory, nothing on the disk. If you can't wait, please read my "[Share data between your running Docker container and your computer](/blog/docker-volume)" article to better understand why and how.
 
 ## Play with containers
 
@@ -331,22 +331,22 @@ We will stop them by running `docker compose down`:
  ✔ Network joomla       Removed
 ```
 
-If you go back to `http://localhost:8080` with your browser and refresh the page; the site did not exist anymore.
+If you go back to `http://localhost:8080` with your browser and refresh the page; the site didn't exist anymore.
 
 Run `docker compose up --detach` again, surf to the site again, refresh the page and the site is, oh? not yet responding. Wait a few... a few more... and after a certain period, the site will be there. Why?
 
-Docker must (re)start two services, the Joomla one and the database server. Initialization of both services may take a few seconds, and the database service must be up and running so that Joomla can continue its own initialization.
+Docker must (re)start two services, the Joomla one and the database server. Initialization of both services may take a few seconds, and the database service must be up so that Joomla can continue its initialization.
 
 You can see this by running `docker compose logs --follow` (press <kbd>CTRL</kbd>+<kbd>C</kbd> to quit).
 
 Once Joomla will be ready, you will get the installation wizard of Joomla... just like the first time. So, by running `docker compose down` you have lost everything.
 
 :::danger
-As mentioned earlier, everything is done in RAM. By stopping a Docker container, you will lose everything not saved on your computer. It is great for playing/learning but not what you expect when you are developing a real site. 
+As mentioned earlier, everything is done in RAM. By stopping a Docker container, you will lose everything not saved on your computer. It's great for playing/learning but not what you expect when you're developing a real site. 
 :::
 
 :::info
-Remember the change we made earlier. We had added the name `kingsbridge` as the project name in our `docker-compose.yml` file. You can see that after relaunching `docker compose up`, this time it's no longer `joomla-joomlaxxxx` but `kingsbridge-joomlaxxx`. This because changes done to the yaml file are processed only after a `down / up` command. If you modify the yaml file, you should restart Docker containers.
+Remember the change we made earlier. We had added the name `kingsbridge` as the project name in our `docker-compose.yml` file. You can see that after relaunching `docker compose up`, this time it's no longer `joomla-joomlaxxxx` but `kingsbridge-joomlaxxx`. This because changes made to the yaml file are processed only after a `down / up` command. If you modify the yaml file, you should restart Docker containers.
 :::
 
 ## Synchronize with your computer
@@ -411,7 +411,7 @@ Make sure to, first, create these two directories on your computer so folder's p
 The two lines `user: 1000:1000` are really important and inform Docker to reuse our local credentials (the one used on our computer).
 
 :::important
-If you do not do this, files and folders created by Docker will be owned by the `root` user on our computer and not by us (in my case, by the user called `christophe`).
+If you don't do this, files and folders created by Docker will be owned by the `root` user on our computer and not by us (in my case, by the user called `christophe`).
 :::
 
 Just check our folder's content:
@@ -538,13 +538,17 @@ Yes! This time we have stored our Joomla website on our computer.
 
 For the exercise, we can kill our containers by running `docker compose kill` and run `docker compose up --detach` again to start our containers again and, this time, we will retrieve our Joomla site as we just leave it. Nothing is lost now. 
 
-And since files/folders are now on your computer you can do everything you want with your website like committing it on a GitHub repository f.i.
+And since files/folders are now on your computer, you can do everything you want with your website like committing it on a GitHub repository f.i.
+
+:::tip Synchronization has a cost
+When using one or more volumes, Docker must constantly check whether the files/folders on your computer are synchronized with the containers. This has a cost in terms of performance. Similarly, if Docker needs to write to a file (or to your Joomla database); if this is only in memory, it will be faster than if you also had to write the database to your disk. However, the difference in speed is not obvious under normal circumstances. If you're a developer writing hundreds or even thousands of records, you'll notice a noticeable difference.
+:::
 
 ## Start a CLI command
 
 When working with a Joomla website, sometimes you need to run some PHP command like `php joomla.php`.
 
-To be able to do this, you will need to start an *interactive shell session* in the Joomla container.
+To be able to do this, you will need to start a *interactive shell session* in the Joomla container.
 
 Did you remember the name of our Joomla service? If no, just open the `docker-compose.yml` file again.
 
@@ -559,13 +563,13 @@ The name of our Joomla service is `joomla` (and `joomladb` is the name of our My
 
 Now we know everything we need: to run an interactive shell session in the Joomla container, just run `docker compose exec joomla /bin/sh` to *jump* into the Joomla container (*and `docker compose exec joomladb /bin/sh` for the MySQL container*). 
 
-Let us rewind for a few seconds because it is quite complicated to understand.
+Let us rewind for a few seconds because It's complicated to understand.
 
-On our computer, in your Linux console, if you type `pwd` to get the current folder, you will see `/tmp/joomla` because it is the directory we have used in the tutorial.
+On our computer, in your Linux console, if you type `pwd` to get the current folder, you will see `/tmp/joomla` because It's the directory we have used in the tutorial.
 
-Then, we jump in the Joomla Docker container by running `docker compose exec joomla /bin/sh` and, you can see it, we do not have any longer a prompt starting with `>` but with `$` but that is not the only difference. If now, we run `pwd` again, we are no more located in our `/tmp/joomla` folder but in `/var/www/html`.
+Then, we jump in the Joomla Docker container by running `docker compose exec joomla /bin/sh` and, you can see it, we don't have any longer a prompt starting with `>` but with `$` but that isn't the only difference. If now, we run `pwd` again, We're no more in our `/tmp/joomla` folder but in `/var/www/html`.
 
-It can drive you mad but ... when entering in the Docker container, you are *no more* on your computer, you are virtually in another computer, the container. In that *computer*, the current folder is thus `/var/www/html`. By typing `exit`, you will leave the container, go back to your computer and back in the `/tmp/joomla` folder.
+It can drive you mad but ... when entering in the Docker container, you're *no more* on your computer, you're virtually in another computer, the container. In that *computer*, the current folder is thus `/var/www/html`. By typing `exit`, you will leave the container, go back to your computer and back in the `/tmp/joomla` folder.
 
 ```bash
 ❯ pwd
@@ -589,13 +593,13 @@ PHP 8.1.25 (cli) (built: Nov  1 2023 06:20:35) (NTS)
 $ exit
 ```
 
-So, on my computer (and probably on yours), by typing `php --version`, I got an error. That is correct. I do not have PHP on my computer. *I work every day with PHP since years and I don't have it on my machine.* 😄
+So, on my computer (and probably on yours), by typing `php --version`, I got an error. That is correct. I don't have PHP on my computer. *I work daily with PHP for years and I don't have it on my machine.* 😄
 
-Then I jump in the Joomla container and type the same command again and, yes, inside the Docker container of Joomla, yes, PHP is installed and here, it is the version 8.1.25.
+Then I jump in the Joomla container and type the same command again and, yes, inside the Docker container of Joomla, yes, PHP is installed and here, It's the version 8.1.25.
 
 ## Using alias
 
-Docker will always start your project on your localhost and on a given port like `http://127.0.0.1:8080`.
+Docker will always start your project on your localhost and on a port like `http://127.0.0.1:8080`.
 
 Instead of using the IP address, it would be much nicer to use an alias like `http://kingsbridge:8080`.
 
@@ -612,12 +616,12 @@ Save the file. Now you can surf to `http://kingsbridge:8080`
 ![Using the Kingsbridge alias](./images/using_alias.png)
 
 :::note
-When creating an alias in the host file, some people prefer to use the `.local` suffix like in `127.0.0.1 kingsbridge.local` to make clear it is a localhost site. If you prefer this, so the URL will be `http://kingsbridge.local:8080`
+When creating an alias in the host file, some people prefer to use the `.local` suffix like in `127.0.0.1 kingsbridge.local` to make clear It's a localhost site. If you prefer this, so the URL will be `http://kingsbridge.local:8080`
 :::
 
 ## Using another port
 
-Imagine you have another project, no more the `Kingsbrige` one. Can you have more than one project running at the same time? Yes! of course.
+Imagine you have another project, no more the `Kingsbrige` one. Can you have many projects running at the same time? Yes! of course.
 
 You just need to make sure to use another, unused, port.
 
@@ -643,14 +647,14 @@ We will use the port `8081` for that project and, in our host file, we will add 
 
 So, now and at the same time, we can access to `http://kingsbridge:8080` and to `http://shiring:8081` without conflicts since we have used a separate port number.
 
-Kingsbrige can be a Joomla 4.4 website while Shiring will be on Joomla 5.0 without any conflict.
+Kingsbrige can be a Joomla 4.4 website while Shiring is on Joomla 5.0 without any conflict.
 
 :::tip
-Using another port is not mandatory. You can have several websites on the same port as `8080`. But, in that case, we will not be able to use these websites at the same time. You can start the first one and when trying to start the second one, Docker will say *port already in use*. This is not a problem; you can just run `docker compose stop` for the first one so free the port and start the second one.
+Using another port isn't mandatory. You can have several websites on the same port as `8080`. But, in that case, we won't be able to use these websites at the same time. You can start the first one and when trying to start the second one, Docker will say *port already in use*. This isn't a problem; you can just run `docker compose stop` for the first one so free the port and start the second one.
 :::
 
 :::note
-In this article, I am using port `8080` because Joomla has use it in his default `docker-compose.yml` file. You are not forced to use that one, you can perfectly use `80` and not `8080`. In my daily work, I am using ports `80`, `81`, `82`, `83`, ... varying the second figures for my projects.
+In this article, I'm using port `8080` because Joomla has used it in his default `docker-compose.yml` file. you're not forced to use that one, you can perfectly use `80` and not `8080`. In my daily work, I'm using ports `80`, `81`, `82`, `83`, ... varying the second figures for my projects.
 :::
 
 ## Using phpmyadmin
@@ -659,20 +663,20 @@ Alongside Joomla and MySQL, it would be useful to have access to the database of
 
 The answer is, yes, of course.
 
-For the three mentioned above, there are official Docker images. For phpmyadmin, here it is: [https://hub.docker.com/_/phpmyadmin](https://hub.docker.com/_/phpmyadmin)
+For the three mentioned above, there are official Docker images. For phpmyadmin, here It's: [https://hub.docker.com/_/phpmyadmin](https://hub.docker.com/_/phpmyadmin)
 
 To use it, just run this command: `docker run --name phpmyadmin -d --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin`.
 
 We will run the phpmyadmin (aka PMA) Docker image and
 
 * `--name phpmyadmin` allow us to give it a friendly name (optional)
-* `-d` is like `--detach`: the container should stay in up and running
+* `-d` is like `--detach`: the container should stay in up
 * `--link joomladb:db`: phpmyadmin should access to our Joomla database service. Remember the name in our `docker-compose.yml` file,
 * `--network kingsbridge_default`: our database server is accessible on the `kingsbridge_default` network and
 * `-p 8089:80` tells Docker that we wish to access the web interface of PMA on port `8089`
 
 :::tip
-If you have forgot the name of the network used by our containers, run `docker compose up --detach` again and you will see it. Otherwise run `docker network list` to get the list of networks.
+If you have forgotten the name of the network used by our containers, run `docker compose up --detach` again and you will see it. Otherwise run `docker network list` to get the list of networks.
 
 ```bash
 ❯ docker network list
@@ -689,6 +693,14 @@ d8cdc43a7272   none                  null      local
 Did you remember your MySQL credentials? It was `root` / `example`.
 
 ![List of databases](./images/phpmyadmin_databases.png)
+
+If you prefer [Adminer](https://hub.docker.com/_/adminer/), here is the command to run:
+
+```bash
+docker run -d --rm --name adminer --link joomladb:db --network kingsbridge_default -p 8088:8080 adminer
+```
+
+And here is the configured URL to use for Adminer: `http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db`.  (`joomla_db` is the name of the database we've created earlier in chapter [Install Joomla](#install-joomla))
 
 ## Extra information
 
@@ -742,20 +754,20 @@ Make sure, for each project, to update the `name:` line and if you plan to be ab
 
 If you shut down your computer, if one or more containers are still running, Docker will run them again on the next startup.
 
-This means that the next time you start your computer, your website will still be accessible, and you will not have to run a single command. It is so easy!
+This means that the next time you start your computer, your website will still be accessible, and you won't have to run a single command. It's so easy!
 
 ### Working with Windows
 
-Imagine you are in your console (f.i. run `cd /tmp/joomla` in the Linux console) and you wish to open the site with Visual Studio Code, already installed on your Windows machine.
+Imagine you're in your console (f.i. run `cd /tmp/joomla` in the Linux console) and you wish to open the site with Visual Studio Code, already installed on your Windows machine.
 
-It is easy: just run `code .` to open the current folder so your project within vscode.
+It's easy: just run `code .` to open the current folder so your project within vscode.
 
-Another use case, you wish to start the Windows Explorer program and navigate in your project's structure. Here too, it is possible, just run `explorer.exe .` to open it and load the current directory. See my "[Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer)" article to read more about this feature.
+Another use case, you wish to start the Windows Explorer program and navigate in your project's structure. Here too, It's possible, just run `explorer.exe .` to open it and load the current directory. See my "[Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer)" article to read more about this feature.
 
 ### Make it easy
 
 :::note Only for Linux
-This chapter only concern Linux since Windows did not support the GNU make command.
+This chapter only concern Linux since Windows didn't support the GNU make command.
 :::
 
 In this blog article, we have seen a lot of docker commands.
@@ -772,7 +784,7 @@ By alphabetical order:
 * `docker network list` and
 * `docker run --name phpmyadmin -d --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin`
 
-It is not easy to remember them all, so why not simplify things?
+It's not easy to remember them all, so why not simplify things?
 
 We will use `GNU make` for this. 
 
@@ -790,9 +802,13 @@ This done, we will create a new file called `makefile` in our directory. We will
 Now copy/paste this content in your `makefile`:
 
 ```makefile
+adminer:
+  @printf "\e[1;033m%s\e[0m\n\n" "User is root and password is example. Please open http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db to open Adminer."
+  docker run -d --rm --name adminer --link joomladb:db --network kingsbridge_default -p 8088:8080 adminer
+
 bash:
   @printf "\e[1;033m%s\e[0m\n\n" "Start an interactive shell in the Joomla Docker container; type exit to quit"
-	docker compose exec joomla /bin/sh
+  docker compose exec joomla /bin/sh
 
 code:
   code .
@@ -819,8 +835,12 @@ phpmyadmin:
 
 Save and close vscode.
 
+:::warning Make sure values are correct
+The `makefile` here above contains hardcoded values like `joomla_db` for the database name. Make sure these values are still correct when you'll reuse this file for other projects.
+:::
+
 :::danger
-The indentation in makefile **SHOULD BE** made using tabs and not spaces, this is crucial. So please make sure, if your file did not work, you know what to do.
+The indentation in makefile **SHOULD BE** made using tabs and not spaces, this is crucial. So please make sure, if your file didn't work, you know what to do.
 :::
 
 Now, instead of running f.i. `docker compose up --detach` for running your Joomla site, just run `make up`. Instead of running `docker run --name phpmyadmin -d --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin` to start phpmyadmin, just run `make phpmyadmin`.
