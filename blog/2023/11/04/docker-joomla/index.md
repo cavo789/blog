@@ -2,7 +2,7 @@
 slug: docker-joomla
 title: Create your Joomla website using Docker
 authors: [christophe]
-tags: [wsl, docker, joomla, apache, makefile, mysql, postgresql, vscode]
+tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
 enableComments: true
 ---
 # Create your Joomla website using Docker
@@ -694,6 +694,8 @@ Did you remember your MySQL credentials? It was `root` / `example`.
 
 ![List of databases](./images/phpmyadmin_databases.png)
 
+## Using Adminer
+
 If you prefer [Adminer](https://hub.docker.com/_/adminer/), here is the command to run:
 
 ```bash
@@ -701,6 +703,8 @@ docker run -d --rm --name adminer --link joomladb:db --network kingsbridge_defau
 ```
 
 And here is the configured URL to use for Adminer: `http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db`.  (`joomla_db` is the name of the database we've created earlier in chapter [Install Joomla](#install-joomla))
+
+![adminer](./images/adminer.png)
 
 ## Extra information
 
