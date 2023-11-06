@@ -162,6 +162,8 @@ services:
   [...]
 ```
 
+(We will not be restarting our Docker containers yet. For the time being, the kingsbridge name will not be taken into account. For this to be the case, we would need to launch `docker compose down` followed by `docker compose up --detach`, but let us wait a little longer before doing so.)
+
 ## Docker images
 
 If you are curious, you can run the `docker image list` command to get the list of Docker images already downloaded on your machine.
@@ -210,15 +212,15 @@ We are almost done. Please run `docker container list` to get the list of contai
 ```bash
 ❯ docker container list
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                    NAMES
-0798f8f25d2b   joomla         "/entrypoint.sh apac…"   8 minutes ago    Up 5 minutes    0.0.0.0:8080->80/tcp     kingsbridge-joomla-1
-7b7fcd3809b0   mysql:8.0.13   "docker-entrypoint.s…"   8 minutes ago    Up 7 minutes    3306/tcp, 33060/tcp      kingsbridge-joomladb-1
+0798f8f25d2b   joomla         "/entrypoint.sh apac…"   8 minutes ago    Up 5 minutes    0.0.0.0:8080->80/tcp     joomla-joomla-1
+7b7fcd3809b0   mysql:8.0.13   "docker-entrypoint.s…"   8 minutes ago    Up 7 minutes    3306/tcp, 33060/tcp      joomla-joomladb-1
 ```
 
 We have two running containers (our two services). Pay attention to the `PORTS` column: our `joomla` container is listening on the port `8080` and our `mysql` container is listening on port `3306`.
 
 Hey, port `8080`, does that mean anything to you? That is a port for a web page, isn't it? 
 
-Let us try by starting your favorite browser and navigating to `http://localhost:8080` and... Wow!
+Let us try by starting your favorite browser and navigating to `http://localhost:8080` (*or `http://127.0.0.1:8080`, it's strictly the same*) and... Wow!
 
 ![Joomla installer](./images/joomla_installation_screen.png)
 
@@ -311,22 +313,22 @@ Still on our console, type again `docker container list`:
 ```bash
 ❯ docker container list
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                    NAMES
-0798f8f25d2b   joomla         "/entrypoint.sh apac…"   8 minutes ago    Up 5 minutes    0.0.0.0:8080->80/tcp     kingsbridge-joomla-1
-7b7fcd3809b0   mysql:8.0.13   "docker-entrypoint.s…"   8 minutes ago    Up 7 minutes    3306/tcp, 33060/tcp      kingsbridge-joomladb-1
+0798f8f25d2b   joomla         "/entrypoint.sh apac…"   8 minutes ago    Up 5 minutes    0.0.0.0:8080->80/tcp     joomla-joomla-1
+7b7fcd3809b0   mysql:8.0.13   "docker-entrypoint.s…"   8 minutes ago    Up 7 minutes    3306/tcp, 33060/tcp      joomla-joomladb-1
 ```
 
 Pay attention this time to the last column, called `NAMES`.
 
-We have thus two containers, one named `kingsbridge-joomla-1` and one name `kingsbridge-joomladb-1`.
+We have thus two containers, one named `joomla-joomla-1` and one name `joomla-joomladb-1`.
 
 We will stop them by running `docker compose down`:
 
 ```bash
 ❯ docker compose down
 [+] Running 3/3
- ✔ Container kingsbridge-joomla-1    Removed 2.6s
- ✔ Container kingsbridge-joomladb-1  Removed 4.2s
- ✔ Network kingsbridge_default       Removed
+ ✔ Container joomla-joomla-1    Removed 2.6s
+ ✔ Container joomla-joomladb-1  Removed 4.2s
+ ✔ Network joomla       Removed
 ```
 
 If you go back to `http://localhost:8080` with your browser and refresh the page; the site did not exist anymore.
@@ -343,6 +345,10 @@ Once Joomla will be ready, you will get the installation wizard of Joomla... jus
 As mentioned earlier, everything is done in RAM. By stopping a Docker container, you will lose everything not saved on your computer. It is great for playing/learning but not what you expect when you are developing a real site. 
 :::
 
+:::info
+Remember the change we made earlier. We had added the name `kingsbridge` as the project name in our `docker-compose.yml` file. You can see that after relaunching `docker compose up`, this time it's no longer `joomla-joomlaxxxx` but `kingsbridge-joomlaxxx`. This because changes done to the yaml file are processed only after a `down / up` command. If you modify the yaml file, you should restart Docker containers.
+:::
+
 ## Synchronize with your computer
 
 We will now require that Docker store files/folders on your computer.
@@ -356,6 +362,8 @@ To do this, please edit the `docker-compose.yml` file and add the highlighted li
 
 ```yaml
 version: '3.8'
+
+name: kingsbridge
 
 services:
   joomla:
@@ -399,7 +407,6 @@ Make sure to, first, create these two directories on your computer so folder's p
 ❯ mkdir site_joomla db
 ```
 :::
-
 
 The two lines `user: 1000:1000` are really important and inform Docker to reuse our local credentials (the one used on our computer).
 
