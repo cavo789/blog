@@ -8,6 +8,10 @@ Below a list of instructions to help when working with the
 
 Start a console and run `cd ~ && git clone https://github.com/cavo789/blog.git && cd blog` to clone this repository if needed.
 
+Then run `make install` to install dependencies.
+
+*If you don't have `make` on your computer, please run  `sudo apt-get update && sudo apt-get -y install make` .*
+
 ## Open the editor
 
 Run `make code` to open vscode.

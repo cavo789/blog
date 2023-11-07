@@ -23,6 +23,11 @@ deploy: build # Deploy static pages to the webserver
 	-"/mnt/c/Program Files (x86)/WinSCP/WinSCP.com" /script="WinSCP_deploy.txt"
 	-@sensible-browser https://www.avonture.be
 
+.PHONY: install
+install: # The very first time, after having cloned this blog, you need to install Docusaurus before using it.
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
+	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus-init && yarn add docusaurus-init"
+
 .PHONY: start
 start: # Start the local webserver and open the webpage
 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog (http://localhost:3000)"	

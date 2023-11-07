@@ -22,6 +22,7 @@
     "@giscus/react": "^2.3.0",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^1.2.1",
+    "docusaurus-init": "^1.14.7",
     "docusaurus-plugin-image-zoom": "^1.0.1",
     "prism-react-renderer": "^2.1.0",
     "react": "^18.0.0",
