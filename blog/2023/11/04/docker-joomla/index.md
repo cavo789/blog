@@ -51,19 +51,17 @@ services:
   joomla:
     image: joomla
     restart: always
-    links:
-      - joomladb:mysql
     ports:
       - 8080:80
     environment:
-      JOOMLA_DB_HOST: joomladb
-      JOOMLA_DB_PASSWORD: example
+      - JOOMLA_DB_HOST=joomladb
+      - JOOMLA_DB_PASSWORD=example
 
   joomladb:
     image: mysql:8.0.13
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: example
+      - MYSQL_ROOT_PASSWORD=example
 ```
 
 To make things as clear as possible, here is my temporary folder content:
@@ -261,7 +259,6 @@ But, for the database configuration, here you need to be strict:
 These values can be retrieved inside the `docker-compose.yml` file. If you have named your database service something other than `joomladb`, then please use the name you have chosen.
 :::
 
-
 ```yaml
 version: '3.8'
 
@@ -272,7 +269,7 @@ services:
     [...]
     environment:
       // highlight-next-line
-      MYSQL_ROOT_PASSWORD: example
+      - MYSQL_ROOT_PASSWORD=example
 ```
 
 ![Joomla Database configuration](./images/joomla_admin_database_configuration.png)
@@ -377,30 +374,28 @@ services:
   joomla:
     image: joomla
     restart: always
-    links:
-      - joomladb:mysql
     ports:
       - 8080:80
     environment:
-      JOOMLA_DB_HOST: joomladb
-      JOOMLA_DB_PASSWORD: example
+      - JOOMLA_DB_HOST=joomladb
+      - JOOMLA_DB_PASSWORD=example
     // highlight-next-line
     user: 1000:1000
     // highlight-next-line
     volumes:
-    // highlight-next-line
+      // highlight-next-line
       - ./site_joomla:/var/www/html
 
   joomladb:
     image: mysql:8.0.13
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: example
+      - MYSQL_ROOT_PASSWORD=example
     // highlight-next-line
     user: 1000:1000
     // highlight-next-line
     volumes:
-    // highlight-next-line
+      // highlight-next-line
       - ./db:/var/lib/mysql
 ```
 
@@ -716,55 +711,108 @@ And here is the configured URL to use for Adminer: `http://127.0.0.1:8088?server
 
 ![adminer](./images/adminer.png)
 
-## Extra information
+## Did you prefer PostgreSQL or MariaDB ?
 
-### Final docker-compose.yml
+So far, we've chosen to use MySQL as our database manager. Our `docker-compose.yml` file is the one, slightly modified, that can be found on [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla).
 
-In the introduction of this article, I have said *we will learn how to use Docker to install Joomla and start a new website **in seconds***.
+Could you opt for something other than MySQL? Of course, as long as Joomla supports this system (see [https://manual.joomla.org/docs/next/get-started/technical-requirements/](https://manual.joomla.org/docs/next/get-started/technical-requirements/)).
 
-This is how:
+We just need to replace the `joomladb` service, don't use anymore `mysql` but the one we wish.
 
-1. On your computer, create a folder for your new project (f.i. `mkdir ~/projects/my_new_project && cd $_`)
-2. In that folder, create a `docker-compose.yml` file with this content:
+### Using PostgreSQL
 
-  ```yaml
-  version: '3.8'
+Let's try PostgreSQL... We'll replace `mysql`. The official PostgreSQL Docker image can be retrieved on [https://hub.docker.com/_/postgres](https://hub.docker.com/_/postgres).  The documentation tell us which `image` we should use and how to define variables like the default password (`POSTGRES_PASSWORD`). 
 
-  name: yourprojectname
+We also need to change a few variables:
 
-  services:
-    joomla:
-      image: joomla:5.0.0-php8.2-apache
-      container_name: kingsbridge-app
-      restart: always
-      links:
-        - joomladb:mysql
-      ports:
-        - 8080:80
-      environment:
-        JOOMLA_DB_HOST: joomladb
-        JOOMLA_DB_PASSWORD: example
-      user: 1000:1000
-      volumes:
-        - ./site_joomla:/var/www/html
+* The default database user should be specified and it will be `postgres`,
+* We should define too the name of the database in both services; we'll name our db `joomla_db` and
+* We need to inform Joomla that we'll use PostgreSQL so we need to set `JOOMLA_DB_TYPE` to `pgsql` (can be either `mysql` or `pgsql`).
 
-    joomladb:
-      image: mysql:8.0.13
-      container_name: kingsbridge-db
-      restart: always
-      environment:
-        MYSQL_ROOT_PASSWORD: example
-      user: 1000:1000
-      volumes:
-        - ./db:/var/lib/mysql
-  ```
-3. Create your two sub-folders: `mkdir db site_joomla`
-4. Run `docker compose up --detach` to start Docker and create your containers
-5. Wait a few seconds and your new site is up.
-
-:::important
-Make sure, for each project, to update the `name:` line and if you plan to be able to run your Joomla sites concurrently, make sure to update the port number for Joomla and chose a new one every time (can be `80`, `81`, `82` and so one).
+:::note
+These information's have been retrieved from this Pull requests: [https://github.com/joomla-docker/docker-joomla/pull/156](https://github.com/joomla-docker/docker-joomla/pull/156).
 :::
+
+Our `docker-compose.yml` will become:
+
+```yaml
+version: '3.9'
+
+name: kingsbridge
+
+services:
+  joomla:
+    image: joomla
+    container_name: kingsbridge-app
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - JOOMLA_DB_HOST=joomladb
+      // highlight-next-line      
+      - JOOMLA_DB_USER=postgres
+      - JOOMLA_DB_PASSWORD=example
+      // highlight-next-line      
+      - JOOMLA_DB_NAME=joomla_db
+      // highlight-next-line      
+      - JOOMLA_DB_TYPE=pgsql
+    depends_on:
+      - joomladb
+
+  joomladb:
+    // highlight-next-line      
+    image: postgres:16.0-alpine
+    container_name: kingsbridge-db
+    restart: always
+    environment:
+      // highlight-next-line
+      - POSTGRES_DB=joomla_db
+      // highlight-next-line      
+      - POSTGRES_USER=postgres
+      // highlight-next-line
+      - POSTGRES_PASSWORD=example      
+```
+
+Now, during the configuration of Joomla, make sure to choose `PostgreSQL (PDO)` for the database type and fill in the database wizard with the correct values.
+
+:::tip Use alpine images wherever possible
+For the first time during this tutorial, we're using an `alpine` image (`postgres:16.0-alpine` here). These images are lighter than the *not* alpine image. They contain the bare essentials for running the service, whereas a *traditional* image contains additional tools, binaries, ... that you may need but are not certain to use.
+:::
+
+### Using MariaDB
+
+If you plan to use MariaDB, here is the Docker Official Image: [https://hub.docker.com/_/mariadb](https://hub.docker.com/_/mariadb).
+
+```yaml
+version: '3.9'
+
+name: kingsbridge
+
+services:
+  joomla:
+    image: joomla
+    container_name: kingsbridge-app
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - JOOMLA_DB_HOST=joomladb
+      - JOOMLA_DB_PASSWORD=example
+    depends_on:
+      - joomladb
+
+  joomladb:
+    // highlight-next-line      
+    image: mariadb:11.1.2
+    container_name: kingsbridge-db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
+```
+
+For MariaDB, please select `MySQLi` during the installation wizard.
+
+## Extra information
 
 ### The container will be restarted by Windows
 
@@ -889,3 +937,151 @@ To do this, just use the `printf` function like illustrated above.
 Please read my [Makefile - Tutorial and Tips & Tricks](https://github.com/cavo789/makefile_tips) GitHub repository if you wish to learn more about Make.
 
 Feel free to add your own make instructions; can be multiline.
+
+### FrankenPHP, a modern application server for PHP
+
+Based on their documentation, FrankenPHP is 3.5 x PHP FPM ([https://speakerdeck.com/dunglas/the-php-revolution-is-underway-frankenphp-1-dot-0-beta](https://speakerdeck.com/dunglas/the-php-revolution-is-underway-frankenphp-1-dot-0-beta)).
+
+> [https://frankenphp.dev/](https://frankenphp.dev/)
+> [https://github.com/alexandreelise/frankenphp-joomla](https://github.com/alexandreelise/frankenphp-joomla)
+
+FrankenPHP is still a little young for use on production sites, but because it's so promising, it's certainly worth playing with when developing locally.
+
+[Alexandre Elisé](https://github.com/alexandreelise) has created a Docker script for Joomla.
+
+We still need our `docker-compose.yml` file but, this time, we'll not use the Joomla Docker Image but we'll create ours.
+
+This time, we'll need two files: `docker-compose.yml` and `Dockerfile`.
+
+Go back in your `/tmp/joomla` folder and create a new file called `Dockerfile`. The one of Alexandre can be retrieved on [https://github.com/alexandreelise/frankenphp-joomla/blob/main/Dockerfile](https://github.com/alexandreelise/frankenphp-joomla/blob/main/Dockerfile).
+
+Copy/Paste the content in your local, newly created, `Dockerfile`.
+
+```Dockerfile
+FROM dunglas/frankenphp
+
+# install the PHP extensions we need (https://downloads.joomla.org/technical-requirements)
+RUN install-php-extensions \
+    bcmath \
+    exif \
+    gd \
+    intl \
+    mysqli \
+    zip \
+    redis \
+    gmp \
+    imagick \
+    ldap \
+    pdo_mysql \
+    opcache
+
+COPY --from=joomla:5-php8.2-fpm /usr/local/etc/php/conf.d/* /usr/local/etc/php/conf.d/
+COPY --from=joomla:5-php8.2-fpm /entrypoint.sh /usr/local/bin/
+COPY --from=joomla:5-php8.2-fpm /makedb.php /usr/local/bin/
+COPY --from=joomla:5-php8.2-fpm --chown=root:root /usr/src/joomla /app/public
+
+VOLUME /app/public
+
+RUN sed -i \
+    -e 's/\[ "$1" = '\''php-fpm'\'' \]/\[\[ "$1" == frankenphp* \]\]/g' \
+    -e 's/php-fpm/frankenphp/g' \
+    -e 's#/usr/src/joomla#/app/public#g' \
+    -e 's#/makedb\.php#/usr/local/bin/makedb\.php#g' \
+    /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["frankenphp", "run", "--config", "/etc/caddy/Caddyfile"]
+```
+
+The second file to create is `docker-compose.yml` and should be initialized like this:
+
+```yaml
+version: '3.9'
+
+name: kingsbridge
+
+services:
+  joomla:
+    build: .
+    restart: always
+    ports:
+      - 8080:80
+      - 443:443
+    environment:
+      - JOOMLA_DB_HOST=joomladb
+      - JOOMLA_DB_PASSWORD=example
+
+  joomladb:
+    image: mysql:8.0.13
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=example      
+```
+
+As you can see here, we'll no more have an `image:` tag for our `joomla` service but, this time, we have `build: .`. This line instructs Docker to parse a special file called `Dockerfile`.
+
+```yaml
+services:
+  joomla:
+    // highlight-next-line      
+    build: .
+```
+
+And now, if you take a look to the `Dockerfile`, we'll retrieve a *build* scenario:
+
+* We'll use the `dunglags/frankenphp` image (the `FROM` clause),
+* Then we'll install a few php extensions (the `RUN` clause),
+* We'll get files/folders from the `joomla:5-php8.2-fpm` image (the `COPY` clauses),
+* We'll make some changes using `sed` in a script called `/usr/local/bin/entrypoint.sh`,
+* We'll define that script as the `entrypoint` of our Docker image and
+* Finally, we'll run the FrankenPHP service.
+
+The two files in your `/tmp/joomla` folder, just run `docker compose up --detach` to run Docker. This time, Docker will be slower since he needs to **build** our, own, Docker image (i.e. parse the `Dockerfile` and run actions) then load containers. As from the second call, the image will already be built so the process will be faster.
+
+### Final docker-compose.yml
+
+In the introduction of this article, I have said *we will learn how to use Docker to install Joomla and start a new website **in seconds***.
+
+This is how:
+
+1. On your computer, create a folder for your new project (f.i. `mkdir ~/projects/my_new_project && cd $_`)
+2. In that folder, create a `docker-compose.yml` file with this content:
+
+  ```yaml
+  version: '3.8'
+
+  name: yourprojectname
+
+  services:
+    joomla:
+      image: joomla:5.0.0-php8.2-apache
+      container_name: kingsbridge-app
+      restart: always
+      ports:
+        - 8080:80
+      environment:
+        - JOOMLA_DB_HOST=joomladb
+        - JOOMLA_DB_PASSWORD=example
+      user: 1000:1000
+      volumes:
+        - ./site_joomla:/var/www/html
+      depends_on:
+        - joomladb
+
+    joomladb:
+      image: mysql:8.0.13
+      container_name: kingsbridge-db
+      restart: always
+      environment:
+        - MYSQL_ROOT_PASSWORD=example
+      user: 1000:1000
+      volumes:
+        - ./db:/var/lib/mysql
+  ```
+3. Create your two sub-folders: `mkdir db site_joomla`
+4. Run `docker compose up --detach` to start Docker and create your containers
+5. Wait a few seconds and your new site is up.
+
+:::important
+Make sure, for each project, to update the `name:` line and if you plan to be able to run your Joomla sites concurrently, make sure to update the port number for Joomla and chose a new one every time (can be `80`, `81`, `82` and so one).
+:::
