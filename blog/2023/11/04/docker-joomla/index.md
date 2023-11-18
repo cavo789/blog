@@ -3,7 +3,7 @@ slug: docker-joomla
 title: Create your Joomla website using Docker
 authors: [christophe]
 image: ./images/social_media.jpg
-tags: [adminer, apache, docker, frankenphp, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
+tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
 enableComments: true
 ---
 # Create your Joomla website using Docker
@@ -80,7 +80,7 @@ drwxrwxrwt     - christophe christophe 2023-11-04 09:32 ..
 .rw-r--r--   325 christophe christophe 2023-11-04 09:32 docker-compose.yml
 ```
 
-So, I just have one file, and this is your newly, created, `docker-compose.yml` file.
+So, I just have one file, and this is the newly, created, `docker-compose.yml` file.
 
 Now, if needed, please start a Linux console, and go to your joomla folder (i.e. `cd /tmp/joomla`). From there, run the command below:
 
@@ -89,7 +89,7 @@ docker compose up --detach
 ```
 
 :::tip `docker compose up --detach`
-That command is one of the most important to know. It asks Docker to proceed the `docker-compose.yml` file and run services. **In short: run your website and make it up**.
+That command is one of the most important to know. It asks Docker to proceed the `docker-compose.yml` file and run services. **In short: run your website**.
 :::
 
 Docker will start downloading `joomla` and `joomladb`, the two services mentioned in the `docker-compose.yml` file.
@@ -149,9 +149,15 @@ So, the two images have been downloaded then,
 2. the `joomla-joomladb-1` container is created (this is your database server) and
 3. the `joomla-joomla-1` container is created too (this is your Joomla service).
 
+At this stage, your site is already being installed. Go to the URL `http://127.0.0.1:8080` to view it (make sure to use the `http` protocol and not `https`).
+
+:::note Not yet ready
+You may get an error page; this is because, for example, MySQL is not yet fully loaded and Joomla has to wait for it before it can display the installation page. In this case, please wait a little longer ... or read the rest of this article.
+:::
+
 ### Why joomla-joomlaxxx names?
 
-We didn't give your project a name, we just created a `docker-compose.yml` file in your `/tmp/joomla` folder. So, Docker has named your project using the folder name (`joomla`) concatenated to service name (refers to the `docker-compose.yml` file, we have two services, one called `joomladb` and one called `joomla`. That is why...
+We didn't give your project a name, we just created a `docker-compose.yml` file in your `/tmp/joomla` folder. So, Docker has named your project using the folder name (`joomla`) concatenated to service name (refers to the `docker-compose.yml` file, we have two services, one called `joomladb` and one called `joomla`). That is why...
 
 Let us introduce a minor, optional, change, we will give a name to your Docker project and containers: edit the `docker-compose.yml` file and add a line with `name: xxxx` where `xxxx` is the name of your choice. Do the same but using `container_name` this time for the two services; for instance:
 
@@ -171,7 +177,7 @@ services:
     [...]
 ```
 
-(We won't be restarting your Docker containers yet. For now, the kingsbridge name won't be considered. For this to be the case, we would need to launch `docker compose down` followed by `docker compose up --detach`, but let us wait a little longer before doing so.)
+We won't be restarting your Docker containers yet. For now, the `kingsbridge` name won't be considered. For this to be the case, we would need to launch `docker compose down` followed by `docker compose up --detach`, but let us wait a little longer before doing so. 
 
 ## Docker images
 
@@ -941,52 +947,6 @@ Please read my [Makefile - Tutorial and Tips & Tricks](https://github.com/cavo78
 
 Feel free to add your own make instructions; can be multiline.
 
-### FrankenPHP, a modern application server for PHP
-
-[![FrankenPHP](./images/frankenphp.png)](https://frankenphp.dev/) 
-
-* [https://github.com/alexandreelise/frankenphp-joomla](https://github.com/alexandreelise/frankenphp-joomla)
-
-Based on their documentation, FrankenPHP is 3.5 faster than PHP FPM ([https://speakerdeck.com/dunglas/the-php-revolution-is-underway-frankenphp-1-dot-0-beta](https://speakerdeck.com/dunglas/the-php-revolution-is-underway-frankenphp-1-dot-0-beta)).
-
-FrankenPHP is still a little young for use on production sites, but because it's so promising, it's certainly worth playing with when developing locally.
-
-[Alexandre Elisé](https://github.com/alexandreelise) has written a script to use FrankenPHP with Joomla. You can find the source here: [https://github.com/alexandreelise/frankenphp-joomla](https://github.com/alexandreelise/frankenphp-joomla).
-
-I invite you to play with it on your development machine (unless you have your own servers; you certainly won't be able to use FrankenPHP at your hosting company).
-
-Here is how to do:
-
-* go back, for instance, in your `/tmp/joomla` folder
-* open your browser and surf to [https://github.com/alexandreelise/frankenphp-joomla],
-* follow instructions given by Alexandre in his `Getting Started` readme file.
-
-The building of image(s) and the creation of containers will take a while (10 minutes and even more) so just be patient. *Building the image is an one-time action, the next time, Docker has just to create containers.*
-
-![Building FrankenPHP](./images/building_frankenphp.png)
-
-So the building has taken ages and, then, you'll start to get logs messages:
-
-![Running FrankenPHP](./images/running_frankenphp.png)
-
-You should wait here too, a lot, until the database connection is ready. The fact is Joomla will try to connect to MySQL while the MySQL container is not ready to handle connections. You'll then see a lot of `[ERROR] Connection refused`. Stay patient and after a while, you'll get this:
-
-![Joomla has been installed](./images/frankenphp_joomla_installed.png)
-
-:::caution OUPS, it's terribly slow to build
-To be honest, before being able to see my Joomla localhost homepage, I've wait more than 25 minutes (the first time). I would never have wait so long if I hadn't had to finish this chapter.
-:::
-
-When everything has been successfully done, just run surf to `https://localhost:9999` to get your Joomla site running on FrankenPHP. 
-
-:::note FrankenPHP is using SSL and thus https
-Please note that FrankenPHP is delivering your site using `https`. The way Alexandre has built his script, the port number is not fixed. To determine which port to use, start a new Linux console and run `docker container list` to get the list of running containers. You'll see the port to use to access to your FrankenPHP site in the `PORTS` column. Also displayed in your `Docker Desktop` Windows application, go then to the list of containers to get the port.
-:::
-
-![Joomla is now running on FrankenPHP](./images/frankenphp_joomla_homepage.png)
-
-You'll perhaps not see a major increase in speed on your machine since you're the only visitor but it's nice to think that you're surfing so fast ... locally ;).
-
 ### Final docker-compose.yml
 
 In the introduction of this article, I have said *we will learn how to use Docker to install Joomla and start a new website **in seconds***.
@@ -1034,6 +994,12 @@ This is how:
 :::important
 Make sure, for each project, to update the `name:` line and if you plan to be able to run your Joomla sites concurrently, make sure to update the port number for Joomla and chose a new one every time (can be `80`, `81`, `82` and so one).
 :::
+
+## FrankenPHP instead of Apache
+
+A new player is entering the game: [FrankenPHP](https://frankenphp.dev/). This is a new application server which can be used instead of Apache or nginx. 
+
+Based on their documentation, it is 3.5 faster than PHP FPM. If you want to learn how to run Joomla on FrankenPHP, please read this post article: [FrankenPHP, a modern application server for PHP](/blog/frankenphp-docker-joomla). We'll discover the work of [Alexandre Elisé](https://github.com/alexandreelise/frankenphp-joomla) on this.
 
 ## Your comments are more than welcome
 
