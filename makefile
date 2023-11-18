@@ -2,6 +2,8 @@ SHELL:=bash
 
 COLOR_YELLOW:=33
 
+default: watch
+
 .PHONY: bash
 bash: # Open an interactive shell in the Docker container
 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Start an interactive shell in the Docker container; type exit to quit"

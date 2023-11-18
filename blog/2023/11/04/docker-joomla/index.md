@@ -2,10 +2,13 @@
 slug: docker-joomla
 title: Create your Joomla website using Docker
 authors: [christophe]
-tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
+image: ./images/social_media.jpg
+tags: [adminer, apache, docker, frankenphp, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
 enableComments: true
 ---
 # Create your Joomla website using Docker
+
+![Banner](./images/header.jpg)
 
 In this article, we will learn how to use Docker to install Joomla and start a new website **in seconds** *(don't want to wait? Jump to the [Final docker-compose.yml](#final-docker-composeyml) chapter)*.
 
@@ -45,7 +48,7 @@ It's for sure too technical now but if you click on the
 Please create on your disk, let us say in the `/tmp/joomla` folder a file called `docker-compose.yml` with this content (you can retrieve that file on [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla)):
 
 ```yaml
-version: '3.8'
+version: '3.9'
 
 services:
   joomla:
@@ -153,7 +156,7 @@ We didn't give your project a name, we just created a `docker-compose.yml` file 
 Let us introduce a minor, optional, change, we will give a name to your Docker project and containers: edit the `docker-compose.yml` file and add a line with `name: xxxx` where `xxxx` is the name of your choice. Do the same but using `container_name` this time for the two services; for instance:
 
 ```yaml
-version: '3.8'
+version: '3.9'
 // highlight-next-line
 name: kingsbridge
 services:
@@ -187,7 +190,7 @@ Ok, so, Docker has downloaded Joomla (in its *latest* version) and MySQL (versio
 By default, when we don't specify any version number (*which isn't recommended*), Docker will download the version known as the `latest` one. `latest`, here, is what Docker calls a *tag*.
 
 ```yaml
-version: '3.8'
+version: '3.9'
 
 services:
   joomla:
@@ -201,7 +204,7 @@ To retrieve the list of all tags, please navigate to [https://hub.docker.com/_/j
 During writing this article, Joomla *latest* correspond to Joomla version 4.4.0. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: *5.0.0-php8.2-apache*. So just replace `image: joomla` with `image: joomla:5.0.0-php8.2-apache` in `docker-compose.yml` and it's done. You're forcing a version.
 
 ```yaml
-version: '3.8'
+version: '3.9'
 
 services:
   joomla:
@@ -260,7 +263,7 @@ These values can be retrieved inside the `docker-compose.yml` file. If you have 
 :::
 
 ```yaml
-version: '3.8'
+version: '3.9'
 
 services:
   [...]
@@ -366,7 +369,7 @@ We wish two things:
 To do this, please edit the `docker-compose.yml` file and add the highlighted lines below:
 
 ```yaml
-version: '3.8'
+version: '3.9'
 
 name: kingsbridge
 
@@ -631,7 +634,7 @@ You just need to make sure to use another, unused, port.
 Consider the `Shiring` project `docker-compose.yml` file
 
 ```yaml
-version: '3.8'
+version: '3.9'
 
 // highlight-next-line
 name: shiring
@@ -730,7 +733,7 @@ We also need to change a few variables:
 * We need to inform Joomla that we'll use PostgreSQL so we need to set `JOOMLA_DB_TYPE` to `pgsql` (can be either `mysql` or `pgsql`).
 
 :::note
-These information's have been retrieved from this Pull requests: [https://github.com/joomla-docker/docker-joomla/pull/156](https://github.com/joomla-docker/docker-joomla/pull/156).
+This information has been retrieved from this Pull requests: [https://github.com/joomla-docker/docker-joomla/pull/156](https://github.com/joomla-docker/docker-joomla/pull/156).
 :::
 
 Our `docker-compose.yml` will become:
@@ -826,7 +829,7 @@ Imagine you're in your console (f.i. run `cd /tmp/joomla` in the Linux console) 
 
 It's easy: just run `code .` to open the current folder so your project within vscode.
 
-Another use case, you wish to start the Windows Explorer program and navigate in your project's structure. Here too, It's possible, just run `explorer.exe .` to open it and load the current directory. See my "[Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer)" article to read more about this feature.
+Another use case, you wish to start the Windows Explorer program and navigate in your project's structure. Here too, it's possible, just run `explorer.exe .` to open it and load the current directory. See my "[Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer)" article to read more about this feature.
 
 ### Make it easy
 
@@ -940,103 +943,49 @@ Feel free to add your own make instructions; can be multiline.
 
 ### FrankenPHP, a modern application server for PHP
 
-Based on their documentation, FrankenPHP is 3.5 x PHP FPM ([https://speakerdeck.com/dunglas/the-php-revolution-is-underway-frankenphp-1-dot-0-beta](https://speakerdeck.com/dunglas/the-php-revolution-is-underway-frankenphp-1-dot-0-beta)).
+[![FrankenPHP](./images/frankenphp.png)](https://frankenphp.dev/) 
 
-> [https://frankenphp.dev/](https://frankenphp.dev/)
-> [https://github.com/alexandreelise/frankenphp-joomla](https://github.com/alexandreelise/frankenphp-joomla)
+* [https://github.com/alexandreelise/frankenphp-joomla](https://github.com/alexandreelise/frankenphp-joomla)
+
+Based on their documentation, FrankenPHP is 3.5 faster than PHP FPM ([https://speakerdeck.com/dunglas/the-php-revolution-is-underway-frankenphp-1-dot-0-beta](https://speakerdeck.com/dunglas/the-php-revolution-is-underway-frankenphp-1-dot-0-beta)).
 
 FrankenPHP is still a little young for use on production sites, but because it's so promising, it's certainly worth playing with when developing locally.
 
-[Alexandre Elisé](https://github.com/alexandreelise) has created a Docker script for Joomla.
+[Alexandre Elisé](https://github.com/alexandreelise) has written a script to use FrankenPHP with Joomla. You can find the source here: [https://github.com/alexandreelise/frankenphp-joomla](https://github.com/alexandreelise/frankenphp-joomla).
 
-We still need our `docker-compose.yml` file but, this time, we'll not use the Joomla Docker Image but we'll create ours.
+I invite you to play with it on your development machine (unless you have your own servers; you certainly won't be able to use FrankenPHP at your hosting company).
 
-This time, we'll need two files: `docker-compose.yml` and `Dockerfile`.
+Here is how to do:
 
-Go back in your `/tmp/joomla` folder and create a new file called `Dockerfile`. The one of Alexandre can be retrieved on [https://github.com/alexandreelise/frankenphp-joomla/blob/main/Dockerfile](https://github.com/alexandreelise/frankenphp-joomla/blob/main/Dockerfile).
+* go back, for instance, in your `/tmp/joomla` folder
+* open your browser and surf to [https://github.com/alexandreelise/frankenphp-joomla],
+* follow instructions given by Alexandre in his `Getting Started` readme file.
 
-Copy/Paste the content in your local, newly created, `Dockerfile`.
+The building of image(s) and the creation of containers will take a while (10 minutes and even more) so just be patient. *Building the image is an one-time action, the next time, Docker has just to create containers.*
 
-```Dockerfile
-FROM dunglas/frankenphp
+![Building FrankenPHP](./images/building_frankenphp.png)
 
-# install the PHP extensions we need (https://downloads.joomla.org/technical-requirements)
-RUN install-php-extensions \
-    bcmath \
-    exif \
-    gd \
-    intl \
-    mysqli \
-    zip \
-    redis \
-    gmp \
-    imagick \
-    ldap \
-    pdo_mysql \
-    opcache
+So the building has taken ages and, then, you'll start to get logs messages:
 
-COPY --from=joomla:5-php8.2-fpm /usr/local/etc/php/conf.d/* /usr/local/etc/php/conf.d/
-COPY --from=joomla:5-php8.2-fpm /entrypoint.sh /usr/local/bin/
-COPY --from=joomla:5-php8.2-fpm /makedb.php /usr/local/bin/
-COPY --from=joomla:5-php8.2-fpm --chown=root:root /usr/src/joomla /app/public
+![Running FrankenPHP](./images/running_frankenphp.png)
 
-VOLUME /app/public
+You should wait here too, a lot, until the database connection is ready. The fact is Joomla will try to connect to MySQL while the MySQL container is not ready to handle connections. You'll then see a lot of `[ERROR] Connection refused`. Stay patient and after a while, you'll get this:
 
-RUN sed -i \
-    -e 's/\[ "$1" = '\''php-fpm'\'' \]/\[\[ "$1" == frankenphp* \]\]/g' \
-    -e 's/php-fpm/frankenphp/g' \
-    -e 's#/usr/src/joomla#/app/public#g' \
-    -e 's#/makedb\.php#/usr/local/bin/makedb\.php#g' \
-    /usr/local/bin/entrypoint.sh
+![Joomla has been installed](./images/frankenphp_joomla_installed.png)
 
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD ["frankenphp", "run", "--config", "/etc/caddy/Caddyfile"]
-```
+:::caution OUPS, it's terribly slow to build
+To be honest, before being able to see my Joomla localhost homepage, I've wait more than 25 minutes (the first time). I would never have wait so long if I hadn't had to finish this chapter.
+:::
 
-The second file to create is `docker-compose.yml` and should be initialized like this:
+When everything has been successfully done, just run surf to `https://localhost:9999` to get your Joomla site running on FrankenPHP. 
 
-```yaml
-version: '3.9'
+:::note FrankenPHP is using SSL and thus https
+Please note that FrankenPHP is delivering your site using `https`. The way Alexandre has built his script, the port number is not fixed. To determine which port to use, start a new Linux console and run `docker container list` to get the list of running containers. You'll see the port to use to access to your FrankenPHP site in the `PORTS` column. Also displayed in your `Docker Desktop` Windows application, go then to the list of containers to get the port.
+:::
 
-name: kingsbridge
+![Joomla is now running on FrankenPHP](./images/frankenphp_joomla_homepage.png)
 
-services:
-  joomla:
-    build: .
-    restart: always
-    ports:
-      - 8080:80
-      - 443:443
-    environment:
-      - JOOMLA_DB_HOST=joomladb
-      - JOOMLA_DB_PASSWORD=example
-
-  joomladb:
-    image: mysql:8.0.13
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=example      
-```
-
-As you can see here, we'll no more have an `image:` tag for our `joomla` service but, this time, we have `build: .`. This line instructs Docker to parse a special file called `Dockerfile`.
-
-```yaml
-services:
-  joomla:
-    // highlight-next-line      
-    build: .
-```
-
-And now, if you take a look to the `Dockerfile`, we'll retrieve a *build* scenario:
-
-* We'll use the `dunglags/frankenphp` image (the `FROM` clause),
-* Then we'll install a few php extensions (the `RUN` clause),
-* We'll get files/folders from the `joomla:5-php8.2-fpm` image (the `COPY` clauses),
-* We'll make some changes using `sed` in a script called `/usr/local/bin/entrypoint.sh`,
-* We'll define that script as the `entrypoint` of our Docker image and
-* Finally, we'll run the FrankenPHP service.
-
-The two files in your `/tmp/joomla` folder, just run `docker compose up --detach` to run Docker. This time, Docker will be slower since he needs to **build** our, own, Docker image (i.e. parse the `Dockerfile` and run actions) then load containers. As from the second call, the image will already be built so the process will be faster.
+You'll perhaps not see a major increase in speed on your machine since you're the only visitor but it's nice to think that you're surfing so fast ... locally ;).
 
 ### Final docker-compose.yml
 
@@ -1048,7 +997,7 @@ This is how:
 2. In that folder, create a `docker-compose.yml` file with this content:
 
   ```yaml
-  version: '3.8'
+  version: '3.9'
 
   name: yourprojectname
 
@@ -1085,3 +1034,7 @@ This is how:
 :::important
 Make sure, for each project, to update the `name:` line and if you plan to be able to run your Joomla sites concurrently, make sure to update the port number for Joomla and chose a new one every time (can be `80`, `81`, `82` and so one).
 :::
+
+## Your comments are more than welcome
+
+Please use the comments area below to share your opinions, ideas and remarks about this article. Thanks in advance.
