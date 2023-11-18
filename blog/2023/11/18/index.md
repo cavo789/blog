@@ -16,6 +16,8 @@ If you're working under Linux or WSL, you know very well the `sudo apt-get updat
 
 Under Windows, since a few years (starting with Windows 10), there is such command too: it's `winget`.
 
+<!-- truncate -->
+
 By running `winget upgrade --all --silent` in a DOS (or Powershell) console started with admin rights, you'll start a process that will scan (in a second) your computer, detect which programs are installed on it and check if a newer version exists (and known by winget).
 
 ![Starting winget](./images/start-winget.png)
