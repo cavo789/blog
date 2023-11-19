@@ -8,7 +8,7 @@ enableComments: true
 ---
 # Update all out-of-date Windows programs in batch
 
-![Banner](./images/header.jpg)
+![Update all out-of-date Windows programs in batch](./images/header.jpg)
 
 > [Use the winget tool to install and manage applications](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
 
