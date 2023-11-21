@@ -2,10 +2,14 @@
 slug: keepass-overriding-url
 title: KeePass - Overriding the URL field
 authors: [christophe]
-tags: [keepass, winscp, putty, rdp]
+tags: [keepass, winscp, putty, rdp, tips]
+image: ./images/social_media.jpg
 enableComments: true
+date: 2023-11-02T12:00
 ---
 # KeePass - Overriding the URL field
+
+![KeePass - Overriding the URL field](./images/header.jpg)
 
 The `url` field can also be used to start a program and, thus, not only to contains a valid URL.
 

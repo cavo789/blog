@@ -7,6 +7,10 @@ enableComments: true
 ---
 # Creation of this blog
 
+> [Docusaurus.io](https://docusaurus.io/)
+
+![Creation of this blog](./images/header.png)
+
 *Updated 2023-11-03, search engine, prism and sitemap added.*
 *Updated 2023-11-05, adding giscus.*
 
@@ -85,6 +89,32 @@ Now, I can remove the `/docs` folder from my `blog` directory:
 ```
 
 I will also make some changes to files like `docusaurus.config.js` or `blog/authors.yml` to fit my needs.
+
+### File docusaurus.config.js
+
+By setting `hideOnScroll` to `true`, the navigation bar will be hidden when the user will scroll down but will be displayed back as soon as he scroll up. Idea is to give more place on the screen for the content.
+
+```js 
+export default {
+  themeConfig: {
+    navbar: {
+        // auto-hide the navbar when the user will scroll down, show again when scroll up
+        hideOnScroll: true,
+    },
+  },
+};
+```
+
+Define the default image for social media:
+
+```js
+export default {
+  themeConfig: {
+    // Default image when sharing a post on social media
+    image: 'img/social-card.jpg',
+  },
+};
+```
 
 ## Make my first article
 

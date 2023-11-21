@@ -1,9 +1,9 @@
 ---
-title: Welcome
+title: Personal blog about Docker, PHP, Joomla and much more
 hide_table_of_contents: true
 ---
 
-# Welcome !
+![Personal blog about Docker, PHP, Joomla and much more](/img/welcome.jpg)
 
 I am passionate about the world of Open Source, programming since now almost 30+ years in so much languages that I can not remember all.
 
@@ -16,11 +16,6 @@ Also an expert in VBA - Excel that I have been practicing for more than twenty y
 Continue your journey by reading articles from the [blog](/blog).
 
 Retrieve all my public repositories on GitHub: [https://github.com/cavo789](https://github.com/cavo789).
-
-
-![Stats](https://github-readme-stats.vercel.app/api?username=cavo789&show_icons=true&theme=radical&count_private=true)
-
-![Most used languages](https://github-readme-stats.vercel.app/api/top-langs/?username=cavo789)
 
 :::info Retrieve the source on Github
 This blog has been created using Docusaurus. You can retrieve his source on Github: [https://github.com/cavo789/blog](https://github.com/cavo789/blog).

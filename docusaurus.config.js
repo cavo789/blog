@@ -6,10 +6,11 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
 
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Christophe Avonture',
-  tagline: 'Personal blog',
+  tagline: 'Personal blog about Docker, PHP, Joomla and much more',
   favicon: 'img/favicon.ico',
   
   // Set the production url of your site here
@@ -25,6 +26,7 @@ const config = {
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+  onDuplicateRoutes: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -72,13 +74,27 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
+      
+      // announcementBar: {
+      //   id: 'support_us',
+      //   content:
+      //     'We are looking to revamp our docs, please fill <a target="_blank" rel="noopener noreferrer" href="#">this survey</a>',
+      //   backgroundColor: '#fafbfc',
+      //   textColor: '#091E42',
+      //   isCloseable: true,
+      // },
+
+      // Default image when sharing a post on social media
       image: 'img/social-card.jpg',
       navbar: {
-        title: 'Christophe Avonture',
+        // auto-hide the navbar when the user will scroll down, show again when scroll up
+        // hideOnScroll: true,
+        title: 'Christophe Avonture (cavo789)',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Chistophe Avonture',
           src: 'img/cavo789.jpg',
+          width: 40,
+          height: 40,
         },
         items: [
           { 
@@ -105,6 +121,8 @@ const config = {
             href: 'https://github.com/cavo789/blog',
             label: 'GitHub',
             position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
           },
         ],
       },
@@ -138,7 +156,12 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        defaultLanguage: 'php',
         additionalLanguages: ['bash', 'php']
+      },
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 5,
       },
       zoom: {
         selector: '.markdown :not(em) > img',

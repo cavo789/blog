@@ -10,6 +10,8 @@ enableComments: true
 
 ![FrankenPHP](./images/social_media.png) 
 
+**Version updated on November 21, 2023 after a discussion with Alexandre about making his Docker image available on hub.docker.com**
+
 Based on [their documentation](https://speakerdeck.com/dunglas/the-php-revolution-is-underway-frankenphp-1-dot-0-beta), [FrankenPHP](https://frankenphp.dev/) is 3.5 faster than PHP FPM.
 
 It is still fairly young for use on production sites, but because it's so promising, it's certainly worth playing with when developing locally.
@@ -26,20 +28,50 @@ Here is how to do:
 * open your browser and surf to [https://github.com/alexandreelise/frankenphp-joomla],
 * follow instructions given by Alexandre in his `Getting Started` readme file.
 
-The building of image(s) and the creation of containers will take a while (10 minutes and even more) so just be patient. *Building the image is an one-time action, the next time, Docker just has to create containers.*
+:::tip Don't build the image yourself
+My suggestion is to replace the `docker-compose.yml` file with the one below. Like this, you'll reuse the image publicly made available by Alexandre and don't need to build it yourself (much faster):
 
-![Building FrankenPHP](./images/building_frankenphp.png)
+```yaml
+version: '3.9'
 
-So the building has taken ages and, then, you'll start to get logs messages:
+services:
+
+  joomla:
+    image: alexandreelise/frankenphp-joomla:hardened-mysql-0.1.1
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - JOOMLA_DB_HOST=db
+      - JOOMLA_DB_USER=exampleuser
+      - JOOMLA_DB_PASSWORD=examplepass
+      - JOOMLA_DB_NAME=exampledb
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.2
+    environment:
+      - MYSQL_DATABASE=exampledb
+      - MYSQL_USER=exampleuser
+      - MYSQL_PASSWORD=examplepass
+      - MYSQL_RANDOM_ROOT_PASSWORD=1
+```
+:::
+
+By running `docker compose pull`, Docker will download the two images; the one with FrankenPHP and Joomla and, the second, the one for MySQL. Depending on the speed of your Internet connection, this will take a few tens of seconds; only the first time.
+
+Then, you just need to create containers based on the images by running `docker compose up`. You'll start the get logs messages on the console *(because, here, you've not used the `--detach` flag for the illustration)*:
 
 ![Running FrankenPHP](./images/running_frankenphp.png)
 
-You should wait here too, a lot, until the database connection is ready. The fact is Joomla will try to connect to MySQL while the MySQL container is not ready to handle connections. You'll then see a lot of `[ERROR] Connection refused`. Stay patient and after a while, you'll get this:
+You have now to wait until the database connection is ready. The fact is Joomla will try to connect to MySQL while the MySQL container is not ready to handle connections. You'll then see a lot of `[ERROR] Connection refused`. Stay patient and after a while, you'll get this:
 
 ![Joomla has been installed](./images/frankenphp_joomla_installed.png)
 
-:::caution OUPS, it's terribly slow to build
-To be honest, before being able to see my Joomla localhost homepage, I've waited more than 25 minutes (the first time). I would never have waited so long if I hadn't had to finish this chapter.
+:::note Logs can be different in your version
+Depending on the version of the used Docker images, scripts and version of Joomla, the logs statements can differs in time.
 :::
 
 When everything has been successfully done, just run surf to `https://localhost:9999` to get your Joomla site running on FrankenPHP. 

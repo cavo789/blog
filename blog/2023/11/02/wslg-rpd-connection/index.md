@@ -3,9 +3,13 @@ slug: wslg-rpd-connection
 title: Opening a RDP connection to the Linux local instance
 authors: [christophe]
 tags: [wsl, wslg, docker, rdp]
+image: ./images/social_media.jpg
 enableComments: true
+date: 2023-11-02T18:00
 ---
 # Opening a RDP connection to the Linux local instance
+
+![Opening a RDP connection to the Linux local instance](./images/header.jpg)
 
 > [https://www.nextofwindows.com/how-to-enable-wsl2-ubuntu-gui-and-use-rdp-to-remote](https://www.nextofwindows.com/how-to-enable-wsl2-ubuntu-gui-and-use-rdp-to-remote)
 > [https://medium.com/@riley.kao/wsl2-ubuntu20-04-gui-remote-desktop-connection-rdp-2bbd21d2fa71](https://medium.com/@riley.kao/wsl2-ubuntu20-04-gui-remote-desktop-connection-rdp-2bbd21d2fa71)
