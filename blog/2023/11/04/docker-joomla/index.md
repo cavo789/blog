@@ -100,10 +100,10 @@ Docker will start downloading `joomla` and `joomladb`, the two services mentione
 
 ```yaml
 services:
-// highlight-next-line
+  // highlight-next-line
   joomla:
     [...]
-// highlight-next-line
+  // highlight-next-line
   joomladb:
     [...]
 ```
