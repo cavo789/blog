@@ -215,9 +215,9 @@ PSEUDO    is cavo789
 
 ## PHP example (not Laravel)
 
-Years ago, I've write an example in pure PHP (not Laravel) and using the `League\Event` library as you can retrieve on [https://event.thephpleague.com/](https://event.thephpleague.com/).
+Years ago, I've written an example in pure PHP (not Laravel) and using the `League\Event` library as you can retrieve on [https://event.thephpleague.com/](https://event.thephpleague.com/).
 
-The repository and sample code is on Github: [https://github.com/cavo789/event_thephpleague_learning](https://github.com/cavo789/event_thephpleague_learning).
+The repository and sample code are on Github: [https://github.com/cavo789/event_thephpleague_learning](https://github.com/cavo789/event_thephpleague_learning).
 
 :::note 
 This is, partially, a copy of an article I've previously posted on [https://dev.to/cavo789/working-with-laravel-events-2i6m](https://dev.to/cavo789/working-with-laravel-events-2i6m)
