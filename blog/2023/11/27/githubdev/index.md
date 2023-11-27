@@ -12,6 +12,8 @@ enableComments: true
 
 It's not something new, but it's probably not known well enough: by surfing on **any** Github repository like f.i. [https://github.com/cavo789/blog](https://github.com/cavo789/blog), you can just press <kbd>.</kbd> (the dot key) on your keyboard to start vscode online i.e. see the current repository in vscode.dev.
 
+<!-- truncate -->
+
 Here is the blog in vscode.dev: [https://github.dev/cavo789/blog](https://github.dev/cavo789/blog).
 
 :::info Change the domain extension to github.dev

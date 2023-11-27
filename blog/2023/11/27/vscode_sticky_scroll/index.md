@@ -3,7 +3,7 @@ slug: vscode-sticky-scroll
 title: Sticky scroll in vscode
 authors: [christophe]
 image: ./images/social_media.jpg
-tags: [tips, vscode]
+tags: [php, tips, vscode]
 enableComments: true
 ---
 # Sticky scroll in vscode
@@ -15,6 +15,8 @@ enableComments: true
 vscode has recently added a really useful new feature: sticky scroll.
 
 This function allows you to scroll through a document such as a Markdown file, a source code written in PHP or JavaScript or any other supported language and, as you scroll, block contextual information such as the name of the class, the name of the function, the start of the loop, etc. in the upper part of the editor. 
+
+<!-- truncate -->
 
 This is really very practical; see the illustration below (*image coming from [https://dev.to/amrsamy/vs-code-sticky-scroll-2jcd](https://dev.to/amrsamy/vs-code-sticky-scroll-2jcd)*)
 
