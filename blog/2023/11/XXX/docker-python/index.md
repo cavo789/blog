@@ -15,7 +15,7 @@ Remember a few years ago when you wanted to learn a new programming language suc
 
 That's all over with the advent of Docker and the concept of containers.
 
-This time, we'll play with Python for this article. I'm discovering Python at the same time as writing this article: at this precise moment, I've never written `.py` scripts.
+This time, we'll play with Python for this article. **I'm discovering Python at the same time as writing this article: at this precise moment, I've never written `.py` scripts.**
 
 <!-- truncate -->
 
