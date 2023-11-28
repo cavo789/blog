@@ -4,7 +4,6 @@ title: Play with Docker and Java
 authors: [christophe]
 image: ./images/social_media.jpg
 tags: [docker, java]
-draft: true
 enableComments: true
 ---
 # Play with Docker and Java
