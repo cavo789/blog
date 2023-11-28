@@ -5,6 +5,7 @@ authors: [christophe]
 image: ./images/social_media.jpg
 tags: [docker, python]
 enableComments: true
+draft: true
 ---
 # Play with Docker and Python
 
