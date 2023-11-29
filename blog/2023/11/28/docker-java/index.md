@@ -31,9 +31,22 @@ public class Main
 }
 ```
 
-Now, you'll need to compile your source. For this, just run `docker run --rm -v $PWD:/app -w /app -u 1000:1000 openjdk:11 javac Main.java`.
+Now, you'll need to compile your source. For this, just run `docker run -it --rm -v ${PWD}:/app -w /app -u 1000:1000 openjdk:11 javac Main.java`.
 
-This will download (just the first time) the `openjdk` Docker image then, the `javac` executable will be called to compile your `Main.java` source into `Main.class`.
+
+:::tip Docker CLI reminder
+As a reminder, the used Docker run command are (almost always the same):
+
+* `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
+* `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
+* `-v ${PWD}:/app` to share your current folder with a folder called `/app` in the Docker container,
+* `-w /app` to tell Docker that the current directory, in the container, will be the `/app` folder,
+* `-u 1000:1000` ask Docker to reuse our local credentials so when a file is updated/created in the container, the file will be owned by us,
+* then `openjdk:11` which is the name and the version of the Docker image to use, and, finally,
+* `javac Main.java` i.e. the command line to start within the container.
+:::
+
+As a result of this command, your `Main.java` source will be compiled into the `Main.class` file.
 
 By running `ls -alh` you can verify that, yes, the java script has been compiled into a `.java` file.
 
