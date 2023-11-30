@@ -5,7 +5,6 @@ authors: [christophe]
 image: ./images/social_media.jpg
 tags: [docker, assembly]
 enableComments: true
-draft: true
 ---
 # Play with Docker and Assembly programming language
 

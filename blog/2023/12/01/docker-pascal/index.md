@@ -4,7 +4,6 @@ title: Play with Docker and Pascal
 authors: [christophe]
 image: ./images/social_media.jpg
 tags: [docker, pascal]
-draft: true
 enableComments: true
 ---
 # Play with Docker and Pascal
@@ -38,7 +37,7 @@ end.
 As you know, Pascal should be compiled into a `.exe` (or `.com`) to be executable. The command below will do this:
 
 ```bash
-❯ docker run --rm -v %CD%:/workspace signumtemporis/fpc:cross.x86_64-win64.slim Hello.pas
+❯ docker run -it --rm -v %CD%:/workspace signumtemporis/fpc:cross.x86_64-win64.slim Hello.pas
 
 Free Pascal Compiler version 3.2.2 [2021/12/10] for x86_64
 Copyright (c) 1993-2021 by Florian Klaempfl and others
@@ -91,7 +90,7 @@ end.
 And compiled it:
 
 ```bash
-❯ docker run --rm -v %CD%:/workspace signumtemporis/fpc:cross.x86_64-win64.slim Byte2Bin.pas
+❯ docker run -it --rm -v %CD%:/workspace signumtemporis/fpc:cross.x86_64-win64.slim Byte2Bin.pas
 
 Free Pascal Compiler version 3.2.2 [2021/12/10] for x86_64
 Copyright (c) 1993-2021 by Florian Klaempfl and others
