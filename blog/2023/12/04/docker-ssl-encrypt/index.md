@@ -4,7 +4,6 @@ title: Encrypt sensitive data using SSL and Docker
 authors: [christophe]
 image: ./images/social_media.jpg
 tags: [docker, encryption, ssl]
-draft: true
 enableComments: true
 ---
 # Encrypt sensitive data using SSL and Docker
@@ -41,7 +40,7 @@ And this is the `decrypt.sh` script:
 )
 ```
 
-Update the `MY_PASSWORD` variable in both script to use yours.
+Update the `MY_PASSWORD` variable in both scripts to use yours.
 
 
 ## DOS scripts
