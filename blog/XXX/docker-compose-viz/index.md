@@ -19,7 +19,7 @@ You'd like to have an at-a-glance view of services, dependencies and open ports.
 
 <!-- truncate -->
 
-For the demo, please start a Linux shell and run `mkdir -p /tmp/compose-viz && cd $_` to create a folder called `java` in your Linux temporary folder and jump in it.
+For the demo, please start a Linux shell and run `mkdir -p /tmp/compose-viz && cd $_` to create a folder called `compose-viz` in your Linux temporary folder and jump in it.
 
 Please create a new file called `docker-compose.yml` with this **simplified** content:
 

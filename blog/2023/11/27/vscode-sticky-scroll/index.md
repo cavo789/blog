@@ -2,13 +2,13 @@
 slug: vscode-sticky-scroll
 title: Sticky scroll in vscode
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/vscode_tips_social_media.jpg
 tags: [php, tips, vscode]
 enableComments: true
 ---
 # Sticky scroll in vscode
 
-![Sticky scroll in vscode](./images/header.jpg)
+![Sticky scroll in vscode](/img/vscode_tips_header.jpg)
 
 > [https://dev.to/amrsamy/vs-code-sticky-scroll-2jcd](https://dev.to/amrsamy/vs-code-sticky-scroll-2jcd)
 

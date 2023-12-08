@@ -932,7 +932,7 @@ The `makefile` here above contains hardcoded values like `joomla_db` for the dat
 :::
 
 :::danger
-The indentation in makefile **SHOULD BE** made using tabs and not spaces, this is crucial. So please make sure, if your file didn't work, you know what to do.
+The indentation in a makefile **SHOULD BE** made using tabs and not spaces, this is crucial. So please make sure, if your file didn't work, you know what to do.
 :::
 
 Now, instead of running f.i. `docker compose up --detach` for running your Joomla site, just run `make up`. Instead of running `docker run --name phpmyadmin -d --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin` to start phpmyadmin, just run `make phpmyadmin`. To launch the browser and surf on your site, it will be `make start`.
