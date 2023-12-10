@@ -26,7 +26,7 @@ build: ## Generate a newer version of the build directory
 	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "yarn build"
 
 .PHONY: deploy
-deploy: build ## Deploy static pages to the webserver
+deploy: lint build ## Deploy static pages to the webserver
 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Deploy static pages to the webserver"	
 	-"/mnt/c/Program Files (x86)/WinSCP/WinSCP.com" /script="WinSCP_deploy.txt"
 	-@sensible-browser https://www.avonture.be
@@ -35,6 +35,11 @@ deploy: build ## Deploy static pages to the webserver
 install: ## The very first time, after having cloned this blog, you need to install Docusaurus before using it.
 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
 	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus-init && yarn add docusaurus-init"
+
+.PHONY: lint
+lint: ## Lint markdown files
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Lint markdown files"
+	docker run --rm -it--user $${UID}:$${GID} -v $${PWD}:/md peterdavehello/markdownlint markdownlint --ignore node_modules .
 
 .PHONY: start
 start: ## Start the local webserver and open the webpage
