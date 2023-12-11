@@ -18,7 +18,7 @@ When *An article is about to be displayed* is generated, you can have one (or mo
 
 <!-- truncate -->
 
-When *A user has registered* is thrown, you can do a lot of things like welcoming this person, adding him to a distribution list, send him an email, ... but above all, and this is the most important for me, leave the door open to other actions that you don't yet know about. 
+When *A user has registered* is thrown, you can do a lot of things like welcoming this person, adding him to a distribution list, send him an email, ... but above all, and this is the most important for me, leave the door open to other actions that you don't yet know about.
 
 For a web developer, a best approach, I think is to generate events even if it's your own code and you know what to do.
 
@@ -219,7 +219,6 @@ Years ago, I've written an example in pure PHP (not Laravel) and using the `Leag
 
 The repository and sample code are on Github: [https://github.com/cavo789/event_thephpleague_learning](https://github.com/cavo789/event_thephpleague_learning).
 
-:::note 
+:::note
 This is, partially, a copy of an article I've previously posted on [https://dev.to/cavo789/working-with-laravel-events-2i6m](https://dev.to/cavo789/working-with-laravel-events-2i6m)
 :::
-

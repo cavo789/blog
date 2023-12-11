@@ -52,4 +52,3 @@ The URL has to be set like this: `cmd://mstsc.exe /v:{S:host} /f`
 :::important
 Make sure you have fill in the `host` advanced property.
 :::
-

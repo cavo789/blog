@@ -20,9 +20,9 @@ Here is the blog in vscode.dev: [https://github.dev/cavo789/blog](https://github
 You can achieve the same result by updating the URL and modify the `.com` extension to `.dev`
 :::
 
-## But what's the point? Why would I need it?
+## But what's the point? Why would I need it
 
-Imagine you're not at home, on your own computer, and you want to change your repo? 
+Imagine you're not at home, on your own computer, and you want to change your repo?
 
 But also that you're on a bus/train/plane and want to correct a typeface you've just seen.
 
@@ -33,5 +33,3 @@ You can still want to make a very small update like changing your readme.md file
 Just surf on your repo using your smartphone, nothing more than using a basic web browser, change the extension to `.dev` and bingo, you can start to edit your repo (or the one of someone else if you want to suggest a Pull request (aka a `PR`)).
 
 Read more on [https://github.com/github/dev](https://github.com/github/dev) or [https://docs.github.com/en/codespaces/the-githubdev-web-based-editor](https://docs.github.com/en/codespaces/the-githubdev-web-based-editor).
-
-

@@ -46,7 +46,6 @@ Explanation of the new arguments used in our `docker run --detach --name step_1_
 * `-p 81:80` : this time, we'll use port `81` on our computer and map it to port `80` on the container,
 * `-v $(pwd):/var/www/html`: the `-v` instruction is used to define a volume. Here, we'll synchronize the container's `/var/www/html` folder with `$(pwd)`, which corresponds to the current folder on our computer.
 
-
 Now, just create an `index.php` in your, local, `/tmp/docker-volume` folder. Yes, on your disk, not in the container.
 
 So, if you have Visual Studio Code on your machine, in the Linux console, run this: `cd /tmp/docker-volume && code index.php`. This will start vscode and you will be able to create the script.
@@ -70,7 +69,6 @@ If the running PHP script will create a new file in the `/var/www/html` folder, 
 :::important
 Files or folders created in the Docker container will be owned by the current user used in the container; most often user `root`. These files/folders will, then, be created / updated by the `root` user too on your disk.
 :::
-
 
 To make sure files/folders created in the container will be owned by you and not `root`, change the command line like this:
 

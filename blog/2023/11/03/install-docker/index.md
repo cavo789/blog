@@ -10,7 +10,7 @@ enableComments: true
 
 ![Install Docker and play with PHP](./images/header.jpg)
 
-Docker can be installed free of charge for personal or small-scale use: [https://www.docker.com/products/personal/](https://www.docker.com/products/docker-desktop/). 
+Docker can be installed free of charge for personal or small-scale use: [https://www.docker.com/products/personal/](https://www.docker.com/products/docker-desktop/).
 
 You can install it on Linux, Mac or Windows.
 
@@ -18,15 +18,15 @@ The easiest way, under Windows, is to use [Docker Dekstop](https://www.docker.co
 
 <!-- truncate -->
 
-## Why Docker images?
+## Why Docker images
 
 Thanks to Docker, you no longer need to install PHP or Apache to run a website. You just need to use one, two or more, existing, images.
 
 Images are most of time just *plug&play*: once downloaded, they are ready to use. You will probably add some configuration items but, most of time, it's even not needed.
 
-On [Docker Hub](https://hub.docker.com) you'll find a huge number of "images" that can be used to run software such as PHP, PHP+Apache, MySQL and many, many more. 
+On [Docker Hub](https://hub.docker.com) you'll find a huge number of "images" that can be used to run software such as PHP, PHP+Apache, MySQL and many, many more.
 
-All these images are totally free; they can be public or private. You can create your own images and store them on [Docker Hub](https://hub.docker.com) free of charge. 
+All these images are totally free; they can be public or private. You can create your own images and store them on [Docker Hub](https://hub.docker.com) free of charge.
 
 In this blog post, we will be using the PHP images available at [https://hub.docker.com/_/php](https://hub.docker.com/_/php)
 
@@ -40,7 +40,7 @@ But since Docker has a public image for running PHP and Apache (a single image f
 
 So, in our discovery step, we will also change the PHP version from `7.4` to `8.1` with just a few ... keystrokes. Have you ever tried to change your PHP version if you are using EasyPhp, wamp or another software program: it's a real pain! With Docker, it is so easy.
 
-:::note    
+:::note
 In this chapter, as we discover Docker, we will use different port numbers each time to access our local site. We will see later how to reuse the same port number.
 :::
 
@@ -137,7 +137,7 @@ exit
 **No headaches and zero conflicts!!!** We have installed a new version of PHP in seconds.
 
 :::tip
-This is just crazy in fact. Think of the benefits: you are developing a PHP script and want to check whether it works with different versions of PHP. It's child's play. 
+This is just crazy in fact. Think of the benefits: you are developing a PHP script and want to check whether it works with different versions of PHP. It's child's play.
 :::
 
 At the end of this chapter, we've just learned:

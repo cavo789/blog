@@ -16,7 +16,7 @@ Did you know [https://diagrams.mingrammer.com/](https://diagrams.mingrammer.com/
 
 <!-- truncate -->
 
-Take a look on the different examples you can retrieve on [https://github.com/mingrammer/diagrams](https://github.com/mingrammer/diagrams). 
+Take a look on the different examples you can retrieve on [https://github.com/mingrammer/diagrams](https://github.com/mingrammer/diagrams).
 
 Like always, for the demo, please start a Linux shell and run `mkdir -p /tmp/docker-diagrams && cd $_` to create a folder called `java` in your Linux temporary folder and jump in it.
 

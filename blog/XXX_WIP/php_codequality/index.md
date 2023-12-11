@@ -37,7 +37,7 @@ In the world of PHP, we've a lot of static code quality tools. [PHP_CodeSniffer]
 
 PHP_CodeSniffer (in short, `phpcs`) is in fact two tools in one:
 
-* `phpcbf` 
+* `phpcbf`
 * `phpcs`
 
 ## PHP Code Beautifier
@@ -132,8 +132,8 @@ A TOTAL OF 109 ERRORS WERE FIXED IN 2 FILES
 Time: 287ms; Memory: 8MB
 ```
 
-*(don't pay attention to the figures, they'll depends on the version of the files)*
+:::caution Don't pay attention to the figures
+They will indeed depends on the version of the files and this can vary in time.
+:::
 
 Oh nice, so there were 88 violations in the `Resethits.php` file and 21 in `provider.php` and none remains.
-
-

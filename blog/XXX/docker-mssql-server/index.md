@@ -15,7 +15,7 @@ And yes, nothing less. We're going to install a **Microsoft SQL Server 2022** on
 
 <!-- truncate -->
 
-The official Microsoft SQL Server Docker repository can be retrieved on [https://hub.docker.com/_/microsoft-mssql-server](https://hub.docker.com/_/microsoft-mssql-server). 
+The official Microsoft SQL Server Docker repository can be retrieved on [https://hub.docker.com/_/microsoft-mssql-server](https://hub.docker.com/_/microsoft-mssql-server).
 
 First, we'll download and run an instance of SQL Server 2022 by running the following instruction:
 
@@ -25,7 +25,7 @@ docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=2Secure*Password2" -p 1433:1433 --
 
 With the above command, we'll accept the terms of the *End-User License Agreement* and we're setting the password of the user `SA` to `2Secure*Password2`.
 
-The port that we'll use on our host is port `1433` (mapped to the port `1433` of the container), our SQL Server instance will be called `sqlserverdb `(intern name used by Docker) and we'll name our host `mysqlserver`.
+The port that we'll use on our host is port `1433` (mapped to the port `1433` of the container), our SQL Server instance will be called `sqlserverdb`(intern name used by Docker) and we'll name our host `mysqlserver`.
 
 We can check the list of running containers thanks to docker container list:
 
@@ -37,7 +37,7 @@ We can check the list of running containers thanks to docker container list:
 ```
 
 :::info The output above has been simplified
-For clarity, the output of `docker container list` has been simplified here above; not all columns were mentioned in the article. 
+For clarity, the output of `docker container list` has been simplified here above; not all columns were mentioned in the article.
 :::
 
 Now, if you don't have **SQL Server Management Studio** (also called **SSMS**) yet on your machine, please download it for free from [https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16).
@@ -52,7 +52,7 @@ Start now SSMS (you'll find it in your `Start` Windows menu):
 
 Use the value below for the authentication:
 
-* Server name: `localhost,1433` 
+* Server name: `localhost,1433`
 * Authentication: `SQL Server Authentication`
 * Login: `SA`
 * Password: `2Secure*Password2`
@@ -60,7 +60,7 @@ Use the value below for the authentication:
 :::info Why these values?
 `1443` is the port number we've declared in our `docker run` instruction, the default *admin* user is `SA` and the password has been initialized earlier to `2Secure*Password2` (see the `SA_PASSWORD` environment variable in our `docker run` command.)
 :::
-  
+
 ![Authentication](./images/authentication.png)
 
 Click on the `Connect` button and then, SSMS will be connected to your Docker instance. Now it's time to create our database.

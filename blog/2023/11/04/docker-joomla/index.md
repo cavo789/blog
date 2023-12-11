@@ -159,7 +159,7 @@ At this stage, your site is already being installed. Go to the URL `http://127.0
 You may get an error page `ERR_EMPTY_RESPONSE`; this is because, for example, MySQL is not yet fully loaded and Joomla has to wait for it before it can display the installation page. In this case, please wait a little longer ... or read the rest of this article.
 :::
 
-### Why joomla-joomlaxxx names?
+### Why joomla-joomlaxxx names
 
 We didn't give your project a name, we just created a `docker-compose.yml` file in your `/tmp/joomla` folder. So, Docker has named your project using the folder name (`joomla`) concatenated to service name (refers to the `docker-compose.yml` file, we have two services, one called `joomladb` and one called `joomla`). That is why...
 
@@ -181,7 +181,7 @@ services:
     [...]
 ```
 
-We won't be restarting your Docker containers yet. For now, the `kingsbridge` name won't be considered. For this to be the case, we would need to launch `docker compose down` followed by `docker compose up --detach`, but let us wait a little longer before doing so. 
+We won't be restarting your Docker containers yet. For now, the `kingsbridge` name won't be considered. For this to be the case, we would need to launch `docker compose down` followed by `docker compose up --detach`, but let us wait a little longer before doing so.
 
 ## Docker images
 
@@ -222,6 +222,7 @@ services:
     image: joomla:5.0.0-php8.2-apache
 [...]
 ```
+
 :::
 
 ## Docker containers
@@ -422,6 +423,7 @@ Make sure to, first, create these two directories on your computer so folder's p
 ```bash
 ❯ mkdir site_joomla db
 ```
+
 :::
 
 The two lines `user: 1000:1000` are really important and inform Docker to reuse your local credentials (the one used on your computer).
@@ -702,6 +704,7 @@ ddb1c1606b76   bridge                bridge    local
 16d351a0e393   kingsbridge_default   bridge    local
 d8cdc43a7272   none                  null      local
 ```
+
 :::
 
 To open phpmyadmin, start your browser and navigate to `http://127.0.0.1:8089`.
@@ -724,7 +727,7 @@ And here is the configured URL to use for Adminer: `http://127.0.0.1:8088?server
 
 ![adminer](./images/adminer.png)
 
-## Did you prefer PostgreSQL or MariaDB ?
+## Did you prefer PostgreSQL or MariaDB
 
 So far, we've chosen to use MySQL as our database manager. Our `docker-compose.yml` file is the one, slightly modified, that can be found on [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla).
 
@@ -734,7 +737,7 @@ We just need to replace the `joomladb` service, don't use anymore `mysql` but th
 
 ### Using PostgreSQL
 
-Let's try PostgreSQL... We'll replace `mysql`. The official PostgreSQL Docker image can be retrieved on [https://hub.docker.com/_/postgres](https://hub.docker.com/_/postgres).  The documentation tell us which `image` we should use and how to define variables like the default password (`POSTGRES_PASSWORD`). 
+Let's try PostgreSQL... We'll replace `mysql`. The official PostgreSQL Docker image can be retrieved on [https://hub.docker.com/_/postgres](https://hub.docker.com/_/postgres).  The documentation tell us which `image` we should use and how to define variables like the default password (`POSTGRES_PASSWORD`).
 
 We also need to change a few variables:
 
@@ -868,7 +871,7 @@ We will use `GNU make` for this.
 
 First run `which make` in your Linux console to check if `make` is installed. If so, you will get f.i. `/usr/bin/make` as result. If you got `make not found`, please run `sudo apt-get update && sudo apt-get -y install make` to install it.
 
-This done, we will create a new file called `makefile` in your directory. We will use `code makefile` to start Visual Studio code and create the `makefile` in your directory.
+This done, we will create a new file called `makefile` in your directory. We will use `code makefile` to start Visual Studio Code and create the `makefile` in your directory.
 
 :::tip This file is specific to each project, not global.
 The `makefile`, being created in your project folder, can contain instructions for that specific project. You could have one `makefile` for each project.
@@ -964,7 +967,7 @@ This is how:
 1. On your computer, create a folder for your new project (f.i. `mkdir ~/projects/my_new_project && cd $_`)
 2. In that folder, create a `docker-compose.yml` file with this content:
 
-  ```yaml
+```yaml
   version: '3.9'
 
   name: yourprojectname
@@ -994,7 +997,8 @@ This is how:
       user: 1000:1000
       volumes:
         - ./db:/var/lib/mysql
-  ```
+```
+<!-- markdownlint-disable MD029 -->
 3. Create your two sub-folders: `mkdir db site_joomla`
 4. Run `docker compose up --detach` to start Docker and create your containers
 5. Wait a few seconds and your new site is up.
@@ -1005,7 +1009,7 @@ Make sure, for each project, to update the `name:` line and if you plan to be ab
 
 ## FrankenPHP instead of Apache
 
-A new player is entering the game: [FrankenPHP](https://frankenphp.dev/). This is a new application server which can be used instead of Apache or nginx. 
+A new player is entering the game: [FrankenPHP](https://frankenphp.dev/). This is a new application server which can be used instead of Apache or nginx.
 
 Based on their documentation, it is 3.5 faster than PHP FPM. If you want to learn how to run Joomla on FrankenPHP, please read this post article: [FrankenPHP, a modern application server for PHP](/blog/frankenphp-docker-joomla). We'll discover the work of [Alexandre Elisé](https://github.com/alexandreelise/frankenphp-joomla) on this.
 

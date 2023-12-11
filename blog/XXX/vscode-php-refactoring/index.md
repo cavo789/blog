@@ -96,7 +96,7 @@ The illustration below is showing a sample `index.php` script using a class defi
 
 Everything is working fine but, yeah, functions are called `getProductName` and `getProductPrice` and it's quite overqualified: our object is `$product` so, yes, `$product->getProductName()` and `$product->getProductPrice()` can be rewritten to `$product->getName()` and `$product->getPrice()`. The smaller the best.
 
-So, we need to rename our functions. 
+So, we need to rename our functions.
 
 By opening our `Product.php` file, we can do it manually but ... don't do this because you'll need to update manually every single files using your `Product` class and if you forgot just one use, your code will be broken.
 

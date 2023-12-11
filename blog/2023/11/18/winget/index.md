@@ -31,5 +31,5 @@ Winget has detected that 17 software should be upgraded and, one by one, will do
 Easy no?
 
 :::tip
-[Marc Dechèvre](https://www.woluweb.be/) tells me that `winget upgrade --all --silent` command found 29 updates to make on his machine and that adding the `--include-unknown` flag found 15 more. 
+[Marc Dechèvre](https://www.woluweb.be/) tells me that `winget upgrade --all --silent` command found 29 updates to make on his machine and that adding the `--include-unknown` flag found 15 more.
 :::

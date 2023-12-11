@@ -33,7 +33,6 @@ public class Main
 
 Now, you'll need to compile your source. For this, just run `docker run -it --rm -v ${PWD}:/app -w /app -u 1000:1000 openjdk:11 javac Main.java`.
 
-
 :::tip Docker CLI reminder
 As a reminder, the used Docker run command are (almost always the same):
 
@@ -61,7 +60,7 @@ drwxrwxrwt 29 root       root        12K Nov 22 14:58 ..
 
 :::tip And without to have to install something
 Once again, you don't have install or configure something; just call the Docker image *that goes well*.
-::: 
+:::
 
 Last thing is to execute your Java program. Now, please run `docker run --rm -v $PWD:/app -w /app openjdk:11 java Main` to execute it.
 

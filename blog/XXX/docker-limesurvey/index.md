@@ -10,21 +10,21 @@ enableComments: true
 # Install LimeSurvey using Docker
 
 ![Install LimeSurvey using Docker](./images/header.jpg)
- 
+
 LimeSurvey is an open-source survey tool that allows users to create and conduct surveys online. It is a powerful and intuitive tool that can be used by everyone.
- 
+
 Once again, it's easy to play with it and create a sandbox site to take a look on all his features; thanks to Docker.
- 
+
 To do this, we'll use the [https://github.com/martialblog/docker-limesurvey](https://github.com/martialblog/docker-limesurvey) Docker image.
- 
+
 <!-- truncate -->
- 
+
 ## Let's play
 
 Please start a Linux shell and run `mkdir -p /tmp/limesurvey && cd $_` to create a folder called `limesurvey` in your Linux temporary folder and jump in it.
- 
+
 Please then create a `docker-compose.yml` file in that folder with this content:
- 
+
 ```yaml
 version: '3.9'
  
@@ -59,15 +59,15 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=limesurvey
 ```
- 
+
 Now, simply run the following command to download (only the first time) required images (LimeSurvey and MySQL) and create the two containers:
- 
+
 ```bash
 docker compose up --detach 
 ```
 
 Once everything has been downloaded and started, you can check you've well two containers by running the following command:
- 
+
 ```bash
 ❯ docker container list
  
@@ -77,11 +77,11 @@ Once everything has been downloaded and started, you can check you've well two c
 ```
 
 :::info The output above has been simplified
-For clarity, the output of `docker container list` has been simplified here above; not all columns were mentioned in the article. 
+For clarity, the output of `docker container list` has been simplified here above; not all columns were mentioned in the article.
 :::
- 
+
 Please wait **one or two minutes** (depending on your machine), time needed by LimeSurvey to f.i. connect to the database container and create his database.
- 
+
 Go to `http://localhost:8080` and while you got an error like `ERR_CONNECTION_REFUSED`, please wait and try again. When it's ready, you should see the default LimeSurvey welcome page.
 
 :::tip Look at the logs
@@ -91,15 +91,15 @@ If you think that you've waited already a long time and it seems something is go
 
 Press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop listening to the logs.
 :::
- 
+
 When LimeSurvey is ready, you'll see the following page on `http://localhost:8080`:
 
 ![LimeSurvey welcome page](./images/homepage.png)
- 
+
 Go to `http://localhost:8080/admin` to start the administration interface. The credentials to use are `admin` / `admin` (as defined in the `docker-compose.yml` file, see variables `ADMIN_USER` and `ADMIN_PASSWORD`).
 
 ![LimeSurvey administration page](./images/admin.png)
- 
+
 You're now ready to start and play with LimeSurvey on your machine.
 
 ![LimeSurvey dashboard](./images/dashboard.png)
@@ -108,7 +108,7 @@ You're now ready to start and play with LimeSurvey on your machine.
 
 The `docker-compose.yml` file provided above didn't use any volumes: when you stop running containers, your work will be lost and LimeSurvey will be restarted without any configuration / surveys just like a full reset.
 
-Perhaps, if you want to test LimeSurvey over several days and keep your configuration items, your surveys, then you will want to keep your work. To do this, you need to use volumes. 
+Perhaps, if you want to test LimeSurvey over several days and keep your configuration items, your surveys, then you will want to keep your work. To do this, you need to use volumes.
 
 Here is an updated `docker-compose.yml` file to ask Docker to use self-managed volumes.
 

@@ -53,4 +53,3 @@ When done, please reboot your computer.
 :::note
 If it still didn't work, remove `cbfsconnect2017` from the list and try again.
 :::
-

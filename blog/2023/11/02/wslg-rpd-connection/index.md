@@ -44,7 +44,7 @@ Back to your Windows environment and start `mstsc.exe` and set the computer name
 
 :::important
 The connection is only possible when `xrdp` is started. So, if it didn't work, you know what to do (you can also run `sudo service xrdp status` to get detailed information's).
-::: 
+:::
 
 ![Authentication screen](./images/authentication.png)
 
@@ -54,7 +54,7 @@ Use your local Linux user and make a connection.
 
 ## Get the desktop environment
 
-By default, you will just get a bash console and not the desktop as illustrated on the image here above. 
+By default, you will just get a bash console and not the desktop as illustrated on the image here above.
 
 If you wish the desktop and all features; please run `sudo apt-get install -y xubuntu-desktop xfce4 xfce4-goodies`. You will be prompted to make a choice between `gdm3` or `lightdm`; select the first one to get all the features.
 

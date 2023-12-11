@@ -70,7 +70,7 @@ As a reminder, the used Docker run command are (almost always the same):
 
 ## Convert a number to a byte
 
-Let's try something a *little more complex* than just *Hello world*; a conversion function to determine the byte representation of a positive number *(please be comprehensive; it was a school assignment 😄)*. 
+Let's try something a *little more complex* than just *Hello world*; a conversion function to determine the byte representation of a positive number *(please be comprehensive; it was a school assignment 😄)*.
 
 I wrote this function in 1992 (published in the *SWAG* in 1997): [https://github.com/cavo789/swag/blob/master/Byte2Bin/files/source.pas](https://github.com/cavo789/swag/blob/master/Byte2Bin/files/source.pas)
 

@@ -16,8 +16,6 @@ PEUT-ÊTRE LORDQUE JE REPRENDRAIS CET ARTICLE-CI; docker-init SERA PLUS ÉVOLUÉ
 
 /////////////////////////////////////////////////////////////////////////////////
 
-
-
 # Docker init now supports PHP
 
 ![Docker init now supports PHP](./images/social_media.jpg)
@@ -313,6 +311,7 @@ Please create the /db/password.txt` file with this content:
 ```text
 postgres
 ```
+
 :::
 
 ### Step 2 - Dockerfile

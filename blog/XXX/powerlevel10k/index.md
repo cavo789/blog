@@ -38,7 +38,7 @@ Running the `docker run` command here above will only download a Docker Alpine L
 
 When you exit the Docker container, everything will be lost but, now, you know if you like it or not. And, if you like it, just proceed on the installation of Powerlevel10k by following his [installation guide](https://github.com/romkatv/powerlevel10k#installation).
 
-What I particularly like: 
+What I particularly like:
 
 * You can always see the name of the git branch you're working on,
 * The connected user name (like `root` f.i.),

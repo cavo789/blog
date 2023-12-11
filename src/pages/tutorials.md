@@ -10,7 +10,7 @@
 * [Create your Joomla website using Docker](/blog/docker-joomla) 🌟
 * [FrankenPHP, a modern application server for PHP](/blog/frankenphp-docker-joomla)
   
-## PHP 
+## PHP
 
 * [The easiest way to run a PHP script / website](/blog/docker-php-run-script-or-website)
 

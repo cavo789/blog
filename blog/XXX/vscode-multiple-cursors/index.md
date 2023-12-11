@@ -21,7 +21,7 @@ With vscode, it's ultra-simple: multiple cursors.
 
 <!-- truncate -->
 
-Imagine the lines below and you need to add `* ` before each line to make a list of items. In this example, I only have six lines so yeah, it's possible to do it manually, one by one. Imagine you had a hundred or a thousand.
+Imagine the lines below and you need to add `*` before each line to make a list of items. In this example, I only have six lines so yeah, it's possible to do it manually, one by one. Imagine you had a hundred or a thousand.
 
 ```markdown
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.

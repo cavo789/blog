@@ -2,7 +2,7 @@
 
 This website is built using [Docusaurus](https://docusaurus.io/).
 
-Below a list of instructions to help when working with the 
+Below a list of instructions to help when working with the
 
 ## Clone this repository
 

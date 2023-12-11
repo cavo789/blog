@@ -11,13 +11,13 @@ draft: true
 
 ![Tabnine - AI Autocomplete for VSCode](/img/vscode_tips_header.jpg)
 
-Tabnine is a **MUST HAVE** extension. 
+Tabnine is a **MUST HAVE** extension.
 
 Tabnine will predict your next keystroke and sometimes it's just **WOW; HOW IS IT POSSIBLE?**.
 
 <!-- truncate -->
 
-> Download page [Tabnine: AI Autocomplete & Chat for Javascript, Python, Typescript, PHP, Go, Java & more](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode) 
+> Download page [Tabnine: AI Autocomplete & Chat for Javascript, Python, Typescript, PHP, Go, Java & more](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode)
 
 Imagine the code below and take a look on the `__construct` method. We need to handle the `$price` parameter. We need to call the setter for it.
 

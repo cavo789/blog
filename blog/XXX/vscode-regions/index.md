@@ -84,5 +84,5 @@ If you install [Auto Fold](https://marketplace.visualstudio.com/items?itemName=b
 If you don't know how to do, just press <kbd>CTRL</kbd>-<kbd>,</kbd> (the comma) to display the `Settings` page then start to type `autofold` to get access to the setting.
 
 Now, if you open a file, his content will be automatically folded.
- 
+
 ![Autofold](./images/autofold.png)

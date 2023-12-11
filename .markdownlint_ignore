@@ -1,0 +1,4 @@
+node_modules/**/*.markdown
+node_modules/**/*.md
+src/**/*.md
+static/**/*.md

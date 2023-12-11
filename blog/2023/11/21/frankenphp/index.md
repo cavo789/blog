@@ -8,8 +8,9 @@ enableComments: true
 ---
 # FrankenPHP, a modern application server for PHP
 
-![FrankenPHP](./images/social_media.png) 
+![FrankenPHP](./images/social_media.png)
 
+<!-- markdownlint-disable MD036 -->
 **Version updated on November 21, 2023 after a discussion with Alexandre about making his Docker image available on hub.docker.com**
 
 Based on [their documentation](https://speakerdeck.com/dunglas/the-php-revolution-is-underway-frankenphp-1-dot-0-beta), [FrankenPHP](https://frankenphp.dev/) is 3.5 faster than PHP FPM.
@@ -67,6 +68,7 @@ volumes:
   joomla:
   db:
 ```
+
 :::
 
 By running `docker compose pull`, Docker will download the two images; the one with FrankenPHP and Joomla and, the second, the one for MySQL. Depending on the speed of your Internet connection, this will take a few tens of seconds; only the first time.

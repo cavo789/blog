@@ -154,13 +154,13 @@ Les deux images ont donc été téléchargées,
 2. le conteneur `joomla-joomladb-1` est créé (c'est votre serveur de base de données) et
 3. le conteneur `joomla-joomla-1` est également créé (c'est votre service Joomla).
 
-A ce stade, votre site est déjà en cours d'installation. Rendez-vous sur l'URL http://127.0.0.1:8080 pour le consulter (soyez certain d'être en `http` et non `https`). 
+A ce stade, votre site est déjà en cours d'installation. Rendez-vous sur l'URL `http://127.0.0.1:8080` pour le consulter (soyez certain d'être en `http` et non `https`).
 
 :::note Pas encore prêt
 Il se peut que vous obteniez une page d'erreur `ERR_EMPTY_RESPONSE`; c'est parce que p.ex. MySQL n'est pas encore totalement chargé et que Joomla doit l'attendre afin de pouvoir afficher sa page d'installation. Dans ce cas de figure, veuillez encore attendre un peu ... ou lire la suite de cet article.
 :::
 
-### Pourquoi les noms joomla-joomlaxxx ?
+### Pourquoi les noms joomla-joomlaxxx
 
 Nous n'avons pas donné de nom à votre projet, nous avons juste créé un fichier `docker-compose.yml` dans votre dossier `/tmp/joomla`. Donc, Docker a nommé votre projet en utilisant le nom du dossier (`joomla`) concaténé au nom du service (en se référant au fichier `docker-compose.yml`, nous avons deux services, un appelé `joomladb` et un appelé `joomla`). Voici pourquoi...
 
@@ -224,6 +224,7 @@ services:
     image: joomla:5.0.0-php8.2-apache
 [...]
 ```
+
 :::
 
 ## Les conteneurs Docker
@@ -355,7 +356,7 @@ Si vous retournez sur `http://localhost:8080` avec votre navigateur et que vous 
 
 Lancez à nouveau `docker compose up --detach`, surfez à nouveau sur le site, rafraîchissez la page et le site ne répond pas encore. Attendez un peu... encore un peu... et après un certain temps, le site sera là. Pourquoi ?
 
-Docker doit (re)démarrer deux services, celui de Joomla et le serveur de base de données. L'initialisation des deux services peut prendre quelques secondes et le service de bases de données doit être opérationnel pour que Joomla puisse continuer son initialisation.  
+Docker doit (re)démarrer deux services, celui de Joomla et le serveur de base de données. L'initialisation des deux services peut prendre quelques secondes et le service de bases de données doit être opérationnel pour que Joomla puisse continuer son initialisation.
 
 Vous pouvez le voir en exécutant `docker compose logs --follow` (appuyez sur <kbd>CTRL</kbd>+<kbd>C</kbd> pour arrêter d'écouter les logs).
 
@@ -424,6 +425,7 @@ Assurez-vous d'abord de créer ces deux répertoires sur votre ordinateur pour q
 ```bash
 ❯ mkdir site_joomla db
 ```
+
 :::
 
 Les deux lignes `user: 1000:1000` sont très importantes et indiquent à Docker de réutiliser vos informations d'identification locales (celles utilisées sur votre ordinateur).
@@ -703,6 +705,7 @@ ddb1c1606b76 bridge bridge local
 16d351a0e393 kingsbridge_default bridge local
 d8cdc43a7272 none null local
 ```
+
 :::
 
 Pour ouvrir phpmyadmin, démarrez votre navigateur et naviguez jusqu'à `http://127.0.0.1:8089`.
@@ -721,11 +724,11 @@ Si vous préférez [Adminer](https://hub.docker.com/_/adminer/), voici la comman
 docker run -d --rm --name adminer --link joomladb:db --network kingsbridge_default -p 8088:8080 adminer
 ```
 
-Et voici l'URL configurée à utiliser pour Adminer : `http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db`.  (`joomla_db` est le nom de la base de données que nous avons créée plus tôt dans le chapitre [Installer Joomla](#install-joomla)).
+Et voici l'URL configurée à utiliser pour Adminer : `http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db`.  (`joomla_db` est le nom de la base de données que nous avons créée plus tôt dans le chapitre **Installer Joomla**).
 
 ![adminer](./images/adminer.png)
 
-## Avez-vous préféré PostgreSQL ou MariaDB ?
+## Avez-vous préféré PostgreSQL ou MariaDB
 
 Jusqu'à présent, nous avons choisi d'utiliser MySQL comme gestionnaire de base de données. Notre fichier `docker-compose.yml` est celui, légèrement modifié, que l'on peut trouver sur [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla).
 
@@ -735,7 +738,7 @@ Il suffit de remplacer le service `joomladb`, de ne plus utiliser `mysql` mais c
 
 ### Utilisation de PostgreSQL
 
-Essayons PostgreSQL... Nous remplacerons `mysql`. L'image Docker officielle de PostgreSQL peut être récupérée sur [https://hub.docker.com/_/postgres](https://hub.docker.com/_/postgres).  La documentation nous indique quelle `image` nous devons utiliser et comment définir les variables comme le mot de passe par défaut (`POSTGRES_PASSWORD`). 
+Essayons PostgreSQL... Nous remplacerons `mysql`. L'image Docker officielle de PostgreSQL peut être récupérée sur [https://hub.docker.com/_/postgres](https://hub.docker.com/_/postgres).  La documentation nous indique quelle `image` nous devons utiliser et comment définir les variables comme le mot de passe par défaut (`POSTGRES_PASSWORD`).
 
 Nous devons également modifier quelques variables :
 
@@ -869,7 +872,7 @@ Nous allons utiliser `GNU make` pour cela.
 
 Tout d'abord, lancez `which make` dans votre console Linux pour vérifier si `make` est installé. Si c'est le cas, vous obtiendrez par exemple `/usr/bin/make` comme résultat. Si vous obtenez `make not found`, lancez `sudo apt-get update && sudo apt-get -y install make` pour l'installer.
 
-Ceci fait, nous allons créer un nouveau fichier appelé `makefile` dans votre répertoire. Nous utiliserons `code makefile` pour lancer Visual Studio code et créer le `makefile` dans votre répertoire.
+Ceci fait, nous allons créer un nouveau fichier appelé `makefile` dans votre répertoire. Nous utiliserons `code makefile` pour lancer Visual Studio Code et créer le `makefile` dans votre répertoire.
 
 ```bash
 ❯ pwd
@@ -996,6 +999,7 @@ Voici comment :
       volumes:
         - ./db:/var/lib/mysql
   ```
+<!-- markdownlint-disable MD029 -->
 3. Créez vos deux sous-dossiers : `mkdir db site_joomla`
 4. Lancez `docker compose up --detach` pour démarrer Docker et créer vos conteneurs.
 5. Attendez quelques secondes et votre nouveau site sera en place.
@@ -1006,6 +1010,6 @@ Assurez-vous, pour chaque projet, de mettre à jour la ligne `name:` et si vous 
 
 ## FrankenPHP au lieu d'Apache
 
-Un nouveau joueur entre en jeu : [FrankenPHP](https://frankenphp.dev/). Il s'agit d'un nouveau serveur d'application qui peut être utilisé à la place d'Apache ou de nginx. 
+Un nouveau joueur entre en jeu : [FrankenPHP](https://frankenphp.dev/). Il s'agit d'un nouveau serveur d'application qui peut être utilisé à la place d'Apache ou de nginx.
 
 D'après leur documentation, il est 3,5 fois plus rapide que PHP FPM. Si vous voulez apprendre à faire tourner Joomla sur FrankenPHP, lisez cet article : [FrankenPHP, a modern application server for PHP (🇬🇧)](/blog/frankenphp-docker-joomla). Nous découvrirons le travail d'[Alexandre Elisé](https://github.com/alexandreelise/frankenphp-joomla) sur ce sujet.

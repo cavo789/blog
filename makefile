@@ -39,7 +39,7 @@ install: ## The very first time, after having cloned this blog, you need to inst
 .PHONY: lint
 lint: ## Lint markdown files
 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Lint markdown files"
-	docker run --rm -it--user $${UID}:$${GID} -v $${PWD}:/md peterdavehello/markdownlint markdownlint --ignore node_modules .
+	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}:/md peterdavehello/markdownlint markdownlint --fix --config .markdownlint.json --ignore-path .markdownlint_ignore .
 
 .PHONY: start
 start: ## Start the local webserver and open the webpage

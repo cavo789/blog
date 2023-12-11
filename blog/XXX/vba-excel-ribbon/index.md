@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 tags: [excel, ribbon, vba, vscode]
 enableComments: true
-draft: true
 ---
 # MS Office - How to create a ribbon in Excel
 
@@ -27,7 +26,7 @@ The tool can be downloaded from [https://bettersolutions.com/vba/ribbon/custom-u
 
 For this exercise; please extract all files and folders to your `C:\tmp\ribbon` folder (create it).
 
-## Create an empty file 
+## Create an empty file
 
 As a support for this blog post, please create a new, empty, file in Excel called `Ribbon.xslm`  in your `C:\tmp\ribbon` folder (or elsewhere).
 
@@ -207,7 +206,7 @@ Here is our added tab:
 
 ![Add_new_tab](./images/Add_new_tab.png)
 
-##### Define the ribbon
+##### Implement our ribbon
 
 Inside the `<tab>` declaration, you need to define at least one `<group>`. And here too, you'll to define the identifier: an existing one for, f.i., adding a button in an existing group or a new one to create a new group.
 
@@ -446,5 +445,3 @@ End Sub
 The declaration of callbacks can be found on the official site :
 [How can I determine the correct signatures for each callback procedure?](
 https://docs.microsoft.com/en-us/previous-versions/office/developer/office-2007/aa722523(v=office.12)#how-can-i-determine-the-correct-signatures-for-each-callback-procedure). Pay attention to the `Signatures` columns; you need to look for `VBA`.
-
-

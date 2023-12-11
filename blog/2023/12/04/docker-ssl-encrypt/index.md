@@ -18,7 +18,7 @@ By using a [Docker Alpine/OpenSSL](https://hub.docker.com/r/alpine/openssl) imag
 
 ## Linux scripts
 
-Create a new file on your disk with this content. This is the `encrypt.sh` script. 
+Create a new file on your disk with this content. This is the `encrypt.sh` script.
 
 ```bash
 #!/usr/bin/env bash
@@ -41,7 +41,6 @@ And this is the `decrypt.sh` script:
 ```
 
 Update the `MY_PASSWORD` variable in both scripts to use yours.
-
 
 ## DOS scripts
 

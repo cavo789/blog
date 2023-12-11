@@ -13,7 +13,6 @@ draft: true
 
 Imagine that you are faced with a PHP script whose layout leaves something to be desired, i.e. with a crazy indentation and little respect for standards.
 
-
 ```php
 <?php
 abstract class mycollection implements Iterator
@@ -29,7 +28,7 @@ $this->storage[] = $object;
 
 <!-- truncate -->
 
-There are a huge number of *linters* on the internet, but this is perhaps one of the best:  [https://benjamincrozat.com/pint-express](https://benjamincrozat.com/pint-express) 
+There are a huge number of *linters* on the internet, but this is perhaps one of the best:  [https://benjamincrozat.com/pint-express](https://benjamincrozat.com/pint-express)
 
 ![Correctly formatted PHP code](./images/formattted.png)
 

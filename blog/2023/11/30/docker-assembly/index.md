@@ -48,7 +48,7 @@ _start:
     int 0x80
 ```
 
-To run the script, just call Docker like this: 
+To run the script, just call Docker like this:
 
 ```bash
 > docker run --rm -v %CD%:/code -w /code esolang/x86asm-nasm x86asm-nasm hello.asm

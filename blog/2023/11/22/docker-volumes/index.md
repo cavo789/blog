@@ -125,7 +125,7 @@ You have executed this script 5 times.
 
 Ok so we have validated that our counter is working fine.
 
-What about if we stop the container and start it again by running `docker compose down ; docker compose up --detach`. 
+What about if we stop the container and start it again by running `docker compose down ; docker compose up --detach`.
 
 Running our counter again:
 
@@ -280,9 +280,9 @@ A new call to our counter shows that we have hacked the number:
 You have executed this script 51 times.
 ```
 
-#### Using vscode 
+#### Using vscode
 
-But you can, too, use Visual Studio code to access files. 
+But you can, too, use Visual Studio Code to access files.
 
 First, if needed, install the Docker extension:
 
@@ -336,7 +336,7 @@ services:
 
 The syntax now is, just a few, different: we don't have a `volumes` entry at the bottom of the file but we've used a relative notation like `./data:/data`.  So, the `./data` local folder (on your hard disk) has to be synchronized with the `/data` folder of the container.
 
-By running `docker compose up --detach && docker compose exec counter /counter.sh` we'll run our counter and expect to see `You have executed this script 1 times.` but you'll probably get an error: 
+By running `docker compose up --detach && docker compose exec counter /counter.sh` we'll run our counter and expect to see `You have executed this script 1 times.` but you'll probably get an error:
 
 ```bash
 ❯ docker compose exec counter /counter.sh

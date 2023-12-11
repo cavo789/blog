@@ -79,14 +79,14 @@ Refuse requests to these files:
 
 Blocks access to all files except those whose extension is mentioned in the list below:
 
-**Option 1**
+First option:
 
 ```apacheconf
 RewriteCond %{REQUEST_FILENAME} !(.*)\.(bmp|css|eot|html?|icon?|jpe?g|js|gif|pdf|png|svg|te?xt|ttf|webp|woff2?|xml|zip)$
 RewriteRule . - [F]
 ```
 
-**Option 2**
+Second option:
 
 ```apacheconf
 RewriteCond %{REQUEST_FILENAME} !\.(ico?n|img|gif|jpe?g|png|css|map)$ [NC]

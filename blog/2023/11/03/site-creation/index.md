@@ -14,7 +14,7 @@ enableComments: true
 *Updated 2023-11-03, search engine, prism and sitemap added.*
 *Updated 2023-11-05, adding giscus.*
 
-Here are the steps I followed to create this blog. 
+Here are the steps I followed to create this blog.
 
 <!-- truncate -->
 
@@ -94,7 +94,7 @@ I will also make some changes to files like `docusaurus.config.js` or `blog/auth
 
 By setting `hideOnScroll` to `true`, the navigation bar will be hidden when the user will scroll down but will be displayed back as soon as he scroll up. Idea is to give more place on the screen for the content.
 
-```js 
+```js
 export default {
   themeConfig: {
     navbar: {
@@ -124,7 +124,7 @@ Now, in the `/blog` directory, I create a new folder called `2023-11-02-site-cre
 
 :::note
 When my blog post only contains text and no images or linked files, I can just create a `.md` file like `/blog/2023-11-02-this-is-a-test.md`. The creation of a folder is thus not mandatory at all.
-::: 
+:::
 
 In the previous chapter, npx was executed using the `docker run --rm -it --name blog --user $UID:$GID -v ${PWD}/:/project -w /project -p 3000:3000 node /bin/bash -c "npx docusaurus start --host 0.0.0.0"` command so, every changes done to the blog will be immediately synchronized with Docker i.e., I just need to save my article and npx will reload my site; very easy and convenient.
 
@@ -141,7 +141,7 @@ Some **content** with _Markdown_ `syntax`.
 ```
 
 :::tip
-Some **content** with _Markdown_ `syntax`.
+Some **content** with *Markdown* `syntax`.
 :::
 
 To get the entire list of supported features, read [Markdown Features](https://docusaurus.io/docs/markdown-features).
