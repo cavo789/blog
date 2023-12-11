@@ -17,7 +17,7 @@ Currently, at the end of 2023, there aren't many **free** refactoring extensions
 
 For the demo, please start a Linux shell and run `mkdir -p /tmp/refactor && cd $_` to create a folder called `refactor` in your Linux temporary folder and jump in it.
 
-Please create two php files. The first one will be called `index.php` and will contains this code:
+Please create two php files. The first one will be called `index.php` and will contain this code:
 
 ```php
 <?php
@@ -98,7 +98,7 @@ Everything is working fine but, yeah, functions are called `getProductName` and 
 
 So, we need to rename our functions.
 
-By opening our `Product.php` file, we can do it manually but ... don't do this because you'll need to update manually every single files using your `Product` class and if you forgot just one use, your code will be broken.
+By opening our `Product.php` file, we can do it manually but ... don't do this because you'll need to update every single file manually using your `Product` class and if you forgot just one use, your code will be broken.
 
 The rename feature serves this objective. You just need to select a property like `productPrice` as illustrated in the animation, press <kbd>F2</kbd> and rename it.
 
@@ -165,7 +165,7 @@ printf(
 );
 ```
 
-By running `docker run -it --rm -v "${PWD}":/project -w /project php:8.2 php index.php`, it's still work. We've refactored our code without breaking it.
+By running `docker run -it --rm -v "${PWD}":/project -w /project php:8.2 php index.php`, it's still working. We've refactored our code without breaking it.
 
 The same thing in pictures:
 
@@ -179,7 +179,7 @@ Open the file where your class is defined, go to the `class Yourclass` line, put
 
 The class name will be updated but, too, the file name. Here from `Product.php` to `Products.php` and, even better, if you open the `index.php` file, you can see that `$product = new Product();` has been perfectly changed to `$product = new Products();`.
 
-:::info You can rename also from index.php
+:::info You can also rename from index.php
 Locate the `$product = new Product();` line in your `index.php` file. Put the cursor on the `Product` word, press <kbd>F2</kbd> and rename it. This work too i.e. the class will be updated too in `Products.php` (since the file has been renamed too). Nice!
 :::
 

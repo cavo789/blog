@@ -11,7 +11,7 @@ draft: true
 
 ![Bash - ASCII art](/img/bash_tips_header.jpg)
 
-I write a lot of Bash scripts and I like to have a similar approach for each one. One of the things I always do is include a good old-fashioned *ASCII Art* banner, perhaps for the geek factor, but mostly to make a bigger visual impact.
+I write a lot of Bash scripts, and I like to have a similar approach for each one. One of the things I always do is to include a good old-fashioned *ASCII Art* banner, perhaps for the geek factor, but mostly to make a bigger visual impact.
 
 I use [https://patorjk.com/software/taag](https://patorjk.com/software/taag) to create my banners, so let's take a closer look.
 
@@ -51,6 +51,6 @@ EOF
 __main $*
 ```
 
-And this is how it'll looks like in my bash terminal:
+And this is how it'll look like in my bash terminal:
 
 ![Terminal](./images/terminal.png)

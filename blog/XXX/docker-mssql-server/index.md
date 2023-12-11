@@ -11,7 +11,7 @@ enableComments: true
 
 ![Play with Microsoft SQL Server 2022 using Docker](./images/social_media.jpg)
 
-And yes, nothing less. We're going to install a **Microsoft SQL Server 2022** on our machine, install **SQL Server Management Studio** too and we'll have fun with a small PowerShell script; all with Docker of course.
+And yes, nothing less. We're going to install a **Microsoft SQL Server 2022** on our machine, install **SQL Server Management Studio** too and we'll have fun with a small PowerShell script; all with Docker, of course.
 
 <!-- truncate -->
 

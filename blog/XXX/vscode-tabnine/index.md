@@ -54,12 +54,12 @@ class Product
 }
 ```
 
-And here is how VSCode will predict my keystrokes when TabNine is enabled. As you can see, TabNine will predict that, after I've typed `$this-` that I'll used my `setProductPrice` method. And he knows that this function requires a parameter so he suggest me to use my `$price` one.
+And here is how VSCode will predict my keystrokes when Tabnine is enabled. As you can see, Tabnine will predict that, after I've typed `$this-` that I'll use my `setProductPrice` method. And he knows that this function requires a parameter so he suggests that I use my `$price` one.
 
-![TabNine is so wow!](./images/tabnine.gif)
+![Tabnine is so wow!](./images/tabnine.gif)
 
 It's really amazing.
 
-By default, TabNine works offline i.e. don't use any cloud data provider like what GitHub Copilot does.
+By default, Tabnine works offline i.e. don't use any cloud data provider like what GitHub Copilot does.
 
-TabNine supports a lot of languages, for instance, he's also working with pure text file (like this blog post).
+Tabnine supports a lot of languages, for instance, he's also working with pure text file (like this blog post).

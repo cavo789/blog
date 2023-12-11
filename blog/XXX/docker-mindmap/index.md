@@ -1,19 +1,19 @@
 ---
 slug: docker-mindmap
-title: Build a mindmap using Docker
+title: Build a mind map using Docker
 authors: [christophe]
 image: ./images/social_media.png
-tags: [makefile, tips]
+tags: [makefile, mindmap, tips]
 enableComments: true
 draft: true
 ---
-# Build a mindmap using Docker
+# Build a mind map using Docker
 
-![Build a mindmap using Docker](./images/social_media.png)
+![Build a mind map using Docker](./images/social_media.png)
 
 As a markdown lover, I always enjoy finding a little tool that lets me write a text and have it converted into another format.
 
-For this article, we're going to write a mindmap, which means that our text will be converted into a mindmap-type image.
+For this article, we're going to write a mind map, which means that our text will be converted into a mindmap-type image.
 
 <!-- truncate -->
 
@@ -64,7 +64,7 @@ drwxrwxrwt 19 root       root       908K Dec  8 19:22 ..
 -rw-r--r--  1 christophe christophe  198 Dec  8 19:22 mindmap.md
 ```
 
-And now run `docker run -it --rm -v ${PWD}:/project -w /project -u $(id -u):$(id -g) leopoul/markmap:1.0.0 mindmap.md --output mindmap.html` to convert the markdown document into an html page. The image is automatically created as a `.svg` file.
+And now run `docker run -it --rm -v ${PWD}:/project -w /project -u $(id -u):$(id -g) leopoul/markmap:1.0.0 mindmap.md --output mindmap.html` to convert the markdown document into an HTML page. The image is automatically created as a `.svg` file.
 
 ```bash
 ❯ ls -alh
@@ -80,7 +80,7 @@ drwxrwxrwt 19 root       root       908K Dec  8 19:22 ..
 If you're running under Windows and WSL2, to open the `mindmap.html` file, one way is to run `explorer.exe .` in your Linux console. Windows Explorer will be started then just double-click on the `mindmap.html` file.
 :::
 
-The generated HTML will display your mindmap using the full screen width and you can open/close some branches, use zoom features, ... Really cool.
+The generated HTML will display your mindmap using the full-screen width and you can open/close some branches, use zoom features, ... Really cool.
 
 ## Go further
 

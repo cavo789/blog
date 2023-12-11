@@ -3,7 +3,7 @@ slug: docker-diagram-as-code
 title: Docker - Diagrams as code
 authors: [christophe]
 image: ./images/social_media.jpg
-tags: [docker, vizualisation, tips]
+tags: [docker, vizualization, tips]
 enableComments: true
 ---
 # Docker - Diagrams as code

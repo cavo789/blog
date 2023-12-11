@@ -15,7 +15,7 @@ By using a makefile, you know it already, you can gather in one place a lot of *
 
 What's really nice is being able to type `make` at the command line without any other options and then get a screen with lists of existing commands and a short one-line explanation.
 
-That's what we'll be looking at in this article
+That's what we'll be looking at in this article.
 
 <!-- truncate -->
 
@@ -152,7 +152,7 @@ Usage:
   help                  Show the help with the list of commands
 ```
 
-### Step 3 - Add a description for each targets
+### Step 3 - Add a description for each target
 
 Take a look on your new `help` target: the description *Show the help with the list of commands* is prefixed by a double `#`. This is how to add a description.
 
@@ -161,7 +161,7 @@ Take a look on your new `help` target: the description *Show the help with the l
 help: ## Show the help with the list of commands
 ```
 
-So, you've to edit your makefile for the last time, and, for each target, add a `## a small, one-line, description` text; like below, our final file:
+So, you've to edit your makefile for the last time, and, for each target, add a `## a small, one line, description` text; like below, our final file:
 
 ```makefile
 SHELL:=bash

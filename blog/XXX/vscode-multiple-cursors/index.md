@@ -13,7 +13,7 @@ draft: true
 
 One of the best features in vscode is the *Multiple cursors* one.
 
-Imagine you've a bunch of lines where you need for instance remove the two first characters. Each lines starts with '//' and you wish to remove them but only there (a search & replace can't be used).
+Imagine you've a bunch of lines where you need for instance remove the first two characters. Each lines starts with '//' and you wish to remove them but only there (a search & replace can't be used).
 
 Or, for another example, you must enclose each line in double brackets.
 

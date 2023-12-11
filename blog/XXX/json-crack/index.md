@@ -3,7 +3,7 @@ slug: json-crack
 title: Rendering a JSON file as a mind map
 authors: [christophe]
 image: ./images/header.png
-tags: [json, vizualisation, vscode]
+tags: [json, vizualization, vscode]
 enableComments: true
 draft: true
 ---
