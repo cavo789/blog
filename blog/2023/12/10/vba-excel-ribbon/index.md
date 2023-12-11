@@ -18,7 +18,7 @@ We'll create our custom ribbon for an Excel file, save the ribbon in the file so
 
 ## Download the editor for free
 
-To be able to "easily" *(in a not WYSIWYG interface)* create a ribbon in MS Office, I'm using a very old tool called `CustomOfficeUIEditor. *Until now, I've not found any other free tool for doing this.*
+To be able to "easily" *(in a not WYSIWYG interface)* create a ribbon in MS Office, I'm using a very old tool called `CustomOfficeUIEditor`. *Until now, I've not found any other free tool for doing this.*
 
 The tool can be downloaded from [https://bettersolutions.com/vba/ribbon/custom-ui-editor-download.htm](https://bettersolutions.com/vba/ribbon/custom-ui-editor-download.htm).
 
@@ -88,8 +88,6 @@ Now, in the right pane, just copy/paste the XML source below:
 ![Manifest added](./images/UI_Editor_Added_UI14.png)
 
 Before saving your file, be sure to click on the `Validate` button so a check is made to verify the quality of the content.
-
-In the example here below, you can see that an error is displayed saying that an attribute `ID` (in uppercase) has been found and that this name isn't declared. Indeed, the correct spelling is `id` (in lowercase). *XML is a case-sensitive language and is terribly strict, no syntax errors will be tolerated*
 
 ![Check](./images/UI_Editor_Check.png)
 

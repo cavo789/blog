@@ -4,5 +4,14 @@
         "mindmap",
         "phpmyadmin",
         "shiring"
-    ]
+    ],
+    "search.exclude": {
+        "**/node_modules": true,
+    },
+    "intelephense.files.exclude": [
+        "**/node_modules/**",
+    ],
+    "files.exclude": {
+        "**/node_modules/**": true,
+    }
 }
