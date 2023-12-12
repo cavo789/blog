@@ -3,7 +3,7 @@ slug: linux-jq
 title: The jq utility for Linux
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
-tags: [bash, linux, tips]
+tags: [bash, json, linux, tips]
 draft: true
 enableComments: true
 ---
@@ -33,7 +33,9 @@ By running `curl https://randomuser.me/api/` you'll get something like
 
 ```bash
 ❯ curl https://randomuser.me/api/
+```
 
+```json
 {"results":[{"gender":"female","name":{"title":"Mademoiselle","first":"Milena","last":"Martin"},"location":{"street":{"number":9831,"name":"Rue de L'Abbé-Migne"},"city":"Lengnau (Ag)","state":"Basel-Landschaft","country":"Switzerland","postcode":3789,"coordinates":{"latitude":"-60.0739","longitude":"135.1462"},"timezone":{"offset":"+7:00","description":"Bangkok, Hanoi, Jakarta"}},"email":"milena.martin@example.com","login":{"uuid":"bafdf972-4183-484a-903a-84f2654f0fec","username":"purpleleopard344","password":"cameron","salt":"gGoFrP1a","md5":"af359ca6697c3ac68f4c190583544619","sha1":"19033bc1630d96bba29726823ef91f53800e67d1","sha256":"cac6a35f5135f14707b8b3ec48617f23b4105b1c5e33a2b64597e7a0c7c891a0"},"dob":{"date":"1998-10-10T02:42:04.525Z","age":25},"registered":{"date":"2005-05-01T01:26:36.354Z","age":18},"phone":"079 098 73 86","cell":"077 411 83 18","id":{"name":"AVS","value":"756.9632.2579.59"},"picture":{"large":"https://randomuser.me/api/portraits/women/37.jpg","medium":"https://randomuser.me/api/portraits/med/women/37.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/37.jpg"},"nat":"CH"}],"info":{"seed":"213f93e3e854d33c","results":1,"page":1,"version":"1.4"}}
 ```
 
@@ -43,7 +45,9 @@ But, as soon as we are redirecting to `jq`, it'll be better:
 
 ```bash
 ❯ curl --silent https://randomuser.me/api/ | jq
+```
 
+```json
 {
   "results": [
     {
@@ -143,6 +147,9 @@ If we just want to retrieve the `name` node, the filter to use with `jq` is `.re
 
 ```bash
 ❯ curl --silent https://randomuser.me/api/ | jq '.results[0].name'
+```
+
+```json
 {
   "title": "Ms",
   "first": "Brooke",

@@ -52,6 +52,7 @@ Since we need a Docker network, please create one:
 
 ```bash
 ❯ docker network create my_network
+
 1df43879fbfc2b328bf36f9205c68168e45a88cea481bc244fab94ff04486da7
 ```
 
@@ -115,7 +116,7 @@ We can confirm our container is not able to access to our local site `http://127
 ### We need to run the second container on the same network
 
 :::tip Retrieve the network used by a container
-In case you don't know the name of the used network, simply run `docker inspect xxxx` where `xxxx` is the name of the container. You'll get a JSON answer with a `Networks` entry. To get more information, please read the [Docker inspect - Retrieve network's information ](/blog/docker-inspect) article.
+In case you don't know the name of the used network, simply run `docker inspect xxxx` where `xxxx` is the name of the container. You'll get a JSON answer with a `Networks` entry. To get more information, please read the [Docker inspect - Retrieve network's information](/blog/docker-inspect) article.
 :::
 
 Please edit your `docker-compose.yml` file like this:
@@ -169,6 +170,7 @@ Now, we can try again, please start an interface shell once more. It'll still no
 curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect to server
 
 ❯ curl http://172.20.0.1:8080
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <style type="text/css">

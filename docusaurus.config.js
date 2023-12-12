@@ -91,7 +91,7 @@ const config = {
         // hideOnScroll: true,
         title: 'Christophe Avonture (cavo789)',
         logo: {
-          alt: 'Chistophe Avonture',
+          alt: 'Christophe Avonture',
           src: 'img/cavo789.jpg',
           width: 40,
           height: 40,

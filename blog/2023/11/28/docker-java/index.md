@@ -51,6 +51,7 @@ By running `ls -alh` you can verify that, yes, the java script has been compiled
 
 ```bash
 ❯ ls -alh
+
 total 24K
 drwxr-xr-x  2 christophe christophe 4.0K Nov 22 15:02 .
 drwxrwxrwt 29 root       root        12K Nov 22 14:58 ..
@@ -66,6 +67,7 @@ Last thing is to execute your Java program. Now, please run `docker run --rm -v 
 
 ```bash
 ❯ docker run --rm -v $PWD:/app -w /app openjdk:11 java Main
+
 Hello, World
 ```
 
@@ -116,6 +118,9 @@ Finally, call `docker run --rm -v $PWD:/app -w /app openjdk:11 java API.java` to
 
 ```bash
 ❯ docker run --rm -v $PWD:/app -w /app openjdk:11 java API.java
+```
+
+```json
 {
   "userId": 1,
   "id": 1,

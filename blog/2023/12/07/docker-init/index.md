@@ -26,7 +26,9 @@ Now, in your console, just run `docker init` and follow the wizard.
 
 ```bash
 ❯ docker init
+```
 
+```text
 Welcome to the Docker Init CLI!
 
 This utility will walk you through creating the following files with sensible defaults for your project:
