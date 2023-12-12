@@ -29,7 +29,7 @@ print_r(json_decode(utf8_decode("Ipso lorem"), true, 512, JSON_THROW_ON_ERROR));
 
 The easiest way is to:
 
-* Create a temporary directory like `mkdir /tmp/snippet && /tmp/snippet`,
+* Create a temporary directory like `mkdir /tmp/snippet && cd $_`,
 * Create an `index.php` file there (with your snippet like here above),
 * Run this command in the console: `docker run -d -p 8080:80 -u ${UID}:${GID} -v "$PWD":/var/www/html php:7.4-apache` and,
 * Surf to `http://127.0.0.1:8080`.
