@@ -4,20 +4,19 @@ title: The xmlstarlet utility for Linux
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 tags: [bash, linux, tips, xml]
-draft: true
 enableComments: true
 ---
 # The xmlstarlet utility for Linux
 
 ![The xmlstarlet utility for Linux](/img/bash_tips_header.jpg)
 
-`xmlstarlet` is a powerful utility for Linux allowing to manipulate XML data from the command line and can be integrated into shell scripts.
+`xmlstarlet` is a powerful utility for Linux allowing manipulating XML data from the command line and can be integrated into shell scripts.
 
 Using `xmlstarlet` you can beautify XML output but also filter it like f.i. showing only a given node.
 
 <!-- truncate -->
 
-To verify if `xmlstarlet` is already installed on your system, simply run `which xmlstarlet`. If you get `xmlstarlet not found` as answer, please install it: `sudo apt-get update && sudo apt-get -y install xmlstarlet`
+To verify if `xmlstarlet` is already installed on your system, simply run `which xmlstarlet`. If you get `xmlstarlet not found` as an answer, please install it: `sudo apt-get update && sudo apt-get -y install xmlstarlet`
 
 ## Let's play
 
@@ -77,11 +76,26 @@ We can also use `Xpath` to specify our desired output:
 ❯ cat "data.xml" | xmlstarlet sel -t -v "/bookstore/book/title"
 ```
 
-```xml
+```text
 Everyday Italian
 Harry Potter
 XQuery Kick Start
 Learning XML
+```
+
+If you don't known XPath yet, we've used `"/bookstore/book/title"` because our XML is architectured like that. As you can see below, our root node is called `bookstore`, then we have one or more `book` and each book has a `title`.
+
+```xml
+//highlight-next-line
+<bookstore>
+    //highlight-next-line
+    <book category="cooking">
+        //highlight-next-line
+        <title lang="en">Everyday Italian</title>
+        [...]
+    </book>
+    [...]
+</bookstore>
 ```
 
 We can also make some filtering like getting books for children:
@@ -90,8 +104,21 @@ We can also make some filtering like getting books for children:
 ❯ cat "data.xml" | xmlstarlet sel -t -v "//book[@category='children']/title"
 ```
 
-```xml
+```text
 Harry Potter
+```
+
+And here, the XPath expression `//book[@category='children']/title` means: give me each `book`; it doesn't matter where the book node is located; but only if it has an attribute named `category` and whose value is `children`. Then, if found, display his `title`.
+
+```xml
+<bookstore>
+    //highlight-next-line
+    <book category="children">
+        //highlight-next-line
+        <title lang="en">Harry Potter</title>
+        [...]
+    </book>
+</bookstore>
 ```
 
 Read the [official documentation](https://xmlstar.sourceforge.net/docs.php) to learn more about xmlstarlet.

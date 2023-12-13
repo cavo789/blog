@@ -4,24 +4,23 @@ title: The jq utility for Linux
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 tags: [bash, json, linux, tips]
-draft: true
 enableComments: true
 ---
 # The jq utility for Linux
 
 ![The jq utility for Linux](/img/bash_tips_header.jpg)
 
-`jq` is a powerful utility for Linux allowing to manipulate JSON data from the command line and can be integrated into shell scripts.
+`jq` is a powerful utility for Linux allowing manipulating JSON data from the command line and can be integrated into shell scripts.
 
 Using `jq` you can beautify JSON output but also filter it like f.i. showing only a given node.
 
 <!-- truncate -->
 
-To verify if `jq` is already installed on your system, simply run `which jq`. If you get `jq not found` as answer, please install it: `sudo apt-get update && sudo apt-get install jq`
+To verify if `jq` is already installed on your system, simply run `which jq`. If you get `jq not found` as an answer, please install it: `sudo apt-get update && sudo apt-get install jq`
 
 ## Let's play
 
-`jq` can be used without any arguments and in that case, the JSON output will be prettify.
+`jq` can be used without any arguments and in that case, the JSON output will be prettified.
 
 To illustrate this, we'll use a simple JSON free API like `https://randomuser.me/api/`. If you wish to use another API tool, take a look on [https://github.com/public-apis/public-apis#test-data](https://github.com/public-apis/public-apis#test-data); free ones are those having `No` in the `Auth` columns.
 
@@ -39,7 +38,7 @@ By running `curl https://randomuser.me/api/` you'll get something like
 {"results":[{"gender":"female","name":{"title":"Mademoiselle","first":"Milena","last":"Martin"},"location":{"street":{"number":9831,"name":"Rue de L'Abbé-Migne"},"city":"Lengnau (Ag)","state":"Basel-Landschaft","country":"Switzerland","postcode":3789,"coordinates":{"latitude":"-60.0739","longitude":"135.1462"},"timezone":{"offset":"+7:00","description":"Bangkok, Hanoi, Jakarta"}},"email":"milena.martin@example.com","login":{"uuid":"bafdf972-4183-484a-903a-84f2654f0fec","username":"purpleleopard344","password":"cameron","salt":"gGoFrP1a","md5":"af359ca6697c3ac68f4c190583544619","sha1":"19033bc1630d96bba29726823ef91f53800e67d1","sha256":"cac6a35f5135f14707b8b3ec48617f23b4105b1c5e33a2b64597e7a0c7c891a0"},"dob":{"date":"1998-10-10T02:42:04.525Z","age":25},"registered":{"date":"2005-05-01T01:26:36.354Z","age":18},"phone":"079 098 73 86","cell":"077 411 83 18","id":{"name":"AVS","value":"756.9632.2579.59"},"picture":{"large":"https://randomuser.me/api/portraits/women/37.jpg","medium":"https://randomuser.me/api/portraits/med/women/37.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/37.jpg"},"nat":"CH"}],"info":{"seed":"213f93e3e854d33c","results":1,"page":1,"version":"1.4"}}
 ```
 
-The JSON is just echoed on screen, not really readable.
+The JSON is just echoed on the screen, not really readable.
 
 But, as soon as we are redirecting to `jq`, it'll be better:
 

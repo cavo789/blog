@@ -38,4 +38,3 @@ And once added:
 ![Once the .patch suffix has been added](./images/after.png)
 
 As you can see, the email address associated to the Github account used to send the commit is now displayed.
-
