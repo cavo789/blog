@@ -11,7 +11,11 @@ draft: true
 
 ![PHP code refactoring in VSCode](/img/vscode_tips_header.jpg)
 
-Currently, at the end of 2023, there aren't many **free** refactoring extensions for PHP under vscode. We'll take a look to [PHP Refactor Tool](https://marketplace.visualstudio.com/items?itemName=st-pham.php-refactor-tool)
+Currently, at the end of 2023, there aren't many free refactoring extensions for PHP under vscode. We'll take a look to [PHP Refactor Tool](https://marketplace.visualstudio.com/items?itemName=st-pham.php-refactor-tool).
+
+We'll learn how to rename a symbol, a class and, even better, how to extract a portion of a long method into a new one.
+
+<!-- truncate -->
 
 ## Create sample files
 
