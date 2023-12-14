@@ -2,7 +2,7 @@
 slug: vscode-php-refactoring
 title: PHP code refactoring in VSCode
 authors: [christophe]
-tags: [php, tips, vscode]
+tags: [php, refactoring, tips, vscode]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg
 draft: true
@@ -252,3 +252,8 @@ In the lines we're moving, there are variables like `contentType` and `filename`
 
 And, as you can see, during the creation of the new method, these two local variables have been added to the definition of the new function. Nice feature.
 :::
+
+## Other extensions
+
+* 💀 😒 [PHP Refactor](https://marketplace.visualstudio.com/items?itemName=tintrinh.php-refactor) also exists but the last time it was updated by the author was in 2019, four years ago, and the extract feature isn't working fine; just move along.
+* 💲😒 [PHP Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=DEVSENSE.phptools-vscode) from **DEVSENSE** is a freemium addon (refactoring features are only in the payed version). The rename symbol feature is a paid one while it's free with [PHP Refactor Tool](https://marketplace.visualstudio.com/items?itemName=st-pham.php-refactor-tool). **Don't install `PHP Tools for Visual Studio Code` since, then, it'll override `PHP Refactor Tool` <kbd>F2</kbd> function and will broke it.** (see my issue [Devsense - All-In-One conflicts](https://github.com/st-pham/php-refactor-tool/issues/16))
