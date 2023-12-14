@@ -18,7 +18,7 @@ Under Windows, since a few years (starting with Windows 10), there is such comma
 
 <!-- truncate -->
 
-By running `winget upgrade --all --silent` in a DOS (or Powershell) console started with admin rights, you'll start a process that will scan (in a second) your computer, detect which programs are installed on it and check if a newer version exists (and known by winget).
+By running `winget upgrade --all --silent` in **a DOS (or Powershell) console** started with admin rights, you'll start a process that will scan (in a second) your computer, detect which programs are installed on it and check if a newer version exists (and known by winget).
 
 ![Starting winget](./images/start-winget.png)
 
@@ -30,6 +30,12 @@ Winget has detected that 17 software should be upgraded and, one by one, will do
 
 Easy no?
 
-:::tip
+:::tip Including unknown ones
 [Marc Dechèvre](https://www.woluweb.be/) tells me that `winget upgrade --all --silent` command found 29 updates to make on his machine and that adding the `--include-unknown` flag found 15 more.
+:::
+
+:::tip Getting the list of softwares
+Running `winget list` returns the list of all softwares installed on your machine and `winget list --upgrade-available` only those when a newer version is available on the internet.
+
+And, to get the list sorted, make sure you're under **PowerShell** and run this command instead: `winget list --upgrade-available | Sort-Object`. The result isn't really nice but, at least, application names are sorted.
 :::

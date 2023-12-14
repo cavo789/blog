@@ -8,7 +8,9 @@
         "mindmap",
         "phpDocumentor",
         "phpmyadmin",
-        "shiring"
+        "shiring",
+        "tadaaa",
+        "winget"
     ],
     "search.exclude": {
         "**/node_modules": true,
