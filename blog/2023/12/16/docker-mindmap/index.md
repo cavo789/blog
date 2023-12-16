@@ -63,7 +63,7 @@ drwxrwxrwt 19 christophe christophe 908K Dec 16 14:05 ..
 -rw-r--r--  1 christophe christophe  198 Dec 16 14:05 mindmap.md
 ```
 
-And now run `docker run -it --rm -v ${PWD}:/project -w /project -u $(id -u):$(id -g) leopoul/markmap:1.0.0 mindmap.md --output mindmap.html` to convert the markdown document into an HTML page. The image is automatically created as a `.svg` file.
+And now run `docker run -it --rm -v ${PWD}:/project -w /project -u $(id -u):$(id -g) leopoul/markmap:1.0.0 mindmap.md --output mindmap.html` to convert the markdown document into an HTML page. The image is automatically created as a SVG content in the `.html` file.
 
 ```bash
 ❯ ls -alh
