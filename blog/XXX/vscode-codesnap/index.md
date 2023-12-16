@@ -11,7 +11,7 @@ draft: true
 
 ![CodeSnap addon for VSCode](/img/vscode_tips_header.jpg)
 
-The extension [CodeSnap](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) will **take beautiful screenshots of your code in VS Code** without effort. 
+The extension [CodeSnap](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) will **take beautiful screenshots of your code in VS Code** without effort.
 
 Open your file in vscode, select the desired lines, press <kbd>CTRL</kbd>-<kbd>SHIFT</kbd>-<kbd>P</kbd>, run `CodeSnap`. You just need to select lines now.
 

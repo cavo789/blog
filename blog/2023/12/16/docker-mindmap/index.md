@@ -1,19 +1,18 @@
 ---
 slug: docker-mindmap
-title: Build a mind map using Docker
+title: Build a mind map using Docker and Markdown
 authors: [christophe]
 image: ./images/social_media.png
 tags: [makefile, mindmap, tips]
 enableComments: true
-draft: true
 ---
-# Build a mind map using Docker
+# Build a mind map using Docker and Markdown
 
-![Build a mind map using Docker](./images/social_media.png)
+![Build a mind map using Docker and Markdown](./images/social_media.png)
 
 As a markdown lover, I always enjoy finding a little tool that lets me write a text and have it converted into another format.
 
-For this article, we're going to write a mind map, which means that our text will be converted into a mindmap-type image.
+For this article, we're going to write, in plain text, a mind map, which means that our text will be converted into a mind map image.
 
 <!-- truncate -->
 
@@ -53,15 +52,15 @@ Below an example, just copy/paste it into the [editor](https://markmap.js.org/re
 
 For the demo, please start a Linux shell and run `mkdir -p /tmp/markmap && cd $_` to create a folder called `markmap` in your Linux temporary folder and jump in it.
 
-Please create a new file called `mindmap.md` with this markdown content provided just here above.
+Please create a new file called `mindmap.md` with this markdown content about *Social Media Uses* provided just here above.
 
 ```bash
 ❯ ls -alh
 
 total 920K
-drwxr-xr-x  2 christophe christophe 4.0K Dec  8 19:22 .
-drwxrwxrwt 19 root       root       908K Dec  8 19:22 ..
--rw-r--r--  1 christophe christophe  198 Dec  8 19:22 mindmap.md
+drwxr-xr-x  2 christophe christophe 4.0K Dec 16 14:05 .
+drwxrwxrwt 19 christophe christophe 908K Dec 16 14:05 ..
+-rw-r--r--  1 christophe christophe  198 Dec 16 14:05 mindmap.md
 ```
 
 And now run `docker run -it --rm -v ${PWD}:/project -w /project -u $(id -u):$(id -g) leopoul/markmap:1.0.0 mindmap.md --output mindmap.html` to convert the markdown document into an HTML page. The image is automatically created as a `.svg` file.
@@ -70,17 +69,17 @@ And now run `docker run -it --rm -v ${PWD}:/project -w /project -u $(id -u):$(id
 ❯ ls -alh
 
 total 920K
-drwxr-xr-x  2 christophe christophe 4.0K Dec  8 19:22 .
-drwxrwxrwt 19 root       root       908K Dec  8 19:22 ..
--rw-r--r--  1 christophe christophe 2.2K Dec  8 19:25 mindmap.html
--rw-r--r--  1 christophe christophe  198 Dec  8 19:22 mindmap.md
+drwxr-xr-x  2 christophe christophe 4.0K Dec 16 14:05 .
+drwxrwxrwt 19 christophe christophe 908K Dec 16 14:05 ..
+-rw-r--r--  1 christophe christophe 2.2K Dec 16 14:10 mindmap.html
+-rw-r--r--  1 christophe christophe  198 Dec 16 14:05 mindmap.md
 ```
 
 :::tip WSL User
-If you're running under Windows and WSL2, to open the `mindmap.html` file, one way is to run `explorer.exe .` in your Linux console. Windows Explorer will be started then just double-click on the `mindmap.html` file.
+If you're running under Windows and WSL2, to open the `mindmap.html` file, one way is to run `explorer.exe .` in your Linux console (see [this article](wsl-windows-explorer) to learn more). Windows Explorer will be started then just double-click on the `mindmap.html` file.
 :::
 
-The generated HTML will display your mindmap using the full-screen width and you can open/close some branches, use zoom features, ... Really cool.
+The generated HTML will display your mind map using the full-screen width and you can open/close some branches, use zoom features, ... Really cool.
 
 ## Go further
 
