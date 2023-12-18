@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 tags: [bash, tips]
 enableComments: true
-draft: true
 ---
 # Bash - ASCII art
 

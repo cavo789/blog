@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 tags: [bash, tips]
 enableComments: true
-draft: true
 ---
 # Bash - Loading environment variables from a file
 
@@ -37,7 +36,7 @@ set +o allexport
 
 This done, variables will be accessible like any environment variables in your bash script. When the script exit, the added variables are removed (just like in a sub-shell).
 
-Using source is the best solution to avoid problems with f.i. spaces like in *Me and myself* i.e. using others solution like `export $(... | xargs)` will always gives unpredictable results.
+Using source is the best solution to avoid problems with f.i. spaces like in *Me and myself* i.e. using other solutions like `export $(... | xargs)` will always give unpredictable results.
 
 To illustrate this, simply create a file called f.i. `test.sh` with this content:
 
