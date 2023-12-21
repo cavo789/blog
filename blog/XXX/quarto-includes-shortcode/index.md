@@ -62,5 +62,5 @@ Now, by running, f.i., `quarto render main.qmd --to html`, Quarto will merge fil
 :::info What is a `.qmd` files?
 For Quarto, the extension isn't very important: whether it's `.qmd` or `.md`, there's no difference in treatment.
 
-On the other hand, it's probably more interesting for us to use the `.qmd` extension when using a Quarto-specific syntax, as is the case here. 
+On the other hand, it's probably more interesting for us to use the `.qmd` extension when using a Quarto-specific syntax, as is the case here.
 :::

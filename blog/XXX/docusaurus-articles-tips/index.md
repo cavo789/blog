@@ -7,7 +7,7 @@ tags: [markdown, docusaurus, tips]
 draft: true
 enableComments: true
 ---
-# Some tips and tricks when written articles for Docusaurus 
+# Some tips and tricks when written articles for Docusaurus
 
 ![Some tips and tricks when written articles for Docusaurus](/img/docusaurus_tips_banner.jpg)
 
@@ -21,7 +21,7 @@ This article is by no means exhaustive, but for me it's a reminder of the featur
 
 [Official documentation](https://docusaurus.io/docs/blog#blog-list)
 
-In blog mode, your article is divided into two parts: the introduction with a *Read More* link, and then the main part of the article. 
+In blog mode, your article is divided into two parts: the introduction with a *Read More* link, and then the main part of the article.
 
 To activate this feature, simply add the line `<!-- truncate -->` (preceded and followed by an empty line) where you wish to distinguish between the introduction and the main part.
 

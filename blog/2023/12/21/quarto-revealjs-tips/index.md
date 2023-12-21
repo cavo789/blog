@@ -4,7 +4,6 @@ title: Some tips and tricks for Quarto when rendering as a reveal.js slideshow
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
 tags: [markdown, powerpoint, quarto, revealjs, tips]
-draft: true
 enableComments: true
 ---
 # Some tips and tricks for Quarto when rendering as a reveal.js slideshow
@@ -22,7 +21,7 @@ In this article, we'll take a quick look at a few tips and tricks to make your r
 A background, a title and some style:
 
 ```markdown
-# Merry christmas {background-image="images/winter.jpg" style="text-align: center; background-color: #cfb0f399; color: #210753;"}
+# Merry Christmas {background-image="images/winter.jpg" style="text-align: center; background-color: #cfb0f399; color: #210753;"}
 ```
 
 ![Adding a background image to a slide](./images/background-title-style.png)
@@ -45,11 +44,11 @@ You can ask the browser to resize the image so it's fully displayed. This is the
 
 The slide below is using `cover` and, no, not really attractive.
 
-![](./images/background-cover.png)
+![Background-size is set to cover](./images/background-cover.png)
 
 The second slide is using `contain` and, at least, we can see what the lazy man was trying to tell us.
 
-![](./images/background-contain.png)
+![Background-size is set to contain](./images/background-contain.png)
 
 ## Using inline css
 
@@ -99,7 +98,7 @@ format:
 ![](images/mimikyu.jpg){style="width:400px;"}
 ```
 
-Now, create the `custom.css` file in the same folder than your markdown one and, for instance, set the slide background to yellow:
+Now, create the `custom.css` file in the same folder as your markdown one and, for instance, set the slide background to yellow:
 
 ```css
 /*-- scss:defaults --*/
@@ -200,7 +199,7 @@ The idea is to split the slides in four parts and display content clockwise, sta
 
 You can write messages in your presentation that will not be displayed when the slideshow is played, but only as a second screen when the presenter wishes.
 
-The example below illustrate this. The way to insert such presenter's notes is by using the `::: notes` block
+The example below illustrate this. The way to insert such presenter's notes is by using the `::: notes` block.
 
 ```markdown
 ##
@@ -218,7 +217,7 @@ The example below illustrate this. The way to insert such presenter's notes is b
 :::
 
 ::: notes
-On the left side, you've ... and, on the right side, the first image is ....
+On the left side, you have ... and, on the right side, the first image is ....
 
 The second image has been ...
 :::
@@ -228,7 +227,7 @@ The second image has been ...
 ![](images/image_4.jpg)
 ```
 
-So, in the example above, we'll have two slides. By pressing the <kbd>s</kbd> touch on the keyboard (<span style={{color: 'blue'}}>s for speaker</span>) a new window will be displayed.
+So, in the example above, we'll have two slides. By pressing the <kbd>s</kbd> touch on the keyboard (<span style={{color: 'blue'}}>s for speakers</span>) a new window will be displayed.
 
 When you have two screens, on the first you'll display your presentation without the notes (left screen below) and on the second you'll display the notes (right screen below).
 
@@ -236,11 +235,11 @@ If you share your screen through a tool like Teams or Zoom, same thing; you shar
 
 ![Speaker notes](./images/speaker-notes.png)
 
-As you can see on the image above, the speaker notes are displaying valuable information's as the elapsed time since the start of the presentation, the current time and the next slide to make your transition easier.
+As you can see on the image above, the speaker notes are displaying valuable information as the elapsed time since the start of the presentation, the current time and the next slide to make your transition easier.
 
 ## Define a name for your slide
 
-By default, reveal.js will generate a slug from the title so you can reference the slide in an URL.
+By default, reveal.js will generate a slug from the title so you can reference the slide in a URL.
 
 Consider the following example:
 

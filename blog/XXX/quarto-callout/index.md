@@ -13,7 +13,7 @@ enableComments: true
 
 A callout (called *admonition* by [Docusaurus](https://docusaurus.io/docs/markdown-features/admonitions)) is a special syntax used to highlight a paragraph, f.i. a *Pay attention to...* or *Tip: Did you know that...* box.
 
-On this blog powered by Docusaurus, the syntax for *admonition* is 
+On this blog powered by Docusaurus, the syntax for *admonition* is
 
 ```markdown
 :::caution Pay attention to...
