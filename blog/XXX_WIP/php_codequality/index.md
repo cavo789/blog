@@ -56,7 +56,7 @@ As said earlier, tools needs to learn what is your standards. You can define the
 
 Let's say: you're coding something like a plugin for the Joomla CMS. So, the question would be *Are there rules shared by the Joomla community?* and the answer is yes. You can read the post on [https://docs.joomla.org/Joomla_CodeSniffer](https://docs.joomla.org/Joomla_CodeSniffer) and the rules can be retrieved on Github: [Joomla rules](https://github.com/joomla/coding-standards/blob/master/Joomla/ruleset.xml).
 
-## Pratical example
+## Practical example
 
 If you already have a PHP project on your disk, please skip the next chapter.
 
