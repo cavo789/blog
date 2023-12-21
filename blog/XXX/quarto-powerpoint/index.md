@@ -17,6 +17,10 @@ In this article, we'll create a `pptx` file from our Markdown documentation.
 
 <!-- truncate -->
 
+:::tip Docker image with Quarto
+If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](docker-quarto).
+:::
+
 ## Syntax
 
 The official documentation of Quarto for rendering PowerPoint slides can be found on [https://quarto.org/docs/presentations/powerpoint.html](https://quarto.org/docs/presentations/powerpoint.html).

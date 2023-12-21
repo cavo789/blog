@@ -16,6 +16,10 @@ In this article, we'll take a quick look at a few tips and tricks to make your r
 
 <!-- truncate -->
 
+:::tip Docker image with Quarto
+If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](docker-quarto).
+:::
+
 ## Adding a background image to a slide
 
 A background, a title and some style:
@@ -23,6 +27,8 @@ A background, a title and some style:
 ```markdown
 # Merry Christmas {background-image="images/winter.jpg" style="text-align: center; background-color: #cfb0f399; color: #210753;"}
 ```
+
+*To run this example, run `quarto render slides.md --to revealjs`.*
 
 ![Adding a background image to a slide](./images/background-title-style.png)
 
@@ -42,6 +48,8 @@ You can ask the browser to resize the image so it's fully displayed. This is the
 ## {background-image="images/2024.jpg" background-size="contain"}
 ```
 
+*To run this example, run `quarto render slides.md --to revealjs`.*
+
 The slide below is using `cover` and, no, not really attractive.
 
 ![Background-size is set to cover](./images/background-cover.png)
@@ -59,6 +67,8 @@ You can apply styles to inline text by creating spans using `[]` to surround the
 
 To draw attention to a specific part of the text, you might want to make it [red]{style="color: red;"} with a [yellow background]{style="background-color: yellow;"}; [like this]{style="color: red; background-color: yellow;"}.
 ```
+
+*To run this example, run `quarto render slides.md --to revealjs`.*
 
 This is correctly rendered in HTML:
 
@@ -80,6 +90,8 @@ Would you like to see a candy dog?
 :::
 ```
 
+*To run this example, run `quarto render slides.md --to revealjs`.*
+
 ![It's a candy dog](./images/candy-dog.gif)
 
 ## Use a custom css
@@ -97,6 +109,8 @@ format:
 
 ![](images/mimikyu.jpg){style="width:400px;"}
 ```
+
+*To run this example, run `quarto render slides.md --to revealjs`.*
 
 Now, create the `custom.css` file in the same folder as your markdown one and, for instance, set the slide background to yellow:
 
@@ -128,6 +142,8 @@ You can use `columns` to divide your slide:
 :::
 :::
 ```
+
+*To run this example, run `quarto render slides.md --to revealjs`.*
 
 ![Columns](./images/columns.png)
 
@@ -193,6 +209,8 @@ The idea is to split the slides in four parts and display content clockwise, sta
 :::
 ```
 
+*To run this example, run `quarto render slides.md --to revealjs`.*
+
 ![Four quadrants](./images/four-quadrants.gif)
 
 ## Using speaker notes
@@ -227,6 +245,8 @@ The second image has been ...
 ![](images/image_4.jpg)
 ```
 
+*To run this example, run `quarto render slides.md --to revealjs`.*
+
 So, in the example above, we'll have two slides. By pressing the <kbd>s</kbd> touch on the keyboard (<span style={{color: 'blue'}}>s for speakers</span>) a new window will be displayed.
 
 When you have two screens, on the first you'll display your presentation without the notes (left screen below) and on the second you'll display the notes (right screen below).
@@ -252,6 +272,8 @@ Elit ad fugiat proident culpa sint qui id pariatur nostrud ullamco velit irure t
 
 Occaecat minim eu veniam laborumanim. Nostrud duis eiusmod ut amet velit commodo. Aliqua laborum cillum officia culpa quis duis enim cillum esse duis excepteur cillum do qui. Veniam dolore enim qui labore proident. Minim ipsum nisi Lorem cillum proident labore cupidatat aliqua pariatur. Nisi id magna incididunt et culpa.
 ```
+
+*To run this example, run `quarto render slides.md --to revealjs`.*
 
 The generated URL for the first slide will be `http://[...]index.html#/elit-ad-fugiat-proident-culpa-sint` and, for the second slide, `http://[...]index.html#/cillum-do-et-commodo-minim-ullamco-elit-culpa`.
 

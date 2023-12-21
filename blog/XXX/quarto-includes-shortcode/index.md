@@ -27,6 +27,10 @@ Quarto will then merge the three files when you'll render `main.qmd`.
 
 <!-- truncate -->
 
+:::tip Docker image with Quarto
+If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](docker-quarto).
+:::
+
 ## Includes tag
 
 The tag is simple, you just need to specify the relative path to the file to include. Get in-depth syntax on the [official documentation](https://quarto.org/docs/authoring/includes.html)

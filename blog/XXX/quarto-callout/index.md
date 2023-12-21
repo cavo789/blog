@@ -37,6 +37,10 @@ Quarto implements this a little differently, so let's have a look...
 
 <!-- truncate -->
 
+:::tip Docker image with Quarto
+If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](docker-quarto).
+:::
+
 ## Syntax
 
 Unfortunately, the syntax is not part of the standard Markdown language so every tool has his own actually.

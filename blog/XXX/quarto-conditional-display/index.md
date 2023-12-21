@@ -21,6 +21,10 @@ And, if my goal is to generate a slideshow, the last part of my documentation wi
 
 <!-- truncate -->
 
+:::tip Docker image with Quarto
+If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](docker-quarto).
+:::
+
 ## content-visible when
 
 The syntax is very easy since we need to use the special tag `:::` to delimitate an area in the file and then use a special filter called `content-visible`. Get in-depth syntax on the [official documentation](https://quarto.org/docs/authoring/conditional.html)

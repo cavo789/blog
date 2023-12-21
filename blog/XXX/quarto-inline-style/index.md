@@ -21,6 +21,10 @@ You can apply styles to inline text by creating spans using `[]` to surround the
 
 <!-- truncate -->
 
+:::tip Docker image with Quarto
+If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](docker-quarto).
+:::
+
 > [source](https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/posts/11-spans/).
 
 So to put a text like *red* in <span style={{color: 'red'}}>red</span>, the syntax for Quarto is `[red]{style="color: red;"}`. The text enclosed between brackets will get the specified inline CSS style.

@@ -1,6 +1,6 @@
 ---
 slug: docker-quarto
-title: Running Quarto Markdown in docker
+title: Running Quarto Markdown in Docker
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
 tags: [docker, markdown, pandoc, quarto, revealjs]
@@ -8,7 +8,7 @@ enableComments: true
 ---
 # Running Quarto Markdown in Docker
 
-![Running Quarto Markdown in docker](/img/quarto_tips_banner.jpg)
+![Running Quarto Markdown in Docker](/img/quarto_tips_banner.jpg)
 
 [Quarto](https://quarto.org/) is a tool for producing PDF, Word document, HTML web pages, ePub files, slideshows and many, many more output based on a Markdown file.
 
