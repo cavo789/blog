@@ -40,31 +40,31 @@ COLOR_YELLOW:=33
 
 .PHONY: bash
 bash:
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Start an interactive shell in the Docker container; type exit to quit"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Start an interactive shell in the Docker container; type exit to quit"
 
 .PHONY: code
 code:
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog in Visual Studio Code"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog in Visual Studio Code"
 
 .PHONY: build
 build:
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
 
 .PHONY: deploy
 deploy: build
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Deploy static pages to the webserver"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Deploy static pages to the webserver"
 
 .PHONY: install
 install:
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
 
 .PHONY: start
 start:
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog (http://localhost:3000)"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog (http://localhost:3000)"
 
 .PHONY: watch
 watch:
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Run Docusaurus watcher and open the blog on the localhost. When done, just start a browser and surf to http://localhost:3000"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Run Docusaurus watcher and open the blog on the localhost. When done, just start a browser and surf to http://localhost:3000"
 ```
 
 :::danger
@@ -116,7 +116,7 @@ COLOR_YELLOW:=33
 
 .PHONY: bash
 bash:
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Start an interactive shell in the Docker container; type exit to quit"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Start an interactive shell in the Docker container; type exit to quit"
 
 ```
 
@@ -135,12 +135,12 @@ COLOR_YELLOW:=33
 .PHONY: help
 // highlight-next-line
 help: ## Show the help with the list of commands
- // highlight-next-line
- @clear
- // highlight-next-line 
- @awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
- // highlight-next-line
- @echo ""
+    // highlight-next-line
+	@clear
+    // highlight-next-line 
+	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+    // highlight-next-line
+	@echo ""
 ```
 
 Right now, if you type `make` on your console, you'll get this:
@@ -170,42 +170,42 @@ COLOR_YELLOW:=33
 
 .PHONY: help
 help: ## Show the help with the list of commands
- @clear
- @awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
- @echo ""
+	@clear
+	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+	@echo ""
 
 .PHONY: bash
 bash: ## Open an interactive shell in the Docker container
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Start an interactive shell in the Docker container; type exit to quit"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Start an interactive shell in the Docker container; type exit to quit"
 
 .PHONY: code
 code: ## Open Visual Studio Code
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog in Visual Studio Code"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog in Visual Studio Code"
 
 .PHONY: build
 build: ## Generate a newer version of the build directory
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
 
 .PHONY: deploy
 deploy: build ## Deploy static pages to the webserver
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Deploy static pages to the webserver"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Deploy static pages to the webserver"
 
 .PHONY: install
 install: ## The very first time, after having cloned this blog, you need to install Docusaurus before using it.
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
 
 .PHONY: start
 start: ## Start the local webserver and open the webpage
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog (http://localhost:3000)"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog (http://localhost:3000)"
 
 .PHONY: watch
 watch: ## Start the Docusaurus watcher. Listen any changes to a .md file and reflect the change onto the website
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Run Docusaurus watcher and open the blog on the localhost. When done, just start a browser and surf to http://localhost:3000"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Run Docusaurus watcher and open the blog on the localhost. When done, just start a browser and surf to http://localhost:3000"
 ```
 
 And now, by running `make` you'll get a nice help screen:
 
-```bash
+```text
 Usage:
   make <target>
 
@@ -220,3 +220,72 @@ Usage:
 ```
 
 As you can see, the order of targets respect the order in your file. `help` is displayed first because it's the first target in the file so, think to reorder targets in your file based on your logic (f.i. alphabetically).
+
+## Step 4 - Add a subtitle between each "main section"
+
+Imagine you have dozens of shares... It would be nice to group them into sections: everything concerning your application, everything relating to your database, actions of the Code Analysis type, and so on.
+
+To do this, simply add a line with this syntax: `##@ My project` as illustrated below:
+
+```makefile
+SHELL:=bash
+
+COLOR_YELLOW:=33
+
+.PHONY: help
+help: ## Show the help with the list of commands
+	@clear
+	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+	@echo ""
+
+// highlight-next-line
+##@ My project              Helpers to work with the application
+
+.PHONY: bash
+bash: ## Open an interactive shell in the Docker container
+    # [...]
+
+// highlight-next-line
+##@ Data quality            Code analysis tools
+
+.PHONY: phan
+phan: ## Run phan analysis
+    # [...]
+
+.PHONY: php-cs-fixer
+php-cs-fixer: ## Run php-cs-fixer
+    # [...]
+
+// highlight-next-line
+##@ Database management     Working with the database
+
+.PHONY: phpmyadmin
+phpmyadmin: ## Run phpmyadmin web interface
+    # [...]
+```
+
+And here is the final result:
+
+```text
+Usage:
+  make <target>
+
+  help                  Show the help with the list of commands
+
+My project              Helpers to work with the application
+  bash                  Open an interactive shell in the Docker container
+
+Data quality            Code analysis tools
+  phan                  Run phan analysis
+  php-cs-fixer          Run php-cs-fixer
+
+Database management     Working with the database
+  phpmyadmin            Run phpmyadmin web interface
+```
+
+:::tip Now we have a clear grouping of actions. Much better.
+:::
+
+## Take a look on mine, for this blog
+
+This blog is maintained using such makefile, you can get a copy here: [https://github.com/cavo789/blog/blob/main/makefile](https://github.com/cavo789/blog/blob/main/makefile)

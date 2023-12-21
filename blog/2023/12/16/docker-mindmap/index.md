@@ -3,7 +3,7 @@ slug: docker-mindmap
 title: Build a mind map using Docker and Markdown
 authors: [christophe]
 image: ./images/social_media.png
-tags: [makefile, mindmap, tips]
+tags: [docker, mindmap, tips, vizualization]
 enableComments: true
 ---
 # Build a mind map using Docker and Markdown
