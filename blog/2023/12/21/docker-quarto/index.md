@@ -24,11 +24,11 @@ Until recently, I'd been using [pandoc](https://pandoc.org/) but, having taken t
 
 <!-- truncate -->
 
-Like always on this blog, we will not install Quarto the old-fashioned way. Instead, we'll create our own Docker image.
+Like always on this blog, you will not install Quarto the old-fashioned way. Instead, you'll create our own Docker image.
 
 ## Let's play
 
-As usual, we will now create a temporary folder for our experiments. Please start a Linux shell and run `mkdir -p /tmp/docker-quarto && cd $_`.
+As usual, you will now create a temporary folder for your experiments. Please start a Linux shell and run `mkdir -p /tmp/docker-quarto && cd $_`.
 
 ### Create your own Docker image
 
@@ -160,9 +160,9 @@ Now, Quarto is like a super-powered writing tool that understands Markdown and c
 So, if you want to create documents, presentations, or even books, Quarto and Markdown can be your friends. They'll help you organize your thoughts, add cool features, and even share your work with the world.
 ```
 
-Now, back to your Linux console and we'll convert that file to a pdf. **Please refers to the official documentation of [Quarto](https://quarto.org/) to get in-depth information about it.**
+Now, back to your Linux console and you'll convert that file to a pdf. **Please refers to the official documentation of [Quarto](https://quarto.org/) to get in-depth information about it.**
 
-To convert to a PDF, the instruction to fire is `quarto render test.md --to pdf`. But since we're using Quarto from a Docker image, the instruction becomes `docker run -it --rm -v ${PWD}:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf`.
+To convert to a PDF, the instruction to fire is `quarto render test.md --to pdf`. But since you're using Quarto from a Docker image, the instruction becomes `docker run -it --rm -v ${PWD}:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf`.
 
 :::tip Docker CLI reminder
 As a reminder, the used Docker run command are (almost always the same):
@@ -217,8 +217,8 @@ Output created: test.pdf
 
 ![Your PDF file](./images/pdf_version.png)
 
-:::tip Hide non essential information's
-Add the `--log-level warning` CLI argument to Quarto to ask him to show only warning (and error) messages. Non essential output will be hidden and you'll keep a clean console. The new command to use is thus `docker run -it --rm -v ${PWD}:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf --log-level warning` 
+:::tip Hide non-essential information
+Add the `--log-level warning` CLI argument to Quarto to ask him to show only warning (and error) messages. Non-essential output will be hidden and you'll keep a clean console. The new command to use is thus `docker run -it --rm -v ${PWD}:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf --log-level warning`
 :::
 
 ### Using Quarto and generate a HTML file
@@ -235,7 +235,7 @@ Open the `test.html` file and you'll get this:
 
 ![Revealjs - one slide](./images/revealjs_version1.png)
 
-Ok, we've just one slide now. Reopen the `test.md` file and we'll quickly insert *slide breaks*. This can be done using the `----` syntax:
+Ok, you've just one slide now. Reopen the `test.md` file and you'll insert *slide breaks*. This can be done using the `----` syntax:
 
 ```markdown
 # What's is Quarto? Explain like I'm five
@@ -260,5 +260,5 @@ Rerun `docker run -it --rm -v ${PWD}:/input -w /input -u $(id -u):$(id -g) cavo7
 ![Revealjs - slide 3](./images/revealjs_slide3.png)
 
 :::tip Just deploy your slideshow online
-The nice thing now is that your slideshow is ready to be deployed on your remote server. Copy the html file and the associated folder (in our use case here, file `test.html` and folder `test_files`) to your FTP server f.i. and your website can be publicly accessed. Nice is isn't it?
+The nice thing now is that your slideshow is ready to be deployed on your remote server. Copy the html file and the associated folder (in our use case here, file `test.html` and folder `test_files`) to your FTP server f.i. and your website can be publicly accessed. Nice, isn't it?
 :::
