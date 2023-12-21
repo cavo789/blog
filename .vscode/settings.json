@@ -18,6 +18,7 @@
         "phpmyadmin",
         "Pinterest",
         "resethits",
+        "reveal.js",
         "ruleset",
         "shiring",
         "tadaaa",
@@ -32,5 +33,14 @@
     ],
     "files.exclude": {
         "**/node_modules/**": true,
-    }
+    },
+    "cSpell.ignorePaths": [
+        "package-lock.json",
+        "node_modules",
+        "vscode-extension",
+        ".git/objects",
+        ".vscode",
+        ".vscode-insiders",
+        "blog/XXX/quarto-powerpoint/index.md"
+    ]
 }

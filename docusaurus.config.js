@@ -12,7 +12,7 @@ const config = {
   title: 'Christophe Avonture',
   tagline: 'Personal blog about Docker, PHP, Joomla and much more',
   favicon: 'img/favicon.ico',
-  
+
   // Set the production url of your site here
   url: 'https://www.avonture.be',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -43,7 +43,7 @@ const config = {
       ({
         docs: false,
         blog: {
-          routeBasePath: '/blog',          
+          routeBasePath: '/blog',
           editUrl: 'https://github.com/cavo789/blog/edit/main/',
           showReadingTime: true,
           blogSidebarTitle: 'All posts',
@@ -74,7 +74,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      
+
       // announcementBar: {
       //   id: 'support_us',
       //   content:
@@ -97,23 +97,23 @@ const config = {
           height: 40,
         },
         items: [
-          { 
+          {
             href: '/blog',
             label: 'Blog',
           },
-          { 
+          {
             href: '/blog/tags',
             label: 'Tags',
           },
-          { 
+          {
             href: '/resources',
             label: 'Resources',
           },
-          { 
+          {
             href: '/tutorials',
             label: 'Tutorials',
           },
-          { 
+          {
             href: 'https://www.avonture.be/v1',
             label: 'v1',
           },

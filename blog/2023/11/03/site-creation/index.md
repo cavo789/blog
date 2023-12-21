@@ -11,8 +11,9 @@ enableComments: true
 
 ![Creation of this blog](./images/header.png)
 
-*Updated 2023-11-03, search engine, prism and sitemap added.*
-*Updated 2023-11-05, adding giscus.*
+- *Updated 2023-11-03, search engine, prism and sitemap added.*
+- *Updated 2023-11-05, adding giscus.*
+- *Updated 2023-12-21, adding [giscus.json](https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#origins) to allow comments to be displayed only on the blog.*
 
 Here are the steps I followed to create this blog.
 
