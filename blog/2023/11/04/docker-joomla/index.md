@@ -211,7 +211,7 @@ services:
 
 To retrieve the list of all tags, please navigate to [https://hub.docker.com/_/joomla/tags](https://hub.docker.com/_/joomla/tags).
 
-During writing this article, Joomla *latest* correspond to Joomla version 4.4.1. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: *5.0.0-php8.2-apache*. So just replace `image: joomla` with `image: 5.0.1-php8.2-apache` in `docker-compose.yml` and it's done. You're forcing a version. **Note: make sure to use a tag ending by `-apache`.**
+During writing this article, Joomla *latest* correspond to Joomla version 4.4.1. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: *5.0.1-php8.2-apache*. So just replace `image: joomla` with `image: joomla:5.0.1-php8.2-apache` in `docker-compose.yml` and it's done. You're forcing a version. **Note: make sure to use a tag ending by `-apache`.**
 
 ```yaml
 version: '3.9'
@@ -219,7 +219,7 @@ version: '3.9'
 services:
   joomla:
     // highlight-next-line
-    image: 5.0.1-php8.2-apache
+    image: joomla:5.0.1-php8.2-apache
 [...]
 ```
 
@@ -974,7 +974,7 @@ This is how:
 
   services:
     joomla:
-      image: 5.0.1-php8.2-apache
+      image: joomla:5.0.1-php8.2-apache
       container_name: kingsbridge-app
       restart: always
       ports:
