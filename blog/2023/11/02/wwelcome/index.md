@@ -15,7 +15,7 @@ Here is my chance to stay behind the computer and play with a green dinosaur!
 
 <!-- truncate -->
 
-![Docusaurus Plushie](./docusaurus-plushie-banner.jpeg)
+![Docusaurus Plushie](./images/docusaurus-plushie-banner.jpg)
 
 > Docusaurus is an open-source, freely available static site generator (SSG) developed by the team behind Facebook and built on React.
 

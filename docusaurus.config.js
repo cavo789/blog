@@ -11,7 +11,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'Christophe Avonture',
   tagline: 'Personal blog about Docker, PHP, Joomla and much more',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.jpg',
 
   // Set the production url of your site here
   url: 'https://www.avonture.be',

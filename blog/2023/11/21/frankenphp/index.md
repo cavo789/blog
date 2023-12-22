@@ -2,13 +2,13 @@
 slug: frankenphp-docker-joomla
 title: FrankenPHP, a modern application server for PHP
 authors: [christophe]
-image: ./images/social_media.png
+image: ./images/social_media.jpg
 tags: [docker, frankenphp, joomla]
 enableComments: true
 ---
 # FrankenPHP, a modern application server for PHP
 
-![FrankenPHP](./images/social_media.png)
+![FrankenPHP](./images/social_media.jpg)
 
 <!-- markdownlint-disable MD036 -->
 **Version updated on November 21, 2023 after a discussion with Alexandre about making his Docker image available on hub.docker.com**
@@ -75,7 +75,7 @@ By running `docker compose pull`, Docker will download the two images; the one w
 
 Then, you just need to create containers based on the images by running `docker compose up`. You'll start the get logs messages on the console *(because, here, you've not used the `--detach` flag for the illustration)*:
 
-![Running FrankenPHP](./images/running_frankenphp.png)
+![Running FrankenPHP](./images/running_frankenphp.jpg)
 
 :::caution Please wait until MySQL is ready
 You have now to wait **a few minutes** before the database connection is ready. You will have the feeling the installation fails due to a lot of `[ERROR] Connection refused` lines but just wait.
@@ -83,7 +83,7 @@ You have now to wait **a few minutes** before the database connection is ready. 
 
 The fact is Joomla will try to connect to MySQL while the MySQL container is not ready to handle connections. You'll then see a lot of `[ERROR] Connection refused`. Stay patient and after a while, you'll get this:
 
-![Joomla has been installed](./images/frankenphp_joomla_installed.png)
+![Joomla has been installed](./images/frankenphp_joomla_installed.jpg)
 
 :::note Logs can be different in your version
 Depending on the version of the used Docker images, scripts and version of Joomla, the logs statements can differs in time.
@@ -95,7 +95,7 @@ When everything has been successfully done, just run surf to `https://localhost:
 Please note that FrankenPHP is delivering your site using `https`. The way Alexandre has built his script, the port number is not fixed. To determine which port to use, start a new Linux console and run `docker container list` to get the list of running containers. You'll see the port to use to access to your FrankenPHP site in the `PORTS` column. Also displayed in your `Docker Desktop` Windows application, go then to the list of containers to get the port.
 :::
 
-![Joomla is now running on FrankenPHP](./images/frankenphp_joomla_homepage.png)
+![Joomla is now running on FrankenPHP](./images/frankenphp_joomla_homepage.jpg)
 
 You'll perhaps not see a major increase in speed on your machine since you're the only visitor but it's nice to think that you're surfing so fast ... locally ;).
 

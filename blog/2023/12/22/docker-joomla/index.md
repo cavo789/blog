@@ -1007,11 +1007,10 @@ This is how:
 Make sure, for each project, to update the `name:` line and if you plan to be able to run your Joomla sites concurrently, make sure to update the port number for Joomla and chose a new one every time (can be `80`, `81`, `82` and so one).
 :::
 
-## FrankenPHP instead of Apache
+## Associated articles
 
-A new player is entering the game: [FrankenPHP](https://frankenphp.dev/). This is a new application server which can be used instead of Apache or nginx.
-
-Based on their documentation, it is 3.5 faster than PHP FPM. If you want to learn how to run Joomla on FrankenPHP, please read this post article: [FrankenPHP, a modern application server for PHP](/blog/frankenphp-docker-joomla). We'll discover the work of [Alexandre Elisé](https://github.com/alexandreelise/frankenphp-joomla) on this.
+* [FrankenPHP, a modern application server for PHP](/blog/frankenphp-docker-joomla)
+* [Update php.ini when using a Docker image](docker-php-ini)
 
 ## Your comments are more than welcome
 

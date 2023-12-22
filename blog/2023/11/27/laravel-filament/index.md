@@ -20,6 +20,6 @@ Filament is built using the latest technologies: the **TALL** stack. This acrony
 
 There is an [online demo](https://demo.filamentphp.com/) to quickly see the benefits of Filament if you need to develop a management interface with Laravel.
 
-![Filament Demo](./images/filament_demo.png)
+![Filament Demo](./images/filament_demo.jpg)
 
 Read more: [https://filamentphp.com/](https://filamentphp.com/) and [https://github.com/filamentphp/filament](https://github.com/filamentphp/filament)
