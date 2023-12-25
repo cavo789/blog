@@ -28,7 +28,7 @@ Quarto will then merge the three files when you'll render `main.qmd`.
 <!-- truncate -->
 
 :::tip Docker image with Quarto
-If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](docker-quarto).
+If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](/blog/docker-quarto).
 :::
 
 ## Includes tag

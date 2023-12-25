@@ -4,7 +4,6 @@ title: Use Quarto and create a PowerPoint slideshow
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
 tags: [markdown, powerpoint, quarto, revealjs, tips]
-draft: true
 enableComments: true
 ---
 # Use Quarto and create a PowerPoint slideshow
@@ -13,12 +12,12 @@ enableComments: true
 
 Quarto can convert a markdown file to a revealjs HTML slideshow but, too, can create a `pptx` file that you can open and play in Microsoft PowerPoint.
 
-In this article, we'll create a `pptx` file from our Markdown documentation.
+In this article, we'll create a `pptx` file from our markdown documentation.
 
 <!-- truncate -->
 
 :::tip Docker image with Quarto
-If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](docker-quarto).
+If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](/blog/docker-quarto).
 :::
 
 ## Syntax
@@ -70,5 +69,5 @@ And you'll obtain this:
 You'll find a lot of tips and tricks on the [official documentation page](https://quarto.org/docs/presentations/powerpoint.html).
 
 :::tip Did you know you can generate an online slideshow easily?
-Instead of running `quarto render slides.md --to pptx` and get a PowerPoint *offline* file, just run `quarto render slides.md --to revealjs` and enjoy your slideshow in your browser. Copy files to internet and everyone can consult your great work.
+Instead of running `quarto render slides.md --to pptx` and get a PowerPoint *offline* file, just run `quarto render slides.md --to revealjs` and enjoy your slideshow in your browser. Copy files to the internet and everyone can consult your great work.
 :::

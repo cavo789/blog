@@ -5,7 +5,6 @@ authors: [christophe]
 image: ./images/social_media.jpg
 tags: [makefile, tips]
 enableComments: true
-draft: true
 ---
 # Linux Makefile - Adding a help screen
 
@@ -71,7 +70,7 @@ watch:
 The indentation in a makefile **SHOULD BE** made using tabs and not spaces, this is crucial. So please make sure, if your file didn't work, you know what to do.
 :::
 
-That file contains a few *targets* (=actions) and a simple `printf` statement to display a text. Except echoing something into the console, that `makefile` does nothing.
+That file contains a few *targets* (=actions) and a simple `printf` statement to display a text. Except echoing something into the console that `makefile` does nothing.
 
 ```bash
 ❯ ls -alh
