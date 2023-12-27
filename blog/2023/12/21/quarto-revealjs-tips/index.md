@@ -79,7 +79,7 @@ The slide below is using `cover` and, no, not really attractive.
 
 ![Background-size is set to cover](./images/background-cover.png)
 
-The second slide is using `contain` and, at least, we can see what the lazy man was trying to tell us.
+The second slide is using `contain` and, at least, we can see what the sloth was trying to tell us.
 
 ![Background-size is set to contain](./images/background-contain.png)
 
