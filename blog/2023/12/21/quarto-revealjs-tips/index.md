@@ -20,7 +20,32 @@ In this article, we'll take a quick look at a few tips and tricks to make your r
 If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](/blog/docker-quarto).
 :::
 
-## Adding a background image to a slide
+## Working with slides
+
+### Create a title slide
+
+The [title slide](https://quarto.org/docs/presentations/revealjs/advanced.html#title-slide) is the first one of your presentation. You can add such slide with a few yaml lines:
+
+```markdown
+---
+title: My Slide Show
+title-slide-attributes:
+  data-background-image: ./img/background.jpg
+  data-background-size: cover
+  data-background-opacity: "0.9"
+---
+# Slide 1
+
+# Slide 2
+
+# Slide 3
+```
+
+The slideshow will have four slides, the first one will be the title-slide.
+
+![Title slide](./images/title-slide.png)
+
+### Adding a background image to a slide
 
 A background, a title and some style:
 
@@ -32,7 +57,7 @@ A background, a title and some style:
 
 ![Adding a background image to a slide](./images/background-title-style.png)
 
-### Background-size contain or cover
+#### Background-size contain or cover
 
 Sometimes the image display isn't what you'd like; this is the case when the image is too large and/or the slide too narrow.
 
@@ -58,23 +83,47 @@ The second slide is using `contain` and, at least, we can see what the lazy man 
 
 ![Background-size is set to contain](./images/background-contain.png)
 
-## Using inline css
+### Big text
 
-You can apply styles to inline text by creating spans using `[]` to surround the text you want to style and `{}` to define the style you want to apply.
+The `r-fit-text` class ([official doc](https://quarto.org/docs/presentations/revealjs/advanced.html#fit-text)) will give the maximum size to your content i.e.
 
 ```markdown
-# Inline style
+# 
 
-To draw attention to a specific part of the text, you might want to make it [red]{style="color: red;"} with a [yellow background]{style="background-color: yellow;"}; [like this]{style="color: red; background-color: yellow;"}.
+::: {.r-fit-text} 
+Big Text
+:::
 ```
 
-*To run this example, run `quarto render slides.md --to revealjs`.*
+![Big text](./images/big-text.png)
 
-This is correctly rendered in HTML:
+### Stretch
 
-![html](./images/html.png)
+The `r-stretch` class ([official doc](https://quarto.org/docs/presentations/revealjs/advanced.html#stretch)) is my preferred one.
 
-## Show an image on key press
+Consider the example below:
+
+```markdown
+# Slide 1
+
+Here is an image:
+
+![](image.jpg){.r-stretch}
+
+Some text after the image.
+```
+
+This will generate this slide:
+
+![Stretch 1](./images/stretch-1.png)
+
+Adding a lot of more text / paragraphs will give this new slide:
+
+![Stretch 2](./images/stretch-2.png)
+
+The image height will be resized automatically so both text and images can be displayed on the same slide. If you have less text, the height of the image will be bigger, smaller otherwise. Without to have to manually resize the image on the disk. Very useful.
+
+### Show an image on key press
 
 Using `::: {.fragment .fade-up}` to define a content area, you are asking reveal.js to show its content only the next key sequence.
 
@@ -94,36 +143,7 @@ Would you like to see a candy dog?
 
 ![It's a candy dog](./images/candy-dog.gif)
 
-## Use a custom css
-
-Use the YAML header block for this.
-
-```markdown
----
-pagetitle: "Using my custom css"
-format:
-  revealjs:
-    theme: custom.css
----
-##
-
-![](images/mimikyu.jpg){style="width:400px;"}
-```
-
-*To run this example, run `quarto render slides.md --to revealjs`.*
-
-Now, create the `custom.css` file in the same folder as your markdown one and, for instance, set the slide background to yellow:
-
-```css
-/*-- scss:defaults --*/
-.reveal {
-    background-color: rgb(224, 226, 98);
-}
-```
-
-![Custom css](./images/custom-css.png)
-
-## Creating columns
+### Creating columns
 
 You can use `columns` to divide your slide:
 
@@ -147,7 +167,7 @@ You can use `columns` to divide your slide:
 
 ![Columns](./images/columns.png)
 
-### Four quadrants
+#### Four quadrants
 
 The example below comes from [https://mine.quarto.pub/hello-quarto/#/quarto-highlights](https://mine.quarto.pub/hello-quarto/#/quarto-highlights), a reveal.js slideshow made using Quarto.
 
@@ -213,51 +233,95 @@ The idea is to split the slides in four parts and display content clockwise, sta
 
 ![Four quadrants](./images/four-quadrants.gif)
 
-## Using speaker notes
+## CSS
 
-You can write messages in your presentation that will not be displayed when the slideshow is played, but only as a second screen when the presenter wishes.
+### Using inline css
 
-The example below illustrate this. The way to insert such presenter's notes is by using the `::: notes` block.
+You can apply styles to inline text by creating spans using `[]` to surround the text you want to style and `{}` to define the style you want to apply.
 
 ```markdown
-##
+# Inline style
 
-::: columns
-::: {.column width="70%"}
-![](images/image_1.jpg)
-:::
-
-::: {.column width="30%"}
-![](images/image_2.jpg)
-
-![](images/image_3.jpg)
-:::
-:::
-
-::: notes
-On the left side, you have ... and, on the right side, the first image is ....
-
-The second image has been ...
-:::
-
-##
-
-![](images/image_4.jpg)
+To draw attention to a specific part of the text, you might want to make it [red]{style="color: red;"} with a [yellow background]{style="background-color: yellow;"}; [like this]{style="color: red; background-color: yellow;"}.
 ```
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
-So, in the example above, we'll have two slides. By pressing the <kbd>s</kbd> touch on the keyboard (<span style={{color: 'blue'}}>s for speakers</span>) a new window will be displayed.
+This is correctly rendered in HTML:
 
-When you have two screens, on the first you'll display your presentation without the notes (left screen below) and on the second you'll display the notes (right screen below).
+![html](./images/html.png)
 
-If you share your screen through a tool like Teams or Zoom, same thing; you share the screen where the presentation is displayed (the first one) and keep the notes only for you.
+### Use a custom css
 
-![Speaker notes](./images/speaker-notes.png)
+Use the YAML header block for this.
 
-As you can see on the image above, the speaker notes are displaying valuable information as the elapsed time since the start of the presentation, the current time and the next slide to make your transition easier.
+```markdown
+---
+pagetitle: "Using my custom css"
+format:
+  revealjs:
+    theme: custom.css
+---
+##
 
-## Define a name for your slide
+![](images/mimikyu.jpg){style="width:400px;"}
+```
+
+*To run this example, run `quarto render slides.md --to revealjs`.*
+
+Now, create the `custom.css` file in the same folder as your markdown one and, for instance, set the slide background to yellow:
+
+```css
+/*-- scss:defaults --*/
+.reveal {
+    background-color: rgb(224, 226, 98);
+}
+```
+
+![Custom css](./images/custom-css.png)
+
+## Navigation
+
+### Vertical slides
+
+There are three types of navigation: `linear` (default one), `vertical` or `grid` ([official doc](https://quarto.org/docs/presentations/revealjs/advanced.html#vertical-slides)).
+
+If you use vertical or grid navigation, you should structure your slides using level 1 headings for the horizontal axis and level 2 headings for the vertical axis.
+
+In a normal, `linear` navigation, reaveljs will show each slide, whatever the key the user is pressing on his keyboard. In a `linear` navigation, as author, you are sure that your visitor will see each of them.
+
+In a `vertical` or `grid` navigation, it's just like you're showing the chapter's title and if the user press the <kbd>down</kbd> or <kbd>space</kbd>key, he will jump in the chapter (and this *vertically*). But if he is pressing the <kbd>right</kbd> key he'll skip it and go to the next chapter.
+
+The `navigation-mode` in the yaml header allows you to enable `vertical` mode, below an example:
+
+```markdown
+---
+title: "Presentation"
+format:
+  revealjs:
+    navigation-mode: vertical
+---
+
+# Slide 1
+
+## Slide 1.1
+
+# Slide 2
+
+## Slide 2.1
+
+## Slide 2.2
+
+## Slide 2.3
+```
+
+![Vertical navigation](./images/vertical.png)
+
+:::tip Press <kbd>esc</kbd> key
+The <kbd>esc</kbd> key allow you to see the structure of your revealjs slideshow.
+:::
+
+### Define a name for your slide
 
 By default, reveal.js will generate a slug from the title so you can reference the slide in a URL.
 
@@ -306,3 +370,49 @@ To do this, set the `data-menu-title` attribute; f.i.:
 <!-- highlight-next-line -->
 ## Cillum do et commodo minim ullamco elit culpa {#chapter1 data-menu-title="Chapter 1"}
 ```
+
+## Misc
+
+### Using speaker notes
+
+You can write messages in your presentation that will not be displayed when the slideshow is played, but only as a second screen when the presenter wishes.
+
+The example below illustrate this. The way to insert such presenter's notes is by using the `::: notes` block.
+
+```markdown
+##
+
+::: columns
+::: {.column width="70%"}
+![](images/image_1.jpg)
+:::
+
+::: {.column width="30%"}
+![](images/image_2.jpg)
+
+![](images/image_3.jpg)
+:::
+:::
+
+::: notes
+On the left side, you have ... and, on the right side, the first image is ....
+
+The second image has been ...
+:::
+
+##
+
+![](images/image_4.jpg)
+```
+
+*To run this example, run `quarto render slides.md --to revealjs`.*
+
+So, in the example above, we'll have two slides. By pressing the <kbd>s</kbd> touch on the keyboard (<span style={{color: 'blue'}}>s for speakers</span>) a new window will be displayed.
+
+When you have two screens, on the first you'll display your presentation without the notes (left screen below) and on the second you'll display the notes (right screen below).
+
+If you share your screen through a tool like Teams or Zoom, same thing; you share the screen where the presentation is displayed (the first one) and keep the notes only for you.
+
+![Speaker notes](./images/speaker-notes.png)
+
+As you can see on the image above, the speaker notes are displaying valuable information as the elapsed time since the start of the presentation, the current time and the next slide to make your transition easier.

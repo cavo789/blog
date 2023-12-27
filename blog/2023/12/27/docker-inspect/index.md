@@ -4,7 +4,6 @@ title: Docker inspect - Retrieve network's information
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 tags: [docker, network, tips]
-draft: true
 enableComments: true
 ---
 # Docker inspect - Retrieve network's information
@@ -108,5 +107,5 @@ You'll get something like this:
 ```
 
 :::tip jq
-If you don't have the `jq` binary yet, please read the [The jq utility for Linux](/blog/linux-jq) article.
+If you don't have the `jq` binary yet, please read the [The jq utility for Linux](/blog/linux-jq) article. See my article: [The jq utility for Linux](/blog/linux-jq).
 :::

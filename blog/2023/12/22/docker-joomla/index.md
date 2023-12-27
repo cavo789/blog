@@ -675,58 +675,6 @@ Using another port isn't mandatory. You can have several websites on the same po
 In this article, I'm using port `8080` because Joomla has used it in his default `docker-compose.yml` file. You're not forced to use that one, you can perfectly use `80` and not `8080`. In my daily work, I'm using ports `80`, `81`, `82`, `83`, ... varying the second figures for my projects.
 :::
 
-## Using phpmyadmin
-
-Alongside Joomla and MySQL, it would be useful to have access to the database of your Joomla website. Can we use f.i. *phpmyadmin*, *Adminer*  or *pgadmin* (for PostgreSQL) or ... ?
-
-The answer is, yes, of course.
-
-For the three mentioned above, there are official Docker images. For phpmyadmin, here it's: [https://hub.docker.com/_/phpmyadmin](https://hub.docker.com/_/phpmyadmin)
-
-To use it, just run this command: `docker run --name phpmyadmin -d --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin`.
-
-We will run the phpmyadmin (aka PMA) Docker image and
-
-* `--name phpmyadmin` allow us to give it a friendly name (optional)
-* `-d` is like `--detach`: the container should stay in up
-* `--link joomladb:db`: phpmyadmin should access to your Joomla database service. Remember the name in your `docker-compose.yml` file,
-* `--network kingsbridge_default`: your database server is accessible on the `kingsbridge_default` network and
-* `-p 8089:80` tells Docker that we wish to access the web interface of PMA on port `8089`
-
-:::tip
-If you have forgotten the name of the network used by your containers, run `docker compose up --detach` again and you will see it. Otherwise run `docker network list` to get the list of networks.
-
-```bash
-❯ docker network list
-NETWORK ID     NAME                  DRIVER    SCOPE
-ddb1c1606b76   bridge                bridge    local
-336cd6fec416   host                  host      local
-16d351a0e393   kingsbridge_default   bridge    local
-d8cdc43a7272   none                  null      local
-```
-
-:::
-
-To open phpmyadmin, start your browser and navigate to `http://127.0.0.1:8089`.
-
-![phpmyadmin](./images/phpmyadmin.png)
-
-Did you remember your MySQL credentials? It was `root` / `example`.
-
-![List of databases](./images/phpmyadmin_databases.png)
-
-## Using Adminer
-
-If you prefer [Adminer](https://hub.docker.com/_/adminer/), here is the command to run:
-
-```bash
-docker run -d --rm --name adminer --link joomladb:db --network kingsbridge_default -p 8088:8080 adminer
-```
-
-And here is the configured URL to use for Adminer: `http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db`.  (`joomla_db` is the name of the database we've created earlier in chapter [Install Joomla](#install-joomla))
-
-![adminer](./images/adminer.png)
-
 ## Did you prefer PostgreSQL or MariaDB
 
 So far, we've chosen to use MySQL as our database manager. Our `docker-compose.yml` file is the one, slightly modified, that can be found on [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla).
@@ -1010,7 +958,8 @@ Make sure, for each project, to update the `name:` line and if you plan to be ab
 ## Associated articles
 
 * [FrankenPHP, a modern application server for PHP](/blog/frankenphp-docker-joomla)
-* [Update php.ini when using a Docker image](docker-php-ini)
+* [Update php.ini when using a Docker image](/blog/docker-php-ini)
+* [Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/blog/docker-adminer-pgadmin-phpmyadmin)
 
 ## Your comments are more than welcome
 

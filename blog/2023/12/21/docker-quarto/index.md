@@ -32,6 +32,10 @@ As usual, you will now create a temporary folder for your experiments. Please st
 
 ### Create your own Docker image
 
+:::info Optional step
+If you prefer to use an existing prebuilt image; jump to the next chapter.
+:::
+
 Create a new file called `Dockerfile` (there is no extension) with this content:
 
 ```dockerfile
@@ -146,6 +150,12 @@ You can quickly check the size of your image; quite huge but except you're very 
 cavo789/quarto  latest  fe1d20bd71a6  10 minutes ago  2.14GB
 ```
 
+### Use an existing image
+
+There are a number of images on the Internet to suit your needs. You'll find them at [https://gitlab.com/quarto-forge/docker](https://gitlab.com/quarto-forge/docker). The so-called `Tier 0` image is suitable for generating html / revealjs output.
+
+If you use the `Tier 0` image, here is the command to use: `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) registry.gitlab.com/quarto-forge/docker/quarto quarto render xxx`
+
 ### Using Quarto and generate a PDF file
 
 Create a new `test.md` file in your `/tmp/docker-quarto` folder with this content:
@@ -162,24 +172,24 @@ So, if you want to create documents, presentations, or even books, Quarto and Ma
 
 Now, back to your Linux console and you'll convert that file to a pdf. **Please refers to the official documentation of [Quarto](https://quarto.org/) to get in-depth information about it.**
 
-To convert to a PDF, the instruction to fire is `quarto render test.md --to pdf`. But since you're using Quarto from a Docker image, the instruction becomes `docker run -it --rm -v ${PWD}:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf`.
+To convert to a PDF, the instruction to fire is `quarto render test.md --to pdf`. But since you're using Quarto from a Docker image, the instruction becomes `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf`.
 
 :::tip Docker CLI reminder
 As a reminder, the used Docker run command are (almost always the same):
 
 * `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
 * `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
-* `-v ${PWD}:/input` to share your current folder with a folder called `/input` in the Docker container,
+* `-v .:/input` to share your current folder with a folder called `/input` in the Docker container,
 * `-w /input` to tell Docker that the current directory, in the container, will be the `/app` folder,
 * `-u $(id -u):$(id -g)` ask Docker to reuse our local credentials so when a file is updated/created in the container, the file will be owned by you,
 * then `cavo789/quarto` which is the name of your Quarto Docker image, and, finally,
 * `quarto render test.md --to pdf` i.e. the command line to start within the container.
 :::
 
-So, let's convert to PDF and run `docker run -it --rm -v ${PWD}:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf` in your console.
+So, let's convert to PDF and run `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf` in your console.
 
 ```bash
-❯ docker run -it --rm -v ${PWD}:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf`
+❯ docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf`
 
 pandoc
   to: latex
@@ -218,18 +228,18 @@ Output created: test.pdf
 ![Your PDF file](./images/pdf_version.png)
 
 :::tip Hide non-essential information
-Add the `--log-level warning` CLI argument to Quarto to ask him to show only warning (and error) messages. Non-essential output will be hidden and you'll keep a clean console. The new command to use is thus `docker run -it --rm -v ${PWD}:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf --log-level warning`
+Add the `--log-level warning` CLI argument to Quarto to ask him to show only warning (and error) messages. Non-essential output will be hidden and you'll keep a clean console. The new command to use is thus `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf --log-level warning`
 :::
 
 ### Using Quarto and generate a HTML file
 
-Simply modify the `--to` argument and replace `pdf` by `html` and run the command: `docker run -it --rm -v ${PWD}:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to html --log-level warning`
+Simply modify the `--to` argument and replace `pdf` by `html` and run the command: `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to html --log-level warning`
 
 Now, you've a `test.html` file in your directory.
 
 ### Using Quarto and generate a revealjs slideshow
 
-This time, the `--to` argument should be set to `revealjs`: `docker run -it --rm -v ${PWD}:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to revealjs --log-level warning`
+This time, the `--to` argument should be set to `revealjs`: `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to revealjs --log-level warning`
 
 Open the `test.html` file and you'll get this:
 
@@ -251,7 +261,7 @@ Now, Quarto is like a super-powered writing tool that understands Markdown and c
 So, if you want to create documents, presentations, or even books, Quarto and Markdown can be your friends. They'll help you organize your thoughts, add cool features, and even share your work with the world.
 ```
 
-Rerun `docker run -it --rm -v ${PWD}:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to revealjs --log-level warning` and now your slideshow will have three slides (press <kbd>space</kbd> or arrow keys for navigation):
+Rerun `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to revealjs --log-level warning` and now your slideshow will have three slides (press <kbd>space</kbd> or arrow keys for navigation):
 
 ![Revealjs - slide 1](./images/revealjs_slide1.png)
 
