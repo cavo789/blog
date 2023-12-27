@@ -3,8 +3,7 @@ slug: docker-phpdocumentor
 title: Generating documentation for a PHP codebase
 authors: [christophe]
 image: ./images/social_media.png
-tags: [docker, php, wordpress]
-draft: true
+tags: [docker, php, phpdoc, wordpress]
 enableComments: true
 ---
 # Generating documentation for a PHP codebase
@@ -26,7 +25,7 @@ For the illustration, please start a Linux shell and run `mkdir -p /tmp/wordpres
 
 Then run `curl -LOJ --silent --output wordpress https://github.com/WordPress/wordpress-develop/archive/refs/tags/6.4.2.zip` to download Wordpress v6.4.2.  You'll get a file called `wordpress-develop-6.4.2.zip` on your disk.
 
-Unzip it by running `unzip wordpress-develop-6.4.2.zip` and now, you'll have a folder called `wordpress-develop-6.4.2` so please jump in it `cd wordpress-develop-6.4.2`.
+Unzip it by running `unzip wordpress-develop-6.4.2.zip && rm wordpress-develop-6.4.2.zip` and now, you'll have a folder called `wordpress-develop-6.4.2` so please jump in it `cd wordpress-develop-6.4.2`.
 
 ## Run phpDocumentor
 
@@ -58,12 +57,12 @@ Please create a new file called `phpunit.xml` with this content, in your project
 
 The configuration job is already finished.
 
-To create the phpDocumentation, simply run `docker run -it --rm -u $(id -u):$(id -g) -v ${PWD}:/data phpdoc/phpdoc:3`.
+To create the phpDocumentation, simply run `docker run -it --rm -u $(id -u):$(id -g) -v .:/data phpdoc/phpdoc:3`.
 
 That command will scan the project's codebase (here, the folder `src`) and will create a new directory called `.phpdoc` where the documentation will be saved.
 
 :::tip WSL2 - Windows
-If you're running under WSL2, to get access to the documentation, just run `explorer.exe .` in the console to get the `Windows explorer` program then double-click on the `index.html` file to start the documentation. Read the [Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer) for more information.
+If you're running under WSL2, to get access to the documentation, just run `wslview .phpdoc/index.html` file to start the documentation. Read the [Starting the default associated Windows program on WSL](/blog/wslview) or [Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer) for more information.
 :::
 
 The phpDocumentor website will looks like this:
