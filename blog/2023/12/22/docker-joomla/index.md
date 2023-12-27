@@ -792,120 +792,6 @@ It's easy: just run `code .` to open the current folder so your project within v
 
 Another use case, you wish to start the Windows Explorer program and navigate in your project's structure. Here too, it's possible, just run `explorer.exe .` to open it and load the current directory. See my "[Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer)" article to read more about this feature.
 
-### Make it easy
-
-:::note Only for Linux / WSL (not for DOS/PowerShell)
-This chapter only concern Linux since DOS/PowerShell didn't support the GNU make command.
-:::
-
-In this blog article, we have seen a lot of docker commands.
-
-By alphabetical order:
-
-* `docker compose down`,
-* `docker compose exec joomla /bin/sh`,
-* `docker compose kill`,
-* `docker compose logs --follow`,
-* `docker compose up --detach`,
-* `docker container list`,
-* `docker image list`,
-* `docker network list`,
-* `docker run -d --rm --name adminer --link joomladb:db --network kingsbridge_default -p 8088:8080 adminer` and
-* `docker run -d --rm --name phpmyadmin --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin`
-
-It's not easy to remember them all, so why not simplify things?
-
-We will use `GNU make` for this.
-
-First run `which make` in your Linux console to check if `make` is installed. If so, you will get f.i. `/usr/bin/make` as result. If you got `make not found`, please run `sudo apt-get update && sudo apt-get -y install make` to install it.
-
-This done, we will create a new file called `makefile` in your directory. We will use `code makefile` to start Visual Studio Code and create the `makefile` in your directory.
-
-:::tip This file is specific to each project, not global.
-The `makefile`, being created in your project folder, can contain instructions for that specific project. You could have one `makefile` for each project.
-:::
-
-```bash
-❯ pwd
-/tmp/joomla
-
-❯ code makefile
-```
-
-Now copy/paste this content in your `makefile`:
-
-```makefile
-adminer:
-  @printf "\e[1;033m%s\e[0m\n\n" "User is root and password is example. Please open http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db to open Adminer."
-  @printf "\e[1;033m%s\e[0m\n\n" "Starting adminer. If the browser didn't open automatically, please surf to http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db to open adminer."
-  docker run -d --rm --name adminer --link joomladb:db --network kingsbridge_default -p 8088:8080 adminer
-  -sensible-browser http://localhost:8088 &
-
-bash:
-  @printf "\e[1;033m%s\e[0m\n\n" "Start an interactive shell in the Joomla Docker container; type exit to quit"
-  docker compose exec joomla /bin/sh
-
-code:
-  code .
-
-down:
-  docker compose down
-
-explorer:
-  explorer.exe .
-
-kill:
-  docker compose kill
-
-logs:
-  docker compose logs --follow
-
-start:
-  @printf "\e[1;033m%s\e[0m\n\n" "Starting your website. If the browser didn't open automatically, please surf to http://127.0.0.1:8080 to open your site."
-  -sensible-browser http://localhost:8080 &
-
-up:
-  docker compose up --detach
-
-phpmyadmin:
-  @printf "\e[1;033m%s\e[0m\n\n" "User is root and password is example. Please open http://127.0.0.1:8089 to open phpmyadmin."
-  @printf "\e[1;033m%s\e[0m\n\n" "Starting phpmyadmin. If the browser didn't open automatically, please surf to http://127.0.0.1:8089 to open phpmyadmin."
-  docker run --name phpmyadmin -d --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin
-  -sensible-browser http://localhost:8089 &
-```
-
-Make sure indentation is using tabs, not space.
-
-Save and close vscode.
-
-:::warning Make sure values are correct
-The `makefile` here above contains hardcoded values like `joomla_db` for the database name. Make sure these values are still correct when you'll reuse this file for other projects.
-:::
-
-:::danger
-The indentation in a makefile **SHOULD BE** made using tabs and not spaces, this is crucial. So please make sure, if your file didn't work, you know what to do.
-:::
-
-Now, instead of running f.i. `docker compose up --detach` for running your Joomla site, just run `make up`. Instead of running `docker run --name phpmyadmin -d --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin` to start phpmyadmin, just run `make phpmyadmin`. To launch the browser and surf on your site, it will be `make start`.
-
-:::tip Use printf to echo valuable information
-By typing `make phpmyadmin`, it would be nice to see, on the console, the credentials to use and a small tip like this:
-
-```bash
-❯ make phpmyadmin
-User is root and password is example. Please open http://127.0.0.1:8089 to open phpmyadmin.
-
-docker run --name phpmyadmin -d --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin
-a0c37edd9f8c139556f1f0a6b028ec5102362f16233efbc05f56d184edfb83c9
-```
-
-To do this, just use the `printf` function like illustrated above.
-:::
-
-Please read my [Makefile - Tutorial and Tips & Tricks](https://github.com/cavo789/makefile_tips) GitHub repository if you wish to learn more about Make.
-
-Feel free to add your own make instructions; can be multiline.
-
 ### Final docker-compose.yml
 
 In the introduction of this article, I have said *we will learn how to use Docker to install Joomla and start a new website **in seconds***.
@@ -960,6 +846,7 @@ Make sure, for each project, to update the `name:` line and if you plan to be ab
 * [FrankenPHP, a modern application server for PHP](/blog/frankenphp-docker-joomla)
 * [Update php.ini when using a Docker image](/blog/docker-php-ini)
 * [Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/blog/docker-adminer-pgadmin-phpmyadmin)
+* [Linux Makefile - When to use a makefile](/blog/makefile-using-make)
 
 ## Your comments are more than welcome
 
