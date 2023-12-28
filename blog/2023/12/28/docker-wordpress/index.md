@@ -1,14 +1,14 @@
 ---
 slug: docker-wordpress
-title: Quickly install Wordpress without headaches
+title: Quickly install Wordpress in just three commands
 authors: [christophe]
 image: ./images/social_media.jpg
 tags: [docker, wordpress]
 enableComments: true
 ---
-# Quickly install Wordpress without headaches
+# Quickly install Wordpress in just three commands
 
-![Quickly install Wordpress without headaches](./images/header.jpg)
+![Quickly install Wordpress in just three commands](./images/header.jpg)
 
 Do you think it's possible to run a new Wordpress site in just three commands?  Impossible, isn't it. Well, in fact, yes, it's possible.
 
@@ -22,7 +22,7 @@ But we can run Docker containers by hand and, in that case, no such file is need
 
 ## First step, we need a network
 
-Using a network will allow containers to communicate with each other. 
+Using a network will allow containers to communicate with each other.
 
 :::caution You need a network, don't skip
 As soon as you've two or more containers, you need a network.
@@ -50,7 +50,7 @@ For MariaDB:
 docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mariadb:11.2.2
 ```
 
-Once started by Docker, the MySQL / MariaDB container will create an empty database called `wordpress`, a user called `wpuser` and is password will be `example` (as defined by our variables `MYSQL_DATABASE`, `wpuser` and `example`). The container will be named `db_wordpress` (as defined by `--hostname`).
+Once started by Docker, the MySQL / MariaDB container will create an empty database called `wordpress`, a user called `wpuser` and his password will be `example` (as defined by our variables `MYSQL_DATABASE`, `MYSQL_USER` and `MYSQL_PASSWORD`). The container will be named `db_wordpress` (as defined by `--hostname`).
 
 ## Third step, we need wordpress
 
@@ -68,7 +68,7 @@ As you can see, we don't need to pay attention to the `wp-config.php` file since
 
 ![Installing Wordpress](./images/installing_wordpress.png)
 
-:::information Error establishing a database connection
+:::info Error establishing a database connection
 If you get `Error establishing a database connection`, please wait a little before refreshing the web page. It means MySQL / Maria wasn't yet ready to handle the connection.
 :::
 
@@ -102,8 +102,6 @@ As introduced, we just need three commands to create, from nihil, a new wordpres
 
 ```bash
 docker network create wordpress
-
 docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mysql:8.0.13
-
 docker run -d --name app_wordpress --hostname app_wordpress --network wordpress -p 8080:80 -e WORDPRESS_DB_HOST=db_wordpress -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=example wordpress:6.4.2-php8.2-apache
 ```
