@@ -27,3 +27,14 @@ The tip: start `wslview` followed by the filename to open like `wslview guide.pd
 :::tip `xdg-open`
 You can also use `xdg-open` to start your default browser so `xdg-open index.html` will open the file in your Windows browser.
 :::
+
+If you get the error below, you'll find a solution in the article [Windows Explorer](/blog/wsl-windows-explorer#wsl-localhost-is-not-accessible)
+
+```bash
+Start : This command cannot be run due to the error: The system cannot find the file specified.
+At line:1 char:1
++ Start "readme.html"
++ ~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Start-Process], InvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperationException,Microsoft.PowerShell.Commands.StartProcessCommand
+```
