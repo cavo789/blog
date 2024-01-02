@@ -28,7 +28,7 @@ The [title slide](https://quarto.org/docs/presentations/revealjs/advanced.html#t
 
 ```markdown
 ---
-title: My Slide Show
+title: "My Slide Show"
 title-slide-attributes:
   data-background-image: ./img/background.jpg
   data-background-size: cover
@@ -44,6 +44,104 @@ title-slide-attributes:
 The slideshow will have four slides, the first one will be the title-slide.
 
 ![Title slide](./images/title-slide.png)
+
+### Display a logo top left on the first slide, then bottom right
+
+The example below illustrates the need: on your first slide, you want to make your logo much more visible than on the other slides.
+
+To achieve this, on the first slide displayed, your logo will be displayed at the top left with a certain size, whereas when you change slides, the logo will be positioned at the bottom right and will be much smaller.
+
+Here is a visual example:
+
+![Logo top left](./images/logo-top-left.png)
+
+![Logo bottom right](./images/logo-bottom-right.png)
+
+To do this, we'll need to add a custom JavaScript and custom CSS.
+
+```markdown
+---
+title: "My Slide Show"
+subtitle: "Playing with logo"
+author: "Christophe Avonture"
+date: last-modified
+lang: "en"
+
+format:
+  revealjs:
+    logo: images/my-logo.svg
+    header-includes: |
+      <!--
+        The script below will ensure the logo is displayed top left
+        in his full size (probably on the first slide; title-slide)
+        then as soon as a different slide is displayed, the logo will
+        be displayed bottom right with a smaller size.
+      -->
+      <script>
+        function updateLogoSizePosition(event) {
+          if (event.currentSlide.matches('#title-slide')) {
+            var elements = document.querySelectorAll(".slide-logo");
+            [].forEach.call(elements, function(elem) {
+              elem.classList.remove("slide-logo-bottom-right");
+              elem.classList.add("slide-logo-max-size");
+            });
+          } else {
+            var elements = document.querySelectorAll(".slide-logo");
+            [].forEach.call(elements, function(elem) {
+              elem.classList.add("slide-logo-bottom-right");
+              elem.classList.remove("slide-logo-max-size");
+            });
+          }
+        };
+
+        window.addEventListener("load", (event) => {
+          // Make sure the logo has his full size when the slideshow
+          // is loaded (i.e. apply the slide-logo-max-size css class)
+          var elements = document.querySelectorAll(".slide-logo");
+          [].forEach.call(elements, function(elem) {
+            elem.classList.remove("slide-logo-bottom-right");
+            elem.classList.add("slide-logo-max-size");
+          });
+
+          Reveal.on("slidechanged", function(event) {
+            updateLogoSizePosition(event);
+          });
+        });
+      </script>
+
+      <style rel="stylesheet">
+        .reveal .slide-logo-bottom-right {
+          bottom: 0 !important;
+          left: unset !important;
+          height: 100% !important;
+          max-height: 2.2rem !important;
+          right: 12px !important;
+        }
+
+        .slide-logo-max-size {
+          bottom: unset !important;
+          left: 12px;
+          height: 100px !important;
+          max-height: unset !important;
+          right: unset !important;
+          top: 5px;
+        }
+
+        .reveal .slide-logo {
+          display: block;
+          max-width: unset !important;
+          position: fixed;
+          width: 100x !important;
+        }
+      </style>
+---
+```
+
+As you can see above, the JavaScript code is added directly inside the markdown file using the `header-includes` directive. You can of course create an external file like `./assets/custom.js` and use that file instead.
+
+For clarity, the custom css has been added to the `header-includes` but you can externalize it in a custom file and use the `css: assets/style.css` directive instead.
+
+*To run this example, run `quarto render slides.md --to revealjs`.*
 
 ### Adding a background image to a slide
 
@@ -88,9 +186,9 @@ The second slide is using `contain` and, at least, we can see what the sloth was
 The `r-fit-text` class ([official doc](https://quarto.org/docs/presentations/revealjs/advanced.html#fit-text)) will give the maximum size to your content i.e.
 
 ```markdown
-# 
+#
 
-::: {.r-fit-text} 
+::: {.r-fit-text}
 Big Text
 :::
 ```
@@ -181,10 +279,10 @@ The idea is to split the slides in four parts and display content clockwise, sta
 ::: {.column width="40%"}
 ::: bulletbox
 ::: {.fragment .fade-in-then-semi-out}
-![](images/top-left.jpg){width="450px"} 
+![](images/top-left.jpg){width="450px"}
 :::
 :::
-::: 
+:::
 
 ::: {.column width="5%"}
 :::
