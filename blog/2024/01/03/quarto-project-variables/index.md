@@ -12,9 +12,9 @@ enableComments: true
 
 My use case is: I need to write some technical, long, documentation where I need to provide some information like IP adresses of used servers, some paths to the application, configuration folders, ...
 
-The *normal way to do this* is to just put the information's directly in the documentation and to make sure to update every occurrences in case of changes during the lifecycle of the application.
+The *normal way to do this* is to just put information directly in the documentation and to make sure to update every occurrence in case of changes during the lifecycle of the application.
 
-The best way is probably to use an external file where information's are stored in a key-value form and, during the rendering process of Quarto, replace shortcodes by values.
+The best way is probably to use an external file where information are stored in a key-value form and, during the rendering process of Quarto, replace shortcodes by values.
 
 <!-- truncate -->
 
@@ -28,7 +28,7 @@ You can find the official documentation on [https://quarto.org/docs/authoring/va
 
 Here is how to proceed:
 
-1. First, it's mandatory, you should have a file called `_quarto.yml` in the same directory than the file (let's say `documentation.md`) you will convert using Quarto. *Note: that file can be empty (see [https://github.com/quarto-dev/quarto-cli/issues/2918](https://github.com/quarto-dev/quarto-cli/issues/2918) for more information on this).*
+1. First, it's mandatory, you should have a file called `_quarto.yml` in the same directory as the file (let's say `documentation.md`) you will convert using Quarto. *Note: that file can be empty (see [https://github.com/quarto-dev/quarto-cli/issues/2918](https://github.com/quarto-dev/quarto-cli/issues/2918) for more information on this).*
 2. Then you should create a file called `_variables.yml` with your key-values and, finally,
 3. You need to have your markdown file.
 

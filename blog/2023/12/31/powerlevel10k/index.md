@@ -3,23 +3,22 @@ slug: powerlevel10k_sandbox
 title: Customize your Linux prompt with Powerlevel10k
 authors: [christophe]
 image: ./images/social_media.jpg
-tags: [customization, docker, git, powerlevel10k, tips, wsl, zsh]
-draft: true
+tags: [customization, docker, powerlevel10k, tips, wsl, zsh]
 enableComments: true
 ---
 # Customize your Linux prompt with Powerlevel10k
 
 ![Customize your Linux prompt with Powerlevel10k](./images/header.jpg)
 
-> [https://github.com/romkatv/powerlevel10k/blob/master/README.md#try-it-in-docker](https://github.com/romkatv/powerlevel10k/blob/master/README.md#try-it-in-docker).
+When you're working with Linux (also working with WSL thus), there are many ways to personalize your prompt. One of the simplest solutions is to use [Powerlevel10k](https://github.com/romkatv/powerlevel10k) and its wizard.
 
-When you're working with Linux, there are many ways to personalize your prompt (i.e. your console). One of the simplest solutions is to use [Powerlevel10k](https://github.com/romkatv/powerlevel10k) and its wizard.
+In this article we're going to use a Docker container just to : *test and discard*.  The Docker container will only be used to install Powerlevel10k, configure it and play with it. After that, it's up to you to see whether you like the interface and, if you do, to redo the installation on your machine rather than in Docker.
+
+The tip comes from [here](https://github.com/romkatv/powerlevel10k/blob/master/README.md#try-it-in-docker)
 
 <!-- truncate -->
 
-But even better, you can play with the tool without even having to install it, thanks to ... Docker (who else?)
-
-By running the command below, you'll download a very small Linux Alpine image then start some initializations like installing `git`, `zsh`, ... Also download the Powerlevel10k repository from Github and start its wizard.
+By running the single command below, you'll download a very small Linux Alpine image then start some initializations like installing `git`, `nano`, `zsh`, ... The Powerlevel10k repository will be downloaded from Github and its wizard will be started.
 
 ```bash
 docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -it --rm alpine sh -uec '
@@ -30,10 +29,10 @@ docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -it --rm alpine sh -uec '
   exec zsh'
 ```
 
-You can just *simulate* the installation of Powerlevel10k on your computer, see how it's looks like, ... and decide if you want to adopt it or not.
+So, inside a Docker container, you'll install Powerlevel10k, see how it's looks like, ... and decide if you want to adopt it or not.
 
 :::note Everything is done in RAM; nothing on your disk
-Running the `docker run` command here above will only download a Docker Alpine Linux image on your disk (less than 7 MB) then will install binaries inside the running container so, by leaving the container using the `exit` command, nothing will stay on your disk. Ideal for testing.
+Running the `docker run` command here above will download a Docker Alpine Linux image on your disk (less than 7 MB) then will install binaries inside the running container so, by leaving the container using the `exit` command, nothing will stay on your disk. Ideal for testing.
 :::
 
 When you exit the Docker container, everything will be lost but, now, you know if you like it or not. And, if you like it, just proceed on the installation of Powerlevel10k by following his [installation guide](https://github.com/romkatv/powerlevel10k#installation).

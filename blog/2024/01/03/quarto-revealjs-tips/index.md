@@ -89,7 +89,6 @@ In `assets/style.css`, copy/paste the following code:
 }
 ```
 
-
 In `assets/custom.js`, copy/paste the following code:
 
 ```JavaScript
