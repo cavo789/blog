@@ -63,3 +63,7 @@ And since we don't have any paragraph only conditional ones, when converting to 
 ![Quarto conditional display - pdf](./images/pdf.png)
 
 The `when-format="xxx"` is thus working exactly as expected.
+
+:::tip `.content-hidden`
+The exact opposite can be done using `.content-hidden`, see [documentation](https://quarto.org/docs/authoring/conditional.html#content-hidden).
+:::

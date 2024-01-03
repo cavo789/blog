@@ -59,6 +59,78 @@ Here is a visual example:
 
 To do this, we'll need to add a custom JavaScript and custom CSS.
 
+Create a new folder called `assets` and, in that folder, a file called `style.css` and a second called `custom.js`.
+
+In `assets/style.css`, copy/paste the following code:
+
+```css
+.reveal .slide-logo-bottom-right {
+    bottom: 0 !important;
+    left: unset !important;
+    height: 100% !important;
+    max-height: 2.2rem !important;
+    right: 12px !important;
+}
+
+.slide-logo-max-size {
+    bottom: unset !important;
+    left: 12px;
+    height: 100px !important;
+    max-height: unset !important;
+    right: unset !important;
+    top: 5px;
+}
+
+.reveal .slide-logo {
+    display: block;
+    max-width: unset !important;
+    position: fixed;
+    width: 100x !important;
+}
+```
+
+
+In `assets/custom.js`, copy/paste the following code:
+
+```JavaScript
+// The script below will ensure the logo is displayed top left
+// in his full size (probably on the first slide; title-slide)
+// then as soon as a different slide is displayed, the logo will
+// be displayed bottom right with a smaller size.
+
+function updateLogoSizePosition(event) {
+    if (event.currentSlide.matches('#title-slide')) {
+    var elements = document.querySelectorAll(".slide-logo");
+    [].forEach.call(elements, function(elem) {
+        elem.classList.remove("slide-logo-bottom-right");
+        elem.classList.add("slide-logo-max-size");
+    });
+    } else {
+    var elements = document.querySelectorAll(".slide-logo");
+    [].forEach.call(elements, function(elem) {
+        elem.classList.add("slide-logo-bottom-right");
+        elem.classList.remove("slide-logo-max-size");
+    });
+    }
+};
+
+window.addEventListener("load", (event) => {
+    // Make sure the logo has his full size when the slideshow
+    // is loaded (i.e. apply the slide-logo-max-size css class)
+    var elements = document.querySelectorAll(".slide-logo");
+    [].forEach.call(elements, function(elem) {
+    elem.classList.remove("slide-logo-bottom-right");
+    elem.classList.add("slide-logo-max-size");
+    });
+
+    Reveal.on("slidechanged", function(event) {
+    updateLogoSizePosition(event);
+    });
+});
+```
+
+Now, use them in your `slides.md` like this:
+
 ```markdown
 ---
 title: "My Slide Show"
@@ -70,76 +142,14 @@ lang: "en"
 format:
   revealjs:
     logo: images/my-logo.svg
+    css: assets/style.css
+    resources: images
     header-includes: |
-      <!--
-        The script below will ensure the logo is displayed top left
-        in his full size (probably on the first slide; title-slide)
-        then as soon as a different slide is displayed, the logo will
-        be displayed bottom right with a smaller size.
-      -->
-      <script>
-        function updateLogoSizePosition(event) {
-          if (event.currentSlide.matches('#title-slide')) {
-            var elements = document.querySelectorAll(".slide-logo");
-            [].forEach.call(elements, function(elem) {
-              elem.classList.remove("slide-logo-bottom-right");
-              elem.classList.add("slide-logo-max-size");
-            });
-          } else {
-            var elements = document.querySelectorAll(".slide-logo");
-            [].forEach.call(elements, function(elem) {
-              elem.classList.add("slide-logo-bottom-right");
-              elem.classList.remove("slide-logo-max-size");
-            });
-          }
-        };
-
-        window.addEventListener("load", (event) => {
-          // Make sure the logo has his full size when the slideshow
-          // is loaded (i.e. apply the slide-logo-max-size css class)
-          var elements = document.querySelectorAll(".slide-logo");
-          [].forEach.call(elements, function(elem) {
-            elem.classList.remove("slide-logo-bottom-right");
-            elem.classList.add("slide-logo-max-size");
-          });
-
-          Reveal.on("slidechanged", function(event) {
-            updateLogoSizePosition(event);
-          });
-        });
-      </script>
-
-      <style rel="stylesheet">
-        .reveal .slide-logo-bottom-right {
-          bottom: 0 !important;
-          left: unset !important;
-          height: 100% !important;
-          max-height: 2.2rem !important;
-          right: 12px !important;
-        }
-
-        .slide-logo-max-size {
-          bottom: unset !important;
-          left: 12px;
-          height: 100px !important;
-          max-height: unset !important;
-          right: unset !important;
-          top: 5px;
-        }
-
-        .reveal .slide-logo {
-          display: block;
-          max-width: unset !important;
-          position: fixed;
-          width: 100x !important;
-        }
-      </style>
+      <script src="assets/custom.js" type="application/javascript"></script>
 ---
 ```
 
-As you can see above, the JavaScript code is added directly inside the markdown file using the `header-includes` directive. You can of course create an external file like `./assets/custom.js` and use that file instead.
-
-For clarity, the custom css has been added to the `header-includes` but you can externalize it in a custom file and use the `css: assets/style.css` directive instead.
+As you can see above, the JavaScript code is injected in your presentation using the `header-includes` directive. For the stylesheet, the `css` directive is used (*there is no `js:` directive unfortunately*).
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
