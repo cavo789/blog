@@ -190,6 +190,21 @@ The second slide is using `contain` and, at least, we can see what the sloth was
 
 ![Background-size is set to contain](./images/background-contain.png)
 
+### Using emoji
+
+It's simple, just add the following entry to your YAML front matter.
+
+```yaml
+---
+from: markdown+emoji
+---
+```
+
+Then you can add emoji by just typing the code like `:wave:` or `:raised_hands:`.
+
+You can find a full list on [https://gist.github.com/rxaviers/7360908](https://gist.github.com/rxaviers/7360908).
+
+
 ### Big text
 
 The `r-fit-text` class ([official doc](https://quarto.org/docs/presentations/revealjs/advanced.html#fit-text)) will give the maximum size to your content i.e.
@@ -340,6 +355,38 @@ The idea is to split the slides in four parts and display content clockwise, sta
 
 ![Four quadrants](./images/four-quadrants.gif)
 
+### Creating our own shortcode, easily
+
+I like to be able to write `==Important text==` and, for a revealjs presentation, transform this text automatically to `<mark>Important text</mark>` so I can easily add a custom CSS to it.
+
+First, create a `assets/custom.js` if not yet present and copy/paste the following code:
+
+```javaScript
+window.addEventListener("load", (event) => {
+    // This function will search for shortcode like "==IpsoLorem==" 
+    // i.e. a portion of text between two equal sign and will replace it
+    // to "<mark>IpsoLorem</mark>" so we can then use CSS to highlight
+    // that portion.
+    Reveal.on("slidechanged", function (event) {
+        var re = /==([^=]*)==/;
+        event.currentSlide.innerHTML = event.currentSlide.innerHTML.replace(new RegExp(re, "g"), "<mark>$1</mark>");
+    } );
+});
+```
+
+In your YAML front matter, add this:
+
+```markdown
+---
+format:
+  revealjs:
+    header-includes: |
+      <script src="assets/custom.js" type="application/javascript"></script>
+---
+```
+
+And now, when the slideshow will be played, a custom JavaScript code will replace on-the-fly each fragment with `==xxxx==` and replace with `<mark>xxx</mark>`.
+
 ## CSS
 
 ### Using inline css
@@ -386,6 +433,42 @@ Now, create the `custom.css` file in the same folder as your markdown one and, f
 ```
 
 ![Custom css](./images/custom-css.png)
+
+### Hide image caption
+
+By default, revealjs will display the caption of the image below it. You can hide it by using this stylesheet:
+
+```css
+.reveal p.caption {
+  display: none;
+}
+```
+
+### Callout can be stylized
+
+A callout is a special div like below:
+
+```markdown
+## Customize your terminal
+
+:::{.callout-note}
+## Notice
+Skip this part if you do not want to customize your terminal right now
+:::
+
+As you can see on the image below, we can customize the terminal:
+```
+
+In revealjs, personally, I find that the rendering takes up too much space compared to the content of my slide. So I use css to hide the title:
+
+
+![Callout title](./images/callout-title.png)
+
+```css
+.reveal .callout-title {
+    display: none;
+}
+```
 
 ## Navigation
 
@@ -477,6 +560,20 @@ To do this, set the `data-menu-title` attribute; f.i.:
 <!-- highlight-next-line -->
 ## Cillum do et commodo minim ullamco elit culpa {#chapter1 data-menu-title="Chapter 1"}
 ```
+
+### Show slide number
+
+To only show the current slide number, you can use `slide-number: true` but, if you also want the total number of slides, you should use `slide-number: c/t` :
+
+```yaml
+format:
+  revealjs:
+    slide-number: c/t
+```
+
+![Slide / Total of slides](./images/slides_c_t.png)
+
+You can retrieve more informations [here](https://quarto.org/docs/presentations/revealjs/presenting.html#slide-numbers).
 
 ## Misc
 

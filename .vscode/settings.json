@@ -44,5 +44,25 @@
         ".vscode",
         ".vscode-insiders",
         "blog/XXX/quarto-powerpoint/index.md"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#b69008",
+        "activityBar.background": "#b69008",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#0bf4c1",
+        "activityBarBadge.foreground": "#15202b",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#b69008",
+        "statusBar.background": "#856906",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#b69008",
+        "statusBarItem.remoteBackground": "#856906",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#856906",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#85690699",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.remoteColor": "#856906"
 }
