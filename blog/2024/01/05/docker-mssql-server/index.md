@@ -4,7 +4,6 @@ title: Play with Microsoft SQL Server 2022 using Docker
 authors: [christophe]
 image: ./images/social_media.jpg
 tags: [docker, mssql-server, ssms]
-draft: true
 enableComments: true
 ---
 # Play with Microsoft SQL Server 2022 using Docker
