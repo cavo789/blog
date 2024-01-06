@@ -3,7 +3,7 @@ slug: docker-postgrest
 title: Don't query your PostgreSQL db anymore, prefer PostgREST
 authors: [christophe]
 image: ./images/social_media.png
-tags: [docker, postgrest, postgresql]
+tags: [docker, openapi, postgrest, postgresql, swagger-ui]
 enableComments: true
 ---
 # Don't query your PostgreSQL db anymore, prefer PostgREST
@@ -25,7 +25,7 @@ In short: using an API, PostgREST will retrieve data from your PostgreSQL databa
 :::
 
 :::info PostgREST is magic: it takes all the complexity out of accessing your data
-Back to my experience: after the migration from MySQL to PostgreSQL, I deleted 100% of my code that had to declare my tables and their fields (the models), I deleted the declaration of my relationships between tables, I deleted my queries, ... After my migration to PostgREST, I no longer had any PHP code of the "database" type. Everything was replaced by web calls to APIs. On top, in Javascript and using axios, I can directly access to my database using f.i. 
+Back to my experience: after the migration from MySQL to PostgreSQL, I deleted 100% of my code that had to declare my tables and their fields (the models), I deleted the declaration of my relationships between tables, I deleted my queries, ... After my migration to PostgREST, I no longer had any PHP code of the "database" type. Everything was replaced by web calls to APIs. On top, in Javascript and using axios, I can directly access to my database using f.i.
 
 ```script
 const employee = axios.create({
@@ -35,6 +35,7 @@ const employee = axios.create({
     }
 })
 ```
+
 :::
 
 ## Let's play
@@ -191,6 +192,6 @@ Consult my [PostgREST](https://github.com/cavo789/postgrest) repository on GitHu
 
 ## OpenAPI
 
-PostgREST is compliant with [OpenAPI](https://swagger.io/specification/). It's then possible to auto-document his routes using the `Swagger UI` Docker image.
+PostgREST is compliant with [OpenAPI](https://swagger.io/specification/). It's then possible to auto-document his routes using the [Swagger UI](https://hub.docker.com/r/swaggerapi/swagger-ui) Docker image.
 
 This means that running `curl http://localhost:3000` (the PostgREST URL), you'll get the list of all tables accessible to you (using your access key). This makes your database open to the world (once again, only what you've allowed using correct permission).

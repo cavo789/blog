@@ -204,7 +204,6 @@ Then you can add emoji by just typing the code like `:wave:` or `:raised_hands:`
 
 You can find a full list on [https://gist.github.com/rxaviers/7360908](https://gist.github.com/rxaviers/7360908).
 
-
 ### Big text
 
 The `r-fit-text` class ([official doc](https://quarto.org/docs/presentations/revealjs/advanced.html#fit-text)) will give the maximum size to your content i.e.
@@ -460,7 +459,6 @@ As you can see on the image below, we can customize the terminal:
 ```
 
 In revealjs, personally, I find that the rendering takes up too much space compared to the content of my slide. So I use css to hide the title:
-
 
 ![Callout title](./images/callout-title.png)
 
