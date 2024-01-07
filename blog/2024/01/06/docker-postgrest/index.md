@@ -28,7 +28,7 @@ In short: using an API, PostgREST will retrieve data from your PostgreSQL databa
 Back to my experience: after the migration from MySQL to PostgreSQL, I deleted 100% of my code that had to declare my tables and their fields (the models), I deleted the declaration of my relationships between tables, I deleted my queries, ... After my migration to PostgREST, I no longer had any PHP code of the "database" type. Everything was replaced by web calls to APIs. On top, in Javascript and using axios, I can directly access to my database using f.i.
 
 ```script
-const employee = axios.create({
+const todos = axios.create({
     baseURL: 'http://localhost:3000/todos',
     headers: {
       'Accept': 'application/json'
@@ -40,7 +40,7 @@ const employee = axios.create({
 
 ## Let's play
 
-For this post, let u's create a temporary folder in your `/tmp` folder: start a Linux console and run `mkdir /tmp/postgrest && cd /tmp/postgrest`.
+For this post, let u's create a temporary folder in your `/tmp` folder: start a Linux console and run `mkdir /tmp/postgrest && cd $_`.
 
 ### Step 1 - Create and populate our PostgreSQL database
 
@@ -82,6 +82,8 @@ create role authenticator noinherit login password 'mysecretpassword';
 grant web_anon to authenticator;
 ```
 
+Now, to leave the postgres console, just type `\q`.
+
 ### Step 2 - Install and execute PostgREST
 
 PostgREST is a binary, download it by running:
@@ -101,15 +103,22 @@ db-schemas = "api"
 db-anon-role = "web_anon"
 ```
 
+
+:::info PostgREST will start as a service on port 3000 by default
+The instruction `./postgrest tutorial.conf` will start a service. You can stop it by pressing <kbd>CTRL</kbd>-<kbd>C</kbd> but leave it right now and start a new console.
+
+Add the line below to your conf file if you wish to use another port; f.i. port `3001`:
+
+```conf
+server-port = 3001
+```
+:::
+
 Now, we'll run a Docker container for PostgREST:
 
 ```bash
 ./postgrest tutorial.conf
 ```
-
-:::info PostgREST will start as a service on port 3000 by default
-The instruction `./postgrest tutorial.conf` will start a service. You can stop it by pressing <kbd>CTRL</kbd>-<kbd>C</kbd> but leave it right now and start a new console.
-:::
 
 ### Step 3 - Play with PostgREST
 
@@ -181,6 +190,8 @@ curl http://localhost:3000/todos?select=id,task | jq
 ### Close PostgREST
 
 Return to the console in which you've started PostgREST and press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop PostgREST from running.
+
+If you've started PostgreSQL here above, you can stop and kill it using `docker container stop tutorial ; docker container rm tutorial`.
 
 ## Permissions required
 
