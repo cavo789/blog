@@ -25,7 +25,8 @@ const config = {
   projectName: 'cavo789', // Usually your repo name.
 
   noIndex: false,
-
+  
+  onBrokenAnchors: 'throw',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   onDuplicateRoutes: 'throw',
