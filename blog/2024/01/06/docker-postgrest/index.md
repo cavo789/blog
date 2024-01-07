@@ -103,7 +103,6 @@ db-schemas = "api"
 db-anon-role = "web_anon"
 ```
 
-
 :::info PostgREST will start as a service on port 3000 by default
 The instruction `./postgrest tutorial.conf` will start a service. You can stop it by pressing <kbd>CTRL</kbd>-<kbd>C</kbd> but leave it right now and start a new console.
 
@@ -112,6 +111,7 @@ Add the line below to your conf file if you wish to use another port; f.i. port 
 ```conf
 server-port = 3001
 ```
+
 :::
 
 Now, we'll run a Docker container for PostgREST:

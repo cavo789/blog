@@ -24,6 +24,8 @@ const config = {
   organizationName: 'cavo789', // Usually your GitHub org/user name.
   projectName: 'cavo789', // Usually your repo name.
 
+  noIndex: false,
+
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   onDuplicateRoutes: 'throw',
