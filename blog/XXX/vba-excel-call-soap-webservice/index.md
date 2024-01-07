@@ -4,23 +4,28 @@ title: MS Excel - How to call a SOAP webservice
 authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 tags: [excel, ribbon, soap, vba]
+draft: true
 enableComments: true
 ---
 # MS Excel - How to call a SOAP webservice
 
 ![MS Excel - How to call a SOAP webservice](/img/excel_tips_header.jpg)
 
-For this blog post, the use case will be **you need to check the authenticity of a European VAT number; this using MS Excel**.
+Imagine you had to make a call to a SOAP webservice in Excel? For example, to validate the VAT number you have been given before carrying out some processing.
 
-Above all, it's an illustration to show you how to call a SOAP-type web service in Excel, i.e. one that requires a certain call format and value passing in order to then retrieve the data.
+You will call the URL that corresponds to the web service you want, but you will also need to pass a number of parameters in XML format so that the service knows what you want to do.
 
-To do this, we'll use the [VIES VAT number validation](https://ec.europa.eu/taxation_customs/vies/#/vat-validation) SOAP webservice.
+We'll learn, in this blog post, how to validate an european VAT number using the [VIES VAT number validation](https://ec.europa.eu/taxation_customs/vies/#/vat-validation) SOAP webservice.
+
+The VBA code we will see in this article can be used as a skeleton for your future development.
 
 <!-- truncate -->
 
-When calling a SOAP service, you must always prepare your XML message first. To do this, we create an .xml file somewhere on our hard drive.
+So, when calling a SOAP service, we must always prepare a XML message first. To do this, we create an .xml file somewhere on our hard drive.
 
-Please create the file `C:\temp\checkVat.xml` with this content:
+## Create the xml message
+
+Please create the file `C:\temp\checkVat.xml` with this content. This message (content) is expected by the VIES VAT number web service. In the file, we foresee two placeholders for our variables: `%COUNTRY%` and `%VATNUMBER%`. We'll see this later on. 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -34,9 +39,9 @@ Please create the file `C:\temp\checkVat.xml` with this content:
 </soapenv:Envelope>
 ```
 
-This is the message expected by the VIES VAT number web service. In that file, we foresee two placeholders for our variables: `%COUNTRY%` and `%VATNUMBER%`. We'll see this later on.
+## Create the Excel workbook.
 
-Now, 
+Now, please,
 
 1. Create an empty Excel workbook,
 2. Press <kbd>ALT</kbd>-<kbd>F11</kbd> to get the Visual Basic Editor (aka `vbe`).
@@ -59,8 +64,6 @@ Now,
 8. After a few seconds, a new workbook will be created with the answer from the SOAP web service:
 
 ![SOAP answer](./images/soap_answer.png)
-
-
 
 ```vba
 Option Explicit
@@ -216,3 +219,56 @@ Private Function createXmlTempFile(ByVal sContent As String) As String
 
 End Function
 ```
+
+### About placeholders
+
+In our `C:\temp\checkVat.xml`, we've thus foresee two placeholders.
+
+You can see in the `openCheckVatXml` VBA subroutine how we'll replace them by some, example, values. Just adjust them to yours.
+
+## A Linux command line version
+
+For those who can be interested, here is another way to achieve the same result but for a Linux console (or DOS if you've curl installed):
+
+```bash
+curl --silent http://ec.europa.eu/taxation_customs/vies/services/checkVatService   \
+  -w \\n                                          \
+  -H 'SOAPAction: "checkVat"'                        \
+  -H "Content-Type: text/xml;charset=UTF-8"          \
+  -d '<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Body>
+        <urn:checkVat xmlns:urn="urn:ec.europa.eu:taxud:vies:services:checkVat:types">
+            <urn:countryCode>BE</urn:countryCode>
+            <urn:vatNumber>0403170701</urn:vatNumber>
+        </urn:checkVat>
+    </soapenv:Body>
+</soapenv:Envelope>'
+```
+
+:::tip Add `xmlstarlet` for a nice output 
+See my [The xmlstarlet utility for Linux](/blog/linux-xmlstarlet) article 
+
+Add `| xmlstarlet format --indent-spaces 4` at the end of the previous command to pipe the output to `xmlstartlet` 
+:::
+
+The answer will be:
+
+```xml
+<?xml version="1.0"?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Header/>
+    <env:Body>
+        <ns2:checkVatResponse xmlns:ns2="urn:ec.europa.eu:taxud:vies:services:checkVat:types">
+            <ns2:countryCode>BE</ns2:countryCode>
+            <ns2:vatNumber>0403170701</ns2:vatNumber>
+            <ns2:requestDate>2024-01-07+01:00</ns2:requestDate>
+            <ns2:valid>true</ns2:valid>
+            <ns2:name>SA ELECTRABEL</ns2:name>
+            <ns2:address>Boulevard Simon Bolivar 36\n1000 Bruxelles</ns2:address>
+        </ns2:checkVatResponse>
+    </env:Body>
+</env:Envelope>
+```
+
+Now, it's up to you to modify the VBA code and tailer it to your needs.
