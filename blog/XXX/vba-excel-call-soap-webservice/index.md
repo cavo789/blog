@@ -25,7 +25,7 @@ So, when calling a SOAP service, we must always prepare a XML message first. To 
 
 ## Create the xml message
 
-Please create the file `C:\temp\checkVat.xml` with this content. This message (content) is expected by the VIES VAT number web service. In the file, we foresee two placeholders for our variables: `%COUNTRY%` and `%VATNUMBER%`. We'll see this later on. 
+Please create the file `C:\temp\checkVat.xml` with this content. This message (content) is expected by the VIES VAT number web service. In the file, we foresee two placeholders for our variables: `%COUNTRY%` and `%VATNUMBER%`. We'll see this later on.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -39,31 +39,23 @@ Please create the file `C:\temp\checkVat.xml` with this content. This message (c
 </soapenv:Envelope>
 ```
 
-## Create the Excel workbook.
+## Create the Excel workbook
 
 Now, please,
 
 1. Create an empty Excel workbook,
 2. Press <kbd>ALT</kbd>-<kbd>F11</kbd> to get the Visual Basic Editor (aka `vbe`).
 3. Create a new module:
-
-![Create a new module](./images/insert_module.png)
-
+    ![Create a new module](./images/insert_module.png)
 4. Copy/Paste the VBA code from here below to it.
 5. Check the path for the `InputXmlFile` constant. Make sure it's the same than where you've saved your `.xml` file earlier.
 6. Click on the `Tools` menu then select `References` and add a reference to `Microsoft XML, v6.0`
-
-![Tools - References](./images/tools_references.png)
-
-![Microsoft XML, v6.0](./images/microsoft_xml6.png)
-
-1. Finally, put the cursor anywhere in the `run` subroutine and press <kbd>F5</kbd> to run it.
-
-![Activate run subroutine](./images/sub_run.png)
-
+    ![Tools - References](./images/tools_references.png)
+    ![Microsoft XML, v6.0](./images/microsoft_xml6.png)
+7. Finally, put the cursor anywhere in the `run` subroutine and press <kbd>F5</kbd> to run it.
+    ![Activate run subroutine](./images/sub_run.png)
 8. After a few seconds, a new workbook will be created with the answer from the SOAP web service:
-
-![SOAP answer](./images/soap_answer.png)
+    ![SOAP answer](./images/soap_answer.png)
 
 ```vba
 Option Explicit
@@ -246,10 +238,10 @@ curl --silent http://ec.europa.eu/taxation_customs/vies/services/checkVatService
 </soapenv:Envelope>'
 ```
 
-:::tip Add `xmlstarlet` for a nice output 
-See my [The xmlstarlet utility for Linux](/blog/linux-xmlstarlet) article 
+:::tip Add `xmlstarlet` for a nice output
+See my [The xmlstarlet utility for Linux](/blog/linux-xmlstarlet) article
 
-Add `| xmlstarlet format --indent-spaces 4` at the end of the previous command to pipe the output to `xmlstartlet` 
+Add `| xmlstarlet format --indent-spaces 4` at the end of the previous command to pipe the output to `xmlstartlet`
 :::
 
 The answer will be:
