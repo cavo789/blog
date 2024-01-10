@@ -190,6 +190,58 @@ The second slide is using `contain` and, at least, we can see what the sloth was
 
 ![Background-size is set to contain](./images/background-contain.png)
 
+### Slide-level
+
+The slide level is an important configuration item ([official documentation](https://pandoc.org/MANUAL.html#structuring-the-slide-show)).
+
+If we look at the markdown below, how many slides will we have? Two or three? The first is for the title, the second for `Technologies and tools`, but will `Apache` be a separate slide or not?
+
+```markdown
+---
+title: "Playing with slide-level"
+---
+
+## Technologies and tools
+
+### Apache
+
+Our web applications are running under [Apache](https://httpd.apache.org/).
+
+We don't need to have Apache locally since we're using it as a Docker image.
+```
+
+In fact, it depends on the `slide-level` setting. By default, `slide-level` is equal to `2` and then, the result will be:
+
+![Slide level 2](./images/slide-level-2.png)
+
+We've two slides. On the second slide, we can see our `Apache` heading 3 as a text on `Technologies and tools`.
+
+If you want a slide to be created for each level 2 and level 3 (or higher) title, you need to set this with slide-level.
+
+```markdown
+---
+title: "Playing with slide-level"
+# highlight-next-line
+format:
+  # highlight-next-line
+  revealjs:
+    # highlight-next-line
+    slide-level: 3
+---
+
+## Technologies and tools
+
+### Apache
+
+Our web applications are running under [Apache](https://httpd.apache.org/).
+
+We don't need to have Apache locally since we're using it as a Docker image.
+```
+
+And the result will give:
+
+![Slide level 3](./images/slide-level-3.png)
+
 ### Using emoji
 
 It's simple, just add the following entry to your YAML front matter.
