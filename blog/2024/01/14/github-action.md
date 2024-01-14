@@ -1,17 +1,18 @@
 ---
 slug: github-action
-title: Use Github Action to deploy this blog
+title: GitHub - Use Actions to deploy this blog
 authors: [christophe]
+image: /img/github_tips_social_media.jpg
 tags: [docusaurus, github]
 enableComments: true
 ---
-# Use Github Action to deploy this blog
+# GitHub - Use Actions to deploy this blog
 
-![Use Github Action to deploy this blog](/img/docusaurus_tips_banner.jpg)
+![GitHub - Use Actions to deploy this blog](/img/github_tips_social_media.jpg)
 
 The last two months, I was using a FTP automation script to deploy the blog on my FTP server (see my [Creation of this blog](/blog/site-creation) post).
 
-This way of doing things worked fine but had several inherent problems, the most important of which was that I had to run the script manually (from my computer). 
+This way of doing things worked fine but had several inherent problems, the most important of which was that I had to run the script manually (from my computer).
 
 If I modified an article directly from the Github interface or from another computer (where WinSCP was not installed, for example), there was no deployment.
 

@@ -21,6 +21,14 @@ Quite easy, actually.
 
 <!-- truncate -->
 
+## Using parametrized url
+
+GitHub provide, in his public API, the list of public events of a given user.
+
+You can retrieve the email using the following URL: `https://api.github.com/users/xxxxxx/events/public`. Just replace `xxxxxx` by the Github user you wish to retrieve the email.
+
+## Based on a last commit
+
 The first thing is, for sure, to go to a public repository maintained by this person and to find a commit, any commit in fact, that he's made.
 
 On the main page of the repo, locate f.i. the last commit ID he's made:

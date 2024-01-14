@@ -22,16 +22,14 @@ code: ## Open Visual Studio Code
 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog in Visual Studio Code"
 	code .
 
-.PHONY: build
-build: ## Generate a newer version of the build directory
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
-	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "yarn build"
+# .PHONY: build
+# build: ## Generate a newer version of the build directory
+# 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
+# 	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "yarn build"
 
 .PHONY: deploy
-deploy: lint build ## Deploy static pages to the webserver
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Deploy static pages to the webserver"	
-	-"/mnt/c/Program Files (x86)/WinSCP/WinSCP.com" /script="WinSCP_deploy.txt"
-	-@sensible-browser https://www.avonture.be
+deploy: ## Deploy static pages to the webserver
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Obsolete - Deployment is now done through a github action"	
 
 .PHONY: start
 start: ## Start the local webserver and open the webpage
@@ -56,3 +54,12 @@ lint: ## Lint markdown files
 install: ## The very first time, after having cloned this blog, you need to install Docusaurus before using it.
 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
 	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus-init && yarn add docusaurus-init"
+
+.PHONY: upgrade
+upgrade: ## Upgrade docusaurus and npm dependencies
+	@clear
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Upgrade docusaurus and npm dependencies"
+	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "yarn upgrade"
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Current version of docusaurus"
+	docker run --rm -it -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus -V"
+	
