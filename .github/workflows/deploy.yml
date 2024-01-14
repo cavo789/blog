@@ -1,0 +1,35 @@
+name: Deploy blog on avonture.be
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    name: Deploy blog on avonture.be
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build website
+        run: yarn build
+
+      - name: Push files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          # See https://github.com/SamKirkland/FTP-Deploy-Action for allowed settings
+          server: ${{ secrets.ftp_server }}
+          username: ${{ secrets.ftp_login }}
+          password: ${{ secrets.ftp_password }}
+          # We need to deploy the build folder from GitHub to our FTP; not everything (f.i. don't need node_modules)
+          local-dir: ./build/
