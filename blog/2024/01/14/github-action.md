@@ -1,13 +1,13 @@
 ---
 slug: github-action
-title: Use Github Action to deploy this blob
+title: Use Github Action to deploy this blog
 authors: [christophe]
 tags: [docusaurus, github]
 enableComments: true
 ---
-# Use Github Action to deploy this blob
+# Use Github Action to deploy this blog
 
-![Use Github Action to deploy this blob](/img/docusaurus_tips_banner.jpg)
+![Use Github Action to deploy this blog](/img/docusaurus_tips_banner.jpg)
 
 The last two months, I was using a FTP automation script to deploy the blog on my FTP server (see my [Creation of this blog](/blog/site-creation) post).
 
