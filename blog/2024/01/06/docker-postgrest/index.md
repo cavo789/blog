@@ -206,3 +206,53 @@ Consult my [PostgREST](https://github.com/cavo789/postgrest) repository on GitHu
 PostgREST is compliant with [OpenAPI](https://swagger.io/specification/). It's then possible to auto-document his routes using the [Swagger UI](https://hub.docker.com/r/swaggerapi/swagger-ui) Docker image.
 
 This means that running `curl http://localhost:3000` (the PostgREST URL), you'll get the list of all tables accessible to you (using your access key). This makes your database open to the world (once again, only what you've allowed using correct permission).
+
+## Illustration of some calls
+
+
+### Citizens
+
+* Get the list of all citizens: `clear ; curl http://127.0.0.1:3000/citizens | jq` / [URL](http://127.0.0.1:3000/citizens)
+* Only citizen ID 69: `clear ; curl http://127.0.0.1:3000/citizens\?id\=eq.69 | jq` / [URL](http://127.0.0.1:3000/citizens?id=eq.69)
+* Only citizen ID 69 and id, firstname and lastname: `clear ; curl http://127.0.0.1:3000/citizens\?select\=id,first_name,last_name\&id\=eq.69 | jq` / [URL](http://127.0.0.1:3000/citizens?select=id,first_name,last_name&id=eq.69)
+* Get Jean but only the one speaking Dutch (language ID `2`) (i.e. a WHERE with two conditions): `clear ; curl http://127.0.0.1:3000/citizens\?first_name\=fts.Jean\&language_id\=eq.2 | jq` / [URL](http://127.0.0.1:3000/citizens?first_name=fts.Jean&language_id=eq.2)
+
+### Workers
+
+* Get the list of all workers, the first five: `clear ; curl http://127.0.0.1:3000/workers\?select\=id,email\&limit=5 | jq` / [URL](http://127.0.0.1:3000/workers?select=id,email&limit=5)
+* Get the list of all workers, the next five: `clear ; curl http://127.0.0.1:3000/workers\?select\=id,email\&limit=5\&offset=5 | jq` / [URL](http://127.0.0.1:3000/workers?select=id,email&limit=5&offset=5)
+* Reverse order, get the last 10: `clear ; curl http://127.0.0.1:3000/workers\?select\=id,email\&limit\=10\&offset\=0\&order\=id.desc | jq` / [URL](http://127.0.0.1:3000/workers\?select=id,email&limit=10&offset=0&order=id.desc)
+
+* Get worker id 15: `clear ; curl http://127.0.0.1:3000/workers\?id\=eq.15  | jq`  AS WE CAN SEE, the output is an array with only one record / [URL](http://127.0.0.1:3000/workers?id=eq.15)
+* Get worker id 15 - no more array: `clear ; curl http://127.0.0.1:3000/workers\?id\=eq.15 -H "Accept: application/vnd.pgrst.object+json" | jq` (here it's easier and more logic for the frontend)
+
+### Using inner join
+
+* Get the list of workers and their first_name and last_name (limit to worker ID `73`): `clear ; curl http://127.0.0.1:3000/workers\?select\=id,email,citizens\(first_name,last_name\)\&id\=eq.73 | jq` / [URL](http://127.0.0.1:3000/workers?select=id,email,citizens(first_name,last_name)&id=eq.73)
+* Add the language code: `clear ; curl http://127.0.0.1:3000/workers?select=id,email,citizens(first_name,last_name,language_id),languages(code)&id=eq.73 | jq` / [URL](http://127.0.0.1:3000/workers?select=id,email,citizens(first_name,last_name,language_id),languages(code)&id=eq.73)
+
+### Levels
+
+* Get the list of all levels: `clear ; curl http://127.0.0.1:3000/levels | jq` / [URL](http://127.0.0.1:3000/levels)
+* Get the list of levels where ID is greater than 10, only ID and code: `clear ; curl http://127.0.0.1:3000/levels\?select\=id,code\&id\=gt.10 | jq` / [URL](http://127.0.0.1:3000/levels?select=id,code&id=gt.10)
+
+### Translations
+
+* Get the list of translations with the word *Technical*: `clear ; curl http://127.0.0.1:3000/translations\?value\=fts.Technical | jq` / [URL](http://127.0.0.1:3000/translations?value=fts.Technical)
+* Get the list of translations starting with the word *Technical*, case insensitive: `clear ; curl http://127.0.0.1:3000/translations\?value\=ilike.technical\* | jq` / [URL](http://127.0.0.1:3000/translations?value=ilike.technical*)
+
+### Generic profiles
+
+* Get the list of active generic profiles: `clear ; curl http://127.0.0.1:3000/generic_profiles\?active\=is.true | jq` / [URL](http://127.0.0.1:3000/generic_profiles?active=is.true)
+*    and rename the field `code` to `GenericProfileCode`: ` curl http://127.0.0.1:3000/generic_profiles\?select\=id,GenericProfileCode:code\&active\=is.true | jq` / [URL](http://127.0.0.1:3000/generic_profiles?select=id,GenericProfileCode:code&active=is.true)
+
+### Output format
+
+* Get the list as JSON: `clear ; curl http://127.0.0.1:3000/workers -H "Accept: application/json"`
+* Get the list as CSV: `clear ; curl http://127.0.0.1:3000/workers -H "Accept: text/csv"`
+* Get the list as TEXT - Here we need to return only one value: `clear ; curl http://127.0.0.1:3000/workers\?select\=email\&id\=eq.15 -H "Accept: text/plain"`
+
+### Casting
+
+* Get the ID and email of worker `15`: `clear ; curl http://127.0.0.1:3000/workers\?select\=id,email\&id=eq.75 | jq` / [URL](http://127.0.0.1:3000/workers?select=id,email&id=eq.75)
+* Cast the ID as string: `clear ; curl http://127.0.0.1:3000/workers\?select\=id::text,email\&id=eq.75 | jq` / [URL](http://127.0.0.1:3000/workers?select=id::text,email&id=eq.75)
