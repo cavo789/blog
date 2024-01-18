@@ -3,7 +3,7 @@ slug: docker-compose-viz
 title: How to generate a graph from docker-compose.yml
 authors: [christophe]
 image: ./images/social_media.jpg
-tags: [docker, vizualization, tips]
+tags: [docker, visualisation, tips]
 draft: true
 enableComments: true
 ---

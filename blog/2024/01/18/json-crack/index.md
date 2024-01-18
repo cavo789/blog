@@ -3,9 +3,8 @@ slug: json-crack
 title: Rendering a JSON file as a mind map
 authors: [christophe]
 image: ./images/header.png
-tags: [json, vizualization, vscode]
+tags: [json, visualisation, vscode]
 enableComments: true
-draft: true
 ---
 # Rendering a JSON file as a mind map
 
@@ -13,13 +12,13 @@ draft: true
 
 > [https://jsoncrack.com/editor](https://jsoncrack.com/editor)
 
-I really like the idea of not having to draw (actually, that's just because I'm really rubbish at it) a diagram, a flow chart, a graphic representation of something that ... can be written.
+I really like the idea of not having to draw (actually, that is just because I am really bad at it) a diagram, a flow chart, a graphic representation of something that ... can be written.
 
 [Json crack]((https://jsoncrack.com/editor)) is one of the tools in my toolkit when I want to draw something that can be written in json.
 
 <!-- truncate -->
 
-Let's take an example found randomly on the net [here](https://medium.com/@Goldzila/superheroes-of-data-exploring-xml-json-and-binary-formats-through-the-lens-of-marvel-characters-3754f2691cdc). How can we represent Spider-Man as a JSON object? Below an attempt:
+Let us take an example found randomly on the net [here](https://medium.com/@Goldzila/superheroes-of-data-exploring-xml-json-and-binary-formats-through-the-lens-of-marvel-characters-3754f2691cdc). How can we represent Spider-Man as a JSON object? Below an attempt:
 
 ```json
 {
@@ -85,7 +84,7 @@ Another example (found [here](https://developer.mozilla.org/en-US/docs/Learn/Jav
 
 ![Super hero squad](./images/super_hero_squad.png)
 
-The advantage of the image is that it's much clearer: we can see straight away that the squad is made up of three members and that the strongest (and oldest) is *Eternal Flame*, who has 5 powers.
+The advantage of the image is that it is much clearer: we can see straight away that the squad is made up of three members and that the strongest (and oldest) is *Eternal Flame*, who has five powers.
 
 :::note
 Json crack has some limitations for the free version like the number of lines in your JSON content. You can also install an [add-on for vscode](https://marketplace.visualstudio.com/items?itemName=AykutSarac.jsoncrack-vscode).
