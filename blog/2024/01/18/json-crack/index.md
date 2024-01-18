@@ -14,7 +14,7 @@ enableComments: true
 
 I really like the idea of not having to draw (actually, that is just because I am really bad at it) a diagram, a flow chart, a graphic representation of something that ... can be written.
 
-[Json crack]((https://jsoncrack.com/editor)) is one of the tools in my toolkit when I want to draw something that can be written in json.
+[Json crack](https://jsoncrack.com/editor) is one of the tools in my toolkit when I want to draw something that can be written in json.
 
 <!-- truncate -->
 
@@ -22,7 +22,7 @@ Let us take an example found randomly on the net [here](https://medium.com/@Gold
 
 ```json
 {
-  "superhero": "Spider-Man",
+  "superhero": "Spider-Man",of the too
   "realName": "Peter Parker",
   "abilities": [
     "Wall-Crawling",
