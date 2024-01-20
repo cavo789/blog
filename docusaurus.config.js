@@ -38,7 +38,13 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
+  scripts: [
+    {
+      src: 'https://scripts.withcabin.com/hello.js',
+      async: true,
+      defer: true,
+    },
+  ],
   presets: [
     [
       'classic',
@@ -128,7 +134,7 @@ const config = {
             'aria-label': 'GitHub repository',
           },
         ],
-      },
+      },      
       footer: {
         style: 'dark',links: [
           {

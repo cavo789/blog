@@ -22,10 +22,10 @@ code: ## Open Visual Studio Code
 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog in Visual Studio Code"
 	code .
 
-# .PHONY: build
-# build: ## Generate a newer version of the build directory
-# 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
-# 	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "yarn build"
+.PHONY: build
+build: ## Generate a newer version of the build directory
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
+	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "yarn build"
 
 .PHONY: deploy
 deploy: ## Deploy static pages to the webserver

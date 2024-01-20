@@ -217,30 +217,18 @@ This will create/update the `/build` folder with a fresh version of the site.
 
 Next step is to start my FTP client (which is [WinSCP](https://winscp.net/eng/download.php)) and copy my local `/blog/build` folder to my remote website.
 
-### Using automation
+## Adding withcabin for RGPD compliant stats
 
-WinSCP support automation so ...
+By adding the lines below to the `docusaurus.config.js` as child node of `const config`, I'm injecting a script into the body part. This will then allow RGPD compliant stats on [https://withcabin.com/](https://withcabin.com/).
 
-I have created a file called `WinSCP_deploy.txt` in my blog folder with this content:
-
-```text
-option batch abort
-option confirm off 
-
-open ftp://USERNAME:PASSWORD@HOST_OR_IP/
-
-lcd ./build/
-cd /public_html
-
-put *.*
-
-close
-
-exit
+```javascript
+scripts: [
+  {
+    src: 'https://scripts.withcabin.com/hello.js',
+    async: true,
+    defer: true,
+  },
+],
 ```
 
-:::note
-I have replaced `ftp://USERNAME:PASSWORD@HOST_OR_IP/` with my real credentials. *A sample `WinSCP_deploy.txt.dist` is available on my github blog repository.*
-:::
-
-Now, the only thing I have to do is to call my `deploy.sh` script.
+Note: the script is only injected to pages after a `yarn build` i.e. when the static site is rendered; not during a `yarn watch`.
