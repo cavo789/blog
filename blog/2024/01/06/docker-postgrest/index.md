@@ -209,7 +209,6 @@ This means that running `curl http://localhost:3000` (the PostgREST URL), you'll
 
 ## Illustration of some calls
 
-
 ### Citizens
 
 * Get the list of all citizens: `clear ; curl http://127.0.0.1:3000/citizens | jq` / [URL](http://127.0.0.1:3000/citizens)
@@ -244,7 +243,7 @@ This means that running `curl http://localhost:3000` (the PostgREST URL), you'll
 ### Generic profiles
 
 * Get the list of active generic profiles: `clear ; curl http://127.0.0.1:3000/generic_profiles\?active\=is.true | jq` / [URL](http://127.0.0.1:3000/generic_profiles?active=is.true)
-*    and rename the field `code` to `GenericProfileCode`: ` curl http://127.0.0.1:3000/generic_profiles\?select\=id,GenericProfileCode:code\&active\=is.true | jq` / [URL](http://127.0.0.1:3000/generic_profiles?select=id,GenericProfileCode:code&active=is.true)
+* and rename the field `code` to `GenericProfileCode`: `curl http://127.0.0.1:3000/generic_profiles\?select\=id,GenericProfileCode:code\&active\=is.true | jq` / [URL](http://127.0.0.1:3000/generic_profiles?select=id,GenericProfileCode:code&active=is.true)
 
 ### Output format
 
