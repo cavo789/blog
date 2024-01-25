@@ -3,7 +3,7 @@ slug: linux-xmlstarlet
 title: The xmlstarlet utility for Linux
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
-tags: [bash, linux, tips, xml]
+tags: [bash, linux, tips, xml, xmlstarlet]
 enableComments: true
 ---
 # The xmlstarlet utility for Linux
