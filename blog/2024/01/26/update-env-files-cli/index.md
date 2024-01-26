@@ -40,37 +40,112 @@ Then `printf` will echo the new value on screen, just for debugging / control pr
 
 Finally the function is called like this: `updateEnv "APP_DEBUG" "false" ".env"`.
 
-Below an example with a few variables:
+Before seeing the function, like always, just create a sample file:
+
+```bash
+mkdir -p /tmp/playing_env && cd $_
+
+echo 'APP_ENV = local' > .env
+echo 'APP_DEBUG = true' >> .env
+echo 'APP_KEY = 3445118442a942d1/afd37466fadd5223' >> .env
+echo 'APP_NAME = My application' >> .env
+echo 'CACHE_DRIVER = redis' >> .env
+echo 'DATABASE_TYPE = mysql' >> .env
+echo 'FORCE_HTTPS = false' >> .env
+```
+
+Now, we can run in our console:
 
 ```bash
 (
   updateEnv() {
     variable="$1"
     newValue="$2"
-    file="$3"
+    file="${3:-.env}"
 
     # search the variable in the file. If found, update. It not, add the entry
-    grep -E -q "^${variable}\s?=" "${file}" \
-      && sed -i -r "s~${variable}(\s?)=(\s?).*~${variable}\1=\2${newValue}~" "${file}" \
-      || sed -i -e "\$a${variable}=${newValue}" "${file}"
+    grepStatus="$(grep -E -q "^${variable}\s?=" "${file}" \
+      && (sed -i -r "s~${variable}(\s?)=(\s?).*~${variable}\1=\2${newValue}~" "${file}" && echo "UPDATED") \
+      || (sed -i -e "\$a${variable}=${newValue}" "${file}" && echo "ADDED"))"
 
     # Output on the console to help the guy in front of the screen to understand
-    printf "\e[33;1m%s \e[0;1m %s\n" ${file} "$(grep -i "^${variable}" "${file}")"
+    printf "\e[33;1m%s \e[32;1m%-7s\e[0;1m %s\n" \
+        ${file} "${grepStatus}" "$(grep -i -E "^${variable}\s?=" "${file}")"
 
     return 0
   }
 
   clear
+  
+  dotEnv=".env"
 
-  updateEnv "APP_DEBUG" "false" ".env"
-  updateEnv "CACHE_DURATION_IN_SECONDS" "86400" ".env"
-  updateEnv "DEFAULT_CACHE_DRIVER" "redis" ".env"
-  updateEnv "CAN_REGISTER" "false" ".env"
-  updateEnv "FORCE_HTTPS" "true" ".env"
-  updateEnv "REDIS_HOST" "127.0.0.1" ".env"
-  updateEnv "REDIS_PORT" "6789" ".env"
-  updateEnv "TIMEZONE" "Europe/Brussels" ".env"
+  updateEnv "APP_DEBUG" "false" "${dotEnv}"
+  updateEnv "APP_ENV" "production" "${dotEnv}"
+  updateEnv "APP_NAME" "My application is running on production" "${dotEnv}"
+  updateEnv "CAN_REGISTER" "false" "${dotEnv}"
+  updateEnv "FORCE_HTTPS" "true" "${dotEnv}"
 )
 ```
 
-This example can be used as a skeleton for much more complex code, with more variables and conditions depending on your target environment (`APP_DEBUG` would be set to `true` for test servers and `false` for production ones).
+The output will be, for this example:
+
+```text
+.env UPDATED APP_DEBUG = false
+.env UPDATED APP_ENV = production
+.env UPDATED APP_NAME = My application is running on production
+.env ADDED   CAN_REGISTER=false
+.env UPDATED FORCE_HTTPS = true
+```
+
+We can see fourth variables have been updated and one has been added (`CAN_REGISTER`).
+
+## Adding a skip boolean
+
+This version introduce a *Should we add the variable?* flag i.e. should we absolutely set a variable in the environment file if not yet there?
+
+In the example here above, we've seen `updateEnv "APP_DEBUG" "false" "${dotEnv}"`. In case of `APP_DEBUG` is not yet present, the `updateEnv` function will add the variable.
+
+And now, if we call `updateEnv "FORCE_HTTPS" "false" "${dotEnv}"`, same thing, we'll add `FORCE_HTTPS` in the file but, what if we just skip it?
+
+```bash
+(
+ updateEnv() {
+    variable="$1"
+    newValue="$2"
+    file="$3"
+    add=${4:-true}
+
+    # search the variable in the file. If found, update. It not, add the entry
+    grepStatus="$(grep -E -q "^${variable}\s?=" "${file}" \
+      && (sed -i -r "s~${variable}(\s?)=(\s?).*~${variable}\1=\2${newValue}~" "${file}" && echo "UPDATED") \
+      || (if ( $add -eq true ); then \
+            sed -i -e "\$a${variable}=${newValue}" "${file}"
+            echo "ADDED"
+          else  
+            echo "SKIP"
+           fi)
+    )"
+
+
+    # Output on the console to help the guy in front of the screen to understand
+    printf "\e[33;1m%s \e[32;1m%-7s\e[0;1m %s\n" \
+        ${file} "${grepStatus}" "$(grep -i -E "^${variable}\s?=" "${file}" || echo ${variable})"
+  }
+
+  clear
+
+  dotEnv=".env"
+
+  updateEnv "DEFAULT_CACHE" "redis" "${dotEnv}" false
+  updateEnv "REDIS_HOST" "127.0.0.1" "${dotEnv}" false
+)
+```
+
+Now, we've introduced a fourth argument; by default set to `true`.
+
+The output of the previous command will be the one below. If not present, variables are not added and this is just perfect.
+
+```text
+.env SKIP    DEFAULT_CACHE
+.env SKIP    REDIS_HOST
+```
