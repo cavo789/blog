@@ -3,7 +3,7 @@ slug: linux-sed-tips
 title: Search and replace (or add) using sed
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
-tags: [bash, json, linux, sed, tips]
+tags: [.env, bash, linux, sed, tips]
 enableComments: true
 ---
 # Search and replace (or add) using sed
