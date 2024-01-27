@@ -20,7 +20,7 @@ And that's where the obligation to be meticulous begins.
 
 <!-- truncate -->
 
-Depending on the server (is this a test server or UAt or PROD?), settings won't be the same. We'll for sure not enable debugging on a production one while we'll for a test / uat server. Credentials for the database f.i. will differs for each server. And so on.
+Depending on the server (is this a test server or UAt or PROD?), settings won't be the same. We'll for sure not enable debugging on a production one while we'll for a test / uat server. Credentials for the database f.i. will differ for each server. And so on.
 
 So, each time the `.env` file is created, the normal way of doing things is to open it in an editor and start to make changes.
 
@@ -36,9 +36,9 @@ The `updateEnv` function will receive three arguments.
 
 The function will use `grep` and `sed` (see my [Search and replace (or add) using sed](/blog/linux-sed-tips) article to learn more) to update the variable or add it to the file.
 
-Then `printf` will echo the new value on screen, just for debugging / control process.
+Then `printf` will echo the new value on the screen, just for debugging / control process.
 
-Finally the function is called like this: `updateEnv "APP_DEBUG" "false" ".env"`.
+Finally, the function is called like this: `updateEnv "APP_DEBUG" "false" ".env"`.
 
 Before seeing the function, like always, just create a sample file:
 

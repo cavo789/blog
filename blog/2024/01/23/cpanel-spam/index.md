@@ -16,6 +16,10 @@ There, you've two main options: the *Spam filter* and a *White list*.
 
 Using the first one, you can define email patterns like `*@hair.com` which mean: immediately kill those emails on the server. The second one is just the opposite f.i. `*@my-own-company.com` saying that you trust that domain.
 
+:::tip PlanetHoster - N0C
+If you're hosted by PlanetHoster on the N0C infrastructure, please read [Exterminate them all, fight spam directly at PlanetHoster - N0C](/blog/planethoster-n0c-spam) instead.
+:::
+
 <!-- truncate -->
 
 My personal use case is even if I don't like shortcuts on my desktop, I've well one for `https://(my_host_company)/xxxxx/mail/spam/index.html#/blacklist` i.e. a direct access to the page where I can add my spam filters. And it works quite well.

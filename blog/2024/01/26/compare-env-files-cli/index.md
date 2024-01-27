@@ -24,14 +24,14 @@ As you know, you have to create the variables in the `.env.example` file too but
 
 <!-- truncate -->
 
-There are some tools that allow to compare two files like `diff` but not really the best here since:
+There are some tools that allow comparing two files like `diff` but not really the best here since:
 
 1. We don't care about comments and empty lines. If a variable has been commented, we just need to ignore it. 
 2. We don't care about the position in the file where the variable is declared. If `APP_ENV = local` is on the first line, in the middle of the file or just before the last line, we don't care about it.
 3. We can also ignore some variables that we know they should be different like `APP_KEY` f.i.
 
 
-Let's try... Below we'll create the file `.env.example` with two lines then copy it to `.env` and just add a new line in `.env.example`. Finally we'll sort  sort -o `.env.example` so the order will differs with `.env`.
+Let's try... Below we'll create the file `.env.example` with two lines then copy it to `.env` and just add a new line in `.env.example`. Finally, we'll sort  sort -o `.env.example` so the order will differs with `.env`.
 
 ```bash
 mkdir -p /tmp/playing_env && cd $_
@@ -72,7 +72,7 @@ Now that we have our two files with some differences, we can run this command:
 
 The flag `--suppress-common-lines -y` will display the result in two columns (`-y`) and only differences (`--suppress-common-lines`).
 
-Once the `diff` is made, the command will ignore the `APP_KEY` variable (in our example); so, yes, the expected result is:
+Once the `diff` is made, the command ignores the `APP_KEY` variable (in our example); so, yes, the expected result is:
 
 ```text
 Left side: .env                   Right side: .env.example
@@ -93,7 +93,7 @@ ALLOW_FEATURE_DO_THIS = true    <
                                 > CACHE_DRIVER = redis
 ```
 
-The column on the left represent the first file (in our example `.env`) while the column on the right is for the second file (`.env.example`).
+The column on the left represents the first file (in our example `.env`) while the column on the right is for the second file (`.env.example`).
 
 Last sample:
 
