@@ -52,4 +52,4 @@ You can manipulate entries one by one using the web interface too. Go to your cP
 
 You can now manipulate the list with f.i. vscode and sort it alphabetically, simplify rules, remove duplicated entries (after refactoring), ...
 
-I really like fighting against spam directly at my host company because, otherwise, I get spams on all my machines (my different computers and my smartphone) and, on my smartphone I click on *This is a spam* I only ever teach my smartphone to delete this email, not my other machines... And I only identify that sender (like *<buy-it@hair.com>*); I'll continue to get from any other emails account like `really-but-it@hair.com`.
+I really like fighting against spam directly at my host company because, otherwise, I get spams on all my machines (my different computers and my smartphone) and, on my smartphone I click on *This is a spam* I only ever teach my smartphone to delete this email, not my other machines... And I only identify that sender (like *buy-it@hair.com*); I'll continue to get from any other emails account like `really-but-it@hair.com`.
