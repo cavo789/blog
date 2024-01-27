@@ -10,12 +10,12 @@ enableComments: true
 
 ![Compare environment files in the Linux console](/img/bash_tips_header.jpg)
 
-This is a very common source of problems using .env files: you've two or more different `.env` file like `.env` and `.env.example`. 
+This is a very common source of problems using .env files: you've two or more different `.env` file like `.env` and `.env.example`.
 
 You're a programmer and coding a new amazing feature. You're adding one or more new environment variables to your local `.env` file and everything is working fine **on your computer**.
 
 :::danger Boum! Your feature is buggy.
-A colleague copy the source code from a versioning system like Github/GitLab or, second scenario, someone will deploy the feature on a server and your feature is broken. 
+A colleague copy the source code from a versioning system like Github/GitLab or, second scenario, someone will deploy the feature on a server and your feature is broken.
 :::
 
 Why? Because the variable(s) you've added have been added in **your local `.env`** file, on **your computer only**.
@@ -26,10 +26,9 @@ As you know, you have to create the variables in the `.env.example` file too but
 
 There are some tools that allow comparing two files like `diff` but not really the best here since:
 
-1. We don't care about comments and empty lines. If a variable has been commented, we just need to ignore it. 
+1. We don't care about comments and empty lines. If a variable has been commented, we just need to ignore it.
 2. We don't care about the position in the file where the variable is declared. If `APP_ENV = local` is on the first line, in the middle of the file or just before the last line, we don't care about it.
 3. We can also ignore some variables that we know they should be different like `APP_KEY` f.i.
-
 
 Let's try... Below we'll create the file `.env.example` with two lines then copy it to `.env` and just add a new line in `.env.example`. Finally, we'll sort  sort -o `.env.example` so the order will differs with `.env`.
 

@@ -2,13 +2,13 @@
 slug: planethoster-n0c-spam
 title: Exterminate them all, fight spam directly at PlanetHoster - N0C
 authors: [christophe]
-image: ./../../23/cpanel-spam/images/social_media.jpg
-tags: [cpanel, n0c, planethoster, roundcube]
+image: /img/spam_social_media.jpg
+tags: [n0c, planethoster, roundcube]
 enableComments: true
 ---
 # Exterminate them all, fight spam directly at PlanetHoster - N0C
 
-![Exterminate them all, fight spam directly at PlanetHoster - N0C](./../../23/cpanel-spam/images/header.jpg)
+![Exterminate them all, fight spam directly at PlanetHoster - N0C](/img/spam_header.jpg)
 
 A few days ago, I've published a post about how to [fight against spam if you've a cpanel](/blog/cpanel-spam). If you're hosted on the N0C infrastructure of PlanetHoster; it will not work.
 
@@ -36,7 +36,8 @@ Fill in the screen with your own rule; like for identifying all emails coming fr
 
 ![Identify as spam emails from Soviet Union](./images/rule_su.png)
 
-*(In my case, all the emails coming from .su can only be unsolicited emails)*
+:::note In my case, all the emails coming from .su can only be unsolicited emails.
+:::
 
 Once saved, you can create other rules.
 
@@ -50,7 +51,7 @@ If needed click again on the `Settings` menu then `Filters`. Now that you've at 
 
 Open the downloaded file and you'll get something like this:
 
-```
+```text
 # rule:[Identify as spam: *.su]
 if allof (header :contains "from" "*.su")
 {
@@ -64,7 +65,7 @@ The syntax is quite easy, no? In fact, we can reproduce it with some loop in PHP
 
 There is one variable and it's `*.su`. So, if I want to block also `.india` (too, because I don't have any contact with India), I just need to code some loop with an array having two entries and I'll get:
 
-```
+```text
 # rule:[Identify as spam: *.india]
 if allof (header :contains "from" "*.india")
 {
@@ -77,7 +78,7 @@ if allof (header :contains "from" "*.su")
 }
 ```
 
-## Where to put our file?
+## Where to put our file
 
 Once you've a correctly formatted .sieve file (think to save it for Linux i.e. `CR` and not `CRLF`), you need to copy the file on your host, using a FTP client most probably.
 
@@ -140,6 +141,10 @@ cat patterns.json \
 echo "File roundcube.sieve has been created. Now, you've to publish it on your FTP."
 ```
 
+:::tip
+The article [Exterminate them all, kill spam using GitHub Actions](/blog/planethoster-n0c-spam-roundcube-action) is now written; don't hesitate to read it.
+:::
+
 ## Special thanks
 
-For this blog post, I would like to thank [Marc Dechèvre](https://www.woluweb.be/) because Marc has identified the .sieve file and where to save it. Thank you maestro 👏.
+For this blog post, I would like to thank [Marc Dechèvre](https://www.woluweb.be/) because Marc has identified the .sieve file and where to save it via FTP. Thank you maestro 👏.

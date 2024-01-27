@@ -25,7 +25,7 @@ By searching for `Notes management`, [WinSCP](https://winscp.net/) will inform m
 
 :::tip
 It is, in fact, the execution of a script (an extension in the WinSCP language) which is here : `C:\Program Files (x86)\WinSCP\Extensions\SearchText.WinSCPextension.ps1`
-::: 
+:::
 
 ## PHP-grep
 

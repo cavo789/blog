@@ -2,13 +2,13 @@
 slug: cpanel-spam
 title: Exterminate them all, fight spam directly at your host company
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/spam_social_media.jpg
 tags: [cpanel, spamassassin]
 enableComments: true
 ---
 # Exterminate them all, fight spam directly at your host company
 
-![Exterminate them all, fight spam directly at your host company](./images/header.jpg)
+![Exterminate them all, fight spam directly at your host company](/img/spam_header.jpg)
 
 If your web host company offers you a cpanel access, you will find there access to a tool called *SpamAssassin*.
 
@@ -52,4 +52,4 @@ You can manipulate entries one by one using the web interface too. Go to your cP
 
 You can now manipulate the list with f.i. vscode and sort it alphabetically, simplify rules, remove duplicated entries (after refactoring), ...
 
-I really like fighting against spam directly at my host company because, otherwise, I get spams on all my machines (my different computers and my smartphone) and, on my smartphone I click on *This is a spam* I only ever teach my smartphone to delete this email, not my other machines... And I only identify that sender (like *buy-it@hair.com*); I'll continue to get from any other emails account like `really-but-it@hair.com`.
+I really like fighting against spam directly at my host company because, otherwise, I get spams on all my machines (my different computers and my smartphone) and, on my smartphone I click on *This is a spam* I only ever teach my smartphone to delete this email, not my other machines... And I only identify that sender (like *<buy-it@hair.com>*); I'll continue to get from any other emails account like `really-but-it@hair.com`.

@@ -71,7 +71,7 @@ So local is the master.
 
 See the line `synchronize remote`.
 
-Choose `remote`, `local` or `both`: 
+Choose `remote`, `local` or `both`:
 
 * When the first parameter is `local`, changes from remote directories are applied to local directories.
 * When the first parameter is `remote`, changes from the local directories are applied to the remote directories.

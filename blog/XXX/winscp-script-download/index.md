@@ -13,7 +13,7 @@ draft: true
 
 The [WinSCP](https://winscp.net/) FTP client allows you to run a script that makes possible automation.
 
-As an example, we'll download any `.php` files from a host and just these files. 
+As an example, we'll download any `.php` files from a host and just these files.
 
 <!-- truncate -->
 
