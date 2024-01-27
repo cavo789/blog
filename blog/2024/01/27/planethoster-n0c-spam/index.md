@@ -142,4 +142,4 @@ echo "File roundcube.sieve has been created. Now, you've to publish it on your F
 
 ## Special thanks
 
-For this blog post, I would like to thank [Marc Dechèvre](https://www.woluweb.be/) because Marc has identified the .sieve file and where to save. Thank you maestro 👏.
+For this blog post, I would like to thank [Marc Dechèvre](https://www.woluweb.be/) because Marc has identified the .sieve file and where to save it. Thank you maestro 👏.
