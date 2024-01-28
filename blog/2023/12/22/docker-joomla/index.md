@@ -10,7 +10,7 @@ enableComments: true
 
 ![Create your Joomla website using Docker](./images/header.jpg)
 
-In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** *(don't want to wait? Jump to the [Final docker-compose.yml](#final-docker-composeyml) chapter)*.
+In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** *(don't want to wait? Jump to the "Final docker-compose.yml" chapter)*.
 
 I will use a Linux console *(I'm running WSL on my Windows computer and I have chosen Ubuntu for my distribution)* but since Docker can also be used on Windows, you can perfectly run, exactly, the same commands in an MS-DOS / Powershell console.
 
