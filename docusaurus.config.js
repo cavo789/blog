@@ -44,6 +44,11 @@ const config = {
       async: true,
       defer: true,
     },
+    {
+      src: 'https://avonture.be/js/matomo.js',
+      async: true,
+      defer: true,
+    },
   ],
   presets: [
     [
