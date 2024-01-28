@@ -43,12 +43,7 @@ const config = {
       src: 'https://scripts.withcabin.com/hello.js',
       async: true,
       defer: true,
-    },
-    {
-      src: 'https://avonture.be/js/matomo.js',
-      async: true,
-      defer: true,
-    },
+    }
   ],
   presets: [
     [
@@ -76,6 +71,7 @@ const config = {
     ],
   ],
   plugins: [
+    'docusaurus-plugin-matomo',
     [require.resolve("docusaurus-plugin-image-zoom"), {}],
     [
       require.resolve("@cmfcmf/docusaurus-search-local"),
@@ -124,8 +120,8 @@ const config = {
             label: 'Resources',
           },
           {
-            href: '/tutorials',
-            label: 'Tutorials',
+            href: '/blog/archive',
+            label: 'Archive',
           },
           {
             href: 'https://www.avonture.be/v1',
@@ -166,6 +162,12 @@ const config = {
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Christophe Avonture. Built with Docusaurus.`,
+      },
+      matomo: {
+        matomoUrl: 'https://matomo.avonture.be/',
+        siteId: '1',
+        phpLoader: 'matomo.php',
+        jsLoader: 'matomo.js'
       },
       prism: {
         theme: prismThemes.github,
