@@ -26,7 +26,7 @@ As already explained, RoundCube is using a sieve file to store your rules. Such 
 
 ```text
 # rule:[Identify as spam: *.su]
-if allof (header :contains "from" "*.su")
+if allof (header :matches "from" "*.su")
 {
     fileinto "spam";
 }
@@ -88,7 +88,7 @@ Please create a file called `spam.template` with this content:
 
 ```text
 # rule:[Identify as spam: {{ pattern }}]
-if allof (header :contains "from" "{{ pattern }}")
+if allof (header :matches "from" "{{ pattern }}")
 {
  fileinto "spam";
 }
@@ -118,7 +118,7 @@ if [ ! -f spam.template ]; then
     echo "Please create a spam.template file. Below an example of what you can put in it:"
     echo ""
     echo "# rule:[Identify as spam: {{ pattern }}]"
-    echo "if allof (header :contains \"from\" \"{{ pattern }}\")"
+    echo "if allof (header :matches \"from\" \"{{ pattern }}\")"
     echo "{"
  echo "  fileinto \"spam\";"
     echo "}"
@@ -162,17 +162,17 @@ So now, you should have a new folder called `build` where the file `roundcube.sa
 
 ```text
 # rule:[Identify as spam: *.buzz]
-if allof (header :contains "from" "*.buzz")
+if allof (header :matches "from" "*.buzz")
 {
   fileinto "spam";
 }
 # rule:[Identify as spam: *.cf]
-if allof (header :contains "from" "*.cf")
+if allof (header :matches "from" "*.cf")
 {
   fileinto "spam";
 }
 # rule:[Identify as spam: *.cn]
-if allof (header :contains "from" "*.cn")
+if allof (header :matches "from" "*.cn")
 {
   fileinto "spam";
 }
