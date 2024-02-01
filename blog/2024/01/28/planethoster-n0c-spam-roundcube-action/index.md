@@ -158,7 +158,7 @@ In your console, run `./generate.sh` and if everything is running fine, you'll g
 
 If you get an error about `jq` please install it by running: `sudo apt-get update && sudo apt-get install jq` then start `./generate.sh` again.
 
-So now, you should have a new folder called `build` where the file `roundcube.save` has been created. Open the file and check his content. It'll start with:
+So now, you should have a new folder called `build` where the file `roundcube.sieve` has been created. Open the file and check his content. It'll start with:
 
 ```text
 # rule:[Identify as spam: *.buzz]

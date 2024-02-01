@@ -27,9 +27,9 @@ Please then create a `docker-compose.yml` file in that folder with this content:
 
 ```yaml
 version: '3.9'
- 
+
 name: limesurvey
- 
+
 services:
   limesurvey-app:
     image: docker.io/martialblog/limesurvey:latest
@@ -49,7 +49,7 @@ services:
       - 8080:8080
     depends_on:
       - limesurvey-db
- 
+
   limesurvey-db:
     image: docker.io/mysql:latest
     container_name: limesurvey-db
@@ -63,14 +63,14 @@ services:
 Now, simply run the following command to download (only the first time) required images (LimeSurvey and MySQL) and create the two containers:
 
 ```bash
-docker compose up --detach 
+docker compose up --detach
 ```
 
 Once everything has been downloaded and started, you can check you've well two containers by running the following command:
 
 ```bash
 ❯ docker container list
- 
+
 [...] IMAGE                         [...] NAMES
 [...] martialblog/limesurvey:latest [...] limesurvey-app
 [...] mysql:latest                  [...] limesurvey-db
@@ -80,7 +80,7 @@ Once everything has been downloaded and started, you can check you've well two c
 For clarity, the output of `docker container list` has been simplified here above; not all columns were mentioned in the article.
 :::
 
-Please wait **one or two minutes** (depending on your machine), time needed by LimeSurvey to f.i. connect to the database container and create his database.
+Please wait **one or two minutes** more (depending on your machine), time needed by LimeSurvey to f.i. connect to the database container and create his database.
 
 Go to `http://localhost:8080` and while you got an error like `ERR_CONNECTION_REFUSED`, please wait and try again. When it's ready, you should see the default LimeSurvey welcome page.
 
@@ -114,9 +114,9 @@ Here is an updated `docker-compose.yml` file to ask Docker to use self-managed v
 
 ```yaml
 version: '3.9'
- 
+
 name: limesurvey
- 
+
 services:
   limesurvey-app:
     image: docker.io/martialblog/limesurvey:latest
@@ -132,21 +132,21 @@ services:
       - ADMIN_PASSWORD=admin
       - ADMIN_NAME=admin
       - ADMIN_EMAIL=admin@example.com
-    // highlight-next-line    
+    // highlight-next-line
     volumes:
-      // highlight-next-line    
+      // highlight-next-line
       - limesurvey:/var/www/html/upload/surveys
     ports:
       - 8080:8080
     depends_on:
       - limesurvey-db
- 
+
   limesurvey-db:
     image: docker.io/mysql:latest
     container_name: limesurvey-db
-    // highlight-next-line    
+    // highlight-next-line
     volumes:
-      // highlight-next-line    
+      // highlight-next-line
       - data:/var/lib/mysql
     environment:
       - MYSQL_USER=admin
@@ -154,12 +154,12 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=limesurvey
 
-// highlight-next-line    
+// highlight-next-line
 volumes:
-  // highlight-next-line    
+  // highlight-next-line
   limesurvey:
-  // highlight-next-line    
-  data:      
+  // highlight-next-line
+  data:
 ```
 
 :::tip Want to learn more about volumes?
