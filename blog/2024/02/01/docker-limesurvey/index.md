@@ -4,7 +4,6 @@ title: Install LimeSurvey using Docker
 authors: [christophe]
 image: ./images/social_media.jpg
 tags: [docker, limesurvey]
-draft: true
 enableComments: true
 ---
 # Install LimeSurvey using Docker
