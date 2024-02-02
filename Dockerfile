@@ -1,10 +1,12 @@
-FROM node:lts
+FROM node:18-alpine
 
-WORKDIR /app/website
+WORKDIR /app
 
-EXPOSE 3000 35729
-COPY ./docs /app/docs
-COPY ./website /app/website
+COPY package*.json ./
+
 RUN yarn install
 
-CMD ["yarn", "start"]
+COPY . .
+
+# This command will run Docusaurus and will watch for changes
+CMD ["yarn", "start", "--host", "0.0.0.0"]

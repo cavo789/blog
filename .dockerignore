@@ -1,2 +1,10 @@
-*/node_modules
+.markdownlint*
 *.log
+/.github/*
+/.vscode/
+/build/*
+/node_modules/*
+docker-compose.yml
+Dockerfile
+LICENSE
+README.md

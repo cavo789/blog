@@ -34,12 +34,8 @@ deploy: ## Deploy static pages to the webserver
 .PHONY: start
 start: ## Start the local webserver and open the webpage
 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog (http://localhost:3000)"	
+	docker compose up --detach --build
 	@sensible-browser http://localhost:3000
-
-.PHONY: watch
-watch: ## Start the Docusaurus watcher. Listen any changes to a .md file and reflect the change onto the website
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Run Docusaurus watcher and open the blog on the localhost. When done, just start a browser and surf to http://localhost:3000"	
-	docker run --rm -it --name blog --user $${UID}:$${GID} -v $${PWD}/:/project -w /project -p 3000:3000 node /bin/bash -c "npx docusaurus start --host 0.0.0.0"
 
 ##@ Data quality            Code analysis
 
@@ -50,10 +46,10 @@ lint: ## Lint markdown files
 
 ##@ Docusaurus              Utilities for Docusaurus installation, updates, ...
 
-.PHONY: install
-install: ## The very first time, after having cloned this blog, you need to install Docusaurus before using it.
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
-	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus-init && yarn add docusaurus-init"
+# .PHONY: install
+# install: ## The very first time, after having cloned this blog, you need to install Docusaurus before using it.
+# 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
+# 	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus-init && yarn add docusaurus-init"
 
 .PHONY: upgrade
 upgrade: ## Upgrade docusaurus and npm dependencies
