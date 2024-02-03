@@ -1,4 +1,4 @@
-version: "3"
+version: "3.9"
 
 services:
   docusaurus:
@@ -6,9 +6,11 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./blog:/app/blog
       - ./giscus.json:/app/giscus.json
       - ./package.json:/app/package.json
+      - ./yarn.lock:/app/yarn.lock
+
+      - ./blog:/app/blog
       - ./pages:/app/pages
       - ./src:/app/src
       - ./static:/app/static

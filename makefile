@@ -27,10 +27,6 @@ build: ## Generate a newer version of the build directory
 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
 	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "yarn build"
 
-.PHONY: deploy
-deploy: ## Deploy static pages to the webserver
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Obsolete - Deployment is now done through a github action"	
-
 .PHONY: start
 start: ## Start the local webserver and open the webpage
 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog (http://localhost:3000)"	

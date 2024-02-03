@@ -34,8 +34,12 @@ Easy no?
 [Marc Dechèvre](https://www.woluweb.be/) tells me that `winget upgrade --all --silent` command found 29 updates to make on his machine and that adding the `--include-unknown` flag found 15 more.
 :::
 
-:::tip Getting the list of softwares
+## Getting the list of softwares
+
 Running `winget list` returns the list of all softwares installed on your machine and `winget list --upgrade-available` only those when a newer version is available on the internet.
 
 And, to get the list sorted, make sure you're under **PowerShell** and run this command instead: `winget list --upgrade-available | Sort-Object`. The result isn't really nice but, at least, application names are sorted.
-:::
+
+## Upgrade just one application
+
+By runnnig `winget upgrade Docker` f.i. you'll upgrade only that one.

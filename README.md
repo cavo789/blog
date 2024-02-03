@@ -24,7 +24,7 @@ This is the case when, f.i., you will need to run a `npm` (or `yarn`) command li
 
 ## Local Development
 
-Run `make watch` to start the Docusaurus watcher and open the local website.
+Run `make start` to start the Docusaurus watcher and open the local website.
 
 Once started, every changes done in the blog will be reflected to the browser without reloading.
 
@@ -36,4 +36,4 @@ Run `make build` if you wish to rebuild files in the `/build` folder.
 
 ### Deployment
 
-Run `make deploy` to build the static files and then connect to the webserver using ftp and automate the publication of static files.
+For this repository, the deployment is made using GitHub actions. By pushing changes to github, there is a `CI/CD` pipeline who'll be started by GitHub, download NodeJs, run `yarn build` and, once HTML files have been generated in the `build` folder, a FTP copy job will copy every files from GitHub to the host where the blog is running.

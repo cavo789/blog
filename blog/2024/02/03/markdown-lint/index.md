@@ -3,9 +3,8 @@ slug: markdown-lint
 title: Markdown linter - solve formatting issue in md files
 authors: [christophe]
 image: /img/markdown_tips_social_media.jpg
-tags: [code quality, markdown, tips, vscode]
+tags: [code quality, makefile, markdown, tips, vscode]
 enableComments: true
-draft: true
 ---
 # Markdown linter - solve formatting issue in md files
 
@@ -44,14 +43,18 @@ You can ignore some detected errors like the use of inline HTML by creating a fi
 
 To use your configuration file, now, please run `docker run --rm -v .:/md peterdavehello/markdownlint markdownlint --config .markdownlint.json --ignore-path .markdownlint_ignore .`.
 
-## Some errors can be fixed automatically
+## Some errors can be fixed automagically
 
-Some errors can be fixed like multiple empty lines or sentences ending by extra spaces.
+Some errors can be fixed automagically like multiple empty lines or by trimming extra spaces at the end of lines.
 
-The flag here is `--fix` but, pay attention, since fix will update files you should also provide the `--user $(id -u):$(id -g)` flag so files will be updated but will still be owned by you.
+The flag here is `--fix` but, pay attention, since fixes will update files you should also provide the `--user $(id -u):$(id -g)` flag so files will be updated but will still be owned by you.
 
 ## Put all together
 
 The final instruction becomes : `docker run --rm --user $(id -u):$(id -g) -v .:/md peterdavehello/markdownlint markdownlint --fix --config .markdownlint.json --ignore-path .markdownlint_ignore .` and that's the one I'm running every time when I publish this blog.
 
-I'm running `make lint` in my deploy process. You can see this [here](https://github.com/cavo789/blog/blob/main/makefile#L46-L49).
+## Make it easy
+
+You don't need to remember the entire command of course. Using a [Makefile](/blog/tags/makefile) in your project, you can then create a new `target` where you put the command. 
+
+For this blog f.i., I'm running `make lint` in my deploy process. You can see this [here](https://github.com/cavo789/blog/blob/main/makefile#L42-L45).

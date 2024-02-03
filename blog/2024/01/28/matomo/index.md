@@ -31,7 +31,7 @@ On my side, here the actions I've done:
 
 Since I know I should have a MySQL database, I went to my dashboard. For PlanetHoster, it's [https://my.planethoster.com](https://my.planethoster.com) and there, I create a new MySQL db and his user.
 
-Finally, I just need to start the wizard on `https://matomo.avonture.be/index.php` and follow the guide. 
+Finally, I just need to start the wizard on `https://matomo.avonture.be/index.php` and follow the guide.
 
 The wizard is really well done and very easy to follow.
 
