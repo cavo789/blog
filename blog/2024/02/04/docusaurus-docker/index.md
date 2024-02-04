@@ -92,6 +92,8 @@ The third file to create is `docker-compose.yml` with this content:
 ```yaml
 version: "3.9"
 
+name: my_docusaurus_blog
+
 services:
   blog:
     build: .
