@@ -34,9 +34,11 @@ FROM node:21-alpine
 RUN npx create-docusaurus@latest /docusaurus classic && \
     chown -R node:node /docusaurus
 
-RUN cd /docusaurus && yarn install
+USER node
 
 WORKDIR /docusaurus
+
+RUN cd /docusaurus && yarn install
 
 COPY . .
 
@@ -47,10 +49,11 @@ CMD ["yarn", "start", "--host", "0.0.0.0"]
 
 * Line 1: we'll use Node.js v21 in his alpine version,
 * Line 2: the `RUN npx create-docusaurus@latest /docusaurus classic && chown -R node:node /docusaurus` command will install the latest version of Docusaurus (in the `/docusaurus` folder) and make sure the folder is owned by our `node` user,
-* Line 3: the `cd /docusaurus && yarn install` command will jump in the folder and will install node dependencies,
+* Line 3: from now, we'll do everything using the `node` user,
 * Line 4: `/docusaurus` will be the default working directory in the image,
-* Line 5: `COPY . .` will copy everything from your project's directory (on your host) into the Docker image (in folder `/docusaurus` since that one is the default working directory) and
-* Line 6: the command `CMD ["yarn", "start", "--host", "0.0.0.0"]` will run `yarn start ---host 0.0.0.0` which is the instruction to run Docusaurus, make the *transparent* conversion from Markdown pages to HTML and will render the website on the default port (which is port `3000`).
+* Line 5: the `cd /docusaurus && yarn install` command will jump in the folder and will install node dependencies,
+* Line 6: `COPY . .` will copy everything from your project's directory (on your host) into the Docker image (in folder `/docusaurus` since that one is the default working directory) and
+* Line 7: the command `CMD ["yarn", "start", "--host", "0.0.0.0"]` will run `yarn start --host 0.0.0.0` which is the instruction to run Docusaurus, make the *transparent* conversion from Markdown pages to HTML and will render the website on the default port (which is port `3000`).
 
 ### Create a .dockerignore file
 
@@ -63,9 +66,10 @@ But, also, we don't need to copy folders like `blog`, `pages`, `static`, ... sin
 So, please create a `.dockerignore` file with this content:
 
 ```text
-/build/*
-/node_modules/*
+build/
+node_modules/
 
+.dockerignore
 .gitignore
 .markdownlint_ignore
 .markdownlint.json
@@ -76,9 +80,9 @@ LICENSE
 makefile
 README.md
 
-/blog/*
-/pages/*
-/static/*
+blog/
+pages/
+static/
 ```
 
 ### Create a docker-compose.yml file
@@ -158,7 +162,7 @@ At this stage of the tutorial, you've all required files and a few blog posts so
 docker compose up --detach --build
 ```
 
-After a few minutes, your Docusaurus Docker image will be created and a container will be started.
+After a few minutes (only the first time), your Docusaurus Docker image will be created and a container will be started.
 
 Your blog is now accessible on your computer here: `http://localhost:3000`.
 
