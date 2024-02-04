@@ -54,9 +54,9 @@ CMD ["yarn", "start", "--host", "0.0.0.0"]
 
 ### Create a .dockerignore file
 
-We've seen here above the `COPY . .` command which instruct to copy everything from our project's directory from our local computer to the Docker image but, in fact, no, we don't need to copy everything.
+We've seen here above the `COPY . .` command which instructs to copy everything from our project's directory from our local computer to the Docker image but, in fact, no, we don't need to copy everything.
 
-In the Docker image, we don't need to have such folders like `build` or `node_modules` neihter files like `.gitignore` or some others. We don't need them because they will be created in Docker (`node_modules` is created using the `yarn install` command so no need to loose time to copy that folder).
+In the Docker image, we don't need to have such folders like `build` or `node_modules` neither files like `.gitignore` or some others. We don't need them because they will be created in Docker (`node_modules` is created using the `yarn install` command so no need to lose time to copy that folder).
 
 But, also, we don't need to copy folders like `blog`, `pages`, `static`, ... since these folders have to stay on our computer and just *synchronized* with the running Docker container (so no need to put them in the image at this stage).
 
@@ -163,9 +163,9 @@ After a few minutes, your Docusaurus Docker image will be created and a containe
 Your blog is now accessible on your computer here: `http://localhost:3000`.
 
 :::info Which port number to use?
-The port number is the one you've mentionned in the `docker-compose.yml` file in line `3000:3000`.
+The port number is the one you've mentioned in the `docker-compose.yml` file in line `3000:3000`.
 
-If you wish another port like `3002` f.i., just edit the yaml file and re-run the `docker compose up --detach` command.
+If you wish another port like `3002` f.i., just edit the yaml file and rerun the `docker compose up --detach` command.
 :::
 
 ![Docusaurus homepage](./images/homepage.png)
@@ -198,6 +198,6 @@ Just go back to your browser and refresh the page (press <kbd>F5</kbd>). Your ne
 
 ## Stop and restart
 
-Since the `blog` folder is stored on your computer, we can stop the blog and start it again without loosing anything.
+Since the `blog` folder is stored on your computer, we can stop the blog and start it again without losing anything.
 
 To illustrate this, we can run `docker compose stop && docker compose rm --force` to stop and kill the container. Then run `docker compose up --detach --build` to rebuild it. By surfing back to `http://localhost:3000`, as you'll see, you've still your blog with your latest changes. Nothing was lost.
