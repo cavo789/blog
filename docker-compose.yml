@@ -11,6 +11,5 @@ services:
       - ./yarn.lock:/app/yarn.lock
 
       - ./blog:/app/blog
-      - ./pages:/app/pages
       - ./src:/app/src
       - ./static:/app/static
