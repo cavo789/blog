@@ -26,7 +26,7 @@ You can download the project by clicking [here](./resources/devcontainer.tar.gz)
 
 ## Create the project
 
-Let's start immediately a new project by create a temporary directory by running `mkdir /tmp/devcontainer_php && cd $_`.
+Let's start immediately a new project by creating a temporary directory by running `mkdir /tmp/devcontainer_php && cd $_`.
 
 Since we'll create a few files, please run `code .` to start VSCode.
 
@@ -55,7 +55,7 @@ As you can expect, the script is running fine:
 
 ![Running the index page in a browser](./images/browser_index.png)
 
-:::danger Stop to read here if ...
+:::danger Stop reading here if ...
 ... you're one of those people who thinks *The script works, doesn't it? Then why this whole article?*, **please turn off your computer and promise never to touch a single line of code again**.
 :::
 
@@ -219,7 +219,7 @@ Click on that status or, same effect, press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kb
 
 ![Reopen in Container](./images/reopen_in_container.png)
 
-Visual Studio Code will do a lot of stuff. It can take a few minutes to first time (only).
+Visual Studio Code will do a lot of stuff. It can take a few minutes the first time.
 
 ![Now, you're in the container](./images/dev_container_vscode.png)
 
@@ -276,11 +276,11 @@ To better understand, reopen your `.devcontainer/devcontainer.json` file and loo
 
 So, we're asking VSCode to, for PHP files, run a `format this file` command when the file is saved and the tool to use for the formatting is `junstyle.php-cs-fixer`. Look directly at the end, in the `extensions` section, we instruct VSCode to install that extension.
 
-We also instruct VSCode to automatically saved the file as soon as the focus change i.e. for instance, if we select another file, if we click elsewhere (no more in the editor), ...
+We also instruct VSCode to automatically saved the file as soon as the focus changes i.e. for instance, if we select another file, if we click elsewhere (no more in the editor), ...
 
 Finally, `junstyle.php-cs-fixer` requires some settings that we need to initialize like f.i. `php-cs-fixer.executablePath`.
 
-Right now, you can think: *Wait a minute, I don't have the `/usr/local/bin/php-cs-fixer.phar` file on my computer.* And you are probably right but think again: are you coding *on your computer* or are you *inside a Docker container*?.
+Right now, you can think: *Wait a minute, I don't have the `/usr/local/bin/php-cs-fixer.phar` file on my computer.* And you are probably right but think again: are you coding *on your computer* or are you *inside a Docker container*?
 
 By running VSCode in a container, you're *no more* on your machine.
 
@@ -395,7 +395,7 @@ Now, back to your index.php file and just press <kbd>CTRL</kbd>+<kbd>S</kbd> to 
 
 As you can see, when fixing the file, php-cs-fixer will also, now, inject our header.
 
-:::tip Lot of options are explained here
+:::tip Lots of options are explained here
 Please go to [https://mlocati.github.io/php-cs-fixer-configurator](https://mlocati.github.io/php-cs-fixer-configurator) or [https://github.com/FriendsOfPHP/PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) to learn more about the php-cs-fixer configuration file options.
 :::
 
@@ -442,10 +442,6 @@ echo sayHello();
 
 What's wrong with this syntax? Almost nothing but ... the standard (`PSR12`) ask to put one space after the `if` keyword.
 
-How to detect this code convention violation?
-
-![PHPCS in vscode](./images/vscode_phpcs.png)
-
 Like for PHP-CS-FIXER, we already have installed PHPCS and PHPCBF in our container. See your `.devcontainer/devcontainer.json` file:
 
 ```json
@@ -456,15 +452,15 @@ Like for PHP-CS-FIXER, we already have installed PHPCS and PHPCBF in our contain
             "settings": {
                 // ...
                 // highlight-next-line
+                "phpsab.executablePathCBF": "/usr/local/bin/phpcbf.phar",
+                // highlight-next-line
+                "phpsab.executablePathCS": "/usr/local/bin/phpcs.phar",
+                // highlight-next-line
                 "phpsab.fixerEnable": true,
                 // highlight-next-line
                 "phpsab.snifferShowSources": true,
                 // highlight-next-line
                 "phpsab.standard": "/var/www/html/.config/phpcs.xml",
-                // highlight-next-line
-                "phpsab.executablePathCBF": "/usr/local/bin/phpcbf.phar",
-                // highlight-next-line
-                "phpsab.executablePathCS": "/usr/local/bin/phpcs.phar",
                 // ...
             },
             "extensions": [
@@ -494,6 +490,11 @@ Like as for php-cs-fixer, we need a configuration file. In VSCode, please create
     <rule ref="PSR12" />
 </ruleset>
 ```
+
+Now, since we have defined our coding standard (`PSR12` here), just display the `index.php` script again:
+
+![PHPCS in vscode](./images/vscode_phpcs.png)
+
 
 Open a terminal by pressing <kbd>CTRL</kbd>+<kbd>´</kbd> (or by clicking on the `View` menu then `Terminal`) and run this command:
 
@@ -577,6 +578,8 @@ Press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> to open the Command Palette,
 When done, please reopen the `index.php` file you've:
 
 ```php
+<?php
+
 function sayHello($firstname)
 {
     if ($firstname == "") {
@@ -629,11 +632,11 @@ Once installed, you'll have two new files in our repo (`composer.json` and `comp
 
 #### Rector - configuration file
 
-:::caution Skip this chapter if you have download the archive
-If you've download the `tar.gz` file, you already have a configuration file in folder `.config/` so please skip this chapter.
+:::caution Skip this chapter if you have downloaded the archive
+If you've downloaded the `tar.gz` file, you already have a configuration file in folder `.config/` so please skip this chapter.
 :::
 
-The second step in the installation guide ask us to run the command below. When prompted, please answer `yes` to create your `rector.php` configuration file.
+The second step in the installation guide asks us to run the command below. When prompted, please answer `yes` to create your `rector.php` configuration file.
 
 ```bash
 vendor/bin/rector
@@ -695,7 +698,7 @@ Take a look on the image here above. In red, your current code and, yes, we knew
 
 Indeed, one concept in clean code approach is to avoid to use the `if ... else ...` conditional statement. Most probably, we don't need `else` (see [https://phpmd.org/rules/cleancode.html#elseexpression](https://phpmd.org/rules/cleancode.html#elseexpression)).
 
-Rector suggest to remove completely the `if .. else ...` expression and to use a [ternary expression](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyifelsetoternaryrector).
+Rector suggests removing completely the `if .. else ...` expression and to use a [ternary expression](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyifelsetoternaryrector).
 
 So we can do:
 
