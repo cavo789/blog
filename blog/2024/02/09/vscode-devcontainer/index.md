@@ -10,27 +10,35 @@ enableComments: true
 
 ![PHP development in a devcontainer with preinstalled code quality tools](./images/devcontainer_banner.jpg)
 
-Let's imagine the following situation: you are working with several people on the same PHP project and you notice that one or other person does not comply with your quality criteria when it comes to the layout of the code.
+Let's imagine one of the following situations: 
 
-You like to use four spaces for indentation, you want the brace that marks the start of a function to be on the line, you don't want to see any more useless spaces at the end of the line, ... and damned! you notice that some people don't care about this.
-
-Or ... you're working alone and just want to force these rules automatically when you start a project (and don't need to configure each project again and again).
+1. You are working with several people on the same PHP project and you notice that one or other person does not comply with your quality criteria when it comes to the layout of the code. You like to use four spaces for indentation, you want the brace that marks the start of a function to be on the line, you don't want to see any more useless spaces at the end of the line, ... and damned! you notice that some people don't care about this.
+   
+2. You are working alone on a project and don't want to lose time to configure your VSCode experience. You wish to start very quickly with a lot of tools already installed in VSCode so you can put your focus to the code, not the editor.
 
 The ultimate solution: using a `devcontainer` in VSCode.
+
+By using a **devcontainer**, you (and your team colleague) will use a preinstalled environment and everyone will have exactly the same. You'll save yourself a lot of time by not having to configure your system, and you'll be able to start coding straight away, supported by a range of quality analysis tools.
 
 <!-- truncate -->
 
 :::tip Download the project
-You can download the project by clicking [here](./resources/devcontainer.tar.gz). Copy the file to f.i. folder `/tmp/devcontainer` and uncompress using `tar -xzvf devcontainer.tar.gz`.
+This article is written in the form of a step-by-step tutorial. If you don't want to take the time to create the configuration files yourself and download them directly, please run the commands below in a Linux console. You'll then get all the files and every time the tutorial below tells you to create a file, you'll already have it.
+
+```bash
+mkdir /tmp/devcontainer_php && cd $_
+curl -LOJ --silent --output php_devcontainer.tar.gz https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
+tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devcontainer-1.0.0.tar.gz
+```
 :::
 
-## Create the project
+## 1. Create the project
 
 Let's start immediately a new project by creating a temporary directory by running `mkdir /tmp/devcontainer_php && cd $_`.
 
-Since we'll create a few files, please run `code .` to start VSCode.
+Since we'll create a few files, please run `code .` to start Visual Studio Code (aka *VSCode*).
 
-Create a new file called `index.php` with some PHP code like f.i.:
+Create a new file called `index.php` with the PHP code below:
 
 ```php
 <?php
@@ -46,8 +54,10 @@ function sayHello(    )          {
 ![Index php with poor written code](./images/index_php_bad_formatting.png)
 
 :::note Pay attention to extra whitespace
-On the screen capture here above, you can see "dots" to illustrate spaces and you can see there are a lot of spaces here and there and there are just unneeded.
+On the screen capture here above, you can see *dots* to illustrate spaces and you can see there are a lot of spaces here and there and there are just unneeded.
 :::
+
+As you have noticed, VSCode saved our file as it was: **with a layout that was just disgusting**. Remember that, and we'll see that VSCode can do much better than that.
 
 We can run that script in a browser by running `docker run -d -p 80:80 -u $(id -u):$(id -g) -v .:/var/www/html php:8.2-apache` (read [The easiest way to run a PHP script / website](/blog/docker-php-run-script-or-website) post if a refresh is needed).
 
@@ -56,16 +66,24 @@ As you can expect, the script is running fine:
 ![Running the index page in a browser](./images/browser_index.png)
 
 :::danger Stop reading here if ...
-... you're one of those people who thinks *The script works, doesn't it? Then why this whole article?*, **please turn off your computer and promise never to touch a single line of code again**.
+... you're one of those people who thinks *The script works, doesn't it? So why all the noise?*, **please turn off your computer and promise never to touch a single line of code again**. Even if the code *work* ... it stinks.
 :::
 
-## Install first the ms-azuretools.vscode-docker VSCode extension
+In this article we'll learn how to configure Visual Studio Code to comes with preinstalled extensions and configured for your targeting version of PHP (would be 8.2 but you can change this very easily).
 
-In VSCode, <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>X</kbd> to open the `Extensions` left pane and search for the Microsoft Docker extension (called `ms-azuretools.vscode-docker`) and if needed install it.
+:::important The technique we'll use is called devcontainer.
+**A devcontainer is a preconfigured, isolated development environment running in a Docker container, offering consistent tools and settings accross different machines.**
+:::
 
-## Create the devcontainer.json file
+## 2. Install first the ms-azuretools.vscode-docker VSCode extension
 
-Please create a folder called `.devcontainer` and, there, a file called `devcontainer.json` with this content:
+In VSCode, please press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>X</kbd> to open the `Extensions` pane and search for the Microsoft Docker extension called `ms-azuretools.vscode-docker` and if you don't have it yet, please install and enable it.
+
+## 3. Create the devcontainer.json file
+
+The next step is to create a folder called `.devcontainer` and, there, a file called `devcontainer.json` with the content below.
+
+In the rest of this article, we'll come back to this file.
 
 ```json
 {
@@ -125,9 +143,9 @@ Please create a folder called `.devcontainer` and, there, a file called `devcont
 }
 ```
 
-## Create the Dockerfile file
+## 4. Create the Dockerfile file
 
-Right now, we'll continue and create a second file called `Dockerfile` with this content:
+Please continue and create a second file called `Dockerfile` with this content:
 
 ```dockerfile
 ARG PHP_VERSION=8.2
@@ -205,40 +223,50 @@ RUN set -e -x \
 WORKDIR /var/www/html
 ```
 
-## Reopen in the container
+## 5. Reopen in the container
 
-So, we've now three files: `index.php`, `.devcontainer/devcontainer.json` and `.devcontainer/Dockerfile`.
+So, we've now three files: a disgusting `index.php`, `.devcontainer/devcontainer.json` and `.devcontainer/Dockerfile`.
 
-Take a look at the bottom left of your screen:
+What we will do now is to *jump* in a Docker container. Take a look at the bottom left of your screen:
 
 ![Running in WSL](./images/running_in_wsl.png)
 
-You'll see something like, in my case, `WSL: Ubuntu-20.04`. It can be different on your computer depending on your operating system.
+You'll see something like, in my case, `WSL: Ubuntu-20.04`. *It can be different on your computer depending on your operating system.* What VSCode says here is *I'm coding on my machine*.
 
-Click on that status or, same effect, press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> to open the Command Palette and then search for `Reopen in Container` and press <kbd>Enter</kbd>.
+Click on that status or, as an alternative way, press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> to open the *Command Palette* and then search for `Reopen in Container` and press <kbd>Enter</kbd>.
 
 ![Reopen in Container](./images/reopen_in_container.png)
 
-Visual Studio Code will do a lot of stuff. It can take a few minutes the first time.
+Visual Studio Code will do a lot of stuff and, the first time, it can take a few minutes.
 
 ![Now, you're in the container](./images/dev_container_vscode.png)
 
-## Working in the container
+## 6. Working in the container
 
-Now the magic happens: please reopen the so badly formatted `index.php` file and save the file **without any changes**. Just press <kbd>CTRL</kbd>+<kbd>S</kbd> and ...
+Now the magic happens: please reopen the so badly formatted `index.php` file and save the file **without any changes**. Just press <kbd>CTRL</kbd>+<kbd>S</kbd> and tadaaa 🎉🎉🎉
 
 ![Your script has been correctly formatted this time](./images/index_php_correctly_formatted.png)
 
 :::tip How is this possible?
-This because we taught VSCode to use a specific formatter for our PHP file and we told him to format the file each time it's saved.
+This because we taught VSCode to use a specific formatter for our PHP file and we told him to format the file each time it's saved. And do you know where we did it? In our `.devcontainer/devcontainers.json` and `.devcontainer/Dockerfile` files, of course! 
+
+**This is why we're working in a Devcontainer!** We've done the configuration once and for all, so all we have to do is reuse it, whatever the PHP project.
 :::
 
-### PHP-CS-FIXER
+### The first tool we've used here is PHP-CS-Fixer
 
-To better understand, reopen your `.devcontainer/devcontainer.json` file and look at the highlighted lines below:
+When we save a file in VSCode, we have configured a *formatter* which will adapt the layout of the file according to the rules we have determined. For example, the number of spaces for indentation or the fact that braces must be aligned (and many other things). That tool is [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer).
+
+But let's understand when `PHP-CS-Fixer` was installed...
+
+Please reopen your `.devcontainer/devcontainer.json` file and look at the highlighted lines below:
 
 ```json
 {
+    // ...
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
     // ...
     "customizations": {
         "vscode": {
@@ -274,7 +302,7 @@ To better understand, reopen your `.devcontainer/devcontainer.json` file and loo
 }
 ```
 
-So, we're asking VSCode to, for PHP files, run a `format this file` command when the file is saved and the tool to use for the formatting is `junstyle.php-cs-fixer`. Look directly at the end, in the `extensions` section, we instruct VSCode to install that extension.
+So, we're asking VSCode to, for PHP files, run a `formatter` when the file is saved and the tool to use for the formatting is `junstyle.php-cs-fixer`. Look directly at the end, in the `extensions` section, we instruct VSCode to install that extension.
 
 We also instruct VSCode to automatically saved the file as soon as the focus changes i.e. for instance, if we select another file, if we click elsewhere (no more in the editor), ...
 
@@ -327,15 +355,21 @@ RUN set -e -x \
 // ...
 ```
 
-That file will instruct VSCode to download a `php:8.2-fpm` Docker image and to install `php-cs-fixer` (since `PHPCSFIXER_INSTALL` has been set to `true`).
+That file will instruct VSCode to download a `php:8.2-fpm` Docker image and to install `PHP-CS-Fixer` (since `PHPCSFIXER_INSTALL` has been set to `true`).
 
-The version `3.46.0` of the `php-cs-fixer` executable will be downloaded and stored, in the Docker image, as `usr/local/bin/php-cs-fixer.phar`. This is why, in our `devcontainer.json` we can do `"php-cs-fixer.executablePath": "/usr/local/bin/php-cs-fixer.phar",`, because we've already downloaded and installed the executable.
+The version `3.46.0` of the `PHP-CS-Fixer` executable will be downloaded and stored, in the Docker image, as `usr/local/bin/php-cs-fixer.phar`. This is why, in our `devcontainer.json` we can write `"php-cs-fixer.executablePath": "/usr/local/bin/php-cs-fixer.phar",`, because we've already downloaded and installed the executable.
+
+:::tip Need to check?
+Still in VSCode, open a terminal by pressing <kbd>CTRL</kbd>+<kbd>´</kbd> and, in the prompt, type `ls -l /usr/local/bin`. As you can see, `php-cs-fixer.phar` is well there. *It was installed downloaded and installed by VSCode when you've jump in the container.*
+
+![The php-cs-fixer.phar binary is well there](./images/php-cs-fixer-phar.png)
+:::
 
 #### PHP-CS-FIXER - Configuration file
 
 The `.devcontainer/devcontainer.json` file also contains this line: `"php-cs-fixer.config": "/var/www/html/.config/.php-cs-fixer.php"`.
 
-So, we can have our own configuration file for php-cs-fixer and that file has to be created in a folder called `.config` and should be named `.php-cs-fixer.php`.
+So, we can have our own configuration file for `PHP-CS-Fixer` (with our own rules) and that file has to be created in a folder called `.config` and should be named `.php-cs-fixer.php`.
 
 Let's try and this time we'll make sure all our PHP files will have a header block with our copyright or license information or anything else.
 
@@ -346,7 +380,6 @@ In VSCode, please create the `.config` folder and there the `.php-cs-fixer.php` 
 
 $finder = PhpCsFixer\Finder::create()
     ->in('.')
-    // Exclude directories
     ->exclude([
         '.config', '.devcontainer', '.git', 'node_modules','vendor'
     ]);
@@ -389,11 +422,11 @@ You should have received a copy of the GNU General Public License along
 with this program. If not, see <https://www.gnu.org/licenses/>.
 ```
 
-Now, back to your index.php file and just press <kbd>CTRL</kbd>+<kbd>S</kbd> to save the file again and ...
+Now, please reopen your `index.php` file and just press <kbd>CTRL</kbd>+<kbd>S</kbd> to save the file again and tadaaa...
 
 ![A license block is automatically added by php-cs-fixer](./images/license.gif)
 
-As you can see, when fixing the file, php-cs-fixer will also, now, inject our header.
+As you can see, when formatting the file, `PHP-CS-Fixer` will also, now, injects our header.
 
 :::tip Lots of options are explained here
 Please go to [https://mlocati.github.io/php-cs-fixer-configurator](https://mlocati.github.io/php-cs-fixer-configurator) or [https://github.com/FriendsOfPHP/PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) to learn more about the php-cs-fixer configuration file options.
@@ -401,27 +434,23 @@ Please go to [https://mlocati.github.io/php-cs-fixer-configurator](https://mloca
 
 #### PHP-CS-FIXER - Fix all files at once
 
-One step further: is it possible to run php-cs-fixer not just on the file being edited but on all files in your repository.
+One step further: is it possible to run `PHP-CS-Fixer` not just on the file being edited in VSCode but on all files in your repository. **Yes, of course.**
 
-Yes, of course.
-
-In VSCode, please press <kbd>CTRL</kbd>+<kbd>´</kbd> (or click on the `View` menu then `Terminal`).
-
-Make sure you're in the `/var/www/html` folder (where you code is located inside the container) and run the following command:
+In VSCode, please press <kbd>CTRL</kbd>+<kbd>´</kbd> (or click on the `View` menu then `Terminal`) to open a terminal. Make sure you're in the `/var/www/html` folder (run `cd /var/www/html` if needed) and run the following command:
 
 ```bash
 /usr/local/bin/php-cs-fixer.phar fix --config /var/www/html/.config/.php-cs-fixer.php .
 ```
 
-This will run php-cs-fixer on all your codebase (`.`). If you want to exclude some folders, open the `.config/.php-cs-fixer.php` file and update the `exclude` array.
+This will run `PHP-CS-Fixer` on all your codebase (`.`). If you want to exclude some folders, open the `.config/.php-cs-fixer.php` file and update the `exclude` array.
 
-### PHPCS and PHPCBF
+### The second set of tools is PHPCBF and PHPCS
 
-There is a second tool that is installed in our `Dockerfile` and it's PHP_CodeSniffer tools called `phpcs` and `phpcbf`.
+Our `Dockerfile` container was configured to download and install [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) tools called `phpcbf` and `phpcs`.
 
-`phpcbf` is a `Code beautifier` tool i.e. will not only format your code like php-cs-fixer but, also make some changes accordingly to enabled rules.
+`phpcbf` is a `Code beautifier` tool: just like `PHP-CS-Fixer`, `phpcbf` will make some minor changes to your files accordingly to enabled rules.
 
-For instance, see this file:
+For instance, please update your `index.php` script with this content:
 
 ```php
 <?php
@@ -440,9 +469,13 @@ function sayHello($firstname)
 echo sayHello();
 ```
 
-What's wrong with this syntax? Almost nothing but ... the standard (`PSR12`) ask to put one space after the `if` keyword.
+What's wrong with this syntax? Almost nothing but ... the standard (`PSR12`) ask to put one space after the `if` keyword and one space before and after `else`.
 
-Like for PHP-CS-FIXER, we already have installed PHPCS and PHPCBF in our container. See your `.devcontainer/devcontainer.json` file:
+:::note PHP-CS-Fixer will be called when you save the file
+Did you've noticed? You have copied/pasted the script below where there were no spaces before and after the `else` keyword. But as soon as you save the file, boum, the file is refactored by `PHP-CS-Fixer` and, among other things, spaces have been added before and after `else` but not for `if`. This is because, actually, there is not ONE MAGIC TOOL for everything. Sometimes `PHP-CS-Fixer` can't make some changes but `PHPCBF` well or the opposite.
+:::
+
+Like for `PHP-CS-Fixer`, we already have installed `PHPCBF` and `PHPCS` in our container. See your `.devcontainer/devcontainer.json` file:
 
 ```json
 {
@@ -474,11 +507,11 @@ Like for PHP-CS-FIXER, we already have installed PHPCS and PHPCBF in our contain
 }
 ```
 
-And the two executables `/usr/local/bin/phpcbf.phar` and `/usr/local/bin/phpcs.phar` have been scripted in your Dockerfile. Just take a look if needed.
+And the two executables `/usr/local/bin/phpcbf.phar` and `/usr/local/bin/phpcs.phar` have been downloaded thanks to your `Dockerfile`. Just take a look if needed.
 
 #### PHPCS and PHPCBF - Configuration file
 
-Like as for php-cs-fixer, we need a configuration file. In VSCode, please create the `.config` folder and there the `phpcs.xml` file with this content:
+In VSCode, please create in the `.config` folder a file called `phpcs.xml` file with this content:
 
 ```xml
 <?xml version="1.0"?>
@@ -493,8 +526,7 @@ Like as for php-cs-fixer, we need a configuration file. In VSCode, please create
 
 Now, since we have defined our coding standard (`PSR12` here), just display the `index.php` script again:
 
-![PHPCS in vscode](./images/vscode_phpcs.png)
-
+![PHPCS in VSCode](./images/vscode_phpcs.png)
 
 Open a terminal by pressing <kbd>CTRL</kbd>+<kbd>´</kbd> (or by clicking on the `View` menu then `Terminal`) and run this command:
 
@@ -518,7 +550,7 @@ PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 
 ```
 
-There is one warning and one error (coding convention violation) and the nice thing is **phpcbf can fix it**.
+There is one warning and one error concerning *coding convention violation* and the nice thing is **phpcbf can fix somes.**.
 
 Now, run almost the same command but no more `phpcs` (to detect violations) but `phpcbf` (to fix them -the ones that can be fixed automatically-).
 
@@ -543,19 +575,14 @@ And, indeed, if you look at your PHP script, now, there is a space after the `if
 
 #### PHPCS and PHPCBF - All files at once
 
-You've probably already understood the syntax:
+You've probably already understood the syntax. Just use the `.` to scan the entire codebase:
 
-Just use the `.` to scan the entire codebase:
+1. To fix violations, run `/usr/local/bin/phpcbf.phar  --standard=/var/www/html/.config/phpcs.xml .`
+2. To scan remaining violations, run `/usr/local/bin/phpcs.phar  --standard=/var/www/html/.config/phpcs.xml .`.
 
-1. To fix some violations automatically: `/usr/local/bin/phpcbf.phar  --standard=/var/www/html/.config/phpcs.xml .`
-2. To scan the rest of violations: `/usr/local/bin/phpcs.phar  --standard=/var/www/html/.config/phpcs.xml .` and
+### The third tool is SonarLint
 
-
-### Sonarlint
-
-Let's see how to install a new extension: [sonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode).
-
-Please open your `.devcontainer/devcontainer.json` file again and jump to the `extensions` node and add a new line:
+Here too, SonarLint was already installed in our Docker container thanks our `.devcontainer/devcontainer.json` file:
 
 ```json
 {
@@ -573,9 +600,11 @@ Please open your `.devcontainer/devcontainer.json` file again and jump to the `e
 }
 ```
 
-Press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> to open the Command Palette, search for `Rebuild Container` and press <kbd>Enter</kbd>. VSCode need to install the extension and to enable it.
+:::note It's only a VSCode extension
+SonarLint don't need external tool; it's a stand-alone VSCode extension so no need to foresee something in our `Dockerfile`.
+:::
 
-When done, please reopen the `index.php` file you've:
+So, please reopen the `index.php` file you've and now pay attention to the `echo sayHello()` line:
 
 ```php
 <?php
@@ -596,13 +625,48 @@ echo sayHello();
 
 ![SonarLint is seeing something](./images/sonarlint_underline.png)
 
-Move the mouse cursor on the `$text` variable and get extra information from SonarLint as a popup. You can, too, press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>M</kbd> to show the `Problems` pane (or menu `View` then `Problems`) to get the list of every SonarLint problems encountered in the current file and, too, in any file you'll open from now.
+Move the mouse cursor on the `sayHello()` variable and get extra information from SonarLint as a popup. You can, too, press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>M</kbd> to show the `Problems` pane (or menu `View` then `Problems`) to get the list of every SonarLint problems encountered in the current file and, too, in any file you'll open from now.
 
 ![SonarLint explained](./images/sonarlint_explained.png)
 
 One solution would be to update the prototype of `sayHello` like this: `function sayHello($firstname = "")`.
 
-### Rector
+:::important SonarLint prevents bugs!
+Unlike the tools we've seen here above, it's no longer about formatting, **but about alerting the developer to potential bugs and fatal errors as they write their code.**
+:::
+
+
+### The fourth tool is Intelephense
+
+Next to `SonarLint`, there is also `Intelephense` who will also detect a certain number of potential bugs.
+
+In the previous example; when the prototype was `function sayHello($firstname)`, `Intelephense` was also alerting the developer about the missing parameter.
+
+```php
+<?php
+
+function sayHello($firstname)
+{
+    if($firstname == "") {
+        $text = "Hello World!";
+    } else {
+        $text = "Hello " . $firstname;
+    }
+
+    return $text;
+}
+
+echo sayHello();
+```
+
+![Intelephense in action](./images/intelephense.png)
+
+:::important We need several tools
+This example illustrates this point: to date, in February 2024, we still have to juggle with several extensions and tools to achieve clean, bug-free code.
+:::
+
+
+### The best for last, the fifth tool is Rector
 
 Rector is a tremendous application to scan and automatically upgrade your codebase to a given version of PHP and this means, too, to inspect how you're coding.
 
@@ -624,16 +688,15 @@ cd /var/www/html
 composer require rector/rector --dev
 ```
 
-:::tip Composer has been installed in our Dockerfile
-If you're thinking "Yes, but I haven't installed composer...", well, I have. We installed it in our container. See again your `.devcontainer/Dockerfile` if needed.
+:::tip `Composer` has been installed in our `Dockerfile`
+If you're thinking *Yes, but I haven't installed composer...*, well, it's wrong. We installed it in our container. See again your `.devcontainer/Dockerfile` if needed.
 :::
 
 Once installed, you'll have two new files in our repo (`composer.json` and `composer.lock`) and a new folder called `vendor`.
 
 #### Rector - configuration file
 
-:::caution Skip this chapter if you have downloaded the archive
-If you've downloaded the `tar.gz` file, you already have a configuration file in folder `.config/` so please skip this chapter.
+:::caution Skip this chapter if you have already downloaded the configuration files
 :::
 
 The second step in the installation guide asks us to run the command below. When prompted, please answer `yes` to create your `rector.php` configuration file.
@@ -696,41 +759,21 @@ In a terminal, run `vendor/bin/rector process index.php --dry-run --config .conf
 
 Take a look on the image here above. In red, your current code and, yes, we knew that, didn't we, the code quality is poor.
 
-Indeed, one concept in clean code approach is to avoid to use the `if ... else ...` conditional statement. Most probably, we don't need `else` (see [https://phpmd.org/rules/cleancode.html#elseexpression](https://phpmd.org/rules/cleancode.html#elseexpression)).
+Indeed, one concept in clean code approach is to avoid using the `if ... else ...` conditional statement. Most probably, we don't need `else` (see [https://phpmd.org/rules/cleancode.html#elseexpression](https://phpmd.org/rules/cleancode.html#elseexpression)).
 
-Rector suggests removing completely the `if .. else ...` expression and to use a [ternary expression](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyifelsetoternaryrector).
+Rector suggests removing completely the `if .. else ...` expression and to use a [ternary expression](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyifelsetoternaryrector). And, also, to directly return the value instead of using a dummy `$text` variable.
 
-So we can do:
+And that's correct, we can write `return $firstname == "" ? "Hello World!" : "Hello " . $firstname;` to get the exact same thing.
 
-```php
-<?php
+And if you think it's over, you're wrong. Rector now look at our function parameter and understand it's a string so he'll suggest to [add a type hint](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#strictstringparamconcatrector) and, too, to [add a return type](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#returntypefromstrictscalarreturnexprrector) for the same reason.
 
-function sayHello($firstname = "")
-{
-    $text = $firstname == "" ? "Hello World!" : "Hello " . $firstname;
-    return $text;
-}
-```
-
-but here too, we can improve by [not using a temporary variable](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyuselessvariablerector) and return directly:
-
-```php
-<?php
-function sayHello($firstname = "")
-{
-    return empty($firstname) ? "Hello World!" : "Hello " . $firstname;
-}
-```
-
-But it's not finished: Rector see our parameter is a string so suggest to [add a type hint](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#strictstringparamconcatrector) and, too, to [add a return type](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#returntypefromstrictscalarreturnexprrector) for the same reason.
-
-Since we've analyzed the suggestion of Rector and we agree with, please rerun the same command but, this time, without, the `--dry-run` flag.
+Since we've analyzed the suggestions of Rector and we agree with, please rerun the same command but, this time, without, the `--dry-run` flag.
 
 ```bash
 vendor/bin/rector process index.php --config .config/rector.php
 ```
 
-Rector has updated our `index.php` file! Now, our function is just one line and no more seven. Nice improvement!
+Rector has updated our `index.php` file! **Now, our function is just one line and no more seven. Nice improvement!**
 
 Our new, improved, code is now:
 
@@ -748,7 +791,7 @@ echo sayHello();
 Rector is **absolutely brilliantly powerful**. Learn more about it by reading carefully his documentation site: [https://getrector.com/documentation/](https://getrector.com/documentation/).
 
 :::tip The programmer has the last word, but for how much longer?
-We can do one more improvement by using a `Hello `prefix. Rector has not yet see this but until when?
+We can do one more improvement by extracting the `Hello ` prefix. Rector has not yet see this but until when?
 
 ```php
 <?php
@@ -764,13 +807,7 @@ echo sayHello();
 
 #### Rector - All files at once
 
-Back in your terminal and run:
-
-```bash
-vendor/bin/rector process . --dry-run
-```
-
-or, if you've moved the `rector.php` file into `.config`:
+Back in your terminal and run the command below to scan your entire codebase.
 
 ```bash
 vendor/bin/rector process . --dry-run --config .config/rector.php
@@ -778,39 +815,22 @@ vendor/bin/rector process . --dry-run --config .config/rector.php
 
 ##### Dry-run means no changes are made, just displayed
 
-When running Rector using `vendor/bin/rector process . --dry-run`, no files will be rewritten. Rector will only suggest changes.
+When running Rector using `vendor/bin/rector process . --dry-run --config .config/rector.php`, no files will be rewritten. Rector will only suggest changes.
 
-If you allow Rector to make changes to your files, run `vendor/bin/rector process .` instead but, here, you need to be sure it's OK.
+If you allow Rector to make changes to your files, run `vendor/bin/rector process . --config .config/rector.php` instead but, here, you need to be sure it's OK.
 
 :::tip Code versioning using f.i. GitHub
 If you're using a code versioning system, you can push your actual codebase to Github, create a new branch like for instance `refactoring` then run Rector safely on your disk. If something should be broken, you can always retrieve your source before any changes.
 :::
 
-### Intelephense
+### And we can add more tools!
 
-This time just for illustration purpose, we change the `index.php` file back to:
+There are still several code analysis tools for PHP: 
 
-```php
-<?php
+* [phpstan](https://phpstan.org/),
+* [psalm](https://psalm.dev/),
+* [PHP Copy/Paste Detector](https://github.com/sebastianbergmann/phpcpd),
+* [PHP Magic Number Detector](https://github.com/povils/phpmnd),
+* ...
 
-function sayHello($firstname)
-{
-    if($firstname == "") {
-        $text = "Hello World!";
-    } else {
-        $text = "Hello " . $firstname;
-    }
-
-    return $text;
-}
-
-echo sayHello();
-```
-
-And we can notify that Intelephense also detect the error of the missing argument:
-
-![Intelephense in action](./images/intelephense.png)
-
-:::important We need several tools
-This example illustrates the point: to date, in February 2024, we still have to juggle with several extensions and tools to achieve clean, bug-free code.
-:::
+You can certainly also add them to your container.
