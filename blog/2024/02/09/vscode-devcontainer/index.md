@@ -3,17 +3,17 @@ slug: vscode-devcontainer
 title: PHP development in a devcontainer with preinstalled code quality tools
 authors: [christophe]
 image: ./images/devcontainer_social_media.jpg
-tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rector, vscode]
+tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, vscode]
 enableComments: true
 ---
 # PHP development in a devcontainer with preinstalled code quality tools
 
 ![PHP development in a devcontainer with preinstalled code quality tools](./images/devcontainer_banner.jpg)
 
-Let's imagine one of the following situations: 
+Let's imagine one of the following situations:
 
 1. You are working with several people on the same PHP project and you notice that one or other person does not comply with your quality criteria when it comes to the layout of the code. You like to use four spaces for indentation, you want the brace that marks the start of a function to be on the line, you don't want to see any more useless spaces at the end of the line, ... and damned! you notice that some people don't care about this.
-   
+
 2. You are working alone on a project and don't want to lose time to configure your VSCode experience. You wish to start very quickly with a lot of tools already installed in VSCode so you can put your focus to the code, not the editor.
 
 The ultimate solution: using a `devcontainer` in VSCode.
@@ -89,7 +89,15 @@ In the rest of this article, we'll come back to this file.
 {
     "name": "php_devcontainer",
     "build": {
-        "dockerfile": "Dockerfile"
+        "dockerfile": "Dockerfile",
+        "args": {
+            "PHP_VERSION": "8.2",
+            "COMPOSER_VERSION": "2.5.5",
+            "PHPCSFIXER_INSTALL": true,
+            "PHPCSFIXER_VERSION": "3.46.0",
+            "PHPCBF_INSTALL": true,
+            "PHPCBF_VERSION": "3.7.2"
+        }
     },
     "workspaceMount": "source=${localWorkspaceFolder},target=/var/www/html,type=bind",
     "workspaceFolder": "/var/www/html",
@@ -248,7 +256,7 @@ Now the magic happens: please reopen the so badly formatted `index.php` file and
 ![Your script has been correctly formatted this time](./images/index_php_correctly_formatted.png)
 
 :::tip How is this possible?
-This because we taught VSCode to use a specific formatter for our PHP file and we told him to format the file each time it's saved. And do you know where we did it? In our `.devcontainer/devcontainers.json` and `.devcontainer/Dockerfile` files, of course! 
+This because we taught VSCode to use a specific formatter for our PHP file and we told him to format the file each time it's saved. And do you know where we did it? In our `.devcontainer/devcontainers.json` and `.devcontainer/Dockerfile` files, of course!
 
 **This is why we're working in a Devcontainer!** We've done the configuration once and for all, so all we have to do is reuse it, whatever the PHP project.
 :::
@@ -825,7 +833,7 @@ If you're using a code versioning system, you can push your actual codebase to G
 
 ### And we can add more tools!
 
-There are still several code analysis tools for PHP: 
+There are still several code analysis tools for PHP:
 
 * [phpstan](https://phpstan.org/),
 * [psalm](https://psalm.dev/),

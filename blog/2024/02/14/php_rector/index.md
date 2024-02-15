@@ -3,7 +3,7 @@ slug: php-rector
 title: Rector 1.0.0 🎉🎉🎉, my friend, my coach
 authors: [christophe]
 image: ./images/php_rector_social_media.jpg
-tags: [code-quality, composer, php, rector]
+tags: [code-quality, composer, php, rectorphp]
 enableComments: true
 ---
 # Rector 1.0.0 🎉🎉🎉, my friend, my coach
@@ -52,7 +52,7 @@ echo sayHello("Christophe");
 Simple and effective, isn't it?  And, above all, the code is perfectly functional and well written, respecting all the layout conventions.
 
 :::info I'm an excellent developer. Thank you and goodbye.
-Well, in fact, **I was an excellent developer** but I stopped being one ten years ago. 
+Well, in fact, **I was an excellent developer** but I stopped being one ten years ago.
 :::
 
 What's wrong with my code?
