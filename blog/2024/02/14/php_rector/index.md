@@ -114,42 +114,40 @@ He'll show you the changes **he could make**, automatically, and explain why he 
 
 Take a look on the `Applied rules:` section at the end of the screen capture; here are the rules with a link to their explanations:
 
-* [SimplifyUselessVariableRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyuselessvariablerector)
 * [SimplifyIfElseToTernaryRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyifelsetoternaryrector)
+* [SimplifyUselessVariableRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyuselessvariablerector)
 * [ReturnTypeFromStrictScalarReturnExprRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#returntypefromstrictscalarreturnexprrector)
 * [StrictStringParamConcatRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#strictstringparamconcatrector)
-
-### SimplifyUselessVariableRector
-
-I think everyone will agree: storing the value in variable `$text` then returned the variable is useless and it's just pollution.
-
-```diff
-function () {
--    $text = "Hello World";
--    return $text;
-// highlight-next-line
-+    return "Hello World";
-};
-```
 
 ### SimplifyIfElseToTernaryRector
 
 Using the `ternary operator`, we can often replace a `if then else` structure with a one-line test; the `ternary operator`.
 
 ```diff
-class SomeClass
+function sayHello($firstname = "")
 {
-    public function run()
-    {
--        if ($firstname == ")) {
--            $text = "Hello World";
--        } else {
--            $text = "Hello " . $firstname;
--        }
+-    if ($firstname == ")) {
+-        $text = "Hello World";
+-     } else {
+-        $text = "Hello " . $firstname;
+-     }
 // highlight-next-line
-+        $text = $firstname == " ? "Hello World" : "Hello " . $firstname;
-    }
++    $text = $firstname == " ? "Hello World" : "Hello " . $firstname;
+     return $text;
 }
+```
+
+### SimplifyUselessVariableRector
+
+I think everyone will agree: storing the value in variable `$text` then returned the variable is useless and it's just pollution.
+
+```diff
+function sayHello($firstname = "")
+-    $text = $firstname == " ? "Hello World" : "Hello " . $firstname;
+-    return $text;
+// highlight-next-line
++    return $firstname == " ? "Hello World" : "Hello " . $firstname;
+};
 ```
 
 ### ReturnTypeFromStrictScalarReturnExprRector
@@ -159,9 +157,9 @@ When the return type can be derived (here, Rector understand we're returning a s
 ```diff
 class SomeClass
 {
--    public function sayHello()
+-    public function sayHello($firstname = "")
 // highlight-next-line
-+    public function sayHello(): string
++    public function sayHello($firstname = ""): string
     {
         return $firstname == " ? "Hello World" : "Hello " . $firstname;
     }
@@ -175,7 +173,7 @@ When a parameter is a string but not type as a string, Rector see it and suggest
 ```diff
 class SomeClass
 {
--    public function sayHello($firstname = "")
+-    public function sayHello($firstname = ""): string
 // highlight-next-line
 +    public function sayHello(string $firstname = ""): string
     {
@@ -209,7 +207,7 @@ Yes, I'm very grateful to Rector for teaching me these new approaches and making
 
 ## Last thing, make the change
 
-Now that we've taken the time to analyze the rules that could be applied and that we think are perfectly adequate, it's time to start refactoring for real: simply remove the `--dry-run` flag and, thus, the final command to run is: ``vendor/bin/rector process sayHello.php rector.php`.
+Now that we've taken the time to analyze the rules that could be applied and that we think are perfectly adequate, it's time to start refactoring for real: simply remove the `--dry-run` flag and, thus, the final command to run is: `vendor/bin/rector process sayHello.php rector.php`.
 
 You know what? **I LOVE RECTOR**
 
