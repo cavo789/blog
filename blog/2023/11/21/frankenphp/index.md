@@ -6,8 +6,6 @@ image: ./images/social_media.jpg
 tags: [docker, frankenphp, joomla]
 enableComments: true
 ---
-# FrankenPHP, a modern application server for PHP
-
 ![FrankenPHP](./images/social_media.jpg)
 
 <!-- markdownlint-disable MD036 -->
@@ -63,7 +61,7 @@ services:
       - MYSQL_ROOT_PASSWORD=test
     volumes:
       - db:/var/lib/mysql
-      
+
 volumes:
   joomla:
   db:

@@ -1,13 +1,11 @@
 ---
 slug: docusaurus-articles-tips
-title: Some tips and tricks when written articles for Docusaurus 
+title: Some tips and tricks when written articles for Docusaurus
 authors: [christophe]
 image: /img/docusaurus_tips_social_media.jpg
 tags: [markdown, docusaurus, tips]
 enableComments: true
 ---
-# Some tips and tricks when written articles for Docusaurus
-
 ![Some tips and tricks when written articles for Docusaurus](/img/docusaurus_tips_banner.jpg)
 
 If you're writing for Docusaurus, there are a few tips to know.

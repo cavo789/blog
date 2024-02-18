@@ -7,8 +7,6 @@ tags: [docker, network, tips]
 draft: true
 enableComments: true
 ---
-# Using Docker network and the extra_hosts property
-
 ![Using Docker network and the extra_hosts property](/img/docker_tips_header.jpg)
 
 When you're running a Docker container on a different network than the standard one (called `bridge`) and **you wish to run a second container that needs to access the first container, you need to run the second container on the same network.**

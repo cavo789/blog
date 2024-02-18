@@ -7,8 +7,6 @@ enableComments: true
 image: /img/vscode_tips_social_media.jpg
 draft: true
 ---
-# PHP code refactoring in VSCode
-
 ![PHP code refactoring in VSCode](/img/vscode_tips_header.jpg)
 
 Currently, at the end of 2023, there aren't many free refactoring extensions for PHP under vscode. We'll take a look to [PHP Refactor Tool](https://marketplace.visualstudio.com/items?itemName=st-pham.php-refactor-tool).
@@ -49,7 +47,7 @@ The second file `Product.php` will contain:
 
 namespace Cavo;
 
-class Product 
+class Product
 {
     private string $productName = '';
     private float $productPrice = 0;
@@ -119,7 +117,7 @@ The new `Product.php` file is now:
 
 namespace Cavo;
 
-class Product 
+class Product
 {
     private string $name = '';
     private float $price = 0;

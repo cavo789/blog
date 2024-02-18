@@ -6,8 +6,6 @@ image: ./images/social_media.png
 tags: [docker, mindmap, tips, visualisation]
 enableComments: true
 ---
-# Build a mind map using Docker and Markdown
-
 ![Build a mind map using Docker and Markdown](./images/social_media.png)
 
 As a markdown lover, I always enjoy finding a little tool that lets me write a text and have it converted into another format.

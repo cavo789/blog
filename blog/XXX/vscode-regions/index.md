@@ -7,8 +7,6 @@ enableComments: true
 image: /img/vscode_tips_social_media.jpg
 draft: true
 ---
-# Working with regions in VSCode
-
 ![Working with regions in VSCode](/img/vscode_tips_header.jpg)
 
 VSCode supports `region` and `endregion` tags. These two special tags can be written differently depending on the language you're using but have, always, the same objective: allow you to fold part of the code.

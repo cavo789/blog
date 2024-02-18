@@ -10,6 +10,7 @@ services:
       - ./package.json:/app/package.json
       - ./yarn.lock:/app/yarn.lock
 
+      - ./.devcontainer:/app/.devcontainer
       - ./blog:/app/blog
       - ./src:/app/src
       - ./static:/app/static

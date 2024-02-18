@@ -1,13 +1,11 @@
 ---
-slug: wslview
+slug: wsl-powershell
 title: Starting the default associated Windows program on WSL
 authors: [christophe]
 image: /img/wsl_tips_social_media.jpg
-tags: [wsl, tips]
+tags: [powershell, tips, wsl]
 enableComments: true
 ---
-# Starting the default associated Windows program on WSL
-
 ![Starting the default associated Windows program on WSL](/img/wsl_tips_header.jpg)
 
 Very often, I'm in my Linux console and I'd like to open a pdf file that I've just generated or, more simply, to open an html file. But how can I do this?
@@ -18,10 +16,10 @@ In fact, it's much simpler...
 
 <!-- truncate -->
 
-The tip: start `wslview` followed by the filename to open like `wslview guide.pdf` or `wslview index.html`.
+The tip: start `powershell.exe` followed by the filename to open like `powershell.exe guide.pdf` or `powershell.exe index.html`.
 
 :::note Not available in Bash
-`wslview` only works in the console. You can't use it in a Bash script (`.sh`), it won't be recognized there.
+`powershell.exe` only works in the console. You can't use it in a Bash script (`.sh`), it won't be recognized there.
 :::
 
 :::tip `xdg-open`

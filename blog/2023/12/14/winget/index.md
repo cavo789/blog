@@ -6,8 +6,6 @@ image: ./images/social_media.jpg
 tags: [tips, windows, winget]
 enableComments: true
 ---
-# Update all out-of-date Windows programs in batch
-
 ![Update all out-of-date Windows programs in batch](./images/header.jpg)
 
 > [Use the winget tool to install and manage applications](https://learn.microsoft.com/en-us/windows/package-manager/winget/)

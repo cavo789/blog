@@ -3,12 +3,9 @@ slug: php-api-tips
 title: API REST - How to write good APIs
 authors: [christophe]
 image: /img/php_tips_social_media.jpg
-tags: [docker, php]
-draft: true
+tags: [api, docker, php, rest]
 enableComments: true
 ---
-# API REST - How to write good APIs
-
 ![API REST - How to write good APIs](/img/php_tips_header.jpg)
 
 When developing APIs *from scratch*, you can do it in the mode *I get behind the PC and start programming* or *I learn about the standards first and then program in compliance with these standards*.
@@ -66,7 +63,7 @@ const employee = axios.create({
 })
 ```
 
-Now, in the second example, you tell the web server that you want a json representation and nothing else.
+Now, in the second example, you tell the web server that you want a JSON representation and nothing else.
 
 ### Responses
 
@@ -164,7 +161,7 @@ Content-Type: application/json; charset=utf-8
 
 `curl --head` (similar to `curl -i`) is using the `HEAD` HTTP verb.
 
-In order to extract this information in javascript, the [parse-content-range-header](https://github.com/academia-de-codigo/parse-content-range-header/blob/master/index.js) script can perhaps be used.
+In order to extract this information in JavaScript, the [parse-content-range-header](https://github.com/academia-de-codigo/parse-content-range-header/blob/master/index.js) script can perhaps be used.
 
 #### GET
 
@@ -177,14 +174,14 @@ Return all employees:
 
 ```bash
 curl -X GET http://localhost:3000/employees
-   -H "Accept: application/json" 
+   -H "Accept: application/json"
 ```
 
 Return the employee #1:
 
 ```bash
 curl -X GET http://localhost:3000/employees/1
-   -H "Accept: application/json" 
+   -H "Accept: application/json"
 ```
 
 #### POST
@@ -203,7 +200,7 @@ The example here above will create a new employee, the server will return the HT
 
 #### PUT
 
-:::tip You can translate `PUT` as `UPDATE` in `CRUD`, when you'll update every fields
+:::tip You can translate `PUT` as `UPDATE` in `CRUD`, when you'll update every field
 Using `PUT` implies you're intended to update each field of the record. If you plan to update just a few of them, take a look to the `PATCH` verb.
 :::
 
@@ -251,7 +248,7 @@ curl -X DELETE http://localhost:3000/employees/59
 
 ## Returned structure
 
-### Top Level
+### Top-Level
 
 > [https://jsonapi.org/format/#document-top-level](https://jsonapi.org/format/#document-top-level)
 
@@ -296,15 +293,15 @@ or, if just one record, directly:
 }
 ```
 
-:::tip Most of times, it's the developer choice for an array
-In fact, most of the time, an array is returned, as this allows the API to be modified in the future to return other results without generating BC (break-changes) in the API.
+:::tip Most of the time, it's the developer choice for an array
+In fact, most of the time, an array is returned, as this allows the API to be modified in the future to return other results without generating BC (break changes) in the API.
 :::
 
 ### Data
 
 > [https://jsonapi.org/format/#document-top-level](https://jsonapi.org/format/#document-top-level)
 
-As described in [Top Level items](https://jsonapi.org/format/#document-top-level), the returned information should be put as a top level node called `data`:
+As described in [Top-Level items](https://jsonapi.org/format/#document-top-level), the returned information should be put as a top-level node called `data`:
 
 Best is to always use the array notation so we can return one or more rows.
 
@@ -317,10 +314,10 @@ Best is to always use the array notation so we can return one or more rows.
 ### Returning an error
 
 > [https://jsonapi.org/format/#document-top-level](https://jsonapi.org/format/#document-top-level)
-
+>
 > [https://jsonapi.org/format/#error-objects](https://jsonapi.org/format/#error-objects)
 
-As described in [Top Level items](https://jsonapi.org/format/#document-top-level), errors should be put as a top level node and use the plural form:
+As described in [Top-Level items](https://jsonapi.org/format/#document-top-level), errors should be put as a top-level node and use the plural form:
 
 ```json
 "errors": [
@@ -339,7 +336,7 @@ Prefer to use HTTP status code `400 Bad Request` when the call was incorrect lik
 
 ```json
 "errors": [
-    [ 
+    [
         "status": 400,
         "code": "ERR_INVALID_VIEW",
         "title": "Language code 'it' is not supported",

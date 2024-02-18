@@ -6,8 +6,6 @@ image: /img/winscp_tips_social_media.jpg
 tags: [tips, winscp]
 enableComments: true
 ---
-# WinSCP - Retrieve a stored password
-
 ![WinSCP - Retrieve a stored password](/img/winscp_tips_banner.jpg)
 
 More than once I've found myself in the situation where I've got a site saved in the [WinSCP](https://winscp.net/) configuration where I've saved the password and, um, gosh, what was it?

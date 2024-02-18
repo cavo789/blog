@@ -7,8 +7,6 @@ tags: [dos, github, vbs]
 draft: true
 enableComments: true
 ---
-# VBS - Auto update script
-
 ![VBS - Auto update script](/img/vbs_tips_header.jpg)
 
 Before switching to [WSL2](/blog/tags/wsl) and the Linux console, I wrote VBS scripts from time to time. It looks like VBA for the DOS console.

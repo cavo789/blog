@@ -7,8 +7,6 @@ tags: [tips, vscode]
 enableComments: true
 draft: true
 ---
-# Export the list of extensions you've installed in VSCode
-
 ![Export the list of extensions you've installed in VSCode](/img/vscode_tips_header.jpg)
 
 A small tip: by running `code --list-extensions` in a console (Linux or DOS), you'll get the list of all extensions you've installed in VSCode.

@@ -6,8 +6,6 @@ image: ./images/header.png
 tags: [json, visualisation, vscode]
 enableComments: true
 ---
-# Rendering a JSON file as a mind map
-
 ![Rendering a JSON file as a mind map](./images/header.png)
 
 > [https://jsoncrack.com/editor](https://jsoncrack.com/editor)

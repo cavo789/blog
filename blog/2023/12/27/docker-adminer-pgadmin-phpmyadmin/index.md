@@ -6,8 +6,6 @@ image: /img/docker_tips_social_media.jpg
 tags: [adminer, docker, mysql, postgresql]
 enableComments: true
 ---
-# Using Adminer, pgadmin or phpmyadmin to access your Docker database container
-
 ![Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/img/docker_tips_header.jpg)
 
 You've a dockerized application and one of its container is a MariaDB, MySQL or PostgreSQL service.
@@ -66,13 +64,13 @@ The name of the network used by `joomla-joomladb-1` is thus `joomla_default` as 
 The command line to start is something like
 
 ```bash
-docker run -d --rm --name adminer --network <network_name> --link <container-name>:db -p 8088:8080 adminer 
+docker run -d --rm --name adminer --network <network_name> --link <container-name>:db -p 8088:8080 adminer
 ```
 
 and thus, with values from our example,
 
 ```bash
-docker run -d --rm --name adminer --network joomla_default --link joomla-joomladb-1:db -p 8088:8080 adminer 
+docker run -d --rm --name adminer --network joomla_default --link joomla-joomladb-1:db -p 8088:8080 adminer
 ```
 
 The flag `--network` should thus be set to the name of the used network and `--link` is a two part value, the name of the container to connect followed by `:db`.

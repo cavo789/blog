@@ -6,8 +6,6 @@ image: /img/laravel_tips_social_media.jpg
 tags: [laravel, php]
 enableComments: true
 ---
-# Working with Laravel events
-
 ![Working with Laravel events](/img/laravel_tips_header.jpg)
 
 When I started developing for the Joomla CMS (that was 15 years ago, in 2009), one of the things I liked most was the notion of events.

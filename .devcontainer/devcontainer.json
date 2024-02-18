@@ -1,0 +1,37 @@
+{
+    "name": "blog_docusaurus",
+    "service": "docusaurus",
+    "dockerComposeFile": [
+        "../docker-compose.yml"
+    ],
+    "workspaceFolder": "/app",
+    "remoteUser": "node",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "[markdown]": {
+                    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+                },
+                "editor.formatOnSave": true,
+                "editor.renderWhitespace": "all",
+                "files.autoSave": "onFocusChange",
+                "files.eol": "\n",
+                "files.insertFinalNewline": true,
+                "files.trimTrailingWhitespace": true,
+                "telemetry.telemetryLevel": "off",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash",
+                        "icon": "terminal-bash"
+                    }
+                },
+                "terminal.integrated.defaultProfile.linux": "sh"
+            },
+            "extensions": [
+                "ms-azuretools.vscode-docker",
+                "DavidAnson.vscode-markdownlint",
+                "usernamehw.errorlens"
+            ]
+        }
+    }
+}

@@ -6,8 +6,6 @@ image: /img/quarto_tips_social_media.jpg
 tags: [markdown, powerpoint, quarto, revealjs, tips]
 enableComments: true
 ---
-# Some tips and tricks for Quarto when rendering as a reveal.js slideshow
-
 ![Some tips and tricks for Quarto when rendering as a reveal.js slideshow](/img/quarto_tips_banner.jpg)
 
 The [Quarto reveal.js documentation](https://quarto.org/docs/reference/formats/presentations/revealjs.html) is the best place to find instructions for creating impeccable reveal.js presentations.
@@ -414,7 +412,7 @@ First, create a `assets/custom.js` if not yet present and copy/paste the followi
 
 ```javaScript
 window.addEventListener("load", (event) => {
-    // This function will search for shortcode like "==IpsoLorem==" 
+    // This function will search for shortcode like "==IpsoLorem=="
     // i.e. a portion of text between two equal sign and will replace it
     // to "<mark>IpsoLorem</mark>" so we can then use CSS to highlight
     // that portion.

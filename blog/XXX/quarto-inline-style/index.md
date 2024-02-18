@@ -7,8 +7,6 @@ tags: [markdown, quarto, tips]
 draft: true
 enableComments: true
 ---
-# Quarto Inline style
-
 ![Quarto Inline style](/img/quarto_tips_banner.jpg)
 
 Don't want to take the time to create a CSS class and figure out how to integrate it into Quarto to quickly highlight part of your paragraph?

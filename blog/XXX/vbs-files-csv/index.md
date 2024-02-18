@@ -7,8 +7,6 @@ tags: [dos, github, vbs]
 draft: true
 enableComments: true
 ---
-# VBS - Get list of files and generate a CSV
-
 ![VBS - Get list of files and generate a CSV](/img/vbs_tips_header.jpg)
 
 Six years ago, I needed a DOS script that would allow me to find the list of every file in a folder on a Windows machine and generate a csv file from it.

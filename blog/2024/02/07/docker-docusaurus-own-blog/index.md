@@ -6,8 +6,6 @@ image: /img/docusaurus_tips_social_media.jpg
 tags: [docker, docusaurus, node, npm, tips, yarn]
 enableComments: true
 ---
-# Running your own blog with Docusaurus and Docker
-
 ![Running your own blog with Docusaurus and Docker](/img/docusaurus_tips_banner.jpg)
 
 :::caution This is the second part of the [Running Docusaurus with Docker](/blog/docusaurus-docker/)
@@ -83,7 +81,7 @@ You'll find something like this:
 
 ![The navbar in config.js](./images/navbar_default.png)
 
-Change the tex to what you wish, f.i. 
+Change the tex to what you wish, f.i.
 
 ```js
 navbar: {
@@ -115,7 +113,7 @@ const config = {
   favicon: 'https://www.iconarchive.com/download/i75799/martz90/circle/android.ico',
   url: 'https://yoursite.com',
 
-  // ... 
+  // ...
 };
 ```
 
@@ -156,7 +154,7 @@ services:
       - ./blog:/docusaurus/blog
       - ./docusaurus.config.js:/docusaurus/docusaurus.config.js
       //highlight-next-line
-      - ./src:/docusaurus/src   
+      - ./src:/docusaurus/src
 ```
 
 ## The static folder
@@ -189,9 +187,9 @@ services:
     volumes:
       - ./blog:/docusaurus/blog
       - ./docusaurus.config.js:/docusaurus/docusaurus.config.js
-      - ./src:/docusaurus/src   
+      - ./src:/docusaurus/src
       //highlight-next-line
-      - ./static:/docusaurus/static   
+      - ./static:/docusaurus/static
 ```
 
 ## You now have the basics

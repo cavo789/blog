@@ -7,8 +7,6 @@ enableComments: true
 image: /img/vscode_tips_social_media.jpg
 draft: true
 ---
-# Tabnine - AI Autocomplete for VSCode
-
 ![Tabnine - AI Autocomplete for VSCode](/img/vscode_tips_header.jpg)
 
 Tabnine is a **MUST HAVE** extension.
@@ -26,7 +24,7 @@ Imagine the code below and take a look on the `__construct` method. We need to h
 
 namespace Cavo;
 
-class Product 
+class Product
 {
     private string $productName = '';
     private float $productPrice = 0;

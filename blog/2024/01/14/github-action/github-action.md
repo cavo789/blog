@@ -6,8 +6,6 @@ image: /img/github_tips_social_media.jpg
 tags: [docusaurus, github]
 enableComments: true
 ---
-# GitHub - Use Actions to deploy this blog
-
 ![GitHub - Use Actions to deploy this blog](/img/github_tips_social_media.jpg)
 
 The last two months, I was using a FTP automation script to deploy the blog on my FTP server.

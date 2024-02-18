@@ -7,8 +7,6 @@ tags: [markdown, quarto, tips, vscode]
 draft: true
 enableComments: true
 ---
-# Quarto Callout Blocks
-
 ![Quarto Callout Blocks](/img/quarto_tips_banner.jpg)
 
 A callout (called *admonition* by [Docusaurus](https://docusaurus.io/docs/markdown-features/admonitions)) is a special syntax used to highlight a paragraph, f.i. a *Pay attention to...* or *Tip: Did you know that...* box.

@@ -6,8 +6,6 @@ image: ./images/social_media.jpg
 tags: [docker, assembly]
 enableComments: true
 ---
-# Play with Docker and Assembly programming language
-
 ![Play with Docker and Assembly programming language](./images/header.jpg)
 
 When I was young...er than today, during my studies, I was playing with the x86 Assembly language on my `386DX40` computer; this was in the years 1993-1995. The beginning of Windows 3.1 that I didn't like. *If someone had asked me whether graphical interfaces would be successful, I would have said no, of course not.*
@@ -36,13 +34,13 @@ SECTION .data
 SECTION .text
     global _start
 
-_start: 
+_start:
     mov edx, 45    ; 45 is the length of our "hello" message
     mov ecx, hello ; The name of our variable is "hello"
     mov ebx, 1     ; We'll write to stdout
     mov eax, 4     ; System call number (sys_write)
     int 0x80       ; Triggers software interrupt 80
-    
+
     mov ebx, 0     ; Next three lines are equivalent to exit 0
     mov eax, 1
     int 0x80

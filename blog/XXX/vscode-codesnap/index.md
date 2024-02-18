@@ -7,8 +7,6 @@ enableComments: true
 image: /img/vscode_tips_social_media.jpg
 draft: true
 ---
-# CodeSnap addon for VSCode
-
 ![CodeSnap addon for VSCode](/img/vscode_tips_header.jpg)
 
 The extension [CodeSnap](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) will **take beautiful screenshots of your code in VS Code** without effort.

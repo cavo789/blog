@@ -6,8 +6,6 @@ image: /img/docusaurus_tips_social_media.jpg
 tags: [docker, docusaurus, node, npm, tips, yarn]
 enableComments: true
 ---
-# Running Docusaurus with Docker
-
 ![Running Docusaurus with Docker](/img/docusaurus_tips_banner.jpg)
 
 As you know, this blog is powered by [Docusaurus](https://docusaurus.io/).
@@ -108,7 +106,7 @@ As you can see, we need to have a folder called `blog` on our machine and we'll 
 
 ### Create simple blog items
 
-Just to have a bit of content, let's create a few articles automatically. 
+Just to have a bit of content, let's create a few articles automatically.
 
 Please run the following commands to create three Markdown files (our posts) in the `blog` folder:
 

@@ -6,8 +6,6 @@ image: ./images/social_media.jpg
 tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
 enableComments: true
 ---
-# Create your Joomla website using Docker
-
 ![Create your Joomla website using Docker](./images/header.jpg)
 
 In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** *(don't want to wait? Jump to the "Final docker-compose.yml" chapter)*.
@@ -713,28 +711,28 @@ services:
       - 8080:80
     environment:
       - JOOMLA_DB_HOST=joomladb
-      // highlight-next-line      
+      // highlight-next-line
       - JOOMLA_DB_USER=postgres
       - JOOMLA_DB_PASSWORD=example
-      // highlight-next-line      
+      // highlight-next-line
       - JOOMLA_DB_NAME=joomla_db
-      // highlight-next-line      
+      // highlight-next-line
       - JOOMLA_DB_TYPE=pgsql
     depends_on:
       - joomladb
 
   joomladb:
-    // highlight-next-line      
+    // highlight-next-line
     image: postgres:16.0-alpine
     container_name: kingsbridge-db
     restart: always
     environment:
       // highlight-next-line
       - POSTGRES_DB=joomla_db
-      // highlight-next-line      
+      // highlight-next-line
       - POSTGRES_USER=postgres
       // highlight-next-line
-      - POSTGRES_PASSWORD=example      
+      - POSTGRES_PASSWORD=example
 ```
 
 Now, during the configuration of Joomla, make sure to choose `PostgreSQL (PDO)` for the database type and fill in the database wizard with the correct values.
@@ -766,7 +764,7 @@ services:
       - joomladb
 
   joomladb:
-    // highlight-next-line      
+    // highlight-next-line
     image: mariadb:11.1.2
     container_name: kingsbridge-db
     restart: always

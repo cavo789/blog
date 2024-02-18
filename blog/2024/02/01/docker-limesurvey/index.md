@@ -6,8 +6,6 @@ image: ./images/social_media.jpg
 tags: [docker, limesurvey]
 enableComments: true
 ---
-# Install LimeSurvey using Docker
-
 ![Install LimeSurvey using Docker](./images/header.jpg)
 
 LimeSurvey is an open-source survey tool that allows users to create and conduct surveys online. It is a powerful and intuitive tool that can be used by everyone.

@@ -6,8 +6,6 @@ image: /img/excel_tips_social_media.jpg
 tags: [excel, ribbon, vba, vscode]
 enableComments: true
 ---
-# MS Office - How to create a ribbon in Excel
-
 ![MS Office - How to create a ribbon in Excel](/img/excel_tips_header.jpg)
 
 In this post, we'll learn how to create a ribbon (i.e. a toolbar) in Microsoft Excel.
@@ -233,7 +231,7 @@ The XML here below will add to things: a button and an edit box.
         <tabs>
              <tab id="customTab" insertAfterMso="TabView" label="Tab">
                 <group id="customGroup" label="Group">
-                    //highlight-next-line                
+                    //highlight-next-line
                     <button
                         //highlight-next-line
                         id="customButton"
@@ -254,7 +252,7 @@ The XML here below will add to things: a button and an edit box.
                         //highlight-next-line
                         onChange="OnEditBoxTextChanged" />
                 </group>
-            </tab>    
+            </tab>
         </tabs>
     </ribbon>
 </customUI>

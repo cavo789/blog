@@ -7,8 +7,6 @@ tags: [tips, vscode]
 enableComments: true
 draft: true
 ---
-# Multiple cursors in vscode
-
 ![Multiple cursors in vscode](/img/vscode_tips_header.jpg)
 
 One of the best features in vscode is the *Multiple cursors* one.

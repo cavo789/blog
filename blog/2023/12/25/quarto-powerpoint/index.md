@@ -6,8 +6,6 @@ image: /img/quarto_tips_social_media.jpg
 tags: [markdown, powerpoint, quarto, revealjs, tips]
 enableComments: true
 ---
-# Use Quarto and create a PowerPoint slideshow
-
 ![Use Quarto and create a PowerPoint slideshow](/img/quarto_tips_banner.jpg)
 
 Quarto can convert a markdown file to a revealjs HTML slideshow but, too, can create a `pptx` file that you can open and play in Microsoft PowerPoint.

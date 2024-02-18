@@ -7,8 +7,6 @@ tags: [wsl, docker, php]
 enableComments: true
 date: 2023-11-02T17:00
 ---
-# The easiest way to run a PHP script / website
-
 ![The easiest way to run a PHP script / website](./images/header.jpg)
 
 The situation: you wish to run a piece of standard PHP code (no dependency) like the one below:

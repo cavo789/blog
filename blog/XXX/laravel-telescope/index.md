@@ -7,8 +7,6 @@ tags: [laravel, php]
 enableComments: true
 draft: true
 ---
-# Laravel Telescope
-
 ![Laravel Telescope](/img/laravel_tips_header.jpg)
 
 By installing [Laravel Telescope](https://laravel.com/docs/master/telescope), we can get realtime information's about cache, logs, queries and models, exceptions, ... and this will help a lot to understand how the application is working and what's is running.

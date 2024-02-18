@@ -5,8 +5,6 @@ authors: [christophe]
 tags: [docusaurus, nodejs, docker, winscp]
 enableComments: true
 ---
-# Creation of this blog
-
 > [Docusaurus.io](https://docusaurus.io/)
 
 ![Creation of this blog](./images/header.png)
@@ -66,7 +64,7 @@ docker run --rm -it --name blog --user $UID:$GID -v ${PWD}/:/project -w /project
 
 After a few seconds, the container is ready to use and I surf to my site by going to `http://localhost:3000`.
 
-![Homepage](./homepage.png)
+![Homepage](./images/homepage.png)
 
 :::important
 It is really crucial to use the `--host 0.0.0.0` flag when calling `npx docusaurus start`. This will allow external access to the website. If missing, surfing to `http://localhost:3000` (or running `curl http://127.0.0.1:3000`) will display an error `Empty reply from server`.

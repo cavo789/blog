@@ -6,8 +6,6 @@ tags: [docker, php]
 image: ./images/social_media.jpg
 enableComments: true
 ---
-# Install Docker and play with PHP
-
 ![Install Docker and play with PHP](./images/header.jpg)
 
 Docker can be installed free of charge for personal or small-scale use: [https://www.docker.com/products/personal/](https://www.docker.com/products/docker-desktop/).

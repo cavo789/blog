@@ -6,8 +6,6 @@ image: ./images/social_media.jpg
 tags: [docker, java]
 enableComments: true
 ---
-# Play with Docker and Java
-
 ![Play with Docker and Java](./images/header.jpg)
 
 In this post, we'll play with Docker and Java. Since there are ready-to-use Java images for Docker you don't need to install or configure anything other than Docker.

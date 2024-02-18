@@ -6,8 +6,6 @@ image: /img/quarto_tips_social_media.jpg
 tags: [markdown, quarto, reveal, tips]
 enableComments: true
 ---
-# Quarto conditional display
-
 ![Quarto conditional display](/img/quarto_tips_banner.jpg)
 
 Like me, you've definitely abandoned Microsoft Word, PowerPoint and friends and do everything in Markdown. Like me, you use the same markdown file to generate your documentation in `html`, `pdf`, `docx`, `pptx`, `revealjs`, ... as required situation by situation.

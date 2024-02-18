@@ -2,9 +2,6 @@
 title: Online resources - Christophe Avonture
 hide_table_of_contents: true
 ---
-
-# My online resources
-
 ## Slideshows
 
 * [🇫🇷 - aeSecure - Sécurité des sites Joomla!®](https://slides-security.avonture.be)

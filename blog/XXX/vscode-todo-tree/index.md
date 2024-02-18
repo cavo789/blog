@@ -7,8 +7,6 @@ enableComments: true
 image: /img/vscode_tips_social_media.jpg
 draft: true
 ---
-# Todo Tree in VSCode
-
 ![Todo Tree in VSCode](/img/vscode_tips_header.jpg)
 
 In any codebase, you'll quickly find annotations like `@TODO` or `// TODO` or `//HACK` or things like that.

@@ -6,8 +6,6 @@ image: ./images/matomo_social_media.jpg
 tags: [docusaurus, matomo]
 enableComments: true
 ---
-# How to self-host Matomo
-
 ![How to self-host Matomo](./images/matomo_banner.jpg)
 
 [Matomo](https://matomo.org) is a RGPD-compliant tracking tool for your website. I've finally decided to install it so that I can get the blog's traffic figures; find out which articles are the most widely read, which topics are of most interest, etc., not just out of curiosity but also to get a better idea of the audience.

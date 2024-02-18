@@ -6,8 +6,6 @@ image: ./images/social_media.jpg
 tags: [wsl, docker]
 enableComments: true
 ---
-# Using volumes with Docker, use cases
-
 ![Using volumes with Docker, use cases](./images/header.jpg)
 
 When working with a Docker container, data can be persistent or not. Imagine you're creating a localhost website with Joomla, Wordpress or any other tool (Laravel, Symfony, etc.).
@@ -165,7 +163,7 @@ services:
 // highlight-next-line
 volumes:
   // highlight-next-line
-  counter_data:      
+  counter_data:
 ```
 
 As you can see, we're using a `volumes` (always plural form) and we're saying that the `/data` folder inside the container should be mapped to a volume called `counter_data`. At the bottom of the `docker-compose.yml` file, we are just declaring our volume.

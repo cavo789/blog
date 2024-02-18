@@ -6,8 +6,6 @@ image: ./images/social_media.jpg
 tags: [docker, wordpress]
 enableComments: true
 ---
-# Quickly install Wordpress in just three commands
-
 ![Quickly install Wordpress in just three commands](./images/header.jpg)
 
 Do you think it's possible to run a new Wordpress site in just three commands?  Impossible, isn't it. Well, in fact, yes, it's possible.

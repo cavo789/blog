@@ -7,8 +7,6 @@ tags: [tips, winscp]
 enableComments: true
 draft: true
 ---
-# WinSCP - Search for Text
-
 ![WinSCP - Search for Text](/img/winscp_tips_banner.jpg)
 
 It is possible to launch a search to, for example, find the string `Notes management` in all the `.php` files of the remote site.

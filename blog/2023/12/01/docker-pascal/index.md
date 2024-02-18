@@ -6,8 +6,6 @@ image: ./images/social_media.jpg
 tags: [docker, pascal]
 enableComments: true
 ---
-# Play with Docker and Pascal
-
 ![Play with Docker and Pascal](./images/social_media.jpg)
 
 Good old memories... During my studies (in 1991-1993), I was a huge fan of Turbo Pascal 7.0. It was the first language that I really learned and loves it so much. I used to spend dozens of hours behind my computer writing anything and everything.

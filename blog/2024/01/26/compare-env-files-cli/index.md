@@ -6,8 +6,6 @@ image: /img/bash_tips_social_media.jpg
 tags: [.env, bash, linux, sed, tips]
 enableComments: true
 ---
-# Compare environment files in the Linux console
-
 ![Compare environment files in the Linux console](/img/bash_tips_header.jpg)
 
 This is a very common source of problems using .env files: you've two or more different `.env` file like `.env` and `.env.example`.

@@ -6,8 +6,6 @@ image: /img/bash_tips_social_media.jpg
 tags: [bash, tips]
 enableComments: true
 ---
-# Bash - ASCII art
-
 ![Bash - ASCII art](/img/bash_tips_header.jpg)
 
 I write a lot of Bash scripts, and I like to have a similar approach for each one. One of the things I always do is to include a good old-fashioned *ASCII Art* banner, perhaps for the geek factor, but mostly to make a bigger visual impact.
@@ -29,14 +27,14 @@ function __main() {
 
     # http://patorjk.com/software/taag/#p=display&f=Big&t=My%20Nice%20Script
     cat <<\EOF
-  __  __         _   _ _             _____           _       _   
- |  \/  |       | \ | (_)           / ____|         (_)     | |  
- | \  / |_   _  |  \| |_  ___ ___  | (___   ___ _ __ _ _ __ | |_ 
+  __  __         _   _ _             _____           _       _
+ |  \/  |       | \ | (_)           / ____|         (_)     | |
+ | \  / |_   _  |  \| |_  ___ ___  | (___   ___ _ __ _ _ __ | |_
  | |\/| | | | | | . ` | |/ __/ _ \  \___ \ / __| '__| | '_ \| __|
- | |  | | |_| | | |\  | | (_|  __/  ____) | (__| |  | | |_) | |_ 
+ | |  | | |_| | | |\  | | (_|  __/  ____) | (__| |  | | |_) | |_
  |_|  |_|\__, | |_| \_|_|\___\___| |_____/ \___|_|  |_| .__/ \__|
-          __/ |                                       | |        
-         |___/                                        |_|        
+          __/ |                                       | |
+         |___/                                        |_|
 
 EOF
     printf "%s\n\n" "(c) Copyright ..."

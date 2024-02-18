@@ -6,8 +6,6 @@ image: ./images/php_rector_social_media.jpg
 tags: [code-quality, composer, php, rectorphp]
 enableComments: true
 ---
-# Rector 1.0.0 🎉🎉🎉, my friend, my coach
-
 ![Rector 1.0.0 🎉🎉🎉, my friend, my coach](./images/php_rector_banner.jpg)
 
 If there was only one, it would be [Rector](https://github.com/rectorphp/rector). **Rector is extremely powerful and brilliant and, you know what, it's free!**

@@ -7,8 +7,6 @@ tags: [tips, vba, winscp]
 enableComments: true
 draft: true
 ---
-# WinSCP - Visual Basic for Application use
-
 ![WinSCP - Visual Basic for Application use](/img/winscp_tips_banner.jpg).
 
 The [WinSCP](https://winscp.net/) DLLs can be called up through a VBA code and therefore it would be possible to upload / download a file to / from an FTP server.

@@ -6,8 +6,6 @@ image: /img/spam_social_media.jpg
 tags: [n0c, planethoster, roundcube]
 enableComments: true
 ---
-# Exterminate them all, fight spam directly at PlanetHoster - N0C
-
 ![Exterminate them all, fight spam directly at PlanetHoster - N0C](/img/spam_header.jpg)
 
 A few days ago, I've published a post about how to [fight against spam if you've a cpanel](/blog/cpanel-spam). If you're hosted on the N0C infrastructure of PlanetHoster; it will not work.
@@ -132,7 +130,7 @@ cat patterns.json \
     | jq '.patterns[]' \
     | sort \
     | while read -r pattern; do \
-        # Trim quotes 
+        # Trim quotes
         pattern=$(echo "$pattern" | tr -d '"')
         # Read the spam.template file, make the replace and append in file roundcube.sieve
         sed "s/{{ pattern }}/${pattern}/g" spam.template >>roundcube.sieve; \

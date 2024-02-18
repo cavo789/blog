@@ -6,8 +6,6 @@ image: /img/bash_tips_social_media.jpg
 tags: [.env, bash, linux, sed, tips]
 enableComments: true
 ---
-# Batch edit of environment file
-
 ![Batch edit of environment file](/img/bash_tips_header.jpg)
 
 When deploying a project on servers, we need to pay particular attention to the `.env` file. This file is crucial and will determine whether our application works properly (or crashes).
@@ -76,7 +74,7 @@ Now, we can run in our console:
   }
 
   clear
-  
+
   dotEnv=".env"
 
   updateEnv "APP_DEBUG" "false" "${dotEnv}"
@@ -121,7 +119,7 @@ And now, if we call `updateEnv "FORCE_HTTPS" "false" "${dotEnv}"`, same thing, w
       || (if ( $add -eq true ); then \
             sed -i -e "\$a${variable}=${newValue}" "${file}"
             echo "ADDED"
-          else  
+          else
             echo "SKIP"
            fi)
     )"

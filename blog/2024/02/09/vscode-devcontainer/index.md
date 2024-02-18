@@ -6,8 +6,6 @@ image: ./images/devcontainer_social_media.jpg
 tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, vscode]
 enableComments: true
 ---
-# PHP development in a devcontainer with preinstalled code quality tools
-
 ![PHP development in a devcontainer with preinstalled code quality tools](./images/devcontainer_banner.jpg)
 
 Let's imagine one of the following situations:
@@ -30,6 +28,7 @@ mkdir /tmp/devcontainer_php && cd $_
 curl -LOJ --silent --output php_devcontainer.tar.gz https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
 tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devcontainer-1.0.0.tar.gz
 ```
+
 :::
 
 ## 1. Create the project
@@ -643,7 +642,6 @@ One solution would be to update the prototype of `sayHello` like this: `function
 Unlike the tools we've seen here above, it's no longer about formatting, **but about alerting the developer to potential bugs and fatal errors as they write their code.**
 :::
 
-
 ### The fourth tool is Intelephense
 
 Next to `SonarLint`, there is also `Intelephense` who will also detect a certain number of potential bugs.
@@ -672,7 +670,6 @@ echo sayHello();
 :::important We need several tools
 This example illustrates this point: to date, in February 2024, we still have to juggle with several extensions and tools to achieve clean, bug-free code.
 :::
-
 
 ### The best for last, the fifth tool is Rector
 
@@ -799,7 +796,7 @@ echo sayHello();
 Rector is **absolutely brilliantly powerful**. Learn more about it by reading carefully his documentation site: [https://getrector.com/documentation/](https://getrector.com/documentation/).
 
 :::tip The programmer has the last word, but for how much longer?
-We can do one more improvement by extracting the `Hello ` prefix. Rector has not yet see this but until when?
+We can do one more improvement by extracting the `Hello` prefix. Rector has not yet see this but until when?
 
 ```php
 <?php
@@ -811,6 +808,7 @@ function sayHello(string $firstname = ""): string
 
 echo sayHello();
 ```
+
 :::
 
 #### Rector - All files at once
@@ -831,7 +829,7 @@ If you allow Rector to make changes to your files, run `vendor/bin/rector proces
 If you're using a code versioning system, you can push your actual codebase to Github, create a new branch like for instance `refactoring` then run Rector safely on your disk. If something should be broken, you can always retrieve your source before any changes.
 :::
 
-### And we can add more tools!
+### And we can add more tools
 
 There are still several code analysis tools for PHP:
 

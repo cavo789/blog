@@ -6,8 +6,6 @@ image: ./images/social_media.jpg
 tags: [docker]
 enableComments: true
 ---
-# Share data between your running Docker container and your computer
-
 ![Share data between your running Docker container and your computer](./images/header.jpg)
 
 > If you don't have Docker yet, please consult my [Install Docker and play with PHP](/blog/install-docker) post first.

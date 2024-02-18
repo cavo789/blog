@@ -5,8 +5,6 @@ authors: [christophe]
 image: ./images/social_media.jpg
 enableComments: true
 ---
-# Happy New Year 2024
-
 ![Happy New Year 2024](./images/social_media.jpg)
 
 I wish you all a very happy festive season, and may you continue to be curious about everything.

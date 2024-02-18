@@ -7,8 +7,6 @@ tags: [putty, tips, winscp]
 enableComments: true
 draft: true
 ---
-# WinSCP - Start PuTTY without typing a password
-
 ![WinSCP - Start PuTTY without typing a password](/img/winscp_tips_banner.jpg)
 
 If you're a [WinSCP](https://winscp.net/) user, you may not yet know that you can start a remote SSH connection on your server (using [PuTTY](https://www.putty.org/)) without having to re-enter your credentials.

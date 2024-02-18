@@ -7,8 +7,6 @@ tags: [php, code quality, tips, vscode]
 enableComments: true
 draft: true
 ---
-# Format poorly formatted PHP code
-
 ![Format poorly formatted PHP code](./images/header.png)
 
 Imagine that you are faced with a PHP script whose layout leaves something to be desired, i.e. with a crazy indentation and little respect for standards.

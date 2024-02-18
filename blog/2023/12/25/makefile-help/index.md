@@ -6,8 +6,6 @@ image: /img/makefile_tips_social_media.jpg
 tags: [makefile, tips]
 enableComments: true
 ---
-# Linux Makefile - Adding a help screen
-
 ![Linux Makefile - Adding a help screen](/img/makefile_tips_social_media.jpg)
 
 By using a makefile, you know it already, you can gather in one place a lot of *actions* like `make bash`, `make build`, `make deploy`, ... just like I do when working on this blog (see my makefile on [https://github.com/cavo789/blog/blob/main/makefile](https://github.com/cavo789/blog/blob/main/makefile)).
@@ -136,7 +134,7 @@ COLOR_YELLOW:=33
 help: ## Show the help with the list of commands
     // highlight-next-line
  @clear
-    // highlight-next-line 
+    // highlight-next-line
  @awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
     // highlight-next-line
  @echo ""

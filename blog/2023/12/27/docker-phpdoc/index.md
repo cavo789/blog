@@ -6,8 +6,6 @@ image: ./images/social_media.png
 tags: [docker, php, phpdoc, wordpress]
 enableComments: true
 ---
-# Generating documentation for a PHP codebase
-
 ![Generating documentation for a PHP codebase](./images/social_media.png)
 
 You've a PHP codebase and you wish hop, hop, two strokes of the teaspoon, generate a documentation site without any headaches.

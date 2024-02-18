@@ -6,8 +6,6 @@ tags: [vscode, markdown, tips]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg
 ---
-# Markdown folding not working
-
 ![Markdown folding not working](/img/vscode_tips_header.jpg)
 
 > [https://github.com/microsoft/vscode/issues/107130](https://github.com/microsoft/vscode/issues/107130)

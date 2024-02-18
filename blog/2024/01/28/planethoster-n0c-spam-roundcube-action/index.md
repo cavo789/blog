@@ -6,8 +6,6 @@ image: /img/spam_social_media.jpg
 tags: [actions, github, jq, n0c, planethoster, roundcube]
 enableComments: true
 ---
-# Exterminate them all, kill spam using GitHub Actions
-
 ![Exterminate them all, kill spam using GitHub Actions](/img/spam_header.jpg)
 
 In previous articles, I explained how to fight against spam if you've a [cpanel](/blog/cpanel-spam) or [PlanetHoster's N0C infrastructure](/blog/planethoster-n0c-spam).
@@ -77,7 +75,7 @@ Please create a file called `patterns.json` with this content:
     "*.ua",
     "*.us",
     "*.wang",
-    "*.xyz"  
+    "*.xyz"
   ]
 }
 ```
@@ -137,7 +135,7 @@ cat patterns.json \
     | jq '.spam[]' \
     | sort \
     | while read -r pattern; do \
-        # Trim quotes 
+        # Trim quotes
         pattern=$(echo "$pattern" | tr -d '"')
         # Read the spam.template file, make the replace and append in file roundcube.sieve
         sed "s/{{ pattern }}/${pattern}/g" spam.template >>"${outFile}"; \
@@ -289,7 +287,7 @@ jobs:
           server: ${{ secrets.ftp_server }}
           username: ${{ secrets.ftp_login }}
           password: ${{ secrets.ftp_password }}
-          local-dir: ./build/    
+          local-dir: ./build/
 ```
 
 I won't go into detail about this file, but this ask Github to:

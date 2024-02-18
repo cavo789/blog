@@ -7,8 +7,6 @@ tags: [markdown, quarto, tips]
 draft: true
 enableComments: true
 ---
-# Quarto includes shortcode
-
 ![Quarto includes shortcode](/img/quarto_tips_banner.jpg)
 
 Using the Quarto `includes` shortcode, writing a long document can easily be broken down into several smaller ones.
@@ -41,9 +39,9 @@ Here is some dummy content for `chapter1.md`:
 ## Chapter 1
 
 Voluptatem minus labore architecto sed voluptas molestiae perferendis. Sed voluptatem ut amet at blanditiis sunt et exercitationem quidem. Vel id impedit dicta omnis repudiandae iure.
- 
+
 Expedita magni facere. Ullam non non sint qui provident. Ea beatae voluptatem pariatur. Et beatae error ea aut neque omnis pariatur rerum ut.
- 
+
 Ad aut nobis magni aut est dicta adipisci est. Quo reiciendis eum aut rem. Dolores sit magni non.
 ```
 
@@ -52,9 +50,9 @@ And for `chapter2.md`:
 ```markdown
 ## Chapter 2
 
-Iure repudiandae perferendis maiores dolorem consequuntur exercitationem suscipit. 
+Iure repudiandae perferendis maiores dolorem consequuntur exercitationem suscipit.
 
-Animi voluptatem est quia. Quia id optio. Architecto ut ipsa voluptas minima voluptate accusamus architecto. 
+Animi voluptatem est quia. Quia id optio. Architecto ut ipsa voluptas minima voluptate accusamus architecto.
 
 Consequatur debitis et sunt eos quod qui unde aut.
 ```

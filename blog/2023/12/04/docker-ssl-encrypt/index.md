@@ -6,8 +6,6 @@ image: ./images/social_media.jpg
 tags: [docker, encryption, ssl]
 enableComments: true
 ---
-# Encrypt sensitive data using SSL and Docker
-
 ![Encrypt sensitive data using SSL and Docker](./images/header.jpg)
 
 For 1,000 reasons or more, you want to encrypt a file containing text. Which software should you install? Well ... none other than Docker!

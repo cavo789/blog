@@ -6,8 +6,6 @@ tags: [vscode, markdown, tips]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg
 ---
-# Autosave feature in VSCode
-
 ![Autosave feature in VSCode](/img/vscode_tips_header.jpg)
 
 How many times have you modified a file in vscode (and forgotten to save the modification) in order to refresh it from your web page, run the script from your console, etc., and then thought *Oh no, damn, it still doesn't work*?

@@ -6,8 +6,6 @@ image: /img/quarto_tips_social_media.jpg
 tags: [markdown, quarto, tips]
 enableComments: true
 ---
-# Using variables from external file in your Quarto project
-
 ![Using variables from external file in your Quarto project](/img/quarto_tips_banner.jpg)
 
 My use case is: I need to write some technical, long, documentation where I need to provide some information like IP adresses of used servers, some paths to the application, configuration folders, ...
@@ -61,7 +59,7 @@ Version {{< var version >}} is a minor upgrade.
 
 Please contact us at {{< var email.info >}}.
 
-Quarto includes {{< var engine.jupyter >}} and 
+Quarto includes {{< var engine.jupyter >}} and
 {{< var engine.knitr >}} computation engines.
 ```
 
@@ -110,7 +108,7 @@ Version {{< var version >}} is a minor upgrade.
 
 Please contact us at {{< var email.info >}}.
 
-Quarto includes {{< var engine.jupyter >}} and 
+Quarto includes {{< var engine.jupyter >}} and
 {{< var engine.knitr >}} computation engines.
 ```
 

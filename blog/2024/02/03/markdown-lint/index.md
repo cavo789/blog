@@ -6,8 +6,6 @@ image: /img/markdown_tips_social_media.jpg
 tags: [code quality, makefile, markdown, tips, vscode]
 enableComments: true
 ---
-# Markdown linter - solve formatting issue in md files
-
 ![Markdown linter - solve formatting issue in md files](/img/markdown_tips_banner.jpg)
 
 You are writing Markdown `.md` files (and you're so right) and you just wish to check (and autofix) some issues like having multiple blank lines, mixing bullet types (`-` and `*` in the same document), using a `#` title followed by `###` (i.e. you forget the level `##`) and many more.
@@ -55,6 +53,6 @@ The final instruction becomes : `docker run --rm --user $(id -u):$(id -g) -v .:/
 
 ## Make it easy
 
-You don't need to remember the entire command of course. Using a [Makefile](/blog/tags/makefile) in your project, you can then create a new `target` where you put the command. 
+You don't need to remember the entire command of course. Using a [Makefile](/blog/tags/makefile) in your project, you can then create a new `target` where you put the command.
 
 For this blog f.i., I'm running `make lint` in my deploy process. You can see this [here](https://github.com/cavo789/blog/blob/main/makefile#L42-L45).

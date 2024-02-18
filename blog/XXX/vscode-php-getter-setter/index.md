@@ -7,8 +7,6 @@ tags: [tips, vscode]
 enableComments: true
 draft: true
 ---
-# PHP Getter and Setter in VSCode
-
 ![PHP Getter and Setter in VSCode](/img/vscode_tips_header.jpg)
 
 Because you're an excellent developer, you deny anyone access to the properties of your class directly, but only via a getter or setter.
@@ -31,7 +29,7 @@ Never ever allow to access directly to a property; that's why I'm using the `pri
 
 namespace Cavo;
 
-class Product 
+class Product
 {
     private string $name = '';
     private float $price = 0;

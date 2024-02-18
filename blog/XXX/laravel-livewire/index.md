@@ -7,8 +7,6 @@ tags: [laravel, php]
 enableComments: true
 draft: true
 ---
-# Laravel Livewire
-
 ![Laravel Livewire](/img/laravel_tips_header.jpg)
 
 [Laravel Livewire](https://livewire.laravel.com/) is just like VueJs (or React) but coded in PHP.

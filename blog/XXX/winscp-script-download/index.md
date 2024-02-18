@@ -7,8 +7,6 @@ tags: [tips, winscp]
 enableComments: true
 draft: true
 ---
-# WinSCP - Download files with specific extension recursively
-
 ![WinSCP - Download files with specific extension recursively](/img/winscp_tips_banner.jpg)
 
 The [WinSCP](https://winscp.net/) FTP client allows you to run a script that makes possible automation.

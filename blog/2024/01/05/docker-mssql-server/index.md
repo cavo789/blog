@@ -6,8 +6,6 @@ image: ./images/social_media.jpg
 tags: [docker, mssql-server, ssms]
 enableComments: true
 ---
-# Play with Microsoft SQL Server 2022 using Docker
-
 ![Play with Microsoft SQL Server 2022 using Docker](./images/social_media.jpg)
 
 And yes, nothing less. We're going to install a **Microsoft SQL Server 2022** on our machine, install **SQL Server Management Studio** too and we'll have fun with a small PowerShell script; all with Docker, of course.
@@ -78,9 +76,9 @@ GO
 
 CREATE DATABASE [MyDB]
  CONTAINMENT = NONE
- ON  PRIMARY 
+ ON  PRIMARY
 ( NAME = N'MyDB', FILENAME = N'/var/opt/mssql/data/MyDB.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
+ LOG ON
 ( NAME = N'MyDB_log', FILENAME = N'/var/opt/mssql/data/MyDB_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
  WITH CATALOG_COLLATION = DATABASE_DEFAULT
 GO
@@ -94,7 +92,7 @@ CREATE TABLE [dbo].[Person](
 ) ON [PRIMARY]
 GO
 
-INSERT INTO dbo.Person (LastName, FirstName) VALUES 
+INSERT INTO dbo.Person (LastName, FirstName) VALUES
  ('Avonture', 'Christophe'),
  ('Doe', 'John');
 GO

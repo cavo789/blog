@@ -6,8 +6,6 @@ tags: [apache, snippets, .htaccess]
 image: ./images/social_media.jpg
 enableComments: true
 ---
-# Apache .htaccess file
-
 ![Apache .htaccess file](./images/header.jpg)
 
 Some tips and tricks for your .htaccess file (Apache)

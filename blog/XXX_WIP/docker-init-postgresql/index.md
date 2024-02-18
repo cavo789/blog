@@ -7,7 +7,6 @@ tags: [docker, tips]
 draft: true
 enableComments: true
 ---
-
 :::danger
 IL S'AGIT D'UN ARTICLE QUE J'AI PUBLIÉ LE 7 DÉCEMBRE MAIS, LORS DE LA PUBLICATION, JE N'AI PAS MIS LA SECONDE PARTIE CONCERNANT POSTGRESQL.
 
@@ -15,8 +14,6 @@ PEUT-ÊTRE LORDQUE JE REPRENDRAIS CET ARTICLE-CI; docker-init SERA PLUS ÉVOLUÉ
 :::
 
 /////////////////////////////////////////////////////////////////////////////////
-
-# Docker init now supports PHP
 
 ![Docker init now supports PHP](./images/social_media.jpg)
 
