@@ -4,7 +4,6 @@ title: Github - How to find email addresses for most users
 authors: [christophe]
 image: /img/github_tips_social_media.jpg
 tags: [github, tips]
-draft: true
 enableComments: true
 ---
 
