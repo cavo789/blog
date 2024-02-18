@@ -60,7 +60,7 @@ To create the phpDocumentation, simply run `docker run -it --rm -u $(id -u):$(id
 That command will scan the project's codebase (here, the folder `src`) and will create a new directory called `.phpdoc` where the documentation will be saved.
 
 :::tip WSL2 - Windows
-If you're running under WSL2, to get access to the documentation, just run `wslview .phpdoc/index.html` file to start the documentation. Read the [Starting the default associated Windows program on WSL](/blog/wslview) or [Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer) for more information.
+If you're running under WSL2, to get access to the documentation, just run `powershell.exe .phpdoc/index.html` file to start the documentation. Read the [Starting the default associated Windows program on WSL](/blog/wsl-powershell) or [Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer) for more information.
 :::
 
 The phpDocumentor website will looks like this:
