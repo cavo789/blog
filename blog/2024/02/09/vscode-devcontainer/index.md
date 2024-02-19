@@ -92,9 +92,9 @@ In the rest of this article, we'll come back to this file.
         "args": {
             "PHP_VERSION": "8.2",
             "COMPOSER_VERSION": "2.5.5",
-            "PHPCSFIXER_INSTALL": true,
+            "PHPCSFIXER_INSTALL": "true",
             "PHPCSFIXER_VERSION": "3.46.0",
-            "PHPCBF_INSTALL": true,
+            "PHPCBF_INSTALL": "true",
             "PHPCBF_VERSION": "3.7.2"
         }
     },
