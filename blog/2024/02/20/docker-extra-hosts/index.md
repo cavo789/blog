@@ -4,7 +4,6 @@ title: Using Docker network and the extra_hosts property
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 tags: [docker, network, tips]
-draft: true
 enableComments: true
 ---
 ![Using Docker network and the extra_hosts property](/img/docker_tips_header.jpg)
@@ -13,7 +12,7 @@ When you're running a Docker container on a different network than the standard 
 
 Let's say, you're running a MySQL database on a network called `my_network` and you wish to be able start a second container like [phpMyAdmin](https://hub.docker.com/_/phpmyadmin) and get access to the database, then you need to use the `--network` CLI option when running the second container using `docker run`.
 
-Now, imagine the first container is a web application and the second container should be able to access the his web page and, too, reusing the same alias?
+Now, imagine the first container is a web application and the second container should be able to access his web page and, too, reusing the same alias?
 
 <!-- truncate -->
 
@@ -41,9 +40,9 @@ Here is the content of your current directory:
 
 ❯ ls -alh
 total 920K
-drwxr-xr-x  2 christophe christophe 4.0K Dec 11 18:15 .
-drwxrwxrwt 23 root       root       908K Dec 11 18:15 ..
--rw-r--r--  1 christophe christophe   18 Dec 11 18:15 index.php
+drwxr-xr-x  2 christophe christophe 4.0K Feb 20 18:15 .
+drwxrwxrwt 23 root       root       908K Feb 20 18:15 ..
+-rw-r--r--  1 christophe christophe   18 Feb 20 18:15 index.php
 ```
 
 Since we need a Docker network, please create one:
@@ -89,11 +88,11 @@ To make things clear, here is the content of our current directory:
 
 ❯ ls -alh
 total 920K
-drwxr-xr-x  2 christophe christophe 4.0K Dec 11 18:15 .
-drwxrwxrwt 23 root       root       908K Dec 11 18:15 ..
--rw-r--r--  1 christophe christophe   18 Dec 11 18:25 Dockerfile
--rw-r--r--  1 christophe christophe   18 Dec 11 18:25 docker-compose.yml
--rw-r--r--  1 christophe christophe   18 Dec 11 18:15 index.php
+drwxr-xr-x  2 christophe christophe 4.0K Feb 20 18:15 .
+drwxrwxrwt 23 root       root       908K Feb 20 18:15 ..
+-rw-r--r--  1 christophe christophe   18 Feb 20 18:25 Dockerfile
+-rw-r--r--  1 christophe christophe   18 Feb 20 18:25 docker-compose.yml
+-rw-r--r--  1 christophe christophe   18 Feb 20 18:15 index.php
 ```
 
 We need to create our image. To do this, simply run `docker compose build`.
@@ -107,8 +106,8 @@ Then we'll start an interactive bash shell in our second container and we'll try
 curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect to server
 ```
 
-:::danger It's thus not working... **as expected**
-We can confirm our container is not able to access to our local site `http://127.0.0.1:8080` while, that website is well configured. If you exit the container and try to refresh the website, it's well working.
+:::danger It's not working... **as expected**
+We can confirm our container is not able to access to our local site `http://127.0.0.1:8080` while, that website is well configured. If you exit the container and try to refresh the website, it's working well.
 :::
 
 ### We need to run the second container on the same network
@@ -206,7 +205,7 @@ If we try to access it from inside the second container, it didn't work:
 curl: (6) Could not resolve host: my_site.local
 ```
 
-And **this is normal** since `my_site.local` is an alias defined on your hosts machine; not in the container:
+And **this is normal** since `my_site.local` is an alias defined on your host machine; not in the container:
 
 ```bash
 ❯ docker compose run -it --rm --entrypoint /bin/sh my_second_container
@@ -257,8 +256,6 @@ ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 172.20.0.1      my_site.local
-172.20.0.3      4bdc6fbe6546
-172.20.0.3      5e9e2debaf79
 
 
 ❯ curl http://my_site.local:8080
