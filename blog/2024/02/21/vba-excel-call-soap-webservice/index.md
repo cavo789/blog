@@ -4,22 +4,21 @@ title: MS Excel - How to call a SOAP webservice
 authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 tags: [excel, ribbon, soap, vba]
-draft: true
 enableComments: true
 ---
 ![MS Excel - How to call a SOAP webservice](/img/excel_tips_header.jpg)
 
-Imagine you had to make a call to a SOAP webservice in Excel? For example, to validate the VAT number you have been given before carrying out some processing.
+Imagine you had to make a call to a SOAP web service in Excel? For example, to validate the VAT number you have been given before carrying out some processing.
 
 You will call the URL that corresponds to the web service you want, but you will also need to pass a number of parameters in XML format so that the service knows what you want to do.
 
-We'll learn, in this blog post, how to validate an european VAT number using the [VIES VAT number validation](https://ec.europa.eu/taxation_customs/vies/#/vat-validation) SOAP webservice.
+We'll learn, in this blog post, how to validate a European VAT number using the [VIES VAT number validation](https://ec.europa.eu/taxation_customs/vies/#/vat-validation) SOAP web service.
 
 The VBA code we will see in this article can be used as a skeleton for your future development.
 
 <!-- truncate -->
 
-So, when calling a SOAP service, we must always prepare a XML message first. To do this, we create an .xml file somewhere on our hard drive.
+So, when calling a SOAP service, we must always prepare an XML message first. To do this, we create an .xml file somewhere on our hard drive.
 
 ## Create the xml message
 
@@ -46,7 +45,7 @@ Now, please,
 3. Create a new module:
     ![Create a new module](./images/insert_module.png)
 4. Copy/Paste the VBA code from here below to it.
-5. Check the path for the `InputXmlFile` constant. Make sure it's the same than where you've saved your `.xml` file earlier.
+5. Check the path for the `InputXmlFile` constant. Make sure it's the same as where you've saved your `.xml` file earlier.
 6. Click on the `Tools` menu then select `References` and add a reference to `Microsoft XML, v6.0`
     ![Tools - References](./images/tools_references.png)
     ![Microsoft XML, v6.0](./images/microsoft_xml6.png)
@@ -84,7 +83,7 @@ Sub run()
 
     ' Consume the web service and get a filename with the response
     If (sData = "") Then
-        MsgBox "Failure, the " & InputXmlFile & " file didn't exists", vbExclamation + vbOKOnly
+        MsgBox "Failure, the " & InputXmlFile & " file didn't exist", vbExclamation + vbOKOnly
         Exit Sub
     End If
 
@@ -129,7 +128,7 @@ Private Function readFile(ByVal sFileName As String) As String
     Set objFso = CreateObject("Scripting.FileSystemObject")
 
     If Not (objFso.FileExists(sFileName)) Then
-        ' The file didn't exists
+        ' The file didn't exist
         readFile = ""
         Exit Function
     End If
@@ -216,7 +215,7 @@ In our `C:\temp\checkVat.xml`, we've thus foresee two placeholders.
 
 You can see in the `openCheckVatXml` VBA subroutine how we'll replace them by some, example, values. Just adjust them to yours.
 
-## A Linux command line version
+## A Linux command-line version
 
 For those who can be interested, here is another way to achieve the same result but for a Linux console (or DOS if you've curl installed):
 
@@ -237,7 +236,7 @@ curl --silent http://ec.europa.eu/taxation_customs/vies/services/checkVatService
 ```
 
 :::tip Add `xmlstarlet` for a nice output
-See my [The xmlstarlet utility for Linux](/blog/linux-xmlstarlet) article
+See my [The xmlstarlet utility for Linux](/blog/linux-xmlstarlet) article.
 
 Add `| xmlstarlet format --indent-spaces 4` at the end of the previous command to pipe the output to `xmlstartlet`
 :::
@@ -261,4 +260,4 @@ The answer will be:
 </env:Envelope>
 ```
 
-Now, it's up to you to modify the VBA code and tailer it to your needs.
+Now, it's up to you to modify the VBA code and tailor it to your needs.
