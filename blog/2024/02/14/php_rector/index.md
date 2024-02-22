@@ -16,7 +16,7 @@ Rector will look at every line of code, every loop, every conditional test, ever
 
 In this role, it will not only detect improvements to my code (like a static analysis tool) but, and this is the biggest advantage for me, it will show me how I can become a better developer.
 
-**I REALLY LOVE RECTOR.**
+**I REALLY LOVE RECTOR 💕**
 
 <!-- truncate -->
 
@@ -33,18 +33,18 @@ Let's take a look at a very simple example (`sayHello.php`):
 ```php
 <?php
 
-function sayHello($firstname = "")
+function sayHello($firstname = '')
 {
-    if ($firstname == "") {
-        $text = "Hello World!";
+    if ($firstname == '') {
+        $text = 'Hello World!';
     } else {
-        $text = "Hello " . $firstname;
+        $text = 'Hello ' . $firstname;
     }
 
     return $text;
 }
 
-echo sayHello("Christophe");
+echo sayHello('Christophe');
 ```
 
 Simple and effective, isn't it?  And, above all, the code is perfectly functional and well written, respecting all the layout conventions.
@@ -58,7 +58,7 @@ What's wrong with my code?
 * `$firstname` is a string no? So why not write `string $firstname`?,
 * since PHP 7.x, there is a thing called `ternary operator`; you didn't know that?,
 * Using the `ternary operator`; the `$text` variable becomes useless and
-* the function is returning a string (the `$text` variable) but the prototype of the function didn't mention this. So wny not write `function sayHello($firstname = ""): string`
+* the function is returning a string (the `$text` variable) but the prototype of the function didn't mention this. So why not write `function sayHello($firstname = ''): string`
 
 :::success I'll lend you my friend, my coach, Rector
 :::
@@ -122,15 +122,15 @@ Take a look on the `Applied rules:` section at the end of the screen capture; he
 Using the `ternary operator`, we can often replace a `if then else` structure with a one-line test; the `ternary operator`.
 
 ```diff
-function sayHello($firstname = "")
+function sayHello($firstname = '')
 {
--    if ($firstname == ")) {
--        $text = "Hello World";
+-    if ($firstname == '') {
+-        $text = 'Hello World';
 -     } else {
--        $text = "Hello " . $firstname;
+-        $text = 'Hello ' . $firstname;
 -     }
 // highlight-next-line
-+    $text = $firstname == " ? "Hello World" : "Hello " . $firstname;
++    $text = $firstname == '' ? 'Hello World' : 'Hello ' . $firstname;
      return $text;
 }
 ```
@@ -140,11 +140,11 @@ function sayHello($firstname = "")
 I think everyone will agree: storing the value in variable `$text` then returned the variable is useless and it's just pollution.
 
 ```diff
-function sayHello($firstname = "")
--    $text = $firstname == " ? "Hello World" : "Hello " . $firstname;
+function sayHello($firstname = '')
+-    $text = $firstname == '' ? 'Hello World' : 'Hello ' . $firstname;
 -    return $text;
 // highlight-next-line
-+    return $firstname == " ? "Hello World" : "Hello " . $firstname;
++    return $firstname == '' ? 'Hello World' : 'Hello ' . $firstname;
 };
 ```
 
@@ -155,11 +155,11 @@ When the return type can be derived (here, Rector understand we're returning a s
 ```diff
 class SomeClass
 {
--    public function sayHello($firstname = "")
+-    public function sayHello($firstname = '')
 // highlight-next-line
-+    public function sayHello($firstname = ""): string
++    public function sayHello($firstname = ''): string
     {
-        return $firstname == " ? "Hello World" : "Hello " . $firstname;
+        return $firstname == '' ? 'Hello World' : 'Hello ' . $firstname;
     }
 }
 ```
@@ -171,11 +171,11 @@ When a parameter is a string but not type as a string, Rector see it and suggest
 ```diff
 class SomeClass
 {
--    public function sayHello($firstname = ""): string
+-    public function sayHello($firstname = ''): string
 // highlight-next-line
-+    public function sayHello(string $firstname = ""): string
++    public function sayHello(string $firstname = ''): string
     {
-        return $firstname == " ? "Hello World" : "Hello " . $firstname;
+        return $firstname == '' ? 'Hello World' : 'Hello ' . $firstname;
     }
 }
 ```
@@ -187,9 +187,9 @@ So, back to our console, running `vendor/bin/rector process sayHello.php --dry-r
 ```php
 <?php
 
-function sayHello(string $firstname = ""): string
+function sayHello(string $firstname = ''): string
 {
-    return "Hello " . ($firstname == "" ? "World!" : $firstname);
+    return 'Hello ' . ($firstname == '' ? 'World!' : $firstname);
 }
 
 echo sayHello();
@@ -207,7 +207,7 @@ Yes, I'm very grateful to Rector for teaching me these new approaches and making
 
 Now that we've taken the time to analyze the rules that could be applied and that we think are perfectly adequate, it's time to start refactoring for real: simply remove the `--dry-run` flag and, thus, the final command to run is: `vendor/bin/rector process sayHello.php rector.php`.
 
-You know what? **I LOVE RECTOR**
+You know what? **I LOVE RECTOR 💕**
 
 Imagine what it could do for my entire project if I run `vendor/bin/rector process . --dry-run rector.php`.
 
