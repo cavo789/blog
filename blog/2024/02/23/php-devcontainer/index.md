@@ -88,6 +88,7 @@ So, my project will be in folder `/tmp/laravel_todos`.
 In my project folder, now, I'll run:
 
 ```bash
+cd /tmp/laravel_todos
 curl -LOJ --silent --output php_devcontainer.tar.gz https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
 tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devcontainer-1.0.0.tar.gz
 ```
@@ -96,7 +97,7 @@ This will download the PHP devcontainer files in my project.
 
 I will run `code .` to open VSCode and like before, VSCode will suggests opening the folder in a Dev Container. Let's do this.
 
-And voilà, I've Dockerized my PHP codebase. In my case, I've made `Laravel Todos` in 2018, using PHP 7.1.3 and Laravel 5.x; an eternity then.
+And voilà, I've Dockerized my PHP coding environment. In my case, I've made `Laravel Todos` in 2018, using PHP 7.1.3 and Laravel 5.x; an eternity then.
 
 And like in the previous chapter, I can run the commands below to fix coding style issues and fixes all files in my repo:
 
@@ -105,7 +106,7 @@ And like in the previous chapter, I can run the commands below to fix coding sty
 /usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml .
 ```
 
-And I **will be able** to run Rector too to refactor my entire codebase:
+And I **will be able** to run Rector to refactor my entire codebase:
 
 ```bash
 composer require rector/rector --dev
