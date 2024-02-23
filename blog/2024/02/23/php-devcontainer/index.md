@@ -52,7 +52,7 @@ code .
 
 VSCode will automatically suggest opening a Dev Container. Click on the `Reopen in Container` button.
 
-![VSCode automatically suggest opening a Dev Container](./images/php_devcontainer_social_media.jpg).
+![VSCode automatically suggest opening a Dev Container](./images/vscode_starting.jpg).
 
 If you don't have this popup, just press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> to open the **Command Palette** and search for `Dev Containers: Rebuild and Reopen in Dev Container` and click on it.
 
