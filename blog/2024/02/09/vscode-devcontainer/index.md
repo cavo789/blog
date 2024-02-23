@@ -3,10 +3,16 @@ slug: vscode-devcontainer
 title: PHP development in a devcontainer with preinstalled code quality tools
 authors: [christophe]
 image: ./images/devcontainer_social_media.jpg
-tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, vscode]
+tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, sonarlint, vscode]
 enableComments: true
 ---
 ![PHP development in a devcontainer with preinstalled code quality tools](./images/devcontainer_banner.jpg)
+
+- *Updated 2024-02-23, install Rector automatically*
+
+:::info Don't want to read this long article
+So jump to [Install a PHP Docker environment in a matter of seconds](/blog/php-devcontainer)
+:::
 
 Let's imagine one of the following situations:
 
@@ -146,7 +152,8 @@ In the rest of this article, we'll come back to this file.
                 "zobo.php-intellisense"
             ]
         }
-    }
+    },
+    "postCreateCommand": "composer require rector/rector --dev"
 }
 ```
 
@@ -683,21 +690,26 @@ I really LOVE Rector since he'll help me to learn new features of PHP. When I ru
 **I REALLY LOVE RECTOR.**
 :::
 
-This time, we'll need to install Rector for our project and for this, we'll follow the official documentation: [https://github.com/rectorphp/rector?tab=readme-ov-file#install](https://github.com/rectorphp/rector?tab=readme-ov-file#install)
+This time, we'll need to install Rector for our project and for this, we'll follow the official documentation: [https://github.com/rectorphp/rector?tab=readme-ov-file#install](https://github.com/rectorphp/rector?tab=readme-ov-file#install) but ... it's already done in our `.devcontainer/devcontainer.json` file.
 
-Open a terminal by pressing <kbd>CTRL</kbd>+<kbd>´</kbd> (or by clicking on the `View` menu then `Terminal`) and run these commands:
+If you reopen it, take a look on the `postCreateCommand` node:
 
-```bash
-cd /var/www/html
-
-composer require rector/rector --dev
+```json
+{
+    // ...
+    "customizations": {
+        // ...
+    },
+    //highlight-next-line
+    "postCreateCommand": "composer require rector/rector --dev"
+}
 ```
+
+Rector will be added to the `composer.json` file (and the file will be created if not yet present).
 
 :::tip `Composer` has been installed in our `Dockerfile`
 If you're thinking *Yes, but I haven't installed composer...*, well, it's wrong. We installed it in our container. See again your `.devcontainer/Dockerfile` if needed.
 :::
-
-Once installed, you'll have two new files in our repo (`composer.json` and `composer.lock`) and a new folder called `vendor`.
 
 #### Rector - configuration file
 
@@ -833,10 +845,10 @@ If you're using a code versioning system, you can push your actual codebase to G
 
 There are still several code analysis tools for PHP:
 
-* [phpstan](https://phpstan.org/),
-* [psalm](https://psalm.dev/),
-* [PHP Copy/Paste Detector](https://github.com/sebastianbergmann/phpcpd),
-* [PHP Magic Number Detector](https://github.com/povils/phpmnd),
-* ...
+- [phpstan](https://phpstan.org/),
+- [psalm](https://psalm.dev/),
+- [PHP Copy/Paste Detector](https://github.com/sebastianbergmann/phpcpd),
+- [PHP Magic Number Detector](https://github.com/povils/phpmnd),
+- ...
 
 You can certainly also add them to your container.
