@@ -9,7 +9,7 @@ draft: true
 ---
 ![PHP code refactoring in VSCode](/img/vscode_tips_header.jpg)
 
-Currently, at the end of 2023, there aren't many free refactoring extensions for PHP under vscode. We'll take a look to [PHP Refactor Tool](https://marketplace.visualstudio.com/items?itemName=st-pham.php-refactor-tool).
+Currently, at the end of 2023, there aren't many free refactoring extensions for PHP under vscode. We'll take a look to [PHP Refactor Tool](https://marketplace.visualstudio.com/items?itemName=st-pham.php-refactor-tool) and [PHP Refactoring](https://marketplace.visualstudio.com/items?itemName=marsl.vscode-php-refactoring).
 
 We'll learn how to rename a symbol, a class and, even better, how to extract a portion of a long method into a new one.
 
@@ -193,7 +193,7 @@ Renaming the file from the Explorer won't refactor the code. So, don't go to the
 
 ### Extract to a new method
 
-The third very nice method is the `Extract method`.
+The third very nice method is the `Extract method` from [PHP Refactoring](https://marketplace.visualstudio.com/items?itemName=marsl.vscode-php-refactoring).
 
 Consider the following example (the code isn't running, it's just for the illustration).
 
