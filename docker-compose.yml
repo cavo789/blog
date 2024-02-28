@@ -3,7 +3,6 @@ version: "3.9"
 services:
   docusaurus:
     build: .
-    restart: unless-stopped
     ports:
       - 3000:3000
     volumes:
@@ -12,6 +11,7 @@ services:
       - ./yarn.lock:/app/yarn.lock
 
       - ./.devcontainer:/app/.devcontainer
+      - ./docusaurus.config.js:/app/docusaurus.config.js
       - ./blog:/app/blog
       - ./src:/app/src
       - ./static:/app/static
