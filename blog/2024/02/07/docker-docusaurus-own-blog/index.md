@@ -41,10 +41,10 @@ We need to adjust the file to meet our wishes.
 :::caution We need the file on our computer
 Ok, now, a very important concept: we need to keep a copy of everything we've to update on our computer.
 
-To copy a file from our container on our disk, the command to use is `docker compose cp <containername>:/file/path/within/container /host/path/to/copy/file/to`
+To copy a file from our container on our disk, the command to use is `docker compose cp <servicename>:/file/path/within/container /host/path/to/copy/file/to`
 :::
 
-So, to copy the `docusaurus.config.js` file on your disk, you've to run `docker compose cp blog:/docusaurus/docusaurus.config.js docusaurus.config.js`.
+So, to copy the `docusaurus.config.js` file on your disk, you've to run `docker compose cp blog:/app/docusaurus.config.js /tmp/docusaurus/docusaurus.config.js` (replace `/tmp/docusaurus` with the folder name where you've created your blog, on your hard disk).
 
 Once the copy has been done, you can retrieve the file in your editor:
 
@@ -66,9 +66,9 @@ services:
       - 3000:3000
     user: 1000:1000
     volumes:
-      - ./blog:/docusaurus/blog
+      - ./blog:/app/blog
       //highlight-next-line
-      - ./docusaurus.config.js:/docusaurus/docusaurus.config.js
+      - ./docusaurus.config.js:/app/docusaurus.config.js
 ```
 
 We're almost done, we need to recreate our container so we'll run `docker compose up --detach` again.
@@ -100,7 +100,7 @@ Just save and refresh your browser and you'll get:
 :::tip You've learned a very important concept!
 When you wish to be able to update a file present in a container; you need to get the file on your disk (1) and, then, synchronize the file between your computer and the container (2).
 
-For the first thing, the command to use is `docker compose cp` followed by the name of the container (just look at your `docker-compose.yml` file, it's the name of the service) then you need to say where the file is stored in the container and where to copy it on your disk. That's why we've used `docker compose cp blog:/docusaurus/docusaurus.config.js docusaurus.config.js` to do this.
+For the first thing, the command to use is `docker compose cp` followed by the name of the container (just look at your `docker-compose.yml` file, it's the name of the service) then you need to say where the file is stored in the container and where to copy it on your disk. That's why we've used `docker compose cp blog:/app/docusaurus.config.js docusaurus.config.js` to do this.
 
 The second thing is to allow changes done in that copied file to be reflected between your host and the container and this is why we've updated the list of `volumes` in the `docker-compose.yml` file. So, now, changes done on your disk or done by the container will be synchronized both sides.
 :::
@@ -134,7 +134,7 @@ The `src/pages` folder contain files like `index.md` that will be translated to 
 You have to copy the folder from the container to your host and, as you've already seen it. Please run the command below to copy the folder on your host:
 
 ```bash
-docker compose cp blog:/docusaurus/src src
+docker compose cp blog:/app/src src
 ```
 
 You need to update your `docker-compose.yml` file and add the line below highlighted:
@@ -168,7 +168,7 @@ On my side, I use that the static folder to store my common images (the ones I u
 Please run the command below to copy the folder on your host:
 
 ```bash
-docker compose cp blog:/docusaurus/static static
+docker compose cp blog:/app/static static
 ```
 
 And update your `docker-compose.yml` file like this:

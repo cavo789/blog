@@ -29,14 +29,14 @@ In your project directory (so `/tmp/docusaurus`), create a file called `Dockerfi
 ```Dockerfile
 FROM node:21-alpine
 
-RUN npx create-docusaurus@latest /docusaurus classic && \
-    chown -R node:node /docusaurus
+RUN npx create-docusaurus@latest /app classic && \
+    chown -R node:node /app
 
 USER node
 
-WORKDIR /docusaurus
+WORKDIR /app
 
-RUN cd /docusaurus && yarn install
+RUN cd /app && yarn install
 
 COPY . .
 
@@ -46,11 +46,11 @@ CMD ["yarn", "start", "--host", "0.0.0.0"]
 #### Dockerfile - explanations line by line
 
 * Line 1: we'll use Node.js v21 in his alpine version,
-* Line 2: the `RUN npx create-docusaurus@latest /docusaurus classic && chown -R node:node /docusaurus` command will install the latest version of Docusaurus (in the `/docusaurus` folder) and make sure the folder is owned by our `node` user,
+* Line 2: the `RUN npx create-docusaurus@latest /app classic && chown -R node:node /app` command will install the latest version of Docusaurus (in the `/app` folder) and make sure the folder is owned by our `node` user,
 * Line 3: from now, we'll do everything using the `node` user,
-* Line 4: `/docusaurus` will be the default working directory in the image,
-* Line 5: the `cd /docusaurus && yarn install` command will jump in the folder and will install node dependencies,
-* Line 6: `COPY . .` will copy everything from your project's directory (on your host) into the Docker image (in folder `/docusaurus` since that one is the default working directory) and
+* Line 4: `/app` will be the default working directory in the image,
+* Line 5: the `cd /app && yarn install` command will jump in the folder and will install node dependencies,
+* Line 6: `COPY . .` will copy everything from your project's directory (on your host) into the Docker image (in folder `/app` since that one is the default working directory) and
 * Line 7: the command `CMD ["yarn", "start", "--host", "0.0.0.0"]` will run `yarn start --host 0.0.0.0` which is the instruction to run Docusaurus, make the *transparent* conversion from Markdown pages to HTML and will render the website on the default port (which is port `3000`).
 
 ### Create a .dockerignore file
@@ -99,10 +99,10 @@ services:
       - 3000:3000
     user: 1000:1000
     volumes:
-      - ./blog:/docusaurus/blog
+      - ./blog:/app/blog
 ```
 
-As you can see, we need to have a folder called `blog` on our machine and we'll synchronize that folder inside the Docker container. Our `blog` folder will be *mounted* in folder `/docusaurus/blog` in the container.
+As you can see, we need to have a folder called `blog` on our machine and we'll synchronize that folder inside the Docker container. Our `blog` folder will be *mounted* in folder `/app/blog` in the container.
 
 ### Create simple blog items
 
@@ -169,7 +169,7 @@ Your blog is now accessible on your computer here: `http://localhost:3000`.
 :::info Which port number to use?
 The port number is the one you've mentioned in the `docker-compose.yml` file in line `3000:3000`.
 
-If you wish another port like `3002` f.i., just edit the yaml file and rerun the `docker compose up --detach` command.
+If you wish another port like `3002` f.i., just edit the yaml file and replace `3000:3000` with `3002:3000` and rerun the `docker compose up --detach` command.
 :::
 
 ![Docusaurus homepage](./images/homepage.png)
