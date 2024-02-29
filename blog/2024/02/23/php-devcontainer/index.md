@@ -33,9 +33,13 @@ For this blog article, I'll create a temporary folder in `/tmp/devcontainer_php`
 
 ```bash
 mkdir /tmp/devcontainer_php && cd $_
-curl -LOJ --silent --output php_devcontainer.tar.gz https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
-tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devcontainer-1.0.0.tar.gz
+curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/heads/main.tar.gz
+tar -xzvf php_devcontainer-main.tar.gz --strip-components 1 && rm -f php_devcontainer-main.tar.gz
 ```
+
+:::note Download a specific version
+If you don't want to download the latest version but a given one, specify the tags like: `curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz`.
+:::
 
 You've thus download code from my [https://github.com/cavo789/php_devcontainer](https://github.com/cavo789/php_devcontainer) repo in your folder.
 
@@ -89,7 +93,7 @@ In my project folder, now, I'll run:
 
 ```bash
 cd /tmp/laravel_todos
-curl -LOJ --silent --output php_devcontainer.tar.gz https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
+curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
 tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devcontainer-1.0.0.tar.gz
 ```
 

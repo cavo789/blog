@@ -9,6 +9,7 @@ enableComments: true
 ![PHP development in a devcontainer with preinstalled code quality tools](./images/devcontainer_banner.jpg)
 
 - *Updated 2024-02-23, install Rector automatically*
+- *Updated 2024-02-29, install [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) and [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)*
 
 :::info Don't want to read this long article
 So jump to [Install a PHP Docker environment in a matter of seconds](/blog/php-devcontainer)
@@ -31,9 +32,20 @@ This article is written in the form of a step-by-step tutorial. If you don't wan
 
 ```bash
 mkdir /tmp/devcontainer_php && cd $_
-curl -LOJ --silent --output php_devcontainer.tar.gz https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
+curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
 tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devcontainer-1.0.0.tar.gz
 ```
+
+:::note Download the very latest version
+The php_devcontainer repository will evolve over time. If you wish to download the latest version and not the use frozen for this article, please use the following commands and not the ones of here above:
+
+```bash
+mkdir /tmp/devcontainer_php && cd $_
+curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/heads/main.tar.gz
+tar -xzvf php_devcontainer-main.tar.gz --strip-components 1 && rm -f php_devcontainer-main.tar.gz
+```
+
+:::
 
 :::
 
@@ -852,3 +864,16 @@ There are still several code analysis tools for PHP:
 - ...
 
 You can certainly also add them to your container.
+
+### Extensions
+
+Some extensions will be automatically installed:
+
+* [bmewburn.vscode-intelephense-client](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client) - PHP code intelligence for Visual Studio Code,
+* [junstyle.php-cs-fixer](https://marketplace.visualstudio.com/items?itemName=junstyle.php-cs-fixer) - PHP CS Fixer extension for VS Code, php formatter, php code beautify tool, format html,
+* [ms-azuretools.vscode-docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) - Makes it easy to create, manage, and debug containerized applications,
+* [sonarsource.sonarlint-vscode](https://marketplace.visualstudio.com/items?itemName=sonarsource.sonarlint-vscode) - Linter to detect & fix coding issues locally in JS/TS, Python, PHP, Java, C, C++, C#, Go, IaC. Use with SonarQube & SonarCloud for optimal team performance.,
+* [streetsidesoftware.code-spell-checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) - Spelling checker for source code,
+* [usernamehw.errorlens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) - Improve highlighting of errors, warnings and other language diagnostics,
+* [ValeryanM.vscode-phpsab](https://marketplace.visualstudio.com/items?itemName=ValeryanM.vscode-phpsab) - PHP Sniffer & Beautifier for Visual Studio Code and
+* [zobo.php-intellisense](https://marketplace.visualstudio.com/items?itemName=zobo.php-intellisense) - Advanced Autocompletion and Refactoring support for PHP
