@@ -27,6 +27,7 @@
         "phpmyadmin",
         "phpsab",
         "Pinterest",
+        "requery",
         "resethits",
         "reveal.js",
         "revealjs",
@@ -40,6 +41,7 @@
         "ValeryanM",
         "visualisation",
         "winget",
+        "Winword",
         "zobo"
     ],
     "search.exclude": {
