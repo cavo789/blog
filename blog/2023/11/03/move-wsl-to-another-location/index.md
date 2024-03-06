@@ -17,14 +17,31 @@ By default, the Linux distribution is installed on your C: drive. If, like me, y
 To do this, please:
 
 * Run `wsl --list --verbose` from a **PowerShell** console; you'll get the name of your distribution (`Ubuntu` in my case),
-* From a **PowerShell Admin** console, run `wsl --terminate Ubuntu` to stop our `Ubuntu` distribution,
-* On your second drive, create a temporary folder like `D:\WSL`,
-* Run `wsl --export Ubuntu "D:\WSL\Ubuntu.tar"`,
-* When finished, run `wsl --unregister Ubuntu` and, finally,
-* Run `wsl --import Ubuntu "D:\WSL\Ubuntu" "D:\WSL\Ubuntu.tar"`
+* From a **PowerShell Admin** console,
+  * Run `wsl --shutdown` to shutdown WSL,
+  * On your second drive, create a temporary folder like `d:\wsl`,
+  * Run `wsl --export Ubuntu d:\wsl\ubuntu.tar"`,
+  * When finished, run `wsl --unregister Ubuntu` and, finally,
+  * Run `wsl --import Ubuntu d:\wsl\ubuntu d:\wsl\ubuntu.tar --version 2`
+  * Run `del d:\wsl\ubuntu.tar`
 
 You will need to do this for every distribution you have installed and if you want to move it.
 
 :::tip
 If you have Docker, you can do the same i.e. move the Docker partition to your second disk.
+
+```bash
+wsl --export docker-desktop d:\wsl\docker-desktop.tar
+wsl --export docker-desktop-data d:\wsl\docker-desktop-data.tar
+
+wsl --unregister docker-desktop
+wsl --unregister docker-desktop-data
+
+wsl --import docker-desktop d:\wsl\docker-desktop d:\wsl\docker-desktop.tar --version 2
+wsl --import docker-desktop-data d:\wsl\docker-desktop-data d:\wsl\docker-desktop-data.tar --version 2
+
+del d:\wsl\docker-desktop.tar
+del d:\wsl\docker-desktop-data.tar
 :::
+
+Once done, restart your computer to finalize the move.
