@@ -2,11 +2,11 @@
 slug: vbs-msaccess-get-fields
 title: VBS - Retrieve the list of fields in a MS Access Database
 authors: [christophe]
-image: images/get_fields_list_social_media.jpg
+image: ./images/get_fields_list_social_media.jpg
 tags: [database, msaccess, vbs]
 enableComments: true
 ---
-![VBS - Retrieve the list of fields in a MS Access Database](images/get_fields_list_header.jpg)
+![VBS - Retrieve the list of fields in a MS Access Database](./images/get_fields_list_header.jpg)
 
 Years ago, I've created a .vbs script that will scan a MS Access database, loop for each table and, for each of them, will get the list of fields.
 
