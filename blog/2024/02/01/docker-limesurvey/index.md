@@ -89,6 +89,9 @@ If you think that you've waited already a long time and it seems something is go
 Press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop listening to the logs.
 :::
 
+:::tip Using service_healthy will preserve from such errors, see the example at the end of this post
+:::
+
 When LimeSurvey is ready, you'll see the following page on `http://localhost:8080`:
 
 ![LimeSurvey welcome page](./images/homepage.png)
@@ -162,3 +165,69 @@ volumes:
 :::tip Want to learn more about volumes?
 In that case, please read this blog post: [Using volumes with Docker, use cases](/blog/docker-volumes)
 :::
+
+## Download an old version
+
+You know what? It's really easy to download an old version.
+
+Let's imagine the following situation: you need to intervene on an old installation of LimeSurvey. For the example, let's say you need to install a plugin of some kind but, obviously, before doing so on a production site, you're going to get your hands dirty locally. So you need to download the same version as the production version.
+
+Earlier in this article, we saw that we can easily download the 'latest' version. 
+
+Let's start again, but this time for a specific version. By looking at the production site, you see f.i. version `3.22.6+200219`.
+
+In our `docker-compose.yml`, we then need to replace `image: docker.io/martialblog/limesurvey:latest` by something else but what? A valid tag for sure. Go to [https://hub.docker.com/r/martialblog/limesurvey/tags](https://hub.docker.com/r/martialblog/limesurvey/tags) and, in the `Filter Tags` area, type `3.22.6`, our production version thus. We'll get three images but just one for `apache` (indeed, we wish to use the Docker image having both PHP and Apache). Bingo, now we know our line will be `image: docker.io/martialblog/limesurvey:3.22.6_200219-apache`.
+
+The second part is how to be sure which lines I've to put in the yaml file. For this, just go to [https://github.com/martialblog/docker-limesurvey/releases/tag/](https://github.com/martialblog/docker-limesurvey/releases/tag/) and try to find the same release. Here it's: [https://github.com/martialblog/docker-limesurvey/releases/tag/3.22.6%2B200219](https://github.com/martialblog/docker-limesurvey/releases/tag/3.22.6%2B200219).
+
+Click on the `Source code (zip)` for instance to download the archive and open it. From the archive, retrieve the `docker-compose.yml` file and pay attention to how the file is configured.
+
+For instance, we can see the version of MySQL used then was `mysql:5.7` (so, use the same to avoid conflicts).
+
+Our `docker-compose.yml` will then become:
+
+```yaml
+version: '3.9'
+
+name: limesurvey
+
+services:
+  limesurvey-app:
+    image: docker.io/martialblog/limesurvey:3.22.6_200219-apache
+    container_name: limesurvey-app
+    restart: always
+    environment:
+      - DB_TYPE=mysql
+      - DB_HOST=limesurvey-db
+      - DB_NAME=limesurvey
+      - DB_USERNAME=limesurvey
+      - DB_PASSWORD=secret
+      - ADMIN_USER=admin
+      - ADMIN_PASSWORD=admin
+      - ADMIN_NAME=admin
+      - ADMIN_EMAIL=admin@example.com
+    ports:
+      - 8080:80
+    depends_on:
+      limesurvey-db:
+        condition: service_healthy
+
+  limesurvey-db:
+    image: mysql:5.7
+    container_name: limesurvey-db
+    environment:
+      - MYSQL_USER=limesurvey
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=limesurvey
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
+```
+
+:::tip Using service_healthy
+I've used the `depends_on` property for the `limesurvey-app` service and I've specified `condition: service_healthy`. This is a very cool feature: LimeSurvey, the PHP application, won't start before the database layer is running. Since LimeSurvey has to access the database, we just want to avoid some connectivity errors like *`nc: connect to limesurvey-db (xxxxx) port 3306 (tcp) failed: Connection refused`* or things like that.
+:::
+
+Just run `docker compose up --detach` and surf to `http://localhost:8080` and, congratulations, you've a local LimeSurvey v3.22.6 website.
