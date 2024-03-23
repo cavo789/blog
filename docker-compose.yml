@@ -6,7 +6,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./giscus.json:/app/giscus.json
+      # - ./giscus.json:/app/giscus.json
       - ./package.json:/app/package.json
       - ./yarn.lock:/app/yarn.lock
 
