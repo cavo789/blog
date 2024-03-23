@@ -8,6 +8,8 @@ enableComments: true
 ---
 ![Create your Joomla website using Docker](./images/header.jpg)
 
+- *Updated 2024-03-23, adding health condition in yml and update Joomla tag to 5.1-php8.2-apache.*
+
 In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** *(don't want to wait? Jump to the "Final docker-compose.yml" chapter)*.
 
 I will use a Linux console *(I'm running WSL on my Windows computer and I have chosen Ubuntu for my distribution)* but since Docker can also be used on Windows, you can perfectly run, exactly, the same commands in an MS-DOS / Powershell console.
@@ -155,6 +157,36 @@ At this stage, your site is already being installed. Go to the URL `http://127.0
 
 :::note Not yet ready
 You may get an error page `ERR_EMPTY_RESPONSE`; this is because, for example, MySQL is not yet fully loaded and Joomla has to wait for it before it can display the installation page. In this case, please wait a little longer ... or read the rest of this article.
+
+:::tip Solve it by adding a depends_on condition
+So Joomla can be ready before the database and that's not fun. Indeed, Joomla should be able to create his database, add tables and records but if MySQL is not yet ready, we'll have a problem.
+
+The solution provided by Docker is the notion of `healthcheck`. We have to define how Docker can *know* that MySQL is *healthy*. Then we'll ask Joomla to wait until the database layer is *healthy*.
+
+```yml
+services:
+  // highlight-next-line
+  joomla:
+    [...]
+    // highlight-next-line
+    depends_on:
+      // highlight-next-line
+      joomladb:
+        // highlight-next-line
+        condition: service_healthy
+
+  // highlight-next-line
+  joomladb:
+    [...]
+    // highlight-next-line
+    healthcheck:    
+      // highlight-next-line
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      // highlight-next-line
+      timeout: 20s
+      // highlight-next-line
+      retries: 10
+```
 :::
 
 ### Why joomla-joomlaxxx names
@@ -209,7 +241,7 @@ services:
 
 To retrieve the list of all tags, please navigate to [https://hub.docker.com/_/joomla/tags](https://hub.docker.com/_/joomla/tags).
 
-During writing this article, Joomla *latest* correspond to Joomla version 4.4.1. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: *5.0.1-php8.2-apache*. So just replace `image: joomla` with `image: joomla:5.0.1-php8.2-apache` in `docker-compose.yml` and it's done. You're forcing a version. **Note: make sure to use a tag ending by `-apache`.**
+During writing this article, Joomla *latest* correspond to Joomla version 4.4.1. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: *5.1-php8.2-apache*. So just replace `image: joomla` with `image: joomla:5.1-php8.2-apache` in `docker-compose.yml` and it's done. You're forcing a version. **Note: make sure to use a tag ending by `-apache`.**
 
 ```yaml
 version: '3.9'
@@ -217,10 +249,9 @@ version: '3.9'
 services:
   joomla:
     // highlight-next-line
-    image: joomla:5.0.1-php8.2-apache
+    image: joomla:5.1-php8.2-apache
 [...]
 ```
-
 :::
 
 ## Docker containers
@@ -391,6 +422,9 @@ services:
     environment:
       - JOOMLA_DB_HOST=joomladb
       - JOOMLA_DB_PASSWORD=example
+    depends_on:
+      joomladb:
+        condition: service_healthy
     // highlight-next-line
     user: 1000:1000
     // highlight-next-line
@@ -403,6 +437,10 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=example
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
     // highlight-next-line
     user: 1000:1000
     // highlight-next-line
@@ -800,35 +838,42 @@ This is how:
 2. In that folder, create a `docker-compose.yml` file with this content:
 
 ```yaml
-  version: '3.9'
+version: '3.9'
 
-  name: yourprojectname
+name: yourprojectname
 
-  services:
-    joomla:
-      image: joomla:5.0.1-php8.2-apache
-      container_name: kingsbridge-app
-      restart: always
-      ports:
-        - 8080:80
-      environment:
-        - JOOMLA_DB_HOST=joomladb
-        - JOOMLA_DB_PASSWORD=example
-      user: 1000:1000
-      volumes:
-        - ./site_joomla:/var/www/html
-      depends_on:
-        - joomladb
+services:
+  joomla:
+    image: joomla:5.1-php8.2-apache
+    container_name: kingsbridge-app
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - JOOMLA_DB_HOST=joomladb
+      - JOOMLA_DB_PASSWORD=example
+    depends_on:
+      joomladb:
+        condition: service_healthy
+    user: 1000:1000
+    volumes:
+      - ./site_joomla:/var/www/html
+    depends_on:
+      - joomladb
 
-    joomladb:
-      image: mysql:8.0.13
-      container_name: kingsbridge-db
-      restart: always
-      environment:
-        - MYSQL_ROOT_PASSWORD=example
-      user: 1000:1000
-      volumes:
-        - ./db:/var/lib/mysql
+  joomladb:
+    image: mysql:8.0.13
+    container_name: kingsbridge-db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    user: 1000:1000
+    volumes:
+      - ./db:/var/lib/mysql
 ```
 <!-- markdownlint-disable MD029 -->
 3. Create your two sub-folders: `mkdir db site_joomla`
