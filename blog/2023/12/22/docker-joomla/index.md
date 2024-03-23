@@ -858,8 +858,6 @@ services:
     user: 1000:1000
     volumes:
       - ./site_joomla:/var/www/html
-    depends_on:
-      - joomladb
 
   joomladb:
     image: mysql:8.0.13
