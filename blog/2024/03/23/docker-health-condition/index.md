@@ -99,7 +99,7 @@ And do you know what? I'm mad I didn't know about this sooner, because I've alre
 ```bash
 while [[ ! "$exitCode"  = "0" ]]; do
   echo "Waiting MySQL to launch on 3306..."
-  exitCode=$(nc joomladb 3306)
+  exitCode="$(nc joomladb 3306)"
 done
 ```
 :::
