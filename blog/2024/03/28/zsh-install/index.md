@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/zsh_social_media.jpg
 tags: [customization, linux, powerlevel10k, wsl, zsh]
 enableComments: true
-draft: true
 ---
 ![How to install Oh-My-ZSH](/img/zsh_social_media.jpg)
 
@@ -107,4 +106,4 @@ In term of aliases, one I use several times a day is `gst` for `git status`. You
 
 And for sure, that are more, I just probably don't know they're part of ZSH anymore.
 
-There are much, much more like plugins. I'll write other posts for them.
+There are much, much more like [plugins](/blog/tags/zsh). I'll write other posts for them.
