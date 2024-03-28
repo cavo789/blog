@@ -4,6 +4,7 @@ title: Bash - Script to add logging features to your script
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 tags: [bash, tips]
+draft: true
 enableComments: true
 ---
 ![Bash - Script to add logging features to your script](/img/bash_tips_header.jpg)
