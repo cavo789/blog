@@ -12,6 +12,8 @@ ZSH supports plugin and one of the wonders is the [zsh-autosuggestions](https://
 
 That one will suggests commands as you type based on your previous history and completions.
 
+The more you use your Linux console, the more valuable this plugin will prove to be, as it will learn from you; it will know which commands you have already executed and will suggest them as soon as you start typing the first characters. Finish thinking "Gee, what were the parameters I used for ...".
+
 <!-- truncate -->
 
 ## Installation

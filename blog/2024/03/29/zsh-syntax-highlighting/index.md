@@ -10,6 +10,14 @@ enableComments: true
 
 [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/) is another gem for ZSH.
 
+As you type, you'll be able to tell from the colors that, for example, something isn't quite right.
+
+If you type `head` followed by a space, ZSH will display this word in green: this command exists and is valid.  If you type `heat` there, the word will appear in red: this command does not exist.
+
+It sounds simple, but it's so practical.
+
+<!-- truncate -->
+
 ## Installation
 
 Just clone the official repository like below:
