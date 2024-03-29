@@ -24,7 +24,7 @@ You can retrieve an free documentation on [https://learning.postman.com/docs/int
 
 ## Creating an environment
 
-By creating an environment, it's just like creating global variables. 
+By creating an environment, it's just like creating global variables.
 
 ![Creating an environment](images/creating_environment.png)
 
@@ -42,7 +42,7 @@ If you need to create more than one request, it's best to create a collection (u
 
 ![Collection with global tests](images/collection_tests.png)
 
-So, whatever the request I'll start, the four tests below will always be fired: 
+So, whatever the request I'll start, the four tests below will always be fired:
 
 ```php
 pm.test("response is ok", function () {
@@ -306,6 +306,7 @@ pm.test('Response body has the required fields', function () {
     pm.expect(responseData['SOAP-ENV:Body']['ns1:getSessionsLanguagesOutput'].list).to.exist;
 })
 ```
+
 :::
 
 #### Assertions for collections

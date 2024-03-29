@@ -1,14 +1,14 @@
 ---
 slug: docker-wordpress
-title: Quickly install Wordpress in just three commands
+title: Quickly install WordPress in just three commands
 authors: [christophe]
 image: ./images/social_media.jpg
 tags: [docker, wordpress]
 enableComments: true
 ---
-![Quickly install Wordpress in just three commands](./images/header.jpg)
+![Quickly install WordPress in just three commands](./images/header.jpg)
 
-Do you think it's possible to run a new Wordpress site in just three commands?  Impossible, isn't it. Well, in fact, yes, it's possible.
+Do you think it's possible to run a new WordPress site in just three commands?  Impossible, isn't it. Well, in fact, yes, it's possible.
 
 Let's take a look...
 
@@ -50,21 +50,21 @@ docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e
 
 Once started by Docker, the MySQL / MariaDB container will create an empty database called `wordpress`, a user called `wpuser` and his password will be `example` (as defined by our variables `MYSQL_DATABASE`, `MYSQL_USER` and `MYSQL_PASSWORD`). The container will be named `db_wordpress` (as defined by `--hostname`).
 
-## Third step, we need wordpress
+## Third step, we need WordPress
 
-And now, we need a second container for Wordpress itself. I propose to use the latest version on that time:
+And now, we need a second container for WordPress itself. I propose to use the latest version on that time:
 
 ```bash
 docker run -d --name app_wordpress --hostname app_wordpress --network wordpress -p 8080:80 -e WORDPRESS_DB_HOST=db_wordpress -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=example wordpress:6.4.2-php8.2-apache
 ```
 
-The following command will run Wordpress in an Apache container and making the site available on `http://127.0.0.1:8080`.
+The following command will run WordPress in an Apache container and making the site available on `http://127.0.0.1:8080`.
 
 As you can see, we don't need to pay attention to the `wp-config.php` file since we are setting environment variables in our `docker run` command.
 
-![Running Wordpress](./images/run_wp.png)
+![Running WordPress](./images/run_wp.png)
 
-![Installing Wordpress](./images/installing_wordpress.png)
+![Installing WordPress](./images/installing_wordpress.png)
 
 :::info Error establishing a database connection
 If you get `Error establishing a database connection`, please wait a little before refreshing the web page. It means MySQL / Maria wasn't yet ready to handle the connection.
@@ -88,7 +88,7 @@ If you wish to stop and remove containers after usage, you can run the following
 
 ```bash
 docker rm $(docker stop $(docker ps -a -q --filter="name=app_wordpress"))
-docker rm $(docker stop $(docker ps -a -q --filter="name=wp_wordpress"))
+docker rm $(docker stop $(docker ps -a -q --filter="name=db_wordpress"))
 docker network rm wordpress
 ```
 

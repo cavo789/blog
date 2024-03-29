@@ -88,13 +88,13 @@ Be honest, `take /tmp/new_folder` is easier and faster than `mkdir -p /tmp/new_f
 
 A second, so stupid but so valuable feature is `cd ..` followed by two or three or ... dots.
 
-Imagine you're in the folder `/tmp/new_folder/a/b/c/d/e/f` and you want to use `cd ..` to jump back to parent `a`. Using ZSH, I can just type `cd ......` and that's cool. `cd ..` jump to the first parent, `cd ...` to the grand parent and so on. 
+Imagine you're in the folder `/tmp/new_folder/a/b/c/d/e/f` and you want to use `cd ..` to jump back to parent `a`. Using ZSH, I can just type `cd ......` and that's cool. `cd ..` jump to the first parent, `cd ...` to the grand parent and so on.
 
-There is also one king key with ZSH and it's <kbd>TAB</kbd>. Imagine you're in a folder having multiple sub-folders. Just type `cd ` (the space is really important) and press <kbd>TAB</kbd>. You'll then get the list of sub-folders. Navigate between suggestions by using <kbd>TAB</kbd> and press <kbd>ENTER</kbd> to select one.
+There is also one king key with ZSH and it's <kbd>TAB</kbd>. Imagine you're in a folder having multiple sub-folders. Just type `cd` (the space is really important) and press <kbd>TAB</kbd>. You'll then get the list of sub-folders. Navigate between suggestions by using <kbd>TAB</kbd> and press <kbd>ENTER</kbd> to select one.
 
 ![ZSH - CD with tab](./images/zsh_cd.png)
 
-Then, continue, press <kbd>TAB</kbd> again and you'll be able to select a sub-folder and you can continue like that. 
+Then, continue, press <kbd>TAB</kbd> again and you'll be able to select a sub-folder and you can continue like that.
 
 ![ZSH - CD with tab](./images/zsh_cd_again.png)
 

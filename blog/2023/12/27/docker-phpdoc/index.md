@@ -21,7 +21,7 @@ Simple! [phpDocumentor](https://docs.phpdoc.org/) do it for you and since a Dock
 
 For the illustration, please start a Linux shell and run `mkdir -p /tmp/wordpress && cd $_`.
 
-Then run `curl -LOJ --silent --output wordpress https://github.com/WordPress/wordpress-develop/archive/refs/tags/6.4.2.zip` to download Wordpress v6.4.2.  You'll get a file called `wordpress-develop-6.4.2.zip` on your disk.
+Then run `curl -LOJ --silent --output wordpress https://github.com/WordPress/wordpress-develop/archive/refs/tags/6.4.2.zip` to download WordPress v6.4.2.  You'll get a file called `wordpress-develop-6.4.2.zip` on your disk.
 
 Unzip it by running `unzip wordpress-develop-6.4.2.zip && rm wordpress-develop-6.4.2.zip` and now, you'll have a folder called `wordpress-develop-6.4.2` so please jump in it `cd wordpress-develop-6.4.2`.
 
@@ -65,4 +65,4 @@ If you're running under WSL2, to get access to the documentation, just run `powe
 
 The phpDocumentor website will looks like this:
 
-![Wordpress 6.4.2 PHP documentation](./images/wordpress_phpdoc.png)
+![WordPress 6.4.2 PHP documentation](./images/wordpress_phpdoc.png)

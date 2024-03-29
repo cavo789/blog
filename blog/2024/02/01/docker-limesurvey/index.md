@@ -172,7 +172,7 @@ You know what? It's really easy to download an old version.
 
 Let's imagine the following situation: you need to intervene on an old installation of LimeSurvey. For the example, let's say you need to install a plugin of some kind but, obviously, before doing so on a production site, you're going to get your hands dirty locally. So you need to download the same version as the production version.
 
-Earlier in this article, we saw that we can easily download the 'latest' version. 
+Earlier in this article, we saw that we can easily download the 'latest' version.
 
 Let's start again, but this time for a specific version. By looking at the production site, you see f.i. version `3.22.6+200219`.
 

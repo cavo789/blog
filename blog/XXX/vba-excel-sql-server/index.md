@@ -19,7 +19,7 @@ Stop imagining, it's just so easy!
 
 Years ago, I've published [https://github.com/cavo789/vba_excel_sql](https://github.com/cavo789/vba_excel_sql) for this.
 
-You'll retrieved in my GitHub repository all the explanations to do this i.e. a VBA code to add in your Excel file ([quick access](https://github.com/cavo789/vba_excel_sql/blob/master/src/SQL2Excel.xlsm/clsData.cls)) and a [demo] (https://github.com/cavo789/vba_excel_sql/blob/master/src/SQL2Excel.xlsm/test.bas).
+You'll retrieved in my GitHub repository all the explanations to do this i.e. a VBA code to add in your Excel file ([quick access](https://github.com/cavo789/vba_excel_sql/blob/master/src/SQL2Excel.xlsm/clsData.cls)) and a [demo](https://github.com/cavo789/vba_excel_sql/blob/master/src/SQL2Excel.xlsm/test.bas).
 
 This time, I won't rewrite the whole explanation in the form of a post because everything is already listed on GitHub; please follow this link: [https://github.com/cavo789/vba_excel_sql](https://github.com/cavo789/vba_excel_sql)
 

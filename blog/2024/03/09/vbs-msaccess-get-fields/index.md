@@ -26,7 +26,7 @@ To make the script to run:
 
 Get the source code from my GitHub page: [https://github.com/cavo789/vbs_access_get_fields_list/blob/master/access_get_fields_list.vbs](https://github.com/cavo789/vbs_access_get_fields_list/blob/master/access_get_fields_list.vbs).
 
-Copy the code in f.i. Notepad then save it on your disk, f.i. `access_get_fields_list.vbs` as filename. 
+Copy the code in f.i. Notepad then save it on your disk, f.i. `access_get_fields_list.vbs` as filename.
 
 ##### access_get_fields_list.cmd
 

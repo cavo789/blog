@@ -1,0 +1,29 @@
+{
+    "enableFileTypes": [
+        "dockercompose",
+        "dockerfile",
+        "dotenv",
+        "makefile",
+        "markdown",
+        "shellscript",
+        "yaml"
+    ],
+    "dictionaries": [
+        "en-GB",
+        "blog"
+    ],
+    "dictionaryDefinitions": [
+        {
+           "name": "blog",
+           "path": "../.config/cspell_blog.txt",
+           "addWords": true
+        }
+    ],
+    "ignorePaths": [
+        ".git/**",
+        "build/**",
+        "node_modules/**",
+        "static/**",
+        "vendor/**"
+    ]
+}

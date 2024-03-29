@@ -12,9 +12,9 @@ Then run `make install` to install dependencies.
 
 *If you don't have `make` on your computer, please run  `sudo apt-get update && sudo apt-get -y install make` .*
 
-## Open the editor
+## Build, run and open the blog
 
-Run `make code` to open vscode.
+Run `make build && make up && make devcontainer` on your local machine to build the Docker image, create the container and open Visual Studio Code so you can start to create new articles.
 
 ## Bash console
 
@@ -22,17 +22,17 @@ Run `make bash` if you need to start an interactive console in the Docker contai
 
 This is the case when, f.i., you will need to run a `npm` (or `yarn`) command like `yarn add @cmfcmf/docusaurus-search-local`.
 
-## Local Development
+## Open the blog on your machine
 
-Run `make start` to start the Docusaurus watcher and open the local website.
+Just run `make start` to start the Docusaurus watcher and open the local website.
 
 Once started, every changes done in the blog will be reflected to the browser without reloading.
 
-## Build
+## Static
 
 Optional.
 
-Run `make build` if you wish to rebuild files in the `/build` folder.
+Run `make static` if you wish to rebuild files in the `/build` folder.
 
 ### Deployment
 

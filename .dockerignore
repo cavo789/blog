@@ -1,11 +1,7 @@
 /.github/*
-/.vscode/
 /build/*
 /node_modules/*
 
-.gitignore
-.markdownlint_ignore
-.markdownlint.json
 *.log
 docker-compose.yml
 Dockerfile

@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/zsh_social_media.jpg
 tags: [customization, linux, wsl, zsh]
 enableComments: true
-draft: true
 ---
 ![Autosuggestions in the console using ZSH](/img/zsh_social_media.jpg)
 

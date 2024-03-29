@@ -145,7 +145,7 @@ Also, test your site with [https://hstspreload.org/](https://hstspreload.org/) t
  RewriteCond %{HTTPS} !=on
  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
- #   then redirect to www. when the prefix wasn't mentionned
+ #   then redirect to www. when the prefix wasn't mentioned
  # hstspreload.org seems to not really like to make the two at once
  RewriteCond %{HTTP_HOST} !^www\.
  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
@@ -185,7 +185,7 @@ Only use this on a development server otherwise you'll expose sensitive informat
 
 #### Enable a maintenance mode
 
-Redirect every requests done to your site to a specific page (called `maintenance.php` here below). Just think to replace the code `ADD_YOUR_IP_HERE` by your current IP adress.
+Redirect every requests done to your site to a specific page (called `maintenance.php` here below). Just think to replace the code `ADD_YOUR_IP_HERE` by your current IP address.
 
 ```apacheconf
 <IfModule mod_rewrite.c>
@@ -210,7 +210,7 @@ Redirect every requests done to your site to a specific page (called `maintenanc
     </IfModule>
 </IfModule>
 
-# On somes hosters, mod_deflate isn't installed but well mod_gzip.
+# On some hosting companies, mod_deflate isn't installed but well mod_gzip.
 <IfModule mod_gzip.c>
     mod_gzip_on Yes
     mod_gzip_dechunk Yes

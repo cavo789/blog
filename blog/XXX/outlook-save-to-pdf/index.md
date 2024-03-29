@@ -11,7 +11,7 @@ draft: true
 
 You may also need to select several emails from Microsoft Outlook and save them as PDF files on your hard drive.
 
-In my case, it was when I was complementary self-employed. I had to keep track of the orders I received and the invoices I sent. 
+In my case, it was when I was complementary self-employed. I had to keep track of the orders I received and the invoices I sent.
 
 This post will explain to you how to create such macro for Outlook.
 
@@ -61,7 +61,7 @@ Then, you'll be prompted to select a folder on your disk where to save emails as
 
 ![Where emails should be saved?](images/where_to_save.png)
 
-The first dialog will ask if, once exported as PDF, you wish to keep emails in Outlook and remove them.  
+The first dialog will ask if, once exported as PDF, you wish to keep emails in Outlook and remove them.
 
 And the last dialog will ask if you wish to give a name manually to each file (if you've selected five emails, you'll be prompted five times for a filename) or if you wish to use the subject of the email as filename.
 

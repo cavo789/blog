@@ -8,7 +8,7 @@ enableComments: true
 ---
 ![How to optimize an existing MS Access database](./images/optimize_msaccess_database_header.jpg)
 
-Several years ago, I had to intervene on an MS Access database that had been created by a person of good will but with little affinity for computers and optimization. 
+Several years ago, I had to intervene on an MS Access database that had been created by a person of good will but with little affinity for computers and optimization.
 
 The result: a cumbersome and exasperatingly slow database.
 

@@ -167,7 +167,7 @@ printf(
 );
 ```
 
-By running `docker run -it --rm -v "${PWD}":/project -w /project php:8.2 php index.php`, it's still working. 
+By running `docker run -it --rm -v "${PWD}":/project -w /project php:8.2 php index.php`, it's still working.
 
 :::success You've refactored our code without breaking it. Congratulations!
 :::

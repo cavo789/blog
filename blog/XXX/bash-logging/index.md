@@ -21,7 +21,7 @@ To illustrate how the log feature works, we need to create two files. Your scrip
 
 ## Your script
 
-If you already have a script, please open it. Otherwise, just create a new one and copy/paste the code below. 
+If you already have a script, please open it. Otherwise, just create a new one and copy/paste the code below.
 
 Name the file just as you want (I will name it `run.sh` for the example) and make sure the script can be executed by running `chmod +x run.sh` in your console.
 

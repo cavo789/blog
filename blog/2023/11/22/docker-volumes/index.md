@@ -8,7 +8,7 @@ enableComments: true
 ---
 ![Using volumes with Docker, use cases](./images/header.jpg)
 
-When working with a Docker container, data can be persistent or not. Imagine you're creating a localhost website with Joomla, Wordpress or any other tool (Laravel, Symfony, etc.).
+When working with a Docker container, data can be persistent or not. Imagine you're creating a localhost website with Joomla, WordPress or any other tool (Laravel, Symfony, etc.).
 
 You've perfectly created the various Docker files needed to run the local site, you've run the command `docker compose up --detach` to start the containers and now you're busy installing the site.  After a few moments, your local site is up and you can start developing its functionalities.
 

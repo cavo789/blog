@@ -1,23 +1,42 @@
 {
-    "name": "blog_docusaurus",
+    "name": "docusaurus",
     "service": "docusaurus",
     "dockerComposeFile": [
         "../docker-compose.yml"
     ],
     "workspaceFolder": "/app",
-    "remoteUser": "node",
+    "remoteUser": "root",
     "customizations": {
         "vscode": {
             "settings": {
                 "[markdown]": {
-                    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+                    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+                    "editor.wordWrap": "wordWrapColumn",
+                    "editor.wordWrapColumn": 80,
+                    "editor.wrappingIndent": "indent"
                 },
+                "cspell.language": "en",
+                "editor.bracketPairColorization.enabled": true,
+                "editor.folding": true,
+                "editor.foldingStrategy": "auto",
                 "editor.formatOnSave": true,
+                "editor.guides.bracketPairs": "active",
+                "editor.guides.bracketPairsHorizontal": "active",
+                "editor.guides.highlightActiveBracketPair": true,
+                "editor.guides.indentation": true,
                 "editor.renderWhitespace": "all",
+                "editor.rulers": [
+                    120,
+                    70
+                ],
+                "editor.stickyScroll.enabled": true,
+                "editor.tabCompletion": "on",
                 "files.autoSave": "onFocusChange",
                 "files.eol": "\n",
+                "files.defaultLanguage": "markdown",
                 "files.insertFinalNewline": true,
                 "files.trimTrailingWhitespace": true,
+                "sonarlint.disableTelemetry": true,
                 "telemetry.telemetryLevel": "off",
                 "terminal.integrated.profiles.linux": {
                     "bash": {
@@ -25,11 +44,18 @@
                         "icon": "terminal-bash"
                     }
                 },
-                "terminal.integrated.defaultProfile.linux": "sh"
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.fontFamily": "MesloLGS MS"
             },
             "extensions": [
-                "ms-azuretools.vscode-docker",
                 "DavidAnson.vscode-markdownlint",
+                "mde.select-highlight-minimap",
+                "ms-azuretools.vscode-docker",
+                "SonarSource.sonarlint-vscode",
+                "streetsidesoftware.code-spell-checker-british-english",
+                "streetsidesoftware.code-spell-checker",
+                "TomasDahlqvist.markdown-admonitions",
+                "Tyriar.sort-lines",
                 "usernamehw.errorlens"
             ]
         }

@@ -3,7 +3,7 @@ slug: winscp-putty
 title: WinSCP - Start PuTTY without typing a password
 authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
-tags: [putty, tips, winscp]
+tags: [putty, ssh, tips, winscp]
 enableComments: true
 draft: true
 ---

@@ -10,7 +10,7 @@ enableComments: true
 
 It's only been ten days or so since I learned the trick, even though it was well documented: managing service startups and, above all, blocking one if the other isn't ready ([official documentation](https://docs.docker.com/compose/startup-order/#control-startup)).
 
-Imagine a two services applications like Joomla (see my [Create your Joomla website using Docker](/blog/docker-joomla/)), Wordpress, LimeSurvey, Laravel and many, many more use cases: you've an application and that application requires a database.
+Imagine a two services applications like Joomla (see my [Create your Joomla website using Docker](/blog/docker-joomla/)), WordPress, LimeSurvey, Laravel and many, many more use cases: you've an application and that application requires a database.
 
 <!-- truncate -->
 You've, roughly speaking, a `docker-compose.yml` file like this:
@@ -28,7 +28,7 @@ services:
     [...]
 ```
 
-And, yeah, it works. You can execute `docker compose up --detach` and wait until the two services are up and soon or later, you'll got your application ready. 
+And, yeah, it works. You can execute `docker compose up --detach` and wait until the two services are up and soon or later, you'll got your application ready.
 
 But you have the intuition that something isn't quite right here... What happens if the database service is slow to load? You'd have the application (Joomla here, but it doesn't really matter) which, in its initialization process, is going to want to connect to the database, and wham! This will not work and you will receive *Error when connecting to the database* errors. With a bit of luck, the application will try several times before stopping in error. Without chance, the application will just crash.
 
@@ -37,7 +37,7 @@ How to solve this? The answer is in two parts.
 1. You need to instruct Docker how he can know that the service is ready,
 2. You need to pause the application service until the database is ready.
 
-## The healtcheck property
+## The healthcheck property
 
 The idea is to ask Docker to run a given command each xxx seconds until he got a `Success` status (in term of Linux, it's a command that return an exitcode equal to `0`).
 
@@ -91,15 +91,17 @@ services:
       retries: 10
 ```
 
-It's pretty self-explanatory, I think. Docker will pause the creation of the Joomla container (just the creation, not downloading the image or any previous step) while the `depends_on` service isn't healhty.
+It's pretty self-explanatory, I think. Docker will pause the creation of the Joomla container (just the creation, not downloading the image or any previous step) while the `depends_on` service isn't healthy.
 
 And do you know what? I'm mad I didn't know about this sooner, because I've already set up a script like the one below in my applications:
 
 :::note Very simplified script
+
 ```bash
 while [[ ! "$exitCode"  = "0" ]]; do
   echo "Waiting MySQL to launch on 3306..."
   exitCode="$(nc joomladb 3306)"
 done
 ```
+
 :::
