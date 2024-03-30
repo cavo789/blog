@@ -64,7 +64,7 @@ Not sure it's something to remember but `cat **` followed <kbd>TAB</kbd> will wo
 
 Here, using <kbd>CTRL</kbd>+<kbd>T</kbd>, you'll be able to select just one file. Imagine you wish to select more than one? For instance you wish to run `rm` to kill more that one files.
 
-By running `fzf -m | xargs rm` followed by <kbd>ENTER</kbd>, Fuzzy Finder will display the list of all files present in the current directory. Like previously, I can start to type and filter the list. In my example below, I've typed `run.sh.log` to retrieve logs and, in the list, I select <kbd>TAB</kbd> to select four files (see the red `>` character at the left). Then I press <kbd>ENTER</kbd> to validate my choice and ... files have been removed since my command was `rm`.
+By running `fzf -m | xargs rm` followed by <kbd>ENTER</kbd>, Fuzzy Finder will display the list of all files present in the current directory. Like previously, I can start to type and filter the list. In my example below, I've typed `run.sh.log` to retrieve logs and, in the list, I press <kbd>TAB</kbd> to select four files (see the red `>` character at the left). Then I press <kbd>ENTER</kbd> to validate my choice and ... files have been removed since my command was `rm`.
 
 ![Removing several files](./images/rm_several_files.png)
 
