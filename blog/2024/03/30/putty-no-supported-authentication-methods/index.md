@@ -5,7 +5,6 @@ authors: [christophe]
 image: ./images/ssh_social_media.jpg
 tags: [putty, ssh]
 enableComments: true
-draft: true
 ---
 ![Fatal error was starting Putty after having saved settings](./images/ssh_banner.jpg)
 
