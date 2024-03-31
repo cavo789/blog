@@ -12,9 +12,9 @@ This article aims to answer the following situation: *I'm using a Docker image t
 
 A real-world example is: you've followed my article [Create your Joomla website using Docker](/blog/docker-joomla) and everything is working fine. The website is running and you wish, using the Joomla administration web interface, upload a big file to your site. But, then, you get an error *The selected file cannot be transferred because it is larger than the maximum upload size allowed*.
 
-![Your PHP settings before changes](./images/before.png)
-
 <!-- truncate -->
+
+![Your PHP settings before changes](./images/before.png)
 
 One of the easiest ways to do is to create a `.ini` file on your disk and share the file with your container.
 
