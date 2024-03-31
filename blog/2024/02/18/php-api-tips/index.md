@@ -217,7 +217,7 @@ Consider using `PUT` only when you'll update every information's of the resource
 
 If successfully updated will return the HTTP status code `200` (OK) or `204` (No Content) if nothing is updated. If successfully created will return the HTTP status code `201` (CREATED) (like when using the `POST` verb).
 
-Note: depending on the API developer, updating an inexisting resource can return an error ('Resource #15 do not exist') or the developer can decide to create it (and thus do the same thing as the `PUT` verb). This is indeed possible since `PUT` is used for full content: you've sent to the server every possible field so it's possible to create it.
+Note: depending on the API developer, updating an in-existing resource can return an error ('Resource #15 do not exist') or the developer can decide to create it (and thus do the same thing as the `PUT` verb). This is indeed possible since `PUT` is used for full content: you've sent to the server every possible field so it's possible to create it.
 
 #### PATCH
 
@@ -229,7 +229,7 @@ If you plan to update all fields, you need to use `PUT`, not `PATCH`.
 
 If successfully updated will return the HTTP status code `200` (OK) or `204` (No Content) if nothing is updated. If successfully created will return the HTTP status code `201` (CREATED) (like when using the `POST` verb).
 
-`PATCH` on an inexisting resource will return an error while, perhaps, `PUT` will create the resource. If's then safer to use `PATCH` and not `PUT` when updating partial content.
+`PATCH` on an in-existing resource will return an error while, perhaps, `PUT` will create the resource. If's then safer to use `PATCH` and not `PUT` when updating partial content.
 
 It's indeed impossible to create a new record with `PATCH` since the request just mention a few information's, not all.
 
@@ -238,7 +238,7 @@ It's indeed impossible to create a new record with `PATCH` since the request jus
 :::tip You can translate `DELETE` as ... `DELETE` in `CRUD`
 :::
 
-Remove an inexisting resource
+Remove an in-existing resource
 
 To remove employee #59:
 

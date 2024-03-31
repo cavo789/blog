@@ -17,7 +17,7 @@ In this article, resurrected from my personal archive, I'm going to present the 
 <!-- truncate -->
 
 :::note Disclaimer
-This guide deliberately concerns **existing databases**, for this reason, I will not speak for example about how to correctly design tables, not having more than 100 fields, not about drawing a relational schema, ... The objective is therefore to improve performance without deep programming (no reengineering) and without migration to f.i. SQL Server.
+This guide deliberately concerns **existing databases**, for this reason, I will not speak for example about how to correctly design tables, not having more than 100 fields, not about drawing a relational schema, ... The objective is therefore to improve performance without deep programming (no re-engineering) and without migration to f.i. SQL Server.
 :::
 
 ## MS Access - Analyze Performance
@@ -199,7 +199,7 @@ Here the index is well used, .JET also don't need to make VBA call record by rec
 
 ##### DCount(), DSum()
 
-Prefer to rewrite the query and use, f.i., subqueries with a GROUP BY and the desired formula (Count(), Sum(), ...)
+Prefer to rewrite the query and use, f.i., sub-queries with a GROUP BY and the desired formula (Count(), Sum(), ...)
 
 #### Sorting on columns not formula's
 

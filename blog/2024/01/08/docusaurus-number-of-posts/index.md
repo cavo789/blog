@@ -6,6 +6,7 @@ image: /img/docusaurus_tips_social_media.jpg
 tags: [markdown, docusaurus, tips]
 enableComments: true
 ---
+<!-- cspell:ignore autoriser,collage -->
 ![Getting the number of published posts](/img/docusaurus_tips_banner.jpg)
 
 Docusaurus didn't provide an easy way to retrieve the number of blog posts but there is well a trick.

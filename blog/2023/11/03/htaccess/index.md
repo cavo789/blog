@@ -6,6 +6,7 @@ tags: [apache, snippets, .htaccess]
 image: ./images/social_media.jpg
 enableComments: true
 ---
+<!-- cspell:ignore webm -->
 ![Apache .htaccess file](./images/header.jpg)
 
 Some tips and tricks for your .htaccess file (Apache)
@@ -330,7 +331,7 @@ Deny from all
 
 ### Deny All Access except you
 
-Just replace `xxx.xxx.xxx.xxx` by your IP adress.
+Just replace `xxx.xxx.xxx.xxx` by your IP address.
 
 ```apacheconf
 ## Apache 2.2
@@ -380,7 +381,7 @@ Options -ExecCGI
 
 ### Disallow listing for directories
 
-Don't allow the webserver to provide the list of files / folders like a `dir` does.
+Don't allow the web server to provide the list of files / folders like a `dir` does.
 
 ```apacheconf
 <IfModule mod_autoindex.c>

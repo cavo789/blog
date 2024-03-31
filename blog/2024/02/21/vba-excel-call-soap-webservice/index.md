@@ -1,12 +1,12 @@
 ---
 slug: vba-excel-call-soap-webservice
-title: MS Excel - How to call a SOAP webservice
+title: MS Excel - How to call a SOAP web service
 authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 tags: [excel, ribbon, soap, vba]
 enableComments: true
 ---
-![MS Excel - How to call a SOAP webservice](/img/excel_tips_header.jpg)
+![MS Excel - How to call a SOAP web service](/img/excel_tips_header.jpg)
 
 Imagine you had to make a call to a SOAP web service in Excel? For example, to validate the VAT number you have been given before carrying out some processing.
 
@@ -238,7 +238,7 @@ curl --silent http://ec.europa.eu/taxation_customs/vies/services/checkVatService
 :::tip Add `xmlstarlet` for a nice output
 See my [The xmlstarlet utility for Linux](/blog/linux-xmlstarlet) article.
 
-Add `| xmlstarlet format --indent-spaces 4` at the end of the previous command to pipe the output to `xmlstartlet`
+Add `| xmlstarlet format --indent-spaces 4` at the end of the previous command to pipe the output to `xmlstarlet` (see [The xmlstarlet utility for Linux](/blog/linux-xmlstarlet))
 :::
 
 The answer will be:

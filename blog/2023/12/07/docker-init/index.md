@@ -6,6 +6,7 @@ image: ./images/social_media.jpg
 tags: [docker, tips]
 enableComments: true
 ---
+<!-- cspell:ignore dbmdl -->
 ![Docker init now supports PHP](./images/social_media.jpg)
 
 But what a happy and strange coincidence. In its new version (4.26) released yesterday *(on my birthday)*, Docker adds support for **PHP with Apache** to its `docker init` instruction. Let's see how this translates into a practical case.
@@ -82,7 +83,7 @@ Your application will be available at http://localhost:8080
 Consult README.Docker.md for more information about using the generated files.
 ```
 
-The wizard is quite straigth-forward but, then, we got four files.
+The wizard is quite straight-forward but, then, we got four files.
 
 Two are really important right now: `compose.yaml` and `Dockerfile`.
 
@@ -117,7 +118,7 @@ USER www-data
 ```
 
 :::danger Bug in Docker 4.26 - Docker init - PHP + Apache
-There is a bug in the release `4.26`, the `COPY` statement has to be `COPY . /var/www/html` (i.e. we need to specify the source folder `.`). I've created an issue on the Docker repositoriy ([https://github.com/docker/cli/issues/4702](https://github.com/docker/cli/issues/4702))
+There is a bug in the release `4.26`, the `COPY` statement has to be `COPY . /var/www/html` (i.e. we need to specify the source folder `.`). I've created an issue on the Docker repository ([https://github.com/docker/cli/issues/4702](https://github.com/docker/cli/issues/4702))
 
 Please update the file `Dockerfile` and change the line `COPY /var/www/html` to `COPY . /var/www/html`
 :::

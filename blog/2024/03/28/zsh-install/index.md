@@ -74,7 +74,7 @@ Just edit the `~/.p10k.zsh` file, search for `POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS
 
 ![Powerlevel10k - Prompt without username](./images/powerlevel10k_prompt_no_user.png)
 
-## Somes features I use daily
+## Some features I use daily
 
 You might think these features are not needed but the fact is I'm using them so much in my daily work.
 

@@ -69,8 +69,6 @@ As you can see, our image is really small. This is the advantage using the alpin
 Now, it's time to create our `docker-compose.yml` file with this content:
 
 ```yaml
-version: '3.9'
-
 name: demo
 
 services:
@@ -145,8 +143,6 @@ There are two types of volumes, the ones **managed by Docker** and, on the other
 Update the `docker-compose.yml` file like this:
 
 ```yaml
-version: '3.9'
-
 name: demo
 
 services:
@@ -316,8 +312,6 @@ Let's make a few cleaning right now, please run `docker compose down --volumes` 
 Update the `docker-compose.yml` file like this:
 
 ```yaml
-version: '3.9'
-
 name: demo
 
 services:
@@ -382,7 +376,7 @@ drwxr-xr-x 3 christophe christophe 4.0K Nov 22 10:54 ..
 -rw-r--r-- 1 root       root          2 Nov 22 10:56 counter.txt
 ```
 
-:::caution Oups, the file is owned by `root` not me
+:::caution Ouch, the file is owned by `root` not me
 Uh oh! The file is owned by the root user and not me (i.e. user `christophe` in my case). That's annoying since I can't edit it or remove it without using `sudo`.
 :::
 
@@ -391,8 +385,6 @@ The file is owned by `root` because the current user; used inside the container,
 To do this, we'll update once more our `docker-compose.yml` file:
 
 ```yaml
-version: '3.9'
-
 name: demo
 
 services:

@@ -23,8 +23,6 @@ Please start a Linux shell and run `mkdir -p /tmp/limesurvey && cd $_` to create
 Please then create a `docker-compose.yml` file in that folder with this content:
 
 ```yaml
-version: '3.9'
-
 name: limesurvey
 
 services:
@@ -113,8 +111,6 @@ Perhaps, if you want to test LimeSurvey over several days and keep your configur
 Here is an updated `docker-compose.yml` file to ask Docker to use self-managed volumes.
 
 ```yaml
-version: '3.9'
-
 name: limesurvey
 
 services:
@@ -187,8 +183,6 @@ For instance, we can see the version of MySQL used then was `mysql:5.7` (so, use
 Our `docker-compose.yml` will then become:
 
 ```yaml
-version: '3.9'
-
 name: limesurvey
 
 services:

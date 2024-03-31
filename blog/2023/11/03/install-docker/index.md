@@ -6,13 +6,14 @@ tags: [docker, php]
 image: ./images/social_media.jpg
 enableComments: true
 ---
+<!-- cspell:ignore wamp -->
 ![Install Docker and play with PHP](./images/header.jpg)
 
 Docker can be installed free of charge for personal or small-scale use: [https://www.docker.com/products/personal/](https://www.docker.com/products/docker-desktop/).
 
 You can install it on Linux, Mac or Windows.
 
-The easiest way, under Windows, is to use [Docker Dekstop](https://www.docker.com/products/docker-desktop/).
+The easiest way, under Windows, is to use [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
 <!-- truncate -->
 
@@ -30,7 +31,7 @@ In this blog post, we will be using the PHP images available at [https://hub.doc
 
 ## Real use case: PHP and Apache
 
-We will run a simple PHP script to show how ... not to ... install PHP and Apache. Not to install sounds crazy but yeah, it is the idea. Using the *old fashion* way, without Docker, before running a web page locally, we need to first install a web server (Apache f.i.) and the PHP interpretor. It is boring.
+We will run a simple PHP script to show how ... not to ... install PHP and Apache. Not to install sounds crazy but yeah, it is the idea. Using the *old fashion* way, without Docker, before running a web page locally, we need to first install a web server (Apache f.i.) and the PHP interpreter. It is boring.
 
 :::tip
 But since Docker has a public image for running PHP and Apache (a single image for both services), it becomes ultra-simple

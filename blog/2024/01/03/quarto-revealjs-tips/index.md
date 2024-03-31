@@ -404,7 +404,7 @@ The idea is to split the slides in four parts and display content clockwise, sta
 
 ![Four quadrants](./images/four-quadrants.gif)
 
-### Creating our own shortcode, easily
+### Creating our own short code, easily
 
 I like to be able to write `==Important text==` and, for a revealjs presentation, transform this text automatically to `<mark>Important text</mark>` so I can easily add a custom CSS to it.
 
@@ -412,7 +412,7 @@ First, create a `assets/custom.js` if not yet present and copy/paste the followi
 
 ```javaScript
 window.addEventListener("load", (event) => {
-    // This function will search for shortcode like "==IpsoLorem=="
+    // This function will search for short code like "==IpsoLorem=="
     // i.e. a portion of text between two equal sign and will replace it
     // to "<mark>IpsoLorem</mark>" so we can then use CSS to highlight
     // that portion.
@@ -526,7 +526,7 @@ There are three types of navigation: `linear` (default one), `vertical` or `grid
 
 If you use vertical or grid navigation, you should structure your slides using level 1 headings for the horizontal axis and level 2 headings for the vertical axis.
 
-In a normal, `linear` navigation, reaveljs will show each slide, whatever the key the user is pressing on his keyboard. In a `linear` navigation, as author, you are sure that your visitor will see each of them.
+In a normal, `linear` navigation, revealjs will show each slide, whatever the key the user is pressing on his keyboard. In a `linear` navigation, as author, you are sure that your visitor will see each of them.
 
 In a `vertical` or `grid` navigation, it's just like you're showing the chapter's title and if the user press the <kbd>down</kbd> or <kbd>space</kbd>key, he will jump in the chapter (and this *vertically*). But if he is pressing the <kbd>right</kbd> key he'll skip it and go to the next chapter.
 
@@ -565,6 +565,7 @@ By default, reveal.js will generate a slug from the title so you can reference t
 
 Consider the following example:
 
+<!-- cspell:disable -->
 ```markdown
 ## Elit ad fugiat proident culpa sint
 
@@ -574,6 +575,7 @@ Elit ad fugiat proident culpa sint qui id pariatur nostrud ullamco velit irure t
 
 Occaecat minim eu veniam laborumanim. Nostrud duis eiusmod ut amet velit commodo. Aliqua laborum cillum officia culpa quis duis enim cillum esse duis excepteur cillum do qui. Veniam dolore enim qui labore proident. Minim ipsum nisi Lorem cillum proident labore cupidatat aliqua pariatur. Nisi id magna incididunt et culpa.
 ```
+<!-- cspell:enable -->
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
@@ -581,6 +583,7 @@ The generated URL for the first slide will be `http://[...]index.html#/elit-ad-f
 
 To define the name yourself, just add `{#}` followed by the slug you desire.
 
+<!-- cspell:disable -->
 ```markdown
 <!-- highlight-next-line -->
 ## Elit ad fugiat proident culpa sint {#intro}
@@ -592,6 +595,7 @@ Elit ad fugiat proident culpa sint qui id pariatur nostrud ullamco velit irure t
 
 Occaecat minim eu veniam laborumanim. Nostrud duis eiusmod ut amet velit commodo. Aliqua laborum cillum officia culpa quis duis enim cillum esse duis excepteur cillum do qui. Veniam dolore enim qui labore proident. Minim ipsum nisi Lorem cillum proident labore cupidatat aliqua pariatur. Nisi id magna incididunt et culpa.
 ```
+<!-- cspell:enable -->
 
 ![Define a name for your slide](./images/set-slide-slug.png)
 
@@ -601,6 +605,7 @@ But, pay attention to the slide's menu (bottom left): perhaps it's also good to 
 
 To do this, set the `data-menu-title` attribute; f.i.:
 
+<!-- cspell:disable -->
 ```markdown
 <!-- highlight-next-line -->
 ## Elit ad fugiat proident culpa sint {#intro data-menu-title="Introduction"}
@@ -608,6 +613,7 @@ To do this, set the `data-menu-title` attribute; f.i.:
 <!-- highlight-next-line -->
 ## Cillum do et commodo minim ullamco elit culpa {#chapter1 data-menu-title="Chapter 1"}
 ```
+<!-- cspell:enable -->
 
 ### Show slide number
 
@@ -621,7 +627,7 @@ format:
 
 ![Slide / Total of slides](./images/slides_c_t.png)
 
-You can retrieve more informations [here](https://quarto.org/docs/presentations/revealjs/presenting.html#slide-numbers).
+You can retrieve more information [here](https://quarto.org/docs/presentations/revealjs/presenting.html#slide-numbers).
 
 ## Misc
 

@@ -53,4 +53,4 @@ exit
 4. Run `cd \temp`
 5. Run `winscp.com` from there: type `"C:\Program Files (x86)\WinSCP\WinSCP.com" /script="c:\temp\rget.txt"`
 
-If everything is correctly set up, WinSCP will start a session terminal and will start to download each `.php` files found under your remote folder (subfolders included).
+If everything is correctly set up, WinSCP will start a session terminal and will start to download each `.php` files found under your remote folder (sub-folders included).

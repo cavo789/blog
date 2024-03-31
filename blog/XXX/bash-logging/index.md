@@ -7,6 +7,7 @@ tags: [bash, tips]
 draft: true
 enableComments: true
 ---
+<!-- cspell:ignore uplzaefi -->
 ![Bash - Script to add logging features to your script](/img/bash_tips_header.jpg)
 
 When write Bash scripts and certainly when you foresee to run them in a cron, you should implement a logfile. Every actions fired by your script should be log somewhere so we can start the script in a non-interactive mode and, in case of need, consult the last logfile.
@@ -132,7 +133,7 @@ function log::__main() {
     trap log::__logDestruct EXIT
 
     # Example of a filename: /tmp/myScript.sh.1J6Sqb62.log
-    # Set LOG_FILE="" if you don't want to write to a log file (but simplier to not source this file then)
+    # Set LOG_FILE="" if you don't want to write to a log file (but simpler to not source this file then)
     [[ ! -v LOG_FILE ]] && LOG_FILE="$(mktemp /tmp/"$(basename "$0")".XXXXXXXXXX.log)"
     
     # Quick function to export the system date in the chosen format.

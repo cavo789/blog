@@ -30,7 +30,7 @@ title: "My thesis in Latin"
 ---
 
 ## Chapter 1
-
+<!-- cspell:disable -->
 Voluptatem minus labore architecto sed voluptas molestiae perferendis. Sed voluptatem ut amet at blanditiis sunt et exercitationem quidem. Vel id impedit dicta omnis repudiandae iure.
 
 Expedita magni facere. Ullam non non sint qui provident. Ea beatae voluptatem pariatur. Et beatae error ea aut neque omnis pariatur rerum ut.
@@ -51,6 +51,7 @@ Consequatur debitis et sunt eos quod qui unde aut.
 
 Quis voluptate est quis in ea veniam qui incididunt ad cillum nostrud. Nisi proident adipisicing nulla proident esse consequat veniam qui magna deserunt cillum enim. Reprehenderit aliqua sit veniam quis amet dolore magna.
 ```
+<!-- cspell:enable -->
 
 Now, run the conversion using `quarto render slides.md --to pptx`
 

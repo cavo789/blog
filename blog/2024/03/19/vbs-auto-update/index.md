@@ -22,7 +22,7 @@ Imagine a script called `get_folder_size.vbs` you've publicly saved on Github (s
 
 Someone download it his computer and enjoy using it.
 
-By adding to it a new *autoupdate* function, each time the script will be started, first, a connection to Github will be made, download the script from there and a check will be made if the downloaded version is different and, if so, the script will be overridden.
+By adding to it a new *auto-update* function, each time the script will be started, first, a connection to Github will be made, download the script from there and a check will be made if the downloaded version is different and, if so, the script will be overridden.
 
 Here is the content of such function:
 
@@ -69,7 +69,7 @@ If Err.Number = 0 Then
     originalContent = textFile.ReadAll
     textFile.Close
 
-    ' Compare if the two contents are differents
+    ' Compare if the two contents are different
     If (originalContent <> downloadedContent) Then
       ' If yes, for instance, rewrite this script by
       ' the new content ==> auto-update

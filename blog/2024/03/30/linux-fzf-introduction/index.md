@@ -4,6 +4,7 @@ title: Introduction to fzf - Fuzzy Finder
 authors: [christophe]
 image: /img/linux_tips_social_media.jpg
 tags: [bash, customization, fzf, linux, tips, linux]
+update: 2024/03/31
 enableComments: true
 ---
 ![Introduction to fzf - Fuzzy Finder](/img/linux_tips_banner.jpg)
@@ -75,3 +76,9 @@ If I rerun the same command and the same filter, I can see I just retrieve three
 Now, instead of killing files, I'll just display the five first lines of each selected files: To do this, I'll execute `fzf -m | xargs head -n 5`. Filter on `run.sh.log` again, select the three files using <kbd>TAB</kbd>, press <kbd>ENTER</kbd> to validate my choice and tadaaa:
 
 ![](./images/head_several_files.png)
+
+## Keybindings
+
+* <kbd>CTRL</kbd>+<kbd>R</kbd>: show the list of commands you've previously typed (your history thus), allow you to select a command by pressing <kbd>ENTER</kbd>,
+* <kbd>CTRL</kbd>+<kbd>T</kbd>: display the list of files in the current directory and sub-folders, allow you to select one or more files (just press <kbd>TAB</kbd> for a multiple selection) then press <kbd>ENTER</kbd> to return the list to the console and
+* <kbd>ALT</kbd>+<kbd>C</kbd>: get the list of folders recursively of the current directory, allow you to select one and by pressing <kbd>ENTER</kbd>, fzf will jump in that folder.

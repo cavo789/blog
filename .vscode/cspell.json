@@ -21,8 +21,13 @@
     ],
     "ignorePaths": [
         ".git/**",
+        "blog/2023/12/22/docker-joomla-fr/index.md",
         "build/**",
+        "docusaurus.config.js",
         "node_modules/**",
+        "src/components/**",
+        "src/css/**",
+        "src/theme/**",
         "static/**",
         "vendor/**"
     ]

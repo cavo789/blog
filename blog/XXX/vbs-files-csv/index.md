@@ -20,7 +20,7 @@ To run this script, first copy/paste the source below and save it to a file, let
 ```vbs
 '------------------------------------------------------------
 '
-' Get the list of files of the current folder + subfolders and
+' Get the list of files of the current folder + sub-folders and
 ' generate a .csv file with file information like path, size,
 ' extensions, author, ... making then easy to work with that list
 ' in Excel
@@ -128,8 +128,8 @@ The output file will be something like this:
 
 ```csv
 "FilePathAndName";"ParentFolder";"Name";"DateCreated";"DateLastAccessed";"DateLastModified";"Size";"Type";"Suffix";"Owner";
-"C:\temp\test\test.csv";"C:\temp\test";"test.csv";"21-01-24 09:07:44";"21-01-24 09:09:08";"21-01-24 09:09:08";"472";"Fichier CSV Microsoft Excel";"csv";"Christophe";
-"C:\temp\test\test.vbs";"C:\temp\test";"test.vbs";"21-01-24 08:43:49";"21-01-24 09:09:03";"21-01-24 09:09:03";"3246";"Fichier de script VBScript";"vbs";"Christophe";
+"C:\temp\test\test.csv";"C:\temp\test";"test.csv";"21-01-24 09:07:44";"21-01-24 09:09:08";"21-01-24 09:09:08";"472";"CSV Microsoft Excel File";"csv";"Christophe";
+"C:\temp\test\test.vbs";"C:\temp\test";"test.vbs";"21-01-24 08:43:49";"21-01-24 09:09:03";"21-01-24 09:09:03";"3246";"VBScript File";"vbs";"Christophe";
 ```
 
 :::tip Did you need tab delimited?

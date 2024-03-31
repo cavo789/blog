@@ -31,8 +31,6 @@ Here is how to do:
 My suggestion is to replace the `docker-compose.yml` file with the one below. Like this, you'll reuse the image publicly made available by Alexandre and don't need to build it yourself (much faster):
 
 ```yaml
-version: '3.9'
-
 services:
 
   joomla:
@@ -97,6 +95,6 @@ Please note that FrankenPHP is delivering your site using `https`. The way Alexa
 
 You'll perhaps not see a major increase in speed on your machine since you're the only visitor but it's nice to think that you're surfing so fast ... locally ;).
 
-:::caution OUPS, it's terribly slow to run
+:::caution Ouch, it's terribly slow to run
 To be honest, before being able to see my Joomla localhost homepage, I've wait more than 15 minutes (the first time). I would never have wait so long if I hadn't had to finish this chapter.
 :::

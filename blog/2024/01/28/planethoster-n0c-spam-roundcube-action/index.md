@@ -6,6 +6,7 @@ image: /img/spam_social_media.jpg
 tags: [actions, github, jq, n0c, planethoster, roundcube]
 enableComments: true
 ---
+<!-- cSpell:ignore allof,fileinto -->
 ![Exterminate them all, kill spam using GitHub Actions](/img/spam_header.jpg)
 
 In previous articles, I explained how to fight against spam if you've a [cpanel](/blog/cpanel-spam) or [PlanetHoster's N0C infrastructure](/blog/planethoster-n0c-spam).
@@ -342,6 +343,6 @@ If you've configured everything correctly, you should get this:
 
 ## Conclusion
 
-From now on, all you have to do is copy/paste the email addresses you receive spam from, see if you can standardise them as much as possible (by using the asterisk like in `newsletter@*`) and then copy/paste them into the JSON file that you just have to upload to Github.
+From now on, all you have to do is copy/paste the email addresses you receive spam from, see if you can standardize them as much as possible (by using the asterisk like in `newsletter@*`) and then copy/paste them into the JSON file that you just have to upload to Github.
 
 Et voilà!

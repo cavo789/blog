@@ -22,9 +22,11 @@ For the illustration, please start a Linux shell and run `mkdir -p /tmp/xmlstarl
 
 Create a new file called `data.xml` with this content:
 
+<!-- cspell:disable -->
 ```xml
 <?xml version="1.0" encoding="UTF-8"?><bookstore><book category="cooking"><title lang="en">Everyday Italian</title><author>Giada De Laurentiis</author><year>2005</year><price>30.00</price></book><book category="children"><title lang="en">Harry Potter</title><author>J K. Rowling</author><year>2005</year><price>29.99</price></book><book category="web"><title lang="en">XQuery Kick Start</title><author>James McGovern</author><author>Per Bothner</author><author>Kurt Cagle</author><author>James Linn</author><author>Vaidyanathan Nagarajan</author><year>2003</year><price>49.99</price></book><book category="web"><title lang="en">Learning XML</title><author>Erik T. Ray</author><year>2003</year><price>39.95</price></book></bookstore>
 ```
+<!-- cspell:enable -->
 
 As you can see, our XML has no format, everything on the same line.
 
@@ -34,6 +36,7 @@ We can beautify it using the `format` action:
 ❯ cat "data.xml" | xmlstarlet format --indent-spaces 4
 ```
 
+<!-- cspell:disable -->
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <bookstore>
@@ -67,6 +70,7 @@ We can beautify it using the `format` action:
     </book>
 </bookstore>
 ```
+<!-- cspell:enable -->
 
 We can also use `Xpath` to specify our desired output:
 
@@ -81,7 +85,7 @@ XQuery Kick Start
 Learning XML
 ```
 
-If you don't known XPath yet, we've used `"/bookstore/book/title"` because our XML is architectured like that. As you can see below, our root node is called `bookstore`, then we have one or more `book` and each book has a `title`.
+If you don't known XPath yet, we've used `"/bookstore/book/title"` because our XML is constructed like that. As you can see below, our root node is called `bookstore`, then we have one or more `book` and each book has a `title`.
 
 ```xml
 //highlight-next-line

@@ -23,8 +23,6 @@ Most probably, you'll have a `docker-compose.yml` file, please edit the file.
 For the illustration, below you'll find a copy of the simplest `docker-compose.yml` file you can retrieve in my [Create your Joomla website using Docker](/blog/docker-joomla) blog post. *You can have yours of course*. This is just for example.
 
 ```yaml
-version: '3.9'
-
 services:
   joomla:
     image: joomla
@@ -47,8 +45,6 @@ services:
 The solution is to add the `volumes` line if not yet present in your file and, the most important one, the line for *overriding* the `php.ini` file like below:
 
 ```yaml
-version: '3.9'
-
 services:
   joomla:
     image: joomla

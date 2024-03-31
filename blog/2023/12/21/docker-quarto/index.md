@@ -6,6 +6,7 @@ image: /img/quarto_tips_social_media.jpg
 tags: [docker, markdown, pandoc, quarto, revealjs]
 enableComments: true
 ---
+<!-- cspell:ignore rsvg,ggplot2,gdebi,renv,tlmgr,fvextra,footnotebackref,pagecolor,sourcesanspro,sourcecodepro,Aoption -->
 ![Running Quarto Markdown in Docker](/img/quarto_tips_banner.jpg)
 
 [Quarto](https://quarto.org/) is a tool for producing PDF, Word document, HTML web pages, ePub files, slideshows and many, many more output based on a Markdown file.
@@ -16,7 +17,7 @@ Quarto supports a very large number of features, to which are added extensions f
 
 Personally, I haven't used a Word-type word processor for several years; nor have I used PowerPoint since, I don't even know when the last time was.
 
-And yet, I produce a great deal of documentation and slideshows. I write everything in markdown and generate pdfs or slideshows from the same content.
+And yet, I produce a great deal of documentation and slideshows. I write everything in markdown and generate pdf or slideshows from the same content.
 
 Until recently, I'd been using [pandoc](https://pandoc.org/) but, having taken the time to look around Quarto, it's a hell of a lot more powerful.
 

@@ -41,7 +41,7 @@ We need to adjust the file to meet our wishes.
 :::caution We need the file on our computer
 Ok, now, a very important concept: we need to keep a copy of everything we've to update on our computer.
 
-To copy a file from our container on our disk, the command to use is `docker compose cp <servicename>:/file/path/within/container /host/path/to/copy/file/to`
+To copy a file from our container on our disk, the command to use is `docker compose cp <service-name>:/file/path/within/container /host/path/to/copy/file/to`
 :::
 
 So, to copy the `docusaurus.config.js` file on your disk, you've to run `docker compose cp blog:/app/docusaurus.config.js /tmp/docusaurus/docusaurus.config.js` (replace `/tmp/docusaurus` with the folder name where you've created your blog, on your hard disk).
@@ -55,8 +55,6 @@ And the second thing we need to do to allow us to update the file and reflect ch
 Please edit your `docker-compose.yml` file and add the line below highlighted:
 
 ```yaml
-version: "3.9"
-
 name: my_docusaurus_blog
 
 services:
@@ -140,8 +138,6 @@ docker compose cp blog:/app/src src
 You need to update your `docker-compose.yml` file and add the line below highlighted:
 
 ```yaml
-version: "3.9"
-
 name: my_docusaurus_blog
 
 services:
@@ -174,8 +170,6 @@ docker compose cp blog:/app/static static
 And update your `docker-compose.yml` file like this:
 
 ```yaml
-version: "3.9"
-
 name: my_docusaurus_blog
 
 services:

@@ -1,15 +1,15 @@
 ---
 slug: quarto-includes-shortcode
-title: Quarto includes shortcode
+title: Quarto includes short code
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
 tags: [markdown, quarto, tips]
 draft: true
 enableComments: true
 ---
-![Quarto includes shortcode](/img/quarto_tips_banner.jpg)
+![Quarto includes short code](/img/quarto_tips_banner.jpg)
 
-Using the Quarto `includes` shortcode, writing a long document can easily be broken down into several smaller ones.
+Using the Quarto `includes` short code, writing a long document can easily be broken down into several smaller ones.
 
 Imagine the following `main.qmd` file:
 
@@ -35,6 +35,7 @@ The tag is simple, you just need to specify the relative path to the file to inc
 
 Here is some dummy content for `chapter1.md`:
 
+<!-- cspell:disable -->
 ```markdown
 ## Chapter 1
 
@@ -56,6 +57,7 @@ Animi voluptatem est quia. Quia id optio. Architecto ut ipsa voluptas minima vol
 
 Consequatur debitis et sunt eos quod qui unde aut.
 ```
+<!-- cspell:enable -->
 
 Now, by running, f.i., `quarto render main.qmd --to html`, Quarto will merge files and you'll get:
 

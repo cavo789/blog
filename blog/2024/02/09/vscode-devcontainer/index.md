@@ -89,7 +89,7 @@ As you can expect, the script is running fine:
 In this article we'll learn how to configure Visual Studio Code to comes with preinstalled extensions and configured for your targeting version of PHP (would be 8.2 but you can change this very easily).
 
 :::important The technique we'll use is called devcontainer.
-**A devcontainer is a preconfigured, isolated development environment running in a Docker container, offering consistent tools and settings accross different machines.**
+**A devcontainer is a pre-configured, isolated development environment running in a Docker container, offering consistent tools and settings across different machines.**
 :::
 
 ## 2. Install first the ms-azuretools.vscode-docker VSCode extension
@@ -576,7 +576,7 @@ PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 
 ```
 
-There is one warning and one error concerning *coding convention violation* and the nice thing is **phpcbf can fix somes.**.
+There is one warning and one error concerning *coding convention violation* and the nice thing is **phpcbf can fix some.**.
 
 Now, run almost the same command but no more `phpcs` (to detect violations) but `phpcbf` (to fix them -the ones that can be fixed automatically-).
 

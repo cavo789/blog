@@ -6,6 +6,7 @@ image: /img/docker_tips_social_media.jpg
 tags: [docker, network, tips]
 enableComments: true
 ---
+<!-- cspell:ignore allnodes,allrouters,localnet,mcastprefix -->
 ![Using Docker network and the extra_hosts property](/img/docker_tips_header.jpg)
 
 When you're running a Docker container on a different network than the standard one (called `bridge`) and **you wish to run a second container that needs to access the first container, you need to run the second container on the same network.**
@@ -74,8 +75,6 @@ RUN apk update && apk add curl
 And a second file called `docker-compose.yml` with this content:
 
 ```yaml
-version: "3.9"
-
 services:
   my_second_container:
     build:
@@ -119,8 +118,6 @@ In case you don't know the name of the used network, simply run `docker inspect 
 Please edit your `docker-compose.yml` file like this:
 
 ```yaml
-version: "3.9"
-
 services:
   my_second_container:
     build:
@@ -224,8 +221,6 @@ ff02::2 ip6-allrouters
 The last thing we need to do in this case is to edit our `docker-compose.yml` file and add the `extra_hosts` property:
 
 ```yaml
-version: "3.9"
-
 services:
   my_second_container:
     build:

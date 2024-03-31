@@ -6,6 +6,7 @@ image: ./images/social_media.jpg
 tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
 enableComments: true
 ---
+<!-- cspell:ignore apac,ibdata,ibtmp -->
 ![Create your Joomla website using Docker](./images/header.jpg)
 
 - *Updated 2024-03-23, adding health condition in yml and update Joomla tag to 5.1-php8.2-apache.*
@@ -24,7 +25,7 @@ If you don't have Docker yet, please consult my "[Install Docker and play with P
 
 As you know, to be able to run a CMS like Joomla we need three things + 1:
 
-1. We need a webserver like **Apache** or **nginx**,
+1. We need a web server like **Apache** or **nginx**,
 2. We need a database service like **MySQL**, **MariaDB** or **PostgreSQL** or any other supported databases and
 3. We need **PHP**.
 
@@ -48,8 +49,6 @@ It's for sure too technical now but if you click on the
 Please create on your disk, let us say in the `/tmp/joomla` folder a file called `docker-compose.yml` with this content (you can retrieve that file on [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla)):
 
 ```yaml
-version: '3.9'
-
 services:
   joomla:
     image: joomla
@@ -197,7 +196,6 @@ We didn't give your project a name, we just created a `docker-compose.yml` file 
 Let us introduce a minor, optional, change, we will give a name to your Docker project and containers: edit the `docker-compose.yml` file and add a line with `name: xxxx` where `xxxx` is the name of your choice. Do the same but using `container_name` this time for the two services; for instance:
 
 ```yaml
-version: '3.9'
 // highlight-next-line
 name: kingsbridge
 services:
@@ -231,8 +229,6 @@ Ok, so, Docker has downloaded Joomla (in its *latest* version) and MySQL (versio
 By default, when we don't specify any version number (*which isn't recommended*), Docker will download the version known as the `latest` one. `latest`, here, is what Docker calls a *tag*.
 
 ```yaml
-version: '3.9'
-
 services:
   joomla:
     // highlight-next-line
@@ -245,8 +241,6 @@ To retrieve the list of all tags, please navigate to [https://hub.docker.com/_/j
 During writing this article, Joomla *latest* correspond to Joomla version 4.4.1. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: *5.1-php8.2-apache*. So just replace `image: joomla` with `image: joomla:5.1-php8.2-apache` in `docker-compose.yml` and it's done. You're forcing a version. **Note: make sure to use a tag ending by `-apache`.**
 
 ```yaml
-version: '3.9'
-
 services:
   joomla:
     // highlight-next-line
@@ -279,7 +273,7 @@ Let us try by starting your favorite browser and navigating to `http://localhost
 Wow, doesn't that sound crazy? With a single command (`docker compose up --detach`), you have downloaded everything you need to get Joomla running on your machine.
 :::
 
-Let us rewind for a few seconds: to run Joomla, we knew we needed three things + 1; a webserver, a database server, PHP and, of course, we need Joomla. **And here, just by running one command, hop, all the magic happens.** And nothing to configure too!
+Let us rewind for a few seconds: to run Joomla, we knew we needed three things + 1; a web server, a database server, PHP and, of course, we need Joomla. **And here, just by running one command, hop, all the magic happens.** And nothing to configure too!
 
 ## Install Joomla
 
@@ -305,8 +299,6 @@ These values can be retrieved inside the `docker-compose.yml` file. If you have 
 :::
 
 ```yaml
-version: '3.9'
-
 services:
   [...]
   // highlight-next-line
@@ -411,8 +403,6 @@ We wish two things:
 To do this, please edit the `docker-compose.yml` file and add the highlighted lines below:
 
 ```yaml
-version: '3.9'
-
 name: kingsbridge
 
 services:
@@ -677,15 +667,13 @@ When creating an alias in the host file, some people prefer to use the `.local` 
 
 ## Using another port
 
-Imagine you have another project, no more the `Kingsbrige` one. Can you have many Docker projects running at the same time? Yes! of course.
+Imagine you have another project, no more the `Kingsbridge` one. Can you have many Docker projects running at the same time? Yes! of course.
 
 You just need to make sure to use another, unused, port.
 
 Consider the `Shiring` project `docker-compose.yml` file
 
 ```yaml
-version: '3.9'
-
 // highlight-next-line
 name: shiring
 
@@ -738,8 +726,6 @@ This information has been retrieved from this Pull requests: [https://github.com
 Our `docker-compose.yml` will become:
 
 ```yaml
-version: '3.9'
-
 name: kingsbridge
 
 services:
@@ -786,8 +772,6 @@ For the first time during this tutorial, we're using an `alpine` image (`postgre
 If you plan to use MariaDB, here is the Docker Official Image: [https://hub.docker.com/_/mariadb](https://hub.docker.com/_/mariadb).
 
 ```yaml
-version: '3.9'
-
 name: kingsbridge
 
 services:
@@ -840,8 +824,6 @@ This is how:
 2. In that folder, create a `docker-compose.yml` file with this content:
 
 ```yaml
-version: '3.9'
-
 name: yourprojectname
 
 services:

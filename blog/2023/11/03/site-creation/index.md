@@ -29,7 +29,7 @@ The instruction here above will download NodeJs (the latest version) on my machi
 
 The `-v ${PWD}/:/project` command line argument will share my current folder on my computer with the container i.e., the `/project` folder in the container will be my current folder on my computer.
 
-And finally, I run an interactive shell since I have mentionned `/bin/bash` as entry point.
+And finally, I run an interactive shell since I have mentioned `/bin/bash` as entry point.
 
 Now that I have a prompt in the container, I will create my blog using Docusaurus (as explained in the [official documentation](https://docusaurus.io/docs/installation)).
 
@@ -205,7 +205,7 @@ git remote add origin git@github.com:cavo789/blog
 git push -u origin master
 ```
 
-This done, I have thus pushed my files to Github as foresee by Docusaurus i.e., for instance, the `/node_modules` is not part of my repo; which is fine since we will create that folder later by running some npx command on the webserver where the site will be hosted.
+This done, I have thus pushed my files to Github as foresee by Docusaurus i.e., for instance, the `/node_modules` is not part of my repo; which is fine since we will create that folder later by running some npx command on the web server where the site will be hosted.
 
 ## Build static version of the blog
 
@@ -215,9 +215,9 @@ This will create/update the `/build` folder with a fresh version of the site.
 
 Next step is to start my FTP client (which is [WinSCP](https://winscp.net/eng/download.php)) and copy my local `/blog/build` folder to my remote website.
 
-## Adding withcabin for RGPD compliant stats
+## Adding withcabin for GPDR compliant stats
 
-By adding the lines below to the `docusaurus.config.js` as child node of `const config`, I'm injecting a script into the body part. This will then allow RGPD compliant stats on [https://withcabin.com/](https://withcabin.com/).
+By adding the lines below to the `docusaurus.config.js` as child node of `const config`, I'm injecting a script into the body part. This will then allow GPDR compliant stats on [https://withcabin.com/](https://withcabin.com/).
 
 ```javascript
 scripts: [

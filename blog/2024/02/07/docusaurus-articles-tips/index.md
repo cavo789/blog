@@ -63,8 +63,6 @@ Later in your article, you ask 'Please edit the file and make this and *please e
 With `// highlight-next-line`, it's really easy to highlight changes, for instance:
 
 ```yaml
-version: '3.9'
-
 name: kingsbridge
 
 services:

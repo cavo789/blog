@@ -8,11 +8,11 @@ enableComments: true
 ---
 ![Using variables from external file in your Quarto project](/img/quarto_tips_banner.jpg)
 
-My use case is: I need to write some technical, long, documentation where I need to provide some information like IP adresses of used servers, some paths to the application, configuration folders, ...
+My use case is: I need to write some technical, long, documentation where I need to provide some information like IP addresses of used servers, some paths to the application, configuration folders, ...
 
 The *normal way to do this* is to just put information directly in the documentation and to make sure to update every occurrence in case of changes during the lifecycle of the application.
 
-The best way is probably to use an external file where information are stored in a key-value form and, during the rendering process of Quarto, replace shortcodes by values.
+The best way is probably to use an external file where information are stored in a key-value form and, during the rendering process of Quarto, replace short codes by values.
 
 <!-- truncate -->
 
@@ -50,7 +50,7 @@ And here is a markdown example (file `documentation.md`):
 
 ```markdown
 ---
-title: Testing of variables shortcode.
+title: Testing of variables short code.
 ---
 
 {{< meta title >}}
@@ -63,7 +63,7 @@ Quarto includes {{< var engine.jupyter >}} and
 {{< var engine.knitr >}} computation engines.
 ```
 
-As you can see, the shortcode is something like `{{< meta xxx >}}` or `{{< var xxx >}}`.
+As you can see, the short code is something like `{{< meta xxx >}}` or `{{< var xxx >}}`.
 
 `meta` is for metadata of the document like his title and `var` to retrieve information's from `_variables.yml`.
 
@@ -94,7 +94,7 @@ Here is the content of `documentation.md`:
 
 ```markdown
 ---
-title: Testing of variables and env shortcodes.
+title: Testing of variables and env short codes.
 ---
 
 :::{.callout-tip}

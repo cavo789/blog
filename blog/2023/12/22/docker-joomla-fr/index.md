@@ -7,6 +7,7 @@ image: ./images/social_media.jpg
 tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
 enableComments: true
 ---
+<!-- cspell:dictionaries fr-FR -->
 ![Créer votre site web Joomla en utilisant Docker](./images/header.jpg)
 
 Dans cet article, nous allons apprendre à utiliser Docker pour installer Joomla en localhost et démarrer un nouveau site web **en quelques secondes** *(vous ne voulez pas attendre ? Passez au chapitre [Final docker-compose.yml](#final-docker-composeyml))*.
@@ -47,8 +48,6 @@ C'est certainement trop technique pour l'instant, mais si vous cliquez sur le li
 Veuillez créer sur votre disque, disons dans le dossier `/tmp/joomla` un fichier appelé `docker-compose.yml` avec ce contenu (vous pouvez récupérer ce fichier sur [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla)) :
 
 ```yaml
-version: '3.9'
-
 services:
   joomla:
     image: joomla
@@ -165,7 +164,6 @@ Nous n'avons pas donné de nom à votre projet, nous avons juste créé un fichi
 Introduisons un changement mineur, optionnel, nous allons donner un nom à votre projet Docker et à vos conteneurs : éditez le fichier `docker-compose.yml` et ajoutez une ligne avec `name: xxxx` où `xxxx` est le nom de votre choix. Faites la même chose mais en utilisant `container_name` cette fois pour les deux services ; par exemple :
 
 ```yaml
-version: '3.9'
 // highlight-next-line
 name: kingsbridge
 services:
@@ -200,8 +198,6 @@ Par défaut, lorsque nous ne spécifions pas de numéro de version (*ce qui n'es
 :::
 
 ```yaml
-version: '3.9'
-
 services:
   joomla:
     // highlight-next-line
@@ -214,8 +210,6 @@ Pour récupérer la liste de tous les tags, veuillez vous rendre sur [https://hu
 Lors de la rédaction de cet article, Joomla *latest* correspond à Joomla version 4.4.1. Alors, que faire pour forcer l'utilisation de Joomla 5.0. En surfant sur la page [tags](https://hub.docker.com/_/joomla/tags), vous pouvez retrouver dans la liste des tags celui-ci : *5.0.1-php8.2-apache*. Il suffit donc de remplacer `image: joomla` par `image: joomla:5.0.1-php8.2-apache` dans le fichier `docker-compose.yml` et le tour est joué. Vous forcez une version. **Note: soyez certain d'utiliser un tag se terminant par `-apache`.**
 
 ```yaml
-version: '3.9'
-
 services:
   joomla:
     // highlight-next-line
@@ -274,8 +268,6 @@ Ces valeurs peuvent être récupérées dans le fichier `docker-compose.yml`. Si
 :::
 
 ```yaml
-version: '3.9'
-
 services:
   [...]
   // highlight-next-line
@@ -380,8 +372,6 @@ Nous souhaitons deux choses :
 Pour ce faire, veuillez éditer le fichier `docker-compose.yml` et ajouter les lignes surlignées ci-dessous :
 
 ```yaml
-version: '3.9'
-
 name: kingsbridge
 
 services:
@@ -646,8 +636,6 @@ Vous devez juste vous assurer d'utiliser un autre port, non utilisé.
 Considérons le fichier `docker-compose.yml` du projet `Shiring`.
 
 ```yaml
-version: '3.9'
-
 // highlight-next-line
 name: shiring
 
@@ -751,8 +739,6 @@ Cette information a été récupérée à partir de ces Pull requests : [https:/
 Notre `docker-compose.yml` deviendra :
 
 ```yaml
-version: '3.9'
-
 name: kingsbridge
 
 services:
@@ -799,8 +785,6 @@ Pour la première fois dans ce tutoriel, nous utilisons une image `alpine` (`pos
 Si vous envisagez d'utiliser MariaDB, voici l'image officielle de Docker : [https://hub.docker.com/_/mariadb](https://hub.docker.com/_/mariadb).
 
 ```yaml
-version: '3.9'
-
 name: kingsbridge
 
 services:
@@ -967,8 +951,6 @@ Voici comment :
 2. Dans ce dossier, créez un fichier `docker-compose.yml` avec ce contenu :
 
   ```yaml
-  version: '3.9'
-
   name: yourprojectname
 
   services:

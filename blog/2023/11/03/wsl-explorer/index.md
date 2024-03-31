@@ -6,6 +6,7 @@ tags: [tips, wsl, windows]
 image: ./images/social_media.jpg
 enableComments: true
 ---
+<!-- cspell:ignore cbfsconnect -->
 ![Open your Linux folder in Windows Explorer](./images/header.jpg)
 
 Did you know it is possible to use the Windows Explorer program and navigate on your Linux filesystem?

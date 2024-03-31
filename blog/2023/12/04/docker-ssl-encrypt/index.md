@@ -86,7 +86,7 @@ The openssl `enc` command accepts those arguments:
 | `-salt`        | Adds strength to the encryption                         |
 | `-pbkdf2`      | Generate a PBKDF2 key derivation of a supplied password |
 | `-a`           | Encrypted data should be in Base64 and not binary       |
-| `-d`           | Decrypt action (if `-d` is missing, action is encryt)   |
+| `-d`           | Decrypt action (if `-d` is missing, action is encrypt)  |
 | `-in`          | Specifies the input file                                |
 | `-out`         | Specifies the output file                               |
 | `-k`           | Provide the password to use                             |

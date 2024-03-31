@@ -44,7 +44,7 @@
                         "icon": "terminal-bash"
                     }
                 },
-                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.defaultProfile.linux": "Bash",
                 "terminal.integrated.fontFamily": "MesloLGS MS"
             },
             "extensions": [
@@ -53,6 +53,7 @@
                 "ms-azuretools.vscode-docker",
                 "SonarSource.sonarlint-vscode",
                 "streetsidesoftware.code-spell-checker-british-english",
+                "streetsidesoftware.code-spell-checker-french",
                 "streetsidesoftware.code-spell-checker",
                 "TomasDahlqvist.markdown-admonitions",
                 "Tyriar.sort-lines",

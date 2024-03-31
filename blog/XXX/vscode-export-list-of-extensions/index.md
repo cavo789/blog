@@ -17,6 +17,7 @@ Now, just copy/paste that list and you can send it to a friend *Hey, here are th
 
 The output of `code --list-extensions` will be something like this:
 
+<!-- cspell:disable -->
 ```text
 aaron-bond.better-comments
 alefragnani.Bookmarks
@@ -26,9 +27,11 @@ bobmagicii.autofoldyeah
 calebporzio.better-phpunit
 ...
 ```
+<!-- cspell:enable -->
 
 If you've a PowerShell user, you can also run `code --list-extensions | % { "code --install-extension $_" }` and now the output will looks like this:
 
+<!-- cspell:disable -->
 ```text
 code --install-extension aaron-bond.better-comments
 code --install-extension alefragnani.Bookmarks
@@ -38,6 +41,7 @@ code --install-extension bobmagicii.autofoldyeah
 code --install-extension calebporzio.better-phpunit
 ...
 ```
+<!-- cspell:enable -->
 
 If you're a Linux user, the same thing can be obtained with `code --list-extensions | xargs -L 1 echo code --install-extension`
 

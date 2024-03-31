@@ -21,6 +21,7 @@ With vscode, it's ultra-simple: multiple cursors.
 
 Imagine the lines below and you need to add `*` before each line to make a list of items. In this example, I only have six lines so yeah, it's possible to do it manually, one by one. Imagine you had a hundred or a thousand.
 
+<!-- cspell:disable -->
 ```markdown
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Vestibulum ut purus nec dui tincidunt consequat.
@@ -29,6 +30,7 @@ Vestibulum auctor lacus eget sagittis laoreet.
 Phasellus eleifend nulla blandit arcu tempor, sed posuere elit efficitur.
 Donec blandit erat non placerat cursus.
 ```
+<!-- cspell:enable -->
 
 Here is how to do:
 

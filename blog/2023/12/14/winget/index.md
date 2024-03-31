@@ -40,4 +40,4 @@ And, to get the list sorted, make sure you're under **PowerShell** and run this 
 
 ## Upgrade just one application
 
-By runnnig `winget upgrade Docker` f.i. you'll upgrade only that one.
+By running `winget upgrade Docker` f.i. you'll upgrade only that one.

@@ -59,7 +59,7 @@ Give a clear title like f.i. `Home computer`.
 
 In the `Key` textarea, you'll need to paste there your **public** key.
 
-Take a look on what you got on screen previoulsy when running the `ssh-keygen` command. The public key path was mentioned; f.i., `Your public key has been saved in /root/.ssh/id_ed25519.pub`.
+Take a look on what you got on screen previously when running the `ssh-keygen` command. The public key path was mentioned; f.i., `Your public key has been saved in /root/.ssh/id_ed25519.pub`.
 
 So, just run `cat /root/.ssh/id_ed25519.pub` in your Linux console and you'll get the key value. Copy/paste that line in Github settings page and, then, click on the `Add SSH key` button.
 

@@ -37,7 +37,7 @@ devcontainer: ## Open the blog in Visual Studio Code in devcontainer
 	code --folder-uri vscode-remote://attached-container+${DOCKER_VSCODE}${DOCKER_APP_HOME}
 
 .PHONY: build up start
-start: ## Start the local webserver and open the webpage
+start: ## Start the local web server and open the webpage
 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog (http://localhost:3000)"	
 	@sensible-browser http://localhost:3000
 

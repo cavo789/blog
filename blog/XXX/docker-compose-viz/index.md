@@ -22,8 +22,6 @@ For the demo, please start a Linux shell and run `mkdir -p /tmp/compose-viz && c
 Please create a new file called `docker-compose.yml` with this **simplified** content:
 
 ```yml
-version: '3.9'
-
 services:
   joomla:
     image: joomla
@@ -51,8 +49,6 @@ We can see that the port `8080` is exposed to the computer. That port is, in fac
 Replace the content of the `docker-compose.yml` with this one:
 
 ```yml
-version: '3.9'
-
 services:
 
   redis:

@@ -6,6 +6,7 @@ image: ./images/social_media.jpg
 tags: [docker, pascal]
 enableComments: true
 ---
+<!-- cspell:ignore ource,rchive,roupn,chiffre,downto -->
 ![Play with Docker and Pascal](./images/social_media.jpg)
 
 Good old memories... During my studies (in 1991-1993), I was a huge fan of Turbo Pascal 7.0. It was the first language that I really learned and loves it so much. I used to spend dozens of hours behind my computer writing anything and everything.
@@ -32,7 +33,7 @@ begin
 end.
 ```
 
-As you know, Pascal is a compiled langage and should then be compiled into an `.exe`. The command below will do this:
+As you know, Pascal is a compiled language and should then be compiled into an `.exe`. The command below will do this:
 
 ```bash
 ❯ docker run -it --rm -v %CD%:/app -w /app signumtemporis/fpc:cross.x86_64-win64.slim Hello.pas

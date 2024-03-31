@@ -49,7 +49,7 @@ build:
 
 .PHONY: deploy
 deploy: build
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Deploy static pages to the webserver"
+ @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Deploy static pages to the web server"
 
 .PHONY: install
 install:
@@ -184,15 +184,15 @@ build: ## Generate a newer version of the build directory
  @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
 
 .PHONY: deploy
-deploy: build ## Deploy static pages to the webserver
- @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Deploy static pages to the webserver"
+deploy: build ## Deploy static pages to the web server
+ @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Deploy static pages to the web server"
 
 .PHONY: install
 install: ## The very first time, after having cloned this blog, you need to install Docusaurus before using it.
  @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
 
 .PHONY: start
-start: ## Start the local webserver and open the webpage
+start: ## Start the local web server and open the webpage
  @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog (http://localhost:3000)"
 
 .PHONY: watch
@@ -210,9 +210,9 @@ Usage:
   bash                  Open an interactive shell in the Docker container
   code                  Open Visual Studio Code
   build                 Generate a newer version of the build directory
-  deploy                Deploy static pages to the webserver
+  deploy                Deploy static pages to the web server
   install               The very first time, after having cloned this blog, you need to install Docusaurus before using it.
-  start                 Start the local webserver and open the webpage
+  start                 Start the local web server and open the webpage
   watch                 Start the Docusaurus watcher. Listen any changes to a .md file and reflect the change onto the website
 ```
 

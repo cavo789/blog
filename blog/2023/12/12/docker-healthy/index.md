@@ -56,4 +56,4 @@ Here is the output of the script when launched:
 
 I've a few containers running on my machine, a lot are `healthy` meaning that they're running and without any issue, I've two containers in a `null` state i.e. they are sleeping and none are stopped due to an error.
 
-Don't hesitate to finetune the script to fit your needs.
+Don't hesitate to fine-tune the script to fit your needs.

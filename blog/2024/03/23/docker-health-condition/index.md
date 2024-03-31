@@ -16,8 +16,6 @@ Imagine a two services applications like Joomla (see my [Create your Joomla webs
 You've, roughly speaking, a `docker-compose.yml` file like this:
 
 ```yaml
-version: '3.9'
-
 services:
   joomla:
     image: joomla

@@ -6,6 +6,7 @@ image: ./images/social_media.jpg
 tags: [docker, monitoring, tool]
 enableComments: true
 ---
+<!-- cspell:ignore kuma,louislam -->
 ![Self-hosted monitoring tool](./images/header.jpg)
 
 Imagine you're a web developer or you work in a web agency and you'd like to keep an eye on the sites you've developed for your clients, free of charge.  Are these sites online now, or are they down?

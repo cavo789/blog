@@ -42,6 +42,7 @@ wsl --import docker-desktop-data d:\wsl\docker-desktop-data d:\wsl\docker-deskto
 
 del d:\wsl\docker-desktop.tar
 del d:\wsl\docker-desktop-data.tar
+```
 :::
 
 Once done, restart your computer to finalize the move.

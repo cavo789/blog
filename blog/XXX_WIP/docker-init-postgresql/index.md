@@ -7,11 +7,13 @@ tags: [docker, tips]
 draft: true
 enableComments: true
 ---
+<!-- cspell:disable -->
 :::danger
 IL S'AGIT D'UN ARTICLE QUE J'AI PUBLIÉ LE 7 DÉCEMBRE MAIS, LORS DE LA PUBLICATION, JE N'AI PAS MIS LA SECONDE PARTIE CONCERNANT POSTGRESQL.
 
 PEUT-ÊTRE LORDQUE JE REPRENDRAIS CET ARTICLE-CI; docker-init SERA PLUS ÉVOLUÉ.
 :::
+<!-- cspell:enable -->
 
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -85,7 +87,7 @@ Your application will be available at http://localhost:8080
 Consult README.Docker.md for more information about using the generated files.
 ```
 
-The wizard is quite straigth-forward but, then, we got four files.
+The wizard is quite straight-forward but, then, we got four files.
 
 Two are really important right now: `compose.yaml` and `Dockerfile`.
 
@@ -106,7 +108,7 @@ services:
 
 Ok, that just means that we'll not use a standard, pre-existing, Docker image but we'll build yours and the definition of that image is located in the current folder (`context: .`). The definition of your Docker image has to be written in the, standard, `Dockerfile`.
 
-The second thing we see here is the port number we've choosen. The Docker container will be published on the port `8080`.
+The second thing we see here is the port number we've chosen. The Docker container will be published on the port `8080`.
 
 ## Dockerfile
 
@@ -120,7 +122,7 @@ USER www-data
 ```
 
 :::danger Bug in Docker 4.26 - Docker init - PHP + Apache
-There is a bug in the release `4.26`, the `COPY` statement has to be `COPY . /var/www/html` (i.e. we need to specify the source folder `.`). I've created an issue on the Docker repositoriy ([https://github.com/docker/cli/issues/4702](https://github.com/docker/cli/issues/4702))
+There is a bug in the release `4.26`, the `COPY` statement has to be `COPY . /var/www/html` (i.e. we need to specify the source folder `.`). I've created an issue on the Docker repository ([https://github.com/docker/cli/issues/4702](https://github.com/docker/cli/issues/4702))
 
 Please update the file `Dockerfile` and change the line `COPY /var/www/html` to `COPY . /var/www/html`
 :::

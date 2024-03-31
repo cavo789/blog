@@ -6,6 +6,7 @@ image: /img/spam_social_media.jpg
 tags: [n0c, planethoster, roundcube]
 enableComments: true
 ---
+<!-- cspell:ignore allof,fileinto -->
 ![Exterminate them all, fight spam directly at PlanetHoster - N0C](/img/spam_header.jpg)
 
 A few days ago, I've published a post about how to [fight against spam if you've a cpanel](/blog/cpanel-spam). If you're hosted on the N0C infrastructure of PlanetHoster; it will not work.

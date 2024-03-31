@@ -8,7 +8,7 @@ enableComments: true
 ---
 ![Linux Makefile - When to use a makefile](/img/makefile_tips_social_media.jpg)
 
-Coding your own `makefile` has the enormous, **terribly powerful advantage** of being able to centralise the commands you use on your project in a single place, whatever the nature of the project (php, javascript, nodeJs, markdown, etc.).
+Coding your own `makefile` has the enormous, **terribly powerful advantage** of being able to centralize the commands you use on your project in a single place, whatever the nature of the project (php, javascript, nodeJs, markdown, etc.).
 
 The presence of a file called `makefile` sends a clear message to anyone who comes to work on the project: *Hey, have a look here, you'll find all the commands you need*. And it's really easy to list existing commands (see my article [Linux Makefile - Adding a help screen](/blog/makefile-help)).
 
