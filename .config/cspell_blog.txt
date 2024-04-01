@@ -5,6 +5,7 @@ allexport
 Anson
 apache
 apacheconf
+appdata
 autem
 autofix
 autofold
@@ -30,6 +31,7 @@ Clickjacking
 cmfcmf
 codesnap
 COLORTERM
+commandline
 composer
 Cond
 countrycode
@@ -96,6 +98,7 @@ healthcheckStatus
 hstspreload
 htmltools
 htpasswd
+ìcon
 innodb
 Intelephense
 Interdimensional
@@ -263,6 +266,8 @@ upload_max_filesize
 USEREMAIL
 USERID
 usernamehw
+USERPROFILE
+uuidgen
 ValeryanM
 varchar
 VATNUMBER
