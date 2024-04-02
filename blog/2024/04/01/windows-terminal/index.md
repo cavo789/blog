@@ -19,7 +19,7 @@ And that feature is really comfortable! Using the same window, you can have mult
 
 ## Installation
 
-Windows Terminal is part of Windows 11, so you already have it if you're running that OS. should be available directly on your machine if you're running that OS. If you're running an older version of Windows, you can install Windows Terminal using the Windows Store, or, third possibilities, if you can't, you can download [the latest release from GitHub](https://github.com/microsoft/terminal/releases).
+Windows Terminal is part of Windows 11, so you already have it if you're running that OS. If you're running an older version of Windows, you can install Windows Terminal using the Windows Store, or, third possibilities, if you can't, you can download [the latest release from GitHub](https://github.com/microsoft/terminal/releases).
 
 ## Customize your profile
 
