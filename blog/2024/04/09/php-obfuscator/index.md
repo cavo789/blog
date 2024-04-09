@@ -5,7 +5,6 @@ authors: [christophe]
 image: ./images/hell_social_media.jpg
 tags: [code quality, IA, php]
 enableComments: true
-draft: true
 ---
 ![Obfuscate your PHP code](./images/hell_header.jpg)
 

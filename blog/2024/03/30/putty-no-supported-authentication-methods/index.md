@@ -12,7 +12,7 @@ A few days ago, I've updated my Putty configuration to set the default font-size
 
 Today, by starting Putty, whatever on which server I wish to join, I got the *No supported authentication methods available* followed by, in my case *(server sent: publickey, gssapi-keyex, gssapi-with-mic, keyboard-interactive)* fatal error.
 
-I've only understand the origin of the problem by looking at the window caption: Putty tries to connect to a server other than the one I want. Why? And, ah, ok, last time I've modified my settings I was working on that server so, the solution should comes from: *how can I reset my Putty settings?*
+I've only understand the origin of the problem by looking at the window caption: Putty tries to connect to a server other than the one I want. Why? And, ah, ok, last time I've modified my settings I was working on that server so, the solution should come from: *how can I reset my Putty settings?*
 
 <!-- truncate -->
 

@@ -8,7 +8,7 @@ enableComments: true
 ---
 ![Docker image that provides static analysis tools for PHP](./images/fixing_issues_banner.jpg)
 
-Since years now, I'm using [https://github.com/jakzal/phpqa](https://github.com/jakzal/phpqa) to run a lot of static analysis tools on my PHP codebase.
+For years now, I'm using [https://github.com/jakzal/phpqa](https://github.com/jakzal/phpqa) to run a lot of static analysis tools on my PHP codebase.
 
 The list of available tools is huge; see by yourself: [Available tools](https://github.com/jakzal/phpqa?tab=readme-ov-file#available-tools).
 
@@ -19,14 +19,14 @@ In this blog post, we will see how we can take advantage of all these tools and 
 First, as always when we need to learn new software, we must speak about how to install it. The answer is easy here: there is nothing to do. Oh? Really? For sure! `jakzal/phpqa` is a Docker image so we don't need to install it, just to run it once. During the first call, Docker will download it so, yeah, no installation at all. Thank you Docker!
 
 :::tip Docker CLI reminder
-As a reminder, the used Docker run command will always looks like:
+As a reminder, the used Docker run command will always look like:
 
 * `docker run` to run a Docker image (*Oh? Really?*),
 * `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
 * `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
 * `-v "${PWD}":/project` to share your current folder with a folder called `/project` in the Docker container (use `${PWD}` if you are on Linux, use `%CD%` if you are on DOS),
 * `-w /project` to tell Docker that the current directory, in the container, will be the `/project` folder
-* then `jakzal/phpqa` which is the name of the Docker image to use (you can also specify a version like `python:3.9.18` if needed; see [https://hub.docker.com/_/python/tags](https://hub.docker.com/_/python/tags)) and, finally,
+* then `jakzal/phpqa` which is the name of the Docker image to use (you can also specify a version like `python:3.9.18` if needed; see [https://hub.docker.com/_/python/tags](https://hub.docker.com/_/python/tags))
 :::
 
 ## Composer normalize
@@ -83,13 +83,13 @@ Such a tool can produce false positive; just make some checks before removing th
 
 As a third example, we'll see [PHP-Parallel-Lint](https://github.com/php-parallel-lint/PHP-Parallel-Lint).
 
-This tool will scan all `.php` files present in your codebase and ensure there is syntax error like a forgetting `}`.
+This tool will scan all `.php` files present in your codebase and ensure there is no syntax error like a forgetting `}`.
 
 The command to run here is `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa parallel-lint . --exclude vendor`.
 
-Think about adding exclusions like `--exclude vendor` to not scan code that is not yours.
+Think about adding exclusions like `--exclude vendor` not to scan the code that is not yours.
 
-As you can see below, in less thantwo seconds, the tool has checked 823 files of my codebase. Pretty fast.
+As you can see below, in less than two seconds, the tool has checked 823 files of my codebase. Pretty fast.
 
 ```text
 PHP 8.3.3 | 10 parallel jobs

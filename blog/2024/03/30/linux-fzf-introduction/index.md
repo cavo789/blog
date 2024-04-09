@@ -11,7 +11,7 @@ enableComments: true
 
 As you probably know, <kbd>CTRL</kbd>+<kbd>R</kbd> in the console will give you access to your HISTORY i.e. you'll retrieve the list of the commands you previously typed in your console. Just like using <kbd>UP</kbd> or <kbd>DOWN</kbd> keys but with a very small search engine.
 
-And it makes the job but, honestly, this is really basic no?
+And it makes the job but, honestly, this is really basic, no?
 
 The Fuzzy Finder (aka `fzf`) command line utility will explode the possibilities linked to searching in the history but, in reality, this is just one of the consequences of installing fzf, which is so much more powerful.
 
@@ -47,7 +47,7 @@ For me, just for this usage, the installation of `fzf` is already fully justifie
 
 ## Getting a list of files
 
-Imagine you wish to display the content of a file so, you start to type `cat ` and, oh, you don't remember well the exact filename. By pressing <kbd>CTRL</kbd>+<kbd>T</kbd> you'll get a list of files from the current directory and sub-directories:
+Imagine you wish to display the content of a file so, you start to type `cat ` and, oh, you don't remember well the exact filename. By pressing <kbd>CTRL</kbd>+<kbd>T</kbd> you'll get a list of files from the current directory and subdirectories:
 
 ![Using CTRL-T](./images/ctrl_t.png)
 
@@ -73,12 +73,12 @@ If I rerun the same command and the same filter, I can see I just retrieve three
 
 ![Removing several files, second run](./images/rm_several_files_bis.png)
 
-Now, instead of killing files, I'll just display the five first lines of each selected files: To do this, I'll execute `fzf -m | xargs head -n 5`. Filter on `run.sh.log` again, select the three files using <kbd>TAB</kbd>, press <kbd>ENTER</kbd> to validate my choice and tadaaa:
+Now, instead of killing files, I'll just display the first five lines of each selected files: To do this, I'll execute `fzf -m | xargs head -n 5`. Filter on `run.sh.log` again, select the three files using <kbd>TAB</kbd>, press <kbd>ENTER</kbd> to validate my choice and tadaaa:
 
 ![](./images/head_several_files.png)
 
 ## Keybindings
 
 * <kbd>CTRL</kbd>+<kbd>R</kbd>: show the list of commands you've previously typed (your history thus), allow you to select a command by pressing <kbd>ENTER</kbd>,
-* <kbd>CTRL</kbd>+<kbd>T</kbd>: display the list of files in the current directory and sub-folders, allow you to select one or more files (just press <kbd>TAB</kbd> for a multiple selection) then press <kbd>ENTER</kbd> to return the list to the console and
+* <kbd>CTRL</kbd>+<kbd>T</kbd>: display the list of files in the current directory and subfolders, allow you to select one or more files (just press <kbd>TAB</kbd> for a multiple selection) then press <kbd>ENTER</kbd> to return the list to the console and
 * <kbd>ALT</kbd>+<kbd>C</kbd>: get the list of folders recursively of the current directory, allow you to select one and by pressing <kbd>ENTER</kbd>, fzf will jump in that folder.
