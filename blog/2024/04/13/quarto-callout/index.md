@@ -4,7 +4,6 @@ title: Quarto Callout Blocks
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
 tags: [markdown, quarto, tips, vscode]
-draft: true
 enableComments: true
 ---
 ![Quarto Callout Blocks](/img/quarto_tips_banner.jpg)

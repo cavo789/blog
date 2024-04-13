@@ -32,7 +32,7 @@ But to make the interface geekier, I'm using a wallpaper instead of, just, a bla
 If you want to, proceed like this:
 
 * Click on the `+` button and chose `settings`
-* Click on the gear wheel, bottom left to open settings as a JSON file (in my case VSCode will be opened)
+* Click on the gear wheel, bottom left to open settings as a JSON file (in my case VSCode will be open)
     ![The gear wheel](./images/gear.png)
 * In the opened editor, unfold the `list` of `profiles` and retrieve the one you wish to customize (in my case `Ubuntu`)
 
@@ -55,9 +55,9 @@ As you can see, I've downloaded some nice background picture and saved it in my 
 
 ## Add a new profile
 
-To add a new profile, let's say a console inside one of your Docker container (yes! it's possible), see the `list` array in the JSON content: just copy/paste a profile to use it for your newer one.
+To add a new profile, let's say a console inside one of your Docker containers (yes! it's possible), see the `list` array in the JSON content: just copy/paste a profile to use it for your newer one.
 
-For the example, I'll create a new profile so I can immediately open my blog in a Docker container (since, of course, my blog has his Docker image):
+For example, I'll create a new profile so I can immediately open my blog in a Docker container (since, of course, my blog has his Docker image):
 
 ```json
 {
@@ -82,7 +82,7 @@ For the example, I'll create a new profile so I can immediately open my blog in 
 
 * `commandline`: to start a Linux subsystem, start your command by `wsl.exe -d` followed by the distribution name like `wsl.exe -d Debian` f.i. Of course, that distribution needs to be on your machine. You can complete the command line by a parameter: the command to run on the startup like, f.i. `docker-compose` or `ls` or anything else.
 * `backgroundImage`: Optional. You should type here, in a Linux notation, the path to where you've saved the image to use for the background,
-* `backgroundImageOpacity`: Optional. Between `0` and `1`; in fact, it'll depends on the image you'll chose,
+* `backgroundImageOpacity`: Optional. Between `0` and `1`; in fact, it'll depend on the image you'll choose,
 * `guid`: You should, every time, generate a new GUID. To do this, just run `uuidgen` in a Linux console, then copy/paste the obtained value inside `{...}`,
 * `ìcon`: Optional. In order to customize the icon, grab any icon from the Internet and save the image in the `%USERPROFILE%\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\RoamingState` folder. The notation to use then is `ms-appdata:///roaming/your_image_name.png`
 :::
@@ -141,4 +141,4 @@ So now I need to create a profile called `DOS Command Prompt` :
 }
 ```
 
-And tadaaa, now by starting Windows Terminal, my default terminal will be opened (Ubuntu in my case) and, in a second tab, I'll also open a DOS console.
+And tadaaa, now by starting Windows Terminal, my default terminal will be open (Ubuntu in my case) and, in a second tab, I'll also open a DOS console.

@@ -227,15 +227,15 @@ When you make a link between two tables (with a join), try to respect the data t
 
 Consider the following example:
 
-![](images/sametype_relation.png)
+![Relation](images/sametype_relation.png)
 
 *The field `ID` in `tblCustomer` is a number*
 
-![](images/sametype_customer.png)
+![Customer](images/sametype_customer.png)
 
 *The field `CustomerNumber` in `tblOrder` is a text (and a big one)*
 
-![](images/sametype_orders.png)
+![Orders](images/sametype_orders.png)
 
 MS Access will be able to make the join and will make things working but, implicitly, will convert any fields so they have the same data type and this will cost CPU.
 
@@ -333,7 +333,9 @@ End Sub
 
 Option Explicit force the VB Engine to check that variables exists before starting to run the code and not every time a variable is accessed. This give a (small) little speed improvement.
 
-*Option Explicit is more an excellent way of coding: variables should be declared before using them*
+:::caution 
+Option Explicit is more an excellent way of coding: variables should be declared before using them
+:::
 
 #### Unload references
 

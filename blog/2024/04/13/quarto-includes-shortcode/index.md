@@ -4,7 +4,6 @@ title: Quarto includes short code
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
 tags: [markdown, quarto, tips]
-draft: true
 enableComments: true
 ---
 ![Quarto includes short code](/img/quarto_tips_banner.jpg)
@@ -21,7 +20,7 @@ Imagine the following `main.qmd` file:
 {{< include chapter2.md >}}
 ```
 
-Quarto will then merge the three files when you'll render `main.qmd`.
+Quarto will then merge the three files when you render `main.qmd`.
 
 <!-- truncate -->
 

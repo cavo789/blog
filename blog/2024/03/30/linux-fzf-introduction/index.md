@@ -39,7 +39,7 @@ Just like previously, start to type the command you would like to retrieve; in m
 
 ![Filtering on github](./images/ctrl_r_github.png)
 
-If you look at the image, you'll see that `fzf` is searching for the `g`, `i`, `t`, `h`, `u` and `b` letters, not for the word.  So the first line has the word `git` then there is a `h` somewhere and the word `public` so, `ub` are there.  
+If you look at the image, you'll see that `fzf` is searching for the `g`, `i`, `t`, `h`, `u` and `b` letters, not for the word.  So the first line has the word `git` then there is a `h` somewhere and the word `public` so, `ub` are there.
 
 This is handy since you don't need to remember the exact order of words in your previous command line, just type words in any particular order.
 
@@ -47,7 +47,7 @@ For me, just for this usage, the installation of `fzf` is already fully justifie
 
 ## Getting a list of files
 
-Imagine you wish to display the content of a file so, you start to type `cat ` and, oh, you don't remember well the exact filename. By pressing <kbd>CTRL</kbd>+<kbd>T</kbd> you'll get a list of files from the current directory and subdirectories:
+Imagine you wish to display the content of a file so, you start to type `cat` and, oh, you don't remember well the exact filename. By pressing <kbd>CTRL</kbd>+<kbd>T</kbd> you'll get a list of files from the current directory and subdirectories:
 
 ![Using CTRL-T](./images/ctrl_t.png)
 
@@ -75,10 +75,10 @@ If I rerun the same command and the same filter, I can see I just retrieve three
 
 Now, instead of killing files, I'll just display the first five lines of each selected files: To do this, I'll execute `fzf -m | xargs head -n 5`. Filter on `run.sh.log` again, select the three files using <kbd>TAB</kbd>, press <kbd>ENTER</kbd> to validate my choice and tadaaa:
 
-![](./images/head_several_files.png)
+![Selecting several files](./images/head_several_files.png)
 
 ## Keybindings
 
 * <kbd>CTRL</kbd>+<kbd>R</kbd>: show the list of commands you've previously typed (your history thus), allow you to select a command by pressing <kbd>ENTER</kbd>,
-* <kbd>CTRL</kbd>+<kbd>T</kbd>: display the list of files in the current directory and subfolders, allow you to select one or more files (just press <kbd>TAB</kbd> for a multiple selection) then press <kbd>ENTER</kbd> to return the list to the console and
+* <kbd>CTRL</kbd>+<kbd>T</kbd>: display the list of files in the current directory and sub-folders, allow you to select one or more files (just press <kbd>TAB</kbd> for a multiple selection) then press <kbd>ENTER</kbd> to return the list to the console and
 * <kbd>ALT</kbd>+<kbd>C</kbd>: get the list of folders recursively of the current directory, allow you to select one and by pressing <kbd>ENTER</kbd>, fzf will jump in that folder.

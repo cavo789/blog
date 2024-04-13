@@ -4,7 +4,6 @@ title: Quarto Inline style
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
 tags: [markdown, quarto, tips]
-draft: true
 enableComments: true
 ---
 ![Quarto Inline style](/img/quarto_tips_banner.jpg)

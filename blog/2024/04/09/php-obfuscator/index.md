@@ -18,7 +18,7 @@ And what if, today, with artificial intelligence, this type of code was no longe
 
 ## Obtaining a previously non-existent code, ask Gemini
 
-Just to give you some PHP code to use as an example for this article, let's create a hangman game using artificial intelligence. 
+Just to give you some PHP code to use as an example for this article, let's create a hangman game using artificial intelligence.
 
 ![Asking Gemini](./images/gemini.png)
 
