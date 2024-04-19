@@ -1,16 +1,20 @@
-/.github/*
-/build/*
-/node_modules/*
+.config/
+.devcontainer/
+.docusaurus/
+.git/
+.github/
+.vscode/
+node_modules/
 
-*.log
-docker-compose.yml
-Dockerfile
-LICENSE
+.dockerignore
+.editorconfig
+.env
+.env.example
+.gitignore
+
+docker-compose*
+Dockerfile*
+
 makefile
+LICENSE
 README.md
-
-# These folders will be mounted with docker-compose.yml
-# No need to put it in the Docker image
-/blog/*
-/pages/*
-/static/*

@@ -1,18 +1,5 @@
+name: blog
+
 services:
   docusaurus:
-    build: .
     container_name: docusaurus
-    ports:
-      - 3000:3000
-    user: 1000:1000
-    volumes:
-      - .:/app
-      # - ./giscus.json:/app/giscus.json
-      # - ./package.json:/app/package.json
-      # - ./yarn.lock:/app/yarn.lock
-
-      # - ./.devcontainer:/app/.devcontainer
-      # - ./docusaurus.config.js:/app/docusaurus.config.js
-      # - ./blog:/app/blog
-      # - ./src:/app/src
-      # - ./static:/app/static

@@ -1,0 +1,13 @@
+services:
+  docusaurus:
+    build: 
+      context: .
+      target: development
+      args:
+        - TARGET=development
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/opt/docusaurus

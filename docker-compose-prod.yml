@@ -1,0 +1,13 @@
+services:
+  docusaurus:    
+    image: cavo789/blog
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:
