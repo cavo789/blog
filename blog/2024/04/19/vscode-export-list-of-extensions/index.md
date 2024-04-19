@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
 tags: [tips, vscode]
 enableComments: true
-draft: true
 ---
 ![Export the list of extensions you've installed in VSCode](/img/vscode_tips_header.jpg)
 
@@ -29,7 +28,7 @@ calebporzio.better-phpunit
 ```
 <!-- cspell:enable -->
 
-If you've a PowerShell user, you can also run `code --list-extensions | % { "code --install-extension $_" }` and now the output will looks like this:
+If you've a PowerShell user, you can also run `code --list-extensions | % { "code --install-extension $_" }` and now the output will look like this:
 
 <!-- cspell:disable -->
 ```text

@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
 tags: [tips, vscode]
 enableComments: true
-draft: true
 ---
 ![Multiple cursors in vscode](/img/vscode_tips_header.jpg)
 
