@@ -2,7 +2,8 @@
 
 # Source https://docusaurus.community/knowledge/deployment/docker/?package-managers=yarn
 
-ARG TARGET=production
+ARG HOMEDIR=/opt/docusaurus
+ARG TARGET=/development
 
 # Stage 1: Base image.
 
@@ -15,11 +16,12 @@ ENV FORCE_COLOR=0
 RUN corepack enable
 
 # Set the working directory to `/opt/docusaurus`.
-WORKDIR /opt/docusaurus
+ARG HOMEDIR
+ENV HOMEDIR="${HOMEDIR}"
+
+WORKDIR ${HOMEDIR}
 
 ARG TARGET
-ENV TARGET=${TARGET}
-
 RUN /bin/bash -c "echo \"PS1='\n\e[0;33m🐳 (${TARGET})\e[0m - \e[0;36m$(whoami)\e[0m \w # '\" >> ~/.bashrc "
 
 # --------------------------------------------------------------------
@@ -28,8 +30,15 @@ RUN /bin/bash -c "echo \"PS1='\n\e[0;33m🐳 (${TARGET})\e[0m - \e[0;36m$(whoami
 
 FROM base AS development
 
-# Run the development server.
-CMD [ -d "node_modules" ] && yarn start || yarn install && yarn start --host 0.0.0.0
+RUN apt-get -y update \
+    && apt-get install --yes --no-install-recommends git \
+    && git config --global --add safe.directory ${HOMEDIR} \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY package.* .
+
+# Install dependencies with `--immutable` to ensure reproducibility.
+RUN yarn install --immutable
 
 # --------------------------------------------------------------------
 
@@ -37,11 +46,23 @@ CMD [ -d "node_modules" ] && yarn start || yarn install && yarn start --host 0.0
 
 FROM base AS building_production
 
-# Copy over the source code.
-COPY . /opt/docusaurus/
+ARG TARGET
+
+# Target is set in the .env file to "development" or "production"
+ENV NODE_ENV=${TARGET}
+
+# Install the latest version of Docusaurus
+RUN npx create-docusaurus@latest  "${HOMEDIR}/" classic --javascript && \
+    chown -R node:node  "${HOMEDIR}/"
 
 # Install dependencies with `--immutable` to ensure reproducibility.
 RUN yarn install --immutable
+
+# Set the working directory to `/opt/docusaurus`.
+WORKDIR "${HOMEDIR}"
+
+# Copy over the source code.
+COPY . "${HOMEDIR}/"
 
 # Build the static site (generated files will be created in /opt/docusaurus/build)
 RUN yarn build
@@ -52,17 +73,18 @@ RUN yarn build
 
 FROM caddy:2.7.6-alpine AS production
 
-ARG TARGET
-ENV TARGET=${TARGET}
-
 RUN set -e -x; \
     apk update --no-cache && apk add --no-cache bash \
     && rm -rf /var/cache/apk/*
 
+ARG HOMEDIR
+
 # Copy the Caddyfile (present in the repository root folder)
-COPY --from=building_production /opt/docusaurus/Caddyfile /etc/caddy/Caddyfile
+COPY --from=building_production "${HOMEDIR}/Caddyfile" /etc/caddy/Caddyfile
 
 # Copy the Docusaurus build output.
-COPY --from=building_production /opt/docusaurus/build /var/docusaurus
+COPY --from=building_production "${HOMEDIR}/build" /var/docusaurus
+
+ARG TARGET
 
 RUN /bin/sh -c "echo \"PS1='\n\e[0;33m🐳 (${TARGET})\e[0m - \e[0;36m$(whoami)\e[0m \w # '\" >> ~/.bashrc "

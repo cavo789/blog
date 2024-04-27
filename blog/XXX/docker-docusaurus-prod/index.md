@@ -7,413 +7,34 @@ tags: [caddy, docker, docusaurus, nodejs, yarn]
 enableComments: true
 draft: true
 ---
+<!-- cspell::ignore caddyfile,corepack,docusauraus,johndoe -->
 ![Creating a docusauraus blog as a Docker image](./images/anniversary_header.jpg)
 
-WORK IN PROGRESS
+Started on 2 November 2023, this article is already the hundredth I've published on this blog. To mark the occasion, I wanted to do something a bit special to honour the blog. What better way than to build a **100% Docker version**, i.e. in the form of a downloadable Docker image that **you can run with a single command line**.
 
-Create a temporary directory by running `mkdir /tmp/docusaurus && cd $_`.
+A single command to download the blog and run it on your machine (Linux, Mac or Windows) and have a fully working site; nice isn't it?.
 
-This done, start your preferred editor and open the folder. On my side, I'm using Visual Studio Code so I'll just run `code .` in my Linux console.
+And as usual, you'll find all the information you need below so that you can do the same for your own Docusaurus installation.
 
-## Create a Dockerfile file
+:::tip Don't wait more
+Start a console, run `docker pull cavo789/blog && docker run -d -p 88:80 -p 443:443 --name blog cavo789/blog` to download a local copy of my blog and to start it. Once done, just open `http://localhost:88` on your computer and ... congratulations, you've just obtained an offline yet executable version of my blog!
+:::
 
-In your project directory (so `/tmp/docusaurus`), create a file called `Dockerfile` with this content:
+Now, we'll learn to do the same for your own Docusaurus instance. Ladies and gentlemen, please follow the guide...
 
-```Dockerfile
-# syntax=docker/dockerfile:1
+<!-- truncate -->
 
-# Source https://docusaurus.community/knowledge/deployment/docker/?package-managers=yarn
+## Create a dummy blog if needed
 
-# Stage 1: Base image.
+*If you already have a Docusaurus installation on your computer, just skip this chapter.*
 
-FROM node:lts AS base
+In this part, I'll suppose you don't have a Docusaurus installation yet, so we'll create a dummy site with a very few, basics, blog posts.
 
-# Disable colour output from yarn to make logs easier to read.
-ENV FORCE_COLOR=0
+Jump in a console and run the following commands: `mkdir /tmp/docusaurus && cd $_`.
 
-# Enable corepack.
-RUN corepack enable
+You're now in the `/tmp/docusaurus` folder.
 
-# Set the working directory to `/opt/docusaurus`.
-WORKDIR /opt/docusaurus
-
-# --------------------------------------------------------------------
-
-# Stage 2: Production build mode.
-
-FROM base AS building_production
-
-# Copy over the source code.
-COPY . /opt/docusaurus/
-
-# Install dependencies with `--immutable` to ensure reproducibility.
-RUN yarn install --immutable
-
-# Build the static site (generated files will be created in /opt/docusaurus/build)
-RUN yarn build
-
-# --------------------------------------------------------------------
-
-# Stage 3: Serve with caddy
-
-FROM caddy:2.7.6-alpine AS production
-
-# Copy the Caddyfile (present in the repository root folder)
-COPY --from=building_production /opt/docusaurus/Caddyfile /etc/caddy/Caddyfile
-
-# Copy the Docusaurus build output.
-COPY --from=building_production /opt/docusaurus/build /var/docusaurus
-```
-
-This file is what we call a **multi-stages** Docker image. The main objectives are to have an improved cache layer system and a smaller in size final image.
-
-### Dockerfile - explanations of the different stages
-
-As you can see, we are using three stages (a stage starts with the `FROM` clause).
-
-Our goal is to create a final Docker image with a static version of our Docusaurus blog. We wish to have an image containing a web server and our blog. 
-
-Before being able to do this, we need to:
-
-1. Use a `node` image since Docusaurus is a `NodeJS` application,
-2. We need to install `yarn` and all dependencies required by Docusaurus then, we need to build our website i.e. convert our blog posts (written in Markdown) as HTML pages and
-3. We need a web server like `Apache` or `nginx` or the new one called `caddy`.
-
-This is our steps.
-
-In step 1, right now, we do almost nothing, just download `node` and initialize some variables.
-
-In step 2, we're using our first step (which was called `base`) and start the creation of the `production` image. We do like this because, in a future exercice, we can start from `base` and construct a `development` image; not only a `production` one. 
-
-In this second step, we're thus still using NodeJS, we'll install Docusausus and his dependencies and the most important part, we'll build static files i.e. convert our Markdown posts into the final, static, website. That part is under the responsability of Docusaurus.
-
-What is important to note here is our working directory: `/opt/docusaurus/`. Our blog has been copied into that folder so the result of the last instruction of the second stage (`yarn build`) will thus create a sub-folder `build` in `/opt/docusaurus/`.
-
-At this stage, we've our static web site but not yet a web server.
-
-In step 3, we're will use [caddy](https://hub.docker.com/_/caddy) which is a web server just like `Apache` and `nginx`.
-
-To make it working, we just need two things as we can see with these two lines:
-
-```dockerfile 
-COPY --from=building_production /opt/docusaurus/Caddyfile /etc/caddy/Caddyfile
-
-COPY --from=building_production /opt/docusaurus/build /var/docusaurus
-```
-
-We need a file called `Caddyfile` coming from the step 2 (called `building_production`) and we need to retrieve our static website (as mentionned earlier, generated in folder `/opt/docusaurus/build`).
-
-### Why is that multi-stage image better than a "monolithic" stage?
-
-Take a look on the last stage, our web server. We're just using the `caddy` webserver, the `Caddyfile` and our `build` folder. `
-
-Since we're only recovering the `Caddyfile` file and `build` folder from the previous stage, the final image will no longer contain `NodeJs`, `Yarn`, `Docusaurus` or anything else previously installed. Nor will we have any temporary files that may have been installed; we don't need the unbuilt version of our blog, i.e. our original Markdown files.
-
-Our final image will be smaller in size and will just contains what we need to run the final application, here our blog.
-
-## Create the Caddyfile file
-
-As mentionned, we need such file so please create a file called `Caddyfile` with this content:
-
-```text
-{$DOCUSAURUS_DOMAIN:localhost} {
-	root * /var/docusaurus
-	encode gzip
-	try_files {path} /index.html
-	file_server
-}
-```
-
-## Create a .dockerignore file
-
-Please create a `.dockerignore` file with this content: 
-
-```text
-build/
-node_modules/
-
-.dockerignore
-.gitignore
-.markdownlint_ignore
-.markdownlint.json
-*.log
-docker-compose.yml
-Dockerfile
-LICENSE
-makefile
-README.md
-
-blog/
-pages/
-static/
-```
-
-## Create a package.json file
-
-Please also create `package.json` with this content:
-
-```json
-{
-  "name": "blog",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
-  },
-  "dependencies": {
-    "@cmfcmf/docusaurus-search-local": "^1.1.0",
-    "@docusaurus/core": "^3.1.1",
-    "@docusaurus/plugin-ideal-image": "^3.1.1",
-    "@docusaurus/plugin-sitemap": "^3.1.1",
-    "@docusaurus/preset-classic": "^3.1.1",
-    "@giscus/react": "^2.3.0",
-    "@mdx-js/react": "^3.0.0",
-    "clsx": "^1.2.1",
-    "docusaurus-init": "^1.14.7",
-    "docusaurus-plugin-image-zoom": "^1.0.1",
-    "docusaurus-plugin-matomo": "^0.0.8",
-    "npm": "^10.4.0",
-    "prism-react-renderer": "^2.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "overrides": {
-    "@cmfcmf/docusaurus-search-local": {
-      "@docusaurus/core": "^3.1.0"
-    }
-  },
-  "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.0.0",
-    "@docusaurus/types": "3.0.0"
-  },
-  "browserslist": {
-    "production": [
-      ">0.5%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 3 chrome version",
-      "last 3 firefox version",
-      "last 5 safari version"
-    ]
-  },
-  "engines": {
-    "node": ">=18.0"
-  }
-}
-```
-
-## Create a docusaurus.config.js file
-
-```javascript
-// @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
-
-import {themes as prismThemes} from 'prism-react-renderer';
-
-
-/** @type {import('@docusaurus/types').Config} */
-const config = {
-  title: 'Christophe Avonture',
-  tagline: 'Personal blog about Docker, PHP, Joomla and much more',
-  favicon: 'img/favicon.jpg',
-
-  // Set the production url of your site here
-  url: 'https://www.avonture.be',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'cavo789', // Usually your GitHub org/user name.
-  projectName: 'cavo789', // Usually your repo name.
-
-  noIndex: false,
-  
-  onBrokenAnchors: 'throw',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  onDuplicateRoutes: 'throw',
-
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
-  scripts: [
-    {
-      src: 'https://scripts.withcabin.com/hello.js',
-      async: true,
-      defer: true,
-    }
-  ],
-  presets: [
-    [
-      'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
-        docs: false,
-        blog: {
-          routeBasePath: '/blog',
-          editUrl: 'https://github.com/cavo789/blog/edit/main/',
-          showReadingTime: true,
-          blogSidebarTitle: 'All posts',
-          blogSidebarCount: 'ALL',
-          showLastUpdateTime: false
-        },
-        sitemap: {
-          changefreq: 'weekly',
-          priority: 0.5,
-          ignorePatterns: ['/blog/tags/**'],
-          filename: 'sitemap.xml',
-        },
-        theme: {
-          customCss: './src/css/custom.css',
-        },
-      }),
-    ],
-  ],
-  plugins: [
-    'docusaurus-plugin-matomo',
-    [require.resolve("docusaurus-plugin-image-zoom"), {}],
-    [
-      require.resolve("@cmfcmf/docusaurus-search-local"),
-      {
-        indexDocs: false,
-        language: "en",
-      },
-    ],
-  ],
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-
-      // announcementBar: {
-      //   id: 'support_us',
-      //   content:
-      //     'We are looking to revamp our docs, please fill <a target="_blank" rel="noopener noreferrer" href="#">this survey</a>',
-      //   backgroundColor: '#fafbfc',
-      //   textColor: '#091E42',
-      //   isCloseable: true,
-      // },
-
-      // Default image when sharing a post on social media
-      image: 'img/social-card.jpg',
-      navbar: {
-        // auto-hide the navbar when the user will scroll down, show again when scroll up
-        // hideOnScroll: true,
-        title: 'Christophe Avonture (cavo789)',
-        logo: {
-          alt: 'Christophe Avonture',
-          src: 'img/cavo789.jpg',
-          width: 40,
-          height: 40,
-        },
-        items: [
-          {
-            href: '/blog',
-            label: 'Blog',
-          },
-          {
-            href: '/blog/tags',
-            label: 'Tags',
-          },
-          {
-            href: '/resources',
-            label: 'Resources',
-          },
-          {
-            href: '/blog/archive',
-            label: 'Archive',
-          },
-          {
-            href: 'https://www.avonture.be/v1',
-            label: 'v1',
-          },
-          {
-            href: 'https://github.com/cavo789/blog',
-            label: 'GitHub',
-            position: 'right',
-            className: 'header-github-link',
-            'aria-label': 'GitHub repository',
-          },
-        ],
-      },      
-      footer: {
-        style: 'dark',links: [
-          {
-            title: 'Communities',
-            items: [
-              {
-                label: 'Joomla!France',
-                href: 'https://forum.joomla.fr/member/38299-cavo789',
-              },
-              {
-                label: 'Developpez.com',
-                href: 'https://www.developpez.net/forums/u38507/cavo789/',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/cavo789',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Christophe Avonture. Built with Docusaurus.`,
-      },
-      matomo: {
-        matomoUrl: 'https://matomo.avonture.be/',
-        siteId: '1',
-        phpLoader: 'matomo.php',
-        jsLoader: 'matomo.js'
-      },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
-        defaultLanguage: 'php',
-        additionalLanguages: ['bash', 'php']
-      },
-      tableOfContents: {
-        minHeadingLevel: 2,
-        maxHeadingLevel: 5,
-      },
-      zoom: {
-        selector: '.markdown :not(em) > img',
-        config: {
-          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
-          background: {
-            light: 'rgb(255, 255, 255)',
-            dark: 'rgb(50, 50, 50)'
-          }
-        }
-      }
-    }),
-};
-
-export default config;
-```
-
-## Create some blog content
+Copy/paste instructions below, with the parentheses included. This will create a sub folder called `blog` with three Markdown files in it, our three fake articles.
 
 ```bash
 (
@@ -440,35 +61,260 @@ export default config;
 )
 ```
 
-## Time to create our stand alone Docker image
+So, now, we've a dummy blog.
 
-We will create a `johndoe/blog` image using this command:
+## Prepare our Docusaurus installation for Docker
+
+*If you've skipped the previous folder because you already had a Docusaurus instance, jump in your it (`cd <your_docusaurus_folder>`).*
+
+We'll need to create some files for Docker.
+
+Start your preferred editor and open the folder; on my side, I'm using Visual Studio Code so I'll just run `code .` in my Linux console.
+
+We need to create a few files...
+
+### Create a Dockerfile file
+
+Please create a file called `Dockerfile` with this content:
+
+```Dockerfile
+# syntax=docker/dockerfile:1
+
+# Source https://docusaurus.community/knowledge/deployment/docker/?package-managers=yarn, updated then
+
+# Stage 1: Base image.
+
+FROM node:21-alpine AS base
+
+# Disable color output from yarn to make logs easier to read.
+ENV FORCE_COLOR=0
+
+# Enable corepack.
+RUN corepack enable
+
+# --------------------------------------------------------------------
+
+# Stage 2: Production build mode.
+
+FROM base AS building_production
+
+# Install the latest version of Docusaurus
+RUN npx create-docusaurus@latest /opt/docusaurus/ classic --javascript && \
+    chown -R node:node /opt/docusaurus/
+
+# Install dependencies with `--immutable` to ensure reproducibility.
+RUN yarn install --immutable
+
+# Set the working directory to `/opt/docusaurus`.
+WORKDIR /opt/docusaurus
+
+# Copy over the source code.
+COPY . /opt/docusaurus/
+
+# Build the static site (generated files will be created in /opt/docusaurus/build)
+RUN yarn build
+
+# --------------------------------------------------------------------
+
+# Stage 3: Serve with caddy
+
+FROM caddy:2.7.6-alpine AS production
+
+# Copy the Caddyfile (present in the repository root folder)
+COPY --from=building_production /opt/docusaurus/Caddyfile /etc/caddy/Caddyfile
+
+# Copy the Docusaurus build output.
+COPY --from=building_production /opt/docusaurus/build /var/docusaurus
+
+WORKDIR /var/docusaurus
+```
+
+This file is a **multi-stages** Dockerfile. The main objectives are to have an improved cache layer system and a smaller, in size, final image. Such file are also really useful to be able to build more than one image like a development or a production one.
+
+#### Dockerfile - explanations of the different stages
+
+As you can see, we are using three stages (a stage starts with the `FROM` clause).
+
+Our goal in this article is to create a final Docker image with a static version of our Docusaurus installation. **We wish to have an image containing a web server and our site.**
+
+Before being able to do this, we need to:
+
+1. Use a `node` image since Docusaurus is a `NodeJS` application. We'll use `node:21-alpine` as base image.
+2. Then we need to install `docusaurus` and start `yarn` to install dependencies. This done, we'll copy all files from our current folder in the Docker image. Once copied, we need to build our site and convert markdown files to HTML pages and, finally
+3. We need a web server like `Apache` or `nginx` or the one currently in the spotlight, `Caddy`.
+
+This is our three stages.
+
+**In stage 1**, right now, we do almost nothing, just download `node` and initialize some variables. This step can be, in the future, also be used by a `development` stage but, in this article, let's concentrate to the `production` one. 
+
+:::tip See my own Dockerfile
+I'm using, for my own blog, a development stage. Take a look on my [Dockerfile](https://github.com/cavo789/blog/blob/main/Dockerfile) to see how I do. Make also sure to take a look on my [makefile](https://github.com/cavo789/blog/blob/main/makefile) and the different `docker-compose-xxx.yml` files in my project.
+:::
+
+**In stage 2**, we're extending our first stage (which was called `base`) and start the creation of `building_production`. As said earlier, we'll install everything here and build the HTML static pages.
+
+What is important to note here is our working directory: `/opt/docusaurus/`. Our static site has been copied into that folder so the result of the last instruction of the second stage (`yarn build`) will thus create a sub-folder `build` in `/opt/docusaurus/`.
+
+At the end of this stage, we've our static web site but not yet a web server.
+
+**In stage 3**, we will use [caddy](https://hub.docker.com/_/caddy) which is a web server just like `Apache` and `nginx`.
+
+To make it working, we just need two things as we can see with these two lines:
+
+```dockerfile
+COPY --from=building_production /opt/docusaurus/Caddyfile /etc/caddy/Caddyfile
+
+COPY --from=building_production /opt/docusaurus/build /var/docusaurus
+```
+
+:::tip Why a multi-stages image is better than a "monolithic" stage?
+
+Take a look on the last stage, our web server. We're just using the `Caddy` web server, the `Caddyfile` and our `build` folder.
+
+Since we're only recovering the `Caddyfile` file and `build` folder from the previous stage, the final image will no longer contain `NodeJs`, `Yarn`, `Docusaurus` or anything else previously installed. Nor will we have any temporary files that may have been installed; we don't need the original version of our blog, i.e. our original Markdown files.
+
+We'll use the `Caddy` image and in that image we'll just copy files we need from the previous stage. Doing so, our final image will be smaller in size and will just contains what we need to run the final application, here our Docusaurus static site.
+
+The image size of the `building_production` stage was 740MB and the one of the `caddy` stage is just 51MB. **Around 15 times lower!!!**
+:::
+
+### Create a .dockerignore file
+
+The second file we need to create should be called `.dockerignore` and with this content:
+
+```text
+build/
+node_modules/
+.git/
+
+.dockerignore
+.gitignore
+.markdownlint_ignore
+.markdownlint.json
+*.log
+docker-compose.yml
+Dockerfile
+LICENSE
+makefile
+README.md
+```
+
+The `.dockerignore` file is there to ask Docker to not copy everything in your final image when running the instruction `COPY . /opt/docusaurus/` present in the `Dockerfile`.
+
+Indeed, in our final image we don't need f.i. folders like `build/` or `node_modules/` because they'll be created while building the image. We don't need too our `.git/` folder (if present), we don't need temporary or files needed just for the build.
+
+The `.dockerignore` file is then needed to keep the image smaller in size and to prevent to not copy sensitive files (those containing secrets or configuration items) in the final image.
+
+### Create the Caddyfile file
+
+As mentioned, we'll use Caddy as web server so we need a file called `Caddyfile`, so let's create it:
+
+```text
+{$DOCUSAURUS_DOMAIN:localhost} {
+  root * /var/docusaurus
+  encode gzip
+  try_files {path} /index.html
+  file_server
+}
+```
+
+## Small checks
+
+If you've followed the creation of the temporary folder as described here above, you should have the following situation: three files in the `/tmp/docusaurus` folder and three Markdown files in the `blog` sub directory.
+
+```bash
+❯ ls -alhR
+
+drwxr-xr-x  3 root root 4.0K Apr 27 09:47 .
+drwxrwxrwt 25 root root 4.0K Apr 27 09:35 ..
+-rw-r--r--  1 root root  155 Apr 27 09:47 .dockerignore
+-rw-r--r--  1 root root  118 Apr 27 09:47 Caddyfile
+-rw-r--r--  1 root root 1.4K Apr 27 09:40 Dockerfile
+drwxr-xr-x  2 root root 4.0K Apr 27 09:35 blog
+
+./blog:
+drwxr-xr-x 2 root root 4.0K Apr 27 09:35 .
+drwxr-xr-x 3 root root 4.0K Apr 27 09:47 ..
+-rw-r--r-- 1 root root   61 Apr 27 09:35 2024-02-04-welcome-world.md
+-rw-r--r-- 1 root root  119 Apr 27 09:35 2024-02-05-my-first-post.md
+-rw-r--r-- 1 root root  121 Apr 27 09:35 2024-02-06-my-second-post.md
+```
+
+## Build our Docker image
+
+Our objective was to create a Docker image containing our Docusaurus site.
+
+When creating a Docker image, we should give it a name.
+
+:::important The name of the image should be respect the `owner/name` pattern.
+`owner` has to be your pseudo on Docker Hub. In my case, my pseudo there is `[cavo789](https://hub.docker.com/u/cavo789)` so if I wish to publish an image, I should use `cavo789` for the first part. Then, I need to specify an unique name not yet present in my profile.
+
+In my case `cavo789/blog` is then a good choice. For this article, I'll use `johndoe/blog` since I'll not publish that image on Internet.
+:::
+
+Still in your console, please run the following command:
 
 ```bash
 docker build --tag johndoe/blog --target production .
 ```
 
-:::note Just replace `johndoe/blog` by your pseudo in this format `your/a_name`.
+The final `.` in the instruction above means *current folder*; `/tmp/docusaurus` in my case.
+
+:::caution
+Since our `Dockerfile` is a multi-stage one, we need to specify which stage we wish. This is done by using the `--target` CLI flag.
+
+If you look at our `Dockerfile` file we've created earlier, our three stages are called `base`, `building_production` and `production`. To build the image with the web server, you need to specify `production` for the target but if you're interested by the generated files, not the web server, you can run `docker build --tag johndoe/blog --target building_production .`. This is one of the advantage of such multi-stage approach.
 :::
 
-Note: since our `Dockerfile` is a multi-stage one, we need to specify which stage we wish. This is done by using the `--target` CLI flag. And the final `.` means the current directory.
+The `docker build` command will take one or two minutes depending on the speed of your network connection and computer. Once successfully fired, you'll then have a new Docker image on your computer. You can retrieve it by running `docker image list` to get the list of local images.
 
-Running the command will take a few minutes.
+:::info
+By running `docker image list | grep -i blog`, you can retrieve the image and his size. It's 50.8MB for me on this moment for the dummy blog created in this blog post.
 
-Once finished, you'll then have a new Docker image on your computer. You can retrieve it by running `docker image list` to get the list of local images.
+By running `docker build --tag johndoe/blog --target building_production .` (without Caddy thus but with Node) the size will be 740MB. As you can see, we've divide the size by, almost, 15.
+:::
 
-## Use it
+## And use it
 
-Once the Docker image has been created, we need to create an instance of it, i.e. a container.
+Now that our image is created, we can do a few things like just running it and get an offline version of our Docusaurus site or play with a container and start an interactive shell session or, of course, publish it on Docker hub.
+
+### Run the image i.e. create a container and run the site.
 
 To do this, just run the following command:
 
 ```bash
-docker run -d --publish 80:80 --publish 443:443 --name blog johndoe/blog
+docker run -d --publish 88:80 --publish 443:443 --name blog johndoe/blog
 ```
 
-## And play
+You'll get a very long ID as result like f.i. `cae6989bee2a2339a4c0116be2b86ee3dae0b46d47a6c53dcb6e50098726c0b1`. Just ignore this at this moment, it just means you're container has been created successfully.
 
-As you can see above, we've exposed our ports `80` (http) and `443` (https).
+This will be executed very quickly. Then start your browser, go to `http://localhost:88` or `https://localhost` and you'll see the website.
 
-To access to website, just start `https://localhost` and you'll have your running blog; as a full standalone image.
+![Homepage of your running Docusaurus instance](./images/homepage.png)
+
+To see our blog, just click on the **Blog** menu item; top left.
+
+![Our blog](./images/blog.png)
+
+As mentioned, the site will be running on your computer i.e. offline. You can disconnect from the Internet, everything is running in RAM; on your machine.
+
+If you're curious, just run `docker ps` (or `docker container list` which is a synonym) to see the list of containers. You'll see yours.
+
+By running `docker container stop blog` (`blog` is the name we've defined in the `docker run` used above in this chapter); we can stop the blog. Return to your browser, surf on `http://localhost:88` and you'll see, the site is no more active. Run `docker container start blog` to reactivate it.
+
+### Start an interactive shell session
+
+If you want to start an interactive shell in your image, just run `docker run -it johndoe/blog /bin/sh`.  You'll then be *inside* the container and you'll be able to inspect files f.i.
+
+Be careful to correctly understand the notion of container: your website is running in one container and you've started a second one. To prove this, just run `rm -rf blog` to kill the blog in your shell container, go back to the browser, refresh the page: it's still working.
+
+Type `exit` to quit the shell and return to your console. Rerun `docker run -it johndoe/blog /bin/sh` and check if the removed `blog` folder is there or not: it's there.
+
+A container is something that is recreated every time so everything done in a container (when there is no mounted volumes like the one we use here) just stay in RAM.
+
+### Push it on Docker
+
+To push your image on Docker, make sure you're already connected. This is done using `docker login` on your command line.
+
+This done, just run `docker pull XXXXX`.
+

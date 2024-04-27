@@ -21,8 +21,8 @@ _WHITE:="\033[1;${COLOR_WHITE}m%s\033[0m %s\n"
 # endregion
 
 # region - Initialization
-# The MODE variable is defined in the .env file and is initialized to "production" or "development"
-ifeq ($(or "$(MODE)","production"), "production")
+# The TARGET variable is defined in the .env file and is initialized to "production" or "development"
+ifeq ($(or "$(TARGET)","production"), "production")
 COMPOSE_FILE=docker-compose.yml:docker-compose-prod.yml
 PORT=80
 else
@@ -46,12 +46,12 @@ help: ## Show the help with the list of commands
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 	@echo ""
 
-##@ Blog                    Blog helpers (Note: the behavior will differs depending on the MODE variable set in your .env file).
+##@ Blog                    Blog helpers (Note: the behavior will differs depending on the TARGET variable set in your .env file).
 
 .PHONY: bash
 bash: ## Open an interactive shell in the Docker container
-	@printf $(_YELLOW) "Start an interactive shell in the Docker $(MODE) container; type exit to quit"
-ifeq ($(or "$(MODE)","production"), "production")
+	@printf $(_YELLOW) "Start an interactive shell in the Docker $(TARGET) container; type exit to quit"
+ifeq ($(or "$(TARGET)","production"), "production")
 	@docker run -it cavo789/blog /bin/bash
 else
 	COMPOSE_FILE=${COMPOSE_FILE} docker compose exec docusaurus /bin/bash
@@ -59,9 +59,9 @@ endif
 
 .PHONY: build
 build: _checkEnv ## Build the Docker image (tip: you can pass CLI flags to Docker using ARGS like f.i. ARGS="--progress=plain --no-cache").
-	@printf $(_YELLOW) "Build the Docker $(MODE) image. You can add arguments like, f.i. ARGS=\"--progress=plain --no-cache\""	
+	@printf $(_YELLOW) "Build the Docker $(TARGET) image. You can add arguments like, f.i. ARGS=\"--progress=plain --no-cache\""	
 	@echo ""
-ifeq ($(or "$(MODE)","production"), "production")
+ifeq ($(or "$(TARGET)","production"), "production")
     # Build the Docker image as a stand alone one. We can then publish it on hub.docker.com if we want to
 	@docker build --tag cavo789/blog --target production ${ARGS} . 
 else
@@ -72,6 +72,7 @@ endif
 
 .PHONY: config
 config: ## Show the Docker configuration
+	@clear
 	COMPOSE_FILE=${COMPOSE_FILE} docker compose config
 
 .PHONY: devcontainer
@@ -81,14 +82,14 @@ devcontainer: ## Open the blog in Visual Studio Code in devcontainer
 
 .PHONY: start
 start: ## Start the local web server and open the webpage
-	@printf $(_YELLOW) "Open the $(MODE) blog (http://localhost:${PORT})"	
+	@printf $(_YELLOW) "Open the $(TARGET) blog (http://localhost:${PORT})"	
 	@sensible-browser http://localhost:${PORT}
 
 .PHONY: up
 up: ## Create the Docker container
-	@printf $(_YELLOW) "Create the Docker $(MODE) container"	
+	@printf $(_YELLOW) "Create the Docker $(TARGET) container"	
 	@echo ""
-ifeq ($(or "$(MODE)","production"), "production")	
+ifeq ($(or "$(TARGET)","production"), "production")	
 	docker run -d --publish 80:80 --publish 443:443 --name blog cavo789/blog
 else	
 	COMPOSE_FILE=${COMPOSE_FILE} docker compose up --detach ${ARGS}
@@ -97,8 +98,8 @@ endif
 	@printf $(_YELLOW) "Now, continue by running \"make start\"."
 
 .PHONY: push
-push: ## Push the image on Docker hub (only when MODE=production in .env)
-ifneq ($(or "$(MODE)","production"), "production")
+push: ## Push the image on Docker hub (only when TARGET=production in .env)
+ifneq ($(or "$(TARGET)","production"), "production")
 	@printf $(_RED) "This command is only possible when \"MODE=production\" in the .env file"
 	exit 1
 endif

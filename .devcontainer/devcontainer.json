@@ -2,9 +2,10 @@
     "name": "docusaurus",
     "service": "docusaurus",
     "dockerComposeFile": [
-        "../docker-compose.yml"
+        "../docker-compose.yml",
+        "../docker-compose-dev.yml"
     ],
-    "workspaceFolder": "/app",
+    "workspaceFolder": "/opt/docusaurus",
     "remoteUser": "root",
     "customizations": {
         "vscode": {

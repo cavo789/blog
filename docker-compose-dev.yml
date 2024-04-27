@@ -1,13 +1,11 @@
 services:
   docusaurus:
-    build: 
-      context: .
-      target: development
-      args:
-        - TARGET=development
-    environment:
-      - NODE_ENV=development
+    # Start the listener so we can make changes on the host like editing a .md 
+    # file and "yarn start" will render the new version as HTML page
+    entrypoint: yarn start --host 0.0.0.0
+    # In dev mode, the port is 3000. The blog is accessible on http://localhost:3000
     ports:
       - "3000:3000"
     volumes:
-      - .:/opt/docusaurus
+      # We'll share our files on the host with the container
+      - .:${HOMEDIR}

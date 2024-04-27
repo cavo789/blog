@@ -2,4 +2,14 @@ name: blog
 
 services:
   docusaurus:
+    build: 
+      context: .
+      # Target is defined in the .env file, can be "development" or "production"
+      target: ${TARGET}
+      # Our Dockerfile needs these two variables
+      args:
+        # The home directory in the image; probably "/opt/docusaurus". Defined in the .env file
+        - HOMEDIR=${HOMEDIR}
+        # Target is either "production" either "development". Defined in the .env file
+        - TARGET=${TARGET}
     container_name: docusaurus

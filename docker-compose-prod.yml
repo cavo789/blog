@@ -1,10 +1,11 @@
 services:
-  docusaurus:    
-    image: cavo789/blog
+  docusaurus:
+    # Since we're using Caddy, we need to expose ports 80 (http) and 443 (https)
     ports:
       - "80:80"
       - "443:443"
     volumes:
+      # To keep the blog data persistent, use internal Docker volumes
       - caddy_data:/data
       - caddy_config:/config
 
