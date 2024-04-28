@@ -1,75 +1,132 @@
 SHELL:=bash
 
-COLOR_YELLOW:=33
+# Load .env file if there is one (if none, no error will be fired)
+-include .env
 
+# Should be in line with the container_name as defined in "docker-compose.yml"
 DOCKER_CONTAINER_NAME:="docusaurus"
+
+# Needed by "make devcontainer"
 DOCKER_VSCODE:=$(shell printf "${DOCKER_CONTAINER_NAME}" | xxd -p)
 DOCKER_APP_HOME:="/app"
 
+# region - Helpers
+COLOR_RED=31
+COLOR_YELLOW=33
+COLOR_WHITE=37
+
+_RED:="\033[1;${COLOR_RED}m%s\033[0m %s\n"
+_YELLOW:="\033[1;${COLOR_YELLOW}m%s\033[0m %s\n"
+_WHITE:="\033[1;${COLOR_WHITE}m%s\033[0m %s\n"
+# endregion
+
+# region - Initialization
+# The TARGET variable is defined in the .env file and is initialized to "production" or "development"
+ifeq ($(or "$(TARGET)","production"), "production")
+COMPOSE_FILE=docker-compose.yml:docker-compose-prod.yml
+PORT=80
+else
+COMPOSE_FILE=docker-compose.yml:docker-compose-dev.yml
+PORT=3000
+endif
+# endregion
+
 default: help
+
+_checkEnv:
+	@test -s .env || { printf $(_RED) "File .env missing. Please create yours by running \"cp .env.example .env\""; exit 1; }
 
 .PHONY: help
 help: ## Show the help with the list of commands
 	@clear
+	@printf $(_WHITE) "List of commands to work with the Blog published on https://www.avonture.be"
+	@printf $(_WHITE) "Retrieve the last version on https://github.com/cavo789/blog"
+	
+
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 	@echo ""
 
-##@ Blog                    Blog helpers
+##@ Blog                    Blog helpers (Note: the behavior will differs depending on the TARGET variable set in your .env file).
 
 .PHONY: bash
-bash: build up ## Open an interactive shell in the Docker container
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Start an interactive shell in the Docker container; type exit to quit"
-	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash
+bash: ## Open an interactive shell in the Docker container
+	@printf $(_YELLOW) "Start an interactive shell in the Docker $(TARGET) container; type exit to quit"
+ifeq ($(or "$(TARGET)","production"), "production")
+	docker run -it cavo789/blog /bin/bash
+else
+	COMPOSE_FILE=${COMPOSE_FILE} docker compose exec docusaurus /bin/bash
+endif
 
 .PHONY: build
-build: ## Build the Docker image
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Build the Docker image"	
-	docker compose build
+build: _checkEnv ## Build the Docker image (tip: you can pass CLI flags to Docker using ARGS like f.i. ARGS="--progress=plain --no-cache").
+	@printf $(_YELLOW) "Build the Docker $(TARGET) image. You can add arguments like, f.i. ARGS=\"--progress=plain --no-cache\""	
+	@echo ""
+ifeq ($(or "$(TARGET)","production"), "production")
+    # Build the Docker image as a stand alone one. We can then publish it on hub.docker.com if we want to
+	docker build --tag cavo789/blog --target production ${ARGS} . 
+else
+	COMPOSE_FILE=${COMPOSE_FILE} docker compose build ${ARGS}
+endif	
+	@echo ""
+	@printf $(_YELLOW) "Now, continue by running \"make up\"."
 
-.PHONY: up
-up: build ## Create the Docker container
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Create the Docker container"	
-	docker compose up --detach
+.PHONY: config
+config: ## Show the Docker configuration
+	@clear
+	COMPOSE_FILE=${COMPOSE_FILE} docker compose config
 
 .PHONY: devcontainer
 devcontainer: ## Open the blog in Visual Studio Code in devcontainer
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog in Visual Studio Code in devcontainer"
+	@printf $(_YELLOW) "Open the blog in Visual Studio Code in devcontainer"
+ifeq ($(or "$(TARGET)","production"), "production")
+	@printf $(_RED) "This command is only possible when \"TARGET=development\" in the .env file"
+	@exit 1
+endif	
 	code --folder-uri vscode-remote://attached-container+${DOCKER_VSCODE}${DOCKER_APP_HOME}
 
-.PHONY: build up start
+.PHONY: start
 start: ## Start the local web server and open the webpage
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Open the blog (http://localhost:3000)"	
-	@sensible-browser http://localhost:3000
+	@printf $(_YELLOW) "Open the $(TARGET) blog (http://localhost:${PORT})"	
+	@sensible-browser http://localhost:${PORT}
 
-.PHONY: static
-static: ## Generate a newer version of the build directory; i.e. create static files
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory; i.e. create static files"
-	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "yarn build"
+.PHONY: up
+up: ## Create the Docker container
+	@printf $(_YELLOW) "Create the Docker $(TARGET) container"	
+	@echo ""
+ifeq ($(or "$(TARGET)","production"), "production")	
+	docker run -d --publish 80:80 --name blog cavo789/blog
+else	
+	COMPOSE_FILE=${COMPOSE_FILE} docker compose up --detach ${ARGS}
+endif	
+	@echo ""
+	@printf $(_YELLOW) "Now, continue by running \"make start\"."
+
+.PHONY: push
+push: ## Push the image on Docker hub (only when TARGET=production in .env)
+ifneq ($(or "$(TARGET)","production"), "production")
+	@printf $(_RED) "This command is only possible when \"TARGET=production\" in the .env file"
+	@exit 1
+endif
+    # Make sure you're already logged in on docker.com, if not run "docker login" and proceed to make an authentication.
+	docker image push cavo789/blog:latest
 
 ##@ Data quality            Code analysis
 
 .PHONY: lint
 lint: ## Lint markdown files
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Lint markdown files"
+	@printf $(_YELLOW) "Lint markdown files"
 	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}:/md peterdavehello/markdownlint markdownlint --fix --config .config/.markdownlint.json --ignore-path .config/.markdownlint_ignore .
 
 .PHONY: spellcheck
 spellcheck: ## Check for spell checks errors (https://github.com/streetsidesoftware/cspell)
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Run spellcheck"
+	@printf $(_YELLOW) "Run spellcheck"
 	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}:/src -w /src ghcr.io/streetsidesoftware/cspell:latest lint . --unique --gitignore --quiet --no-progress --config .vscode/cspell.json
-
-##@ Docusaurus              Utilities for Docusaurus installation, updates, ...
-
-# .PHONY: install
-# install: ## The very first time, after having cloned this blog, you need to install Docusaurus before using it.
-# 	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Generate a newer version of the build directory"
-# 	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus-init && yarn add docusaurus-init"
 
 .PHONY: upgrade
 upgrade: ## Upgrade docusaurus and npm dependencies
 	@clear
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Upgrade docusaurus and npm dependencies"
+	@printf $(_YELLOW) "Upgrade docusaurus and npm dependencies"
 	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "yarn upgrade"
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Current version of docusaurus"
+	@printf $(_YELLOW) "Current version of docusaurus"
 	docker run --rm -it -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus -V"
 	
