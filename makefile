@@ -52,7 +52,7 @@ help: ## Show the help with the list of commands
 bash: ## Open an interactive shell in the Docker container
 	@printf $(_YELLOW) "Start an interactive shell in the Docker $(TARGET) container; type exit to quit"
 ifeq ($(or "$(TARGET)","production"), "production")
-	@docker run -it cavo789/blog /bin/bash
+	docker run -it cavo789/blog /bin/bash
 else
 	COMPOSE_FILE=${COMPOSE_FILE} docker compose exec docusaurus /bin/bash
 endif
@@ -63,7 +63,7 @@ build: _checkEnv ## Build the Docker image (tip: you can pass CLI flags to Docke
 	@echo ""
 ifeq ($(or "$(TARGET)","production"), "production")
     # Build the Docker image as a stand alone one. We can then publish it on hub.docker.com if we want to
-	@docker build --tag cavo789/blog --target production ${ARGS} . 
+	docker build --tag cavo789/blog --target production ${ARGS} . 
 else
 	COMPOSE_FILE=${COMPOSE_FILE} docker compose build ${ARGS}
 endif	
@@ -78,6 +78,10 @@ config: ## Show the Docker configuration
 .PHONY: devcontainer
 devcontainer: ## Open the blog in Visual Studio Code in devcontainer
 	@printf $(_YELLOW) "Open the blog in Visual Studio Code in devcontainer"
+ifeq ($(or "$(TARGET)","production"), "production")
+	@printf $(_RED) "This command is only possible when \"TARGET=development\" in the .env file"
+	@exit 1
+endif	
 	code --folder-uri vscode-remote://attached-container+${DOCKER_VSCODE}${DOCKER_APP_HOME}
 
 .PHONY: start
@@ -90,7 +94,7 @@ up: ## Create the Docker container
 	@printf $(_YELLOW) "Create the Docker $(TARGET) container"	
 	@echo ""
 ifeq ($(or "$(TARGET)","production"), "production")	
-	docker run -d --publish 80:80 --publish 443:443 --name blog cavo789/blog
+	docker run -d --publish 80:80 --name blog cavo789/blog
 else	
 	COMPOSE_FILE=${COMPOSE_FILE} docker compose up --detach ${ARGS}
 endif	
@@ -100,11 +104,11 @@ endif
 .PHONY: push
 push: ## Push the image on Docker hub (only when TARGET=production in .env)
 ifneq ($(or "$(TARGET)","production"), "production")
-	@printf $(_RED) "This command is only possible when \"MODE=production\" in the .env file"
-	exit 1
+	@printf $(_RED) "This command is only possible when \"TARGET=production\" in the .env file"
+	@exit 1
 endif
     # Make sure you're already logged in on docker.com, if not run "docker login" and proceed to make an authentication.
-	docker push cavo789/blog:latest
+	docker image push cavo789/blog:latest
 
 ##@ Data quality            Code analysis
 

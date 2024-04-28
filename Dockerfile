@@ -15,11 +15,6 @@ ENV FORCE_COLOR=0
 # Enable corepack.
 RUN corepack enable
 
-# Set the working directory to `/opt/docusaurus`.
-ARG HOMEDIR
-ENV HOMEDIR="${HOMEDIR}"
-
-WORKDIR ${HOMEDIR}
 
 ARG TARGET
 RUN /bin/bash -c "echo \"PS1='\n\e[0;33m🐳 (${TARGET})\e[0m - \e[0;36m$(whoami)\e[0m \w # '\" >> ~/.bashrc "
@@ -34,6 +29,10 @@ RUN apt-get -y update \
     && apt-get install --yes --no-install-recommends git \
     && git config --global --add safe.directory ${HOMEDIR} \
     && rm -rf /var/lib/apt/lists/*
+
+# Set the working directory to `/opt/docusaurus`.
+ARG HOMEDIR
+WORKDIR ${HOMEDIR}
 
 COPY package.* .
 
@@ -52,14 +51,20 @@ ARG TARGET
 ENV NODE_ENV=${TARGET}
 
 # Install the latest version of Docusaurus
-RUN npx create-docusaurus@latest  "${HOMEDIR}/" classic --javascript && \
-    chown -R node:node  "${HOMEDIR}/"
-
-# Install dependencies with `--immutable` to ensure reproducibility.
-RUN yarn install --immutable
+ARG HOMEDIR
+RUN npx create-docusaurus@latest "${HOMEDIR}/" classic --javascript \
+    # Remove dummy files like dummy blog, docs, ... that were added during the installation
+    && rm -rf "${HOMEDIR}/blog" "${HOMEDIR}/docs" "${HOMEDIR}/src" \ 
+    && chown -R node:node "${HOMEDIR}/"
 
 # Set the working directory to `/opt/docusaurus`.
 WORKDIR "${HOMEDIR}"
+
+# We need our package.json / package.lock file before running yarn install
+COPY package.* .
+
+# Install dependencies with `--immutable` to ensure reproducibility.
+RUN yarn install --immutable
 
 # Copy over the source code.
 COPY . "${HOMEDIR}/"
@@ -69,22 +74,21 @@ RUN yarn build
 
 # --------------------------------------------------------------------
 
-# Stage 3: Serve with Caddy
+# Stage 3: Serve with nginx
 
-FROM caddy:2.7.6-alpine AS production
+FROM nginx:stable-alpine3.19-perl AS production
 
 RUN set -e -x; \
     apk update --no-cache && apk add --no-cache bash \
     && rm -rf /var/cache/apk/*
 
-ARG HOMEDIR
-
-# Copy the Caddyfile (present in the repository root folder)
-COPY --from=building_production "${HOMEDIR}/Caddyfile" /etc/caddy/Caddyfile
-
-# Copy the Docusaurus build output.
-COPY --from=building_production "${HOMEDIR}/build" /var/docusaurus
-
 ARG TARGET
 
 RUN /bin/sh -c "echo \"PS1='\n\e[0;33m🐳 (${TARGET})\e[0m - \e[0;36m$(whoami)\e[0m \w # '\" >> ~/.bashrc "
+
+# Copy the Docusaurus build output.
+ARG HOMEDIR
+
+COPY --from=building_production ${HOMEDIR}/build /usr/share/nginx/html
+
+WORKDIR /usr/share/nginx/html
