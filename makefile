@@ -8,7 +8,7 @@ DOCKER_CONTAINER_NAME:="docusaurus"
 
 # Needed by "make devcontainer"
 DOCKER_VSCODE:=$(shell printf "${DOCKER_CONTAINER_NAME}" | xxd -p)
-DOCKER_APP_HOME:="/app"
+DOCKER_APP_HOME:="/opt/docusaurus"
 
 # region - Helpers
 COLOR_RED=31

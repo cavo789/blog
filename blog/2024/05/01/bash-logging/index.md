@@ -4,27 +4,26 @@ title: Bash - Script to add logging features to your script
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 tags: [bash, tips]
-draft: true
 enableComments: true
 ---
 <!-- cspell:ignore uplzaefi -->
 ![Bash - Script to add logging features to your script](/img/bash_tips_header.jpg)
 
-When write Bash scripts and certainly when you foresee to run them in a cron, you should implement a logfile. Every actions fired by your script should be log somewhere so we can start the script in a non-interactive mode and, in case of need, consult the last logfile.
+When you write Bash scripts and certainly when you foresee running them in a cron, you should implement a logfile. Every action fired by your script should be logging somewhere so you can start the script in a non-interactive mode and in case of need, consult the last logfile.
 
-Since I write a log of Bash scripts, I've coded my own implementation. It's really easy to use.
+Below is a script I've developed in the form of a library, which means you can easily include it in your existing code without having to change anything.
 
-You just need to include the file in your script (`source log.sh`) then here and there foresee a `log::write "Something to log"`.
+You just need to include the file in your script (i.e. add a `source log.sh` line) then here and there foresee a `log::write "Something to log"`. Easy no?
 
 <!-- truncate -->
 
-To illustrate how the log feature works, we need to create two files. Your script (here, I'll call it `run.sh`) and the one containing the log implementation (`log.sh`).
+To illustrate how the log feature works, we will create two files. Your script (here, I'll call it `run.sh`) and the one containing the log implementation (`log.sh`).
 
 ## Your script
 
 If you already have a script, please open it. Otherwise, just create a new one and copy/paste the code below.
 
-Name the file just as you want (I will name it `run.sh` for the example) and make sure the script can be executed by running `chmod +x run.sh` in your console.
+Name the file just as you want (I will name it `run.sh` for example) and make sure the script can be executed by running `chmod +x run.sh` in your console.
 
 ```bash
 #!/usr/bin/env bash
@@ -313,4 +312,4 @@ Each statement logged will have a trace as you can see. For instance, the block 
 
 When there are multiple parents, you'll get the entire trace, f.i. `[Function test5 line 4;Function test4 line 10;Function test3 line 16;Function test2 line 24;Function test1 line 30;Function __main line 48]`: the function `__main` on line 48 has called `test1` who has called then `test2` and so.
 
-Each statement in the log will then contains the entire trace, making debugging easier.
+Each statement in the log will then contain the entire trace, making debugging easier.

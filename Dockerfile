@@ -25,13 +25,14 @@ RUN /bin/bash -c "echo \"PS1='\n\e[0;33m🐳 (${TARGET})\e[0m - \e[0;36m$(whoami
 
 FROM base AS development
 
+ARG HOMEDIR
+
 RUN apt-get -y update \
     && apt-get install --yes --no-install-recommends git \
     && git config --global --add safe.directory ${HOMEDIR} \
     && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory to `/opt/docusaurus`.
-ARG HOMEDIR
 WORKDIR ${HOMEDIR}
 
 COPY package.* .
