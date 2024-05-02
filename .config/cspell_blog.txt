@@ -37,6 +37,7 @@ composer
 cond
 countrycode
 countrylanguage
+corepack
 cpanel
 cscript
 dahlqvist

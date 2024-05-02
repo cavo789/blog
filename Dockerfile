@@ -9,7 +9,7 @@ ARG TARGET=/development
 
 FROM node:lts AS base
 
-# Disable colour output from yarn to make logs easier to read.
+# Disable color output from yarn to make logs easier to read.
 ENV FORCE_COLOR=0
 
 # Enable corepack.
