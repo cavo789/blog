@@ -5,6 +5,11 @@
 ARG HOMEDIR=/opt/docusaurus
 ARG TARGET=/development
 
+# The user and group ID of the user to create
+ARG DOCKER_UID=1000
+ARG DOCKER_GID=1000
+ARG USERNAME=christophe
+
 # Stage 1: Base image.
 
 FROM node:lts AS base
@@ -14,7 +19,6 @@ ENV FORCE_COLOR=0
 
 # Enable corepack.
 RUN corepack enable
-
 
 ARG TARGET
 RUN /bin/bash -c "echo \"PS1='\n\e[0;33m🐳 (${TARGET})\e[0m - \e[0;36m$(whoami)\e[0m \w # '\" >> ~/.bashrc "
@@ -32,13 +36,19 @@ RUN apt-get -y update \
     && git config --global --add safe.directory ${HOMEDIR} \
     && rm -rf /var/lib/apt/lists/*
 
+# We'll create a new user with the same uid/gid than ours, on our host machine.
+ARG DOCKER_UID
+ARG DOCKER_GID
+ARG USERNAME
+
+RUN groupadd --gid ${DOCKER_GID} "${USERNAME}" \
+    && useradd --home-dir /home/"${USERNAME}" --create-home --uid ${DOCKER_UID} \
+        --gid ${DOCKER_GID} --shell /bin/sh --skel /dev/null "${USERNAME}"
+
+USER "${USERNAME}"
+
 # Set the working directory to `/opt/docusaurus`.
-WORKDIR ${HOMEDIR}
-
-COPY package.* .
-
-# Install dependencies with `--immutable` to ensure reproducibility.
-RUN yarn install --immutable
+WORKDIR "${HOMEDIR}"
 
 # --------------------------------------------------------------------
 
@@ -49,7 +59,7 @@ FROM base AS building_production
 ARG TARGET
 
 # Target is set in the .env file to "development" or "production"
-ENV NODE_ENV=${TARGET}
+ENV NODE_ENV="${TARGET}"
 
 # Install the latest version of Docusaurus
 ARG HOMEDIR
@@ -90,6 +100,6 @@ RUN /bin/sh -c "echo \"PS1='\n\e[0;33m🐳 (${TARGET})\e[0m - \e[0;36m$(whoami)\
 # Copy the Docusaurus build output.
 ARG HOMEDIR
 
-COPY --from=building_production ${HOMEDIR}/build /usr/share/nginx/html
+COPY --from=building_production "${HOMEDIR}/build /usr/share/nginx/html"
 
 WORKDIR /usr/share/nginx/html

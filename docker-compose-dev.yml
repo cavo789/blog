@@ -1,11 +1,18 @@
 services:
   docusaurus:
+    build: 
+      args:  
+        # User ID / Group ID
+        - DOCKER_UID=${DOCKER_UID:-1000}
+        - DOCKER_GID=${DOCKER_GID:-1000}
+        - USERNAME=christophe
     # Start the listener so we can make changes on the host like editing a .md 
     # file and "yarn start" will render the new version as HTML page
-    entrypoint: yarn start --host 0.0.0.0
+    entrypoint: /opt/docusaurus/docker-entrypoint.sh
     # In dev mode, the port is 3000. The blog is accessible on http://localhost:3000
     ports:
       - "3000:3000"
+    user: "${DOCKER_UID:-1000}:${DOCKER_GID:-1000}"
     volumes:
       # We'll share our files on the host with the container
       - .:${HOMEDIR}
