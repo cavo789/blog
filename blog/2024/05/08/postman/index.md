@@ -3,24 +3,23 @@ slug: postman
 title: Using Postman to play with API
 authors: [christophe]
 image: ./images/api_social_media.jpg
-tags: [api, php, soap]
+tags: [api, code quality, php, soap, tests, tool]
 enableComments: true
-draft: true
 ---
 <!-- cSpell::ignore ELECTRABEL,taxud -->
 ![Using Postman to play with API](./images/api_banner.jpg)
 
 If you are developing your own API (whatever the language) or if you need to consume some, [Postman](https://www.postman.com/) can be really handy.
 
-Calling an API and getting the response if one thing, quite simple in fact, but a nice feature of Postman is the ability to validate the response like making sure the returned type is, f.i. `application/json`, the HTTP status code is 200, the response body is a JSON object (or an XML string), that the body contains some required information and so on.
+Calling an API and getting the response is one thing, quite simple in fact, but a nice feature of Postman is the ability to validate the response like making sure the returned type is, f.i. `application/json`, the HTTP status code is 200, the response body is a JSON object (or an XML string), that the body contains some required information and so on.
 
 You can also validate the response against a given schema to make sure the structure is well the one expected.
 
+In this article, we'll use Postman like a unit test tool i.e. run checks on our own API and make a lot of assertions. This is improve the quality of your code by hightlighting potentials errors and, for any refactoring you'll do in the future, by running the tests again, you'll make sure you've not broken something; that you don't have any regression. Make sure you've not broken an API when you upgrade some code is gold.
+
 <!-- truncate -->
 
-You can download Postman for free here: [https://www.postman.com/](https://www.postman.com/). You've to create an account before being able to download the program.
-
-You can retrieve an free documentation on [https://learning.postman.com/docs/introduction/overview/](https://learning.postman.com/docs/introduction/overview/) so this post won't explain in detail how to use the program but will just give some tips.
+You can download Postman for free here: [https://www.postman.com/](https://www.postman.com/). You've to create an account before being able to download the program. A documentation is located at [https://learning.postman.com/docs/introduction/overview/](https://learning.postman.com/docs/introduction/overview/) so this post won't explain in detail how to use the program but will just give some tips.
 
 ## Creating an environment
 
@@ -57,7 +56,7 @@ pm.test("Content-Type header is text/xml", () => {
   pm.expect(pm.response.headers.get('Content-Type')).to.include('text/xml; charset=utf-8');
 });
 
-pm.test("Don't contains any error", function () 
+pm.test("Don't contain any error", function () 
 {
     pm.expect(pm.response.text()).to.not.include("error");
 });
@@ -65,7 +64,7 @@ pm.test("Don't contains any error", function ()
 
 ## Creating a request
 
-By creating a new request, to pass information in the header, I just need to click on the `Headers` tab then fill in the key I need to send. In the example of a SOAP request, I'll need to send a `SOAPAction` key with the name of the action to start (`testFlag` here) and I'll specify that the body I'll send is `application/xml`.
+By creating a new request, to pass information in the header, I just need to click on the `Headers` tab then fill in the key I need to send. In the example of a SOAP request (i.e. called with a *XML envelope*), I'll need to send a `SOAPAction` key with the name of the action to start (`testFlag` here) and I'll specify that the body I'll send is `application/xml`.
 
 ![The request headers](images/request_headers.png)
 
@@ -113,7 +112,7 @@ And, of course, import it almost the same way:
 
 ![Importing a collection](images/importing_collection.png)
 
-## Real world example
+## Real-world example
 
 As seen in the article [MS Excel - How to call a SOAP web service](/blog/vba-excel-call-soap-webservice), we can call an European web service to check the validity of a VAT number.
 
@@ -166,7 +165,7 @@ In the examples below, you'll see `{{wsdl}}` in XML code sample. It's just a pla
 
 ### Check some metrics like the responseTime
 
-If you wish to validate the response time of a request, f.i. 500ms:
+If you wish to validate the response time of a request, f.i. 500 ms:
 
 ```php
 pm.test('Response time is within an acceptable range', function () {
@@ -184,7 +183,7 @@ pm.test('Response status code is 200', function () {
 })
 ```
 
-### Ensure the response return a content-type
+### Ensure the response returns a content-type
 
 ```php
 pm.test("Content-Type header is present", () => {
@@ -221,7 +220,7 @@ pm.test('Response body is in valid XML format', function () {
 Parse the response **as a string** and make sure the word *error* isn't present:
 
 ```php
-pm.test("Don't contains any error", function () 
+pm.test("Don't contain any error", function () 
 {
     pm.expect(pm.response.text()).to.not.include("error");
 });
@@ -267,7 +266,7 @@ If your response is the one below, the assertion will then fail since `<ns1:test
 
 ### Make assertions on the presence of nodes
 
-As example, we will ensure the response always have `<SOAP-ENV:Envelope>` and `<SOAP-ENV:Body>`:
+As an example, we will ensure the response always have `<SOAP-ENV:Envelope>` and `<SOAP-ENV:Body>`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -359,7 +358,7 @@ pm.test('List array contains at least one element', function () {
 })
 ```
 
-Check every items in the list have expected nodes; for instance:
+Check every item in the list have expected nodes; for instance:
 
 ```php
 pm.test('Validate expected structure', function () {
@@ -434,7 +433,7 @@ pm.test('Error code is not empty', function () {
 })
 ```
 
-And if you also have an error message property, make sure it's not empty but contains an error description
+And if you also have an error message property, make sure it's not empty but contains an error description.
 
 ```php
 pm.test('Error message is not empty', function () {
