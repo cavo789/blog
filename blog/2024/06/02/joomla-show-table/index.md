@@ -25,7 +25,7 @@ You can find all the information on my repo at [https://github.com/cavo789/jooml
 
 ## Let's create an example
 
-1. If you don't have a Joomla site yet, please create a new one. I'll follow my tutorial [Create your Joomla website using Docker](/blog/docker-joomla/#final-docker-composeyml) for this;
+1. If you don't have a Joomla site yet, please create a new one. I'll follow my tutorial [Create your Joomla website using Docker](/blog/docker-joomla) for this;
 
 2. Download a copy of my [showtable.php](https://raw.githubusercontent.com/cavo789/joomla_show_table/master/src/showtable.php) script and copy the script in the root folder of your Joomla site;
 
