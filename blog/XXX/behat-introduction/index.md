@@ -36,16 +36,71 @@ To illustrate this blog, I'm going to quickly create a little 'from scratch' pro
 * Create a file called `Dockerfile` with this content:
 
 ```Dockerfile
+# The user and group ID of the user to create
+ARG DOCKER_UID=1000
+ARG DOCKER_GID=1000
+ARG USERNAME=johndoe
+ARG CHROME_VERSION=115.0.5763.0
+
 FROM php:8.2-fpm
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y git jq zip unzip wget gnupg \
+    && apt-get clean \
+    && rm -rf /tmp/* /var/list/apt/*
+
+# We'll create a new user with the same uid/gid than ours, on our host machine.
+ARG DOCKER_UID
+ARG DOCKER_GID
+ARG USERNAME
+
+RUN groupadd --gid ${DOCKER_GID} "${USERNAME}" \
+    && useradd --home-dir /home/"${USERNAME}" --create-home --uid ${DOCKER_UID} \
+        --gid ${DOCKER_GID} --shell /bin/sh --skel /dev/null "${USERNAME}"
+
+ARG CHROME_VERSION
+ARG DOWNLOAD_URL="https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json"
+    
+# Download Chrome (the browser and the driver)
+RUN wget --no-check-certificate --no-verbose -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
+    && apt-get update -yqq \
+    && apt-get install -y --no-install-recommends -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 \
+        libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libgconf-2-4 \
+        libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 \
+        libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
+        libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 \
+        libxss1 libxtst6 ca-certificates fonts-liberation libnss3 lsb-release \
+        xdg-utils \
+    && apt-get clean \
+    && rm -rf /tmp/* /var/list/apt/* \
+    # --- Download the browser ---
+    && ZIP_URL=$(curl $DOWNLOAD_URL | jq -r ".versions[] | select(.version==\""$CHROME_VERSION"\").downloads.chrome[] | select(.platform==\""linux64"\") .url") \
+    && wget --no-check-certificate --no-verbose -O /tmp/chrome_browser.zip $ZIP_URL \
+    && printf "\e[0;105m%s\e[0;0m\n" "Using chromedriver $(/usr/local/bin/chrome/chromedriver --version)" \
+    #  Unzip and create the /usr/local/bin/chromedriver executable  (-j means don't create a subfolder with the name of the archive; unzip in the folder directly)
+    && unzip -j /tmp/chrome_browser.zip -d /usr/local/bin/chrome \
+    && rm -f /tmp/chrome_browser.zip \
+    && ls -alh /usr/local/bin/chrome \
+    && chmod +x /usr/local/bin/chrome/chrome \
+    # --- Download the driver ---
+    && ZIP_URL=$(curl $DOWNLOAD_URL | jq -r ".versions[] | select(.version==\""$CHROME_VERSION"\").downloads.chromedriver[] | select(.platform==\""linux64"\") .url") \
+    && wget --no-check-certificate --no-verbose -O /tmp/chrome_driver.zip $ZIP_URL \
+    #  Unzip and create the /usr/local/bin/chromedriver executable  (-j means don't create a subfolder with the name of the archive; unzip in the folder directly)
+    && unzip -j /tmp/chrome_driver.zip -d /usr/local/bin/chrome \
+    && rm -f /tmp/chrome_driver.zip \
+    && chmod +x /usr/local/bin/chrome/chrome \
+    # Make some cleanup
+    && apt-get clean \
+    && rm -rf /tmp/* /var/list/apt/*
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+RUN mkdir /opt/behat
+
 # Set working directory
-WORKDIR /var/www
+WORKDIR /opt/behat
 ```
 
 * Create a file called `docker-compose.yml` with this content:
@@ -53,28 +108,25 @@ WORKDIR /var/www
 ```yaml
 services:
   app:
-    build: .
+    build: 
+      context: .
+      args:
+        - DOCKER_UID=1000
+        - DOCKER_GID=1000
+        - USERNAME=johndoe
     container_name: php-app
-    working_dir: /var/www
+    working_dir: /opt/behat
     volumes:
-      - ./:/var/www
-```
-
-* Create a simple `index.php` with the content below. *That file is only for debugging and can be removed later on.*
-
-```php
-<?php
-
-echo "Hello World!\n";
+      - ./:/opt/behat
 ```
 
 * Run `docker compose up --detach` to create your Docker container
 
-* And finally run `docker compose exec app php -f index.php`
+We'll check if the Chrome driver is correctly installed by running `docker compose exec -u $(id -u):$(id -g) app /usr/local/bin/chrome/chromedriver --version`. Same for the Chrome browser `docker compose exec -u $(id -u):$(id -g) app /usr/local/bin/chrome/chrome --version`. Nice!
 
-![Hello World](./images/hello_world.png)
+![Chrome versions](./images/chrome_versions.png)
 
-Ok, let's do one more thing; we need to create our `composer.json` file.
+Ok, let's do one more thing; we need to create our `composer.json` file since we need to include the PHP `behat` dependency.
 
 * Run `docker compose exec -u $(id -u):$(id -g) app /bin/bash` to start an interactive shell in your Docker container and be yourself (i.e. by using `-u $(id -u):$(id -g)` files and folders created in Docker will be owned by you),
 
@@ -93,7 +145,7 @@ Now, if you're curious, you'll see you've a new file called `composer.json` and 
 
 ## Let's install behat
 
-As stated in the [How to install?](https://docs.behat.org/en/latest/quick_start.html#installation) documentation, you just need to execute `composer require --dev behat/behat` to install Behat as a dev dependency.
+As stated in the [How to install?](https://docs.behat.org/en/latest/quick_start.html#installation) documentation, you just need to execute `composer require --dev behat/behat:^3` to install Behat as a dev dependency.
 
 Once installed, you can start Behat by running `vendor/bin/behat` but right now, you'll got an error and this is perfectly normal since we need to start to write our first scenario.
 
@@ -168,7 +220,7 @@ And, now, before even starting to code, let's ask Behat to run our scenario; ple
 
 Wow! So nice! We've thus ask Behat to run our scenario and he knows that we've three steps and we still need to write the associated code in PHP (therefore the **TODO: write pending definition** message in yellow).
 
-Let's give ourselves the means to do the best we can as quickly as possible, without reinventing the wheel if someone else has already done it. Let's install two new dependencies. In your console, please run `composer require --dev friends-of-behat/mink` and `composer require dmore/behat-chrome-extension`.
+Let's give ourselves the means to do the best we can as quickly as possible, without reinventing the wheel if someone else has already done it. Let's install two new dependencies. In your console, please run `composer require --dev friends-of-behat/mink` and `composer require --dev dmore/behat-chrome-extension`.
 
 Indeed, for sure, someone has already written the `iAmOn` function no?
 
@@ -182,13 +234,13 @@ Now that Mink has been installed, go to your editor, open the file `features/boo
 
 This small changes will empower us because Mink will comes with a lot of already written steps.
 
-To get the list, run `vendor/bin/behat -di` in your console:
+To get the list, run `clear ; vendor/bin/behat -di` in your console:
 
 ![Print definitions](./images/print_definitions.png)
 
 Did you see? We've our three steps (the first three displayed) then we got extra steps coming from Mink. And you can scroll a lot, there are already many steps that Mink allows you to reuse.
 
-Run `vendor/bin/behat` in the console again:
+Run `clear ; vendor/bin/behat` in the console again:
 
 ![Ambiguous match](./images/ambiguous_match.png)
 
@@ -196,7 +248,9 @@ We got the *Ambiguous match of ...* error on the very first step, our *I am on "
 
 ![Remove the iAmOn method](./images/drop_iamon.png)
 
-By running `vendor/bin/behat` again; now we'll got a new error:
+By running `clear ; vendor/bin/behat` again and you'll have the same error for `iShouldBeOn` so remove that function too.
+
+Run `clear ; vendor/bin/behat` once more and now we'll got a new error:
 
 ![Mink instance not set](./images/mink_instance_not_set.png)
 
@@ -212,7 +266,7 @@ default:
         DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
         Behat\MinkExtension:
             browser_name: chrome
-            base_url: http://localhost
+            base_url: https://www.avonture.be
             sessions:
                 default:
                     chrome:
@@ -272,14 +326,6 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
     {
         throw new PendingException();
     }
-
-    /**
-     * @Then I should be on :arg1
-     */
-    public function iShouldBeOn($arg1)
-    {
-        throw new PendingException();
-    }
 }
 ```
 
@@ -287,18 +333,263 @@ By running `vendor/bin/behat` again, we've now another error:
 
 ![Chrome is not running](./images/chrome_not_running.png)
 
-## Time to install google-chrome-stable
+## Time to run Chrome
 
-To install `google-chrome-stable` i.e. the web client we'll use with Behat, please run these commands:
+Create a file called `run.sh` with this content:
 
 ```bash
-apt-get update && apt-get install gpg wget
-wget https://dl-ssl.google.com/linux/linux_signing_key.pub -O /tmp/google.pub
-gpg --no-default-keyring --keyring /etc/apt/keyrings/google-chrome.gpg --import /tmp/google.pub
-echo 'deb [arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main' | tee /etc/apt/sources.list.d/google-chrome.list
-apt-get update && apt-get install google-chrome-stable
+#!/usr/bin/env bash
+
+clear
+
+# We'll start Chrome on URL http://0.0.0.0:9222
+# If this URL has to be modified, think to update the constructor of /opt/behatFeatureContext.php too
+# Note: /usr/bin/google-chrome-stable has been installed in our Dockerfile
+nohup /usr/local/bin/chrome/chrome --headless --remote-debugging-address=0.0.0.0 \
+    --remote-debugging-port=9222 --no-sandbox --window-size="1920,1080" --disable-dev-shm-usage \
+    --disable-extensions --no-startup-window --no-first-run --no-pings > /dev/null 2>&1 &
+
+# Get the process ID of chrome so we can kill the process when we've finished
+chromePID=$!
+
+# shellcheck disable=SC2048,SC2086
+php -d memory_limit=-1 "vendor/bin/behat" ${flags}
+
+if ((chromePID > 0)); then
+    kill ${chromePID} > /dev/null 2>&1
+fi
 ```
 
-Once done, you should be able to run `which google-chrome-stable` and receive, as answer, `/usr/bin/google-chrome-stable`. This is a confirmation Chrome is now installed. You can also run `google-chrome-stable --version` to get the installed version.
+Then make the file executable by running `chmod +x ./run.sh`.
 
-So now, please run google-chrome-stable in background using: `nohup google-chrome-stable --disable-extensions --disable-gpu --headless --remote-debugging-address=0.0.0.0 --remote-debugging-port=9222 >/tmp/nohup.out 2>&1`
+Now, you can start Behat by starting `./run.sh` in your console.
+
+If everything is going fine, you'll get this:
+
+![First run](./images/run_sh_pending.png)
+
+As you can see, the `Given I am on...` line is in green: Behat, thanks to our Chrome driver, has been able to reach the page.
+
+Then the line `Then I click on the "Blog" menu item` is in yellow and this is normal since we haven't yet create the function and, logically, `Then I should be on "/blog"` is in blue because that sentence wasn't executed yet (skipped).
+
+## Appendix - List of files and their contents
+
+During this tutorial, we've manipulate a lot of files. To allow you to check if your version is well the one used at the end of this article, you'll find every files here below with their content at the end of the tutorial.
+
+### behat.yaml
+
+```yml
+default:
+    extensions:
+        DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
+        Behat\MinkExtension:
+            browser_name: chrome
+            base_url: https://www.avonture.be
+            sessions:
+                default:
+                    chrome:
+                      api_url: http://0.0.0.0:9222
+```
+
+### Blog.feature
+
+The relative filename is `features/Blog.feature`.
+
+```gherkin
+Feature: Clicking on the Blog menu item should gives me the list of articles
+
+  Scenario: I click on the Blog menu
+    Given I am on "https://www.avonture.be"
+    Then I click on the "Blog" menu item
+    Then I should be on "/blog"
+```
+
+### composer.json
+
+```json
+{
+    "name": "johndoe/behat",
+    "description": "Introduction to behat",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Johndoe\\Behat\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Doe"
+        }
+    ],
+    "require-dev": {
+        "behat/behat": "^3",
+        "dmore/behat-chrome-extension": "^1.4",
+        "friends-of-behat/mink": "^1.11"
+    }
+}
+```
+
+### docker-compose.yml
+
+```yml
+services:
+  app:
+    build: 
+      context: .
+      args:
+        - DOCKER_UID=1000
+        - DOCKER_GID=1000
+        - USERNAME=johndoe
+    container_name: php-app
+    working_dir: /opt/behat
+    volumes:
+      - ./:/opt/behat
+```
+
+### Dockerfile
+
+```Dockerfile
+# The user and group ID of the user to create
+ARG DOCKER_UID=1000
+ARG DOCKER_GID=1000
+ARG USERNAME=johndoe
+ARG CHROME_VERSION=115.0.5763.0
+
+FROM php:8.2-fpm
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y git jq zip unzip wget gnupg \
+    && apt-get clean \
+    && rm -rf /tmp/* /var/list/apt/*
+
+# We'll create a new user with the same uid/gid than ours, on our host machine.
+ARG DOCKER_UID
+ARG DOCKER_GID
+ARG USERNAME
+
+RUN groupadd --gid ${DOCKER_GID} "${USERNAME}" \
+    && useradd --home-dir /home/"${USERNAME}" --create-home --uid ${DOCKER_UID} \
+        --gid ${DOCKER_GID} --shell /bin/sh --skel /dev/null "${USERNAME}"
+
+ARG CHROME_VERSION
+ARG DOWNLOAD_URL="https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json"
+    
+# Download Chrome (the browser and the driver)
+RUN wget --no-check-certificate --no-verbose -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
+    && apt-get update -yqq \
+    && apt-get install -y --no-install-recommends -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 \
+        libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libgconf-2-4 \
+        libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 \
+        libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
+        libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 \
+        libxss1 libxtst6 ca-certificates fonts-liberation libnss3 lsb-release \
+        xdg-utils \
+    && apt-get clean \
+    && rm -rf /tmp/* /var/list/apt/* \
+    # --- Download the browser ---
+    && ZIP_URL=$(curl $DOWNLOAD_URL | jq -r ".versions[] | select(.version==\""$CHROME_VERSION"\").downloads.chrome[] | select(.platform==\""linux64"\") .url") \
+    && wget --no-check-certificate --no-verbose -O /tmp/chrome_browser.zip $ZIP_URL \
+    && printf "\e[0;105m%s\e[0;0m\n" "Using chromedriver $(/usr/local/bin/chrome/chromedriver --version)" \
+    #  Unzip and create the /usr/local/bin/chromedriver executable  (-j means don't create a subfolder with the name of the archive; unzip in the folder directly)
+    && unzip -j /tmp/chrome_browser.zip -d /usr/local/bin/chrome \
+    && rm -f /tmp/chrome_browser.zip \
+    && ls -alh /usr/local/bin/chrome \
+    && chmod +x /usr/local/bin/chrome/chrome \
+    # --- Download the driver ---
+    && ZIP_URL=$(curl $DOWNLOAD_URL | jq -r ".versions[] | select(.version==\""$CHROME_VERSION"\").downloads.chromedriver[] | select(.platform==\""linux64"\") .url") \
+    && wget --no-check-certificate --no-verbose -O /tmp/chrome_driver.zip $ZIP_URL \
+    #  Unzip and create the /usr/local/bin/chromedriver executable  (-j means don't create a subfolder with the name of the archive; unzip in the folder directly)
+    && unzip -j /tmp/chrome_driver.zip -d /usr/local/bin/chrome \
+    && rm -f /tmp/chrome_driver.zip \
+    && chmod +x /usr/local/bin/chrome/chrome \
+    # Make some cleanup
+    && apt-get clean \
+    && rm -rf /tmp/* /var/list/apt/*
+
+# Get latest Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+RUN mkdir /opt/behat
+
+# Set working directory
+WORKDIR /opt/behat
+```
+
+### FeatureContext.php
+
+The relative filename is `features/bootstrap/FeatureContext.php`.
+
+```php
+<?php
+
+use Behat\Mink\Mink;
+use Behat\Mink\Session;
+use DMore\ChromeDriver\ChromeDriver;
+use Behat\Behat\Tester\Exception\PendingException;
+
+/**
+ * Defines application features from the specific context.
+ */
+class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
+{
+
+    private Behat\Mink\Mink $mink;
+
+    /**
+     * Initializes context.
+     *
+     * Every scenario gets its own context instance.
+     * You can also pass arbitrary arguments to the
+     * context constructor through behat.yml.
+     */
+    public function __construct()
+    {
+        $this->mink = new Mink(
+            [
+                'browser' => new Session(
+                    new ChromeDriver(
+                        'http://0.0.0.0:9222',
+                        null,
+                        "https://www.avonture.be"  // <-- Think to update to the site you wish to test
+                    )
+                )
+            ]
+        );
+        
+    }
+
+    /**
+     * @Then I click on the :arg1 menu item
+     */
+    public function iClickOnTheMenuItem($arg1)
+    {
+        throw new PendingException();
+    }
+}
+```
+
+### run.sh
+
+```bash
+#!/usr/bin/env bash
+
+clear
+
+# We'll start Chrome on URL http://0.0.0.0:9222
+# If this URL has to be modified, think to update the constructor of FeatureContext.php too
+# Note: /usr/bin/google-chrome-stable has been installed in our Dockerfile
+nohup /usr/local/bin/chrome/chrome --headless --remote-debugging-address=0.0.0.0 \
+    --remote-debugging-port=9222 --no-sandbox --window-size="1920,1080" --disable-dev-shm-usage \
+    --disable-extensions --no-startup-window --no-first-run --no-pings > /dev/null 2>&1 &
+
+# Get the process ID of chrome so we can kill the process when we've finished
+chromePID=$!
+
+# shellcheck disable=SC2048,SC2086
+php -d memory_limit=-1 "vendor/bin/behat" ${flags}
+
+if ((chromePID > 0)); then
+    kill ${chromePID} > /dev/null 2>&1
+fi
+```
