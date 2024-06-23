@@ -13,7 +13,7 @@ At work, I'm part of a team of PHP developers where we work together to create a
 
 This application is developed using the Laravel framework and we use [PHPUnit](https://phpunit.de/index.html) and [Pes](https://pestphp.com/) to run our unit tests.
 
-However, in addition to the unit tests, we are also putting in place a tool that will simulate actions on our interface, such as accessing the login page, entering a login and password, simulating the click on the 'login' button and then on the new page displaying ... (a long list of actions).  
+However, in addition to the unit tests, we are also putting in place a tool that will simulate actions on our interface, such as accessing the login page, entering a login and password, simulating the click on the 'login' button and then on the new page displaying ... (a long list of actions).
 
 It's a bit like asking a human to play out scenarios over and over again, every day, to make sure we haven't introduced any regressions in our latest developments, like a cool new feature whose code changes have broken a previous feature.
 
@@ -60,7 +60,7 @@ RUN groupadd --gid ${DOCKER_GID} "${USERNAME}" \
 
 ARG CHROME_VERSION
 ARG DOWNLOAD_URL="https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json"
-    
+
 # Download Chrome (the browser and the driver)
 RUN wget --no-check-certificate --no-verbose -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
@@ -108,7 +108,7 @@ WORKDIR /opt/behat
 ```yaml
 services:
   app:
-    build: 
+    build:
       context: .
       args:
         - DOCKER_UID=1000
@@ -184,7 +184,7 @@ Your scenario here above is using three **steps**:
 
 1. `Given I am on "https://www.avonture.be"`,
 2. `Then I click on the "Blog" menu item` and
-3. `Then I should be on "/blog"`. 
+3. `Then I should be on "/blog"`.
 
 You've to learn to Behat how to *translate* these sentences (it's the [Gherkin language](https://cucumber.io/docs/gherkin/)) in PHP code.
 
@@ -316,7 +316,7 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
                 )
             ]
         );
-        
+
     }
 
     /**
@@ -372,9 +372,99 @@ As you can see, the `Given I am on...` line is in green: Behat, thanks to our Ch
 
 Then the line `Then I click on the "Blog" menu item` is in yellow and this is normal since we haven't yet create the function and, logically, `Then I should be on "/blog"` is in blue because that sentence wasn't executed yet (skipped).
 
-## Appendix - List of files and their contents
+## Writing our iClickOnTheMenuItem method
 
-During this tutorial, we've manipulate a lot of files. To allow you to check if your version is well the one used at the end of this article, you'll find every files here below with their content at the end of the tutorial.
+Back to the `bootstrap/FeatureContext.php` file. Replace the `iClickOnTheMenuItem` method with this code:
+
+```php
+/**
+ * @Then I click on the :menuItem menu item
+ */
+public function iClickOnTheMenuItem(string $menuItem): void
+{
+    if (!is_dir('.output')) {
+        mkdir('.output', 0777);
+    }
+    
+    // When entering in the method, take a screenshot so we can assert we're on the homepage
+    file_put_contents('.output/homepage.png', $this->getSession()->getDriver()->getScreenshot());
+
+    throw new PendingException();
+}
+```
+
+As you can see, we'll create a `.output` folder and the only thing we'll do is to create a screenshot.
+
+Just after having fired `./run.sh` in your console once more, now, you should see a new `.output` folder with an image:
+
+![We're on the homepage](./images/screenshot_homepage.png)
+
+What have we just done? We've verified that when Behat executes our `iClickOnTheMenuItem` method, Chrome does indeed access our home page. We can now simulate a click on the menu entry we want; the Blog menu stored in our $menuItem parameter.
+
+Replace the method with this new code:
+
+```php
+/**
+ * @Then I click on the :menu menu item
+ */
+public function iClickOnTheMenuItem(string $menu): void
+{
+    if (!is_dir('.output')) {
+        mkdir('.output', 0777);
+    }
+    
+    // When entering in the method, take a screenshot so we can assert we're on the homepage
+    file_put_contents('.output/homepage.png', $this->getSession()->getDriver()->getScreenshot());
+
+    /**
+     * @var $elements Behat\Mink\Element\NodeElement
+     */
+    $elements = $this->getSession()->getPage()->findAll('css', 'a[class="navbar__item navbar__link"]');
+
+    // Now we'll get all links from our navigation bar. $elements will contains more than one link in our case.
+    // The CSS selector has been written using our Web developer console; in Edge or Chromium for instance.
+    // Loop any elements (our navigation links) and when we've found the one having `Blog` as text, click on it
+    foreach ($elements as $element) {
+        if ($element->getText() === $menu) {
+            $element->click();
+        }
+    }
+
+    // Give one second to the website to handle the click and, so, to navigate to, as we expect it, the `/blog` path
+    sleep(1);
+
+    // Take a second image, now we should be in the list of posts
+    file_put_contents('.output/iClickOnBlog.png', $this->getSession()->getDriver()->getScreenshot());
+}
+```
+
+Start `./run.sh` once more and bingo!
+
+![Success](./images/success.png)
+
+This is a success because the `Then I should be on "/Blog"` has been verified by Mink. We don't need to write the `Then I should be on` method, it's already defined by Mink.
+
+Let's try something else, back in PHP and replace `if ($element->getText() === $menu) {` by `if ($element->getText() === 'Archive') {` so we'll not click onymore on the Blog menu but on `Archive` and see what will happens:
+
+![Failure](./images/failure.png)
+
+And it fails; great!
+
+## Conclusion
+
+This is the end of this tutorial.
+
+With Behat and Mink, we can automate functional testing. We'll be able to write scenarios, simulate user actions like clicking on any objects of the page; upload documents, do stuff like f.i. inserting a new blog post then inject some content into the editor and, then, after having save the item, visit the blog page, order it by date and we can assert that our new post is displayed and is the first one in the list.
+
+## Appendix - List of files and their contents and how to run them
+
+During this tutorial, we've manipulate a lot of files and commands. To allow you to check if your version is well the one used at the end of this article, you'll find every files here below with their content at the end of the tutorial.
+
+As a reminder, when all files below have been created on your disk, first, you'll need to create your Docker image and a container too; this is done by running `docker compose up --detach` in your console.
+
+The second command to run is `docker compose exec -u $(id -u):$(id -g) app composer install` to install all dependencies for PHP.
+
+Finally, to run our `run.sh` script, you should run `docker compose exec -u $(id -u):$(id -g) app ./run.sh`
 
 ### behat.yaml
 
@@ -434,7 +524,7 @@ Feature: Clicking on the Blog menu item should gives me the list of articles
 ```yml
 services:
   app:
-    build: 
+    build:
       context: .
       args:
         - DOCKER_UID=1000
@@ -473,7 +563,7 @@ RUN groupadd --gid ${DOCKER_GID} "${USERNAME}" \
 
 ARG CHROME_VERSION
 ARG DOWNLOAD_URL="https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json"
-    
+
 # Download Chrome (the browser and the driver)
 RUN wget --no-check-certificate --no-verbose -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
@@ -556,15 +646,39 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
                 )
             ]
         );
-        
     }
 
     /**
-     * @Then I click on the :arg1 menu item
+     * @Then I click on the :menu menu item
      */
-    public function iClickOnTheMenuItem($arg1)
+    public function iClickOnTheMenuItem(string $menu): void
     {
-        throw new PendingException();
+        if (!is_dir('.output')) {
+            mkdir('.output', 0777);
+        }
+        
+        // When entering in the method, take a screenshot so we can assert we're on the homepage
+        file_put_contents('.output/homepage.png', $this->getSession()->getDriver()->getScreenshot());
+    
+        /**
+         * @var $elements Behat\Mink\Element\NodeElement
+         */
+        $elements = $this->getSession()->getPage()->findAll('css', 'a[class="navbar__item navbar__link"]');
+    
+        // Now we'll get all links from our navigation bar. $elements will contains more than one link in our case.
+        // The CSS selector has been written using our Web developer console; in Edge or Chromium for instance.
+        // Loop any elements (our navigation links) and when we've found the one having `Blog` as text, click on it
+        foreach ($elements as $element) {
+            if ($element->getText() === $menu) {
+                $element->click();
+            }
+        }
+    
+        // Give one second to the website to handle the click and, so, to navigate to, as we expect it, the `/blog` path
+        sleep(1);
+    
+        // Take a second image, now we should be in the list of posts
+        file_put_contents('.output/iClickOnBlog.png', $this->getSession()->getDriver()->getScreenshot());
     }
 }
 ```
