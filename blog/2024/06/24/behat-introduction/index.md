@@ -3,7 +3,7 @@ slug: behat-introduction
 title: Introduction to Behat
 authors: [christophe]
 image: ./images/behat_introduction_social_media.jpg
-tags: [behat, docker, php, tests]
+tags: [bdd, behat, chrome, docker, mink, php, tests]
 draft: true
 enableComments: true
 ---
@@ -11,37 +11,55 @@ enableComments: true
 
 At work, I'm part of a team of PHP developers where we work together to create a very large proprietary application with a web interface.
 
-This application is developed using the Laravel framework and we use [PHPUnit](https://phpunit.de/index.html) and [Pes](https://pestphp.com/) to run our unit tests.
+This application is developed using the Laravel framework and we use [PHPUnit](https://phpunit.de/index.html) and [Pest](https://pestphp.com/) to run our unit tests.
 
-However, in addition to the unit tests, we are also putting in place a tool that will simulate actions on our interface, such as accessing the login page, entering a login and password, simulating the click on the 'login' button and then on the new page displaying ... (a long list of actions).
+However, in addition to the unit tests, we are also putting in place a tool that will simulate actions on our interface, such as accessing the login page, entering a login and password, simulating the click on the 'login' button, wait our main screen is displayed then, on the new page, assert a lot of things / do a lot of tasks.
 
 It's a bit like asking a human to play out scenarios over and over again, every day, to make sure we haven't introduced any regressions in our latest developments, like a cool new feature whose code changes have broken a previous feature.
 
-For this, we're using [Behat](https://docs.behat.org/en/latest/). This is a [composer](https://getcomposer.org/) dependency you can add to your project (or a new one). The idea is to be able to write assertions in pure English (or French) like "I go to the ABC website then I'll click on the blog menu item and I should receive a list of blog items" or "In the search box, I type Docker then I click on the search button and I should receive articles having the Docker tags".
+For this, we're using [Behat](https://docs.behat.org/en/latest/). This is a PHP [composer](https://getcomposer.org/) dependency you can add to your project (or a new one). The idea is to be able to write assertions in pure English (or French) like "I go to the ABC website then I click on the blog menu item and I should receive a list of blog items" or "In the search box, I type Docker then I click on the search button and I should receive articles having the Docker tags".
+
+In this article, we'll learn more about Behat and how to use it for a first test.
 
 <!-- truncate -->
 
-As you can read on the [Behat](https://docs.behat.org/en/latest/) site, *Behat is an open source Behavior-Driven Development framework for PHP. It is a tool to support you in delivering software that matters through continuous communication, deliberate discovery and test-automation.*  This means that, in fact, you can start to write your scenarios even before coding. You can ask to your client to write assertions in common english. Once done, the developper will start to code and once done, he just need to run the written scenarios to make sure the software answers to the client requirements.
+As you can read on the [Behat](https://docs.behat.org/en/latest/) site, *Behat is an open source Behavior-Driven Development framework for PHP. It is a tool to support you in delivering software that matters through continuous communication, deliberate discovery and test-automation.*  This means that, in fact, you can start to write your scenarios even before coding. You can ask to your client to write assertions in common English. Once done, the developer will start to code and once done, he just needs to run the written scenarios to make sure the software answers to the client requirements.
 
-Let's play.
+## Introduction to BDD - Behavior-Driven Development
+
+Imagine you're a customer and you ask a developer to create a new website. In your specifications, you tell him things like: 
+
+* As a visitor, I'd like a menu entry that, once clicked, will (do this);
+* As a visitor, I want to be able to access a search engine that will allow me to make a selection from a category of articles and then, within this category, launch a search for the word (a word). A list of articles on this theme will then be displayed; 
+* As site manager, I want to be able to connect to a management interface and, after a successful login, I need to see the options (list of features);
+* As site manager, I should be able to add a new article where I've to specify a title, a category, a main image and a text. Once I save it, I should see the new article in the list of articles and, by ordering the list on the creation date/time, it has to be the first in the list;
+* (and much more)
+
+In terms of Behat, these sentences are called scenarios. You can write them even before the website is created. And during the coding steps, the developer will run your scenarios from time to time. On the first run, all the scenarios are bound to fail (the site doesn't exist; the requested functions have not yet been developed). The developer will work on one or other of the functionalities; he will restart the BDD tests and, as the project progresses, the scenarios will succeed until the end of the project, when all the scenarios will have been successfully completed and the project can be sent to you for acceptance.
 
 ## Create a new project
 
-As you know if you're a regular reader of my blog, I drink, eat and breathe Docker, which means that I no longer have PHP, composer or anything else on my computer.
+For this article, we'll create a new Behat project and we'll validate this scenario: **"As a visitor, I want to be able to visit the site XYZ; click on a navigation item called 'Blog'. The site will then show me the list of blog posts."**
 
-To illustrate this blog, I'm going to quickly create a little 'from scratch' project with Docker, PHP 8.2 and composer. If you already have a project and you want to reuse it, you can skip this chapter.
+As you know, if you're a regular reader of my blog, I drink, eat and breathe Docker, which means that I no longer have PHP, composer or Apache on my computer.
 
-* Create a temporary directory: `mkdir /tmp/behat && cd $_`.
+So, for our new challenge (that I gladly accept) above, I'm going to create a little project with Docker, PHP 8.2 and composer.
 
-* Create a file called `Dockerfile` with this content:
+Let's start...
+
+* First, let's create a new directory: `mkdir /tmp/behat && cd $_`.
+* There, let's create a file called `Dockerfile` with the content below. That script is already big but; like this, we'll have everything we need right now.
 
 ```Dockerfile
-# The user and group ID of the user to create
+# The user ID and name and group ID of the user to create in our image
 ARG DOCKER_UID=1000
 ARG DOCKER_GID=1000
 ARG USERNAME=johndoe
+
+# The version of Chrome we'll install
 ARG CHROME_VERSION=115.0.5763.0
 
+# This is a PHP project
 FROM php:8.2-fpm
 
 # Install system dependencies
@@ -58,6 +76,7 @@ RUN groupadd --gid ${DOCKER_GID} "${USERNAME}" \
     && useradd --home-dir /home/"${USERNAME}" --create-home --uid ${DOCKER_UID} \
         --gid ${DOCKER_GID} --shell /bin/sh --skel /dev/null "${USERNAME}"
 
+# Download and install Chrome        
 ARG CHROME_VERSION
 ARG DOWNLOAD_URL="https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json"
 
@@ -94,9 +113,10 @@ RUN wget --no-check-certificate --no-verbose -O - https://dl-ssl.google.com/linu
     && apt-get clean \
     && rm -rf /tmp/* /var/list/apt/*
 
-# Get latest Composer
+# Get latest composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Where we'll put our script
 RUN mkdir /opt/behat
 
 # Set working directory
@@ -111,28 +131,31 @@ services:
     build:
       context: .
       args:
+        # Please update IDs below if you've another values by running "id -u" (UID) and "id -g" (GID) in your Linux console
         - DOCKER_UID=1000
         - DOCKER_GID=1000
+        # The name of the user in Docker; didn't have any importance
         - USERNAME=johndoe
     container_name: php-app
     working_dir: /opt/behat
     volumes:
+      # We'll synchronize our local project folder (on our machine) with the Docker container
       - ./:/opt/behat
 ```
 
 * Run `docker compose up --detach` to create your Docker container
 
-We'll check if the Chrome driver is correctly installed by running `docker compose exec -u $(id -u):$(id -g) app /usr/local/bin/chrome/chromedriver --version`. Same for the Chrome browser `docker compose exec -u $(id -u):$(id -g) app /usr/local/bin/chrome/chrome --version`. Nice!
+We'll check if the Chrome driver is correctly installed by running `docker compose exec -u $(id -u):$(id -g) app /usr/local/bin/chrome/chromedriver --version`. Same for the Chrome browser `docker compose exec -u $(id -u):$(id -g) app /usr/local/bin/chrome/chrome --version`. Nice! Seeing these values means Chrome is ready to be used.
 
 ![Chrome versions](./images/chrome_versions.png)
 
-Ok, let's do one more thing; we need to create our `composer.json` file since we need to include the PHP `behat` dependency.
+Ok, let's do one more thing; we need to create our `composer.json` file since we need to include the PHP `Behat` dependency.
 
 * Run `docker compose exec -u $(id -u):$(id -g) app /bin/bash` to start an interactive shell in your Docker container and be yourself (i.e. by using `-u $(id -u):$(id -g)` files and folders created in Docker will be owned by you),
 
 * Run `composer init` to start the composer wizard; type any value you want f.i.
     * Package name: `johndoe/behat`,
-    * Description: `Introduction to behat`,
+    * Description: `Introduction to Behat`,
     * Author: `John Doe`,
     * Minimum Stability: *Just press enter*,
     * Packate Type: `project`,
@@ -143,28 +166,36 @@ Ok, let's do one more thing; we need to create our `composer.json` file since we
 
 Now, if you're curious, you'll see you've a new file called `composer.json` and two folders called `src` and `vendor`.
 
-## Let's install behat
+![Composer has been installed](./images/composer_installed.png)
+
+## Let's install Behat
 
 As stated in the [How to install?](https://docs.behat.org/en/latest/quick_start.html#installation) documentation, you just need to execute `composer require --dev behat/behat:^3` to install Behat as a dev dependency.
+
+:::info
+Make sure you're still in an interactive Bash session in the Docker container before running `composer require --dev behat/behat:^3`.  An interactive Bash session is started by running `docker compose exec -u $(id -u):$(id -g) app /bin/bash`.
+:::
+
+![Install Behat](./images/composer_install_behat.png)
 
 Once installed, you can start Behat by running `vendor/bin/behat` but right now, you'll got an error and this is perfectly normal since we need to start to write our first scenario.
 
 ![FeatureContext not found](./images/FeatureContext_not_found.png)
 
-As you can read in the official documentation, just run `vendor/bin/behat --init` to create the required files.
+As you can read in the official documentation, just run `vendor/bin/behat --init` to create the required, minimum, files.
 
 ![Running Behat init](./images/behat_init.png)
 
-If you look at your folder, you can see you've now a new folder called `features/bootstrap` with a file called `FeatureContext.php`.
+Now, if you look at your folder, you can see you've now a new folder called `features/bootstrap` with a file called `FeatureContext.php`. The screenshot below illustrate how the project appears in my VSCode editor at this point in the tutorial:
 
 ![FeatureContext in vscode](./images/vscode_FeatureContext.png)
 
 ## Time to learn more about features
 
-A feature is something you want to play using automation. For instance:
+The image here above is displaying a major concept of Behat: it's a feature. This is something you need to write and this will guide our automation. For instance:
 
-```
-Feature: Clicking on the Blog menu item should gives me the list of articles
+```gherkin
+Feature: Clicking on the Blog menu item should give me the list of articles
 
   Scenario: I click on the Blog menu
     Given I am on "https://www.avonture.be"
@@ -186,17 +217,17 @@ Your scenario here above is using three **steps**:
 2. `Then I click on the "Blog" menu item` and
 3. `Then I should be on "/blog"`.
 
-You've to learn to Behat how to *translate* these sentences (it's the [Gherkin language](https://cucumber.io/docs/gherkin/)) in PHP code.
+Now we've our scenario, we need to teach Behat how to *translate* these sentences (it's the [Gherkin language](https://cucumber.io/docs/gherkin/)) in our PHP code.
 
 ## Writing your steps in PHP
 
-Now, please open the file `features/bootsrap/FeatureContext.php` in your preferred editor:
+Now, please open the file `features/bootstrap/FeatureContext.php` in your preferred editor:
 
 ![Editing the FeatureContext.php file](./images/vscode_edit_0_FeatureContext.png)
 
-As you can see, this is the default file, added by Behat. We need to create some PHP code here but how?
+As you can see, this is the default file we've created earlier. We need to create some PHP code here but how?
 
-Go back to your console and run `vendor/bin/behat --dry-run --append-snippets`. This will ask Behat to create the steps for you, automagically.
+Go back to your interactive Bash console and run `vendor/bin/behat --dry-run --append-snippets`. This will ask Behat to create the steps for you, automagically.
 
 ![Append snippets](./images/append_snippets.png)
 
@@ -208,39 +239,37 @@ u features/bootstrap/FeatureContext.php - `I click on the "Blog" menu item` defi
 u features/bootstrap/FeatureContext.php - `I should be on "/blog"` definition added
 ```
 
-Please open the file `features/bootsrap/FeatureContext.php` once more in your preferred editor:
+Please open the file `features/bootstrap/FeatureContext.php` once more in your preferred editor:
 
 ![Now we have our steps](./images/vscode_edit_1_FeatureContext.png)
 
-Nice isn't?
+Nice isn't? Behat has look at our `Blog.feature` file and create as many methods in our PHP code that we had sentences in our scenario and, each method is assigned to the sentence (take a look to the php comment before each method).
 
 And, now, before even starting to code, let's ask Behat to run our scenario; please run `vendor/bin/behat` in the console:
 
 ![First run](./images/first_run.png)
 
-Wow! So nice! We've thus ask Behat to run our scenario and he knows that we've three steps and we still need to write the associated code in PHP (therefore the **TODO: write pending definition** message in yellow).
+Wow! So far, perfect! We've thus asked Behat to run our scenario and he knows that we've three steps and we still need to write the associated code in PHP (therefore the **TODO: write pending definition** message in yellow).
 
 Let's give ourselves the means to do the best we can as quickly as possible, without reinventing the wheel if someone else has already done it. Let's install two new dependencies. In your console, please run `composer require --dev friends-of-behat/mink` and `composer require --dev dmore/behat-chrome-extension`.
 
-Indeed, for sure, someone has already written the `iAmOn` function no?
-
-![I am on](./images/iamon.png)
+`friends-of-behat/mink` is a very nice dependency coming with already predefined steps like doing a login, navigating to pages, asserting the current page is ....  And by using `friends-of-behat/mink`, life will be simpler and we won't have to reinvent the wheel.
 
 ## Using Mink
 
-Now that Mink has been installed, go to your editor, open the file `features/bootsrap/FeatureContext.php` and replace the line `class FeatureContext implements Context` like this `class FeatureContext extends \Behat\MinkExtension\Context\MinkContext`.
+Now that Mink has been installed, go to your editor, open the file `features/bootstrap/FeatureContext.php` and replace the line `class FeatureContext implements Context` like this `class FeatureContext extends \Behat\MinkExtension\Context\MinkContext`.
 
 ![Using MinkContext](./images/MinkContext.png)
 
-This small changes will empower us because Mink will comes with a lot of already written steps.
+This small change will empower us because now our code will use Mink and thus will benefit from all existing methods of Mink.
 
-To get the list, run `clear ; vendor/bin/behat -di` in your console:
+To get the list of existing methods, let's run `clear ; vendor/bin/behat -di` in your console:
 
 ![Print definitions](./images/print_definitions.png)
 
 Did you see? We've our three steps (the first three displayed) then we got extra steps coming from Mink. And you can scroll a lot, there are already many steps that Mink allows you to reuse.
 
-Run `clear ; vendor/bin/behat` in the console again:
+Run `vendor/bin/behat` in the console again:
 
 ![Ambiguous match](./images/ambiguous_match.png)
 
@@ -248,7 +277,7 @@ We got the *Ambiguous match of ...* error on the very first step, our *I am on "
 
 ![Remove the iAmOn method](./images/drop_iamon.png)
 
-By running `clear ; vendor/bin/behat` again and you'll have the same error for `iShouldBeOn` so remove that function too.
+By running `vendor/bin/behat` again and you'll have the same error for `iShouldBeOn` so remove that function too.
 
 Run `clear ; vendor/bin/behat` once more and now we'll got a new error:
 
@@ -273,9 +302,9 @@ default:
                       api_url: http://0.0.0.0:9222
 ```
 
-Also, please edit the file `features/bootsrap/FeatureContext.php` and replace the existing content below.
+Also, please edit the file `features/bootstrap/FeatureContext.php`, remove everything and replace the existing content below.
 
-We've changes a few `use` to add Mink libraries (and remove unneded ones). We've also added a `$mink` private property and put some lines in the `__constructor`.
+We've changes a few `use` to add Mink libraries (and remove unneeded ones). We've also added a `$mink` private property and put some lines in the `__constructor`.
 
 :::warning Please update the url `https://www.avonture.be` to match your site
 :::
@@ -297,7 +326,7 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
     private Behat\Mink\Mink $mink;
 
     /**
-     * Initializes context.
+     * Initialises context.
      *
      * Every scenario gets its own context instance.
      * You can also pass arbitrary arguments to the
@@ -331,7 +360,7 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
 
 By running `vendor/bin/behat` again, we've now another error:
 
-![Chrome is not running](./images/chrome_not_running.png)
+![Could not fetch version information](./images/could_not_fetch.png)
 
 ## Time to run Chrome
 
@@ -343,7 +372,7 @@ Create a file called `run.sh` with this content:
 clear
 
 # We'll start Chrome on URL http://0.0.0.0:9222
-# If this URL has to be modified, think to update the constructor of /opt/behatFeatureContext.php too
+# If this URL has to be modified, think to update the constructor of FeatureContext.php too
 # Note: /usr/bin/google-chrome-stable has been installed in our Dockerfile
 nohup /usr/local/bin/chrome/chrome --headless --remote-debugging-address=0.0.0.0 \
     --remote-debugging-port=9222 --no-sandbox --window-size="1920,1080" --disable-dev-shm-usage \
@@ -353,7 +382,7 @@ nohup /usr/local/bin/chrome/chrome --headless --remote-debugging-address=0.0.0.0
 chromePID=$!
 
 # shellcheck disable=SC2048,SC2086
-php -d memory_limit=-1 "vendor/bin/behat" ${flags}
+php -d memory_limit=-1 "vendor/bin/behat" --config=behat.yaml
 
 if ((chromePID > 0)); then
     kill ${chromePID} > /dev/null 2>&1
@@ -370,7 +399,7 @@ If everything is going fine, you'll get this:
 
 As you can see, the `Given I am on...` line is in green: Behat, thanks to our Chrome driver, has been able to reach the page.
 
-Then the line `Then I click on the "Blog" menu item` is in yellow and this is normal since we haven't yet create the function and, logically, `Then I should be on "/blog"` is in blue because that sentence wasn't executed yet (skipped).
+Then the line `Then I click on the "Blog" menu item` is in yellow and this is normal since we haven't yet created the function and, logically, `Then I should be on "/blog"` is in blue because that sentence wasn't executed yet (skipped).
 
 ## Writing our iClickOnTheMenuItem method
 
@@ -421,7 +450,7 @@ public function iClickOnTheMenuItem(string $menu): void
      */
     $elements = $this->getSession()->getPage()->findAll('css', 'a[class="navbar__item navbar__link"]');
 
-    // Now we'll get all links from our navigation bar. $elements will contains more than one link in our case.
+    // Now we'll get all links from our navigation bar. $elements will contain more than one link in our case.
     // The CSS selector has been written using our Web developer console; in Edge or Chromium for instance.
     // Loop any elements (our navigation links) and when we've found the one having `Blog` as text, click on it
     foreach ($elements as $element) {
@@ -444,7 +473,7 @@ Start `./run.sh` once more and bingo!
 
 This is a success because the `Then I should be on "/Blog"` has been verified by Mink. We don't need to write the `Then I should be on` method, it's already defined by Mink.
 
-Let's try something else, back in PHP and replace `if ($element->getText() === $menu) {` by `if ($element->getText() === 'Archive') {` so we'll not click onymore on the Blog menu but on `Archive` and see what will happens:
+Let's try something else, back in PHP and replace `if ($element->getText() === $menu) {` by `if ($element->getText() === 'Archive') {` so we'll not click onymore on the Blog menu but on `Archive` and see what will happen:
 
 ![Failure](./images/failure.png)
 
@@ -454,11 +483,25 @@ And it fails; great!
 
 This is the end of this tutorial.
 
-With Behat and Mink, we can automate functional testing. We'll be able to write scenarios, simulate user actions like clicking on any objects of the page; upload documents, do stuff like f.i. inserting a new blog post then inject some content into the editor and, then, after having save the item, visit the blog page, order it by date and we can assert that our new post is displayed and is the first one in the list.
+With Behat and Mink, we can automate functional testing.
+
+We'll be able to write scenarios, simulate user actions like clicking on any objects of the page; upload documents, do stuff like f.i. inserting a new blog post then inject some content into the editor and, then, after having saved the item, visit the blog page, order it by date and we can assert that our new post is displayed and is the first one in the list.
+
+We can do this before the application exists (concept of BDD), during the coding (to ensure features are still working even after a big refactoring f.i.) or during the life cycle (to make sure the application is still working as expected).
+
+Continue your journey thanks these websites:
+
+* [Automate testing with Behat](https://docs.pantheon.io/behat),
+* [Behat-chrome-extension repository](https://gitlab.com/behat-chrome/behat-chrome-extension),
+* [Behat: The Easy and Effective Way to Write Acceptance Tests](https://dev.to/jszutkowski/behat-the-easy-and-effective-way-to-write-acceptance-tests-cm4),
+* [Behat - Official website](https://docs.behat.org/en/latest/),
+* [Cucumber - Gherkin Tutorial](https://cucumber.io/),
+* [DMore - Chrome Mink Driver](https://packagist.org/packages/dmore/chrome-mink-driver) and
+* [Mink at a Glance](https://mink.behat.org/en/latest/at-a-glance.html)
 
 ## Appendix - List of files and their contents and how to run them
 
-During this tutorial, we've manipulate a lot of files and commands. To allow you to check if your version is well the one used at the end of this article, you'll find every files here below with their content at the end of the tutorial.
+During this tutorial, we've manipulated a lot of files and commands. To allow you to check if your version is well the one used at the end of this article, you'll find every file here below with their content at the end of the tutorial.
 
 As a reminder, when all files below have been created on your disk, first, you'll need to create your Docker image and a container too; this is done by running `docker compose up --detach` in your console.
 
@@ -527,24 +570,30 @@ services:
     build:
       context: .
       args:
+        # Please update IDs below if you've another values by running "id -u" (UID) and "id -g" (GID) in your Linux console
         - DOCKER_UID=1000
         - DOCKER_GID=1000
+        # The name of the user in Docker; didn't have any importance
         - USERNAME=johndoe
     container_name: php-app
     working_dir: /opt/behat
     volumes:
+      # We'll synchronize our local project folder (on our machine) with the Docker container
       - ./:/opt/behat
 ```
 
 ### Dockerfile
 
 ```Dockerfile
-# The user and group ID of the user to create
+# The user ID and name and group ID of the user to create in our image
 ARG DOCKER_UID=1000
 ARG DOCKER_GID=1000
 ARG USERNAME=johndoe
+
+# The version of Chrome we'll install
 ARG CHROME_VERSION=115.0.5763.0
 
+# This is a PHP project
 FROM php:8.2-fpm
 
 # Install system dependencies
@@ -561,6 +610,7 @@ RUN groupadd --gid ${DOCKER_GID} "${USERNAME}" \
     && useradd --home-dir /home/"${USERNAME}" --create-home --uid ${DOCKER_UID} \
         --gid ${DOCKER_GID} --shell /bin/sh --skel /dev/null "${USERNAME}"
 
+# Download and install Chrome        
 ARG CHROME_VERSION
 ARG DOWNLOAD_URL="https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json"
 
@@ -597,9 +647,10 @@ RUN wget --no-check-certificate --no-verbose -O - https://dl-ssl.google.com/linu
     && apt-get clean \
     && rm -rf /tmp/* /var/list/apt/*
 
-# Get latest Composer
+# Get latest composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Where we'll put our script
 RUN mkdir /opt/behat
 
 # Set working directory
@@ -627,7 +678,7 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
     private Behat\Mink\Mink $mink;
 
     /**
-     * Initializes context.
+     * Initialises context.
      *
      * Every scenario gets its own context instance.
      * You can also pass arbitrary arguments to the
@@ -665,7 +716,7 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
          */
         $elements = $this->getSession()->getPage()->findAll('css', 'a[class="navbar__item navbar__link"]');
     
-        // Now we'll get all links from our navigation bar. $elements will contains more than one link in our case.
+        // Now we'll get all links from our navigation bar. $elements will contain more than one link in our case.
         // The CSS selector has been written using our Web developer console; in Edge or Chromium for instance.
         // Loop any elements (our navigation links) and when we've found the one having `Blog` as text, click on it
         foreach ($elements as $element) {
@@ -701,7 +752,7 @@ nohup /usr/local/bin/chrome/chrome --headless --remote-debugging-address=0.0.0.0
 chromePID=$!
 
 # shellcheck disable=SC2048,SC2086
-php -d memory_limit=-1 "vendor/bin/behat" ${flags}
+php -d memory_limit=-1 "vendor/bin/behat" --config=behat.yaml
 
 if ((chromePID > 0)); then
     kill ${chromePID} > /dev/null 2>&1
