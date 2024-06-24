@@ -4,7 +4,6 @@ title: Introduction to Behat
 authors: [christophe]
 image: ./images/behat_introduction_social_media.jpg
 tags: [bdd, behat, chrome, docker, mink, php, tests]
-draft: true
 enableComments: true
 ---
 ![Introduction to Behat](./images/behat_introduction_banner.jpg)
