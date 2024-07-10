@@ -5,13 +5,12 @@ authors: [christophe]
 image: ./images/emails_social_media.jpg
 tags: [outlook, vba]
 enableComments: true
-draft: true
 ---
 ![Microsoft Outlook - VBA - Save emails as PDF](./images/emails_banner.jpg)
 
 You may also need to select several emails from Microsoft Outlook and save them as PDF files on your hard drive.
 
-In my case, it was when I was complementary self-employed. I had to keep track of the orders I received and the invoices I sent.
+In my case, it was when I was complementary self-employed. I had to keep track of the orders I received and the invoices I sent. Saving my orders as PDFs meant that I could keep them as archives, even if my mail server failed.
 
 This post will explain to you how to create such macro for Outlook.
 
@@ -19,7 +18,7 @@ This post will explain to you how to create such macro for Outlook.
 
 ## Prerequisites
 
-You should have Microsoft Office on your hard disk and you need to have Outlook and Winword installed.
+You should have Microsoft Office on your hard disk and you need to have Outlook and Word installed.
 
 The macro will not work with Office online.
 
