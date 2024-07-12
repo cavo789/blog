@@ -153,15 +153,15 @@ Ok, let's do one more thing; we need to create our `composer.json` file since we
 * Run `docker compose exec -u $(id -u):$(id -g) app /bin/bash` to start an interactive shell in your Docker container and be yourself (i.e. by using `-u $(id -u):$(id -g)` files and folders created in Docker will be owned by you),
 
 * Run `composer init` to start the composer wizard; type any value you want f.i.
-    * Package name: `johndoe/behat`,
-    * Description: `Introduction to Behat`,
-    * Author: `John Doe`,
-    * Minimum Stability: *Just press enter*,
-    * Packate Type: `project`,
-    * License: *Just press enter*,
-    * Composer will ask if you want to define dependencies and dev dependencies; answer `no` twice right now,
-    * The next question will be about PSR-4, *just press enter*,
-    * Finally answer `yes` to the confirmation message.
+  * Package name: `johndoe/behat`,
+  * Description: `Introduction to Behat`,
+  * Author: `John Doe`,
+  * Minimum Stability: *Just press enter*,
+  * Packate Type: `project`,
+  * License: *Just press enter*,
+  * Composer will ask if you want to define dependencies and dev dependencies; answer `no` twice right now,
+  * The next question will be about PSR-4, *just press enter*,
+  * Finally answer `yes` to the confirmation message.
 
 Now, if you're curious, you'll see you've a new file called `composer.json` and two folders called `src` and `vendor`.
 
@@ -272,7 +272,7 @@ Run `vendor/bin/behat` in the console again:
 
 ![Ambiguous match](./images/ambiguous_match.png)
 
-We got the *Ambiguous match of ...* error on the very first step, our *I am on "https://www.avonture.be"* step. Ambiguous means that we're trying to add some PHP code in our context while that step is already defined (by Mink). So, just drop it by editing your `FeatureContext.php` file, select the `public function iAmOn` and remove the entire function.
+We got the *Ambiguous match of ...* error on the very first step, our *I am on "<https://www.avonture.be>"* step. Ambiguous means that we're trying to add some PHP code in our context while that step is already defined (by Mink). So, just drop it by editing your `FeatureContext.php` file, select the `public function iAmOn` and remove the entire function.
 
 ![Remove the iAmOn method](./images/drop_iamon.png)
 

@@ -9,7 +9,7 @@ enableComments: true
 <!-- cspell:ignore apac,ibdata,ibtmp -->
 ![Create your Joomla website using Docker](./images/header.jpg)
 
-- *Updated 2024-03-23, adding health condition in yml and update Joomla tag to 5.1-php8.2-apache.*
+* *Updated 2024-03-23, adding health condition in yml and update Joomla tag to 5.1-php8.2-apache.*
 
 In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** *(don't want to wait? Jump to the "Final docker-compose.yml" chapter)*.
 
@@ -289,10 +289,10 @@ When Joomla will ask for your admin credentials, just fill in the value of your 
 
 But, for the database configuration, here you need to be strict:
 
-- The database type should be `MySQLi` (since we're using MySQL),
-- The name of the host should be `joomladb` (the name we have chosen for the database service),
-- The username should be `root` (default value) and
-- The password for that user should be `example`
+* The database type should be `MySQLi` (since we're using MySQL),
+* The name of the host should be `joomladb` (the name we have chosen for the database service),
+* The username should be `root` (default value) and
+* The password for that user should be `example`
 
 :::important Why these values?
 These values can be retrieved inside the `docker-compose.yml` file. If you have named your database service something other than `joomladb`, then please use the name you have chosen.
@@ -715,9 +715,9 @@ Let's try PostgreSQL... We'll replace `mysql`. The official PostgreSQL Docker im
 
 We also need to change a few variables:
 
-- The default database user should be specified and it will be f.i. `postgres`,
-- We should define too the name of the database in both services; we'll name our db `joomla_db` and
-- We need to inform Joomla that we'll use PostgreSQL so we need to set `JOOMLA_DB_TYPE` to `pgsql` (can be either `mysql` or `pgsql`).
+* The default database user should be specified and it will be f.i. `postgres`,
+* We should define too the name of the database in both services; we'll name our db `joomla_db` and
+* We need to inform Joomla that we'll use PostgreSQL so we need to set `JOOMLA_DB_TYPE` to `pgsql` (can be either `mysql` or `pgsql`).
 
 :::note
 This information has been retrieved from this Pull requests: [https://github.com/joomla-docker/docker-joomla/pull/156](https://github.com/joomla-docker/docker-joomla/pull/156).
@@ -868,10 +868,10 @@ Make sure, for each project, to update the `name:` line and if you plan to be ab
 
 ## Associated articles
 
-- [FrankenPHP, a modern application server for PHP](/blog/frankenphp-docker-joomla)
-- [Update php.ini when using a Docker image](/blog/docker-php-ini)
-- [Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/blog/docker-adminer-pgadmin-phpmyadmin)
-- [Linux Makefile - When to use a makefile](/blog/makefile-using-make)
+* [FrankenPHP, a modern application server for PHP](/blog/frankenphp-docker-joomla)
+* [Update php.ini when using a Docker image](/blog/docker-php-ini)
+* [Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/blog/docker-adminer-pgadmin-phpmyadmin)
+* [Linux Makefile - When to use a makefile](/blog/makefile-using-make)
 
 ## Your comments are more than welcome
 

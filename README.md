@@ -22,7 +22,7 @@ In this mode (`MODE=production`), Docker will create a self-container image and 
 
 This mode is near what you'll have on your production server and use fast mechanism to deliver files.
 
-## Build, run and open the blog as a developer.
+## Build, run and open the blog as a developer
 
 Make sure to initialize the `.env` with `MODE=development`.
 Run `make build && make up && make start && make devcontainer` on your local machine to build the Docker image, create the container and open Visual Studio Code so you can start to create new articles.

@@ -307,7 +307,7 @@ By running `docker build --tag johndoe/blog --target building_production .` (wit
 
 Now that our image is created, we can do a few things like just running it and get an offline version of our Docusaurus site or play with a container and start an interactive shell session or, of course, publish it on Docker hub.
 
-### Run the image i.e. create a container and run the site.
+### Run the image i.e. create a container and run the site
 
 To do this, just run the following command:
 

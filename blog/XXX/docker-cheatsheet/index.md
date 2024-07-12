@@ -31,6 +31,7 @@ Once created, simply run `docker image list` to get the list of images present o
 Same as for containers, if your images have a prefix, you can drop all images using `docker rmi $(docker images | grep <prefix> | tr -s ' ' | cut -d ' ' -f 3)`.
 
 If you want to check once the command here been fired, just run `docker images --format "{{.Repository}}" | grep <prefix>`. The returned list should be empty.
+
 ## Containers
 
 ### Remove all containers (even if stopped) based on a prefix
