@@ -3,8 +3,7 @@ slug: makefile_tips
 title: Makefile - Tutorial and Tips & Tricks
 authors: [christophe]
 image: /img/makefile_tips_social_media.jpg
-tags: [outlook, vba]
-draft: true
+tags: [makefile, tips]
 enableComments: true
 ---
 ![Makefile - Tutorial and Tips & Tricks](/img/makefile_tips_social_media.jpg)

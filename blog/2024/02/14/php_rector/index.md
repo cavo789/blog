@@ -16,7 +16,7 @@ Rector will look at every line of code, every loop, every conditional test, ever
 
 In this role, it will not only detect improvements to my code (like a static analysis tool) but, and this is the biggest advantage for me, it will show me how I can become a better developer.
 
-**I REALLY LOVE RECTOR 💕**
+I REALLY LOVE RECTOR 💕
 
 <!-- truncate -->
 
