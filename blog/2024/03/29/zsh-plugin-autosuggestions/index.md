@@ -44,8 +44,3 @@ Imagine you've already type, today, yesterday or weeks ago the `docker compose u
 You can also play with <kbd>UP</kbd> and <kbd>DOWN</kbd> to switch and use another commands that match with the keys (*doc* in my example). Auto-suggestions is using the HISTORY of Linux.
 
 ![Autosuggestions plugin for ZSH](./images/autosuggestions.png)
-
-## Official demo
-
-{{< /*<!-- markdownlint-disable MD033 -->*/ >}} 
-<a href="https://asciinema.org/a/37390" rel="nofollow"><img src="https://camo.githubusercontent.com/33098ce638a2788133a2bdc91d1757ddc78478d9e88ade5367b23ea4a36830bc/68747470733a2f2f61736369696e656d612e6f72672f612f33373339302e706e67" width="400" alt="demo" data-canonical-src="https://asciinema.org/a/37390.png" /></a>

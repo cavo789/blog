@@ -272,7 +272,7 @@ Run `vendor/bin/behat` in the console again:
 
 ![Ambiguous match](./images/ambiguous_match.png)
 
-We got the *Ambiguous match of ...* error on the very first step, our *I am on "<https://www.avonture.be>"* step. Ambiguous means that we're trying to add some PHP code in our context while that step is already defined (by Mink). So, just drop it by editing your `FeatureContext.php` file, select the `public function iAmOn` and remove the entire function.
+We got the *Ambiguous match of ...* error on the very first step, our *I am on https://www.avonture.be* step. Ambiguous means that we're trying to add some PHP code in our context while that step is already defined (by Mink). So, just drop it by editing your `FeatureContext.php` file, select the `public function iAmOn` and remove the entire function.
 
 ![Remove the iAmOn method](./images/drop_iamon.png)
 
