@@ -126,18 +126,18 @@ endif
 .PHONY: lint
 lint: ## Lint markdown files
 	@printf $(_YELLOW) "Lint markdown files"
-	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}:/md peterdavehello/markdownlint markdownlint --fix --config .config/.markdownlint.json --ignore-path .config/.markdownlint_ignore .
+	docker run --rm -it --user $$(id -u):$$(id -g) -v $${PWD}:/md peterdavehello/markdownlint markdownlint --fix --config .config/.markdownlint.json --ignore-path .config/.markdownlint_ignore .
 
 .PHONY: spellcheck
 spellcheck: ## Check for spell checks errors (https://github.com/streetsidesoftware/cspell)
 	@printf $(_YELLOW) "Run spellcheck"
-	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}:/src -w /src ghcr.io/streetsidesoftware/cspell:latest lint . --unique --gitignore --quiet --no-progress --config .vscode/cspell.json
+	docker run --rm -it --user $$(id -u):$$(id -g) -v $${PWD}:/src -w /src ghcr.io/streetsidesoftware/cspell:latest lint . --unique --gitignore --quiet --no-progress --config .vscode/cspell.json
 
 .PHONY: upgrade
 upgrade: ## Upgrade docusaurus and npm dependencies
 	@clear
 	@printf $(_YELLOW) "Upgrade docusaurus and npm dependencies"
-	docker run --rm -it --user $${UID}:$${GID} -v $${PWD}/:/project -w /project node /bin/bash -c "yarn upgrade"
+	docker run --rm -it --user $$(id -u):$$(id -g) -v $${PWD}/:/project -w /project node /bin/bash -c "yarn upgrade"
 	@printf $(_YELLOW) "Current version of docusaurus"
 	docker run --rm -it -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus -V"
 	
