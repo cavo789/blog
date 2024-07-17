@@ -3,7 +3,7 @@ slug: json-lint
 title: JSON - Online linter
 authors: [christophe]
 image: ./images/json_lint_social_media.jpg
-tags: [code quality, json, tips, tool]
+tags: [code quality, json, tips, tool, vscode]
 draft: true
 enableComments: true
 ---
@@ -20,3 +20,15 @@ Retrieve my **JSON Linter** tool and sources on [https://github.com/cavo789/json
 The tool is accessible online: [https://jsonlint.avonture.be/](https://jsonlint.avonture.be/)
 
 ![Demo](./images/json_lint_demo.gif)
+
+## Chrome Addon
+
+If you're using Chrome and if the web page output is a JSON string, the [JSON Formatter](https://chromewebstore.google.com/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa) addon will immediately display it in a readable form.
+
+For instance, instead of getting this page:
+
+![Json webpage](./images/json_page.png)
+
+Chrome will show this:
+
+![Chrome addon](./images/chrome_addon.png)
