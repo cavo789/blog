@@ -4,7 +4,6 @@ title: SQL - Formatting tool
 authors: [christophe]
 image: ./images/sql_formatter_social_media.jpg
 tags: [code quality, sql, tips, tool]
-draft: true
 enableComments: true
 ---
 ![SQL - Formatting tool](./images/sql_formatter_banner.jpg)
@@ -33,5 +32,7 @@ ORDER BY
 <!-- truncate -->
 
 Retrieve my **SQL Formatter** tool and sources on [https://github.com/cavo789/sql_formatter](https://github.com/cavo789/sql_formatter).
+
+The tool is accessible online: [https://sql-formatter.avonture.be/](https://sql-formatter.avonture.be/)
 
 ![Demo](./images/sql_formatter_demo.gif)
