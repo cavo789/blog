@@ -12,7 +12,7 @@ Natively, Linux has a command-line tool called `diff` for comparing two folders 
 
 However, when you want to do this in a slightly more industrialised way (launch a very large number of comparisons to compare two versions of the same project, for example), the use of a few flags and snippets comes in handy.
 
-<!-- truncated -->
+<!-- truncate -->
 
 ## Compare two files
 
