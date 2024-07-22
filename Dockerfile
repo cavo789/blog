@@ -41,9 +41,13 @@ ARG DOCKER_UID
 ARG DOCKER_GID
 ARG USERNAME
 
-RUN groupadd --gid ${DOCKER_GID} "${USERNAME}" \
+# hadolint ignore=DL3008
+RUN set -e -x \
+    && if [ ! "$DOCKER_UID" = "1000" ]; then \
+    groupadd --gid ${DOCKER_GID} "${USERNAME}" \
     && useradd --home-dir /home/"${USERNAME}" --create-home --uid ${DOCKER_UID} \
-        --gid ${DOCKER_GID} --shell /bin/sh --skel /dev/null "${USERNAME}"
+        --gid ${DOCKER_GID} --shell /bin/sh --skel /dev/null "${USERNAME}" ; \
+    fi
 
 USER "${USERNAME}"
 
