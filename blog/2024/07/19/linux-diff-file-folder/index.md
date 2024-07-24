@@ -60,7 +60,8 @@ printf "\033[1;34m%s %s %s %s\033[0m\n" "Compare folder" "${FOLDER_SOURCE}" "aga
 pushd "${FOLDER_SOURCE}" > /dev/null && LC_ALL=C diff --brief --ignore-blank-line . "${FOLDER_COMPARE_WITH}" ; popd > /dev/null
 ```
 
-### Hide when the file is just in the first folder
+<details>
+<summary>Hide when the file is just in the first folder</summary>
 
 This variation allows to hide the message `Only in .` i.e. when a file is present in the first folder (the `SOURCE` one) and not in the second one (the `COMPARE_WITH` one).
 
@@ -77,3 +78,5 @@ printf "\033[1;34m%s %s %s %s\033[0m\n" "Compare folder" "${FOLDER_SOURCE}" "aga
  
 pushd "${FOLDER_SOURCE}" > /dev/null && LC_ALL=C diff --brief --ignore-blank-line . "${FOLDER_COMPARE_WITH}" | grep -v '^Only in \.' ; popd > /dev/null
 ```
+
+</details>

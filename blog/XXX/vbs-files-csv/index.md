@@ -3,7 +3,7 @@ slug: vbs-files-csv
 title: VBS - Get list of files and generate a CSV
 authors: [christophe]
 image: /img/vbs_tips_social_media.jpg
-tags: [dos, github, vbs]
+tags: [dos, vbs]
 draft: true
 enableComments: true
 ---

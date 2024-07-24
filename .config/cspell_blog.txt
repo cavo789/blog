@@ -35,9 +35,9 @@ colorterm
 commandline
 composer
 cond
+corepack
 countrycode
 countrylanguage
-corepack
 cpanel
 cscript
 dahlqvist
@@ -197,6 +197,7 @@ planethoster
 plantuml
 plushie
 pmsipilot
+popd
 porzio's
 postgrest
 powerlevel
@@ -206,6 +207,7 @@ println
 programfiles
 psql
 publickey
+pushd
 qube
 quickview
 randomart
