@@ -157,8 +157,8 @@ So, for instance, if you've cloned your project using `git clone https://github.
 But, if you already have created a SSH key for your github profile, then, you can stop to use https and force ssl by adding the two lines below in your `~/.gitconfig`:
 
 ```text
-[url "git@code.bosa.fgov.be"]
-    insteadOf = https://code.bosa.fgov.be/
+[url "git@github.com"]
+    insteadOf = https://github.com/
 ```
 
 :::tip Using command line

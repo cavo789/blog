@@ -1,0 +1,170 @@
+---
+slug: docker-use-ssh-during-build
+title: Docker secrets - Using your SSH key during the build process
+authors: [christophe]
+image: /img/docker_secrets_tips_social_media.jpg
+tags: [docker, git, github, secrets, ssh]
+enableComments: true
+draft: true
+---
+![Docker secrets - Using your SSH key during the build process](/img/docker_secrets_tips_header.jpg)
+
+<!-- cspell:ignore keyscan -->
+
+There are plenty articles on the Internet but I didn't find the one that allowed me, without an impressive amount of trial and error, to find the solution.
+
+So here's another article to add to the long list: how to access a private project stored at Github when creating a Docker image. In other words, the SSH key is not stored in the image. Docker will just use your key when executing the project recovery *layer* (the one containing the `git clone` instruction) and will not keep track of the key afterwards.
+
+<!-- truncate -->
+
+My use case: I wish to build a Docker image and during the build phase, I need to grab a copy of a private repository I've put on Github.com.
+
+When I'll access to the container, the project will then be available but I don't have, anywhere in my image, a copy of my SSH key so I won't be able to run a `git pull` f.i. since no more authentication are possible.
+
+## Which key to use
+
+:::warning
+This part is one of the most important one. First, of course, you should already have created a SSH key (see my [Github - Connect your account using SSH and start to work with git@ protocol](/blog/github-connect-using-ssh) if needed).
+
+Then you should know which protocol you've used and that's really important. Is your key stored in a file called `id_ed25519` or `id_rsa` or something else. Only you knows.
+
+Just run `ls -alh ~/.ssh` to get the list of your keys:
+
+![My own keys](./images/ssh_keys.png)
+
+I'm using two different keys as you can see: `id_ed25519` or `id_rsa`. Files having the `.pub` extensions are the public keys; those without extensions are the private keys.
+:::
+
+It's important to know which key has been used to link your Github profile.
+
+You can just display the file to your console like f.i. `cat ~/.ssh/id_ed25519.pub` or `cat ~/.ssh/id_rsa.pub` (the public key file) and look at the end: is the mentioned email is the one you're using on Github.com? If yes, you've probably identified the key.
+
+In my case, the key I've used for github.com is `id_25519` so I'll use that one in the next chapter.
+
+## Creating files
+
+We'll need to files; `docker-compose.yaml` and `Dockerfile`.
+
+### docker-compose.yaml
+
+Here is my `docker-compose.yaml` content:
+
+```yaml
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      // highlight-next-line
+      secrets:
+        // highlight-next-line
+        - my_ssh_key
+      args:
+        // highlight-next-line
+        - KEY_NAME=id_ed25519
+
+// highlight-next-line
+secrets:
+  // highlight-next-line
+  my_ssh_key:
+    // highlight-next-line
+    file: ${HOME}/.ssh/id_ed25519
+```
+
+As you can see, we've five specific lines.
+
+In our `services -> app --> build` entry, we should add the `secrets` and the name of one (or more) secrets.
+
+I've also add an argument called `KEY_NAME` just because I need to inform Docker which key I'm using (is it `id_ed25519` or `id_rsa` or another one).
+
+Secrets have to be defined at the same indentation level of `services` and the notation is this one:
+
+```yaml
+secrets:
+  a_secret_name:
+    file: existing_file
+```
+
+You can use what you want for `a_secret_name`; for instance, `my_ssh_key`.
+
+:::tip docker compose config
+You can, if you want, run `docker compose config` to check if your file is correct. You'll also see the full path for the used key.
+
+![Docker compose config](./images/config.png)
+:::
+
+### Dockerfile
+
+Time to create our second file, `Dockerfile`:
+
+```Dockerfile
+FROM alpine:3.19
+
+ARG KEY_NAME="id_rsa"
+
+USER root
+
+RUN apk add --no-cache bash ca-certificates git openssh-client
+
+// highlight-next-line
+RUN mkdir -p -m 0700 /root/.ssh && ssh-keyscan "github.com" >> /root/.ssh/known_hosts
+
+// highlight-next-line
+RUN --mount=type=secret,id=my_ssh_key,dst=/root/.ssh/${KEY_NAME} \
+    // highlight-next-line
+    mkdir -p /app && cd app \
+    // highlight-next-line        
+    && ssh -T git@github.com || true \
+    // highlight-next-line
+    && git clone git@github.com:cavo789/my_private_repo.git
+
+WORKDIR /app
+
+# Keep the container running
+ENTRYPOINT ["tail", "-f", "/dev/null"]
+```
+
+:::warning Think to replace cavo789/my_private_repo.git and refers one of your repository
+:::
+
+As you can see, we are setting `KEY_NAME="id_rsa"` as the default value (but will be overwrite by our declaration in the yaml file) then later on, we need to create the `/root/.ssh`folder and we are adding `github.com` in the list of known hosts.
+
+The most important thing comes then. We should use the `RUN --mount=type=secret` syntax so inform Docker that this layer will use a Docker secret. We need to provide the name of our secret (which was set in our yaml file and it's `my_ssh_key` here) then we need to define where that secret has to be stored **during this layer**. Our variable `KEY_NAME` find his interest here: our SSH key was `id_ed25519` and this is the value of the `KEY_NAME` variable.
+
+So, in short `--mount=type=secret,id=my_ssh_key,dst=/root/.ssh/${KEY_NAME}` will be translated to `--mount=type=secret,id=my_ssh_key,dst=/root/.ssh/id_ed25519`.
+
+During this layer thus, our local SSH key will be saved to `/root/.ssh/id_ed25519`. The other lines in that `RUN` layer will first create a `/app` folder, jump in it, then run `ssh -T git@github.com` just for debugging (we expect to see on the screen `Hi your_name! You've successfully authenticated`) and finally we're git cloning our private repository using SSH.
+
+## Create the image and jump in the container
+
+Ok, so you've the created the two files on your hard disk.
+
+Run `docker compose --progress plain build --no-cache` in your console to build the image and enable the verbose mode.
+
+As you can see below, we can confirm that our SSH key was shared during the build process.
+
+![You're authenticated](./images/authenticated.png)
+
+You'll now create the container; by running `docker compose up --detach`.
+
+![The container is being created](./images/container_created.png)
+
+Now, just to check, we can jump inside the container by running `docker compose exec app /bin/bash`.
+
+![Starting an interactive console](./images/bash_session.png)
+
+We can verify that our key wasn't stored in the image by running `ls -alh /root/.ssh/`
+
+![No keys in the .ssh folder](./images/root_ssh_folder.png)
+
+We can check too: jumping in our repository folder and running `git pull` will fails with the error below:
+
+```text
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+And this is what we expect: our key isn't part of the image so we can't connect anymore to Github.

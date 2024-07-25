@@ -3,7 +3,7 @@ slug: docker-cheatsheet
 title: Docker cheat sheet
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
-tags: [laravel, php]
+tags: [docker, tip]
 enableComments: true
 draft: true
 ---
