@@ -9,11 +9,13 @@ enableComments: true
 ---
 ![Linux - Generate documentation from Bash scripts](/img/bash_tips_header.jpg)
 
+<!-- cspell:ignore HEllow -->
+
 When writing Bash scripts, I'm always putting some description block in front of any functions like I do in any language (think to [PHP Docblock](https://docs.phpdoc.org/guide/getting-started/what-is-a-docblock.html)).
 
-With PHP, there is a few looks like phpDocumentor for extracting these blocks and generate documentations but do such tools exist for Bash? I don't know, I haven't found any.
+With PHP, there are a few tools like phpDocumentor for extracting these blocks and generate documentation but do such tools exist for Bash? I don't know, I haven't found any.
 
-So I've written a small Bash script to accomplish this i.e. parse any `.sh` file present in a folder, extract doc-blocks and create one Markdown document for any retreived script. Each function's documentation will then be copied in Markdown, then a table of contents will be appended and, finally, a generic readme.md file will display the list of markdown files retrieved.
+So I've written a small Bash script to accomplish this i.e. parse any `.sh` file present in a folder, extract doc blocks and create one markdown document for any retrieved script. Each function's documentation will then be copied in Markdown, then a table of contents will be appended and, finally, a generic readme.md file will display the list of markdown files retrieved.
 
 <!-- truncate -->
 
@@ -64,7 +66,7 @@ Please create the file `/tmp/bash/generate_doc.sh` with this content:
 #!/usr/bin/env bash
 
 # Get the location (foldername) of this script; not the running one (don't use $0)
-#! Should be defined here and in below during the initialization of the params array
+#! Should be defined here and in below during the initialisation of the params array
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
 
 # region - public function array::sort
@@ -84,7 +86,7 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
 #
 # ## Parameters
 #
-# * @arg array Non associative array to sort
+# * @arg array Non-associative array to sort
 #
 # ## Return
 #
@@ -113,7 +115,7 @@ function array::sort() {
 #
 # Extract the introduction block present in the bash file.
 #
-# The block will looks like below
+# The block will look like below
 #
 #   # region - Intro block -------------------------------------------
 #   #
@@ -682,6 +684,7 @@ function string::trim() {
 
 generate_doc::__main $*
 ```
+
 </details>
 
 Once you've created the `/tmp/bash/generate_doc.sh` file and make it executable (`chmod +x ./generate_doc.sh`), just run `./generate_doc.sh` in the console.
@@ -690,7 +693,7 @@ Once you've created the `/tmp/bash/generate_doc.sh` file and make it executable 
 
 The script will process any `.sh` file located in the `helpers` sub-folder (we've created the `string.sh` earlier).
 
-For one file found in the `helpers` folder, the same file will be created in the `documentation` folder so a file called `string.md` will be created. In that Markdown file, any functions having a doc-block will be described.
+For one file found in the `helpers` folder, the same file will be created in the `documentation` folder so a file called `string.md` will be created. In that markdown file, any functions having a doc-block will be described.
 
 Here the content of the `documentation/string.md` file:
 

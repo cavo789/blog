@@ -9,9 +9,9 @@ enableComments: true
 ---
 ![Git - Some tips for your .gitconfig file](/img/git_tips_banner.jpg)
 
-<!-- cspell:ignore autocrlf,committerdate,gitdir,sooooooo -->
+<!-- cspell:ignore autocrlf,committerdate,customising,gitdir,sooooooo -->
 
-In this article, we're going to explore some tips for using Git more easily by customizing the `~/.gitconfig` file.
+In this article, we're going to explore some tips for using Git more easily by customising the `~/.gitconfig` file.
 
 We'll create a new `git undo` command to abandon the last local commit.
 
@@ -58,7 +58,7 @@ When working on a new feature, most probably you'll first do `git checkout -b my
 
 Then you'll do some coding works and the time will come to push towards git using f.i. `git add . ; git commit -m "wip" ; git push` but it'll not directly work.
 
-Indeed, git will complaint that `myNewFeature` didn't exists remotely and that you need first to create the branch.
+Indeed, git will complain that `myNewFeature` didn't exist remotely and that you need first to create the branch.
 
 You can git rid of this but adding the two lines below in your `~/.gitconfig`:
 
@@ -67,7 +67,7 @@ You can git rid of this but adding the two lines below in your `~/.gitconfig`:
     autoSetupRemote = true
 ```
 
-Now, if the local branch didn't exists remotely, git push will create it automatically for you.
+Now, if the local branch didn't exist remotely, git push will create it automatically for you.
 
 ### Cleaning dead branches
 
@@ -90,7 +90,7 @@ Instead of updating the file manually, you can obtain the exact same results by 
 
 At work, we're using Git on a very large codebase and thus, we're creating branches to add new functionalities.
 
-By running `git branch --list --all` (or, shortly, `git branch -a`), git returns the list of branch in an alphabetical order which really isn't very useful.
+By running `git branch --list --all` (or, shortly, `git branch -a`), git returns the list of branches in an alphabetical order which really isn't very useful.
 
 It would be better to sort the list on the last commit made in the branch so, at the top of the list, we've the last used branches and, at the bottom, inactive ones.
 
@@ -127,7 +127,7 @@ git config --global user.email "me@work.be"
 git config --global user.name "Christophe Avonture"
 ```
 
-But this isn't very practical when you're working on several types of project, e.g. for work and for your third-party projects. Let's say you're putting professional work in a given parent folder like `~/work_repositories` while your side projects are in `~/private_repositories`.
+But this isn't very practical when you're working on several types of projects, e.g. for work and for your third-party projects. Let's say you're putting professional work in a given parent folder like `~/work_repositories` while your side projects are in `~/private_repositories`.
 
 When your `~/.gitconfig` looks like below, every time you'll push to Git, the published commit will comes from `me@work.be`.
 
@@ -137,7 +137,7 @@ When your `~/.gitconfig` looks like below, every time you'll push to Git, the pu
     name = Christophe Avonture
 ```
 
-And, with the configuration below, now, if you're pushing a repositories located in the `~/private_repositories`, this time the author will be `me@private.be`; no more your professional email.
+And, with the configuration below, now, if you're pushing a repository located in the `~/private_repositories`, this time the author will be `me@private.be`; no more your professional email.
 
 ```text
 [user]
@@ -152,9 +152,9 @@ And, with the configuration below, now, if you're pushing a repositories located
 
 Even if you've cloned a repository using `git clone https://...` you can force, globally, to use SSH instead.
 
-So, for instance, if you've cloned your project using `git clone https://github.com/you/your_repo.git` (`https` thus), every time you'll push to it, you'll perhaps be prompted to provided your login and password. Really painful.
+So, for instance, if you've cloned your project using `git clone https://github.com/you/your_repo.git` (`https` thus), every time you'll push to it, you'll perhaps be prompted to provide your login and password. Really painful.
 
-But, if you already have created a SSH key for your github profile, then, you can stop to use https and force ssl by adding the two lines below in your `~/.gitconfig`:
+But, if you already have created a SSH key for your Github profile, then, you can stop to use https and force ssl by adding the two lines below in your `~/.gitconfig`:
 
 ```text
 [url "git@github.com"]

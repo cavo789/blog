@@ -3,7 +3,7 @@ slug: ftp-erase-files
 title: FTP - Remove files and folders at light speed
 authors: [christophe]
 image: ./images/erase-light-speed_social_media.jpg
-tags: [database, joomla, tips]
+tags: [ftp, tips]
 enableComments: true
 ---
 <!-- cspell:ignore subfolders -->

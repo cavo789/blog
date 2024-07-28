@@ -184,6 +184,7 @@ function console::printBlue() {
 }
 
 ```
+
 </details>
 
 :::info The order has no important

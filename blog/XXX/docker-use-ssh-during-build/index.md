@@ -24,9 +24,9 @@ When I'll access to the container, the project will then be available but I don'
 ## Which key to use
 
 :::warning
-This part is one of the most important one. First, of course, you should already have created a SSH key (see my [Github - Connect your account using SSH and start to work with git@ protocol](/blog/github-connect-using-ssh) if needed).
+This part is one of the most important ones. First, of course, you should already have created a SSH key (see my [Github - Connect your account using SSH and start to work with git@ protocol](/blog/github-connect-using-ssh) if needed).
 
-Then you should know which protocol you've used and that's really important. Is your key stored in a file called `id_ed25519` or `id_rsa` or something else. Only you knows.
+Then you should know which protocol you've used and that's really important. Is your key stored in a file called `id_ed25519` or `id_rsa` or something else. Only you know.
 
 Just run `ls -alh ~/.ssh` to get the list of your keys:
 
@@ -75,7 +75,7 @@ As you can see, we've five specific lines.
 
 In our `services -> app --> build` entry, we should add the `secrets` and the name of one (or more) secrets.
 
-I've also add an argument called `KEY_NAME` just because I need to inform Docker which key I'm using (is it `id_ed25519` or `id_rsa` or another one).
+I've also added an argument called `KEY_NAME` just because I need to inform Docker which key I'm using (is it `id_ed25519` or `id_rsa` or another one).
 
 Secrets have to be defined at the same indentation level of `services` and the notation is this one:
 
@@ -124,10 +124,10 @@ WORKDIR /app
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 ```
 
-:::warning Think to replace cavo789/my_private_repo.git and refers one of your repository
+:::warning Think to replace cavo789/my_private_repo.git and refers one of your repositories
 :::
 
-As you can see, we are setting `KEY_NAME="id_rsa"` as the default value (but will be overwrite by our declaration in the yaml file) then later on, we need to create the `/root/.ssh`folder and we are adding `github.com` in the list of known hosts.
+As you can see, we are setting `KEY_NAME="id_rsa"` as the default value (but will be overwritten by our declaration in the yaml file) then later on, we need to create the `/root/.ssh`folder and we are adding `github.com` in the list of known hosts.
 
 The most important thing comes then. We should use the `RUN --mount=type=secret` syntax so inform Docker that this layer will use a Docker secret. We need to provide the name of our secret (which was set in our yaml file and it's `my_ssh_key` here) then we need to define where that secret has to be stored **during this layer**. Our variable `KEY_NAME` find his interest here: our SSH key was `id_ed25519` and this is the value of the `KEY_NAME` variable.
 
@@ -157,7 +157,7 @@ We can verify that our key wasn't stored in the image by running `ls -alh /root/
 
 ![No keys in the .ssh folder](./images/root_ssh_folder.png)
 
-We can check too: jumping in our repository folder and running `git pull` will fails with the error below:
+We can check too: jumping in our project folder and running `git pull` will fail with the error below:
 
 ```text
 git@github.com: Permission denied (publickey).
@@ -168,3 +168,74 @@ and the repository exists.
 ```
 
 And this is what we expect: our key isn't part of the image so we can't connect anymore to Github.
+
+## Sharing your keys also with the container
+
+Ok, we've seen how to share the SSH key with Docker but only during the build phase. As we've seen above, jumping in the container and running `git pull` has failed; exactly what we wanted in the previous chapter.
+
+But now, if we need to share our key also with the container so we can work on the project, update it and push changes / pull modifications, how to do?
+
+Please edit the `docker-compose.yaml` file and add these two lines:
+
+```yaml
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      secrets:
+        - my_ssh_key
+      args:
+        - KEY_NAME=id_ed25519      
+    // highlight-next-line
+    volumes:
+      // highlight-next-line
+      - ${HOME}/.ssh:/root/.ssh
+
+secrets:
+  my_ssh_key:
+    file: ${HOME}/.ssh/id_ed25519
+```
+
+Then recreate the container by running `docker compose up --detach`. Jump in the container by running `docker compose exec app /bin/bash` and go in your project folder. Now, by running `git pull`, as you'll see, it'll work.
+
+Why? Because your SSH keys are now part of the container as we can see by running `ls -alh /root/.ssh`:
+
+![Keys are now part of the container](./images/container_ssh_keys.png)
+
+:::important Keys are not stored in the image even when you've shared them with the container
+Just to be clear: the notion of volume we've just implemented concerns the container and not the image. In other words, SSH keys are not stored in the Docker image. You could give it to someone else (e.g. by saving the image on Docker Hub); your keys won't be there and will remain on your computer. Your image and your secrets are safe.
+
+Then, when the user run `docker compose up --detach` using the `docker-compose.yaml` file where there are the two lines we've just added (the ones for adding the volume); these are his keys, on his computer, not yours.  
+:::
+
+:::caution Please take note of the running user in your container
+In our example here, the default user is `root` as we can see by jumping in the container and running `whoami`.
+
+![Whoami](./images/whoami.png)
+
+So, when we've started `git pull`, it was under `root`. This is why we've mounted our volume like below:
+
+```yaml
+services:
+  app:
+    [...]
+    // highlight-next-line
+    volumes:
+      // highlight-next-line
+      - ${HOME}/.ssh:/root/.ssh
+```
+
+Imagine the current user was `christophe`. In that case the mount should be done like this:
+
+```yaml
+services:
+  app:
+    [...]
+    // highlight-next-line
+    volumes:
+      // highlight-next-line
+      - ${HOME}/.ssh:/christophe/.ssh
+```
+
+:::

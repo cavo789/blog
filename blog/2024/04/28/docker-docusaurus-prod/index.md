@@ -33,7 +33,7 @@ Jump in a console and run the following commands: `mkdir /tmp/docusaurus && cd $
 
 You're now in the `/tmp/docusaurus` folder.
 
-Copy/paste instructions below, with the parentheses included. This will create a subfolder called `blog` with three markdown files in it, our three fake articles.
+Copy/paste in the console instructions below, with the parentheses included. This will create a subfolder called `blog` with three markdown files in it, our three fake articles.
 
 ```bash
 (
