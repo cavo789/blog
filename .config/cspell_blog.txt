@@ -170,6 +170,7 @@ onbrokenanchors
 onsave
 openapi
 opentype
+optimised
 pagetitle
 pandoc
 papersize
@@ -215,6 +216,7 @@ quickview
 randomart
 randomuser
 readfile
+recognises
 rector
 rectorphp
 regedit
