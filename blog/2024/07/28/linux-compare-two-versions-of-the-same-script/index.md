@@ -4,7 +4,6 @@ title: Linux - Compare two versions of the same script
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 tags: [bash, introspection, linux, tips]
-draft: true
 enableComments: true
 ---
 ![Linux - Compare two versions of the same script](/img/bash_tips_header.jpg)
@@ -100,11 +99,11 @@ As you can see, we immediately see that the second file has two additions.
 
 ![Compare the two versions of the same Bash script and shows which functions are in one and not the other](./images/compare_functions.png)
 
-Of course, if we add a new functions in `console.sh` and f.i. remove an existing one, we can see it too:
+Of course, if we add a new function in `console.sh` and f.i. remove an existing one, we can see it too:
 
 ![Compare the two versions of the same Bash script and shows which functions are not the same in both files](./images/compare_functions_both_side.png)
 
-On the image here above, we see three indicators in the midle of the screen: 
+On the image here above, we see three indicators in the middle of the screen: 
 
 ```text
                                       > console::printBlue()

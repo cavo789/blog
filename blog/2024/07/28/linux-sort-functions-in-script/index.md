@@ -4,7 +4,6 @@ title: Linux - Sort functions in a Bash script
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 tags: [bash, introspection, linux, tips]
-draft: true
 enableComments: true
 ---
 ![Linux - Sort functions in a Bash script](/img/bash_tips_header.jpg)
@@ -68,7 +67,7 @@ Let's use `diff` to compare our existing file (left-hand side) and the sorted li
 )
 ```
 
-As we can see on the image below, the column at the left show that the first defined function in the `/tmp/bash/console.sh` script is `console::printCyan` followed by `console::askYesNo` and `console::printRed` for the third function declared (in that order) in the Bash script.
+As we can see on the image below, the column at the left show that the first-defined function in the `/tmp/bash/console.sh` script is `console::printCyan` followed by `console::askYesNo` and `console::printRed` for the third function declared (in that order) in the Bash script.
 
 In the right column, we can see that the first, sorted, function is `console::askYesNo`, the second is `console::banner` and so on.
 
@@ -127,7 +126,7 @@ If you see this, perfect, functions are correctly ordered in your script.
 
 We have just seen, on the command line, how to check whether a Bash script declaring functions does so in alphabetical order.
 
-Let's move on to the industrialization of this concept: a script that will scan each .sh file in a specific folder and check whether the functions are defined in the file in alphabetical order. 
+Let's move on to the industrialisation of this concept: a script that will scan each .sh file in a specific folder and check whether the functions are defined in the file in alphabetical order. 
 
 If this is the case, we won't have any display so as not to pollute our console.
 
