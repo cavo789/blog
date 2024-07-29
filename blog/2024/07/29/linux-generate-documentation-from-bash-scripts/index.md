@@ -4,7 +4,6 @@ title: Linux - Generate documentation from Bash scripts
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 tags: [bash, introspection, linux, tips]
-draft: true
 enableComments: true
 ---
 ![Linux - Generate documentation from Bash scripts](/img/bash_tips_header.jpg)
