@@ -16,7 +16,7 @@ Not everywhere means, for instance, VSCode didn't support code folding by defaul
 
 <!-- truncate -->
 
-## Code folder in PHP
+## Code folding in PHP
 
 Consider the following, very basic, example (*very brief example for illustrative purposes*):
 
