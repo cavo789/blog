@@ -10,7 +10,7 @@ ARG DOCKER_UID=1000
 ARG DOCKER_GID=1000
 ARG USERNAME=christophe
 
-# Stage 1: Base image.
+# region - Stage 1: Base image.
 
 FROM node:lts AS base
 
@@ -23,9 +23,9 @@ RUN corepack enable
 ARG TARGET
 RUN /bin/bash -c "echo \"PS1='\n\e[0;33m🐳 (${TARGET})\e[0m - \e[0;36m$(whoami)\e[0m \w # '\" >> ~/.bashrc "
 
-# --------------------------------------------------------------------
+# endregion
 
-# Stage 2a: Development mode.
+# region - Stage 2a: Development mode.
 
 FROM base AS development
 
@@ -54,9 +54,9 @@ USER "${USERNAME}"
 # Set the working directory to `/opt/docusaurus`.
 WORKDIR "${HOMEDIR}"
 
-# --------------------------------------------------------------------
+# endregion
 
-# Stage 2b: Production build mode.
+# region - Stage 2b: Production build mode.
 
 FROM base AS building_production
 
@@ -87,9 +87,9 @@ COPY . "${HOMEDIR}/"
 # Build the static site (generated files will be created in /opt/docusaurus/build)
 RUN yarn build
 
-# --------------------------------------------------------------------
+# endregion
 
-# Stage 3: Serve with nginx
+# region - Stage 3: Serve with nginx
 
 FROM nginx:stable-alpine3.19-perl AS production
 
@@ -107,3 +107,5 @@ ARG HOMEDIR
 COPY --from=building_production "${HOMEDIR}/build /usr/share/nginx/html"
 
 WORKDIR /usr/share/nginx/html
+
+# endregion
