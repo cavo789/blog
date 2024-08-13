@@ -5,15 +5,18 @@ authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
 tags: [tips, vba, winscp]
 enableComments: true
-draft: true
 ---
-![WinSCP - Visual Basic for Application use](/img/winscp_tips_banner.jpg).
+![WinSCP - Visual Basic for Application use](/img/winscp_tips_banner.jpg)
 
-The [WinSCP](https://winscp.net/) DLLs can be called up through a VBA code and therefore it would be possible to upload / download a file to / from an FTP server.
+[WinSCP](https://winscp.net/) is a free, open-source file manager for securely transferring files between your computer and remote servers using protocols like SFTP, FTP, SCP, and WebDAV.
+
+Did you know that you can call WinSCP from ... VBA code?
 
 See [https://winscp.net/eng/docs/library_vb#using](https://winscp.net/eng/docs/library_vb#using). There are also several posts in the forum: [https://winscp.net/forum/search.php?mode=results](https://winscp.net/forum/search.php?mode=results)
 
 <!-- truncate -->
+
+The [WinSCP](https://winscp.net/) DLLs can be called up through a VBA code and therefore it would be possible to upload / download a file to / from an FTP server.
 
 Below a simple VBA example you can use in f.i. MS Excel to upload a file to your remote server.
 
