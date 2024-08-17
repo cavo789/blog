@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 tags: [apache, docker, https, ssh]
 enableComments: true
-draft: true
 ---
 <!-- cspell:ignore htdocs,newkey,keyout,a2enmod,a2ensite,a2dissite,libapache2,unexpire,badaboum,socache,shmcb -->
 
@@ -384,3 +383,97 @@ how to fix it, please visit the web page mentioned above.
 ```
 
 As explained above, the certificate is not valid so you have to use the `--insecure` flag and thus run: `curl https://localhost --insecure`.
+
+## Bonus - Configure PHP to use SSL
+
+If you don't want Apache but PHP (because you've to execute some PHP code), please use files below instead.
+
+It's basically the same but you'll notice some differences like in paths and the fact we don't need to install extra dependencies for PHP.
+
+<details>
+<summary>Dockerfile</summary>
+
+Please create a file called `Dockerfile` with the following content:
+
+```Dockerfile
+FROM php:8.3-apache
+
+COPY ssl/server.crt /etc/ssl/certs/server.crt
+COPY ssl/server.key /etc/ssl/private/server.key
+
+COPY httpd/my-site.conf /etc/apache2/sites-available/my-ssl.conf
+
+RUN a2enmod ssl && \
+    a2enmod rewrite && \
+    a2dissite 000-default default-ssl && \
+    a2ensite my-ssl
+```
+
+</details>
+
+<details>
+<summary>compose.yaml</summary>
+
+The second file we'll need should be called `compose.yaml` with the following content:
+
+```yaml
+services:
+  php:
+    build:
+      context: .
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./src:/var/www/html/
+```
+
+:::tip compose.yaml is strictly equivalent to docker-compose.yml
+:::
+
+</details>
+
+<details>
+<summary>httpd/my-site.conf</summary>
+
+The third file we'll need should be created in a `httpd` directory and has to be called `my-site.conf` with the following content:
+
+```apache
+<VirtualHost *:80>
+    DocumentRoot /var/www/html
+    ServerName localhost
+
+    <Directory /var/www/html>
+        AllowOverride All
+        RewriteEngine On
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^(.*)$ index.html [QSA,L]
+    </Directory>
+
+    ErrorLog /var/log/apache2/error.log
+    CustomLog /var/log/apache2/access.log combined    
+
+
+</VirtualHost>
+
+<VirtualHost *:443>
+    DocumentRoot /var/www/html
+    ServerName localhost
+
+    SSLEngine on
+    SSLCertificateFile "/etc/ssl/certs/server.crt"
+    SSLCertificateKeyFile "/etc/ssl/private/server.key"
+
+    <Directory /var/www/html>
+        AllowOverride All
+        RewriteEngine On
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^(.*)$ index.html [QSA,L]
+    </Directory>
+
+    ErrorLog /var/log/apache2/error.log
+    CustomLog /var/log/apache2/access.log combined    
+
+</VirtualHost>
+```
+</details>
