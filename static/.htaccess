@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+
+  # Rewrite the URL to force https and www.
+  RewriteEngine On
+
+  # Compliant with hstspreload.org : first redirect to https if needed
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Do some redirections
+  RedirectPermanent /blog/docker-apache-ssl https://avonture.be/blog/docker-localhost-ssl
+
+</IfModule>
+
