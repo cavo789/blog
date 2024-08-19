@@ -1,26 +1,28 @@
 ---
-slug: docker-apache-ssl
-title: Docker - Configure Apache (httpd) to use SSL
+slug: docker-localhost-ssl
+title: Docker - Configure your localhost to use SSL
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
-tags: [apache, docker, https, ssh]
+tags: [apache, docker, https, php, nginx, ssh]
 enableComments: true
 ---
 <!-- cspell:ignore htdocs,newkey,keyout,a2enmod,a2ensite,a2dissite,libapache2,unexpire,badaboum,socache,shmcb -->
 
-![Docker - Configure Apache (httpd) to use SSL](/img/docker_tips_header.jpg)
+![Docker - Configure your localhost to use SSL](/img/docker_tips_header.jpg)
 
 In a [previous article](/blog/docker-html-site), I've explained how to run a static HTML site in seconds.
 
 The result was a site running on your computer; using `http`. Let's go one step further and learn how to configure Docker to use `https` i.e. SSL and encryption.
 
-In this article, you'll learn how to use Apache on your machine and be able to start `https://localhost`.
+In this article, you'll learn how to use Apache, nginx and PHP on your machine and be able to start `https://localhost`.
 
 <!-- truncate -->
 
-The objective is to use a [Docker Apache image](https://hub.docker.com/_/httpd) to enable access to localhost using either http or https. To do this, I need to create a so-called *self-signed* certificate and make it work... more or less.
+Our main objective is to use a [Docker Apache image](https://hub.docker.com/_/httpd) to enable access to localhost using either http or https. To do this, I need to create a so-called *self-signed* certificate and make it work... more or less.
 
 I'm saying *more or less* because running the website over SSL will work but since it's a self-signed certificate, browsers should be configured so they'll *trust* our certificate and, too, if we're using `curl`, we'll need to add the `--insecure` flag.
+
+Then, in the Bonus section, we'll do the same for nginx and for PHP.
 
 ## Let's start with just http
 
@@ -384,6 +386,86 @@ how to fix it, please visit the web page mentioned above.
 
 As explained above, the certificate is not valid so you have to use the `--insecure` flag and thus run: `curl https://localhost --insecure`.
 
+:::tip See the bonus part below
+Make sure to read the *Install a root CA certificate in the trust store* [chapter](#bonus---install-a-root-ca-certificate-in-the-trust-store).
+:::
+
+## Bonus - Configure nginx to use SSL
+
+If you don't want Apache but nginx, please use files below instead.
+
+It's basically the same but you'll notice some differences like in paths and the fact we don't need to install extra dependencies for PHP.
+
+<details>
+<summary>Dockerfile</summary>
+
+Please create a file called `Dockerfile` with the following content:
+
+```Dockerfile
+FROM nginx:latest
+
+RUN apt-get update \
+    && apt-get install -y openssl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY ssl/server.crt /etc/nginx/ssl/server.crt
+COPY ssl/server.key /etc/nginx/ssl/server.key
+
+COPY httpd/my-site.conf /etc/nginx/conf.d/my-site.conf
+```
+
+</details>
+
+<details>
+<summary>compose.yaml</summary>
+
+The second file we'll need should be called `compose.yaml` with the following content:
+
+```yaml
+services:
+  nginx:
+    build:
+      context: .
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./src:/usr/share/nginx/html
+```
+
+:::tip compose.yaml is strictly equivalent to docker-compose.yml
+:::
+
+</details>
+
+<details>
+<summary>httpd/my-site.conf</summary>
+
+The third file we'll need should be created in a `httpd` directory and has to be called `my-site.conf` with the following content:
+
+```apache
+server {
+    listen 80;
+
+    server_name localhost;
+    
+    root /usr/share/nginx/html;    
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443;
+
+    server_name localhost;
+
+    ssl_certificate /etc/nginx/ssl/server.crt;
+    ssl_certificate_key /etc/nginx/ssl/server.key;
+
+    root /usr/share/nginx/html;
+ }
+```
+</details>
+
 ## Bonus - Configure PHP to use SSL
 
 If you don't want Apache but PHP (because you've to execute some PHP code), please use files below instead.
@@ -477,3 +559,22 @@ The third file we'll need should be created in a `httpd` directory and has to be
 </VirtualHost>
 ```
 </details>
+
+## Bonus - Install a root CA certificate in the trust store
+
+As explained [here](https://documentation.ubuntu.com/server/how-to/security/install-a-root-ca-certificate-in-the-trust-store), we can trust, locally, our self-signed certificate.
+
+To do this, we simply need to copy our `.crt` file to our `/usr/local/share/ca-certificates` folder and update the list of certificates. This can be done using the `update-ca-certificates` command.
+
+The code below will install the certificate we've created in the blog post (`ssl/server.crt`) to the `/usr/local/share/ca-certificates` then run the `update-ca-certificates` command:
+
+```bash
+sudo apt-get install -y ca-certificates
+sudo cp ssl/server.crt /usr/local/share/ca-certificates
+sudo update-ca-certificates
+```
+
+:::note The certificate should have the .crt extension
+:::
+
+And, now, we can f.i. run `curl https://localost` (without the `--insecure` flag). We'll no more received an error.
