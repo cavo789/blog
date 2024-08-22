@@ -464,6 +464,7 @@ server {
     root /usr/share/nginx/html;
  }
 ```
+
 </details>
 
 ## Bonus - Configure PHP to use SSL
@@ -558,6 +559,7 @@ The third file we'll need should be created in a `httpd` directory and has to be
 
 </VirtualHost>
 ```
+
 </details>
 
 ## Bonus - Install a root CA certificate in the trust store

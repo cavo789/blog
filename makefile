@@ -91,7 +91,7 @@ endif
 down: ## Stop the container
 	COMPOSE_FILE=${COMPOSE_FILE} DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose down
 
-.PHONY: remove
+.PHONY: down remove
 remove: ## Remove the image
 	docker image rmi blog-docusaurus
 
@@ -137,7 +137,7 @@ spellcheck: ## Check for spell checks errors (https://github.com/streetsidesoftw
 upgrade: ## Upgrade docusaurus and npm dependencies
 	@clear
 	@printf $(_YELLOW) "Upgrade docusaurus and npm dependencies"
-	docker run --rm -it --user $$(id -u):$$(id -g) -v $${PWD}/:/project -w /project node /bin/bash -c "yarn upgrade"
+	docker run --rm -it --user root -v $${PWD}/:/project -w /project node /bin/bash -c "yarn upgrade"
 	@printf $(_YELLOW) "Current version of docusaurus"
 	docker run --rm -it -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus -V"
 	
