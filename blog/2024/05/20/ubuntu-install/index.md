@@ -6,7 +6,7 @@ image: ./images/install_ubuntu_social_media.jpg
 tags: [linux, ubuntu]
 enableComments: true
 ---
-<-- cspell:ignore Bitlocker,bootable,balena,askubuntu -->
+<!-- cspell:ignore Bitlocker,bootable,balena,askubuntu -->
 
 ![Ubuntu - Install from scratch](./images/install_ubuntu_banner.jpg)
 
