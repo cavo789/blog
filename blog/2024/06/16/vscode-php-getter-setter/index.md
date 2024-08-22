@@ -6,6 +6,7 @@ image: /img/vscode_tips_social_media.jpg
 tags: [tips, vscode]
 enableComments: true
 ---
+<!-- cspell:ignore strtolower -->
 ![PHP Getter and Setter in VSCode](/img/vscode_tips_header.jpg)
 
 Because you're an excellent developer, you deny anyone access to the properties of your class directly, but only via a getter or setter.
@@ -42,7 +43,7 @@ $product->price=-10;
 
 By OK I mean, ok, I've used a mix of lower and upper case for the name and ok, I've say that I'm selling computers at the cost of -10€.  It's OK because I don't do any controls of the values and, that, that is very bad.
 
-By using a setter (a function called when the property is initialised) I can verify the value and correct the case f.i. or deny negative price.
+By using a setter (a function called when the property is initialized) I can verify the value and correct the case f.i. or deny negative price.
 
 ## The good way
 

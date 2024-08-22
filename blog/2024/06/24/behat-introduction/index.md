@@ -6,6 +6,7 @@ image: ./images/behat_introduction_social_media.jpg
 tags: [bdd, behat, chrome, docker, mink, php, tests]
 enableComments: true
 ---
+<!-- cspell:ignore behat,skel,johndoe,chromedriver,gerkin,dmore,nohup,autoload -->
 ![Introduction to Behat](./images/behat_introduction_banner.jpg)
 
 At work, I'm part of a team of PHP developers where we work together to create a very large proprietary application with a web interface.
@@ -49,6 +50,7 @@ Let's start...
 * First, let's create a new directory: `mkdir /tmp/behat && cd $_`.
 * There, let's create a file called `Dockerfile` with the content below. That script is already big but; like this, we'll have everything we need right now.
 
+<!-- cspell:disable -->
 ```Dockerfile
 # The user ID and name and group ID of the user to create in our image
 ARG DOCKER_UID=1000
@@ -121,6 +123,7 @@ RUN mkdir /opt/behat
 # Set working directory
 WORKDIR /opt/behat
 ```
+<!-- cspell:enable -->
 
 * Create a file called `docker-compose.yml` with this content:
 
@@ -157,7 +160,7 @@ Ok, let's do one more thing; we need to create our `composer.json` file since we
   * Description: `Introduction to Behat`,
   * Author: `John Doe`,
   * Minimum Stability: *Just press enter*,
-  * Packate Type: `project`,
+  * Package Type: `project`,
   * License: *Just press enter*,
   * Composer will ask if you want to define dependencies and dev dependencies; answer `no` twice right now,
   * The next question will be about PSR-4, *just press enter*,
@@ -325,7 +328,7 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
     private Behat\Mink\Mink $mink;
 
     /**
-     * Initialises context.
+     * Initializes context.
      *
      * Every scenario gets its own context instance.
      * You can also pass arbitrary arguments to the
@@ -472,7 +475,7 @@ Start `./run.sh` once more and bingo!
 
 This is a success because the `Then I should be on "/Blog"` has been verified by Mink. We don't need to write the `Then I should be on` method, it's already defined by Mink.
 
-Let's try something else, back in PHP and replace `if ($element->getText() === $menu) {` by `if ($element->getText() === 'Archive') {` so we'll not click onymore on the Blog menu but on `Archive` and see what will happen:
+Let's try something else, back in PHP and replace `if ($element->getText() === $menu) {` by `if ($element->getText() === 'Archive') {` so we'll not click anymore on the Blog menu but on `Archive` and see what will happen:
 
 ![Failure](./images/failure.png)
 
@@ -583,6 +586,7 @@ services:
 
 ### Dockerfile
 
+<!-- cspell:disable -->
 ```Dockerfile
 # The user ID and name and group ID of the user to create in our image
 ARG DOCKER_UID=1000
@@ -655,6 +659,7 @@ RUN mkdir /opt/behat
 # Set working directory
 WORKDIR /opt/behat
 ```
+<!-- cspell:enable -->
 
 ### FeatureContext.php
 
@@ -677,7 +682,7 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
     private Behat\Mink\Mink $mink;
 
     /**
-     * Initialises context.
+     * Initializes context.
      *
      * Every scenario gets its own context instance.
      * You can also pass arbitrary arguments to the

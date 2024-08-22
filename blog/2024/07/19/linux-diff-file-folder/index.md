@@ -10,7 +10,7 @@ enableComments: true
 
 Natively, Linux has a command-line tool called `diff` for comparing two folders or files. Comparing two folders is quite simple: `diff folder_1 folder2`. And it's no more complicated for two files: `diff file_1 file2`.
 
-However, when you want to do this in a slightly more industrialised way (launch a very large number of comparisons to compare two versions of the same project, for example), the use of a few flags and snippets comes in handy.
+However, when you want to do this in a slightly more industrialized way (launch a very large number of comparisons to compare two versions of the same project, for example), the use of a few flags and snippets comes in handy.
 
 <!-- truncate -->
 

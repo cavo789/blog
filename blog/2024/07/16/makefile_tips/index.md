@@ -6,6 +6,9 @@ image: /img/makefile_tips_social_media.jpg
 tags: [makefile, tips]
 enableComments: true
 ---
+<!-- cspell:ignore ifeq,ifneq,ifdef,Oups,phplint,infile,recipeprefix,sonarqube,testme,findstring,toplevel,concat,outfile -->
+<!-- cspell:ignore runsql,regexes -->
+
 ![Makefile - Tutorial and Tips & Tricks](/img/makefile_tips_social_media.jpg)
 
 When I'm learning, I usually take notes.  I find that it's one of the best ways of remembering what I've seen and being able to come back to it at any time.
@@ -253,7 +256,7 @@ helloWorld:
 	echo "Hello World"
 ```
 
-However it is possible to adapt this behaviour using `.RECIPEPREFIX`:
+However it is possible to adapt this behavior using `.RECIPEPREFIX`:
 
 ```makefile
 .RECIPEPREFIX = >
@@ -400,11 +403,11 @@ current_dir:
 	@echo "The current directory is ${PWD}"
 ```
 
-### Get a list of files and initialise a variable
+### Get a list of files and initialize a variable
 
 Let's take a real use case: scan a folder called `.docker` and retrieve the list of `docker-compose*.yml` files there.
 
-The objective is to initialise an environment variable called `COMPOSE_FILE` (see [https://docs.docker.com/compose/environment-variables/envvars/#compose_file](https://docs.docker.com/compose/environment-variables/envvars/#compose_file)) so, when running `docker compose` we can use all files at once (i.e. by not adding the `--file file1.yml --file file2.yml` and on)
+The objective is to initialize an environment variable called `COMPOSE_FILE` (see [https://docs.docker.com/compose/environment-variables/envvars/#compose_file](https://docs.docker.com/compose/environment-variables/envvars/#compose_file)) so, when running `docker compose` we can use all files at once (i.e. by not adding the `--file file1.yml --file file2.yml` and on)
 
 So, getting the list of `docker-compose*.yml` can be done like this:
 
@@ -563,7 +566,7 @@ GIT_URL_REPO:=$(shell git config --get remote.origin.url | sed -r 's:git@([^/]+)
 
 #### Some git targets
 
-When variables have been initialised, we can do things like this:
+When variables have been initialized, we can do things like this:
 
 ```makefile
 git_open_repo:

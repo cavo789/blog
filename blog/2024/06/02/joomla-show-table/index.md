@@ -6,7 +6,7 @@ image: /img/excel_tips_social_media.jpg
 tags: [database, excel, joomla, tips]
 enableComments: true
 ---
-<!-- cspell:ignore showtable -->
+<!-- cspell:ignore showtable,sortering,qrjlq -->
 ![Joomla - Run a SQL statement outside Joomla and display a nice HTML table](/img/excel_tips_header.jpg)
 
 A long time ago, years from now, I needed to expose data from my Joomla site in a simple web page *outside* Joomla, as an HTML table. This was so that I could link a Microsoft Excel spreadsheet to this table and therefore, in Excel, simply do a *Refresh* to obtain the most recent data from my Joomla site.
@@ -77,7 +77,7 @@ Yes! You should provide the password on the query string otherwise Excel won't b
 
 Open your preferred editor and open the `showtable.php` script. Search for `const PASSWORD` and look at the comment. The value is encrypted using md5. You can use any MD5 encryption tool like f.i. [http://www.md5.cz/](http://www.md5.cz/). 
 
-Type the password you want (`MyVeryTerriyfingPassword`); submit the form and copy/paste the result (`41ae0707c6150f0f1c78803424949f5f`) as the new password value.
+Type the password you want (`MyVeryStrongPassword`); submit the form and copy/paste the result (`41ae0707c6150f0f1c78803424949f5f`) as the new password value.
 
 Go to your website back, refresh the page and you'll see the `password=Joomla` URL won't work anymore. Type your password in the form field and, yes, it's back.
 

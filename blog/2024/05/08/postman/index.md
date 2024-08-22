@@ -15,7 +15,7 @@ Calling an API and getting the response is one thing, quite simple in fact, but 
 
 You can also validate the response against a given schema to make sure the structure is well the one expected.
 
-In this article, we'll use Postman like a unit test tool i.e. run checks on our own API and make a lot of assertions. This is improve the quality of your code by hightlighting potentials errors and, for any refactoring you'll do in the future, by running the tests again, you'll make sure you've not broken something; that you don't have any regression. Make sure you've not broken an API when you upgrade some code is gold.
+In this article, we'll use Postman like a unit test tool i.e. run checks on our own API and make a lot of assertions. This is improving the quality of your code by highlighting potential errors and, for any refactoring you'll do in the future, by running the tests again, you'll make sure you've not broken something; that you don't have any regression. Make sure you've not broken an API when you upgrade some code is gold.
 
 <!-- truncate -->
 

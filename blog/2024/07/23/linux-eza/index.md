@@ -13,7 +13,7 @@ Which CLI command would you say you use most on Linux? Most definitely `ls` to d
 :::note I don't know about you, but I rarely use `ls` without any parameters. Almost without thinking, I add `-alh` every time. It's become mechanical.
 :::
 
-And then you'll say to me, well, all you have to do is create an alias `alias ls="ls -alh"`; of course, but let's go further and revisit this ultrabasic command and add some functionality to it.
+And then you'll say to me, well, all you have to do is create an alias `alias ls="ls -alh"`; of course, but let's go further and revisit this basic command and add some functionality to it.
 
 <!-- truncate -->
 

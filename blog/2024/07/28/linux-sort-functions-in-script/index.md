@@ -126,7 +126,7 @@ If you see this, perfect, functions are correctly ordered in your script.
 
 We have just seen, on the command line, how to check whether a Bash script declaring functions does so in alphabetical order.
 
-Let's move on to the industrialisation of this concept: a script that will scan each .sh file in a specific folder and check whether the functions are defined in the file in alphabetical order. 
+Let's move on to the industrialization of this concept: a script that will scan each .sh file in a specific folder and check whether the functions are defined in the file in alphabetical order. 
 
 If this is the case, we won't have any display so as not to pollute our console.
 

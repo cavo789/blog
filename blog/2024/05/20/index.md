@@ -6,6 +6,8 @@ image: ./images/install_ubuntu_social_media.jpg
 tags: [linux, ubuntu]
 enableComments: true
 ---
+<-- cspell:ignore Bitlocker,bootable,balena,askubuntu -->
+
 ![Ubuntu - Install from scratch](./images/install_ubuntu_banner.jpg)
 
 Today is a public holiday in Belgium, so I'm finally taking the time to install Ubuntu on my old PC.
@@ -40,7 +42,7 @@ After a few minutes, the USB stick will be ready.
 
 ## Think to plug an Ethernet cable before installing Ubuntu
 
-Even if it's optionnal, make sure to plug an Ethernet cable so, during the installation process, Ubuntu will be able to download additional software like your graphic card driver directly from Internet.
+Even if it's optional, make sure to plug an Ethernet cable so, during the installation process, Ubuntu will be able to download additional software like your graphic card driver directly from Internet.
 
 ## Start the installation wizard
 

@@ -1,5 +1,7 @@
 # syntax=docker/dockerfile:1
 
+# cspell:ignore hadolint,skel
+
 # Source https://docusaurus.community/knowledge/deployment/docker/?package-managers=yarn
 
 ARG HOMEDIR=/opt/docusaurus
