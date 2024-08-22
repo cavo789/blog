@@ -97,8 +97,8 @@ remove: ## Remove the image
 
 .PHONY: start
 start: ## Start the local web server and open the webpage
-	@printf $(_YELLOW) "Open the $(TARGET) blog (http://localhost:${PORT})"	
-	@sensible-browser http://localhost:${PORT}
+	@printf $(_YELLOW) "Open the $(TARGET) blog (https://localhost:${PORT})"	
+	@sensible-browser https://localhost:${PORT}
 
 .PHONY: up
 up: ## Create the Docker container

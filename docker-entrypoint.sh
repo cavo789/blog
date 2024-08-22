@@ -4,4 +4,4 @@
 yes "yes" | yarn install --immutable
 
 # Run the Docusaurus watcher
-yarn start --host 0.0.0.0
+HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem yarn start --host 0.0.0.0

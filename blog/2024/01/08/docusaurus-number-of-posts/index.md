@@ -11,7 +11,7 @@ enableComments: true
 
 Docusaurus didn't provide an easy way to retrieve the number of blog posts but there is well a trick.
 
-There is an automatic page called `archive` like [https://www.avonture.be/blog/archive/](https://www.avonture.be/blog/archive/).
+There is an automatic page called `archive` like [/blog/archive/](/blog/archive/).
 
 On that page, all blog posts are displayed by year and months. With a `document.querySelectorAll` console instruction it's possible to make the count as suggested on [https://github.com/facebook/docusaurus/discussions/9712](https://github.com/facebook/docusaurus/discussions/9712)
 

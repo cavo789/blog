@@ -6,9 +6,14 @@
   # Compliant with hstspreload.org : first redirect to https if needed
   RewriteCond %{HTTPS} !=on
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  
+  # then redirect to www. when the prefix wasn't mentionned
+  # hstspreload.org seems to not really like to make the two at once
+  RewriteCond %{HTTP_HOST} !^www\.
+  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # Do some redirections
-  RedirectPermanent /blog/docker-apache-ssl https://avonture.be/blog/docker-localhost-ssl
+  RedirectPermanent /blog/docker-apache-ssl https://www.avonture.be/blog/docker-localhost-ssl
 
 </IfModule>
 
