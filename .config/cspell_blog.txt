@@ -17,6 +17,7 @@ azuretools
 belgique
 bmewburn
 boum
+buildx
 bulletbox
 callout
 callouts
@@ -298,6 +299,7 @@ wpuser
 writeline
 writeln
 wslg
+xclock
 xelatex
 xmlhttp
 xmlstarlet
