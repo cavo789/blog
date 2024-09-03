@@ -2,12 +2,12 @@
 slug: docker-init
 title: Docker init now supports PHP
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/docker_init_tips_social_media.jpg
 tags: [docker, tips]
 enableComments: true
 ---
 <!-- cspell:ignore dbmdl -->
-![Docker init now supports PHP](./images/social_media.jpg)
+![Docker init now supports PHP](/img/docker_init_tips_header.jpg)
 
 But what a happy and strange coincidence. In its new version (4.26) released yesterday *(on my birthday)*, Docker adds support for **PHP with Apache** to its `docker init` instruction. Let's see how this translates into a practical case.
 
