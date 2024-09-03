@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_secrets_tips_social_media.jpg
 tags: [docker, git, github, secrets, ssh]
 enableComments: true
-draft: true
 ---
 ![Docker secrets - Using your SSH key during the build process](/img/docker_secrets_tips_header.jpg)
 
@@ -17,9 +16,21 @@ So here's another article to add to the long list: how to access a private proje
 
 <!-- truncate -->
 
-My use case: I wish to build a Docker image and during the build phase, I need to grab a copy of a private repository I've put on Github.com.
+My use case: I wish to build a Docker image and during the build phase, I need to grab a copy of a private repository I've put on github.com.
 
 When I'll access to the container, the project will then be available but I don't have, anywhere in my image, a copy of my SSH key so I won't be able to run a `git pull` f.i. since no more authentication are possible.
+
+## But, why is it important?
+
+As soon as you need to access to something private like a private repository (on Github, Gitlab or anywhere else; it doesn't matter) during the build stage, Docker has to be able to connect as yourself. 
+
+You can provide your own credentials or using a token or copying your SSH key in the image or ... You can do this but **you'll be making a serious design error**: by reading your Dockerfile anyone will be able to see your private information(in case of hardcoding) or by starting an interactive bash session, it'll be able to f.i. display the list of environment variables (like using `printenv`) or trying to access to display files (like trying to access to `.git` folders, ssh folders, ...) and **it'll work!**.
+
+Also, there are existing tools like [SecretScanner](https://github.com/deepfence/SecretScanner) allowing to deeply scan layers (a Docker image is composed in multiple layers) and even if the secret is stored in a file that no longer exists in the final image, if it has been saved in a layer, then this type of tool will be able to retrieve it.
+
+:::important
+So, in conclusion: there is only one way to use secrets using Docker and you'll learn how in this article.
+:::
 
 ## Which key to use
 

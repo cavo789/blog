@@ -206,6 +206,7 @@ postgrest
 powerlevel
 prefs
 preservetime
+printenv
 println
 programfiles
 psql
