@@ -1,14 +1,14 @@
 ---
 slug: docker-run-linux-gui
-title: Docker - Run Graphical User Interfaces - Firefox & GIMP
+title: Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
-tags: [docker, firefox, gimp, gui, tip]
+tags: [chrome, docker, firefox, gimp, gui, tip]
 enableComments: true
 draft: true
 ---
 <!-- cspell:ignore xeyes,xhost,dearmor,dpkg -->
-![Docker - Run Graphical User Interfaces - Firefox & GIMP](/img/docker_tips_header.jpg)
+![Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP](/img/docker_tips_header.jpg)
 
 In my [previous post](/blog/docker-gui-in-browser), I've illustrated how to start Firefox or GIMP in a browser. This was the first part of this series about graphical user interfaces because, until very recently, I didn't know it was possible to run GUIs with Docker and that's just amazing.
 
@@ -50,9 +50,9 @@ Yes, it's true, it's useless, but wow! it's possible to run a GUI from a contain
 
 ## Creating our own Firefox Docker image
 
-So, once you've understand the very basic example of xeyes, you can think out-of-the-box: which GUI can I install using Docker.
+So, once you've understood the very basic example of xeyes, you can think out-of-the-box: which GUI can I install using Docker.
 
-Let's try Firefox... By using my favorite search engine, I've found this post: [Install Official Firefox .deb in Dockerfile](https://jetthoughts.com/blog/install-official-firefox-deb-in-dockerfile-docker-devops/).
+Let's try Firefox... By using my favourite search engine, I've found this post: [Install Official Firefox .deb in Dockerfile](https://jetthoughts.com/blog/install-official-firefox-deb-in-dockerfile-docker-devops/).
 
 In a Dockerfile and with small changes, this give this:
 
@@ -97,9 +97,32 @@ As you know, my OS is Windows 11 and I'm running Linux thanks the amazing WSL2 t
 
 The old MS-DOS developer in me continues to be amazed by this possibility.
 
+## Creation our own Chrome Docker image
+
+We can do the same with Chrome:
+
+```Dockerfile
+FROM ubuntu:latest
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+    && apt-get install -y wget \
+    && wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && apt-get install -y ./google-chrome-stable_current_amd64.deb \
+    && rm -rf /var/lib/apt/lists/*
+
+CMD ["google-chrome", "--disable-dev-shm-usage", "--disable-gpu"]
+```
+
+Build the image using `docker build --tag cavo789/chrome .` then run it using `docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY cavo789/chrome`.
+
+
+![Running Chrome in a window](./images/chrome.png)
+
 ## Creating our own GIMP Docker image
 
-Ok, now, I think you've understood how it's works. So, very shortly, here is how to run GIMP for Linux in a Docker container:
+Ok, now, I think you've understood how it works. So, very shortly, here is how to run GIMP for Linux in a Docker container:
 
 ```Dockerfile
 FROM ubuntu:latest
