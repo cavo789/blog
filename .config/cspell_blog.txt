@@ -121,6 +121,7 @@ jsonlite
 junstyle
 keepass
 keyex
+keyrings
 kingsbridge
 klaempfl
 knitr
@@ -165,6 +166,7 @@ noendperiod
 noinherit
 nologin
 nomnoml
+noninteractive
 noreply
 nosniff
 nounset
@@ -270,6 +272,7 @@ taxud
 timestamptz
 tinymce
 tinytex
+tmpfs
 todos
 tokenizes
 toolstarget
