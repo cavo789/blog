@@ -7,12 +7,12 @@ tags: [chrome, docker, firefox, gimp, gui, tip]
 enableComments: true
 draft: true
 ---
-<!-- cspell:ignore lubuntu -->
+<!-- cspell:ignore lubuntu,initialising,xremote,autologin,realise -->
 ![Start lubuntu Desktop](/img/docker_tips_header.jpg)
 
 During my summer holidays, I've watched this video: [Full Ubuntu GUI in a Container Displayed on Windows (XServer)](https://www.youtube.com/watch?v=WutV6n21dys) and, of course, I wanted to play with it.
 
-The idea is to start a Lubuntu Desktop as a Docker container. Lubuntu is a lightweight Ubuntu distribution designed to be more resource-efficient than the standard Ubuntu. 
+The idea is to start a Lubuntu Desktop distribution as a Docker container. Lubuntu is a lightweight Ubuntu distribution designed to be more resource-efficient than the standard Ubuntu. 
 
 Using Docker and [Windows X Server](https://sourceforge.net/projects/vcxsrv/), we'll be able to play with Lubuntu just like any other containers i.e. play and drop without any impact on our ghost. Ideal for learning purposes then.
 
@@ -67,5 +67,16 @@ By clicking on `Finish` you'll get a black screen. **It's normal.**
 
 Run your container by starting `docker run -t cavo789/lubuntu` and **wait, wait and wait again. If you got warnings on the console, don't worry and still wait**.
 
-After one, two or more minutes, you'll start to see the Linux Lubuntu desktop and then, you'll still need to wait because the operating system is loading and initializing (since it's the first time you start it).
+You may have to wait a minute before you'll start to see the Linux Lubuntu desktop and then, you'll still need to wait because the operating system is loading and initialising (since it's the first time you start it).
 
+![Lubuntu desktop](./images/lubuntu-desktop.png)
+
+:::note Multi-screen support does not seem to work with X Server
+During my tests, the display wasn't up to scratch and I had to remove the cable from my second screen to get a correct display.
+:::
+
+## Impressive
+
+Do you realise that we've installed a Linux distribution and launched its GUI as a container? In fact, it's like installing a new PC.
+
+Of course, we'd have to go further than that, e.g. to keep data persistent (via volumes).
