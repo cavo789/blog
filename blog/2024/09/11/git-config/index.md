@@ -4,7 +4,6 @@ title: Git - Some tips for your .gitconfig file
 authors: [christophe]
 image: /img/git_tips_social_media.jpg
 tags: [git, tips, wsl]
-draft: true
 enableComments: true
 ---
 ![Git - Some tips for your .gitconfig file](/img/git_tips_banner.jpg)
