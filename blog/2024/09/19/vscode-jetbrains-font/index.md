@@ -5,7 +5,6 @@ authors: [christophe]
 tags: [tips, vscode]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg
-draft: true
 ---
 ![Using the JetBrains Mono font in vscode](/img/vscode_tips_header.jpg)
 
@@ -23,7 +22,7 @@ Visit [https://www.jetbrains.com/lp/mono/](https://www.jetbrains.com/lp/mono/) t
 
 It's easy: go to [https://www.jetbrains.com/lp/mono/#how-to-install](https://www.jetbrains.com/lp/mono/#how-to-install) and click on the `Download font` button.
 
-Once downloaded, go to your downloads folder and unzip the file then jump in the `JetBrainsMono` newly created folder and go in the `fonts/ttf`. You'll find there several sub-folders. Under Windows, just open the first folder, select all files and do a right-click. From the contextual menu, select `Install` as you can see below:
+Once downloaded, go to your downloads folder and unzip the file then jump in the `JetBrainsMono` newly created folder and go in the `fonts/ttf`. You'll find there several subfolders. Under Windows, just open the first folder, select all files and do a right-click. From the contextual menu, select `Install` as you can see below:
 
 ![Install JetBrains Mono font](./images/install_font.png)
 
