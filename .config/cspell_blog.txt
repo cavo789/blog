@@ -126,6 +126,7 @@ kingsbridge
 klaempfl
 knitr
 kroki
+Laracast
 laracon
 laravel
 lastname
@@ -180,6 +181,7 @@ pagetitle
 pandoc
 papersize
 pathinfo
+pestphp
 peterdavehello
 pgadmin
 pgrst
