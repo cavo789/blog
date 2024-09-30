@@ -478,17 +478,17 @@ start:
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Version" "${JOOMLA_VERSION}"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Port" "${WEB_PORT}"
 	
-    # highlight-next-line    
+	# highlight-next-line    
 	@printf "\n\033[1;34m%s\033[0m\n\n" "  Administration"
-    # highlight-next-line    
+	# highlight-next-line    
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Site name" "${JOOMLA_SITE_NAME}"
-    # highlight-next-line    
+	# highlight-next-line    
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Admin friendly username" "${JOOMLA_ADMIN_USER}"
-    # highlight-next-line
+	# highlight-next-line
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Admin username" "${JOOMLA_ADMIN_USERNAME}"
-    # highlight-next-line
+	# highlight-next-line
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Admin password" "${JOOMLA_ADMIN_PASSWORD}"
-    # highlight-next-line
+	# highlight-next-line
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n\n" "  * Admin email" "${JOOMLA_ADMIN_EMAIL}"
 	
 	@printf "\033[1;34m%s\033[0m\n\n" "DATABASE"
