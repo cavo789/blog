@@ -5,6 +5,7 @@ authors: [christophe]
 image: ./images/social_media.jpg
 tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
 enableComments: true
+draft: true
 ---
 ![Create your Joomla website using Docker - Q3/2024](./images/header.jpg)
 
