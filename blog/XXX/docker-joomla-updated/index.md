@@ -16,7 +16,7 @@ At the end of 2023, I wrote a very long post about using Joomla with Docker: [Cr
 
 It was a step-by-step introduction to Docker and the creation of a local Joomla-based website.
 
-I explained, at length, the various steps involved in creating a website, choosing a database engine (MySQL, MariaDB or PostgreSQL), choosing a specific version of Joomla / database manager, the type of volumes (should the site and database be kept in RAM or on the hard disk (i.e. the notion of volumes)) and many other things such as choosing the port for the website, creating an alias (of the http://my_project.local type and not http://127.0.0.1).  I strongly urge you to read or re-read this article before starting this one.
+I explained, at length, the various steps involved in creating a website, choosing a database engine (MySQL, MariaDB or PostgreSQL), choosing a specific version of Joomla / database manager, the type of volumes (should the site and database be kept in RAM or on the hard disk (i.e. the notion of volumes)) and many other things such as choosing the port for the website, creating an alias (something like `http://my_project.local` instead of `http://127.0.0.1`). I strongly urge you to read or re-read this article before starting this one.
 
 :::important
 Here is the link to that article : [Create your Joomla website using Docker](/blog/docker-joomla).
@@ -86,7 +86,7 @@ services:
     restart: always
     ports:
       - ${MYSQL_PORT-:3306}:3306
-    environment:            
+    environment:
       - MYSQL_DATABASE=${DB_NAME:-joomla}
       - MYSQL_PASSWORD=${DB_PASSWORD:-examplepass}
       - MYSQL_RANDOM_ROOT_PASSWORD='1'
@@ -112,6 +112,7 @@ We're also going to use a configuration file named `.env` (which is never anythi
 Please create a second file called `.env` with this content:
 
 ```.env
+CONTAINER_PREFIX=joomla
 DB_NAME=joomla
 DB_PASSWORD=examplepass
 DB_USER=joomla
@@ -153,16 +154,16 @@ reset: down
 
 start:
 	@clear
-	@printf "\033[1;33m%s\033[0m\n\n" "To start your site, please jump to http://127.0.0.1:${WEB_PORT}"	
+	@printf "\033[1;33m%s\033[0m\n\n" "To start your site, please jump to http://127.0.0.1:${WEB_PORT}"
 	@printf "\033[1;33m%s\033[0m\n\n" "Go to http://127.0.0.1:${WEB_PORT}/administrator to open your backend."
-	
+
 	@printf "\033[1;104m%s\033[0m\n\n" "Below a summary of your current installation:"
 
 	@printf "\033[1;34m%s\033[0m\n\n" "JOOMLA"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Project name" "${PROJECT_NAME}"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Version" "${JOOMLA_VERSION}"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n\n" "  * Port" "${WEB_PORT}"
-	
+
 	@printf "\033[1;34m%s\033[0m\n\n" "DATABASE"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Host" "joomla-db"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Version" "${MYSQL_VERSION}"
@@ -170,6 +171,9 @@ start:
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * User" "${DB_USER}"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Password" "${DB_PASSWORD}"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n\n" "  * Port" "${MYSQL_PORT}"
+
+stop:
+	-@UID=$$(id -u) GID=$$(id -g) docker compose stop
 
 up:
 	-@mkdir -p db site_joomla
@@ -428,6 +432,7 @@ networks:
 And we'll also update our `.env` file like this:
 
 ```.env
+CONTAINER_PREFIX=joomla
 DB_NAME=joomla
 DB_PASSWORD=examplepass
 DB_USER=joomla
@@ -469,21 +474,21 @@ reset: down
 
 start:
 	@clear
-	@printf "\033[1;33m%s\033[0m\n\n" "To start your site, please jump to http://127.0.0.1:${WEB_PORT}"	
+	@printf "\033[1;33m%s\033[0m\n\n" "To start your site, please jump to http://127.0.0.1:${WEB_PORT}"
 	@printf "\033[1;33m%s\033[0m\n\n" "Go to http://127.0.0.1:${WEB_PORT}/administrator to open your backend."
-	
+
 	@printf "\033[1;104m%s\033[0m\n\n" "Below a summary of your current installation:"
 
 	@printf "\033[1;34m%s\033[0m\n\n" "JOOMLA"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Project name" "${PROJECT_NAME}"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Version" "${JOOMLA_VERSION}"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Port" "${WEB_PORT}"
-	
-	# highlight-next-line    
+
+	# highlight-next-line
 	@printf "\n\033[1;34m%s\033[0m\n\n" "  Administration"
-	# highlight-next-line    
+	# highlight-next-line
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Site name" "${JOOMLA_SITE_NAME}"
-	# highlight-next-line    
+	# highlight-next-line
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Admin friendly username" "${JOOMLA_ADMIN_USER}"
 	# highlight-next-line
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Admin username" "${JOOMLA_ADMIN_USERNAME}"
@@ -491,7 +496,7 @@ start:
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Admin password" "${JOOMLA_ADMIN_PASSWORD}"
 	# highlight-next-line
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n\n" "  * Admin email" "${JOOMLA_ADMIN_EMAIL}"
-	
+
 	@printf "\033[1;34m%s\033[0m\n\n" "DATABASE"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Host" "joomla-db"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Version" "${MYSQL_VERSION}"
@@ -499,6 +504,9 @@ start:
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * User" "${DB_USER}"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Password" "${DB_PASSWORD}"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n\n" "  * Port" "${MYSQL_PORT}"
+
+stop:
+	-@UID=$$(id -u) GID=$$(id -g) docker compose stop
 
 up:
 	-@mkdir -p db site_joomla
@@ -543,3 +551,181 @@ DATABASE
   * Password                  examplepass
   * Port                      3306
 ```
+
+## Time for a second break
+
+Ok, so right now, we've seen how to create a fresh Joomla website in seconds with just the `make up` command and how to bypass the installation screens by already providing useful information's in our `.env` file.
+
+Let's try a real world example: we are a small web agency and we wish to use Docker for our next projects and we already have three projects in our mind.
+
+## Starting three different projects
+
+Please create a structure like below i.e. `mkdir project_1 project_2 project_3` then create the three files in the first project and copy them in the two other folders.
+
+At the end, you should have this structure:
+
+```bash
+├── project_1
+│   ├── .env
+│   ├── compose.yaml
+│   └── makefile
+├── project_2
+│   ├── .env
+│   ├── compose.yaml
+│   └── makefile
+└── project_3
+    ├── .env
+    ├── compose.yaml
+    └── makefile
+```
+
+One directory by project and, again, our three files.
+
+### Project 1
+
+Please configure the `project_1/.env` file with the following content.
+
+As you can see (highlighted lines), that file is the same that the latest `.env` we've used earlier but:
+
+* We'll set the `CONTAINER_PREFIX` to an unique value; in our example `project_1`,
+* We need to do the same (i.e. define an unique value) for the MySQL port number; we can use the standard port `3306` for our first project but, let's use `3301` (`1` because it's our first project)
+* You've understood; we'll do the same for `JOOMLA_SITE_NAME` and `PROJECT_NAME`; remain humble and opt for `Joomla_Project_1` and `my_tremendous_first_project` and
+* Finally, we need to define a web port number; we'll use `8081` (so our site will be available on `http://127.0.0.1:8081`).
+
+Here is the `.env` file for **our first** project:
+
+```.env
+// highlight-next-line
+CONTAINER_PREFIX=project_1
+DB_NAME=joomla
+DB_PASSWORD=examplepass
+DB_USER=joomla
+JOOMLA_ADMIN_EMAIL=joomla@example.com
+JOOMLA_ADMIN_PASSWORD=joomla@secured
+JOOMLA_ADMIN_USER=Joomla Hero
+JOOMLA_ADMIN_USERNAME=joomla
+// highlight-next-line
+JOOMLA_SITE_NAME=Joomla_Project_1
+JOOMLA_VERSION=5.1.4-php8.3-apache
+// highlight-next-line
+MYSQL_PORT=3301
+MYSQL_VERSION=8.4.2
+// highlight-next-line
+PROJECT_NAME=my_tremendous_first_project
+// highlight-next-line
+WEB_PORT=8081
+```
+
+Go to your console and run `cd project_1` to jump in the first project's folder then `make up && make start` to create Docker containers for project 1 and start the web interface.
+
+By going to `http://127.0.0.1:8081/administrator/` we've our first admin page (as you can see, the site is well called **Joomla_Project_1** as expected).
+
+![Our first site is running](./images/project_1.png)
+
+:::caution
+Please really be careful to specify the port number of our project. For project 1, the port number is `8081`. As, in fact, we wished by setting the variable `WEB_PORT`.
+
+So, to access to the first project, our URL is well `http://127.0.0.1:8081`.
+:::
+
+### Project 2
+
+Please configure the `project_2/.env` with the following content. As you can see (highlighted lines), that file is the same that the latest `.env` we've used earlier but, just, we'll adjust the name of the project and the web port (so our site will be available on `http://127.0.0.1:8082`).
+
+Do the same changes as for project 1 but just replace `1` by `2`:
+
+```.env
+// highlight-next-line
+CONTAINER_PREFIX=project_2
+DB_NAME=joomla
+DB_PASSWORD=examplepass
+DB_USER=joomla
+JOOMLA_ADMIN_EMAIL=joomla@example.com
+JOOMLA_ADMIN_PASSWORD=joomla@secured
+JOOMLA_ADMIN_USER=Joomla Hero
+JOOMLA_ADMIN_USERNAME=joomla
+// highlight-next-line
+JOOMLA_SITE_NAME=Joomla_Project_2
+JOOMLA_VERSION=5.1.4-php8.3-apache
+// highlight-next-line
+MYSQL_PORT=3302
+MYSQL_VERSION=8.4.2
+// highlight-next-line
+PROJECT_NAME=my_tremendous_second_project
+// highlight-next-line
+WEB_PORT=8082
+```
+
+Save the file and run `make up && make start` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
+
+![Our two Joomla projects are running](./images/project_1_2.png)
+
+:::caution
+If you're still awake after this long blog post, to get access to our second website, we need to go to `http://127.0.0.1:8082`.
+:::
+
+### Project 3
+
+Please now configure the `project_3/.env` with the following content.
+
+This time, we'll use `3` as suffix:
+
+```.env
+// highlight-next-line
+CONTAINER_PREFIX=project_3
+DB_NAME=joomla
+DB_PASSWORD=examplepass
+DB_USER=joomla
+JOOMLA_ADMIN_EMAIL=joomla@example.com
+JOOMLA_ADMIN_PASSWORD=joomla@secured
+JOOMLA_ADMIN_USER=Joomla Hero
+JOOMLA_ADMIN_USERNAME=joomla
+// highlight-next-line
+JOOMLA_SITE_NAME=Joomla_Project_3
+JOOMLA_VERSION=5.1.4-php8.3-apache
+// highlight-next-line
+MYSQL_PORT=3303
+MYSQL_VERSION=8.4.2
+// highlight-next-line
+PROJECT_NAME=my_tremendous_third_project
+// highlight-next-line
+WEB_PORT=8083
+```
+
+Save the file and run `make up && make start` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
+
+![Our three Joomla projects are active at the same time on our development machine](./images/project_1_2_3.png)
+
+### Other projects? How many sites can I have?
+
+As we've just seen here, we can launch several Joomla projects at the same time on our machine and access them as easily as possible by varying the web port number (`8081`, `8082`, `8083`, ...).
+
+But how many can I have? Well, that just depends on your machine.
+
+For information, here's what I'm seeing right now on my Windows computer (I'm using Docker Desktop and WSL2).
+
+![Docker desktop](./images/docker_desktop.png)
+
+As you can see, I've actually four projects: my current blog (running on Docker too) and the three Joomla projects.
+
+If you look at the **CPU (%)**, you can see that the projects are almost asleep. And this is normal: once the web page has been displayed, Joomla and MySQL don't requires CPU anymore. The page is displayed so they are sleeping.
+
+We can see top left on my image that Docker is eating 3.30% of my CPU; nothing thus.
+
+For the memory, I've allocated max. 20GB to WSL/Docker and right now, my four project (my blog too) are eating 3.3 GB. I can thus start a lot more projects.
+
+But? Did I need to be able to work on the three projects at the same time??? Probably not. So why not stopping f.i. the first and the third project?
+
+In the console, just run `make stop` in folder project 1 and 3 by, running `( cd project_1 ; make stop ; cd ../project_3 ; make stop)`. We'll thus stop (not remove; just freeze and release memory) our first and third project.
+
+By looking back to Docker Desktop, we can indeed see we've earned 1GB RAM.
+
+![The first and the third projects are released](./images/docker_desktop_stopped.png)
+
+:::note
+In our example here we've just kept the second project so we can still work on `http://127.0.0.1:8082/` but the two others projects (`http://127.0.0.1:8081/` and `http://127.0.0.1:8083/`) won't respond anymore. We've stopt them.
+
+Just run `make up` again in f.i. folder `project_1` to make the site back to life. Or, if you prefer the GUI, in Docker Desktop, just click on the `Start` button:
+
+![Starting a container in Docker Desktop](./images/docker_desktop_stopped.png)
+:::
