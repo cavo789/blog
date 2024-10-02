@@ -54,7 +54,7 @@ As you can see, our `compose.yaml` file is of tremendous importance for the prop
 In recent months, the name of the file to be used has changed from `docker-compose.yml` to `compose.yaml`; still supported for now, but might as well use the new name. See [docs.docker.com](https://docs.docker.com/compose/intro/compose-application-model/#the-compose-file) if you want more info about this change.
 :::
 
-Please create a new folder (f.i. `mkdir /tmp/docker && cd $_`) on your hard disk and create the `composer.yaml` file with this content:
+Please create a new folder (f.i. `mkdir /tmp/docker && cd $_`) on your hard disk and create the `compose.yaml` file with this content:
 
 ```yaml
 name: ${PROJECT_NAME:-your-project-name}
@@ -76,7 +76,7 @@ services:
         condition: service_healthy
     user: ${UID:-1000}:${GID:-1000}
     volumes:
-      - ./site_joomla:/var/www/html
+      - ./joomla_data:/var/www/html
     networks:
       - joomla_network
 
@@ -97,7 +97,7 @@ services:
       retries: 10
     user: ${UID:-1000}:${GID:-1000}
     volumes:
-      - ./db:/var/lib/mysql
+      - ./db_data:/var/lib/mysql
     networks:
       - joomla_network
 
@@ -150,7 +150,7 @@ log:
 	-@UID=$$(id -u) GID=$$(id -g) docker compose logs
 
 reset: down
-	-@rm -rf db site_joomla
+	-@rm -rf db_data joomla_data
 
 start:
 	@clear
@@ -167,7 +167,7 @@ start:
 	@printf "\033[1;34m%s\033[0m\n\n" "DATABASE"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Host" "joomla-db"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Version" "${MYSQL_VERSION}"
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Name" "${DB_NAME}"
+	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * DB name" "${DB_NAME}"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * User" "${DB_USER}"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Password" "${DB_PASSWORD}"
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n\n" "  * Port" "${MYSQL_PORT}"
@@ -176,7 +176,7 @@ stop:
 	-@UID=$$(id -u) GID=$$(id -g) docker compose stop
 
 up:
-	-@mkdir -p db site_joomla
+	-@mkdir -p db_data joomla_data
 	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach
 ```
 
@@ -320,8 +320,8 @@ What have we seen so far?
 
 * Without having anything other than Docker you can install Joomla and MySQL from the command line;
 * That with an `.env` file we can vary certain values ​​to allow us to have several projects on our hard drive (several Joomla sites);
-* That with the `composer.yaml` file we tell Docker what to do to make Joomla and MySQL talk and
-* but also that the `composer.yaml` file is valuable since it allows you to define a number of configuration variables.
+* That with the `compose.yaml` file we tell Docker what to do to make Joomla and MySQL talk and
+* but also that the `compose.yaml` file is valuable since it allows you to define a number of configuration variables.
 
 Let's go a little further.
 
@@ -398,7 +398,7 @@ services:
         condition: service_healthy
     user: ${UID:-1000}:${GID:-1000}
     volumes:
-      - ./site_joomla:/var/www/html
+      - ./joomla_data:/var/www/html
     networks:
       - joomla_network
 
@@ -419,7 +419,7 @@ services:
       retries: 10
     user: ${UID:-1000}:${GID:-1000}
     volumes:
-      - ./db:/var/lib/mysql
+      - ./db_data:/var/lib/mysql
     networks:
       - joomla_network
 
@@ -470,7 +470,7 @@ log:
 	-@UID=$$(id -u) GID=$$(id -g) docker compose logs
 
 reset: down
-	-@rm -rf db site_joomla
+	-@rm -rf db_data joomla_data
 
 start:
 	@clear
@@ -509,7 +509,7 @@ stop:
 	-@UID=$$(id -u) GID=$$(id -g) docker compose stop
 
 up:
-	-@mkdir -p db site_joomla
+	-@mkdir -p db_data joomla_data
 	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach
 ```
 
