@@ -3,7 +3,7 @@ slug: docker-joomla-2024
 title: Create your Joomla website using Docker - Q3/2024
 authors: [christophe]
 image: ./images/social_media.jpg
-tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
+tags: [docker, joomla, makefile, mysql]
 enableComments: true
 draft: true
 ---
