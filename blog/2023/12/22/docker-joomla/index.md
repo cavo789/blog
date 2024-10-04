@@ -877,7 +877,3 @@ Make sure, for each project, to update the `name:` line and if you plan to be ab
 ## Your comments are more than welcome
 
 Please use the comments area below to share your opinions, ideas and remarks about this article. Thanks in advance.
-
-:::tip
-Want to read more? Jump to the second part: [Create your Joomla website using Docker - Part 2](/blog/docker-joomla-part-2)
-:::
