@@ -1,13 +1,13 @@
 ---
 slug: docker-joomla
-title: Create your Joomla website using Docker
+title: Create your Joomla website using Docker - Part 1
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/docker_joomla_social_media.jpg
 tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
 enableComments: true
 ---
 <!-- cspell:ignore apac,ibdata,ibtmp -->
-![Create your Joomla website using Docker](./images/header.jpg)
+![Create your Joomla website using Docker - Part 1](/img/docker_joomla_header.jpg)
 
 * *Updated 2024-03-23, adding health condition in yml and update Joomla tag to 5.1-php8.2-apache.*
 
@@ -877,3 +877,7 @@ Make sure, for each project, to update the `name:` line and if you plan to be ab
 ## Your comments are more than welcome
 
 Please use the comments area below to share your opinions, ideas and remarks about this article. Thanks in advance.
+
+:::tip
+Want to read more? Jump to the second part: [Create your Joomla website using Docker - Part 2](/blog/docker-joomla-part-2)
+:::

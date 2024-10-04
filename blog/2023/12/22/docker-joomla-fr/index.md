@@ -3,12 +3,12 @@ slug: docker-joomla-fr
 title: Créer votre site web Joomla en utilisant Docker
 authors: [christophe]
 unlisted: true # https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#unlisted
-image: ./images/social_media.jpg
+image: /img/docker_joomla_social_media.jpg
 tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
 enableComments: true
 ---
 <!-- cspell:dictionaries fr-FR -->
-![Créer votre site web Joomla en utilisant Docker](./images/header.jpg)
+![Créer votre site web Joomla en utilisant Docker](/img/docker_joomla_header.jpg)
 
 Dans cet article, nous allons apprendre à utiliser Docker pour installer Joomla en localhost et démarrer un nouveau site web **en quelques secondes** *(vous ne voulez pas attendre ? Passez au chapitre [Final docker-compose.yml](#final-docker-composeyml))*.
 
