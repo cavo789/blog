@@ -30,7 +30,7 @@ We're also going to take automation a step further, making much greater use of t
 
 ## Prerequisites
 
-In contrast to article [Create your Joomla website using Docker - Part 1](/blog/docker-joomla), where I began by laying down a few concepts before going on to discuss the subject, let's do the opposite here: let's lay down the three files we'll be using from the outset, and then see how they work. I'd ask you not to try too hard to understand the contents of the files; we'll come back to that a little later.
+In contrast to article [Create your Joomla website using Docker - Part 1](/blog/docker-joomla), where I began by explaining down a few concepts before moving on to discuss the subject, let's do the opposite here: let's start with the three files we are going to use, and then see how they work. Please don't try too hard to understand the contents of the files; we'll come back to that later.
 
 Create the three files in a folder on your hard disk for the time being (f.i. in `/tmp/joomla`), so that we can quickly get to the heart of the matter: creating a Joomla site with just one line of commands to run on your computer.
 
@@ -137,7 +137,7 @@ So, here, if `JOOMLA_VERSION` exists and this is the case in our `.env` file, th
 
 ### Let's make our lives simpler and lazier; using a makefile
 
-The third and last file we'll use is be called `makefile` and that file will contains some *scripts* i.e we'll create a script called `up` for building our website.
+The third and last file we'll use is being called `makefile` and that file will contain some *scripts* i.e we'll create a script called `up` for building our website.
 
 To be able to use a `makefile`, you should have `GNU Make` binary installed on your machine.
 
@@ -248,10 +248,10 @@ services:
 The output here above is a **partial content** and just show the first lines displayed to the console by the `make config` command.
 :::
 
- The objective of `make config` is to make sure that all files are correct (otherwise we'll get error messages) and that variables are well replaced by their values. You can see f.i. that the Joomla version is well the one we've specified in the `.env` file and the user line (the last line here above) is correctly initialized to the **user_id:group_id** of your current user.
+ The objective of `make config` is to make sure that all files are correct (otherwise we'll get error messages) and that variables are well replaced by their values. You can see f.i. that the Joomla version is well the one we've specified in the `.env` file and the user line (the last line here above) is correctly initialised to the **user_id:group_id** of your current user.
 
 :::info
-The **user_id:group_id** will vary depending on your own configuration. It'll be `1000:1000` in the most of situations but this can be something else when, f.i., you've defined more than one user in your Linux distribution; the first user probably be `1000:1000`, the second `1001:1001` and so on.
+The **user_id:group_id** will vary depending on your own configuration. It'll be `1000:1000` in the most situations but this can be something else when, f.i., you've defined more than one user in your Linux distribution; the first user probably be `1000:1000`, the second `1001:1001` and so on.
 :::
 
 ## Let's wake up Joomla...
@@ -276,7 +276,7 @@ UID=$(id -u) GID=$(id -g) docker compose up --detach
  ✔ Container joomla-app                   Started        31.1s
 ```
 
-What does that means? Docker has retrieved (*pulled*) from the Internet our `joomla` and `joomladb` services (in other terms, has downloaded the Joomla CMS (including PHP and Apache) and MySQL).
+What does that mean? Docker has retrieved (*pulled*) from the Internet our `joomla` and `joomladb` services (in other terms, has downloaded the Joomla CMS (including PHP and Apache) and MySQL).
 
 By running `docker container list --all --format "table {{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"` (or just `docker container list` to get all the columns), you'll get the list of running containers:
 
@@ -300,25 +300,25 @@ We've created our Joomla website by **just running one command**. Don't trust? O
 
 ### ... or let's ask him to fall asleep (keep containers)
  
-The opposite command to `make up` is `make stop`. The `stop` action will stop our Joomla and MySQL containers (read `make them sleeping`) but without removing files (your site and your database) from your hard drive. By running `make up` again, you'll retrieve them. `up` and `stop` are like light switch.
+The opposite command to `make up` is `make stop`. The `stop` action will stop our Joomla and MySQL containers (read `make them sleeping`) but without removing files (your site and your database) from your hard drive. By running `make up` again, you'll retrieve them. `up` and `stop` are like a light switch.
 
 ### ... or let's ask him to remove containers (free more memory)
 
-The `make down` command will stop the containers as well remove them. But in our case, we'll still have files on our hard disk so we'll not loose our website.
+The `make down` command will stop the containers as well remove them. But in our case, we'll still have files on our hard disk so we'll not lose our website.
 
 ### ... or let's ask him to suicide (remove containers and files)
 
 The `make reset` command will stop containers but, too, remove files on the disk.
 
 :::danger
-By running `make reset`, you'll loose everything and be ready to create a new fresh website.
+By running `make reset`, you'll lose everything and be ready to create a new fresh website.
 :::
 
 ## Getting access to Docker logs
 
 Sometimes, if something goes wrong, it's nice to have access to the Docker logs. Simply run `make log` to achieve this.
 
-Logs will looks like this:
+Logs will look like this:
 
 <!-- cspell:disable -->
 ```log
@@ -387,13 +387,13 @@ DATABASE
   * Port                      3306
 ```
 
-As you can see, the port number is `8080`; the one we've specified in our `.env` file. Simply CTRL-click on the URL if your terminal support this option (otherwise, manually start your preferred web browser and navigate to the specified URL).
+As you can see, the port number is `8080`; the one we've specified in our `.env` file. Simply CTRL click on the URL if your terminal support this option (otherwise, manually start your preferred web browser and navigate to the specified URL).
 
 ![Joomla installer](./images/joomla_installer.png)
 
 **Congratulations, you have successfully installed a fresh Joomla website using Docker!**
 
-You'll need to configure your new fresh site. In the **Database Configuration** screen, you'll need to fill in the **Host**, the **username**, the **password** and the **database name**. These infos are displayed on the console; thanks `make start`. Just use these values when prompted.
+You'll need to configure your new fresh site. In the **Database Configuration** screen, you'll need to fill in the **Host**, the **username**, the **password** and the **database name**. This information is displayed on the console; thanks `make start`. Just use these values when prompted.
 
 ## Time for a break
 
@@ -410,7 +410,7 @@ Let's go a little further.
 
 The official Joomla Docker image is maintained by the Joomla community on Docker Hub: [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla).
 
-You'll retrieve there a list of *tags* i.e. a list of versions you can installed using Docker but you'll also find a **How to use this image** section and that one is really useful.
+You'll retrieve there a list of *tags* i.e. a list of versions you can install using Docker but you'll also find a **How to use this image** section and that one is really useful.
 
 Below the list of variables supported by Joomla by the end of September 2024:
 
@@ -423,7 +423,7 @@ Below the list of variables supported by Joomla by the end of September 2024:
 | `JOOMLA_DB_NAME` | Defaults to `joomla` |
 | `JOOMLA_DB_TYPE` | Defaults to `mysqli`; options: `mysqli`, `pgsql` |
 
-The following environment variables are also recognized for configuring auto deployment (i.e. skip the browser setup) for your Joomla instance:
+The following environment variables are also recognised for configuring auto deployment (i.e. skip the browser setup) for your Joomla instance:
 
 | Variable name | Description |
 | --- | --- |
@@ -600,7 +600,7 @@ As you can see, we've configured some `JOOMLA_ADMIN_xxx` keys and set `JOOMLA_SI
 
 ### Running the website and skip the installation process
 
-Once you've updated the three files; just run `make reset` (to remove our previous site if any) then run `make up` to create a new one. Finally run `make start` to show a list of important variables:
+Once you've updated the three files; just run `make reset` (to remove our previous site if any) then run `make up` to create a new one. Finally, run `make start` to show a list of important variables:
 
 :::tip
 You can fire the three actions in just one command: `make reset && make up && make start`
@@ -645,15 +645,15 @@ Your Joomla site is already configured; nice no?
 
 ## Time for a second break
 
-Ok, so right now, we've seen how to create a fresh Joomla website in seconds with just the `make up` command and how to bypass the installation screens by already providing useful information's in our `.env` file.
+Ok, so right now, we've seen how to create a fresh Joomla website in seconds with just the `make up` command and how to bypass the installation screens by already providing useful information in our `.env` file.
 
-Let's try a real world example: we are a small web agency and we wish to use Docker for our next projects and we already have three projects in our mind.
+Let's try a real-world example: we are a small web agency and we wish to use Docker for our next projects and we already have three projects in our mind.
 
 ## Starting three different projects
 
 Please create a structure like below i.e. `cd /tmp/joomla && mkdir project_1 project_2 project_3`.
 
-Then go back to the *Updated compose.yaml* chapter and create the `compose.yaml` file in both the three projects's folder. Do the same for the `.env` and the `makefile`.
+Then go back to the *Updated compose.yaml* chapter and create the `compose.yaml` file in both the three projects' folder. Do the same for the `.env` and the `makefile`.
 
 The same three files in the three projects folders.
 
@@ -769,7 +769,7 @@ If you're still awake after this long blog post, to get access to our second web
 
 Please now configure the `project_3/.env` with the following content.
 
-This time, we'll use `3` as suffix:
+This time, we'll use `3` as suffixes:
 
 ```.env
 // highlight-next-line
@@ -849,7 +849,7 @@ If you look at the **CPU (%)**, you can see that the projects are almost asleep.
 
 We can see top left on my image that Docker is eating 3.30% of my CPU; nothing thus.
 
-For the memory, I've allocated max. 20GB to WSL/Docker and right now, my four project (my blog too) are eating 3.3 GB. I can thus start a lot more projects.
+For the memory, I've allocated max. 20GB to WSL/Docker and right now, my fourth project (my blog too) are eating 3.3 GB. I can thus start a lot more projects.
 
 But? Did I need to be able to work on the three projects at the same time??? Probably not. So why not stopping f.i. the first and the third project?
 
@@ -860,7 +860,7 @@ By looking back to Docker Desktop, we can indeed see we've earned 1GB RAM.
 ![The first and the third projects are released](./images/docker_desktop_stopped.png)
 
 :::note
-In our example here we've just kept the second project so we can still work on `http://127.0.0.1:8082/` but the two others projects (`http://127.0.0.1:8081/` and `http://127.0.0.1:8083/`) won't respond anymore. We've stopt them.
+In our example here, we've just kept the second project so we can still work on `http://127.0.0.1:8082/` but the two other projects (`http://127.0.0.1:8081/` and `http://127.0.0.1:8083/`) won't respond anymore. We've stopped them.
 
 Just run `make up` again in f.i. folder `project_1` to make the site back to life. Or, if you prefer the GUI, in Docker Desktop, just click on the `Start` button:
 

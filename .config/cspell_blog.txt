@@ -1,5 +1,6 @@
 adminer
 aesecure
+Akeeba
 alexandre
 alexandreelise
 allexport
@@ -105,6 +106,7 @@ htmltools
 htpasswd
 ìcon
 initialisation
+initialise
 innodb
 intelephense
 interdimensional
@@ -160,6 +162,7 @@ myproject
 mysecretpassword
 mysite
 mysqladmin
+mysqli
 mysqlserver
 nederlands
 niki
@@ -257,6 +260,7 @@ spatie
 sqlserverdb
 squiz
 ssms
+standardisation
 startwm
 startxfce
 statusgst

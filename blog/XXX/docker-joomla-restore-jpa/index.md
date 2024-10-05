@@ -7,14 +7,14 @@ tags: [.env, docker, joomla, makefile]
 enableComments: true
 draft: true
 ---
-<!--cspell:ignore akeeba,mysqli -->
+<!-- cspell:ignore Akeeba -->
 <!-- markdownlint-disable-file MD010 MD026 -->
 
 ![Restore a Joomla backup using Docker](/img/docker_joomla_header.jpg)
 
-In previous articles ([Part 1](/blog/docker-joomla) and [Part 2](/blog/docker-joomla-part-2)), we've seen how to create fresh Joomla sites using Docker.
+In previous articles ([Part 1](/blog/docker-joomla) and [Part 2](/blog/docker-joomla-part-2)), we've seen how to create a Joomla site from scratch by using Docker: pull Joomla, PHP, Apache and MySQL from Docker Hub and do magic stuff so we have a fresh `http://127.0.0.1:8080` local site.
 
-This time, we'll see how to restore on our machine, a backup created using **[Akeeba Backup](https://www.akeeba.com/products/akeeba-backup.html)** .
+In this article, we'll see how to restore on our machine, a backup created thanks to great **[Akeeba Backup](https://www.akeeba.com/products/akeeba-backup.html)** component.
 
 We'll reuse some files from [Part 2](/blog/docker-joomla-part-2) and make some changes to them.
 
@@ -22,17 +22,32 @@ At the end, we'll have a `make import` command that will start **[Akeeba Kicksta
 
 <!-- truncate -->
 
-## Prerequisites
+## Creating required files
+
+:::tip Skipping the files creation process
+In the next chapters, you'll need to create several files using copy/paste. If you wish go faster, just run the following commands to retrieve files from my [Github repo](https://github.com/cavo789/docker_joomla_restore) so you don't need to create them.
+
+```bash
+mkdir /tmp/joomla_restore && cd $_
+curl -LOJ --silent https://github.com/cavo789/docker_joomla_restore/archive/refs/tags/1.0.0.tar.gz
+tar -xzvf docker_joomla_restore-1.0.0.tar.gz --strip-components 1 && rm -f docker_joomla_restore-1.0.0.tar.gz
+tar -xzvf docker_joomla_restore.gz --strip-components 1 && rm -f docker_joomla_restore.gz
+```
+
+By following the instructions below, you'll create a xxx folder where you can copy all the files you need to restore a Joomla site using Docker.  You can then proceed immediately to the “Run the import process” chapter, as the files are already in place.
+:::
+
+*If you prefer to understand what you do and create files manually, please continue your lecture here below.*
 
 Please create a new folder on your computer like f.i. `mkdir /tmp/joomla_restore && cd $_`.
 
-In that folder, please create three files (please refer to [Part 2](/blog/docker-joomla-part-2)) if you need more explanations about these files.
+In that folder, you'll need to create several files (please refer to [Part 2](/blog/docker-joomla-part-2)) if you need more explanations about these files.
 
 ### The orchestration file: compose.yaml
 
-Below, highlighted, small differences from the `compose.yaml` file we saw in [Part 2](/blog/docker-joomla-part-2).
+Below, highlighted, small differences from the `compose.yaml` file we saw in [Part 2](/blog/docker-joomla-part-2#updated-composeyaml).
 
-Here is why: this time we don't need to download a fresh copy of Joomla since **we already have a Joomla site**. What we need is **PHP** and **Apache**. We don't need Joomla so, this time, we'll use a custom Docker image; not a already existing one.
+Here is why: this time we don't need to download a fresh copy of Joomla since **we already have a Joomla site** (our backup). What we need is **PHP** and **Apache**. We don't need Joomla so, this time, we'll use a custom Docker image; not a already existing one.
 
 Except highlighted lines, all the rest is the same that in [Part 2](/blog/docker-joomla-part-2).
 
@@ -94,7 +109,7 @@ networks:
 
 ### The .env file
 
-As introduced above; we don't need Joomla anymore but just PHP and Apache. We'll then define a `PHP_VERSION` variable and initialize it to the desired version.
+As introduced above; we don't need Joomla anymore but just PHP and Apache. We'll then define a `PHP_VERSION` variable and initialise it to the desired version.
 
 ```.env
 CONTAINER_PREFIX=joomla
@@ -108,6 +123,10 @@ PHP_VERSION=8.3-apache
 PROJECT_NAME=running-joomla-in-docker
 WEB_PORT=8080
 ```
+
+:::caution
+Since we need to restore an existing site, make sure to use the same PHP version than the one used by your site.
+:::
 
 ### Our makefile
 
@@ -182,7 +201,7 @@ import: reset
     # highlight-next-line
 
     # highlight-next-line
-	@printf "\n\n\033[1;33m%s\033[0m\n\n" "Please now jump to http://127.0.0.1:${WEB_PORT}/kickstart.php to finalize your site restoration."
+	@printf "\n\n\033[1;33m%s\033[0m\n\n" "Please now jump to http://127.0.0.1:${WEB_PORT}/kickstart.php to finalise your site restoration."
     # highlight-next-line
 
     # highlight-next-line
@@ -230,7 +249,7 @@ services:
         - PHP_VERSION=${PHP_VERSION:-8.3-apache}
 ```
 
-We don't see here a `image:` statement but a `build:` one. This means that we need a special file called `Dockerfile`.
+We don't see here an `image:` statement but a `build:` one. This means that we need a special file called `Dockerfile`.
 
 Please create a new file called `Dockerfile` in your folder with this content:
 
@@ -247,13 +266,17 @@ That file is quite simple right now: it tells we need a PHP Docker image and we 
 
 ### We need a backup for sure
 
-Please also download a backup of your existing site and save it in the same folder. For standardization needs, please call that file `backup.jpa`
+Please also put a backup of your existing site and save it in the same folder. For standardisation needs, please call that file `backup.jpa`.
+
+To make this step more explicit: jump to your existing Joomla website and, using Akeeba Backup, create a backup (file format: `.jpa`) and download the backup. Please rename the backup file like this: `backup.jpa`.
 
 ### And finally, we need Akeeba Kickstart
 
-Finally, we also need to have two files coming from **[Akeeba Kickstart](https://www.akeeba.com/download.html#kickstart)**.
+Finally, we also need to have two files coming from **[Akeeba Kickstart](https://www.akeeba.com/download.html#kickstart)**. 
 
-By following the link [Akeeba Kickstart](https://www.akeeba.com/download.html#kickstart), we'll be able to download a ZIP file (called `kickstart-core-xxx.zip` where `xxx` is a version number). Proceed to the download and open the zip file: we'll get two files in it. Please copy these files in your folder.
+By following the link [Akeeba Kickstart](https://www.akeeba.com/download.html#kickstart), we'll be able to download a `.zip` file (called `kickstart-core-xxx.zip` where `xxx` is a version number). Proceed to the download and open the archives: we'll get two files in it. Please copy these files in your folder.
+
+The two files we need are called `en-GB.kickstart.ini` and `kickstart.phsp`.
 
 ## Before starting
 
@@ -274,26 +297,41 @@ drwxrwxrwt     - root       root       2024-10-18 13:30 ..
 .rw-r--r--  2.9k christophe christophe 2024-10-18 13:30 makefile
 ```
 
+:::tip Skipping the files creation process
+If you've skipped file's creation earlier by downloading files from my repo; you'll have all the files listed here above.
+:::
+
 ## Run the importation process
 
 Ok, you've copied a lot of files. Time to start restoring your site.
 
-It may have taken a long time to set up, but thanks to this, everything's super-simple now: just run the xxxx instruction `make import`.
+It may have taken a long time to set up, but thanks to this, everything's super-simple now: just run the `make import` instruction.
 
 Once `make import` has finished, you'll get this output in the console:
 
 ```text
-> make import
-
 Copying Akeeba Kickstart to the Docker Joomla container...
 Copying your backup to the Docker Joomla container...
 
-[+] Running 3/3
- ✔ Network running-joomla-in-docker_joomla_network  Created       0.0s
- ✔ Container joomla-db                              Healthy      31.0s
- ✔ Container joomla-app                             Started      31.3s 
+[+] Building 1.4s (7/7) FINISHED                                 docker:default
+=> [joomla internal] load build definition from Dckerfile                  0.0s
+ => => transferring dockerfile: 200B                                       0.0s
+ => [joomla internal] load metadata for docker.io/library/php:8.3-apache   1.2s
+ => [joomla internal] load .dockerignore                                   0.0s
+ => => transferring context: 2B                                            0.0s
+ [...]
+ => [joomla] resolving provenance for metadata file                        0.0s
 
-Please now jump to http://127.0.0.1:8080/kickstart.php to finalize your site restoration.
+[+] Running 3/3
+ ✔ Network running-joomla-in-docker_joomla_network  Created                0.0s
+ ✔ Container joomla-db                              Healthy               31.0s
+ ✔ Container joomla-app                             Started               31.3s 
+```
+
+You'll also get the following message:
+
+```text
+Please now jump to http://127.0.0.1:8080/kickstart.php to finalise your site restoration.
 
 Below a summary of your current installation:
 
@@ -319,6 +357,22 @@ Once you'll need to fill in the database information's, please refer to what was
 
 ![Restoring the database](./images/database.png)
 
-Continue restoration as you always have; close the window, then click on the *Clean Up* site and display your site:
+Continue restoration as you always have; close the window once Akeeba Kickstart ask for, then click on the *Clean Up* button; then on *Visit your site's frontend* and enjoy:
 
 ![Site is restored](./images/site_is_restored.png)
+
+:::tip
+If you've used the provided demo site, the admin account is **joomla** and his password is **joomla@secured**.
+:::
+
+## Conclusion
+
+As we've just seen, restoring a Joomla site locally has become really simple.
+
+All you need to do is retrieve a few configuration files, and just the one named `.env` should be updated with the PHP and MySQL versions you're using on your production site.
+
+You download the local backup of your site and, with a single command (`make import`), your site is restored.
+
+No matter what version of Joomla or MySQL you're using.
+
+Piece of cake, no?
