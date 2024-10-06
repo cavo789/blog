@@ -5,6 +5,7 @@ authors: [christophe]
 image: /img/linux_tips_social_media.jpg
 tags: [linux, zsh]
 enableComments: true
+draft: true
 ---
 <!-- cspell:ignore DOSKEY,HISTIGNORE -->
 ![Linux - The history file](/img/linux_tips_banner.jpg)
