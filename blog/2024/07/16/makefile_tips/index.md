@@ -9,7 +9,7 @@ enableComments: true
 <!-- cspell:ignore ifeq,ifneq,ifdef,Oups,phplint,infile,recipeprefix,sonarqube,testme,findstring,toplevel,concat,outfile -->
 <!-- cspell:ignore runsql,regexes -->
 
-![Makefile - Tutorial and Tips & Tricks](/img/makefile_tips_social_media.jpg)
+![Makefile - Tutorial and Tips & Tricks](/img/makefile_tips_banner.jpg)
 
 When I'm learning, I usually take notes.  I find that it's one of the best ways of remembering what I've seen and being able to come back to it at any time.
 

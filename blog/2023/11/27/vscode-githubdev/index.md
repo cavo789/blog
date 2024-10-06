@@ -6,7 +6,7 @@ image: /img/vscode_tips_social_media.jpg
 tags: [github, tips, vscode]
 enableComments: true
 ---
-![Start vscode from github.com](/img/vscode_tips_header.jpg)
+![Start vscode from github.com](/img/vscode_tips_banner.jpg)
 
 It's not something new, but it's probably not known well enough: by surfing on **any** Github repository like f.i. [https://github.com/cavo789/blog](https://github.com/cavo789/blog), you can just press <kbd>.</kbd> (the dot key) on your keyboard to start vscode online i.e. see the current repository in vscode.dev.
 

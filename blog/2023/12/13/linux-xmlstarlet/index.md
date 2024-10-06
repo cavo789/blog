@@ -6,7 +6,7 @@ image: /img/bash_tips_social_media.jpg
 tags: [bash, linux, tips, xml, xmlstarlet]
 enableComments: true
 ---
-![The xmlstarlet utility for Linux](/img/bash_tips_header.jpg)
+![The xmlstarlet utility for Linux](/img/bash_tips_banner.jpg)
 
 `xmlstarlet` is a powerful utility for Linux allowing manipulating XML data from the command line and can be integrated into shell scripts.
 

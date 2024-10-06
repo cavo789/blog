@@ -6,7 +6,7 @@ image: /img/excel_tips_social_media.jpg
 tags: [excel, ribbon, vba, vscode]
 enableComments: true
 ---
-![MS Office - How to create a ribbon in Excel](/img/excel_tips_header.jpg)
+![MS Office - How to create a ribbon in Excel](/img/excel_tips_banner.jpg)
 
 In this post, we'll learn how to create a ribbon (i.e. a toolbar) in Microsoft Excel.
 

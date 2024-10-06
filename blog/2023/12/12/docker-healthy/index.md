@@ -6,7 +6,7 @@ tags: [bash, docker, tips]
 enableComments: true
 image: /img/docker_tips_social_media.jpg
 ---
-![Get health information from your running containers](/img/docker_tips_header.jpg)
+![Get health information from your running containers](/img/docker_tips_banner.jpg)
 
 When you've a few runnings containers on your machine, you can quickly retrieve the health information using `docker ps` and his `State.Health` response.
 

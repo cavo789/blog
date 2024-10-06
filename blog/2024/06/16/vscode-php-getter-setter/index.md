@@ -7,7 +7,7 @@ tags: [tips, vscode]
 enableComments: true
 ---
 <!-- cspell:ignore strtolower -->
-![PHP Getter and Setter in VSCode](/img/vscode_tips_header.jpg)
+![PHP Getter and Setter in VSCode](/img/vscode_tips_banner.jpg)
 
 Because you're an excellent developer, you deny anyone access to the properties of your class directly, but only via a getter or setter.
 

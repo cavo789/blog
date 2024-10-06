@@ -6,7 +6,7 @@ image: /img/bash_tips_social_media.jpg
 tags: [bash, introspection, linux, tips]
 enableComments: true
 ---
-![Linux - Compare two versions of the same script](/img/bash_tips_header.jpg)
+![Linux - Compare two versions of the same script](/img/bash_tips_banner.jpg)
 
 Still faced with the problem of having to compare two versions of the same script (see the article [Linux - Comparing two folders/files in the console](/blog/linux-diff-file-folder)), this time we're going to consider that the file we need to compare is a Bash script and that we have two versions of it.
 

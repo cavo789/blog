@@ -6,7 +6,7 @@ image: /img/makefile_tips_social_media.jpg
 tags: [makefile, tips]
 enableComments: true
 ---
-![Linux Makefile - When to use a makefile](/img/makefile_tips_social_media.jpg)
+![Linux Makefile - When to use a makefile](/img/makefile_tips_banner.jpg)
 
 Coding your own `makefile` has the enormous, **terribly powerful advantage** of being able to centralize the commands you use on your project in a single place, whatever the nature of the project (php, javascript, nodeJs, markdown, etc.).
 

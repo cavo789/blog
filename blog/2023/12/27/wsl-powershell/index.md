@@ -6,7 +6,7 @@ image: /img/wsl_tips_social_media.jpg
 tags: [powershell, tips, wsl]
 enableComments: true
 ---
-![Starting the default associated Windows program on WSL](/img/wsl_tips_header.jpg)
+![Starting the default associated Windows program on WSL](/img/wsl_tips_banner.jpg)
 
 Very often, I'm in my Linux console and I'd like to open a pdf file that I've just generated or, more simply, to open an html file. But how can I do this?
 

@@ -2,11 +2,11 @@
 slug: docker-phpdocumentor
 title: Generating documentation for a PHP codebase
 authors: [christophe]
-image: ./images/social_media.png
+image: /img/php_tips_social_media.png
 tags: [docker, php, phpdoc, wordpress]
 enableComments: true
 ---
-![Generating documentation for a PHP codebase](./images/social_media.png)
+![Generating documentation for a PHP codebase](/img/php_tips_banner.jpg)
 
 You've a PHP codebase and you wish hop, hop, two strokes of the teaspoon, generate a documentation site without any headaches.
 

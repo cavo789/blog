@@ -2,11 +2,11 @@
 slug: php-devcontainer
 title: Install a PHP Docker environment in a matter of seconds
 authors: [christophe]
-image: ./images/php_devcontainer_social_media.jpg
+image: /img/php_tips_social_media.jpg
 tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, sonarlint, vscode]
 enableComments: true
 ---
-![Install a PHP Docker environment in a matter of seconds](./images/php_devcontainer_social_media.jpg)
+![Install a PHP Docker environment in a matter of seconds](/img/php_tips_banner.jpg)
 
 This article is the very short and straightforward version of [PHP development in a devcontainer with preinstalled code quality tools](/blog/vscode-devcontainer). If you just want to follow a very few steps and get your PHP environment, this article is for you.
 

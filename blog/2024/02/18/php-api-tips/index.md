@@ -6,7 +6,7 @@ image: /img/php_tips_social_media.jpg
 tags: [api, docker, php, rest]
 enableComments: true
 ---
-![API REST - How to write good APIs](/img/php_tips_header.jpg)
+![API REST - How to write good APIs](/img/php_tips_banner.jpg)
 
 When developing APIs *from scratch*, you can do it in the mode *I get behind the PC and start programming* or *I learn about the standards first and then program in compliance with these standards*.
 

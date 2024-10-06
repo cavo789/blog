@@ -6,7 +6,7 @@ image: /img/vscode_tips_social_media.jpg
 tags: [tips, vscode]
 enableComments: true
 ---
-![Export the list of extensions you've installed in VSCode](/img/vscode_tips_header.jpg)
+![Export the list of extensions you've installed in VSCode](/img/vscode_tips_banner.jpg)
 
 A small tip: by running `code --list-extensions` in a console (Linux or DOS), you'll get the list of all extensions you've installed in VSCode.
 

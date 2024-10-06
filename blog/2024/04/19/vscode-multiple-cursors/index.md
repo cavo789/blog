@@ -6,7 +6,7 @@ image: /img/vscode_tips_social_media.jpg
 tags: [tips, vscode]
 enableComments: true
 ---
-![Multiple cursors in vscode](/img/vscode_tips_header.jpg)
+![Multiple cursors in vscode](/img/vscode_tips_banner.jpg)
 
 One of the best features in vscode is the *Multiple cursors* one.
 

@@ -7,7 +7,7 @@ tags: [docker, firefox, gimp, tip]
 enableComments: true
 ---
 <!-- cspell:ignore seccomp,pgid,puid -->
-![Docker - Running some GUI interfaces in the browser](/img/docker_tips_header.jpg)
+![Docker - Running some GUI interfaces in the browser](/img/docker_tips_banner.jpg)
 
 In a future article, I'll be covering a subject I've just discovered: the possibility of running graphical interfaces in Docker and, therefore, having a Linux application running in Windows.
 

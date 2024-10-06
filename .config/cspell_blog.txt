@@ -179,6 +179,7 @@ onbrokenanchors
 onsave
 openapi
 opentype
+optimise
 optimised
 pagetitle
 pandoc

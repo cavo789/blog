@@ -6,7 +6,7 @@ image: /img/vscode_tips_social_media.jpg
 tags: [php, tips, vscode]
 enableComments: true
 ---
-![Sticky scroll in vscode](/img/vscode_tips_header.jpg)
+![Sticky scroll in vscode](/img/vscode_tips_banner.jpg)
 
 > [https://dev.to/amrsamy/vs-code-sticky-scroll-2jcd](https://dev.to/amrsamy/vs-code-sticky-scroll-2jcd)
 

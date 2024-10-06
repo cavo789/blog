@@ -7,7 +7,7 @@ tags: [laravel, php]
 enableComments: true
 ---
 <!-- cspell:ignore ailwind,lpine,aravel,ivewire -->
-![Laravel Filament](/img/laravel_tips_header.jpg)
+![Laravel Filament](/img/laravel_tips_banner.jpg)
 
 Filament is a *collection of beautiful full-stack components. The perfect starting point for your next app.* i.e. a set of **free-to-use** components and promises that we'll be able to quickly build nice administration interfaces.
 

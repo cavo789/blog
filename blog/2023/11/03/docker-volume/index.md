@@ -2,11 +2,11 @@
 slug: docker-volume
 title: Share data between your running Docker container and your computer
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/docker_tips_social_media.jpg
 tags: [docker]
 enableComments: true
 ---
-![Share data between your running Docker container and your computer](./images/header.jpg)
+![Share data between your running Docker container and your computer](/img/docker_tips_banner.jpg)
 
 > If you don't have Docker yet, please consult my [Install Docker and play with PHP](/blog/install-docker) post first.
 

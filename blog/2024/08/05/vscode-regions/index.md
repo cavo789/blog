@@ -6,7 +6,7 @@ tags: [tips, vscode]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg
 ---
-![Working with regions in VSCode](/img/vscode_tips_header.jpg)
+![Working with regions in VSCode](/img/vscode_tips_banner.jpg)
 
 <!-- cspell:ignore hadolint,skel,maptz,regionfolder,specialised -->
 

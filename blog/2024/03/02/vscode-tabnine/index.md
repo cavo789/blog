@@ -6,7 +6,7 @@ tags: [addon, php, tips, vscode]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg
 ---
-![Tabnine - AI Autocomplete & Chat for Javascript, Python, Typescript, PHP, Go, Java & more](/img/vscode_tips_header.jpg)
+![Tabnine - AI Autocomplete & Chat for Javascript, Python, Typescript, PHP, Go, Java & more](/img/vscode_tips_banner.jpg)
 
 Tabnine is a **MUST HAVE** extension. He will predict your next keystroke and sometimes it's just **WOW; HOW IS IT POSSIBLE?**.
 

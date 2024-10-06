@@ -2,11 +2,11 @@
 slug: msaccess-optimize
 title: How to optimize an existing MS Access database
 authors: [christophe]
-image: ./images/optimize_msaccess_database_social_media.jpg
+image: /img/database_tips_social_media.jpg
 tags: [database, msaccess, vba]
 enableComments: true
 ---
-![How to optimize an existing MS Access database](./images/optimize_msaccess_database_header.jpg)
+![How to optimize an existing MS Access database](/img/database_tips_banner.jpg)
 
 Several years ago, I had to intervene on an MS Access database that had been created by a person of good will but with little affinity for computers and optimization.
 

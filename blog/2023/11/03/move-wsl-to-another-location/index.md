@@ -4,9 +4,9 @@ title: Move WSL to another location
 authors: [christophe]
 tags: [docker, tips, wsl]
 enableComments: true
-image: ./images/social_media.jpg
+image: /img/docker_tips_social_media.jpg
 ---
-![Move WSL to another location](./images/header.jpg)
+![Move WSL to another location](/img/docker_tips_banner.jpg)
 
 > [https://dev.to/mefaba/installing-wsl-on-another-drive-in-windows-5c4a](https://dev.to/mefaba/installing-wsl-on-another-drive-in-windows-5c4a)
 

@@ -2,11 +2,11 @@
 slug: docker-compose-viz
 title: How to generate a graph from docker-compose.yml
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/docker_tips_social_media.jpg
 tags: [docker, visualisation, tips]
 enableComments: true
 ---
-![How to generate a graph from docker-compose.yml](./images/header.jpg)
+![How to generate a graph from docker-compose.yml](/img/docker_tips_banner.jpg)
 
 Imagine you to have a very big `docker-compose.yml` file with a lot of services and dependencies.
 

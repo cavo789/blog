@@ -6,7 +6,7 @@ image: /img/github_tips_social_media.jpg
 tags: [github, tips]
 enableComments: true
 ---
-![Github - How to find email addresses for most users](/img/github_tips_header.jpg)
+![Github - How to find email addresses for most users](/img/github_tips_banner.jpg)
 
 You'd like to get in touch with a GitHub user but, e.g., you don't want to post your question as an issue because, e.g., it's not about a specific repository but more generic.
 

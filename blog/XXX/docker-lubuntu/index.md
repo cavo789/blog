@@ -8,7 +8,7 @@ enableComments: true
 draft: true
 ---
 <!-- cspell:ignore lubuntu,initialising,xremote,autologin,realise -->
-![Start lubuntu Desktop](/img/docker_tips_header.jpg)
+![Start lubuntu Desktop](/img/docker_tips_banner.jpg)
 
 During my summer holidays, I've watched this video: [Full Ubuntu GUI in a Container Displayed on Windows (XServer)](https://www.youtube.com/watch?v=WutV6n21dys) and, of course, I wanted to play with it.
 

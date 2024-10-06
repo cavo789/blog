@@ -6,7 +6,7 @@ image: /img/makefile_tips_social_media.jpg
 tags: [makefile, tips]
 enableComments: true
 ---
-![Linux Makefile - Adding a help screen](/img/makefile_tips_social_media.jpg)
+![Linux Makefile - Adding a help screen](/img/makefile_tips_banner.jpg)
 
 By using a makefile, you know it already, you can gather in one place a lot of *actions* like `make bash`, `make build`, `make deploy`, ... just like I do when working on this blog (see my makefile on [https://github.com/cavo789/blog/blob/main/makefile](https://github.com/cavo789/blog/blob/main/makefile)).
 

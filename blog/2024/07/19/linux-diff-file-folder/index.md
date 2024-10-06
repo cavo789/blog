@@ -6,7 +6,7 @@ image: /img/bash_tips_social_media.jpg
 tags: [bash, linux, tips]
 enableComments: true
 ---
-![Linux - Comparing two folders/files in the console](/img/bash_tips_header.jpg)
+![Linux - Comparing two folders/files in the console](/img/bash_tips_banner.jpg)
 
 Natively, Linux has a command-line tool called `diff` for comparing two folders or files. Comparing two folders is quite simple: `diff folder_1 folder2`. And it's no more complicated for two files: `diff file_1 file2`.
 

@@ -6,7 +6,7 @@ image: /img/bash_tips_social_media.jpg
 tags: [bash, tips]
 enableComments: true
 ---
-![Bash - ASCII art](/img/bash_tips_header.jpg)
+![Bash - ASCII art](/img/bash_tips_banner.jpg)
 
 I write a lot of Bash scripts, and I like to have a similar approach for each one. One of the things I always do is to include a good old-fashioned *ASCII Art* banner, perhaps for the geek factor, but mostly to make a bigger visual impact.
 

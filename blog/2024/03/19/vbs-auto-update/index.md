@@ -6,7 +6,7 @@ image: /img/vbs_tips_social_media.jpg
 tags: [dos, github, vbs]
 enableComments: true
 ---
-![VBS - Auto update script](/img/vbs_tips_header.jpg)
+![VBS - Auto update script](/img/vbs_tips_banner.jpg)
 
 Before switching to [WSL2](/blog/tags/wsl) and the Linux console, I wrote VBS scripts from time to time. It looks like VBA but for the DOS console.
 

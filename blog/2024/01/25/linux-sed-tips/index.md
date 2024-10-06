@@ -6,7 +6,7 @@ image: /img/bash_tips_social_media.jpg
 tags: [.env, bash, linux, sed, tips]
 enableComments: true
 ---
-![Search and replace (or add) using sed](/img/bash_tips_header.jpg)
+![Search and replace (or add) using sed](/img/bash_tips_banner.jpg)
 
 Today, I was facing (once more) with the following need: I need to update a setting in a text file but if the variable is not yet present, I need to add it.
 

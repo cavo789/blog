@@ -2,11 +2,11 @@
 slug: zsh-plugin-autosuggestions
 title: Autosuggestions in the console using ZSH
 authors: [christophe]
-image: /img/zsh_social_media.jpg
+image: /img/zsh_tips_social_media.jpg
 tags: [customization, linux, wsl, zsh]
 enableComments: true
 ---
-![Autosuggestions in the console using ZSH](/img/zsh_social_media.jpg)
+![Autosuggestions in the console using ZSH](/img/zsh_tips_banner.jpg)
 
 ZSH supports plugin and one of the wonders is the [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) one.
 

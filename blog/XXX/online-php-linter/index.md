@@ -2,12 +2,12 @@
 slug: online-php-linter
 title: Format poorly formatted PHP code
 authors: [christophe]
-image: ./images/header.png
+image: /img/php_tips_social_media.jpg
 tags: [php, code quality, tips, vscode]
 enableComments: true
 draft: true
 ---
-![Format poorly formatted PHP code](./images/header.png)
+![Format poorly formatted PHP code](/img/php_tips_banner.jpg)
 
 Imagine that you are faced with a PHP script whose layout leaves something to be desired, i.e. with a crazy indentation and little respect for standards.
 

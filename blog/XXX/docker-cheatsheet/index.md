@@ -7,7 +7,7 @@ tags: [docker, tip]
 enableComments: true
 draft: true
 ---
-![Docker cheat sheet](/img/docker_tips_header.jpg)
+![Docker cheat sheet](/img/docker_tips_banner.jpg)
 
 ## Images
 

@@ -6,7 +6,7 @@ image: /img/docker_tips_social_media.jpg
 tags: [docker, tips]
 enableComments: true
 ---
-![Understanding the depends_on condition in Docker compose files](/img/docker_tips_header.jpg)
+![Understanding the depends_on condition in Docker compose files](/img/docker_tips_banner.jpg)
 
 It's only been ten days or so since I learned the trick, even though it was well documented: managing service startups and, above all, blocking one if the other isn't ready ([official documentation](https://docs.docker.com/compose/startup-order/#control-startup)).
 

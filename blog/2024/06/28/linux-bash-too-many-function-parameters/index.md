@@ -6,7 +6,7 @@ image: /img/bash_tips_social_media.jpg
 tags: [code quality, linux, tips]
 enableComments: true
 ---
-![Clean code - Linux Bash - Keep the number of function parameters as small as possible](/img/bash_tips_header.jpg)
+![Clean code - Linux Bash - Keep the number of function parameters as small as possible](/img/bash_tips_banner.jpg)
 
 A concept of the clean code approach is to avoid too many function parameter (I would say that four parameters is already too many).
 

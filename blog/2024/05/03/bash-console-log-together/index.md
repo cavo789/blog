@@ -6,7 +6,7 @@ image: /img/bash_tips_social_media.jpg
 tags: [bash, tips]
 enableComments: true
 ---
-![Bash - Echo on the console and in a logfile in the same time](/img/bash_tips_header.jpg)
+![Bash - Echo on the console and in a logfile in the same time](/img/bash_tips_banner.jpg)
 
 In my previous article [Bash - Script to add logging features to your script](/blog/bash-logging), I've shared a way to write information in a logfile.
 

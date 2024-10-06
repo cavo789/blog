@@ -2,11 +2,11 @@
 slug: docker-diagram-as-code
 title: Docker - Diagrams as code
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/docker_tips_social_media.jpg
 tags: [docker, visualisation, tips]
 enableComments: true
 ---
-![Docker - Diagrams as code](./images/header.jpg)
+![Docker - Diagrams as code](/img/docker_tips_banner.jpg)
 
 But what a joy it is to be able to draw diagrams by, well, just writing text. Some tools are better known than others, e.g. [Mermaid](https://mermaid-js.github.io/mermaid/).
 

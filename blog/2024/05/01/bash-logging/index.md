@@ -7,7 +7,7 @@ tags: [bash, tips]
 enableComments: true
 ---
 <!-- cspell:ignore uplzaefi -->
-![Bash - Script to add logging features to your script](/img/bash_tips_header.jpg)
+![Bash - Script to add logging features to your script](/img/bash_tips_banner.jpg)
 
 > Also read [Bash - Echo on the console and in a logfile in the same time](/blog/bash-console-log-together)
 

@@ -6,7 +6,7 @@ tags: [addon, vscode]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg
 ---
-![Error Lens addon for VSCode](/img/vscode_tips_header.jpg)
+![Error Lens addon for VSCode](/img/vscode_tips_banner.jpg)
 
 Very recently I discovered [usernamehw.errorlens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) and it's a shame I hadn't seen it before.
 

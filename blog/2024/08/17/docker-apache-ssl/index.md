@@ -8,7 +8,7 @@ enableComments: true
 ---
 <!-- cspell:ignore htdocs,newkey,keyout,a2enmod,a2ensite,a2dissite,libapache2,unexpire,badaboum,socache,shmcb -->
 
-![Docker - Configure your localhost to use SSL](/img/docker_tips_header.jpg)
+![Docker - Configure your localhost to use SSL](/img/docker_tips_banner.jpg)
 
 In a [previous article](/blog/docker-html-site), I've explained how to run a static HTML site in seconds.
 

@@ -6,7 +6,7 @@ image: /img/bash_tips_social_media.jpg
 tags: [bash, tips]
 enableComments: true
 ---
-![Bash - Loading environment variables from a file](/img/bash_tips_header.jpg)
+![Bash - Loading environment variables from a file](/img/bash_tips_banner.jpg)
 
 Imagine you've a `.env` file like and you wish to process that file in a Bash script.
 

@@ -6,7 +6,7 @@ image: /img/bash_tips_social_media.jpg
 tags: [bash, introspection, linux, tips]
 enableComments: true
 ---
-![Linux - Generate documentation from Bash scripts](/img/bash_tips_header.jpg)
+![Linux - Generate documentation from Bash scripts](/img/bash_tips_banner.jpg)
 
 <!-- cspell:ignore HEllow -->
 

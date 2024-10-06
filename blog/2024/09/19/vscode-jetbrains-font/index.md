@@ -6,7 +6,7 @@ tags: [tips, vscode]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg
 ---
-![Using the JetBrains Mono font in vscode](/img/vscode_tips_header.jpg)
+![Using the JetBrains Mono font in vscode](/img/vscode_tips_banner.jpg)
 
 As you know, VSCode is highly customizable; you can install plethora of addons, change the default theme and use your preferred font.
 

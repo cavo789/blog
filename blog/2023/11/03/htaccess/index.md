@@ -3,11 +3,11 @@ slug: apache-htaccess
 title: Apache .htaccess file
 authors: [christophe]
 tags: [apache, snippets, .htaccess]
-image: ./images/social_media.jpg
+image: /img/htaccess_tips_social_media.jpg
 enableComments: true
 ---
 <!-- cspell:ignore webm -->
-![Apache .htaccess file](./images/header.jpg)
+![Apache .htaccess file](/img/htaccess_tips_banner.jpg)
 
 Some tips and tricks for your .htaccess file (Apache)
 

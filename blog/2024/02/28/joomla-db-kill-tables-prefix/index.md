@@ -2,11 +2,11 @@
 slug: joomla-db-kill-tables-prefix
 title: Joomla - delete tables from your database according to a certain prefix
 authors: [christophe]
-image: /img/db_tips_social_media.jpg
+image: /img/database_tips_social_media.jpg
 tags: [database, joomla, tips]
 enableComments: true
 ---
-![Joomla : delete tables from your database according to a certain prefix](/img/db_tips_banner.jpg)
+![Joomla : delete tables from your database according to a certain prefix](/img/database_tips_banner.jpg)
 
 A recent [post](https://forum.joomla.fr/forum/joomla-4-x-aa/questions-g%C3%A9n%C3%A9rales-aa/2060596-deux-pr%C3%A9fixes-de-tables) on the Joomla French forum was asking for being able to delete tables present in the Joomla database; the ones using a given prefix like `old_` or something like that.
 

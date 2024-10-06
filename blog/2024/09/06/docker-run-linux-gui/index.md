@@ -7,7 +7,7 @@ tags: [chrome, docker, firefox, gimp, gui, tip]
 enableComments: true
 ---
 <!-- cspell:ignore xeyes,xhost,dearmor,dpkg,favourite -->
-![Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP](/img/docker_tips_header.jpg)
+![Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP](/img/docker_tips_banner.jpg)
 
 In my [previous post](/blog/docker-gui-in-browser), I've illustrated how to start Firefox or GIMP in a browser. This was the first part of this series about graphical user interfaces because, until very recently, I didn't know it was possible to run GUIs with Docker and that's just amazing.
 

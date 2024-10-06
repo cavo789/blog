@@ -6,7 +6,7 @@ image: /img/docker_tips_social_media.jpg
 tags: [adminer, docker, mysql, postgresql]
 enableComments: true
 ---
-![Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/img/docker_tips_header.jpg)
+![Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/img/docker_tips_banner.jpg)
 
 You've a dockerized application and one of its container is a MariaDB, MySQL or PostgreSQL service.
 
