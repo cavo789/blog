@@ -5,7 +5,7 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg 
 tags: [devcontainer, docker, python] 
 enableComments: true
-draft:true 
+draft: true 
 ---
 ![Docker - Explain me like I'm five](/img/docker_tips_banner.jpg)
 
