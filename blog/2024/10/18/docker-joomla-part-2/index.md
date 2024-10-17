@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_joomla_social_media.jpg
 tags: [.env, docker, joomla, makefile]
 enableComments: true
-draft: true
 ---
 ![Create your Joomla website using Docker - Part 2](/img/docker_joomla_header.jpg)
 

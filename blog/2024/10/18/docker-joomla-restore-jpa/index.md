@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_joomla_social_media.jpg
 tags: [.env, docker, joomla, makefile]
 enableComments: true
-draft: true
 ---
 <!-- cspell:ignore Akeeba -->
 <!-- markdownlint-disable-file MD010 MD026 -->
