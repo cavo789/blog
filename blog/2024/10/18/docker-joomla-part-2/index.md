@@ -115,7 +115,7 @@ CONTAINER_PREFIX=joomla
 DB_NAME=joomla
 DB_PASSWORD=examplepass
 DB_USER=joomla
-JOOMLA_VERSION=5.1.4-php8.3-apache
+JOOMLA_VERSION=5.2.0-php8.3-apache
 MYSQL_PORT=3306
 MYSQL_VERSION=8.4.2
 PROJECT_NAME=running-joomla-in-docker
@@ -131,7 +131,7 @@ If you need two or more Joomla websites (you're a web agency starting to use Doc
 
 The `${XXX:-yyy}` syntax means: if the variable exists, use it (the `XXX` part) otherwise use a default value (the `yyy` part).
 
-So, here, if `JOOMLA_VERSION` exists and this is the case in our `.env` file, then use his value. We'll then use `image: joomla:5.1.4-php8.3-apache`. If `JOOMLA_VERSION` was missing in our `.env`, then we'll use `latest` and thus `image: joomla:latest`.
+So, here, if `JOOMLA_VERSION` exists and this is the case in our `.env` file, then use his value. We'll then use `image: joomla:5.2.0-php8.3-apache`. If `JOOMLA_VERSION` was missing in our `.env`, then we'll use `latest` and thus `image: joomla:latest`.
 :::
 
 ### Let's make our lives simpler and lazier; using a makefile
@@ -230,7 +230,7 @@ services:
       JOOMLA_DB_NAME: joomla
       JOOMLA_DB_PASSWORD: examplepass
       JOOMLA_DB_USER: joomla
-    image: joomla:5.1.4-php8.3-apache
+    image: joomla:5.2.0-php8.3-apache
     networks:
       joomla_network: null
     ports:
@@ -281,7 +281,7 @@ By running `docker container list --all --format "table {{.Image}}\t{{.Names}}\t
 
 ```text
 IMAGE                        NAMES        STATUS                   PORTS
-joomla:5.1.4-php8.3-apache   joomla-app   Up 6 minutes             0.0.0.0:8080->80/tcp
+joomla:5.2.0-php8.3-apache   joomla-app   Up 6 minutes             0.0.0.0:8080->80/tcp
 mysql:8.4.2                  joomla-db    Up 7 minutes (healthy)   3306/tcp, 33060/tcp
 ```
 
@@ -373,7 +373,7 @@ Below a summary of your current installation:
 JOOMLA
 
   * Project name              running-joomla-in-docker
-  * Version                   5.1.4-php8.3-apache
+  * Version                   5.2.0-php8.3-apache
   * Port                      8080
 
 DATABASE
@@ -528,7 +528,7 @@ JOOMLA_ADMIN_USER=Joomla Hero
 JOOMLA_ADMIN_USERNAME=joomla
 // highlight-next-line
 JOOMLA_SITE_NAME=Joomla
-JOOMLA_VERSION=5.1.4-php8.3-apache
+JOOMLA_VERSION=5.2.0-php8.3-apache
 MYSQL_PORT=3306
 MYSQL_VERSION=8.4.2
 PROJECT_NAME=running-joomla-in-docker
@@ -617,7 +617,7 @@ Below a summary of your current installation:
 JOOMLA
 
   * Project name              running-joomla-in-docker
-  * Version                   5.1.4-php8.3-apache
+  * Version                   5.2.0-php8.3-apache
   * Port                      8080
 
   Administration
@@ -646,7 +646,7 @@ Your Joomla site is already configured; nice no?
 
 Ok, so right now, we've seen how to create a fresh Joomla website in seconds with just the `make up` command and how to bypass the installation screens by already providing useful information in our `.env` file.
 
-Let's try a real-world example: we are a small web agency and we wish to use Docker for our next projects and we already have three projects in our mind.
+Let's try a real-world example: we are a small web agency and we wish to use Docker for our next projects and we already have three projects in our mind. Or, you're an individual having several websites; all with different Joomla versions.
 
 ## Starting three different projects
 
@@ -681,22 +681,26 @@ One directory by project and, again, our three files.
 The `tree` command isn't native in Linux. If you wish to install it, just run `sudo apt-get update && sudo apt-get install tree`.
 :::
 
-### Project 1
+### Project 1 - Joomla 5.2
+
+:::info Project 1 will be a Joomla 5.2
+In a very few words: we'll install Joomla 5.2 and MySQL 8.4.2.
+:::
 
 Please configure the `project_1/.env` file with the following content.
 
 As you can see (highlighted lines), that file is the same that the latest `.env` we've used earlier but:
 
-* We'll set the `CONTAINER_PREFIX` to an unique value; in our example `project_1`,
+* We'll set the `CONTAINER_PREFIX` to an unique value; in our example `joomla_5`,
 * We need to do the same (i.e. define an unique value) for the MySQL port number; we can use the standard port `3306` for our first project but, let's use `3301` (`1` because it's our first project)
-* You've understood; we'll do the same for `JOOMLA_SITE_NAME` and `PROJECT_NAME`; remain humble and opt for `Joomla_Project_1` and `my_tremendous_first_project` and
+* You've understood; we'll do the same for `JOOMLA_SITE_NAME` and `PROJECT_NAME`; remain humble and opt for `Joomla_5` and `joomla5` and
 * Finally, we need to define a web port number; we'll use `8081` (so our site will be available on `http://127.0.0.1:8081`).
 
 Here is the `.env` file for **our first** project:
 
 ```.env
 // highlight-next-line
-CONTAINER_PREFIX=project_1
+CONTAINER_PREFIX=joomla_5
 DB_NAME=joomla
 DB_PASSWORD=examplepass
 DB_USER=joomla
@@ -705,22 +709,24 @@ JOOMLA_ADMIN_PASSWORD=joomla@secured
 JOOMLA_ADMIN_USER=Joomla Hero
 JOOMLA_ADMIN_USERNAME=joomla
 // highlight-next-line
-JOOMLA_SITE_NAME=Joomla_Project_1
-JOOMLA_VERSION=5.1.4-php8.3-apache
+JOOMLA_SITE_NAME=Joomla_5
+// highlight-next-line
+JOOMLA_VERSION=5.2.0-php8.3-apache
 // highlight-next-line
 MYSQL_PORT=3301
+// highlight-next-line
 MYSQL_VERSION=8.4.2
 // highlight-next-line
-PROJECT_NAME=my_tremendous_first_project
+PROJECT_NAME=joomla5
 // highlight-next-line
 WEB_PORT=8081
 ```
 
 Go to your console and run `cd project_1` to jump in the first project's folder then `make up` to create Docker containers for project 1.
 
-By going to `http://127.0.0.1:8081/administrator/` we've our first admin page (as you can see, the site is well called **Joomla_Project_1** as expected).
+By going to `http://127.0.0.1:8081/administrator/` we've our first admin page (as you can see, the site is well called **Joomla_5** as expected).
 
-![Our first site is running](./images/project_1.png)
+![Our first site is running under Joomla 5.2](./images/project_1.png)
 
 :::caution
 Please really be careful to specify the port number of our project. For project 1, the port number is `8081`. As, in fact, we wished by setting the variable `WEB_PORT`.
@@ -728,7 +734,11 @@ Please really be careful to specify the port number of our project. For project 
 So, to access to the first project, our URL is well `http://127.0.0.1:8081`.
 :::
 
-### Project 2
+### Project 2 - Joomla 4.0
+
+:::info Project 1 will be a Joomla 4.0
+In a very few words: we'll install Joomla 4.0 and MySQL 5.7.37.
+:::
 
 Please configure the `project_2/.env` with the following content. As you can see (highlighted lines), that file is the same that the latest `.env` we've used earlier but, just, we'll adjust the name of the project and the web port (so our site will be available on `http://127.0.0.1:8082`).
 
@@ -736,7 +746,7 @@ Do the same changes as for project 1 but just replace `1` by `2`:
 
 ```.env
 // highlight-next-line
-CONTAINER_PREFIX=project_2
+CONTAINER_PREFIX=joomla_4
 DB_NAME=joomla
 DB_PASSWORD=examplepass
 DB_USER=joomla
@@ -745,13 +755,15 @@ JOOMLA_ADMIN_PASSWORD=joomla@secured
 JOOMLA_ADMIN_USER=Joomla Hero
 JOOMLA_ADMIN_USERNAME=joomla
 // highlight-next-line
-JOOMLA_SITE_NAME=Joomla_Project_2
-JOOMLA_VERSION=5.1.4-php8.3-apache
+JOOMLA_SITE_NAME=Joomla_4
+// highlight-next-line
+JOOMLA_VERSION=4.0.2-apache
 // highlight-next-line
 MYSQL_PORT=3302
-MYSQL_VERSION=8.4.2
 // highlight-next-line
-PROJECT_NAME=my_tremendous_second_project
+MYSQL_VERSION=5.7.37
+// highlight-next-line
+PROJECT_NAME=joomla4
 // highlight-next-line
 WEB_PORT=8082
 ```
@@ -760,11 +772,17 @@ Save the file and run `make up` to start the second website. Go to `http://127.0
 
 ![Our two Joomla projects are running](./images/project_1_2.png)
 
-:::caution
+:::success Two Joomla sites having two different PHP and MySQL versions and ... no conflict!
+Did you see? We've two websites running on our computer. The first one is a Joomla 5.2 and the second one is Joomla 4.0.
+
 If you're still awake after this long blog post, to get access to our second website, we need to go to `http://127.0.0.1:8082`.
 :::
 
-### Project 3
+### Project 3 - Joomla 3.5
+
+:::info Project 1 will be a Joomla 3.5
+And now, you need to do some maintenance on an old J3.5 website. Let's create one on our computer.
+:::
 
 Please now configure the `project_3/.env` with the following content.
 
@@ -772,7 +790,7 @@ This time, we'll use `3` as suffixes:
 
 ```.env
 // highlight-next-line
-CONTAINER_PREFIX=project_3
+CONTAINER_PREFIX=joomla_3
 DB_NAME=joomla
 DB_PASSWORD=examplepass
 DB_USER=joomla
@@ -781,13 +799,15 @@ JOOMLA_ADMIN_PASSWORD=joomla@secured
 JOOMLA_ADMIN_USER=Joomla Hero
 JOOMLA_ADMIN_USERNAME=joomla
 // highlight-next-line
-JOOMLA_SITE_NAME=Joomla_Project_3
-JOOMLA_VERSION=5.1.4-php8.3-apache
+JOOMLA_SITE_NAME=Joomla_3
+// highlight-next-line
+JOOMLA_VERSION=3.5.1-apache
 // highlight-next-line
 MYSQL_PORT=3303
-MYSQL_VERSION=8.4.2
 // highlight-next-line
-PROJECT_NAME=my_tremendous_third_project
+MYSQL_VERSION=5.7.31
+// highlight-next-line
+PROJECT_NAME=joomla3
 // highlight-next-line
 WEB_PORT=8083
 ```
@@ -795,6 +815,12 @@ WEB_PORT=8083
 Save the file and run `make up && make start` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
 
 ![Our three Joomla projects are active at the same time on our development machine](./images/project_1_2_3.png)
+
+:::success Just wow no?
+Three different Joomla versions, MySQL and too PHP and no conflict at all!
+
+In fact, nothing surprising, it's normal with Docker: everything is isolated in its own container. 😊
+:::
 
 ### Start all three projects in just one command
 
@@ -811,25 +837,25 @@ Here is something you can get:
 
 ❯ make up
 [+] Running 3/23
- ✔ Network my_tremendous_first_project_joomla_network  Created               0.0s
- ✔ Container project_1-db                              Healthy              11.5s
- ✔ Container project_1-app                             Started               0.4s
+ ✔ Network joomla_5_network  Created               0.0s
+ ✔ Container joomla_5-db     Healthy              11.5s
+ ✔ Container joomla_5-app    Started               0.4s
 
 ❯ cd ../project_2
 
 ❯ make up
 [+] Running 3/3
- ✔ Network my_tremendous_second_project_joomla_network  Created               0.0s
- ✔ Container project_2-db                               Healthy              31.0s
- ✔ Container project_2-app                              Started              31.4s
+ ✔ Network joomla_4_network  Created               0.0s
+ ✔ Container joomla_4-db     Healthy              31.0s
+ ✔ Container joomla_4-app    Started              31.4s
 
 ❯ cd ../project_3
 
 ❯ make up
 [+] Running 3/3
- ✔ Network my_tremendous_third_project_joomla_network  Created                0.0s
- ✔ Container project_3-db                              Healthy               62.7s
- ✔ Container project_3-app                             Started               61.5s
+ ✔ Network joomla_3_network  Created                0.0s
+ ✔ Container joomla_3-db     Healthy               62.7s
+ ✔ Container joomla_3-app    Started               61.5s
 ```
 
 ### Other projects? How many sites can I have?
@@ -844,9 +870,7 @@ For information, here's what I'm seeing right now on my Windows computer (I'm us
 
 As you can see, I've actually four projects: my current blog (running on Docker too) and the three Joomla projects.
 
-If you look at the **CPU (%)**, you can see that the projects are almost asleep. And this is normal: once the web page has been displayed, Joomla and MySQL don't requires CPU anymore. The page is displayed so they are sleeping.
-
-We can see top left on my image that Docker is eating 3.30% of my CPU; nothing thus.
+If you look at the **CPU (%)** column, you can see that the projects are almost asleep. And this is normal: once the web page has been displayed, Joomla and MySQL don't requires CPU anymore. The page is displayed so they are sleeping.
 
 For the memory, I've allocated max. 20GB to WSL/Docker and right now, my fourth project (my blog too) are eating 3.3 GB. I can thus start a lot more projects.
 
@@ -863,7 +887,7 @@ In our example here, we've just kept the second project so we can still work on 
 
 Just run `make up` again in f.i. folder `project_1` to make the site back to life. Or, if you prefer the GUI, in Docker Desktop, just click on the `Start` button:
 
-![Starting a container in Docker Desktop](./images/docker_desktop_stopped.png)
+![Starting a container in Docker Desktop](./images/docker_desktop_start.png)
 :::
 
 ## Restoring a JPA backup using Docker
