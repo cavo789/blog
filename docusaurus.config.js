@@ -113,6 +113,10 @@ const config = {
             label: 'Blog',
           },
           {
+            href: '/themes',
+            label: 'Themes',
+          },
+          {
             href: '/blog/tags',
             label: 'Tags',
           },
