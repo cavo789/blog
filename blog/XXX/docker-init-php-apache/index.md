@@ -14,7 +14,7 @@ How about asking Docker to create the files it needs itself?
 
 If you're a regular reader of this blog, you'll know by now that you need a `Dockerfile` to describe how the Docker image should be created and what should be included in it, and very often you'll also need a `composer.yaml` file to explain how the container should be created, e.g. which port to map to, which volumes to use, and so on.
 
-Imagine you've an existing PHP application and you don't want to create the files needed for the dockerization by hand. 
+Imagine you've an existing PHP application and you don't want to create the files needed for the dockerization by hand.
 
 You just want to very quickly and using a wizard, to be able to answer to some questions and hop, it's ready.
 
@@ -61,7 +61,7 @@ First, create the container by running the `docker compose up --build` command t
 
 ![The application is running](./images/localhost.png)
 
-## Let's take a look on created files 
+## Let's take a look on created files
 
 ### .dockerignore
 
@@ -120,7 +120,7 @@ Docker has also foreseen to rename the standard `php.ini-production` file as `ph
 
 The last command is to switch to the `www-data` user (so the container will not be running as `root`).
 
-Refers to [https://docs.docker.com/go/dockerfile-reference/](https://docs.docker.com/go/dockerfile-reference/) for more explanation. 
+Refers to [https://docs.docker.com/go/dockerfile-reference/](https://docs.docker.com/go/dockerfile-reference/) for more explanation.
 
 ## Generated files are yours
 
