@@ -57,10 +57,6 @@ First of all, let's look at what Docker is.
 
 You'll see how, in just one command, you can have a fully working HTML site on your machine.
 
-### [Using Docker init to quickly dockerize your PHP application](/blog/docker-init-php-apache)
-
-You've an existing PHP application and *Easy peasy lemon squeezy*, thanks to Docker init, your application has been dockerized.
-
 ### [Docker secrets - Using your SSH key during the build process](/blog/docker-use-ssh-during-build)
 
 Don't store passwords, token and other private information's in your Docker projects.
