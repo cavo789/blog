@@ -3,7 +3,7 @@ title: Personal blog about Docker, PHP, Joomla and much more
 hide_table_of_contents: true
 ---
 
-![Personal blog about Docker, PHP, Joomla and much more](/img/welcome.jpg)
+<img title="Personal blog about Docker, PHP, Joomla and much more" src="/img/welcome.jpg" style={{width: '50%'}}/>
 
 I am passionate about the world of Open Source, programming since now almost 30+ years in so much languages that I can not remember all.
 
