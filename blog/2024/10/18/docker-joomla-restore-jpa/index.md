@@ -178,7 +178,7 @@ import: reset
     # highlight-next-line
 	-@mkdir -p db_data joomla_data
     # highlight-next-line
-	
+
     # highlight-next-line
 	@clear
     # highlight-next-line
@@ -188,11 +188,11 @@ import: reset
     # highlight-next-line
 	@cp kickstart.php ./joomla_data/kickstart.php
     # highlight-next-line
-    
+
     # highlight-next-line
-	@printf "\033[1;33m%s\033[0m\n\n" "Copying your backup to the Docker Joomla container..."    
+	@printf "\033[1;33m%s\033[0m\n\n" "Copying your backup to the Docker Joomla container..."
     # highlight-next-line
-	@cp backup.jpa ./joomla_data    
+	@cp backup.jpa ./joomla_data
     # highlight-next-line
 
     # highlight-next-line
@@ -228,6 +228,11 @@ import: reset
     # highlight-next-line
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n\n" "  * Port" "${MYSQL_PORT}"
 ```
+
+
+:::important
+If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
+:::
 
 ### We also need a file called Dockerfile
 
@@ -271,7 +276,7 @@ To make this step more explicit: jump to your existing Joomla website and, using
 
 ### And finally, we need Akeeba Kickstart
 
-Finally, we also need to have two files coming from **[Akeeba Kickstart](https://www.akeeba.com/download.html#kickstart)**. 
+Finally, we also need to have two files coming from **[Akeeba Kickstart](https://www.akeeba.com/download.html#kickstart)**.
 
 By following the link [Akeeba Kickstart](https://www.akeeba.com/download.html#kickstart), we'll be able to download a `.zip` file (called `kickstart-core-xxx.zip` where `xxx` is a version number). Proceed to the download and open the archives: we'll get two files in it. Please copy these files in your folder.
 
@@ -300,6 +305,10 @@ drwxrwxrwt     - root       root       2024-10-18 13:30 ..
 If you've skipped file's creation earlier by downloading files from my repo; you'll have all the files listed here above.
 :::
 
+:::important
+Remember, we need `GNU make` to be able to run commands like `make import` or `make up`. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
+:::
+
 ## Run the importation process
 
 Ok, you've copied a lot of files. Time to start restoring your site.
@@ -313,7 +322,7 @@ Copying Akeeba Kickstart to the Docker Joomla container...
 Copying your backup to the Docker Joomla container...
 
 [+] Building 1.4s (7/7) FINISHED                                 docker:default
-=> [joomla internal] load build definition from Dckerfile                  0.0s
+=> [joomla internal] load build definition from Dockerfile                 0.0s
  => => transferring dockerfile: 200B                                       0.0s
  => [joomla internal] load metadata for docker.io/library/php:8.3-apache   1.2s
  => [joomla internal] load .dockerignore                                   0.0s
@@ -324,7 +333,7 @@ Copying your backup to the Docker Joomla container...
 [+] Running 3/3
  ✔ Network running-joomla-in-docker_joomla_network  Created                0.0s
  ✔ Container joomla-db                              Healthy               31.0s
- ✔ Container joomla-app                             Started               31.3s 
+ ✔ Container joomla-app                             Started               31.3s
 ```
 
 You'll also get the following message:
