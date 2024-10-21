@@ -115,3 +115,40 @@ scp <USER>@<SERVER_NAME_OR_IP>:/remote_file local_file
 If you need to copy a folder, just add the recursive flag i.e. `-r`.
 
 For instance, `scp -r <USER>@<SERVER_NAME_OR_IP>:~/backup/ .` will copy the entire `~/backup` folder from the server in my current, local, folder. Really handy.
+
+## Tips
+
+### Using the config file
+
+As we have seen, when using the `ssh` or `scp` command, we need to specify the user name, the name or IP address of the server and the name of the file containing the private key. That's a lot of information to provide, isn't it?
+
+What's more, like me, I can't remember all this information. I just want to connect to my application server and that's it!
+
+It would be nice to be able to ssh my_application and that's it. No?
+
+This is the purpose of the `~/.ssh/config` file!
+
+Just imagine:
+
+* The IP address of my server is 1.2.3.4;
+* On this server, my local user is christophe and
+* my key is id_rsa_my_app.
+
+To connect on that server, my ssh command looks like this: `ssh christophe@1.2.3.4 -i ~/.ssh/id_rsa_my_app`. Not easy at all!
+
+Let's create a `~/.ssh/config` file. If the file already exists, just edit it: `code  ~/.ssh/config`.
+
+Add these lines in the file:
+
+```text
+Host my_app
+    Hostname 1.2.3.4
+    User christophe
+    IdentityFile ~/.ssh/id_rsa_my_app
+```
+
+Save the file and go back to the console.
+
+Now, you can just run `ssh my_app` to make the connection. Pretty easy no?
+
+Want more info? Continue your reading [here](https://linuxize.com/post/using-the-ssh-config-file/)
