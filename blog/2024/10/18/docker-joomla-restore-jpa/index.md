@@ -306,21 +306,29 @@ If you've skipped file's creation earlier by downloading files from my repo; you
 :::
 
 :::important
-Remember, we need `GNU make` to be able to run commands like `make import` or `make up`. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
+Remember, for Linux users, we need `GNU make` to be able to run commands like `make import` or `make up`. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
 :::
 
 ## Run the importation process
 
 Ok, you've copied a lot of files. Time to start restoring your site.
 
-It may have taken a long time to set up, but thanks to this, everything's super-simple now: just run the `make import` instruction.
+For Linux users, simply take advantage of `GNU Make` and run the `make import` instruction. 
 
-Once `make import` has finished, you'll get this output in the console:
+For Windows (Powershell or DOS), please run these commands:
+
+```bash
+mkdir db_data
+mkdir joomla_data
+copy en-GB.kickstart.ini joomla_data\
+copy kickstart.php joomla_data\
+copy backup.jpa joomla_data\
+docker compose up --detach
+```
+
+For both users (Linux and Windows), you'll something like this output in the console:
 
 ```text
-Copying Akeeba Kickstart to the Docker Joomla container...
-Copying your backup to the Docker Joomla container...
-
 [+] Building 1.4s (7/7) FINISHED                                 docker:default
 => [joomla internal] load build definition from Dockerfile                 0.0s
  => => transferring dockerfile: 200B                                       0.0s
@@ -336,28 +344,7 @@ Copying your backup to the Docker Joomla container...
  ✔ Container joomla-app                             Started               31.3s
 ```
 
-You'll also get the following message:
-
-```text
-Please now jump to http://127.0.0.1:8080/kickstart.php to finalise your site restoration.
-
-Below a summary of your current installation:
-
-JOOMLA
-
-  * Port                      8080
-
-DATABASE
-
-  * Host                      joomla-db
-  * User name                 joomla
-  * Password                  examplepass
-  * Database name             joomla
-  * Version                   8.4.2
-  * Port                      3306
-```
-
-Please follow the `http://127.0.0.1:8080/kickstart.php` link to start the **Akeeba Kickstart** wizard.
+When finished, just start your browser and surf to `http://127.0.0.1:8080/kickstart.php` to start the restoration of your website using the **Akeeba Kickstart** wizard.
 
 ![Akeeba Kickstart](./images/kickstart.png)
 
