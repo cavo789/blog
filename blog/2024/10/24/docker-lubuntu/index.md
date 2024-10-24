@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 tags: [chrome, docker, firefox, gimp, gui, tip]
 enableComments: true
-draft: true
 ---
 <!-- cspell:ignore lubuntu,initialising,xremote,autologin,realise -->
 ![Start lubuntu Desktop](/img/docker_tips_banner.jpg)
