@@ -388,7 +388,8 @@ We've to create an additional file. Please create a new folder called `.devconta
                 "ms-azuretools.vscode-docker",
                 "ms-python.black-formatter",
                 "ms-python.debugpy",
-                "ms-python.isort",
+                "ms-python.isort",      
+                "ms-python.mypy-type-checker",
                 "ms-python.pylint",
                 "ms-python.python",
                 "ms-python.vscode-pylance",
@@ -491,6 +492,9 @@ We've to create an additional file. Please create a new folder called `.devconta
                     "MD033": false,
                     "MD036": false
                 },
+                "mypy-type-checker.args": [
+                    "--config-file=.config/.mypy.ini"
+                ],
                 "python.analysis.autoFormatStrings": true,
                 "python.analysis.autoImportCompletions": true,
                 "python.analysis.autoIndent": true,

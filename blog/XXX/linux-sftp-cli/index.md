@@ -60,3 +60,35 @@ SSHPASS="p@ssword" sshpass -e sftp -o ProxyCommand='/usr/bin/nc --proxy-type htt
 ## Setting the port number to use for the SFTP server
 
 If your SFTP server is not running on port `22`, you'll need to specify the port number by using the `-P` flag: `sftp <username>@<hostname_or_ip> -P <port_number>`.
+
+## Running commands on the SFTP server then exit
+
+Imagine you wish to retrieve ZIP files from your SFTP server.
+
+As already seen, using `sshpass` we can bypass the authentication. We just need to make sure a `SSHPASS` variable exists just before calling the `sshpass` command.
+
+Then, to be able to automate some commands on the SFTP server, we can use a *here-document* syntax.
+
+The general look&feel will be this one:
+
+```bash
+(
+    SSHPASS="<your_password_in_plain_text>"
+    sshpass -e sftp <username>@<hostname_or_ip> << !
+        <a_list_of_commands>
+!
+)
+```
+
+So, if your user is `christophe`, your password is `p@ssword` and the server IP is `1.2.3.4`, we can connect to the server and, for instance, jump in a folder called `input_folder` then display the list of files / folders and, finally, download all zip files present in the folder:
+
+```bash
+(
+    SSHPASS="p@ssword"
+    sshpass -e sftp christophe@1.2.3.4 << !
+        cd input_folder
+        ls -alh
+        get *.zip
+!
+)
+```
