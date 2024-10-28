@@ -95,7 +95,10 @@ ARG DOCKER_OS_USERID
 ARG DOCKER_OS_USERNAME
 
 RUN set -e -x \
-    printf "\e[0;105m%s\e[0;0m\n" "Create our ${DOCKER_OS_USERNAME} application user" \
+    mkdir -p "/home/.vscode-server/bin" \
+    && mkdir -p "/home/.vscode-server/extensions" \
+    && mkdir -p "/home/.vscode-server/extensionsCache" \
+    && printf "\e[0;105m%s\e[0;0m\n" "Create our ${DOCKER_OS_USERNAME} application user" \
     && mkdir -p "/home/${DOCKER_OS_USERNAME}/.vscode-server/bin" \
     && mkdir -p "/home/${DOCKER_OS_USERNAME}/.vscode-server/extensions" \
     && mkdir -p "/home/${DOCKER_OS_USERNAME}/.vscode-server/extensionsCache" \
@@ -131,7 +134,6 @@ RUN set -e -x \
     && echo "${SNIPPET}" >> "/home/${DOCKER_OS_USERNAME}/.bashrc"
 
 # endregion
-
 ```
 
 </details>
@@ -192,7 +194,7 @@ The third file to create will be called `.docker.env` where we'll initialize som
 
 <details>
 
-<summary>compose.yaml</summary>
+<summary>.docker.env</summary>
 
 ```dotenv
 # Application root directory in the container (PHP or NGINX) (--app-home)
@@ -307,9 +309,12 @@ lint: ## QA - Lint the script using Pylint - Run  analyses your code without act
 mypy: ## QA - Mypy is a program that will type check your Python code
 	@clear
 	${YAML} docker compose ${ENV} exec ${CONTAINER} ${BIN}/mypy --cache-dir /tmp/mypy
-
 ```
 </details>
+
+:::important
+If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
+:::
 
 Right now, we can run `make up` in our console and we'll get this screen:
 
@@ -317,9 +322,9 @@ Right now, we can run `make up` in our console and we'll get this screen:
 
 As you can see, we've a lot of commands like `make up` to start our Docker container. Let's try and, ouch, we miss a file called `/src/requirements.txt`.
 
-### requirements.txt
+### src/requirements.txt
 
-Please create an empty file called `requirements.txt`. To do that, just run `mkdir src && touch src/requirements.txt`.
+Please create an empty file called `src/requirements.txt`. To do that, just run `mkdir src && touch requirements.txt`.
 
 By running `make up` again, yes!, this time we can build our images and create our container:
 
@@ -328,6 +333,10 @@ By running `make up` again, yes!, this time we can build our images and create o
 This time we can even enter in our container by running `make bash` and f.i. what is inside our current folder and which version of Python has been installed:
 
 ![Inside the container](./images/container-python.png)
+
+:::note
+The one we have asked in our `.docker.env` file. If you need another just update the `.docker.env` file and run `make up` again.
+:::
 
 ## Let's start creating our first script
 
@@ -346,6 +355,10 @@ print("I'm your Python code")
 To be able to run the code, start `make bash` again (to jump in the container) and start `python hello.py`
 
 ![Run hello](./images/run-hello.png)
+
+:::info
+It will works because, in the container, the working directory is `/app/src`. If this had not been the case, we would have had to write, for example, `python /app/src/hello.py` i.e. the absolute path to the script.
+:::
 
 As you can see, files on your machine are synchronized with your host. If VSCode is still opened, you can change your script to f.i.
 
@@ -553,7 +566,9 @@ We've finished our set-up. Here is our final project's structure:
 
 ## Start the project in a devcontainer
 
-Please run `make devcontainer` which is one of the command we've already in our `makefile`.
+If VSCode is still open, please close it. If you're still in the container's console, please type `exit` to go back to your host console.
+
+Now, please run `make devcontainer` which is one of the command we've already in our `makefile`.
 
 VSCode will start and open the project directly *inside* the container:
 
