@@ -5,26 +5,35 @@ authors: [christophe]
 image: /img/python_tips_social_media.jpg
 tags: [devcontainer, docker, python]
 enableComments: true
-draft: true
 ---
 <!-- cspell:ignore PYTHONDONTWRITEBYTECODE,PYTHONUNBUFFERED,HISTFILE -->
 <!-- cspell:ignore addgroup,adduser,keyscan,hadolint,gecos,endregion -->
-<!-- cspell:ignore bashhistory,groupid,commandhistory,pylint -->
+<!-- cspell:ignore bashhistory,groupid,commandhistory,pylint,synchronised -->
 ![Docker - Python devcontainer](/img/python_tips_banner.jpg)
 
-Today, let's change programming languages and opt for Python. In this article, we'll start by creating a few files to build a Docker-based environment.
+As you know, VSCode is a superb editor that lets you program in probably any programming language.  An editor, not an IDE, because VSCode is basically a Notepad in its ultimate version.
 
-Once that's done, we'll see how to work in a devcontainer (with VSCode) where we'll already have a large number of extensions preinstalled so we can be productive straight away.
+If you want to program in Python, you'll need to install a few extensions in VSCode to be really comfortable, i.e. syntax highlighting, code navigation, code refactoring (like renaming a variable or a class), etc.
+
+There are ‘ready-to-use’ editors like PyCharm but 1. they cost money and 2. they are specific (you won't be able to program in PHP with PyCharm; or even work easily with HTML/CSS files).
+
+In this new article, we'll look at how to get a VSCode environment ready to use straight away for coding in Python, and as it's VSCode it's 1. free, 2. multi-purpose and 3. insanely powerful.
 
 <!-- truncate -->
 
+In this article, we'll create a **devcontainer** i.e. a development environment based on Docker. The creation of the devcontainer will take a few minutes but it's just a question of copy/paste from this article to your system.
+
+Once files will be created, you can then reuse the devcontainer for all your Python projects.
+
 ## Let's create the files for our Docker environment
 
-Like always, we'll create a new folder and create files there. Please run `mkdir /tmp/python && cd $_` to create that folder.
+Like always, we'll create a new folder and create files there. Please run `mkdir /tmp/python && cd $_` to create that folder and jump in it.
+
+Start VSCode from there i.e. run `code .-` in the console when you're located in the folder. This will open VSCode and you'll be able to create as many files you want.
 
 ### Dockerfile
 
-We'll create our own Docker image. Please create a file called `Dockerfile` with the following content:
+The first file to create will be used to build our Docker image. Please create a file called `Dockerfile` with the following content:
 
 <details>
 <summary>Dockerfile</summary>
@@ -140,7 +149,7 @@ RUN set -e -x \
 
 ### compose.yaml
 
-Next to the Dockerfile, we'll create our `compose.yaml` one. Please create that file with the following content:
+Next to the `Dockerfile`, we'll create our `compose.yaml` one. Please create that file with the following content:
 
 <details>
 
@@ -190,7 +199,7 @@ volumes:
 
 ### .docker.env
 
-The third file to create will be called `.docker.env` where we'll initialize some values. Please create that file with the content below:
+The third file to create will be called `.docker.env` where we'll initialise some values. Please create that file with the content below:
 
 <details>
 
@@ -217,6 +226,10 @@ DOCKER_PYTHON_VERSION=3.13-slim
 ```
 
 </details>
+
+:::tip
+All you have to do is duplicate the other files we've created for each of your projects and the settings for your project will be made here, in the `.docker.env` file.
+:::
 
 ### makefile
 
@@ -281,7 +294,7 @@ help: ## App - Show the help with the list of commands
 	@echo ""
 
 .PHONY: remove
-remove: ## App - Stop containers and remove them (you will loose updated files if you do not have locally)
+remove: ## App - Stop containers and remove them (you will lose updated files if you do not have locally)
 	${YAML} docker compose ${ENV} down --remove-orphans --rmi all --volumes
 
 .PHONY: up
@@ -322,27 +335,29 @@ Right now, we can run `make up` in our console and we'll get this screen:
 
 As you can see, we've a lot of commands like `make up` to start our Docker container. Let's try and, ouch, we miss a file called `/src/requirements.txt`.
 
+![requirements.txt is missing](./images/requirements_txt.png)
+
 ### src/requirements.txt
 
-Please create an empty file called `src/requirements.txt`. To do that, just run `mkdir src && touch requirements.txt`.
+Please create an empty file called `src/requirements.txt`. The file can stay empty (you'll add your own requirements later on).
 
 By running `make up` again, yes!, this time we can build our images and create our container:
 
 ![Docker up](./images/docker-up.png)
 
-This time we can even enter in our container by running `make bash` and f.i. what is inside our current folder and which version of Python has been installed:
+This time we can, if you need to, enter in our container by running `make bash` and f.i. what is inside our current folder and which version of Python has been installed:
 
 ![Inside the container](./images/container-python.png)
 
 :::note
-The one we have asked in our `.docker.env` file. If you need another just update the `.docker.env` file and run `make up` again.
+As you see, Python 3.13 is used. Why that specific version? Just go back to your `.docker.env` file and take a look to the `DOCKER_PYTHON_VERSION` variable. If you need another just update the `.docker.env` file and run `make up` again.
 :::
 
 ## Let's start creating our first script
 
-If you're still inside your container, please type `exit` so your prompt is the one of your machine; no more the one of your running container.
+If you're still inside your container, please type `exit` so your prompt will be the one of your machine (your *host*); no more the one of your running container.
 
-Please create your first script f.i. by running `code src/hello.py` (the script should be placed in the `src` folder; not the folder where you've f.i. the `Dockerfile`).
+Please create your first script: create a new file in the `src` folder and call that file `hello.py`.
 
 Be creative and type a simple `print` statement:
 
@@ -360,15 +375,23 @@ To be able to run the code, start `make bash` again (to jump in the container) a
 It will works because, in the container, the working directory is `/app/src`. If this had not been the case, we would have had to write, for example, `python /app/src/hello.py` i.e. the absolute path to the script.
 :::
 
-As you can see, files on your machine are synchronized with your host. If VSCode is still opened, you can change your script to f.i.
+As you can see, files on your machine are synchronised with your host. If VSCode is still open, you can change your script to f.i.
 
 ```python
-print("Hey! It's synchronized; cool!")
+print("Hey! It's synchronised; cool!")
 ```
 
-![It's synchronized](./images/it-is-synchronized.png)
+![It's synchronised](./images/it-is-synchronized.png)
 
-## Let's create our devcontainer environment
+## What have we done so far?
+
+We have created the minimal structure for our future Python projects. We've defined our Docker image (thanks to the `Dockerfile` file) and how to use it (`compose.yaml` file).
+
+We've also configured our project (`.docker.env` file) and set up a number of useful commands (`makefile` file).
+
+All these files can be used across all your Python projects.
+
+## Now, let's create our devcontainer environment
 
 We've to create an additional file. Please create a new folder called `.devcontainer` and, there, a file called `devcontainer.json`. Copy/paste the content below:
 
@@ -554,11 +577,12 @@ We've to create an additional file. Please create a new folder called `.devconta
         }
     }
 }
-
 ```
 <!-- cspell:enable -->
 
 </details>
+
+This file is very long; can be shorter but ... the idea is to configure VSCode so we've specified all extensions we want in our coding environment and a bunch of settings. 
 
 We've finished our set-up. Here is our final project's structure:
 
@@ -568,7 +592,7 @@ We've finished our set-up. Here is our final project's structure:
 
 If VSCode is still open, please close it. If you're still in the container's console, please type `exit` to go back to your host console.
 
-Now, please run `make devcontainer` which is one of the command we've already in our `makefile`.
+Now, please run `make devcontainer` (on your host machine thus) which is one of the command we've already in our `makefile`.
 
 VSCode will start and open the project directly *inside* the container:
 
@@ -579,3 +603,7 @@ VSCode will ask (see bottom right) to install the Microsoft Python extension; ju
 VSCode will also ask if you want to install recommended extensions; please do it.
 
 ![Install recommended extensions](./images/vscode_install_extensions.png)
+
+## Conclusion
+
+You've now a fully coding environment to work with Python. Thanks to our Docker image, Python has been installed and configured to run in a Docker container (understand: nothing was installed on your machine) and thanks to the Devcontainer, you're sure that VSCode is properly configured with all required extensions to work with ease.
