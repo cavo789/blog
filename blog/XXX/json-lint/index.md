@@ -2,12 +2,12 @@
 slug: json-lint
 title: JSON - Online linter
 authors: [christophe]
-image: ./images/json_lint_social_media.jpg
+image: /img/json_tips_social_media.jpg
 tags: [code quality, json, tips, tool, vscode]
 draft: true
 enableComments: true
 ---
-![JSON - Online linter](./images/json_lint_banner.jpg)
+![JSON - Online linter](/img/json_tips_header.jpg)
 
 <!-- cspell:ignore favourites, analyse -->
 
