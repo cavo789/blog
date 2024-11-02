@@ -74,6 +74,57 @@ This done, you'll be able to generate a big number of rows like f.i. creating a 
 
 By saving examples to a real JSON file on disk, you can then use that file to test your application.
 
+### Using API
+
+By creating a free account on Mockaroo, you can obtain a free API key (allowing 200 requests/day).
+
+The API documentation is here: [https://mockaroo.com/docs](https://mockaroo.com/docs).
+
+Like previously, click on the `Schemas` button, create a schema and save it.
+
+I've created the *schema_test* like this:
+
+![Mockaroo - Schema test](./images/mockaroo_schema_test.png)
+
+I can then use it in Python like this:
+
+```python
+import requests
+
+# My API key as displayed in my profile page on Mockaroo
+api_key = "MY_API_KEY"
+
+# This is the name of my schema
+schema = "schema_test"  
+
+# Number of records I want
+num_records = 10
+
+# Construct the API endpoint URL
+url = f"https://api.mockaroo.com/api/generate?key={api_key}&count={num_records}&schema={schema}"
+
+# Make the API request
+response = requests.get(url)
+
+# Check if the request was successful
+if response.status_code == 200:
+    # Parse the JSON response
+    data = response.json()
+
+    # Display the result on the console
+    print(data)
+else:
+    print(f"Error fetching data: {response.text}")
+```
+
+:::info
+To make this code working, think to install the requests library: `pip install requests`.
+:::
+
+By calling my script twice; each time I got a different set of data:
+
+![Calling Mockaroo API](./images/calling_mockaroo_api.png)
+
 ## Online JSON to Schema Converter
 
 The [https://www.liquid-technologies.com/online-json-to-schema-converter](https://www.liquid-technologies.com/online-json-to-schema-converter) site will allow you to copy/paste existing JSON and get a skeleton of a JSON schema.
