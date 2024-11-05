@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/linux_tips_social_media.jpg
 tags: [linux, scp, sftp, ssh, sshpass, tips]
 enableComments: true
-draft: true
 ---
 <!-- cspell:ignore sshpass,ssword -->
 
