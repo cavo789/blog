@@ -13,9 +13,9 @@ enableComments: true
 
 I had to run a Python script to generate PDFs. The script took a long time to run, and I had provided a progress bar, but I wanted to keep an eye on the number of PDFs created from a Linux console.
 
-My aim was simply to do a `ls /data | wc -l` to retrieve the list of files and count the number of lines and, therefore, count the number of files.
+My aim was simply to do something like `ls /tmp | wc -l` to retrieve the list of files and count the number of lines and, therefore, count the number of files.
 
-The command `ls -alh data | wc -l` does the job perfectly and displays the number, e.g. 1,500.
+The command `ls /tmp | wc -l` does the job perfectly and displays the number, e.g. 1,500.
 
 Now let's see how to run this command and keep it active, so that as soon as files are added, the number is updated.
 
@@ -39,16 +39,16 @@ count=0
 # Folder to monitor
 folder="$1"
 
-# Monitor the 'data' directory for changes
+# Monitor the directory for changes
 # -r - Recursively monitors subdirectories
 # -m - Monitor file modifications
 
 # shellcheck disable=SC2034
 inotifywait -m ${folder} | while read -r line; do
     #shellcheck disable=SC2012
-    if (( count != $(ls -alh "${folder}" | wc -l) )); then
+    if (( count != $(ls "${folder}" | wc -l) )); then
 
-        count=$(ls -alh "${folder}" | wc -l)
+        count=$(ls "${folder}" | wc -l)
 
         # Clear the terminal screen
         clear
@@ -62,5 +62,3 @@ done
 Make the script executable by running `chmod +x ./monitor.sh`.
 
 You're ready to use it. Simply run `./monitor.sh` followed by the name of the folder to monitor; f.i. `./monitor.sh /tmp`.
-
-
