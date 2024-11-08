@@ -4,7 +4,6 @@ title: JSON - Online linter
 authors: [christophe]
 image: /img/json_tips_social_media.jpg
 tags: [code quality, json, tips, tool, vscode]
-draft: true
 enableComments: true
 ---
 ![JSON - Online linter](/img/json_tips_header.jpg)
