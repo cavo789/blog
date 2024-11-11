@@ -121,18 +121,18 @@ It's really cool to export a SQL file so easily to JSON but it's even cooler to 
 
 ### Summary
 
-- [Introduction](#introduction)
-- [Database Type](#database-type)
-- [Table Structure](#table-structure)
-	- [regions](#regions)
-	- [countries](#countries)
-	- [locations](#locations)
-	- [departments](#departments)
-	- [jobs](#jobs)
-	- [employees](#employees)
-	- [dependents](#dependents)
-- [Relationships](#relationships)
-- [Database Diagram](#database-Diagram)
+- Introduction
+- Database Type
+- Table Structure
+	- regions
+	- countries
+	- locations
+	- departments
+	- jobs
+	- employees
+	- dependents
+- Relationships
+- Database Diagram
 
 ### Introduction
 
