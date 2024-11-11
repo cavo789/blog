@@ -1,30 +1,29 @@
 ---
 slug: drawdb-app
-title: Drawdb-app - Draw / render your database model
+title: Drawdb-app - Render your database model as png, markdown, mermaid, ...
 authors: [christophe]
 image: /img/database_tips_social_media.jpg
-tags: [database, tips]
+tags: [database, mermaid, tips, visualisation]
 enableComments: true
-draft: true
 ---
 <!-- cspell:ignore drawdb,xinsodev -->
-![Drawdb-app - Draw / render your database model](/img/database_tips_banner.jpg)
+![Drawdb-app - Render your database model](/img/database_tips_banner.jpg)
 
 In my RSS feed recently, I came across another great application that lets you create a database model from scratch, i.e. create tables one by one and create the links between them.  
 
-However, there's another option that I find really nice: you can get a visual of the tables and relationships in a few seconds from an .sql file that you import into the application.
+However, there's another option that I find really nice: you can get a visual of the tables and relationships of any existing application in a few seconds from an .sql file that you import into drawdb-app.
 
 Let's take a quick look at how it works.
 
 <!--truncate-->
 
-By opening the [https://www.drawdb.app/editor](https://www.drawdb.app/editor) website, the first thing you'll be prompted to do is to choose your target database format. Let's choice PostgreSQL f.i.
+By opening the [https://www.drawdb.app/editor](https://www.drawdb.app/editor) website, the first thing you'll be prompted to do is to choose your target database format. For instance, let's choice PostgreSQL (Situation: *I'm coding a Laravel application using PostgreSQL and I want to relations of my DB in a nice pic*).
 
 I think the most common use I could personally make of it is to load an SQL file. To do this, just click on the `File` menu, then choose `Import from SQL` and, finally, retrieve a previously created .sql file from your hard drive.
 
 ## Create and import a dummy sql file
 
-If you don't have such file, I suggest to copy one from [https://www.sqltutorial.org/sql-sample-database/](https://www.sqltutorial.org/sql-sample-database/). I put here below a PostgreSQL content found on that site ([direct link](https://www.sqltutorial.org/wp-content/uploads/2020/04/postgresql.txt)):
+If you don't have such file, I suggest to copy one from [https://www.sqltutorial.org/sql-sample-database/](https://www.sqltutorial.org/sql-sample-database/). I put here below a PostgreSQL content found on that site ([direct link](https://www.sqltutorial.org/wp-content/uploads/2020/04/postgresql.txt)) or to take any valid `.sql` file you can found on the Internet.
 
 <details>
 <summary>dummy.sql</summary>
