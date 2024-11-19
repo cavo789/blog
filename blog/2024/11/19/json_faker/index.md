@@ -4,7 +4,6 @@ title: JSON - Faker & Mockup
 authors: [christophe]
 image: /img/json_tips_social_media.jpg
 tags: [json, python, tips, tool, vscode]
-draft: true
 enableComments: true
 ---
 ![JSON - Faker & Mockup](/img/json_tips_header.jpg)
@@ -16,6 +15,8 @@ I recently worked on an ETL project in Python. Among other things, the script ha
 As this was a sensitive application, it was important to validate the script by submitting fake JSON files, but also to ensure the quality of the files received.
 
 For the fake files, I used a tool like the Faker library for Python.
+
+<!-- truncate -->
 
 ## Generate faker JSON file
 
