@@ -9,6 +9,8 @@ enableComments: true
 <!-- cspell:ignore rsvg,ggplot2,gdebi,renv,tlmgr,fvextra,footnotebackref,pagecolor,sourcesanspro,sourcecodepro,Aoption -->
 ![Running Quarto Markdown in Docker](/img/quarto_tips_banner.jpg)
 
+* *Updated 2024-11-19, review Dockerfile, use Quarto 1.6.36.*
+
 [Quarto](https://quarto.org/) is a tool for producing PDF, Word document, HTML web pages, ePub files, slideshows and many, many more output based on a Markdown file.
 
 Using Quarto, you can render any markdown content to a new PDF f.i.
@@ -38,39 +40,38 @@ If you prefer to use an existing prebuilt image; jump to the next chapter.
 Create a new file called `Dockerfile` (there is no extension) with this content:
 
 ```dockerfile
-# Based on https://github.com/analythium/quarto-docker-examples/blob/main/Dockerfile.base
-
 # Version number of Quarto to download and use
-ARG QUARTO_VERSION="1.4.529"
+# See https://github.com/quarto-dev/quarto-cli/pkgs/container/quarto for existing versions
+ARG QUARTO_VERSION=1.6.36
 
 ARG OS_USERNAME=quarto
 ARG UID=1000
 ARG GID=1000
 
-FROM eddelbuettel/r2u:20.04
+FROM ghcr.io/quarto-dev/quarto:${QUARTO_VERSION}
 
 # librsvg2-bin is to allow SVG conversion when rendering a PDF file
 # (will install the rsvg-view binary)
-RUN set -e -x && \
-    apt-get update && apt-get install -y --no-install-recommends \
-    pandoc \
-    pandoc-citeproc \
-    curl \
-    gdebi-core \
-    librsvg2-bin \
-    python3.8 python3-pip \
+RUN --mount=type=cache,target=/var/cache/apt,rw \
+    set -e -x && \
+    apt-get update -y \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        git \
+        pandoc \
+        pandoc-citeproc \
+        curl \
+        gdebi-core \
+        librsvg2-bin \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN set -e -x && \
-    install.r shiny jsonlite ggplot2 htmltools remotes renv knitr rmarkdown quarto
+USER root
 
-# Download and install Quarto
-ARG QUARTO_VERSION
+# The input folder will be the one where we'll put our files before the conversion.
+# We should do this as root since it's a folder under /
 RUN set -e -x && \
-    curl -o quarto-linux-amd64.deb -L https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb \
-    && gdebi --non-interactive quarto-linux-amd64.deb \
-    && rm -f quarto-linux-amd64.deb
+    mkdir -p /input
 
 # Should be done for the user; won't work if done for root
 # (quarto will say that "tinytex is not installed")
@@ -79,33 +80,21 @@ ARG UID
 ARG GID
 
 RUN set -e -x && \
-    groupadd -g $GID -o "${OS_USERNAME}" && \
-    useradd -m -u $UID -g $GID -o -s /bin/bash "${OS_USERNAME}"
-
-USER "${OS_USERNAME}"
-
-# Install tools like tinytex to allow conversion to PDF
-RUN set -e -x && \
-    quarto install tool tinytex --update-path
-
-RUN set -e -x && \
-    printf "\e[0;105m%s\e[0;0m\n" "Run tlmgr update" \
-    && ~/.TinyTeX/bin/x86_64-linux/tlmgr update --self --all && \
-    ~/.TinyTeX/bin/x86_64-linux/fmtutil-sys --all
-
-# See https://github.com/rstudio/tinytex/issues/426 for explanation
-RUN set -e -x && \
-    printf "\e[0;105m%s\e[0;0m\n" "Run tlmgr install for a few tinyText packages (needed for PDF conversion)" \
-    && ~/.TinyTeX/bin/x86_64-linux/tlmgr install fvextra footnotebackref pagecolor sourcesanspro sourcecodepro titling
-
-USER root
-
-RUN set -e -x && \
-    mkdir -p /input
+    groupadd -g ${GID} -o "${OS_USERNAME}" && \
+    useradd -l -m -u ${UID} -g ${GID} -o -s /bin/bash "${OS_USERNAME}"
 
 USER "${OS_USERNAME}"
 
 WORKDIR /
+
+# Install tools like tinytex to allow conversion to PDF
+RUN set -e -x && \
+    quarto install tool tinytex --update-path && \
+    ~/.TinyTeX/bin/x86_64-linux/tlmgr update --self --all && \
+    ~/.TinyTeX/bin/x86_64-linux/fmtutil-sys --all && \
+    # See https://github.com/rstudio/tinytex/issues/426 for explanation
+    # Run tlmgr install for a few tinyText packages (needed for PDF conversion)
+    ~/.TinyTeX/bin/x86_64-linux/tlmgr install fvextra footnotebackref pagecolor sourcesanspro sourcecodepro titling
 ```
 
 This done, please run `docker build -t cavo789/quarto .` and after something like three minutes the first time, you'll get your own Docker image:
@@ -113,28 +102,30 @@ This done, please run `docker build -t cavo789/quarto .` and after something lik
 ```bash
 ❯ docker build -t cavo789/quarto .
 
-[+] Building 208.2s (13/13) FINISHED                  docker:default
- => [internal] load .dockerignore                     0.0s
- => => transferring context: 2B                       0.0s
- => [internal] load build definition from Dockerfile  0.0s
- => => transferring dockerfile: 2.08kB                0.0s
- => [internal] load metadata for docker.io/eddelbuettel/r2u:20.04  3.4s
- => CACHED [ 1/10] FROM docker.io/eddelbuettel/r2u:20.04@sha256:133b40653e0ad564d348f94ad72c753b97fb28941c072e69bb6e03c3b8d6c06e 0.0s
- => [ 2/10] RUN set -e -x && apt-get update && apt-get install -y --no-install-recommends     pandoc     pandoc-citeproc     curl     gdebi-core     librsvg2-bin     python3.8   47.6s
- => [ 3/10] RUN set -e -x && install.r shiny jsonlite ggplot2 htmltools remotes renv knitr rmarkdown quarto                                                                       27.2s
- => [ 4/10] RUN set -e -x && curl -o quarto-linux-amd64.deb -L https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.529/quarto-1.4.529-linux-amd64.deb     && gdebi -  12.1s
- => [ 5/10] RUN set -e -x && groupadd -g 1000 -o "quarto" && useradd -m -u 1000 -g 1000 -o -s /bin/bash "quarto"                                                               0.5s
- => [ 6/10] RUN set -e -x && quarto install tool tinytex --update-path                                   23.0s
- => [ 7/10] RUN set -e -x && printf "\e[0;105m%s\e[0;0m\n" "Run tlmgr update"     && ~/.TinyTeX/bin/x86_64-linux/tlmgr update --self --all && ~/.TinyTeX/bin/x86_64-linux/fm  77.9s
- => [ 8/10] RUN set -e -x && printf "\e[0;105m%s\e[0;0m\n" "Run tlmgr install for a few tinyText packages (needed for PDF conversion)"     && ~/.TinyTeX/bin/x86_64-linux/tlmgr   11.7s
- => [ 9/10] RUN set -e -x && mkdir -p /input                   0.5s
- => exporting to image               4.0s
- => => exporting layers              4.0s
- => => writing image sha256:fe1d20bd71a66eb574ba1f5b35c988ace57c2c30f93159caa4d5de2f8c490eb0                  0.0s
- => => naming to docker.io/cavo789/quarto                                                                     0.0s
-
-What's Next?
-  View summary of image vulnerabilities and recommendations → docker scout quickview
+[+] Building 183.3s (9/9) FINISHED                                                docker:default
+ => [internal] load build definition from Dockerfile                                        0.1s
+ => => transferring dockerfile: 1.80kB                                                      0.0s
+ => [internal] load metadata for ghcr.io/quarto-dev/quarto:1.6.36                           0.7s
+ => [internal] load .dockerignore                                                           0.0s
+ => => transferring context: 2B                                                             0.0s
+ => [stage-0 1/6] FROM ghcr.io/quarto-dev/quarto:1.6.36@sha256:7c800f23602e532de8d2e35de8  19.6s
+ => => resolve ghcr.io/quarto-dev/quarto:1.6.36@sha256:7c800f23602e532de8d2e35de838e9f5331  0.0s
+ => => sha256:7c800f23602e532de8d2e35de838e9f53310af381daa34cf3d733c05fd7dec72 955B / 955B  0.0s
+ => => sha256:a9220a0c1eb7e69d971f705b026870f03e511a0c6a95ae0d1140d45089c2 1.73kB / 1.73kB  0.0s
+ => => sha256:7478e0ac0f23f94b2f27848fbcdf804a670fbf8d4bab26df842d40a10c 30.44MB / 30.44MB  3.2s
+ => => sha256:14a397168681603ca2ef7ec883ab375f79cc39ed6abfc602de3d16d 126.00MB / 126.00MB  13.0s
+ => => sha256:682f5bc1f33ef91c217708dbd0f9c287f896d05632b47cdeb1ced02 130.07MB / 130.07MB  16.1s
+ => => extracting sha256:7478e0ac0f23f94b2f27848fbcdf804a670fbf8d4bab26df842d40a10cd33059   1.8s
+ => => extracting sha256:14a397168681603ca2ef7ec883ab375f79cc39ed6abfc602de3d16dc40197b37   0.7s
+ => => extracting sha256:682f5bc1f33ef91c217708dbd0f9c287f896d05632b47cdeb1ced02166e3aa8d   3.2s
+ => [stage-0 2/6] RUN --mount=type=cache,target=/var/cache/apt,rw     set -e -x &&     ap  79.5s
+ => [stage-0 3/6] RUN set -e -x &&     mkdir -p /input                                      0.4s
+ => [stage-0 4/6] RUN set -e -x &&     groupadd -g 1000 -o "quarto" &&     useradd -l -m -  0.6s
+ => [stage-0 5/6] RUN set -e -x &&     quarto install tool tinytex --update-path &&     ~  80.4s
+ => exporting to image                                                                      1.9s
+ => => exporting layers                                                                     1.9s
+ => => writing image sha256:f7222fdd5856beb8fb209a609fc9271a0f8f3a586449bc5d90a6b338e54453  0.0s
+ => => naming to docker.io/cavo789/quarto                                                   0.0s
 ```
 
 :::tip Choose your own name
@@ -146,7 +137,7 @@ You can quickly check the size of your image; quite huge but except you're very 
 ```bash
 ❯ docker image list | grep quarto
 
-cavo789/quarto  latest  fe1d20bd71a6  10 minutes ago  2.14GB
+cavo789/quarto  latest  fe1d20bd71a6  1 minute ago  1.55GB
 ```
 
 ### Use an existing image
@@ -207,17 +198,18 @@ metadata
     - numbers=noendperiod
   papersize: letter
   header-includes:
-    - '\KOMAoption{captions}{tableheading}'
+    - \KOMAoption{captions}{tableheading}
   block-headings: true
+
 
 Rendering PDF
 running xelatex - 1
-  This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex)
+  This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex)
    restricted \write18 enabled.
   entering extended mode
 
 running xelatex - 2
-  This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex)
+  This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex)
    restricted \write18 enabled.
   entering extended mode
 
@@ -260,7 +252,13 @@ Now, Quarto is like a super-powered writing tool that understands Markdown and c
 So, if you want to create documents, presentations, or even books, Quarto and Markdown can be your friends. They'll help you organize your thoughts, add cool features, and even share your work with the world.
 ```
 
-Rerun `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to revealjs --log-level warning` and now your slideshow will have three slides (press <kbd>space</kbd> or arrow keys for navigation):
+Rerun `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to revealjs --log-level warning` to generate the slideshow as a `test.html` file.
+
+:::tip
+Just run `docker run -d --name static-site -p 8080:80 -v .:/usr/local/apache2/htdocs/ httpd:alpine` then surf to `http://127.0.0.1:8080/test.html` to see your slideshow.
+:::
+
+Now your slideshow will have three slides (press <kbd>space</kbd> or arrow keys for navigation):
 
 ![Revealjs - slide 1](./images/revealjs_slide1.png)
 
