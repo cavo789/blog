@@ -10,7 +10,7 @@ draft: true
 
 <!-- markdownlint-disable-file MD010 -->
 <!-- cspell:ignore analyser,pylint,autoflake,isort,mypy,pyright,pydocstyle,pylintrc,docparams -->
-<!-- cspell:ignore rcfile,pyflakes,pycodestyle -->
+<!-- cspell:ignore rcfile,pyflakes,pycodestyle,mccabe -->
 
 ![Python - Code Quality tools](/img/python_tips_banner.jpg)
 
@@ -254,6 +254,31 @@ doc-warnings: false
 pycodestyle:
   options:
     max-line-length: 120
+
+  disable:
+    - D100
+    - D203
+    - D205
+    - D212
+    - D213
+    - D400
+    - D404
+    - D406
+    - D407
+    - D413
+    - D415
+
+bandit: 
+  run: true
+
+dodgy:
+  run: true
+
+pyflakes:
+  run: true
+
+mccabe:
+  run: true
 ```
 
 </details>
