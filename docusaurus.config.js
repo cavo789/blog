@@ -6,6 +6,7 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
 
+// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -23,9 +24,9 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'cavo789', // Usually your GitHub org/user name.
   projectName: 'cavo789', // Usually your repo name.
-
-  noIndex: false,
   
+  noIndex: false, // Make sure our HTML pages will contains the <meta name="robots" content="index, follow"> tag
+
   onBrokenAnchors: 'throw',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -54,10 +55,19 @@ const config = {
         blog: {
           routeBasePath: '/blog',
           editUrl: 'https://github.com/cavo789/blog/edit/main/',
+         
           showReadingTime: true,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            xslt: true,
+          }, 
           blogSidebarTitle: 'All posts',
           blogSidebarCount: 'ALL',
-          showLastUpdateTime: false
+          showLastUpdateTime: true,
+          // Useful options to enforce blogging best practices
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'ignore',
         },
         sitemap: {
           changefreq: 'weekly',
@@ -85,17 +95,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-
-      // announcementBar: {
-      //   id: 'support_us',
-      //   content:
-      //     'We are looking to revamp our docs, please fill <a target="_blank" rel="noopener noreferrer" href="#">this survey</a>',
-      //   backgroundColor: '#fafbfc',
-      //   textColor: '#091E42',
-      //   isCloseable: true,
-      // },
-
-      // Default image when sharing a post on social media
+      // Replace with your project's social card
       image: 'img/social-card.jpg',
       navbar: {
         // auto-hide the navbar when the user will scroll down, show again when scroll up
@@ -140,9 +140,10 @@ const config = {
             'aria-label': 'GitHub repository',
           },
         ],
-      },      
+      },
       footer: {
-        style: 'dark',links: [
+        style: 'dark',
+        links: [
           {
             title: 'Communities',
             items: [
@@ -178,7 +179,7 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
         defaultLanguage: 'php',
-        additionalLanguages: ['bash', 'php']
+        additionalLanguages: ['bash', 'php', 'python']
       },
       tableOfContents: {
         minHeadingLevel: 2,

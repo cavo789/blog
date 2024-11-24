@@ -9,6 +9,8 @@ draft: true
 ---
 ![Docker cheat sheet](/img/docker_tips_banner.jpg)
 
+<!-- truncate -->
+
 ## Images
 
 ### Build an image
