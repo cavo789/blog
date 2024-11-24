@@ -57,7 +57,7 @@ bash: ## Open an interactive shell in the Docker container
 ifeq ($(or "$(TARGET)","production"), "production")
 	docker run -it cavo789/blog /bin/bash
 else
-	COMPOSE_FILE=${COMPOSE_FILE} DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose exec docusaurus /bin/bash
+	COMPOSE_FILE=${COMPOSE_FILE} DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose exec ${ARGS} docusaurus /bin/bash 
 endif
 
 .PHONY: build
@@ -89,11 +89,13 @@ endif
 
 .PHONY: down
 down: ## Stop the container
+	docker run --rm -it --user root -v $${PWD}/:/project -w /project node /bin/bash -c "yarn run clear"
 	COMPOSE_FILE=${COMPOSE_FILE} DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose down
 
-.PHONY: down remove
-remove: ## Remove the image
-	docker image rmi blog-docusaurus
+.PHONY: remove
+remove: down ## Remove the image
+	-docker image rmi blog-docusaurus
+	@rm -rf node_modules *.lock package-lock.json
 
 .PHONY: start
 start: ## Start the local web server and open the webpage
@@ -126,18 +128,18 @@ endif
 .PHONY: lint
 lint: ## Lint markdown files
 	@printf $(_YELLOW) "Lint markdown files"
-	docker run --rm -it --user $$(id -u):$$(id -g) -v $${PWD}:/md peterdavehello/markdownlint markdownlint --fix --config .config/.markdownlint.json --ignore-path .config/.markdownlint_ignore .
+	docker run --rm -it --user ${DOCKER_UID}:${DOCKER_GID}) -v $${PWD}:/md peterdavehello/markdownlint markdownlint --fix --config .config/.markdownlint.json --ignore-path .config/.markdownlint_ignore .
 
 .PHONY: spellcheck
 spellcheck: ## Check for spell checks errors (https://github.com/streetsidesoftware/cspell)
 	@printf $(_YELLOW) "Run spellcheck"
-	docker run --rm -it --user $$(id -u):$$(id -g) -v $${PWD}:/src -w /src ghcr.io/streetsidesoftware/cspell:latest lint . --unique --gitignore --quiet --no-progress --config .vscode/cspell.json
+	docker run --rm -it --user ${DOCKER_UID}:${DOCKER_GID}) -v $${PWD}:/src -w /src ghcr.io/streetsidesoftware/cspell:latest lint . --unique --gitignore --quiet --no-progress --config .vscode/cspell.json
 
 .PHONY: upgrade
 upgrade: ## Upgrade docusaurus and npm dependencies
 	@clear
 	@printf $(_YELLOW) "Upgrade docusaurus and npm dependencies"
-	docker run --rm -it --user $$(id -u):$$(id -g) -v $${PWD}/:/project -w /project node /bin/bash -c "yarn upgrade"
+	docker run --rm -it --user root -v $${PWD}/:/project -w /project node /bin/bash -c "yarn upgrade"
 	@printf $(_YELLOW) "Current version of docusaurus"
 	docker run --rm -it -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus -V"
 	
