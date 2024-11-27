@@ -10,7 +10,7 @@ draft: true
 
 <!-- markdownlint-disable-file MD010 -->
 <!-- cspell:ignore analyser,pylint,autoflake,isort,mypy,pyright,pydocstyle,pylintrc,docparams -->
-<!-- cspell:ignore rcfile,pyflakes,pycodestyle,mccabe -->
+<!-- cspell:ignore rcfile,pyflakes,pycodestyle,mccabe,pyproject -->
 
 ![Python - Code Quality tools](/img/python_tips_banner.jpg)
 
@@ -24,8 +24,10 @@ I'm a big fan of static code quality tools and here is my short list:
 
 ## 1. Pylint
 
-[https://pypi.org/project/pylint/](https://pypi.org/project/pylint/)
-
+>[https://pypi.org/project/pylint/](https://pypi.org/project/pylint/)
+>
+> [VSCode Addon](https://marketplace.visualstudio.com/items?itemName=ms-python.pylint)
+>
 > Pylint is a static code analyser for Python 2 or 3. The latest version supports Python 3.9.0 and above.
 >
 > Pylint analyses your code without actually running it. It checks for errors, enforces a coding standard, looks for code smells, and can make suggestions about how the code could be refactored
@@ -92,6 +94,8 @@ I'm running it like this: `autoflake --remove-unused-variables --remove-all-unus
 ## 3. isort
 
 > [https://pycqa.github.io/isort/](https://pycqa.github.io/isort/)
+>
+> [VSCode Addon](https://marketplace.visualstudio.com/items?itemName=ms-python.isort)
 >
 > isort your imports, so you don't have to.
 >
@@ -211,6 +215,8 @@ I'm using it like this: `pyright --project pyright.json`
 
 > [https://black.readthedocs.io/en/stable/](https://black.readthedocs.io/en/stable/)
 >
+> [VSCode Addon](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter)
+>
 > By using Black, you agree to cede control over minutiae of hand-formatting. In return, Black gives you speed, determinism, and freedom from pycodestyle nagging about formatting. You will save time and mental energy for more important matters.
 >
 > Black makes code review faster by producing the smallest diffs possible. Blackened code looks the same regardless of the project you’re reading. Formatting becomes transparent after a while and you can focus on the content instead.
@@ -279,6 +285,38 @@ pyflakes:
 
 mccabe:
   run: true
+```
+
+</details>
+
+## Extra - Ruff
+
+> [https://github.com/astral-sh/ruff](https://github.com/astral-sh/ruff)
+>
+> Ruff, an extremely fast Python linter and code formatter, written in Rust.
+>
+> [VSCode Addon](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)
+
+Right now, I've too little experience with Ruff so I prefer to add it as **extra**.
+
+The documentation mention it's extremely fast and I should admit the first time I've run it I was thinking nothing was done (really too fast). I've made an intentional error in my code and it was well detected so, yes, the tool is extremely fast.
+
+According to the Ruff [documentation](https://docs.astral.sh/ruff/faq/#how-does-ruffs-linter-compare-to-flake8), this tool can completely replace Pylint (the linter), Autoflake (deletion of unused imports/variables), Black (the formatting tool) but didn't replace MyPy and Pyright ([doc](https://docs.astral.sh/ruff/faq/#how-does-ruff-compare-to-mypy-or-pyright-or-pyre)).
+
+I'm using it like this: `ruff format --cache-dir /tmp/ruff --config .config/pyproject.toml .` and `ruff check --cache-dir /tmp/ruff --config .config/pyproject.toml .`
+
+<details>
+
+<summary>Example of a `pyproject.toml` file</summary>
+
+```toml
+[tool.ruff]
+
+exclude=[]
+
+# The same as in prospector.yaml, .pylintrc, black.toml and pyproject.toml
+line-length = 120
+indent-width = 4
 ```
 
 </details>
