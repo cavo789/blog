@@ -4,14 +4,13 @@ title: VBS - Get list of files and generate a CSV
 authors: [christophe]
 image: /img/vbs_tips_social_media.jpg
 tags: [dos, vbs]
-draft: true
 enableComments: true
 ---
 ![VBS - Get list of files and generate a CSV](/img/vbs_tips_banner.jpg)
 
-Six years ago, I needed a DOS script that would allow me to find the list of every file in a folder on a Windows machine and generate a csv file from it.
+Six years ago, I needed a DOS script that would allow me to find the list of every file in a folder on a Windows machine and generate a `.csv` file with that list.
 
-Once the CSV file had been generated, I could then process it in MS Excel, for example, and sort/filter it.
+Once the `.csv` file had been generated, I could then process it in MS Excel, for example, and sort/filter it or, why not, in Python using the Pandas library.
 
 <!-- truncate -->
 
@@ -126,7 +125,7 @@ Const ForWriting = 2
 
 The output file will be something like this:
 
-```csv
+```txt
 "FilePathAndName";"ParentFolder";"Name";"DateCreated";"DateLastAccessed";"DateLastModified";"Size";"Type";"Suffix";"Owner";
 "C:\temp\test\test.csv";"C:\temp\test";"test.csv";"21-01-24 09:07:44";"21-01-24 09:09:08";"21-01-24 09:09:08";"472";"CSV Microsoft Excel File";"csv";"Christophe";
 "C:\temp\test\test.vbs";"C:\temp\test";"test.vbs";"21-01-24 08:43:49";"21-01-24 09:09:03";"21-01-24 09:09:03";"3246";"VBScript File";"vbs";"Christophe";
