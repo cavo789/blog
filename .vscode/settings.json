@@ -25,5 +25,9 @@
         "titleBar.inactiveBackground": "#85690699",
         "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.remoteColor": "#856906"
+    "peacock.remoteColor": "#856906",
+    "cSpell.words": [
+        "daggerize",
+        "daggerized"
+    ]
 }
