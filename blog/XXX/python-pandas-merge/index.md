@@ -50,7 +50,7 @@ The merge must therefore take this into account.
 
 ## Generate fake data script
 
-To illustrate this article, let's create some CSV files. We'll create files for 2020 till 2024.
+To illustrate this article, let's create some CSV files. We'll create files for 2020 till 2024. Just skip this chapter if you already have CSV files for your needs.
 
 We'll create a set of 10 employees who will stay with us all the time and, in each year, we'll create an employee just for that specific year. This to illustrate the fact that we can have employees in one file and not in other ones.
 
@@ -73,9 +73,9 @@ from faker import Faker
 def generate_fake_data(filename: str = "employees") -> None:
     fake = Faker()
 
-    max : int = 10
+    max: int = 10
 
-    employees = []
+    employees: dict = []
 
     for id in range(max):
         employee = {
@@ -86,7 +86,7 @@ def generate_fake_data(filename: str = "employees") -> None:
             
         employees.append(employee)
 
-    extra_employees = {
+    extra_employees: dict = {
         2020: ("François", "Damiens"),
         2021: ("Albert", "Théo"),
         2022: ("Marthe", "Louisa"),
@@ -95,7 +95,7 @@ def generate_fake_data(filename: str = "employees") -> None:
     }
 
     for year in { 2020, 2021, 2022, 2023, 2024 }:
-        salaries = []
+        salaries: dict = []
 
         for id in range(max+1):
 
@@ -154,9 +154,9 @@ Using Pandas, it's quite simple to loop over files and do a merge.
 ```python
 import pandas as pd
 
-def merge_data(filename : str = "employees") -> None:
+def merge_data(filename: str = "employees") -> None:
     # Initialize the merged DataFrame with the first year's data
-    merged_df = pd.read_csv(f"{filename}_2020.csv", sep=";")
+    merged_df: pd.DataFrame = pd.read_csv(f"{filename}_2020.csv", sep=";")
     merged_df.rename(columns={'salary': 'salary_2020'}, inplace=True)
 
     # Iterate over remaining years and merge
@@ -193,7 +193,7 @@ At the end, the script will save the file on disk as `employees_merged.csv`.
 
 ![Merged](./images/merged.png)
 
-As we can see on the image, we've well a merge i.e. our 10 employees (from 0 till 9) then if an employee was present in a file (like employee 2023 called John John). We can see their salary in our result.
+As we can see on the image, we've well a merge i.e. our 10 employees (from 0 till 9) then if an employee was present in a file (like employee 2023 called `John John`). We can see their salary in our result.
 
 And, opened using Excel, here our final result:
 
@@ -205,7 +205,7 @@ Next year, we'll have a file called `employees_2025.csv` and we just need to run
 
 Without using Pandas, the common approach is to load the files one by one into Excel. To create formulas such as `vlookup` between each `sheet` and to create a new `sheet` which will include the values found, but this only works when the same record is found in several files.
 
-How do you deal with cases where a record has been added? You'd have to make an `append` in the `sheet` that merges everything together and ... ouch, that complicates things, doesn't it?
+How do you deal with cases where a record has been added? You'd have to make an `append` in the `sheet` that merges everything together and ... One way would be to append all records in one global sheet (and add a column year) then use a pivot feature to ... ouch, that complicates things, doesn't it?  
 
 Now let's imagine CSV files that aren't 10 rows long but are each over a million rows long.  Loading 5 files (2020 to 2024) means loading more than 5 million rows and having an `sheet` which will contain the merge and which will also contain at least 1 million rows.
 
