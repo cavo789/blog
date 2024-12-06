@@ -733,7 +733,30 @@ Let's go back to our objective: to simplify the pipeline process both at CI leve
 
 We've just done the local part, let's tackle the remote CI.
 
-For the next chapters, I'll suppose you're using GitLab.
+For the next chapters, I'll suppose you're using a self-hosted GitLab server.
+
+### Allowing the Gitlab runner to access to Docker
+
+I'm not expert in GitLab runner configuration but the following configuration is working for me.
+
+Do a SSH connection to your GitLab runner server and edit the `/etc/gitlab-runner/config.toml` file (you should be root). Just add `/var/run/docker.sock:/var/run/docker.sock` for the `volumes` property:
+
+```toml
+ [runners.docker]
+    # Adding /var/run/docker.sock:/var/run/docker.sock
+    # will allow to use commands like "docker image list" i.e. running Docker commands
+    # in CI scripts. This is called "Docker socket binding".
+    volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock"]
+```
+
+Also, make sure the Linux user used by your GitLab runner (default username is `gitlab-runner`) is part of the `docker` group. This is done by running `sudo usermod -aG docker gitlab-runner` in the CLI (see [https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-the-shell-executor](https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-the-shell-executor)).
+
+:::info
+Official Gitlab documentation about [volumes](https://docs.gitlab.com/runner/configuration/advanced-configuration.html#volumes-in-the-runnersdocker-section).
+
+To check if it's work, run `sudo su gitlab-runner` to switch to that user and run `docker info` and `docker image list` and check if it's works. If yes, then your user is part of the Docker group.
+
+### Configure your CI
 
 Please create a GitLab repository, push your existing project there.
 
@@ -747,13 +770,8 @@ Now, please create a file called `.gitlab-ci.yml` with this content:
   image: docker:latest
   services:
     - docker:${DOCKER_VERSION}-dind
-  variables:
-    DOCKER_HOST: tcp://docker:2376
-    DOCKER_TLS_VERIFY: '1'
-    DOCKER_TLS_CERTDIR: '/certs'
-    DOCKER_CERT_PATH: '/certs/client'
-    DOCKER_DRIVER: overlay2
-    DOCKER_VERSION: '27.2.0'
+  variables:    
+    DOCKER_HOST: unix:///var/run/docker.sock # Docker Socket Binding
 .dagger:
   extends: [.docker]
   before_script:
@@ -768,3 +786,9 @@ lint:
 </details>
 
 And push the changes to GitLab. The presence of the `.gitlab-ci.yml` file will tells to GitLab to instantiate a pipeline after each commit and, here in our example, to start a job called `lint`.
+
+:::info
+The provided example is using the technique called **Docker Socket Binding**: we don't need to define the `DOCKER_HOST` variable for instance as we can see in [the official Dagger documentation](https://docs.dagger.io/integrations/gitlab/#docker-executor). Indeed, if not specified, `DOCKER_HOST` is set to `unix:///var/run/docker.sock` ([doc](https://docs.gitlab.com/runner/configuration/advanced-configuration.html#the-runnersdocker-section)).
+
+Since we've shared the Docker daemon (`/var/run/docker.sock`) in our GitLab `/etc/gitlab-runner/config.toml` configuration file, we've allowed the CI to access to the socket.
+:::
