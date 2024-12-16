@@ -431,7 +431,6 @@ RUN set -e -x \
 
 This done, run `make build` to create a fresh Docker image with `anyio` installed.
 
-
 Now, we'll update the `.pipeline/src/src/main.py` file and add some more new functions:
 
 <details>
@@ -449,8 +448,13 @@ from dagger import Doc, dag, function, object_type, Directory
 @object_type
 class Src:
 
-    source: Directory
-    config: Directory
+    # This is the directory where source files are located (f.i. "/app/src")
+    # Initialized on the command line like this: "dagger call xxx --source src xxx"
+    source: Annotated[Directory, Doc("The source folder; where the codebase is located")] 
+
+    # This is the directory where configuration files are located (f.i. "/app/.config")   
+    # Initialized on the command line like this: "dagger call xxx --config .config xxx"
+    config: Annotated[Directory, Doc("The folder container configuration files")]y
 
     @function
     async def lint(self) -> str:

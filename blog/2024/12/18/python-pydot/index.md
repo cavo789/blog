@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/python_tips_social_media.jpg
 tags: [docker, python, visualisation]
 enableComments: true
-draft: true
 ---
 <!-- cspell:ignore Pydot,PYTHONDONTWRITEBYTECODE,hadolint,rankdir,fillcolor -->
 
@@ -209,7 +208,6 @@ graph.write_png('flowchart.png')
 </details>
 
 ![Decision flow](./images/decision_flow.png)
-
 
 ### Decision tree
 
