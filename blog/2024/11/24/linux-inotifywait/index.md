@@ -58,7 +58,7 @@ We can now create our Docker container: `docker run --detach --name demo -v ./sr
 
 This will create a Docker container that will remain running. We'll share our script `src/script.py` with the container and, too, the `out/` folder on our host as the `/app/out` folder of the container.
 
-## Create a sample Python script:
+## Create a sample Python script
 
 We need a very small Python script to generate our files:
 
