@@ -13,7 +13,7 @@ draft: true
 
 ![Dagger.io - Using dagger to automate your Python workflows](/img/dagger_tips_banner.jpg)
 
-Careful, it's a bomb.  Docker has revolutionized the world; let's not be afraid to say it loud and clear, and maybe Dagger.io, created by the same people as Docker, will follow in its footsteps.
+Careful, it's a bomb.  Docker has revolutionised the world; let's not be afraid to say it loud and clear, and maybe Dagger.io, created by the same people as Docker, will follow in its footsteps.
 
 Dagger.io aims to be a tool that lets you execute a workflow in exactly the same way as a CI/CD (continuous integration/continuous development) system.
 
@@ -21,7 +21,7 @@ In concrete terms: at the office, when I push my code onto our GitLab server, I'
 
 This CI process will then run on my GitLab server and will accept or reject my commit depending on what I have decided to do (can fail Yes/No).
 
-Let's see how Dagger.io will improve all this stull
+Let's see how Dagger.io will improve all this stuff
 
 <!-- truncate -->
 
@@ -51,7 +51,7 @@ Let's daggerize an existing application.
 
 Let's create a temporary folder for Dagger and jump in it: `mkdir /tmp/dagger && cd $_`,
 
-Please create there a Python script in a sub folder `src` and let's call it `src/main.py`:
+Please create there a Python script in a subfolder `src` and let's call it `src/main.py`:
 
 <details>
 <summary>src/main.py</summary>
@@ -76,13 +76,13 @@ Ok, we've our application and we want to do a lot of things:
 * Run [Mypy](https://github.com/python/mypy/), *Mypy is a program that will type check your Python code* and
 * Run [Ruff](https://github.com/astral-sh/ruff), *an extremely fast Python linter and code formatter*
 
-These steps are fired in our CI (GitLab, github, ...) every time we'll push our code and, to do the same actions locally, we need to create f.i. some make actions (`make lint`, `make format`, ...)
+These steps are fired in our CI (GitLab, Github, ...) every time we'll push our code and, to do the same actions locally, we need to create f.i. some make actions (`make lint`, `make format`, ...)
 
 ## We need Dagger
 
 No surprise there; at some point we have to install Dagger. Install? Ouch no; we're not going to install it because, being Docker lovers, we're going to use Docker and create our Dagger image.
 
-Please create a new sub folder called `.docker` and in that folder, a file called `Dockerfile`:
+Please create a new subfolder called `.docker` and in that folder, a file called `Dockerfile`:
 
 <details>
 <summary>.docker/Dockerfile</summary>
@@ -137,7 +137,7 @@ Let's understand this long command line:
 
 :::
 
-It'll take around two minutes to download and initialize Dagger. By looking at your file system, you'll see, oh, the owner is `root` and not you.
+It'll take around two minutes to download and initialise Dagger. By looking at your file system, you'll see, oh, the owner is `root` and not you.
 
 ```bash
 ❯ ls -alh
@@ -259,7 +259,7 @@ We'll thus remove the two sample functions and we'll implement our linting funct
 
 By running `dagger call lint --source src` we'll then ask the pipeline to run Pylint on to the `src` folder.
 
-Since it's the first time, Dagger will need to make some initializations (like installing PyLint) then we'll get the output:
+Since it's the first time, Dagger will need to make some initialisations (like installing PyLint) then we'll get the output:
 
 ![Partial output - Pylint](./images/pylint.png)
 
@@ -283,7 +283,7 @@ else:
 
 </details>
 
-Running `dagger call lint --source src` again will congratulates us now with a score of 10/10.
+Running `dagger call lint --source src` again will congratulate us now with a score of 10/10.
 
 Edit the `src/main.py` file again, f.i. make a typo by updating the line `else:` and remove the final `:` and the linter won't be happy anymore.
 
@@ -297,7 +297,7 @@ Remember: we've first started an interactive shell to jump in the Docker contain
 
 We can do this directly from our host by running: `docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src -w /app/src dagger_daemon dagger call lint --source src`
 
-It becomes quite difficult to remember all these commands no? Let's simplify this by creating a `makefile`.
+It becomes quite difficult to remember all these commands, no? Let's simplify this by creating a `makefile`.
 
 ## Create a makefile
 
@@ -449,11 +449,11 @@ from dagger import Doc, dag, function, object_type, Directory
 class Src:
 
     # This is the directory where source files are located (f.i. "/app/src")
-    # Initialized on the command line like this: "dagger call xxx --source src xxx"
+    # Initialised on the command line like this: "dagger call xxx --source src xxx"
     source: Annotated[Directory, Doc("The source folder; where the codebase is located")] 
 
     # This is the directory where configuration files are located (f.i. "/app/.config")   
-    # Initialized on the command line like this: "dagger call xxx --config .config xxx"
+    # Initialised on the command line like this: "dagger call xxx --config .config xxx"
     config: Annotated[Directory, Doc("The folder container configuration files")]y
 
     @function
@@ -539,7 +539,7 @@ class Src:
 
 This new file comes with a lot of changes:
 
-We've defined two global variables called `source` and `config`. So, now, we don't pass the `source` folder to the lint function anymore (local parameter) but just need to set it once (global parameter). We've also add a `config` folder to be able to tells Dagger where our configuration files are stored.
+We've defined two global variables called `source` and `config`. So, now, we don't pass the `source` folder to the lint function anymore (local parameter) but just need to set it once (global parameter). We've also add a `config` folder to be able to tell Dagger where our configuration files are stored.
 
 ```python
 source: Directory
@@ -580,7 +580,7 @@ disable=
 ; Pickle collected data for later comparisons.
 persistent=yes
 
-; List of plugins (as comma separated values of python modules names) to load,
+; List of plugins (as comma-separated values of python modules names) to load,
 ; usually to register additional checkers.
 load-plugins=
     pylint.extensions.check_elif,
@@ -723,7 +723,7 @@ pipeline:
 
 ## Time for a first break
 
-Right now, we've build a local pipeline: we've create a custom Dagger Docker image and we've daggerized an existing project.
+Right now, we've built a local pipeline: we've created a custom Dagger Docker image and we've daggerized an existing project.
 
 We've defined a few functions (`lint`, `format`, `mypy` and `ruff`) and a last one `run-all` to start all functions at the same time.
 
@@ -758,7 +758,7 @@ Also, make sure the Linux user used by your GitLab runner (default username is `
 :::info
 Official Gitlab documentation about [volumes](https://docs.gitlab.com/runner/configuration/advanced-configuration.html#volumes-in-the-runnersdocker-section).
 
-To check if it's work, run `sudo su gitlab-runner` to switch to that user and run `docker info` and `docker image list` and check if it's works. If yes, then your user is part of the Docker group.
+To check if it's working, run `sudo su gitlab-runner` to switch to that user and run `docker info` and `docker image list` and check if it's works. If yes, then your user is part of the Docker group.
 
 ### Configure your CI
 

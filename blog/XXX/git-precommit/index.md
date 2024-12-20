@@ -9,7 +9,7 @@ draft: true
 ---
 ![Git - pre-commit-hooks](/img/git_tips_banner.jpg)
 
-You like clean code, don't you? And you hate getting an email from your versioning tool (e.g. github or GitLab) telling you that your last commit didn't go through, that the formatting of your code is bad; this is because you've left one space too many at the end of a line or you've used single quote instead of double (or the opposite), for example.
+You like clean code, don't you? And you hate getting an email from your versioning tool (e.g. Github or GitLab) telling you that your last commit didn't go through, that the formatting of your code is bad; this is because you've left one space too many at the end of a line or you've used single quote instead of double (or the opposite), for example.
 
 You've pushed your changes, already start to work on another activity, perhaps another project and boum, two hours after your last commit (*because the CI server was working on a lot of pipelines before yours*), boum, you get a *Your last commit has failed, #gnagnagna*. I hate it as much as I love clean code.
 
@@ -27,11 +27,11 @@ Git is supporting a feature called **[Hooks](https://git-scm.com/book/ms/v2/Cust
 
 So, in this article, we'll discuss about `pre-commit` hooks: we want to start some code quality tools before committing our changes to our code versioning software and, in fact, we want to abandon the commit if something is wrong.
 
-In other words, if the code formating of our last changes violates somes standards (trailing spaces f.i.), we wish to be notified of the problem immediately; we want to be able to solve issues before pushing our changes and, this is the objective, to make sure we'll not push wrong code (badly formated, badly written) to our versioning system.
+In other words, if the code formatting of our last changes violates some standards (trailing spaces f.i.), we wish to be notified of the problem immediately; we want to be able to solve issues before pushing our changes and, this is the objective, to make sure we'll not push wrong code (badly formatted, badly written) to our versioning system.
 
 ## Which pre-commit hooks tools exists?
 
-There are a few tools we can used like:
+There are a few tools we can use like:
 
 * [husky](https://github.com/typicode/husky); *Git hooks made easy* 🐶 *woof!*
 * [pre-commit](https://github.com/pre-commit/pre-commit); *A framework for managing and maintaining multi-language pre-commit hooks*
@@ -42,9 +42,9 @@ In this article, we'll discover [pre-commit](https://github.com/pre-commit/pre-c
 
 ## Let's play by creating a demo
 
-We'll create a new temporary folder, run `git init` to initialize a project and create a Docker image and run a container for our demo.
+We'll create a new temporary folder, run `git init` to initialise a project and create a Docker image and run a container for our demo.
 
-First, run `mkdir /tmp/hooks && cd $_` then run `git init` to initialized our folder as a repository (we'll work offline but, yes, to use git pre-commit hooks, we need a git project).
+First, run `mkdir /tmp/hooks && cd $_` then run `git init` to initialise our folder as a repository (we'll work offline but, yes, to use git pre-commit hooks, we need a git project).
 
 We'll need three files, a `Dockerfile` to create our Python Docker image, a `compose.yaml` to set some settings and `main.py` as a Python example script.
 
@@ -142,7 +142,7 @@ repos:
 
 `pre-commit` can be manually fired but you should have some files in your git local stage. In this article, we've created a few files, please run `git add .` just to put them in the git local stage.
 
-Now, to manually start all controls defined in the yaml file simple run `pre-commit run --all-files`. The first time, it'll be slower since a few things have to be download / configured.
+Now, to manually start all controls defined in the yaml file simply run `pre-commit run --all-files`. The first time, it'll be slower since a few things have to be downloaded / configured.
 
 You'll see something like this on your console:
 
@@ -173,7 +173,7 @@ All done! ✨ 🍰 ✨
 
 Oh? Did you see the **reformatted main.py** line? Something was wrong with that file.
 
-Did you've notice my typo?
+Did you've noticed my typo?
 
 ```python
 print("I'm your Python code")
@@ -185,11 +185,11 @@ The first time I've used double quotes (in the first `print` statement) while I'
 
 Now, reopen the `main.py` script:
 
-![Black has reformated our script](./images/black.png)
+![Black has reformatted our script](./images/black.png)
 
 ### Install hooks
 
-Ok, the idea wasn't to fire pre-commit hooks manually, right? Just run `pre-commit install` and, from now, every single time you'll run `git commit`, first, `pre-commit` controls will be made and only when all controls are succesfull (i.e. all will return an exit code of `0`), then your commit will well be allowed.
+Ok, the idea wasn't to fire pre-commit hooks manually, right? Just run `pre-commit install` and, from now, every single time you'll run `git commit`, first, `pre-commit` controls will be made and only when all controls are successful (i.e. all will return an exit code of `0`), then your commit will be allowed.
 
 :::note
 If you're curious about how it works, simply show the `.git/hooks/pre-commit` file. The previous instruction has configured git to execute a small Bash script called `.git/hooks/pre-commit`.
@@ -299,7 +299,7 @@ and even more, search on [https://sourcegraph.com/search](https://sourcegraph.co
 
 In some situation, you've to push your changes even if there are some code violation. Let's say, it's your last hour before three weeks holiday and you're working alone on a branch like `feat-user-profile`. You wish to push your changes and enjoy a break.
 
-In that situation, you can add the `--no-verify` flag f.i. `git commit -m "wip: not yet finished" --no-verify`. And, then, pre-commit hooks won't be executed so your changes will be commited.
+In that situation, you can add the `--no-verify` flag f.i. `git commit -m "wip: not yet finished" --no-verify`. And, then, pre-commit hooks won't be executed so your changes will be committed.
 
 :::caution
 Only use this flag if you know exactly what you're doing. It would be a very bad idea to do this f.i. to the `dev` branch if you're working in a team.

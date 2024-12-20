@@ -9,7 +9,7 @@ draft: true
 ---
 
 <!-- markdownlint-disable-file MD010 -->
-<!-- cspell:ignore analyser,pylint,autoflake,isort,mypy,pyright,pydocstyle,pylintrc,docparams -->
+<!-- cspell:ignore analyser,pylint,Autoflake,isort,mypy,pyright,pydocstyle,pylintrc,docparams -->
 <!-- cspell:ignore rcfile,pyflakes,pycodestyle,mccabe,pyproject -->
 
 ![Python - Code Quality tools](/img/python_tips_banner.jpg)
@@ -83,13 +83,13 @@ max-line-length=120
 
 > [https://pypi.org/project/autoflake/](https://pypi.org/project/autoflake/)
 >
-> autoflake removes unused imports and unused variables from Python code. It makes use of pyflakes to do this.
+> Autoflake removes unused imports and unused variables from Python code. It makes use of pyflakes to do this.
 >
-> By default, autoflake only removes unused imports for modules that are part of the standard library. (Other modules may have side effects that make them unsafe to remove automatically.) Removal of unused variables is also disabled by default.
+> By default, Autoflake only removes unused imports for modules that are part of the standard library. (Other modules may have side effects that make them unsafe to remove automatically.) Removal of unused variables is also disabled by default.
 >
-> autoflake also removes useless pass statements by default.
+> Autoflake also removes useless pass statements by default.
 
-I'm running it like this: `autoflake --remove-unused-variables --remove-all-unused-import --recursive .`
+I'm running it like this: `Autoflake --remove-unused-variables --remove-all-unused-import --recursive .`
 
 ## 3. isort
 
@@ -111,7 +111,7 @@ Note: I've also configured my VSCode with this setting `"python.sortImports.args
 >
 > Vulture finds unused code in Python programs. This is useful for cleaning up and finding errors in large code bases. If you run Vulture on both your library and test suite you can find untested code.
 >
-> Due to Python's dynamic nature, static code analyzers like Vulture are likely to miss some dead code. Also, code that is only called implicitly may be reported as unused. Nonetheless, Vulture can be a very helpful tool for higher code quality.
+> Due to Python's dynamic nature, static code analysers like Vulture are likely to miss some dead code. Also, code that is only called implicitly may be reported as unused. Nonetheless, Vulture can be a very helpful tool for higher code quality.
 
 I'm running it like this: `vulture --min-confidence 100 .`
 
@@ -299,7 +299,7 @@ mccabe:
 
 Right now, I've too little experience with Ruff so I prefer to add it as **extra**.
 
-The documentation mention it's extremely fast and I should admit the first time I've run it I was thinking nothing was done (really too fast). I've made an intentional error in my code and it was well detected so, yes, the tool is extremely fast.
+The documentation mentions it's extremely fast and I should admit the first time I've run it I was thinking nothing was done (really too fast). I've made an intentional error in my code and it was well detected so, yes, the tool is extremely fast.
 
 According to the Ruff [documentation](https://docs.astral.sh/ruff/faq/#how-does-ruffs-linter-compare-to-flake8), this tool can completely replace Pylint (the linter), Autoflake (deletion of unused imports/variables), Black (the formatting tool) but didn't replace MyPy and Pyright ([doc](https://docs.astral.sh/ruff/faq/#how-does-ruff-compare-to-mypy-or-pyright-or-pyre)).
 

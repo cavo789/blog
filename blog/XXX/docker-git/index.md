@@ -96,7 +96,7 @@ This tells Docker to share (mount) our local `${HOME}/.gitconfig` file (i.e. our
 In case, for instance, your container is running as `john_doe`, the line has to be `- ${HOME}/.gitconfig:/home/john_doe/.gitconfig`.
 :::
 
-Let's check if it works: still in the console inside the container, please run `git config list`. You'll see the same configuration you've on your host machine. The sharing as worked as expected.
+Let's check if it works still in the console inside the container, please run `git config list`. You'll see the same configuration you've on your host machine. The sharing as worked as expected.
 
 :::note
 Depending on the version of git you're using, the command is `git config list` or `git confit --list`.

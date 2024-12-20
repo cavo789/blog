@@ -11,9 +11,9 @@ draft: true
 
 Recently a good friend has notified me about a new tool from Microsoft: an utility for converting PDF and MS Office files (like `.docx` or `.xlsx`) to Markdown.
 
-By looking at the repo on Github ([https://github.com/microsoft/markitdown/](https://github.com/microsoft/markitdown/)), it seems really interesting since, they said "it converts pdf, powerpoint, word, excel, images, audio, html, text-based formats like csv, json or xml and even zip file (iterates over contents)". It's a lovely promise!
+By looking at the repo on Github ([https://github.com/microsoft/markitdown/](https://github.com/microsoft/markitdown/)), it seems really interesting since, they said "it converts pdf, PowerPoint, word, excel, images, audio, html, text-based formats like csv, json or xml and even zip file (iterates over contents)". It's a lovely promise!
 
-So, because it's always good to be able to quickly convert somes docx files written by colleagues who don't speak Markdown, I was really interested to test it.
+So, because it's always good to be able to quickly convert some docx files written by colleagues who don't speak Markdown, I was really interested to test it.
 
 <!-- truncate -->
 
@@ -45,11 +45,11 @@ WORKDIR "/in"
 
 </details>
 
-As you can see, that file is quite straight-forward: we'll start from a Python image, install the utility and just create a folder called `in` where we'll put files we wish to convert.
+As you can see, that file is quite straightforward: we'll start from a Python image, install the utility and just create a folder called `in` where we'll put files we wish to convert.
 
 We'll build the image by running `docker build -t markitdown .`.  So, now, we've our own image called `markitdown`.
 
-Now, we'll create a Docker container and jump in it just by running this command: `docker run -it --rm -v .:/in markitdown /bin/sh`. The `-v .:/in` part means: we'll share our local folder with the container. So every files we'll put in our `/tmp/markitdown` folder will be accessible inside the container; in the `/in` folder.
+Now, we'll create a Docker container and jump in it just by running this command: `docker run -it --rm -v .:/in markitdown /bin/sh`. The `-v .:/in` part means: we'll share our local folder with the container. So every file we'll put in our `/tmp/markitdown` folder will be accessible inside the container; in the `/in` folder.
 
 I've put some files in my `/tmp/markitdown` folder:
 
@@ -62,7 +62,7 @@ I've put some files in my `/tmp/markitdown` folder:
 Dockerfile  test.docx  test.pdf  test.xlsx
 ```
 
-and, as expected, by going into the container (by running `docker run -it --rm -v .:/in markitdown /bin/sh`), I can retrieved them:
+and, as expected, by going into the container (by running `docker run -it --rm -v .:/in markitdown /bin/sh`), I can retrieve them:
 
 ```bash
 ❯ docker run -it --rm -v .:/in markitdown /bin/sh
