@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 tags: [docker]
 enableComments: true
-draft: true
 ---
 ![Docker-in-Docker aka dind](/img/docker_tips_banner.jpg)
 
@@ -122,7 +121,7 @@ Client:
 Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 ```
 
-It didn't works anymore.
+It didn't work anymore.
 
 :::important DIND should be able to access to the Docker daemon
 
@@ -131,9 +130,9 @@ As you can see, you should share your Docker socket (i.e. the file called `/var/
 
 Type `exit` again, quit the container, update the `yaml` file again like before (remove the commented lines) and run `docker compose up --detach --build && docker compose exec dind /bin/sh` again.
 
-Back to the console's container, you can thus run commands like `docker ps` to get the list of running containers on the host and f.i. stop somes (f.i. `docker container stop 68e41eee2efd`; only possible if dind is correctly configured).
+Back to the console's container, you can thus run commands like `docker ps` to get the list of running containers on the host and f.i. stop some (f.i. `docker container stop 68e41eee2efd`; only possible if dind is correctly configured).
 
-## Running the container as unpriviledged user
+## Running the container as unprivileged user
 
 It was working without too many difficulties because we were root. We've started the container as root. Just type `whoami` in the container to validate this. You can also type `id -u` to see that your user ID is `0` (root).
 
@@ -150,7 +149,7 @@ To do this, we need to update our files.
 
 ARG DOCKER_OS_GROUPID=1000
 ARG DOCKER_OS_USERID=1000
-ARG DOCKER_OS_USERNAME="jonhdoe"
+ARG DOCKER_OS_USERNAME="johndoe"
 
 FROM alpine:latest
 
@@ -180,7 +179,7 @@ USER "${DOCKER_OS_USERNAME}"
 <summary>compose.yaml</summary>
 
 ```yaml
-name: "dind-as-unpriviledged"
+name: "dind-as-unprivileged"
 services:
   dind:
     build:
@@ -212,12 +211,12 @@ permission denied while trying to connect to the Docker daemon socket at unix://
 
 Everything seems OK but ... why?
 
-To be able to run dind with an unpriviledged user, you should take care about this: your user should be member of the host `docker` group. And `compose.yaml` comes with an easy way to do this.
+To be able to run dind with an unprivileged user, you should take care about this: your user should be members of the host `docker` group. And `compose.yaml` comes with an easy way to do this.
 
 Please update your `compose.yaml` by adding the two lines below.
 
 ```yaml
-name: "dind-as-unpriviledged"
+name: "dind-as-unprivileged"
 services:
   dind:
     build:
@@ -237,19 +236,19 @@ services:
 
 Jump in the container once more: `docker compose up --detach --build && docker compose exec dind /bin/sh`
 
-And try `docker ps` again; it's works. You can now have access to all Docker commands again like `docker image list`.
+And try `docker ps` again; it works. You can now have access to all Docker commands again like `docker image list`.
 
 ### What is this group 1001?
 
-As said, to be able to run dind as a unpriviledged user, you should be member of the `docker` group on the host (not the `docker` group you can retrieve in the container).
+As said, to be able to run dind as a unprivileged user, you should be a member of the `docker` group on the host (not the `docker` group you can retrieve in the container).
 
 One way to retrieve that ID is to run `getent group docker | cut -d: -f3`.  You'll most probably see `1001` since it's the standard ID for that group.
 
 :::note
-As you've seen, I've not hardcoded the ID in the proposed yaml file but I've defined an operating system variable called `DOCKER_GROUPID` and, if that variable didn't exists, I'm using value `1001`.
+As you've seen, I've not hardcoded the ID in the proposed yaml file but I've defined an operating system variable called `DOCKER_GROUPID` and, if that variable didn't exist, I'm using value `1001`.
 :::
 
-So, to make the script robusts, we just need to initialize the `DOCKER_GROUPID`variable before building the image:
+So, to make the script robust, we just need to initialise the `DOCKER_GROUPID`variable before building the image:
 
 ```bash
 DOCKER_GROUPID="$(getent group docker | cut -d: -f3)" docker compose up --detach --build && docker compose exec dind /bin/sh
@@ -259,7 +258,7 @@ DOCKER_GROUPID="$(getent group docker | cut -d: -f3)" docker compose up --detach
 
 Running Docker-in-Docker is a container running as root is quite easy, you just need to install `docker` while building the image and mounting your docker socket.
 
-It's not so easy if you're using a un-priviledged user but, well easy, as soon as you're find the right way: using the `group_add` property and retrieve the ID of the local `docker` group.
+It's not so easy if you're using an unprivileged user but, well easy, as soon as you've found the right way: using the `group_add` property and retrieve the ID of the local `docker` group.
 
 :::note
 Don't try `group_add` with `docker` (the group name) instead the ID; it won't work.
