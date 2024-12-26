@@ -63,7 +63,7 @@ const config = {
           }, 
           blogSidebarTitle: 'All posts',
           blogSidebarCount: 'ALL',
-          showLastUpdateTime: true,
+          // showLastUpdateTime: true,
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
