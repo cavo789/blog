@@ -3,7 +3,7 @@ slug: planethoster-n0c-spam-roundcube-action
 title: Exterminate them all, kill spam using GitHub Actions
 authors: [christophe]
 image: /img/spam_social_media.jpg
-tags: [actions, github, jq, n0c, planethoster, roundcube]
+tags: [actions, Github, jq, n0c, planethoster, roundcube]
 enableComments: true
 ---
 <!-- cSpell:ignore allof,fileinto -->

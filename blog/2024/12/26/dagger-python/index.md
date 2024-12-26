@@ -3,9 +3,8 @@ slug: dagger-python
 title: Dagger.io - Using dagger to automate your Python workflows
 authors: [christophe]
 image: /img/dagger_tips_social_media.jpg
-tags: [ci, dagger, pipeline, tip, workflow]
+tags: [CI, dagger, Github, GitLab, pipeline, tip, workflow]
 enableComments: true
-draft: true
 ---
 <!-- cspell:ignore pylint,pyproject,stopit,randint,workdir,pylintrc,docparams,mccabe,mypy -->
 <!-- cspell:ignore hadolint,xvfz,aaaaaargh,dind -->
@@ -13,41 +12,37 @@ draft: true
 
 ![Dagger.io - Using dagger to automate your Python workflows](/img/dagger_tips_banner.jpg)
 
-Careful, it's a bomb.  Docker has revolutionised the world; let's not be afraid to say it loud and clear, and maybe Dagger.io, created by the same people as Docker, will follow in its footsteps.
+**Be careful, it's a bomb.**  Docker has revolutionised the world; let's not be afraid to say it loud and clear, and most probably [Dagger.io](https://dagger.io/), created by the same people as Docker, will follow in its footsteps.
 
-Dagger.io aims to be a tool that lets you execute a workflow in exactly the same way as a CI/CD (continuous integration/continuous development) system.
+Dagger.io aims to be a tool that lets you execute steps of a workflow in exactly the same way as a **CI/CD** (**Continuous Integration / Continuous Development**) system like the ones of GitHub, GitLab, Jenkins, ... does.
 
-In concrete terms: at the office, when I push my code onto our GitLab server, I've implemented a `.gitlab-ci.yml' file through which a very large number of tasks are executed to check that my code contains no syntax errors (linting), no formatting violations, no gross quality errors (code quality), ... and to execute the unit tests for my project.
+But what is a CI? It's a step carried out by your server once you've pushed a new version of your project.  During a CI, you can validate the syntax of your code, make sure it conforms (e.g. to formating rules), run code quality analysis tools such as checking that you don't have any undeclared or untyped variables or dead code (e.g. a function you no longer use).
 
-This CI process will then run on my GitLab server and will accept or reject my commit depending on what I have decided to do (can fail Yes/No).
+During a CI, you can also launch your unit tests and run them each time you push out a new version of your project.
 
-Let's see how Dagger.io will improve all this stuff
+The aim of the CI is to ... **crash as soon as something isn't in the expected state**; e.g. you've forgotten a `;`, you've got a violation (spaces used instead of tabs), a unit test no longer works, etc. So the aim of CI is to guarantee that your code is excellent.
 
 <!-- truncate -->
 
+In concrete terms: at the office, we're using GitLab and then, in each project, we've a file called `.gitlab-ci.yml` in any projects. In that file, we've foresee a few actions like running code quality tools so every time someone pushes a project, GitLab will execute these tools f.i. check that my code didn't contain no syntax errors (linting), that there is no formatting violations, no unused/untyped variables/functions/... and to execute the unit tests for my project.
+
+This is called a `Continuous Integration` process (a `CI` in short).
+
+That's cool but it's a pain too... Let's see why and how Dagger.io will improve all this stuff.
+
 ## Why using Dagger?
 
-Anyone who uses a CI that runs in remote knows: it's a pain in the arse (sorry).
+Anyone who has to set up a CI that runs on a remote server knows this: it's the exact opposite of *It's piece of cake*. The CI has to be programmed in a text file in YAML format and it's impossible to test the CI locally because it's only run when there's a push on the server (and thus only on the server).
 
-You have to push your code onto the server (git push) and you have to wait until a runner is available to start executing the tasks defined in your CI. If you have several colleagues doing the same, you may have to wait several minutes for your jobs to start.
+It's extremely complicated to manage the reproducibility of the scripts because, when a CI error occurs on the server, you have to read the error log and try to understand why it occurs before trying to try to patch it (perhaps you'll need to update your yaml file), push the changes, wait, hope that it was the right correction, oh no, not the good one and you need to restart the loop and, oh no, ... and push again and ... It's a real pain and can take hours!
 
-Then, your first jobs pass and then the sixth job crashes.  You look at the error displayed in the CI output and correct it locally, then you push again and damned, no, still not correct. You change something else and push again, and again, and again.
+![Pushing and wait](./images/push_and_wait_angry.jpg)
 
-And sometimes the error isn't linked to your code but to the environment because the CI is running with a user that isn't yours, in a different context (perhaps some files are missing, there are permissions issues, etc.).
-
-And there you are, pushing for the 46th time and damned and aaaaaargh, feeling like you want to throw this server out.
-
-Read more about Dagger on their website: [https://dagger.io/](https://dagger.io/)
+And, finally, you've solved the issue after having pushed for the 46th time.
 
 ## Let's build a real example
 
-Did you know the word we use when an existing application is *converted* to use Docker? It's a **dockerized** application.
-
-And did you know the word when an existing application is *converted* to use Dagger? Yes, it's **daggerized**.
-
-Let's daggerize an existing application.
-
-## Our existing python project
+During this tutorial, we'll **daggerized** a repository i.e. we'll start from zero, create a small Python script, create a Dagger Docker image then initialize our project to use Dagger.
 
 Let's create a temporary folder for Dagger and jump in it: `mkdir /tmp/dagger && cd $_`,
 
@@ -69,7 +64,9 @@ else:
 
 Amazing application to tell us, random, *Hello world* or *Bonjour le monde!*
 
-Ok, we've our application and we want to do a lot of things:
+### Our objectives
+
+Every time we will push our codebase to our versioning application (like GitLab), we want to:
 
 * Run [Pylint](https://pypi.org/project/pylint/), *Lint python scripts using Pylint - Run analyses your code without actually running it*,
 * Run [Black](https://black.readthedocs.io/en/stable/), *Format the script using Black*,
@@ -78,7 +75,9 @@ Ok, we've our application and we want to do a lot of things:
 
 These steps are fired in our CI (GitLab, Github, ...) every time we'll push our code and, to do the same actions locally, we need to create f.i. some make actions (`make lint`, `make format`, ...)
 
-## We need Dagger
+## We want Dagger
+
+![Dagger](./images/dagger.png)
 
 No surprise there; at some point we have to install Dagger. Install? Ouch no; we're not going to install it because, being Docker lovers, we're going to use Docker and create our Dagger image.
 
@@ -102,7 +101,7 @@ RUN set -e -x \
     && rm -rf /tmp/* /var/list/apt/*
 
 # Install Dagger
-ARG VERSION=0.14.0
+ARG VERSION=0.15.1
 ARG ARCHIVE=dagger_v${VERSION}_linux_amd64.tar.gz
 ARG URL=https://github.com/dagger/dagger/releases/download/v${VERSION}/${ARCHIVE}
 
@@ -123,36 +122,31 @@ We need to build our image so let's run `docker build -t dagger_daemon -f .docke
 
 As said above, we need to create some stuff to *daggerize* our application.
 
-To do this, we have to run a `dagger init` command using our Docker image.
+To do this, we have to run `dagger init` and since we're using a Docker image, the command to start is: `docker run -it --user root -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src -w /app/src dagger_daemon dagger init --sdk=python --source=./.pipeline`
 
-Here is how: `docker run -it --user root -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src -w /app/src dagger_daemon dagger init --sdk=python --source=./.pipeline`
-
-Let's understand this long command line:
+:::info Let's understand this long command line:
 
 * by using `-it` we will interact (if needed) with the container and we'll allocate a TTY terminal i.e. get the output of running command just like if we've started it on our machine,
 * you've to share your local `/var/run/docker.sock` with the container because Dagger will use Docker-in-Docker (aka `dind`) and for this reason, the container should be able to interact with your instance of Docker (`-v /var/run/docker.sock:/var/run/docker.sock`) and
 * you've to mount your local current folder with the container (`-v .:/app/src`) and make that folder the working directory in the container (`-w /app/src`).
 * `dagger_daemon` is the name of our image
 * `dagger init --sdk=python --source=./.pipeline` is the command to start
-
 :::
 
-It'll take around two minutes to download and initialise Dagger. By looking at your file system, you'll see, oh, the owner is `root` and not you.
+It'll take around two minutes to download and initialise Dagger (for the first time). By looking at your file system, you'll see, oh, the owner is `root` and not you.
 
 ```bash
 ❯ ls -alh
 
 Permissions Size User       Group      Date Modified    Name
-drwxr-xr-x     - christophe christophe 2024-11-30 11:04 .
-drwxrwxrwt     - root       root       2024-11-30 10:51 ..
-drwxr-xr-x     - christophe christophe 2024-11-30 10:51 .docker
-drwxr-xr-x     - root       root       2024-11-30 10:57 .pipeline
-drwxr-xr-x     - christophe christophe 2024-11-30 10:51 src
-.rw-r--r--    94 root       root       2024-11-30 10:57 dagger.json
-.rw-------   10k root       root       2024-11-30 11:04 LICENSE
+drwxr-xr-x     - christophe christophe 2024-12-26 16:00 .docker
+drwxr-xr-x     - christophe christophe 2024-12-26 16:02 .pipeline
+drwxr-xr-x     - christophe christophe 2024-12-26 16:02 src
+.rw-r--r--    94 christophe christophe 2024-12-26 16:02 dagger.json
+.rw-------   10k christophe christophe 2024-12-26 16:02 LICENSE
 ```
 
-Please run `sudo chown -R christophe:christophe .` (and replace my firstname by your username).
+Please run `sudo chown -R christophe:christophe .` (and replace my firstname by your Linux username).
 
 Let's look at the tree structure:
 
@@ -407,7 +401,7 @@ RUN set -e -x \
     && rm -rf /tmp/* /var/list/apt/*
 
 # Install Dagger
-ARG VERSION=0.14.0
+ARG VERSION=0.15.1
 ARG ARCHIVE=dagger_v${VERSION}_linux_amd64.tar.gz
 ARG URL=https://github.com/dagger/dagger/releases/download/v${VERSION}/${ARCHIVE}
 
@@ -454,7 +448,7 @@ class Src:
 
     # This is the directory where configuration files are located (f.i. "/app/.config")   
     # Initialised on the command line like this: "dagger call xxx --config .config xxx"
-    config: Annotated[Directory, Doc("The folder container configuration files")]y
+    config: Annotated[Directory, Doc("The folder container configuration files")]
 
     @function
     async def lint(self) -> str:
@@ -713,15 +707,15 @@ mypy:
 ruff:
 	docker run -it ${DOCKER_SOCK} -v .:/app/src -w /app/src ${DAEMON_NAME} dagger call --source src --config .config ruff
 
-.PHONY:pipeline
-pipeline:
+.PHONY:run-all
+run-all:
 	docker run -it ${DOCKER_SOCK} -v .:/app/src -w /app/src ${DAEMON_NAME} dagger call --source src --config .config run-all
 
 ```
 
 </details>
 
-## Time for a first break
+## Our CI is ready on our dev machine
 
 Right now, we've built a local pipeline: we've created a custom Dagger Docker image and we've daggerized an existing project.
 
@@ -729,7 +723,7 @@ We've defined a few functions (`lint`, `format`, `mypy` and `ruff`) and a last o
 
 We've simplified our work with `make` actions to not remember these long Docker CLI commands.
 
-Our pipeline is working fine locally.
+Our pipeline is working fine locally; time to implement the remote CI.
 
 ## Implementing a GitLab CI using Dagger
 
@@ -757,6 +751,7 @@ Also, make sure the Linux user used by your GitLab runner (default username is `
 
 :::info
 Official Gitlab documentation about [volumes](https://docs.gitlab.com/runner/configuration/advanced-configuration.html#volumes-in-the-runnersdocker-section).
+:::
 
 To check if it's working, run `sudo su gitlab-runner` to switch to that user and run `docker info` and `docker image list` and check if it's works. If yes, then your user is part of the Docker group.
 
@@ -785,14 +780,51 @@ lint:
   extends: [.dagger]
   script:
     - dagger call --source src --config .config lint
+format:
+  extends: [.dagger]
+  script:
+    - dagger call --source src --config .config format
+mypy:
+  extends: [.dagger]
+  script:
+    - dagger call --source src --config .config mypy
+ruff:
+  extends: [.dagger]
+  script:
+    - dagger call --source src --config .config ruff
 ```
 
 </details>
 
-And push the changes to GitLab. The presence of the `.gitlab-ci.yml` file will tells to GitLab to instantiate a pipeline after each commit and, here in our example, to start a job called `lint`.
+And push the changes to GitLab. The presence of the `.gitlab-ci.yml` file will tells to GitLab to instantiate a pipeline after each commit and, here in our example, to start the four jobs.
 
-:::info
+:::info Docker Socket Binding
 The provided example is using the technique called **Docker Socket Binding**: we don't need to define the `DOCKER_HOST` variable for instance as we can see in [the official Dagger documentation](https://docs.dagger.io/integrations/gitlab/#docker-executor). Indeed, if not specified, `DOCKER_HOST` is set to `unix:///var/run/docker.sock` ([doc](https://docs.gitlab.com/runner/configuration/advanced-configuration.html#the-runnersdocker-section)).
 
 Since we've shared the Docker daemon (`/var/run/docker.sock`) in our GitLab `/etc/gitlab-runner/config.toml` configuration file, we've allowed the CI to access to the socket.
 :::
+
+But, you can also use the asynchronous mode since we've implemented a `run-all` feature:
+
+<details>
+<summary>.gitlab-ci.yml</summary>
+
+```yaml
+.docker:
+  image: docker:latest
+  services:
+    - docker:${DOCKER_VERSION}-dind
+  variables:    
+    DOCKER_HOST: unix:///var/run/docker.sock # Docker Socket Binding
+.dagger:
+  extends: [.docker]
+  before_script:
+    - apk add curl
+    - curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=/usr/local/bin sh
+run-all:
+  extends: [.dagger]
+  script:
+    - dagger call --source src --config .config run-all
+```
+
+</details>

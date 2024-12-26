@@ -3,7 +3,7 @@ slug: github-connect-using-ssh
 title: Github - Connect your account using SSH and start to work with git@ protocol
 authors: [christophe]
 image: /img/github_tips_social_media.jpg
-tags: [github, ssh, tips]
+tags: [Github, ssh, tips]
 enableComments: true
 ---
 ![Github - Connect your account using SSH and start to work with git@ protocol](/img/github_tips_banner.jpg)

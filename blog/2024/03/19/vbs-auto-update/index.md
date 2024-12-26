@@ -3,7 +3,7 @@ slug: vbs-auto-update
 title: VBS - Auto update script
 authors: [christophe]
 image: /img/vbs_tips_social_media.jpg
-tags: [dos, github, vbs]
+tags: [dos, Github, vbs]
 enableComments: true
 ---
 ![VBS - Auto update script](/img/vbs_tips_banner.jpg)

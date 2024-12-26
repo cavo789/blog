@@ -3,7 +3,7 @@ slug: github-action
 title: GitHub - Use Actions to deploy this blog
 authors: [christophe]
 image: /img/github_tips_social_media.jpg
-tags: [docusaurus, github]
+tags: [docusaurus, Github]
 enableComments: true
 ---
 ![GitHub - Use Actions to deploy this blog](/img/github_tips_banner.jpg)

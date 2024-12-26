@@ -3,7 +3,7 @@ slug: github-retrieve-email
 title: Github - How to find email addresses for most users
 authors: [christophe]
 image: /img/github_tips_social_media.jpg
-tags: [github, tips]
+tags: [Github, tips]
 enableComments: true
 ---
 ![Github - How to find email addresses for most users](/img/github_tips_banner.jpg)
