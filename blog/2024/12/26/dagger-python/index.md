@@ -1,6 +1,6 @@
 ---
 slug: dagger-python
-title: Dagger.io - Using dagger to automate your Python workflows
+title: Dagger.io - Using dagger to automate your CI workflows
 authors: [christophe]
 image: /img/dagger_tips_social_media.jpg
 tags: [CI, dagger, Github, GitLab, pipeline, tip, workflow]
@@ -10,7 +10,7 @@ enableComments: true
 <!-- cspell:ignore hadolint,xvfz,aaaaaargh,dind -->
 <!-- markdownlint-disable-file MD010 -->
 
-![Dagger.io - Using dagger to automate your Python workflows](/img/dagger_tips_banner.jpg)
+![Dagger.io - Using dagger to automate your CI workflows](/img/dagger_tips_banner.jpg)
 
 **Be careful, it's a bomb.**  Docker has revolutionised the world; let's not be afraid to say it loud and clear, and most probably [Dagger.io](https://dagger.io/), created by the same people as Docker, will follow in its footsteps.
 
@@ -112,6 +112,10 @@ RUN set -e -x \
     && tar xvfz ${ARCHIVE} \
     && mv dagger /usr/local/bin/ \
     && rm -rf /tmp/
+
+WORKDIR /app/src
+
+ENTRYPOINT [ "/usr/local/bin/dagger" ]
 ```
 <!-- cspell:enable -->
 </details>
@@ -122,15 +126,14 @@ We need to build our image so let's run `docker build -t dagger_daemon -f .docke
 
 As said above, we need to create some stuff to *daggerize* our application.
 
-To do this, we have to run `dagger init` and since we're using a Docker image, the command to start is: `docker run -it --user root -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src -w /app/src dagger_daemon dagger init --sdk=python --source=./.pipeline`
+To do this, we have to run the `dagger init` command and since we're using a Docker image where `dagger` is the entry point, the command to start is: `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon init --sdk=python --source=./.pipeline`
 
 :::info Let's understand this long command line:
-
 * by using `-it` we will interact (if needed) with the container and we'll allocate a TTY terminal i.e. get the output of running command just like if we've started it on our machine,
 * you've to share your local `/var/run/docker.sock` with the container because Dagger will use Docker-in-Docker (aka `dind`) and for this reason, the container should be able to interact with your instance of Docker (`-v /var/run/docker.sock:/var/run/docker.sock`) and
-* you've to mount your local current folder with the container (`-v .:/app/src`) and make that folder the working directory in the container (`-w /app/src`).
+* you've to mount your local current folder with the container (`-v .:/app/src`).
 * `dagger_daemon` is the name of our image
-* `dagger init --sdk=python --source=./.pipeline` is the command to start
+* `init --sdk=python --source=./.pipeline` is the Dagger command to start
 :::
 
 It'll take around two minutes to download and initialise Dagger (for the first time). By looking at your file system, you'll see, oh, the owner is `root` and not you.
@@ -167,9 +170,9 @@ Let's look at the tree structure:
 
 ## Calling functions
 
-Start a shell session in the container by running `docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src -w /app/src dagger_daemon /bin/bash`.
+Remember, `dagger` has been defined as our entrypoint (see our `Dockerfile`) so, to get the help scree of Dagger, simply run `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call --help`.
 
-And, then, run `dagger call --help`. You'll get the list of functions available (this first time it'll take more time since Dagger needs to build the pipeline):
+You'll get the list of functions available (this first time it'll take more time since Dagger needs to build the pipeline):
 
 ```text
 Setup tracing at https://dagger.cloud/traces/setup. To hide: export STOPIT=1
@@ -201,7 +204,7 @@ async def lint(self, source: str) -> str:
     return f"\033[33mI'm inside your Dagger pipeline and I'll lint {source}\033[0m"
 ```
 
-Save the file and run `dagger call --help` again. See, we've our new function:
+Save the file and run `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call --help` again. See, we've our new function:
 
 ```text
 USAGE
@@ -213,7 +216,7 @@ FUNCTIONS
   lint             Run Pylint on the codebase.
 ```
 
-And we also get the list of parameters for our lint function `dagger call lint --help`:
+And we also get the list of parameters for our lint function `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call lint --help`:
 
 ```text
 USAGE
@@ -227,12 +230,13 @@ Now, back to the `.pipeline/src/src/main.py` and replace the entire file (we don
 
 ```python
 import dagger
-from dagger import dag, function, object_type
+from dagger import dag, DefaultPath, Directory, function, object_type
+from typing import Annotated
 
 @object_type
 class Src:
     @function
-    async def lint(self, source: dagger.Directory) -> str:
+    async def lint(self, source: Annotated[Directory, DefaultPath("src")]) -> str:
         """
         Run Pylint on the codebase.
         """
@@ -249,9 +253,9 @@ class Src:
         )
 ```
 
-We'll thus remove the two sample functions and we'll implement our linting function.
+We'll thus remove the two sample functions and we'll implement our linting function. We'll also define the `src` folder as the default one so we don't need to add `--source src` anymore when calling dagger.
 
-By running `dagger call lint --source src` we'll then ask the pipeline to run Pylint on to the `src` folder.
+By running `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call lint` we'll then ask the pipeline to run our linter (Pylint here) on our current folder.
 
 Since it's the first time, Dagger will need to make some initialisations (like installing PyLint) then we'll get the output:
 
@@ -277,7 +281,7 @@ else:
 
 </details>
 
-Running `dagger call lint --source src` again will congratulate us now with a score of 10/10.
+Running `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call lint` again will congratulate us now with a score of 10/10.
 
 Edit the `src/main.py` file again, f.i. make a typo by updating the line `else:` and remove the final `:` and the linter won't be happy anymore.
 
@@ -285,19 +289,15 @@ Edit the `src/main.py` file again, f.i. make a typo by updating the line `else:`
 We've successfully created our first task and we've successfully fired it on our machine.
 :::
 
-### Running the lint task from our host
-
-Remember: we've first started an interactive shell to jump in the Docker container then we've started the lint function.
-
-We can do this directly from our host by running: `docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src -w /app/src dagger_daemon dagger call lint --source src`
-
-It becomes quite difficult to remember all these commands, no? Let's simplify this by creating a `makefile`.
-
 ## Create a makefile
+
+It becomes quite difficult to remember all these `docker xxx` commands, no? Let's simplify this by creating a `makefile`.
 
 Thanks the following `makefile`, we'll be able to just run `make build` to create our Dagger Docker image and `make lint` to run the lint function.
 
-You'll also have a `make bash` action to jump in an interactive shell. Easy no?
+You'll also have a `make bash` action to jump in an interactive shell (type `exit` to quit the shell and comes back to your host console). Easy no?
+
+And `make help` will show the Dagger help screen.
 
 <details>
 <summary>makefile</summary>
@@ -312,11 +312,15 @@ build:
 
 .PHONY:bash
 bash:
-	docker run -it ${DOCKER_SOCK} -v .:/app/src -w /app/src ${DAEMON_NAME} /bin/bash
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src --entrypoint /bin/bash ${DAEMON_NAME}
+
+.PHONY:help
+help:
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call --help
 
 .PHONY:lint
 lint:
-	docker run -it ${DOCKER_SOCK} -v .:/app/src -w /app/src ${DAEMON_NAME} dagger call lint
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call lint
 ```
 
 </details>
@@ -330,17 +334,18 @@ Edit the `.pipeline/src/src/main.py` file and add this new function:
 
 ```python
 import dagger
-from dagger import dag, function, object_type
-
-# cspell:ignore workdir
+from dagger import dag, DefaultPath, Directory, function, object_type
+from typing import Annotated
 
 @object_type
 class Src:
     @function
-    async def lint(self, source: dagger.Directory) -> str:
+    async def lint(self, source: Annotated[Directory, DefaultPath("src")]) -> str:
         """
         Run Pylint on the codebase.
         """
+        print(f"\033[33mI'm inside your Dagger pipeline and I'll lint {source}\033[0m")
+
         return await (
             dag.container()
             .from_("python:3.13-slim")
@@ -353,7 +358,7 @@ class Src:
 
     # highlight-start
     @function
-    async def format(self, source: dagger.Directory) -> str:
+    async def format(self, source: Annotated[Directory, DefaultPath("src")]) -> str:
         """
         Format the codebase using Black.
         """
@@ -371,7 +376,7 @@ class Src:
 
 </details>
 
-So, from now, you can run `dagger call format --source src` (from inside the container) or `docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src -w /app/src dagger_daemon dagger call format --source src` (from your host).
+So, from now, you can run `dagger call format` (from inside the container i.e. run `make bash` first) or `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call format` (from your host).
 
 ## Towards the universe and infinity
 
@@ -417,8 +422,11 @@ RUN set -e -x \
 # anyio is required by Python to be able to run tasks concurrently and asynchronously
 RUN set -e -x \
     pip install anyio
-    
 # highlight-end
+
+WORKDIR /app/src
+
+ENTRYPOINT [ "/usr/local/bin/dagger" ]
 ```
 <!-- cspell:enable -->
 </details>
@@ -437,18 +445,24 @@ import anyio
 from typing import Annotated
 
 import dagger
-from dagger import Doc, dag, function, object_type, Directory
+from dagger import DefaultPath, Doc, dag, function, object_type, Directory
 
 @object_type
 class Src:
 
     # This is the directory where source files are located (f.i. "/app/src")
-    # Initialised on the command line like this: "dagger call xxx --source src xxx"
-    source: Annotated[Directory, Doc("The source folder; where the codebase is located")] 
+    source: Annotated[
+        Directory,
+        Doc("The source folder; where the codebase is located"),
+        DefaultPath("src")
+    ]
 
-    # This is the directory where configuration files are located (f.i. "/app/.config")   
-    # Initialised on the command line like this: "dagger call xxx --config .config xxx"
-    config: Annotated[Directory, Doc("The folder container configuration files")]
+    # This is the directory where configuration files are located (f.i. "/app/.config")
+    config: Annotated[
+        Directory,
+        Doc("The folder container configuration files"),
+        DefaultPath(".config")
+    ]
 
     @function
     async def lint(self) -> str:
@@ -536,8 +550,17 @@ This new file comes with a lot of changes:
 We've defined two global variables called `source` and `config`. So, now, we don't pass the `source` folder to the lint function anymore (local parameter) but just need to set it once (global parameter). We've also add a `config` folder to be able to tell Dagger where our configuration files are stored.
 
 ```python
-source: Directory
-config: Directory
+source: Annotated[
+    Directory,
+    Doc("The source folder; where the codebase is located"),
+    DefaultPath("src")
+]
+
+config: Annotated[
+    Directory,
+    Doc("The folder container configuration files"),
+    DefaultPath(".config")
+]
 ```
 
 We've a two new functions called `mypy` and `ruff` and a last one called `run_all`:
@@ -680,37 +703,40 @@ DAEMON_NAME=dagger_daemon
 DOCKER_SOCK=-v /var/run/docker.sock:/var/run/docker.sock
 
 .PHONY:build
-build: 
+build:
 	docker build -t ${DAEMON_NAME} -f .docker/Dockerfile .
+
+.PHONY:bash
+bash:
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src --entrypoint /bin/bash ${DAEMON_NAME}
+
+.PHONY:format
+format:
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call format
+
+.PHONY:help
+help:
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call --help
+
+.PHONY:lint
+lint:
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call lint
+
+.PHONY:mypy
+mypy:
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call mypy
 
 .PHONY:remove
 remove:
 	docker rmi --force ${DAEMON_NAME}
 
-.PHONY:bash
-bash:
-	docker run -it ${DOCKER_SOCK} -v .:/app/src -w /app/src ${DAEMON_NAME} /bin/bash
-
-.PHONY:lint
-lint:
-	docker run -it ${DOCKER_SOCK} -v .:/app/src -w /app/src ${DAEMON_NAME} dagger call --source src --config .config lint
-
-.PHONY:format
-format:
-	docker run -it ${DOCKER_SOCK} -v .:/app/src -w /app/src ${DAEMON_NAME} dagger call --source src --config .config format
-
-.PHONY:mypy
-mypy:
-	docker run -it ${DOCKER_SOCK} -v .:/app/src -w /app/src ${DAEMON_NAME} dagger call --source src --config .config mypy
-
 .PHONY:ruff
 ruff:
-	docker run -it ${DOCKER_SOCK} -v .:/app/src -w /app/src ${DAEMON_NAME} dagger call --source src --config .config ruff
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call ruff
 
 .PHONY:run-all
 run-all:
-	docker run -it ${DOCKER_SOCK} -v .:/app/src -w /app/src ${DAEMON_NAME} dagger call --source src --config .config run-all
-
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call run-all
 ```
 
 </details>
@@ -769,7 +795,7 @@ Now, please create a file called `.gitlab-ci.yml` with this content:
   image: docker:latest
   services:
     - docker:${DOCKER_VERSION}-dind
-  variables:    
+  variables:
     DOCKER_HOST: unix:///var/run/docker.sock # Docker Socket Binding
 .dagger:
   extends: [.docker]
@@ -814,7 +840,7 @@ But, you can also use the asynchronous mode since we've implemented a `run-all` 
   image: docker:latest
   services:
     - docker:${DOCKER_VERSION}-dind
-  variables:    
+  variables:
     DOCKER_HOST: unix:///var/run/docker.sock # Docker Socket Binding
 .dagger:
   extends: [.docker]
