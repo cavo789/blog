@@ -3,9 +3,8 @@ slug: python-qa
 title: Python - Code Quality tools
 authors: [christophe]
 image: /img/python_tips_social_media.jpg
-tags: [devcontainer, docker, python]
+tags: [autoflake, black, code quality, devcontainer, docker, isort, mypy, prospector, pydocstyle, pylint, pyright, python, ruff, vulture]
 enableComments: true
-draft: true
 ---
 
 <!-- markdownlint-disable-file MD010 -->
@@ -30,22 +29,22 @@ I'm a big fan of static code quality tools and here is my short list:
 >
 > Pylint is a static code analyser for Python 2 or 3. The latest version supports Python 3.9.0 and above.
 >
-> Pylint analyses your code without actually running it. It checks for errors, enforces a coding standard, looks for code smells, and can make suggestions about how the code could be refactored
+> Pylint analyses your code without actually running it. It checks for errors, enforces a coding standard, looks for code smells, and can make suggestions about how the code could be refactored.
 
-The first thing first: make sure your Python code has no syntax error like a bad indentation, you didn't forgot a `:` at the end of a control (like an `if` or `for` statement, ...)
+The first thing first: make sure your Python code has no syntax error like a bad indentation, you didn't forget a `:` at the end of a control (like an `if` or `for` statement, ...)
 
-I'm running it like this: `pylint . --rcfile .pylintrc`.
+I'm running it like this: `pylint . --rcfile .config/.pylintrc`.
 
 <details>
 
-<summary>Example of a `.pylintrc` file</summary>
+<summary>Example of a `.config/.pylintrc` file</summary>
 
 ```text
 [MASTER]
 ; Pickle collected data for later comparisons.
 persistent=yes
 
-; List of plugins (as comma separated values of python modules names) to load,
+; List of plugins (as comma-separated values of python modules names) to load,
 ; usually to register additional checkers.
 load-plugins=
     pylint.extensions.check_elif,
@@ -138,11 +137,11 @@ Note: I've also configured my VSCode with the settings below so, while I'm codin
 
 This tool will check the quality of your comments like the one of your functions description and f.i. make sure if you've a function with two arguments that your description explain these two arguments (there is a control about the name and the type).
 
-I'm running it like this: `pydocstyle --config=.pydocstyle`
+I'm running it like this: `pydocstyle --config=.config/.pydocstyle`
 
 <details>
 
-<summary>Example of a `.pydocstyle` file</summary>
+<summary>Example of a `.config/.pydocstyle` file</summary>
 
 ```text
 [pydocstyle]
@@ -162,11 +161,11 @@ match = .*\.py
 >
 > Python is a dynamic language, so usually you'll only see errors in your code when you attempt to run it. Mypy is a static checker, so it finds bugs in your programs without even running them!
 
-I'm running it like this: `mypy --config-file .mypy.ini .`
+I'm running it like this: `mypy --config-file .config/.mypy.ini .`
 
 <details>
 
-<summary>Example of a `.mypy.ini` file</summary>
+<summary>Example of a `.config/.mypy.ini` file</summary>
 
 ```text
 [mypy]
@@ -194,11 +193,11 @@ python_version = 3.13
 >
 > Pyright is a full-featured, standards-based static type checker for Python. It is designed for high performance and can be used with large Python source bases.
 
-I'm using it like this: `pyright --project pyright.json`
+I'm using it like this: `pyright --project .config/pyright.json`
 
 <details>
 
-<summary>Example of a `pyright.json` file</summary>
+<summary>Example of a `.config/pyright.json` file</summary>
 
 ```json
 {
@@ -221,11 +220,11 @@ I'm using it like this: `pyright --project pyright.json`
 >
 > Black makes code review faster by producing the smallest diffs possible. Blackened code looks the same regardless of the project you’re reading. Formatting becomes transparent after a while and you can focus on the content instead.
 
-I'm using it like this: `black --config black.toml .`
+I'm using it like this: `black --config .config/black.toml .`
 
 <details>
 
-<summary>Example of a `black.toml` file</summary>
+<summary>Example of a `.config/black.toml` file</summary>
 
 ```toml
 [tool.black]
@@ -246,11 +245,11 @@ target-version = ['py313']
 >
 > Inspects Python source files and provides information about type and location of classes, methods etc
 
-I'm using it like this: `prospector . --profile prospector.yaml --pylint-config-file .pylintrc`
+I'm using it like this: `prospector . --profile .config/prospector.yaml --pylint-config-file .config/.pylintrc`
 
 <details>
 
-<summary>Example of a `prospector.yaml` file</summary>
+<summary>Example of a `.config/prospector.yaml` file</summary>
 
 ```yaml
 strictness: high
@@ -307,7 +306,7 @@ I'm using it like this: `ruff format --cache-dir /tmp/ruff --config .config/pypr
 
 <details>
 
-<summary>Example of a `pyproject.toml` file</summary>
+<summary>Example of a `.config/pyproject.toml` file</summary>
 
 ```toml
 [tool.ruff]
@@ -336,7 +335,7 @@ qa:
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " Step  Tool" "Run?" "Techno" "Description"
 	@echo "--------------------------------------------------------------------------------------------------------------"
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 1/9  RUNNING make Pylint" "Lint python scripts using Pylint (https://pypi.org/project/pylint/)"
-	@pylint . --rcfile .pylintrc
+	@pylint . --rcfile .config/.pylintrc
 
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 2/9  RUNNING make Autoflake" "Detect unused variables and unused imports (https://pypi.org/project/autoflake/)"
 	@autoflake --remove-unused-variables --remove-all-unused-import --recursive .
@@ -348,19 +347,19 @@ qa:
 	@vulture --min-confidence 100 .
 
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 5/9  RUNNING make Pydocstyle" "pydocstyle is a static analysis tool for checking compliance with Python docstring conventions (https://www.pydocstyle.org/en/stable/)"
-	@pydocstyle --config=.pydocstyle
+	@pydocstyle --config=.config/.pydocstyle
 
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 6/9  RUNNING make Mypy" "Mypy is a program that will type check your Python code (https://github.com/python/mypy/)"
-	@mypy --config-file .mypy.ini .
+	@mypy --config-file .config/.mypy.ini .
 
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 7/9  RUNNING make Pyright" "Pyright is a full-featured, standards-based static type checker for Python (https://github.com/microsoft/pyright)"
 	@pyright --project pyright.json
 
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 8/9  RUNNING make Black" "Format the script using Black (https://black.readthedocs.io/en/stable/)"
-	@black --config black.toml .
+	@black --config .config/black.toml .
 
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n\n" " 9/9  RUNNING make Prospector" "Inspects Python source files and provides information about type and location of classes, methods, ... (https://github.com/prospector-dev/prospector/)"
-	@prospector . --profile prospector.yaml --pylint-config-file .pylintrc
+	@prospector . --profile .config/prospector.yaml --pylint-config-file .config/.pylintrc
     
 	@printf "%s\n" "CONGRATULATIONS!!!"
 	@printf "%s\n" "Not the slightest error or notice detected, that's .. amazing!"
