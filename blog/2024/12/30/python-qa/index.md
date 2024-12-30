@@ -326,7 +326,7 @@ But why have I numbered the tools from 1 to 9 and why this order? That's because
 
 The first tool is `Pylint` and that make sense: there is no need to go further if the syntax is incorrect. The second tool is `Autoflake` and it make sense too to remove unused variables and imports before.
 
-I'm using a [makefile](/blogs/tags/makefile) with an action called `qa` like this:
+I'm using a [makefile](/blog/tags/makefile) with an action called `qa` like this:
 
 
 ```makefile
