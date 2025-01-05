@@ -3,9 +3,8 @@ slug: docker-init-php-apache
 title: Using Docker init to quickly dockerize your PHP application
 authors: [christophe]
 image: /img/docker_init_tips_social_media.jpg
-tags: [docker, tips]
+tags: [aesecure, apache, docker, php, tips]
 enableComments: true
-draft: true
 ---
 <!-- cspell:ignore dbmdl -->
 ![Using Docker init to quickly dockerize your PHP application](/img/docker_init_tips_header.jpg)
@@ -22,6 +21,8 @@ The `docker init` command is the one you're looking for.
 
 <!-- truncate -->
 
+## Get some scripts
+
 As an illustration, I'll use my [aeSecure Quickscan](https://github.com/cavo789/aesecure_quickscan) project already introduced in my blog (see my [aeSecure - QuickScan - Free viruses scanner](/blog/aesecure-quickscan) post).
 
 This is a Web application that scans files (a local website) for patterns that might indicate the presence of a virus.
@@ -37,7 +38,9 @@ mkdir -p /tmp/aesecure_quickscan && cd $_
 curl https://raw.githubusercontent.com/cavo789/aesecure_quickscan/master/aesecure_quickscan.php -o index.php
 ```
 
-You've now a local version of the script.
+You've now a local version of the script. It's a single `index.php` script; nothing more at this stage.
+
+## Docker init
 
 Just start `docker init` in the console:
 
@@ -45,7 +48,7 @@ Just start `docker init` in the console:
 
 As we can see, Docker init has already detected the presence of a PHP file so he's suggesting **PHP with Apache**. Great, just press <kbd>Enter</kbd>.
 
-The next question will be about the version of PHP, you can press <kbd>Enter</kbd> to use the latest one or just type the desired version (f.i. `8.2`).
+The next question will be about the version of PHP, type the one you wish (f.i. `8.2`) and press <kbd>Enter</kbd>.
 
 The third question will be about the relative path to use for the project. In our case, our PHP script is located in the root folder of our project (not in f.i.`/app`) so just press <kbd>Enter</kbd>.
 
@@ -121,6 +124,10 @@ Docker has also foreseen to rename the standard `php.ini-production` file as `ph
 The last command is to switch to the `www-data` user (so the container will not be running as `root`).
 
 Refers to [https://docs.docker.com/go/dockerfile-reference/](https://docs.docker.com/go/dockerfile-reference/) for more explanation.
+
+### README.Docker.md
+
+As a remember of how to use your dockerized application, this file will give you the essentials commands to run.
 
 ## Generated files are yours
 

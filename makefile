@@ -140,6 +140,7 @@ upgrade: ## Upgrade docusaurus and npm dependencies
 	@clear
 	@printf $(_YELLOW) "Upgrade docusaurus and npm dependencies"
 	docker run --rm -it --user root -v $${PWD}/:/project -w /project node /bin/bash -c "yarn upgrade"
+	docker run --rm -it --user root -v $${PWD}/:/project -w /project node /bin/bash -c "yarn upgrade @docusaurus/core@latest @docusaurus/plugin-ideal-image@latest @docusaurus/plugin-sitemap@latest @docusaurus/preset-classic@latest @docusaurus/theme-search-algolia@latest @docusaurus/module-type-aliases@latest @docusaurus/types@latest"
 	@printf $(_YELLOW) "Current version of docusaurus"
 	docker run --rm -it -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus -V"
 	
