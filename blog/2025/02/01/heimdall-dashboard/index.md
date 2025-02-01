@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 tags: [docker]
 enableComments: true
-draft: true
 ---
 ![Heimdall - Web dashboard](/img/docker_tips_banner.jpg)
 
