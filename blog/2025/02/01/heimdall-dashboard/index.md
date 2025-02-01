@@ -57,7 +57,7 @@ services:
 </details>
 
 :::note 
-In the code here above, I've preferred the syntax `PUID=${USER_ID:-1000}` and `PGID=${GROUP_ID:-1000}` instead of just hardcoding `1000`: on my computer, my Liux user id is `1002`; not `1000` so I prefer to use a variable and, if the variable isn't defined, then use `1000` as default. Same for the group id.
+In the code here above, I've preferred the syntax `PUID=${USER_ID:-1000}` and `PGID=${GROUP_ID:-1000}` instead of just hardcoding `1000`: on my computer, my Linux user id is `1002`; not `1000` so I prefer to use a variable and, if the variable isn't defined, then use `1000` as default. Same for the group id.
 :::
 
 ## Running the dashboard
@@ -119,7 +119,7 @@ Heimdall will extract the favicon in different sizes. I click on the one I wish.
 
 ![Adding Docker](./images/adding_docker.png)
 
-Automatically, Heimdall has fill in some properties in the bottom part of the screen. I'll remove `Home dashboard` from the `Tags` area and, instead, type `Docker` i.e. the tag I've previously created.
+Automatically, Heimdall has filled in some properties in the bottom part of the screen. I'll remove `Home dashboard` from the `Tags` area and, instead, type `Docker` i.e. the tag I've previously created.
 
 ![Finilazing adding Docker](./images/application_docker.png)
 
@@ -140,6 +140,10 @@ It's just something like a snippet. If I select `Bitwarden` from there, Heimdall
 I'll point the URL to `https://vault.bitwarden.com/#/login` and I'll keep `Home dashboard` as tag.
 
 ![With Bitwarden](./images/bitwarden.png)
+
+Here is the dashboard I'm using at work. Since it's so easy to add new items; I'm doing changes to it as soon as I'm working on a new project.
+
+![Final Heimdall dashboard](./images/final.png)
 
 ### More customisations
 
