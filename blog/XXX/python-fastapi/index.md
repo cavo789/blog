@@ -1,19 +1,21 @@
 ---
 slug: python-fastapi
-title: Python - Create your JSON API in Python in one minute
+title: Python - Fast API - Create your JSON API in Python in one minute
 authors: [christophe]
 image: /img/python_tips_social_media.jpg
 enableComments: true
 draft: true
 tags: [docker, fastapi, python]
 ---
-![Python - Create your JSON API in Python in one minute](/img/python_tips_banner.jpg)
+![Python - Fast API - Create your JSON API in Python in one minute](/img/python_tips_banner.jpg)
+
+> TLDR: one minute is the time you'll need to copy/paste two files' content and to run one Docker statement.
 
 Sounds crazy but it's TRUE. You'll just need one minute to create the example provided here below i.e. create your project's directory, create two files and run two Docker statements and ... it's done.
 
-As PHP programmer, when I've seen my first blog article about FastAPI I thought **Nodidju ! Ç' n'est nén pussibe** (*For Christ's sake! It can't be true*).
+As PHP programmer, when I've taken time to read a blog article about FastAPI I thought **Nodidju ! Ç' n'est nén pussibe** (*For Christ's sake! It can't be true*).
 
-With just two files (JUST TWO FILES!), we'll build our own Docker image with Python and FastAPI installed and, in the second file, our REST API. No more than two!
+With just two files, we'll build our own Docker image with Python and FastAPI installed and to code our REST API application. No more than two!
 
 Impossible to not try immediately and ... wow ... that's TRUE!
 
@@ -21,28 +23,32 @@ Impossible to not try immediately and ... wow ... that's TRUE!
 
 ## Creating our first API
 
-Like always, we'll build a fully working example.
+Like always, we'll build a fully working example. It couldn't be simpler; you'll see.
 
 Please create a dummy folder and jump in it: `mkdir /tmp/fastapi && cd $_`.
 
-In that folder, we've to create our `Dockerfile` based on Python and we'll install FastAPI.
+In that folder, please create a new file called `Dockerfile` with the following content:
 
 <details>
 
 <summary>Dockerfile</summary>
 
 ```dockerfile
-FROM python:3.13-slim
+# We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
+FROM python:slim
 
+# We'll define the default folder in the image to /app
 WORKDIR /app
 
+# The only dependency we need is fastapi
 RUN pip install --no-cache-dir fastapi[standard]
 
+# We need to copy our Python script in the image
 COPY main.py main.py
 
+# And we'll run FastAPI and call our script. We'll expose the script on port 82
 CMD ["fastapi", "run", "main.py", "--port", "82"]
 ```
-
 </details>
 
 The final image size will be about 184MB i.e. almost nothing.
@@ -87,19 +93,111 @@ Once done, just surf to `http://127.0.0.1:82` and you'll obtain your first JSON 
 
 ![Hello World](./images/hello_world.png)
 
+## Automated documentation of your API
+
 And it's just the beginning: FastAPI comes with a self-documented API based on the OpenAPI schema.
 
 Please jump to `http://127.0.0.1:82/docs` and you'll see it in action:
 
-![Swagger UI](./images/swagger_ui.png)
+![Automated documentation - Swagger UI](./images/doc.png)
 
-![Running our entrypoint](./images/swagger_ui_execute.png)
+There is an second, alternative template called ReDoc. You can access it using the `redoc` endpoint i.e. `http://127.0.0.1/redoc`:
 
-## Joke generator
+![Automated documentation - Redoc](./images/redoc.png)
 
-Please return to the console and press <kbd>CTRL</kbd>+<kbd>C</kbd> to stop the running container.
+## Let's play - Creating a joke generator
 
-We'll update the Python script like this:
+We'll update build a joke generator script. Our objective will be to get a random joke or a specific one (like *Give me the third joke you know*). 
+
+For this, we'll update our `main.py` script and because we'll probably make more than one change, we'll mount our host folder to the container.
+
+Why? Mounting our folder inside the container will allow us to make changes to the script and just refresh the web page to see the change.
+
+The only thing we need to do is to run our container like this: `docker run -v .:/app -p 82:82 python-fastapi` ... but it didn't work as expected.
+
+:::info FastAPI is using Uvicorn under the hood
+Uvicorn is a web server implementation for Python. Uvicorn has a built-in cache mechanism so even if we've updated the source of our `main.py` script, we'll still get the old version.
+
+We should start Uvicorn with a "hot reload" mechanism.
+:::
+
+### Recreating the Docker image for hot reload
+
+First stop the running container: go back to your console and press <kbd>CTRL</kbd>+<kbd>C</kbd> to stop the running container. We'll also remove the container. You can do this by going to `Docker Desktop`; click on the `Containers` menu and kill your *Python - Fastapi* container. Remove also the image called `python-fastapi`.
+
+:::note
+`python-fastapi` is the name of the Docker image we've built earlier.
+:::
+
+If you prefer the command line, you can achieve the same result by running these two commands:
+
+```bash
+docker rm $(docker ps -aq --filter "ancestor=python-fastapi")
+docker rmi python-fastapi --force
+```
+
+Now, please copy/paste the following content to your existing `Dockerfile`:
+
+<details>
+
+<summary>Dockerfile</summary>
+
+```dockerfile
+# We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
+FROM python:slim
+
+# We'll define the default folder in the image to /app
+WORKDIR /app
+
+# The only dependency we need is fastapi
+RUN pip install --no-cache-dir fastapi[standard]
+
+# We need to copy our Python script in the image
+COPY main.py main.py
+
+// highlight-start
+# Run Uvicorn with hot reload so any changes to our main.py script will force
+# the server to invalidate the cache and refresh the page.
+CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "82"]
+// highlight-end
+```
+
+</details>
+
+Rebuild the image and run a new container by running these commands:
+
+OK, we'll run the container again but, now, with a volume: 
+
+```bash
+docker build -t python-fastapi . && docker run -v .:/app -p 82:82 python-fastapi
+```
+
+Now with a Docker image with hot reload and we've mounted our folder in the container.
+
+Please edit your `main.py` script like this:
+
+<details>
+
+<summary>main.py</summary>
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    // highlight-next-line
+    return {"Hello": "Belgium!"}
+```
+
+</details>
+
+Refresh your web page, you'll see Hello Belgium!.  Change your `main.py` and replace `Belgium!` by `France`. Reload your web page; you'll see Hello France. So, nice, we've a hot reload and we can really start to play.
+
+### Our joke generator
+
+We'll update our `main.py` script like this:
 
 ```main.py
 // highlight-next-line
@@ -125,8 +223,8 @@ def read_root():
     from fastapi import FastAPI
 
 // highlight-start
-@app.get("/joke")
-async def get_joke():
+@app.get("/jokes")
+async def get_jokes():
     """
     Returns a random joke from the list.
     """
@@ -141,33 +239,49 @@ def read_item(joke_id: int):
         return {"joke": jokes[joke_id]}
     except IndexError:
         return {"error": f"Joke with ID {joke_id} not found."}, 404
-
-@app.get("/joke")
-async def get_joke():
-    """
-    Returns a random joke from the list.
-    """
-    return {"joke": choice(jokes)}
-
 // highlight-end
 ```
 
 You immediately see it I think:
 
-* I've defined an array with five jokes;
-* I've defined a new route called `/joke` and that one will display a random joke 
+* I've defined an array with five, hardcoded, jokes;
+* I've defined a new route called `/jokes` and that one will display a random joke 
 * And finally I've defined a `jokes/{joke_id}` to be able to target a specific joke (like "Give me the second joke you know").
+
+:::info Use an external file instead of hardcoding jokes
+As an exercise; just remove the initialisation part of the  `jokes` array and, instead, read jokes from a text file. It would be really easy to do.
+:::
+
+Go back to your browser and surf to the `jokes` endpoint (`http://127.0.0.1:82/jokes`) and, hop, you've a random joke.
+
+![Getting a random joke](./images/random_joke.png)
+
+Just refresh the page; again and again. Every time you'll get a random joke (from a list of 5).
+
+If you want a specific one, just put an ID after like `http://127.0.0.1:82/jokes/1`
+
+![A specific joke](./images/specific_joke.png)
 
 :::note
 Please note that the array start at position 0 so the first joke is this one: `http://127.0.0.1:82/jokes/0`.
 :::
 
-And looking back to the documentation; we've now three routes and, take a look, the Python docstring is used to describe the route.
+#### Our jokes endpoints are documented automatically
 
-![Swagger UI - With new routes](./images/swagger_jokes_included.png)
+And looking back to the documentation (`http://127.0.0.1:82/docs`); we've now three routes and, take a look, the Python docstring is used to describe the route.
+
+![Swagger UI - With new routes](./images/doc_with_jokes.png)
 
 Really, really impressive!
+
+:::tip Docs are interactive
+And, more impressive, you can play directly from the documentation i.e. you can run the `jokes` endpoint. There is a button *Try it out* then *Execute* to see the endpoint in action.
+
+More info [https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-docs](https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-docs)
+:::
 
 ## Discover FastAPI
 
 Don't wait any longer, go to [https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/) to see more examples.
+
+Also read the long tutorial on [Real Python - Using FastAPI to Build Python Web APIs](https://realpython.com/fastapi-python-web-apis/).
