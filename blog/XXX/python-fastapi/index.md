@@ -213,15 +213,7 @@ jokes = [
     "What do you call 8 hobbits? A hobbyte",
     "What is this [“hip”, ”hip”]? hip hip array!"
 ]
-// highlight-end
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-    from fastapi import FastAPI
-
-// highlight-start
 @app.get("/jokes")
 async def get_jokes():
     """
