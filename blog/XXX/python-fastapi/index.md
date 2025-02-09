@@ -4,7 +4,6 @@ title: Python - Fast API - Create your JSON API in Python in one minute
 authors: [christophe]
 image: /img/python_tips_social_media.jpg
 enableComments: true
-draft: true
 tags: [docker, fastapi, python]
 ---
 ![Python - Fast API - Create your JSON API in Python in one minute](/img/python_tips_banner.jpg)
@@ -187,7 +186,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    // highlight-next-line
+    # highlight-next-line
     return {"Hello": "Belgium!"}
 ```
 
