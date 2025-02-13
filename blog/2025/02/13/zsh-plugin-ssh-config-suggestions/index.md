@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/zsh_tips_social_media.jpg
 tags: [customization, linux, ssh, wsl, zsh]
 enableComments: true
-draft: true
 ---
 ![SSH - Autosuggestions with ZSH](/img/zsh_tips_banner.jpg)
 
@@ -20,8 +19,6 @@ So, I need to connect to my vault, in which I list all the information about app
 It would be pretty cool to run `ssh MyAmazingApp` no?
 
 <!-- truncate -->
-
-![What's the name server again?](./images/how_is_named_that_server.jpg)
 
 It should be really nice to be able to run `ssh AmazingApp` and hop, I'm connected on the server.
 
