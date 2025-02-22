@@ -90,7 +90,7 @@ services:
     environment:
       - MYSQL_DATABASE=${DB_NAME:-joomla}
       - MYSQL_PASSWORD=${DB_PASSWORD:-examplepass}
-      - MYSQL_RANDOM_ROOT_PASSWORD='1'
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-rootpass}
       - MYSQL_USER=${DB_USER:-joomla}
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
@@ -99,6 +99,21 @@ services:
     user: ${UID:-1000}:${GID:-1000}
     volumes:
       - ./db_data:/var/lib/mysql
+    networks:
+      - joomla_network
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: ${CONTAINER_PREFIX:-joomla}-phpmyadmin
+    restart: always
+    depends_on:
+      joomladb:
+        condition: service_healthy
+    ports:
+      - 8081:80
+    environment:
+      - PMA_HOST=joomladb
+      - PMA_PASSWORD=${DB_ROOT_PASSWORD:-rootpass}
     networks:
       - joomla_network
 
