@@ -5,31 +5,36 @@ authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 tags: [excel, ribbon, vba, vscode]
 enableComments: true
-draft: true
 ---
 ![MS Office - Load dropdown from Excel's range](/img/excel_tips_banner.jpg)
 
-In this article, we'll see how, very easily, we can load an Excel range into the ribbon as a dropdown.
+In this article, we'll see how, very easily, we can load an Excel range into a ribbon and display it inside a dropdown.
 
 The idea is to provide a list of values in a ribbon but to not have to hardcode values in the list but, just, to link to a range, anywhere in your workbook.
 
 I've used this technique in many of my Excel application's (i.e. Excel having VBA code).
 
-As example here, we'll create a list of YYYYMM in a worksheet and load that list in our custom ribbon.
+For this blog post, we'll create a list of periods (YYYYMM) in a worksheet and load that list in our custom ribbon.
+
+In this way, we could offer a nicer user experience by proposing a list and executing, for example, a query to a database to obtain the data for this period (or anything else).
 
 <!-- truncate -->
 
-First, create an empty workbook. Create a new sheet called f.i. `Params` with a list of values. For this article, let's create a list of periods:
+## Let's play
+
+First, create an empty workbook. Create then a new sheet called f.i. `Params` with a list of values. For this article, let's create a list of periods:
 
 ![The range](./images/range.png)
 
-Nothing difficult right now. To be flexible, please select the range and name it: `_rngParamsPeriod`.
+Nothing difficult right now. To be flexible, please select the range and name it: `_rngParamsPeriod`. This is much better to hardcode a range like `$A$2:$A$14` isn't it?
 
-Second things to do is to foresee a cell in your sheet where the selected value will be written i.e. when the user will select a value from the list, we'll ask Excel to put the selected value there. To do this, just click anywhere in a sheet (no matter which one) and create a new range (one cell) called `_Period`:
+Second things to do is to foresee a cell in your sheet where the selected value will be written i.e. when the user will select a value from the list, we'll ask Excel to put the selected value there. To do this, just click on the cell where you wish to see the selected period and name that cell `_Period`. On the image below, I'll select cell `$C$2` on the same sheet but it can be else where.
 
 ![The period range](./images/selected_period.png)
 
-Please save your Excel file let's say in `c:\temp\ribbon.xlsx`, then close the workbook.
+Time to save for the first time your Excel file let's say in `c:\temp\ribbon.xlsx`, then close the workbook.
+
+## Adding a ribbon
 
 Time to add our ribbon. To do this, just download this free tool: [https://bettersolutions.com/vba/ribbon/custom-ui-editor-download.htm](https://bettersolutions.com/vba/ribbon/custom-ui-editor-download.htm). You'll find an executable called `CustomUIEditor.exe`. Double-click on it to start the editor then open your `c:\temp\ribbon.xlsx` file:
 
@@ -67,11 +72,17 @@ You'll then have this:
 
 Save your changes and quit the editor.
 
-Double-click on your `c:\temp\ribbon.xlsx` file to start Excel and open the workbook again.
+## Time to add our VBA code
+
+From your explorer, double-click on your `c:\temp\ribbon.xlsx` file to start Excel and open the workbook again.
 
 You'll get an error message and it's perfectly normal: we still need to add some VBA code so just press on **Ok**.
 
 ![Error](./images/missing_code.png)
+
+:::info
+In our ribbon, we wrote, among other things, the following: `getItemCount="modToolbar_cbxPeriod.getItemCount"`. So, Excel is trying to run a function called `getItemCount` from a module called `modToolbar_cbxPeriod` and ... we don't have it yet.
+:::
 
 Press <kbd>ALT</kbd>-<kbd>F11</kbd> to open the VBE editor
 
@@ -85,7 +96,7 @@ In the right, main, part of the screen, please paste this code:
 
 <details>
 
-<summary>Content to paste in the `modToolbar_cbxPeriod` module</summary>
+<summary>Our modToolbar_cbxPeriod module</summary>
 
 <!-- cspell:disable -->
 ```vba
@@ -93,7 +104,7 @@ Option Explicit
 Option Base 0
 Option Compare Text
 
-' Name of the range in the workbook, witn the list of periods
+' Name of the range in the workbook, with the list of periods
 Private Const cRangeName = "_rngParamsPeriod"
 
 ' When a period will be selected from the ribbon, a "name"
@@ -200,8 +211,14 @@ End Sub
 
 We're almost done: we need to give a name to the sheet where the range is located. If you still remember the beginning of this blog post, we've added the range in a sheet called `Params` so, now in the VBE editor, just select the `Params` sheet as illustrated below (see 1.) and name the sheet `shParams` (see 2).
 
-Save the Excel workbook but, this time, with the `.xlsm` extension since the workbook contains VBA code.
+![Naming the sheet](./images/shParams.png)
 
-Time to test our feature: open the workbook again and, this time, your list has been populated and by selecting a value from the list, the value will be injected in your worksheet; ready to be used.
+:::caution You should now use the .xlsm extension
+Save the Excel workbook but, this time, with the `.xlsm` extension since the workbook contains VBA code. 
+:::
+
+Time to test our feature: close the workbook and re-open it again and, this time, your list has been populated and by selecting a value from the list, the value will be injected in your worksheet; ready to be used.
 
 ![Demo](./images/demo.png)
+
+[Want to keep playing with ribbons? Check out my other articles on the subject.](/blog/tags/ribbon)
