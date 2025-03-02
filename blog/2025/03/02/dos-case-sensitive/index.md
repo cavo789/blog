@@ -5,7 +5,6 @@ authors: [christophe]
 tags: [dos, tips]
 enableComments: true
 image: /img/dos_tips_social_media.jpg
-draft: true
 ---
 ![Enable case sensitivity for filenames under DOS](/img/dos_tips_banner.jpg)
 
