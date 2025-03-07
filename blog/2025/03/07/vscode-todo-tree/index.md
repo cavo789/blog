@@ -5,7 +5,6 @@ authors: [christophe]
 tags: [tips, vscode]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg
-draft: true
 ---
 ![Todo Tree in VSCode](/img/vscode_tips_banner.jpg)
 
