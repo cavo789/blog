@@ -1,12 +1,13 @@
 ---
 slug: vba-excel-sql-server-part-2
-title: MS Excel - Connect to a SQL Server database, run a query and get the results
+title: MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step
 authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 tags: [docker, excel, mssql-server, ssms, vba]
 enableComments: true
+draft: true
 ---
-![MS Excel - Connect to a SQL Server database, run a query and get the results](/img/excel_tips_banner.jpg)
+![MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step](/img/excel_tips_banner.jpg)
 
 In April 2024, I wrote a small [blog post](/blog/vba-excel-sql-server) about a VBA script that will connect to a MS SQL database, run a SELECT query to retrieve data and put them in an Excel worksheet.
 
