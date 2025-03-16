@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 tags: [docker, excel, mssql-server, ssms, vba]
 enableComments: true
-draft: true
 ---
 ![MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step](/img/excel_tips_banner.jpg)
 
