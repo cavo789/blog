@@ -2,12 +2,12 @@
 slug: behat-introduction
 title: Introduction to Behat
 authors: [christophe]
-image: ./images/behat_introduction_social_media.jpg
+image: /img/functional_testing_social_media.jpg
 tags: [bdd, behat, chrome, docker, mink, php, tests]
 enableComments: true
 ---
 <!-- cspell:ignore behat,skel,johndoe,chromedriver,gerkin,dmore,nohup,autoload -->
-![Introduction to Behat](./images/behat_introduction_banner.jpg)
+![Introduction to Behat](/img/functional_testing_banner.jpg)
 
 At work, I'm part of a team of PHP developers where we work together to create a very large proprietary application with a web interface.
 
