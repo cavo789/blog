@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/laravel_tips_social_media.jpg
 tags: [laravel, php, telescope]
 enableComments: true
-draft: true
 ---
 ![Laravel Telescope](/img/laravel_tips_banner.jpg)
 
