@@ -5,6 +5,7 @@ authors: [christophe]
 image: /img/functional_testing_social_media.jpg
 tags: [chrome, cypress, docker, javascript, node, tests]
 enableComments: true
+draft: true
 ---
 ![Introduction to Cypress](/img/functional_testing_banner.jpg)
 
