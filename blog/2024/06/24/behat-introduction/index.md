@@ -9,6 +9,8 @@ enableComments: true
 <!-- cspell:ignore behat,skel,johndoe,chromedriver,gerkin,dmore,nohup,autoload -->
 ![Introduction to Behat](/img/functional_testing_banner.jpg)
 
+> Also read my article about [Cypress](/blog/cypress)
+
 At work, I'm part of a team of PHP developers where we work together to create a very large proprietary application with a web interface.
 
 This application is developed using the Laravel framework and we use [PHPUnit](https://phpunit.de/index.html) and [Pest](https://pestphp.com/) to run our unit tests.

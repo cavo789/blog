@@ -5,9 +5,12 @@ authors: [christophe]
 image: /img/functional_testing_social_media.jpg
 tags: [chrome, cypress, docker, javascript, node, tests]
 enableComments: true
-draft: true
 ---
 ![Introduction to Cypress](/img/functional_testing_banner.jpg)
+
+You've created a website for yourself or for a client, and how can you be sure that it will works?  OK, at the time you were working on it, of course it was working; the search form, the contact form, the various links were all functional, but how can you be sure of this over time? Wouldn't it be useful to have a procedure that would allow you to run several so-called ‘functional’ tests to check that everything is still working?  This could be part of the maintenance contract you offer your customer. 
+
+What tool should you use for this type of requirement?
 
 Cypress is a front-end testing tool that empowers developers to automate functional tests directly within the browser. It enables actions like navigating web pages, interacting with elements, submitting forms, and asserting content or URL changes, streamlining end-to-end and integration testing.
 
@@ -19,7 +22,7 @@ It's really easy to use Cypress and writing tests is pretty straightforward.  Un
 
 ## Let's create some files and run a first test
 
-Create a temporary directory like `mkdir /tmp/cypress && cd $_`
+Create a temporary directory like `mkdir -p /tmp/cypress && cd $_`.
 
 Create the `package.json` file with the following content. The objective is to mention we need the `cypress` dependency and we'll define to commands, `open` and `run`.
 
@@ -123,7 +126,7 @@ If we look in VSCode our current project, it will look like this:
 
 ![Our Cypress project in VSCode](./images/vscode.png)
 
-To create our image and run Cypress, jump in a console and run this command: `docker build -t cypress-test . && docker run --rm cypress-test`.
+To create our image and run Cypress, jump in a console and run this command: `clear ; docker build -t cypress-test . && docker run --rm cypress-test`.
 
 If everything is running fine, you'll get this output:
 
@@ -266,7 +269,7 @@ CMD ["npx", "cypress", "run", "--browser", "chrome"]
 
 The script before will create a user called `johndoe` in the image (name didn't matter here) but, the most important thing is that the user will have a specific UID / GID.  
 
-These parameters are build arguments and we've to initialise them like this: `docker build --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) -t cypress-test .`
+These parameters are build arguments and we've to initialise them like this: `clear ; docker build --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) -t cypress-test .`
 
 :::tip
 The commands `id -u` and `id -g` will return the ID of our user (most probably `1000`) and his group ID (here too, more probably `1000`).
@@ -274,7 +277,7 @@ The commands `id -u` and `id -g` will return the ID of our user (most probably `
 
 It tells Docker to use our own user id and group id (the one we're using on our host) when building the image. So, in short, `johndoe` will be us i.e. if Docker create a file on our disk, the file will be owned by the user having the same UID / GID and thus, we.
 
-Now, this thing explained, we can run the full command like this: `docker build --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) -t cypress-test . && docker run --rm -v ./cypress:/app/cypress cypress-test`
+Now, this thing explained, we can run the full command like this: `clear ; docker build --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) -t cypress-test . && docker run --rm -v ./cypress:/app/cypress cypress-test`.
 
 We're still mounting our current `cypress` folder with the container thanks the `-v ./cypress:/app/cypress` flag but it's **a two-way direction**. Now, files created by Cypress in the container (in folder `/app/cypress`) will be copied on our disk too. And because we've taken time to create a specific user in the Docker image, it means files created by Docker will be owned by us.
 
