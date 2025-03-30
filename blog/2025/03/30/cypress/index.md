@@ -16,6 +16,8 @@ Cypress is a front-end testing tool that empowers developers to automate functio
 
 In june 2024, I've written an article about a PHP functional test tool called [Behat](/blog/behat-introduction), let's see how to proceed with Cypress which is a Javascript tool.
 
+<!-- truncate -->
+
 :::warning Spoiler alert
 It's really easy to use Cypress and writing tests is pretty straightforward.  Unlike Behat, which requires a lot more skill and a lot more work to set up, Cypress is quick to get to grips with; troubleshooting is greatly simplified by taking screenshots as soon as an error is encountered and Cypress takes care of waiting for a page to load completely, unlike Behat.
 :::
