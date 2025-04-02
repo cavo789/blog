@@ -238,6 +238,14 @@ Jump in the container once more: `docker compose up --detach --build && docker c
 
 And try `docker ps` again; it works. You can now have access to all Docker commands again like `docker image list`.
 
+:::warning Still didn't work?
+It should work. If not, please make sure you've the latest Docker version (the one I've used for this tutorial is Docker Desktop v4.32.0).
+
+Inside your container, please run `ls -alh /var/run/docker.sock` to look at the permissions of the Docker socket inside the container. You'll see the file is owned by the `root` user **BUT SHOULDN'T BE** owned by `root`. If you see `root` for both the user and the group, you've find why it didn't work. Your unprivileged used isn't member of the `root` group but he's well member of the `docker` group (the one having group id `1001`).
+
+By running `ls -alh /var/run/docker.sock`, you should see `1001` (or `docker`) for the group.
+:::
+
 ### What is this group 1001?
 
 As said, to be able to run dind as a unprivileged user, you should be a member of the `docker` group on the host (not the `docker` group you can retrieve in the container).
