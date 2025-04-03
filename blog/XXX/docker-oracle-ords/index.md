@@ -136,7 +136,7 @@ Once created, we need to exit the console (started using the `sys` user) and rec
 
 Type thus `exit` to quit the sqlplus console and run `docker exec -it oracle-db sqlplus hr/admin@ORCLPDB1`.
 
-Once back in the sqlplus console (logged in as user `hr`), please run : `Execute ORDS.ENABLE_SCHEMA;`.
+Once back in the sqlplus console (logged in as user `hr`), please run : `EXECUTE ORDS.ENABLE_SCHEMA;`.
 
 ![Enabling the ORDS Schema](./images/ords_enable_schema.png)
 
