@@ -5,13 +5,12 @@ authors: [christophe]
 image: /img/oracle_social_media.jpg
 tags: [docker, oracle]
 enableComments: true
-draft: true
 ---
 ![Running Oracle Database Server as a Docker container](/img/oracle_banner.jpg)
 
 <!-- cspell:ignore ORCLCDB,ORCLPDB,initdb,sqlplus,oradata,PDBADMIN,USERENV,oracletools,sysdba -->
 
-At work, I had to create an Oracle Enterprise database locally so that I could program scripts in different languages to show how to connect to Oracle using, for example, .Net, Python or PHP.
+At work, I had to create an Oracle Enterprise database locally so that I could code scripts in different languages to show how to connect to Oracle using, for example .Net, NodeJS, Python or PHP.
 
 So the idea was immediately to check whether there was an official image for this. And there is one but, damned, it's not as simple as for PostgreSQL, MySQL, MS SQL Server.
 
@@ -30,7 +29,7 @@ So, yes, there is a Docker image called `container-registry.oracle.com/database/
 3. Accept License terms,
 4. Configure your local Docker environment to use that token.
 
-If you miss one step and try to download the image immediately, you'll got this error:
+If you miss one step and try to download the image immediately, you'll get this error:
 
 ```bash
 > docker pull container-registry.oracle.com/database/enterprise:latest
@@ -103,7 +102,7 @@ By running `cat ~/.docker/config.json`, you'll see in `auths` the presence of th
 If all previous steps have been correctly done, now, you should be able to run `docker pull container-registry.oracle.com/database/enterprise:latest` without any error and download the 3.5GB Docker image.
 
 :::note The latest image is huge but the slim one is too old
-Theres is a slim image around 1.5GB (`docker pull container-registry.oracle.com/database/enterprise:12.2.0.1-slim`) but it's a very old one (somewhere in 2018).
+There is a slim image around 1.5GB (`docker pull container-registry.oracle.com/database/enterprise:12.2.0.1-slim`) but it's a very old one (somewhere in 2018).
 :::
 
 ## Important concepts to consider when working with Oracle v12 and after
@@ -140,7 +139,7 @@ Please also run this statement to create the folder where we'll put our startup 
 
 #### Let's create a Human Resources sample database
 
-Oracle provide some sample databases on the [Oracle Database Sample Schemas](https://github.com/oracle-samples/db-sample-schemas/releases) page. You can download from there the `db-sample-schemas-23.3.zip` archive, open it and go to the `human_resources` folder. You'll found there a file called `hr_create.sql` which is a sample of a HR database. There is a second file called `hr_populate.sql` to feed the tables with some data.
+Oracle provides some sample databases on the [Oracle Database Sample Schemas](https://github.com/oracle-samples/db-sample-schemas/releases) page. You can download from there the `db-sample-schemas-23.3.zip` archive, open it and go to the `human_resources` folder. You'll found there a file called `hr_create.sql` which is a sample of an HR database. There is a second file called `hr_populate.sql` to feed the tables with some data.
 
 :::tip
 For easiness, you can retrieve these files by clicking on these two links: [hr_create.sql](./files/hr_create.sql) and [hr_populate.sql](./files/hr_populate.sql).
@@ -183,7 +182,7 @@ If you need the data model, here it is:
 
 Because running the container is a very slow process, we'll create a Docker volume to keep the database persistent on the disk.
 
-The volume will keep the database on our disk, in a Docker self-managed volume. Like this, we can stop the Oracle container, start it again and we'll not loose our database. *The DB will be persistent into a self-manager Docker volume.*
+The volume will keep the database on our disk, in a Docker self-managed volume. Like this, we can stop the Oracle container, start it again and we'll not lose our database. *The DB will be persistent into a self-manager Docker volume.*
 
 Please run `docker volume create OracleDBData` in the console to create a Docker self-managed volume.
 
@@ -229,7 +228,7 @@ The `docker run` was terribly complex; here is a breakdown:
 
 From now on, our Oracle database server is running as a Docker container. We'll use some constants a lot.
 
-Here are the constant to remember:
+Here are the constants to remember:
 
 * `1512` is the port number to use when connecting to the Oracle DB service,
 * `oracle-db` is the name of our container,
@@ -274,7 +273,7 @@ Type `exit` to quit the console and go back to your host prompt.
 
 ## Working with the Oracle DB container
 
-So the `docker run` command will takes something like 10 minutes to run.
+So the `docker run` command will take something like 10 minutes to run.
 
 If you've Docker Desktop, switch to its interface, click on the `Containers` link and click on your `oracle-db` container to see the log.  Wait until you see:
 
@@ -311,7 +310,7 @@ EXIT;
 EOF
 ```
 
-The `CONNECT` statement will use the `system` Oracle user. Tables that will be created will be created in the `system` schema.
+The `CONNECT` statement will use the `system` Oracle user. Tables that will be created in the `system` schema.
 
 If we run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` and try to display records of the `COUNTRIES` table; it will not work unless we specify the schema:
 
@@ -337,7 +336,7 @@ This understood, here is how we can see our data:
 ![Fake data are well loaded](./images/fake_data.png)
 
 :::tip
-`SET WRAP OFF` will allow to use the screen full-width and not a ridiculous width of 80 characters and `SET PAGESIZE 1000` is to not have a paginated list every 10 records.
+`SET WRAP OFF` will allow to use the screen full width and not a ridiculous width of 80 characters and `SET PAGESIZE 1000` is to not have a paginated list every 10 records.
 :::
 
 ### Accessing to the Oracle Enterprise Manager Database Express
@@ -377,13 +376,13 @@ Start to type `SELECT * FROM system.` and press <kbd>CTRL</kbd>+<kbd>SPACE</kbd>
 
 ![Oracle get employees](./images/oracle_get_employees.png)
 
-Validate or simply type the full SQL `SELECT * FROM system.employees`. In the example below, I'll asked the list of regions and the list of employees. I will run the query by simply pressing <kb>F5</kb>:
+Validate or simply type the full SQL `SELECT * FROM system.employees`. In the example below, I'll ask the list of regions and the list of employees. I will run the query by simply pressing <kb>F5</kb>:
 
 ![Oracle getting the list of employees](./images/oracle_getting_employees.png)
 
 ##### Connect to Oracle SQL Developer using the correct user
 
-In the previous chapter, we've established a login using `sys` for the username and for that reason, if we click in the `Tables (Filtered)` menu in the left tree-view, we'll get a bunch of tables but not the one of the `system` user like our employees table.
+In the previous chapter, we've established a login using `sys` for the username and for that reason, if we click in the `Tables (Filtered)` menu in the left tree view, we'll get a bunch of tables but not the one of the `system` user like our employees table.
 
 ![Creating a connection in Oracle SQL Developer as system](./images/oracle_sql_dev_as_system.png)
 
