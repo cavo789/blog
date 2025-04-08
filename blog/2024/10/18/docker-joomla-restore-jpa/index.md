@@ -66,7 +66,7 @@ services:
     container_name: ${CONTAINER_PREFIX:-joomla}-app
     restart: always
     ports:
-      - ${WEB_PORT-:8080}:80
+      - ${WEB_PORT:-8080}:80
     environment:
       - JOOMLA_DB_HOST=joomladb
       - JOOMLA_DB_NAME=${DB_NAME:-joomla}
