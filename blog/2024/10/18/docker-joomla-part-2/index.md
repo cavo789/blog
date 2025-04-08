@@ -186,7 +186,7 @@ stop:
 
 up:
 	-@mkdir -p db_data joomla_data
-	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach
+	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach --build
 ```
 
 :::caution Indentation should be TAB not spaces
@@ -592,7 +592,7 @@ stop:
 
 up:
 	-@mkdir -p db_data joomla_data
-	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach
+	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach --build
 ```
 
 As you can see, we've configured some `JOOMLA_ADMIN_xxx` keys and set `JOOMLA_SITE_NAME` to *Joomla*; the name of our website.

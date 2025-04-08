@@ -186,7 +186,7 @@ stop:
 
 up:
 	-@mkdir -p db_data joomla_data
-	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach
+	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach --build
 
 # highlight-next-line
 import: reset
