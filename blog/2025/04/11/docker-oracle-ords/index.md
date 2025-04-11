@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/oracle_social_media.jpg
 tags: [docker, openapi, oracle, postgrest]
 enableComments: true
-draft: true
 ---
 ![Transform an Oracle DB as OpenData using Oracle REST Data Services](/img/oracle_banner.jpg)
 
@@ -17,7 +16,7 @@ In this article we'll partially expose the database on the web using OpenAPI so,
 
 Exactly the same way we've done with PostgREST (see my [Don't query your PostgreSQL db anymore, prefer PostgREST](/blog/docker-postgrest)) but, this time, with an Oracle database.
 
-And the magic will happens thanks **[Oracle REST Data Services](https://www.oracle.com/database/technologies/appdev/rest.html)** aka **ords**.
+And the magic will happen thanks **[Oracle REST Data Services](https://www.oracle.com/database/technologies/appdev/rest.html)** aka **ords**.
 
 <!-- truncate -->
 
@@ -38,7 +37,7 @@ Please read that article and follow steps so, before continuing here, you've a r
 
 Unlike the Docker Oracle Database Server image, we don't need any credentials for downloading the official [Oracle ORDS]((https://container-registry.oracle.com/ords/ocr/ba/database/ords-developer)) image.
 
-Simply run `docker pull container-registry.oracle.com/database/ords-developer:latest` to get it. It's a 2.2GB filesize image.
+Simply run `docker pull container-registry.oracle.com/database/ords-developer:latest` to get it. It's a 2.2 GB file size image.
 
 ```bash
 docker pull container-registry.oracle.com/database/ords-developer:latest
@@ -72,7 +71,7 @@ The official ORDS Docker image comes with APEX (which is the abbreviation for *O
 
 Based on the documentation, *Oracle Application Express (APEX) is a low-code development platform that enables you to build scalable, secure enterprise apps, with world-class features, that can be deployed anywhere. See [https://apex.oracle.com/](https://apex.oracle.com/) for more information.*
 
-For our needs, we just want ORDS; we don't need APEX. For this purpose, we'll initialize the `IGNORE_APEX` OS variable to `TRUE`.
+For our needs, we just want ORDS; we don't need APEX. For this purpose, we'll initialise the `IGNORE_APEX` OS variable to `TRUE`.
 
 ### Create the container
 
@@ -105,7 +104,7 @@ That command will add the ORDS layer in your database (based on the connection s
 ![Installation of ORDS](./images/ords_installation.png)
 
 :::caution On subsequent runs, we shouldn't provide connection string anymore.
-Once ORDS has been installed as done here above, if you need to rerun the ORDS container, we should no more provide the secret so we've to remove the `-v ./ords_secrets/:/opt/oracle/variables` flag.
+Once ORDS has been installed as done here above, if you need to rerun the ORDS container, we should no more provide the secret so we have to remove the `-v ./ords_secrets/:/opt/oracle/variables` flag.
 
 If you need to run the container once more; here is the command line:
 
@@ -162,7 +161,7 @@ Use `hr` and `admin`, our custom user, for the login page:
 
 Right now, we can ask ORDS to see the list of objects already accessible; simply surf to `http://localhost:8181/ords/hr/open-api-catalog/` to get ... an empty list.
 
-This is normal since we should specify with object (a table, a view, a stored procedure) can be accessible or not. But, yes, by accessing `http://localhost:8181/ords/hr/open-api-catalog/` and getting a JSON answer; we can confirm ORDS is running fine.
+This is normal since we should specify which object (a table, a view, a stored procedure) can be accessible or not. But, yes, by accessing `http://localhost:8181/ords/hr/open-api-catalog/` and getting a JSON answer; we can confirm ORDS is running fine.
 
 The `http://localhost:8181/ords/hr/open-api-catalog/` page is called the **Schema Metadata** ([documentation](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/developing-REST-applications.html#GUID-55736274-502E-4511-B232-829924334FA2)).
 
@@ -211,7 +210,7 @@ If we wish to check our view:
 
 As you can see, you'll obtain the list of employees.
 
-So, at this stage, we've added a view called `employees` in our `hr` schema and it's works.
+So, at this stage, we've added a view called `employees` in our `hr` schema and it works.
 
 :::caution Don't use SELECT * FROM
 It's a very bad practice to use `SELECT * FROM ...`, always make sure to select the needed fields.
@@ -251,7 +250,7 @@ Look at the *Open in a new tab* icon on the image above. Click on that button an
 
 The `http://localhost:8181/ords/hr/employees/` is called the **Object Data** ([documentation](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/developing-REST-applications.html#GUID-0B17836D-E5B5-4B45-A9DA-0ABF62426EDF))
 
-Since it's nothing more than an URL, you can use it with any tools you want, f.i. using `curl`. The command to run is `curl http://localhost:8181/ords/hr/employees/ | jq`.
+Since it's nothing more than a URL, you can use it with any tools you want, f.i. using `curl`. The command to run is `curl http://localhost:8181/ords/hr/employees/ | jq`.
 
 ![Getting the list of employees as JSON using curl](./images/getting_employees_as_json_curl.png)
 
@@ -313,7 +312,7 @@ So we can run multiple requests like `http://localhost:8181/ords/hr/employees/?o
 We can define the number of records by page using the `limit` querystring parameter: `http://localhost:8181/ords/hr/employees/?limit=100`.
 
 :::note
-The official documentation strongly discourage to remove the limit (and thus ask all records at once). For this reason there is no way to remove the limit. If you really wish to get the full list, try with a very high number like `limit=1000000` (one million).
+The official documentation strongly discourages to remove the limit (and thus ask all records at once). For this reason there is no way to remove the limit. If you really wish to get the full list, try with a very high number like `limit=1000000` (one million).
 :::
 
 #### Filtering
@@ -349,7 +348,7 @@ We can also use AND like in this example: `http://localhost:8181/ords/hr/employe
 ![Contains Alex and earn more than 5,000](./images/alex_5000.png)
 
 :::info Using complex filtering
-The following URL `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"%CLERK"},"salary":{"$gt":2899},"hire_date":{"$gt":{"$date":"2016-12-31T12:59:59Z"}}}` will return every employees who:
+The following URL `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"%CLERK"},"salary":{"$gt":2899},"hire_date":{"$gt":{"$date":"2016-12-31T12:59:59Z"}}}` will return every employee who:
 
 * working as clerk (`job_id` ending by the `CLERK` word),
 * having a salary greater then 2,899€ and
