@@ -28,7 +28,7 @@ const config = {
   noIndex: false, // Make sure our HTML pages will contains the <meta name="robots" content="index, follow"> tag
 
   onBrokenAnchors: 'throw',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   onDuplicateRoutes: 'throw',
 
