@@ -5,15 +5,14 @@ authors: [christophe]
 image: /img/oracle_social_media.jpg
 tags: [docker, oracle]
 enableComments: true
-draft: true
 ---
 ![Accessing an Oracle database using .Net, NodeJS, PHP and Python](/img/oracle_banner.jpg)
 
-In the last article ([Running Oracle Database Server as a Docker container](/blog/docker-oracle-database-server)), we've created a Docker container called `oracle-db` where a Human Resources database is running.
+In a previous article ([Running Oracle Database Server as a Docker container](/blog/docker-oracle-database-server)), we've created a Docker container called `oracle-db` where a Human Resources database is running.
 
 This time, let's play with .Net, NodeJS, PHP and Python to access to it and display records.
 
-For each languages, we'll build a Docker image with all the required stuff like Oracle Instant Client then we'll create a small script to connect to the `employees` table and display records.
+For each language, we'll build a Docker image with all the required stuff like Oracle Instant Client then we'll create a small script to connect to the `employees` table and display records.
 
 The idea is then to provide a very quick skeleton for starting a project in those languages and if you need to directly connect to an Oracle database.
 
@@ -499,7 +498,7 @@ Let's create a Python script now:
 mkdir -p /tmp/oracle/python && cd $_
 ```
 
-And his Dockerfile; the only thing we need (except Python) is to install the `oracledb` dependency. Quite straight-forward.
+And his Dockerfile; the only thing we need (except Python) is to install the `oracledb` dependency. Quite straightforward.
 
 <details>
 
@@ -607,4 +606,4 @@ Nice! As you can see, we can quite easily access to our Oracle database using Py
 
 You know what? I've more than 15 years of experience with PHP and just 6 months using Python and, if we look at the Dockerfile of both languages, there is no doubt at all; the one for Python is so much easier to read and to configure. I had pain to make the one of PHP to works and just none for Python since it's just one dependency to install and that's all.
 
-And if we look at PHP versus Python code, they are quite similar but, I should admit, the one for Python has my preference because we don't need to check for errors in multiple places, we can more easily define the data-types of variables, the echo statement is more readable, ...
+And if we look at PHP versus Python code, they are quite similar but, I should admit, the one for Python has my preference because we don't need to check for errors in multiple places, we can more easily define the data types of variables, the echo statement is more readable, ...
