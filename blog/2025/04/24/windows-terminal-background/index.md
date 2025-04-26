@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/windows_terminal_social_media.jpg
 tags: [console, customization, dos, windows terminal, wsl]
 enableComments: true
-draft: true
 ---
 ![Use a background image in your Windows Terminal console](/img/windows_terminal_banner.jpg)
 
