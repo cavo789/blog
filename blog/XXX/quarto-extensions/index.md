@@ -1,9 +1,9 @@
 ---
-slug: docker-extensions
+slug: quarto-extensions
 title: My favorite Quarto extensions
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
-tags: [docker, markdown, pandoc, quarto, revealjs]
+tags: [markdown, pandoc, quarto, revealjs]
 enableComments: true
 draft: true
 ---
