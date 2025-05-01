@@ -20,29 +20,68 @@ And immediately, when you put it like that, you think of a CMS (content manageme
 
 And this is where [Mustache](https://mustache.github.io/)'s idea comes in. Mustache defines himself as a *Logic-less templates* framework.
 
-And, because I'm using Quarto for my documentation, I need an extension for using Mustache and it's [Quarto-partials](https://github.com/gadenbuie/quarto-partials/tree/main) from [Garrick Aden-Buie](https://github.com/gadenbuie).
+And, because I'm using Quarto for my documentation, I need an extension for using Mustache and it's [Quarto-partials](https://github.com/gadenbuie/quarto-partials/tree/main) from Garrick Aden-Buie.
 
 <!-- truncate -->
+
+## Create some files
+
+Like always, let's create some files.
+
+Please run `mkdir /tmp/partials && cd $_` to create a temporary folder and jump in it.
+
+Create a file called `_quarto.yml` with this content:
+
+<details>
+<summary>_quarto.yml</summary>
+
+```yaml
+project:
+  type: website
+  output-dir: .
+
+lang: en
+
+website:
+  title: "Playing with Quarto partials"
+  page-navigation: true
+  bread-crumbs: true
+  sidebar:
+    style: "docked"
+    toc-depth: 4
+    contents: auto
+  
+filters:
+  - partials
+```
+
+</details>
+
+We need to install Quarto-partials.
+
+Because we'll use Docker, the command is quite long: `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) registry.gitlab.com/quarto-forge/docker/quarto quarto add gadenbuie/quarto-partials`.
+
+This will create a new folder called `_extensions` with partials in it.
 
 ## Let's discover the basics
 
 The idea behind Quarto-partials is to allow to write a page like below i.e. I'll describe my first functionality and, in the `How to run` chapter, I'll inject the content of another page:
 
 <details>
-<summary>/documentation/feature_1.md</summary>
+<summary>documentation/feature_1.md</summary>
 
 ```markdown
 ## How to run
 
-{{< partial ../_partials/run/cli.md >}}
+{{< partial ../_partials/run.md >}}
 ```
 
 </details>
 
-The `../_partials/run/cli.md` is a standard markdown file. In my case, I want to be dynamic and for this, I'll use a variable:
+The `../_partials/run.md` is a standard markdown file. In my case, I want to be dynamic and for this, I'll use a variable:
 
 <details>
-<summary>../_partials/run/cli.md</summary>
+<summary>_partials/run.md</summary>
 
 ```markdown
 In order to run this action, please run `{{ command }}`.
@@ -53,17 +92,14 @@ In order to run this action, please run `{{ command }}`.
 Here comes Mustache in action: as you can see, the syntax `{{ command }}` will output the content of a variable called `command`. Of course, I need to declare it. Let's review my documentation and add what Quarto call a *frontmatter* YAML block:
 
 <details>
-<summary>/documentation/feature_1.md</summary>
+<summary>documentation/feature_1.md</summary>
 
 ```markdown
-<!-- highlight-start -->
 ---
-
+title: This is my first feature
 partial-data:
   command: "run feature_1"
-
 ---
-<!-- highlight-end -->
 
 ## How to run
 
@@ -72,20 +108,44 @@ partial-data:
 
 </details>
 
-And now, we're ready to copy/paste the file `/documentation/feature_1.md` to `/documentation/feature_2.md` and just update the command variable. And do this again and again until we've documented all features.
+Time to create our website. Please run `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) registry.gitlab.com/quarto-forge/docker/quarto quarto render`.
 
-<details>
-<summary>/documentation/feature_2.md</summary>
+![Rendering the feature 1](./images/render_feature1.png)
+
+By running `docker run -d --name partials -p 8080:80 -v .:/usr/local/apache2/htdocs/ httpd:alpine`, we'll create an Apache container accessible on port 8080.
+
+Surf to `http://localhost:8080/documentation/feature_1.html` and we'll see our website.
+
+And now, we're ready to copy/paste the file `documentation/feature_1.md` to `documentation/feature_2.md` and just update the command variable. And do this again and again until we've documented all features.
+
+![Our feature 1](./images/html_feature1.png)
+
+### What have we just done
+
+We've created a reusable template. Our document has two parts; a YAML section (the frontmatter) where we'll provide some variables. The second part, the Markdown one, is our basic template. We can copy that one for all our features f.i.
 
 ```markdown
-<!-- highlight-start -->
+---
+partial-data:
+  command: "run feature_1"
 ---
 
+## How to run
+
+{{< partial ../_partials/run.md >}}
+```
+
+Let's prove it. We'll create a new feature:
+
+<details>
+<summary>documentation/feature_2.md</summary>
+
+```markdown
+---
+title: This is my second feature
 partial-data:
   command: "run feature_2"
-
 ---
-<!-- highlight-end -->
 
 ## How to run
 
@@ -93,6 +153,12 @@ partial-data:
 ```
 
 </details>
+
+and render our site again.
+
+![Our second feature](./images/html_feature2.png)
+
+## My use case
 
 In my own case, my documentation looks like this:
 
@@ -101,7 +167,6 @@ In my own case, my documentation looks like this:
 
 ```markdown
 ---
-
 title: PHP linter
 categories: [linting, php]
 order: 1
@@ -111,7 +176,6 @@ partial-data:
   config_url: "https://github.com/tengattack/phplint/blob/master/.phplint.yml"
   constant: "PHPLINT"
   type: "PHP"
-
 ---
 
 <!-- cspell:ignore phplint -->
@@ -126,7 +190,7 @@ This is a brief description of the functionality. This text is hardcoded because
 
 ## How to run
 
-{{< partial ../_partials/run/cli.md >}}
+{{< partial ../_partials/run.md >}}
 
 ## How to configure
 
@@ -181,7 +245,6 @@ If you look at my `php_lint.md` file, I've well a variable `type` defined in my 
 
 ```markdown
 ---
-
 title: PHP linter
 categories: [linting, php]
 order: 1
@@ -192,8 +255,7 @@ partial-data:
   config_url: "https://github.com/tengattack/phplint/blob/master/.phplint.yml"
   name: "PHP Linter"
   <!-- highlight-next-line -->
-  type: "PHP"
-  
+  type: "PHP" 
 ---
 
 <!-- cspell:ignore phplint -->
@@ -208,7 +270,7 @@ This is a brief description of the functionality. This text is hardcoded because
 
 ## How to run
 
-{{< partial ../_partials/run/cli.md >}}
+{{< partial ../_partials/run.md >}}
 
 ## How to configure
 
