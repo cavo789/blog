@@ -1,15 +1,14 @@
 ---
 slug: quarto-extensions
-title: My favorite Quarto extensions
+title: My favourite Quarto extensions
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
 tags: [markdown, pandoc, quarto, revealjs]
 enableComments: true
-draft: true
 ---
 <!-- cspell:ignore frontmatter,fontawesome,gadenbuie,shafayetShafee -->
 
-![My favorite Quarto extensions](/img/quarto_tips_banner.jpg)
+![My favourite Quarto extensions](/img/quarto_tips_banner.jpg)
 
 I'm using Quarto now since 18 months to generate my documentation: I'm writing Markdown files (`.md`) and convert them as a Word document, PDF, static HTML site or as a revealjs slideshow.
 
@@ -27,7 +26,7 @@ When I come to this extension, my need was: I've coded more than 60 functionalit
 
 Sometimes the text will be exactly the same (like a generic text) and, in some cases, almost the same: the *How to configure?* chapter will have the same sentences except I've to replace some placeholders (like the name of the feature, the name of the configuration file, ...)
 
-In other terms: I need to be able to write some *page template* and *inject* specific content to it.  I wish that my 60 functionalities pages looks the same and if I need to change one global text, I have to do it in a central place.
+In other terms: I need to be able to write some *page template* and *inject* specific content to it.  I wish that my 60 functionalities pages look the same and if I need to change one global text, I have to do it in a central place.
 
 [Partial content](https://github.com/gadenbuie/quarto-partials/tree/main) is perfect here. Based on their documentation, it's similar to [Mustache](https://mustache.github.io/).
 
@@ -93,7 +92,7 @@ See [https://github.com/ute/search-replace](https://github.com/ute/search-replac
 
 Quarto filter extension for simple search-replace macros.
 
-This extension allow to search and replace when rendering documents. For instance, by putting the `+quarto` code in the frontmatter of the article or, better, in the `_quarto.yaml` global file, we can just write `+quarto` in our document and let the replace action be done during the rendering of the documentation.
+This extension allows to search and replace when rendering documents. For instance, by putting the `+quarto` code in the frontmatter of the article or, better, in the `_quarto.yaml` global file, we can just write `+quarto` (a constant) in our document and let the replace action be done during the rendering of the documentation.
 
 ```yaml
 search-replace:
@@ -105,6 +104,14 @@ Make sure to add lines below in your YAML front matter:
 ```yaml
 filters:
    - search-replace
+```
+
+### Example
+
+Below how to use it. It's simple; just write the name of your constant and during the rendering of your document, the constant will be replaced by the predefined value. Easy!
+
+```markdown
+I'm using +quarto and I love it
 ```
 
 ## shafayetShafee/code-fullscreen
