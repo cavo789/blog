@@ -8,13 +8,13 @@ enableComments: true
 draft: true
 ---
 
-<!-- cspell:ignore buie,frontmatter -->
+<!-- cspell:ignore buie,frontmatter,gadenbuie,htdocs -->
 
 ![Using Mustache templating with Quarto](/img/quarto_tips_banner.jpg)
 
 I use Quarto to generate documentation; until now I've mainly generated `.docx` and `.pdf` files.
 
-Recently, I needed to generate a website (HTML) that would allow my colleagues to consult the documentation for the latest software I've written. I had to describe nearly 80 functions: as many web pages to write, each with the same structure (a description chapter, a how to run chapter, a how to configure chapter, etc.).
+Recently, I needed to generate a static website (HTML) that would allow my colleagues to consult the documentation for the latest software I've written. I had to describe nearly 80 functions: as many web pages to write, each with the same structure (a description chapter, a how to run chapter, a how to configure chapter, etc.).
 
 And immediately, when you put it like that, you think of a CMS (content management system) such as Joomla for example, i.e. being able to define a standard page (a template) that will include the chapters and in each chapter, you could imagine injecting content that would be variables. Wouldn't it be silly to write each page by hand?
 
@@ -51,13 +51,17 @@ website:
     toc-depth: 4
     contents: auto
   
+<!-- highlight-next-line -->
 filters:
+  <!-- highlight-next-line -->
   - partials
 ```
 
 </details>
 
-We need to install Quarto-partials.
+This file tells to Quarto that we're about to create a website i.e. by running `quarto render` later on, we'll convert our pages written in Markdown as HTML pages.
+
+The two last lines should be present to load an external extension called `partials`; let's install it.
 
 Because we'll use Docker, the command is quite long: `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) registry.gitlab.com/quarto-forge/docker/quarto quarto add gadenbuie/quarto-partials`.
 
@@ -65,12 +69,22 @@ This will create a new folder called `_extensions` with partials in it.
 
 ## Let's discover the basics
 
-The idea behind Quarto-partials is to allow to write a page like below i.e. I'll describe my first functionality and, in the `How to run` chapter, I'll inject the content of another page:
+The idea behind Quarto-partials is to allow to write a page like below i.e. I'll describe my first fictive functionality and, in the `How to run` chapter, I'll inject the content of another page:
 
 <details>
-<summary>documentation/feature_1.md</summary>
+<summary>documentation/canvas.md</summary>
 
 ```markdown
+---
+title: Contextual Canvas
+---
+
+## Description
+
+Imagine you're working on a complex project – perhaps writing a research paper, designing a website, or planning a marketing campaign. You have various documents open, browser tabs scattered, and maybe even some handwritten notes nearby. It can feel like juggling multiple realities at once.
+
+*Contextual Canvas* aims to streamline this by creating a dynamic, visual workspace directly within your primary application. Instead of just seeing a static file or interface, you can summon the Canvas, which intelligently pulls in relevant information based on what you're currently working on
+
 ## How to run
 
 {{< partial ../_partials/run.md >}}
@@ -78,47 +92,68 @@ The idea behind Quarto-partials is to allow to write a page like below i.e. I'll
 
 </details>
 
-The `../_partials/run.md` is a standard markdown file. In my case, I want to be dynamic and for this, I'll use a variable:
+As you can see, I'm typing the description of my feature (called "Contextual Canvas" here) and then, I've a "How to run chapter". Instead of typing the how-to here, I'll include an external file (a *template*) called `../_partials/run.md`.
+
+That one will use the Quarto-partials extension so, I can put in `../_partials/run.md` some Mustache's feature like injecting a variable.
+
+Here is the template:
 
 <details>
 <summary>_partials/run.md</summary>
 
 ```markdown
 In order to run this action, please run `{{ command }}`.
+
+Existing flags:
+
+  * `--debug`: output debug information's,
+  * `--no-color`: disable ANSI colors and
+  * `--verbose`: enable verbose mode; showing more information's on screen
 ```
 
 </details>
 
-Here comes Mustache in action: as you can see, the syntax `{{ command }}` will output the content of a variable called `command`. Of course, I need to declare it. Let's review my documentation and add what Quarto call a *frontmatter* YAML block:
+Here comes Mustache in action: as you can see on the first line, the syntax `{{ command }}` will output the content of a variable called `command`. Of course, I need to declare it. Let's review my documentation and add what Quarto call a *frontmatter* YAML block:
 
 <details>
-<summary>documentation/feature_1.md</summary>
+<summary>documentation/canvas.md</summary>
 
 ```markdown
 ---
-title: This is my first feature
+title: Contextual Canvas
+<!-- highlight-next-line -->
 partial-data:
-  command: "run feature_1"
+  <!-- highlight-next-line -->
+  command: "make canvas"
 ---
+
+## Description
+
+Imagine you're working on a complex project – perhaps writing a research paper, designing a website, or planning a marketing campaign. You have various documents open, browser tabs scattered, and maybe even some handwritten notes nearby. It can feel like juggling multiple realities at once.
+
+*Contextual Canvas* aims to streamline this by creating a dynamic, visual workspace directly within your primary application. Instead of just seeing a static file or interface, you can summon the Canvas, which intelligently pulls in relevant information based on what you're currently working on
 
 ## How to run
 
 {{< partial ../_partials/run.md >}}
+
 ```
 
 </details>
 
 Time to create our website. Please run `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) registry.gitlab.com/quarto-forge/docker/quarto quarto render`.
 
-![Rendering the feature 1](./images/render_feature1.png)
+![Rendering the Contextual Canvas feature](./images/render_canvas.png)
 
-By running `docker run -d --name partials -p 8080:80 -v .:/usr/local/apache2/htdocs/ httpd:alpine`, we'll create an Apache container accessible on port 8080.
+This will call the `render` command of Quarto. Quarto will then process the `_quarto.yml` file, see we want to produce a website and start HTML rendering. It'll take just one or two seconds.
 
-Surf to `http://localhost:8080/documentation/feature_1.html` and we'll see our website.
+Now, by running `docker run -d --name partials -p 8080:80 -v .:/usr/local/apache2/htdocs/ httpd:alpine`, we'll create an Apache container accessible on port 8080.
 
-And now, we're ready to copy/paste the file `documentation/feature_1.md` to `documentation/feature_2.md` and just update the command variable. And do this again and again until we've documented all features.
+Finally, surf to `http://localhost:8080/documentation/canvas.html` and we'll see our website.
 
-![Our feature 1](./images/html_feature1.png)
+And now, we're ready to copy/paste the file `documentation/canvas.md` to `documentation/feature_2.md` and just update the command variable. And do this again and again until we've documented all features.
+
+![Our Canvas feature](./images/html_canvas.png)
 
 ### What have we just done
 
@@ -127,7 +162,7 @@ We've created a reusable template. Our document has two parts; a YAML section (t
 ```markdown
 ---
 partial-data:
-  command: "run feature_1"
+  command: "run canvas"
 ---
 
 ## How to run
@@ -138,14 +173,20 @@ partial-data:
 Let's prove it. We'll create a new feature:
 
 <details>
-<summary>documentation/feature_2.md</summary>
+<summary>documentation/builder.md</summary>
 
 ```markdown
 ---
-title: This is my second feature
+title: Intent-Driven Interface Builder
 partial-data:
-  command: "run feature_2"
+  command: "make builder"
 ---
+
+## Description
+
+Imagine the process of building user interfaces. Developers and designers often spend significant time translating conceptual designs and user stories into the specific widgets, layouts, and interactions of a software application. *Intent-Driven Interface Builder* aims to revolutionize this by allowing users to describe the intent of a UI element or section, rather than manually configuring every pixel and property.
+
+The *Intent-Driven Interface Builder* would then leverage AI and a vast library of pre-built, adaptable UI components and design patterns to automatically generate the corresponding interface elements. It would intelligently choose appropriate widgets, arrange them in a logical layout, and even suggest relevant styling based on the application's overall design language and best practices.
 
 ## How to run
 
@@ -154,9 +195,9 @@ partial-data:
 
 </details>
 
-and render our site again.
+and render our site again by running again `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) registry.gitlab.com/quarto-forge/docker/quarto quarto render`.
 
-![Our second feature](./images/html_feature2.png)
+![Our second feature](./images/html_builder.png)
 
 ## My use case
 
