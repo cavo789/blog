@@ -63,7 +63,7 @@ This file tells to Quarto that we're about to create a website i.e. by running `
 
 The two last lines should be present to load an external extension called `partials`; let's install it.
 
-Because we'll use Docker, the command is quite long: `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) registry.gitlab.com/quarto-forge/docker/quarto quarto add gadenbuie/quarto-partials`.
+Because we'll use Docker, the command is quite long: `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto add gadenbuie/quarto-partials`.
 
 This will create a new folder called `_extensions` with partials in it.
 
@@ -141,7 +141,7 @@ Imagine you're working on a complex project – perhaps writing a research paper
 
 </details>
 
-Time to create our website. Please run `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) registry.gitlab.com/quarto-forge/docker/quarto quarto render`.
+Time to create our website. Please run `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render`.
 
 ![Rendering the Contextual Canvas feature](./images/render_canvas.png)
 
@@ -195,7 +195,7 @@ The *Intent-Driven Interface Builder* would then leverage AI and a vast library 
 
 </details>
 
-and render our site again by running again `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) registry.gitlab.com/quarto-forge/docker/quarto quarto render`.
+and render our site again by running again `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render`.
 
 ![Our second feature](./images/html_builder.png)
 
