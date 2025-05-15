@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
 tags: [markdown, mustache, quarto]
 enableComments: true
-draft: true
 ---
 
 <!-- cspell:ignore buie,frontmatter,gadenbuie,htdocs -->
