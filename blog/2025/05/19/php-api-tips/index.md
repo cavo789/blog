@@ -122,7 +122,7 @@ So `/api/v1/employees?page=1&pageSize=5` will display the first five employees a
 | --- | --- | --- | --- |
 | `page` | When a collection resources is paged, use this parameter to request a specific page. Page numbers are 1-based. | `?page=3&pageSize=20`| Pagination |
 | `pageSize` | When a collection resources is paged, use this parameter to specify the page size. | `?page=3&pageSize=20` | Pagination | 
-| `q` | The standard search parameter to do a full-text search. | `?q=RESTFull` | Filtering |
+| `q` | The standard search parameter to do a full-text search. | `?q=RESTFul` | Filtering |
 | `select`| Filter the resource properties to the ones specified. | `?select=(name,address)` | Consult (Document) | 
 | `sort` | Multi-value query param with list of properties to sort on. Default sorting direction is ascending. To indicate descending direction, the property may be prefixed with -. |  `?sort=name&&sort=-age` | Collection |
 | `embed` | Request to embed sub-resource. For instance `api/v1/countries` returns countries and `api/v1/countries?embed=political` countries with their political infos. This will prevent additional API calls. | `?embed=mainAddress` | Embedding resources |
@@ -256,6 +256,14 @@ The example here above will create a new employee, the server will return the HT
 | `409` | `Conflict` | The resource can't be created (f.i. already exists). `409` is used when we didn't expect such use case. |
 
 The `200 - OK` code should not be used with `POST`.
+
+##### POST - Special case
+
+`POST` can also be used when calling a controller like in `curl -X POST -d '{"action":"sendBirthdayMail",...}' https://xxx/api/v1/employees/123/actions` or `curl -X POST https://xxx/api/v1/employees/123/sendBirthdayMail`.
+
+:::important The RESTful API standards recommends to use `POST` for actions.
+So, we shouldn't do `GET https://xxx/api/v1/employees/actions` because `actions` it's not a resource but an action.
+:::
 
 #### PUT
 
