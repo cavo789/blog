@@ -8,7 +8,7 @@ enableComments: true
 ---
 ![How to generate a graph from compose.yaml](/img/docker_tips_banner.jpg)
 
-**Updated on 14 May 2025**
+**Updated on May 14 2025**
 
 Imagine you to have a very big `compose.yaml` file with a lot of services and dependencies.
 

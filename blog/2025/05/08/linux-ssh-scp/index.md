@@ -8,7 +8,7 @@ enableComments: true
 ---
 ![SSH - Launch a terminal on your session without having to authenticate yourself](/img/linux_tips_banner.jpg)
 
-**Updated on 8 May 2025**
+**Updated on May 8 2025**
 
 <!-- cspell:ignore randomart -->
 
