@@ -5,7 +5,7 @@ authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 tags: [excel, vba]
 enableComments: true
-drafts: true
+draft: true
 ---
 ![MS Excel - Get the list of references used in your modules](/img/excel_tips_banner.jpg)
 

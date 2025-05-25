@@ -5,7 +5,7 @@ authors: [christophe]
 image: /img/database_tips_social_media.jpg
 tags: [database, msaccess, vba, vbs]
 enableComments: true
-drafts: true
+draft: true
 ---
 ![Export MS Access objects](/img/database_tips_banner.jpg)
 
