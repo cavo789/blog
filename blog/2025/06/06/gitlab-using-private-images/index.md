@@ -4,14 +4,13 @@ title: GitLab - Using Docker private images
 authors: [christophe]
 image: /img/git_tips_social_media.jpg
 tags: [CI, gitlab, ssh]
-draft: true
 enableComments: true
 ---
 ![GitLab - Using Docker private images](/img/git_tips_banner.jpg)
 
 In one of my GitLab CI, I came across the need to use a Docker image stored on `hub.docker.com` in a private repository.
 
-I couldn't simply do a `docker pull image_name` because, first of all, I had to authenticate myself in the CI before I could retrieve the image.
+I couldn't simply do a `docker pull my_image` because, first of all, I had to authenticate myself in the CI before I could retrieve the image (it's a private one).
 
 This article is a how-to and explains how to do it.
 
@@ -27,14 +26,18 @@ Once created, Docker will provide you a small help screen where you'll read that
 
 ## Create two CI/CD variables in your repository page
 
-In GitLab CI/CD page, add two new variables:
+In your GitLab CI/CD settings page, add two new variables:
 
-* The first one will be called `DOCKER_HUB_USERNAME`. The value to enter here is your Docker account name (like `christophe`) and
+* The first one will be called `DOCKER_HUB_USERNAME`. The value to enter here is your Docker account name (like `christophe` or `my_company` if the image is stored in a business account) and
 * the second one will be called `DOCKER_HUB_TOKEN_RO`. The value to enter here is the token you've received.
 
-Make sure variables are hidden and protected.
+Make sure variables are hidden and protected. This will prevent GitLab to echoed the value in any output like when you initialize `CI_DEBUG_TRACE=true` ([doc](https://docs.gitlab.com/ci/variables/variables_troubleshooting/#enable-debug-logging)) for full debug.
 
 ![The two variables have been created](./images/variables.png)
+
+:::note
+You can add the variables in your repository's CI/CD settings page or at a higher level like the group level or at the instance level (you should be an admin for this).
+:::
 
 ## Your gitlab-ci.yml file
 
