@@ -32,6 +32,14 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   onDuplicateRoutes: 'throw',
 
+  // https://github.com/facebook/docusaurus/issues/10556
+  future: {
+    experimental_faster: {
+      rspackBundler: true, // required flag
+      rspackPersistentCache: true, // new flag
+    },
+  },
+
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
