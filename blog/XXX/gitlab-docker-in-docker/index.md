@@ -3,8 +3,7 @@ slug: gitlab-docker-in-docker
 title: GitLab - Running Docker-in-Docker in your CI
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
-tags: [CI, dagger, dind, docker, gitlab]
-draft: true
+tags: [CI, dagger, dind, docker, gitlab, quarto]
 enableComments: true
 ---
 ![GitLab - Running Docker-in-Docker in your CI](/img/git_tips_banner.jpg)
@@ -17,15 +16,15 @@ The container started by GitLab can be based on a PHP, Python and just Alpine Do
 
 For a few months now, I've been creating a Docker image to run [Dagger](https://dagger.io). So, here, I come in trouble: my GitLab CI Docker container should be able to run `docker run ... my_dagger_image` and by, default, it's not possible. 
 
-But I'm in even more trouble when, in my Dagger container, I have to launch another container.
+But I'm in even more trouble when, in my Dagger container, I have to launch another container (one by tools).
 
-Yes, you've guessed it: I'm faced with a Docker-in-Docker-in-Docker.
+Yes, you've guessed it: I'm faced with a Docker-in-Docker-in-Docker situation.
 
 Let's see how to solve this problem.
 
 <!-- truncate -->
 
-As prerequisites, you should be Admin of your own GitLab instance since you'll need to make changes to the configuration of your GitLab runner.
+As prerequisites, you should have access to the server where your GitLab instance is running (aka the *GitLab Runner*) since you'll need to make changes to the configuration of the runner.
 
 ## The runner configuration file
 
@@ -62,7 +61,7 @@ phplint:
 
 It'll retrieve all `.php` file and run `php -l <filename.php>` for each inside a Docker container based on PHP 8.4.
 
-Easy and straight-forward.
+Easy and straight-forward. No need to do DinD here.
 
 ## Running Docker in Docker
 
@@ -95,7 +94,7 @@ Now, to allow this, we'll need to update our GitLab Runner server configuration 
 The syntax `volumes = [ ..., "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]` used above is to inform you to append the two values to the list you already have. So, if, right now, you've `volumes = ["/cache", "/certs/client"]` then append values to get `volumes = ["/cache", "/certs/client", "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]`
 :::
 
-We need to allow the Docker daemon which is running on the GitLab runner server to share its daemon (the file `/var/run/docker.sock`) so, the GitLab CI Docker container can run `docker run` statements like f.i. `docker run --rm --volume "$CI_PROJECT_DIR:/app" --workdir /app jakzal/phpqa phplint .`
+We need to allow the **Docker daemon** which is running on the GitLab runner server to share its daemon (the file `/var/run/docker.sock`) so, the GitLab CI Docker container can run `docker run` statements like f.i. `docker run --rm --volume "$CI_PROJECT_DIR:/app" --workdir /app jakzal/phpqa phplint .`
 
 As you can see, there is also a flag `--volume "$CI_PROJECT_DIR:/app"`. This will share the folder referenced by the variable `$CI_PROJECT_DIR` with the container but here, be careful.
 
@@ -106,3 +105,9 @@ Refers to the update we've already made in the `config.toml` file here above. We
 :::info
 This technique is called **Docker Socket Passthrough**.
 :::
+
+Now, it'll work: we we'll share our Docker daemon and, too, we'll share the folder on the server where our codebase was pulled before running the CI.
+
+From now, we can not only run `docker run [...]` statements but, too, share our folder with the newly created container.
+
+Why do I need this? Let's take just one example: documentation generation. I'm pushing my documentation as a set of `.md` files (in a folder called `documentation`) then, during my CI, I'm running [Quarto](https://quarto.org/) to process these Markdown files and based on my configuration (the `_quarto.yml` file), I can generate offline files (like `.docx`, `.pdf`, ...) but, too, a static HTML site.  In this last situation, I'll export the static site somewhere (`./public/documentation`) then publish it using GitLab pages.
