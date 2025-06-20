@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/database_tips_social_media.jpg
 tags: [database, msaccess, vba]
 enableComments: true
-draft: true
 ---
 ![Discovering Pentaho, a ETL program](/img/database_tips_banner.jpg)
 
