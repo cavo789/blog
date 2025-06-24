@@ -7,6 +7,8 @@ tags: [linux, shell, tests]
 enableComments: true
 draft: true
 ---
+<!-- cspell:ignore imple -->
+
 ![Linux - Bash scripts - Running unit tests with bats/bats](/img/bash_tips_banner.jpg)
 
 Like all command-line developers, I write Linux Bash scripts.  Like any programmer, I'm supposed to write unit tests. Well, I have to admit that I rarely write them.
@@ -32,7 +34,7 @@ We'll create a simple illustration file, let's call it `tests/simple.bats` and c
 ```bash
 #!/usr/bin/env bats
 
-setup() {    
+setup() {
     bats_load_library bats-support
     bats_load_library bats-assert
 }
@@ -44,18 +46,18 @@ setup() {
 }
 
 @test "Simple.bats exists" {
-  run ls tests/simple.bats 
-  assert_output --regexp "tests\/[Ss]imple\.bats"
+  run ls simple.bats
+  assert_output --regexp "[Ss]imple\.bats"
   assert_success
 }
 ```
 
 </details>
 
-And now, the very difficult part is, ouch no, so easy in fact, to run [Bats-core](https://bats-core.readthedocs.io/en/stable/):
+And now, the very difficult part is, ouch no, really easy in fact, to run [Bats-core](https://bats-core.readthedocs.io/en/stable/):
 
 ```bash
-docker run --rm -it -v .:/code bats/bats:latest /code/tests/simple.bats                     
+docker run --rm -it -w /code/tests -v .:/code bats/bats:latest simple.bats
 ```
 
 And ... it works.
@@ -64,7 +66,7 @@ And ... it works.
 
 ### What did we do?
 
-We've created a very basic example with two checks. 
+We've created a very basic example with two checks.
 
 The first one is called *Asserting it's hello* and we've fired `echo "hello"` just like we can make in a Shell script. Then running `assert_output "hello"` we are checking the output of the fired command is `hello` and it's a success (so it's `hello` and nothing else)
 
@@ -78,19 +80,19 @@ This is done using this script:
 }
 ```
 
-And the second check is called *Simple.bats exists* and we're just doing a `ls tests/simple.bats` and check if, for the illustration, `tests/Simple.bats` or `tests/simple.bats` is returned in the list of file (this, to illustrate the use of a regular expression).
+And the second check is called *Simple.bats exists* and we're just doing a `ls simple.bats` and check if, for the illustration, `Simple.bats` or `simple.bats` is returned in the list of file (this, to illustrate the use of a regular expression).
 
 ```bash
 @test "Simple.bats exists" {
-  run ls tests/simple.bats 
-  assert_output --regexp "tests\/[Ss]imple\.bats"
+  run ls simple.bats
+  assert_output --regexp "[Ss]imple\.bats"
   assert_success
 }
 ```
 
-### Asserting a failure 
+### Asserting a failure
 
-Of course we can also assert a failure. Edit your `tests/simple.bats` file like this:
+Of course we can also assert a failure. Edit your `simple.bats` file like this:
 
 <details>
 
@@ -99,7 +101,7 @@ Of course we can also assert a failure. Edit your `tests/simple.bats` file like 
 ```bash
 #!/usr/bin/env bats
 
-setup() {    
+setup() {
     bats_load_library bats-support
     bats_load_library bats-assert
 }
@@ -111,14 +113,14 @@ setup() {
 }
 
 @test "Simple.bats exists" {
-  run ls tests/simple.bats 
-  assert_output --regexp "tests\/[Ss]imple\.bats"
+  run ls simple.bats
+  assert_output --regexp "[Ss]imple\.bats"
   assert_success
 }
 
 # highlight-start
-@test "Removing an inexisting file" {
-  run rm tests/INEXTISTING_FILE
+@test "Removing an inexistent file" {
+  run rm INEXISTENT_FILE
   assert_failure
 }
 # highlight-end
@@ -126,13 +128,11 @@ setup() {
 
 </details>
 
-So, we'll just try to remove a not-existing file and we expect, for sure, a failure:
+So, in the new test function, we'll just try to remove a not-existing file and we expect, for sure, a failure:
 
 ![Asserting for a failure](./images/assert_failure.png)
 
 ## Some real world use cases
-
-Create a test scenario.
 
 Imagine the following, simplified, tree structure:
 
@@ -146,26 +146,42 @@ Imagine the following, simplified, tree structure:
 
 The file `src/assert.sh` contains your Linux shell code you want to test. Your test scenario should be stored in the `tests` folder. Since we'll write tests for the `src/assert.sh` file, let's create the  `tests/assert.bats`.
 
-Below the content of the `~/src/assert.sh`. Very simple function to check the existence of a file on the filesystem. This very straight-forward function will return 0 if the file exists and 1 otherwise. The filename has to be passed as a parameter to the function.
-
+Below the content of the `src/assert.sh`. Let's start with a simple function: checking if a given binary is installed on the system or not. The name of the binary has to be passed as a parameter to the function.
 
 <details>
 
 <summary>src/assert.sh</summary>
 
-
 ```bash
 #!/usr/bin/env bash
 
-function assert::fileExists() {
-    [[ -f "$1" ]]
+function assert::notEmpty() {
+    local -r variable="${1:-}"
+    local -r errorMessage="${2:-"The variable can't be empty."}"
+    
+    [[ -z ${variable} ]] && echo "${errorMessage}" >&2
+
+    return 0
+}
+
+function assert::binaryExists() {
+    local -r binary="${1:-}"
+
+    assert::notEmpty "${binary}" \
+        "You should specify the name of the program whose existence needs to be checked."
+
+    if [[ -z "$(command -v "$binary" || true)" ]]; then
+        echo "The ${binary} binary wasn't found on your system." >&2
+        exit 1
+    fi
+
+    return 0
 }
 ```
 
 </details>
 
-Below the content of the `test/assert.bats`.
-
+Below the content of the `tests/assert.bats`.
 
 <details>
 
@@ -177,34 +193,551 @@ Below the content of the `test/assert.bats`.
 
 setup() {
     bats_load_library bats-assert
+    bats_load_library bats-support
 
-    DIR="$(cd "$(dirname "$BATS_TEST_FILENAME")" >/dev/null 2>&1 && pwd)"
-    PATH="$DIR/../src:$PATH"
+    source ./../src/assert.sh
+
+    # Create a dummy file every time a test function is called
+    tmpFile="/tmp/bats/assert.tmp"
+    [[ ! -d "/tmp/bats" ]] && mkdir "/tmp/bats"
+
+    touch "${tmpFile}"
 }
 
-@test "Assert file exists on an existing file" {
-  source assert.sh
-  run assert::fileExists "assert.sh"
-  assert_success
+# Once the test function has been called, remove the temporary
+teardown() {
+    [[ -f "${tmpFile}" ]] && rm -f "${tmpFile}"
+    return 0
 }
 
-@test "Assert file exists on an not existing file" {
-  source assert.sh
-  run assert::fileExists "file.sh"
-  assert_failure
+@test "assert::binaryExists - Assert some binaries exists" {
+    # clear is a native Linux command
+    run assert::binaryExists "clear"
+
+    # We expect thus binaryExists return a zero exit code (=success)
+    assert_success
+
+    # and no output message since it's successful
+    assert_output ""
+
+
+    # Another test with the native ls command
+    run assert::binaryExists "ls"
+    assert_output ""
+    assert_success
+}
+
+@test "assert::binaryExists - Assert some binaries didn't exists" {
+    run assert::binaryExists "fakeProgram"
+
+    # Since fakeProgram didn't exists, we expect binaryExists exit with code 1
+    assert_failure 1
+
+    # We also expect this, exact, error message
+    assert_output "The fakeProgram binary wasn't found on your system."
 }
 ```
 
 </details>
 
-
-My repo `https://github.com/cavo789/bash_unit_testing_using_bats`
-
 The command line:
 
 ```bash
-docker run --rm -it -v .:/code bats/bats:latest /code/tests/test.bats                     
+docker run --rm -it -w /code/tests -v .:/code bats/bats:latest assert.bats
 ```
 
-The `tests/test.bats` file:
+By running it, we expect a success for the binaryExists for `clear` and `ls` commands (since well installed on our system) and we expect a failure for `fakeProgram` but, since we're using `assert_failure`, our tests scenario should works.
+
+Let's add a check to see if a specific Docker image already exists or not on the system:
+
+<details>
+
+<summary>src/assert.sh</summary>
+
+```bash
+#!/usr/bin/env bash
+
+function assert::notEmpty() {
+    local -r variable="${1:-}"
+    local -r errorMessage="${2:-"The variable can't be empty."}"
+    
+    [[ -z ${variable} ]] && echo "${errorMessage}" >&2
+
+    return 0
+}
+
+function assert::binaryExists() {
+    local -r binary="${1:-}"
+
+    assert::notEmpty "${binary}" \
+        "You should specify the name of the program whose existence needs to be checked."
+
+    if [[ -z "$(command -v "$binary" || true)" ]]; then
+        echo "The ${binary} binary wasn't found on your system." >&2
+        exit 1
+    fi
+
+    return 0
+}
+
+# highlight-start
+function assert::dockerImageExists() {
+    local -r imageName="${1:-}"
+    local -r errorMessage="${2:-The Docker image \"$imageName\" did not exists}"
+    
+    assert::notEmpty "${imageName}" "You should specify the name of the Docker image whose existence needs to be checked."
+
+    # When the image exists, "docker images -q" will return his ID (f.i. `5eed474112e9`), an empty string otherwise
+    if [[ "$(docker images -q "$imageName" 2> /dev/null)" == "" ]]; then
+        echo "${errorMessage}" >&2
+        exit 1
+    fi 
+
+    return 0
+}
+# highlight-end
+```
+
+</details>
+
+and the updated `tests/assert.bats` file:
+
+<details>
+
+<summary>tests/assert.bats</summary>
+
+
+```bash
+#!/usr/bin/env bats
+
+setup() {
+    bats_load_library bats-assert
+    bats_load_library bats-support
+
+    source ./../src/assert.sh
+
+    # Create a dummy file every time a test function is called
+    tmpFile="/tmp/bats/assert.tmp"
+    [[ ! -d "/tmp/bats" ]] && mkdir "/tmp/bats"
+
+    touch "${tmpFile}"
+}
+
+# Once the test function has been called, remove the temporary
+teardown() {
+    [[ -f "${tmpFile}" ]] && rm -f "${tmpFile}"
+    return 0
+}
+
+@test "assert::binaryExists - Assert some binaries exists" {
+    # clear is a native Linux command
+    run assert::binaryExists "clear"
+
+    # We expect thus binaryExists return a zero exit code (=success)
+    assert_success
+
+    # and no output message since it's successful
+    assert_output ""
+
+
+    # Another test with the native ls command
+    run assert::binaryExists "ls"
+    assert_output ""
+    assert_success
+}
+
+@test "assert::binaryExists - Assert some binaries didn't exists" {
+    run assert::binaryExists "FakeProgram"
+
+    # Since FakeProgram didn't exists, we expect binaryExists exit with code 1
+    assert_failure 1
+
+    # We also expect this, exact, error message
+    assert_output "The FakeProgram binary wasn't found on your system."
+}
+
+# highlight-start
+@test "assert::dockerImageExists - Assert docker image exists - using mockup" {
+    # Mock - we'll create a very simple docker override and return a fake ID
+    # This will simulate the `docker images -q "AN_IMAGE_NAME"` which return
+    # the ID of the image when found
+    docker() {
+        echo "feb5d9fea6a5"
+    }
+
+    run assert::dockerImageExists "A-great-Docker-Image"
+    assert_output ""
+    assert_success
+}
+
+@test "assert::dockerImageExists - Assert docker image didn't exists - using mockup" {
+    # Mock - we'll create a very simple docker override and return a fake ID
+    # This will simulate the `docker images -q "AN_IMAGE_NAME"` which return
+    # the ID of the image when found; here return an empty string to simulate
+    # a non-existent image
+    docker() {
+        echo ""
+    }
+
+    run assert::dockerImageExists "Fake/image" "ERROR - Bad choice, that image didn't exists"
+    assert_failure 1
+    assert_output --partial "Bad choice, that image didn't exists"
+}
+# highlight-end
+```
+
+</details>
+
+## Another examples
+
+### assert_equal
+
+Simply verify that both values are equals. Here, we'll call a function that will return the length of an array and verify it's the expected value.
+
+```bash
+@test "array::length - Calculate the length of an array" {
+    arr=("one" "two" "three" "four" "five")
+
+    assert_equal $(array::length arr) 5
+}
+
+function array::length() {
+    local -n array_length=$1
+    echo ${#array_length[@]}
+}
+```
+
+### assert_failure
+
+`assert::binaryExists` will exit 1 if the binary can't be retrieved. An error message like *The binary can't be found will be echoed on the console*.
+
+```bash
+@test "Assert binary didn't exists" {
+    # Simulate which and return an error meaning "No, that binary didn't exists on the host"
+    which() {
+        exit 1
+    }
+
+    run assert::binaryExists "Inexistent_Binary" "Ouch, no, no, that binary didn't exists on the system"
+
+    assert_failure
+
+    assert_output --partial "Ouch, no, no, that binary didn't exists on the system"
+}
+
+function assert::binaryExists() {
+    local binary="${1}"
+    local msg="${2:-${FUNCNAME[0]} - File \"$binary\" did not exists}"
+
+    [[ -z "$(which "$binary" || true)" ]] && echo "$msg" && exit 1
+
+    return 0
+}
+```
+
+### assert_output
+
+`assert_output` has two nice options: `--partial` and `--regexp`.
+
+Using `--partial` will allow f.i. the check if the output contains some raw text like, for a help screen, a given sentence.
+
+```bash
+@test "Show the help screen" {
+    source 'src/helpers.sh'
+
+    arrArguments=("--help")
+
+    run helpers::showHelp ${arrArguments[@]}
+
+    assert_output --partial "Convert a revealJs slideshow to a PDF document"
+}
+```
+
+Using `--regexp` will allow to use a regular expression:
+
+```bash
+@test "Show the help screen" {
+    source 'src/helpers.sh'
+    arrArguments=("--input InvalidFile")
+    run helpers::__process ${arrArguments[@]}
+    assert_output --regexp "ERROR - The input file .* doesn't exists."
+}
+```
+
+### assert_success
+
+`assert::binaryExists` will return 0 when the binary can be retrieved. The function will run in silent (no output).
+
+```bash
+@test "Assert binary exists" {
+    run assert::binaryExists "clear" # clear is a native Linux command
+    assert_output ""                 # No output when success
+    assert_success
+}
+
+function assert::binaryExists() {
+    local binary="${1}"
+    local msg="${2:-${FUNCNAME[0]} - File \"$binary\" did not exists}"
+
+    [[ -z "$(which "$binary" || true)" ]] && echo "$msg" && exit 1
+
+    return 0
+}
+```
+
+### Check for ANSI colors
+
+Imagine the following code:
+
+```bash
+__RED=31
+
+function console::printRed() {
+    for line in "$@"; do
+        printf "\e[1;${__REd}m%s\e[0m\n" "$line"
+    done
+}
+```
+
+We wish to check that the line will be echoed in red.
+
+```bash
+@test "console::printRed - The sentence should be displayed" {
+    run console::printRed "This line should be echoed in Red"
+    assert_output "�[1;31mThis line should be echoed in Red�[0m"
+    assert_success
+}
+```
+
+### Check for multi-lines output
+
+Imagine the following code:
+
+```bash
+function console::banner() {
+    printf "%s\n" "============================================"
+    printf "= %-40s =\n" "$@"
+    printf "%s\n" "============================================"
+}
+```
+
+This will write three lines on the console, like f.i.
+
+```bash
+# ============================================
+# = Step 1 - Initialization                  =
+# ============================================
+```
+
+To check for multi-lines, use the `$lines` array like this:
+
+```bash
+@test "console::banner - The sentence should be displayed" {
+    run console::banner "Step 1 - Initialization"
+
+    assert_equal "${lines[0]}" "============================================"
+    assert_equal "${lines[1]}" "= Step 1 - Initialization                  ="
+    assert_equal "${lines[2]}" "============================================"
+
+    assert_success
+}
+```
+
+### Check against a file
+
+Imagine a function that will parse a file and f.i. remove some paragraphs. We need to check if the content is correct, once the function has been fired.
+
+For this, imagine a `removeTopOfFileComments` function. The function will parse the file and remove the HTML comments (`<!-- ... -->`) present at the top of the file.
+
+For the test, we'll create a file with three empty lines, then a HTML comment block, then two empty lines, then the HTML code. So, by removing the HTML comment, we'll have five empty lines followed by the HTML block so, we need to check our file contains six lines.
+
+The tip used is:
+
+* `cat --show-ends --show-tabs "$tempfile"` i.e. get the content of the file but with `$` where we've a linefeed and, here, also `^I` for tabs.
+* then we'll pipe the result with `tr "\n" "#"` so, instead of getting six lines, we'll get only one by replacing linefeed by `#`.
+
+Now, bingo, since we've a variable with only one line (in our example: `$#$#$#$#$#<html><body/></html>$#`), we can compare with our expectation:
+
+<!-- cspell:disable -->
+```bash
+@test "html::removeTopOfFileComments - remove HTML comments - with empty lines" {
+    tempfile="$(mktemp)"
+    
+    # Here, we'll have extra, empty, lines. They should be removed too
+    echo '' >$tempfile
+    echo '' >>$tempfile
+    echo '' >>$tempfile
+    echo '<!--  ' >>$tempfile # We also add extra spaces before the start tag
+    echo '   Lorem ipsum dolor sit amet, consectetur adipiscing elit.' >>$tempfile
+    echo '   Morbi interdum elit a nisi facilisis pulvinar.' >>$tempfile
+    echo '   Vestibulum fermentum consequat suscipit. Vestibulum id sapien metus.' >>$tempfile
+    echo '-->     ' >>$tempfile # We also add extra spaces after the end tag
+    echo '' >>$tempfile
+    echo '' >>$tempfile
+    echo '<html><body/></html>' >>$tempfile
+
+    run html::removeTopOfFileComments "$tempfile"
+
+    # Get now the content of the file
+    #   We expect three empty lines (the three first)
+    #       The HTML comment has been remove
+    #   Then there are two more empty line (so we'll five empty lines)
+    #   And we'll have our "<html><body/></html>" block.
+    #
+    #   cat --show-ends --show-tabs will show the dollar sign (end-of-line) and f.i. ^I for tabulations
+    #   tr "\n" "#" will then convert the linefeed character to a diese so, in fact, fileContent will
+    #   be a string like `$#$#$#$#$#<html><body/></html>$#`
+    fileContent="$(cat --show-ends --show-tabs "$tempfile" | tr "\n" "#")"
+
+    # Once we've our string, compare the fileContent with our expectation
+    assert_equal "$fileContent" "\$#\$#\$#\$#\$#<html><body/></html>\$#"
+}
+```
+<!-- cspell:enable -->
+
+### Check against a file using a regex
+
+A second scenario can be: you have a write function (think to a logfile) and you want to check the presence of a given line in the file.
+
+The example below relies on `bats-file` and his `assert_file_contains` method. That method ask for a filename and a regex pattern.
+
+```bash
+setup() {
+    bats_load_library bats-support
+    bats_load_library bats-assert
+    bats_load_library bats-file
+
+    #! "grep" without the "-P" argument seems to not support repetition like "\d{4}"
+    #
+    # a date like `2022-04-07`
+    regexDate="[0-9][0-9][0-9][0-9]\-[0-9][0-9]\-[0-9][0-9]"
+    # a time like `17:41:22`
+    regexTime="[0-9][0-9]\:[0-9][0-9]\:[0-9][0-9]"
+    # a timezone difference like "0200"
+    regexUTC="[0-9]*" #! Should be [0-9][0-9][0-9][0-9] but didn't work???
+
+    # The final pattern so we can match f.i. `[2022-04-07T18:00:20+0200] `
+    __DATE_PATTERN="\[${regexDate}\T${regexTime}\+${regexUTC}.*\]\s"
+
+    return 0
+}
+
+@test "log::write - Write a line in the log" {
+    local sentence=""
+    sentence="This is my important message"
+    run write "${sentence}"
+
+    assert_file_exist "/tmp/bats_log.tmp"
+
+    echo "${__DATE_PATTERN}${sentence}" >/tmp/regex.tmp
+    assert_file_contains "/tmp/bats_log.tmp" "${__DATE_PATTERN}${sentence}"
+    assert_success
+}
+```
+
+### Check that a value is NOT in a file
+
+Another use of the assert_failure can be to start a command like a grep and expect to get an error:
+
+```bash
+run grep "REGEX_SOMETHING_THAT_SHOULD_BE_MISSING" "/tmp/test.log"
+assert_failure 1
+```
+
+### Some special functions
+
+#### setup
+
+The `setup` function is called before running a test. For each `@test` function present in the scenario, the `setup()` function will be called.
+
+In the following example, since there are two test functions, `setup()` will be called twice.
+
+```bash
+setup() {
+    bats_load_library bats-support
+    bats_load_library bats-assert
+
+    source 'src/env.sh'
+}
+
+@test "env::assertFileExists - Assert .env file exists - The path isn't initialized" {
+    run env::assertFileExists
+    assert_failure
+}
+
+@test "env::assertFileExists - Assert .env file exists - The file exists" {
+    ENV_ROOT_DIR="/tmp"
+    ENV_FILENAME=".env.bats.testing"
+    touch ${ENV_ROOT_DIR}/${ENV_FILENAME}
+    run env::assertFileExists
+    assert_success
+}
+```
+
+#### teardown
+
+Just like `setup`, the `teardown` function will be called for each tests but once the test has been fired. This is the good place for, f.i., removing some files created during the execution of a test.
+
+```bash
+teardown() {
+    rm -f /tmp/bats
+}
+```
+
+### Running the tests
+
+The command `docker run --rm -it -w /code/tests -v .:/code bats/bats:latest simple.bats` will run the `simple.bats` file while `docker run --rm -it -w /code/tests -v .:/code bats/bats:latest` will run all `.bats` file in the working directory.
+
+#### Mocking
+
+We can override a function during a test. Consider the following use case: we've a function that will return 0 when a give Docker image is present on the host. The function will return 1 and echo an error on the console if the image isn't retrieved.
+
+```bash
+function assert::dockerImageExists() {
+    local image="${1}"
+    local msg="${2:-The Docker image \"$image\" did not exists}"
+
+    # When the image exists, "docker images -q" will return his ID (f.i. `5eed474112e9`), an empty string otherwise
+    [[ "$(docker images -q "$image" 2>/dev/null)" == "" ]] && echo "$msg" && exit 1
+
+    return 0
+}
+```
+
+So, we need to override the docker answer. When the image is supposed to be there, we just need to return a non-empty string, anything but not an empty string. Let's return a fake ID to really simulate the answer of `docker images -q`.
+
+```bash
+@test "Assert docker image exists" {
+    # Mock - we'll create a very simple docker override and return a fake ID
+    # This will simulate the `docker images -q "AN_IMAGE_NAME"` which return
+    # the ID of the image when found
+    docker() {
+        echo "feb5d9fea6a5"
+    }
+
+    source assert.sh
+    run assert::dockerImageExists "A-great-Docker-Image"
+    assert_output "" # No output when success
+    assert_success
+}
+```
+
+And return an empty string to simulate an inexistent image.
+
+```bash
+@test "Assert docker image didn't exists" {
+    # Mock - we'll create a very simple docker override and return a fake ID
+    # This will simulate the `docker images -q "AN_IMAGE_NAME"` which return
+    # the ID of the image when found; here return an empty string to simulate
+    # an inexistent image
+    docker() {
+        echo ""
+    }
+
+    source assert.sh
+    run assert::dockerImageExists "Fake/image" "Bad choice, that image didn't exists"
+    assert_output --partial "Bad choice, that image didn't exists"
+    assert_failure
+}
+```
 
