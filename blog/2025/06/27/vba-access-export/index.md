@@ -5,13 +5,12 @@ authors: [christophe]
 image: /img/database_tips_social_media.jpg
 tags: [database, msaccess, vba, vbs]
 enableComments: true
-draft: true
 ---
 ![Export MS Access objects](/img/database_tips_banner.jpg)
 
 A long time ago, in a previous life, I developed a lot of MS Access databases and unlike modern tools, it wasn't possible to version the code (modules, macros, queries, etc.) in a tool like Github.
 
-These objects are an integral part of the database in the same way as the tables and their data. If you want to version them, you must first extract them.
+These objects are an integral part of the database in the same way as the tables and their data. Everything is stored inside the `.mdb` format (or `.mda` or `.accdb`). If you want to version them, you must first extract them.
 
 Let's look at how to do this.
 
@@ -19,17 +18,17 @@ Let's look at how to do this.
 
 ## Description
 
-My [https://github.com/cavo789/vbs_access_export](https://github.com/cavo789/vbs_access_export) vbs script will export all code objects (forms, macros, modules, queries and reports) from a MS Access database / application (can be `.accdb` or `.mdb`) to flat files on your disk.
+My [https://github.com/cavo789/vbs_access_export](https://github.com/cavo789/vbs_access_export) VBS script will export all code objects (forms, macros, modules, queries and reports) from a MS Access database / application to flat files on your disk.
 
 This way, you'll get a quick backup of your code and you'll be able to synchronize your code on a versioning platform like GitHub.
 
 The script will start MS Access (hidden way), open the specified database, process every code object and export them, one by one, in a `\src\your_database.mdb` folder.
 
-The src folder will be automatically created if needed and you'll find a subfolder having the same name of your file (so you can have more than one exported file in the same src folder).
+The `src` folder will be automatically created if needed and you'll find a subfolder having the same name of your file (so you can have more than one exported file in the same `src` folder).
 
 ## Install
 
-Just get a copy of the [https://github.com/cavo789/vbs_access_export](https://github.com/cavo789/vbs_access_export) `.vbs` script, perhaps the `.cmd` too (for your easiness) and save them in the same folder of your database.
+Just get a copy of the [https://github.com/cavo789/vbs_access_export](https://github.com/cavo789/vbs_access_export) VBS script, perhaps the `.cmd` too (for your easiness) and save them in the same folder of your database.
 
 ## Usage
 
@@ -66,4 +65,6 @@ Export all reports
         [...]
 ```
 
-Once finished, you'll have a subfolder called src with one file by object so, indirectly, you've a backup of your code 👌.
+Once finished, you'll have a subfolder called `src` with one file by object so, indirectly, you've a backup of your code 👌.
+
+You can now commit them to GitHub if it's what you need.
