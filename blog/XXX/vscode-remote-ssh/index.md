@@ -5,6 +5,7 @@ authors: [christophe]
 tags: [ssh, tips, vscode]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg
+draft: true
 ---
 ![SSH Remote development with VSCode](/img/vscode_tips_banner.jpg)
 
