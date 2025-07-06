@@ -132,7 +132,7 @@ So, in the new test function, we'll just try to remove a not-existing file and w
 
 ![Asserting for a failure](./images/assert_failure.png)
 
-## Some real world use cases
+## Some real-world use cases
 
 Imagine the following, simplified, tree structure:
 
@@ -227,10 +227,10 @@ teardown() {
     assert_success
 }
 
-@test "assert::binaryExists - Assert some binaries didn't exists" {
+@test "assert::binaryExists - Assert some binaries didn't exist" {
     run assert::binaryExists "fakeProgram"
 
-    # Since fakeProgram didn't exists, we expect binaryExists exit with code 1
+    # Since fakeProgram didn't exist, we expect binaryExists exit with code 1
     assert_failure 1
 
     # We also expect this, exact, error message
@@ -246,7 +246,7 @@ The command line:
 docker run --rm -it -w /code/tests -v .:/code bats/bats:latest assert.bats
 ```
 
-By running it, we expect a success for the binaryExists for `clear` and `ls` commands (since well installed on our system) and we expect a failure for `fakeProgram` but, since we're using `assert_failure`, our tests scenario should works.
+By running it, we expect a success for the binaryExists for `clear` and `ls` commands (since well installed on our system) and we expect a failure for `fakeProgram` but, since we're using `assert_failure`, our tests scenario should work.
 
 Let's add a check to see if a specific Docker image already exists or not on the system:
 
@@ -283,7 +283,7 @@ function assert::binaryExists() {
 # highlight-start
 function assert::dockerImageExists() {
     local -r imageName="${1:-}"
-    local -r errorMessage="${2:-The Docker image \"$imageName\" did not exists}"
+    local -r errorMessage="${2:-The Docker image \"$imageName\" did not exist}"
     
     assert::notEmpty "${imageName}" "You should specify the name of the Docker image whose existence needs to be checked."
 
@@ -346,10 +346,10 @@ teardown() {
     assert_success
 }
 
-@test "assert::binaryExists - Assert some binaries didn't exists" {
+@test "assert::binaryExists - Assert some binaries didn't exist" {
     run assert::binaryExists "FakeProgram"
 
-    # Since FakeProgram didn't exists, we expect binaryExists exit with code 1
+    # Since FakeProgram didn't exist, we expect binaryExists exit with code 1
     assert_failure 1
 
     # We also expect this, exact, error message
@@ -370,7 +370,7 @@ teardown() {
     assert_success
 }
 
-@test "assert::dockerImageExists - Assert docker image didn't exists - using mockup" {
+@test "assert::dockerImageExists - Assert docker image didn't exist - using mockup" {
     # Mock - we'll create a very simple docker override and return a fake ID
     # This will simulate the `docker images -q "AN_IMAGE_NAME"` which return
     # the ID of the image when found; here return an empty string to simulate
@@ -379,9 +379,9 @@ teardown() {
         echo ""
     }
 
-    run assert::dockerImageExists "Fake/image" "ERROR - Bad choice, that image didn't exists"
+    run assert::dockerImageExists "Fake/image" "ERROR - Bad choice, that image didn't exist"
     assert_failure 1
-    assert_output --partial "Bad choice, that image didn't exists"
+    assert_output --partial "Bad choice, that image didn't exist"
 }
 # highlight-end
 ```
@@ -412,22 +412,22 @@ function array::length() {
 `assert::binaryExists` will exit 1 if the binary can't be retrieved. An error message like *The binary can't be found will be echoed on the console*.
 
 ```bash
-@test "Assert binary didn't exists" {
-    # Simulate which and return an error meaning "No, that binary didn't exists on the host"
+@test "Assert binary didn't exist" {
+    # Simulate which and return an error meaning "No, that binary didn't exist on the host"
     which() {
         exit 1
     }
 
-    run assert::binaryExists "Inexistent_Binary" "Ouch, no, no, that binary didn't exists on the system"
+    run assert::binaryExists "Inexistent_Binary" "Ouch, no, no, that binary didn't exist on the system"
 
     assert_failure
 
-    assert_output --partial "Ouch, no, no, that binary didn't exists on the system"
+    assert_output --partial "Ouch, no, no, that binary didn't exist on the system"
 }
 
 function assert::binaryExists() {
     local binary="${1}"
-    local msg="${2:-${FUNCNAME[0]} - File \"$binary\" did not exists}"
+    local msg="${2:-${FUNCNAME[0]} - File \"$binary\" did not exist}"
 
     [[ -z "$(which "$binary" || true)" ]] && echo "$msg" && exit 1
 
@@ -460,7 +460,7 @@ Using `--regexp` will allow to use a regular expression:
     source 'src/helpers.sh'
     arrArguments=("--input InvalidFile")
     run helpers::__process ${arrArguments[@]}
-    assert_output --regexp "ERROR - The input file .* doesn't exists."
+    assert_output --regexp "ERROR - The input file .* doesn't exist."
 }
 ```
 
@@ -477,7 +477,7 @@ Using `--regexp` will allow to use a regular expression:
 
 function assert::binaryExists() {
     local binary="${1}"
-    local msg="${2:-${FUNCNAME[0]} - File \"$binary\" did not exists}"
+    local msg="${2:-${FUNCNAME[0]} - File \"$binary\" did not exist}"
 
     [[ -z "$(which "$binary" || true)" ]] && echo "$msg" && exit 1
 
@@ -509,7 +509,7 @@ We wish to check that the line will be echoed in red.
 }
 ```
 
-### Check for multi-lines output
+### Check for multi-line output
 
 Imagine the following code:
 
@@ -525,7 +525,7 @@ This will write three lines on the console, like f.i.
 
 ```bash
 # ============================================
-# = Step 1 - Initialization                  =
+# = Step 1 - Initialisation                  =
 # ============================================
 ```
 
@@ -533,10 +533,10 @@ To check for multi-lines, use the `$lines` array like this:
 
 ```bash
 @test "console::banner - The sentence should be displayed" {
-    run console::banner "Step 1 - Initialization"
+    run console::banner "Step 1 - Initialisation"
 
     assert_equal "${lines[0]}" "============================================"
-    assert_equal "${lines[1]}" "= Step 1 - Initialization                  ="
+    assert_equal "${lines[1]}" "= Step 1 - Initialisation                  ="
     assert_equal "${lines[2]}" "============================================"
 
     assert_success
@@ -553,8 +553,8 @@ For the test, we'll create a file with three empty lines, then a HTML comment bl
 
 The tip used is:
 
-* `cat --show-ends --show-tabs "$tempfile"` i.e. get the content of the file but with `$` where we've a linefeed and, here, also `^I` for tabs.
-* then we'll pipe the result with `tr "\n" "#"` so, instead of getting six lines, we'll get only one by replacing linefeed by `#`.
+* `cat --show-ends --show-tabs "$tempfile"` i.e. get the content of the file but with `$` where we've a line feed and, here, also `^I` for tabs.
+* then we'll pipe the result with `tr "\n" "#"` so, instead of getting six lines, we'll get only one by replacing line feed by `#`.
 
 Now, bingo, since we've a variable with only one line (in our example: `$#$#$#$#$#<html><body/></html>$#`), we can compare with our expectation:
 
@@ -580,12 +580,12 @@ Now, bingo, since we've a variable with only one line (in our example: `$#$#$#$#
 
     # Get now the content of the file
     #   We expect three empty lines (the three first)
-    #       The HTML comment has been remove
+    #       The HTML comment has been removed
     #   Then there are two more empty line (so we'll five empty lines)
     #   And we'll have our "<html><body/></html>" block.
     #
     #   cat --show-ends --show-tabs will show the dollar sign (end-of-line) and f.i. ^I for tabulations
-    #   tr "\n" "#" will then convert the linefeed character to a diese so, in fact, fileContent will
+    #   tr "\n" "#" will then convert the line feed character to a hash so, in fact, fileContent will
     #   be a string like `$#$#$#$#$#<html><body/></html>$#`
     fileContent="$(cat --show-ends --show-tabs "$tempfile" | tr "\n" "#")"
 
@@ -599,7 +599,7 @@ Now, bingo, since we've a variable with only one line (in our example: `$#$#$#$#
 
 A second scenario can be: you have a write function (think to a logfile) and you want to check the presence of a given line in the file.
 
-The example below relies on `bats-file` and his `assert_file_contains` method. That method ask for a filename and a regex pattern.
+The example below relies on `bats-file` and his `assert_file_contains` method. That method asks for a filename and a regex pattern.
 
 ```bash
 setup() {
@@ -613,7 +613,7 @@ setup() {
     regexDate="[0-9][0-9][0-9][0-9]\-[0-9][0-9]\-[0-9][0-9]"
     # a time like `17:41:22`
     regexTime="[0-9][0-9]\:[0-9][0-9]\:[0-9][0-9]"
-    # a timezone difference like "0200"
+    # a time zone difference like "0200"
     regexUTC="[0-9]*" #! Should be [0-9][0-9][0-9][0-9] but didn't work???
 
     # The final pattern so we can match f.i. `[2022-04-07T18:00:20+0200] `
@@ -660,7 +660,7 @@ setup() {
     source 'src/env.sh'
 }
 
-@test "env::assertFileExists - Assert .env file exists - The path isn't initialized" {
+@test "env::assertFileExists - Assert .env file exists - The path isn't initialised" {
     run env::assertFileExists
     assert_failure
 }
@@ -676,7 +676,7 @@ setup() {
 
 #### teardown
 
-Just like `setup`, the `teardown` function will be called for each tests but once the test has been fired. This is the good place for, f.i., removing some files created during the execution of a test.
+Just like `setup`, the `teardown` function will be called for each test but once the test has been fired. This is the good place for, f.i., removing some files created during the execution of a test.
 
 ```bash
 teardown() {
@@ -695,7 +695,7 @@ We can override a function during a test. Consider the following use case: we've
 ```bash
 function assert::dockerImageExists() {
     local image="${1}"
-    local msg="${2:-The Docker image \"$image\" did not exists}"
+    local msg="${2:-The Docker image \"$image\" did not exist}"
 
     # When the image exists, "docker images -q" will return his ID (f.i. `5eed474112e9`), an empty string otherwise
     [[ "$(docker images -q "$image" 2>/dev/null)" == "" ]] && echo "$msg" && exit 1
@@ -725,7 +725,7 @@ So, we need to override the docker answer. When the image is supposed to be ther
 And return an empty string to simulate an inexistent image.
 
 ```bash
-@test "Assert docker image didn't exists" {
+@test "Assert docker image didn't exist" {
     # Mock - we'll create a very simple docker override and return a fake ID
     # This will simulate the `docker images -q "AN_IMAGE_NAME"` which return
     # the ID of the image when found; here return an empty string to simulate
@@ -735,8 +735,8 @@ And return an empty string to simulate an inexistent image.
     }
 
     source assert.sh
-    run assert::dockerImageExists "Fake/image" "Bad choice, that image didn't exists"
-    assert_output --partial "Bad choice, that image didn't exists"
+    run assert::dockerImageExists "Fake/image" "Bad choice, that image didn't exist"
+    assert_output --partial "Bad choice, that image didn't exist"
     assert_failure
 }
 ```

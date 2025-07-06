@@ -1,23 +1,22 @@
 ---
 slug: vscode-code-server
-title: Do I need vscode on my machine to use it?
+title: Do I need VSCode on my machine to use it?
 authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
 tags: [docker, vscode]
 enableComments: true
-draft: true
 ---
-![Do I need vscode on my machine to use it?](/img/vscode_tips_banner.jpg)
+![Do I need VSCode on my machine to use it?](/img/vscode_tips_banner.jpg)
 
 <!-- cspell:ignore codercom,tadaaaa -->
 
 Maybe one day we won't need to install an operating system, just have Docker on our machine.  Well, it won't be tomorrow yet, but as far as VSCode is concerned, yes, we can.
 
-You read that right: there's a Docker image that's nothing other than vscode in a browser.
+You read that right: there's a Docker image that's nothing other than VSCode in a browser.
 
-It's useless if you're a heavy user of vscode (you've installed it on every of your computer) but there are situations where, for example, you need to work on another computer (while yours is being repaired) and vscode's Docker image will come in handy.
+It's useless if you're a heavy user of VSCode (=you've installed it on every of your computer) but there are situations where, for example, you need to work on another computer (while yours is being repaired or you're travelling and don't have yours) and VSCode's Docker image will come in handy.
 
-Or ... you're not yet convinced by vscode and just want to try it out.
+Or ... you're not yet convinced by VSCode and just want to try it out.
 
 <!-- truncate -->
 
@@ -32,7 +31,7 @@ docker run -d --name code-server -p 8080:8080 \
   codercom/code-server:latest
 ```
 
-Once triggered successfully, just open your browser and visit `http://127.0.0.1:8080` to start vscode in the browser.
+Once triggered successfully, just open your browser and visit `http://127.0.0.1:8080` to start VSCode in the browser.
 
 :::info The `docker run` explained
 * `-d`: the code-server will run as a daemon service,
@@ -63,5 +62,5 @@ Copy/paste the password in the form and submit it and tadaaaa:
 
 ![VScode in the browser](./images/code_server.png)
 
-Continue your journey with the official documentation: [https://github.com/coder/code-server](https://github.com/coder/code-server) or [https://coder.com/docs/code-server/guide](https://coder.com/docs/code-server/guide) to get more info 
+Continue your journey with the official documentation: [https://github.com/coder/code-server](https://github.com/coder/code-server) or [https://coder.com/docs/code-server/guide](https://coder.com/docs/code-server/guide) to get more info. 
 
