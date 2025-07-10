@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 tags: [linux, shell, tests]
 enableComments: true
-draft: true
 ---
 <!-- cspell:ignore imple -->
 
