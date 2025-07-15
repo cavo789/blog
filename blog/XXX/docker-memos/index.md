@@ -7,6 +7,9 @@ enableComments: true
 image: /img/docker_tools_header.jpg
 draft: true
 ---
+
+<!-- cspell:ignore neosmemo -->
+
 ![Self-hosted note-taking application](/img/docker_tools_header.jpg)
 
 > [https://www.usememos.com/](https://www.usememos.com/)
@@ -33,7 +36,39 @@ This time, I will not suggest to use the temporary folder since we'll need to ke
 
 So, please run `mkdir -p  ~/tools/memos && cd $_` to create a folder in your home directory and jump in it.
 
-In your console, please run `docker run -d --init --name memos --publish 5230:5230 --volume ~/tools/memos/:/var/opt/memos neosmemo/memos:stable`.
+Then, please create a file called `compose.yaml` with this content:
+
+<details>
+
+<summary>compose.yaml</summary>
+
+```yaml
+name: tools
+
+services:
+  memos:
+    image: neosmemo/memos:stable
+    container_name: memos
+    init: true
+    user: ${UID:-1000}:${GID:-1000}
+    ports:
+      - "5230:5230"
+    volumes:
+      - ./data:/var/opt/memos
+    restart: unless-stopped
+```
+
+</details>
+
+:::note
+The line `user: ${UID:-1000}:${GID:-1000}` will ask Docker to use a specific user (not the `root` one) while creating files on your disk.
+
+The user `1000:1000` is, in the most cases, you i.e. it's your current Linux user (type `id -u` and, then, `id -g` to retrieve your user ID and your group ID and you'll see it'll be `1000` for both).
+
+If yours IDs are not `1000`, please edit the yaml file and put yours IDs instead.
+:::
+
+In your console, now, just run `docker compose up --build --detach`.
 
 In just six seconds, memos has been installed on my machine and a container has been created:
 
@@ -86,7 +121,7 @@ As you can see, even it's optional, let's assign one or more tags to a note. Sim
 ```
 
 ```markdown
-Investigate and resolve the bug in the budgetary application that occurs when initialising a new financial exercise. #budget
+Investigate and resolve the bug in the budgetary application that occurs when initializing a new financial exercise. #budget
 ```
 
 ```markdown
@@ -121,11 +156,11 @@ Now, just click on the filter to enable it. You'll just see one task (because th
 
 Just like you do in any modern application, copy the image in the clipboard and paste it in the text area. Add if you want some text.
 
-## Customisation
+## Customization
 
 By clicking on the bottom left profile icon, you can update the application's settings like setting `Monday` as the first day of the week (for the top left calendar).
 
-You can also inject some CSS / Javascript to customise the look&feel of memos.
+You can also inject some CSS / Javascript to customize the look&feel of memos.
 
 ## Conclusions
 

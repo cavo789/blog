@@ -3,18 +3,20 @@ slug: heimdall-dashboard
 title: Heimdall - Web dashboard
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
-tags: [docker]
+tags: [docker, dashboard, self-hosted, tool]
 enableComments: true
 ---
+<!-- cspell:ignore puid,pgid,Bitwarden -->
+
 ![Heimdall - Web dashboard](/img/docker_tips_banner.jpg)
 
 > [https://heimdall.site/](https://heimdall.site/)
 
-I've never been a big fan of browser's bookmarks and in fact I have almost none. And, quite logically, I almost never display the favourite bar.
+I've never been a big fan of browser's bookmarks and in fact I have almost none. And, quite logically, I almost never display the favorite bar.
 
 I only visit a few sites on a regular basis and my browser history remembers them; otherwise a famous search engine remembers them for me.
 
-However, I'm not averse to a personalised homepage and I'm quite happy with Heimdall at the moment.
+However, I'm not averse to a personalized homepage and I'm quite happy with Heimdall at the moment.
 
 <!-- truncate -->
 
@@ -30,21 +32,23 @@ But it does give you a much nicer way of accessing your site than the outdated b
 
 ## Creating your dashboard
 
-Please create a dummy folder and jump in it: `mkdir /tmp/dashboard && cd $_`.
+Please create a dummy folder and jump in it: `mkdir ~/tools/dashboard && cd $_`.
 
-In that folder, please create a file called `composer.yaml` with the following content (refers to [official Docker Hub page](https://hub.docker.com/r/linuxserver/heimdall/) for the latest version):
+In that folder, please create a file called `compose.yaml` with the following content (refers to [official Docker Hub page](https://hub.docker.com/r/linuxserver/heimdall/) for the latest version):
 
 <details>
 <summary>compose.yaml</summary>
 
 ```yaml
+name: tools
+
 services:
   heimdall:
     image: lscr.io/linuxserver/heimdall:latest
     container_name: heimdall
     environment:
-      - PUID=${USER_ID:-1000}
-      - PGID=${GROUP_ID:-1000}
+      - PUID=1000
+      - PGID=1000
       - TZ=Europe/Brussels
     volumes:
       - ./config:/config
@@ -52,6 +56,7 @@ services:
       - 80:80
       - 443:443
     restart: unless-stopped
+
 ```
 </details>
 
@@ -104,7 +109,7 @@ And, thus, everything I'll do in Heimdall will be saved on my computer. So, it m
 
 ### Adding some links
 
-I suggest that, before adding new links, first click on the Tags icon (the fifth icons bottom right) because you'll organise your links using tags and you have to create tags before.
+I suggest that, before adding new links, first click on the Tags icon (the fifth icons bottom right) because you'll organize your links using tags and you have to create tags before.
 
 ![Adding tags](./images/tags.png)
 
@@ -120,7 +125,7 @@ Heimdall will extract the favicon in different sizes. I click on the one I wish.
 
 Automatically, Heimdall has filled in some properties in the bottom part of the screen. I'll remove `Home dashboard` from the `Tags` area and, instead, type `Docker` i.e. the tag I've previously created.
 
-![Finilazing adding Docker](./images/application_docker.png)
+![Adding Docker](./images/application_docker.png)
 
 Once saved, I'll get my new homepage:
 
@@ -134,7 +139,7 @@ Let's explore that `Application Type` feature:
 
 ![Application type](./images/application_type.png)
 
-It's just something like a snippet. If I select `Bitwarden` from there, Heimdall will do basic initialisations; he'll fill in the `Application name` textbox and the icon. Ok, why not.
+It's just something like a snippet. If I select `Bitwarden` from there, Heimdall will do basic initializations; he'll fill in the `Application name` textbox and the icon. Ok, why not.
 
 I'll point the URL to `https://vault.bitwarden.com/#/login` and I'll keep `Home dashboard` as tag.
 
@@ -144,11 +149,11 @@ Here is the dashboard I'm using at work. Since it's so easy to add new items; I'
 
 ![Final Heimdall dashboard](./images/final.png)
 
-### More customisations
+### More customizations
 
-By clicking on the last icon bottom right, you can customise a few Heimdall. You can display f.i. a search engine which is nice.
+By clicking on the last icon bottom right, you can customize a few Heimdall. You can display f.i. a search engine which is nice.
 
-You can customise the CSS and add some JS too.
+You can customize the CSS and add some JS too.
 
 ## Continue your journey
 

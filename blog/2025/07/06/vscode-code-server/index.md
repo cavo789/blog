@@ -14,7 +14,7 @@ Maybe one day we won't need to install an operating system, just have Docker on 
 
 You read that right: there's a Docker image that's nothing other than VSCode in a browser.
 
-It's useless if you're a heavy user of VSCode (=you've installed it on every of your computer) but there are situations where, for example, you need to work on another computer (while yours is being repaired or you're travelling and don't have yours) and VSCode's Docker image will come in handy.
+It's useless if you're a heavy user of VSCode (=you've installed it on every of your computer) but there are situations where, for example, you need to work on another computer (while yours is being repaired or you're traveling and don't have yours) and VSCode's Docker image will come in handy.
 
 Or ... you're not yet convinced by VSCode and just want to try it out.
 
