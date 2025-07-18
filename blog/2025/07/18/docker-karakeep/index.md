@@ -5,13 +5,22 @@ authors: [christophe]
 tags: [bookmark, docker, self-hosted, tool]
 enableComments: true
 image: /img/docker_tools_header.jpg
-draft: true
 ---
 <!-- cspell:ignore karakeep,bitwarden -->
 
 ![karakeep - The Bookmark Everything App](/img/docker_tools_header.jpg)
 
-> [https://karakeep.app/](https://karakeep.app/)
+Since a few months, I'm using [Heimdall](./blog/heimdall-dashboard) but it has one major weakness: its hyper-basic search engine (which is even non-existent, since it's not possible to search for a link globally).
+
+So I was rather dissatisfied and waiting to find something better: karakeep.
+
+It's a tool that you can self-host and which is a bookmarks, note-taking and even image manager that works very simply.
+
+And the search engine is quite powerful. Overall, karakeep is a pleasure to use.
+
+Let's look at how to install it.
+
+<!-- truncate -->
 
 ## Let's install karakeep
 
@@ -130,3 +139,7 @@ By first selecting a list, new items will be adding directly to that list.
 ### Import / Export 
 
 By clicking on your profile avatar (top right) then on `User Settings` you will be able to a.o.t. access to an `Import / Export` feature. It's good to know; you can import from a lot of sources and, too, export as a JSON or a HTML page.
+
+## More info
+
+Please refer to the official [https://karakeep.app/](https://karakeep.app/) site to get more info.

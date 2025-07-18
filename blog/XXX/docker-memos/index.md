@@ -12,8 +12,6 @@ draft: true
 
 ![Self-hosted note-taking application](/img/docker_tools_header.jpg)
 
-> [https://www.usememos.com/](https://www.usememos.com/)
-
 As a developer, I'm working all day on a computer and sometimes (too often in fact), at the end of the day, I send myself an email for tomorrow's me *Don't forget to ...*, *you have to continue [a task]*, *I stopped at [a file], I've to continue the others*, in short, I use my inbox like a to-dos/to-remember manager.
 
 Can we do better? Of course, but which tool should I choose?
@@ -170,4 +168,6 @@ Memos go a step further with tag and shortcut management, and the ability to res
 
 And it's all 100% free!
 
-Learn more about [memos](https://www.usememos.com).
+## More info
+
+Please refer to the official [https://www.usememos.com](https://www.usememos.com) site to get more info.
