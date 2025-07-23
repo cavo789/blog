@@ -2,11 +2,11 @@
 slug: php-api-tips
 title: API REST - How to write good APIs
 authors: [christophe]
-image: /img/php_tips_social_media.jpg
+image: /img/api_social_media.jpg
 tags: [api, docker, php, rest]
 enableComments: true
 ---
-![API REST - How to write good APIs](/img/php_tips_banner.jpg)
+![API REST - How to write good APIs](/img/api_banner.jpg)
 
 <!-- cspell:ignore Belgif -->
 

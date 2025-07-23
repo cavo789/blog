@@ -162,6 +162,10 @@ const config = {
             title: 'More',
             items: [
               {
+                label: 'BlueSky',
+                href: 'https://bsky.app/profile/avonture.be',
+              },
+              {
                 label: 'GitHub',
                 href: 'https://github.com/cavo789',
               },
