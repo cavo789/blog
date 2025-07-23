@@ -2,7 +2,7 @@
 slug: gitlab-docker-in-docker
 title: GitLab - Running Docker-in-Docker in your CI
 authors: [christophe]
-image: /img/docker_tips_social_media.jpg
+image: /img/git_tips_social_media.jpg
 tags: [CI, dagger, dind, docker, gitlab, quarto]
 enableComments: true
 ---
