@@ -5,10 +5,8 @@ authors: [christophe]
 image: ./images/social_media.png
 tags: [docker, mindmap, quarto, tips, visualisation, vscode]
 enableComments: true
-draft: true
 ---
 ![Getting a more attractive mindmap with Markmap and Quarto](./images/social_media.png)
-
 
 In 2023, I wrote this [Build a mind map using Docker and Markdown](/blog/docker-mindmap) blog post about how to render a Markdown document as a mindmap.
 
