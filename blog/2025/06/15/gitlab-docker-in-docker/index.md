@@ -1,14 +1,14 @@
 ---
-slug: gitlab-docker-in-docker
-title: GitLab - Running Docker-in-Docker in your CI
+slug: gitlab-docker-out-of-docker
+title: GitLab - Running Docker-out-of-Docker in your CI
 authors: [christophe]
 image: /img/git_tips_social_media.jpg
-tags: [CI, dagger, dind, docker, gitlab, quarto]
+tags: [CI, dagger, dood, docker, gitlab, quarto]
 enableComments: true
 ---
-![GitLab - Running Docker-in-Docker in your CI](/img/git_tips_banner.jpg)
+![GitLab - Running Docker-out-of-Docker in your CI](/img/git_tips_banner.jpg)
 
-<!-- cspell:ignore dind,phplint,certdir -->
+<!-- cspell:ignore dood,phplint,certdir -->
 
 At work, I'm running my CI using Docker. Each time I push changes to GitLab, a CI is running: a Docker container is started by GitLab, pulling my code and running a set of tools.
 
@@ -18,7 +18,7 @@ For a few months now, I've been creating a Docker image to run [Dagger](https://
 
 But I'm in even more trouble when, in my Dagger container, I have to launch another container (one by tools).
 
-Yes, you've guessed it: I'm faced with a Docker-in-Docker-in-Docker situation.
+Yes, you've guessed it: I'm faced with a situation of running Docker from inside a Docker container already running by another container.
 
 Let's see how to solve this problem.
 
@@ -61,9 +61,9 @@ phplint:
 
 It'll retrieve all `.php` file and run `php -l <filename.php>` for each inside a Docker container based on PHP 8.4.
 
-Easy and straight-forward. No need to do DinD here.
+Easy and straight-forward.
 
-## Running Docker in Docker
+## Running Docker-out-of-Docker
 
 Based on the same example, we can also use an existing Docker image; like [phpqa/jakzal](https://github.com/jakzal/phpqa):
 

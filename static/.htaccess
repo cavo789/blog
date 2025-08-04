@@ -13,6 +13,7 @@
   RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # Do some redirections
+  RedirectPermanent /blog/docker-in-docker-dind/ https://www.avonture.be/blog/docker-out-of-docker-dood
   RedirectPermanent /blog/docker-apache-ssl https://www.avonture.be/blog/docker-localhost-ssl
 
 </IfModule>

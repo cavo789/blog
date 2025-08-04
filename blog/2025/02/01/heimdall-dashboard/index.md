@@ -88,7 +88,7 @@ It's a lot more fun, isn't it?
 
 ### Saving the configuration on disk
 
-Did you've noticed that, in the `composer.yaml` file there is a section called `volumes` with the following configuration?
+Did you've noticed that, in the `compose.yaml` file there is a section called `volumes` with the following configuration?
 
 ```yaml
 volumes:

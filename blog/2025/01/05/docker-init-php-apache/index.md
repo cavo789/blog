@@ -11,7 +11,7 @@ enableComments: true
 
 How about asking Docker to create the files it needs itself?
 
-If you're a regular reader of this blog, you'll know by now that you need a `Dockerfile` to describe how the Docker image should be created and what should be included in it, and very often you'll also need a `composer.yaml` file to explain how the container should be created, e.g. which port to map to, which volumes to use, and so on.
+If you're a regular reader of this blog, you'll know by now that you need a `Dockerfile` to describe how the Docker image should be created and what should be included in it, and very often you'll also need a `compose.yaml` file to explain how the container should be created, e.g. which port to map to, which volumes to use, and so on.
 
 Imagine you've an existing PHP application and you don't want to create the files needed for the dockerization by hand.
 

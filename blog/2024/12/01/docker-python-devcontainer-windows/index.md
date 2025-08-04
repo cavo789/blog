@@ -417,7 +417,7 @@ RUN /bin/bash -c "echo \"PS1='\n\e[0;33m🐳 ${DOCKER_CONTAINER_NAME} \e[0;32mDE
 
 # Save the bash history in file /home/${OS_USERNAME}/commandhistory/.bash_history
 # Like this we'll be able to map that folder using a volume in our
-# composer.yaml file and then make the history persistent.
+# compose.yaml file and then make the history persistent.
 RUN set -e -x \
     && SNIPPET="export PROMPT_COMMAND='history -a' && export HISTFILE=/home/${DOCKER_OS_USERNAME}/commandhistory/.bash_history" \
     && mkdir -p "/home/${DOCKER_OS_USERNAME}/commandhistory" \

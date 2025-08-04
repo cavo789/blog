@@ -7,16 +7,16 @@ tags: [CI, dagger, Github, GitLab, pipeline, tip, workflow]
 enableComments: true
 ---
 <!-- cspell:ignore pylint,pyproject,stopit,randint,workdir,pylintrc,docparams,mccabe,mypy -->
-<!-- cspell:ignore hadolint,xvfz,aaaaaargh,dind -->
+<!-- cspell:ignore hadolint,xvfz,aaaaaargh,dind,dood,usermod -->
 <!-- markdownlint-disable-file MD010 -->
 
 ![Dagger.io - Using dagger to automate your CI workflows](/img/dagger_tips_banner.jpg)
 
-**Be careful, it's a bomb.**  Docker has revolutionised the world; let's not be afraid to say it loud and clear, and most probably [Dagger.io](https://dagger.io/), created by the same people as Docker, will follow in its footsteps.
+**Be careful, it's a bomb.**  Docker has revolutionized the world; let's not be afraid to say it loud and clear, and most probably [Dagger.io](https://dagger.io/), created by the same people as Docker, will follow in its footsteps.
 
 Dagger.io aims to be a tool that lets you execute steps of a workflow in exactly the same way as a **CI/CD** (**Continuous Integration / Continuous Development**) system like the ones of GitHub, GitLab, Jenkins, ... does.
 
-But what is a CI? It's a step carried out by your server once you've pushed a new version of your project.  During a CI, you can validate the syntax of your code, make sure it conforms (e.g. to formating rules), run code quality analysis tools such as checking that you don't have any undeclared or untyped variables or dead code (e.g. a function you no longer use).
+But what is a CI? It's a step carried out by your server once you've pushed a new version of your project.  During a CI, you can validate the syntax of your code, make sure it conforms (e.g. to formatting rules), run code quality analysis tools such as checking that you don't have any undeclared or untyped variables or dead code (e.g. a function you no longer use).
 
 During a CI, you can also launch your unit tests and run them each time you push out a new version of your project.
 
@@ -130,7 +130,7 @@ To do this, we have to run the `dagger init` command and since we're using a Doc
 
 :::info Let's understand this long command line:
 * by using `-it` we will interact (if needed) with the container and we'll allocate a TTY terminal i.e. get the output of running command just like if we've started it on our machine,
-* you've to share your local `/var/run/docker.sock` with the container because Dagger will use Docker-in-Docker (aka `dind`) and for this reason, the container should be able to interact with your instance of Docker (`-v /var/run/docker.sock:/var/run/docker.sock`) and
+* you've to share your local `/var/run/docker.sock` with the container because Dagger will use Docker-out-of-Docker (aka `DooD`) and for this reason, the container should be able to interact with your instance of Docker (`-v /var/run/docker.sock:/var/run/docker.sock`) and
 * you've to mount your local current folder with the container (`-v .:/app/src`).
 * `dagger_daemon` is the name of our image
 * `init --sdk=python --source=./.pipeline` is the Dagger command to start
@@ -257,7 +257,7 @@ We'll thus remove the two sample functions and we'll implement our linting funct
 
 By running `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call lint` we'll then ask the pipeline to run our linter (Pylint here) on our current folder.
 
-Since it's the first time, Dagger will need to make some initialisations (like installing PyLint) then we'll get the output:
+Since it's the first time, Dagger will need to make some initializations (like installing PyLint) then we'll get the output:
 
 ![Partial output - Pylint](./images/pylint.png)
 
