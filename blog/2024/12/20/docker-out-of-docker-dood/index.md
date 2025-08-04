@@ -10,7 +10,7 @@ enableComments: true
 
 ![Docker-out-of-Docker aka DooD](/img/docker_tips_banner.jpg)
 
-* *Updated 2025-08-03, Corrections based on Metin Y. [feedback](#special-thanks-).*
+* *Updated 2025-08-03, Corrections based on Metin Y.*
 
 In very exceptional situations, you may need to be able to run Docker commands from a Docker container. Wait? What?
 
