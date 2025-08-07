@@ -99,7 +99,7 @@ services:
     working_dir: /src
     // highlight-start
     # volumes:
-    #   # We need to share the Docker socket: this technique is called "Docker-in-Docker"
+    #   # We need to share the Docker socket: this technique is called "Docker-out-of-Docker"
     #   - /var/run/docker.sock:/var/run/docker.sock
     // highlight-end
 
@@ -229,7 +229,7 @@ Now, build this new image and jump in the container using, always the same, this
 
 By typing `whoami` we can see that we're no more root but `johndoe` with user ID 1000 (`id -u`) and group ID 1000 (`id -g`).
 
-Since we're still sharing our `/var/run/docker.sock` in our yaml file, we're expecting that Docker-in-Docker still works; right?
+Since we're still sharing our `/var/run/docker.sock` in our yaml file, we're expecting that Docker-out-of-Docker still works; right?
 
 Let's try: `docker ps` to obtain the list of containers.
 

@@ -5,9 +5,8 @@ authors: [christophe]
 image: /img/api_social_media.jpg
 tags: [api, bruno, docker, postman, tests, tool]
 enableComments: true
-draft: true
 ---
-<!-- cspell:ignore fastapi,uvicorn,hobbyte,keyserver,usebruno,ECONNREFUSED -->
+<!-- cspell:ignore fastapi,uvicorn,hobbyte,keyserver,usebruno,ECONNREFUSED,davidkarlsen -->
 ![Bruno - A postman-like tool - GUI and CLI](/img/api_banner.jpg)
 
 [Bruno](https://www.usebruno.com/) is a tool like [Postman](/blog/tags/postman) you can use for free. Everything is stored on your computer so you can store files within your codebase and submit it to your code versioning tool f.i.
@@ -151,7 +150,7 @@ Mid-july 2025, I wasn't able to make this image working as expected. I was facin
 
 For that reason, I've searched for another image and I've found that one [davidkarlsen/bruno-image](https://github.com/davidkarlsen/bruno-image) but, no luck, even the last version at that time (version 2.7.0) was giving a problem.
 
-By looking at the [Dockerfile](https://github.com/davidkarlsen/bruno-image/blob/main/Dockerfile), I've see the file was really easy and a newer version of [Bruno was released](https://github.com/usebruno/bruno/tags); version 2.8.
+By looking at the [Dockerfile](https://github.com/davidkarlsen/bruno-image/blob/main/Dockerfile), I've seen the file was really easy and a newer version of [Bruno was released](https://github.com/usebruno/bruno/tags); version 2.8.
 
 So, in short, I'll create my own Docker image and check if things are better.
 :::
@@ -176,9 +175,6 @@ CMD ["run"]
 
 We'll create our image like this: `docker build --file bruno.Dockerfile  -t bruno-image .` (we can check our image by running `docker run -it --rm bruno-image --version`; we should see `2.8.0`).
 
-
-
-
 As we've just seen:
 
 * Our collection is stored in the `Jokes` folder and
@@ -191,7 +187,7 @@ With this in mind, just run `docker run -it --rm -v "./Jokes":/apps -w /apps alp
 Ok, something goes wrong. We've fired one request and it has failed. But when running the request from Bruno GUI, it was well working. Why? The answer is: because we are using Docker.
 
 
-### Understanding why the Bruno CLI Docker container didn't works
+### Understanding why the Bruno CLI Docker container didn't work
 
 Look at the `connect ECONNREFUSED 127.0.0.1:82` error message: the Bruno CLI container is trying to access to the 127.0.0.1 webserver but, no, the webserver is running on our host. We've to find a proper way to tell Bruno to reuse our host.
 
