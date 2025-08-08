@@ -92,6 +92,13 @@ down: ## Stop the container
 	docker run --rm -it --user root -v $${PWD}/:/project -w /project node /bin/bash -c "yarn run clear"
 	COMPOSE_FILE=${COMPOSE_FILE} DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose down
 
+.PHONY: logs
+logs: ## Show the log of Docusaurus
+	@clear
+	@printf $(_CYAN) "Press CTRL-C to stop to follow logs"
+	@printf ""
+	@docker logs --follow docusaurus
+
 .PHONY: remove
 remove: down ## Remove the image
 	-docker image rmi blog-docusaurus

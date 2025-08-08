@@ -1,9 +1,3 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 import React from 'react';
 import clsx from 'clsx';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
@@ -11,11 +5,6 @@ import BlogPostItemContainer from '@theme/BlogPostItem/Container';
 import BlogPostItemHeader from '@theme/BlogPostItem/Header';
 import BlogPostItemContent from '@theme/BlogPostItem/Content';
 import BlogPostItemFooter from '@theme/BlogPostItem/Footer';
-
-// import BlueSkyComments from './BlueSkyComments';
-
-// <BlueSkyComments postUri="at://avonture.be/app.bsky.feed.post/3lun2qjuxc22r" />
-
 
 // apply a bottom margin in list view
 function useContainerClassName() {
@@ -73,12 +62,9 @@ export default function BlogPostItem({children, className}) {
   return (
     <BlogPostItemContainer className={clsx(containerClassName, className)}>
       <BlogPostItemHeader />
-      <BlogPostItemContent>
-        {children}
-        <BlueSkyShare title={metadata.title} url={metadata.permalink}/>
-        {/* <BlueSkyComments/> */}
-      </BlogPostItemContent>
+      <BlogPostItemContent>{children}</BlogPostItemContent>
       <BlogPostItemFooter />
+      <BlueSkyShare title={metadata.title} url={metadata.permalink}/>
     </BlogPostItemContainer>
   );
 }
