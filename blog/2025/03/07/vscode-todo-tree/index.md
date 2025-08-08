@@ -4,6 +4,7 @@ title: Todo Tree in VSCode
 authors: [christophe]
 tags: [tips, vscode]
 enableComments: true
+blueSkyRecordKey: 3lvnk2w4vss2v
 image: /img/vscode_tips_social_media.jpg
 ---
 ![Todo Tree in VSCode](/img/vscode_tips_banner.jpg)

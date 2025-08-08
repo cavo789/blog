@@ -4,6 +4,7 @@ title: GitLab - Running Docker-out-of-Docker in your CI
 authors: [christophe]
 image: /img/git_tips_social_media.jpg
 tags: [CI, dagger, dood, docker, gitlab, quarto]
+blueSkyRecordKey: 3lun2kg2vmk2r
 enableComments: true
 ---
 ![GitLab - Running Docker-out-of-Docker in your CI](/img/git_tips_banner.jpg)

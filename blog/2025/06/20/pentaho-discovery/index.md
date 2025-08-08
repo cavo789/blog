@@ -4,6 +4,7 @@ title: Discovering Pentaho, a ETL program
 authors: [christophe]
 image: /img/database_tips_social_media.jpg
 tags: [database, msaccess, vba]
+blueSkyRecordKey: 3lumzwwoqsc2r
 enableComments: true
 ---
 ![Discovering Pentaho, a ETL program](/img/database_tips_banner.jpg)

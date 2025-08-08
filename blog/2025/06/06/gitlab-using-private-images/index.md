@@ -4,6 +4,7 @@ title: GitLab - Using Docker private images
 authors: [christophe]
 image: /img/git_tips_social_media.jpg
 tags: [CI, gitlab, ssh]
+blueSkyRecordKey: 3lun25dkf322r
 enableComments: true
 ---
 ![GitLab - Using Docker private images](/img/git_tips_banner.jpg)

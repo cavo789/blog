@@ -4,6 +4,7 @@ title: Excel Formula Beautifier
 authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 tags: [excel]
+blueSkyRecordKey: 3lun2qjuxc22r
 enableComments: true
 ---
 ![Excel Formula Beautifier](/img/excel_tips_banner.jpg)

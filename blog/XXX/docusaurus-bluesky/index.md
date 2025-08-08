@@ -128,7 +128,7 @@ If it didn't works, please stop and restart your Docusaurus server. On my case (
 
 ## Time to add our share button
 
-As said, I've used IA to generate a function for me and below what I've received.
+As said, I've used IA to generate a function for me. I've then do some changes and here is the function I'm using:
 
 <details>
 
@@ -137,10 +137,8 @@ As said, I've used IA to generate a function for me and below what I've received
 ```javascript
 const BlueSkyShare = ({ title, url }) => {
   const encodedTitle = encodeURIComponent(title);
-  // highlight-next-line
-  // MAKE SURE TO DEFINE THE URL TO YOUR DOCUSAURUS SITE HERE BELOW
-  // highlight-next-line
-  const encodedUrl = 'https://www.avonture.be' + encodeURIComponent(url);
+  const { siteConfig } = useDocusaurusContext();
+  const encodedUrl = siteConfig.url + encodeURIComponent(url);
   const shareLink = `https://bsky.app/intent/compose?text=${encodedTitle}%20${encodedUrl}`;
 
   return (
@@ -149,33 +147,11 @@ const BlueSkyShare = ({ title, url }) => {
         href={shareLink}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.4rem',
-          padding: '0.4rem 0.9rem',
-          backgroundColor: '#f5f5f5',       // Light neutral background
-          color: '#333333',                 // Dark grey text (less harsh than black)
-          fontWeight: '400',                // Normal weight
-          fontSize: '0.9rem',               // Slightly smaller
-          borderRadius: '6px',              // Softer rounding
-          textDecoration: 'none',
-          transition: 'background-color 0.2s ease, color 0.2s ease',
-          boxShadow: 'none',                // Remove shadow for minimal look
-          border: '1px solid #ddd'          // Subtle border instead of s
-        }}
+        className={clsx('blueSkyShareButton', 'button')} 
         onMouseEnter={e => e.currentTarget.style.backgroundColor = '#0062cc'}
         onMouseLeave={e => e.currentTarget.style.backgroundColor = '#007aff'}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 100 100"
-          width="20"
-          height="20"
-          fill="white"
-        >
-          <path d="M50,15C29.9,15,13.2,31.7,13.2,51.8c0,11.7,4.6,22.2,12.1,30c0.9,0.9,2.5,0.8,3.3-0.2l7.8-9.2c0.8-0.9,0.7-2.4-0.2-3.2 c-4.2-3.7-6.9-9.1-6.9-15.1c0-11.2,9-20.3,20.3-20.3s20.3,9,20.3,20.3c0,6-2.7,11.4-6.9,15.1c-0.9,0.8-1,2.3-0.2,3.2l7.8,9.2 c0.8,0.9,2.4,1.1,3.3,0.2c7.5-7.8,12.1-18.3,12.1-30C86.8,31.7,70.1,15,50,15z"/>
-        </svg>
+        <img src="/img/bluesky.svg" alt="Bluesky Icon" width="20" height="20" />
         Share on BlueSky
       </a>
     </div>
@@ -185,15 +161,63 @@ const BlueSkyShare = ({ title, url }) => {
 
 </details>
 
-:::caution
-Make sure to update the `encodedUrl` variable! You need to specify the URL to your Docusaurus site.
-:::
-
 As you can see, we've defined a function called `BlueSkyShare` and that function ask for two parameters, the `title` of your blog post and the `url` to the post itself.
 
 We'll call the function like this `<BlueSkyShare title={metadata.title} url={metadata.permalink}/>`.
 
 But what is `metadata`? We've to defined it before and it's done using this line: `const {metadata} = useBlogPost();`
+
+### Stylization of the Share button
+
+In order to not add CSS in the BlueSkyShare javascript function, we've added a class called `blueSkyShareButton`.
+
+Please update (or create) the `src/css/custom.css` file and add these rules:
+
+<details>
+
+<summary>src/css/custom.css</summary>
+
+```css
+.blueSkyShareButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  background-color: #f5f5f5; /* Light neutral background */
+  color: #333333; /* Dark grey text */
+  font-weight: 400; /* Normal weight */
+  font-size: 0.9rem; /* Slightly smaller */
+  border-radius: 6px; /* Softer rounding */
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  box-shadow: none; /* Remove shadow for minimal look */
+  border: 1px solid #ddd; /* Subtle border */
+}
+
+/* Hover effect */
+.blueSkyShareButton:hover {
+  background-color: #0062cc;
+}
+```
+
+</details>
+
+### The BlueSky logo
+
+Please create the `static/img/bluesky.svg` with this content:
+
+<details>
+
+<summary>static/img/bluesky.svg</summary>
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="530" version="1.1" xmlns="http://www.w3.org/2000/svg">
+ <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z" fill="#1185fe"/>
+</svg>
+```
+
+</details>
 
 ## Final version of index.js
 
@@ -207,6 +231,10 @@ Here is the final version of the `src/theme/BlogPostItem/index.js` file:
 import React from 'react';
 import clsx from 'clsx';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
+
+// highlight-next-line
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
 import BlogPostItemContainer from '@theme/BlogPostItem/Container';
 import BlogPostItemHeader from '@theme/BlogPostItem/Header';
 import BlogPostItemContent from '@theme/BlogPostItem/Content';
@@ -221,7 +249,12 @@ function useContainerClassName() {
 // highlight-start
 const BlueSkyShare = ({ title, url }) => {
   const encodedTitle = encodeURIComponent(title);
-  const encodedUrl = 'https://www.avonture.be' + encodeURIComponent(url);
+
+  // highlight-start
+  const { siteConfig } = useDocusaurusContext();
+  // highlight-start
+  const encodedUrl = siteConfig.url + encodeURIComponent(url);
+
   const shareLink = `https://bsky.app/intent/compose?text=${encodedTitle}%20${encodedUrl}`;
 
   return (
@@ -230,33 +263,11 @@ const BlueSkyShare = ({ title, url }) => {
         href={shareLink}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.4rem',
-          padding: '0.4rem 0.9rem',
-          backgroundColor: '#f5f5f5',       // Light neutral background
-          color: '#333333',                 // Dark grey text (less harsh than black)
-          fontWeight: '400',                // Normal weight
-          fontSize: '0.9rem',               // Slightly smaller
-          borderRadius: '6px',              // Softer rounding
-          textDecoration: 'none',
-          transition: 'background-color 0.2s ease, color 0.2s ease',
-          boxShadow: 'none',                // Remove shadow for minimal look
-          border: '1px solid #ddd'          // Subtle border instead of s
-        }}
+        className={clsx('blueSkyShareButton', 'button')} 
         onMouseEnter={e => e.currentTarget.style.backgroundColor = '#0062cc'}
         onMouseLeave={e => e.currentTarget.style.backgroundColor = '#007aff'}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 100 100"
-          width="20"
-          height="20"
-          fill="white"
-        >
-          <path d="M50,15C29.9,15,13.2,31.7,13.2,51.8c0,11.7,4.6,22.2,12.1,30c0.9,0.9,2.5,0.8,3.3-0.2l7.8-9.2c0.8-0.9,0.7-2.4-0.2-3.2 c-4.2-3.7-6.9-9.1-6.9-15.1c0-11.2,9-20.3,20.3-20.3s20.3,9,20.3,20.3c0,6-2.7,11.4-6.9,15.1c-0.9,0.8-1,2.3-0.2,3.2l7.8,9.2 c0.8,0.9,2.4,1.1,3.3,0.2c7.5-7.8,12.1-18.3,12.1-30C86.8,31.7,70.1,15,50,15z"/>
-        </svg>
+        <img src="/img/bluesky.svg" alt="Bluesky Icon" width="20" height="20" />
         Share on BlueSky
       </a>
     </div>

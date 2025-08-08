@@ -4,6 +4,7 @@ title: Bruno - A postman-like tool - GUI and CLI
 authors: [christophe]
 image: /img/api_social_media.jpg
 tags: [api, bruno, docker, postman, tests, tool]
+blueSkyRecordKey: 3lvs336stus2j
 enableComments: true
 ---
 <!-- cspell:ignore fastapi,uvicorn,hobbyte,keyserver,usebruno,ECONNREFUSED,davidkarlsen -->

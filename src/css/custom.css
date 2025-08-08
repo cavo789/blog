@@ -32,3 +32,57 @@
 .navbar__logo > img {
   width: auto;
 }
+
+/* Will contains all BlueSky buttons and comments */
+.blueSkyContainer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* The container for all BlueSky comments */
+.blueSkyCommentsContainer {
+  border: solid 10px #f5f5f5;
+  margin-top: 1rem;
+  padding: 0.4rem 0.9rem;
+}
+
+/* The container for one single comment */
+.blueSkyCommentContainer {
+  margin-bottom: 1rem;
+  background-color: #f9f9f9;
+  padding: 0.8rem;
+  border-radius: 6px;
+}
+
+.blueSkyCommentAuthor {
+  margin: 0;
+  font-weight: bold;
+}
+
+.blueSkyCommentText {
+  margin: 0.3rem 0 0;
+  font-style: italic;
+}
+
+.blueSkyButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  background-color: #f5f5f5; /* Light neutral background */
+  color: #333333; /* Dark grey text */
+  font-weight: 400; /* Normal weight */
+  font-size: 0.9rem; /* Slightly smaller */
+  border-radius: 6px; /* Softer rounding */
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  box-shadow: none; /* Remove shadow for minimal look */
+  border: 1px solid #ddd; /* Subtle border */
+  margin-right: 0.4rem; /* Space between buttons */
+}
+
+/* Hover effect */
+.blueSkyShareButton:hover {
+  background-color: #0062cc;
+}

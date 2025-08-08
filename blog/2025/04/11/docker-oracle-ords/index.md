@@ -4,6 +4,7 @@ title: Transform an Oracle DB as OpenData using Oracle REST Data Services
 authors: [christophe]
 image: /img/oracle_social_media.jpg
 tags: [docker, openapi, oracle, postgrest]
+blueSkyRecordKey: 3lvnjmthgj22v
 enableComments: true
 ---
 ![Transform an Oracle DB as OpenData using Oracle REST Data Services](/img/oracle_banner.jpg)

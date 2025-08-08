@@ -4,6 +4,7 @@ title: Do I need VSCode on my machine to use it?
 authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
 tags: [docker, vscode]
+blueSkyRecordKey: 3lujtglddu223
 enableComments: true
 ---
 ![Do I need VSCode on my machine to use it?](/img/vscode_tips_banner.jpg)

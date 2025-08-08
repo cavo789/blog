@@ -4,6 +4,7 @@ title: Introduction to Cypress
 authors: [christophe]
 image: /img/functional_testing_social_media.jpg
 tags: [chrome, cypress, docker, javascript, node, tests]
+blueSkyRecordKey: 3lvnkku4dik2v
 enableComments: true
 ---
 ![Introduction to Cypress](/img/functional_testing_banner.jpg)

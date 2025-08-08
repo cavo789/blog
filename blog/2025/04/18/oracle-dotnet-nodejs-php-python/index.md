@@ -4,6 +4,7 @@ title: Accessing an Oracle database using .Net, NodeJS, PHP and Python
 authors: [christophe]
 image: /img/oracle_social_media.jpg
 tags: [docker, oracle]
+blueSkyRecordKey: 3lvnjmthgj22v
 enableComments: true
 ---
 ![Accessing an Oracle database using .Net, NodeJS, PHP and Python](/img/oracle_banner.jpg)

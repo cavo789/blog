@@ -4,6 +4,7 @@ title: Export MS Access objects
 authors: [christophe]
 image: /img/database_tips_social_media.jpg
 tags: [database, msaccess, vba, vbs]
+blueSkyRecordKey: 3lumzv3n42c2r
 enableComments: true
 ---
 ![Export MS Access objects](/img/database_tips_banner.jpg)

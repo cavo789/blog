@@ -32,6 +32,13 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   onDuplicateRoutes: 'throw',
 
+  customFields: {
+    blueSky: {
+      // This is the BlueSky handle as displayed in your BlueSky profile page
+      handle: 'avonture.be',
+    },
+  },
+
   // https://github.com/facebook/docusaurus/issues/10556
   future: {
     experimental_faster: {

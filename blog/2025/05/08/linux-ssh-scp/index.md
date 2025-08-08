@@ -4,6 +4,7 @@ title: SSH - Launch a terminal on your session without having to authenticate yo
 authors: [christophe]
 image: /img/linux_tips_social_media.jpg
 tags: [linux, putty, scp, ssh, tips]
+blueSkyRecordKey: 3lun2x6tugs2r
 enableComments: true
 ---
 ![SSH - Launch a terminal on your session without having to authenticate yourself](/img/linux_tips_banner.jpg)

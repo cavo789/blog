@@ -4,6 +4,7 @@ title: Getting a more attractive mindmap with Markmap and Quarto
 authors: [christophe]
 image: ./images/social_media.png
 tags: [docker, mindmap, quarto, tips, visualisation, vscode]
+blueSkyRecordKey: 3lurgf4ddp22y
 enableComments: true
 ---
 ![Getting a more attractive mindmap with Markmap and Quarto](./images/social_media.png)

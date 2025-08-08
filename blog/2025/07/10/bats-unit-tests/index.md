@@ -4,6 +4,7 @@ title: Linux - Bash scripts - Running unit tests with bats/bats
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 tags: [linux, shell, tests]
+blueSkyRecordKey: 3lujtej7xhs23
 enableComments: true
 ---
 <!-- cspell:ignore imple -->

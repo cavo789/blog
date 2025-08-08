@@ -4,6 +4,7 @@ title: Enable case sensitivity for filenames under DOS
 authors: [christophe]
 tags: [dos, tips]
 enableComments: true
+blueSkyRecordKey: 3lvnjvuk5x22v
 image: /img/dos_tips_social_media.jpg
 ---
 ![Enable case sensitivity for filenames under DOS](/img/dos_tips_banner.jpg)
