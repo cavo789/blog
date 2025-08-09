@@ -42,9 +42,9 @@
  */
 
 import PropTypes from "prop-types";
-import BlueSkyComments from "./BlueSkyComments";
-import BlueSkyPost from "./BlueSkyPost";
-import BlueSkyShare from "./BlueSkyShare";
+import BlueSkyComments from "./comments";
+import BlueSkyPost from "./post";
+import BlueSkyShare from "./share";
 
 export default function BlueSky({ metadata }) {
   return (

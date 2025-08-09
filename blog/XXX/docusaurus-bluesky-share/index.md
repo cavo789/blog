@@ -1,32 +1,35 @@
 ---
-slug: docusaurus-bluesky
-title: Adding a share on BlueSky button
+slug: docusaurus-bluesky-share
+title: Create our own Docusaurus component and provide a "Share on BlueSky" button
 authors: [christophe]
 image: /img/docusaurus_tips_social_media.jpg
 tags: [bluesky, docusaurus, markdown, swizzle]
 enableComments: true
 draft: true
 ---
-![Adding a share on BlueSky button](/img/docusaurus_tips_banner.jpg)
+![Create our own Docusaurus component and provide a "Share on BlueSky" button](/img/docusaurus_tips_banner.jpg)
 
-Since a few days, I'm on BlueSky and thus, why not adding a *Share on BlueSky* button on my articles?
+Since a few days, I'm on BlueSky and thus, why not adding a *Share on BlueSky* button below each article?
 
-I've asked to some IA to tell me how to proceed because I've never created a JS feature for Docusaurus and ... it's easy.
+Because I've no idea how to start; let's asked some IA to teach me and to give me a skeleton.
 
-Perhaps am I wrong but here is how I've proceed:
+Once I've received it, time to understand and learn what is proposed.
 
-1. I've created the `src/theme/BlogPostItem/index.js` file,
-2. I've copied some content to it
+So I need to created a file called `src/theme/BlogPostItem/index.js` file and just put some content to it.
 
-and it was already done.
+Let's try and learn the same way.
 
 <!-- truncate -->
 
 ## Override the BlogPostItem layout
 
-The `src/theme/BlogPostItem/index.js` file will **customize the layout and content of individual blog posts** so, by updating that file, I can override the default layout of every single post of my blog.
+The IA told me to create `src/theme/BlogPostItem/index.js` file and to put some content in it. 
 
-We need to override the original file but ... where is that file? There is a command for this.
+From where comes that content? The initial content comes from your Docusaurus template (in my case, it's `@docusaurus/theme-classic`) and we can **extract** the original one using the so-called **Swizzle** action.
+
+In the Docusaurus terminology, Swizzle can be understood as `override`: we'll extract a template so we can then override it.
+
+Back to the `src/theme/BlogPostItem/index.js` file: that script will **customize the layout and content of individual blog posts** so, by updating that file, I can override the default layout of every single post of my blog.
 
 Start a console and make sure you're in the root folder of your blog *(in my case, because I'm running my blog with Docker and I'm using a self-made Makefile, I just have to run `make bash`)*.
 
@@ -36,15 +39,11 @@ When prompted, select `Javascript`, then **`Eject`** and finally `YES`.
 
 ![Swizzle the BlogPostItem layout](./images/swizzle_blogpostitem.png)
 
-:::info
-`Swizzle` is a word used by Docusaurus. It means `override`.
-:::
-
 ## Keep things under control
 
-As you can see on the screen, you'll extract a lot of files. Let's keep things under control: we just want to add a share button below our article; we don't want to do more than that.
+As you can see on the screen, you'll extract a lot of files. **Let's keep things under control: we just want to add a share button below our article; we don't want to do more than that.**
 
-Look at your Docusaurus site now; go to the `src/theme/BlogPostItem` folder and see that, yes, you've now a lot of files and sub-folders. Just remove every sub-foldes; we don't want to update them i.e. we want to keep the original ones. So next time you'll install a newer version of Docusaurus, you'll stay up-to-date.
+Look at your Docusaurus site now; go to the `src/theme/BlogPostItem` folder and see that, yes, you've now a lot of files and sub-folders. Just remove every sub-folders; we don't want to update them i.e. we want to keep the original ones. So next time you'll install a newer version of Docusaurus, you'll stay up-to-date.
 
 Just keep the `index.js` file created by the `swizzle` command:
 
@@ -106,7 +105,7 @@ export default function BlogPostItem({children, className}) {
     <BlogPostItemContainer className={clsx(containerClassName, className)}>
       <BlogPostItemHeader />
       // highlight-next-line
-      // Just after the blog post title, we'll add a "Are you ready" text
+      {/* Just after the blog post title, we'll add a "Are you ready" text */}
       // highlight-next-line
       <strong style={{color:"red"}}>Are you ready to update your BlogPostItem layout?</strong>
       <BlogPostItemContent>{children}</BlogPostItemContent>
@@ -126,36 +125,52 @@ Refresh your page and tadaaa,
 If it didn't works, please stop and restart your Docusaurus server. On my case (I'm using Docker), I just need to stop and restart my container.
 :::
 
+So, as you can see, it's now quite easy. We can change the layout of our Docusaurus page just by manipulating the `ìndex.js` file.
+
 ## Time to add our share button
 
-As said, I've used IA to generate a function for me. I've then do some changes and here is the function I'm using:
+As said, I've used IA to generate a skeleton for me. After a lot of changes and optimizations, here is my final script.
+
+Please create the file `src/theme/BlogPostItem/BlueSky/share.js` and copy/paste this content in it:
 
 <details>
 
-<summary>The BlueSkyShare function</summary>
+<summary>src/theme/BlogPostItem/BlueSky/share.js</summary>
 
 ```javascript
-const BlueSkyShare = ({ title, url }) => {
-  const encodedTitle = encodeURIComponent(title);
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+
+export default function BlueSkyShare({ title, url }) {
   const { siteConfig } = useDocusaurusContext();
-  const encodedUrl = siteConfig.url + encodeURIComponent(url);
-  const shareLink = `https://bsky.app/intent/compose?text=${encodedTitle}%20${encodedUrl}`;
+
+  if (!title || !url) {
+    console.warn("<BlueSkyShare> Missing required properties", { title, url });
+    return null;
+  }
+
+  const shareLink =
+    `https://bsky.app/intent/compose?text=` +
+    `${encodeURIComponent(title)}%20${siteConfig.url}${encodeURIComponent(url)}`;
 
   return (
-     <div style={{ borderTop: '1px solid #eee', marginTop: '2rem', paddingTop: '1.5rem' }}>
-      <a
-        href={shareLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={clsx('blueSkyShareButton', 'button')} 
-        onMouseEnter={e => e.currentTarget.style.backgroundColor = '#0062cc'}
-        onMouseLeave={e => e.currentTarget.style.backgroundColor = '#007aff'}
-      >
-        <img src="/img/bluesky.svg" alt="Bluesky Icon" width="20" height="20" />
-        Share on BlueSky
-      </a>
-    </div>
+    <a
+      href={shareLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={clsx("blueSkyButton", "button")}
+      aria-label="Share this post on BlueSky"
+    >
+      <img src="/img/bluesky.svg" alt="Bluesky Icon" width="20" height="20" />
+      Share on BlueSky
+    </a>
   );
+}
+
+BlueSkyShare.propTypes = {
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 ```
 
@@ -169,7 +184,7 @@ But what is `metadata`? We've to defined it before and it's done using this line
 
 ### Stylization of the Share button
 
-In order to not add CSS in the BlueSkyShare javascript function, we've added a class called `blueSkyShareButton`.
+In order to not add CSS in the BlueSkyShare javascript function, I've added a class called `blueSkyButton`.
 
 Please update (or create) the `src/css/custom.css` file and add these rules:
 
@@ -178,7 +193,13 @@ Please update (or create) the `src/css/custom.css` file and add these rules:
 <summary>src/css/custom.css</summary>
 
 ```css
-.blueSkyShareButton {
+.blueSkyContainer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.blueSkyButton {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -192,10 +213,11 @@ Please update (or create) the `src/css/custom.css` file and add these rules:
   transition: background-color 0.2s ease, color 0.2s ease;
   box-shadow: none; /* Remove shadow for minimal look */
   border: 1px solid #ddd; /* Subtle border */
+  margin-right: 0.4rem; /* Space between buttons */
 }
 
 /* Hover effect */
-.blueSkyShareButton:hover {
+.blueSkyButton:hover {
   background-color: #0062cc;
 }
 ```
@@ -219,7 +241,34 @@ Please create the `static/img/bluesky.svg` with this content:
 
 </details>
 
-## Final version of index.js
+### Let's also create a BlueSky/index.js script
+
+In order to minimize changes to the `src/theme/BlogPostItem/index.js`, let's create a second script called `src/theme/BlogPostItem/BlueSky/index.js`
+
+<details>
+
+<summary>src/theme/BlogPostItem/BlueSky/share.js</summary>
+
+```javascript
+import PropTypes from "prop-types";
+import BlueSkyShare from "./BlueSkyShare";
+
+export default function BlueSky({ metadata }) {
+  return (
+    <div className="blueSkyContainer">
+      <BlueSkyShare title={metadata.title} url={metadata.permalink} />      
+    </div>
+  );
+}
+
+BlueSky.propTypes = {
+  metadata: PropTypes.string.isRequired,
+};
+```
+
+</details>
+
+## Finally we just to put our BlueSky component in our BlogPostItem template
 
 Here is the final version of the `src/theme/BlogPostItem/index.js` file:
 
@@ -231,53 +280,26 @@ Here is the final version of the `src/theme/BlogPostItem/index.js` file:
 import React from 'react';
 import clsx from 'clsx';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
-
-// highlight-next-line
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-
 import BlogPostItemContainer from '@theme/BlogPostItem/Container';
 import BlogPostItemHeader from '@theme/BlogPostItem/Header';
 import BlogPostItemContent from '@theme/BlogPostItem/Content';
 import BlogPostItemFooter from '@theme/BlogPostItem/Footer';
 
+// highlight-next-line
+// import our BlueSky component
+// highlight-next-line
+import BlueSky from "./BlueSky/index.js";
+
 // apply a bottom margin in list view
-function useContainerClassName() {
+function useContainerClassName() {  
   const {isBlogPostPage} = useBlogPost();
   return !isBlogPostPage ? 'margin-bottom--xl' : undefined;
 }
-
-// highlight-start
-const BlueSkyShare = ({ title, url }) => {
-  const encodedTitle = encodeURIComponent(title);
-
-  // highlight-start
-  const { siteConfig } = useDocusaurusContext();
-  // highlight-start
-  const encodedUrl = siteConfig.url + encodeURIComponent(url);
-
-  const shareLink = `https://bsky.app/intent/compose?text=${encodedTitle}%20${encodedUrl}`;
-
-  return (
-     <div style={{ borderTop: '1px solid #eee', marginTop: '2rem', paddingTop: '1.5rem' }}>
-      <a
-        href={shareLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={clsx('blueSkyShareButton', 'button')} 
-        onMouseEnter={e => e.currentTarget.style.backgroundColor = '#0062cc'}
-        onMouseLeave={e => e.currentTarget.style.backgroundColor = '#007aff'}
-      >
-        <img src="/img/bluesky.svg" alt="Bluesky Icon" width="20" height="20" />
-        Share on BlueSky
-      </a>
-    </div>
-  );
-};
-// highlight-end
-
 export default function BlogPostItem({children, className}) {
   // highlight-next-line
-  const {metadata} = useBlogPost();
+  // We need to retrieve the isBlogPostPage flag
+  // highlight-next-line
+  const { metadata, isBlogPostPage } = useBlogPost();
   const containerClassName = useContainerClassName();
   return (
     <BlogPostItemContainer className={clsx(containerClassName, className)}>
@@ -285,7 +307,9 @@ export default function BlogPostItem({children, className}) {
       <BlogPostItemContent>{children}</BlogPostItemContent>
       <BlogPostItemFooter />
       // highlight-next-line
-      <BlueSkyShare title={metadata.title} url={metadata.permalink}/>
+      {/* Only display BlueSky components on the post page; not the blog view */}
+      // highlight-next-line
+      {isBlogPostPage && <BlueSky metadata={metadata} />}
     </BlogPostItemContainer>
   );
 }
@@ -300,3 +324,12 @@ You need to understand that, by swizzling (overriding) the BlogPostItem layout, 
 **If, in a next release, new features will be added by Docusaurus; you'll not have them!** since you're no more using the default layout for your post.
 
 Just keep that in mind and, perhaps, from time to time (after a major release f.i.), think to run the swizzle command again and restart your customization.
+
+This is why our changes to the index.js file were kept to a minimum.
+
+## Next post
+
+In a next post, I'll extend this component to have two extra features:
+
+1. Next to the share button, a button that will jump to the BlueSky post (so the visitor can like it or add comments) and
+2. When the BlueSky post is commented, retrieve the list of comments and show it below the article; here, on my blog.
