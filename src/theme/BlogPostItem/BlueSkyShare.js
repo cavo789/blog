@@ -1,5 +1,7 @@
 /**
  * Renders a button to share the current post on Bluesky.
+ * 
+ * This button will always be displayed.
  *
  * See comments in BlueSky.js component for the list of requirements
  *

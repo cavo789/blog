@@ -1,6 +1,9 @@
 /**
  * Renders a button to show the post on Bluesky (and be able to like/share/comment)
  *
+ * This button will displayed only when the post has, in his YAML frontmatter, the 
+ * blueSkyRecordKey entry i.e. the hash of the BlueSky post.
+ * 
  * See comments in BlueSky.js component for the list of requirements
  *
  * @param {Object} props

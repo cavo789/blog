@@ -1,6 +1,9 @@
 /**
  * Retrieve the list of comments posted on BlueSky and display them on the page
  *
+ * This list will displayed only when the post has, in his YAML frontmatter, the 
+ * blueSkyRecordKey entry i.e. the hash of the BlueSky post.
+ * 
  * See comments in BlueSky.js component for the list of requirements
  *
  * @param {Object} props
