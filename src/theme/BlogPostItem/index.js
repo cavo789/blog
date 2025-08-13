@@ -10,10 +10,11 @@ import BlogPostItemFooter from '@theme/BlogPostItem/Footer';
 import BlueSky from "./BlueSky/index.js";
 
 // apply a bottom margin in list view
-function useContainerClassName() {  
+function useContainerClassName() {
   const {isBlogPostPage} = useBlogPost();
   return !isBlogPostPage ? 'margin-bottom--xl' : undefined;
 }
+
 export default function BlogPostItem({ children, className }) {
   // We need to retrieve the isBlogPostPage flag
   const { metadata, isBlogPostPage } = useBlogPost();

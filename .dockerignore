@@ -12,7 +12,7 @@ node_modules/
 .env.example
 .gitignore
 
-docker-compose*
+compose*
 Dockerfile*
 
 makefile

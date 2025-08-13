@@ -6,11 +6,11 @@ SHELL:=bash
 DOCKER_UID:=$(shell id -u)
 DOCKER_GID:=$(shell id -g)
 
-# Should be in line with the container_name as defined in "docker-compose.yml"
-DOCKER_CONTAINER_NAME:="docusaurus"
+# Should be in line with the container_name as defined in "compose.yml"
+DOCKER_CONTAINER_NAME:=docusaurus
 
 # Needed by "make devcontainer"
-DOCKER_VSCODE:=$(shell printf "${DOCKER_CONTAINER_NAME}" | xxd -p)
+DOCKER_VSCODE:=attached-container+$(shell printf "${DOCKER_CONTAINER_NAME}" | xxd -p)
 DOCKER_APP_HOME:="/opt/docusaurus"
 
 # region - Helpers
@@ -26,10 +26,10 @@ _WHITE:="\033[1;${COLOR_WHITE}m%s\033[0m %s\n"
 # region - Initialization
 # The TARGET variable is defined in the .env file and is initialized to "production" or "development"
 ifeq ($(or "$(TARGET)","production"), "production")
-COMPOSE_FILE=docker-compose.yml:docker-compose-prod.yml
+COMPOSE_FILE=./.docker/compose.yaml:./.docker/compose-prod.yaml
 PORT=80
 else
-COMPOSE_FILE=docker-compose.yml:docker-compose-dev.yml
+COMPOSE_FILE=./.docker/compose.yaml:./.docker/compose-dev.yaml
 PORT=3000
 endif
 # endregion
@@ -44,7 +44,7 @@ help: ## Show the help with the list of commands
 	@clear
 	@printf $(_WHITE) "List of commands to work with the Blog published on https://www.avonture.be"
 	@printf $(_WHITE) "Retrieve the last version on https://github.com/cavo789/blog"
-	
+
 
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 	@echo ""
@@ -57,19 +57,19 @@ bash: ## Open an interactive shell in the Docker container
 ifeq ($(or "$(TARGET)","production"), "production")
 	docker run -it cavo789/blog /bin/bash
 else
-	COMPOSE_FILE=${COMPOSE_FILE} DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose exec ${ARGS} docusaurus /bin/bash 
+	COMPOSE_FILE=${COMPOSE_FILE} DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose exec ${ARGS} docusaurus /bin/bash
 endif
 
 .PHONY: build
 build: _checkEnv ## Build the Docker image (tip: you can pass CLI flags to Docker using ARGS like f.i. ARGS="--progress=plain --no-cache").
-	@printf $(_YELLOW) "Build the Docker $(TARGET) image. You can add arguments like, f.i. ARGS=\"--progress=plain --no-cache\""	
+	@printf $(_YELLOW) "Build the Docker $(TARGET) image. You can add arguments like, f.i. ARGS=\"--progress=plain --no-cache\""
 	@echo ""
 ifeq ($(or "$(TARGET)","production"), "production")
     # Build the Docker image as a stand alone one. We can then publish it on hub.docker.com if we want to
-	docker build --tag cavo789/blog --target production ${ARGS} . 
+	docker build --tag cavo789/blog --target production ${ARGS} .
 else
 	COMPOSE_FILE=${COMPOSE_FILE} DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose build ${ARGS}
-endif	
+endif
 	@echo ""
 	@printf $(_YELLOW) "Now, continue by running \"make up\"."
 
@@ -84,8 +84,9 @@ devcontainer: ## Open the blog in Visual Studio Code in devcontainer
 ifeq ($(or "$(TARGET)","production"), "production")
 	@printf $(_RED) "This command is only possible when \"TARGET=development\" in the .env file"
 	@exit 1
-endif	
-	code --folder-uri vscode-remote://attached-container+${DOCKER_VSCODE}${DOCKER_APP_HOME}
+endif
+	code --folder-uri vscode-remote://${DOCKER_VSCODE}${DOCKER_APP_HOME}
+	./.docker/install-vscode-extensions.sh "${DOCKER_CONTAINER_NAME}"
 
 .PHONY: down
 down: ## Stop the container
@@ -100,24 +101,25 @@ logs: ## Show the log of Docusaurus
 	@docker logs --follow docusaurus
 
 .PHONY: remove
-remove: down ## Remove the image
-	-docker image rmi blog-docusaurus
+remove: ## Remove the image
+	COMPOSE_FILE=${COMPOSE_FILE} docker compose down --remove-orphans --rmi all --volumes
+    #-docker image rmi blog-docusaurus
 	@rm -rf node_modules *.lock package-lock.json
 
 .PHONY: start
 start: ## Start the local web server and open the webpage
-	@printf $(_YELLOW) "Open the $(TARGET) blog (https://localhost:${PORT})"	
+	@printf $(_YELLOW) "Open the $(TARGET) blog (https://localhost:${PORT})"
 	@sensible-browser https://localhost:${PORT}
 
 .PHONY: up
 up: ## Create the Docker container
-	@printf $(_YELLOW) "Create the Docker $(TARGET) container"	
+	@printf $(_YELLOW) "Create the Docker $(TARGET) container"
 	@echo ""
-ifeq ($(or "$(TARGET)","production"), "production")	
+ifeq ($(or "$(TARGET)","production"), "production")
 	docker run -d --publish 80:80 --name blog cavo789/blog
-else	
+else
 	COMPOSE_FILE=${COMPOSE_FILE} DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose up --detach ${ARGS}
-endif	
+endif
 	@echo ""
 	@printf $(_YELLOW) "Now, continue by running \"make start\"."
 
@@ -150,4 +152,4 @@ upgrade: ## Upgrade docusaurus and npm dependencies
 	docker run --rm -it --user root -v $${PWD}/:/project -w /project node /bin/bash -c "yarn upgrade @docusaurus/core@latest @docusaurus/plugin-ideal-image@latest @docusaurus/plugin-sitemap@latest @docusaurus/preset-classic@latest @docusaurus/theme-search-algolia@latest @docusaurus/module-type-aliases@latest @docusaurus/types@latest"
 	@printf $(_YELLOW) "Current version of docusaurus"
 	docker run --rm -it -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus -V"
-	
+

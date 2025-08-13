@@ -6,83 +6,187 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+    --ifm-color-primary: #2e8555;
+    --ifm-color-primary-dark: #29784c;
+    --ifm-color-primary-darker: #277148;
+    --ifm-color-primary-darkest: #205d3b;
+    --ifm-color-primary-light: #33925d;
+    --ifm-color-primary-lighter: #359962;
+    --ifm-color-primary-lightest: #3cad6e;
+    --ifm-code-font-size: 95%;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+    --ifm-color-primary: #25c2a0;
+    --ifm-color-primary-dark: #21af90;
+    --ifm-color-primary-darker: #1fa588;
+    --ifm-color-primary-darkest: #1a8870;
+    --ifm-color-primary-light: #29d5b0;
+    --ifm-color-primary-lighter: #32d8b4;
+    --ifm-color-primary-lightest: #4fddbf;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-.navbar__logo > img {
-  width: auto;
+.navbar__logo>img {
+    width: auto;
 }
 
 /* Will contains all BlueSky buttons and comments */
 .blueSkyContainer {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--ifm-color-emphasis-200);
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
 /* The container for all BlueSky comments */
 .blueSkyCommentsContainer {
-  border: solid 10px #f5f5f5;
-  margin-top: 1rem;
-  padding: 0.4rem 0.9rem;
+    border: solid 10px #f5f5f5;
+    margin-top: 1rem;
+    padding: 0.4rem 0.9rem;
 }
 
 /* The container for one single comment */
 .blueSkyCommentContainer {
-  margin-bottom: 1rem;
-  background-color: #f9f9f9;
-  padding: 0.8rem;
-  border-radius: 6px;
+    margin-bottom: 1rem;
+    background-color: #f9f9f9;
+    padding: 0.8rem;
+    border-radius: 6px;
+    border-left: 2px solid #e0e0e0;
 }
 
-.blueSkyCommentAuthor {
-  margin: 0;
-  font-weight: bold;
+.blueSkyCommentHeader {
+  /* This ensures the entire component is a flex container */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Optional: adds space between the avatar and author info */
+}
+
+.blueSkyCommentAuthorInfos {
+  /* This new container is a flex container */
+  display: flex;
+  /* This is the key: it stacks the children vertically */
+  flex-direction: column;
+}
+
+.blueSkyCommentAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.blueSkyCommentAuthorDisplayName {
+    margin: 0;
+    font-weight: bold;
+}
+
+.blueSkyCommentAuthorHandle {
+    margin: 0;
+    font-size: smaller;
+    font-weight: normal;
+    color: #555;
+    display: block;
+}
+
+.blueSkyCommentDate {
+  margin-left: auto;
+  font-size: smaller;
+  color: gray;
 }
 
 .blueSkyCommentText {
-  margin: 0.3rem 0 0;
-  font-style: italic;
+    margin: 0.3rem 0 0;
+}
+
+.blueSkyCommentFooter {
+}
+
+.blueSkyCommentLikes::before {
+    content: '♡\a0';
+    color: red;
+}
+
+.blueSkyCommentLikes::after {
+    content: ' ';
+}
+
+.blueSkyCommentReposts::before {
+    content: '↺\a0';
+}
+
+.blueSkyCommentReposts::after {
+    content: ' ';
+}
+
+.blueSkyCommentLink::before {
+    content: '→\a0';
+}
+
+.blueSkyCommentLink::after {
+    content: ' ';
+}
+
+.blueSkyCommentLink {
+    margin-right: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    color: #666;
+    text-decoration: none;
+    margin-top: 0.25rem;
+}
+
+img.blueSkyCommentEmbedThumb  {
+    /* max-width: 50%; */
+    max-height: 250px;
+}
+
+.blueSkyNoCommentYet {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.blueSkyNoCommentYetCTA {
+  font-weight: bold;
+  color: #007bff; /* A nice, inviting blue */
+  cursor: pointer; /* Changes the cursor to a pointer to indicate interactivity */
+  text-decoration: underline; /* Adds a subtle underline */
 }
 
 .blueSkyButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.4rem 0.9rem;
-  background-color: #f5f5f5; /* Light neutral background */
-  color: #333333; /* Dark grey text */
-  font-weight: 400; /* Normal weight */
-  font-size: 0.9rem; /* Slightly smaller */
-  border-radius: 6px; /* Softer rounding */
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  box-shadow: none; /* Remove shadow for minimal look */
-  border: 1px solid #ddd; /* Subtle border */
-  margin-right: 0.4rem; /* Space between buttons */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.9rem;
+    background-color: #f5f5f5;
+    /* Light neutral background */
+    color: #333333;
+    /* Dark grey text */
+    font-weight: 400;
+    /* Normal weight */
+    font-size: 0.9rem;
+    /* Slightly smaller */
+    border-radius: 6px;
+    /* Softer rounding */
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    box-shadow: none;
+    /* Remove shadow for minimal look */
+    border: 1px solid #ddd;
+    /* Subtle border */
+    margin-right: 0.4rem;
+    /* Space between buttons */
 }
 
 /* Hover effect */
 .blueSkyButton:hover {
-  background-color: #0062cc;
+    background-color: #0062cc;
 }

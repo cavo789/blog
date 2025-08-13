@@ -2,22 +2,29 @@
     "name": "docusaurus",
     "service": "docusaurus",
     "dockerComposeFile": [
-        "../docker-compose.yml",
-        "../docker-compose-dev.yml"
+        "../.docker/compose.yaml",
+        "../.docker/compose-dev.yaml"
     ],
     "workspaceFolder": "/opt/docusaurus",
-    "remoteUser": "root",
+    "remoteUser": "node",
     "customizations": {
         "vscode": {
             "settings": {
                 "[markdown]": {
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": "always"
+                    },
                     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+                    "editor.formatOnSave": true,
                     "editor.wordWrap": "wordWrapColumn",
                     "editor.wordWrapColumn": 80,
                     "editor.wrappingIndent": "indent"
                 },
                 "cspell.language": "en",
                 "editor.bracketPairColorization.enabled": true,
+                "editor.codeActionsOnSave": {
+                  "source.fixAll.markdownlint": "always"
+                },
                 "editor.folding": true,
                 "editor.foldingStrategy": "auto",
                 "editor.formatOnSave": true,
@@ -37,6 +44,8 @@
                 "files.defaultLanguage": "markdown",
                 "files.insertFinalNewline": true,
                 "files.trimTrailingWhitespace": true,
+                "markdownlint.configFile": ".config/.markdownlint.json",
+                "markdownlint.fixOnSave": true,
                 "sonarlint.disableTelemetry": true,
                 "telemetry.telemetryLevel": "off",
                 "terminal.integrated.profiles.linux": {
@@ -49,16 +58,14 @@
                 "terminal.integrated.fontFamily": "MesloLGS MS"
             },
             "extensions": [
-                "DavidAnson.vscode-markdownlint",
-                "mde.select-highlight-minimap",
-                "ms-azuretools.vscode-docker",
-                "SonarSource.sonarlint-vscode",
-                "streetsidesoftware.code-spell-checker-british-english",
-                "streetsidesoftware.code-spell-checker-french",
-                "streetsidesoftware.code-spell-checker",
-                "TomasDahlqvist.markdown-admonitions",
-                "Tyriar.sort-lines",
-                "usernamehw.errorlens"
+              "Codeium.codeium",
+              "DavidAnson.vscode-markdownlint",
+              "esbenp.prettier-vscode",
+              "streetsidesoftware.code-spell-checker",
+              "streetsidesoftware.code-spell-checker-british-english",
+              "streetsidesoftware.code-spell-checker-french",
+              "TomasDahlqvist.markdown-admonitions",
+              "usernamehw.errorlens"
             ]
         }
     }

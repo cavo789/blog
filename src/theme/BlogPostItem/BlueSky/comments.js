@@ -1,59 +1,205 @@
 /**
  * Retrieve the list of comments posted on BlueSky and display them on the page
  *
- * This list will displayed only when the post has, in his YAML frontmatter, the 
- * blueSkyRecordKey entry i.e. the hash of the BlueSky post.
- * 
- * See comments in BlueSky.js component for the list of requirements
+ * This info will displayed only when the post has, in his YAML frontmatter, the
+ * `blueSkyRecordKey` entry i.e. the hash of the BlueSky post.
  *
- * @param {Object} props
- * @param {string} props.recordKey - Unique record from the frontmatter
+ * See comments in BlueSky.js component for the list of requirements
  */
 
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
-export default function BlueSkyComments({ recordKey }) {
+/**
+ * Render post text with clickable links
+ *
+ * @param {*} record
+ * @returns
+ */
+function renderPostText(record) {
+  const text = record.text;
+  const facets = record.facets || [];
+  if (facets.length === 0) return text;
+
+  const parts = [];
+  let lastIndex = 0;
+
+  facets.forEach((facet, idx) => {
+    const start = facet.index.byteStart;
+    const end = facet.index.byteEnd;
+    const before = text.slice(lastIndex, start);
+    if (before) parts.push(before);
+
+    const linkFeature = facet.features.find(f => f.$type === "app.bsky.richtext.facet#link");
+    if (linkFeature) {
+      parts.push(
+        <a key={`link-${idx}`} href={linkFeature.uri} target="_blank" rel="noopener noreferrer">
+          {text.slice(start, end)}
+        </a>
+      );
+    } else {
+      parts.push(text.slice(start, end));
+    }
+
+    lastIndex = end;
+  });
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts;
+}
+
+/**
+ * Render embedded external link preview
+ *
+ * @param {*} embed
+ * @returns
+ */
+function renderEmbed(embed) {
+  if (!embed || embed.$type !== "app.bsky.embed.external#view") return null;
+
+  const { uri, title, description, thumb } = embed.external;
+
+  return (
+    <a href={uri} target="_blank" rel="noopener noreferrer" className="blueSkyCommentEmbed">
+      {thumb && <img src={thumb} alt="" className="blueSkyCommentEmbedThumb" />}
+      <div className="blueSkyCommentEmbedContent">
+        <strong>{title}</strong>
+        {/* <p>{description}</p> */}
+        {/* <span>{uri}</span> */}
+      </div>
+    </a>
+  );
+}
+
+/**
+ * Process a single comment/reply
+ *
+ * @param {Object} props
+ * @param {string} props.reply - Unique record from the frontmatter
+ */
+function BlueSkyComment({ reply }) {
+  const recordKey = reply.post.uri.split("/").pop();
+  const profileUrl = `https://bsky.app/profile/${reply.post.author.handle}`;
+  const commentUrl = `https://bsky.app/profile/${reply.post.author.handle}/post/${recordKey}`;
+  const date = new Date(reply.post.indexedAt).toLocaleString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return (
+    // The style here is required for the correct indentation based on the deepness of the comment/reply
+    <div className="blueSkyCommentContainer" style={{ paddingLeft: `${1.5 + reply.depth * 1.5}rem` }}>
+      {/* Author */}
+      <div className="blueSkyCommentHeader mb-2 flex items-center">
+        <a href={profileUrl} target="_blank" rel="noopener noreferrer">
+          <img
+            src={reply.post.author.avatar}
+            alt={`${reply.post.author.displayName}'s avatar`}
+            className="blueSkyCommentAvatar"
+          />
+        </a>
+        <div className="blueSkyCommentAuthorInfos">
+          <a href={profileUrl} target="_blank" rel="noopener noreferrer" className="blueSkyCommentAuthorDisplayName">
+            {reply.post.author.displayName}
+          </a>
+          <span className="blueSkyCommentAuthorHandle">@{reply.post.author.handle}</span>
+        </div>
+      </div>
+
+      {/* Date */}
+      <span className="blueSkyCommentDate">{date}</span>
+
+      {/* Text */}
+      <p className="blueSkyCommentText">{renderPostText(reply.post.record)}</p>
+
+      {/* Embed */}
+      {renderEmbed(reply.post.embed)}
+
+      {/* Footer */}
+      <div className="blueSkyCommentFooter">
+        <span className="blueSkyCommentLikes">{reply.post.likeCount}</span>
+        <span className="blueSkyCommentReposts">{reply.post.repostCount || 0}</span>
+        <a className="blueSkyCommentLink" href={commentUrl} target="_blank" rel="noopener noreferrer">
+          View comment
+        </a>
+      </div>
+    </div>
+  );
+}
+
+BlueSkyComment.propTypes = {
+  reply: PropTypes.shape({
+    post: PropTypes.shape({
+      uri: PropTypes.string.isRequired,
+      indexedAt: PropTypes.string.isRequired,
+      likeCount: PropTypes.number.isRequired,
+      repostCount: PropTypes.number,
+      author: PropTypes.shape({
+        handle: PropTypes.string.isRequired,
+        displayName: PropTypes.string.isRequired,
+        avatar: PropTypes.string.isRequired,
+      }).isRequired,
+      record: PropTypes.shape({
+        text: PropTypes.string.isRequired,
+        facets: PropTypes.array,
+      }).isRequired,
+      embed: PropTypes.object,
+    }).isRequired,
+    depth: PropTypes.number.isRequired,
+  }).isRequired,
+};
+
+/**
+ * This is the main component
+ *
+ * We will process any comment (replies) posted on BlueSky
+ *
+ * @param {object} props
+ * @param {object} props.metadata - The Docusaurus document metadata, including the frontmatter.
+ * @param {object} [props.metadata.frontMatter] - The frontmatter object.
+ * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - The unique key of the
+ * corresponding BlueSky post. Its presence determines the component's behavior.
+ */
+export default function BlueSkyComments({ metadata }) {
   const { siteConfig } = useDocusaurusContext();
   const blueSkyConfig = siteConfig?.customFields?.blueSky;
-
-  if (!recordKey) {
-    console.warn("<BlueSkyComments> Missing required property", { recordKey });
-
-    return null;
-  }
+  const blueSkyRecordKey = metadata?.frontMatter?.blueSkyRecordKey;
 
   const [comments, setComments] = useState(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    if (!blueSkyRecordKey) return;
+
     async function fetchComments() {
       try {
-        const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${recordKey}`;
-
-        const url =
-          "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?depth=10&" +
-          "uri=" +
-          encodeURIComponent(postUri);
+        const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${blueSkyRecordKey}`;
+        const url = "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?depth=5&uri=" + encodeURIComponent(postUri);
 
         const res = await fetch(url);
         const data = await res.json();
 
         const allComments = [];
+        const flattenReplies = (arr, depth) => {
+          // No comment so just return
+          if (!arr) return;
 
-        const flattenReplies = (repliesArray, depth) => {
-          if (!repliesArray) return;
-          for (const reply of repliesArray) {
-            allComments.push({ ...reply, depth: depth });
-            if (reply.replies) {
-              flattenReplies(reply.replies, depth + 1);
-            }
+          // Recursive loop, process all replies (whatever the deep)
+          for (const r of arr) {
+            allComments.push({ ...r, depth });
+            if (r.replies) flattenReplies(r.replies, depth + 1);
           }
         };
 
-        if (data.thread && data.thread.replies) {
-          flattenReplies(data.thread.replies, 0); // Start with depth 0
+        if (data.thread?.replies) {
+          flattenReplies(data.thread.replies, 0);
         }
 
         setComments(allComments);
@@ -63,31 +209,35 @@ export default function BlueSkyComments({ recordKey }) {
       }
     }
     fetchComments();
-  }, [recordKey]);
+  }, [blueSkyRecordKey]);
 
+  const postUrl = `https://bsky.app/profile/${blueSkyConfig.handle}/post/${blueSkyRecordKey}`;
+
+  if (!blueSkyRecordKey) return null;
   if (error) return <p>Error loading comments.</p>;
   if (comments === null) return <p>Loading comments…</p>;
-  if (comments.length === 0) return <p>No comments yet on BlueSky.</p>;
+  if (comments.length === 0) return (
+    <p className="blueSkyNoCommentYet">This post is waiting for its first comment.&nbsp;
+      <a className="blueSkyNoCommentYetCTA" href={ postUrl } target="_blank" rel="noopener noreferrer">
+        Share your thoughts!
+      </a>
+    </p>
+  );
 
   return (
     <div className="blueSkyCommentsContainer">
       <h3>💬 Comments from BlueSky ({comments.length})</h3>
       {comments.map((reply, i) => (
-        <div
-          key={i}
-          className="blueSkyCommentContainer"
-          style={{
-            paddingLeft: `${1.5 + reply.depth * 1.5}rem`, // Apply dynamic indentation
-          }}
-        >
-          <p className="blueSkyCommentAuthor">@{reply.post.author.handle}</p>
-          <p className="blueSkyCommentText">{reply.post.record.text}</p>
-        </div>
+        <BlueSkyComment key={i} reply={reply} />
       ))}
     </div>
   );
 }
 
 BlueSkyComments.propTypes = {
-  recordKey: PropTypes.string.isRequired,
+  metadata: PropTypes.shape({
+    frontMatter: PropTypes.shape({
+      blueSkyRecordKey: PropTypes.string // Optional
+    })
+  }).isRequired
 };

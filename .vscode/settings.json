@@ -2,6 +2,7 @@
     "search.exclude": {
         "**/node_modules": true,
     },
+    "files.trimTrailingWhitespace": true,
     "files.exclude": {
         "**/node_modules/**": true,
     },

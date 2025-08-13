@@ -3,7 +3,8 @@ name: blog
 services:
   docusaurus:
     build: 
-      context: .
+      context: ./..
+      dockerfile: ./.docker/Dockerfile
       # Target is defined in the .env file, can be "development" or "production"
       target: ${TARGET}
       # Our Dockerfile needs these two variables
