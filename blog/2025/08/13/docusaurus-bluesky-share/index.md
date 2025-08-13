@@ -4,6 +4,7 @@ title: Create our own Docusaurus React component and provide a "Share on BlueSky
 authors: [christophe]
 image: /img/docusaurus_tips_social_media.jpg
 tags: [bluesky, component, docusaurus, markdown, react, swizzle]
+blueSkyRecordKey: 3lwbehu3h2k2i
 enableComments: true
 ---
 <!-- cspell:ignore reposts -->
