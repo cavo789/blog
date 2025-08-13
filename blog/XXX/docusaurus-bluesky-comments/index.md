@@ -14,6 +14,8 @@ In a [previous article](/blog/docusaurus-bluesky-share), we've seen how we can, 
 
 This is not really interactive right? Let's see in this article how to make the link between a Docusaurus blog post and BlueSky.
 
+<!-- truncate -->
+
 The workflow will be:
 
 1. You publish your article on your blog,
@@ -32,16 +34,71 @@ Thanks to this link, we can:
 
 In the previous article (see [Create our own Docusaurus React component and provide a "Share on BlueSky" button](/blog/docusaurus-bluesky-share)), we've created the `src/theme/BlogPostItem/BlueSky/index.js` file. Please edit that file and use this new content:
 
+## 1/5 The layout of our BlueSky generic component
+
+Here is our new BlueSky layout for our component:
+
 <details>
 
 <summary>src/theme/BlogPostItem/BlueSky/index.js</summary>
 
 ```javascript
-// highlight-next-line
+/**
+ * ===================================
+ * = BlueSky component - Entry point =
+ * ===================================
+ *
+ * Renders a BlueSky area where we'll have:
+ *
+ * OPTION 1
+ * - A button to allow the visitor to share the post on his BlueSky profile (BlueSkyShare.js)
+ *
+ * OR
+ *
+ * OPTION 2
+ * - A button to see (like/share/comment) the post on BlueSky (<BlueSkyPost>)
+ * - The number of likes / repost on BlueSky (<BlueSkyLikes>)
+ * - The list of comments for the post (<BlueSkyComments>) or a call-to-action link for engagement
+ *
+ * The difference will be the presence of the `blueSkyRecordKey` key or not in the YAML frontmatter of
+ * the Docusaurus document.
+ *
+ * If there is no `blueSkyRecordKey` info (OPTION 1), there is no BlueSky post and thus we'll only show a button
+ * to allow the visitor to share the document on his own profile.
+ *
+ * If present and not empty (OPTION 2), it means a BlueSky post exists for the document
+ * and thus we can show the like/share/comment, the number of likes/repost and the list of comments.
+ *
+ * Here is an example of such YAML entry:
+ *
+ * ---
+ * ...
+ * blueSkyRecordKey: 3lun2qjuxc22r
+ * ---
+ *
+ * In order to provide links to your own BlueSky profile, you'll have to add the blueSky entry
+ * in the `docusaurus.config.js` file, for instance:
+ *
+ *      const config = {
+ *        ...
+ *        customFields: {
+ *          blueSky: {
+ *            handle: 'avonture.be',
+ *          },
+ *        },
+ *      }
+ *
+ * The handle should be initialized to the BlueSky handle of the author (you)
+ *
+ * @param {object} props
+ * @param {object} props.metadata - The Docusaurus document metadata, including the frontmatter.
+ * @param {object} [props.metadata.frontMatter] - The frontmatter object.
+ * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - The unique key of the
+ * corresponding BlueSky post. Its presence determines the component's behavior.
+ */
+
 import BlueSkyComments from "./comments";
-// highlight-next-line
 import BlueSkyLikes from "./likes";
-// highlight-next-line
 import BlueSkyPost from "./post";
 import BlueSkyShare from "./share";
 import PropTypes from "prop-types";
@@ -49,12 +106,23 @@ import PropTypes from "prop-types";
 export default function BlueSky({ metadata }) {
   return (
     <div className="blueSkyContainer">
+
+      {/*
+        OPTION 1 - The blueSkyRecordKey is missing in the YAML frontmatter:
+
+        - show a Share button so the visitor can sahre the post on his own BlueSky profile
+      */}
       <BlueSkyShare metadata={metadata} />
-      // highlight-next-line
+
+      {/*
+        OPTION 2 - The blueSkyRecordKey key is filled in so a BlueSky post already exists:
+
+        - promote to like/share/comment it
+        - show the number of likes/reposts
+        - display the list of comments
+      */}
       <BlueSkyPost metadata={metadata} />
-      // highlight-next-line
       <BlueSkyLikes metadata={metadata} />
-      // highlight-next-line
       <BlueSkyComments metadata={metadata} />
     </div>
   );
@@ -67,8 +135,6 @@ BlueSky.propTypes = {
     }),
   }).isRequired,
 };
-
-
 ```
 
 </details>
@@ -84,17 +150,31 @@ As you can see, this time, we'll foresee four components:
 3. A likes area (to show the number of likes and reposts of your post on BlueSky) and
 4. An area for displaying comments you've on BlueSky
 
-## The Like, share or comment button
-
-
+## 2/5 Our "Like, share or comment" button
 
 <details>
 
 <summary>src/theme/BlogPostItem/BlueSky/post.js</summary>
 
 ```javascript
-import clsx from "clsx";
+/**
+ * Renders a button to show the post on Bluesky (and be able to like/share/comment)
+ *
+ * This info will displayed only when the post has, in his YAML frontmatter, the
+ * `blueSkyRecordKey` entry i.e. the hash of the BlueSky post.
+ *
+ * See comments in BlueSky.js component for the list of requirements
+ *
+ * @param {object} props
+ * @param {object} props.metadata - The Docusaurus document metadata, including the frontmatter.
+ * @param {object} [props.metadata.frontMatter] - The frontmatter object.
+ * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - The unique key of the
+ * corresponding BlueSky post. Its presence determines the component's behavior.
+ */
+
+import Icon from "./bluesky.svg";
 import PropTypes from "prop-types";
+import styles from "./styles.module.css";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 export default function BlueSkyPost({ metadata }) {
@@ -109,8 +189,14 @@ export default function BlueSkyPost({ metadata }) {
   const postUrl = `https://bsky.app/profile/${blueSkyConfig.handle}/post/${blueSkyRecordKey}`;
 
   return (
-    <a href={postUrl} target="_blank" rel="noopener noreferrer" className={clsx("blueSkyButton", "button")} aria-label="See the post on BlueSky">
-      <img src="/img/bluesky.svg" alt="Bluesky Icon" width="16" height="16" />
+    <a
+      href={postUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.blueSkyButton}
+      aria-label="See the post on BlueSky"
+    >
+      <Icon alt="Bluesky Icon" className={styles.blueSkyLogo} />
       Like, share or comment on BlueSky
     </a>
   );
@@ -119,16 +205,16 @@ export default function BlueSkyPost({ metadata }) {
 BlueSkyPost.propTypes = {
   metadata: PropTypes.shape({
     frontMatter: PropTypes.shape({
-      blueSkyRecordKey: PropTypes.string // Optional
-    })
-  }).isRequired
+      blueSkyRecordKey: PropTypes.string, // Optional
+    }),
+  }).isRequired,
 };
-
 ```
 
 </details>
 
-## Getting the number of likes and reposts
+
+## 3/5 Our component for getting the number of likes and reposts
 
 <!-- cspell:disable -->
 <details>
@@ -136,8 +222,21 @@ BlueSkyPost.propTypes = {
 <summary>src/theme/BlogPostItem/BlueSky/likes.js</summary>
 
 ```javascript
+/**
+ * Show the number of likes and reposts a BlueSky post has.
+ *
+ * This info will displayed only when the post has, in his YAML frontmatter, the
+ * `blueSkyRecordKey` entry i.e. the hash of the BlueSky post.
+ *
+ * See comments in BlueSky.js component for the list of requirements
+ *
+ * @param {Object} props
+ * @param {string} props.recordKey - Unique record from the frontmatter
+ */
+
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import styles from "./styles.module.css";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 export default function BlueSkyLikes({ metadata }) {
@@ -145,9 +244,15 @@ export default function BlueSkyLikes({ metadata }) {
   const blueSkyConfig = siteConfig?.customFields?.blueSky;
   const blueSkyRecordKey = metadata?.frontMatter?.blueSkyRecordKey;
 
-  const [postStats, setPostStats] = useState({ likes: null, reposts: null, loading: true });
+  // Consolidate state into a single object
+  const [postStats, setPostStats] = useState({
+    likes: null,
+    reposts: null,
+    loading: true,
+  });
 
   useEffect(() => {
+    // Only run if a BlueSky post exists
     if (!blueSkyRecordKey) {
       setPostStats({ likes: null, reposts: null, loading: false });
       return;
@@ -156,7 +261,9 @@ export default function BlueSkyLikes({ metadata }) {
     const fetchData = async () => {
       try {
         const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${blueSkyRecordKey}`;
-        const url = `https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=${encodeURIComponent(postUri)}&depth=0`;
+        const url = `https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=${encodeURIComponent(
+          postUri
+        )}&depth=0`;
 
         const res = await fetch(url);
         if (!res.ok) throw new Error("Failed to fetch post data");
@@ -164,7 +271,11 @@ export default function BlueSkyLikes({ metadata }) {
         const data = await res.json();
         const { likeCount, repostCount } = data.thread.post;
 
-        setPostStats({ likes: likeCount, reposts: repostCount, loading: false });
+        setPostStats({
+          likes: likeCount,
+          reposts: repostCount,
+          loading: false,
+        });
       } catch (e) {
         console.error("Error fetching BlueSky stats:", e);
         setPostStats({ likes: null, reposts: null, loading: false });
@@ -183,9 +294,19 @@ export default function BlueSkyLikes({ metadata }) {
   }
 
   return (
-    <span className="blueSkyPostLikes">
-      <span className="blueSkyCommentLikes" title={`The original post has ${postStats.likes} likes on BlueSky`}>{postStats.likes}</span>
-      <span className="blueSkyCommentReposts" title={`The original post has been shared ${postStats.reposts} times on BlueSky`}>{postStats.reposts}</span>
+    <span className={styles.blueSkyPostLikes}>
+      <span
+        className={styles.blueSkyCommentLikes}
+        title={`The original post has ${postStats.likes} likes on BlueSky`}
+      >
+        {postStats.likes}
+      </span>
+      <span
+        className={styles.blueSkyCommentReposts}
+        title={`The original post has been shared ${postStats.reposts} times on BlueSky`}
+      >
+        {postStats.reposts}
+      </span>
     </span>
   );
 }
@@ -193,18 +314,17 @@ export default function BlueSkyLikes({ metadata }) {
 BlueSkyLikes.propTypes = {
   metadata: PropTypes.shape({
     frontMatter: PropTypes.shape({
-      blueSkyRecordKey: PropTypes.string
-    })
-  }).isRequired
+      blueSkyRecordKey: PropTypes.string, // Optional. If missing, the BlueSkyLikes component won't display anything
+    }),
+  }).isRequired,
 };
-
 ```
 
 </details>
 
 <!-- cspell:enable -->
 
-## Retrieving all comments
+## 4/5 Retrieving all comments
 
 <!-- cspell:disable -->
 <details>
@@ -212,10 +332,26 @@ BlueSkyLikes.propTypes = {
 <summary>src/theme/BlogPostItem/BlueSky/comments.js</summary>
 
 ```javascript
-import React, { useState, useEffect } from "react";
+/**
+ * Retrieve the list of comments posted on BlueSky and display them on the page
+ *
+ * This info will displayed only when the post has, in his YAML frontmatter, the
+ * `blueSkyRecordKey` entry i.e. the hash of the BlueSky post.
+ *
+ * See comments in BlueSky.js component for the list of requirements
+ */
+
 import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
+import styles from "./styles.module.css";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
+/**
+ * Render post text with clickable links
+ *
+ * @param {*} record
+ * @returns
+ */
 function renderPostText(record) {
   const text = record.text;
   const facets = record.facets || [];
@@ -230,10 +366,17 @@ function renderPostText(record) {
     const before = text.slice(lastIndex, start);
     if (before) parts.push(before);
 
-    const linkFeature = facet.features.find(f => f.$type === "app.bsky.richtext.facet#link");
+    const linkFeature = facet.features.find(
+      (f) => f.$type === "app.bsky.richtext.facet#link"
+    );
     if (linkFeature) {
       parts.push(
-        <a key={`link-${idx}`} href={linkFeature.uri} target="_blank" rel="noopener noreferrer">
+        <a
+          key={`link-${idx}`}
+          href={linkFeature.uri}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {text.slice(start, end)}
         </a>
       );
@@ -251,21 +394,42 @@ function renderPostText(record) {
   return parts;
 }
 
+/**
+ * Render embedded external link preview
+ *
+ * @param {*} embed
+ * @returns
+ */
 function renderEmbed(embed) {
   if (!embed || embed.$type !== "app.bsky.embed.external#view") return null;
 
   const { uri, title, description, thumb } = embed.external;
 
   return (
-    <a href={uri} target="_blank" rel="noopener noreferrer" className="blueSkyCommentEmbed">
-      {thumb && <img src={thumb} alt="" className="blueSkyCommentEmbedThumb" />}
-      <div className="blueSkyCommentEmbedContent">
+    <a
+      href={uri}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.blueSkyCommentEmbed}
+    >
+      {thumb && (
+        <img src={thumb} alt="" className={styles.blueSkyCommentEmbedThumb} />
+      )}
+      <div className={styles.blueSkyCommentEmbedContent}>
         <strong>{title}</strong>
+        {/* <p>{description}</p> */}
+        {/* <span>{uri}</span> */}
       </div>
     </a>
   );
 }
 
+/**
+ * Process a single comment/reply
+ *
+ * @param {Object} props
+ * @param {string} props.reply - Unique record from the frontmatter
+ */
 function BlueSkyComment({ reply }) {
   const recordKey = reply.post.uri.split("/").pop();
   const profileUrl = `https://bsky.app/profile/${reply.post.author.handle}`;
@@ -279,29 +443,60 @@ function BlueSkyComment({ reply }) {
   });
 
   return (
-    <div className="blueSkyCommentContainer" style={{ paddingLeft: `${1.5 + reply.depth * 1.5}rem` }}>
-      <div className="blueSkyCommentHeader mb-2 flex items-center">
+    // The style here is required for the correct indentation based on the deepness of the comment/reply
+    <div
+      className={styles.blueSkyCommentContainer}
+      style={{ paddingLeft: `${1.5 + reply.depth * 1.5}rem` }}
+    >
+      {/* Author */}
+      <div className={`${styles.blueSkyCommentHeader} mb-2 flex items-center`}>
         <a href={profileUrl} target="_blank" rel="noopener noreferrer">
           <img
             src={reply.post.author.avatar}
             alt={`${reply.post.author.displayName}'s avatar`}
-            className="blueSkyCommentAvatar"
+            className={styles.blueSkyCommentAvatar}
           />
         </a>
-        <div className="blueSkyCommentAuthorInfos">
-          <a href={profileUrl} target="_blank" rel="noopener noreferrer" className="blueSkyCommentAuthorDisplayName">
+        <div className={styles.blueSkyCommentAuthorInfos}>
+          <a
+            href={profileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.blueSkyCommentAuthorDisplayName}
+          >
             {reply.post.author.displayName}
           </a>
-          <span className="blueSkyCommentAuthorHandle">@{reply.post.author.handle}</span>
+          <span className={styles.blueSkyCommentAuthorHandle}>
+            @{reply.post.author.handle}
+          </span>
         </div>
       </div>
-      <span className="blueSkyCommentDate">{date}</span>
-      <p className="blueSkyCommentText">{renderPostText(reply.post.record)}</p>
+
+      {/* Date */}
+      <span className={styles.blueSkyCommentDate}>{date}</span>
+
+      {/* Text */}
+      <p className={styles.blueSkyCommentText}>
+        {renderPostText(reply.post.record)}
+      </p>
+
+      {/* Embed */}
       {renderEmbed(reply.post.embed)}
-      <div className="blueSkyCommentFooter">
-        <span className="blueSkyCommentLikes">{reply.post.likeCount}</span>
-        <span className="blueSkyCommentReposts">{reply.post.repostCount || 0}</span>
-        <a className="blueSkyCommentLink" href={commentUrl} target="_blank" rel="noopener noreferrer">
+
+      {/* Footer */}
+      <div className={styles.blueSkyCommentFooter}>
+        <span className={styles.blueSkyCommentLikes}>
+          {reply.post.likeCount}
+        </span>
+        <span className={styles.blueSkyCommentReposts}>
+          {reply.post.repostCount || 0}
+        </span>
+        <a
+          className={styles.blueSkyCommentLink}
+          href={commentUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           View comment
         </a>
       </div>
@@ -331,6 +526,17 @@ BlueSkyComment.propTypes = {
   }).isRequired,
 };
 
+/**
+ * This is the main component
+ *
+ * We will process any comment (replies) posted on BlueSky
+ *
+ * @param {object} props
+ * @param {object} props.metadata - The Docusaurus document metadata, including the frontmatter.
+ * @param {object} [props.metadata.frontMatter] - The frontmatter object.
+ * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - The unique key of the
+ * corresponding BlueSky post. Its presence determines the component's behavior.
+ */
 export default function BlueSkyComments({ metadata }) {
   const { siteConfig } = useDocusaurusContext();
   const blueSkyConfig = siteConfig?.customFields?.blueSky;
@@ -345,15 +551,19 @@ export default function BlueSkyComments({ metadata }) {
     async function fetchComments() {
       try {
         const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${blueSkyRecordKey}`;
-        const url = "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?depth=5&uri=" + encodeURIComponent(postUri);
+        const url =
+          "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?depth=5&uri=" +
+          encodeURIComponent(postUri);
 
         const res = await fetch(url);
         const data = await res.json();
 
         const allComments = [];
         const flattenReplies = (arr, depth) => {
+          // No comment so just return
           if (!arr) return;
 
+          // Recursive loop, process all replies (whatever the deep)
           for (const r of arr) {
             allComments.push({ ...r, depth });
             if (r.replies) flattenReplies(r.replies, depth + 1);
@@ -378,16 +588,23 @@ export default function BlueSkyComments({ metadata }) {
   if (!blueSkyRecordKey) return null;
   if (error) return <p>Error loading comments.</p>;
   if (comments === null) return <p>Loading comments…</p>;
-  if (comments.length === 0) return (
-    <p className="blueSkyNoCommentYet">This post is waiting for its first comment.&nbsp;
-      <a className="blueSkyNoCommentYetCTA" href={ postUrl } target="_blank" rel="noopener noreferrer">
-        Share your thoughts!
-      </a>
-    </p>
-  );
+  if (comments.length === 0)
+    return (
+      <p className={styles.blueSkyNoCommentYet}>
+        This post is waiting for its first comment.&nbsp;
+        <a
+          className={styles.blueSkyNoCommentYetCTA}
+          href={postUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Share your thoughts!
+        </a>
+      </p>
+    );
 
   return (
-    <div className="blueSkyCommentsContainer">
+    <div className={styles.blueSkyCommentsContainer}>
       <h3>💬 Comments from BlueSky ({comments.length})</h3>
       {comments.map((reply, i) => (
         <BlueSkyComment key={i} reply={reply} />
@@ -399,16 +616,183 @@ export default function BlueSkyComments({ metadata }) {
 BlueSkyComments.propTypes = {
   metadata: PropTypes.shape({
     frontMatter: PropTypes.shape({
-      blueSkyRecordKey: PropTypes.string
-    })
-  }).isRequired
+      blueSkyRecordKey: PropTypes.string, // Optional
+    }),
+  }).isRequired,
 };
-
 ```
 
 </details>
 <!-- cspell:enable -->
 
+
+## 5/5 Our new CSS
+
+<details>
+
+<summary>src/theme/BlogPostItem/BlueSky/styles.module.css</summary>
+
+```css
+.blueSkyLogo {
+  width: 20px;
+  height: 20px;
+}
+
+/* Will contains all BlueSky buttons and comments */
+.blueSkyContainer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* The container for all BlueSky comments */
+.blueSkyCommentsContainer {
+  border: solid 10px #f5f5f5;
+  margin-top: 1rem;
+  padding: 0.4rem 0.9rem;
+}
+
+/* The container for one single comment */
+.blueSkyCommentContainer {
+  margin-bottom: 1rem;
+  background-color: #f9f9f9;
+  padding: 0.8rem;
+  border-radius: 6px;
+  border-left: 2px solid #e0e0e0;
+}
+
+.blueSkyCommentHeader {
+  /* This ensures the entire component is a flex container */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Optional: adds space between the avatar and author info */
+}
+
+.blueSkyCommentAuthorInfos {
+  /* This new container is a flex container */
+  display: flex;
+  /* This is the key: it stacks the children vertically */
+  flex-direction: column;
+}
+
+.blueSkyCommentAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.blueSkyCommentAuthorDisplayName {
+  margin: 0;
+  font-weight: bold;
+}
+
+.blueSkyCommentAuthorHandle {
+  margin: 0;
+  font-size: smaller;
+  font-weight: normal;
+  color: #555;
+  display: block;
+}
+
+.blueSkyCommentDate {
+  margin-left: auto;
+  font-size: smaller;
+  color: gray;
+}
+
+.blueSkyCommentText {
+  margin: 0.3rem 0 0;
+}
+
+.blueSkyCommentFooter {
+}
+
+.blueSkyCommentLikes::before {
+  content: "♡\a0";
+  color: red;
+}
+
+.blueSkyCommentLikes::after {
+  content: " ";
+}
+
+.blueSkyCommentReposts::before {
+  content: "↺\a0";
+}
+
+.blueSkyCommentReposts::after {
+  content: " ";
+}
+
+.blueSkyCommentLink::before {
+  content: "→\a0";
+}
+
+.blueSkyCommentLink::after {
+  content: " ";
+}
+
+.blueSkyCommentLink {
+  margin-right: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  color: #666;
+  text-decoration: none;
+  margin-top: 0.25rem;
+}
+
+img.blueSkyCommentEmbedThumb {
+  /* max-width: 50%; */
+  max-height: 250px;
+}
+
+.blueSkyNoCommentYet {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.blueSkyNoCommentYetCTA {
+  font-weight: bold;
+  color: #007bff; /* A nice, inviting blue */
+  cursor: pointer; /* Changes the cursor to a pointer to indicate interactivity */
+  text-decoration: underline; /* Adds a subtle underline */
+}
+
+.blueSkyButton {
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  box-shadow: none;
+  color: #333333;
+  display: inline-flex;
+  font-size: 0.9rem;
+  font-weight: 400;
+  gap: 0.4rem;
+  margin-right: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.blueSkyButton:hover {
+  background-color: #0062cc;
+}
+```
+
+</details>
+
+
 ## Retrieve the final Docusaurus component on Packagist
 
-
+:::caution
+TODO
+:::

@@ -13,8 +13,9 @@
  * corresponding BlueSky post. Its presence determines the component's behavior.
  */
 
-import clsx from "clsx";
+import Icon from "./bluesky.svg";
 import PropTypes from "prop-types";
+import styles from "./styles.module.css";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 export default function BlueSkyPost({ metadata }) {
@@ -29,8 +30,14 @@ export default function BlueSkyPost({ metadata }) {
   const postUrl = `https://bsky.app/profile/${blueSkyConfig.handle}/post/${blueSkyRecordKey}`;
 
   return (
-    <a href={postUrl} target="_blank" rel="noopener noreferrer" className={clsx("blueSkyButton", "button")} aria-label="See the post on BlueSky">
-      <img src="/img/bluesky.svg" alt="Bluesky Icon" width="16" height="16" />
+    <a
+      href={postUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.blueSkyButton}
+      aria-label="See the post on BlueSky"
+    >
+      <Icon alt="Bluesky Icon" className={styles.blueSkyLogo} />
       Like, share or comment on BlueSky
     </a>
   );
@@ -39,8 +46,7 @@ export default function BlueSkyPost({ metadata }) {
 BlueSkyPost.propTypes = {
   metadata: PropTypes.shape({
     frontMatter: PropTypes.shape({
-      blueSkyRecordKey: PropTypes.string // Optional
-    })
-  }).isRequired
+      blueSkyRecordKey: PropTypes.string, // Optional
+    }),
+  }).isRequired,
 };
-

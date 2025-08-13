@@ -7,10 +7,10 @@
 ARG HOMEDIR=/opt/docusaurus
 ARG TARGET=/development
 
-# # The user and group ID of the user to create
-# ARG DOCKER_UID=1000
-# ARG DOCKER_GID=1000
-# ARG USERNAME=node
+# The user and group ID of the user to create
+ARG DOCKER_UID=1000
+ARG DOCKER_GID=1000
+ARG USERNAME=node
 
 # region - Stage 1: Base image.
 
@@ -58,22 +58,21 @@ RUN set -e -x \
     && mkdir -p "/home/node/.vscode-server/extensions" \
     && chown -R "node":"node" "/home/node"
 
-USER node
 
-# # We'll create a new user with the same uid/gid than ours, on our host machine.
-# ARG DOCKER_UID
-# ARG DOCKER_GID
-# ARG USERNAME
+    # We'll create a new user with the same uid/gid than ours, on our host machine.
+    ARG DOCKER_UID
+    ARG DOCKER_GID
+    ARG USERNAME
 
-# # hadolint ignore=DL3008
-# RUN set -e -x \
-#     && if [ ! "$DOCKER_UID" = "1000" ]; then \
-#     groupadd --gid ${DOCKER_GID} "${USERNAME}" \
-#     && useradd --home-dir /home/"${USERNAME}" --create-home --uid ${DOCKER_UID} \
-#         --gid ${DOCKER_GID} --shell /bin/sh --skel /dev/null "${USERNAME}" ; \
-#     fi
+    # hadolint ignore=DL3008
+    RUN set -e -x \
+    && if [ ! "$DOCKER_UID" = "1000" ]; then \
+    groupadd --gid ${DOCKER_GID} "${USERNAME}" \
+    && useradd --home-dir /home/"${USERNAME}" --create-home --uid ${DOCKER_UID} \
+    --gid ${DOCKER_GID} --shell /bin/sh --skel /dev/null "${USERNAME}" ; \
+    fi
 
-# USER "${USERNAME}"
+USER "${USERNAME}"
 
 # endregion
 

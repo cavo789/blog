@@ -61,7 +61,6 @@ import PropTypes from "prop-types";
 export default function BlueSky({ metadata }) {
   return (
     <div className="blueSkyContainer">
-
       {/*
         OPTION 1 - The blueSkyRecordKey is missing in the YAML frontmatter:
 

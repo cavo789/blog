@@ -14,8 +14,7 @@ function useContainerClassName() {
   const {isBlogPostPage} = useBlogPost();
   return !isBlogPostPage ? 'margin-bottom--xl' : undefined;
 }
-
-export default function BlogPostItem({ children, className }) {
+export default function BlogPostItem({children, className}) {
   // We need to retrieve the isBlogPostPage flag
   const { metadata, isBlogPostPage } = useBlogPost();
   const containerClassName = useContainerClassName();

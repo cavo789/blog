@@ -7,8 +7,9 @@
  * See comments in BlueSky.js component for the list of requirements
  */
 
-import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
+import styles from "./styles.module.css";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 /**
@@ -31,10 +32,17 @@ function renderPostText(record) {
     const before = text.slice(lastIndex, start);
     if (before) parts.push(before);
 
-    const linkFeature = facet.features.find(f => f.$type === "app.bsky.richtext.facet#link");
+    const linkFeature = facet.features.find(
+      (f) => f.$type === "app.bsky.richtext.facet#link"
+    );
     if (linkFeature) {
       parts.push(
-        <a key={`link-${idx}`} href={linkFeature.uri} target="_blank" rel="noopener noreferrer">
+        <a
+          key={`link-${idx}`}
+          href={linkFeature.uri}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {text.slice(start, end)}
         </a>
       );
@@ -64,9 +72,16 @@ function renderEmbed(embed) {
   const { uri, title, description, thumb } = embed.external;
 
   return (
-    <a href={uri} target="_blank" rel="noopener noreferrer" className="blueSkyCommentEmbed">
-      {thumb && <img src={thumb} alt="" className="blueSkyCommentEmbedThumb" />}
-      <div className="blueSkyCommentEmbedContent">
+    <a
+      href={uri}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.blueSkyCommentEmbed}
+    >
+      {thumb && (
+        <img src={thumb} alt="" className={styles.blueSkyCommentEmbedThumb} />
+      )}
+      <div className={styles.blueSkyCommentEmbedContent}>
         <strong>{title}</strong>
         {/* <p>{description}</p> */}
         {/* <span>{uri}</span> */}
@@ -95,38 +110,59 @@ function BlueSkyComment({ reply }) {
 
   return (
     // The style here is required for the correct indentation based on the deepness of the comment/reply
-    <div className="blueSkyCommentContainer" style={{ paddingLeft: `${1.5 + reply.depth * 1.5}rem` }}>
+    <div
+      className={styles.blueSkyCommentContainer}
+      style={{ paddingLeft: `${1.5 + reply.depth * 1.5}rem` }}
+    >
       {/* Author */}
-      <div className="blueSkyCommentHeader mb-2 flex items-center">
+      <div className={`${styles.blueSkyCommentHeader} mb-2 flex items-center`}>
         <a href={profileUrl} target="_blank" rel="noopener noreferrer">
           <img
             src={reply.post.author.avatar}
             alt={`${reply.post.author.displayName}'s avatar`}
-            className="blueSkyCommentAvatar"
+            className={styles.blueSkyCommentAvatar}
           />
         </a>
-        <div className="blueSkyCommentAuthorInfos">
-          <a href={profileUrl} target="_blank" rel="noopener noreferrer" className="blueSkyCommentAuthorDisplayName">
+        <div className={styles.blueSkyCommentAuthorInfos}>
+          <a
+            href={profileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.blueSkyCommentAuthorDisplayName}
+          >
             {reply.post.author.displayName}
           </a>
-          <span className="blueSkyCommentAuthorHandle">@{reply.post.author.handle}</span>
+          <span className={styles.blueSkyCommentAuthorHandle}>
+            @{reply.post.author.handle}
+          </span>
         </div>
       </div>
 
       {/* Date */}
-      <span className="blueSkyCommentDate">{date}</span>
+      <span className={styles.blueSkyCommentDate}>{date}</span>
 
       {/* Text */}
-      <p className="blueSkyCommentText">{renderPostText(reply.post.record)}</p>
+      <p className={styles.blueSkyCommentText}>
+        {renderPostText(reply.post.record)}
+      </p>
 
       {/* Embed */}
       {renderEmbed(reply.post.embed)}
 
       {/* Footer */}
-      <div className="blueSkyCommentFooter">
-        <span className="blueSkyCommentLikes">{reply.post.likeCount}</span>
-        <span className="blueSkyCommentReposts">{reply.post.repostCount || 0}</span>
-        <a className="blueSkyCommentLink" href={commentUrl} target="_blank" rel="noopener noreferrer">
+      <div className={styles.blueSkyCommentFooter}>
+        <span className={styles.blueSkyCommentLikes}>
+          {reply.post.likeCount}
+        </span>
+        <span className={styles.blueSkyCommentReposts}>
+          {reply.post.repostCount || 0}
+        </span>
+        <a
+          className={styles.blueSkyCommentLink}
+          href={commentUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           View comment
         </a>
       </div>
@@ -181,7 +217,9 @@ export default function BlueSkyComments({ metadata }) {
     async function fetchComments() {
       try {
         const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${blueSkyRecordKey}`;
-        const url = "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?depth=5&uri=" + encodeURIComponent(postUri);
+        const url =
+          "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?depth=5&uri=" +
+          encodeURIComponent(postUri);
 
         const res = await fetch(url);
         const data = await res.json();
@@ -216,16 +254,23 @@ export default function BlueSkyComments({ metadata }) {
   if (!blueSkyRecordKey) return null;
   if (error) return <p>Error loading comments.</p>;
   if (comments === null) return <p>Loading comments…</p>;
-  if (comments.length === 0) return (
-    <p className="blueSkyNoCommentYet">This post is waiting for its first comment.&nbsp;
-      <a className="blueSkyNoCommentYetCTA" href={ postUrl } target="_blank" rel="noopener noreferrer">
-        Share your thoughts!
-      </a>
-    </p>
-  );
+  if (comments.length === 0)
+    return (
+      <p className={styles.blueSkyNoCommentYet}>
+        This post is waiting for its first comment.&nbsp;
+        <a
+          className={styles.blueSkyNoCommentYetCTA}
+          href={postUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Share your thoughts!
+        </a>
+      </p>
+    );
 
   return (
-    <div className="blueSkyCommentsContainer">
+    <div className={styles.blueSkyCommentsContainer}>
       <h3>💬 Comments from BlueSky ({comments.length})</h3>
       {comments.map((reply, i) => (
         <BlueSkyComment key={i} reply={reply} />
@@ -237,7 +282,7 @@ export default function BlueSkyComments({ metadata }) {
 BlueSkyComments.propTypes = {
   metadata: PropTypes.shape({
     frontMatter: PropTypes.shape({
-      blueSkyRecordKey: PropTypes.string // Optional
-    })
-  }).isRequired
+      blueSkyRecordKey: PropTypes.string, // Optional
+    }),
+  }).isRequired,
 };
