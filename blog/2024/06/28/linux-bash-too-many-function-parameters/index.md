@@ -22,6 +22,8 @@ The trick, for a Bash script, is to define an associative array (created with th
 
 Below is an example:
 
+<Snippets filename="curl.sh">
+
 ```bash
 #!/usr/bin/env bash
 
@@ -43,7 +45,7 @@ function runCurl() {
     [[ ! -v arrCall[token] ]]   && local -r token=""     || local -r token="${arrCall["token"]}"
 
     # And now I can work with my multiple variables exactly as I would have done if I'd passed them all as parameters.
-    #    
+    #
     # Here is an example:
 
     cmd="curl -X ${method} ${endpoint} --no-progress-meter"
@@ -51,7 +53,7 @@ function runCurl() {
     [[ -n ${payload} ]] && cmd="${cmd} --data ${payload}"
     [[ -n ${header} ]]  && cmd="${cmd} --header ${header}"
     [[ -n ${token} ]]   && cmd="${cmd} ${token}"
-    [[ -n ${proxy} ]]   && cmd="${cmd} --proxy ${proxy}" 
+    [[ -n ${proxy} ]]   && cmd="${cmd} --proxy ${proxy}"
 
     json="$(eval "${cmd}")"
 
@@ -74,6 +76,8 @@ declare -A arr=(
 # But, here below, no. We're passing our array and we should not use the `$`
 runCurl arr
 ```
+
+</Snippets>
 
 One of the big advantages is that you don't have to worry about the position of the arguments (ah yes, so the first parameter is the url, the second is the HTTP method, the third is, er? the proxy? ah no, damn).
 

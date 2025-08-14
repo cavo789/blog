@@ -22,9 +22,13 @@ Please start a Linux shell and run `mkdir -p /tmp/python && cd $_` to create a f
 
 Please create a new file called `Hello.py` with this content:
 
+<Snippets filename="Hello.py">
+
 ```python
 print ("Hello World!")
 ```
+
+</Snippets>
 
 Ok, so now, how to run that script? Because I'm familiar with Docker, I know that:
 
@@ -57,6 +61,8 @@ As a reminder, the used Docker run command are (almost always the same):
 As said above, in November 2023, I don't have start to learn Python so let's try to find some sample scripts. On [https://hackr.io/blog/python-projects](https://hackr.io/blog/python-projects), we can find a Hangman script.
 
 Please create the `Hangman.py` file onto your disk with this content:
+
+<Snippets filename="Hangman.py">
 
 ```python
 import random
@@ -193,6 +199,8 @@ def play_hangman():
 if __name__ == '__main__':
   play_hangman()
 ```
+
+</Snippets>
 
 Then, run it using `docker run -it --rm -v ${PWD}:/app -w /app python python Hangman.py` and good luck:
 

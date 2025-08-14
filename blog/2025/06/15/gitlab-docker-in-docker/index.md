@@ -15,7 +15,7 @@ At work, I'm running my CI using Docker. Each time I push changes to GitLab, a C
 
 The container started by GitLab can be based on a PHP, Python and just Alpine Docker image. GitLab is then pulling my code inside the container and f.i. run a tool like `phplint` and it's all good.
 
-For a few months now, I've been creating a Docker image to run [Dagger](https://dagger.io). So, here, I come in trouble: my GitLab CI Docker container should be able to run `docker run ... my_dagger_image` and by, default, it's not possible. 
+For a few months now, I've been creating a Docker image to run [Dagger](https://dagger.io). So, here, I come in trouble: my GitLab CI Docker container should be able to run `docker run ... my_dagger_image` and by, default, it's not possible.
 
 But I'm in even more trouble when, in my Dagger container, I have to launch another container (one by tools).
 
@@ -31,12 +31,18 @@ As prerequisites, you should have access to the server where your GitLab instanc
 
 On my GitLab runner server, my current `/etc/gitlab-runner/config.toml` configuration defines Docker as the executor because I've this entry:
 
+<Snippets filename="/etc/gitlab-runner/config.toml">
+
 ```toml
 [[runners]]
   executor = "docker"
 ```
 
+</Snippets>
+
 So, when running my CI, first GitLab will create a Docker container. The default base image can be forced in `/etc/gitlab-runner/config.toml` like below or you just have to specify the base image in your project's `.gitlab-ci.yml` using the `image` tag ([doc](https://docs.gitlab.com/ci/docker/using_docker_images/#define-image-in-the-gitlab-ciyml-file)).
+
+<Snippets filename="/etc/gitlab-runner/config.toml">
 
 ```toml
 [[runners]]
@@ -48,17 +54,23 @@ So, when running my CI, first GitLab will create a Docker container. The default
     image = "php8.4"
 ```
 
+</Snippets>
+
 ## Understanding the process
 
 For this part, I'll take a very basic example. For sure, it's not needed to run Docker-in-Docker for a simple "php lint" action. I'll just use that scenario to not over-complicate things.
 
 So, based on the `config.toml` file here above, I can have a `.gitlab-ci.yml` file like the one below:
 
+<Snippets filename=".gitlab-ci.yml">
+
 ```yaml
 phplint:
   script:
     - find . -name "*.php" -print0 | xargs -0 -n1 php -l
 ```
+
+</Snippets>
 
 It'll retrieve all `.php` file and run `php -l <filename.php>` for each inside a Docker container based on PHP 8.4.
 
@@ -67,6 +79,8 @@ Easy and straight-forward.
 ## Running Docker-out-of-Docker
 
 Based on the same example, we can also use an existing Docker image; like [phpqa/jakzal](https://github.com/jakzal/phpqa):
+
+<Snippets filename=".gitlab-ci.yml">
 
 ```
 phplint:
@@ -78,7 +92,11 @@ phplint:
     - docker run --rm --volume "$CI_PROJECT_DIR:/app" --workdir /app jakzal/phpqa phplint .
 ```
 
+</Snippets>
+
 Now, to allow this, we'll need to update our GitLab Runner server configuration file:
+
+<Snippets filename="/etc/gitlab-runner/config.toml">
 
 ```toml
 [[runners]]
@@ -90,6 +108,8 @@ Now, to allow this, we'll need to update our GitLab Runner server configuration 
     // highlight-next-line
     volumes = [ ..., "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]
 ```
+
+</Snippets>
 
 :::caution
 The syntax `volumes = [ ..., "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]` used above is to inform you to append the two values to the list you already have. So, if, right now, you've `volumes = ["/cache", "/certs/client"]` then append values to get `volumes = ["/cache", "/certs/client", "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]`

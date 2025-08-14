@@ -30,6 +30,8 @@ For the demo, please start a Linux shell and run `mkdir -p /tmp/makefile && cd $
 
 Please create a new file called `makefile` with this content:
 
+<Snippets filename="makefile">
+
 ```makefile
 SHELL:=bash
 
@@ -63,6 +65,8 @@ start:
 watch:
  @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Run Docusaurus watcher and open the blog on the localhost. When done, just start a browser and surf to http://localhost:3000"
 ```
+
+</Snippets>
 
 :::danger
 The indentation in a makefile **SHOULD BE** made using tabs and not spaces, this is crucial. So please make sure, if your file didn't work, you know what to do.
@@ -103,6 +107,8 @@ Start an interactive shell in the Docker container; type exit to quit
 
 Please edit the file and add the highlighted line below:
 
+<Snippets filename="makefile">
+
 ```makefile
 SHELL:=bash
 
@@ -117,9 +123,13 @@ bash:
 
 ```
 
+</Snippets>
+
 ### Step 2 - Adding the help target
 
 Still in your editor, please add the highlighted block below; the position where you'll copy/paste it is not important but, logically, let's put this new action as the first since it's the one that will be executed by default.
+
+<Snippets filename="makefile">
 
 ```makefile
 SHELL:=bash
@@ -140,6 +150,8 @@ help: ## Show the help with the list of commands
  @echo ""
 ```
 
+</Snippets>
+
 Right now, if you type `make` on your console, you'll get this:
 
 ```bash
@@ -153,12 +165,18 @@ Usage:
 
 Take a look on your new `help` target: the description *Show the help with the list of commands* is prefixed by a double `#`. This is how to add a description.
 
+<Snippets filename="makefile">
+
 ```makefile
 // highlight-next-line
 help: ## Show the help with the list of commands
 ```
 
+</Snippets>
+
 So, you've to edit your makefile for the last time, and, for each target, add a `## a small, one line, description` text; like below, our final file:
+
+<Snippets filename="makefile">
 
 ```makefile
 SHELL:=bash
@@ -200,6 +218,8 @@ watch: ## Start the Docusaurus watcher. Listen any changes to a .md file and ref
  @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Run Docusaurus watcher and open the blog on the localhost. When done, just start a browser and surf to http://localhost:3000"
 ```
 
+</Snippets>
+
 And now, by running `make` you'll get a nice help screen:
 
 ```text
@@ -223,6 +243,8 @@ As you can see, the order of targets respect the order in your file. `help` is d
 Imagine you have dozens of shares... It would be nice to group them into sections: everything concerning your application, everything relating to your database, actions of the Code Analysis type, and so on.
 
 To do this, simply add a line with this syntax: `##@ My project` as illustrated below:
+
+<Snippets filename="makefile">
 
 ```makefile
 SHELL:=bash
@@ -260,6 +282,8 @@ php-cs-fixer: ## Run php-cs-fixer
 phpmyadmin: ## Run phpmyadmin web interface
     # [...]
 ```
+
+</Snippets>
 
 And here is the final result:
 

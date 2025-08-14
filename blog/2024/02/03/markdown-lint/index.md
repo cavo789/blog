@@ -24,12 +24,16 @@ And the list can be huge if you're using dependencies like, for PHP, the `vendor
 
 Create a file called `.markdownlint_ignore` in the root directory of your project with this content:
 
+<Snippets filename=".markdownlint_ignore">
+
 ```text
 node_modules/**/*.markdown
 node_modules/**/*.md
 vendor/**/*.markdown
 vendor/**/*.md
 ```
+
+</Snippets>
 
 This time, please run `docker run --rm -v .:/md peterdavehello/markdownlint markdownlint --ignore-path .markdownlint_ignore .`.
 

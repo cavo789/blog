@@ -25,6 +25,8 @@ Let's test our Docker image under DOS this time. Please start a **DOS** console 
 
 Please create a new file called `Hello.asm` with this content:
 
+<Snippets filename="Hello.asm">
+
 ```assembly
 ; Our data section (i.e. our variables)
 SECTION .data
@@ -46,6 +48,8 @@ _start:
     mov eax, 1
     int 0x80
 ```
+
+</Snippets>
 
 To run the script, just call Docker like this:
 

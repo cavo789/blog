@@ -26,6 +26,8 @@ First install the library using `pip install faker`.
 
 And below a small Python script to generate fake data in French (just replace `range(1)` by f.i. `range(100)` to get 100 records):
 
+<Snippets filename="fake.py">
+
 ```python
 import json
 
@@ -33,7 +35,7 @@ from faker import Faker
 
 fake = Faker()
 
-fake = Faker('fr_FR')  
+fake = Faker('fr_FR')
 
 data = []
 
@@ -46,12 +48,14 @@ for _ in range(1):
         'country': fake.country(),
         'gender': fake.random_element(elements=('Homme', 'Femme', 'Non binaire'))
     }
-    
+
     data.append(user)
 
 # Pretty print the JSON data
 print(json.dumps(data, indent=4, ensure_ascii=False))
 ```
+
+</Snippets>
 
 ![Faker in Python](./images/python.png)
 
@@ -71,7 +75,7 @@ By creating a free account on Mockaroo, click on the `Schemas` button, then sele
 
 ![Creating a schema](./images/creating_schema.png)
 
-This done, you'll be able to generate a big number of rows like f.i. creating a file with more than 1,000 records. 
+This done, you'll be able to generate a big number of rows like f.i. creating a file with more than 1,000 records.
 
 By saving examples to a real JSON file on disk, you can then use that file to test your application.
 
@@ -89,6 +93,8 @@ I've created the *schema_test* like this:
 
 I can then use it in Python like this:
 
+<Snippets filename="schema_test.py">
+
 ```python
 import requests
 
@@ -96,7 +102,7 @@ import requests
 api_key = "MY_API_KEY"
 
 # This is the name of my schema
-schema = "schema_test"  
+schema = "schema_test"
 
 # Number of records I want
 num_records = 10
@@ -118,6 +124,8 @@ else:
     print(f"Error fetching data: {response.text}")
 ```
 
+</Snippets>
+
 :::info
 To make this code working, think to install the requests library: `pip install requests`.
 :::
@@ -133,6 +141,8 @@ The [https://www.liquid-technologies.com/online-json-to-schema-converter](https:
 ![Generate a schema](./images/generate_schema.png)
 
 Once you've the schema, you can use it in Python like this:
+
+<Snippets filename="validate.py">
 
 ```python
 import json
@@ -156,6 +166,8 @@ try:
 except jsonschema.exceptions.ValidationError as exception:
     print(f{"Data is invalid: {exception}")
 ```
+
+</Snippets>
 
 :::info
 You'll need to run `pip install jsonschema` first.

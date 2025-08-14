@@ -50,6 +50,8 @@ The `makefile`, being created in your project's directory, can contain instructi
 
 Being in your editor with an empty `makefile` file, just copy/paste the content below:
 
+<Snippets filename="makefile">
+
 ```makefile
 adminer:
   @printf "\e[1;033m%s\e[0m\n\n" "User is root and password is example. Please open http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db to open Adminer."
@@ -89,6 +91,8 @@ phpmyadmin:
   docker run --name phpmyadmin -d --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin
   -sensible-browser http://localhost:8089 &
 ```
+
+</Snippets>
 
 Make sure indentation is using tabs, not space.
 

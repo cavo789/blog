@@ -93,9 +93,11 @@ Just in case of you didn't find that specific path or file, just go to RoundCube
 
 As you know me, I can't be satisfied with a manual solution. Going to RoundCube and creating a filter requires 13 actions. Ouch.
 
-As we've seen, with a bit of programming, it's possible to automate the creation of the `.sieve` file.
+As we've seen, with a bit of programming, it's possible to automate the creation of the `roundcube.sieve` file.
 
-I've started programming such a little script in Linux bash that will take a JSON file as input (as shown below) and write the `.sieve` file.
+I've started programming such a little script in Linux bash that will take a JSON file as input (as shown below) and write the `roundcube.sieve` file.
+
+<Snippets filename="roundcube.sieve">
 
 ```json
 {
@@ -110,9 +112,13 @@ I've started programming such a little script in Linux bash that will take a JSO
 }
 ```
 
+</Snippets>
+
 The code, in proof-of-concept mode, is already written (see below), but it needs to be refined and, above all, its execution automated.
 
 Give me some time to do this and as soon as it's done, I'll publish my solution.
+
+<Snippets filename="script.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -139,6 +145,8 @@ cat patterns.json \
 
 echo "File roundcube.sieve has been created. Now, you've to publish it on your FTP."
 ```
+
+</Snippets>
 
 :::tip
 The article [Exterminate them all, kill spam using GitHub Actions](/blog/planethoster-n0c-spam-roundcube-action) is now written; don't hesitate to read it.

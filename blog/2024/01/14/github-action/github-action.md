@@ -20,6 +20,8 @@ By using Github actions, this problem no longer exists. With each push, the blog
 
 To enable `GitHub actions`, we first need to create a file in the folder `.github/workflows`. Mine will be named `deploy.yml` with this content:
 
+<Snippets filename="deploy.yml">
+
 ```yaml
 name: Deploy blog on avonture.be
 
@@ -57,6 +59,8 @@ jobs:
           # We need to deploy the build folder from GitHub to our FTP; not everything (f.i. don't need node_modules)
           local-dir: ./build/
 ```
+
+</Snippets>
 
 As you can see, I need three secrets, `${{ secrets.ftp_server }}`, `${{ secrets.ftp_login }}` and `${{ secrets.ftp_password }}`.
 

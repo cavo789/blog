@@ -18,6 +18,8 @@ I use [https://patorjk.com/software/taag](https://patorjk.com/software/taag) to 
 
 On my hand, I'm implementing the banner like this:
 
+<Snippets filename="script.sh">
+
 ```bash
 #!/usr/bin/env bash
 
@@ -47,6 +49,8 @@ EOF
 
 __main $*
 ```
+
+</Snippets>
 
 And this is how it'll look like in my bash terminal:
 

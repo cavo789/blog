@@ -59,8 +59,7 @@ The script below will create two files, one called `employees_2023.csv` and one 
 In order to be able to run this script, you should first run `pip install pandas faker` to install the two packages.
 :::
 
-<details>
-<summary>generate_fake_data.py</summary>
+<Snippets filename="generate_fake_data.py">
 
 <!-- cspell:disable -->
 
@@ -122,7 +121,7 @@ generate_fake_data("employees")
 
 ```
 
-</details>
+</Snippets>
 
 <!-- cspell:enable -->
 
@@ -145,8 +144,7 @@ id;first_name;last_name;salary
 
 Using Pandas, it's quite simple to loop over files and do a merge.
 
-<details>
-<summary>merge.py</summary>
+<Snippets filename="merge.py">
 
 <!-- cspell:disable -->
 
@@ -178,7 +176,7 @@ merge_data("employees")
 
 <!-- cspell:enable -->
 
-</details>
+</Snippets>
 
 The script will take the first file (`employees_2020.csv`) and load it in memory. The column `salary` will be, in memory, renamed as `salary_2020`.
 

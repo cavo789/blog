@@ -9,7 +9,7 @@ enableComments: true
 <!-- cspell:ignore drawdb,xinsodev -->
 ![Drawdb-app - Render your database model](/img/database_tips_banner.jpg)
 
-In my RSS feed recently, I came across another great application that lets you create a database model from scratch, i.e. create tables one by one and create the links between them.  
+In my RSS feed recently, I came across another great application that lets you create a database model from scratch, i.e. create tables one by one and create the links between them.
 
 However, there's another option that I find really nice: you can get a visual of the tables and relationships of any existing application in a few seconds from an .sql file that you import into drawdb-app.
 
@@ -25,8 +25,7 @@ I think the most common use I could personally make of it is to load an SQL file
 
 If you don't have such file, I suggest to copy one from [https://www.sqltutorial.org/sql-sample-database/](https://www.sqltutorial.org/sql-sample-database/). I put here below a PostgreSQL content found on that site ([direct link](https://www.sqltutorial.org/wp-content/uploads/2020/04/postgresql.txt)) or to take any valid `.sql` file you can found on the Internet.
 
-<details>
-<summary>dummy.sql</summary>
+<Snippets filename="create_db.sql">
 
 ```sql
 CREATE TABLE regions (
@@ -91,7 +90,7 @@ CREATE TABLE dependents (
 );
 ```
 
-</details>
+</Snippets>
 
 So just copy/paste this SQL in Notepad; save it on your disk and go back to [https://www.drawdb.app/editor](https://www.drawdb.app/editor); `File` -> `Import from SQL`.
 
@@ -147,7 +146,7 @@ It's really cool to export a SQL file so easily to JSON but it's even cooler to 
 | Name        | Type          | Settings                      | References                    | Note                           |
 |-------------|---------------|-------------------------------|-------------------------------|--------------------------------|
 | **region_id** | SERIAL | 🔑 PK, not null  |  | |
-| **region_name** | BLOB | not null  |  | | 
+| **region_name** | BLOB | not null  |  | |
 
 
 #### countries
@@ -156,7 +155,7 @@ It's really cool to export a SQL file so easily to JSON but it's even cooler to 
 |-------------|---------------|-------------------------------|-------------------------------|--------------------------------|
 | **country_id** | BLOB | 🔑 PK, not null  |  | |
 | **country_name** | BLOB | not null  |  | |
-| **region_id** | INTEGER | not null  | countries_region_id_fk | | 
+| **region_id** | INTEGER | not null  | countries_region_id_fk | |
 
 
 #### locations
@@ -168,7 +167,7 @@ It's really cool to export a SQL file so easily to JSON but it's even cooler to 
 | **postal_code** | BLOB | not null  |  | |
 | **city** | BLOB | not null  |  | |
 | **state_province** | BLOB | not null  |  | |
-| **country_id** | BLOB | not null  | locations_country_id_fk | | 
+| **country_id** | BLOB | not null  | locations_country_id_fk | |
 
 
 #### departments
@@ -177,7 +176,7 @@ It's really cool to export a SQL file so easily to JSON but it's even cooler to 
 |-------------|---------------|-------------------------------|-------------------------------|--------------------------------|
 | **department_id** | SERIAL | 🔑 PK, not null  |  | |
 | **department_name** | BLOB | not null  |  | |
-| **location_id** | INTEGER | not null  | departments_location_id_fk | | 
+| **location_id** | INTEGER | not null  | departments_location_id_fk | |
 
 
 #### jobs
@@ -187,7 +186,7 @@ It's really cool to export a SQL file so easily to JSON but it's even cooler to 
 | **job_id** | SERIAL | 🔑 PK, not null  |  | |
 | **job_title** | BLOB | not null  |  | |
 | **min_salary** | NUMERIC(8,2) | not null  |  | |
-| **max_salary** | NUMERIC(8,2) | not null  |  | | 
+| **max_salary** | NUMERIC(8,2) | not null  |  | |
 
 
 #### employees
@@ -203,7 +202,7 @@ It's really cool to export a SQL file so easily to JSON but it's even cooler to 
 | **job_id** | INTEGER | not null  | employees_job_id_fk | |
 | **salary** | NUMERIC(8,2) | not null  |  | |
 | **manager_id** | INTEGER | not null  |  | |
-| **department_id** | INTEGER | not null  | employees_department_id_fk | | 
+| **department_id** | INTEGER | not null  | employees_department_id_fk | |
 
 
 #### dependents
@@ -214,7 +213,7 @@ It's really cool to export a SQL file so easily to JSON but it's even cooler to 
 | **first_name** | BLOB | not null  |  | |
 | **last_name** | BLOB | not null  |  | |
 | **relationship** | BLOB | not null  |  | |
-| **employee_id** | INTEGER | not null  | dependents_employee_id_fk | | 
+| **employee_id** | INTEGER | not null  | dependents_employee_id_fk | |
 
 
 ### Relationships

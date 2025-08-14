@@ -62,6 +62,8 @@ Later in your article, you ask 'Please edit the file and make this and *please e
 
 With `// highlight-next-line`, it's really easy to highlight changes, for instance:
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 name: kingsbridge
 
@@ -93,5 +95,7 @@ services:
       // highlight-next-line
       - ./db:/var/lib/mysql
 ```
+
+</Snippets>
 
 You can immediately see where I've made some changes in the file's content.

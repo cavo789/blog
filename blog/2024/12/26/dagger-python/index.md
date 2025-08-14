@@ -48,8 +48,7 @@ Let's create a temporary folder for Dagger and jump in it: `mkdir /tmp/dagger &&
 
 Please create there a Python script in a subfolder `src` and let's call it `src/main.py`:
 
-<details>
-<summary>src/main.py</summary>
+<Snippets filename="src/main.py">
 
 ```python
 import random
@@ -60,7 +59,7 @@ else:
     print("Bonjour le monde!")
 ```
 
-</details>
+</Snippets>
 
 Amazing application to tell us, random, *Hello world* or *Bonjour le monde!*
 
@@ -83,8 +82,7 @@ No surprise there; at some point we have to install Dagger. Install? Ouch no; we
 
 Please create a new subfolder called `.docker` and in that folder, a file called `Dockerfile`:
 
-<details>
-<summary>.docker/Dockerfile</summary>
+<Snippets filename=".docker/Dockerfile">
 
 <!-- cspell:disable -->
 
@@ -118,7 +116,7 @@ WORKDIR /app/src
 ENTRYPOINT [ "/usr/local/bin/dagger" ]
 ```
 <!-- cspell:enable -->
-</details>
+</Snippets>
 
 We need to build our image so let's run `docker build -t dagger_daemon -f .docker/Dockerfile .`
 
@@ -195,6 +193,8 @@ Functions are defined in the `.pipeline/src/src/main.py` file.
 
 Please open that file and add a new function like below:
 
+<Snippets filename=".pipeline/src/src/main.py">
+
 ```python
 @function
 async def lint(self, source: str) -> str:
@@ -203,6 +203,8 @@ async def lint(self, source: str) -> str:
     """
     return f"\033[33mI'm inside your Dagger pipeline and I'll lint {source}\033[0m"
 ```
+
+</Snippets>
 
 Save the file and run `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call --help` again. See, we've our new function:
 
@@ -227,6 +229,8 @@ ARGUMENTS
 ```
 
 Now, back to the `.pipeline/src/src/main.py` and replace the entire file (we don't need sample functions) with this content:
+
+<Snippets filename=".pipeline/src/src/main.py">
 
 ```python
 import dagger
@@ -253,6 +257,8 @@ class Src:
         )
 ```
 
+</Snippets>
+
 We'll thus remove the two sample functions and we'll implement our linting function. We'll also define the `src` folder as the default one so we don't need to add `--source src` anymore when calling dagger.
 
 By running `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call lint` we'll then ask the pipeline to run our linter (Pylint here) on our current folder.
@@ -265,8 +271,7 @@ Yes!, PyLint has worked and alert us about missing module docstring.
 
 Edit `src/main.py` and add some valid module docstring (or just ignore that warning):
 
-<details>
-<summary>src/main.py</summary>
+<Snippets filename="src/main.py">
 
 ```python
 # pylint: disable=missing-module-docstring
@@ -279,7 +284,7 @@ else:
     print("Bonjour le monde!")
 ```
 
-</details>
+</Snippets>
 
 Running `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call lint` again will congratulate us now with a score of 10/10.
 
@@ -299,8 +304,7 @@ You'll also have a `make bash` action to jump in an interactive shell (type `exi
 
 And `make help` will show the Dagger help screen.
 
-<details>
-<summary>makefile</summary>
+<Snippets filename="makefile">
 
 ```makefile
 DAEMON_NAME=dagger_daemon
@@ -323,14 +327,13 @@ lint:
 	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call lint
 ```
 
-</details>
+</Snippets>
 
 ## Formatting the code using Black
 
 Edit the `.pipeline/src/src/main.py` file and add this new function:
 
-<details>
-<summary>.pipeline/src/src/main.py</summary>
+<Snippets filename=".pipeline/src/src/main.py">
 
 ```python
 import dagger
@@ -374,7 +377,7 @@ class Src:
     # highlight-end
 ```
 
-</details>
+</Snippets>
 
 So, from now, you can run `dagger call format` (from inside the container i.e. run `make bash` first) or `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call format` (from your host).
 
@@ -388,8 +391,7 @@ Ok, we've now two tasks and we've to implement a lot more. We can do a lot of co
 
 We need to make a little change to our Docker image:
 
-<details>
-<summary>.docker/Dockerfile</summary>
+<Snippets filename=".docker/Dockerfile">
 
 <!-- cspell:disable -->
 
@@ -429,14 +431,13 @@ WORKDIR /app/src
 ENTRYPOINT [ "/usr/local/bin/dagger" ]
 ```
 <!-- cspell:enable -->
-</details>
+</Snippets>
 
 This done, run `make build` to create a fresh Docker image with `anyio` installed.
 
 Now, we'll update the `.pipeline/src/src/main.py` file and add some more new functions:
 
-<details>
-<summary>.pipeline/src/src/main.py</summary>
+<Snippets filename=".pipeline/src/src/main.py">
 
 ```python
 # cspell:ignore anyio,rcfile,pylintrc,workdir
@@ -543,11 +544,13 @@ class Src:
             tg.start_soon(self.mypy)
 ```
 
-</details>
+</Snippets>
 
 This new file comes with a lot of changes:
 
 We've defined two global variables called `source` and `config`. So, now, we don't pass the `source` folder to the lint function anymore (local parameter) but just need to set it once (global parameter). We've also add a `config` folder to be able to tell Dagger where our configuration files are stored.
+
+<Snippets filename=".pipeline/src/src/main.py">
 
 ```python
 source: Annotated[
@@ -563,7 +566,11 @@ config: Annotated[
 ]
 ```
 
+</Snippets>
+
 We've a two new functions called `mypy` and `ruff` and a last one called `run_all`:
+
+<Snippets filename=".pipeline/src/src/main.py">
 
 ```python
 @function
@@ -576,12 +583,13 @@ We've a two new functions called `mypy` and `ruff` and a last one called `run_al
             tg.start_soon(self.mypy)
 ```
 
+</Snippets>
+
 That one will start all the four functions concurrently and will wait until one fails or the four succeed.
 
 Now, before running these functions, we need to create some configurations files.
 
-<details>
-<summary>.config/.pylintrc</summary>
+<Snippets filename=".config/.pylintrc">
 
 ```txt
 [MASTER]
@@ -631,10 +639,9 @@ fail-under=9.50
 max-line-length=120
 ```
 
-</details>
+</Snippets>
 
-<details>
-<summary>.config/black.toml</summary>
+<Snippets filename=".config/black.toml">
 
 ```toml
 [tool.black]
@@ -647,10 +654,9 @@ line-length = 120
 target-version = ['py313']
 ```
 
-</details>
+</Snippets>
 
-<details>
-<summary>.config/mypy.ini</summary>
+<Snippets filename=".config/mypy.ini">
 
 ```ini
 [mypy]
@@ -678,10 +684,9 @@ warn_unused_ignores = true
 python_version = 3.13
 ```
 
-</details>
+</Snippets>
 
-<details>
-<summary>.config/pyproject.toml</summary>
+<Snippets filename=".config/pyproject.toml">
 
 ```toml
 [tool.ruff]
@@ -693,10 +698,9 @@ line-length = 120
 indent-width = 4
 ```
 
-</details>
+</Snippets>
 
-<details>
-<summary>makefile</summary>
+<Snippets filename="makefile">
 
 ```makefile
 DAEMON_NAME=dagger_daemon
@@ -739,7 +743,7 @@ run-all:
 	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call run-all
 ```
 
-</details>
+</Snippets>
 
 ## Our CI is ready on our dev machine
 
@@ -765,6 +769,8 @@ I'm not expert in GitLab runner configuration but the following configuration is
 
 Do a SSH connection to your GitLab runner server and edit the `/etc/gitlab-runner/config.toml` file (you should be root). Just add `/var/run/docker.sock:/var/run/docker.sock` for the `volumes` property:
 
+<Snippets filename="/etc/gitlab-runner/config.toml">
+
 ```toml
  [runners.docker]
     # Adding /var/run/docker.sock:/var/run/docker.sock
@@ -772,6 +778,8 @@ Do a SSH connection to your GitLab runner server and edit the `/etc/gitlab-runne
     # in CI scripts. This is called "Docker socket binding".
     volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock"]
 ```
+
+</Snippets>
 
 Also, make sure the Linux user used by your GitLab runner (default username is `gitlab-runner`) is part of the `docker` group. This is done by running `sudo usermod -aG docker gitlab-runner` in the CLI (see [https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-the-shell-executor](https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-the-shell-executor)).
 
@@ -787,8 +795,7 @@ Please create a GitLab repository, push your existing project there.
 
 Now, please create a file called `.gitlab-ci.yml` with this content:
 
-<details>
-<summary>.gitlab-ci.yml</summary>
+<Snippets filename=".gitlab-ci.yml">
 
 ```yaml
 .docker:
@@ -820,7 +827,7 @@ ruff:
     - dagger call --source src --config .config ruff
 ```
 
-</details>
+</Snippets>
 
 And push the changes to GitLab. The presence of the `.gitlab-ci.yml` file will tells to GitLab to instantiate a pipeline after each commit and, here in our example, to start the four jobs.
 
@@ -832,8 +839,7 @@ Since we've shared the Docker daemon (`/var/run/docker.sock`) in our GitLab `/et
 
 But, you can also use the asynchronous mode since we've implemented a `run-all` feature:
 
-<details>
-<summary>.gitlab-ci.yml</summary>
+<Snippets filename=".gitlab-ci.yml">
 
 ```yaml
 .docker:
@@ -853,4 +859,4 @@ run-all:
     - dagger call --source src --config .config run-all
 ```
 
-</details>
+</Snippets>

@@ -35,9 +35,7 @@ The first thing first: make sure your Python code has no syntax error like a bad
 
 I'm running it like this: `pylint . --rcfile .config/.pylintrc`.
 
-<details>
-
-<summary>Example of a `.config/.pylintrc` file</summary>
+<Snippets filename=".config/.pylintrc">
 
 ```text
 [MASTER]
@@ -76,7 +74,7 @@ fail-under=9.50
 max-line-length=120
 ```
 
-</details>
+</Snippets>
 
 ## 2. Autoflake
 
@@ -120,6 +118,8 @@ Be careful with Vulture because his algorithm will detect a lot of false positiv
 
 Note: I've also configured my VSCode with the settings below so, while I'm coding, VSCode will notify me about unused things so I can immediately take action.
 
+<Snippets filename=".vscode/settings.json">
+
 ```json
 "python.analysis.diagnosticSeverityOverrides": {
     "reportUnusedClass": "information",
@@ -128,6 +128,8 @@ Note: I've also configured my VSCode with the settings below so, while I'm codin
     "reportUnusedVariable": "information"
 },
 ```
+
+</Snippets>
 
 ## 5. pydocstyle
 
@@ -139,9 +141,7 @@ This tool will check the quality of your comments like the one of your functions
 
 I'm running it like this: `pydocstyle --config=.config/.pydocstyle`
 
-<details>
-
-<summary>Example of a `.config/.pydocstyle` file</summary>
+<Snippets filename=".config/.pydocstyle">
 
 ```text
 [pydocstyle]
@@ -149,7 +149,7 @@ ignore = D100,D203,D205,D212,D213,D400,D404,D406,D407,D413,D415
 match = .*\.py
 ```
 
-</details>
+</Snippets>
 
 ## 6. mypy
 
@@ -163,9 +163,7 @@ match = .*\.py
 
 I'm running it like this: `mypy --config-file .config/.mypy.ini .`
 
-<details>
-
-<summary>Example of a `.config/.mypy.ini` file</summary>
+<Snippets filename=".config/.mypy.ini">
 
 ```text
 [mypy]
@@ -185,7 +183,7 @@ warn_unused_ignores = true
 python_version = 3.13
 ```
 
-</details>
+</Snippets>
 
 ## 7. Pyright
 
@@ -195,9 +193,7 @@ python_version = 3.13
 
 I'm using it like this: `pyright --project .config/pyright.json`
 
-<details>
-
-<summary>Example of a `.config/pyright.json` file</summary>
+<Snippets filename=".config/pyright.json">
 
 ```json
 {
@@ -208,7 +204,7 @@ I'm using it like this: `pyright --project .config/pyright.json`
 
 ```
 
-</details>
+</Snippets>
 
 ## 8. Black
 
@@ -222,9 +218,7 @@ I'm using it like this: `pyright --project .config/pyright.json`
 
 I'm using it like this: `black --config .config/black.toml .`
 
-<details>
-
-<summary>Example of a `.config/black.toml` file</summary>
+<Snippets filename=".config/black.toml">
 
 ```toml
 [tool.black]
@@ -237,7 +231,7 @@ line-length = 120
 target-version = ['py313']
 ```
 
-</details>
+</Snippets>
 
 ## 9. prospector
 
@@ -247,9 +241,7 @@ target-version = ['py313']
 
 I'm using it like this: `prospector . --profile .config/prospector.yaml --pylint-config-file .config/.pylintrc`
 
-<details>
-
-<summary>Example of a `.config/prospector.yaml` file</summary>
+<Snippets filename=".config/prospector.yaml">
 
 ```yaml
 strictness: high
@@ -273,7 +265,7 @@ pycodestyle:
     - D413
     - D415
 
-bandit: 
+bandit:
   run: true
 
 dodgy:
@@ -286,7 +278,7 @@ mccabe:
   run: true
 ```
 
-</details>
+</Snippets>
 
 ## Extra - Ruff
 
@@ -304,9 +296,7 @@ According to the Ruff [documentation](https://docs.astral.sh/ruff/faq/#how-does-
 
 I'm using it like this: `ruff format --cache-dir /tmp/ruff --config .config/pyproject.toml .` and `ruff check --cache-dir /tmp/ruff --config .config/pyproject.toml .`
 
-<details>
-
-<summary>Example of a `.config/pyproject.toml` file</summary>
+<Snippets filename=".config/pyproject.toml">
 
 ```toml
 [tool.ruff]
@@ -318,7 +308,7 @@ line-length = 120
 indent-width = 4
 ```
 
-</details>
+</Snippets>
 
 ## Running them all at once
 
@@ -328,10 +318,11 @@ The first tool is `Pylint` and that make sense: there is no need to go further i
 
 I'm using a [makefile](/blog/tags/makefile) with an action called `qa` like this:
 
+<Snippets filename="makefile">
 
 ```makefile
 .PHONY: qa
-qa: 
+qa:
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " Step  Tool" "Run?" "Techno" "Description"
 	@echo "--------------------------------------------------------------------------------------------------------------"
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 1/9  RUNNING make Pylint" "Lint python scripts using Pylint (https://pypi.org/project/pylint/)"
@@ -360,10 +351,12 @@ qa:
 
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n\n" " 9/9  RUNNING make Prospector" "Inspects Python source files and provides information about type and location of classes, methods, ... (https://github.com/prospector-dev/prospector/)"
 	@prospector . --profile .config/prospector.yaml --pylint-config-file .config/.pylintrc
-    
+
 	@printf "%s\n" "CONGRATULATIONS!!!"
 	@printf "%s\n" "Not the slightest error or notice detected, that's .. amazing!"
 	@printf "%s\n" "🥳 🎉 🎊 🤩 🕺 💃 👏"
 ```
+
+</Snippets>
 
 You've understood I think. As soon as an error is detected, the script stops. You'll see the **CONGRATULATIONS** message only if all checks are successful.

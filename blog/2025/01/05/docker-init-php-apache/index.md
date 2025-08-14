@@ -72,21 +72,27 @@ The `.dockerignore` file specifies files and directories that should be excluded
 
 By opening that file with a code editor, you'll then see that line:
 
+<Snippets filename=".dockerignore">
+
 ```text
 **/.git
 ```
+
+</Snippets>
 
 Refers to [https://docs.docker.com/go/build-context-dockerignore/](https://docs.docker.com/go/build-context-dockerignore/) for more explanations.
 
 ### compose.yaml
 
 :::note
-Previously, the file was named `docker-compose.yml` (or `docker-compose.yaml`).
+Previously, the file was named `compose.yaml` (or `docker-compose.yaml`).
 :::
 
 The file will teach Docker how to make more than one container work together, f.i. our PHP application and a database service.
 
 By opening the file, you'll see that right now, the only un-commented lines are those:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -97,6 +103,8 @@ services:
       - 8080:80
 ```
 
+</Snippets>
+
 The rest is just for illustration.
 
 Refers to [https://docs.docker.com/go/compose-spec-reference/](https://docs.docker.com/go/compose-spec-reference/) for more explanation.
@@ -104,6 +112,8 @@ Refers to [https://docs.docker.com/go/compose-spec-reference/](https://docs.dock
 ### Dockerfile
 
 There are a lot of commented lines, if we look at un-commented ones, we can see this:
+
+<Snippets filename="Dockerfile">
 
 ```Dockerfile
 FROM php:8.2-apache
@@ -114,6 +124,8 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 USER www-data
 ```
+
+</Snippets>
 
 So, we'll use the PHP 8.2 Docker image shipped with apache in it (one image with both PHP and Apache).
 
@@ -134,6 +146,8 @@ As a remember of how to use your dockerized application, this file will give you
 The generated files won't be modified by Docker while you'll not run `docker init` again. This means you can make any changes you like to the files, but your changes won't be lost. It's a great way to quickly dockerized an application.
 
 The example given in this blog post is a stand-alone project so `docker init` does all the magic. Assuming we'd needed a database, all we have to do is return to the `compose.yaml´ file and un-comment the lines like below:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -169,6 +183,8 @@ secrets:
   db-password:
     file: db/password.txt
 ```
+
+</Snippets>
 
 :::info Docker secrets is used here
 Hey! Did you see? Instead of hardcoding the password in the file, `docker init` has used a secret. This is smart.

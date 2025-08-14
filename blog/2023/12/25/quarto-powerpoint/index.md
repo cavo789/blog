@@ -24,6 +24,8 @@ The official documentation of Quarto for rendering PowerPoint slides can be foun
 
 Let's start and create our `slides.md` file:
 
+<Snippets filename="slides.md">
+
 ```markdown
 ---
 title: "My thesis in Latin"
@@ -52,6 +54,8 @@ Consequatur debitis et sunt eos quod qui unde aut.
 Quis voluptate est quis in ea veniam qui incididunt ad cillum nostrud. Nisi proident adipisicing nulla proident esse consequat veniam qui magna deserunt cillum enim. Reprehenderit aliqua sit veniam quis amet dolore magna.
 ```
 <!-- cspell:enable -->
+
+</Snippets>
 
 Now, run the conversion using `quarto render slides.md --to pptx`
 

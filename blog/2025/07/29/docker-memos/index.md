@@ -36,9 +36,7 @@ So, please run `mkdir -p  ~/tools/memos && cd $_` to create a folder in your hom
 
 Then, please create a file called `compose.yaml` with this content:
 
-<details>
-
-<summary>compose.yaml</summary>
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: tools
@@ -56,7 +54,7 @@ services:
     restart: unless-stopped
 ```
 
-</details>
+</Snippets>
 
 :::note
 The line `user: ${UID:-1000}:${GID:-1000}` will ask Docker to use a specific user (not the `root` one) while creating files on your disk.
@@ -140,7 +138,7 @@ When you've used tags, you'll see them immediately bottom left under `Tags`. Sim
 
 ## Creating shortcuts
 
-Next to tags, you can use more sophisticated filters like what memos call `shortcut`. 
+Next to tags, you can use more sophisticated filters like what memos call `shortcut`.
 
 ![Creating shortcuts](./images/creating_shortcuts.png)
 

@@ -29,8 +29,7 @@ Create a temporary directory like `mkdir -p /tmp/cypress && cd $_`.
 
 Create the `package.json` file with the following content. The objective is to mention we need the `cypress` dependency and we'll define to commands, `open` and `run`.
 
-<details>
-<summary>package.json</summary>
+<Snippets filename="package.json">
 
 ```json
 {
@@ -47,14 +46,13 @@ Create the `package.json` file with the following content. The objective is to m
 }
 ```
 
-</details>
+</Snippets>
 
 We also need a configuration file and that one has to be called `cypress.config.js`. Create that file with the content below.
 
 In short, we'll define the URL to our local cypress engine to `http://localhost:3100`, we'll inform override the default port `3000` to `3100` and we'll specify we don't use a cypress support configuration file.
 
-<details>
-<summary>cypress.config.js</summary>
+<Snippets filename="cypress.config.js">
 
 ```javascript
 const { defineConfig } = require('cypress');
@@ -68,12 +66,11 @@ module.exports = defineConfig({
 });
 ```
 
-</details>
+</Snippets>
 
 Let's create a very stupid first test: we'll visit my blog and check that, somewhere, my full name appears:
 
-<details>
-<summary>cypress/e2e/example.cy.js</summary>
+<Snippets filename="cypress/e2e/example.cy.js">
 
 ```javascript
 describe('Testing my blog', () => {
@@ -84,12 +81,11 @@ describe('Testing my blog', () => {
 })
 ```
 
-</details>
+</Snippets>
 
 An optional file to create is `.dockerignore`, it will tell Docker to not copy some files in our Docker image. In our tutorial here we don't really need it but it's always a good idea to have such file as a reminder to not forget that Docker can skip files with copying files and directories when building an image.
 
-<details>
-<summary>.dockerignore</summary>
+<Snippets filename=".dockerignore">
 
 ```text
 node_modules
@@ -97,12 +93,11 @@ Dockerfile
 .dockerignore
 ```
 
-</details>
+</Snippets>
 
 Finally, last file to create, we'll create our own Docker image:
 
-<details>
-<summary>Dockerfile</summary>
+<Snippets filename="Dockerfile">
 
 ```Dockerfile
 FROM cypress/included:14.2.0
@@ -123,7 +118,7 @@ USER node
 CMD ["npx", "cypress", "run", "--browser", "chrome"]
 ```
 
-</details>
+</Snippets>
 
 If we look in VSCode our current project, it will look like this:
 
@@ -151,8 +146,7 @@ It's simple.
 
 First, let's create a second test:
 
-<details>
-<summary>cypress/e2e/navigation.cy.js</summary>
+<Snippets filename="cypress/e2e/navigation.cy.js">
 
 ```javascript
 describe('Navigation Test', () => {
@@ -168,7 +162,7 @@ describe('Navigation Test', () => {
 });
 ```
 
-</details>
+</Snippets>
 
 In short, we want to go to the homepage then click on the **Tags** menu navigation item. We expect then that the URL of the new page will contain `/tags` and, too, we expect the new page HTML content will have a `h1` element with the word `Tags`.
 
@@ -192,8 +186,7 @@ Please create a third file.
 If you pay close attention, you'll notice that there's a spelling mistake, which is deliberate.
 :::
 
-<details>
-<summary>cypress/e2e/joomla.cy.js</summary>
+<Snippets filename="cypress/e2e/joomla.cy.js">
 
 ```javascript
 describe('Joomla Test', () => {
@@ -209,7 +202,7 @@ describe('Joomla Test', () => {
 });
 ```
 
-</details>
+</Snippets>
 
 Let's run Cypress once more: `docker run --rm -v ./cypress:/app/cypress cypress-test`.
 
@@ -223,8 +216,7 @@ To do this, we'll need to update our Docker image to create a new user so, at th
 
 Please replace your existing Dockerfile with this one:
 
-<details>
-<summary>Dockerfile</summary>
+<Snippets filename="Dockerfile">
 
 ```Dockerfile
 ARG USER_ID=1000
@@ -268,7 +260,7 @@ CMD ["npx", "cypress", "run", "--browser", "chrome"]
 
 ```
 
-</details>
+</Snippets>
 
 The script before will create a user called `johndoe` in the image (name didn't matter here) but, the most important thing is that the user will have a specific UID / GID.  
 

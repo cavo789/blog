@@ -20,6 +20,8 @@ For the demo, please start a Linux shell and run `mkdir -p /tmp/refactor && cd $
 
 Please create two php files. The first one will be called `index.php` and will contain this code:
 
+<Snippets filename="/tmp/refactor/index.php">
+
 ```php
 <?php
 
@@ -39,7 +41,11 @@ printf(
 );
 ```
 
+</Snippets>
+
 The second file `Product.php` will contain:
+
+<Snippets filename="/tmp/refactor/Product.php">
 
 ```php
 <?php
@@ -74,6 +80,8 @@ class Product
     }
 }
 ```
+
+</Snippets>
 
 ### Run the example
 
@@ -112,6 +120,8 @@ Let's do it and see how it works:
 
 The new `Product.php` file is now:
 
+<Snippets filename="/tmp/refactor/Product.php">
+
 ```php
 <?php
 
@@ -146,7 +156,11 @@ class Product
 }
 ```
 
+</Snippets>
+
 But the very cool thing is that `index.php` has been automatically updated. Open `index.php` and check:
+
+<Snippets filename="/tmp/refactor/index.php">
 
 ```php
 <?php
@@ -166,6 +180,8 @@ printf(
     $product->getPrice()
 );
 ```
+
+</Snippets>
 
 By running `docker run -it --rm -v "${PWD}":/project -w /project php:8.2 php index.php`, it's still working.
 
@@ -199,6 +215,8 @@ Renaming the file from the Explorer won't refactor the code. So, don't go to the
 The third very nice method is the `Extract method` from [PHP Refactoring](https://marketplace.visualstudio.com/items?itemName=marsl.vscode-php-refactoring).
 
 Consider the following example (the code isn't running, it's just for the illustration). Create a new file called `Pandoc.php` with this content:
+
+<Snippets filename="/tmp/refactor/Pandoc.php">
 
 ```php
 <?php
@@ -241,6 +259,8 @@ class Pandoc
     }
 }
 ```
+
+</Snippets>
 
 The `download` function didn't respect the single-responsibility concept. We've made a few initializations and assertions. Can we do better? Yes, we can extract the lines concerning the browser and create a new `sendToBrowser` function but instead of doing it manually, we'll use the `Extract` feature.
 

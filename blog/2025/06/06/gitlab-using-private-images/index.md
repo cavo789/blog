@@ -44,6 +44,8 @@ You can add the variables in your repository's CI/CD settings page or at a highe
 
 Once done, here is how to connect to Docker in your `.gitlab-ci.yml` file:
 
+<Snippets filename=".gitlab-ci.yml">
+
 ```yaml
 demo:
   image: docker:latest
@@ -56,3 +58,5 @@ demo:
     # - | # Use it
     #   docker run [...] your_private_image [...]
 ```
+
+</Snippets>

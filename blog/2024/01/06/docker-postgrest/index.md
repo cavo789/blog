@@ -58,6 +58,8 @@ docker exec -it tutorial psql -U postgres
 
 Copy/Paste the code below in your console. This will create a database called `api` with a table called `todos`; with two records. This will also create a `web_anon` user that we'll use with PostgREST to query our data:
 
+<Snippets filename="create_db.sql">
+
 ```sql
 create schema api;
 
@@ -80,6 +82,8 @@ create role authenticator noinherit login password 'mysecretpassword';
 grant web_anon to authenticator;
 ```
 
+</Snippets>
+
 Now, to leave the postgres console, just type `\q`.
 
 ### Step 2 - Install and execute PostgREST
@@ -95,20 +99,28 @@ You've now a file called `postgrest` in your folder.
 
 We need to create a configuration, please create a file called `tutorial.conf` with this content:
 
+<Snippets filename="tutorial.conf">
+
 ```conf
 db-uri = "postgres://authenticator:mysecretpassword@localhost:5433/postgres"
 db-schemas = "api"
 db-anon-role = "web_anon"
 ```
 
+</Snippets>
+
 :::info PostgREST will start as a service on port 3000 by default
 The instruction `./postgrest tutorial.conf` will start a service. You can stop it by pressing <kbd>CTRL</kbd>-<kbd>C</kbd> but leave it right now and start a new console.
 
 Add the line below to your conf file if you wish to use another port; f.i. port `3001`:
 
+<Snippets filename="tutorial.conf">
+
 ```conf
 server-port = 3001
 ```
+
+</Snippets>
 
 :::
 

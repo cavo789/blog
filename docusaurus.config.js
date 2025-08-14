@@ -215,7 +215,7 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
         defaultLanguage: 'php',
-        additionalLanguages: ['bash', 'php', 'python']
+        additionalLanguages: ['bash', 'css', 'javascript', 'php', 'python']
       },
       tableOfContents: {
         minHeadingLevel: 2,

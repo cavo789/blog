@@ -20,6 +20,8 @@ Not everywhere means, for instance, VSCode didn't support code folding by defaul
 
 Consider the following, very basic, example (*very brief example for illustrative purposes*):
 
+<Snippets filename="my_class.php">
+
 ```php
 <?php
 
@@ -40,7 +42,11 @@ class MyClass
 }
 ```
 
+</Snippets>
+
 We can clearly identify three blocks: preparation of the query, run it and return the data. Using regions, we can do this:
+
+<Snippets filename="my_class.php">
 
 ```php
 <?php
@@ -68,6 +74,8 @@ class MyClass
 }
 ```
 
+</Snippets>
+
 And now, why folding can be really useful: we can fold / unfold them:
 
 ![VSCode - Regions folding](./images/regions.gif)
@@ -79,6 +87,8 @@ Regions are supported by a very large number of languages, but don't make the mi
 ## What to do when VSCode didn't support these tags by default?
 
 Let's take a look and the following Dockerfile:
+
+<Snippets filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -152,7 +162,7 @@ ENV NODE_ENV="${TARGET}"
 ARG HOMEDIR
 RUN npx create-docusaurus@latest "${HOMEDIR}/" classic --javascript \
     # Remove dummy files like dummy blog, docs, ... that were added during the installation
-    && rm -rf "${HOMEDIR}/blog" "${HOMEDIR}/docs" "${HOMEDIR}/src" \ 
+    && rm -rf "${HOMEDIR}/blog" "${HOMEDIR}/docs" "${HOMEDIR}/src" \
     && chown -R node:node "${HOMEDIR}/"
 
 # Set the working directory to `/opt/docusaurus`.
@@ -192,6 +202,8 @@ COPY --from=building_production "${HOMEDIR}/build /usr/share/nginx/html"
 WORKDIR /usr/share/nginx/html
 ```
 
+</Snippets>
+
 By opening such file in VSCode didn't provide any collapse/expand features and we will need to scroll a lot. And we don't have a global overview of the structure.
 
 ![No region support in VSCode for Dockerfile](./images/dockerfile-before.png)
@@ -199,6 +211,8 @@ By opening such file in VSCode didn't provide any collapse/expand features and w
 The solution comes by installing a specialised extension: [https://marketplace.visualstudio.com/items?itemName=maptz.regionfolder](https://marketplace.visualstudio.com/items?itemName=maptz.regionfolder).
 
 And, too, by adding these settings in your `.vscode/settings.json` file:
+
+<Snippets filename=".vscode/settings.json">
 
 ```json
 {
@@ -212,6 +226,8 @@ And, too, by adding these settings in your `.vscode/settings.json` file:
     }
 }
 ```
+
+</Snippets>
 
 Switch back to your tab in VSCode with your opened Dockerfile, press <kbd>CTRL</kbd>+<kbd>P</kbd> and run `Developer: Reload Window` to reload the window once the extension has been enabled and tadaaa!
 

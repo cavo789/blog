@@ -26,6 +26,8 @@ Just to give you some PHP code to use as an example for this article, let's crea
 
 Here is the code proposed by [Gemini](https://gemini.google.com/). Save it to your disk as `hangman.php`:
 
+<Snippets filename="hangman.php">
+
 ```php
 <?php
 
@@ -117,6 +119,8 @@ function playHangman() {
 playHangman();
 ```
 
+</Snippets>
+
 To play with this game, just run `docker run -it -v ${PWD}:/src -w /src php:7.4-fpm php hangman.php`.
 
 As you'll see the script works fine without any change!
@@ -128,6 +132,8 @@ As you'll see the script works fine without any change!
 Now, we'll make this code unreadable by removing unneeded spaces, carriage return and replacing names by some random letters. For instance, replace the `playHangman` function name by a random suite like `ppny`. And to make the code more unreadable, I'll choose only suites like `ppmx`, `ppnx`, `ppny` and so on.
 
 To do such obfuscation, just download my [https://github.com/cavo789/php_obfuscator/blob/main/src/minify.php](https://github.com/cavo789/php_obfuscator/blob/main/src/minify.php) script and save it on your disk as `minify.php`. Also create a file called `settings.json` with this content:
+
+<Snippets filename="settings.json">
 
 ```json
 {
@@ -147,6 +153,8 @@ To do such obfuscation, just download my [https://github.com/cavo789/php_obfusca
 }
 ```
 
+</Snippets>
+
 Right now, in your folder, you've three files:
 
 ```bash
@@ -165,6 +173,8 @@ Time to make the `hangman.php` file unreadable by running `docker run -it -v ${P
 ![Obfuscating your PHP code](./images/obfuscate.png)
 
 Now, you've a new file called `hangman_minify.php`:
+
+<Snippets filename="hangman_minify.php">
 
 ```php
 <?php
@@ -196,6 +206,8 @@ ppnx($ppnc);echo "You ran out of guesses. The word was: ".$word.PHP_EOL;}}
 ppny();
 ```
 
+</Snippets>
+
 What you see here above is the newer version of the `hangman.php` file and it's still running. You can check by running `docker run -it -v ${PWD}:/src -w /src php:7.4-fpm php hangman_minify.php`.
 
 ## Make the code readable again, ask Copilot
@@ -205,6 +217,8 @@ What you see here above is the newer version of the `hangman.php` file and it's 
 The first time, [Copilot](https://copilot.microsoft.com/) has kept my minified function name. By asking him *Can you suggest me another version?*, Copilot suggests this code:
 
 ![Rewriting the code](./images/copilot_rewritting.png)
+
+<Snippets filename="hangman.php">
 
 ```php
 <?php
@@ -295,5 +309,7 @@ function playHangman()
 // Start the game
 playHangman();
 ```
+
+</Snippets>
 
 The artificial intelligence managed to understand the purpose of the script (a hangman game) and rewrote the code to make it readable. Not only is the code readable, the function names are too, but it has also written comments. Just incredible!

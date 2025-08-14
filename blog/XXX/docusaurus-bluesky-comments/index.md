@@ -38,9 +38,7 @@ In the previous article (see [Create our own Docusaurus React component and prov
 
 Here is our new BlueSky layout for our component:
 
-<details>
-
-<summary>src/components/BlueSky/index.js</summary>
+<Snippets filename="src/components/BlueSky/index.js">
 
 ```javascript
 /**
@@ -137,7 +135,7 @@ BlueSky.propTypes = {
 };
 ```
 
-</details>
+</Snippets>
 
 :::info
 The highlighted lines are the new ones compared of the previous version of the file if you've already followed the first tutorial.
@@ -152,9 +150,7 @@ As you can see, this time, we'll foresee four components:
 
 ## 2/5 Our "Like, share or comment" button
 
-<details>
-
-<summary>src/components/BlueSky/post.js</summary>
+<Snippets filename="src/components/BlueSky/post.js">
 
 ```javascript
 /**
@@ -211,15 +207,13 @@ BlueSkyPost.propTypes = {
 };
 ```
 
-</details>
-
+</Snippets>
 
 ## 3/5 Our component for getting the number of likes and reposts
 
 <!-- cspell:disable -->
-<details>
 
-<summary>src/components/BlueSky/likes.js</summary>
+<Snippets filename="src/components/BlueSky/likes.js">
 
 ```javascript
 /**
@@ -320,16 +314,15 @@ BlueSkyLikes.propTypes = {
 };
 ```
 
-</details>
+</Snippets>
 
 <!-- cspell:enable -->
 
 ## 4/5 Retrieving all comments
 
 <!-- cspell:disable -->
-<details>
 
-<summary>src/components/BlueSky/comments.js</summary>
+<Snippets filename="src/components/BlueSky/comments.js">
 
 ```javascript
 /**
@@ -622,15 +615,12 @@ BlueSkyComments.propTypes = {
 };
 ```
 
-</details>
+</Snippets>
 <!-- cspell:enable -->
-
 
 ## 5/5 Our new CSS
 
-<details>
-
-<summary>src/components/BlueSky/styles.module.css</summary>
+<Snippets filename="src/components/BlueSky/styles.module.css">
 
 ```css
 .blueSkyLogo {
@@ -788,8 +778,7 @@ img.blueSkyCommentEmbedThumb {
 }
 ```
 
-</details>
-
+</Snippets>
 
 ## Retrieve the final Docusaurus component on Packagist
 

@@ -34,6 +34,8 @@ In our example below, we'll fire a `SampleEvent` class and his `SampleListener`.
 
 File `app/Providers/EventServiceProvider.php`
 
+<Snippets filename="app/Providers/EventServiceProvider.php">
+
 ```php
 protected $listen = [
     SampleEvent::class => [
@@ -42,7 +44,11 @@ protected $listen = [
 ];
 ```
 
+</Snippets>
+
 For our sample, your `routes/web.php` can look like this:
+
+<Snippets filename="routes/web.php">
 
 ```php
 use App\Employee;
@@ -59,6 +65,8 @@ Route::get('/', function () {
 });
 ```
 
+</Snippets>
+
 What we do is:
 
 1. Create a new `employee` based on the `Employee` class,
@@ -73,6 +81,8 @@ Here, by default, our employee.
 This class will initialize our employee and provide setters and getters.
 
 By default, our employee will be called `John Doe (cavo789)`.
+
+<Snippets filename="app/Employee.php">
 
 ```php
 <?php
@@ -123,11 +133,15 @@ class Employee
 };
 ```
 
+</Snippets>
+
 ### File app/Events/SampleEvent.php
 
 Our event will receive an employee and make it private.
 
 Make three setters public to allow listeners to update the first and the last name. Also allow initializing the pseudo.
+
+<Snippets filename="app/Events/SampleEvent.php">
 
 ```php
 <?php
@@ -165,9 +179,13 @@ class SampleEvent
 }
 ```
 
+</Snippets>
+
 ### File app/Listeners/SampleListener.php
 
 Our listener logic. `SampleListener` will receive the `SampleEvent` as parameter and, thus, has access to all his public methods. We'll here update the first and the lastname, we'll not update the pseudo.
+
+<Snippets filename="app/Listeners/SampleListener.php">
 
 ```php
 <?php
@@ -185,6 +203,8 @@ class SampleListener
 }
 ```
 
+</Snippets>
+
 ### The result
 
 If we run `curl localhost` in the console, we'll get the output below showing us it has worked perfectly as expected.
@@ -197,6 +217,8 @@ PSEUDO    is cavo789
 
 If we edit back the `app/Providers/EventServiceProvider.php` file and comment the listener like below illustrated, our code will still work.
 
+<Snippets filename="app/Providers/EventServiceProvider.php">
+
 ```php
 protected $listen = [
     SampleEvent::class => [
@@ -204,6 +226,8 @@ protected $listen = [
     ],
 ];
 ```
+
+</Snippets>
 
 ```text
 FIRSTNAME is John

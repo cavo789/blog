@@ -16,6 +16,8 @@ In a previous [article](/blog/linux-compare-two-versions-of-the-same-script), we
 
 Please create the `/tmp/bash/console.sh` file on your disk with this content:
 
+<Snippets filename="/tmp/bash/console.sh">
+
 ```bash
 #!/usr/bin/env bash
 
@@ -40,6 +42,8 @@ function console::printGreen() {
 function console::printBlue() {
 }
 ```
+
+</Snippets>
 
 As we can see, we'll just create empty functions in no particular order.
 
@@ -77,6 +81,8 @@ Back to the left column: the name displayed in white are already in the correct 
 
 Let's update partially the `/tmp/bash/console.sh` file and reorder some functions:
 
+<Snippets filename="/tmp/bash/console.sh">
+
 ```bash
 #!/usr/bin/env bash
 
@@ -102,6 +108,8 @@ function console::printGreen() {
 }
 ```
 
+</Snippets>
+
 Now, rerunning the same command:
 
 ![Almost correct](./images/almost_correct.png)
@@ -126,13 +134,15 @@ If you see this, perfect, functions are correctly ordered in your script.
 
 We have just seen, on the command line, how to check whether a Bash script declaring functions does so in alphabetical order.
 
-Let's move on to the industrialization of this concept: a script that will scan each .sh file in a specific folder and check whether the functions are defined in the file in alphabetical order. 
+Let's move on to the industrialization of this concept: a script that will scan each .sh file in a specific folder and check whether the functions are defined in the file in alphabetical order.
 
 If this is the case, we won't have any display so as not to pollute our console.
 
 If this is not the case, the left-hand side of the screen shows the current order of function declarations and the right-hand side shows the expected order, sorted alphabetically.
 
 To do this, create the `order.sh` script on your hard drive with this content:
+
+<Snippets filename="order.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -156,11 +166,11 @@ pushd "${sourceFolder}" >/dev/null
 
 set +e
 
-for bashScript in *.sh; do 
+for bashScript in *.sh; do
     result="$(diff --side-by-side --width 83 \
         <(grep -P "^(function\s+.*)\(\)" "${bashScript}" | awk '{print $2}') \
         <(grep -P "^(function\s+.*)\(\)" "${bashScript}" | awk '{print $2}' | sort))"
-    
+
     if ! [[ $? -eq 0 ]]; then
         printf "\e[33;1m%s\e[0;1m\n" "The file ${bashScript} isn't correctly ordered"
         printf "\e[37;1m%s\e[0;1m\n" "${result}"
@@ -171,6 +181,8 @@ set -e
 
 popd >/dev/null
 ```
+
+</Snippets>
 
 And now, start the script like this: `./order.sh  ~/helpers`. The expected parameter is the name of a folder containing `.sh` files.
 

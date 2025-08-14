@@ -22,7 +22,7 @@ When I'll access to the container, the project will then be available but I don'
 
 ## But, why is it important?
 
-As soon as you need to access to something private like a private repository (on Github, Gitlab or anywhere else; it doesn't matter) during the build stage, Docker has to be able to connect as yourself. 
+As soon as you need to access to something private like a private repository (on Github, Gitlab or anywhere else; it doesn't matter) during the build stage, Docker has to be able to connect as yourself.
 
 You can provide your own credentials or using a token or copying your SSH key in the image or ... You can do this but **you'll be making a serious design error**: by reading your Dockerfile anyone will be able to see your private information(in case of hardcoding) or by starting an interactive bash session, it'll be able to f.i. display the list of environment variables (like using `printenv`) or trying to access to display files (like trying to access to `.git` folders, ssh folders, ...) and **it'll work!**.
 
@@ -54,11 +54,13 @@ In my case, the key I've used for github.com is `id_25519` so I'll use that one 
 
 ## Creating files
 
-We'll need to files; `docker-compose.yaml` and `Dockerfile`.
+We'll need to files; `compose.yaml` and `Dockerfile`.
 
-### docker-compose.yaml
+### compose.yaml
 
-Here is my `docker-compose.yaml` content:
+Here is my `compose.yaml` content:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -82,6 +84,8 @@ secrets:
     file: ${HOME}/.ssh/id_ed25519
 ```
 
+</Snippets>
+
 As you can see, we've five specific lines.
 
 In our `services -> app --> build` entry, we should add the `secrets` and the name of one (or more) secrets.
@@ -90,11 +94,15 @@ I've also added an argument called `KEY_NAME` just because I need to inform Dock
 
 Secrets have to be defined at the same indentation level of `services` and the notation is this one:
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 secrets:
   a_secret_name:
     file: existing_file
 ```
+
+</Snippets>
 
 You can use what you want for `a_secret_name`; for instance, `my_ssh_key`.
 
@@ -107,6 +115,8 @@ You can, if you want, run `docker compose config` to check if your file is corre
 ### Dockerfile
 
 Time to create our second file, `Dockerfile`:
+
+<Snippets filename="Dockerfile">
 
 ```Dockerfile
 FROM alpine:3.19
@@ -124,7 +134,7 @@ RUN mkdir -p -m 0700 /root/.ssh && ssh-keyscan "github.com" >> /root/.ssh/known_
 RUN --mount=type=secret,id=my_ssh_key,dst=/root/.ssh/${KEY_NAME} \
     // highlight-next-line
     mkdir -p /app && cd app \
-    // highlight-next-line        
+    // highlight-next-line
     && ssh -T git@github.com || true \
     // highlight-next-line
     && git clone git@github.com:cavo789/my_private_repo.git
@@ -134,6 +144,8 @@ WORKDIR /app
 # Keep the container running
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 ```
+
+</Snippets>
 
 :::warning Think to replace cavo789/my_private_repo.git and refers one of your repositories
 :::
@@ -186,7 +198,9 @@ Ok, we've seen how to share the SSH key with Docker but only during the build ph
 
 But now, if we need to share our key also with the container so we can work on the project, update it and push changes / pull modifications, how to do?
 
-Please edit the `docker-compose.yaml` file and add these two lines:
+Please edit the `compose.yaml` file and add these two lines:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -197,7 +211,7 @@ services:
       secrets:
         - my_ssh_key
       args:
-        - KEY_NAME=id_ed25519      
+        - KEY_NAME=id_ed25519
     // highlight-next-line
     volumes:
       // highlight-next-line
@@ -208,6 +222,8 @@ secrets:
     file: ${HOME}/.ssh/id_ed25519
 ```
 
+</Snippets>
+
 Then recreate the container by running `docker compose up --detach`. Jump in the container by running `docker compose exec app /bin/bash` and go in your project folder. Now, by running `git pull`, as you'll see, it'll work.
 
 Why? Because your SSH keys are now part of the container as we can see by running `ls -alh /root/.ssh`:
@@ -217,7 +233,7 @@ Why? Because your SSH keys are now part of the container as we can see by runnin
 :::important Keys are not stored in the image even when you've shared them with the container
 Just to be clear: the notion of volume we've just implemented concerns the container and not the image. In other words, SSH keys are not stored in the Docker image. You could give it to someone else (e.g. by saving the image on Docker Hub); your keys won't be there and will remain on your computer. Your image and your secrets are safe.
 
-Then, when the user run `docker compose up --detach` using the `docker-compose.yaml` file where there are the two lines we've just added (the ones for adding the volume); these are his keys, on his computer, not yours.  
+Then, when the user run `docker compose up --detach` using the `compose.yaml` file where there are the two lines we've just added (the ones for adding the volume); these are his keys, on his computer, not yours.
 :::
 
 :::caution Please take note of the running user in your container
@@ -226,6 +242,8 @@ In our example here, the default user is `root` as we can see by jumping in the 
 ![Whoami](./images/whoami.png)
 
 So, when we've started `git pull`, it was under `root`. This is why we've mounted our volume like below:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -237,7 +255,11 @@ services:
       - ${HOME}/.ssh:/root/.ssh
 ```
 
+</Snippets>
+
 Imagine the current user was `christophe`. In that case the mount should be done like this:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -248,5 +270,7 @@ services:
       // highlight-next-line
       - ${HOME}/.ssh:/christophe/.ssh
 ```
+
+</Snippets>
 
 :::

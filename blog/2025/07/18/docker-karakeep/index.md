@@ -27,9 +27,7 @@ Let's look at how to install it.
 
 Please create a folder like `mkdir ~/tools/karakeep && cd $_`. In that folder, please create a `compose.yaml` file with the content below:
 
-<details>
-
-<summary>compose.yaml</summary>
+<Snippets filename="compose.yaml">
 
 <!-- cspell:disable -->
 ```yaml
@@ -77,7 +75,7 @@ volumes:
 ```
 <!-- cspell:enable -->
 
-</details>
+</Snippets>
 
 :::note
 The line `user: ${UID:-1000}:${GID:-1000}` will ask Docker to use a specific user (not the `root` one) while creating files on your disk.
@@ -137,7 +135,7 @@ By first selecting a list, new items will be adding directly to that list.
 
 ## Extra features
 
-### Import / Export 
+### Import / Export
 
 By clicking on your profile avatar (top right) then on `User Settings` you will be able to a.o.t. access to an `Import / Export` feature. It's good to know; you can import from a lot of sources and, too, export as a JSON or a HTML page.
 

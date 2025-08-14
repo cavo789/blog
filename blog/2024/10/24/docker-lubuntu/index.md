@@ -11,7 +11,7 @@ enableComments: true
 
 During my summer holidays, I've watched this video: [Full Ubuntu GUI in a Container Displayed on Windows (XServer)](https://www.youtube.com/watch?v=WutV6n21dys) and, of course, I wanted to play with it.
 
-The idea is to start a Lubuntu Desktop distribution as a Docker container. Lubuntu is a lightweight Ubuntu distribution designed to be more resource-efficient than the standard Ubuntu. 
+The idea is to start a Lubuntu Desktop distribution as a Docker container. Lubuntu is a lightweight Ubuntu distribution designed to be more resource-efficient than the standard Ubuntu.
 
 Using Docker and [Windows X Server](https://sourceforge.net/projects/vcxsrv/), we'll be able to play with Lubuntu just like any other containers i.e. play and drop without any impact on our ghost. Ideal for learning purposes then.
 
@@ -22,6 +22,8 @@ I encourage you to watch the video [Full Ubuntu GUI in a Container Displayed on 
 ## Step 1 - Create the Dockerfile
 
 There is just one file to create called `Dockerfile` and with this content:
+
+<Snippets filename="Dockerfile">
 
 ```Dockerfile
 FROM ubuntu:latest
@@ -45,6 +47,8 @@ ENV DISPLAY=host.docker.internal:0.0
 
 CMD service dbus start ; service lightdm start
 ```
+
+</Snippets>
 
 Build the image by running `docker build --tag cavo789/lubuntu .` (think to replace `cavo789` with your pseudo).
 

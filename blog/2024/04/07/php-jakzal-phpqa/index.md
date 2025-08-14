@@ -35,6 +35,8 @@ As a reminder, the used Docker run command will always look like:
 
 As you know, in a JSON file, there is no order so you can define your properties in any order. For instance:
 
+<Snippets filename="composer.json">
+
 ```json
 {
   "name": "ergebnis/composer-normalize",
@@ -43,9 +45,13 @@ As you know, in a JSON file, there is no order so you can define your properties
   "type": "composer-plugin",
 }
 ```
+
+</Snippets>
 
 or
 
+<Snippets filename="composer.json">
+
 ```json
 {
   "license": "MIT",
@@ -54,6 +60,8 @@ or
   "name": "ergebnis/composer-normalize",
 }
 ```
+
+</Snippets>
 
 or anything else. The above example is just four lines; imagine a file with a hundred lines. It's more logical, isn't it, to retrieve first the `name` of the tool, then a small `description`, the `license`, the `type` (is it a project, a library, ...) and so on and not, f.i., first the list of requirements.
 

@@ -27,6 +27,8 @@ Let's start with something really geeky.
 
 Go to a temporary folder (f.i. `mkdir -p /tmp/xeyes && cd $_`) and create a file called `Dockerfile` with this content:
 
+<Snippets filename="Dockerfile">
+
 ```Dockerfile
 FROM ubuntu:latest
 
@@ -35,11 +37,13 @@ RUN apt-get update && apt-get install -y x11-apps
 CMD [ "xeyes" ]
 ```
 
+</Snippets>
+
 Now, create the image by docker build like this: `docker build --tag cavo789/xeyes .` (replace `cavo789` by anything else like your pseudo).
 
 Make sure you've a variable called `DISPLAY`. You can check this by running `printenv | grep DISPLAY`. If you don't have it, create the variable by running `export DISPLAY=:0` in the console.
 
-Now, run `xhost +local:docker` in your console. That command grants permission to connect to an X server using the Docker socket. This means that applications running within Docker containers can display their graphical user interface (GUI) on the host system. The expected result is this text: `non-network local connections being added to access control list` 
+Now, run `xhost +local:docker` in your console. That command grants permission to connect to an X server using the Docker socket. This means that applications running within Docker containers can display their graphical user interface (GUI) on the host system. The expected result is this text: `non-network local connections being added to access control list`
 
 Now, simply run a container using and make sure to share the `DISPLAY` variable: `docker run --rm --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix cavo789:xeyes`.
 
@@ -54,6 +58,8 @@ So, once you've understood the very basic example of xeyes, you can think out-of
 Let's try Firefox... By using my favourite search engine, I've found this post: [Install Official Firefox .deb in Dockerfile](https://jetthoughts.com/blog/install-official-firefox-deb-in-dockerfile-docker-devops/).
 
 In a Dockerfile and with small changes, this give this:
+
+<Snippets filename="Dockerfile">
 
 ```Dockerfile
 FROM ubuntu:latest
@@ -86,19 +92,23 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 CMD [ "firefox" ]
 ```
 
+</Snippets>
+
 To build the image, please run the next command (and think to change `cavo789` by your pseudo): `docker build --tag cavo789/firefox .`.
 
 And to start Firefox, just run `docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY cavo789/firefox`.
 
 ![Running Firefox in a window](./images/firefox.png)
 
-As you know, my OS is Windows 11 and I'm running Linux thanks the amazing WSL2 technology. So, in short, here above, you can see I've started Firefox for Debian as a windowed application in my Windows. 
+As you know, my OS is Windows 11 and I'm running Linux thanks the amazing WSL2 technology. So, in short, here above, you can see I've started Firefox for Debian as a windowed application in my Windows.
 
 The old MS-DOS developer in me continues to be amazed by this possibility.
 
 ## Creation our own Chrome Docker image
 
 We can do the same with Chrome:
+
+<Snippets filename="Dockerfile">
 
 ```Dockerfile
 FROM ubuntu:latest
@@ -114,6 +124,8 @@ RUN apt-get update \
 CMD ["google-chrome", "--disable-dev-shm-usage", "--disable-gpu"]
 ```
 
+</Snippets>
+
 Build the image using `docker build --tag cavo789/chrome .` then run it using `docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY cavo789/chrome`.
 
 
@@ -122,6 +134,8 @@ Build the image using `docker build --tag cavo789/chrome .` then run it using `d
 ## Creating our own GIMP Docker image
 
 Ok, now, I think you've understood how it works. So, very shortly, here is how to run GIMP for Linux in a Docker container:
+
+<Snippets filename="Dockerfile">
 
 ```Dockerfile
 FROM ubuntu:latest
@@ -132,6 +146,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y gimp && rm -rf 
 
 CMD [ "gimp" ]
 ```
+
+</Snippets>
 
 Create the image by running `docker build --tag cavo789/gimp .`.
 

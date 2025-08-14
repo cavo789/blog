@@ -26,7 +26,7 @@ In short:
 * Start a console (can be DOS, PowerShell or Linux),
 * Run `docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=2Secure*Password2" -p 1433:1433 --name sqlserverdb -h mysqlserver -d mcr.microsoft.com/mssql/server:2022-latest` to download SQL server and run an instance of it in a Docker container,
 * Download [SQL Server Management Studio](https://learn.microsoft.com/en-us/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16#download-ssms) if you don't have it yet. It's free.
-* Once installed, start SQL Server Management Studio. 
+* Once installed, start SQL Server Management Studio.
 
 Use the value below for the authentication:
     * Server name: `localhost,1433`
@@ -36,9 +36,7 @@ Use the value below for the authentication:
 
 You're now in SSMS. We'll create a dummy database. Using some AI, I've asked for a script, here it is:
 
-<details>
-
-<summary>Create a sample database and populate it</summary>
+<Snippets filename="create_db.sql">
 
 ```sql
 -- Create a new database
@@ -78,7 +76,7 @@ SELECT * FROM Customers;
 GO
 ```
 
-</details>
+</Snippets>
 
 ![The creation script](./images/creation_sql.png)
 
@@ -157,6 +155,8 @@ Nevertheless, we've a SQL account called `SA` so we'll use it.
 
 Please update the subroutine and add two lines:
 
+<Snippets filename="module.bas">
+
 ```vb
 Sub CopyToSheet()
 
@@ -170,9 +170,11 @@ Dim rng As Range
     cData.Password = "2Secure*Password2"
 
     Set rng = cData.SQL_CopyToSheet(cSQLStatement, ActiveSheet.Range("A1"))
-    
+
 End Sub
 ```
+
+</Snippets>
 
 We're ready. Put your cursor in the `CopyToSheet` function, anywhere and press <kbd>F5</kbd> to execute it.
 
@@ -200,6 +202,8 @@ Don't keep any link with the DB, records are copied to Excel
 
 Sample code:
 
+<Snippets filename="module.bas">
+
 ```vb
 Dim cData As New clsData
 Dim rng As Range
@@ -209,7 +213,7 @@ Dim rng As Range
     ' highlight-next-line
     cData.UserName = "SA"
     ' highlight-next-line
-    cData.Password = "2Secure*Password2"    
+    cData.Password = "2Secure*Password2"
 
     ' When cData.UserName and cData.Password are not supplied
     ' the connection will be made as "trusted" i.e. with the connected
@@ -217,6 +221,8 @@ Dim rng As Range
 
     Set rng = cData.SQL_CopyToSheet("SELECT * FROM dbo.Customers", ActiveSheet.Range("A1"))
 ```
+
+</Snippets>
 
 ### AddQueryTable subroutine
 
@@ -236,15 +242,17 @@ If the parameter bPersist is set to True, the connection string will be in plain
 #### Parameters
 
 * `sSQL` : Instruction to use (a valid SQL statement like `SELECT ... FROM ...` or `EXEC usp_xxxx`)
-* `sQueryName` : Internal name that will be given to the querytable 
-* `rngTarget` : Destination of the returned recordset (f.i. `Sheet1!$A$1`) 
-* `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query 
+* `sQueryName` : Internal name that will be given to the querytable
+* `rngTarget` : Destination of the returned recordset (f.i. `Sheet1!$A$1`)
+* `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query
 
 :::danger
 IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN CLEAR IN THE CONNECTION STRING !
 :::
 
 Sample code
+
+<Snippets filename="module.bas">
 
 ```vb
 Dim cData As New clsData
@@ -255,7 +263,7 @@ Dim sSQL As String
     ' highlight-next-line
     cData.UserName = "SA"
     ' highlight-next-line
-    cData.Password = "2Secure*Password2"   
+    cData.Password = "2Secure*Password2"
 
     ' When cData.UserName and cData.Password are not supplied
     ' the connection will be made as "trusted" i.e. with the connected
@@ -265,6 +273,8 @@ Dim sSQL As String
 
     Call cData.AddQueryTable(sSQL, "qryTest", ActiveCell, True)
 ```
+
+</Snippets>
 
 ### RunSQLAndExportNewWorkbook subroutine
 
@@ -277,14 +287,16 @@ The obtained workbook will be ready to be sent to someone.
 #### Parameters
 
 * `sSQL` : Instruction to use (a valid SQL statement like `SELECT ... FROM ...` or `EXEC usp_xxxx`)
-* `sReportTitle` : Title for the sheet 
-* `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query 
+* `sReportTitle` : Title for the sheet
+* `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query
 
 :::danger
 IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN CLEAR IN THE CONNECTION STRING !
 :::
 
 Sample code
+
+<Snippets filename="module.bas">
 
 ```vb
 Dim cData As New clsData
@@ -301,3 +313,5 @@ Dim sSQL As String
 
     Call cData.RunSQLAndExportNewWorkbook(sSQL, "My Title", False)
 ```
+
+</Snippets>

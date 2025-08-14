@@ -47,9 +47,7 @@ First, run `mkdir /tmp/hooks && cd $_` then run `git init` to initialise our fol
 
 We'll need three files, a `Dockerfile` to create our Python Docker image, a `compose.yaml` to set some settings and `main.py` as a Python example script.
 
-<details>
-
-<summary>Dockerfile</summary>
+<Snippets filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -66,11 +64,9 @@ WORKDIR "/app/src"
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 ```
 
-</details>
+</Snippets>
 
-<details>
-
-<summary>compose.yaml</summary>
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -80,11 +76,9 @@ services:
       - .:/app/src
 ```
 
-</details>
+</Snippets>
 
-<details>
-
-<summary>main.py</summary>
+<Snippets filename="main.py">
 
 ```python
 print("I'm your Python code")
@@ -92,7 +86,7 @@ print("I'm your Python code")
 print('Who you, who are you?')
 ```
 
-</details>
+</Snippets>
 
 We'll create our Docker image and create a container with this single command: `docker compose up --detach --build`.
 
@@ -117,9 +111,8 @@ For a Python project, it's really easy, you just need to run `pip install pre-co
 
 Simple too, please create a file called `.pre-commit-config.yaml` with this content:
 
-<details>
 
-<summary>.pre-commit-config.yaml</summary>
+<Snippets filename=".pre-commit-config.yaml">
 
 ```yaml
 repos:
@@ -135,7 +128,7 @@ repos:
   - id: black
 ```
 
-</details>
+</Snippets>
 
 ### Manually fire the hook
 
@@ -204,6 +197,8 @@ As illustrated on [https://pre-commit.com/#repository-local-hooks](https://pre-c
 
 Imagine, you've already installed a tool like `prospector` (for Python) or `phpstan` (for PHP). These tools are installed on your machine (so you can call them on the command line). So, simply add a new hook like this:
 
+<Snippets filename=".pre-commit-config.yaml">
+
 ```yaml
 - repo: local
   hooks:
@@ -213,9 +208,13 @@ Imagine, you've already installed a tool like `prospector` (for Python) or `phps
     language: system
 ```
 
+</Snippets>
+
 You can also pass arguments:
 
-```ytaml
+<Snippets filename=".pre-commit-config.yaml">
+
+```yaml
 - repo: local
   hooks:
     - id: mypy # Mypy (should be installed using `pip install mypy`)
@@ -227,7 +226,11 @@ You can also pass arguments:
     args: ["--config-file=.config/mypy.ini"]
 ```
 
+</Snippets>
+
 For a Python 3.13 project, here is my `.pre-commit-config.yaml` file:
+
+<Snippets filename=".pre-commit-config.yaml">
 
 ```yaml
 default_language_version:
@@ -280,6 +283,8 @@ repos:
         require_serial: true
         args: ["--rcfile=.config/.pylintrc"]
 ```
+
+</Snippets>
 
 #### A few more  hooks
 

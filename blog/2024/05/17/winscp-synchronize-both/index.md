@@ -18,6 +18,8 @@ I'm using such script for making a full backup of some of my folders to my Synol
 
 ## The script
 
+<Snippets filename="c:\temp\synchronize.txt">
+
 ```text
 option batch abort
 
@@ -36,6 +38,8 @@ close
 
 exit
 ```
+
+</Snippets>
 
 ## How to use
 

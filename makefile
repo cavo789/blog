@@ -153,3 +153,9 @@ upgrade: ## Upgrade docusaurus and npm dependencies
 	@printf $(_YELLOW) "Current version of docusaurus"
 	docker run --rm -it -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus -V"
 
+##@ Utilities
+
+.PHONY: snippets
+snippets: ## Replace <detail><summary>(filename)</summary>(content)</detail> with <Snippets filename="(filename)">(content)</Snippets>
+	@clear
+	./.scripts/replace-details-with-snippets.sh

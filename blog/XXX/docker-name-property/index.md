@@ -30,9 +30,11 @@ This way, I have a smaller overview of the containers and can quickly sort out m
 
 ## The name property in the compose.yaml file
 
-The solution is easy to implement: if you've a `compose.yaml` (or `docker-compose.yml` if using the old name convention), just add a `name: tools` entry in the file, at the top.
+The solution is easy to implement: if you've a `compose.yaml` (or `compose.yaml` if using the old name convention), just add a `name: tools` entry in the file, at the top.
 
 For instance:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 // highlight-next-line
@@ -49,6 +51,8 @@ services:
       - ./data:/var/opt/memos
     restart: unless-stopped
 ```
+
+</Snippets>
 
 And that's all.
 

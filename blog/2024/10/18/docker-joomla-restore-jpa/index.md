@@ -50,6 +50,8 @@ Here is why: this time we don't need to download a fresh copy of Joomla since **
 
 Except highlighted lines, all the rest is the same that in [Part 2](/blog/docker-joomla-part-2).
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 name: ${PROJECT_NAME:-your-project-name}
 
@@ -121,9 +123,13 @@ networks:
   joomla_network:
 ```
 
+</Snippets>
+
 ### The .env file
 
 As introduced above; we don't need Joomla anymore but just PHP and Apache. We'll then define a `PHP_VERSION` variable and initialise it to the desired version.
+
+<Snippets filename=".env">
 
 ```.env
 CONTAINER_PREFIX=joomla
@@ -138,6 +144,8 @@ PROJECT_NAME=running-joomla-in-docker
 WEB_PORT=8080
 ```
 
+</Snippets>
+
 :::caution
 Since we need to restore an existing site, make sure to use the same PHP version than the one used by your site.
 :::
@@ -145,6 +153,8 @@ Since we need to restore an existing site, make sure to use the same PHP version
 ### Our makefile
 
 We'll need a new action called `import`:
+
+<Snippets filename="makefile">
 
 ```makefile
 -include .env
@@ -244,6 +254,7 @@ import: reset
 	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n\n" "  * Port" "${MYSQL_PORT}"
 ```
 
+</Snippets>
 
 :::important
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
@@ -252,6 +263,8 @@ If you don't know if you already have `GNU make`, just run `which make` in the c
 ### We also need a file called Dockerfile
 
 In the very first lines of the `compose.yaml` file we've this portion:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: ${PROJECT_NAME:-your-project-name}
@@ -268,9 +281,13 @@ services:
         - PHP_VERSION=${PHP_VERSION:-8.3-apache}
 ```
 
+</Snippets>
+
 We don't see here an `image:` statement but a `build:` one. This means that we need a special file called `Dockerfile`.
 
 Please create a new file called `Dockerfile` in your folder with this content:
+
+<Snippets filename="Dockerfile">
 
 ```dockerfile
 ARG PHP_VERSION=8.3-apache
@@ -280,6 +297,8 @@ FROM php:${PHP_VERSION:-latest}
 RUN set -e -x ; \
     docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 ```
+
+</Snippets>
 
 That file is quite simple right now: it tells we need a PHP Docker image and we also need to install the `mysqli` drivers.
 
@@ -328,7 +347,7 @@ Remember, for Linux users, we need `GNU make` to be able to run commands like `m
 
 Ok, you've copied a lot of files. Time to start restoring your site.
 
-For Linux users, simply take advantage of `GNU Make` and run the `make import` instruction. 
+For Linux users, simply take advantage of `GNU Make` and run the `make import` instruction.
 
 For Windows (Powershell or DOS), please run these commands:
 

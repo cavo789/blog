@@ -87,7 +87,7 @@ Since we've defined port `8088` in our command above, just go to `http://127.0.0
 * `Password`: associated password,
 * `Database`: can stay empty to get all, initialize it to the name of the database to open otherwise.
 
-To retrieve the name of the server, it's the name of the service as defined in your `docker-compose.yml` file but you can retrieve it also using this command: `docker inspect joomla-joomladb-1 | grep com.docker.compose.service`. Just replace `joomla-joomladb-1` by the name of your container.
+To retrieve the name of the server, it's the name of the service as defined in your `compose.yaml` file but you can retrieve it also using this command: `docker inspect joomla-joomladb-1 | grep com.docker.compose.service`. Just replace `joomla-joomladb-1` by the name of your container.
 
 :::tip Using parametrized hyperlink
 If you already know some of these values, you can provide them in a link, like `http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db`.

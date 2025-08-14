@@ -24,6 +24,8 @@ For the illustration, please start a Linux shell and run `mkdir -p /tmp/counter 
 
 Now that you're in a temporary folder on your disk, please create a new file called `Dockerfile` with this content:
 
+<Snippets filename="Dockerfile">
+
 ```Dockerfile
 FROM alpine:3.14
 
@@ -34,7 +36,11 @@ RUN chmod +x counter.sh
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 ```
 
+</Snippets>
+
 Please, too, create a file called `counter.sh` with this content:
+
+<Snippets filename="counter.sh">
 
 ```bash
 #!/usr/bin/env sh
@@ -52,6 +58,8 @@ echo "You have executed this script ${counter} times."
 echo "${counter}" > /data/counter.txt
 ```
 
+</Snippets>
+
 Now, just create the Docker image by running `docker build -t demo/counter .`.
 
 ```bash
@@ -66,7 +74,9 @@ As you can see, our image is really small. This is the advantage using the alpin
 
 ## Using our image
 
-Now, it's time to create our `docker-compose.yml` file with this content:
+Now, it's time to create our `compose.yaml` file with this content:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: demo
@@ -78,6 +88,8 @@ services:
     container_name: counter
     image: demo/counter
 ```
+
+</Snippets>
 
 We'll run our container by running `docker compose up --detach`:
 
@@ -140,7 +152,9 @@ There are two types of volumes, the ones **managed by Docker** and, on the other
 
 ### Volumes managed by Docker
 
-Update the `docker-compose.yml` file like this:
+Update the `compose.yaml` file like this:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: demo
@@ -162,7 +176,9 @@ volumes:
   counter_data:
 ```
 
-As you can see, we're using a `volumes` (always plural form) and we're saying that the `/data` folder inside the container should be mapped to a volume called `counter_data`. At the bottom of the `docker-compose.yml` file, we are just declaring our volume.
+</Snippets>
+
+As you can see, we're using a `volumes` (always plural form) and we're saying that the `/data` folder inside the container should be mapped to a volume called `counter_data`. At the bottom of the `compose.yaml` file, we are just declaring our volume.
 
 We'll start our container again: `docker compose down ; docker compose up --detach`.
 
@@ -223,7 +239,7 @@ You can remove the volume by running `docker volume rm demo_counter_data` but:
 Error response from daemon: remove demo_counter_data: volume is in use - [b976c92eed6ed4e54f6ec75d652b8977bbbd86392e604216dd61d0c446e1fc0c]
 ```
 
-Indeed, you can't remove a volume if there is still, at least, one container who use it so, you should run `docker compose down && docker volume rm demo_counter_data` or, simpler, `docker compose down --volumes`. The `--volumes` flag says to remove any volume declared in the `docker-compose.yml` file.
+Indeed, you can't remove a volume if there is still, at least, one container who use it so, you should run `docker compose down && docker volume rm demo_counter_data` or, simpler, `docker compose down --volumes`. The `--volumes` flag says to remove any volume declared in the `compose.yaml` file.
 
 #### Location of the volumes
 
@@ -309,7 +325,9 @@ A mounted volume is synchronized with your hard disk. Instead of letting Docker 
 
 Let's make a few cleaning right now, please run `docker compose down --volumes` to kill the volume used in the previous chapter and kill the docker container.
 
-Update the `docker-compose.yml` file like this:
+Update the `compose.yaml` file like this:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: demo
@@ -325,6 +343,8 @@ services:
       // highlight-next-line
       - ./data:/data
 ```
+
+</Snippets>
 
 The syntax now is, just a few, different: we don't have a `volumes` entry at the bottom of the file but we've used a relative notation like `./data:/data`.  So, the `./data` local folder (on your hard disk) has to be synchronized with the `/data` folder of the container.
 
@@ -382,7 +402,9 @@ Uh oh! The file is owned by the root user and not me (i.e. user `christophe` in 
 
 The file is owned by `root` because the current user; used inside the container, is the `root` user. We need to inform Docker that he has to use ours.
 
-To do this, we'll update once more our `docker-compose.yml` file:
+To do this, we'll update once more our `compose.yaml` file:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: demo
@@ -398,6 +420,8 @@ services:
     volumes:
       - ./data:/data
 ```
+
+</Snippets>
 
 :::tip Why 1000:1000?
 We need to pass to Docker our current user id and group id so Docker will be able to create files/folders using our user. To get your current user id and group id, just run `echo "$(id -u):$(id -g)"` in the console and, you'll see, the first created user (after the installation of Linux) is, always, user id 1000, group id 1000. Most probably you.

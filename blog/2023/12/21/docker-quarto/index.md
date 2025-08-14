@@ -39,6 +39,8 @@ If you prefer to use an existing prebuilt image; jump to the next chapter.
 
 Create a new file called `Dockerfile` (there is no extension) with this content:
 
+<Snippets filename="Dockerfile">
+
 ```dockerfile
 # Version number of Quarto to download and use
 # See https://github.com/quarto-dev/quarto-cli/pkgs/container/quarto for existing versions
@@ -97,6 +99,8 @@ RUN set -e -x && \
     ~/.TinyTeX/bin/x86_64-linux/tlmgr install fvextra footnotebackref pagecolor sourcesanspro sourcecodepro titling
 ```
 
+</Snippets>
+
 This done, please run `docker build -t cavo789/quarto .` and after something like three minutes the first time, you'll get your own Docker image:
 
 ```bash
@@ -150,6 +154,8 @@ If you use the `Tier 0` image, here is the command to use: `docker run -it --rm 
 
 Create a new `test.md` file in your `/tmp/docker-quarto` folder with this content:
 
+<Snippets filename="/tmp/docker-quarto/test.md">
+
 ```markdown
 # What's is Quarto? Explain like I'm five
 
@@ -159,6 +165,8 @@ Now, Quarto is like a super-powered writing tool that understands Markdown and c
 
 So, if you want to create documents, presentations, or even books, Quarto and Markdown can be your friends. They'll help you organize your thoughts, add cool features, and even share your work with the world.
 ```
+
+</Snippets>
 
 Now, back to your Linux console and you'll convert that file to a pdf. **Please refers to the official documentation of [Quarto](https://quarto.org/) to get in-depth information about it.**
 
@@ -238,6 +246,8 @@ Open the `test.html` file and you'll get this:
 
 Ok, you've just one slide now. Reopen the `test.md` file and you'll insert *slide breaks*. This can be done using the `----` syntax:
 
+<Snippets filename="/tmp/docker-quarto/test.md">
+
 ```markdown
 # What's is Quarto? Explain like I'm five
 
@@ -251,6 +261,8 @@ Now, Quarto is like a super-powered writing tool that understands Markdown and c
 
 So, if you want to create documents, presentations, or even books, Quarto and Markdown can be your friends. They'll help you organize your thoughts, add cool features, and even share your work with the world.
 ```
+
+</Snippets>
 
 Rerun `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to revealjs --log-level warning` to generate the slideshow as a `test.html` file.
 

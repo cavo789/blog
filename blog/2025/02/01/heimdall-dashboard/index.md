@@ -20,7 +20,7 @@ However, I'm not averse to a personalized homepage and I'm quite happy with Heim
 
 <!-- truncate -->
 
-Heimdall is a web application you can self-hosted (and it's a piece of cake using Docker) on your computer. 
+Heimdall is a web application you can self-hosted (and it's a piece of cake using Docker) on your computer.
 
 Here is the official demo:
 
@@ -36,8 +36,7 @@ Please create a dummy folder and jump in it: `mkdir ~/tools/dashboard && cd $_`.
 
 In that folder, please create a file called `compose.yaml` with the following content (refers to [official Docker Hub page](https://hub.docker.com/r/linuxserver/heimdall/) for the latest version):
 
-<details>
-<summary>compose.yaml</summary>
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: tools
@@ -58,9 +57,9 @@ services:
     restart: unless-stopped
 
 ```
-</details>
+</Snippets>
 
-:::note 
+:::note
 In the code here above, I've preferred the syntax `PUID=${USER_ID:-1000}` and `PGID=${GROUP_ID:-1000}` instead of just hardcoding `1000`: on my computer, my Linux user id is `1002`; not `1000` so I prefer to use a variable and, if the variable isn't defined, then use `1000` as default. Same for the group id.
 :::
 
@@ -90,10 +89,14 @@ It's a lot more fun, isn't it?
 
 Did you've noticed that, in the `compose.yaml` file there is a section called `volumes` with the following configuration?
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 volumes:
   - ./config:/config
 ```
+
+</Snippets>
 
 It means that the `config` folder of Heimdall will be stored on your disk; in a folder called `config` too.
 

@@ -38,10 +38,14 @@ Would be nice to run `git undo` for this no? This is where the notion of aliases
 
 Just add the two lines below in your `~/.gitconfig`:
 
+<Snippets filename="~/.gitconfig`">
+
 ```text
 [alias]
     undo = "!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f"
 ```
+
+</Snippets>
 
 :::tip Using command line
 Instead of updating the file manually, you can obtain the exact same results by running `git config --global alias.undo '!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f'` in the console.
@@ -61,10 +65,14 @@ Indeed, git will complain that `myNewFeature` didn't exist remotely and that you
 
 You can git rid of this but adding the two lines below in your `~/.gitconfig`:
 
+<Snippets filename="~/.gitconfig`">
+
 ```text
 [push]
     autoSetupRemote = true
 ```
+
+</Snippets>
 
 Now, if the local branch didn't exist remotely, git push will create it automatically for you.
 
@@ -76,10 +84,14 @@ So, after several months, if you run `git branch --list --all` on your computer,
 
 Just add the two lines below in your `~/.gitconfig` file to ask git to make automatic cleaning when running `git fetch`:
 
+<Snippets filename="~/.gitconfig`">
+
 ```text
 [fetch]
     prune = true
 ```
+
+</Snippets>
 
 :::tip Using command line
 Instead of updating the file manually, you can obtain the exact same results by running `git config --global fetch.prune true` in the console.
@@ -95,10 +107,14 @@ It would be better to sort the list on the last commit made in the branch so, at
 
 To do this, just add the block below to your `~/.gitconfig` file:
 
+<Snippets filename="~/.gitconfig`">
+
 ```text
 [branch]
     sort = -committerdate
 ```
+
+</Snippets>
 
 :::tip Using command line
 Instead of updating the file manually, you can obtain the exact same results by running `git branch --sort=-committerdate` in the console.
@@ -112,10 +128,14 @@ If you're on WSL2, you can reuse credentials you already have filled in in Windo
 
 To share credentials between the two environments, just add the two lines below in your `~/.gitconfig` file:
 
+<Snippets filename="~/.gitconfig`">
+
 ```text
 [credential]
     helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager-core.exe
 ```
+
+</Snippets>
 
 ### Using multiple credentials on the same computer
 
@@ -130,13 +150,19 @@ But this isn't very practical when you're working on several types of projects, 
 
 When your `~/.gitconfig` looks like below, every time you'll push to Git, the published commit will comes from `me@work.be`.
 
+<Snippets filename="~/.gitconfig`">
+
 ```text
 [user]
     email = me@work.be
     name = Christophe Avonture
 ```
 
+</Snippets>
+
 And, with the configuration below, now, if you're pushing a repository located in the `~/private_repositories`, this time the author will be `me@private.be`; no more your professional email.
+
+<Snippets filename="~/.gitconfig`">
 
 ```text
 [user]
@@ -147,6 +173,8 @@ And, with the configuration below, now, if you're pushing a repository located i
     email = me@private.be
 ```
 
+</Snippets>
+
 ## Force SSH instead of HTTPs
 
 Even if you've cloned a repository using `git clone https://...` you can force, globally, to use SSH instead.
@@ -155,10 +183,14 @@ So, for instance, if you've cloned your project using `git clone https://github.
 
 But, if you already have created a SSH key for your Github profile, then, you can stop to use https and force ssl by adding the two lines below in your `~/.gitconfig`:
 
+<Snippets filename="~/.gitconfig`">
+
 ```text
 [url "git@github.com"]
     insteadOf = https://github.com/
 ```
+
+</Snippets>
 
 :::tip Using command line
 You can edit your global configuration by running `git config --global url.'git@github.com:'.insteadOf 'https://github.com/'` in the console.
@@ -172,14 +204,17 @@ If you're working on Windows and not in Linux/WSL, git, under Windows, will alwa
 
 Don't allow this by adding the next configuration item in your `~/.gitconfig`:
 
+<Snippets filename="~/.gitconfig`">
+
 ```text
 [core]
     autocrlf = false
 ```
 
+</Snippets>
+
 :::tip Using command line
 You can edit your global configuration by running `git config --global core.autocrlf false` in the console.
 :::
-
 
 [source: https://github.com/git-tips/tips](https://github.com/git-tips/tips?tab=readme-ov-file#prevent-auto-replacing-lf-with-crlf)

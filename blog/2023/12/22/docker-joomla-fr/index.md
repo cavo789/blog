@@ -10,7 +10,7 @@ enableComments: true
 <!-- cspell:dictionaries fr-FR -->
 ![Créer votre site web Joomla en utilisant Docker](/img/docker_joomla_header.jpg)
 
-Dans cet article, nous allons apprendre à utiliser Docker pour installer Joomla en localhost et démarrer un nouveau site web **en quelques secondes** *(vous ne voulez pas attendre ? Passez au chapitre [Final docker-compose.yml](#final-docker-composeyml))*.
+Dans cet article, nous allons apprendre à utiliser Docker pour installer Joomla en localhost et démarrer un nouveau site web **en quelques secondes** *(vous ne voulez pas attendre ? Passez au chapitre [Final  compose.yaml](#final-docker-composeyml))*.
 
 Je vais utiliser une console Linux *(je fais tourner WSL sur mon ordinateur Windows et j'ai choisi Ubuntu pour ma distribution)* mais comme Docker peut aussi être utilisé sur Windows, vous pouvez parfaitement exécuter, exactement, les mêmes commandes dans une console MS-DOS / Powershell.
 
@@ -34,9 +34,9 @@ Dans le vocabulaire de Docker, nous avons besoin de trois services.
 
 ## Docker compose
 
-Lorsque vous avez besoin de plusieurs services (Apache doit pouvoir communiquer avec PHP et PHP doit pouvoir demander des données à MySQL), vous devez configurer un fichier spécial appelé `docker-compose.yml`. Ce fichier doit être placé à la racine du projet et définira la liste des services requis et la manière dont ils collaboreront.
+Lorsque vous avez besoin de plusieurs services (Apache doit pouvoir communiquer avec PHP et PHP doit pouvoir demander des données à MySQL), vous devez configurer un fichier spécial appelé `compose.yaml`. Ce fichier doit être placé à la racine du projet et définira la liste des services requis et la manière dont ils collaboreront.
 
-Vous trouverez un exemple du fichier `docker-compose.yml` sur la page de description de l'image Joomla : [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla) *recherchez `docker-compose` sur cette page.*
+Vous trouverez un exemple du fichier `compose.yaml` sur la page de description de l'image Joomla : [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla) *recherchez `docker-compose` sur cette page.*
 
 :::info L'image Docker Joomla est basée sur PHP et Apache
 C'est certainement trop technique pour l'instant, mais si vous cliquez sur le lien suivant
@@ -45,7 +45,9 @@ C'est certainement trop technique pour l'instant, mais si vous cliquez sur le li
 
 ## Téléchargement des images
 
-Veuillez créer sur votre disque, disons dans le dossier `/tmp/joomla` un fichier appelé `docker-compose.yml` avec ce contenu (vous pouvez récupérer ce fichier sur [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla)) :
+Veuillez créer sur votre disque, disons dans le dossier `/tmp/joomla` un fichier appelé `compose.yaml` avec ce contenu (vous pouvez récupérer ce fichier sur [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla)) :
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -65,8 +67,10 @@ services:
       - MYSQL_ROOT_PASSWORD=example
 ```
 
+</Snippets>
+
 :::tip Vous souhaitez MariaDB et non MySQL?
-Rien de plus simple ! Dans le fichier `docker-compose.yml`, remplacez la ligne `image: mysql:8.0.13` par `image: mariadb:11.1.2` et sauvez votre modification. Voilà, c'est fait. Difficile n'est-ce pas ?
+Rien de plus simple ! Dans le fichier `compose.yaml`, remplacez la ligne `image: mysql:8.0.13` par `image: mariadb:11.1.2` et sauvez votre modification. Voilà, c'est fait. Difficile n'est-ce pas ?
 :::
 
 Pour que les choses soient aussi claires que possible, voici le contenu de mon dossier temporaire :
@@ -79,10 +83,10 @@ Pour que les choses soient aussi claires que possible, voici le contenu de mon d
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2023-11-04 09:32  .
 drwxrwxrwt     - christophe christophe 2023-11-04 09:32 ..
-.rw-r--r--   325 christophe christophe 2023-11-04 09:32 docker-compose.yml
+.rw-r--r--   325 christophe christophe 2023-11-04 09:32  compose.yaml
 ```
 
-Donc, je n'ai qu'un seul fichier et c'est le fichier `docker-compose.yml` nouvellement créé.
+Donc, je n'ai qu'un seul fichier et c'est le fichier `compose.yaml` nouvellement créé.
 
 Maintenant, si nécessaire, démarrez une console Linux, et allez dans votre dossier joomla (i.e. `cd /tmp/joomla`). De là, exécutez la commande ci-dessous :
 
@@ -91,10 +95,12 @@ docker compose up --detach
 ```
 
 :::tip `docker compose up --detach`
-Cette commande est l'une des plus importantes à connaître. Elle demande à Docker de traiter le fichier `docker-compose.yml` et d'exécuter les services. **En bref : démarrer votre site web**.
+Cette commande est l'une des plus importantes à connaître. Elle demande à Docker de traiter le fichier `compose.yaml` et d'exécuter les services. **En bref : démarrer votre site web**.
 :::
 
-Docker va commencer à télécharger `joomla` et `joomladb`, les deux services mentionnés dans le fichier `docker-compose.yml`.
+Docker va commencer à télécharger `joomla` et `joomladb`, les deux services mentionnés dans le fichier `compose.yaml`.
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -105,6 +111,8 @@ services:
   joomladb:
     [...]
 ```
+
+</Snippets>
 
 Vous obtiendrez quelque chose comme ceci, veuillez patienter jusqu'à ce que tout soit téléchargé.
 
@@ -159,9 +167,11 @@ Il se peut que vous obteniez une page d'erreur `ERR_EMPTY_RESPONSE`; c'est parce
 
 ### Pourquoi les noms joomla-joomlaxxx
 
-Nous n'avons pas donné de nom à votre projet, nous avons juste créé un fichier `docker-compose.yml` dans votre dossier `/tmp/joomla`. Donc, Docker a nommé votre projet en utilisant le nom du dossier (`joomla`) concaténé au nom du service (en se référant au fichier `docker-compose.yml`, nous avons deux services, un appelé `joomladb` et un appelé `joomla`). Voici pourquoi...
+Nous n'avons pas donné de nom à votre projet, nous avons juste créé un fichier `compose.yaml` dans votre dossier `/tmp/joomla`. Donc, Docker a nommé votre projet en utilisant le nom du dossier (`joomla`) concaténé au nom du service (en se référant au fichier `compose.yaml`, nous avons deux services, un appelé `joomladb` et un appelé `joomla`). Voici pourquoi...
 
-Introduisons un changement mineur, optionnel, nous allons donner un nom à votre projet Docker et à vos conteneurs : éditez le fichier `docker-compose.yml` et ajoutez une ligne avec `name: xxxx` où `xxxx` est le nom de votre choix. Faites la même chose mais en utilisant `container_name` cette fois pour les deux services ; par exemple :
+Introduisons un changement mineur, optionnel, nous allons donner un nom à votre projet Docker et à vos conteneurs : éditez le fichier `compose.yaml` et ajoutez une ligne avec `name: xxxx` où `xxxx` est le nom de votre choix. Faites la même chose mais en utilisant `container_name` cette fois pour les deux services ; par exemple :
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 // highlight-next-line
@@ -177,6 +187,8 @@ services:
     container_name: kingsbridge-db
     [...]
 ```
+
+</Snippets>
 
 Nous ne redémarrerons pas tout de suite vos conteneurs Docker. Pour l'instant, le nom `kingsbridge` ne sera pas pris en compte. Pour cela, il faudrait lancer `docker compose down` suivi de `docker compose up --detach` mais attendons encore un peu avant de le faire.
 
@@ -197,6 +209,8 @@ On voit que Docker a bien téléchargé Joomla (dans sa version dite *latest*) e
 Par défaut, lorsque nous ne spécifions pas de numéro de version (*ce qui n'est pas recommandé*), Docker téléchargera la version dite `latest`. `latest`, ici est ce que Docker appelle un *tag*.
 :::
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 services:
   joomla:
@@ -205,9 +219,13 @@ services:
 [...]
 ```
 
+</Snippets>
+
 Pour récupérer la liste de tous les tags, veuillez vous rendre sur [https://hub.docker.com/_/joomla/tags](https://hub.docker.com/_/joomla/tags).
 
-Lors de la rédaction de cet article, Joomla *latest* correspond à Joomla version 4.4.1. Alors, que faire pour forcer l'utilisation de Joomla 5.0. En surfant sur la page [tags](https://hub.docker.com/_/joomla/tags), vous pouvez retrouver dans la liste des tags celui-ci : *5.0.1-php8.2-apache*. Il suffit donc de remplacer `image: joomla` par `image: joomla:5.0.1-php8.2-apache` dans le fichier `docker-compose.yml` et le tour est joué. Vous forcez une version. **Note: soyez certain d'utiliser un tag se terminant par `-apache`.**
+Lors de la rédaction de cet article, Joomla *latest* correspond à Joomla version 4.4.1. Alors, que faire pour forcer l'utilisation de Joomla 5.0. En surfant sur la page [tags](https://hub.docker.com/_/joomla/tags), vous pouvez retrouver dans la liste des tags celui-ci : *5.0.1-php8.2-apache*. Il suffit donc de remplacer `image: joomla` par `image: joomla:5.0.1-php8.2-apache` dans le fichier `compose.yaml` et le tour est joué. Vous forcez une version. **Note: soyez certain d'utiliser un tag se terminant par `-apache`.**
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -216,6 +234,8 @@ services:
     image: joomla:5.0.1-php8.2-apache
 [...]
 ```
+
+</Snippets>
 
 :::
 
@@ -264,8 +284,10 @@ Mais, pour la configuration de la base de données, vous devez être strict :
 * Le mot de passe de cet utilisateur doit être `example`
 
 :::important Pourquoi ces valeurs ?
-Ces valeurs peuvent être récupérées dans le fichier `docker-compose.yml`. Si vous avez nommé votre service de bases de données autrement que `joomladb`, veuillez utiliser le nom que vous avez choisi.
+Ces valeurs peuvent être récupérées dans le fichier `compose.yaml`. Si vous avez nommé votre service de bases de données autrement que `joomladb`, veuillez utiliser le nom que vous avez choisi.
 :::
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -277,6 +299,8 @@ services:
       // highlight-next-line
       - MYSQL_ROOT_PASSWORD=example
 ```
+
+</Snippets>
 
 ![Configuration de la base de données Joomla](./images/joomla_admin_database_configuration.png)
 
@@ -310,7 +334,7 @@ Vérifions en retournant dans notre console Linux :
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2023-11-04 09:32  .
 drwxrwxrwt     - christophe christophe 2023-11-04 09:32 ..
-.rw-r--r--   325 christophe christophe 2023-11-04 09:32 docker-compose.yml
+.rw-r--r--   325 christophe christophe 2023-11-04 09:32  compose.yaml
 ```
 
 Oh ? Rien... **Rien n'a été téléchargé dans votre dossier.** Vous n'avez pas Joomla sur votre ordinateur. Comment est-ce possible ?
@@ -357,7 +381,7 @@ Comme mentionné plus haut, tout se passe en mémoire vive. En arrêtant un cont
 :::
 
 :::info
-Rappelez-vous le changement que nous avons fait plus tôt. Nous avons ajouté le nom `kingsbridge` comme nom de projet dans votre fichier `docker-compose.yml` et nous avons nommé les deux conteneurs. Vous pouvez voir qu'après avoir relancé `docker compose up`, cette fois ce n'est plus `joomla-joomlaxxxx` mais `kingsbridge-app` et `kingsbridge-db`. Ceci parce que les modifications apportées au fichier yaml ne sont traitées qu'après une commande `down / up`. Si vous modifiez le fichier yaml, vous devez redémarrer les conteneurs Docker.
+Rappelez-vous le changement que nous avons fait plus tôt. Nous avons ajouté le nom `kingsbridge` comme nom de projet dans votre fichier `compose.yaml` et nous avons nommé les deux conteneurs. Vous pouvez voir qu'après avoir relancé `docker compose up`, cette fois ce n'est plus `joomla-joomlaxxxx` mais `kingsbridge-app` et `kingsbridge-db`. Ceci parce que les modifications apportées au fichier yaml ne sont traitées qu'après une commande `down / up`. Si vous modifiez le fichier yaml, vous devez redémarrer les conteneurs Docker.
 :::
 
 ## Synchroniser avec votre ordinateur
@@ -369,7 +393,9 @@ Nous souhaitons deux choses :
 1. Nous voulons que l'ensemble du site web soit sauvegardé sur votre disque dur et
 2. nous voulons que la base de données soit également sauvée sur le disque dur.
 
-Pour ce faire, veuillez éditer le fichier `docker-compose.yml` et ajouter les lignes surlignées ci-dessous :
+Pour ce faire, veuillez éditer le fichier `compose.yaml` et ajouter les lignes surlignées ci-dessous :
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: kingsbridge
@@ -403,6 +429,8 @@ services:
       - ./db:/var/lib/mysql
 ```
 
+</Snippets>
+
 Le dossier `/var/www/html` du service Joomla doit être synchronisé avec le sous-dossier `site_joomla` de votre ordinateur. Il s'agit du site web de Joomla.
 
 Et le dossier `/var/lib/mysql` du service MySQL doit être synchronisé avec votre sous-dossier local `db`.
@@ -434,7 +462,7 @@ drwxr-xr-x     - christophe christophe 2023-11-04 20:13  .
 drwxrwxrwt     - christophe christophe 2023-11-04 20:13 ..
 drwxr-xr-x     - christophe christophe 2023-11-04 20:13 db
 drwxr-xr-x     - christophe christophe 2023-11-04 20:13 site_joomla
-.rw-r--r--   478 christophe christophe 2023-11-04 20:13 docker-compose.yml
+.rw-r--r--   478 christophe christophe 2023-11-04 20:13  compose.yaml
 ```
 
 Lancez à nouveau Docker, mais assurez-vous d'abord que les conteneurs précédents sont supprimés (et pas seulement arrêtés) : `docker compose kill`.
@@ -456,7 +484,7 @@ Exécutez une fois encore `docker compose up --detach`.
  ✔ Container kingsbridge-app  Started
 ```
 
-Et vous pouvez déjà lancer `ls` à nouveau pour voir que, oui, vos dossiers locaux `site_joomla` et `db` sont maintenant remplis. C'est le résultat de l'entrée `volumes` que nous avons ajoutée dans votre fichier `docker-compose.yml`.
+Et vous pouvez déjà lancer `ls` à nouveau pour voir que, oui, vos dossiers locaux `site_joomla` et `db` sont maintenant remplis. C'est le résultat de l'entrée `volumes` que nous avons ajoutée dans votre fichier `compose.yaml`.
 
 ```bash
 ❯ pwd
@@ -558,7 +586,9 @@ Lorsque vous travaillez sur un site Joomla, vous avez parfois besoin de lancer u
 
 Pour pouvoir le faire, vous devrez démarrer une *session shell interactive* dans le conteneur Joomla.
 
-Vous êtes-vous souvenu du nom de votre service Joomla ? Si non, ouvrez simplement le fichier `docker-compose.yml` à nouveau.
+Vous êtes-vous souvenu du nom de votre service Joomla ? Si non, ouvrez simplement le fichier `compose.yaml` à nouveau.
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -566,6 +596,8 @@ services:
   joomla:
     [...]
 ```
+
+</Snippets>
 
 Le nom de votre service Joomla est `joomla` (et `joomladb` est le nom de votre service base de données).
 
@@ -613,11 +645,15 @@ Au lieu d'utiliser l'adresse IP, il serait beaucoup plus agréable d'utiliser un
 
 Pour cela, sous Windows, éditez le fichier `C:\Windows\System32\Drivers\etc\hosts` et ajoutez la ligne `kingsbridge` comme illustré ci-dessous :
 
+<Snippets filename="C:\Windows\System32\Drivers\etc\host">
+
 ```text
 127.0.0.1 localhost
 // highlight-next-line
 127.0.0.1 kingsbridge
 ```
+
+</Snippets>
 
 Enregistrez le fichier. Vous pouvez maintenant surfer sur `http://kingsbridge:8080`
 
@@ -633,7 +669,9 @@ Imaginez que vous ayez un autre projet, différent de `Kingsbrige`. Pouvez-vous 
 
 Vous devez juste vous assurer d'utiliser un autre port, non utilisé.
 
-Considérons le fichier `docker-compose.yml` du projet `Shiring`.
+Considérons le fichier `compose.yaml` du projet `Shiring`.
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 // highlight-next-line
@@ -648,6 +686,8 @@ services:
   [...]
 ```
 
+</Snippets>
+
 Nous utiliserons le port `8081` pour ce projet et, dans votre fichier hôte, nous ajouterons `127.0.0.1 shiring`.
 
 Ainsi, maintenant et en même temps, nous pouvons accéder à `http://kingsbridge:8080` et à `http://shiring:8081` sans conflit puisque nous avons utilisé un numéro de port séparé.
@@ -659,7 +699,7 @@ L'utilisation d'un autre port n'est pas obligatoire. Vous pouvez avoir plusieurs
 :::
 
 :::note
-Dans cet article, j'utilise le port `8080` parce que Joomla l'a utilisé dans son fichier `docker-compose.yml` par défaut. Vous n'êtes pas obligé d'utiliser ce port, vous pouvez parfaitement utiliser `80` et pas `8080`. Dans mon travail quotidien, j'utilise les ports `80`, `81`, `82`, `83`, ... en variant les seconds chiffres pour mes projets.
+Dans cet article, j'utilise le port `8080` parce que Joomla l'a utilisé dans son fichier `compose.yaml` par défaut. Vous n'êtes pas obligé d'utiliser ce port, vous pouvez parfaitement utiliser `80` et pas `8080`. Dans mon travail quotidien, j'utilise les ports `80`, `81`, `82`, `83`, ... en variant les seconds chiffres pour mes projets.
 :::
 
 ## Utilisation de phpmyadmin
@@ -676,7 +716,7 @@ Nous allons lancer l'image Docker de phpmyadmin (aka PMA) et
 
 * `--name phpmyadmin` nous permet de lui donner un nom sympathique (optionnel)
 * `-d` est comme `--detach` : le conteneur doit rester actif
-* `--link joomladb:db` : phpmyadmin doit accéder à votre service de bases de données Joomla. Souvenez-vous du nom dans votre fichier `docker-compose.yml`,
+* `--link joomladb:db` : phpmyadmin doit accéder à votre service de bases de données Joomla. Souvenez-vous du nom dans votre fichier `compose.yaml`,
 * `--network kingsbridge_default` : votre serveur de base de données est accessible sur le réseau `kingsbridge_default` et
 * `-p 8089:80` indique à Docker que nous souhaitons accéder à l'interface web de PMA sur le port `8089`
 
@@ -716,7 +756,7 @@ Et voici l'URL configurée à utiliser pour Adminer : `http://127.0.0.1:8088?ser
 
 ## Avez-vous préféré PostgreSQL ou MariaDB
 
-Jusqu'à présent, nous avons choisi d'utiliser MySQL comme gestionnaire de base de données. Notre fichier `docker-compose.yml` est celui, légèrement modifié, que l'on peut trouver sur [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla).
+Jusqu'à présent, nous avons choisi d'utiliser MySQL comme gestionnaire de base de données. Notre fichier `compose.yaml` est celui, légèrement modifié, que l'on peut trouver sur [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla).
 
 Pourriez-vous opter pour autre chose que MySQL ? Bien sûr, tant que Joomla supporte ce système (voir [https://manual.joomla.org/docs/next/get-started/technical-requirements/](https://manual.joomla.org/docs/next/get-started/technical-requirements/)).
 
@@ -736,7 +776,9 @@ Nous devons également modifier quelques variables :
 Cette information a été récupérée à partir de ces Pull requests : [https://github.com/joomla-docker/docker-joomla/pull/156](https://github.com/joomla-docker/docker-joomla/pull/156).
 :::
 
-Notre `docker-compose.yml` deviendra :
+Notre `compose.yaml` deviendra :
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: kingsbridge
@@ -774,6 +816,8 @@ services:
       - POSTGRES_PASSWORD=example
 ```
 
+</Snippets>
+
 Maintenant, lors de la configuration de Joomla, assurez-vous de choisir `PostgreSQL (PDO)` pour le type de base de données et remplissez l'assistant de base de données avec les valeurs correctes.
 
 :::note Utilisez des images alpines dans la mesure du possible
@@ -783,6 +827,8 @@ Pour la première fois dans ce tutoriel, nous utilisons une image `alpine` (`pos
 ### Utilisation de MariaDB
 
 Si vous envisagez d'utiliser MariaDB, voici l'image officielle de Docker : [https://hub.docker.com/_/mariadb](https://hub.docker.com/_/mariadb).
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: kingsbridge
@@ -808,6 +854,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=example
 ```
+
+</Snippets>
 
 Pour MariaDB, veuillez sélectionner `MySQLi` pendant l'assistant d'installation.
 
@@ -869,6 +917,8 @@ Le fichier `makefile`, étant créé dans le dossier de votre projet, peut conte
 
 Maintenant, copiez/collez ce contenu dans votre `makefile` :
 
+<Snippets filename="makefile">
+
 ```makefile
 adminer:
   @printf "\e[1;033m%s\e[0m\n\n" "User is root and password is example. Please open http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db to open Adminer."
@@ -909,6 +959,8 @@ phpmyadmin:
   -sensible-browser http://localhost:8089 &
 ```
 
+</Snippets>
+
 Assurez-vous que l'indentation utilise des tabulations et non des espaces.
 
 Sauvegardez et fermez le vscode.
@@ -941,14 +993,16 @@ Veuillez lire mon dépôt GitHub [Makefile - Tutorial and Tips & Tricks](https:/
 
 N'hésitez pas à ajouter vos propres instructions Makefile ; elles peuvent être multilignes.
 
-### Final docker-compose.yml
+### Final  compose.yaml
 
 Dans l'introduction de cet article, j'avais dit *nous allons apprendre à utiliser Docker pour installer Joomla et démarrer un nouveau site web **en quelques secondes***.
 
 Voici comment :
 
 1. Sur votre ordinateur, créez un dossier pour votre nouveau projet (p.ex. `mkdir ~/projets/mon_nouveau_projet && cd $_`)
-2. Dans ce dossier, créez un fichier `docker-compose.yml` avec ce contenu :
+2. Dans ce dossier, créez un fichier `compose.yaml` avec ce contenu :
+
+  <Snippets filename="compose.yaml">
 
   ```yaml
   name: yourprojectname
@@ -979,6 +1033,9 @@ Voici comment :
       volumes:
         - ./db:/var/lib/mysql
   ```
+
+  </Snippets>
+
 <!-- markdownlint-disable MD029 -->
 3. Créez vos deux sous-dossiers : `mkdir db site_joomla`
 4. Lancez `docker compose up --detach` pour démarrer Docker et créer vos conteneurs.

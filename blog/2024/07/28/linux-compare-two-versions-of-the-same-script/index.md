@@ -22,6 +22,8 @@ To be able to reproduce examples used in this blog post, if you need it, please 
 
 Let's say `/tmp/bash/console.sh` for the first file with this content:
 
+<Snippets filename="/tmp/bash/console.sh">
+
 ```bash
 #!/usr/bin/env bash
 
@@ -41,7 +43,11 @@ function console::banner() {
 }
 ```
 
+</Snippets>
+
 And, for `/tmp/bash/console_v2.sh`, we'll add two new functions, `printGreen` and `printBlue`, in that order:
+
+<Snippets filename="/tmp/bash/console_v2.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -67,6 +73,8 @@ function console::printGreen() {
 function console::printBlue() {
 }
 ```
+
+</Snippets>
 
 ## Get the list of functions in a Bash script
 
@@ -103,7 +111,7 @@ Of course, if we add a new function in `console.sh` and f.i. remove an existing 
 
 ![Compare the two versions of the same Bash script and shows which functions are not the same in both files](./images/compare_functions_both_side.png)
 
-On the image here above, we see three indicators in the middle of the screen: 
+On the image here above, we see three indicators in the middle of the screen:
 
 ```text
                                       > console::printBlue()
@@ -121,10 +129,9 @@ By adding `printBlue`, `printGreen` and `printRed` in our first file, now we got
 
 So now, we can see a new indicator `<`: the function was retrieved only in the first file and not in the second one. Once again, we've the confirmation that we've two new functions (`printPurple` and `verbose`) in our first file and not in the second one.
 
-<details>
-<summary>Latest version of our dummy Bash scripts</summary>
-
 Right now, our `/tmp/bash/console.sh` contains this:
+
+<Snippets filename="/tmp/bash/console.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -157,7 +164,11 @@ function console::printRed() {
 }
 ```
 
+</Snippets>
+
 and, for `/tmp/bash/console_v2.sh`:
+
+<Snippets filename="/tmp/bash/console_v2.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -185,7 +196,7 @@ function console::printBlue() {
 
 ```
 
-</details>
+</Snippets>
 
 :::info The order has no important
 Unlike a comparison with `diff`, the order in which the functions appear in the scripts is irrelevant, as we are sorting them.
@@ -196,6 +207,8 @@ Unlike a comparison with `diff`, the order in which the functions appear in the 
 In the previous chapter, we've seen how to compare two versions of the same script. Let's go one step further and compare two folders: for each script in the two folders, let's run a comparison.
 
 To do this, create the `compare.sh` script on your hard drive with this content:
+
+<Snippets filename="compare.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -232,7 +245,7 @@ printf "\e[37;1m\t%s\e[0;1m\n\n" "The function name2 only exists in the second f
 printf "\e[41;1m%s\e[0;1m\n" "Warning: this script checks whether a function is present in one of the files and not in the other,"
 printf "\e[41;1m%s\e[0;1m\n" "but does not check whether the function code is identical. It just checks whether it is present or not."
 
-for bashScript in *.sh; do 
+for bashScript in *.sh; do
     if [[ -f "${compareWithFolder}/${bashScript}" ]]; then
         (
             FILE1="${sourceFolder}/${bashScript}"
@@ -249,6 +262,8 @@ done
 popd >/dev/null
 ```
 
+</Snippets>
+
 Now, to run it, just start `./compare.sh foldername1 foldername2`. You'll get something like below i.e. for each scripts in both folders (script in just one folder are ignored), you'll get the name of the script (like `array.sh`) followed by the text `The two files are identical` if both files are identical or, if not, a list of function names and the indicator already seen i.e. `<`, `>` or `|`.
 
 ![Compare Bash scripts in two folders](./images/compare_folders.png)
@@ -257,10 +272,9 @@ Using this script, it is easy to keep one of the two folders as the *master* (th
 
 Once a function has been identified, simply open the *right* file and copy/paste the function into the corresponding file in the *left* folder.
 
-<details>
-<summary>Don't show functions present only in the left-hand folder</summary>
-
 By adding `| grep -E -v "<$"` to our `grep` statement, we can improve the script by ignoring cases when functions are only added in the left-hand folder. Imagine the requirement *In the right-hand folder, if I've added functions to my scripts; what are these functions so that I can copy/paste them into the scripts in the left-hand folder?*
+
+<Snippets filename="compare.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -297,7 +311,7 @@ printf "\e[37;1m\t%s\e[0;1m\n\n" "The function name2 only exists in the second f
 printf "\e[41;1m%s\e[0;1m\n" "Warning: this script checks whether a function is present in one of the files and not in the other,"
 printf "\e[41;1m%s\e[0;1m\n" "but does not check whether the function code is identical. It just checks whether it is present or not."
 
-for bashScript in *.sh; do 
+for bashScript in *.sh; do
     if [[ -f "${compareWithFolder}/${bashScript}" ]]; then
         (
             FILE1="${sourceFolder}/${bashScript}"
@@ -313,9 +327,10 @@ done
 popd >/dev/null
 ```
 
+</Snippets>
+
 If we run this newer script on the exact same files, now, lines ending with `<` are hidden (only in the left-hand folder) and we just obtains cases when a function is present in the right-hand folder:
 
 ![Hide when functions are just in the left-hand folder](./images/no_more_left.png)
 
 This makes it even easier to identify these functions and copy/paste them to the left, for example.
-</details>

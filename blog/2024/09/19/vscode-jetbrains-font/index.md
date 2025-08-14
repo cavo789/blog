@@ -40,10 +40,14 @@ But the easier way is:
 
 * Then copy paste these entries:
 
+<Snippets filename=".vscode/settings.json`">
+
 ```json
 "editor.fontFamily": "JetBrains Mono",
 "editor.fontSize": 14,
 "editor.fontLigatures": true,
 ```
+
+</Snippets>
 
 Save, close VSCode and open it again (or simply press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> and run `Developer: Reload Window`)

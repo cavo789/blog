@@ -28,6 +28,10 @@ As you can see, I've opened a markdown file and I'm showing part of the article 
 
 To enable the feature, edit your `settings.json` file and add this entry:
 
+<Snippets filename="settings.json">
+
 ```json
 "editor.stickyScroll.enabled": true
 ```
+
+</Snippets>

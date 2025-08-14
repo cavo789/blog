@@ -16,6 +16,8 @@ In this article, we'll look at how to create a bash script that can be used as a
 
 Please create somewhere on your disk, in a Linux console, a script f.i. called `health.sh` with this content:
 
+<Snippets filename="health.sh">
+
 ```bash
 #!/usr/bin/env bash
 
@@ -43,6 +45,8 @@ docker container list --all --format "{{.Names}}" | while read -r name; do
     printf "%-40s\e[1;${COLOR}m%s\e[0m\n" "$name" "$healthcheckStatus"
 done
 ```
+
+</Snippets>
 
 :::tip Get the list of all containers
 `docker container list --all --format "{{.Names}}"` return the list of all containers and only echo the column `Name` on the console.

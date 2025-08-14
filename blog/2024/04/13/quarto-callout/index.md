@@ -82,6 +82,8 @@ Start to type `Configure User Snippets`, validate and select `markdown.json` sin
 
 If this is your first snippet, the JSON file will be empty. Copy/paste the text below. Otherwise, just copy the `callout` node and paste it in your file to the correct location.
 
+<Snippets filename="markdown.json">
+
 ```json
 {
     "callout": {
@@ -96,6 +98,8 @@ If this is your first snippet, the JSON file will be empty. Copy/paste the text 
     },
 }
 ```
+
+</Snippets>
 
 Save and close the `markdown.json` file and go back to any markdown file (or create a new one).
 

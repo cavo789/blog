@@ -27,9 +27,7 @@ Please run `mkdir -p /tmp/bats && cd $_` to create a temporary folder and jump i
 
 We'll create a simple illustration file, let's call it `tests/simple.bats` and copy/paste the following content:
 
-<details>
-
-<summary>tests/simple.bats</summary>
+<Snippets filename="tests/simple.bats">
 
 ```bash
 #!/usr/bin/env bats
@@ -52,7 +50,7 @@ setup() {
 }
 ```
 
-</details>
+</Snippets>
 
 And now, the very difficult part is, ouch no, really easy in fact, to run [Bats-core](https://bats-core.readthedocs.io/en/stable/):
 
@@ -72,6 +70,8 @@ The first one is called *Asserting it's hello* and we've fired `echo "hello"` ju
 
 This is done using this script:
 
+<Snippets filename="tests/simple.bats">
+
 ```bash
 @test "Asserting it's hello" {
   run echo "hello"
@@ -80,7 +80,11 @@ This is done using this script:
 }
 ```
 
+</Snippets>
+
 And the second check is called *Simple.bats exists* and we're just doing a `ls simple.bats` and check if, for the illustration, `Simple.bats` or `simple.bats` is returned in the list of file (this, to illustrate the use of a regular expression).
+
+<Snippets filename="tests/simple.bats">
 
 ```bash
 @test "Simple.bats exists" {
@@ -90,13 +94,13 @@ And the second check is called *Simple.bats exists* and we're just doing a `ls s
 }
 ```
 
+</Snippets>
+
 ### Asserting a failure
 
 Of course we can also assert a failure. Edit your `simple.bats` file like this:
 
-<details>
-
-<summary>tests/simple.bats</summary>
+<Snippets filename="tests/simple.bats">
 
 ```bash
 #!/usr/bin/env bats
@@ -126,7 +130,7 @@ setup() {
 # highlight-end
 ```
 
-</details>
+</Snippets>
 
 So, in the new test function, we'll just try to remove a not-existing file and we expect, for sure, a failure:
 
@@ -148,9 +152,7 @@ The file `src/assert.sh` contains your Linux shell code you want to test. Your t
 
 Below the content of the `src/assert.sh`. Let's start with a simple function: checking if a given binary is installed on the system or not. The name of the binary has to be passed as a parameter to the function.
 
-<details>
-
-<summary>src/assert.sh</summary>
+<Snippets filename="src/assert.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -158,7 +160,7 @@ Below the content of the `src/assert.sh`. Let's start with a simple function: ch
 function assert::notEmpty() {
     local -r variable="${1:-}"
     local -r errorMessage="${2:-"The variable can't be empty."}"
-    
+
     [[ -z ${variable} ]] && echo "${errorMessage}" >&2
 
     return 0
@@ -179,14 +181,11 @@ function assert::binaryExists() {
 }
 ```
 
-</details>
+</Snippets>
 
 Below the content of the `tests/assert.bats`.
 
-<details>
-
-<summary>tests/assert.bats</summary>
-
+<Snippets filename="tests/assert.bats">
 
 ```bash
 #!/usr/bin/env bats
@@ -238,7 +237,7 @@ teardown() {
 }
 ```
 
-</details>
+</Snippets>
 
 The command line:
 
@@ -250,9 +249,7 @@ By running it, we expect a success for the binaryExists for `clear` and `ls` com
 
 Let's add a check to see if a specific Docker image already exists or not on the system:
 
-<details>
-
-<summary>src/assert.sh</summary>
+<Snippets filename="src/assert.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -260,7 +257,7 @@ Let's add a check to see if a specific Docker image already exists or not on the
 function assert::notEmpty() {
     local -r variable="${1:-}"
     local -r errorMessage="${2:-"The variable can't be empty."}"
-    
+
     [[ -z ${variable} ]] && echo "${errorMessage}" >&2
 
     return 0
@@ -284,28 +281,25 @@ function assert::binaryExists() {
 function assert::dockerImageExists() {
     local -r imageName="${1:-}"
     local -r errorMessage="${2:-The Docker image \"$imageName\" did not exist}"
-    
+
     assert::notEmpty "${imageName}" "You should specify the name of the Docker image whose existence needs to be checked."
 
     # When the image exists, "docker images -q" will return his ID (f.i. `5eed474112e9`), an empty string otherwise
     if [[ "$(docker images -q "$imageName" 2> /dev/null)" == "" ]]; then
         echo "${errorMessage}" >&2
         exit 1
-    fi 
+    fi
 
     return 0
 }
 # highlight-end
 ```
 
-</details>
+</Snippets>
 
 and the updated `tests/assert.bats` file:
 
-<details>
-
-<summary>tests/assert.bats</summary>
-
+<Snippets filename="tests/assert.bats">
 
 ```bash
 #!/usr/bin/env bats
@@ -386,7 +380,7 @@ teardown() {
 # highlight-end
 ```
 
-</details>
+</Snippets>
 
 ## Another examples
 
@@ -410,6 +404,8 @@ function array::length() {
 ### assert_failure
 
 `assert::binaryExists` will exit 1 if the binary can't be retrieved. An error message like *The binary can't be found will be echoed on the console*.
+
+<Snippets filename="tests/simple.bats">
 
 ```bash
 @test "Assert binary didn't exist" {
@@ -435,11 +431,15 @@ function assert::binaryExists() {
 }
 ```
 
+</Snippets>
+
 ### assert_output
 
 `assert_output` has two nice options: `--partial` and `--regexp`.
 
 Using `--partial` will allow f.i. the check if the output contains some raw text like, for a help screen, a given sentence.
+
+<Snippets filename="tests/simple.bats">
 
 ```bash
 @test "Show the help screen" {
@@ -453,7 +453,11 @@ Using `--partial` will allow f.i. the check if the output contains some raw text
 }
 ```
 
+</Snippets>
+
 Using `--regexp` will allow to use a regular expression:
+
+<Snippets filename="tests/simple.bats">
 
 ```bash
 @test "Show the help screen" {
@@ -464,9 +468,13 @@ Using `--regexp` will allow to use a regular expression:
 }
 ```
 
+</Snippets>
+
 ### assert_success
 
 `assert::binaryExists` will return 0 when the binary can be retrieved. The function will run in silent (no output).
+
+<Snippets filename="tests/simple.bats">
 
 ```bash
 @test "Assert binary exists" {
@@ -485,9 +493,13 @@ function assert::binaryExists() {
 }
 ```
 
+</Snippets>
+
 ### Check for ANSI colors
 
 Imagine the following code:
+
+<Snippets filename="script.sh">
 
 ```bash
 __RED=31
@@ -499,7 +511,11 @@ function console::printRed() {
 }
 ```
 
+</Snippets>
+
 We wish to check that the line will be echoed in red.
+
+<Snippets filename="tests/simple.bats">
 
 ```bash
 @test "console::printRed - The sentence should be displayed" {
@@ -509,9 +525,13 @@ We wish to check that the line will be echoed in red.
 }
 ```
 
+</Snippets>
+
 ### Check for multi-line output
 
 Imagine the following code:
+
+<Snippets filename="script.sh">
 
 ```bash
 function console::banner() {
@@ -520,6 +540,8 @@ function console::banner() {
     printf "%s\n" "============================================"
 }
 ```
+
+</Snippets>
 
 This will write three lines on the console, like f.i.
 
@@ -530,6 +552,8 @@ This will write three lines on the console, like f.i.
 ```
 
 To check for multi-lines, use the `$lines` array like this:
+
+<Snippets filename="tests/simple.bats">
 
 ```bash
 @test "console::banner - The sentence should be displayed" {
@@ -542,6 +566,8 @@ To check for multi-lines, use the `$lines` array like this:
     assert_success
 }
 ```
+
+</Snippets>
 
 ### Check against a file
 
@@ -558,11 +584,13 @@ The tip used is:
 
 Now, bingo, since we've a variable with only one line (in our example: `$#$#$#$#$#<html><body/></html>$#`), we can compare with our expectation:
 
+<Snippets filename="tests/simple.bats">
+
 <!-- cspell:disable -->
 ```bash
 @test "html::removeTopOfFileComments - remove HTML comments - with empty lines" {
     tempfile="$(mktemp)"
-    
+
     # Here, we'll have extra, empty, lines. They should be removed too
     echo '' >$tempfile
     echo '' >>$tempfile
@@ -595,11 +623,15 @@ Now, bingo, since we've a variable with only one line (in our example: `$#$#$#$#
 ```
 <!-- cspell:enable -->
 
+</Snippets>
+
 ### Check against a file using a regex
 
 A second scenario can be: you have a write function (think to a logfile) and you want to check the presence of a given line in the file.
 
 The example below relies on `bats-file` and his `assert_file_contains` method. That method asks for a filename and a regex pattern.
+
+<Snippets filename="tests/simple.bats">
 
 ```bash
 setup() {
@@ -635,6 +667,8 @@ setup() {
 }
 ```
 
+</Snippets>
+
 ### Check that a value is NOT in a file
 
 Another use of the assert_failure can be to start a command like a grep and expect to get an error:
@@ -651,6 +685,8 @@ assert_failure 1
 The `setup` function is called before running a test. For each `@test` function present in the scenario, the `setup()` function will be called.
 
 In the following example, since there are two test functions, `setup()` will be called twice.
+
+<Snippets filename="tests/simple.bats">
 
 ```bash
 setup() {
@@ -674,6 +710,8 @@ setup() {
 }
 ```
 
+</Snippets>
+
 #### teardown
 
 Just like `setup`, the `teardown` function will be called for each test but once the test has been fired. This is the good place for, f.i., removing some files created during the execution of a test.
@@ -692,6 +730,8 @@ The command `docker run --rm -it -w /code/tests -v .:/code bats/bats:latest simp
 
 We can override a function during a test. Consider the following use case: we've a function that will return 0 when a give Docker image is present on the host. The function will return 1 and echo an error on the console if the image isn't retrieved.
 
+<Snippets filename="script.sh">
+
 ```bash
 function assert::dockerImageExists() {
     local image="${1}"
@@ -704,7 +744,11 @@ function assert::dockerImageExists() {
 }
 ```
 
+</Snippets>
+
 So, we need to override the docker answer. When the image is supposed to be there, we just need to return a non-empty string, anything but not an empty string. Let's return a fake ID to really simulate the answer of `docker images -q`.
+
+<Snippets filename="tests/simple.bats">
 
 ```bash
 @test "Assert docker image exists" {
@@ -722,7 +766,11 @@ So, we need to override the docker answer. When the image is supposed to be ther
 }
 ```
 
+</Snippets>
+
 And return an empty string to simulate an inexistent image.
+
+<Snippets filename="tests/simple.bats">
 
 ```bash
 @test "Assert docker image didn't exist" {
@@ -741,3 +789,4 @@ And return an empty string to simulate an inexistent image.
 }
 ```
 
+</Snippets>

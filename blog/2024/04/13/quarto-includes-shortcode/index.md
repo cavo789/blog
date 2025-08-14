@@ -12,6 +12,8 @@ Using the Quarto `includes` short code, writing a long document can easily be br
 
 Imagine the following `main.qmd` file:
 
+<Snippets filename="main.qmd">
+
 ```markdown
 # My thesis in Latin
 
@@ -19,6 +21,8 @@ Imagine the following `main.qmd` file:
 
 {{< include chapter2.md >}}
 ```
+
+</Snippets>
 
 Quarto will then merge the three files when you render `main.qmd`.
 
@@ -34,6 +38,8 @@ The tag is simple, you just need to specify the relative path to the file to inc
 
 Here is some dummy content for `chapter1.md`:
 
+<Snippets filename="chapter1.md">
+
 <!-- cspell:disable -->
 ```markdown
 ## Chapter 1
@@ -45,7 +51,11 @@ Expedita magni facere. Ullam non non sint qui provident. Ea beatae voluptatem pa
 Ad aut nobis magni aut est dicta adipisci est. Quo reiciendis eum aut rem. Dolores sit magni non.
 ```
 
+</Snippets>
+
 And for `chapter2.md`:
+
+<Snippets filename="chapter2.md">
 
 ```markdown
 ## Chapter 2
@@ -56,6 +66,9 @@ Animi voluptatem est quia. Quia id optio. Architecto ut ipsa voluptas minima vol
 
 Consequatur debitis et sunt eos quod qui unde aut.
 ```
+
+</Snippets>
+
 <!-- cspell:enable -->
 
 Now, by running, f.i., `quarto render main.qmd --to html`, Quarto will merge files and you'll get:

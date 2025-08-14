@@ -28,9 +28,7 @@ Please create a dummy folder and jump in it: `mkdir /tmp/git && cd $_`.
 
 We need a `Dockerfile`, let's create it:
 
-<details>
-
-<summary>Dockerfile</summary>
+<Snippets filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -49,13 +47,11 @@ RUN set -e -x \
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 ```
 
-</details>
+</Snippets>
 
 We'll also use a `compose.yaml` one, please create this file too:
 
-<details>
-
-<summary>compose.yaml</summary>
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -69,7 +65,7 @@ services:
       - ${HOME}/.gitconfig:/root/.gitconfig
 ```
 
-</details>
+</Snippets>
 
 :::warning I assume your current ssh key is called id_ed25519
 Please run `ls -alh ${HOME}/.ssh/` on your host and check if you've a file `id_ed25519` there. It's your SSH private key. Perhaps you aren't using that file but another one called `id_rsa`. If so, please update the `compose.yaml` file and replace there `id_ed25519` by `id_rsa`.
@@ -79,7 +75,7 @@ Please run `ls -alh ${HOME}/.ssh/` on your host and check if you've a file `id_e
 
 We'll create our Docker image and create a container with this single command: `docker compose up --detach --build`.
 
-And, now, we'll jump in the container by running: `docker compose exec docker_git /bin/sh`. 
+And, now, we'll jump in the container by running: `docker compose exec docker_git /bin/sh`.
 
 As first check, simply run `git --version` to check if `git` is well installed (which is the case).
 
@@ -93,7 +89,7 @@ We've the following line:
 - ${HOME}/.gitconfig:/root/.gitconfig
 ```
 
-This tells Docker to share (mount) our local `${HOME}/.gitconfig` file (i.e. our configuration file) with the container. Since, in this example, we're running the container as root, we need to put `/root/.gitconfig` as the target. 
+This tells Docker to share (mount) our local `${HOME}/.gitconfig` file (i.e. our configuration file) with the container. Since, in this example, we're running the container as root, we need to put `/root/.gitconfig` as the target.
 
 :::info
 If you don't know yet what is this file, just type `cat ${HOME}/.gitconfig` in the console to see his content; its your git configuration settings.

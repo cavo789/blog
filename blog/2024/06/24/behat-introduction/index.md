@@ -29,10 +29,10 @@ As you can read on the [Behat](https://docs.behat.org/en/latest/) site, *Behat i
 
 ## Introduction to BDD - Behavior-Driven Development
 
-Imagine you're a customer and you ask a developer to create a new website. In your specifications, you tell him things like: 
+Imagine you're a customer and you ask a developer to create a new website. In your specifications, you tell him things like:
 
 * As a visitor, I'd like a menu entry that, once clicked, will (do this);
-* As a visitor, I want to be able to access a search engine that will allow me to make a selection from a category of articles and then, within this category, launch a search for the word (a word). A list of articles on this theme will then be displayed; 
+* As a visitor, I want to be able to access a search engine that will allow me to make a selection from a category of articles and then, within this category, launch a search for the word (a word). A list of articles on this theme will then be displayed;
 * As site manager, I want to be able to connect to a management interface and, after a successful login, I need to see the options (list of features);
 * As site manager, I should be able to add a new article where I've to specify a title, a category, a main image and a text. Once I save it, I should see the new article in the list of articles and, by ordering the list on the creation date/time, it has to be the first in the list;
 * (and much more)
@@ -51,6 +51,8 @@ Let's start...
 
 * First, let's create a new directory: `mkdir /tmp/behat && cd $_`.
 * There, let's create a file called `Dockerfile` with the content below. That script is already big but; like this, we'll have everything we need right now.
+
+<Snippets filename="Dockerfile">
 
 <!-- cspell:disable -->
 ```Dockerfile
@@ -79,7 +81,7 @@ RUN groupadd --gid ${DOCKER_GID} "${USERNAME}" \
     && useradd --home-dir /home/"${USERNAME}" --create-home --uid ${DOCKER_UID} \
         --gid ${DOCKER_GID} --shell /bin/sh --skel /dev/null "${USERNAME}"
 
-# Download and install Chrome        
+# Download and install Chrome
 ARG CHROME_VERSION
 ARG DOWNLOAD_URL="https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json"
 
@@ -127,7 +129,11 @@ WORKDIR /opt/behat
 ```
 <!-- cspell:enable -->
 
-* Create a file called `docker-compose.yml` with this content:
+</Snippets>
+
+* Create a file called `compose.yaml` with this content:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -146,6 +152,8 @@ services:
       # We'll synchronize our local project folder (on our machine) with the Docker container
       - ./:/opt/behat
 ```
+
+</Snippets>
 
 * Run `docker compose up --detach` to create your Docker container
 
@@ -198,6 +206,8 @@ Now, if you look at your folder, you can see you've now a new folder called `fea
 
 The image here above is displaying a major concept of Behat: it's a feature. This is something you need to write and this will guide our automation. For instance:
 
+<Snippets filename="Blog.feature">
+
 ```gherkin
 Feature: Clicking on the Blog menu item should give me the list of articles
 
@@ -206,6 +216,8 @@ Feature: Clicking on the Blog menu item should give me the list of articles
     Then I click on the "Blog" menu item
     Then I should be on "/blog"
 ```
+
+</Snippets>
 
 This has to be put in a file having the `.feature` extension in the  `features` folder; let's create the `Blog.feature` file with this content:
 
@@ -293,6 +305,8 @@ We'll now need to reference the `behat-chrome-extension` in a such called `behat
 
 Please create the file called `behat.yml` in your project's root directory; with this content:
 
+<Snippets filename="behat.yaml">
+
 ```yaml
 default:
     extensions:
@@ -306,12 +320,16 @@ default:
                       api_url: http://0.0.0.0:9222
 ```
 
+</Snippets>
+
 Also, please edit the file `features/bootstrap/FeatureContext.php`, remove everything and replace the existing content below.
 
 We've changes a few `use` to add Mink libraries (and remove unneeded ones). We've also added a `$mink` private property and put some lines in the `__constructor`.
 
 :::warning Please update the url `https://www.avonture.be` to match your site
 :::
+
+<Snippets filename="features/bootstrap/FeatureContext.php">
 
 ```php
 <?php
@@ -362,6 +380,8 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
 }
 ```
 
+</Snippets>
+
 By running `vendor/bin/behat` again, we've now another error:
 
 ![Could not fetch version information](./images/could_not_fetch.png)
@@ -369,6 +389,8 @@ By running `vendor/bin/behat` again, we've now another error:
 ## Time to run Chrome
 
 Create a file called `run.sh` with this content:
+
+<Snippets filename="run.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -393,6 +415,8 @@ if ((chromePID > 0)); then
 fi
 ```
 
+</Snippets>
+
 Then make the file executable by running `chmod +x ./run.sh`.
 
 Now, you can start Behat by starting `./run.sh` in your console.
@@ -409,6 +433,8 @@ Then the line `Then I click on the "Blog" menu item` is in yellow and this is no
 
 Back to the `bootstrap/FeatureContext.php` file. Replace the `iClickOnTheMenuItem` method with this code:
 
+<Snippets filename="features/bootstrap/FeatureContext.php">
+
 ```php
 /**
  * @Then I click on the :menuItem menu item
@@ -418,13 +444,15 @@ public function iClickOnTheMenuItem(string $menuItem): void
     if (!is_dir('.output')) {
         mkdir('.output', 0777);
     }
-    
+
     // When entering in the method, take a screenshot so we can assert we're on the homepage
     file_put_contents('.output/homepage.png', $this->getSession()->getDriver()->getScreenshot());
 
     throw new PendingException();
 }
 ```
+
+</Snippets>
 
 As you can see, we'll create a `.output` folder and the only thing we'll do is to create a screenshot.
 
@@ -436,6 +464,8 @@ What have we just done? We've verified that when Behat executes our `iClickOnThe
 
 Replace the method with this new code:
 
+<Snippets filename="features/bootstrap/FeatureContext.php">
+
 ```php
 /**
  * @Then I click on the :menu menu item
@@ -445,7 +475,7 @@ public function iClickOnTheMenuItem(string $menu): void
     if (!is_dir('.output')) {
         mkdir('.output', 0777);
     }
-    
+
     // When entering in the method, take a screenshot so we can assert we're on the homepage
     file_put_contents('.output/homepage.png', $this->getSession()->getDriver()->getScreenshot());
 
@@ -470,6 +500,8 @@ public function iClickOnTheMenuItem(string $menu): void
     file_put_contents('.output/iClickOnBlog.png', $this->getSession()->getDriver()->getScreenshot());
 }
 ```
+
+</Snippets>
 
 Start `./run.sh` once more and bingo!
 
@@ -515,7 +547,9 @@ Finally, to run our `run.sh` script, you should run `docker compose exec -u $(id
 
 ### behat.yaml
 
-```yml
+<Snippets filename="behat.yaml">
+
+```yaml
 default:
     extensions:
         DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
@@ -528,9 +562,14 @@ default:
                       api_url: http://0.0.0.0:9222
 ```
 
+</Snippets>
+
 ### Blog.feature
 
 The relative filename is `features/Blog.feature`.
+
+<Snippets filename="features/Blog.feature">
+
 
 ```gherkin
 Feature: Clicking on the Blog menu item should gives me the list of articles
@@ -541,7 +580,11 @@ Feature: Clicking on the Blog menu item should gives me the list of articles
     Then I should be on "/blog"
 ```
 
+</Snippets>
+
 ### composer.json
+
+<Snippets filename="composer.json">
 
 ```json
 {
@@ -566,9 +609,13 @@ Feature: Clicking on the Blog menu item should gives me the list of articles
 }
 ```
 
-### docker-compose.yml
+</Snippets>
 
-```yml
+### compose.yaml
+
+<Snippets filename="compose.yaml">
+
+```yaml
 services:
   app:
     build:
@@ -586,7 +633,11 @@ services:
       - ./:/opt/behat
 ```
 
+</Snippets>
+
 ### Dockerfile
+
+<Snippets filename="Dockerfile">
 
 <!-- cspell:disable -->
 ```Dockerfile
@@ -615,7 +666,7 @@ RUN groupadd --gid ${DOCKER_GID} "${USERNAME}" \
     && useradd --home-dir /home/"${USERNAME}" --create-home --uid ${DOCKER_UID} \
         --gid ${DOCKER_GID} --shell /bin/sh --skel /dev/null "${USERNAME}"
 
-# Download and install Chrome        
+# Download and install Chrome
 ARG CHROME_VERSION
 ARG DOWNLOAD_URL="https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json"
 
@@ -663,9 +714,13 @@ WORKDIR /opt/behat
 ```
 <!-- cspell:enable -->
 
+</Snippets>
+
 ### FeatureContext.php
 
 The relative filename is `features/bootstrap/FeatureContext.php`.
+
+<Snippets filename="features/bootstrap/FeatureContext.php">
 
 ```php
 <?php
@@ -713,15 +768,15 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
         if (!is_dir('.output')) {
             mkdir('.output', 0777);
         }
-        
+
         // When entering in the method, take a screenshot so we can assert we're on the homepage
         file_put_contents('.output/homepage.png', $this->getSession()->getDriver()->getScreenshot());
-    
+
         /**
          * @var $elements Behat\Mink\Element\NodeElement
          */
         $elements = $this->getSession()->getPage()->findAll('css', 'a[class="navbar__item navbar__link"]');
-    
+
         // Now we'll get all links from our navigation bar. $elements will contain more than one link in our case.
         // The CSS selector has been written using our Web developer console; in Edge or Chromium for instance.
         // Loop any elements (our navigation links) and when we've found the one having `Blog` as text, click on it
@@ -730,17 +785,21 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
                 $element->click();
             }
         }
-    
+
         // Give one second to the website to handle the click and, so, to navigate to, as we expect it, the `/blog` path
         sleep(1);
-    
+
         // Take a second image, now we should be in the list of posts
         file_put_contents('.output/iClickOnBlog.png', $this->getSession()->getDriver()->getScreenshot());
     }
 }
 ```
 
+</Snippets>
+
 ### run.sh
+
+<Snippets filename="run.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -764,3 +823,5 @@ if ((chromePID > 0)); then
     kill ${chromePID} > /dev/null 2>&1
 fi
 ```
+
+</Snippets>

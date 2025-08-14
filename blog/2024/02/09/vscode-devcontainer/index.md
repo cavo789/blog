@@ -57,6 +57,8 @@ Since we'll create a few files, please run `code .` to start Visual Studio Code 
 
 Create a new file called `index.php` with the PHP code below:
 
+<Snippets filename="index.php">
+
 ```php
 <?php
 
@@ -67,6 +69,8 @@ function sayHello(    )          {
 
         echo sayHello();
 ```
+
+</Snippets>
 
 ![Index php with poor written code](./images/index_php_bad_formatting.png)
 
@@ -101,6 +105,8 @@ In VSCode, please press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>X</kbd> to open th
 The next step is to create a folder called `.devcontainer` and, there, a file called `devcontainer.json` with the content below.
 
 In the rest of this article, we'll come back to this file.
+
+<Snippets filename=".devcontainer/devcontainer.json">
 
 ```json
 {
@@ -169,9 +175,13 @@ In the rest of this article, we'll come back to this file.
 }
 ```
 
+</Snippets>
+
 ## 4. Create the Dockerfile file
 
 Please continue and create a second file called `Dockerfile` with this content:
+
+<Snippets filename="Dockerfile">
 
 ```dockerfile
 ARG PHP_VERSION=8.2
@@ -249,6 +259,8 @@ RUN set -e -x \
 WORKDIR /var/www/html
 ```
 
+</Snippets>
+
 ## 5. Reopen in the container
 
 So, we've now three files: a disgusting `index.php`, `.devcontainer/devcontainer.json` and `.devcontainer/Dockerfile`.
@@ -286,6 +298,8 @@ When we save a file in VSCode, we have configured a *formatter* which will adapt
 But let's understand when `PHP-CS-Fixer` was installed...
 
 Please reopen your `.devcontainer/devcontainer.json` file and look at the highlighted lines below:
+
+<Snippets filename=".devcontainer/devcontainer.json">
 
 ```json
 {
@@ -328,6 +342,8 @@ Please reopen your `.devcontainer/devcontainer.json` file and look at the highli
 }
 ```
 
+</Snippets>
+
 So, we're asking VSCode to, for PHP files, run a `formatter` when the file is saved and the tool to use for the formatting is `junstyle.php-cs-fixer`. Look directly at the end, in the `extensions` section, we instruct VSCode to install that extension.
 
 We also instruct VSCode to automatically saved the file as soon as the focus changes i.e. for instance, if we select another file, if we click elsewhere (no more in the editor), ...
@@ -341,6 +357,8 @@ By running VSCode in a container, you're *no more* on your machine.
 And now, you need to take a look on the third file we've created: `Dockerfile`.
 
 Please reopen the `.devcontainer/Dockerfile` file and look at the highlighted lines below:
+
+<Snippets filename=".devcontainer/Dockerfile">
 
 ```dockerfile
 // highlight-next-line
@@ -381,6 +399,8 @@ RUN set -e -x \
 // ...
 ```
 
+</Snippets>
+
 That file will instruct VSCode to download a `php:8.2-fpm` Docker image and to install `PHP-CS-Fixer` (since `PHPCSFIXER_INSTALL` has been set to `true`).
 
 The version `3.46.0` of the `PHP-CS-Fixer` executable will be downloaded and stored, in the Docker image, as `usr/local/bin/php-cs-fixer.phar`. This is why, in our `devcontainer.json` we can write `"php-cs-fixer.executablePath": "/usr/local/bin/php-cs-fixer.phar",`, because we've already downloaded and installed the executable.
@@ -400,6 +420,8 @@ So, we can have our own configuration file for `PHP-CS-Fixer` (with our own rule
 Let's try and this time we'll make sure all our PHP files will have a header block with our copyright or license information or anything else.
 
 In VSCode, please create the `.config` folder and there the `.php-cs-fixer.php` file with this content:
+
+<Snippets filename=".config/.php-cs-fixer.php">
 
 ```php
 <?php
@@ -431,7 +453,11 @@ return $config->setRules(
 
 ```
 
+</Snippets>
+
 Please also create a second file called `licenseHeader.txt` file with the content you wish, f.i.:
+
+<Snippets filename=".config/licenseHeader.txt">
 
 ```text
 This program is free software: you can redistribute it and/or modify
@@ -447,6 +473,8 @@ for more details.
 You should have received a copy of the GNU General Public License along
 with this program. If not, see <https://www.gnu.org/licenses/>.
 ```
+
+</Snippets>
 
 Now, please reopen your `index.php` file and just press <kbd>CTRL</kbd>+<kbd>S</kbd> to save the file again and tadaaa...
 
@@ -478,6 +506,8 @@ Our `Dockerfile` container was configured to download and install [PHP_CodeSniff
 
 For instance, please update your `index.php` script with this content:
 
+<Snippets filename="index.php">
+
 ```php
 <?php
 
@@ -495,6 +525,8 @@ function sayHello($firstname)
 echo sayHello();
 ```
 
+</Snippets>
+
 What's wrong with this syntax? Almost nothing but ... the standard (`PSR12`) ask to put one space after the `if` keyword and one space before and after `else`.
 
 :::note PHP-CS-Fixer will be called when you save the file
@@ -502,6 +534,8 @@ Did you've noticed? You have copied/pasted the script below where there were no 
 :::
 
 Like for `PHP-CS-Fixer`, we already have installed `PHPCBF` and `PHPCS` in our container. See your `.devcontainer/devcontainer.json` file:
+
+<Snippets filename=".devcontainer/devcontainer.json">
 
 ```json
 {
@@ -533,11 +567,15 @@ Like for `PHP-CS-Fixer`, we already have installed `PHPCBF` and `PHPCS` in our c
 }
 ```
 
+</Snippets>
+
 And the two executables `/usr/local/bin/phpcbf.phar` and `/usr/local/bin/phpcs.phar` have been downloaded thanks to your `Dockerfile`. Just take a look if needed.
 
 #### PHPCS and PHPCBF - Configuration file
 
 In VSCode, please create in the `.config` folder a file called `phpcs.xml` file with this content:
+
+<Snippets filename=".config/phpcs.xml">
 
 ```xml
 <?xml version="1.0"?>
@@ -549,6 +587,8 @@ In VSCode, please create in the `.config` folder a file called `phpcs.xml` file 
     <rule ref="PSR12" />
 </ruleset>
 ```
+
+</Snippets>
 
 Now, since we have defined our coding standard (`PSR12` here), just display the `index.php` script again:
 
@@ -610,6 +650,8 @@ You've probably already understood the syntax. Just use the `.` to scan the enti
 
 Here too, SonarLint was already installed in our Docker container thanks our `.devcontainer/devcontainer.json` file:
 
+<Snippets filename=".devcontainer/devcontainer.json">
+
 ```json
 {
     // ...
@@ -626,11 +668,15 @@ Here too, SonarLint was already installed in our Docker container thanks our `.d
 }
 ```
 
+</Snippets>
+
 :::note It's only a VSCode extension
 SonarLint don't need external tool; it's a stand-alone VSCode extension so no need to foresee something in our `Dockerfile`.
 :::
 
 So, please reopen the `index.php` file you've and now pay attention to the `echo sayHello()` line:
+
+<Snippets filename="index.php">
 
 ```php
 <?php
@@ -648,6 +694,8 @@ function sayHello($firstname)
 
 echo sayHello();
 ```
+
+</Snippets>
 
 ![SonarLint is seeing something](./images/sonarlint_underline.png)
 
@@ -667,6 +715,8 @@ Next to `SonarLint`, there is also `Intelephense` who will also detect a certain
 
 In the previous example; when the prototype was `function sayHello($firstname)`, `Intelephense` was also alerting the developer about the missing parameter.
 
+<Snippets filename="index.php">
+
 ```php
 <?php
 
@@ -683,6 +733,8 @@ function sayHello($firstname)
 
 echo sayHello();
 ```
+
+</Snippets>
 
 ![Intelephense in action](./images/intelephense.png)
 
@@ -706,6 +758,8 @@ This time, we'll need to install Rector for our project and for this, we'll foll
 
 If you reopen it, take a look on the `postCreateCommand` node:
 
+<Snippets filename=".devcontainer/devcontainer.json">
+
 ```json
 {
     // ...
@@ -716,6 +770,8 @@ If you reopen it, take a look on the `postCreateCommand` node:
     "postCreateCommand": "composer require rector/rector --dev"
 }
 ```
+
+</Snippets>
 
 Rector will be added to the `composer.json` file (and the file will be created if not yet present).
 
@@ -736,6 +792,8 @@ vendor/bin/rector
 
 Finally, open the `rector.php` configuration file and update it like this:
 
+<Snippets filename="rector.php">
+
 ```php
 <?php
 
@@ -753,6 +811,8 @@ return RectorConfig::configure()
     ->withPreparedSets(codeQuality: true, deadCode: true, typeDeclarations: true);
 ```
 
+</Snippets>
+
 :::important Tell to Rector which PHP version you use
 Rector will suggest you changes but to do this, he needs to know which version of PHP you're running. Indeed, Rector won't suggest you a PHP 8.2 syntax f.i. if you're still running on an older version (see [PHP Version Features](https://getrector.com/documentation/php-version-features)).
 :::
@@ -764,6 +824,8 @@ You've noticed that Rector has created his configuration file in the root direct
 #### Run Rector
 
 To illustrate what Rector can do, please edit the `index.php` with this content, once again:
+
+<Snippets filename="index.php">
 
 ```php
 <?php
@@ -781,6 +843,8 @@ function sayHello($firstname = "")
 
 echo sayHello();
 ```
+
+</Snippets>
 
 In a terminal, run `vendor/bin/rector process index.php --dry-run --config .config/rector.php` as we did before.
 
@@ -806,6 +870,8 @@ Rector has updated our `index.php` file! **Now, our function is just one line an
 
 Our new, improved, code is now:
 
+<Snippets filename="index.php">
+
 ```php
 <?php
 
@@ -817,10 +883,14 @@ function sayHello(string $firstname = ""): string
 echo sayHello();
 ```
 
+</Snippets>
+
 Rector is **absolutely brilliantly powerful**. Learn more about it by reading carefully his documentation site: [https://getrector.com/documentation/](https://getrector.com/documentation/).
 
 :::tip The programmer has the last word, but for how much longer?
 We can do one more improvement by extracting the `Hello` prefix. Rector has not yet see this but until when?
+
+<Snippets filename="index.php">
 
 ```php
 <?php
@@ -832,6 +902,8 @@ function sayHello(string $firstname = ""): string
 
 echo sayHello();
 ```
+
+</Snippets>
 
 :::
 

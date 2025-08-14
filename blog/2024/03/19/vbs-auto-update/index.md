@@ -26,6 +26,8 @@ By adding to it a new *auto-update* function, each time the script will be start
 
 Here is the content of such function:
 
+<Snippets filename="get_folder_size.vbs">
+
 ```vbs
 ' -----------------------------------------------------------------
 '
@@ -90,3 +92,5 @@ Else
     Err.Clear
 End If
 ```
+
+</Snippets>

@@ -7,6 +7,7 @@
   import CardHeader from '@site/src/components/Card/CardHeader';
   import CardImage from '@site/src/components/Card/CardImage';
   import HomeCard from '@site/src/components/HomeCard';
+  import Snippets from '@site/src/components/Snippets';
 
   export default {
     // Reusing the default mapping
@@ -17,4 +18,5 @@
     CardFooter,
     CardImage,
     HomeCard,
+    Snippets,
   };

@@ -22,6 +22,8 @@ Let's how we can start more than one task at a time using Linux Bash.
 
 Consider this small demo:
 
+<Snippets filename="demo.sh">
+
 ```bash
 #!/bin/bash
 
@@ -33,7 +35,7 @@ function demo {
 
 function main {
     for i in {1..10}; do
-        demo 
+        demo
     done
 }
 
@@ -43,6 +45,8 @@ end_time=$(date +%s)
 total_time=$((end_time - start_time))
 echo "Total running time: $total_time seconds"
 ```
+
+</Snippets>
 
 Before calling the `main` function, I remember the actual start time, call `main` then calculate the elapsed time in seconds.
 
@@ -84,6 +88,8 @@ In the Bash script below, no problem, it's just my computer but in my introducti
 
 We'll adapt our sample like this:
 
+<Snippets filename="demo.sh">
+
 ```bash
 #!/bin/bash
 
@@ -100,7 +106,7 @@ function main {
     declare -a pids
     # highlight-next-line
     pids=()
-    
+
     # highlight-next-line
     # Get the number of logical cores on the machine and multiply by 2
     # highlight-next-line
@@ -135,7 +141,7 @@ function main {
                 # highlight-next-line
             done
             # highlight-next-line
-            
+
             # highlight-next-line
             # And reset the array since all jobs are done
             # highlight-next-line
@@ -161,6 +167,8 @@ total_time=$((end_time - start_time))
 echo "Total running time: $total_time seconds"
 ```
 
+</Snippets>
+
 ### In depth
 
 By adding the `&` character, I'm asking Bash to now wait that the function finish his job before returning. So, the code below will run `demo` 10 times even before the first `demo` call is finished.
@@ -168,7 +176,7 @@ By adding the `&` character, I'm asking Bash to now wait that the function finis
 ```bash
 for i in {1..10}; do
     demo &
-done    
+done
 ```
 
 If I need to do 100, 500 or 1,000 calls, my computer will start to comply and, perhaps, didn't respond anymore. My computer can't handle 1,000 calls in the same time.
@@ -180,7 +188,7 @@ I know I've a specific number of cores (see the `nproc` command) and I know I ca
 So before running the next call of `demo`, I need to do two things:
 
 1. I'll keep the process id (`pid`) of the just fired `demo` function (each call has his own `pid`) and store that value in an array,
-2. I'll need to check how many jobs are running and not yet finished (retrieved using `$( jobs | wc -l )`) and compare that number with the number of threads we can start (*64* for me). As soon as the number of running jobs is equal to my max, Ok, I should wait.  I shouldn't start a 65th job but I'll wait that all the previous 64 ones are finished. 
+2. I'll need to check how many jobs are running and not yet finished (retrieved using `$( jobs | wc -l )`) and compare that number with the number of threads we can start (*64* for me). As soon as the number of running jobs is equal to my max, Ok, I should wait.  I shouldn't start a 65th job but I'll wait that all the previous 64 ones are finished.
 
 And, when it's done, I can continue for the next wave and so one.
 

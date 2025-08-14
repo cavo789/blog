@@ -20,7 +20,9 @@ To do this, we'll use the [https://github.com/martialblog/docker-limesurvey](htt
 
 Please start a Linux shell and run `mkdir -p /tmp/limesurvey && cd $_` to create a folder called `limesurvey` in your Linux temporary folder and jump in it.
 
-Please then create a `docker-compose.yml` file in that folder with this content:
+Please then create a `compose.yaml` file in that folder with this content:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: limesurvey
@@ -54,6 +56,8 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=limesurvey
 ```
+
+</Snippets>
 
 Now, simply run the following command to download (only the first time) required images (LimeSurvey and MySQL) and create the two containers:
 
@@ -94,7 +98,7 @@ When LimeSurvey is ready, you'll see the following page on `http://localhost:808
 
 ![LimeSurvey welcome page](./images/homepage.png)
 
-Go to `http://localhost:8080/admin` to start the administration interface. The credentials to use are `admin` / `admin` (as defined in the `docker-compose.yml` file, see variables `ADMIN_USER` and `ADMIN_PASSWORD`).
+Go to `http://localhost:8080/admin` to start the administration interface. The credentials to use are `admin` / `admin` (as defined in the `compose.yaml` file, see variables `ADMIN_USER` and `ADMIN_PASSWORD`).
 
 ![LimeSurvey administration page](./images/admin.png)
 
@@ -104,11 +108,13 @@ You're now ready to start and play with LimeSurvey on your machine.
 
 ## Using volumes
 
-The `docker-compose.yml` file provided above didn't use any volumes: when you stop running containers, your work will be lost and LimeSurvey will be restarted without any configuration / surveys just like a full reset.
+The `compose.yaml` file provided above didn't use any volumes: when you stop running containers, your work will be lost and LimeSurvey will be restarted without any configuration / surveys just like a full reset.
 
 Perhaps, if you want to test LimeSurvey over several days and keep your configuration items, your surveys, then you will want to keep your work. To do this, you need to use volumes.
 
-Here is an updated `docker-compose.yml` file to ask Docker to use self-managed volumes.
+Here is an updated `compose.yaml` file to ask Docker to use self-managed volumes.
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: limesurvey
@@ -158,6 +164,8 @@ volumes:
   data:
 ```
 
+</Snippets>
+
 :::tip Want to learn more about volumes?
 In that case, please read this blog post: [Using volumes with Docker, use cases](/blog/docker-volumes)
 :::
@@ -172,15 +180,17 @@ Earlier in this article, we saw that we can easily download the 'latest' version
 
 Let's start again, but this time for a specific version. By looking at the production site, you see f.i. version `3.22.6+200219`.
 
-In our `docker-compose.yml`, we then need to replace `image: docker.io/martialblog/limesurvey:latest` by something else but what? A valid tag for sure. Go to [https://hub.docker.com/r/martialblog/limesurvey/tags](https://hub.docker.com/r/martialblog/limesurvey/tags) and, in the `Filter Tags` area, type `3.22.6`, our production version thus. We'll get three images but just one for `apache` (indeed, we wish to use the Docker image having both PHP and Apache). Bingo, now we know our line will be `image: docker.io/martialblog/limesurvey:3.22.6_200219-apache`.
+In our `compose.yaml`, we then need to replace `image: docker.io/martialblog/limesurvey:latest` by something else but what? A valid tag for sure. Go to [https://hub.docker.com/r/martialblog/limesurvey/tags](https://hub.docker.com/r/martialblog/limesurvey/tags) and, in the `Filter Tags` area, type `3.22.6`, our production version thus. We'll get three images but just one for `apache` (indeed, we wish to use the Docker image having both PHP and Apache). Bingo, now we know our line will be `image: docker.io/martialblog/limesurvey:3.22.6_200219-apache`.
 
 The second part is how to be sure which lines I need to put in the yaml file. For this, just go to [https://github.com/martialblog/docker-limesurvey/releases/tag/](https://github.com/martialblog/docker-limesurvey/releases/tag/) and try to find the same release. Here it's: [https://github.com/martialblog/docker-limesurvey/releases/tag/3.22.6%2B200219](https://github.com/martialblog/docker-limesurvey/releases/tag/3.22.6%2B200219).
 
-Click on the `Source code (zip)` for instance to download the archive and open it. From the archive, retrieve the `docker-compose.yml` file and pay attention to how the file is configured.
+Click on the `Source code (zip)` for instance to download the archive and open it. From the archive, retrieve the `compose.yaml` file and pay attention to how the file is configured.
 
 For instance, we can see the version of MySQL used then was `mysql:5.7` (so, use the same to avoid conflicts).
 
-Our `docker-compose.yml` will then become:
+Our `compose.yaml` will then become:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: limesurvey
@@ -219,6 +229,8 @@ services:
       timeout: 10s
       retries: 10
 ```
+
+</Snippets>
 
 :::tip Using service_healthy
 I've used the `depends_on` property for the `limesurvey-app` service and I've specified `condition: service_healthy`. This is a very cool feature: LimeSurvey, the PHP application, won't start before the database layer is running. Since LimeSurvey has to access the database, we just want to avoid some connectivity errors like *`nc: connect to limesurvey-db (xxxxx) port 3306 (tcp) failed: Connection refused`* or things like that.

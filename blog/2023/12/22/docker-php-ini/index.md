@@ -18,9 +18,11 @@ A real-world example is: you've followed my article [Create your Joomla website 
 
 One of the easiest ways to do is to create a `.ini` file on your disk and share the file with your container.
 
-Most probably, you'll have a `docker-compose.yml` file, please edit the file.
+Most probably, you'll have a `compose.yaml` file, please edit the file.
 
-For the illustration, below you'll find a copy of the simplest `docker-compose.yml` file you can retrieve in my [Create your Joomla website using Docker](/blog/docker-joomla) blog post. *You can have yours of course*. This is just for example.
+For the illustration, below you'll find a copy of the simplest `compose.yaml` file you can retrieve in my [Create your Joomla website using Docker](/blog/docker-joomla) blog post. *You can have yours of course*. This is just for example.
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -40,9 +42,13 @@ services:
       - MYSQL_ROOT_PASSWORD=example
 ```
 
+</Snippets>
+
 ## Step one - Update your yaml file
 
 The solution is to add the `volumes` line if not yet present in your file and, the most important one, the line for *overriding* the `php.ini` file like below:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -66,9 +72,13 @@ services:
       - MYSQL_ROOT_PASSWORD=example
 ```
 
+</Snippets>
+
 ## Step two - Create your own php.ini file
 
-The second things to do is to create a file called `php.ini` in the same folder of your `docker-compose.yml` where you'll define your variables; f.i.
+The second things to do is to create a file called `php.ini` in the same folder of your `compose.yaml` where you'll define your variables; f.i.
+
+<Snippets filename="php.ini">
 
 ```ini
 file_uploads = On
@@ -77,6 +87,8 @@ upload_max_filesize = 500M
 post_max_size = 500M
 max_execution_time = 600
 ```
+
+</Snippets>
 
 So, now, your folder contains at least two files:
 

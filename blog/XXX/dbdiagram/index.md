@@ -20,14 +20,13 @@ The aim of this article is to share a personal experience which, thanks to AI, h
 
 ## Create the database schema
 
-Jump to [https://dbdiagram.io/d](https://dbdiagram.io/d) and unfold the left pane: the one where you can describe your tables. 
+Jump to [https://dbdiagram.io/d](https://dbdiagram.io/d) and unfold the left pane: the one where you can describe your tables.
 
 By just opening the website, you'll immediately get an example. It's a very easy language.
 
 In the example below, let's create three tables: we'll create a web interface and we need a `users` table, a `groups` one and a `users_groups`. We'll define fields for sure but also constraints, relations and foresee a comment for each field:
 
-<details>
-<summary>dbdiagram - pseudo-code</summary>
+<Snippets filename="dbdiagram.txt">
 
 ```text
 Table users {
@@ -63,7 +62,8 @@ Table users_groups {
 }
 
 ```
-</details>
+
+</Snippets>
 
 ![Our tables in dbdiagram.io](./images/tables.png)
 
@@ -75,9 +75,7 @@ As you can see, there is an `Export` button. To be able to use it, you should cr
 
 ![Exporting the schema](./images/export.png)
 
-<details>
-
-<summary>schema.sql</summary>
+<Snippets filename="schema.sql">
 
 ```sql
 CREATE SCHEMA "web";
@@ -147,11 +145,11 @@ ALTER TABLE "web"."users" ADD FOREIGN KEY ("id") REFERENCES "web"."users_groups"
 ALTER TABLE "web"."groups" ADD FOREIGN KEY ("id") REFERENCES "web"."users_groups" ("group_id");
 ```
 
-</details>
+</Snippets>
 
 ## Generate the Python code
 
-When we all agree about the schema (my colleagues and I), time to start the real database creation. I need to create tables (this process is called **migration**) and feed them (**seeding**). 
+When we all agree about the schema (my colleagues and I), time to start the real database creation. I need to create tables (this process is called **migration**) and feed them (**seeding**).
 
 Since I'm using [SqlAlchemy](https://www.sqlalchemy.org/), I should do this:
 
@@ -168,9 +166,7 @@ I'll save it in my project's structure in folder `.tools/generate_models` (I'll 
 
 <!-- cspell:disable -->
 
-<details>
-
-<summary>The .tools/generate_models/generate_models.py script</summary>
+<Snippets filename=".tools/generate_models/generate_models.py">
 
 ```python
 import re
@@ -353,11 +349,11 @@ init_lines = ["# ruff: noqa: F401\nfrom .base import Base"] + [f"from .{table} i
 print("✅ All models and Pydantic classes generated successfully.")
 ```
 
-</details>
+</Snippets>
 
 The script will process the `schema.sql` file located in the same folder so let's copy/paste the SQL provided in the previous chapter into file `.tools/generate_models/schema.sql`.
 
-Time to run the script: start a console, go to the `.tools/generate_models` folder and just run `python generate_models.py`. 
+Time to run the script: start a console, go to the `.tools/generate_models` folder and just run `python generate_models.py`.
 
 You'll almost immediately see **✅ All models and Pydantic classes generated successfully.**.
 
@@ -370,7 +366,9 @@ Now, if you look into your `src/db/models` folder, you'll see a lot of new files
 
 ![How the project looks like in VSCode](./images/vscode.png)
 
-The `generate_models.py` utility created by ChatGPT has thus converted 
+The `generate_models.py` utility created by ChatGPT has thus converted
+
+<Snippets filename="create_db.sql">
 
 ```sql
 CREATE TABLE "web"."groups" (
@@ -388,7 +386,11 @@ COMMENT ON COLUMN "web"."groups"."disabled_at" IS 'If it is non-NULL, the group 
 ALTER TABLE "web"."groups" ADD FOREIGN KEY ("id") REFERENCES "web"."users_groups" ("group_id");
 ```
 
+</Snippets>
+
 into this Python code:
+
+<Snippets filename="create_db.py">
 
 ```python
 from sqlalchemy import Column, TIMESTAMP, Text
@@ -416,6 +418,8 @@ class Groups(Base):
     id = Column(UUID, ForeignKey("web.users_groups.id"))
     users_groups = relationship("Users_groups", back_populates="groups_list")
 ```
+
+</Snippets>
 
 Crazy no?
 

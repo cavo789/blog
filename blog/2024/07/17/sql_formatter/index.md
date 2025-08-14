@@ -12,7 +12,7 @@ When faced with legacy code, it is often useful to reformat it to make it readab
 
 There are plenty of reformatting tools for json, php, javascript and other languages, but far fewer for a query written in SQL.
 
-Just copy/paste `SELECT LAT_N, CITY, TEMP_F FROM STATS, STATION WHERE MONTH = 7 AND STATS.ID = STATION.ID ORDER BY TEMP_F` in the tool and get 
+Just copy/paste `SELECT LAT_N, CITY, TEMP_F FROM STATS, STATION WHERE MONTH = 7 AND STATS.ID = STATION.ID ORDER BY TEMP_F` in the tool and get
 
 ```sql
 SELECT

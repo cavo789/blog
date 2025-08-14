@@ -48,6 +48,8 @@ It's for sure too technical now but if you click on the
 
 Please create on your disk, let us say in the `/tmp/joomla` folder a file called `compose.yaml` with this content (you can retrieve that file on [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla)):
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 services:
   joomla:
@@ -65,6 +67,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=example
 ```
+
+</Snippets>
 
 :::tip You want MariaDB, not MySQL?
 Nothing could be simpler! In the `compose.yaml` file, replace the line `image: mysql:8.0.13` with `image: mariadb:11.1.2` and save your change. That's it. It's piece of cake no?
@@ -97,6 +101,8 @@ That command is one of the most important to know. It asks Docker to proceed the
 
 Docker will start downloading `joomla` and `joomladb`, the two services mentioned in the `compose.yaml` file.
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 services:
   // highlight-next-line
@@ -106,6 +112,8 @@ services:
   joomladb:
     [...]
 ```
+
+</Snippets>
 
 You will obtain something like this, please wait until everything is downloaded.
 
@@ -162,7 +170,9 @@ So Joomla can be ready before the database and that's not fun. Indeed, Joomla sh
 
 The solution provided by Docker is the notion of `healthcheck`. We have to define how Docker can *know* that MySQL is *healthy*. Then we'll ask Joomla to wait until the database layer is *healthy*.
 
-```yml
+<Snippets filename="compose.yaml">
+
+```yaml
 services:
   // highlight-next-line
   joomla:
@@ -178,7 +188,7 @@ services:
   joomladb:
     [...]
     // highlight-next-line
-    healthcheck:    
+    healthcheck:
       // highlight-next-line
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       // highlight-next-line
@@ -187,6 +197,8 @@ services:
       retries: 10
 ```
 
+</Snippets>
+
 :::
 
 ### Why joomla-joomlaxxx names
@@ -194,6 +206,8 @@ services:
 We didn't give your project a name, we just created a `compose.yaml` file in your `/tmp/joomla` folder. So, Docker has named your project using the folder name (`joomla`) concatenated to service name (refers to the `compose.yaml` file, we have two services, one called `joomladb` and one called `joomla`). That is why...
 
 Let us introduce a minor, optional, change, we will give a name to your Docker project and containers: edit the `compose.yaml` file and add a line with `name: xxxx` where `xxxx` is the name of your choice. Do the same but using `container_name` this time for the two services; for instance:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 // highlight-next-line
@@ -209,6 +223,8 @@ services:
     container_name: kingsbridge-db
     [...]
 ```
+
+</Snippets>
 
 We won't be restarting your Docker containers yet. For now, the `kingsbridge` name won't be considered. For this to be the case, we would need to launch `docker compose down` followed by `docker compose up --detach`, but let us wait a little longer before doing so.
 
@@ -228,6 +244,8 @@ Ok, so, Docker has downloaded Joomla (in its *latest* version) and MySQL (versio
 :::info What about Joomla 5.0 i.e. force a version?
 By default, when we don't specify any version number (*which isn't recommended*), Docker will download the version known as the `latest` one. `latest`, here, is what Docker calls a *tag*.
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 services:
   joomla:
@@ -236,9 +254,13 @@ services:
 [...]
 ```
 
+</Snippets>
+
 To retrieve the list of all tags, please navigate to [https://hub.docker.com/_/joomla/tags](https://hub.docker.com/_/joomla/tags).
 
 During writing this article, Joomla *latest* correspond to Joomla version 4.4.1. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: *5.1-php8.2-apache*. So just replace `image: joomla` with `image: joomla:5.1-php8.2-apache` in `compose.yaml` and it's done. You're forcing a version. **Note: make sure to use a tag ending by `-apache`.**
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 services:
@@ -247,6 +269,8 @@ services:
     image: joomla:5.1-php8.2-apache
 [...]
 ```
+
+</Snippets>
 
 :::
 
@@ -298,6 +322,8 @@ But, for the database configuration, here you need to be strict:
 These values can be retrieved inside the `compose.yaml` file. If you have named your database service something other than `joomladb`, then please use the name you have chosen.
 :::
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 services:
   [...]
@@ -308,6 +334,8 @@ services:
       // highlight-next-line
       - MYSQL_ROOT_PASSWORD=example
 ```
+
+</Snippets>
 
 ![Joomla Database configuration](./images/joomla_admin_database_configuration.png)
 
@@ -402,6 +430,8 @@ We wish two things:
 
 To do this, please edit the `compose.yaml` file and add the highlighted lines below:
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 name: kingsbridge
 
@@ -440,6 +470,8 @@ services:
       // highlight-next-line
       - ./db:/var/lib/mysql
 ```
+
+</Snippets>
 
 The `/var/www/html` folder of the Joomla service should be synchronized with the `site_joomla` subfolder on your computer. This is for the Joomla website.
 
@@ -598,12 +630,16 @@ To be able to do this, you will need to start a *interactive shell session* in t
 
 Did you remember the name of your Joomla service? If no, just open the `compose.yaml` file again.
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 services:
   // highlight-next-line
   joomla:
     [...]
 ```
+
+</Snippets>
 
 The name of your Joomla service is `joomla` (and `joomladb` is the name of your database service).
 
@@ -651,11 +687,15 @@ Instead of using the IP address, it would be much nicer to use an alias like `ht
 
 For this, on Windows, edit the file `C:\Windows\System32\Drivers\etc\hosts` and add the `kingsbridge` line as below illustrated:
 
+<Snippets filename="C:\Windows\System32\Drivers\etc\hosts">
+
 ```text
 127.0.0.1 localhost
 // highlight-next-line
 127.0.0.1 kingsbridge
 ```
+
+</Snippets>
 
 Save the file. Now you can surf to `http://kingsbridge:8080`
 
@@ -673,6 +713,8 @@ You just need to make sure to use another, unused, port.
 
 Consider the `Shiring` project `compose.yaml` file
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 // highlight-next-line
 name: shiring
@@ -686,6 +728,8 @@ services:
 
   [...]
 ```
+
+</Snippets>
 
 We will use the port `8081` for that project and, in your host file, we will add `127.0.0.1 shiring`.
 
@@ -725,6 +769,8 @@ This information has been retrieved from this Pull requests: [https://github.com
 
 Our `compose.yaml` will become:
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 name: kingsbridge
 
@@ -761,6 +807,8 @@ services:
       - POSTGRES_PASSWORD=example
 ```
 
+</Snippets>
+
 Now, during the configuration of Joomla, make sure to choose `PostgreSQL (PDO)` for the database type and fill in the database wizard with the correct values.
 
 :::tip Use alpine images wherever possible
@@ -770,6 +818,8 @@ For the first time during this tutorial, we're using an `alpine` image (`postgre
 ### Using MariaDB
 
 If you plan to use MariaDB, here is the Docker Official Image: [https://hub.docker.com/_/mariadb](https://hub.docker.com/_/mariadb).
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: kingsbridge
@@ -795,6 +845,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=example
 ```
+
+</Snippets>
 
 For MariaDB, please select `MySQLi` during the installation wizard.
 
@@ -823,6 +875,8 @@ This is how:
 1. On your computer, create a folder for your new project (f.i. `mkdir ~/projects/my_new_project && cd $_`)
 2. Also create the two following folders to make your site and your database persistents: `mkdir site_joomla db`
 3. In that folder, create a `compose.yaml` file with this content:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: yourprojectname
@@ -858,6 +912,9 @@ services:
     volumes:
       - ./db:/var/lib/mysql
 ```
+
+</Snippets>
+
 <!-- markdownlint-disable MD029 -->
 3. Create your two sub-folders: `mkdir db site_joomla`
 4. Run `docker compose up --detach` to start Docker and create your containers

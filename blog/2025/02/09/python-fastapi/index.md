@@ -28,9 +28,7 @@ Please create a dummy folder and jump in it: `mkdir /tmp/fastapi && cd $_`.
 
 In that folder, please create a new file called `Dockerfile` with the following content:
 
-<details>
-
-<summary>Dockerfile</summary>
+<Snippets filename="Dockerfile">
 
 ```dockerfile
 # We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
@@ -48,15 +46,13 @@ COPY main.py main.py
 # And we'll run FastAPI and call our script. We'll expose the script on port 82
 CMD ["fastapi", "run", "main.py", "--port", "82"]
 ```
-</details>
+</Snippets>
 
 The final image size will be about 184MB i.e. almost nothing.
 
 As you've seen, we need a file called `main.py`; let's create it:
 
-<details>
-
-<summary>main.py</summary>
+<Snippets filename="main.py">
 
 ```python
 from fastapi import FastAPI
@@ -68,15 +64,15 @@ def read_root():
     return {"Hello": "World"}
 ```
 
-</details>
+</Snippets>
 
-This very straightforward code defines a route called `/`. It's a `GET` method and we'll return a JSON object: 
+This very straightforward code defines a route called `/`. It's a `GET` method and we'll return a JSON object:
 
 ```json
 {
   "Hello": "World"
 }
-``` 
+```
 
 You know what? It's already done.
 
@@ -106,7 +102,7 @@ There is an second, alternative template called ReDoc. You can access it using t
 
 ## Let's play - Creating a joke generator
 
-We'll update build a joke generator script. Our objective will be to get a random joke or a specific one (like *Give me the third joke you know*). 
+We'll update build a joke generator script. Our objective will be to get a random joke or a specific one (like *Give me the third joke you know*).
 
 For this, we'll update our `main.py` script and because we'll probably make more than one change, we'll mount our host folder to the container.
 
@@ -137,9 +133,7 @@ docker rmi python-fastapi --force
 
 Now, please copy/paste the following content to your existing `Dockerfile`:
 
-<details>
-
-<summary>Dockerfile</summary>
+<Snippets filename="Dockerfile">
 
 ```dockerfile
 # We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
@@ -161,11 +155,11 @@ CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "82"]
 // highlight-end
 ```
 
-</details>
+</Snippets>
 
 Rebuild the image and run a new container by running these commands:
 
-OK, we'll run the container again but, now, with a volume: 
+OK, we'll run the container again but, now, with a volume:
 
 ```bash
 docker build -t python-fastapi . && docker run -v .:/app -p 82:82 python-fastapi
@@ -175,9 +169,7 @@ Now with a Docker image with hot reload and we've mounted our folder in the cont
 
 Please edit your `main.py` script like this:
 
-<details>
-
-<summary>main.py</summary>
+<Snippets filename="main.py">
 
 ```python
 from fastapi import FastAPI
@@ -190,13 +182,15 @@ def read_root():
     return {"Hello": "Belgium!"}
 ```
 
-</details>
+</Snippets>
 
 Refresh your web page, you'll see Hello Belgium!.  Change your `main.py` and replace `Belgium!` by `France`. Reload your web page; you'll see Hello France. So, nice, we've a hot reload and we can really start to play.
 
 ### Our joke generator
 
 We'll update our `main.py` script like this:
+
+<Snippets filename="main.py">
 
 ```main.py
 // highlight-next-line
@@ -233,10 +227,12 @@ def read_item(joke_id: int):
 // highlight-end
 ```
 
+</Snippets>
+
 You immediately see it I think:
 
 * I've defined an array with five, hardcoded, jokes;
-* I've defined a new route called `/jokes` and that one will display a random joke 
+* I've defined a new route called `/jokes` and that one will display a random joke
 * And finally I've defined a `jokes/{joke_id}` to be able to target a specific joke (like "Give me the second joke you know").
 
 :::info Use an external file instead of hardcoding jokes

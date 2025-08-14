@@ -26,11 +26,15 @@ The concerned settings will be displayed and set `Files: Auto save` on `onFocusC
 
 Or, you can also simply add the following line in your `settings.json` file:
 
+<Snippets filename="settings.json">
+
 ```json
 {
     "files.autoSave": "onFocusChange",
 }
-````
+```
+
+</Snippets>
 
 :::tip You're using a versioning system, right?
 Some people don't like this feature and say *I want to be aware when I save something* (in case I do something stupid eh) but, oh, there's a versioning system like Git isn't there? So if you do something stupid, just don't save the changes and/or do a `revert`.

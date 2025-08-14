@@ -13,7 +13,7 @@ enableComments: true
 
 In this article, we'll see how to use a private SSH key using a GitLab CI.
 
-The need: when running my CI, the GitLab runner has to be able to connect to my self-hosted (and private) GitLab environment. This because he'll need to pull from there private projects. Think to a PHP project f.i. : in my `composer.json`, I'm referring to dependencies hosted on my GitLab server. Or, same for a Javascript project and his `package.json` file. 
+The need: when running my CI, the GitLab runner has to be able to connect to my self-hosted (and private) GitLab environment. This because he'll need to pull from there private projects. Think to a PHP project f.i. : in my `composer.json`, I'm referring to dependencies hosted on my GitLab server. Or, same for a Javascript project and his `package.json` file.
 
 Another example: my CI will produce some files (like a `.pdf` one) by converting some Markdown documents to a real documentation. At the end of this conversion, the PDF has to be pushed to the repository.
 
@@ -63,18 +63,20 @@ If I want to use the key for all repositories of a given group, I just need to p
 And, if I'm a GitLab admin, I can start the admin interface and from there, go to the **CI/CD Settings** page and proceed the same way.
 :::
 
-## Finally, I have to adjust my gitlab-ci.yml file
+## Finally, I have to adjust my .gitlab-ci.yml file
 
 As an example, I'll reuse the example provided by GitLab: [https://gitlab.com/gitlab-examples/ssh-private-key/-/blob/main/.gitlab-ci.yml](https://gitlab.com/gitlab-examples/ssh-private-key/-/blob/main/.gitlab-ci.yml)
 
 :::note
 Based on the used image, you'll need to use `apt` or `apk`.
 
-For an ubuntu image like the example below, it'll be `apt`. If, f.i. you're using the `docker` image, then, replace 
+For an ubuntu image like the example below, it'll be `apt`. If, f.i. you're using the `docker` image, then, replace
 `apt-get update -y && apt-get install openssh-client git -y` by `apk update && apk add --no-cache openssh-client git`.
 :::
 
-```yml
+<Snippets filename=".gitlab-ci.yml">
+
+```yaml
 using_ssh_key:
   image: ubuntu
   before_script:
@@ -94,10 +96,12 @@ using_ssh_key:
       ssh -T git@my_self_hosted_gitlab
     # - | # try to clone a private repo
     #   git clone git@my_self_hosted_gitlab:my_repo.git
-``` 
+```
+
+</Snippets>
 
 :::note
-If the CI fails with an error like *load pubkey "id_ed25519": invalid format* or *error in libcrypto*, one cause can be the key used: the variable `SSH_PRIVATE_KEY` should be initialized with the private key; not the public one. 
+If the CI fails with an error like *load pubkey "id_ed25519": invalid format* or *error in libcrypto*, one cause can be the key used: the variable `SSH_PRIVATE_KEY` should be initialized with the private key; not the public one.
 
 The base64 string should be created like this: `cat ~/.ssh/id_ed25519_my_self_hosted_gitlab | base64 -w 0` (and, thus, not using the `.pub` file).
 :::

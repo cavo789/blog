@@ -70,6 +70,8 @@ To do this, click on the `New Query` button (or press <kbd>CTRL</kbd>-<kbd>N</kb
 
 ![Create the database](./images/create_database.png)
 
+<Snippets filename="create_db.sql">
+
 ```sql
 USE [master]
 GO
@@ -98,6 +100,8 @@ INSERT INTO dbo.Person (LastName, FirstName) VALUES
 GO
 ```
 
+</Snippets>
+
 Congratulations, you've created a `MyDB` database with a `dbo.Person` table:
 
 ![The database has been created](./images/database_created.png)
@@ -110,7 +114,9 @@ If, after having fired the query, you don't see yet your database in the `Object
 
 *Probably not the best way to query a SQL Server database, based on an example found on Stack Overflow...*
 
-As an example, we'll create a DOS PowerShell script called `connect.ps1` to illustrate how to query our new database :
+As an example, we'll create a DOS PowerShell script called `connect.ps1` to illustrate how to query our new database:
+
+<Snippets filename="connect.ps1">
 
 ```powershell
 $SqlServer = 'localhost,1433';
@@ -140,6 +146,8 @@ $SqlConnection.Dispose();
 
 Write-Host ""
 ```
+
+</Snippets>
 
 Please start a DOS or a PowerShell console and run this command: `powershell -executionpolicy bypass -File .\connect.ps1`.
 

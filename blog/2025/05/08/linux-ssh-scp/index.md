@@ -34,7 +34,7 @@ Create a SSH key, copy it to the remote server and run a SSH connection. Steps 1
 1. `ssh-keygen -t ed25519 -C "christophe@my_blog.be" -f ~/.ssh/id_ed25519_my_blog`
 2. `ssh-copy-id -i ~/.ssh/id_ed25519_my_blog christophe@my_blog.be`
 3. `ssh -i ~/.ssh/id_ed25519_my_blog christophe@my_blog.be`
-  
+
 ## In-depth
 
 ### 1. Creating the SSH key
@@ -97,7 +97,7 @@ For instance, `scp -r christophe@my_blog.be:~/backup/ .` will copy the entire `~
 
 The SSH experience is much, much better using Microsoft Terminal than the old Putty application.
 
-With Microsoft Terminal, you can work in a full screen mode, you can have a nice background image, you can work with a much better font (the standard one with Putty is awful), use tabs, ... 
+With Microsoft Terminal, you can work in a full screen mode, you can have a nice background image, you can work with a much better font (the standard one with Putty is awful), use tabs, ...
 
 If you've already experienced Putty, you know what I mean.
 
@@ -115,12 +115,16 @@ Let's create a `~/.ssh/config` file. If the file already exists, just edit it: `
 
 Add these lines in the file:
 
+<Snippets filename="~/.ssh/config">
+
 ```text
 Host my_app
     Hostname my_blog.be
     User christophe
     IdentityFile ~/.ssh/id_ed25519_my_blog
 ```
+
+</Snippets>
 
 Save the file and go back to the console.
 

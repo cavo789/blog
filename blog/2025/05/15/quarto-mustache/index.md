@@ -32,8 +32,7 @@ Please run `mkdir /tmp/partials && cd $_` to create a temporary folder and jump 
 
 Create a file called `_quarto.yml` with this content:
 
-<details>
-<summary>_quarto.yml</summary>
+<Snippets filename="_quarto.yml">
 
 ```yaml
 project:
@@ -50,14 +49,14 @@ website:
     style: "docked"
     toc-depth: 4
     contents: auto
-  
+
 <!-- highlight-next-line -->
 filters:
   <!-- highlight-next-line -->
   - partials
 ```
 
-</details>
+</Snippets>
 
 This file tells to Quarto that we're about to create a website i.e. by running `quarto render` later on, we'll convert our pages written in Markdown as HTML pages.
 
@@ -71,8 +70,7 @@ This will create a new folder called `_extensions` with partials in it.
 
 The idea behind Quarto-partials is to allow to write a page like below i.e. I'll describe my first fictive functionality and, in the `How to run` chapter, I'll inject the content of another page:
 
-<details>
-<summary>documentation/canvas.md</summary>
+<Snippets filename="documentation/canvas.md">
 
 ```markdown
 ---
@@ -90,7 +88,7 @@ Imagine you're working on a complex project – perhaps writing a research paper
 {{< partial ../_partials/run.md >}}
 ```
 
-</details>
+</Snippets>
 
 As you can see, I'm typing the description of my feature (called "Contextual Canvas" here) and then, I've a "How to run chapter". Instead of typing the how-to here, I'll include an external file (a *template*) called `../_partials/run.md`.
 
@@ -98,8 +96,7 @@ That one will use the Quarto-partials extension so, I can put in `../_partials/r
 
 Here is the template:
 
-<details>
-<summary>_partials/run.md</summary>
+<Snippets filename="_partials/run.md">
 
 ```markdown
 In order to run this action, please run `{{ command }}`.
@@ -111,12 +108,11 @@ Existing flags:
   * `--verbose`: enable verbose mode; showing more information's on screen
 ```
 
-</details>
+</Snippets>
 
 Here comes Mustache in action: as you can see on the first line, the syntax `{{ command }}` will output the content of a variable called `command`. Of course, I need to declare it. Let's review my documentation and add what Quarto call a *frontmatter* YAML block:
 
-<details>
-<summary>documentation/canvas.md</summary>
+<Snippets filename="documentation/canvas.md">
 
 ```markdown
 ---
@@ -139,7 +135,7 @@ Imagine you're working on a complex project – perhaps writing a research paper
 
 ```
 
-</details>
+</Snippets>
 
 Time to create our website. Please run `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render`.
 
@@ -172,8 +168,7 @@ partial-data:
 
 Let's prove it. We'll create a new feature:
 
-<details>
-<summary>documentation/builder.md</summary>
+<Snippets filename="documentation/builder.md">
 
 ```markdown
 ---
@@ -193,7 +188,7 @@ The *Intent-Driven Interface Builder* would then leverage AI and a vast library 
 {{< partial ../_partials/run.md >}}
 ```
 
-</details>
+</Snippets>
 
 and render our site again by running again `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render`.
 
@@ -203,8 +198,7 @@ and render our site again by running again `docker run -it --rm -v .:/public -w 
 
 In my own case, my documentation looks like this:
 
-<details>
-<summary>/documentation/php_lint.md</summary>
+<Snippets filename="/documentation/php_lint.md">
 
 ```markdown
 ---
@@ -246,14 +240,13 @@ None.
 None.
 ```
 
-</details>
+</Snippets>
 
 ## Testing if a variable is defined or not
 
 Let's take a look to the `is_for.md` file.
 
-<details>
-<summary>/_partials/project_type.md</summary>
+<Snippets filename="/_partials/project_type.md">
 
 ```markdown
 <!-- #type means defined and thus has been set to something like "PHP" or "PYTHON" -->
@@ -271,18 +264,17 @@ This stage is for **all** type of projects.
 {{/type}}
 ```
 
-</details>
+</Snippets>
 
 There is two syntax used here: `{{#` and `{{^`.
 
-The first one will check the presence of a variable called `type` and if that one is defined, the block will be processed. 
+The first one will check the presence of a variable called `type` and if that one is defined, the block will be processed.
 
 The second one is called *Inverted section* and will check the absence of the variable so if `type` is not defined, that block will be parsed.
 
 If you look at my `php_lint.md` file, I've well a variable `type` defined in my `partial-data` section (the one used by Quarto-partials).
 
-<details>
-<summary>/documentation/php_lint.md</summary>
+<Snippets filename="/documentation/php_lint.md">
 
 ```markdown
 ---
@@ -296,7 +288,7 @@ partial-data:
   config_url: "https://github.com/tengattack/phplint/blob/master/.phplint.yml"
   name: "PHP Linter"
   <!-- highlight-next-line -->
-  type: "PHP" 
+  type: "PHP"
 ---
 
 <!-- cspell:ignore phplint -->
@@ -326,7 +318,7 @@ None.
 None.
 ```
 
-</details>
+</Snippets>
 
 If I render my file using the command line `quarto render`, I'll then see `This job only for **PHP** project.` in my documentation.
 
@@ -334,8 +326,7 @@ In case my feature was for all project types, I can just remove the `type: "PHP"
 
 Let's take a look to the next included file:
 
-<details>
-<summary>../_partials/configure/file.md</summary>
+<Snippets filename="../_partials/configure/file.md">
 
 ```markdown
 <!-- #config_file means defined and thus there is a configuration file -->
@@ -354,7 +345,7 @@ There is no configuration file.
 
 ```
 
-</details>
+</Snippets>
 
 Same idea. If a `config_file` key is defined in the documentation frontmatter, we'll obtain `PHP Linter uses a settings file named .config/.phplint.yml ([Learn more](https://github.com/tengattack/phplint/blob/master/.phplint.yml)).`. If we remove the `config_file` line, we'll then get `There is no configuration file.`.
 

@@ -50,11 +50,15 @@ So, if you have Visual Studio Code on your machine, in the Linux console, run th
 
 Write anything valid like for instance:
 
+<Snippets filename="index.php">
+
 ```php
 <?php
 
 echo "<h1>Hello world! I'm a shared script</h1>";
 ```
+
+</Snippets>
 
 Save the file and just return to your browser. Refresh the page `http://127.0.0.1:81/`
 

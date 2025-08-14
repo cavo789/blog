@@ -60,17 +60,25 @@ Also run `sudo nano /etc/xrdp/startwm.sh` to edit the file.
 
 1. Comment the two last lines:
 
+    <Snippets filename="/etc/xrdp/startwm.sh">
+
     ```text
     # test -x /etc/X11/Xsession && exec /etc/X11/Xsession
     # exec /bin/sh /etc/X11/Xsession
     ```
 
+    </Snippets>
+
 2. Add these two last lines:
+
+    <Snippets filename="/etc/xrdp/startwm.sh">
 
     ```text
     # xce4
     startxfce4
     ```
+
+    </Snippets>
 
 Finally enable `dBus`:
 

@@ -14,7 +14,7 @@ Let's take a look...
 
 <!-- truncate -->
 
-In the [Create your Joomla website using Docker](/blog/docker-joomla) article, we learned that if we need more than one Docker service (php/apache as well as mysql), we need to have a `docker-compose.yml` file. It's true and it's the easiest way to manage the application.
+In the [Create your Joomla website using Docker](/blog/docker-joomla) article, we learned that if we need more than one Docker service (php/apache as well as mysql), we need to have a `compose.yaml` file. It's true and it's the easiest way to manage the application.
 
 But we can run Docker containers by hand and, in that case, no such file is needed. We'll learn this technique in this article.
 

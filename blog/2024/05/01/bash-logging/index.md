@@ -27,6 +27,8 @@ If you already have a script, please open it. Otherwise, just create a new one a
 
 Name the file just as you want (I will name it `run.sh` for example) and make sure the script can be executed by running `chmod +x run.sh` in your console.
 
+<Snippets filename="run.sh">
+
 ```bash
 #!/usr/bin/env bash
 
@@ -83,9 +85,13 @@ function __main() {
 __main $*
 ```
 
+</Snippets>
+
 ## The log helper
 
 Please create a file called `log.sh`, in the exact same folder of your script, and copy/paste this content:
+
+<Snippets filename="log.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -136,7 +142,7 @@ function log::__main() {
     # Example of a filename: /tmp/myScript.sh.1J6Sqb62.log
     # Set LOG_FILE="" if you don't want to write to a log file (but simpler to not source this file then)
     [[ ! -v LOG_FILE ]] && LOG_FILE="$(mktemp /tmp/"$(basename "$0")".XXXXXXXXXX.log)"
-    
+
     # Quick function to export the system date in the chosen format.
     log::__logNow() { date +"%Y-%m-%dT%H:%M:%S%z"; }
 
@@ -191,7 +197,7 @@ function log::__logDestruct() {
 
         logEntry="$(printf '[%s] Duration: %d second(s)' "$(log::__logNow)" "$SECONDS")"
         echo "$logEntry" >&3
-        
+
         log::__displayLog
     fi
 
@@ -235,14 +241,14 @@ function log::write() {
         errorMessage="ERROR - The ${LOG_FILE} file isn't writable. Exiting..."
         printf "\033[1;${__RED:-31}m%s\033[0m\n" "ERROR - ${message} Exiting..." >&2  # Write on stderr
     fi
-    
+
     # If the file size is 0, echo a start info date/time; do it once
     if [[ ! -s ${LOG_FILE} ]]; then
         printf '[%s] %s\n' "$(date +"%Y-%m-%dT%H:%M:%S%z")" "Start $0" >&3
     fi
 
     printf '[%s] %s %s\n' "$(date +"%Y-%m-%dT%H:%M:%S%z")" "${message}" "$(log::__trace)" >&3
-    
+
     return 0
 }
 
@@ -269,7 +275,7 @@ function log::__displayLog() {
 
     printf "%s\n" "--------------------- LOG FILE CONTENT (${LOG_FILE}) ---------------------"
 
-    # Show the log content but make sure to remove, if any, ANSI colors. 
+    # Show the log content but make sure to remove, if any, ANSI colors.
     # (@see https://stackoverflow.com/a/51141872/1065340)
     printf "\033[1;${__GRAY:-30}m%s\n" ""
     sed "s/\x1B\[[0-9;]\{1,\}[A-Za-z]//g" "${LOG_FILE}"
@@ -290,6 +296,8 @@ fi
 
 log::__main
 ```
+
+</Snippets>
 
 ## The result
 

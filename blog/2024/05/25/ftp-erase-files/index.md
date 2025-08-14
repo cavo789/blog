@@ -23,6 +23,8 @@ There is an alternative, the `erase.php` script.
 
 Open your FTP client, open your website folder (like `/var/www/html/old_site`); the one you wish to remove and create a new file called f.i. `erase.php` then copy/paste the code below in it.
 
+<Snippets filename="erase.php">
+
 ```php
 <?php
 
@@ -50,6 +52,8 @@ echo '<h4 style="color:green;">Deletion complete.  Only the '.$script_name.' fil
 unlink(__FILE__);
 ?>
 ```
+
+</Snippets>
 
 Start your browser, navigate to your website (`http://your_old_site.com`) and add `/erase.php` at the end to run the script.
 

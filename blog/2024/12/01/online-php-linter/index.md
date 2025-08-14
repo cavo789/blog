@@ -14,6 +14,8 @@ You'd like to have an online tool that you can use to quickly retrieve code with
 
 For example, how do you make the code below look cleaner in five seconds?
 
+<Snippets filename="my_collection.php">
+
 ```php
 <?php
 abstract class mycollection implements Iterator
@@ -26,6 +28,8 @@ foreach($array as $item){
 }}
 }
 ```
+
+</Snippets>
 
 <!-- truncate -->
 

@@ -27,8 +27,7 @@ Please create a temporary folder using `mkdir -p /tmp/remote-ssh && cd $_`. Once
 
 Please create the `Dockerfile` with the content below.
 
-<details>
-<summary>Dockerfile</summary>
+<Snippets filename="Dockerfile">
 
 ```dockerfile
 # cspell:ignore ssword
@@ -60,11 +59,11 @@ EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 ```
 
-</details>
+</Snippets>
 
 This done, please create the Docker image by running `docker build -t ssh-server .` then, create the container by running `docker run -d -p 2222:22 --name remote-dev ssh-server`.
 
-So, now, we've a container that will act as our SSH server. We've defined a user called `christophe` with 
+So, now, we've a container that will act as our SSH server. We've defined a user called `christophe` with
 `p@ssword` for his password.
 
 ### Test our container
@@ -131,7 +130,7 @@ We can see `d3cacfe67885` for the host name; in fact, it's the container ID.
 
 Just for illustration, exit VSCode, go back to the console and run `ssh christophe@localhost -p 2222`.
 
-We can well see our `hello.sh` file: 
+We can well see our `hello.sh` file:
 
 ![Checking the hello.sh Bash script](./images/ssh_check.png)
 

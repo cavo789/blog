@@ -66,46 +66,7 @@ Look at your Docusaurus site now; go to the `src/theme/BlogPostItem` folder and 
 
 Just keep the `index.js` file created by the `swizzle` command. Here is the one I just got on my current Docusaurus version:
 
-<details>
-
-<summary>src/theme/BlogPostItem/index.js</summary>
-
-```javascript
-import React from 'react';
-import clsx from 'clsx';
-import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
-import BlogPostItemContainer from '@theme/BlogPostItem/Container';
-import BlogPostItemHeader from '@theme/BlogPostItem/Header';
-import BlogPostItemContent from '@theme/BlogPostItem/Content';
-import BlogPostItemFooter from '@theme/BlogPostItem/Footer';
-// apply a bottom margin in list view
-function useContainerClassName() {
-  const {isBlogPostPage} = useBlogPost();
-  return !isBlogPostPage ? 'margin-bottom--xl' : undefined;
-}
-export default function BlogPostItem({children, className}) {
-  const containerClassName = useContainerClassName();
-  return (
-    <BlogPostItemContainer className={clsx(containerClassName, className)}>
-      <BlogPostItemHeader />
-      <BlogPostItemContent>{children}</BlogPostItemContent>
-      <BlogPostItemFooter />
-    </BlogPostItemContainer>
-  );
-}
-```
-
-</details>
-
-## Playing and adding a stupid message to every blog post
-
-Before proceeding, let us conduct a test: is this the correct file to modify for our need?
-
-Let's play and add a line just after our post title. Look at the example below; I've just added a new line:
-
-<details>
-
-<summary>src/theme/BlogPostItem/index.js</summary>
+<Snippets filename="src/theme/BlogPostItem/index.js">
 
 ```javascript
 import React from 'react';
@@ -136,7 +97,46 @@ export default function BlogPostItem({children, className}) {
 }
 ```
 
-</details>
+</Snippets>
+
+## Playing and adding a stupid message to every blog post
+
+Before proceeding, let us conduct a test: is this the correct file to modify for our need?
+
+Let's play and add a line just after our post title. Look at the example below; I've just added a new line:
+
+<Snippets filename="src/theme/BlogPostItem/index.js">
+
+```javascript
+import React from 'react';
+import clsx from 'clsx';
+import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
+import BlogPostItemContainer from '@theme/BlogPostItem/Container';
+import BlogPostItemHeader from '@theme/BlogPostItem/Header';
+import BlogPostItemContent from '@theme/BlogPostItem/Content';
+import BlogPostItemFooter from '@theme/BlogPostItem/Footer';
+// apply a bottom margin in list view
+function useContainerClassName() {
+  const {isBlogPostPage} = useBlogPost();
+  return !isBlogPostPage ? 'margin-bottom--xl' : undefined;
+}
+export default function BlogPostItem({children, className}) {
+  const containerClassName = useContainerClassName();
+  return (
+    <BlogPostItemContainer className={clsx(containerClassName, className)}>
+      <BlogPostItemHeader />
+      // highlight-next-line
+      {/* Just after the blog post title, we'll add a "Are you ready" text */}
+      // highlight-next-line
+      <strong style={{color:"red"}}>Are you ready to update your BlogPostItem layout?</strong>
+      <BlogPostItemContent>{children}</BlogPostItemContent>
+      <BlogPostItemFooter />
+    </BlogPostItemContainer>
+  );
+}
+```
+
+</Snippets>
 
 Save the file and refresh your page using your browser and tadaaa 🎉🎉🎉... Yes, we can see that text on each blog post.
 
@@ -168,9 +168,7 @@ This `index.js` will be the **entry point** of the component.
 
 Please create the `src/components/BlueSky/index.js` file with this content:
 
-<details>
-
-<summary>src/components/BlueSky/index.js</summary>
+<Snippets filename="src/components/BlueSky/index.js">
 
 ```javascript
 import BlueSkyShare from "./share";
@@ -194,7 +192,7 @@ BlueSky.propTypes = {
 };
 ```
 
-</details>
+</Snippets>
 
 **This is our React `<BlueSky />` component! Simple no? Right now, it's just a div containing another component called `<BlueSkyShare />`**.
 
@@ -204,9 +202,7 @@ If you look at the code here above, we've to create two new files: `share.js` an
 
 Ok, now, we've to create a second file called `src/components/BlueSky/share.js` and to copy/paste this content in it:
 
-<details>
-
-<summary>src/components/BlueSky/share.js</summary>
+<Snippets filename="src/components/BlueSky/share.js">
 
 ```javascript
 import Icon from "./bluesky.svg";
@@ -251,7 +247,7 @@ BlueSkyShare.propTypes = {
 };
 ```
 
-</details>
+</Snippets>
 
 As you can see, we've defined a function called `BlueSkyShare` and that function ask a parameter called `metadata`.
 
@@ -263,7 +259,6 @@ The `metadata` parameter is an object initialized by Docusaurus and that will co
 
 What does the `BlueSkyShare` function? In fact, we'll just provide a button with a url like `https://bsky.app/intent/compose?text=<title>%20<url>` (where we'll inject the blog post title and url).
 
-
 If you look at the code here above, we've to create another file called: `bluesky.svg`.
 
 ### 3/5 The BlueSky logo
@@ -272,9 +267,7 @@ For sure, we need the BlueSky logo somewhere.
 
 Please create a third file called `src/components/BlueSky/bluesky.svg` and copy/paste this content in it:
 
-<details>
-
-<summary>src/components/BlueSky/bluesky.svg</summary>
+<Snippets filename="src/components/BlueSky/bluesky.svg">
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -283,15 +276,13 @@ Please create a third file called `src/components/BlueSky/bluesky.svg` and copy/
 </svg>
 ```
 
-</details>
+</Snippets>
 
 ### 4/5 And finally our CSS
 
 And, very important, we need a CSS. Please create a fourth file called `src/components/BlueSky/styles.module.css` and copy/paste this content in it:
 
-<details>
-
-<summary>src/components/BlueSky/styles.module.css</summary>
+<Snippets filename="src/components/BlueSky/styles.module.css">
 
 ```css
 .blueSkyLogo{
@@ -327,7 +318,7 @@ And, very important, we need a CSS. Please create a fourth file called `src/comp
 }
 ```
 
-</details>
+</Snippets>
 
 ### 5/5 Last thing, we need to implement our component in Docusaurus
 
@@ -349,9 +340,7 @@ You should have this:
 
 Let's go back to what was said earlier: in order to adapt the page layout, Docusaurus uses the file `src/theme/BlogPostItem/index.js`. So it's time to inject our newly-created component in that script.
 
-<details>
-
-<summary>src/theme/BlogPostItem/index.js</summary>
+<Snippets filename="src/theme/BlogPostItem/index.js">
 
 ```javascript
 import React from 'react';
@@ -393,7 +382,7 @@ export default function BlogPostItem({ children, className }) {
 }
 ```
 
-</details>
+</Snippets>
 
 Congratulations! If you go to a page on your blog and refresh the page, you will see the BlueSky button at the bottom of the page.
 

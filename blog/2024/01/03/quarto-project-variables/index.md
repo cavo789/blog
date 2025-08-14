@@ -34,7 +34,9 @@ So, `_quarto.yml` can stay empty. His presence is just to tell to Quarto the mar
 
 Here is an example of what can be a `_variables.yml` content:
 
-```yml
+<Snippets filename="_variables.yml">
+
+```yaml
 version: 1.2
 
 email:
@@ -46,7 +48,11 @@ engine:
   knitr: "[Knitr](<https://yihui.name/knitr>)"
 ```
 
+</Snippets>
+
 And here is a markdown example (file `documentation.md`):
+
+<Snippets filename="documentation.md">
 
 ```markdown
 ---
@@ -62,6 +68,8 @@ Please contact us at {{< var email.info >}}.
 Quarto includes {{< var engine.jupyter >}} and
 {{< var engine.knitr >}} computation engines.
 ```
+
+</Snippets>
 
 As you can see, the short code is something like `{{< meta xxx >}}` or `{{< var xxx >}}`.
 
@@ -79,10 +87,14 @@ You can too retrieve environment variables using `{{< env xxx >}}` but, there, y
 
 For instance, you can have a `.env` file like this:
 
+<Snippets filename=".env">
+
 ```env
 APPLICATION_NAME=My application name
 VERSION_NUMBER=1.2
 ```
+
+</Snippets>
 
 Then, before calling the Quarto rendering process, you should load the file. Since I'm using Docker, I do this like this:
 
@@ -91,6 +103,8 @@ docker run --rm -it -v .:/input -w /input --env-file .env cavo789/quarto quarto 
 ```
 
 Here is the content of `documentation.md`:
+
+<Snippets filename="documentation.md">
 
 ```markdown
 ---
@@ -111,6 +125,8 @@ Please contact us at {{< var email.info >}}.
 Quarto includes {{< var engine.jupyter >}} and
 {{< var engine.knitr >}} computation engines.
 ```
+
+</Snippets>
 
 I'm thus using `--env-file .env` in the `docker run` instruction so Docker will load my variables and make them available in the container. Quarto can then access them.
 

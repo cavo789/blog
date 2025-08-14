@@ -23,8 +23,7 @@ In short, please:
 1. Run `mkdir /tmp/fastapi && cd $_` to create a temporary folder and jump in it
 2. Create a `Dockerfile` with the content below
 
-    <details>
-    <summary>Dockerfile</summary>
+    <Snippets filename="Dockerfile">
 
     ```dockerfile
     # We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
@@ -44,12 +43,11 @@ In short, please:
     CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "82"]
     ```
 
-    </details>
+    </Snippets>
 
 3. Create a `main.py` with the content below
 
-    <details>
-    <summary>main.py</summary>
+    <Snippets filename="main.py">
 
     ```python
     from random import choice
@@ -83,7 +81,7 @@ In short, please:
             return {"error": f"Joke with ID {joke_id} not found."}, 404
     ```
 
-    </details>
+    </Snippets>
 
 4. Run the `docker build -t python-fastapi . && docker run --detach -v .:/app -p 82:82 python-fastapi` command to run the server.
 
@@ -97,12 +95,12 @@ To install Bruno GUI on my Ubuntu distribution, I'm running these commands:
 sudo mkdir -p /root/.gnupg
 sudo chmod 700 /root/.gnupg
 
-sudo mkdir -p /etc/apt/keyrings 
-sudo gpg --no-default-keyring --keyring /etc/apt/keyrings/bruno.gpg --keyserver keyserver.ubuntu.com --recv-keys 9FA6017ECABE0266 
+sudo mkdir -p /etc/apt/keyrings
+sudo gpg --no-default-keyring --keyring /etc/apt/keyrings/bruno.gpg --keyserver keyserver.ubuntu.com --recv-keys 9FA6017ECABE0266
 
-echo "deb [signed-by=/etc/apt/keyrings/bruno.gpg] http://debian.usebruno.com/ bruno stable" | sudo tee /etc/apt/sources.list.d/bruno.list 
- 
-sudo apt update 
+echo "deb [signed-by=/etc/apt/keyrings/bruno.gpg] http://debian.usebruno.com/ bruno stable" | sudo tee /etc/apt/sources.list.d/bruno.list
+
+sudo apt update
 sudo apt install bruno
 ```
 
@@ -160,9 +158,7 @@ So, in short, I'll create my own Docker image and check if things are better.
 
 Let's create a file `bruno.Dockerfile` with the following content:
 
-<details>
-
-<summary>bruno.Dockerfile</summary>
+<Snippets filename="bruno.Dockerfile">
 
 ```Dockerfile
 FROM node:lts-bookworm-slim
@@ -172,7 +168,7 @@ ENTRYPOINT ["bru"]
 CMD ["run"]
 ```
 
-</details>
+</Snippets>
 
 We'll create our image like this: `docker build --file bruno.Dockerfile  -t bruno-image .` (we can check our image by running `docker run -it --rm bruno-image --version`; we should see `2.8.0`).
 
@@ -181,12 +177,11 @@ As we've just seen:
 * Our collection is stored in the `Jokes` folder and
 * our environment is stored in the `environments/dev.bru`.
 
-With this in mind, just run `docker run -it --rm -v "./Jokes":/apps -w /apps alpine/bruno run --env=dev` 
+With this in mind, just run `docker run -it --rm -v "./Jokes":/apps -w /apps alpine/bruno run --env=dev`
 
 ![Running for the first time the collection from the CLI](./images/connection_refused.png)
 
 Ok, something goes wrong. We've fired one request and it has failed. But when running the request from Bruno GUI, it was well working. Why? The answer is: because we are using Docker.
-
 
 ### Understanding why the Bruno CLI Docker container didn't work
 
@@ -200,7 +195,7 @@ vars {
 }
 ```
 
-We've created a `root` variable and assign it to `http://127.0.0.1:82` and when we run Bruno GUI, it works. 
+We've created a `root` variable and assign it to `http://127.0.0.1:82` and when we run Bruno GUI, it works.
 
 Why? Because the GUI is running on our host and `127.0.0.1` is our machine. If we do a `curl -v http://127.0.0.1:82/jokes` from the command line, it's works too.
 
@@ -262,9 +257,7 @@ For sure, the idea of the CLI tool is to be able to run assertions from the comm
 
 Let's update the `Get a random joke.bru` file like this:
 
-<details>
-
-<summary>Get a random joke.bru</summary>
+<Snippets filename="Get a random joke.bru">
 
 ```text
 meta {
@@ -295,8 +288,6 @@ settings {
 }
 ```
 
-</details>
+</Snippets>
 
 ![Bruno CLI is running assertions](./images/bruno_cli_assertions.png)
-
-

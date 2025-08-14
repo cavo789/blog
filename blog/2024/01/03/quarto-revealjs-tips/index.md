@@ -24,6 +24,8 @@ If you don't have yet a Docker image with Quarto, read this article [Running Qua
 
 The [title slide](https://quarto.org/docs/presentations/revealjs/advanced.html#title-slide) is the first one of your presentation. You can add such slide with a few yaml lines:
 
+<Snippets filename="slides.md">
+
 ```markdown
 ---
 title: "My Slide Show"
@@ -38,6 +40,8 @@ title-slide-attributes:
 
 # Slide 3
 ```
+
+</Snippets>
 
 The slideshow will have four slides, the first one will be the title-slide.
 
@@ -60,6 +64,8 @@ To do this, we'll need to add a custom JavaScript and custom CSS.
 Create a new folder called `assets` and, in that folder, a file called `style.css` and a second called `custom.js`.
 
 In `assets/style.css`, copy/paste the following code:
+
+<Snippets filename="assets/style.css">
 
 ```css
 .reveal .slide-logo-bottom-right {
@@ -87,7 +93,11 @@ In `assets/style.css`, copy/paste the following code:
 }
 ```
 
+</Snippets>
+
 In `assets/custom.js`, copy/paste the following code:
+
+<Snippets filename="assets/custom.js">
 
 ```JavaScript
 // The script below will ensure the logo is displayed top left
@@ -126,7 +136,11 @@ window.addEventListener("load", (event) => {
 });
 ```
 
+</Snippets>
+
 Now, use them in your `slides.md` like this:
+
+<Snippets filename="slides.md">
 
 ```markdown
 ---
@@ -146,6 +160,8 @@ format:
 ---
 ```
 
+</Snippets>
+
 As you can see above, the JavaScript code is injected in your presentation using the `header-includes` directive. For the stylesheet, the `css` directive is used (*there is no `js:` directive unfortunately*).
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
@@ -154,9 +170,13 @@ As you can see above, the JavaScript code is injected in your presentation using
 
 A background, a title and some style:
 
+<Snippets filename="slides.md">
+
 ```markdown
 # Merry Christmas {background-image="images/winter.jpg" style="text-align: center; background-color: #cfb0f399; color: #210753;"}
 ```
+
+</Snippets>
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
@@ -172,11 +192,15 @@ This can be corrected by using the attribute `background-size`. When not mention
 
 You can ask the browser to resize the image so it's fully displayed. This is the behavior when `background-size` is set to `contain`.
 
+<Snippets filename="slides.md">
+
 ```markdown
 ## {background-image="images/2024.jpg"}
 
 ## {background-image="images/2024.jpg" background-size="contain"}
 ```
+
+</Snippets>
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
@@ -194,6 +218,8 @@ The slide level is an important configuration item ([official documentation](htt
 
 If we look at the markdown below, how many slides will we have? Two or three? The first is for the title, the second for `Technologies and tools`, but will `Apache` be a separate slide or not?
 
+<Snippets filename="slides.md">
+
 ```markdown
 ---
 title: "Playing with slide-level"
@@ -208,6 +234,8 @@ Our web applications are running under [Apache](https://httpd.apache.org/).
 We don't need to have Apache locally since we're using it as a Docker image.
 ```
 
+</Snippets>
+
 In fact, it depends on the `slide-level` setting. By default, `slide-level` is equal to `2` and then, the result will be:
 
 ![Slide level 2](./images/slide-level-2.png)
@@ -215,6 +243,8 @@ In fact, it depends on the `slide-level` setting. By default, `slide-level` is e
 We've two slides. On the second slide, we can see our `Apache` heading 3 as a text on `Technologies and tools`.
 
 If you want a slide to be created for each level 2 and level 3 (or higher) title, you need to set this with slide-level.
+
+<Snippets filename="slides.md">
 
 ```markdown
 ---
@@ -235,6 +265,8 @@ Our web applications are running under [Apache](https://httpd.apache.org/).
 
 We don't need to have Apache locally since we're using it as a Docker image.
 ```
+
+</Snippets>
 
 And the result will give:
 
@@ -258,6 +290,8 @@ You can find a full list on [https://gist.github.com/rxaviers/7360908](https://g
 
 The `r-fit-text` class ([official doc](https://quarto.org/docs/presentations/revealjs/advanced.html#fit-text)) will give the maximum size to your content i.e.
 
+<Snippets filename="slides.md">
+
 ```markdown
 #
 
@@ -266,6 +300,8 @@ Big Text
 :::
 ```
 
+</Snippets>
+
 ![Big text](./images/big-text.png)
 
 ### Stretch
@@ -273,6 +309,8 @@ Big Text
 The `r-stretch` class ([official doc](https://quarto.org/docs/presentations/revealjs/advanced.html#stretch)) is my preferred one.
 
 Consider the example below:
+
+<Snippets filename="slides.md">
 
 ```markdown
 # Slide 1
@@ -283,6 +321,8 @@ Here is an image:
 
 Some text after the image.
 ```
+
+</Snippets>
 
 This will generate this slide:
 
@@ -298,6 +338,8 @@ The image height will be resized automatically so both text and images can be di
 
 Using `::: {.fragment .fade-up}` to define a content area, you are asking reveal.js to show its content only the next key sequence.
 
+<Snippets filename="slides.md">
+
 ```markdown
 # It's a candy dog
 
@@ -310,6 +352,8 @@ Would you like to see a candy dog?
 :::
 ```
 
+</Snippets>
+
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
 ![It's a candy dog](./images/candy-dog.gif)
@@ -317,6 +361,8 @@ Would you like to see a candy dog?
 ### Creating columns
 
 You can use `columns` to divide your slide:
+
+<Snippets filename="slides.md">
 
 ```markdown
 ##
@@ -334,6 +380,8 @@ You can use `columns` to divide your slide:
 :::
 ```
 
+</Snippets>
+
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
 ![Columns](./images/columns.png)
@@ -343,6 +391,8 @@ You can use `columns` to divide your slide:
 The example below comes from [https://mine.quarto.pub/hello-quarto/#/quarto-highlights](https://mine.quarto.pub/hello-quarto/#/quarto-highlights), a reveal.js slideshow made using Quarto.
 
 The idea is to split the slides in four parts and display content clockwise, starting with the top-left dial.
+
+<Snippets filename="slides.md">
 
 ```markdown
 ::: columns
@@ -400,6 +450,8 @@ The idea is to split the slides in four parts and display content clockwise, sta
 :::
 ```
 
+</Snippets>
+
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
 ![Four quadrants](./images/four-quadrants.gif)
@@ -409,6 +461,8 @@ The idea is to split the slides in four parts and display content clockwise, sta
 I like to be able to write `==Important text==` and, for a revealjs presentation, transform this text automatically to `<mark>Important text</mark>` so I can easily add a custom CSS to it.
 
 First, create a `assets/custom.js` if not yet present and copy/paste the following code:
+
+<Snippets filename="assets/custom.js">
 
 ```javaScript
 window.addEventListener("load", (event) => {
@@ -423,7 +477,11 @@ window.addEventListener("load", (event) => {
 });
 ```
 
+</Snippets>
+
 In your YAML front matter, add this:
+
+<Snippets filename="slides.md">
 
 ```markdown
 ---
@@ -434,6 +492,8 @@ format:
 ---
 ```
 
+</Snippets>
+
 And now, when the slideshow will be played, a custom JavaScript code will replace on-the-fly each fragment with `==xxxx==` and replace with `<mark>xxx</mark>`.
 
 ## CSS
@@ -442,11 +502,15 @@ And now, when the slideshow will be played, a custom JavaScript code will replac
 
 You can apply styles to inline text by creating spans using `[]` to surround the text you want to style and `{}` to define the style you want to apply.
 
+<Snippets filename="slides.md">
+
 ```markdown
 # Inline style
 
 To draw attention to a specific part of the text, you might want to make it [red]{style="color: red;"} with a [yellow background]{style="background-color: yellow;"}; [like this]{style="color: red; background-color: yellow;"}.
 ```
+
+</Snippets>
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
@@ -457,6 +521,8 @@ This is correctly rendered in HTML:
 ### Use a custom css
 
 Use the YAML header block for this.
+
+<Snippets filename="slides.md">
 
 ```markdown
 ---
@@ -470,9 +536,13 @@ format:
 ![](images/mimikyu.jpg){style="width:400px;"}
 ```
 
+</Snippets>
+
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
 Now, create the `custom.css` file in the same folder as your markdown one and, for instance, set the slide background to yellow:
+
+<Snippets filename="custom.css">
 
 ```css
 /*-- scss:defaults --*/
@@ -481,11 +551,15 @@ Now, create the `custom.css` file in the same folder as your markdown one and, f
 }
 ```
 
+</Snippets>
+
 ![Custom css](./images/custom-css.png)
 
 ### Hide image caption
 
 By default, revealjs will display the caption of the image below it. You can hide it by using this stylesheet:
+
+<Snippets filename="custom.css">
 
 ```css
 .reveal p.caption {
@@ -493,9 +567,13 @@ By default, revealjs will display the caption of the image below it. You can hid
 }
 ```
 
+</Snippets>
+
 ### Callout can be stylized
 
 A callout is a special div like below:
+
+<Snippets filename="slides.md">
 
 ```markdown
 ## Customize your terminal
@@ -508,15 +586,21 @@ Skip this part if you do not want to customize your terminal right now
 As you can see on the image below, we can customize the terminal:
 ```
 
+</Snippets>
+
 In revealjs, personally, I find that the rendering takes up too much space compared to the content of my slide. So I use css to hide the title:
 
 ![Callout title](./images/callout-title.png)
+
+<Snippets filename="custom.css">
 
 ```css
 .reveal .callout-title {
     display: none;
 }
 ```
+
+</Snippets>
 
 ## Navigation
 
@@ -531,6 +615,8 @@ In a normal, `linear` navigation, revealjs will show each slide, whatever the ke
 In a `vertical` or `grid` navigation, it's just like you're showing the chapter's title and if the user press the <kbd>down</kbd> or <kbd>space</kbd>key, he will jump in the chapter (and this *vertically*). But if he is pressing the <kbd>right</kbd> key he'll skip it and go to the next chapter.
 
 The `navigation-mode` in the yaml header allows you to enable `vertical` mode, below an example:
+
+<Snippets filename="slides.md">
 
 ```markdown
 ---
@@ -553,6 +639,8 @@ format:
 ## Slide 2.3
 ```
 
+</Snippets>
+
 ![Vertical navigation](./images/vertical.png)
 
 :::tip Press <kbd>esc</kbd> key
@@ -564,6 +652,8 @@ The <kbd>esc</kbd> key allow you to see the structure of your revealjs slideshow
 By default, reveal.js will generate a slug from the title so you can reference the slide in a URL.
 
 Consider the following example:
+
+<Snippets filename="slides.md">
 
 <!-- cspell:disable -->
 ```markdown
@@ -577,11 +667,15 @@ Occaecat minim eu veniam laborumanim. Nostrud duis eiusmod ut amet velit commodo
 ```
 <!-- cspell:enable -->
 
+</Snippets>
+
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
 The generated URL for the first slide will be `http://[...]index.html#/elit-ad-fugiat-proident-culpa-sint` and, for the second slide, `http://[...]index.html#/cillum-do-et-commodo-minim-ullamco-elit-culpa`.
 
 To define the name yourself, just add `{#}` followed by the slug you desire.
+
+<Snippets filename="slides.md">
 
 <!-- cspell:disable -->
 ```markdown
@@ -597,6 +691,8 @@ Occaecat minim eu veniam laborumanim. Nostrud duis eiusmod ut amet velit commodo
 ```
 <!-- cspell:enable -->
 
+</Snippets>
+
 ![Define a name for your slide](./images/set-slide-slug.png)
 
 But, pay attention to the slide's menu (bottom left): perhaps it's also good to define a suitable name there.
@@ -604,6 +700,8 @@ But, pay attention to the slide's menu (bottom left): perhaps it's also good to 
 ![Also define the name in the menu](./images/set-name-in-menu.png)
 
 To do this, set the `data-menu-title` attribute; f.i.:
+
+<Snippets filename="slides.md">
 
 <!-- cspell:disable -->
 ```markdown
@@ -615,15 +713,21 @@ To do this, set the `data-menu-title` attribute; f.i.:
 ```
 <!-- cspell:enable -->
 
+</Snippets>
+
 ### Show slide number
 
 To only show the current slide number, you can use `slide-number: true` but, if you also want the total number of slides, you should use `slide-number: c/t` :
+
+<Snippets filename="slides.md">
 
 ```yaml
 format:
   revealjs:
     slide-number: c/t
 ```
+
+</Snippets>
 
 ![Slide / Total of slides](./images/slides_c_t.png)
 
@@ -636,6 +740,8 @@ You can retrieve more information [here](https://quarto.org/docs/presentations/r
 You can write messages in your presentation that will not be displayed when the slideshow is played, but only as a second screen when the presenter wishes.
 
 The example below illustrate this. The way to insert such presenter's notes is by using the `::: notes` block.
+
+<Snippets filename="slides.md">
 
 ```markdown
 ##
@@ -662,6 +768,8 @@ The second image has been ...
 
 ![](images/image_4.jpg)
 ```
+
+</Snippets>
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 

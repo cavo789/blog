@@ -17,6 +17,8 @@ Some tips and tricks for your .htaccess file (Apache)
 
 Be inspired by the following lines:
 
+<Snippets filename=".htaccess">
+
 ```apacheconf
 <IfModule mod_headers.c>
 
@@ -61,11 +63,15 @@ Be inspired by the following lines:
 </IfModule>
 ```
 
+</Snippets>
+
 ## Files
 
 ### Block access to some files based on their names
 
 Refuse requests to these files:
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 <FilesMatch "(file_1\.gif|file_2\.png)">
@@ -74,18 +80,26 @@ Refuse requests to these files:
 </FilesMatch>
 ```
 
+</Snippets>
+
 ### Block access to some files based on their extensions
 
 Blocks access to all files except those whose extension is mentioned in the list below:
 
 First option:
 
+<Snippets filename=".htaccess">
+
 ```apacheconf
 RewriteCond %{REQUEST_FILENAME} !(.*)\.(bmp|css|eot|html?|icon?|jpe?g|js|gif|pdf|png|svg|te?xt|ttf|webp|woff2?|xml|zip)$
 RewriteRule . - [F]
 ```
 
+</Snippets>
+
 Second option:
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 RewriteCond %{REQUEST_FILENAME} !\.(ico?n|img|gif|jpe?g|png|css|map)$ [NC]
@@ -95,9 +109,13 @@ RewriteCond %{REQUEST_FILENAME} !\.(eot|svg|ttf|woff2?)(\?.*)?$ [NC]
 RewriteRule . - [F]
 ```
 
+</Snippets>
+
 ### Block access to hidden files & directories
 
 Don't allow to access to a file or folder when the name start with a dot (i.e. a hidden file / folder):
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 <IfModule mod_rewrite.c>
@@ -107,11 +125,15 @@ Don't allow to access to a file or folder when the name start with a dot (i.e. a
 </IfModule>
 ```
 
+</Snippets>
+
 ## Force
 
 ### Force download
 
 Don't allow the browser to download such files but tell him how to display them (text in the example):
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 <FilesMatch "\.(tex|log|aux)$">
@@ -119,9 +141,13 @@ Don't allow the browser to download such files but tell him how to display them 
 </FilesMatch>
 ```
 
+</Snippets>
+
 #### Prevent downloading
 
 For instance, force download for pdf files:
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 <FilesMatch "\.(pdf)$">
@@ -130,11 +156,15 @@ For instance, force download for pdf files:
 </FilesMatch>
 ```
 
+</Snippets>
+
 #### Force https and www, compatible hstspreload
 
 > When implemented in your .htaccess, try to get access to `yoursite.com` or `http://yoursite.com` should redirect to `https://www.yoursite.com`.
 
 Also, test your site with [https://hstspreload.org/](https://hstspreload.org/) to verify that your preloading is correct (green).
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 <IfModule mod_rewrite.c>
@@ -154,11 +184,15 @@ Also, test your site with [https://hstspreload.org/](https://hstspreload.org/) t
 </IfModule>
 ```
 
+</Snippets>
+
 ## Misc
 
 ### Disable error reporting
 
 Don't show errors (just like a `error_reporting=E_NONE` does)
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 <IfModule mod_php5.c>
@@ -169,11 +203,15 @@ Don't show errors (just like a `error_reporting=E_NONE` does)
 </IfModule>
 ```
 
+</Snippets>
+
 #### Enable error reporting
 
 Show errors (just like a `error_reporting=E_ALL` does).
 
 Only use this on a development server otherwise you'll expose sensitive information to your visitor.
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 <IfModule mod_php5.c>
@@ -184,9 +222,13 @@ Only use this on a development server otherwise you'll expose sensitive informat
 </IfModule>
 ```
 
+</Snippets>
+
 #### Enable a maintenance mode
 
 Redirect every requests done to your site to a specific page (called `maintenance.php` here below). Just think to replace the code `ADD_YOUR_IP_HERE` by your current IP address.
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 <IfModule mod_rewrite.c>
@@ -199,9 +241,13 @@ Redirect every requests done to your site to a specific page (called `maintenanc
 </IfModule>
 ```
 
+</Snippets>
+
 ## Optimization
 
 ### Compress files based on their type or extensions
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 <IfModule mod_deflate.c>
@@ -229,9 +275,13 @@ Redirect every requests done to your site to a specific page (called `maintenanc
 </IfModule>
 ```
 
+</Snippets>
+
 ### Add expiration (expires headers)
 
 Enable ETAGs
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 <IfModule mod_headers.c>
@@ -317,9 +367,13 @@ Enable ETAGs
 </IfModule>
 ```
 
+</Snippets>
+
 ## Protection
 
 ### Deny All Access
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 ## Apache 2.2
@@ -329,9 +383,13 @@ Deny from all
 # Require all denied
 ```
 
+</Snippets>
+
 ### Deny All Access except you
 
 Just replace `xxx.xxx.xxx.xxx` by your IP address.
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 ## Apache 2.2
@@ -344,7 +402,11 @@ Allow from xxx.xxx.xxx.xxx
 # Require ip xxx.xxx.xxx.xxx
 ```
 
+</Snippets>
+
 ### Stops a browser from trying to MIME-sniff
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 <IfModule mod_headers.c>
@@ -352,7 +414,11 @@ Allow from xxx.xxx.xxx.xxx
 </IfModule>
 ```
 
+</Snippets>
+
 ### Avoid Clickjacking and enable XSS-protection for browsers
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 <FilesMatch "\.(pl|php|cgi|spl)$">
@@ -364,9 +430,13 @@ Allow from xxx.xxx.xxx.xxx
 </FilesMatch>
 ```
 
+</Snippets>
+
 ### Disable script execution
 
 Put these lines in f.i. `/tmp/.htaccess` to prevent execution of scripts in the `/tmp` folder.
+
+<Snippets filename="/tmp/.htaccess">
 
 ```apacheconf
 # secure directory by disabling script execution
@@ -379,9 +449,13 @@ Options -ExecCGI
 </FilesMatch>
 ```
 
+</Snippets>
+
 ### Disallow listing for directories
 
 Don't allow the web server to provide the list of files / folders like a `dir` does.
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 <IfModule mod_autoindex.c>
@@ -389,11 +463,15 @@ Don't allow the web server to provide the list of files / folders like a `dir` d
 </IfModule>
 ```
 
+</Snippets>
+
 ### htpasswd
 
 * `.htpasswd` generator : [http://aspirine.org/htpasswd.html](http://aspirine.org/htpasswd.html)
 
 #### File password
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 AuthName "File access restriction"
@@ -405,9 +483,13 @@ Require valid-user
 </Files>
 ```
 
+</Snippets>
+
 #### Folder password
 
 Place these lines in a file called `.htaccess` in the folder to protect (f.i. `folder_name`):
+
+<Snippets filename="folder_name/.htaccess">
 
 ```apacheconf
 AuthType Basic
@@ -416,7 +498,11 @@ AuthUserFile /home/your_account/folder_name/.htpasswd
 Require valid-user
 ```
 
+</Snippets>
+
 ### Whitelist - Disallow access to all files except the ones mentioned
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 # prevent accessing to all files excepted those mentioned (case sensitive!)
@@ -429,45 +515,71 @@ Require valid-user
 </FilesMatch>
 ```
 
+</Snippets>
+
 ## Redirect
 
 ### Redirect an entire site
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 Redirect 301 / https://www.newsite.com/
 ```
 
+</Snippets>
+
 ### Permanent redirection
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 RedirectPermanent /old.php http://www.yoursite.com/new.php
 ```
 
+</Snippets>
+
 ### Temporary redirection
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 Redirect 301 /old.php http://www.yoursite.com/new.php
 ```
 
+</Snippets>
+
 ### Redirect a subfolder
 
 For instance, redirect `/category/apple.php` to `apple.php`
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 RedirectMatch 301 ^/category/(.*)$ /$1
 ```
 
+</Snippets>
+
 or solve spelling issue by f.i. redirect every requests to the `fruit` folder to the plural form.
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 RedirectMatch 301 ^/fruit/(.*)$ /fruits/$1
 ```
 
+</Snippets>
+
 Another example: redirecting URLs from `/archive/2020/...` to `/2020/...`.
+
+<Snippets filename=".htaccess">
 
 ```apacheconf
 RewriteRule ^archive/2020/(.*)$ /2020/$1 [R=301,NC,L]
 ```
+
+</Snippets>
 
 ## Search engine
 
@@ -475,9 +587,13 @@ RewriteRule ^archive/2020/(.*)$ /2020/$1 [R=301,NC,L]
 
 Put these lines in f.i. `yoursite/administrator` to inform search engines that you don't allow him to index files in that folder (and sub-folders).
 
+<Snippets filename="administrator/.htaccess">
+
 ```apacheconf
 # Be sure that pages under this folder won't be indexed
 <IfModule mod_headers.c>
     Header set X-Robots-Tag "noindex, nofollow"
 </IfModule>
 ```
+
+</Snippets>

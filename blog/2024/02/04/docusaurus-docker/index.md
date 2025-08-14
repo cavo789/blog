@@ -26,6 +26,8 @@ This done, start your preferred editor and open the folder. On my side, I'm usin
 
 In your project directory (so `/tmp/docusaurus`), create a file called `Dockerfile` with this content:
 
+<Snippets filename="/tmp/docusaurus/Dockerfile">
+
 ```Dockerfile
 FROM node:21-alpine
 
@@ -42,6 +44,8 @@ COPY . .
 
 CMD ["yarn", "start", "--host", "0.0.0.0"]
 ```
+
+</Snippets>
 
 #### Dockerfile - explanations line by line
 
@@ -63,6 +67,8 @@ But, also, we don't need to copy folders like `blog`, `pages`, `static`, ... sin
 
 So, please create a `.dockerignore` file with this content:
 
+<Snippets filename=".dockerignore">
+
 ```text
 build/
 node_modules/
@@ -83,9 +89,13 @@ pages/
 static/
 ```
 
+</Snippets>
+
 ### Create a docker-compose.yml file
 
-The third file to create is `docker-compose.yml` with this content:
+The third file to create is `compose.yaml` with this content:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: my_docusaurus_blog
@@ -99,6 +109,8 @@ services:
     volumes:
       - ./blog:/app/blog
 ```
+
+</Snippets>
 
 As you can see, we need to have a folder called `blog` on our machine and we'll synchronize that folder inside the Docker container. Our `blog` folder will be *mounted* in folder `/app/blog` in the container.
 
@@ -165,7 +177,7 @@ After a few minutes (only the first time), your Docusaurus Docker image will be 
 Your blog is now accessible on your computer here: `http://localhost:3000`.
 
 :::info Which port number to use?
-The port number is the one you've mentioned in the `docker-compose.yml` file in line `3000:3000`.
+The port number is the one you've mentioned in the `compose.yaml` file in line `3000:3000`.
 
 If you wish another port like `3002` f.i., just edit the yaml file and replace `3000:3000` with `3002:3000` and rerun the `docker compose up --detach` command.
 :::

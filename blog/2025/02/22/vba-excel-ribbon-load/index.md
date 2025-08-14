@@ -44,9 +44,7 @@ Click on the Insert menu then select `Office 2010 Custom UI Part`.
 
 Paste the XML below in the editor window:
 
-<details>
-
-<summary>The ribbon XML code</summary>
+<Snippets filename="customui.xml">
 
 <!-- cspell:disable -->
 ```xml
@@ -64,7 +62,7 @@ Paste the XML below in the editor window:
 ```
 <!-- cspell:enable -->
 
-</details>
+</Snippets>
 
 You'll then have this:
 
@@ -94,9 +92,7 @@ This done, click on the added module and bottom left, you can give it a name, f.
 
 In the right, main, part of the screen, please paste this code:
 
-<details>
-
-<summary>Our modToolbar_cbxPeriod module</summary>
+<Snippets filename="module.bas">
 
 <!-- cspell:disable -->
 ```vba
@@ -158,7 +154,7 @@ End Function
 
 Sub onAction(control As IRibbonControl, id As String, index As Integer)
     sValue = id
-    
+
     Range(cName).Value = sValue
 
     ' Optional, inform the user in the Excel's statusbar
@@ -207,14 +203,14 @@ End Sub
 
 ```
 <!-- cspell:enable -->
-</details>
+</Snippets>
 
 We're almost done: we need to give a name to the sheet where the range is located. If you still remember the beginning of this blog post, we've added the range in a sheet called `Params` so, now in the VBE editor, just select the `Params` sheet as illustrated below (see 1.) and name the sheet `shParams` (see 2).
 
 ![Naming the sheet](./images/shParams.png)
 
 :::caution You should now use the .xlsm extension
-Save the Excel workbook but, this time, with the `.xlsm` extension since the workbook contains VBA code. 
+Save the Excel workbook but, this time, with the `.xlsm` extension since the workbook contains VBA code.
 :::
 
 Time to test our feature: close the workbook and re-open it again and, this time, your list has been populated and by selecting a value from the list, the value will be injected in your worksheet; ready to be used.

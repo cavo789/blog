@@ -8,7 +8,8 @@
       "allowed_elements": [
           "details",
           "kbd",
-          "summary"
+          "summary",
+          "snippets"
       ]
   },
   "MD034": false,

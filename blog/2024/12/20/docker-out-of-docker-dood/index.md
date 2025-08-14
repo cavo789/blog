@@ -34,9 +34,7 @@ Please create a dummy folder and jump in it: `mkdir /tmp/dood && cd $_`.
 
 We need a `Dockerfile`, let's create it.
 
-<details>
-
-<summary>Dockerfile</summary>
+<Snippets filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -46,18 +44,16 @@ FROM alpine:latest
 # hadolint ignore=DL3008
 # Note: use docker.io and not docker if you are using another image than alpine (i.e. with apt-get and not apk)
 RUN apk update && apk add docker
-    
+
 # hadolint ignore=DL3002
 USER root
 ```
 
-</details>
+</Snippets>
 
 We'll also use a `compose.yaml` one, please create this file too:
 
-<details>
-
-<summary>compose.yaml</summary>
+<Snippets filename="compose.yaml">
 
 ```yaml
 # cspell:ignore dood
@@ -72,7 +68,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 ```
 
-</details>
+</Snippets>
 
 ## Running it as root
 
@@ -90,6 +86,8 @@ Now to check if you can access to the list of images installed on your host (whi
 
 To check, reopen your `compose.yaml` file and put the `volumes` entry in comment as illustrated below:
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 name: "dood-as-root"
 services:
@@ -104,6 +102,8 @@ services:
     // highlight-end
 
 ```
+
+</Snippets>
 
 If you're still in the container, please type `exit` to go back to your host console.
 
@@ -143,9 +143,7 @@ And you know, it's a bad idea to run containers as root so let's create a specif
 
 To do this, we need to update our files.
 
-<details>
-
-<summary>Dockerfile</summary>
+<Snippets filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -161,7 +159,7 @@ FROM alpine:latest
 # hadolint ignore=DL3008
 # Note: use docker.io and not docker if you are using another image than alpine (i.e. with apt-get and not apk)
 RUN apk update && apk add docker
-    
+
 ARG DOCKER_OS_GROUPID
 ARG DOCKER_OS_USERID
 ARG DOCKER_OS_USERNAME
@@ -185,7 +183,7 @@ FROM alpine:latest
 # hadolint ignore=DL3008
 # Note: use docker.io and not docker if you are using another image than alpine (i.e. with apt-get and not apk)
 RUN apk update && apk add docker
-    
+
 ARG DOCKER_OS_GROUPID
 ARG DOCKER_OS_USERID
 ARG DOCKER_OS_USERNAME
@@ -201,11 +199,9 @@ RUN set -e -x \
 USER "${DOCKER_OS_USERNAME}"
 ```
 
-</details>
+</Snippets>
 
-<details>
-
-<summary>compose.yaml</summary>
+<Snippets filename="compose.yaml">
 
 ```yaml
 # cspell:ignore dood,groupid,johndoe
@@ -223,7 +219,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 ```
 
-</details>
+</Snippets>
 
 Now, build this new image and jump in the container using, always the same, this command: `docker compose up --detach --build && docker compose exec dood /bin/sh`.
 
@@ -245,6 +241,8 @@ To be able to run Dood with an unprivileged user, you should take care about thi
 
 Please update your `compose.yaml` by adding the two lines below.
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 # cspell:ignore dood,groupid,johndoe
 name: "dood-as-unprivileged"
@@ -257,13 +255,15 @@ services:
         - DOCKER_OS_USERNAME=${DOCKER_OS_USERNAME:-johndoe}
     user: "${DOCKER_OS_USERID:-1000}:${DOCKER_OS_GROUPID:-1000}"
     tty: true
-    // highlight-next-line    
+    // highlight-next-line
     group_add:
       // highlight-next-line
       - ${DOCKER_GROUPID:-1001}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 ```
+
+</Snippets>
 
 Jump in the container once more: `docker compose up --detach --build && docker compose exec dood /bin/sh`
 

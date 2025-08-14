@@ -18,7 +18,7 @@ The today challenge is easy: create a Python environment on my Windows machine w
 
 <!-- truncate -->
 
-So, in the [Docker - Python devcontainer](/blog/docker-python-devcontainer) blog post, I've provided a few files and we'll reuse them in this article. 
+So, in the [Docker - Python devcontainer](/blog/docker-python-devcontainer) blog post, I've provided a few files and we'll reuse them in this article.
 
 I'm speaking about magic but, let's go in details in the article below. I could provide you with a ZIP archive, for example, with all the files already created and the structure, but that would be less ... fun, wouldn't it?
 
@@ -34,10 +34,9 @@ Please create all required files (the one from the previous blog post). We've NO
 
 Just add a new file on your Windows folder and copy/paste the content from here below.
 
-<details>
-<summary>File .devcontainer/devcontainer.json</summary>
-
 Copy/paste the content below in a file on your system called `.devcontainer/devcontainer.json`.
+
+<Snippets filename=".devcontainer/devcontainer.json">
 
 <!-- cspell:disable -->
 ```json
@@ -65,7 +64,7 @@ Copy/paste the content below in a file on your system called `.devcontainer/devc
                 "ms-azuretools.vscode-docker",
                 "ms-python.black-formatter",
                 "ms-python.debugpy",
-                "ms-python.isort",      
+                "ms-python.isort",
                 "ms-python.mypy-type-checker",
                 "ms-python.pylint",
                 "ms-python.python",
@@ -220,32 +219,27 @@ Copy/paste the content below in a file on your system called `.devcontainer/devc
 }
 ```
 <!-- cspell:enable -->
-</details>
-
-<details>
-<summary>File src/main.py</summary>
+</Snippets>
 
 Copy/paste the content below in a file on your system called `src/main.py`.
+
+<Snippets filename="src/main.py">
 
 ```python
 print("I'm your Python code")
 ```
 
-</details>
+</Snippets>
 
-<details>
-<summary>File src/requirements.txt</summary>
+<Snippets filename="src/requirements.txt">
 
-:::info
 Yes, an empty file... The file has to be present but right now, we don't need to put any dependencies.
-:::
 
-</details>
-
-<details>
-<summary>File .docker.env</summary>
+</Snippets>
 
 Copy/paste the content below in a file on your system called `.docker.env` (in Linux world; such files are hidden ones since they start with a dot).
+
+<Snippets filename=".docker.env">
 
 ```dotenv
 # Application root directory in the container (PHP or NGINX) (--app-home)
@@ -256,7 +250,7 @@ DOCKER_CONTAINER_NAME=app
 
 # Set OS groupid in your Docker Linux containers (1000 = root) (--os-groupid)
 DOCKER_OS_GROUPID=1000
- 
+
 # Set OS userid in your Docker Linux containers (1000 = root) (--os-userid)
 DOCKER_OS_USERID=1000
 
@@ -267,12 +261,12 @@ DOCKER_OS_USERNAME="python"
 DOCKER_PYTHON_VERSION=3.13-slim
 ```
 
-</details>
+</Snippets>
 
-<details>
-<summary>File compose.yaml</summary>
 
 Copy/paste the content below in a file on your system called `compose.yaml`.
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: app_python
@@ -314,12 +308,11 @@ volumes:
   bashhistory:
 ```
 
-</details>
-
-<details>
-<summary>File Dockerfile</summary>
+</Snippets>
 
 Copy/paste the content below in a file on your system called `Dockerfile`.
+
+<Snippets filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -358,7 +351,7 @@ RUN --mount=type=cache,target=/var/cache/apk,rw \
     && apt-get install -y --no-install-recommends bash git openssh-client tree \
     && apt-get clean \
     && rm -rf /tmp/* /var/list/apt/*
-   
+
 # Install Python dependencies
 #
 # Download dependencies as a separate step to take advantage of Docker's caching.
@@ -375,7 +368,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 # endregion
- 
+
 # region - Define our development image
 FROM base AS development
 
@@ -428,7 +421,7 @@ RUN set -e -x \
 # endregion
 ```
 
-</details>
+</Snippets>
 
 ## Create our DOS batch file
 
@@ -436,10 +429,7 @@ Here the difference with Linux: instead of using GNU Make, we'll simply use a MS
 
 Please create this additional file:
 
-<details>
-<summary>File make.bat</summary>
-
-Copy/paste the content below in a file on your system called `make.bat`.
+<Snippets filename="make.bat">
 
 ```batch
 @echo off
@@ -506,7 +496,7 @@ goto :eof
 
 :error
 REM Trim double quotes from the beginning and end of the message
-set "ERROR_MESSAGE=%*"  
+set "ERROR_MESSAGE=%*"
 set "ERROR_MESSAGE=%ERROR_MESSAGE:~1,-1%"
 
 echo [31mERROR - %ERROR_MESSAGE%[0m
@@ -518,7 +508,7 @@ goto :eof
 
 ```
 
-</details>
+</Snippets>
 
 ## Our configuration right now
 

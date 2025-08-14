@@ -50,10 +50,12 @@ We're also going to define a dependency (based on `depends_on` and `healthcheck`
 As you can see, our `compose.yaml` file is of tremendous importance for the proper definition of our project.
 
 :::note
-In recent months, the name of the file to be used has changed from `docker-compose.yml` to `compose.yaml`; still supported for now, but might as well use the new name. See [docs.docker.com](https://docs.docker.com/compose/intro/compose-application-model/#the-compose-file) if you want more info about this change.
+In recent months, the name of the file to be used has changed from `compose.yaml` to `compose.yaml`; still supported for now, but might as well use the new name. See [docs.docker.com](https://docs.docker.com/compose/intro/compose-application-model/#the-compose-file) if you want more info about this change.
 :::
 
 Please create a new folder (f.i. `mkdir /tmp/joomla && cd $_`) on your hard disk and create the `compose.yaml` file with this content:
+
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: ${PROJECT_NAME:-your-project-name}
@@ -104,11 +106,15 @@ networks:
   joomla_network:
 ```
 
+</Snippets>
+
 ### We'll use a configuration file called .env
 
 We're also going to use a configuration file named `.env` (which is never anything more than a silly dictionary of keys - values) to differentiate our projects.
 
 Please create a second file called `.env` with this content:
+
+<Snippets filename=".env">
 
 ```.env
 CONTAINER_PREFIX=joomla
@@ -122,12 +128,14 @@ PROJECT_NAME=running-joomla-in-docker
 WEB_PORT=8080
 ```
 
+</Snippets>
+
 Using a `.env` file is really useful to no more do changes to the `compose.yaml` file which can be standard in all your projects.
 
 If you need two or more Joomla websites (you're a web agency starting to use Docker for your development), you'll be able to only do changes to the `.env` file by updating the `WEB_PORT` (each project should have his unique port) and, you'll probably update the `PROJECT_NAME` too to f.i. your customer name.
 
 :::tip
-`WEB_PORT`, `PROJECT_NAME`, ... are just *variables*. If you look back to your just copied/pasted `compose.yaml` content, you'll retrieve these variables like on the line `image: joomla:${JOOMLA_VERSION:-latest}`. 
+`WEB_PORT`, `PROJECT_NAME`, ... are just *variables*. If you look back to your just copied/pasted `compose.yaml` content, you'll retrieve these variables like on the line `image: joomla:${JOOMLA_VERSION:-latest}`.
 
 The `${XXX:-yyy}` syntax means: if the variable exists, use it (the `XXX` part) otherwise use a default value (the `yyy` part).
 
@@ -145,6 +153,8 @@ If you don't know if you already have `GNU make`, just run `which make` in the c
 :::
 
 So, please create a file called `makefile` in your current directory with this content:
+
+<Snippets filename="makefile">
 
 ```makefile
 -include .env
@@ -188,6 +198,8 @@ up:
 	-@mkdir -p db_data joomla_data
 	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach --build
 ```
+
+</Snippets>
 
 :::caution Indentation should be TAB not spaces
 It's terribly vicious because it's totally silent: the indentation in a makefile must be tabs, not spaces. When you copy/paste the above code to create your file, make sure your text editor uses tabs. If it doesn't, the commands defined in the file won't work.
@@ -298,7 +310,7 @@ We've created our Joomla website by **just running one command**. Don't trust? O
 :::
 
 ### ... or let's ask him to fall asleep (keep containers)
- 
+
 The opposite command to `make up` is `make stop`. The `stop` action will stop our Joomla and MySQL containers (read `make them sleeping`) but without removing files (your site and your database) from your hard drive. By running `make up` again, you'll retrieve them. `up` and `stop` are like a light switch.
 
 ### ... or let's ask him to remove containers (free more memory)
@@ -332,7 +344,7 @@ joomla-db  | 2024-10-13T13:30:26.852192Z 0 [Warning] [MY-010068] [Server] CA cer
 
 [...]
 
-joomla-db  | 2024-10-13T13:30:26.852232Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now 
+joomla-db  | 2024-10-13T13:30:26.852232Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now
 joomla-app  | ========================================================================
 joomla-app  |
 joomla-app  |
@@ -450,6 +462,8 @@ We'll update our three files to skip the installation process by predefining val
 
 We'll edit our `compose.yaml` file and add new entries:
 
+<Snippets filename="compose.yaml">
+
 ```yaml
 name: ${PROJECT_NAME:-your-project-name}
 
@@ -509,9 +523,13 @@ networks:
   joomla_network:
 ```
 
+</Snippets>
+
 ### Updated .env
 
 And we'll also update our `.env` file like this:
+
+<Snippets filename=".env" >
 
 ```.env
 CONTAINER_PREFIX=joomla
@@ -535,9 +553,13 @@ PROJECT_NAME=running-joomla-in-docker
 WEB_PORT=8080
 ```
 
+</Snippets>
+
 ### Updated makefile
 
 And, finally, also update the `makefile` like this:
+
+<Snippets filename="makefile">
 
 ```makefile
 -include .env
@@ -594,6 +616,8 @@ up:
 	-@mkdir -p db_data joomla_data
 	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach --build
 ```
+
+</Snippets>
 
 As you can see, we've configured some `JOOMLA_ADMIN_xxx` keys and set `JOOMLA_SITE_NAME` to *Joomla*; the name of our website.
 
@@ -698,6 +722,8 @@ As you can see (highlighted lines), that file is the same that the latest `.env`
 
 Here is the `.env` file for **our first** project:
 
+<Snippets filename="project_1/.env">
+
 ```.env
 // highlight-next-line
 CONTAINER_PREFIX=joomla_5
@@ -722,6 +748,8 @@ PROJECT_NAME=joomla5
 WEB_PORT=8081
 ```
 
+</Snippets>
+
 Go to your console and run `cd project_1` to jump in the first project's folder then `make up` to create Docker containers for project 1.
 
 By going to `http://127.0.0.1:8081/administrator/` we've our first admin page (as you can see, the site is well called **Joomla_5** as expected).
@@ -743,6 +771,8 @@ In a very few words: we'll install Joomla 4.0 and MySQL 5.7.37.
 Please configure the `project_2/.env` with the following content. As you can see (highlighted lines), that file is the same that the latest `.env` we've used earlier but, just, we'll adjust the name of the project and the web port (so our site will be available on `http://127.0.0.1:8082`).
 
 Do the same changes as for project 1 but just replace `1` by `2`:
+
+<Snippets filename="project_2/.env">
 
 ```.env
 // highlight-next-line
@@ -768,6 +798,8 @@ PROJECT_NAME=joomla4
 WEB_PORT=8082
 ```
 
+</Snippets>
+
 Save the file and run `make up` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
 
 ![Our two Joomla projects are running](./images/project_1_2.png)
@@ -787,6 +819,8 @@ And now, you need to do some maintenance on an old J3.5 website. Let's create on
 Please now configure the `project_3/.env` with the following content.
 
 This time, we'll use `3` as suffixes:
+
+<Snippets filename="project_3/.env">
 
 ```.env
 // highlight-next-line
@@ -811,6 +845,8 @@ PROJECT_NAME=joomla3
 // highlight-next-line
 WEB_PORT=8083
 ```
+
+</Snippets>
 
 Save the file and run `make up && make start` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
 

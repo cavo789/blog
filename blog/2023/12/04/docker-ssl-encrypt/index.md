@@ -18,6 +18,8 @@ By using a [Docker Alpine/OpenSSL](https://hub.docker.com/r/alpine/openssl) imag
 
 Create a new file on your disk with this content. This is the `encrypt.sh` script.
 
+<Snippets filename="encrypt.sh">
+
 ```bash
 #!/usr/bin/env bash
 
@@ -27,7 +29,11 @@ Create a new file on your disk with this content. This is the `encrypt.sh` scrip
 )
 ```
 
+</Snippets>
+
 And this is the `decrypt.sh` script:
+
+<Snippets filename="decrypt.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -38,6 +44,8 @@ And this is the `decrypt.sh` script:
 )
 ```
 
+</Snippets>
+
 Update the `MY_PASSWORD` variable in both scripts to use yours.
 
 ## DOS scripts
@@ -45,6 +53,8 @@ Update the `MY_PASSWORD` variable in both scripts to use yours.
 For the illustration purpose, the DOS encryption script, `encrypt.cmd`, will ask you for a password (since the `-k` parameter is not part of the instruction). If the encrypted file has been created, the original one will be removed from your disk.
 
 Here is the content of the `encrypt.cmd` DOS script:
+
+<Snippets filename="encrypt.cmd">
 
 ```text
 @echo off
@@ -59,9 +69,13 @@ IF EXIST secrets.encrypted (
 )
 ```
 
+</Snippets>
+
 The decryption script, `decrypt.cmd` will ask you for the password and will display the decrypted content on the console (since the `-out` parameter is not part of the instruction).
 
 Here is the content of the `decrypt.cmd` DOS script:
+
+<Snippets filename="decrypt.cmd">
 
 ```text
 @echo off
@@ -70,6 +84,8 @@ cls
 
 docker run --rm -it -v C:\temp:/data -w /data alpine/openssl enc -aes-256-cbc -salt -pbkdf2 -a -d -in /data/secrets.encrypted
 ```
+
+</Snippets>
 
 ## Use case
 
@@ -101,6 +117,8 @@ Now, when you'll run `decrypt.sh` the decrypted content will be displayed on the
 
 Imagine a text file like `secrets.md` with this content:
 
+<Snippets filename="secrets.md">
+
 ```markdown
 # My password
 
@@ -119,7 +137,11 @@ Imagine a text file like `secrets.md` with this content:
 * Password: `admin`
 ```
 
+</Snippets>
+
 By running the `encrypt.sh` script, the file `secrets_encrypted.md` will be created on your disk and will have this content:
+
+<Snippets filename="secrets_encrypted.md">
 
 ```text
 U2FsdGVkX18jyyHAiaDcwolgvrCmB9SutNFhOFosDZvYA+t/8F5PWsxU+YIb0xLj
@@ -128,6 +150,8 @@ q31xBBAlbI0k+a3pWiETl1qEmh4hwc4jeC5NOByYSAojiIdCNF0W5+VVkUlBeKGb
 sv8tpDWEb/dgHrfFPtZD5MqeNQw71/ndORZC1ZDIT/Ju6O7a6rd9ph0aQuPz49PU
 SzDUePUgn9wbR0tZvNM1JA1LkN1kDaguJ940TdKns+Q=
 ```
+
+</Snippets>
 
 From now, you can remove `secrets.md` since you've the encrypted version.
 

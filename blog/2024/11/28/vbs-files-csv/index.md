@@ -16,6 +16,8 @@ Once the `.csv` file had been generated, I could then process it in MS Excel, fo
 
 To run this script, first copy/paste the source below and save it to a file, let's say `c:\files2csv.vbs`. Start a DOS console, run `cd c:\` then `cscript files2csv.vbs`. When the job has been done, you'll get the listing in `files2csv.csv`.
 
+<Snippets filename="files2csv.vbs">
+
 ```vbs
 '------------------------------------------------------------
 '
@@ -122,6 +124,8 @@ Const ForWriting = 2
 
   wScript.echo "Done, file " & sResultFileName & " has been created"
 ```
+
+</Snippets>
 
 The output file will be something like this:
 

@@ -23,7 +23,7 @@ Let's quickly discover Pentaho and, as a first example, load an Excel file into 
 
 Pentaho can be installed on both Windows and Linux since it's a Java application.
 
-My personal experience: even with a powerful computer with plenty of RAM, Java interfaces on Windows are just impossible because interfaces are so unresponsive. On top, before you can even launch the application, you have to go through the trouble of installing Java and ... yuck. 
+My personal experience: even with a powerful computer with plenty of RAM, Java interfaces on Windows are just impossible because interfaces are so unresponsive. On top, before you can even launch the application, you have to go through the trouble of installing Java and ... yuck.
 
 Let's move on and install it under Linux; it's really easy to do.
 
@@ -33,11 +33,11 @@ Let's move on and install it under Linux; it's really easy to do.
    1. Start your Linux console and create a new folder like f.i. `~/tools/pentaho` (you can decide to use another path but, in this documentation, we'll refer to `~/tools/pentaho`)
    2. Still in your console, run `explorer.exe .` in the command line to run Windows Explorer and open your Linux folder in it.
    3. In a new tab (in Windows Explorer thus), go to your download directories to retrieve the downloaded file.
-   4. Copy the file from the Windows folder to your Linux one; using a drag&drop f.i. 
+   4. Copy the file from the Windows folder to your Linux one; using a drag&drop f.i.
 3. Back to your Linux console, go to the folder where you've just copied the file (`~/tools/pentaho`)
 4. Run `rm *Zone.Identifier` to remove unneeded file (create by Windows during the copy action)
 5. Run `unzip pdi-ce-10.2.0.0-222.zip`. That command will create a `data-integration` subfolder.
-6. Run `rm pdi-ce-10.2.0.0-222.zip` since we don't need it anymore and run `cd data-integration` to jump in the new folder. 
+6. Run `rm pdi-ce-10.2.0.0-222.zip` since we don't need it anymore and run `cd data-integration` to jump in the new folder.
 7. The next things to do is to prepare your system:
    1. Please run `sudo apt-get update`,
    2. Then, please run `sudo apt-get install openjdk-11-jdk` since Pentaho requires Java to run and
@@ -49,10 +49,14 @@ To finalize the installation, you also need to update the `PATH` Linux variable.
 
 Please run `code ~/.bashrc` (or `code ~/.zshrc` if you're using Oh-my-ZSH); search in the file if you already have a line with `PATH=`. If yes, please update and add `$HOME/tools/pentaho/data-integration` to it. If not, please go to the end of the file and add this line:
 
+<Snippets filename="~/.bashrc">
+
 ```bash
 # Add Pentaho to the path
-PATH="$HOME/tools/pentaho/data-integration:$PATH" 
+PATH="$HOME/tools/pentaho/data-integration:$PATH"
 ```
+
+</Snippets>
 
 Save and quit.
 
@@ -87,13 +91,11 @@ Copy the table here below into Excel and save the new files as `people.xlsx` (ot
 | 10 | Manon | Simon | Mechelen |
 <!-- cspell:enable -->
 
-### Then we need a PostgreSQL database 
+### Then we need a PostgreSQL database
 
 For this, we'll use Docker. Please create a file called `compose.yaml` in your `/tmp/pentaho` folder with this content:
 
-<details>
-
-<summary>compose.yaml</summary>
+<Snippets filename="compose.yaml">
 
 ```yaml
 name: pentaho
@@ -109,7 +111,7 @@ services:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_USER=admin
     ports:
-      - "5432:5432"      
+      - "5432:5432"
     expose:
       - "5432"
     networks:
@@ -129,30 +131,28 @@ services:
       - pentaho
 
 networks:
-  pentaho: 
+  pentaho:
     external: false
 
 ```
 
-</details>
+</Snippets>
 
 ### And for our easiness, let's create a makefile
 
-<details>
-
-<summary>makefile</summary>
+<Snippets filename="makefile">
 
 ```makefile
 .PHONY: start
 start:
 	SWT_GTK3=1 SKIP_WEBKITGTK_CHECK=1 KETTLE_HOME=${PWD} spoon.sh
-	
+
 .PHONY: up
 up:
 	docker compose up
 ```
 
-</details>
+</Snippets>
 
 ### Let's run our Docker container
 
@@ -292,7 +292,7 @@ Back to pgAdmin, get the list of records from the `people` table to verify if th
 
 ### Download the transformation file
 
-If you've some troubles by creating your transformation file, here is the one I've used for this article: [load_people_from_excel.ktr](./files/load_people_from_excel.ktr).  
+If you've some troubles by creating your transformation file, here is the one I've used for this article: [load_people_from_excel.ktr](./files/load_people_from_excel.ktr).
 
 If you want the Excel file used in this article, here is the [link](./files/people.xlsx) again.
 

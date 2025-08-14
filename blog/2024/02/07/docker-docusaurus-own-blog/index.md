@@ -52,7 +52,7 @@ Once the copy has been done, you can retrieve the file in your editor:
 
 And the second thing we need to do to allow us to update the file and reflect changes in our Docker container is to mount the file.
 
-Please edit your `docker-compose.yml` file and add the line below highlighted:
+Please edit your `compose.yaml` file and add the line below highlighted:
 
 ```yaml
 name: my_docusaurus_blog
@@ -98,9 +98,9 @@ Just save and refresh your browser and you'll get:
 :::tip You've learned a very important concept!
 When you wish to be able to update a file present in a container; you need to get the file on your disk (1) and, then, synchronize the file between your computer and the container (2).
 
-For the first thing, the command to use is `docker compose cp` followed by the name of the container (just look at your `docker-compose.yml` file, it's the name of the service) then you need to say where the file is stored in the container and where to copy it on your disk. That's why we've used `docker compose cp blog:/app/docusaurus.config.js docusaurus.config.js` to do this.
+For the first thing, the command to use is `docker compose cp` followed by the name of the container (just look at your `compose.yaml` file, it's the name of the service) then you need to say where the file is stored in the container and where to copy it on your disk. That's why we've used `docker compose cp blog:/app/docusaurus.config.js docusaurus.config.js` to do this.
 
-The second thing is to allow changes done in that copied file to be reflected between your host and the container and this is why we've updated the list of `volumes` in the `docker-compose.yml` file. So, now, changes done on your disk or done by the container will be synchronized both sides.
+The second thing is to allow changes done in that copied file to be reflected between your host and the container and this is why we've updated the list of `volumes` in the `compose.yaml` file. So, now, changes done on your disk or done by the container will be synchronized both sides.
 :::
 
 Next step, still in file `docusaurus.config.js`, look for the `title`, `favicon` and `url`, then initialize them to your own values; f.i.
@@ -135,7 +135,7 @@ You have to copy the folder from the container to your host and, as you've alrea
 docker compose cp blog:/app/src src
 ```
 
-You need to update your `docker-compose.yml` file and add the line below highlighted:
+You need to update your `compose.yaml` file and add the line below highlighted:
 
 ```yaml
 name: my_docusaurus_blog
@@ -167,7 +167,7 @@ Please run the command below to copy the folder on your host:
 docker compose cp blog:/app/static static
 ```
 
-And update your `docker-compose.yml` file like this:
+And update your `compose.yaml` file like this:
 
 ```yaml
 name: my_docusaurus_blog

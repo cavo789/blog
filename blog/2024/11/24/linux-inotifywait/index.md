@@ -31,9 +31,7 @@ I need a Python environment so let's quickly create it thanks to Docker.
 
 Please create a file called `Dockerfile` with this content:
 
-<details>
-
-<summary>Dockerfile</summary>
+<Snippets filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -41,7 +39,7 @@ Please create a file called `Dockerfile` with this content:
 FROM python:3.10-slim AS base
 
 # The /app/out folder where we'll create files
-RUN mkdir -p /app/out  
+RUN mkdir -p /app/out
 
 # The /app/src where we'll put our Python script
 WORKDIR "/app/src"
@@ -50,7 +48,7 @@ WORKDIR "/app/src"
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 ```
 
-</details>
+</Snippets>
 
 Create the image by running `docker build --tag inotify .`.
 
@@ -62,9 +60,8 @@ This will create a Docker container that will remain running. We'll share our sc
 
 We need a very small Python script to generate our files:
 
-<details>
 
-<summary>src/script.py</summary>
+<Snippets filename="src/script.py">
 
 ```python
 import os
@@ -101,15 +98,14 @@ while True:
     time.sleep(1)
 ```
 
-</details>
+</Snippets>
 
 ## Creating the monitory.sh script
 
 Please create a script called `monitor.sh` with this content:
 
-<details>
 
-<summary>monitory.sh</summary>
+<Snippets filename="monitory.sh">
 
 ```bash
 #!/bin/bash
@@ -142,7 +138,7 @@ done
 
 ```
 
-</details>
+</Snippets>
 
 Make the script executable: `chmod +x ./monitor.sh` and make sure to install **inotify** by running `sudo apt-get update && sudo apt-get install -y --no-install-recommends inotify-tools`.
 
