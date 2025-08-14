@@ -6,6 +6,8 @@
   import CardFooter from '@site/src/components/Card/CardFooter';
   import CardHeader from '@site/src/components/Card/CardHeader';
   import CardImage from '@site/src/components/Card/CardImage';
+  import HomeCard from '@site/src/components/HomeCard';
+
   export default {
     // Reusing the default mapping
     ...MDXComponents,
@@ -14,4 +16,5 @@
     CardBody,
     CardFooter,
     CardImage,
+    HomeCard,
   };
