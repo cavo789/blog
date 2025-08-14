@@ -24,7 +24,7 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'cavo789', // Usually your GitHub org/user name.
   projectName: 'cavo789', // Usually your repo name.
-  
+
   noIndex: false, // Make sure our HTML pages will contains the <meta name="robots" content="index, follow"> tag
 
   onBrokenAnchors: 'throw',
@@ -70,12 +70,12 @@ const config = {
         blog: {
           routeBasePath: '/blog',
           editUrl: 'https://github.com/cavo789/blog/edit/main/',
-         
+
           showReadingTime: true,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
-          }, 
+          },
           blogSidebarTitle: 'All posts',
           blogSidebarCount: 'ALL',
           // showLastUpdateTime: true,
@@ -137,8 +137,8 @@ const config = {
             label: 'Archive',
           },
           {
-            href: 'https://www.avonture.be/v1',
-            label: 'v1',
+            href: '/about',
+            label: 'About me',
           },
           {
             href: 'https://github.com/cavo789/blog',
@@ -213,21 +213,21 @@ const config = {
 
         // The application ID provided by Algolia
         appId: 'SIOYZRXPKJ',
-  
+
         // Public API key: it is safe to commit it
         apiKey: '3e2bd9067f4916ba2d338c5b57631b92',
-  
+
         indexName: 'avonture',
-  
+
         // Optional: see doc section below
         contextualSearch: true,
-  
+
         // Optional: Algolia search parameters
         searchParameters: {},
-  
+
         // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: 'search',
-  
+
         // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
         insights: false,
       },
