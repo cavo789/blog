@@ -155,7 +155,7 @@ So, as you can see, it's now quite easy. We can change the layout of our Docusau
 We'll proceed step by step and keeping in mind a few things:
 
 * We should minimize our changes on the original `src/theme/BlogPostItem/index.js`; the less updates the best;
-* We will create a Docusaurus component to allow interactions with BlueSky (think about the evolution of the component) so, for this reason, we'll put everything (code, image, css) together and
+* We will create a Docusaurus component in `src/components/` to allow interactions with BlueSky (think about the evolution of the component) so, for this reason, we'll put everything (code, image, css) together and
 * We will try to keep things clean and maintainable for the developer and configurable for the user.
 
 ### 1/5 The layout of our BlueSky generic component
@@ -166,11 +166,11 @@ In this article, we'll just foresee a "Share on BlueSky" button but in the secon
 
 This `index.js` will be the **entry point** of the component.
 
-Please create the `src/theme/BlogPostItem/BlueSky/index.js` file with this content:
+Please create the `src/components/BlueSky/index.js` file with this content:
 
 <details>
 
-<summary>src/theme/BlogPostItem/BlueSky/index.js</summary>
+<summary>src/components/BlueSky/index.js</summary>
 
 ```javascript
 import BlueSkyShare from "./share";
@@ -202,11 +202,11 @@ If you look at the code here above, we've to create two new files: `share.js` an
 
 ### 2/5 Our "Share on BlueSky" button
 
-Ok, now, we've to create a second file called `src/theme/BlogPostItem/BlueSky/share.js` and to copy/paste this content in it:
+Ok, now, we've to create a second file called `src/components/BlueSky/share.js` and to copy/paste this content in it:
 
 <details>
 
-<summary>src/theme/BlogPostItem/BlueSky/share.js</summary>
+<summary>src/components/BlueSky/share.js</summary>
 
 ```javascript
 import Icon from "./bluesky.svg";
@@ -256,7 +256,7 @@ BlueSkyShare.propTypes = {
 As you can see, we've defined a function called `BlueSkyShare` and that function ask a parameter called `metadata`.
 
 :::info
-Look back in the `src/theme/BlogPostItem/BlueSky/index.js` we've just created before. We had this line: `<BlueSkyShare metadata={metadata} />` so, yes, we're well passing that parameter.
+Look back in the `src/components/BlueSky/index.js` we've just created before. We had this line: `<BlueSkyShare metadata={metadata} />` so, yes, we're well passing that parameter.
 
 The `metadata` parameter is an object initialized by Docusaurus and that will contain all the front matter data from the Markdown file of the current blog post. It includes properties like title, description, date, tags, and any other custom fields you've defined in the front matter.
 :::
@@ -270,11 +270,11 @@ If you look at the code here above, we've to create another file called: `bluesk
 
 For sure, we need the BlueSky logo somewhere.
 
-Please create a third file called `src/theme/BlogPostItem/BlueSky/bluesky.svg` and copy/paste this content in it:
+Please create a third file called `src/components/BlueSky/bluesky.svg` and copy/paste this content in it:
 
 <details>
 
-<summary>src/theme/BlogPostItem/BlueSky/bluesky.svg</summary>
+<summary>src/components/BlueSky/bluesky.svg</summary>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -287,11 +287,11 @@ Please create a third file called `src/theme/BlogPostItem/BlueSky/bluesky.svg` a
 
 ### 4/5 And finally our CSS
 
-And, very important, we need a CSS. Please create a fourth file called `src/theme/BlogPostItem/BlueSky/styles.module.css` and copy/paste this content in it:
+And, very important, we need a CSS. Please create a fourth file called `src/components/BlueSky/styles.module.css` and copy/paste this content in it:
 
 <details>
 
-<summary>src/theme/BlogPostItem/BlueSky/styles.module.css</summary>
+<summary>src/components/BlueSky/styles.module.css</summary>
 
 ```css
 .blueSkyLogo{
@@ -336,14 +336,15 @@ Our BlueSky component is ready. We have created our four files.
 You should have this:
 
 ```bash
-cd src/theme/BlogPostItem
 .
-├── BlueSky
+├── src/components/BlueSky
 │   ├── bluesky.svg             -- The BlueSky logo
 │   ├── index.js                -- Our BlueSky component
 │   ├── share.js                -- Our BlueSkyShare sub-component
 │   └── styles.module.css       -- Our stylesheet
-└── index.js                    -- The BlogPostItem template
+...
+└── src/theme/BlogPostItem
+    ├── index.js                -- The BlogPostItem template
 ```
 
 Let's go back to what was said earlier: in order to adapt the page layout, Docusaurus uses the file `src/theme/BlogPostItem/index.js`. So it's time to inject our newly-created component in that script.
@@ -364,7 +365,7 @@ import BlogPostItemFooter from '@theme/BlogPostItem/Footer';
 // highlight-next-line
 // import our BlueSky component
 // highlight-next-line
-import BlueSky from "./BlueSky/index.js";
+import BlueSky from "@site/src/components/BlueSky/index.js";
 
 // apply a bottom margin in list view
 function useContainerClassName() {

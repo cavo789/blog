@@ -32,7 +32,7 @@ Thanks to this link, we can:
 2. Display the number of likes and reposts below your article and,
 3. Display the list of comments you've received on your BlueSky post and, if none, display a *Call to action* area to encourage your reader to share his thoughts
 
-In the previous article (see [Create our own Docusaurus React component and provide a "Share on BlueSky" button](/blog/docusaurus-bluesky-share)), we've created the `src/theme/BlogPostItem/BlueSky/index.js` file. Please edit that file and use this new content:
+In the previous article (see [Create our own Docusaurus React component and provide a "Share on BlueSky" button](/blog/docusaurus-bluesky-share)), we've created the `src/components/BlueSky/index.js` file. Please edit that file and use this new content:
 
 ## 1/5 The layout of our BlueSky generic component
 
@@ -40,7 +40,7 @@ Here is our new BlueSky layout for our component:
 
 <details>
 
-<summary>src/theme/BlogPostItem/BlueSky/index.js</summary>
+<summary>src/components/BlueSky/index.js</summary>
 
 ```javascript
 /**
@@ -154,7 +154,7 @@ As you can see, this time, we'll foresee four components:
 
 <details>
 
-<summary>src/theme/BlogPostItem/BlueSky/post.js</summary>
+<summary>src/components/BlueSky/post.js</summary>
 
 ```javascript
 /**
@@ -219,7 +219,7 @@ BlueSkyPost.propTypes = {
 <!-- cspell:disable -->
 <details>
 
-<summary>src/theme/BlogPostItem/BlueSky/likes.js</summary>
+<summary>src/components/BlueSky/likes.js</summary>
 
 ```javascript
 /**
@@ -329,7 +329,7 @@ BlueSkyLikes.propTypes = {
 <!-- cspell:disable -->
 <details>
 
-<summary>src/theme/BlogPostItem/BlueSky/comments.js</summary>
+<summary>src/components/BlueSky/comments.js</summary>
 
 ```javascript
 /**
@@ -630,7 +630,7 @@ BlueSkyComments.propTypes = {
 
 <details>
 
-<summary>src/theme/BlogPostItem/BlueSky/styles.module.css</summary>
+<summary>src/components/BlueSky/styles.module.css</summary>
 
 ```css
 .blueSkyLogo {

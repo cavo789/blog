@@ -7,7 +7,7 @@ import BlogPostItemContent from '@theme/BlogPostItem/Content';
 import BlogPostItemFooter from '@theme/BlogPostItem/Footer';
 
 // import our BlueSky component
-import BlueSky from "./BlueSky/index.js";
+import BlueSky from "@site/src/components/BlueSky/index.js";
 
 // apply a bottom margin in list view
 function useContainerClassName() {
