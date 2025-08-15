@@ -159,3 +159,8 @@ upgrade: ## Upgrade docusaurus and npm dependencies
 snippets: ## Replace <detail><summary>(filename)</summary>(content)</detail> with <Snippets filename="(filename)">(content)</Snippets>
 	@clear
 	./.scripts/replace-details-with-snippets.sh
+
+.PHONY: not-yet-shared
+not-yet-shared: ## Get the list of blog posts not yet shared on BlueSkey
+	@clear
+	./.scripts/find-posts-without-bluesky-repost.sh

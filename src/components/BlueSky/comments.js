@@ -67,27 +67,48 @@ function renderPostText(record) {
  * @returns
  */
 function renderEmbed(embed) {
-  if (!embed || embed.$type !== "app.bsky.embed.external#view") return null;
+  if (!embed) return null;
 
-  const { uri, title, description, thumb } = embed.external;
+  // Handle external link preview
+  if (embed.$type === "app.bsky.embed.external#view") {
+    const { uri, title, description, thumb } = embed.external;
 
-  return (
-    <a
-      href={uri}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={styles.blueSkyCommentEmbed}
-    >
-      {thumb && (
-        <img src={thumb} alt="" className={styles.blueSkyCommentEmbedThumb} />
-      )}
-      <div className={styles.blueSkyCommentEmbedContent}>
-        <strong>{title}</strong>
-        {/* <p>{description}</p> */}
-        {/* <span>{uri}</span> */}
+    return (
+      <a
+        href={uri}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.blueSkyCommentEmbed}
+      >
+        {thumb && (
+          <img src={thumb} alt="" className={styles.blueSkyCommentEmbedThumb} />
+        )}
+        <div className={styles.blueSkyCommentEmbedContent}>
+          <strong>{title}</strong>
+        </div>
+      </a>
+    );
+  }
+
+  // ✅ Handle image embeds
+  if (embed.$type === "app.bsky.embed.images#view") {
+    return (
+      <div className={styles.blueSkyCommentImages}>
+        {embed.images.map((image, index) => (
+          <img
+            key={index}
+            src={image.fullsize}
+            alt={image.alt || "Embedded image"}
+            className={styles.blueSkyCommentImage}
+          />
+        ))}
       </div>
-    </a>
-  );
+    );
+  }
+
+  // Optional: handle more embed types later (e.g. recordWithMedia)
+
+  return null;
 }
 
 /**

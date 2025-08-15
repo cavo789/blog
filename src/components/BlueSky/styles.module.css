@@ -108,6 +108,21 @@ img.blueSkyCommentEmbedThumb {
   max-height: 250px;
 }
 
+.blueSkyCommentImages {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.blueSkyCommentImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+}
+
+
 .blueSkyNoCommentYet {
   color: #555;
   font-size: 1rem;

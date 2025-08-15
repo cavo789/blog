@@ -394,27 +394,48 @@ function renderPostText(record) {
  * @returns
  */
 function renderEmbed(embed) {
-  if (!embed || embed.$type !== "app.bsky.embed.external#view") return null;
+  if (!embed) return null;
 
-  const { uri, title, description, thumb } = embed.external;
+  // Handle external link preview
+  if (embed.$type === "app.bsky.embed.external#view") {
+    const { uri, title, description, thumb } = embed.external;
 
-  return (
-    <a
-      href={uri}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={styles.blueSkyCommentEmbed}
-    >
-      {thumb && (
-        <img src={thumb} alt="" className={styles.blueSkyCommentEmbedThumb} />
-      )}
-      <div className={styles.blueSkyCommentEmbedContent}>
-        <strong>{title}</strong>
-        {/* <p>{description}</p> */}
-        {/* <span>{uri}</span> */}
+    return (
+      <a
+        href={uri}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.blueSkyCommentEmbed}
+      >
+        {thumb && (
+          <img src={thumb} alt="" className={styles.blueSkyCommentEmbedThumb} />
+        )}
+        <div className={styles.blueSkyCommentEmbedContent}>
+          <strong>{title}</strong>
+        </div>
+      </a>
+    );
+  }
+
+  // ✅ Handle image embeds
+  if (embed.$type === "app.bsky.embed.images#view") {
+    return (
+      <div className={styles.blueSkyCommentImages}>
+        {embed.images.map((image, index) => (
+          <img
+            key={index}
+            src={image.fullsize}
+            alt={image.alt || "Embedded image"}
+            className={styles.blueSkyCommentImage}
+          />
+        ))}
       </div>
-    </a>
-  );
+    );
+  }
+
+  // Optional: handle more embed types later (e.g. recordWithMedia)
+
+  return null;
 }
 
 /**
@@ -613,6 +634,7 @@ BlueSkyComments.propTypes = {
     }),
   }).isRequired,
 };
+
 ```
 
 </Snippets>
@@ -652,16 +674,13 @@ BlueSkyComments.propTypes = {
 }
 
 .blueSkyCommentHeader {
-  /* This ensures the entire component is a flex container */
   display: flex;
   align-items: center;
-  gap: 10px; /* Optional: adds space between the avatar and author info */
+  gap: 10px;
 }
 
 .blueSkyCommentAuthorInfos {
-  /* This new container is a flex container */
   display: flex;
-  /* This is the key: it stacks the children vertically */
   flex-direction: column;
 }
 
@@ -733,9 +752,23 @@ BlueSkyComments.propTypes = {
 }
 
 img.blueSkyCommentEmbedThumb {
-  /* max-width: 50%; */
   max-height: 250px;
 }
+
+.blueSkyCommentImages {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.blueSkyCommentImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+}
+
 
 .blueSkyNoCommentYet {
   color: #555;
@@ -751,9 +784,9 @@ img.blueSkyCommentEmbedThumb {
 
 .blueSkyNoCommentYetCTA {
   font-weight: bold;
-  color: #007bff; /* A nice, inviting blue */
-  cursor: pointer; /* Changes the cursor to a pointer to indicate interactivity */
-  text-decoration: underline; /* Adds a subtle underline */
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .blueSkyButton {

@@ -5,6 +5,7 @@ authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 tags: [excel, ribbon, vba, vscode]
 enableComments: true
+blueSkyRecordKey: 3lwgc3uymnc2i
 ---
 ![MS Office - Load dropdown from Excel's range](/img/excel_tips_banner.jpg)
 
