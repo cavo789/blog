@@ -8,6 +8,8 @@
   import CardImage from '@site/src/components/Card/CardImage';
   import HomeCard from '@site/src/components/HomeCard';
   import Snippets from '@site/src/components/Snippets';
+  import Columns from '@site/src/components/Columns';
+  import Column from '@site/src/components/Column';
 
   export default {
     // Reusing the default mapping
@@ -19,4 +21,6 @@
     CardImage,
     HomeCard,
     Snippets,
+    Columns,
+    Column,
   };

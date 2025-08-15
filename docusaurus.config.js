@@ -175,35 +175,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Communities',
-            items: [
-              {
-                label: 'Joomla!France',
-                href: 'https://forum.joomla.fr/member/38299-cavo789',
-              },
-              {
-                label: 'Developpez.com',
-                href: 'https://www.developpez.net/forums/u38507/cavo789/',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'BlueSky',
-                href: 'https://bsky.app/profile/avonture.be',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/cavo789',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Christophe Avonture. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Christophe Avonture. Powered by Docusaurus.`,
       },
       matomo: {
         matomoUrl: 'https://matomo.avonture.be/',

@@ -1,13 +1,19 @@
+code {
+  background-color: #eef9fd !important;
+  padding: 0px !important
+}
+
+code:hover {
+  background-color: #eef9fd !important;
+  padding: 0px !important
+}
+
 .snippet-block {
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 8px;
   margin: 1rem 0;
   /* background: var(--ifm-background-surface-color); */
   overflow: hidden;
-}
-
-.snippet-block:hover {
-  background-color: var(--ifm-color-info-lightest);
 }
 
 .snippet-summary {
@@ -53,7 +59,7 @@
 
 .snippet-inner {
   padding: 0.75rem 1rem;
-  border-top: 1px solid var(--ifm-color-emphasis-300);
+  /* border-top: 1px solid var(--ifm-color-emphasis-300); */
 }
 
 .snippet-toolbar {

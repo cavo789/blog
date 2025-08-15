@@ -73,3 +73,9 @@
     margin-bottom: 1rem;
   }
 }
+
+/* Make the footer (on each page) smaller */
+
+.footer {
+  --ifm-footer-padding-vertical: 0.5rem;
+}

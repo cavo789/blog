@@ -86,10 +86,6 @@ export default function BlogPostItem({children, className}) {
   return (
     <BlogPostItemContainer className={clsx(containerClassName, className)}>
       <BlogPostItemHeader />
-      // highlight-next-line
-      {/* Just after the blog post title, we'll add a "Are you ready" text */}
-      // highlight-next-line
-      <strong style={{color:"red"}}>Are you ready to update your BlogPostItem layout?</strong>
       <BlogPostItemContent>{children}</BlogPostItemContent>
       <BlogPostItemFooter />
     </BlogPostItemContainer>
