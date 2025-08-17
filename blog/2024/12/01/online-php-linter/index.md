@@ -3,6 +3,7 @@ slug: online-php-linter
 title: Format poorly formatted PHP code
 authors: [christophe]
 image: /img/php_tips_social_media.jpg
+serie: code-quality
 mainTag: code-quality
 tags: [php, code-quality, laravel, phpcs, php-cs-fixer, tips, vscode]
 enableComments: true

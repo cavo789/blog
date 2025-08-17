@@ -3,6 +3,7 @@ slug: python-qa
 title: Python - Code Quality tools
 authors: [christophe]
 image: /img/python_tips_social_media.jpg
+serie: code-quality
 mainTag: code-quality
 tags: [autoflake, black, code-quality, devcontainer, docker, isort, mypy, prospector, pydocstyle, pylint, pyright, python, ruff, vulture]
 enableComments: true

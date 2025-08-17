@@ -145,6 +145,10 @@ const config = {
             label: 'Blog',
           },
           {
+            href: '/series',
+            label: 'Series',
+          },
+          {
             href: '/themes',
             label: 'Themes',
           },
