@@ -2,13 +2,13 @@
 slug: online-php-linter
 title: Format poorly formatted PHP code
 authors: [christophe]
-image: /img/php_tips_social_media.jpg
+image: /img/code_quality_social_media.jpg
 serie: code-quality
 mainTag: code-quality
 tags: [php, code-quality, laravel, phpcs, php-cs-fixer, tips, vscode]
 enableComments: true
 ---
-![Format poorly formatted PHP code](/img/php_tips_banner.jpg)
+![Format poorly formatted PHP code](/img/code_quality_banner.jpg)
 
 You're recovering some old PHP code; you want to answer a question asked on a forum and the person who posted the PHP question didn't take care to ensure that it was properly formatted; ... there are too many occasions when the syntactic quality of a code can be rotten.
 

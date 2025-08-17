@@ -2,6 +2,7 @@
 slug: docusaurus-articles-tips
 title: Some tips and tricks when written articles for Docusaurus
 authors: [christophe]
+serie: Discovering Docusaurus
 image: /img/docusaurus_tips_social_media.jpg
 mainTag: docusaurus
 tags: [markdown, docusaurus, tips]

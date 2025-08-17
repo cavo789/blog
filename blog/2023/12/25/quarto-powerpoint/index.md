@@ -3,6 +3,7 @@ slug: quarto-powerpoint
 title: Use Quarto and create a PowerPoint slideshow
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
+serie: Discovering Quarto
 mainTag: quarto
 tags: [markdown, powerpoint, quarto, revealjs, tips]
 enableComments: true

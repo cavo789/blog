@@ -2,7 +2,7 @@
 slug: python-qa
 title: Python - Code Quality tools
 authors: [christophe]
-image: /img/python_tips_social_media.jpg
+image: /img/code_quality_social_media.jpg
 serie: code-quality
 mainTag: code-quality
 tags: [autoflake, black, code-quality, devcontainer, docker, isort, mypy, prospector, pydocstyle, pylint, pyright, python, ruff, vulture]
@@ -13,7 +13,7 @@ enableComments: true
 <!-- cspell:ignore analyser,pylint,Autoflake,isort,mypy,pyright,pydocstyle,pylintrc,docparams -->
 <!-- cspell:ignore rcfile,pyflakes,pycodestyle,mccabe,pyproject -->
 
-![Python - Code Quality tools](/img/python_tips_banner.jpg)
+![Python - Code Quality tools](/img/code_quality_banner.jpg)
 
 If you're a self-respecting programmer, you can't develop without code analysis tools.  For PHP programmers, you already know a lot of them (`rector`, `phpstan`, `phan`, `phpcs`, ...). See my previous articles [Rector 1.0.0, my friend, my coach](/blog/php-rector) and [Docker image that provides static analysis tools for PHP](/blog/php-jakzal-phpqa) f.i.
 

@@ -148,10 +148,10 @@ const config = {
             href: '/series',
             label: 'Series',
           },
-          {
-            href: '/themes',
-            label: 'Themes',
-          },
+          // {
+          //   href: '/themes',
+          //   label: 'Themes',
+          // },
           {
             href: '/blog/tags',
             label: 'Tags',

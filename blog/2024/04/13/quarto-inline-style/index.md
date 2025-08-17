@@ -3,6 +3,7 @@ slug: quarto-inline-style
 title: Quarto Inline style
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
+serie: Discovering Quarto
 mainTag: quarto
 tags: [markdown, quarto, tips]
 enableComments: true

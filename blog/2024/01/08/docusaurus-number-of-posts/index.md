@@ -3,6 +3,7 @@ slug: docusaurus-number-of-posts
 title: Getting the number of published posts
 authors: [christophe]
 image: /img/docusaurus_tips_social_media.jpg
+serie: Discovering Docusaurus
 mainTag: docusaurus
 tags: [markdown, docusaurus, tips]
 enableComments: true

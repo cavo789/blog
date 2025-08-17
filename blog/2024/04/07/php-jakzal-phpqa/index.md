@@ -2,13 +2,13 @@
 slug: php-jakzal-phpqa
 title: Docker image that provides static analysis tools for PHP
 authors: [christophe]
-image: /img/php_tips_social_media.jpg
+image: /img/code_quality_social_media.jpg
 serie: code-quality
 mainTag: code-quality
 tags: [code-quality, composer, docker, laravel, php, php-cs-fixer, phpcs, phpcbf, refactoring]
 enableComments: true
 ---
-![Docker image that provides static analysis tools for PHP](/img/php_tips_banner.jpg)
+![Docker image that provides static analysis tools for PHP](/img/code_quality_banner.jpg)
 
 For years now, I'm using [https://github.com/jakzal/phpqa](https://github.com/jakzal/phpqa) to run a lot of static analysis tools on my PHP codebase.
 

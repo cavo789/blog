@@ -2,6 +2,7 @@
 slug: docker-python-devcontainer-windows
 title: Docker - Easy setup of Python under Windows
 authors: [christophe]
+serie: Coding using a devcontainer
 image: /img/python_tips_social_media.jpg
 mainTag: python
 tags: [devcontainer, docker, python]

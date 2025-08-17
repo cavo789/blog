@@ -3,6 +3,7 @@ slug: quarto-callout-blocks
 title: Quarto Callout Blocks
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
+serie: Discovering Quarto
 mainTag: quarto
 tags: [markdown, quarto, tips, vscode]
 enableComments: true

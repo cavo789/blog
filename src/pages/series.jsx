@@ -8,7 +8,6 @@ import Card from "@site/src/components/Card";
 import CardImage from '@site/src/components/Card/CardImage';
 import CardBody from '@site/src/components/Card/CardBody';
 
-
 export default function SeriesPage() {
   const blogPosts = getBlogMetadata();
   const seriesMap = {};

@@ -2,13 +2,13 @@
 slug: git-precommit
 title: Git - pre-commit-hooks
 authors: [christophe]
-image: /img/git_tips_social_media.jpg
+image: /img/code_quality_social_media.jpg
 serie: code-quality
 mainTag: code-quality
 tags: [black, captainhook, ci, code-quality, git, grumphp, hooks, husky, mypy, phan, php-cs-fixer, phpcbf, phplint, phpstan, pre-commit, prospector, pylint, python, ruff, shellcheck, shellformat, tips]
 enableComments: true
 ---
-![Git - pre-commit-hooks](/img/git_tips_banner.jpg)
+![Git - pre-commit-hooks](/img/code_quality_banner.jpg)
 
 You like clean code, don't you? And you hate getting an email from your versioning tool (e.g. Github or GitLab) telling you that your last commit didn't go through, that the formatting of your code is bad; this is because you've left one space too many at the end of a line or you've used single quote instead of double (or the opposite), for example.
 

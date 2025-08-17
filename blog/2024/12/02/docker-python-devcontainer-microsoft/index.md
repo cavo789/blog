@@ -3,6 +3,7 @@ slug: docker-python-devcontainer-microsoft
 title: Docker - Even easier setup of Python
 authors: [christophe]
 image: /img/python_tips_social_media.jpg
+serie: Coding using a devcontainer
 mainTag: python
 tags: [devcontainer, docker, python]
 enableComments: true

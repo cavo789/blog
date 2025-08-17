@@ -2,13 +2,13 @@
 slug: markdown-lint
 title: Markdown linter - solve formatting issue in md files
 authors: [christophe]
-image: /img/markdown_tips_social_media.jpg
+image: /img/code_quality_social_media.jpg
 serie: code-quality
 mainTag: code-quality
 tags: [code-quality, makefile, markdown, tips, vscode]
 enableComments: true
 ---
-![Markdown linter - solve formatting issue in md files](/img/markdown_tips_banner.jpg)
+![Markdown linter - solve formatting issue in md files](/img/code_quality_banner.jpg)
 
 You are writing Markdown `.md` files (and you're so right) and you just wish to check (and autofix) some issues like having multiple blank lines, mixing bullet types (`-` and `*` in the same document), using a `#` title followed by `###` (i.e. you forget the level `##`) and many more.
 

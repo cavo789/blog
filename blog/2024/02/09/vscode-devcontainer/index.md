@@ -2,12 +2,13 @@
 slug: vscode-devcontainer
 title: PHP development in a devcontainer with preinstalled code quality tools
 authors: [christophe]
-image: ./images/devcontainer_social_media.jpg
+image: /img/devcontainer_social_media.jpg
+serie: Coding using a devcontainer
 mainTag: php
 tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, sonarlint, vscode]
 enableComments: true
 ---
-![PHP development in a devcontainer with preinstalled code quality tools](./images/devcontainer_banner.jpg)
+![PHP development in a devcontainer with preinstalled code quality tools](/img/devcontainer_banner.jpg)
 
 * *Updated 2024-02-23, install Rector automatically*
 * *Updated 2024-02-29, install [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) and [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)*

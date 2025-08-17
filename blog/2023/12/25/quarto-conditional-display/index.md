@@ -2,6 +2,7 @@
 slug: quarto-conditional-display
 title: Quarto conditional display
 authors: [christophe]
+serie: Discovering Quarto
 image: /img/quarto_tips_social_media.jpg
 mainTag: quarto
 tags: [markdown, quarto, reveal, tips]
