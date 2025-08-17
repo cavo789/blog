@@ -18,6 +18,7 @@ export default function RelatedPosts({ count = 3, description = false }) {
       excludePermalink={currentPermalink}
       count={count}
       description={description}
+      random={true}
     />
   );
 }

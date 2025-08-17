@@ -9,6 +9,9 @@ import BlogPostItemFooter from '@theme/BlogPostItem/Footer';
 // Our relatedBlogPost component
 import RelatedBlogPosts from '@site/src/components/RelatedBlogPosts/index.js';
 
+// Our SerieBlogPosts component
+import SerieBlogPosts from '@site/src/components/SerieBlogPosts/index.js';
+
 // Our BlueSky component
 import BlueSky from "@site/src/components/BlueSky/index.js";
 
@@ -23,8 +26,20 @@ export default function BlogPostItem({children, className}) {
   const containerClassName = useContainerClassName();
   return (
     <BlogPostItemContainer className={clsx(containerClassName, className)}>
+
       <BlogPostItemHeader />
+
+      {/* Only display our RelatedBlogPosts and BlueSky components on the post page; not the blog view */}
+      {isBlogPostPage && (
+        <SerieBlogPosts
+        serie={metadata.frontMatter.serie}
+        excludePermalink={metadata.permalink}
+        highlightCurrent={true}
+        />
+      )}
+
       <BlogPostItemContent>{children}</BlogPostItemContent>
+
       <BlogPostItemFooter />
 
       {/* Only display our RelatedBlogPosts and BlueSky components on the post page; not the blog view */}

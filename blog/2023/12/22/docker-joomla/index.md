@@ -3,6 +3,7 @@ slug: docker-joomla
 title: Create your Joomla website using Docker - Part 1
 authors: [christophe]
 image: /img/docker_joomla_social_media.jpg
+serie: Create your joomla website using Docker
 mainTag: joomla
 tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
 enableComments: true
@@ -924,14 +925,3 @@ services:
 :::important
 Make sure, for each project, to update the `name:` line and if you plan to be able to run your Joomla sites concurrently, make sure to update the port number for Joomla and chose a new one every time (can be `80`, `81`, `82` and so one).
 :::
-
-## Associated articles
-
-* [FrankenPHP, a modern application server for PHP](/blog/frankenphp-docker-joomla)
-* [Update php.ini when using a Docker image](/blog/docker-php-ini)
-* [Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/blog/docker-adminer-pgadmin-phpmyadmin)
-* [Linux Makefile - When to use a makefile](/blog/makefile-using-make)
-
-## Your comments are more than welcome
-
-Please use the comments area below to share your opinions, ideas and remarks about this article. Thanks in advance.

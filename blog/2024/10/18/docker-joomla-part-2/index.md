@@ -2,6 +2,7 @@
 slug: docker-joomla-part-2
 title: Create your Joomla website using Docker - Part 2
 authors: [christophe]
+serie: Create your joomla website using Docker
 image: /img/docker_joomla_social_media.jpg
 mainTag: joomla
 tags: [.env, docker, joomla, makefile]

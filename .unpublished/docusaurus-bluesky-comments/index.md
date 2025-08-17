@@ -3,6 +3,7 @@ slug: docusaurus-bluesky-comments
 title: Show BlueSky comments on Docusaurus and, too, number of likes/reposts
 authors: [christophe]
 image: /img/docusaurus_tips_social_media.jpg
+serie: Creating Docusaurus components
 mainTag: bluesky
 tags: [bluesky, component, docusaurus, markdown, react, swizzle]
 enableComments: true

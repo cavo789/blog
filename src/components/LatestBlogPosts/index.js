@@ -3,73 +3,18 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
 
-function getBlogMetadata() {
-  return (
-    blogPosts
-      .keys()
-      .map((key) => {
-        const post = blogPosts(key);
-
-        // Don't process blog posts in draft or the unlisted ones
-        if (post.frontMatter.draft || post.frontMatter.unlisted) {
-          return null;
-        }
-
-        // Get the directory of the blog post (like /blog/2025/08/17)
-        const dir = key.replace(/\/index\.mdx?$/, "").replace(/^\.\//, "");
-
-        // Build the slug
-        let permalink;
-        if (post.frontMatter.slug) {
-          permalink = post.frontMatter.slug.startsWith("/")
-            ? post.frontMatter.slug
-            : `/blog/${post.frontMatter.slug.replace(/^\//, "")}`;
-        } else {
-          permalink = `/blog/${dir}/`;
-        }
-
-        // Get the image
-        let imageUrl = post.frontMatter.image;
-        if (imageUrl && imageUrl.startsWith("./")) {
-          imageUrl = `/blog/${dir}/${imageUrl.replace("./", "")}`;
-        }
-
-        // Return the metadata of the blog post.
-        // mainTag is a custom key so make sure to initialize to null if not present
-        return {
-          title: post.frontMatter.title,
-          description: post.frontMatter.description,
-          image: imageUrl,
-          permalink,
-          tags: post.frontMatter.tags || [],
-          mainTag: post.frontMatter.mainTag || null,
-          authors: post.frontMatter.authors || [],
-          date: post.frontMatter.date,
-        };
-      })
-      // ✅ Filter out nulls (skipped posts)
-      .filter(Boolean)
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-  );
-}
-
-function getExcerptWords(text, wordCount = 20) {
-  if (!text) return "";
-  const words = text.split(/\s+/);
-  // Shorten a text and add an ellipsis
-  return (
-    words.slice(0, wordCount).join(" ") + (words.length > wordCount ? "…" : "")
-  );
-}
+import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
 
 export default function LatestBlogPosts({
   tag,
   tags,
-  mainTag, // A main tag like "Joomla" so we'll mainly filter on it wherever possible
+  mainTag, // A main tag like "Joomla" so we'll mainly filter on it wherever possible; used by RelatedBlogPostsd
   author,
+  serie, // If the post is part of a serie, its name will be here
   count = 3,
   description = false,
   excludePermalink,
+  random = false, // Randomize the order;
 }) {
   const posts = getBlogMetadata();
   let filtered = posts;
@@ -123,7 +68,9 @@ export default function LatestBlogPosts({
   if (excludePermalink) {
     filtered = filtered.filter((post) => post.permalink !== excludePermalink);
   }
-  const latest = filtered.slice(0, count);
+
+  const ordered = random ? [...filtered].sort(() => 0.5 - Math.random()) : filtered;
+  const latest = ordered.slice(0, count);
 
   if (!latest.length) return <p>No related posts.</p>;
 
