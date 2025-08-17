@@ -3,6 +3,7 @@ slug: json-faker
 title: JSON - Faker & Mockup
 authors: [christophe]
 image: /img/json_tips_social_media.jpg
+mainTag: json
 tags: [json, python, tips, tool, vscode]
 enableComments: true
 ---

@@ -3,6 +3,7 @@ slug: php-jakzal-phpqa
 title: Docker image that provides static analysis tools for PHP
 authors: [christophe]
 image: /img/php_tips_social_media.jpg
+mainTag: code-quality
 tags: [code-quality, composer, docker, laravel, php, php-cs-fixer, phpcs, phpcbf, refactoring]
 enableComments: true
 ---

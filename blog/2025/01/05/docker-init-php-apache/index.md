@@ -3,6 +3,7 @@ slug: docker-init-php-apache
 title: Using Docker init to quickly dockerize your PHP application
 authors: [christophe]
 image: /img/docker_init_tips_social_media.jpg
+mainTag: docker
 tags: [aesecure, apache, docker, php, tips]
 enableComments: true
 ---

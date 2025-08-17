@@ -3,6 +3,7 @@ slug: docker-joomla-right-to-the-point
 title: Start Joomla with Docker in just a few clicks
 authors: [christophe]
 image: /img/docker_joomla_social_media.jpg
+mainTag: joomla
 tags: [docker, joomla, makefile, mysql]
 enableComments: true
 ---

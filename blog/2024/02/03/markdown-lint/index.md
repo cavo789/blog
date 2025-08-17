@@ -3,7 +3,8 @@ slug: markdown-lint
 title: Markdown linter - solve formatting issue in md files
 authors: [christophe]
 image: /img/markdown_tips_social_media.jpg
-tags: [code quality, makefile, markdown, tips, vscode]
+mainTag: code-quality
+tags: [code-quality, makefile, markdown, tips, vscode]
 enableComments: true
 ---
 ![Markdown linter - solve formatting issue in md files](/img/markdown_tips_banner.jpg)

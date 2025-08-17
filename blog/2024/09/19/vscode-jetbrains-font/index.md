@@ -2,6 +2,7 @@
 slug: vscode-jetbrains-font
 title: Using the JetBrains Mono font in vscode
 authors: [christophe]
+mainTag: vscode
 tags: [tips, vscode]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg

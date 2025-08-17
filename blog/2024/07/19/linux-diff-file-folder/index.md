@@ -3,6 +3,7 @@ slug: linux-diff-file-folder
 title: Linux - Comparing two folders/files in the console
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
+mainTag: linux
 tags: [bash, linux, tips]
 enableComments: true
 ---

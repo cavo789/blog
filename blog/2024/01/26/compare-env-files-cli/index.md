@@ -3,6 +3,7 @@ slug: compare-env-files-cli
 title: Compare environment files in the Linux console
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
+mainTag: linux
 tags: [.env, bash, linux, sed, tips]
 enableComments: true
 ---

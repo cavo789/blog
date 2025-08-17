@@ -1,9 +1,10 @@
 ---
-slug: docker-definition-like-im-five 
+slug: docker-definition-like-im-five
 title: Docker - Explain me like I'm five - What's Docker for?
-authors: [christophe] 
-image: /img/docker_tips_social_media.jpg 
-tags: [devcontainer, docker, python] 
+authors: [christophe]
+image: /img/docker_tips_social_media.jpg
+mainTag: docker
+tags: [devcontainer, docker, python]
 enableComments: true
 ---
 <!-- cspell:ignore Wépion,telework,virtualise -->
@@ -48,7 +49,7 @@ Well no, apart from the fact that it's going to cost me a lot of money and that 
 
 Docker simplifies everything. It's a bit like a virtual machine, but not really.
 
-You could try to say that Docker is a bit like *I telework, I'm at home and I connect remotely to a computer at my employer's*; it's almost that, but it's so much different. 
+You could try to say that Docker is a bit like *I telework, I'm at home and I connect remotely to a computer at my employer's*; it's almost that, but it's so much different.
 
 ![Teleworking](./images/telework.png)
 
@@ -66,7 +67,7 @@ You can all use my image. Whether you're one, ten, a thousand, a million, everyo
 
 What's in it for you? No ingredients to buy, prepare or cook. Just a few seconds to download the image and you're ready to eat.
 
-What's in it for us? Everyone has exactly the same environment; if it works for me, it will work for you. As everything is pre-configured, the program that runs in a Docker environment will run in the same way for everyone. 
+What's in it for us? Everyone has exactly the same environment; if it works for me, it will work for you. As everything is pre-configured, the program that runs in a Docker environment will run in the same way for everyone.
 
 ![It works on my machine](./images/it_works_on_my_machine.png)
 
@@ -92,4 +93,4 @@ Personally, I use Docker every day to develop ([Linux bash](https://hub.docker.c
 
 I no longer install anything on my machines apart from Docker.
 
-![Goodbye](./images/goodbye.png) 
+![Goodbye](./images/goodbye.png)

@@ -3,6 +3,7 @@ slug: winscp-download-recursively-files
 title: WinSCP - Download files with specific extension recursively
 authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
+mainTag: winscp
 tags: [tips, winscp]
 enableComments: true
 ---

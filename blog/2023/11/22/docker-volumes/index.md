@@ -3,6 +3,7 @@ slug: docker-volumes
 title: Using volumes with Docker, use cases
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
+mainTag: docker
 tags: [wsl, docker]
 enableComments: true
 ---

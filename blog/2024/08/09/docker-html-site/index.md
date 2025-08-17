@@ -3,6 +3,7 @@ slug: docker-html-site
 title: Running a HTML site in seconds using Docker
 authors: [christophe]
 image: ./images/static_website_social_media.jpg
+mainTag: docker
 tags: [docker, easyphp, powershell, wamp]
 enableComments: true
 ---

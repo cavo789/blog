@@ -2,6 +2,7 @@
 slug: vscode-errorlens
 title: Error Lens addon for VSCode
 authors: [christophe]
+mainTag: vscode
 tags: [addon, vscode]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg

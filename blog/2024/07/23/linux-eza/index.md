@@ -3,6 +3,7 @@ slug: linux-eza
 title: Let's revisit the ls command thanks to eza
 authors: [christophe]
 image: /img/linux_tips_social_media.jpg
+mainTag: customization
 tags: [customization, linux]
 enableComments: true
 ---

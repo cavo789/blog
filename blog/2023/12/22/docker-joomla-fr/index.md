@@ -4,7 +4,9 @@ title: Créer votre site web Joomla en utilisant Docker
 authors: [christophe]
 unlisted: true # https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#unlisted
 image: /img/docker_joomla_social_media.jpg
+mainTag: joomla
 tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
+draf: true
 enableComments: true
 ---
 <!-- cspell:dictionaries fr-FR -->

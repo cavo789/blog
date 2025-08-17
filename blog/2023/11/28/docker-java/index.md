@@ -3,6 +3,7 @@ slug: docker-java
 title: Play with Docker and Java
 authors: [christophe]
 image: ./images/social_media.jpg
+mainTag: java
 tags: [docker, java]
 enableComments: true
 ---

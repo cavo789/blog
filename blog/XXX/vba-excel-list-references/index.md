@@ -3,6 +3,7 @@ slug: vba-excel-list-references
 title: MS Excel - Get the list of references used in your modules
 authors: [christophe]
 image: /img/excel_tips_social_media.jpg
+mainTag: excel
 tags: [excel, vba]
 enableComments: true
 draft: true

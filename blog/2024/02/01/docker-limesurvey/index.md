@@ -3,6 +3,7 @@ slug: docker-limesurvey
 title: Install LimeSurvey using Docker
 authors: [christophe]
 image: ./images/social_media.jpg
+mainTag: limesurvey
 tags: [docker, limesurvey]
 enableComments: true
 ---

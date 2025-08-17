@@ -3,6 +3,7 @@ slug: docker-oracle-ords
 title: Transform an Oracle DB as OpenData using Oracle REST Data Services
 authors: [christophe]
 image: /img/oracle_social_media.jpg
+mainTag: oracle
 tags: [docker, openapi, oracle, postgrest]
 blueSkyRecordKey: 3lvnjmthgj22v
 enableComments: true
@@ -86,7 +87,7 @@ docker run -d --rm \
     -e IGNORE_APEX=TRUE \
     -v ./ords_secrets/:/opt/oracle/variables \
     -v ords_config:/etc/ords/config/ \
-    container-registry.oracle.com/database/ords-developer:latest   
+    container-registry.oracle.com/database/ords-developer:latest
 ```
 
 :::info The `docker run` explained
@@ -115,7 +116,7 @@ docker run -d --rm \
     --network oracle \
     -p 8181:8181 \
     -v ords_config:/etc/ords/config/ \
-    container-registry.oracle.com/database/ords-developer:latest   
+    container-registry.oracle.com/database/ords-developer:latest
 ```
 
 :::
@@ -286,7 +287,7 @@ Go to `http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop` or, from the hambu
 
 When accessing to an endpoint (like `http://localhost:8181/ords/hr/employees/`), we can manipulate the URL to add parameters like paging, filtering or ordering options.
 
-These are called **JSON QBE** for JSON query-by-example.  
+These are called **JSON QBE** for JSON query-by-example.
 
 See the official documentation: [https://docs.oracle.com/en/database/oracle/simple-oracle-document-access/adsdi/overview-soda-filter-specifications-qbes.html](https://docs.oracle.com/en/database/oracle/simple-oracle-document-access/adsdi/overview-soda-filter-specifications-qbes.html)
 
@@ -302,7 +303,7 @@ By accessing a "full" page like `http://localhost:8181/ords/hr/employees/`, we'l
 
 ![Pagination](./images/pagination.png)
 
-As you can see on the image; the JSON answer will provide a list of records (in an `items` so-called array) then a few properties like `hasMore` (true/false), `limit` i.e. the number of rows in each call, `offset` is the "page" (when 0 the first 25 rows are displayed, when 1 then rows 26 till 50, ...), `count` is the number of rows in the answer. 
+As you can see on the image; the JSON answer will provide a list of records (in an `items` so-called array) then a few properties like `hasMore` (true/false), `limit` i.e. the number of rows in each call, `offset` is the "page" (when 0 the first 25 rows are displayed, when 1 then rows 26 till 50, ...), `count` is the number of rows in the answer.
 
 So, while `hasMore` is `true`, there are still records to obtain with a subsequent request.
 

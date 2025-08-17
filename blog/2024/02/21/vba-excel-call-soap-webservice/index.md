@@ -3,6 +3,7 @@ slug: vba-excel-call-soap-webservice
 title: MS Excel - How to call a SOAP web service
 authors: [christophe]
 image: /img/excel_tips_social_media.jpg
+mainTag: excel
 tags: [excel, ribbon, soap, vba]
 enableComments: true
 ---

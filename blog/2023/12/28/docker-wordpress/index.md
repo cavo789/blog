@@ -3,6 +3,7 @@ slug: docker-wordpress
 title: Quickly install WordPress in just three commands
 authors: [christophe]
 image: ./images/social_media.jpg
+mainTag: wordpress
 tags: [docker, wordpress]
 enableComments: true
 ---

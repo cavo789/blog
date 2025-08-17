@@ -3,6 +3,7 @@ slug: docker-run-linux-gui
 title: Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
+mainTag: docker
 tags: [chrome, docker, firefox, gimp, gui, tip]
 enableComments: true
 ---

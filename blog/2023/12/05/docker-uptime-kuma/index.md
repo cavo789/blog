@@ -3,6 +3,7 @@ slug: docker_uptime_kuma
 title: Self-hosted monitoring tool
 authors: [christophe]
 image: ./images/social_media.jpg
+mainTag: docker
 tags: [docker, monitoring, tool]
 enableComments: true
 ---

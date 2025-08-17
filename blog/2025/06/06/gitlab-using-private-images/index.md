@@ -3,6 +3,7 @@ slug: gitlab-using-private-images
 title: GitLab - Using Docker private images
 authors: [christophe]
 image: /img/git_tips_social_media.jpg
+mainTag: gitlag
 tags: [CI, gitlab, ssh]
 blueSkyRecordKey: 3lun25dkf322r
 enableComments: true

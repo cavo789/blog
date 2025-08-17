@@ -3,6 +3,7 @@ slug: oracle-dotnet-nodejs-php-python
 title: Accessing an Oracle database using .Net, NodeJS, PHP and Python
 authors: [christophe]
 image: /img/oracle_social_media.jpg
+mainTag: oracle
 tags: [docker, oracle]
 blueSkyRecordKey: 3lvnjmthgj22v
 enableComments: true

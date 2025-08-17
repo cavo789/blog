@@ -3,6 +3,7 @@ slug: bash-progression-bar
 title: Linux - Using a progression bar in your script
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
+mainTag: bash
 tags: [bash, linux, tips]
 enableComments: true
 ---

@@ -3,6 +3,7 @@ slug: vscode-github-dev
 title: Start vscode from github.com
 authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
+mainTag: vscode
 tags: [Github, tips, vscode]
 enableComments: true
 ---

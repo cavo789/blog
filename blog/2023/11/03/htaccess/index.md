@@ -2,6 +2,7 @@
 slug: apache-htaccess
 title: Apache .htaccess file
 authors: [christophe]
+mainTag: apache
 tags: [apache, snippets, .htaccess]
 image: /img/htaccess_tips_social_media.jpg
 enableComments: true

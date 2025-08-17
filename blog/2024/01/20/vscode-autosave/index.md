@@ -2,6 +2,7 @@
 slug: vscode-autosave
 title: Autosave feature in VSCode
 authors: [christophe]
+mainTag: vscode
 tags: [vscode, markdown, tips]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg

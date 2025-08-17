@@ -3,6 +3,7 @@ slug: git-config
 title: Git - Some tips for your .gitconfig file
 authors: [christophe]
 image: /img/git_tips_social_media.jpg
+mainTag: git
 tags: [git, tips, wsl]
 enableComments: true
 ---

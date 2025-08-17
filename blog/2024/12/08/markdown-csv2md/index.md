@@ -3,6 +3,7 @@ slug: markdown-csv2md
 title: Markdown - Convert CSV to Markdown tables
 authors: [christophe]
 image: /img/markdown_tips_social_media.jpg
+mainTag: markdown
 tags: [csv, excel, markdown, tips]
 enableComments: true
 ---

@@ -4,6 +4,7 @@ title: Bash - Echo on the console and in a logfile in the same time
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 tags: [bash, tips]
+mainTag: bash
 enableComments: true
 ---
 ![Bash - Echo on the console and in a logfile in the same time](/img/bash_tips_banner.jpg)

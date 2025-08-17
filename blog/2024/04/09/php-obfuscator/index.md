@@ -3,7 +3,8 @@ slug: php-obfuscator
 title: Obfuscate your PHP code
 authors: [christophe]
 image: ./images/hell_social_media.jpg
-tags: [code quality, IA, php]
+mainTag: php
+tags: [code-quality, IA, php]
 enableComments: true
 ---
 <!-- cspell:ignore ctype, fgets, ppmb, ppmc, ppms, ppmu, ppmw, ppmx, ppnc, ppnt, ppnx, ppny, ppnz, strlen, strpos, strtolower -->

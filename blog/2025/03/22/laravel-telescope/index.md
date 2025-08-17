@@ -3,6 +3,7 @@ slug: laravel-telescope
 title: Laravel Telescope
 authors: [christophe]
 image: /img/laravel_tips_social_media.jpg
+mainTag: laravel
 tags: [laravel, php, telescope]
 blueSkyRecordKey: 3lvnkgebz3c2v
 enableComments: true

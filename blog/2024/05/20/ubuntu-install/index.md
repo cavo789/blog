@@ -3,6 +3,7 @@ slug: ubuntu-install
 title: Ubuntu - Install from scratch
 authors: [christophe]
 image: ./images/install_ubuntu_social_media.jpg
+mainTag: ubuntu
 tags: [linux, ubuntu]
 enableComments: true
 ---
@@ -24,7 +25,7 @@ If you're using Bitlocker on your computer, first, you must first deactivate it;
 
 You can follow the official documentation here: [Turn Bitlocker off](https://ubuntu.com/tutorials/install-ubuntu-desktop#13-additional-installing-ubuntu-alongside-windows-with-bitlocker).
 
-Shortly, still in your Windows session, start your **Control Panel**, search for **Bitlocker** and click on **Turn off Bitlocker**. Depending on the speed of your computer and the size of the hard disk, it'll take minutes. 
+Shortly, still in your Windows session, start your **Control Panel**, search for **Bitlocker** and click on **Turn off Bitlocker**. Depending on the speed of your computer and the size of the hard disk, it'll take minutes.
 
 ![Disabling Bitlocker](./images/disabling_bitlocker.png)
 
@@ -36,7 +37,7 @@ If, like me, you didn't see any progression on the screen, think to click on the
 
 You'll need to get the ISO of Ubuntu; just go to [https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image](https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image) and download it.
 
-Once the file **ubuntu-24.04-desktop-amd64.iso** is successfully downloaded, you'll need an additional software called [balenaEtc](https://etcher.balena.io/). balenaEtc has to be used to create the bootable USB stick. It couldn't be simpler: just select the downloaded ISO file, then the letter of the USB drive (D: for me) and confirm. 
+Once the file **ubuntu-24.04-desktop-amd64.iso** is successfully downloaded, you'll need an additional software called [balenaEtc](https://etcher.balena.io/). balenaEtc has to be used to create the bootable USB stick. It couldn't be simpler: just select the downloaded ISO file, then the letter of the USB drive (D: for me) and confirm.
 
 After a few minutes, the USB stick will be ready.
 
@@ -54,7 +55,7 @@ Your computer you'll now boot on the USB stick and start the installation proces
 
 ![Booting on the USB stick](./images/boot_usb.png)
 
-Everything is nicely covered by the [official tutorial](https://ubuntu.com/tutorials/install-ubuntu-desktop). 
+Everything is nicely covered by the [official tutorial](https://ubuntu.com/tutorials/install-ubuntu-desktop).
 
 A few notes:
 
@@ -65,7 +66,7 @@ A few notes:
 Personally, that's my goal and I'm going to ask to delete my entire current disk (Windows) and to do that, I'm going to click on *Erase disk and install Ubuntu* and click on the *Advanced features* button. I'm going to opt for *Use LVM and encryption* which will allow me to have encryption like I had with Bitlocker: someone who came to steal my hard disk wouldn't have access to my files without the decryption key.
 
 :::caution IMPORTANT - DON'T INSTALL ADDITIONAL DRIVERS IF YOU'VE A NVIDIA GRAPHIC CARD
-The wizard will ask if you want to **Install recommended proprietary software**. The first time, I've answered Yes on both options. The installation had been running for nearly twenty minutes and then I got an error message *The Secure Boot key is not valid*. 
+The wizard will ask if you want to **Install recommended proprietary software**. The first time, I've answered Yes on both options. The installation had been running for nearly twenty minutes and then I got an error message *The Secure Boot key is not valid*.
 
 While looking on the **askubuntu.com** website, someone has told this was a bug and that we shouldn't install drivers during the installation of Ubuntu but we can do this easily later one and refers to this bug: [https://bugs.launchpad.net/subiquity/+bug/2060353](https://bugs.launchpad.net/subiquity/+bug/2060353).
 

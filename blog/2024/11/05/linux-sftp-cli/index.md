@@ -3,6 +3,7 @@ slug: linux-sftp-cli
 title: Using sftp on the command line, with or without a proxy
 authors: [christophe]
 image: /img/linux_tips_social_media.jpg
+mainTag: sftp
 tags: [linux, scp, sftp, ssh, sshpass, tips]
 enableComments: true
 ---

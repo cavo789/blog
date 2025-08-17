@@ -3,6 +3,7 @@ slug: docker-inspect
 title: Docker inspect - Retrieve network's information
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
+mainTag: docker
 tags: [docker, network, tips]
 enableComments: true
 ---

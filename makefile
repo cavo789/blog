@@ -164,3 +164,8 @@ snippets: ## Replace <detail><summary>(filename)</summary>(content)</detail> wit
 not-yet-shared: ## Get the list of blog posts not yet shared on BlueSkey
 	@clear
 	./.scripts/find-posts-without-bluesky-repost.sh
+
+.PHONY: no-main-tag
+no-main-tag: ## Get the list of blog posts without mainTag defined in his YAML front matter
+	@clear
+	./.scripts/find-posts-without-maintag-yaml.sh

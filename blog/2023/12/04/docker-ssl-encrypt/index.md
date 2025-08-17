@@ -3,6 +3,7 @@ slug: docker_ssl_encrypt
 title: Encrypt sensitive data using SSL and Docker
 authors: [christophe]
 image: ./images/social_media.jpg
+mainTag: ssl
 tags: [docker, encryption, ssl]
 enableComments: true
 ---

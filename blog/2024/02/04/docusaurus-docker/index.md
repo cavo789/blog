@@ -3,6 +3,7 @@ slug: docusaurus-docker
 title: Running Docusaurus with Docker
 authors: [christophe]
 image: /img/docusaurus_tips_social_media.jpg
+mainTag: docusaurus
 tags: [docker, docusaurus, node, npm, tips, yarn]
 enableComments: true
 ---

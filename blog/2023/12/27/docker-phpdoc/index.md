@@ -3,6 +3,7 @@ slug: docker-phpdocumentor
 title: Generating documentation for a PHP codebase
 authors: [christophe]
 image: /img/php_tips_social_media.png
+mainTag: php
 tags: [docker, php, phpdoc, wordpress]
 enableComments: true
 ---

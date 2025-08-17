@@ -3,7 +3,8 @@ slug: git-precommit
 title: Git - pre-commit-hooks
 authors: [christophe]
 image: /img/git_tips_social_media.jpg
-tags: [black, captainhook, ci, code quality, git, grumphp, hooks, husky, mypy, phan, php-cs-fixer, phpcbf, phplint, phpstan, pre-commit, prospector, pylint, python, ruff, shellcheck, shellformat, tips]
+mainTag: code-quality
+tags: [black, captainhook, ci, code-quality, git, grumphp, hooks, husky, mypy, phan, php-cs-fixer, phpcbf, phplint, phpstan, pre-commit, prospector, pylint, python, ruff, shellcheck, shellformat, tips]
 enableComments: true
 ---
 ![Git - pre-commit-hooks](/img/git_tips_banner.jpg)

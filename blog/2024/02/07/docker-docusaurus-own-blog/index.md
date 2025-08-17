@@ -3,6 +3,7 @@ slug: docusaurus-docker-own-blog
 title: Running your own blog with Docusaurus and Docker
 authors: [christophe]
 image: /img/docusaurus_tips_social_media.jpg
+mainTag: docusaurus
 tags: [docker, docusaurus, node, npm, tips, yarn]
 enableComments: true
 ---

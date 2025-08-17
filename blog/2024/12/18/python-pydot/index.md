@@ -3,6 +3,7 @@ slug: python-pydot
 title: Python - Generate flows using pydot
 authors: [christophe]
 image: /img/python_tips_social_media.jpg
+mainTag: python
 tags: [docker, python, visualisation]
 enableComments: true
 ---

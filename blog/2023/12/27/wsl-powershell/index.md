@@ -3,6 +3,7 @@ slug: wsl-powershell
 title: Starting the default associated Windows program on WSL
 authors: [christophe]
 image: /img/wsl_tips_social_media.jpg
+mainTag: wsl
 tags: [powershell, tips, wsl]
 enableComments: true
 ---

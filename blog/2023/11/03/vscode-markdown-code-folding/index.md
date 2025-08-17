@@ -2,6 +2,7 @@
 slug: vscode-markdown-code-folding
 title: Markdown folding not working
 authors: [christophe]
+mainTag: vscode
 tags: [vscode, markdown, tips]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg

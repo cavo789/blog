@@ -3,6 +3,7 @@ slug: linux-history
 title: Linux - Working with the history of your last fired actions
 authors: [christophe]
 image: /img/linux_tips_social_media.jpg
+mainTag: linux
 tags: [linux, zsh]
 enableComments: true
 ---
@@ -28,7 +29,7 @@ First things first, to display the list of commands you've entered in the past, 
 By default, your history is stored in a file called `.bash_history` in your home directory. You can display the last five commands f.i. by running `tail -n5 ~/.bash_history`.
 
 :::info On my own, since I'm using [ZSH](/blog/tags/zsh), my history is in `~/.zsh_history`.
-The easiest way to determine where is stored your history is to show the content of the `$HISTFILE` variable like this: `echo $HISTFILE`. 
+The easiest way to determine where is stored your history is to show the content of the `$HISTFILE` variable like this: `echo $HISTFILE`.
 :::
 
 :::tip
@@ -67,7 +68,7 @@ The space character is triggered by the `hist_ignore_space` option, defined in `
 
 ## Using grep to filter your history
 
-Let's say you wish to retrieve the latest `docker exec` instructions you've fired: `history | grep -i "docker exec"` i.e. simply *pipe* the output of the `history` command to the `grep` one and apply a filter (case insensitive using the `-i` flag). 
+Let's say you wish to retrieve the latest `docker exec` instructions you've fired: `history | grep -i "docker exec"` i.e. simply *pipe* the output of the `history` command to the `grep` one and apply a filter (case insensitive using the `-i` flag).
 
 On my own, I don't need this because I'm using <kbd>CTRL</kbd>+<kbd>R</kbd> under ZSH.
 

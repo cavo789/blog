@@ -3,6 +3,7 @@ slug: makefile_tips
 title: Makefile - Tutorial and Tips & Tricks
 authors: [christophe]
 image: /img/makefile_tips_social_media.jpg
+mainTag: makefile
 tags: [makefile, tips]
 enableComments: true
 ---

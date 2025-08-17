@@ -3,6 +3,7 @@ slug: python-pandas-merge
 title: Pandas - Merge two or more files and create a merged one
 authors: [christophe]
 image: /img/pandas_tips_social_media.jpg
+mainTag: python
 tags: [csv, excel, pandas, python]
 enableComments: true
 ---
@@ -81,7 +82,7 @@ def generate_fake_data(filename: str = "employees") -> None:
             "first_name": fake.first_name(),
             "last_name": fake.last_name(),
         }
-            
+
         employees.append(employee)
 
     extra_employees: dict = {
@@ -110,7 +111,7 @@ def generate_fake_data(filename: str = "employees") -> None:
                 "last_name": lastname,
                 "salary": int(fake.random.randint(2500, 8000))
             }
-            
+
             salaries.append(salary)
 
         df = pd.DataFrame(salaries)
@@ -163,7 +164,7 @@ def merge_data(filename: str = "employees") -> None:
         # So, for the first run, rename column "salary" as "salary_2021"
         df_year.rename(columns={'salary': f'salary_{year}'}, inplace=True)
 
-        # And merge both: for the first run, we'll retrieve all columns from files 2020 and append 
+        # And merge both: for the first run, we'll retrieve all columns from files 2020 and append
         # the salary of 2021. And do the same across years
         merged_df = merged_df.merge(df_year, on=['id', 'first_name', 'last_name'], how='outer')
 
@@ -202,7 +203,7 @@ Next year, we'll have a file called `employees_2025.csv` and we just need to run
 
 Without using Pandas, the common approach is to load the files one by one into Excel. To create formulas such as `vlookup` between each `sheet` and to create a new `sheet` which will include the values found, but this only works when the same record is found in several files.
 
-How do you deal with cases where a record has been added? You'd have to make an `append` in the `sheet` that merges everything together and ... One way would be to append all records in one global sheet (and add a column year) then use a pivot feature to ... ouch, that complicates things, doesn't it?  
+How do you deal with cases where a record has been added? You'd have to make an `append` in the `sheet` that merges everything together and ... One way would be to append all records in one global sheet (and add a column year) then use a pivot feature to ... ouch, that complicates things, doesn't it?
 
 Now let's imagine CSV files that aren't 10 rows long but are each over a million rows long.  Loading 5 files (2020 to 2024) means loading more than 5 million rows and having an `sheet` which will contain the merge and which will also contain at least 1 million rows.
 

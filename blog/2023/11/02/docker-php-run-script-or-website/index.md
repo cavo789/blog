@@ -3,6 +3,7 @@ slug: docker-php-run-script-or-website
 title: The easiest way to run a PHP script / website
 authors: [christophe]
 image: /img/php_tips_social_media.jpg
+mainTag: php
 tags: [wsl, docker, php]
 enableComments: true
 date: 2023-11-02T17:00

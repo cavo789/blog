@@ -3,6 +3,7 @@ slug: linux-inotifywait
 title: Keep running and count the number of files in a folder using inotifywait
 authors: [christophe]
 image: /img/linux_tips_social_media.jpg
+mainTag: bash
 tags: [linux, python, tips]
 
 enableComments: true

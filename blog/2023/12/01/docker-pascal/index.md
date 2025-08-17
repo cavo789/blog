@@ -3,6 +3,7 @@ slug: docker-pascal
 title: Play with Docker and Pascal
 authors: [christophe]
 image: ./images/social_media.jpg
+mainTag: pascal
 tags: [docker, pascal]
 enableComments: true
 ---

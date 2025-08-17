@@ -4,6 +4,7 @@ title: Python - Fast API - Create your JSON API in Python in one minute
 authors: [christophe]
 image: /img/python_tips_social_media.jpg
 enableComments: true
+mainTag: api
 tags: [api, docker, fastapi, python]
 blueSkyRecordKey: 3lwgccocnws2i
 ---

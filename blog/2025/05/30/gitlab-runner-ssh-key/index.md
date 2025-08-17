@@ -3,6 +3,7 @@ slug: gitlab-runner-ssh-key
 title: GitLab - Using a SSH key to connect to private repo
 authors: [christophe]
 image: /img/git_tips_social_media.jpg
+mainTag: gitlab
 tags: [CI, gitlab, ssh]
 blueSkyRecordKey: 3lun2oxe3zs2r
 enableComments: true

@@ -3,6 +3,7 @@ slug: docker-init
 title: Docker init now supports PHP
 authors: [christophe]
 image: /img/docker_init_tips_social_media.jpg
+mainTag: php
 tags: [docker, tips]
 enableComments: true
 ---

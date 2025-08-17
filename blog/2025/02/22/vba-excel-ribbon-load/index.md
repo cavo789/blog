@@ -3,6 +3,7 @@ slug: vba-excel-ribbon-load
 title: MS Office - Load dropdown from Excel's range
 authors: [christophe]
 image: /img/excel_tips_social_media.jpg
+mainTag: excel
 tags: [excel, ribbon, vba, vscode]
 enableComments: true
 blueSkyRecordKey: 3lwgc3uymnc2i

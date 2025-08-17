@@ -3,6 +3,7 @@ slug: docker-quarto
 title: Running Quarto Markdown in Docker
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
+mainTag: quarto
 tags: [docker, markdown, pandoc, quarto, revealjs]
 enableComments: true
 ---

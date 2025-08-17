@@ -3,6 +3,7 @@ slug: vbs-msaccess-get-fields
 title: VBS - Retrieve the list of fields in a MS Access Database
 authors: [christophe]
 image: /img/database_tips_social_media.jpg
+mainTag: msaccess
 tags: [database, msaccess, vbs]
 enableComments: true
 ---

@@ -3,6 +3,7 @@ slug: docker-gui-in-browser
 title: Docker - Running some GUI interfaces in the browser
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
+mainTag: docker
 tags: [docker, firefox, gimp, tip]
 enableComments: true
 ---

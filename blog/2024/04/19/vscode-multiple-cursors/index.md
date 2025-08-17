@@ -3,6 +3,7 @@ slug: vscode-multiple-cursors
 title: Multiple cursors in vscode
 authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
+mainTag: vscode
 tags: [tips, vscode]
 enableComments: true
 ---

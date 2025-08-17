@@ -3,6 +3,7 @@ slug: zsh-plugin-ssh-config-suggestions
 title: SSH - Autosuggestions with ZSH
 authors: [christophe]
 image: /img/zsh_tips_social_media.jpg
+mainTag: ssh
 tags: [customization, linux, ssh, wsl, zsh]
 enableComments: true
 blueSkyRecordKey: 3lwgca4zqh22i

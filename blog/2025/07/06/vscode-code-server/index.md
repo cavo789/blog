@@ -3,6 +3,7 @@ slug: vscode-code-server
 title: Do I need VSCode on my machine to use it?
 authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
+mainTag: vscode
 tags: [docker, vscode]
 blueSkyRecordKey: 3lujtglddu223
 enableComments: true
@@ -40,7 +41,7 @@ Once triggered successfully, just open your browser and visit `http://127.0.0.1:
 * `--name`: it's just for giving a descriptive name to our container (optional),
 * `-v "${HOME}/.config:/home/coder/.config"`: save the code-server configuration on your host, in your home directory.
 * `-v ".:/home/coder/project"`: mount your current directory in the container so you can work on it in code-server,
-* `-u "$(id -u):$(id -g)"`: map the user used inside the container with local one so files/folders created/modified in the container will have the exact same permissions and 
+* `-u "$(id -u):$(id -g)"`: map the user used inside the container with local one so files/folders created/modified in the container will have the exact same permissions and
 * `-e "DOCKER_USER=${USER}"`: if you run `echo ${USER}` on your host, you'll see you'll get your Linux name (`christophe` for me) so, here, just inform the container about your name.
 :::
 
@@ -63,5 +64,5 @@ Copy/paste the password in the form and submit it and tadaaaa:
 
 ![VScode in the browser](./images/code_server.png)
 
-Continue your journey with the official documentation: [https://github.com/coder/code-server](https://github.com/coder/code-server) or [https://coder.com/docs/code-server/guide](https://coder.com/docs/code-server/guide) to get more info. 
+Continue your journey with the official documentation: [https://github.com/coder/code-server](https://github.com/coder/code-server) or [https://coder.com/docs/code-server/guide](https://coder.com/docs/code-server/guide) to get more info.
 

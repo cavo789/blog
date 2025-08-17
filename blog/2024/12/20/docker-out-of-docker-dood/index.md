@@ -3,6 +3,7 @@ slug: docker-out-of-docker-dood
 title: Docker-out-of-Docker aka DooD
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
+mainTag: docker
 tags: [docker]
 enableComments: true
 ---

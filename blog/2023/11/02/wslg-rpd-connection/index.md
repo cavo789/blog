@@ -2,6 +2,7 @@
 slug: wslg-rpd-connection
 title: Opening a RDP connection to the Linux local instance
 authors: [christophe]
+mainTag: wsl
 tags: [wsl, wslg, docker, rdp]
 image: /img/wsl_tips_social_media.jpg
 enableComments: true

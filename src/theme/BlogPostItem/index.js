@@ -6,7 +6,10 @@ import BlogPostItemHeader from '@theme/BlogPostItem/Header';
 import BlogPostItemContent from '@theme/BlogPostItem/Content';
 import BlogPostItemFooter from '@theme/BlogPostItem/Footer';
 
-// import our BlueSky component
+// Our relatedBlogPost component
+import RelatedBlogPosts from '@site/src/components/RelatedBlogPosts/index.js';
+
+// Our BlueSky component
 import BlueSky from "@site/src/components/BlueSky/index.js";
 
 // apply a bottom margin in list view
@@ -23,8 +26,15 @@ export default function BlogPostItem({children, className}) {
       <BlogPostItemHeader />
       <BlogPostItemContent>{children}</BlogPostItemContent>
       <BlogPostItemFooter />
-      {/* Only display BlueSky components on the post page; not the blog view */}
-      {isBlogPostPage && <BlueSky metadata={metadata} />}
+
+      {/* Only display our RelatedBlogPosts and BlueSky components on the post page; not the blog view */}
+      {isBlogPostPage && (
+        <>
+          <RelatedBlogPosts count="6" description="false" />
+          <BlueSky metadata={metadata} />
+        </>
+      )}
+
     </BlogPostItemContainer>
   );
 }

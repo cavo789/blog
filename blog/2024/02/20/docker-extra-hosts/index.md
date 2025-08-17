@@ -3,6 +3,7 @@ slug: docker-network-and-extra-hosts
 title: Using Docker network and the extra_hosts property
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
+mainTag: docker
 tags: [docker, network, tips]
 enableComments: true
 ---

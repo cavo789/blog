@@ -3,6 +3,7 @@ slug: vba-excel-sql-server-part-2
 title: MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step
 authors: [christophe]
 image: /img/excel_tips_social_media.jpg
+mainTag: excel
 tags: [docker, excel, mssql-server, ssms, vba]
 blueSkyRecordKey: 3lvnkdmwmwk2v
 enableComments: true

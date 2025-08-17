@@ -3,6 +3,7 @@ slug: docker-git
 title: Docker - Install and use Git in a container just like you do on your host
 authors: [christophe]
 image: /img/git_tips_social_media.jpg
+mainTag: docker
 tags: [devcontainer, docker, git, ssh, tips]
 enableComments: true
 ---

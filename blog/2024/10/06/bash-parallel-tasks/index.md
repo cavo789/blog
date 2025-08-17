@@ -3,6 +3,7 @@ slug: bash-parallel-task
 title: Linux - Take advantage of the number of CPUs you have; start concurrent jobs
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
+mainTag: bash
 tags: [bash, linux, tips]
 enableComments: true
 ---

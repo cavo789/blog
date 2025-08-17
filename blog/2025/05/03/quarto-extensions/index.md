@@ -3,6 +3,7 @@ slug: quarto-extensions
 title: My favourite Quarto extensions
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
+mainTag: quarto
 tags: [markdown, pandoc, quarto, revealjs]
 blueSkyRecordKey: 3lun2yevo622r
 enableComments: true

@@ -3,6 +3,7 @@ slug: postman
 title: Using Postman to play with API
 authors: [christophe]
 image: /img/api_social_media.jpg
+mainTag: api
 tags: [api, code quality, php, postman, soap, tests, tool]
 enableComments: true
 ---
@@ -56,7 +57,7 @@ pm.test("Content-Type header is text/xml", () => {
   pm.expect(pm.response.headers.get('Content-Type')).to.include('text/xml; charset=utf-8');
 });
 
-pm.test("Don't contain any error", function () 
+pm.test("Don't contain any error", function ()
 {
     pm.expect(pm.response.text()).to.not.include("error");
 });
@@ -220,7 +221,7 @@ pm.test('Response body is in valid XML format', function () {
 Parse the response **as a string** and make sure the word *error* isn't present:
 
 ```php
-pm.test("Don't contain any error", function () 
+pm.test("Don't contain any error", function ()
 {
     pm.expect(pm.response.text()).to.not.include("error");
 });
@@ -231,7 +232,7 @@ This example will thus fail as soon as the word *error* is present in the return
 Or, the opposite, make sure some words are present in the response:
 
 ```php
-pm.test("Assert 'is successful'", function () 
+pm.test("Assert 'is successful'", function ()
 {
     pm.expect(pm.response.text()).to.include("is successful");
 });
@@ -380,7 +381,7 @@ When the `<list></list>` only contains one element (and thus not an array):
 pm.test('Validate expected structure', function () {
     const responseData = xml2Json(pm.response.text());
     pm.expect(responseData['SOAP-ENV:Envelope']['SOAP-ENV:Body']['ns1:getLanguagesOutput']).to.have.property('list');
-    
+
     const list = responseData['SOAP-ENV:Envelope']['SOAP-ENV:Body']['ns1:getLanguagesOutput']['list']
     pm.expect(list).to.have.property('description').and.to.not.be.empty;;
     pm.expect(list).to.have.property('iso').and.to.not.be.empty;;

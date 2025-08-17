@@ -3,6 +3,7 @@ slug: drawdb-app
 title: Drawdb-app - Render your database model as png, markdown, mermaid, ...
 authors: [christophe]
 image: /img/database_tips_social_media.jpg
+mainTag: database
 tags: [database, mermaid, tips, visualisation]
 enableComments: true
 ---

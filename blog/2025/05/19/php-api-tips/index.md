@@ -3,6 +3,7 @@ slug: php-api-tips
 title: API REST - How to write good APIs
 authors: [christophe]
 image: /img/api_social_media.jpg
+mainTag: api
 tags: [api, docker, php, rest]
 blueSkyRecordKey: 3lun2t72qus2r
 enableComments: true
@@ -122,12 +123,12 @@ So `/api/v1/employees?page=1&pageSize=5` will display the first five employees a
 | Term | Description | Example | Ref |
 | --- | --- | --- | --- |
 | `page` | When a collection resources is paged, use this parameter to request a specific page. Page numbers are 1-based. | `?page=3&pageSize=20`| Pagination |
-| `pageSize` | When a collection resources is paged, use this parameter to specify the page size. | `?page=3&pageSize=20` | Pagination | 
+| `pageSize` | When a collection resources is paged, use this parameter to specify the page size. | `?page=3&pageSize=20` | Pagination |
 | `q` | The standard search parameter to do a full-text search. | `?q=RESTFul` | Filtering |
-| `select`| Filter the resource properties to the ones specified. | `?select=(name,address)` | Consult (Document) | 
+| `select`| Filter the resource properties to the ones specified. | `?select=(name,address)` | Consult (Document) |
 | `sort` | Multi-value query param with list of properties to sort on. Default sorting direction is ascending. To indicate descending direction, the property may be prefixed with -. |  `?sort=name&&sort=-age` | Collection |
 | `embed` | Request to embed sub-resource. For instance `api/v1/countries` returns countries and `api/v1/countries?embed=political` countries with their political infos. This will prevent additional API calls. | `?embed=mainAddress` | Embedding resources |
-| ``lang` | language to filter multi-language descriptions | `?lang=fr` | Multi-language descriptions | 
+| ``lang` | language to filter multi-language descriptions | `?lang=fr` | Multi-language descriptions |
 
 
 
@@ -237,7 +238,7 @@ The `204 - No content` code should not be used with `GET`.
 Using `POST` **you'll create a new resource**. Calling `POST` five times for the same "new" employee will thus create five new employees. <span style={{color: 'red'}}>`POST` is not idempotent meaning calling it more than once will return every time a new resource (like the new employee id).</span>
 
 ```bash
-curl -X POST -d '{"firstname":"Christophe",...}' https://xxx/api/v1/employees   
+curl -X POST -d '{"firstname":"Christophe",...}' https://xxx/api/v1/employees
 ```
 
 :::note
@@ -250,7 +251,7 @@ The example here above will create a new employee, the server will return the HT
 
 | Code | Status | Reason |
 | --- | --- | --- |
-| `200`| `Created`| The resource has been successfully created. | 
+| `200`| `Created`| The resource has been successfully created. |
 | `303` | `See Other` | The resource already exists and a link is provided to the resource. `303` is used to denote it's a normal check. |
 | `401`| `Unauthorized` | The endpoint is secured and the request didn't pass a valid access token. |
 | `403` | `Access denied` | You're not allowed to call this method. |
@@ -461,7 +462,7 @@ Properties used from other standards, like OpenID Connect and OAuth2, are allowe
 
 ##### Handling null values
 
-When a property is set to null, that property shouldn't be sent.  For instance 
+When a property is set to null, that property shouldn't be sent.  For instance
 
 ```json
 {
@@ -609,7 +610,7 @@ When using pagination, the JSON answer of `GET https://xxx/api/v1/employees?page
 ```
 
 | Key | Description |
-| --- | --- | 
+| --- | --- |
 | `next` | MANDATORY (except for the last page) hyperlink to the next page |
 | `prev` | OPTIONAL hyperlink to the previous page |
 | `pageSize` | RECOMMENDED Maximum number of items per page. For the last page, its value should be independent of the number of actually returned items. |

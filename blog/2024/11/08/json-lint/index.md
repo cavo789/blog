@@ -3,6 +3,7 @@ slug: json-lint
 title: JSON - Online linter
 authors: [christophe]
 image: /img/json_tips_social_media.jpg
+mainTag: linux
 tags: [code quality, json, tips, tool, vscode]
 enableComments: true
 ---

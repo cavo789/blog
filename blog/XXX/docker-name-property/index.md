@@ -3,6 +3,7 @@ slug: docker-name-property
 title: Docker - How to group containers together
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
+mainTag: docker
 tags: [docker]
 enableComments: true
 draft: true

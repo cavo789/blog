@@ -3,6 +3,7 @@ slug: cpanel-spam
 title: Exterminate them all, fight spam directly at your host company
 authors: [christophe]
 image: /img/spam_social_media.jpg
+mainTag: spamassassin
 tags: [cpanel, spamassassin]
 enableComments: true
 ---

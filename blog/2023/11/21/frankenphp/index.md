@@ -2,11 +2,12 @@
 slug: frankenphp-docker-joomla
 title: FrankenPHP, a modern application server for PHP
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/frankenphp.jpg
+mainTag: joomla
 tags: [docker, frankenphp, joomla]
 enableComments: true
 ---
-![FrankenPHP](./images/social_media.jpg)
+![FrankenPHP](/img/frankenphp.jpg)
 
 <!-- markdownlint-disable MD036 -->
 **Version updated on November 21, 2023 after a discussion with Alexandre about making his Docker image available on hub.docker.com**

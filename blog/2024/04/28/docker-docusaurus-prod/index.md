@@ -3,6 +3,7 @@ slug: docker-docusaurus-prod
 title: Encapsulate an entire Docusaurus site in a Docker image
 authors: [christophe]
 image: ./images/docker_docusaurus_social_media.jpg
+mainTag: docusaurus
 tags: [docker, docusaurus, nodejs, yarn]
 enableComments: true
 ---

@@ -3,6 +3,7 @@ slug: linux-fzf-introduction
 title: Introduction to fzf - Fuzzy Finder
 authors: [christophe]
 image: /img/linux_tips_social_media.jpg
+mainTag: linux
 tags: [bash, customization, fzf, linux, tips, linux]
 update: 2024/03/31
 enableComments: true

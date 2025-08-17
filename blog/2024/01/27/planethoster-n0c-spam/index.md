@@ -3,6 +3,7 @@ slug: planethoster-n0c-spam
 title: Exterminate them all, fight spam directly at PlanetHoster - N0C
 authors: [christophe]
 image: /img/spam_social_media.jpg
+mainTag: roundcube
 tags: [n0c, planethoster, roundcube]
 enableComments: true
 ---

@@ -3,6 +3,7 @@ slug: php-rector
 title: Rector 1.0.0 🎉🎉🎉, my friend, my coach
 authors: [christophe]
 image: ./images/php_rector_social_media.jpg
+mainTag: php
 tags: [code-quality, composer, php, rectorphp]
 enableComments: true
 ---

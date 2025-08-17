@@ -3,6 +3,7 @@ slug: joomla-show-table
 title: Joomla - Run a SQL statement outside Joomla and display a nice HTML table
 authors: [christophe]
 image: /img/excel_tips_social_media.jpg
+mainTag: joomla
 tags: [database, excel, joomla, tips]
 enableComments: true
 ---
@@ -69,13 +70,13 @@ And now, just right-click on the table in Excel and click then on `Refresh` to g
 
 You can give that Excel sheet to anyone like your client and tell him *Right click on the sheet to get an update from Joomla site.* Nothing more.
 
-:::caution 
+:::caution
 Yes! You should provide the password on the query string otherwise Excel won't be able to access the table. It's under your own responsibility to not show confidential data.
 :::
 
 ## Using another password
 
-Open your preferred editor and open the `showtable.php` script. Search for `const PASSWORD` and look at the comment. The value is encrypted using md5. You can use any MD5 encryption tool like f.i. [http://www.md5.cz/](http://www.md5.cz/). 
+Open your preferred editor and open the `showtable.php` script. Search for `const PASSWORD` and look at the comment. The value is encrypted using md5. You can use any MD5 encryption tool like f.i. [http://www.md5.cz/](http://www.md5.cz/).
 
 Type the password you want (`MyVeryStrongPassword`); submit the form and copy/paste the result (`41ae0707c6150f0f1c78803424949f5f`) as the new password value.
 

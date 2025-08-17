@@ -3,6 +3,7 @@ slug: docker-assembly
 title: Play with Docker and Assembly programming language
 authors: [christophe]
 image: ./images/social_media.jpg
+mainTag: assembly
 tags: [docker, assembly]
 enableComments: true
 ---

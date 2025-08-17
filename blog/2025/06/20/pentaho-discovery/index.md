@@ -3,7 +3,8 @@ slug: pentaho-discovery
 title: Discovering Pentaho, a ETL program
 authors: [christophe]
 image: /img/database_tips_social_media.jpg
-tags: [database, msaccess, vba]
+mainTag: etl
+tags: [database, etl, msaccess, vba]
 blueSkyRecordKey: 3lumzwwoqsc2r
 enableComments: true
 ---

@@ -3,6 +3,7 @@ slug: markitdown
 title: Markitdown - Convert files and MS Office documents to Markdown
 authors: [christophe]
 image: /img/markdown_tips_social_media.jpg
+mainTag: markdown
 tags: [docker, docx, excel, xlsx]
 enableComments: true
 ---

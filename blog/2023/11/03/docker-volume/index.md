@@ -3,6 +3,7 @@ slug: docker-volume
 title: Share data between your running Docker container and your computer
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
+mainTag: docker
 tags: [docker]
 enableComments: true
 ---

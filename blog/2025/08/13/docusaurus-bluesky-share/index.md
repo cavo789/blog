@@ -3,6 +3,7 @@ slug: docusaurus-bluesky-share
 title: Create our own Docusaurus React component and provide a "Share on BlueSky" button
 authors: [christophe]
 image: /img/docusaurus_tips_social_media.jpg
+mainTag: bluesky
 tags: [bluesky, component, docusaurus, markdown, react, swizzle]
 blueSkyRecordKey: 3lwbehu3h2k2i
 enableComments: true

@@ -3,6 +3,7 @@ slug: winscp-synchronize-both
 title: WinSCP - Synchronize host and remote
 authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
+mainTag: winscp
 tags: [dos, synology, tips, winscp]
 enableComments: true
 ---

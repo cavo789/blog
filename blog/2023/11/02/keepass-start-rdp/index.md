@@ -2,6 +2,7 @@
 slug: keepass-overriding-url
 title: KeePass - Overriding the URL field
 authors: [christophe]
+mainTag: keepass
 tags: [keepass, winscp, putty, rdp, tips]
 image: /img/keepass_tips_social_media.jpg
 enableComments: true

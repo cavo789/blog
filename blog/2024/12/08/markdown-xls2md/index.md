@@ -3,6 +3,7 @@ slug: markdown-xls2md
 title: Markdown - Convert Excel ranges to Markdown tables
 authors: [christophe]
 image: /img/markdown_tips_social_media.jpg
+mainTag: excel
 tags: [excel, markdown, tips, xls]
 enableComments: true
 ---

@@ -3,6 +3,7 @@ slug: docker-joomla-restore-jpa
 title: Restore a Joomla backup using Docker
 authors: [christophe]
 image: /img/docker_joomla_social_media.jpg
+mainTag: joomla
 tags: [.env, docker, joomla, makefile]
 enableComments: true
 ---

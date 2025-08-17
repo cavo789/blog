@@ -3,6 +3,7 @@ slug: dagger-python
 title: Dagger.io - Using dagger to automate your CI workflows
 authors: [christophe]
 image: /img/dagger_tips_social_media.jpg
+mainTag: dagger
 tags: [CI, dagger, Github, GitLab, pipeline, tip, workflow]
 enableComments: true
 ---

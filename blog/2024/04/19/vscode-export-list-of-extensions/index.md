@@ -3,6 +3,7 @@ slug: vscode-export-list-of-extensions
 title: Export the list of extensions you've installed in VSCode
 authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
+mainTag: vscode
 tags: [tips, vscode]
 enableComments: true
 ---

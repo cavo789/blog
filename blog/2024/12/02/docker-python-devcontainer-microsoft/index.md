@@ -3,6 +3,7 @@ slug: docker-python-devcontainer-microsoft
 title: Docker - Even easier setup of Python
 authors: [christophe]
 image: /img/python_tips_social_media.jpg
+mainTag: python
 tags: [devcontainer, docker, python]
 enableComments: true
 ---
@@ -26,8 +27,8 @@ If you've these three things, just do this:
     1. Search for *Python*
     2. Select the most recent version of Python, right now it's *3.12-bullseye*
     ![Installing Python 3.12](./images/python_3_12_bullseye.png)
-    3. No need to install additional features, just press <kbd>Enter</kbd>    
-    4. Same for optional files; not needed, just press <kbd>Enter</kbd>    
+    3. No need to install additional features, just press <kbd>Enter</kbd>
+    4. Same for optional files; not needed, just press <kbd>Enter</kbd>
 
 This done, VSCode will create a file called `.devcontainer/devcontainer.json`
 
@@ -45,7 +46,7 @@ Click in the terminal and type `python --version`:
 
 ![Version](./images/version.png)
 
-Now, for the demo, create a new file called `main.py` with this line `print("Hello from your Python Devcontainer!")`. 
+Now, for the demo, create a new file called `main.py` with this line `print("Hello from your Python Devcontainer!")`.
 
 Save the file.
 

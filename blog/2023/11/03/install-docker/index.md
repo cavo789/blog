@@ -2,6 +2,7 @@
 slug: install-docker
 title: Install Docker and play with PHP
 authors: [christophe]
+mainTag: php
 tags: [docker, php]
 image: /img/docker_tips_social_media.jpg
 enableComments: true

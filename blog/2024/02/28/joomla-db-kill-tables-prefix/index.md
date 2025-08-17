@@ -3,6 +3,7 @@ slug: joomla-db-kill-tables-prefix
 title: Joomla - delete tables from your database according to a certain prefix
 authors: [christophe]
 image: /img/database_tips_social_media.jpg
+mainTag: joomla
 tags: [database, joomla, tips]
 enableComments: true
 ---

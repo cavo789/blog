@@ -2,6 +2,7 @@
 slug: site-creation
 title: Site creation
 authors: [christophe]
+mainTag: docusaurus
 tags: [docusaurus, nodejs, docker, winscp]
 enableComments: true
 ---

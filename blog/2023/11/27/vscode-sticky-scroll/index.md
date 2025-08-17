@@ -3,6 +3,7 @@ slug: vscode-sticky-scroll
 title: Sticky scroll in vscode
 authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
+mainTag: vscode
 tags: [php, tips, vscode]
 enableComments: true
 ---

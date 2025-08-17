@@ -3,6 +3,7 @@ slug: laravel-filament
 title: Laravel Filament
 authors: [christophe]
 image: /img/laravel_tips_social_media.jpg
+mainTag: oracle
 tags: [laravel, php]
 enableComments: true
 ---

@@ -1,8 +1,9 @@
 ---
 slug: outlook-vba-pdf
-title: Microsoft Outlook - VBA - Save emails as PDF 
+title: Microsoft Outlook - VBA - Save emails as PDF
 authors: [christophe]
 image: /img/vba_tips_social_media.jpg
+mainTag: outlook
 tags: [outlook, vba]
 enableComments: true
 ---

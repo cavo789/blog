@@ -3,6 +3,7 @@ slug: zsh-plugin-autosuggestions
 title: Autosuggestions in the console using ZSH
 authors: [christophe]
 image: /img/zsh_tips_social_media.jpg
+mainTag: zsh
 tags: [customization, linux, wsl, zsh]
 enableComments: true
 ---

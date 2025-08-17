@@ -3,6 +3,7 @@ slug: winscp-putty
 title: WinSCP - Start PuTTY without typing a password
 authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
+mainTag: winscp
 tags: [putty, ssh, tips, winscp]
 enableComments: true
 draft: true
@@ -15,7 +16,7 @@ But not just that. Did you ever see there is an *Open session in PuTTY* button?
 
 ![Open session in PuTTY](./images/putty.png)
 
-This will allow you to start a remote SSH connection on your server.  
+This will allow you to start a remote SSH connection on your server.
 
 In this short article, we'll learn a tip: start an SSH connection without having to re-enter your credentials.
 

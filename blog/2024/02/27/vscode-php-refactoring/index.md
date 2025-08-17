@@ -2,6 +2,7 @@
 slug: vscode-php-refactoring
 title: PHP code refactoring in VSCode
 authors: [christophe]
+mainTag: php
 tags: [php, refactoring, tips, vscode]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg

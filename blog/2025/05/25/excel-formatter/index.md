@@ -3,7 +3,8 @@ slug: excel-formatter
 title: Excel Formula Beautifier
 authors: [christophe]
 image: /img/excel_tips_social_media.jpg
-tags: [excel]
+mainTag: excel
+tags: [excel, self-hosted]
 blueSkyRecordKey: 3lun2qjuxc22r
 enableComments: true
 ---
@@ -23,7 +24,7 @@ A picture is worth a thousand words...
 
 ![Demo](./images/demo.gif)
 
-So simply copy/paste your long formula in the first text area and click on the Beautify button. 
+So simply copy/paste your long formula in the first text area and click on the Beautify button.
 
 :::info
 The script will try to find if the used separator is `,` or `;` and, in case of trouble, just specify the good one.

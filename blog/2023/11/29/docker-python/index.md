@@ -3,6 +3,7 @@ slug: docker-python
 title: Play with Docker and Python
 authors: [christophe]
 image: /img/python_tips_social_media.jpg
+mainTag: python
 tags: [docker, python]
 enableComments: true
 ---

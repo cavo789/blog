@@ -3,6 +3,7 @@ slug: vba-excel-sql-server
 title: MS Excel - Connect to a SQL Server database, run a query and get the results
 authors: [christophe]
 image: /img/excel_tips_social_media.jpg
+mainTag: excel
 tags: [excel, ribbon, mssql-server, vba]
 blueSkyRecordKey: 3lvnkbm63nc2v
 enableComments: true

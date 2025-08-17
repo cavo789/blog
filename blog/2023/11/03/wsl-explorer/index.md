@@ -2,6 +2,7 @@
 slug: wsl-windows-explorer
 title: Open your Linux folder in Windows Explorer
 authors: [christophe]
+mainTag: wsl
 tags: [tips, wsl, windows]
 image: /img/wsl_tips_social_media.jpg
 enableComments: true

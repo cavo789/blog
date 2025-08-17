@@ -2,9 +2,10 @@
 slug: pest_tips
 title: Write PHP unit tests using Pest
 authors: [christophe]
+mainTag: tests
 tags: [laravel, pest, php, phpunit, rector, tests, tips, vscode]
 enableComments: true
-image: ./images/writing_tests_social_media.jpg
+image: /img/writing_tests_social_media.jpg
 ---
 
 <!-- cspell:ignore Nuno -->

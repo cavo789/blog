@@ -3,6 +3,7 @@ slug: vba-access-export
 title: Export MS Access objects
 authors: [christophe]
 image: /img/database_tips_social_media.jpg
+mainTag: msaccess
 tags: [database, msaccess, vba, vbs]
 blueSkyRecordKey: 3lumzv3n42c2r
 enableComments: true

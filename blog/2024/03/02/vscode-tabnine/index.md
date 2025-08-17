@@ -3,6 +3,7 @@ slug: vscode-tabnine
 title: Tabnine - AI Autocomplete & Chat for Javascript, Python, Typescript, PHP, Go, Java & more
 authors: [christophe]
 tags: [addon, php, tips, vscode]
+mainTag: ai
 enableComments: true
 image: /img/vscode_tips_social_media.jpg
 ---

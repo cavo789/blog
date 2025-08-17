@@ -3,6 +3,7 @@ slug: docker-lubuntu
 title: Start lubuntu Desktop in Docker
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
+mainTag: linux
 tags: [chrome, docker, firefox, gimp, gui, tip]
 enableComments: true
 ---

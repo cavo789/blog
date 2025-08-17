@@ -3,6 +3,7 @@ slug: vscode-php-getter-setter
 title: PHP Getter and Setter in VSCode
 authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
+mainTag: vscode
 tags: [tips, vscode]
 enableComments: true
 ---

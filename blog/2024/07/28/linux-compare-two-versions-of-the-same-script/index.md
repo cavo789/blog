@@ -3,6 +3,7 @@ slug: linux-compare-two-versions-of-the-same-script
 title: Linux - Compare two versions of the same script
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
+mainTag: linux
 tags: [bash, introspection, linux, tips]
 enableComments: true
 ---

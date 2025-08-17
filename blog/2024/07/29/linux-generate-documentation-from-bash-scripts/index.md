@@ -3,6 +3,7 @@ slug: linux-generate-documentation-from-bash-scripts
 title: Linux - Generate documentation from Bash scripts
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
+mainTag: bash
 tags: [bash, introspection, linux, tips]
 enableComments: true
 ---

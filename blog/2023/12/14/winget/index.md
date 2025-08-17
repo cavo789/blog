@@ -3,6 +3,7 @@ slug: windows-winget
 title: Update all out-of-date Windows programs in batch
 authors: [christophe]
 image: ./images/social_media.jpg
+mainTag: windows
 tags: [tips, windows, winget]
 enableComments: true
 ---

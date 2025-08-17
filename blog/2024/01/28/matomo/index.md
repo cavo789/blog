@@ -3,6 +3,7 @@ slug: matomo-install
 title: How to self-host Matomo
 authors: [christophe]
 image: ./images/matomo_social_media.jpg
+mainTag: self-hosted
 tags: [docusaurus, matomo]
 enableComments: true
 ---

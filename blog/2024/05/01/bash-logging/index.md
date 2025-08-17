@@ -3,6 +3,7 @@ slug: bash-logging
 title: Bash - Script to add logging features to your script
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
+mainTag: bash
 tags: [bash, tips]
 enableComments: true
 ---

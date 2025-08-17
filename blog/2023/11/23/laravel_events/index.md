@@ -3,6 +3,7 @@ slug: laravel_events
 title: Working with Laravel events
 authors: [christophe]
 image: /img/laravel_tips_social_media.jpg
+mainTag: oracle
 tags: [laravel, php]
 enableComments: true
 ---

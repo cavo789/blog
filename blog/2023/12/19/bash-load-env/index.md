@@ -3,6 +3,7 @@ slug: bash-load-env
 title: Bash - Loading environment variables from a file
 authors: [christophe]
 image: /img/bash_tips_social_media.jpg
+mainTag: bash
 tags: [bash, tips]
 enableComments: true
 ---

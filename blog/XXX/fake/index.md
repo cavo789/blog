@@ -4,6 +4,8 @@ title: Example page
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 draft: true
+mainTag: joomla
+tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
 blueSkyRecordKey: 3lwbehu3h2k2i
 ---
 

@@ -3,6 +3,7 @@ slug: docker-postgrest
 title: Don't query your PostgreSQL db anymore, prefer PostgREST
 authors: [christophe]
 image: ./images/social_media.png
+mainTag: postgrest
 tags: [docker, openapi, postgrest, postgresql, swagger-ui]
 enableComments: true
 ---

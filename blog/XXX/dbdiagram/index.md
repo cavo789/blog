@@ -3,6 +3,7 @@ slug: dbdiagram
 title: dbdiagram - From the database design to its Python implementation
 authors: [christophe]
 image: /img/database_tips_social_media.jpg
+mainTag: python
 tags: [database, python, sqlalchemy, tips, visualisation]
 enableComments: true
 draft: true

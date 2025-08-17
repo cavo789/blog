@@ -3,6 +3,7 @@ slug: docker-python-devcontainer
 title: Docker - Python devcontainer
 authors: [christophe]
 image: /img/python_tips_social_media.jpg
+mainTag: python
 tags: [devcontainer, docker, python]
 enableComments: true
 ---
@@ -74,7 +75,7 @@ RUN --mount=type=cache,target=/var/cache/apk,rw \
     && apt-get install -y --no-install-recommends bash git openssh-client tree \
     && apt-get clean \
     && rm -rf /tmp/* /var/list/apt/*
-   
+
 # Install Python dependencies
 #
 # Download dependencies as a separate step to take advantage of Docker's caching.
@@ -91,7 +92,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 # endregion
- 
+
 # region - Define our development image
 FROM base AS development
 
@@ -211,7 +212,7 @@ DOCKER_CONTAINER_NAME=app
 
 # Set OS groupid in your Docker Linux containers (1000 = root) (--os-groupid)
 DOCKER_OS_GROUPID=1000
- 
+
 # Set OS userid in your Docker Linux containers (1000 = root) (--os-userid)
 DOCKER_OS_USERID=1000
 
@@ -238,7 +239,7 @@ To make life easier, we're going to group together a set of commands in a file c
 ```makefile
 # cspell:ignore ifdef,pydocstyle,isort,mypy
 default: help
- 
+
 # Folder where Python binaries are installed
 BIN=/usr/local/bin
 
@@ -256,7 +257,7 @@ ENV=--env-file ${DOCKER_ENV_FILE}
 
 # The list of  Docker compose yaml file we'll use
 YAML=COMPOSE_FILE=compose.yaml
- 
+
 COLOR_CYAN:=36
 _CYAN := "\033[1;${COLOR_CYAN}m%s\033[0m %s\n"
 
@@ -419,7 +420,7 @@ We've to create an additional file. Please create a new folder called `.devconta
                 "ms-azuretools.vscode-docker",
                 "ms-python.black-formatter",
                 "ms-python.debugpy",
-                "ms-python.isort",      
+                "ms-python.isort",
                 "ms-python.mypy-type-checker",
                 "ms-python.pylint",
                 "ms-python.python",
@@ -577,7 +578,7 @@ We've to create an additional file. Please create a new folder called `.devconta
 
 </Snippets>
 
-This file is very long; can be shorter but ... the idea is to configure VSCode so we've specified all extensions we want in our coding environment and a bunch of settings. 
+This file is very long; can be shorter but ... the idea is to configure VSCode so we've specified all extensions we want in our coding environment and a bunch of settings.
 
 We've finished our set-up. Here is our final project's structure:
 

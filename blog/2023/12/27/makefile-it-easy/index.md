@@ -3,6 +3,7 @@ slug: makefile-using-make
 title: Linux Makefile - When to use a makefile
 authors: [christophe]
 image: /img/makefile_tips_social_media.jpg
+mainTag: makefile
 tags: [makefile, tips]
 enableComments: true
 ---

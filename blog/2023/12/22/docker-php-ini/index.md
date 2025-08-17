@@ -3,6 +3,7 @@ slug: docker-php-ini
 title: Update php.ini when using a Docker image
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
+mainTag: docker
 tags: [apache, docker, joomla, tips]
 enableComments: true
 ---

@@ -2,6 +2,7 @@
 slug: vscode-remote-ssh
 title: SSH Remote development with VSCode
 authors: [christophe]
+mainTag: ssh
 tags: [ssh, tips, vscode]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg

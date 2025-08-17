@@ -3,6 +3,7 @@ slug: linux-jq
 title: The jq utility for Linux
 authors: [christophe]
 image: /img/json_tips_social_media.jpg
+mainTag: linux
 tags: [bash, json, jq, linux, tips]
 enableComments: true
 ---

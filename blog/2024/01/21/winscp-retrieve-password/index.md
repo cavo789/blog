@@ -3,6 +3,7 @@ slug: winscp-retrieve-password
 title: WinSCP - Retrieve a stored password
 authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
+mainTag: winscp
 tags: [tips, winscp]
 enableComments: true
 ---

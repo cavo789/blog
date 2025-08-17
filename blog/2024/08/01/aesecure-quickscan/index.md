@@ -3,6 +3,7 @@ slug: aesecure-quickscan
 title: aeSecure - QuickScan - Free viruses scanner
 authors: [christophe]
 image: ./images/virus_social_media.jpg
+mainTag: aesecure
 tags: [docker, tip]
 enableComments: true
 ---
@@ -26,7 +27,7 @@ Want to see a demo; just click here: [https://quickscan.avonture.be/](https://qu
 
 The scanner is running on demo website so you can see how it looks like.
 
-## Download 
+## Download
 
 Please follow this URL: [https://raw.githubusercontent.com/cavo789/aesecure_quickscan/master/aesecure_quickscan.php](https://raw.githubusercontent.com/cavo789/aesecure_quickscan/master/aesecure_quickscan.php), press <kbd>CTRL</kbd>+<kbd>A</kbd> to select the entire content add press <kbd>CTRL</kbd>+<kbd>C</kbd> to copy it in memory.
 
@@ -54,7 +55,7 @@ The first button *1. Clean the cache and temp folders* will allow you to remove 
 
 Once you've clicked on the first button and action is done, the second button *2. Getting the file list* will browse your website and check if files should be scanned or not.
 
-A file won't be scanned if his signature (his hash) is strictly the same of a "whitelisted" one. 
+A file won't be scanned if his signature (his hash) is strictly the same of a "whitelisted" one.
 
 :::White list concept
 Think to original files of Joomla. When you do a new installation of Joomla let's say 5.2.0; files contained in the ZIP of Joomla are considered as safe. You trust these files to not contains any viruses. So, original files; coming from Joomla installation if they're **unmodified** are safe. If their signature are strictly the same then files coming from Joomla, aeSecure QuickScan knows that the file is safe. These file's signatures are white listed.

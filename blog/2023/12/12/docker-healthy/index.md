@@ -2,6 +2,7 @@
 slug: docker-healthy
 title: Get health information from your running containers
 authors: [christophe]
+mainTag: bash
 tags: [bash, docker, tips]
 enableComments: true
 image: /img/docker_tips_social_media.jpg

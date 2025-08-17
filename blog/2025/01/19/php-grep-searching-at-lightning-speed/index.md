@@ -1,8 +1,9 @@
 ---
 slug: php-grep-searching-at-lightning-speed
-title: Search your FTP server at lightning speed 
+title: Search your FTP server at lightning speed
 authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
+mainTag: winscp
 tags: [ftp, php_grep, tips, winscp]
 enableComments: true
 ---
@@ -16,13 +17,13 @@ However, it's insanely slow; let's see how we can do it better and almost instan
 
 ## WinSCP - Search for Text
 
-Probably you never had noticed (it was my case), you can start searching files on your FTP server using WinSCP. 
+Probably you never had noticed (it was my case), you can start searching files on your FTP server using WinSCP.
 
 To do this, go to the `Commands` menu, then `Static custom` commands and finally `Search for Text...`.  Type your search pattern and press <kbd>Enter</kbd>.
 
 ![Search for Text](./images/search_for_text.png)
 
-A new Powershell prompt will be started and you'll see the list of scanned files. 
+A new Powershell prompt will be started and you'll see the list of scanned files.
 
 ![Result](./images/result.png)
 

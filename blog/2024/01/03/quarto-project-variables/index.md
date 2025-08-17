@@ -3,6 +3,7 @@ slug: quarto-project-variables
 title: Using variables from external file in your Quarto project
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
+mainTag: quarto
 tags: [markdown, quarto, tips]
 enableComments: true
 ---

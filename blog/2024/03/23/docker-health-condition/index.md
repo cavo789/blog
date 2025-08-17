@@ -3,6 +3,7 @@ slug: docker-health-condition
 title: Understanding the depends_on condition in Docker compose files
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
+mainTag: docker
 tags: [docker, tips]
 enableComments: true
 ---

@@ -3,6 +3,7 @@ slug: docker-localhost-ssl
 title: Docker - Configure your localhost to use SSL
 authors: [christophe]
 image: /img/docker_tips_social_media.jpg
+mainTag: ssl
 tags: [apache, docker, https, php, nginx, ssh]
 enableComments: true
 ---

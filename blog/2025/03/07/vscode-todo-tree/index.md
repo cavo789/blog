@@ -2,6 +2,7 @@
 slug: vscode-todo-tree
 title: Todo Tree in VSCode
 authors: [christophe]
+mainTag: vscode
 tags: [tips, vscode]
 enableComments: true
 blueSkyRecordKey: 3lvnk2w4vss2v

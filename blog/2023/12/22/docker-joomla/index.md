@@ -3,6 +3,7 @@ slug: docker-joomla
 title: Create your Joomla website using Docker - Part 1
 authors: [christophe]
 image: /img/docker_joomla_social_media.jpg
+mainTag: joomla
 tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
 enableComments: true
 ---

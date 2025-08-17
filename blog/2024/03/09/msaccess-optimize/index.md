@@ -3,6 +3,7 @@ slug: msaccess-optimize
 title: How to optimize an existing MS Access database
 authors: [christophe]
 image: /img/database_tips_social_media.jpg
+mainTag: msaccess
 tags: [database, msaccess, vba]
 enableComments: true
 ---
@@ -333,7 +334,7 @@ End Sub
 
 Option Explicit force the VB Engine to check that variables exists before starting to run the code and not every time a variable is accessed. This give a (small) little speed improvement.
 
-:::caution 
+:::caution
 Option Explicit is more an excellent way of coding: variables should be declared before using them
 :::
 

@@ -3,6 +3,7 @@ slug: quarto-mustache
 title: Using Mustache templating with Quarto
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
+mainTag: quarto
 tags: [markdown, mustache, quarto]
 blueSkyRecordKey: 3lun2vljjqs2r
 enableComments: true

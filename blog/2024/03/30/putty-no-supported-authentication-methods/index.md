@@ -1,8 +1,9 @@
 ---
 slug: putty-no-supported-authentication-methods
-title: Fatal error was starting Putty after having saved settings 
+title: Fatal error was starting Putty after having saved settings
 authors: [christophe]
 image: ./images/ssh_social_media.jpg
+mainTag: putty
 tags: [putty, ssh]
 enableComments: true
 ---

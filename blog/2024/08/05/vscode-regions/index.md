@@ -2,6 +2,7 @@
 slug: vscode-regions
 title: Working with regions in VSCode
 authors: [christophe]
+mainTag: vscode
 tags: [tips, vscode]
 enableComments: true
 image: /img/vscode_tips_social_media.jpg

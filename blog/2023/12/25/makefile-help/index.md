@@ -3,6 +3,7 @@ slug: makefile-help
 title: Linux Makefile - Adding a help screen
 authors: [christophe]
 image: /img/makefile_tips_social_media.jpg
+mainTag: makefile
 tags: [makefile, tips]
 enableComments: true
 ---
