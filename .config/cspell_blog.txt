@@ -246,6 +246,7 @@ ruleset
 rulesets
 sameorigin
 scrartcl
+serie
 server
 shellcheck
 shiring

@@ -79,3 +79,8 @@
 .footer {
   --ifm-footer-padding-vertical: 0.5rem;
 }
+
+.theme-edit-this-page {
+    display: block;
+    margin-bottom: 20px;
+}

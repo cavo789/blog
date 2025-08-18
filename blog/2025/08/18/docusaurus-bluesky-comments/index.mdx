@@ -7,14 +7,9 @@ serie: Creating Docusaurus components
 mainTag: bluesky
 tags: [bluesky, component, docusaurus, markdown, react, swizzle]
 enableComments: true
-draft: true
 ---
-<!-- cspell:ignore reposts,packagist -->
+<!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer -->
 ![Show BlueSky comments on Docusaurus and, too, number of likes/reposts](/img/docusaurus_tips_banner.jpg)
-
-import SerieBlogPosts from '@site/src/components/SerieBlogPosts';
-
-<SerieBlogPosts />
 
 In a [previous article](/blog/docusaurus-bluesky-share), we've seen how we can, simply said, provide a "Share the article on BlueSky".
 
@@ -64,7 +59,7 @@ Here is our new BlueSky layout for our component:
  * - The number of likes / repost on BlueSky (<BlueSkyLikes>)
  * - The list of comments for the post (<BlueSkyComments>) or a call-to-action link for engagement
  *
- * The difference will be the presence of the `blueSkyRecordKey` key or not in the YAML frontmatter of
+ * The difference will be the presence of the `blueSkyRecordKey` key or not in the YAML front matter of
  * the Docusaurus document.
  *
  * If there is no `blueSkyRecordKey` info (OPTION 1), there is no BlueSky post and thus we'll only show a button
@@ -95,8 +90,8 @@ Here is our new BlueSky layout for our component:
  * The handle should be initialized to the BlueSky handle of the author (you)
  *
  * @param {object} props
- * @param {object} props.metadata - The Docusaurus document metadata, including the frontmatter.
- * @param {object} [props.metadata.frontMatter] - The frontmatter object.
+ * @param {object} props.metadata - The Docusaurus document metadata, including the front matter.
+ * @param {object} [props.metadata.frontMatter] - The front matter object.
  * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - The unique key of the
  * corresponding BlueSky post. Its presence determines the component's behavior.
  */
@@ -112,9 +107,9 @@ export default function BlueSky({ metadata }) {
     <div className="blueSkyContainer">
 
       {/*
-        OPTION 1 - The blueSkyRecordKey is missing in the YAML frontmatter:
+        OPTION 1 - The blueSkyRecordKey is missing in the YAML front matter:
 
-        - show a Share button so the visitor can sahre the post on his own BlueSky profile
+        - show a Share button so the visitor can share the post on his own BlueSky profile
       */}
       <BlueSkyShare metadata={metadata} />
 
@@ -162,14 +157,14 @@ As you can see, this time, we'll foresee four components:
 /**
  * Renders a button to show the post on Bluesky (and be able to like/share/comment)
  *
- * This info will displayed only when the post has, in his YAML frontmatter, the
+ * This info will displayed only when the post has, in his YAML front matter, the
  * `blueSkyRecordKey` entry i.e. the hash of the BlueSky post.
  *
  * See comments in BlueSky.js component for the list of requirements
  *
  * @param {object} props
- * @param {object} props.metadata - The Docusaurus document metadata, including the frontmatter.
- * @param {object} [props.metadata.frontMatter] - The frontmatter object.
+ * @param {object} props.metadata - The Docusaurus document metadata, including the front matter.
+ * @param {object} [props.metadata.frontMatter] - The front matter object.
  * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - The unique key of the
  * corresponding BlueSky post. Its presence determines the component's behavior.
  */
@@ -818,9 +813,3 @@ img.blueSkyCommentEmbedThumb {
 ```
 
 </Snippets>
-
-## Retrieve the final Docusaurus component on Packagist
-
-:::caution
-TODO
-:::

@@ -2,6 +2,8 @@ import React from "react";
 import Link from "@docusaurus/Link";
 import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
 
+import styles from "./styles.module.css";
+
 export default function SerieBlogPosts({
   serie,
   excludePermalink = null,
@@ -14,7 +16,7 @@ export default function SerieBlogPosts({
   if (!posts.length) return null;
 
   return (
-    <div style={{ marginBottom: "2rem" }}>
+    <div className={styles.seriesBlogPost}>
       <p>
         This article is part of the <strong>{serie}</strong> series:
       </p>
