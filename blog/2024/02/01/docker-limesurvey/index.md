@@ -2,12 +2,12 @@
 slug: docker-limesurvey
 title: Install LimeSurvey using Docker
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/survey_social_media.jpg
 mainTag: limesurvey
 tags: [docker, limesurvey]
 enableComments: true
 ---
-![Install LimeSurvey using Docker](./images/header.jpg)
+![Install LimeSurvey using Docker](/img/survey_banner.jpg)
 
 LimeSurvey is an open-source survey tool that allows users to create and conduct surveys online. It is a powerful and intuitive tool that can be used by everyone.
 

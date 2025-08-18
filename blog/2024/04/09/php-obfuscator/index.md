@@ -2,14 +2,14 @@
 slug: php-obfuscator
 title: Obfuscate your PHP code
 authors: [christophe]
-image: ./images/hell_social_media.jpg
+image: /img/hell_social_media.jpg
 mainTag: php
 tags: [code-quality, IA, php]
 enableComments: true
 ---
 <!-- cspell:ignore ctype, fgets, ppmb, ppmc, ppms, ppmu, ppmw, ppmx, ppnc, ppnt, ppnx, ppny, ppnz, strlen, strpos, strtolower -->
 
-![Obfuscate your PHP code](./images/hell_header.jpg)
+![Obfuscate your PHP code](/img/hell_banner.jpg)
 
 A few years ago, I sold a software called aeSecure, which was a Web Application Firewall. In order to prevent my proprietary code from being picked up by someone who could then sell it, for example, I had developed an obfuscation script.
 

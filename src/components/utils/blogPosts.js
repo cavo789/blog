@@ -1,5 +1,12 @@
 // src/components/utils/blog.js
-const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
+// const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
+
+// Negative lookahead to exclude `.unpublished` subfolder
+const blogPosts = require.context(
+  "../../../blog",
+  true,
+  /^(?!.*unpublished).*\.mdx?$/
+);
 
 export function getBlogMetadata() {
   return blogPosts

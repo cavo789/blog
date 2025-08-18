@@ -32,7 +32,7 @@ In your project directory (so `/tmp/docusaurus`), create a file called `Dockerfi
 ```Dockerfile
 FROM node:21-alpine
 
-RUN npx create-docusaurus@latest /app classic && \
+RUN npx create-docusaurus@latest /app classic --javascript && \
     chown -R node:node /app
 
 USER node
@@ -79,7 +79,7 @@ node_modules/
 .markdownlint_ignore
 .markdownlint.json
 *.log
-docker-compose.yml
+compose.yaml
 Dockerfile
 LICENSE
 makefile
@@ -92,7 +92,7 @@ static/
 
 </Snippets>
 
-### Create a docker-compose.yml file
+### Create a compose.yaml file
 
 The third file to create is `compose.yaml` with this content:
 
@@ -158,7 +158,7 @@ So if you take the time to look at what we've now in our `/tmp/docusaurus` folde
 │   ├── 2024-02-04-welcome-world.md
 │   ├── 2024-02-05-my-first-post.md
 │   └── 2024-02-06-my-second-post.md
-└── docker-compose.yml
+└── compose.yaml
 ```
 
 :::info `tree` is not part of core Linux installation

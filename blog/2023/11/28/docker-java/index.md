@@ -2,12 +2,12 @@
 slug: docker-java
 title: Play with Docker and Java
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/experiments_social_media.jpg
 mainTag: java
 tags: [docker, java]
 enableComments: true
 ---
-![Play with Docker and Java](./images/header.jpg)
+![Play with Docker and Java](/img/experiments_banner.jpg)
 
 In this post, we'll play with Docker and Java. Since there are ready-to-use Java images for Docker you don't need to install or configure anything other than Docker.
 

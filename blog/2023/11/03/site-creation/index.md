@@ -35,7 +35,7 @@ And finally, I run an interactive shell since I have mentioned `/bin/bash` as en
 Now that I have a prompt in the container, I will create my blog using Docusaurus (as explained in the [official documentation](https://docusaurus.io/docs/installation)).
 
 ```bash
-npx create-docusaurus@latest blog classic
+npx create-docusaurus@latest blog classic --javascript
 ```
 
 After a long time, the blog folder is created and I can take a look on his content:

@@ -2,12 +2,12 @@
 slug: docker-postgrest
 title: Don't query your PostgreSQL db anymore, prefer PostgREST
 authors: [christophe]
-image: ./images/social_media.png
+image: /img/database_tips_social_media.jpg
 mainTag: postgrest
 tags: [docker, openapi, postgrest, postgresql, swagger-ui]
 enableComments: true
 ---
-![Don't query your PostgreSQL db anymore, prefer PostgREST](./images/social_media.png)
+![Don't query your PostgreSQL db anymore, prefer PostgREST](/img/database_tips_banner.jpg)
 
 Last year I had a large application developed in Laravel that required a MySQL database. When I was migrating to PostgreSQL I discovered PostgREST, which allowed me to completely remove queries from my code.
 

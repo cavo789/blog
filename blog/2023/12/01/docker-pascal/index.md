@@ -2,13 +2,13 @@
 slug: docker-pascal
 title: Play with Docker and Pascal
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/experiments_social_media.jpg
 mainTag: pascal
 tags: [docker, pascal]
 enableComments: true
 ---
 <!-- cspell:ignore ource,rchive,roupn,chiffre,downto -->
-![Play with Docker and Pascal](./images/social_media.jpg)
+![Play with Docker and Pascal](/img/experiments_banner.jpg)
 
 Good old memories... During my studies (in 1991-1993), I was a huge fan of Turbo Pascal 7.0. It was the first language that I really learned and loves it so much. I used to spend dozens of hours behind my computer writing anything and everything.
 
@@ -17,6 +17,8 @@ If you good remember that time, Turbo Pascal 7.0 was used to create executables 
 The idea for this article came after the one written on [assembly language](/blog/docker-assembly): is it possible in 2023 to run Pascal code written 30 years earlier?
 
 <!-- truncate -->
+
+<Image src={require("./images/turbo_pascal.jpg").default} alt="Turbo Pascal" title="Turbo Pascal"/>
 
 The first thing to do was to find some old source code and to do that, I went back to the **S**ource**w**are **A**rchive **G**roup; known as **SWAG**.
 

@@ -2,13 +2,13 @@
 slug: docker_uptime_kuma
 title: Self-hosted monitoring tool
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/monitoring_social_media.jpg
 mainTag: docker
 tags: [docker, monitoring, tool]
 enableComments: true
 ---
 <!-- cspell:ignore kuma,louislam -->
-![Self-hosted monitoring tool](./images/header.jpg)
+![Self-hosted monitoring tool](/img/monitoring_banner.jpg)
 
 Imagine you're a web developer or you work in a web agency and you'd like to keep an eye on the sites you've developed for your clients, free of charge.  Are these sites online now, or are they down?
 

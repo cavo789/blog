@@ -2,12 +2,12 @@
 slug: docker-mssql-server
 title: Play with Microsoft SQL Server 2022 using Docker
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/database_tips_social_media.jpg
 mainTag: mssql-server
 tags: [docker, mssql-server, ssms]
 enableComments: true
 ---
-![Play with Microsoft SQL Server 2022 using Docker](./images/social_media.jpg)
+![Play with Microsoft SQL Server 2022 using Docker](/img/database_tips_banner.jpg)
 
 And yes, nothing less. We're going to install a **Microsoft SQL Server 2022** on our machine, install **SQL Server Management Studio** too and we'll have fun with a small PowerShell script; all with Docker, of course.
 

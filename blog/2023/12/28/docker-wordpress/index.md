@@ -2,12 +2,12 @@
 slug: docker-wordpress
 title: Quickly install WordPress in just three commands
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/wordpress_social_media.jpg
 mainTag: wordpress
 tags: [docker, wordpress]
 enableComments: true
 ---
-![Quickly install WordPress in just three commands](./images/header.jpg)
+![Quickly install WordPress in just three commands](/img/wordpress_banner.jpg)
 
 Do you think it's possible to run a new WordPress site in just three commands?  Impossible, isn't it. Well, in fact, yes, it's possible.
 

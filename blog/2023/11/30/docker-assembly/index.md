@@ -2,13 +2,13 @@
 slug: docker-assembly
 title: Play with Docker and Assembly programming language
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/experiments_social_media.jpg
 mainTag: assembly
 tags: [docker, assembly]
 enableComments: true
 ---
 <!-- cspell:ignore erminate,esident,esolang,nasm -->
-![Play with Docker and Assembly programming language](./images/header.jpg)
+![Play with Docker and Assembly programming language](/img/experiments_banner.jpg)
 
 When I was young...er than today, during my studies, I was playing with the x86 Assembly language on my `386DX40` computer; this was in the years 1993-1995. The beginning of Windows 3.1 that I didn't like. *If someone had asked me whether graphical interfaces would be successful, I would have said no, of course not.*
 

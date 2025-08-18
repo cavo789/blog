@@ -2,12 +2,12 @@
 slug: windows-winget
 title: Update all out-of-date Windows programs in batch
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/updates_social_media.jpg
 mainTag: windows
 tags: [tips, windows, winget]
 enableComments: true
 ---
-![Update all out-of-date Windows programs in batch](./images/header.jpg)
+![Update all out-of-date Windows programs in batch](/img/updates_banner.jpg)
 
 > [Use the winget tool to install and manage applications](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
 

@@ -2,12 +2,12 @@
 slug: php-rector
 title: Rector 1.0.0 🎉🎉🎉, my friend, my coach
 authors: [christophe]
-image: ./images/php_rector_social_media.jpg
+image: /img/refactoring_social_media.jpg
 mainTag: php
 tags: [code-quality, composer, php, rectorphp]
 enableComments: true
 ---
-![Rector 1.0.0 🎉🎉🎉, my friend, my coach](./images/php_rector_banner.jpg)
+![Rector 1.0.0 🎉🎉🎉, my friend, my coach](/img/refactoring_banner.jpg)
 
 If there was only one, it would be [Rector](https://github.com/rectorphp/rector). **Rector is extremely powerful and brilliant and, you know what, it's free!**
 

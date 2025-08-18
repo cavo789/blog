@@ -70,8 +70,8 @@ const config = {
         blog: {
           routeBasePath: '/blog',
           editUrl: 'https://github.com/cavo789/blog/edit/main/',
-
           showReadingTime: true,
+          exclude: ['**/.unpublished/**'],
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,

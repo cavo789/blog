@@ -257,7 +257,7 @@ drwxr-xr-x  2 christophe christophe 4.0K Nov 22 09:40 .
 drwxrwxrwt 28 root       root        12K Nov 22 09:35 ..
 -rw-r--r--  1 christophe christophe  109 Nov 22 09:36 Dockerfile
 -rw-r--r--  1 christophe christophe  287 Nov 22 10:00 counter.sh
--rw-r--r--  1 christophe christophe  190 Nov 22 10:09 docker-compose.yml
+-rw-r--r--  1 christophe christophe  190 Nov 22 10:09 compose.yaml
 ```
 
 :::info Files are not stored in our project
@@ -372,7 +372,7 @@ drwxrwxrwt 28 root       root        12K Nov 22 09:35 ..
 -rw-r--r--  1 christophe christophe  109 Nov 22 09:36 Dockerfile
 -rw-r--r--  1 christophe christophe  287 Nov 22 10:00 counter.sh
 drwxr-xr-x  2 christophe christophe 4.0K Nov 22 10:54 data
--rw-r--r--  1 christophe christophe  149 Nov 22 10:48 docker-compose.yml
+-rw-r--r--  1 christophe christophe  149 Nov 22 10:48 compose.yaml
 ```
 
 Now that we've our data folder, try again:

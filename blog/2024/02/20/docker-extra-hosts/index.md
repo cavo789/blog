@@ -103,7 +103,7 @@ total 920K
 drwxr-xr-x  2 christophe christophe 4.0K Feb 20 18:15 .
 drwxrwxrwt 23 root       root       908K Feb 20 18:15 ..
 -rw-r--r--  1 christophe christophe   18 Feb 20 18:25 Dockerfile
--rw-r--r--  1 christophe christophe   18 Feb 20 18:25 docker-compose.yml
+-rw-r--r--  1 christophe christophe   18 Feb 20 18:25 compose.yaml
 -rw-r--r--  1 christophe christophe   18 Feb 20 18:15 index.php
 ```
 

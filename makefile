@@ -6,7 +6,7 @@ SHELL:=bash
 DOCKER_UID:=$(shell id -u)
 DOCKER_GID:=$(shell id -g)
 
-# Should be in line with the container_name as defined in "compose.yml"
+# Should be in line with the container_name as defined in "compose.yaml"
 DOCKER_CONTAINER_NAME:=docusaurus
 
 # Needed by "make devcontainer"

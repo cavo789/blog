@@ -1,9 +1,7 @@
-import React from "react";
 import Layout from "@theme/Layout";
 import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
 import Link from "@docusaurus/Link";
 
-// Assuming you have these custom components
 import Card from "@site/src/components/Card";
 import CardImage from '@site/src/components/Card/CardImage';
 import CardBody from '@site/src/components/Card/CardBody';

@@ -101,7 +101,7 @@ So, now, your folder contains at least two files:
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2023-11-04 09:32  .
 drwxrwxrwt     - christophe christophe 2023-11-04 09:32 ..
-.rw-r--r--   325 christophe christophe 2023-11-04 09:32 docker-compose.yml
+.rw-r--r--   325 christophe christophe 2023-11-04 09:32 compose.yaml
 -rw-r--r--     1 christophe christophe 2023-12-22 19:51 php.ini
 ```
 

@@ -2,14 +2,14 @@
 slug: ubuntu-install
 title: Ubuntu - Install from scratch
 authors: [christophe]
-image: ./images/install_ubuntu_social_media.jpg
+image: /img/linux_tips_social_media.jpg
 mainTag: ubuntu
 tags: [linux, ubuntu]
 enableComments: true
 ---
 <!-- cspell:ignore Bitlocker,bootable,balena,askubuntu -->
 
-![Ubuntu - Install from scratch](./images/install_ubuntu_banner.jpg)
+![Ubuntu - Install from scratch](/img/linux_tips_banner.jpg)
 
 Today is a public holiday in Belgium, so I'm finally taking the time to install Ubuntu on my old PC.
 

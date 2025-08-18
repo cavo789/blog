@@ -2,14 +2,14 @@
 slug: docker-html-site
 title: Running a HTML site in seconds using Docker
 authors: [christophe]
-image: ./images/static_website_social_media.jpg
+image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [docker, easyphp, powershell, wamp]
 enableComments: true
 ---
 <!-- cspell:ignore easyphp,wamp,pffffiou,htdocs -->
 
-![Running a HTML site in seconds using Docker](./images/static_website_header.jpg)
+![Running a HTML site in seconds using Docker](/img/docker_tips_banner.jpg)
 
 Imagine the following situation: you've a HTML website on your computer and you would like to run it. But how? Should you install Apache or Nginx? Yes, you should ... or just run exactly **ONE COMMAND** to start Docker.
 

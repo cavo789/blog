@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import "./Snippets.css";
+import styles from "./styles.module.css";
 
 export default function Snippets({ filename, children, defaultOpen = true }) {
   const [open, setOpen] = useState(defaultOpen);
@@ -21,14 +21,14 @@ export default function Snippets({ filename, children, defaultOpen = true }) {
   ).current;
 
   return (
-  <div className="snippet-block alert alert--info">
-    <button className="snippet-summary" onClick={handleToggle} aria-expanded={open} aria-controls={contentId}>
-      <span className="">{filename}</span>
-      <span className={`chevron ${open ? "rotate" : ""}`}>&#9662;</span>
-    </button>
-    <div ref={contentRef} id={contentId} className="snippet-content" style={{ maxHeight: height }} >
-      <div className="snippet-inner">{children}</div>
+    <div className={`${styles.snippet_block} alert alert--info`}>
+      <button className={styles.snippet_summary} onClick={handleToggle} aria-expanded={open} aria-controls={contentId}>
+        <span className="">{filename}</span>
+        <span className={`${styles.chevron} ${open ? styles.rotate : ""}`}>&#9662;</span>
+      </button>
+      <div ref={contentRef} id={contentId} className={styles.snippet_content} style={{ maxHeight: height }} >
+        <div className={styles.snippet_inner}>{children}</div>
+      </div>
     </div>
-  </div>
-);
+  );
 }
