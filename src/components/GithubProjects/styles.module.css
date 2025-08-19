@@ -1,0 +1,73 @@
+.github_projects_container {
+  margin-top: var(--ifm-spacing-lg);
+  margin-bottom: var(--ifm-spacing-lg);
+}
+
+.github_projects_container h3 {
+  text-align: center;
+  margin-bottom: var(--ifm-spacing-md);
+  font-size: 1.5rem;
+}
+
+.github_projects_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-image: url('/img/github_background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: lighten;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #eaeaea;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.github_projects_card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.repo_link {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d2d2d;
+  text-decoration: none;
+}
+
+.repo_link:hover {
+  color: #0078e7;
+}
+
+.archived_label {
+  color: gray;
+  font-weight: normal;
+}
+
+.github_projects_card .card__footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+  border-top: 1px solid #ddd;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.github_projects_card .card__footer svg {
+  margin-right: 4px;
+}
+
+.language_dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: middle;
+}
