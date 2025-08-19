@@ -19,7 +19,7 @@ export default function MyRepositories({ username }) {
           help.
         </p>
       </Hero>
-      <GithubProjects username="${username}" />
+      <GithubProjects username={username} />
     </main>
   );
 }
