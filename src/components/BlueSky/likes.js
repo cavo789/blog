@@ -1,13 +1,46 @@
 /**
- * Show the number of likes and reposts a BlueSky post has.
+ * 📊 BlueSkyLikes Component
  *
- * This info will displayed only when the post has, in his YAML frontmatter, the
- * `blueSkyRecordKey` entry i.e. the hash of the BlueSky post.
+ * Displays the number of likes and reposts for a specific BlueSky post.
+ * This component is conditionally rendered based on the presence of a `blueSkyRecordKey`
+ * in the document's YAML frontmatter.
  *
- * See comments in BlueSky.js component for the list of requirements
+ * 🔍 Behavior:
+ * - If `blueSkyRecordKey` is missing or empty:
+ *   → The component returns `null` and nothing is displayed.
+ * - If present:
+ *   → Fetches post metadata from the BlueSky public API and displays:
+ *     • Total likes
  *
- * @param {Object} props
- * @param {string} props.recordKey - Unique record from the frontmatter
+ * 🧾 Frontmatter Requirement:
+ * ---
+ * title: "My Post"
+ * blueSkyRecordKey: 3lun2qjuxc22r
+ * ---
+ *
+ * ⚙️ Configuration:
+ * Ensure your BlueSky handle is defined in `docusaurus.config.js`:
+ *
+ * ```js
+ * const config = {
+ *   customFields: {
+ *     blueSky: {
+ *       handle: 'your-handle.bsky.social',
+ *     },
+ *   },
+ * };
+ * ```
+ *
+ * 📦 Props:
+ * @param {object} props
+ * @param {object} props.metadata - Docusaurus document metadata
+ * @param {object} [props.metadata.frontMatter] - Frontmatter object
+ * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - Unique key identifying the BlueSky post
+ *
+ * 🧠 Notes:
+ * - Uses `useEffect` to fetch post stats asynchronously
+ * - Gracefully handles loading and error states
+ * - Requires BlueSky API access to retrieve post thread data
  */
 
 import { useState, useEffect } from "react";

@@ -1,4 +1,27 @@
-import React from "react";
+/**
+ * 📚 SerieBlogPosts Component
+ *
+ * Displays a list of blog posts that belong to the same series.
+ * Useful for linking related articles together in a Docusaurus blog.
+ *
+ * Props:
+ * - serie (string): The name of the series to filter blog posts by.
+ * - excludePermalink (string|null): Optional permalink to exclude (usually the current post).
+ * - highlightCurrent (boolean): If true, dims the current post title for visual emphasis.
+ *
+ * Behavior:
+ * - Fetches blog metadata via `getBlogMetadata()`
+ * - Filters posts by series name
+ * - Sorts posts chronologically
+ * - Highlights or links each post depending on whether it's the current one
+ *
+ * Styling:
+ * - Uses scoped CSS from `styles.module.css`
+ *
+ * Returns:
+ * - A styled list of blog posts in the same series, or null if none found.
+ */
+
 import Link from "@docusaurus/Link";
 import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
 

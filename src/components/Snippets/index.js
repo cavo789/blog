@@ -1,3 +1,30 @@
+/**
+ * 📄 Snippets Component
+ *
+ * A collapsible content block designed for displaying code snippets, notes, or any inline content
+ * with a toggleable interface. Ideal for documentation, tutorials, or expandable UI sections.
+ *
+ * 🔍 Behavior:
+ * - Displays a filename label and a toggle button
+ * - Expands or collapses the content area with smooth height transitions
+ * - Uses `defaultOpen` prop to control initial visibility
+ * - Generates a unique `aria-controls` ID for accessibility
+ *
+ * 🧾 Props:
+ * @param {object} props
+ * @param {string} props.filename - Label displayed on the toggle button (e.g. filename or section title)
+ * @param {ReactNode} props.children - Content to be revealed inside the collapsible block
+ * @param {boolean} [props.defaultOpen=true] - Whether the snippet is open by default
+ *
+ * 🎨 Styling:
+ * - Uses `styles.snippet_block` for container layout
+ * - Chevron icon rotates on toggle via `styles.rotate`
+ * - Smooth height animation via inline `maxHeight` style
+ *
+ * 🛠️ Accessibility:
+ * - Button includes `aria-expanded` and `aria-controls` for screen reader support
+ */
+
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import styles from "./styles.module.css";
 

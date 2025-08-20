@@ -1,3 +1,27 @@
+/**
+ * GithubProjects Component
+ *
+ * Displays a dynamic grid of GitHub repositories for a given user.
+ * Repositories are fetched from the GitHub API and cached locally for performance.
+ * Users can filter repositories by language, archived status, minimum star count,
+ * and search by keyword (name or description).
+ *
+ * Features:
+ * - Fetches all public repositories for a specified GitHub username
+ * - Caches repository data in localStorage for 24 hours
+ * - Separates active and archived repositories
+ * - Sorts repositories by popularity (stars) or alphabetically
+ * - Dynamically generates language filter options from fetched data
+ * - Provides a search bar for keyword filtering
+ * - Applies visual enhancements including fade-in animation and language-based styling
+ *
+ * Props:
+ * @param {string} username - GitHub username to fetch repositories for (required)
+ *
+ * Example usage:
+ * <GithubProjects username="cavo789" />
+ */
+
 import React, { useEffect, useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import Card from "@site/src/components/Card";

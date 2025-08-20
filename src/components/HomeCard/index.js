@@ -1,3 +1,27 @@
+/**
+ * 🏠 HomeCard Component
+ *
+ * A reusable card component for showcasing homepage features or links.
+ * Combines an image, title, description, and link into a styled card layout.
+ *
+ * Props:
+ * - title (string): Title displayed on the card
+ * - image (string): Filename of the image (located in `/img/homepage/`)
+ * - link (string): URL to navigate to when the card is clicked
+ * - description (string): Short description displayed below the title
+ *
+ * Behavior:
+ * - Wraps content in a clickable card layout
+ * - Uses `Card`, `CardImage`, and `CardBody` for modular structure
+ * - Applies fade-in animation and responsive column layout
+ *
+ * Styling:
+ * - Uses `styles.fade_in` for animation
+ * - Applies Docusaurus utility classes: `col--2`, `margin-bottom--lg`
+ *
+ * Returns:
+ * - A visually engaging card element for homepage or grid layouts
+ */
 
 import Card from '@site/src/components/Card';
 import CardBody from '@site/src/components/Card/CardBody';

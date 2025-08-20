@@ -1,3 +1,39 @@
+/**
+ * 🧠 getBlogMetadata
+ *
+ * Extracts metadata from all MDX blog posts located in the `/blog` directory.
+ * Uses Webpack's `require.context` to dynamically load and parse frontmatter
+ * from each post, returning a structured array of metadata objects.
+ *
+ * 🔍 Behavior:
+ * - Resolves permalinks based on `slug` or folder structure
+ * - Normalizes image paths for static assets
+ * - Filters out invalid or missing entries
+ *
+ * 📦 Returned metadata includes:
+ * - `title`: Post title
+ * - `description`: Short summary
+ * - `image`: Resolved image path
+ * - `draft`: Boolean flag for unpublished posts
+ * - `unlisted`: Boolean flag for hidden posts
+ * - `permalink`: URL path to the post
+ * - `tags`: Array of tags
+ * - `mainTag`: Primary tag (optional); used by the RelatedBlogPost component
+ * - `authors`: Array of author names
+ * - `date`: Publication date
+ * - `serie`: Series name (optional); used by the SerieBlogPost component
+ *
+ * 🛠️ Usage:
+ * ```js
+ * import { getBlogMetadata } from './getBlogMetadata';
+ * const posts = getBlogMetadata();
+ * ```
+ *
+ * ⚠️ Note:
+ * This function is intended for use in static site generation or client-side rendering
+ * where Webpack's `require.context` is available.
+ */
+
 const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
 
 export function getBlogMetadata() {

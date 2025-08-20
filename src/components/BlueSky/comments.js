@@ -1,10 +1,43 @@
 /**
- * Retrieve the list of comments posted on BlueSky and display them on the page
+ * 📬 BlueSkyComments Component
  *
- * This info will displayed only when the post has, in his YAML frontmatter, the
- * `blueSkyRecordKey` entry i.e. the hash of the BlueSky post.
+ * Displays a threaded list of comments associated with a specific BlueSky post.
+ * This component is conditionally rendered based on the presence of a `blueSkyRecordKey`
+ * in the YAML frontmatter of a Docusaurus document.
  *
- * See comments in BlueSky.js component for the list of requirements
+ * 🔍 Behavior:
+ * - If `blueSkyRecordKey` is missing or empty: the component returns `null` and nothing is rendered.
+ * - If present: it fetches the comment thread from the BlueSky public API and displays:
+ *   - Author info (avatar, handle, display name)
+ *   - Timestamp
+ *   - Rich text with clickable links
+ *   - Embedded media (images or external previews)
+ *   - Like and repost counts
+ *   - A link to view the comment on BlueSky
+ *
+ * 🧠 Notes:
+ * - Comments are fetched recursively to support nested replies.
+ * - Indentation is dynamically calculated based on reply depth.
+ * - If no comments exist, a call-to-action is shown to encourage engagement.
+ * - Requires the author's BlueSky handle to be defined in `docusaurus.config.js` under `customFields.blueSky.handle`.
+ *
+ * 🛠️ Example frontmatter:
+ * ---
+ * title: "My Post"
+ * blueSkyRecordKey: 3lun2qjuxc22r
+ * ---
+ *
+ * 🧾 Props:
+ * @param {object} props
+ * @param {object} props.metadata - Docusaurus document metadata
+ * @param {object} [props.metadata.frontMatter] - Frontmatter object
+ * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - Unique identifier for the BlueSky post
+ *
+ * 📦 Dependencies:
+ * - React (useState, useEffect)
+ * - Docusaurus context (`useDocusaurusContext`)
+ * - Custom subcomponent: `BlueSkyComment`
+ * - CSS module styles
  */
 
 import PropTypes from "prop-types";

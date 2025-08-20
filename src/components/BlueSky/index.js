@@ -1,55 +1,50 @@
 /**
- * ===================================
- * = BlueSky component - Entry point =
- * ===================================
+ * 🟦 BlueSky Component — Entry Point
  *
- * Renders a BlueSky area where we'll have:
+ * Dynamically renders a BlueSky interaction area for a Docusaurus document.
+ * The component adapts its behavior based on the presence of a `blueSkyRecordKey`
+ * in the document's YAML frontmatter.
  *
- * OPTION 1
- * - A button to allow the visitor to share the post on his BlueSky profile (BlueSkyShare.js)
+ * 🔀 Behavior:
+ * - If `blueSkyRecordKey` is **absent**:
+ *   → Display a share button (`<BlueSkyShare>`) allowing visitors to post the document to their own BlueSky profile.
  *
- * OR
+ * - If `blueSkyRecordKey` is **present**:
+ *   → Display full post engagement UI:
+ *     • `<BlueSkyPost>` — Like, share, and comment actions
+ *     • `<BlueSkyLikes>` — Shows number of likes and reposts
+ *     • `<BlueSkyComments>` — Displays threaded comments or a call-to-action if none exist
  *
- * OPTION 2
- * - A button to see (like/share/comment) the post on BlueSky (<BlueSkyPost>)
- * - The number of likes / repost on BlueSky (<BlueSkyLikes>)
- * - The list of comments for the post (<BlueSkyComments>) or a call-to-action link for engagement
- *
- * The difference will be the presence of the `blueSkyRecordKey` key or not in the YAML frontmatter of
- * the Docusaurus document.
- *
- * If there is no `blueSkyRecordKey` info (OPTION 1), there is no BlueSky post and thus we'll only show a button
- * to allow the visitor to share the document on his own profile.
- *
- * If present and not empty (OPTION 2), it means a BlueSky post exists for the document
- * and thus we can show the like/share/comment, the number of likes/repost and the list of comments.
- *
- * Here is an example of such YAML entry:
- *
+ * 🧾 Frontmatter Example:
  * ---
- * ...
+ * title: "My Post"
  * blueSkyRecordKey: 3lun2qjuxc22r
  * ---
  *
- * In order to provide links to your own BlueSky profile, you'll have to add the blueSky entry
- * in the `docusaurus.config.js` file, for instance:
+ * ⚙️ Configuration:
+ * To enable profile linking and post generation, add your BlueSky handle to `docusaurus.config.js`:
  *
- *      const config = {
- *        ...
- *        customFields: {
- *          blueSky: {
- *            handle: 'avonture.be',
- *          },
- *        },
- *      }
+ * ```js
+ * const config = {
+ *   customFields: {
+ *     blueSky: {
+ *       handle: 'avonture.be', // Your BlueSky handle
+ *     },
+ *   },
+ * };
+ * ```
  *
- * The handle should be initialized to the BlueSky handle of the author (you)
- *
+ * 📦 Props:
  * @param {object} props
- * @param {object} props.metadata - The Docusaurus document metadata, including the frontmatter.
- * @param {object} [props.metadata.frontMatter] - The frontmatter object.
- * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - The unique key of the
- * corresponding BlueSky post. Its presence determines the component's behavior.
+ * @param {object} props.metadata - Docusaurus document metadata
+ * @param {object} [props.metadata.frontMatter] - Frontmatter object
+ * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - Unique key for the associated BlueSky post
+ *
+ * 🧩 Subcomponents:
+ * - BlueSkyShare
+ * - BlueSkyPost
+ * - BlueSkyLikes
+ * - BlueSkyComments
  */
 
 import BlueSkyComments from "./comments";

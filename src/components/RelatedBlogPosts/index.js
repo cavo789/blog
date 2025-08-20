@@ -1,3 +1,28 @@
+/**
+ * 🔗 RelatedPosts Component
+ *
+ * Displays a list of related blog posts based on shared tags or a designated `mainTag`.
+ * Designed for Docusaurus blogs to enhance content discoverability.
+ *
+ * Props:
+ * - count (number): Maximum number of related posts to display (default: 3)
+ * - description (boolean): Whether to show post descriptions if available
+ *
+ * Behavior:
+ * - Uses `useBlogPost()` to get current post metadata
+ * - Fetches blog metadata via `getBlogMetadata()`
+ * - Filters blog posts using `mainTag` or fallback to shared tags
+ * - Excludes the current post from the results
+ * - Randomizes and limits the number of displayed posts
+ *
+ * Styling:
+ * - Uses Docusaurus grid and card classes
+ * - Inline styles for layout and visual polish
+ *
+ * Returns:
+ * - A responsive grid of related blog post cards, or a fallback message if none found
+ */
+
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";

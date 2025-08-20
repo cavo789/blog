@@ -1,3 +1,25 @@
+/**
+ * 🦸‍♂️ Hero Component
+ *
+ * A reusable layout wrapper for prominent page sections.
+ * Typically used to introduce content with a bold visual style.
+ *
+ * Props:
+ * - children (ReactNode): Content to be rendered inside the hero container
+ * - className (string): Optional additional class names for styling
+ *
+ * Behavior:
+ * - Applies primary hero styling with margin and container layout
+ * - Wraps children in a styled div for consistent presentation
+ *
+ * Styling:
+ * - Uses `styles.hero` from CSS module
+ * - Combines with Docusaurus utility classes: `hero--primary`, `margin-bottom--lg`
+ *
+ * Returns:
+ * - A visually distinct section for page intros or highlights
+ */
+
 import styles from './styles.module.css';
 
 export default function Hero({ children, className }) {

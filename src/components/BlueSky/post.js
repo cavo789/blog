@@ -1,16 +1,44 @@
 /**
- * Renders a button to show the post on Bluesky (and be able to like/share/comment)
+ * 🔗 BlueSkyPost Component
  *
- * This info will displayed only when the post has, in his YAML frontmatter, the
- * `blueSkyRecordKey` entry i.e. the hash of the BlueSky post.
+ * Renders a button that links directly to the associated BlueSky post,
+ * allowing users to like, share, or comment on it via the BlueSky platform.
  *
- * See comments in BlueSky.js component for the list of requirements
+ * 🧠 Behavior:
+ * - If either `blueSkyRecordKey` (from frontmatter) or the author's BlueSky handle
+ *   (from `docusaurus.config.js`) is missing, the component returns `null`.
+ * - If both are present, it constructs a valid post URL and renders a styled button
+ *   with the BlueSky icon and accessible label.
  *
+ * 🧾 Frontmatter Requirement:
+ * ---
+ * title: "My Post"
+ * blueSkyRecordKey: 3lun2qjuxc22r
+ * ---
+ *
+ * ⚙️ Configuration:
+ * Ensure your BlueSky handle is defined in `docusaurus.config.js`:
+ *
+ * ```js
+ * const config = {
+ *   customFields: {
+ *     blueSky: {
+ *       handle: 'your-handle.bsky.social',
+ *     },
+ *   },
+ * };
+ * ```
+ *
+ * 📦 Props:
  * @param {object} props
- * @param {object} props.metadata - The Docusaurus document metadata, including the frontmatter.
- * @param {object} [props.metadata.frontMatter] - The frontmatter object.
- * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - The unique key of the
- * corresponding BlueSky post. Its presence determines the component's behavior.
+ * @param {object} props.metadata - Docusaurus document metadata
+ * @param {object} [props.metadata.frontMatter] - Frontmatter object
+ * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - Unique key identifying the BlueSky post
+ *
+ * 🎨 Styling:
+ * - Uses `styles.blueSkyButton` for layout and hover effects
+ * - Includes `bluesky.svg` icon with `styles.blueSkyLogo`
+ * - Accessible via `aria-label` for screen readers
  */
 
 import Icon from "./bluesky.svg";
