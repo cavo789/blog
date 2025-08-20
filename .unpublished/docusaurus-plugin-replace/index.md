@@ -35,13 +35,30 @@ So, after a few back and return with the IA, a plugin has been generated and it 
 
 ## The plugin
 
-Please create the `plugins/replace-vscode/remarkReplaceVSCode.js` file and look at the `replacements` array. Please add yours.
+Please create the `plugins/remark-replace-terms/remarkReplaceTerms` file and look at the `replacements` array. Please add yours.
 
 The syntax is `[/\b(1)\b/g, "(2)"],` where `(1)` is the word to search for (exactly written as is (case sensitive)) and `(2)` the replaced by value.
 
-<Snippets filename="plugins/replace-vscode/remarkReplaceVSCode.js">
+<Snippets filename="plugins/remark-replace-terms/remarkReplaceTerms">
 
 ```javascript
+/**
+ * @fileoverview
+ * Docusaurus Remark Plugin – remark-replace-words
+ *
+ * This plugin is designed for use with Docusaurus to automatically correct the casing
+ * of common technology terms in Markdown content. It scans Markdown AST text nodes and
+ * replaces lowercase variants like "github" or "markdown" with their properly capitalized
+ * forms ("GitHub", "Markdown", etc.).
+ *
+ * ⚠️ Replacements are skipped inside links, images, and code blocks to avoid unintended changes.
+ * 🧠 Compound words (e.g., "vscode-docker") are also preserved.
+ *
+ * Intended for use in the Docusaurus Markdown pipeline via `remarkPlugins`.
+ *
+ * @module remarkReplaceWords
+ * @returns {Function} A remark transformer function
+ */
 
 const { visit } = require("unist-util-visit");
 
@@ -72,13 +89,16 @@ function remarkReplaceWords() {
           const after = fullString[offset + match.length] || "";
 
           // Skip compound words like "vscode-docker", "foo.markdown"
-          if (["-", ".", "/"].includes(before) || ["-", ".", "/"].includes(after)) {
+          if (
+            ["-", ".", "/"].includes(before) ||
+            ["-", ".", "/"].includes(after)
+          ) {
             return match;
           }
 
-          console.log(
-            `🔎 Replacing '${match}' with '${replacement}' in file: ${file.path}\nSentence: ${fullString}`
-          );
+          // console.log(
+          //   `🔎 Replacing '${match}' with '${replacement}' in file: ${file.path}\nSentence: ${fullString}`
+          // );
           return replacement;
         });
       }
@@ -87,6 +107,7 @@ function remarkReplaceWords() {
 }
 
 module.exports = remarkReplaceWords;
+
 ```
 
 </Snippets>
@@ -106,7 +127,7 @@ const config = {
       ({
         blog: {
           // highlight-next-line
-          remarkPlugins: [require('./plugins/replace-vscode/remarkReplaceVSCode')],
+          remarkPlugins: [require('./plugins/remark-replace-terms/remarkReplaceTerms')],
         },
         // [ ... ]
       }),

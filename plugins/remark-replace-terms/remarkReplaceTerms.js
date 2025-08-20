@@ -1,3 +1,21 @@
+/**
+ * @fileoverview
+ * Docusaurus Remark Plugin – remark-replace-words
+ *
+ * This plugin is designed for use with Docusaurus to automatically correct the casing
+ * of common technology terms in Markdown content. It scans Markdown AST text nodes and
+ * replaces lowercase variants like "github" or "markdown" with their properly capitalized
+ * forms ("GitHub", "Markdown", etc.).
+ *
+ * ⚠️ Replacements are skipped inside links, images, and code blocks to avoid unintended changes.
+ * 🧠 Compound words (e.g., "vscode-docker") are also preserved.
+ *
+ * Intended for use in the Docusaurus Markdown pipeline via `remarkPlugins`.
+ *
+ * @module remarkReplaceWords
+ * @returns {Function} A remark transformer function
+ */
+
 const { visit } = require("unist-util-visit");
 
 // Define replacements as [searchRegex, replacement]

@@ -76,7 +76,7 @@ const config = {
           routeBasePath: '/blog',
           editUrl: 'https://github.com/cavo789/blog/edit/main/',
           showReadingTime: true,
-          exclude: isProd ? ["unpublished/**"] : [], // only exclude in prod
+          exclude: isProd ? ["**/.unpublished/**"] : [], // only exclude in prod
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
@@ -88,7 +88,7 @@ const config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'ignore',
-          remarkPlugins: [require('./plugins/replace-vscode/remarkReplaceVSCode')],
+          remarkPlugins: [require('./plugins/remark-replace-terms/remarkReplaceTerms')],
         },
         sitemap: {
           changefreq: 'weekly',
