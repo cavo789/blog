@@ -49,8 +49,6 @@ tar -xzvf php_devcontainer-main.tar.gz --strip-components 1 && rm -f php_devcont
 
 :::
 
-:::
-
 ## 1. Create the project
 
 Let's start immediately a new project by creating a temporary directory by running `mkdir /tmp/devcontainer_php && cd $_`.

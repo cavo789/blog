@@ -1,19 +1,10 @@
-// src/components/utils/blog.js
-// const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
-
-// Negative lookahead to exclude `.unpublished` subfolder
-const blogPosts = require.context(
-  "../../../blog",
-  true,
-  /^(?!.*unpublished).*\.mdx?$/
-);
+const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
 
 export function getBlogMetadata() {
   return blogPosts
     .keys()
     .map((key) => {
       const post = blogPosts(key);
-      if (post.frontMatter.draft || post.frontMatter.unlisted) return null;
 
       const dir = key.replace(/\/index\.mdx?$/, "").replace(/^\.\//, "");
 
@@ -35,6 +26,8 @@ export function getBlogMetadata() {
         title: post.frontMatter.title,
         description: post.frontMatter.description,
         image: imageUrl,
+        draft: post.frontMatter.draft || false,
+        unlisted: post.frontMatter.unlisted || false,
         permalink,
         tags: post.frontMatter.tags || [],
         mainTag: post.frontMatter.mainTag || null,

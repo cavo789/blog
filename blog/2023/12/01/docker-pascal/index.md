@@ -18,7 +18,7 @@ The idea for this article came after the one written on [assembly language](/blo
 
 <!-- truncate -->
 
-<Image src={require("./images/turbo_pascal.jpg").default} alt="Turbo Pascal" title="Turbo Pascal"/>
+<Image img={require("./images/turbo_pascal.jpg").default} alt="Turbo Pascal" title="Turbo Pascal"/>
 
 The first thing to do was to find some old source code and to do that, I went back to the **S**ource**w**are **A**rchive **G**roup; known as **SWAG**.
 

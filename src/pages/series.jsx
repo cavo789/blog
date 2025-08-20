@@ -20,7 +20,10 @@ export default function SeriesPage() {
     }
   });
 
-  const sortedSeriesNames = Object.keys(seriesMap).sort();
+  // ✅ sort series alphabetically
+  const sortedSeriesNames = Object.keys(seriesMap).sort((a, b) =>
+    a.localeCompare(b)
+  );
 
   return (
     <Layout title="Article series">
@@ -30,11 +33,9 @@ export default function SeriesPage() {
           <div className="row">
             {sortedSeriesNames.map((seriesName) => {
               const seriesPosts = seriesMap[seriesName];
-              const sortedPosts = seriesPosts.sort(
-                (a, b) => new Date(a.date) - new Date(b.date)
-              );
 
-              const firstPost = sortedPosts[0];
+              // ✅ take the first post as-is (no date sort anymore)
+              const firstPost = seriesPosts[0];
               const image = firstPost.image || "default.jpg"; // fallback image
               const description =
                 firstPost.description ||
@@ -44,9 +45,7 @@ export default function SeriesPage() {
                 <div key={seriesName} className="col col--4 margin-bottom--lg">
                   <Link href={firstPost.permalink}>
                     <Card>
-                      <CardImage
-                        cardImageUrl={`${image}`}
-                      />
+                      <CardImage cardImageUrl={`${image}`} />
                       <CardBody
                         className="padding-vert--md text--center"
                         textAlign="center"

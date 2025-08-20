@@ -21,7 +21,7 @@ When you surf on my blog, you'll see below almost every articles a list of **Rel
 
 The objective of our component will be to display something like this:
 
-<Image src={require("./images/related.png").default} />
+<Image img={require("./images/related.png").default} />
 
 ## We need something for extracting information from blog posts
 
@@ -50,7 +50,6 @@ export function getBlogMetadata() {
     .keys()
     .map((key) => {
       const post = blogPosts(key);
-      if (post.frontMatter.draft || post.frontMatter.unlisted) return null;
 
       const dir = key.replace(/\/index\.mdx?$/, "").replace(/^\.\//, "");
 
@@ -72,6 +71,8 @@ export function getBlogMetadata() {
         title: post.frontMatter.title,
         description: post.frontMatter.description,
         image: imageUrl,
+        draft: post.frontMatter.draft || false,
+        unlisted: post.frontMatter.unlisted || false,
         permalink,
         tags: post.frontMatter.tags || [],
         mainTag: post.frontMatter.mainTag || null,
@@ -82,6 +83,7 @@ export function getBlogMetadata() {
     })
     .filter(Boolean);
 }
+
 ```
 
 </Snippets>

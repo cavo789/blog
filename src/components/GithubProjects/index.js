@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import Card from "@site/src/components/Card";
 import CardHeader from "@site/src/components/Card/CardHeader";
@@ -39,6 +39,12 @@ export default function GithubProjects({ username }) {
   const [repos, setRepos] = useState([]);
   const [archivedRepos, setArchivedRepos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filters, setFilters] = useState({
+    language: "All",
+    archived: "All",
+    minStars: 0,
+  });
+  const [searchTerm, setSearchTerm] = useState("");
 
   const loadCachedRepos = () => {
     const cachedData = localStorage.getItem("githubRepos");
@@ -102,18 +108,56 @@ export default function GithubProjects({ username }) {
     }
   }, [username]);
 
-  if (loading) return <p>Loading repositories...</p>;
+  const allRepos = useMemo(
+    () => [...repos, ...archivedRepos],
+    [repos, archivedRepos]
+  );
+
+  const languageOptions = useMemo(() => {
+    const langs = new Set();
+    allRepos.forEach((repo) => {
+      if (repo.language) langs.add(repo.language);
+    });
+    return Array.from(langs).sort();
+  }, [allRepos]);
+
+  const getFilteredRepos = () => {
+    return allRepos.filter((repo) => {
+      const matchesLanguage =
+        filters.language === "All" || repo.language === filters.language;
+      const matchesArchived =
+        filters.archived === "All" ||
+        String(repo.archived) === filters.archived;
+      const matchesStars = repo.stargazers_count >= filters.minStars;
+      const matchesSearch =
+        searchTerm.trim() === "" ||
+        repo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (repo.description &&
+          repo.description.toLowerCase().includes(searchTerm.toLowerCase()));
+      return (
+        matchesLanguage && matchesArchived && matchesStars && matchesSearch
+      );
+    });
+  };
+
+  const filteredRepos = getFilteredRepos();
 
   const renderRepoCard = (repo, isArchived = false) => {
     const languageColor =
       languageColors[repo.language] || languageColors.default;
 
     return (
-      <div key={repo.id} className="col col--4 margin-bottom--lg">
+      <div
+        key={repo.id}
+        className={`col col--4 margin-bottom--lg ${styles.fadeIn}`}
+      >
         <Card
           shadow="md"
           className={styles.github_projects_card}
-          style={{ borderTop: `5px solid ${languageColor}` }}
+          style={{
+            borderTop: `5px solid ${languageColor}`,
+            boxShadow: `0 -2px 10px ${languageColor}55`,
+          }}
         >
           <CardHeader>
             <a
@@ -154,23 +198,74 @@ export default function GithubProjects({ username }) {
     );
   };
 
+  if (loading) return <p>Loading repositories...</p>;
+
   return (
     <div className={`${styles.github_projects_container} container`}>
-      {repos.length > 0 && (
-        <>
-          <h2>Active Repositories</h2>
-          <div className="row">
-            {repos.map((repo) => renderRepoCard(repo, false))}
-          </div>
-        </>
-      )}
-      {archivedRepos.length > 0 && (
-        <>
-          <h2>Archived Repositories</h2>
-          <div className="row">
-            {archivedRepos.map((repo) => renderRepoCard(repo, true))}
-          </div>
-        </>
+      <div className={styles.filters_panel}>
+        <label>
+          Search:
+          <input
+            type="text"
+            placeholder="Search by name or description"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </label>
+
+        <label>
+          Language:
+          <select
+            value={filters.language}
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, language: e.target.value }))
+            }
+          >
+            <option value="All">All</option>
+            {languageOptions.map((lang) => (
+              <option key={lang} value={lang}>
+                {lang}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label>
+          Archived:
+          <select
+            value={filters.archived}
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, archived: e.target.value }))
+            }
+          >
+            <option value="All">All</option>
+            <option value="false">Active</option>
+            <option value="true">Archived</option>
+          </select>
+        </label>
+
+        <label>
+          Min Stars:
+          <input
+            type="number"
+            value={filters.minStars}
+            min="0"
+            onChange={(e) =>
+              setFilters((prev) => ({
+                ...prev,
+                minStars: Number(e.target.value),
+              }))
+            }
+          />
+        </label>
+      </div>
+
+      {filteredRepos.length > 0 ? (
+        <div className="row">
+          {filteredRepos.map((repo) => renderRepoCard(repo, repo.archived))}
+        </div>
+      ) : (
+        <p>No repositories match your filters.</p>
       )}
     </div>
   );

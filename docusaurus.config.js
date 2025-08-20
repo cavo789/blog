@@ -4,6 +4,11 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
+// NODE_ENV is defined when running Docusaurus
+// Is initialized to "production" only when "yarn build" is fired
+// So on local host, isProd will be set to false ("yarn start" will initialize NODE_ENV to "development").
+const isProd = process.env.NODE_ENV === "production";
+
 import {themes as prismThemes} from 'prism-react-renderer';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -71,7 +76,7 @@ const config = {
           routeBasePath: '/blog',
           editUrl: 'https://github.com/cavo789/blog/edit/main/',
           showReadingTime: true,
-          exclude: ['**/.unpublished/**'],
+          exclude: isProd ? ["unpublished/**"] : [], // only exclude in prod
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
@@ -83,6 +88,7 @@ const config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'ignore',
+          remarkPlugins: [require('./plugins/replace-vscode/remarkReplaceVSCode')],
         },
         sitemap: {
           changefreq: 'weekly',

@@ -19,7 +19,7 @@ I'll start a serie about writing components for Docusaurus.
 
 As a very first example, let's start with a simple use case: I would like to insert an image in my blog posts but with some wow effect.
 
-The image should be included in a div so I can center the image using a some background features, having rounded border, a hover effect, ... Everything will be managed by CSS so it'll be up to you to choose the best configuration for your site.
+The image should be included in a div so I can center the image using a some background features, having rounded border, a hover effect, implementing lazy load, ... Everything will be managed by CSS so it'll be up to you to choose the best configuration for your site.
 
 <!-- truncate -->
 
@@ -121,7 +121,7 @@ Everything is now in place.
 In our blog post, we can just do this:
 
 ```html
-<Image src={require("./images/happy.jpg").default} />
+<Image img={require("./images/happy.jpg").default} />
 ```
 
 The `require` part is needed because the image is located in a subfolder of the current blog post.
@@ -129,10 +129,10 @@ The `require` part is needed because the image is located in a subfolder of the 
 If the source was something like `/img/happy.jpg` then the code is easier:
 
 ```html
-<Image src="/img/happy.jpg" />
+<Image img="/img/happy.jpg" />
 ```
 
 And here is the result of our own, self-made, Image component:
 
-<Image src={require("./images/happy.jpg").default} />
+<Image img={require("./images/happy.jpg").default} />
 

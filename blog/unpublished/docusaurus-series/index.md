@@ -60,7 +60,6 @@ export function getBlogMetadata() {
     .keys()
     .map((key) => {
       const post = blogPosts(key);
-      if (post.frontMatter.draft || post.frontMatter.unlisted) return null;
 
       const dir = key.replace(/\/index\.mdx?$/, "").replace(/^\.\//, "");
 
@@ -82,6 +81,8 @@ export function getBlogMetadata() {
         title: post.frontMatter.title,
         description: post.frontMatter.description,
         image: imageUrl,
+        draft: post.frontMatter.draft || false,
+        unlisted: post.frontMatter.unlisted || false,
         permalink,
         tags: post.frontMatter.tags || [],
         mainTag: post.frontMatter.mainTag || null,
@@ -92,6 +93,7 @@ export function getBlogMetadata() {
     })
     .filter(Boolean);
 }
+
 ```
 
 </Snippets>
@@ -407,7 +409,9 @@ export default function SeriesPage() {
     }
   });
 
-  const sortedSeriesNames = Object.keys(seriesMap).sort();
+  const sortedSeriesNames = Object.keys(seriesMap).sort((a, b) =>
+    a.localeCompare(b)
+  );
 
   return (
     <Layout title="Article series">
@@ -417,11 +421,7 @@ export default function SeriesPage() {
           <div className="row">
             {sortedSeriesNames.map((seriesName) => {
               const seriesPosts = seriesMap[seriesName];
-              const sortedPosts = seriesPosts.sort(
-                (a, b) => new Date(a.date) - new Date(b.date)
-              );
-
-              const firstPost = sortedPosts[0];
+              const firstPost = seriesPosts[0];
               const image = firstPost.image || "default.jpg"; // fallback image
               const description =
                 firstPost.description ||
@@ -431,9 +431,7 @@ export default function SeriesPage() {
                 <div key={seriesName} className="col col--4 margin-bottom--lg">
                   <Link href={firstPost.permalink}>
                     <Card>
-                      <CardImage
-                        cardImageUrl={`${image}`}
-                      />
+                      <CardImage cardImageUrl={`${image}`} />
                       <CardBody
                         className="padding-vert--md text--center"
                         textAlign="center"

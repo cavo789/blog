@@ -14,6 +14,7 @@ const CardImage = ({
       className={clsx('card__image', className)}
       style={style}
       src={generatedCardImageUrl} alt={alt} title={title}
+      lazy="loading"
     />
   )
 }

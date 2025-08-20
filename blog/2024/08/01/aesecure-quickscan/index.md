@@ -49,7 +49,7 @@ By running the scanner locally, you'll not have such *timeout* problems.
 
 Just start your browser and go to the URL where your site is accessible. At the end of the URL, just add `/scan.php` i.e. the name of the file you just created.
 
-<Image src={require("./images/aesecure_quickscan_welcome.png").default} alt="The welcome page of aeSecure QuickScan" title="The welcome page of aeSecure QuickScan" />
+<Image img={require("./images/aesecure_quickscan_welcome.png").default} alt="The welcome page of aeSecure QuickScan" title="The welcome page of aeSecure QuickScan" />
 
 The first button *1. Clean the cache and temp folders* will allow you to remove any temporary files so to improve the speed of the scanner by not scanning unneeded files.
 
@@ -81,7 +81,7 @@ At the end of action 2, we've then the list of unknown files, the ones the scann
 
 Scanning the site (action 3) means then scan only unknown files; those not on the whitelist. By default, maximum 500 files will be scanned at a time. If your web server returns a timeout (meaning the scan has taken too many times and the server has stopped the action), you can try to reduce the number by clicking on the top left accordion to get the menu and select a lower value:
 
-<Image src={require("./images/aesecure_quickscan_accordion.png").default} alt="aeSecure Quick-Scan - Accordion" title="aeSecure Quick-Scan - Accordion" />
+<Image img={require("./images/aesecure_quickscan_accordion.png").default} alt="aeSecure Quick-Scan - Accordion" title="aeSecure Quick-Scan - Accordion" />
 
 ## Read more
 

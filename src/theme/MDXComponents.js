@@ -15,6 +15,20 @@ import Image from "@site/src/components/Image";
 export default {
   // Reusing the default mapping
   ...MDXComponents,
+  img: (props) => {
+    const { loading, decoding, className, style, height, width, ...rest } = props;
+
+    return (
+      <img
+        {...rest}
+        height='auto'
+        width=''
+        loading={loading || 'lazy'}
+        decoding={decoding || 'async'}
+        className={`${className || ''}`}
+      />
+    );
+  },
   Card,
   CardHeader,
   CardBody,
