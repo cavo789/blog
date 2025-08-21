@@ -7,7 +7,7 @@ series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
 enableComments: true
-blueSkyRecordKey:
+blueSkyRecordKey: 3lww5fbh2y22q
 ---
 
 <!-- cspell:ignore rgba,toggleable -->
