@@ -29,7 +29,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.
 
 Then edit the `~/.zshrc` file, search for `plugins=(` and add `zsh-autosuggestions` to the list. You'll have f.i. something like:
 
-<Snippets filename="~/.zshrc">
+<Snippet filename="~/.zshrc">
 
 ```text
 plugins=(
@@ -39,7 +39,7 @@ plugins=(
 )
 ```
 
-</Snippets>
+</Snippet>
 
 Close your console, open a new one and it's done.
 

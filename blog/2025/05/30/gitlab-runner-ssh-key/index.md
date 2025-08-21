@@ -75,7 +75,7 @@ For an ubuntu image like the example below, it'll be `apt`. If, f.i. you're usin
 `apt-get update -y && apt-get install openssh-client git -y` by `apk update && apk add --no-cache openssh-client git`.
 :::
 
-<Snippets filename=".gitlab-ci.yml">
+<Snippet filename=".gitlab-ci.yml">
 
 ```yaml
 using_ssh_key:
@@ -99,7 +99,7 @@ using_ssh_key:
     #   git clone git@my_self_hosted_gitlab:my_repo.git
 ```
 
-</Snippets>
+</Snippet>
 
 :::note
 If the CI fails with an error like *load pubkey "id_ed25519": invalid format* or *error in libcrypto*, one cause can be the key used: the variable `SSH_PRIVATE_KEY` should be initialized with the private key; not the public one.

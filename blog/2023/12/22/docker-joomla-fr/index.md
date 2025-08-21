@@ -49,7 +49,7 @@ C'est certainement trop technique pour l'instant, mais si vous cliquez sur le li
 
 Veuillez créer sur votre disque, disons dans le dossier `/tmp/joomla` un fichier appelé `compose.yaml` avec ce contenu (vous pouvez récupérer ce fichier sur [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla)) :
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -69,7 +69,7 @@ services:
       - MYSQL_ROOT_PASSWORD=example
 ```
 
-</Snippets>
+</Snippet>
 
 :::tip Vous souhaitez MariaDB et non MySQL?
 Rien de plus simple ! Dans le fichier `compose.yaml`, remplacez la ligne `image: mysql:8.0.13` par `image: mariadb:11.1.2` et sauvez votre modification. Voilà, c'est fait. Difficile n'est-ce pas ?
@@ -102,7 +102,7 @@ Cette commande est l'une des plus importantes à connaître. Elle demande à Doc
 
 Docker va commencer à télécharger `joomla` et `joomladb`, les deux services mentionnés dans le fichier `compose.yaml`.
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -114,7 +114,7 @@ services:
     [...]
 ```
 
-</Snippets>
+</Snippet>
 
 Vous obtiendrez quelque chose comme ceci, veuillez patienter jusqu'à ce que tout soit téléchargé.
 
@@ -173,7 +173,7 @@ Nous n'avons pas donné de nom à votre projet, nous avons juste créé un fichi
 
 Introduisons un changement mineur, optionnel, nous allons donner un nom à votre projet Docker et à vos conteneurs : éditez le fichier `compose.yaml` et ajoutez une ligne avec `name: xxxx` où `xxxx` est le nom de votre choix. Faites la même chose mais en utilisant `container_name` cette fois pour les deux services ; par exemple :
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 // highlight-next-line
@@ -190,7 +190,7 @@ services:
     [...]
 ```
 
-</Snippets>
+</Snippet>
 
 Nous ne redémarrerons pas tout de suite vos conteneurs Docker. Pour l'instant, le nom `kingsbridge` ne sera pas pris en compte. Pour cela, il faudrait lancer `docker compose down` suivi de `docker compose up --detach` mais attendons encore un peu avant de le faire.
 
@@ -211,7 +211,7 @@ On voit que Docker a bien téléchargé Joomla (dans sa version dite *latest*) e
 Par défaut, lorsque nous ne spécifions pas de numéro de version (*ce qui n'est pas recommandé*), Docker téléchargera la version dite `latest`. `latest`, ici est ce que Docker appelle un *tag*.
 :::
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -221,13 +221,13 @@ services:
 [...]
 ```
 
-</Snippets>
+</Snippet>
 
 Pour récupérer la liste de tous les tags, veuillez vous rendre sur [https://hub.docker.com/_/joomla/tags](https://hub.docker.com/_/joomla/tags).
 
 Lors de la rédaction de cet article, Joomla *latest* correspond à Joomla version 4.4.1. Alors, que faire pour forcer l'utilisation de Joomla 5.0. En surfant sur la page [tags](https://hub.docker.com/_/joomla/tags), vous pouvez retrouver dans la liste des tags celui-ci : *5.0.1-php8.2-apache*. Il suffit donc de remplacer `image: joomla` par `image: joomla:5.0.1-php8.2-apache` dans le fichier `compose.yaml` et le tour est joué. Vous forcez une version. **Note: soyez certain d'utiliser un tag se terminant par `-apache`.**
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -237,7 +237,7 @@ services:
 [...]
 ```
 
-</Snippets>
+</Snippet>
 
 :::
 
@@ -289,7 +289,7 @@ Mais, pour la configuration de la base de données, vous devez être strict :
 Ces valeurs peuvent être récupérées dans le fichier `compose.yaml`. Si vous avez nommé votre service de bases de données autrement que `joomladb`, veuillez utiliser le nom que vous avez choisi.
 :::
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -302,7 +302,7 @@ services:
       - MYSQL_ROOT_PASSWORD=example
 ```
 
-</Snippets>
+</Snippet>
 
 ![Configuration de la base de données Joomla](./images/joomla_admin_database_configuration.png)
 
@@ -397,7 +397,7 @@ Nous souhaitons deux choses :
 
 Pour ce faire, veuillez éditer le fichier `compose.yaml` et ajouter les lignes surlignées ci-dessous :
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: kingsbridge
@@ -431,7 +431,7 @@ services:
       - ./db:/var/lib/mysql
 ```
 
-</Snippets>
+</Snippet>
 
 Le dossier `/var/www/html` du service Joomla doit être synchronisé avec le sous-dossier `site_joomla` de votre ordinateur. Il s'agit du site web de Joomla.
 
@@ -590,7 +590,7 @@ Pour pouvoir le faire, vous devrez démarrer une *session shell interactive* dan
 
 Vous êtes-vous souvenu du nom de votre service Joomla ? Si non, ouvrez simplement le fichier `compose.yaml` à nouveau.
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -599,7 +599,7 @@ services:
     [...]
 ```
 
-</Snippets>
+</Snippet>
 
 Le nom de votre service Joomla est `joomla` (et `joomladb` est le nom de votre service base de données).
 
@@ -647,7 +647,7 @@ Au lieu d'utiliser l'adresse IP, il serait beaucoup plus agréable d'utiliser un
 
 Pour cela, sous Windows, éditez le fichier `C:\Windows\System32\Drivers\etc\hosts` et ajoutez la ligne `kingsbridge` comme illustré ci-dessous :
 
-<Snippets filename="C:\Windows\System32\Drivers\etc\host">
+<Snippet filename="C:\Windows\System32\Drivers\etc\host">
 
 ```text
 127.0.0.1 localhost
@@ -655,7 +655,7 @@ Pour cela, sous Windows, éditez le fichier `C:\Windows\System32\Drivers\etc\hos
 127.0.0.1 kingsbridge
 ```
 
-</Snippets>
+</Snippet>
 
 Enregistrez le fichier. Vous pouvez maintenant surfer sur `http://kingsbridge:8080`
 
@@ -673,7 +673,7 @@ Vous devez juste vous assurer d'utiliser un autre port, non utilisé.
 
 Considérons le fichier `compose.yaml` du projet `Shiring`.
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 // highlight-next-line
@@ -688,7 +688,7 @@ services:
   [...]
 ```
 
-</Snippets>
+</Snippet>
 
 Nous utiliserons le port `8081` pour ce projet et, dans votre fichier hôte, nous ajouterons `127.0.0.1 shiring`.
 
@@ -780,7 +780,7 @@ Cette information a été récupérée à partir de ces Pull requests : [https:/
 
 Notre `compose.yaml` deviendra :
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: kingsbridge
@@ -818,7 +818,7 @@ services:
       - POSTGRES_PASSWORD=example
 ```
 
-</Snippets>
+</Snippet>
 
 Maintenant, lors de la configuration de Joomla, assurez-vous de choisir `PostgreSQL (PDO)` pour le type de base de données et remplissez l'assistant de base de données avec les valeurs correctes.
 
@@ -830,7 +830,7 @@ Pour la première fois dans ce tutoriel, nous utilisons une image `alpine` (`pos
 
 Si vous envisagez d'utiliser MariaDB, voici l'image officielle de Docker : [https://hub.docker.com/_/mariadb](https://hub.docker.com/_/mariadb).
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: kingsbridge
@@ -857,7 +857,7 @@ services:
       - MYSQL_ROOT_PASSWORD=example
 ```
 
-</Snippets>
+</Snippet>
 
 Pour MariaDB, veuillez sélectionner `MySQLi` pendant l'assistant d'installation.
 
@@ -919,7 +919,7 @@ Le fichier `makefile`, étant créé dans le dossier de votre projet, peut conte
 
 Maintenant, copiez/collez ce contenu dans votre `makefile` :
 
-<Snippets filename="makefile">
+<Snippet filename="makefile">
 
 ```makefile
 adminer:
@@ -961,7 +961,7 @@ phpmyadmin:
   -sensible-browser http://localhost:8089 &
 ```
 
-</Snippets>
+</Snippet>
 
 Assurez-vous que l'indentation utilise des tabulations et non des espaces.
 
@@ -1004,7 +1004,7 @@ Voici comment :
 1. Sur votre ordinateur, créez un dossier pour votre nouveau projet (p.ex. `mkdir ~/projets/mon_nouveau_projet && cd $_`)
 2. Dans ce dossier, créez un fichier `compose.yaml` avec ce contenu :
 
-  <Snippets filename="compose.yaml">
+  <Snippet filename="compose.yaml">
 
   ```yaml
   name: yourprojectname
@@ -1036,7 +1036,7 @@ Voici comment :
         - ./db:/var/lib/mysql
   ```
 
-  </Snippets>
+  </Snippet>
 
 <!-- markdownlint-disable MD029 -->
 3. Créez vos deux sous-dossiers : `mkdir db site_joomla`

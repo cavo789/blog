@@ -35,7 +35,7 @@ In our example below, we'll fire a `SampleEvent` class and his `SampleListener`.
 
 File `app/Providers/EventServiceProvider.php`
 
-<Snippets filename="app/Providers/EventServiceProvider.php">
+<Snippet filename="app/Providers/EventServiceProvider.php">
 
 ```php
 protected $listen = [
@@ -45,11 +45,11 @@ protected $listen = [
 ];
 ```
 
-</Snippets>
+</Snippet>
 
 For our sample, your `routes/web.php` can look like this:
 
-<Snippets filename="routes/web.php">
+<Snippet filename="routes/web.php">
 
 ```php
 use App\Employee;
@@ -66,7 +66,7 @@ Route::get('/', function () {
 });
 ```
 
-</Snippets>
+</Snippet>
 
 What we do is:
 
@@ -83,7 +83,7 @@ This class will initialize our employee and provide setters and getters.
 
 By default, our employee will be called `John Doe (cavo789)`.
 
-<Snippets filename="app/Employee.php">
+<Snippet filename="app/Employee.php">
 
 ```php
 <?php
@@ -134,7 +134,7 @@ class Employee
 };
 ```
 
-</Snippets>
+</Snippet>
 
 ### File app/Events/SampleEvent.php
 
@@ -142,7 +142,7 @@ Our event will receive an employee and make it private.
 
 Make three setters public to allow listeners to update the first and the last name. Also allow initializing the pseudo.
 
-<Snippets filename="app/Events/SampleEvent.php">
+<Snippet filename="app/Events/SampleEvent.php">
 
 ```php
 <?php
@@ -180,13 +180,13 @@ class SampleEvent
 }
 ```
 
-</Snippets>
+</Snippet>
 
 ### File app/Listeners/SampleListener.php
 
 Our listener logic. `SampleListener` will receive the `SampleEvent` as parameter and, thus, has access to all his public methods. We'll here update the first and the lastname, we'll not update the pseudo.
 
-<Snippets filename="app/Listeners/SampleListener.php">
+<Snippet filename="app/Listeners/SampleListener.php">
 
 ```php
 <?php
@@ -204,7 +204,7 @@ class SampleListener
 }
 ```
 
-</Snippets>
+</Snippet>
 
 ### The result
 
@@ -218,7 +218,7 @@ PSEUDO    is cavo789
 
 If we edit back the `app/Providers/EventServiceProvider.php` file and comment the listener like below illustrated, our code will still work.
 
-<Snippets filename="app/Providers/EventServiceProvider.php">
+<Snippet filename="app/Providers/EventServiceProvider.php">
 
 ```php
 protected $listen = [
@@ -228,7 +228,7 @@ protected $listen = [
 ];
 ```
 
-</Snippets>
+</Snippet>
 
 ```text
 FIRSTNAME is John

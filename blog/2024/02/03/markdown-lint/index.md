@@ -3,7 +3,7 @@ slug: markdown-lint
 title: Markdown linter - solve formatting issue in md files
 authors: [christophe]
 image: /img/code_quality_social_media.jpg
-serie: code quality
+series: code quality
 mainTag: code-quality
 tags: [code-quality, makefile, markdown, tips, vscode]
 enableComments: true
@@ -26,7 +26,7 @@ And the list can be huge if you're using dependencies like, for PHP, the `vendor
 
 Create a file called `.markdownlint_ignore` in the root directory of your project with this content:
 
-<Snippets filename=".markdownlint_ignore">
+<Snippet filename=".markdownlint_ignore">
 
 ```text
 node_modules/**/*.markdown
@@ -35,7 +35,7 @@ vendor/**/*.markdown
 vendor/**/*.md
 ```
 
-</Snippets>
+</Snippet>
 
 This time, please run `docker run --rm -v .:/md peterdavehello/markdownlint markdownlint --ignore-path .markdownlint_ignore .`.
 

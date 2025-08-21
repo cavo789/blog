@@ -1,4 +1,4 @@
-# 📚 SerieBlogPosts Component
+# 📚 SeriesBlogPosts Component
 
 A React component for Docusaurus that displays a list of blog posts belonging to the same series. Ideal for guiding readers through multi-part tutorials, thematic articles, or serialized content.
 
@@ -15,8 +15,8 @@ A React component for Docusaurus that displays a list of blog posts belonging to
 Place the component in your Docusaurus project:
 
 ```bash
-src/components/SerieBlogPosts/SerieBlogPosts.js
-src/components/SerieBlogPosts/styles.module.css
+src/components/SeriesBlogPosts/SeriesBlogPosts.js
+src/components/SeriesBlogPosts/styles.module.css
 ```
 
 Ensure you have a `getBlogMetadata()` utility that returns blog metadata including `title`, `date`, `series` and `permalink`.
@@ -24,10 +24,10 @@ Ensure you have a `getBlogMetadata()` utility that returns blog metadata includi
 ## 🧪 Usage
 
 ```jsx
-import SerieBlogPosts from "@site/src/components/SerieBlogPosts";
+import SeriesBlogPosts from "@site/src/components/SeriesBlogPosts";
 
-<SerieBlogPosts
-  serie="Creating components for Docusaurus"
+<SeriesBlogPosts
+  series="Creating components for Docusaurus"
   excludePermalink="/blog/components-docusaurus"
   highlightCurrent={true}
 />
@@ -37,7 +37,7 @@ import SerieBlogPosts from "@site/src/components/SerieBlogPosts";
 
 | Prop | Type | Required | Description |
 | --- | --- | --- | --- |
-| `serie` | string | ✅ | Name of the series to filter blog posts by |
+| `series` | string | ✅ | Name of the series to filter blog posts by |
 | `excludePermalink` | string | ❌ | Permalink of the current post to exclude from the list |
 | `highlightCurrent` | boolean | ❌ | If true, dims the current post title for visual emphasis |
 
@@ -45,7 +45,7 @@ import SerieBlogPosts from "@site/src/components/SerieBlogPosts";
 
 * Docusaurus v3+
 * Blog metadata utility: `getBlogMetadata()`
-* Blog posts must include `serie`, `title`, `date` and `permalink` fields
+* Blog posts must include `series`, `title`, `date` and `permalink` fields
 
 ## 🎨 Styling
 

@@ -3,7 +3,7 @@ slug: oracle-dotnet-nodejs-php-python
 title: Accessing an Oracle database using .Net, NodeJS, PHP and Python
 authors: [christophe]
 image: /img/oracle_social_media.jpg
-serie: Running Oracle Database Server as a Docker container
+series: Running Oracle Database Server as a Docker container
 mainTag: oracle
 tags: [docker, oracle]
 blueSkyRecordKey: 3lvnjmthgj22v
@@ -56,7 +56,7 @@ mkdir -p /tmp/oracle/dotnet/OracleConnector
 
 Let's create a Dockerfile:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # cspell:ignore libaio1,instantclient,libclntsh,libocci,ldconfig
@@ -99,11 +99,11 @@ RUN curl -sSL "${ORACLE_DOWNLOAD_URL}" -o instantclient.zip \
 ENTRYPOINT ["dotnet", "OracleConnector.dll"]
 ```
 
-</Snippets>
+</Snippet>
 
 Now, the DotNet part. We need two files: `OracleConnector/OracleConnector.csproj` and `OracleConnector.csproj/main.cs`.
 
-<Snippets filename="OracleConnector/OracleConnector.csproj">
+<Snippet filename="OracleConnector/OracleConnector.csproj">
 
 <!-- cspell:disable -->
 
@@ -126,9 +126,9 @@ Now, the DotNet part. We need two files: `OracleConnector/OracleConnector.csproj
 
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
-<Snippets filename="OracleConnector/main.cs">
+<Snippet filename="OracleConnector/main.cs">
 
 <!-- cspell:disable -->
 
@@ -193,7 +193,7 @@ namespace OracleConnector
 
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
 This is how your project looks like in VSCode:
 
@@ -215,7 +215,7 @@ mkdir -p /tmp/oracle/nodejs && cd $_
 
 Let's create a Dockerfile:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # cspell:ignore libaio
@@ -236,11 +236,11 @@ COPY main.js .
 CMD ["npm", "start"]
 ```
 
-</Snippets>
+</Snippet>
 
 We also need these files:
 
-<Snippets filename="package.json">
+<Snippet filename="package.json">
 
 <!-- cspell:disable -->
 
@@ -261,9 +261,9 @@ We also need these files:
 
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
-<Snippets filename="main.js">
+<Snippet filename="main.js">
 
 <!-- cspell:disable -->
 
@@ -328,7 +328,7 @@ run();
 
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
 Still in the console, located in folder `/tmp/oracle/nodejs`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-nodejs . && docker run --rm -it --network oracle oracle-nodejs`.
 
@@ -346,7 +346,7 @@ mkdir -p /tmp/oracle/php && cd $_
 
 And there, let's create a Dockerfile:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # cspell:ignore instantclient,libaio1,libncurses5,libreadline8,ldconfig,pecl
@@ -390,13 +390,13 @@ COPY main.php .
 CMD [ "php", "main.php" ]
 ```
 
-</Snippets>
+</Snippet>
 
 Then let's create a PHP script (*generated using IA*)
 
 <!-- cspell:disable -->
 
-<Snippets filename="main.php">
+<Snippet filename="main.php">
 
 ```php
 <?php
@@ -472,7 +472,7 @@ try {
 ```
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
 Still in the console, located in folder `/tmp/oracle/php`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-php . && docker run --rm -it --network oracle oracle-php`.
 
@@ -488,7 +488,7 @@ mkdir -p /tmp/oracle/python && cd $_
 
 And his Dockerfile; the only thing we need (except Python) is to install the `oracledb` dependency. Quite straightforward.
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # cspell:ignore oracledb
@@ -504,13 +504,13 @@ COPY main.py main.py
 CMD ["python", "main.py"]
 ```
 
-</Snippets>
+</Snippet>
 
 Then let's create a Python script (*generated using IA*)
 
 <!-- cspell:disable -->
 
-<Snippets filename="main.py">
+<Snippet filename="main.py">
 
 ```python
 import oracledb
@@ -579,7 +579,7 @@ finally:
 ```
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
 Still in the console, located in folder `/tmp/oracle/python`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-python . && docker run --rm -it --network oracle oracle-python`.
 

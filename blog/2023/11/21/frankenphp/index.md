@@ -31,7 +31,7 @@ Here is how to do:
 :::tip Don't build the image yourself
 My suggestion is to replace the `compose.yaml` file with the one below. Like this, you'll reuse the image publicly made available by Alexandre and don't need to build it yourself (much faster):
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -68,7 +68,7 @@ volumes:
   db:
 ```
 
-</Snippets>
+</Snippet>
 
 :::
 

@@ -3,7 +3,7 @@ slug: docusaurus-plugin-replace
 title: Creating a search&replace plugin for Docusaurus
 authors: [christophe]
 image: /img/components_social_media.jpg
-serie: Creating Docusaurus components
+series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, react]
 enableComments: true
@@ -39,7 +39,7 @@ Please create the `plugins/remark-replace-terms/remarkReplaceTerms` file and loo
 
 The syntax is `[/\b(1)\b/g, "(2)"],` where `(1)` is the word to search for (exactly written as is (case sensitive)) and `(2)` the replaced by value.
 
-<Snippets filename="plugins/remark-replace-terms/remarkReplaceTerms">
+<Snippet filename="plugins/remark-replace-terms/remarkReplaceTerms">
 
 ```javascript
 /**
@@ -110,13 +110,13 @@ module.exports = remarkReplaceWords;
 
 ```
 
-</Snippets>
+</Snippet>
 
 ## Adding the plugin in your configuration
 
 The next thing to do is to register your plugin into your Docusaurus configuration. To do this, edit your `docusaurus.config.js` file and add the highlighted lines as illustrated below.
 
-<Snippets filename="docusaurus.config.js">
+<Snippet filename="docusaurus.config.js">
 
 ```javascript
 const config = {
@@ -127,7 +127,7 @@ const config = {
       ({
         blog: {
           // highlight-next-line
-          remarkPlugins: [require('./plugins/remark-replace-terms/remarkReplaceTerms')],
+          beforeDefaultRemarkPlugins: [require('./plugins/remark-replace-terms/remarkReplaceTerms')],
         },
         // [ ... ]
       }),
@@ -139,15 +139,15 @@ export default config;
 
 ```
 
-</Snippets>
+</Snippet>
 
 This done, please restart your Docusaurus server and on the next start, if some changes have to be made, you can see them in your console:
 
 ```text
-🔎 Replacing 'vscode' with 'VSCode' in file: /opt/docusaurus/blog/2024/04/19/vscode-multiple-cursors/index.md
+🔎 Replacing 'vscode' with 'VSCode' in file: /opt/[...]/index.md
 Sentence: One of the best features in vscode is the
 
-🔎 Replacing 'vscode' with 'VSCode' in file: /opt/docusaurus/blog/2024/04/19/vscode-multiple-cursors/index.md
+🔎 Replacing 'vscode' with 'VSCode' in file: /opt/[...]/index.md
 Sentence: With vscode, it's ultra-simple: multiple cursors.
 ```
 

@@ -11,7 +11,7 @@ export default function SeriesPage() {
   const seriesMap = {};
 
   blogPosts.forEach((post) => {
-    const seriesName = post.serie;
+    const seriesName = post.series;
     if (seriesName) {
       if (!seriesMap[seriesName]) {
         seriesMap[seriesName] = [];

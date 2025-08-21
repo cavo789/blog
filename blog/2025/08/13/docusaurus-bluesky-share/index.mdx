@@ -3,7 +3,7 @@ slug: docusaurus-bluesky-share
 title: Create our own Docusaurus React component and provide a "Share on BlueSky" button
 authors: [christophe]
 image: /img/components_social_media.jpg
-serie: Creating Docusaurus components
+series: Creating Docusaurus components
 mainTag: bluesky
 tags: [bluesky, component, docusaurus, markdown, react, swizzle]
 blueSkyRecordKey: 3lwbehu3h2k2i
@@ -11,7 +11,7 @@ enableComments: true
 ---
 ![Create our own Docusaurus React component and provide a "Share on BlueSky" button](/img/components_banner.jpg)
 
-<!-- cspell:ignore reposts -->
+<!-- cspell:ignore reposts,clsx,blogpostitem,3lwbehu3h2k2i -->
 
 Back nine months ago, I had enabled the feature to write comments under my articles by using **Giscus** (see [Adding a comment area](/blog/site-creation)) but only people having a GitHub account were eligible to use that feature and so, almost no one did it.
 
@@ -65,11 +65,11 @@ As you can see, a lot of files will be created in our Docusaurus directory's str
 
 As you can see on the screen, you'll extract a lot of files. **Let's keep things under control: we just want to add a share button below our article; we don't want to do more than that.**
 
-Look at your Docusaurus site now; go to the `src/theme/BlogPostItem` folder and see that, yes, you've now a lot of files and subfolders. Just remove every subfolders; we don't want to update them i.e. we want to keep the original ones. So next time you'll install a newer version of Docusaurus, you'll stay up to date.
+Look at your Docusaurus site now; go to the `src/theme/BlogPostItem` folder and see that, yes, you've now a lot of files and sub folders. Just remove every sub folders; we don't want to update them i.e. we want to keep the original ones. So next time you'll install a newer version of Docusaurus, you'll stay up to date.
 
 Just keep the `index.js` file created by the `swizzle` command. Here is the one I just got on my current Docusaurus version:
 
-<Snippets filename="src/theme/BlogPostItem/index.js">
+<Snippet filename="src/theme/BlogPostItem/index.js">
 
 ```javascript
 import React from 'react';
@@ -96,7 +96,7 @@ export default function BlogPostItem({children, className}) {
 }
 ```
 
-</Snippets>
+</Snippet>
 
 ## Playing and adding a stupid message to every blog post
 
@@ -104,7 +104,7 @@ Before proceeding, let us conduct a test: is this the correct file to modify for
 
 Let's play and add a line just after our post title. Look at the example below; I've just added a new line:
 
-<Snippets filename="src/theme/BlogPostItem/index.js">
+<Snippet filename="src/theme/BlogPostItem/index.js">
 
 ```javascript
 import React from 'react';
@@ -135,13 +135,13 @@ export default function BlogPostItem({children, className}) {
 }
 ```
 
-</Snippets>
+</Snippet>
 
 Save the file and refresh your page using your browser and tadaaa 🎉🎉🎉... Yes, we can see that text on each blog post.
 
 On the image here above, we can see our stupid message:
 
-![Are you ready](./images/are_you_ready.png)
+![Are you ready?](./images/are_you_ready.png)
 
 :::note
 If it didn't work, please stop and restart your Docusaurus server. On my case (I'm using Docker), I just need to stop and restart my container.
@@ -167,7 +167,7 @@ This `index.js` will be the **entry point** of the component.
 
 Please create the `src/components/BlueSky/index.js` file with this content:
 
-<Snippets filename="src/components/BlueSky/index.js">
+<Snippet filename="src/components/BlueSky/index.js">
 
 ```javascript
 import BlueSkyShare from "./share";
@@ -191,7 +191,7 @@ BlueSky.propTypes = {
 };
 ```
 
-</Snippets>
+</Snippet>
 
 **This is our React `<BlueSky />` component! Simple no? Right now, it's just a div containing another component called `<BlueSkyShare />`**.
 
@@ -201,7 +201,7 @@ If you look at the code here above, we've to create two new files: `share.js` an
 
 Ok, now, we've to create a second file called `src/components/BlueSky/share.js` and to copy/paste this content in it:
 
-<Snippets filename="src/components/BlueSky/share.js">
+<Snippet filename="src/components/BlueSky/share.js">
 
 ```javascript
 import Icon from "./bluesky.svg";
@@ -246,7 +246,7 @@ BlueSkyShare.propTypes = {
 };
 ```
 
-</Snippets>
+</Snippet>
 
 As you can see, we've defined a function called `BlueSkyShare` and that function ask a parameter called `metadata`.
 
@@ -266,7 +266,7 @@ For sure, we need the BlueSky logo somewhere.
 
 Please create a third file called `src/components/BlueSky/bluesky.svg` and copy/paste this content in it:
 
-<Snippets filename="src/components/BlueSky/bluesky.svg">
+<Snippet filename="src/components/BlueSky/bluesky.svg">
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -275,13 +275,13 @@ Please create a third file called `src/components/BlueSky/bluesky.svg` and copy/
 </svg>
 ```
 
-</Snippets>
+</Snippet>
 
 ### 4/5 And finally our CSS
 
 And, very important, we need a CSS. Please create a fourth file called `src/components/BlueSky/styles.module.css` and copy/paste this content in it:
 
-<Snippets filename="src/components/BlueSky/styles.module.css">
+<Snippet filename="src/components/BlueSky/styles.module.css">
 
 ```css
 .blueSkyLogo{
@@ -317,7 +317,7 @@ And, very important, we need a CSS. Please create a fourth file called `src/comp
 }
 ```
 
-</Snippets>
+</Snippet>
 
 ### 5/5 Last thing, we need to implement our component in Docusaurus
 
@@ -339,7 +339,7 @@ You should have this:
 
 Let's go back to what was said earlier: in order to adapt the page layout, Docusaurus uses the file `src/theme/BlogPostItem/index.js`. So it's time to inject our newly-created component in that script.
 
-<Snippets filename="src/theme/BlogPostItem/index.js">
+<Snippet filename="src/theme/BlogPostItem/index.js">
 
 ```javascript
 import React from 'react';
@@ -381,7 +381,7 @@ export default function BlogPostItem({ children, className }) {
 }
 ```
 
-</Snippets>
+</Snippet>
 
 Congratulations! If you go to a page on your blog and refresh the page, you will see the BlueSky button at the bottom of the page.
 

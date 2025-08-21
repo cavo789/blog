@@ -46,7 +46,7 @@ Click on the Insert menu then select `Office 2010 Custom UI Part`.
 
 Paste the XML below in the editor window:
 
-<Snippets filename="customui.xml">
+<Snippet filename="customui.xml">
 
 <!-- cspell:disable -->
 ```xml
@@ -64,7 +64,7 @@ Paste the XML below in the editor window:
 ```
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
 You'll then have this:
 
@@ -94,7 +94,7 @@ This done, click on the added module and bottom left, you can give it a name, f.
 
 In the right, main, part of the screen, please paste this code:
 
-<Snippets filename="module.bas">
+<Snippet filename="module.bas">
 
 <!-- cspell:disable -->
 ```vba
@@ -205,7 +205,7 @@ End Sub
 
 ```
 <!-- cspell:enable -->
-</Snippets>
+</Snippet>
 
 We're almost done: we need to give a name to the sheet where the range is located. If you still remember the beginning of this blog post, we've added the range in a sheet called `Params` so, now in the VBE editor, just select the `Params` sheet as illustrated below (see 1.) and name the sheet `shParams` (see 2).
 

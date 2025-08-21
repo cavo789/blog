@@ -21,7 +21,7 @@ For the demo, please start a Linux shell and run `mkdir -p /tmp/refactor && cd $
 
 Please create two php files. The first one will be called `index.php` and will contain this code:
 
-<Snippets filename="/tmp/refactor/index.php">
+<Snippet filename="/tmp/refactor/index.php">
 
 ```php
 <?php
@@ -42,11 +42,11 @@ printf(
 );
 ```
 
-</Snippets>
+</Snippet>
 
 The second file `Product.php` will contain:
 
-<Snippets filename="/tmp/refactor/Product.php">
+<Snippet filename="/tmp/refactor/Product.php">
 
 ```php
 <?php
@@ -82,7 +82,7 @@ class Product
 }
 ```
 
-</Snippets>
+</Snippet>
 
 ### Run the example
 
@@ -121,7 +121,7 @@ Let's do it and see how it works:
 
 The new `Product.php` file is now:
 
-<Snippets filename="/tmp/refactor/Product.php">
+<Snippet filename="/tmp/refactor/Product.php">
 
 ```php
 <?php
@@ -157,11 +157,11 @@ class Product
 }
 ```
 
-</Snippets>
+</Snippet>
 
 But the very cool thing is that `index.php` has been automatically updated. Open `index.php` and check:
 
-<Snippets filename="/tmp/refactor/index.php">
+<Snippet filename="/tmp/refactor/index.php">
 
 ```php
 <?php
@@ -182,7 +182,7 @@ printf(
 );
 ```
 
-</Snippets>
+</Snippet>
 
 By running `docker run -it --rm -v "${PWD}":/project -w /project php:8.2 php index.php`, it's still working.
 
@@ -217,7 +217,7 @@ The third very nice method is the `Extract method` from [PHP Refactoring](https:
 
 Consider the following example (the code isn't running, it's just for the illustration). Create a new file called `Pandoc.php` with this content:
 
-<Snippets filename="/tmp/refactor/Pandoc.php">
+<Snippet filename="/tmp/refactor/Pandoc.php">
 
 ```php
 <?php
@@ -261,7 +261,7 @@ class Pandoc
 }
 ```
 
-</Snippets>
+</Snippet>
 
 The `download` function didn't respect the single-responsibility concept. We've made a few initializations and assertions. Can we do better? Yes, we can extract the lines concerning the browser and create a new `sendToBrowser` function but instead of doing it manually, we'll use the `Extract` feature.
 

@@ -88,7 +88,13 @@ const config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'ignore',
-          remarkPlugins: [require('./plugins/remark-replace-terms/remarkReplaceTerms')],
+          // Replace words like "vscode" or "markdown" to "VSCode" and "Markdown"
+          beforeDefaultRemarkPlugins: [
+            require('./plugins/remark-image-transformer'),
+            require('./plugins/remark-replace-terms'),
+          ],
+          // Replace <img> tags in article to use a custom one (with css class and lazy loading)
+          // remarkPlugins: [ remarkImagesRemoved ],
         },
         sitemap: {
           changefreq: 'weekly',

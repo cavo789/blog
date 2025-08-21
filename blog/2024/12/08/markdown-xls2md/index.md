@@ -29,7 +29,7 @@ Here is a demo:
 
 You can find it on Github too: [https://github.com/cavo789/marknotes_xls2md/tree/master](https://github.com/cavo789/marknotes_xls2md/tree/master).
 
-<Snippets filename="index.php">
+<Snippet filename="index.php">
 
 ```php
 <?php
@@ -243,4 +243,4 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
 </html>
 ```
 
-</Snippets>
+</Snippet>

@@ -24,7 +24,7 @@ In short, please:
 1. Run `mkdir /tmp/fastapi && cd $_` to create a temporary folder and jump in it
 2. Create a `Dockerfile` with the content below
 
-    <Snippets filename="Dockerfile">
+    <Snippet filename="Dockerfile">
 
     ```dockerfile
     # We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
@@ -44,11 +44,11 @@ In short, please:
     CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "82"]
     ```
 
-    </Snippets>
+    </Snippet>
 
 3. Create a `main.py` with the content below
 
-    <Snippets filename="main.py">
+    <Snippet filename="main.py">
 
     ```python
     from random import choice
@@ -82,7 +82,7 @@ In short, please:
             return {"error": f"Joke with ID {joke_id} not found."}, 404
     ```
 
-    </Snippets>
+    </Snippet>
 
 4. Run the `docker build -t python-fastapi . && docker run --detach -v .:/app -p 82:82 python-fastapi` command to run the server.
 
@@ -159,7 +159,7 @@ So, in short, I'll create my own Docker image and check if things are better.
 
 Let's create a file `bruno.Dockerfile` with the following content:
 
-<Snippets filename="bruno.Dockerfile">
+<Snippet filename="bruno.Dockerfile">
 
 ```Dockerfile
 FROM node:lts-bookworm-slim
@@ -169,7 +169,7 @@ ENTRYPOINT ["bru"]
 CMD ["run"]
 ```
 
-</Snippets>
+</Snippet>
 
 We'll create our image like this: `docker build --file bruno.Dockerfile  -t bruno-image .` (we can check our image by running `docker run -it --rm bruno-image --version`; we should see `2.8.0`).
 
@@ -258,7 +258,7 @@ For sure, the idea of the CLI tool is to be able to run assertions from the comm
 
 Let's update the `Get a random joke.bru` file like this:
 
-<Snippets filename="Get a random joke.bru">
+<Snippet filename="Get a random joke.bru">
 
 ```text
 meta {
@@ -289,6 +289,6 @@ settings {
 }
 ```
 
-</Snippets>
+</Snippet>
 
 ![Bruno CLI is running assertions](./images/bruno_cli_assertions.png)

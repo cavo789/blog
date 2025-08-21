@@ -3,7 +3,7 @@ slug: php-devcontainer
 title: Install a PHP Docker environment in a matter of seconds
 authors: [christophe]
 image: /img/php_tips_social_media.jpg
-serie: Coding using a devcontainer
+series: Coding using a devcontainer
 mainTag: php
 tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, sonarlint, vscode]
 enableComments: true

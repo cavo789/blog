@@ -32,7 +32,7 @@ export default function HomeCard({ title, image, link, description }) {
   // use col--2 for all cards on the same row row
   // by using col--4, three cards will be displayed in a row
   return (
-    <div className={`${styles.fade_in} card col col--2 margin-bottom--lg`}>
+    <div className={`${styles.fade_in} ${styles.card} card col col--3 margin-bottom--lg`}>
       <a href={link}>
         <Card>
           <CardImage cardImageUrl={`/img/homepage/${image}`} />

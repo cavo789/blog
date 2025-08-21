@@ -1,5 +1,5 @@
 /**
- * 📄 Snippets Component
+ * 📄 Snippet Component
  *
  * A collapsible content block designed for displaying code snippets, notes, or any inline content
  * with a toggleable interface. Ideal for documentation, tutorials, or expandable UI sections.
@@ -28,7 +28,7 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import styles from "./styles.module.css";
 
-export default function Snippets({ filename, children, defaultOpen = true }) {
+export default function Snippet({ filename, children, defaultOpen = true }) {
   const [open, setOpen] = useState(defaultOpen);
   const contentRef = useRef(null);
   const [height, setHeight] = useState("0px");

@@ -33,7 +33,7 @@ Please run `mkdir /tmp/partials && cd $_` to create a temporary folder and jump 
 
 Create a file called `_quarto.yml` with this content:
 
-<Snippets filename="_quarto.yml">
+<Snippet filename="_quarto.yml">
 
 ```yaml
 project:
@@ -57,7 +57,7 @@ filters:
   - partials
 ```
 
-</Snippets>
+</Snippet>
 
 This file tells to Quarto that we're about to create a website i.e. by running `quarto render` later on, we'll convert our pages written in Markdown as HTML pages.
 
@@ -71,7 +71,7 @@ This will create a new folder called `_extensions` with partials in it.
 
 The idea behind Quarto-partials is to allow to write a page like below i.e. I'll describe my first fictive functionality and, in the `How to run` chapter, I'll inject the content of another page:
 
-<Snippets filename="documentation/canvas.md">
+<Snippet filename="documentation/canvas.md">
 
 ```markdown
 ---
@@ -89,7 +89,7 @@ Imagine you're working on a complex project – perhaps writing a research paper
 {{< partial ../_partials/run.md >}}
 ```
 
-</Snippets>
+</Snippet>
 
 As you can see, I'm typing the description of my feature (called "Contextual Canvas" here) and then, I've a "How to run chapter". Instead of typing the how-to here, I'll include an external file (a *template*) called `../_partials/run.md`.
 
@@ -97,7 +97,7 @@ That one will use the Quarto-partials extension so, I can put in `../_partials/r
 
 Here is the template:
 
-<Snippets filename="_partials/run.md">
+<Snippet filename="_partials/run.md">
 
 ```markdown
 In order to run this action, please run `{{ command }}`.
@@ -109,11 +109,11 @@ Existing flags:
   * `--verbose`: enable verbose mode; showing more information's on screen
 ```
 
-</Snippets>
+</Snippet>
 
 Here comes Mustache in action: as you can see on the first line, the syntax `{{ command }}` will output the content of a variable called `command`. Of course, I need to declare it. Let's review my documentation and add what Quarto call a *frontmatter* YAML block:
 
-<Snippets filename="documentation/canvas.md">
+<Snippet filename="documentation/canvas.md">
 
 ```markdown
 ---
@@ -136,7 +136,7 @@ Imagine you're working on a complex project – perhaps writing a research paper
 
 ```
 
-</Snippets>
+</Snippet>
 
 Time to create our website. Please run `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render`.
 
@@ -169,7 +169,7 @@ partial-data:
 
 Let's prove it. We'll create a new feature:
 
-<Snippets filename="documentation/builder.md">
+<Snippet filename="documentation/builder.md">
 
 ```markdown
 ---
@@ -189,7 +189,7 @@ The *Intent-Driven Interface Builder* would then leverage AI and a vast library 
 {{< partial ../_partials/run.md >}}
 ```
 
-</Snippets>
+</Snippet>
 
 and render our site again by running again `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render`.
 
@@ -199,7 +199,7 @@ and render our site again by running again `docker run -it --rm -v .:/public -w 
 
 In my own case, my documentation looks like this:
 
-<Snippets filename="/documentation/php_lint.md">
+<Snippet filename="/documentation/php_lint.md">
 
 ```markdown
 ---
@@ -241,13 +241,13 @@ None.
 None.
 ```
 
-</Snippets>
+</Snippet>
 
 ## Testing if a variable is defined or not
 
 Let's take a look to the `is_for.md` file.
 
-<Snippets filename="/_partials/project_type.md">
+<Snippet filename="/_partials/project_type.md">
 
 ```markdown
 <!-- #type means defined and thus has been set to something like "PHP" or "PYTHON" -->
@@ -265,7 +265,7 @@ This stage is for **all** type of projects.
 {{/type}}
 ```
 
-</Snippets>
+</Snippet>
 
 There is two syntax used here: `{{#` and `{{^`.
 
@@ -275,7 +275,7 @@ The second one is called *Inverted section* and will check the absence of the va
 
 If you look at my `php_lint.md` file, I've well a variable `type` defined in my `partial-data` section (the one used by Quarto-partials).
 
-<Snippets filename="/documentation/php_lint.md">
+<Snippet filename="/documentation/php_lint.md">
 
 ```markdown
 ---
@@ -319,7 +319,7 @@ None.
 None.
 ```
 
-</Snippets>
+</Snippet>
 
 If I render my file using the command line `quarto render`, I'll then see `This job only for **PHP** project.` in my documentation.
 
@@ -327,7 +327,7 @@ In case my feature was for all project types, I can just remove the `type: "PHP"
 
 Let's take a look to the next included file:
 
-<Snippets filename="../_partials/configure/file.md">
+<Snippet filename="../_partials/configure/file.md">
 
 ```markdown
 <!-- #config_file means defined and thus there is a configuration file -->
@@ -346,7 +346,7 @@ There is no configuration file.
 
 ```
 
-</Snippets>
+</Snippet>
 
 Same idea. If a `config_file` key is defined in the documentation frontmatter, we'll obtain `PHP Linter uses a settings file named .config/.phplint.yml ([Learn more](https://github.com/tengattack/phplint/blob/master/.phplint.yml)).`. If we remove the `config_file` line, we'll then get `There is no configuration file.`.
 

@@ -25,7 +25,7 @@ So, when calling a SOAP service, we must always prepare an XML message first. To
 
 Please create the file `C:\temp\checkVat.xml` with this content. This message (content) is expected by the VIES VAT number web service. In the file, we foresee two placeholders for our variables: `%COUNTRY%` and `%VATNUMBER%`. We'll see this later on.
 
-<Snippets filename="C:\temp\checkVat.xml">
+<Snippet filename="C:\temp\checkVat.xml">
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -39,7 +39,7 @@ Please create the file `C:\temp\checkVat.xml` with this content. This message (c
 </soapenv:Envelope>
 ```
 
-</Snippets>
+</Snippet>
 
 ## Create the Excel workbook
 

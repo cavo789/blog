@@ -24,7 +24,7 @@ I encourage you to watch the video [Full Ubuntu GUI in a Container Displayed on 
 
 There is just one file to create called `Dockerfile` and with this content:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```Dockerfile
 FROM ubuntu:latest
@@ -49,7 +49,7 @@ ENV DISPLAY=host.docker.internal:0.0
 CMD service dbus start ; service lightdm start
 ```
 
-</Snippets>
+</Snippet>
 
 Build the image by running `docker build --tag cavo789/lubuntu .` (think to replace `cavo789` with your pseudo).
 

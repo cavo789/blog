@@ -51,7 +51,7 @@ The `makefile`, being created in your project's directory, can contain instructi
 
 Being in your editor with an empty `makefile` file, just copy/paste the content below:
 
-<Snippets filename="makefile">
+<Snippet filename="makefile">
 
 ```makefile
 adminer:
@@ -93,7 +93,7 @@ phpmyadmin:
   -sensible-browser http://localhost:8089 &
 ```
 
-</Snippets>
+</Snippet>
 
 Make sure indentation is using tabs, not space.
 

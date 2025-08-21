@@ -41,7 +41,7 @@ But the easier way is:
 
 * Then copy paste these entries:
 
-<Snippets filename=".vscode/settings.json`">
+<Snippet filename=".vscode/settings.json`">
 
 ```json
 "editor.fontFamily": "JetBrains Mono",
@@ -49,6 +49,6 @@ But the easier way is:
 "editor.fontLigatures": true,
 ```
 
-</Snippets>
+</Snippet>
 
 Save, close VSCode and open it again (or simply press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> and run `Developer: Reload Window`)

@@ -3,7 +3,7 @@ slug: online-php-linter
 title: Format poorly formatted PHP code
 authors: [christophe]
 image: /img/code_quality_social_media.jpg
-serie: code quality
+series: code quality
 mainTag: code-quality
 tags: [php, code-quality, laravel, phpcs, php-cs-fixer, tips, vscode]
 enableComments: true
@@ -16,7 +16,7 @@ You'd like to have an online tool that you can use to quickly retrieve code with
 
 For example, how do you make the code below look cleaner in five seconds?
 
-<Snippets filename="my_collection.php">
+<Snippet filename="my_collection.php">
 
 ```php
 <?php
@@ -31,7 +31,7 @@ foreach($array as $item){
 }
 ```
 
-</Snippets>
+</Snippet>
 
 <!-- truncate -->
 

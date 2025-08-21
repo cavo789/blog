@@ -25,7 +25,7 @@ The example below will check a given file (`string.sh`) located in both folder `
 You can reuse this snippet for any file you want (the language didn't matters).
 :::
 
-<Snippets filename="script.sh">
+<Snippet filename="script.sh">
 
 ```bash
 FILE="string.sh"
@@ -45,13 +45,13 @@ printf "\033[1;34m%s \033[1;31m%s \033[1;34m%s \033[1;32m%s\033[0m\n\n" "Below i
 pushd "${FOLDER_SOURCE}" > /dev/null && diff --suppress-common-lines "${FILE}" "${FOLDER_COMPARE_WITH}"/"${FILE}" && echo "Congratulations, the two files are exactly the same" ; popd > /dev/null
 ```
 
-</Snippets>
+</Snippet>
 
 ## Compare two folders
 
 Compares two folders and displays a list of files that are only in one of the two folders or where there is a difference.
 
-<Snippets filename="script.sh">
+<Snippet filename="script.sh">
 
 ```bash
 FOLDER_SOURCE="src"
@@ -67,11 +67,11 @@ printf "\033[1;34m%s %s %s %s\033[0m\n" "Compare folder" "${FOLDER_SOURCE}" "aga
 pushd "${FOLDER_SOURCE}" > /dev/null && LC_ALL=C diff --brief --ignore-blank-line . "${FOLDER_COMPARE_WITH}" ; popd > /dev/null
 ```
 
-</Snippets>
+</Snippet>
 
 This variation allows to hide the message `Only in .` i.e. when a file is present in the first folder (the `SOURCE` one) and not in the second one (the `COMPARE_WITH` one).
 
-<Snippets filename="script.sh">
+<Snippet filename="script.sh">
 
 ```bash
 FOLDER_SOURCE="src"
@@ -87,4 +87,4 @@ printf "\033[1;34m%s %s %s %s\033[0m\n" "Compare folder" "${FOLDER_SOURCE}" "aga
 pushd "${FOLDER_SOURCE}" > /dev/null && LC_ALL=C diff --brief --ignore-blank-line . "${FOLDER_COMPARE_WITH}" | grep -v '^Only in \.' ; popd > /dev/null
 ```
 
-</Snippets>
+</Snippet>

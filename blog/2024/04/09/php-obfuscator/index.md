@@ -27,7 +27,7 @@ Just to give you some PHP code to use as an example for this article, let's crea
 
 Here is the code proposed by [Gemini](https://gemini.google.com/). Save it to your disk as `hangman.php`:
 
-<Snippets filename="hangman.php">
+<Snippet filename="hangman.php">
 
 ```php
 <?php
@@ -120,7 +120,7 @@ function playHangman() {
 playHangman();
 ```
 
-</Snippets>
+</Snippet>
 
 To play with this game, just run `docker run -it -v ${PWD}:/src -w /src php:7.4-fpm php hangman.php`.
 
@@ -134,7 +134,7 @@ Now, we'll make this code unreadable by removing unneeded spaces, carriage retur
 
 To do such obfuscation, just download my [https://github.com/cavo789/php_obfuscator/blob/main/src/minify.php](https://github.com/cavo789/php_obfuscator/blob/main/src/minify.php) script and save it on your disk as `minify.php`. Also create a file called `settings.json` with this content:
 
-<Snippets filename="settings.json">
+<Snippet filename="settings.json">
 
 ```json
 {
@@ -154,7 +154,7 @@ To do such obfuscation, just download my [https://github.com/cavo789/php_obfusca
 }
 ```
 
-</Snippets>
+</Snippet>
 
 Right now, in your folder, you've three files:
 
@@ -175,7 +175,7 @@ Time to make the `hangman.php` file unreadable by running `docker run -it -v ${P
 
 Now, you've a new file called `hangman_minify.php`:
 
-<Snippets filename="hangman_minify.php">
+<Snippet filename="hangman_minify.php">
 
 ```php
 <?php
@@ -207,7 +207,7 @@ ppnx($ppnc);echo "You ran out of guesses. The word was: ".$word.PHP_EOL;}}
 ppny();
 ```
 
-</Snippets>
+</Snippet>
 
 What you see here above is the newer version of the `hangman.php` file and it's still running. You can check by running `docker run -it -v ${PWD}:/src -w /src php:7.4-fpm php hangman_minify.php`.
 
@@ -219,7 +219,7 @@ The first time, [Copilot](https://copilot.microsoft.com/) has kept my minified f
 
 ![Rewriting the code](./images/copilot_rewritting.png)
 
-<Snippets filename="hangman.php">
+<Snippet filename="hangman.php">
 
 ```php
 <?php
@@ -311,6 +311,6 @@ function playHangman()
 playHangman();
 ```
 
-</Snippets>
+</Snippet>
 
 The artificial intelligence managed to understand the purpose of the script (a hangman game) and rewrote the code to make it readable. Not only is the code readable, the function names are too, but it has also written comments. Just incredible!

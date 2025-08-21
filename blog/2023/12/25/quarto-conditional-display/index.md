@@ -2,7 +2,7 @@
 slug: quarto-conditional-display
 title: Quarto conditional display
 authors: [christophe]
-serie: Discovering Quarto
+series: Discovering Quarto
 image: /img/quarto_tips_social_media.jpg
 mainTag: quarto
 tags: [markdown, quarto, reveal, tips]
@@ -30,7 +30,7 @@ The syntax is very easy since we need to use the special tag `:::` to delimit an
 
 Let's see in action; create a simple markdown file (`conditional-display.md`) on your disk and call quarto using `quarto render conditional-display.md --to xxx` and replace `xxx` by f.i. `docx`, `pdf`, `html`, `revealjs`, ...
 
-<Snippets filename="conditional-display.md">
+<Snippet filename="conditional-display.md">
 
 ```markdown
 # Conditional display
@@ -48,7 +48,7 @@ I'm part of the slideshow
 :::
 ```
 
-</Snippets>
+</Snippet>
 
 When rendering the markdown sample here above to Word, we'll have the title and the paragraph `when-format="docx"`:
 

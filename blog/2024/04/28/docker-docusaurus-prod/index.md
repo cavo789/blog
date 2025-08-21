@@ -77,7 +77,7 @@ We need to create a few files...
 
 Please create a file called `Dockerfile` with this content:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```Dockerfile
 # syntax=docker/dockerfile:1
@@ -133,7 +133,7 @@ COPY --from=building_production /opt/docusaurus/build /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
 ```
 
-</Snippets>
+</Snippet>
 
 This file is a **multi-stages** Dockerfile. The main objectives are to have an improved cache layer system and a smaller, in size, final image. A multi-stages file is also really useful to be able to build more than one image like a development or a production one.
 
@@ -151,7 +151,7 @@ This is our three stages.
 
 **The stage 1 is called `base`**. In that stage, we do almost nothing, just download a `node` alpine version and initialize some variables. This step can be, in the future, be also used by a `development` stage but, in this article, let's concentrate on the `production` one.
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```Dockerfile
 FROM node:21-alpine AS base
@@ -163,7 +163,7 @@ ENV FORCE_COLOR=0
 RUN corepack enable
 ```
 
-</Snippets>
+</Snippet>
 
 **In stage 2, called `building_production`**, we're extending the `base` stage.
 
@@ -173,7 +173,7 @@ Then we'll copy files from our current folder into the image in the process of b
 
 At the end of this stage, we'll obtain a static version of our Docusaurus site in the folder `/opt/docusaurus/build`.
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```Dockerfile
 FROM base AS building_production
@@ -200,7 +200,7 @@ COPY . /opt/docusaurus/
 RUN yarn build
 ```
 
-</Snippets>
+</Snippet>
 
 What is important to note here is our working directory: `/opt/docusaurus/`. Our static site has been copied into that folder so the result of the last instruction of the second stage (`yarn build`) will thus create a subfolder `build` in `/opt/docusaurus/`.
 
@@ -208,7 +208,7 @@ At the end of this stage, we've our static website but not yet a web server.
 
 **In stage 3**, we will use [nginx](https://hub.docker.com/_/nginx).
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```Dockerfile
 FROM nginx:stable-alpine3.19-perl AS production
@@ -219,7 +219,7 @@ COPY --from=building_production /opt/docusaurus/build /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
 ```
 
-</Snippets>
+</Snippet>
 
 As you can see, this stage is very basic. We just use nginx, copy in his default web folder the static website created earlier and it's done.
 
@@ -241,7 +241,7 @@ I'm using, for my own blog, a development stage. Take a look on my [Dockerfile](
 
 The second file we need to create should be called `.dockerignore` and with this content:
 
-<Snippets filename=".dockerignore">
+<Snippet filename=".dockerignore">
 
 ```text
 build/
@@ -260,7 +260,7 @@ makefile
 README.md
 ```
 
-</Snippets>
+</Snippet>
 
 The `.dockerignore` file is there to ask Docker not to copy everything in your final image when running the instruction `COPY . /opt/docusaurus/` present in the `Dockerfile`.
 

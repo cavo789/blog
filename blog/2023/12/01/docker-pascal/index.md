@@ -18,7 +18,7 @@ The idea for this article came after the one written on [assembly language](/blo
 
 <!-- truncate -->
 
-<Image img={require("./images/turbo_pascal.jpg").default} alt="Turbo Pascal" title="Turbo Pascal"/>
+![Turbo Pascal](./images/turbo_pascal.jpg)
 
 The first thing to do was to find some old source code and to do that, I went back to the **S**ource**w**are **A**rchive **G**roup; known as **SWAG**.
 
@@ -30,7 +30,7 @@ Please run `mkdir C:\tmp\pascal && cd C:\tmp\pascal` in a MS-DOS console to crea
 
 Please create a new file called `Hello.pas` with this content:
 
-<Snippets filename="Hello.pas">
+<Snippet filename="Hello.pas">
 
 ```pascal
 begin
@@ -38,7 +38,7 @@ begin
 end.
 ```
 
-</Snippets>
+</Snippet>
 
 As you know, Pascal is a compiled language and should then be compiled into an `.exe`. The command below will do this:
 
@@ -82,7 +82,7 @@ I wrote this function in 1992 (published in the *SWAG* in 1997): [https://github
 
 Create the `Byte2Bin.pas` file on your disk with this content:
 
-<Snippets filename="Byte2Bin.pas">
+<Snippet filename="Byte2Bin.pas">
 
 ```pascal
 Function Byte2Bin (Chiffre : Byte) : String;
@@ -108,7 +108,7 @@ begin
 end.
 ```
 
-</Snippets>
+</Snippet>
 
 :::info SHL for Shift left one position
 The `shl` instruction will shift the number from on byte left.

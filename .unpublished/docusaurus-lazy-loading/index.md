@@ -3,7 +3,7 @@ slug: docusaurus-lazy-loading
 title: Overrides the generation of img tags with Docusaurus
 authors: [christophe]
 image: /img/components_social_media.jpg
-serie: Creating Docusaurus components
+series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, react]
 enableComments: true
@@ -31,7 +31,7 @@ If you don't have that file yet, just create it.
 The `// [...]` notation is there as a placeholder to show you that, perhaps you'll have already some lines of code there. Don't delete it; just append the highlighted-lines as shown below.
 :::
 
-<Snippets filename="src/theme/MDXComponents.js">
+<Snippet filename="src/theme/MDXComponents.js">
 
 ```javascript
 import React from "react";
@@ -72,7 +72,7 @@ export default {
 
 ```
 
-</Snippets>
+</Snippet>
 
 Once added to your `MDXComponents.js` file, just return to the browser; open any post and refresh the page. You'll see that images have now the `lazy` attributes (you can verify using the dev tools panel of your browser). If like in the example given here above, you've added some CSS style; you'll see it immediately.
 

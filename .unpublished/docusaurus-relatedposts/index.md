@@ -3,7 +3,7 @@ slug: docusaurus-relatedposts
 title: Displaying related posts below our Docusaurus article
 authors: [christophe]
 image: /img/components_social_media.jpg
-serie: Creating Docusaurus components
+series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
 enableComments: true
@@ -21,7 +21,7 @@ When you surf on my blog, you'll see below almost every articles a list of **Rel
 
 The objective of our component will be to display something like this:
 
-<Image img={require("./images/related.png").default} />
+![Related Blog posts](./images/related.png)
 
 ## We need something for extracting information from blog posts
 
@@ -36,11 +36,11 @@ For each file, the script will looks at the YAML front matter and exploit some p
 * if the blog post has an associated image will use it. If not use a default one
 * then the helper will simply return the list of posts and their properties.
 
-Some properties are custom ones like `mainTag` and, for our need right now, the `serie` property.
+Some properties are custom ones like `mainTag` and, for our need right now, the `series` property.
 
 So, just copy/paste the content of the file below and create the `src/components/utils/blogPosts.js` in your project's structure.
 
-<Snippets filename="src/components/utils/blogPosts.js">
+<Snippet filename="src/components/utils/blogPosts.js">
 
 ```javascript
 const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
@@ -78,7 +78,7 @@ export function getBlogMetadata() {
         mainTag: post.frontMatter.mainTag || null,
         authors: post.frontMatter.authors || [],
         date: post.frontMatter.date,
-        serie: post.frontMatter.serie || null,
+        series: post.frontMatter.series || null,
       };
     })
     .filter(Boolean);
@@ -86,13 +86,13 @@ export function getBlogMetadata() {
 
 ```
 
-</Snippets>
+</Snippet>
 
 ## Our RelatedPosts component
 
 Now please create this file `src/components/RelatedBlogPosts/index.js`:
 
-<Snippets filename="src/components/RelatedBlogPosts/index.js">
+<Snippet filename="src/components/RelatedBlogPosts/index.js">
 
 ```javascript
 import Link from "@docusaurus/Link";
@@ -229,7 +229,7 @@ export default function RelatedPosts({ count = 3, description = false }) {
 
 ```
 
-</Snippets>
+</Snippet>
 
 ## Overriding the BlogPostItem template
 
@@ -243,7 +243,7 @@ So, please remove any files/folders under `src/theme/BlogPostItem` except the `i
 
 In the code below, the highlighted lines are the ones we need to add.
 
-<Snippets filename="src/theme/BlogPostItem/index.js">
+<Snippet filename="src/theme/BlogPostItem/index.js">
 
 ```javascript
 
@@ -283,7 +283,7 @@ export default function BlogPostItem({ children, className }) {
 
 ```
 
-</Snippets>
+</Snippet>
 
 Now, because we've just introduced an override, we need to restart our Docusaurus server so changes can be taken into account.
 

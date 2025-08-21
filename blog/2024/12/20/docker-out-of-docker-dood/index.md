@@ -35,7 +35,7 @@ Please create a dummy folder and jump in it: `mkdir /tmp/dood && cd $_`.
 
 We need a `Dockerfile`, let's create it.
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -50,11 +50,11 @@ RUN apk update && apk add docker
 USER root
 ```
 
-</Snippets>
+</Snippet>
 
 We'll also use a `compose.yaml` one, please create this file too:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 # cspell:ignore dood
@@ -69,7 +69,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 ```
 
-</Snippets>
+</Snippet>
 
 ## Running it as root
 
@@ -87,7 +87,7 @@ Now to check if you can access to the list of images installed on your host (whi
 
 To check, reopen your `compose.yaml` file and put the `volumes` entry in comment as illustrated below:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: "dood-as-root"
@@ -104,7 +104,7 @@ services:
 
 ```
 
-</Snippets>
+</Snippet>
 
 If you're still in the container, please type `exit` to go back to your host console.
 
@@ -144,7 +144,7 @@ And you know, it's a bad idea to run containers as root so let's create a specif
 
 To do this, we need to update our files.
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -200,9 +200,9 @@ RUN set -e -x \
 USER "${DOCKER_OS_USERNAME}"
 ```
 
-</Snippets>
+</Snippet>
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 # cspell:ignore dood,groupid,johndoe
@@ -220,7 +220,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 ```
 
-</Snippets>
+</Snippet>
 
 Now, build this new image and jump in the container using, always the same, this command: `docker compose up --detach --build && docker compose exec dood /bin/sh`.
 
@@ -242,7 +242,7 @@ To be able to run Dood with an unprivileged user, you should take care about thi
 
 Please update your `compose.yaml` by adding the two lines below.
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 # cspell:ignore dood,groupid,johndoe
@@ -264,7 +264,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 ```
 
-</Snippets>
+</Snippet>
 
 Jump in the container once more: `docker compose up --detach --build && docker compose exec dood /bin/sh`
 

@@ -3,7 +3,7 @@ slug: vba-excel-sql-server-part-2
 title: MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step
 authors: [christophe]
 image: /img/excel_tips_social_media.jpg
-serie: MS Excel - Connect to a SQL Server database
+series: MS Excel - Connect to a SQL Server database
 mainTag: excel
 tags: [docker, excel, mssql-server, ssms, vba]
 blueSkyRecordKey: 3lvnkdmwmwk2v
@@ -38,7 +38,7 @@ Use the value below for the authentication:
 
 You're now in SSMS. We'll create a dummy database. Using some AI, I've asked for a script, here it is:
 
-<Snippets filename="create_db.sql">
+<Snippet filename="create_db.sql">
 
 ```sql
 -- Create a new database
@@ -78,7 +78,7 @@ SELECT * FROM Customers;
 GO
 ```
 
-</Snippets>
+</Snippet>
 
 ![The creation script](./images/creation_sql.png)
 
@@ -157,7 +157,7 @@ Nevertheless, we've a SQL account called `SA` so we'll use it.
 
 Please update the subroutine and add two lines:
 
-<Snippets filename="module.bas">
+<Snippet filename="module.bas">
 
 ```vb
 Sub CopyToSheet()
@@ -176,7 +176,7 @@ Dim rng As Range
 End Sub
 ```
 
-</Snippets>
+</Snippet>
 
 We're ready. Put your cursor in the `CopyToSheet` function, anywhere and press <kbd>F5</kbd> to execute it.
 
@@ -204,7 +204,7 @@ Don't keep any link with the DB, records are copied to Excel
 
 Sample code:
 
-<Snippets filename="module.bas">
+<Snippet filename="module.bas">
 
 ```vb
 Dim cData As New clsData
@@ -224,7 +224,7 @@ Dim rng As Range
     Set rng = cData.SQL_CopyToSheet("SELECT * FROM dbo.Customers", ActiveSheet.Range("A1"))
 ```
 
-</Snippets>
+</Snippet>
 
 ### AddQueryTable subroutine
 
@@ -254,7 +254,7 @@ IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN C
 
 Sample code
 
-<Snippets filename="module.bas">
+<Snippet filename="module.bas">
 
 ```vb
 Dim cData As New clsData
@@ -276,7 +276,7 @@ Dim sSQL As String
     Call cData.AddQueryTable(sSQL, "qryTest", ActiveCell, True)
 ```
 
-</Snippets>
+</Snippet>
 
 ### RunSQLAndExportNewWorkbook subroutine
 
@@ -298,7 +298,7 @@ IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN C
 
 Sample code
 
-<Snippets filename="module.bas">
+<Snippet filename="module.bas">
 
 ```vb
 Dim cData As New clsData
@@ -316,4 +316,4 @@ Dim sSQL As String
     Call cData.RunSQLAndExportNewWorkbook(sSQL, "My Title", False)
 ```
 
-</Snippets>
+</Snippet>

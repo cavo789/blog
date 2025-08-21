@@ -35,7 +35,7 @@ The solution is easy to implement: if you've a `compose.yaml` (or `compose.yaml`
 
 For instance:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 // highlight-next-line
@@ -53,7 +53,7 @@ services:
     restart: unless-stopped
 ```
 
-</Snippets>
+</Snippet>
 
 And that's all.
 

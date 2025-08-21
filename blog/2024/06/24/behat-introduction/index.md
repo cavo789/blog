@@ -53,7 +53,7 @@ Let's start...
 * First, let's create a new directory: `mkdir /tmp/behat && cd $_`.
 * There, let's create a file called `Dockerfile` with the content below. That script is already big but; like this, we'll have everything we need right now.
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 <!-- cspell:disable -->
 ```Dockerfile
@@ -130,11 +130,11 @@ WORKDIR /opt/behat
 ```
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
 * Create a file called `compose.yaml` with this content:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -154,7 +154,7 @@ services:
       - ./:/opt/behat
 ```
 
-</Snippets>
+</Snippet>
 
 * Run `docker compose up --detach` to create your Docker container
 
@@ -207,7 +207,7 @@ Now, if you look at your folder, you can see you've now a new folder called `fea
 
 The image here above is displaying a major concept of Behat: it's a feature. This is something you need to write and this will guide our automation. For instance:
 
-<Snippets filename="Blog.feature">
+<Snippet filename="Blog.feature">
 
 ```gherkin
 Feature: Clicking on the Blog menu item should give me the list of articles
@@ -218,7 +218,7 @@ Feature: Clicking on the Blog menu item should give me the list of articles
     Then I should be on "/blog"
 ```
 
-</Snippets>
+</Snippet>
 
 This has to be put in a file having the `.feature` extension in the  `features` folder; let's create the `Blog.feature` file with this content:
 
@@ -306,7 +306,7 @@ We'll now need to reference the `behat-chrome-extension` in a such called `behat
 
 Please create the file called `behat.yml` in your project's root directory; with this content:
 
-<Snippets filename="behat.yaml">
+<Snippet filename="behat.yaml">
 
 ```yaml
 default:
@@ -321,7 +321,7 @@ default:
                       api_url: http://0.0.0.0:9222
 ```
 
-</Snippets>
+</Snippet>
 
 Also, please edit the file `features/bootstrap/FeatureContext.php`, remove everything and replace the existing content below.
 
@@ -330,7 +330,7 @@ We've changes a few `use` to add Mink libraries (and remove unneeded ones). We'v
 :::warning Please update the url `https://www.avonture.be` to match your site
 :::
 
-<Snippets filename="features/bootstrap/FeatureContext.php">
+<Snippet filename="features/bootstrap/FeatureContext.php">
 
 ```php
 <?php
@@ -381,7 +381,7 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
 }
 ```
 
-</Snippets>
+</Snippet>
 
 By running `vendor/bin/behat` again, we've now another error:
 
@@ -391,7 +391,7 @@ By running `vendor/bin/behat` again, we've now another error:
 
 Create a file called `run.sh` with this content:
 
-<Snippets filename="run.sh">
+<Snippet filename="run.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -416,7 +416,7 @@ if ((chromePID > 0)); then
 fi
 ```
 
-</Snippets>
+</Snippet>
 
 Then make the file executable by running `chmod +x ./run.sh`.
 
@@ -434,7 +434,7 @@ Then the line `Then I click on the "Blog" menu item` is in yellow and this is no
 
 Back to the `bootstrap/FeatureContext.php` file. Replace the `iClickOnTheMenuItem` method with this code:
 
-<Snippets filename="features/bootstrap/FeatureContext.php">
+<Snippet filename="features/bootstrap/FeatureContext.php">
 
 ```php
 /**
@@ -453,7 +453,7 @@ public function iClickOnTheMenuItem(string $menuItem): void
 }
 ```
 
-</Snippets>
+</Snippet>
 
 As you can see, we'll create a `.output` folder and the only thing we'll do is to create a screenshot.
 
@@ -465,7 +465,7 @@ What have we just done? We've verified that when Behat executes our `iClickOnThe
 
 Replace the method with this new code:
 
-<Snippets filename="features/bootstrap/FeatureContext.php">
+<Snippet filename="features/bootstrap/FeatureContext.php">
 
 ```php
 /**
@@ -502,7 +502,7 @@ public function iClickOnTheMenuItem(string $menu): void
 }
 ```
 
-</Snippets>
+</Snippet>
 
 Start `./run.sh` once more and bingo!
 
@@ -548,7 +548,7 @@ Finally, to run our `run.sh` script, you should run `docker compose exec -u $(id
 
 ### behat.yaml
 
-<Snippets filename="behat.yaml">
+<Snippet filename="behat.yaml">
 
 ```yaml
 default:
@@ -563,13 +563,13 @@ default:
                       api_url: http://0.0.0.0:9222
 ```
 
-</Snippets>
+</Snippet>
 
 ### Blog.feature
 
 The relative filename is `features/Blog.feature`.
 
-<Snippets filename="features/Blog.feature">
+<Snippet filename="features/Blog.feature">
 
 
 ```gherkin
@@ -581,11 +581,11 @@ Feature: Clicking on the Blog menu item should gives me the list of articles
     Then I should be on "/blog"
 ```
 
-</Snippets>
+</Snippet>
 
 ### composer.json
 
-<Snippets filename="composer.json">
+<Snippet filename="composer.json">
 
 ```json
 {
@@ -610,11 +610,11 @@ Feature: Clicking on the Blog menu item should gives me the list of articles
 }
 ```
 
-</Snippets>
+</Snippet>
 
 ### compose.yaml
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -634,11 +634,11 @@ services:
       - ./:/opt/behat
 ```
 
-</Snippets>
+</Snippet>
 
 ### Dockerfile
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 <!-- cspell:disable -->
 ```Dockerfile
@@ -715,13 +715,13 @@ WORKDIR /opt/behat
 ```
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
 ### FeatureContext.php
 
 The relative filename is `features/bootstrap/FeatureContext.php`.
 
-<Snippets filename="features/bootstrap/FeatureContext.php">
+<Snippet filename="features/bootstrap/FeatureContext.php">
 
 ```php
 <?php
@@ -796,11 +796,11 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
 }
 ```
 
-</Snippets>
+</Snippet>
 
 ### run.sh
 
-<Snippets filename="run.sh">
+<Snippet filename="run.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -825,4 +825,4 @@ if ((chromePID > 0)); then
 fi
 ```
 
-</Snippets>
+</Snippet>

@@ -3,7 +3,7 @@ slug: docusaurus-bluesky-comments
 title: Show BlueSky comments on Docusaurus and, too, number of likes/reposts
 authors: [christophe]
 image: /img/components_social_media.jpg
-serie: Creating Docusaurus components
+series: Creating Docusaurus components
 mainTag: bluesky
 tags: [bluesky, component, docusaurus, markdown, react, swizzle]
 enableComments: true
@@ -40,7 +40,7 @@ In the previous article (see [Create our own Docusaurus React component and prov
 
 Here is our new BlueSky layout for our component:
 
-<Snippets filename="src/components/BlueSky/index.js">
+<Snippet filename="src/components/BlueSky/index.js">
 
 ```javascript
 /**
@@ -137,7 +137,7 @@ BlueSky.propTypes = {
 };
 ```
 
-</Snippets>
+</Snippet>
 
 :::info
 The highlighted lines are the new ones compared of the previous version of the file if you've already followed the first tutorial.
@@ -152,7 +152,7 @@ As you can see, this time, we'll foresee four components:
 
 ## 2/5 Our "Like, share or comment" button
 
-<Snippets filename="src/components/BlueSky/post.js">
+<Snippet filename="src/components/BlueSky/post.js">
 
 ```javascript
 /**
@@ -209,13 +209,13 @@ BlueSkyPost.propTypes = {
 };
 ```
 
-</Snippets>
+</Snippet>
 
 ## 3/5 Our component for getting the number of likes and reposts
 
 <!-- cspell:disable -->
 
-<Snippets filename="src/components/BlueSky/likes.js">
+<Snippet filename="src/components/BlueSky/likes.js">
 
 ```javascript
 /**
@@ -316,7 +316,7 @@ BlueSkyLikes.propTypes = {
 };
 ```
 
-</Snippets>
+</Snippet>
 
 <!-- cspell:enable -->
 
@@ -324,7 +324,7 @@ BlueSkyLikes.propTypes = {
 
 <!-- cspell:disable -->
 
-<Snippets filename="src/components/BlueSky/comments.js">
+<Snippet filename="src/components/BlueSky/comments.js">
 
 ```javascript
 /**
@@ -639,12 +639,12 @@ BlueSkyComments.propTypes = {
 
 ```
 
-</Snippets>
+</Snippet>
 <!-- cspell:enable -->
 
 ## 5/5 Our new CSS
 
-<Snippets filename="src/components/BlueSky/styles.module.css">
+<Snippet filename="src/components/BlueSky/styles.module.css">
 
 ```css
 .blueSkyLogo {
@@ -813,4 +813,4 @@ img.blueSkyCommentEmbedThumb {
 }
 ```
 
-</Snippets>
+</Snippet>

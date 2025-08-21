@@ -27,7 +27,7 @@ By just opening the website, you'll immediately get an example. It's a very easy
 
 In the example below, let's create three tables: we'll create a web interface and we need a `users` table, a `groups` one and a `users_groups`. We'll define fields for sure but also constraints, relations and foresee a comment for each field:
 
-<Snippets filename="dbdiagram.txt">
+<Snippet filename="dbdiagram.txt">
 
 ```text
 Table users {
@@ -64,7 +64,7 @@ Table users_groups {
 
 ```
 
-</Snippets>
+</Snippet>
 
 ![Our tables in dbdiagram.io](./images/tables.png)
 
@@ -76,7 +76,7 @@ As you can see, there is an `Export` button. To be able to use it, you should cr
 
 ![Exporting the schema](./images/export.png)
 
-<Snippets filename="schema.sql">
+<Snippet filename="schema.sql">
 
 ```sql
 CREATE SCHEMA "web";
@@ -146,7 +146,7 @@ ALTER TABLE "web"."users" ADD FOREIGN KEY ("id") REFERENCES "web"."users_groups"
 ALTER TABLE "web"."groups" ADD FOREIGN KEY ("id") REFERENCES "web"."users_groups" ("group_id");
 ```
 
-</Snippets>
+</Snippet>
 
 ## Generate the Python code
 
@@ -167,7 +167,7 @@ I'll save it in my project's structure in folder `.tools/generate_models` (I'll 
 
 <!-- cspell:disable -->
 
-<Snippets filename=".tools/generate_models/generate_models.py">
+<Snippet filename=".tools/generate_models/generate_models.py">
 
 ```python
 import re
@@ -350,7 +350,7 @@ init_lines = ["# ruff: noqa: F401\nfrom .base import Base"] + [f"from .{table} i
 print("✅ All models and Pydantic classes generated successfully.")
 ```
 
-</Snippets>
+</Snippet>
 
 The script will process the `schema.sql` file located in the same folder so let's copy/paste the SQL provided in the previous chapter into file `.tools/generate_models/schema.sql`.
 
@@ -369,7 +369,7 @@ Now, if you look into your `src/db/models` folder, you'll see a lot of new files
 
 The `generate_models.py` utility created by ChatGPT has thus converted
 
-<Snippets filename="create_db.sql">
+<Snippet filename="create_db.sql">
 
 ```sql
 CREATE TABLE "web"."groups" (
@@ -387,11 +387,11 @@ COMMENT ON COLUMN "web"."groups"."disabled_at" IS 'If it is non-NULL, the group 
 ALTER TABLE "web"."groups" ADD FOREIGN KEY ("id") REFERENCES "web"."users_groups" ("group_id");
 ```
 
-</Snippets>
+</Snippet>
 
 into this Python code:
 
-<Snippets filename="create_db.py">
+<Snippet filename="create_db.py">
 
 ```python
 from sqlalchemy import Column, TIMESTAMP, Text
@@ -420,7 +420,7 @@ class Groups(Base):
     users_groups = relationship("Users_groups", back_populates="groups_list")
 ```
 
-</Snippets>
+</Snippet>
 
 Crazy no?
 

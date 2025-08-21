@@ -38,7 +38,7 @@ Please create a dummy folder and jump in it: `mkdir ~/tools/dashboard && cd $_`.
 
 In that folder, please create a file called `compose.yaml` with the following content (refers to [official Docker Hub page](https://hub.docker.com/r/linuxserver/heimdall/) for the latest version):
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: tools
@@ -59,7 +59,7 @@ services:
     restart: unless-stopped
 
 ```
-</Snippets>
+</Snippet>
 
 :::note
 In the code here above, I've preferred the syntax `PUID=${USER_ID:-1000}` and `PGID=${GROUP_ID:-1000}` instead of just hardcoding `1000`: on my computer, my Linux user id is `1002`; not `1000` so I prefer to use a variable and, if the variable isn't defined, then use `1000` as default. Same for the group id.
@@ -91,14 +91,14 @@ It's a lot more fun, isn't it?
 
 Did you've noticed that, in the `compose.yaml` file there is a section called `volumes` with the following configuration?
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 volumes:
   - ./config:/config
 ```
 
-</Snippets>
+</Snippet>
 
 It means that the `config` folder of Heimdall will be stored on your disk; in a folder called `config` too.
 

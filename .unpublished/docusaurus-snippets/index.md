@@ -3,7 +3,7 @@ slug: docusaurus-snippets
 title: A component for showing code snippets in a Docusaurus blog
 authors: [christophe]
 image: /img/components_social_media.jpg
-serie: Creating Docusaurus components
+series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
 enableComments: true
@@ -48,17 +48,17 @@ It works but, ok, let's create ours.
 
 In this article we'll learn how to create a `Snippets` component and get this look&feel:
 
-<Snippets filename="blog/index.md">
+<Snippet filename="blog/index.md">
 
 Hello world! Proud to be here!!!
 
-</Snippets>
+</Snippet>
 
 ## Creation of our Snippets component
 
 Please create the `src/components/Snippets/index.js` file with this content:
 
-<Snippets filename="src/components/Snippets/index.js">
+<Snippet filename="src/components/Snippets/index.js">
 
 ```javascript
 import React, { useState, useRef, useEffect, useCallback } from "react";
@@ -98,28 +98,28 @@ export default function Snippets({ filename, children, defaultOpen = true }) {
 
 ```
 
-</Snippets>
+</Snippet>
 
 Also create the stylesheet:
 
-<Snippets filename="styles.module.css">
+<Snippet filename="styles.module.css">
 
 ```css
 code {
-  background-color: #eef9fd !important;
-  padding: 0px !important
+  /* This variable adapts automatically to light and dark themes */
+  background-color: var(--ifm-code-background) !important;
+  padding: 0px !important;
 }
 
 code:hover {
-  background-color: #eef9fd !important;
-  padding: 0px !important
+  background-color: var(--ifm-code-background) !important;
+  padding: 0px !important;
 }
 
 .snippet_block {
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 8px;
   margin: 1rem 0;
-  /* background: var(--ifm-background-surface-color); */
   overflow: hidden;
 }
 
@@ -166,7 +166,6 @@ code:hover {
 
 .snippet_inner {
   padding: 0.75rem 1rem;
-  /* border-top: 1px solid var(--ifm-color-emphasis-300); */
 }
 
 .snippet_toolbar {
@@ -177,13 +176,13 @@ code:hover {
 
 ```
 
-</Snippets>
+</Snippet>
 
 The last thing we should do is to teach Docusaurus about our custom component.
 
 Please also edit the `src/theme/MDXComponents.js` file (and if not present, please create it)
 
-<Snippets filename="src/theme/MDXComponents.js">
+<Snippet filename="src/theme/MDXComponents.js">
 
 ```javascript
 import MDXComponents from "@theme-original/MDXComponents";
@@ -197,14 +196,14 @@ export default {
 
 ```
 
-</Snippets>
+</Snippet>
 
 ## Using the Snippets component
 
 Now, if you want to add a snippets in your blog, just do something like this:
 
 ```html
-<Snippets filename="who_are_you.py">
+<Snippet filename="who_are_you.py">
 
 name = input("What's your name? ")
 
@@ -215,12 +214,12 @@ else:
 
 print("Nice to meet you.")
 
-</Snippets>
+</Snippet>
 ```
 
 And it'll be rendered like this:
 
-<Snippets filename="who_are_you.py">
+<Snippet filename="who_are_you.py">
 
 ```python
 name = input("What's your name? ")
@@ -233,4 +232,4 @@ else:
 print("Nice to meet you.")
 ```
 
-</Snippets>
+</Snippet>

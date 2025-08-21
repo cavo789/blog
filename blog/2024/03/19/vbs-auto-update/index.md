@@ -27,7 +27,7 @@ By adding to it a new *auto-update* function, each time the script will be start
 
 Here is the content of such function:
 
-<Snippets filename="get_folder_size.vbs">
+<Snippet filename="get_folder_size.vbs">
 
 ```vbs
 ' -----------------------------------------------------------------
@@ -94,4 +94,4 @@ Else
 End If
 ```
 
-</Snippets>
+</Snippet>

@@ -1,9 +1,9 @@
 ---
 slug: docusaurus-series
-title: Using a self-created component, add the notion of serie to Docusaurus
+title: Using a self-created component, add the notion of series to Docusaurus
 authors: [christophe]
 image: /img/components_social_media.jpg
-serie: Creating Docusaurus components
+series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
 enableComments: true
@@ -13,11 +13,11 @@ draft: true
 
 <!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,docux -->
 
-![Using a self-created component, add the notion of serie to Docusaurus](/img/components_banner.jpg)
+![Using a self-created component, add the notion of series to Docusaurus](/img/components_banner.jpg)
 
 If you have been using Docusaurus for a long time, you may have noticed that it is not possible to create links between articles as one would like to do for a series.
 
-It would be nice to write a first article, a second, a third one, ... and teach Docusaurus these articles are part of the same serie.
+It would be nice to write a first article, a second, a third one, ... and teach Docusaurus these articles are part of the same series.
 
 It's impossible natively so, let's create our component for this.
 
@@ -46,11 +46,11 @@ For each file, the script will looks at the YAML front matter and exploit some p
 * if the blog post has an associated image will use it. If not use a default one
 * then the helper will simply return the list of posts and their properties.
 
-Some properties are custom ones like `mainTag` and, for our need right now, the `serie` property.
+Some properties are custom ones like `mainTag` and, for our need right now, the `series` property.
 
 So, just copy/paste the content of the file below and create the `src/components/utils/blogPosts.js` in your project's structure.
 
-<Snippets filename="src/components/utils/blogPosts.js">
+<Snippet filename="src/components/utils/blogPosts.js">
 
 ```javascript
 const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
@@ -88,7 +88,7 @@ export function getBlogMetadata() {
         mainTag: post.frontMatter.mainTag || null,
         authors: post.frontMatter.authors || [],
         date: post.frontMatter.date,
-        serie: post.frontMatter.serie || null,
+        series: post.frontMatter.series || null,
       };
     })
     .filter(Boolean);
@@ -96,13 +96,13 @@ export function getBlogMetadata() {
 
 ```
 
-</Snippets>
+</Snippet>
 
-## Our SerieBlogPosts component
+## Our SeriesBlogPosts component
 
-Now, we'll create our component. Please create the `src/components/SerieBlogPosts/index.js` file with the following code:
+Now, we'll create our component. Please create the `src/components/SeriesBlogPosts/index.js` file with the following code:
 
-<Snippets filename="src/components/SerieBlogPosts/index.js">
+<Snippet filename="src/components/SeriesBlogPosts/index.js">
 
 ```javascript
 import React from "react";
@@ -111,13 +111,13 @@ import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
 
 import styles from "./styles.module.css";
 
-export default function SerieBlogPosts({
-  serie,
+export default function SeriesBlogPosts({
+  series,
   excludePermalink = null,
   highlightCurrent = false,
 }) {
   const posts = getBlogMetadata()
-    .filter((post) => post.serie === serie)
+    .filter((post) => post.series === series)
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   if (!posts.length) return null;
@@ -125,7 +125,7 @@ export default function SerieBlogPosts({
   return (
     <div className={styles.seriesBlogPost}>
       <p>
-        This article is part of the <strong>{serie}</strong> series:
+        This article is part of the <strong>{series}</strong> series:
       </p>
       <ul>
         {posts.map((post) => {
@@ -154,15 +154,15 @@ export default function SerieBlogPosts({
 }
 ```
 
-</Snippets>
+</Snippet>
 
-As you can see, we'll retrieve the list of blog posts thanks the `getBlogMetaData` helper. We'll mainly apply a filter and make sure the retrieve post has a `serie` property and that one is strictly equal to the one of the current article.
+As you can see, we'll retrieve the list of blog posts thanks the `getBlogMetaData` helper. We'll mainly apply a filter and make sure the retrieve post has a `series` property and that one is strictly equal to the one of the current article.
 
 And if so, just order post in a chronological order.
 
 ```javascript
 const posts = getBlogMetadata()
-    .filter((post) => post.serie === serie)
+    .filter((post) => post.series === series)
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 ```
 
@@ -170,7 +170,7 @@ The rest of the logic will simply to display a bullet list.
 
 And the last file to create is the CSS file:
 
-<Snippets filename="src/components/SerieBlogPosts/styles.module.css">
+<Snippet filename="src/components/SeriesBlogPosts/styles.module.css">
 
 ```css
 .seriesBlogPost {
@@ -178,25 +178,25 @@ And the last file to create is the CSS file:
 }
 ```
 
-</Snippets>
+</Snippet>
 
 ## Editing our articles
 
-Now, the easy part, please edit an existing blog post you've and add the `serie` key in the YAML front matter; f.i.:
+Now, the easy part, please edit an existing blog post you've and add the `series` key in the YAML front matter; f.i.:
 
-<Snippets filename="index.md">
+<Snippet filename="index.md">
 
 ```markdown
 ---
 title: Hello World!
 <!-- highlight-next-line -->
-serie: Creation of my blog site
+series: Creation of my blog site
 ---
 
 Hello world! Proud to be here!!!
 ```
 
-</Snippets>
+</Snippet>
 
 :::danger Nothing happens? Why? Because we still need to do one thing
 As you can see, nothing happens right now:
@@ -206,7 +206,7 @@ As you can see, nothing happens right now:
 
 ## Overriding the BlogPostItem template
 
-It's normal because we need to call our newly created component. For sure, we can include the `<SerieBlogPost>` tag in each article but, uh oh, we're smart people isn't it?
+It's normal because we need to call our newly created component. For sure, we can include the `<SeriesBlogPost>` tag in each article but, uh oh, we're smart people isn't it?
 
 Let's create an override of the BlogPostItem template of Docusaurus.
 
@@ -218,7 +218,7 @@ So, please remove any files/folders under `src/theme/BlogPostItem` except the `i
 
 In the code below, the highlighted lines are the ones we need to add.
 
-<Snippets filename="src/theme/BlogPostItem/index.js">
+<Snippet filename="src/theme/BlogPostItem/index.js">
 
 ```javascript
 import React from "react";
@@ -230,7 +230,7 @@ import BlogPostItemContent from "@theme/BlogPostItem/Content";
 import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
 
 // highlight-next-line
-import SerieBlogPosts from '@site/src/components/SerieBlogPosts/index.js';
+import SeriesBlogPosts from '@site/src/components/SeriesBlogPosts/index.js';
 
 // apply a bottom margin in list view
 function useContainerClassName() {
@@ -247,10 +247,10 @@ export default function BlogPostItem({ children, className }) {
       <BlogPostItemHeader />
 
       // highlight-start
-      {/* Only display our SerieBlogPosts components on the post page; not the blog view */}
+      {/* Only display our SeriesBlogPosts components on the post page; not the blog view */}
       {isBlogPostPage && (
-        <SerieBlogPosts
-          serie={metadata.frontMatter.serie}
+        <SeriesBlogPosts
+          series={metadata.frontMatter.series}
           excludePermalink={metadata.permalink}
           highlightCurrent={true}
         />
@@ -263,7 +263,7 @@ export default function BlogPostItem({ children, className }) {
 }
 ```
 
-</Snippets>
+</Snippet>
 
 Now, because we've just introduced an override, we need to restart our Docusaurus server so changes can be taken into account.
 
@@ -276,18 +276,18 @@ If like me you're running Docusaurus thanks to Docker, just kill the container a
 
 Great, the component is now running. We can create our series.
 
-## Add another articles in the same serie
+## Add another articles in the same series
 
-Just edit any of your blog post and the only thing you've to do right now is to add the `serie` key.
+Just edit any of your blog post and the only thing you've to do right now is to add the `series` key.
 
-On my demo site, I've three articles, I'll edit both and add the `serie: Creation of my blog site` line in the YAML front matter.
+On my demo site, I've three articles, I'll edit both and add the `series: Creation of my blog site` line in the YAML front matter.
 
-And by saving my changes, going back to the browser will well reflect my serie:
+And by saving my changes, going back to the browser will well reflect my series:
 
-![Our serie has three articles](./images/our-series-has-three-articles.png)
+![Our series has three articles](./images/our-series-has-three-articles.png)
 
 :::tip
-If you want to see the `SerieBlogPost` component in a live use case, just surf on this site. What you'll see here is exactly what is described in this article.
+If you want to see the `SeriesBlogPost` component in a live use case, just surf on this site. What you'll see here is exactly what is described in this article.
 :::
 
 ## Adding a new page to show all series
@@ -298,7 +298,7 @@ It's easy too.
 
 Please create the `src/pages/series.jsx` file with this content:
 
-<Snippets filename="src/pages/series.jsx">
+<Snippet filename="src/pages/series.jsx">
 
 ```javascript
 import React from "react";
@@ -311,7 +311,7 @@ export default function SeriesPage() {
   const seriesMap = {};
 
   blogPosts.forEach((post) => {
-    const seriesName = post.serie;
+    const seriesName = post.series;
     if (seriesName) {
       if (!seriesMap[seriesName]) {
         seriesMap[seriesName] = [];
@@ -372,7 +372,7 @@ export default function SeriesPage() {
 
 ```
 
-</Snippets>
+</Snippet>
 
 Now, simply access to the `/series` page. On my localhost, it's `http://127.0.0.1:3002/series`.
 
@@ -384,7 +384,7 @@ On my blog, I've use the [Card component of Docux](https://docusaurus.community/
 
 Here is the version used on my blog:
 
-<Snippets filename="src/pages/series.jsx">
+<Snippet filename="src/pages/series.jsx">
 
 ```javascript
 import Layout from "@theme/Layout";
@@ -400,7 +400,7 @@ export default function SeriesPage() {
   const seriesMap = {};
 
   blogPosts.forEach((post) => {
-    const seriesName = post.serie;
+    const seriesName = post.series;
     if (seriesName) {
       if (!seriesMap[seriesName]) {
         seriesMap[seriesName] = [];
@@ -456,4 +456,4 @@ export default function SeriesPage() {
 
 ```
 
-</Snippets>
+</Snippet>

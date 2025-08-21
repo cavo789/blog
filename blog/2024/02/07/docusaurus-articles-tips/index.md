@@ -2,7 +2,7 @@
 slug: docusaurus-articles-tips
 title: Some tips and tricks when written articles for Docusaurus
 authors: [christophe]
-serie: Discovering Docusaurus
+series: Discovering Docusaurus
 image: /img/docusaurus_tips_social_media.jpg
 mainTag: docusaurus
 tags: [markdown, docusaurus, tips]
@@ -64,7 +64,7 @@ Later in your article, you ask 'Please edit the file and make this and *please e
 
 With `// highlight-next-line`, it's really easy to highlight changes, for instance:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: kingsbridge
@@ -98,6 +98,6 @@ services:
       - ./db:/var/lib/mysql
 ```
 
-</Snippets>
+</Snippet>
 
 You can immediately see where I've made some changes in the file's content.

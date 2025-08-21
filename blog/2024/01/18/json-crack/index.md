@@ -19,7 +19,7 @@ I really like the idea of not having to draw (actually, that is just because I a
 
 Let us take an example found randomly on the net [here](https://medium.com/@Goldzila/superheroes-of-data-exploring-xml-json-and-binary-formats-through-the-lens-of-marvel-characters-3754f2691cdc). How can we represent Spider-Man as a JSON object? Below an attempt:
 
-<Snippets filename="superheroes.json">
+<Snippet filename="superheroes.json">
 
 ```json
 {
@@ -37,7 +37,7 @@ Let us take an example found randomly on the net [here](https://medium.com/@Gold
 }
 ```
 
-</Snippets>
+</Snippet>
 
 Isn't it nicer in visual form?
 
@@ -45,7 +45,7 @@ Isn't it nicer in visual form?
 
 Another example (found [here](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)):
 
-<Snippets filename="superheroes.json">
+<Snippet filename="superheroes.json">
 
 ```json
 {
@@ -87,7 +87,7 @@ Another example (found [here](https://developer.mozilla.org/en-US/docs/Learn/Jav
 }
 ```
 
-</Snippets>
+</Snippet>
 
 ![Super hero squad](./images/super_hero_squad.png)
 

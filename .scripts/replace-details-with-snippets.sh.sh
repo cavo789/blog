@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script: replace-details-with-snippets.sh
-# Description: Replaces <details><summary>FILENAME</summary> blocks with <Snippets filename="FILENAME"> blocks in all .md files recursively.
+# Description: Replaces <details><summary>FILENAME</summary> blocks with <Snippet filename="FILENAME"> blocks in all .md files recursively.
 
 shopt -s globstar nullglob
 
@@ -19,13 +19,13 @@ for file in blog/**/*.md; do
     if (in_block) {
       match($0, /<summary>(.*)<\/summary>/, m)
       filename = m[1]
-      print "<Snippets filename=\"" filename "\">"
+      print "<Snippet filename=\"" filename "\">"
       next
     }
   }
   /^<\/details>/ {
     if (in_block) {
-      print "</Snippets>"
+      print "</Snippet>"
       in_block = 0
       next
     }

@@ -28,7 +28,7 @@ Please create a temporary folder using `mkdir -p /tmp/remote-ssh && cd $_`. Once
 
 Please create the `Dockerfile` with the content below.
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # cspell:ignore ssword
@@ -60,7 +60,7 @@ EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 ```
 
-</Snippets>
+</Snippet>
 
 This done, please create the Docker image by running `docker build -t ssh-server .` then, create the container by running `docker run -d -p 2222:22 --name remote-dev ssh-server`.
 

@@ -4,11 +4,10 @@
   padding: 10px;
   backdrop-filter: blur(12px) saturate(150%);
   background-color: rgba(255, 255, 255, 0.2);
-  background-color: lightgray;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 40px solid rgba(255, 255, 255, 0.3);
 }
 
 .container img {

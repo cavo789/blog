@@ -3,6 +3,9 @@
         "**/node_modules": true,
     },
     "files.trimTrailingWhitespace": true,
+    "files.associations": {
+      ".mdx": "markdown"
+    },
     "files.exclude": {
         "**/node_modules/**": true,
     },

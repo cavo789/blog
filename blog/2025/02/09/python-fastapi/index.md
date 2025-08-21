@@ -30,7 +30,7 @@ Please create a dummy folder and jump in it: `mkdir /tmp/fastapi && cd $_`.
 
 In that folder, please create a new file called `Dockerfile` with the following content:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
@@ -48,13 +48,13 @@ COPY main.py main.py
 # And we'll run FastAPI and call our script. We'll expose the script on port 82
 CMD ["fastapi", "run", "main.py", "--port", "82"]
 ```
-</Snippets>
+</Snippet>
 
 The final image size will be about 184MB i.e. almost nothing.
 
 As you've seen, we need a file called `main.py`; let's create it:
 
-<Snippets filename="main.py">
+<Snippet filename="main.py">
 
 ```python
 from fastapi import FastAPI
@@ -66,7 +66,7 @@ def read_root():
     return {"Hello": "World"}
 ```
 
-</Snippets>
+</Snippet>
 
 This very straightforward code defines a route called `/`. It's a `GET` method and we'll return a JSON object:
 
@@ -135,7 +135,7 @@ docker rmi python-fastapi --force
 
 Now, please copy/paste the following content to your existing `Dockerfile`:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
@@ -157,7 +157,7 @@ CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "82"]
 // highlight-end
 ```
 
-</Snippets>
+</Snippet>
 
 Rebuild the image and run a new container by running these commands:
 
@@ -171,7 +171,7 @@ Now with a Docker image with hot reload and we've mounted our folder in the cont
 
 Please edit your `main.py` script like this:
 
-<Snippets filename="main.py">
+<Snippet filename="main.py">
 
 ```python
 from fastapi import FastAPI
@@ -184,7 +184,7 @@ def read_root():
     return {"Hello": "Belgium!"}
 ```
 
-</Snippets>
+</Snippet>
 
 Refresh your web page, you'll see Hello Belgium!.  Change your `main.py` and replace `Belgium!` by `France`. Reload your web page; you'll see Hello France. So, nice, we've a hot reload and we can really start to play.
 
@@ -192,7 +192,7 @@ Refresh your web page, you'll see Hello Belgium!.  Change your `main.py` and rep
 
 We'll update our `main.py` script like this:
 
-<Snippets filename="main.py">
+<Snippet filename="main.py">
 
 ```main.py
 // highlight-next-line
@@ -229,7 +229,7 @@ def read_item(joke_id: int):
 // highlight-end
 ```
 
-</Snippets>
+</Snippet>
 
 You immediately see it I think:
 

@@ -51,13 +51,13 @@ Just like PHPUnit, Pest will process every files in folders `tests/Feature` and 
 
 In our `tests/Pest.php` file, we've this line:
 
-<Snippets filename="tests/Pest.php">
+<Snippet filename="tests/Pest.php">
 
 ```php
 uses(Tests\TestCase::class)->in('Features');
 ```
 
-</Snippets>
+</Snippet>
 
 In a Pest test, `$this` refers to the PHPUnit `Tests\TestCase` class.
 
@@ -73,7 +73,7 @@ The result is the same, just how the output is done on the console.
 
 Create a file like `tests/Feature/MyFirstTest.php` with this content:
 
-<Snippets filename="tests/Feature/MyFirstTest.php">
+<Snippet filename="tests/Feature/MyFirstTest.php">
 
 ```php
 <?php
@@ -87,7 +87,7 @@ test('assert false is not true', function () {
 });
 ```
 
-</Snippets>
+</Snippet>
 
 This illustrates that Pest start with a `expect` verb and some method like `toBeTrue()`.  Methods can be negated using `not->` ([https://pestphp.com/docs/expectations#expect-not](https://pestphp.com/docs/expectations#expect-not)).
 
@@ -108,7 +108,7 @@ Make sure to install and enable [PHP Intelephense](https://marketplace.visualstu
 
 #### Difference between toBe and toEqual
 
-<Snippets filename="tests/Feature/AnyTest.php">
+<Snippet filename="tests/Feature/AnyTest.php">
 
 ```php
 <?php
@@ -122,7 +122,7 @@ test('assert count is correct', function () {
 });
 ```
 
-</Snippets>
+</Snippet>
 
 `toBe` will be stricter i.e. will check both the value and the data type when, `toBe` will just check the value.
 
@@ -134,13 +134,13 @@ Assertions come from PhpUnit and work the same way.
 
 Assertions are accessible through the `$this` object and this because  `tests/pest.php` contains the line below.
 
-<Snippets filename="tests/pest.php">
+<Snippet filename="tests/pest.php">
 
 ```php
 uses(Tests\TestCase::class)->in('Feature');
 ```
 
-</Snippets>
+</Snippet>
 
 So `$this` refers to the `Tests\TestCase` PHPUnit class.
 
@@ -152,7 +152,7 @@ So `$this` refers to the `Tests\TestCase` PHPUnit class.
 
 Assertions and expectations can be used in Pest tests files but ... expectations are more explicits and intuitive.
 
-<Snippets filename="tests/Feature/AnyTest.php">
+<Snippet filename="tests/Feature/AnyTest.php">
 
 ```php
 <?php
@@ -164,7 +164,7 @@ test('assert true is true', function () {
 });
 ```
 
-</Snippets>
+</Snippet>
 
 ### Using datasets
 
@@ -174,7 +174,7 @@ We've multiple way to provide data to a function.
 
 Here is [inline](https://pestphp.com/docs/datasets#inline-datasets)
 
-<Snippets filename="tests/Feature/AnyTest.php">
+<Snippet filename="tests/Feature/AnyTest.php">
 
 ```php
 it('has emails', function (string $email) {
@@ -185,11 +185,11 @@ it('has emails', function (string $email) {
 ]);
 ```
 
-</Snippets>
+</Snippet>
 
 The dataset is then an array and we can have a multi-dimension array:
 
-<Snippets filename="tests/Feature/AnyTest.php">
+<Snippet filename="tests/Feature/AnyTest.php">
 
 ```php
 it('has emails', function (string $name, string $email) {
@@ -200,7 +200,7 @@ it('has emails', function (string $name, string $email) {
 ]);
 ```
 
-</Snippets>
+</Snippet>
 
 There is also a way to create a shared dataset which is probably better when the test file becomes big ([https://pestphp.com/docs/datasets#shared-datasets](https://pestphp.com/docs/datasets#shared-datasets)).
 
@@ -210,7 +210,7 @@ This is damned simply, we just need to add `/** @test */` as the doc block befor
 
 For instance
 
-<Snippets filename="tests/Feature/AnyTest.php">
+<Snippet filename="tests/Feature/AnyTest.php">
 
 ```php
 <?php
@@ -232,7 +232,7 @@ class VisitLoginPageTest extends TestWebCase
 }
 ```
 
-</Snippets>
+</Snippet>
 
 And from now that test can be fired using `./vendor/bin/pest`.
 
@@ -246,7 +246,7 @@ The architectural plugin will not help to fire unit tests but will scan the proj
 
 Architectural tests can be:
 
-<Snippets filename="tests/Feature/AnyTest.php">
+<Snippet filename="tests/Feature/AnyTest.php">
 
 ```php
 test('controllers')
@@ -274,13 +274,13 @@ test('facades')
     ->ignoring('App\Providers');
 ```
 
-</Snippets>
+</Snippet>
 
 This part can be seen on video [https://youtu.be/9EGPo_enEc8?t=1021](https://youtu.be/9EGPo_enEc8?t=1021)
 
 We can also check if a class is final:
 
-<Snippets filename="tests/Feature/AnyTest.php">
+<Snippet filename="tests/Feature/AnyTest.php">
 
 ```php
 test('controllers')
@@ -294,7 +294,7 @@ test('controllers')
     ->classes->toImplementNothing() // or toImplement(ShouldQueue::class),
 ```
 
-</Snippets>
+</Snippet>
 
 ### Taking snapshots
 
@@ -302,7 +302,7 @@ There is also a feature called `Snapshots`. The idea is to store a content as a 
 
 A snapshot can be the content of an HTML page, a JSON answer, the content of a file / array, ... everything in fact (for an object; we can serialise it so we can store it too as a snapshot).
 
-<Snippets filename="tests/Feature/AnyTest.php">
+<Snippet filename="tests/Feature/AnyTest.php">
 
 ```php
 it('has a welcome page', function() {
@@ -311,7 +311,7 @@ it('has a welcome page', function() {
 });
 ```
 
-</Snippets>
+</Snippet>
 
 On the very first run (`vendor/bin/pest`), the snapshot didn't exist yet so it'll be created on disk and the test will be noted as *WARN*.
 
@@ -327,33 +327,33 @@ We can write our own custom functions in the `tests/Pest.php` file.
 
 The file `tests/pest.php` can be used to place there global function but we'll also need to update it if, inside our tests files, we need some other classes.
 
-<Snippets filename="tests/Feature/AnyTest.php">
+<Snippet filename="tests/Feature/AnyTest.php">
 
 ```php
 uses(Tests\TestCase::class)->in('Feature');
 ```
 
-</Snippets>
+</Snippet>
 
 The line above will make `Tests\TestCase` available in all tests in `tests/Feature`. If we need more classes, we can add them:
 
-<Snippets filename="tests/Feature/AnyTest.php">
+<Snippet filename="tests/Feature/AnyTest.php">
 
 ```php
 uses(Tests\TestCase::class,Illuminate\Foundation\Testing\RefreshDatabase::class)->in('Feature');
 ```
 
-</Snippets>
+</Snippet>
 
 And also in the `test/Unit` folder:
 
-<Snippets filename="tests/Feature/AnyTest.php">
+<Snippet filename="tests/Feature/AnyTest.php">
 
 ```php
 uses(Tests\TestCase::class)->in('Unit');
 ```
 
-</Snippets>
+</Snippet>
 
 ## Tips and tricks
 
@@ -361,7 +361,7 @@ uses(Tests\TestCase::class)->in('Unit');
 
 We can use the `dd` method to dump the current expectation value and end the test suite like this:
 
-<Snippets filename="tests/Feature/AnyTest.php">
+<Snippet filename="tests/Feature/AnyTest.php">
 
 ```php
 expect($response)
@@ -370,7 +370,7 @@ expect($response)
     ->data->toBeEmpty();
 ```
 
-</Snippets>
+</Snippet>
 
 ## Convert from PHPUnit
 
@@ -384,7 +384,7 @@ Note: Rector has also a tool: [https://github.com/rectorphp/rector-pest](https:/
 
 For example, the code below
 
-<Snippets filename="tests/Feature/example_test.php">
+<Snippet filename="tests/Feature/example_test.php">
 
 ```php
 <?php
@@ -402,11 +402,11 @@ class ExampleTest extends TestCase
 }
 ```
 
-</Snippets>
+</Snippet>
 
 will be converted to
 
-<Snippets filename="tests/Feature/example_test.php">
+<Snippet filename="tests/Feature/example_test.php">
 
 ```php
 test('true is true', function () {
@@ -414,7 +414,7 @@ test('true is true', function () {
 });
 ```
 
-</Snippets>
+</Snippet>
 
 ## Tools
 
@@ -444,7 +444,7 @@ php artisan | grep pest
 
 If you're using Docker, think to add the next lines in your `.vscode/settings.json` configuration file:
 
-<Snippets filename=".vscode/settings.json">
+<Snippet filename=".vscode/settings.json">
 
 ```json
 {
@@ -456,7 +456,7 @@ If you're using Docker, think to add the next lines in your `.vscode/settings.js
 }
 ```
 
-</Snippets>
+</Snippet>
 
 Think to adjust the name of your container (`app` here) and paths:
 

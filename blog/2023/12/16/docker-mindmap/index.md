@@ -19,7 +19,7 @@ The tool we'll use is called `Markmap` and can be used online: see the demo and 
 
 Below an example, just copy/paste it into the [editor](https://markmap.js.org/repl) to see it in action.
 
-<Snippets filename="sample.md">
+<Snippet filename="sample.md">
 
 ```markdown
 # Social Media Uses
@@ -51,7 +51,7 @@ Below an example, just copy/paste it into the [editor](https://markmap.js.org/re
 
 ## Let's get an image directly
 
-</Snippets>
+</Snippet>
 
 For the demo, please start a Linux shell and run `mkdir -p /tmp/markmap && cd $_` to create a folder called `markmap` in your Linux temporary folder and jump in it.
 

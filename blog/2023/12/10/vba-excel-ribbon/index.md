@@ -61,7 +61,7 @@ When `customUI14.xml` is selected (like illustrated above), click somewhere in t
 
 Now, in the right pane, just copy/paste the XML source below:
 
-<Snippets filename="customUI14.xml">
+<Snippet filename="customUI14.xml">
 
 ```xml
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
@@ -86,7 +86,7 @@ Now, in the right pane, just copy/paste the XML source below:
 </customUI>
 ```
 
-</Snippets>
+</Snippet>
 
 ![Manifest added](./images/UI_Editor_Added_UI14.png)
 
@@ -108,13 +108,13 @@ Time to understand what has happened...
 
 #### The root customUI node and the namespace
 
-<Snippets filename="customUI14.xml">
+<Snippet filename="customUI14.xml">
 
 ```xml
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
 ```
 
-</Snippets>
+</Snippet>
 
 The manifest is a XML content and should be valid. You'll need to define your content into a `<customUI>` node (mandatory) and you'll need to specify the `xmlns` (for `namespace`) attribute (mandatory).
 
@@ -145,7 +145,7 @@ So, a ribbon should be:
 
 Below, our manifest now, with the definition of the ribbon.
 
-<Snippets filename="customUI14.xml">
+<Snippet filename="customUI14.xml">
 
 ```diff
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
@@ -170,7 +170,7 @@ Below, our manifest now, with the definition of the ribbon.
 </customUI>
 ```
 
-</Snippets>
+</Snippet>
 
 #### Define the tab
 
@@ -189,7 +189,7 @@ The standard names are:
 
 So, if you want to add a button to the Home tab, just use `TabHome` as value for the `id`, f.i.,
 
-<Snippets filename="customUI14.xml">
+<Snippet filename="customUI14.xml">
 
 ```xml
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
@@ -203,7 +203,7 @@ So, if you want to add a button to the Home tab, just use `TabHome` as value for
 </customUI>
 ```
 
-</Snippets>
+</Snippet>
 
 The XML below will, in one line,
 
@@ -211,13 +211,13 @@ The XML below will, in one line,
 2. Put the new tab after the existing `View` tab (use `insertBeforeMso` to add the tab before),
 3. And give him `Tab` as caption.
 
-<Snippets filename="customUI14.xml">
+<Snippet filename="customUI14.xml">
 
 ```xml
 <tab id="customTab" insertAfterMso="TabView" label="Tab">
 ```
 
-</Snippets>
+</Snippet>
 
 Here is our added tab:
 
@@ -232,13 +232,13 @@ The XML below will:
 1. Create a new group since the id is a new one (`customGroup`),
 2. And give him `Group` as name.
 
-<Snippets filename="customUI14.xml">
+<Snippet filename="customUI14.xml">
 
 ```xml
 <group id="customGroup" label="Group">
 ```
 
-</Snippets>
+</Snippet>
 
 Our tab with his group:
 
@@ -250,7 +250,7 @@ As you can see here above, just adding a group isn't enough, you'll need to defi
 
 The XML here below will add to things: a button and an edit box.
 
-<Snippets filename="customUI14.xml">
+<Snippet filename="customUI14.xml">
 
 ```diff
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
@@ -285,7 +285,7 @@ The XML here below will add to things: a button and an edit box.
 </customUI>
 ```
 
-</Snippets>
+</Snippet>
 
 The XML below will create a button
 
@@ -295,7 +295,7 @@ The XML below will create a button
 4. The size of the button will be `large` (a big button),
 5. The action assigned will be the VBA function called `OnButtonClicked`.
 
-<Snippets filename="customUI14.xml">
+<Snippet filename="customUI14.xml">
 
 ```xml
 <button
@@ -306,7 +306,7 @@ The XML below will create a button
     onAction="OnButtonClicked" />
 ```
 
-</Snippets>
+</Snippet>
 
 This will result into this:
 
@@ -334,7 +334,7 @@ Now, you can close the *Microsoft Visual Basic for Application* window, go back 
 
 And we can add other features, like an edit box:
 
-<Snippets filename="customUI14.xml">
+<Snippet filename="customUI14.xml">
 
 ```xml
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
@@ -363,7 +363,7 @@ And we can add other features, like an edit box:
 </customUI>
 ```
 
-</Snippets>
+</Snippet>
 
 ![Smiley_and_edit](./images/Smiley_and_edit.png)
 
@@ -402,7 +402,7 @@ You'll most probably use an existing, standard, image. This can be done by using
 
 The manifest is this one:
 
-<Snippets filename="customUI14.xml">
+<Snippet filename="customUI14.xml">
 
 ```xml
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
@@ -425,7 +425,7 @@ The manifest is this one:
 </customUI>
 ```
 
-</Snippets>
+</Snippet>
 
 But ... **how to retrieve the list of images?**
 
@@ -443,7 +443,7 @@ When the user clicks on a button of the ribbon which subroutine should be called
 
 The XML code below assign the `OnButtonClicked` subroutine to the `onAction` event of the button.
 
-<Snippets filename="customUI14.xml">
+<Snippet filename="customUI14.xml">
 
 ```xml
 <button
@@ -454,7 +454,7 @@ The XML code below assign the `OnButtonClicked` subroutine to the `onAction` eve
     onAction="OnButtonClicked" />
 ```
 
-</Snippets>
+</Snippet>
 
 So, if we wish to catch that event, we'll need to add a public subroutine in our Excel file, that subroutine can be placed in any module, should be public and should have `OnButtonClicked` as name.
 
@@ -470,7 +470,7 @@ End Sub
 
 For an edit box and the `onChange` event, the callback is different:
 
-<Snippets filename="customUI14.xml">
+<Snippet filename="customUI14.xml">
 
 ```xml
 <editBox
@@ -479,7 +479,7 @@ For an edit box and the `onChange` event, the callback is different:
     onChange="OnEditBoxTextChanged" />
 ```
 
-</Snippets>
+</Snippet>
 
 ```vbnet
 Public Sub OnEditBoxTextChanged(control As IRibbonControl, sText As String)

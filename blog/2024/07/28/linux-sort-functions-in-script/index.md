@@ -17,7 +17,7 @@ In a previous [article](/blog/linux-compare-two-versions-of-the-same-script), we
 
 Please create the `/tmp/bash/console.sh` file on your disk with this content:
 
-<Snippets filename="/tmp/bash/console.sh">
+<Snippet filename="/tmp/bash/console.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -44,7 +44,7 @@ function console::printBlue() {
 }
 ```
 
-</Snippets>
+</Snippet>
 
 As we can see, we'll just create empty functions in no particular order.
 
@@ -82,7 +82,7 @@ Back to the left column: the name displayed in white are already in the correct 
 
 Let's update partially the `/tmp/bash/console.sh` file and reorder some functions:
 
-<Snippets filename="/tmp/bash/console.sh">
+<Snippet filename="/tmp/bash/console.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -109,7 +109,7 @@ function console::printGreen() {
 }
 ```
 
-</Snippets>
+</Snippet>
 
 Now, rerunning the same command:
 
@@ -143,7 +143,7 @@ If this is not the case, the left-hand side of the screen shows the current orde
 
 To do this, create the `order.sh` script on your hard drive with this content:
 
-<Snippets filename="order.sh">
+<Snippet filename="order.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -183,7 +183,7 @@ set -e
 popd >/dev/null
 ```
 
-</Snippets>
+</Snippet>
 
 And now, start the script like this: `./order.sh  ~/helpers`. The expected parameter is the name of a folder containing `.sh` files.
 

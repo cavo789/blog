@@ -21,7 +21,7 @@
  * - `mainTag`: Primary tag (optional); used by the RelatedBlogPost component
  * - `authors`: Array of author names
  * - `date`: Publication date
- * - `serie`: Series name (optional); used by the SerieBlogPost component
+ * - `series`: Series name (optional); used by the SeriesBlogPost component
  *
  * 🛠️ Usage:
  * ```js
@@ -69,7 +69,7 @@ export function getBlogMetadata() {
         mainTag: post.frontMatter.mainTag || null,
         authors: post.frontMatter.authors || [],
         date: post.frontMatter.date,
-        serie: post.frontMatter.serie || null,
+        series: post.frontMatter.series || null,
       };
     })
     .filter(Boolean);

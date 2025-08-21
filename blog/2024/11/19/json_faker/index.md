@@ -27,7 +27,7 @@ First install the library using `pip install faker`.
 
 And below a small Python script to generate fake data in French (just replace `range(1)` by f.i. `range(100)` to get 100 records):
 
-<Snippets filename="fake.py">
+<Snippet filename="fake.py">
 
 ```python
 import json
@@ -56,7 +56,7 @@ for _ in range(1):
 print(json.dumps(data, indent=4, ensure_ascii=False))
 ```
 
-</Snippets>
+</Snippet>
 
 ![Faker in Python](./images/python.png)
 
@@ -94,7 +94,7 @@ I've created the *schema_test* like this:
 
 I can then use it in Python like this:
 
-<Snippets filename="schema_test.py">
+<Snippet filename="schema_test.py">
 
 ```python
 import requests
@@ -125,7 +125,7 @@ else:
     print(f"Error fetching data: {response.text}")
 ```
 
-</Snippets>
+</Snippet>
 
 :::info
 To make this code working, think to install the requests library: `pip install requests`.
@@ -143,7 +143,7 @@ The [https://www.liquid-technologies.com/online-json-to-schema-converter](https:
 
 Once you've the schema, you can use it in Python like this:
 
-<Snippets filename="validate.py">
+<Snippet filename="validate.py">
 
 ```python
 import json
@@ -168,7 +168,7 @@ except jsonschema.exceptions.ValidationError as exception:
     print(f{"Data is invalid: {exception}")
 ```
 
-</Snippets>
+</Snippet>
 
 :::info
 You'll need to run `pip install jsonschema` first.

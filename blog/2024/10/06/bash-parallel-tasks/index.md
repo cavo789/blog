@@ -23,7 +23,7 @@ Let's how we can start more than one task at a time using Linux Bash.
 
 Consider this small demo:
 
-<Snippets filename="demo.sh">
+<Snippet filename="demo.sh">
 
 ```bash
 #!/bin/bash
@@ -47,7 +47,7 @@ total_time=$((end_time - start_time))
 echo "Total running time: $total_time seconds"
 ```
 
-</Snippets>
+</Snippet>
 
 Before calling the `main` function, I remember the actual start time, call `main` then calculate the elapsed time in seconds.
 
@@ -89,7 +89,7 @@ In the Bash script below, no problem, it's just my computer but in my introducti
 
 We'll adapt our sample like this:
 
-<Snippets filename="demo.sh">
+<Snippet filename="demo.sh">
 
 ```bash
 #!/bin/bash
@@ -168,7 +168,7 @@ total_time=$((end_time - start_time))
 echo "Total running time: $total_time seconds"
 ```
 
-</Snippets>
+</Snippet>
 
 ### In depth
 

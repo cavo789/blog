@@ -26,7 +26,7 @@ First, please create a new folder on your disk and jump it that folder: `mkdir /
 
 Then, create a `demo.sh` file in the folder and copy/paste the bash script below:
 
-<Snippets filename="demo.sh">
+<Snippet filename="demo.sh">
 
 ```bash
 #!/bin/bash
@@ -48,7 +48,7 @@ source "progress_bar.sh"
 main > >(progress_bar::process "Doing some stuff" 50)
 ```
 
-</Snippets>
+</Snippet>
 
 Make the script executable by running `chmod +x ./demo.sh`.
 
@@ -66,7 +66,7 @@ Please click on the accordion below to reveal the content you'll need to copy/pa
 
 Please create a new file on your hard disk; name it `progress_bar.sh` and copy/paste the content below in it.
 
-<Snippets filename="progress_bar.sh">
+<Snippet filename="progress_bar.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -244,7 +244,7 @@ fi
 return 0
 ```
 
-</Snippets>
+</Snippet>
 
 ## Time to run the code
 

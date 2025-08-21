@@ -1,11 +1,11 @@
 /**
- * 📚 SerieBlogPosts Component
+ * 📚 SeriesBlogPosts Component
  *
  * Displays a list of blog posts that belong to the same series.
  * Useful for linking related articles together in a Docusaurus blog.
  *
  * Props:
- * - serie (string): The name of the series to filter blog posts by.
+ * - series (string): The name of the series to filter blog posts by.
  * - excludePermalink (string|null): Optional permalink to exclude (usually the current post).
  * - highlightCurrent (boolean): If true, dims the current post title for visual emphasis.
  *
@@ -27,13 +27,13 @@ import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
 
 import styles from "./styles.module.css";
 
-export default function SerieBlogPosts({
-  serie,
+export default function SeriesBlogPosts({
+  series,
   excludePermalink = null,
   highlightCurrent = false,
 }) {
   const posts = getBlogMetadata()
-    .filter((post) => post.serie === serie)
+    .filter((post) => post.series === series)
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   if (!posts.length) return null;
@@ -41,7 +41,7 @@ export default function SerieBlogPosts({
   return (
     <div className={styles.seriesBlogPost}>
       <p>
-        This article is part of the <strong>{serie}</strong> series:
+        This article is part of the <strong>{series}</strong> series:
       </p>
       <ul>
         {posts.map((post) => {

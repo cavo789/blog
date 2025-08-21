@@ -2,7 +2,7 @@
 slug: docker-joomla-part-2
 title: Create your Joomla website using Docker - Part 2
 authors: [christophe]
-serie: Create your joomla website using Docker
+series: Create your joomla website using Docker
 image: /img/docker_joomla_social_media.jpg
 mainTag: joomla
 tags: [.env, docker, joomla, makefile]
@@ -57,7 +57,7 @@ In recent months, the name of the file to be used has changed from `compose.yaml
 
 Please create a new folder (f.i. `mkdir /tmp/joomla && cd $_`) on your hard disk and create the `compose.yaml` file with this content:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: ${PROJECT_NAME:-your-project-name}
@@ -108,7 +108,7 @@ networks:
   joomla_network:
 ```
 
-</Snippets>
+</Snippet>
 
 ### We'll use a configuration file called .env
 
@@ -116,7 +116,7 @@ We're also going to use a configuration file named `.env` (which is never anythi
 
 Please create a second file called `.env` with this content:
 
-<Snippets filename=".env">
+<Snippet filename=".env">
 
 ```.env
 CONTAINER_PREFIX=joomla
@@ -130,7 +130,7 @@ PROJECT_NAME=running-joomla-in-docker
 WEB_PORT=8080
 ```
 
-</Snippets>
+</Snippet>
 
 Using a `.env` file is really useful to no more do changes to the `compose.yaml` file which can be standard in all your projects.
 
@@ -156,7 +156,7 @@ If you don't know if you already have `GNU make`, just run `which make` in the c
 
 So, please create a file called `makefile` in your current directory with this content:
 
-<Snippets filename="makefile">
+<Snippet filename="makefile">
 
 ```makefile
 -include .env
@@ -201,7 +201,7 @@ up:
 	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach --build
 ```
 
-</Snippets>
+</Snippet>
 
 :::caution Indentation should be TAB not spaces
 It's terribly vicious because it's totally silent: the indentation in a makefile must be tabs, not spaces. When you copy/paste the above code to create your file, make sure your text editor uses tabs. If it doesn't, the commands defined in the file won't work.
@@ -464,7 +464,7 @@ We'll update our three files to skip the installation process by predefining val
 
 We'll edit our `compose.yaml` file and add new entries:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: ${PROJECT_NAME:-your-project-name}
@@ -525,13 +525,13 @@ networks:
   joomla_network:
 ```
 
-</Snippets>
+</Snippet>
 
 ### Updated .env
 
 And we'll also update our `.env` file like this:
 
-<Snippets filename=".env" >
+<Snippet filename=".env" >
 
 ```.env
 CONTAINER_PREFIX=joomla
@@ -555,13 +555,13 @@ PROJECT_NAME=running-joomla-in-docker
 WEB_PORT=8080
 ```
 
-</Snippets>
+</Snippet>
 
 ### Updated makefile
 
 And, finally, also update the `makefile` like this:
 
-<Snippets filename="makefile">
+<Snippet filename="makefile">
 
 ```makefile
 -include .env
@@ -619,7 +619,7 @@ up:
 	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach --build
 ```
 
-</Snippets>
+</Snippet>
 
 As you can see, we've configured some `JOOMLA_ADMIN_xxx` keys and set `JOOMLA_SITE_NAME` to *Joomla*; the name of our website.
 
@@ -724,7 +724,7 @@ As you can see (highlighted lines), that file is the same that the latest `.env`
 
 Here is the `.env` file for **our first** project:
 
-<Snippets filename="project_1/.env">
+<Snippet filename="project_1/.env">
 
 ```.env
 // highlight-next-line
@@ -750,7 +750,7 @@ PROJECT_NAME=joomla5
 WEB_PORT=8081
 ```
 
-</Snippets>
+</Snippet>
 
 Go to your console and run `cd project_1` to jump in the first project's folder then `make up` to create Docker containers for project 1.
 
@@ -774,7 +774,7 @@ Please configure the `project_2/.env` with the following content. As you can see
 
 Do the same changes as for project 1 but just replace `1` by `2`:
 
-<Snippets filename="project_2/.env">
+<Snippet filename="project_2/.env">
 
 ```.env
 // highlight-next-line
@@ -800,7 +800,7 @@ PROJECT_NAME=joomla4
 WEB_PORT=8082
 ```
 
-</Snippets>
+</Snippet>
 
 Save the file and run `make up` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
 
@@ -822,7 +822,7 @@ Please now configure the `project_3/.env` with the following content.
 
 This time, we'll use `3` as suffixes:
 
-<Snippets filename="project_3/.env">
+<Snippet filename="project_3/.env">
 
 ```.env
 // highlight-next-line
@@ -848,7 +848,7 @@ PROJECT_NAME=joomla3
 WEB_PORT=8083
 ```
 
-</Snippets>
+</Snippet>
 
 Save the file and run `make up && make start` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
 

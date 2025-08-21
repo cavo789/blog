@@ -50,14 +50,14 @@ To finalize the installation, you also need to update the `PATH` Linux variable.
 
 Please run `code ~/.bashrc` (or `code ~/.zshrc` if you're using Oh-my-ZSH); search in the file if you already have a line with `PATH=`. If yes, please update and add `$HOME/tools/pentaho/data-integration` to it. If not, please go to the end of the file and add this line:
 
-<Snippets filename="~/.bashrc">
+<Snippet filename="~/.bashrc">
 
 ```bash
 # Add Pentaho to the path
 PATH="$HOME/tools/pentaho/data-integration:$PATH"
 ```
 
-</Snippets>
+</Snippet>
 
 Save and quit.
 
@@ -96,7 +96,7 @@ Copy the table here below into Excel and save the new files as `people.xlsx` (ot
 
 For this, we'll use Docker. Please create a file called `compose.yaml` in your `/tmp/pentaho` folder with this content:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: pentaho
@@ -137,11 +137,11 @@ networks:
 
 ```
 
-</Snippets>
+</Snippet>
 
 ### And for our easiness, let's create a makefile
 
-<Snippets filename="makefile">
+<Snippet filename="makefile">
 
 ```makefile
 .PHONY: start
@@ -153,7 +153,7 @@ up:
 	docker compose up
 ```
 
-</Snippets>
+</Snippet>
 
 ### Let's run our Docker container
 

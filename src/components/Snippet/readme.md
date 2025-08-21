@@ -15,13 +15,13 @@ A collapsible content block for Docusaurus that displays expandable sections wit
 ```jsx
 import Snippets from "@site/src/components/Snippets";
 
-<Snippets filename="example.js" defaultOpen={false}>
+<Snippet filename="example.js" defaultOpen={false}>
 
 ```js
 console.log("Hello, world!");
 ```
 
-</Snippets>
+</Snippet>
 ```
 
 ## 🧾 Props

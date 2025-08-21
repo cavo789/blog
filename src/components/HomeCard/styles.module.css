@@ -12,3 +12,15 @@
 .fade_in {
   animation: fadeIn 0.8s ease-out forwards;
 }
+
+.card {
+  margin-right: 16px;
+}
+
+.card img {
+    margin-top:10px;
+}
+
+.card:last-child {
+  margin-right: 0;
+}

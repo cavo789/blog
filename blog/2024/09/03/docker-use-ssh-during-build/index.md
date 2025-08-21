@@ -61,7 +61,7 @@ We'll need to files; `compose.yaml` and `Dockerfile`.
 
 Here is my `compose.yaml` content:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -85,7 +85,7 @@ secrets:
     file: ${HOME}/.ssh/id_ed25519
 ```
 
-</Snippets>
+</Snippet>
 
 As you can see, we've five specific lines.
 
@@ -95,7 +95,7 @@ I've also added an argument called `KEY_NAME` just because I need to inform Dock
 
 Secrets have to be defined at the same indentation level of `services` and the notation is this one:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 secrets:
@@ -103,7 +103,7 @@ secrets:
     file: existing_file
 ```
 
-</Snippets>
+</Snippet>
 
 You can use what you want for `a_secret_name`; for instance, `my_ssh_key`.
 
@@ -117,7 +117,7 @@ You can, if you want, run `docker compose config` to check if your file is corre
 
 Time to create our second file, `Dockerfile`:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```Dockerfile
 FROM alpine:3.19
@@ -146,7 +146,7 @@ WORKDIR /app
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 ```
 
-</Snippets>
+</Snippet>
 
 :::warning Think to replace cavo789/my_private_repo.git and refers one of your repositories
 :::
@@ -201,7 +201,7 @@ But now, if we need to share our key also with the container so we can work on t
 
 Please edit the `compose.yaml` file and add these two lines:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -223,7 +223,7 @@ secrets:
     file: ${HOME}/.ssh/id_ed25519
 ```
 
-</Snippets>
+</Snippet>
 
 Then recreate the container by running `docker compose up --detach`. Jump in the container by running `docker compose exec app /bin/bash` and go in your project folder. Now, by running `git pull`, as you'll see, it'll work.
 
@@ -244,7 +244,7 @@ In our example here, the default user is `root` as we can see by jumping in the 
 
 So, when we've started `git pull`, it was under `root`. This is why we've mounted our volume like below:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -256,11 +256,11 @@ services:
       - ${HOME}/.ssh:/root/.ssh
 ```
 
-</Snippets>
+</Snippet>
 
 Imagine the current user was `christophe`. In that case the mount should be done like this:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -272,6 +272,6 @@ services:
       - ${HOME}/.ssh:/christophe/.ssh
 ```
 
-</Snippets>
+</Snippet>
 
 :::

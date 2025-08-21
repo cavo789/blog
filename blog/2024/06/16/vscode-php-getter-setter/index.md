@@ -22,7 +22,7 @@ Some people will say "Yes, but it's tedious to write these functions", but not a
 
 ## The bad scenario
 
-<Snippets filename="product.php">
+<Snippet filename="product.php">
 
 ```php
 <?php
@@ -36,7 +36,7 @@ class Product
 }
 ```
 
-</Snippets>
+</Snippet>
 
 As you see `$name` is public so I can write things like below and it's ... OK.
 
@@ -54,7 +54,7 @@ By using a setter (a function called when the property is initialized) I can ver
 
 Let's create our class with private properties:
 
-<Snippets filename="product.php">
+<Snippet filename="product.php">
 
 ```php
 <?php
@@ -72,7 +72,7 @@ class Product
 }
 ```
 
-</Snippets>
+</Snippet>
 
 So, for each property, you need to write a function called `Getter` to read its contents and another function called `Setter` to modify it. It could be a hassle, but it's not, thanks to addon [PHP Getters & Setters](https://marketplace.visualstudio.com/items?itemName=phproberto.vscode-php-getters-setters).
 
@@ -96,7 +96,7 @@ $product->setPrice(-10);
 
 And the code using the class:
 
-<Snippets filename="product.php">
+<Snippet filename="product.php">
 
 ```php
 //highlight-next-line
@@ -133,4 +133,4 @@ public function setPrice(float $price): self
 }
 ```
 
-</Snippets>
+</Snippet>

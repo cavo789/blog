@@ -73,13 +73,13 @@ The `.dockerignore` file specifies files and directories that should be excluded
 
 By opening that file with a code editor, you'll then see that line:
 
-<Snippets filename=".dockerignore">
+<Snippet filename=".dockerignore">
 
 ```text
 **/.git
 ```
 
-</Snippets>
+</Snippet>
 
 Refers to [https://docs.docker.com/go/build-context-dockerignore/](https://docs.docker.com/go/build-context-dockerignore/) for more explanations.
 
@@ -93,7 +93,7 @@ The file will teach Docker how to make more than one container work together, f.
 
 By opening the file, you'll see that right now, the only un-commented lines are those:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -104,7 +104,7 @@ services:
       - 8080:80
 ```
 
-</Snippets>
+</Snippet>
 
 The rest is just for illustration.
 
@@ -114,7 +114,7 @@ Refers to [https://docs.docker.com/go/compose-spec-reference/](https://docs.dock
 
 There are a lot of commented lines, if we look at un-commented ones, we can see this:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```Dockerfile
 FROM php:8.2-apache
@@ -126,7 +126,7 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 USER www-data
 ```
 
-</Snippets>
+</Snippet>
 
 So, we'll use the PHP 8.2 Docker image shipped with apache in it (one image with both PHP and Apache).
 
@@ -148,7 +148,7 @@ The generated files won't be modified by Docker while you'll not run `docker ini
 
 The example given in this blog post is a stand-alone project so `docker init` does all the magic. Assuming we'd needed a database, all we have to do is return to the `compose.yaml´ file and un-comment the lines like below:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -185,7 +185,7 @@ secrets:
     file: db/password.txt
 ```
 
-</Snippets>
+</Snippet>
 
 :::info Docker secrets is used here
 Hey! Did you see? Instead of hardcoding the password in the file, `docker init` has used a secret. This is smart.

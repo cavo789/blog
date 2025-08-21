@@ -116,7 +116,7 @@ Let's create a `~/.ssh/config` file. If the file already exists, just edit it: `
 
 Add these lines in the file:
 
-<Snippets filename="~/.ssh/config">
+<Snippet filename="~/.ssh/config">
 
 ```text
 Host my_app
@@ -125,7 +125,7 @@ Host my_app
     IdentityFile ~/.ssh/id_ed25519_my_blog
 ```
 
-</Snippets>
+</Snippet>
 
 Save the file and go back to the console.
 

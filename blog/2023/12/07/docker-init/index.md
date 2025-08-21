@@ -94,7 +94,7 @@ By opening `compose.yaml` with Visual Studio Code, you'll see a lot of comments.
 
 By default, everything is commented except:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -105,7 +105,7 @@ services:
       - 8080:80
 ```
 
-</Snippets>
+</Snippet>
 
 Ok, that just means that we'll not use a standard, pre-existing, Docker image but we'll build yours and the definition of that image is located in the current folder (`context: .`). The definition of your Docker image has to be written in the, standard, `Dockerfile`.
 
@@ -115,7 +115,7 @@ The second thing we see here is the port number we've chosen. The Docker contain
 
 Here too, `docker init` has created a file with a lot of comments. If we remove them, here is the non-commented lines:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 FROM php:8.2-apache
@@ -124,7 +124,7 @@ COPY . /var/www/html
 USER www-data
 ```
 
-</Snippets>
+</Snippet>
 
 :::danger Bug in Docker 4.26 - Docker init - PHP + Apache
 There is a bug in the release `4.26`, the `COPY` statement has to be `COPY . /var/www/html` (i.e. we need to specify the source folder `.`). I've created an issue on the Docker repository ([https://github.com/docker/cli/issues/4702](https://github.com/docker/cli/issues/4702))
@@ -146,7 +146,7 @@ Once built, we can surf to `http://localhost:8080` and ... ouch.
 
 Please create the `index.php` file with this content:
 
-<Snippets filename="index.php">
+<Snippet filename="index.php">
 
 ```php
 <?php
@@ -154,7 +154,7 @@ Please create the `index.php` file with this content:
 phpinfo();
 ```
 
-</Snippets>
+</Snippet>
 
 Go back to your console, press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop the first container and run `docker compose up --detach --build` this time (so the console won't be blocked and the container stay running in background).
 
@@ -166,7 +166,7 @@ We'll start an interactive shell in the container. We just need to know how the 
 
 Back to the `compose.yaml` file, we can retrieve the name of the container; it's ne name of the service: `server` in this case.
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -175,7 +175,7 @@ services:
     [...]
 ```
 
-</Snippets>
+</Snippet>
 
 To run an interactive shell, please run the following command:
 
@@ -220,7 +220,7 @@ And only `README.Docker.md` and `index.php` have been copied into the container.
 
 The reason is: the other files have been ignored because they have been mentioned in the `.dockerignore` file.
 
-<Snippets filename=".dockerignore">
+<Snippet filename=".dockerignore">
 
 ```text
 # Include any files or directories that you don't want to be copied to your
@@ -263,7 +263,7 @@ LICENSE
 README.md
 ```
 
-</Snippets>
+</Snippet>
 
 We have reached the end of this article. We've used the `docker init` instruction to create the bare essentials needed to run a PHP script in an Apache container.
 

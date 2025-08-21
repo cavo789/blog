@@ -37,7 +37,7 @@ So, please run `mkdir -p  ~/tools/memos && cd $_` to create a folder in your hom
 
 Then, please create a file called `compose.yaml` with this content:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: tools
@@ -55,7 +55,7 @@ services:
     restart: unless-stopped
 ```
 
-</Snippets>
+</Snippet>
 
 :::note
 The line `user: ${UID:-1000}:${GID:-1000}` will ask Docker to use a specific user (not the `root` one) while creating files on your disk.

@@ -2,7 +2,7 @@
 slug: docker-python-devcontainer-windows
 title: Docker - Easy setup of Python under Windows
 authors: [christophe]
-serie: Coding using a devcontainer
+series: Coding using a devcontainer
 image: /img/python_tips_social_media.jpg
 mainTag: python
 tags: [devcontainer, docker, python]
@@ -38,7 +38,7 @@ Just add a new file on your Windows folder and copy/paste the content from here 
 
 Copy/paste the content below in a file on your system called `.devcontainer/devcontainer.json`.
 
-<Snippets filename=".devcontainer/devcontainer.json">
+<Snippet filename=".devcontainer/devcontainer.json">
 
 <!-- cspell:disable -->
 ```json
@@ -221,27 +221,27 @@ Copy/paste the content below in a file on your system called `.devcontainer/devc
 }
 ```
 <!-- cspell:enable -->
-</Snippets>
+</Snippet>
 
 Copy/paste the content below in a file on your system called `src/main.py`.
 
-<Snippets filename="src/main.py">
+<Snippet filename="src/main.py">
 
 ```python
 print("I'm your Python code")
 ```
 
-</Snippets>
+</Snippet>
 
-<Snippets filename="src/requirements.txt">
+<Snippet filename="src/requirements.txt">
 
 Yes, an empty file... The file has to be present but right now, we don't need to put any dependencies.
 
-</Snippets>
+</Snippet>
 
 Copy/paste the content below in a file on your system called `.docker.env` (in Linux world; such files are hidden ones since they start with a dot).
 
-<Snippets filename=".docker.env">
+<Snippet filename=".docker.env">
 
 ```dotenv
 # Application root directory in the container (PHP or NGINX) (--app-home)
@@ -263,12 +263,12 @@ DOCKER_OS_USERNAME="python"
 DOCKER_PYTHON_VERSION=3.13-slim
 ```
 
-</Snippets>
+</Snippet>
 
 
 Copy/paste the content below in a file on your system called `compose.yaml`.
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: app_python
@@ -310,11 +310,11 @@ volumes:
   bashhistory:
 ```
 
-</Snippets>
+</Snippet>
 
 Copy/paste the content below in a file on your system called `Dockerfile`.
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -423,7 +423,7 @@ RUN set -e -x \
 # endregion
 ```
 
-</Snippets>
+</Snippet>
 
 ## Create our DOS batch file
 
@@ -431,7 +431,7 @@ Here the difference with Linux: instead of using GNU Make, we'll simply use a MS
 
 Please create this additional file:
 
-<Snippets filename="make.bat">
+<Snippet filename="make.bat">
 
 ```batch
 @echo off
@@ -510,7 +510,7 @@ goto :eof
 
 ```
 
-</Snippets>
+</Snippet>
 
 ## Our configuration right now
 

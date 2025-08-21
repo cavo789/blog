@@ -23,7 +23,7 @@ The trick, for a Bash script, is to define an associative array (created with th
 
 Below is an example:
 
-<Snippets filename="curl.sh">
+<Snippet filename="curl.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -78,7 +78,7 @@ declare -A arr=(
 runCurl arr
 ```
 
-</Snippets>
+</Snippet>
 
 One of the big advantages is that you don't have to worry about the position of the arguments (ah yes, so the first parameter is the url, the second is the HTTP method, the third is, er? the proxy? ah no, damn).
 

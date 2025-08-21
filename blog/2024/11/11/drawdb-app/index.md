@@ -26,7 +26,7 @@ I think the most common use I could personally make of it is to load an SQL file
 
 If you don't have such file, I suggest to copy one from [https://www.sqltutorial.org/sql-sample-database/](https://www.sqltutorial.org/sql-sample-database/). I put here below a PostgreSQL content found on that site ([direct link](https://www.sqltutorial.org/wp-content/uploads/2020/04/postgresql.txt)) or to take any valid `.sql` file you can found on the Internet.
 
-<Snippets filename="create_db.sql">
+<Snippet filename="create_db.sql">
 
 ```sql
 CREATE TABLE regions (
@@ -91,7 +91,7 @@ CREATE TABLE dependents (
 );
 ```
 
-</Snippets>
+</Snippet>
 
 So just copy/paste this SQL in Notepad; save it on your disk and go back to [https://www.drawdb.app/editor](https://www.drawdb.app/editor); `File` -> `Import from SQL`.
 

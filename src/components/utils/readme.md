@@ -30,7 +30,7 @@ console.log(posts);
     draft: false,
     unlisted: false,
     mainTag: "intro",
-    serie: "Getting Started"
+    series: "Getting Started"
   },
   ...
 ]
@@ -50,7 +50,7 @@ console.log(posts);
 | `date` | string | Publication date |
 | `draft` | boolean | Whether the post is unpublished |
 | `unlisted` | boolean | Whether the post is hidden from listings |
-| `serie` | string | Series name (optional) |
+| `series` | string | Series name (optional) |
 
 ## ⚠️ Notes
 

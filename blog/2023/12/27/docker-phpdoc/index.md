@@ -32,7 +32,7 @@ Unzip it by running `unzip wordpress-develop-6.4.2.zip && rm wordpress-develop-6
 
 Please create a new file called `phpunit.xml` with this content, in your project's directory:
 
-<Snippets filename="phpunit.xml">
+<Snippet filename="phpunit.xml">
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -56,7 +56,7 @@ Please create a new file called `phpunit.xml` with this content, in your project
 </phpdocumentor>
 ```
 
-</Snippets>
+</Snippet>
 
 The configuration job is already finished.
 

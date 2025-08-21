@@ -36,34 +36,34 @@ In other terms: I need to be able to write some *page template* and *inject* spe
 
 Let's create a file called `_hello.md` with this content:
 
-<Snippets filename="_hello.md">
+<Snippet filename="_hello.md">
 
 ```markdown
 Hello, {{ name }}!
 ```
 
-</Snippets>
+</Snippet>
 
 Then, in any file, we can do:
 
-<Snippets filename="test.md">
+<Snippet filename="test.md">
 
 ```markdown
 {{< partial _hello.md name="John" >}}
 ```
 
-</Snippets>
+</Snippet>
 
 Make sure to add lines below in your YAML front matter:
 
-<Snippets filename="test.md">
+<Snippet filename="test.md">
 
 ```yaml
 filters:
    - quarto-partials
 ```
 
-</Snippets>
+</Snippet>
 
 We can pass variables like here above but, more powerful, we can declare a `partial-data` key in our YAML frontmatter.
 
@@ -77,14 +77,14 @@ For instance, if you want to Github icon, you just need to put the `{{< fa brand
 
 Make sure to add lines below in your YAML front matter:
 
-<Snippets filename="test.md">
+<Snippet filename="test.md">
 
 ```yaml
 filters:
    - include-code-files
 ```
 
-</Snippets>
+</Snippet>
 
 ## quarto-ext/include-code-files
 
@@ -99,14 +99,14 @@ The objective is to be able to include external file by using the syntax below:
 
 Make sure to add lines below in your YAML front matter:
 
-<Snippets filename="test.md">
+<Snippet filename="test.md">
 
 ```yaml
 filters:
    - include-code-files
 ```
 
-</Snippets>
+</Snippet>
 
 ## quarto-ext/search-replace
 
@@ -116,14 +116,14 @@ Quarto filter extension for simple search-replace macros.
 
 This extension allows to search and replace when rendering documents. For instance, by putting the `+quarto` code in the frontmatter of the article or, better, in the `_quarto.yaml` global file, we can just write `+quarto` (a constant) in our document and let the replace action be done during the rendering of the documentation.
 
-<Snippets filename="_quarto.yaml">
+<Snippet filename="_quarto.yaml">
 
 ```yaml
 search-replace:
   +quarto: "[Quarto](https://quarto.org)"
 ```
 
-</Snippets>
+</Snippet>
 
 Make sure to add lines below in your YAML front matter:
 
@@ -150,11 +150,11 @@ If you have a very long block of code, revealjs will not display all lines and t
 
 By adding the filter below to your YAML frontmatter, a small *Full screen* button will be displayed at the top right of the block code.
 
-<Snippets filename="test.md">
+<Snippet filename="test.md">
 
 ```yaml
 filters:
    - code-fullscreen
 ```
 
-</Snippets>
+</Snippet>

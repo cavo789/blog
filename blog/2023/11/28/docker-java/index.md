@@ -21,7 +21,7 @@ Please start a Linux shell and run `mkdir -p /tmp/java && cd $_` to create a fol
 
 Please create a new file called `Main.java` with this content:
 
-<Snippets filename="Main.java">
+<Snippet filename="Main.java">
 
 ```java
 public class Main
@@ -32,7 +32,7 @@ public class Main
 }
 ```
 
-</Snippets>
+</Snippet>
 
 Now, you'll need to compile your source. For this, just run `docker run -it --rm -v ${PWD}:/app -w /app -u 1000:1000 openjdk:11 javac Main.java`.
 
@@ -78,7 +78,7 @@ Hello, World
 
 Please create a new file called `API.java` with this content:
 
-<Snippets filename="API.java">
+<Snippet filename="API.java">
 
 ```java
 package restclient;
@@ -117,7 +117,7 @@ public class API {
 }
 ```
 
-</Snippets>
+</Snippet>
 
 Compile it by running `docker run --rm -v $PWD:/app -w /app -u 1000:1000 openjdk:11 javac API.java`; get the `API.class` file.
 

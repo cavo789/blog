@@ -23,7 +23,7 @@ Please start a Linux shell and run `mkdir -p /tmp/limesurvey && cd $_` to create
 
 Please then create a `compose.yaml` file in that folder with this content:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: limesurvey
@@ -58,7 +58,7 @@ services:
       - MYSQL_DATABASE=limesurvey
 ```
 
-</Snippets>
+</Snippet>
 
 Now, simply run the following command to download (only the first time) required images (LimeSurvey and MySQL) and create the two containers:
 
@@ -115,7 +115,7 @@ Perhaps, if you want to test LimeSurvey over several days and keep your configur
 
 Here is an updated `compose.yaml` file to ask Docker to use self-managed volumes.
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: limesurvey
@@ -165,7 +165,7 @@ volumes:
   data:
 ```
 
-</Snippets>
+</Snippet>
 
 :::tip Want to learn more about volumes?
 In that case, please read this blog post: [Using volumes with Docker, use cases](/blog/docker-volumes)
@@ -191,7 +191,7 @@ For instance, we can see the version of MySQL used then was `mysql:5.7` (so, use
 
 Our `compose.yaml` will then become:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: limesurvey
@@ -231,7 +231,7 @@ services:
       retries: 10
 ```
 
-</Snippets>
+</Snippet>
 
 :::tip Using service_healthy
 I've used the `depends_on` property for the `limesurvey-app` service and I've specified `condition: service_healthy`. This is a very cool feature: LimeSurvey, the PHP application, won't start before the database layer is running. Since LimeSurvey has to access the database, we just want to avoid some connectivity errors like *`nc: connect to limesurvey-db (xxxxx) port 3306 (tcp) failed: Connection refused`* or things like that.

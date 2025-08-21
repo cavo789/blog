@@ -30,7 +30,7 @@ Here is a demo:
 
 You can find it on Github too: [https://github.com/cavo789/marknotes_csv2md](https://github.com/cavo789/marknotes_csv2md).
 
-<Snippets filename="index.php">
+<Snippet filename="index.php">
 
 ```php
 <?php
@@ -262,4 +262,4 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
 </html>
 ```
 
-</Snippets>
+</Snippet>

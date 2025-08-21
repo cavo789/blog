@@ -3,7 +3,7 @@ slug: quarto-powerpoint
 title: Use Quarto and create a PowerPoint slideshow
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
-serie: Discovering Quarto
+series: Discovering Quarto
 mainTag: quarto
 tags: [markdown, powerpoint, quarto, revealjs, tips]
 enableComments: true
@@ -26,7 +26,7 @@ The official documentation of Quarto for rendering PowerPoint slides can be foun
 
 Let's start and create our `slides.md` file:
 
-<Snippets filename="slides.md">
+<Snippet filename="slides.md">
 
 ```markdown
 ---
@@ -57,7 +57,7 @@ Quis voluptate est quis in ea veniam qui incididunt ad cillum nostrud. Nisi proi
 ```
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
 Now, run the conversion using `quarto render slides.md --to pptx`
 

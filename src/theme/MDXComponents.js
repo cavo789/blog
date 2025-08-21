@@ -7,7 +7,7 @@ import CardFooter from "@site/src/components/Card/CardFooter";
 import CardHeader from "@site/src/components/Card/CardHeader";
 import CardImage from "@site/src/components/Card/CardImage";
 import HomeCard from "@site/src/components/HomeCard";
-import Snippets from "@site/src/components/Snippets";
+import Snippet from "@site/src/components/Snippet";
 import Columns from "@site/src/components/Columns";
 import Column from "@site/src/components/Column";
 import Image from "@site/src/components/Image";
@@ -15,27 +15,13 @@ import Image from "@site/src/components/Image";
 export default {
   // Reusing the default mapping
   ...MDXComponents,
-  img: (props) => {
-    const { loading, decoding, className, style, height, width, ...rest } = props;
-
-    return (
-      <img
-        {...rest}
-        height='auto'
-        width=''
-        loading={loading || 'lazy'}
-        decoding={decoding || 'async'}
-        className={`${className || ''}`}
-      />
-    );
-  },
   Card,
   CardHeader,
   CardBody,
   CardFooter,
   CardImage,
   HomeCard,
-  Snippets,
+  Snippet,
   Columns,
   Column,
   Image,

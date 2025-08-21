@@ -3,7 +3,7 @@ slug: git-precommit
 title: Git - pre-commit-hooks
 authors: [christophe]
 image: /img/code_quality_social_media.jpg
-serie: code quality
+series: code quality
 mainTag: code-quality
 tags: [black, captainhook, ci, code-quality, git, grumphp, hooks, husky, mypy, phan, php-cs-fixer, phpcbf, phplint, phpstan, pre-commit, prospector, pylint, python, ruff, shellcheck, shellformat, tips]
 enableComments: true
@@ -49,7 +49,7 @@ First, run `mkdir /tmp/hooks && cd $_` then run `git init` to initialise our fol
 
 We'll need three files, a `Dockerfile` to create our Python Docker image, a `compose.yaml` to set some settings and `main.py` as a Python example script.
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -66,9 +66,9 @@ WORKDIR "/app/src"
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 ```
 
-</Snippets>
+</Snippet>
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -78,9 +78,9 @@ services:
       - .:/app/src
 ```
 
-</Snippets>
+</Snippet>
 
-<Snippets filename="main.py">
+<Snippet filename="main.py">
 
 ```python
 print("I'm your Python code")
@@ -88,7 +88,7 @@ print("I'm your Python code")
 print('Who you, who are you?')
 ```
 
-</Snippets>
+</Snippet>
 
 We'll create our Docker image and create a container with this single command: `docker compose up --detach --build`.
 
@@ -114,7 +114,7 @@ For a Python project, it's really easy, you just need to run `pip install pre-co
 Simple too, please create a file called `.pre-commit-config.yaml` with this content:
 
 
-<Snippets filename=".pre-commit-config.yaml">
+<Snippet filename=".pre-commit-config.yaml">
 
 ```yaml
 repos:
@@ -130,7 +130,7 @@ repos:
   - id: black
 ```
 
-</Snippets>
+</Snippet>
 
 ### Manually fire the hook
 
@@ -199,7 +199,7 @@ As illustrated on [https://pre-commit.com/#repository-local-hooks](https://pre-c
 
 Imagine, you've already installed a tool like `prospector` (for Python) or `phpstan` (for PHP). These tools are installed on your machine (so you can call them on the command line). So, simply add a new hook like this:
 
-<Snippets filename=".pre-commit-config.yaml">
+<Snippet filename=".pre-commit-config.yaml">
 
 ```yaml
 - repo: local
@@ -210,11 +210,11 @@ Imagine, you've already installed a tool like `prospector` (for Python) or `phps
     language: system
 ```
 
-</Snippets>
+</Snippet>
 
 You can also pass arguments:
 
-<Snippets filename=".pre-commit-config.yaml">
+<Snippet filename=".pre-commit-config.yaml">
 
 ```yaml
 - repo: local
@@ -228,11 +228,11 @@ You can also pass arguments:
     args: ["--config-file=.config/mypy.ini"]
 ```
 
-</Snippets>
+</Snippet>
 
 For a Python 3.13 project, here is my `.pre-commit-config.yaml` file:
 
-<Snippets filename=".pre-commit-config.yaml">
+<Snippet filename=".pre-commit-config.yaml">
 
 ```yaml
 default_language_version:
@@ -286,7 +286,7 @@ repos:
         args: ["--rcfile=.config/.pylintrc"]
 ```
 
-</Snippets>
+</Snippet>
 
 #### A few more  hooks
 

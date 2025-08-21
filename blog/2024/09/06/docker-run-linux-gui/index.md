@@ -28,7 +28,7 @@ Let's start with something really geeky.
 
 Go to a temporary folder (f.i. `mkdir -p /tmp/xeyes && cd $_`) and create a file called `Dockerfile` with this content:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```Dockerfile
 FROM ubuntu:latest
@@ -38,7 +38,7 @@ RUN apt-get update && apt-get install -y x11-apps
 CMD [ "xeyes" ]
 ```
 
-</Snippets>
+</Snippet>
 
 Now, create the image by docker build like this: `docker build --tag cavo789/xeyes .` (replace `cavo789` by anything else like your pseudo).
 
@@ -60,7 +60,7 @@ Let's try Firefox... By using my favourite search engine, I've found this post: 
 
 In a Dockerfile and with small changes, this give this:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```Dockerfile
 FROM ubuntu:latest
@@ -93,7 +93,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 CMD [ "firefox" ]
 ```
 
-</Snippets>
+</Snippet>
 
 To build the image, please run the next command (and think to change `cavo789` by your pseudo): `docker build --tag cavo789/firefox .`.
 
@@ -109,7 +109,7 @@ The old MS-DOS developer in me continues to be amazed by this possibility.
 
 We can do the same with Chrome:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```Dockerfile
 FROM ubuntu:latest
@@ -125,7 +125,7 @@ RUN apt-get update \
 CMD ["google-chrome", "--disable-dev-shm-usage", "--disable-gpu"]
 ```
 
-</Snippets>
+</Snippet>
 
 Build the image using `docker build --tag cavo789/chrome .` then run it using `docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY cavo789/chrome`.
 
@@ -136,7 +136,7 @@ Build the image using `docker build --tag cavo789/chrome .` then run it using `d
 
 Ok, now, I think you've understood how it works. So, very shortly, here is how to run GIMP for Linux in a Docker container:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```Dockerfile
 FROM ubuntu:latest
@@ -148,7 +148,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y gimp && rm -rf 
 CMD [ "gimp" ]
 ```
 
-</Snippets>
+</Snippet>
 
 Create the image by running `docker build --tag cavo789/gimp .`.
 

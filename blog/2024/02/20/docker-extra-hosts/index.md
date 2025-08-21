@@ -28,7 +28,7 @@ Please start a Linux shell and run `mkdir -p /tmp/network && cd $_` to create a 
 
 Please then create a `index.php` file in that folder with this content:
 
-<Snippets filename="index.php">
+<Snippet filename="index.php">
 
 ```php
 <?php
@@ -36,7 +36,7 @@ Please then create a `index.php` file in that folder with this content:
 phpinfo();
 ```
 
-</Snippets>
+</Snippet>
 
 Here is the content of your current directory:
 
@@ -71,7 +71,7 @@ Now, we can create a second container and just try to `curl` our website.
 
 Please create a file called `Dockerfile` with the content below. We'll use a very small Linux image and we'll install `curl` in the image.
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 FROM alpine:3.14
@@ -79,11 +79,11 @@ FROM alpine:3.14
 RUN apk update && apk add curl
 ```
 
-</Snippets>
+</Snippet>
 
 And a second file called `compose.yaml` with this content:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -92,7 +92,7 @@ services:
       context: .
 ```
 
-</Snippets>
+</Snippet>
 
 To make things clear, here is the content of our current directory:
 
@@ -130,7 +130,7 @@ In case you don't know the name of the used network, simply run `docker inspect 
 
 Please edit your `compose.yaml` file like this:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -150,7 +150,7 @@ networks:
     external: true
 ```
 
-</Snippets>
+</Snippet>
 
 :::tip To be able to access to a dockerized application, containers should be fired on the same network
 It is impossible for a container running on, f.i., the `bridge` (default) network to access to a container running on another network. This is a protection against unwanted access. *Replace `my_network` by yours if you've a different one.*
@@ -200,7 +200,7 @@ And now the final part, imagine you've defined an alias in the hosts file (for W
 
 Imagine you've create an alias like:
 
-<Snippets filename="C:\Windows\System32\Drivers\etc\hosts">
+<Snippet filename="C:\Windows\System32\Drivers\etc\hosts">
 
 ```text
 127.0.0.1 localhost
@@ -208,7 +208,7 @@ Imagine you've create an alias like:
 127.0.0.1 mysite.local
 ```
 
-</Snippets>
+</Snippet>
 
 and thus, on your host, you're not using `http://127.0.0.1:8080` but `http://mysite.local:8080`
 
@@ -241,7 +241,7 @@ ff02::2 ip6-allrouters
 
 The last thing we need to do in this case is to edit our `compose.yaml` file and add the `extra_hosts` property:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -260,7 +260,7 @@ networks:
     external: true
 ```
 
-</Snippets>
+</Snippet>
 
 Now, we can jump in the container for the last time, check the `/etc/hosts` file, we can now see our alias and thus, by running `curl http://mysite.local:8080` it will work.
 

@@ -23,7 +23,7 @@ For the illustration, please start a Linux shell and run `mkdir -p /tmp/xmlstarl
 
 Create a new file called `data.xml` with this content:
 
-<Snippets filename="data.xml">
+<Snippet filename="data.xml">
 
 <!-- cspell:disable -->
 ```xml
@@ -31,7 +31,7 @@ Create a new file called `data.xml` with this content:
 ```
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
 As you can see, our XML has no format, everything on the same line.
 
@@ -41,7 +41,7 @@ We can beautify it using the `format` action:
 ❯ cat "data.xml" | xmlstarlet format --indent-spaces 4
 ```
 
-<Snippets filename="data.xml">
+<Snippet filename="data.xml">
 
 <!-- cspell:disable -->
 ```xml
@@ -79,7 +79,7 @@ We can beautify it using the `format` action:
 ```
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
 We can also use `Xpath` to specify our desired output:
 
@@ -87,7 +87,7 @@ We can also use `Xpath` to specify our desired output:
 ❯ cat "data.xml" | xmlstarlet sel -t -v "/bookstore/book/title"
 ```
 
-<Snippets filename="data.xml">
+<Snippet filename="data.xml">
 
 ```text
 Everyday Italian
@@ -96,11 +96,11 @@ XQuery Kick Start
 Learning XML
 ```
 
-</Snippets>
+</Snippet>
 
 If you don't known XPath yet, we've used `"/bookstore/book/title"` because our XML is constructed like that. As you can see below, our root node is called `bookstore`, then we have one or more `book` and each book has a `title`.
 
-<Snippets filename="data.xml">
+<Snippet filename="data.xml">
 
 ```xml
 //highlight-next-line
@@ -115,7 +115,7 @@ If you don't known XPath yet, we've used `"/bookstore/book/title"` because our X
 </bookstore>
 ```
 
-</Snippets>
+</Snippet>
 
 We can also make some filtering like getting books for children:
 
@@ -129,7 +129,7 @@ Harry Potter
 
 And here, the XPath expression `//book[@category='children']/title` means: give me each `book`; it doesn't matter where the book node is located; but only if it has an attribute named `category` and whose value is `children`. Then, if found, display his `title`.
 
-<Snippets filename="data.xml">
+<Snippet filename="data.xml">
 
 ```xml
 <bookstore>
@@ -142,6 +142,6 @@ And here, the XPath expression `//book[@category='children']/title` means: give 
 </bookstore>
 ```
 
-</Snippets>
+</Snippet>
 
 Read the [official documentation](https://xmlstar.sourceforge.net/docs.php) to learn more about xmlstarlet.

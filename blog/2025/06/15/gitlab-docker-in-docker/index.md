@@ -32,18 +32,18 @@ As prerequisites, you should have access to the server where your GitLab instanc
 
 On my GitLab runner server, my current `/etc/gitlab-runner/config.toml` configuration defines Docker as the executor because I've this entry:
 
-<Snippets filename="/etc/gitlab-runner/config.toml">
+<Snippet filename="/etc/gitlab-runner/config.toml">
 
 ```toml
 [[runners]]
   executor = "docker"
 ```
 
-</Snippets>
+</Snippet>
 
 So, when running my CI, first GitLab will create a Docker container. The default base image can be forced in `/etc/gitlab-runner/config.toml` like below or you just have to specify the base image in your project's `.gitlab-ci.yml` using the `image` tag ([doc](https://docs.gitlab.com/ci/docker/using_docker_images/#define-image-in-the-gitlab-ciyml-file)).
 
-<Snippets filename="/etc/gitlab-runner/config.toml">
+<Snippet filename="/etc/gitlab-runner/config.toml">
 
 ```toml
 [[runners]]
@@ -55,7 +55,7 @@ So, when running my CI, first GitLab will create a Docker container. The default
     image = "php8.4"
 ```
 
-</Snippets>
+</Snippet>
 
 ## Understanding the process
 
@@ -63,7 +63,7 @@ For this part, I'll take a very basic example. For sure, it's not needed to run 
 
 So, based on the `config.toml` file here above, I can have a `.gitlab-ci.yml` file like the one below:
 
-<Snippets filename=".gitlab-ci.yml">
+<Snippet filename=".gitlab-ci.yml">
 
 ```yaml
 phplint:
@@ -71,7 +71,7 @@ phplint:
     - find . -name "*.php" -print0 | xargs -0 -n1 php -l
 ```
 
-</Snippets>
+</Snippet>
 
 It'll retrieve all `.php` file and run `php -l <filename.php>` for each inside a Docker container based on PHP 8.4.
 
@@ -81,7 +81,7 @@ Easy and straight-forward.
 
 Based on the same example, we can also use an existing Docker image; like [phpqa/jakzal](https://github.com/jakzal/phpqa):
 
-<Snippets filename=".gitlab-ci.yml">
+<Snippet filename=".gitlab-ci.yml">
 
 ```
 phplint:
@@ -93,11 +93,11 @@ phplint:
     - docker run --rm --volume "$CI_PROJECT_DIR:/app" --workdir /app jakzal/phpqa phplint .
 ```
 
-</Snippets>
+</Snippet>
 
 Now, to allow this, we'll need to update our GitLab Runner server configuration file:
 
-<Snippets filename="/etc/gitlab-runner/config.toml">
+<Snippet filename="/etc/gitlab-runner/config.toml">
 
 ```toml
 [[runners]]
@@ -110,7 +110,7 @@ Now, to allow this, we'll need to update our GitLab Runner server configuration 
     volumes = [ ..., "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]
 ```
 
-</Snippets>
+</Snippet>
 
 :::caution
 The syntax `volumes = [ ..., "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]` used above is to inform you to append the two values to the list you already have. So, if, right now, you've `volumes = ["/cache", "/certs/client"]` then append values to get `volumes = ["/cache", "/certs/client", "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]`

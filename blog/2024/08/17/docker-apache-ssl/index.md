@@ -67,7 +67,7 @@ To make things clean and maintainable, let's create some files.
 
 Make sure you're in the `/tmp/https_localhost` folder and create the following files.
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 Please create a file called `Dockerfile` with the following content:
 
@@ -77,11 +77,11 @@ FROM httpd:2.4
 COPY httpd/my-site.conf /etc/apache2/sites-available/my-site.conf
 ```
 
-</Snippets>
+</Snippet>
 
 The second file we'll need should be called `compose.yaml` with the following content:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -97,11 +97,11 @@ services:
 :::tip compose.yaml is strictly equivalent to docker-compose.yml
 :::
 
-</Snippets>
+</Snippet>
 
 The third file we'll need should be created in a `httpd` directory and has to be called `my-site.conf` with the following content:
 
-<Snippets filename="httpd/my-site.conf">
+<Snippet filename="httpd/my-site.conf">
 
 ```apache
 <VirtualHost *:80>
@@ -124,7 +124,7 @@ The third file we'll need should be created in a `httpd` directory and has to be
 :::note For a container based on Apache, the website should be copied in folder /usr/local/apache2/htdocs and not, /var/www/html; that one is for a PHP image.
 :::
 
-</Snippets>
+</Snippet>
 
 Everything is now in place for to enable a http access. Still in the `/tmp/https_localhost` folder, now, just run `docker compose up -d --build` to build our custom Docker image and run a container i.e. start the website.
 
@@ -180,7 +180,7 @@ We need to update our Apache configuration file and add a Virtual host for port 
 
 Please edit the `httpd/my-site.conf` existing file and add the content below.
 
-<Snippets filename="httpd/my-site.conf">
+<Snippet filename="httpd/my-site.conf">
 
 ```conf
 <VirtualHost *:80>
@@ -239,7 +239,7 @@ Please edit the `httpd/my-site.conf` existing file and add the content below.
 </VirtualHost>
 ```
 
-</Snippets>
+</Snippet>
 
 :::caution Paths are crucial!
 Folder and file names are of major importance. The two certificate files should be saved in folder `/usr/local/apache2/conf/` and be named `server.crt` and `server.key`. This because we're using an Apache Docker image; it's not the same if you're using, f.i., a PHP+Apache image.
@@ -249,7 +249,7 @@ Folder and file names are of major importance. The two certificate files should 
 
 Please edit the existing `compose.yaml` and add the new line below highlighted
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -264,7 +264,7 @@ services:
       - ./src:/usr/local/apache2/htdocs
 ```
 
-</Snippets>
+</Snippet>
 
 So we just need to expose the port 443 from the container to our host. That port is the standard one for the https protocol.
 
@@ -272,7 +272,7 @@ So we just need to expose the port 443 from the container to our host. That port
 
 The last file we need to update is our existing `Dockerfile` with the new lines below:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```Dockerfile
 FROM httpd:2.4
@@ -317,7 +317,7 @@ RUN a2enmod ssl \
     && a2ensite my-site
 ```
 
-</Snippets>
+</Snippet>
 
 Here we need to do a lot of stuff. We've to install (`apt-get install`) some Linux binaries to allow later use of `a2enmod` and the SSL protocol.
 
@@ -406,7 +406,7 @@ If you don't want Apache but nginx, please use files below instead.
 
 It's basically the same but you'll notice some differences like in paths and the fact we don't need to install extra dependencies for PHP.
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 Please create a file called `Dockerfile` with the following content:
 
@@ -423,11 +423,11 @@ COPY ssl/server.key /etc/nginx/ssl/server.key
 COPY httpd/my-site.conf /etc/nginx/conf.d/my-site.conf
 ```
 
-</Snippets>
+</Snippet>
 
 The second file we'll need should be called `compose.yaml` with the following content:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -444,11 +444,11 @@ services:
 :::tip compose.yaml is strictly equivalent to docker-compose.yml
 :::
 
-</Snippets>
+</Snippet>
 
 The third file we'll need should be created in a `httpd` directory and has to be called `my-site.conf` with the following content:
 
-<Snippets filename="httpd/my-site.conf">
+<Snippet filename="httpd/my-site.conf">
 
 ```apache
 server {
@@ -472,7 +472,7 @@ server {
  }
 ```
 
-</Snippets>
+</Snippet>
 
 ## Bonus - Configure PHP to use SSL
 
@@ -482,7 +482,7 @@ It's basically the same but you'll notice some differences like in paths and the
 
 Please create a file called `Dockerfile` with the following content:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```Dockerfile
 FROM php:8.3-apache
@@ -498,11 +498,11 @@ RUN a2enmod ssl && \
     a2ensite my-ssl
 ```
 
-</Snippets>
+</Snippet>
 
 The second file we'll need should be called `compose.yaml` with the following content:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -519,11 +519,11 @@ services:
 :::tip compose.yaml is strictly equivalent to docker-compose.yml
 :::
 
-</Snippets>
+</Snippet>
 
 The third file we'll need should be created in a `httpd` directory and has to be called `my-site.conf` with the following content:
 
-<Snippets filename="httpd/my-site.conf">
+<Snippet filename="httpd/my-site.conf">
 
 ```apache
 <VirtualHost *:80>
@@ -564,7 +564,7 @@ The third file we'll need should be created in a `httpd` directory and has to be
 </VirtualHost>
 ```
 
-</Snippets>
+</Snippet>
 
 ## Bonus - Install a root CA certificate in the trust store
 

@@ -11,7 +11,7 @@ enableComments: true
 
 Imagine you've a `.env` file like and you wish to process that file in a Bash script.
 
-<Snippets filename=".env">
+<Snippet filename=".env">
 
 ```env
 DOCKER_GIT_USEREMAIL="christophe@me.com"
@@ -19,7 +19,7 @@ DOCKER_GIT_FULLNAME="Christophe Avonture"
 DOCKER_GIT_USERNAME="Me and myself"
 ```
 
-</Snippets>
+</Snippet>
 
 Using a configuration file will enable you to externalize the management of your constants, as well as reuse variables from another application, such as a site developed in Laravel.
 
@@ -43,7 +43,7 @@ Using source is the best solution to avoid problems with f.i. spaces like in *Me
 
 To illustrate this, simply create a file called f.i. `test.sh` with this content:
 
-<Snippets filename="test.sh">
+<Snippet filename="test.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -55,7 +55,7 @@ set +o allexport
 echo "${DOCKER_GIT_FULLNAME} (${DOCKER_GIT_USEREMAIL})"
 ```
 
-</Snippets>
+</Snippet>
 
 Using the `.env` file provided here above, we'll obtain this output:
 

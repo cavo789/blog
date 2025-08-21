@@ -12,7 +12,7 @@ date: 2023-11-02T17:00
 
 The situation: you wish to run a piece of standard PHP code (no dependency) like the one below:
 
-<Snippets filename="index.php">
+<Snippet filename="index.php">
 
 ```php
 <?php
@@ -26,7 +26,7 @@ echo "<h2>Incorrect, we got an exception</h2>";
 print_r(json_decode(utf8_decode("Ipso lorem"), true, 512, JSON_THROW_ON_ERROR));
 ```
 
-</Snippets>
+</Snippet>
 
 <!-- truncate -->
 

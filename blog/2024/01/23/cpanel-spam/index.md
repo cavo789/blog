@@ -31,7 +31,7 @@ Using your FTP client, go to your user's home directory. If your host has SpamAs
 
 That file can look like this:
 
-<Snippets filename=".spamassassin/user_prefs">
+<Snippet filename=".spamassassin/user_prefs">
 
 ```text
 blacklist_from *.hr
@@ -45,7 +45,7 @@ whitelist_from *@avonture.be
 whitelist_from *@my-own-company.com
 ```
 
-</Snippets>
+</Snippet>
 
 As you can expect, you'll find two rules: `blacklist_from` and `whitelist_from` with the pattern you've filled in the SpamAssassin web interface of your hosting company:
 

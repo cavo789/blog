@@ -28,7 +28,7 @@ If you already have a script, please open it. Otherwise, just create a new one a
 
 Name the file just as you want (I will name it `run.sh` for example) and make sure the script can be executed by running `chmod +x run.sh` in your console.
 
-<Snippets filename="run.sh">
+<Snippet filename="run.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -86,13 +86,13 @@ function __main() {
 __main $*
 ```
 
-</Snippets>
+</Snippet>
 
 ## The log helper
 
 Please create a file called `log.sh`, in the exact same folder of your script, and copy/paste this content:
 
-<Snippets filename="log.sh">
+<Snippet filename="log.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -298,7 +298,7 @@ fi
 log::__main
 ```
 
-</Snippets>
+</Snippet>
 
 ## The result
 

@@ -3,7 +3,7 @@ slug: quarto-callout-blocks
 title: Quarto Callout Blocks
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
-serie: Discovering Quarto
+series: Discovering Quarto
 mainTag: quarto
 tags: [markdown, quarto, tips, vscode]
 enableComments: true
@@ -84,7 +84,7 @@ Start to type `Configure User Snippets`, validate and select `markdown.json` sin
 
 If this is your first snippet, the JSON file will be empty. Copy/paste the text below. Otherwise, just copy the `callout` node and paste it in your file to the correct location.
 
-<Snippets filename="markdown.json">
+<Snippet filename="markdown.json">
 
 ```json
 {
@@ -101,7 +101,7 @@ If this is your first snippet, the JSON file will be empty. Copy/paste the text 
 }
 ```
 
-</Snippets>
+</Snippet>
 
 Save and close the `markdown.json` file and go back to any markdown file (or create a new one).
 

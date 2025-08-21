@@ -94,7 +94,7 @@ I will also make some changes to files like `docusaurus.config.js` or `blog/auth
 
 By setting `hideOnScroll` to `true`, the navigation bar will be hidden when the user will scroll down but will be displayed back as soon as he scroll up. Idea is to give more place on the screen for the content.
 
-<Snippets filename="docusaurus.config.js">
+<Snippet filename="docusaurus.config.js">
 
 ```js
 export default {
@@ -107,11 +107,11 @@ export default {
 };
 ```
 
-</Snippets>
+</Snippet>
 
 Define the default image for social media:
 
-<Snippets filename="docusaurus.config.js">
+<Snippet filename="docusaurus.config.js">
 
 ```js
 export default {
@@ -122,7 +122,7 @@ export default {
 };
 ```
 
-</Snippets>
+</Snippet>
 
 ## Make my first article
 
@@ -178,7 +178,7 @@ Added by running `yarn add @docusaurus/plugin-sitemap` in the Docker container (
 
 When added, I have also manually created the `static/robots.txt` file to with this content:
 
-<Snippets filename="static/robots.txt">
+<Snippet filename="static/robots.txt">
 
 ```text
 User-Agent: *
@@ -188,7 +188,7 @@ Disallow: /index.json
 Disallow: /search/index.json
 ```
 
-</Snippets>
+</Snippet>
 
 #### Image plugins
 
@@ -232,7 +232,7 @@ Next step is to start my FTP client (which is [WinSCP](https://winscp.net/eng/do
 
 By adding the lines below to the `docusaurus.config.js` as child node of `const config`, I'm injecting a script into the body part. This will then allow GPDR compliant stats on [https://withcabin.com/](https://withcabin.com/).
 
-<Snippets filename="docusaurus.config.js">
+<Snippet filename="docusaurus.config.js">
 
 ```javascript
 scripts: [
@@ -244,6 +244,6 @@ scripts: [
 ],
 ```
 
-</Snippets>
+</Snippet>
 
 Note: the script is only injected to pages after a `yarn build` i.e. when the static site is rendered; not during a `yarn watch`.

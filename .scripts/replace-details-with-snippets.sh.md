@@ -12,7 +12,7 @@ This script will loop all `blog/**/*.md` files and will replace a construction l
 To this:
 
 ```md
-<Snippets filename="src/components/BlueSky/index.js">
+<Snippet filename="src/components/BlueSky/index.js">
 (content)
-</Snippets>
+</Snippet>
 ```

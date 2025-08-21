@@ -31,7 +31,7 @@ So, perhaps, I'm still using *old-fashioned* syntax like doing a simple `if ... 
 
 Let's take a look at a very simple example (`sayHello.php`):
 
-<Snippets filename="sayHello.php">
+<Snippet filename="sayHello.php">
 
 ```php
 <?php
@@ -50,7 +50,7 @@ function sayHello($firstname = '')
 echo sayHello('Christophe');
 ```
 
-</Snippets>
+</Snippet>
 
 Simple and effective, isn't it?  And, above all, the code is perfectly functional and well written, respecting all the layout conventions.
 
@@ -76,7 +76,7 @@ The next thing is to create a configuration file. You can use a standard one (to
 
 I suggest creating a `rector.php` file in your project with this content:
 
-<Snippets filename="rector.php">
+<Snippet filename="rector.php">
 
 ```php
 <?php
@@ -95,7 +95,7 @@ return RectorConfig::configure()
     ->withPreparedSets(codeQuality: true, deadCode: true, typeDeclarations: true);
 ```
 
-</Snippets>
+</Snippet>
 
 For simplicity, create the `rector.php` file in your project's root directory.
 
@@ -193,7 +193,7 @@ class SomeClass
 
 So, back to our console, running `vendor/bin/rector process sayHello.php --dry-run rector.php` will show me, in the console, the new *refactored* version of my code:
 
-<Snippets filename="index.php">
+<Snippet filename="index.php">
 
 ```php
 <?php
@@ -206,7 +206,7 @@ function sayHello(string $firstname = ''): string
 echo sayHello();
 ```
 
-</Snippets>
+</Snippet>
 
 :::important Am I happy with this? Oh yes!!!
 Yes, I'm very happy and proud to see how my code is now better and easier to read.

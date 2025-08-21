@@ -39,7 +39,7 @@ If you want to, proceed like this:
 
 In my case, my profile has these settings:
 
-<Snippets filename="settings.json">
+<Snippet filename="settings.json">
 
 ```json
 {
@@ -54,7 +54,7 @@ In my case, my profile has these settings:
 }
 ```
 
-</Snippets>
+</Snippet>
 
 As you can see, I've downloaded some nice background picture and saved it in my `Backgrounds` folder then I use Linux notation to refer it.
 
@@ -64,7 +64,7 @@ To add a new profile, let's say a console inside one of your Docker containers (
 
 For example, I'll create a new profile so I can immediately open my blog in a Docker container (since, of course, my blog has his Docker image):
 
-<Snippets filename="settings.json">
+<Snippet filename="settings.json">
 
 ```json
 {
@@ -85,7 +85,7 @@ For example, I'll create a new profile so I can immediately open my blog in a Do
 }
 ```
 
-</Snippets>
+</Snippet>
 
 :::note Your settings
 
@@ -108,7 +108,7 @@ Take a look the list of profiles defined in your `settings.json` file, each prof
 
 Directly opening the desired directory is done by setting the `startingDirectory` node in a profile. Let's say we wish to open the user home folder by starting a new Ubuntu shell:
 
-<Snippets filename="settings.json">
+<Snippet filename="settings.json">
 
 ```json
 {
@@ -124,7 +124,7 @@ Directly opening the desired directory is done by setting the `startingDirectory
 }
 ```
 
-</Snippets>
+</Snippet>
 
 You just need to specify the `startingDirectory` node and set it to `\\wsl$\Ubuntu\home\christophe\`
 
@@ -134,17 +134,17 @@ Windows Terminal has a `startupActions` property which allows you to specify act
 
 Let's imagine I wish to launch two tabs; the default one (nothing to foresee) and a second tab. To make things easier to maintain, I'll use a profile:
 
-<Snippets filename="settings.json">
+<Snippet filename="settings.json">
 
 ```json
 "startupActions": "; new-tab --profile \"DOS Command Prompt\"",
 ```
 
-</Snippets>
+</Snippet>
 
 So now I need to create a profile called `DOS Command Prompt` :
 
-<Snippets filename="settings.json">
+<Snippet filename="settings.json">
 
 ```json
 {
@@ -160,6 +160,6 @@ So now I need to create a profile called `DOS Command Prompt` :
 }
 ```
 
-</Snippets>
+</Snippet>
 
 And tadaaa, now by starting Windows Terminal, my default terminal will be open (Ubuntu in my case) and, in a second tab, I'll also open a DOS console.

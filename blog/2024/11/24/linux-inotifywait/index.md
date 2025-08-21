@@ -32,7 +32,7 @@ I need a Python environment so let's quickly create it thanks to Docker.
 
 Please create a file called `Dockerfile` with this content:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -49,7 +49,7 @@ WORKDIR "/app/src"
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 ```
 
-</Snippets>
+</Snippet>
 
 Create the image by running `docker build --tag inotify .`.
 
@@ -62,7 +62,7 @@ This will create a Docker container that will remain running. We'll share our sc
 We need a very small Python script to generate our files:
 
 
-<Snippets filename="src/script.py">
+<Snippet filename="src/script.py">
 
 ```python
 import os
@@ -99,14 +99,14 @@ while True:
     time.sleep(1)
 ```
 
-</Snippets>
+</Snippet>
 
 ## Creating the monitory.sh script
 
 Please create a script called `monitor.sh` with this content:
 
 
-<Snippets filename="monitory.sh">
+<Snippet filename="monitory.sh">
 
 ```bash
 #!/bin/bash
@@ -139,7 +139,7 @@ done
 
 ```
 
-</Snippets>
+</Snippet>
 
 Make the script executable: `chmod +x ./monitor.sh` and make sure to install **inotify** by running `sudo apt-get update && sudo apt-get install -y --no-install-recommends inotify-tools`.
 

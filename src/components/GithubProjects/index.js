@@ -255,7 +255,7 @@ export default function GithubProjects({ username }) {
         </label>
 
         <label>
-          Archived:
+          Status:
           <select
             value={filters.archived}
             onChange={(e) =>

@@ -3,7 +3,7 @@ slug: docker-oracle-ords
 title: Transform an Oracle DB as OpenData using Oracle REST Data Services
 authors: [christophe]
 image: /img/oracle_social_media.jpg
-serie: Running Oracle Database Server as a Docker container
+series: Running Oracle Database Server as a Docker container
 mainTag: oracle
 tags: [docker, openapi, oracle, postgrest]
 blueSkyRecordKey: 3lvnjmthgj22v

@@ -3,7 +3,7 @@ slug: python-qa
 title: Python - Code Quality tools
 authors: [christophe]
 image: /img/code_quality_social_media.jpg
-serie: code quality
+series: code quality
 mainTag: code-quality
 tags: [autoflake, black, code-quality, devcontainer, docker, isort, mypy, prospector, pydocstyle, pylint, pyright, python, ruff, vulture]
 enableComments: true
@@ -37,7 +37,7 @@ The first thing first: make sure your Python code has no syntax error like a bad
 
 I'm running it like this: `pylint . --rcfile .config/.pylintrc`.
 
-<Snippets filename=".config/.pylintrc">
+<Snippet filename=".config/.pylintrc">
 
 ```text
 [MASTER]
@@ -76,7 +76,7 @@ fail-under=9.50
 max-line-length=120
 ```
 
-</Snippets>
+</Snippet>
 
 ## 2. Autoflake
 
@@ -120,7 +120,7 @@ Be careful with Vulture because his algorithm will detect a lot of false positiv
 
 Note: I've also configured my VSCode with the settings below so, while I'm coding, VSCode will notify me about unused things so I can immediately take action.
 
-<Snippets filename=".vscode/settings.json">
+<Snippet filename=".vscode/settings.json">
 
 ```json
 "python.analysis.diagnosticSeverityOverrides": {
@@ -131,7 +131,7 @@ Note: I've also configured my VSCode with the settings below so, while I'm codin
 },
 ```
 
-</Snippets>
+</Snippet>
 
 ## 5. pydocstyle
 
@@ -143,7 +143,7 @@ This tool will check the quality of your comments like the one of your functions
 
 I'm running it like this: `pydocstyle --config=.config/.pydocstyle`
 
-<Snippets filename=".config/.pydocstyle">
+<Snippet filename=".config/.pydocstyle">
 
 ```text
 [pydocstyle]
@@ -151,7 +151,7 @@ ignore = D100,D203,D205,D212,D213,D400,D404,D406,D407,D413,D415
 match = .*\.py
 ```
 
-</Snippets>
+</Snippet>
 
 ## 6. mypy
 
@@ -165,7 +165,7 @@ match = .*\.py
 
 I'm running it like this: `mypy --config-file .config/.mypy.ini .`
 
-<Snippets filename=".config/.mypy.ini">
+<Snippet filename=".config/.mypy.ini">
 
 ```text
 [mypy]
@@ -185,7 +185,7 @@ warn_unused_ignores = true
 python_version = 3.13
 ```
 
-</Snippets>
+</Snippet>
 
 ## 7. Pyright
 
@@ -195,7 +195,7 @@ python_version = 3.13
 
 I'm using it like this: `pyright --project .config/pyright.json`
 
-<Snippets filename=".config/pyright.json">
+<Snippet filename=".config/pyright.json">
 
 ```json
 {
@@ -206,7 +206,7 @@ I'm using it like this: `pyright --project .config/pyright.json`
 
 ```
 
-</Snippets>
+</Snippet>
 
 ## 8. Black
 
@@ -220,7 +220,7 @@ I'm using it like this: `pyright --project .config/pyright.json`
 
 I'm using it like this: `black --config .config/black.toml .`
 
-<Snippets filename=".config/black.toml">
+<Snippet filename=".config/black.toml">
 
 ```toml
 [tool.black]
@@ -233,7 +233,7 @@ line-length = 120
 target-version = ['py313']
 ```
 
-</Snippets>
+</Snippet>
 
 ## 9. prospector
 
@@ -243,7 +243,7 @@ target-version = ['py313']
 
 I'm using it like this: `prospector . --profile .config/prospector.yaml --pylint-config-file .config/.pylintrc`
 
-<Snippets filename=".config/prospector.yaml">
+<Snippet filename=".config/prospector.yaml">
 
 ```yaml
 strictness: high
@@ -280,7 +280,7 @@ mccabe:
   run: true
 ```
 
-</Snippets>
+</Snippet>
 
 ## Extra - Ruff
 
@@ -298,7 +298,7 @@ According to the Ruff [documentation](https://docs.astral.sh/ruff/faq/#how-does-
 
 I'm using it like this: `ruff format --cache-dir /tmp/ruff --config .config/pyproject.toml .` and `ruff check --cache-dir /tmp/ruff --config .config/pyproject.toml .`
 
-<Snippets filename=".config/pyproject.toml">
+<Snippet filename=".config/pyproject.toml">
 
 ```toml
 [tool.ruff]
@@ -310,7 +310,7 @@ line-length = 120
 indent-width = 4
 ```
 
-</Snippets>
+</Snippet>
 
 ## Running them all at once
 
@@ -320,7 +320,7 @@ The first tool is `Pylint` and that make sense: there is no need to go further i
 
 I'm using a [makefile](/blog/tags/makefile) with an action called `qa` like this:
 
-<Snippets filename="makefile">
+<Snippet filename="makefile">
 
 ```makefile
 .PHONY: qa
@@ -359,6 +359,6 @@ qa:
 	@printf "%s\n" "🥳 🎉 🎊 🤩 🕺 💃 👏"
 ```
 
-</Snippets>
+</Snippet>
 
 You've understood I think. As soon as an error is detected, the script stops. You'll see the **CONGRATULATIONS** message only if all checks are successful.

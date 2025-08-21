@@ -3,7 +3,7 @@ slug: docker-oracle-database-server
 title: Running Oracle Database Server as a Docker container
 authors: [christophe]
 image: /img/oracle_social_media.jpg
-serie: Running Oracle Database Server as a Docker container
+series: Running Oracle Database Server as a Docker container
 mainTag: oracle
 tags: [docker, oracle]
 blueSkyRecordKey: 3lvnjmthgj22v
@@ -89,7 +89,7 @@ If needed, run `docker logout container-registry.oracle.com` to remove the authe
 :::info Optional, the authentication is stored in the config.json file
 By running `cat ~/.docker/config.json`, you'll see in `auths` the presence of the Oracle registry
 
-<Snippets filename="~/.docker/config.json">
+<Snippet filename="~/.docker/config.json">
 
 ```json
 {
@@ -100,7 +100,7 @@ By running `cat ~/.docker/config.json`, you'll see in `auths` the presence of th
 }
 ```
 
-</Snippets>
+</Snippet>
 
 :::
 
@@ -156,7 +156,7 @@ Please download and copy these two files in the  `scripts/startup/sql/` folder y
 
 The second thing to do is to create the file `scripts/startup/populate_db.sh` with the content below so we'll automate the creation of our tables and put some records in our database. As said in a previous chapter, it's important to make sure to connect to the `PDB` so tables are created in a database; not in the container.
 
-<Snippets filename="scripts/startup/populate_db.sh">
+<Snippet filename="scripts/startup/populate_db.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -171,7 +171,7 @@ EXIT;
 EOF
 ```
 
-</Snippets>
+</Snippet>
 
 Now, make the script executable: `chmod +x scripts/startup/populate_db.sh`.
 
@@ -244,7 +244,7 @@ Here are the constants to remember:
 
 If you look back at the `populate_db.sh` script, we had:
 
-<Snippets filename="scripts/startup/populate_db.sh">
+<Snippet filename="scripts/startup/populate_db.sh">
 
 ```bash
 # highlight-next-line
@@ -260,7 +260,7 @@ EXIT;
 EOF
 ```
 
-</Snippets>
+</Snippet>
 
 And now, you understand why connection strings were:
 
@@ -306,7 +306,7 @@ If you're connected to the CDB, you'll get the next answer and it's wrong. Type 
 
 Previously, we've created our tables using the `scripts/startup/populate_db.sh` script. Here was the script used:
 
-<Snippets filename="scripts/startup/populate_db.sh">
+<Snippet filename="scripts/startup/populate_db.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -321,7 +321,7 @@ EXIT;
 EOF
 ```
 
-</Snippets>
+</Snippet>
 
 The `CONNECT` statement will use the `system` Oracle user. Tables that will be created in the `system` schema.
 

@@ -27,7 +27,7 @@ Pydot can generate an image like the one below:
 
 First, we'll need a Python Docker container. Please create a file called `Dockerfile` with this content:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 FROM python:3.13-slim
@@ -47,7 +47,7 @@ RUN pip install --no-cache-dir pydot
 
 ```
 
-</Snippets>
+</Snippet>
 
 And create the image by running `docker build --tag pydot .`.
 
@@ -55,7 +55,7 @@ We don't need more except ... our flow.
 
 To build an ETL image like the one above, please create a new file called f.i. `etl.py` with this content:
 
-<Snippets filename="etl.py">
+<Snippet filename="etl.py">
 
 ```python
 import pydot
@@ -85,7 +85,7 @@ graph.add_edge(pydot.Edge(node_enrich, node_load))
 graph.write_png('etl.png')
 ```
 
-</Snippets>
+</Snippet>
 
 And, now, the easy part, render the Python `etl.py` file as an image by running `docker run --rm -it -v "${PWD}":/diagram -w /diagram pydot python etl.py`.
 
@@ -99,7 +99,7 @@ You'll find there Python examples and, too, the rendered image.
 
 ### OOP classes
 
-<Snippets filename="class_diagram.py">
+<Snippet filename="class_diagram.py">
 
 ```python
 import pydot
@@ -124,13 +124,13 @@ graph.add_edge(pydot.Edge(node_person, node_teacher))
 graph.write_png('class_diagram.png')
 ```
 
-</Snippets>
+</Snippet>
 
 ![Class diagram](./images/class_diagram.png)
 
 ### Data flow
 
-<Snippets filename="data_flow.py">
+<Snippet filename="data_flow.py">
 
 ```python
 import pydot
@@ -165,13 +165,13 @@ graph.write_png('data_flow_diagram.png')
 
 ```
 
-</Snippets>
+</Snippet>
 
 ![Data flow](./images/data_flow_diagram.png)
 
 ### Decision flow
 
-<Snippets filename="decision_flow.py">
+<Snippet filename="decision_flow.py">
 
 ```python
 import pydot
@@ -196,13 +196,13 @@ graph.add_edge(pydot.Edge(node_process2, node_end))
 graph.write_png('flowchart.png')
 ```
 
-</Snippets>
+</Snippet>
 
 ![Decision flow](./images/decision_flow.png)
 
 ### Decision tree
 
-<Snippets filename="decision_tree.py">
+<Snippet filename="decision_tree.py">
 
 ```python
 import pydot
@@ -240,6 +240,6 @@ graph.write_png('decision_tree.png')
 
 ```
 
-</Snippets>
+</Snippet>
 
 ![Decision tree](./images/decision_tree.png)

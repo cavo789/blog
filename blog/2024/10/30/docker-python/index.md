@@ -3,7 +3,7 @@ slug: docker-python-devcontainer
 title: Docker - Python devcontainer
 authors: [christophe]
 image: /img/python_tips_social_media.jpg
-serie: Coding using a devcontainer
+series: Coding using a devcontainer
 mainTag: python
 tags: [devcontainer, docker, python]
 enableComments: true
@@ -37,7 +37,7 @@ Start VSCode from there i.e. run `code .-` in the console when you're located in
 
 The first file to create will be used to build our Docker image. Please create a file called `Dockerfile` with the following content:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -146,14 +146,14 @@ RUN set -e -x \
 # endregion
 ```
 
-</Snippets>
+</Snippet>
 
 ### compose.yaml
 
 Next to the `Dockerfile`, we'll create our `compose.yaml` one. Please create that file with the following content:
 
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: app_python
@@ -195,14 +195,14 @@ volumes:
   bashhistory:
 ```
 
-</Snippets>
+</Snippet>
 
 ### .docker.env
 
 The third file to create will be called `.docker.env` where we'll initialise some values. Please create that file with the content below:
 
 
-<Snippets filename=".docker.env">
+<Snippet filename=".docker.env">
 
 ```dotenv
 # Application root directory in the container (PHP or NGINX) (--app-home)
@@ -224,7 +224,7 @@ DOCKER_OS_USERNAME="python"
 DOCKER_PYTHON_VERSION=3.13-slim
 ```
 
-</Snippets>
+</Snippet>
 
 :::tip
 All you have to do is duplicate the other files we've created for each of your projects and the settings for your project will be made here, in the `.docker.env` file.
@@ -235,7 +235,7 @@ All you have to do is duplicate the other files we've created for each of your p
 To make life easier, we're going to group together a set of commands in a file called `makefile`. Please create a `makefile` file with the contents below:
 
 
-<Snippets filename="makefile">
+<Snippet filename="makefile">
 
 ```makefile
 # cspell:ignore ifdef,pydocstyle,isort,mypy
@@ -321,7 +321,7 @@ mypy: ## QA - Mypy is a program that will type check your Python code
 	@clear
 	${YAML} docker compose ${ENV} exec ${CONTAINER} ${BIN}/mypy --cache-dir /tmp/mypy
 ```
-</Snippets>
+</Snippet>
 
 :::important
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
@@ -393,7 +393,7 @@ All these files can be used across all your Python projects.
 
 We've to create an additional file. Please create a new folder called `.devcontainer` and, there, a file called `devcontainer.json`. Copy/paste the content below:
 
-<Snippets filename=".devcontainer/devcontainer.json">
+<Snippet filename=".devcontainer/devcontainer.json">
 
 <!-- cspell:disable -->
 ```json
@@ -577,7 +577,7 @@ We've to create an additional file. Please create a new folder called `.devconta
 ```
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
 This file is very long; can be shorter but ... the idea is to configure VSCode so we've specified all extensions we want in our coding environment and a bunch of settings.
 

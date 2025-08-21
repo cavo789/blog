@@ -21,7 +21,7 @@ For example, let's get the list of all files below `/tmp` and this recursively. 
 
 This command will probably take time to run and this is the objective: run a long command and make sure our user will see the output on the screen so he knows that the script is doing something and, too, to redirect the output to a log file for further analysis in case of f.i. problems (or just because the script is fired in a cron).
 
-<Snippets filename="script.sh">
+<Snippet filename="script.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -43,7 +43,7 @@ eval "${command}" |
     done
 ```
 
-</Snippets>
+</Snippet>
 
 The main part is the `eval` function.
 
@@ -51,7 +51,7 @@ The command (`ls -alhR /tmp`) will be fired and, for every single line, we'll `e
 
 The example below does almost the same thing i.e., it executes a command and displays it both in a file and on the console but ... as you can see, the command will be run and everything will be redirected to the file so, during seconds, the user will have no screen output and can think that the script is blocking. Then, once the command has successfully finished, and only then, the log file will be displayed, in a block, on the console.
 
-<Snippets filename="script.sh">
+<Snippet filename="script.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -63,6 +63,6 @@ eval "${command}" > "${LOGFILE}"
 cat "${LOGFILE}"
 ```
 
-</Snippets>
+</Snippet>
 
 Don't do things like that!

@@ -3,7 +3,7 @@ slug: quarto-includes-shortcode
 title: Quarto includes short code
 authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
-serie: Discovering Quarto
+series: Discovering Quarto
 mainTag: quarto
 tags: [markdown, quarto, tips]
 enableComments: true
@@ -14,7 +14,7 @@ Using the Quarto `includes` short code, writing a long document can easily be br
 
 Imagine the following `main.qmd` file:
 
-<Snippets filename="main.qmd">
+<Snippet filename="main.qmd">
 
 ```markdown
 # My thesis in Latin
@@ -24,7 +24,7 @@ Imagine the following `main.qmd` file:
 {{< include chapter2.md >}}
 ```
 
-</Snippets>
+</Snippet>
 
 Quarto will then merge the three files when you render `main.qmd`.
 
@@ -40,7 +40,7 @@ The tag is simple, you just need to specify the relative path to the file to inc
 
 Here is some dummy content for `chapter1.md`:
 
-<Snippets filename="chapter1.md">
+<Snippet filename="chapter1.md">
 
 <!-- cspell:disable -->
 ```markdown
@@ -53,11 +53,11 @@ Expedita magni facere. Ullam non non sint qui provident. Ea beatae voluptatem pa
 Ad aut nobis magni aut est dicta adipisci est. Quo reiciendis eum aut rem. Dolores sit magni non.
 ```
 
-</Snippets>
+</Snippet>
 
 And for `chapter2.md`:
 
-<Snippets filename="chapter2.md">
+<Snippet filename="chapter2.md">
 
 ```markdown
 ## Chapter 2
@@ -69,7 +69,7 @@ Animi voluptatem est quia. Quia id optio. Architecto ut ipsa voluptas minima vol
 Consequatur debitis et sunt eos quod qui unde aut.
 ```
 
-</Snippets>
+</Snippet>
 
 <!-- cspell:enable -->
 

@@ -21,7 +21,7 @@ Like always, for the demo, please start a Linux shell and run `mkdir -p /tmp/doc
 
 Please create a new file called `team.py` with this content:
 
-<Snippets filename="team.py">
+<Snippet filename="team.py">
 
 ```python
 from diagrams import Diagram
@@ -38,7 +38,7 @@ with Diagram("My Team", show=False, direction="TB"):
         EC2("Stijn") ] >> RDS("Work together")
 ```
 
-</Snippets>
+</Snippet>
 
 To run the conversion, go back to your console and run the following command:
 
@@ -60,7 +60,7 @@ Easy no?
 
 Another example:
 
-<Snippets filename="app/Providers/EventServiceProvider.php">
+<Snippet filename="app/Providers/EventServiceProvider.php">
 
 ```python
 from diagrams import Cluster, Diagram
@@ -83,7 +83,7 @@ with Diagram("Stateful Architecture", show=False):
     apps << PV("pv") << StorageClass("sc")
 ```
 
-</Snippets>
+</Snippet>
 
 And the resulting image:
 

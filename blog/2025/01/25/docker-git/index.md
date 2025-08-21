@@ -29,7 +29,7 @@ Please create a dummy folder and jump in it: `mkdir /tmp/git && cd $_`.
 
 We need a `Dockerfile`, let's create it:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -48,11 +48,11 @@ RUN set -e -x \
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 ```
 
-</Snippets>
+</Snippet>
 
 We'll also use a `compose.yaml` one, please create this file too:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 services:
@@ -66,7 +66,7 @@ services:
       - ${HOME}/.gitconfig:/root/.gitconfig
 ```
 
-</Snippets>
+</Snippet>
 
 :::warning I assume your current ssh key is called id_ed25519
 Please run `ls -alh ${HOME}/.ssh/` on your host and check if you've a file `id_ed25519` there. It's your SSH private key. Perhaps you aren't using that file but another one called `id_rsa`. If so, please update the `compose.yaml` file and replace there `id_ed25519` by `id_rsa`.

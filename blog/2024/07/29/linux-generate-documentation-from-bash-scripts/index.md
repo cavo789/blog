@@ -21,7 +21,7 @@ So I've written a small Bash script to accomplish this i.e. parse any `.sh` file
 
 Let's consider this `/tmp/bash/helpers/string.sh` file:
 
-<Snippets filename="/tmp/bash/helpers/string.sh">
+<Snippet filename="/tmp/bash/helpers/string.sh">
 
 ```bash
 # region - public function string::upper
@@ -57,13 +57,13 @@ function string::upper() {
 }
 ```
 
-</Snippets>
+</Snippet>
 
 We now need to create the `generate_doc.sh` script. Since it's a big script, please click on the next line to get his content. Click again to hide the code.
 
 Please create the file `/tmp/bash/generate_doc.sh` with this content:
 
-<Snippets filename="/tmp/bash/generate_doc.sh">
+<Snippet filename="/tmp/bash/generate_doc.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -688,7 +688,7 @@ function string::trim() {
 generate_doc::__main $*
 ```
 
-</Snippets>
+</Snippet>
 
 Once you've created the `/tmp/bash/generate_doc.sh` file and make it executable (`chmod +x ./generate_doc.sh`), just run `./generate_doc.sh` in the console.
 
@@ -700,7 +700,7 @@ For one file found in the `helpers` folder, the same file will be created in the
 
 Here the content of the `documentation/string.md` file:
 
-<Snippets filename="documentation/string.md">
+<Snippet filename="documentation/string.md">
 
 ```markdown
 <!--
@@ -746,11 +746,11 @@ The string in uppercase
 https://github.com/jmcantrell/bashful/blob/master/bin/bashful-utils#L33
 ```
 
-</Snippets>
+</Snippet>
 
 And, once every .sh files are processed, a final `documentation/readme.md` file will be created:
 
-<Snippets filename="documentation/readme.md">
+<Snippet filename="documentation/readme.md">
 
 ```markdown
 <!--
@@ -765,4 +765,4 @@ And, once every .sh files are processed, a final `documentation/readme.md` file 
 * [string.md](string.md)
 ```
 
-</Snippets>
+</Snippet>

@@ -41,7 +41,7 @@ In short:
 
 Imagine I've this content in my `~/.ssh/config`:
 
-<Snippets filename="~/.ssh/config">
+<Snippet filename="~/.ssh/config">
 
 ```bash
 Host MyAmazingApp_PROD
@@ -61,7 +61,7 @@ Host LegacyApp
     User legacy
 ```
 
-</Snippets>
+</Snippet>
 
 Now, I really don't need to remember anything and I don't even need to know the names of the aliases any more!
 

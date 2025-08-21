@@ -27,7 +27,7 @@ This done, start your preferred editor and open the folder. On my side, I'm usin
 
 In your project directory (so `/tmp/docusaurus`), create a file called `Dockerfile` with this content:
 
-<Snippets filename="/tmp/docusaurus/Dockerfile">
+<Snippet filename="/tmp/docusaurus/Dockerfile">
 
 ```Dockerfile
 FROM node:21-alpine
@@ -46,7 +46,7 @@ COPY . .
 CMD ["yarn", "start", "--host", "0.0.0.0"]
 ```
 
-</Snippets>
+</Snippet>
 
 #### Dockerfile - explanations line by line
 
@@ -68,7 +68,7 @@ But, also, we don't need to copy folders like `blog`, `pages`, `static`, ... sin
 
 So, please create a `.dockerignore` file with this content:
 
-<Snippets filename=".dockerignore">
+<Snippet filename=".dockerignore">
 
 ```text
 build/
@@ -90,13 +90,13 @@ pages/
 static/
 ```
 
-</Snippets>
+</Snippet>
 
 ### Create a compose.yaml file
 
 The third file to create is `compose.yaml` with this content:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 ```yaml
 name: my_docusaurus_blog
@@ -111,7 +111,7 @@ services:
       - ./blog:/app/blog
 ```
 
-</Snippets>
+</Snippet>
 
 As you can see, we need to have a folder called `blog` on our machine and we'll synchronize that folder inside the Docker container. Our `blog` folder will be *mounted* in folder `/app/blog` in the container.
 

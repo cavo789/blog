@@ -3,7 +3,7 @@ slug: php-jakzal-phpqa
 title: Docker image that provides static analysis tools for PHP
 authors: [christophe]
 image: /img/code_quality_social_media.jpg
-serie: code quality
+series: code quality
 mainTag: code-quality
 tags: [code-quality, composer, docker, laravel, php, php-cs-fixer, phpcs, phpcbf, refactoring]
 enableComments: true
@@ -37,7 +37,7 @@ As a reminder, the used Docker run command will always look like:
 
 As you know, in a JSON file, there is no order so you can define your properties in any order. For instance:
 
-<Snippets filename="composer.json">
+<Snippet filename="composer.json">
 
 ```json
 {
@@ -48,11 +48,11 @@ As you know, in a JSON file, there is no order so you can define your properties
 }
 ```
 
-</Snippets>
+</Snippet>
 
 or
 
-<Snippets filename="composer.json">
+<Snippet filename="composer.json">
 
 ```json
 {
@@ -63,7 +63,7 @@ or
 }
 ```
 
-</Snippets>
+</Snippet>
 
 or anything else. The above example is just four lines; imagine a file with a hundred lines. It's more logical, isn't it, to retrieve first the `name` of the tool, then a small `description`, the `license`, the `type` (is it a project, a library, ...) and so on and not, f.i., first the list of requirements.
 

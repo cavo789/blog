@@ -21,7 +21,7 @@ Not everywhere means, for instance, VSCode didn't support code folding by defaul
 
 Consider the following, very basic, example (*very brief example for illustrative purposes*):
 
-<Snippets filename="my_class.php">
+<Snippet filename="my_class.php">
 
 ```php
 <?php
@@ -43,11 +43,11 @@ class MyClass
 }
 ```
 
-</Snippets>
+</Snippet>
 
 We can clearly identify three blocks: preparation of the query, run it and return the data. Using regions, we can do this:
 
-<Snippets filename="my_class.php">
+<Snippet filename="my_class.php">
 
 ```php
 <?php
@@ -75,7 +75,7 @@ class MyClass
 }
 ```
 
-</Snippets>
+</Snippet>
 
 And now, why folding can be really useful: we can fold / unfold them:
 
@@ -89,7 +89,7 @@ Regions are supported by a very large number of languages, but don't make the mi
 
 Let's take a look and the following Dockerfile:
 
-<Snippets filename="Dockerfile">
+<Snippet filename="Dockerfile">
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -203,7 +203,7 @@ COPY --from=building_production "${HOMEDIR}/build /usr/share/nginx/html"
 WORKDIR /usr/share/nginx/html
 ```
 
-</Snippets>
+</Snippet>
 
 By opening such file in VSCode didn't provide any collapse/expand features and we will need to scroll a lot. And we don't have a global overview of the structure.
 
@@ -213,7 +213,7 @@ The solution comes by installing a specialised extension: [https://marketplace.v
 
 And, too, by adding these settings in your `.vscode/settings.json` file:
 
-<Snippets filename=".vscode/settings.json">
+<Snippet filename=".vscode/settings.json">
 
 ```json
 {
@@ -228,7 +228,7 @@ And, too, by adding these settings in your `.vscode/settings.json` file:
 }
 ```
 
-</Snippets>
+</Snippet>
 
 Switch back to your tab in VSCode with your opened Dockerfile, press <kbd>CTRL</kbd>+<kbd>P</kbd> and run `Developer: Reload Window` to reload the window once the extension has been enabled and tadaaa!
 

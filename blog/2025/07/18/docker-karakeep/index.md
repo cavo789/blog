@@ -28,7 +28,7 @@ Let's look at how to install it.
 
 Please create a folder like `mkdir ~/tools/karakeep && cd $_`. In that folder, please create a `compose.yaml` file with the content below:
 
-<Snippets filename="compose.yaml">
+<Snippet filename="compose.yaml">
 
 <!-- cspell:disable -->
 ```yaml
@@ -76,7 +76,7 @@ volumes:
 ```
 <!-- cspell:enable -->
 
-</Snippets>
+</Snippet>
 
 :::note
 The line `user: ${UID:-1000}:${GID:-1000}` will ask Docker to use a specific user (not the `root` one) while creating files on your disk.

@@ -23,7 +23,7 @@ As an example, we'll thus download any `.php` files from a host.
 
 The script is pretty straightforward, if you can believe it:
 
-<Snippets filename="C:\temp\download.txt">
+<Snippet filename="C:\temp\download.txt">
 
 ```text
 option batch abort
@@ -45,7 +45,7 @@ close
 exit
 ```
 
-</Snippets>
+</Snippet>
 
 ## How to use
 

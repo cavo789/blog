@@ -23,7 +23,7 @@ To be able to reproduce examples used in this blog post, if you need it, please 
 
 Let's say `/tmp/bash/console.sh` for the first file with this content:
 
-<Snippets filename="/tmp/bash/console.sh">
+<Snippet filename="/tmp/bash/console.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -44,11 +44,11 @@ function console::banner() {
 }
 ```
 
-</Snippets>
+</Snippet>
 
 And, for `/tmp/bash/console_v2.sh`, we'll add two new functions, `printGreen` and `printBlue`, in that order:
 
-<Snippets filename="/tmp/bash/console_v2.sh">
+<Snippet filename="/tmp/bash/console_v2.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -75,7 +75,7 @@ function console::printBlue() {
 }
 ```
 
-</Snippets>
+</Snippet>
 
 ## Get the list of functions in a Bash script
 
@@ -132,7 +132,7 @@ So now, we can see a new indicator `<`: the function was retrieved only in the f
 
 Right now, our `/tmp/bash/console.sh` contains this:
 
-<Snippets filename="/tmp/bash/console.sh">
+<Snippet filename="/tmp/bash/console.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -165,11 +165,11 @@ function console::printRed() {
 }
 ```
 
-</Snippets>
+</Snippet>
 
 and, for `/tmp/bash/console_v2.sh`:
 
-<Snippets filename="/tmp/bash/console_v2.sh">
+<Snippet filename="/tmp/bash/console_v2.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -197,7 +197,7 @@ function console::printBlue() {
 
 ```
 
-</Snippets>
+</Snippet>
 
 :::info The order has no important
 Unlike a comparison with `diff`, the order in which the functions appear in the scripts is irrelevant, as we are sorting them.
@@ -209,7 +209,7 @@ In the previous chapter, we've seen how to compare two versions of the same scri
 
 To do this, create the `compare.sh` script on your hard drive with this content:
 
-<Snippets filename="compare.sh">
+<Snippet filename="compare.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -263,7 +263,7 @@ done
 popd >/dev/null
 ```
 
-</Snippets>
+</Snippet>
 
 Now, to run it, just start `./compare.sh foldername1 foldername2`. You'll get something like below i.e. for each scripts in both folders (script in just one folder are ignored), you'll get the name of the script (like `array.sh`) followed by the text `The two files are identical` if both files are identical or, if not, a list of function names and the indicator already seen i.e. `<`, `>` or `|`.
 
@@ -275,7 +275,7 @@ Once a function has been identified, simply open the *right* file and copy/paste
 
 By adding `| grep -E -v "<$"` to our `grep` statement, we can improve the script by ignoring cases when functions are only added in the left-hand folder. Imagine the requirement *In the right-hand folder, if I've added functions to my scripts; what are these functions so that I can copy/paste them into the scripts in the left-hand folder?*
 
-<Snippets filename="compare.sh">
+<Snippet filename="compare.sh">
 
 ```bash
 #!/usr/bin/env bash
@@ -328,7 +328,7 @@ done
 popd >/dev/null
 ```
 
-</Snippets>
+</Snippet>
 
 If we run this newer script on the exact same files, now, lines ending with `<` are hidden (only in the left-hand folder) and we just obtains cases when a function is present in the right-hand folder:
 

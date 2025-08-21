@@ -21,11 +21,7 @@ It avoids replacements in:
 
 ## 🧩 Installation
 
-Make sure your project uses React and Docusaurus 3.x. Then place the plugin in your desired location:
-
-```bash
-plugins/remark-replace-terms/remarkReplaceTerms
-```
+Make sure your project uses React and Docusaurus 3.x. Then save plugin with this name: `plugins/remark-replace-terms/remarkReplaceTerms/remarkReplaceTerms.js`.
 
 Then add the plugin to your `docusaurus.config.js` file:
 
@@ -38,7 +34,7 @@ const config = {
       ({
         blog: {
           // highlight-next-line
-          remarkPlugins: [require('./plugins/remark-replace-terms/remarkReplaceTerms')],
+          beforeDefaultRemarkPlugins: [require('./plugins/remark-replace-terms')],
         },
         // [ ... ]
       }),
