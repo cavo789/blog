@@ -41,17 +41,16 @@ Finally, the function is called like this: `updateEnv "APP_DEBUG" "false" ".env"
 
 Before seeing the function, like always, just create a sample file:
 
-```bash
-mkdir -p /tmp/playing_env && cd $_
-
-echo 'APP_ENV = local' > .env
-echo 'APP_DEBUG = true' >> .env
-echo 'APP_KEY = 3445118442a942d1/afd37466fadd5223' >> .env
-echo 'APP_NAME = My application' >> .env
-echo 'CACHE_DRIVER = redis' >> .env
-echo 'DATABASE_TYPE = mysql' >> .env
-echo 'FORCE_HTTPS = false' >> .env
-```
+<Terminal>
+$ mkdir -p /tmp/playing_env && cd $_
+$ echo 'APP_ENV = local' > .env
+$ echo 'APP_DEBUG = true' >> .env
+$ echo 'APP_KEY = 3445118442a942d1/afd37466fadd5223' >> .env
+$ echo 'APP_NAME = My application' >> .env
+$ echo 'CACHE_DRIVER = redis' >> .env
+$ echo 'DATABASE_TYPE = mysql' >> .env
+$ echo 'FORCE_HTTPS = false' >> .env
+</Terminal>
 
 Now, we can run in our console:
 

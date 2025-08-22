@@ -29,11 +29,11 @@ You can also use `xdg-open` to start your default browser so `xdg-open index.htm
 
 If you get the error below, you'll find a solution in the article <Link to="/blog/wsl-windows-explorer#wsl-localhost-is-not-accessible">Windows Explorer</Link>
 
-```bash
+<Terminal title="Powershell">
 Start : This command cannot be run due to the error: The system cannot find the file specified.
 At line:1 char:1
 + Start "readme.html"
 + ~~~~~~~~~~~~~~~~~~~
     + CategoryInfo          : InvalidOperation: (:) [Start-Process], InvalidOperationException
     + FullyQualifiedErrorId : InvalidOperationException,Microsoft.PowerShell.Commands.StartProcessCommand
-```
+</Terminal>

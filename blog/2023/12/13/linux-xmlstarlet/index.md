@@ -37,9 +37,9 @@ As you can see, our XML has no format, everything on the same line.
 
 We can beautify it using the `format` action:
 
-```bash
-❯ cat "data.xml" | xmlstarlet format --indent-spaces 4
-```
+<Terminal>
+$ cat "data.xml" | xmlstarlet format --indent-spaces 4
+</Terminal>
 
 <Snippet filename="data.xml">
 
@@ -83,9 +83,9 @@ We can beautify it using the `format` action:
 
 We can also use `Xpath` to specify our desired output:
 
-```bash
-❯ cat "data.xml" | xmlstarlet sel -t -v "/bookstore/book/title"
-```
+<Terminal>
+$ cat "data.xml" | xmlstarlet sel -t -v "/bookstore/book/title"
+</Terminal>
 
 <Snippet filename="data.xml">
 
@@ -119,13 +119,10 @@ If you don't known XPath yet, we've used `"/bookstore/book/title"` because our X
 
 We can also make some filtering like getting books for children:
 
-```bash
-❯ cat "data.xml" | xmlstarlet sel -t -v "//book[@category='children']/title"
-```
-
-```text
+<Terminal>
+$ cat "data.xml" | xmlstarlet sel -t -v "//book[@category='children']/title"
 Harry Potter
-```
+</Terminal>
 
 And here, the XPath expression `//book[@category='children']/title` means: give me each `book`; it doesn't matter where the book node is located; but only if it has an attribute named `category` and whose value is `children`. Then, if found, display his `title`.
 

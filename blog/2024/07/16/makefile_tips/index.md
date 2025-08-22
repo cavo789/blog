@@ -22,9 +22,9 @@ Below is a note that I took and revised several times when I took the time to cr
 
 Just run the following commands to install the `Make` executable on your host machine:
 
-```bash
-sudo apt-get update && sudo apt-get -y install make
-```
+<Terminal>
+$ sudo apt-get update && sudo apt-get -y install make
+</Terminal>
 
 ## How to check if a file exists or not
 
@@ -114,13 +114,12 @@ update-them:
 
 </Snippet>
 
-Running `make php-cs-fixer` will output this:
-
-```bash
+<Terminal>
+$ make php-cs-fixer
 First get vendors
 Then update vendors
 And finally run php-cs-fixer
-```
+</Terminal>
 
 ### Stop the job if a target fails
 
@@ -184,10 +183,10 @@ helloWorld:
 
 And the output in the console:
 
-```bash
-echo "Hello world"
+<Terminal>
+$ echo "Hello world"
 Hello world
-```
+</Terminal>
 
 To avoid the first one i.e. the output of the fired instruction, just prefix it with an at sign (`@`).
 
@@ -349,9 +348,9 @@ changeExt:
 
 Running a target with a parameter should be done using named parameters like this:
 
-```bash
-make hello firstname="Christophe"
-```
+<Terminal>
+$ make hello firstname="Christophe"
+</Terminal>
 
 This will create a variable called `firstname`, we then can use it:
 
@@ -462,13 +461,12 @@ hello:
 
 If we run that file, here is the output.
 
-```bash
-> make hello
-
+<Terminal>
+$ make hello
 makefile:198: warning: overriding recipe for target 'hello'
 makefile:195: warning: ignoring old recipe for target 'hello'
 Nice to meet you
-```
+</Terminal>
 
 The solution: use `::` (this is called an *explicit rule*) and not a single `:` after the recipe; see the next sample:
 
@@ -489,13 +487,12 @@ hello::
 
 If we run that file, here is the output.
 
-```bash
-> make hello
-
+<Terminal>
+$ make hello
 Hello world
 Nice to meet you
 Did you any plans for this weekend?
-```
+</Terminal>
 
 Recipes are just extended, the second one is appended to the first and so on so the order is important.
 
@@ -642,9 +639,9 @@ DOCKER_PHPQA:=jakzal/phpqa:php${PHP_VERSION}-alpine
 
 Even if the variable is still defined, you can override it by passing it on the command line:
 
-```bash
-make yamllint PHP_VERSION=8.1
-```
+<Terminal>
+$ make yamllint PHP_VERSION=8.1
+</Terminal>
 
 This will start the `yamllint` target with `PHP_VERSION` set to `8.1` even if the variable is already defined and f.i. set to `7.4`.
 

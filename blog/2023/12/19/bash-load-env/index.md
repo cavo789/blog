@@ -59,10 +59,9 @@ echo "${DOCKER_GIT_FULLNAME} (${DOCKER_GIT_USEREMAIL})"
 
 Using the `.env` file provided here above, we'll obtain this output:
 
-```bash
-❯ ./test.sh
-
+<Terminal>
+$ ./test.sh
 Christophe Avonture (christophe@me.com)
-```
+</Terminal>
 
 This is, I think, the best and, too, the easiest way to use an external file to store configuration items in Bash.

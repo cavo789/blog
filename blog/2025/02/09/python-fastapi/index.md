@@ -82,9 +82,9 @@ You know what? It's already done.
 
 We need to build our Docker image and run it:
 
-```bash
-docker build -t python-fastapi . && docker run -p 82:82 python-fastapi
-```
+<Terminal>
+$ docker build -t python-fastapi . && docker run -p 82:82 python-fastapi
+</Terminal>
 
 Once done, just surf to `http://127.0.0.1:82` and you'll obtain your first JSON answer; crazy no?
 
@@ -128,10 +128,12 @@ First stop the running container: go back to your console and press <kbd>CTRL</k
 
 If you prefer the command line, you can achieve the same result by running these two commands:
 
-```bash
-docker rm $(docker ps -aq --filter "ancestor=python-fastapi")
-docker rmi python-fastapi --force
-```
+<Terminal>
+$ docker rm $(docker ps -aq --filter "ancestor=python-fastapi")
+...
+$ docker rmi python-fastapi --force
+...
+</Terminal>
 
 Now, please copy/paste the following content to your existing `Dockerfile`:
 
@@ -163,9 +165,9 @@ Rebuild the image and run a new container by running these commands:
 
 OK, we'll run the container again but, now, with a volume:
 
-```bash
-docker build -t python-fastapi . && docker run -v .:/app -p 82:82 python-fastapi
-```
+<Terminal>
+$ docker build -t python-fastapi . && docker run -v .:/app -p 82:82 python-fastapi
+</Terminal>
 
 Now with a Docker image with hot reload and we've mounted our folder in the container.
 

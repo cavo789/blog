@@ -50,15 +50,15 @@ Nevertheless the objective of this article was to provide the minimum set of fil
 
 First language by alphabetical order; let's play with a .Net container:
 
-```bash
-mkdir -p /tmp/oracle/dotnet && cd $_
-```
+<Terminal>
+$ mkdir -p /tmp/oracle/dotnet && cd $_
+</Terminal>
 
 Also create this directory:
 
-```bash
-mkdir -p /tmp/oracle/dotnet/OracleConnector
-```
+<Terminal>
+$ mkdir -p /tmp/oracle/dotnet/OracleConnector
+</Terminal>
 
 Let's create a Dockerfile:
 
@@ -215,9 +215,9 @@ Job done, our .Net code has accessed to the list.
 
 Second in the alphabetical order, let's play with a NodeJS container:
 
-```bash
-mkdir -p /tmp/oracle/nodejs && cd $_
-```
+<Terminal>
+$ mkdir -p /tmp/oracle/nodejs && cd $_
+</Terminal>
 
 Let's create a Dockerfile:
 
@@ -346,9 +346,9 @@ Nice! As you can see, we can quite easily access to our Oracle database using No
 
 And, last in the alphabetical order; let's finish with a PHP container:
 
-```bash
-mkdir -p /tmp/oracle/php && cd $_
-```
+<Terminal>
+$ mkdir -p /tmp/oracle/php && cd $_
+</Terminal>
 
 And there, let's create a Dockerfile:
 
@@ -488,9 +488,9 @@ Still in the console, located in folder `/tmp/oracle/php`, create the Docker ima
 
 Let's create a Python script now:
 
-```bash
-mkdir -p /tmp/oracle/python && cd $_
-```
+<Terminal>
+$ mkdir -p /tmp/oracle/python && cd $_
+</Terminal>
 
 And his Dockerfile; the only thing we need (except Python) is to install the `oracledb` dependency. Quite straightforward.
 

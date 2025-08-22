@@ -42,24 +42,23 @@ end.
 
 As you know, Pascal is a compiled language and should then be compiled into an `.exe`. The command below will do this:
 
-```bash
-❯ docker run -it --rm -v %CD%:/app -w /app signumtemporis/fpc:cross.x86_64-win64.slim Hello.pas
-
+<Terminal title="Powershell">
+$ docker run -it --rm -v %CD%:/app -w /app signumtemporis/fpc:cross.x86_64-win64.slim Hello.pas
 Free Pascal Compiler version 3.2.2 [2021/12/10] for x86_64
 Copyright (c) 1993-2021 by Florian Klaempfl and others
 Target OS: Win64 for x64
 Compiling Hello.pas
 Linking Hello.exe
 2 lines compiled, 0.1 sec, 32432 bytes code, 1508 bytes data
-```
+</Terminal>
 
 Our executable has been created. Time to start it by running `Hello.exe`:
 
-```bash
-❯ Hello.exe
+<Terminal title="Powershell">
+$ Hello.exe
 
 Hello world! I'm a Turbo Pascal source code
-```
+</Terminal>
 
 Voilà, we've successfully created our first Pascal code in 2023.
 
@@ -116,23 +115,21 @@ The `shl` instruction will shift the number from on byte left.
 
 And compiled it:
 
-```bash
-❯ docker run -it --rm -v %CD%:/workspace signumtemporis/fpc:cross.x86_64-win64.slim Byte2Bin.pas
-
+<Terminal title="Powershell">
+$ docker run -it --rm -v %CD%:/workspace signumtemporis/fpc:cross.x86_64-win64.slim Byte2Bin.pas
 Free Pascal Compiler version 3.2.2 [2021/12/10] for x86_64
 Copyright (c) 1993-2021 by Florian Klaempfl and others
 Target OS: Win64 for x64
 Compiling Byte2Bin.pas
 Linking Byte2Bin.exe
 20 lines compiled, 0.1 sec, 32656 bytes code, 1508 bytes data
-```
+</Terminal>
 
 As you can see in the source code, the idea was to show the binary representation of `197` and, yes!, it's indeed `11000101`. Still in 2023.
 
-```bash
-❯ Byte2Bin.exe
-
+<Terminal title="Powershell">
+$ Byte2Bin.exe
 11000101
-```
+</Terminal>
 
 OK, so the point of running TP7 code in 2023 is minimal and useless, but it is well fun to see it still works.

@@ -26,9 +26,9 @@ Here are the steps I followed to create this blog.
 
 Since I really like the simplicity of Docker, I will not install NodeJs on my machine but use the official Docker image
 
-```bash
-docker run --rm --name blog --user $UID:$GID -it -v ${PWD}/:/project -w /project node /bin/bash
-```
+<Terminal>
+$ {`docker run --rm --name blog --user \$UID:\$GID -it -v \${PWD}/:/project -w /project node /bin/bash`}
+</Terminal>
 
 The instruction here above will download NodeJs (the latest version) on my machine if not yet present and create a running instance (called a *container* of it). The flag `--user $UID:$GID` is used to start the container using the same credentials than my local one (i.e., reuse my local Unix `christophe` user so files/folders created in the container will be owned by my local user).
 
@@ -38,21 +38,21 @@ And finally, I run an interactive shell since I have mentioned `/bin/bash` as en
 
 Now that I have a prompt in the container, I will create my blog using Docusaurus (as explained in the [official documentation](https://docusaurus.io/docs/installation)).
 
-```bash
-npx create-docusaurus@latest blog classic --javascript
-```
+<Terminal>
+$ npx create-docusaurus@latest blog classic --javascript
+</Terminal>
 
 After a long time, the blog folder is created and I can take a look on his content:
 
-```bash
-❯ tree -d -L 1
+<Terminal>
+$ tree -d -L 1
 .
 ├── blog
 ├── docs
 ├── node_modules
 ├── src
 └── static
-```
+</Terminal>
 
 The installation step is now finished, I will exit the container and return to my computer, to do this, from the Docker console, I just type `exit`.
 
@@ -62,10 +62,12 @@ Back to my computer, I will now go inside my `blog` folder (`cd blog`) and run t
 
 Instead of running an interactive shell session I prefer to run `/bin/bash -c "npx docusaurus start"` to run Docusaurus watcher and serve my files:
 
-```bash
-cd blog
-docker run --rm -it --name blog --user $UID:$GID -v ${PWD}/:/project -w /project -p 3000:3000 node /bin/bash -c "npx docusaurus start --host 0.0.0.0"
-```
+<Terminal>
+$ cd blog
+...
+$ {`docker run --rm -it --name blog --user \$UID:\$GID -v \${PWD}/:/project -w /project -p 3000:3000 node /bin/bash -c "npx docusaurus start --host 0.0.0.0"`}
+...
+</Terminal>
 
 After a few seconds, the container is ready to use and I surf to my site by going to `http://localhost:3000`.
 
@@ -83,14 +85,14 @@ For keeping things manageable, I will only keep the blog and remove the tutorial
 
 Now, I can remove the `/docs` folder from my `blog` directory:
 
-```bash
-❯ tree -d -L 1
+<Terminal>
+$ tree -d -L 1
 .
 ├── blog
 ├── node_modules
 ├── src
 └── static
-```
+</Terminal>
 
 I will also make some changes to files like `docusaurus.config.js` or `blog/authors.yml` to fit my needs.
 
@@ -214,13 +216,18 @@ Adding Giscus to allow comments and feedback.
 
 On Github.com, I have created a new repository called `blog` ([https://github.com/cavo789/blog](https://github.com/cavo789/blog)). This done, back to my console and I run a few git commands:
 
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin git@github.com:cavo789/blog
-git push -u origin master
-```
+<Terminal>
+$ git init
+...
+$ git add .
+...
+$ git commit -m "Initial commit"
+...
+$ git remote add origin git@github.com:cavo789/blog
+...
+$ git push -u origin master
+...
+</Terminal>
 
 This done, I have thus pushed my files to Github as foresee by Docusaurus i.e., for instance, the `/node_modules` is not part of my repo; which is fine since we will create that folder later by running some npx command on the web server where the site will be hosted.
 

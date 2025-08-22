@@ -35,12 +35,12 @@ After a quick search on github.com, I've found a nice free one page html5/css3 t
 
 Let's download the **Sedna** demo site in a temporary folder on our hard disk, unzip the file, rename the default folder name `Sedna-master` to `src` and run the website using Docker:
 
-```bash
-mkdir -p /tmp/https_localhost && cd $_
-wget https://github.com/peterfinlan/Sedna/archive/refs/heads/master.zip
-unzip master.zip && rm master.zip && mv Sedna-master src
-docker run -d --name static-site -p 80:80 -v ./src:/usr/local/apache2/htdocs httpd:2.4
-```
+<Terminal>
+$ mkdir -p /tmp/https_localhost && cd $_
+$ wget https://github.com/peterfinlan/Sedna/archive/refs/heads/master.zip
+$ unzip master.zip && rm master.zip && mv Sedna-master src
+$ docker run -d --name static-site -p 80:80 -v ./src:/usr/local/apache2/htdocs httpd:2.4
+</Terminal>
 
 Once these commands have been fired, please jump to `http://locahost:8080` and you'll get this:
 
@@ -53,9 +53,9 @@ The site is running using the http protocol but https is not yet possible. So, l
 
 Right now, please remove the running container; we'll create it back later on:
 
-```bash
-docker container rm static-site --force
-```
+<Terminal>
+$ docker container rm static-site --force
+</Terminal>
 
 ### Creation of some files we will need
 
@@ -156,13 +156,13 @@ Still in our `/tmp/https_localhost` folder, please create a directory called `ss
 
 To do this, you can just copy/paste the code below in your console:
 
-```bash
-mkdir -p ssl
+<Terminal>
+$ mkdir -p ssl
 (
     cd ssl
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=US/ST=MyCountry/L=MyCity/O=MyOrganization/CN=localhost"
 )
-```
+</Terminal>
 
 The console will display a list of characters but you'll get two new files in the current directory: `server.crt` and `server.key`.
 
@@ -383,16 +383,15 @@ Because the majority of examples I found used a PHP or Nginx image and not Apach
 
 If you want to use curl to test your website, you'll get an error:
 
-```bash
-❯ curl https://localhost
-
+<Terminal>
+$ curl https://localhost
 curl: (60) SSL certificate problem: self-signed certificate
 More details here: https://curl.se/docs/sslcerts.html
-
+.
 curl failed to verify the legitimacy of the server and therefore could not
 establish a secure connection to it. To learn more about this situation and
 how to fix it, please visit the web page mentioned above.
-```
+</Terminal>
 
 As explained above, the certificate is not valid so you have to use the `--insecure` flag and thus run: `curl https://localhost --insecure`.
 
@@ -574,11 +573,11 @@ To do this, we simply need to copy our `.crt` file to our `/usr/local/share/ca-c
 
 The code below will install the certificate we've created in the blog post (`ssl/server.crt`) to the `/usr/local/share/ca-certificates` then run the `update-ca-certificates` command:
 
-```bash
-sudo apt-get install -y ca-certificates
-sudo cp ssl/server.crt /usr/local/share/ca-certificates
-sudo update-ca-certificates
-```
+<Terminal>
+$ sudo apt-get install -y ca-certificates
+$ sudo cp ssl/server.crt /usr/local/share/ca-certificates
+$ sudo update-ca-certificates
+</Terminal>
 
 :::note The certificate should have the .crt extension
 :::

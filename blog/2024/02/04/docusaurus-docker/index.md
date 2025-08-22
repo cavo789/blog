@@ -121,22 +121,19 @@ Just to have a bit of content, let's create a few articles automatically.
 
 Please run the following commands to create three Markdown files (our posts) in the `blog` folder:
 
-```bash
-(
+<Terminal>
+$ (
   mkdir -p blog && cd $_
-
   echo '---' > 2024-02-04-welcome-world.md
   echo 'title: Hello World!' >> 2024-02-04-welcome-world.md
   echo '---' >> 2024-02-04-welcome-world.md
   echo 'Hello world! Proud to be here!!!' >> 2024-02-04-welcome-world.md
-
   echo '---' > 2024-02-05-my-first-post.md
   echo 'title: My first blog post' >> 2024-02-05-my-first-post.md
   echo '---' >> 2024-02-05-my-first-post.md
   echo 'My first blog post' >> 2024-02-05-my-first-post.md
   echo '' >> 2024-02-05-my-first-post.md
   echo '![Unsplash random](https://source.unsplash.com/random?dinosaure)' >> 2024-02-05-my-first-post.md
-
   echo '---' > 2024-02-06-my-second-post.md
   echo 'title: My second blog post' >> 2024-02-06-my-second-post.md
   echo '---' >> 2024-02-06-my-second-post.md
@@ -144,13 +141,12 @@ Please run the following commands to create three Markdown files (our posts) in 
   echo '' >> 2024-02-06-my-second-post.md
   echo '![Unsplash random](https://source.unsplash.com/random?dinosaure)' >> 2024-02-06-my-second-post.md
 )
-```
+</Terminal>
 
 So if you take the time to look at what we've now in our `/tmp/docusaurus` folder, here is the list of files / folders:
 
-```bash
-❯ tree -a -L 2
-
+<Terminal>
+$ tree -a -L 2
 .
 ├── .dockerignore
 ├── Dockerfile
@@ -159,7 +155,7 @@ So if you take the time to look at what we've now in our `/tmp/docusaurus` folde
 │   ├── 2024-02-05-my-first-post.md
 │   └── 2024-02-06-my-second-post.md
 └── compose.yaml
-```
+</Terminal>
 
 :::info `tree` is not part of core Linux installation
 Just in case you're interested by the `tree` utility and don't have yet, simply run `sudo apt-get update && sudo apt-get install tree` to install it. This step is optional.
@@ -169,9 +165,9 @@ Just in case you're interested by the `tree` utility and don't have yet, simply 
 
 At this stage of the tutorial, you've all required files and a few blog posts so, let's start everything:
 
-```bash
-docker compose up --detach --build
-```
+<Terminal>
+$ docker compose up --detach --build
+</Terminal>
 
 After a few minutes (only the first time), your Docusaurus Docker image will be created and a container will be started.
 

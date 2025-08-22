@@ -38,11 +38,10 @@ Ok, so now, how to run that script? Because I'm familiar with Docker, I know tha
 3. I'll need share my script using a volume and
 4. I need to know how to run the script.
 
-```bash
-❯ docker run -it --rm -v ${PWD}:/app -w /app python python Hello.py
-
+<Terminal>
+$ {`docker run -it --rm -v \${PWD}:/app -w /app python python Hello.py`}
 Hello World!
-```
+</Terminal>
 
 And voilà, my first Python script has been written. Remember the old days, before Docker, how many hours and how much reading did you need to be able to run your first script? **Here, it didn't take me five minutes to get up and running.**
 

@@ -84,14 +84,13 @@ The indentation in a makefile **SHOULD BE** made using tabs and not spaces, this
 
 That file contains a few *targets* (=actions) and a simple `printf` statement to display a text. Except echoing something into the console that `makefile` does nothing.
 
-```bash
-❯ ls -alh
-
+<Terminal>
+$ ls -alh
 total 920K
 drwxr-xr-x  2 christophe christophe 4.0K Dec  10 12:19 .
 drwxrwxrwt 17 root       root       908K Dec  10 12:19 ..
 -rw-r--r--  1 christophe christophe 1.4K Dec  10 12:19 makefile
-```
+</Terminal>
 
 ## Adding the default action
 
@@ -109,11 +108,10 @@ In the absence of a `default:` action defined in the file, like in your example,
 
 So, right now, if you run `make` (without any other arguments), you'll get the *Start an interactive shell...* message, that's the result of the `bash:` target; the first in the file
 
-```bash
-❯ make
-
+<Terminal>
+$ make
 Start an interactive shell in the Docker container; type exit to quit
-```
+</Terminal>
 
 Please edit the file and add the highlighted line below:
 
@@ -164,12 +162,12 @@ help: ## Show the help with the list of commands
 
 Right now, if you type `make` on your console, you'll get this:
 
-```bash
+<Terminal wrap={false}>
 Usage:
-  make <target>
-
+  make \<target>
+.
   help                  Show the help with the list of commands
-```
+</Terminal>
 
 ### Step 3 - Add a description for each target
 

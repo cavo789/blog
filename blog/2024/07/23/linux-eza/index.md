@@ -34,9 +34,9 @@ From now, simply run `eza` on the command line and you'll get the list of files 
 
 On my computer, I've chosen for this list of parameters: `--all --long --group --group-directories-first --icons --header --time-style long-iso` and, for sure, I've update by `~/.bashrc` file by adding an alias:
 
-```bash
-alias ls='eza --all --long --group --group-directories-first --icons --header --time-style long-iso'
-```
+<Terminal>
+$ alias ls='eza --all --long --group --group-directories-first --icons --header --time-style long-iso'
+</Terminal>
 
 And, now, by just typing `ls`, I'll get this:
 

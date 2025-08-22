@@ -63,11 +63,11 @@ echo "${counter}" > /data/counter.txt
 
 Now, just create the Docker image by running `docker build -t demo/counter .`.
 
-```bash
-❯ docker image list
+<Terminal>
+$ docker image list
 REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
 demo/counter   latest    89505911ec33   21 minutes ago   5.61MB
-```
+</Terminal>
 
 :::tip Can't be smaller
 As you can see, our image is really small. This is the advantage using the alpine Docker image.
@@ -94,43 +94,44 @@ services:
 
 We'll run our container by running `docker compose up --detach`:
 
-```bash
-❯ docker compose up --detach
+<Terminal>
+$ docker compose up --detach
 [+] Building 0.0s (0/0)                    docker:default
 [+] Running 3/3
  ✔ Network demo_default  Created           0.2s
  ✔ Volume "demo_data"    Created           0.1s
  ✔ Container counter     Started
-```
+</Terminal>
 
 We can verify our container is running using `docker container list` (simplified output):
 
-```bash
-❯ docker container list
+<Terminal>
+$ docker container list
 CONTAINER ID   IMAGE          STATUS          NAMES
 6296459f7827   demo/counter   Up 30 seconds   counter
-```
+</Terminal>
 
 ### Calling our container for the first time
 
 `docker compose exec counter /counter.sh` is the command to use to execute our script and we'll call it multiple times:
 
-```bash
-❯ docker compose exec counter /counter.sh
+<Terminal>
+$ docker compose exec counter /counter.sh
 You have executed this script 1 times.
-
-❯ docker compose exec counter /counter.sh
+...
+$ docker compose exec counter /counter.sh
 You have executed this script 2 times.
-
-❯ docker compose exec counter /counter.sh
+...
+$ docker compose exec counter /counter.sh
 You have executed this script 3 times.
-
-❯ docker compose exec counter /counter.sh
+...
+$ docker compose exec counter /counter.sh
 You have executed this script 4 times.
-
-❯ docker compose exec counter /counter.sh
+...
+$ docker compose exec counter /counter.sh
 You have executed this script 5 times.
-```
+...
+</Terminal>
 
 Ok so we have validated that our counter is working fine.
 
@@ -138,10 +139,11 @@ What about if we stop the container and start it again by running `docker compos
 
 Running our counter again:
 
-```bash
-❯ docker compose exec counter /counter.sh
+<Terminal>
+$ docker compose exec counter /counter.sh
 You have executed this script 1 times.
-```
+...
+</Terminal>
 
 :::caution We've lost our data
 As you can see, we've lost our counter. By stopping and starting the container, our data has been lost. And that's perfectly normal, because that's the intrinsic concept of a Docker container: it's ephemeral. **A container should be disposable; by restarting it, the container is reset.**
@@ -185,32 +187,37 @@ We'll start our container again: `docker compose down ; docker compose up --deta
 
 But now, we should have a Docker volume called `counter_data`; let's check:
 
-```bash
-❯ docker volume list
+<Terminal>
+$ docker volume list
 DRIVER    VOLUME NAME
 local     demo_counter_data
-```
+</Terminal>
 
 Yes, we've it.
 
 Let's try again some calls then stop/restart and a few calls then:
 
-```bash
-❯ docker compose exec counter /counter.sh
+<Terminal>
+$ docker compose exec counter /counter.sh
 Creating /data/counter.txt ...
 You have executed this script 1 times.
-❯ docker compose exec counter /counter.sh
+...
+$ docker compose exec counter /counter.sh
 You have executed this script 2 times.
-❯ docker compose exec counter /counter.sh
+...
+$ docker compose exec counter /counter.sh
 You have executed this script 3 times.
-❯ docker compose exec counter /counter.sh
+...
+$ docker compose exec counter /counter.sh
 You have executed this script 4 times.
-❯ docker compose exec counter /counter.sh
+...
+$ docker compose exec counter /counter.sh
 You have executed this script 5 times.
-❯ docker compose exec counter /counter.sh
+...
+$ docker compose exec counter /counter.sh
 You have executed this script 6 times.
-
-❯ docker compose down ; docker compose up --detach
+...
+$ docker compose down ; docker compose up --detach
 [+] Running 2/2
  ✔ Container counter     Removed    11.1s
  ✔ Network demo_default  Removed     0.5s
@@ -218,16 +225,16 @@ You have executed this script 6 times.
 [+] Running 2/2
  ✔ Network demo_default  Created     0.2s
  ✔ Container counter     Started     0.7s
-
-❯ docker compose exec counter /counter.sh
+...
+$ docker compose exec counter /counter.sh
 You have executed this script 7 times.
-❯ docker compose exec counter /counter.sh
+$ docker compose exec counter /counter.sh
 You have executed this script 8 times.
-❯ docker compose exec counter /counter.sh
+$ docker compose exec counter /counter.sh
 You have executed this script 9 times.
-❯ docker compose exec counter /counter.sh
+$ docker compose exec counter /counter.sh
 You have executed this script 10 times.
-```
+</Terminal>
 
 :::tip So, our counter was well persistent this time
 As you can see, by running `down` followed by `up`, we have kept the value of our counter. This value is saved in a file which is now stored in a Docker volume. As long as we don't delete the volume, our value will be preserved.
@@ -235,10 +242,10 @@ As you can see, by running `down` followed by `up`, we have kept the value of ou
 
 You can remove the volume by running `docker volume rm demo_counter_data` but:
 
-```bash
-❯ docker volume rm demo_counter_data
+<Terminal>
+$ docker volume rm demo_counter_data
 Error response from daemon: remove demo_counter_data: volume is in use - [b976c92eed6ed4e54f6ec75d652b8977bbbd86392e604216dd61d0c446e1fc0c]
-```
+</Terminal>
 
 Indeed, you can't remove a volume if there is still, at least, one container who use it so, you should run `docker compose down && docker volume rm demo_counter_data` or, simpler, `docker compose down --volumes`. The `--volumes` flag says to remove any volume declared in the `compose.yaml` file.
 
@@ -254,17 +261,17 @@ Volumes are stored *somewhere* on the disk by Docker, you don't need to take car
   ]}
 />
 
-```bash
-> cd /tmp/counter
-
-> ls -alh
+<Terminal>
+$ cd /tmp/counter
+...
+$ ls -alh
 total 28K
 drwxr-xr-x  2 christophe christophe 4.0K Nov 22 09:40 .
 drwxrwxrwt 28 root       root        12K Nov 22 09:35 ..
 -rw-r--r--  1 christophe christophe  109 Nov 22 09:36 Dockerfile
 -rw-r--r--  1 christophe christophe  287 Nov 22 10:00 counter.sh
 -rw-r--r--  1 christophe christophe  190 Nov 22 10:09 compose.yaml
-```
+</Terminal>
 
 :::info Files are not stored in our project
 As you can see, we've only our files, not the counter. Files stored in a volume managed by Docker aren't stored in our project's directory.
@@ -292,10 +299,10 @@ By double-clicking on the filename, you'll start a basic text editor where you c
 
 A new call to our counter shows that we have hacked the number:
 
-```bash
-❯ docker compose exec counter /counter.sh
+<Terminal>
+$ docker compose exec counter /counter.sh
 You have executed this script 51 times.
-```
+</Terminal>
 
 #### Using vscode
 
@@ -319,10 +326,10 @@ Now, you can edit that file from vscode, make changes and save them.
 
 ![VSCode - Accessing to files in the container](./images/vscode.png)
 
-```bash
-❯ docker compose exec counter /counter.sh
+<Terminal>
+$ docker compose exec counter /counter.sh
 You have executed this script 101 times.
-```
+</Terminal>
 
 Yes, accessing files using vscode works too.
 
@@ -357,21 +364,23 @@ The syntax now is, just a few, different: we don't have a `volumes` entry at the
 
 By running `docker compose up --detach && docker compose exec counter /counter.sh` we'll run our counter and expect to see `You have executed this script 1 times.` but you'll probably get an error:
 
-```bash
-❯ docker compose exec counter /counter.sh
+<Terminal>
+$ docker compose exec counter /counter.sh
 Creating /data/counter.txt ...
+...
 /counter.sh: line 6: can't create /data/counter.txt: nonexistent directory
 cat: can't open '/data/counter.txt': No such file or directory
 You have executed this script 1 times.
+...
 /counter.sh: line 13: can't create /data/counter.txt: nonexistent directory
-```
+</Terminal>
 
 We need to create our local `data` folder:
 
-```bash
-❯ mkdir data
-
-❯ ls -alh
+<Terminal>
+$ mkdir data
+...
+$ ls -alh
 total 32K
 drwxr-xr-x  3 christophe christophe 4.0K Nov 22 10:54 .
 drwxrwxrwt 28 root       root        12K Nov 22 09:35 ..
@@ -379,29 +388,29 @@ drwxrwxrwt 28 root       root        12K Nov 22 09:35 ..
 -rw-r--r--  1 christophe christophe  287 Nov 22 10:00 counter.sh
 drwxr-xr-x  2 christophe christophe 4.0K Nov 22 10:54 data
 -rw-r--r--  1 christophe christophe  149 Nov 22 10:48 compose.yaml
-```
+</Terminal>
 
 Now that we've our data folder, try again:
 
-```bash
-❯ docker compose up --detach && docker compose exec counter /counter.sh
+<Terminal>
+$ docker compose up --detach && docker compose exec counter /counter.sh
 [+] Building 0.0s (0/0)        docker:default
 [+] Running 2/2
  ✔ Network demo_default  Created         0.2s
  ✔ Container counter     Started         0.8s
 Creating /data/counter.txt ...
 You have executed this script 1 times.
-```
+</Terminal>
 
 This time, the `counter.txt` file is present in our directory:
 
-```bash
-❯ ls -alh data
+<Terminal>
+$ ls -alh data
 total 12K
 drwxr-xr-x 2 christophe christophe 4.0K Nov 22 10:56 .
 drwxr-xr-x 3 christophe christophe 4.0K Nov 22 10:54 ..
 -rw-r--r-- 1 root       root          2 Nov 22 10:56 counter.txt
-```
+</Terminal>
 
 :::caution Ouch, the file is owned by `root` not me
 Uh oh! The file is owned by the root user and not me (i.e. user `christophe` in my case). That's annoying since I can't edit it or remove it without using `sudo`.
@@ -440,21 +449,25 @@ Then run `docker compose down && docker compose up --detach && docker compose ex
 
 Now, the file will be yours:
 
-```bash
-❯ ls -alh data
+<Terminal>
+$ ls -alh data
 total 12K
 drwxr-xr-x 2 christophe christophe 4.0K Nov 22 10:56 .
 drwxr-xr-x 3 christophe christophe 4.0K Nov 22 10:54 ..
 -rw-r--r-- 1 christophe christophe    2 Nov 22 10:56 counter.txt
-```
+</Terminal>
 
 ## Conclusion
 
-We've seen three ways of playing with data:
-
-1. We don't care about data,
-2. We rely on Docker to manage the volume for us and
-3. We really value our data and want it to be part of our project.
+<StepsCard
+  title="We've seen three ways of playing with data:"
+  variant="remember"
+  steps={[
+    "We don't care about data,",
+    "We rely on Docker to manage the volume for us and",
+    "We really value our data and want it to be part of our project."
+  ]}
+/>
 
 Depending on your needs, you can opt for one of three solutions.
 

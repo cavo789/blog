@@ -62,19 +62,18 @@ services:
 
 Now, simply run the following command to download (only the first time) required images (LimeSurvey and MySQL) and create the two containers:
 
-```bash
-docker compose up --detach
-```
+<Terminal>
+$ docker compose up --detach
+</Terminal>
 
 Once everything has been downloaded and started, you can check you've well two containers by running the following command:
 
-```bash
-❯ docker container list
-
+<Terminal>
+$ docker container list
 [...] IMAGE                         [...] NAMES
 [...] martialblog/limesurvey:latest [...] limesurvey-app
 [...] mysql:latest                  [...] limesurvey-db
-```
+</Terminal>
 
 :::info The output above has been simplified
 For clarity, the output of `docker container list` has been simplified here above; not all columns were mentioned in the article.

@@ -52,9 +52,9 @@ Let's begin. Start a new console (DOS, Powershell or Linux) and run the instruct
 
 Docker will, the very first time, download PHP `7.4.29` (including Apache) and, once downloaded, start the image:
 
-```bash
-docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache
-```
+<Terminal>
+$ docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache
+</Terminal>
 
 :::tip
 On subsequent runs, the PHP image is already present, so it is no longer downloaded.
@@ -91,17 +91,17 @@ The site is functional, Apache is ready, but there's no index.php file; let's ad
 
 With the instruction below, we can launch a Linux console and display the contents of the image *as if* it were a folder on our hard disk:
 
-```bash
-docker exec -it step_1_1a /bin/bash
-```
+<Terminal>
+$ docker exec -it step_1_1a /bin/bash
+</Terminal>
 
 Once in the console, let's quickly create an `index.php` file and exit the console; we will not need it again.
 
-```bash
-echo "<?php" > index.php
-echo "phpinfo();" >> index.php
-exit
-```
+<Terminal>
+$ echo "\<\?php" > index.php
+$ echo "phpinfo();" >> index.php
+$ exit
+</Terminal>
 
 Back to our browser and... Bingo! Our first Docker instance running a PHP script!
 
@@ -109,28 +109,28 @@ Back to our browser and... Bingo! Our first Docker instance running a PHP script
 
 Let us go back to the instruction we used before:
 
-```bash
-docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache
-```
+<Terminal>
+$ docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache
+</Terminal>
 
 This shows that we are targeting PHP version 7.4.29. By going to the page
 [https://hub.docker.com/_/php?tab=tags](https://hub.docker.com/_/php?tab=tags) and searching for `-apache` images, you'll find versions such as `php:8.1.1-apache` or `php:8.1.5-apache`.
 
 Let's change `7.4.29` to `8.1.5` and, for the example, use another port (we will use `801` this time).
 
-```bash
-docker run --detach --name step_1_1b -p 801:80 php:8.1.5-apache
-```
+<Terminal>
+$ docker run --detach --name step_1_1b -p 801:80 php:8.1.5-apache
+</Terminal>
 
-```bash
-docker exec -it step_1_1b /bin/bash
-```
+<Terminal>
+$ docker exec -it step_1_1b /bin/bash
+</Terminal>
 
-```bash
-echo "<?php" > index.php
-echo "phpinfo();" >> index.php
-exit
-```
+<Terminal>
+$ echo "\<\?php" > index.php
+$ echo "phpinfo();" >> index.php
+$ exit
+</Terminal>
 
 ![phpinfo - PHP 8.1.5](./images/phpinfo_8_1_5.png)
 
@@ -140,11 +140,15 @@ exit
 This is just crazy in fact. Think of the benefits: you are developing a PHP script and want to check whether it works with different versions of PHP. It's child's play.
 :::
 
-At the end of this chapter, we've just learned:
-
-* how to use Docker,
-* define the PHP version we want to use,
-* how to name our containers,
-* define different ports for different containers.
+<StepsCard
+  title="At the end of this chapter, we've just learned:"
+  variant="remember"
+  steps={[
+    "how to use Docker,",
+    "define the PHP version we want to use,",
+    "how to name our containers,",
+    "define different ports for different containers."
+  ]}
+/>
 
 Now let's move up a gear and synchronize the files on our hard disk with the container.

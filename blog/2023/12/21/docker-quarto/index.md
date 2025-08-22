@@ -109,9 +109,8 @@ RUN set -e -x && \
 
 This done, please run `docker build -t cavo789/quarto .` and after something like three minutes the first time, you'll get your own Docker image:
 
-```bash
-❯ docker build -t cavo789/quarto .
-
+<Terminal wrap={false} >
+$ docker build -t cavo789/quarto .
 [+] Building 183.3s (9/9) FINISHED                                                docker:default
  => [internal] load build definition from Dockerfile                                        0.1s
  => => transferring dockerfile: 1.80kB                                                      0.0s
@@ -136,7 +135,7 @@ This done, please run `docker build -t cavo789/quarto .` and after something lik
  => => exporting layers                                                                     1.9s
  => => writing image sha256:f7222fdd5856beb8fb209a609fc9271a0f8f3a586449bc5d90a6b338e54453  0.0s
  => => naming to docker.io/cavo789/quarto                                                   0.0s
-```
+</Terminal>
 
 :::tip Choose your own name
 The previous instruction `docker build -t cavo789/quarto .` has created an image called `cavo789/quarto`. You can for sure choose a different name without any impact on the image.
@@ -144,11 +143,10 @@ The previous instruction `docker build -t cavo789/quarto .` has created an image
 
 You can quickly check the size of your image; quite huge but except you're very low in memory / disk space; this is really not a big deal.
 
-```bash
-❯ docker image list | grep quarto
-
+<Terminal>
+$ docker image list | grep quarto
 cavo789/quarto  latest  fe1d20bd71a6  1 minute ago  1.55GB
-```
+</Terminal>
 
 ### Use an existing image
 
@@ -192,9 +190,8 @@ As a reminder, the used Docker run command are (almost always the same):
 
 So, let's convert to PDF and run `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf` in your console.
 
-```bash
-❯ docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf`
-
+<Terminal>
+$ docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf
 pandoc
   to: latex
   output-file: test.tex
@@ -204,7 +201,7 @@ pandoc
     graphics: true
     tables: true
   default-image-extension: pdf
-
+.
 metadata
   documentclass: scrartcl
   classoption:
@@ -212,23 +209,22 @@ metadata
     - numbers=noendperiod
   papersize: letter
   header-includes:
-    - \KOMAoption{captions}{tableheading}
+    - \KOMAoption\{captions}\{tableheading}
   block-headings: true
-
-
+.
 Rendering PDF
 running xelatex - 1
   This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex)
    restricted \write18 enabled.
   entering extended mode
-
+.
 running xelatex - 2
   This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex)
    restricted \write18 enabled.
   entering extended mode
-
+.
 Output created: test.pdf
-```
+</Terminal>
 
 ![Your PDF file](./images/pdf_version.png)
 

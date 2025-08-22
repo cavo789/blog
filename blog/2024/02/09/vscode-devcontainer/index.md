@@ -37,20 +37,26 @@ By using a **devcontainer**, you (and your team colleague) will use a preinstall
 :::tip Download the project
 This article is written in the form of a step-by-step tutorial. If you don't want to take the time to create the configuration files yourself and download them directly, please run the commands below in a Linux console. You'll then get all the files and every time the tutorial below tells you to create a file, you'll already have it.
 
-```bash
-mkdir /tmp/devcontainer_php && cd $_
+<Terminal>
+$ mkdir /tmp/devcontainer_php && cd $_
+...
 curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
+...
 tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devcontainer-1.0.0.tar.gz
-```
+...
+</Terminal>
 
 :::note Download the very latest version
 The php_devcontainer repository will evolve over time. If you wish to download the latest version and not the use frozen for this article, please use the following commands and not the ones of here above:
 
-```bash
-mkdir /tmp/devcontainer_php && cd $_
-curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/heads/main.tar.gz
-tar -xzvf php_devcontainer-main.tar.gz --strip-components 1 && rm -f php_devcontainer-main.tar.gz
-```
+<Terminal>
+$ mkdir /tmp/devcontainer_php && cd $_
+...
+$ curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/heads/main.tar.gz
+...
+$ tar -xzvf php_devcontainer-main.tar.gz --strip-components 1 && rm -f php_devcontainer-main.tar.gz
+...
+</Terminal>
 
 :::
 
@@ -497,9 +503,9 @@ One step further: is it possible to run `PHP-CS-Fixer` not just on the file bein
 
 In VSCode, please press <kbd>CTRL</kbd>+<kbd>´</kbd> (or click on the `View` menu then `Terminal`) to open a terminal. Make sure you're in the `/var/www/html` folder (run `cd /var/www/html` if needed) and run the following command:
 
-```bash
-/usr/local/bin/php-cs-fixer.phar fix --config /var/www/html/.config/.php-cs-fixer.php .
-```
+<Terminal>
+$ /usr/local/bin/php-cs-fixer.phar fix --config /var/www/html/.config/.php-cs-fixer.php .
+</Terminal>
 
 This will run `PHP-CS-Fixer` on all your codebase (`.`). If you want to exclude some folders, open the `.config/.php-cs-fixer.php` file and update the `exclude` array.
 
@@ -601,9 +607,9 @@ Now, since we have defined our coding standard (`PSR12` here), just display the 
 
 Open a terminal by pressing <kbd>CTRL</kbd>+<kbd>´</kbd> (or by clicking on the `View` menu then `Terminal`) and run this command:
 
-```bash
-/usr/local/bin/phpcs.phar --standard=/var/www/html/.config/phpcs.xml /var/www/html/index.php
-```
+<Terminal>
+$ /usr/local/bin/phpcs.phar --standard=/var/www/html/.config/phpcs.xml /var/www/html/index.php
+</Terminal>
 
 And you'll get this output:
 
@@ -625,9 +631,9 @@ There is one warning and one error concerning *coding convention violation* and 
 
 Now, run almost the same command but no more `phpcs` (to detect violations) but `phpcbf` (to fix them -the ones that can be fixed automatically-).
 
-```bash
-/usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml /var/www/html/index.php
-```
+<Terminal>
+$ /usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml /var/www/html/index.php
+</Terminal>
 
 You'll get this:
 
@@ -791,9 +797,9 @@ If you're thinking *Yes, but I haven't installed composer...*, well, it's wrong.
 
 The second step in the installation guide asks us to run the command below. When prompted, please answer `yes` to create your `rector.php` configuration file.
 
-```bash
-vendor/bin/rector
-```
+<Terminal>
+$ vendor/bin/rector
+</Terminal>
 
 Finally, open the `rector.php` configuration file and update it like this:
 
@@ -867,9 +873,9 @@ And if you think it's over, you're wrong. Rector now look at our function parame
 
 Since we've analyzed the suggestions of Rector and we agree with, please rerun the same command but, this time, without, the `--dry-run` flag.
 
-```bash
-vendor/bin/rector process index.php --config .config/rector.php
-```
+<Terminal>
+$ vendor/bin/rector process index.php --config .config/rector.php
+</Terminal>
 
 Rector has updated our `index.php` file! **Now, our function is just one line and no more seven. Nice improvement!**
 
@@ -916,9 +922,9 @@ echo sayHello();
 
 Back in your terminal and run the command below to scan your entire codebase.
 
-```bash
-vendor/bin/rector process . --dry-run --config .config/rector.php
-```
+<Terminal>
+$ vendor/bin/rector process . --dry-run --config .config/rector.php
+</Terminal>
 
 ##### Dry-run means no changes are made, just displayed
 

@@ -20,9 +20,9 @@ There are tons of *self-hosted monitoring tools*; one of them is [Uptime Kuma](h
 
 As read in the [official documentation](https://github.com/louislam/uptime-kuma#-docker), you can easily start it using the command below.
 
-```bash
-docker run -d --restart=always -p 3001:3001 -v ${PWD}:/app/data --name uptime-kuma louislam/uptime-kuma:1
-```
+<Terminal>
+$ {`docker run -d --restart=always -p 3001:3001 -v \${PWD}:/app/data --name uptime-kuma louislam/uptime-kuma:1`}
+</Terminal>
 
 ![Dashboard](./images/dashboard.png)
 

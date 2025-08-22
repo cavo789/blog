@@ -52,10 +52,9 @@ Please run `code ~/.bashrc` (or `code ~/.zshrc` if you're using Oh-my-ZSH); sear
 
 <Snippet filename="~/.bashrc">
 
-```bash
-# Add Pentaho to the path
-PATH="$HOME/tools/pentaho/data-integration:$PATH"
-```
+<Terminal>
+$ PATH="$HOME/tools/pentaho/data-integration:$PATH"
+</Terminal>
 
 </Snippet>
 

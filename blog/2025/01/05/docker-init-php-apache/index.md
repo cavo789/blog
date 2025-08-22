@@ -34,10 +34,10 @@ Let's play...
 
 First, we'll create a temporary folder and grab a copy of the script:
 
-```bash
-mkdir -p /tmp/aesecure_quickscan && cd $_
-curl https://raw.githubusercontent.com/cavo789/aesecure_quickscan/master/aesecure_quickscan.php -o index.php
-```
+<Terminal>
+$ mkdir -p /tmp/aesecure_quickscan && cd $_
+$ curl https://raw.githubusercontent.com/cavo789/aesecure_quickscan/master/aesecure_quickscan.php -o index.php
+</Terminal>
 
 You've now a local version of the script. It's a single `index.php` script; nothing more at this stage.
 

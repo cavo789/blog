@@ -52,15 +52,14 @@ As a result of this command, your `Main.java` source will be compiled into the `
 
 By running `ls -alh` you can verify that, yes, the java script has been compiled into a `.java` file.
 
-```bash
-❯ ls -alh
-
+<Terminal>
+$ ls -alh
 total 24K
 drwxr-xr-x  2 christophe christophe 4.0K Nov 22 15:02 .
 drwxrwxrwt 29 root       root        12K Nov 22 14:58 ..
 -rw-r--r--  1 christophe christophe  414 Nov 22 15:02 Main.class
 -rw-r--r--  1 christophe christophe  117 Nov 22 14:58 Main.java
-```
+</Terminal>
 
 :::tip And without to have to install something
 Once again, you don't have install or configure something; just call the Docker image *that goes well*.
@@ -68,11 +67,10 @@ Once again, you don't have install or configure something; just call the Docker 
 
 Last thing is to execute your Java program. Now, please run `docker run --rm -v $PWD:/app -w /app openjdk:11 java Main` to execute it.
 
-```bash
-❯ docker run --rm -v $PWD:/app -w /app openjdk:11 java Main
-
+<Terminal>
+$ docker run --rm -v $PWD:/app -w /app openjdk:11 java Main
 Hello, World
-```
+</Terminal>
 
 ## A little more difficult, calling a REST API
 
@@ -123,9 +121,9 @@ Compile it by running `docker run --rm -v $PWD:/app -w /app -u 1000:1000 openjdk
 
 Finally, call `docker run --rm -v $PWD:/app -w /app openjdk:11 java API.java` to execute the API call and display the result on screen:
 
-```bash
-❯ docker run --rm -v $PWD:/app -w /app openjdk:11 java API.java
-```
+<Terminal>
+$ docker run --rm -v $PWD:/app -w /app openjdk:11 java API.java
+</Terminal>
 
 ```json
 {

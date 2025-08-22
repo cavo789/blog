@@ -31,25 +31,16 @@ There are some tools that allow comparing two files like `diff` but not really t
 
 Let's try... Below we'll create the file `.env.example` with two lines then copy it to `.env` and just add a new line in `.env.example`. Finally, we'll sort  sort -o `.env.example` so the order will differs with `.env`.
 
-```bash
-mkdir -p /tmp/playing_env && cd $_
-
-echo 'APP_NAME = My application' > .env.example
-echo 'APP_ENV = local' >> .env.example
-
-# Make .env and .env.example identical
-cp .env.example .env
-
-# Now just create a variable with a different value in both files
-echo 'APP_KEY = 5a0678afd37f4b8d/8d9451a7381266e3' >> .env
-echo 'APP_KEY = 3445118442a942d1/afd37466fadd5223' >> .env.example
-
-# Add a new variable but only in the .env.example file
-echo 'CACHE_DRIVER = redis' >> .env.example
-
-# And sort .env.example so line ordering will differs with .env
-sort -o .env.example .env.example
-```
+<Terminal>
+$ mkdir -p /tmp/playing_env && cd $_
+$ echo 'APP_NAME = My application' > .env.example
+$ echo 'APP_ENV = local' >> .env.example
+$ cp .env.example .env
+$ echo 'APP_KEY = 5a0678afd37f4b8d/8d9451a7381266e3' >> .env
+$ echo 'APP_KEY = 3445118442a942d1/afd37466fadd5223' >> .env.example
+$ echo 'CACHE_DRIVER = redis' >> .env.example
+$ sort -o .env.example .env.example
+</Terminal>
 
 Now that we have our two files with some differences, we can run this command:
 
@@ -79,9 +70,9 @@ Left side: .env                   Right side: .env.example
 
 For the illustration, we can now add a new key but just in `.env` (real world situation: I'm coding a new feature and I add a variable like a switch on/off)
 
-```bash
-echo 'ALLOW_FEATURE_DO_THIS = true' >> .env
-```
+<Terminal>
+$ echo 'ALLOW_FEATURE_DO_THIS = true' >> .env
+</Terminal>
 
 Now the output will be:
 
@@ -95,10 +86,10 @@ The column on the left represents the first file (in our example `.env`) while t
 
 Last sample:
 
-```bash
-echo 'DATABASE_TYPE = pgsql' >> .env
-echo 'DATABASE_TYPE = mysql' >> .env.example
-```
+<Terminal>
+$ echo 'DATABASE_TYPE = pgsql' >> .env
+$ echo 'DATABASE_TYPE = mysql' >> .env.example
+</Terminal>
 
 And the result of the `diff` command:
 

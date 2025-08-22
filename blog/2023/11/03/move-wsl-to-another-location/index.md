@@ -31,19 +31,24 @@ You will need to do this for every distribution you have installed and if you wa
 :::tip
 If you have Docker, you can do the same i.e. move the Docker partition to your second disk.
 
-```bash
-wsl --export docker-desktop d:\wsl\docker-desktop.tar
-wsl --export docker-desktop-data d:\wsl\docker-desktop-data.tar
-
-wsl --unregister docker-desktop
-wsl --unregister docker-desktop-data
-
-wsl --import docker-desktop d:\wsl\docker-desktop d:\wsl\docker-desktop.tar --version 2
-wsl --import docker-desktop-data d:\wsl\docker-desktop-data d:\wsl\docker-desktop-data.tar --version 2
-
-del d:\wsl\docker-desktop.tar
-del d:\wsl\docker-desktop-data.tar
-```
+<Terminal title="Powershell">
+$ wsl --export docker-desktop d:\wsl\docker-desktop.tar
+...
+$ wsl --export docker-desktop-data d:\wsl\docker-desktop-data.tar
+...
+$ wsl --unregister docker-desktop
+...
+$ wsl --unregister docker-desktop-data
+...
+$ wsl --import docker-desktop d:\wsl\docker-desktop d:\wsl\docker-desktop.tar --version 2
+...
+$ wsl --import docker-desktop-data d:\wsl\docker-desktop-data d:\wsl\docker-desktop-data.tar --version 2
+...
+$ del d:\wsl\docker-desktop.tar
+...
+$ del d:\wsl\docker-desktop-data.tar
+...
+</Terminal>
 
 :::
 

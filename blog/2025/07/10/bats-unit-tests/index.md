@@ -55,9 +55,9 @@ setup() {
 
 And now, the very difficult part is, ouch no, really easy in fact, to run [Bats-core](https://bats-core.readthedocs.io/en/stable/):
 
-```bash
-docker run --rm -it -w /code/tests -v .:/code bats/bats:latest simple.bats
-```
+<Terminal>
+$ docker run --rm -it -w /code/tests -v .:/code bats/bats:latest simple.bats
+</Terminal>
 
 And ... it works.
 
@@ -141,13 +141,13 @@ So, in the new test function, we'll just try to remove a not-existing file and w
 
 Imagine the following, simplified, tree structure:
 
-```bash
+<Terminal>
 .
 ├── src
 │   └── assert.sh
 └── tests
     ├── assert.bats
-```
+</Terminal>
 
 The file `src/assert.sh` contains your Linux shell code you want to test. Your test scenario should be stored in the `tests` folder. Since we'll write tests for the `src/assert.sh` file, let's create the  `tests/assert.bats`.
 
@@ -242,9 +242,9 @@ teardown() {
 
 The command line:
 
-```bash
-docker run --rm -it -w /code/tests -v .:/code bats/bats:latest assert.bats
-```
+<Terminal>
+$ docker run --rm -it -w /code/tests -v .:/code bats/bats:latest assert.bats
+</Terminal>
 
 By running it, we expect a success for the binaryExists for `clear` and `ls` commands (since well installed on our system) and we expect a failure for `fakeProgram` but, since we're using `assert_failure`, our tests scenario should work.
 

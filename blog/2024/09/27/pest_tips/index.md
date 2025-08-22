@@ -28,14 +28,15 @@ Pest is a wrapper around PhpUnit so, for instance, every command line arguments 
 
 Simply run the commands below in your PHP application folder:
 
-```bash
-composer require pestphp/pest --dev --with-all-dependencies
-
-composer require pestphp/pest-plugin-laravel --dev
-php artisan pest:install
-
-./vendor/bin/pest --init
-```
+<Terminal>
+$ composer require pestphp/pest --dev --with-all-dependencies
+.
+$ composer require pestphp/pest-plugin-laravel --dev
+.
+$ php artisan pest:install
+.
+$ ./vendor/bin/pest --init
+</Terminal>
 
 From now, we can run `./vendor/bin/pest` to run our Pest tests.
 
@@ -426,13 +427,13 @@ Install the plugin like this: `composer require pestphp/pest-plugin-laravel --de
 
 Then some new artisan commands will be available:
 
-```bash
-php artisan | grep pest
+<Terminal>
+$ php artisan | grep pest
  pest
   pest:dataset           Create a new dataset file
   pest:install           Creates Pest resources in your current PHPUnit test suite
   pest:test              Create a new test file
-```
+</Terminal>
 
 ### Visual Studio Code Add-on
 

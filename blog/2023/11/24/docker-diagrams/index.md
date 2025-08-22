@@ -42,9 +42,9 @@ with Diagram("My Team", show=False, direction="TB"):
 
 To run the conversion, go back to your console and run the following command:
 
-```bash
-cat team.py | docker run -i --rm -v $(pwd):/out -u 1000:1000 gtramontina/diagrams:0.23.3
-```
+<Terminal>
+$ cat team.py | docker run -i --rm -v $(pwd):/out -u 1000:1000 gtramontina/diagrams:0.23.3
+</Terminal>
 
 :::note Windows notation
 If you're working Windows, replace `$(pwd)` by `%CD%`. And replace `cat` by `type`.

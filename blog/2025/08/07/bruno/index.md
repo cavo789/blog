@@ -92,18 +92,22 @@ In short, please:
 
 To install Bruno GUI on my Ubuntu distribution, I'm running these commands:
 
-```bash
-sudo mkdir -p /root/.gnupg
-sudo chmod 700 /root/.gnupg
-
-sudo mkdir -p /etc/apt/keyrings
-sudo gpg --no-default-keyring --keyring /etc/apt/keyrings/bruno.gpg --keyserver keyserver.ubuntu.com --recv-keys 9FA6017ECABE0266
-
-echo "deb [signed-by=/etc/apt/keyrings/bruno.gpg] http://debian.usebruno.com/ bruno stable" | sudo tee /etc/apt/sources.list.d/bruno.list
-
-sudo apt update
-sudo apt install bruno
-```
+<Terminal>
+$ sudo mkdir -p /root/.gnupg
+...
+$ sudo chmod 700 /root/.gnupg
+...
+$ sudo mkdir -p /etc/apt/keyrings
+...
+$ sudo gpg --no-default-keyring --keyring /etc/apt/keyrings/bruno.gpg --keyserver keyserver.ubuntu.com --recv-keys 9FA6017ECABE0266
+...
+$ echo "deb [signed-by=/etc/apt/keyrings/bruno.gpg] http://debian.usebruno.com/ bruno stable" | sudo tee /etc/apt/sources.list.d/bruno.list
+...
+$ sudo apt update
+...
+$ sudo apt install bruno
+...
+</Terminal>
 
 Please refers to the [Download & Install](https://docs.usebruno.com/get-started/bruno-basics/download) official documentation for more info.
 
@@ -202,8 +206,9 @@ Why? Because the GUI is running on our host and `127.0.0.1` is our machine. If w
 
 <!-- cspell:disable -->
 
-```bash
-❯ curl -v http://127.0.0.1:82/jokes
+<Terminal>
+$ curl -v http://127.0.0.1:82/jokes
+{`
 * Uses proxy env variable no_proxy == 'localhost,127.0.0.1,*.local'
 *   Trying 127.0.0.1:82...
 * TCP_NODELAY set
@@ -221,8 +226,9 @@ Why? Because the GUI is running on our host and `127.0.0.1` is our machine. If w
 < content-type: application/json
 <
 * Connection #0 to host 127.0.0.1 left intact
-{"joke":"Why don't programmers like nature? Because it's full of bugs!"}
-```
+\{"joke":"Why don't programmers like nature? Because it's full of bugs!"}
+`}
+</Terminal>
 
 <!-- cspell:enable -->
 
@@ -244,11 +250,11 @@ That file won't work from the Bruno GUI: we'll be able to select `dev` and it'll
 
 But from Bruno CLI container it'll works:
 
-```bash
-docker run -it --rm -v "./Jokes":/apps -w /apps \
+<Terminal>
+$ docker run -it --rm -v "./Jokes":/apps -w /apps \
   --add-host host.docker.internal:host-gateway \
   bruno-image run --env=dev-docker
-```
+</Terminal>
 
 ![Bruno CLI is working](./images/bruno_cli_is_working.png)
 

@@ -137,22 +137,21 @@ To do this, we have to run the `dagger init` command and since we're using a Doc
 
 It'll take around two minutes to download and initialise Dagger (for the first time). By looking at your file system, you'll see, oh, the owner is `root` and not you.
 
-```bash
-❯ ls -alh
-
+<Terminal>
+$ ls -alh
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2024-12-26 16:00 .docker
 drwxr-xr-x     - christophe christophe 2024-12-26 16:02 .pipeline
 drwxr-xr-x     - christophe christophe 2024-12-26 16:02 src
 .rw-r--r--    94 christophe christophe 2024-12-26 16:02 dagger.json
 .rw-------   10k christophe christophe 2024-12-26 16:02 LICENSE
-```
+</Terminal>
 
 Please run `sudo chown -R christophe:christophe .` (and replace my firstname by your Linux username).
 
 Let's look at the tree structure:
 
-```bash
+<Terminal>
 .
 ├── LICENSE
 ├── dagger.json
@@ -165,7 +164,7 @@ Let's look at the tree structure:
     │       ├── __init__.py
     │       └── main.py
     └── [...]
-```
+</Terminal>
 
 ## Calling functions
 

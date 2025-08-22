@@ -145,22 +145,21 @@ So `/api/v1/employees?page=1&pageSize=5` will display the first five employees a
 
 For instance, imagine a resource called `countries`, we can verify if `language=FR` will return something:
 
-```bash
-❯ curl --head https://xxx/api/v1/countries?language=FR
-
+<Terminal>
+$ curl --head https://xxx/api/v1/countries?language=FR
 HTTP/2 200 OK
 Content-Range: 0-5/*
 Content-Location: /api/v1/countries?language=FR
 Content-Type: application/json; charset=utf-8
-```
+</Terminal>
 
 ##### HEAD - Returned code
 
 If we get a HTTP return code `200`, we can run a `GET` action to get records:
 
-```bash
-❯ curl https://xxx/api/v1/countries?language=FR | jq
-```
+<Terminal>
+$ curl https://xxx/api/v1/countries?language=FR | jq
+</Terminal>
 
 `HEAD` can thus be used to get meta data about a resource.
 
@@ -190,14 +189,13 @@ Imagine a database table called `countries` having `984` records (i.e. the resul
 
 This info can be retrieved from our API like this:
 
-```bash
-❯ curl --head https://xxx/api/v1/countries
-
+<Terminal>
+$ curl --head https://xxx/api/v1/countries
 HTTP/2 200 OK
 Content-Range: 0-983/*
 Content-Location: /api/v1/countries
 Content-Type: application/json; charset=utf-8
-```
+</Terminal>
 
 `curl --head` (similar to `curl -i`) is using the `HEAD` HTTP verb.
 
@@ -212,15 +210,15 @@ Return a resource (can be a collection or just one).
 
 Return all employees:
 
-```bash
-curl -X GET -H "Accept: application/json" https://xxx/api/v1/employees
-```
+<Terminal>
+$ curl -X GET -H "Accept: application/json" https://xxx/api/v1/employees
+</Terminal>
 
 Return the employee #1:
 
-```bash
-curl -X GET -H "Accept: application/json" https://xxx/api/v1/employees/1
-```
+<Terminal>
+$ curl -X GET -H "Accept: application/json" https://xxx/api/v1/employees/1
+</Terminal>
 
 `GET` is a strict read-only method, which should never modify the state of the resource ([reference](https://www.belgif.be/specification/rest/api-guide/#get)).
 
@@ -242,9 +240,9 @@ The `204 - No content` code should not be used with `GET`.
 
 Using `POST` **you'll create a new resource**. Calling `POST` five times for the same "new" employee will thus create five new employees. <span style={{color: 'red'}}>`POST` is not idempotent meaning calling it more than once will return every time a new resource (like the new employee id).</span>
 
-```bash
-curl -X POST -d '{"firstname":"Christophe",...}' https://xxx/api/v1/employees
-```
+<Terminal>
+$ {`curl -X POST -d '\{"firstname":"Christophe",...}' https://xxx/api/v1/employees`}
+</Terminal>
 
 :::note
 When calling `POST` you should provide all the fields required to create the resource. So, for a new employee, his firstname, lastname, birthdate, national register number, his hiring date, the department where he'll work and so on.
@@ -280,9 +278,9 @@ Using `PUT` implies you're intended to update each field of the record. If you p
 
 Using `PUT` you'll update an existing resource. Let's imagine we have just three fields in our employees table:
 
-```bash
-curl -X PUT -d '{"firstname":"Christophe", "lastname":"AVONTURE", "national_number": 123456789}' https://xxx/api/v1/employees/999
-```
+<Terminal>
+$ {`curl -X PUT -d '\{"firstname":"Christophe", "lastname":"AVONTURE", "national_number": 123456789}' https://xxx/api/v1/employees/999`}
+</Terminal>
 
 Consider using `PUT` only when **you'll update every information's** of the resource (except calculated fields like f.i. `employee_id`). If you wish to update just a few ones (partial content), Consider using `PATCH`.
 
@@ -337,9 +335,9 @@ Note: like with `PUT` (see above), the developer can decide to create the resour
 
 To remove employee #59:
 
-```bash
-curl -X DELETE https://xxx/api/v1/employees/59
-```
+<Terminal>
+$ curl -X DELETE https://xxx/api/v1/employees/59
+</Terminal>
 
 ##### DELETE - Returned code
 
@@ -423,13 +421,12 @@ As an example, if the request is a POST with a JSON payload like `curl -X POST -
 
 The response would contain the supported type so, f.i.,
 
-```bash
-❯ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" https://xxx/api/v1/employees [...]
-
+<Terminal>
+$ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" https://xxx/api/v1/employees [...]
 HTTP/2 415 Unsupported Media Type
 Accept-Post: application/json; charset=UTF-8
 Content-Length: 0
-```
+</Terminal>
 
 In this example, the server didn't support `application/x-www-form-urlencoded` for that route but will `application/json`.
 
@@ -441,12 +438,11 @@ A REST response or request with payload must include the `Content-Type` HTTP hea
 
 For example, the request has to define `-H "Accept: application/json"` in his header to let the server to know which media type is needed and the server (the response) should provide the `Content-Type` too.
 
-```bash
-❯ curl -X -H "Accept: application/json" GET https://xxx/api/v1/employees
-
+<Terminal>
+$ curl -X -H "Accept: application/json" GET https://xxx/api/v1/employees
 HTTP/2 200 OK
 Content-Type: application/json; charset=utf-8
-```
+</Terminal>
 
 If returning JSON is not managed by the API, the server has to return the HTTP code `406 - Not Acceptable`.
 

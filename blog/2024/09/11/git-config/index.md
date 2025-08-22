@@ -142,10 +142,10 @@ To share credentials between the two environments, just add the two lines below 
 
 As you know, during the installation of Git, you need to provide your name and your email. These two information are given on the console using command like below:
 
-```bash
-git config --global user.email "me@work.be"
-git config --global user.name "Christophe Avonture"
-```
+<Terminal>
+$ git config --global user.email "me@work.be"
+$ git config --global user.name "Christophe Avonture"
+</Terminal>
 
 But this isn't very practical when you're working on several types of projects, e.g. for work and for your third-party projects. Let's say you're putting professional work in a given parent folder like `~/work_repositories` while your side projects are in `~/private_repositories`.
 

@@ -40,24 +40,23 @@ phpinfo();
 
 Here is the content of your current directory:
 
-```bash
-❯ pwd
+<Terminal>
+$ pwd
 /tmp/network
-
-❯ ls -alh
+.
+$ ls -alh
 total 920K
 drwxr-xr-x  2 christophe christophe 4.0K Feb 20 18:15 .
 drwxrwxrwt 23 root       root       908K Feb 20 18:15 ..
 -rw-r--r--  1 christophe christophe   18 Feb 20 18:15 index.php
-```
+</Terminal>
 
 Since we need a Docker network, please create one:
 
-```bash
-❯ docker network create my_network
-
+<Terminal>
+$ docker network create my_network
 1df43879fbfc2b328bf36f9205c68168e45a88cea481bc244fab94ff04486da7
-```
+</Terminal>
 
 And run the script using `docker run -d -p 8080:80 -u ${UID}:${GID} -v "$PWD":/var/www/html --network my_network php:8.2-apache`.
 
@@ -96,27 +95,26 @@ services:
 
 To make things clear, here is the content of our current directory:
 
-```bash
-
-❯ ls -alh
+<Terminal>
+$ ls -alh
 total 920K
 drwxr-xr-x  2 christophe christophe 4.0K Feb 20 18:15 .
 drwxrwxrwt 23 root       root       908K Feb 20 18:15 ..
 -rw-r--r--  1 christophe christophe   18 Feb 20 18:25 Dockerfile
 -rw-r--r--  1 christophe christophe   18 Feb 20 18:25 compose.yaml
 -rw-r--r--  1 christophe christophe   18 Feb 20 18:15 index.php
-```
+</Terminal>
 
 We need to create our image. To do this, simply run `docker compose build`.
 
 Then we'll start an interactive bash shell in our second container and we'll try to access to our local website:
 
-```bash
-❯ docker compose run -it --rm --entrypoint /bin/sh my_second_container
-
-❯ curl http://127.0.0.1:8080
+<Terminal>
+$ docker compose run -it --rm --entrypoint /bin/sh my_second_container
+.
+$ curl http://127.0.0.1:8080
 curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect to server
-```
+</Terminal>
 
 :::danger It's not working... **as expected**
 We can confirm our container is not able to access to our local site `http://127.0.0.1:8080` while, that website is well configured. If you exit the container and try to refresh the website, it's working well.
@@ -162,11 +160,10 @@ But, there is something else to do now: we need to obtain the **Gateway IP addre
 
 Back on your machine (not from inside the container), please run:
 
-```bash
-❯ docker network inspect -f '{{json .IPAM.Config}}' 'my_network'
-
-[{"Subnet":"172.20.0.0/16","Gateway":"172.20.0.1"}]
-```
+<Terminal>
+$ {`docker network inspect -f '\{\{json .IPAM.Config}}' 'my_network'`}
+[\{"Subnet":"172.20.0.0/16","Gateway":"172.20.0.1"}]
+</Terminal>
 
 The IP we need is `172.20.0.1` (`Gateway`) as illustrated above.
 
@@ -174,20 +171,20 @@ The IP we need is `172.20.0.1` (`Gateway`) as illustrated above.
 
 Now, we can try again, please start an interface shell once more. It'll still not work with the local `127.0.0.1` IP but well, now, using the **Gateway IP address of the network**:
 
-```bash
-❯ docker compose run -it --rm --entrypoint /bin/sh my_second_container
-
-❯ curl http://127.0.0.1:8080
+<Terminal>
+$ docker compose run -it --rm --entrypoint /bin/sh my_second_container
+.
+$ curl http://127.0.0.1:8080
 curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect to server
+$ curl http://172.20.0.1:8080
+</Terminal>
 
-❯ curl http://172.20.0.1:8080
-
+```txt
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <style type="text/css">
 body {background-color: #fff; color: #222; font-family: sans-serif;}
 pre {margin: 0; font-family: monospace;}
-[...]
 ```
 
 :::success Now it's working
@@ -216,20 +213,19 @@ and thus, on your host, you're not using `http://127.0.0.1:8080` but `http://mys
 
 If we try to access it from inside the second container, it didn't work:
 
-```bash
-❯ docker compose run -it --rm --entrypoint /bin/sh my_second_container
-
-❯ curl http://my_site.local:8080
+<Terminal>
+$ docker compose run -it --rm --entrypoint /bin/sh my_second_container
+.
+$ curl http://my_site.local:8080
 curl: (6) Could not resolve host: my_site.local
-```
+</Terminal>
 
 And **this is normal** since `my_site.local` is an alias defined on your host machine; not in the container:
 
-```bash
-❯ docker compose run -it --rm --entrypoint /bin/sh my_second_container
-
-❯ cat /etc/hosts
-
+<Terminal>
+$ docker compose run -it --rm --entrypoint /bin/sh my_second_container
+.
+$ cat /etc/hosts
 127.0.0.1       localhost
 ::1     localhost ip6-localhost ip6-loopback
 fe00::0 ip6-localnet
@@ -237,7 +233,7 @@ ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 172.20.0.3      5e9e2debaf79
-```
+</Terminal>
 
 The last thing we need to do in this case is to edit our `compose.yaml` file and add the `extra_hosts` property:
 
@@ -264,11 +260,10 @@ networks:
 
 Now, we can jump in the container for the last time, check the `/etc/hosts` file, we can now see our alias and thus, by running `curl http://mysite.local:8080` it will work.
 
-```bash
-❯ docker compose run -it --rm --entrypoint /bin/sh my_second_container
-
-❯ cat /etc/hosts
-
+<Terminal>
+$ docker compose run -it --rm --entrypoint /bin/sh my_second_container
+.
+$ cat /etc/hosts
 127.0.0.1       localhost
 ::1     localhost ip6-localhost ip6-loopback
 fe00::0 ip6-localnet
@@ -276,9 +271,11 @@ ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 172.20.0.1      my_site.local
+.
+$ curl http://my_site.local:8080
+</Terminal>
 
-
-❯ curl http://my_site.local:8080
+```text
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <style type="text/css">

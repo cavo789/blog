@@ -93,17 +93,17 @@ max_execution_time = 600
 
 So, now, your folder contains at least two files:
 
-```bash
-❯ pwd
+<Terminal>
+$ pwd
 /tmp/joomla
-
-❯ ls -alh
+.
+$ ls -alh
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2023-11-04 09:32  .
 drwxrwxrwt     - christophe christophe 2023-11-04 09:32 ..
 .rw-r--r--   325 christophe christophe 2023-11-04 09:32 compose.yaml
 -rw-r--r--     1 christophe christophe 2023-12-22 19:51 php.ini
-```
+</Terminal>
 
 ## Step three - Restart your container
 

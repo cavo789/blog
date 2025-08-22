@@ -45,17 +45,17 @@ For this post, let u's create a temporary folder in your `/tmp` folder: start a 
 
 We'll create a Docker container for our PostgreSQL database:
 
-```bash
-docker run --name tutorial -p 5433:5432 \
+<Terminal>
+$ docker run --name tutorial -p 5433:5432 \
     -e POSTGRES_PASSWORD=mysecretpassword \
     -d postgres
-```
+</Terminal>
 
 Now, we'll enter in our PostgreSQL container and run `psql`:
 
-```bash
-docker exec -it tutorial psql -U postgres
-```
+<Terminal>
+$ docker exec -it tutorial psql -U postgres
+</Terminal>
 
 Copy/Paste the code below in your console. This will create a database called `api` with a table called `todos`; with two records. This will also create a `web_anon` user that we'll use with PostgREST to query our data:
 
@@ -91,10 +91,12 @@ Now, to leave the postgres console, just type `\q`.
 
 PostgREST is a binary, download it by running:
 
-```bash
+<Terminal>
 curl -o postgrest-v10.1.1-linux-static-x64.tar.xz -L https://github.com/PostgREST/postgrest/releases/download/v10.1.1/postgrest-v10.1.1-linux-static-x64.tar.xz
+...
 tar xJf postgrest-v10.1.1-linux-static-x64.tar.xz && rm -f postgrest-v10.1.1-linux-static-x64.tar.xz
-```
+...
+</Terminal>
 
 You've now a file called `postgrest` in your folder.
 
@@ -127,9 +129,9 @@ server-port = 3001
 
 Now, we'll run a Docker container for PostgREST:
 
-```bash
-./postgrest tutorial.conf
-```
+<Terminal>
+$ ./postgrest tutorial.conf
+</Terminal>
 
 ### Step 3 - Play with PostgREST
 
@@ -145,9 +147,9 @@ To get the content of a table, just mention his name so `http://localhost:3000/t
 
 For esthetic reason here, I'm using `| jq` (you can remove that part if you want). See my <Link to="/blog/linux-jq">The jq utility for Linux</Link> article to learn more about `jq`.
 
-```bash
-curl http://localhost:3000/todos | jq
-```
+<Terminal>
+$ curl http://localhost:3000/todos | jq
+</Terminal>
 
 And the result:
 
@@ -174,29 +176,29 @@ It's awfully easy, isn't it?
 
 You can use filters by typing f.i. `?` followed by a field name and a criteria. To get only the record having the `id` 2, here is how to do:
 
-```bash
-curl http://localhost:3000/todos\?id\=eq.2 | jq
-```
+<Terminal>
+$ curl http://localhost:3000/todos\?id\=eq.2 | jq
+</Terminal>
 
 And if you wish to make a *Full text search* to retrieve a content based on a value, here is how to do:
 
-```bash
-curl http://localhost:3000/todos\?task=fts.tutorial | jq
-```
+<Terminal>
+$ curl http://localhost:3000/todos\?task=fts.tutorial | jq
+</Terminal>
 
 In the example above, we'll search any todo where the field `task` contains the word `tutorial`.
 
 Below, a query on the field `done` which should be true.
 
-```bash
-curl http://localhost:3000/todos\?done=is.true | jq
-```
+<Terminal>
+$ curl http://localhost:3000/todos\?done=is.true | jq
+</Terminal>
 
 Below, we are asking for getting only fields `id` and `task`:
 
-```bash
-curl http://localhost:3000/todos?select=id,task | jq
-```
+<Terminal>
+$ curl http://localhost:3000/todos?select=id,task | jq
+</Terminal>
 
 ### Close PostgREST
 

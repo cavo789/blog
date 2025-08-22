@@ -105,8 +105,8 @@
     "docusaurus.terminal": {
         "prefix": "Terminal",
         "body": [
-            "<Terminal>",
-            "❯ ${1:the_command_issued}",
+            "<Terminal wrap={true}>",
+            "$ ${1:the_command_issued}",
             "${2:the_output}",
             "</Terminal>",
         ],

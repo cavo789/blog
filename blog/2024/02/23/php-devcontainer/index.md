@@ -37,11 +37,11 @@ Please refers to my other articles about <Link to="/blog/tags/docker">Docker</Li
 
 For this blog article, I'll create a temporary folder in `/tmp/devcontainer_php`. Don't hesitate to update the path to something like `~/my_project` to match your need.
 
-```bash
-mkdir /tmp/devcontainer_php && cd $_
-curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/heads/main.tar.gz
-tar -xzvf php_devcontainer-main.tar.gz --strip-components 1 && rm -f php_devcontainer-main.tar.gz
-```
+<Terminal>
+$ mkdir /tmp/devcontainer_php && cd $_
+$ curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/heads/main.tar.gz
+$ tar -xzvf php_devcontainer-main.tar.gz --strip-components 1 && rm -f php_devcontainer-main.tar.gz
+</Terminal>
 
 :::note Download a specific version
 If you don't want to download the latest version but a given one, specify the tags like: `curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz`.
@@ -53,10 +53,10 @@ You've thus download code from my [https://github.com/cavo789/php_devcontainer](
 
 Start VSCode on your machine:
 
-```bash
-cd /tmp/devcontainer_php
-code .
-```
+<Terminal>
+$ cd /tmp/devcontainer_php
+$ code .
+</Terminal>
 
 ### 3. Switch to the Dev Container
 
@@ -88,20 +88,20 @@ Start a terminal and open the folder where you've your codebase.
 
 For this blog post, I'll download a very old learning Laravel codebase I've done years ago:
 
-```bash
-cd /tmp
-git clone https://github.com/cavo789/laravel_todos.git
-```
+<Terminal>
+$ cd /tmp
+$ git clone https://github.com/cavo789/laravel_todos.git
+</Terminal>
 
 So, my project will be in folder `/tmp/laravel_todos`.
 
 In my project folder, now, I'll run:
 
-```bash
-cd /tmp/laravel_todos
-curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
-tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devcontainer-1.0.0.tar.gz
-```
+<Terminal>
+$ cd /tmp/laravel_todos
+$ curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
+$ tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devcontainer-1.0.0.tar.gz
+</Terminal>
 
 This will download the PHP devcontainer files in my project.
 
@@ -111,16 +111,16 @@ And voilà, I've Dockerized my PHP coding environment. In my case, I've made `La
 
 And like in the previous chapter, I can run the commands below to fix coding style issues and fixes all files in my repo:
 
-```bash
-/usr/local/bin/php-cs-fixer.phar fix --config /var/www/html/.config/.php-cs-fixer.php .
-/usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml .
-```
+<Terminal>
+$ /usr/local/bin/php-cs-fixer.phar fix --config /var/www/html/.config/.php-cs-fixer.php .
+$ /usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml .
+</Terminal>
 
 And I **will be able** to run Rector to refactor my entire codebase:
 
-```bash
-composer require rector/rector --dev
-vendor/bin/rector process . --config .config/rector.php
-```
+<Terminal>
+$ composer require rector/rector --dev
+$ vendor/bin/rector process . --config .config/rector.php
+</Terminal>
 
 but in my case, I can't right now because my Laravel Todos is an old one and I need first to make some changes to my `composer.json` file (upgrading PHP and Laravel versions first).

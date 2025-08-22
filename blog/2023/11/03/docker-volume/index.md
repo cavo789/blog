@@ -75,8 +75,8 @@ Files or folders created in the Docker container will be owned by the current us
 
 To make sure files/folders created in the container will be owned by you and not `root`, change the command line like this:
 
-```bash
-docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html -u ${UID}:${GID} php:8.1.5-apache
-```
+<Terminal>
+{`$ docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html -u \${UID}:\${GID} php:8.1.5-apache`}
+</Terminal>
 
 The new flag `-u ${UID}:${GID}` will reuse your current user id and your current group id and pass these two information to Docker. Now, the current user in the Docker container won't be `root` anymore but a user having your local uid/gid. So, now, files/folders created in the Docker container will be owned, on your disk, by you.

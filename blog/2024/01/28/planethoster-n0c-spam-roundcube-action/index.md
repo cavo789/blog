@@ -207,23 +207,32 @@ Go to [https://github.com/new](https://github.com/new) and create a new **privat
 
 Then just copy/paste the example given by Github; something like:
 
-```bash
-echo "# Sieve generator" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin XXXXXXXXXXXX     '<-- put here your own path
-git push -u origin main
-```
+<Terminal>
+$ echo "# Sieve generator" >> README.md
+$ git init
+...
+$ git add README.md
+...
+$ git commit -m "first commit"
+...
+$ git branch -M main
+...
+$ git remote add origin XXXXXXXXXXXX     '\<-- put here your own path
+...
+$ git push -u origin main
+...
+</Terminal>
 
 Now push the other files:
 
-```bash
-git add .
-git commit -m "Initial upload"
-git push
-```
+<Terminal>
+$ git add .
+...
+$ git commit -m "Initial upload"
+...
+$ git push
+...
+</Terminal>
 
 Back to github, you'll obtain a repo like this one:
 

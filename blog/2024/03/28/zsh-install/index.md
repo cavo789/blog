@@ -21,11 +21,11 @@ I've chosen [Oh My ZSH](https://ohmyz.sh/) since years, let's see how to install
 
 The installation is quite easy, just three commands:
 
-```bash
-sudo apt-get update && sudo apt-get install zsh
-chsh -s /usr/bin/zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
+<Terminal>
+$ sudo apt-get update && sudo apt-get install zsh
+$ chsh -s /usr/bin/zsh
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+</Terminal>
 
 With the last instruction, you'll be asked if you want to change the default shell to zsh; simply answer `Y`es.
 

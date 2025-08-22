@@ -96,12 +96,12 @@ And, now, we'll jump in the container by running: `docker compose exec app_pytho
 
 And we can run our script:
 
-```bash
-> python main.py
-
+<Terminal>
+$ python main.py
+.
 I'm your Python code
 Who you, who are you?
-```
+</Terminal>
 
 ### Installing pre-commit
 
@@ -140,7 +140,7 @@ Now, to manually start all controls defined in the yaml file simply run `pre-com
 
 You'll see something like this on your console:
 
-```bash
+<Terminal wrap={false}>
 [INFO] Initializing environment for https://github.com/pre-commit/pre-commit-hooks.
 [WARNING] repo `https://github.com/pre-commit/pre-commit-hooks` uses deprecated stage names (commit, push) which will be removed in a future version.  Hint: often `pre-commit autoupdate --repo https://github.com/pre-commit/pre-commit-hooks` will fix this.  if it does not -- consider reporting an issue to that repo.
 [INFO] Installing environment for https://github.com/pre-commit/pre-commit-hooks.
@@ -158,12 +158,12 @@ Trim Trailing Whitespace.................................................Passed
 black....................................................................Failed
 - hook id: black
 - files were modified by this hook
-
+.
 reformatted main.py
-
+.
 All done! ✨ 🍰 ✨
 1 file reformatted.
-```
+</Terminal>
 
 Oh? Did you see the **reformatted main.py** line? Something was wrong with that file.
 

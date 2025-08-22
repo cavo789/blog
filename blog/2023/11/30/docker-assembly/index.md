@@ -54,11 +54,10 @@ _start:
 
 To run the script, just call Docker like this:
 
-```bash
-> docker run --rm -v %CD%:/code -w /code esolang/x86asm-nasm x86asm-nasm hello.asm
-
+<Terminal title="Powershell">
+$ docker run --rm -v %CD%:/code -w /code esolang/x86asm-nasm x86asm-nasm hello.asm
 Hello, World! This message comes from Docker.
-```
+</Terminal>
 
 :::tip Of course you can play under Linux
 Just replace `%CD%` by `${PWD}` and the instruction will be recognized by Linux: `docker run --rm -v ${PWD}:/code -w /code esolang/x86asm-nasm x86asm-nasm hello.asm`

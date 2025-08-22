@@ -104,11 +104,11 @@ It means that the `config` folder of Heimdall will be stored on your disk; in a 
 
 I can check this by running `ls -alh` on my host:
 
-```bash
+<Terminal>
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2025-01-26 10:36 config
 .rw-r--r--   284 christophe christophe 2025-01-26 10:36 compose.yaml
-```
+</Terminal>
 
 And, thus, everything I'll do in Heimdall will be saved on my computer. So, it means, if I've to stop and remove the Docker container, by running it again, I'll retrieve all my settings.
 

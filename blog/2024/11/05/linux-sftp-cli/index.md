@@ -47,15 +47,15 @@ Using a proxy is not so intuitive. The flag to use is `-o ProxyCommand=''` and a
 
 The final command will looks something like:
 
-```bash
-sftp -o ProxyCommand='/usr/bin/nc --proxy-type http --proxy my.proxy.be:8080 %h %p' christophe@1.2.3.4
-```
+<Terminal>
+$ sftp -o ProxyCommand='/usr/bin/nc --proxy-type http --proxy my.proxy.be:8080 %h %p' christophe@1.2.3.4
+</Terminal>
 
 And, if you want to use `sshpass`:
 
-```bash
-SSHPASS="p@ssword" sshpass -e sftp -o ProxyCommand='/usr/bin/nc --proxy-type http --proxy my.proxy.be:8080 %h %p' christophe@1.2.3.4
-```
+<Terminal>
+$ {`SSHPASS="p@ssword" sshpass -e sftp -o ProxyCommand='/usr/bin/nc --proxy-type http --proxy my.proxy.be:8080 %h %p' christophe@1.2.3.4`}
+</Terminal>
 
 ## Setting the port number to use for the SFTP server
 

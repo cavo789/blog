@@ -158,16 +158,15 @@ To do such obfuscation, just download my [https://github.com/cavo789/php_obfusca
 
 Right now, in your folder, you've three files:
 
-```bash
-❯ ls -alh
-
+<Terminal>
+$ ls -alh
 total 28K
 drwxr-xr-x  2 root root 4.0K Apr  7 20:11 .
 drwxrwxrwt 22 root root 4.0K Apr  7 19:55 ..
 -rw-r--r--  1 root root 1.9K Apr  7 20:07 hangman.php
 -rw-r--r--  1 root root  12K Apr  7 19:34 minify.php
 -rw-r--r--  1 root root  731 Apr  7 19:47 settings.json
-```
+</Terminal>
 
 Time to make the `hangman.php` file unreadable by running `docker run -it -v ${PWD}:/src -w /src php:7.4-fpm php minify.php input=hangman.php output=hangman_minify.php`.
 

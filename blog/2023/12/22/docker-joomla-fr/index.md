@@ -77,24 +77,24 @@ Rien de plus simple ! Dans le fichier `compose.yaml`, remplacez la ligne `image:
 
 Pour que les choses soient aussi claires que possible, voici le contenu de mon dossier temporaire :
 
-```bash
-❯ pwd
+<Terminal>
+$ pwd
 /tmp/joomla
-
+.
 ❯ ls -alh
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2023-11-04 09:32  .
 drwxrwxrwt     - christophe christophe 2023-11-04 09:32 ..
 .rw-r--r--   325 christophe christophe 2023-11-04 09:32  compose.yaml
-```
+</Terminal>
 
 Donc, je n'ai qu'un seul fichier et c'est le fichier `compose.yaml` nouvellement créé.
 
 Maintenant, si nécessaire, démarrez une console Linux, et allez dans votre dossier joomla (i.e. `cd /tmp/joomla`). De là, exécutez la commande ci-dessous :
 
-```bash
-docker compose up --detach
-```
+<Terminal>
+$ docker compose up --detach
+</Terminal>
 
 :::tip `docker compose up --detach`
 Cette commande est l'une des plus importantes à connaître. Elle demande à Docker de traiter le fichier `compose.yaml` et d'exécuter les services. **En bref : démarrer votre site web**.
@@ -118,8 +118,8 @@ services:
 
 Vous obtiendrez quelque chose comme ceci, veuillez patienter jusqu'à ce que tout soit téléchargé.
 
-```bash
-❯ docker compose up --detach
+<Terminal>
+$ docker compose up --detach
 [+] Running 16/35
  ⠹ joomladb 12 layers [⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]    0B/0B  Pulling  19.3s
    ⠧ 177e7ef0df69 Waiting   15.8s
@@ -132,12 +132,12 @@ Vous obtiendrez quelque chose comme ceci, veuillez patienter jusqu'à ce que tou
    ⠋ 65cebbf4d847 Downloading [==============>         ]  68.41MB/104.4MB  16.1s
    ✔ 34045bc93960 Download complete  1.0s
    [...]
-```
+</Terminal>
 
 À la fin, une fois les images téléchargées, la console affichera quelque chose comme ceci :
 
-```bash
-❯ docker compose up --detach
+<Terminal>
+$ docker compose up --detach
 [+] Running 35/35
  ✔ joomladb 12 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]  0B/0B   Pulled  84.9s
    ✔ 177e7ef0df69 Pull complete  26.9s
@@ -153,7 +153,7 @@ Vous obtiendrez quelque chose comme ceci, veuillez patienter jusqu'à ce que tou
  ✔ Network joomla_default       Created  0.3s
  ✔ Container joomla-joomladb-1  Started  52.9s
  ✔ Container joomla-joomla-1    Started  38.8s
-```
+</Terminal>
 
 Les deux images ont donc été téléchargées,
 
@@ -198,12 +198,12 @@ Nous ne redémarrerons pas tout de suite vos conteneurs Docker. Pour l'instant, 
 
 Si vous êtes curieux, vous pouvez lancer la commande `docker image list` pour obtenir la liste des images Docker déjà téléchargées sur votre machine.
 
-```bash
-❯ docker image list
+<Terminal>
+$ docker image list
 REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
 joomla       latest    882b2151d890   2 days ago    663MB
 mysql        8.0.13    102816b1ee7d   4 years ago   486MB
-```
+</Terminal>
 
 On voit que Docker a bien téléchargé Joomla (dans sa version dite *latest*) et MySQL (version 8.0.13).
 
@@ -245,12 +245,12 @@ services:
 
 Nous avons presque terminé. Veuillez lancer `docker container list` pour obtenir la liste des conteneurs créés par Docker :
 
-```bash
-❯ docker container list
+<Terminal>
+$ docker container list
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                    NAMES
 0798f8f25d2b   joomla         "/entrypoint.sh apac…"   8 minutes ago    Up 5 minutes    0.0.0.0:8080->80/tcp     joomla-joomla-1
 7b7fcd3809b0   mysql:8.0.13   "docker-entrypoint.s…"   8 minutes ago    Up 7 minutes    3306/tcp, 33060/tcp      joomla-joomladb-1
-```
+</Terminal>
 
 Nous avons deux conteneurs en cours d'exécution (vos deux services). Portez votre attention à la colonne `PORTS` : votre conteneur `joomla` écoute sur le port `8080` et votre conteneur `mysql` écoute sur le port `3306`.
 
@@ -328,16 +328,16 @@ Dans le chapitre précédent, nous avons installé Joomla donc nous devrions avo
 
 Vérifions en retournant dans notre console Linux :
 
-```bash
-❯ pwd
+<Terminal>
+$ pwd
 /tmp/joomla
-
-❯ ls -alh
+.
+$ ls -alh
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2023-11-04 09:32  .
 drwxrwxrwt     - christophe christophe 2023-11-04 09:32 ..
 .rw-r--r--   325 christophe christophe 2023-11-04 09:32  compose.yaml
-```
+</Terminal>
 
 Oh ? Rien... **Rien n'a été téléchargé dans votre dossier.** Vous n'avez pas Joomla sur votre ordinateur. Comment est-ce possible ?
 
@@ -347,12 +347,12 @@ Nous en parlerons plus tard mais oui, par défaut avec Docker, tout se passe en 
 
 Toujours sur votre console, tapez à nouveau `docker container list` :
 
-```bash
-❯ docker container list
+<Terminal>
+$ docker container list
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                    NAMES
 0798f8f25d2b   joomla         "/entrypoint.sh apac…"   8 minutes ago    Up 5 minutes    0.0.0.0:8080->80/tcp     joomla-joomla-1
 7b7fcd3809b0   mysql:8.0.13   "docker-entrypoint.s…"   8 minutes ago    Up 7 minutes    3306/tcp, 33060/tcp      joomla-joomladb-1
-```
+</Terminal>
 
 Faites attention cette fois à la dernière colonne, appelée `NAMES`.
 
@@ -360,13 +360,13 @@ Nous avons donc deux conteneurs, l'un nommé `joomla-joomla-1` et l'autre `jooml
 
 Nous allons les arrêter en lançant `docker compose down` :
 
-```bash
-❯ docker compose down
+<Terminal>
+$ docker compose down
 [+] Running 3/3
  ✔ Container joomla-joomla-1    Removed 2.6s
  ✔ Container joomla-joomladb-1  Removed 4.2s
  ✔ Network joomla       Removed
-```
+</Terminal>
 
 Si vous retournez sur `http://localhost:8080` avec votre navigateur et que vous rafraîchissez la page, le site n'existe plus.
 
@@ -440,9 +440,9 @@ Et le dossier `/var/lib/mysql` du service MySQL doit être synchronisé avec vot
 :::important Veuillez d'abord créez les répertoires
 Assurez-vous d'abord de créer ces deux répertoires sur votre ordinateur pour que les permissions des dossiers soient correctes !
 
-```bash
-❯ mkdir site_joomla db
-```
+<Terminal>
+$ mkdir site_joomla db
+</Terminal>
 
 :::
 
@@ -454,45 +454,45 @@ Si vous ne faites pas cela, les fichiers et dossiers créés par Docker appartie
 
 Vérifiez simplement le contenu de votre dossier :
 
-```bash
-❯ pwd
+<Terminal>
+$ pwd
 /tmp/joomla
-
-❯ ls -alh
+.
+$ ls -alh
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2023-11-04 20:13  .
 drwxrwxrwt     - christophe christophe 2023-11-04 20:13 ..
 drwxr-xr-x     - christophe christophe 2023-11-04 20:13 db
 drwxr-xr-x     - christophe christophe 2023-11-04 20:13 site_joomla
 .rw-r--r--   478 christophe christophe 2023-11-04 20:13  compose.yaml
-```
+</Terminal>
 
 Lancez à nouveau Docker, mais assurez-vous d'abord que les conteneurs précédents sont supprimés (et pas seulement arrêtés) : `docker compose kill`.
 
-```bash
-❯ docker compose kill
+<Terminal>
+$ docker compose kill
 [+] Killing 2/2
  ✔ Container kingsbridge-db   Killed   2.1s
  ✔ Container kingsbridge-app  Killed   1.5s
- ```
+</Terminal>
 
 Exécutez une fois encore `docker compose up --detach`.
 
-```bash
-❯ docker compose up --detach
+<Terminal>
+$ docker compose up --detach
 [+] Running 3/3
  ✔ Network kingsbridge_default       Created    0.3s
  ✔ Container kingsbridge-db   Started    3.3s
  ✔ Container kingsbridge-app  Started
-```
+</Terminal>
 
 Et vous pouvez déjà lancer `ls` à nouveau pour voir que, oui, vos dossiers locaux `site_joomla` et `db` sont maintenant remplis. C'est le résultat de l'entrée `volumes` que nous avons ajoutée dans votre fichier `compose.yaml`.
 
-```bash
-❯ pwd
+<Terminal>
+$ pwd
 /tmp/joomla
-
-❯ ls -alh site_joomla
+.
+$ ls -alh site_joomla
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2023-11-04 20:20 .
 drwxr-xr-x     - christophe christophe 2023-11-04 20:16 ..
@@ -519,8 +519,8 @@ drwxr-xr-x     - christophe christophe 2023-10-14 14:42 tmp
 .rw-r--r--  4.9k christophe christophe 2023-10-14 14:42 README.txt
 .rw-r--r--   764 christophe christophe 2023-10-14 14:42 robots.txt.dist
 .rw-r--r--  3.0k christophe christophe 2023-10-14 14:42 web.config.txt
-
-❯ ls -alh db
+.
+$ ls -alh db
 Permissions Size User       Group      Date Modified    Name
 drwxr-x---     - christophe christophe 2023-11-04 20:20 #innodb_temp
 drwxr-xr-x     - christophe christophe 2023-11-04 20:21 .
@@ -544,33 +544,37 @@ drwxr-x---     - christophe christophe 2023-11-04 20:21 sys
 .rw-------  1.7k christophe christophe 2023-11-04 20:21 server-key.pem
 .rw-r-----   10M christophe christophe 2023-11-04 20:21 undo_001
 .rw-r-----   10M christophe christophe 2023-11-04 20:21 undo_002
-```
+</Terminal>
 
 Retournez dans votre navigateur et continuez l'installation de Joomla comme nous l'avons fait dans le chapitre précédent.
 
 Lorsque l'assistant d'installation s'est terminé avec succès, retournez à votre console Linux et vérifiez si vous pouvez voir le fichier `configuration.php` maintenant.
 
-```bash
-❯ pwd
+<Terminal>
+$ pwd
 /tmp/joomla
-
-❯ ls site_joomla/configuration.php
-
+.
+$ ls site_joomla/configuration.php
+.
 Permissions Size User       Group      Date Modified    Name
 .rw-r--r--  2.0k christophe christophe 2023-11-04 20:29 configuration.php
+</Terminal>
 
-❯ head -n 10 site_joomla/configuration.php
+<Terminal>
+$ head -n 10 site_joomla/configuration.php
+{`
 <?php
-class JConfig {
-        public $offline = false;
-        public $offline_message = 'Ce site est en maintenance.<br>Merci de revenir ultérieurement.';
-        public $display_offline_message = 1;
-        public $offline_image = '';
-        public $sitename = 'Kingsbridge';
-        public $editor = 'tinymce';
-        public $captcha = '0';
-        public $list_limit = 20;
-```
+class JConfig \{
+        public \$offline = false;
+        public \$offline_message = 'Ce site est en maintenance.<br>Merci de revenir ultérieurement.';
+        public \$display_offline_message = 1;
+        public \$offline_image = '';
+        public \$sitename = 'Kingsbridge';
+        public \$editor = 'tinymce';
+        public \$captcha = '0';
+        public \$list_limit = 20;
+`}
+</Terminal>
 
 Oui ! Cette fois-ci, nous avons stocké votre site web Joomla sur votre ordinateur.
 
@@ -613,27 +617,29 @@ Ensuite, nous sautons dans le conteneur Docker de Joomla en lançant `docker com
 
 Cela peut vous rendre fou mais ... lorsque vous entrez dans le conteneur Docker, vous n'êtes *plus* sur votre ordinateur, vous êtes virtuellement dans un autre ordinateur, le conteneur. Dans cet *ordinateur*, le dossier courant est donc `/var/www/html`. En tapant `exit`, vous quitterez le conteneur, retournerez sur votre ordinateur et dans le dossier `/tmp/joomla`.
 
-```bash
-❯ pwd
+<Terminal>
+$ pwd
 /tmp/joomla
-❯ docker compose exec joomla /bin/sh
+$ docker compose exec joomla /bin/sh
+...
 $ pwd
 /var/www/html
 $ exit
-❯ pwd
+$ pwd
 /tmp/joomla
-```
+</Terminal>
 
 Quelque chose d'autre à essayer:
 
-```bash
-❯ php --version
+<Terminal>
+$ php --version
 command not found: php
-❯ docker compose exec joomla /bin/sh
+$ docker compose exec joomla /bin/sh
+...
 $ php --version
 PHP 8.1.25 (cli) (built: Nov  1 2023 06:20:35) (NTS)
 $ exit
-```
+</Terminal>
 
 Donc, sur mon ordinateur (et probablement sur le vôtre), en tapant `php --version`, j'ai obtenu une erreur. C'est exact. Je n'ai pas PHP sur mon ordinateur. *Je travaille quotidiennement avec PHP depuis des années et je ne l'ai pas sur mon ordinateur*. 😄
 
@@ -725,14 +731,14 @@ Nous allons lancer l'image Docker de phpmyadmin (aka PMA) et
 :::tip
 Si vous avez oublié le nom du réseau utilisé par vos conteneurs, exécutez `docker compose up --detach` à nouveau et vous le verrez. Sinon, lancez `docker network list` pour obtenir la liste des réseaux.
 
-```bash
-❯ docker network list
+<Terminal>
+$ docker network list
 NETWORK ID NAME DRIVER SCOPE
 ddb1c1606b76 bridge bridge local
 336cd6fec416 host host local
 16d351a0e393 kingsbridge_default bridge local
 d8cdc43a7272 none null local
-```
+</Terminal>
 
 :::
 
@@ -748,9 +754,9 @@ Vous souvenez-vous de vos identifiants MySQL ? Il s'agit de `root` / `example`.
 
 Si vous préférez [Adminer](https://hub.docker.com/_/adminer/), voici la commande à exécuter :
 
-```bash
-docker run -d --rm --name adminer --link joomladb:db --network kingsbridge_default -p 8088:8080 adminer
-```
+<Terminal>
+$ docker run -d --rm --name adminer --link joomladb:db --network kingsbridge_default -p 8088:8080 adminer
+</Terminal>
 
 Et voici l'URL configurée à utiliser pour Adminer : `http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db`.  (`joomla_db` est le nom de la base de données que nous avons créée plus tôt dans le chapitre **Installer Joomla**).
 
@@ -906,12 +912,12 @@ Tout d'abord, lancez `which make` dans votre console Linux pour vérifier si `ma
 
 Ceci fait, nous allons créer un nouveau fichier appelé `makefile` dans votre répertoire. Nous utiliserons `code makefile` pour lancer Visual Studio Code et créer le `makefile` dans votre répertoire.
 
-```bash
-❯ pwd
+<Terminal>
+$ pwd
 /tmp/joomla
-
+.
 ❯ code makefile
-```
+</Terminal>
 
 :::tip Ce fichier est propre à chaque projet et non global
 Le fichier `makefile`, étant créé dans le dossier de votre projet, peut contenir des instructions pour ce project spécifique. Vous pourriez avoir un fichier `makefile` pour chaque projet.
@@ -980,13 +986,13 @@ Maintenant, au lieu de lancer par exemple `docker compose up --detach` pour lanc
 :::tip Utiliser printf pour afficher des informations utiles
 En tapant `make phpmyadmin`, il serait agréable de voir, sur la console, les identifiants à utiliser et une petite astuce comme celle-ci :
 
-```bash
-❯ make phpmyadmin
+<Terminal>
+$ make phpmyadmin
 User is root and password is example. Please open http://127.0.0.1:8089 to open phpmyadmin.
-
-docker run --name phpmyadmin -d --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin
+.
+$ docker run --name phpmyadmin -d --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin
 a0c37edd9f8c139556f1f0a6b028ec5102362f16233efbc05f56d184edfb83c9
-```
+</Terminal>
 
 Pour ce faire, il suffit d'utiliser la fonction `printf` comme illustré ci-dessus.
 :::

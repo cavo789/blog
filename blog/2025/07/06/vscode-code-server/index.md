@@ -24,14 +24,14 @@ Or ... you're not yet convinced by VSCode and just want to try it out.
 
 By running the instruction below, you'll download (once) the `codercom/code-server` Docker image then run a container as a daemon.
 
-```bash
-docker run -d --name code-server -p 8080:8080 \
-  -v "${HOME}/.config:/home/coder/.config" \
+<Terminal>
+$ {`docker run -d --name code-server -p 8080:8080 \
+  -v "\${HOME}/.config:/home/coder/.config" \
   -v ".:/home/coder/project" \
-  -u "$(id -u):$(id -g)" \
-  -e "DOCKER_USER=${USER}" \
-  codercom/code-server:latest
-```
+  -u "\$(id -u):\$(id -g)" \
+  -e "DOCKER_USER=\${USER}" \
+  codercom/code-server:latest`}
+</Terminal>
 
 Once triggered successfully, just open your browser and visit `http://127.0.0.1:8080` to start VSCode in the browser.
 

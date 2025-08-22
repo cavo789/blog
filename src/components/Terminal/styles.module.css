@@ -93,3 +93,10 @@
   display: inline-block;
   min-width: 0;
 }
+
+/* Optional no-wrap mode */
+.no_wrap {
+  white-space: pre;       /* don't wrap lines */
+  overflow-x: auto;       /* show horizontal scrollbar if too long */
+  word-break: normal;     /* no forced breaks */
+}

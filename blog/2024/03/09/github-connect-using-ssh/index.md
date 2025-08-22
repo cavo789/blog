@@ -19,9 +19,9 @@ Adding a SSH key on your computer and use it to connect to Github is quite easy.
 
 First, run the command below on your computer. Replace `your_email@example.com` by the email linked to your existing Github account.
 
-```bash
-ssh-keygen -t ed25519 -C "your_email@example.com"
-```
+<Terminal>
+$ ssh-keygen -t ed25519 -C "your_email@example.com"
+</Terminal>
 
 You'll be prompted to enter a *passphrase*, this is not required so just press <kbd>Enter</kbd>.
 
@@ -47,10 +47,10 @@ The key's randomart image is:
 
 Then you'll need to add the key to your SSH agent. Simply run:
 
-```bash
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-```
+<Terminal>
+$ eval "$(ssh-agent -s)"
+$ ssh-add ~/.ssh/id_ed25519
+</Terminal>
 
 Finally, add the key to GitHub by surfing to [https://github.com/settings/ssh/new](https://github.com/settings/ssh/new).
 

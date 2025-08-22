@@ -35,7 +35,7 @@ function getText(children) {
   return "";
 }
 
-export default function Terminal({ children, title }) {
+export default function Terminal({ children, title, wrap = true }) {
   const displayTitle = title || "christophe@machine: ~";
   const content = getText(children);
   const lines = content.split("\n");
@@ -54,7 +54,11 @@ export default function Terminal({ children, title }) {
         </div>
       </div>
 
-      <pre className={styles.terminal_body}>
+      <pre
+        className={clsx(styles.terminal_body, {
+          [styles.no_wrap]: !wrap
+        })}
+      >
         {lines.map((line, idx) => {
           const isCommand = line.startsWith("$ ") || line.startsWith("> ");
           const displayLine = isCommand ? line.slice(2) : line;
@@ -62,10 +66,12 @@ export default function Terminal({ children, title }) {
           return (
             <div
               key={idx}
-              className={`${styles.terminal_line} ${isCommand ? styles.first_line : ""}`}
+              className={`${styles.terminal_line} ${
+                isCommand ? styles.first_line : ""
+              }`}
             >
               {isCommand && <span className={styles.prompt}>&gt;</span>}
-              <span>{displayLine}</span>
+              <span>{displayLine || "\u00A0"}</span>
             </div>
           );
         })}
@@ -74,11 +80,13 @@ export default function Terminal({ children, title }) {
   );
 }
 
-
 Terminal.propTypes = {
   /** Terminal content to display inside the code block */
   children: PropTypes.node.isRequired,
 
   /** Optional terminal title displayed in the header */
   title: PropTypes.string,
+
+  /** Enable or disable word wrap in the terminal body (default: true) */
+  wrap: PropTypes.bool
 };

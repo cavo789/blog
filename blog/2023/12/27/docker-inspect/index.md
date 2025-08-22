@@ -83,9 +83,9 @@ The name of the used network can be retrieved in the `NetworksSettings.Networks`
 
 You can retrieve it more easily using this command:
 
-```bash
-docker inspect phpinfo | jq -r '.[0].NetworkSettings.Networks'
-```
+<Terminal>
+$ docker inspect phpinfo | jq -r '.[0].NetworkSettings.Networks'
+</Terminal>
 
 You'll get something like this:
 

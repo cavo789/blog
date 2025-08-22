@@ -36,30 +36,27 @@ You're now in the `/tmp/docusaurus` folder.
 
 Copy/paste in the console instructions below, with the parentheses included. This will create a subfolder called `blog` with three markdown files in it, our three fake articles.
 
-```bash
+<Terminal>
 (
-  mkdir -p blog && cd $_
-
-  echo '---' > 2024-04-26-welcome-world.md
-  echo 'title: Hello World!' >> 2024-04-26-welcome-world.md
-  echo '---' >> 2024-04-26-welcome-world.md
-  echo 'Hello world! Proud to be here!!!' >> 2024-04-26-welcome-world.md
-
-  echo '---' > 2024-04-27-my-first-post.md
-  echo 'title: My first blog post' >> 2024-04-27-my-first-post.md
-  echo '---' >> 2024-04-27-my-first-post.md
-  echo 'My first blog post' >> 2024-04-27-my-first-post.md
-  echo '' >> 2024-04-27-my-first-post.md
-  echo '![Unsplash random](https://source.unsplash.com/random?dinosaure)' >> 2024-04-27-my-first-post.md
-
-  echo '---' > 2024-04-28-my-second-post.md
-  echo 'title: My second blog post' >> 2024-04-28-my-second-post.md
-  echo '---' >> 2024-04-28-my-second-post.md
-  echo 'My second blog post' >> 2024-04-28-my-second-post.md
-  echo '' >> 2024-04-28-my-second-post.md
-  echo '![Unsplash random](https://source.unsplash.com/random?dinosaure)' >> 2024-04-28-my-second-post.md
+  $ mkdir -p blog && cd $_
+  $ echo '---' > 2024-04-26-welcome-world.md
+  $ echo 'title: Hello World!' >> 2024-04-26-welcome-world.md
+  $ echo '---' >> 2024-04-26-welcome-world.md
+  $ echo 'Hello world! Proud to be here!!!' >> 2024-04-26-welcome-world.md
+  $ echo '---' > 2024-04-27-my-first-post.md
+  $ echo 'title: My first blog post' >> 2024-04-27-my-first-post.md
+  $ echo '---' >> 2024-04-27-my-first-post.md
+  $ echo 'My first blog post' >> 2024-04-27-my-first-post.md
+  $ echo '' >> 2024-04-27-my-first-post.md
+  $ echo '![Unsplash random](https://source.unsplash.com/random?dinosaure)' >> 2024-04-27-my-first-post.md
+  $ echo '---' > 2024-04-28-my-second-post.md
+  $ echo 'title: My second blog post' >> 2024-04-28-my-second-post.md
+  $ echo '---' >> 2024-04-28-my-second-post.md
+  $ echo 'My second blog post' >> 2024-04-28-my-second-post.md
+  $ echo '' >> 2024-04-28-my-second-post.md
+  $ echo '![Unsplash random](https://source.unsplash.com/random?dinosaure)' >> 2024-04-28-my-second-post.md
 )
-```
+</Terminal>
 
 So, now, we've a dummy blog.
 
@@ -272,23 +269,22 @@ The `.dockerignore` file is then needed to keep the image smaller in size and to
 
 If you've followed the creation of the temporary folder as described here above, you should have the following situation: two files in the `/tmp/docusaurus` folder and three Markdown files in the `blog` subdirectory.
 
-```bash
-❯ ls -alhR
-
+<Terminal>
+$ ls -alhR
 drwxr-xr-x  3 root root 4.0K Apr 28 11:02 .
 drwxrwxrwt 25 root root  12K Apr 28 10:44 ..
 -rw-r--r--  1 root root  155 Apr 27 09:47 .dockerignore
 -rw-r--r--  1 root root 1.2K Apr 28 10:45 Dockerfile
 drwxr-xr-x  2 root root 4.0K Apr 28 11:02 blog
-
-./blog:
-
+.
+$ ls -alh ./blog:
+.
 drwxr-xr-x 2 root root 4.0K Apr 28 11:02 .
 drwxr-xr-x 3 root root 4.0K Apr 28 11:02 ..
 -rw-r--r-- 1 root root   61 Apr 28 11:02 2024-04-26-welcome-world.md
 -rw-r--r-- 1 root root  119 Apr 28 11:02 2024-04-27-my-first-post.md
 -rw-r--r-- 1 root root  121 Apr 28 11:02 2024-04-28-my-second-post.md
-```
+</Terminal>
 
 ## Build our Docker image
 
@@ -304,9 +300,9 @@ In my case `cavo789/blog` is then a good choice. For this article, I'll use `joh
 
 Still in your console, please run the following command:
 
-```bash
-docker build --tag johndoe/blog --target production .
-```
+<Terminal>
+$ docker build --tag johndoe/blog --target production .
+</Terminal>
 
 The final `.` in the instruction above means *current folder*; `/tmp/docusaurus` in my case.
 
@@ -332,9 +328,9 @@ Now that our image is created, we can do a few things like just running it and g
 
 To do this, just run the following command:
 
-```bash
-docker run -d --publish 80:80 --name blog johndoe/blog
-```
+<Terminal>
+$ docker run -d --publish 80:80 --name blog johndoe/blog
+</Terminal>
 
 Very quickly, you'll get a very long ID as result like f.i. `cae6989bee2a2339a4c0116be2b86ee3dae0b46d47a6c53dcb6e50098726c0b1`. Just ignore this at this moment, it just means you're container has been created successfully.
 

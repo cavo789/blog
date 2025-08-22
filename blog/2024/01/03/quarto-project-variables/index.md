@@ -100,9 +100,9 @@ VERSION_NUMBER=1.2
 
 Then, before calling the Quarto rendering process, you should load the file. Since I'm using Docker, I do this like this:
 
-```bash
-docker run --rm -it -v .:/input -w /input --env-file .env cavo789/quarto quarto preview documentation.md --to html
-```
+<Terminal>
+$ docker run --rm -it -v .:/input -w /input --env-file .env cavo789/quarto quarto preview documentation.md --to html
+</Terminal>
 
 Here is the content of `documentation.md`:
 
