@@ -12,12 +12,16 @@ enableComments: true
 
 This article is the very short and straightforward version of <Link to="/blog/vscode-devcontainer">PHP development in a devcontainer with preinstalled code quality tools</Link>. If you just want to follow a very few steps and get your PHP environment, this article is for you.
 
-By following steps describe in this article, you'll obtain:
-
-* A Docker PHP environment so you can code using vscode,
-* The PHP `composer` package manager installed,
-* A few static analysis tool like `php-cs-fixer`, `phpcs`, `phpcbf`, `sonarlint` and `Rector` installed
-* A devcontainer ready-to-use environment.
+<StepsCard
+  title="By following steps describe in this article, you'll obtain"
+  variant="steps"
+  steps={[
+    'A Docker PHP environment so you can code using vscode,',
+    'The PHP `composer` package manager installed,',
+    'A few static analysis tool like `php-cs-fixer`, `phpcs`, `phpcbf`, `sonarlint` and `Rector` installed',
+    'A devcontainer ready-to-use environment.',
+  ]}
+/>
 
 Just follow the guide...
 

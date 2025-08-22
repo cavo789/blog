@@ -9,6 +9,8 @@ enableComments: true
 ---
 ![Markitdown - Convert files and MS Office documents to Markdown](/img/markdown_tips_banner.jpg)
 
+<!-- cspell:ignore markitdown -->
+
 Recently a good friend has notified me about a new tool from Microsoft: an utility for converting PDF and MS Office files (like `.docx` or `.xlsx`) to Markdown.
 
 By looking at the repo on Github ([https://github.com/microsoft/markitdown/](https://github.com/microsoft/markitdown/)), it seems really interesting since, they said, "it converts pdf, PowerPoint, word, excel, images, audio, html, text-based formats like csv, json or xml and even zip file (iterates over contents)". It's a lovely promise!
@@ -57,9 +59,8 @@ Jump in any directory on your disk where you've a supported file like `.docx` or
 
 For the demo, I'll create some dummy files: `test.docx`, `test.pdf` and `test.xlsx` in my current folder.
 
-```bash
-❯ ls -alh
-
+<Terminal>
+$ ls -alh
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2024-12-26 10:26 .
 drwxrwxrwt     - root       root       2024-12-26 10:17 ..
@@ -67,7 +68,8 @@ drwxrwxrwt     - root       root       2024-12-26 10:17 ..
 .rw-r--r--   19k christophe christophe 2024-12-26 10:26 test.docx
 .rw-r--r--  100k christophe christophe 2024-12-26 10:26 test.pdf
 .rw-r--r--   10k christophe christophe 2024-12-26 10:26 test.xlsx
-```
+...
+</Terminal>
 
 As you know, to run an interactive shell session, we just need to call `docker run -it --rm` with some parameters.
 
@@ -89,9 +91,14 @@ To convert a file, as stated in the official [documentation](https://github.com/
 
 So, for instance:
 
-* `markitdown test.docx > from_docx.md` to convert our Word document,
-* `markitdown test.xlsx > from_xlsx.md` to convert our Excel workbook or, even,
-* `markitdown test.pdf > from_pdf.md` to convert o PDF.
+<Terminal>
+$ markitdown test.docx > from_docx.md
+...
+$ markitdown test.xlsx > from_xlsx.md
+...
+$ markitdown test.pdf > from_pdf.md
+...
+</Terminal>
 
 :::note
 Since we have not taken time to create an unprivileged user inside our container, we're running the container as root. By running the conversion as illustrated here above, the created files will be owned by the root user.

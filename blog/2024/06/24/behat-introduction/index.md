@@ -228,11 +228,17 @@ This has to be put in a file having the `.feature` extension in the  `features` 
 If you're using Visual Studio Code, you can install [Cucumber (Gerkin) Full Support](https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete) to get colorization, a better integration in vscode like autocompletion.
 :::
 
-Your scenario here above is using three **steps**:
+<StepsCard
+  title="Your scenario here above is using three steps:"
+  variant="steps"
+  steps={[
+    '`Given I am on "https://www.avonture.be"`',
+    '`Then I click on the "Blog" menu item` and',
+    '`Then I should be on "/blog"`.'
+  ]}
+/>
 
-1. `Given I am on "https://www.avonture.be"`,
-2. `Then I click on the "Blog" menu item` and
-3. `Then I should be on "/blog"`.
+
 
 Now we've our scenario, we need to teach Behat how to *translate* these sentences (it's the [Gherkin language](https://cucumber.io/docs/gherkin/)) in our PHP code.
 

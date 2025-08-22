@@ -17,7 +17,16 @@ That's what we'll be looking at in this article.
 
 <!-- truncate -->
 
-## Prerequisites - Install GNU Make if needed
+<StepsCard
+  title="Before you begin make sure..."
+  variant="prerequisites"
+  steps={[
+    "You've GNU Make installed",
+    "You've an existing makefile",
+  ]}
+/>
+
+## Install GNU Make if needed
 
 We will use `GNU make` so you need to have it.
 
@@ -25,7 +34,7 @@ Please run `which make` in your Linux console to check if `make` is already inst
 
 If you got `make not found`, please run `sudo apt-get update && sudo apt-get -y install make` to install it.
 
-## Prerequisites - Create a sample file
+## Create a sample file
 
 For the demo, please start a Linux shell and run `mkdir -p /tmp/makefile && cd $_` to create a folder called `makefile` in your Linux temporary folder and jump in it.
 

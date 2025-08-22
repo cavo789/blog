@@ -56,10 +56,10 @@ import BlueSky from "@site/src/components/BlueSky";
 
 ## 🧾 Props
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `metadata | object | ✅ | Docusaurus document metadata, including frontmatter |
-| `metadata.frontMatter.blueSkyRecordKey`| string | ❌ | Unique key for the associated Bluesky post. Enables full interaction mode. |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `metadata | object | ✅ | — | Docusaurus document metadata, including frontmatter |
+| `metadata.frontMatter.blueSkyRecordKey`| string | ❌ | — | Unique key for the associated Bluesky post. Enables full interaction mode. |
 
 ## 🔀 Behavior
 

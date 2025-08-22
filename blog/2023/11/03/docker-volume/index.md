@@ -23,9 +23,9 @@ For this post, let u's create a temporary folder in your `/tmp` folder: start a 
 
 Let run the command below to start the PHP 8.1.5 + Apache image:
 
-```bash
-docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html php:8.1.5-apache
-```
+<Terminal>
+$ docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html php:8.1.5-apache
+</Terminal>
 
 :::info
 If you're using Windows (MS DOS), replace `$(pwd)` with `%CD%` in the instruction above.

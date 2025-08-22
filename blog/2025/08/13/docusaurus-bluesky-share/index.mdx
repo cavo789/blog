@@ -153,9 +153,15 @@ So, as you can see, it's now quite easy. We can change the layout of our Docusau
 
 We'll proceed step by step and keeping in mind a few things:
 
-* We should minimize our changes on the original `src/theme/BlogPostItem/index.js`; the less updates the best;
-* We will create a Docusaurus component in `src/components/` to allow interactions with BlueSky (think about the evolution of the component) so, for this reason, we'll put everything (code, image, css) together and
-* We will try to keep things clean and maintainable for the developer and configurable for the user.
+<StepsCard
+  title="Things to Remember"
+  variant="remember"
+  steps={[
+    'We should minimize our changes on the original `src/theme/BlogPostItem/index.js`; the less updates the best;',
+    'We will create a Docusaurus component in `src/components/` to allow interactions with BlueSky (think about the evolution of the component) so, for this reason, we\'ll put everything (code, image, css) together and',
+    'We will try to keep things clean and maintainable for the developer and configurable for the user.'
+  ]}
+/>
 
 ### 1/5 The layout of our BlueSky generic component
 

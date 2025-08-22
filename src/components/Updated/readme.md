@@ -36,10 +36,10 @@ import UpdateAt from '@site/src/components/UpdateAt';
 
 ## 🛠 Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `updates` | `Array<{ date: string, content: ReactNode }>` | Required | List of updates with date and content. |
-| `title` | string | "Last updates at" | Optional title displayed above the timeline. |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `updates` | `Array<{ date: string, content: ReactNode }>` | ✅ | — | List of updates with date and content. |
+| `title` | string | ❌ | "Last updates at" | Optional title displayed above the timeline. |
 
 ## 🎨 Styling
 

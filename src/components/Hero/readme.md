@@ -27,10 +27,10 @@ import Hero from "@site/src/components/Hero";
 
 ## 🧾 Props
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `children` | ReactNode | ✅ | Content to display inside the hero section |
-| `className` | string | ❌ | Additional class names for custom styling |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `children` | ReactNode | ✅ | — | Content to display inside the hero section |
+| `className` | string | ❌ | — | Additional class names for custom styling |
 
 ## 🎨 Styling
 

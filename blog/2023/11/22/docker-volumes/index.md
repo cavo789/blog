@@ -246,7 +246,13 @@ Indeed, you can't remove a volume if there is still, at least, one container who
 
 Volumes are stored *somewhere* on the disk by Docker, you don't need to take care about this.
 
-Just keep in mind that files are not saved in your folder; let's check this:
+<StepsCard
+  title=""
+  variant="remember"
+  steps={[
+    "Keep in mind that files are not saved in your folder<br>Let's check this"
+  ]}
+/>
 
 ```bash
 > cd /tmp/counter

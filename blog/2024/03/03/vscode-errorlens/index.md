@@ -15,7 +15,7 @@ Very recently I discovered [usernamehw.errorlens](https://marketplace.visualstud
 
 Did you know where is that area? In the status bar of the main VSCode window. Did you see it? Hardly anyone sees it, and yet it should be!
 
-![Status bar](images/status_bar.png)
+![Status bar](./images/status_bar.png)
 
 We can see here I've 54 *problems*, ouch.
 
@@ -23,11 +23,11 @@ We can see here I've 54 *problems*, ouch.
 
 The image below is my current VSCode with this blog post opened. Ok, I can see some words underlined in blue but ... this is not really "visible". On a big file, chances are big that you don't see it.
 
-![Without Error Lens](images/without_error_lens.png)
+![Without Error Lens](./images/without_error_lens.png)
 
 Now, once Error Lens been installed, here is the same screen:
 
-![With Error Lens](images/with_error_lens.png)
+![With Error Lens](./images/with_error_lens.png)
 
 The entire line now has a blue-grey background and, too, I can see in the minimap (at the right side of the screen), that I've two blocks in blue so two *problems*.
 

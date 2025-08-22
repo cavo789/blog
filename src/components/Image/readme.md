@@ -38,11 +38,11 @@ import Image from "@site/src/components/Image";
 
 ## 🧾 Props
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `img` | string | ✅ | Relative path to the image file |
-| `alt` | string | ❌ | Alternative text for screen readers |
-| `title` | string | ❌ | Tooltip text shown on hover |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `img` | string | ✅ | — | Relative path to the image file |
+| `alt` | string | ❌ | — | Alternative text for screen readers |
+| `title` | string | ❌ | — | Tooltip text shown on hover |
 
 ## 🛠️ Notes
 

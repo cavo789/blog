@@ -23,7 +23,7 @@ Years ago, I've written such PHP utility, let's see how to use it.
 4. You'll get a screen like below. In the text field, just start to type your prefix and you'll get a list of tables using that prefix. Once you're sure, just click on the `Kill selected tables` button.
 5. Finally, be sure to click on the `Remove this script` button since the script shouldn't stay there.
 
-![Kill tables](images/kill_tables.png)
+![Kill tables](./images/kill_tables.png)
 
 :::important Make sure to click on `Remove this script`.
 :::

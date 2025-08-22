@@ -41,11 +41,11 @@ import SeriesBlogPosts from "@site/src/components/SeriesBlogPosts";
 
 ## 🧾 Props
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `series` | string | ✅ | Name of the series to filter blog posts by |
-| `excludePermalink` | string | ❌ | Permalink of the current post to exclude from the list |
-| `highlightCurrent` | boolean | ❌ | If true, dims the current post title for visual emphasis |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `series` | string | ✅ | — | Name of the series to filter blog posts by |
+| `excludePermalink` | string | ❌ | null | Permalink of the current post to exclude from the list |
+| `highlightCurrent` | boolean | ❌ | true | If true, dims the current post title for visual emphasis |
 
 ## 🛠️ Requirements
 

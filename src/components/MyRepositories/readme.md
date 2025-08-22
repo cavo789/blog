@@ -30,8 +30,9 @@ import MyRepositories from "@site/src/components/MyRepositories";
 
 ## 🧾 Props
 
-| Prop | Type | Required | Description |
-| `username` | string | ✅ | GitHub username to fetch repositories |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `username` | string | ✅ | — | GitHub username to fetch repositories |
 
 ## 🛠️ Requirements
 

@@ -38,9 +38,15 @@ Think, to replace these two constants by yours ;-)
 
 Create a SSH key, copy it to the remote server and run a SSH connection. Steps 1 and 2 have to be done just once.
 
-1. `ssh-keygen -t ed25519 -C "christophe@my_blog.be" -f ~/.ssh/id_ed25519_my_blog`
-2. `ssh-copy-id -i ~/.ssh/id_ed25519_my_blog christophe@my_blog.be`
-3. `ssh -i ~/.ssh/id_ed25519_my_blog christophe@my_blog.be`
+<StepsCard
+  title="Steps to fire in your console:"
+  variant="steps"
+  steps={[
+    '`ssh-keygen -t ed25519 -C "christophe@my_blog.be" -f ~/.ssh/id_ed25519_my_blog`',
+    '`ssh-copy-id -i ~/.ssh/id_ed25519_my_blog christophe@my_blog.be`',
+    '`ssh -i ~/.ssh/id_ed25519_my_blog christophe@my_blog.be`'
+  ]}
+/>
 
 ## In-depth
 

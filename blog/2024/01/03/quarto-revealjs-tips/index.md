@@ -371,13 +371,13 @@ You can use `columns` to divide your slide:
 
 ::: columns
 ::: {.column width="70%"}
-![](images/image_1.jpg)
+![](./images/image_1.jpg)
 :::
 
 ::: {.column width="30%"}
-![](images/image_2.jpg)
+![](./images/image_2.jpg)
 
-![](images/image_3.jpg)
+![](./images/image_3.jpg)
 :::
 :::
 ```
@@ -404,7 +404,7 @@ The idea is to split the slides in four parts and display content clockwise, sta
 ::: {.column width="40%"}
 ::: bulletbox
 ::: {.fragment .fade-in-then-semi-out}
-![](images/top-left.jpg){width="450px"}
+![](./images/top-left.jpg){width="450px"}
 :::
 :::
 :::
@@ -415,7 +415,7 @@ The idea is to split the slides in four parts and display content clockwise, sta
 ::: {.column width="40%"}
 ::: bulletbox
 ::: {.fragment .fade-in-then-semi-out}
-![](images/top-right.jpg){width="450px"}
+![](./images/top-right.jpg){width="450px"}
 :::
 :::
 :::
@@ -431,7 +431,7 @@ The idea is to split the slides in four parts and display content clockwise, sta
 ::: {.column width="40%"}
 ::: bulletbox
 ::: {.fragment .fade-in-then-semi-out}
-![](images/bottom-left.jpg){width="450px"}
+![](./images/bottom-left.jpg){width="450px"}
 :::
 :::
 :::
@@ -442,7 +442,7 @@ The idea is to split the slides in four parts and display content clockwise, sta
 ::: {.column width="40%"}
 ::: bulletbox
 ::: {.fragment .fade-in-then-semi-out}
-![](images/bottom-right.jpg){width="450px"}
+![](./images/bottom-right.jpg){width="450px"}
 :::
 :::
 :::
@@ -535,7 +535,7 @@ format:
 ---
 ##
 
-![](images/mimikyu.jpg){style="width:400px;"}
+![](./images/mimikyu.jpg){style="width:400px;"}
 ```
 
 </Snippet>
@@ -750,13 +750,13 @@ The example below illustrate this. The way to insert such presenter's notes is b
 
 ::: columns
 ::: {.column width="70%"}
-![](images/image_1.jpg)
+![](./images/image_1.jpg)
 :::
 
 ::: {.column width="30%"}
-![](images/image_2.jpg)
+![](./images/image_2.jpg)
 
-![](images/image_3.jpg)
+![](./images/image_3.jpg)
 :::
 :::
 
@@ -768,7 +768,7 @@ The second image has been ...
 
 ##
 
-![](images/image_4.jpg)
+![](./images/image_4.jpg)
 ```
 
 </Snippet>

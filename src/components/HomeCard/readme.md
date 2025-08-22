@@ -31,11 +31,12 @@ import HomeCard from "@site/src/components/HomeCard";
 
 ## 🧾 Props
 
-| Prop | Type | Required | Description |
-| `title` | string | ✅ | Title displayed on the card |
-| `image` | string | ✅ | Image filename (from `/img/homepage/`) |
-| `link` | string | ✅ | URL to navigate to when the card is clicked |
-| `description` | string | ✅ | Short description shown below the title |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `title` | string | ✅ | — | Title displayed on the card |
+| `image` | string | ✅ | — | Image filename (from `/img/homepage/`) |
+| `link` | string | ✅ | — | URL to navigate to when the card is clicked |
+| `description` | string | — | ✅ | Short description shown below the title |
 
 ## 🎨 Styling
 

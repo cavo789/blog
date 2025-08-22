@@ -12,11 +12,12 @@ import HomeCard from "@site/src/components/HomeCard";
 import Image from "@site/src/components/Image";
 import Link from '@docusaurus/Link';
 import Snippet from "@site/src/components/Snippet";
-import UpdateAt from "@site/src/components/Updated";
-import Steps from "@site/src/components/Steps";
+import StepsCard from "@site/src/components/StepsCard";
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
+import Terminal from "@site/src/components/Terminal";
 import TOCInline from '@theme/TOCInline';
+import UpdateAt from "@site/src/components/Updated";
 
 export default {
   // Reusing the default mapping
@@ -31,8 +32,9 @@ export default {
   HomeCard,
   Image,
   Snippet,
-  Steps,
+  StepsCard,
   TabItem,
+  Terminal,
   Tabs,
   Link,
   TOCInline,

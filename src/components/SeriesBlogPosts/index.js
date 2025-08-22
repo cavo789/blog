@@ -31,7 +31,7 @@ import styles from "./styles.module.css";
 export default function SeriesBlogPosts({
   series,
   excludePermalink = null,
-  highlightCurrent = false,
+  highlightCurrent = true,
 }) {
   const posts = getBlogMetadata()
     .filter((post) => post.series === series)

@@ -29,12 +29,18 @@ Please read that article and follow steps so, before continuing here, you've a r
 
 ## Some prerequisites
 
-* You've a running Docker container called `oracle-db`,
-* The container is thus running on your `localhost`,
-* The port number to access your database is `1521`,
-* The credentials to use is `SYS` (or `SYSTEM`) and `admin` for the password,
-* The container contains a database called `ORCLPDB1` (also called service name) which is the Human Resources sample of Oracle (refer to the mentioned article) and
-* Our database `oracle-db` is running on a network called `oracle`.
+<StepsCard
+  title="Before you begin make sure..."
+  variant="prerequisites"
+  steps={[
+    "You've a running Docker container called `oracle-db`",
+    "The container is thus running on your `localhost`",
+    "The port number to access your database is `1521`",
+    "The credentials to use is `SYS` (or `SYSTEM`) and `admin` for the password",
+    "The container contains a database called `ORCLPDB1` (also called service name) which is the Human Resources sample of Oracle (refer to the mentioned article) and",
+    "Our database `oracle-db` is running on a network called `oracle`"
+  ]}
+/>
 
 ## Download a Docker image for Oracle REST Data Services
 

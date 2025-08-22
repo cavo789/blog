@@ -14,7 +14,7 @@ enableComments: true
   updates={[
     { date: '2023-11-03', content: 'Search engine, Prism, and sitemap added.' },
     { date: '2023-11-05', content: 'Adding giscus.' },
-    { date: '2023-12-21', content: <>Adding <a href="https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#origins">giscus.json</a> to allow comments to be displayed only on the blog.</> },
+    { date: '2023-12-21', content: 'Adding <a href="https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#origins">giscus.json</a> to allow comments to be displayed only on the blog.' },
   ]}
 />
 

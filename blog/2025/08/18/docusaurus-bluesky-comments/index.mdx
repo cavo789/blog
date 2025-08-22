@@ -18,8 +18,9 @@ This is not really interactive right? Let's see in this article how to make the 
 
 <!-- truncate -->
 
-<Steps
+<StepsCard
   title="The workflow will be:"
+  variant="steps"
   steps={[
     'You publish your article on your blog,',
     'You share the article on BlueSky (by using the "Share the article" feature of course),',
@@ -31,11 +32,15 @@ This is not really interactive right? Let's see in this article how to make the 
 
 So, from now, you've clearly make the link between your article and your BlueSky post.
 
-Thanks to this link, we can:
-
-1. Display a button "Like, share or comment on BlueSky": the visitor can then jump to your BlueSky post and like, share or comment your article,
-2. Display the number of likes and reposts below your article and,
-3. Display the list of comments you've received on your BlueSky post and, if none, display a *Call to action* area to encourage your reader to share his thoughts
+<StepsCard
+  title="Thanks to this link, we can:"
+  variant="steps"
+  steps={[
+    'Display a button "Like, share or comment on BlueSky": the visitor can then jump to your BlueSky post and like, share or comment your article,',
+    'Display the number of likes and reposts below your article and,',
+    'Display the list of comments you\'ve received on your BlueSky post and, if none, display a *Call to action* area to encourage your reader to share his thoughts'
+  ]}
+/>
 
 In the previous article (see [Create our own Docusaurus React component and provide a "Share on BlueSky" button](/blog/docusaurus-bluesky-share)), we've created the `src/components/BlueSky/index.js` file. Please edit that file and use this new content:
 
@@ -146,12 +151,18 @@ BlueSky.propTypes = {
 The highlighted lines are the new ones compared of the previous version of the file if you've already followed the first tutorial.
 :::
 
-As you can see, this time, we'll foresee four components:
+<StepsCard
+  title="As you can see, this time, we'll foresee four components:"
+  variant="steps"
+  steps={[
+    'A Share button,',
+    'A Post button (to jump to your post on BlueSky),',
+    'A likes area (to show the number of likes and reposts of your post on BlueSky) and',
+    'An area for displaying comments you\'ve on BlueSky'
+  ]}
+/>
 
-1. A Share button,
-2. A Post button (to jump to your post on BlueSky),
-3. A likes area (to show the number of likes and reposts of your post on BlueSky) and
-4. An area for displaying comments you've on BlueSky
+
 
 ## 2/5 Our "Like, share or comment" button
 

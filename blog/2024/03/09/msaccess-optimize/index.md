@@ -25,7 +25,7 @@ This guide deliberately concerns **existing databases**, for this reason, I will
 
 MS Access 2016 provide a tool for analyzing the current database.
 
-![MS Access - Analyze Performance](images/access_analyze_performance.png)
+![MS Access - Analyze Performance](./images/access_analyze_performance.png)
 
 You can run the tool only for a selection like, f.i., only for queries.
 
@@ -49,11 +49,11 @@ If possible, a primary key should be
 
 Right-click on the table name and select `Design`.
 
-![Open the table in design mode](images/design.png)
+![Open the table in design mode](./images/design.png)
 
 Select the field then click on the `Primary key` button.
 
-![Add a primary key](images/primarykey_add.png)
+![Add a primary key](./images/primarykey_add.png)
 
 Be careful: be sure to correctly identify the unique field; don't add a primary key to f.i. a customer name (since more than one customer can have such name). A primary key will increase speed and data coherence in your table but will also prevent to have a second record with the same key (so, if you choose the wrong field, we can have side effect).
 
@@ -63,11 +63,11 @@ Take a look to your queries: do you often make a filter on a specific field? You
 
 To do it, open your table in design mode by just right-clicking on the name of the table
 
-![Open the table in design mode](images/design.png)
+![Open the table in design mode](./images/design.png)
 
 Then click on the `Indexes` button to show a small window and, there, add indexes on important fields.
 
-![Add indexes](images/index_add.png)
+![Add indexes](./images/index_add.png)
 
 Note: don't abuse, don't *over index*. Add indexes only on fields often used in query's criteria since maintaining indexes ask CPU and thus has a cost on insert/update/delete statements.
 
@@ -79,13 +79,13 @@ To do this, once your database is opened, click on the `Database Tools` menu and
 
 Draw your relation, select carefully the join type (which can be also adjusted in a query) and save the relations.
 
-![Create relationships between tables](images/relationships.png)
+![Create relationships between tables](./images/relationships.png)
 
 Example: link between two tables on the `ID` from a first table and the associated field, `tblOneID` in the second table. The arrow is draw from `table1` to `table2` (it's the `join type`) and this means: "take all records of `table1` and, if the value is also known in `table2` then return values.
 
 Tip: always try to use an index for the relation and not "any field".
 
-![Example of a relation between two tables](images/relationships_sample.png)
+![Example of a relation between two tables](./images/relationships_sample.png)
 
 #### Use the right data type and the right size
 
@@ -103,7 +103,7 @@ And the right size: specially for text fields, don't use a 255 length (it's almo
 
 When you need to write a `between` criteria, f.i. ID between 5 and 9, you can do this like this:
 
-![Prefer BETWEEN](images/query_between.png)
+![Prefer BETWEEN](./images/query_between.png)
 
 * Twice the same column, one with `>= 5` and the second with `< 10`
 * Or in the same column using a `Between 5 and 9`
@@ -122,7 +122,7 @@ If you use the Count function to calculate the number of records returned by a q
 
 If you're using a query in another query like illustrated below, if you just need three fields in the second query, perhaps the first query can be modified and return only these three fields.
 
-![Query using another query](images/query_on_query.png)
+![Query using another query](./images/query_on_query.png)
 
 If, in this example, the query called `qryFirst` is only used by this second query, then you can modify the first query to only returned three columns.
 
@@ -168,11 +168,11 @@ Why it's bad? **NZ() will return a variant object which is less performant becau
 
 So, in the example below, we're not comparing a date versus another date but a date `dteEntry` with a text (the result of the `NZ()` formula). So .JET engine will convert `dteEntry` to a text too. The conversion is therefore done twice and this is inefficient.
 
-![Using NZ() as a criteria](images/nz_date.png)
+![Using NZ() as a criteria](./images/nz_date.png)
 
 With `Iif([dteHiring] Is Null, #2000-01-01#, [dteHiring]) As dteEntry` the type remains a date field. So we can quickly solve the double conversion introduced by `NZ()` using this construction:
 
-![Using Iif() as a criteria](images/iif_date.png)
+![Using Iif() as a criteria](./images/iif_date.png)
 
 Here, .JET won't complain anymore and will immediately compare a date with an another date; faster.
 
@@ -228,15 +228,15 @@ When you make a link between two tables (with a join), try to respect the data t
 
 Consider the following example:
 
-![Relation](images/sametype_relation.png)
+![Relation](./images/sametype_relation.png)
 
 *The field `ID` in `tblCustomer` is a number*
 
-![Customer](images/sametype_customer.png)
+![Customer](./images/sametype_customer.png)
 
 *The field `CustomerNumber` in `tblOrder` is a text (and a big one)*
 
-![Orders](images/sametype_orders.png)
+![Orders](./images/sametype_orders.png)
 
 MS Access will be able to make the join and will make things working but, implicitly, will convert any fields so they have the same data type and this will cost CPU.
 
@@ -317,7 +317,7 @@ If everything goes fine, just delete the converted macros.
 
 If the database contains modules, be sure in the production version, to compile the source code. You just need to open one module (no importance) and to click on the `Debug` menu then `Compile`.
 
-![Compiled state](images/compiled_state.png)
+![Compiled state](./images/compiled_state.png)
 
 #### Use Option Explicit statement
 
@@ -348,7 +348,7 @@ An easy way to answer to this question is: uncheck them and click on the `OK` bu
 
 Click on the `Debug` menu and choose `Compile`. If you get compilation errors (and no errors before), go back in the `References` window and check the library back.
 
-![Unload unused references](images/unload_references.png)
+![Unload unused references](./images/unload_references.png)
 
 Most of time, only two references are needed:
 
@@ -373,7 +373,7 @@ A .mde file is smaller and faster than a normal MS Access (.accdb file) but you 
 
 With a .mde, you'll no more be able to change the design of a table, add a field, modify your forms, ... but just use them.
 
-![Save as - MDE](images/save_as_mde.png)
+![Save as - MDE](./images/save_as_mde.png)
 
 **If you wish to use a .mde, always take a backup of your .accdb (or .mdb) file and keep it in a secured folder. Once more: if you don't have anymore the .accdb file but only the .mde, you won't be able to change the structure of the application, you won't be able to modify a macro, a form, ...**
 

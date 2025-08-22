@@ -28,6 +28,35 @@
         ],
         "description": "Docusaurus - Link",
     },
+
+    "docusaurus.prerequisites": {
+        "prefix": "Prerequisites",
+        "body": [
+            "<StepsCard",
+            "  title=\"${1:Before you begin make sure...}\"",
+            "  variant=\"prerequisites\"",
+            "  steps={[",
+            "    \"prerequisite_1\",",
+            "    \"prerequisite_2\",",
+            "    \"prerequisite_3\",",
+            "  ]}",
+            "/>",        ],
+        "description": "Docusaurus - Prerequisites",
+    },
+    "docusaurus.remember": {
+        "prefix": "Remember",
+        "body": [
+            "<StepsCard",
+            "  title=\"${1:Things to remember...}\"",
+            "  variant=\"remember\"",
+            "  steps={[",
+            "    \"remember_1\",",
+            "    \"remember_2\",",
+            "    \"remember_3\",",
+            "  ]}",
+            "/>",        ],
+        "description": "Docusaurus - Remember / Keep in mind",
+    },
     "docusaurus.snippet": {
         "prefix": "Snippet",
         "body": [
@@ -40,6 +69,21 @@
             "</Snippet>",
         ],
         "description": "Docusaurus - Snippet",
+    },
+    "docusaurus.steps": {
+        "prefix": "Steps",
+        "body": [
+            "<StepsCard",
+            "  title=\"${1:The workflow will be}:\"",
+            "  variant=\"steps\"",
+            "  steps={[",
+            "    'step1',",
+            "    'step2',",
+            "    'step3',",
+            "  ]}",
+            "/>",
+        ],
+        "description": "Docusaurus - Steps to follow",
     },
     "docusaurus.tabs": {
         "prefix": "Tabs",
@@ -55,6 +99,16 @@
             "</TabItem>",
             "",
             "</Tabs>",
+        ],
+        "description": "Docusaurus - Tabs",
+    },
+    "docusaurus.terminal": {
+        "prefix": "Terminal",
+        "body": [
+            "<Terminal>",
+            "❯ ${1:the_command_issued}",
+            "${2:the_output}",
+            "</Terminal>",
         ],
         "description": "Docusaurus - Tabs",
     },
@@ -77,5 +131,4 @@
         ],
         "description": "Docusaurus - UpdatedAt timeline",
     },
-
 }

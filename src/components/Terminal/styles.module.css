@@ -1,0 +1,95 @@
+/* Terminal container */
+.terminal {
+  background: #1e1e1e; /* terminal background */
+  color: #d4d4d4;       /* default text color */
+  border-radius: 6px;
+  font-family: "Fira Code", monospace;
+  overflow-x: auto;     /* fallback for extremely long lines */
+  margin-bottom: 1rem;
+}
+
+/* Terminal header */
+.terminal_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  background-color: #2d2d2d; /* slightly darker header */
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+/* Left part: icon + title */
+.terminal_left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap; /* keep icon + title on same line */
+  overflow: hidden;    /* truncate if too long */
+}
+
+.terminal_icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.terminal_title {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #d4d4d4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right part: red/yellow/green control dots */
+.terminal_controls {
+  display: flex;
+  gap: 4px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+/* Terminal body */
+.terminal_body {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  white-space: pre-wrap;  /* wrap long lines */
+  word-break: break-all;  /* wrap long words or paths */
+  font-family: "Fira Code", monospace;
+  background-color: #1e1e1e;
+}
+
+/* Each line inside terminal */
+.terminal_line {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Extra margin below command line */
+.first_line {
+  margin-bottom: 0.5rem;
+}
+
+/* Prompt for command line */
+.prompt {
+  user-select: none;      /* not copyable */
+  pointer-events: none;   /* cannot click */
+  color: #00ff00;         /* green prompt */
+  flex-shrink: 0;
+}
+
+/* Wrap content properly inside lines */
+.terminal_line span {
+  display: inline-block;
+  min-width: 0;
+}

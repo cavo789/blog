@@ -26,7 +26,7 @@ You can download Postman for free here: [https://www.postman.com/](https://www.p
 
 By creating an environment, it's just like creating global variables.
 
-![Creating an environment](images/creating_environment.png)
+![Creating an environment](./images/creating_environment.png)
 
 In the example above, I'm defining my `base_url` to the URL of my web service.
 
@@ -34,13 +34,13 @@ Make sure to activate the environment (see point 2 on the image).
 
 So, from now, I can create a request and use `{{base_url}}`
 
-![Using the base URL](images/using_base_url.png)
+![Using the base URL](./images/using_base_url.png)
 
 ## Creating a collection
 
 If you need to create more than one request, it's best to create a collection (understand *a project*). You'll be able to store all requests in a collection but the biggest advantage is to be able to set some defaults rules like, f.i. some tests to fire for each request:
 
-![Collection with global tests](images/collection_tests.png)
+![Collection with global tests](./images/collection_tests.png)
 
 So, whatever the request I'll start, the four tests below will always be fired:
 
@@ -67,11 +67,11 @@ pm.test("Don't contain any error", function ()
 
 By creating a new request, to pass information in the header, I just need to click on the `Headers` tab then fill in the key I need to send. In the example of a SOAP request (i.e. called with a *XML envelope*), I'll need to send a `SOAPAction` key with the name of the action to start (`testFlag` here) and I'll specify that the body I'll send is `application/xml`.
 
-![The request headers](images/request_headers.png)
+![The request headers](./images/request_headers.png)
 
 Then, since this example is for a SOAP request, I need to send a XML body, as expected by the action:
 
-![The request body](images/request_body.png)
+![The request body](./images/request_body.png)
 
 ```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="{{wsdl}}">
@@ -86,7 +86,7 @@ The `{{wsdl}}` placeholder is a variable defined in the environment.
 
 And, optionally, we can also add a specific test for the request:
 
-![The request tests](images/request_tests.png)
+![The request tests](./images/request_tests.png)
 
 ```php
 pm.test("status OK", function () {
@@ -101,17 +101,17 @@ pm.test("status OK", function () {
 
 By running the request, in this example, we'll run five tests since we already have defined four tests for the collection.
 
-![Result request - Tests](images/request_results_tests.png)
+![Result request - Tests](./images/request_results_tests.png)
 
 ## Exporting / importing a collection
 
 By putting all your requests in a collection, you can easily export it (as a `.json` file)
 
-![Exporting a collection](images/exporting_collection.png)
+![Exporting a collection](./images/exporting_collection.png)
 
 And, of course, import it almost the same way:
 
-![Importing a collection](images/importing_collection.png)
+![Importing a collection](./images/importing_collection.png)
 
 ## Real-world example
 
@@ -121,7 +121,7 @@ Let's try with Postman:
 
 The base url for the service is `http://ec.europa.eu/taxation_customs/vies/services/checkVatService`, the method has to be `POST` and we need to set the `SOAPAction` header to `checkVAT`.
 
-![Check VAT service headers](images/checkVatService_request_headers.png)
+![Check VAT service headers](./images/checkVatService_request_headers.png)
 
 Then we need to send a specific XML body. For the example, we'll ask for a VAT number in Belgium.
 
@@ -136,7 +136,7 @@ Then we need to send a specific XML body. For the example, we'll ask for a VAT n
 </soapenv:Envelope>
 ```
 
-![Check VAT service body](images/checkVatService_request_body.png)
+![Check VAT service body](./images/checkVatService_request_body.png)
 
 By running the request, Postman will return:
 
@@ -156,7 +156,7 @@ By running the request, Postman will return:
 </env:Envelope>
 ```
 
-![Check VAT service response](images/checkVatService_request_response.png)
+![Check VAT service response](./images/checkVatService_request_response.png)
 
 ## Some checks
 
