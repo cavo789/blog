@@ -110,5 +110,5 @@ You'll get something like this:
 ```
 
 :::tip jq
-If you don't have the `jq` binary yet, please read the [The jq utility for Linux](/blog/linux-jq) article. See my article: [The jq utility for Linux](/blog/linux-jq).
+If you don't have the `jq` binary yet, please read the <Link to="/blog/linux-jq">The jq utility for Linux</Link> article. See my article: <Link to="/blog/linux-jq">The jq utility for Linux</Link>.
 :::

@@ -11,7 +11,7 @@ enableComments: true
 
 Coding your own `makefile` has the enormous, **terribly powerful advantage** of being able to centralize the commands you use on your project in a single place, whatever the nature of the project (php, javascript, nodeJs, markdown, etc.).
 
-The presence of a file called `makefile` sends a clear message to anyone who comes to work on the project: *Hey, have a look here, you'll find all the commands you need*. And it's really easy to list existing commands (see my article [Linux Makefile - Adding a help screen](/blog/makefile-help)).
+The presence of a file called `makefile` sends a clear message to anyone who comes to work on the project: *Hey, have a look here, you'll find all the commands you need*. And it's really easy to list existing commands (see my article <Link to="/blog/makefile-help">Linux Makefile - Adding a help screen</Link>).
 
 So, you can define an `up` command (you choose the name of the command) which will launch all the actions required to start the project; you could have `down` for just the opposite, `check` to check that the project is valid (e.g. launch static checks of the quality of your code), and so on.
 
@@ -21,7 +21,7 @@ So, you can define an `up` command (you choose the name of the command) which wi
 This chapter only concern Linux since DOS/PowerShell didn't support the GNU make command.
 :::
 
-In the [Create your Joomla website using Docker](/blog/docker-joomla) blog article, we have seen a lot of docker commands.
+In the <Link to="/blog/docker-joomla">Create your Joomla website using Docker</Link> blog article, we have seen a lot of docker commands.
 
 By alphabetical order:
 
@@ -100,7 +100,7 @@ Make sure indentation is using tabs, not space.
 Save and close vscode.
 
 :::tip Add a help screen
-See my article [Linux Makefile - Adding a help screen](/blog/makefile-help) to learn how to be able to add a help screen to the list of commands.
+See my article <Link to="/blog/makefile-help">Linux Makefile - Adding a help screen</Link> to learn how to be able to add a help screen to the list of commands.
 :::
 
 :::danger

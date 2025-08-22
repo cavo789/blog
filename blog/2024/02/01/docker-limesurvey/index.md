@@ -168,7 +168,7 @@ volumes:
 </Snippet>
 
 :::tip Want to learn more about volumes?
-In that case, please read this blog post: [Using volumes with Docker, use cases](/blog/docker-volumes)
+In that case, please read this blog post: <Link to="/blog/docker-volumes">Using volumes with Docker, use cases</Link>
 :::
 
 ## Download an old version

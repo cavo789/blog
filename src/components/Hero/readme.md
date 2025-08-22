@@ -8,6 +8,12 @@ A simple, reusable layout component for creating visually prominent sections in 
 * 🎨 Combines custom CSS with Docusaurus utility classes
 * 🧩 Accepts any children elements for flexible content
 
+## Example
+
+Out-of-the-box, here is how the component will looks like:
+
+![Example](sample.png)
+
 ## 🧪 Usage
 
 ```jsx

@@ -58,14 +58,13 @@ RUN set -e -x \
     && mkdir -p "/home/node/.vscode-server/extensions" \
     && chown -R "node":"node" "/home/node"
 
+# We'll create a new user with the same uid/gid than ours, on our host machine.
+ARG DOCKER_UID
+ARG DOCKER_GID
+ARG USERNAME
 
-    # We'll create a new user with the same uid/gid than ours, on our host machine.
-    ARG DOCKER_UID
-    ARG DOCKER_GID
-    ARG USERNAME
-
-    # hadolint ignore=DL3008
-    RUN set -e -x \
+# hadolint ignore=DL3008
+RUN set -e -x \
     && if [ ! "$DOCKER_UID" = "1000" ]; then \
     groupadd --gid ${DOCKER_GID} "${USERNAME}" \
     && useradd --home-dir /home/"${USERNAME}" --create-home --uid ${DOCKER_UID} \
@@ -92,8 +91,8 @@ RUN npx create-docusaurus@latest "${HOMEDIR}/" classic --javascript \
     && rm -rf "${HOMEDIR}/blog" "${HOMEDIR}/docs" "${HOMEDIR}/src" \
     && chown -R node:node "${HOMEDIR}/"
 
-# We need our package.json / package.lock file before running yarn install
-COPY package.* .
+# We need our package.json / yarn.lock file before running yarn install
+COPY package.json yarn.lock ./
 
 # Install dependencies with `--immutable` to ensure reproducibility.
 RUN yarn install --immutable

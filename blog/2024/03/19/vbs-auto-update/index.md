@@ -9,11 +9,11 @@ enableComments: true
 ---
 ![VBS - Auto update script](/img/vbs_tips_banner.jpg)
 
-Before switching to [WSL2](/blog/tags/wsl) and the Linux console, I wrote VBS scripts from time to time. It looks like VBA but for the DOS console.
+Before switching to <Link to="/blog/tags/wsl">WSL2</Link> and the Linux console, I wrote VBS scripts from time to time. It looks like VBA but for the DOS console.
 
 A VBS script for DOS is a text file written in the Visual Basic Scripting Edition (VBScript) programming language that can be executed directly from the DOS command prompt. It allows you to automate tasks and perform repetitive operations on your computer.
 
-It's just like [Linux Bash](/blog/tags/bash) scripts but for the DOS.
+It's just like <Link to="/blog/tags/bash">Linux Bash</Link> scripts but for the DOS.
 
 Do you think it would be possible to offer an auto-update function in such scripts? The answer is yes.
 

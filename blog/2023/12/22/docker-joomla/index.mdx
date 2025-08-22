@@ -756,7 +756,10 @@ Could you opt for something other than MySQL? Of course, as long as Joomla suppo
 
 We just need to replace the `joomladb` service, don't use anymore `mysql` but the one we wish.
 
-### Using PostgreSQL
+<Tabs>
+
+<TabItem value="postgresql" label="Using PostgreSQL">
+
 
 Let's try PostgreSQL... We'll replace `mysql`. The official PostgreSQL Docker image can be retrieved on [https://hub.docker.com/_/postgres](https://hub.docker.com/_/postgres).  The documentation tell us which `image` we should use and how to define variables like the default password (`POSTGRES_PASSWORD`).
 
@@ -818,7 +821,9 @@ Now, during the configuration of Joomla, make sure to choose `PostgreSQL (PDO)` 
 For the first time during this tutorial, we're using an `alpine` image (`postgres:16.0-alpine` here). These images are lighter than the *not* alpine image. They contain the bare essentials for running the service, whereas a *traditional* image contains additional tools, binaries, ... that you may need but are not certain to use.
 :::
 
-### Using MariaDB
+</TabItem>
+
+<TabItem value="mariadb" label="Using MariaDB">
 
 If you plan to use MariaDB, here is the Docker Official Image: [https://hub.docker.com/_/mariadb](https://hub.docker.com/_/mariadb).
 
@@ -852,6 +857,11 @@ services:
 </Snippet>
 
 For MariaDB, please select `MySQLi` during the installation wizard.
+
+</TabItem>
+
+</Tabs>
+
 
 ## Extra information
 

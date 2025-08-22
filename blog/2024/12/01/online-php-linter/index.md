@@ -51,6 +51,6 @@ Note: there are other tools like for instance [https://codebeautify.org/php-beau
 
 ## If you're a PHP developer ...
 
-... then make sure to use tools like [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer) or [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) or many others. See also my [Docker image that provides static analysis tools for PHP](/blog/php-jakzal-phpqa).
+... then make sure to use tools like <Link to="/blog/php-jakzal-phpqa">PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer) or [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) or many others. See also my [Docker image that provides static analysis tools for PHP</Link>.
 
 Think to add these tools in your editor (there are many VSCode extensions), in your workflow (f.i. by using local `make` actions) or adding these steps in a remote pipeline

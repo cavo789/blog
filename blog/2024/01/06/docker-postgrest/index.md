@@ -143,7 +143,7 @@ The query below is made by a fix part (the URL for our postgREST server) which i
 
 To get the content of a table, just mention his name so `http://localhost:3000/todos` will return all the records of the `todos` table.
 
-For esthetic reason here, I'm using `| jq` (you can remove that part if you want). See my [The jq utility for Linux](/blog/linux-jq) article to learn more about `jq`.
+For esthetic reason here, I'm using `| jq` (you can remove that part if you want). See my <Link to="/blog/linux-jq">The jq utility for Linux</Link> article to learn more about `jq`.
 
 ```bash
 curl http://localhost:3000/todos | jq

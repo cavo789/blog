@@ -28,7 +28,7 @@ First things first, to display the list of commands you've entered in the past, 
 
 By default, your history is stored in a file called `.bash_history` in your home directory. You can display the last five commands f.i. by running `tail -n5 ~/.bash_history`.
 
-:::info On my own, since I'm using [ZSH](/blog/tags/zsh), my history is in `~/.zsh_history`.
+:::info On my own, since I'm using <Link to="/blog/tags/zsh">ZSH</Link>, my history is in `~/.zsh_history`.
 The easiest way to determine where is stored your history is to show the content of the `$HISTFILE` variable like this: `echo $HISTFILE`.
 :::
 
@@ -52,7 +52,7 @@ To be able to specify more than one rule, just use the pipe `|` character like i
 
 Imagine a command like `curl --user name:password http://www.example.com`. Did you really want to put that command (so your login and password in plain text) in the history file?
 
-Using [ZSH](/blog/tags/zsh), I just need to add a space before my command so by running `[SPACE]curl --user name:password http://www.example.com`.
+Using <Link to="/blog/tags/zsh">ZSH</Link>, I just need to add a space before my command so by running `[SPACE]curl --user name:password http://www.example.com`.
 
 ```text
 # So, don't start your command like this:
@@ -84,7 +84,7 @@ So press <kbd>CTRL</kbd>+<kbd>R</kbd> then start to type some letters like *gaco
 
 ## Autosuggestions in the console using ZSH
 
-By using ZSH and zsh-autosuggestion (see [my previous post](/blog/zsh-plugin-autosuggestions)) you even don't need anymore to care about the history.
+By using ZSH and zsh-autosuggestion (see <Link to="/blog/zsh-plugin-autosuggestions">my previous post</Link>) you even don't need anymore to care about the history.
 
 Just start to type the first letters of a command like **doc** and all your previous **docker** fired statements will be accessible (just use navigation keys to select a previous command or type some more letters to be more restrictive).
 

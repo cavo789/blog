@@ -36,7 +36,7 @@ So, in conclusion: there is only one way to use secrets using Docker and you'll 
 ## Which key to use
 
 :::warning
-This part is one of the most important ones. First, of course, you should already have created a SSH key (see my [Github - Connect your account using SSH and start to work with git@ protocol](/blog/github-connect-using-ssh) if needed).
+This part is one of the most important ones. First, of course, you should already have created a SSH key (see my <Link to="/blog/github-connect-using-ssh">Github - Connect your account using SSH and start to work with git@ protocol</Link> if needed).
 
 Then you should know which protocol you've used and that's really important. Is your key stored in a file called `id_ed25519` or `id_rsa` or something else. Only you know.
 

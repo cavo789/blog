@@ -14,13 +14,13 @@ enableComments: true
 <!-- cspell:ignore mypy,pylance -->
 ![Docker - Easy setup of Python under Windows](/img/python_tips_banner.jpg)
 
-In a [previous article](/blog/docker-python-devcontainer), I've provided some files to be able to quickly create a Python environment under Linux. Today, let's play and use the exact same files but this time under Windows.
+In a <Link to="/blog/docker-python-devcontainer">previous article</Link>, I've provided some files to be able to quickly create a Python environment under Linux. Today, let's play and use the exact same files but this time under Windows.
 
 The today challenge is easy: create a Python environment on my Windows machine without to have install Python of course and without to have to configure VSCode. Just run some magic and, voilà, as a Python newcomer, I can start to code without first losing time to configure my computer.
 
 <!-- truncate -->
 
-So, in the [Docker - Python devcontainer](/blog/docker-python-devcontainer) blog post, I've provided a few files and we'll reuse them in this article.
+So, in the <Link to="/blog/docker-python-devcontainer">Docker - Python devcontainer</Link> blog post, I've provided a few files and we'll reuse them in this article.
 
 I'm speaking about magic but, let's go in details in the article below. I could provide you with a ZIP archive, for example, with all the files already created and the structure, but that would be less ... fun, wouldn't it?
 

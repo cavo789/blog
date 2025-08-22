@@ -1051,4 +1051,4 @@ Assurez-vous, pour chaque projet, de mettre à jour la ligne `name:` et si vous 
 
 Un nouveau joueur entre en jeu : [FrankenPHP](https://frankenphp.dev/). Il s'agit d'un nouveau serveur d'application qui peut être utilisé à la place d'Apache ou de nginx.
 
-D'après leur documentation, il est 3,5 fois plus rapide que PHP FPM. Si vous voulez apprendre à faire tourner Joomla sur FrankenPHP, lisez cet article : [FrankenPHP, a modern application server for PHP (🇬🇧)](/blog/frankenphp-docker-joomla). Nous découvrirons le travail d'[Alexandre Elisé](https://github.com/alexandreelise/frankenphp-joomla) sur ce sujet.
+D'après leur documentation, il est 3,5 fois plus rapide que PHP FPM. Si vous voulez apprendre à faire tourner Joomla sur FrankenPHP, lisez cet article : <Link to="/blog/frankenphp-docker-joomla">FrankenPHP, a modern application server for PHP (🇬🇧)</Link>. Nous découvrirons le travail d'[Alexandre Elisé](https://github.com/alexandreelise/frankenphp-joomla) sur ce sujet.

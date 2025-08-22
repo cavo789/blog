@@ -10,6 +10,12 @@ A React component for Docusaurus that displays a list of blog posts belonging to
 * 🎯 Highlights the current post
 * 🎨 Custom styling via CSS modules
 
+## Example
+
+Out-of-the-box, here is how the component will looks like:
+
+![Example](sample.png)
+
 ## 📦 Installation
 
 Place the component in your Docusaurus project:

@@ -11,7 +11,7 @@ enableComments: true
 
 ![Docker - Configure your localhost to use SSL](/img/docker_tips_banner.jpg)
 
-In a [previous article](/blog/docker-html-site), I've explained how to run a static HTML site in seconds.
+In a <Link to="/blog/docker-html-site">previous article</Link>, I've explained how to run a static HTML site in seconds.
 
 The result was a site running on your computer; using `http`. Let's go one step further and learn how to configure Docker to use `https` i.e. SSL and encryption.
 

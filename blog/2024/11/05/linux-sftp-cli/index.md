@@ -11,7 +11,7 @@ enableComments: true
 
 ![Using sftp on the command line, with or without a proxy](/img/linux_tips_banner.jpg)
 
-After my article [SSH - Launch a terminal on your session without having to authenticate yourself](/blog/linux-ssh-scp), it was obvious that, next to the `ssh` and `scp` commands, I forgot the `sftp` one.
+After my article <Link to="/blog/linux-ssh-scp">SSH - Launch a terminal on your session without having to authenticate yourself</Link>, it was obvious that, next to the `ssh` and `scp` commands, I forgot the `sftp` one.
 
 In this article, we'll explore how to start a SFTP connection to a remote server; from the command line.
 

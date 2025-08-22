@@ -10,7 +10,7 @@ enableComments: true
 <!-- cspell:ignore allof,fileinto -->
 ![Exterminate them all, fight spam directly at PlanetHoster - N0C](/img/spam_header.jpg)
 
-A few days ago, I've published a post about how to [fight against spam if you've a cpanel](/blog/cpanel-spam). If you're hosted on the N0C infrastructure of PlanetHoster; it will not work.
+A few days ago, I've published a post about how to <Link to="/blog/cpanel-spam">fight against spam if you've a cpanel</Link>. If you're hosted on the N0C infrastructure of PlanetHoster; it will not work.
 
 After having some discussion with us, they've said that SpamAssassin is managed by them (PH) and no more accessible to us (clients). We can't anymore create our own rules like explained on the post I've mentioned above.
 
@@ -150,7 +150,7 @@ echo "File roundcube.sieve has been created. Now, you've to publish it on your F
 </Snippet>
 
 :::tip
-The article [Exterminate them all, kill spam using GitHub Actions](/blog/planethoster-n0c-spam-roundcube-action) is now written; don't hesitate to read it.
+The article <Link to="/blog/planethoster-n0c-spam-roundcube-action">Exterminate them all, kill spam using GitHub Actions</Link> is now written; don't hesitate to read it.
 :::
 
 ## Special thanks

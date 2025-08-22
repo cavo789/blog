@@ -10,7 +10,7 @@ enableComments: true
 <!-- cspell:ignore uplzaefi -->
 ![Bash - Script to add logging features to your script](/img/bash_tips_banner.jpg)
 
-> Also read [Bash - Echo on the console and in a logfile in the same time](/blog/bash-console-log-together)
+> Also read <Link to="/blog/bash-console-log-together">Bash - Echo on the console and in a logfile in the same time</Link>
 
 When you write Bash scripts and certainly when you foresee running them in a cron, you should implement a logfile. Every action fired by your script should be logging somewhere so you can start the script in a non-interactive mode and in case of need, consult the last logfile.
 

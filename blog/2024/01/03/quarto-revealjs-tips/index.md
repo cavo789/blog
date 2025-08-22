@@ -17,7 +17,7 @@ In this article, we'll take a quick look at a few tips and tricks to make your r
 <!-- truncate -->
 
 :::tip Docker image with Quarto
-If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](/blog/docker-quarto).
+If you don't have yet a Docker image with Quarto, read this article <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link>.
 :::
 
 ## Working with slides

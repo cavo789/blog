@@ -10,6 +10,12 @@ The `BlueSky` component is a dynamic integration for Docusaurus pages that enabl
 * 🗨️ Shows comments or engagement call-to-action
 * 🧠 Behavior determined by frontmatter configuration
 
+## Example
+
+Out-of-the-box, here is how the component will looks like:
+
+![Example](sample.png)
+
 ## 📦 Usage
 
 ### 1. Add Frontmatter to Your Document

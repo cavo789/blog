@@ -9,6 +9,12 @@ A modular React component designed for Docusaurus homepages. It displays a click
 * ✨ Fade-in animation for visual polish
 * 📐 Responsive layout using Docusaurus grid classes
 
+## Example
+
+Out-of-the-box, here is how the component will looks like:
+
+![Example](sample.png)
+
 ## 🧪 Usage
 
 ```jsx

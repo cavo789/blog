@@ -17,7 +17,7 @@ draft: true
 
 Docusaurus can display a list of tags but not related articles.
 
-When you surf on my blog, you'll see below almost every articles a list of **Related blog posts**. For instance, just open the [Restore a Joomla backup using Docker](/blog/docker-joomla-restore-jpa).
+When you surf on my blog, you'll see below almost every articles a list of **Related blog posts**. For instance, just open the <Link to="/blog/docker-joomla-restore-jpa">Restore a Joomla backup using Docker</Link>.
 
 The objective of our component will be to display something like this:
 

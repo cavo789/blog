@@ -25,6 +25,7 @@
  * - Button includes `aria-expanded` and `aria-controls` for screen reader support
  */
 
+import PropTypes from "prop-types";
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import styles from "./styles.module.css";
 
@@ -59,3 +60,14 @@ export default function Snippet({ filename, children, defaultOpen = true }) {
     </div>
   );
 }
+
+Snippet.propTypes = {
+  /** The filename or label shown in the toggle header */
+  filename: PropTypes.string.isRequired,
+
+  /** The content to reveal when expanded */
+  children: PropTypes.node.isRequired,
+
+  /** Whether the snippet should be open by default */
+  defaultOpen: PropTypes.bool
+};

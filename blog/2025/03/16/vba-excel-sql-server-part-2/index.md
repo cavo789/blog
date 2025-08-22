@@ -11,7 +11,7 @@ enableComments: true
 ---
 ![MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step](/img/excel_tips_banner.jpg)
 
-In April 2024, I wrote a small [blog post](/blog/vba-excel-sql-server) about a VBA script that will connect to a MS SQL database, run a SELECT query to retrieve data and put them in an Excel worksheet.
+In April 2024, I wrote a small <Link to="/blog/vba-excel-sql-server">blog post</Link> about a VBA script that will connect to a MS SQL database, run a SELECT query to retrieve data and put them in an Excel worksheet.
 
 Let's rewrite this article in a full tutorial. We'll install run a SQL Server database using Docker, download MS SQL Server Management Studio, connect to our SQL Server, create a new database with dummy data and, finally, in Excel, retrieve the list of our customers.
 
@@ -21,7 +21,7 @@ Let's rewrite this article in a full tutorial. We'll install run a SQL Server da
 
 You can skip this step if you already have a SQL Server instance where you can connect to.
 
-Read the full blog post [Play with Microsoft SQL Server 2022 using Docker](/blog/docker-mssql-server) for more information about how to run your own SQL Server instance.
+Read the full blog post <Link to="/blog/docker-mssql-server">Play with Microsoft SQL Server 2022 using Docker</Link> for more information about how to run your own SQL Server instance.
 
 In short:
 

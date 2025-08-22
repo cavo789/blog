@@ -18,13 +18,16 @@ This is not really interactive right? Let's see in this article how to make the 
 
 <!-- truncate -->
 
-The workflow will be:
-
-1. You publish your article on your blog,
-2. You share the article on BlueSky (by using the "Share the article" feature of course),
-3. You retrieve the **BlueSky Record key** i.e. the very last part of BlueSky post URL (something like `3lun2qjuxc22r`),
-4. You edit back your Docusaurus article and you add a key in your YAML front matter (the YAML block at the top of your article). The key to add is `blueSkyRecordKey: xxxx` where `xxxx` is your **BlueSky Record key**.
-5. You publish your updated article on your blog again.
+<Steps
+  title="The workflow will be:"
+  steps={[
+    'You publish your article on your blog,',
+    'You share the article on BlueSky (by using the "Share the article" feature of course),',
+    'You retrieve the **BlueSky Record key** i.e. the very last part of BlueSky post URL (something like `3lun2qjuxc22r`),',
+    'You edit back your Docusaurus article and you add a key in your YAML front matter (the YAML block at the top of your article). The key to add is `blueSkyRecordKey: xxxx` where `xxxx` is your **BlueSky Record key**.',
+    'You publish your updated article on your blog again.'
+  ]}
+/>
 
 So, from now, you've clearly make the link between your article and your BlueSky post.
 

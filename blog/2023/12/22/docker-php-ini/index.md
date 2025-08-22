@@ -11,7 +11,7 @@ enableComments: true
 
 This article aims to answer the following situation: *I'm using a Docker image to run my website and I should modify the php.ini file; how do I do this?*
 
-A real-world example is: you've followed my article [Create your Joomla website using Docker](/blog/docker-joomla) and everything is working fine. The website is running and you wish, using the Joomla administration web interface, upload a big file to your site. But, then, you get an error *The selected file cannot be transferred because it is larger than the maximum upload size allowed*.
+A real-world example is: you've followed my article <Link to="/blog/docker-joomla">Create your Joomla website using Docker</Link> and everything is working fine. The website is running and you wish, using the Joomla administration web interface, upload a big file to your site. But, then, you get an error *The selected file cannot be transferred because it is larger than the maximum upload size allowed*.
 
 <!-- truncate -->
 
@@ -21,7 +21,7 @@ One of the easiest ways to do is to create a `.ini` file on your disk and share 
 
 Most probably, you'll have a `compose.yaml` file, please edit the file.
 
-For the illustration, below you'll find a copy of the simplest `compose.yaml` file you can retrieve in my [Create your Joomla website using Docker](/blog/docker-joomla) blog post. *You can have yours of course*. This is just for example.
+For the illustration, below you'll find a copy of the simplest `compose.yaml` file you can retrieve in my <Link to="/blog/docker-joomla">Create your Joomla website using Docker</Link> blog post. *You can have yours of course*. This is just for example.
 
 <Snippet filename="compose.yaml">
 

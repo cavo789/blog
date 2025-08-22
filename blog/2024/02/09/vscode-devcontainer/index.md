@@ -10,11 +10,16 @@ enableComments: true
 ---
 ![PHP development in a devcontainer with preinstalled code quality tools](/img/devcontainer_banner.jpg)
 
-* *Updated 2024-02-23, install Rector automatically*
-* *Updated 2024-02-29, install [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) and [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)*
+<UpdateAt
+  title="Recent Changes"
+  updates={[
+    { date: "2024-02-23", content: "install Rector automatically" },
+    { date: "2024-02-29", content: "install [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) and [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)" },
+  ]}
+/>
 
 :::info Don't want to read this long article
-So jump to [Install a PHP Docker environment in a matter of seconds](/blog/php-devcontainer)
+So jump to <Link to="/blog/php-devcontainer">Install a PHP Docker environment in a matter of seconds</Link>
 :::
 
 Let's imagine one of the following situations:
@@ -80,7 +85,7 @@ On the screen capture here above, you can see *dots* to illustrate spaces and yo
 
 As you have noticed, VSCode saved our file as it was: **with a layout that was just disgusting**. Remember that, and we'll see that VSCode can do much better than that.
 
-We can run that script in a browser by running `docker run -d -p 80:80 -u $(id -u):$(id -g) -v .:/var/www/html php:8.2-apache` (read [The easiest way to run a PHP script / website](/blog/docker-php-run-script-or-website) post if a refresh is needed).
+We can run that script in a browser by running `docker run -d -p 80:80 -u $(id -u):$(id -g) -v .:/var/www/html php:8.2-apache` (read <Link to="/blog/docker-php-run-script-or-website">The easiest way to run a PHP script / website</Link> post if a refresh is needed).
 
 As you can expect, the script is running fine:
 

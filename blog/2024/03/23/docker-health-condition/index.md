@@ -11,7 +11,7 @@ enableComments: true
 
 It's only been ten days or so since I learned the trick, even though it was well documented: managing service startups and, above all, blocking one if the other isn't ready ([official documentation](https://docs.docker.com/compose/startup-order/#control-startup)).
 
-Imagine a two services applications like Joomla (see my [Create your Joomla website using Docker](/blog/docker-joomla/)), WordPress, LimeSurvey, Laravel and many, many more use cases: you've an application and that application requires a database.
+Imagine a two services applications like Joomla (see my <Link to="/blog/docker-joomla/">Create your Joomla website using Docker</Link>), WordPress, LimeSurvey, Laravel and many, many more use cases: you've an application and that application requires a database.
 
 <!-- truncate -->
 You've, roughly speaking, a `compose.yaml` file like this:

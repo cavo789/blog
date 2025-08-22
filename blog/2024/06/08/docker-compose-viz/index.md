@@ -9,7 +9,14 @@ enableComments: true
 ---
 ![How to generate a graph from compose.yaml](/img/docker_tips_banner.jpg)
 
-**Updated on May 14 2025**
+<UpdateAt
+  title="Recent Changes"
+  updates={[
+    { date: "2025-05-14", content: "Adding the `--format` flag" },
+  ]}
+/>
+
+
 
 Imagine you to have a very big `compose.yaml` file with a lot of services and dependencies.
 

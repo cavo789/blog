@@ -9,6 +9,12 @@ A simple and reusable React component for rendering images in Docusaurus with pr
 * 🎨 Scoped styling via CSS modules
 * 💤 Lazy loading for performance
 
+## Example
+
+Out-of-the-box, here is how the component will looks like:
+
+![Example](sample.png)
+
 ## 📦 Installation
 
 Place the component in your Docusaurus project:

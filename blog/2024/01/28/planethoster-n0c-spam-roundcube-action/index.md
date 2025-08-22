@@ -10,11 +10,11 @@ enableComments: true
 <!-- cSpell:ignore allof,fileinto -->
 ![Exterminate them all, kill spam using GitHub Actions](/img/spam_header.jpg)
 
-In previous articles, I explained how to fight against spam if you've a [cpanel](/blog/cpanel-spam) or [PlanetHoster's N0C infrastructure](/blog/planethoster-n0c-spam).
+In previous articles, I explained how to fight against spam if you've a <Link to="/blog/cpanel-spam">cpanel</Link> or <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link>.
 
 What if we automated as many things as possible?
 
-In the [PlanetHoster's N0C infrastructure](/blog/planethoster-n0c-spam) article , I showed that you need to write rules for RoundCube to identify sources of spam and remove them. These rules have to be created from the RoundCube interface and, well, ok, that's not optimized at all.
+In the <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link> article , I showed that you need to write rules for RoundCube to identify sources of spam and remove them. These rules have to be created from the RoundCube interface and, well, ok, that's not optimized at all.
 
 Let's look at how to do as little as possible and still be a hardcore spam fighter.
 
@@ -182,7 +182,7 @@ Congratulations: you've successfully created your anti-spam generator.
 
 #### At this stage, you can deploy the file to your FTP
 
-If you wish to validate the `roundcube.save` file, you can start your FTP client, go to your N0C server (hosted by PlanetHoster), go to the folder `/mail/DOMAIN.TLD/ACCOUNT/sieve` (refers to the article [PlanetHoster's N0C infrastructure](/blog/planethoster-n0c-spam) if needed).
+If you wish to validate the `roundcube.save` file, you can start your FTP client, go to your N0C server (hosted by PlanetHoster), go to the folder `/mail/DOMAIN.TLD/ACCOUNT/sieve` (refers to the article <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link> if needed).
 
 Push the file there, on your host.
 
@@ -312,7 +312,7 @@ You'll need to add two new secrets `FTP_LOGIN` and `FTP_PASSWORD` but, before, c
 
 Go to [https://mg.n0c.com/files/ftp-accounts](https://mg.n0c.com/files/ftp-accounts) and create a new user. Use a very explicit name like `deploy_spam_roundcube_xxx` and define a very strong password (30 chars or more).
 
-Restrict the path for that user to, exactly, where the sieve file is located on your FTP. As said in [PlanetHoster's N0C infrastructure](/blog/planethoster-n0c-spam), for me, it's `/mail/avonture.be/christophe/mail/avonture.be/christophe/sieve`. Make sure to find the path for you.
+Restrict the path for that user to, exactly, where the sieve file is located on your FTP. As said in <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link>, for me, it's `/mail/avonture.be/christophe/mail/avonture.be/christophe/sieve`. Make sure to find the path for you.
 
 :::note
 In case the `sieve` folder didn't exists yet, the best way to create it, I think, is to manually create a filter in Roundcube. Here is the [official PlanetHoster documentation](https://kb.n0c.com/en/knowledge-base/redirecting-emails-with-a-filter-in-roundcube-2/).

@@ -241,9 +241,9 @@ curl --silent http://ec.europa.eu/taxation_customs/vies/services/checkVatService
 ```
 
 :::tip Add `xmlstarlet` for a nice output
-See my [The xmlstarlet utility for Linux](/blog/linux-xmlstarlet) article.
+See my <Link to="/blog/linux-xmlstarlet">The xmlstarlet utility for Linux</Link> article.
 
-Add `| xmlstarlet format --indent-spaces 4` at the end of the previous command to pipe the output to `xmlstarlet` (see [The xmlstarlet utility for Linux](/blog/linux-xmlstarlet))
+Add `| xmlstarlet format --indent-spaces 4` at the end of the previous command to pipe the output to `xmlstarlet` (see <Link to="/blog/linux-xmlstarlet">The xmlstarlet utility for Linux</Link>)
 :::
 
 The answer will be:

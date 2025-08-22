@@ -10,7 +10,7 @@ enableComments: true
 ---
 ![Getting a more attractive mindmap with Markmap and Quarto](/img/mindmap.png)
 
-In 2023, I wrote this [Build a mind map using Docker and Markdown](/blog/docker-mindmap) blog post about how to render a Markdown document as a mindmap.
+In 2023, I wrote this <Link to="/blog/docker-mindmap">Build a mind map using Docker and Markdown</Link> blog post about how to render a Markdown document as a mindmap.
 
 This time, I would like to go one step further and make it more attractive.
 

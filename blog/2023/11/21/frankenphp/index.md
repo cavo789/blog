@@ -9,8 +9,14 @@ enableComments: true
 ---
 ![FrankenPHP](/img/frankenphp.jpg)
 
+<UpdateAt
+  title="Recent Changes"
+  updates={[
+    { date: "2023-11-21", content: "Docker image available on hub.docker.com" },
+  ]}
+/>
+
 <!-- markdownlint-disable MD036 -->
-**Version updated on November 21, 2023 after a discussion with Alexandre about making his Docker image available on hub.docker.com**
 
 Based on [their documentation](https://speakerdeck.com/dunglas/the-php-revolution-is-underway-frankenphp-1-dot-0-beta), [FrankenPHP](https://frankenphp.dev/) is 3.5 faster than PHP FPM.
 

@@ -33,7 +33,7 @@ The `updateEnv` function will receive three arguments.
 * The value was wish to set in the file f.i. `false`
 * And the name of the `.env` file to update (probably `.env`)
 
-The function will use `grep` and `sed` (see my [Search and replace (or add) using sed](/blog/linux-sed-tips) article to learn more) to update the variable or add it to the file.
+The function will use `grep` and `sed` (see my <Link to="/blog/linux-sed-tips">Search and replace (or add) using sed</Link> article to learn more) to update the variable or add it to the file.
 
 Then `printf` will echo the new value on the screen, just for debugging / control process.
 

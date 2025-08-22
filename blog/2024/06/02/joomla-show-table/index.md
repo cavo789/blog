@@ -26,7 +26,7 @@ You can find all the information on my repo at [https://github.com/cavo789/jooml
 
 ## Let's create an example
 
-1. If you don't have a Joomla site yet, please create a new one. I'll follow my tutorial [Create your Joomla website using Docker](/blog/docker-joomla) for this;
+1. If you don't have a Joomla site yet, please create a new one. I'll follow my tutorial <Link to="/blog/docker-joomla">Create your Joomla website using Docker</Link> for this;
 
 2. Download a copy of my [showtable.php](https://raw.githubusercontent.com/cavo789/joomla_show_table/master/src/showtable.php) script and copy the script in the root folder of your Joomla site;
 
@@ -86,7 +86,7 @@ Go to your website back, refresh the page and you'll see the `password=Joomla` U
 
 To create your own SQL statement, you'll need to get access to your database. You can use any tool you want for this like `Adminer`, `phpMyAdmin`, `pgAdmin`, ... i.e. the one who had your preference.
 
-I'll not explain each tool right now (read my [Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/blog/docker-adminer-pgadmin-phpmyadmin#run-adminer) blog post to get some info) but the objective is to be able to create a query in such interface and make sure the query is working.
+I'll not explain each tool right now (read my <Link to="/blog/docker-adminer-pgadmin-phpmyadmin#run-adminer">Using Adminer, pgadmin or phpmyadmin to access your Docker database container</Link> blog post to get some info) but the objective is to be able to create a query in such interface and make sure the query is working.
 
 Once you've successfully created it, you'll get a query statement like `SELECT ... FROM ... WHERE ...`, copy the query in the `showtable.php` script: search for the `'SQL'` pattern and you'll see the current, used, SQL. Paste yours and make sure you've respected the syntax. You can replace the prefix of your database by the `#_` placeholder so f.i. `qrjlq_content` has to become `#_content`.
 

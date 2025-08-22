@@ -12,7 +12,7 @@ enableComments: true
 ![MS Excel - Connect to a SQL Server database, run a query and get the results](/img/excel_tips_banner.jpg)
 
 :::info
-Please read my new article [MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step](/blog/vba-excel-sql-server-part-2) which is more complete than this one.
+Please read my new article <Link to="/blog/vba-excel-sql-server-part-2">MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step</Link> which is more complete than this one.
 :::
 
 Imagine you can execute a query like `SELECT customer_id, first_name, last_name, email FROM customers ORDER BY last_name ASC;` in your Excel sheet and that Excel will connect your Microsoft SQL Server database, run the query there, get the result and put the data directly in your sheet. Would be nice, no?

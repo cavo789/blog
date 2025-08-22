@@ -432,4 +432,4 @@ The generated Python code isn't compliant with Python formatting standards but i
 
 ## Drawdb-app
 
-Last year I wrote [Drawdb-app - Render your database model as png, markdown, mermaid, ...](/blog/drawdb-app) which is another tool but not for the same use.  With Drawdb-app, you'll be able to upload an existing `.sql` file and get a visual representation of tables and their relationships.
+Last year I wrote <Link to="/blog/drawdb-app">Drawdb-app - Render your database model as png, markdown, mermaid, ...</Link> which is another tool but not for the same use.  With Drawdb-app, you'll be able to upload an existing `.sql` file and get a visual representation of tables and their relationships.

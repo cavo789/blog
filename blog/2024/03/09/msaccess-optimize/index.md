@@ -378,5 +378,5 @@ With a .mde, you'll no more be able to change the design of a table, add a field
 **If you wish to use a .mde, always take a backup of your .accdb (or .mdb) file and keep it in a secured folder. Once more: if you don't have anymore the .accdb file but only the .mde, you won't be able to change the structure of the application, you won't be able to modify a macro, a form, ...**
 
 :::tip Scan all tables and export an exhaustive fields list in Excel
-Also see my post [VBS - Retrieve the list of fields in a MS Access Database](/blog/vbs-msaccess-get-fields).
+Also see my post <Link to="/blog/vbs-msaccess-get-fields">VBS - Retrieve the list of fields in a MS Access Database</Link>.
 :::

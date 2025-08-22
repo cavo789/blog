@@ -14,7 +14,7 @@ Good old memories... During my studies (in 1991-1993), I was a huge fan of Turbo
 
 If you good remember that time, Turbo Pascal 7.0 was used to create executables for MS-DOS.
 
-The idea for this article came after the one written on [assembly language](/blog/docker-assembly): is it possible in 2023 to run Pascal code written 30 years earlier?
+The idea for this article came after the one written on <Link to="/blog/docker-assembly">assembly language</Link>: is it possible in 2023 to run Pascal code written 30 years earlier?
 
 <!-- truncate -->
 

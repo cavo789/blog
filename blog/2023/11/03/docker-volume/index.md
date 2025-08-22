@@ -9,7 +9,7 @@ enableComments: true
 ---
 ![Share data between your running Docker container and your computer](/img/docker_tips_banner.jpg)
 
-> If you don't have Docker yet, please consult my [Install Docker and play with PHP](/blog/install-docker) post first.
+> If you don't have Docker yet, please consult my <Link to="/blog/install-docker">Install Docker and play with PHP</Link> post first.
 
 When running Docker without specifying a volume, everything done during the execution of Docker is done in memory. In other words: if the PHP script you run from Docker creates folders or files, these will never be created on your disk. They will be created exclusively in memory.
 

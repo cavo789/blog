@@ -16,7 +16,7 @@ What tool should you use for this type of requirement?
 
 Cypress is a front-end testing tool that empowers developers to automate functional tests directly within the browser. It enables actions like navigating web pages, interacting with elements, submitting forms, and asserting content or URL changes, streamlining end-to-end and integration testing.
 
-In june 2024, I've written an article about a PHP functional test tool called [Behat](/blog/behat-introduction), let's see how to proceed with Cypress which is a Javascript tool.
+In june 2024, I've written an article about a PHP functional test tool called <Link to="/blog/behat-introduction">Behat</Link>, let's see how to proceed with Cypress which is a Javascript tool.
 
 <!-- truncate -->
 

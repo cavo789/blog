@@ -10,7 +10,7 @@ enableComments: true
 <!-- cspell:ignore behat,skel,johndoe,chromedriver,gerkin,dmore,nohup,autoload -->
 ![Introduction to Behat](/img/functional_testing_banner.jpg)
 
-> Also read my article about [Cypress](/blog/cypress)
+> Also read my article about <Link to="/blog/cypress">Cypress</Link>
 
 At work, I'm part of a team of PHP developers where we work together to create a very large proprietary application with a web interface.
 

@@ -125,7 +125,7 @@ We can confirm our container is not able to access to our local site `http://127
 ### We need to run the second container on the same network
 
 :::tip Retrieve the network used by a container
-In case you don't know the name of the used network, simply run `docker inspect xxxx` where `xxxx` is the name of the container. You'll get a JSON answer with a `Networks` entry. To get more information, please read the [Docker inspect - Retrieve network's information](/blog/docker-inspect) article.
+In case you don't know the name of the used network, simply run `docker inspect xxxx` where `xxxx` is the name of the container. You'll get a JSON answer with a `Networks` entry. To get more information, please read the <Link to="/blog/docker-inspect">Docker inspect - Retrieve network's information</Link> article.
 :::
 
 Please edit your `compose.yaml` file like this:

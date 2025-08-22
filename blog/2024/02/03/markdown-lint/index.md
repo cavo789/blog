@@ -59,6 +59,6 @@ The final instruction becomes : `docker run --rm --user $(id -u):$(id -g) -v .:/
 
 ## Make it easy
 
-You don't need to remember the entire command of course. Using a [Makefile](/blog/tags/makefile) in your project, you can then create a new `target` where you put the command.
+You don't need to remember the entire command of course. Using a <Link to="/blog/tags/makefile">Makefile</Link> in your project, you can then create a new `target` where you put the command.
 
 For this blog f.i., I'm running `make lint` in my deploy process. You can see this [here](https://github.com/cavo789/blog/blob/main/makefile#L42-L45).

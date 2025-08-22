@@ -23,6 +23,7 @@
  * - A responsive grid of related blog post cards, or a fallback message if none found
  */
 
+import PropTypes from "prop-types"
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
@@ -154,3 +155,11 @@ export default function RelatedPosts({ count = 3, description = false }) {
     </>
   );
 }
+
+RelatedPosts.propTypes = {
+  /** Number of related posts to display */
+  count: PropTypes.number,
+
+  /** Whether to show post descriptions */
+  description: PropTypes.bool
+};

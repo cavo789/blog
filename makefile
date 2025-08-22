@@ -102,9 +102,13 @@ logs: ## Show the log of Docusaurus
 
 .PHONY: remove
 remove: ## Remove the image
-	COMPOSE_FILE=${COMPOSE_FILE} docker compose down --remove-orphans --rmi all --volumes
+    #--volumes
+	COMPOSE_FILE=${COMPOSE_FILE} docker compose down --remove-orphans --rmi all
     #-docker image rmi blog-docusaurus
-	@rm -rf node_modules *.lock package-lock.json
+    # Remove the old build folder if present
+	@rm -rf .docusaurus
+    # Don't remove these files / folders so the next build won't download anymore dependencies
+    # @rm -rf node_modules *.lock package-lock.json
 
 .PHONY: start
 start: ## Start the local web server and open the webpage

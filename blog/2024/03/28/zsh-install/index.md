@@ -37,7 +37,7 @@ One first change concern the prompt. Right now, I'm in my blog folder and it's a
 
 Nice but, we can do much better.
 
-Time to install a template engine called [Powerlevel10k](https://github.com/romkatv/powerlevel10k)? You can read my previous article [Customize your Linux prompt with Powerlevel 10k](/blog/powerlevel10k_sandbox) if you wish to just test it. In the next paragraph, I'll well install PowerLevel10 on my computer so let's go ahead.
+Time to install a template engine called <Link to="/blog/powerlevel10k_sandbox">Powerlevel10k](https://github.com/romkatv/powerlevel10k)? You can read my previous article [Customize your Linux prompt with Powerlevel 10k</Link> if you wish to just test it. In the next paragraph, I'll well install PowerLevel10 on my computer so let's go ahead.
 
 ### Powerlevel10k
 
@@ -107,4 +107,4 @@ In term of aliases, one I use several times a day is `gst` for `git status`. You
 
 And for sure, that are more, I just probably don't know they're part of ZSH anymore.
 
-There are much, much more like [plugins](/blog/tags/zsh). I'll write other posts for them.
+There are much, much more like <Link to="/blog/tags/zsh">plugins</Link>. I'll write other posts for them.

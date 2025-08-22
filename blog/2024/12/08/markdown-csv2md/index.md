@@ -9,7 +9,7 @@ enableComments: true
 ---
 ![Markdown - Convert CSV to Markdown tables](/img/markdown_tips_banner.jpg)
 
-See also [Markdown - Convert Excel ranges to Markdown tables](/blog/markdown-xls2md).
+See also <Link to="/blog/markdown-xls2md">Markdown - Convert Excel ranges to Markdown tables</Link>.
 
 Next to my XLS2MD script, you can also convert CSV file to Markdown very easily.
 

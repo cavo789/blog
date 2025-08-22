@@ -38,7 +38,7 @@ joomla:5.0.1-php8.2-apache   joomla-joomla-1
 
 For our example, we want to connect to the MySQL 8.x `joomla-joomladb-1` container.
 
-The second thing to determine is the name of the network used by that container. We'll use `docker inspect` here (read my article [Docker inspect - Retrieve network's information](/blog/docker-inspect)).
+The second thing to determine is the name of the network used by that container. We'll use `docker inspect` here (read my article <Link to="/blog/docker-inspect">Docker inspect - Retrieve network's information</Link>).
 
 ```bash
 ❯ docker inspect joomla-joomladb-1 | jq -r '.[0].NetworkSettings.Networks'

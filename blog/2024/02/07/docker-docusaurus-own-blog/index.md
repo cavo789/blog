@@ -10,11 +10,11 @@ enableComments: true
 ---
 ![Running your own blog with Docusaurus and Docker](/img/docusaurus_tips_banner.jpg)
 
-:::caution This is the second part of the [Running Docusaurus with Docker](/blog/docusaurus-docker/)
-This article continues where [Running Docusaurus with Docker](/blog/docusaurus-docker/) left off. Make sure to read it first and to create required files first.
+:::caution This is the second part of the <Link to="/blog/docusaurus-docker/">Running Docusaurus with Docker</Link>
+This article continues where <Link to="/blog/docusaurus-docker/">Running Docusaurus with Docker</Link> left off. Make sure to read it first and to create required files first.
 :::
 
-So you've created your own blog using Docker and Docusaurus. By following steps explained in the [Running Docusaurus with Docker](/blog/docusaurus-docker/) article, now, you've a blog with the list of articles stored on your machine; in a `blog` folder.
+So you've created your own blog using Docker and Docusaurus. By following steps explained in the <Link to="/blog/docusaurus-docker/">Running Docusaurus with Docker</Link> article, now, you've a blog with the list of articles stored on your machine; in a `blog` folder.
 
 Let's go further.
 

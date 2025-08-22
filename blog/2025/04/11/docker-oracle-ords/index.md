@@ -13,17 +13,17 @@ enableComments: true
 
 <!-- cspell:ignore ords,ORCLPDB,sqlplus,sysdba,hr,admin,TABLESPACE,AUTOREST,instring -->
 
-In a previous article ([Running Oracle Database Server as a Docker container](/blog/docker-oracle-database-server)), we've created a Docker container called `oracle-db` where a Human Resources database is running.
+In a previous article (<Link to="/blog/docker-oracle-database-server">Running Oracle Database Server as a Docker container</Link>), we've created a Docker container called `oracle-db` where a Human Resources database is running.
 
 In this article we'll partially expose the database on the web using OpenAPI so, in short, we'll allow allowed people to access to, f.i., `http://oursite/api/employees` to get the list of all employees.
 
-Exactly the same way we've done with PostgREST (see my [Don't query your PostgreSQL db anymore, prefer PostgREST](/blog/docker-postgrest)) but, this time, with an Oracle database.
+Exactly the same way we've done with PostgREST (see my <Link to="/blog/docker-postgrest">Don't query your PostgreSQL db anymore, prefer PostgREST</Link>) but, this time, with an Oracle database.
 
 And the magic will happen thanks **[Oracle REST Data Services](https://www.oracle.com/database/technologies/appdev/rest.html)** aka **ords**.
 
 <!-- truncate -->
 
-In the previous article ([Running Oracle Database Server as a Docker container](/blog/docker-oracle-database-server)), we've created a Docker container called `oracle-db` where a Human Resources database is running.
+In the previous article (<Link to="/blog/docker-oracle-database-server">Running Oracle Database Server as a Docker container</Link>), we've created a Docker container called `oracle-db` where a Human Resources database is running.
 
 Please read that article and follow steps so, before continuing here, you've a running Docker container like describe below.
 

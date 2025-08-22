@@ -43,5 +43,5 @@ The admin account to use is `joomla` and his password is `joomla@secured` (as de
 :::
 
 :::tip
-This article is deliberately simple; please follow the [Joomla](/blog/tags/joomla) tag if you want more than this introduction.
+This article is deliberately simple; please follow the <Link to="/blog/tags/joomla">Joomla</Link> tag if you want more than this introduction.
 :::

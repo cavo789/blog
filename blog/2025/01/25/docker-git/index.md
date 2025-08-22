@@ -128,4 +128,4 @@ From now, you can use any git commands inside your container.
 
 If you've followed the tutorial here above, you can now perfectly do `git clone <<your_private_repo>>` from inside the container and it'll work.
 
-To go further, take a look on the [Git - pre-commit hooks](/blog/git-precommit) article to learn how to configure your container to run hooks before committing files.
+To go further, take a look on the <Link to="/blog/git-precommit">Git - pre-commit hooks</Link> article to learn how to configure your container to run hooks before committing files.

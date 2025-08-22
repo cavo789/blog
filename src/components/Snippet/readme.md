@@ -10,6 +10,12 @@ A collapsible content block for Docusaurus that displays expandable sections wit
 * 🛠️ Accessible with ARIA attributes
 * ⚙️ Configurable default open state
 
+## Example
+
+Out-of-the-box, here is how the component will looks like:
+
+![Example](sample.png)
+
 ## 🧪 Usage
 
 ```jsx

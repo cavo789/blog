@@ -10,7 +10,7 @@ enableComments: true
 ---
 ![Install a PHP Docker environment in a matter of seconds](/img/php_tips_banner.jpg)
 
-This article is the very short and straightforward version of [PHP development in a devcontainer with preinstalled code quality tools](/blog/vscode-devcontainer). If you just want to follow a very few steps and get your PHP environment, this article is for you.
+This article is the very short and straightforward version of <Link to="/blog/vscode-devcontainer">PHP development in a devcontainer with preinstalled code quality tools</Link>. If you just want to follow a very few steps and get your PHP environment, this article is for you.
 
 By following steps describe in this article, you'll obtain:
 
@@ -22,7 +22,7 @@ By following steps describe in this article, you'll obtain:
 Just follow the guide...
 
 :::important The aim of this article is to create a development environment (aka devcontainer)
-Please refers to my other articles about [Docker](/blog/tags/docker) to see how to Dockerize the application and be able to run the application using [Apache](/blog/tags/apache) and a database service like [PostgreSQL](/blog/tags/postgresql).
+Please refers to my other articles about <Link to="/blog/tags/docker">Docker</Link> to see how to Dockerize the application and be able to run the application using <Link to="/blog/tags/apache">Apache</Link> and a database service like <Link to="/blog/tags/postgresql">PostgreSQL</Link>.
 :::
 
 <!-- truncate -->

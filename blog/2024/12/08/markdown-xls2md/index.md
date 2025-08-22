@@ -9,7 +9,7 @@ enableComments: true
 ---
 ![Markdown - Convert Excel ranges to Markdown tables](/img/markdown_tips_banner.jpg)
 
-See also [Markdown - Convert CSV to Markdown tables](/blog/markdown-csv2md).
+See also <Link to="/blog/markdown-csv2md">Markdown - Convert CSV to Markdown tables</Link>.
 
 I'm a big fan of Markdown for my documentation, and from time to time I have to convert a range in Excel into a table to copy and paste into my documentation.
 

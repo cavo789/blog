@@ -219,4 +219,4 @@ Time to test our feature: close the workbook and re-open it again and, this time
 
 ![Demo](./images/demo.png)
 
-[Want to keep playing with ribbons? Check out my other articles on the subject.](/blog/tags/ribbon)
+<Link to="/blog/tags/ribbon">Want to keep playing with ribbons? Check out my other articles on the subject.</Link>

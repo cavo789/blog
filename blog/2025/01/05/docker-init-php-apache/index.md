@@ -24,7 +24,7 @@ The `docker init` command is the one you're looking for.
 
 ## Get some scripts
 
-As an illustration, I'll use my [aeSecure Quickscan](https://github.com/cavo789/aesecure_quickscan) project already introduced in my blog (see my [aeSecure - QuickScan - Free viruses scanner](/blog/aesecure-quickscan) post).
+As an illustration, I'll use my <Link to="/blog/aesecure-quickscan">aeSecure Quickscan](https://github.com/cavo789/aesecure_quickscan) project already introduced in my blog (see my [aeSecure - QuickScan - Free viruses scanner</Link> post).
 
 This is a Web application that scans files (a local website) for patterns that might indicate the presence of a virus.
 
@@ -191,7 +191,7 @@ secrets:
 Hey! Did you see? Instead of hardcoding the password in the file, `docker init` has used a secret. This is smart.
 :::
 
-:::tip Read my [Docker secrets - Using your SSH key during the build process](/blog/docker-use-ssh-during-build) article if you don't know what is a secret
+:::tip Read my <Link to="/blog/docker-use-ssh-during-build">Docker secrets - Using your SSH key during the build process</Link> article if you don't know what is a secret
 :::
 
 To make the example here above working, just create a folder called `db` with a file called `password.txt` there and paste it your database password.

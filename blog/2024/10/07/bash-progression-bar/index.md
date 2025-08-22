@@ -12,7 +12,7 @@ enableComments: true
 
 ![Linux - Using a progression bar in your script](/img/bash_tips_banner.jpg)
 
-In my previous article; [Linux - Take advantage of the number of CPUs you have; start concurrent jobs](/blog/bash-parallel-task), we've seen how to start jobs in parallel.
+In my previous article; <Link to="/blog/bash-parallel-task">Linux - Take advantage of the number of CPUs you have; start concurrent jobs</Link>, we've seen how to start jobs in parallel.
 
 The next cool thing is to show a progression bar in your console. This has a number of advantages, including a clear view of what's been done and what's still to be done, as well as an attractive interface.
 

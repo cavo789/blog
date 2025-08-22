@@ -42,4 +42,4 @@ You can also, for sure, have two tabs: one with a console and the second one wit
 
 ![Nice no?](./images/full_image.png)
 
-That was for the background image. If you wish to learn how I did for the global look&feel, I'm using Powerlevel 10k: read my previous [Customize your Linux prompt with Powerlevel 10k](/blog/powerlevel10k_sandbox) blog post.
+That was for the background image. If you wish to learn how I did for the global look&feel, I'm using Powerlevel 10k: read my previous <Link to="/blog/powerlevel10k_sandbox">Customize your Linux prompt with Powerlevel 10k</Link> blog post.

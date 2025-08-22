@@ -22,6 +22,7 @@
  * - A styled list of blog posts in the same series, or null if none found.
  */
 
+import PropTypes from "prop-types"
 import Link from "@docusaurus/Link";
 import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
 
@@ -68,3 +69,14 @@ export default function SeriesBlogPosts({
     </div>
   );
 }
+
+SeriesBlogPosts.propTypes = {
+  /** The name of the blog series to display */
+  series: PropTypes.string.isRequired,
+
+  /** Permalink of the current post to exclude from linking */
+  excludePermalink: PropTypes.string,
+
+  /** Whether to visually highlight the current post */
+  highlightCurrent: PropTypes.bool
+};

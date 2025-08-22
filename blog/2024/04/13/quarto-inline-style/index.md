@@ -21,7 +21,7 @@ You can apply styles to inline text by creating spans using `[]` to surround the
 <!-- truncate -->
 
 :::tip Docker image with Quarto
-If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](/blog/docker-quarto).
+If you don't have yet a Docker image with Quarto, read this article <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link>.
 :::
 
 > [source](https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/posts/11-spans/).

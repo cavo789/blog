@@ -21,7 +21,7 @@ And, if my goal is to generate a slideshow, the last part of my documentation wi
 <!-- truncate -->
 
 :::tip Docker image with Quarto
-If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](/blog/docker-quarto).
+If you don't have yet a Docker image with Quarto, read this article <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link>.
 :::
 
 ## content-visible when

@@ -30,7 +30,7 @@ Think, to replace these two constants by yours ;-)
 
 ## First, I need to have a SSH key
 
-> For the long story, read my [SSH - Launch a terminal on your session without having to authenticate yourself](/blog/linux-ssh-scp) article.
+> For the long story, read my <Link to="/blog/linux-ssh-scp">SSH - Launch a terminal on your session without having to authenticate yourself</Link> article.
 
 I'll create a private key by running `ssh-keygen -t ed25519 -C "christophe@my_self_hosted_gitlab" -f ~/.ssh/id_ed25519_my_self_hosted_gitlab`.
 

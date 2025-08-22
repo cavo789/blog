@@ -12,6 +12,12 @@ A React component for Docusaurus that displays a grid of related blog posts base
 * 📅 Shows post date
 * 🖼️ Displays post image if available
 
+## Example
+
+Out-of-the-box, here is how the component will looks like:
+
+![Example](sample.png)
+
 ## 📦 Installation
 
 Place the component in your Docusaurus project:

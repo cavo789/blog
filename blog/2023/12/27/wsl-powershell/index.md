@@ -11,7 +11,7 @@ enableComments: true
 
 Very often, I'm in my Linux console and I'd like to open a pdf file that I've just generated or, more simply, to open an html file. But how can I do this?
 
-Without knowing the tip that is the subject of this article, at the moment I launch [Windows Explorer](/blog/wsl-windows-explorer) from my console, I get then the well-known file explorer interface and there I double-click on the file I want to open and leave it to Windows, which knows which program to launch to open this or that extension.
+Without knowing the tip that is the subject of this article, at the moment I launch <Link to="/blog/wsl-windows-explorer">Windows Explorer</Link> from my console, I get then the well-known file explorer interface and there I double-click on the file I want to open and leave it to Windows, which knows which program to launch to open this or that extension.
 
 In fact, it's much simpler...
 
@@ -27,7 +27,7 @@ The tip: start `powershell.exe` followed by the filename to open like `powershel
 You can also use `xdg-open` to start your default browser so `xdg-open index.html` will open the file in your Windows browser.
 :::
 
-If you get the error below, you'll find a solution in the article [Windows Explorer](/blog/wsl-windows-explorer#wsl-localhost-is-not-accessible)
+If you get the error below, you'll find a solution in the article <Link to="/blog/wsl-windows-explorer#wsl-localhost-is-not-accessible">Windows Explorer</Link>
 
 ```bash
 Start : This command cannot be run due to the error: The system cannot find the file specified.

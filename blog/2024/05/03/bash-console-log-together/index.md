@@ -9,7 +9,7 @@ enableComments: true
 ---
 ![Bash - Echo on the console and in a logfile in the same time](/img/bash_tips_banner.jpg)
 
-In my previous article [Bash - Script to add logging features to your script](/blog/bash-logging), I've shared a way to write information in a logfile.
+In my previous article <Link to="/blog/bash-logging">Bash - Script to add logging features to your script</Link>, I've shared a way to write information in a logfile.
 
 By running `ls -alh /tmp` you will get the list of all files in the `/tmp` folder and display the list on your console. By running `ls -alh /tmp >> application.log` you won't see the list in your console since everything will be written in the `application.log` file.
 

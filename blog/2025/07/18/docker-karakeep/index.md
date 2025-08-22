@@ -12,7 +12,7 @@ image: /img/docker_tools_header.jpg
 
 ![karakeep - The Bookmark Everything App](/img/docker_tools_header.jpg)
 
-Since a few months, I'm using [Heimdall](/blog/heimdall-dashboard) but it has one major weakness: its hyper-basic search engine (which is even non-existent, since it's not possible to search for a link globally).
+Since a few months, I'm using <Link to="/blog/heimdall-dashboard">Heimdall</Link> but it has one major weakness: its hyper-basic search engine (which is even non-existent, since it's not possible to search for a link globally).
 
 So I was rather dissatisfied and waiting to find something better: karakeep.
 

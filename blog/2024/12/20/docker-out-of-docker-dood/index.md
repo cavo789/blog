@@ -11,11 +11,16 @@ enableComments: true
 
 ![Docker-out-of-Docker aka DooD](/img/docker_tips_banner.jpg)
 
-* *Updated 2025-08-03, Corrections based on Metin Y.*
+<UpdateAt
+  title="Recent Changes"
+  updates={[
+    { date: "2025-08-03", content: "Corrections based on Metin Y" },
+  ]}
+/>
 
 In very exceptional situations, you may need to be able to run Docker commands from a Docker container. Wait? What?
 
-Imagine this situation: you're running a PHP container, everything is fine and you wish to run a code quality tool like, let's start easy, `phplint` ([see this article for deeper info](/blog/php-jakzal-phpqa/#php-parallel-lint)). You don't want to install phplint because you know a very cool Docker image who already contains it (think to **[jakzal/phpqa](https://hub.docker.com/r/jakzal/phpqa)**)
+Imagine this situation: you're running a PHP container, everything is fine and you wish to run a code quality tool like, let's start easy, `phplint` (<Link to="/blog/php-jakzal-phpqa/#php-parallel-lint">see this article for deeper info</Link>). You don't want to install phplint because you know a very cool Docker image who already contains it (think to **[jakzal/phpqa](https://hub.docker.com/r/jakzal/phpqa)**)
 
 So, you're inside a container and you wish to run another container.
 

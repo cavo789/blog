@@ -16,7 +16,7 @@ There, you've two main options: the *Spam filter* and a *White list*.
 Using the first one, you can define email patterns like `*@hair.com` which mean: immediately kill those emails on the server. The second one is just the opposite f.i. `*@my-own-company.com` saying that you trust that domain.
 
 :::tip PlanetHoster - N0C
-If you're hosted by PlanetHoster on the N0C infrastructure, please read [Exterminate them all, fight spam directly at PlanetHoster - N0C](/blog/planethoster-n0c-spam) instead.
+If you're hosted by PlanetHoster on the N0C infrastructure, please read <Link to="/blog/planethoster-n0c-spam">Exterminate them all, fight spam directly at PlanetHoster - N0C</Link> instead.
 :::
 
 <!-- truncate -->

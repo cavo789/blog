@@ -12,7 +12,12 @@ enableComments: true
 
 <!-- cspell:ignore Belgif -->
 
-**Updated on May 19 2025**
+<UpdateAt
+  title="Recent Changes"
+  updates={[
+    { date: "2025-05-19", content: "Add belgif.be specifications" },
+  ]}
+/>
 
 When developing APIs *from scratch*, you can do it in the mode *I get behind the PC and start programming* or *I learn about the standards first and then program in compliance with these standards*.
 

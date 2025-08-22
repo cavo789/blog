@@ -10,7 +10,12 @@ enableComments: true
 <!-- cspell:ignore rsvg,ggplot2,gdebi,renv,tlmgr,fvextra,footnotebackref,pagecolor,sourcesanspro,sourcecodepro,Aoption -->
 ![Running Quarto Markdown in Docker](/img/quarto_tips_banner.jpg)
 
-* *Updated 2024-11-19, review Dockerfile, use Quarto 1.6.36.*
+<UpdateAt
+  title="Recent Changes"
+  updates={[
+    { date: "2024-11-19", content: "review Dockerfile, use Quarto 1.6.36." },
+  ]}
+/>
 
 [Quarto](https://quarto.org/) is a tool for producing PDF, Word document, HTML web pages, ePub files, slideshows and many, many more output based on a Markdown file.
 

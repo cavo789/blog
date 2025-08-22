@@ -19,7 +19,7 @@ The best way is probably to use an external file where information are stored in
 <!-- truncate -->
 
 :::tip Docker image with Quarto
-If you don't have yet a Docker image with Quarto, read this article [Running Quarto Markdown in Docker](/blog/docker-quarto).
+If you don't have yet a Docker image with Quarto, read this article <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link>.
 :::
 
 You can find the official documentation on [https://quarto.org/docs/authoring/variables.html](https://quarto.org/docs/authoring/variables.html).

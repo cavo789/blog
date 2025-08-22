@@ -10,7 +10,7 @@ blueSkyRecordKey: 3lwgca4zqh22i
 ---
 ![SSH - Autosuggestions with ZSH](/img/zsh_tips_banner.jpg)
 
-A few weeks ago, I've posted a [SSH - Launch a terminal on your session without having to authenticate yourself](/blog/linux-ssh-scp#using-the-config-file) article about the `ssh` command in Linux.
+A few weeks ago, I've posted a <Link to="/blog/linux-ssh-scp#using-the-config-file">SSH - Launch a terminal on your session without having to authenticate yourself</Link> article about the `ssh` command in Linux.
 
 I'm pretty sure, like me, you are tired to use command line like `ssh christophe@1.2.3.4` to start a ssh connection because ... you know, you don't need to connect on a server; no, you need to connect to the server where the application is running; you know the name of the *MyAmazingApp* application but certainly not the name of the server or its IP.
 
@@ -24,7 +24,7 @@ It would be pretty cool to run `ssh MyAmazingApp` no?
 
 It should be really nice to be able to run `ssh AmazingApp` and hop, I'm connected on the server.
 
-This is where the `~/.ssh/config` is so helpful (please refer to this [article](/blog/linux-ssh-scp#using-the-config-file)) but we can go one step further: it would be so great to type `ssh` and by some magic, Linux will show you the list of aliases defined in the `~/.ssh/config` file.
+This is where the `~/.ssh/config` is so helpful (please refer to this <Link to="/blog/linux-ssh-scp#using-the-config-file">article</Link>) but we can go one step further: it would be so great to type `ssh` and by some magic, Linux will show you the list of aliases defined in the `~/.ssh/config` file.
 
 ## Installation of the zsh-ssh-config-suggestions plugin
 

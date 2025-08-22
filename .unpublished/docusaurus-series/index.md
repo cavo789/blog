@@ -31,7 +31,7 @@ Hey, did you've already seen this article? Look at the top, you've a "This artic
 
 *or if you want to play in a sandbox site...*
 
-As an illustration for this article, I've created a new Docusaurus sites in seconds by following my previous [Running Docusaurus with Docker](/blog/docusaurus-docker) article.
+As an illustration for this article, I've created a new Docusaurus sites in seconds by following my previous <Link to="/blog/docusaurus-docker">Running Docusaurus with Docker</Link> article.
 
 ## We need something for extracting information from blog posts
 

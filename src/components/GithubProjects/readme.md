@@ -2,8 +2,6 @@
 
 A React component for displaying and filtering GitHub repositories for a given user. Built for [Docusaurus](https://docusaurus.io/) sites, this component fetches public repositories from the GitHub API and presents them in a visually rich, interactive grid.
 
----
-
 ## 🚀 Features
 
 * 🔍 **Search** by repository name or description
@@ -13,7 +11,11 @@ A React component for displaying and filtering GitHub repositories for a given u
 * 🧠 **Local caching** to reduce API calls
 * 📊 **Sorts** by popularity (stars) or alphabetically
 
----
+## Example
+
+Out-of-the-box, here is how the component will looks like:
+
+![Example](sample.png)
 
 ## 📦 Installation
 

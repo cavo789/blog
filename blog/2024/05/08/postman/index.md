@@ -115,7 +115,7 @@ And, of course, import it almost the same way:
 
 ## Real-world example
 
-As seen in the article [MS Excel - How to call a SOAP web service](/blog/vba-excel-call-soap-webservice), we can call an European web service to check the validity of a VAT number.
+As seen in the article <Link to="/blog/vba-excel-call-soap-webservice">MS Excel - How to call a SOAP web service</Link>, we can call an European web service to check the validity of a VAT number.
 
 Let's try with Postman:
 

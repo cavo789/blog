@@ -24,7 +24,7 @@ Windows Terminal is part of Windows 11, so you already have it if you're running
 
 ## Customize your profile
 
-On my computer this is how my Ubuntu console looks like. I'm using Windows Terminal and [PowerLevel10k](/blog/powerlevel10k_sandbox):
+On my computer this is how my Ubuntu console looks like. I'm using Windows Terminal and <Link to="/blog/powerlevel10k_sandbox">PowerLevel10k</Link>:
 
 ![Windows Terminal with an Ubuntu console](./images/windows_terminal.png)
 

@@ -20,6 +20,7 @@
  * - A visually distinct section for page intros or highlights
  */
 
+import PropTypes from "prop-types"
 import styles from './styles.module.css';
 
 export default function Hero({ children, className }) {
@@ -31,3 +32,11 @@ export default function Hero({ children, className }) {
     </div>
   );
 }
+
+Hero.propTypes = {
+  /** Content to render inside the hero container */
+  children: PropTypes.node.isRequired,
+
+  /** Optional custom className for additional styling */
+  className: PropTypes.string
+};

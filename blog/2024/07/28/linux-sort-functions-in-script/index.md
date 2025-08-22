@@ -9,7 +9,7 @@ enableComments: true
 ---
 ![Linux - Sort functions in a Bash script](/img/bash_tips_banner.jpg)
 
-In a previous [article](/blog/linux-compare-two-versions-of-the-same-script), we've seen a simple CLI command to display the list of functions present in a script but what about a Bash script that will scan an entire folder; retrieve any `.sh` scripts and check if functions are sorted in the files?
+In a previous <Link to="/blog/linux-compare-two-versions-of-the-same-script">article</Link>, we've seen a simple CLI command to display the list of functions present in a script but what about a Bash script that will scan an entire folder; retrieve any `.sh` scripts and check if functions are sorted in the files?
 
 <!-- truncate -->
 

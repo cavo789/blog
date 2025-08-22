@@ -10,7 +10,13 @@ enableComments: true
 ---
 ![SSH - Launch a terminal on your session without having to authenticate yourself](/img/linux_tips_banner.jpg)
 
-**Updated on May 8 2025**
+<UpdateAt
+  title="Recent Changes"
+  updates={[
+    { date: "2025-05-08", content: "Adding the config file chapter" },
+  ]}
+/>
+
 
 <!-- cspell:ignore randomart -->
 

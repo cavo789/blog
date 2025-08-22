@@ -23,6 +23,7 @@
  * - A visually engaging card element for homepage or grid layouts
  */
 
+import PropTypes from "prop-types";
 import Card from '@site/src/components/Card';
 import CardBody from '@site/src/components/Card/CardBody';
 import CardImage from '@site/src/components/Card/CardImage';
@@ -45,3 +46,17 @@ export default function HomeCard({ title, image, link, description }) {
     </div>
   );
 }
+
+HomeCard.propTypes = {
+  /** Title displayed on the card */
+  title: PropTypes.string.isRequired,
+
+  /** Image filename (relative to /img/homepage/) */
+  image: PropTypes.string.isRequired,
+
+  /** Destination URL for the card link */
+  link: PropTypes.string.isRequired,
+
+  /** Description text shown below the title */
+  description: PropTypes.string.isRequired
+};

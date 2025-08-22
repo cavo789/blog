@@ -11,13 +11,13 @@ enableComments: true
 <!-- cspell:ignore fastapi,uvicorn,hobbyte,keyserver,usebruno,ECONNREFUSED,davidkarlsen -->
 ![Bruno - A postman-like tool - GUI and CLI](/img/api_banner.jpg)
 
-[Bruno](https://www.usebruno.com/) is a tool like [Postman](/blog/tags/postman) you can use for free. Everything is stored on your computer so you can store files within your codebase and submit it to your code versioning tool f.i.
+<Link to="/blog/tags/postman">Bruno](https://www.usebruno.com/) is a tool like [Postman</Link> you can use for free. Everything is stored on your computer so you can store files within your codebase and submit it to your code versioning tool f.i.
 
 <!-- truncate -->
 
 ## Let's install our own APIs first
 
-A few months ago, I wrote ["Python - Fast API - Create your JSON API in Python in one minute"](/blog/python-fastapi).
+A few months ago, I wrote <Link to="/blog/python-fastapi">"Python - Fast API - Create your JSON API in Python in one minute"</Link>.
 
 In short, please:
 

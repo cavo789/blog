@@ -32,4 +32,4 @@ Now by starting PuTTY, you won't be anymore prompted for credentials. Easy!
 
 ## Tip
 
-If you connect regularly to your SSH server, take a look to this blog post: [SSH - Launch a terminal on your session without having to authenticate yourself](/blog/linux-ssh-scp).
+If you connect regularly to your SSH server, take a look to this blog post: <Link to="/blog/linux-ssh-scp">SSH - Launch a terminal on your session without having to authenticate yourself</Link>.
