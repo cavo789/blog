@@ -39,11 +39,11 @@ This article is written in the form of a step-by-step tutorial. If you don't wan
 
 <Terminal>
 $ mkdir /tmp/devcontainer_php && cd $_
-...
+
 curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
-...
+
 tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devcontainer-1.0.0.tar.gz
-...
+
 </Terminal>
 
 :::note Download the very latest version
@@ -51,11 +51,11 @@ The php_devcontainer repository will evolve over time. If you wish to download t
 
 <Terminal>
 $ mkdir /tmp/devcontainer_php && cd $_
-...
+
 $ curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/heads/main.tar.gz
-...
+
 $ tar -xzvf php_devcontainer-main.tar.gz --strip-components 1 && rm -f php_devcontainer-main.tar.gz
-...
+
 </Terminal>
 
 :::
@@ -613,7 +613,7 @@ $ /usr/local/bin/phpcs.phar --standard=/var/www/html/.config/phpcs.xml /var/www/
 
 And you'll get this output:
 
-```text
+<Terminal>
 FILE: /var/www/html/index.php
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 FOUND 1 ERROR AND 1 WARNING AFFECTING 2 LINES
@@ -624,8 +624,7 @@ FOUND 1 ERROR AND 1 WARNING AFFECTING 2 LINES
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-```
+</Terminal>
 
 There is one warning and one error concerning *coding convention violation* and the nice thing is **phpcbf can fix some.**.
 
@@ -637,7 +636,7 @@ $ /usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml /var/www
 
 You'll get this:
 
-```text
+<Terminal>
 PHPCBF RESULT SUMMARY
 ----------------------------------------------------------------------
 FILE                                                  FIXED  REMAINING
@@ -646,7 +645,7 @@ FILE                                                  FIXED  REMAINING
 ----------------------------------------------------------------------
 A TOTAL OF 1 ERROR WERE FIXED IN 1 FILE
 ----------------------------------------------------------------------
-```
+</Terminal>
 
 And, indeed, if you look at your PHP script, now, there is a space after the `if` keyword.
 

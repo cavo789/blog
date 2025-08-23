@@ -47,9 +47,9 @@ Before seeing how to do, run the following block and you'll get a `NOT FOUND` me
 
 <Terminal>
 $ echo 'APP_NAME = My application' > .env
-.
+
 $ grep -q "^APP_ENV =" .env && echo "FOUND" || echo "NOT FOUND"
-.
+
 </Terminal>
 
 So if `grep -q` is successful (we've retrieved `APP_ENV` in the file) then we continue (`&&`) and display `FOUND` otherwise (`||`) we'll display `NOT FOUND`.
@@ -104,6 +104,7 @@ Finally, by running `cat .env` we can see the result:
 
 <Terminal>
 $ cat .env
+
 APP_NAME = My application
 APP_ENV = production
 </Terminal>

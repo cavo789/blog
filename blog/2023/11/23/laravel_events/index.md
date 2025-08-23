@@ -210,11 +210,13 @@ class SampleListener
 
 If we run `curl localhost` in the console, we'll get the output below showing us it has worked perfectly as expected.
 
-```text
+<Terminal>
+$ curl localhost
+
 FIRSTNAME is Georges
 NAME      is Washington
 PSEUDO    is cavo789
-```
+</Terminal>
 
 If we edit back the `app/Providers/EventServiceProvider.php` file and comment the listener like below illustrated, our code will still work.
 
@@ -230,11 +232,13 @@ protected $listen = [
 
 </Snippet>
 
-```text
+<Terminal>
+$ curl localhost
+
 FIRSTNAME is John
 NAME      is Doe
 PSEUDO    is cavo789
-```
+</Terminal>
 
 ## PHP example (not Laravel)
 

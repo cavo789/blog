@@ -40,7 +40,7 @@ Just edit the `.cmd` file and you'll see how it works: you just need to run the 
 
 For instance, by running `cscript vbs_access_export.vbs C:\Christophe\db1.mdb` in a DOS console, you'll get this:
 
-```text
+<Terminal title="Powershell">
 Process database C:\Christophe\db1.mdb
 
 Exporting sources to C:\Christophe\src\db1.mdb\
@@ -65,7 +65,7 @@ Export all queries
 Export all reports
         Export report 1/8 - Invoice to Reports\Invoice.txt
         [...]
-```
+</Terminal>
 
 Once finished, you'll have a subfolder called `src` with one file by object so, indirectly, you've a backup of your code 👌.
 

@@ -121,7 +121,7 @@ By typing `make phpmyadmin`, it would be nice to see, on the console, the creden
 <Terminal>
 $ make phpmyadmin
 User is root and password is example. Please open http://127.0.0.1:8089 to open phpmyadmin.
-.
+
 $ docker run --name phpmyadmin -d --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin
 a0c37edd9f8c139556f1f0a6b028ec5102362f16233efbc05f56d184edfb83c9
 </Terminal>

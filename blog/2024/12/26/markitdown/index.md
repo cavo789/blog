@@ -93,11 +93,11 @@ So, for instance:
 
 <Terminal>
 $ markitdown test.docx > from_docx.md
-...
+
 $ markitdown test.xlsx > from_xlsx.md
-...
+
 $ markitdown test.pdf > from_pdf.md
-...
+
 </Terminal>
 
 :::note

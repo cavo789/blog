@@ -89,11 +89,11 @@ If you wish to stop and remove containers after usage, you can run the following
 
 <Terminal>
 $ docker rm $(docker stop $(docker ps -a -q --filter="name=app_wordpress"))
-...
+
 $ docker rm $(docker stop $(docker ps -a -q --filter="name=db_wordpress"))
-...
+
 $ docker network rm wordpress
-...
+
 </Terminal>
 
 Or, by hand, go to your `Docker Desktop` interface, click on the `containers` tab and remove the containers manually.
@@ -104,8 +104,8 @@ As introduced, we just need three commands to create, from nihil, a new wordpres
 
 <Terminal>
 $ docker network create wordpress
-...
+
 $ docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mysql:8.0.13
-...
+
 $ docker run -d --name app_wordpress --hostname app_wordpress --network wordpress -p 8080:80 -e WORDPRESS_DB_HOST=db_wordpress -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=example wordpress:6.4.2-php8.2-apache
 </Terminal>

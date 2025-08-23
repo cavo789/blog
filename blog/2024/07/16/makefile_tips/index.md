@@ -144,11 +144,11 @@ update-them:
 
 Running `make php-cs-fixer` will output this:
 
-```text
+<Terminal>
 First get vendors
 Then update vendors
 And finally run php-cs-fixer
-```
+</Terminal>
 
 ## Using shell find option to get all dependencies
 

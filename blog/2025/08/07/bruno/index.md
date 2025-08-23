@@ -94,19 +94,19 @@ To install Bruno GUI on my Ubuntu distribution, I'm running these commands:
 
 <Terminal>
 $ sudo mkdir -p /root/.gnupg
-...
+
 $ sudo chmod 700 /root/.gnupg
-...
+
 $ sudo mkdir -p /etc/apt/keyrings
-...
+
 $ sudo gpg --no-default-keyring --keyring /etc/apt/keyrings/bruno.gpg --keyserver keyserver.ubuntu.com --recv-keys 9FA6017ECABE0266
-...
+
 $ echo "deb [signed-by=/etc/apt/keyrings/bruno.gpg] http://debian.usebruno.com/ bruno stable" | sudo tee /etc/apt/sources.list.d/bruno.list
-...
+
 $ sudo apt update
-...
+
 $ sudo apt install bruno
-...
+
 </Terminal>
 
 Please refers to the [Download & Install](https://docs.usebruno.com/get-started/bruno-basics/download) official documentation for more info.

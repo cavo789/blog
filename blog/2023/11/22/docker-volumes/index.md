@@ -96,6 +96,7 @@ We'll run our container by running `docker compose up --detach`:
 
 <Terminal>
 $ docker compose up --detach
+
 [+] Building 0.0s (0/0)                    docker:default
 [+] Running 3/3
  ✔ Network demo_default  Created           0.2s
@@ -107,6 +108,7 @@ We can verify our container is running using `docker container list` (simplified
 
 <Terminal>
 $ docker container list
+
 CONTAINER ID   IMAGE          STATUS          NAMES
 6296459f7827   demo/counter   Up 30 seconds   counter
 </Terminal>
@@ -118,19 +120,19 @@ CONTAINER ID   IMAGE          STATUS          NAMES
 <Terminal>
 $ docker compose exec counter /counter.sh
 You have executed this script 1 times.
-...
+
 $ docker compose exec counter /counter.sh
 You have executed this script 2 times.
-...
+
 $ docker compose exec counter /counter.sh
 You have executed this script 3 times.
-...
+
 $ docker compose exec counter /counter.sh
 You have executed this script 4 times.
-...
+
 $ docker compose exec counter /counter.sh
 You have executed this script 5 times.
-...
+
 </Terminal>
 
 Ok so we have validated that our counter is working fine.
@@ -142,7 +144,6 @@ Running our counter again:
 <Terminal>
 $ docker compose exec counter /counter.sh
 You have executed this script 1 times.
-...
 </Terminal>
 
 :::caution We've lost our data
@@ -201,22 +202,22 @@ Let's try again some calls then stop/restart and a few calls then:
 $ docker compose exec counter /counter.sh
 Creating /data/counter.txt ...
 You have executed this script 1 times.
-...
+
 $ docker compose exec counter /counter.sh
 You have executed this script 2 times.
-...
+
 $ docker compose exec counter /counter.sh
 You have executed this script 3 times.
-...
+
 $ docker compose exec counter /counter.sh
 You have executed this script 4 times.
-...
+
 $ docker compose exec counter /counter.sh
 You have executed this script 5 times.
-...
+
 $ docker compose exec counter /counter.sh
 You have executed this script 6 times.
-...
+
 $ docker compose down ; docker compose up --detach
 [+] Running 2/2
  ✔ Container counter     Removed    11.1s
@@ -225,7 +226,7 @@ $ docker compose down ; docker compose up --detach
 [+] Running 2/2
  ✔ Network demo_default  Created     0.2s
  ✔ Container counter     Started     0.7s
-...
+
 $ docker compose exec counter /counter.sh
 You have executed this script 7 times.
 $ docker compose exec counter /counter.sh
@@ -263,7 +264,7 @@ Volumes are stored *somewhere* on the disk by Docker, you don't need to take car
 
 <Terminal>
 $ cd /tmp/counter
-...
+
 $ ls -alh
 total 28K
 drwxr-xr-x  2 christophe christophe 4.0K Nov 22 09:40 .
@@ -367,11 +368,11 @@ By running `docker compose up --detach && docker compose exec counter /counter.s
 <Terminal>
 $ docker compose exec counter /counter.sh
 Creating /data/counter.txt ...
-...
+
 /counter.sh: line 6: can't create /data/counter.txt: nonexistent directory
 cat: can't open '/data/counter.txt': No such file or directory
 You have executed this script 1 times.
-...
+
 /counter.sh: line 13: can't create /data/counter.txt: nonexistent directory
 </Terminal>
 
@@ -379,7 +380,7 @@ We need to create our local `data` folder:
 
 <Terminal>
 $ mkdir data
-...
+
 $ ls -alh
 total 32K
 drwxr-xr-x  3 christophe christophe 4.0K Nov 22 10:54 .
@@ -394,6 +395,7 @@ Now that we've our data folder, try again:
 
 <Terminal>
 $ docker compose up --detach && docker compose exec counter /counter.sh
+
 [+] Building 0.0s (0/0)        docker:default
 [+] Running 2/2
  ✔ Network demo_default  Created         0.2s
@@ -406,6 +408,7 @@ This time, the `counter.txt` file is present in our directory:
 
 <Terminal>
 $ ls -alh data
+
 total 12K
 drwxr-xr-x 2 christophe christophe 4.0K Nov 22 10:56 .
 drwxr-xr-x 3 christophe christophe 4.0K Nov 22 10:54 ..

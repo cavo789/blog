@@ -55,7 +55,7 @@ The `main` function is quite basic here, I'll do a loop from 1 till 10 and, each
 
 So, by running the script, since we're calling ten times our demo function and the function is waiting for three seconds, then, we'll not be surprises by the total duration time:
 
-```text
+<Terminal>
 Sleeping for 3 seconds...
 Sleeping for 3 seconds...
 Sleeping for 3 seconds...
@@ -68,7 +68,7 @@ Sleeping for 3 seconds...
 Sleeping for 3 seconds...
 
 Total running time: 30 seconds
-```
+</Terminal>
 
 :::important Hey dude! I've more than one CPU
 But, that's code is so old fashion now? How many CPU did I have? Just one? Oh thank you computer gods, I've got more than that!  So, why just using one?
@@ -201,7 +201,7 @@ Did you know how many times I need to wait? Remember, in the first version of th
 
 With the optimised version here above and to do **exactly the same thing**, I waited ... just three seconds:
 
-```text
+<Terminal>
 Number of threads: 64
 Sleeping for 3 seconds...
 Sleeping for 3 seconds...
@@ -214,7 +214,7 @@ Sleeping for 3 seconds...
 Sleeping for 3 seconds...
 Sleeping for 3 seconds...
 Total running time: 3 seconds
-```
+</Terminal>
 
 :::tip Running 50 times the function
 In the first version of the script, by changing the line `for i in {1..10}; do` to `for i in {1..50}; do`, I'll wait 150 seconds; right? With the optimised version, just 4 seconds. Why 4 and not 3? Probably some delay introduced by the processor (who should handle 50 concurrent threads).

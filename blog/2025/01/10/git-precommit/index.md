@@ -98,7 +98,7 @@ And we can run our script:
 
 <Terminal>
 $ python main.py
-.
+
 I'm your Python code
 Who you, who are you?
 </Terminal>
@@ -158,9 +158,9 @@ Trim Trailing Whitespace.................................................Passed
 black....................................................................Failed
 - hook id: black
 - files were modified by this hook
-.
+
 reformatted main.py
-.
+
 All done! ✨ 🍰 ✨
 1 file reformatted.
 </Terminal>

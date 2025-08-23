@@ -53,12 +53,14 @@ By opening `http://127.0.0.1:8080` you'll get this screen:
 
 Back to your console, run `cat ${HOME}/.config/code-server/config.yaml` to discover the configuration for code-server. You'll see something like this:
 
-```text
+<Terminal>
+$ {`cat \${HOME}/.config/code-server/config.yaml`}
+
 bind-addr: 127.0.0.1:8080
 auth: password
 password: d8345b9abff6c01d044fac59
 cert: false
-```
+</Terminal>
 
 Copy/paste the password in the form and submit it and tadaaaa:
 

@@ -87,13 +87,13 @@ Now, we can run in our console:
 
 The output will be, for this example:
 
-```text
+<Terminal>
 .env UPDATED APP_DEBUG = false
 .env UPDATED APP_ENV = production
 .env UPDATED APP_NAME = My application is running on production
 .env ADDED   CAN_REGISTER=false
 .env UPDATED FORCE_HTTPS = true
-```
+</Terminal>
 
 We can see fourth variables have been updated and one has been added (`CAN_REGISTER`).
 
@@ -143,7 +143,7 @@ Now, we've introduced a fourth argument; by default set to `true`.
 
 The output of the previous command will be the one below. If not present, variables are not added and this is just perfect.
 
-```text
+<Terminal>
 .env SKIP    DEFAULT_CACHE
 .env SKIP    REDIS_HOST
-```
+</Terminal>

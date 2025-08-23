@@ -30,6 +30,7 @@ We'll use `docker container list` to get the list of containers, we just want to
 
 <Terminal>
 $ {`docker container list --all --format "table {{.Image}}\t{{.Names}}"`}
+
 IMAGE                        NAMES
 mysql:8.0.13                 joomla-joomladb-1
 joomla:5.0.1-php8.2-apache   joomla-joomla-1

@@ -215,8 +215,8 @@ If you want to learn more about GNU Make, check my [Linux Makefile - When to use
 
 We're ready. Just before you begin, please check that you have the three files below (please run `ls -alh`):
 
-```txt
-> ls -alh
+<Terminal>
+$ ls -alh
 
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2024-10-18 13:30 .
@@ -224,7 +224,7 @@ drwxrwxrwt     - root       root       2024-10-18 13:30 ..
 .rw-r--r--   140 christophe christophe 2024-10-18 13:30 .env
 .rw-r--r--   838 christophe christophe 2024-10-18 13:30 compose.yaml
 .rw-r--r--   327 christophe christophe 2024-10-18 13:30 makefile
-```
+</Terminal>
 
 ### Check our configuration
 
@@ -275,8 +275,8 @@ The answer is "Yes" and `make up` will do the magic.
 
 In your console, just run `make up` and please wait one minute. The very first time, you'll get something like this in your console:
 
-```text
-> make up
+<Terminal>
+$ make up
 
 UID=$(id -u) GID=$(id -g) docker compose up --detach
 [+] Running 33/12
@@ -287,17 +287,19 @@ UID=$(id -u) GID=$(id -g) docker compose up --detach
  ✔ Network runningjoomlaindocker_default  Created         0.0s
  ✔ Container joomla-db                    Healthy        31.7s
  ✔ Container joomla-app                   Started        31.1s
-```
+</Terminal>
 
 What does that mean? Docker has retrieved (*pulled*) from the Internet our `joomla` and `joomladb` services (in other terms, has downloaded the Joomla CMS (including PHP and Apache) and MySQL).
 
-By running `docker container list --all --format "table {{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"` (or just `docker container list` to get all the columns), you'll get the list of running containers:
+By running then command below (or just `docker container list` to get all the columns),  you'll get the list of running containers:
 
-```text
+<Terminal>
+$ {`docker container list --all --format "table {{.Image}}\\t{{.Names}}\\t{{.Status}}\\t{{.Ports}}"`}
+
 IMAGE                        NAMES        STATUS                   PORTS
 joomla:5.2.0-php8.3-apache   joomla-app   Up 6 minutes             0.0.0.0:8080->80/tcp
 mysql:8.4.2                  joomla-db    Up 7 minutes (healthy)   3306/tcp, 33060/tcp
-```
+</Terminal>
 
 As we can see, yay!, we have our two services (named containers) which are Joomla and MySQL and they are both *Up* (see the `Status` column). We see that Joomla uses port `8080` and MySQL uses port `3306`.
 
@@ -684,8 +686,8 @@ The same three files in the three projects folders.
 
 At the end, you should have this structure in your `/tmp/joomla` folder:
 
-```bash
-❯ tree -a
+<Terminal wrap={true}>
+$ tree -a
 
 ├── project_1
 │   ├── .env
@@ -699,7 +701,7 @@ At the end, you should have this structure in your `/tmp/joomla` folder:
     ├── .env
     ├── compose.yaml
     └── makefile
-```
+</Terminal>
 
 One directory by project and, again, our three files.
 
@@ -864,37 +866,37 @@ In fact, nothing surprising, it's normal with Docker: everything is isolated in 
 
 If I'm located in my `/tmp/joomla` folder; I can start my three projects at once like this:
 
-```bash
-cd project_1 && make up && cd ../project_2 && make up && cd ../project_3 && make up
-```
+<Terminal wrap={true}>
+$ cd project_1 && make up && cd ../project_2 && make up && cd ../project_3 && make up
+</Terminal>
 
 Here is something you can get:
 
-```bash
-❯ cd project_1
+<Terminal wrap={true}>
+$ cd project_1
 
-❯ make up
+$ make up
 [+] Running 3/23
  ✔ Network joomla_5_network  Created               0.0s
  ✔ Container joomla_5-db     Healthy              11.5s
  ✔ Container joomla_5-app    Started               0.4s
 
-❯ cd ../project_2
+$ cd ../project_2
 
-❯ make up
+$ make up
 [+] Running 3/3
  ✔ Network joomla_4_network  Created               0.0s
  ✔ Container joomla_4-db     Healthy              31.0s
  ✔ Container joomla_4-app    Started              31.4s
 
-❯ cd ../project_3
+$ cd ../project_3
 
-❯ make up
+$ make up
 [+] Running 3/3
  ✔ Network joomla_3_network  Created                0.0s
  ✔ Container joomla_3-db     Healthy               62.7s
  ✔ Container joomla_3-app    Started               61.5s
-```
+</Terminal>
 
 ### Other projects? How many sites can I have?
 

@@ -130,9 +130,9 @@ If you prefer the command line, you can achieve the same result by running these
 
 <Terminal>
 $ docker rm $(docker ps -aq --filter "ancestor=python-fastapi")
-...
+
 $ docker rmi python-fastapi --force
-...
+
 </Terminal>
 
 Now, please copy/paste the following content to your existing `Dockerfile`:

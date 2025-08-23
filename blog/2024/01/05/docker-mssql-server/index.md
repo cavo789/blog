@@ -29,7 +29,7 @@ We can check the list of running containers thanks to docker container list:
 
 <Terminal>
 $ docker container list
-.
+
 [...] IMAGE                                       [...] NAMES
 [...] mcr.microsoft.com/mssql/server:2022-latest  [...] sqlserverdb
 </Terminal>

@@ -30,11 +30,11 @@ Simply run the commands below in your PHP application folder:
 
 <Terminal>
 $ composer require pestphp/pest --dev --with-all-dependencies
-.
+
 $ composer require pestphp/pest-plugin-laravel --dev
-.
+
 $ php artisan pest:install
-.
+
 $ ./vendor/bin/pest --init
 </Terminal>
 
@@ -94,14 +94,14 @@ This illustrates that Pest start with a `expect` verb and some method like `toBe
 
 Running our test can be simply done using `./vendor/bin/pest tests/Feature/MyFirstTest.php` and here is the result:
 
-```text
+<Terminal>
    PASS  Tests\Feature\MyFirstTest
   ✓ assert true is true
   ✓ assert false is not true
 
   Tests:  2 passed
   Time:   0.08s
-```
+</Terminal>
 
 #### Autocomplete
 

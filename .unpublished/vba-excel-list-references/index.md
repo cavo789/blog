@@ -28,7 +28,7 @@ That's all. The script will retrieve any `.xlam` or `.xlsm` files and do automat
 
 The output you'll get will be something like this:
 
-```text
+<Terminal>
 Processing files in C:\Christophe
 
 Get the list of references used in C:\Christophe\Application.xlsm
@@ -43,4 +43,4 @@ Get the list of references used in C:\Christophe\Invoices.xlam
 
     Name My_AddIn
     Full Path: C:\Christophe\My_Addin\My_AddIn.xlam
-```
+</Terminal>

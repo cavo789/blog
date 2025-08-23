@@ -1,11 +1,12 @@
 /* Terminal container */
 .terminal {
   background: #1e1e1e; /* terminal background */
-  color: #d4d4d4;       /* default text color */
+  color: #d4d4d4;      /* default text color */
   border-radius: 6px;
   font-family: "Fira Code", monospace;
-  overflow-x: auto;     /* fallback for extremely long lines */
+  overflow-x: auto;    /* fallback for extremely long lines */
   margin-bottom: 1rem;
+  position: relative; /* Essential for absolute positioning of the button */
 }
 
 /* Terminal header */
@@ -83,8 +84,8 @@
 /* Prompt for command line */
 .prompt {
   user-select: none;      /* not copyable */
-  pointer-events: none;   /* cannot click */
-  color: #00ff00;         /* green prompt */
+  pointer-events: none;  /* cannot click */
+  color: #00ff00;        /* green prompt */
   flex-shrink: 0;
 }
 
@@ -96,7 +97,43 @@
 
 /* Optional no-wrap mode */
 .no_wrap {
-  white-space: pre;       /* don't wrap lines */
-  overflow-x: auto;       /* show horizontal scrollbar if too long */
-  word-break: normal;     /* no forced breaks */
+  white-space: pre;      /* don't wrap lines */
+  overflow-x: auto;      /* show horizontal scrollbar if too long */
+  word-break: normal;    /* no forced breaks */
+}
+
+/* ------------------ */
+/* Copy Button Styles */
+/* ------------------ */
+
+.copyButton {
+  position: absolute;
+  top: 2.5rem;
+  right: 0.5rem;
+  padding: 0.35rem;
+  border-radius: var(--ifm-border-radius);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 10;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  /* Use a Docusaurus variable for color to ensure visibility */
+  color: var(--docusaurus-color-primary-contrast-background);
+}
+
+/* Show the button only on hover of the terminal container */
+.terminal:hover .copyButton {
+  opacity: 1;
+}
+
+/* Add a background hover effect using Docusaurus variables */
+.copyButton:hover {
+  background-color: var(--ifm-hover-overlay-bg);
+}
+
+.copyButtonSvg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
 }

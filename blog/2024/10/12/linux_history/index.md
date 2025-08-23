@@ -98,11 +98,13 @@ Or, perhaps easier, just use `history -d` followed by the line number as display
 
 So if the output of `history` is the one below, I can remove the `vi` line by running `history -d 2130`
 
-```text
+<Terminal>
+$ history -d 2130
+
 2129  history | grep -i "docker exec"
 2130  vi $HISTFILE
 2131  history | grep -i "docker exec"
-```
+</Terminal>
 
 :::tip
 But, then the command `history -d 2130` will appears in the history, of course. So editing the file using a text editor is perhaps more ... discreet.

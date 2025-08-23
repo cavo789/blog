@@ -70,6 +70,7 @@ Once everything has been downloaded and started, you can check you've well two c
 
 <Terminal>
 $ docker container list
+
 [...] IMAGE                         [...] NAMES
 [...] martialblog/limesurvey:latest [...] limesurvey-app
 [...] mysql:latest                  [...] limesurvey-db

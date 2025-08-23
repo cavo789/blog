@@ -86,6 +86,7 @@ That file contains a few *targets* (=actions) and a simple `printf` statement to
 
 <Terminal>
 $ ls -alh
+
 total 920K
 drwxr-xr-x  2 christophe christophe 4.0K Dec  10 12:19 .
 drwxrwxrwt 17 root       root       908K Dec  10 12:19 ..
@@ -165,7 +166,7 @@ Right now, if you type `make` on your console, you'll get this:
 <Terminal wrap={false}>
 Usage:
   make \<target>
-.
+
   help                  Show the help with the list of commands
 </Terminal>
 
@@ -230,9 +231,10 @@ watch: ## Start the Docusaurus watcher. Listen any changes to a .md file and ref
 
 And now, by running `make` you'll get a nice help screen:
 
-```text
+<Terminal wrap={false}>
+{`
 Usage:
-  make <target>
+  make \<target>
 
   help                  Show the help with the list of commands
   bash                  Open an interactive shell in the Docker container
@@ -242,7 +244,8 @@ Usage:
   install               The very first time, after having cloned this blog, you need to install Docusaurus before using it.
   start                 Start the local web server and open the webpage
   watch                 Start the Docusaurus watcher. Listen any changes to a .md file and reflect the change onto the website
-```
+`}
+</Terminal>
 
 As you can see, the order of targets respect the order in your file. `help` is displayed first because it's the first target in the file so, think to reorder targets in your file based on your logic (f.i. alphabetically).
 
@@ -295,9 +298,9 @@ phpmyadmin: ## Run phpmyadmin web interface
 
 And here is the final result:
 
-```text
+<Terminal wrap={false}>
 Usage:
-  make <target>
+  make \<target\>
 
   help                  Show the help with the list of commands
 
@@ -310,7 +313,7 @@ Data quality            Code analysis tools
 
 Database management     Working with the database
   phpmyadmin            Run phpmyadmin web interface
-```
+</Terminal>
 
 :::tip Now we have a clear grouping of actions. Much better.
 :::

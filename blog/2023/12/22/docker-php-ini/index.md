@@ -96,7 +96,7 @@ So, now, your folder contains at least two files:
 <Terminal>
 $ pwd
 /tmp/joomla
-.
+
 $ ls -alh
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2023-11-04 09:32  .

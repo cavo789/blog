@@ -101,7 +101,7 @@ Think about adding exclusions like `--exclude vendor` not to scan the code that 
 
 As you can see below, in less than two seconds, the tool has checked 823 files of my codebase. Pretty fast.
 
-```text
+<Terminal>
 PHP 8.3.3 | 10 parallel jobs
 ............................................................  60/823 (7 %)
 ............................................................ 120/823 (14 %)
@@ -117,7 +117,7 @@ PHP 8.3.3 | 10 parallel jobs
 ............................................................ 720/823 (87 %)
 ............................................................ 780/823 (94 %)
 ...........................................                  823/823 (100 %)
-```
+</Terminal>
 
 ## PHP-CS-FIXER
 

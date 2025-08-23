@@ -43,7 +43,7 @@ Here is the content of your current directory:
 <Terminal>
 $ pwd
 /tmp/network
-.
+
 $ ls -alh
 total 920K
 drwxr-xr-x  2 christophe christophe 4.0K Feb 20 18:15 .
@@ -111,7 +111,7 @@ Then we'll start an interactive bash shell in our second container and we'll try
 
 <Terminal>
 $ docker compose run -it --rm --entrypoint /bin/sh my_second_container
-.
+
 $ curl http://127.0.0.1:8080
 curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect to server
 </Terminal>
@@ -173,7 +173,7 @@ Now, we can try again, please start an interface shell once more. It'll still no
 
 <Terminal>
 $ docker compose run -it --rm --entrypoint /bin/sh my_second_container
-.
+
 $ curl http://127.0.0.1:8080
 curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect to server
 $ curl http://172.20.0.1:8080
@@ -215,7 +215,7 @@ If we try to access it from inside the second container, it didn't work:
 
 <Terminal>
 $ docker compose run -it --rm --entrypoint /bin/sh my_second_container
-.
+
 $ curl http://my_site.local:8080
 curl: (6) Could not resolve host: my_site.local
 </Terminal>
@@ -224,7 +224,7 @@ And **this is normal** since `my_site.local` is an alias defined on your host ma
 
 <Terminal>
 $ docker compose run -it --rm --entrypoint /bin/sh my_second_container
-.
+
 $ cat /etc/hosts
 127.0.0.1       localhost
 ::1     localhost ip6-localhost ip6-loopback
@@ -262,8 +262,9 @@ Now, we can jump in the container for the last time, check the `/etc/hosts` file
 
 <Terminal>
 $ docker compose run -it --rm --entrypoint /bin/sh my_second_container
-.
+
 $ cat /etc/hosts
+
 127.0.0.1       localhost
 ::1     localhost ip6-localhost ip6-loopback
 fe00::0 ip6-localnet
@@ -271,7 +272,7 @@ ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 172.20.0.1      my_site.local
-.
+
 $ curl http://my_site.local:8080
 </Terminal>
 

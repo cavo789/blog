@@ -27,7 +27,7 @@ You'll be prompted to enter a *passphrase*, this is not required so just press <
 
 You'll then see something like this on your console:
 
-```text
+<Terminal>
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (/root/.ssh/id_ed25519):
 Enter passphrase (empty for no passphrase):
@@ -43,7 +43,7 @@ The key's randomart image is:
 | ( ...... )      |
 | ( ...... )      |
 +----[SHA256]-----+
-```
+</Terminal>
 
 Then you'll need to add the key to your SSH agent. Simply run:
 

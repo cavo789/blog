@@ -201,7 +201,7 @@ pandoc
     graphics: true
     tables: true
   default-image-extension: pdf
-.
+
 metadata
   documentclass: scrartcl
   classoption:
@@ -211,18 +211,18 @@ metadata
   header-includes:
     - \KOMAoption\{captions}\{tableheading}
   block-headings: true
-.
+
 Rendering PDF
 running xelatex - 1
   This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex)
    restricted \write18 enabled.
   entering extended mode
-.
+
 running xelatex - 2
   This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex)
    restricted \write18 enabled.
   entering extended mode
-.
+
 Output created: test.pdf
 </Terminal>
 

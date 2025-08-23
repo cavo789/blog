@@ -93,9 +93,9 @@ PostgREST is a binary, download it by running:
 
 <Terminal>
 curl -o postgrest-v10.1.1-linux-static-x64.tar.xz -L https://github.com/PostgREST/postgrest/releases/download/v10.1.1/postgrest-v10.1.1-linux-static-x64.tar.xz
-...
+
 tar xJf postgrest-v10.1.1-linux-static-x64.tar.xz && rm -f postgrest-v10.1.1-linux-static-x64.tar.xz
-...
+
 </Terminal>
 
 You've now a file called `postgrest` in your folder.

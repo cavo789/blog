@@ -26,17 +26,17 @@ Now, in your console, just run `docker init` and follow the wizard.
 
 <Terminal>
 $ docker init
-...
+
 Welcome to the Docker Init CLI!
-.
+
 This utility will walk you through creating the following files with sensible defaults for your project:
   \- .dockerignore
   \- Dockerfile
   \- compose.yaml
   \- README.Docker.md
-.
+
 Let's get started!
-.
+
 ? What application platform does your project use?  [Use arrows to move, type to filter]
   Go - suitable for a Go server application
   Python - suitable for a Python server application
@@ -63,22 +63,22 @@ For the next questions:
 ? What version of PHP do you want to use? 8.2
 ? What's the relative directory (with a leading .) for your app?
 ? What local port do you want to use to access your server? 8080
-.
+
 CREATED: .dockerignore
 CREATED: Dockerfile
 CREATED: compose.yaml
 CREATED: README.Docker.md
-.
+
 ✔ Your Docker files are ready!
-.
+
 Take a moment to review them and tailor them to your application.
-.
+
 If your application requires specific PHP extensions, you can follow the instructions in the Dockerfile to add them.
-.
+
 When you're ready, start your application by running: docker compose up --build
-.
+
 Your application will be available at http://localhost:8080
-.
+
 Consult README.Docker.md for more information about using the generated files.
 </Terminal>
 

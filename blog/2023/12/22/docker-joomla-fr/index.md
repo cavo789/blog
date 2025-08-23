@@ -80,7 +80,7 @@ Pour que les choses soient aussi claires que possible, voici le contenu de mon d
 <Terminal>
 $ pwd
 /tmp/joomla
-.
+
 ❯ ls -alh
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2023-11-04 09:32  .
@@ -120,6 +120,7 @@ Vous obtiendrez quelque chose comme ceci, veuillez patienter jusqu'à ce que tou
 
 <Terminal>
 $ docker compose up --detach
+
 [+] Running 16/35
  ⠹ joomladb 12 layers [⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]    0B/0B  Pulling  19.3s
    ⠧ 177e7ef0df69 Waiting   15.8s
@@ -138,6 +139,7 @@ $ docker compose up --detach
 
 <Terminal>
 $ docker compose up --detach
+
 [+] Running 35/35
  ✔ joomladb 12 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]  0B/0B   Pulled  84.9s
    ✔ 177e7ef0df69 Pull complete  26.9s
@@ -200,6 +202,7 @@ Si vous êtes curieux, vous pouvez lancer la commande `docker image list` pour o
 
 <Terminal>
 $ docker image list
+
 REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
 joomla       latest    882b2151d890   2 days ago    663MB
 mysql        8.0.13    102816b1ee7d   4 years ago   486MB
@@ -247,6 +250,7 @@ Nous avons presque terminé. Veuillez lancer `docker container list` pour obteni
 
 <Terminal>
 $ docker container list
+
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                    NAMES
 0798f8f25d2b   joomla         "/entrypoint.sh apac…"   8 minutes ago    Up 5 minutes    0.0.0.0:8080->80/tcp     joomla-joomla-1
 7b7fcd3809b0   mysql:8.0.13   "docker-entrypoint.s…"   8 minutes ago    Up 7 minutes    3306/tcp, 33060/tcp      joomla-joomladb-1
@@ -331,7 +335,7 @@ Vérifions en retournant dans notre console Linux :
 <Terminal>
 $ pwd
 /tmp/joomla
-.
+
 $ ls -alh
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2023-11-04 09:32  .
@@ -349,6 +353,7 @@ Toujours sur votre console, tapez à nouveau `docker container list` :
 
 <Terminal>
 $ docker container list
+
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                    NAMES
 0798f8f25d2b   joomla         "/entrypoint.sh apac…"   8 minutes ago    Up 5 minutes    0.0.0.0:8080->80/tcp     joomla-joomla-1
 7b7fcd3809b0   mysql:8.0.13   "docker-entrypoint.s…"   8 minutes ago    Up 7 minutes    3306/tcp, 33060/tcp      joomla-joomladb-1
@@ -362,6 +367,7 @@ Nous allons les arrêter en lançant `docker compose down` :
 
 <Terminal>
 $ docker compose down
+
 [+] Running 3/3
  ✔ Container joomla-joomla-1    Removed 2.6s
  ✔ Container joomla-joomladb-1  Removed 4.2s
@@ -457,7 +463,7 @@ Vérifiez simplement le contenu de votre dossier :
 <Terminal>
 $ pwd
 /tmp/joomla
-.
+
 $ ls -alh
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2023-11-04 20:13  .
@@ -471,6 +477,7 @@ Lancez à nouveau Docker, mais assurez-vous d'abord que les conteneurs précéde
 
 <Terminal>
 $ docker compose kill
+
 [+] Killing 2/2
  ✔ Container kingsbridge-db   Killed   2.1s
  ✔ Container kingsbridge-app  Killed   1.5s
@@ -480,6 +487,7 @@ Exécutez une fois encore `docker compose up --detach`.
 
 <Terminal>
 $ docker compose up --detach
+
 [+] Running 3/3
  ✔ Network kingsbridge_default       Created    0.3s
  ✔ Container kingsbridge-db   Started    3.3s
@@ -491,7 +499,7 @@ Et vous pouvez déjà lancer `ls` à nouveau pour voir que, oui, vos dossiers lo
 <Terminal>
 $ pwd
 /tmp/joomla
-.
+
 $ ls -alh site_joomla
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2023-11-04 20:20 .
@@ -519,7 +527,7 @@ drwxr-xr-x     - christophe christophe 2023-10-14 14:42 tmp
 .rw-r--r--  4.9k christophe christophe 2023-10-14 14:42 README.txt
 .rw-r--r--   764 christophe christophe 2023-10-14 14:42 robots.txt.dist
 .rw-r--r--  3.0k christophe christophe 2023-10-14 14:42 web.config.txt
-.
+
 $ ls -alh db
 Permissions Size User       Group      Date Modified    Name
 drwxr-x---     - christophe christophe 2023-11-04 20:20 #innodb_temp
@@ -553,9 +561,9 @@ Lorsque l'assistant d'installation s'est terminé avec succès, retournez à vot
 <Terminal>
 $ pwd
 /tmp/joomla
-.
+
 $ ls site_joomla/configuration.php
-.
+
 Permissions Size User       Group      Date Modified    Name
 .rw-r--r--  2.0k christophe christophe 2023-11-04 20:29 configuration.php
 </Terminal>
@@ -621,7 +629,7 @@ Cela peut vous rendre fou mais ... lorsque vous entrez dans le conteneur Docker,
 $ pwd
 /tmp/joomla
 $ docker compose exec joomla /bin/sh
-...
+
 $ pwd
 /var/www/html
 $ exit
@@ -635,7 +643,7 @@ Quelque chose d'autre à essayer:
 $ php --version
 command not found: php
 $ docker compose exec joomla /bin/sh
-...
+
 $ php --version
 PHP 8.1.25 (cli) (built: Nov  1 2023 06:20:35) (NTS)
 $ exit
@@ -733,6 +741,7 @@ Si vous avez oublié le nom du réseau utilisé par vos conteneurs, exécutez `d
 
 <Terminal>
 $ docker network list
+
 NETWORK ID NAME DRIVER SCOPE
 ddb1c1606b76 bridge bridge local
 336cd6fec416 host host local
@@ -915,7 +924,7 @@ Ceci fait, nous allons créer un nouveau fichier appelé `makefile` dans votre r
 <Terminal>
 $ pwd
 /tmp/joomla
-.
+
 ❯ code makefile
 </Terminal>
 
@@ -989,7 +998,7 @@ En tapant `make phpmyadmin`, il serait agréable de voir, sur la console, les id
 <Terminal>
 $ make phpmyadmin
 User is root and password is example. Please open http://127.0.0.1:8089 to open phpmyadmin.
-.
+
 $ docker run --name phpmyadmin -d --link joomladb:db --network kingsbridge_default -p 8089:80 phpmyadmin
 a0c37edd9f8c139556f1f0a6b028ec5102362f16233efbc05f56d184edfb83c9
 </Terminal>
