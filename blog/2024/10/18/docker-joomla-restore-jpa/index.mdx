@@ -28,12 +28,12 @@ At the end, we'll have a `make import` command that will start **[Akeeba Kicksta
 :::tip Skipping the files creation process
 In the next chapters, you'll need to create several files using copy/paste. If you wish go faster, just run the following commands to retrieve files from my [Github repo](https://github.com/cavo789/docker_joomla_restore) so you don't need to create them.
 
-```bash
-mkdir /tmp/joomla_restore && cd $_
-curl -LOJ --silent https://github.com/cavo789/docker_joomla_restore/archive/refs/tags/1.0.0.tar.gz
-tar -xzvf docker_joomla_restore-1.0.0.tar.gz --strip-components 1 && rm -f docker_joomla_restore-1.0.0.tar.gz
-tar -xzvf docker_joomla_restore.gz --strip-components 1 && rm -f docker_joomla_restore.gz
-```
+<Terminal>
+$ mkdir /tmp/joomla_restore && cd $_
+$ curl -LOJ --silent https://github.com/cavo789/docker_joomla_restore/archive/refs/tags/1.0.0.tar.gz
+$ tar -xzvf docker_joomla_restore-1.0.0.tar.gz --strip-components 1 && rm -f docker_joomla_restore-1.0.0.tar.gz
+$ tar -xzvf docker_joomla_restore.gz --strip-components 1 && rm -f docker_joomla_restore.gz
+</Terminal>
 
 By following the instructions below, you'll create a xxx folder where you can copy all the files you need to restore a Joomla site using Docker.  You can then proceed immediately to the “Run the import process” chapter, as the files are already in place.
 :::
@@ -41,6 +41,10 @@ By following the instructions below, you'll create a xxx folder where you can co
 *If you prefer to understand what you do and create files manually, please continue your lecture here below.*
 
 Please create a new folder on your computer like f.i. `mkdir /tmp/joomla_restore && cd $_`.
+
+<Terminal>
+$ mkdir /tmp/joomla_restore && cd $_
+</Terminal>
 
 In that folder, you'll need to create several files (please refer to [Part 2](/blog/docker-joomla-part-2)) if you need more explanations about these files.
 
@@ -322,8 +326,8 @@ The two files we need are called `en-GB.kickstart.ini` and `kickstart.phsp`.
 
 We're ready. Just before you begin, please check that you have all the required files (please run `ls -alh`):
 
-```txt
-> ls -alh
+<Terminal>
+$ ls -alh
 
 Permissions Size User       Group      Date Modified    Name
 drwxr-xr-x     - christophe christophe 2024-10-18 13:30 .
@@ -335,7 +339,7 @@ drwxrwxrwt     - root       root       2024-10-18 13:30 ..
 .rw-r--r--   11k christophe christophe 2024-10-18 13:30 en-GB.kickstart.ini
 .rw-r--r--  390k christophe christophe 2024-10-18 13:30 kickstart.php
 .rw-r--r--  2.9k christophe christophe 2024-10-18 13:30 makefile
-```
+</Terminal>
 
 :::tip Skipping the files creation process
 If you've skipped file's creation earlier by downloading files from my repo; you'll have all the files listed here above.
@@ -353,18 +357,18 @@ For Linux users, simply take advantage of `GNU Make` and run the `make import` i
 
 For Windows (Powershell or DOS), please run these commands:
 
-```bash
+<Terminal title="Powershell">
 mkdir db_data
 mkdir joomla_data
 copy en-GB.kickstart.ini joomla_data\
 copy kickstart.php joomla_data\
 copy backup.jpa joomla_data\
 docker compose up --detach
-```
+</Terminal>
 
 For both users (Linux and Windows), you'll something like this output in the console:
 
-```text
+<Terminal>
 [+] Building 1.4s (7/7) FINISHED                                 docker:default
 => [joomla internal] load build definition from Dockerfile                 0.0s
  => => transferring dockerfile: 200B                                       0.0s
@@ -378,7 +382,7 @@ For both users (Linux and Windows), you'll something like this output in the con
  ✔ Network running-joomla-in-docker_joomla_network  Created                0.0s
  ✔ Container joomla-db                              Healthy               31.0s
  ✔ Container joomla-app                             Started               31.3s
-```
+</Terminal>
 
 When finished, just start your browser and surf to `http://127.0.0.1:8080/kickstart.php` to start the restoration of your website using the **Akeeba Kickstart** wizard.
 

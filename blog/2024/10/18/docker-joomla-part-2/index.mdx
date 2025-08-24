@@ -57,6 +57,10 @@ In recent months, the name of the file to be used has changed from `compose.yaml
 
 Please create a new folder (f.i. `mkdir /tmp/joomla && cd $_`) on your hard disk and create the `compose.yaml` file with this content:
 
+<Terminal>
+$ mkdir /tmp/joomla && cd $_
+</Terminal>
+
 <Snippet filename="compose.yaml">
 
 ```yaml
@@ -333,6 +337,10 @@ By running `make reset`, you'll lose everything and be ready to create a new fre
 
 Sometimes, if something goes wrong, it's nice to have access to the Docker logs. Simply run `make log` to achieve this.
 
+<Terminal>
+$ make log
+</Terminal>
+
 Logs will look like this:
 
 <!-- cspell:disable -->
@@ -379,6 +387,10 @@ You will need some information like credentials for the database;  this is why t
 
 Please run `make start` in console. You'll get a screen like the one below:
 
+<Terminal>
+$ make start
+</Terminal>
+
 ```text
 To start your site, please jump to http://127.0.0.1:8080
 
@@ -412,12 +424,16 @@ You'll need to configure your new fresh site. In the **Database Configuration** 
 
 ## Time for a break
 
-What have we seen so far?
-
-* Without having anything other than Docker you can install Joomla and MySQL from the command line, in the version you want;
-* That with an `.env` file we can vary certain values ​​to allow us to have several projects on our hard drive (several Joomla sites);
-* That with the `compose.yaml` file we tell Docker what to do to make Joomla and MySQL talk each other, and
-* The `compose.yaml` file is valuable since it allows you to define a number of configuration variables.
+<StepsCard
+  title="What have we seen so far?"
+  variant="remember"
+  steps={[
+    "Without having anything other than Docker you can install Joomla and MySQL from the command line, in the version you want;",
+    "That with an `.env` file we can vary certain values ​​to allow us to have several projects on our hard drive (several Joomla sites);",
+    "That with the `compose.yaml` file we tell Docker what to do to make Joomla and MySQL talk each other, and",
+    "The `compose.yaml` file is valuable since it allows you to define a number of configuration variables."
+  ]}
+/>
 
 Let's go a little further.
 
@@ -635,6 +651,10 @@ You can fire the three actions in just one command: `make reset && make up && ma
 
 The output of `make start` will be:
 
+<Terminal>
+$ make start
+</Terminal>
+
 ```text
 To start your site, please jump to http://127.0.0.1:8080
 
@@ -686,7 +706,7 @@ The same three files in the three projects folders.
 
 At the end, you should have this structure in your `/tmp/joomla` folder:
 
-<Terminal wrap={true}>
+<Terminal>
 $ tree -a
 
 ├── project_1
@@ -854,6 +874,10 @@ WEB_PORT=8083
 
 Save the file and run `make up && make start` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
 
+<Terminal>
+$ make up && make start
+</Terminal>
+
 ![Our three Joomla projects are active at the same time on our development machine](./images/project_1_2_3.png)
 
 :::success Just wow no?
@@ -918,6 +942,10 @@ But? Did I need to be able to work on the three projects at the same time??? Pro
 
 In the console, just run `make stop` in folder project 1 and 3 by, running `( cd project_1 ; make stop ; cd ../project_3 ; make stop)`. We'll thus stop (not remove; just freeze and release memory) our first and third project.
 
+<Terminal>
+$ ( cd project_1 ; make stop ; cd ../project_3 ; make stop )
+</Terminal>
+
 By looking back to Docker Desktop, we can indeed see we've earned 1GB RAM.
 
 ![The first and the third projects are released](./images/docker_desktop_stopped.png)
@@ -926,6 +954,10 @@ By looking back to Docker Desktop, we can indeed see we've earned 1GB RAM.
 In our example here, we've just kept the second project so we can still work on `http://127.0.0.1:8082/` but the two other projects (`http://127.0.0.1:8081/` and `http://127.0.0.1:8083/`) won't respond anymore. We've stopped them.
 
 Just run `make up` again in f.i. folder `project_1` to make the site back to life. Or, if you prefer the GUI, in Docker Desktop, just click on the `Start` button:
+
+<Terminal>
+$ ( cd project_1 && make up )
+</Terminal>
 
 ![Starting a container in Docker Desktop](./images/docker_desktop_start.png)
 :::

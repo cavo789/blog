@@ -137,3 +137,8 @@
   height: 1rem;
   fill: currentColor;
 }
+
+.terminal a {
+  text-decoration: none;
+  color: var(--docusaurus-color-primary); /* Use a readable color from Docusaurus */
+}
