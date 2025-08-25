@@ -13,7 +13,13 @@ enableComments: true
 
 <!-- cspell:ignore apac,ibdata,ibtmp -->
 
-* *Updated 2024-03-23, adding health condition in yml and update Joomla tag to 5.1-php8.2-apache.*
+<UpdateAt
+  title="Recent Changes"
+  updates={[
+    { date: "2024-03-23", content: "adding health condition in yml and update Joomla tag to 5.1-php8.2-apache" },
+    { date: "2025-08-25", content: "Using Joomla 5.3.3" },
+  ]}
+/>
 
 In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** *(don't want to wait? Jump to the "Final compose.yaml" chapter)*.
 
@@ -89,9 +95,9 @@ $ pwd
 
 $ ls -alh
 Permissions Size User       Group      Date Modified    Name
-drwxr-xr-x     - christophe christophe 2023-11-04 09:32  .
-drwxrwxrwt     - christophe christophe 2023-11-04 09:32 ..
-.rw-r--r--   325 christophe christophe 2023-11-04 09:32 compose.yaml
+drwxr-xr-x     - christophe christophe 2025-08-25 09:32  .
+drwxrwxrwt     - christophe christophe 2025-08-25 09:32 ..
+.rw-r--r--   325 christophe christophe 2025-08-25 09:32 compose.yaml
 </Terminal>
 
 
@@ -252,7 +258,7 @@ mysql        8.0.13    102816b1ee7d   4 years ago   486MB
 
 Ok, so, Docker has downloaded Joomla (in its *latest* version) and MySQL (version 8.0.13).
 
-:::info What about Joomla 5.0 i.e. force a version?
+:::info What about a specific version of Joomla?
 By default, when we don't specify any version number (*which isn't recommended*), Docker will download the version known as the `latest` one. `latest`, here, is what Docker calls a *tag*.
 
 <Snippet filename="compose.yaml">
@@ -269,7 +275,7 @@ services:
 
 To retrieve the list of all tags, please navigate to [https://hub.docker.com/_/joomla/tags](https://hub.docker.com/_/joomla/tags).
 
-During writing this article, Joomla *latest* correspond to Joomla version 4.4.1. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: *5.1-php8.2-apache*. So just replace `image: joomla` with `image: joomla:5.1-php8.2-apache` in `compose.yaml` and it's done. You're forcing a version. **Note: make sure to use a tag ending by `-apache`.**
+During writing this article, Joomla *latest* correspond to Joomla version 5.3.3. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: *5.1-php8.2-apache*. So just replace `image: joomla` with `image: joomla:5.1-php8.2-apache` in `compose.yaml` and it's done. You're forcing a version. **Note: make sure to use a tag ending by `-apache`.**
 
 <Snippet filename="compose.yaml">
 
@@ -383,9 +389,9 @@ $ pwd
 
 $ ls -alh
 Permissions Size User       Group      Date Modified    Name
-drwxr-xr-x     - christophe christophe 2023-11-04 09:32  .
-drwxrwxrwt     - christophe christophe 2023-11-04 09:32 ..
-.rw-r--r--   325 christophe christophe 2023-11-04 09:32 compose.yaml
+drwxr-xr-x     - christophe christophe 2025-08-25 09:32  .
+drwxrwxrwt     - christophe christophe 2025-08-25 09:32 ..
+.rw-r--r--   325 christophe christophe 2025-08-25 09:32 compose.yaml
 </Terminal>
 
 Oh? Nothing... **Nothing has been downloaded in your folder.** You don't have Joomla on your computer. How is this possible?
@@ -421,11 +427,22 @@ $ docker compose down
 
 If you go back to `http://localhost:8080` with your browser and refresh the page; the site didn't exist anymore.
 
-Run `docker compose up --detach` again, surf to the site again, refresh the page and the site is, oh? not yet responding. Wait a few... a few more... and after a certain period, the site will be there. Why?
+Run `docker compose up --detach` again.
+
+<Terminal>
+$ docker compose up --detach
+</Terminal>
+
+Surf to the site again, refresh the page and the site is, oh? not yet responding. Wait a few... a few more... and after a certain period, the site will be there. Why?
 
 Docker must (re)start two services, the Joomla one and the database server. Initialization of both services may take a few seconds, and the database service must be up so that Joomla can continue its initialization.
 
 You can see this by running `docker compose logs --follow` (press <kbd>CTRL</kbd>+<kbd>C</kbd> to quit).
+
+<Terminal>
+$ docker compose logs --follow
+the_output
+</Terminal>
 
 Once Joomla will be ready, you will get the installation wizard of Joomla... just like the first time. So, by running `docker compose down` you have lost your work.
 
@@ -522,11 +539,11 @@ $ pwd
 
 $ ls -alh
 Permissions Size User       Group      Date Modified    Name
-drwxr-xr-x     - christophe christophe 2023-11-04 20:13  .
-drwxrwxrwt     - christophe christophe 2023-11-04 20:13 ..
-drwxr-xr-x     - christophe christophe 2023-11-04 20:13 db
-drwxr-xr-x     - christophe christophe 2023-11-04 20:13 site_joomla
-.rw-r--r--   478 christophe christophe 2023-11-04 20:13 compose.yaml
+drwxr-xr-x     - christophe christophe 2025-08-25 20:13  .
+drwxrwxrwt     - christophe christophe 2025-08-25 20:13 ..
+drwxr-xr-x     - christophe christophe 2025-08-25 20:13 db
+drwxr-xr-x     - christophe christophe 2025-08-25 20:13 site_joomla
+.rw-r--r--   478 christophe christophe 2025-08-25 20:13 compose.yaml
 </Terminal>
 
 Run Docker again but first, make sure the previous containers are removed (not only stopped): `docker compose kill`.
@@ -558,8 +575,8 @@ $ pwd
 
 $ ls -alh site_joomla
 Permissions Size User       Group      Date Modified    Name
-drwxr-xr-x     - christophe christophe 2023-11-04 20:20 .
-drwxr-xr-x     - christophe christophe 2023-11-04 20:16 ..
+drwxr-xr-x     - christophe christophe 2025-08-25 20:20 .
+drwxr-xr-x     - christophe christophe 2025-08-25 20:16 ..
 drwxr-xr-x     - christophe christophe 2023-10-14 14:42 administrator
 drwxr-xr-x     - christophe christophe 2023-10-14 14:42 api
 drwxr-xr-x     - christophe christophe 2023-10-14 14:42 cache
@@ -576,7 +593,7 @@ drwxr-xr-x     - christophe christophe 2023-10-14 14:42 modules
 drwxr-xr-x     - christophe christophe 2023-10-14 14:42 plugins
 drwxr-xr-x     - christophe christophe 2023-10-14 14:42 templates
 drwxr-xr-x     - christophe christophe 2023-10-14 14:42 tmp
-.rw-r--r--  6.9k christophe christophe 2023-11-04 20:20 .htaccess
+.rw-r--r--  6.9k christophe christophe 2025-08-25 20:20 .htaccess
 .rw-r--r--  6.9k christophe christophe 2023-10-14 14:42 htaccess.txt
 .rw-r--r--  1.1k christophe christophe 2023-10-14 14:42 index.php
 .rw-r--r--   18k christophe christophe 2023-10-14 14:42 LICENSE.txt
@@ -586,28 +603,28 @@ drwxr-xr-x     - christophe christophe 2023-10-14 14:42 tmp
 
 $ ls -alh db
 Permissions Size User       Group      Date Modified    Name
-drwxr-x---     - christophe christophe 2023-11-04 20:20 #innodb_temp
-drwxr-xr-x     - christophe christophe 2023-11-04 20:21 .
-drwxr-xr-x     - christophe christophe 2023-11-04 20:16 ..
-drwxr-x---     - christophe christophe 2023-11-04 20:21 mysql
-drwxr-x---     - christophe christophe 2023-11-04 20:21 performance_schema
-drwxr-x---     - christophe christophe 2023-11-04 20:21 sys
-.rw-r-----    56 christophe christophe 2023-11-04 20:21 auto.cnf
-.rw-------  1.7k christophe christophe 2023-11-04 20:21 ca-key.pem
-.rw-r--r--  1.1k christophe christophe 2023-11-04 20:21 ca.pem
-.rw-r--r--  1.1k christophe christophe 2023-11-04 20:21 client-cert.pem
-.rw-------  1.7k christophe christophe 2023-11-04 20:21 client-key.pem
-.rw-r-----   50M christophe christophe 2023-11-04 20:21 ib_logfile0
-.rw-r-----   50M christophe christophe 2023-11-04 20:20 ib_logfile1
-.rw-r-----   13M christophe christophe 2023-11-04 20:21 ibdata1
-.rw-r-----   13M christophe christophe 2023-11-04 20:20 ibtmp1
-.rw-r-----   24M christophe christophe 2023-11-04 20:21 mysql.ibd
-.rw-------  1.7k christophe christophe 2023-11-04 20:21 private_key.pem
-.rw-r--r--   452 christophe christophe 2023-11-04 20:21 public_key.pem
-.rw-r--r--  1.1k christophe christophe 2023-11-04 20:21 server-cert.pem
-.rw-------  1.7k christophe christophe 2023-11-04 20:21 server-key.pem
-.rw-r-----   10M christophe christophe 2023-11-04 20:21 undo_001
-.rw-r-----   10M christophe christophe 2023-11-04 20:21 undo_002
+drwxr-x---     - christophe christophe 2025-08-25 20:20 #innodb_temp
+drwxr-xr-x     - christophe christophe 2025-08-25 20:21 .
+drwxr-xr-x     - christophe christophe 2025-08-25 20:16 ..
+drwxr-x---     - christophe christophe 2025-08-25 20:21 mysql
+drwxr-x---     - christophe christophe 2025-08-25 20:21 performance_schema
+drwxr-x---     - christophe christophe 2025-08-25 20:21 sys
+.rw-r-----    56 christophe christophe 2025-08-25 20:21 auto.cnf
+.rw-------  1.7k christophe christophe 2025-08-25 20:21 ca-key.pem
+.rw-r--r--  1.1k christophe christophe 2025-08-25 20:21 ca.pem
+.rw-r--r--  1.1k christophe christophe 2025-08-25 20:21 client-cert.pem
+.rw-------  1.7k christophe christophe 2025-08-25 20:21 client-key.pem
+.rw-r-----   50M christophe christophe 2025-08-25 20:21 ib_logfile0
+.rw-r-----   50M christophe christophe 2025-08-25 20:20 ib_logfile1
+.rw-r-----   13M christophe christophe 2025-08-25 20:21 ibdata1
+.rw-r-----   13M christophe christophe 2025-08-25 20:20 ibtmp1
+.rw-r-----   24M christophe christophe 2025-08-25 20:21 mysql.ibd
+.rw-------  1.7k christophe christophe 2025-08-25 20:21 private_key.pem
+.rw-r--r--   452 christophe christophe 2025-08-25 20:21 public_key.pem
+.rw-r--r--  1.1k christophe christophe 2025-08-25 20:21 server-cert.pem
+.rw-------  1.7k christophe christophe 2025-08-25 20:21 server-key.pem
+.rw-r-----   10M christophe christophe 2025-08-25 20:21 undo_001
+.rw-r-----   10M christophe christophe 2025-08-25 20:21 undo_002
 </Terminal>
 
 Back to your browser and continue the installation of Joomla like we did in the previous chapter.
@@ -621,7 +638,7 @@ $ pwd
 $ ls site_joomla/configuration.php
 
 Permissions Size User       Group      Date Modified    Name
-.rw-r--r--  2.0k christophe christophe 2023-11-04 20:29 configuration.php
+.rw-r--r--  2.0k christophe christophe 2025-08-25 20:29 configuration.php
 
 $ head -n 10 site_joomla/configuration.php
 {`<?php
@@ -640,6 +657,10 @@ class JConfig \{
 Yes! This time we have stored your Joomla website on your computer.
 
 For the exercise, we can kill your containers by running `docker compose kill` and run `docker compose up --detach` again to start your containers again and, this time, we will retrieve your Joomla site as we just leave it. Nothing is lost now.
+
+<Terminal>
+$ docker compose kill && docker compose up --detach
+</Terminal>
 
 And since files/folders are now on your computer, you can do everything you want with your website like committing it on a GitHub repository f.i.
 
@@ -669,6 +690,10 @@ services:
 The name of your Joomla service is `joomla` (and `joomladb` is the name of your database service).
 
 Now we know everything we need: to run an interactive shell session in the Joomla container, just run `docker compose exec joomla /bin/sh` to *jump* into the Joomla container (*and `docker compose exec joomladb /bin/sh` for the database container*).
+
+<Terminal>
+$ docker compose exec joomla /bin/sh
+</Terminal>
 
 Let us rewind for a few seconds because it's complicated to understand.
 
@@ -914,7 +939,13 @@ In the introduction of this article, I have said *we will learn how to use Docke
 This is how:
 
 1. On your computer, create a folder for your new project (f.i. `mkdir ~/projects/my_new_project && cd $_`)
+  <Terminal>
+  $ mkdir ~/projects/my_new_project && cd $_
+  </Terminal>
 2. Also create the two following folders to make your site and your database persistents: `mkdir site_joomla db`
+  <Terminal>
+  $ mkdir site_joomla db
+  </Terminal>
 3. In that folder, create a `compose.yaml` file with this content:
 
 <Snippet filename="compose.yaml">
@@ -957,8 +988,14 @@ services:
 </Snippet>
 
 <!-- markdownlint-disable MD029 -->
-3. Create your two sub-folders: `mkdir db site_joomla`
+3. Create your two sub-folders
+  <Terminal>
+  $ mkdir db site_joomla
+  </Terminal>
 4. Run `docker compose up --detach` to start Docker and create your containers
+  <Terminal>
+  $ docker compose up --detach
+  </Terminal>
 5. Wait a few seconds and your new site is up.
 
 :::important

@@ -14,6 +14,13 @@ blueSkyRecordKey: 3lx57rla64c23
 <!--cspell:ignore runningjoomlaindocker, mysqli -->
 <!-- markdownlint-disable-file MD010 MD026 -->
 
+<UpdateAt
+  title="Recent Changes"
+  updates={[
+    { date: "2025-08-25", content: "Using Joomla 5.3.3" },
+  ]}
+/>
+
 At the end of 2023, I wrote a very long post about using Joomla with Docker: [Create your Joomla website using Docker - Part 1](/blog/docker-joomla).
 
 It was a step-by-step introduction to Docker and the creation of a local Joomla-based website.
@@ -384,6 +391,10 @@ joomla-app  | 172.19.0.1 - - [04/Oct/2024:06:57:36 +0000] "POST /installation/in
 
 Once `make up` has been fired and your containers in a `Up` state, our Joomla site is ready.
 
+<Terminal>
+$ make up
+</Terminal>
+
 You will need some information like credentials for the database;  this is why the `make start` screen was defined.
 
 Please run `make start` in console. You'll get a screen like the one below:
@@ -402,7 +413,7 @@ Below a summary of your current installation:
 JOOMLA
 
   * Project name              running-joomla-in-docker
-  * Version                   5.2.0-php8.3-apache
+  * Version                   latest
   * Port                      8080
 
 DATABASE
@@ -646,14 +657,8 @@ As you can see, we've configured some `JOOMLA_ADMIN_xxx` keys and set `JOOMLA_SI
 
 Once you've updated the three files; just run `make reset` (to remove our previous site if any) then run `make up` to create a new one. Finally, run `make start` to show a list of important variables:
 
-:::tip
-You can fire the three actions in just one command: `make reset && make up && make start`
-:::
-
-The output of `make start` will be:
-
 <Terminal>
-$ make start
+$ make reset && make up && make start
 </Terminal>
 
 ```text
@@ -701,6 +706,10 @@ Let's try a real-world example: we are a small web agency and we wish to use Doc
 
 Please create a structure like below i.e. `cd /tmp/joomla && mkdir project_1 project_2 project_3`.
 
+<Terminal>
+$ cd /tmp/joomla && mkdir project_1 project_2 project_3
+</Terminal>
+
 Then go back to the *Updated compose.yaml* chapter and create the `compose.yaml` file in both the three projects' folder. Do the same for the `.env` and the `makefile`.
 
 The same three files in the three projects folders.
@@ -728,6 +737,10 @@ One directory by project and, again, our three files.
 
 :::note
 The `tree` command isn't native in Linux. If you wish to install it, just run `sudo apt-get update && sudo apt-get install tree`.
+
+<Terminal>
+$ sudo apt-get update && sudo apt-get install tree
+</Terminal>
 :::
 
 ### Project 1 - Joomla 5.2
@@ -826,6 +839,10 @@ WEB_PORT=8082
 </Snippet>
 
 Save the file and run `make up` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
+
+<Terminal>
+$ make up
+</Terminal>
 
 ![Our two Joomla projects are running](./images/project_1_2.png)
 
