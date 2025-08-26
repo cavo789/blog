@@ -127,11 +127,15 @@ Still in the `test` module, pay attention to the very first lines:
 
 You'll need to update these values to match yours. If you've created the SQL Server instance as explained here above, please use these values:
 
+<Snippet filename="clsData.bas">
+
 ```vb
 Private Const cServerName = "localhost,1433"   ' <-- You'll need to mention here your server name
 Private Const cDBName = "SampleDB"       ' <-- You'll need to mention here your database name
 Private Const cSQLStatement = "SELECT * FROM dbo.Customers" ' <-- You'll need to mention here a valid SQL statement (SELECT ...)
 ```
+
+</Snippet>
 
 ![With the initialization](./images/initialization_done.png)
 

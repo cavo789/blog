@@ -446,6 +446,10 @@ the_output
 
 Once Joomla will be ready, you will get the installation wizard of Joomla... just like the first time. So, by running `docker compose down` you have lost your work.
 
+<Terminal>
+$ docker compose down
+</Terminal>
+
 :::danger
 As mentioned earlier, everything is done in RAM. By stopping a Docker container, you will lose everything not saved on your computer. It's great for playing/learning but not what you expect when you're developing a real site.
 :::
@@ -796,6 +800,10 @@ Kingsbridge can be a Joomla 4.4 / PHP 7.4 website while Shiring is on Joomla 5.0
 
 :::tip
 Using another port isn't mandatory. You can have several websites on the same port as `8080`. But, in that case, we won't be able to use these websites at the same time. You can start the first one and when trying to start the second one, Docker will say *port already in use*. This isn't a problem; you can just run `docker compose stop` for the first one so free the port then start the second one.
+
+<Terminal>
+$ docker compose stop
+</Terminal>
 :::
 
 :::note

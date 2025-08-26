@@ -164,6 +164,14 @@ To be able to use a `makefile`, you should have `GNU Make` binary installed on y
 
 :::important
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
+
+<Terminal>
+$ which make
+</Terminal>
+
+<Terminal>
+$ sudo apt-get update && sudo apt-get install make
+</Terminal>
 :::
 
 So, please create a file called `makefile` in your current directory with this content:
@@ -240,7 +248,13 @@ drwxrwxrwt     - root       root       2024-10-18 13:30 ..
 
 ### Check our configuration
 
-By running `make config` (`config` is an action we've defined in our `makefile`), we can display the configuration of our project on the screen *(just display, nothing is fired)*. We should see a lot of technical information starting with something like:
+By running `make config` (`config` is an action we've defined in our `makefile`), we can display the configuration of our project on the screen *(just display, nothing is fired)*.
+
+<Terminal>
+$ make config
+</Terminal>
+
+We should see a lot of technical information starting with something like:
 
 ```yaml
 name: running-joomla-in-docker
@@ -273,7 +287,7 @@ services:
 The output here above is a **partial content** and just show the first lines displayed to the console by the `make config` command.
 :::
 
- The objective of `make config` is to make sure that all files are correct (otherwise we'll get error messages) and that variables are well replaced by their values. You can see f.i. that the Joomla version is well the one we've specified in the `.env` file and the user line (the last line here above) is correctly initialised to the **user_id:group_id** of your current user.
+The objective of `make config` is to make sure that all files are correct (otherwise we'll get error messages) and that variables are well replaced by their values. You can see f.i. that the Joomla version is well the one we've specified in the `.env` file and the user line (the last line here above) is correctly initialised to the **user_id:group_id** of your current user.
 
 :::info
 The **user_id:group_id** will vary depending on your own configuration. It'll be `1000:1000` in the most situations but this can be something else when, f.i., you've defined more than one user in your Linux distribution; the first user probably be `1000:1000`, the second `1001:1001` and so on.
@@ -329,13 +343,25 @@ We've created our Joomla website by **just running one command**. Don't trust? O
 
 The opposite command to `make up` is `make stop`. The `stop` action will stop our Joomla and MySQL containers (read `make them sleeping`) but without removing files (your site and your database) from your hard drive. By running `make up` again, you'll retrieve them. `up` and `stop` are like a light switch.
 
+<Terminal>
+$ make stop
+</Terminal>
+
 ### ... or let's ask him to remove containers (free more memory)
 
 The `make down` command will stop the containers as well remove them. But in our case, we'll still have files on our hard disk so we'll not lose our website.
 
+<Terminal>
+$ make down
+</Terminal>
+
 ### ... or let's ask him to suicide (remove containers and files)
 
 The `make reset` command will stop containers but, too, remove files on the disk.
+
+<Terminal>
+$ make reset
+</Terminal>
 
 :::danger
 By running `make reset`, you'll lose everything and be ready to create a new fresh website.

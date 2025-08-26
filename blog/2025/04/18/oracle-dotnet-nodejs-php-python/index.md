@@ -269,7 +269,7 @@ We also need these files:
 
 </Snippet>
 
-<Snippet filename="main.js">
+<Snippet filename="main.js" variant="js">
 
 <!-- cspell:disable -->
 

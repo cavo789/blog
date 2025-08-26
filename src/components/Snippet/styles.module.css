@@ -1,12 +1,12 @@
 code {
   /* This variable adapts automatically to light and dark themes */
   background-color: var(--ifm-code-background) !important;
-  padding: 0px !important;
+  padding: 0 !important;
 }
 
 code:hover {
   background-color: var(--ifm-code-background) !important;
-  padding: 0px !important;
+  padding: 0 !important;
 }
 
 .snippet_block {
@@ -20,14 +20,14 @@ code:hover {
   width: 100%;
   background: none;
   border: none;
-  padding: 0.75rem 0rem;
+  padding: 0.75rem 0;
   font-size: 1rem;
   font-weight: bold;
-  --chevron-rotation: 0deg;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  --chevron-rotation: 0deg;
 }
 
 .snippet_summary:hover {
@@ -41,6 +41,12 @@ code:hover {
 .snippet_summary:focus-visible {
   outline: 2px solid var(--ifm-color-primary);
   outline-offset: 2px;
+}
+
+.snippet_summary svg {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .chevron {
@@ -63,3 +69,39 @@ code:hover {
   margin-bottom: 0.5rem;
 }
 
+/* === Common styles for variants and icons === */
+
+[class^="variant_"] {
+  color: #fff;
+  border-radius: 8px;
+}
+
+[class$="_icon"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Override color and border-color per variant */
+
+.variant_bash  { border-color: #3eaaaf; }
+.variant_css   { border-color: #1e4fb4; }
+.variant_docker{ border-color: #0aa2ce; }
+.variant_dosbat{ border-color: #8bad2e; color: #2b2b2b; }
+.variant_html  { border-color: #e44d26; }
+.variant_ini   { border-color: #008080; }
+.variant_js    { border-color: #f0d91e; color: #000; }
+.variant_json  { border-color: #1c1c1c; color: #ffcc00; }
+.variant_makefile   { border-color: #6e4f1e; }
+.variant_md    { border-color: #083fa1; }
+.variant_php   { border-color: #7a87b9; }
+.variant_powershell { border-color: #0078d7; }
+.variant_python{ border-color: #2c628d; }
+.variant_sql   { border-color: #e38c00; }
+.variant_svg        { border-color: #f04e23; }
+.variant_toml  { border-color: #f36d25; }
+.variant_txt   { border-color: #6a737d; }
+.variant_vb    { border-color: #571a66; }
+.variant_xml   { border-color: #bf3b1b; }
+.variant_yaml  { border-color: #a31416; }

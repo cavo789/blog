@@ -389,6 +389,8 @@ teardown() {
 
 Simply verify that both values are equals. Here, we'll call a function that will return the length of an array and verify it's the expected value.
 
+<Snippet filename="tests/simple.bats">
+
 ```bash
 @test "array::length - Calculate the length of an array" {
     arr=("one" "two" "three" "four" "five")
@@ -401,6 +403,8 @@ function array::length() {
     echo ${#array_length[@]}
 }
 ```
+
+</Snippet>
 
 ### assert_failure
 

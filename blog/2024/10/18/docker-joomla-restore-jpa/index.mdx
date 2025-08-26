@@ -264,6 +264,14 @@ import: reset
 
 :::important
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
+
+<Terminal>
+$ which make
+</Terminal>
+
+<Terminal>
+$ sudo apt-get update && sudo apt-get install make
+</Terminal>
 :::
 
 ### We also need a file called Dockerfile
@@ -407,6 +415,10 @@ As we've just seen, restoring a Joomla site locally has become really simple.
 All you need to do is retrieve a few configuration files, and just the one named `.env` should be updated with the PHP and MySQL versions you're using on your production site.
 
 You download the local backup of your site and, with a single command (`make import`), your site is restored.
+
+<Terminal>
+$ make import
+</Terminal>
 
 No matter what version of Joomla or MySQL you're using.
 
