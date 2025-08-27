@@ -6,7 +6,6 @@ image: /img/api_social_media.jpg
 mainTag: api
 tags: [api, bruno, docker, postman, tests, tool]
 blueSkyRecordKey: 3lvs336stus2j
-enableComments: true
 ---
 <!-- cspell:ignore fastapi,uvicorn,hobbyte,keyserver,usebruno,ECONNREFUSED,davidkarlsen -->
 ![Bruno - A postman-like tool - GUI and CLI](/img/api_banner.jpg)
@@ -26,7 +25,7 @@ In short, please:
 
     <Snippet filename="Dockerfile">
 
-    ```dockerfile
+    ```docker
     # We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
     FROM python:slim
 
@@ -165,7 +164,7 @@ Let's create a file `bruno.Dockerfile` with the following content:
 
 <Snippet filename="bruno.Dockerfile">
 
-```Dockerfile
+```docker
 FROM node:lts-bookworm-slim
 // highlight-next-line
 RUN npm install -g @usebruno/cli@2.8.0
@@ -194,7 +193,7 @@ Look at the `connect ECONNREFUSED 127.0.0.1:82` error message: the Bruno CLI con
 
 Let's look back at the `environments/dev.bru`:
 
-```text
+```none
 vars {
   root: http://127.0.0.1:82
 }
@@ -238,7 +237,7 @@ We should thus find a solution to make the Bruno Docker CLI container use the co
 
 Please create the `environments/dev-docker.bru` file like this:
 
-```text
+```none
 vars {
   host: http://host.docker.internal:82
 }
@@ -266,7 +265,7 @@ Let's update the `Get a random joke.bru` file like this:
 
 <Snippet filename="Get a random joke.bru">
 
-```text
+```none
 meta {
   name: Get a random joke
   type: http

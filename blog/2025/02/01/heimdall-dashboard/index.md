@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: self-hosted
 tags: [docker, dashboard, self-hosted, tool]
-enableComments: true
 blueSkyRecordKey: 3lwgbxok2ys2i
 ---
 <!-- cspell:ignore puid,pgid,Bitwarden -->

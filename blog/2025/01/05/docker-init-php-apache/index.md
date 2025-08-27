@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_init_tips_social_media.jpg
 mainTag: docker
 tags: [aesecure, apache, docker, php, tips]
-enableComments: true
 ---
 <!-- cspell:ignore dbmdl -->
 ![Using Docker init to quickly dockerize your PHP application](/img/docker_init_tips_header.jpg)
@@ -75,7 +74,7 @@ By opening that file with a code editor, you'll then see that line:
 
 <Snippet filename=".dockerignore">
 
-```text
+```ignore
 **/.git
 ```
 
@@ -116,7 +115,7 @@ There are a lot of commented lines, if we look at un-commented ones, we can see 
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM php:8.2-apache
 
 COPY . /var/www/html

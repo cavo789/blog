@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/hell_social_media.jpg
 mainTag: php
 tags: [code-quality, IA, php]
-enableComments: true
 ---
 <!-- cspell:ignore ctype, fgets, ppmb, ppmc, ppms, ppmu, ppmw, ppmx, ppnc, ppnt, ppnx, ppny, ppnz, strlen, strpos, strtolower -->
 

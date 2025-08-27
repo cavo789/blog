@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 mainTag: linux
 tags: [.env, bash, linux, sed, tips]
-enableComments: true
 ---
 ![Compare environment files in the Linux console](/img/bash_tips_banner.jpg)
 
@@ -63,7 +62,7 @@ The flag `--suppress-common-lines -y` will display the result in two columns (`-
 
 Once the `diff` is made, the command ignores the `APP_KEY` variable (in our example); so, yes, the expected result is:
 
-```text
+```diff
 Left side: .env                   Right side: .env.example
                                 > CACHE_DRIVER = redis
 ```
@@ -76,7 +75,7 @@ $ echo 'ALLOW_FEATURE_DO_THIS = true' >> .env
 
 Now the output will be:
 
-```text
+```diff
 Left side: .env                   Right side: .env.example
 ALLOW_FEATURE_DO_THIS = true    <
                                 > CACHE_DRIVER = redis
@@ -93,7 +92,7 @@ $ echo 'DATABASE_TYPE = mysql' >> .env.example
 
 And the result of the `diff` command:
 
-```text
+```diff
 Left side: .env                   Right side: .env.example
 ALLOW_FEATURE_DO_THIS = true    <
 DATABASE_TYPE = pgsql           | CACHE_DRIVER = redis

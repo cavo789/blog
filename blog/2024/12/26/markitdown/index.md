@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/markdown_tips_social_media.jpg
 mainTag: markdown
 tags: [docker, docx, excel, xlsx]
-enableComments: true
 ---
 ![Markitdown - Convert files and MS Office documents to Markdown](/img/markdown_tips_banner.jpg)
 
@@ -33,7 +32,7 @@ Then please create a new file called `Dockerfile`:
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 FROM python:3.13-slim AS base
 
 RUN set -e -x \

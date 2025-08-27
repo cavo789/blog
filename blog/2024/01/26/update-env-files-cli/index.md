@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 mainTag: linux
 tags: [.env, bash, linux, sed, tips]
-enableComments: true
 ---
 ![Batch edit of environment file](/img/bash_tips_banner.jpg)
 

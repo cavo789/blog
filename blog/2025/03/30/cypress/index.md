@@ -6,7 +6,6 @@ image: /img/functional_testing_social_media.jpg
 mainTag: tests
 tags: [chrome, cypress, docker, javascript, node, tests]
 blueSkyRecordKey: 3lvnkku4dik2v
-enableComments: true
 ---
 ![Introduction to Cypress](/img/functional_testing_banner.jpg)
 
@@ -55,7 +54,7 @@ In short, we'll define the URL to our local cypress engine to `http://localhost:
 
 <Snippet filename="cypress.config.js">
 
-```javascript
+```js
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
@@ -73,7 +72,7 @@ Let's create a very stupid first test: we'll visit my blog and check that, somew
 
 <Snippet filename="cypress/e2e/example.cy.js">
 
-```javascript
+```js
 describe('Testing my blog', () => {
     it('Check my last name is somewhere', () => {
       cy.visit('https://www.avonture.be')
@@ -88,7 +87,7 @@ An optional file to create is `.dockerignore`, it will tell Docker to not copy s
 
 <Snippet filename=".dockerignore">
 
-```text
+```ignore
 node_modules
 Dockerfile
 .dockerignore
@@ -100,7 +99,7 @@ Finally, last file to create, we'll create our own Docker image:
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM cypress/included:14.2.0
 
 WORKDIR /app
@@ -149,7 +148,7 @@ First, let's create a second test:
 
 <Snippet filename="cypress/e2e/navigation.cy.js">
 
-```javascript
+```js
 describe('Navigation Test', () => {
     it('should navigate to the tags page', () => {
       cy.visit('https://www.avonture.be');
@@ -189,7 +188,7 @@ If you pay close attention, you'll notice that there's a spelling mistake, which
 
 <Snippet filename="cypress/e2e/joomla.cy.js">
 
-```javascript
+```js
 describe('Joomla Test', () => {
     it('use tags and display Joomla posts', () => {
       cy.visit('https://www.avonture.be');
@@ -219,7 +218,7 @@ Please replace your existing Dockerfile with this one:
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 ARG USER_ID=1000
 ARG GROUP_ID=1000
 ARG USER_NAME="johndoe"

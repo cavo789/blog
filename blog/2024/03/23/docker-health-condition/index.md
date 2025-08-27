@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [docker, tips]
-enableComments: true
 ---
 ![Understanding the depends_on condition in Docker compose files](/img/docker_tips_banner.jpg)
 

@@ -6,7 +6,6 @@ image: /img/code_quality_social_media.jpg
 series: code quality
 mainTag: code-quality
 tags: [code-quality, composer, docker, laravel, php, php-cs-fixer, phpcs, phpcbf, refactoring]
-enableComments: true
 ---
 ![Docker image that provides static analysis tools for PHP](/img/code_quality_banner.jpg)
 

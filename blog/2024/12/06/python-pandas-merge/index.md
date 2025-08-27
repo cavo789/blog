@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/pandas_tips_social_media.jpg
 mainTag: python
 tags: [csv, excel, pandas, python]
-enableComments: true
 ---
 <!-- cspell:ignore vlookup,sheet -->
 <!-- markdownlint-disable-file MD010 -->

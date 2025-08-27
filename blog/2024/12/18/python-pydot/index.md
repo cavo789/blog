@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/python_tips_social_media.jpg
 mainTag: python
 tags: [docker, python, visualisation]
-enableComments: true
 ---
 <!-- cspell:ignore Pydot,PYTHONDONTWRITEBYTECODE,hadolint,rankdir,fillcolor -->
 
@@ -29,7 +28,7 @@ First, we'll need a Python Docker container. Please create a file called `Docker
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 FROM python:3.13-slim
 
 # Prevents Python from writing pyc files.

@@ -5,7 +5,6 @@ authors: [christophe]
 mainTag: keepass
 tags: [keepass, winscp, putty, rdp, tips]
 image: /img/keepass_tips_social_media.jpg
-enableComments: true
 date: 2023-11-02T12:00
 ---
 ![KeePass - Overriding the URL field](/img/keepass_tips_banner.jpg)

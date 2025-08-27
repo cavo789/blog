@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 mainTag: joomla
 tags: [database, excel, joomla, tips]
-enableComments: true
 ---
 <!-- cspell:ignore showtable,sortering,qrjlq -->
 ![Joomla - Run a SQL statement outside Joomla and display a nice HTML table](/img/excel_tips_banner.jpg)

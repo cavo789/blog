@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 mainTag: code-quality
 tags: [code-quality, linux, tips]
-enableComments: true
 ---
 ![Clean code - Linux Bash - Keep the number of function parameters as small as possible](/img/bash_tips_banner.jpg)
 

@@ -5,7 +5,6 @@ authors: [christophe]
 mainTag: wsl
 tags: [tips, wsl, windows]
 image: /img/wsl_tips_social_media.jpg
-enableComments: true
 ---
 <!-- cspell:ignore cbfsconnect -->
 ![Open your Linux folder in Windows Explorer](/img/wsl_tips_banner.jpg)

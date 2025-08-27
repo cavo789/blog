@@ -6,7 +6,6 @@ image: /img/excel_tips_social_media.jpg
 mainTag: excel
 tags: [excel, self-hosted]
 blueSkyRecordKey: 3lun2qjuxc22r
-enableComments: true
 ---
 ![Excel Formula Beautifier](/img/excel_tips_banner.jpg)
 
@@ -32,7 +31,7 @@ The script will try to find if the used separator is `,` or `;` and, in case of 
 
 You'll get this type of result:
 
-```text
+```none
 =IF(
     AND(
         A1 < 100;

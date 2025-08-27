@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/vbs_tips_social_media.jpg
 mainTag: vbs
 tags: [dos, vbs]
-enableComments: true
 ---
 ![VBS - Get list of files and generate a CSV](/img/vbs_tips_banner.jpg)
 
@@ -19,7 +18,7 @@ To run this script, first copy/paste the source below and save it to a file, let
 
 <Snippet filename="files2csv.vbs">
 
-```vbs
+```vbnet
 '------------------------------------------------------------
 '
 ' Get the list of files of the current folder + sub-folders and
@@ -130,7 +129,7 @@ Const ForWriting = 2
 
 The output file will be something like this:
 
-```txt
+```csv
 "FilePathAndName";"ParentFolder";"Name";"DateCreated";"DateLastAccessed";"DateLastModified";"Size";"Type";"Suffix";"Owner";
 "C:\temp\test\test.csv";"C:\temp\test";"test.csv";"21-01-24 09:07:44";"21-01-24 09:09:08";"21-01-24 09:09:08";"472";"CSV Microsoft Excel File";"csv";"Christophe";
 "C:\temp\test\test.vbs";"C:\temp\test";"test.vbs";"21-01-24 08:43:49";"21-01-24 09:09:03";"21-01-24 09:09:03";"3246";"VBScript File";"vbs";"Christophe";

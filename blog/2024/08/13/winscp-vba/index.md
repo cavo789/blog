@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
 mainTag: winscp
 tags: [tips, vba, winscp]
-enableComments: true
 ---
 ![WinSCP - Visual Basic for Application use](/img/winscp_tips_banner.jpg)
 

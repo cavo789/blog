@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [docker]
-enableComments: true
 ---
 ![Share data between your running Docker container and your computer](/img/docker_tips_banner.jpg)
 

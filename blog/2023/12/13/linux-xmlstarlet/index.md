@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 mainTag: linux
 tags: [bash, linux, tips, xml, xmlstarlet]
-enableComments: true
 ---
 ![The xmlstarlet utility for Linux](/img/bash_tips_banner.jpg)
 

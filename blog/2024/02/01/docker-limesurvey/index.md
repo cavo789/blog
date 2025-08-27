@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/survey_social_media.jpg
 mainTag: limesurvey
 tags: [docker, limesurvey]
-enableComments: true
 ---
 ![Install LimeSurvey using Docker](/img/survey_banner.jpg)
 

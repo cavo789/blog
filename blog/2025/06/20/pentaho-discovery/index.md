@@ -6,7 +6,6 @@ image: /img/database_tips_social_media.jpg
 mainTag: etl
 tags: [database, etl, msaccess, vba]
 blueSkyRecordKey: 3lumzwwoqsc2r
-enableComments: true
 ---
 ![Discovering Pentaho, a ETL program](/img/database_tips_banner.jpg)
 

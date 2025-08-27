@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
 mainTag: linux
 tags: [ftp, tips]
-enableComments: true
 ---
 <!-- cspell:ignore subfolders -->
 ![FTP - Remove files and folders at light speed](/img/winscp_tips_banner.jpg)

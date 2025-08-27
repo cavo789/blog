@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/git_tips_social_media.jpg
 mainTag: docker
 tags: [devcontainer, docker, git, ssh, tips]
-enableComments: true
 ---
 ![Docker - Install and use Git in a container just like you do on your host](/img/git_tips_banner.jpg)
 
@@ -31,7 +30,7 @@ We need a `Dockerfile`, let's create it:
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # syntax=docker/dockerfile:1
 
 FROM alpine:latest

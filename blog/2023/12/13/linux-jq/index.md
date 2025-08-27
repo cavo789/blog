@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/json_tips_social_media.jpg
 mainTag: linux
 tags: [bash, json, jq, linux, tips]
-enableComments: true
 ---
 <!-- cspell:ignore Salomé -->
 ![The jq utility for Linux](/img/json_tips_header.jpg)

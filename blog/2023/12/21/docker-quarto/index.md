@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
 mainTag: quarto
 tags: [docker, markdown, pandoc, quarto, revealjs]
-enableComments: true
 ---
 <!-- cspell:ignore rsvg,ggplot2,gdebi,renv,tlmgr,fvextra,footnotebackref,pagecolor,sourcesanspro,sourcecodepro,Aoption -->
 ![Running Quarto Markdown in Docker](/img/quarto_tips_banner.jpg)
@@ -47,7 +46,7 @@ Create a new file called `Dockerfile` (there is no extension) with this content:
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # Version number of Quarto to download and use
 # See https://github.com/quarto-dev/quarto-cli/pkgs/container/quarto for existing versions
 ARG QUARTO_VERSION=1.6.36

@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/makefile_tips_social_media.jpg
 mainTag: makefile
 tags: [makefile, tips]
-enableComments: true
 ---
 ![Linux Makefile - Adding a help screen](/img/makefile_tips_banner.jpg)
 

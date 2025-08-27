@@ -6,7 +6,6 @@ image: /img/linux_tips_social_media.jpg
 mainTag: bash
 tags: [linux, python, tips]
 
-enableComments: true
 ---
 <!-- cspell:ignore joinpath,pathlib -->
 
@@ -34,7 +33,7 @@ Please create a file called `Dockerfile` with this content:
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # syntax=docker/dockerfile:1
 
 FROM python:3.10-slim AS base

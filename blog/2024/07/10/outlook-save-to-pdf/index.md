@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/vba_tips_social_media.jpg
 mainTag: outlook
 tags: [outlook, vba]
-enableComments: true
 ---
 ![Microsoft Outlook - VBA - Save emails as PDF](/img/vba_tips_banner.jpg)
 

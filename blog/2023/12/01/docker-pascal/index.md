@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/experiments_social_media.jpg
 mainTag: pascal
 tags: [docker, pascal]
-enableComments: true
 ---
 <!-- cspell:ignore ource,rchive,roupn,chiffre,downto -->
 ![Play with Docker and Pascal](/img/experiments_banner.jpg)

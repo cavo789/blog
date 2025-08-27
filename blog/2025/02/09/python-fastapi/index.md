@@ -3,7 +3,6 @@ slug: python-fastapi
 title: Python - Fast API - Create your JSON API in Python in one minute
 authors: [christophe]
 image: /img/python_tips_social_media.jpg
-enableComments: true
 mainTag: api
 tags: [api, docker, fastapi, python]
 blueSkyRecordKey: 3lwgccocnws2i
@@ -32,7 +31,7 @@ In that folder, please create a new file called `Dockerfile` with the following 
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
 FROM python:slim
 
@@ -139,7 +138,7 @@ Now, please copy/paste the following content to your existing `Dockerfile`:
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
 FROM python:slim
 
@@ -196,7 +195,7 @@ We'll update our `main.py` script like this:
 
 <Snippet filename="main.py">
 
-```main.py
+```python
 // highlight-next-line
 from random import choice
 from fastapi import FastAPI

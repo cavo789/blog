@@ -6,7 +6,6 @@ image: /img/components_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
-enableComments: true
 blueSkyRecordKey:
 draft: true
 ---
@@ -60,7 +59,7 @@ Please create the `src/components/Snippets/index.js` file with this content:
 
 <Snippet filename="src/components/Snippets/index.js">
 
-```javascript
+```js
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import styles from "./styles.module.css";
 
@@ -184,7 +183,7 @@ Please also edit the `src/theme/MDXComponents.js` file (and if not present, plea
 
 <Snippet filename="src/theme/MDXComponents.js">
 
-```javascript
+```js
 import MDXComponents from "@theme-original/MDXComponents";
 import Snippets from "@site/src/components/Snippets";
 

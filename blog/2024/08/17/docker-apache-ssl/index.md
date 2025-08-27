@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: ssl
 tags: [apache, docker, https, php, nginx, ssh]
-enableComments: true
 ---
 <!-- cspell:ignore htdocs,newkey,keyout,a2enmod,a2ensite,a2dissite,libapache2,unexpire,badaboum,socache,shmcb -->
 
@@ -71,7 +70,7 @@ Make sure you're in the `/tmp/https_localhost` folder and create the following f
 
 Please create a file called `Dockerfile` with the following content:
 
-```Dockerfile
+```docker
 FROM httpd:2.4
 
 COPY httpd/my-site.conf /etc/apache2/sites-available/my-site.conf
@@ -103,7 +102,7 @@ The third file we'll need should be created in a `httpd` directory and has to be
 
 <Snippet filename="httpd/my-site.conf">
 
-```apache
+```apacheconf
 <VirtualHost *:80>
     DocumentRoot /usr/local/apache2/htdocs
     ServerName localhost
@@ -182,7 +181,7 @@ Please edit the `httpd/my-site.conf` existing file and add the content below.
 
 <Snippet filename="httpd/my-site.conf">
 
-```conf
+```apacheconf
 <VirtualHost *:80>
     DocumentRoot /usr/local/apache2/htdocs
     ServerName localhost
@@ -274,7 +273,7 @@ The last file we need to update is our existing `Dockerfile` with the new lines 
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM httpd:2.4
 # highlight-next-line
 
@@ -409,7 +408,7 @@ It's basically the same but you'll notice some differences like in paths and the
 
 Please create a file called `Dockerfile` with the following content:
 
-```Dockerfile
+```docker
 FROM nginx:latest
 
 RUN apt-get update \
@@ -449,7 +448,7 @@ The third file we'll need should be created in a `httpd` directory and has to be
 
 <Snippet filename="httpd/my-site.conf">
 
-```apache
+```apacheconf
 server {
     listen 80;
 
@@ -483,7 +482,7 @@ Please create a file called `Dockerfile` with the following content:
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM php:8.3-apache
 
 COPY ssl/server.crt /etc/ssl/certs/server.crt
@@ -524,7 +523,7 @@ The third file we'll need should be created in a `httpd` directory and has to be
 
 <Snippet filename="httpd/my-site.conf">
 
-```apache
+```apacheconf
 <VirtualHost *:80>
     DocumentRoot /var/www/html
     ServerName localhost

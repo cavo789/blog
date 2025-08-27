@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [docker, firefox, gimp, tip]
-enableComments: true
 ---
 <!-- cspell:ignore seccomp,pgid,puid -->
 ![Docker - Running some GUI interfaces in the browser](/img/docker_tips_banner.jpg)

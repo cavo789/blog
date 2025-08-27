@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/mindmap.png
 mainTag: mindmap
 tags: [json, visualisation, vscode]
-enableComments: true
 ---
 ![Rendering a JSON file as a mind map](/img/mindmap.png)
 

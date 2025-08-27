@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/github_tips_social_media.jpg
 mainTag: github
 tags: [Github, ssh, tips]
-enableComments: true
 ---
 ![Github - Connect your account using SSH and start to work with git@ protocol](/img/github_tips_banner.jpg)
 

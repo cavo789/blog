@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/markdown_tips_social_media.jpg
 mainTag: markdown
 tags: [csv, excel, markdown, tips]
-enableComments: true
 ---
 ![Markdown - Convert CSV to Markdown tables](/img/markdown_tips_banner.jpg)
 

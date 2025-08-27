@@ -5,7 +5,6 @@ authors: [christophe]
 mainTag: php
 tags: [docker, php]
 image: /img/docker_tips_social_media.jpg
-enableComments: true
 ---
 <!-- cspell:ignore wamp -->
 ![Install Docker and play with PHP](/img/docker_tips_banner.jpg)

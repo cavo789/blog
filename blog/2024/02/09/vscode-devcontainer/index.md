@@ -6,7 +6,6 @@ image: /img/devcontainer_social_media.jpg
 series: Coding using a devcontainer
 mainTag: php
 tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, sonarlint, vscode]
-enableComments: true
 ---
 ![PHP development in a devcontainer with preinstalled code quality tools](/img/devcontainer_banner.jpg)
 
@@ -194,7 +193,7 @@ Please continue and create a second file called `Dockerfile` with this content:
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 ARG PHP_VERSION=8.2
 
 ARG COMPOSER_HOME="/var/cache/composer"
@@ -371,7 +370,7 @@ Please reopen the `.devcontainer/Dockerfile` file and look at the highlighted li
 
 <Snippet filename=".devcontainer/Dockerfile">
 
-```dockerfile
+```docker
 // highlight-next-line
 ARG PHP_VERSION=8.2
 
@@ -470,7 +469,7 @@ Please also create a second file called `licenseHeader.txt` file with the conten
 
 <Snippet filename=".config/licenseHeader.txt">
 
-```text
+```none
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or

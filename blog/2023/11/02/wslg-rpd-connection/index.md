@@ -5,7 +5,6 @@ authors: [christophe]
 mainTag: wsl
 tags: [wsl, wslg, docker, rdp]
 image: /img/wsl_tips_social_media.jpg
-enableComments: true
 date: 2023-11-02T18:00
 ---
 ![Opening a RDP connection to the Linux local instance](/img/wsl_tips_banner.jpg)
@@ -68,7 +67,7 @@ Also run `sudo nano /etc/xrdp/startwm.sh` to edit the file.
 
     <Snippet filename="/etc/xrdp/startwm.sh">
 
-    ```text
+    ```bash
     # test -x /etc/X11/Xsession && exec /etc/X11/Xsession
     # exec /bin/sh /etc/X11/Xsession
     ```
@@ -79,7 +78,7 @@ Also run `sudo nano /etc/xrdp/startwm.sh` to edit the file.
 
     <Snippet filename="/etc/xrdp/startwm.sh">
 
-    ```text
+    ```bash
     # xce4
     startxfce4
     ```

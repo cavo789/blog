@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/linux_tips_social_media.jpg
 mainTag: customization
 tags: [customization, linux]
-enableComments: true
 ---
 ![Let's revisit the ls command thanks to eza](/img/linux_tips_banner.jpg)
 

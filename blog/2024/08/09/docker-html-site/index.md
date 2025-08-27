@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [docker, easyphp, powershell, wamp]
-enableComments: true
 ---
 <!-- cspell:ignore easyphp,wamp,pffffiou,htdocs -->
 

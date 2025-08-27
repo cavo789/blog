@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
 mainTag: winscp
 tags: [tips, winscp]
-enableComments: true
 ---
 ![WinSCP - Download files with specific extension recursively](/img/winscp_tips_banner.jpg)
 
@@ -25,7 +24,7 @@ The script is pretty straightforward, if you can believe it:
 
 <Snippet filename="C:\temp\download.txt">
 
-```text
+```batch
 option batch abort
 
 option confirm off

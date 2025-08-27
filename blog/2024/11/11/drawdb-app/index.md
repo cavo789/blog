@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/database_tips_social_media.jpg
 mainTag: database
 tags: [database, mermaid, tips, visualisation]
-enableComments: true
 ---
 <!-- cspell:ignore drawdb,xinsodev -->
 ![Drawdb-app - Render your database model](/img/database_tips_banner.jpg)

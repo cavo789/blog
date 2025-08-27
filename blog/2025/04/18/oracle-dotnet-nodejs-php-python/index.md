@@ -7,7 +7,6 @@ series: Running Oracle Database Server as a Docker container
 mainTag: oracle
 tags: [docker, oracle]
 blueSkyRecordKey: 3lvnjmthgj22v
-enableComments: true
 ---
 ![Accessing an Oracle database using .Net, NodeJS, PHP and Python](/img/oracle_banner.jpg)
 
@@ -64,7 +63,7 @@ Let's create a Dockerfile:
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # cspell:ignore libaio1,instantclient,libclntsh,libocci,ldconfig
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
@@ -138,7 +137,7 @@ Now, the DotNet part. We need two files: `OracleConnector/OracleConnector.csproj
 
 <!-- cspell:disable -->
 
-```dotnet
+```vbnet
 // cspell:ignore orclpdb1
 
 using Oracle.ManagedDataAccess.Client;
@@ -223,7 +222,7 @@ Let's create a Dockerfile:
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # cspell:ignore libaio
 
 FROM node:20-alpine
@@ -273,7 +272,7 @@ We also need these files:
 
 <!-- cspell:disable -->
 
-```javascript
+```js
 // cspell:ignore orclpdb1, oracledb
 
 const oracledb = require("oracledb");
@@ -354,7 +353,7 @@ And there, let's create a Dockerfile:
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # cspell:ignore instantclient,libaio1,libncurses5,libreadline8,ldconfig,pecl
 
 FROM php:fpm
@@ -496,7 +495,7 @@ And his Dockerfile; the only thing we need (except Python) is to install the `or
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # cspell:ignore oracledb
 
 FROM python:slim

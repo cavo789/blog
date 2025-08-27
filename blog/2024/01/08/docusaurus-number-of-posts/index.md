@@ -6,7 +6,6 @@ image: /img/docusaurus_tips_social_media.jpg
 series: Discovering Docusaurus
 mainTag: docusaurus
 tags: [markdown, docusaurus, tips]
-enableComments: true
 ---
 <!-- cspell:ignore autoriser,collage -->
 ![Getting the number of published posts](/img/docusaurus_tips_banner.jpg)
@@ -25,7 +24,7 @@ Once the archive page has been displayed, press <kbd>F12</kbd> to start the **De
 
 Click on the `Console` tab then, in the right bottom part, copy/paste the instruction below.
 
-```javascript
+```js
 document.querySelectorAll("#__docusaurus_skipToContent_fallback > main > section > div > div > div > ul > li")
 ```
 

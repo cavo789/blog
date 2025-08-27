@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_init_tips_social_media.jpg
 mainTag: php
 tags: [docker, tips]
-enableComments: true
 ---
 <!-- cspell:ignore dbmdl -->
 ![Docker init now supports PHP](/img/docker_init_tips_header.jpg)
@@ -115,7 +114,7 @@ Here too, `docker init` has created a file with a lot of comments. If we remove 
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 FROM php:8.2-apache
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY . /var/www/html
@@ -217,7 +216,7 @@ The reason is: the other files have been ignored because they have been mentione
 
 <Snippet filename=".dockerignore">
 
-```text
+```ignore
 # Include any files or directories that you don't want to be copied to your
 # container here (e.g., local build artifacts, temporary files, etc.).
 #

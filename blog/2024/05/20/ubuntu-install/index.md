@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/linux_tips_social_media.jpg
 mainTag: ubuntu
 tags: [linux, ubuntu]
-enableComments: true
 ---
 <!-- cspell:ignore Bitlocker,bootable,balena,askubuntu -->
 

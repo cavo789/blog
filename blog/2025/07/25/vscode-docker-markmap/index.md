@@ -6,7 +6,6 @@ image: /img/mindmap.png
 mainTag: mindmap
 tags: [docker, mindmap, quarto, tips, visualisation, vscode]
 blueSkyRecordKey: 3lurgf4ddp22y
-enableComments: true
 ---
 ![Getting a more attractive mindmap with Markmap and Quarto](/img/mindmap.png)
 

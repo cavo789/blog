@@ -6,7 +6,6 @@ image: /img/quarto_tips_social_media.jpg
 series: Discovering Quarto
 mainTag: quarto
 tags: [markdown, quarto, tips]
-enableComments: true
 ---
 ![Quarto Inline style](/img/quarto_tips_banner.jpg)
 

@@ -6,7 +6,6 @@ image: /img/code_quality_social_media.jpg
 series: code quality
 mainTag: code-quality
 tags: [black, captainhook, ci, code-quality, git, grumphp, hooks, husky, mypy, phan, php-cs-fixer, phpcbf, phplint, phpstan, pre-commit, prospector, pylint, python, ruff, shellcheck, shellformat, tips]
-enableComments: true
 ---
 ![Git - pre-commit-hooks](/img/code_quality_banner.jpg)
 
@@ -51,7 +50,7 @@ We'll need three files, a `Dockerfile` to create our Python Docker image, a `com
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # syntax=docker/dockerfile:1
 
 FROM python:3.13-slim AS base

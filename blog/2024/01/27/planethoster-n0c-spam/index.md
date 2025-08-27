@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/spam_social_media.jpg
 mainTag: roundcube
 tags: [n0c, planethoster, roundcube]
-enableComments: true
 ---
 <!-- cspell:ignore allof,fileinto -->
 ![Exterminate them all, fight spam directly at PlanetHoster - N0C](/img/spam_header.jpg)
@@ -51,7 +50,7 @@ If needed click again on the `Settings` menu then `Filters`. Now that you've at 
 
 Open the downloaded file and you'll get something like this:
 
-```text
+```none
 # rule:[Identify as spam: *.su]
 if allof (header :contains "from" "*.su")
 {
@@ -65,7 +64,7 @@ The syntax is quite easy, no? In fact, we can reproduce it with some loop in PHP
 
 There is one variable and it's `*.su`. So, if I want to block also `.india` (too, because I don't have any contact with India), I just need to code some loop with an array having two entries and I'll get:
 
-```text
+```none
 # rule:[Identify as spam: *.india]
 if allof (header :contains "from" "*.india")
 {

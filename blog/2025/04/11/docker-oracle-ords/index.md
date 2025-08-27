@@ -7,7 +7,6 @@ series: Running Oracle Database Server as a Docker container
 mainTag: oracle
 tags: [docker, openapi, oracle, postgrest]
 blueSkyRecordKey: 3lvnjmthgj22v
-enableComments: true
 ---
 ![Transform an Oracle DB as OpenData using Oracle REST Data Services](/img/oracle_banner.jpg)
 

@@ -7,7 +7,6 @@ series: Running Oracle Database Server as a Docker container
 mainTag: oracle
 tags: [docker, oracle]
 blueSkyRecordKey: 3lvnjmthgj22v
-enableComments: true
 ---
 ![Running Oracle Database Server as a Docker container](/img/oracle_banner.jpg)
 

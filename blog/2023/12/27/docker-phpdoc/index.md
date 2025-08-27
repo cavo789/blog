@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/php_tips_social_media.png
 mainTag: php
 tags: [docker, php, phpdoc, wordpress]
-enableComments: true
 ---
 ![Generating documentation for a PHP codebase](/img/php_tips_banner.jpg)
 

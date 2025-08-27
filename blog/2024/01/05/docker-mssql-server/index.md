@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/database_tips_social_media.jpg
 mainTag: mssql-server
 tags: [docker, mssql-server, ssms]
-enableComments: true
 ---
 ![Play with Microsoft SQL Server 2022 using Docker](/img/database_tips_banner.jpg)
 

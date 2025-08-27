@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/database_tips_social_media.jpg
 mainTag: msaccess
 tags: [database, msaccess, vba]
-enableComments: true
 ---
 ![How to optimize an existing MS Access database](/img/database_tips_banner.jpg)
 

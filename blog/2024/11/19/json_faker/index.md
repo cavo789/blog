@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/json_tips_social_media.jpg
 mainTag: json
 tags: [json, python, tips, tool, vscode]
-enableComments: true
 ---
 ![JSON - Faker & Mockup](/img/json_tips_header.jpg)
 

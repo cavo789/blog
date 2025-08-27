@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/dagger_tips_social_media.jpg
 mainTag: dagger
 tags: [CI, dagger, Github, GitLab, pipeline, tip, workflow]
-enableComments: true
 ---
 <!-- cspell:ignore pylint,pyproject,stopit,randint,workdir,pylintrc,docparams,mccabe,mypy -->
 <!-- cspell:ignore hadolint,xvfz,aaaaaargh,dind,dood,usermod -->
@@ -87,7 +86,7 @@ Please create a new subfolder called `.docker` and in that folder, a file called
 
 <!-- cspell:disable -->
 
-```Dockerfile
+```docker
 FROM python:3.11-slim-buster AS base
 
 # Dagger is using the Docker technology so we need to install Docker in the image
@@ -395,7 +394,7 @@ We need to make a little change to our Docker image:
 
 <!-- cspell:disable -->
 
-```Dockerfile
+```docker
 FROM python:3.11-slim-buster AS base
 
 # Dagger is using the Docker technology so we need to install Docker in the image
@@ -591,7 +590,7 @@ Now, before running these functions, we need to create some configurations files
 
 <Snippet filename=".config/.pylintrc">
 
-```txt
+```ini
 [MASTER]
 disable=
     broad-exception-caught,

@@ -2,7 +2,6 @@
 slug: welcome
 title: Welcome
 authors: [christophe]
-enableComments: true
 image: /img/welcome.jpg
 date: 2023-11-02T08:00
 ---

@@ -2,10 +2,19 @@ import PropTypes from "prop-types";
 import React, { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import styles from "./styles.module.css";
 
+import ApacheConfLogo from './apacheconf-logo.svg';
+import AsmLogo from './asm-logo.svg';
 import BashLogo from './bash-logo.svg';
-import BatLogo from './batch-logo.svg';
+import LogLogo from './log-logo.svg';
+import IgnoreLogo from './ignore-logo.svg';
+import BatchLogo from './batch-logo.svg';
+import JavaLogo from './java-logo.svg';
+import CsvLogo from './csv-logo.svg';
 import CSSLogo from './css-logo.svg';
+import PascalLogo from './pascal-logo.svg';
+import GherkinLogo from './gherkin-logo.svg';
 import DockerLogo from './docker-logo.svg';
+import DiffLogo from './diff-logo.svg';
 import HTMLLogo from './html-logo.svg';
 import IniLogo from './ini-logo.svg';
 import JsLogo from './js-logo.svg';
@@ -18,7 +27,8 @@ import PythonLogo from './python-logo.svg';
 import SQLLogo from './sql-logo.svg';
 import SvgLogo from './svg-logo.svg';
 import TomlLogo from './toml-logo.svg';
-import TxtLogo from './txt-logo.svg';
+import NoneLogo from './none-logo.svg';
+import VbNetLogo from './vbnet-logo.svg';
 import VBLogo from './vb-logo.svg';
 import XMLLogo from './xml-logo.svg';
 import YamlLogo from './yaml-logo.svg';
@@ -52,22 +62,35 @@ const getLanguageFromChildren = (children) => {
 
 // Maps code language to styling variant
 const mapLangToVariant = {
+  apacheconf: "apacheconf",
+  asm: "asm",
   bas: "vb",
   bash: "bash",
   bashrc: "bash",
-  bat: "bat",
+  bat: "batch",
+  batch: "batch",
   cmd: "cmd",
   css: "css",
+  csv: "csv",
+  diff: "diff",
+  gherkin: "gherkin",
   html: "html",
+  ignore: "ignore",
   ini: "ini",
+  java: "java",
   javascript: "js",
   js: "js",
   json: "json",
-  markdownlint_ignore: "json",
+  log: "log",
+  makefile: "makefile",
   markdown: "md",
+  markdownlint_ignore: "json",
   md: "md",
+  none: "none",
+  pascal: "pascal",
   php: "php",
   ps1: "powershell",
+  powershell: "powershell",
   py: "python",
   python: "python",
   qmd: "md",
@@ -75,10 +98,9 @@ const mapLangToVariant = {
   sql: "sql",
   svg: "svg",
   toml: "toml",
-  txt: "txt",
   vb: "vb",
   vba: "vb",
-  makefile: "makefile",
+  vbnet: "vbnet",
   vbs: "vb",
   xml: "xml",
   yaml: "yaml",
@@ -88,26 +110,36 @@ const mapLangToVariant = {
 
 // Map variant keys to their icon components and CSS classes
 const variantIcons = {
-  docker: { Icon: DockerLogo, className: styles.docker_icon, ariaLabel: "Docker Logo" },
+  apacheconf: { Icon: ApacheConfLogo, className: styles.apacheconf_icon, ariaLabel: "ApacheConf Logo" },
+  asm: { Icon: AsmLogo, className: styles.asm_icon, ariaLabel: "Asm Logo" },
   bash: { Icon: BashLogo, className: styles.bash_icon, ariaLabel: "Bash Logo" },
-  makefile: { Icon: MakefileLogo, className: styles.makefile_icon, ariaLabel: "GNU Makefile Logo" },
-  bat: { Icon: BatLogo, className: styles.bat_icon, ariaLabel: "Batch Logo" },
+  batch: { Icon: BatchLogo, className: styles.batch_icon, ariaLabel: "Batch Logo" },
   css: { Icon: CSSLogo, className: styles.css_icon, ariaLabel: "CSS Logo" },
-  svg: { Icon: SvgLogo, className: styles.svg_icon, ariaLabel: "SVG Logo" },
-  js: { Icon: JsLogo, className: styles.js_icon, ariaLabel: "JS Logo" },
+  csv: { Icon: CsvLogo, className: styles.csv_icon, ariaLabel: "CSV Logo" },
+  diff: { Icon: DiffLogo, className: styles.diff_icon, ariaLabel: "Diff Logo" },
+  docker: { Icon: DockerLogo, className: styles.docker_icon, ariaLabel: "Docker Logo" },
+  gherkin: { Icon: GherkinLogo, className: styles.gherkin_icon, ariaLabel: "Gerkin Logo" },
   html: { Icon: HTMLLogo, className: styles.html_icon, ariaLabel: "HTML Logo" },
-  python: { Icon: PythonLogo, className: styles.python_icon, ariaLabel: "Python Logo" },
-  powershell: { Icon: PowershellLogo, className: styles.powershell_icon, ariaLabel: "Powershell Logo" },
-  txt: { Icon: TxtLogo, className: styles.txt_icon, ariaLabel: "TXT Logo" },
+  ignore: { Icon: IgnoreLogo, className: styles.ignore_icon, ariaLabel: "Ignore Logo" },
   ini: { Icon: IniLogo, className: styles.ini_icon, ariaLabel: "INI Logo" },
-  toml: { Icon: TomlLogo, className: styles.toml_icon, ariaLabel: "Toml Logo" },
-  php: { Icon: PhpLogo, className: styles.php_icon, ariaLabel: "PHP Logo" },
-  md: { Icon: MarkDownLogo, className: styles.md_icon, ariaLabel: "Markdown Logo" },
+  java: { Icon: JavaLogo, className: styles.java_icon, ariaLabel: "Java Logo" },
+  js: { Icon: JsLogo, className: styles.js_icon, ariaLabel: "JS Logo" },
   json: { Icon: JsonLogo, className: styles.json_icon, ariaLabel: "JSON Logo" },
-  yaml: { Icon: YamlLogo, className: styles.yaml_icon, ariaLabel: "YAML Logo" },
-  vb: { Icon: VBLogo, className: styles.vb_icon, ariaLabel: "VB Logo" },
-  xml: { Icon: XMLLogo, className: styles.xml_icon, ariaLabel: "XML Logo" },
+  log: { Icon: LogLogo, className: styles.log_icon, ariaLabel: "Log Logo" },
+  makefile: { Icon: MakefileLogo, className: styles.makefile_icon, ariaLabel: "GNU Makefile Logo" },
+  md: { Icon: MarkDownLogo, className: styles.md_icon, ariaLabel: "Markdown Logo" },
+  none: { Icon: NoneLogo, className: styles.none_icon, ariaLabel: "None Logo" },
+  pascal: { Icon: PascalLogo, className: styles.pascal_icon, ariaLabel: "Pascal Logo" },
+  php: { Icon: PhpLogo, className: styles.php_icon, ariaLabel: "PHP Logo" },
+  powershell: { Icon: PowershellLogo, className: styles.powershell_icon, ariaLabel: "Powershell Logo" },
+  python: { Icon: PythonLogo, className: styles.python_icon, ariaLabel: "Python Logo" },
   sql: { Icon: SQLLogo, className: styles.sql_icon, ariaLabel: "SQL Logo" },
+  svg: { Icon: SvgLogo, className: styles.svg_icon, ariaLabel: "SVG Logo" },
+  toml: { Icon: TomlLogo, className: styles.toml_icon, ariaLabel: "Toml Logo" },
+  vb: { Icon: VBLogo, className: styles.vb_icon, ariaLabel: "VB Logo" },
+  vbnet: { Icon: VbNetLogo, className: styles.vbnet_icon, ariaLabel: "VbNet Logo" },
+  xml: { Icon: XMLLogo, className: styles.xml_icon, ariaLabel: "XML Logo" },
+  yaml: { Icon: YamlLogo, className: styles.yaml_icon, ariaLabel: "YAML Logo" },
 };
 
 export default function Snippet({
@@ -135,11 +167,15 @@ export default function Snippet({
   // Memoize lang & variantKey so they don't recalc on every render
   const lang = useMemo(() => getLanguageFromChildren(children), [children]);
 
+  console.log("Lang", lang);
+
   const isDockerFile = useMemo(() => {
     if (typeof filename !== "string") return false;
     const lower = filename.toLowerCase();
     return (
       lower === "dockerfile" ||
+      lower === "docker" ||
+      lower.endsWith(".docker") ||
       lower.endsWith(".dockerfile") ||
       lower.endsWith(".dockerignore") ||
       lower.endsWith("compose.yaml") ||

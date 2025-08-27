@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/encrypt_social_media.jpg
 mainTag: ssl
 tags: [docker, encryption, ssl]
-enableComments: true
 ---
 ![Encrypt sensitive data using SSL and Docker](/img/encrypt_banner.jpg)
 
@@ -57,7 +56,7 @@ Here is the content of the `encrypt.cmd` DOS script:
 
 <Snippet filename="encrypt.cmd">
 
-```text
+```batch
 @echo off
 
 cls
@@ -78,7 +77,7 @@ Here is the content of the `decrypt.cmd` DOS script:
 
 <Snippet filename="decrypt.cmd">
 
-```text
+```batch
 @echo off
 
 cls
@@ -144,7 +143,7 @@ By running the `encrypt.sh` script, the file `secrets_encrypted.md` will be crea
 
 <Snippet filename="secrets_encrypted.md">
 
-```text
+```none
 U2FsdGVkX18jyyHAiaDcwolgvrCmB9SutNFhOFosDZvYA+t/8F5PWsxU+YIb0xLj
 /0swl1Mvh9XBcg3FwpQn5CGm5ltb3zKiExPO8WoTuYOmlJj2PN5eLJv3GWVVJ8/t
 q31xBBAlbI0k+a3pWiETl1qEmh4hwc4jeC5NOByYSAojiIdCNF0W5+VVkUlBeKGb

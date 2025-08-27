@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/git_tips_social_media.jpg
 mainTag: git
 tags: [git, tips, wsl]
-enableComments: true
 ---
 ![Git - Some tips for your .gitconfig file](/img/git_tips_banner.jpg)
 
@@ -41,7 +40,7 @@ Just add the two lines below in your `~/.gitconfig`:
 
 <Snippet filename="~/.gitconfig`">
 
-```text
+```ini
 [alias]
     undo = "!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f"
 ```
@@ -68,7 +67,7 @@ You can git rid of this but adding the two lines below in your `~/.gitconfig`:
 
 <Snippet filename="~/.gitconfig`">
 
-```text
+```ini
 [push]
     autoSetupRemote = true
 ```
@@ -87,7 +86,7 @@ Just add the two lines below in your `~/.gitconfig` file to ask git to make auto
 
 <Snippet filename="~/.gitconfig`">
 
-```text
+```ini
 [fetch]
     prune = true
 ```
@@ -110,7 +109,7 @@ To do this, just add the block below to your `~/.gitconfig` file:
 
 <Snippet filename="~/.gitconfig`">
 
-```text
+```ini
 [branch]
     sort = -committerdate
 ```
@@ -131,7 +130,7 @@ To share credentials between the two environments, just add the two lines below 
 
 <Snippet filename="~/.gitconfig`">
 
-```text
+```ini
 [credential]
     helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager-core.exe
 ```
@@ -153,7 +152,7 @@ When your `~/.gitconfig` looks like below, every time you'll push to Git, the pu
 
 <Snippet filename="~/.gitconfig`">
 
-```text
+```ini
 [user]
     email = me@work.be
     name = Christophe Avonture
@@ -165,7 +164,7 @@ And, with the configuration below, now, if you're pushing a repository located i
 
 <Snippet filename="~/.gitconfig`">
 
-```text
+```ini
 [user]
     email = me@work.be
     name = Christophe Avonture
@@ -186,7 +185,7 @@ But, if you already have created a SSH key for your Github profile, then, you ca
 
 <Snippet filename="~/.gitconfig`">
 
-```text
+```ini
 [url "git@github.com"]
     insteadOf = https://github.com/
 ```
@@ -207,7 +206,7 @@ Don't allow this by adding the next configuration item in your `~/.gitconfig`:
 
 <Snippet filename="~/.gitconfig`">
 
-```text
+```ini
 [core]
     autocrlf = false
 ```

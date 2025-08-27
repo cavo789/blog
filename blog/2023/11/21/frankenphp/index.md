@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/frankenphp.jpg
 mainTag: joomla
 tags: [docker, frankenphp, joomla]
-enableComments: true
 ---
 ![FrankenPHP](/img/frankenphp.jpg)
 

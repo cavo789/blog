@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/php_tips_social_media.jpg
 mainTag: php
 tags: [wsl, docker, php]
-enableComments: true
 date: 2023-11-02T17:00
 ---
 ![The easiest way to run a PHP script / website](/img/php_tips_banner.jpg)

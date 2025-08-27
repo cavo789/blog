@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [docker, network, tips]
-enableComments: true
 ---
 <!-- cspell:ignore allnodes,allrouters,localnet,mcastprefix -->
 ![Using Docker network and the extra_hosts property](/img/docker_tips_banner.jpg)
@@ -72,7 +71,7 @@ Please create a file called `Dockerfile` with the content below. We'll use a ver
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 FROM alpine:3.14
 
 RUN apk update && apk add curl
@@ -179,7 +178,7 @@ curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect 
 $ curl http://172.20.0.1:8080
 </Terminal>
 
-```txt
+```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <style type="text/css">
@@ -199,7 +198,7 @@ Imagine you've create an alias like:
 
 <Snippet filename="C:\Windows\System32\Drivers\etc\hosts">
 
-```text
+```ini
 127.0.0.1 localhost
 // highlight-next-line
 127.0.0.1 mysite.local
@@ -276,7 +275,7 @@ ff02::2 ip6-allrouters
 $ curl http://my_site.local:8080
 </Terminal>
 
-```text
+```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <style type="text/css">

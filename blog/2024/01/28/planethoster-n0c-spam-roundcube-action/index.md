@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/spam_social_media.jpg
 mainTag: roundcube
 tags: [actions, Github, jq, n0c, planethoster, roundcube]
-enableComments: true
 ---
 <!-- cSpell:ignore allof,fileinto -->
 ![Exterminate them all, kill spam using GitHub Actions](/img/spam_header.jpg)
@@ -24,7 +23,7 @@ Let's look at how to do as little as possible and still be a hardcore spam fight
 
 As already explained, RoundCube is using a sieve file to store your rules. Such file can look like this:
 
-```text
+```none
 # rule:[Identify as spam: *.su]
 if allof (header :matches "from" "*.su")
 {
@@ -86,7 +85,7 @@ Please create a file called `patterns.json` with this content:
 
 Please create a file called `spam.template` with this content:
 
-```text
+```none
 # rule:[Identify as spam: {{ pattern }}]
 if allof (header :matches "from" "{{ pattern }}")
 {
@@ -160,7 +159,7 @@ If you get an error about `jq` please install it by running: `sudo apt-get updat
 
 So now, you should have a new folder called `build` where the file `roundcube.sieve` has been created. Open the file and check his content. It'll start with:
 
-```text
+```none
 # rule:[Identify as spam: *.buzz]
 if allof (header :matches "from" "*.buzz")
 {

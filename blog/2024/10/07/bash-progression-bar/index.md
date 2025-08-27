@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 mainTag: bash
 tags: [bash, linux, tips]
-enableComments: true
 ---
 <!-- cspell:ignore bashpid, pids, nproc -->
 <!-- markdownlint-disable MD022,MD025 -->

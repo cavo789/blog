@@ -7,7 +7,6 @@ series: MS Excel - Connect to a SQL Server database
 mainTag: excel
 tags: [docker, excel, mssql-server, ssms, vba]
 blueSkyRecordKey: 3lvnkdmwmwk2v
-enableComments: true
 ---
 ![MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step](/img/excel_tips_banner.jpg)
 
@@ -129,7 +128,7 @@ You'll need to update these values to match yours. If you've created the SQL Ser
 
 <Snippet filename="clsData.bas">
 
-```vb
+```vbnet
 Private Const cServerName = "localhost,1433"   ' <-- You'll need to mention here your server name
 Private Const cDBName = "SampleDB"       ' <-- You'll need to mention here your database name
 Private Const cSQLStatement = "SELECT * FROM dbo.Customers" ' <-- You'll need to mention here a valid SQL statement (SELECT ...)
@@ -163,7 +162,7 @@ Please update the subroutine and add two lines:
 
 <Snippet filename="module.bas">
 
-```vb
+```vbnet
 Sub CopyToSheet()
 
 Dim rng As Range
@@ -210,7 +209,7 @@ Sample code:
 
 <Snippet filename="module.bas">
 
-```vb
+```vbnet
 Dim cData As New clsData
 Dim rng As Range
 
@@ -260,7 +259,7 @@ Sample code
 
 <Snippet filename="module.bas">
 
-```vb
+```vbnet
 Dim cData As New clsData
 Dim sSQL As String
 
@@ -304,7 +303,7 @@ Sample code
 
 <Snippet filename="module.bas">
 
-```vb
+```vbnet
 Dim cData As New clsData
 Dim sSQL As String
 

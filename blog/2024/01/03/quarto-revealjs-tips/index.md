@@ -6,7 +6,6 @@ series: Discovering Quarto
 image: /img/quarto_tips_social_media.jpg
 mainTag: quarto
 tags: [markdown, powerpoint, quarto, revealjs, tips]
-enableComments: true
 ---
 ![Some tips and tricks for Quarto when rendering as a reveal.js slideshow](/img/quarto_tips_banner.jpg)
 
@@ -101,7 +100,7 @@ In `assets/custom.js`, copy/paste the following code:
 
 <Snippet filename="assets/custom.js">
 
-```JavaScript
+```js
 // The script below will ensure the logo is displayed top left
 // in his full size (probably on the first slide; title-slide)
 // then as soon as a different slide is displayed, the logo will
@@ -466,7 +465,7 @@ First, create a `assets/custom.js` if not yet present and copy/paste the followi
 
 <Snippet filename="assets/custom.js">
 
-```javaScript
+```js
 window.addEventListener("load", (event) => {
     // This function will search for short code like "==IpsoLorem=="
     // i.e. a portion of text between two equal sign and will replace it

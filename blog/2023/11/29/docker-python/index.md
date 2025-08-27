@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/python_tips_social_media.jpg
 mainTag: python
 tags: [docker, python]
-enableComments: true
 ---
 ![Play with Docker and Python](/img/python_tips_banner.jpg)
 
@@ -204,7 +203,7 @@ if __name__ == '__main__':
 
 Then, run it using `docker run -it --rm -v ${PWD}:/app -w /app python python Hangman.py` and good luck:
 
-```txt
+```none
 Hangman Word: ______ Enter your guess:
 A
    _____

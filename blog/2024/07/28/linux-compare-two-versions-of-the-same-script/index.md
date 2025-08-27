@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 mainTag: linux
 tags: [bash, introspection, linux, tips]
-enableComments: true
 ---
 ![Linux - Compare two versions of the same script](/img/bash_tips_banner.jpg)
 
@@ -116,7 +115,7 @@ Of course, if we add a new function in `console.sh` and f.i. remove an existing 
 
 On the image here above, we see three indicators in the middle of the screen:
 
-```text
+```diff
                                       > console::printBlue()
 console::printPurple()                | console::printGreen()
 console::verbose()                    | console::printRed()

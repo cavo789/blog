@@ -6,7 +6,6 @@ image: /img/components_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
-enableComments: true
 blueSkyRecordKey:
 draft: true
 ---
@@ -52,7 +51,7 @@ So, just copy/paste the content of the file below and create the `src/components
 
 <Snippet filename="src/components/utils/blogPosts.js">
 
-```javascript
+```js
 const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
 
 export function getBlogMetadata() {
@@ -104,7 +103,7 @@ Now, we'll create our component. Please create the `src/components/SeriesBlogPos
 
 <Snippet filename="src/components/SeriesBlogPosts/index.js">
 
-```javascript
+```js
 import React from "react";
 import Link from "@docusaurus/Link";
 import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
@@ -160,7 +159,7 @@ As you can see, we'll retrieve the list of blog posts thanks the `getBlogMetaDat
 
 And if so, just order post in a chronological order.
 
-```javascript
+```js
 const posts = getBlogMetadata()
     .filter((post) => post.series === series)
     .sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -220,7 +219,7 @@ In the code below, the highlighted lines are the ones we need to add.
 
 <Snippet filename="src/theme/BlogPostItem/index.js">
 
-```javascript
+```js
 import React from "react";
 import clsx from "clsx";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
@@ -300,7 +299,7 @@ Please create the `src/pages/series.jsx` file with this content:
 
 <Snippet filename="src/pages/series.jsx">
 
-```javascript
+```js
 import React from "react";
 import Layout from "@theme/Layout";
 import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
@@ -386,7 +385,7 @@ Here is the version used on my blog:
 
 <Snippet filename="src/pages/series.jsx">
 
-```javascript
+```js
 import Layout from "@theme/Layout";
 import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
 import Link from "@docusaurus/Link";

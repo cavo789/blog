@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/json_tips_social_media.jpg
 mainTag: linux
 tags: [code quality, json, tips, tool, vscode]
-enableComments: true
 ---
 ![JSON - Online linter](/img/json_tips_header.jpg)
 

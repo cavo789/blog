@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/linux_tips_social_media.jpg
 mainTag: linux
 tags: [linux, zsh]
-enableComments: true
 ---
 <!-- cspell:ignore DOSKEY,HISTIGNORE,HISTFILE,gacom -->
 ![Linux - Working with the history of your last fired actions](/img/linux_tips_banner.jpg)
@@ -54,7 +53,7 @@ Imagine a command like `curl --user name:password http://www.example.com`. Did y
 
 Using <Link to="/blog/tags/zsh">ZSH</Link>, I just need to add a space before my command so by running `[SPACE]curl --user name:password http://www.example.com`.
 
-```text
+```none
 # So, don't start your command like this:
 $ curl --user name:password http://www.example.com
 

@@ -4,7 +4,6 @@ title: Move WSL to another location
 authors: [christophe]
 mainTag: wsl
 tags: [docker, tips, wsl]
-enableComments: true
 image: /img/docker_tips_social_media.jpg
 ---
 ![Move WSL to another location](/img/docker_tips_banner.jpg)

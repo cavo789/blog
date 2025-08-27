@@ -7,7 +7,6 @@ image: /img/docker_joomla_social_media.jpg
 mainTag: joomla
 tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
 draf: true
-enableComments: true
 ---
 <!-- cspell:dictionaries fr-FR -->
 ![Créer votre site web Joomla en utilisant Docker](/img/docker_joomla_header.jpg)
@@ -663,7 +662,7 @@ Pour cela, sous Windows, éditez le fichier `C:\Windows\System32\Drivers\etc\hos
 
 <Snippet filename="C:\Windows\System32\Drivers\etc\host">
 
-```text
+```ini
 127.0.0.1 localhost
 // highlight-next-line
 127.0.0.1 kingsbridge

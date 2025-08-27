@@ -6,7 +6,6 @@ image: /img/components_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, react]
-enableComments: true
 blueSkyRecordKey:
 draft: true
 ---
@@ -41,7 +40,7 @@ The syntax is `[/\b(1)\b/g, "(2)"],` where `(1)` is the word to search for (exac
 
 <Snippet filename="plugins/remark-replace-terms/remarkReplaceTerms">
 
-```javascript
+```js
 /**
  * @fileoverview
  * Docusaurus Remark Plugin – remark-replace-words
@@ -118,7 +117,7 @@ The next thing to do is to register your plugin into your Docusaurus configurati
 
 <Snippet filename="docusaurus.config.js">
 
-```javascript
+```js
 const config = {
   // [ ... ]
   presets: [
@@ -143,7 +142,7 @@ export default config;
 
 This done, please restart your Docusaurus server and on the next start, if some changes have to be made, you can see them in your console:
 
-```text
+```bash
 🔎 Replacing 'vscode' with 'VSCode' in file: /opt/[...]/index.md
 Sentence: One of the best features in vscode is the
 

@@ -159,6 +159,11 @@ upgrade: ## Upgrade docusaurus and npm dependencies
 
 ##@ Utilities
 
+.PHONY: invalid-language
+invalid-language: ## Show invalid languages in docblock like ```env (not supported by Prism)
+	@clear
+	./.scripts/find-invalid-language.sh
+
 .PHONY: snippets
 snippets: ## Replace <detail><summary>(filename)</summary>(content)</detail> with <Snippets filename="(filename)">(content)</Snippets>
 	@clear

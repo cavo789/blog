@@ -6,7 +6,6 @@ image: /img/components_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
-enableComments: true
 blueSkyRecordKey: 3lww5fbh2y22q
 ---
 
@@ -34,7 +33,7 @@ In this article, we'll create a `Image` component so let's create the `src/compo
 
 <Snippet filename="src/components/Image/index.js">
 
-```javascript
+```js
 /**
  * 🖼️ Image Component
  *
@@ -125,7 +124,7 @@ Please also edit the `src/theme/MDXComponents.js` file (and if not present, plea
 
 <Snippet filename="src/theme/MDXComponents.js">
 
-```javascript
+```js
 import MDXComponents from "@theme-original/MDXComponents";
 import Image from "@site/src/components/Image";
 
@@ -195,7 +194,7 @@ Please create the `plugins/remark-image-transformer/index.js` file:
 
 <Snippet filename="plugins/remark-image-transformer/index.js">
 
-```javascript
+```js
 /**
  * remarkReplaceImgToImage – A Docusaurus-compatible remark plugin that transforms Markdown image nodes
  * into MDX <Image /> components with enhanced attributes and dynamic path resolution.
@@ -330,7 +329,7 @@ To do this, edit your `docusaurus.config.js` file and add the highlighted lines 
 
 <Snippet filename="docusaurus.config.js">
 
-```javascript
+```js
 const config = {
   // [ ... ]
   presets: [

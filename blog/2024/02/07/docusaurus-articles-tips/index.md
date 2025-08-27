@@ -6,7 +6,6 @@ series: Discovering Docusaurus
 image: /img/docusaurus_tips_social_media.jpg
 mainTag: docusaurus
 tags: [markdown, docusaurus, tips]
-enableComments: true
 ---
 ![Some tips and tricks when written articles for Docusaurus](/img/docusaurus_tips_banner.jpg)
 

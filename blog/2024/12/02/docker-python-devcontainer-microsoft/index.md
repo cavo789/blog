@@ -6,7 +6,6 @@ image: /img/python_tips_social_media.jpg
 series: Coding using a devcontainer
 mainTag: python
 tags: [devcontainer, docker, python]
-enableComments: true
 ---
 ![Docker - Even easier setup of Python](/img/python_tips_banner.jpg)
 

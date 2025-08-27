@@ -6,7 +6,6 @@ image: /img/components_social_media.jpg
 series: Creating Docusaurus components
 mainTag: bluesky
 tags: [bluesky, component, docusaurus, markdown, react, swizzle]
-enableComments: true
 blueSkyRecordKey: 3lwnnydhdk22x
 ---
 <!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,3lwnnydhdk22x -->
@@ -50,7 +49,7 @@ Here is our new BlueSky layout for our component:
 
 <Snippet filename="src/components/BlueSky/index.js">
 
-```javascript
+```js
 /**
  * ===================================
  * = BlueSky component - Entry point =
@@ -168,7 +167,7 @@ The highlighted lines are the new ones compared of the previous version of the f
 
 <Snippet filename="src/components/BlueSky/post.js">
 
-```javascript
+```js
 /**
  * Renders a button to show the post on Bluesky (and be able to like/share/comment)
  *
@@ -231,7 +230,7 @@ BlueSkyPost.propTypes = {
 
 <Snippet filename="src/components/BlueSky/likes.js">
 
-```javascript
+```js
 /**
  * Show the number of likes and reposts a BlueSky post has.
  *
@@ -340,7 +339,7 @@ BlueSkyLikes.propTypes = {
 
 <Snippet filename="src/components/BlueSky/comments.js">
 
-```javascript
+```js
 /**
  * Retrieve the list of comments posted on BlueSky and display them on the page
  *

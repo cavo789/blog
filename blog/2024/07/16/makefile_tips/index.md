@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/makefile_tips_social_media.jpg
 mainTag: makefile
 tags: [makefile, tips]
-enableComments: true
 ---
 <!-- cspell:ignore ifeq,ifneq,ifdef,Oups,phplint,infile,recipeprefix,sonarqube,testme,findstring,toplevel,concat,outfile -->
 <!-- cspell:ignore runsql,regexes -->
@@ -427,7 +426,7 @@ Make sure your `Makefile` file is correctly formatted; add a file called `.edito
 
 <Snippet filename=".editorconfig">
 
-```text
+```ini
 [*]
 end_of_line = lf
 insert_final_newline = true
@@ -549,7 +548,7 @@ config:
 Getting a value from a `.env` file is easy, just include it then use variables:
 
 <Snippet filename=".env">
-```env
+```ini
 DOCKER_IMAGE=cavo789/my_image
 ```
 

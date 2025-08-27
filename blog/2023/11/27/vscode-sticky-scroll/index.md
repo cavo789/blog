@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
 mainTag: vscode
 tags: [php, tips, vscode]
-enableComments: true
 ---
 ![Sticky scroll in vscode](/img/vscode_tips_banner.jpg)
 

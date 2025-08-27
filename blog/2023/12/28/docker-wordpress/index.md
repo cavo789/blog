@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/wordpress_social_media.jpg
 mainTag: wordpress
 tags: [docker, wordpress]
-enableComments: true
 ---
 ![Quickly install WordPress in just three commands](/img/wordpress_banner.jpg)
 

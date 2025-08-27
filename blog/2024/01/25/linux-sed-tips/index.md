@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 mainTag: linux
 tags: [.env, bash, linux, sed, tips]
-enableComments: true
 ---
 ![Search and replace (or add) using sed](/img/bash_tips_banner.jpg)
 

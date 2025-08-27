@@ -4,7 +4,6 @@ title: Site creation
 authors: [christophe]
 mainTag: docusaurus
 tags: [docusaurus, nodejs, docker, winscp]
-enableComments: true
 ---
 > [Docusaurus.io](https://docusaurus.io/)
 
@@ -148,7 +147,7 @@ Docusaurus support some Markdown special tags called *admonition* (see [https://
 
 For instance, to display a paragraph as a tip, like below, just use the following syntax:
 
-```text
+```none
 :::tip
 Some **content** with _Markdown_ `syntax`.
 :::
@@ -186,7 +185,7 @@ When added, I have also manually created the `static/robots.txt` file to with th
 
 <Snippet filename="static/robots.txt">
 
-```text
+```ini
 User-Agent: *
 Sitemap: https://www.avonture.be/sitemap.xml
 Disallow: /*index.xml$
@@ -245,7 +244,7 @@ By adding the lines below to the `docusaurus.config.js` as child node of `const 
 
 <Snippet filename="docusaurus.config.js">
 
-```javascript
+```js
 scripts: [
   {
     src: 'https://scripts.withcabin.com/hello.js',

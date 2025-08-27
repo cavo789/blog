@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/functional_testing_social_media.jpg
 mainTag: tests
 tags: [bdd, behat, chrome, docker, mink, php, tests]
-enableComments: true
 ---
 <!-- cspell:ignore behat,skel,johndoe,chromedriver,gerkin,dmore,nohup,autoload -->
 ![Introduction to Behat](/img/functional_testing_banner.jpg)
@@ -56,7 +55,7 @@ Let's start...
 <Snippet filename="Dockerfile">
 
 <!-- cspell:disable -->
-```Dockerfile
+```docker
 # The user ID and name and group ID of the user to create in our image
 ARG DOCKER_UID=1000
 ARG DOCKER_GID=1000
@@ -647,7 +646,7 @@ services:
 <Snippet filename="Dockerfile">
 
 <!-- cspell:disable -->
-```Dockerfile
+```docker
 # The user ID and name and group ID of the user to create in our image
 ARG DOCKER_UID=1000
 ARG DOCKER_GID=1000

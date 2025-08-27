@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/database_tips_social_media.jpg
 mainTag: self-hosted
 tags: [code-quality, sql, tips, tool]
-enableComments: true
 ---
 ![SQL - Formatting tool](/img/database_tips_banner.jpg)
 

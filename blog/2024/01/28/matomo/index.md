@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/monitoring_social_media.jpg
 mainTag: self-hosted
 tags: [docusaurus, matomo]
-enableComments: true
 ---
 ![How to self-host Matomo](/img/monitoring_banner.jpg)
 

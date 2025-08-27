@@ -15,7 +15,7 @@ This Bash script scans Markdown (`.md`) and MDX (`.mdx`) files in the `./blog` d
 
 The script excludes filenames with the following extensions or names:
 
-```text
+```none
 bat, js, javascript, py, python, php, css, json, yaml, yml, vb, vba, vbs, xml, bashrc, sh, zsh, dockerfile, .dockerignore, cmd, md, qmd, markdownlint_ignore, bas, html, sql, zshrc, txt, ini, toml, ps1, makefile, svg
 ```
 

@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/wsl_tips_social_media.jpg
 mainTag: wsl
 tags: [powershell, tips, wsl]
-enableComments: true
 ---
 ![Starting the default associated Windows program on WSL](/img/wsl_tips_banner.jpg)
 

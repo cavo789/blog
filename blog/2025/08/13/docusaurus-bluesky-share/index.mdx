@@ -7,7 +7,6 @@ series: Creating Docusaurus components
 mainTag: bluesky
 tags: [bluesky, component, docusaurus, markdown, react, swizzle]
 blueSkyRecordKey: 3lwbehu3h2k2i
-enableComments: true
 ---
 ![Create our own Docusaurus React component and provide a "Share on BlueSky" button](/img/components_banner.jpg)
 
@@ -71,7 +70,7 @@ Just keep the `index.js` file created by the `swizzle` command. Here is the one 
 
 <Snippet filename="src/theme/BlogPostItem/index.js">
 
-```javascript
+```js
 import React from 'react';
 import clsx from 'clsx';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
@@ -106,7 +105,7 @@ Let's play and add a line just after our post title. Look at the example below; 
 
 <Snippet filename="src/theme/BlogPostItem/index.js">
 
-```javascript
+```js
 import React from 'react';
 import clsx from 'clsx';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
@@ -175,7 +174,7 @@ Please create the `src/components/BlueSky/index.js` file with this content:
 
 <Snippet filename="src/components/BlueSky/index.js">
 
-```javascript
+```js
 import BlueSkyShare from "./share";
 import PropTypes from "prop-types";
 import styles from './styles.module.css';
@@ -209,7 +208,7 @@ Ok, now, we've to create a second file called `src/components/BlueSky/share.js` 
 
 <Snippet filename="src/components/BlueSky/share.js">
 
-```javascript
+```js
 import Icon from "./bluesky.svg";
 import PropTypes from "prop-types";
 import styles from './styles.module.css';
@@ -347,7 +346,7 @@ Let's go back to what was said earlier: in order to adapt the page layout, Docus
 
 <Snippet filename="src/theme/BlogPostItem/index.js">
 
-```javascript
+```js
 import React from 'react';
 import clsx from 'clsx';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';

@@ -4,7 +4,6 @@ title: Get health information from your running containers
 authors: [christophe]
 mainTag: bash
 tags: [bash, docker, tips]
-enableComments: true
 image: /img/docker_tips_social_media.jpg
 ---
 ![Get health information from your running containers](/img/docker_tips_banner.jpg)

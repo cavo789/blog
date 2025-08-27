@@ -6,7 +6,6 @@ series: Discovering Quarto
 image: /img/quarto_tips_social_media.jpg
 mainTag: quarto
 tags: [markdown, quarto, reveal, tips]
-enableComments: true
 ---
 ![Quarto conditional display](/img/quarto_tips_banner.jpg)
 

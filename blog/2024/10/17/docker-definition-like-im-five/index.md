@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [devcontainer, docker, python]
-enableComments: true
 ---
 <!-- cspell:ignore Wépion,telework,virtualise -->
 

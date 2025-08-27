@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 mainTag: bash
 tags: [bash, tips]
-enableComments: true
 ---
 ![Bash - Loading environment variables from a file](/img/bash_tips_banner.jpg)
 
@@ -13,7 +12,7 @@ Imagine you've a `.env` file like and you wish to process that file in a Bash sc
 
 <Snippet filename=".env">
 
-```env
+```ini
 DOCKER_GIT_USEREMAIL="christophe@me.com"
 DOCKER_GIT_FULLNAME="Christophe Avonture"
 DOCKER_GIT_USERNAME="Me and myself"

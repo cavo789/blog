@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 mainTag: linux
 tags: [bash, linux, tips]
-enableComments: true
 ---
 ![Linux - Comparing two folders/files in the console](/img/bash_tips_banner.jpg)
 

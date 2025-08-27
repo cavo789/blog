@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/experiments_social_media.jpg
 mainTag: java
 tags: [docker, java]
-enableComments: true
 ---
 ![Play with Docker and Java](/img/experiments_banner.jpg)
 

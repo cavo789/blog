@@ -6,7 +6,6 @@ image: /img/quarto_tips_social_media.jpg
 series: Discovering Quarto
 mainTag: quarto
 tags: [markdown, quarto, tips]
-enableComments: true
 ---
 ![Using variables from external file in your Quarto project](/img/quarto_tips_banner.jpg)
 
@@ -91,7 +90,7 @@ For instance, you can have a `.env` file like this:
 
 <Snippet filename=".env">
 
-```env
+```ini
 APPLICATION_NAME=My application name
 VERSION_NUMBER=1.2
 ```

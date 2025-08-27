@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 mainTag: excel
 tags: [excel, ribbon, vba, vscode]
-enableComments: true
 ---
 ![MS Office - How to create a ribbon in Excel](/img/excel_tips_banner.jpg)
 

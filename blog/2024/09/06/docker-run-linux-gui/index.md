@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [chrome, docker, firefox, gimp, gui, tip]
-enableComments: true
 ---
 <!-- cspell:ignore xeyes,xhost,dearmor,dpkg,favourite -->
 ![Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP](/img/docker_tips_banner.jpg)
@@ -30,7 +29,7 @@ Go to a temporary folder (f.i. `mkdir -p /tmp/xeyes && cd $_`) and create a file
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM ubuntu:latest
 
 RUN apt-get update && apt-get install -y x11-apps
@@ -62,7 +61,7 @@ In a Dockerfile and with small changes, this give this:
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -111,7 +110,7 @@ We can do the same with Chrome:
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -138,7 +137,7 @@ Ok, now, I think you've understood how it works. So, very shortly, here is how t
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive

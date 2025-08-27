@@ -6,7 +6,6 @@ image: /img/database_tips_social_media.jpg
 mainTag: msaccess
 tags: [database, msaccess, vba, vbs]
 blueSkyRecordKey: 3lumzv3n42c2r
-enableComments: true
 ---
 ![Export MS Access objects](/img/database_tips_banner.jpg)
 

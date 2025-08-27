@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/monitoring_social_media.jpg
 mainTag: docker
 tags: [docker, monitoring, tool]
-enableComments: true
 ---
 <!-- cspell:ignore kuma,louislam -->
 ![Self-hosted monitoring tool](/img/monitoring_banner.jpg)

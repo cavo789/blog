@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/ia_tips_banner.jpg
 mainTag: ai
 tags: [ai, image generation, recraft]
-enableComments: true
 ---
 ![AI - Image generation using recraft.ai](/img/ia_tips_banner.jpg)
 

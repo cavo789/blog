@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: database
 tags: [adminer, docker, mysql, postgresql]
-enableComments: true
 ---
 ![Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/img/docker_tips_banner.jpg)
 

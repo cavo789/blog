@@ -6,7 +6,6 @@ image: /img/python_tips_social_media.jpg
 series: Coding using a devcontainer
 mainTag: python
 tags: [devcontainer, docker, python]
-enableComments: true
 ---
 <!-- cspell:ignore PYTHONDONTWRITEBYTECODE,PYTHONUNBUFFERED,HISTFILE -->
 <!-- cspell:ignore addgroup,adduser,keyscan,hadolint,gecos,endregion -->
@@ -39,7 +38,7 @@ The first file to create will be used to build our Docker image. Please create a
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # syntax=docker/dockerfile:1
 
 # cspell:ignore PYTHONDONTWRITEBYTECODE,PYTHONUNBUFFERED,HISTFILE
@@ -204,7 +203,7 @@ The third file to create will be called `.docker.env` where we'll initialise som
 
 <Snippet filename=".docker.env">
 
-```dotenv
+```ini
 # Application root directory in the container (PHP or NGINX) (--app-home)
 DOCKER_APP_HOME=/app
 

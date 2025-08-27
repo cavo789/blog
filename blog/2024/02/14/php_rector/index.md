@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/refactoring_social_media.jpg
 mainTag: php
 tags: [code-quality, composer, php, rectorphp]
-enableComments: true
 ---
 ![Rector 1.0.0 🎉🎉🎉, my friend, my coach](/img/refactoring_banner.jpg)
 

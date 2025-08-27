@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
 mainTag: putty
 tags: [putty, ssh]
-enableComments: true
 ---
 ![Fatal error was starting Putty after having saved settings](/img/winscp_tips_banner.jpg)
 

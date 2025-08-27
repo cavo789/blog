@@ -6,7 +6,6 @@ image: /img/code_quality_social_media.jpg
 series: code quality
 mainTag: code-quality
 tags: [php, code-quality, laravel, phpcs, php-cs-fixer, tips, vscode]
-enableComments: true
 ---
 ![Format poorly formatted PHP code](/img/code_quality_banner.jpg)
 

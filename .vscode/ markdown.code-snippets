@@ -62,7 +62,7 @@
         "body": [
             "<Snippet filename=\"$1\">",
             "",
-            "```${2|js,md,php,python|}",
+            "```${2|apacheconf,asm,bash,batch,cmd,css,csv,diff,gherkin,html,ignore,ini,java,js,json,log,makefile,md,none,pascal,php,powershell,python,sql,svg,toml,vb,vbnet,xml,yaml|}",
             "",
             "```",
             "",

@@ -4,7 +4,6 @@ title: karakeep - The Bookmark Everything App
 authors: [christophe]
 mainTag: self-hosted
 tags: [bookmark, docker, self-hosted, tool]
-enableComments: true
 blueSkyRecordKey: 3lujtc27n7s23
 image: /img/docker_tools_header.jpg
 ---

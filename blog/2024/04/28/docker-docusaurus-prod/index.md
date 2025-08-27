@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docusaurus_tips_social_media.jpg
 mainTag: docusaurus
 tags: [docker, docusaurus, nodejs, yarn]
-enableComments: true
 ---
 <!-- cspell::ignore corepack,docusaurus,johndoe -->
 ![Encapsulate an entire Docusaurus site in a Docker image](/img/docusaurus_tips_banner.jpg)
@@ -76,7 +75,7 @@ Please create a file called `Dockerfile` with this content:
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 # syntax=docker/dockerfile:1
 
 # Inspired by https://docusaurus.community/knowledge/deployment/docker/?package-managers=yarn
@@ -150,7 +149,7 @@ This is our three stages.
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM node:21-alpine AS base
 
 # Disable color output from yarn to make logs easier to read.
@@ -172,7 +171,7 @@ At the end of this stage, we'll obtain a static version of our Docusaurus site i
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM base AS building_production
 
 # Install the latest version of Docusaurus
@@ -207,7 +206,7 @@ At the end of this stage, we've our static website but not yet a web server.
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM nginx:stable-alpine3.19-perl AS production
 
 # Copy the Docusaurus build output.
@@ -240,7 +239,7 @@ The second file we need to create should be called `.dockerignore` and with this
 
 <Snippet filename=".dockerignore">
 
-```text
+```ignore
 build/
 node_modules/
 .git/

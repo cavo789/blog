@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/updates_social_media.jpg
 mainTag: windows
 tags: [tips, windows, winget]
-enableComments: true
 ---
 ![Update all out-of-date Windows programs in batch](/img/updates_banner.jpg)
 

@@ -6,7 +6,6 @@ image: /img/quarto_tips_social_media.jpg
 series: Discovering Quarto
 mainTag: quarto
 tags: [markdown, powerpoint, quarto, revealjs, tips]
-enableComments: true
 ---
 ![Use Quarto and create a PowerPoint slideshow](/img/quarto_tips_banner.jpg)
 

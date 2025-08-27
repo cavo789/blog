@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/vbs_tips_social_media.jpg
 mainTag: github
 tags: [dos, Github, vbs]
-enableComments: true
 ---
 ![VBS - Auto update script](/img/vbs_tips_banner.jpg)
 
@@ -29,7 +28,7 @@ Here is the content of such function:
 
 <Snippet filename="get_folder_size.vbs">
 
-```vbs
+```vbnet
 ' -----------------------------------------------------------------
 '
 ' Connect to GitHub, get the raw version of a file and download it

@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/mindmap.png
 mainTag: mindmap
 tags: [docker, mindmap, tips, visualisation]
-enableComments: true
 ---
 ![Build a mind map using Docker and Markdown](/img/mindmap.png)
 

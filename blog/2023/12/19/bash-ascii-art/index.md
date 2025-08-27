@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 mainTag: bash
 tags: [bash, tips]
-enableComments: true
 ---
 ![Bash - ASCII art](/img/bash_tips_banner.jpg)
 

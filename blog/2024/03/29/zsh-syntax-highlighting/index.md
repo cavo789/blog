@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/zsh_tips_social_media.jpg
 mainTag: zsh
 tags: [customization, linux, wsl, zsh]
-enableComments: true
 ---
 ![Syntax highlighting in the console using ZSH](/img/zsh_tips_banner.jpg)
 
@@ -31,7 +30,7 @@ Then edit the `~/.zshrc` file, search for `plugins=(` and add `zsh-autosuggestio
 
 <Snippet filename="~/.zshrc">
 
-```text
+```bash
 plugins=(
   git
   zsh-autosuggestions

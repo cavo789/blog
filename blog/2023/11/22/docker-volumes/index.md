@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [wsl, docker]
-enableComments: true
 ---
 ![Using volumes with Docker, use cases](/img/docker_tips_banner.jpg)
 
@@ -27,7 +26,7 @@ Now that you're in a temporary folder on your disk, please create a new file cal
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM alpine:3.14
 
 COPY counter.sh counter.sh

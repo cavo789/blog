@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/virus_social_media.jpg
 mainTag: aesecure
 tags: [docker, tip]
-enableComments: true
 ---
 ![aeSecure - QuickScan - Free viruses scanner](/img/virus_banner.jpg)
 

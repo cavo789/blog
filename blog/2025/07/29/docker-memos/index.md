@@ -4,7 +4,6 @@ title: Self-hosted note-taking application
 authors: [christophe]
 mainTag: self-hosted
 tags: [docker, note-taking, self-hosted, tool]
-enableComments: true
 blueSkyRecordKey: 3lv3hzdh4mk2v
 image: /img/docker_tools_header.jpg
 ---

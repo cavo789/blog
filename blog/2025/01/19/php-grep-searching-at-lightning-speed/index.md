@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
 mainTag: winscp
 tags: [ftp, php_grep, tips, winscp]
-enableComments: true
 ---
 ![Search your FTP server at lightning speed](/img/winscp_tips_banner.jpg)
 

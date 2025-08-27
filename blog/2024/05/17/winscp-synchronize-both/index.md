@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
 mainTag: winscp
 tags: [dos, synology, tips, winscp]
-enableComments: true
 ---
 ![WinSCP - Synchronize host and remote](/img/winscp_tips_banner.jpg)
 
@@ -21,7 +20,7 @@ I'm using such script for making a full backup of some of my folders to my Synol
 
 <Snippet filename="c:\temp\synchronize.txt">
 
-```text
+```batch
 option batch abort
 
 option confirm off

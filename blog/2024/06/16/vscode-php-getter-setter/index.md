@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
 mainTag: vscode
 tags: [tips, vscode]
-enableComments: true
 ---
 <!-- cspell:ignore strtolower -->
 ![PHP Getter and Setter in VSCode](/img/vscode_tips_banner.jpg)

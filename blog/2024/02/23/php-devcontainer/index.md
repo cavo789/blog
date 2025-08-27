@@ -6,7 +6,6 @@ image: /img/php_tips_social_media.jpg
 series: Coding using a devcontainer
 mainTag: php
 tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, sonarlint, vscode]
-enableComments: true
 ---
 ![Install a PHP Docker environment in a matter of seconds](/img/php_tips_banner.jpg)
 

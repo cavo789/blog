@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/database_tips_social_media.jpg
 mainTag: postgrest
 tags: [docker, openapi, postgrest, postgresql, swagger-ui]
-enableComments: true
 ---
 ![Don't query your PostgreSQL db anymore, prefer PostgREST](/img/database_tips_banner.jpg)
 
@@ -26,7 +25,7 @@ In short: using an API, PostgREST will retrieve data from your PostgreSQL databa
 :::info PostgREST is magic: it takes all the complexity out of accessing your data
 Back to my experience: after the migration from MySQL to PostgreSQL, I deleted 100% of my code that had to declare my tables and their fields (the models), I deleted the declaration of my relationships between tables, I deleted my queries, ... After my migration to PostgREST, I no longer had any PHP code of the "database" type. Everything was replaced by web calls to APIs. On top, in Javascript and using axios, I can directly access to my database using f.i.
 
-```script
+```js
 const todos = axios.create({
     baseURL: 'http://localhost:3000/todos',
     headers: {
@@ -104,7 +103,7 @@ We need to create a configuration, please create a file called `tutorial.conf` w
 
 <Snippet filename="tutorial.conf">
 
-```conf
+```ini
 db-uri = "postgres://authenticator:mysecretpassword@localhost:5433/postgres"
 db-schemas = "api"
 db-anon-role = "web_anon"
@@ -119,7 +118,7 @@ Add the line below to your conf file if you wish to use another port; f.i. port 
 
 <Snippet filename="tutorial.conf">
 
-```conf
+```ini
 server-port = 3001
 ```
 

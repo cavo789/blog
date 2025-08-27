@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 mainTag: excel
 tags: [excel, ribbon, soap, vba]
-enableComments: true
 ---
 ![MS Excel - How to call a SOAP web service](/img/excel_tips_banner.jpg)
 
@@ -59,7 +58,7 @@ Now, please,
 8. After a few seconds, a new workbook will be created with the answer from the SOAP web service:
     ![SOAP answer](./images/soap_answer.png)
 
-```vba
+```vbnet
 Option Explicit
 
 ' URL to call

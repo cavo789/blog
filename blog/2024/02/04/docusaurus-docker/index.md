@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docusaurus_tips_social_media.jpg
 mainTag: docusaurus
 tags: [docker, docusaurus, node, npm, tips, yarn]
-enableComments: true
 ---
 ![Running Docusaurus with Docker](/img/docusaurus_tips_banner.jpg)
 
@@ -29,7 +28,7 @@ In your project directory (so `/tmp/docusaurus`), create a file called `Dockerfi
 
 <Snippet filename="/tmp/docusaurus/Dockerfile">
 
-```Dockerfile
+```docker
 FROM node:21-alpine
 
 RUN npx create-docusaurus@latest /app classic --javascript && \
@@ -70,7 +69,7 @@ So, please create a `.dockerignore` file with this content:
 
 <Snippet filename=".dockerignore">
 
-```text
+```ignore
 build/
 node_modules/
 

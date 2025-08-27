@@ -4,7 +4,6 @@ title: SSH Remote development with VSCode
 authors: [christophe]
 mainTag: ssh
 tags: [ssh, tips, vscode]
-enableComments: true
 image: /img/vscode_tips_social_media.jpg
 draft: true
 ---
@@ -30,7 +29,7 @@ Please create the `Dockerfile` with the content below.
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # cspell:ignore ssword
 
 FROM ubuntu:latest

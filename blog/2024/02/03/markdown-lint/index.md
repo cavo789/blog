@@ -6,7 +6,6 @@ image: /img/code_quality_social_media.jpg
 series: code quality
 mainTag: code-quality
 tags: [code-quality, makefile, markdown, tips, vscode]
-enableComments: true
 ---
 ![Markdown linter - solve formatting issue in md files](/img/code_quality_banner.jpg)
 
@@ -28,7 +27,7 @@ Create a file called `.markdownlint_ignore` in the root directory of your projec
 
 <Snippet filename=".markdownlint_ignore">
 
-```text
+```ignore
 node_modules/**/*.markdown
 node_modules/**/*.md
 vendor/**/*.markdown

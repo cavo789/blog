@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/zsh_tips_social_media.jpg
 mainTag: zsh
 tags: [customization, linux, powerlevel10k, wsl, zsh]
-enableComments: true
 ---
 ![How to install Oh-My-ZSH](/img/zsh_tips_banner.jpg)
 

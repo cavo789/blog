@@ -30,6 +30,9 @@
         "titleBar.inactiveForeground": "#e7e7e799"
     },
     "peacock.remoteColor": "#856906",
+    "markdownlint.config": {
+        "MD033": false
+    },
     "cSpell.words": [
         "daggerize",
         "daggerized"

@@ -4,7 +4,6 @@ title: Tabnine - AI Autocomplete & Chat for Javascript, Python, Typescript, PHP,
 authors: [christophe]
 tags: [addon, php, tips, vscode]
 mainTag: ai
-enableComments: true
 image: /img/vscode_tips_social_media.jpg
 ---
 ![Tabnine - AI Autocomplete & Chat for Javascript, Python, Typescript, PHP, Go, Java & more](/img/vscode_tips_banner.jpg)

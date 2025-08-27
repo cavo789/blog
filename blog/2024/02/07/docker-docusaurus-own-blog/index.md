@@ -6,7 +6,6 @@ image: /img/docusaurus_tips_social_media.jpg
 series: Discovering Docusaurus
 mainTag: docusaurus
 tags: [docker, docusaurus, node, npm, tips, yarn]
-enableComments: true
 ---
 ![Running your own blog with Docusaurus and Docker](/img/docusaurus_tips_banner.jpg)
 
@@ -107,7 +106,7 @@ The second thing is to allow changes done in that copied file to be reflected be
 
 Next step, still in file `docusaurus.config.js`, look for the `title`, `favicon` and `url`, then initialize them to your own values; f.i.
 
-```javascript
+```js
 const config = {
   title: 'MyBlog',
   favicon: 'https://www.iconarchive.com/download/i75799/martz90/circle/android.ico',

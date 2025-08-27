@@ -6,7 +6,6 @@ image: /img/git_tips_social_media.jpg
 mainTag: gitlab
 tags: [CI, gitlab, ssh]
 blueSkyRecordKey: 3lun2oxe3zs2r
-enableComments: true
 ---
 <!-- cspell:ignore libcrypto -->
 

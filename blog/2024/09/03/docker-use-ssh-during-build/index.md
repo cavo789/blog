@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_secrets_tips_social_media.jpg
 mainTag: ssh
 tags: [docker, git, Github, secrets, ssh]
-enableComments: true
 ---
 ![Docker secrets - Using your SSH key during the build process](/img/docker_secrets_tips_header.jpg)
 
@@ -119,7 +118,7 @@ Time to create our second file, `Dockerfile`:
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM alpine:3.19
 
 ARG KEY_NAME="id_rsa"

@@ -6,7 +6,6 @@ series: Coding using a devcontainer
 image: /img/python_tips_social_media.jpg
 mainTag: python
 tags: [devcontainer, docker, python]
-enableComments: true
 ---
 <!-- cspell:ignore PYTHONDONTWRITEBYTECODE,PYTHONUNBUFFERED,HISTFILE -->
 <!-- cspell:ignore addgroup,adduser,keyscan,hadolint,gecos,endregion -->
@@ -243,7 +242,7 @@ Copy/paste the content below in a file on your system called `.docker.env` (in L
 
 <Snippet filename=".docker.env">
 
-```dotenv
+```ini
 # Application root directory in the container (PHP or NGINX) (--app-home)
 DOCKER_APP_HOME=/app
 
@@ -316,7 +315,7 @@ Copy/paste the content below in a file on your system called `Dockerfile`.
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # syntax=docker/dockerfile:1
 
 # cspell:ignore PYTHONDONTWRITEBYTECODE,PYTHONUNBUFFERED,HISTFILE

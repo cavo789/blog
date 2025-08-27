@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/api_social_media.jpg
 mainTag: api
 tags: [api, code quality, php, postman, soap, tests, tool]
-enableComments: true
 ---
 <!-- cSpell::ignore ELECTRABEL,taxud -->
 ![Using Postman to play with API](/img/api_banner.jpg)

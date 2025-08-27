@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 mainTag: bash
 tags: [bash, introspection, linux, tips]
-enableComments: true
 ---
 ![Linux - Sort functions in a Bash script](/img/bash_tips_banner.jpg)
 

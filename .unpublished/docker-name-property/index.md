@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [docker]
-enableComments: true
 draft: true
 ---
 ![Docker - How to group containers together](/img/docker_tips_banner.jpg)

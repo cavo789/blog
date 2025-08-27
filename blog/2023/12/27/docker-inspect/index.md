@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [docker, network, tips]
-enableComments: true
 ---
 ![Docker inspect - Retrieve network's information](/img/docker_tips_banner.jpg)
 

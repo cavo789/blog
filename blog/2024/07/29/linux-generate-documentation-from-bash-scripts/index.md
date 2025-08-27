@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 mainTag: bash
 tags: [bash, introspection, linux, tips]
-enableComments: true
 ---
 ![Linux - Generate documentation from Bash scripts](/img/bash_tips_banner.jpg)
 
@@ -446,7 +445,7 @@ function generate_doc::__main() {
 #
 # For instance (partial output):
 #
-# ```text
+# ```markdown
 # * [public function console::printGray()](#public-function-console-printgray)
 #   * [Description](#description)
 #   * [Examples](#examples)

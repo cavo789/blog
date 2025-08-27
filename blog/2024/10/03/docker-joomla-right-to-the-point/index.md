@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_joomla_social_media.jpg
 mainTag: joomla
 tags: [docker, joomla, makefile, mysql]
-enableComments: true
 ---
 ![Start Joomla with Docker in just a few clicks](/img/docker_joomla_header.jpg)
 

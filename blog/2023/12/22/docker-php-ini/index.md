@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [apache, docker, joomla, tips]
-enableComments: true
 ---
 ![Update php.ini when using a Docker image](/img/docker_tips_banner.jpg)
 

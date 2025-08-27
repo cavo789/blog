@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
 mainTag: vscode
 tags: [Github, tips, vscode]
-enableComments: true
 ---
 ![Start vscode from github.com](/img/vscode_tips_banner.jpg)
 

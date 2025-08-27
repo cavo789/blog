@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [docker]
-enableComments: true
 ---
 <!-- cspell:ignore phplint,dind,dood,groupid,johndoe,addgroup,adduser,getent,metin,meyay -->
 
@@ -42,7 +41,7 @@ We need a `Dockerfile`, let's create it.
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # syntax=docker/dockerfile:1
 
 FROM alpine:latest
@@ -150,7 +149,7 @@ To do this, we need to update our files.
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # syntax=docker/dockerfile:1
 
 # cspell:ignore groupid,johndoe,addgroup,adduser# syntax=docker/dockerfile:1

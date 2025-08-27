@@ -6,7 +6,6 @@ image: /img/linux_tips_social_media.jpg
 mainTag: linux
 tags: [bash, customization, fzf, linux, tips, linux]
 update: 2024/03/31
-enableComments: true
 ---
 ![Introduction to fzf - Fuzzy Finder](/img/linux_tips_banner.jpg)
 

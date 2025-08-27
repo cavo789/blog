@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [docker, visualisation, tips]
-enableComments: true
 ---
 ![How to generate a graph from compose.yaml](/img/docker_tips_banner.jpg)
 

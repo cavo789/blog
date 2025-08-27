@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/winscp_tips_social_media.jpg
 mainTag: winscp
 tags: [putty, ssh, tips, winscp]
-enableComments: true
 draft: true
 ---
 ![WinSCP - Start PuTTY without typing a password](/img/winscp_tips_banner.jpg)

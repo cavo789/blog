@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/database_tips_social_media.jpg
 mainTag: python
 tags: [database, python, sqlalchemy, tips, visualisation]
-enableComments: true
 draft: true
 ---
 <!-- cspell:ignore dbdiagram,drawdb,pydantic,hocus,pocus,sqlalchemy -->
@@ -29,7 +28,7 @@ In the example below, let's create three tables: we'll create a web interface an
 
 <Snippet filename="dbdiagram.txt">
 
-```text
+```sql
 Table users {
   id uuid [primary key]
   login text [not null, note: 'The login']

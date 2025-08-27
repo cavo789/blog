@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/wsl_tips_social_media.jpg
 mainTag: customization
 tags: [customization, docker, powerlevel10k, tips, wsl, zsh]
-enableComments: true
 ---
 ![Customize your Linux prompt with Powerlevel10k](/img/wsl_tips_banner.jpg)
 

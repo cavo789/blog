@@ -3,7 +3,6 @@ slug: new-year-2024
 title: Happy New Year 2024
 authors: [christophe]
 image: ./images/social_media.jpg
-enableComments: true
 ---
 ![Happy New Year 2024](./images/social_media.jpg)
 

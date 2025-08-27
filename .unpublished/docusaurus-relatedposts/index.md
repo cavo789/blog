@@ -6,7 +6,6 @@ image: /img/components_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
-enableComments: true
 blueSkyRecordKey:
 draft: true
 ---
@@ -42,7 +41,7 @@ So, just copy/paste the content of the file below and create the `src/components
 
 <Snippet filename="src/components/utils/blogPosts.js">
 
-```javascript
+```js
 const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
 
 export function getBlogMetadata() {
@@ -94,7 +93,7 @@ Now please create this file `src/components/RelatedBlogPosts/index.js`:
 
 <Snippet filename="src/components/RelatedBlogPosts/index.js">
 
-```javascript
+```js
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
@@ -245,7 +244,7 @@ In the code below, the highlighted lines are the ones we need to add.
 
 <Snippet filename="src/theme/BlogPostItem/index.js">
 
-```javascript
+```js
 
 import React from "react";
 import clsx from "clsx";

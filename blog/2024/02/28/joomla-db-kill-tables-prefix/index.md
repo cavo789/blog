@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/database_tips_social_media.jpg
 mainTag: joomla
 tags: [database, joomla, tips]
-enableComments: true
 ---
 ![Joomla : delete tables from your database according to a certain prefix](/img/database_tips_banner.jpg)
 

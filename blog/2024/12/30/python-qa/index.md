@@ -6,7 +6,6 @@ image: /img/code_quality_social_media.jpg
 series: code quality
 mainTag: code-quality
 tags: [autoflake, black, code-quality, devcontainer, docker, isort, mypy, prospector, pydocstyle, pylint, pyright, python, ruff, vulture]
-enableComments: true
 ---
 
 <!-- markdownlint-disable-file MD010 -->
@@ -39,7 +38,7 @@ I'm running it like this: `pylint . --rcfile .config/.pylintrc`.
 
 <Snippet filename=".config/.pylintrc">
 
-```text
+```ini
 [MASTER]
 ; Pickle collected data for later comparisons.
 persistent=yes
@@ -145,7 +144,7 @@ I'm running it like this: `pydocstyle --config=.config/.pydocstyle`
 
 <Snippet filename=".config/.pydocstyle">
 
-```text
+```ini
 [pydocstyle]
 ignore = D100,D203,D205,D212,D213,D400,D404,D406,D407,D413,D415
 match = .*\.py
@@ -167,7 +166,7 @@ I'm running it like this: `mypy --config-file .config/.mypy.ini .`
 
 <Snippet filename=".config/.mypy.ini">
 
-```text
+```ini
 [mypy]
 show_error_codes = true
 

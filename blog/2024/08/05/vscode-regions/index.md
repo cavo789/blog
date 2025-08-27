@@ -4,7 +4,6 @@ title: Working with regions in VSCode
 authors: [christophe]
 mainTag: vscode
 tags: [tips, vscode]
-enableComments: true
 image: /img/vscode_tips_social_media.jpg
 ---
 ![Working with regions in VSCode](/img/vscode_tips_banner.jpg)
@@ -91,7 +90,7 @@ Let's take a look and the following Dockerfile:
 
 <Snippet filename="Dockerfile">
 
-```dockerfile
+```docker
 # syntax=docker/dockerfile:1
 
 # Source https://docusaurus.community/knowledge/deployment/docker/?package-managers=yarn

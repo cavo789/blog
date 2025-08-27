@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/laravel_tips_social_media.jpg
 mainTag: oracle
 tags: [laravel, php]
-enableComments: true
 ---
 <!-- cspell:ignore ailwind,lpine,aravel,ivewire -->
 ![Laravel Filament](/img/laravel_tips_banner.jpg)

@@ -6,9 +6,7 @@ image: /img/components_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, react]
-enableComments: true
 blueSkyRecordKey:
-draft: true
 ---
 
 <!-- cspell:ignore -->
@@ -28,12 +26,12 @@ To do this, in fact, we don't need to create a component! We just need to add so
 If you don't have that file yet, just create it.
 
 :::note
-The `// [...]` notation is there as a placeholder to show you that, perhaps you'll have already some lines of code there. Don't delete it; just append the highlighted-lines as shown below.
+The `// [...]` notation is there as a placeholder to show you that perhaps you'll have already some lines of code there. Don't delete it; just append the highlighted lines as shown below.
 :::
 
 <Snippet filename="src/theme/MDXComponents.js">
 
-```javascript
+```js
 import React from "react";
 
 import MDXComponents from "@theme-original/MDXComponents";

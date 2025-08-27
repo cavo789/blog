@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/experiments_social_media.jpg
 mainTag: assembly
 tags: [docker, assembly]
-enableComments: true
 ---
 <!-- cspell:ignore erminate,esident,esolang,nasm -->
 ![Play with Docker and Assembly programming language](/img/experiments_banner.jpg)
@@ -28,7 +27,7 @@ Please create a new file called `Hello.asm` with this content:
 
 <Snippet filename="Hello.asm">
 
-```assembly
+```asm
 ; Our data section (i.e. our variables)
 SECTION .data
     ; Our null terminated string

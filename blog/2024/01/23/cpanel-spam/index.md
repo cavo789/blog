@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/spam_social_media.jpg
 mainTag: spamassassin
 tags: [cpanel, spamassassin]
-enableComments: true
 ---
 ![Exterminate them all, fight spam directly at your host company](/img/spam_header.jpg)
 
@@ -33,7 +32,7 @@ That file can look like this:
 
 <Snippet filename=".spamassassin/user_prefs">
 
-```text
+```ini
 blacklist_from *.hr
 blacklist_from *.rest
 blacklist_from *.ru

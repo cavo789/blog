@@ -5,7 +5,6 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: linux
 tags: [chrome, docker, firefox, gimp, gui, tip]
-enableComments: true
 ---
 <!-- cspell:ignore lubuntu,initialising,xremote,autologin,realise -->
 ![Start lubuntu Desktop](/img/docker_tips_banner.jpg)
@@ -26,7 +25,7 @@ There is just one file to create called `Dockerfile` and with this content:
 
 <Snippet filename="Dockerfile">
 
-```Dockerfile
+```docker
 FROM ubuntu:latest
 
 RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y lubuntu-desktop lightdm

@@ -5,7 +5,6 @@ authors: [christophe]
 mainTag: apache
 tags: [apache, snippets, .htaccess]
 image: /img/htaccess_tips_social_media.jpg
-enableComments: true
 ---
 <!-- cspell:ignore webm -->
 ![Apache .htaccess file](/img/htaccess_tips_banner.jpg)
