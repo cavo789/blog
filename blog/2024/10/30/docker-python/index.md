@@ -233,7 +233,6 @@ All you have to do is duplicate the other files we've created for each of your p
 
 To make life easier, we're going to group together a set of commands in a file called `makefile`. Please create a `makefile` file with the contents below:
 
-
 <Snippet filename="makefile">
 
 ```makefile

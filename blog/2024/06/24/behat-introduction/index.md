@@ -3,6 +3,7 @@ slug: behat-introduction
 title: Introduction to Behat
 authors: [christophe]
 image: /img/functional_testing_social_media.jpg
+series: Functional testing
 mainTag: tests
 tags: [bdd, behat, chrome, docker, mink, php, tests]
 ---

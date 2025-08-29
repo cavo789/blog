@@ -45,8 +45,8 @@ export default function BlogPostItem({ children, className }) {
             excludePermalink={metadata.permalink}
             highlightCurrent={true}
           />
-          <RelatedBlogPosts count="6" description="false" />
           <BlueSky metadata={metadata} />
+          <RelatedBlogPosts count="6" description="false" />
         </>
       )}
     </BlogPostItemContainer>

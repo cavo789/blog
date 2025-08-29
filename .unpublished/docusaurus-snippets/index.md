@@ -232,3 +232,286 @@ print("Nice to meet you.")
 ```
 
 </Snippet>
+
+## Demo
+
+<Snippet filename="sample.apacheconf">
+
+```apacheconf
+<VirtualHost *:80>
+    ServerName www.example.com
+    DocumentRoot /www/domain
+</VirtualHost>
+```
+
+</Snippet>
+
+<Snippet filename="sample.asm">
+
+```asm
+section .data
+    msg db 'Hello, world!', 0Ah
+section .text
+    global _start
+_start:
+    mov edx, 13
+```
+
+</Snippet>
+
+<Snippet filename="script.sh">
+
+```bash
+#!/bin/bash
+echo "Hello, world!"
+```
+
+</Snippet>
+
+<Snippet filename="script.bat">
+
+```batch
+@echo off
+echo Hello, world!
+```
+
+</Snippet>
+
+<Snippet filename="styles.css">
+
+```css
+body {
+    background-color: #f0f0f0;
+}
+```
+
+</Snippet>
+
+<Snippet filename="data.csv">
+
+```csv
+name,age
+Alice,30
+Bob,25
+```
+
+</Snippet>
+
+<Snippet filename="change.diff">
+
+```diff
+- old line
++ new line
+```
+
+</Snippet>
+
+<Snippet filename="Dockerfile">
+
+```docker
+FROM node:18
+WORKDIR /app
+COPY . .
+RUN npm install
+CMD ["node", "index.js"]
+```
+
+</Snippet>
+
+<Snippet filename="login.feature">
+
+```gherkin
+Feature: User login
+  Scenario: Valid login
+    Given the user is on the login page
+    When the user enters valid credentials
+    Then they are redirected to the dashboard
+```
+
+</Snippet>
+
+<Snippet filename="hello.html">
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <p>Hello, world!</p>
+  </body>
+</html>
+```
+
+</Snippet>
+
+<Snippet filename=".gitignore">
+
+```ignore
+node_modules/
+dist/
+.env
+```
+
+</Snippet>
+
+<Snippet filename="config.ini">
+
+```ini
+[server]
+port=8080
+host=localhost
+```
+
+</Snippet>
+
+<Snippet filename="HelloWorld.java">
+
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, world!");
+    }
+}
+
+```
+
+</Snippet>
+
+<Snippet filename="script.js">
+```js
+console.log("Hello, world!");
+```
+
+</Snippet>
+
+<Snippet filename="data.json">
+
+```json
+{
+  "name": "example",
+  "version": "1.0.0"
+}
+
+```
+
+</Snippet>
+
+<Snippet filename="application.log">
+
+```log
+[INFO] Server started at 10:00
+[ERROR] Connection failed
+```
+
+</Snippet>
+
+<Snippet filename="makefile">
+
+```makefile
+build:
+\tgcc main.c -o app
+```
+
+</Snippet>
+
+<Snippet filename="readme.md">
+
+```md
+# Hello World
+This is a markdown example.
+```
+
+</Snippet>
+
+<Snippet filename="hello_world.pas">
+
+```pascal
+program HelloWorld;
+begin
+    writeln('Hello, world!');
+end.
+```
+
+</Snippet>
+
+<Snippet filename="HelloWorld.php">
+
+```php
+<?php
+echo "Hello, world!";
+?>
+```
+
+</Snippet>
+
+<Snippet filename="Hello_World.ps1">
+
+```powershell
+Write-Output "Hello, world!"
+```
+
+</Snippet>
+
+<Snippet filename="hello_world.py">
+
+```python
+print("Hello, world!")
+```
+
+</Snippet>
+
+<Snippet filename="active.sql">
+
+```sql
+SELECT * FROM users WHERE active = 1;
+```
+
+</Snippet>
+
+<Snippet filename="logo.svg">
+```svg
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="40" fill="red" />
+</svg>
+```
+
+</Snippet>
+
+<Snippet filename="pyproject.toml">
+
+```toml
+[package]
+name = "example"
+version = "0.1.0"
+```
+
+</Snippet>
+
+<Snippet filename="HelloWorld.vb">
+```vbnet
+Public Module HelloWorld
+    Sub Main()
+        Console.WriteLine("Hello, world!")
+    End Sub
+End Module
+```
+
+</Snippet>
+
+<Snippet filename="message.xml">
+
+```xml
+<message>
+  <text>Hello, world!</text>
+</message>
+```
+
+</Snippet>
+
+<Snippet filename="config.yaml">
+
+```yaml
+name: Example
+version: 1.0.0
+```
+
+</Snippet>

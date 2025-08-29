@@ -210,7 +210,7 @@ ARG TIMEZONE="Europe/Brussels"
 ARG OS_USERID=1000
 ARG OS_USERNAME="docker"
 
-FROM composer:${COMPOSER_VERSION} as composer_base
+FROM composer:${COMPOSER_VERSION} AS composer_base
 
 FROM php:${PHP_VERSION}-fpm
 
