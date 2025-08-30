@@ -6,7 +6,7 @@ image: /img/functional_testing_social_media.jpg
 series: Functional testing
 mainTag: component
 tags: [laravel, pest, php, tests]
-blueSkyRecordKey:
+blueSkyRecordKey: 3lxm2amkjjk2m
 ---
 <!-- cspell:ignore  -->
 
@@ -198,6 +198,13 @@ it('shows blog posts on the blog page', function () {
         ->assertSee('All posts');
 });
 
+it('navigates to the blog from the homepage', function () {
+    visit(getenv('WEBSITE'))
+        ->click('Blog')
+        ->assertPathIs('/blog')
+        ->assertSee('All Posts');
+});
+
 it('loads a specific blog post', function () {
     visit(getenv('WEBSITE') . '/blog/docker-joomla')
         ->assertSee('Create your Joomla website using Docker');
@@ -215,6 +222,22 @@ it('can search for a post', function () {
         ->assertSee('Create our own Docusaurus React component');
 });
 
+it('navigates to the archive and click on aeSecure QuickScan article', function () {
+    visit(getenv('WEBSITE') . '/blog/archive')
+        ->click('August 1 - aeSecure - QuickScan - Free viruses scanner')
+        ->assertPathIs('/blog/aesecure-quickscan')
+        ->assertSee('Just start your browser and go to the URL where your site is accessible.');
+});
+
+it('shows 404 for non-existent page', function () {
+    visit(getenv('WEBSITE') . '/this-page-does-not-exist')
+        ->assertSee('Page Not Found');
+});
+
+it('can load the robots.txt file', function () {
+    visit(getenv('WEBSITE') . '/robots.txt')
+        ->assertSee('User-agent');
+});
 ```
 
 </Snippet>
@@ -225,7 +248,7 @@ it('can search for a post', function () {
   steps={[
     "We'll create our own Docker image thanks to our `Dockerfile`,",
     "We'll use a makefile for easiness and",
-    "We've a test scenario with 6 functional tests."
+    "We've a test scenario with 10 functional tests."
   ]}
 />
 
@@ -272,32 +295,42 @@ $ make start
 {`docker exec -it demo_pest sh -c "WEBSITE=https://www.avonture.be vendor/bin/pest"
 
   FAIL  Tests\Browser\HomepageTest
-  ✓ it loads the homepage                      4.01s
-  ✓ it displays my name somewhere              2.55s
-  ✓ it shows blog posts on the blog page       2.47s
-  ✓ it loads a specific blog post              2.99s
-  ✓ it displays the about page                 2.43s
-  ⨯ it can search for a post                   8.28s
-  ──────────────────────────────────────────────────
+  ✓ it loads the homepage                                                 3.00s
+  ✓ it displays my name somewhere                                         2.50s
+  ✓ it shows blog posts on the blog page                                  2.89s
+  ✓ it navigates to the blog from the homepage                            3.39s
+  ✓ it loads a specific blog post                                         3.09s
+  ✓ it displays the about page                                            2.68s
+  ⨯ it can search for a post                                              8.77s
+  ✓ it navigates to the archive and click on aeSecure QuickScan article   5.42s
+  ✓ it shows 404 for non-existent page                                    2.73s
+  ✓ it can load the robots.txt file                                       0.59s
+  ──────────────────────────────────────────────────────────────────────────────
    FAILED  Tests\Browser\HomepageTest > it can search for a post
   Expected to see text [Create our own Docusaurus React component] on the page initially with the url [https://www.avonture.be], but it was not found or not visible. A screenshot of the page has been saved to [Tests/Browser/Screenshots/it_can_search_for_a_post].
 
-  at tests/Browser/HomepageTest.php:32
-     28▕ it('can search for a post', function () {
-     29▕     visit(getenv('WEBSITE'))
-     30▕         ->click('.DocSearch-Button')
-     31▕         ->type('.DocSearch-Input', 'BlueSky')
-  ➜ 32▕         ->assertSee('Create our own Docusaurus React component');
-     33▕ });
-     34▕
+  at tests/Browser/HomepageTest.php:39
+     35▕ it('can search for a post', function () {
+     36▕     visit(getenv('WEBSITE'))
+     37▕         ->click('.DocSearch-Button')
+     38▕         ->type('.DocSearch-Input', 'BlueSky')
+  ➜ 39▕         ->assertSee('Create our own Docusaurus React component');
+     40▕ });
+     41▕
+     42▕ it('navigates to the archive and click on aeSecure QuickScan article', function () {
+     43▕     visit(getenv('WEBSITE') . '/blog/archive')
 
-  Tests:    1 failed, 5 passed (5 assertions)
-  Duration: 22.98s
+  Tests:    1 failed, 9 passed (11 assertions)
+  Duration: 35.46s
 
 make: *** [makefile:26: start] Error 1`}
 </Terminal>
 
 As we can see, the test `it can search for a post` has failed while the previous ones have succeeded.
+
+:::note
+Did you've notice that others tests were well fired? Pest won't stop on failure.
+:::
 
 The nice thing is: Pest has automatically take a snapshot. See the error message, it says that a file `Tests/Browser/Screenshots/it_can_search_for_a_post` has been created automatically.
 
@@ -329,6 +362,13 @@ it('shows blog posts on the blog page', function () {
         ->assertSee('All posts');
 });
 
+it('navigates to the blog from the homepage', function () {
+    visit(getenv('WEBSITE'))
+        ->click('Blog')
+        ->assertPathIs('/blog')
+        ->assertSee('All Posts');
+});
+
 it('loads a specific blog post', function () {
     visit(getenv('WEBSITE') . '/blog/docker-joomla')
         ->assertSee('Create your Joomla website using Docker');
@@ -347,6 +387,24 @@ it('can search for a post', function () {
         ->assertSee('React component and provide a "Share on BlueSky" button');
 });
 
+it('navigates to the archive and click on aeSecure QuickScan article', function () {
+    visit(getenv('WEBSITE') . '/blog/archive')
+        ->click('August 1 - aeSecure - QuickScan - Free viruses scanner')
+        ->assertPathIs('/blog/aesecure-quickscan')
+        ->assertSee('Just start your browser and go to the URL where your site is accessible.');
+});
+
+it('shows 404 for non-existent page', function () {
+    visit(getenv('WEBSITE') . '/this-page-does-not-exist')
+        ->assertSee('Page Not Found');
+});
+
+it('can load the robots.txt file', function () {
+    visit(getenv('WEBSITE') . '/robots.txt')
+        ->assertSee('User-agent');
+});
+
+
 ```
 
 </Snippet>
@@ -359,19 +417,23 @@ $ make start
 docker exec -it demo_pest sh -c "WEBSITE=https://www.avonture.be vendor/bin/pest"
 
   PASS  Tests\Browser\HomepageTest
-  ✓ it loads the homepage                      4.06s
-  ✓ it displays my name somewhere              2.55s
-  ✓ it shows blog posts on the blog page       2.60s
-  ✓ it loads a specific blog post              3.03s
-  ✓ it displays the about page                 2.74s
-  ✓ it can search for a post                   3.31s
+  ✓ it loads the homepage                                                 2.39s
+  ✓ it displays my name somewhere                                         2.33s
+  ✓ it shows blog posts on the blog page                                  2.57s
+  ✓ it navigates to the blog from the homepage                            3.30s
+  ✓ it loads a specific blog post                                         2.79s
+  ✓ it displays the about page                                            2.47s
+  ✓ it can search for a post                                              3.51s
+  ✓ it navigates to the archive and click on aeSecure QuickScan article   2.69s
+  ✓ it shows 404 for non-existent page                                    2.68s
+  ✓ it can load the robots.txt file                                       0.59s
 
-  Tests:    6 passed (6 assertions)
-  Duration: 18.55s
+  Tests:    10 passed (12 assertions)
+  Duration: 25.56s
 
 </Terminal>
 
-Congratulations, we've just tested 6 features in less than 20 seconds.
+Congratulations, we've just tested 10 features in less than 26 seconds.
 
 ![Success](./images/success.png)
 

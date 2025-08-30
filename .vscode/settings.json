@@ -32,7 +32,8 @@
     "peacock.remoteColor": "#856906",
     "markdownlint.config": {
         "MD010": false,
-        "MD033": false
+        "MD033": false,
+        "MD034": false
     },
     "cSpell.words": [
         "daggerize",
