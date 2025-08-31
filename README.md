@@ -1,8 +1,12 @@
 # Christophe Avonture - Blog
 
-This website is built using [Docusaurus](https://docusaurus.io/).
+<div align="center">
+<img width="200" src="https://raw.githubusercontent.com/cavo789/blog/main/static/img/docusaurus.png" />
+</div>
 
-Below a list of instructions to help when working with the
+<div align="center">
+<img src="https://img.shields.io/badge/dynamic/json?style=for-the-badge&logo=meta&color=blueviolet&label=Docusaurus&query=peerDependencies%5B%22%40docusaurus%2Fcore%22%5D&url=https%3A%2F%2Fraw.githubusercontent.com%2Fcavo789%2Fblog%2Fmain%2Fpackage.json" />
+</div>
 
 ## Clone this repository
 
@@ -16,7 +20,7 @@ Then run `make install` to install dependencies.
 
 Make sure to initialize the `.env` with `MODE=production`.
 
-Run `make build && make up && make start` on your local machine to build the Docker image, create the container and open your browser and start to surf on the blog locally. 
+Run `make build && make up && make start` on your local machine to build the Docker image, create the container and open your browser and start to surf on the blog locally.
 
 In this mode (`MODE=production`), Docker will create a self-container image and container too without any sharing with your host machine.
 
