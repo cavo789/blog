@@ -159,6 +159,16 @@ upgrade: ## Upgrade docusaurus and npm dependencies
 
 ##@ Utilities
 
+.PHONY: add-date
+add-date: ## Add the "date:" key in the YAML front matter if missing
+	@clear
+	./.scripts/add-date-in-blog-post.sh
+
+.PHONY: add-language
+add-language: ## Add the "inLanguage: en-GB" key in the YAML front matter if missing
+	@clear
+	./.scripts/add-language-in-blog-post.sh
+
 .PHONY: invalid-language
 invalid-language: ## Show invalid languages in docblock like ```env (not supported by Prism)
 	@clear

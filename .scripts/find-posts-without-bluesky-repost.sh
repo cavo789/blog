@@ -3,8 +3,8 @@
 EXCLUDE_DIR="blog/XXX"
 BASE_URL="https://www.avonture.be/blog"
 
-# Find all .md files under blog/, excluding the EXCLUDE_DIR
-find blog -type f -name "*.md" ! -path "$EXCLUDE_DIR/*" | while read -r file; do
+# Find all .md and .mdx files under blog/, excluding the EXCLUDE_DIR
+find blog -type f \( -name "*.md" -o -name "*.mdx" \) ! -path "$EXCLUDE_DIR/*" | while read -r file; do
   # Read YAML frontmatter (only the first block)
   frontmatter=$(awk '
     BEGIN { in_frontmatter=0; line_count=0 }
@@ -17,7 +17,7 @@ find blog -type f -name "*.md" ! -path "$EXCLUDE_DIR/*" | while read -r file; do
 
   # If frontmatter exists but doesn't include blueSkyRecordKey
   if [[ -n "$frontmatter" && "$frontmatter" != *"blueSkyRecordKey"* ]]; then
-    # Get the last directory name before the .md file
+    # Get the last directory name before the file
     slug=$(basename "$(dirname "$file")")
 
     # Compose URL
