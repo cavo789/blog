@@ -1,0 +1,41 @@
+details {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin-bottom: 0.5rem;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px;
+  list-style: none;;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+details[open] .content {
+  max-height: 200px;
+}
+

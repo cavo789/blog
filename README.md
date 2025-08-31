@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-<img src="https://img.shields.io/badge/dynamic/json?style=for-the-badge&logo=meta&color=blueviolet&label=Docusaurus&query=peerDependencies%5B%22%40docusaurus%2Fcore%22%5D&url=https%3A%2F%2Fraw.githubusercontent.com%2Fcavo789%2Fblog%2Fmain%2Fpackage.json" />
+<img src="https://img.shields.io/badge/dynamic/json.svg?label=@docusaurus/core&query=$.dependencies[%22@docusaurus/core%22]&url=https://raw.githubusercontent.com/cavo789/blog/main/package.json" />
 </div>
 
 ## Clone this repository

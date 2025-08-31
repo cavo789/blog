@@ -8,6 +8,7 @@ import CardHeader from "@site/src/components/Card/CardHeader";
 import CardImage from "@site/src/components/Card/CardImage";
 import Column from "@site/src/components/Column";
 import Columns from "@site/src/components/Columns";
+import Hero from "@site/src/components/Hero";
 import HomeCard from "@site/src/components/HomeCard";
 import Image from "@site/src/components/Image";
 import Link from '@docusaurus/Link';
@@ -18,6 +19,7 @@ import Tabs from '@theme/Tabs';
 import Terminal from "@site/src/components/Terminal";
 import TOCInline from '@theme/TOCInline';
 import UpdateAt from "@site/src/components/Updated";
+import Details from "@site/src/components/Details";
 
 export default {
   // Reusing the default mapping
@@ -29,6 +31,8 @@ export default {
   CardImage,
   Column,
   Columns,
+  Details,
+  Hero,
   HomeCard,
   Image,
   Snippet,
