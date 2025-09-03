@@ -7,7 +7,6 @@ series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
 blueSkyRecordKey:
-draft: true
 ---
 
 <!-- cspell:ignore relatedposts -->
@@ -16,7 +15,7 @@ draft: true
 
 Docusaurus can display a list of tags but not related articles.
 
-When you surf on my blog, you'll see below almost every articles a list of **Related blog posts**. For instance, just open the <Link to="/blog/docker-joomla-restore-jpa">Restore a Joomla backup using Docker</Link>.
+When you surf on my blog, you'll see below every articles a list of **Related blog posts**. This is a component I've *vibe-coding* using AI.
 
 The objective of our component will be to display something like this:
 
@@ -35,13 +34,49 @@ For each file, the script will looks at the YAML front matter and exploit some p
 * if the blog post has an associated image will use it. If not use a default one
 * then the helper will simply return the list of posts and their properties.
 
-Some properties are custom ones like `mainTag` and, for our need right now, the `series` property.
+Some properties are custom ones like `mainTag`.
 
 So, just copy/paste the content of the file below and create the `src/components/utils/blogPosts.js` in your project's structure.
 
 <Snippet filename="src/components/utils/blogPosts.js">
 
 ```js
+/**
+ * 🧠 getBlogMetadata
+ *
+ * Extracts metadata from all MDX blog posts located in the `/blog` directory.
+ * Uses Webpack's `require.context` to dynamically load and parse front matter
+ * from each post, returning a structured array of metadata objects.
+ *
+ * 🔍 Behavior:
+ * - Resolves permalinks based on `slug` or folder structure
+ * - Normalizes image paths for static assets
+ * - Filters out invalid or missing entries
+ *
+ * 📦 Returned metadata includes:
+ * - `title`: Post title
+ * - `description`: Short summary
+ * - `image`: Resolved image path
+ * - `draft`: Boolean flag for unpublished posts
+ * - `unlisted`: Boolean flag for hidden posts
+ * - `permalink`: URL path to the post
+ * - `tags`: Array of tags
+ * - `mainTag`: Primary tag (optional); used by the RelatedBlogPost component
+ * - `authors`: Array of author names
+ * - `date`: Publication date
+ * - `series`: Series name (optional); used by the SeriesBlogPost component
+ *
+ * 🛠️ Usage:
+ * ```js
+ * import { getBlogMetadata } from './getBlogMetadata';
+ * const posts = getBlogMetadata();
+ * ```
+ *
+ * ⚠️ Note:
+ * This function is intended for use in static site generation or client-side rendering
+ * where Webpack's `require.context` is available.
+ */
+
 const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
 
 export function getBlogMetadata() {
@@ -94,6 +129,32 @@ Now please create this file `src/components/RelatedBlogPosts/index.js`:
 <Snippet filename="src/components/RelatedBlogPosts/index.js">
 
 ```js
+/**
+ * 🔗 RelatedPosts Component
+ *
+ * Displays a list of related blog posts based on shared tags or a designated `mainTag`.
+ * Designed for Docusaurus blogs to enhance content discoverability.
+ *
+ * Props:
+ * - count (number): Maximum number of related posts to display (default: 3)
+ * - description (boolean): Whether to show post descriptions if available
+ *
+ * Behavior:
+ * - Uses `useBlogPost()` to get current post metadata
+ * - Fetches blog metadata via `getBlogMetadata()`
+ * - Filters blog posts using `mainTag` or fallback to shared tags
+ * - Excludes the current post from the results
+ * - Randomizes and limits the number of displayed posts
+ *
+ * Styling:
+ * - Uses Docusaurus grid and card classes
+ * - Inline styles for layout and visual polish
+ *
+ * Returns:
+ * - A responsive grid of related blog post cards, or a fallback message if none found
+ */
+
+import PropTypes from "prop-types"
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
@@ -226,6 +287,15 @@ export default function RelatedPosts({ count = 3, description = false }) {
   );
 }
 
+RelatedPosts.propTypes = {
+  /** Number of related posts to display */
+  count: PropTypes.number,
+
+  /** Whether to show post descriptions */
+  description: PropTypes.bool
+};
+
+
 ```
 
 </Snippet>
@@ -320,8 +390,10 @@ tags: [component, docusaurus, markdown, react, swizzle]
 
 ```
 
-Now, Docusaurus knows that specific article is about `component`. When he'll call the `getBlogMetadata` we've seen earlier in this article, Docusaurus will search for any blog post having, in his `tags` list, the word `component` and if so, bingo, we've a related blog post.
+Now, based on the example here above, Docusaurus knows that specific article is about `component`. When he'll call the `getBlogMetadata` we've seen earlier in this article, Docusaurus will search for any blog post having, in his `tags` list, the word `component` and if so, bingo, we've a related blog post.
 
 ## Conclusion
 
-This article illustrate this. Below, you'll get the list of posts about `component`. Cards are injected automatically thanks to our overriding of the `BlogPostItem` template.
+See at the bottom of this article to see the component in action. Below, you'll get the list of posts about `component`. Cards are injected automatically thanks to our overriding of the `BlogPostItem` template.
+
+Nice no?
