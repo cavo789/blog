@@ -1,5 +1,5 @@
 /**
- * 📚 SeriesBlogPosts Component
+ * 📚 SeriesPosts Component
  *
  * Displays a list of blog posts that belong to the same series.
  * Useful for linking related articles together in a Docusaurus blog.
@@ -24,11 +24,12 @@
 
 import PropTypes from "prop-types"
 import Link from "@docusaurus/Link";
-import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
+import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import { createSlug } from "@site/src/components/Blog/utils/slug";
 
 import styles from "./styles.module.css";
 
-export default function SeriesBlogPosts({
+export default function SeriesPosts({
   series,
   excludePermalink = null,
   highlightCurrent = true,
@@ -42,7 +43,7 @@ export default function SeriesBlogPosts({
   return (
     <div className={styles.seriesBlogPost}>
       <p>
-        This article is part of the <strong>{series}</strong> series:
+        This article is part of the <Link href={`/series/articles?name=${createSlug(series)}`}>{series}</Link> series:
       </p>
       <ul>
         {posts.map((post) => {
@@ -70,7 +71,7 @@ export default function SeriesBlogPosts({
   );
 }
 
-SeriesBlogPosts.propTypes = {
+SeriesPosts.propTypes = {
   /** The name of the blog series to display */
   series: PropTypes.string.isRequired,
 

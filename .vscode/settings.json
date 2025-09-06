@@ -1,4 +1,5 @@
 {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "search.exclude": {
         "**/node_modules": true,
     },

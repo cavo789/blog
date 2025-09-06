@@ -7,8 +7,8 @@ A reusable React component for Docusaurus that wraps the native `<details>` and 
 Make sure your project uses React and Docusaurus 3.x. Then place the component in your desired location:
 
 ```bash
-src/components/GithubProjects/index.js
-src/components/GithubProjects/styles.module.css
+src/components/Details/index.js
+src/components/Details/styles.module.css
 ```
 
 ## 🚀 Features

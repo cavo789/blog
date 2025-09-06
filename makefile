@@ -86,7 +86,7 @@ ifeq ($(or "$(TARGET)","production"), "production")
 	@exit 1
 endif
 	code --folder-uri vscode-remote://${DOCKER_VSCODE}${DOCKER_APP_HOME}
-	./.docker/install-vscode-extensions.sh "${DOCKER_CONTAINER_NAME}"
+	./.docker/install-vscode-extensions.sh "${DOCKER_CONTAINER_NAME}" "node"
 
 .PHONY: down
 down: ## Stop the container

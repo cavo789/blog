@@ -10,10 +10,14 @@ A utility function for extracting structured metadata from MDX blog posts in a D
 * 🧹 Filters out invalid entries
 * 🧩 Supports tags, authors, series, and visibility flags
 
+## Location
+
+Place this file in: `src/components/Blog/utils/posts.js`
+
 ## 🧪 Usage
 
 ```js
-import { getBlogMetadata } from './getBlogMetadata';
+import { getBlogMetadata } from '@site/src/components/Blog/utils/posts';
 
 const posts = getBlogMetadata();
 console.log(posts);

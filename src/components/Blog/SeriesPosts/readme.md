@@ -1,4 +1,4 @@
-# 📚 SeriesBlogPosts Component
+# 📚 SeriesPosts Component
 
 A React component for Docusaurus that displays a list of blog posts belonging to the same series. Ideal for guiding readers through multi-part tutorials, thematic articles, or serialized content.
 
@@ -21,8 +21,8 @@ Out-of-the-box, here is how the component will looks like:
 Place the component in your Docusaurus project:
 
 ```bash
-src/components/SeriesBlogPosts/SeriesBlogPosts.js
-src/components/SeriesBlogPosts/styles.module.css
+src/components/SeriesPosts/SeriesPosts.js
+src/components/SeriesPosts/styles.module.css
 ```
 
 Ensure you have a `getBlogMetadata()` utility that returns blog metadata including `title`, `date`, `series` and `permalink`.
@@ -30,9 +30,9 @@ Ensure you have a `getBlogMetadata()` utility that returns blog metadata includi
 ## 🧪 Usage
 
 ```jsx
-import SeriesBlogPosts from "@site/src/components/SeriesBlogPosts";
+import SeriesPosts from "@site/src/components/SeriesPosts";
 
-<SeriesBlogPosts
+<SeriesPosts
   series="Creating components for Docusaurus"
   excludePermalink="/blog/components-docusaurus"
   highlightCurrent={true}

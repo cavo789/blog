@@ -6,9 +6,9 @@ import BlogPostItemHeader from "@theme/BlogPostItem/Header";
 import BlogPostItemContent from "@theme/BlogPostItem/Content";
 import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
 
-// Our relatedBlogPost component
-import RelatedBlogPosts from "@site/src/components/RelatedBlogPosts/index.js";
-import SeriesBlogPosts from "@site/src/components/SeriesBlogPosts/index.js";
+// Our posts components
+import RelatedPosts from "@site/src/components/Blog/RelatedPosts/index.js";
+import SeriesPosts from "@site/src/components/Blog/SeriesPosts/index.js";
 
 // Our BlueSky component
 import BlueSky from "@site/src/components/BlueSky/index.js";
@@ -26,9 +26,9 @@ export default function BlogPostItem({ children, className }) {
     <BlogPostItemContainer className={clsx(containerClassName, className)}>
       <BlogPostItemHeader />
 
-      {/* Only display our SeriesBlogPosts component on the post page; not the blog view */}
+      {/* Only display our SeriesPosts component on the post page; not the blog view */}
       {isBlogPostPage && (
-        <SeriesBlogPosts
+        <SeriesPosts
           series={metadata.frontMatter.series}
           excludePermalink={metadata.permalink}
           highlightCurrent={true}
@@ -37,16 +37,16 @@ export default function BlogPostItem({ children, className }) {
       <BlogPostItemContent>{children}</BlogPostItemContent>
       <BlogPostItemFooter />
 
-      {/* Only display our RelatedBlogPosts and BlueSky components on the post page; not the blog view */}
+      {/* Only display our RelatedPosts and BlueSky components on the post page; not the blog view */}
       {isBlogPostPage && (
         <>
-          <SeriesBlogPosts
+          <SeriesPosts
             series={metadata.frontMatter.series}
             excludePermalink={metadata.permalink}
             highlightCurrent={true}
           />
           <BlueSky metadata={metadata} />
-          <RelatedBlogPosts count="6" description="false" />
+          <RelatedPosts count="6" description="false" />
         </>
       )}
     </BlogPostItemContainer>

@@ -23,11 +23,13 @@
  * - A responsive grid of related blog post cards, or a fallback message if none found
  */
 
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
-import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
+import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import PostCard from "@site/src/components/Blog/PostCard";
+
 
 export default function RelatedPosts({ count = 3, description = false }) {
   const { metadata } = useBlogPost();
@@ -83,74 +85,15 @@ export default function RelatedPosts({ count = 3, description = false }) {
     <>
       <h3>Related posts</h3>
       <div className="row">
-        {related.map((post) => (
-          <div
+        <div
             className="col col--4"
-            key={post.permalink}
             style={{ marginBottom: "2rem", display: "flex" }}
           >
-            <div
-              className="card"
-              style={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                height: "100%",
-              }}
-            >
-              <Link to={post.permalink}>
-                <div className="card__image">
-                  {post.image && (
-                    <img
-                      src={useBaseUrl(post.image)}
-                      alt={post.title}
-                      style={{
-                        width: "100%",
-                        height: 180,
-                        objectFit: "cover",
-                        borderTopLeftRadius: 8,
-                        borderTopRightRadius: 8,
-                      }}
-                    />
-                  )}
-                </div>
-                <div className="card__body" style={{ flex: 1 }}>
-                  <h3>{post.title}</h3>
-                  {description && post.description && (
-                    <div
-                      style={{
-                        color: "#6c63ff",
-                        fontWeight: "bold",
-                        marginBottom: 6,
-                      }}
-                    >
-                      {post.description}
-                    </div>
-                  )}
-                  <p
-                    style={{
-                      color: "#888",
-                      fontSize: "0.95em",
-                      marginBottom: 8,
-                    }}
-                  >
-                    {post.date && (
-                      <span>{new Date(post.date).toLocaleDateString()}</span>
-                    )}
-                  </p>
-                </div>
-              </Link>
-              <div className="card__footer" style={{ textAlign: "right" }}>
-                <Link
-                  className="button button--primary button--sm"
-                  to={post.permalink}
-                >
-                  Read more
-                </Link>
-              </div>
-            </div>
-          </div>
+        {related.map((post) => (
+          <PostCard key={post.id} post={post} />
+
         ))}
+          </div>
       </div>
     </>
   );
@@ -161,5 +104,5 @@ RelatedPosts.propTypes = {
   count: PropTypes.number,
 
   /** Whether to show post descriptions */
-  description: PropTypes.bool
+  description: PropTypes.bool,
 };

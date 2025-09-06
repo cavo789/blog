@@ -34,13 +34,13 @@
  * where Webpack's `require.context` is available.
  */
 
-const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
+const posts = require.context("../../../../blog", true, /\.mdx?$/);
 
 export function getBlogMetadata() {
-  return blogPosts
+  return posts
     .keys()
     .map((key) => {
-      const post = blogPosts(key);
+      const post = posts(key);
 
       const dir = key.replace(/\/index\.mdx?$/, "").replace(/^\.\//, "");
 

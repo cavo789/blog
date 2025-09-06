@@ -16,7 +16,7 @@ Make sure your project uses React and Docusaurus 3.x. Then place the component i
 ```bash
 src/components/BrowserWindow/IframeWindow.tsx
 src/components/BrowserWindow/index.tsx
-src/components/GithubProjects/styles.module.css
+src/components/BrowserWindow/styles.module.css
 ```
 
 ## 🚀 Usage

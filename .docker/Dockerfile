@@ -31,12 +31,6 @@ RUN apt-get -y update \
 ARG HOMEDIR
 WORKDIR "${HOMEDIR}"
 
-# Adjust PS1
-ARG TARGET
-ENV TARGET="${TARGET}"
-
-RUN /bin/bash -c "echo \"PS1='\n\e[0;33m🐳 (${TARGET})\e[0m - \e[0;36m$(whoami)\e[0m \w # '\" >> /home/node/.bashrc "
-
 # endregion
 
 # region - Stage 2a: Development mode.
@@ -72,6 +66,12 @@ RUN set -e -x \
     fi
 
 USER "${USERNAME}"
+
+# Adjust PS1
+ARG TARGET
+ENV TARGET="${TARGET}"
+
+RUN /bin/bash -c "echo \"PS1='\n\e[0;33m🐳 (${TARGET})\e[0m - \e[0;36m$(whoami)\e[0m \w # '\" >> /home/node/.bashrc "
 
 # endregion
 

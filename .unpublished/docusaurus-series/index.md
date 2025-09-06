@@ -34,7 +34,7 @@ As an illustration for this article, I've created a new Docusaurus sites in seco
 
 ## We need something for extracting information from blog posts
 
-If you don't have it yet, please create the `src/components/utils/blogPosts.js` file. It'll contain a helper function we can reuse for several components.
+If you don't have it yet, please create the `src/components/Blog/utils/posts.js` file. It'll contain a helper function we can reuse for several components.
 
 That helper will scan each Markdown files having the `.md` or `.mdx` extension in the `blog` sub-folder.
 
@@ -47,18 +47,18 @@ For each file, the script will looks at the YAML front matter and exploit some p
 
 Some properties are custom ones like `mainTag` and, for our need right now, the `series` property.
 
-So, just copy/paste the content of the file below and create the `src/components/utils/blogPosts.js` in your project's structure.
+So, just copy/paste the content of the file below and create the `src/components/Blog/utils/posts.js` in your project's structure.
 
-<Snippet filename="src/components/utils/blogPosts.js">
+<Snippet filename="src/components/Blog/utils/posts.js">
 
 ```js
-const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
+const posts = require.context("../../../blog", true, /\.mdx?$/);
 
 export function getBlogMetadata() {
-  return blogPosts
+  return posts
     .keys()
     .map((key) => {
-      const post = blogPosts(key);
+      const post = posts(key);
 
       const dir = key.replace(/\/index\.mdx?$/, "").replace(/^\.\//, "");
 
@@ -97,20 +97,20 @@ export function getBlogMetadata() {
 
 </Snippet>
 
-## Our SeriesBlogPosts component
+## Our SeriesPosts component
 
-Now, we'll create our component. Please create the `src/components/SeriesBlogPosts/index.js` file with the following code:
+Now, we'll create our component. Please create the `src/components/SeriesPosts/index.js` file with the following code:
 
-<Snippet filename="src/components/SeriesBlogPosts/index.js">
+<Snippet filename="src/components/SeriesPosts/index.js">
 
 ```js
 import React from "react";
 import Link from "@docusaurus/Link";
-import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
+import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 
 import styles from "./styles.module.css";
 
-export default function SeriesBlogPosts({
+export default function SeriesPosts({
   series,
   excludePermalink = null,
   highlightCurrent = false,
@@ -169,7 +169,7 @@ The rest of the logic will simply to display a bullet list.
 
 And the last file to create is the CSS file:
 
-<Snippet filename="src/components/SeriesBlogPosts/styles.module.css">
+<Snippet filename="src/components/SeriesPosts/styles.module.css">
 
 ```css
 .seriesBlogPost {
@@ -229,7 +229,7 @@ import BlogPostItemContent from "@theme/BlogPostItem/Content";
 import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
 
 // highlight-next-line
-import SeriesBlogPosts from '@site/src/components/SeriesBlogPosts/index.js';
+import SeriesPosts from '@site/src/components/SeriesPosts/index.js';
 
 // apply a bottom margin in list view
 function useContainerClassName() {
@@ -246,9 +246,9 @@ export default function BlogPostItem({ children, className }) {
       <BlogPostItemHeader />
 
       // highlight-start
-      {/* Only display our SeriesBlogPosts components on the post page; not the blog view */}
+      {/* Only display our SeriesPosts components on the post page; not the blog view */}
       {isBlogPostPage && (
-        <SeriesBlogPosts
+        <SeriesPosts
           series={metadata.frontMatter.series}
           excludePermalink={metadata.permalink}
           highlightCurrent={true}
@@ -302,14 +302,14 @@ Please create the `src/pages/series.jsx` file with this content:
 ```js
 import React from "react";
 import Layout from "@theme/Layout";
-import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
+import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import Link from "@docusaurus/Link";
 
 export default function SeriesPage() {
-  const blogPosts = getBlogMetadata();
+  const posts = getBlogMetadata();
   const seriesMap = {};
 
-  blogPosts.forEach((post) => {
+  posts.forEach((post) => {
     const seriesName = post.series;
     if (seriesName) {
       if (!seriesMap[seriesName]) {
@@ -387,7 +387,7 @@ Here is the version used on my blog:
 
 ```js
 import Layout from "@theme/Layout";
-import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
+import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import Link from "@docusaurus/Link";
 
 import Card from "@site/src/components/Card";
@@ -395,10 +395,10 @@ import CardImage from '@site/src/components/Card/CardImage';
 import CardBody from '@site/src/components/Card/CardBody';
 
 export default function SeriesPage() {
-  const blogPosts = getBlogMetadata();
+  const posts = getBlogMetadata();
   const seriesMap = {};
 
-  blogPosts.forEach((post) => {
+  posts.forEach((post) => {
     const seriesName = post.series;
     if (seriesName) {
       if (!seriesMap[seriesName]) {

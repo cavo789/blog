@@ -23,7 +23,7 @@ The objective of our component will be to display something like this:
 
 ## We need something for extracting information from blog posts
 
-If you don't have it yet, please create the `src/components/utils/blogPosts.js` file. It'll contain a helper function we can reuse for several components.
+If you don't have it yet, please create the `src/components/Blog/utils/posts.js` file. It'll contain a helper function we can reuse for several components.
 
 That helper will scan each Markdown files having the `.md` or `.mdx` extension in the `blog` sub-folder.
 
@@ -36,9 +36,9 @@ For each file, the script will looks at the YAML front matter and exploit some p
 
 Some properties are custom ones like `mainTag`.
 
-So, just copy/paste the content of the file below and create the `src/components/utils/blogPosts.js` in your project's structure.
+So, just copy/paste the content of the file below and create the `src/components/Blog/utils/posts.js` in your project's structure.
 
-<Snippet filename="src/components/utils/blogPosts.js">
+<Snippet filename="src/components/Blog/utils/posts.js">
 
 ```js
 /**
@@ -77,13 +77,13 @@ So, just copy/paste the content of the file below and create the `src/components
  * where Webpack's `require.context` is available.
  */
 
-const blogPosts = require.context("../../../blog", true, /\.mdx?$/);
+const posts = require.context("../../../blog", true, /\.mdx?$/);
 
 export function getBlogMetadata() {
-  return blogPosts
+  return posts
     .keys()
     .map((key) => {
-      const post = blogPosts(key);
+      const post = posts(key);
 
       const dir = key.replace(/\/index\.mdx?$/, "").replace(/^\.\//, "");
 
@@ -124,9 +124,9 @@ export function getBlogMetadata() {
 
 ## Our RelatedPosts component
 
-Now please create this file `src/components/RelatedBlogPosts/index.js`:
+Now please create this file `src/components/RelatedPosts/index.js`:
 
-<Snippet filename="src/components/RelatedBlogPosts/index.js">
+<Snippet filename="src/components/RelatedPosts/index.js">
 
 ```js
 /**
@@ -158,7 +158,7 @@ import PropTypes from "prop-types"
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
-import { getBlogMetadata } from "@site/src/components/utils/blogPosts";
+import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 
 export default function RelatedPosts({ count = 3, description = false }) {
   const { metadata } = useBlogPost();
@@ -325,7 +325,7 @@ import BlogPostItemContent from "@theme/BlogPostItem/Content";
 import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
 
 // highlight-next-line
-import RelatedBlogPosts from "@site/src/components/RelatedBlogPosts/index.js";
+import RelatedPosts from "@site/src/components/RelatedPosts/index.js";
 
 // apply a bottom margin in list view
 function useContainerClassName() {
@@ -343,8 +343,8 @@ export default function BlogPostItem({ children, className }) {
       <BlogPostItemFooter />
 
       // highlight-start
-      {/* Only display our RelatedBlogPosts and BlueSky components on the post page; not the blog view */}
-      {isBlogPostPage && <RelatedBlogPosts count="6" description="false" />}
+      {/* Only display our RelatedPosts and BlueSky components on the post page; not the blog view */}
+      {isBlogPostPage && <RelatedPosts count="6" description="false" />}
       // highlight-end
     </BlogPostItemContainer>
   );
