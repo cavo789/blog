@@ -1,4 +1,5 @@
 ---
+date: 2025-04-04
 slug: docker-oracle-database-server
 title: Running Oracle Database Server as a Docker container
 authors: [christophe]

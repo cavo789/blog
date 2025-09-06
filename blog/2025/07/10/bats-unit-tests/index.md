@@ -1,4 +1,5 @@
 ---
+date: 2025-07-10
 slug: bats-unit-tests
 title: Linux - Bash scripts - Running unit tests with bats/bats
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2024-02-07
 slug: docusaurus-articles-tips
 title: Some tips and tricks when written articles for Docusaurus
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2024-07-19
 slug: linux-diff-file-folder
 title: Linux - Comparing two folders/files in the console
 authors: [christophe]

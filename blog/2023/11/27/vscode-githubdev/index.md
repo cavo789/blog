@@ -1,4 +1,5 @@
 ---
+date: 2023-11-27
 slug: vscode-github-dev
 title: Start vscode from github.com
 authors: [christophe]

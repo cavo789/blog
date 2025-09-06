@@ -1,4 +1,5 @@
 ---
+date: 2024-02-23
 slug: php-devcontainer
 title: Install a PHP Docker environment in a matter of seconds
 authors: [christophe]

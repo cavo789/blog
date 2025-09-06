@@ -1,4 +1,5 @@
 ---
+date: 2025-02-22
 slug: vba-excel-ribbon-load
 title: MS Office - Load dropdown from Excel's range
 authors: [christophe]

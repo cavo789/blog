@@ -1,4 +1,5 @@
 ---
+date: 2025-07-25
 slug: vscode-docker-markmap
 title: Getting a more attractive mindmap with Markmap and Quarto
 authors: [christophe]

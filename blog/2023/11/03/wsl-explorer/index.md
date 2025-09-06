@@ -1,4 +1,5 @@
 ---
+date: 2023-11-03
 slug: wsl-windows-explorer
 title: Open your Linux folder in Windows Explorer
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2024-01-08
 slug: docusaurus-number-of-posts
 title: Getting the number of published posts
 authors: [christophe]

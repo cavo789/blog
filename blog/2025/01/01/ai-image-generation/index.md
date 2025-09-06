@@ -1,4 +1,5 @@
 ---
+date: 2025-01-01
 slug: ai-image-generation
 title: AI - Image generation using recraft.ai
 authors: [christophe]

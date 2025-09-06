@@ -1,4 +1,5 @@
 ---
+date: 2025-09-03
 slug: docusaurus-relatedposts
 title: Displaying related posts below our Docusaurus article
 authors: [christophe]

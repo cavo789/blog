@@ -1,4 +1,5 @@
 ---
+date: 2024-08-01
 slug: aesecure-quickscan
 title: aeSecure - QuickScan - Free viruses scanner
 authors: [christophe]

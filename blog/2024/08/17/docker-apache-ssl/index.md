@@ -1,4 +1,5 @@
 ---
+date: 2024-08-17
 slug: docker-localhost-ssl
 title: Docker - Configure your localhost to use SSL
 authors: [christophe]

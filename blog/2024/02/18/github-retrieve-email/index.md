@@ -1,4 +1,5 @@
 ---
+date: 2024-02-18
 slug: github-retrieve-email
 title: Github - How to find email addresses for most users
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2025-08-07
 slug: bruno
 title: Bruno - A postman-like tool - GUI and CLI
 authors: [christophe]

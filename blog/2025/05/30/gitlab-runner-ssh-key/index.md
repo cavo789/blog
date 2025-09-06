@@ -1,4 +1,5 @@
 ---
+date: 2025-05-30
 slug: gitlab-runner-ssh-key
 title: GitLab - Using a SSH key to connect to private repo
 authors: [christophe]

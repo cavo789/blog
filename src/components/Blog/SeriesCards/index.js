@@ -1,5 +1,4 @@
-
-import { generateSeriesList } from '@site/src/components/Blog/utils/series';
+import { generateSeriesList } from "@site/src/components/Blog/utils/series";
 import PostCard from "@site/src/components/Blog/PostCard";
 
 /**
@@ -32,12 +31,12 @@ export default function SeriesCards() {
   }
 
   return (
-    <div className="row">
-      {seriesList.map((serie) => (
-        <div key={serie.seriesName} className="col col--4 margin-bottom--lg">
+    <div className="container margin-top--lg margin-bottom--lg">
+      <div className="row">
+        {seriesList.map((serie) => (
           <PostCard post={serie} />
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

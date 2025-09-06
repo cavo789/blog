@@ -1,4 +1,5 @@
 ---
+date: 2024-01-06
 slug: docker-postgrest
 title: Don't query your PostgreSQL db anymore, prefer PostgREST
 authors: [christophe]

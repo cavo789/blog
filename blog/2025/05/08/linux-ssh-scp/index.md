@@ -1,4 +1,5 @@
 ---
+date: 2025-05-08
 slug: linux-ssh-scp
 title: SSH - Launch a terminal on your session without having to authenticate yourself
 authors: [christophe]

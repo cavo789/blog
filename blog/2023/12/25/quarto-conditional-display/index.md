@@ -1,4 +1,5 @@
 ---
+date: 2023-12-25
 slug: quarto-conditional-display
 title: Quarto conditional display
 authors: [christophe]

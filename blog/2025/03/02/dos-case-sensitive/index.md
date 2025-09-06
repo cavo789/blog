@@ -1,4 +1,5 @@
 ---
+date: 2025-03-02
 slug: dos-case-sensitive
 title: Enable case sensitivity for filenames under DOS
 authors: [christophe]

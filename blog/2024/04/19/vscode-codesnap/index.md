@@ -1,4 +1,5 @@
 ---
+date: 2024-04-19
 slug: vscode-codesnap
 title: CodeSnap addon for VSCode
 authors: [christophe]

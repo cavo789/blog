@@ -51,12 +51,7 @@ export default function SeriesArticlesPage() {
         {sortedPosts.length > 0 ? (
           <div className="row">
             {sortedPosts.map((post) => (
-              <div
-                key={post.permalink}
-                className="col col--4 margin-bottom--lg"
-              >
                 <PostCard post={post} />
-              </div>
             ))}
           </div>
         ) : (

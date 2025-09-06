@@ -1,4 +1,5 @@
 ---
+date: 2024-08-13
 slug: winscp-vba
 title: WinSCP - Visual Basic for Application use
 authors: [christophe]

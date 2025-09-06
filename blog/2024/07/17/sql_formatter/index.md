@@ -1,4 +1,5 @@
 ---
+date: 2024-07-17
 slug: sql-formatter
 title: SQL - Formatting tool
 authors: [christophe]

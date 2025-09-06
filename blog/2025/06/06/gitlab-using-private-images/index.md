@@ -1,4 +1,5 @@
 ---
+date: 2025-06-06
 slug: gitlab-using-private-images
 title: GitLab - Using Docker private images
 authors: [christophe]

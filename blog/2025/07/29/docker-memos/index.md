@@ -1,4 +1,5 @@
 ---
+date: 2025-07-29
 slug: docker-memos
 title: Self-hosted note-taking application
 authors: [christophe]

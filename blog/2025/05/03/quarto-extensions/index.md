@@ -1,4 +1,5 @@
 ---
+date: 2025-05-03
 slug: quarto-extensions
 title: My favourite Quarto extensions
 authors: [christophe]

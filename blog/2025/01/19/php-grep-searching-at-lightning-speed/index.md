@@ -1,4 +1,5 @@
 ---
+date: 2025-01-19
 slug: php-grep-searching-at-lightning-speed
 title: Search your FTP server at lightning speed
 authors: [christophe]

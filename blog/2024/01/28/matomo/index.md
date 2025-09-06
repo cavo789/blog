@@ -1,4 +1,5 @@
 ---
+date: 2024-01-28
 slug: matomo-install
 title: How to self-host Matomo
 authors: [christophe]

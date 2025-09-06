@@ -1,4 +1,5 @@
 ---
+date: 2023-11-21
 slug: frankenphp-docker-joomla
 title: FrankenPHP, a modern application server for PHP
 authors: [christophe]

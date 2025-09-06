@@ -1,4 +1,5 @@
 ---
+date: 2024-10-03
 slug: docker-joomla-right-to-the-point
 title: Start Joomla with Docker in just a few clicks
 authors: [christophe]

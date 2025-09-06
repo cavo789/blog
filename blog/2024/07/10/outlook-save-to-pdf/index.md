@@ -1,4 +1,5 @@
 ---
+date: 2024-07-10
 slug: outlook-vba-pdf
 title: Microsoft Outlook - VBA - Save emails as PDF
 authors: [christophe]

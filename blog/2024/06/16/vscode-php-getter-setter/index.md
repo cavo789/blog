@@ -1,4 +1,5 @@
 ---
+date: 2024-06-16
 slug: vscode-php-getter-setter
 title: PHP Getter and Setter in VSCode
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2024-03-19
 slug: vbs-auto-update
 title: VBS - Auto update script
 authors: [christophe]

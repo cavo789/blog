@@ -1,4 +1,5 @@
 ---
+date: 2024-05-01
 slug: bash-logging
 title: Bash - Script to add logging features to your script
 authors: [christophe]

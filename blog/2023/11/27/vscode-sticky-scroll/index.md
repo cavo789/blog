@@ -1,4 +1,5 @@
 ---
+date: 2023-11-27
 slug: vscode-sticky-scroll
 title: Sticky scroll in vscode
 authors: [christophe]

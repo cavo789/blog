@@ -1,4 +1,5 @@
 ---
+date: 2024-05-25
 slug: ftp-erase-files
 title: FTP - Remove files and folders at light speed
 authors: [christophe]

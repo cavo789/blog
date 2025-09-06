@@ -1,4 +1,5 @@
 ---
+date: 2025-05-15
 slug: quarto-mustache
 title: Using Mustache templating with Quarto
 authors: [christophe]

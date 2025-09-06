@@ -1,4 +1,5 @@
 ---
+date: 2023-12-19
 slug: bash-ascii-art
 title: Bash - ASCII art
 authors: [christophe]

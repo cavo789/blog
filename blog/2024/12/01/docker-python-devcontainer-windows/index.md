@@ -1,4 +1,5 @@
 ---
+date: 2024-12-01
 slug: docker-python-devcontainer-windows
 title: Docker - Easy setup of Python under Windows
 authors: [christophe]

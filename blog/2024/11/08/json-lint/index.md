@@ -1,4 +1,5 @@
 ---
+date: 2024-11-08
 slug: json-lint
 title: JSON - Online linter
 authors: [christophe]

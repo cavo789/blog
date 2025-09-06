@@ -1,4 +1,5 @@
 ---
+date: 2023-12-05
 slug: docker_uptime_kuma
 title: Self-hosted monitoring tool
 authors: [christophe]

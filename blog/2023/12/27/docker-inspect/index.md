@@ -1,4 +1,5 @@
 ---
+date: 2023-12-27
 slug: docker-inspect
 title: Docker inspect - Retrieve network's information
 authors: [christophe]

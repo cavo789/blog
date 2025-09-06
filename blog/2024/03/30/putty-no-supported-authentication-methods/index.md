@@ -1,4 +1,5 @@
 ---
+date: 2024-03-30
 slug: putty-no-supported-authentication-methods
 title: Fatal error was starting Putty after having saved settings
 authors: [christophe]

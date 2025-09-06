@@ -1,4 +1,5 @@
 ---
+date: 2024-09-06
 slug: docker-run-linux-gui
 title: Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP
 authors: [christophe]

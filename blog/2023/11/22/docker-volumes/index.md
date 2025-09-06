@@ -1,4 +1,5 @@
 ---
+date: 2023-11-22
 slug: docker-volumes
 title: Using volumes with Docker, use cases
 authors: [christophe]

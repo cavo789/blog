@@ -1,4 +1,5 @@
 ---
+date: 2024-12-26
 slug: markitdown
 title: Markitdown - Convert files and MS Office documents to Markdown
 authors: [christophe]

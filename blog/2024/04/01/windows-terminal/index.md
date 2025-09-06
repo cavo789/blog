@@ -1,4 +1,5 @@
 ---
+date: 2024-04-01
 slug: windows-terminal
 title: Windows Terminal
 authors: [christophe]

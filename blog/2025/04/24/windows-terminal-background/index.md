@@ -1,4 +1,5 @@
 ---
+date: 2025-04-24
 slug: windows-terminal-background
 title: Use a background image in your Windows Terminal console
 authors: [christophe]

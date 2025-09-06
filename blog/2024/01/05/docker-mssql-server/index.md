@@ -1,4 +1,5 @@
 ---
+date: 2024-01-05
 slug: docker-mssql-server
 title: Play with Microsoft SQL Server 2022 using Docker
 authors: [christophe]

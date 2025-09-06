@@ -1,4 +1,5 @@
 ---
+date: 2023-12-07
 slug: docker-init
 title: Docker init now supports PHP
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2023-12-31
 slug: new-year-2024
 title: Happy New Year 2024
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2024-09-19
 slug: vscode-jetbrains-font
 title: Using the JetBrains Mono font in vscode
 authors: [christophe]

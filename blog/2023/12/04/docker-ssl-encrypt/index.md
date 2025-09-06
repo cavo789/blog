@@ -1,4 +1,5 @@
 ---
+date: 2023-12-04
 slug: docker_ssl_encrypt
 title: Encrypt sensitive data using SSL and Docker
 authors: [christophe]

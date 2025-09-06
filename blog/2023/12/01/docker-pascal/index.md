@@ -1,4 +1,5 @@
 ---
+date: 2023-12-01
 slug: docker-pascal
 title: Play with Docker and Pascal
 authors: [christophe]

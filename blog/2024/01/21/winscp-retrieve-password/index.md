@@ -1,4 +1,5 @@
 ---
+date: 2024-01-21
 slug: winscp-retrieve-password
 title: WinSCP - Retrieve a stored password
 authors: [christophe]

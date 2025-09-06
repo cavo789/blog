@@ -1,4 +1,5 @@
 ---
+date: 2024-02-28
 slug: joomla-db-kill-tables-prefix
 title: Joomla - delete tables from your database according to a certain prefix
 authors: [christophe]

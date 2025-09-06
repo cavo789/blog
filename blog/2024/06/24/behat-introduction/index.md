@@ -1,4 +1,5 @@
 ---
+date: 2024-06-24
 slug: behat-introduction
 title: Introduction to Behat
 authors: [christophe]

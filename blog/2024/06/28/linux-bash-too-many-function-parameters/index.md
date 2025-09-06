@@ -1,4 +1,5 @@
 ---
+date: 2024-06-28
 slug: linux-bash-too-many-function-parameters
 title: Clean code - Linux Bash - Keep the number of function parameters as small as possible
 authors: [christophe]

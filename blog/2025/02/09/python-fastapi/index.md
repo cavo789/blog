@@ -1,4 +1,5 @@
 ---
+date: 2025-02-09
 slug: python-fastapi
 title: Python - Fast API - Create your JSON API in Python in one minute
 authors: [christophe]

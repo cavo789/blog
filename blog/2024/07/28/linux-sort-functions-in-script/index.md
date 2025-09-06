@@ -1,4 +1,5 @@
 ---
+date: 2024-07-28
 slug: linux-sort-functions-in-script
 title: Linux - Sort functions in a Bash script
 authors: [christophe]

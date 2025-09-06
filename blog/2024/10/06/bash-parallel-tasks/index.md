@@ -1,4 +1,5 @@
 ---
+date: 2024-10-06
 slug: bash-parallel-task
 title: Linux - Take advantage of the number of CPUs you have; start concurrent jobs
 authors: [christophe]

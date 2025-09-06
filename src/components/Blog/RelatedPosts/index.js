@@ -30,7 +30,6 @@ import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import PostCard from "@site/src/components/Blog/PostCard";
 
-
 export default function RelatedPosts({ count = 3, description = false }) {
   const { metadata } = useBlogPost();
   const currentPermalink = metadata.permalink;
@@ -85,15 +84,9 @@ export default function RelatedPosts({ count = 3, description = false }) {
     <>
       <h3>Related posts</h3>
       <div className="row">
-        <div
-            className="col col--4"
-            style={{ marginBottom: "2rem", display: "flex" }}
-          >
         {related.map((post) => (
-          <PostCard key={post.id} post={post} />
-
+          <PostCard key={post.id} layout="small" post={post} />
         ))}
-          </div>
       </div>
     </>
   );

@@ -1,4 +1,5 @@
 ---
+date: 2025-01-10
 slug: git-precommit
 title: Git - pre-commit-hooks
 authors: [christophe]

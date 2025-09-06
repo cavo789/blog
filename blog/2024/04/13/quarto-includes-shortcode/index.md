@@ -1,4 +1,5 @@
 ---
+date: 2024-04-13
 slug: quarto-includes-shortcode
 title: Quarto includes short code
 authors: [christophe]

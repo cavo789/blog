@@ -1,4 +1,5 @@
 ---
+date: 2024-02-07
 slug: docusaurus-docker-own-blog
 title: Running your own blog with Docusaurus and Docker
 authors: [christophe]

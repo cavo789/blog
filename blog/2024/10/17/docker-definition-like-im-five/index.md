@@ -1,4 +1,5 @@
 ---
+date: 2024-10-17
 slug: docker-definition-like-im-five
 title: Docker - Explain me like I'm five - What's Docker for?
 authors: [christophe]

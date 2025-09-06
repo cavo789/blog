@@ -1,4 +1,5 @@
 ---
+date: 2024-02-04
 slug: docusaurus-docker
 title: Running Docusaurus with Docker
 authors: [christophe]

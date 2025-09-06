@@ -23,52 +23,125 @@ import CardImage from "@site/src/components/Card/CardImage";
 import styles from "./styles.module.css";
 
 /**
- * Renders a single blog post card with image, title, and description.
- *
+ * Renders a formatted date string.
+ * @param {Object} props
+ * @param {string} props.date - The date string to format.
+ * @param {string} props.layout - The layout variant ('big' or 'small').
+ * @returns {JSX.Element | null}
+ */
+const FormattedDate = ({ date, layout }) => {
+  if (!date) {
+    return null;
+  }
+  return (
+    <p
+      className={layout === "small" ? "" : styles.date}
+      style={
+        layout === "small"
+          ? { color: "#888", fontSize: "0.95em", marginBottom: 8 }
+          : {}
+      }
+    >
+      <span>
+        {new Date(date).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+      </span>
+    </p>
+  );
+};
+
+/**
  * @param {Object} props
  * @param {Object} props.post - Blog post metadata.
+ * @param {string} [props.layout='big'] - The layout variant: 'big' or 'small'.
  * @param {string} props.defaultImage - Fallback image used when no image is provided.
  * @returns {JSX.Element}
  */
-export default function PostCard({ post, defaultImage = "/img/default.jpg" }) {
+export default function PostCard({
+  post,
+  layout = "big",
+  defaultImage = "/img/default.jpg",
+}) {
   const { permalink, image, title, description, date } = post;
-  console.log(post);
 
-  return (
-    <Card shadow="md">
-      <CardImage
-        cardImageUrl="/img/default.jpg" //{image || defaultImage}
-        alt={title}
-        title={title}
-      />
-      <CardBody className="padding-vert--md text--center" textAlign="center" style={{
+  if (layout === "small") {
+    return (
+      <div
+        className="col col--4"
+        style={{ marginBottom: "2rem", display: "flex" }}
+      >
+        <div
+          className="card"
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+          }}
+        >
+          <div className="card__image">
+            <img
+              src={image || defaultImage}
+              alt={title}
+              style={{
                 width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                height: "100%",
-              }}>
-        {/*
-            For accessibility purposes, it's better to only put the link on the title,
-            not on the entire card
-          */}
-        <h3>
-          <Link href={permalink} aria-label={`Read article: ${title}`}>{title}&nbsp;→</Link>
-        </h3>
-        {description && <p className={styles.description}>{description}</p>}
+                height: 180,
+                objectFit: "cover",
+                borderTopLeftRadius: 8,
+                borderTopRightRadius: 8,
+              }}
+            />
+          </div>
+          <div className="card__body" style={{ flex: 1 }}>
+            <h3>
+              <Link to={permalink}>{title}</Link>
+            </h3>
+            {description && (
+              <div
+                style={{
+                  color: "#6c63ff",
+                  fontWeight: "bold",
+                  marginBottom: 6,
+                }}
+              >
+                {description}
+              </div>
+            )}
+            <FormattedDate date={date} layout={layout} />
+          </div>
+          <div className="card__footer" style={{ textAlign: "right" }}>
+            <Link className="button button--primary button--sm" to={permalink}>
+              Read more
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-        <p
-                    style={{
-                      color: "#888",
-                      fontSize: "0.95em",
-                      marginBottom: 8,
-                    }}
-                  >
-                    {date && (
-                      <span>{new Date(date).toLocaleDateString()}</span>
-                    )}
-                  </p>
-      </CardBody>
-    </Card>
+  // Default "big" layout
+  return (
+    <div className="col col--3 margin-bottom--lg">
+      <Card shadow="md">
+        <CardImage
+          cardImageUrl={image || defaultImage}
+          alt={title}
+          title={title}
+        />
+        <CardBody className="padding-vert--md text--center" textAlign="center">
+          <h3>
+            <Link href={permalink} aria-label={`Read article: ${title}`}>
+              {title}&nbsp;→
+            </Link>
+          </h3>
+          {description && <p className={styles.description}>{description}</p>}
+          <FormattedDate date={date} layout={layout} />
+        </CardBody>
+      </Card>
+    </div>
   );
 }
 
@@ -79,5 +152,6 @@ PostCard.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
   }).isRequired,
-  defaultImage: "/img/default.jpg",
+  layout: PropTypes.oneOf(["big", "small"]),
+  defaultImage: PropTypes.string,
 };

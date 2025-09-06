@@ -1,4 +1,5 @@
 ---
+date: 2024-08-22
 slug: winscp-download-recursively-files
 title: WinSCP - Download files with specific extension recursively
 authors: [christophe]

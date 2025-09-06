@@ -1,4 +1,5 @@
 ---
+date: 2024-04-13
 slug: quarto-inline-style
 title: Quarto Inline style
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2023-11-03
 slug: docker-volume
 title: Share data between your running Docker container and your computer
 authors: [christophe]

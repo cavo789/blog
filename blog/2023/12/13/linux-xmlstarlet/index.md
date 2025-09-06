@@ -1,4 +1,5 @@
 ---
+date: 2023-12-13
 slug: linux-xmlstarlet
 title: The xmlstarlet utility for Linux
 authors: [christophe]

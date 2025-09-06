@@ -1,4 +1,5 @@
 ---
+date: 2023-12-16
 slug: docker-mindmap
 title: Build a mind map using Docker and Markdown
 authors: [christophe]

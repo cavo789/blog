@@ -1,4 +1,5 @@
 ---
+date: 2024-11-28
 slug: vbs-files-csv
 title: VBS - Get list of files and generate a CSV
 authors: [christophe]

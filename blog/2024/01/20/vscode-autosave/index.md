@@ -1,4 +1,5 @@
 ---
+date: 2024-01-20
 slug: vscode-autosave
 title: Autosave feature in VSCode
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2024-10-07
 slug: bash-progression-bar
 title: Linux - Using a progression bar in your script
 authors: [christophe]

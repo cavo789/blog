@@ -1,4 +1,5 @@
 ---
+date: 2023-12-19
 slug: bash-load-env
 title: Bash - Loading environment variables from a file
 authors: [christophe]

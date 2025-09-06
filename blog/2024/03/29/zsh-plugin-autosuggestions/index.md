@@ -1,4 +1,5 @@
 ---
+date: 2024-03-29
 slug: zsh-plugin-autosuggestions
 title: Autosuggestions in the console using ZSH
 authors: [christophe]

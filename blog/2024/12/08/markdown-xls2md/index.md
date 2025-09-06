@@ -1,4 +1,5 @@
 ---
+date: 2024-12-08
 slug: markdown-xls2md
 title: Markdown - Convert Excel ranges to Markdown tables
 authors: [christophe]

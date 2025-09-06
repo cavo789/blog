@@ -1,4 +1,5 @@
 ---
+date: 2024-11-19
 slug: json-faker
 title: JSON - Faker & Mockup
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2024-06-02
 slug: joomla-show-table
 title: Joomla - Run a SQL statement outside Joomla and display a nice HTML table
 authors: [christophe]

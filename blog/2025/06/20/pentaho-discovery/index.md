@@ -1,4 +1,5 @@
 ---
+date: 2025-06-20
 slug: pentaho-discovery
 title: Discovering Pentaho, a ETL program
 authors: [christophe]

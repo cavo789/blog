@@ -1,4 +1,5 @@
 ---
+date: 2024-02-14
 slug: php-rector
 title: Rector 1.0.0 🎉🎉🎉, my friend, my coach
 authors: [christophe]

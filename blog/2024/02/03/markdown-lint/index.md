@@ -1,4 +1,5 @@
 ---
+date: 2024-02-03
 slug: markdown-lint
 title: Markdown linter - solve formatting issue in md files
 authors: [christophe]

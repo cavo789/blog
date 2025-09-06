@@ -1,4 +1,5 @@
 ---
+date: 2023-11-03
 slug: site-creation
 title: Site creation
 authors: [christophe]

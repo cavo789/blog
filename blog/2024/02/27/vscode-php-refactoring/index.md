@@ -1,4 +1,5 @@
 ---
+date: 2024-02-27
 slug: vscode-php-refactoring
 title: PHP code refactoring in VSCode
 authors: [christophe]

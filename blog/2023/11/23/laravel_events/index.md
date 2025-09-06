@@ -1,4 +1,5 @@
 ---
+date: 2023-11-23
 slug: laravel_events
 title: Working with Laravel events
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2023-12-22
 slug: docker-joomla-fr
 title: Créer votre site web Joomla en utilisant Docker
 authors: [christophe]

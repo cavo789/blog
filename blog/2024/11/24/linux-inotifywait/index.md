@@ -1,4 +1,5 @@
 ---
+date: 2024-11-24
 slug: linux-inotifywait
 title: Keep running and count the number of files in a folder using inotifywait
 authors: [christophe]

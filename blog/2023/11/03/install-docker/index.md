@@ -1,4 +1,5 @@
 ---
+date: 2023-11-03
 slug: install-docker
 title: Install Docker and play with PHP
 authors: [christophe]

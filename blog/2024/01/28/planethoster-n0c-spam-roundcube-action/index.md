@@ -1,4 +1,5 @@
 ---
+date: 2024-01-28
 slug: planethoster-n0c-spam-roundcube-action
 title: Exterminate them all, kill spam using GitHub Actions
 authors: [christophe]

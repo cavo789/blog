@@ -1,4 +1,5 @@
 ---
+date: 2025-03-30
 slug: cypress
 title: Introduction to Cypress
 authors: [christophe]

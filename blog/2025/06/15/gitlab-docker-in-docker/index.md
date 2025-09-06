@@ -1,4 +1,5 @@
 ---
+date: 2025-06-15
 slug: gitlab-docker-out-of-docker
 title: GitLab - Running Docker-out-of-Docker in your CI
 authors: [christophe]

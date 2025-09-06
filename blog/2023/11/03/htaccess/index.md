@@ -1,4 +1,5 @@
 ---
+date: 2023-11-03
 slug: apache-htaccess
 title: Apache .htaccess file
 authors: [christophe]

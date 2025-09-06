@@ -1,4 +1,5 @@
 ---
+date: 2024-04-19
 slug: vscode-export-list-of-extensions
 title: Export the list of extensions you've installed in VSCode
 authors: [christophe]

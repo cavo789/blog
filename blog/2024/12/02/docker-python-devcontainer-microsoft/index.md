@@ -1,4 +1,5 @@
 ---
+date: 2024-12-02
 slug: docker-python-devcontainer-microsoft
 title: Docker - Even easier setup of Python
 authors: [christophe]

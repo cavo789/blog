@@ -1,4 +1,5 @@
 ---
+date: 2024-12-01
 slug: online-php-linter
 title: Format poorly formatted PHP code
 authors: [christophe]

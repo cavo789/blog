@@ -1,4 +1,5 @@
 ---
+date: 2024-03-03
 slug: vscode-errorlens
 title: Error Lens addon for VSCode
 authors: [christophe]

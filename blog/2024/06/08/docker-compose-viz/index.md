@@ -1,4 +1,5 @@
 ---
+date: 2024-06-08
 slug: docker-compose-viz
 title: How to generate a graph from compose.yaml
 authors: [christophe]

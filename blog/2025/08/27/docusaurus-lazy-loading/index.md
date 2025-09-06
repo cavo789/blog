@@ -1,4 +1,5 @@
 ---
+date: 2025-08-27
 slug: docusaurus-lazy-loading
 title: Overrides the generation of img tags with Docusaurus
 authors: [christophe]

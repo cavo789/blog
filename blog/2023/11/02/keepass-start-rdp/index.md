@@ -1,11 +1,11 @@
 ---
+date: 2023-11-02
 slug: keepass-overriding-url
 title: KeePass - Overriding the URL field
 authors: [christophe]
 mainTag: keepass
 tags: [keepass, winscp, putty, rdp, tips]
 image: /img/keepass_tips_social_media.jpg
-date: 2023-11-02T12:00
 ---
 ![KeePass - Overriding the URL field](/img/keepass_tips_banner.jpg)
 

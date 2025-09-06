@@ -1,4 +1,5 @@
 ---
+date: 2024-10-24
 slug: docker-lubuntu
 title: Start lubuntu Desktop in Docker
 authors: [christophe]

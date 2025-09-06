@@ -1,4 +1,5 @@
 ---
+date: 2025-04-11
 slug: docker-oracle-ords
 title: Transform an Oracle DB as OpenData using Oracle REST Data Services
 authors: [christophe]

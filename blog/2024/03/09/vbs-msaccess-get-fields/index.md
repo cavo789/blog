@@ -1,4 +1,5 @@
 ---
+date: 2024-03-09
 slug: vbs-msaccess-get-fields
 title: VBS - Retrieve the list of fields in a MS Access Database
 authors: [christophe]

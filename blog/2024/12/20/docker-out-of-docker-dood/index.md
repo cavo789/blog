@@ -1,4 +1,5 @@
 ---
+date: 2024-12-20
 slug: docker-out-of-docker-dood
 title: Docker-out-of-Docker aka DooD
 authors: [christophe]

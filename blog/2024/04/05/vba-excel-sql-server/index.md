@@ -1,4 +1,5 @@
 ---
+date: 2024-04-05
 slug: vba-excel-sql-server
 title: MS Excel - Connect to a SQL Server database, run a query and get the results
 authors: [christophe]

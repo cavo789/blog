@@ -1,4 +1,5 @@
 ---
+date: 2024-04-07
 slug: php-jakzal-phpqa
 title: Docker image that provides static analysis tools for PHP
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2025-05-19
 slug: php-api-tips
 title: API REST - How to write good APIs
 authors: [christophe]

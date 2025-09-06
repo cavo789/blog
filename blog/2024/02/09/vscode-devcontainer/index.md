@@ -1,4 +1,5 @@
 ---
+date: 2024-02-09
 slug: vscode-devcontainer
 title: PHP development in a devcontainer with preinstalled code quality tools
 authors: [christophe]

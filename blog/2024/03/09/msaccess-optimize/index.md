@@ -6,6 +6,7 @@ image: /img/database_tips_social_media.jpg
 mainTag: msaccess
 tags: [database, msaccess, vba]
 ---
+date: 2024-03-09
 ![How to optimize an existing MS Access database](/img/database_tips_banner.jpg)
 
 Several years ago, I had to intervene on an MS Access database that had been created by a person of good will but with little affinity for computers and optimization.

@@ -1,4 +1,5 @@
 ---
+date: 2023-12-10
 slug: vba-excel-ribbon
 title: MS Office - How to create a ribbon in Excel
 authors: [christophe]

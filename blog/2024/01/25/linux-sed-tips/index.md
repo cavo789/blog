@@ -1,4 +1,5 @@
 ---
+date: 2024-01-25
 slug: linux-sed-tips
 title: Search and replace (or add) using sed
 authors: [christophe]

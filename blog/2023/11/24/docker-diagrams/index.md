@@ -1,4 +1,5 @@
 ---
+date: 2023-11-24
 slug: docker-diagram-as-code
 title: Docker - Diagrams as code
 authors: [christophe]

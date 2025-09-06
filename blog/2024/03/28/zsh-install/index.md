@@ -1,4 +1,5 @@
 ---
+date: 2024-03-28
 slug: zsh-install
 title: How to install Oh-My-ZSH
 authors: [christophe]

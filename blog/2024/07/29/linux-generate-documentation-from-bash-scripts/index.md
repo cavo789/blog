@@ -1,4 +1,5 @@
 ---
+date: 2024-07-29
 slug: linux-generate-documentation-from-bash-scripts
 title: Linux - Generate documentation from Bash scripts
 authors: [christophe]

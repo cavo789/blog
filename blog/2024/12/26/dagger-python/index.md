@@ -1,4 +1,5 @@
 ---
+date: 2024-12-26
 slug: dagger-python
 title: Dagger.io - Using dagger to automate your CI workflows
 authors: [christophe]

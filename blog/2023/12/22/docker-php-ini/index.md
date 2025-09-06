@@ -1,4 +1,5 @@
 ---
+date: 2023-12-22
 slug: docker-php-ini
 title: Update php.ini when using a Docker image
 authors: [christophe]

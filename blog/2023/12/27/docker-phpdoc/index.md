@@ -1,4 +1,5 @@
 ---
+date: 2023-12-27
 slug: docker-phpdocumentor
 title: Generating documentation for a PHP codebase
 authors: [christophe]

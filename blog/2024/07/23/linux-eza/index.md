@@ -1,4 +1,5 @@
 ---
+date: 2024-07-23
 slug: linux-eza
 title: Let's revisit the ls command thanks to eza
 authors: [christophe]

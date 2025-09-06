@@ -1,4 +1,5 @@
 ---
+date: 2023-12-14
 slug: windows-winget
 title: Update all out-of-date Windows programs in batch
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2025-01-05
 slug: docker-init-php-apache
 title: Using Docker init to quickly dockerize your PHP application
 authors: [christophe]

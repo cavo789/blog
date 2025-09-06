@@ -1,4 +1,5 @@
 ---
+date: 2023-11-03
 slug: vscode-markdown-code-folding
 title: Markdown folding not working
 authors: [christophe]

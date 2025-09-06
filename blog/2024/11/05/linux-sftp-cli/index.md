@@ -1,4 +1,5 @@
 ---
+date: 2024-11-05
 slug: linux-sftp-cli
 title: Using sftp on the command line, with or without a proxy
 authors: [christophe]

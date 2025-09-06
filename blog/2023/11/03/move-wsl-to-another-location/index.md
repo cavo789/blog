@@ -1,4 +1,5 @@
 ---
+date: 2023-11-03
 slug: move-wsl-to-another-location
 title: Move WSL to another location
 authors: [christophe]

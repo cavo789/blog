@@ -1,11 +1,11 @@
 ---
+date: 2023-11-02
 slug: wslg-rpd-connection
 title: Opening a RDP connection to the Linux local instance
 authors: [christophe]
 mainTag: wsl
 tags: [wsl, wslg, docker, rdp]
 image: /img/wsl_tips_social_media.jpg
-date: 2023-11-02T18:00
 ---
 ![Opening a RDP connection to the Linux local instance](/img/wsl_tips_banner.jpg)
 

@@ -1,4 +1,5 @@
 ---
+date: 2024-01-03
 slug: quarto-project-variables
 title: Using variables from external file in your Quarto project
 authors: [christophe]

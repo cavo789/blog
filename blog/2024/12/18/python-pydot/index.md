@@ -1,4 +1,5 @@
 ---
+date: 2024-12-18
 slug: python-pydot
 title: Python - Generate flows using pydot
 authors: [christophe]

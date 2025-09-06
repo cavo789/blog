@@ -1,4 +1,5 @@
 ---
+date: 2023-12-25
 slug: quarto-powerpoint
 title: Use Quarto and create a PowerPoint slideshow
 authors: [christophe]

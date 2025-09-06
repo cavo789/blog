@@ -1,4 +1,5 @@
 ---
+date: 2023-11-30
 slug: docker-assembly
 title: Play with Docker and Assembly programming language
 authors: [christophe]

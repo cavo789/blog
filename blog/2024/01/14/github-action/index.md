@@ -1,4 +1,5 @@
 ---
+date: 2024-01-14
 slug: github-action
 title: GitHub - Use Actions to deploy this blog
 authors: [christophe]

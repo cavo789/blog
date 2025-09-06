@@ -1,4 +1,5 @@
 ---
+date: 2024-03-09
 slug: github-connect-using-ssh
 title: Github - Connect your account using SSH and start to work with git@ protocol
 authors: [christophe]

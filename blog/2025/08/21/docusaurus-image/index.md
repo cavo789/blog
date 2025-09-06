@@ -1,4 +1,5 @@
 ---
+date: 2025-08-21
 slug: docusaurus-override-img
 title: Change how Docusaurus will create img tags
 authors: [christophe]

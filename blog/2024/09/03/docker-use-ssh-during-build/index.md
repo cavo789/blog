@@ -1,4 +1,5 @@
 ---
+date: 2024-09-03
 slug: docker-use-ssh-during-build
 title: Docker secrets - Using your SSH key during the build process
 authors: [christophe]

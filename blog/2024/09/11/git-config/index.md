@@ -1,4 +1,5 @@
 ---
+date: 2024-09-11
 slug: git-config
 title: Git - Some tips for your .gitconfig file
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2024-03-02
 slug: vscode-tabnine
 title: Tabnine - AI Autocomplete & Chat for Javascript, Python, Typescript, PHP, Go, Java & more
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2025-01-25
 slug: docker-git
 title: Docker - Install and use Git in a container just like you do on your host
 authors: [christophe]

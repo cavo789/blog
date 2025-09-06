@@ -1,4 +1,5 @@
 ---
+date: 2023-12-25
 slug: makefile-help
 title: Linux Makefile - Adding a help screen
 authors: [christophe]

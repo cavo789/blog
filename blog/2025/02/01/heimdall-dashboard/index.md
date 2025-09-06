@@ -1,4 +1,5 @@
 ---
+date: 2025-02-01
 slug: heimdall-dashboard
 title: Heimdall - Web dashboard
 authors: [christophe]

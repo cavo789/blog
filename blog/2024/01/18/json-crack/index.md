@@ -1,4 +1,5 @@
 ---
+date: 2024-01-18
 slug: json-crack
 title: Rendering a JSON file as a mind map
 authors: [christophe]

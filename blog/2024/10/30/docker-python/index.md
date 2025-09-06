@@ -1,4 +1,5 @@
 ---
+date: 2024-10-30
 slug: docker-python-devcontainer
 title: Docker - Python devcontainer
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2024-01-26
 slug: compare-env-files-cli
 title: Compare environment files in the Linux console
 authors: [christophe]

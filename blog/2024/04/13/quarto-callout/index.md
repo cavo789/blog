@@ -1,4 +1,5 @@
 ---
+date: 2024-04-13
 slug: quarto-callout-blocks
 title: Quarto Callout Blocks
 authors: [christophe]

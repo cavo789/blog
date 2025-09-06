@@ -1,4 +1,5 @@
 ---
+date: 2024-04-09
 slug: php-obfuscator
 title: Obfuscate your PHP code
 authors: [christophe]

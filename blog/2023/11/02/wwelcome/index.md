@@ -1,9 +1,9 @@
 ---
+date: 2023-11-02
 slug: welcome
 title: Welcome
 authors: [christophe]
 image: /img/welcome.jpg
-date: 2023-11-02T08:00
 ---
 ![Welcome](./images/header.jpg)
 

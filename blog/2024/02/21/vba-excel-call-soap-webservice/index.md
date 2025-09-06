@@ -1,4 +1,5 @@
 ---
+date: 2024-02-21
 slug: vba-excel-call-soap-webservice
 title: MS Excel - How to call a SOAP web service
 authors: [christophe]

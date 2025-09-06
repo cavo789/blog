@@ -1,4 +1,5 @@
 ---
+date: 2024-01-26
 slug: update-env-files-cli
 title: Batch edit of environment file
 authors: [christophe]

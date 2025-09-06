@@ -1,4 +1,5 @@
 ---
+date: 2024-04-28
 slug: docker-docusaurus-prod
 title: Encapsulate an entire Docusaurus site in a Docker image
 authors: [christophe]

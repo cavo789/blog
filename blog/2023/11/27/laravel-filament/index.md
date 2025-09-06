@@ -1,4 +1,5 @@
 ---
+date: 2023-11-27
 slug: laravel-filament
 title: Laravel Filament
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2025-05-25
 slug: excel-formatter
 title: Excel Formula Beautifier
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2024-07-16
 slug: makefile_tips
 title: Makefile - Tutorial and Tips & Tricks
 authors: [christophe]

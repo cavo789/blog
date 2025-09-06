@@ -1,4 +1,5 @@
 ---
+date: 2024-01-03
 slug: quarto-revealjs-tips
 title: Some tips and tricks for Quarto when rendering as a reveal.js slideshow
 authors: [christophe]

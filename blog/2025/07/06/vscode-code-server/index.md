@@ -1,4 +1,5 @@
 ---
+date: 2025-07-06
 slug: vscode-code-server
 title: Do I need VSCode on my machine to use it?
 authors: [christophe]

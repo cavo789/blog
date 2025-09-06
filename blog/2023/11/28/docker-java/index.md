@@ -1,4 +1,5 @@
 ---
+date: 2023-11-28
 slug: docker-java
 title: Play with Docker and Java
 authors: [christophe]

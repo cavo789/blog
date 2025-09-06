@@ -1,4 +1,5 @@
 ---
+date: 2025-06-27
 slug: vba-access-export
 title: Export MS Access objects
 authors: [christophe]

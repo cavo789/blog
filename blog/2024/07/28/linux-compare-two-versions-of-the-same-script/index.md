@@ -1,4 +1,5 @@
 ---
+date: 2024-07-28
 slug: linux-compare-two-versions-of-the-same-script
 title: Linux - Compare two versions of the same script
 authors: [christophe]

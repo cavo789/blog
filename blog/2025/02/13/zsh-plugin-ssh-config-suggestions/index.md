@@ -1,4 +1,5 @@
 ---
+date: 2025-02-13
 slug: zsh-plugin-ssh-config-suggestions
 title: SSH - Autosuggestions with ZSH
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2024-09-27
 slug: pest_tips
 title: Write PHP unit tests using Pest
 authors: [christophe]

@@ -1,4 +1,5 @@
 ---
+date: 2024-12-06
 slug: python-pandas-merge
 title: Pandas - Merge two or more files and create a merged one
 authors: [christophe]

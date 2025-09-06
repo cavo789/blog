@@ -1,4 +1,5 @@
 ---
+date: 2024-02-20
 slug: docker-network-and-extra-hosts
 title: Using Docker network and the extra_hosts property
 authors: [christophe]

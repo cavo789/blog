@@ -1,4 +1,5 @@
 ---
+date: 2024-10-12
 slug: linux-history
 title: Linux - Working with the history of your last fired actions
 authors: [christophe]

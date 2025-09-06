@@ -1,4 +1,5 @@
 ---
+date: 2023-12-28
 slug: docker-wordpress
 title: Quickly install WordPress in just three commands
 authors: [christophe]

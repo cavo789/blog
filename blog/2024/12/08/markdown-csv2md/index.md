@@ -1,4 +1,5 @@
 ---
+date: 2024-12-08
 slug: markdown-csv2md
 title: Markdown - Convert CSV to Markdown tables
 authors: [christophe]

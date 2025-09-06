@@ -1,4 +1,5 @@
 ---
+date: 2025-08-30
 slug: pest-functional-testing
 title: Writing functional tests with Pest
 authors: [christophe]

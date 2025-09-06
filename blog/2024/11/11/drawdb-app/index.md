@@ -1,4 +1,5 @@
 ---
+date: 2024-11-11
 slug: drawdb-app
 title: Drawdb-app - Render your database model as png, markdown, mermaid, ...
 authors: [christophe]

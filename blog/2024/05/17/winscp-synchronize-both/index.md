@@ -1,4 +1,5 @@
 ---
+date: 2024-05-17
 slug: winscp-synchronize-both
 title: WinSCP - Synchronize host and remote
 authors: [christophe]

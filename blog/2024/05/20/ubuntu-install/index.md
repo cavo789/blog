@@ -1,4 +1,5 @@
 ---
+date: 2024-05-20
 slug: ubuntu-install
 title: Ubuntu - Install from scratch
 authors: [christophe]

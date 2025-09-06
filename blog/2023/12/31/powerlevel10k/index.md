@@ -1,4 +1,5 @@
 ---
+date: 2023-12-31
 slug: powerlevel10k_sandbox
 title: Customize your Linux prompt with Powerlevel10k
 authors: [christophe]

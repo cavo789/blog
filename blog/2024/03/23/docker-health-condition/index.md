@@ -1,4 +1,5 @@
 ---
+date: 2024-03-23
 slug: docker-health-condition
 title: Understanding the depends_on condition in Docker compose files
 authors: [christophe]

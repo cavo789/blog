@@ -1,4 +1,5 @@
 ---
+date: 2024-08-09
 slug: docker-html-site
 title: Running a HTML site in seconds using Docker
 authors: [christophe]

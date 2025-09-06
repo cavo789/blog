@@ -1,4 +1,5 @@
 ---
+date: 2023-12-27
 slug: docker-adminer-pgadmin-phpmyadmin
 title: Using Adminer, pgadmin or phpmyadmin to access your Docker database container
 authors: [christophe]

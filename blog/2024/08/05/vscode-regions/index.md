@@ -1,4 +1,5 @@
 ---
+date: 2024-08-05
 slug: vscode-regions
 title: Working with regions in VSCode
 authors: [christophe]

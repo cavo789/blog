@@ -1,4 +1,5 @@
 ---
+date: 2023-11-29
 slug: docker-python
 title: Play with Docker and Python
 authors: [christophe]

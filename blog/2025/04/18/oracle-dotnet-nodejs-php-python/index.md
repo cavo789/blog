@@ -1,4 +1,5 @@
 ---
+date: 2025-04-18
 slug: oracle-dotnet-nodejs-php-python
 title: Accessing an Oracle database using .Net, NodeJS, PHP and Python
 authors: [christophe]

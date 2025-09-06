@@ -1,4 +1,5 @@
 ---
+date: 2024-03-30
 slug: linux-fzf-introduction
 title: Introduction to fzf - Fuzzy Finder
 authors: [christophe]

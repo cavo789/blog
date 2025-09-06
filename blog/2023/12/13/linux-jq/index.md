@@ -1,4 +1,5 @@
 ---
+date: 2023-12-13
 slug: linux-jq
 title: The jq utility for Linux
 authors: [christophe]

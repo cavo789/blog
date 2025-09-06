@@ -1,4 +1,5 @@
 ---
+date: 2024-04-19
 slug: vscode-multiple-cursors
 title: Multiple cursors in vscode
 authors: [christophe]

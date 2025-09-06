@@ -1,4 +1,5 @@
 ---
+date: 2023-12-21
 slug: docker-quarto
 title: Running Quarto Markdown in Docker
 authors: [christophe]

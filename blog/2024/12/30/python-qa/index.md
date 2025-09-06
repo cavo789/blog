@@ -1,4 +1,5 @@
 ---
+date: 2024-12-30
 slug: python-qa
 title: Python - Code Quality tools
 authors: [christophe]

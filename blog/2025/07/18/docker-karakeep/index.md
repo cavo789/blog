@@ -1,4 +1,5 @@
 ---
+date: 2025-07-18
 slug: docker-karakeep
 title: karakeep - The Bookmark Everything App
 authors: [christophe]

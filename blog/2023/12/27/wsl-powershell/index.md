@@ -1,4 +1,5 @@
 ---
+date: 2023-12-27
 slug: wsl-powershell
 title: Starting the default associated Windows program on WSL
 authors: [christophe]
