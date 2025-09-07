@@ -19,13 +19,13 @@ Place this file in: `src/components/Blog/utils/series.js`
 ```js
 import { generateSeriesList } from './series';
 
-const seriesList = generateSeriesList(posts, '/series/articles/', '/img/fallback.jpg');
+const seriesList = generateSeriesList(posts, '/series/', '/img/fallback.jpg');
 ```
 
 ## Default behavior
 
 * Uses `/img/default.jpg` as fallback image
-* Generates permalink like: `/series/articles?name=${slug}`
+* Generates permalink like: `/series/${slug}`
 
 ## 🧩 Returned Object Structure
 
@@ -34,7 +34,7 @@ Each item in the array looks like:
 ```js
 {
   seriesName: "Introduction to Docusaurus",
-  permalink: "/series/articles?name=introduction-to-docusaurus",
+  permalink: "/series/introduction-to-docusaurus",
   image: "/img/docusaurus-intro.png",
   title: "Introduction to Docusaurus",
   description: "5 published article(s) • 2 in progress"
@@ -50,7 +50,7 @@ The `permalink` URL can be parametrized; see below.
 | Name | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | `posts` | Array | ✅ | — | Array of blog post objects |
-| `permalinkFn` | Function | ❌ | `/series/articles?name=${slug}` | Function to generate permalink from slug (default provided) |
+| `permalinkFn` | Function | ❌ | `/series/${slug}` | Function to generate permalink from slug (default provided) |
 | `defaultImage` | string | ❌ | `default.jpg` | Fallback image path if no image is provided |
 
 ## 🧠 Notes

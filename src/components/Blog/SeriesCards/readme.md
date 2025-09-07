@@ -60,7 +60,7 @@ Each card includes:
 * Title: `Introduction to Docusaurus`
 * Image: `/img/docusaurus-intro.png`
 * Description: `5 published article(s) • 2 in progress`
-* Link: `/series/articles?name=introduction-to-docusaurus`
+* Link: `/series/introduction-to-docusaurus`
 
 ## 📄 License
 

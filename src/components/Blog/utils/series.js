@@ -15,12 +15,12 @@ import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
  * @returns {Array<Object>} seriesList - Array of series metadata objects.
  *
  * @example
- * const seriesList = generateSeriesList("/series/articles", "/img/fallback.jpg");
+ * const seriesList = generateSeriesList("/series/", "/img/fallback.jpg");
  *
  * Each object in the returned array looks like:
  *   {
  *     seriesName: "Introduction to Docusaurus",
- *     permalink: "/series/articles?name=introduction-to-docusaurus",
+ *     permalink: "/series/introduction-to-docusaurus",
  *     image: "/img/docusaurus-intro.png",
  *     title: "Introduction to Docusaurus",
  *     description: "5 published article(s) • 2 in progress"
@@ -28,7 +28,7 @@ import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
  */
 
 export function generateSeriesList(
-  permalink = "/series/articles",
+  permalink = "/series/",
   defaultImage = "/img/default.jpg"
 ) {
   const seriesMap = {};
@@ -64,7 +64,7 @@ export function generateSeriesList(
 
       return {
         seriesName,
-        permalink: `${permalink}?name=${createSlug(seriesName)}`,
+        permalink: `${permalink}${createSlug(seriesName)}`,
         image: sortedPosts[0]?.image || defaultImage,
         title: seriesName,
         description,

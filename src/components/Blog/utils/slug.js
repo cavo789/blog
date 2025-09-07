@@ -14,11 +14,12 @@
  */
 export function createSlug(text) {
   return text
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2") // camelCase → kebab-case
     .toLowerCase()
-    .normalize('NFD') // Decomposes accented characters
-    .replace(/[\u0300-\u036f]/g, '') // Removes diacritics
-    .replace(/[^a-z0-9\s-]/g, '') // Removes special characters
-    .replace(/\s+/g, '-') // Replaces spaces with hyphens
-    .replace(/-+/g, '-') // Collapses multiple hyphens
-    .replace(/^-+|-+$/g, ''); // Trims leading/trailing hyphens
+    .normalize("NFD") // Decomposes accented characters
+    .replace(/[\u0300-\u036f]/g, "") // Removes diacritics
+    .replace(/[^a-z0-9\s-]/g, "") // Removes special characters
+    .replace(/\s+/g, "-") // Replaces spaces with hyphens
+    .replace(/-+/g, "-") // Collapses multiple hyphens
+    .replace(/^-+|-+$/g, ""); // Trims leading/trailing hyphens
 }

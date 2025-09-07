@@ -5,7 +5,7 @@ title: How to install Oh-My-ZSH
 authors: [christophe]
 image: /img/zsh_tips_social_media.jpg
 mainTag: zsh
-tags: [customization, linux, powerlevel10k, wsl, zsh]
+tags: [customization, linux, wsl, zsh]
 ---
 ![How to install Oh-My-ZSH](/img/zsh_tips_banner.jpg)
 

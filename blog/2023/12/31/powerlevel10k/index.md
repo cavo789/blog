@@ -5,7 +5,7 @@ title: Customize your Linux prompt with Powerlevel10k
 authors: [christophe]
 image: /img/wsl_tips_social_media.jpg
 mainTag: customization
-tags: [customization, docker, powerlevel10k, tips, wsl, zsh]
+tags: [customization, docker, tips, wsl, zsh]
 ---
 ![Customize your Linux prompt with Powerlevel10k](/img/wsl_tips_banner.jpg)
 

@@ -43,7 +43,7 @@ export default function SeriesPosts({
   return (
     <div className={styles.seriesBlogPost}>
       <p>
-        This article is part of the <Link href={`/series/articles?name=${createSlug(series)}`}>{series}</Link> series:
+        This article is part of the <Link href={`/series/${createSlug(series)}`}>{series}</Link> series:
       </p>
       <ul>
         {posts.map((post) => {

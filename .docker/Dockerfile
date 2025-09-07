@@ -57,6 +57,7 @@ ARG DOCKER_UID
 ARG DOCKER_GID
 ARG USERNAME
 
+# We're using user NODE right now; already present in the image
 # hadolint ignore=DL3008
 RUN set -e -x \
     && if [ ! "$DOCKER_UID" = "1000" ]; then \
@@ -71,7 +72,7 @@ USER "${USERNAME}"
 ARG TARGET
 ENV TARGET="${TARGET}"
 
-RUN /bin/bash -c "echo \"PS1='\n\e[0;33m🐳 (${TARGET})\e[0m - \e[0;36m$(whoami)\e[0m \w # '\" >> /home/node/.bashrc "
+RUN /bin/bash -c "echo \"PS1='\n\e[0;33m🐳 (${TARGET})\e[0m - \e[0;36m$(whoami)\e[0m \w # '\" >> ${HOME}/.bashrc "
 
 # endregion
 

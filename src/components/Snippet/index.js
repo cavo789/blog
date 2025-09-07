@@ -167,8 +167,6 @@ export default function Snippet({
   // Memoize lang & variantKey so they don't recalc on every render
   const lang = useMemo(() => getLanguageFromChildren(children), [children]);
 
-  console.log("Lang", lang);
-
   const isDockerFile = useMemo(() => {
     if (typeof filename !== "string") return false;
     const lower = filename.toLowerCase();

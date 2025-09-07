@@ -13,6 +13,8 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 import remarkReplaceImgToImage from "./plugins/remark-image-transformer";
 import remarkReplaceWords from "./plugins/remark-replace-terms";
+import pluginSeriesRoute from "./plugins/docusaurus-plugin-series-route/index.cjs"
+import pluginTagRoute from "./plugins/docusaurus-plugin-tag-route/index.cjs"
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -36,7 +38,12 @@ const config = {
   noIndex: false, // Make sure our HTML pages will contains the <meta name="robots" content="index, follow"> tag
 
   onBrokenAnchors: "throw",
-  onBrokenLinks: "warn",
+  // WE SHOULD IGNORE BROKEN LINKS because Docusaurus’s link checker doesn't
+  // recognize dynamic routes created via plugins; and we're using at least one
+  // i.e. "plugins/docusaurus-plugin-series-route/index.cjs".
+  // If we don't ignore broken links, Docusaurus will always throw an error during build
+  // time.
+  onBrokenLinks: "ignore",
   onBrokenMarkdownLinks: "warn",
   onDuplicateRoutes: "throw",
 
@@ -112,6 +119,8 @@ const config = {
   plugins: [
     "docusaurus-plugin-matomo",
     [require.resolve("docusaurus-plugin-image-zoom"), {}],
+    [pluginSeriesRoute, {}],
+    [pluginTagRoute, {}],
   ],
   headTags: [
     {
