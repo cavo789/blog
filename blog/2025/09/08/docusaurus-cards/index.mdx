@@ -1,5 +1,5 @@
 ---
-date: 2025-09-07
+date: 2025-09-08
 slug: docusaurus-cards
 title: Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide
 authors: [christophe, docux]
@@ -14,21 +14,25 @@ blueSkyRecordKey:
 
 ![Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide](/img/docusaurus_component_banner.jpg)
 
-In this series, we'll learn how to create a card from a blog post.
+In this article, we'll learn how to create a card from a blog post.
 
 If you're using Docusaurus for your blog, you might be looking for some ways to improve the layout of pages. Instead of displaying posts as a list, let's see how we can display them as **cards**.
 
-In this guide, we'll walk through how to create this. You've be just asked to copy/paste files to your site and make a small change in your configuration file.
+In this guide, we'll walk through how to create this. You've been just asked to copy/paste files to your site and make a small change in your configuration file.
 
 <!-- truncate -->
 
 ![Example of a card](./images/cards.png)
 
-This will implies a big number of files but the idea is then to reuse created components / files for later use.
+This will imply a big number of files but the idea is then to reuse created components / files for later use.
 
-## Reusing the Card component of Docux
+## Reusing the Reusable Card component of Docux
 
-First, we'll retrieve the [Card Component](https://docusaurus.community/knowledge/component-library/new/Card/) of our friend, Docux.  That one can be retrieve on the Docusaurus Community site.
+First, we'll retrieve the [Reusable Card Component](https://docuxlab.com/blog/card-component-docusaurus-infima/) of our friend, [Docux](https://github.com/Juniors017). It's a set of files you've to create; let's proceed.
+
+:::info
+That one can be retrieved too on the [Docusaurus Community](https://docusaurus.community/knowledge/component-library/new/Card/) site but perhaps not up to date.
+:::
 
 In your Docusaurus site, please create these files:
 
@@ -60,6 +64,7 @@ export default Card;
 ```js
 import React, { CSSProperties } from "react";
 import clsx from "clsx";
+
 const CardBody = ({
   className, // classNamees for the container card
   style, // Custom styles for the container card
@@ -101,6 +106,7 @@ const CardBody = ({
     </div>
   );
 };
+
 export default CardBody;
 ```
 
@@ -111,6 +117,7 @@ export default CardBody;
 ```js
 import React, { CSSProperties } from "react";
 import clsx from "clsx";
+
 const CardFooter = ({
   className,
   style,
@@ -152,6 +159,7 @@ const CardFooter = ({
     </div>
   );
 };
+
 export default CardFooter;
 ```
 
@@ -162,6 +170,7 @@ export default CardFooter;
 ```js
 import React, { CSSProperties } from "react"; // CSSProperties allows inline styling with better type checking.
 import clsx from "clsx"; // clsx helps manage conditional className names in a clean and concise manner.
+
 const CardHeader = ({
   className, // classNamees for the container card
   style, // Custom styles for the container card
@@ -203,6 +212,7 @@ const CardHeader = ({
     </div>
   );
 };
+
 export default CardHeader;
 ```
 
@@ -214,8 +224,10 @@ export default CardHeader;
 import React, { CSSProperties } from "react";
 import clsx from "clsx";
 import useBaseUrl from "@docusaurus/useBaseUrl"; // Import the useBaseUrl function from Docusaurus
+
 const CardImage = ({ className, style, cardImageUrl, alt, title }) => {
   const generatedCardImageUrl = useBaseUrl(cardImageUrl);
+
   return (
     <img
       className={clsx("card__image", className)}
@@ -223,10 +235,10 @@ const CardImage = ({ className, style, cardImageUrl, alt, title }) => {
       src={generatedCardImageUrl}
       alt={alt}
       title={title}
-      lazy="loading"
     />
   );
 };
+
 export default CardImage;
 ```
 
@@ -234,87 +246,75 @@ export default CardImage;
 
 So right now, you've created five files on your disk.
 
-In order to try them, please create a new post in your `blog` folder but pay attention to the extension, it should be a `.mdx` file (because we'll add some code that should be interpreted).
+Before going any further in this tutorial, let's first play around with the Card component and see if everything is saved correctly.
+
+Please create a new post in your `blog` folder but pay attention to the extension, it should be a `.mdx` file (because we'll add some code that should be interpreted).
 
 <Snippet filename="blog/card.mdx">
 
 ```md
 import Card from "@site/src/components/Card";
-import CardBody from "@site/src/components/Card/CardBody";
 import CardFooter from "@site/src/components/Card/CardFooter";
-import CardHeader from "@site/src/components/Card/CardHeader";
 import CardImage from "@site/src/components/Card/CardImage";
 
-<Card>
-  <CardHeader
-    className="padding-top--lg"
-    style={{ backgroundColor: "rgb(33 126 209)", color: "black" }}
-  >
-    <div className="avatar avatar--vertical">
-      <img
-        className="avatar__photo avatar__photo--xl"
-        src="https://avatars.githubusercontent.com/u/97809069?v=4"
-      />
-      <div className="avatar__intro">
-        <div className="avatar__name">Docux (@Juniors017)</div>
-        <small className="avatar__subtitle">
-          humble contributor on:
-          <a style={{ color: "white" }} href="https://docusaurus.community/">
-            docusaurus.community
-          </a>
-        </small>
+<div className="container">
+   <div className="row padding-bottom--xl">
+      <div className="col col--6">
+         <div className="">
+            <Card>
+               <CardImage cardImageUrl="/img/docux.png" />
+               <CardFooter
+               style={{ backgroundColor: "#07ac2aff", color: "#eeff00ff" }}
+               className="text--center"
+               >
+               <div className="button-group button-group--block">
+                  <button className="button button--primary button--sm">Like</button>
+                  <button className="button button--secondary button--sm">Comment</button>
+                  <button className="button button--info button--sm">Share</button>
+               </div>
+               </CardFooter>
+            </Card>
+         </div>
       </div>
-    </div>
-  </CardHeader>
-  <CardImage
-    style={{ backgroundColor: "rgb(33 126 209)", color: "black" }}
-    cardImageUrl="https://img.freepik.com/vecteurs-libre/dino-mignon-jouant-illustration-icone-vecteur-dessin-anime-planche-roulettes-concept-icone-sport-animal-isole_138676-7099.jpg?size=626&ext=jpg&ga=GA1.1.1416347011.1716591654&semt=sph"
-  />
-  <CardBody
-    style={{ backgroundColor: "white", color: "#8f600b" }}
-    className="padding-vert--md"
-    textAlign="center"
-    transform="uppercase"
-  >
-    <h3>Docux Card component</h3>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
-    gravida.
-  </CardBody>
-  <CardFooter
-    style={{ backgroundColor: "#2887bf", color: "black" }}
-    className="text--center"
-  >
-    <div className="button-group button-group--block">
-      <button className="button button--secondary">Like</button>
-      <button className="button button--secondary">Comment</button>
-      <button className="button button--secondary">Share</button>
-    </div>
-  </CardFooter>
-</Card>
+   </div>
+</div>
 ```
 
 </Snippet>
 
-That code will generate this:
+If you run your blog right now, you should get this:
 
 ![Docux card](./images/docux_sample.png)
 
-It'll be our starting point for our Blog post card.
+:::note
+If you want to retrieve the cute dino image, just grab it from here [https://github.com/Juniors017/docux-blog/blob/main/static/img/docux.png](https://github.com/Juniors017/docux-blog/blob/main/static/img/docux.png) and store it in your `/static/img` folder with `docux.png` as a name.
 
-In this article, we'll create override the standard page with the list of tags. As you know, natively, Docusaurus can display a page with the list of tags used accross your articles if you access to the **/blog/tags** page.  So for my own blog, the page is [https://www.avonture.be/blog/tags](https://www.avonture.be/blog/tags) and you'll get something like this:
+You can reuse any other image for sure.
+:::
+
+## Nice, it's works. Let's continue with a practical sample
+
+In this article, we'll create override the standard page with the list of tags. As you know, natively, Docusaurus can display a page with the list of tags used across your articles if you access to the **/blog/tags** page.  So for my own blog, the page is [https://www.avonture.be/blog/tags](https://www.avonture.be/blog/tags) and you'll get something like this:
 
 ![The tags page](./images/tags.png)
 
 By clicking on a specific tag, Docusaurus will show a list of posts for that tag and we'll change this.
 
-We'll no more show that lists but our cards. As an example, on my blog, I'm also writing about  [python](https://www.avonture.be/blog/tags/python) and here is how I'm rendering the page:
+For instance, this:
+
+![Before our tag override](./images/tag_before.png)
+
+:::info
+It can be nice but ... OK, I've to scroll a lot before see all articles and find the one that might interest me.
+:::
+
+We'll change this to a list of post cards. As an example, on my blog, I'm also writing about  [python](https://www.avonture.be/blog/tags/python) and here is how I'm rendering the page:
 
 ![The Python tag page](./images/tag_python.png)
 
-In this example, we'll implement a lot of concepts.
+This concrete example will allow us to implement two Docusaurus concepts: **the concept of plugins and that of components**.
 
-## Overriding the /blog/tags/a_tag page by creating a plugin
+## Overriding the /blog/tags/tag page by creating a plugin
 
 Please create the file here above.
 
@@ -337,7 +337,7 @@ module.exports = function () {
 
 </Snippet>
 
-As you can see, that one will tell to Docusaurus to no more use his own standard `/blog/tags/:tag` page but ours. Our page has still to be created. Let's do that.
+Take a few seconds to read this short script: as you can see that one will tell to Docusaurus to no more use his own standard `/blog/tags/:tag` page but ours (i.e. `src/components/Blog/Tags/TagArticlesPage`). Let's create that one.
 
 ## Creating the TagArticlesPage
 
@@ -453,7 +453,7 @@ export function createSlug(text) {
 
 ## The getBlogMetaData function
 
-We need a function to loop all our existing blog posts (all `.md` or `.mdx` files under the `blog` folder) and collect informations like the post title, image, slug and so on.
+We need a function to loop all our existing blog posts (all `.md` or `.mdx` files under the `blog` folder) and collect information like the post title, image, slug and so on.
 
 <Snippet filename="src/components/Blog/utils/posts.js">
 
@@ -545,7 +545,7 @@ And, finally, we need our PostCard component; the one who will display a blog po
 
 You can see, in the top of the code, that we're importing a few parts of the [Card component](https://docusaurus.community/knowledge/component-library/new/Card/) of Docux.
 
-<Snippet filename="src/components/Blog/PostCard">
+<Snippet filename="src/components/Blog/PostCard/index.js">
 
 ```js
 /**
@@ -710,11 +710,34 @@ PostCard.propTypes = {
 
 </Snippet>
 
+Finally, we'll create a CSS file to allow us to do some customisation:
+
+<Snippet filename="src/components/Blog/PostCard/styles.module.css">
+
+```css
+.description {
+  font-size: 12px;
+}
+
+.date {
+  color: #888;
+  font-size: 0.95em;
+  margin-bottom: 8;
+  font-style: italic;
+}
+```
+
+</Snippet>
+
 ## We need to load our plugin
+
+We're almost done.
 
 Remember, the very first file we've created was `plugins/docusaurus-plugin-tag-route/index.cjs`; a plugin.
 
 Please edit your existing `docusaurus.config.js` file like below illustrated:
+
+<Snippet filename="docusaurus.config.">
 
 ```js
 import pluginTagRoute from "./plugins/docusaurus-plugin-tag-route/index.cjs"
@@ -727,18 +750,14 @@ const config = {
   ],
   // [...]
 };
-
-export default config;
 ```
+
+</Snippet>
 
 i.e.
 
 1. You've to import the plugin at the top of your file
-2. In the configuration and more specifically in the `plugins` section, you've to add a new line to load your imported plugin.
-
-:::important
-It's important to follow this syntax.
-:::
+2. Then in the `plugins` section, you've to add a new line to load your imported plugin.
 
 We're almost finished!
 
@@ -748,4 +767,83 @@ Please stop and restart your Docusaurus server. On my case (I'm using Docker), I
 
 If everything is going fine after the restart (no error message), please visit your website tags page and open a tag. You should now see your posts as cards.
 
-In next articles, we'll reuse this concept of cards.
+Congratulations!
+
+In next articles, we'll reuse this concept of post cards. Stay tuned!
+
+## Extra
+
+If you want your blog posts are listed from the newest one to the older one, please use this script.
+
+But make sure every blog post you've has a `date` field in his YAML front matter.
+
+<Snippet filename="src/components/Blog/Tags/TagArticlesPage.js">
+
+```js
+import { createSlug } from "@site/src/components/Blog/utils/slug";
+import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import { useLocation } from "@docusaurus/router";
+import Layout from "@theme/Layout";
+import Link from "@docusaurus/Link";
+import PostCard from "@site/src/components/Blog/PostCard";
+
+function getTagFromPathname(pathname) {
+  const match = pathname.match(/\/blog\/tags\/([^/]+)/);
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+export default function TagArticlesPage() {
+  const location = useLocation();
+  const rawTag = getTagFromPathname(location.pathname);
+
+  if (!rawTag) {
+    return (
+      <Layout>
+        <div className="container">
+          <p>No tag specified.</p>
+          <Link href="/blog/tags">Go back to all tags</Link>
+        </div>
+      </Layout>
+    );
+  }
+
+  const posts = getBlogMetadata();
+
+  // Find original tag name based on slug
+  const allTags = Array.from(new Set(posts.flatMap((post) => post.tags || [])));
+  const displayTag = allTags.find((t) => createSlug(t) === rawTag) || rawTag;
+
+  // highlight-start
+  // Filter and sort posts by slug-matched tag (most recent first)
+  const taggedPosts = posts
+    .filter((post) => post.tags?.some((t) => createSlug(t) === rawTag))
+    .sort((a, b) => new Date(b.date) - new Date(a.date)); // Descending
+  // highlight-end
+
+  if (taggedPosts.length === 0) {
+    return (
+      <Layout title={`Tag: ${displayTag}`}>
+        <div className="container margin-top--lg margin-bottom--lg text--center">
+          <h2>No articles found with tag "{displayTag}"</h2>
+          <Link href="/blog/tags">Browse all tags</Link>
+        </div>
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout title={`Tag: ${displayTag}`}>
+      <div className="container margin-top--lg margin-bottom--lg">
+        <h1>Articles tagged: {displayTag}</h1>
+        <div className="row">
+          {taggedPosts.map((post) => (
+            <PostCard key={post.title} post={post} />
+          ))}
+        </div>
+      </div>
+    </Layout>
+  );
+}
+```
+
+</Snippet>

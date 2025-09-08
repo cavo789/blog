@@ -2,7 +2,7 @@
 slug: docusaurus-series
 title: Using a self-created component, add the notion of series to Docusaurus
 authors: [christophe]
-image: /img/components_social_media.jpg
+image: /img/docusaurus_component_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
@@ -12,7 +12,7 @@ draft: true
 
 <!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,docux -->
 
-![Using a self-created component, add the notion of series to Docusaurus](/img/components_banner.jpg)
+![Using a self-created component, add the notion of series to Docusaurus](/img/docusaurus_component_banner.jpg)
 
 If you have been using Docusaurus for a long time, you may have noticed that it is not possible to create links between articles as one would like to do for a series.
 

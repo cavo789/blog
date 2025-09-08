@@ -2,7 +2,7 @@
 slug: docusaurus-plugin-replace
 title: Creating a search&replace plugin for Docusaurus
 authors: [christophe]
-image: /img/components_social_media.jpg
+image: /img/docusaurus_component_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, react]
@@ -12,7 +12,7 @@ draft: true
 
 <!-- cspell:ignore vstirbu -->
 
-![Creating a search&replace plugin for Docusaurus](/img/components_banner.jpg)
+![Creating a search&replace plugin for Docusaurus](/img/docusaurus_component_banner.jpg)
 
 For fun (because that solution is perhaps not bullet proof), I've asked to an IA to generate a plugin to scan my 250 articles and to replace patterns like `docusaurus` by `Docusaurus`, `github` by `GitHub`, `vscode` by `VSCode` to normalize them across all my content.
 

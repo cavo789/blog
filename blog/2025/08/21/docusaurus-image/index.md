@@ -3,7 +3,7 @@ date: 2025-08-21
 slug: docusaurus-override-img
 title: Change how Docusaurus will create img tags
 authors: [christophe]
-image: /img/components_social_media.jpg
+image: /img/docusaurus_component_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
@@ -12,7 +12,7 @@ blueSkyRecordKey: 3lww5fbh2y22q
 
 <!-- cspell:ignore rgba,toggleable -->
 
-![Change how Docusaurus will create img tags](/img/components_banner.jpg)
+![Change how Docusaurus will create img tags](/img/docusaurus_component_banner.jpg)
 
 I'll start a series about writing components for Docusaurus.
 

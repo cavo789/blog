@@ -31,10 +31,10 @@ export default function TagArticlesPage() {
   const allTags = Array.from(new Set(posts.flatMap((post) => post.tags || [])));
   const displayTag = allTags.find((t) => createSlug(t) === rawTag) || rawTag;
 
-  // Filter posts by slug-matched tag
-  const taggedPosts = posts.filter((post) =>
-    post.tags?.some((t) => createSlug(t) === rawTag)
-  );
+  // Filter and sort posts by slug-matched tag (most recent first)
+  const taggedPosts = posts
+    .filter((post) => post.tags?.some((t) => createSlug(t) === rawTag))
+    .sort((a, b) => new Date(b.date) - new Date(a.date)); // Descending
 
   if (taggedPosts.length === 0) {
     return (

@@ -1,5 +1,6 @@
 import React, { CSSProperties } from "react";
 import clsx from "clsx";
+
 const CardFooter = ({
   className,
   style,
@@ -41,4 +42,5 @@ const CardFooter = ({
     </div>
   );
 };
+
 export default CardFooter;

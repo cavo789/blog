@@ -1,5 +1,6 @@
 import React, { CSSProperties } from "react";
 import clsx from "clsx";
+
 const CardBody = ({
   className, // classNamees for the container card
   style, // Custom styles for the container card
@@ -41,4 +42,5 @@ const CardBody = ({
     </div>
   );
 };
+
 export default CardBody;

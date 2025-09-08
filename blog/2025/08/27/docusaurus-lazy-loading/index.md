@@ -3,7 +3,7 @@ date: 2025-08-27
 slug: docusaurus-lazy-loading
 title: Overrides the generation of img tags with Docusaurus
 authors: [christophe]
-image: /img/components_social_media.jpg
+image: /img/docusaurus_component_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, react]
@@ -12,7 +12,7 @@ blueSkyRecordKey: 3lxekkxhjwc26
 
 <!-- cspell:ignore -->
 
-![Overrides the generation of img tags with Docusaurus](/img/components_banner.jpg)
+![Overrides the generation of img tags with Docusaurus](/img/docusaurus_component_banner.jpg)
 
 While searching for good tips & tricks about Docusaurus when the number of articles become important, I read that we need to pay attention to lazy load images and, indeed, by default all images are loaded when a blog post is first accessed.
 
