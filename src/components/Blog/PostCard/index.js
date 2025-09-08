@@ -15,11 +15,11 @@
  * Location: src/components/Blog/PostCard/index.js
  */
 
-import PropTypes from "prop-types";
-import Link from "@docusaurus/Link";
 import Card from "@site/src/components/Card";
 import CardBody from "@site/src/components/Card/CardBody";
 import CardImage from "@site/src/components/Card/CardImage";
+import Link from "@docusaurus/Link";
+import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 
 /**

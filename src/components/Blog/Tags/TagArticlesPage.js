@@ -1,10 +1,9 @@
-import React from "react";
+import { createSlug } from "@site/src/components/Blog/utils/slug";
+import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import { useLocation } from "@docusaurus/router";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
-import { useLocation } from "@docusaurus/router";
-import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import PostCard from "@site/src/components/Blog/PostCard";
-import { createSlug } from "@site/src/components/Blog/utils/slug";
 
 function getTagFromPathname(pathname) {
   const match = pathname.match(/\/blog\/tags\/([^/]+)/);
