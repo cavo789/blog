@@ -14,7 +14,7 @@ draft: true
 
 ![Creating a search&replace plugin for Docusaurus](/img/docusaurus_component_banner.jpg)
 
-For fun (because that solution is perhaps not bullet proof), I've asked to an IA to generate a plugin to scan my 250 articles and to replace patterns like `docusaurus` by `Docusaurus`, `github` by `GitHub`, `vscode` by `VSCode` to normalize them across all my content.
+For fun (because that solution is perhaps not bullet proof), I've asked to an AI to generate a plugin to scan my 250 articles and to replace patterns like `docusaurus` by `Docusaurus`, `github` by `GitHub`, `vscode` by `VSCode` to normalize them across all my content.
 
 It can be risky because if the word `vscode` appears in:
 
@@ -28,7 +28,7 @@ we certainly not want to make the replacement.
 
 But well if the word is inside a simple paragraph.
 
-So, after a few back and return with the IA, a plugin has been generated and it works so far.
+So, after a few back and return with the AI, a plugin has been generated and it works so far.
 
 <!-- truncate -->
 

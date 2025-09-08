@@ -4,7 +4,7 @@ slug: docusaurus-relatedposts
 title: Displaying related posts below our Docusaurus article
 authors: [christophe]
 image: /img/docusaurus_component_social_media.jpg
-series: Creating Docusaurus components
+series: Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
 blueSkyRecordKey: 3lxvwdh3szc22
@@ -16,11 +16,19 @@ blueSkyRecordKey: 3lxvwdh3szc22
 
 Docusaurus can display a list of tags but not related articles.
 
-When you surf on my blog, you'll see below every articles a list of **Related blog posts**. This is a component I've *vibe-coding* using AI.
+When you surf on my blog, you'll see below every articles a list of **Related blog posts**. This is a component I've *vibe-coded* using AI.
 
 The objective of our component will be to display something like this:
 
 ![Related Blog posts](./images/related.png)
+
+## We need a Card component
+
+Please follow the [Using the Reusable Card component of Docux](/blog/docusaurus-cards#using-the-reusable-card-component-of-docux) chapter.
+
+You'll have to create up to five files in a `src/components/Card/` folder (and sub-folder).
+
+Come back to this article when the five files have been created.
 
 ## We need something for extracting information from blog posts
 
@@ -46,7 +54,7 @@ So, just copy/paste the content of the file below and create the `src/components
  * 🧠 getBlogMetadata
  *
  * Extracts metadata from all MDX blog posts located in the `/blog` directory.
- * Uses Webpack's `require.context` to dynamically load and parse front matter
+ * Uses Webpack's `require.context` to dynamically load and parse frontmatter
  * from each post, returning a structured array of metadata objects.
  *
  * 🔍 Behavior:
@@ -78,7 +86,7 @@ So, just copy/paste the content of the file below and create the `src/components
  * where Webpack's `require.context` is available.
  */
 
-const posts = require.context("../../../blog", true, /\.mdx?$/);
+const posts = require.context("../../../../blog", true, /\.mdx?$/);
 
 export function getBlogMetadata() {
   return posts
@@ -118,16 +126,15 @@ export function getBlogMetadata() {
     })
     .filter(Boolean);
 }
-
 ```
 
 </Snippet>
 
 ## Our RelatedPosts component
 
-Now please create this file `src/components/RelatedPosts/index.js`:
+Now please create this file `src/components/Blog/RelatedPosts/index.js`:
 
-<Snippet filename="src/components/RelatedPosts/index.js">
+<Snippet filename="src/components/Blog/RelatedPosts/index.js">
 
 ```js
 /**
@@ -155,11 +162,12 @@ Now please create this file `src/components/RelatedPosts/index.js`:
  * - A responsive grid of related blog post cards, or a fallback message if none found
  */
 
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import PostCard from "@site/src/components/Blog/PostCard";
 
 export default function RelatedPosts({ count = 3, description = false }) {
   const { metadata } = useBlogPost();
@@ -216,72 +224,7 @@ export default function RelatedPosts({ count = 3, description = false }) {
       <h3>Related posts</h3>
       <div className="row">
         {related.map((post) => (
-          <div
-            className="col col--4"
-            key={post.permalink}
-            style={{ marginBottom: "2rem", display: "flex" }}
-          >
-            <div
-              className="card"
-              style={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                height: "100%",
-              }}
-            >
-              <Link to={post.permalink}>
-                <div className="card__image">
-                  {post.image && (
-                    <img
-                      src={useBaseUrl(post.image)}
-                      alt={post.title}
-                      style={{
-                        width: "100%",
-                        height: 180,
-                        objectFit: "cover",
-                        borderTopLeftRadius: 8,
-                        borderTopRightRadius: 8,
-                      }}
-                    />
-                  )}
-                </div>
-                <div className="card__body" style={{ flex: 1 }}>
-                  <h3>{post.title}</h3>
-                  {description && post.description && (
-                    <div
-                      style={{
-                        color: "#6c63ff",
-                        fontWeight: "bold",
-                        marginBottom: 6,
-                      }}
-                    >
-                      {post.description}
-                    </div>
-                  )}
-                  <p
-                    style={{
-                      color: "#888",
-                      fontSize: "0.95em",
-                      marginBottom: 8,
-                    }}
-                  >
-                    {post.date && (
-                      <span>{new Date(post.date).toLocaleDateString()}</span>
-                    )}
-                  </p>
-                </div>
-              </Link>
-              <div className="card__footer" style={{ textAlign: "right" }}>
-                <Link
-                  className="button button--primary button--sm"
-                  to={post.permalink}
-                >
-                  Read more
-                </Link>
-              </div>
-            </div>
-          </div>
+          <PostCard key={post.id} layout="small" post={post} />
         ))}
       </div>
     </>
@@ -293,17 +236,15 @@ RelatedPosts.propTypes = {
   count: PropTypes.number,
 
   /** Whether to show post descriptions */
-  description: PropTypes.bool
+  description: PropTypes.bool,
 };
-
-
 ```
 
 </Snippet>
 
 ## Overriding the BlogPostItem template
 
-We need now to override the BlogPostItem template of Docusaurus so we can inject our `<RelatedPost>` component at the bottom of each blog post.
+We need now to override the **BlogPostItem** template of Docusaurus so we can inject our `<RelatedPosts>` component at the bottom of each blog post.
 
 In a console, please run `yarn docusaurus swizzle @docusaurus/theme-classic BlogPostItem` then select, in that order, `Javascript`, then `Eject` finally `YES`.
 
@@ -316,17 +257,14 @@ In the code below, the highlighted lines are the ones we need to add.
 <Snippet filename="src/theme/BlogPostItem/index.js">
 
 ```js
-
-import React from "react";
-import clsx from "clsx";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import BlogPostItemContainer from "@theme/BlogPostItem/Container";
-import BlogPostItemHeader from "@theme/BlogPostItem/Header";
 import BlogPostItemContent from "@theme/BlogPostItem/Content";
 import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
+import BlogPostItemHeader from "@theme/BlogPostItem/Header";
+import clsx from "clsx";
 
-// highlight-next-line
-import RelatedPosts from "@site/src/components/RelatedPosts/index.js";
+import RelatedPosts from "@site/src/components/Blog/RelatedPosts/index.js";
 
 // apply a bottom margin in list view
 function useContainerClassName() {
@@ -334,7 +272,7 @@ function useContainerClassName() {
   return !isBlogPostPage ? "margin-bottom--xl" : undefined;
 }
 export default function BlogPostItem({ children, className }) {
-  // highlight-next-line
+  // We need to retrieve the isBlogPostPage flag
   const { metadata, isBlogPostPage } = useBlogPost();
   const containerClassName = useContainerClassName();
   return (
@@ -342,11 +280,7 @@ export default function BlogPostItem({ children, className }) {
       <BlogPostItemHeader />
       <BlogPostItemContent>{children}</BlogPostItemContent>
       <BlogPostItemFooter />
-
-      // highlight-start
-      {/* Only display our RelatedPosts and BlueSky components on the post page; not the blog view */}
       {isBlogPostPage && <RelatedPosts count="6" description="false" />}
-      // highlight-end
     </BlogPostItemContainer>
   );
 }
@@ -364,37 +298,46 @@ If like me you're running Docusaurus thanks to Docker, just kill the container a
 
 ## Editing our blog posts
 
-Once our component has been created, we need to teach Docusaurus how relations between posts can be made.
+We've made all the required configuration but ... when you visit your blog, you don't see anything like "Related Posts"; why?
 
-Natively, Docusaurus supports tags in the post YAML front matter like this:
+For instance, on the image here below, we don't see any cards.
+
+![There is no related articles, why?](./images/no_related_articles.png)
+
+<StepsCard
+  title="This because we need to things:"
+  variant="prerequisites"
+  steps={[
+    "1. Your post should have a `mainTag` and ",
+    "2. Posts in your blog should have a `tags` array"
+  ]}
+/>
+
+Look the example below:
+
+<Snippet filename="post.md">
 
 ```markdown
 ---
+date: 2025-09-03
+slug: docusaurus-relatedposts
 title: Displaying related posts below our Docusaurus article
-image: /img/docusaurus_tips_social_media.jpg
-<!-- highlight-next-line -->
+authors: [christophe]
+image: /img/components_social_media.jpg
+series: Creating Docusaurus components
+# highlight-start
+mainTag: docusaurus
 tags: [component, docusaurus, markdown, react, swizzle]
+# highlight-end
 ---
-
 ```
 
-Idea is thus to create ours called `mainTag`.
+</Snippet>
 
-```markdown
----
-title: Displaying related posts below our Docusaurus article
-image: /img/docusaurus_tips_social_media.jpg
-<!-- highlight-next-line -->
-mainTag: component
-tags: [component, docusaurus, markdown, react, swizzle]
----
+The blog post should have a `mainTag` item and should be associated to the most important tag for you. Let's say `docusaurus`.
 
-```
+Then, all posts in your blog should have the, standard, `tags` array where you can list more than one tag.
 
-Now, based on the example here above, Docusaurus knows that specific article is about `component`. When he'll call the `getBlogMetadata` we've seen earlier in this article, Docusaurus will search for any blog post having, in his `tags` list, the word `component` and if so, bingo, we've a related blog post.
+The `RelatedPosts` component will then search for `docusaurus` across your posts and display up to 6 cards.
 
-## Conclusion
-
-See at the bottom of this article to see the component in action. Below, you'll get the list of posts about `component`. Cards are injected automatically thanks to our overriding of the `BlogPostItem` template.
-
-Nice no?
+![The final result](./images/final.png)

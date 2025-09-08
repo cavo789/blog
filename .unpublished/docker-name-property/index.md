@@ -62,7 +62,7 @@ Do the same for every tools you want, if there is a `compose.yaml` file, just ad
 
 But, if you don't have a YAML file but what is you're using a `docker run` command? There is well a `--name` flag with `docker run` but it's for naming the container (equivalent to the `container_name` entry thus).
 
-So, if you're running `docker run [something]` you'll have to convert the line as a YAML file. All IA can do that. Just copy/paste your full `docker run [something]` command and ask to convert as a `compose.yaml` file.
+So, if you're running `docker run [something]` you'll have to convert the line as a YAML file. All AI can do that. Just copy/paste your full `docker run [something]` command and ask to convert as a `compose.yaml` file.
 
 Easy and really handy.
 

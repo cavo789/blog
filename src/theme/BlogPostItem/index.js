@@ -1,10 +1,9 @@
-import React from "react";
-import clsx from "clsx";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import BlogPostItemContainer from "@theme/BlogPostItem/Container";
-import BlogPostItemHeader from "@theme/BlogPostItem/Header";
 import BlogPostItemContent from "@theme/BlogPostItem/Content";
 import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
+import BlogPostItemHeader from "@theme/BlogPostItem/Header";
+import clsx from "clsx";
 
 // Our posts components
 import RelatedPosts from "@site/src/components/Blog/RelatedPosts/index.js";

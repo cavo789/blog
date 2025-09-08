@@ -5,7 +5,7 @@ title: Obfuscate your PHP code
 authors: [christophe]
 image: /img/hell_social_media.jpg
 mainTag: php
-tags: [code-quality, IA, php]
+tags: [code-quality, AI, php]
 ---
 <!-- cspell:ignore ctype, fgets, ppmb, ppmc, ppms, ppmu, ppmw, ppmx, ppnc, ppnt, ppnx, ppny, ppnz, strlen, strpos, strtolower -->
 

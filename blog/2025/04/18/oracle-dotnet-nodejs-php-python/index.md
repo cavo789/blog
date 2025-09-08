@@ -398,7 +398,7 @@ CMD [ "php", "main.php" ]
 
 </Snippet>
 
-Then let's create a PHP script (*generated using IA*)
+Then let's create a PHP script (*generated using AI*)
 
 <!-- cspell:disable -->
 
@@ -512,7 +512,7 @@ CMD ["python", "main.py"]
 
 </Snippet>
 
-Then let's create a Python script (*generated using IA*)
+Then let's create a Python script (*generated using AI*)
 
 <!-- cspell:disable -->
 
