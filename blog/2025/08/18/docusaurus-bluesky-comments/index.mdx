@@ -1,20 +1,20 @@
 ---
 date: 2025-08-18
 slug: docusaurus-bluesky-comments
-title: Show BlueSky comments on Docusaurus and, too, number of likes/reposts
+title: Show Bluesky comments on Docusaurus and, too, number of likes/reposts
 authors: [christophe]
 image: /img/bluesky_social_media.jpg
-series: BlueSky Docusaurus component
+series: Bluesky Docusaurus component
 mainTag: bluesky
 tags: [bluesky, component, docusaurus, markdown, react, swizzle]
-blueSkyRecordKey: 3lwnnydhdk22x
+blueskyRecordKey: 3lwnnydhdk22x
 ---
 <!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,3lwnnydhdk22x -->
-![Show BlueSky comments on Docusaurus and, too, number of likes/reposts](/img/bluesky_banner.jpg)
+![Show Bluesky comments on Docusaurus and, too, number of likes/reposts](/img/bluesky_banner.jpg)
 
-In a [previous article](/blog/docusaurus-bluesky-share), we've seen how we can, simply said, provide a "Share the article on BlueSky".
+In a [previous article](/blog/docusaurus-bluesky-share), we've seen how we can, simply said, provide a "Share the article on Bluesky".
 
-This is not really interactive right? Let's see in this article how to make the link between a Docusaurus blog post and BlueSky.
+This is not really interactive right? Let's see in this article how to make the link between a Docusaurus blog post and Bluesky.
 
 <!-- truncate -->
 
@@ -23,123 +23,123 @@ This is not really interactive right? Let's see in this article how to make the 
   variant="steps"
   steps={[
     'You publish your article on your blog,',
-    'You share the article on BlueSky (by using the "Share the article" feature of course),',
-    'You retrieve the **BlueSky Record key** i.e. the very last part of BlueSky post URL (something like `3lun2qjuxc22r`),',
-    'You edit back your Docusaurus article and you add a key in your YAML front matter (the YAML block at the top of your article). The key to add is `blueSkyRecordKey: xxxx` where `xxxx` is your **BlueSky Record key**.',
+    'You share the article on Bluesky (by using the "Share the article" feature of course),',
+    'You retrieve the **Bluesky Record key** i.e. the very last part of Bluesky post URL (something like `3lun2qjuxc22r`),',
+    'You edit back your Docusaurus article and you add a key in your YAML front matter (the YAML block at the top of your article). The key to add is `blueskyRecordKey: xxxx` where `xxxx` is your **Bluesky Record key**.',
     'You publish your updated article on your blog again.'
   ]}
 />
 
-So, from now, you've clearly make the link between your article and your BlueSky post.
+So, from now, you've clearly make the link between your article and your Bluesky post.
 
 <StepsCard
   title="Thanks to this link, we can:"
   variant="steps"
   steps={[
-    'Display a button "Like, share or comment on BlueSky": the visitor can then jump to your BlueSky post and like, share or comment your article,',
+    'Display a button "Like, share or comment on Bluesky": the visitor can then jump to your Bluesky post and like, share or comment your article,',
     'Display the number of likes and reposts below your article and,',
-    'Display the list of comments you\'ve received on your BlueSky post and, if none, display a *Call to action* area to encourage your reader to share his thoughts'
+    'Display the list of comments you\'ve received on your Bluesky post and, if none, display a *Call to action* area to encourage your reader to share his thoughts'
   ]}
 />
 
-In the previous article (see [Create our own Docusaurus React component and provide a "Share on BlueSky" button](/blog/docusaurus-bluesky-share)), we've created the `src/components/BlueSky/index.js` file. Please edit that file and use this new content:
+In the previous article (see [Create our own Docusaurus React component and provide a "Share on Bluesky" button](/blog/docusaurus-bluesky-share)), we've created the `src/components/Bluesky/index.js` file. Please edit that file and use this new content:
 
-## 1/5 The layout of our BlueSky generic component
+## 1/5 The layout of our Bluesky generic component
 
-Here is our new BlueSky layout for our component:
+Here is our new Bluesky layout for our component:
 
-<Snippet filename="src/components/BlueSky/index.js">
+<Snippet filename="src/components/Bluesky/index.js">
 
 ```js
 /**
  * ===================================
- * = BlueSky component - Entry point =
+ * = Bluesky component - Entry point =
  * ===================================
  *
- * Renders a BlueSky area where we'll have:
+ * Renders a Bluesky area where we'll have:
  *
  * OPTION 1
- * - A button to allow the visitor to share the post on his BlueSky profile (BlueSkyShare.js)
+ * - A button to allow the visitor to share the post on his Bluesky profile (BlueskyShare.js)
  *
  * OR
  *
  * OPTION 2
- * - A button to see (like/share/comment) the post on BlueSky (<BlueSkyPost>)
- * - The number of likes / repost on BlueSky (<BlueSkyLikes>)
- * - The list of comments for the post (<BlueSkyComments>) or a call-to-action link for engagement
+ * - A button to see (like/share/comment) the post on Bluesky (<BlueskyPost>)
+ * - The number of likes / repost on Bluesky (<BlueskyLikes>)
+ * - The list of comments for the post (<BlueskyComments>) or a call-to-action link for engagement
  *
- * The difference will be the presence of the `blueSkyRecordKey` key or not in the YAML front matter of
+ * The difference will be the presence of the `blueskyRecordKey` key or not in the YAML front matter of
  * the Docusaurus document.
  *
- * If there is no `blueSkyRecordKey` info (OPTION 1), there is no BlueSky post and thus we'll only show a button
+ * If there is no `blueskyRecordKey` info (OPTION 1), there is no Bluesky post and thus we'll only show a button
  * to allow the visitor to share the document on his own profile.
  *
- * If present and not empty (OPTION 2), it means a BlueSky post exists for the document
+ * If present and not empty (OPTION 2), it means a Bluesky post exists for the document
  * and thus we can show the like/share/comment, the number of likes/repost and the list of comments.
  *
  * Here is an example of such YAML entry:
  *
  * ---
  * ...
- * blueSkyRecordKey: 3lun2qjuxc22r
+ * blueskyRecordKey: 3lun2qjuxc22r
  * ---
  *
- * In order to provide links to your own BlueSky profile, you'll have to add the blueSky entry
+ * In order to provide links to your own Bluesky profile, you'll have to add the bluesky entry
  * in the `docusaurus.config.js` file, for instance:
  *
  *      const config = {
  *        ...
  *        customFields: {
- *          blueSky: {
+ *          bluesky: {
  *            handle: 'avonture.be',
  *          },
  *        },
  *      }
  *
- * The handle should be initialized to the BlueSky handle of the author (you)
+ * The handle should be initialized to the Bluesky handle of the author (you)
  *
  * @param {object} props
  * @param {object} props.metadata - The Docusaurus document metadata, including the front matter.
  * @param {object} [props.metadata.frontMatter] - The front matter object.
- * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - The unique key of the
- * corresponding BlueSky post. Its presence determines the component's behavior.
+ * @param {string} [props.metadata.frontMatter.blueskyRecordKey] - The unique key of the
+ * corresponding Bluesky post. Its presence determines the component's behavior.
  */
 
-import BlueSkyComments from "./comments";
-import BlueSkyLikes from "./likes";
-import BlueSkyPost from "./post";
-import BlueSkyShare from "./share";
+import BlueskyComments from "./comments";
+import BlueskyLikes from "./likes";
+import BlueskyPost from "./post";
+import BlueskyShare from "./share";
 import PropTypes from "prop-types";
 
-export default function BlueSky({ metadata }) {
+export default function Bluesky({ metadata }) {
   return (
-    <div className="blueSkyContainer">
+    <div className="blueskyContainer">
 
       {/*
-        OPTION 1 - The blueSkyRecordKey is missing in the YAML front matter:
+        OPTION 1 - The blueskyRecordKey is missing in the YAML front matter:
 
-        - show a Share button so the visitor can share the post on his own BlueSky profile
+        - show a Share button so the visitor can share the post on his own Bluesky profile
       */}
-      <BlueSkyShare metadata={metadata} />
+      <BlueskyShare metadata={metadata} />
 
       {/*
-        OPTION 2 - The blueSkyRecordKey key is filled in so a BlueSky post already exists:
+        OPTION 2 - The blueskyRecordKey key is filled in so a Bluesky post already exists:
 
         - promote to like/share/comment it
         - show the number of likes/reposts
         - display the list of comments
       */}
-      <BlueSkyPost metadata={metadata} />
-      <BlueSkyLikes metadata={metadata} />
-      <BlueSkyComments metadata={metadata} />
+      <BlueskyPost metadata={metadata} />
+      <BlueskyLikes metadata={metadata} />
+      <BlueskyComments metadata={metadata} />
     </div>
   );
 }
 
-BlueSky.propTypes = {
+Bluesky.propTypes = {
   metadata: PropTypes.shape({
     frontMatter: PropTypes.shape({
-      blueSkyRecordKey: PropTypes.string, // Optional
+      blueskyRecordKey: PropTypes.string, // Optional
     }),
   }).isRequired,
 };
@@ -156,9 +156,9 @@ The highlighted lines are the new ones compared of the previous version of the f
   variant="steps"
   steps={[
     'A Share button,',
-    'A Post button (to jump to your post on BlueSky),',
-    'A likes area (to show the number of likes and reposts of your post on BlueSky) and',
-    'An area for displaying comments you\'ve on BlueSky'
+    'A Post button (to jump to your post on Bluesky),',
+    'A likes area (to show the number of likes and reposts of your post on Bluesky) and',
+    'An area for displaying comments you\'ve on Bluesky'
   ]}
 />
 
@@ -166,22 +166,22 @@ The highlighted lines are the new ones compared of the previous version of the f
 
 ## 2/5 Our "Like, share or comment" button
 
-<Snippet filename="src/components/BlueSky/post.js">
+<Snippet filename="src/components/Bluesky/post.js">
 
 ```js
 /**
  * Renders a button to show the post on Bluesky (and be able to like/share/comment)
  *
  * This info will displayed only when the post has, in his YAML front matter, the
- * `blueSkyRecordKey` entry i.e. the hash of the BlueSky post.
+ * `blueskyRecordKey` entry i.e. the hash of the Bluesky post.
  *
- * See comments in BlueSky.js component for the list of requirements
+ * See comments in Bluesky.js component for the list of requirements
  *
  * @param {object} props
  * @param {object} props.metadata - The Docusaurus document metadata, including the front matter.
  * @param {object} [props.metadata.frontMatter] - The front matter object.
- * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - The unique key of the
- * corresponding BlueSky post. Its presence determines the component's behavior.
+ * @param {string} [props.metadata.frontMatter.blueskyRecordKey] - The unique key of the
+ * corresponding Bluesky post. Its presence determines the component's behavior.
  */
 
 import Icon from "./bluesky.svg";
@@ -189,35 +189,35 @@ import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
-export default function BlueSkyPost({ metadata }) {
+export default function BlueskyPost({ metadata }) {
   const { siteConfig } = useDocusaurusContext();
-  const blueSkyConfig = siteConfig?.customFields?.blueSky;
-  const blueSkyRecordKey = metadata?.frontMatter?.blueSkyRecordKey;
+  const blueskyConfig = siteConfig?.customFields?.bluesky;
+  const blueskyRecordKey = metadata?.frontMatter?.blueskyRecordKey;
 
-  if (!blueSkyConfig?.handle || !blueSkyRecordKey) {
+  if (!blueskyConfig?.handle || !blueskyRecordKey) {
     return null;
   }
 
-  const postUrl = `https://bsky.app/profile/${blueSkyConfig.handle}/post/${blueSkyRecordKey}`;
+  const postUrl = `https://bsky.app/profile/${blueskyConfig.handle}/post/${blueskyRecordKey}`;
 
   return (
     <a
       href={postUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={styles.blueSkyButton}
-      aria-label="See the post on BlueSky"
+      className={styles.blueskyButton}
+      aria-label="See the post on Bluesky"
     >
-      <Icon alt="Bluesky Icon" className={styles.blueSkyLogo} />
-      Like, share or comment on BlueSky
+      <Icon alt="Bluesky Icon" className={styles.blueskyLogo} />
+      Like, share or comment on Bluesky
     </a>
   );
 }
 
-BlueSkyPost.propTypes = {
+BlueskyPost.propTypes = {
   metadata: PropTypes.shape({
     frontMatter: PropTypes.shape({
-      blueSkyRecordKey: PropTypes.string, // Optional
+      blueskyRecordKey: PropTypes.string, // Optional
     }),
   }).isRequired,
 };
@@ -229,16 +229,16 @@ BlueSkyPost.propTypes = {
 
 <!-- cspell:disable -->
 
-<Snippet filename="src/components/BlueSky/likes.js">
+<Snippet filename="src/components/Bluesky/likes.js">
 
 ```js
 /**
- * Show the number of likes and reposts a BlueSky post has.
+ * Show the number of likes and reposts a Bluesky post has.
  *
  * This info will displayed only when the post has, in his YAML frontmatter, the
- * `blueSkyRecordKey` entry i.e. the hash of the BlueSky post.
+ * `blueskyRecordKey` entry i.e. the hash of the Bluesky post.
  *
- * See comments in BlueSky.js component for the list of requirements
+ * See comments in Bluesky.js component for the list of requirements
  *
  * @param {Object} props
  * @param {string} props.recordKey - Unique record from the frontmatter
@@ -249,10 +249,10 @@ import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
-export default function BlueSkyLikes({ metadata }) {
+export default function BlueskyLikes({ metadata }) {
   const { siteConfig } = useDocusaurusContext();
-  const blueSkyConfig = siteConfig?.customFields?.blueSky;
-  const blueSkyRecordKey = metadata?.frontMatter?.blueSkyRecordKey;
+  const blueskyConfig = siteConfig?.customFields?.bluesky;
+  const blueskyRecordKey = metadata?.frontMatter?.blueskyRecordKey;
 
   // Consolidate state into a single object
   const [postStats, setPostStats] = useState({
@@ -262,15 +262,15 @@ export default function BlueSkyLikes({ metadata }) {
   });
 
   useEffect(() => {
-    // Only run if a BlueSky post exists
-    if (!blueSkyRecordKey) {
+    // Only run if a Bluesky post exists
+    if (!blueskyRecordKey) {
       setPostStats({ likes: null, reposts: null, loading: false });
       return;
     }
 
     const fetchData = async () => {
       try {
-        const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${blueSkyRecordKey}`;
+        const postUri = `at://${blueskyConfig.handle}/app.bsky.feed.post/${blueskyRecordKey}`;
         const url = `https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=${encodeURIComponent(
           postUri
         )}&depth=0`;
@@ -287,13 +287,13 @@ export default function BlueSkyLikes({ metadata }) {
           loading: false,
         });
       } catch (e) {
-        console.error("Error fetching BlueSky stats:", e);
+        console.error("Error fetching Bluesky stats:", e);
         setPostStats({ likes: null, reposts: null, loading: false });
       }
     };
 
     fetchData();
-  }, [blueSkyRecordKey, blueSkyConfig.handle]);
+  }, [blueskyRecordKey, blueskyConfig.handle]);
 
   if (postStats.loading) {
     return null;
@@ -304,16 +304,16 @@ export default function BlueSkyLikes({ metadata }) {
   }
 
   return (
-    <span className={styles.blueSkyPostLikes}>
+    <span className={styles.blueskyPostLikes}>
       <span
-        className={styles.blueSkyCommentLikes}
-        title={`The original post has ${postStats.likes} likes on BlueSky`}
+        className={styles.blueskyCommentLikes}
+        title={`The original post has ${postStats.likes} likes on Bluesky`}
       >
         {postStats.likes}
       </span>
       <span
-        className={styles.blueSkyCommentReposts}
-        title={`The original post has been shared ${postStats.reposts} times on BlueSky`}
+        className={styles.blueskyCommentReposts}
+        title={`The original post has been shared ${postStats.reposts} times on Bluesky`}
       >
         {postStats.reposts}
       </span>
@@ -321,10 +321,10 @@ export default function BlueSkyLikes({ metadata }) {
   );
 }
 
-BlueSkyLikes.propTypes = {
+BlueskyLikes.propTypes = {
   metadata: PropTypes.shape({
     frontMatter: PropTypes.shape({
-      blueSkyRecordKey: PropTypes.string, // Optional. If missing, the BlueSkyLikes component won't display anything
+      blueskyRecordKey: PropTypes.string, // Optional. If missing, the BlueskyLikes component won't display anything
     }),
   }).isRequired,
 };
@@ -338,16 +338,16 @@ BlueSkyLikes.propTypes = {
 
 <!-- cspell:disable -->
 
-<Snippet filename="src/components/BlueSky/comments.js">
+<Snippet filename="src/components/Bluesky/comments.js">
 
 ```js
 /**
- * Retrieve the list of comments posted on BlueSky and display them on the page
+ * Retrieve the list of comments posted on Bluesky and display them on the page
  *
  * This info will displayed only when the post has, in his YAML frontmatter, the
- * `blueSkyRecordKey` entry i.e. the hash of the BlueSky post.
+ * `blueskyRecordKey` entry i.e. the hash of the Bluesky post.
  *
- * See comments in BlueSky.js component for the list of requirements
+ * See comments in Bluesky.js component for the list of requirements
  */
 
 import PropTypes from "prop-types";
@@ -421,12 +421,12 @@ function renderEmbed(embed) {
         href={uri}
         target="_blank"
         rel="noopener noreferrer"
-        className={styles.blueSkyCommentEmbed}
+        className={styles.blueskyCommentEmbed}
       >
         {thumb && (
-          <img src={thumb} alt="" className={styles.blueSkyCommentEmbedThumb} />
+          <img src={thumb} alt="" className={styles.blueskyCommentEmbedThumb} />
         )}
-        <div className={styles.blueSkyCommentEmbedContent}>
+        <div className={styles.blueskyCommentEmbedContent}>
           <strong>{title}</strong>
         </div>
       </a>
@@ -436,13 +436,13 @@ function renderEmbed(embed) {
   // ✅ Handle image embeds
   if (embed.$type === "app.bsky.embed.images#view") {
     return (
-      <div className={styles.blueSkyCommentImages}>
+      <div className={styles.blueskyCommentImages}>
         {embed.images.map((image, index) => (
           <img
             key={index}
             src={image.fullsize}
             alt={image.alt || "Embedded image"}
-            className={styles.blueSkyCommentImage}
+            className={styles.blueskyCommentImage}
           />
         ))}
       </div>
@@ -460,7 +460,7 @@ function renderEmbed(embed) {
  * @param {Object} props
  * @param {string} props.reply - Unique record from the frontmatter
  */
-function BlueSkyComment({ reply }) {
+function BlueskyComment({ reply }) {
   const recordKey = reply.post.uri.split("/").pop();
   const profileUrl = `https://bsky.app/profile/${reply.post.author.handle}`;
   const commentUrl = `https://bsky.app/profile/${reply.post.author.handle}/post/${recordKey}`;
@@ -475,38 +475,38 @@ function BlueSkyComment({ reply }) {
   return (
     // The style here is required for the correct indentation based on the deepness of the comment/reply
     <div
-      className={styles.blueSkyCommentContainer}
+      className={styles.blueskyCommentContainer}
       style={{ paddingLeft: `${1.5 + reply.depth * 1.5}rem` }}
     >
       {/* Author */}
-      <div className={`${styles.blueSkyCommentHeader} mb-2 flex items-center`}>
+      <div className={`${styles.blueskyCommentHeader} mb-2 flex items-center`}>
         <a href={profileUrl} target="_blank" rel="noopener noreferrer">
           <img
             src={reply.post.author.avatar}
             alt={`${reply.post.author.displayName}'s avatar`}
-            className={styles.blueSkyCommentAvatar}
+            className={styles.blueskyCommentAvatar}
           />
         </a>
-        <div className={styles.blueSkyCommentAuthorInfos}>
+        <div className={styles.blueskyCommentAuthorInfos}>
           <a
             href={profileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.blueSkyCommentAuthorDisplayName}
+            className={styles.blueskyCommentAuthorDisplayName}
           >
             {reply.post.author.displayName}
           </a>
-          <span className={styles.blueSkyCommentAuthorHandle}>
+          <span className={styles.blueskyCommentAuthorHandle}>
             @{reply.post.author.handle}
           </span>
         </div>
       </div>
 
       {/* Date */}
-      <span className={styles.blueSkyCommentDate}>{date}</span>
+      <span className={styles.blueskyCommentDate}>{date}</span>
 
       {/* Text */}
-      <p className={styles.blueSkyCommentText}>
+      <p className={styles.blueskyCommentText}>
         {renderPostText(reply.post.record)}
       </p>
 
@@ -514,15 +514,15 @@ function BlueSkyComment({ reply }) {
       {renderEmbed(reply.post.embed)}
 
       {/* Footer */}
-      <div className={styles.blueSkyCommentFooter}>
-        <span className={styles.blueSkyCommentLikes}>
+      <div className={styles.blueskyCommentFooter}>
+        <span className={styles.blueskyCommentLikes}>
           {reply.post.likeCount}
         </span>
-        <span className={styles.blueSkyCommentReposts}>
+        <span className={styles.blueskyCommentReposts}>
           {reply.post.repostCount || 0}
         </span>
         <a
-          className={styles.blueSkyCommentLink}
+          className={styles.blueskyCommentLink}
           href={commentUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -534,7 +534,7 @@ function BlueSkyComment({ reply }) {
   );
 }
 
-BlueSkyComment.propTypes = {
+BlueskyComment.propTypes = {
   reply: PropTypes.shape({
     post: PropTypes.shape({
       uri: PropTypes.string.isRequired,
@@ -559,28 +559,28 @@ BlueSkyComment.propTypes = {
 /**
  * This is the main component
  *
- * We will process any comment (replies) posted on BlueSky
+ * We will process any comment (replies) posted on Bluesky
  *
  * @param {object} props
  * @param {object} props.metadata - The Docusaurus document metadata, including the frontmatter.
  * @param {object} [props.metadata.frontMatter] - The frontmatter object.
- * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - The unique key of the
- * corresponding BlueSky post. Its presence determines the component's behavior.
+ * @param {string} [props.metadata.frontMatter.blueskyRecordKey] - The unique key of the
+ * corresponding Bluesky post. Its presence determines the component's behavior.
  */
-export default function BlueSkyComments({ metadata }) {
+export default function BlueskyComments({ metadata }) {
   const { siteConfig } = useDocusaurusContext();
-  const blueSkyConfig = siteConfig?.customFields?.blueSky;
-  const blueSkyRecordKey = metadata?.frontMatter?.blueSkyRecordKey;
+  const blueskyConfig = siteConfig?.customFields?.bluesky;
+  const blueskyRecordKey = metadata?.frontMatter?.blueskyRecordKey;
 
   const [comments, setComments] = useState(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (!blueSkyRecordKey) return;
+    if (!blueskyRecordKey) return;
 
     async function fetchComments() {
       try {
-        const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${blueSkyRecordKey}`;
+        const postUri = `at://${blueskyConfig.handle}/app.bsky.feed.post/${blueskyRecordKey}`;
         const url =
           "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?depth=5&uri=" +
           encodeURIComponent(postUri);
@@ -611,19 +611,19 @@ export default function BlueSkyComments({ metadata }) {
       }
     }
     fetchComments();
-  }, [blueSkyRecordKey]);
+  }, [blueskyRecordKey]);
 
-  const postUrl = `https://bsky.app/profile/${blueSkyConfig.handle}/post/${blueSkyRecordKey}`;
+  const postUrl = `https://bsky.app/profile/${blueskyConfig.handle}/post/${blueskyRecordKey}`;
 
-  if (!blueSkyRecordKey) return null;
+  if (!blueskyRecordKey) return null;
   if (error) return <p>Error loading comments.</p>;
   if (comments === null) return <p>Loading comments…</p>;
   if (comments.length === 0)
     return (
-      <p className={styles.blueSkyNoCommentYet}>
+      <p className={styles.blueskyNoCommentYet}>
         This post is waiting for its first comment.&nbsp;
         <a
-          className={styles.blueSkyNoCommentYetCTA}
+          className={styles.blueskyNoCommentYetCTA}
           href={postUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -634,19 +634,19 @@ export default function BlueSkyComments({ metadata }) {
     );
 
   return (
-    <div className={styles.blueSkyCommentsContainer}>
-      <h3>💬 Comments from BlueSky ({comments.length})</h3>
+    <div className={styles.blueskyCommentsContainer}>
+      <h3>💬 Comments from Bluesky ({comments.length})</h3>
       {comments.map((reply, i) => (
-        <BlueSkyComment key={i} reply={reply} />
+        <BlueskyComment key={i} reply={reply} />
       ))}
     </div>
   );
 }
 
-BlueSkyComments.propTypes = {
+BlueskyComments.propTypes = {
   metadata: PropTypes.shape({
     frontMatter: PropTypes.shape({
-      blueSkyRecordKey: PropTypes.string, // Optional
+      blueskyRecordKey: PropTypes.string, // Optional
     }),
   }).isRequired,
 };
@@ -658,30 +658,30 @@ BlueSkyComments.propTypes = {
 
 ## 5/5 Our new CSS
 
-<Snippet filename="src/components/BlueSky/styles.module.css">
+<Snippet filename="src/components/Bluesky/styles.module.css">
 
 ```css
-.blueSkyLogo {
+.blueskyLogo {
   width: 20px;
   height: 20px;
 }
 
-/* Will contains all BlueSky buttons and comments */
-.blueSkyContainer {
+/* Will contains all Bluesky buttons and comments */
+.blueskyContainer {
   margin-top: 2rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
-/* The container for all BlueSky comments */
-.blueSkyCommentsContainer {
+/* The container for all Bluesky comments */
+.blueskyCommentsContainer {
   border: solid 10px #f5f5f5;
   margin-top: 1rem;
   padding: 0.4rem 0.9rem;
 }
 
 /* The container for one single comment */
-.blueSkyCommentContainer {
+.blueskyCommentContainer {
   margin-bottom: 1rem;
   background-color: #f9f9f9;
   padding: 0.8rem;
@@ -689,30 +689,30 @@ BlueSkyComments.propTypes = {
   border-left: 2px solid #e0e0e0;
 }
 
-.blueSkyCommentHeader {
+.blueskyCommentHeader {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.blueSkyCommentAuthorInfos {
+.blueskyCommentAuthorInfos {
   display: flex;
   flex-direction: column;
 }
 
-.blueSkyCommentAvatar {
+.blueskyCommentAvatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   margin-right: 0.5rem;
 }
 
-.blueSkyCommentAuthorDisplayName {
+.blueskyCommentAuthorDisplayName {
   margin: 0;
   font-weight: bold;
 }
 
-.blueSkyCommentAuthorHandle {
+.blueskyCommentAuthorHandle {
   margin: 0;
   font-size: smaller;
   font-weight: normal;
@@ -720,45 +720,45 @@ BlueSkyComments.propTypes = {
   display: block;
 }
 
-.blueSkyCommentDate {
+.blueskyCommentDate {
   margin-left: auto;
   font-size: smaller;
   color: gray;
 }
 
-.blueSkyCommentText {
+.blueskyCommentText {
   margin: 0.3rem 0 0;
 }
 
-.blueSkyCommentFooter {
+.blueskyCommentFooter {
 }
 
-.blueSkyCommentLikes::before {
+.blueskyCommentLikes::before {
   content: "♡\a0";
   color: red;
 }
 
-.blueSkyCommentLikes::after {
+.blueskyCommentLikes::after {
   content: " ";
 }
 
-.blueSkyCommentReposts::before {
+.blueskyCommentReposts::before {
   content: "↺\a0";
 }
 
-.blueSkyCommentReposts::after {
+.blueskyCommentReposts::after {
   content: " ";
 }
 
-.blueSkyCommentLink::before {
+.blueskyCommentLink::before {
   content: "→\a0";
 }
 
-.blueSkyCommentLink::after {
+.blueskyCommentLink::after {
   content: " ";
 }
 
-.blueSkyCommentLink {
+.blueskyCommentLink {
   margin-right: 0.25rem;
   display: inline-flex;
   align-items: center;
@@ -767,18 +767,18 @@ BlueSkyComments.propTypes = {
   margin-top: 0.25rem;
 }
 
-img.blueSkyCommentEmbedThumb {
+img.blueskyCommentEmbedThumb {
   max-height: 250px;
 }
 
-.blueSkyCommentImages {
+.blueskyCommentImages {
   margin-top: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.blueSkyCommentImage {
+.blueskyCommentImage {
   max-width: 100%;
   height: auto;
   border-radius: 0.25rem;
@@ -786,7 +786,7 @@ img.blueSkyCommentEmbedThumb {
 }
 
 
-.blueSkyNoCommentYet {
+.blueskyNoCommentYet {
   color: #555;
   font-size: 1rem;
   line-height: 1.5;
@@ -798,14 +798,14 @@ img.blueSkyCommentEmbedThumb {
   margin: 20px 0;
 }
 
-.blueSkyNoCommentYetCTA {
+.blueskyNoCommentYetCTA {
   font-weight: bold;
   color: #007bff;
   cursor: pointer;
   text-decoration: underline;
 }
 
-.blueSkyButton {
+.blueskyButton {
   align-items: center;
   background-color: #f5f5f5;
   border-radius: 6px;
@@ -822,9 +822,36 @@ img.blueSkyCommentEmbedThumb {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.blueSkyButton:hover {
+.blueskyButton:hover {
   background-color: #0062cc;
 }
 ```
 
 </Snippet>
+
+## Update the Docusaurus configuration file
+
+We're almost done. In order to be able to retrieve likes, shares and comments from your Bluesky account, you've to tell to the component your Bluesky handle.
+
+You've to edit the `docusaurus.config.js` file and add a new section called `customFields` as illustrated below:
+
+<Snippet filename="docusaurus.config.js">
+
+```js
+const config = {
+  // [...]
+  customFields: {
+    bluesky: {
+      // This is the Bluesky handle as displayed in your Bluesky profile page
+      handle: "avonture.be",
+    },
+  },
+  // [...]
+};
+```
+
+</Snippet>
+
+:::danger
+For sure, use yours; not mine ;-)
+:::

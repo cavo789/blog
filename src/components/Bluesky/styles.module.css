@@ -1,24 +1,24 @@
-.blueSkyLogo {
+.blueskyLogo {
   width: 20px;
   height: 20px;
 }
 
-/* Will contains all BlueSky buttons and comments */
-.blueSkyContainer {
+/* Will contains all Bluesky buttons and comments */
+.blueskyContainer {
   margin-top: 2rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
-/* The container for all BlueSky comments */
-.blueSkyCommentsContainer {
+/* The container for all Bluesky comments */
+.blueskyCommentsContainer {
   border: solid 10px #f5f5f5;
   margin-top: 1rem;
   padding: 0.4rem 0.9rem;
 }
 
 /* The container for one single comment */
-.blueSkyCommentContainer {
+.blueskyCommentContainer {
   margin-bottom: 1rem;
   background-color: #f9f9f9;
   padding: 0.8rem;
@@ -26,30 +26,30 @@
   border-left: 2px solid #e0e0e0;
 }
 
-.blueSkyCommentHeader {
+.blueskyCommentHeader {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.blueSkyCommentAuthorInfos {
+.blueskyCommentAuthorInfos {
   display: flex;
   flex-direction: column;
 }
 
-.blueSkyCommentAvatar {
+.blueskyCommentAvatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   margin-right: 0.5rem;
 }
 
-.blueSkyCommentAuthorDisplayName {
+.blueskyCommentAuthorDisplayName {
   margin: 0;
   font-weight: bold;
 }
 
-.blueSkyCommentAuthorHandle {
+.blueskyCommentAuthorHandle {
   margin: 0;
   font-size: smaller;
   font-weight: normal;
@@ -57,45 +57,45 @@
   display: block;
 }
 
-.blueSkyCommentDate {
+.blueskyCommentDate {
   margin-left: auto;
   font-size: smaller;
   color: gray;
 }
 
-.blueSkyCommentText {
+.blueskyCommentText {
   margin: 0.3rem 0 0;
 }
 
-.blueSkyCommentFooter {
+.blueskyCommentFooter {
 }
 
-.blueSkyCommentLikes::before {
+.blueskyCommentLikes::before {
   content: "♡\a0";
   color: red;
 }
 
-.blueSkyCommentLikes::after {
+.blueskyCommentLikes::after {
   content: " ";
 }
 
-.blueSkyCommentReposts::before {
+.blueskyCommentReposts::before {
   content: "↺\a0";
 }
 
-.blueSkyCommentReposts::after {
+.blueskyCommentReposts::after {
   content: " ";
 }
 
-.blueSkyCommentLink::before {
+.blueskyCommentLink::before {
   content: "→\a0";
 }
 
-.blueSkyCommentLink::after {
+.blueskyCommentLink::after {
   content: " ";
 }
 
-.blueSkyCommentLink {
+.blueskyCommentLink {
   margin-right: 0.25rem;
   display: inline-flex;
   align-items: center;
@@ -104,18 +104,18 @@
   margin-top: 0.25rem;
 }
 
-img.blueSkyCommentEmbedThumb {
+img.blueskyCommentEmbedThumb {
   max-height: 250px;
 }
 
-.blueSkyCommentImages {
+.blueskyCommentImages {
   margin-top: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.blueSkyCommentImage {
+.blueskyCommentImage {
   max-width: 100%;
   height: auto;
   border-radius: 0.25rem;
@@ -123,7 +123,7 @@ img.blueSkyCommentEmbedThumb {
 }
 
 
-.blueSkyNoCommentYet {
+.blueskyNoCommentYet {
   color: #555;
   font-size: 1rem;
   line-height: 1.5;
@@ -135,14 +135,14 @@ img.blueSkyCommentEmbedThumb {
   margin: 20px 0;
 }
 
-.blueSkyNoCommentYetCTA {
+.blueskyNoCommentYetCTA {
   font-weight: bold;
   color: #007bff;
   cursor: pointer;
   text-decoration: underline;
 }
 
-.blueSkyButton {
+.blueskyButton {
   align-items: center;
   background-color: #f5f5f5;
   border-radius: 6px;
@@ -160,6 +160,6 @@ img.blueSkyCommentEmbedThumb {
 }
 
 /* Hover effect */
-.blueSkyButton:hover {
+.blueskyButton:hover {
   background-color: #0062cc;
 }

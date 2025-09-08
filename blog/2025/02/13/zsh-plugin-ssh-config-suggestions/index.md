@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/zsh_tips_social_media.jpg
 mainTag: ssh
 tags: [customization, linux, ssh, wsl, zsh]
-blueSkyRecordKey: 3lwgca4zqh22i
+blueskyRecordKey: 3lwgca4zqh22i
 ---
 ![SSH - Autosuggestions with ZSH](/img/zsh_tips_banner.jpg)
 

@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/git_tips_social_media.jpg
 mainTag: gitlag
 tags: [CI, gitlab, ssh]
-blueSkyRecordKey: 3lun25dkf322r
+blueskyRecordKey: 3lun25dkf322r
 ---
 ![GitLab - Using Docker private images](/img/git_tips_banner.jpg)
 

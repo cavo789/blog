@@ -7,7 +7,7 @@ image: /img/docusaurus_component_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
-blueSkyRecordKey: 3lww5fbh2y22q
+blueskyRecordKey: 3lww5fbh2y22q
 ---
 
 <!-- cspell:ignore rgba,toggleable -->

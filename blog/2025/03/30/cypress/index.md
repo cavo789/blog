@@ -7,7 +7,7 @@ image: /img/functional_testing_social_media.jpg
 mainTag: tests
 series: Functional testing
 tags: [chrome, cypress, docker, javascript, node, tests]
-blueSkyRecordKey: 3lvnkku4dik2v
+blueskyRecordKey: 3lvnkku4dik2v
 ---
 ![Introduction to Cypress](/img/functional_testing_banner.jpg)
 

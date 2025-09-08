@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/windows_terminal_social_media.jpg
 mainTag: customization
 tags: [console, customization, dos, windows terminal, wsl]
-blueSkyRecordKey: 3lvnjj5g4ic2v
+blueskyRecordKey: 3lvnjj5g4ic2v
 ---
 ![Use a background image in your Windows Terminal console](/img/windows_terminal_banner.jpg)
 

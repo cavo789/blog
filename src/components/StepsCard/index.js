@@ -23,9 +23,9 @@
  *   title="Publishing Workflow"
  *   steps={[
  *     'Write your article',
- *     'Share it on BlueSky',
- *     'Retrieve the **BlueSky Record key** from the post URL',
- *     'Add `blueSkyRecordKey: xxxx` to your article front matter',
+ *     'Share it on Bluesky',
+ *     'Retrieve the **Bluesky Record key** from the post URL',
+ *     'Add `blueskyRecordKey: xxxx` to your article front matter',
  *     'Republish your article',
  *     'Here’s the diagram: ![Diagram](./images/diagram.png)'
  *   ]}

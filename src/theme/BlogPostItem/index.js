@@ -9,8 +9,8 @@ import clsx from "clsx";
 import RelatedPosts from "@site/src/components/Blog/RelatedPosts/index.js";
 import SeriesPosts from "@site/src/components/Blog/SeriesPosts/index.js";
 
-// Our BlueSky component
-import BlueSky from "@site/src/components/BlueSky/index.js";
+// Our Bluesky component
+import Bluesky from "@site/src/components/Bluesky/index.js";
 
 // apply a bottom margin in list view
 function useContainerClassName() {
@@ -36,7 +36,7 @@ export default function BlogPostItem({ children, className }) {
       <BlogPostItemContent>{children}</BlogPostItemContent>
       <BlogPostItemFooter />
 
-      {/* Only display our RelatedPosts and BlueSky components on the post page; not the blog view */}
+      {/* Only display our RelatedPosts and Bluesky components on the post page; not the blog view */}
       {isBlogPostPage && (
         <>
           <SeriesPosts
@@ -44,7 +44,7 @@ export default function BlogPostItem({ children, className }) {
             excludePermalink={metadata.permalink}
             highlightCurrent={true}
           />
-          <BlueSky metadata={metadata} />
+          <Bluesky metadata={metadata} />
           <RelatedPosts count="6" description="false" />
         </>
       )}

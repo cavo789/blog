@@ -7,7 +7,7 @@ image: /img/excel_tips_social_media.jpg
 series: MS Excel - Connect to a SQL Server database
 mainTag: excel
 tags: [docker, excel, mssql-server, ssms, vba]
-blueSkyRecordKey: 3lvnkdmwmwk2v
+blueskyRecordKey: 3lvnkdmwmwk2v
 ---
 ![MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step](/img/excel_tips_banner.jpg)
 

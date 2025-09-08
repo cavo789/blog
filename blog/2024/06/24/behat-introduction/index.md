@@ -7,7 +7,7 @@ image: /img/functional_testing_social_media.jpg
 series: Functional testing
 mainTag: tests
 tags: [bdd, behat, chrome, docker, mink, php, tests]
-blueSkyRecordKey: 3lxm22j3pa22t
+blueskyRecordKey: 3lxm22j3pa22t
 ---
 <!-- cspell:ignore behat,skel,johndoe,chromedriver,gerkin,dmore,nohup,autoload -->
 ![Introduction to Behat](/img/functional_testing_banner.jpg)

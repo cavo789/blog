@@ -48,8 +48,8 @@ const config = {
   onDuplicateRoutes: "throw",
 
   customFields: {
-    blueSky: {
-      // This is the BlueSky handle as displayed in your BlueSky profile page
+    bluesky: {
+      // This is the Bluesky handle as displayed in your Bluesky profile page
       handle: "avonture.be",
     },
   },

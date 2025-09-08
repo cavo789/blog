@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
 mainTag: quarto
 tags: [markdown, mustache, quarto]
-blueSkyRecordKey: 3lun2vljjqs2r
+blueskyRecordKey: 3lun2vljjqs2r
 ---
 
 <!-- cspell:ignore buie,frontmatter,gadenbuie,htdocs -->

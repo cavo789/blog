@@ -15,8 +15,8 @@ find blog -type f \( -name "*.md" -o -name "*.mdx" \) ! -path "$EXCLUDE_DIR/*" |
     in_frontmatter { print }
   ' "$file")
 
-  # If frontmatter exists but doesn't include blueSkyRecordKey
-  if [[ -n "$frontmatter" && "$frontmatter" != *"blueSkyRecordKey"* ]]; then
+  # If frontmatter exists but doesn't include blueskyRecordKey
+  if [[ -n "$frontmatter" && "$frontmatter" != *"blueskyRecordKey"* ]]; then
     # Get the last directory name before the file
     slug=$(basename "$(dirname "$file")")
 

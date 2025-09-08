@@ -1,42 +1,42 @@
 /**
- * 📬 BlueSkyComments Component
+ * 📬 BlueskyComments Component
  *
- * Displays a threaded list of comments associated with a specific BlueSky post.
- * This component is conditionally rendered based on the presence of a `blueSkyRecordKey`
+ * Displays a threaded list of comments associated with a specific Bluesky post.
+ * This component is conditionally rendered based on the presence of a `blueskyRecordKey`
  * in the YAML frontmatter of a Docusaurus document.
  *
  * 🔍 Behavior:
- * - If `blueSkyRecordKey` is missing or empty: the component returns `null` and nothing is rendered.
- * - If present: it fetches the comment thread from the BlueSky public API and displays:
+ * - If `blueskyRecordKey` is missing or empty: the component returns `null` and nothing is rendered.
+ * - If present: it fetches the comment thread from the Bluesky public API and displays:
  *   - Author info (avatar, handle, display name)
  *   - Timestamp
  *   - Rich text with clickable links
  *   - Embedded media (images or external previews)
  *   - Like and repost counts
- *   - A link to view the comment on BlueSky
+ *   - A link to view the comment on Bluesky
  *
  * 🧠 Notes:
  * - Comments are fetched recursively to support nested replies.
  * - Indentation is dynamically calculated based on reply depth.
  * - If no comments exist, a call-to-action is shown to encourage engagement.
- * - Requires the author's BlueSky handle to be defined in `docusaurus.config.js` under `customFields.blueSky.handle`.
+ * - Requires the author's Bluesky handle to be defined in `docusaurus.config.js` under `customFields.bluesky.handle`.
  *
  * 🛠️ Example frontmatter:
  * ---
  * title: "My Post"
- * blueSkyRecordKey: 3lun2qjuxc22r
+ * blueskyRecordKey: 3lun2qjuxc22r
  * ---
  *
  * 🧾 Props:
  * @param {object} props
  * @param {object} props.metadata - Docusaurus document metadata
  * @param {object} [props.metadata.frontMatter] - Frontmatter object
- * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - Unique identifier for the BlueSky post
+ * @param {string} [props.metadata.frontMatter.blueskyRecordKey] - Unique identifier for the Bluesky post
  *
  * 📦 Dependencies:
  * - React (useState, useEffect)
  * - Docusaurus context (`useDocusaurusContext`)
- * - Custom subcomponent: `BlueSkyComment`
+ * - Custom subcomponent: `BlueskyComment`
  * - CSS module styles
  */
 
@@ -111,12 +111,12 @@ function renderEmbed(embed) {
         href={uri}
         target="_blank"
         rel="noopener noreferrer"
-        className={styles.blueSkyCommentEmbed}
+        className={styles.blueskyCommentEmbed}
       >
         {thumb && (
-          <img src={thumb} alt="" className={styles.blueSkyCommentEmbedThumb} />
+          <img src={thumb} alt="" className={styles.blueskyCommentEmbedThumb} />
         )}
-        <div className={styles.blueSkyCommentEmbedContent}>
+        <div className={styles.blueskyCommentEmbedContent}>
           <strong>{title}</strong>
         </div>
       </a>
@@ -126,13 +126,13 @@ function renderEmbed(embed) {
   // ✅ Handle image embeds
   if (embed.$type === "app.bsky.embed.images#view") {
     return (
-      <div className={styles.blueSkyCommentImages}>
+      <div className={styles.blueskyCommentImages}>
         {embed.images.map((image, index) => (
           <img
             key={index}
             src={image.fullsize}
             alt={image.alt || "Embedded image"}
-            className={styles.blueSkyCommentImage}
+            className={styles.blueskyCommentImage}
           />
         ))}
       </div>
@@ -150,7 +150,7 @@ function renderEmbed(embed) {
  * @param {Object} props
  * @param {string} props.reply - Unique record from the frontmatter
  */
-function BlueSkyComment({ reply }) {
+function BlueskyComment({ reply }) {
   const recordKey = reply.post.uri.split("/").pop();
   const profileUrl = `https://bsky.app/profile/${reply.post.author.handle}`;
   const commentUrl = `https://bsky.app/profile/${reply.post.author.handle}/post/${recordKey}`;
@@ -165,38 +165,38 @@ function BlueSkyComment({ reply }) {
   return (
     // The style here is required for the correct indentation based on the deepness of the comment/reply
     <div
-      className={styles.blueSkyCommentContainer}
+      className={styles.blueskyCommentContainer}
       style={{ paddingLeft: `${1.5 + reply.depth * 1.5}rem` }}
     >
       {/* Author */}
-      <div className={`${styles.blueSkyCommentHeader} mb-2 flex items-center`}>
+      <div className={`${styles.blueskyCommentHeader} mb-2 flex items-center`}>
         <a href={profileUrl} target="_blank" rel="noopener noreferrer">
           <img
             src={reply.post.author.avatar}
             alt={`${reply.post.author.displayName}'s avatar`}
-            className={styles.blueSkyCommentAvatar}
+            className={styles.blueskyCommentAvatar}
           />
         </a>
-        <div className={styles.blueSkyCommentAuthorInfos}>
+        <div className={styles.blueskyCommentAuthorInfos}>
           <a
             href={profileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.blueSkyCommentAuthorDisplayName}
+            className={styles.blueskyCommentAuthorDisplayName}
           >
             {reply.post.author.displayName}
           </a>
-          <span className={styles.blueSkyCommentAuthorHandle}>
+          <span className={styles.blueskyCommentAuthorHandle}>
             @{reply.post.author.handle}
           </span>
         </div>
       </div>
 
       {/* Date */}
-      <span className={styles.blueSkyCommentDate}>{date}</span>
+      <span className={styles.blueskyCommentDate}>{date}</span>
 
       {/* Text */}
-      <p className={styles.blueSkyCommentText}>
+      <p className={styles.blueskyCommentText}>
         {renderPostText(reply.post.record)}
       </p>
 
@@ -204,15 +204,15 @@ function BlueSkyComment({ reply }) {
       {renderEmbed(reply.post.embed)}
 
       {/* Footer */}
-      <div className={styles.blueSkyCommentFooter}>
-        <span className={styles.blueSkyCommentLikes}>
+      <div className={styles.blueskyCommentFooter}>
+        <span className={styles.blueskyCommentLikes}>
           {reply.post.likeCount}
         </span>
-        <span className={styles.blueSkyCommentReposts}>
+        <span className={styles.blueskyCommentReposts}>
           {reply.post.repostCount || 0}
         </span>
         <a
-          className={styles.blueSkyCommentLink}
+          className={styles.blueskyCommentLink}
           href={commentUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -224,7 +224,7 @@ function BlueSkyComment({ reply }) {
   );
 }
 
-BlueSkyComment.propTypes = {
+BlueskyComment.propTypes = {
   reply: PropTypes.shape({
     post: PropTypes.shape({
       uri: PropTypes.string.isRequired,
@@ -249,28 +249,28 @@ BlueSkyComment.propTypes = {
 /**
  * This is the main component
  *
- * We will process any comment (replies) posted on BlueSky
+ * We will process any comment (replies) posted on Bluesky
  *
  * @param {object} props
  * @param {object} props.metadata - The Docusaurus document metadata, including the frontmatter.
  * @param {object} [props.metadata.frontMatter] - The frontmatter object.
- * @param {string} [props.metadata.frontMatter.blueSkyRecordKey] - The unique key of the
- * corresponding BlueSky post. Its presence determines the component's behavior.
+ * @param {string} [props.metadata.frontMatter.blueskyRecordKey] - The unique key of the
+ * corresponding Bluesky post. Its presence determines the component's behavior.
  */
-export default function BlueSkyComments({ metadata }) {
+export default function BlueskyComments({ metadata }) {
   const { siteConfig } = useDocusaurusContext();
-  const blueSkyConfig = siteConfig?.customFields?.blueSky;
-  const blueSkyRecordKey = metadata?.frontMatter?.blueSkyRecordKey;
+  const blueSkyConfig = siteConfig?.customFields?.bluesky;
+  const blueskyRecordKey = metadata?.frontMatter?.blueskyRecordKey;
 
   const [comments, setComments] = useState(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (!blueSkyRecordKey) return;
+    if (!blueskyRecordKey) return;
 
     async function fetchComments() {
       try {
-        const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${blueSkyRecordKey}`;
+        const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${blueskyRecordKey}`;
         const url =
           "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?depth=5&uri=" +
           encodeURIComponent(postUri);
@@ -301,19 +301,19 @@ export default function BlueSkyComments({ metadata }) {
       }
     }
     fetchComments();
-  }, [blueSkyRecordKey]);
+  }, [blueskyRecordKey]);
 
-  const postUrl = `https://bsky.app/profile/${blueSkyConfig.handle}/post/${blueSkyRecordKey}`;
+  const postUrl = `https://bsky.app/profile/${blueSkyConfig.handle}/post/${blueskyRecordKey}`;
 
-  if (!blueSkyRecordKey) return null;
+  if (!blueskyRecordKey) return null;
   if (error) return <p>Error loading comments.</p>;
   if (comments === null) return <p>Loading comments…</p>;
   if (comments.length === 0)
     return (
-      <p className={styles.blueSkyNoCommentYet}>
+      <p className={styles.blueskyNoCommentYet}>
         This post is waiting for its first comment.&nbsp;
         <a
-          className={styles.blueSkyNoCommentYetCTA}
+          className={styles.blueskyNoCommentYetCTA}
           href={postUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -324,19 +324,19 @@ export default function BlueSkyComments({ metadata }) {
     );
 
   return (
-    <div className={styles.blueSkyCommentsContainer}>
-      <h3>💬 Comments from BlueSky ({comments.length})</h3>
+    <div className={styles.blueskyCommentsContainer}>
+      <h3>💬 Comments from Bluesky ({comments.length})</h3>
       {comments.map((reply, i) => (
-        <BlueSkyComment key={i} reply={reply} />
+        <BlueskyComment key={i} reply={reply} />
       ))}
     </div>
   );
 }
 
-BlueSkyComments.propTypes = {
+BlueskyComments.propTypes = {
   metadata: PropTypes.shape({
     frontMatter: PropTypes.shape({
-      blueSkyRecordKey: PropTypes.string, // Optional
+      blueskyRecordKey: PropTypes.string, // Optional
     }),
   }).isRequired,
 };

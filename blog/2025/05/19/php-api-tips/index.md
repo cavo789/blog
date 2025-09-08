@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/api_social_media.jpg
 mainTag: api
 tags: [api, docker, php, rest]
-blueSkyRecordKey: 3lun2t72qus2r
+blueskyRecordKey: 3lun2t72qus2r
 ---
 ![API REST - How to write good APIs](/img/api_banner.jpg)
 

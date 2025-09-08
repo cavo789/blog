@@ -1,10 +1,10 @@
-# 🔗 Markdown Audit for Missing blueSkyRecordKey
+# 🔗 Markdown Audit for Missing blueskyRecordKey
 
-This Bash script scans markdown files in your blog directory to identify posts that are missing the blueSkyRecordKey field in their YAML front matter. For each such file, it generates a corresponding URL based on its folder name, helping you track and potentially publish missing records to platforms like Bluesky.
+This Bash script scans markdown files in your blog directory to identify posts that are missing the blueskyRecordKey field in their YAML front matter. For each such file, it generates a corresponding URL based on its folder name, helping you track and potentially publish missing records to platforms like Bluesky.
 
 ## 📦 Purpose
 
-* ✅ Detect markdown files missing the blueSkyRecordKey metadata.
+* ✅ Detect markdown files missing the blueskyRecordKey metadata.
 * 🔗 Generate a URL for each file based on its directory name.µ
 * 📤 Prepare for publishing or syncing with external services like Bluesky.
 
@@ -19,7 +19,7 @@ This Bash script scans markdown files in your blog directory to identify posts t
 
 * Recursively scans all `.md` or `.mdx` files in the `blog/` directory (excluding `blog/XXX)`.
 * Extracts the YAML front matter block.
-* Checks if the `blueSkyRecordKey` field is missing.
+* Checks if the `blueskyRecordKey` field is missing.
 * Constructs a URL using the base path and the file's slug.
 * Outputs a list of file paths and their corresponding URLs.
 

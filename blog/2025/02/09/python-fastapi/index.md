@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/python_tips_social_media.jpg
 mainTag: api
 tags: [api, docker, fastapi, python]
-blueSkyRecordKey: 3lwgccocnws2i
+blueskyRecordKey: 3lwgccocnws2i
 ---
 ![Python - Fast API - Create your JSON API in Python in one minute](/img/python_tips_banner.jpg)
 

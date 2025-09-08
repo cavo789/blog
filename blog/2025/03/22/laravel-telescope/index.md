@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/laravel_tips_social_media.jpg
 mainTag: laravel
 tags: [laravel, php, telescope]
-blueSkyRecordKey: 3lvnkgebz3c2v
+blueskyRecordKey: 3lvnkgebz3c2v
 ---
 ![Laravel Telescope](/img/laravel_tips_banner.jpg)
 

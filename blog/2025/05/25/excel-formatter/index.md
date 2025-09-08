@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 mainTag: excel
 tags: [excel, self-hosted]
-blueSkyRecordKey: 3lun2qjuxc22r
+blueskyRecordKey: 3lun2qjuxc22r
 ---
 ![Excel Formula Beautifier](/img/excel_tips_banner.jpg)
 

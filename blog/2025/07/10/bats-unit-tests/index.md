@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/bash_tips_social_media.jpg
 mainTag: tests
 tags: [linux, shell, tests]
-blueSkyRecordKey: 3lujtej7xhs23
+blueskyRecordKey: 3lujtej7xhs23
 ---
 <!-- cspell:ignore imple -->
 

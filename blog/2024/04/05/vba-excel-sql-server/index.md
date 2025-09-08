@@ -7,7 +7,7 @@ image: /img/excel_tips_social_media.jpg
 series: MS Excel - Connect to a SQL Server database
 mainTag: excel
 tags: [excel, ribbon, mssql-server, vba]
-blueSkyRecordKey: 3lvnkbm63nc2v
+blueskyRecordKey: 3lvnkbm63nc2v
 ---
 ![MS Excel - Connect to a SQL Server database, run a query and get the results](/img/excel_tips_banner.jpg)
 

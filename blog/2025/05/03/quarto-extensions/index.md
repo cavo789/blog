@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/quarto_tips_social_media.jpg
 mainTag: quarto
 tags: [markdown, pandoc, quarto, revealjs]
-blueSkyRecordKey: 3lun2yevo622r
+blueskyRecordKey: 3lun2yevo622r
 ---
 <!-- cspell:ignore frontmatter,fontawesome,gadenbuie,shafayetShafee -->
 

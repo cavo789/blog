@@ -7,7 +7,7 @@ image: /img/functional_testing_social_media.jpg
 series: Functional testing
 mainTag: component
 tags: [laravel, pest, php, tests]
-blueSkyRecordKey: 3lxm2amkjjk2m
+blueskyRecordKey: 3lxm2amkjjk2m
 ---
 <!-- cspell:ignore  -->
 
@@ -219,7 +219,7 @@ it('displays the about page', function () {
 it('can search for a post', function () {
     visit(getenv('WEBSITE'))
         ->click('.DocSearch-Button')
-        ->type('.DocSearch-Input', 'BlueSky')
+        ->type('.DocSearch-Input', 'Bluesky')
         ->assertSee('Create our own Docusaurus React component');
 });
 
@@ -314,7 +314,7 @@ $ make start
      35▕ it('can search for a post', function () {
      36▕     visit(getenv('WEBSITE'))
      37▕         ->click('.DocSearch-Button')
-     38▕         ->type('.DocSearch-Input', 'BlueSky')
+     38▕         ->type('.DocSearch-Input', 'Bluesky')
   ➜ 39▕         ->assertSee('Create our own Docusaurus React component');
      40▕ });
      41▕
@@ -341,7 +341,7 @@ Pest has taken a screenshot; we were searching for `Create our own Docusaurus Re
 
 ![The test has failed](./images/it_can_search_for_a_post.png)
 
-But we see `React component and provide a "Share on BlueSky" button` so let's update the script:
+But we see `React component and provide a "Share on Bluesky" button` so let's update the script:
 
 <Snippet filename="HomepageTest.php">
 
@@ -383,9 +383,9 @@ it('displays the about page', function () {
 it('can search for a post', function () {
     visit(getenv('WEBSITE'))
         ->click('.DocSearch-Button')
-        ->type('.DocSearch-Input', 'BlueSky')
+        ->type('.DocSearch-Input', 'Bluesky')
         // highlight-next-line
-        ->assertSee('React component and provide a "Share on BlueSky" button');
+        ->assertSee('React component and provide a "Share on Bluesky" button');
 });
 
 it('navigates to the archive and click on aeSecure QuickScan article', function () {

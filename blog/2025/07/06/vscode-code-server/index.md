@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/vscode_tips_social_media.jpg
 mainTag: vscode
 tags: [docker, vscode]
-blueSkyRecordKey: 3lujtglddu223
+blueskyRecordKey: 3lujtglddu223
 ---
 ![Do I need VSCode on my machine to use it?](/img/vscode_tips_banner.jpg)
 

@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/api_social_media.jpg
 mainTag: api
 tags: [api, bruno, docker, postman, tests, tool]
-blueSkyRecordKey: 3lvs336stus2j
+blueskyRecordKey: 3lvs336stus2j
 ---
 <!-- cspell:ignore fastapi,uvicorn,hobbyte,keyserver,usebruno,ECONNREFUSED,davidkarlsen -->
 ![Bruno - A postman-like tool - GUI and CLI](/img/api_banner.jpg)

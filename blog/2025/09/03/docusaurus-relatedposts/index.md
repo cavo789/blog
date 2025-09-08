@@ -7,7 +7,7 @@ image: /img/docusaurus_component_social_media.jpg
 series: Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
-blueSkyRecordKey: 3lxvwdh3szc22
+blueskyRecordKey: 3lxvwdh3szc22
 ---
 
 <!-- cspell:ignore relatedposts -->

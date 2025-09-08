@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/excel_tips_social_media.jpg
 mainTag: excel
 tags: [excel, ribbon, vba, vscode]
-blueSkyRecordKey: 3lwgc3uymnc2i
+blueskyRecordKey: 3lwgc3uymnc2i
 ---
 ![MS Office - Load dropdown from Excel's range](/img/excel_tips_banner.jpg)
 
