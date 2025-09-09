@@ -207,52 +207,7 @@ If you look at the code here above, we've to create two new files: `share.js` an
 
 Ok, now, we've to create a second file called `src/components/Bluesky/share.js` and to copy/paste this content in it:
 
-<Snippet filename="src/components/Bluesky/share.js">
-
-```js
-import Icon from "./bluesky.svg";
-import PropTypes from "prop-types";
-import styles from './styles.module.css';
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-
-export default function BlueskyShare({ metadata}) {
-  const blueskyRecordKey = metadata?.frontMatter?.blueskyRecordKey;
-
-  if (blueskyRecordKey) return;
-
-  const { siteConfig } = useDocusaurusContext();
-
-  if (!metadata.title || !metadata.permalink) {
-    console.debug("<BlueskyShare> Missing required properties", { metadata });
-    return null;
-  }
-
-  const shareLink =
-    `https://bsky.app/intent/compose?text=` +
-    `${encodeURIComponent(metadata.title)}%20${siteConfig.url}${encodeURIComponent(
-      metadata.permalink
-    )}`;
-
-  return (
-    <a href={shareLink} target="_blank" rel="noopener noreferrer" className={styles.blueskyButton} aria-label="Share this post on Bluesky">
-      <Icon alt="Bluesky Icon" className={styles.blueskyLogo} />
-      Share on Bluesky
-    </a>
-  );
-}
-
-BlueskyShare.propTypes = {
-  metadata: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    frontMatter: PropTypes.shape({
-      blueskyRecordKey: PropTypes.string
-    })
-  }).isRequired
-};
-```
-
-</Snippet>
+<Snippet filename="src/components/Bluesky/share.js" source="src/components/Bluesky/share.js" />
 
 As you can see, we've defined a function called `BlueskyShare` and that function ask a parameter called `metadata`.
 
@@ -272,58 +227,13 @@ For sure, we need the Bluesky logo somewhere.
 
 Please create a third file called `src/components/Bluesky/bluesky.svg` and copy/paste this content in it:
 
-<Snippet filename="src/components/Bluesky/bluesky.svg">
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 600 530" xmlns="http://www.w3.org/2000/svg">
-  <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z" fill="#1185fe"/>
-</svg>
-```
-
-</Snippet>
+<Snippet filename="src/components/Bluesky/bluesky.svg" source="src/components/Bluesky/bluesky.svg" / >
 
 ### 4/5 And finally our CSS
 
 And, very important, we need a CSS. Please create a fourth file called `src/components/Bluesky/styles.module.css` and copy/paste this content in it:
 
-<Snippet filename="src/components/Bluesky/styles.module.css">
-
-```css
-.blueskyLogo{
-  width: 20px;
-  height: 20px;
-}
-
-.blueskyContainer {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--ifm-color-emphasis-200);
-}
-
-.blueskyButton {
-  align-items: center;
-  background-color: #f5f5f5;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-  box-shadow: none;
-  color: #333333;
-  display: inline-flex;
-  font-size: 0.9rem;
-  font-weight: 400;
-  gap: 0.4rem;
-  margin-right: 0.4rem;
-  padding: 0.4rem 0.9rem;
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.blueskyButton:hover {
-  background-color: #0062cc;
-}
-```
-
-</Snippet>
+<Snippet filename="src/components/Bluesky/styles.module.css" source="src/components/Bluesky/styles.module.css" />
 
 ### 5/5 Last thing, we need to implement our component in Docusaurus
 

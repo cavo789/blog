@@ -1,6 +1,5 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.foldingStrategy": "auto",
   "explicitFolding.autoFold": "all",
   "explicitFolding.rules": {
     "markdown": {
@@ -13,7 +12,7 @@
   },
   "files.trimTrailingWhitespace": true,
   "files.associations": {
-    ".mdx": "markdown"
+    ".mdx": "Markdown"
   },
   "files.exclude": {
     "**/node_modules/**": true

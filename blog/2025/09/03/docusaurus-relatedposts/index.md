@@ -47,200 +47,13 @@ Some properties are custom ones like `mainTag`.
 
 So, just copy/paste the content of the file below and create the `src/components/Blog/utils/posts.js` in your project's structure.
 
-<Snippet filename="src/components/Blog/utils/posts.js">
-
-```js
-/**
- * 🧠 getBlogMetadata
- *
- * Extracts metadata from all MDX blog posts located in the `/blog` directory.
- * Uses Webpack's `require.context` to dynamically load and parse frontmatter
- * from each post, returning a structured array of metadata objects.
- *
- * 🔍 Behavior:
- * - Resolves permalinks based on `slug` or folder structure
- * - Normalizes image paths for static assets
- * - Filters out invalid or missing entries
- *
- * 📦 Returned metadata includes:
- * - `title`: Post title
- * - `description`: Short summary
- * - `image`: Resolved image path
- * - `draft`: Boolean flag for unpublished posts
- * - `unlisted`: Boolean flag for hidden posts
- * - `permalink`: URL path to the post
- * - `tags`: Array of tags
- * - `mainTag`: Primary tag (optional); used by the RelatedBlogPost component
- * - `authors`: Array of author names
- * - `date`: Publication date
- * - `series`: Series name (optional); used by the SeriesBlogPost component
- *
- * 🛠️ Usage:
- * ```js
- * import { getBlogMetadata } from './getBlogMetadata';
- * const posts = getBlogMetadata();
- * ```
- *
- * ⚠️ Note:
- * This function is intended for use in static site generation or client-side rendering
- * where Webpack's `require.context` is available.
- */
-
-const posts = require.context("../../../../blog", true, /\.mdx?$/);
-
-export function getBlogMetadata() {
-  return posts
-    .keys()
-    .map((key) => {
-      const post = posts(key);
-
-      const dir = key.replace(/\/index\.mdx?$/, "").replace(/^\.\//, "");
-
-      let permalink;
-      if (post.frontMatter.slug) {
-        permalink = post.frontMatter.slug.startsWith("/")
-          ? post.frontMatter.slug
-          : `/blog/${post.frontMatter.slug.replace(/^\//, "")}`;
-      } else {
-        permalink = `/blog/${dir}/`;
-      }
-
-      let imageUrl = post.frontMatter.image;
-      if (imageUrl && imageUrl.startsWith("./")) {
-        imageUrl = `/blog/${dir}/${imageUrl.replace("./", "")}`;
-      }
-
-      return {
-        title: post.frontMatter.title,
-        description: post.frontMatter.description,
-        image: imageUrl,
-        draft: post.frontMatter.draft || false,
-        unlisted: post.frontMatter.unlisted || false,
-        permalink,
-        tags: post.frontMatter.tags || [],
-        mainTag: post.frontMatter.mainTag || null,
-        authors: post.frontMatter.authors || [],
-        date: post.frontMatter.date,
-        series: post.frontMatter.series || null,
-      };
-    })
-    .filter(Boolean);
-}
-```
-
-</Snippet>
+<Snippet filename="src/components/Blog/utils/posts.js" source="src/components/Blog/utils/posts.js" />
 
 ## Our RelatedPosts component
 
 Now please create this file `src/components/Blog/RelatedPosts/index.js`:
 
-<Snippet filename="src/components/Blog/RelatedPosts/index.js">
-
-```js
-/**
- * 🔗 RelatedPosts Component
- *
- * Displays a list of related blog posts based on shared tags or a designated `mainTag`.
- * Designed for Docusaurus blogs to enhance content discoverability.
- *
- * Props:
- * - count (number): Maximum number of related posts to display (default: 3)
- * - description (boolean): Whether to show post descriptions if available
- *
- * Behavior:
- * - Uses `useBlogPost()` to get current post metadata
- * - Fetches blog metadata via `getBlogMetadata()`
- * - Filters blog posts using `mainTag` or fallback to shared tags
- * - Excludes the current post from the results
- * - Randomizes and limits the number of displayed posts
- *
- * Styling:
- * - Uses Docusaurus grid and card classes
- * - Inline styles for layout and visual polish
- *
- * Returns:
- * - A responsive grid of related blog post cards, or a fallback message if none found
- */
-
-import PropTypes from "prop-types";
-import Link from "@docusaurus/Link";
-import useBaseUrl from "@docusaurus/useBaseUrl";
-import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
-import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
-import PostCard from "@site/src/components/Blog/PostCard";
-
-export default function RelatedPosts({ count = 3, description = false }) {
-  const { metadata } = useBlogPost();
-  const currentPermalink = metadata.permalink;
-  const mainTag = metadata.frontMatter.mainTag;
-  const tags = metadata.frontMatter.tags || [];
-
-  if (!mainTag && tags.length === 0) return null; // nothing to filter on
-
-  const posts = getBlogMetadata();
-  let filtered = posts;
-
-  // Prefer mainTag if available
-  if (mainTag) {
-    const filteredByMainTag = posts.filter((post) => {
-      const postTags = post.tags.map((t) =>
-        typeof t === "string" ? t : t.label
-      );
-      return postTags.includes(mainTag);
-    });
-
-    if (filteredByMainTag.length > 0) {
-      filtered = filteredByMainTag;
-    } else if (tags.length > 0) {
-      filtered = posts.filter((post) => {
-        const postTagLabels = post.tags.map((t) =>
-          typeof t === "string" ? t : t.label
-        );
-        return postTagLabels.some((label) => tags.includes(label));
-      });
-    } else {
-      filtered = [];
-    }
-  } else if (tags.length > 0) {
-    filtered = filtered.filter((post) => {
-      const postTagLabels = post.tags.map((t) =>
-        typeof t === "string" ? t : t.label
-      );
-      return postTagLabels.some((label) => tags.includes(label));
-    });
-  }
-
-  // Exclude current post
-  filtered = filtered.filter((post) => post.permalink !== currentPermalink);
-
-  // Randomize and take top N
-  const ordered = [...filtered].sort(() => 0.5 - Math.random());
-  const related = ordered.slice(0, count);
-
-  if (!related.length) return <p>No related posts.</p>;
-
-  return (
-    <>
-      <h3>Related posts</h3>
-      <div className="row">
-        {related.map((post) => (
-          <PostCard key={post.id} layout="small" post={post} />
-        ))}
-      </div>
-    </>
-  );
-}
-
-RelatedPosts.propTypes = {
-  /** Number of related posts to display */
-  count: PropTypes.number,
-
-  /** Whether to show post descriptions */
-  description: PropTypes.bool,
-};
-```
-
-</Snippet>
+<Snippet filename="src/components/Blog/RelatedPosts/index.js" source="src/components/Blog/RelatedPosts/index.js" />
 
 ## Overriding the BlogPostItem template
 
@@ -280,6 +93,7 @@ export default function BlogPostItem({ children, className }) {
       <BlogPostItemHeader />
       <BlogPostItemContent>{children}</BlogPostItemContent>
       <BlogPostItemFooter />
+      // highlight-next-line
       {isBlogPostPage && <RelatedPosts count="6" description="false" />}
     </BlogPostItemContainer>
   );

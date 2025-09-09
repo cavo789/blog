@@ -1,0 +1,13 @@
+
+.truncate p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+  word-wrap: break-word;
+  max-height: 4.5em; /* 3 lignes × 1.5em line-height */
+  line-height: 1.5em;
+}

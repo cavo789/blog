@@ -13,6 +13,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 import remarkReplaceImgToImage from "./plugins/remark-image-transformer";
 import remarkReplaceWords from "./plugins/remark-replace-terms";
+import remarkSnippetLoader from "./plugins/remark-snippet-loader/index.cjs";
 import pluginSeriesRoute from "./plugins/docusaurus-plugin-series-route/index.cjs"
 import pluginTagRoute from "./plugins/docusaurus-plugin-tag-route/index.cjs"
 
@@ -100,8 +101,9 @@ const config = {
           onUntruncatedBlogPosts: "ignore",
           // Replace words like "vscode" or "markdown" to "VSCode" and "Markdown"
           beforeDefaultRemarkPlugins: [
+            remarkSnippetLoader,
             remarkReplaceImgToImage,
-            remarkReplaceWords,
+            remarkReplaceWords
           ],
         },
         sitemap: {

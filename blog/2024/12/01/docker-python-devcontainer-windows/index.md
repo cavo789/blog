@@ -265,7 +265,6 @@ DOCKER_PYTHON_VERSION=3.13-slim
 
 </Snippet>
 
-
 Copy/paste the content below in a file on your system called `compose.yaml`.
 
 <Snippet filename="compose.yaml">

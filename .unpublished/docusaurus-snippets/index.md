@@ -58,125 +58,11 @@ Hello world! Proud to be here!!!
 
 Please create the `src/components/Snippets/index.js` file with this content:
 
-<Snippet filename="src/components/Snippets/index.js">
-
-```js
-import React, { useState, useRef, useEffect, useCallback } from "react";
-import styles from "./styles.module.css";
-
-export default function Snippets({ filename, children, defaultOpen = true }) {
-  const [open, setOpen] = useState(defaultOpen);
-  const contentRef = useRef(null);
-  const [height, setHeight] = useState("0px");
-
-  useEffect(() => {
-  if (contentRef.current) {
-    setHeight(open ? `${contentRef.current.scrollHeight}px` : "0px");
-  }
-}, [open, children]);
-
-  const handleToggle = useCallback(() => {
-    setOpen((prev) => !prev);
-  }, []);
-
-  const contentId = useRef(
-    `snippet-content-${Math.random().toString(36).substr(2, 9)}`
-  ).current;
-
-  return (
-    <div className={`${styles.snippet_block} alert alert--info`}>
-      <button className={styles.snippet_summary} onClick={handleToggle} aria-expanded={open} aria-controls={contentId}>
-        <span className="">{filename}</span>
-        <span className={`${styles.chevron} ${open ? styles.rotate : ""}`}>&#9662;</span>
-      </button>
-      <div ref={contentRef} id={contentId} className={styles.snippet_content} style={{ maxHeight: height }} >
-        <div className={styles.snippet_inner}>{children}</div>
-      </div>
-    </div>
-  );
-}
-
-```
-
-</Snippet>
+<Snippet filename="src/components/Snippets/index.js" source="src/components/Snippets/index.js" />
 
 Also create the stylesheet:
 
-<Snippet filename="styles.module.css">
-
-```css
-code {
-  /* This variable adapts automatically to light and dark themes */
-  background-color: var(--ifm-code-background) !important;
-  padding: 0px !important;
-}
-
-code:hover {
-  background-color: var(--ifm-code-background) !important;
-  padding: 0px !important;
-}
-
-.snippet_block {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 8px;
-  margin: 1rem 0;
-  overflow: hidden;
-}
-
-.snippet_summary {
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  font-weight: bold;
-  --chevron-rotation: 0deg;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.snippet_summary:hover {
-  background: var(--ifm-hover-overlay);
-}
-
-.snippet_summary[aria-expanded="true"] {
-  --chevron-rotation: 180deg;
-}
-
-.snippet_summary:focus-visible {
-  outline: 2px solid var(--ifm-color-primary);
-  outline-offset: 2px;
-}
-
-.chevron {
-  transition: transform 0.3s ease;
-  transform: rotate(var(--chevron-rotation));
-}
-
-.chevron.rotate {
-  transform: rotate(180deg);
-}
-
-.snippet_content {
-  overflow: hidden;
-  transition: max-height 0.35s ease;
-}
-
-.snippet_inner {
-  padding: 0.75rem 1rem;
-}
-
-.snippet_toolbar {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 0.5rem;
-}
-
-```
-
-</Snippet>
+<Snippet filename="src/components/Snippets/styles.module.css" source="src/components/Snippets/styles.module.css" />
 
 The last thing we should do is to teach Docusaurus about our custom component.
 
@@ -234,7 +120,20 @@ print("Nice to meet you.")
 
 </Snippet>
 
-## Demo
+## Don't copying/pasting content anymore
+
+There is much better way to use the `Snippet` component when the source file is on your disk.
+
+Let's imagine this:
+
+`<Snippet filename="src/components/Blog/PostCard/index.js" source="src/components/Blog/PostCard/index.js" />`
+
+* `filename` is thus the title to show in the article so the reader knows the file should be named like that
+* `source` is the relative path (from your Docusaurus root folder) when the file can be retrieved. In this scenario, we don't have to put the source code in the file but Docusaurus will do the job for us:
+  * When previewing the site (dev mode), a plugin will read the content immediately from the disk and will inject its content. So, if the sourced file is updated, your article will always be up-to-date
+  * When building the static version (prod mode), the Docusaurus build engine will also read the content of the file from the disk and inject it in your article.
+
+## Demo, hardcoded content
 
 <Snippet filename="sample.apacheconf">
 
@@ -516,3 +415,13 @@ version: 1.0.0
 ```
 
 </Snippet>
+
+## Demo, get content from the disk
+
+Unlike the previous chapter, here, the syntax `<Snippet filename="src/components/Blog/PostCard/index.js" source="src/components/Blog/PostCard/index.js" />` has been used. So, the source code is injected dynamically during the previewing/rendering of the blog. If the source file is updated, the article will be updated too. Both are synchronized.
+
+<Snippet filename="src/components/Blog/PostCard/index.js" source="src/components/Blog/PostCard/index.js" />
+
+<Snippet filename="src/components/Blog/PostCard/readme.md" source="src/components/Blog/PostCard/readme.md" />
+
+<Snippet filename="src/components/Blog/PostCard/styles.module.css" source="src/components/Blog/PostCard/styles.module.css" />

@@ -36,213 +36,17 @@ That one can be retrieved too on the [Docusaurus Community](https://docusaurus.c
 
 In your Docusaurus site, please create these files:
 
-<Snippet filename="src/components/Card/index.js">
+<Snippet filename="src/components/Card/index.js" source="src/components/Card/index.js" />
 
-```js
-import React, { CSSProperties } from "react"; // CSSProperties allows inline styling with better type checking.
-import clsx from "clsx"; // clsx helps manage conditional className names in a clean and concise manner.
-const Card = ({
-  className, // Custom classes for the container card
-  style, // Custom styles for the container card
-  children, // Content to be included within the card
-  shadow, // Used to add shadow under your card. Expected values are: low (lw), medium (md), tall (tl)
-}) => {
-  const cardShadow = shadow ? `item shadow--${shadow}` : "";
-  return (
-    <div className={clsx("card", className, cardShadow)} style={style}>
-      {children}
-    </div>
-  );
-};
-export default Card;
-```
+<Snippet filename="src/components/Card/styles.module.css" source="src/components/Card/styles.module.css" />
 
-</Snippet>
+<Snippet filename="src/components/Card/CardBody/index.js" source="src/components/Card/CardBody/index.js" />
 
-<Snippet filename="src/components/Card/CardBody/index.js">
+<Snippet filename="src/components/Card/CardFooter/index.js" source="src/components/Card/CardFooter/index.js" />
 
-```js
-import React, { CSSProperties } from "react";
-import clsx from "clsx";
+<Snippet filename="src/components/Card/CardHeader/index.js" source="src/components/Card/CardHeader/index.js" />
 
-const CardBody = ({
-  className, // classNamees for the container card
-  style, // Custom styles for the container card
-  children, // Content to be included within the card
-  textAlign,
-  variant,
-  italic = false,
-  noDecoration = false,
-  transform,
-  breakWord = false,
-  truncate = false,
-  weight,
-}) => {
-  const text = textAlign ? `text--${textAlign}` : "";
-  const textColor = variant ? `text--${variant}` : "";
-  const textItalic = italic ? "text--italic" : "";
-  const textDecoration = noDecoration ? "text-no-decoration" : "";
-  const textType = transform ? `text--${transform}` : "";
-  const textBreak = breakWord ? "text--break" : "";
-  const textTruncate = truncate ? "text--truncate" : "";
-  const textWeight = weight ? `text--${weight}` : "";
-  return (
-    <div
-      className={clsx(
-        "card__body",
-        className,
-        text,
-        textType,
-        textColor,
-        textItalic,
-        textDecoration,
-        textBreak,
-        textTruncate,
-        textWeight
-      )}
-      style={style}
-    >
-      {children}
-    </div>
-  );
-};
-
-export default CardBody;
-```
-
-</Snippet>
-
-<Snippet filename="src/components/Card/CardFooter/index.js">
-
-```js
-import React, { CSSProperties } from "react";
-import clsx from "clsx";
-
-const CardFooter = ({
-  className,
-  style,
-  children,
-  textAlign,
-  variant,
-  italic = false,
-  noDecoration = false,
-  transform,
-  breakWord = false,
-  truncate = false,
-  weight,
-}) => {
-  const text = textAlign ? `text--${textAlign}` : "";
-  const textColor = variant ? `text--${variant}` : "";
-  const textItalic = italic ? "text--italic" : "";
-  const textDecoration = noDecoration ? "text-no-decoration" : "";
-  const textType = transform ? `text--${transform}` : "";
-  const textBreak = breakWord ? "text--break" : "";
-  const textTruncate = truncate ? "text--truncate" : "";
-  const textWeight = weight ? `text--${weight}` : "";
-  return (
-    <div
-      className={clsx(
-        "card__footer",
-        className,
-        text,
-        textType,
-        textColor,
-        textItalic,
-        textDecoration,
-        textBreak,
-        textTruncate,
-        textWeight
-      )}
-      style={style}
-    >
-      {children}
-    </div>
-  );
-};
-
-export default CardFooter;
-```
-
-</Snippet>
-
-<Snippet filename="src/components/Card/CardHeader/index.js">
-
-```js
-import React, { CSSProperties } from "react"; // CSSProperties allows inline styling with better type checking.
-import clsx from "clsx"; // clsx helps manage conditional className names in a clean and concise manner.
-
-const CardHeader = ({
-  className, // classNamees for the container card
-  style, // Custom styles for the container card
-  children, // Content to be included within the card
-  textAlign,
-  variant,
-  italic = false,
-  noDecoration = false,
-  transform,
-  breakWord = false,
-  truncate = false,
-  weight,
-}) => {
-  const text = textAlign ? `text--${textAlign}` : "";
-  const textColor = variant ? `text--${variant}` : "";
-  const textItalic = italic ? "text--italic" : "";
-  const textDecoration = noDecoration ? "text-no-decoration" : "";
-  const textType = transform ? `text--${transform}` : "";
-  const textBreak = breakWord ? "text--break" : "";
-  const textTruncate = truncate ? "text--truncate" : "";
-  const textWeight = weight ? `text--${weight}` : "";
-  return (
-    <div
-      className={clsx(
-        "card__header",
-        className,
-        text,
-        textType,
-        textColor,
-        textItalic,
-        textDecoration,
-        textBreak,
-        textTruncate,
-        textWeight
-      )}
-      style={style}
-    >
-      {children}
-    </div>
-  );
-};
-
-export default CardHeader;
-```
-
-</Snippet>
-
-<Snippet filename="src/components/Card/CardImage/index.js">
-
-```js
-import React, { CSSProperties } from "react";
-import clsx from "clsx";
-import useBaseUrl from "@docusaurus/useBaseUrl"; // Import the useBaseUrl function from Docusaurus
-
-const CardImage = ({ className, style, cardImageUrl, alt, title }) => {
-  const generatedCardImageUrl = useBaseUrl(cardImageUrl);
-
-  return (
-    <img
-      className={clsx("card__image", className)}
-      style={style}
-      src={generatedCardImageUrl}
-      alt={alt}
-      title={title}
-    />
-  );
-};
-
-export default CardImage;
-```
-
-</Snippet>
+<Snippet filename="src/components/Card/CardImage/index.js" source="src/components/Card/CardImage/index.js" />
 
 So right now, you've created five files on your disk.
 
@@ -318,24 +122,7 @@ This concrete example will allow us to implement two Docusaurus concepts: **the 
 
 Please create the file here above.
 
-<Snippet filename="plugins/docusaurus-plugin-tag-route/index.cjs">
-
-```js
-module.exports = function () {
-  return {
-    name: "docusaurus-plugin-tag-route",
-    async contentLoaded({ actions }) {
-      actions.addRoute({
-        path: "/blog/tags/:tag",
-        component: "@site/src/components/Blog/Tags/TagArticlesPage",
-        exact: true,
-      });
-    },
-  };
-};
-```
-
-</Snippet>
+<Snippet filename="plugins/docusaurus-plugin-tag-route/index.cjs" source="plugins/docusaurus-plugin-tag-route/index.cjs" />
 
 Take a few seconds to read this short script: as you can see that one will tell to Docusaurus to no more use his own standard `/blog/tags/:tag` page but ours (i.e. `src/components/Blog/Tags/TagArticlesPage`). Let's create that one.
 
@@ -343,75 +130,7 @@ Take a few seconds to read this short script: as you can see that one will tell 
 
 Please create the file below. It's the `TagArticlesPage` function that'll be called by Docusaurus when he'll display a specific tag.
 
-<Snippet filename="src/components/Blog/Tags/TagArticlesPage.js">
-
-```js
-import { createSlug } from "@site/src/components/Blog/utils/slug";
-import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
-import { useLocation } from "@docusaurus/router";
-import Layout from "@theme/Layout";
-import Link from "@docusaurus/Link";
-import PostCard from "@site/src/components/Blog/PostCard";
-
-function getTagFromPathname(pathname) {
-  const match = pathname.match(/\/blog\/tags\/([^/]+)/);
-  return match ? decodeURIComponent(match[1]) : null;
-}
-
-export default function TagArticlesPage() {
-  const location = useLocation();
-  const rawTag = getTagFromPathname(location.pathname);
-
-  if (!rawTag) {
-    return (
-      <Layout>
-        <div className="container">
-          <p>No tag specified.</p>
-          <Link href="/blog/tags">Go back to all tags</Link>
-        </div>
-      </Layout>
-    );
-  }
-
-  const posts = getBlogMetadata();
-
-  // Find original tag name based on slug
-  const allTags = Array.from(new Set(posts.flatMap((post) => post.tags || [])));
-  const displayTag = allTags.find((t) => createSlug(t) === rawTag) || rawTag;
-
-  // Filter posts by slug-matched tag
-  const taggedPosts = posts.filter((post) =>
-    post.tags?.some((t) => createSlug(t) === rawTag)
-  );
-
-  if (taggedPosts.length === 0) {
-    return (
-      <Layout title={`Tag: ${displayTag}`}>
-        <div className="container margin-top--lg margin-bottom--lg text--center">
-          <h2>No articles found with tag "{displayTag}"</h2>
-          <Link href="/blog/tags">Browse all tags</Link>
-        </div>
-      </Layout>
-    );
-  }
-
-  return (
-    <Layout title={`Tag: ${displayTag}`}>
-      <div className="container margin-top--lg margin-bottom--lg">
-        <h1>Articles tagged: {displayTag}</h1>
-        <div className="row">
-          {taggedPosts.map((post) => (
-            <PostCard key={post.title} post={post} />
-          ))}
-        </div>
-      </div>
-    </Layout>
-  );
-}
-
-```
-
-</Snippet>
+<Snippet filename="src/components/Blog/Tags/TagArticlesPage.js" source="src/components/Blog/Tags/TagArticlesPage.js" />
 
 As you can see at the very top of the `TagArticlesPage.js` file, we're importing a few files. Some already exists in your Docusaurus site; some should be created.
 
@@ -419,37 +138,7 @@ There are three files we should create
 
 ## The slug generator
 
-<Snippet filename="src/components/Blog/utils/slug.js">
-
-```js
-/**
- * Converts a string into a URL-friendly slug.
- *
- * This function:
- * - Converts the string to lowercase
- * - Normalizes accented characters (e.g., é → e)
- * - Removes diacritics and special characters
- * - Replaces spaces with hyphens
- * - Collapses multiple hyphens into one
- * - Trims leading and trailing hyphens
- *
- * @param {string} text - The input string to convert.
- * @returns {string} - The slugified version of the input.
- */
-export function createSlug(text) {
-  return text
-    .replace(/([a-z0-9])([A-Z])/g, "$1-$2") // camelCase → kebab-case
-    .toLowerCase()
-    .normalize("NFD") // Decomposes accented characters
-    .replace(/[\u0300-\u036f]/g, "") // Removes diacritics
-    .replace(/[^a-z0-9\s-]/g, "") // Removes special characters
-    .replace(/\s+/g, "-") // Replaces spaces with hyphens
-    .replace(/-+/g, "-") // Collapses multiple hyphens
-    .replace(/^-+|-+$/g, ""); // Trims leading/trailing hyphens
-}
-```
-
-</Snippet>
+<Snippet filename="src/components/Blog/utils/slug.js" source="src/components/Blog/utils/slug.js" />
 
 ## The getBlogMetaData function
 

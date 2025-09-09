@@ -61,7 +61,6 @@ This will create a Docker container that will remain running. We'll share our sc
 
 We need a very small Python script to generate our files:
 
-
 <Snippet filename="src/script.py">
 
 ```python
