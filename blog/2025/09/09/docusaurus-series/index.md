@@ -7,8 +7,7 @@ series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, plugin, react, series, swizzle]
 blueskyRecordKey:
-draft: true
-date: 2025-09-30
+date: 2025-09-09
 ---
 
 <!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,docux -->
