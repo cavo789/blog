@@ -8,6 +8,7 @@ mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
 blueskyRecordKey:
 draft: true
+date: 2025-09-30
 ---
 
 <!-- markdownlint-disable MD046 -->

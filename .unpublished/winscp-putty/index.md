@@ -6,6 +6,7 @@ image: /img/winscp_tips_social_media.jpg
 mainTag: winscp
 tags: [putty, ssh, tips, winscp]
 draft: true
+date: 2025-09-30
 ---
 ![WinSCP - Start PuTTY without typing a password](/img/winscp_tips_banner.jpg)
 

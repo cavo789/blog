@@ -6,6 +6,7 @@ image: /img/excel_tips_social_media.jpg
 mainTag: excel
 tags: [excel, vba]
 draft: true
+date: 2025-09-30
 ---
 ![MS Excel - Get the list of references used in your modules](/img/excel_tips_banner.jpg)
 

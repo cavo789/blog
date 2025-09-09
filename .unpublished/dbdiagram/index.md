@@ -6,6 +6,7 @@ image: /img/database_tips_social_media.jpg
 mainTag: python
 tags: [database, python, sqlalchemy, tips, visualisation]
 draft: true
+date: 2025-09-30
 ---
 <!-- cspell:ignore dbdiagram,drawdb,pydantic,hocus,pocus,sqlalchemy -->
 ![dbdiagram - From the database design to its Python implementation](/img/database_tips_banner.jpg)

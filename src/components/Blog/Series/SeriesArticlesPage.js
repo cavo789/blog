@@ -1,9 +1,8 @@
-import React from "react";
+import { createSlug } from "@site/src/components/Blog/utils/slug";
+import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import { useLocation, matchPath } from "@docusaurus/router";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
-import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
-import { createSlug } from "@site/src/components/Blog/utils/slug";
 import PostCard from "@site/src/components/Blog/PostCard";
 
 export default function SeriesArticlesPage() {

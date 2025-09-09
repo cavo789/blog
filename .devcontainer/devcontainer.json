@@ -61,11 +61,12 @@
               "Codeium.codeium",
               "DavidAnson.vscode-markdownlint",
               "esbenp.prettier-vscode",
-              "streetsidesoftware.code-spell-checker",
               "streetsidesoftware.code-spell-checker-british-english",
               "streetsidesoftware.code-spell-checker-french",
+              "streetsidesoftware.code-spell-checker",
               "TomasDahlqvist.markdown-admonitions",
-              "usernamehw.errorlens"
+              "usernamehw.errorlens",
+              "zokugun.explicit-folding"
             ]
         }
     }

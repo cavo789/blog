@@ -5,6 +5,7 @@ authors: [christophe]
 image: /img/docker_tips_social_media.jpg
 mainTag: docker
 tags: [docker]
+date: 2025-09-30
 draft: true
 ---
 ![Docker - How to group containers together](/img/docker_tips_banner.jpg)

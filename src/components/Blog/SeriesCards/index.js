@@ -30,8 +30,6 @@ export default function SeriesCards() {
     );
   }
 
-  console.log(seriesList);
-
   return (
     <div className="container margin-top--lg margin-bottom--lg">
       <div className="row">

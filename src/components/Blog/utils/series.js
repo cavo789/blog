@@ -53,14 +53,16 @@ export function generateSeriesList(
     .sort()
     .map((seriesName) => {
       const posts = seriesMap[seriesName];
-      const sortedPosts = posts.sort((a, b) => new Date(a.date) - new Date(b.date));
+      const sortedPosts = posts.sort(
+        (a, b) => new Date(a.date) - new Date(b.date)
+      );
 
       const publishedCount = posts.filter((post) => !post.draft).length;
       const draftCount = posts.filter((post) => post.draft).length;
 
       const description =
         `${publishedCount} published article(s)` +
-        (draftCount > 0 ? ` • ${draftCount} in progress` : '');
+        (draftCount > 0 ? ` • ${draftCount} in progress` : "");
 
       return {
         seriesName,

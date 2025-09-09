@@ -1,38 +1,56 @@
 ---
 slug: docusaurus-series
-title: Using a self-created component, add the notion of series to Docusaurus
+title: Organize Your Docusaurus Content with a Custom Series Component
 authors: [christophe]
 image: /img/docusaurus_component_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
-tags: [component, docusaurus, markdown, react, swizzle]
+tags: [component, docusaurus, markdown, plugin, react, series, swizzle]
 blueskyRecordKey:
 draft: true
+date: 2025-09-30
 ---
 
 <!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,docux -->
 
-![Using a self-created component, add the notion of series to Docusaurus](/img/docusaurus_component_banner.jpg)
+![Organize Your Docusaurus Content with a Custom Series Component](/img/docusaurus_component_banner.jpg)
 
 If you have been using Docusaurus for a long time, you may have noticed that it is not possible to create links between articles as one would like to do for a series.
 
 It would be nice to write a first article, a second, a third one, ... and teach Docusaurus these articles are part of the same series.
 
+This will also have a positive impact on your SEO (by creating better internal linking) and keep your readers interested for longer.
+
 It's impossible natively so, let's create our component for this.
+
+:::caution Spoiler alert
+Just click on the <Link to="/series">Series</Link> link to see how the **SeriesPosts** component is soooo cool. You'll learn how to do this here.
+:::
+
+<!-- truncate -->
 
 :::tip
 Hey, did you've already seen this article? Look at the top, you've a "This article is part of the **Creating Docusaurus components** series:"; this is exactly what we'll learn right now.
 :::
 
-<!-- truncate -->
+This long article will have two main sections: one on the actual creation of the component, and the other on navigating the blog.
 
-## If you don't have a Docusaurus site yet
+## Part 1 - Creation of the SeriesPosts component
 
-*or if you want to play in a sandbox site...*
+In this first chapter, we'll create our `SeriesPosts` component so, by opening an article, we can get a `Tis article is part of the ... series` and a list of articles that are part of that series.
 
-As an illustration for this article, I've created a new Docusaurus sites in seconds by following my previous <Link to="/blog/docusaurus-docker">Running Docusaurus with Docker</Link> article.
+<StepsCard
+  title="This will implies a lot of things like:"
+  variant="prerequisites"
+  steps={[
+    "We'll need some helpers,",
+    "We'll need a new component,",
+    "Blog posts should have a `series:` YAML front matter item and",
+    "We'll have to override the standard way of displaying a blog post"
+  ]}
+/>
 
-## We need something for extracting information from blog posts
+### 1.1. We need some helpers
 
 If you don't have it yet, please create the `src/components/Blog/utils/posts.js` file. It'll contain a helper function we can reuse for several components.
 
@@ -45,14 +63,50 @@ For each file, the script will looks at the YAML front matter and exploit some p
 * if the blog post has an associated image will use it. If not use a default one
 * then the helper will simply return the list of posts and their properties.
 
-Some properties are custom ones like `mainTag` and, for our need right now, the `series` property.
+Some properties are custom ones like `mainTag` (see my [Displaying related posts below our Docusaurus article](/blog/docusaurus-relatedposts) article) and, for our need right now, the `series` property.
 
 So, just copy/paste the content of the file below and create the `src/components/Blog/utils/posts.js` in your project's structure.
 
 <Snippet filename="src/components/Blog/utils/posts.js">
 
 ```js
-const posts = require.context("../../../blog", true, /\.mdx?$/);
+/**
+ * 🧠 getBlogMetadata
+ *
+ * Extracts metadata from all MDX blog posts located in the `/blog` directory.
+ * Uses Webpack's `require.context` to dynamically load and parse frontmatter
+ * from each post, returning a structured array of metadata objects.
+ *
+ * 🔍 Behavior:
+ * - Resolves permalinks based on `slug` or folder structure
+ * - Normalizes image paths for static assets
+ * - Filters out invalid or missing entries
+ *
+ * 📦 Returned metadata includes:
+ * - `title`: Post title
+ * - `description`: Short summary
+ * - `image`: Resolved image path
+ * - `draft`: Boolean flag for unpublished posts
+ * - `unlisted`: Boolean flag for hidden posts
+ * - `permalink`: URL path to the post
+ * - `tags`: Array of tags
+ * - `mainTag`: Primary tag (optional); used by the RelatedBlogPost component
+ * - `authors`: Array of author names
+ * - `date`: Publication date
+ * - `series`: Series name (optional); used by the SeriesBlogPost component
+ *
+ * 🛠️ Usage:
+ * ```js
+ * import { getBlogMetadata } from './getBlogMetadata';
+ * const posts = getBlogMetadata();
+ * ```
+ *
+ * ⚠️ Note:
+ * This function is intended for use in static site generation or client-side rendering
+ * where Webpack's `require.context` is available.
+ */
+
+const posts = require.context("../../../../blog", true, /\.mdx?$/);
 
 export function getBlogMetadata() {
   return posts
@@ -97,23 +151,83 @@ export function getBlogMetadata() {
 
 </Snippet>
 
-## Our SeriesPosts component
+We'll also need a second helper: please create the `src/components/Blog/utils/slug.js` file:
 
-Now, we'll create our component. Please create the `src/components/SeriesPosts/index.js` file with the following code:
-
-<Snippet filename="src/components/SeriesPosts/index.js">
+<Snippet filename="src/components/Blog/utils/slug.js">
 
 ```js
-import React from "react";
+/**
+ * Converts a string into a URL-friendly slug.
+ *
+ * This function:
+ * - Converts the string to lowercase
+ * - Normalizes accented characters (e.g., é → e)
+ * - Removes diacritics and special characters
+ * - Replaces spaces with hyphens
+ * - Collapses multiple hyphens into one
+ * - Trims leading and trailing hyphens
+ *
+ * @param {string} text - The input string to convert.
+ * @returns {string} - The slugified version of the input.
+ */
+export function createSlug(text) {
+  return text
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2") // camelCase → kebab-case
+    .toLowerCase()
+    .normalize("NFD") // Decomposes accented characters
+    .replace(/[\u0300-\u036f]/g, "") // Removes diacritics
+    .replace(/[^a-z0-9\s-]/g, "") // Removes special characters
+    .replace(/\s+/g, "-") // Replaces spaces with hyphens
+    .replace(/-+/g, "-") // Collapses multiple hyphens
+    .replace(/^-+|-+$/g, ""); // Trims leading/trailing hyphens
+}
+
+```
+
+</Snippet>
+
+### 1.2. Our SeriesPosts component
+
+Now, we'll create our component. Please create the `src/components/Blog/SeriesPosts/index.js` file with the following code:
+
+<Snippet filename="src/components/Blog/SeriesPosts/index.js">
+
+```js
+/**
+ * 📚 SeriesPosts Component
+ *
+ * Displays a list of blog posts that belong to the same series.
+ * Useful for linking related articles together in a Docusaurus blog.
+ *
+ * Props:
+ * - series (string): The name of the series to filter blog posts by.
+ * - excludePermalink (string|null): Optional permalink to exclude (usually the current post).
+ * - highlightCurrent (boolean): If true, dims the current post title for visual emphasis.
+ *
+ * Behavior:
+ * - Fetches blog metadata via `getBlogMetadata()`
+ * - Filters posts by series name
+ * - Sorts posts chronologically
+ * - Highlights or links each post depending on whether it's the current one
+ *
+ * Styling:
+ * - Uses scoped CSS from `styles.module.css`
+ *
+ * Returns:
+ * - A styled list of blog posts in the same series, or null if none found.
+ */
+
+import PropTypes from "prop-types";
 import Link from "@docusaurus/Link";
 import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import { createSlug } from "@site/src/components/Blog/utils/slug";
 
 import styles from "./styles.module.css";
 
 export default function SeriesPosts({
   series,
   excludePermalink = null,
-  highlightCurrent = false,
+  highlightCurrent = true,
 }) {
   const posts = getBlogMetadata()
     .filter((post) => post.series === series)
@@ -124,7 +238,8 @@ export default function SeriesPosts({
   return (
     <div className={styles.seriesBlogPost}>
       <p>
-        This article is part of the <strong>{series}</strong> series:
+        This article is part of the{" "}
+        <Link href={`/series/${createSlug(series)}`}>{series}</Link> series:
       </p>
       <ul>
         {posts.map((post) => {
@@ -151,25 +266,33 @@ export default function SeriesPosts({
     </div>
   );
 }
+
+SeriesPosts.propTypes = {
+  /** The name of the blog series to display */
+  series: PropTypes.string.isRequired,
+
+  /** Permalink of the current post to exclude from linking */
+  excludePermalink: PropTypes.string,
+
+  /** Whether to visually highlight the current post */
+  highlightCurrent: PropTypes.bool,
+};
+
 ```
 
 </Snippet>
 
-As you can see, we'll retrieve the list of blog posts thanks the `getBlogMetaData` helper. We'll mainly apply a filter and make sure the retrieve post has a `series` property and that one is strictly equal to the one of the current article.
+This javascript code will retrieve the list of all blog posts. Then will extract a property called `series` (present or not in your blog post YAML front matter). If a post has the `series` property, the script will compare its value with the one of the current blog post.
 
-And if so, just order post in a chronological order.
+If there is a match, we've thus another articles in the serie and the script will then display a "This article is part of ..." followed by the series name and the list of articles.
 
-```js
-const posts = getBlogMetadata()
-    .filter((post) => post.series === series)
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
-```
+Articles will be displayed in a chronological order to allow the reader to follow the serie is a logical order.
 
 The rest of the logic will simply to display a bullet list.
 
 And the last file to create is the CSS file:
 
-<Snippet filename="src/components/SeriesPosts/styles.module.css">
+<Snippet filename="src/components/Blog/SeriesPosts/styles.module.css">
 
 ```css
 .seriesBlogPost {
@@ -179,33 +302,35 @@ And the last file to create is the CSS file:
 
 </Snippet>
 
-## Editing our articles
+### 1.3. Editing our articles
 
-Now, the easy part, please edit an existing blog post you've and add the `series` key in the YAML front matter; f.i.:
+Now, the easy part, please edit a few existing blog posts you've and add the `series` key in the YAML front matter; f.i.:
 
 <Snippet filename="index.md">
 
 ```markdown
 ---
-title: Hello World!
+title: Create your Joomla website using Docker - Part 1
+[...]
 <!-- highlight-next-line -->
-series: Creation of my blog site
+series: Create your joomla website using Docker
+[...]
 ---
 
-Hello world! Proud to be here!!!
+In this article, we will learn how to ...
 ```
 
 </Snippet>
 
-:::danger Nothing happens? Why? Because we still need to do one thing
-As you can see, nothing happens right now:
+Do this for a few posts (so we'll have a few articles in that series).
 
-![Nothing happens](./images/nothing-happens.png)
+:::caution
+If you visit your blog right now and surf on your article, you'll not see any differences at all. And it's purely normal because we've just created a component; we still need to tell Docusaurus to use it.
 :::
 
-## Overriding the BlogPostItem template
+### 1.4. Overriding the BlogPostItem template
 
-It's normal because we need to call our newly created component. For sure, we can include the `<SeriesBlogPost>` tag in each article but, uh oh, we're smart people isn't it?
+So we need to call our newly created component. For sure, we can include the `<SeriesBlogPost>` tag in each article but, uh oh, we're smart people isn't it?
 
 Let's create an override of the BlogPostItem template of Docusaurus.
 
@@ -220,16 +345,15 @@ In the code below, the highlighted lines are the ones we need to add.
 <Snippet filename="src/theme/BlogPostItem/index.js">
 
 ```js
-import React from "react";
-import clsx from "clsx";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import BlogPostItemContainer from "@theme/BlogPostItem/Container";
-import BlogPostItemHeader from "@theme/BlogPostItem/Header";
 import BlogPostItemContent from "@theme/BlogPostItem/Content";
 import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
+import BlogPostItemHeader from "@theme/BlogPostItem/Header";
+import clsx from "clsx";
 
 // highlight-next-line
-import SeriesPosts from '@site/src/components/SeriesPosts/index.js';
+import SeriesPosts from "@site/src/components/Blog/SeriesPosts/index.js";
 
 // apply a bottom margin in list view
 function useContainerClassName() {
@@ -237,16 +361,13 @@ function useContainerClassName() {
   return !isBlogPostPage ? "margin-bottom--xl" : undefined;
 }
 export default function BlogPostItem({ children, className }) {
-  const containerClassName = useContainerClassName();
-  // highlight-next-line
+  // We need to retrieve the isBlogPostPage flag
   const { metadata, isBlogPostPage } = useBlogPost();
-
+  const containerClassName = useContainerClassName();
   return (
     <BlogPostItemContainer className={clsx(containerClassName, className)}>
       <BlogPostItemHeader />
-
       // highlight-start
-      {/* Only display our SeriesPosts components on the post page; not the blog view */}
       {isBlogPostPage && (
         <SeriesPosts
           series={metadata.frontMatter.series}
@@ -257,58 +378,198 @@ export default function BlogPostItem({ children, className }) {
       // highlight-end
       <BlogPostItemContent>{children}</BlogPostItemContent>
       <BlogPostItemFooter />
+      // highlight-start
+      {isBlogPostPage && (
+        <SeriesPosts
+          series={metadata.frontMatter.series}
+          excludePermalink={metadata.permalink}
+          highlightCurrent={true}
+        />
+      )}
+      // highlight-end
     </BlogPostItemContainer>
   );
 }
+
 ```
 
 </Snippet>
 
+:::caution We need to restart Docusaurus
 Now, because we've just introduced an override, we need to restart our Docusaurus server so changes can be taken into account.
+:::
 
 :::info
 If you're running Docusaurus locally, just run `npm run start` in your console.
 If like me you're running Docusaurus thanks to Docker, just kill the container and run a new one.
 :::
 
+### Let's try if it's working
+
+Return to your blog and refresh the page; you should get something like this (with your own content for sure):
+
 ![Our component is now running](./images/our-component-is-running.png)
 
-Great, the component is now running. We can create our series.
+Great, the component is now running.
 
-## Add another articles in the same series
+We can create our series (in this example, I've edited three articles about Joomla and added the `series` key in their YAML front matter).
 
-Just edit any of your blog post and the only thing you've to do right now is to add the `series` key.
+You can navigate from one article to the other.
 
-On my demo site, I've three articles, I'll edit both and add the `series: Creation of my blog site` line in the YAML front matter.
-
-And by saving my changes, going back to the browser will well reflect my series:
-
-![Our series has three articles](./images/our-series-has-three-articles.png)
-
-:::tip
-If you want to see the `SeriesBlogPost` component in a live use case, just surf on this site. What you'll see here is exactly what is described in this article.
+:::info
+We can stop here, but that would be like doing half the journey: we still need to implement a page that will display the list of series and by clicking on a series, the list of articles in it.
 :::
 
-## Adding a new page to show all series
+## Part 2 - Adding a navigation to series
 
-It'll be cool to have a page on our Docusaurus site to display the list of series no?
+As said, we'll create a page `/series` to our blog so we can immediately get access to all series.
 
-It's easy too.
+<StepsCard
+  title="So we'll need to"
+  variant="prerequisites"
+  steps={[
+    "Create the /series page",
+    "Create a SeriesCards component",
+    "Create a PostCard component",
+    "Add a /series entry to our navigation bar and",
+    "Create a plugin to manage /series/a-series-name URL"
+  ]}
+/>
 
-Please create the `src/pages/series.jsx` file with this content:
+### 2.1 Adding a new page to show all series
 
-<Snippet filename="src/pages/series.jsx">
+It'll be cool to have a page on our Docusaurus site to display the list of series no? Let's do this.
+
+First, please create the `src/pages/series.mdx` file with this content:
+
+<Snippet filename="src/pages/series.mdx">
 
 ```js
-import React from "react";
-import Layout from "@theme/Layout";
-import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
-import Link from "@docusaurus/Link";
+---
+title: "All articles series"
+hide_table_of_contents: true
+image: "/img/series.jpg"
+authors: [christophe]
+---
 
-export default function SeriesPage() {
-  const posts = getBlogMetadata();
+<!-- markdownlint-disable MD041 -->
+
+import SeriesCards from "@site/src/components/Blog/SeriesCards";
+
+Discover our collections of articles organized by theme.
+
+Each series offers you a progressive learning path to master a specific area of web development.
+
+<SeriesCards />
+
+```
+
+</Snippet>
+
+:::caution
+As you can see, that page is a Markdown content but with one special feature: if contains Javascript code. This is why, and it's really important, the extension is `.mdx`.
+:::
+
+As you can see, there are some Markdown content (adapt it to fit your needs) and the use of a new component, the `SeriesCards` one, let's create it.
+
+### 2.2 Creation of the SeriesCards component
+
+Please create the `src/components/Blog/SeriesCards/index.js` file with this content:
+
+<Snippet filename="src/components/Blog/SeriesCards/index.js">
+
+```js
+import { generateSeriesList } from "@site/src/components/Blog/utils/series";
+import PostCard from "@site/src/components/Blog/PostCard";
+
+/**
+ * SeriesCards component
+ *
+ * Renders a responsive grid of blog article series using metadata generated by `generateSeriesList`.
+ * Each card displays the series title, image, and a summary of published and draft articles.
+ * Cards link to a dedicated page for each series.
+ *
+ * Layout:
+ * - Uses Docusaurus Infima grid classes (`row`, `col--4`) for responsive layout.
+ * - Falls back to a friendly message if no series are found.
+ *
+ * Dependencies:
+ * - `generateSeriesList` (utility to group and format blog posts by series)
+ * - `PostCard` (component to render individual series cards)
+ *
+ * Location: src/components/SeriesCards/index.js
+ */
+
+export default function SeriesCards() {
+  const seriesList = generateSeriesList();
+
+  if (seriesList.length === 0) {
+    return (
+      <div className="text--center margin-vert--xl">
+        <h2>No article series found</h2>
+      </div>
+    );
+  }
+
+  return (
+    <div className="container margin-top--lg margin-bottom--lg">
+      <div className="row">
+        {seriesList.map((serie) => (
+          <PostCard post={serie} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+```
+
+</Snippet>
+
+We need a new helper `src/components/Blog/utils/series.js`:
+
+<Snippet filename="src/components/Blog/utils/series.js">
+
+```js
+import { createSlug } from "@site/src/components/Blog/utils/slug";
+import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
+
+/**
+ * 🎭 series.js
+ *
+ * Utility function to generate structured metadata for blog article series in Docusaurus.
+ *
+ * It groups blog posts by their `series` field, sorts them chronologically,
+ * and returns a list of series objects containing permalink, image, title, and description.
+ *
+ * @function generateSeriesList
+ * @param {string} [permalink] - The URL to the page to use for displaying the list of articvles of a specific series.
+ * @param {string} [defaultImage="/img/default.jpg"] - Fallback image used when no image is provided.
+ * @returns {Array<Object>} seriesList - Array of series metadata objects.
+ *
+ * @example
+ * const seriesList = generateSeriesList("/series/", "/img/fallback.jpg");
+ *
+ * Each object in the returned array looks like:
+ *   {
+ *     seriesName: "Introduction to Docusaurus",
+ *     permalink: "/series/introduction-to-docusaurus",
+ *     image: "/img/docusaurus-intro.png",
+ *     title: "Introduction to Docusaurus",
+ *     description: "5 published article(s) • 2 in progress"
+ *   }
+ */
+
+export function generateSeriesList(
+  permalink = "/series/",
+  defaultImage = "/img/default.jpg"
+) {
   const seriesMap = {};
 
+  // Array of blog post objects
+  const posts = getBlogMetadata();
+
+  // Loop all posts, process the ones that are part of a serie and push the post entry in his own series
   posts.forEach((post) => {
     const seriesName = post.series;
     if (seriesName) {
@@ -319,134 +580,489 @@ export default function SeriesPage() {
     }
   });
 
-  const sortedSeriesNames = Object.keys(seriesMap).sort();
+  // Process all series, process all posts and generate an array with the name of the serie, a link
+  // to a page where we can access the articles, ... (see the @example in the intro docblock)
+  return Object.keys(seriesMap)
+    .sort()
+    .map((seriesName) => {
+      const posts = seriesMap[seriesName];
+      const sortedPosts = posts.sort(
+        (a, b) => new Date(a.date) - new Date(b.date)
+      );
 
-  return (
-    <Layout title="Article series">
-      <div className="container margin-top--lg margin-bottom--lg">
-        <h1>All article series</h1>
-        {sortedSeriesNames.length > 0 ? (
-          <div className="row">
-            {sortedSeriesNames.map((seriesName) => {
-              const seriesPosts = seriesMap[seriesName];
-              const sortedPosts = seriesPosts.sort(
-                (a, b) => new Date(a.date) - new Date(b.date)
-              );
-              const firstPost = sortedPosts[0];
-              const description =
-                firstPost.description ||
-                `${seriesPosts.length} article(s) in this series`;
+      const publishedCount = posts.filter((post) => !post.draft).length;
+      const draftCount = posts.filter((post) => post.draft).length;
 
-              return (
-                <div key={seriesName} className="col col--4 margin-bottom--lg">
-                  <div className="card shadow--md">
-                    <div className="card__header">
-                      <h3>
-                        <Link href={firstPost.permalink}>{seriesName}</Link>
-                      </h3>
-                    </div>
-                    <div className="card__body">
-                      <p>{description}</p>
-                    </div>
-                    <div className="card__footer">
-                      <Link
-                        className="button button--primary button--block"
-                        href={firstPost.permalink}
-                      >
-                        Read more
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <p>No series of articles found.</p>
-        )}
-      </div>
-    </Layout>
-  );
+      const description =
+        `${publishedCount} published article(s)` +
+        (draftCount > 0 ? ` • ${draftCount} in progress` : "");
+
+      return {
+        seriesName,
+        permalink: `${permalink}${createSlug(seriesName)}`,
+        image: sortedPosts[0]?.image || defaultImage,
+        title: seriesName,
+        description,
+      };
+    });
 }
-
 ```
 
 </Snippet>
 
-Now, simply access to the `/series` page. On my localhost, it's `http://127.0.0.1:3002/series`.
+In short, the `SeriesCards` component is quite easy, it'll just retrieve all series from your existing blog posts then display them as cards. Nothing more.
+
+### 2.3 Creation of the PostCard component
+
+We thus need a component for displaying a post as a card; please create the `src/components/Blog/PostCard/index.js` file with this content:
+
+<Snippet filename="src/components/Blog/PostCard/index.js">
+
+```js
+/**
+ * ♣️ PostCard component
+ *
+ * A reusable Docusaurus component that displays a blog post preview card.
+ * It shows the post image (with fallback), title (as a link), and description.
+ *
+ * Accessibility:
+ * - The title is wrapped in a semantic link with an aria-label for screen readers.
+ * - The image includes alt and title attributes.
+ *
+ * Styling:
+ * - Uses Infima utility classes for layout and spacing.
+ * - Custom styles can be applied via `styles.module.css`.
+ *
+ * Location: src/components/Blog/PostCard/index.js
+ */
+
+import Card from "@site/src/components/Card";
+import CardBody from "@site/src/components/Card/CardBody";
+import CardImage from "@site/src/components/Card/CardImage";
+import Link from "@docusaurus/Link";
+import PropTypes from "prop-types";
+import styles from "./styles.module.css";
+
+/**
+ * Renders a formatted date string.
+ * @param {Object} props
+ * @param {string} props.date - The date string to format.
+ * @param {string} props.layout - The layout variant ('big' or 'small').
+ * @returns {JSX.Element | null}
+ */
+const FormattedDate = ({ date, layout }) => {
+  if (!date) {
+    return null;
+  }
+  return (
+    <p
+      className={layout === "small" ? "" : styles.date}
+      style={
+        layout === "small"
+          ? { color: "#888", fontSize: "0.95em", marginBottom: 8 }
+          : {}
+      }
+    >
+      <span>
+        {new Date(date).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+      </span>
+    </p>
+  );
+};
+
+/**
+ * @param {Object} props
+ * @param {Object} props.post - Blog post metadata.
+ * @param {string} [props.layout='big'] - The layout variant: 'big' or 'small'.
+ * @param {string} props.defaultImage - Fallback image used when no image is provided.
+ * @returns {JSX.Element}
+ */
+export default function PostCard({
+  post,
+  layout = "big",
+  defaultImage = "/img/default.jpg",
+}) {
+  const { permalink, image, title, description, date } = post;
+
+  if (layout === "small") {
+    return (
+      <div
+        className="col col--4"
+        style={{ marginBottom: "2rem", display: "flex" }}
+      >
+        <div
+          className="card"
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+          }}
+        >
+          <div className="card__image">
+            <img
+              src={image || defaultImage}
+              alt={title}
+              style={{
+                width: "100%",
+                height: 180,
+                objectFit: "cover",
+                borderTopLeftRadius: 8,
+                borderTopRightRadius: 8,
+              }}
+            />
+          </div>
+          <div className="card__body" style={{ flex: 1 }}>
+            <h3>
+              <Link to={permalink}>{title}</Link>
+            </h3>
+            {description && (
+              <div
+                style={{
+                  color: "#6c63ff",
+                  fontWeight: "bold",
+                  marginBottom: 6,
+                }}
+              >
+                {description}
+              </div>
+            )}
+            <FormattedDate date={date} layout={layout} />
+          </div>
+          <div className="card__footer" style={{ textAlign: "right" }}>
+            <Link className="button button--primary button--sm" to={permalink}>
+              Read more
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Default "big" layout
+  return (
+    <div className="col col--3 margin-bottom--lg">
+      <Card shadow="md">
+        <CardImage
+          cardImageUrl={image || defaultImage}
+          alt={title}
+          title={title}
+        />
+        <CardBody className="padding-vert--md text--center" textAlign="center">
+          <h3>
+            <Link href={permalink} aria-label={`Read article: ${title}`}>
+              {title}&nbsp;→
+            </Link>
+          </h3>
+          {description && <p className={styles.description}>{description}</p>}
+          <FormattedDate date={date} layout={layout} />
+        </CardBody>
+      </Card>
+    </div>
+  );
+}
+
+PostCard.propTypes = {
+  post: PropTypes.shape({
+    permalink: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string,
+  }).isRequired,
+  layout: PropTypes.oneOf(["big", "small"]),
+  defaultImage: PropTypes.string,
+};
+```
+
+</Snippet>
+
+Create `src/components/Blog/PostCard/styles.module.css` too:
+
+<Snippet filename="src/components/Blog/PostCard/styles.module.css">
+
+```css
+.description {
+  font-size: 12px;
+}
+
+.date {
+  color: #888;
+  font-size: 0.95em;
+  margin-bottom: 8;
+  font-style: italic;
+}
+```
+
+</Snippet>
+
+The `PostCard` component is using the [Reusable Card component of Docux](/blog/docusaurus-cards#using-the-reusable-card-component-of-docux). If you don't have it yet, please create at least these three files:
+
+<Snippet filename="src/components/Card/index.js">
+
+```js
+import React, { CSSProperties } from "react"; // CSSProperties allows inline styling with better type checking.
+import clsx from "clsx"; // clsx helps manage conditional className names in a clean and concise manner.
+const Card = ({
+  className, // Custom classes for the container card
+  style, // Custom styles for the container card
+  children, // Content to be included within the card
+  shadow, // Used to add shadow under your card. Expected values are: low (lw), medium (md), tall (tl)
+}) => {
+  const cardShadow = shadow ? `item shadow--${shadow}` : "";
+  return (
+    <div className={clsx("card", className, cardShadow)} style={style}>
+      {children}
+    </div>
+  );
+};
+export default Card;
+```
+
+</Snippet>
+
+<Snippet filename="src/components/Card/CardBody/index.js">
+
+```js
+import React, { CSSProperties } from "react";
+import clsx from "clsx";
+
+const CardBody = ({
+  className, // classNamees for the container card
+  style, // Custom styles for the container card
+  children, // Content to be included within the card
+  textAlign,
+  variant,
+  italic = false,
+  noDecoration = false,
+  transform,
+  breakWord = false,
+  truncate = false,
+  weight,
+}) => {
+  const text = textAlign ? `text--${textAlign}` : "";
+  const textColor = variant ? `text--${variant}` : "";
+  const textItalic = italic ? "text--italic" : "";
+  const textDecoration = noDecoration ? "text-no-decoration" : "";
+  const textType = transform ? `text--${transform}` : "";
+  const textBreak = breakWord ? "text--break" : "";
+  const textTruncate = truncate ? "text--truncate" : "";
+  const textWeight = weight ? `text--${weight}` : "";
+  return (
+    <div
+      className={clsx(
+        "card__body",
+        className,
+        text,
+        textType,
+        textColor,
+        textItalic,
+        textDecoration,
+        textBreak,
+        textTruncate,
+        textWeight
+      )}
+      style={style}
+    >
+      {children}
+    </div>
+  );
+};
+
+export default CardBody;
+```
+
+</Snippet>
+
+<Snippet filename="src/components/Card/CardImage/index.js">
+
+```js
+import React, { CSSProperties } from "react";
+import clsx from "clsx";
+import useBaseUrl from "@docusaurus/useBaseUrl"; // Import the useBaseUrl function from Docusaurus
+
+const CardImage = ({ className, style, cardImageUrl, alt, title }) => {
+  const generatedCardImageUrl = useBaseUrl(cardImageUrl);
+
+  return (
+    <img
+      className={clsx("card__image", className)}
+      style={style}
+      src={generatedCardImageUrl}
+      alt={alt}
+      title={title}
+    />
+  );
+};
+
+export default CardImage;
+```
+
+</Snippet>
+
+### Testing our /series URL
+
+Everything is now in place for our `/series` web page: we've created the `src/pages/series.mdx` and all dependencies.
+
+Now, simply access to the `/series` URL. On my localhost, it's `http://127.0.0.1:3000/series`.
 
 Here is what you can get without any stylization:
 
 ![A page will all series](./images/series-page.png)
 
-On my blog, I've use the [Card component of Docux](https://docusaurus.community/knowledge/component-library/new/Card/). Jump to the [/series](/series) page to see it.
+Great no?
 
-Here is the version used on my blog:
+### 2.4 Adding an entry to the serie pages to your blog
 
-<Snippet filename="src/pages/series.jsx">
+Edit your `docusaurus.config.js` file and in the `navbar` -> `items` section, please add a link to `/series`:
+
+<Snippet filename="docusaurus.config.js">
 
 ```js
-import Layout from "@theme/Layout";
+
+// [...]
+const config = {
+  themeConfig:
+    ({
+      navbar: {
+        items: [
+          // [...]
+          {
+            href: "/series",
+            label: "My series",
+          },
+          // [...]
+        ],
+      },
+    }),
+};
+
+export default config;
+```
+
+</Snippet>
+
+![My series](./images/my-series.png)
+
+### 2.5 Handling the /series/slug URL
+
+Ok, it works but ... from the `/series` page, if you click on a series, you'll get this error:
+
+![Page 404 when visiting a specific series](./images/page-404.png)
+
+So, we've just created the `/series` page but when you reader will click on a series to get the list of articles, the URL will become something like `/series/the-name-of-the-series` and, thus, we need to tell to Docusaurus how to handle these new URLs.
+
+By default, Docusaurus don't know what to do.
+
+For this, we'll need a plugin, please create the `plugins/docusaurus-plugin-series-route/index.cjs` file with this content:
+
+<Snippet filename="plugins/docusaurus-plugin-series-route/index.cjs">
+
+```js
+/**
+ * Docusaurus Plugin: series-route
+ *
+ * Purpose:
+ * This plugin adds a dynamic route to the Docusaurus app for displaying articles
+ * by series slug under the `/series/:slug` URL pattern.
+ *
+ * Why:
+ * Docusaurus by default does not support dynamic routes like `/series/:slug`.
+ * This plugin programmatically registers such a route pointing to the `SeriesArticlesPage`
+ * React component, which fetches and renders articles based on the series slug.
+ *
+ * Usage:
+ * - Save this plugin as `plugins/docusaurus-plugin-series-route/index.mjs`
+ * - Add the plugin to `docusaurus.config.js` plugins array.
+ * - Create the React component at the specified path (`src/components/Blog/Series/SeriesArticlesPage.js`).
+ *
+ * This allows URLs like `/series/my-series-name` to display articles for that series.
+ *
+ * See readme.md for more details
+ */
+
+module.exports = function () {
+  return {
+    name: "docusaurus-plugin-series-route",
+    async contentLoaded({ actions }) {
+      actions.addRoute({
+        path: "/series/:slug", // Dynamic URL path capturing the series slug
+        component: "@site/src/components/Blog/Series/SeriesArticlesPage",
+        exact: true,
+      });
+    },
+  };
+};
+```
+
+</Snippet>
+
+As you can see in the plugin source code, we need a new component: `src/components/Blog/Series/SeriesArticlesPage.js`, let's create it:
+
+<Snippet filename="src/components/Blog/Series/SeriesArticlesPage.js">
+
+```js
+import { createSlug } from "@site/src/components/Blog/utils/slug";
 import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import { useLocation, matchPath } from "@docusaurus/router";
+import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
+import PostCard from "@site/src/components/Blog/PostCard";
 
-import Card from "@site/src/components/Card";
-import CardImage from '@site/src/components/Card/CardImage';
-import CardBody from '@site/src/components/Card/CardBody';
+export default function SeriesArticlesPage() {
+  const location = useLocation();
 
-export default function SeriesPage() {
+  const match = matchPath(location.pathname, { path: "/series/:slug", exact: true });
+  const slug = match?.params?.slug;
+
+  if (!slug) {
+    return (
+      <Layout>
+        <div className="container">
+          <p>No series specified.</p>
+          <Link href="/series">Go back to all series</Link>
+        </div>
+      </Layout>
+    );
+  }
+
   const posts = getBlogMetadata();
-  const seriesMap = {};
-
-  posts.forEach((post) => {
-    const seriesName = post.series;
-    if (seriesName) {
-      if (!seriesMap[seriesName]) {
-        seriesMap[seriesName] = [];
-      }
-      seriesMap[seriesName].push(post);
-    }
+  const seriesPosts = posts.filter((post) => {
+    if (!post.series) return false;
+    return createSlug(post.series) === slug;
   });
 
-  const sortedSeriesNames = Object.keys(seriesMap).sort((a, b) =>
-    a.localeCompare(b)
+  const originalSeriesName =
+    seriesPosts.length > 0 ? seriesPosts[0].series : slug;
+
+  const sortedPosts = seriesPosts.sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
   );
 
   return (
-    <Layout title="Article series">
+    <Layout title={`Series articles: ${originalSeriesName}`}>
       <div className="container margin-top--lg margin-bottom--lg">
-        <h1>All article series</h1>
-        {sortedSeriesNames.length > 0 ? (
+        <h1>Series articles: {originalSeriesName}</h1>
+        {sortedPosts.length > 0 ? (
           <div className="row">
-            {sortedSeriesNames.map((seriesName) => {
-              const seriesPosts = seriesMap[seriesName];
-              const firstPost = seriesPosts[0];
-              const image = firstPost.image || "default.jpg"; // fallback image
-              const description =
-                firstPost.description ||
-                `${seriesPosts.length} article(s) in this series`;
-
-              return (
-                <div key={seriesName} className="col col--4 margin-bottom--lg">
-                  <Link href={firstPost.permalink}>
-                    <Card>
-                      <CardImage cardImageUrl={`${image}`} />
-                      <CardBody
-                        className="padding-vert--md text--center"
-                        textAlign="center"
-                        transform="uppercase"
-                      >
-                        <h3>{seriesName}</h3>
-                        <p>{description}&nbsp;→</p>
-                      </CardBody>
-                    </Card>
-                  </Link>
-                </div>
-              );
-            })}
+            {sortedPosts.map((post) => (
+              <PostCard key={post.title} post={post} />
+            ))}
           </div>
         ) : (
-          <p>No series of articles found.</p>
+          <div className="text--center margin-vert--xl">
+            <h2>No articles found for this series</h2>
+            <p>
+              Oops, it looks like that series doesn't exist. Please check the
+              name in the URL to make sure it's correct.
+            </p>
+            <Link href="/series">
+              Click here to browse all available series from our homepage.
+            </Link>
+          </div>
         )}
       </div>
     </Layout>
@@ -456,3 +1072,52 @@ export default function SeriesPage() {
 ```
 
 </Snippet>
+
+And we need to load this plugin so we'll need to update the `docusaurus.config.js` file again:
+
+<Snippet filename="docusaurus.config.js">
+
+```js
+// [...]
+import pluginSeriesRoute from "./plugins/docusaurus-plugin-series-route/index.cjs"
+
+const config = {
+  // [...]
+
+  // WE SHOULD IGNORE BROKEN LINKS because Docusaurus’s link checker doesn't
+  // recognize dynamic routes created via plugins; and we're using at least one
+  // i.e. "plugins/docusaurus-plugin-series-route/index.cjs".
+  // If we don't ignore broken links, Docusaurus will always throw an error during build
+  // time.
+  onBrokenLinks: "ignore",
+  // [...]
+  plugins: [
+    // [...]
+    [pluginSeriesRoute, {}],
+  ],
+  // [...]
+};
+
+export default config;
+
+```
+
+</Snippet>
+
+:::danger
+The `onBrokenLinks` property has to be set to `ignore` because Docusaurus didn't load routers plugins while he's rendering the static version of the site. So he'll not understand any `/series/xxx` URLs and think they're broken.
+:::
+
+For the last time, please restart your Docusaurus server.
+
+Now, in your main menu, you should have your `Series` entry and by clicking on it, you'll get the list of series. By clicking on a series, you'll obtain a new page with the list of articles in that series. Just click on a article to jump to it.
+
+![Seeing a specific serie](./images/a-serie.png)
+
+## Conclusion
+
+It was definitely difficult. There were so many files to create, others to update, and a few configuration elements to fine-tune, but wasn't the result worth it?
+
+Now you have a blog where you can write “pillar” articles with content so dense that you can easily break it down into different parts and offer it to your readers as a series of articles.
+
+Your readers will be guided through the process, enabling them to better understand the different steps to follow. From an SEO perspective, you will enjoy greater visibility thanks to these “pillar” articles, among other things, but also because you will improve the structure of your page navigation. Search engines greatly appreciate this.

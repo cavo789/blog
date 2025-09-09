@@ -22,7 +22,7 @@
  * - A styled list of blog posts in the same series, or null if none found.
  */
 
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 import Link from "@docusaurus/Link";
 import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import { createSlug } from "@site/src/components/Blog/utils/slug";
@@ -43,7 +43,8 @@ export default function SeriesPosts({
   return (
     <div className={styles.seriesBlogPost}>
       <p>
-        This article is part of the <Link href={`/series/${createSlug(series)}`}>{series}</Link> series:
+        This article is part of the{" "}
+        <Link href={`/series/${createSlug(series)}`}>{series}</Link> series:
       </p>
       <ul>
         {posts.map((post) => {
@@ -79,5 +80,5 @@ SeriesPosts.propTypes = {
   excludePermalink: PropTypes.string,
 
   /** Whether to visually highlight the current post */
-  highlightCurrent: PropTypes.bool
+  highlightCurrent: PropTypes.bool,
 };

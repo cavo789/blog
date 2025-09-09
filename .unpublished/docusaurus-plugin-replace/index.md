@@ -8,6 +8,7 @@ mainTag: component
 tags: [component, docusaurus, react]
 blueskyRecordKey:
 draft: true
+date: 2025-09-30
 ---
 
 <!-- cspell:ignore vstirbu -->

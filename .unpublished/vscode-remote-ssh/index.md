@@ -6,6 +6,7 @@ mainTag: ssh
 tags: [ssh, tips, vscode]
 image: /img/vscode_tips_social_media.jpg
 draft: true
+date: 2025-09-30
 ---
 ![SSH Remote development with VSCode](/img/vscode_tips_banner.jpg)
 
