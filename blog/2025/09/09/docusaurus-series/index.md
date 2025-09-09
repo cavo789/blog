@@ -254,7 +254,8 @@ In short, the `SeriesCards` component is quite easy, it'll just retrieve all ser
 
 We thus need a component for displaying a post as a card; please create the `src/components/Blog/PostCard/index.js` file with this content:
 
-<Snippet filename="src/components/Blog/PostCard/index.js" source="src/components/Blog/PostCard/index.js">
+<Snippet filename="src/components/Blog/PostCard/index.js" source="src/components/Blog/PostCard/index.js" />
+
 Create `src/components/Blog/PostCard/styles.module.css` too:
 
 <Snippet filename="src/components/Blog/PostCard/styles.module.css" source="src/components/Blog/PostCard/styles.module.css" />
