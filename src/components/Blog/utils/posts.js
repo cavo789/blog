@@ -59,17 +59,18 @@ export function getBlogMetadata() {
       }
 
       return {
-        title: post.frontMatter.title,
-        description: post.frontMatter.description,
-        image: imageUrl,
-        draft: post.frontMatter.draft || false,
-        unlisted: post.frontMatter.unlisted || false,
-        permalink,
-        tags: post.frontMatter.tags || [],
-        mainTag: post.frontMatter.mainTag || null,
         authors: post.frontMatter.authors || [],
+        blueskyRecordKey: post.frontMatter.blueskyRecordKey || null,
         date: post.frontMatter.date,
+        description: post.frontMatter.description,
+        draft: post.frontMatter.draft || false,
+        image: imageUrl,
+        mainTag: post.frontMatter.mainTag || null,
+        permalink,
         series: post.frontMatter.series || null,
+        tags: post.frontMatter.tags || [],
+        title: post.frontMatter.title,
+        unlisted: post.frontMatter.unlisted || false,
       };
     })
     .filter(Boolean);

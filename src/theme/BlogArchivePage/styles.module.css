@@ -1,0 +1,71 @@
+.pageBackground {
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/archives_background.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-size: cover;
+  color: white;
+}
+
+.header_archive {
+  background-color: transparent;
+}
+
+.timeline__sidebar {
+  position: sticky;
+  top: 100px;
+}
+
+.hero {
+  background-color: none;
+}
+
+.timeline .menu__link {
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+  display: block;
+  text-decoration: none;
+}
+
+.timeline .menu__link--active {
+  font-weight: bold;
+  color: var(--ifm-color-primary);
+}
+
+.timeline__year {
+  border-left: 3px solid var(--ifm-color-primary);
+  padding-left: 1rem;
+  scroll-margin-top: 100px;
+  color: yellow;
+}
+
+.timeline__month {
+  margin-left: 1rem;
+}
+
+.timeline__month h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.date, .tags {
+  color: #62a564;
+}
+
+.timeline .tag {
+  text-decoration: underline;
+  font-size: 0.8rem;
+  margin-right: 0.25rem;
+}
+
+.bluesky-link {
+  color: var(--ifm-color-primary);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.bluesky-link:hover {
+  text-decoration: underline;
+}
