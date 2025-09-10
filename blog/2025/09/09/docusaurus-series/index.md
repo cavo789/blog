@@ -6,7 +6,7 @@ image: /img/docusaurus_component_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, plugin, react, series, swizzle]
-blueskyRecordKey:
+blueskyRecordKey: 3lyhtzknd6s2j
 date: 2025-09-09
 ---
 
@@ -36,7 +36,7 @@ This long article will have two main sections: one on the actual creation of the
 
 ## Part 1 - Creation of the SeriesPosts component
 
-In this first chapter, we'll create our `SeriesPosts` component so, by opening an article, we can get a `Tis article is part of the ... series` and a list of articles that are part of that series.
+In this first chapter, we'll create our `SeriesPosts` component so, by opening an article, we can get a `This article is part of the ... series` and a list of articles that are part of that series.
 
 <StepsCard
   title="This will implies a lot of things like:"
@@ -233,7 +233,7 @@ First, please create the `src/pages/series.mdx` file with this content:
 <Snippet filename="src/pages/series.mdx" source="src/pages/series.mdx" />
 
 :::caution
-As you can see, that page is a Markdown content but with one special feature: if contains Javascript code. This is why, and it's really important, the extension is `.mdx`.
+As you can see, that page is a Markdown content but with one special feature: it contains Javascript code. This is why, and it's really important, the extension is `.mdx`.
 :::
 
 As you can see, there are some Markdown content (adapt it to fit your needs) and the use of a new component, the `SeriesCards` one, let's create it.
@@ -260,7 +260,7 @@ Create `src/components/Blog/PostCard/styles.module.css` too:
 
 <Snippet filename="src/components/Blog/PostCard/styles.module.css" source="src/components/Blog/PostCard/styles.module.css" />
 
-The `PostCard` component is using the [Reusable Card component of Docux](/blog/docusaurus-cards#using-the-reusable-card-component-of-docux). If you don't have it yet, please create at least these three files:
+The `PostCard` component is using the [Reusable Card component of Docux](/blog/docusaurus-cards#using-the-reusable-card-component-of-docux). If you don't have it yet, please create at least these four files:
 
 <Snippet filename="src/components/Card/index.js" source="src/components/Card/index.js" />
 
