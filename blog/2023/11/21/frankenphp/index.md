@@ -3,11 +3,11 @@ date: 2023-11-21
 slug: frankenphp-docker-joomla
 title: FrankenPHP, a modern application server for PHP
 authors: [christophe]
-image: /img/frankenphp.jpg
+image: /img/frankenphp_social_media.jpg
 mainTag: joomla
 tags: [docker, frankenphp, joomla]
 ---
-![FrankenPHP](/img/frankenphp.jpg)
+![FrankenPHP](/img/frankenphp_banner.jpg)
 
 <UpdateAt
   title="Recent Changes"

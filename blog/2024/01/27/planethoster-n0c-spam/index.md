@@ -8,7 +8,7 @@ mainTag: roundcube
 tags: [n0c, planethoster, roundcube]
 ---
 <!-- cspell:ignore allof,fileinto -->
-![Exterminate them all, fight spam directly at PlanetHoster - N0C](/img/spam_header.jpg)
+![Exterminate them all, fight spam directly at PlanetHoster - N0C](/img/spam_banner.jpg)
 
 A few days ago, I've published a post about how to <Link to="/blog/cpanel-spam">fight against spam if you've a cpanel</Link>. If you're hosted on the N0C infrastructure of PlanetHoster; it will not work.
 

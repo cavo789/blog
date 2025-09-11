@@ -7,7 +7,7 @@ image: /img/spam_social_media.jpg
 mainTag: spamassassin
 tags: [cpanel, spamassassin]
 ---
-![Exterminate them all, fight spam directly at your host company](/img/spam_header.jpg)
+![Exterminate them all, fight spam directly at your host company](/img/spam_banner.jpg)
 
 If your web host company offers you a cpanel access, you will find there access to a tool called *SpamAssassin*.
 

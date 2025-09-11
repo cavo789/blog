@@ -1,204 +1,64 @@
+import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import { PageMetadata } from "@docusaurus/theme-common";
 import { translate } from "@docusaurus/Translate";
 import BlogPostCount from "@site/src/components/Blog/PostCount";
-import clsx from "clsx";
-import Heading from "@theme/Heading";
 import Layout from "@theme/Layout";
-import Link from "@docusaurus/Link";
-import { useState } from "react";
+import PostCard from "@site/src/components/Blog/PostCard";
+import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
-function groupPostsByYearMonth(posts) {
-  const map = new Map();
+const allPosts = getBlogMetadata();
 
-  posts.forEach((post) => {
-    const date = new Date(post.metadata.date);
+function Archives() {
+  const [selectedYear, setSelectedYear] = useState("all");
+  const [selectedTag, setSelectedTag] = useState("all");
+  const [displayedPosts, setDisplayedPosts] = useState([]);
+
+  const uniqueTags = [...new Set(allPosts.flatMap((post) => post.tags))].sort();
+
+  useEffect(() => {
+    let filteredPosts = allPosts
+      .filter((post) => !post.draft && !post.unlisted)
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    if (selectedYear !== "all") {
+      filteredPosts = filteredPosts.filter(
+        (post) => new Date(post.date).getFullYear().toString() === selectedYear
+      );
+    }
+
+    if (selectedTag !== "all") {
+      filteredPosts = filteredPosts.filter((post) =>
+        post.tags.includes(selectedTag)
+      );
+    }
+    setDisplayedPosts(filteredPosts);
+  }, [selectedYear, selectedTag]);
+
+  const postsByYearAndMonth = displayedPosts.reduce((acc, post) => {
+    const date = new Date(post.date);
     const year = date.getFullYear();
-    const month = date.toLocaleString("default", { month: "long" });
+    const month = date.toLocaleString("en-US", { month: "long" });
 
-    if (!map.has(year)) {
-      map.set(year, new Map());
+    if (!acc[year]) {
+      acc[year] = {};
     }
-
-    const monthsMap = map.get(year);
-    if (!monthsMap.has(month)) {
-      monthsMap.set(month, []);
+    if (!acc[year][month]) {
+      acc[year][month] = [];
     }
+    acc[year][month].push(post);
+    return acc;
+  }, {});
 
-    monthsMap.get(month).push(post);
-  });
+  const years = Object.keys(postsByYearAndMonth).sort((a, b) => b - a);
+  const allYears = [
+    ...new Set(
+      allPosts
+        .filter((post) => !post.draft && !post.unlisted)
+        .map((post) => new Date(post.date).getFullYear())
+    ),
+  ].sort((a, b) => b - a);
 
-  return Array.from(map.entries())
-    .sort((a, b) => b[0] - a[0])
-    .map(([year, monthsMap]) => ({
-      year,
-      months: Array.from(monthsMap.entries()).map(([month, posts]) => ({
-        month,
-        posts,
-      })),
-    }));
-}
-
-function Sidebar({ years, activeYear, setActiveYear }) {
-  return (
-    <div className="col col--2">
-      <div className={styles.timeline__sidebar}>
-        <ul className="clean-list">
-          {years.map(({ year }) => (
-            <li key={year}>
-              <a
-                href={`#year-${year}`}
-                className={clsx("menu__link", {
-                  "menu__link--active": year === activeYear,
-                })}
-                onClick={() => setActiveYear(year)}
-              >
-                {year}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
-function Timeline({ data }) {
-  const [expandedYears, setExpandedYears] = useState(
-    data.map(({ year }) => year)
-  );
-
-  const {
-    siteConfig: {
-      customFields: { bluesky: { handle: blueskyHandle } = {} } = {},
-    },
-  } = useDocusaurusContext();
-
-  const toggleYear = (year) => {
-    setExpandedYears((prev) =>
-      prev.includes(year) ? prev.filter((y) => y !== year) : [...prev, year]
-    );
-  };
-
-  return (
-    <div className="row timeline">
-      <Sidebar
-        years={data}
-        activeYear={expandedYears[0]}
-        setActiveYear={(year) => {
-          const el = document.getElementById(`year-${year}`);
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }}
-      />
-      <div className="col col--10">
-        {data.map(({ year, months }) => (
-          <div
-            key={year}
-            className="timeline__year margin-bottom--xl"
-            id={`year-${year}`}
-          >
-            <div
-              className="timeline__year-header"
-              onClick={() => toggleYear(year)}
-              style={{ cursor: "pointer" }}
-            >
-              <Heading as="h2" className="margin-bottom--sm">
-                {year} {expandedYears.includes(year) ? "▾" : "▸"}
-              </Heading>
-            </div>
-            {expandedYears.includes(year) &&
-              months.map(({ month, posts }) => (
-                <div key={month} className="timeline__month margin-bottom--md">
-                  <Heading as="h3" className="margin-bottom--xs">
-                    {month}
-                  </Heading>
-                  <ul className="clean-list">
-                    {posts.map((post) => {
-                      const blueskyRecordKey =
-                        post.metadata.frontMatter?.blueskyRecordKey;
-                      const blueskyUrl =
-                        blueskyHandle && blueskyRecordKey
-                          ? `https://bsky.app/profile/${blueskyHandle}/post/${blueskyRecordKey}`
-                          : null;
-
-                      return (
-                        <li
-                          key={post.metadata.permalink}
-                          className="margin-bottom--sm"
-                        >
-                          <Link to={post.metadata.permalink} className={styles.post_title}>
-                            <strong>{post.metadata.title}</strong>
-                          </Link>{" "}
-                          <span
-                            className={clsx(
-                              "text--secondary",
-                              "text--sm",
-                              styles.date
-                            )}
-                          >
-                            —{" "}
-                            {new Date(post.metadata.date).toLocaleDateString()}
-                          </span>
-                          <div
-                            className={clsx(
-                              "text--secondary",
-                              "text--xs",
-                              styles.tags
-                            )}
-                          >
-                            {post.metadata.tags?.length > 0 && (
-                              <>
-                                Tags:{" "}
-                                {post.metadata.tags
-                                  .map((tag) => (
-                                    <Link
-                                      key={tag.label}
-                                      to={tag.permalink}
-                                      className="tag"
-                                    >
-                                      {tag.label}
-                                    </Link>
-                                  ))
-                                  .reduce((prev, curr) => [prev, ", ", curr])}
-                              </>
-                            )}
-                            {post.metadata.frontMatter?.series && (
-                              <>
-                                {" • Series: "}
-                                <strong>
-                                  {post.metadata.frontMatter.series}
-                                </strong>
-                              </>
-                            )}
-                            {blueskyUrl && (
-                              <>
-                                {" • "}
-                                <a
-                                  href={blueskyUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="bluesky-link"
-                                >
-                                  View on Bluesky ↗
-                                </a>
-                              </>
-                            )}
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-export default function BlogArchive({ archive }) {
   const title = translate({
     id: "theme.blog.archive.title",
     message: "Blog Archive",
@@ -209,8 +69,6 @@ export default function BlogArchive({ archive }) {
     message: "All blog posts organized by year and month.",
   });
 
-  const groupedData = groupPostsByYearMonth(archive.blogPosts);
-
   return (
     <>
       <PageMetadata
@@ -218,22 +76,122 @@ export default function BlogArchive({ archive }) {
         description={description}
         image="/img/archives_background.png"
       />
-      <Layout>
-        <div className={styles.pageBackground}>
-          <header className={clsx("hero", "hero--primary", styles.header_archive)}>
-            <div className="container">
-              <Heading as="h1" className="hero__title">
-                {title}
-              </Heading>
-              <p className="hero__subtitle">{description}</p>
-              <BlogPostCount />
+      <Layout
+        title="Archives"
+        description="Browse all blog posts by year and month."
+      >
+        <div className="container margin-top--lg margin-bottom--xl">
+          <h1 className="text--center">Article Archives</h1>
+          <BlogPostCount />
+
+          <div className={styles.filterContainer}>
+            <div className={styles.filterGroup}>
+              <label htmlFor="year-filter">Filter by Year:</label>
+              <select
+                id="year-filter"
+                value={selectedYear}
+                onChange={(e) => {
+                  setSelectedYear(e.target.value);
+                  setSelectedTag("all");
+                }}
+              >
+                <option value="all">All Years</option>
+                {allYears.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
             </div>
-          </header>
-          <main className={clsx("container", "margin-vert--lg")}>
-            <Timeline data={groupedData} />
-          </main>
+            <div className={styles.filterGroup}>
+              <label htmlFor="tag-filter">Filter by Tag:</label>
+              <select
+                id="tag-filter"
+                value={selectedTag}
+                onChange={(e) => {
+                  setSelectedTag(e.target.value);
+                  setSelectedYear("all");
+                }}
+              >
+                <option value="all">All Tags</option>
+                {uniqueTags.map((tag) => (
+                  <option key={tag} value={tag}>
+                    {tag}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <nav className={styles.timelineContainer}>
+            <p className={styles.jumpToHeading}>Jump to:</p>
+            <div className={styles.timelineWrapper}>
+              <div className={styles.timelineContent}>
+                <div className={styles.timelineLine}></div>
+                {years.map((year) => (
+                  <React.Fragment key={year}>
+                    <div className={styles.timelineYearMarker}>
+                      <a href={`#${year}`}>{year}</a>
+                    </div>
+                    {Object.keys(postsByYearAndMonth[year]).map((month) => (
+                      <a
+                        key={`${year}-${month}`}
+                        href={`#${year}-${month}`}
+                        className={styles.monthPill}
+                      >
+                        {month}
+                      </a>
+                    ))}
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+          </nav>
+
+          <div className="row">
+            {years.length > 0 ? (
+              years.map((year) => (
+                <div key={year} className="col col--12">
+                  <h2 className="margin-top--xl" id={year}>
+                    {year}
+                  </h2>
+                  {Object.keys(postsByYearAndMonth[year]).map((month) => (
+                    <div key={month}>
+                      <h3
+                        className={styles.monthHeading}
+                        id={`${year}-${month}`}
+                      >
+                        {month} {year}
+                        <a
+                          href={`#${year}-${month}`}
+                          className={styles.monthAnchor}
+                        >
+                          #
+                        </a>
+                      </h3>
+                      <div className="row">
+                        {postsByYearAndMonth[year][month].map((post) => (
+                          <PostCard
+                            key={post.permalink}
+                            post={post}
+                            layout="small"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))
+            ) : (
+              <p className="text--center">
+                No posts to display with the selected filters.
+              </p>
+            )}
+          </div>
         </div>
       </Layout>
     </>
   );
 }
+
+export default Archives;

@@ -3,9 +3,9 @@ date: 2023-12-31
 slug: new-year-2024
 title: Happy New Year 2024
 authors: [christophe]
-image: ./images/social_media.jpg
+image: /img/happy_new_year_social_media.jpg
 ---
-![Happy New Year 2024](./images/social_media.jpg)
+![Happy New Year 2024](/img/happy_new_year_banner.jpg)
 
 I wish you all a very happy festive season, and may you continue to be curious about everything.
 

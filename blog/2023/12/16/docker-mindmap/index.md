@@ -3,11 +3,11 @@ date: 2023-12-16
 slug: docker-mindmap
 title: Build a mind map using Docker and Markdown
 authors: [christophe]
-image: /img/mindmap.png
+image: /img/mindmap_social_media.jpg
 mainTag: mindmap
 tags: [docker, mindmap, tips, visualisation]
 ---
-![Build a mind map using Docker and Markdown](/img/mindmap.png)
+![Build a mind map using Docker and Markdown](/img/mindmap_banner.jpg)
 
 As a markdown lover, I always enjoy finding a little tool that lets me write a text and have it converted into another format.
 

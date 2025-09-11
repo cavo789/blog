@@ -8,7 +8,7 @@ mainTag: roundcube
 tags: [actions, Github, jq, n0c, planethoster, roundcube]
 ---
 <!-- cSpell:ignore allof,fileinto -->
-![Exterminate them all, kill spam using GitHub Actions](/img/spam_header.jpg)
+![Exterminate them all, kill spam using GitHub Actions](/img/spam_banner.jpg)
 
 In previous articles, I explained how to fight against spam if you've a <Link to="/blog/cpanel-spam">cpanel</Link> or <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link>.
 

@@ -8,7 +8,7 @@ mainTag: docker
 tags: [aesecure, apache, docker, php, tips]
 ---
 <!-- cspell:ignore dbmdl -->
-![Using Docker init to quickly dockerize your PHP application](/img/docker_init_tips_header.jpg)
+![Using Docker init to quickly dockerize your PHP application](/img/docker_init_tips_banner.jpg)
 
 How about asking Docker to create the files it needs itself?
 
