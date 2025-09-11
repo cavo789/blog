@@ -1,4 +1,5 @@
 import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import PropTypes from "prop-types";
 
 /**
  * BlogPostCount Component
@@ -14,14 +15,20 @@ import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
  * Example output:
  * "We have published 42 articles on our blog!"
  *
+ * @param {Object} props
+ * @param {Object} props.className - Optional classname
  * @returns {JSX.Element} A paragraph element showing the blog post count.
  */
-export default function BlogPostCount() {
+export default function BlogPostCount({ className }) {
   const count = getBlogMetadata().filter((post) => !post.draft).length;
 
   return (
-    <p>
+    <p className={className}>
       We have published <strong>{count}</strong> articles on our blog!
     </p>
   );
 }
+
+BlogPostCount.propTypes = {
+  className: PropTypes.string
+};

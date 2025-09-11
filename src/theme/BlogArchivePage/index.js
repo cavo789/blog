@@ -13,8 +13,18 @@ function Archives() {
   const [selectedYear, setSelectedYear] = useState("all");
   const [selectedTag, setSelectedTag] = useState("all");
   const [displayedPosts, setDisplayedPosts] = useState([]);
+  const [isTimelineVisible, setIsTimelineVisible] = useState(true);
+  const [activeYearMonth, setActiveYearMonth] = useState(null);
 
   const uniqueTags = [...new Set(allPosts.flatMap((post) => post.tags))].sort();
+
+  const tagCounts = allPosts
+    .filter((post) => !post.draft && !post.unlisted)
+    .flatMap((post) => post.tags)
+    .reduce((acc, tag) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+      return acc;
+    }, {});
 
   useEffect(() => {
     let filteredPosts = allPosts
@@ -40,17 +50,14 @@ function Archives() {
     const year = date.getFullYear();
     const month = date.toLocaleString("en-US", { month: "long" });
 
-    if (!acc[year]) {
-      acc[year] = {};
-    }
-    if (!acc[year][month]) {
-      acc[year][month] = [];
-    }
+    if (!acc[year]) acc[year] = {};
+    if (!acc[year][month]) acc[year][month] = [];
     acc[year][month].push(post);
     return acc;
   }, {});
 
   const years = Object.keys(postsByYearAndMonth).sort((a, b) => b - a);
+
   const allYears = [
     ...new Set(
       allPosts
@@ -69,124 +76,190 @@ function Archives() {
     message: "All blog posts organized by year and month.",
   });
 
+  // Scroll sync: observe month headings on right and update activeYearMonth
+  useEffect(() => {
+    if (!displayedPosts.length) return;
+
+    const monthElements = years.flatMap((year) =>
+      Object.keys(postsByYearAndMonth[year])
+        .map((month) => document.getElementById(`${year}-${month}`))
+        .filter(Boolean)
+    );
+
+    if (!monthElements.length) return;
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px 0px -80% 0px", // trigger when heading near top
+      threshold: 0,
+    };
+
+    function callback(entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveYearMonth(entry.target.id);
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver(callback, observerOptions);
+    monthElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [displayedPosts, years, postsByYearAndMonth]);
+
+  // Scroll timeline sidebar to keep active month visible
+  useEffect(() => {
+    if (!activeYearMonth) return;
+
+    const timelineLink = document.querySelector(`a[href="#${activeYearMonth}"]`);
+    if (timelineLink) {
+      // Scroll into view inside the timeline container
+      const timelineContainer = document.getElementById("timeline-container");
+      if (timelineContainer) {
+        // Calculate relative position of timelineLink inside timelineContainer
+        const linkRect = timelineLink.getBoundingClientRect();
+        const containerRect = timelineContainer.getBoundingClientRect();
+
+        // Only scroll if link is outside visible bounds
+        if (linkRect.top < containerRect.top || linkRect.bottom > containerRect.bottom) {
+          // Scroll so the link is centered vertically inside container
+          timelineContainer.scrollTo({
+            top:
+              timelineContainer.scrollTop +
+              linkRect.top -
+              containerRect.top -
+              timelineContainer.clientHeight / 2 +
+              linkRect.height / 2,
+            behavior: "smooth",
+          });
+        }
+      }
+    }
+  }, [activeYearMonth]);
+
   return (
     <>
-      <PageMetadata
-        title={title}
-        description={description}
-        image="/img/archives_background.png"
-      />
-      <Layout
-        title="Archives"
-        description="Browse all blog posts by year and month."
-      >
+      <PageMetadata title={title} description={description} image="/img/archives_background.png" />
+      <Layout title="Archives" description="Browse all blog posts by year and month.">
         <div className="container margin-top--lg margin-bottom--xl">
-          <h1 className="text--center">Article Archives</h1>
-          <BlogPostCount />
-
-          <div className={styles.filterContainer}>
-            <div className={styles.filterGroup}>
-              <label htmlFor="year-filter">Filter by Year:</label>
-              <select
-                id="year-filter"
-                value={selectedYear}
-                onChange={(e) => {
-                  setSelectedYear(e.target.value);
-                  setSelectedTag("all");
-                }}
+          {/* -------- Layout: Sidebar Left + Posts Right -------- */}
+          <div className={styles.contentWrapper}>
+            {/* Left Sidebar: Filters + Timeline */}
+            {isTimelineVisible && (
+              <aside
+                id="timeline-container"
+                className={styles.sidebar}
+                aria-label="Blog Archive Filters and Timeline"
               >
-                <option value="all">All Years</option>
-                {allYears.map((year) => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className={styles.filterGroup}>
-              <label htmlFor="tag-filter">Filter by Tag:</label>
-              <select
-                id="tag-filter"
-                value={selectedTag}
-                onChange={(e) => {
-                  setSelectedTag(e.target.value);
-                  setSelectedYear("all");
-                }}
-              >
-                <option value="all">All Tags</option>
-                {uniqueTags.map((tag) => (
-                  <option key={tag} value={tag}>
-                    {tag}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+                {/* Filters */}
+                <div className={styles.filterContainerSidebar}>
+                  <div className={styles.filterGroupSidebar}>
+                    <label htmlFor="year-filter-sidebar">Filter by Year:</label>
+                    <select
+                      id="year-filter-sidebar"
+                      value={selectedYear}
+                      onChange={(e) => {
+                        setSelectedYear(e.target.value);
+                        setSelectedTag("all");
+                      }}
+                    >
+                      <option value="all">All Years</option>
+                      {allYears.map((year) => (
+                        <option key={year} value={year}>
+                          {year}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-          <nav className={styles.timelineContainer}>
-            <p className={styles.jumpToHeading}>Jump to:</p>
-            <div className={styles.timelineWrapper}>
-              <div className={styles.timelineContent}>
-                <div className={styles.timelineLine}></div>
-                {years.map((year) => (
-                  <React.Fragment key={year}>
-                    <div className={styles.timelineYearMarker}>
-                      <a href={`#${year}`}>{year}</a>
-                    </div>
-                    {Object.keys(postsByYearAndMonth[year]).map((month) => (
-                      <a
-                        key={`${year}-${month}`}
-                        href={`#${year}-${month}`}
-                        className={styles.monthPill}
-                      >
-                        {month}
-                      </a>
-                    ))}
-                  </React.Fragment>
-                ))}
-              </div>
-            </div>
-          </nav>
-
-          <div className="row">
-            {years.length > 0 ? (
-              years.map((year) => (
-                <div key={year} className="col col--12">
-                  <h2 className="margin-top--xl" id={year}>
-                    {year}
-                  </h2>
-                  {Object.keys(postsByYearAndMonth[year]).map((month) => (
-                    <div key={month}>
-                      <h3
-                        className={styles.monthHeading}
-                        id={`${year}-${month}`}
-                      >
-                        {month} {year}
-                        <a
-                          href={`#${year}-${month}`}
-                          className={styles.monthAnchor}
-                        >
-                          #
-                        </a>
-                      </h3>
-                      <div className="row">
-                        {postsByYearAndMonth[year][month].map((post) => (
-                          <PostCard
-                            key={post.permalink}
-                            post={post}
-                            layout="small"
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+                  <div className={styles.filterGroupSidebar}>
+                    <label htmlFor="tag-filter-sidebar">Filter by Tag:</label>
+                    <select
+                      id="tag-filter-sidebar"
+                      value={selectedTag}
+                      onChange={(e) => {
+                        setSelectedTag(e.target.value);
+                        setSelectedYear("all");
+                      }}
+                    >
+                      <option value="all">All Tags</option>
+                      {uniqueTags.map((tag) => (
+                        <option key={tag} value={tag}>
+                          {tag} ({tagCounts[tag] || 0})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
-              ))
-            ) : (
-              <p className="text--center">
-                No posts to display with the selected filters.
-              </p>
+
+                {/* Timeline */}
+                <nav className={styles.verticalTimeline} aria-label="Blog Archive Timeline Navigation">
+                  <h2 className={styles.jumpToHeading}>Jump to</h2>
+                  <ul className={styles.timelineList}>
+                    {years.map((year) => (
+                      <li key={year} className={styles.timelineItem}>
+                        <a href={`#${year}`} className={styles.timelineYear}>
+                          {year}
+                        </a>
+                        <ul className={styles.timelineMonthList}>
+                          {Object.keys(postsByYearAndMonth[year]).map((month) => (
+                            <li key={`${year}-${month}`} className={styles.timelineMonth}>
+                              <a
+                                href={`#${year}-${month}`}
+                                className={`${styles.timelineMonthLink} ${
+                                  activeYearMonth === `${year}-${month}` ? styles.activeMonth : ""
+                                }`}
+                              >
+                                {month}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </aside>
             )}
+
+            {/* Posts Content */}
+            <main className={styles.postsContainer}>
+                        <h1 className="text--center">Article Archives</h1>
+          <BlogPostCount className="text--center"/>
+
+
+              {years.length > 0 ? (
+                years.map((year) => (
+                  <section key={year} className="col col--12">
+                    <h2 className="margin-top--xl" id={year}>
+                      {year}
+                    </h2>
+                    {Object.keys(postsByYearAndMonth[year]).map((month) => (
+                      <div key={month}>
+                        <h3 className={styles.monthHeading} id={`${year}-${month}`}>
+                          {month} {year}
+                          <a
+                            href={`#${year}-${month}`}
+                            className={styles.monthAnchor}
+                            aria-label={`Link to ${month} ${year}`}
+                          >
+                            #
+                          </a>
+                        </h3>
+                        <div className="row">
+                          {postsByYearAndMonth[year][month].map((post) => (
+                            <PostCard key={post.permalink} post={post} layout="small" />
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </section>
+                ))
+              ) : (
+                <p className="text--center">No posts to display with the selected filters.</p>
+              )}
+            </main>
           </div>
         </div>
       </Layout>
