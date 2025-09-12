@@ -5,7 +5,7 @@ title: Markitdown - Convert files and MS Office documents to Markdown
 authors: [christophe]
 image: /img/markdown_tips_social_media.jpg
 mainTag: markdown
-tags: [docker, docx, excel, xlsx]
+tags: [docker, docx, excel]
 ---
 ![Markitdown - Convert files and MS Office documents to Markdown](/img/markdown_tips_banner.jpg)
 
