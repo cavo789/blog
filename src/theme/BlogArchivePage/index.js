@@ -6,6 +6,7 @@ import Layout from "@theme/Layout";
 import PostCard from "@site/src/components/Blog/PostCard";
 import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
+import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
 
 const allPosts = getBlogMetadata();
 
@@ -142,6 +143,7 @@ function Archives() {
     <>
       <PageMetadata title={title} description={description} image="/img/archives_background.png" />
       <Layout title="Archives" description="Browse all blog posts by year and month.">
+
         <div className="container margin-top--lg margin-bottom--xl">
           {/* -------- Layout: Sidebar Left + Posts Right -------- */}
           <div className={styles.contentWrapper}>
@@ -261,7 +263,9 @@ function Archives() {
               )}
             </main>
           </div>
+
         </div>
+        <ScrollToTopButton />
       </Layout>
     </>
   );

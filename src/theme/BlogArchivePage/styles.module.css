@@ -1,71 +1,78 @@
-/* --------- Sticky Filters + Timeline Toggle Container --------- */
-.topStickyContainer {
-  position: sticky;
-  top: 70px;
-  z-index: 101; /* above timeline and content */
-  background-color: var(--ifm-background-color);
-  padding: 1rem 1.5rem;
+/* ========================================================= */
+/* ARCHIVES PAGE STYLES                    */
+/* ========================================================= */
+
+/* --------- Global Layout and Wrapper --------- */
+
+.contentWrapper {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
+  gap: 2rem;
+  align-items: flex-start;
+  min-height: calc(100vh - 70px);
+}
+
+.postsContainer,
+.postList {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+/* --------- Left Sidebar: Parent Container --------- */
+
+.sidebar {
+  flex-shrink: 0;
+  width: 280px;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+  position: sticky;
+  top: 100px;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+  background-color: var(--ifm-background-color);
   border-radius: var(--ifm-card-border-radius);
   box-shadow: var(--ifm-shadow-md);
-  margin-bottom: 2rem;
+  scroll-behavior: smooth;
+  box-shadow: inset -5px 0 8px -6px rgba(0, 0, 0, 0.1);
 }
 
-/* --------- Filter Container --------- */
-.filterContainerSidebar {
-  position: sticky;
-  top: 0; /* or adjust depending on sidebar padding/top */
-  background-color: var(--ifm-background-color);
-  z-index: 10;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--ifm-color-primary-lightest); /* subtle separation */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow for visual depth */
+/* Scrollbar styles for sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
 }
 
-.filterGroup {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.sidebar:hover::-webkit-scrollbar {
+  background-color: var(--ifm-color-gray-100);
 }
 
-.filterGroup label {
-  font-weight: bold;
-  color: var(--ifm-font-color-base);
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: var(--ifm-color-primary-light);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background-color 0.3s ease;
 }
 
-.filterGroup select {
-  padding: 8px 12px;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: var(--ifm-button-border-radius);
-  background-color: var(--ifm-color-white);
-  color: var(--ifm-font-color-base);
-  cursor: pointer;
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ifm-color-primary);
 }
 
-.filterGroup select:hover {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 2px var(--ifm-color-primary-light);
+/* Firefox scrollbar */
+.sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ifm-color-primary-light) transparent;
 }
 
-.filterGroup select:focus {
-  outline: none;
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 3px var(--ifm-color-primary-light);
+.sidebar:hover {
+  scrollbar-color: var(--ifm-color-primary) transparent;
 }
 
-/* --------- Filter Container Sidebar --------- */
+/* --------- Filter Container and Group --------- */
+
 .filterContainerSidebar {
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--ifm-color-primary-lightest);
   margin-bottom: 1rem;
-  background-color: var(--ifm-background-color);
-  border-radius: var(--ifm-card-border-radius);
-  box-shadow: var(--ifm-shadow-md);
 }
 
 .filterGroupSidebar {
@@ -86,71 +93,41 @@
   border: 1px solid var(--ifm-color-primary-light);
   background-color: var(--ifm-color-gray-100);
   font-size: 0.9rem;
-}
-
-/* --------- Timeline Wrapper --------- */
-.timelineWrapper {
-  flex: 0 0 250px;
-  max-width: 250px;
-  position: sticky;
-  top: 140px; /* Below topBar */
-  align-self: flex-start;
-  z-index: 100;
-  background-color: var(--ifm-background-color);
-  padding: 1rem;
-  border-radius: var(--ifm-card-border-radius);
-  box-shadow: var(--ifm-shadow-md);
-  max-height: 80vh;
-  overflow-y: auto;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Timeline Toggle Button */
-.timelineToggle {
-  background-color: var(--ifm-color-primary);
-  color: var(--ifm-color-white);
-  border: none;
-  border-radius: var(--ifm-button-border-radius);
-  padding: 8px 12px;
   cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  flex-shrink: 0;
-  transition: background-color 0.2s ease-in-out;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.timelineToggle:hover {
-  background-color: var(--ifm-color-primary-dark);
+.filterGroupSidebar select:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px var(--ifm-color-primary-light);
 }
 
-/* --------- Vertical Timeline --------- */
+.filterGroupSidebar select:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px var(--ifm-color-primary-light);
+}
+
+/* --------- Timeline --------- */
+
 .verticalTimeline {
   flex-shrink: 0;
   width: 290px;
-  max-height: 80vh;
-  overflow-y: auto;
-  position: sticky;
-  top: 130px; /* below topStickyContainer */
   padding: 1rem 0;
   border-right: 2px solid var(--ifm-color-primary-lightest);
   box-sizing: border-box;
-  background-color: var(--ifm-background-color);
+  background-color: transparent;
   border-radius: var(--ifm-card-border-radius);
-  box-shadow: var(--ifm-shadow-md);
-  transition: max-height 0.4s ease, padding 0.3s ease;
-  overflow: hidden;
-  max-height: 999px; /* default expanded */
 }
 
-.verticalTimeline.collapsed {
-  max-height: 0;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
+.jumpToHeading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  margin-bottom: 1rem;
+  padding-left: 1rem;
 }
 
-/* Timeline list */
 .timelineList {
   list-style: none;
   padding-left: 0;
@@ -159,14 +136,12 @@
   position: relative;
 }
 
-/* Timeline items */
 .timelineItem {
   margin-left: 1rem;
   margin-bottom: 1rem;
   position: relative;
 }
 
-/* Year links */
 .timelineYear {
   font-weight: 700;
   font-size: 1.1rem;
@@ -194,7 +169,6 @@
   box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
 }
 
-/* Months inside timeline */
 .timelineMonthList {
   list-style: none;
   padding-left: 1rem;
@@ -205,7 +179,6 @@
   margin: 0.2rem 0;
 }
 
-/* Month links */
 .timelineMonthLink {
   text-decoration: none;
   color: var(--ifm-color-secondary-darkest);
@@ -221,7 +194,6 @@
   transform: translateX(5px);
 }
 
-/* Active month highlight */
 .timelineMonthLink.activeMonth,
 .activeMonth {
   font-weight: bold;
@@ -230,14 +202,8 @@
   transform: translateX(5px);
 }
 
-/* --------- Posts Container --------- */
-.postsContainer,
-.postList {
-  flex-grow: 1;
-  min-width: 0; /* prevent overflow */
-}
+/* --------- Post Content --------- */
 
-/* --------- Month Heading + Anchor --------- */
 .monthHeading {
   display: flex;
   align-items: center;
@@ -270,127 +236,14 @@
   text-decoration: underline;
 }
 
-/* --------- Content Wrapper --------- */
-.contentWrapper,
-.mainContent {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  min-height: calc(100vh - 70px); /* 70px is topStickyContainer height */
-}
+/* --------- Responsive Styles --------- */
 
-/* Full height wrapper */
-.contentWrapper {
-  display: flex;
-  gap: 2rem;
-  min-height: calc(100vh - 70px); /* subtract header height */
-  align-items: stretch; /* stretch children vertically */
-}
-
-/* Sidebar */
-.sidebar {
-  flex-shrink: 0;
-  width: 280px;
-  height: calc(100vh - 100px);
-  overflow-y: auto;
-  position: sticky;
-  top: 100px;
-  padding-right: 1.5rem; /* extra padding for scrollbar space */
-  box-sizing: border-box;
-  background-color: var(--ifm-background-color);
-  border-radius: var(--ifm-card-border-radius);
-  box-shadow: var(--ifm-shadow-md);
-  scroll-behavior: smooth;
-
-  /* Firefox scrollbar */
-  scrollbar-width: thin;
-  scrollbar-color: var(--ifm-color-primary-light) transparent;
-}
-
-/* Firefox hover */
-.sidebar:hover {
-  scrollbar-color: var(--ifm-color-primary) transparent;
-}
-
-/* WebKit scrollbar */
-.sidebar::-webkit-scrollbar {
-  width: 8px;
-  background-color: transparent;
-}
-
-.sidebar:hover::-webkit-scrollbar {
-  background-color: var(--ifm-color-gray-100);
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background-color: var(--ifm-color-primary-light);
-  border-radius: 10px;
-  border: 2px solid transparent;
-  background-clip: content-box;
-  transition: background-color 0.3s ease;
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-  background-color: var(--ifm-color-primary);
-}
-
-/* Optional subtle inner shadow for visual separation */
-.sidebar {
-  box-shadow: inset -5px 0 8px -6px rgba(0, 0, 0, 0.1);
-}
-
-/* Top Bar */
-.topBar {
-  position: sticky;
-  top: 70px; /* Adjust for navbar */
-  z-index: 101;
-  background-color: var(--ifm-background-color);
-  padding: 0.7rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: var(--ifm-card-border-radius);
-  box-shadow: var(--ifm-shadow-md);
-  margin-bottom: 1rem;
-}
-
-/* Main Content */
-.mainContent {
-  flex-grow: 1;
-  min-width: 0;
-}
-.verticalTimeline {
-  position: sticky;
-  top: 1rem; /* adjust as needed */
-}
-/* Timeline wrapper with full height */
-.timelineWrapper,
-.verticalTimeline {
-  flex-shrink: 0;
-  width: 250px;
-  height: auto; /* Remove fixed height */
-  max-height: none; /* Remove max-height */
-  overflow-y: visible; /* No internal scroll */
-  position: relative; /* Remove sticky, let sidebar handle sticky */
-  top: auto;
-  padding: 1rem;
-  background-color: var(--ifm-background-color);
-  border-radius: var(--ifm-card-border-radius);
-  box-shadow: var(--ifm-shadow-md);
-  transition: none;
-}
-
-/* --------- Responsive --------- */
 @media (max-width: 768px) {
-  .contentWrapper,
-  .mainContent {
+  .contentWrapper {
     flex-direction: column;
     min-height: auto;
   }
-
-  .sidebar,
-  .timelineWrapper,
-  .verticalTimeline {
+  .sidebar {
     position: static;
     width: 100%;
     height: auto;
@@ -400,14 +253,8 @@
     border-radius: 0;
     overflow: visible;
   }
-  .filterContainer,
   .filterContainerSidebar {
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
-  }
-
-  .timelineToggle {
-    width: 100%;
-    text-align: center;
   }
 }
