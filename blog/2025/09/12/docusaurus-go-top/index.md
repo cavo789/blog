@@ -5,7 +5,7 @@ authors: [christophe]
 image: /img/go_top_social_media.jpg
 mainTag: component
 tags: [component, docusaurus]
-blueskyRecordKey:
+blueskyRecordKey: 3lynkx4gkjk2c
 date: 2025-09-12
 ---
 
@@ -32,6 +32,10 @@ Please create the two files below in your blog directory structure:
 <Snippet filename="src/components/ScrollToTopButton/styles.module.css" source="src/components/ScrollToTopButton/styles.module.css" />
 
 Then, you need to inject `<ScrollToTopButton />` in your pages.
+
+:::tip
+Make sure to create a `/img/up.png` in your `/static` folder with your own icon (on my site, the small meerkat).
+:::
 
 ## Overriding the BlogPostItem page
 
