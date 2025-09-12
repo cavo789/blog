@@ -5,8 +5,8 @@ import BlogPostCount from "@site/src/components/Blog/PostCount";
 import Layout from "@theme/Layout";
 import PostCard from "@site/src/components/Blog/PostCard";
 import React, { useState, useEffect } from "react";
-import styles from "./styles.module.css";
 import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
+import styles from "./styles.module.css";
 
 const allPosts = getBlogMetadata();
 

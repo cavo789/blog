@@ -7,6 +7,7 @@ image: /img/code_quality_social_media.jpg
 series: code quality
 mainTag: code-quality
 tags: [autoflake, black, code-quality, devcontainer, docker, isort, mypy, prospector, pydocstyle, pylint, pyright, python, ruff, vulture]
+blueskyRecordKey: 3lymragaqr22l
 ---
 
 <!-- markdownlint-disable-file MD010 -->

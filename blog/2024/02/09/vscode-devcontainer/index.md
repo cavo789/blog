@@ -7,6 +7,7 @@ image: /img/devcontainer_social_media.jpg
 series: Coding using a devcontainer
 mainTag: php
 tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, sonarlint, vscode]
+blueskyRecordKey: 3lymrewibzk2l
 ---
 ![PHP development in a devcontainer with preinstalled code quality tools](/img/devcontainer_banner.jpg)
 

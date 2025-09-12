@@ -3,6 +3,7 @@ import BlogPostItemContainer from "@theme/BlogPostItem/Container";
 import BlogPostItemContent from "@theme/BlogPostItem/Content";
 import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
 import BlogPostItemHeader from "@theme/BlogPostItem/Header";
+import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
 import clsx from "clsx";
 
 // Our posts components
@@ -48,6 +49,7 @@ export default function BlogPostItem({ children, className }) {
           <RelatedPosts count="6" description="false" />
         </>
       )}
+      <ScrollToTopButton />
     </BlogPostItemContainer>
   );
 }
