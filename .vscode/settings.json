@@ -1,6 +1,5 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "explicitFolding.autoFold": "all",
   "explicitFolding.rules": {
     "markdown": {
       "begin": "<Snippet",

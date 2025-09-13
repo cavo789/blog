@@ -22,6 +22,8 @@ The objective of our component will be to display something like this:
 
 ![Related Blog posts](./images/related.png)
 
+<!-- truncate -->
+
 ## We need a Card component
 
 Please follow the [Using the Reusable Card component of Docux](/blog/docusaurus-cards#using-the-reusable-card-component-of-docux) chapter.

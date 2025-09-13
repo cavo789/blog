@@ -131,4 +131,11 @@
         ],
         "description": "Docusaurus - UpdatedAt timeline",
     },
+    "docusaurus.blueskyRecordKey": {
+        "prefix": "blueskyRecordKey",
+        "body": [
+            "blueskyRecordKey: ",
+        ],
+        "description": "Docusaurus - blueskyRecordKey YAML entry",
+    }
 }

@@ -7,8 +7,16 @@ series: Discovering Docusaurus
 image: /img/docusaurus_tips_social_media.jpg
 mainTag: docusaurus
 tags: [markdown, docusaurus, tips]
+blueskyRecordKey: 3lyqe2y7uvc2a
 ---
 ![Some tips and tricks when written articles for Docusaurus](/img/docusaurus_tips_banner.jpg)
+
+<UpdateAt
+  title="Recent Changes"
+  updates={[
+    { date: "2025-09-13", content: "Add Highlight component" },
+  ]}
+/>
 
 If you're writing for Docusaurus, there are a few tips to know.
 
@@ -51,6 +59,46 @@ Docusaurus supports inline style by the use of a `<span> ... </span>` notation.
 The notation `<span style={{color: 'blue'}}>I'm written in blue</span>` will give <span style={{color: 'blue'}}>I'm written in blue</span>.
 
 Used very occasionally, this is a very simple way of changing the style of content on your page.
+
+### Highlight component
+
+If your ambition is to highlight some text, there is a better solution: the **Highlight component**.
+
+Please create the `src/components/Blog/Highlight/index.js` file:
+
+<Snippet filename="src/components/Blog/Highlight/index.js" source="src/components/Blog/Highlight/index.js" />
+
+Then edit (or create) the `src/theme/MDXComponents.js` file. If the file already exists, just add the highlighted lines below. If not yet present, create the file with the content below:
+
+<Snippet filename="src/theme/MDXComponents.js" >
+
+```js
+import React from "react";
+
+import MDXComponents from "@theme-original/MDXComponents";
+
+// [...]
+
+// highlight-next-line
+import Highlight from "@src/components/Blog/Highlight";
+
+export default {
+  // Reusing the default mapping
+  ...MDXComponents,
+
+  // [...]
+
+  // highlight-next-line
+  Highlight
+};
+
+```
+
+</Snippet>
+
+<Highlight color="#25c2a0">Docusaurus green</Highlight> and <Highlight color="#1877F2">Facebook blue</Highlight> are my favorite colors.
+
+Source: [MDX and React](https://docusaurus.io/docs/markdown-features/react#exporting-components)
 
 ## Highlight lines
 
