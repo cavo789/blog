@@ -66,7 +66,7 @@ If your ambition is to highlight some text, there is a better solution: the **Hi
 
 Please create the `src/components/Blog/Highlight/index.js` file:
 
-<Snippet filename="src/components/Blog/Highlight/index.js" source="src/components/Blog/Highlight/index.js" />
+<Snippet filename="src/components/Highlight/index.js" source="src/components/Highlight/index.js" />
 
 Then edit (or create) the `src/theme/MDXComponents.js` file. If the file already exists, just add the highlighted lines below. If not yet present, create the file with the content below:
 
