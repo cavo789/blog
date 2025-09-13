@@ -64,7 +64,7 @@ Used very occasionally, this is a very simple way of changing the style of conte
 
 If your ambition is to highlight some text, there is a better solution: the **Highlight component**.
 
-Please create the `src/components/Blog/Highlight/index.js` file:
+Please create the `src/components/Highlight/index.js` file:
 
 <Snippet filename="src/components/Highlight/index.js" source="src/components/Highlight/index.js" />
 
@@ -80,7 +80,7 @@ import MDXComponents from "@theme-original/MDXComponents";
 // [...]
 
 // highlight-next-line
-import Highlight from "@src/components/Blog/Highlight";
+import Highlight from "@src/components/Highlight";
 
 export default {
   // Reusing the default mapping
