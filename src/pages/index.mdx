@@ -4,25 +4,54 @@ hide_table_of_contents: true
 ---
 
 import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
+import LatestPosts from "@site/src/components/Blog/LatestPosts";
 
 <!--![Personal blog about Docker, PHP, Joomla and much more](/img/welcome.jpg)-->
 
 <main>
-  <div className="container padding-top--xl padding-bottom--xl">
+
+    <h3 id="explore_blog">Explore the site</h3>
     <div className="row">
-      <HomeCard title="Blog" link="/blog" image="blog.png" description="I'm publishing at least one article by week" />
-      <HomeCard title="Series" link="/series" image="series.png" description="Browse articles grouped by series" />
-      <HomeCard title="Tags" link="/blog/tags" image="tags.png" description="Quick way to find posts by topic or keyword" />
-      <HomeCard title="Repositories" link="/repositories" image="repositories.png" description="Discover my public repositories hosted on GitHub.com" />
-      <HomeCard title="Archive" link="/blog/archive" image="archive.png" description="A timeline view of everything I've published so far" />
-      <HomeCard title="About" link="/about" image="about.png" description="Who I am, why I write, and what this blog is about." />
+        <HomeCard
+        title="Blog"
+        link="/blog"
+        image="blog.png"
+        description="I'm publishing at least one article by week"
+        />
+        <HomeCard
+        title="Series"
+        link="/series"
+        image="series.png"
+        description="Browse articles grouped by series"
+        />
+        <HomeCard
+        title="Tags"
+        link="/blog/tags"
+        image="tags.png"
+        description="Quick way to find posts by topic or keyword"
+        />
+        <HomeCard
+        title="Repositories"
+        link="/repositories"
+        image="repositories.png"
+        description="Discover my public repositories hosted on GitHub.com"
+        />
+        <HomeCard
+        title="Archive"
+        link="/blog/archive"
+        image="archive.png"
+        description="A timeline view of everything I've published so far"
+        />
+        <HomeCard
+        title="About"
+        link="/about"
+        image="about.png"
+        description="Who I am, why I write, and what this blog is about."
+        />
     </div>
-  </div>
+
+    <LatestPosts count={10} layout="bullet" />
+
+    <ScrollToTopButton />
+
 </main>
-
-<section className="intro text--left margin-bottom--lg">
-  <p>I'm [Christophe](/about), and this is where I share my writing on [Docker](/blog/tags/docker), [Linux](/blog/tags/linux), [Markdown](/blog/tags/markdown), [WSL2](/blog/tags/wsl), [Joomla](/blog/tags/joomla), [VSCode](/blog/tags/vscode), [Code quality](/blog/tags/code-quality), [Quarto](/blog/tags/quarto) and other tech topics I explore. All articles are written by me, with clarity and curiosity.</p>
-  <p>I've started this blog in [November 2023](/blog/archive) and so far, I'm writing at least one article by week.</p>
-</section>
-
-<ScrollToTopButton />

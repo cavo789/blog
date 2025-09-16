@@ -4,6 +4,7 @@ title: Providing a go to the top button in Docusaurus posts
 authors: [christophe]
 image: /img/go_top_social_media.jpg
 mainTag: component
+description: A Scroll to top button for long Docusaurus posts
 tags: [component, docusaurus]
 blueskyRecordKey: 3lynkx4gkjk2c
 date: 2025-09-12

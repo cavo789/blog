@@ -5,6 +5,7 @@ title: Writing functional tests with Pest
 authors: [christophe]
 image: /img/functional_testing_social_media.jpg
 series: Functional testing
+description: Discover how to write clean and expressive functional tests using the Pest PHP testing framework.
 mainTag: component
 tags: [laravel, pest, php, tests]
 blueskyRecordKey: 3lxm2amkjjk2m

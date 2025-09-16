@@ -113,7 +113,9 @@ function Archives() {
   useEffect(() => {
     if (!activeYearMonth) return;
 
-    const timelineLink = document.querySelector(`a[href="#${activeYearMonth}"]`);
+    const timelineLink = document.querySelector(
+      `a[href="#${activeYearMonth}"]`
+    );
     if (timelineLink) {
       // Scroll into view inside the timeline container
       const timelineContainer = document.getElementById("timeline-container");
@@ -123,7 +125,10 @@ function Archives() {
         const containerRect = timelineContainer.getBoundingClientRect();
 
         // Only scroll if link is outside visible bounds
-        if (linkRect.top < containerRect.top || linkRect.bottom > containerRect.bottom) {
+        if (
+          linkRect.top < containerRect.top ||
+          linkRect.bottom > containerRect.bottom
+        ) {
           // Scroll so the link is centered vertically inside container
           timelineContainer.scrollTo({
             top:
@@ -141,9 +146,15 @@ function Archives() {
 
   return (
     <>
-      <PageMetadata title={title} description={description} image="/img/archives_background.png" />
-      <Layout title="Archives" description="Browse all blog posts by year and month.">
-
+      <PageMetadata
+        title={title}
+        description={description}
+        image="/img/archives_background.png"
+      />
+      <Layout
+        title="Archives"
+        description="Browse all blog posts by year and month."
+      >
         <div className="container margin-top--lg margin-bottom--xl">
           {/* -------- Layout: Sidebar Left + Posts Right -------- */}
           <div className={styles.contentWrapper}>
@@ -196,7 +207,10 @@ function Archives() {
                 </div>
 
                 {/* Timeline */}
-                <nav className={styles.verticalTimeline} aria-label="Blog Archive Timeline Navigation">
+                <nav
+                  className={styles.verticalTimeline}
+                  aria-label="Blog Archive Timeline Navigation"
+                >
                   <h2 className={styles.jumpToHeading}>Jump to</h2>
                   <ul className={styles.timelineList}>
                     {years.map((year) => (
@@ -205,18 +219,25 @@ function Archives() {
                           {year}
                         </a>
                         <ul className={styles.timelineMonthList}>
-                          {Object.keys(postsByYearAndMonth[year]).map((month) => (
-                            <li key={`${year}-${month}`} className={styles.timelineMonth}>
-                              <a
-                                href={`#${year}-${month}`}
-                                className={`${styles.timelineMonthLink} ${
-                                  activeYearMonth === `${year}-${month}` ? styles.activeMonth : ""
-                                }`}
+                          {Object.keys(postsByYearAndMonth[year]).map(
+                            (month) => (
+                              <li
+                                key={`${year}-${month}`}
+                                className={styles.timelineMonth}
                               >
-                                {month}
-                              </a>
-                            </li>
-                          ))}
+                                <a
+                                  href={`#${year}-${month}`}
+                                  className={`${styles.timelineMonthLink} ${
+                                    activeYearMonth === `${year}-${month}`
+                                      ? styles.activeMonth
+                                      : ""
+                                  }`}
+                                >
+                                  {month}
+                                </a>
+                              </li>
+                            )
+                          )}
                         </ul>
                       </li>
                     ))}
@@ -227,9 +248,11 @@ function Archives() {
 
             {/* Posts Content */}
             <main className={styles.postsContainer}>
-                        <h1 className="text--center">Article Archives</h1>
-          <BlogPostCount className="text--center"/>
+              <h1 className="text--center">Article Archives</h1>
 
+              <p className="text--center">
+                We have published <strong><BlogPostCount/></strong> articles on our blog!
+              </p>
 
               {years.length > 0 ? (
                 years.map((year) => (
@@ -239,7 +262,10 @@ function Archives() {
                     </h2>
                     {Object.keys(postsByYearAndMonth[year]).map((month) => (
                       <div key={month}>
-                        <h3 className={styles.monthHeading} id={`${year}-${month}`}>
+                        <h3
+                          className={styles.monthHeading}
+                          id={`${year}-${month}`}
+                        >
                           {month} {year}
                           <a
                             href={`#${year}-${month}`}
@@ -251,7 +277,11 @@ function Archives() {
                         </h3>
                         <div className="row">
                           {postsByYearAndMonth[year][month].map((post) => (
-                            <PostCard key={post.permalink} post={post} layout="small" />
+                            <PostCard
+                              key={post.permalink}
+                              post={post}
+                              layout="small"
+                            />
                           ))}
                         </div>
                       </div>
@@ -259,11 +289,12 @@ function Archives() {
                   </section>
                 ))
               ) : (
-                <p className="text--center">No posts to display with the selected filters.</p>
+                <p className="text--center">
+                  No posts to display with the selected filters.
+                </p>
               )}
             </main>
           </div>
-
         </div>
         <ScrollToTopButton />
       </Layout>

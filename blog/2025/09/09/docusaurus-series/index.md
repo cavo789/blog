@@ -7,6 +7,7 @@ series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, plugin, react, series, swizzle]
 blueskyRecordKey: 3lyhtzknd6s2j
+description: Learn how to group related Docusaurus blog posts into a seamless reading experience using a custom Series component.
 date: 2025-09-09
 ---
 

@@ -23,7 +23,7 @@ import pluginTagRoute from "./plugins/docusaurus-plugin-tag-route/index.cjs"
 const config = {
   title: "Christophe Avonture",
   tagline: "Personal blog about Docker, PHP, Joomla and much more",
-  favicon: "img/favicon.jpg",
+  favicon: "img/favicon.png",
 
   // Set the production url of your site here
   url: "https://www.avonture.be",
@@ -159,7 +159,7 @@ const config = {
         title: "Christophe Avonture (cavo789)",
         logo: {
           alt: "Christophe Avonture",
-          src: "img/cavo789.jpg",
+          src: "img/avatar.png",
           width: 40,
           height: 40,
         },

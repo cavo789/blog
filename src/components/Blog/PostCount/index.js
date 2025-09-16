@@ -20,13 +20,7 @@ import PropTypes from "prop-types";
  * @returns {JSX.Element} A paragraph element showing the blog post count.
  */
 export default function BlogPostCount({ className }) {
-  const count = getBlogMetadata().filter((post) => !post.draft).length;
-
-  return (
-    <p className={className}>
-      We have published <strong>{count}</strong> articles on our blog!
-    </p>
-  );
+  return getBlogMetadata().filter((post) => !post.draft).length;
 }
 
 BlogPostCount.propTypes = {

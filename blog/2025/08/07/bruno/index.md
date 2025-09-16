@@ -6,6 +6,7 @@ authors: [christophe]
 image: /img/api_social_media.jpg
 mainTag: api
 tags: [api, bruno, docker, postman, tests, tool]
+description: Explore Bruno, a powerful Postman-like API testing tool with both GUI and CLI support.
 blueskyRecordKey: 3lvs336stus2j
 ---
 <!-- cspell:ignore fastapi,uvicorn,hobbyte,keyserver,usebruno,ECONNREFUSED,davidkarlsen -->

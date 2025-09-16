@@ -5,6 +5,7 @@ title: Displaying related posts below our Docusaurus article
 authors: [christophe]
 image: /img/docusaurus_component_social_media.jpg
 series: Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide
+description: Enhance your Docusaurus blog by showing related posts beneath each article for better content discovery.
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
 blueskyRecordKey: 3lxvwdh3szc22

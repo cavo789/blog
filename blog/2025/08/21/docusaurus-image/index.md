@@ -5,6 +5,7 @@ title: Change how Docusaurus will create img tags
 authors: [christophe]
 image: /img/docusaurus_component_social_media.jpg
 series: Creating Docusaurus components
+description: Customize the way Docusaurus generates <img> tags to better control image rendering and behavior.
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
 blueskyRecordKey: 3lww5fbh2y22q

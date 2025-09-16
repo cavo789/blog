@@ -1,0 +1,34 @@
+.bulletList {
+  padding-left: 1.2rem;
+  list-style-type: disc;
+}
+
+.bulletItem {
+  margin-bottom: 1.5rem;
+}
+
+.bulletTitle {
+  text-decoration: none;
+  color: var(--ifm-link-color);
+}
+
+.bulletTitle:hover {
+  text-decoration: underline;
+}
+
+.bulletDate {
+  margin-left: 0.5rem;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.bulletDescription {
+  margin: 0.3rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.bulletTags {
+  font-size: 0.85rem;
+  color: #777;
+}

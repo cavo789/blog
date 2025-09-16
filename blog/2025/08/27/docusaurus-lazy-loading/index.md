@@ -5,6 +5,7 @@ title: Overrides the generation of img tags with Docusaurus
 authors: [christophe]
 image: /img/docusaurus_component_social_media.jpg
 series: Creating Docusaurus components
+description: Learn how to customize the rendering of <img> tags in Docusaurus for enhanced control over image output.
 mainTag: component
 tags: [component, docusaurus, react]
 blueskyRecordKey: 3lxekkxhjwc26
