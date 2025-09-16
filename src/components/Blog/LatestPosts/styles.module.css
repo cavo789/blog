@@ -1,11 +1,6 @@
 .bulletList {
-  list-style-type: none;
-}
-
-.bulletDate {
-  margin-left: 0.5rem;
-  color: #888;
-  font-size: 0.85rem;
+  padding-left: 1.2rem;
+  list-style: none;
 }
 
 .bulletItem {
@@ -20,23 +15,41 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+.bulletDate {
+  margin-left: 0.5rem;
+  color: #888;
+  font-size: 0.85rem;
+}
+
 .bulletTitle {
   color: var(--ifm-link-color);
-  -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 16px;
   font-weight: 700;
   font-size: 1.1em;
 }
 
+.bulletTitle:hover {
+  text-decoration: underline;
+}
+
 .bulletDescription,
 .bulletTags {
   padding-left: 16px;
+  color: #555; /* Same color for Tag title and badges */
+}
+
+.bulletDescription {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.bulletTags {
+  font-size: 0.85rem;
 }
 
 .bulletTags span {
-  background-color: #F0F4F8;
-  color: #555;
+  background: #F0F4F8;
   padding: 2px 8px;
   border-radius: 12px;
   font-size: 0.75em;

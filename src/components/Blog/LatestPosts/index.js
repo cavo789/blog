@@ -118,7 +118,6 @@ export default function LatestPosts({
                   {post.tags.map((tag, index) => (
                     <span key={tag}>
                       {tag}
-                      {index < post.tags.length - 1 ? ", " : ""}
                     </span>
                   ))}
                 </p>
