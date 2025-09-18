@@ -6,7 +6,7 @@ image: /img/docusaurus_component_social_media.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, react]
-blueskyRecordKey:
+blueskyRecordKey: 3lz3pbmvd722f
 date: 2025-09-18
 ---
 
