@@ -1,0 +1,92 @@
+---
+slug: docusaurus-plugin-replace
+title: Creating a search&replace plugin for Docusaurus
+authors: [christophe]
+image: /img/docusaurus_component_social_media.jpg
+series: Creating Docusaurus components
+mainTag: component
+tags: [component, docusaurus, react]
+blueskyRecordKey:
+date: 2025-09-18
+---
+
+<!-- cspell:ignore vstirbu -->
+
+![Creating a search&replace plugin for Docusaurus](/img/docusaurus_component_banner.jpg)
+
+For fun (because that solution is perhaps not bullet proof), I've asked to an AI to generate a plugin to scan my 200 articles and to replace patterns like `docusaurus` by `Docusaurus`, `github` by `GitHub`, `vscode` by `VSCode` so to normalize them across all my content.
+
+It can be risky because if the word `vscode` appears in:
+
+* an URL (like `https://github.com/microsoft/vscode/`),
+* a name (like `vstirbu.vscode-mermaid-preview`),
+* as a file name (like `vscode.png`),
+* a code snippets (inside a <code>\```...\```</code> or <code>\`.\`</code> block),
+* ...
+
+we certainly not want to make the replacement.
+
+But well if the word is inside a simple paragraph.
+
+So, after a few prompts with the AI, a plugin has been generated and it works so far.
+
+<!-- truncate -->
+
+## The plugin
+
+Please create the `plugins/remark-replace-terms/remarkReplaceTerms` file and look at the `replacements` array. Please add yours.
+
+The syntax is `[/\b(1)\b/g, "(2)"],` where `(1)` is the word to search for (exactly written as is (case sensitive)) and `(2)` the replaced by value.
+
+<Snippet filename="plugins/remark-replace-terms/index.js" source="plugins/remark-replace-terms/index.js" />
+
+## Adding the plugin in your configuration
+
+The next thing to do is to register your plugin into your Docusaurus configuration. To do this, edit your `docusaurus.config.js` file and add the highlighted lines as illustrated below.
+
+<Snippet filename="docusaurus.config.js">
+
+```js
+
+// highlight-next-line
+import remarkReplaceWords from "./plugins/remark-replace-terms";
+
+const config = {
+  // [ ... ]
+  presets: [
+    [
+      'classic',
+      ({
+        // [ ... ]
+        blog: {
+          beforeDefaultRemarkPlugins: [
+            // [ ... ]
+            // highlight-next-line
+            remarkReplaceWords
+          ],
+        },
+        // [ ... ]
+      }),
+    ],
+  ],
+};
+
+export default config;
+
+```
+
+</Snippet>
+
+This done, please restart your Docusaurus server and on the next start, if some changes have to be made, you can see them in your console:
+
+```bash
+🔎 Replacing 'vscode' with 'VSCode' in file: /opt/[...]/index.md
+Sentence: One of the best features in vscode is the
+
+🔎 Replacing 'vscode' with 'VSCode' in file: /opt/[...]/index.md
+Sentence: With vscode, it's ultra-simple: multiple cursors.
+```
+
+:::caution
+The search&replace action won't be done on your original Markdown files but only during the HTML rendering. It's thus safe to run this plugin; your files won't be impacted at all.
+:::
