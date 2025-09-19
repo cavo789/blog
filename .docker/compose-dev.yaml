@@ -5,7 +5,7 @@ services:
         # User ID / Group ID
         - DOCKER_UID=${DOCKER_UID:-1000}
         - DOCKER_GID=${DOCKER_GID:-1000}
-        - USERNAME=christophe
+        - USERNAME=node
     # Start the listener so we can make changes on the host like editing a .md
     # file and "yarn start" will render the new version as HTML page
     entrypoint: /opt/docusaurus/.docker/entrypoint.sh

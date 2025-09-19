@@ -52,6 +52,7 @@ const mapLangToVariant = {
   css: "css",
   csv: "csv",
   diff: "diff",
+  docker: "docker",
   gherkin: "gherkin",
   html: "html",
   ignore: "ignore",
@@ -70,8 +71,9 @@ const mapLangToVariant = {
   none: "none",
   pascal: "pascal",
   php: "php",
-  ps1: "powershell",
+  plaintext: "txt",
   powershell: "powershell",
+  ps1: "powershell",
   py: "python",
   python: "python",
   qmd: "md",
@@ -79,6 +81,7 @@ const mapLangToVariant = {
   sql: "sql",
   svg: "svg",
   toml: "toml",
+  txt: "txt",
   vb: "vb",
   vba: "vb",
   vbnet: "vbnet",
@@ -95,152 +98,157 @@ const mapLangToVariant = {
 // When found, click on the desired icon and retrieve the "icon name" as displayed in the bottom part.
 const variantIcons = {
   apacheconf: {
-    className: styles.apacheconf_icon,
+    iconClassName : styles.apacheconf_icon,
     iconify: "logos:apache",
     ariaLabel: "ApacheConf Logo",
   },
   asm: {
-    className: styles.asm_icon,
+    iconClassName : styles.asm_icon,
     iconify: "vscode-icons:file-type-assembly",
     ariaLabel: "Asm Logo"
   },
   bash: {
-    className: styles.bash_icon,
+    iconClassName : styles.bash_icon,
     iconify: "devicon:bash",
     ariaLabel: "Bash Logo"
   },
   batch: {
-    className: styles.batch_icon,
+    iconClassName : styles.batch_icon,
     iconify: "file-icons:ms-dos",
     ariaLabel: "Batch Logo",
   },
   css: {
-    className: styles.css_icon,
+    iconClassName : styles.css_icon,
     iconify: "ph:file-css",
     ariaLabel: "CSS Logo"
   },
   csv: {
-    className: styles.csv_icon,
+    iconClassName : styles.csv_icon,
     iconify: "ph:file-csv",
     ariaLabel: "CSV Logo"
   },
   diff: {
-    className: styles.diff_icon,
+    iconClassName : styles.diff_icon,
     iconify: "ph:git-diff",
     ariaLabel: "Diff Logo"
   },
   docker: {
-    className: styles.docker_icon,
+    iconClassName : styles.docker_icon,
     iconify: "uil:docker",
     ariaLabel: "Docker Logo",
   },
   gherkin: {
-    className: styles.gherkin_icon,
+    iconClassName : styles.gherkin_icon,
     iconify: "skill-icons:gherkin-light",
     ariaLabel: "Gherkin Logo",
   },
   html: {
-    className: styles.html_icon,
+    iconClassName : styles.html_icon,
     iconify: "ph:file-html",
     ariaLabel: "HTML Logo"
   },
   ignore: {
-    className: styles.ignore_icon,
+    iconClassName : styles.ignore_icon,
     iconify: "codicon:sync-ignored",
     ariaLabel: "Ignore Logo",
   },
   ini: {
-    className: styles.ini_icon,
+    iconClassName : styles.ini_icon,
     iconify: "ph:file-ini",
     ariaLabel: "INI Logo"
   },
   java: {
-    className: styles.java_icon,
+    iconClassName : styles.java_icon,
     iconify: "vscode-icons:file-type-java",
     ariaLabel: "Java Logo"
   },
   js: {
-    className: styles.js_icon,
+    iconClassName : styles.js_icon,
     iconify: "logos:javascript",
     ariaLabel: "JS Logo"
   },
   json: {
-    className: styles.json_icon,
+    iconClassName : styles.json_icon,
     iconify: "ix:json-document",
     ariaLabel: "JSON Logo"
   },
   log: {
-    className: styles.log_icon,
+    iconClassName : styles.log_icon,
     iconify: "ix:log",
     ariaLabel: "Log Logo"
   },
   makefile: {
-    className: styles.makefile_icon,
+    iconClassName : styles.makefile_icon,
     iconify: "vscode-icons:file-type-makefile",
     ariaLabel: "GNU Makefile Logo",
   },
   md: {
-    className: styles.md_icon,
+    iconClassName : styles.md_icon,
     iconify: "ph:markdown-logo",
     ariaLabel: "Markdown Logo",
   },
   none: {
-    className: styles.none_icon,
+    iconClassName : styles.none_icon,
     iconify: "ph:empty",
     ariaLabel: "None Logo"
   },
   pascal: {
-    className: styles.pascal_icon,
+    iconClassName : styles.pascal_icon,
     iconify: "file-icons:pascal",
     ariaLabel: "Pascal Logo",
   },
   php: {
-    className: styles.php_icon,
+    iconClassName : styles.php_icon,
     iconify: "bi:filetype-php",
     ariaLabel: "PHP Logo"
   },
   powershell: {
-    className: styles.powershell_icon,
+    iconClassName : styles.powershell_icon,
     iconify: "file-icons:powershell",
     ariaLabel: "Powershell Logo",
   },
   python: {
-    className: styles.python_icon,
+    iconClassName : styles.python_icon,
     iconify: "devicon:python",
     ariaLabel: "Python Logo",
   },
   sql: {
-    className: styles.sql_icon,
+    iconClassName : styles.sql_icon,
     iconify: "ph:file-sql",
     ariaLabel: "SQL Logo"
   },
   svg: {
-    className: styles.svg_icon,
+    iconClassName : styles.svg_icon,
     iconify: "ph:file-svg",
     ariaLabel: "SVG Logo"
   },
   toml: {
-    className: styles.toml_icon,
+    iconClassName : styles.toml_icon,
     iconify: "tabler:toml",
     ariaLabel: "Toml Logo",
   },
+  txt: {
+    iconClassName : styles.txt,
+    iconify: "ph:file-txt",
+    ariaLabel: "Txt Logo",
+  },
   vb: {
-    className: styles.vb_icon,
+    iconClassName : styles.vb_icon,
     iconify: "fluent:document-vb-16-regular",
     ariaLabel: "VB Logo"
   },
   vbnet: {
-    className: styles.vbnet_icon,
+    iconClassName : styles.vbnet_icon,
     iconify: "fluent:document-vb-16-regular",
     ariaLabel: "VbNet Logo",
   },
   xml: {
-    className: styles.xml_icon,
+    iconClassName : styles.xml_icon,
     iconify: "hugeicons:xml-01",
     ariaLabel: "XML Logo"
   },
   yaml: {
-    className: styles.yaml_icon,
+    iconClassName : styles.yaml_icon,
     iconify: "devicon-plain:yaml",
     ariaLabel: "YAML Logo"
   },
@@ -317,6 +325,11 @@ export default function Snippet({
 
   // Get icon info if available
   const IconInfo = variantIcons[variantKey];
+
+  if (!IconInfo) {
+    throw new Error(`Unknown variantKey in Snippet component: ${variantKey}; detected language was: ${lang}`);
+  }
+
   const { iconClassName, iconify, ariaLabel } = IconInfo;
 
   return (

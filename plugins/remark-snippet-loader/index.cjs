@@ -41,7 +41,7 @@ function snippetLoader() {
         const ext = path.extname(sourcePath).slice(1).toLowerCase();
         const lang = extensionToLang[ext] || ext;
 
-        console.log(`Snippet plugin: reading ${absolutePath} for blog post ${blogPostPath}, auto-detected language is ${lang}`);
+        // console.log(`Snippet plugin: reading ${absolutePath} for blog post ${blogPostPath}, auto-detected language is ${lang}`);
 
         node.attributes.push({
           type: "mdxJsxAttribute",

@@ -85,7 +85,6 @@ export default function LatestPosts({
     return <p>No recent posts found.</p>;
   }
 
-  console.log(latestPosts);
   return (
     <>
       <h3 id="latest_posts">
