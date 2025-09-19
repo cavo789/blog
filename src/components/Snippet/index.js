@@ -7,42 +7,9 @@ import React, {
 } from "react";
 
 import CodeBlock from "@theme/CodeBlock";
-
+import LogoIcon from '@site/src/components/Blog/LogoIcon';
 import PropTypes from "prop-types";
-import clsx from "clsx";
 import styles from "./styles.module.css";
-
-// Icon imports
-import ApacheConfLogo from "./apacheconf-logo.svg";
-import AsmLogo from "./asm-logo.svg";
-import BashLogo from "./bash-logo.svg";
-import LogLogo from "./log-logo.svg";
-import IgnoreLogo from "./ignore-logo.svg";
-import BatchLogo from "./batch-logo.svg";
-import JavaLogo from "./java-logo.svg";
-import CsvLogo from "./csv-logo.svg";
-import CSSLogo from "./css-logo.svg";
-import PascalLogo from "./pascal-logo.svg";
-import GherkinLogo from "./gherkin-logo.svg";
-import DockerLogo from "./docker-logo.svg";
-import DiffLogo from "./diff-logo.svg";
-import HTMLLogo from "./html-logo.svg";
-import IniLogo from "./ini-logo.svg";
-import JsLogo from "./js-logo.svg";
-import JsonLogo from "./json-logo.svg";
-import MakefileLogo from "./makefile-logo.svg";
-import MarkDownLogo from "./markdown-logo.svg";
-import PhpLogo from "./php-logo.svg";
-import PowershellLogo from "./powershell-logo.svg";
-import PythonLogo from "./python-logo.svg";
-import SQLLogo from "./sql-logo.svg";
-import SvgLogo from "./svg-logo.svg";
-import TomlLogo from "./toml-logo.svg";
-import NoneLogo from "./none-logo.svg";
-import VbNetLogo from "./vbnet-logo.svg";
-import VBLogo from "./vb-logo.svg";
-import XMLLogo from "./xml-logo.svg";
-import YamlLogo from "./yaml-logo.svg";
 
 // Extract language from <code className="language-xyz"> inside children
 const getLanguageFromChildren = (children) => {
@@ -123,81 +90,160 @@ const mapLangToVariant = {
 };
 
 // Map variant keys to their icon components and CSS classes
+// For retrieving the value for the iconify key, just go to "https://icon-sets.iconify.design/?query=python"
+// and, in the top right search area, type the name of the language.
+// When found, click on the desired icon and retrieve the "icon name" as displayed in the bottom part.
 const variantIcons = {
   apacheconf: {
-    Icon: ApacheConfLogo,
     className: styles.apacheconf_icon,
+    iconify: "logos:apache",
     ariaLabel: "ApacheConf Logo",
   },
-  asm: { Icon: AsmLogo, className: styles.asm_icon, ariaLabel: "Asm Logo" },
-  bash: { Icon: BashLogo, className: styles.bash_icon, ariaLabel: "Bash Logo" },
+  asm: {
+    className: styles.asm_icon,
+    iconify: "vscode-icons:file-type-assembly",
+    ariaLabel: "Asm Logo"
+  },
+  bash: {
+    className: styles.bash_icon,
+    iconify: "devicon:bash",
+    ariaLabel: "Bash Logo"
+  },
   batch: {
-    Icon: BatchLogo,
     className: styles.batch_icon,
+    iconify: "file-icons:ms-dos",
     ariaLabel: "Batch Logo",
   },
-  css: { Icon: CSSLogo, className: styles.css_icon, ariaLabel: "CSS Logo" },
-  csv: { Icon: CsvLogo, className: styles.csv_icon, ariaLabel: "CSV Logo" },
-  diff: { Icon: DiffLogo, className: styles.diff_icon, ariaLabel: "Diff Logo" },
+  css: {
+    className: styles.css_icon,
+    iconify: "ph:file-css",
+    ariaLabel: "CSS Logo"
+  },
+  csv: {
+    className: styles.csv_icon,
+    iconify: "ph:file-csv",
+    ariaLabel: "CSV Logo"
+  },
+  diff: {
+    className: styles.diff_icon,
+    iconify: "ph:git-diff",
+    ariaLabel: "Diff Logo"
+  },
   docker: {
-    Icon: DockerLogo,
     className: styles.docker_icon,
+    iconify: "uil:docker",
     ariaLabel: "Docker Logo",
   },
   gherkin: {
-    Icon: GherkinLogo,
     className: styles.gherkin_icon,
-    ariaLabel: "Gerkin Logo",
+    iconify: "skill-icons:gherkin-light",
+    ariaLabel: "Gherkin Logo",
   },
-  html: { Icon: HTMLLogo, className: styles.html_icon, ariaLabel: "HTML Logo" },
+  html: {
+    className: styles.html_icon,
+    iconify: "ph:file-html",
+    ariaLabel: "HTML Logo"
+  },
   ignore: {
-    Icon: IgnoreLogo,
     className: styles.ignore_icon,
+    iconify: "codicon:sync-ignored",
     ariaLabel: "Ignore Logo",
   },
-  ini: { Icon: IniLogo, className: styles.ini_icon, ariaLabel: "INI Logo" },
-  java: { Icon: JavaLogo, className: styles.java_icon, ariaLabel: "Java Logo" },
-  js: { Icon: JsLogo, className: styles.js_icon, ariaLabel: "JS Logo" },
-  json: { Icon: JsonLogo, className: styles.json_icon, ariaLabel: "JSON Logo" },
-  log: { Icon: LogLogo, className: styles.log_icon, ariaLabel: "Log Logo" },
+  ini: {
+    className: styles.ini_icon,
+    iconify: "ph:file-ini",
+    ariaLabel: "INI Logo"
+  },
+  java: {
+    className: styles.java_icon,
+    iconify: "vscode-icons:file-type-java",
+    ariaLabel: "Java Logo"
+  },
+  js: {
+    className: styles.js_icon,
+    iconify: "logos:javascript",
+    ariaLabel: "JS Logo"
+  },
+  json: {
+    className: styles.json_icon,
+    iconify: "ix:json-document",
+    ariaLabel: "JSON Logo"
+  },
+  log: {
+    className: styles.log_icon,
+    iconify: "ix:log",
+    ariaLabel: "Log Logo"
+  },
   makefile: {
-    Icon: MakefileLogo,
     className: styles.makefile_icon,
+    iconify: "vscode-icons:file-type-makefile",
     ariaLabel: "GNU Makefile Logo",
   },
   md: {
-    Icon: MarkDownLogo,
     className: styles.md_icon,
+    iconify: "ph:markdown-logo",
     ariaLabel: "Markdown Logo",
   },
-  none: { Icon: NoneLogo, className: styles.none_icon, ariaLabel: "None Logo" },
+  none: {
+    className: styles.none_icon,
+    iconify: "ph:empty",
+    ariaLabel: "None Logo"
+  },
   pascal: {
-    Icon: PascalLogo,
     className: styles.pascal_icon,
+    iconify: "file-icons:pascal",
     ariaLabel: "Pascal Logo",
   },
-  php: { Icon: PhpLogo, className: styles.php_icon, ariaLabel: "PHP Logo" },
+  php: {
+    className: styles.php_icon,
+    iconify: "bi:filetype-php",
+    ariaLabel: "PHP Logo"
+  },
   powershell: {
-    Icon: PowershellLogo,
     className: styles.powershell_icon,
+    iconify: "file-icons:powershell",
     ariaLabel: "Powershell Logo",
   },
   python: {
-    Icon: PythonLogo,
     className: styles.python_icon,
+    iconify: "devicon:python",
     ariaLabel: "Python Logo",
   },
-  sql: { Icon: SQLLogo, className: styles.sql_icon, ariaLabel: "SQL Logo" },
-  svg: { Icon: SvgLogo, className: styles.svg_icon, ariaLabel: "SVG Logo" },
-  toml: { Icon: TomlLogo, className: styles.toml_icon, ariaLabel: "Toml Logo" },
-  vb: { Icon: VBLogo, className: styles.vb_icon, ariaLabel: "VB Logo" },
+  sql: {
+    className: styles.sql_icon,
+    iconify: "ph:file-sql",
+    ariaLabel: "SQL Logo"
+  },
+  svg: {
+    className: styles.svg_icon,
+    iconify: "ph:file-svg",
+    ariaLabel: "SVG Logo"
+  },
+  toml: {
+    className: styles.toml_icon,
+    iconify: "tabler:toml",
+    ariaLabel: "Toml Logo",
+  },
+  vb: {
+    className: styles.vb_icon,
+    iconify: "fluent:document-vb-16-regular",
+    ariaLabel: "VB Logo"
+  },
   vbnet: {
-    Icon: VbNetLogo,
     className: styles.vbnet_icon,
+    iconify: "fluent:document-vb-16-regular",
     ariaLabel: "VbNet Logo",
   },
-  xml: { Icon: XMLLogo, className: styles.xml_icon, ariaLabel: "XML Logo" },
-  yaml: { Icon: YamlLogo, className: styles.yaml_icon, ariaLabel: "YAML Logo" },
+  xml: {
+    className: styles.xml_icon,
+    iconify: "hugeicons:xml-01",
+    ariaLabel: "XML Logo"
+  },
+  yaml: {
+    className: styles.yaml_icon,
+    iconify: "devicon-plain:yaml",
+    ariaLabel: "YAML Logo"
+  },
 };
 
 export default function Snippet({
@@ -266,10 +312,12 @@ export default function Snippet({
 
   const variantKey =
     variant || (isDockerFile ? "docker" : mapLangToVariant[lang]) || "default";
+
   const variantClass = styles[`variant_${variantKey}`] || "";
 
   // Get icon info if available
   const IconInfo = variantIcons[variantKey];
+  const { iconClassName, iconify, ariaLabel } = IconInfo;
 
   return (
     <div
@@ -283,10 +331,7 @@ export default function Snippet({
       >
         <span className={styles.filename_wrapper}>
           {IconInfo && (
-            <IconInfo.Icon
-              className={IconInfo.className}
-              aria-label={IconInfo.ariaLabel}
-            />
+            <LogoIcon name={iconify} className={iconClassName} aria-label={ariaLabel} size='32' />
           )}{" "}
           {filename}
         </span>

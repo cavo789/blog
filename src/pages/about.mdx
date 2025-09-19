@@ -66,11 +66,24 @@ I place vital importance on code quality. For me, it goes without saying that co
   <TabItem value="networks" label="Social networks">
     <Columns>
       <Column className='text--justify'>
-        My public social networks are:
-        * [Bluesky](https://bsky.app/profile/avonture.be) (avonture.be)
-        * [GitHub](https://github.com/cavo789/) (cavo789)
-        * [Mattermost](https://joomlacommunity.cloud.mattermost.com/main/messages/@cavo789) (cavo789)
-      </Column>
+      <div style={{ paddingBottom: '1em' }}>My public social networks are:</div>
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: '2rem'
+      }}>
+        <a href="https://bsky.app/profile/avonture.be" title="Bluesky">
+          <LogoIcon name="bluesky" size='128' />
+        </a>
+        <a href="https://github.com/cavo789/" title="GitHub">
+          <LogoIcon name="github" size='128' />
+        </a>
+        <a href="https://joomlacommunity.cloud.mattermost.com/main/messages/@cavo789" title="Mattermost">
+          <LogoIcon name="mattermost" size='128' />
+        </a>
+      </div>
+    </Column>
       <Column className='text--left'>
         <img src="/img/about/social_networks.png" alt="Social networks" />
       </Column>

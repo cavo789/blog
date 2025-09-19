@@ -11,6 +11,7 @@ import Highlight from "@site/src/components/Highlight";
 import HomeCard from "@site/src/components/HomeCard";
 import Image from "@site/src/components/Image";
 import Link from '@docusaurus/Link';
+import LogoIcon from '@site/src/components/Blog/LogoIcon';
 import MDXComponents from "@theme-original/MDXComponents";
 import Snippet from "@site/src/components/Snippet";
 import StepsCard from "@site/src/components/StepsCard";
@@ -35,6 +36,7 @@ export default {
   Highlight,
   HomeCard,
   Image,
+  LogoIcon,
   Snippet,
   StepsCard,
   TabItem,
