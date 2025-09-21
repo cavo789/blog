@@ -4,6 +4,7 @@ import BlogPostItemContent from "@theme/BlogPostItem/Content";
 import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
 import BlogPostItemHeader from "@theme/BlogPostItem/Header";
 import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
+import StructuredData from "@site/src/components/StructuredData";
 import clsx from "clsx";
 
 // Our posts components
@@ -22,19 +23,22 @@ export default function BlogPostItem({ children, className }) {
   const { metadata, isBlogPostPage } = useBlogPost();
   const containerClassName = useContainerClassName();
   return (
-    <BlogPostItemContainer className={clsx(containerClassName, className)}>
-      <BlogPostItemHeader />
-      <BlogPostItemContent>{children}</BlogPostItemContent>
-      <BlogPostItemFooter />
+    <>
+      {isBlogPostPage && <StructuredData metadata={metadata} />}
+      <BlogPostItemContainer className={clsx(containerClassName, className)}>
+        <BlogPostItemHeader />
+        <BlogPostItemContent>{children}</BlogPostItemContent>
+        <BlogPostItemFooter />
 
-      {/* Only display our RelatedPosts and Bluesky components on the post page; not the blog view */}
-      {isBlogPostPage && (
-        <>
-          <Bluesky metadata={metadata} />
-          <RelatedPosts count="6" description="false" />
-        </>
-      )}
-      <ScrollToTopButton />
-    </BlogPostItemContainer>
+        {/* Only display our RelatedPosts and Bluesky components on the post page; not the blog view */}
+        {isBlogPostPage && (
+          <>
+            <Bluesky metadata={metadata} />
+            <RelatedPosts count="6" description="false" />
+          </>
+        )}
+        <ScrollToTopButton />
+      </BlogPostItemContainer>
+    </>
   );
 }

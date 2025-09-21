@@ -12,6 +12,7 @@ services:
     # In dev mode, the port is 3000. The blog is accessible on http://localhost:3000
     ports:
       - "3000:3000"
+      - "3001:3001"
     user: "${DOCKER_UID:-1000}:${DOCKER_GID:-1000}"
     volumes:
       # We'll share our files on the host with the container
