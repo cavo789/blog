@@ -3,12 +3,12 @@ date: 2025-06-27
 slug: vba-access-export
 title: Export MS Access objects
 authors: [christophe]
-image: /img/database_tips_social_media.jpg
+image: /img/v2/msaccess.jpg
 mainTag: msaccess
 tags: [database, msaccess, vba, vbs]
 blueskyRecordKey: 3lumzv3n42c2r
 ---
-![Export MS Access objects](/img/database_tips_banner.jpg)
+![Export MS Access objects](/img/v2/msaccess.jpg)
 
 A long time ago, in a previous life, I developed a lot of MS Access databases and unlike modern tools, it wasn't possible to version the code (modules, macros, queries, etc.) in a tool like Github.
 

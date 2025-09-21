@@ -3,11 +3,11 @@ date: 2024-01-25
 slug: linux-sed-tips
 title: Search and replace (or add) using sed
 authors: [christophe]
-image: /img/bash_tips_social_media.jpg
+image: /img/v2/bash.jpg
 mainTag: linux
 tags: [.env, bash, linux, sed, tips]
 ---
-![Search and replace (or add) using sed](/img/bash_tips_banner.jpg)
+![Search and replace (or add) using sed](/img/v2/bash.jpg)
 
 Today, I was facing (once more) with the following need: I need to update a setting in a text file but if the variable is not yet present, I need to add it.
 

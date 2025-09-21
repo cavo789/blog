@@ -3,12 +3,12 @@ date: 2024-10-12
 slug: linux-history
 title: Linux - Working with the history of your last fired actions
 authors: [christophe]
-image: /img/linux_tips_social_media.jpg
+image: /img/v2/linux_tips.jpg
 mainTag: linux
 tags: [linux, zsh]
 ---
 <!-- cspell:ignore DOSKEY,HISTIGNORE,HISTFILE,gacom -->
-![Linux - Working with the history of your last fired actions](/img/linux_tips_banner.jpg)
+![Linux - Working with the history of your last fired actions](/img/v2/linux_tips.jpg)
 
 For me, one of the undeniable strengths of the command line under Linux is the management of the history of previously executed commands.
 

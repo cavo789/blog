@@ -3,11 +3,11 @@ date: 2023-11-02
 slug: docker-php-run-script-or-website
 title: The easiest way to run a PHP script / website
 authors: [christophe]
-image: /img/php_tips_social_media.jpg
+image: /img/v2/php_tips.jpg
 mainTag: php
 tags: [wsl, docker, php]
 ---
-![The easiest way to run a PHP script / website](/img/php_tips_banner.jpg)
+![The easiest way to run a PHP script / website](/img/v2/php_tips.jpg)
 
 The situation: you wish to run a piece of standard PHP code (no dependency) like the one below:
 

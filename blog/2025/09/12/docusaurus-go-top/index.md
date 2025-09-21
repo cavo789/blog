@@ -2,7 +2,7 @@
 slug: docusaurus-go-top
 title: Providing a go to the top button in Docusaurus posts
 authors: [christophe]
-image: /img/go_top_social_media.jpg
+image: /img/v2/go_top_banner.jpg
 mainTag: component
 description: A Scroll to top button for long Docusaurus posts
 tags: [component, docusaurus]
@@ -12,7 +12,7 @@ date: 2025-09-12
 
 <!-- cspell:ignore  -->
 
-![Providing a go to the top button in Docusaurus posts](/img/go_top_banner.jpg)
+![Providing a go to the top button in Docusaurus posts](/img/v2/go_top_banner.jpg)
 
 More on smartphones than on computers; it's pretty nice to have a *Back to top of page* button to avoid dislocating your thumb.
 

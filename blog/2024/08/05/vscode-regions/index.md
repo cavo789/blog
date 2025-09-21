@@ -5,9 +5,9 @@ title: Working with regions in VSCode
 authors: [christophe]
 mainTag: vscode
 tags: [tips, vscode]
-image: /img/vscode_tips_social_media.jpg
+image: /img/v2/vscode_tips.jpg
 ---
-![Working with regions in VSCode](/img/vscode_tips_banner.jpg)
+![Working with regions in VSCode](/img/v2/vscode_tips.jpg)
 
 <!-- cspell:ignore hadolint,skel,maptz,regionfolder,specialised -->
 

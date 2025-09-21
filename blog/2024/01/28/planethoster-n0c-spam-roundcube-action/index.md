@@ -3,12 +3,12 @@ date: 2024-01-28
 slug: planethoster-n0c-spam-roundcube-action
 title: Exterminate them all, kill spam using GitHub Actions
 authors: [christophe]
-image: /img/spam_social_media.jpg
+image: /img/v2/planethoster.jpg
 mainTag: roundcube
 tags: [actions, Github, jq, n0c, planethoster, roundcube]
 ---
 <!-- cSpell:ignore allof,fileinto -->
-![Exterminate them all, kill spam using GitHub Actions](/img/spam_banner.jpg)
+![Exterminate them all, kill spam using GitHub Actions](/img/v2/planethoster.jpg)
 
 In previous articles, I explained how to fight against spam if you've a <Link to="/blog/cpanel-spam">cpanel</Link> or <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link>.
 

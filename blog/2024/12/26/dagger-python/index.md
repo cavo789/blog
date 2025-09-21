@@ -3,7 +3,7 @@ date: 2024-12-26
 slug: dagger-python
 title: Dagger.io - Using dagger to automate your CI workflows
 authors: [christophe]
-image: /img/dagger_tips_social_media.jpg
+image: /img/v2/dagger.jpg
 mainTag: dagger
 tags: [CI, dagger, Github, GitLab, pipeline, tip, workflow]
 ---
@@ -11,7 +11,7 @@ tags: [CI, dagger, Github, GitLab, pipeline, tip, workflow]
 <!-- cspell:ignore hadolint,xvfz,aaaaaargh,dind,dood,usermod -->
 <!-- markdownlint-disable-file MD010 -->
 
-![Dagger.io - Using dagger to automate your CI workflows](/img/dagger_tips_banner.jpg)
+![Dagger.io - Using dagger to automate your CI workflows](/img/v2/dagger.jpg)
 
 **Be careful, it's a bomb.**  Docker has revolutionized the world; let's not be afraid to say it loud and clear, and most probably [Dagger.io](https://dagger.io/), created by the same people as Docker, will follow in its footsteps.
 

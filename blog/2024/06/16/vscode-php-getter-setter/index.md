@@ -3,12 +3,12 @@ date: 2024-06-16
 slug: vscode-php-getter-setter
 title: PHP Getter and Setter in VSCode
 authors: [christophe]
-image: /img/vscode_tips_social_media.jpg
+image: /img/v2/vscode_tips.jpg
 mainTag: vscode
 tags: [tips, vscode]
 ---
 <!-- cspell:ignore strtolower -->
-![PHP Getter and Setter in VSCode](/img/vscode_tips_banner.jpg)
+![PHP Getter and Setter in VSCode](/img/v2/vscode_tips.jpg)
 
 Because you're an excellent developer, you deny anyone access to the properties of your class directly, but only via a getter or setter.
 

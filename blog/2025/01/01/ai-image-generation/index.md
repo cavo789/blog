@@ -3,11 +3,12 @@ date: 2025-01-01
 slug: ai-image-generation
 title: AI - Image generation using recraft.ai
 authors: [christophe]
-image: /img/ia_tips_banner.jpg
+image: /img/v2/ai.jpg
 mainTag: ai
 tags: [ai, image generation, recraft]
 ---
-![AI - Image generation using recraft.ai](/img/ia_tips_banner.jpg)
+<!-- cspell:ignore recraft -->
+![AI - Image generation using recraft.ai](/img/v2/ai.jpg)
 
 Very small article today, just to introduce [recraft.ai](https://www.recraft.ai/) (thanks Pierre for the tip) which is an image generation tool assisted by AI.
 

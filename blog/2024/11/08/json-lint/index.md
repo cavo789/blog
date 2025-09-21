@@ -3,11 +3,11 @@ date: 2024-11-08
 slug: json-lint
 title: JSON - Online linter
 authors: [christophe]
-image: /img/json_tips_social_media.jpg
+image: /img/v2/json.jpg
 mainTag: linux
 tags: [code quality, json, tips, tool, vscode]
 ---
-![JSON - Online linter](/img/json_tips_header.jpg)
+![JSON - Online linter](/img/v2/json.jpg)
 
 <!-- cspell:ignore favourites, analyse -->
 

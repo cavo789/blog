@@ -3,11 +3,11 @@ date: 2024-07-17
 slug: sql-formatter
 title: SQL - Formatting tool
 authors: [christophe]
-image: /img/database_tips_social_media.jpg
+image: /img/v2/sql_format.jpg
 mainTag: self-hosted
 tags: [code-quality, sql, tips, tool]
 ---
-![SQL - Formatting tool](/img/database_tips_banner.jpg)
+![SQL - Formatting tool](/img/v2/sql_format.jpg)
 
 When faced with legacy code, it is often useful to reformat it to make it readable.  And from there, the study of the code can begin.
 

@@ -3,11 +3,11 @@ date: 2024-05-03
 slug: bash-console-log-together
 title: Bash - Echo on the console and in a logfile in the same time
 authors: [christophe]
-image: /img/bash_tips_social_media.jpg
+image: /img/v2/bash.jpg
 tags: [bash, tips]
 mainTag: bash
 ---
-![Bash - Echo on the console and in a logfile in the same time](/img/bash_tips_banner.jpg)
+![Bash - Echo on the console and in a logfile in the same time](/img/v2/bash.jpg)
 
 In my previous article <Link to="/blog/bash-logging">Bash - Script to add logging features to your script</Link>, I've shared a way to write information in a logfile.
 

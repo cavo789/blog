@@ -3,11 +3,11 @@ date: 2023-12-27
 slug: wsl-powershell
 title: Starting the default associated Windows program on WSL
 authors: [christophe]
-image: /img/wsl_tips_social_media.jpg
+image: /img/v2/wsl.jpg
 mainTag: wsl
 tags: [powershell, tips, wsl]
 ---
-![Starting the default associated Windows program on WSL](/img/wsl_tips_banner.jpg)
+![Starting the default associated Windows program on WSL](/img/v2/wsl.jpg)
 
 Very often, I'm in my Linux console and I'd like to open a pdf file that I've just generated or, more simply, to open an html file. But how can I do this?
 

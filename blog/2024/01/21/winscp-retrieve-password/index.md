@@ -3,11 +3,11 @@ date: 2024-01-21
 slug: winscp-retrieve-password
 title: WinSCP - Retrieve a stored password
 authors: [christophe]
-image: /img/winscp_tips_social_media.jpg
+image: /img/v2/winscp.jpg
 mainTag: winscp
 tags: [tips, winscp]
 ---
-![WinSCP - Retrieve a stored password](/img/winscp_tips_banner.jpg)
+![WinSCP - Retrieve a stored password](/img/v2/winscp.jpg)
 
 More than once I've found myself in the situation where I've got a site saved in the [WinSCP](https://winscp.net/) configuration where I've saved the password and, um, gosh, what was it?
 

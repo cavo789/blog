@@ -6,12 +6,12 @@ authors: [christophe]
 mainTag: self-hosted
 tags: [docker, note-taking, self-hosted, tool]
 blueskyRecordKey: 3lv3hzdh4mk2v
-image: /img/docker_tools_header.jpg
+image: /img/v2/docker_playing_with_app.jpg
 ---
 
 <!-- cspell:ignore neosmemo -->
 
-![Self-hosted note-taking application](/img/docker_tools_header.jpg)
+![Self-hosted note-taking application](/img/v2/docker_playing_with_app.jpg)
 
 As a developer, I'm working all day on a computer and sometimes (too often in fact), at the end of the day, I send myself an email for tomorrow's me *Don't forget to ...*, *you have to continue [a task]*, *I stopped at [a file], I've to continue the others*, in short, I use my inbox like a to-dos/to-remember manager.
 

@@ -3,13 +3,13 @@ date: 2024-10-17
 slug: docker-definition-like-im-five
 title: Docker - Explain me like I'm five - What's Docker for?
 authors: [christophe]
-image: /img/docker_tips_social_media.jpg
+image: /img/v2/docker_tips.jpg
 mainTag: docker
 tags: [devcontainer, docker, python]
 ---
 <!-- cspell:ignore Wépion,telework,virtualise -->
 
-![Docker - Explain me like I'm five: what's Docker for?](/img/docker_tips_banner.jpg)
+![Docker - Explain me like I'm five: what's Docker for?](/img/v2/docker_tips.jpg)
 
 But what is Docker anyway? In the simplest possible terms, how can we explain what Docker is used for?
 

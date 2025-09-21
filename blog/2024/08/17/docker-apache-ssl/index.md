@@ -3,13 +3,13 @@ date: 2024-08-17
 slug: docker-localhost-ssl
 title: Docker - Configure your localhost to use SSL
 authors: [christophe]
-image: /img/docker_tips_social_media.jpg
+image: /img/v2/docker_tips.jpg
 mainTag: ssl
 tags: [apache, docker, https, php, nginx, ssh]
 ---
 <!-- cspell:ignore htdocs,newkey,keyout,a2enmod,a2ensite,a2dissite,libapache2,unexpire,badaboum,socache,shmcb -->
 
-![Docker - Configure your localhost to use SSL](/img/docker_tips_banner.jpg)
+![Docker - Configure your localhost to use SSL](/img/v2/docker_tips.jpg)
 
 In a <Link to="/blog/docker-html-site">previous article</Link>, I've explained how to run a static HTML site in seconds.
 

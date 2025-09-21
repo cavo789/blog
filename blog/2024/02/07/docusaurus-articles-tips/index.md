@@ -4,12 +4,12 @@ slug: docusaurus-articles-tips
 title: Some tips and tricks when written articles for Docusaurus
 authors: [christophe]
 series: Discovering Docusaurus
-image: /img/docusaurus_tips_social_media.jpg
+image: /img/v2/docusaurus_tips.jpg
 mainTag: docusaurus
 tags: [markdown, docusaurus, tips]
 blueskyRecordKey: 3lyqe2y7uvc2a
 ---
-![Some tips and tricks when written articles for Docusaurus](/img/docusaurus_tips_banner.jpg)
+![Some tips and tricks when written articles for Docusaurus](/img/v2/docusaurus_tips.jpg)
 
 <UpdateAt
   title="Recent Changes"

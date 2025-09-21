@@ -3,11 +3,11 @@ date: 2023-12-27
 slug: docker-inspect
 title: Docker inspect - Retrieve network's information
 authors: [christophe]
-image: /img/docker_tips_social_media.jpg
+image: /img/v2/docker_tips.jpg
 mainTag: docker
 tags: [docker, network, tips]
 ---
-![Docker inspect - Retrieve network's information](/img/docker_tips_banner.jpg)
+![Docker inspect - Retrieve network's information](/img/v2/docker_tips.jpg)
 
 The `docker inspect` command is used to retrieve detailed information about various Docker objects, including images, containers, volumes, networks, and nodes. It provides a comprehensive overview of the object's configuration, state, and other relevant details.
 

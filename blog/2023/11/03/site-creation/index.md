@@ -3,12 +3,13 @@ date: 2023-11-03
 slug: site-creation
 title: Site creation
 authors: [christophe]
+image: /img/v2/site_creation.jpg
 mainTag: docusaurus
 tags: [docusaurus, nodejs, docker, winscp]
 ---
 > [Docusaurus.io](https://docusaurus.io/)
 
-![Creation of this blog](./images/header.png)
+![Creation of this blog](/img/v2/site_creation.jpg)
 
 <UpdateAt
   updates={[

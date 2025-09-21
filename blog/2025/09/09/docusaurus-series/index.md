@@ -2,7 +2,7 @@
 slug: docusaurus-series
 title: Organize Your Docusaurus Content with a Custom Series Component
 authors: [christophe]
-image: /img/docusaurus_component_social_media.jpg
+image: /img/v2/docusaurus_component.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, plugin, react, series, swizzle]
@@ -13,7 +13,7 @@ date: 2025-09-09
 
 <!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,docux -->
 
-![Organize Your Docusaurus Content with a Custom Series Component](/img/docusaurus_component_banner.jpg)
+![Organize Your Docusaurus Content with a Custom Series Component](/img/v2/docusaurus_component.jpg)
 
 If you have been using Docusaurus for a long time, you may have noticed that it is not possible to create links between articles as one would like to do for a series.
 

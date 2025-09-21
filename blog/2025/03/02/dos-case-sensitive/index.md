@@ -6,9 +6,9 @@ authors: [christophe]
 mainTag: dos
 tags: [dos, tips]
 blueskyRecordKey: 3lvnjvuk5x22v
-image: /img/dos_tips_social_media.jpg
+image: /img/v2/msdos_tips.jpg
 ---
-![Enable case sensitivity for filenames under DOS](/img/dos_tips_banner.jpg)
+![Enable case sensitivity for filenames under DOS](/img/v2/msdos_tips.jpg)
 
 This is just ... for fun.
 

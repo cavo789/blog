@@ -3,11 +3,11 @@ date: 2023-12-19
 slug: bash-load-env
 title: Bash - Loading environment variables from a file
 authors: [christophe]
-image: /img/bash_tips_social_media.jpg
+image: /img/v2/bash.jpg
 mainTag: bash
 tags: [bash, tips]
 ---
-![Bash - Loading environment variables from a file](/img/bash_tips_banner.jpg)
+![Bash - Loading environment variables from a file](/img/v2/bash.jpg)
 
 Imagine you've a `.env` file like and you wish to process that file in a Bash script.
 

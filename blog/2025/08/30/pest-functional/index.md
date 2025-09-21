@@ -3,7 +3,7 @@ date: 2025-08-30
 slug: pest-functional-testing
 title: Writing functional tests with Pest
 authors: [christophe]
-image: /img/functional_testing_social_media.jpg
+image: /img/v2/functional_tests.jpg
 series: Functional testing
 description: Discover how to write clean and expressive functional tests using the Pest PHP testing framework.
 mainTag: component
@@ -12,7 +12,7 @@ blueskyRecordKey: 3lxm2amkjjk2m
 ---
 <!-- cspell:ignore  -->
 
-![Writing functional tests with Pest](/img/functional_testing_banner.jpg)
+![Writing functional tests with Pest](/img/v2/functional_tests.jpg)
 
 Last year, I wrote [Write PHP unit tests using Pest](/blog/pest_tips). Since then [Nuno Maduro](https://nunomaduro.com/) has released [Pest](https://pestphp.com/) in a version 4 with **built-in browser testing**.
 

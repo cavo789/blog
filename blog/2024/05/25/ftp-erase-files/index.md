@@ -3,12 +3,12 @@ date: 2024-05-25
 slug: ftp-erase-files
 title: FTP - Remove files and folders at light speed
 authors: [christophe]
-image: /img/winscp_tips_social_media.jpg
+image: /img/v2/winscp.jpg
 mainTag: linux
 tags: [ftp, tips]
 ---
 <!-- cspell:ignore subfolders -->
-![FTP - Remove files and folders at light speed](/img/winscp_tips_banner.jpg)
+![FTP - Remove files and folders at light speed](/img/v2/winscp.jpg)
 
 Have you ever deleted a website from your FTP client? It's easy, just select the folder containing the website and press the <kbd>delete</kbd> key.
 

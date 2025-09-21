@@ -3,13 +3,13 @@ date: 2025-04-04
 slug: docker-oracle-database-server
 title: Running Oracle Database Server as a Docker container
 authors: [christophe]
-image: /img/oracle_social_media.jpg
+image: /img/v2/oracle.jpg
 series: Running Oracle Database Server as a Docker container
 mainTag: oracle
 tags: [docker, oracle]
 blueskyRecordKey: 3lvnjmthgj22v
 ---
-![Running Oracle Database Server as a Docker container](/img/oracle_banner.jpg)
+![Running Oracle Database Server as a Docker container](/img/v2/oracle.jpg)
 
 <!-- cspell:ignore ORCLCDB,ORCLPDB,initdb,sqlplus,oradata,PDBADMIN,USERENV,oracletools,sysdba -->
 

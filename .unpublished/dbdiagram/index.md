@@ -2,14 +2,14 @@
 slug: dbdiagram
 title: dbdiagram - From the database design to its Python implementation
 authors: [christophe]
-image: /img/database_tips_social_media.jpg
+image: /img/v2/db_diagrams.jpg
 mainTag: python
 tags: [database, python, sqlalchemy, tips, visualisation]
 draft: true
 date: 2025-09-30
 ---
 <!-- cspell:ignore dbdiagram,drawdb,pydantic,hocus,pocus,sqlalchemy -->
-![dbdiagram - From the database design to its Python implementation](/img/database_tips_banner.jpg)
+![dbdiagram - From the database design to its Python implementation](/img/v2/db_diagrams.jpg)
 
 Over the last few days, I've needed to propose a database schema, and a colleague showed me [dbdiagram.io](https://dbdiagram.io/) with a proposal of his own. It's a really cool and easy tool.
 

@@ -2,7 +2,7 @@
 slug: docusaurus-snippets
 title: A component for showing code snippets in a Docusaurus blog
 authors: [christophe]
-image: /img/docusaurus_component_social_media.jpg
+image: /img/v2/docusaurus_react.jpg
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
@@ -14,7 +14,7 @@ date: 2025-09-30
 <!-- markdownlint-disable MD046 -->
 <!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,docux -->
 
-![A component for showing code snippets in a Docusaurus blog](/img/docusaurus_component_banner.jpg)
+![A component for showing code snippets in a Docusaurus blog](/img/v2/docusaurus_react.jpg)
 
 If you're a regular reader of this blog, you know I'm sharing a lot of code snippets.
 

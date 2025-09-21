@@ -3,12 +3,12 @@ date: 2024-05-01
 slug: bash-logging
 title: Bash - Script to add logging features to your script
 authors: [christophe]
-image: /img/bash_tips_social_media.jpg
+image: /img/v2/bash.jpg
 mainTag: bash
 tags: [bash, tips]
 ---
 <!-- cspell:ignore uplzaefi -->
-![Bash - Script to add logging features to your script](/img/bash_tips_banner.jpg)
+![Bash - Script to add logging features to your script](/img/v2/bash.jpg)
 
 > Also read <Link to="/blog/bash-console-log-together">Bash - Echo on the console and in a logfile in the same time</Link>
 

@@ -3,14 +3,14 @@ date: 2024-10-07
 slug: bash-progression-bar
 title: Linux - Using a progression bar in your script
 authors: [christophe]
-image: /img/bash_tips_social_media.jpg
+image: /img/v2/bash.jpg
 mainTag: bash
 tags: [bash, linux, tips]
 ---
 <!-- cspell:ignore bashpid, pids, nproc -->
 <!-- markdownlint-disable MD022,MD025 -->
 
-![Linux - Using a progression bar in your script](/img/bash_tips_banner.jpg)
+![Linux - Using a progression bar in your script](/img/v2/bash.jpg)
 
 In my previous article; <Link to="/blog/bash-parallel-task">Linux - Take advantage of the number of CPUs you have; start concurrent jobs</Link>, we've seen how to start jobs in parallel.
 

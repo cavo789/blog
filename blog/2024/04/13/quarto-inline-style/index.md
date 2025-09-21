@@ -3,12 +3,12 @@ date: 2024-04-13
 slug: quarto-inline-style
 title: Quarto Inline style
 authors: [christophe]
-image: /img/quarto_tips_social_media.jpg
+image: /img/v2/quarto.jpg
 series: Discovering Quarto
 mainTag: quarto
 tags: [markdown, quarto, tips]
 ---
-![Quarto Inline style](/img/quarto_tips_banner.jpg)
+![Quarto Inline style](/img/v2/quarto.jpg)
 
 Don't want to take the time to create a CSS class and figure out how to integrate it into Quarto to quickly highlight part of your paragraph?
 

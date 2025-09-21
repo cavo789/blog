@@ -3,13 +3,13 @@ date: 2024-05-20
 slug: ubuntu-install
 title: Ubuntu - Install from scratch
 authors: [christophe]
-image: /img/linux_tips_social_media.jpg
+image: /img/v2/linux_tips.jpg
 mainTag: ubuntu
 tags: [linux, ubuntu]
 ---
 <!-- cspell:ignore Bitlocker,bootable,balena,askubuntu -->
 
-![Ubuntu - Install from scratch](/img/linux_tips_banner.jpg)
+![Ubuntu - Install from scratch](/img/v2/linux_tips.jpg)
 
 Today is a public holiday in Belgium, so I'm finally taking the time to install Ubuntu on my old PC.
 

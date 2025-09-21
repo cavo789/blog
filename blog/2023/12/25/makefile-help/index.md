@@ -3,11 +3,11 @@ date: 2023-12-25
 slug: makefile-help
 title: Linux Makefile - Adding a help screen
 authors: [christophe]
-image: /img/makefile_tips_social_media.jpg
+image: /img/v2/makefile.jpg
 mainTag: makefile
 tags: [makefile, tips]
 ---
-![Linux Makefile - Adding a help screen](/img/makefile_tips_banner.jpg)
+![Linux Makefile - Adding a help screen](/img/v2/makefile.jpg)
 
 By using a makefile, you know it already, you can gather in one place a lot of *actions* like `make bash`, `make build`, `make deploy`, ... just like I do when working on this blog (see my makefile on [https://github.com/cavo789/blog/blob/main/makefile](https://github.com/cavo789/blog/blob/main/makefile)).
 

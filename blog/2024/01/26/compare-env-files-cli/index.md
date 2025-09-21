@@ -3,11 +3,11 @@ date: 2024-01-26
 slug: compare-env-files-cli
 title: Compare environment files in the Linux console
 authors: [christophe]
-image: /img/bash_tips_social_media.jpg
+image: /img/v2/bash.jpg
 mainTag: linux
 tags: [.env, bash, linux, sed, tips]
 ---
-![Compare environment files in the Linux console](/img/bash_tips_banner.jpg)
+![Compare environment files in the Linux console](/img/v2/bash.jpg)
 
 This is a very common source of problems using .env files: you've two or more different `.env` file like `.env` and `.env.example`.
 

@@ -3,14 +3,14 @@ date: 2025-07-10
 slug: bats-unit-tests
 title: Linux - Bash scripts - Running unit tests with bats/bats
 authors: [christophe]
-image: /img/bash_tips_social_media.jpg
+image: /img/v2/bash.jpg
 mainTag: tests
 tags: [linux, shell, tests]
 blueskyRecordKey: 3lujtej7xhs23
 ---
 <!-- cspell:ignore imple -->
 
-![Linux - Bash scripts - Running unit tests with bats/bats](/img/bash_tips_banner.jpg)
+![Linux - Bash scripts - Running unit tests with bats/bats](/img/v2/bash.jpg)
 
 Like all command-line developers, I write Linux Bash scripts.  Like any programmer, I'm supposed to write unit tests. Well, I have to admit that I rarely write them.
 

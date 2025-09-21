@@ -3,13 +3,13 @@ date: 2024-10-06
 slug: bash-parallel-task
 title: Linux - Take advantage of the number of CPUs you have; start concurrent jobs
 authors: [christophe]
-image: /img/bash_tips_social_media.jpg
+image: /img/v2/bash.jpg
 mainTag: bash
 tags: [bash, linux, tips]
 ---
 <!-- cspell:ignore bashpid, pids, nproc -->
 
-![Linux - Take advantage of the number of CPUs you have; start concurrent jobs](/img/bash_tips_banner.jpg)
+![Linux - Take advantage of the number of CPUs you have; start concurrent jobs](/img/v2/bash.jpg)
 
 In my professional activity, I've been faced with the following requirement: process each line of a CSV file and make a POST API call to upload a document.
 

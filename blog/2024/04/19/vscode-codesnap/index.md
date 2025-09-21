@@ -5,9 +5,9 @@ title: CodeSnap addon for VSCode
 authors: [christophe]
 mainTag: vscode
 tags: [vscode, markdown, tips]
-image: /img/vscode_tips_social_media.jpg
+image: /img/v2/vscode_tips.jpg
 ---
-![CodeSnap addon for VSCode](/img/vscode_tips_banner.jpg)
+![CodeSnap addon for VSCode](/img/v2/vscode_tips.jpg)
 
 The extension [CodeSnap](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) will **take beautiful screenshots of your code in VS Code** without effort.
 

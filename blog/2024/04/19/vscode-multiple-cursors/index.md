@@ -3,11 +3,11 @@ date: 2024-04-19
 slug: vscode-multiple-cursors
 title: Multiple cursors in vscode
 authors: [christophe]
-image: /img/vscode_tips_social_media.jpg
+image: /img/v2/vscode_tips.jpg
 mainTag: vscode
 tags: [tips, vscode]
 ---
-![Multiple cursors in vscode](/img/vscode_tips_banner.jpg)
+![Multiple cursors in vscode](/img/v2/vscode_tips.jpg)
 
 One of the best features in vscode is the *Multiple cursors* one.
 

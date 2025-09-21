@@ -5,9 +5,9 @@ title: Using the JetBrains Mono font in vscode
 authors: [christophe]
 mainTag: vscode
 tags: [tips, vscode]
-image: /img/vscode_tips_social_media.jpg
+image: /img/v2/vscode_tips.jpg
 ---
-![Using the JetBrains Mono font in vscode](/img/vscode_tips_banner.jpg)
+![Using the JetBrains Mono font in vscode](/img/v2/vscode_tips.jpg)
 
 As you know, VSCode is highly customizable; you can install plethora of addons, change the default theme and use your preferred font.
 

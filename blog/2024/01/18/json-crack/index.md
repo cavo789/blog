@@ -3,11 +3,11 @@ date: 2024-01-18
 slug: json-crack
 title: Rendering a JSON file as a mind map
 authors: [christophe]
-image: /img/mindmap_social_media.jpg
+image: /img/v2/mindmaps.jpg
 mainTag: mindmap
 tags: [json, visualisation, vscode]
 ---
-![Rendering a JSON file as a mind map](/img/mindmap_banner.jpg)
+![Rendering a JSON file as a mind map](/img/v2/mindmaps.jpg)
 
 > [https://jsoncrack.com/editor](https://jsoncrack.com/editor)
 
@@ -17,7 +17,7 @@ I really like the idea of not having to draw (actually, that is just because I a
 
 <!-- truncate -->
 
-Let us take an example found randomly on the net [here](https://medium.com/@Goldzila/superheroes-of-data-exploring-xml-json-and-binary-formats-through-the-lens-of-marvel-characters-3754f2691cdc). How can we represent Spider-Man as a JSON object? Below an attempt:
+Let us take an example found randomly on the net [superheroes](https://medium.com/@Goldzila/superheroes-of-data-exploring-xml-json-and-binary-formats-through-the-lens-of-marvel-characters-3754f2691cdc). How can we represent Spider-Man as a JSON object? Below an attempt:
 
 <Snippet filename="superheroes.json">
 

@@ -3,12 +3,12 @@ date: 2025-07-25
 slug: vscode-docker-markmap
 title: Getting a more attractive mindmap with Markmap and Quarto
 authors: [christophe]
-image: /img/mindmap_social_media.jpg
+image: /img/v2/mindmaps.jpg
 mainTag: mindmap
 tags: [docker, mindmap, quarto, tips, visualisation, vscode]
 blueskyRecordKey: 3lurgf4ddp22y
 ---
-![Getting a more attractive mindmap with Markmap and Quarto](/img/mindmap_banner.jpg)
+![Getting a more attractive mindmap with Markmap and Quarto](/img/v2/mindmaps.jpg)
 
 In 2023, I wrote this <Link to="/blog/docker-mindmap">Build a mind map using Docker and Markdown</Link> blog post about how to render a Markdown document as a mindmap.
 

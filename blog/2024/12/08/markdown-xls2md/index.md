@@ -3,11 +3,11 @@ date: 2024-12-08
 slug: markdown-xls2md
 title: Markdown - Convert Excel ranges to Markdown tables
 authors: [christophe]
-image: /img/markdown_tips_social_media.jpg
+image: /img/v2/markdown.jpg
 mainTag: excel
 tags: [excel, markdown, tips]
 ---
-![Markdown - Convert Excel ranges to Markdown tables](/img/markdown_tips_banner.jpg)
+![Markdown - Convert Excel ranges to Markdown tables](/img/v2/markdown.jpg)
 
 See also <Link to="/blog/markdown-csv2md">Markdown - Convert CSV to Markdown tables</Link>.
 

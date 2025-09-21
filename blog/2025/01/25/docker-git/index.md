@@ -3,11 +3,11 @@ date: 2025-01-25
 slug: docker-git
 title: Docker - Install and use Git in a container just like you do on your host
 authors: [christophe]
-image: /img/git_tips_social_media.jpg
+image: /img/v2/git.jpg
 mainTag: docker
 tags: [devcontainer, docker, git, ssh, tips]
 ---
-![Docker - Install and use Git in a container just like you do on your host](/img/git_tips_banner.jpg)
+![Docker - Install and use Git in a container just like you do on your host](/img/v2/git.jpg)
 
 So, no need to tell it anymore, I'm doing everything in Docker containers even coding (since I'm coding using devcontainers) but ... till now, I was using `git` on my host only.
 

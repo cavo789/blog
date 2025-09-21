@@ -3,17 +3,17 @@ date: 2023-12-31
 slug: powerlevel10k_sandbox
 title: Customize your Linux prompt with Powerlevel10k
 authors: [christophe]
-image: /img/wsl_tips_social_media.jpg
+image: /img/v2/customization_prompt.jpg
 mainTag: customization
 tags: [customization, docker, tips, wsl, zsh]
 ---
-![Customize your Linux prompt with Powerlevel10k](/img/wsl_tips_banner.jpg)
+![Customize your Linux prompt with Powerlevel10k](/img/v2/customization_prompt.jpg)
 
 When you're working with Linux (also working with WSL thus), there are many ways to personalize your prompt. One of the simplest solutions is to use [Powerlevel10k](https://github.com/romkatv/powerlevel10k) and its wizard.
 
 In this article we're going to use a Docker container just to : *test and discard*.  The Docker container will only be used to install Powerlevel10k, configure it and play with it. After that, it's up to you to see whether you like the interface and, if you do, to redo the installation on your machine rather than in Docker.
 
-The tip comes from [here](https://github.com/romkatv/powerlevel10k/blob/master/README.md#try-it-in-docker)
+The tip comes from [https://github.com/romkatv/powerlevel10k/blob/master/README.md](https://github.com/romkatv/powerlevel10k/blob/master/README.md#try-it-in-docker)
 
 <!-- truncate -->
 

@@ -3,12 +3,12 @@ date: 2024-04-01
 slug: windows-terminal
 title: Windows Terminal
 authors: [christophe]
-image: /img/windows_terminal_social_media.jpg
+image: /img/v2/windows_terminal_tips.jpg
 mainTag: customization
 tags: [console, customization, dos, windows terminal, wsl]
 ---
 <!-- cspell:ignore wekyb,bbwe,xmens -->
-![Windows Terminal](/img/windows_terminal_banner.jpg)
+![Windows Terminal](/img/v2/windows_terminal_tips.jpg)
 
 For people who like working in a console, Windows Terminal can be seen as a successor of the old DOS console; you know the *black screen* where you can type commands like `dir` or `mkdir`.
 

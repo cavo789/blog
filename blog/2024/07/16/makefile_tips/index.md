@@ -3,14 +3,14 @@ date: 2024-07-16
 slug: makefile_tips
 title: Makefile - Tutorial and Tips & Tricks
 authors: [christophe]
-image: /img/makefile_tips_social_media.jpg
+image: /img/v2/makefile.jpg
 mainTag: makefile
 tags: [makefile, tips]
 ---
 <!-- cspell:ignore ifeq,ifneq,ifdef,Oups,phplint,infile,recipeprefix,sonarqube,testme,findstring,toplevel,concat,outfile -->
 <!-- cspell:ignore runsql,regexes -->
 
-![Makefile - Tutorial and Tips & Tricks](/img/makefile_tips_banner.jpg)
+![Makefile - Tutorial and Tips & Tricks](/img/v2/makefile.jpg)
 
 When I'm learning, I usually take notes.  I find that it's one of the best ways of remembering what I've seen and being able to come back to it at any time.
 

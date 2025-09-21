@@ -3,11 +3,11 @@ date: 2024-03-28
 slug: zsh-install
 title: How to install Oh-My-ZSH
 authors: [christophe]
-image: /img/zsh_tips_social_media.jpg
+image: /img/v2/zsh.jpg
 mainTag: zsh
 tags: [customization, linux, wsl, zsh]
 ---
-![How to install Oh-My-ZSH](/img/zsh_tips_banner.jpg)
+![How to install Oh-My-ZSH](/img/v2/zsh.jpg)
 
 ZSH is a powerful alternative to Linux Bash offering a lot of features like auto-completion (I like this so much), plugins and even themes.
 

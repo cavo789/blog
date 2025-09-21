@@ -3,13 +3,13 @@ date: 2024-12-18
 slug: python-pydot
 title: Python - Generate flows using pydot
 authors: [christophe]
-image: /img/python_tips_social_media.jpg
+image: /img/v2/diagrams.jpg
 mainTag: python
 tags: [docker, python, visualisation]
 ---
 <!-- cspell:ignore Pydot,PYTHONDONTWRITEBYTECODE,hadolint,rankdir,fillcolor -->
 
-![Python - Generate flows using Pydot](/img/python_tips_banner.jpg)
+![Python - Generate flows using Pydot](/img/v2/diagrams.jpg)
 
 [Pydot](https://github.com/pydot/pydot) is a **diagram as code** generator i.e. you write lines of code and thanks to a magic process, you can render the code as an image.
 

@@ -3,13 +3,13 @@ date: 2024-12-20
 slug: docker-out-of-docker-dood
 title: Docker-out-of-Docker aka DooD
 authors: [christophe]
-image: /img/docker_tips_social_media.jpg
+image: /img/v2/docker_tips.jpg
 mainTag: docker
 tags: [docker]
 ---
 <!-- cspell:ignore phplint,dind,dood,groupid,johndoe,addgroup,adduser,getent,metin,meyay -->
 
-![Docker-out-of-Docker aka DooD](/img/docker_tips_banner.jpg)
+![Docker-out-of-Docker aka DooD](/img/v2/docker_tips.jpg)
 
 <UpdateAt
   title="Recent Changes"

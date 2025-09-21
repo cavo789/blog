@@ -2,13 +2,13 @@
 slug: winscp-putty
 title: WinSCP - Start PuTTY without typing a password
 authors: [christophe]
-image: /img/winscp_tips_social_media.jpg
+image: /img/v2/putty.jpg
 mainTag: winscp
 tags: [putty, ssh, tips, winscp]
 draft: true
 date: 2025-09-30
 ---
-![WinSCP - Start PuTTY without typing a password](/img/winscp_tips_banner.jpg)
+![WinSCP - Start PuTTY without typing a password](/img/v2/putty.jpg)
 
 [WinSCP](https://winscp.net/) is a free tool for Windows allowing you to connect to a remote server and start to upload/download files using various protocols like SFTP, FTP, SCP, ...  In short, it's a FTP client.
 

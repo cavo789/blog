@@ -3,11 +3,11 @@ date: 2024-09-03
 slug: docker-use-ssh-during-build
 title: Docker secrets - Using your SSH key during the build process
 authors: [christophe]
-image: /img/docker_secrets_tips_social_media.jpg
+image: /img/v2/docker_secrets.jpg
 mainTag: ssh
 tags: [docker, git, Github, secrets, ssh]
 ---
-![Docker secrets - Using your SSH key during the build process](/img/docker_secrets_tips_header.jpg)
+![Docker secrets - Using your SSH key during the build process](/img/v2/docker_secrets.jpg)
 
 <!-- cspell:ignore keyscan -->
 

@@ -3,11 +3,11 @@ date: 2024-01-06
 slug: docker-postgrest
 title: Don't query your PostgreSQL db anymore, prefer PostgREST
 authors: [christophe]
-image: /img/database_tips_social_media.jpg
+image: /img/v2/postgrest.jpg
 mainTag: postgrest
 tags: [docker, openapi, postgrest, postgresql, swagger-ui]
 ---
-![Don't query your PostgreSQL db anymore, prefer PostgREST](/img/database_tips_banner.jpg)
+![Don't query your PostgreSQL db anymore, prefer PostgREST](/img/v2/postgrest.jpg)
 
 Last year I had a large application developed in Laravel that required a MySQL database. When I was migrating to PostgreSQL I discovered PostgREST, which allowed me to completely remove queries from my code.
 
@@ -17,7 +17,7 @@ My tables, my models, my SQL queries, I was able to remove everything from my co
 
 <!-- truncate -->
 
-"PostgREST is a standalone web server that turns your PostgreSQL database directly into a RESTful API. The structural constraints and permission in the database determine the API endpoints and operations". You can retrieve the official documentation [here](https://postgrest.org/en/).
+"PostgREST is a standalone web server that turns your PostgreSQL database directly into a RESTful API. The structural constraints and permission in the database determine the API endpoints and operations". You can retrieve the official documentation [https://postgrest.org/en/](https://postgrest.org/en/).
 
 :::tip Will return JSON
 In short: using an API, PostgREST will retrieve data from your PostgreSQL database and will return a JSON answer to you.

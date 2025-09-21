@@ -3,14 +3,14 @@ date: 2025-02-01
 slug: heimdall-dashboard
 title: Heimdall - Web dashboard
 authors: [christophe]
-image: /img/docker_tips_social_media.jpg
+image: /img/v2/docker_playing_with_app.jpg
 mainTag: self-hosted
 tags: [docker, dashboard, self-hosted, tool]
 blueskyRecordKey: 3lwgbxok2ys2i
 ---
 <!-- cspell:ignore puid,pgid,Bitwarden -->
 
-![Heimdall - Web dashboard](/img/docker_tips_banner.jpg)
+![Heimdall - Web dashboard](/img/v2/docker_playing_with_app.jpg)
 
 > [https://heimdall.site/](https://heimdall.site/)
 

@@ -5,10 +5,10 @@ title: Install Docker and play with PHP
 authors: [christophe]
 mainTag: php
 tags: [docker, php]
-image: /img/docker_tips_social_media.jpg
+image: /img/v2/docker_tips.jpg
 ---
 <!-- cspell:ignore wamp -->
-![Install Docker and play with PHP](/img/docker_tips_banner.jpg)
+![Install Docker and play with PHP](/img/v2/docker_tips.jpg)
 
 Docker can be installed free of charge for personal or small-scale use: [https://www.docker.com/products/personal/](https://www.docker.com/products/docker-desktop/).
 

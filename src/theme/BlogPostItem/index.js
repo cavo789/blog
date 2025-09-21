@@ -8,7 +8,6 @@ import clsx from "clsx";
 
 // Our posts components
 import RelatedPosts from "@site/src/components/Blog/RelatedPosts/index.js";
-import SeriesPosts from "@site/src/components/Blog/SeriesPosts/index.js";
 
 // Our Bluesky component
 import Bluesky from "@site/src/components/Bluesky/index.js";
@@ -25,26 +24,12 @@ export default function BlogPostItem({ children, className }) {
   return (
     <BlogPostItemContainer className={clsx(containerClassName, className)}>
       <BlogPostItemHeader />
-
-      {/* Only display our SeriesPosts component on the post page; not the blog view */}
-      {isBlogPostPage && (
-        <SeriesPosts
-          series={metadata.frontMatter.series}
-          excludePermalink={metadata.permalink}
-          highlightCurrent={true}
-        />
-      )}
       <BlogPostItemContent>{children}</BlogPostItemContent>
       <BlogPostItemFooter />
 
       {/* Only display our RelatedPosts and Bluesky components on the post page; not the blog view */}
       {isBlogPostPage && (
         <>
-          <SeriesPosts
-            series={metadata.frontMatter.series}
-            excludePermalink={metadata.permalink}
-            highlightCurrent={true}
-          />
           <Bluesky metadata={metadata} />
           <RelatedPosts count="6" description="false" />
         </>

@@ -3,11 +3,11 @@ date: 2024-02-21
 slug: vba-excel-call-soap-webservice
 title: MS Excel - How to call a SOAP web service
 authors: [christophe]
-image: /img/excel_tips_social_media.jpg
+image: /img/v2/excel.jpg
 mainTag: excel
 tags: [excel, ribbon, soap, vba]
 ---
-![MS Excel - How to call a SOAP web service](/img/excel_tips_banner.jpg)
+![MS Excel - How to call a SOAP web service](/img/v2/excel.jpg)
 
 Imagine you had to make a call to a SOAP web service in Excel? For example, to validate the VAT number you have been given before carrying out some processing.
 

@@ -3,12 +3,12 @@ date: 2025-02-09
 slug: python-fastapi
 title: Python - Fast API - Create your JSON API in Python in one minute
 authors: [christophe]
-image: /img/python_tips_social_media.jpg
+image: /img/v2/api.jpg
 mainTag: api
 tags: [api, docker, fastapi, python]
 blueskyRecordKey: 3lwgccocnws2i
 ---
-![Python - Fast API - Create your JSON API in Python in one minute](/img/python_tips_banner.jpg)
+![Python - Fast API - Create your JSON API in Python in one minute](/img/v2/api.jpg)
 
 > TLDR: one minute is the time you'll need to copy/paste two files' content and to run one Docker statement.
 

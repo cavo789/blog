@@ -3,11 +3,11 @@ date: 2023-11-03
 slug: docker-volume
 title: Share data between your running Docker container and your computer
 authors: [christophe]
-image: /img/docker_tips_social_media.jpg
+image: /img/v2/docker_tips.jpg
 mainTag: docker
 tags: [docker]
 ---
-![Share data between your running Docker container and your computer](/img/docker_tips_banner.jpg)
+![Share data between your running Docker container and your computer](/img/v2/docker_tips.jpg)
 
 > If you don't have Docker yet, please consult my <Link to="/blog/install-docker">Install Docker and play with PHP</Link> post first.
 

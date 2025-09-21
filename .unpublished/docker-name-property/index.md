@@ -2,13 +2,13 @@
 slug: docker-name-property
 title: Docker - How to group containers together
 authors: [christophe]
-image: /img/docker_tips_social_media.jpg
+image: /img/v2/docker_tips.jpg
 mainTag: docker
 tags: [docker]
 date: 2025-09-30
 draft: true
 ---
-![Docker - How to group containers together](/img/docker_tips_banner.jpg)
+![Docker - How to group containers together](/img/v2/docker_tips.jpg)
 
 ********* D'ABORD ÉCRIRE UN ARTICLE SUR KARAKEEP ET PUBLIER ET KARAKEEP ET MEMOS *********
 ******* DE CETTE MANIERE JE PEUX FAIRE UN LIEN INTERNE VERS L'ARTICLE DANS LE BLOG *******

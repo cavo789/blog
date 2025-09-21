@@ -3,11 +3,10 @@ date: 2023-11-29
 slug: docker-python
 title: Play with Docker and Python
 authors: [christophe]
-image: /img/python_tips_social_media.jpg
-mainTag: python
+image: /img/v2/python.jpg
 tags: [docker, python]
 ---
-![Play with Docker and Python](/img/python_tips_banner.jpg)
+![Play with Docker and Python](/img/v2/python.jpg)
 
 Remember a few years ago when you wanted to learn a new programming language such as Python?  What did you need before you could even start programming your first *Hello World*? You had to install the language on your computer; maybe you also had to get a lot of libraries/dependencies; you had to spend time configuring your machine before you could even start writing your first script.
 

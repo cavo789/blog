@@ -3,11 +3,11 @@ date: 2024-12-08
 slug: markdown-csv2md
 title: Markdown - Convert CSV to Markdown tables
 authors: [christophe]
-image: /img/markdown_tips_social_media.jpg
+image: /img/v2/csv.jpg
 mainTag: markdown
 tags: [csv, excel, markdown, tips]
 ---
-![Markdown - Convert CSV to Markdown tables](/img/markdown_tips_banner.jpg)
+![Markdown - Convert CSV to Markdown tables](/img/v2/csv.jpg)
 
 See also <Link to="/blog/markdown-xls2md">Markdown - Convert Excel ranges to Markdown tables</Link>.
 

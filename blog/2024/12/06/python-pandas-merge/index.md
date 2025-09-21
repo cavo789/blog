@@ -3,14 +3,14 @@ date: 2024-12-06
 slug: python-pandas-merge
 title: Pandas - Merge two or more files and create a merged one
 authors: [christophe]
-image: /img/pandas_tips_social_media.jpg
+image: /img/v2/pandas.jpg
 mainTag: python
 tags: [csv, excel, pandas, python]
 ---
 <!-- cspell:ignore vlookup,sheet -->
 <!-- markdownlint-disable-file MD010 -->
 
-![Pandas - Merge two or more files and create a merged one](/img/pandas_tips_banner.jpg)
+![Pandas - Merge two or more files and create a merged one](/img/v2/pandas.jpg)
 
 You've two or more files and you wish to merge them. For instance, a list of employees and their salary for 2020 up to 2024. Or a list of cost centers and their budget/expenses. Or a list of students and their evaluation score. Or ...
 

@@ -3,12 +3,12 @@ date: 2025-07-06
 slug: vscode-code-server
 title: Do I need VSCode on my machine to use it?
 authors: [christophe]
-image: /img/vscode_tips_social_media.jpg
+image: /img/v2/vscode_tips.jpg
 mainTag: vscode
 tags: [docker, vscode]
 blueskyRecordKey: 3lujtglddu223
 ---
-![Do I need VSCode on my machine to use it?](/img/vscode_tips_banner.jpg)
+![Do I need VSCode on my machine to use it?](/img/v2/vscode_tips.jpg)
 
 <!-- cspell:ignore codercom,tadaaaa -->
 

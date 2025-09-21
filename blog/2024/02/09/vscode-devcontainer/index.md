@@ -3,13 +3,13 @@ date: 2024-02-09
 slug: vscode-devcontainer
 title: PHP development in a devcontainer with preinstalled code quality tools
 authors: [christophe]
-image: /img/devcontainer_social_media.jpg
+image: /img/v2/devcontainer.jpg
 series: Coding using a devcontainer
 mainTag: php
 tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, sonarlint, vscode]
 blueskyRecordKey: 3lymrewibzk2l
 ---
-![PHP development in a devcontainer with preinstalled code quality tools](/img/devcontainer_banner.jpg)
+![PHP development in a devcontainer with preinstalled code quality tools](/img/v2/devcontainer.jpg)
 
 <UpdateAt
   title="Recent Changes"

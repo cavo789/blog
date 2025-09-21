@@ -3,11 +3,11 @@ date: 2024-01-28
 slug: matomo-install
 title: How to self-host Matomo
 authors: [christophe]
-image: /img/monitoring_social_media.jpg
+image: /img/v2/matomo.jpg
 mainTag: self-hosted
 tags: [docusaurus, matomo]
 ---
-![How to self-host Matomo](/img/monitoring_banner.jpg)
+![How to self-host Matomo](/img/v2/matomo.jpg)
 
 [Matomo](https://matomo.org) is a GDPR-compliant tracking tool for your website. I've finally decided to install it so that I can get the blog's traffic figures; find out which articles are the most widely read, which topics are of most interest, etc., not just out of curiosity but also to get a better idea of the audience.
 

@@ -3,11 +3,11 @@ date: 2024-05-17
 slug: winscp-synchronize-both
 title: WinSCP - Synchronize host and remote
 authors: [christophe]
-image: /img/winscp_tips_social_media.jpg
+image: /img/v2/winscp.jpg
 mainTag: winscp
 tags: [dos, synology, tips, winscp]
 ---
-![WinSCP - Synchronize host and remote](/img/winscp_tips_banner.jpg)
+![WinSCP - Synchronize host and remote](/img/v2/winscp.jpg)
 
 By the use of a script, it's possible to ask [WinSCP](https://winscp.net/) to synchronize your host and remote machine i.e. if a file is newer on the host, copy it to your remote server and the opposite.
 

@@ -3,11 +3,11 @@ date: 2024-03-19
 slug: vbs-auto-update
 title: VBS - Auto update script
 authors: [christophe]
-image: /img/vbs_tips_social_media.jpg
+image: /img/v2/vbs.jpg
 mainTag: github
 tags: [dos, Github, vbs]
 ---
-![VBS - Auto update script](/img/vbs_tips_banner.jpg)
+![VBS - Auto update script](/img/v2/vbs.jpg)
 
 Before switching to <Link to="/blog/tags/wsl">WSL2</Link> and the Linux console, I wrote VBS scripts from time to time. It looks like VBA but for the DOS console.
 

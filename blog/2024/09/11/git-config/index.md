@@ -3,11 +3,11 @@ date: 2024-09-11
 slug: git-config
 title: Git - Some tips for your .gitconfig file
 authors: [christophe]
-image: /img/git_tips_social_media.jpg
+image: /img/v2/git.jpg
 mainTag: git
 tags: [git, tips, wsl]
 ---
-![Git - Some tips for your .gitconfig file](/img/git_tips_banner.jpg)
+![Git - Some tips for your .gitconfig file](/img/v2/git.jpg)
 
 <!-- cspell:ignore autocrlf,committerdate,customising,gitdir,sooooooo -->
 

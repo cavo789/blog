@@ -4,11 +4,11 @@ slug: quarto-revealjs-tips
 title: Some tips and tricks for Quarto when rendering as a reveal.js slideshow
 authors: [christophe]
 series: Discovering Quarto
-image: /img/quarto_tips_social_media.jpg
+image: /img/v2/quarto.jpg
 mainTag: quarto
 tags: [markdown, powerpoint, quarto, revealjs, tips]
 ---
-![Some tips and tricks for Quarto when rendering as a reveal.js slideshow](/img/quarto_tips_banner.jpg)
+![Some tips and tricks for Quarto when rendering as a reveal.js slideshow](/img/v2/quarto.jpg)
 
 The [Quarto reveal.js documentation](https://quarto.org/docs/reference/formats/presentations/revealjs.html) is the best place to find instructions for creating impeccable reveal.js presentations.
 

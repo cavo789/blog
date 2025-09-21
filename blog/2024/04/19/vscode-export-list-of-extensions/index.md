@@ -3,11 +3,11 @@ date: 2024-04-19
 slug: vscode-export-list-of-extensions
 title: Export the list of extensions you've installed in VSCode
 authors: [christophe]
-image: /img/vscode_tips_social_media.jpg
+image: /img/v2/vscode_tips.jpg
 mainTag: vscode
 tags: [tips, vscode]
 ---
-![Export the list of extensions you've installed in VSCode](/img/vscode_tips_banner.jpg)
+![Export the list of extensions you've installed in VSCode](/img/v2/vscode_tips.jpg)
 
 A small tip: by running `code --list-extensions` in a console (Linux or DOS), you'll get the list of all extensions you've installed in VSCode.
 

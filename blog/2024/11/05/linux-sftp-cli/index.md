@@ -3,13 +3,13 @@ date: 2024-11-05
 slug: linux-sftp-cli
 title: Using sftp on the command line, with or without a proxy
 authors: [christophe]
-image: /img/linux_tips_social_media.jpg
+image: /img/v2/sftp.jpg
 mainTag: sftp
 tags: [linux, scp, sftp, ssh, sshpass, tips]
 ---
 <!-- cspell:ignore sshpass,ssword -->
 
-![Using sftp on the command line, with or without a proxy](/img/linux_tips_banner.jpg)
+![Using sftp on the command line, with or without a proxy](/img/v2/sftp.jpg)
 
 After my article <Link to="/blog/linux-ssh-scp">SSH - Launch a terminal on your session without having to authenticate yourself</Link>, it was obvious that, next to the `ssh` and `scp` commands, I forgot the `sftp` one.
 

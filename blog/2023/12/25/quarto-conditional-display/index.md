@@ -4,11 +4,11 @@ slug: quarto-conditional-display
 title: Quarto conditional display
 authors: [christophe]
 series: Discovering Quarto
-image: /img/quarto_tips_social_media.jpg
+image: /img/v2/quarto.jpg
 mainTag: quarto
 tags: [markdown, quarto, reveal, tips]
 ---
-![Quarto conditional display](/img/quarto_tips_banner.jpg)
+![Quarto conditional display](/img/v2/quarto.jpg)
 
 Like me, you've definitely abandoned Microsoft Word, PowerPoint and friends and do everything in Markdown. Like me, you use the same markdown file to generate your documentation in `html`, `pdf`, `docx`, `pptx`, `revealjs`, ... as required situation by situation.
 

@@ -1,0 +1,16 @@
+.oldPostNotice {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ffeeba;
+  margin-bottom: 1.5rem;
+}
+
+.oldPostNotice p {
+  margin: 0;
+}
+
+.oldPostNotice strong {
+  margin-right: 0.25rem;
+}

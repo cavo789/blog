@@ -3,11 +3,11 @@ date: 2024-10-03
 slug: docker-joomla-right-to-the-point
 title: Start Joomla with Docker in just a few clicks
 authors: [christophe]
-image: /img/docker_joomla_social_media.jpg
+image: /img/v2/joomla.jpg
 mainTag: joomla
 tags: [docker, joomla, makefile, mysql]
 ---
-![Start Joomla with Docker in just a few clicks](/img/docker_joomla_header.jpg)
+![Start Joomla with Docker in just a few clicks](/img/v2/joomla.jpg)
 
 Yesterday lunchtime, while chatting with a friend, he highlighted a simple fact: explain the easiest way in the world to start a Joomla project with Docker.
 

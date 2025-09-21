@@ -3,13 +3,13 @@ date: 2025-03-30
 slug: cypress
 title: Introduction to Cypress
 authors: [christophe]
-image: /img/functional_testing_social_media.jpg
+image: /img/v2/functional_tests.jpg
 mainTag: tests
 series: Functional testing
 tags: [chrome, cypress, docker, javascript, node, tests]
 blueskyRecordKey: 3lvnkku4dik2v
 ---
-![Introduction to Cypress](/img/functional_testing_banner.jpg)
+![Introduction to Cypress](/img/v2/functional_tests.jpg)
 
 You've created a website for yourself or for a client, and how can you be sure that it will works?  OK, at the time you were working on it, of course it was working; the search form, the contact form, the various links were all functional, but how can you be sure of this over time? Wouldn't it be useful to have a procedure that would allow you to run several so-called ‘functional’ tests to check that everything is still working?  This could be part of the maintenance contract you offer your customer.
 

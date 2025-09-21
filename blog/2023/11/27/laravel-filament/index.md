@@ -3,12 +3,12 @@ date: 2023-11-27
 slug: laravel-filament
 title: Laravel Filament
 authors: [christophe]
-image: /img/laravel_tips_social_media.jpg
-mainTag: oracle
+image: /img/v2/laravel.jpg
+mainTag: laravel
 tags: [laravel, php]
 ---
 <!-- cspell:ignore ailwind,lpine,aravel,ivewire -->
-![Laravel Filament](/img/laravel_tips_banner.jpg)
+![Laravel Filament](/img/v2/laravel.jpg)
 
 Filament is a *collection of beautiful full-stack components. The perfect starting point for your next app.* i.e. a set of **free-to-use** components and promises that we'll be able to quickly build nice administration interfaces.
 
