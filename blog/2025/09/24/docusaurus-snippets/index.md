@@ -6,13 +6,13 @@ image: /img/v2/docusaurus_react.jpg
 series: Creating Docusaurus components
 description: Learn how to build a custom React component to embed dynamic code snippets in your Docusaurus blog for a more interactive reader experience.
 mainTag: component
-tags: [component, docusaurus, markdown, react, swizzle]
-blueskyRecordKey:
+tags: [component, docusaurus, iconify, markdown, plugin, snippet]
+blueskyRecordKey: 3lzkrxkfpo22m
 date: 2025-09-24
 ---
 
 <!-- markdownlint-disable MD046 -->
-<!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,docux -->
+<!-- cspell:ignore iconify,docux,pyproject -->
 
 ![A component for showing code snippets in a Docusaurus blog](/img/v2/docusaurus_react.jpg)
 
@@ -91,6 +91,19 @@ export default {
 ```
 
 </Snippet>
+
+### LogoIcon of Docux
+
+You'll also need the [LogoIcon](https://docuxlab.com/blog/logoicon-component-docusaurus/) created by [Docux](https://github.com/Juniors017).
+
+This component will make easy to retrieve a SVG icon for a language (let's say Python) and display it. Under the scenes, LogoIcon is using [Iconify](https://icon-sets.iconify.design/).
+
+In very short:
+
+1. Please run `yarn install @iconify/react` to install the iconify library
+2. Please create this file `src/components/Blog/LogoIcon/index.js`:
+
+<Snippet filename="src/components/Blog/LogoIcon/index.js" source="src/components/Blog/LogoIcon/index.js" />
 
 ## Using the Snippets component
 
