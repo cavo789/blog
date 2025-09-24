@@ -24,8 +24,6 @@
  */
 
 import PropTypes from "prop-types";
-import Link from "@docusaurus/Link";
-import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import PostCard from "@site/src/components/Blog/PostCard";

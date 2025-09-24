@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react";
 import clsx from "clsx";
-import useBaseUrl from "@docusaurus/useBaseUrl"; // Import the useBaseUrl function from Docusaurus
+import useBaseUrl from "@docusaurus/useBaseUrl";
 const CardImage = ({ className, style, cardImageUrl, alt, title }) => {
   const generatedCardImageUrl = useBaseUrl(cardImageUrl);
   return (

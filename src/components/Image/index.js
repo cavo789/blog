@@ -21,7 +21,6 @@
 import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-
 export default function Image({ src, alt, title }) {
   const imgSrc =
     typeof src === "string" && src.startsWith("/")

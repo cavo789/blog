@@ -13,6 +13,8 @@
  * @module remarkReplaceImgToImage
  */
 
+// cspell:ignore mdxjs
+
 const { visit } = require("unist-util-visit");
 const acorn = require("acorn");
 
@@ -117,7 +119,7 @@ function remarkReplaceImgToImage({ skipFirst = true } = {}) {
     if (needsUseBaseUrlImport) {
       tree.children.unshift({
         type: "mdxjsEsm",
-        value: `import useBaseUrl from '@docusaurus/useBaseUrl';`,
+        value: `import useBaseUrl from "@docusaurus/useBaseUrl";`,
         data: { estree: null },
       });
     }

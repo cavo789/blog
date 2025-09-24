@@ -3,12 +3,12 @@ date: 2024-09-05
 slug: docker-gui-in-browser
 title: Docker - Running some GUI interfaces in the browser
 authors: [christophe]
-image: /img/v2/docker_tips.jpg
+image: /img/v2/docker_gui.jpg
 mainTag: docker
 tags: [docker, firefox, gimp, tip]
 ---
 <!-- cspell:ignore seccomp,pgid,puid -->
-![Docker - Running some GUI interfaces in the browser](/img/v2/docker_tips.jpg)
+![Docker - Running some GUI interfaces in the browser](/img/v2/docker_gui.jpg)
 
 In a future article, I'll be covering a subject I've just discovered: the possibility of running graphical interfaces in Docker and, therefore, having a Linux application running in Windows.
 

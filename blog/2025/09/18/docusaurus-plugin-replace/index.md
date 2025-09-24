@@ -4,6 +4,7 @@ title: Creating a search&replace plugin for Docusaurus
 authors: [christophe]
 image: /img/v2/docusaurus_component.jpg
 series: Creating Docusaurus components
+description: Automatically replace “markdown” with “Markdown” across all your content to keep your posts consistent.
 mainTag: component
 tags: [component, docusaurus, react]
 blueskyRecordKey: 3lz3pbmvd722f
