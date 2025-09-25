@@ -1,0 +1,68 @@
+<!-- cspell:ignore beautifulsoup4 -->
+
+# 🖼️ Lazy Load Image Validator for React Sites
+
+This script validates whether images on a React-based website are properly using the `loading="lazy"` attribute to optimize performance. It simulates user scrolling to trigger lazy loading and analyzes each `<img>` tag to determine if lazy loading is applied—especially for large images that impact page load speed.
+
+## 🚀 Why This Script Exists
+
+Lazy loading is a crucial performance optimization for modern web applications, especially those with image-heavy content. React sites often rely on dynamic rendering and lazy loading to reduce initial load time. This script helps developers:
+
+* Detect images missing the `loading="lazy"` attribute.
+* Identify large images that should be lazy-loaded.
+* Ensure lazy loading is triggered correctly via simulated scrolling.
+* Validate lazy loading across multiple routes/pages.
+
+It’s especially useful in CI pipelines, performance audits, or during pre-deployment checks.
+
+## 🛠️ Features
+
+* Uses [Playwright](https://playwright.dev/python/) to render pages in a headless Chromium browser.
+* Scrolls the page multiple times to trigger lazy-loaded images.
+* Parses the DOM with BeautifulSoup to inspect `<img>` tags.
+* Measures image dimensions using Pillow to flag large images.
+* Ignores SSL errors for local development or self-signed certificates.
+
+## 📦 Requirements
+
+* Python packages:
+  * `playwright`
+  * `beautifulsoup4`
+  * `requests`
+  * `pillow`
+
+These are automatically installed in the Docker example below.
+
+## 🐳 Docker Usage
+
+Run the script inside a Playwright-enabled Docker container:
+
+```bash
+docker run -it --rm \
+    -v ${PWD}:/app \
+    -w /app \
+    --entrypoint /bin/sh \
+    mcr.microsoft.com/playwright/python:v1.55.0-jammy \
+    -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python lazy-load.py"
+```
+
+### Notes
+
+* The script checks multiple URLs defined in the urls list—customize this list as needed.
+* It scrolls the page 10 times by 1000 pixels each to trigger lazy loading.
+
+## 🧪 Output
+
+For each page, the script prints:
+
+* Total number of images found.
+* ❌ Errors for images missing lazy loading (especially large ones).
+* ✅ Successes (commented out by default, but can be enabled).
+
+## 📍 Customization
+
+You can modify:
+
+* `urls` list to include more routes.
+* `NUM_SCROLLS`, `SCROLL_HEIGHT` and `WAIT_PER_SCROLL` to adjust scroll behavior.
+* Image size threshold (100_000 pixels) to tune what counts as “large”.

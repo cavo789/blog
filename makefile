@@ -1,3 +1,5 @@
+# cspell:ignore beautifulsoup4,repost,maintag
+
 SHELL:=bash
 
 # Load .env file if there is one (if none, no error will be fired)
@@ -169,18 +171,27 @@ add-language: ## Add the "inLanguage: en-GB" key in the YAML front matter if mis
 	@clear
 	./.scripts/add-language-in-blog-post.sh
 
+.PHONY: check-lazy-load
+check-lazy-load: ## Browse some pages and make sure images have the loading="lazy" attribute
+	@clear
+	docker run -it --rm \
+        -v ${PWD}/.scripts:/app \
+        -w /app \
+        --entrypoint /bin/sh \
+        mcr.microsoft.com/playwright/python:v1.55.0-jammy \
+        -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python lazy-load.py"
+
 .PHONY: invalid-language
 invalid-language: ## Show invalid languages in docblock like ```env (not supported by Prism)
 	@clear
 	./.scripts/find-invalid-language.sh
-
 .PHONY: snippets
 snippets: ## Replace <detail><summary>(filename)</summary>(content)</detail> with <Snippets filename="(filename)">(content)</Snippets>
 	@clear
 	./.scripts/replace-details-with-snippets.sh
 
 .PHONY: not-yet-shared
-not-yet-shared: ## Get the list of blog posts not yet shared on BlueSkey
+not-yet-shared: ## Get the list of blog posts not yet shared on BlueSky
 	@clear
 	./.scripts/find-posts-without-bluesky-repost.sh
 

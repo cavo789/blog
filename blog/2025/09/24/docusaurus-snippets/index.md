@@ -13,7 +13,6 @@ date: 2025-09-24
 
 <!-- markdownlint-disable MD046 -->
 <!-- cspell:ignore iconify,docux,pyproject -->
-
 ![A component for showing code snippets in a Docusaurus blog](/img/v2/docusaurus_react.jpg)
 
 If you're a regular reader of this blog, you know I'm sharing a lot of code snippets.

@@ -94,6 +94,7 @@ code:hover {
 .variant_css         { border-color: #1e4fb4; }
 .variant_diff        { border-color: #e36209; }
 .variant_docker      { border-color: #0aa2ce; }
+.variant_docusaurus  { border-color: #3ecc5f; }
 .variant_gherkin     { border-color: #5a9a00; }
 .variant_html        { border-color: #e44d26; }
 .variant_ignore      { border-color: #6a737d; }

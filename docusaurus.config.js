@@ -14,15 +14,16 @@ import { themes as prismThemes } from "prism-react-renderer";
 import remarkReplaceImgToImage from "./plugins/remark-image-transformer";
 import remarkReplaceWords from "./plugins/remark-replace-terms";
 import remarkSnippetLoader from "./plugins/remark-snippet-loader/index.cjs";
-import pluginSeriesRoute from "./plugins/docusaurus-plugin-series-route/index.cjs"
-import pluginTagRoute from "./plugins/docusaurus-plugin-tag-route/index.cjs"
+import pluginSeriesRoute from "./plugins/docusaurus-plugin-series-route/index.cjs";
+import pluginTagRoute from "./plugins/docusaurus-plugin-tag-route/index.cjs";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Christophe Avonture",
-  tagline: "Personal blog about Docker, PHP, Joomla and much more",
+  tagline:
+    "Personal blog about Docker, WSL, Python, Quarto, PHP, Joomla, Docusaurus and even more",
   favicon: "img/favicon.png",
 
   // Set the production url of your site here
@@ -57,9 +58,20 @@ const config = {
 
   // https://github.com/facebook/docusaurus/issues/10556
   future: {
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true,
+      useCssCascadeLayers: true,
+    },
     experimental_faster: {
-      rspackBundler: true, // required flag
-      rspackPersistentCache: true, // new flag
+      swcJsLoader: true,
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
+      mdxCrossCompilerCache: true,
+    },
+    experimental_storage: {
+      type: "localStorage",
+      namespace: true,
     },
   },
 
@@ -103,7 +115,7 @@ const config = {
           beforeDefaultRemarkPlugins: [
             remarkSnippetLoader,
             remarkReplaceImgToImage,
-            remarkReplaceWords
+            remarkReplaceWords,
           ],
         },
         sitemap: {
@@ -146,6 +158,42 @@ const config = {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap",
       },
+    },
+    {
+      tagName: "script",
+      attributes: {
+        type: "application/ld+json",
+      },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Christophe Avonture",
+        url: "https://www.avonture.be/",
+        description:
+          "Personal blog about Docker, WSL, Python, Quarto, PHP, Joomla, Docusaurus and even more",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: "https://www.avonture.be/search?q={search_term_string}",
+          "query-input": "required name=search_term_string",
+        },
+      }),
+    },
+    {
+      tagName: "script",
+      attributes: {
+        type: "application/ld+json",
+      },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Christophe Avonture",
+        url: "https://www.avonture.be/",
+        logo: "https://www.avonture.be/img/avatar.png",
+        sameAs: [
+          "https://bsky.app/profile/avonture.be",
+          "https://github.com/cavo789",
+        ],
+      }),
     },
   ],
   themeConfig:

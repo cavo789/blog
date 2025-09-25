@@ -10,6 +10,7 @@ const CardImage = ({ className, style, cardImageUrl, alt, title }) => {
       src={generatedCardImageUrl}
       alt={alt}
       title={title}
+      loading="lazy"
     />
   );
 };

@@ -44,7 +44,8 @@ export default function BlogPostContent({ children }) {
       {firstImageSrc && (
         <img
           src={firstImageSrc}
-          alt="Blog header"
+          alt={metadata.title}
+          loading="lazy"
           style={{ width: "100%", marginBottom: "1rem" }}
         />
       )}

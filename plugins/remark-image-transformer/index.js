@@ -1,14 +1,12 @@
 /**
  * @fileoverview
  * A Remark plugin for transforming Markdown image nodes (`![alt](url)`) into MDX-compatible `<Image />` components.
- *
  * This plugin is tailored for Docusaurus environments, where image paths often need to be resolved using `require()` or `useBaseUrl()`.
  * It supports:
  * - Relative paths (e.g. `./image.png`) → converted to `require()` expressions
- * - Absolute paths (e.g. `/img/banner.png`) → wrapped in `useBaseUrl()`
+ * - Absolute paths (e.g. `/img/banner.png`) → passed directly, as Docusaurus resolves them
  * - External URLs → passed directly as string literals
- *
- * Additionally, it preserves `alt` and `title` attributes and injects the necessary import for `useBaseUrl` when used.
+ * Additionally, it preserves `alt` and `title` attributes.
  *
  * @module remarkReplaceImgToImage
  */
@@ -71,7 +69,6 @@ function makeJsxAttributeExpression(name, expr) {
 function remarkReplaceImgToImage({ skipFirst = true } = {}) {
   return (tree) => {
     let imageCount = 0;
-    let needsUseBaseUrlImport = false;
 
     visit(tree, "image", (node, index, parent) => {
       imageCount++;
@@ -89,14 +86,16 @@ function remarkReplaceImgToImage({ skipFirst = true } = {}) {
         });
 
       if (/^\.+\//.test(url)) {
-        // Relative to MD file → use require()
+        // Relative to MD file -> use require()
         const expr = `require("${url}").default`;
         attributes.unshift(makeJsxAttributeExpression("src", expr));
       } else if (/^\//.test(url)) {
-        // Absolute → useBaseUrl
-        const expr = `useBaseUrl("${url}")`;
-        attributes.unshift(makeJsxAttributeExpression("src", expr));
-        needsUseBaseUrlImport = true;
+        // Absolute -> just pass the path, Docusaurus will handle it.
+        attributes.unshift({
+          type: "mdxJsxAttribute",
+          name: "src",
+          value: url,
+        });
       } else {
         // Fallback: external URL
         attributes.unshift({
@@ -116,13 +115,7 @@ function remarkReplaceImgToImage({ skipFirst = true } = {}) {
       parent.children.splice(index, 1, imageNode);
     });
 
-    if (needsUseBaseUrlImport) {
-      tree.children.unshift({
-        type: "mdxjsEsm",
-        value: `import useBaseUrl from "@docusaurus/useBaseUrl";`,
-        data: { estree: null },
-      });
-    }
+    // The useBaseUrl import is no longer needed.
   };
 }
 

@@ -26,3 +26,15 @@
   # Rewrites all requests to index.html, allowing Docusaurus to handle routing
   RewriteRule . /index.html [L]
 </IfModule>
+
+<FilesMatch "\.(js|css|png|jpg|webp|svg|woff|woff2|ttf|json)$">
+  Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+
+# HTML files shouldn't be in the cache to make sure the reader will get updates
+<FilesMatch "\.(html)$">
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+</FilesMatch>
+
+# Add gzip compression
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript
