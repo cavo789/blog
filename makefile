@@ -171,15 +171,15 @@ add-language: ## Add the "inLanguage: en-GB" key in the YAML front matter if mis
 	@clear
 	./.scripts/add-language-in-blog-post.sh
 
-.PHONY: check-lazy-load
-check-lazy-load: ## Browse some pages and make sure images have the loading="lazy" attribute
+.PHONY: check-images
+check-images: ## Browse some pages and run some checks on images
 	@clear
 	docker run -it --rm \
         -v ${PWD}/.scripts:/app \
         -w /app \
         --entrypoint /bin/sh \
         mcr.microsoft.com/playwright/python:v1.55.0-jammy \
-        -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python lazy-load.py"
+        -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python check-images.py"
 
 .PHONY: invalid-language
 invalid-language: ## Show invalid languages in docblock like ```env (not supported by Prism)

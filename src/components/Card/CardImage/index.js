@@ -1,9 +1,10 @@
 /**
  * CardImage Component
  *
- * Renders an image for a card layout with optional lazy loading.
- * Automatically resolves the image URL using Docusaurus's `useBaseUrl` hook.
- * Applies default styling via the "card__image" class and supports additional custom styles.
+ * Renders an image for a card layout with optional lazy loading and
+ * customizable size. Automatically resolves the image URL using Docusaurus's
+ * `useBaseUrl` hook. Applies default styling via the "card__image" class
+ * and supports additional custom styles.
  *
  * Props:
  * - className (string): Optional additional CSS classes to apply.
@@ -11,12 +12,16 @@
  * - cardImageUrl (string, required): Relative or absolute path to the image.
  * - alt (string, required): Alternative text for accessibility.
  * - title (string): Optional tooltip text shown on hover.
- * - lazy (boolean): If true, enables `loading="lazy"` to defer image loading until visible.
- *                   If false, loads the image immediately (useful for above-the-fold content).
+ * - lazy (boolean): If true, enables `loading="lazy"` to defer image loading
+ *                   until visible. If false, loads the image immediately
+ *                   (useful for above-the-fold content).
+ * - width (number): Optional width of the image in pixels.
+ * - height (number): Optional height of the image in pixels.
  *
- * Note:
- * - lazy=false : In certain situations — for example, when the card is displayed at the top of the page —
- *                it's better to avoid lazy loading so the image appears immediately
+ * Notes:
+ * - Using `width` and `height` helps reduce layout shift by reserving space
+ *   for the image before it loads.
+ * - You can also override sizing via CSS or the `style` prop if more flexibility is needed.
  */
 
 import PropTypes from "prop-types";
@@ -30,6 +35,8 @@ const CardImage = ({
   alt,
   title,
   lazy = true,
+  width,
+  height,
 }) => {
   const generatedCardImageUrl = useBaseUrl(cardImageUrl);
 
@@ -41,6 +48,8 @@ const CardImage = ({
       alt={alt}
       title={title}
       loading={lazy ? "lazy" : undefined}
+      width={width}
+      height={height}
     />
   );
 };
@@ -52,6 +61,8 @@ CardImage.propTypes = {
   alt: PropTypes.string.isRequired,
   title: PropTypes.string,
   lazy: PropTypes.bool,
+  width: PropTypes.number,
+  height: PropTypes.number,
 };
 
 export default CardImage;

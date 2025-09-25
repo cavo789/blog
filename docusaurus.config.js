@@ -188,7 +188,7 @@ const config = {
         "@type": "Organization",
         name: "Christophe Avonture",
         url: "https://www.avonture.be/",
-        logo: "https://www.avonture.be/img/avatar.png",
+        logo: "https://www.avonture.be/img/avatar.webp",
         sameAs: [
           "https://bsky.app/profile/avonture.be",
           "https://github.com/cavo789",
@@ -207,7 +207,7 @@ const config = {
         title: "Christophe Avonture (cavo789)",
         logo: {
           alt: "Christophe Avonture",
-          src: "img/avatar.png",
+          src: "img/avatar.webp",
           width: 40,
           height: 40,
         },

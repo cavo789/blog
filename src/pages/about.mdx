@@ -7,6 +7,8 @@ authors: [christophe]
 
 import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
 
+<!-- cspell:ignore Racour,Marknotes,nowrap,docux -->
+
 My name is **Christophe Avonture**, a passionate developer based in [Racour](https://fr.wikipedia.org/wiki/Racour), Belgium.
 
 With an insatiable curiosity, I devote a large part of my life to programming, exploring open source, and sharing knowledge, whether through projects, articles, or exchanges within tech communities.
@@ -22,7 +24,7 @@ I place vital importance on code quality. For me, it goes without saying that co
   <TabItem value="achievements" label="Achievements" default>
     <Columns>
       <Column className='text--left'>
-        <img src="/img/about/achievements.png" loading="lazy" alt="Achievements" />
+        <img src="/img/about/achievements.webp" height="612" width="612" loading="lazy" alt="Achievements" />
       </Column>
       <Column className='text--justify'>
         In terms of achievements, I have published a lot of open source projects, mainly in PHP or related to automation (VBS and VBA scripts for Excel, [MarkNotes](https://github.com/cavo789/marknotes), a Markdown note management, guide for Visual Studio Code, etc.). My GitHub repository ([cavo789](https://github.com/cavo789)) includes [Excel macro export scripts](https://github.com/cavo789/vba_excel_export_code), [aeSecure QuickScan](https://github.com/cavo789/aesecure_quickscan) a PHP file scanning tools to detect viruses, solutions to improve productivity in VSCode, and ways to simplify Markdown note-taking.
@@ -32,60 +34,99 @@ I place vital importance on code quality. For me, it goes without saying that co
         Finally, community is essential to me: whether on GitHub, forums ([Joomla](https://forum.joomla.fr/member/38299-cavo789), [Docker](https://forums.docker.com/u/cavo789/summary), ...), or at events, I enjoy learning from others, sharing my experience, and contributing to an open, collaborative, and stimulating tech environment.
       </Column>
     </Columns>
+
   </TabItem>
 
-  <TabItem value="major" label="Major achievements" default>
-    <Columns>
-      <Column className='text--justify'>
-        * `AllEvents`: Successor of SportingEvents, I created this events extension for Joomla!, enabling advanced management of online events and calendars. I transferred ownership of the extension to a friend who ensured its evolution to Joomla 3 and 4.
-        * `aeSecure`: I developed this web-application firewall (WAF), widely used to secure Joomla! sites. aeSecure offers different versions and includes the “QuickScan” antivirus scan to detect malicious files. Many professionals have adopted it as an essential protection solution. Now the maintenance of QuickScan is ensured by the French Joomla Users community.
-        * `Marknotes`: Passionate about productivity tools, I developed Marknotes, an open-source application for efficiently organizing, searching, and managing Markdown notes, designed for demanding users and knowledge management enthusiasts.
-      </Column>
-      <Column className='text--left'>
-        <img src="/img/about/major_realisations.png" loading="lazy" alt="Major achievements" />
-      </Column>
-    </Columns>
-  </TabItem>
+<TabItem value="major" label="Major achievements">
+  <Columns>
+    <Column className="text--justify">
+      * `AllEvents`: Successor of SportingEvents, I created this events
+      extension for Joomla!, enabling advanced management of online events and
+      calendars. I transferred ownership of the extension to a friend who
+      ensured its evolution to Joomla 3 and 4.
 
-  <TabItem value="highlights" label="Highlights">
-   <Columns>
-      <Column className='text--left'>
-        <img src="/img/about/highlights.png" loading="lazy" alt="Highlights" />
-      </Column>
-      <Column className='text--justify'>
-        * Developer and open source enthusiast based in Belgium.
-        * Active in the Joomla community (organization, development, writing, events).
-        * Fan of Docker, Dagger, VSCode, Markdown and much more.
-        * Numerous open source projects, mainly in PHP (note management, scripts, security tools, productivity).
-        * Continual sharing via his blog avonture.be and his GitHub account.
-        * Spirit of transmission, continuous learning, and mutual aid in the tech ecosystem.
-      </Column>
-    </Columns>
-  </TabItem>
+      * `aeSecure`: I developed this
+      web-application firewall (WAF), widely used to secure Joomla! sites.
+      aeSecure offers different versions and includes the “QuickScan” antivirus
+      scan to detect malicious files. Many professionals have adopted it as an
+      essential protection solution. Now the maintenance of QuickScan is ensured
+      by the French Joomla Users community.
+
+      * `Marknotes`: Passionate about
+      productivity tools, I developed Marknotes, an open-source application for
+      efficiently organizing, searching, and managing Markdown notes, designed
+      for demanding users and knowledge management enthusiasts.
+    </Column>
+    <Column className="text--left">
+      <img
+        src="/img/about/major_achievements.webp"
+        height="612"
+        width="612"
+        loading="lazy"
+        alt="Major achievements"
+      />
+    </Column>
+  </Columns>
+</TabItem>
+
+<TabItem value="highlights" label="Highlights">
+  <Columns>
+    <Column className="text--left">
+      <img
+        src="/img/about/highlights.webp"
+        height="612"
+        width="612"
+        loading="lazy"
+        alt="Highlights"
+      />
+    </Column>
+    <Column className="text--justify">
+      * Developer and open source enthusiast based in Belgium.
+
+      * Active in the
+      Joomla community (organization, development, writing, events).
+
+      * Fan of
+      Docker, Dagger, VSCode, Markdown and much more.
+
+      * Numerous open source
+      projects, mainly in PHP (note management, scripts, security tools,
+      productivity).
+
+      * Continual sharing via his blog avonture.be and his GitHub
+      account.
+
+      * Spirit of transmission, continuous learning, and mutual aid in
+      the tech ecosystem.
+    </Column>
+  </Columns>
+</TabItem>
 
   <TabItem value="networks" label="Social networks">
     <Columns>
       <Column className='text--justify'>
       <div style={{ paddingBottom: '1em' }}>My public social networks are:</div>
       <div style={{
+        alignContent: 'flex-start',
+        flexDirection: 'column',
         display: 'flex',
-        flexWrap: 'wrap',
+        flexWrap: 'nowrap',
         justifyContent: 'center',
         gap: '2rem'
       }}>
         <a href="https://bsky.app/profile/avonture.be" title="Bluesky">
-          <LogoIcon name="bluesky" size='128' />
+          <LogoIcon name="logos:bluesky" size='128' />
         </a>
         <a href="https://github.com/cavo789/" title="GitHub">
-          <LogoIcon name="github" size='128' />
+          <LogoIcon name="logos:github" size='128' />
         </a>
         <a href="https://joomlacommunity.cloud.mattermost.com/main/messages/@cavo789" title="Mattermost">
-          <LogoIcon name="mattermost" size='128' />
+          <LogoIcon name="logos:mattermost" size='128' />
         </a>
       </div>
     </Column>
       <Column className='text--left'>
-        <img src="/img/about/social_networks.png" loading="lazy" alt="Social networks" />
+        <img src="/img/about/social_networks.webp" height="612" width="612" loading="lazy" alt="Social networks" />
       </Column>
     </Columns>
   </TabItem>
@@ -93,6 +134,6 @@ I place vital importance on code quality. For me, it goes without saying that co
 
 This site is powered by [Docusaurus](https://docusaurus.io/).
 
-[Cards](https://docusaurus.community/knowledge/component-library/new/Card/) and [Columns](https://docusaurus.community/knowledge/component-library/new/Columns/) components have been made by [Docux](https://github.com/Juniors017).
+A few components on this site have been developed by [Docux](https://github.com/Juniors017), I invite you to visit his website: [@DocuxLab Blog](https://docuxlab.com/).
 
-<ScrollToTopButton/>
+<ScrollToTopButton />

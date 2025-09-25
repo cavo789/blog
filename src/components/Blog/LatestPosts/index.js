@@ -113,7 +113,6 @@ export default function LatestPosts({
               )}
               {post.tags?.length > 0 && (
                 <p className={styles.bulletTags}>
-                  <strong>Tags:</strong>{" "}
                   {post.tags.map((tag, index) => (
                     <span key={tag}>
                       {tag}
