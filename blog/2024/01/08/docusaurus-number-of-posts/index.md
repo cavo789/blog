@@ -3,13 +3,13 @@ date: 2024-01-08
 slug: docusaurus-number-of-posts
 title: Getting the number of published posts
 authors: [christophe]
-image: /img/v2/docusaurus_tips.jpg
+image: /img/v2/docusaurus_tips.webp
 series: Discovering Docusaurus
 mainTag: docusaurus
 tags: [markdown, docusaurus, tips]
 ---
 <!-- cspell:ignore autoriser,collage -->
-![Getting the number of published posts](/img/v2/docusaurus_tips.jpg)
+![Getting the number of published posts](/img/v2/docusaurus_tips.webp)
 
 Docusaurus didn't provide an easy way to retrieve the number of blog posts but there is well a trick.
 

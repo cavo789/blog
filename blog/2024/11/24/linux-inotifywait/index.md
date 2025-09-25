@@ -3,14 +3,14 @@ date: 2024-11-24
 slug: linux-inotifywait
 title: Keep running and count the number of files in a folder using inotifywait
 authors: [christophe]
-image: /img/v2/linux_tips.jpg
+image: /img/v2/linux_tips.webp
 mainTag: bash
 tags: [linux, python, tips]
 
 ---
 <!-- cspell:ignore joinpath,pathlib -->
 
-![Keep running and count the number of files in a folder using inotifywait](/img/v2/linux_tips.jpg)
+![Keep running and count the number of files in a folder using inotifywait](/img/v2/linux_tips.webp)
 
 Over the last few weeks, I've been working on a Python script that generates PDFs. My script had to generate 70,000 of them and that obviously takes a while.
 

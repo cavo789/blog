@@ -3,12 +3,12 @@ date: 2025-06-06
 slug: gitlab-using-private-images
 title: GitLab - Using Docker private images
 authors: [christophe]
-image: /img/v2/gitlab.jpg
+image: /img/v2/gitlab.webp
 mainTag: gitlab
 tags: [CI, gitlab, ssh]
 blueskyRecordKey: 3lun25dkf322r
 ---
-![GitLab - Using Docker private images](/img/v2/gitlab.jpg)
+![GitLab - Using Docker private images](/img/v2/gitlab.webp)
 
 In one of my GitLab CI, I came across the need to use a Docker image stored on `hub.docker.com` in a private repository.
 

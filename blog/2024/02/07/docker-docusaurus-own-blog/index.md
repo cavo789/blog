@@ -3,12 +3,12 @@ date: 2024-02-07
 slug: docusaurus-docker-own-blog
 title: Running your own blog with Docusaurus and Docker
 authors: [christophe]
-image: /img/v2/docusaurus_docker.jpg
+image: /img/v2/docusaurus_docker.webp
 series: Discovering Docusaurus
 mainTag: docusaurus
 tags: [docker, docusaurus, node, npm, tips, yarn]
 ---
-![Running your own blog with Docusaurus and Docker](/img/v2/docusaurus_docker.jpg)
+![Running your own blog with Docusaurus and Docker](/img/v2/docusaurus_docker.webp)
 
 :::caution This is the second part of the <Link to="/blog/docusaurus-docker/">Running Docusaurus with Docker</Link>
 This article continues where <Link to="/blog/docusaurus-docker/">Running Docusaurus with Docker</Link> left off. Make sure to read it first and to create required files first.

@@ -3,11 +3,11 @@ date: 2024-07-29
 slug: linux-generate-documentation-from-bash-scripts
 title: Linux - Generate documentation from Bash scripts
 authors: [christophe]
-image: /img/v2/bash.jpg
+image: /img/v2/bash.webp
 mainTag: bash
 tags: [bash, introspection, linux, tips]
 ---
-![Linux - Generate documentation from Bash scripts](/img/v2/bash.jpg)
+![Linux - Generate documentation from Bash scripts](/img/v2/bash.webp)
 
 <!-- cspell:ignore HEllow -->
 

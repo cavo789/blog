@@ -3,11 +3,11 @@ date: 2024-08-22
 slug: winscp-download-recursively-files
 title: WinSCP - Download files with specific extension recursively
 authors: [christophe]
-image: /img/v2/winscp.jpg
+image: /img/v2/winscp.webp
 mainTag: winscp
 tags: [tips, winscp]
 ---
-![WinSCP - Download files with specific extension recursively](/img/v2/winscp.jpg)
+![WinSCP - Download files with specific extension recursively](/img/v2/winscp.webp)
 
 The [WinSCP](https://winscp.net/) FTP client support scripting as we can read on [https://winscp.net/eng/docs/guide_automation](https://winscp.net/eng/docs/guide_automation).
 

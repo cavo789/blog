@@ -2,13 +2,13 @@
 slug: vba-excel-list-references
 title: MS Excel - Get the list of references used in your modules
 authors: [christophe]
-image: /img/v2/excel.jpg
+image: /img/v2/excel.webp
 mainTag: excel
 tags: [excel, vba]
 draft: true
 date: 2025-09-30
 ---
-![MS Excel - Get the list of references used in your modules](/img/v2/excel.jpg)
+![MS Excel - Get the list of references used in your modules](/img/v2/excel.webp)
 
 So you're a VBA developer and you've created a lot of Excel `.xlsm` workbooks i.e. files having VBA modules in it.
 

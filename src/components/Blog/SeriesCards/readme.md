@@ -44,7 +44,7 @@ Each series offers you a progressive learning path to master a specific area of 
 To customize the permalink structure or fallback image, modify the `generateSeriesList` call:
 
 ```js
-const seriesList = generateSeriesList(posts, '/series/articles', '/img/fallback.jpg');
+const seriesList = generateSeriesList(posts, '/series/articles', '/img/default.webp');
 ```
 
 ## 🧠 Notes

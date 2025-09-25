@@ -3,12 +3,12 @@ date: 2025-04-24
 slug: windows-terminal-background
 title: Use a background image in your Windows Terminal console
 authors: [christophe]
-image: /img/v2/windows_terminal_customization.jpg
+image: /img/v2/windows_terminal_customization.webp
 mainTag: customization
 tags: [console, customization, dos, windows terminal, wsl]
 blueskyRecordKey: 3lvnjj5g4ic2v
 ---
-![Use a background image in your Windows Terminal console](/img/v2/windows_terminal_customization.jpg)
+![Use a background image in your Windows Terminal console](/img/v2/windows_terminal_customization.webp)
 
 If we're talking about the MS DOS console, everyone has in mind a very austere black screen with a fixed-width font. The display was monochrome, white on black. Not very sexy neither exciting, isn't it.
 

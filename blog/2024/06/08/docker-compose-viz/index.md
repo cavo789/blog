@@ -3,11 +3,11 @@ date: 2024-06-08
 slug: docker-compose-viz
 title: How to generate a graph from compose.yaml
 authors: [christophe]
-image: /img/v2/docker_tips.jpg
+image: /img/v2/docker_tips.webp
 mainTag: docker
 tags: [docker, visualisation, tips]
 ---
-![How to generate a graph from compose.yaml](/img/v2/docker_tips.jpg)
+![How to generate a graph from compose.yaml](/img/v2/docker_tips.webp)
 
 <UpdateAt
   title="Recent Changes"

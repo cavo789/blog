@@ -3,11 +3,11 @@ date: 2024-11-28
 slug: vbs-files-csv
 title: VBS - Get list of files and generate a CSV
 authors: [christophe]
-image: /img/v2/vbs.jpg
+image: /img/v2/vbs.webp
 mainTag: vbs
 tags: [dos, vbs]
 ---
-![VBS - Get list of files and generate a CSV](/img/v2/vbs.jpg)
+![VBS - Get list of files and generate a CSV](/img/v2/vbs.webp)
 
 Six years ago, I needed a DOS script that would allow me to find the list of every file in a folder on a Windows machine and generate a `.csv` file with that list.
 

@@ -5,9 +5,9 @@ title: Markdown folding not working
 authors: [christophe]
 mainTag: vscode
 tags: [vscode, markdown, tips]
-image: /img/v2/vscode_tips.jpg
+image: /img/v2/vscode_tips.webp
 ---
-![Markdown folding not working](/img/v2/vscode_tips.jpg)
+![Markdown folding not working](/img/v2/vscode_tips.webp)
 
 > [https://github.com/microsoft/vscode/issues/107130](https://github.com/microsoft/vscode/issues/107130)
 

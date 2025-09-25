@@ -5,9 +5,9 @@ title: Error Lens addon for VSCode
 authors: [christophe]
 mainTag: vscode
 tags: [addon, vscode]
-image: /img/v2/vscode_tips.jpg
+image: /img/v2/vscode_tips.webp
 ---
-![Error Lens addon for VSCode](/img/v2/vscode_tips.jpg)
+![Error Lens addon for VSCode](/img/v2/vscode_tips.webp)
 
 Very recently I discovered [usernamehw.errorlens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) and it's a shame I hadn't seen it before.
 

@@ -3,12 +3,12 @@ date: 2025-05-19
 slug: php-api-tips
 title: API REST - How to write good APIs
 authors: [christophe]
-image: /img/v2/api.jpg
+image: /img/v2/api.webp
 mainTag: api
 tags: [api, docker, php, rest]
 blueskyRecordKey: 3lun2t72qus2r
 ---
-![API REST - How to write good APIs](/img/v2/api.jpg)
+![API REST - How to write good APIs](/img/v2/api.webp)
 
 <!-- cspell:ignore Belgif -->
 

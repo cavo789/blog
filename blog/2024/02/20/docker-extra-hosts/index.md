@@ -3,12 +3,12 @@ date: 2024-02-20
 slug: docker-network-and-extra-hosts
 title: Using Docker network and the extra_hosts property
 authors: [christophe]
-image: /img/v2/docker_tips.jpg
+image: /img/v2/docker_tips.webp
 mainTag: docker
 tags: [docker, network, tips]
 ---
 <!-- cspell:ignore allnodes,allrouters,localnet,mcastprefix -->
-![Using Docker network and the extra_hosts property](/img/v2/docker_tips.jpg)
+![Using Docker network and the extra_hosts property](/img/v2/docker_tips.webp)
 
 When you're running a Docker container on a different network than the standard one (called `bridge`) and **you wish to run a second container that needs to access the first container, you need to run the second container on the same network.**
 

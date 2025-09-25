@@ -3,11 +3,11 @@ date: 2024-06-28
 slug: linux-bash-too-many-function-parameters
 title: Clean code - Linux Bash - Keep the number of function parameters as small as possible
 authors: [christophe]
-image: /img/v2/bash.jpg
+image: /img/v2/bash.webp
 mainTag: code-quality
 tags: [code-quality, linux, tips]
 ---
-![Clean code - Linux Bash - Keep the number of function parameters as small as possible](/img/v2/bash.jpg)
+![Clean code - Linux Bash - Keep the number of function parameters as small as possible](/img/v2/bash.webp)
 
 A concept of the clean code approach is to avoid too many function parameter (I would say that four parameters is already too many).
 

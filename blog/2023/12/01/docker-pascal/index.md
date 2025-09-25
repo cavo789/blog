@@ -3,12 +3,12 @@ date: 2023-12-01
 slug: docker-pascal
 title: Play with Docker and Pascal
 authors: [christophe]
-image: /img/v2/experiments.jpg
+image: /img/v2/experiments.webp
 mainTag: pascal
 tags: [docker, pascal]
 ---
 <!-- cspell:ignore ource,rchive,roupn,chiffre,downto -->
-![Play with Docker and Pascal](/img/v2/experiments.jpg)
+![Play with Docker and Pascal](/img/v2/experiments.webp)
 
 Good old memories... During my studies (in 1991-1993), I was a huge fan of Turbo Pascal 7.0. It was the first language that I really learned and loves it so much. I used to spend dozens of hours behind my computer writing anything and everything.
 

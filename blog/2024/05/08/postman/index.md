@@ -3,12 +3,12 @@ date: 2024-05-08
 slug: postman
 title: Using Postman to play with API
 authors: [christophe]
-image: /img/v2/api.jpg
+image: /img/v2/api.webp
 mainTag: api
 tags: [api, code quality, php, postman, soap, tests, tool]
 ---
 <!-- cSpell::ignore ELECTRABEL,taxud -->
-![Using Postman to play with API](/img/v2/api.jpg)
+![Using Postman to play with API](/img/v2/api.webp)
 
 If you are developing your own API (whatever the language) or if you need to consume some, [Postman](https://www.postman.com/) can be really handy.
 

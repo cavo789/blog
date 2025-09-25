@@ -3,13 +3,13 @@ date: 2025-04-18
 slug: oracle-dotnet-nodejs-php-python
 title: Accessing an Oracle database using .Net, NodeJS, PHP and Python
 authors: [christophe]
-image: /img/v2/oracle.jpg
+image: /img/v2/oracle.webp
 series: Running Oracle Database Server as a Docker container
 mainTag: oracle
 tags: [docker, oracle]
 blueskyRecordKey: 3lvnjmthgj22v
 ---
-![Accessing an Oracle database using .Net, NodeJS, PHP and Python](/img/v2/oracle.jpg)
+![Accessing an Oracle database using .Net, NodeJS, PHP and Python](/img/v2/oracle.webp)
 
 In a previous article (<Link to="/blog/docker-oracle-database-server">Running Oracle Database Server as a Docker container</Link>), we've created a Docker container called `oracle-db` where a Human Resources database is running.
 

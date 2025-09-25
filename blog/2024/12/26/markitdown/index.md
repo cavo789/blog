@@ -3,11 +3,11 @@ date: 2024-12-26
 slug: markitdown
 title: Markitdown - Convert files and MS Office documents to Markdown
 authors: [christophe]
-image: /img/v2/markdown.jpg
+image: /img/v2/markdown.webp
 mainTag: markdown
 tags: [docker, docx, excel]
 ---
-![Markitdown - Convert files and MS Office documents to Markdown](/img/v2/markdown.jpg)
+![Markitdown - Convert files and MS Office documents to Markdown](/img/v2/markdown.webp)
 
 <!-- cspell:ignore markitdown -->
 

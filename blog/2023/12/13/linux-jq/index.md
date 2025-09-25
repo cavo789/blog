@@ -3,12 +3,12 @@ date: 2023-12-13
 slug: linux-jq
 title: The jq utility for Linux
 authors: [christophe]
-image: /img/v2/json.jpg
+image: /img/v2/json.webp
 mainTag: linux
 tags: [bash, json, jq, linux, tips]
 ---
 <!-- cspell:ignore Salomé -->
-![The jq utility for Linux](/img/v2/json.jpg)
+![The jq utility for Linux](/img/v2/json.webp)
 
 `jq` is a powerful utility for Linux allowing manipulating JSON data from the command line and can be integrated into shell scripts.
 

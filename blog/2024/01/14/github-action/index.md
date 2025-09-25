@@ -3,11 +3,11 @@ date: 2024-01-14
 slug: github-action
 title: GitHub - Use Actions to deploy this blog
 authors: [christophe]
-image: /img/v2/github_tips.jpg
+image: /img/v2/github_tips.webp
 mainTag: github
 tags: [docusaurus, Github]
 ---
-![GitHub - Use Actions to deploy this blog](/img/v2/github_tips.jpg)
+![GitHub - Use Actions to deploy this blog](/img/v2/github_tips.webp)
 
 The last two months, I was using a FTP automation script to deploy the blog on my FTP server.
 

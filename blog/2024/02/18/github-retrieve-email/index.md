@@ -3,11 +3,11 @@ date: 2024-02-18
 slug: github-retrieve-email
 title: Github - How to find email addresses for most users
 authors: [christophe]
-image: /img/v2/github_tips.jpg
+image: /img/v2/github_tips.webp
 mainTag: github
 tags: [Github, tips]
 ---
-![Github - How to find email addresses for most users](/img/v2/github_tips.jpg)
+![Github - How to find email addresses for most users](/img/v2/github_tips.webp)
 
 You'd like to get in touch with a GitHub user but, e.g., you don't want to post your question as an issue because, e.g., it's not about a specific repository but more generic.
 

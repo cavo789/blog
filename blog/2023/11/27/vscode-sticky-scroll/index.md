@@ -3,11 +3,11 @@ date: 2023-11-27
 slug: vscode-sticky-scroll
 title: Sticky scroll in vscode
 authors: [christophe]
-image: /img/v2/vscode_tips.jpg
+image: /img/v2/vscode_tips.webp
 mainTag: vscode
 tags: [php, tips, vscode]
 ---
-![Sticky scroll in vscode](/img/v2/vscode_tips.jpg)
+![Sticky scroll in vscode](/img/v2/vscode_tips.webp)
 
 > [https://dev.to/amrsamy/vs-code-sticky-scroll-2jcd](https://dev.to/amrsamy/vs-code-sticky-scroll-2jcd)
 

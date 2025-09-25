@@ -3,11 +3,11 @@ date: 2023-12-27
 slug: makefile-using-make
 title: Linux Makefile - When to use a makefile
 authors: [christophe]
-image: /img/v2/makefile.jpg
+image: /img/v2/makefile.webp
 mainTag: makefile
 tags: [makefile, tips]
 ---
-![Linux Makefile - When to use a makefile](/img/v2/makefile.jpg)
+![Linux Makefile - When to use a makefile](/img/v2/makefile.webp)
 
 Coding your own `makefile` has the enormous, **terribly powerful advantage** of being able to centralize the commands you use on your project in a single place, whatever the nature of the project (php, javascript, nodeJs, markdown, etc.).
 

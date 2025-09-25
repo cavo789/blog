@@ -3,11 +3,11 @@ date: 2023-12-14
 slug: windows-winget
 title: Update all out-of-date Windows programs in batch
 authors: [christophe]
-image: /img/v2/windows_tips.jpg
+image: /img/v2/windows_tips.webp
 mainTag: windows
 tags: [tips, windows, winget]
 ---
-![Update all out-of-date Windows programs in batch](/img/v2/windows_tips.jpg)
+![Update all out-of-date Windows programs in batch](/img/v2/windows_tips.webp)
 
 > [Use the winget tool to install and manage applications](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
 

@@ -3,11 +3,11 @@ date: 2024-07-28
 slug: linux-compare-two-versions-of-the-same-script
 title: Linux - Compare two versions of the same script
 authors: [christophe]
-image: /img/v2/bash.jpg
+image: /img/v2/bash.webp
 mainTag: linux
 tags: [bash, introspection, linux, tips]
 ---
-![Linux - Compare two versions of the same script](/img/v2/bash.jpg)
+![Linux - Compare two versions of the same script](/img/v2/bash.webp)
 
 Still faced with the problem of having to compare two versions of the same script (see the article <Link to="/blog/linux-diff-file-folder">Linux - Comparing two folders/files in the console</Link>), this time we're going to consider that the file we need to compare is a Bash script and that we have two versions of it.
 

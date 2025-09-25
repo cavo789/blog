@@ -3,12 +3,12 @@ date: 2024-12-02
 slug: docker-python-devcontainer-microsoft
 title: Docker - Even easier setup of Python
 authors: [christophe]
-image: /img/v2/devcontainer.jpg
+image: /img/v2/devcontainer.webp
 series: Coding using a devcontainer
 mainTag: python
 tags: [devcontainer, docker, python]
 ---
-![Docker - Even easier setup of Python](/img/v2/devcontainer.jpg)
+![Docker - Even easier setup of Python](/img/v2/devcontainer.webp)
 
 <!-- cspell:ignore substeps -->
 

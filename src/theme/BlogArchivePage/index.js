@@ -149,7 +149,7 @@ function Archives() {
       <PageMetadata
         title={title}
         description={description}
-        image="/img/archives.jpg"
+        image="/img/archives.webp"
       />
       <Layout
         title="Archives"

@@ -3,11 +3,11 @@ date: 2024-01-26
 slug: update-env-files-cli
 title: Batch edit of environment file
 authors: [christophe]
-image: /img/v2/bash.jpg
+image: /img/v2/bash.webp
 mainTag: linux
 tags: [.env, bash, linux, sed, tips]
 ---
-![Batch edit of environment file](/img/v2/bash.jpg)
+![Batch edit of environment file](/img/v2/bash.webp)
 
 When deploying a project on servers, we need to pay particular attention to the `.env` file. This file is crucial and will determine whether our application works properly (or crashes).
 

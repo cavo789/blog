@@ -3,12 +3,12 @@ date: 2024-11-11
 slug: drawdb-app
 title: Drawdb-app - Render your database model as png, markdown, mermaid, ...
 authors: [christophe]
-image: /img/v2/diagrams.jpg
+image: /img/v2/diagrams.webp
 mainTag: database
 tags: [database, mermaid, tips, visualisation]
 ---
 <!-- cspell:ignore drawdb,xinsodev -->
-![Drawdb-app - Render your database model](/img/v2/diagrams.jpg)
+![Drawdb-app - Render your database model](/img/v2/diagrams.webp)
 
 In my RSS feed recently, I came across another great application that lets you create a database model from scratch, i.e. create tables one by one and create the links between them.
 

@@ -3,12 +3,12 @@ date: 2024-01-03
 slug: quarto-project-variables
 title: Using variables from external file in your Quarto project
 authors: [christophe]
-image: /img/v2/quarto.jpg
+image: /img/v2/quarto.webp
 series: Discovering Quarto
 mainTag: quarto
 tags: [markdown, quarto, tips]
 ---
-![Using variables from external file in your Quarto project](/img/v2/quarto.jpg)
+![Using variables from external file in your Quarto project](/img/v2/quarto.webp)
 
 My use case is: I need to write some technical, long, documentation where I need to provide some information like IP addresses of used servers, some paths to the application, configuration folders, ...
 

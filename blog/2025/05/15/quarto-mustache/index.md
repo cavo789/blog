@@ -3,7 +3,7 @@ date: 2025-05-15
 slug: quarto-mustache
 title: Using Mustache templating with Quarto
 authors: [christophe]
-image: /img/v2/mustache.jpg
+image: /img/v2/mustache.webp
 mainTag: quarto
 tags: [markdown, mustache, quarto]
 blueskyRecordKey: 3lun2vljjqs2r
@@ -11,7 +11,7 @@ blueskyRecordKey: 3lun2vljjqs2r
 
 <!-- cspell:ignore buie,frontmatter,gadenbuie,htdocs -->
 
-![Using Mustache templating with Quarto](/img/v2/mustache.jpg)
+![Using Mustache templating with Quarto](/img/v2/mustache.webp)
 
 I use Quarto to generate documentation; until now I've mainly generated `.docx` and `.pdf` files.
 

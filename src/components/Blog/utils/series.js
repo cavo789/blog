@@ -11,11 +11,11 @@ import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
  *
  * @function generateSeriesList
  * @param {string} [permalink] - The URL to the page to use for displaying the list of articvles of a specific series.
- * @param {string} [defaultImage="/img/default.jpg"] - Fallback image used when no image is provided.
+ * @param {string} [defaultImage="/img/default.webp"] - Fallback image used when no image is provided.
  * @returns {Array<Object>} seriesList - Array of series metadata objects.
  *
  * @example
- * const seriesList = generateSeriesList("/series/", "/img/fallback.jpg");
+ * const seriesList = generateSeriesList("/series/", "/img/default.webp");
  *
  * Each object in the returned array looks like:
  *   {
@@ -29,7 +29,7 @@ import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 
 export function generateSeriesList(
   permalink = "/series/",
-  defaultImage = "/img/default.jpg"
+  defaultImage = "/img/default.webp"
 ) {
   const seriesMap = {};
 

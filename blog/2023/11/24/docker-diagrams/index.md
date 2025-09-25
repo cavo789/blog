@@ -3,11 +3,11 @@ date: 2023-11-24
 slug: docker-diagram-as-code
 title: Docker - Diagrams as code
 authors: [christophe]
-image: /img/v2/diagrams.jpg
+image: /img/v2/diagrams.webp
 mainTag: visualisation
 tags: [docker, visualisation, tips]
 ---
-![Docker - Diagrams as code](/img/v2/diagrams.jpg)
+![Docker - Diagrams as code](/img/v2/diagrams.webp)
 
 But what a joy it is to be able to draw diagrams by, well, just writing text. Some tools are better known than others, e.g. [Mermaid](https://mermaid-js.github.io/mermaid/).
 

@@ -19,12 +19,12 @@ Place this file in: `src/components/Blog/utils/series.js`
 ```js
 import { generateSeriesList } from './series';
 
-const seriesList = generateSeriesList(posts, '/series/', '/img/fallback.jpg');
+const seriesList = generateSeriesList(posts, '/series/', '/img/default.webp);
 ```
 
 ## Default behavior
 
-* Uses `/img/default.jpg` as fallback image
+* Uses `/img/default.webp` as fallback image
 * Generates permalink like: `/series/${slug}`
 
 ## 🧩 Returned Object Structure

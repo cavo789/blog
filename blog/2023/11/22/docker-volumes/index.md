@@ -3,11 +3,11 @@ date: 2023-11-22
 slug: docker-volumes
 title: Using volumes with Docker, use cases
 authors: [christophe]
-image: /img/v2/docker_concepts.jpg
+image: /img/v2/docker_concepts.webp
 mainTag: docker
 tags: [wsl, docker]
 ---
-![Using volumes with Docker, use cases](/img/v2/docker_concepts.jpg)
+![Using volumes with Docker, use cases](/img/v2/docker_concepts.webp)
 
 When working with a Docker container, data can be persistent or not. Imagine you're creating a localhost website with Joomla, WordPress or any other tool (Laravel, Symfony, etc.).
 

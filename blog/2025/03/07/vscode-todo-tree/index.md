@@ -6,9 +6,9 @@ authors: [christophe]
 mainTag: vscode
 tags: [tips, vscode]
 blueskyRecordKey: 3lvnk2w4vss2v
-image: /img/v2/vscode_tips.jpg
+image: /img/v2/vscode_tips.webp
 ---
-![Todo Tree in VSCode](/img/v2/vscode_tips.jpg)
+![Todo Tree in VSCode](/img/v2/vscode_tips.webp)
 
 When you're working on a large codebase, soon or later you'll find some annotations like `@TODO` or `// TODO` put there by people (perhaps you) as a reminder for "Don't forget to (do something)...". And, for sure, these todos remain there months or years because, yup, the programmer forgot they were there.
 

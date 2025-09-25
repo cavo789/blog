@@ -4,11 +4,11 @@ title: SSH Remote development with VSCode
 authors: [christophe]
 mainTag: ssh
 tags: [ssh, tips, vscode]
-image: /img/v2/vscode_tips.jpg
+image: /img/v2/vscode_tips.webp
 draft: true
 date: 2025-09-30
 ---
-![SSH Remote development with VSCode](/img/v2/vscode_tips.jpg)
+![SSH Remote development with VSCode](/img/v2/vscode_tips.webp)
 
 <!-- cspell:ignore ssword -->
 

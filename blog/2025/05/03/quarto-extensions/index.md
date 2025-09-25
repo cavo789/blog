@@ -3,14 +3,14 @@ date: 2025-05-03
 slug: quarto-extensions
 title: My favourite Quarto extensions
 authors: [christophe]
-image: /img/v2/quarto.jpg
+image: /img/v2/quarto.webp
 mainTag: quarto
 tags: [markdown, pandoc, quarto, revealjs]
 blueskyRecordKey: 3lun2yevo622r
 ---
 <!-- cspell:ignore frontmatter,fontawesome,gadenbuie,shafayetShafee -->
 
-![My favourite Quarto extensions](/img/v2/quarto.jpg)
+![My favourite Quarto extensions](/img/v2/quarto.webp)
 
 I'm using Quarto now since 18 months to generate my documentation: I'm writing Markdown files (`.md`) and convert them as a Word document, PDF, static HTML site or as a revealjs slideshow.
 

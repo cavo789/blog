@@ -3,12 +3,12 @@ date: 2024-03-30
 slug: linux-fzf-introduction
 title: Introduction to fzf - Fuzzy Finder
 authors: [christophe]
-image: /img/v2/linux_tips.jpg
+image: /img/v2/linux_tips.webp
 mainTag: linux
 tags: [bash, customization, fzf, linux, tips, linux]
 update: 2024/03/31
 ---
-![Introduction to fzf - Fuzzy Finder](/img/v2/linux_tips.jpg)
+![Introduction to fzf - Fuzzy Finder](/img/v2/linux_tips.webp)
 
 As you probably know, <kbd>CTRL</kbd>+<kbd>R</kbd> in the console will give you access to your HISTORY i.e. you'll retrieve the list of the commands you previously typed in your console. Just like using <kbd>UP</kbd> or <kbd>DOWN</kbd> keys but with a very small search engine.
 

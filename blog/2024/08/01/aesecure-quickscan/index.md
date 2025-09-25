@@ -3,11 +3,11 @@ date: 2024-08-01
 slug: aesecure-quickscan
 title: aeSecure - QuickScan - Free viruses scanner
 authors: [christophe]
-image: /img/v2/viruses.jpg
+image: /img/v2/viruses.webp
 mainTag: aesecure
 tags: [docker, tip]
 ---
-![aeSecure - QuickScan - Free viruses scanner](/img/v2/viruses.jpg)
+![aeSecure - QuickScan - Free viruses scanner](/img/v2/viruses.webp)
 
 <!-- cspell:ignore aesecure,quickscan -->
 

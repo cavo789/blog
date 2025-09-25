@@ -3,11 +3,11 @@ date: 2024-03-23
 slug: docker-health-condition
 title: Understanding the depends_on condition in Docker compose files
 authors: [christophe]
-image: /img/v2/docker_tips.jpg
+image: /img/v2/docker_tips.webp
 mainTag: docker
 tags: [docker, tips]
 ---
-![Understanding the depends_on condition in Docker compose files](/img/v2/docker_tips.jpg)
+![Understanding the depends_on condition in Docker compose files](/img/v2/docker_tips.webp)
 
 It's only been ten days or so since I learned the trick, even though it was well documented: managing service startups and, above all, blocking one if the other isn't ready ([official documentation](https://docs.docker.com/compose/startup-order/#control-startup)).
 

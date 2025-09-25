@@ -5,10 +5,10 @@ title: Apache .htaccess file
 authors: [christophe]
 mainTag: apache
 tags: [apache, snippets, .htaccess]
-image: /img/v2/htaccess.jpg
+image: /img/v2/htaccess.webp
 ---
 <!-- cspell:ignore webm -->
-![Apache .htaccess file](/img/v2/htaccess.jpg)
+![Apache .htaccess file](/img/v2/htaccess.webp)
 
 Some tips and tricks for your .htaccess file (Apache)
 

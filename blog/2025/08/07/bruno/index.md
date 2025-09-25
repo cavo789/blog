@@ -3,14 +3,14 @@ date: 2025-08-07
 slug: bruno
 title: Bruno - A postman-like tool - GUI and CLI
 authors: [christophe]
-image: /img/v2/api.jpg
+image: /img/v2/api.webp
 mainTag: api
 tags: [api, bruno, docker, postman, tests, tool]
 description: Explore Bruno, a powerful Postman-like API testing tool with both GUI and CLI support.
 blueskyRecordKey: 3lvs336stus2j
 ---
 <!-- cspell:ignore fastapi,uvicorn,hobbyte,keyserver,usebruno,ECONNREFUSED,davidkarlsen -->
-![Bruno - A postman-like tool - GUI and CLI](/img/v2/api.jpg)
+![Bruno - A postman-like tool - GUI and CLI](/img/v2/api.webp)
 
 <Link to="/blog/tags/postman">Bruno](https://www.usebruno.com/) is a tool like [Postman</Link> you can use for free. Everything is stored on your computer so you can store files within your codebase and submit it to your code versioning tool f.i.
 

@@ -3,11 +3,11 @@ date: 2024-03-09
 slug: github-connect-using-ssh
 title: Github - Connect your account using SSH and start to work with git@ protocol
 authors: [christophe]
-image: /img/v2/github_tips.jpg
+image: /img/v2/github_tips.webp
 mainTag: github
 tags: [Github, ssh, tips]
 ---
-![Github - Connect your account using SSH and start to work with git@ protocol](/img/v2/github_tips.jpg)
+![Github - Connect your account using SSH and start to work with git@ protocol](/img/v2/github_tips.webp)
 
 Using SSH instead of HTTPS to connect to Github is more secure. Indeed, SSH relies on public-key cryptography. This makes unauthorized access much harder compared to a password, which can be stolen through phishing or brute-force attacks. Also, HTTPS transmits your username and password (encrypted) over the network, which can be intercepted in a Man-in-the-Middle (MITM) attack. SSH doesn't transmit passwords after the initial setup.
 

@@ -3,12 +3,12 @@ date: 2023-12-25
 slug: quarto-powerpoint
 title: Use Quarto and create a PowerPoint slideshow
 authors: [christophe]
-image: /img/v2/quarto.jpg
+image: /img/v2/quarto.webp
 series: Discovering Quarto
 mainTag: quarto
 tags: [markdown, powerpoint, quarto, revealjs, tips]
 ---
-![Use Quarto and create a PowerPoint slideshow](/img/v2/quarto.jpg)
+![Use Quarto and create a PowerPoint slideshow](/img/v2/quarto.webp)
 
 Quarto can convert a markdown file to a revealjs HTML slideshow but, too, can create a `pptx` file that you can open and play in Microsoft PowerPoint.
 

@@ -3,12 +3,12 @@ date: 2024-04-28
 slug: docker-docusaurus-prod
 title: Encapsulate an entire Docusaurus site in a Docker image
 authors: [christophe]
-image: /img/v2/docusaurus_tips.jpg
+image: /img/v2/docusaurus_tips.webp
 mainTag: docusaurus
 tags: [docker, docusaurus, nodejs, yarn]
 ---
 <!-- cspell::ignore corepack,docusaurus,johndoe -->
-![Encapsulate an entire Docusaurus site in a Docker image](/img/v2/docusaurus_tips.jpg)
+![Encapsulate an entire Docusaurus site in a Docker image](/img/v2/docusaurus_tips.webp)
 
 Started on 2 November 2023, this article is already the hundredth I've published on this blog. To mark the occasion, I wanted to do something a bit special to honor the blog. What better way than to build a **100% Docker version**, i.e. in the form of a downloadable Docker image that **you can run with a single command line**.
 

@@ -2,7 +2,7 @@
 slug: gemini-meerkat
 title: How I used Google Gemini Nano Banana on my blog
 authors: [christophe]
-image: /img/v2/gemini.jpg
+image: /img/v2/gemini.webp
 mainTag: ai
 tags: [ai]
 date: 2025-09-30
@@ -12,7 +12,7 @@ blueskyRecordKey:
 <!-- markdownlint-disable MD049 -->
 <!-- cspell:ignore clipart -->
 
-![How I used Google Gemini Nano Banana on my blog](/img/v2/gemini.jpg)
+![How I used Google Gemini Nano Banana on my blog](/img/v2/gemini.webp)
 
 Over the last few days, I've been using [Google Gemini](https://gemini.google.com/app) to redo all the images on my blog, and those who know me can count the number of times I've expressed my admiration for this technology. Prodigious, incredible, crazy... but, at the same time, fearful of how much these achievements will undermine an entire generation of young people who are going to embark on these careers.
 
@@ -22,7 +22,7 @@ In this article, let's take a look at how I went about generating these images.
 
 First, and somewhat by chance, I asked Gemini to generate a clipart-style image of a meerkat. I got this one:
 
-![The meerkat](/img/meerkat/surricate.jpg)
+![The meerkat](/img/meerkat/surricate.webp)
 
 A few days later, I discovered this GitHub repository: [Awesome-Nano-Banana-images](https://github.com/PicoTrex/Awesome-Nano-Banana-images/blob/main/README_en.md) and just had one desire, to try.
 
@@ -42,13 +42,13 @@ And after just a few seconds, the unimaginable happened: I received a flood of o
 
 Repeating the same prompt again and again and got others ones:
 
-![Different poses - 1](/img/meerkat/surricate_positions_1.jpg)
+![Different poses - 1](/img/meerkat/surricate_positions_1.webp)
 
-![Different poses - 2](/img/meerkat/surricate_positions_2.jpg)
+![Different poses - 2](/img/meerkat/surricate_positions_2.webp)
 
-![Different poses - 3](/img/meerkat/surricate_positions_3.jpg)
+![Different poses - 3](/img/meerkat/surricate_positions_3.webp)
 
-![Different poses - 4](/img/meerkat/surricate_positions_4.jpg)
+![Different poses - 4](/img/meerkat/surricate_positions_4.webp)
 
 How easy, how crazy it's.
 
@@ -62,11 +62,11 @@ My advice:
 
 Often, the image was impressive from the very first result, but sometimes I would tell him that I didn't really like it, and in those cases, I would clarify my prompt and guide the image in the direction I wanted, such as *The meerkat will process a lot of input files then do some magic and generate output tables*, *I want the meerkat to be dressed up as a dinosaur (like the Docusaurus logo) and have blue wings (like the BlueSky logo)*.  And more often than not, the images were even more impressive.
 
-![Extract, Transform and Load](/img/v2/etl.jpg)
+![Extract, Transform and Load](/img/v2/etl.webp)
 
-![Running automated tests](/img/v2/functional_tests.jpg)
+![Running automated tests](/img/v2/functional_tests.webp)
 
-![Creating a Docusaurus component and connect to BlueSky](/img/v2/docusaurus_bluesky.jpg)
+![Creating a Docusaurus component and connect to BlueSky](/img/v2/docusaurus_bluesky.webp)
 
 My next article banner:
 

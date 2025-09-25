@@ -3,12 +3,12 @@ date: 2025-06-20
 slug: pentaho-discovery
 title: Discovering Pentaho, a ETL program
 authors: [christophe]
-image: /img/v2/etl.jpg
+image: /img/v2/etl.webp
 mainTag: etl
 tags: [database, etl, msaccess, vba]
 blueskyRecordKey: 3lumzwwoqsc2r
 ---
-![Discovering Pentaho, a ETL program](/img/v2/etl.jpg)
+![Discovering Pentaho, a ETL program](/img/v2/etl.webp)
 
 <!-- cspell:ignore pentaho,xtract,ransform,sheetname,dpage,webkitgtk -->
 

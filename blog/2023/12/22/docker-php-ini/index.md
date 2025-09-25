@@ -3,11 +3,11 @@ date: 2023-12-22
 slug: docker-php-ini
 title: Update php.ini when using a Docker image
 authors: [christophe]
-image: /img/v2/docker_tips.jpg
+image: /img/v2/docker_tips.webp
 mainTag: docker
 tags: [apache, docker, joomla, tips]
 ---
-![Update php.ini when using a Docker image](/img/v2/docker_tips.jpg)
+![Update php.ini when using a Docker image](/img/v2/docker_tips.webp)
 
 This article aims to answer the following situation: *I'm using a Docker image to run my website and I should modify the php.ini file; how do I do this?*
 

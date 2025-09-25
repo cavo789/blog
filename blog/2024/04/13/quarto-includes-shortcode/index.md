@@ -3,12 +3,12 @@ date: 2024-04-13
 slug: quarto-includes-shortcode
 title: Quarto includes short code
 authors: [christophe]
-image: /img/v2/quarto.jpg
+image: /img/v2/quarto.webp
 series: Discovering Quarto
 mainTag: quarto
 tags: [markdown, quarto, tips]
 ---
-![Quarto includes short code](/img/v2/quarto.jpg)
+![Quarto includes short code](/img/v2/quarto.webp)
 
 Using the Quarto `includes` short code, writing a long document can easily be broken down into several smaller ones.
 

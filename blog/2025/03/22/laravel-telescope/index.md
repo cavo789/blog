@@ -3,12 +3,12 @@ date: 2025-03-22
 slug: laravel-telescope
 title: Laravel Telescope
 authors: [christophe]
-image: /img/v2/laravel.jpg
+image: /img/v2/laravel.webp
 mainTag: laravel
 tags: [laravel, php, telescope]
 blueskyRecordKey: 3lvnkgebz3c2v
 ---
-![Laravel Telescope](/img/v2/laravel.jpg)
+![Laravel Telescope](/img/v2/laravel.webp)
 
 I don't work as often with Laravel (one of the most famous PHP frameworks) so I'm losing my reflexes a bit when it comes to debugging the code, e.g. when it comes to finding the queries that have been executed, the exceptions that have been thrown, the list of keys that have been created or read from the Redis cache, etc.
 

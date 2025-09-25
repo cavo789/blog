@@ -3,11 +3,11 @@ date: 2023-12-04
 slug: docker_ssl_encrypt
 title: Encrypt sensitive data using SSL and Docker
 authors: [christophe]
-image: /img/v2/encryption.jpg
+image: /img/v2/encryption.webp
 mainTag: ssl
 tags: [docker, encryption, ssl]
 ---
-![Encrypt sensitive data using SSL and Docker](/img/v2/encryption.jpg)
+![Encrypt sensitive data using SSL and Docker](/img/v2/encryption.webp)
 
 For 1,000 reasons or more, you want to encrypt a file containing text. Which software should you install? Well ... none other than Docker!
 

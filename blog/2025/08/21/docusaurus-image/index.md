@@ -3,7 +3,7 @@ date: 2025-08-21
 slug: docusaurus-override-img
 title: Change how Docusaurus will create img tags
 authors: [christophe]
-image: /img/v2/docusaurus_component.jpg
+image: /img/v2/docusaurus_component.webp
 series: Creating Docusaurus components
 description: Customize the way Docusaurus generates <img> tags to better control image rendering and behavior.
 mainTag: component
@@ -13,7 +13,7 @@ blueskyRecordKey: 3lww5fbh2y22q
 
 <!-- cspell:ignore rgba,toggleable -->
 
-![Change how Docusaurus will create img tags](/img/v2/docusaurus_component.jpg)
+![Change how Docusaurus will create img tags](/img/v2/docusaurus_component.webp)
 
 I'll start a series about writing components for Docusaurus.
 

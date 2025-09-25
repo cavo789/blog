@@ -3,9 +3,9 @@ date: 2023-11-02
 slug: welcome
 title: Welcome
 authors: [christophe]
-image: /img/v2/welcome.jpg
+image: /img/v2/welcome.webp
 ---
-![Welcome](/img/v2/welcome.jpg)
+![Welcome](/img/v2/welcome.webp)
 
 I have been wanting to try [Docusaurus](https://docusaurus.io/) for a long time, but today I am stuck at home because of storm Ciaran, which is blowing across Belgium this Thursday, November 2, 2023.
 

@@ -3,12 +3,12 @@ date: 2025-06-15
 slug: gitlab-docker-out-of-docker
 title: GitLab - Running Docker-out-of-Docker in your CI
 authors: [christophe]
-image: /img/v2/gitlab.jpg
+image: /img/v2/gitlab.webp
 mainTag: gitlab
 tags: [CI, dagger, dood, docker, gitlab, quarto]
 blueskyRecordKey: 3lun2kg2vmk2r
 ---
-![GitLab - Running Docker-out-of-Docker in your CI](/img/v2/gitlab.jpg)
+![GitLab - Running Docker-out-of-Docker in your CI](/img/v2/gitlab.webp)
 
 <!-- cspell:ignore dood,phplint,certdir -->
 

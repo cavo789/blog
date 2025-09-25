@@ -3,12 +3,12 @@ date: 2025-01-05
 slug: docker-init-php-apache
 title: Using Docker init to quickly dockerize your PHP application
 authors: [christophe]
-image: /img/v2/docker_init.jpg
+image: /img/v2/docker_init.webp
 mainTag: docker
 tags: [aesecure, apache, docker, php, tips]
 ---
 <!-- cspell:ignore dbmdl -->
-![Using Docker init to quickly dockerize your PHP application](/img/v2/docker_init.jpg)
+![Using Docker init to quickly dockerize your PHP application](/img/v2/docker_init.webp)
 
 How about asking Docker to create the files it needs itself?
 

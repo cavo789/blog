@@ -3,12 +3,12 @@ date: 2023-12-21
 slug: docker-quarto
 title: Running Quarto Markdown in Docker
 authors: [christophe]
-image: /img/v2/quarto.jpg
+image: /img/v2/quarto.webp
 mainTag: quarto
 tags: [docker, markdown, pandoc, quarto, revealjs]
 ---
 <!-- cspell:ignore rsvg,ggplot2,gdebi,renv,tlmgr,fvextra,footnotebackref,pagecolor,sourcesanspro,sourcecodepro,Aoption -->
-![Running Quarto Markdown in Docker](/img/v2/quarto.jpg)
+![Running Quarto Markdown in Docker](/img/v2/quarto.webp)
 
 <UpdateAt
   title="Recent Changes"

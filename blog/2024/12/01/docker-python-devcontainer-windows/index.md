@@ -4,7 +4,7 @@ slug: docker-python-devcontainer-windows
 title: Docker - Easy setup of Python under Windows
 authors: [christophe]
 series: Coding using a devcontainer
-image: /img/v2/devcontainer.jpg
+image: /img/v2/devcontainer.webp
 mainTag: python
 tags: [devcontainer, docker, python]
 ---
@@ -12,7 +12,7 @@ tags: [devcontainer, docker, python]
 <!-- cspell:ignore addgroup,adduser,keyscan,hadolint,gecos,endregion -->
 <!-- cspell:ignore bashhistory,groupid,commandhistory,pylint,synchronised,hexa -->
 <!-- cspell:ignore mypy,pylance -->
-![Docker - Easy setup of Python under Windows](/img/v2/devcontainer.jpg)
+![Docker - Easy setup of Python under Windows](/img/v2/devcontainer.webp)
 
 In a <Link to="/blog/docker-python-devcontainer">previous article</Link>, I've provided some files to be able to quickly create a Python environment under Linux. Today, let's play and use the exact same files but this time under Windows.
 

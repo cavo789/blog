@@ -5,9 +5,9 @@ title: Autosave feature in VSCode
 authors: [christophe]
 mainTag: vscode
 tags: [vscode, markdown, tips]
-image: /img/v2/vscode_tips.jpg
+image: /img/v2/vscode_tips.webp
 ---
-![Autosave feature in VSCode](/img/v2/vscode_tips.jpg)
+![Autosave feature in VSCode](/img/v2/vscode_tips.webp)
 
 How many times have you modified a file in vscode (and forgotten to save the modification) in order to refresh it from your web page, run the script from your console, etc., and then thought *Oh no, damn, it still doesn't work*?
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import styles from "./styles.module.css";
-import buttontop from '@site/static/img/up.png'
+import buttontop from '@site/static/img/up.webp'
 
 export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);

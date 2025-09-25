@@ -3,11 +3,11 @@ date: 2024-11-19
 slug: json-faker
 title: JSON - Faker & Mockup
 authors: [christophe]
-image: /img/v2/json.jpg
+image: /img/v2/json.webp
 mainTag: json
 tags: [json, python, tips, tool, vscode]
 ---
-![JSON - Faker & Mockup](/img/v2/json.jpg)
+![JSON - Faker & Mockup](/img/v2/json.webp)
 
 <!-- cspell:ignore birthdate,homme,femme,binaire,Mockaroo -->
 

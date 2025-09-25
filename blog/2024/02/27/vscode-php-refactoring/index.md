@@ -5,9 +5,9 @@ title: PHP code refactoring in VSCode
 authors: [christophe]
 mainTag: php
 tags: [php, refactoring, tips, vscode]
-image: /img/v2/vscode_tips.jpg
+image: /img/v2/vscode_tips.webp
 ---
-![PHP code refactoring in VSCode](/img/v2/vscode_tips.jpg)
+![PHP code refactoring in VSCode](/img/v2/vscode_tips.webp)
 
 Currently, end of February 2024, there aren't many free refactoring extensions for PHP under VSCode. We'll take a look to [PHP Refactor Tool](https://marketplace.visualstudio.com/items?itemName=st-pham.php-refactor-tool) and [PHP Refactoring](https://marketplace.visualstudio.com/items?itemName=marsl.vscode-php-refactoring).
 

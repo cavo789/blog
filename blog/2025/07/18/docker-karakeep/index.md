@@ -6,11 +6,11 @@ authors: [christophe]
 mainTag: self-hosted
 tags: [bookmark, docker, self-hosted, tool]
 blueskyRecordKey: 3lujtc27n7s23
-image: /img/v2/docker_playing_with_app.jpg
+image: /img/v2/docker_playing_with_app.webp
 ---
 <!-- cspell:ignore karakeep,bitwarden -->
 
-![karakeep - The Bookmark Everything App](/img/v2/docker_playing_with_app.jpg)
+![karakeep - The Bookmark Everything App](/img/v2/docker_playing_with_app.webp)
 
 Since a few months, I'm using <Link to="/blog/heimdall-dashboard">Heimdall</Link> but it has one major weakness: its hyper-basic search engine (which is even non-existent, since it's not possible to search for a link globally).
 

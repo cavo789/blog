@@ -2,7 +2,7 @@
 slug: quarto-devcontainer
 title: Make your Quarto project Devcontainer-Ready — No More Setup Headaches
 authors: [christophe]
-image: /img/v2/devcontainer.jpg
+image: /img/v2/devcontainer.webp
 series: Creating Docusaurus components
 description: Convert any Quarto project into a fully portable, VSCode-powered devcontainer in minutes.
 mainTag: devcontainer
@@ -14,7 +14,7 @@ date: 2025-09-30
 <!-- markdownlint-disable MD046 -->
 <!-- cspell:ignore  -->
 
-![Make your Quarto project Devcontainer-Ready — No More Setup Headaches](/img/v2/devcontainer.jpg)
+![Make your Quarto project Devcontainer-Ready — No More Setup Headaches](/img/v2/devcontainer.webp)
 
 I love using Quarto and I've plenty of *documentation* projects on my disk. I'm writing user documentation, developer ones and, too, installation guide for almost every project I'm coding.
 

@@ -3,12 +3,12 @@ date: 2024-10-24
 slug: docker-lubuntu
 title: Start lubuntu Desktop in Docker
 authors: [christophe]
-image: /img/v2/docker_tips.jpg
+image: /img/v2/docker_tips.webp
 mainTag: linux
 tags: [chrome, docker, firefox, gimp, gui, tip]
 ---
 <!-- cspell:ignore lubuntu,initialising,xremote,autologin,realise -->
-![Start lubuntu Desktop](/img/v2/docker_tips.jpg)
+![Start lubuntu Desktop](/img/v2/docker_tips.webp)
 
 During my summer holidays, I've watched this video: [Full Ubuntu GUI in a Container Displayed on Windows (XServer)](https://www.youtube.com/watch?v=WutV6n21dys) and, of course, I wanted to play with it.
 

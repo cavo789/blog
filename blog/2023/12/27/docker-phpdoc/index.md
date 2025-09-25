@@ -3,11 +3,11 @@ date: 2023-12-27
 slug: docker-phpdocumentor
 title: Generating documentation for a PHP codebase
 authors: [christophe]
-image: /img/v2/php_tips.jpg
+image: /img/v2/php_tips.webp
 mainTag: php
 tags: [docker, php, phpdoc, wordpress]
 ---
-![Generating documentation for a PHP codebase](/img/v2/php_tips.jpg)
+![Generating documentation for a PHP codebase](/img/v2/php_tips.webp)
 
 You've a PHP codebase and you wish hop, hop, two strokes of the teaspoon, generate a documentation site without any headaches.
 

@@ -3,12 +3,12 @@ date: 2024-06-02
 slug: joomla-show-table
 title: Joomla - Run a SQL statement outside Joomla and display a nice HTML table
 authors: [christophe]
-image: /img/v2/joomla.jpg
+image: /img/v2/joomla.webp
 mainTag: joomla
 tags: [database, excel, joomla, tips]
 ---
 <!-- cspell:ignore showtable,sortering,qrjlq -->
-![Joomla - Run a SQL statement outside Joomla and display a nice HTML table](/img/v2/joomla.jpg)
+![Joomla - Run a SQL statement outside Joomla and display a nice HTML table](/img/v2/joomla.webp)
 
 A long time ago, years from now, I needed to expose data from my Joomla site in a simple web page *outside* Joomla, as an HTML table. This was so that I could link a Microsoft Excel spreadsheet to this table and therefore, in Excel, simply do a *Refresh* to obtain the most recent data from my Joomla site.
 

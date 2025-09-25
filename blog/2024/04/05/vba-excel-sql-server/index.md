@@ -3,13 +3,13 @@ date: 2024-04-05
 slug: vba-excel-sql-server
 title: MS Excel - Connect to a SQL Server database, run a query and get the results
 authors: [christophe]
-image: /img/v2/mssql.jpg
+image: /img/v2/mssql.webp
 series: MS Excel - Connect to a SQL Server database
 mainTag: excel
 tags: [excel, ribbon, mssql-server, vba]
 blueskyRecordKey: 3lvnkbm63nc2v
 ---
-![MS Excel - Connect to a SQL Server database, run a query and get the results](/img/v2/mssql.jpg)
+![MS Excel - Connect to a SQL Server database, run a query and get the results](/img/v2/mssql.webp)
 
 :::info
 Please read my new article <Link to="/blog/vba-excel-sql-server-part-2">MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step</Link> which is more complete than this one.

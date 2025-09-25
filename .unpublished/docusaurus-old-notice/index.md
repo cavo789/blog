@@ -2,7 +2,7 @@
 slug: docusaurus-old-notice
 title: A Docusaurus component that alerts readers the article is over a year old
 authors: [christophe]
-image: /img/v2/old_blog_notice.jpg
+image: /img/v2/old_blog_notice.webp
 series: Creating Docusaurus components
 description: Displays a warning banner when the page content is over a year old
 mainTag: component
@@ -13,7 +13,7 @@ date: 2025-09-30
 
 <!-- cspell:ignore  -->
 
-![A Docusaurus component that alerts readers the article is over a year old](/img/v2/old_blog_notice.jpg)
+![A Docusaurus component that alerts readers the article is over a year old](/img/v2/old_blog_notice.webp)
 
 In this article let's see how we can display a small frame "Warning: This article is at least a year old, which in tech years is basically prehistoric.".
 

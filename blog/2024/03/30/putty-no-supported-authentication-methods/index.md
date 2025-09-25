@@ -3,11 +3,11 @@ date: 2024-03-30
 slug: putty-no-supported-authentication-methods
 title: Fatal error was starting Putty after having saved settings
 authors: [christophe]
-image: /img/v2/putty.jpg
+image: /img/v2/putty.webp
 mainTag: putty
 tags: [putty, ssh]
 ---
-![Fatal error was starting Putty after having saved settings](/img/v2/putty.jpg)
+![Fatal error was starting Putty after having saved settings](/img/v2/putty.webp)
 
 A few days ago, I've updated my Putty configuration to set the default font-size to 12; no more 10.
 

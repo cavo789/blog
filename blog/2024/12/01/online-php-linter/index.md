@@ -3,12 +3,12 @@ date: 2024-12-01
 slug: online-php-linter
 title: Format poorly formatted PHP code
 authors: [christophe]
-image: /img/v2/clean_code.jpg
+image: /img/v2/clean_code.webp
 series: code quality
 mainTag: code-quality
 tags: [php, code-quality, laravel, phpcs, php-cs-fixer, tips, vscode]
 ---
-![Format poorly formatted PHP code](/img/v2/clean_code.jpg)
+![Format poorly formatted PHP code](/img/v2/clean_code.webp)
 
 You're recovering some old PHP code; you want to answer a question asked on a forum and the person who posted the PHP question didn't take care to ensure that it was properly formatted; ... there are too many occasions when the syntactic quality of a code can be rotten.
 

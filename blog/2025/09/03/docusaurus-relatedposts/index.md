@@ -3,7 +3,7 @@ date: 2025-09-03
 slug: docusaurus-relatedposts
 title: Displaying related posts below our Docusaurus article
 authors: [christophe]
-image: /img/v2/docusaurus_react.jpg
+image: /img/v2/docusaurus_react.webp
 series: Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide
 description: Enhance your Docusaurus blog by showing related posts beneath each article for better content discovery.
 mainTag: component
@@ -13,7 +13,7 @@ blueskyRecordKey: 3lxvwdh3szc22
 
 <!-- cspell:ignore relatedposts -->
 
-![Displaying related posts below our Docusaurus article](/img/v2/docusaurus_react.jpg)
+![Displaying related posts below our Docusaurus article](/img/v2/docusaurus_react.webp)
 
 Docusaurus can display a list of tags but not related articles.
 
@@ -140,7 +140,7 @@ date: 2025-09-03
 slug: docusaurus-relatedposts
 title: Displaying related posts below our Docusaurus article
 authors: [christophe]
-image: /img/components_social_media.jpg
+image: /img/social-card.webp
 series: Creating Docusaurus components
 # highlight-start
 mainTag: docusaurus

@@ -3,11 +3,11 @@ date: 2023-11-23
 slug: laravel_events
 title: Working with Laravel events
 authors: [christophe]
-image: /img/v2/laravel.jpg
+image: /img/v2/laravel.webp
 mainTag: laravel
 tags: [laravel, php]
 ---
-![Working with Laravel events](/img/v2/laravel.jpg)
+![Working with Laravel events](/img/v2/laravel.webp)
 
 When I started developing for the Joomla CMS (that was 15 years ago, in 2009), one of the things I liked most was the notion of events.
 

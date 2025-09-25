@@ -3,11 +3,11 @@ date: 2023-12-19
 slug: bash-ascii-art
 title: Bash - ASCII art
 authors: [christophe]
-image: /img/v2/bash.jpg
+image: /img/v2/bash.webp
 mainTag: bash
 tags: [bash, tips]
 ---
-![Bash - ASCII art](/img/v2/bash.jpg)
+![Bash - ASCII art](/img/v2/bash.webp)
 
 I write a lot of Bash scripts, and I like to have a similar approach for each one. One of the things I always do is to include a good old-fashioned *ASCII Art* banner, perhaps for the geek factor, but mostly to make a bigger visual impact.
 

@@ -5,9 +5,9 @@ title: Get health information from your running containers
 authors: [christophe]
 mainTag: bash
 tags: [bash, docker, tips]
-image: /img/v2/docker_tips.jpg
+image: /img/v2/docker_tips.webp
 ---
-![Get health information from your running containers](/img/v2/docker_tips.jpg)
+![Get health information from your running containers](/img/v2/docker_tips.webp)
 
 When you've a few runnings containers on your machine, you can quickly retrieve the health information using `docker ps` and his `State.Health` response.
 

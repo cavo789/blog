@@ -2,7 +2,7 @@
 slug: docusaurus-plugin-replace
 title: Creating a search&replace plugin for Docusaurus
 authors: [christophe]
-image: /img/v2/docusaurus_component.jpg
+image: /img/v2/docusaurus_component.webp
 series: Creating Docusaurus components
 description: Automatically replace “markdown” with “Markdown” across all your content to keep your posts consistent.
 mainTag: component
@@ -13,7 +13,7 @@ date: 2025-09-18
 
 <!-- cspell:ignore vstirbu -->
 
-![Creating a search&replace plugin for Docusaurus](/img/v2/docusaurus_component.jpg)
+![Creating a search&replace plugin for Docusaurus](/img/v2/docusaurus_component.webp)
 
 For fun (because that solution is perhaps not bullet proof), I've asked to an AI to generate a plugin to scan my 200 articles and to replace patterns like `docusaurus` by `Docusaurus`, `github` by `GitHub`, `vscode` by `VSCode` so to normalize them across all my content.
 

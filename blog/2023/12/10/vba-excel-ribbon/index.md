@@ -3,11 +3,11 @@ date: 2023-12-10
 slug: vba-excel-ribbon
 title: MS Office - How to create a ribbon in Excel
 authors: [christophe]
-image: /img/v2/ribbon.jpg
+image: /img/v2/ribbon.webp
 mainTag: excel
 tags: [excel, ribbon, vba, vscode]
 ---
-![MS Office - How to create a ribbon in Excel](/img/v2/ribbon.jpg)
+![MS Office - How to create a ribbon in Excel](/img/v2/ribbon.webp)
 
 In this post, we'll learn how to create a ribbon (i.e. a toolbar) in Microsoft Excel.
 

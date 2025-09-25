@@ -3,11 +3,11 @@ date: 2024-02-04
 slug: docusaurus-docker
 title: Running Docusaurus with Docker
 authors: [christophe]
-image: /img/v2/docusaurus_tips.jpg
+image: /img/v2/docusaurus_tips.webp
 mainTag: docusaurus
 tags: [docker, docusaurus, node, npm, tips, yarn]
 ---
-![Running Docusaurus with Docker](/img/v2/docusaurus_tips.jpg)
+![Running Docusaurus with Docker](/img/v2/docusaurus_tips.webp)
 
 As you know, this blog is powered by [Docusaurus](https://docusaurus.io/).
 

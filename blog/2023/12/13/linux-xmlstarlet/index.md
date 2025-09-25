@@ -3,11 +3,11 @@ date: 2023-12-13
 slug: linux-xmlstarlet
 title: The xmlstarlet utility for Linux
 authors: [christophe]
-image: /img/v2/bash.jpg
+image: /img/v2/bash.webp
 mainTag: linux
 tags: [bash, linux, tips, xml, xmlstarlet]
 ---
-![The xmlstarlet utility for Linux](/img/v2/bash.jpg)
+![The xmlstarlet utility for Linux](/img/v2/bash.webp)
 
 `xmlstarlet` is a powerful utility for Linux allowing manipulating XML data from the command line and can be integrated into shell scripts.
 

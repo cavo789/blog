@@ -5,12 +5,12 @@ title: Write PHP unit tests using Pest
 authors: [christophe]
 mainTag: tests
 tags: [laravel, pest, php, phpunit, rector, tests, tips, vscode]
-image: /img/v2/unit_tests.jpg
+image: /img/v2/unit_tests.webp
 ---
 
 <!-- cspell:ignore Nuno -->
 
-![Write PHP unit tests using Pest](/img/v2/unit_tests.jpg)
+![Write PHP unit tests using Pest](/img/v2/unit_tests.webp)
 
 If you think writing unit tests in PHP is fun, stay in the room; the rest of you please leave. And then everyone leaves, including the person who asked the question.
 

@@ -3,14 +3,14 @@ date: 2024-06-24
 slug: behat-introduction
 title: Introduction to Behat
 authors: [christophe]
-image: /img/v2/functional_tests.jpg
+image: /img/v2/functional_tests.webp
 series: Functional testing
 mainTag: tests
 tags: [bdd, behat, chrome, docker, mink, php, tests]
 blueskyRecordKey: 3lxm22j3pa22t
 ---
 <!-- cspell:ignore behat,skel,johndoe,chromedriver,gerkin,dmore,nohup,autoload -->
-![Introduction to Behat](/img/v2/functional_tests.jpg)
+![Introduction to Behat](/img/v2/functional_tests.webp)
 
 > Also read my article about <Link to="/blog/cypress">Cypress</Link>
 

@@ -3,11 +3,11 @@ date: 2023-12-27
 slug: docker-adminer-pgadmin-phpmyadmin
 title: Using Adminer, pgadmin or phpmyadmin to access your Docker database container
 authors: [christophe]
-image: /img/v2/database_admin.jpg
+image: /img/v2/database_admin.webp
 mainTag: database
 tags: [adminer, docker, mysql, postgresql]
 ---
-![Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/img/v2/database_admin.jpg)
+![Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/img/v2/database_admin.webp)
 
 You've a dockerized application and one of its container is a MariaDB, MySQL or PostgreSQL service.
 

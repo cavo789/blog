@@ -3,11 +3,11 @@ date: 2025-01-19
 slug: php-grep-searching-at-lightning-speed
 title: Search your FTP server at lightning speed
 authors: [christophe]
-image: /img/v2/winscp.jpg
+image: /img/v2/winscp.webp
 mainTag: winscp
 tags: [ftp, php_grep, tips, winscp]
 ---
-![Search your FTP server at lightning speed](/img/v2/winscp.jpg)
+![Search your FTP server at lightning speed](/img/v2/winscp.webp)
 
 Did you know that using [WinSCP](https://winscp.net/), you can run a search on your FTP to find all the documents containing a given string? It's native in WinSCP; nothing more to install but...
 

@@ -3,11 +3,11 @@ date: 2024-03-29
 slug: zsh-syntax-highlighting
 title: Syntax highlighting in the console using ZSH
 authors: [christophe]
-image: /img/v2/zsh.jpg
+image: /img/v2/zsh.webp
 mainTag: zsh
 tags: [customization, linux, wsl, zsh]
 ---
-![Syntax highlighting in the console using ZSH](/img/v2/zsh.jpg)
+![Syntax highlighting in the console using ZSH](/img/v2/zsh.webp)
 
 [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/) is another gem for ZSH.
 

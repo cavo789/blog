@@ -3,11 +3,11 @@ date: 2024-01-23
 slug: cpanel-spam
 title: Exterminate them all, fight spam directly at your host company
 authors: [christophe]
-image: /img/v2/planethoster.jpg
+image: /img/v2/planethoster.webp
 mainTag: spamassassin
 tags: [cpanel, spamassassin]
 ---
-![Exterminate them all, fight spam directly at your host company](/img/v2/planethoster.jpg)
+![Exterminate them all, fight spam directly at your host company](/img/v2/planethoster.webp)
 
 If your web host company offers you a cpanel access, you will find there access to a tool called *SpamAssassin*.
 

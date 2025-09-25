@@ -3,11 +3,11 @@ date: 2023-12-31
 slug: powerlevel10k_sandbox
 title: Customize your Linux prompt with Powerlevel10k
 authors: [christophe]
-image: /img/v2/customization_prompt.jpg
+image: /img/v2/customization_prompt.webp
 mainTag: customization
 tags: [customization, docker, tips, wsl, zsh]
 ---
-![Customize your Linux prompt with Powerlevel10k](/img/v2/customization_prompt.jpg)
+![Customize your Linux prompt with Powerlevel10k](/img/v2/customization_prompt.webp)
 
 When you're working with Linux (also working with WSL thus), there are many ways to personalize your prompt. One of the simplest solutions is to use [Powerlevel10k](https://github.com/romkatv/powerlevel10k) and its wizard.
 

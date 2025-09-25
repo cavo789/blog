@@ -26,7 +26,7 @@ src/components/Blog/PostCard/styles.module.css
 ```jsx
 import PostCard from '@site/src/components/Blog/PostCard';
 
-<PostCard post={post} defaultImage="/img/fallback.jpg" />
+<PostCard post={post} defaultImage="/img/default.webp" />
 ```
 
 ## 🧾 Props
@@ -34,14 +34,14 @@ import PostCard from '@site/src/components/Blog/PostCard';
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | `post` | object | ✅ | — | Blog post metadata (see structure below) |
-| `defaultImage` | string | ❌ | `/img/default.jpg` | Fallback image path if `post.image` is missing |
+| `defaultImage` | string | ❌ | `/img/default.webp` | Fallback image path if `post.image` is missing |
 
 ### post object structure
 
 ```js
 {
   permalink: "/blog/my-post",
-  image: "/img/my-post.jpg",
+  image: "/img/my-post.webp",
   title: "My Blog Post",
   description: "A short summary of the post."
 }

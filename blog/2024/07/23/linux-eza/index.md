@@ -3,11 +3,11 @@ date: 2024-07-23
 slug: linux-eza
 title: Let's revisit the ls command thanks to eza
 authors: [christophe]
-image: /img/v2/linux_tips.jpg
+image: /img/v2/linux_tips.webp
 mainTag: customization
 tags: [customization, linux]
 ---
-![Let's revisit the ls command thanks to eza](/img/v2/linux_tips.jpg)
+![Let's revisit the ls command thanks to eza](/img/v2/linux_tips.webp)
 
 Which CLI command would you say you use most on Linux? Most definitely `ls` to display the list of files in the current directory.
 

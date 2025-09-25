@@ -3,11 +3,11 @@ date: 2024-02-14
 slug: php-rector
 title: Rector 1.0.0 🎉🎉🎉, my friend, my coach
 authors: [christophe]
-image: /img/v2/rector.jpg
+image: /img/v2/rector.webp
 mainTag: php
 tags: [code-quality, composer, php, rectorphp]
 ---
-![Rector 1.0.0 🎉🎉🎉, my friend, my coach](/img/v2/rector.jpg)
+![Rector 1.0.0 🎉🎉🎉, my friend, my coach](/img/v2/rector.webp)
 
 If there was only one, it would be [Rector](https://github.com/rectorphp/rector). **Rector is extremely powerful and brilliant and, you know what, it's free!**
 

@@ -5,10 +5,10 @@ title: Open your Linux folder in Windows Explorer
 authors: [christophe]
 mainTag: wsl
 tags: [tips, wsl, windows]
-image: /img/v2/wsl.jpg
+image: /img/v2/wsl.webp
 ---
 <!-- cspell:ignore cbfsconnect -->
-![Open your Linux folder in Windows Explorer](/img/v2/wsl.jpg)
+![Open your Linux folder in Windows Explorer](/img/v2/wsl.webp)
 
 Did you know it is possible to use the Windows Explorer program and navigate on your Linux filesystem?
 

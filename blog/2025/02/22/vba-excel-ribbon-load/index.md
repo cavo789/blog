@@ -3,12 +3,12 @@ date: 2025-02-22
 slug: vba-excel-ribbon-load
 title: MS Office - Load dropdown from Excel's range
 authors: [christophe]
-image: /img/v2/ribbon.jpg
+image: /img/v2/ribbon.webp
 mainTag: excel
 tags: [excel, ribbon, vba, vscode]
 blueskyRecordKey: 3lwgc3uymnc2i
 ---
-![MS Office - Load dropdown from Excel's range](/img/v2/ribbon.jpg)
+![MS Office - Load dropdown from Excel's range](/img/v2/ribbon.webp)
 
 In this article, we'll see how, very easily, we can load an Excel range into a ribbon and display it inside a dropdown.
 

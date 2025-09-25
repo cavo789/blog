@@ -3,12 +3,12 @@ date: 2025-05-08
 slug: linux-ssh-scp
 title: SSH - Launch a terminal on your session without having to authenticate yourself
 authors: [christophe]
-image: /img/v2/ssh.jpg
+image: /img/v2/ssh.webp
 mainTag: ssh
 tags: [linux, putty, scp, ssh, tips]
 blueskyRecordKey: 3lun2x6tugs2r
 ---
-![SSH - Launch a terminal on your session without having to authenticate yourself](/img/v2/ssh.jpg)
+![SSH - Launch a terminal on your session without having to authenticate yourself](/img/v2/ssh.webp)
 
 <UpdateAt
   title="Recent Changes"

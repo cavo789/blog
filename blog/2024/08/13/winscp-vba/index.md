@@ -3,11 +3,11 @@ date: 2024-08-13
 slug: winscp-vba
 title: WinSCP - Visual Basic for Application use
 authors: [christophe]
-image: /img/v2/winscp.jpg
+image: /img/v2/winscp.webp
 mainTag: winscp
 tags: [tips, vba, winscp]
 ---
-![WinSCP - Visual Basic for Application use](/img/v2/winscp.jpg)
+![WinSCP - Visual Basic for Application use](/img/v2/winscp.webp)
 
 [WinSCP](https://winscp.net/) is a free, open-source file manager for securely transferring files between your computer and remote servers using protocols like SFTP, FTP, SCP, and WebDAV.
 

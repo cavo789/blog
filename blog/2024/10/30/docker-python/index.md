@@ -3,7 +3,7 @@ date: 2024-10-30
 slug: docker-python-devcontainer
 title: Docker - Python devcontainer
 authors: [christophe]
-image: /img/v2/devcontainer.jpg
+image: /img/v2/devcontainer.webp
 series: Coding using a devcontainer
 mainTag: python
 tags: [devcontainer, docker, python]
@@ -11,7 +11,7 @@ tags: [devcontainer, docker, python]
 <!-- cspell:ignore PYTHONDONTWRITEBYTECODE,PYTHONUNBUFFERED,HISTFILE -->
 <!-- cspell:ignore addgroup,adduser,keyscan,hadolint,gecos,endregion -->
 <!-- cspell:ignore bashhistory,groupid,commandhistory,pylint,synchronised -->
-![Docker - Python devcontainer](/img/v2/devcontainer.jpg)
+![Docker - Python devcontainer](/img/v2/devcontainer.webp)
 
 As you know, VSCode is a superb editor that lets you program in probably any programming language.  An editor, not an IDE, because VSCode is basically a Notepad in its ultimate version.
 
