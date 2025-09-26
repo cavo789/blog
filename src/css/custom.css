@@ -84,3 +84,8 @@
     display: block;
     margin-bottom: 20px;
 }
+
+.about_images {
+  max-width: 100%;
+  height: auto;
+}
