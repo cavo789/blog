@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: "yarn"
 
       - name: Cache Node.js modules
@@ -39,7 +39,7 @@ jobs:
 
       - name: Build website
         run: yarn build
-        
+
       - name: Push files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
