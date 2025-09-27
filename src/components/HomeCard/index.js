@@ -36,7 +36,7 @@ export default function HomeCard({ title, image, link, description, alt }) {
     <div className={`${styles.fade_in} ${styles.card} card col col--3 margin-bottom--lg`}>
       <a href={link}>
         <Card>
-          <CardImage cardImageUrl={`/img/homepage/${image}`} alt={alt || description} lazy={false} width={298} height={298} />
+          <CardImage cardImageUrl={`/img/homepage/${image}`} alt={alt || description} lazy={false} />
           <CardBody className="padding-vert--md text--center" textAlign='center' transform='uppercase'>
             <h3>{title}</h3>
             <p>{description}&nbsp;→</p>

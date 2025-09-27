@@ -35,11 +35,11 @@ So, after a few prompts with the AI, a plugin has been generated and it works so
 
 ## The plugin
 
-Please create the `plugins/remark-replace-terms/remarkReplaceTerms` file and look at the `replacements` array. Please add yours.
+Please create the `plugins/remark-replace-terms/index.cjs` file and look at the `replacements` array. Please add yours.
 
 The syntax is `[/\b(1)\b/g, "(2)"],` where `(1)` is the word to search for (exactly written as is (case sensitive)) and `(2)` the replaced by value.
 
-<Snippet filename="plugins/remark-replace-terms/index.js" source="plugins/remark-replace-terms/index.js" />
+<Snippet filename="plugins/remark-replace-terms/index.cjs" source="plugins/remark-replace-terms/index.cjs" />
 
 ## Adding the plugin in your configuration
 

@@ -1,16 +1,10 @@
 {
-    "enableFileTypes": [
-        "dockercompose",
-        "dockerfile",
-        "dotenv",
-        "makefile",
-        "markdown",
-        "shellscript",
-        "yaml"
-    ],
     "dictionaries": [
         "en-GB",
         "blog"
+    ],
+    "words":[
+      "iconify"
     ],
     "dictionaryDefinitions": [
         {

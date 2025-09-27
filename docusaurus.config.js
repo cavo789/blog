@@ -11,11 +11,10 @@ const isProd = process.env.NODE_ENV === "production";
 
 import { themes as prismThemes } from "prism-react-renderer";
 
-import remarkReplaceImgToImage from "./plugins/remark-image-transformer";
-import remarkReplaceWords from "./plugins/remark-replace-terms";
-import remarkSnippetLoader from "./plugins/remark-snippet-loader/index.cjs";
 import pluginSeriesRoute from "./plugins/docusaurus-plugin-series-route/index.cjs";
 import pluginTagRoute from "./plugins/docusaurus-plugin-tag-route/index.cjs";
+import remarkReplaceWords from "./plugins/remark-replace-terms/index.cjs";
+import remarkSnippetLoader from "./plugins/remark-snippet-loader/index.cjs";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -46,7 +45,6 @@ const config = {
   // If we don't ignore broken links, Docusaurus will always throw an error during build
   // time.
   onBrokenLinks: "ignore",
-  onBrokenMarkdownLinks: "warn",
   onDuplicateRoutes: "throw",
 
   customFields: {
@@ -88,6 +86,10 @@ const config = {
       async: true,
       defer: true,
     },
+    {
+      src: "https://matomo.avonture.be/matomo.js",
+      async: true,
+    },
   ],
   presets: [
     [
@@ -114,7 +116,6 @@ const config = {
           // Replace words like "vscode" or "markdown" to "VSCode" and "Markdown"
           beforeDefaultRemarkPlugins: [
             remarkSnippetLoader,
-            remarkReplaceImgToImage,
             remarkReplaceWords,
           ],
         },
@@ -131,8 +132,20 @@ const config = {
     ],
   ],
   plugins: [
-    "docusaurus-plugin-matomo",
-    [require.resolve("docusaurus-plugin-image-zoom"), {}],
+    [
+      "@docusaurus/plugin-ideal-image",
+      {
+        quality: 80,
+        max: 1200,
+        min: 320,
+        steps: 4,
+        disableInDev: false,
+        sizes:
+          "(max-width: 480px) 320px, (max-width: 768px) 600px, (max-width: 1024px) 900px, 100vw",
+        formats: ["webp", "auto"],
+        fallbackFormat: "auto",
+      },
+    ],
     [pluginSeriesRoute, {}],
     [pluginTagRoute, {}],
   ],
@@ -158,6 +171,20 @@ const config = {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap",
       },
+    },
+    {
+      tagName: "script",
+      attributes: { type: "text/javascript" },
+      innerHTML: `
+      var _paq = window._paq = window._paq || [];
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="https://matomo.avonture.be/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+      })();
+    `,
     },
     {
       tagName: "script",
@@ -249,12 +276,6 @@ const config = {
         style: "dark",
         copyright: `Copyright © ${new Date().getFullYear()} Christophe Avonture. Powered by Docusaurus.`,
       },
-      matomo: {
-        matomoUrl: "https://matomo.avonture.be/",
-        siteId: "1",
-        phpLoader: "matomo.php",
-        jsLoader: "matomo.js",
-      },
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
@@ -265,14 +286,12 @@ const config = {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
       },
-      zoom: {
-        selector: ".markdown :not(em) > img",
-        config: {
-          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
-          background: {
-            light: "rgb(255, 255, 255)",
-            dark: "rgb(50, 50, 50)",
-          },
+      imageZoom: {
+        selector: ".markdown :not(a) > img:not([data-no-zoom])",
+
+        background: {
+          light: "rgb(255, 255, 255)",
+          dark: "rgb(50, 50, 50)",
         },
       },
       algolia: {

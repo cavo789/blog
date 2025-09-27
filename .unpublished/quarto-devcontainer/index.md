@@ -64,8 +64,14 @@ ARG USER_GID=1000
 
 # ---------- Stage 1: Install system dependencies ----------
 #
-# openssh-client: used by git when pushing/pulling using git@ protocol
-# python3-pip: needed to be able to install pre-commit-hooks
+# openssh-client
+#    used by git when pushing/pulling using git@ protocol
+# python3-pip
+#    needed to be able to install pre-commit-hooks
+# texlive-xetex texlive-fonts-recommended texlive-plain-generic
+#    to be able to render as PDF using "quarto render . --to pdf"
+# yamllint
+#    so we can validate YAML frontmatter in .qmd files
 RUN --mount=type=cache,target=/var/cache/apt \
     --mount=type=cache,target=/var/lib/apt \
     apt-get update && \
@@ -78,16 +84,37 @@ RUN --mount=type=cache,target=/var/cache/apt \
     libxkbfile-dev \
     openssh-client \
     python3-pip \
+    texlive-xetex texlive-fonts-recommended texlive-plain-generic \
     unzip \
+    yamllint \
     && rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip to its latest version
-RUN pip3 install --no-cache-dir --upgrade pip
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip3 install --no-cache-dir --upgrade pip
 
 # Install pre-commit hook tool
-RUN pip3 install --no-cache-dir pre-commit
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip3 install --no-cache-dir pre-commit
 
-# ---------- Stage 2: Create the user and setup permissions ------------------
+# Install yq which is a YAML validator so we'll be able to validate YAML frontmatter
+RUN --mount=type=cache,target=/var/cache/yq \
+    curl -L https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 \
+    -o /var/cache/yq/yq_linux_amd64 && \
+    cp /var/cache/yq/yq_linux_amd64 /usr/bin/yq && chmod +x /usr/bin/yq
+
+# ---------- Stage 2: Install Node.js + cspell -------------------------------
+# hadolint ignore=DL3008,DL3016,DL4006
+RUN --mount=type=cache,target=/var/cache/apt \
+    --mount=type=cache,target=/var/lib/apt \
+    --mount=type=cache,target=/root/.npm \
+    set -eux && \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y --no-install-recommends nodejs && \
+    npm install -g cspell && \
+    rm -rf /var/lib/apt/lists/*
+
+# ---------- Stage 3: Create the user and setup permissions ------------------
 
 RUN set -eux && \
     USER_UID=${USER_UID:-1000} && \
@@ -96,7 +123,23 @@ RUN set -eux && \
     useradd -m -u "${USER_UID}" -g "${USER_GID}" -s /bin/bash "${USERNAME}" && \
     chown -R "${USERNAME}":"${USERNAME}" "/home/${USERNAME}"
 
-# ---------- Stage 3: Finalization -------------------------------------------
+# ---------- Stage 4: Install Quarto extensions with cache -------------------
+
+# Uncomment next lines if you want to pre-install extensions in the container.
+# Some examples:
+#
+# - gadenbuie/quarto-partials        https://github.com/gadenbuie/quarto-partials/tree/main
+# - quarto-ext/fontawesome           https://github.com/quarto-ext/fontawesome
+# - quarto-ext/include-code-files    https://github.com/quarto-ext/include-code-files
+# - ute/search-replace               https://github.com/ute/search-replace
+#
+# RUN --mount=type=cache,target=/home/vscode/.quarto/extensions \
+#     quarto install extension gadenbuie/quarto-partials && \
+#     quarto install extension quarto-ext/fontawesome && \
+#     quarto install extension quarto-ext/include-code-files && \
+#     quarto install extension ute/search-replace
+
+# ---------- Stage 5: Finalization -------------------------------------------
 
 USER ${USERNAME}
 
@@ -129,14 +172,16 @@ echo -e "Below are some useful commands:"
 echo -e ""
 echo -e "  \e[1mQuarto Commands\e[0m"
 echo -e "  ───────────────"
-echo -e "  ✨ \e[32mquarto preview .\e[0m                Start a hot-reloading preview in your browser."
-echo -e "  ✨ \e[32mquarto render .\e[0m                 Build the documentation (based on _quarto.yml)."
-echo -e "  ✨ \e[32mquarto render . --profile docx\e[0m  Build a .docx file (requires _quarto-docx.yml)."
+echo -e "  ✨ \e[32mquarto preview .\e[0m                             Start a hot-reloading preview in your browser."
+echo -e "  ✨ \e[32mquarto render .\e[0m                              Build the documentation (based on _quarto.yml)."
+echo -e "  ✨ \e[32mquarto render . --profile docx\e[0m               Build a .docx file (requires _quarto-docx.yml)."
 echo -e ""
-echo -e "  \e[1mGit Hooks\e[0m"
+echo -e "  \e[1mData quality checks\e[0m"
 echo -e "  ─────────"
-echo -e "  ⚙️  \e[32mpre-commit run --all-files\e[0m     Run code quality checks on all files."
+echo -e "  ✍️  \e[32mcspell lint . --config .vscode/cspell.json\e[0m  Run spell checks."
+echo -e "  ⚙️  \e[32mpre-commit run --all-files\e[0m                  Run code quality checks on all files."
 echo -e ""
+
 EOF
 
 ```
@@ -161,8 +206,11 @@ And create the `.devcontainer/devcontainer.json` file too with the content here 
     "runArgs": [
         "--mount=type=bind,source=${env:HOME}/.ssh,target=/home/vscode/.ssh,readonly"
     ],
+    "mounts": [
+        "source=${env:HOME}/.quarto,target=/home/vscode/.quarto,type=bind"
+    ],
     "containerEnv": {
-        "GIT_SSH_COMMAND": "ssh -i /home/vscode/.ssh/id_ed25519 -o 'StrictHostKeyChecking no'"
+        "GIT_SSH_COMMAND": "ssh -i /home/vscode/.ssh/id_ed25519 -o 'UserKnownHostsFile=/dev/null'"
     },
     "customizations": {
         "vscode": {
@@ -224,15 +272,13 @@ And create the `.devcontainer/devcontainer.json` file too with the content here 
                 "files.defaultLanguage": "${activeEditorLanguage}",
                 "files.eol": "\n",
                 "files.exclude": {
-                    "**/.DS_Store": true,
+                    "**/.build": true,
                     "**/.cache": true,
                     "**/.git": true,
-                    "**/.hg": true,
-                    "**/.svn": true,
-                    "**/CVS": true,
-                    "**/documentation/**/*.html": true,
-                    "**/documentation/**/readme_files/**": true,
-                    "**/documentation/**/site_libs/**": true
+                    "**/.quarto": true,
+                    "**/*.html": true,
+                    "**/readme_files/**": true,
+                    "**/site_libs/**": true
                 },
                 "files.insertFinalNewline": true,
                 "files.trimTrailingWhitespace": true,
@@ -275,8 +321,6 @@ And create the `.devcontainer/devcontainer.json` file too with the content here 
                 "quarto.quarto",
                 "redhat.vscode-yaml",
                 "sirtori.indenticator",
-                "streetsidesoftware.code-spell-checker-dutch",
-                "streetsidesoftware.code-spell-checker-french",
                 "streetsidesoftware.code-spell-checker",
                 "yzhang.markdown-all-in-one"
             ]
@@ -357,8 +401,11 @@ Just copy/paste the content below:
 <Snippet filename=".pre-commit-config.yaml">
 
 ```yaml
+# Pre-commit configuration for Quarto projects
+exclude: "^.build/|^.git/|^.quarto/"
+
 repos:
-  # Universal hooks for clean files
+  # --- Universal hooks for clean files ---
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
@@ -372,13 +419,52 @@ repos:
       - id: trailing-whitespace
 
   # Markdown linter
-  - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.18.1
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.45.0
     hooks:
-      - id: markdownlint-cli2
+      - id: markdownlint
         args:
-          - '--disable'
-          - 'MD013' # Disable line length rule, which is often too strict for documentation
+          - "--config=.config/.markdownlint.yaml"
+
+  # Checks all of the hyperlinks in a markdown text to determine if they are alive or dead
+  - repo: https://github.com/tcort/markdown-link-check
+    rev: v3.13.7
+    hooks:
+      - id: markdown-link-check
+        name: Check Markdown Links
+        entry: markdown-link-check
+        language: node
+        types: [markdown]
+
+  # The hook below hook extracts the YAML frontmatter from each .qmd
+  # file and validates its syntax using yq.
+  # It helps catch formatting errors (e.g. missing colons, invalid keys)
+  # before committing.
+  # Only the YAML block between the first pair of --- lines is checked.
+  - repo: local
+    hooks:
+      - id: validate-qmd-yaml
+        name: Validate YAML frontmatter in .qmd
+        entry: bash -c 'awk "/^---/{f=!f;next}f" "$1" | yq eval "." - > /dev/null'
+        language: system
+        pass_filenames: true
+        args: ["{}"]
+        files: \.qmd$
+
+  # --- Spelling ---
+  # Requires to install cspell in the Docker file as a binary. This implies to install NPM tool
+  # The .vscode/cspell.json file is shared with VSCode
+  - repo: local
+    hooks:
+      - id: cspell
+        name: Spell check with cspell
+        entry: cspell
+        language: system
+        args:
+          - "--config=.vscode/cspell.json"
+          - "--no-progress"
+          - "--no-summary"
+        exclude: ^.*_extensions/.*
 ```
 
 </Snippet>
