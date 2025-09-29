@@ -5,7 +5,7 @@ authors: [christophe]
 image: /img/v2/gemini.webp
 mainTag: ai
 tags: [ai]
-date: 2025-09-30
+date: 2025-09-29
 blueskyRecordKey:
 ---
 
