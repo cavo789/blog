@@ -6,11 +6,11 @@ image: /img/v2/gemini.webp
 mainTag: ai
 tags: [ai]
 date: 2025-09-29
-blueskyRecordKey:
+blueskyRecordKey: 3lzxdr6w3e223
 ---
 
 <!-- markdownlint-disable MD049 -->
-<!-- cspell:ignore clipart -->
+<!-- cspell:ignore clipart,lzxdr -->
 
 ![How I used Google Gemini Nano Banana on my blog](/img/v2/gemini.webp)
 

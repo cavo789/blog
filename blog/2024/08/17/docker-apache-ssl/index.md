@@ -6,6 +6,7 @@ authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: ssl
 tags: [apache, docker, https, php, nginx, ssh]
+blueskyRecordKey:
 ---
 <!-- cspell:ignore htdocs,newkey,keyout,a2enmod,a2ensite,a2dissite,libapache2,unexpire,badaboum,socache,shmcb -->
 

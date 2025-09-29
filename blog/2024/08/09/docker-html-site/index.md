@@ -2,12 +2,14 @@
 date: 2024-08-09
 slug: docker-html-site
 title: Running a HTML site in seconds using Docker
+description: Learn how to start a HTML site with Docker in just one CLI.
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
 tags: [docker, easyphp, powershell, wamp]
+blueskyRecordKey: 3lzxdp44mw223
 ---
-<!-- cspell:ignore easyphp,wamp,pffffiou,htdocs -->
+<!-- cspell:ignore easyphp,wamp,pffffiou,htdocs,lzxdp -->
 
 ![Running a HTML site in seconds using Docker](/img/v2/docker_tips.webp)
 
