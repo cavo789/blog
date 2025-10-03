@@ -7,7 +7,7 @@ series: Creating Docusaurus components
 description: Displays a warning banner when the page content is over a year old
 mainTag: component
 tags: [component, docusaurus]
-blueskyRecordKey:
+blueskyRecordKey: 3m2bjrehbnc2r
 date: 2025-10-03
 ---
 
