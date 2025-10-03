@@ -29,7 +29,7 @@ In my recipe, I tell you what to prepare first, then what to add; at what precis
 
 That's it; it's up to you.
 
-![Culinary recipe](./images/culinary_recipe.png)
+![Culinary recipe](./images/culinary_recipe.webp)
 
 Of course, 95% of you will fail (**I'll too**).  Because you don't have the time to go and buy everything; because you don't have the right quantities or qualities (Belgian strawberries, aren't they?); because you don't have the time to run around to different shops.
 
@@ -41,7 +41,7 @@ Here again, despite a perfectly written list of specifications, over 95% of you 
 
 In the software world, you might say *OK, no worries, just all the things on a USB stick*. Instead of sending you a recipe, I'm sending you all a USB stick. Maybe that would solve the problem, eh?
 
-![USB stick](./images/usb.png)
+![USB stick](./images/usb.webp)
 
 Well no, apart from the fact that it's going to cost me a lot of money and that it's really not practical, how can you run Linux, Joomla, MySQL and lots of other things on a single USB stick? To have a button somewhere that says ‘Start the programme’ and the magic of that button means that, for example, Joomla is up and running and I can access my local website.
 
@@ -51,13 +51,13 @@ Docker simplifies everything. It's a bit like a virtual machine, but not really.
 
 You could try to say that Docker is a bit like *I telework, I'm at home and I connect remotely to a computer at my employer's*; it's almost that, but it's so much different.
 
-![Teleworking](./images/telework.png)
+![Teleworking](./images/telework.webp)
 
 It's almost the same thing, but it's so different. On your home computer, you don't have the professional software you use, you don't have your professional e-mail, etc. The comparison (finding software and applications that you use at home) is very different. But the comparison (finding software and configurations that you don't have on your PC) stops there.
 
 Docker will *virtualise* a new operating system on your computer (whether it's Linux, macOS or Windows): thanks to Docker, you'll be able to run a Linux (Debian, Ubuntu 24.04, etc.) on your Windows computer: if you need to access files from Linux, they'll be those on your computer (unlike the example above with your professional PC). If you need to use a webcam, it will be that of your PC, your webcam, your sound card, your printer, etc.
 
-![Virtualization concept](./images/virtualization.png)
+![Virtualization concept](./images/virtualization.webp)
 
 It's your computer, but in a slightly special environment: a Docker image running in RAM.
 
@@ -69,7 +69,7 @@ What's in it for you? No ingredients to buy, prepare or cook. Just a few seconds
 
 What's in it for us? Everyone has exactly the same environment; if it works for me, it will work for you. As everything is pre-configured, the program that runs in a Docker environment will run in the same way for everyone.
 
-![It works on my machine](./images/it_works_on_my_machine.png)
+![It works on my machine](./images/it_works_on_my_machine.webp)
 
 ## ... and to an example such as Joomla
 
@@ -77,7 +77,7 @@ You've got it: if someone (me or anything) creates a Docker image to run Joomla;
 
 For Joomla, the official image is here: [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla). The instructions are explained in the ‘How to use this image’ chapter.
 
-![Running Joomla](./images/running_joomla.png)
+![Running Joomla](./images/running_joomla.webp)
 
 ## Some more information
 
@@ -93,4 +93,4 @@ Personally, I use Docker every day to develop ([Linux bash](https://hub.docker.c
 
 I no longer install anything on my machines apart from Docker.
 
-![Goodbye](./images/goodbye.png)
+![Goodbye](./images/goodbye.webp)

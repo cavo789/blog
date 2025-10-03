@@ -15,6 +15,13 @@ date: 2025-09-24
 <!-- cspell:ignore iconify,docux,pyproject -->
 ![A component for showing code snippets in a Docusaurus blog](/img/v2/docusaurus_react.webp)
 
+<UpdateAt
+  title="Recent Changes"
+  updates={[
+    { date: "2025-10-10", content: "Allow relative paths" },
+  ]}
+/>
+
 If you're a regular reader of this blog, you know I'm sharing a lot of code snippets.
 
 The HTML native way of doing this is by using the `<summary>` element (see [official documentation](https://www.w3schools.com/tags/tag_summary.asp)).
@@ -144,6 +151,14 @@ Let's imagine this:
 - `source` is the relative path (from your Docusaurus root folder) when the file can be retrieved. In this scenario, we don't have to put the source code in the file but Docusaurus will do the job for us:
   - When previewing the site (dev mode), a plugin will read the content immediately from the disk and will inject its content. So, if the sourced file is updated, your article will always be up-to-date
   - When building the static version (prod mode), the Docusaurus build engine will also read the content of the file from the disk and inject it in your article.
+
+:::caution
+You've two types of paths: from your root folder or relative to the blog post.
+
+If you use the `source="./files/example.js"` syntax (the path is starting with a dot), the file will be relative to your blog post.
+
+The second possible syntax is without the dot like `source="src/components/Blog/Snippet/index.js"` and, in this case, the filename will be relative to your Docusaurus root folder i.e. the folder where the `docusaurus.config.js` file is saved.
+:::
 
 ### To make this working, a need a plugin
 
@@ -486,3 +501,7 @@ Unlike the previous chapter, here, the syntax `<Snippet filename="src/components
 <Snippet filename="src/components/Blog/PostCard/readme.md" source="src/components/Blog/PostCard/readme.md" />
 
 <Snippet filename="src/components/Blog/PostCard/styles.module.css" source="src/components/Blog/PostCard/styles.module.css" />
+
+And, last demo, retrieve the content of file relative to this blog post **(so the source filename starts here with a dot to tell it's relative to the `.md` file)**:
+
+<Snippet filename="./files/hello_world.py" source="./files/hello_world.py" />

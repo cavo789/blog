@@ -44,296 +44,61 @@ Run `code .` to open the project in VSCode and you'll get this:
 
 ![Opening the brand-simple project in VSCode](./images/opening-in-vscode.png)
 
-## Adding our .devcontainer files
+## We'll need to create three files
 
-Please create the `.devcontainer/Dockerfile` file with the content below.
+To get the best performance in terms of Docker image build speed and use of the Docker cache mechanism, we will need to create three files:
 
-In short, this Dockerfile sets up a Quarto-based development container tailored for documentation projects with Git and pre-commit integration.
+The `compose.yaml` file is necessary to tell VSCode to create our Docker image if it does not already exist, or to reuse it if it does. This file is therefore essential in terms of performance.
 
-<Snippet filename=".devcontainer/Dockerfile">
+The `Dockerfile` file defines our Docker image: the binaries we need, user configuration, etc.
 
-```dockerfile
-# syntax=docker/dockerfile:1.4
+The `devcontainer.json` file is used by VSCode to understand and build our working environment.
 
-# cspell:disable
-FROM ghcr.io/quarto-dev/quarto:latest
+<Snippet filename=".devcontainer/compose.yaml" source="./files/compose.yaml" />
 
-ARG USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=1000
+<Snippet filename=".devcontainer/Dockerfile" source="./files/Dockerfile" />
 
-# ---------- Stage 1: Install system dependencies ----------
-#
-# openssh-client
-#    used by git when pushing/pulling using git@ protocol
-# python3-pip
-#    needed to be able to install pre-commit-hooks
-# texlive-xetex texlive-fonts-recommended texlive-plain-generic
-#    to be able to render as PDF using "quarto render . --to pdf"
-# yamllint
-#    so we can validate YAML frontmatter in .qmd files
-RUN --mount=type=cache,target=/var/cache/apt \
-    --mount=type=cache,target=/var/lib/apt \
-    apt-get update && \
-    apt-get install -y --no-install-recommends \
-    ca-certificates \
-    curl \
-    git \
-    libsecret-1-dev \
-    libx11-dev \
-    libxkbfile-dev \
-    openssh-client \
-    python3-pip \
-    texlive-xetex texlive-fonts-recommended texlive-plain-generic \
-    unzip \
-    yamllint \
-    && rm -rf /var/lib/apt/lists/*
+<Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.json" />
 
-# Upgrade pip to its latest version
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip3 install --no-cache-dir --upgrade pip
+:::tip
+Strictly speaking, we don't need the `compose.yaml` file but this is the only way to build the Docker image **once** and reuse it across projects.
 
-# Install pre-commit hook tool
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip3 install --no-cache-dir pre-commit
+By opening a Devcontainer, even if the `Dockerfile` is strictly the same across your documentation projects, the context will be different (**project1**, **project2**, ...) and VSCode will rebuild the image for that context. To avoid this, we need to build the image and **give it a name**; this can only be done using a `compose.yaml` file.
+:::
 
-# Install yq which is a YAML validator so we'll be able to validate YAML frontmatter
-RUN --mount=type=cache,target=/var/cache/yq \
-    curl -L https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 \
-    -o /var/cache/yq/yq_linux_amd64 && \
-    cp /var/cache/yq/yq_linux_amd64 /usr/bin/yq && chmod +x /usr/bin/yq
+## Extra information
 
-# ---------- Stage 2: Install Node.js + cspell -------------------------------
-# hadolint ignore=DL3008,DL3016,DL4006
-RUN --mount=type=cache,target=/var/cache/apt \
-    --mount=type=cache,target=/var/lib/apt \
-    --mount=type=cache,target=/root/.npm \
-    set -eux && \
-    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
-    apt-get install -y --no-install-recommends nodejs && \
-    npm install -g cspell && \
-    rm -rf /var/lib/apt/lists/*
+### Installation of sudo
 
-# ---------- Stage 3: Create the user and setup permissions ------------------
+During the creation of the Docker image, we also install the `sudo` command and allow our `vscode` user to run `sudo su root` in the devcontainer without to have to fill in a password. The reason here is, sometimes, Quarto will complaints about a missing dependency (like exporting to PDF). To allow the developer to quickly add the dependency and do some tests without to rebuild the container again and again, `sudo` is installed.
 
-RUN set -eux && \
-    USER_UID=${USER_UID:-1000} && \
-    USER_GID=${USER_GID:-1000} && \
-    groupadd -g "${USER_GID}" "${USERNAME}" && \
-    useradd -m -u "${USER_UID}" -g "${USER_GID}" -s /bin/bash "${USERNAME}" && \
-    chown -R "${USERNAME}":"${USERNAME}" "/home/${USERNAME}"
+So, while you're in the console, you'll be able to do something like:
 
-# ---------- Stage 4: Install Quarto extensions with cache -------------------
+<Terminal wrap={true}>
+$ sudo apt-get update && sudo apt-get install -y --no-install-recommends the-missing-dependency
+</Terminal>
 
-# Uncomment next lines if you want to pre-install extensions in the container.
-# Some examples:
-#
-# - gadenbuie/quarto-partials        https://github.com/gadenbuie/quarto-partials/tree/main
-# - quarto-ext/fontawesome           https://github.com/quarto-ext/fontawesome
-# - quarto-ext/include-code-files    https://github.com/quarto-ext/include-code-files
-# - ute/search-replace               https://github.com/ute/search-replace
-#
-# RUN --mount=type=cache,target=/home/vscode/.quarto/extensions \
-#     quarto install extension gadenbuie/quarto-partials && \
-#     quarto install extension quarto-ext/fontawesome && \
-#     quarto install extension quarto-ext/include-code-files && \
-#     quarto install extension ute/search-replace
+## Build arguments
 
-# ---------- Stage 5: Finalization -------------------------------------------
+### Installation of Chromium
 
-USER ${USERNAME}
+If you pay attention to `compose.yaml` file, you'll see an argument called `INSTALL_CHROMIUM`. Depending on your project, you'll need it or not.
 
-# Create .ssh directory and set permissions for the non-root user
-# This is crucial for the git push to work, as ssh requires strict permissions
-RUN set -eux && \
-    mkdir -p /home/${USERNAME}/.ssh && \
-    chown -R "${USERNAME}":"${USERNAME}" "/home/${USERNAME}/.ssh" && \
-    chmod 700 /home/${USERNAME}/.ssh
+Indeed, under certain circumstances, when rendering your documentation to Word (i.e. by running f.i. `quarto render . --profile docx`), Quarto can ask you to install Chromium. To avoid to do this every-time, simply open the `devcontainer.json` file, search for `INSTALL_CHROMIUM` and initialize it to `true`.
 
-# Make bash history persistent
-RUN mkdir -p /home/${USERNAME}/.bash_history && \
-    touch /home/${USERNAME}/.bash_history/.bash_history
+Note: if you change the `Dockerfile` code or the `devcontainer.json` file, you'll need to rebuild the container as explained here below.
 
-# Configure bash to use this file
-RUN echo 'export HISTFILE=/home/${USERNAME}/.bash_history/.bash_history' >> "/home/${USERNAME}/.bashrc" && \
-    echo 'export HISTSIZE=10000' >> "/home/${USERNAME}/.bashrc" && \
-    echo 'export HISTFILESIZE=10000' >> "/home/${USERNAME}/.bashrc" && \
-    echo 'shopt -s histappend' >> "/home/${USERNAME}/.bashrc"
+:::tip Make sure you need it
+Before installing Chromium, make sure you need it i.e. first render your documentation without and see if Quarto complaints about Chromium. This because Chromium requires a lot of dependencies and it will make your Docker image size much bigger.
+:::
 
-# Set up the shell prompt and history for devcontainer
-RUN set -eux && \
-    echo "PS1='\n\e[0;33m🐳 \e[0;36m\$(whoami)\e[0m \w # '" >> "/home/${USERNAME}/.bashrc"
+### Installation of Tiny
 
-# When the user will start a new terminal session in the container, he'll see the tips below
-RUN set -eux && \
-    cat <<EOF >> "/home/${USERNAME}/.bashrc"
-echo -e "\n📘 Welcome to the Quarto Docs Dev Container!"
-echo -e "Below are some useful commands:"
-echo -e ""
-echo -e "  \e[1mQuarto Commands\e[0m"
-echo -e "  ───────────────"
-echo -e "  ✨ \e[32mquarto preview .\e[0m                             Start a hot-reloading preview in your browser."
-echo -e "  ✨ \e[32mquarto render .\e[0m                              Build the documentation (based on _quarto.yml)."
-echo -e "  ✨ \e[32mquarto render . --profile docx\e[0m               Build a .docx file (requires _quarto-docx.yml)."
-echo -e ""
-echo -e "  \e[1mData quality checks\e[0m"
-echo -e "  ─────────"
-echo -e "  ✍️  \e[32mcspell lint . --config .vscode/cspell.json\e[0m  Run spell checks."
-echo -e "  ⚙️  \e[32mpre-commit run --all-files\e[0m                  Run code quality checks on all files."
-echo -e ""
+The same way, you've a variable called `INSTALL_CSPELL`. Initialize it to `true` if you want to install the Code-spell check tool (requires Node.js).
 
-EOF
+### Installation of pre-commit-hooks
 
-```
-
-</Snippet>
-
-And create the `.devcontainer/devcontainer.json` file too with the content here after. Here this file will instruct to VSCode how to build his Devcontainer session, which Dockerfile to use and the list of extensions (and configuration items) we wish in our session.
-
-<Snippet filename=".devcontainer/devcontainer.json">
-
-```json
-{
-    "name": "Quarto Docs Project",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "args": {
-            "USER_UID": "${localEnv:UID}",
-            "USER_GID": "${localEnv:GID}"
-        }
-    },
-    "remoteUser": "vscode",
-    "runArgs": [
-        "--mount=type=bind,source=${env:HOME}/.ssh,target=/home/vscode/.ssh,readonly"
-    ],
-    "mounts": [
-        "source=${env:HOME}/.quarto,target=/home/vscode/.quarto,type=bind"
-    ],
-    "containerEnv": {
-        "GIT_SSH_COMMAND": "ssh -i /home/vscode/.ssh/id_ed25519 -o 'UserKnownHostsFile=/dev/null'"
-    },
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "[dockerfile]": {
-                    "files.eol": "\n",
-                    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-                },
-                "[json]": {
-                    "editor.defaultFormatter": "vscode.json-language-features"
-                },
-                "[jsonc]": {
-                    "editor.defaultFormatter": "vscode.json-language-features",
-                    "editor.wordWrap": "wordWrapColumn",
-                    "editor.wordWrapColumn": 80,
-                    "editor.wrappingIndent": "indent"
-                },
-                "[markdown]": {
-                    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
-                    "editor.wordWrap": "wordWrapColumn",
-                    "editor.wordWrapColumn": 80,
-                    "editor.wrappingIndent": "indent"
-                },
-                "[yaml]": {
-                    "editor.defaultFormatter": "redhat.vscode-yaml"
-                },
-                "cSpell.language": "en,fr,nl",
-                "cSpell.words": [
-                    "Quarto",
-                    "devcontainer",
-                    "frontmatter",
-                    "Pandoc",
-                    "Gitlens"
-                ],
-                "editor.formatOnSave": true,
-                "editor.guides.bracketPairs": "active",
-                "editor.guides.bracketPairsHorizontal": "active",
-                "editor.guides.highlightActiveIndentation": true,
-                "editor.guides.indentation": true,
-                "editor.multiCursorModifier": "ctrlCmd",
-                "editor.renderWhitespace": "all",
-                "editor.rulers": [
-                    120,
-                    70
-                ],
-                "editor.stickyScroll.enabled": true,
-                "editor.tabCompletion": "on",
-                "editor.tabSize": 4,
-                "editor.wordBasedSuggestionsMode": "allDocuments",
-                "editor.wordWrapColumn": 120,
-                "explorer.compactFolders": false,
-                "explorer.confirmDelete": true,
-                "explorer.confirmDragAndDrop": true,
-                "extensions.autoCheckUpdates": false,
-                "files.associations": {
-                    "resources/*.json": "jsonc"
-                },
-                "files.autoSave": "onFocusChange",
-                "files.defaultLanguage": "${activeEditorLanguage}",
-                "files.eol": "\n",
-                "files.exclude": {
-                    "**/.build": true,
-                    "**/.cache": true,
-                    "**/.git": true,
-                    "**/.quarto": true,
-                    "**/*.html": true,
-                    "**/readme_files/**": true,
-                    "**/site_libs/**": true
-                },
-                "files.insertFinalNewline": true,
-                "files.trimTrailingWhitespace": true,
-                "maptz.regionfolder": {
-                    "[dockerfile]": {
-                        "foldEnd": "[\\S]*\\#[\\s]*endregion",
-                        "foldEndRegex": "[\\S]*\\#[\\s]*endregion[\\s]*(.*)$",
-                        "foldStart": "[\\S]*\\#[\\s]*region [NAME]",
-                        "foldStartRegex": "[\\S]*\\#[\\s]*region[\\s]*(.*)$"
-                    }
-                },
-                "markdown.extension.toc.levels": "2..6",
-                "markdown.extension.tableFormatter.enabled": true,
-                "markdownlint.config": {
-                    "MD033": false,
-                    "MD036": false
-                },
-                "quarto.preview.renderOnSave": true,
-                "telemetry.telemetryLevel": "off",
-                "terminal.integrated.profiles.linux": {
-                    "bash": {
-                        "path": "/bin/bash",
-                        "icon": "terminal-bash"
-                    }
-                },
-                "terminal.integrated.defaultProfile.linux": "bash",
-                "terminal.integrated.fontFamily": "MesloLGS NF",
-                "yaml.schemas": {
-                    "https://json.schemastore.org/github-workflow.json": "_quarto.yml"
-                }
-            },
-            "extensions": [
-                "DavidAnson.vscode-markdownlint",
-                "esbenp.prettier-vscode",
-                "gitkraken.gitlens",
-                "maptz.regionfolder",
-                "mde.select-highlight-minimap",
-                "mikestead.dotenv",
-                "ms-vscode.makefile-tools",
-                "quarto.quarto",
-                "redhat.vscode-yaml",
-                "sirtori.indenticator",
-                "streetsidesoftware.code-spell-checker",
-                "yzhang.markdown-all-in-one"
-            ]
-        }
-    },
-    "forwardPorts": [
-        8000
-    ],
-    "postAttachCommand": "pre-commit install && quarto preview ."
-}
-```
-
-</Snippet>
+The third variable is `INSTALL_PRECOMMIT_HOOKS` and, if your documentation has his own `.git` folder, it'll be a good idea to initialize the variable to `true` so, when committing your changes, a few data quality controls / formatting tools will be applied.
 
 ## Opening our project
 
@@ -356,21 +121,15 @@ Just follow the link by pressing <kbd>ALT</kbd> and clicking on the link.
 
 ![The site is already running](./images/preview.png)
 
-## The documentation is currently being served in preview mode
+## Render the documentation
 
-Let's check if the website will be updated if we change something.
+By opening a Bash terminal and running from there `quarto preview .`, your documentation will be render and if you do a change, it'll be rendered automatically.
 
-Please edit the `index.qmd` file and change something.  For instance, I'll change the `Overview` chapter title to `Preface`.
+Let's check this: please edit the `index.qmd` file and change something.  For instance, I'll change the `Overview` chapter title to `Preface`.
 
 ![The synchronization is already enabled](./images/synchronization-enabled.png)
 
 As you can see on the image here above, I just need to make a change, save my file and wait less than one second and the website is updated automatically. Nothing to do (I don't need to refresh the page). Easy no?
-
-### What is the origin of this magic?
-
-The secret of this is the `postAttachCommand` key in the `.devcontainer/devcontainer.json` file. If you look at it, you'll see this: `"postAttachCommand": "pre-commit install && quarto preview ."`.
-
-This tells to VSCode to run two commands once the Devcontainer is created: first to install `pre-commit` and then to run `quarto preview .` and this to listen any changes in the project and to render the documentation if something is updated.
 
 ## Using the terminal
 
@@ -392,7 +151,7 @@ So, if your objective is to render the final documentation, you can always see *
 
 [pre-commit](https://pre-commit.com/) is a tool that will run some validation controls to your project before you'll push it to your versioning system (like Github or GitLab).
 
-By adding `pre-commit` in the devcontainer, you'll get the privilege to never again commit files with somes fault like f.i. formatting issues in your Markdown content.
+By adding `pre-commit` in the devcontainer, you'll get the privilege to never again commit files with some fault like f.i. formatting issues in your Markdown content.
 
 If you like this idea, please create the `.pre-commit-config.yaml` file in your project's root folder (so no in the `.devcontainer` folder but his parent folder).
 
@@ -436,7 +195,7 @@ repos:
         language: node
         types: [markdown]
 
-  # The hook below hook extracts the YAML frontmatter from each .qmd
+  # The hook below hook extracts the YAML front matter from each .qmd
   # file and validates its syntax using yq.
   # It helps catch formatting errors (e.g. missing colons, invalid keys)
   # before committing.
@@ -444,7 +203,7 @@ repos:
   - repo: local
     hooks:
       - id: validate-qmd-yaml
-        name: Validate YAML frontmatter in .qmd
+        name: Validate YAML front matter in .qmd
         entry: bash -c 'awk "/^---/{f=!f;next}f" "$1" | yq eval "." - > /dev/null'
         language: system
         pass_filenames: true
@@ -471,13 +230,13 @@ repos:
 
 Once this file is in place, when you'll fire the `git commit` command from the terminal (<kbd>CTRL</kbd>+<kbd>ù</kbd>), `git` will first run `pre-commit` to run *hooks*. In the `.pre-commit-config.yaml` file above, we've defined two hooks; the first one to make generic checks on files then the ensure there is no linting errors with .md files (just check the official repo for more info).
 
-These hooks are fired everytime you'll commit files (and just on the commited files; not the entire project).
+These hooks are fired every time you'll commit files (and just on the committed files; not the entire project).
 
-You can, too, force to run hooks without commiting by running `pre-commit run --all-files` in the console.
+You can, too, force to run hooks without committing by running `pre-commit run --all-files` in the console.
 
 This command will check all files.
 
-`pre-commit` is really usefull to garantue that you're respecting some quality industry standards.
+`pre-commit` is a valuable tool for ensuring compliance with established industry quality standards.
 
 ## Conclusion
 

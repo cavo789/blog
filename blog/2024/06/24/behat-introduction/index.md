@@ -162,7 +162,7 @@ services:
 
 We'll check if the Chrome driver is correctly installed by running `docker compose exec -u $(id -u):$(id -g) app /usr/local/bin/chrome/chromedriver --version`. Same for the Chrome browser `docker compose exec -u $(id -u):$(id -g) app /usr/local/bin/chrome/chrome --version`. Nice! Seeing these values means Chrome is ready to be used.
 
-![Chrome versions](./images/chrome_versions.png)
+![Chrome versions](./images/chrome_versions.webp)
 
 Ok, let's do one more thing; we need to create our `composer.json` file since we need to include the PHP `Behat` dependency.
 
@@ -181,7 +181,7 @@ Ok, let's do one more thing; we need to create our `composer.json` file since we
 
 Now, if you're curious, you'll see you've a new file called `composer.json` and two folders called `src` and `vendor`.
 
-![Composer has been installed](./images/composer_installed.png)
+![Composer has been installed](./images/composer_installed.webp)
 
 ## Let's install Behat
 
@@ -191,19 +191,19 @@ As stated in the [How to install?](https://docs.behat.org/en/latest/quick_start.
 Make sure you're still in an interactive Bash session in the Docker container before running `composer require --dev behat/behat:^3`.  An interactive Bash session is started by running `docker compose exec -u $(id -u):$(id -g) app /bin/bash`.
 :::
 
-![Install Behat](./images/composer_install_behat.png)
+![Install Behat](./images/composer_install_behat.webp)
 
 Once installed, you can start Behat by running `vendor/bin/behat` but right now, you'll got an error and this is perfectly normal since we need to start to write our first scenario.
 
-![FeatureContext not found](./images/FeatureContext_not_found.png)
+![FeatureContext not found](./images/FeatureContext_not_found.webp)
 
 As you can read in the official documentation, just run `vendor/bin/behat --init` to create the required, minimum, files.
 
-![Running Behat init](./images/behat_init.png)
+![Running Behat init](./images/behat_init.webp)
 
 Now, if you look at your folder, you can see you've now a new folder called `features/bootstrap` with a file called `FeatureContext.php`. The screenshot below illustrate how the project appears in my VSCode editor at this point in the tutorial:
 
-![FeatureContext in vscode](./images/vscode_FeatureContext.png)
+![FeatureContext in vscode](./images/vscode_FeatureContext.webp)
 
 ## Time to learn more about features
 
@@ -224,7 +224,7 @@ Feature: Clicking on the Blog menu item should give me the list of articles
 
 This has to be put in a file having the `.feature` extension in the  `features` folder; let's create the `Blog.feature` file with this content:
 
-![The Blog.feature file](./images/blog_feature.png)
+![The Blog.feature file](./images/blog_feature.webp)
 
 :::note Think to install `Cucumber (Gerkin) Full Support`
 If you're using Visual Studio Code, you can install [Cucumber (Gerkin) Full Support](https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete) to get colorization, a better integration in vscode like autocompletion.
@@ -248,13 +248,13 @@ Now we've our scenario, we need to teach Behat how to *translate* these sentence
 
 Now, please open the file `features/bootstrap/FeatureContext.php` in your preferred editor:
 
-![Editing the FeatureContext.php file](./images/vscode_edit_0_FeatureContext.png)
+![Editing the FeatureContext.php file](./images/vscode_edit_0_FeatureContext.webp)
 
 As you can see, this is the default file we've created earlier. We need to create some PHP code here but how?
 
 Go back to your interactive Bash console and run `vendor/bin/behat --dry-run --append-snippets`. This will ask Behat to create the steps for you, automagically.
 
-![Append snippets](./images/append_snippets.png)
+![Append snippets](./images/append_snippets.webp)
 
 Please type `1` to ask Behat to use your `FeatureContext.php` file. You'll then get a confirmation on screen:
 
@@ -266,13 +266,13 @@ u features/bootstrap/FeatureContext.php - `I should be on "/blog"` definition ad
 
 Please open the file `features/bootstrap/FeatureContext.php` once more in your preferred editor:
 
-![Now we have our steps](./images/vscode_edit_1_FeatureContext.png)
+![Now we have our steps](./images/vscode_edit_1_FeatureContext.webp)
 
 Nice isn't? Behat has look at our `Blog.feature` file and create as many methods in our PHP code that we had sentences in our scenario and, each method is assigned to the sentence (take a look to the php comment before each method).
 
 And, now, before even starting to code, let's ask Behat to run our scenario; please run `vendor/bin/behat` in the console:
 
-![First run](./images/first_run.png)
+![First run](./images/first_run.webp)
 
 Wow! So far, perfect! We've thus asked Behat to run our scenario and he knows that we've three steps and we still need to write the associated code in PHP (therefore the **TODO: write pending definition** message in yellow).
 
@@ -284,29 +284,29 @@ Let's give ourselves the means to do the best we can as quickly as possible, wit
 
 Now that Mink has been installed, go to your editor, open the file `features/bootstrap/FeatureContext.php` and replace the line `class FeatureContext implements Context` like this `class FeatureContext extends \Behat\MinkExtension\Context\MinkContext`.
 
-![Using MinkContext](./images/MinkContext.png)
+![Using MinkContext](./images/MinkContext.webp)
 
 This small change will empower us because now our code will use Mink and thus will benefit from all existing methods of Mink.
 
 To get the list of existing methods, let's run `clear ; vendor/bin/behat -di` in your console:
 
-![Print definitions](./images/print_definitions.png)
+![Print definitions](./images/print_definitions.webp)
 
 Did you see? We've our three steps (the first three displayed) then we got extra steps coming from Mink. And you can scroll a lot, there are already many steps that Mink allows you to reuse.
 
 Run `vendor/bin/behat` in the console again:
 
-![Ambiguous match](./images/ambiguous_match.png)
+![Ambiguous match](./images/ambiguous_match.webp)
 
 We got the *Ambiguous match of ...* error on the very first step, our *I am on https://www.avonture.be* step. Ambiguous means that we're trying to add some PHP code in our context while that step is already defined (by Mink). So, just drop it by editing your `FeatureContext.php` file, select the `public function iAmOn` and remove the entire function.
 
-![Remove the iAmOn method](./images/drop_iamon.png)
+![Remove the iAmOn method](./images/drop_iamon.webp)
 
 By running `vendor/bin/behat` again and you'll have the same error for `iShouldBeOn` so remove that function too.
 
 Run `clear ; vendor/bin/behat` once more and now we'll got a new error:
 
-![Mink instance not set](./images/mink_instance_not_set.png)
+![Mink instance not set](./images/mink_instance_not_set.webp)
 
 ## Installing the Mink extension
 
@@ -393,7 +393,7 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
 
 By running `vendor/bin/behat` again, we've now another error:
 
-![Could not fetch version information](./images/could_not_fetch.png)
+![Could not fetch version information](./images/could_not_fetch.webp)
 
 ## Time to run Chrome
 
@@ -432,7 +432,7 @@ Now, you can start Behat by starting `./run.sh` in your console.
 
 If everything is going fine, you'll get this:
 
-![First run](./images/run_sh_pending.png)
+![First run](./images/run_sh_pending.webp)
 
 As you can see, the `Given I am on...` line is in green: Behat, thanks to our Chrome driver, has been able to reach the page.
 
@@ -467,7 +467,7 @@ As you can see, we'll create a `.output` folder and the only thing we'll do is t
 
 Just after having fired `./run.sh` in your console once more, now, you should see a new `.output` folder with an image:
 
-![We're on the homepage](./images/screenshot_homepage.png)
+![We're on the homepage](./images/screenshot_homepage.webp)
 
 What have we just done? We've verified that when Behat executes our `iClickOnTheMenuItem` method, Chrome does indeed access our home page. We can now simulate a click on the menu entry we want; the Blog menu stored in our $menuItem parameter.
 
@@ -514,13 +514,13 @@ public function iClickOnTheMenuItem(string $menu): void
 
 Start `./run.sh` once more and bingo!
 
-![Success](./images/success.png)
+![Success](./images/success.webp)
 
 This is a success because the `Then I should be on "/Blog"` has been verified by Mink. We don't need to write the `Then I should be on` method, it's already defined by Mink.
 
 Let's try something else, back in PHP and replace `if ($element->getText() === $menu) {` by `if ($element->getText() === 'Archive') {` so we'll not click anymore on the Blog menu but on `Archive` and see what will happen:
 
-![Failure](./images/failure.png)
+![Failure](./images/failure.webp)
 
 And it fails; great!
 

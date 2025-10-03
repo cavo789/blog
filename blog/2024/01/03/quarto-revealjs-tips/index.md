@@ -47,7 +47,7 @@ title-slide-attributes:
 
 The slideshow will have four slides, the first one will be the title-slide.
 
-![Title slide](./images/title-slide.png)
+![Title slide](./images/title-slide.webp)
 
 ### Display a logo top left on the first slide, then bottom right
 
@@ -57,9 +57,9 @@ To achieve this, on the first slide displayed, your logo will be displayed at th
 
 Here is a visual example:
 
-![Logo top left](./images/logo-top-left.png)
+![Logo top left](./images/logo-top-left.webp)
 
-![Logo bottom right](./images/logo-bottom-right.png)
+![Logo bottom right](./images/logo-bottom-right.webp)
 
 To do this, we'll need to add a custom JavaScript and custom CSS.
 
@@ -182,7 +182,7 @@ A background, a title and some style:
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
-![Adding a background image to a slide](./images/background-title-style.png)
+![Adding a background image to a slide](./images/background-title-style.webp)
 
 #### Background-size contain or cover
 
@@ -208,11 +208,11 @@ You can ask the browser to resize the image so it's fully displayed. This is the
 
 The slide below is using `cover` and, no, not really attractive.
 
-![Background-size is set to cover](./images/background-cover.png)
+![Background-size is set to cover](./images/background-cover.webp)
 
 The second slide is using `contain` and, at least, we can see what the sloth was trying to tell us.
 
-![Background-size is set to contain](./images/background-contain.png)
+![Background-size is set to contain](./images/background-contain.webp)
 
 ### Slide-level
 
@@ -240,7 +240,7 @@ We don't need to have Apache locally since we're using it as a Docker image.
 
 In fact, it depends on the `slide-level` setting. By default, `slide-level` is equal to `2` and then, the result will be:
 
-![Slide level 2](./images/slide-level-2.png)
+![Slide level 2](./images/slide-level-2.webp)
 
 We've two slides. On the second slide, we can see our `Apache` heading 3 as a text on `Technologies and tools`.
 
@@ -272,7 +272,7 @@ We don't need to have Apache locally since we're using it as a Docker image.
 
 And the result will give:
 
-![Slide level 3](./images/slide-level-3.png)
+![Slide level 3](./images/slide-level-3.webp)
 
 ### Using emoji
 
@@ -304,7 +304,7 @@ Big Text
 
 </Snippet>
 
-![Big text](./images/big-text.png)
+![Big text](./images/big-text.webp)
 
 ### Stretch
 
@@ -328,11 +328,11 @@ Some text after the image.
 
 This will generate this slide:
 
-![Stretch 1](./images/stretch-1.png)
+![Stretch 1](./images/stretch-1.webp)
 
 Adding a lot of more text / paragraphs will give this new slide:
 
-![Stretch 2](./images/stretch-2.png)
+![Stretch 2](./images/stretch-2.webp)
 
 The image height will be resized automatically so both text and images can be displayed on the same slide. If you have less text, the height of the image will be bigger, smaller otherwise. Without to have to manually resize the image on the disk. Very useful.
 
@@ -386,7 +386,7 @@ You can use `columns` to divide your slide:
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
-![Columns](./images/columns.png)
+![Columns](./images/columns.webp)
 
 #### Four quadrants
 
@@ -518,7 +518,7 @@ To draw attention to a specific part of the text, you might want to make it [red
 
 This is correctly rendered in HTML:
 
-![html](./images/html.png)
+![html](./images/html.webp)
 
 ### Use a custom css
 
@@ -555,7 +555,7 @@ Now, create the `custom.css` file in the same folder as your markdown one and, f
 
 </Snippet>
 
-![Custom css](./images/custom-css.png)
+![Custom css](./images/custom-css.webp)
 
 ### Hide image caption
 
@@ -592,7 +592,7 @@ As you can see on the image below, we can customize the terminal:
 
 In revealjs, personally, I find that the rendering takes up too much space compared to the content of my slide. So I use css to hide the title:
 
-![Callout title](./images/callout-title.png)
+![Callout title](./images/callout-title.webp)
 
 <Snippet filename="custom.css">
 
@@ -643,7 +643,7 @@ format:
 
 </Snippet>
 
-![Vertical navigation](./images/vertical.png)
+![Vertical navigation](./images/vertical.webp)
 
 :::tip Press <kbd>esc</kbd> key
 The <kbd>esc</kbd> key allow you to see the structure of your revealjs slideshow.
@@ -695,11 +695,11 @@ Occaecat minim eu veniam laborumanim. Nostrud duis eiusmod ut amet velit commodo
 
 </Snippet>
 
-![Define a name for your slide](./images/set-slide-slug.png)
+![Define a name for your slide](./images/set-slide-slug.webp)
 
 But, pay attention to the slide's menu (bottom left): perhaps it's also good to define a suitable name there.
 
-![Also define the name in the menu](./images/set-name-in-menu.png)
+![Also define the name in the menu](./images/set-name-in-menu.webp)
 
 To do this, set the `data-menu-title` attribute; f.i.:
 
@@ -731,7 +731,7 @@ format:
 
 </Snippet>
 
-![Slide / Total of slides](./images/slides_c_t.png)
+![Slide / Total of slides](./images/slides_c_t.webp)
 
 You can retrieve more information [here](https://quarto.org/docs/presentations/revealjs/presenting.html#slide-numbers).
 
@@ -781,6 +781,6 @@ When you have two screens, on the first you'll display your presentation without
 
 If you share your screen through a tool like Teams or Zoom, same thing; you share the screen where the presentation is displayed (the first one) and keep the notes only for you.
 
-![Speaker notes](./images/speaker-notes.png)
+![Speaker notes](./images/speaker-notes.webp)
 
 As you can see on the image above, the speaker notes are displaying valuable information as the elapsed time since the start of the presentation, the current time and the next slide to make your transition easier.

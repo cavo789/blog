@@ -79,11 +79,11 @@ If you've hardcoded IDs in the `compose.yaml` file to, f.i. `1000` (because you 
 
 Once you've fired the `docker compose up --build --detach` command, you've already created the container i.e. you can already surf to `http://localhost` to see it in action.
 
-![The default welcome page](./images/welcome.png)
+![The default welcome page](./images/welcome.webp)
 
 Let's play, click on the last button bottom right (the settings icon) and under `Appearance`, let's upload a new background image.
 
-![My own background](./images/welcome_2.png)
+![My own background](./images/welcome_2.webp)
 
 It's a lot more fun, isn't it?
 
@@ -116,7 +116,7 @@ And, thus, everything I'll do in Heimdall will be saved on my computer. So, it m
 
 I suggest that, before adding new links, first click on the Tags icon (the fifth icons bottom right) because you'll organize your links using tags and you have to create tags before.
 
-![Adding tags](./images/tags.png)
+![Adding tags](./images/tags.webp)
 
 Add so many tags you want. For this tutorial, I'll just create one.
 
@@ -126,15 +126,15 @@ Create a new application. You can choose between an `Application type` or a `Web
 
 Heimdall will extract the favicon in different sizes. I click on the one I wish.
 
-![Adding Docker](./images/adding_docker.png)
+![Adding Docker](./images/adding_docker.webp)
 
 Automatically, Heimdall has filled in some properties in the bottom part of the screen. I'll remove `Home dashboard` from the `Tags` area and, instead, type `Docker` i.e. the tag I've previously created.
 
-![Adding Docker](./images/application_docker.png)
+![Adding Docker](./images/application_docker.webp)
 
 Once saved, I'll get my new homepage:
 
-![Homepage with Docker](./images/homepage_docker.png)
+![Homepage with Docker](./images/homepage_docker.webp)
 
 We can see that tags are represented as a folder. If I click on it, I'll *enter* in the *folder* and see all applications having this tag.
 
@@ -142,17 +142,17 @@ I can, too, add applications that will appear immediately on the homepage (like 
 
 Let's explore that `Application Type` feature:
 
-![Application type](./images/application_type.png)
+![Application type](./images/application_type.webp)
 
 It's just something like a snippet. If I select `Bitwarden` from there, Heimdall will do basic initializations; he'll fill in the `Application name` textbox and the icon. Ok, why not.
 
 I'll point the URL to `https://vault.bitwarden.com/#/login` and I'll keep `Home dashboard` as tag.
 
-![With Bitwarden](./images/bitwarden.png)
+![With Bitwarden](./images/bitwarden.webp)
 
 Here is the dashboard I'm using at work. Since it's so easy to add new items; I'm doing changes to it as soon as I'm working on a new project.
 
-![Final Heimdall dashboard](./images/final.png)
+![Final Heimdall dashboard](./images/final.webp)
 
 ### More customizations
 

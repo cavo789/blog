@@ -23,7 +23,7 @@ This is really very practical; see the illustration below (*image coming from [h
 
 Below an example taken from this blog:
 
-![Sticky scroll in markdown](./images/sticky_scroll_markdown.png)
+![Sticky scroll in markdown](./images/sticky_scroll_markdown.webp)
 
 As you can see, I've opened a markdown file and I'm showing part of the article around line 878. Pay attention on the first 'sticked' lines in the window: vscode is showing me my heading 1, my heading 2 and my heading 3 so I know the context. The displayed lines are located in chapter `Make it easy`. That's pretty cool!
 

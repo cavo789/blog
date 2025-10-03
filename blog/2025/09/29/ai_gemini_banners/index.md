@@ -4,7 +4,7 @@ title: How I used Google Gemini Nano Banana on my blog
 authors: [christophe]
 image: /img/v2/gemini.webp
 mainTag: ai
-tags: [ai]
+tags: [ai, images]
 date: 2025-09-29
 blueskyRecordKey: 3lzxdr6w3e223
 ---
