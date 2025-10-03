@@ -4,6 +4,7 @@ slug: excel-formatter
 title: Excel Formula Beautifier
 authors: [christophe]
 image: /img/v2/excel.webp
+description: Make your complex Excel formulas easy to read! Use the Excel Formula Beautifier to instantly format and clarify your spreadsheet formulas for better understanding.
 mainTag: excel
 tags: [excel, self-hosted]
 blueskyRecordKey: 3lun2qjuxc22r

@@ -3,6 +3,7 @@ date: 2025-04-04
 slug: docker-oracle-database-server
 title: Running Oracle Database Server as a Docker container
 authors: [christophe]
+description: Learn how to run Oracle Database Server inside a Docker container. This step-by-step guide covers image setup, license acceptance, token generation, and database access.
 image: /img/v2/oracle.webp
 series: Running Oracle Database Server as a Docker container
 mainTag: oracle

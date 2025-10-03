@@ -4,6 +4,7 @@ slug: bats-unit-tests
 title: Linux - Bash scripts - Running unit tests with bats/bats
 authors: [christophe]
 image: /img/v2/bash.webp
+description: Learn how to effectively unit test your Bash scripts on Linux using the powerful bats (Bash Automated Testing System) framework. See practical examples for assertions, output checks, and failures.
 mainTag: tests
 tags: [linux, shell, tests]
 blueskyRecordKey: 3lujtej7xhs23

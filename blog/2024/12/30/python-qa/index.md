@@ -5,6 +5,7 @@ title: Python - Code Quality tools
 authors: [christophe]
 image: /img/v2/clean_code.webp
 series: code quality
+description: Elevate your Python code quality! Discover 9 essential static analysis tools like Pylint, Black, and mypy, plus an optimal QA workflow to ensure cleaner, bug-free code.
 mainTag: code-quality
 tags: [autoflake, black, code-quality, devcontainer, docker, isort, mypy, prospector, pydocstyle, pylint, pyright, python, ruff, vulture]
 blueskyRecordKey: 3lymragaqr22l

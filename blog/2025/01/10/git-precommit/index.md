@@ -5,6 +5,7 @@ title: Git - pre-commit-hooks
 authors: [christophe]
 image: /img/v2/clean_code.webp
 series: code quality
+description: Hate failed CI/CD pipelines? Discover how to use Git pre-commit hooks, focusing on the pre-commit framework, to enforce code quality standards locally before you push.
 mainTag: code-quality
 tags: [black, captainhook, ci, code-quality, git, grumphp, hooks, husky, mypy, phan, php-cs-fixer, phpcbf, phplint, phpstan, pre-commit, prospector, pylint, python, ruff, shellcheck, shellformat, tips]
 ---

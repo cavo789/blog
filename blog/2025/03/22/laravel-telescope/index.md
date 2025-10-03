@@ -3,6 +3,7 @@ date: 2025-03-22
 slug: laravel-telescope
 title: Laravel Telescope
 authors: [christophe]
+description: Laravel Telescope is your ultimate debugging assistant, offering realtime insights into your application's queries, exceptions, cache, and logs. Understand and fix issues faster.
 image: /img/v2/laravel.webp
 mainTag: laravel
 tags: [laravel, php, telescope]

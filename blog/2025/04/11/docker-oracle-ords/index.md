@@ -6,6 +6,7 @@ authors: [christophe]
 image: /img/v2/oracle.webp
 series: Running Oracle Database Server as a Docker container
 mainTag: oracle
+description: Set up Oracle REST Data Services (ORDS) in Docker to transform your Oracle DB into OpenData with a powerful REST API. Includes filtering and pagination.
 tags: [docker, openapi, oracle, postgrest]
 blueskyRecordKey: 3lvnjmthgj22v
 ---

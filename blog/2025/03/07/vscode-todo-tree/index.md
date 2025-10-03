@@ -5,6 +5,7 @@ title: Todo Tree in VSCode
 authors: [christophe]
 mainTag: vscode
 tags: [tips, vscode]
+description: Stop forgetting your TODOs and FIXMEs! Use the VSCode Todo Tree extension to summarize all code annotations like TODO, FIXME, and TEMPORARY into one easy-to-track dashboard.
 blueskyRecordKey: 3lvnk2w4vss2v
 image: /img/v2/vscode_tips.webp
 ---
@@ -14,7 +15,7 @@ When you're working on a large codebase, soon or later you'll find some annotati
 
 Personally, I sometimes work on code and comment on the call to a particular method or block.  Often during a debugging session (for example on Linux Bash scripts) but, danger, don't forget to remove the comments and return the code to its original state. In that situation, I add a comment like `// TEMPORARY` just before the first commented line.
 
-The idea behind the `Todo Tree` vscode addon (you can find the download page [here](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)) is to summarise such annotations and display a dashboard with all `TODOS`, `TOFIX`, ... and your owns too.
+The idea behind the `Todo Tree` vscode addon (you can find the download page [https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)) is to summarise such annotations and display a dashboard with all `TODOS`, `TOFIX`, ... and your owns too.
 
 <!-- truncate -->
 

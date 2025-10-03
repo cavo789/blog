@@ -5,6 +5,7 @@ title: MS Excel - Connect to a SQL Server database, run a query and get the resu
 authors: [christophe]
 image: /img/v2/mssql.webp
 series: MS Excel - Connect to a SQL Server database
+description: Connect MS Excel VBA to SQL Server with this step-by-step tutorial. Learn to run SQL queries, retrieve data, and output results into your spreadsheet. Docker setup included.
 mainTag: excel
 tags: [docker, excel, mssql-server, ssms, vba]
 blueskyRecordKey: 3lvnkdmwmwk2v

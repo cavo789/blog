@@ -3,6 +3,7 @@ date: 2025-06-06
 slug: gitlab-using-private-images
 title: GitLab - Using Docker private images
 authors: [christophe]
+description: Use a private Docker image from Docker Hub in your GitLab CI/CD pipeline. Learn to create a read-only token and set up the necessary GitLab CI/CD variables for authentication.
 image: /img/v2/gitlab.webp
 mainTag: gitlab
 tags: [CI, gitlab, ssh]

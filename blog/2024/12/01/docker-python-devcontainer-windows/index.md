@@ -3,6 +3,7 @@ date: 2024-12-01
 slug: docker-python-devcontainer-windows
 title: Docker - Easy setup of Python under Windows
 authors: [christophe]
+description: Easily set up a Python development environment on Windows using Docker and VSCode devcontainers. Start coding instantly without installing Python locally.
 series: Coding using a devcontainer
 image: /img/v2/devcontainer.webp
 mainTag: python

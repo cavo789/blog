@@ -4,6 +4,7 @@ slug: docker-joomla-right-to-the-point
 title: Start Joomla with Docker in just a few clicks
 authors: [christophe]
 image: /img/v2/joomla.webp
+description: Start your Joomla website with Docker in just a few clicks! Follow this quick, right-to-the-point guide to launch your Joomla project instantly using a simple Docker Compose setup.
 mainTag: joomla
 tags: [docker, joomla, makefile, mysql]
 ---

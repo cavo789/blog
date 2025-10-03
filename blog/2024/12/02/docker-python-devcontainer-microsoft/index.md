@@ -4,6 +4,7 @@ slug: docker-python-devcontainer-microsoft
 title: Docker - Even easier setup of Python
 authors: [christophe]
 image: /img/v2/devcontainer.webp
+description: Streamline your Python development. This guide shows you how to use Docker and Microsoft Devcontainers for an incredibly easy and reproducible Python environment setup.
 series: Coding using a devcontainer
 mainTag: python
 tags: [devcontainer, docker, python]

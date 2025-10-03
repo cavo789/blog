@@ -5,6 +5,7 @@ title: Using Docker init to quickly dockerize your PHP application
 authors: [christophe]
 image: /img/v2/docker_init.webp
 mainTag: docker
+description: Quickly dockerize your PHP application with Apache using the docker init command. This wizard-based tool generates the necessary Docker files and shows secure database integration.
 tags: [aesecure, apache, docker, php, tips]
 ---
 <!-- cspell:ignore dbmdl -->

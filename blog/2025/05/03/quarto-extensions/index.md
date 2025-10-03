@@ -5,6 +5,7 @@ title: My favourite Quarto extensions
 authors: [christophe]
 image: /img/v2/quarto.webp
 mainTag: quarto
+description: My favourite Quarto extensions: Learn about essential Quarto filters for partial content templating, Font Awesome icons, including external code files, and simple search-replace macros to enhance your documentation workflow.
 tags: [markdown, pandoc, quarto, revealjs]
 blueskyRecordKey: 3lun2yevo622r
 ---

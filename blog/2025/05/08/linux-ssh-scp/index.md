@@ -4,10 +4,12 @@ slug: linux-ssh-scp
 title: SSH - Launch a terminal on your session without having to authenticate yourself
 authors: [christophe]
 image: /img/v2/ssh.webp
+description: Stop typing your SSH password! Learn how to use SSH keys and `ssh-copy-id` to launch a Linux terminal session instantly without having to authenticate yourself every time.
 mainTag: ssh
 tags: [linux, putty, scp, ssh, tips]
 blueskyRecordKey: 3lun2x6tugs2r
 ---
+<!-- markdownlint-disable MD012 -->
 ![SSH - Launch a terminal on your session without having to authenticate yourself](/img/v2/ssh.webp)
 
 <UpdateAt
@@ -143,4 +145,4 @@ Save the file and go back to the console.
 
 Now, you can just run `ssh my_app` to make the connection. Pretty easy no?
 
-Want more info? Continue your reading [here](https://linuxize.com/post/using-the-ssh-config-file/)
+Want more info? Continue your reading [https://linuxize.com/post/using-the-ssh-config-file/](https://linuxize.com/post/using-the-ssh-config-file/)

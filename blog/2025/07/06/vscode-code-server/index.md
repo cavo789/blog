@@ -4,6 +4,7 @@ slug: vscode-code-server
 title: Do I need VSCode on my machine to use it?
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
+description: Learn how to run VSCode in your browser using Docker and the `code-server` image. Edit code remotely without installing VSCode on your local machine.
 mainTag: vscode
 tags: [docker, vscode]
 blueskyRecordKey: 3lujtglddu223

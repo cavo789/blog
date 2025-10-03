@@ -3,6 +3,7 @@ date: 2024-12-01
 slug: online-php-linter
 title: Format poorly formatted PHP code
 authors: [christophe]
+description: Need to clean up messy PHP code fast? Discover the best online PHP linter, Pint-express (based on Laravel Pint), to instantly format and beautify your code. No installation needed!
 image: /img/v2/clean_code.webp
 series: code quality
 mainTag: code-quality

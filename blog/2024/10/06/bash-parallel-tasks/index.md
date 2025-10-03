@@ -4,6 +4,7 @@ slug: bash-parallel-task
 title: Linux - Take advantage of the number of CPUs you have; start concurrent jobs
 authors: [christophe]
 image: /img/v2/bash.webp
+description: Optimize your Bash scripts! Learn how to run concurrent jobs and leverage all your CPU cores using process IDs (pids), wait, and nproc to dramatically reduce execution time.
 mainTag: bash
 tags: [bash, linux, tips]
 ---

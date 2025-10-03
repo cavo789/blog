@@ -4,6 +4,7 @@ slug: drawdb-app
 title: Drawdb-app - Render your database model as png, markdown, mermaid, ...
 authors: [christophe]
 image: /img/v2/diagrams.webp
+description: Easily visualize and document your database model with DrawDB-app. Import SQL files, generate diagrams, and export to PNG, Markdown, Mermaid, and more.
 mainTag: database
 tags: [database, mermaid, tips, visualisation]
 ---

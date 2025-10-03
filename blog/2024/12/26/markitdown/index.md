@@ -4,6 +4,7 @@ slug: markitdown
 title: Markitdown - Convert files and MS Office documents to Markdown
 authors: [christophe]
 image: /img/v2/markdown.webp
+description: Easily convert MS Office documents (Word, Excel) and PDFs into Markdown format with Microsoft's Markitdown tool. Includes step-by-step instructions for installation via Docker.
 mainTag: markdown
 tags: [docker, docx, excel]
 ---

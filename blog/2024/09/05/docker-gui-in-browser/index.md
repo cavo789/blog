@@ -5,6 +5,7 @@ title: Docker - Running some GUI interfaces in the browser
 authors: [christophe]
 image: /img/v2/docker_gui.webp
 mainTag: docker
+description: Easily run Linux GUI applications like Firefox and GIMP in a Docker container and access them directly through your web browser with these simple commands.
 tags: [docker, firefox, gimp, tip]
 ---
 <!-- cspell:ignore seccomp,pgid,puid -->

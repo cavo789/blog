@@ -4,6 +4,7 @@ slug: docker-memos
 title: Self-hosted note-taking application
 authors: [christophe]
 mainTag: self-hosted
+description: Deploy the memos self-hosted note-taking application quickly using Docker. Learn how to use its simple features: Markdown, checklists, tags, and image pasting.
 tags: [docker, note-taking, self-hosted, tool]
 blueskyRecordKey: 3lv3hzdh4mk2v
 image: /img/v2/docker_playing_with_app.webp

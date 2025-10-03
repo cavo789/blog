@@ -4,6 +4,7 @@ slug: bash-progression-bar
 title: Linux - Using a progression bar in your script
 authors: [christophe]
 image: /img/v2/bash.webp
+description: Add a visual progression bar to your Bash scripts on Linux. This guide shows you how to easily implement a progress bar to track concurrent jobs, visualize progress, and improve your terminal user interface.
 mainTag: bash
 tags: [bash, linux, tips]
 ---

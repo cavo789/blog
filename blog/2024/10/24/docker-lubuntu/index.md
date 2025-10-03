@@ -3,6 +3,7 @@ date: 2024-10-24
 slug: docker-lubuntu
 title: Start lubuntu Desktop in Docker
 authors: [christophe]
+description: Learn how to run the Lubuntu Desktop GUI in a Docker container on Windows using an X Server. A perfect, disposable environment for Linux learning and experimenting.
 image: /img/v2/docker_tips.webp
 mainTag: linux
 tags: [chrome, docker, firefox, gimp, gui, tip]

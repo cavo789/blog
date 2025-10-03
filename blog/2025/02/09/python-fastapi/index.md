@@ -5,6 +5,7 @@ title: Python - Fast API - Create your JSON API in Python in one minute
 authors: [christophe]
 image: /img/v2/api.webp
 mainTag: api
+description: Build your first Python JSON API with FastAPI in under a minute! This tutorial covers Docker setup, automated API documentation (Swagger/ReDoc), and hot-reload for rapid development.
 tags: [api, docker, fastapi, python]
 blueskyRecordKey: 3lwgccocnws2i
 ---

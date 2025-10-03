@@ -6,6 +6,7 @@ authors: [christophe]
 image: /img/v2/devcontainer.webp
 series: Coding using a devcontainer
 mainTag: python
+description: Learn how to quickly set up a VSCode devcontainer for Python development using Docker. Get the full Dockerfile, compose.yaml, and .docker.env configurations.
 tags: [devcontainer, docker, python]
 ---
 <!-- cspell:ignore PYTHONDONTWRITEBYTECODE,PYTHONUNBUFFERED,HISTFILE -->

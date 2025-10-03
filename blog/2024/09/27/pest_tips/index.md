@@ -4,6 +4,7 @@ slug: pest_tips
 title: Write PHP unit tests using Pest
 authors: [christophe]
 mainTag: tests
+description: Master PHP unit testing with Pest! Discover easy installation, the expressive expect syntax, datasets, snapshots, and powerful architectural testing features.
 tags: [laravel, pest, php, phpunit, rector, tests, tips, vscode]
 image: /img/v2/unit_tests.webp
 ---

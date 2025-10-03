@@ -4,6 +4,7 @@ slug: dagger-python
 title: Dagger.io - Using dagger to automate your CI workflows
 authors: [christophe]
 image: /img/v2/dagger.webp
+description: Automate your CI/CD workflows with Dagger.io and Python. Quickly run code quality tools (Pylint, Black, Ruff) and test your entire pipeline locally to simplify integration.
 mainTag: dagger
 tags: [CI, dagger, Github, GitLab, pipeline, tip, workflow]
 ---

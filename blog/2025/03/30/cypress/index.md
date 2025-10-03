@@ -4,6 +4,7 @@ slug: cypress
 title: Introduction to Cypress
 authors: [christophe]
 image: /img/v2/functional_tests.webp
+description: Get started with Cypress for functional testing. This comprehensive guide covers setup, running tests with Docker containers, synchronizing your test files, and capturing error screenshots.
 mainTag: tests
 series: Functional testing
 tags: [chrome, cypress, docker, javascript, node, tests]

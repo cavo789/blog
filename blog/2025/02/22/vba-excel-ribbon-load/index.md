@@ -5,6 +5,7 @@ title: MS Office - Load dropdown from Excel's range
 authors: [christophe]
 image: /img/v2/ribbon.webp
 mainTag: excel
+description: Load an Excel range into your custom VBA Ribbon dropdown control. This step-by-step tutorial covers the VBA code, Custom UI XML, and named ranges needed for a dynamic solution.
 tags: [excel, ribbon, vba, vscode]
 blueskyRecordKey: 3lwgc3uymnc2i
 ---
