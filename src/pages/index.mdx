@@ -5,53 +5,12 @@ hide_table_of_contents: true
 
 import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
 import LatestPosts from "@site/src/components/Blog/LatestPosts";
-
-<!--![Personal blog about Docker, PHP, Joomla and much more](/img/v2/welcome.webp)-->
+import HomeCards from "@site/src/components/HomeCards";
+import MainTags from "@site/src/components/MainTags";
 
 <main>
-
-    <h3 id="explore_blog">Explore the site</h3>
-    <div className="row">
-        <HomeCard
-        title="Blog"
-        link="/blog"
-        image="blog.webp"
-        description="I'm publishing at least one article by week"
-        />
-        <HomeCard
-        title="Series"
-        link="/series"
-        image="series.webp"
-        description="Browse articles grouped by series"
-        />
-        <HomeCard
-        title="Tags"
-        link="/blog/tags"
-        image="tags.webp"
-        description="Quick way to find posts by topic or keyword"
-        />
-        <HomeCard
-        title="Repositories"
-        link="/repositories"
-        image="repositories.webp"
-        description="Discover my public repositories hosted on GitHub.com"
-        />
-        <HomeCard
-        title="Archive"
-        link="/blog/archive"
-        image="archive.webp"
-        description="A timeline view of everything I've published so far"
-        />
-        <HomeCard
-        title="About"
-        link="/about"
-        image="about.webp"
-        description="Who I am, why I write, and what this blog is about."
-        />
-    </div>
-
-    <LatestPosts count={10} layout="bullet" />
-
+    <HomeCards />
+    <LatestPosts count={9} />
+    <MainTags />
     <ScrollToTopButton />
-
 </main>

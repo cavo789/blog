@@ -1,14 +1,16 @@
 # 📰 LatestPosts Component
 
-A flexible React component for displaying recent blog posts in various layouts. Ideal for Docusaurus-based sites.
+A flexible React component for displaying recent blog posts in a card-based layout. Ideal for Docusaurus-based sites.
 
 ## Features
 
 * ✅ Sorts posts by date (newest first)
 * 🎯 Customizable number of posts
 * 📝 Optional display of descriptions
-* 📦 Supports multiple layouts: `big`, `small`, and `bullet`
-* 🏷️ Displays tags and publication dates
+* 🖼️ Displays featured images if available
+* 🗓️ Shows formatted publication dates
+* 🔗 Includes link to full blog archive
+* 📊 Displays total blog post count via `<BlogPostCount />`
 
 ## Installation
 
@@ -23,7 +25,7 @@ Ensure your project includes:
 ```jsx
 import LatestPosts from './LatestPosts';
 
-<LatestPosts count={10} description={true} layout="bullet" />
+<LatestPosts count={9} description={true} />
 ```
 
 ## 🧾 Props
@@ -32,26 +34,28 @@ import LatestPosts from './LatestPosts';
 | --- | --- | --- | --- | --- |
 | `count` | number | ❌ | 8 | Number of latest posts to display |
 | `description` | boolean | ❌ | false | Whether to show post descriptions |
-| `layout` | string | ❌ | `bullet` | Layout style: `big`, `small`, or `bullet` |
 
 ## Layouts
 
-### 🔘 Bullet
+### 📦 Card Grid
 
-Displays a simple list with:
+Each post is rendered as a clickable card with:
 
-* Title (linked)
-* Date (formatted)
-* Description (optional)
-* Tags (if available)
-
-### 🧱 Big / Small
-
-Uses the `PostCard` component to render visually styled cards.
+* Title
+* Optional description
+* Optional featured image
+* Formatted publication date
 
 ## Styling
 
-Customize bullet layout via `styles.module.css`.
+Customize the layout via `styles.module.css`. Key classes include:
+
+* `cardsSection`
+* `sectionTitle`
+* `cardsGrid`
+* `cardLink`
+* `seeMoreContainer`
+* `seeMoreLink`
 
 ## Development Notes
 

@@ -114,10 +114,7 @@ const config = {
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "ignore",
           // Replace words like "vscode" or "markdown" to "VSCode" and "Markdown"
-          beforeDefaultRemarkPlugins: [
-            remarkSnippetLoader,
-            remarkReplaceWords,
-          ],
+          beforeDefaultRemarkPlugins: [remarkSnippetLoader, remarkReplaceWords],
         },
         sitemap: {
           changefreq: "weekly",
@@ -148,6 +145,7 @@ const config = {
     ],
     [pluginSeriesRoute, {}],
     [pluginTagRoute, {}],
+    require.resolve("docusaurus-plugin-image-zoom"),
   ],
   headTags: [
     {
@@ -286,12 +284,21 @@ const config = {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
       },
-      imageZoom: {
-        selector: ".markdown :not(a) > img:not([data-no-zoom])",
+      // Configuration du zoom
+      zoom: {
+        // Sélecteur CSS pour cibler les images à zoomer (les images dans le markdown qui ne sont pas des liens)
+        // selector: ".markdown :not(em) > img",
+        selector: 'img:not(.navbar-logo)',
 
+        // Couleur de fond du zoom (mode clair/sombre)
         background: {
-          light: "rgb(255, 255, 255)",
-          dark: "rgb(50, 50, 50)",
+          light: "rgb(255, 255, 255)", // Blanc
+          dark: "rgb(50, 50, 50)", // Gris foncé
+        },
+
+        // Options supplémentaires pour medium-zoom
+        config: {
+          // par exemple : margin: 24,
         },
       },
       algolia: {

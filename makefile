@@ -199,3 +199,8 @@ not-yet-shared: ## Get the list of blog posts not yet shared on BlueSky
 no-main-tag: ## Get the list of blog posts without mainTag defined in his YAML front matter
 	@clear
 	./.scripts/find-posts-without-maintag-yaml.sh
+
+.PHONY: most-used-tags
+most-used-tags: ## Get the list of the most used tags
+	@clear
+	docker run -it --rm -v ${PWD}:/app -w /app python sh -c "pip install pyyaml && python .scripts/most-used-tags.py"

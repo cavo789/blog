@@ -8,7 +8,6 @@ import Columns from "@site/src/components/Columns";
 import Details from "@site/src/components/Details";
 import Hero from "@site/src/components/Hero";
 import Highlight from "@site/src/components/Highlight";
-import HomeCard from "@site/src/components/HomeCard";
 import Link from '@docusaurus/Link';
 import LogoIcon from '@site/src/components/Blog/LogoIcon';
 import MDXComponents from "@theme-original/MDXComponents";
@@ -33,7 +32,6 @@ export default {
   Details,
   Hero,
   Highlight,
-  HomeCard,
   Link,
   LogoIcon,
   Snippet,
