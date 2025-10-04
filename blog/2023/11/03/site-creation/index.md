@@ -4,6 +4,7 @@ slug: site-creation
 title: Site creation
 authors: [christophe]
 image: /img/v2/site_creation.webp
+description: Follow the steps taken to create this Docusaurus blog. Learn about using essential plugins like search, sitemap, image zoom, and adding the Giscus comment system.
 mainTag: docusaurus
 tags: [docusaurus, nodejs, docker, winscp]
 ---

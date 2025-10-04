@@ -5,6 +5,7 @@ title: Laravel Filament
 authors: [christophe]
 image: /img/v2/laravel.webp
 mainTag: laravel
+description: Discover Laravel Filament, a collection of beautiful full-stack components for building administration interfaces with the TALL stack. A free alternative to Laravel Nova.
 tags: [laravel, php]
 ---
 <!-- cspell:ignore ailwind,lpine,aravel,ivewire -->

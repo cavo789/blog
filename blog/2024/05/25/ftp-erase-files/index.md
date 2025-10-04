@@ -4,6 +4,7 @@ slug: ftp-erase-files
 title: FTP - Remove files and folders at light speed
 authors: [christophe]
 image: /img/v2/winscp.webp
+description: Stop the slow process of deleting files via FTP! Learn how to remove entire websites and folders at lightning speed using a simple, self-deleting PHP script—even without SSH access.
 mainTag: linux
 tags: [ftp, tips]
 ---

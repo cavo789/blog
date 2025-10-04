@@ -3,6 +3,7 @@ date: 2024-06-02
 slug: joomla-show-table
 title: Joomla - Run a SQL statement outside Joomla and display a nice HTML table
 authors: [christophe]
+description: Easily export live Joomla data to Microsoft Excel. Learn to run a custom SQL query outside of Joomla and display the results in a refreshable HTML table for spreadsheet linking.
 image: /img/v2/joomla.webp
 mainTag: joomla
 tags: [database, excel, joomla, tips]

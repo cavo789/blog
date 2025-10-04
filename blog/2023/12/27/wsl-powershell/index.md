@@ -4,6 +4,7 @@ slug: wsl-powershell
 title: Starting the default associated Windows program on WSL
 authors: [christophe]
 image: /img/v2/wsl.webp
+description: Learn the simple command to open files like PDFs and HTML from your WSL Linux console using their default Windows application - powershell.exe.
 mainTag: wsl
 tags: [powershell, tips, wsl]
 ---

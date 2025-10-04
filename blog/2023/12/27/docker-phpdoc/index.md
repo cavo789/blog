@@ -4,6 +4,7 @@ slug: docker-phpdocumentor
 title: Generating documentation for a PHP codebase
 authors: [christophe]
 image: /img/v2/php_tips.webp
+description: Generate high-quality documentation for your PHP codebase effortlessly. This guide shows you how to use the phpDocumentor Docker image to create documentation with a single command.
 mainTag: php
 tags: [docker, php, phpdoc, wordpress]
 ---

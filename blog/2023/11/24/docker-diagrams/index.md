@@ -5,6 +5,7 @@ title: Docker - Diagrams as code
 authors: [christophe]
 image: /img/v2/diagrams.webp
 mainTag: visualisation
+description: Generate stunning infrastructure and application diagrams directly from Python code using the diagrams library and a simple Docker command. Visualize your complex systems as code effortlessly.
 tags: [docker, visualisation, tips]
 ---
 ![Docker - Diagrams as code](/img/v2/diagrams.webp)

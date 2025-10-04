@@ -6,6 +6,7 @@ authors: [christophe]
 image: /img/v2/docusaurus_tips.webp
 mainTag: docusaurus
 tags: [docker, docusaurus, node, npm, tips, yarn]
+description: Run Docusaurus with Docker! Follow this easy tutorial to create your Docusaurus Docker image, use docker compose, and get your documentation or blog running fast.
 ---
 ![Running Docusaurus with Docker](/img/v2/docusaurus_tips.webp)
 

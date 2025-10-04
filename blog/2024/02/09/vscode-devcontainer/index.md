@@ -5,6 +5,7 @@ title: PHP development in a devcontainer with preinstalled code quality tools
 authors: [christophe]
 image: /img/v2/devcontainer.webp
 series: Coding using a devcontainer
+description: Stop fighting code quality issues. Set up a consistent PHP development environment instantly! This step-by-step guide shows you how to configure a VSCode Devcontainer with preinstalled quality and analysis tools.
 mainTag: php
 tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, sonarlint, vscode]
 blueskyRecordKey: 3lymrewibzk2l

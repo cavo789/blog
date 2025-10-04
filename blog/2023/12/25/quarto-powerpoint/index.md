@@ -5,6 +5,7 @@ title: Use Quarto and create a PowerPoint slideshow
 authors: [christophe]
 image: /img/v2/quarto.webp
 series: Discovering Quarto
+description: Discover how to convert your Markdown documentation into a PowerPoint (.pptx) slideshow or an online reveal.js presentation using Quarto.
 mainTag: quarto
 tags: [markdown, powerpoint, quarto, revealjs, tips]
 ---

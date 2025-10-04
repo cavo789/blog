@@ -3,6 +3,7 @@ date: 2024-07-29
 slug: linux-generate-documentation-from-bash-scripts
 title: Linux - Generate documentation from Bash scripts
 authors: [christophe]
+description: Learn to auto-generate documentation for your Bash scripts on Linux. This guide provides a custom script to parse function doc blocks and create structured Markdown files automatically.
 image: /img/v2/bash.webp
 mainTag: bash
 tags: [bash, introspection, linux, tips]

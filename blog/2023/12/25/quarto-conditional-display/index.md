@@ -3,6 +3,7 @@ date: 2023-12-25
 slug: quarto-conditional-display
 title: Quarto conditional display
 authors: [christophe]
+description: Learn to use Quarto's conditional display features (content-visible, content-hidden) to control what content appears in different output formats (HTML, PDF, Word, slides) from a single Markdown file.
 series: Discovering Quarto
 image: /img/v2/quarto.webp
 mainTag: quarto

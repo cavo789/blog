@@ -5,6 +5,7 @@ title: Bash - ASCII art
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: bash
+description: Learn how to add eye-catching ASCII art banners to your Bash scripts for a bigger visual impact. Includes the recommended online tool (TAAG) and a full sample code implementation.
 tags: [bash, tips]
 ---
 ![Bash - ASCII art](/img/v2/bash.webp)

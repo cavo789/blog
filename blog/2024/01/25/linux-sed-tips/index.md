@@ -5,6 +5,7 @@ title: Search and replace (or add) using sed
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: linux
+description: Master Linux sed for dynamic file editing. Learn how to search and replace an existing variable or seamlessly add a new line if the variable is not found in your configuration file.
 tags: [.env, bash, linux, sed, tips]
 ---
 ![Search and replace (or add) using sed](/img/v2/bash.webp)

@@ -4,6 +4,7 @@ slug: welcome
 title: Welcome
 authors: [christophe]
 image: /img/v2/welcome.webp
+description: Built with Docusaurus, this is the welcome post for Christophe Avonture's blog. Find a collection of personal notes on Markdown, Docker, PHP development, and devOps.
 ---
 ![Welcome](/img/v2/welcome.webp)
 

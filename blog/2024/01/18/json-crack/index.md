@@ -4,6 +4,7 @@ slug: json-crack
 title: Rendering a JSON file as a mind map
 authors: [christophe]
 image: /img/v2/mindmaps.webp
+description: Transform complex JSON data into clear, interactive mind maps with JSON Crack. Discover how this powerful tool simplifies data visualization and enhances data understanding.
 mainTag: mindmap
 tags: [json, visualisation, vscode]
 ---

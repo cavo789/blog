@@ -4,6 +4,7 @@ slug: vscode-multiple-cursors
 title: Multiple cursors in vscode
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
+description: Need to edit multiple lines in VSCode where search/replace fails? Learn the powerful Multiple Cursors feature and the quick keyboard shortcut to make bulk edits instantly.
 mainTag: vscode
 tags: [tips, vscode]
 ---

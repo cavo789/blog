@@ -4,6 +4,7 @@ slug: install-docker
 title: Install Docker and play with PHP
 authors: [christophe]
 mainTag: php
+description: Install Docker and run PHP with Apache instantly using containers. Learn to easily switch between PHP versions (like 7.4 and 8.1) without painful local conflicts.
 tags: [docker, php]
 image: /img/v2/docker_tips.webp
 ---

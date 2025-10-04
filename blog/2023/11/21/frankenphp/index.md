@@ -5,6 +5,7 @@ title: FrankenPHP, a modern application server for PHP
 authors: [christophe]
 image: /img/v2/frankenphp.webp
 mainTag: joomla
+description: Learn how to set up a Joomla website using Docker and FrankenPHP, a modern PHP server that's up to 3.5x faster than PHP-FPM. Includes a simple compose.yaml setup.
 tags: [docker, frankenphp, joomla]
 ---
 ![FrankenPHP](/img/v2/frankenphp.webp)

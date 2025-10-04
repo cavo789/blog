@@ -5,6 +5,7 @@ title: Quickly install WordPress in just three commands
 authors: [christophe]
 image: /img/v2/wordpress.webp
 mainTag: wordpress
+description: Install a complete WordPress site with Docker in just three simple commands. Learn how to set up the network, database (MySQL/MariaDB), and WordPress container quickly and easily.
 tags: [docker, wordpress]
 ---
 ![Quickly install WordPress in just three commands](/img/v2/wordpress.webp)

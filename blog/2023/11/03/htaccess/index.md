@@ -4,6 +4,7 @@ slug: apache-htaccess
 title: Apache .htaccess file
 authors: [christophe]
 mainTag: apache
+description: Master your Apache .htaccess file with essential tips and tricks for security, redirection, file access control, Content Security Policy (CSP), forcing HTTPS, and performance optimization.
 tags: [apache, snippets, .htaccess]
 image: /img/v2/htaccess.webp
 ---

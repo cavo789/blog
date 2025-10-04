@@ -6,6 +6,7 @@ authors: [christophe]
 image: /img/v2/docker_init.webp
 mainTag: php
 tags: [docker, tips]
+description: Containerize your PHP application fast! This guide shows you how to use the new Docker init feature with PHP and Apache, including a walk-through of the generated Dockerfile and compose.yaml files.
 ---
 <!-- cspell:ignore dbmdl -->
 ![Docker init now supports PHP](/img/v2/docker_init.webp)

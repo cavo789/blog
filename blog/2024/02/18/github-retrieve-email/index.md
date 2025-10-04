@@ -4,6 +4,7 @@ slug: github-retrieve-email
 title: Github - How to find email addresses for most users
 authors: [christophe]
 image: /img/v2/github_tips.webp
+description: Quickly find a GitHub user's email address. Learn three effective methods using a web tool, the public API, or by inspecting a commit with the .patch trick.
 mainTag: github
 tags: [Github, tips]
 ---

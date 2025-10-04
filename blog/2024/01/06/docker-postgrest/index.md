@@ -5,6 +5,7 @@ title: Don't query your PostgreSQL db anymore, prefer PostgREST
 authors: [christophe]
 image: /img/v2/postgrest.webp
 mainTag: postgrest
+description: Use Docker and PostgREST to instantly turn your PostgreSQL database into a powerful RESTful API. Eliminate SQL queries and complex database models from your application code with this simple setup tutorial.
 tags: [docker, openapi, postgrest, postgresql, swagger-ui]
 ---
 ![Don't query your PostgreSQL db anymore, prefer PostgREST](/img/v2/postgrest.webp)

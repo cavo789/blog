@@ -4,6 +4,7 @@ slug: laravel_events
 title: Working with Laravel events
 authors: [christophe]
 image: /img/v2/laravel.webp
+description: Explore the power of Laravel events for clean, decoupled code. This guide provides a practical, step-by-step example of creating and dispatching an event with a listener.
 mainTag: laravel
 tags: [laravel, php]
 ---

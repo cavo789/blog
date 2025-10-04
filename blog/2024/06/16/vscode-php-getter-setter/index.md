@@ -3,6 +3,7 @@ date: 2024-06-16
 slug: vscode-php-getter-setter
 title: PHP Getter and Setter in VSCode
 authors: [christophe]
+description: Implement secure PHP Getters and Setters in VSCode effortlessly. Learn the best practices for private class properties and use the recommended extension to generate them instantly.
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
 tags: [tips, vscode]
@@ -12,7 +13,7 @@ tags: [tips, vscode]
 
 Because you're an excellent developer, you deny anyone access to the properties of your class directly, but only via a getter or setter.
 
-In other words, in your PHP class, you don't have `public` properties (they're devil) but exclusively `protected` ones or better ` private`.
+In other words, in your PHP class, you don't have `public` properties (they're devil) but exclusively `protected` ones or better `private`.
 
 And using getter and setters you allow other objects to interact with your private methods by reading them (getters) or updating their values (setters).
 

@@ -3,6 +3,7 @@ date: 2024-04-19
 slug: vscode-codesnap
 title: CodeSnap addon for VSCode
 authors: [christophe]
+description: Easily take beautiful, shareable screenshots of your code snippets right inside VS Code with the CodeSnap extension. A simple, step-by-step guide.
 mainTag: vscode
 tags: [vscode, markdown, tips]
 image: /img/v2/vscode_tips.webp

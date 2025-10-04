@@ -4,6 +4,7 @@ slug: linux-sort-functions-in-script
 title: Linux - Sort functions in a Bash script
 authors: [christophe]
 image: /img/v2/bash.webp
+description: Learn how to use diff and sort in Bash to check if functions in your shell scripts are defined in alphabetical order. Includes a script to scan an entire directory.
 mainTag: bash
 tags: [bash, introspection, linux, tips]
 ---

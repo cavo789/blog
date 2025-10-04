@@ -5,6 +5,7 @@ title: Using variables from external file in your Quarto project
 authors: [christophe]
 image: /img/v2/quarto.webp
 series: Discovering Quarto
+description: Stop hardcoding! Learn how to easily manage and reuse variables in your Quarto documentation using external YAML files and environment variables.
 mainTag: quarto
 tags: [markdown, quarto, tips]
 ---

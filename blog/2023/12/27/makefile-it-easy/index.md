@@ -4,6 +4,7 @@ slug: makefile-using-make
 title: Linux Makefile - When to use a makefile
 authors: [christophe]
 image: /img/v2/makefile.webp
+description: Stop memorizing complex Docker commands. Learn when and how to use a Linux makefile with GNU make to automate your project setup, logging, and environment management.
 mainTag: makefile
 tags: [makefile, tips]
 ---

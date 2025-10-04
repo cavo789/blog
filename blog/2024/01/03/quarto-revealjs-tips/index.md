@@ -3,6 +3,7 @@ date: 2024-01-03
 slug: quarto-revealjs-tips
 title: Some tips and tricks for Quarto when rendering as a reveal.js slideshow
 authors: [christophe]
+description: Elevate your Quarto presentations! Discover essential tips and tricks for rendering stunning reveal.js slideshows, including custom title slides, logo placement, CSS/JS customization, and advanced slide layouts.
 series: Discovering Quarto
 image: /img/v2/quarto.webp
 mainTag: quarto

@@ -4,6 +4,7 @@ slug: github-action
 title: GitHub - Use Actions to deploy this blog
 authors: [christophe]
 image: /img/v2/github_tips.webp
+description: Stop manual FTP deployments! Learn how to automate your blog's deployment with GitHub Actions. This step-by-step guide shows you how to set up the workflow and use repository secrets for automatic updates on every push.
 mainTag: github
 tags: [docusaurus, Github]
 ---
@@ -21,47 +22,7 @@ By using Github actions, this problem no longer exists. With each push, the blog
 
 To enable `GitHub actions`, we first need to create a file in the folder `.github/workflows`. Mine will be named `deploy.yml` with this content:
 
-<Snippet filename="deploy.yml">
-
-```yaml
-name: Deploy blog on avonture.be
-
-on:
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: write
-
-jobs:
-  deploy:
-    name: Deploy blog on avonture.be
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: yarn
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      - name: Build website
-        run: yarn build
-
-      - name: Push files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          # See https://github.com/SamKirkland/FTP-Deploy-Action for allowed settings
-          server: ${{ secrets.ftp_server }}
-          username: ${{ secrets.ftp_login }}
-          password: ${{ secrets.ftp_password }}
-          # We need to deploy the build folder from GitHub to our FTP; not everything (f.i. don't need node_modules)
-          local-dir: ./build/
-```
-
-</Snippet>
+<Snippet filename=".github/workflows/deploy.yml" source=".github/workflows/deploy.yml" />
 
 As you can see, I need three secrets, `${{ secrets.ftp_server }}`, `${{ secrets.ftp_login }}` and `${{ secrets.ftp_password }}`.
 

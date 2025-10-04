@@ -5,6 +5,7 @@ title: Running Quarto Markdown in Docker
 authors: [christophe]
 image: /img/v2/quarto.webp
 mainTag: quarto
+description: Run Quarto Markdown in Docker for easy documentation and slideshow generation. Learn to build your own Docker image and render Markdown to PDF, HTML, and Reveal.js.
 tags: [docker, markdown, pandoc, quarto, revealjs]
 ---
 <!-- cspell:ignore rsvg,ggplot2,gdebi,renv,tlmgr,fvextra,footnotebackref,pagecolor,sourcesanspro,sourcecodepro,Aoption -->

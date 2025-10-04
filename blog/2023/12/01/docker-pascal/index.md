@@ -4,6 +4,7 @@ slug: docker-pascal
 title: Play with Docker and Pascal
 authors: [christophe]
 image: /img/v2/experiments.webp
+description: Can you run 30-year-old Pascal code today? Yes! This guide shows you how to use Docker and the Free Pascal Compiler (FPC) to compile and execute your legacy Turbo Pascal programs.
 mainTag: pascal
 tags: [docker, pascal]
 ---

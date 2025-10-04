@@ -5,6 +5,7 @@ title: WinSCP - Retrieve a stored password
 authors: [christophe]
 image: /img/v2/winscp.webp
 mainTag: winscp
+description: Did you forget a saved WinSCP password? Follow this quick guide to enable logging and retrieve your stored password in plain text from your session log file.
 tags: [tips, winscp]
 ---
 ![WinSCP - Retrieve a stored password](/img/v2/winscp.webp)

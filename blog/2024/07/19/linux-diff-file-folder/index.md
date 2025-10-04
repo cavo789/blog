@@ -4,6 +4,7 @@ slug: linux-diff-file-folder
 title: Linux - Comparing two folders/files in the console
 authors: [christophe]
 image: /img/v2/bash.webp
+description: Efficiently compare two files or entire folders in Linux using the diff command. Get advanced bash scripts for industrial-level comparison.
 mainTag: linux
 tags: [bash, linux, tips]
 ---

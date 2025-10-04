@@ -4,6 +4,7 @@ slug: makefile_tips
 title: Makefile - Tutorial and Tips & Tricks
 authors: [christophe]
 image: /img/v2/makefile.webp
+description: Essential Makefile tips and tricks for automation. Learn to check file existence, run dependent targets, use conditional logic, suppress errors, and integrate with Docker in your scripts.
 mainTag: makefile
 tags: [makefile, tips]
 ---

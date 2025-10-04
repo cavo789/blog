@@ -5,6 +5,7 @@ title: Customize your Linux prompt with Powerlevel10k
 authors: [christophe]
 image: /img/v2/customization_prompt.webp
 mainTag: customization
+description: Test and customize the Powerlevel10k Zsh theme for your Linux or WSL prompt in a safe Docker sandbox environment before committing to a full installation.
 tags: [customization, docker, tips, wsl, zsh]
 ---
 ![Customize your Linux prompt with Powerlevel10k](/img/v2/customization_prompt.webp)

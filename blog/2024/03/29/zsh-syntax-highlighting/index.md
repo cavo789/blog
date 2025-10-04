@@ -5,6 +5,7 @@ title: Syntax highlighting in the console using ZSH
 authors: [christophe]
 image: /img/v2/zsh.webp
 mainTag: zsh
+description: Enhance your Zsh console with syntax highlighting! See commands turn green (valid) or red (invalid) as you type. Quick installation guide for zsh-syntax-highlighting.
 tags: [customization, linux, wsl, zsh]
 ---
 ![Syntax highlighting in the console using ZSH](/img/v2/zsh.webp)

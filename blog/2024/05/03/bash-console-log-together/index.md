@@ -3,6 +3,7 @@ date: 2024-05-03
 slug: bash-console-log-together
 title: Bash - Echo on the console and in a logfile in the same time
 authors: [christophe]
+description: Tired of silent Bash scripts? Learn the simple, effective method to simultaneously echo command output to the console and write it to a log file line-by-line.
 image: /img/v2/bash.webp
 tags: [bash, tips]
 mainTag: bash

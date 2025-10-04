@@ -3,6 +3,7 @@ date: 2024-02-07
 slug: docusaurus-articles-tips
 title: Some tips and tricks when written articles for Docusaurus
 authors: [christophe]
+description: Boost your Docusaurus articles with essential tips and tricks. Learn how to add Admonitions, apply inline styling, and highlight code lines easily.
 series: Discovering Docusaurus
 image: /img/v2/docusaurus_tips.webp
 mainTag: docusaurus

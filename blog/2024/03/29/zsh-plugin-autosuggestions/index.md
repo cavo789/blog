@@ -3,6 +3,7 @@ date: 2024-03-29
 slug: zsh-plugin-autosuggestions
 title: Autosuggestions in the console using ZSH
 authors: [christophe]
+description: Boost your ZSH console efficiency. Install the zsh-autosuggestions plugin easily and get intelligent command suggestions from your history as you type.
 image: /img/v2/zsh.webp
 mainTag: zsh
 tags: [customization, linux, wsl, zsh]

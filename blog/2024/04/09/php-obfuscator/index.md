@@ -3,6 +3,7 @@ date: 2024-04-09
 slug: php-obfuscator
 title: Obfuscate your PHP code
 authors: [christophe]
+description: Protect your PHP code with obfuscation. Discover how the php_obfuscator script works and if AI tools like Copilot can still de-obfuscate your proprietary source code.
 image: /img/v2/obfuscated_code.webp
 mainTag: php
 tags: [code-quality, AI, php]

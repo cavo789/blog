@@ -5,6 +5,7 @@ title: Getting the number of published posts
 authors: [christophe]
 image: /img/v2/docusaurus_tips.webp
 series: Discovering Docusaurus
+description: Learn the quick and easy way to display the total number of published blog posts on your Docusaurus site using custom components and theme API.
 mainTag: docusaurus
 tags: [markdown, docusaurus, tips]
 ---

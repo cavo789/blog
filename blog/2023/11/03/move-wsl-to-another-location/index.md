@@ -4,6 +4,7 @@ slug: move-wsl-to-another-location
 title: Move WSL to another location
 authors: [christophe]
 mainTag: wsl
+description: Running low on C drive space? Follow this step-by-step guide to safely move your WSL (Windows Subsystem for Linux) distribution and Docker data to a new drive location using the wsl --export and wsl --import commands.
 tags: [docker, tips, wsl]
 image: /img/v2/wsl.webp
 ---

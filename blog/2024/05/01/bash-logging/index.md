@@ -3,6 +3,7 @@ date: 2024-05-01
 slug: bash-logging
 title: Bash - Script to add logging features to your script
 authors: [christophe]
+description: Add robust logging features to your Bash scripts with this simple, reusable library. Get automatic log files, timestamps, and full function call traces for easy debugging.
 image: /img/v2/bash.webp
 mainTag: bash
 tags: [bash, tips]

@@ -5,6 +5,7 @@ title: How to self-host Matomo
 authors: [christophe]
 image: /img/v2/matomo.webp
 mainTag: self-hosted
+description: Self-host Matomo for free and gain GDPR-compliant website analytics. This simple guide covers installation, database setup, and Docusaurus integration.
 tags: [docusaurus, matomo]
 ---
 ![How to self-host Matomo](/img/v2/matomo.webp)

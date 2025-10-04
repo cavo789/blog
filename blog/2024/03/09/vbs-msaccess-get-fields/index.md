@@ -4,6 +4,7 @@ slug: vbs-msaccess-get-fields
 title: VBS - Retrieve the list of fields in a MS Access Database
 authors: [christophe]
 image: /img/v2/msaccess.webp
+description: Use a VBScript to easily retrieve a detailed list of fields from your MS Access database. Analyze field size, type, and actual value length to optimize your database structure.
 mainTag: msaccess
 tags: [database, msaccess, vbs]
 ---

@@ -4,6 +4,7 @@ slug: docker-network-and-extra-hosts
 title: Using Docker network and the extra_hosts property
 authors: [christophe]
 image: /img/v2/docker_tips.webp
+description: Resolve host aliases inside Docker containers! Learn to use docker network and the extra_hosts property in docker compose to seamlessly connect your services.
 mainTag: docker
 tags: [docker, network, tips]
 ---

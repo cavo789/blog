@@ -4,6 +4,7 @@ slug: php-devcontainer
 title: Install a PHP Docker environment in a matter of seconds
 authors: [christophe]
 image: /img/v2/devcontainer.webp
+description: Quickly set up a PHP Docker Dev Container environment for VSCode. Get Composer and pre-installed static analysis tools like PHP-CS-Fixer and Rector instantly.
 series: Coding using a devcontainer
 mainTag: php
 tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, sonarlint, vscode]

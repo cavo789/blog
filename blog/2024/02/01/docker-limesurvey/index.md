@@ -4,6 +4,7 @@ slug: docker-limesurvey
 title: Install LimeSurvey using Docker
 authors: [christophe]
 image: /img/v2/limesurvey.webp
+description: Learn to install LimeSurvey quickly and easily using Docker Compose. A complete guide on setup, data persistence with volumes, and running specific versions.
 mainTag: limesurvey
 tags: [docker, limesurvey]
 ---

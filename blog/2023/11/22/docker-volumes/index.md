@@ -3,6 +3,7 @@ date: 2023-11-22
 slug: docker-volumes
 title: Using volumes with Docker, use cases
 authors: [christophe]
+description: Master Docker volumes to stop losing data! Explore Docker-managed volumes, mounted volumes, and real-world use cases for container data persistence.
 image: /img/v2/docker_concepts.webp
 mainTag: docker
 tags: [wsl, docker]

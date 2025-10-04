@@ -4,6 +4,7 @@ slug: outlook-vba-pdf
 title: Microsoft Outlook - VBA - Save emails as PDF
 authors: [christophe]
 image: /img/v2/outlook_vba.webp
+description: Learn how to implement a VBA macro in Microsoft Outlook to easily save selected emails as PDF files to your hard drive, complete with step-by-step installation and usage instructions.
 mainTag: outlook
 tags: [outlook, vba]
 ---

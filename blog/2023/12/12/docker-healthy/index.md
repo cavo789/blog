@@ -4,6 +4,7 @@ slug: docker-healthy
 title: Get health information from your running containers
 authors: [christophe]
 mainTag: bash
+description: Learn how to quickly retrieve the health information of your running Docker containers using the docker ps command and the State.Health response. Keep your containers healthy!
 tags: [bash, docker, tips]
 image: /img/v2/docker_tips.webp
 ---

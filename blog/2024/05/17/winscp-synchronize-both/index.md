@@ -4,6 +4,7 @@ slug: winscp-synchronize-both
 title: WinSCP - Synchronize host and remote
 authors: [christophe]
 image: /img/v2/winscp.webp
+description: Use a script with WinSCP to easily synchronize files between your local host and a remote FTP/SFTP server. Learn the commands for local, remote, or bi-directional synchronization.
 mainTag: winscp
 tags: [dos, synology, tips, winscp]
 ---

@@ -4,6 +4,7 @@ slug: quarto-includes-shortcode
 title: Quarto includes short code
 authors: [christophe]
 image: /img/v2/quarto.webp
+description: Learn how to use the Quarto includes short code to break down long documents into multiple, organized files, making your writing process easier.
 series: Discovering Quarto
 mainTag: quarto
 tags: [markdown, quarto, tips]

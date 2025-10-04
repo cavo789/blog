@@ -5,6 +5,7 @@ title: The jq utility for Linux
 authors: [christophe]
 image: /img/v2/json.webp
 mainTag: linux
+description: Use the powerful Linux jq utility to manipulate JSON data, prettify output, and filter nodes directly from your command line and shell scripts.
 tags: [bash, json, jq, linux, tips]
 ---
 <!-- cspell:ignore Salomé -->

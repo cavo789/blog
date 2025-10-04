@@ -4,6 +4,7 @@ slug: vscode-export-list-of-extensions
 title: Export the list of extensions you've installed in VSCode
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
+description: Export and share your list of installed VS Code extensions using the `code --list-extensions` command. Learn how to generate direct installation commands for easy setup on a new machine using PowerShell or Linux.
 mainTag: vscode
 tags: [tips, vscode]
 ---

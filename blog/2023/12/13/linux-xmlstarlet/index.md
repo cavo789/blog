@@ -5,6 +5,7 @@ title: The xmlstarlet utility for Linux
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: linux
+description: Master XML data manipulation on the Linux command line with xmlstarlet. This guide shows you how to beautify XML output and filter nodes using XPath expressions.
 tags: [bash, linux, tips, xml, xmlstarlet]
 ---
 ![The xmlstarlet utility for Linux](/img/v2/bash.webp)

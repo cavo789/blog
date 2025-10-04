@@ -4,6 +4,7 @@ slug: winscp-vba
 title: WinSCP - Visual Basic for Application use
 authors: [christophe]
 image: /img/v2/winscp.webp
+description: Automate secure SFTP/FTP file transfers directly from MS Office. Learn how to call the WinSCP DLLs using simple Visual Basic for Application (VBA) code with a practical example.
 mainTag: winscp
 tags: [tips, vba, winscp]
 ---

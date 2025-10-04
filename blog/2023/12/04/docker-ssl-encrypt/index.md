@@ -4,6 +4,7 @@ slug: docker_ssl_encrypt
 title: Encrypt sensitive data using SSL and Docker
 authors: [christophe]
 image: /img/v2/encryption.webp
+description: Securely encrypt and decrypt sensitive files using the OpenSSL image in Docker. Includes simple scripts for Linux and Windows to protect your secrets before storing them in Git or the cloud.
 mainTag: ssl
 tags: [docker, encryption, ssl]
 ---

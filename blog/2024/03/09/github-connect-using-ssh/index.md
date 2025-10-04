@@ -4,6 +4,7 @@ slug: github-connect-using-ssh
 title: Github - Connect your account using SSH and start to work with git@ protocol
 authors: [christophe]
 image: /img/v2/github_tips.webp
+description: Secure your GitHub connection! Follow this easy, step-by-step guide to set up SSH keys and use the git@ protocol for safer and quicker Git operations.
 mainTag: github
 tags: [Github, ssh, tips]
 ---

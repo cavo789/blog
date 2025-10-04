@@ -4,6 +4,7 @@ slug: docker-inspect
 title: Docker inspect - Retrieve network's information
 authors: [christophe]
 image: /img/v2/docker_tips.webp
+description: Use docker inspect to quickly retrieve detailed configuration and network information for your Docker containers in JSON format. Get a power tip with jq.
 mainTag: docker
 tags: [docker, network, tips]
 ---

@@ -5,6 +5,7 @@ title: How to install Oh-My-ZSH
 authors: [christophe]
 image: /img/v2/zsh.webp
 mainTag: zsh
+description: Install Zsh and Oh-My-ZSH easily! Learn to power up your Linux terminal with the Powerlevel10k theme, custom functions like take, and essential daily-use features.
 tags: [customization, linux, wsl, zsh]
 ---
 ![How to install Oh-My-ZSH](/img/v2/zsh.webp)
