@@ -7,6 +7,7 @@ image: /img/v2/docker_secrets.webp
 description: Securely access private Git repositories during your Docker build using SSH keys and Docker secrets. Includes complete Dockerfile and compose.yaml examples to prevent secrets from being stored in your final image.
 mainTag: ssh
 tags: [docker, git, Github, secrets, ssh]
+blueskyRecordKey:
 ---
 ![Docker secrets - Using your SSH key during the build process](/img/v2/docker_secrets.webp)
 

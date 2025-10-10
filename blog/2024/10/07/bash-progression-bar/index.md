@@ -3,15 +3,20 @@ date: 2024-10-07
 slug: bash-progression-bar
 title: Linux - Using a progression bar in your script
 authors: [christophe]
+<<<<<<< HEAD
 image: /img/v2/bash.webp
 description: Add a visual progression bar to your Bash scripts on Linux. This guide shows you how to easily implement a progress bar to track concurrent jobs, visualize progress, and improve your terminal user interface.
+=======
+image: /img/v2/linux_progress_bar.webp
+>>>>>>> 03190b3a (doc: docker name in compose.yaml)
 mainTag: bash
 tags: [bash, linux, tips]
+blueskyRecordKey:
 ---
 <!-- cspell:ignore bashpid, pids, nproc -->
 <!-- markdownlint-disable MD022,MD025 -->
 
-![Linux - Using a progression bar in your script](/img/v2/bash.webp)
+![Linux - Using a progression bar in your script](/img/v2/linux_progress_bar.webp)
 
 In my previous article; <Link to="/blog/bash-parallel-task">Linux - Take advantage of the number of CPUs you have; start concurrent jobs</Link>, we've seen how to start jobs in parallel.
 

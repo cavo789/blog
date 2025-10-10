@@ -3,14 +3,19 @@ date: 2024-10-06
 slug: bash-parallel-task
 title: Linux - Take advantage of the number of CPUs you have; start concurrent jobs
 authors: [christophe]
+<<<<<<< HEAD
 image: /img/v2/bash.webp
 description: Optimize your Bash scripts! Learn how to run concurrent jobs and leverage all your CPU cores using process IDs (pids), wait, and nproc to dramatically reduce execution time.
+=======
+image: /img/v2/linux_parallel.webp
+>>>>>>> 03190b3a (doc: docker name in compose.yaml)
 mainTag: bash
 tags: [bash, linux, tips]
+blueskyRecordKey:
 ---
 <!-- cspell:ignore bashpid, pids, nproc -->
 
-![Linux - Take advantage of the number of CPUs you have; start concurrent jobs](/img/v2/bash.webp)
+![Linux - Take advantage of the number of CPUs you have; start concurrent jobs](/img/v2/linux_parallel.webp)
 
 In my professional activity, I've been faced with the following requirement: process each line of a CSV file and make a POST API call to upload a document.
 

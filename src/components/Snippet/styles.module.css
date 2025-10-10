@@ -1,12 +1,10 @@
 code {
   /* This variable adapts automatically to light and dark themes */
   background-color: var(--ifm-code-background) !important;
-  padding: 0 !important;
 }
 
 code:hover {
   background-color: var(--ifm-code-background) !important;
-  padding: 0 !important;
 }
 
 .snippet_block {
