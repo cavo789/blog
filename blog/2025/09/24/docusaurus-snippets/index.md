@@ -42,15 +42,6 @@ In pure HTML, we can use the `<summary>` DOM element like this:
 </details>
 ```
 
-And it's rendered like this in HTML:
-
-<details>
-    <summary>blog/index.md</summary>
-
-    Hello world! Proud to be here!!!
-
-</details>
-
 :::tip
 It works but ... can we do better. I think to f.i. add an icon based on the language type, also do color's distinction between language and much, much better, don't copy/paste the code anymore in the article but just read it from the disk.
 :::

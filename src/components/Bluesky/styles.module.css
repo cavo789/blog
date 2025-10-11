@@ -3,27 +3,26 @@
   height: 20px;
 }
 
-/* Will contains all Bluesky buttons and comments */
 .blueskyContainer {
   margin-top: 2rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
-/* The container for all Bluesky comments */
 .blueskyCommentsContainer {
   border: solid 10px #f5f5f5;
   margin-top: 1rem;
   padding: 0.4rem 0.9rem;
+  margin-bottom: 1.25rem;
 }
 
-/* The container for one single comment */
 .blueskyCommentContainer {
   margin-bottom: 1rem;
   background-color: #f9f9f9;
   padding: 0.8rem;
   border-radius: 6px;
   border-left: 2px solid #e0e0e0;
+  color: #333;
 }
 
 .blueskyCommentHeader {
@@ -160,7 +159,62 @@ img.blueskyCommentEmbedThumb {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Hover effect */
 .blueskyButton:hover {
   background-color: #0062cc;
+}
+
+
+/* --- Surcharges pour le mode sombre (Dark Mode) --- */
+@media (prefers-color-scheme: dark) {
+  /* Conteneur principal */
+  .blueskyCommentsContainer {
+    border-color: #363636;
+  }
+
+  /* Un seul commentaire */
+  .blueskyCommentContainer {
+    background-color: #2e2e2e;
+    border-left-color: #555;
+    color: #e0e0e0;
+  }
+
+  .blueskyCommentAuthorHandle {
+    color: #a0a0a0;
+  }
+
+  .blueskyCommentDate {
+    color: #999;
+  }
+
+  .blueskyCommentLink {
+    color: #a0a0a0;
+  }
+
+  /* Images incorporées */
+  .blueskyCommentImage {
+    border-color: #444;
+  }
+
+  /* Message d'absence de commentaire */
+  .blueskyNoCommentYet {
+    color: #a0a0a0;
+    background-color: #2c2c2c;
+    border-color: #444;
+  }
+
+  .blueskyNoCommentYetCTA {
+    color: #79b8f2;
+  }
+
+  /* Bouton */
+  .blueskyButton {
+    background-color: #383838;
+    border-color: #555;
+    color: #e0e0e0;
+  }
+
+  .blueskyButton:hover {
+    background-color: #007bff;
+    color: white;
+  }
 }

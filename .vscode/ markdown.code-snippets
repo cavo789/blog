@@ -8,18 +8,14 @@
         ],
         "description": "Docusaurus - Admonitions",
     },
-    "docusaurus.details": {
-        "prefix": "Details",
+    "docusaurus.coreconcept": {
+        "prefix": "CoreConcept",
         "body": [
-            "<details>",
-            "",
-            "<summary>$1</summary>",
-            "",
+            "<CoreConcept title=\"$1\">",
             "$2",
-            "",
-            "</details>",
+            "</CoreConcept>",
         ],
-        "description": "Docusaurus - Details-Summary",
+        "description": "Docusaurus - Core concept",
     },
     "docusaurus.link": {
         "prefix": "Link",
@@ -28,7 +24,15 @@
         ],
         "description": "Docusaurus - Link",
     },
-
+    "docusaurus.highlyimportant": {
+        "prefix": "HighlyImportant",
+        "body": [
+            "<HighlyImportant title=\"$1\">",
+            "$2",
+            "</HighlyImportant>",
+        ],
+        "description": "Docusaurus - Highly important part",
+    },
     "docusaurus.prerequisites": {
         "prefix": "Prerequisites",
         "body": [

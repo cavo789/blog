@@ -1,3 +1,0 @@
-fastapi
-gunicorn
-uvicorn[standard]

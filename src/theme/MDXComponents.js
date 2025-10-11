@@ -6,9 +6,11 @@ import CardHeader from "@site/src/components/Card/CardHeader";
 import CardImage from "@site/src/components/Card/CardImage";
 import Column from "@site/src/components/Column";
 import Columns from "@site/src/components/Columns";
+import CoreConcept from '@site/src/components/Blog/CoreConcept';
 import Details from "@site/src/components/Details";
 import Hero from "@site/src/components/Hero";
 import Highlight from "@site/src/components/Highlight";
+import HighlyImportant from '@site/src/components/Blog/HighlyImportant';
 import Link from '@docusaurus/Link';
 import LogoIcon from '@site/src/components/Blog/LogoIcon';
 import MDXComponents from "@theme-original/MDXComponents";
@@ -32,9 +34,11 @@ export default {
   CardImage,
   Column,
   Columns,
+  CoreConcept,
   Details,
   Hero,
   Highlight,
+  HighlyImportant,
   Link,
   LogoIcon,
   Snippet,

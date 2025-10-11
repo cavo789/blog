@@ -12,6 +12,6 @@
 # Misc
 /.env
 
-*.log*
+/*.log*
 
 */**/*:Zone.Identifier

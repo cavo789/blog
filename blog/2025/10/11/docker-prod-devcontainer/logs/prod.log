@@ -1,0 +1,29 @@
+name: my_sample
+services:
+  app:
+    build:
+      context: /tmp/docker-prod-devcontainer
+      dockerfile: Dockerfile
+      args:
+        APP_HOME: /ap
+        PYTHON_VERSION: "3.13"
+        TIMEZONE: Europe/Brussels
+    container_name: app
+    environment:
+      APP_HOME: /ap
+      PYTHON_VERSION: "3.13"
+      TIMEZONE: Europe/Brussels
+    image: my_sample_prod:latest
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8000"
+        protocol: tcp
+    security_opt:
+      - no-new-privileges:true
+    user: 1001:1001
+networks:
+  default:
+    name: my_sample_default

@@ -58,7 +58,7 @@ To generate all the images for this blog, I used Gemini's free plan, which allow
 My advice:
 
 * Each time, upload the images that the AI should reuse (my meerkat, one or other logo to be embedded, etc.) and those it should resemble (I uploaded three or four banners it had already created each time and asked it to *create the new banner in the same style as the ones already created*).
-* Almost every time, I had to remind him that I wanted a vertical image, respecting a 16:9 display.
+* Almost every time, I had to remind him that I wanted a horizontal image, respecting a 16:9 display.
 * Sometimes I would ask it to display a specific text, for example, *The text on the image should look like ‘Docker: Tips and Tricks’* but it made mistakes too often. Even when I told it to correct itself, it made the same mistakes.  In the end, I had only two choices: forbid him from adding text or edit the images by hand and, for example, swap two letters.
 
 Often, the image was impressive from the very first result, but sometimes I would tell him that I didn't really like it, and in those cases, I would clarify my prompt and guide the image in the direction I wanted, such as *The meerkat will process a lot of input files then do some magic and generate output tables*, *I want the meerkat to be dressed up as a dinosaur (like the Docusaurus logo) and have blue wings (like the BlueSky logo)*.  And more often than not, the images were even more impressive.

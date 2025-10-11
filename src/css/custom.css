@@ -1,56 +1,134 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * custom.css pour Docusaurus
+ * Corrige la mise en page : marges, grille, ToC, responsive
+ * Version corrigée par ChatGPT, 2025-10-11
  */
 
-/* You can override the default Infima variables here. */
-
 :root {
-    --ifm-font-family-base: 'Inter', sans-serif;
-    --ifm-font-family-monospace: 'Fira Code', 'JetBrains Mono', monospace;
-    --ifm-color-primary: #2e8555;
-    --ifm-color-primary-dark: #29784c;
-    --ifm-color-primary-darker: #277148;
-    --ifm-color-primary-darkest: #205d3b;
-    --ifm-color-primary-light: #33925d;
-    --ifm-color-primary-lighter: #359962;
-    --ifm-color-primary-lightest: #3cad6e;
-    --ifm-code-font-size: 95%;
-    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-family-base: 'Inter', sans-serif;
+  --ifm-font-family-monospace: 'Fira Code', 'JetBrains Mono', monospace;
+
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --ifm-container-width: 100%;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-    --ifm-color-primary: #25c2a0;
-    --ifm-color-primary-dark: #21af90;
-    --ifm-color-primary-darker: #1fa588;
-    --ifm-color-primary-darkest: #1a8870;
-    --ifm-color-primary-light: #29d5b0;
-    --ifm-color-primary-lighter: #32d8b4;
-    --ifm-color-primary-lightest: #4fddbf;
-    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-.navbar__logo>img {
-    width: auto;
+/* Largeur du conteneur principal */
+.container {
+  max-width: var(--ifm-container-width);
+  margin: 0 auto;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+/* Barre de navigation centrée */
+.navbar__inner {
+  max-width: var(--ifm-container-width);
+  margin: 0 auto;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+/* --- AJUSTEMENT DE LA GRILLE DU BLOG/DOC --- */
+
+/* Sidebar gauche */
+.col.col--3:first-child {
+  flex-basis: 16.6666%;
+  max-width: 16.6666%;
+  padding-right: 0.5rem;
+}
+
+/* Contenu principal (centre) = 8/12 */
+.col.col--6,
+.col.col--7,
+.col.col--9 {
+  flex-basis: 66.6666%;
+  max-width: 66.6666%;
+}
+
+/* TOC : Table des matières à droite */
+.theme-doc-toc-desktop {
+  position: relative;
+  margin-left: auto;
+  margin-right: 0;
+  max-width: 16.6666%;
+  flex-basis: 16.6666%;
+  padding-left: 1rem;
+  padding-right: 0;
+  display: block;
+}
+
+/* Sur très grands écrans */
+@media screen and (min-width: 1600px) {
+  .col.col--6,
+  .col.col--7,
+  .col.col--9 {
+    flex-basis: 70%;
+    max-width: 70%;
+  }
+
+  .theme-doc-toc-desktop {
+    flex-basis: 15%;
+    max-width: 15%;
+  }
+
+  .col.col--3:first-child {
+    flex-basis: 15%;
+    max-width: 15%;
+  }
+}
+
+/* Responsive mobile : 100% de largeur */
+@media screen and (max-width: 768px) {
+  .col.col--3,
+  .col.col--6,
+  .col.col--7,
+  .col.col--9,
+  .col.col--12 {
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Cache la ToC sur mobile */
+  .theme-doc-toc-desktop {
+    display: none !important;
+  }
+}
+
+/* --- STYLES DIVERS --- */
+
+.navbar__logo > img {
+  width: auto;
 }
 
 .card {
-  /* border-radius: 8px;
-  border: 1px solid #eaeaea;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease;
-  background-color: var(--ifm-background-surface-color); */
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  text-decoration: none !important; /* Retire le soulignement du lien */
-  color: var(--ifm-color-emphasis-800); /* Couleur du texte par défaut */
+  text-decoration: none !important;
+  color: var(--ifm-color-emphasis-800);
 }
 
 .card:hover {
-  /* transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1); */
-   transform: translateY(-5px);
+  transform: translateY(-5px);
   box-shadow: var(--ifm-shadow-lg);
   color: var(--ifm-color-emphasis-900);
 }
@@ -66,23 +144,13 @@
   transition: transform 0.2s ease;
 }
 
-@media screen and (max-width: 768px) {
-  .col.col--2 {
-    flex: 0 0 100%;
-    max-width: 100%;
-    margin-bottom: 1rem;
-  }
-}
-
-/* Make the footer (on each page) smaller */
-
 .footer {
   --ifm-footer-padding-vertical: 0.5rem;
 }
 
 .theme-edit-this-page {
-    display: block;
-    margin-bottom: 20px;
+  display: block;
+  margin-bottom: 20px;
 }
 
 .about_images {
@@ -90,21 +158,16 @@
   height: auto;
 }
 
+/* DocSearch : barre de recherche (light & dark) */
 [data-theme='light'] .DocSearch {
-  /* --docsearch-primary-color: var(--ifm-color-primary); */
-  /* --docsearch-text-color: var(--ifm-font-color-base); */
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
   --docsearch-container-background: rgba(94, 100, 112, 0.7);
-  /* Modal */
   --docsearch-modal-background: var(--ifm-color-secondary-lighter);
-  /* Search box */
   --docsearch-searchbox-background: var(--ifm-color-secondary);
   --docsearch-searchbox-focus-background: var(--ifm-color-white);
-  /* Hit */
   --docsearch-hit-color: var(--ifm-font-color-base);
   --docsearch-hit-active-color: var(--ifm-color-white);
   --docsearch-hit-background: var(--ifm-color-white);
-  /* Footer */
   --docsearch-footer-background: var(--ifm-color-white);
 }
 
@@ -112,20 +175,23 @@
   --docsearch-text-color: var(--ifm-font-color-base);
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
   --docsearch-container-background: rgba(47, 55, 69, 0.7);
-  /* Modal */
   --docsearch-modal-background: var(--ifm-background-color);
-  /* Search box */
   --docsearch-searchbox-background: var(--ifm-background-color);
   --docsearch-searchbox-focus-background: var(--ifm-color-black);
-  /* Hit */
   --docsearch-hit-color: var(--ifm-font-color-base);
   --docsearch-hit-active-color: var(--ifm-color-white);
   --docsearch-hit-background: var(--ifm-color-emphasis-100);
-  /* Footer */
   --docsearch-footer-background: var(--ifm-background-surface-color);
   --docsearch-key-gradient: linear-gradient(
     -26.5deg,
     var(--ifm-color-emphasis-200) 0%,
     var(--ifm-color-emphasis-100) 100%
   );
+}
+/* Limite la largeur du contenu central pour une meilleure lisibilité */
+.main-wrapper > .container > .row > .col.col--9,
+.main-wrapper > .container > .row > .col.col--6,
+.main-wrapper > .container > .row > .col.col--7 {
+  max-width: 1200px; /* Ajustable selon ton goût */
+  margin: 0 auto;
 }

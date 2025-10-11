@@ -6,8 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        PYTHON_VERSION: ${PYTHON_VERSION}
-        APP_ENV: PROD
+        APP_HOME: ${APP_HOME:-/app}
+        PYTHON_VERSION: ${PYTHON_VERSION:-3.13}
+        TIMEZONE: ${TIMEZONE:-Europe/Brussels}
     image: my_sample_prod:latest
     container_name: app
     env_file: .env

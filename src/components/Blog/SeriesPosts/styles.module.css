@@ -4,6 +4,8 @@
   padding: 1.5rem;
   margin-bottom: 2rem;
   border-radius: 4px;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .seriesBlogPost p {
@@ -43,7 +45,6 @@
 .seriesBlogPost li span {
   text-decoration: none;
   color: #333;
-  /* line-height: 1.5; */
 }
 
 .seriesBlogPost li a:hover {
@@ -53,4 +54,21 @@
 .seriesBlogPost li span {
   font-weight: bold;
   opacity: 0.8;
+}
+
+@media (prefers-color-scheme: dark) {
+  .seriesBlogPost {
+    background-color: #2c2c2c;
+    border-left-color: #79b8f2;
+    color: #e0e0e0;
+  }
+
+  .seriesBlogPost li::before {
+    color: #a0a0a0;
+  }
+
+  .seriesBlogPost li a,
+  .seriesBlogPost li span {
+    color: #e0e0e0;
+  }
 }
