@@ -1,3 +1,4 @@
+import BrowserWindow from "@site/src/components/BrowserWindow";
 import Card from "@site/src/components/Card";
 import CardBody from "@site/src/components/Card/CardBody";
 import CardFooter from "@site/src/components/Card/CardFooter";
@@ -19,9 +20,11 @@ import Terminal from "@site/src/components/Terminal";
 import TOCInline from '@theme/TOCInline';
 import UpdateAt from "@site/src/components/Updated";
 
+
 export default {
   // Reusing the default mapping
   ...MDXComponents,
+  BrowserWindow,
   Card,
   CardBody,
   CardFooter,

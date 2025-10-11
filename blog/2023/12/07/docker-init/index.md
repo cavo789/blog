@@ -58,7 +58,6 @@ For the next questions:
 * `What's the relative directory for your app?`, just press enter to select the current directory,
 * `What local port do you want to us to access your server?`, just press enter to use the proposed port number or f.i. enter `8080`.
 
-
 <Terminal>
 ? What application platform does your project use? PHP with Apache
 ? What version of PHP do you want to use? 8.2

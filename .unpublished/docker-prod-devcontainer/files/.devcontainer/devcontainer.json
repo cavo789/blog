@@ -1,0 +1,27 @@
+{
+    "name": "MySample Devcontainer",
+    "dockerComposeFile": [
+        "../compose.yaml",
+        "compose.yaml"
+    ],
+    "service": "app",
+    "workspaceFolder": "/app",    
+    "remoteUser": "vscode",
+    "containerUser": "vscode",
+    "containerEnv": {
+        "GIT_SSH_COMMAND": "ssh -i /home/vscode/.ssh/id_ed25519 -o 'UserKnownHostsFile=/dev/null'"
+    },
+    "initializeCommand": "mkdir -p .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "files.autoSave": "onFocusChange",
+                "window.title": "${dirty}${rootName} ${separator} [DevContainer]",
+                "workbench.colorTheme": "Visual Studio Light"
+            },
+            "extensions": [
+                "ms-python.debugpy"
+            ]
+        }
+    }
+}

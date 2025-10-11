@@ -1,0 +1,25 @@
+services:
+  app:
+    build:
+      context: ./.devcontainer
+      dockerfile: Dockerfile
+      args:
+        APP_ENV: DEV
+        OS_USERID: ${LOCAL_UID:-1000}
+        OS_GROUPID: ${LOCAL_GID:-1000}
+        OS_USERNAME: ${LOCAL_USER:-vscode}
+    container_name: my_sample_devcontainer_app
+    ports:
+      - 5679:5679  # Debugpy port
+    env_file:
+      # - .env
+      - .env
+    volumes:
+      - .:/app
+      - vscode-extensions:/home/${LOCAL_USER:-vscode}/.vscode-server/extensions
+      - ./.devcontainer/history/.bash_history:/home/${LOCAL_USER:-vscode}/.bash_history:rw
+
+    command: sleep infinity
+
+volumes:
+  vscode-extensions:

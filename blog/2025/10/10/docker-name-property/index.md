@@ -7,14 +7,14 @@ mainTag: docker
 tags: [docker]
 date: 2025-10-10
 description: Learn how to organize Docker containers into logical groups using compose.yaml for a cleaner workflow.
-blueskyRecordKey:
+blueskyRecordKey: 3m2syybizfc2z
 language: en
 ---
 ![Docker - How to group containers together](/img/v2/docker_tips.webp)
 
 <!-- cspell:ignore Karakeep,neosmemo,heimdall -->
 
-On a daily base, I'm running several tools as Docker containers: [Heimdall](heimdall-dashboard), [Memos](docker-memos) and [Karakeep](docker-karakeep). It can be one or more containers buy tools.
+On a daily base, I'm running several tools as Docker containers: <Link to="/blog/heimdall-dashboard">Heimdall</Link>, <Link to="/blog/docker-memos">Memos</Link> and <Link to="/blog/docker-karakeep">Karakeep</Link>. It can be one or more containers buy tools.
 
 I'm working under Windows so I'm using Docker Desktop to get a list of containers and, because I'm working with Docker for my own projects (can be Python, PHP or whatever), I'm facing with the following situation: I've a big list of containers and I would like some order.
 

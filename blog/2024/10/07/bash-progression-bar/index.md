@@ -7,7 +7,7 @@ image: /img/v2/linux_progress_bar.webp
 description: Add a visual progression bar to your Bash scripts on Linux. This guide shows you how to easily implement a progress bar to track concurrent jobs, visualize progress, and improve your terminal user interface.
 mainTag: bash
 tags: [bash, linux, tips]
-blueskyRecordKey:
+blueskyRecordKey: 3m2sz4hqz322z
 ---
 <!-- cspell:ignore bashpid, pids, nproc -->
 <!-- markdownlint-disable MD022,MD025 -->

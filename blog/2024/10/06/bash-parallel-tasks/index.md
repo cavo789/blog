@@ -7,7 +7,7 @@ image: /img/v2/linux_parallel.webp
 description: Optimize your Bash scripts! Learn how to run concurrent jobs and leverage all your CPU cores using process IDs (pids), wait, and nproc to dramatically reduce execution time.
 mainTag: bash
 tags: [bash, linux, tips]
-blueskyRecordKey:
+blueskyRecordKey: 3m2szdit6sc2y
 ---
 <!-- cspell:ignore bashpid, pids, nproc -->
 
@@ -87,7 +87,6 @@ On my computer, I've 32 logical processors and since I can start 2 threads by CP
 :::tip Also pay attention to some limitation imposed by the third party
 In the Bash script below, no problem, it's just my computer but in my introduction, I've mentioned, "I need to call an API POST service". Here, I just make sure I will not be blacklisted by the web server. For instance, perhaps, there is a limitation like "Not more than 32 calls in a second for the same IP". In that case, I should take this info into account and don't start more than 32 process at a time (I'll then set `NUMBER_OF_THREADS=32`).
 :::
-
 
 We'll adapt our sample like this:
 
