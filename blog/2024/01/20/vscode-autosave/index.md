@@ -38,8 +38,9 @@ Or, you can also simply add the following line in your `settings.json` file:
 
 </Snippet>
 
-:::tip You're using a versioning system, right?
+<AlertBox variant="info" title="You're using a versioning system, right?">
 Some people don't like this feature and say *I want to be aware when I save something* (in case I do something stupid eh) but, oh, there's a versioning system like Git isn't there? So if you do something stupid, just don't save the changes and/or do a `revert`.
 
 If you're one of these people, try out the autosave function for a few days, and you'll see that it brings undeniable comfort.
-:::
+
+</AlertBox>

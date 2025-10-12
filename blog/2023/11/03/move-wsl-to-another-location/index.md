@@ -29,7 +29,7 @@ To do this, please:
 
 You will need to do this for every distribution you have installed and if you want to move it.
 
-:::tip
+<AlertBox variant="info" title="">
 If you have Docker, you can do the same i.e. move the Docker partition to your second disk.
 
 <Terminal title="Powershell">
@@ -51,6 +51,7 @@ $ del d:\wsl\docker-desktop-data.tar
 ...
 </Terminal>
 
-:::
+
+</AlertBox>
 
 Once done, restart your computer to finalize the move.

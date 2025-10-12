@@ -227,9 +227,10 @@ DOCKER_PYTHON_VERSION=3.13-slim
 
 </Snippet>
 
-:::tip
+<AlertBox variant="info" title="">
 All you have to do is duplicate the other files we've created for each of your projects and the settings for your project will be made here, in the `.docker.env` file.
-:::
+
+</AlertBox>
 
 ### makefile
 
@@ -321,11 +322,13 @@ mypy: ## QA - Mypy is a program that will type check your Python code
 	@clear
 	${YAML} docker compose ${ENV} exec ${CONTAINER} ${BIN}/mypy --cache-dir /tmp/mypy
 ```
+
 </Snippet>
 
-:::important
+<AlertBox variant="caution" title="">
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
-:::
+
+</AlertBox>
 
 Right now, we can run `make up` in our console and we'll get this screen:
 
@@ -347,9 +350,10 @@ This time we can, if you need to, enter in our container by running `make bash` 
 
 ![Inside the container](./images/container-python.png)
 
-:::note
+<AlertBox variant="note" title="">
 As you see, Python 3.13 is used. Why that specific version? Just go back to your `.docker.env` file and take a look to the `DOCKER_PYTHON_VERSION` variable. If you need another just update the `.docker.env` file and run `make up` again.
-:::
+
+</AlertBox>
 
 ## Let's start creating our first script
 
@@ -369,9 +373,10 @@ To be able to run the code, start `make bash` again (to jump in the container) a
 
 ![Run hello](./images/run-hello.png)
 
-:::info
+<AlertBox variant="info" title="">
 It will works because, in the container, the working directory is `/app/src`. If this had not been the case, we would have had to write, for example, `python /app/src/hello.py` i.e. the absolute path to the script.
-:::
+
+</AlertBox>
 
 As you can see, files on your machine are synchronised with your host. If VSCode is still open, you can change your script to f.i.
 

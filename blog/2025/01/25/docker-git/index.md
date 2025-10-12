@@ -69,9 +69,10 @@ services:
 
 </Snippet>
 
-:::warning I assume your current ssh key is called id_ed25519
+<AlertBox variant="caution" title="I assume your current ssh key is called id_ed25519">
 Please run `ls -alh ${HOME}/.ssh/` on your host and check if you've a file `id_ed25519` there. It's your SSH private key. Perhaps you aren't using that file but another one called `id_rsa`. If so, please update the `compose.yaml` file and replace there `id_ed25519` by `id_rsa`.
-:::
+
+</AlertBox>
 
 ## Running it
 
@@ -93,16 +94,18 @@ We've the following line:
 
 This tells Docker to share (mount) our local `${HOME}/.gitconfig` file (i.e. our configuration file) with the container. Since, in this example, we're running the container as root, we need to put `/root/.gitconfig` as the target.
 
-:::info
+<AlertBox variant="info" title="">
 If you don't know yet what is this file, just type `cat ${HOME}/.gitconfig` in the console to see his content; its your git configuration settings.
-:::
+
+</AlertBox>
 
 
 Let's check if it works still in the console inside the container, please run `git config list` in your container's shell. You'll see the same configuration you've on your host machine. The sharing as worked as expected.
 
-:::warning
+<AlertBox variant="caution" title="">
 In case, for instance, your container is running as `john_doe`, the line has to be `- ${HOME}/.gitconfig:/home/john_doe/.gitconfig` in the yaml file.
-:::
+
+</AlertBox>
 
 
 ## Share your credentials
@@ -117,9 +120,10 @@ We've this line:
 
 Think to replace `id_ed25519` by the name of the key you're using like f.i. `id_rsa` if needed.
 
-:::info
+<AlertBox variant="info" title="">
 Same remark as previously, update the target path to match your user's home directory in the container if needed.
-:::
+
+</AlertBox>
 
 So, since we've already shared both our configuration file and our SSH key, you can, from inside the container, run a git command like `git clone git@your_private_repo` and, as mentioned in the introduction, work on your codebase then run `git add . && git commit -m "feat: The great feature I'm working on it" && git push`.
 

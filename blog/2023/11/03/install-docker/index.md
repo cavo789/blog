@@ -35,19 +35,22 @@ In this blog post, we will be using the PHP images available at [https://hub.doc
 
 We will run a simple PHP script to show how ... not to ... install PHP and Apache. Not to install sounds crazy but yeah, it is the idea. Using the *old fashion* way, without Docker, before running a web page locally, we need to first install a web server (Apache f.i.) and the PHP interpreter. It is boring.
 
-:::tip
+<AlertBox variant="info" title="">
 But since Docker has a public image for running PHP and Apache (a single image for both services), it becomes ultra-simple
-:::
+
+</AlertBox>
 
 So, in our discovery step, we will also change the PHP version from `7.4` to `8.1` with just a few ... keystrokes. Have you ever tried to change your PHP version if you are using EasyPhp, wamp or another software program: it's a real pain! With Docker, it is so easy.
 
-:::note
+<AlertBox variant="note" title="">
 In this chapter, as we discover Docker, we will use different port numbers each time to access our local site. We will see later how to reuse the same port number.
-:::
 
-:::info
+</AlertBox>
+
+<AlertBox variant="info" title="">
 The commands we will use in this step will be the same whether you are running Linux, Mac or Windows.
-:::
+
+</AlertBox>
 
 Let's begin. Start a new console (DOS, Powershell or Linux) and run the instruction below.
 
@@ -57,9 +60,10 @@ Docker will, the very first time, download PHP `7.4.29` (including Apache) and, 
 $ docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache
 </Terminal>
 
-:::tip
+<AlertBox variant="info" title="">
 On subsequent runs, the PHP image is already present, so it is no longer downloaded.
-:::
+
+</AlertBox>
 
 ![The PHP container is running](./images/php_container_is_running.png)
 
@@ -84,9 +88,10 @@ Let's try to access the local site: `http://127.0.0.1:80`.
 
 It works in the means that *something is listening and has respond*, but doesn't display anything, since we haven't set anything up yet.
 
-:::info
+<AlertBox variant="info" title="">
 The site is functional, Apache is ready, but there's no index.php file; let's add one.
-:::
+
+</AlertBox>
 
 ### Creating our PHP script
 
@@ -137,9 +142,10 @@ $ exit
 
 **No headaches and zero conflicts!!!** We have installed a new version of PHP in seconds.
 
-:::tip
+<AlertBox variant="info" title="">
 This is just crazy in fact. Think of the benefits: you are developing a PHP script and want to check whether it works with different versions of PHP. It's child's play.
-:::
+
+</AlertBox>
 
 <StepsCard
   title="At the end of this chapter, we've just learned:"

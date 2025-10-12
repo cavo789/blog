@@ -21,9 +21,10 @@ Now, imagine the first container is a web application and the second container s
 
 ## Some preparation work
 
-:::note Skip this step if you already have a dedicated network and his running container
+<AlertBox variant="note" title="Skip this step if you already have a dedicated network and his running container">
 If you don't already have a running web application on his own network, please follow this step.
-:::
+
+</AlertBox>
 
 Please start a Linux shell and run `mkdir -p /tmp/network && cd $_` to create a folder called `network` in your Linux temporary folder and jump in it.
 
@@ -117,15 +118,17 @@ $ curl http://127.0.0.1:8080
 curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect to server
 </Terminal>
 
-:::danger It's not working... **as expected**
+<AlertBox variant="danger" title="It's not working... **as expected**">
 We can confirm our container is not able to access to our local site `http://127.0.0.1:8080` while, that website is well configured. If you exit the container and try to refresh the website, it's working well.
-:::
+
+</AlertBox>
 
 ### We need to run the second container on the same network
 
-:::tip Retrieve the network used by a container
+<AlertBox variant="info" title="Retrieve the network used by a container">
 In case you don't know the name of the used network, simply run `docker inspect xxxx` where `xxxx` is the name of the container. You'll get a JSON answer with a `Networks` entry. To get more information, please read the <Link to="/blog/docker-inspect">Docker inspect - Retrieve network's information</Link> article.
-:::
+
+</AlertBox>
 
 Please edit your `compose.yaml` file like this:
 
@@ -151,9 +154,10 @@ networks:
 
 </Snippet>
 
-:::tip To be able to access to a dockerized application, containers should be fired on the same network
+<AlertBox variant="info" title="To be able to access to a dockerized application, containers should be fired on the same network">
 It is impossible for a container running on, f.i., the `bridge` (default) network to access to a container running on another network. This is a protection against unwanted access. *Replace `my_network` by yours if you've a different one.*
-:::
+
+</AlertBox>
 
 ### We need to find the IP of the network
 
@@ -188,9 +192,9 @@ body {background-color: #fff; color: #222; font-family: sans-serif;}
 pre {margin: 0; font-family: monospace;}
 ```
 
-:::success Now it's working
+<AlertBox variant="info" title="Now it's working">
 And now, since we've started the second container on the same network, it works.
-:::
+</AlertBox>
 
 ### Extra use case - aliases
 

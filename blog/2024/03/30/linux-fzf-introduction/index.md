@@ -61,9 +61,10 @@ On my machine, by starting to type `doc` I'll get the list of files, anywhere in
 
 Such use is handy since I don't, first, to retrieve the exact name of the file I was to use. In this example it was for `cat` but, of course, it works for anything: type your command and press <kbd>CTRL</kbd>+<kbd>T</kbd>.
 
-:::note `**` followed by <kbd>TAB</kbd> is an alias
+<AlertBox variant="note" title="`**` followed by <kbd>TAB</kbd> is an alias">
 Not sure it's something to remember but `cat **` followed <kbd>TAB</kbd> will works just like pressing <kbd>CTRL</kbd>+<kbd>T</kbd>. Here, `**` will be expanded to <kbd>CTRL</kbd>+<kbd>T</kbd>.
-:::
+
+</AlertBox>
 
 Here, using <kbd>CTRL</kbd>+<kbd>T</kbd>, you'll be able to select just one file. Imagine you wish to select more than one? For instance you wish to run `rm` to kill more that one files.
 

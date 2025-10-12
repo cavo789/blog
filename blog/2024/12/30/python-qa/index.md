@@ -116,9 +116,10 @@ Note: I've also configured my VSCode with this setting `"python.sortImports.args
 
 I'm running it like this: `vulture --min-confidence 100 .`
 
-:::danger
+<AlertBox variant="danger" title="">
 Be careful with Vulture because his algorithm will detect a lot of false positive so this is why, in my automation process, I've used `--min-confidence 100` to make sure I've **only** real unused code / variables.
-:::
+
+</AlertBox>
 
 Note: I've also configured my VSCode with the settings below so, while I'm coding, VSCode will notify me about unused things so I can immediately take action.
 

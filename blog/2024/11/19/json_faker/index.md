@@ -61,9 +61,10 @@ print(json.dumps(data, indent=4, ensure_ascii=False))
 
 ![Faker in Python](./images/python.png)
 
-:::info
+<AlertBox variant="info" title="">
 Continue your reading with the official Faker documentation: [https://faker.readthedocs.io/en/master/](https://faker.readthedocs.io/en/master/)
-:::
+
+</AlertBox>
 
 ## Using Mockaroo.com
 
@@ -128,9 +129,10 @@ else:
 
 </Snippet>
 
-:::info
+<AlertBox variant="info" title="">
 To make this code working, think to install the requests library: `pip install requests`.
-:::
+
+</AlertBox>
 
 By calling my script twice; each time I got a different set of data:
 
@@ -171,14 +173,16 @@ except jsonschema.exceptions.ValidationError as exception:
 
 </Snippet>
 
-:::info
+<AlertBox variant="info" title="">
 You'll need to run `pip install jsonschema` first.
-:::
+
+</AlertBox>
 
 Now, I'll test my file. The first time, my JSON file will be correct. I've then removed the `city` record in my JSON and rerunning the script will indeed fails as expected:
 
 ![JSON validation](./images/validate.png)
 
-:::success
+<AlertBox variant="info" title="">
 As we can see, quite quickly, we've generated 1,000 records and, too, a validation schema. Then using few lines in Python, we've ensure the file is correct or, if not, we've spotted where the error is located.
-:::
+
+</AlertBox>

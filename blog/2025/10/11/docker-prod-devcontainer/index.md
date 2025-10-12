@@ -21,10 +21,10 @@ After multiple attempts, here is what I came up with, which seems to meet this n
 
 <!-- truncate -->
 
-<CoreConcept title="A few core concepts to keep in mind while reading this article">
+<AlertBox variant="coreConcept" title="A few core concepts to keep in mind while reading this article">
 1. We must completely separate future production from our development (devcontainer).
 2. We will need to create the production Docker image before we can use the devcontainer.
-</CoreConcept>
+</AlertBox>
 
 ## What does a perfect separation of environments mean?
 
@@ -40,9 +40,9 @@ Our image must be clean, as efficient and lightweight as possible... We must min
 
 Everything we need for our development will then have to be part of a second Docker image, which we will use when we activate the devcontainer feature in VSCode.  This is where we will create our user, add development tools, and activate certain configurations such as debugging, etc.
 
-<CoreConcept title="So, in short, we'll have two Docker image">
-One for the deploy and a second one to extend the first with additional tools and configuration items.
-</CoreConcept>
+<AlertBox variant="coreConcept" title="So, in short, we'll have two Docker image">
+One for the deploy and a second one to extend the first with additional tools and configuration items. That one will never leave our host and we'll never build it ourself but let VSCode does it for us.
+</AlertBox>
 
 ![Core concept - Two images](./images/production_devcontainer.webp)
 
@@ -83,7 +83,7 @@ Look at the provided script:
 5. We'll copy all our files inside the Docker image (make sure to correctly configure your `.dockerignore` file),
 6. And, finally, for the production image, we'll initialize the entry point and the command to keep.
 
-:::important
+<AlertBox variant="caution" title="">
 As you can see, we've not created here, in the Docker image, an unprivileged user. Our production image is thus violating a rule we all have read: **Your Docker image should be rootless**.
 
 This is a key concept here:
@@ -92,7 +92,8 @@ This is a key concept here:
 * When we'll use the Docker image for local development, the user UID/GID has to match the one of the developers (and we don't know right now if it's `1000:1000` or something else),
 * The user can be easily specified in the `compose.yaml` file.
 
-:::
+
+</AlertBox>
 
 #### The production compose.yaml file
 
@@ -104,7 +105,7 @@ We'll also tell to Docker which port of the running container has to be shared w
 
 <Snippet filename="/tmp/docker-prod-devcontainer/compose.yaml" source="./files/compose.yaml" />
 
-:::caution
+<AlertBox variant="caution" title="">
 Pay attention to the `user:` and `security_opt:` parts.
 
 It tells to Docker to use a user having UID/GID `1001` when creating a container based on our image. This user ... didn't exist in the image so why?
@@ -114,7 +115,8 @@ This is a trick to make sure the container is running rootless i.e. the user in 
 As extra security measure, we've the `security_opt: - no-new-privileges:true` line to prevent the container to gain any additional privileges.
 
 In short: when a container will be created based on our image, the user will be able to just run what we've decided for him, nothing more.
-:::
+
+</AlertBox>
 
 #### The production Python requirements file
 
@@ -122,9 +124,10 @@ We've seen a mention to this file in our `Dockerfile`: because we're using Pytho
 
 <Snippet filename="/tmp/docker-prod-devcontainer/requirements.txt" source="./files/requirements.txt" />
 
-:::tip
+<AlertBox variant="info" title="">
 Look at this file once more: we only have, strictly speaking, the dependencies we need for production.
-:::
+
+</AlertBox>
 
 If your own use case isn't a Python script, for sure, you should not create this `requirements.txt` file (but, then, also update the `Dockerfile` and remove that part).
 
@@ -160,13 +163,13 @@ You'll get something like this:
 
 <Snippet filename="console output" source="./logs/prod.log" />
 
-:::info Remember our user 1001
+<AlertBox variant="info" title="Remember our user 1001">
 Look here above on the `user: 1001:1001` line. We've seen this in a previous chapter: when the container will be created, the active user will be `1001:1001` and that one didn't exist (we've not create it in our `Dockerfile`): our container will be rootless; just what we want.
-:::
+</AlertBox>
 
 Now, we'll build and create the container by running the command below.
 
-<HighlyImportant title="EXTREMELY IMPORTANT - WE HAVE TO BUILD THE IMAGE FIRST">
+<AlertBox variant="highlyImportant" title="EXTREMELY IMPORTANT - WE HAVE TO BUILD THE IMAGE FIRST">
 Because our future devcontainer will be derived from the production image, we MUST build it first:
 
 <Terminal>
@@ -178,7 +181,7 @@ This ensures that VSCode will retrieve a local version of your image. If you don
 
 So, once again, before going further in this tutorial, please run `docker compose build` first in a console.
 
-</HighlyImportant>
+</AlertBox>
 
 ### Running a production container
 
@@ -240,7 +243,7 @@ Look at the provided script once again:
 
 This last step is thus only needed for illustration of this blog post. Please use your own.
 
-<CoreConcept title="Paying attention to the FROM statement">
+<AlertBox variant="coreConcept" title="Paying attention to the FROM statement">
 Let me insist one more time on this point. Right now, our `Dockerfile` is extending an existing image called `my_sample_prod:latest`.
 
 Did you have that image right now on your host? If you don't have it, VSCode, when you'll use the *Open in Devcontainer* feature, will first try to download the image from Docker Hub.
@@ -256,7 +259,7 @@ Make sure to run `docker compose build` in your root folder if you need to:
 
 So, if not yet done, please run `docker compose build`! Make sure running `docker image ls | grep -i my_sample` in your console will well list your image.
 
-</CoreConcept>
+</AlertBox>
 
 #### The .devcontainer/requirements.txt file
 

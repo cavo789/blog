@@ -18,9 +18,10 @@ In this article, resurrected from my personal archive, I'm going to present the 
 
 <!-- truncate -->
 
-:::note Disclaimer
+<AlertBox variant="note" title="Disclaimer">
 This guide deliberately concerns **existing databases**, for this reason, I will not speak for example about how to correctly design tables, not having more than 100 fields, not about drawing a relational schema, ... The objective is therefore to improve performance without deep programming (no re-engineering) and without migration to f.i. SQL Server.
-:::
+
+</AlertBox>
 
 ## MS Access - Analyze Performance
 
@@ -335,9 +336,10 @@ End Sub
 
 Option Explicit force the VB Engine to check that variables exists before starting to run the code and not every time a variable is accessed. This give a (small) little speed improvement.
 
-:::caution
+<AlertBox variant="caution" title="">
 Option Explicit is more an excellent way of coding: variables should be declared before using them
-:::
+
+</AlertBox>
 
 #### Unload references
 
@@ -378,6 +380,7 @@ With a .mde, you'll no more be able to change the design of a table, add a field
 
 **If you wish to use a .mde, always take a backup of your .accdb (or .mdb) file and keep it in a secured folder. Once more: if you don't have anymore the .accdb file but only the .mde, you won't be able to change the structure of the application, you won't be able to modify a macro, a form, ...**
 
-:::tip Scan all tables and export an exhaustive fields list in Excel
+<AlertBox variant="info" title="Scan all tables and export an exhaustive fields list in Excel">
 Also see my post <Link to="/blog/vbs-msaccess-get-fields">VBS - Retrieve the list of fields in a MS Access Database</Link>.
-:::
+
+</AlertBox>

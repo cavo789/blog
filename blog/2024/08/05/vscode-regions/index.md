@@ -82,9 +82,10 @@ And now, why folding can be really useful: we can fold / unfold them:
 
 ![VSCode - Regions folding](./images/regions.gif)
 
-:::tip You should avoid having functions having more than 60 lines
+<AlertBox variant="info" title="You should avoid having functions having more than 60 lines">
 Regions are supported by a very large number of languages, but don't make the mistake of assuming that this allows you to have functions of several dozen lines. That's not the point!  If you have long functions, you need to split them up. You need to create smaller, more specialised functions. We've already touched on this point in a <Link to="/blog/vscode-php-refactoring">previous post</Link>.
-:::
+
+</AlertBox>
 
 ## What to do when VSCode didn't support these tags by default?
 
@@ -235,11 +236,12 @@ Switch back to your tab in VSCode with your opened Dockerfile, press <kbd>CTRL</
 
 ![Now, VSCode supports regions in Dockerfile](./images/dockerfile-after.png)
 
-:::tip No, it's not just a visual trick
+<AlertBox variant="info" title="No, it's not just a visual trick">
 When you're working on very long files like, for me, a Dockerfile of over 900 lines, it's really imperative to be able to have regions that you can reduce/expand.
 
 Not only does this make it easier to read, it also facilitates the succession of 'stages' (when programming a multistage Dockerfile).
-:::
+
+</AlertBox>
 
 ## Auto fold extension
 

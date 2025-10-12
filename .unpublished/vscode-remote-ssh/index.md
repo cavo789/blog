@@ -125,9 +125,10 @@ As you can see here above, it's possible to create a new file called `hello.sh`,
 
 By running `hostname` we can retrieve the name of the container; not the name of our machine.
 
-:::note
+<AlertBox variant="note" title="">
 We can see `d3cacfe67885` for the host name; in fact, it's the container ID.
-:::
+
+</AlertBox>
 
 Just for illustration, exit VSCode, go back to the console and run `ssh christophe@localhost -p 2222`.
 

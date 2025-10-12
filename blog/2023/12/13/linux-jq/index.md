@@ -25,9 +25,10 @@ To verify if `jq` is already installed on your system, simply run `which jq`. If
 
 To illustrate this, we'll use a simple JSON free API like `https://randomuser.me/api/`. If you wish to use another API tool, take a look on [https://github.com/public-apis/public-apis#test-data](https://github.com/public-apis/public-apis#test-data); free ones are those having `No` in the `Auth` columns.
 
-:::info randomuser API return every time a new user
+<AlertBox variant="info" title="randomuser API return every time a new user">
 On each request, the `randomuser` API is returning a new object.
-:::
+
+</AlertBox>
 
 By running `curl https://randomuser.me/api/` you'll get something like
 

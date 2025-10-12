@@ -77,24 +77,25 @@ $ docker container list
 [...] mysql:latest                  [...] limesurvey-db
 </Terminal>
 
-:::info The output above has been simplified
+<AlertBox variant="info" title="The output above has been simplified">
 For clarity, the output of `docker container list` has been simplified here above; not all columns were mentioned in the article.
-:::
+
+</AlertBox>
 
 Please wait **one or two minutes** more (depending on your machine), time needed by LimeSurvey to f.i. connect to the database container and create his database.
 
 Go to `http://localhost:8080` and while you got an error like `ERR_CONNECTION_REFUSED`, please wait and try again. When it's ready, you should see the default LimeSurvey welcome page.
 
-:::tip Look at the logs
+<AlertBox variant="info" title="Look at the logs">
 If you think that you've waited already a long time and it seems something is going wrong, run `docker compose logs -f` to get access to the logs. If there is a fatal error, you can see it there. If you see `nc: connect to limesurvey-db (xxxxx) port 3306 (tcp) failed: Connection refused`, it's normal, the LimeSurvey container is trying to connect to the database server and that one isn't yet ready, just wait a few more.
 
 **You should see, in the logs, something like `[core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'` when LimeSurvey is ready (meaning that the web server is ready to handle connections).**
 
 Press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop listening to the logs.
-:::
 
-:::tip Using service_healthy will preserve from such errors, see the example at the end of this post
-:::
+</AlertBox>
+
+<AlertBox variant="info" title="Using service_healthy will preserve from such errors, see the example at the end of this post" />
 
 When LimeSurvey is ready, you'll see the following page on `http://localhost:8080`:
 
@@ -168,9 +169,9 @@ volumes:
 
 </Snippet>
 
-:::tip Want to learn more about volumes?
+<AlertBox variant="info" title="Want to learn more about volumes?">
 In that case, please read this blog post: <Link to="/blog/docker-volumes">Using volumes with Docker, use cases</Link>
-:::
+</AlertBox>
 
 ## Download an old version
 
@@ -234,8 +235,8 @@ services:
 
 </Snippet>
 
-:::tip Using service_healthy
+<AlertBox variant="info" title="Using service_healthy">
 I've used the `depends_on` property for the `limesurvey-app` service and I've specified `condition: service_healthy`. This is a very cool feature: LimeSurvey, the PHP application, won't start before the database layer is running. Since LimeSurvey has to access the database, we just want to avoid some connectivity errors like *`nc: connect to limesurvey-db (xxxxx) port 3306 (tcp) failed: Connection refused`* or things like that.
-:::
+</AlertBox>
 
 Just run `docker compose up --detach` and surf to `http://localhost:8080` and, congratulations, you've a local LimeSurvey v3.22.6 website.

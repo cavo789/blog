@@ -31,11 +31,12 @@ The next thing to do is to unzip the file. I can do it with Windows Explorer for
 
 Ok, now, we've a `demo` folder containing a static website. Jump in in: `cd demo`.
 
-:::important Our promise
+<AlertBox variant="caution" title="Our promise">
 And now, let's fulfil the promise made above: we've got a static website on our hard disk and we want to run it.
 
 Just one command to run in your `C:\temp\demo` folder: `docker run -d --name static-site -p 8080:80 -v .:/usr/local/apache2/htdocs/ httpd:alpine`.
-:::
+
+</AlertBox>
 
 Docker will download Apache if not yet on your machine, then will start a Apache container, mount our site in it.
 

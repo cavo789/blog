@@ -30,11 +30,12 @@ In this article, we'll look at how to authenticate once and for all on the serve
 
 <!-- truncate -->
 
-:::info
+<AlertBox variant="info" title="">
 To illustrate this article, let's assume `christophe` is the remote username (this is the username for the server, distinct from your local username) and `my_blog.be` is the remote server address.
 
 Think, to replace these two constants by yours ;-)
-:::
+
+</AlertBox>
 
 ## TLDR
 
@@ -70,17 +71,19 @@ When this is done, you've to copy the public SSH key to your remote server. To d
 2. The key will be added for the remote user `christophe`,
 3. You'll have to provide the password of that user when prompted.
 
-:::info
+<AlertBox variant="info" title="">
 The `ssh-copy-id` command will append your public key to the `~/.ssh/authorized_keys` file on the server.
-:::
+
+</AlertBox>
 
 ### 3. Connect to the server
 
 Now, everything is in place, you can run `ssh -i ~/.ssh/id_ed25519_my_blog christophe@my_blog.be` and it should work because the `id_ed25519_my_blog` public key was already copied on the server `my_blog.be` for the user `christophe`.
 
-:::info
+<AlertBox variant="info" title="">
 You can display or edit the content of the `~/.ssh/authorized_keys` file by running `cat ~/.ssh/authorized_keys` (or `vi ~/.ssh/authorized_keys`). You can then remove old allowed keys f.i.
-:::
+
+</AlertBox>
 
 ## Copying files from your host to the server
 

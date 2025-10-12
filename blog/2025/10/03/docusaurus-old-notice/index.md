@@ -101,7 +101,7 @@ Save the file and refresh your blog. You should get something like this picture 
 
 ![Old post notice in action](./images/old_notice.png)
 
-:::info
+<AlertBox variant="info" title="">
 The component is using the `date` field that you've to mention in your YAML front matter.
 
 So, in each of your `.md` post, you should have a YAML block like this:
@@ -113,7 +113,8 @@ authors: [you]
 date: 2025-09-30
 ```
 
-:::
+
+</AlertBox>
 
 ## Position of the warning
 

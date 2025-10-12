@@ -22,9 +22,10 @@ When *A user has registered* is thrown, you can do a lot of things like welcomin
 
 For a web developer, a best approach, I think is to generate events even if it's your own code and you know what to do.
 
-:::tip In fact, you never know
+<AlertBox variant="info" title="In fact, you never know">
 You don't know because your software will have a life of its own, because over the years other features will be added and other developers will modify it. If you're working with events, it will be terribly easy for anyone to add a code "OK, when a new user registers, I need to ..."; something you didn't know then. Events are ideal for simplifying the addition of new functionalities.
-:::
+
+</AlertBox>
 
 ## Laravel example
 
@@ -247,6 +248,7 @@ Years ago, I've written an example in pure PHP (not Laravel) and using the `Leag
 
 The repository and sample code are on Github: [https://github.com/cavo789/event_thephpleague_learning](https://github.com/cavo789/event_thephpleague_learning).
 
-:::note
+<AlertBox variant="note" title="">
 This is, partially, a copy of an article I've previously posted on [https://dev.to/cavo789/working-with-laravel-events-2i6m](https://dev.to/cavo789/working-with-laravel-events-2i6m)
-:::
+
+</AlertBox>

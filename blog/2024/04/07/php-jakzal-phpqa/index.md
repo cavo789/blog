@@ -21,7 +21,7 @@ In this blog post, we will see how we can take advantage of all these tools and 
 
 First, as always when we need to learn new software, we must speak about how to install it. The answer is easy here: there is nothing to do. Oh? Really? For sure! `jakzal/phpqa` is a Docker image so we don't need to install it, just to run it once. During the first call, Docker will download it so, yeah, no installation at all. Thank you Docker!
 
-:::tip Docker CLI reminder
+<AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run command will always look like:
 
 * `docker run` to run a Docker image (*Oh? Really?*),
@@ -30,7 +30,8 @@ As a reminder, the used Docker run command will always look like:
 * `-v "${PWD}":/project` to share your current folder with a folder called `/project` in the Docker container (use `${PWD}` if you are on Linux, use `%CD%` if you are on DOS),
 * `-w /project` to tell Docker that the current directory, in the container, will be the `/project` folder
 * then `jakzal/phpqa` which is the name of the Docker image to use (you can also specify a version like `python:3.9.18` if needed; see [https://hub.docker.com/_/python/tags](https://hub.docker.com/_/python/tags))
-:::
+
+</AlertBox>
 
 ## Composer normalize
 
@@ -72,9 +73,10 @@ Ok, so, to normalize your `composer.json` file, you can install the tool or, and
 
 The result will be a rewritten `composer.json` file where properties are put in standard order.
 
-:::tip
+<AlertBox variant="info" title="">
 Add `--dry-run` if you just want to see what the changes will be; but do not modify any files.
-:::
+
+</AlertBox>
 
 ## Composer unused
 
@@ -86,9 +88,10 @@ By running `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa co
 
 So, the tool detects that I'm referencing `spatie/laravel-db-snapshots` in my `composer.json` file but, in my codebase, the tool (in fact, the namespace added by the tool) isn't used at all so, yes, probably, I can remove that dependency.
 
-:::caution
+<AlertBox variant="caution" title="">
 Such a tool can produce false positive; just make some checks before removing the dependency. The best solution here is, of course, to have plenty of unit tests so you can run them before and after the change and see if your code still works as expected.
-:::
+
+</AlertBox>
 
 ## PHP-Parallel-lint
 

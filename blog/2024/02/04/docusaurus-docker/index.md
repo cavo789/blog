@@ -158,9 +158,10 @@ $ tree -a -L 2
 └── compose.yaml
 </Terminal>
 
-:::info `tree` is not part of core Linux installation
+<AlertBox variant="info" title="`tree` is not part of core Linux installation">
 Just in case you're interested by the `tree` utility and don't have yet, simply run `sudo apt-get update && sudo apt-get install tree` to install it. This step is optional.
-:::
+
+</AlertBox>
 
 ### Run Docusaurus
 
@@ -174,11 +175,12 @@ After a few minutes (only the first time), your Docusaurus Docker image will be 
 
 Your blog is now accessible on your computer here: `http://localhost:3000`.
 
-:::info Which port number to use?
+<AlertBox variant="info" title="Which port number to use?">
 The port number is the one you've mentioned in the `compose.yaml` file in line `3000:3000`.
 
 If you wish another port like `3002` f.i., just edit the yaml file and replace `3000:3000` with `3002:3000` and rerun the `docker compose up --detach` command.
-:::
+
+</AlertBox>
 
 ![Docusaurus homepage](./images/homepage.png)
 
@@ -186,9 +188,10 @@ And if we click on the `Blog` menu, we can see our posts:
 
 ![Our posts](./images/posts.png)
 
-:::info Chronology of blog posts
+<AlertBox variant="info" title="Chronology of blog posts">
 As you can see, the default ordering follows chronological order: the last blog item we've created (`2024-02-06-my-second-post.md`) is the first one in the list.
-:::
+
+</AlertBox>
 
 For this tutorial, images comes from `unsplash.com` but with a theme: dinosaurs. *If you refresh the page, you'll get new images.*
 

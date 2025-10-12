@@ -63,7 +63,7 @@ Hello world! I'm a Turbo Pascal source code
 
 Voilà, we've successfully created our first Pascal code in 2023.
 
-:::tip Docker CLI reminder
+<AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run command are (almost always the same):
 
 * `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
@@ -72,7 +72,8 @@ As a reminder, the used Docker run command are (almost always the same):
 * `-w /app` to tell Docker that the current directory, in the container, will be the `/app` folder
 * then `signumtemporis/fpc:cross.x86_64-win64.slim` which is the name of the Docker image to use and, finally,
 * `Hello.pas` i.e. our source file (the fpc image seems to not request to specify the `fpc` executable; just the source file.
-:::
+
+</AlertBox>
 
 ## Convert a number to a byte
 
@@ -110,9 +111,10 @@ end.
 
 </Snippet>
 
-:::info SHL for Shift left one position
+<AlertBox variant="info" title="SHL for Shift left one position">
 The `shl` instruction will shift the number from on byte left.
-:::
+
+</AlertBox>
 
 And compiled it:
 

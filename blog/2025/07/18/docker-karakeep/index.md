@@ -79,21 +79,23 @@ volumes:
 
 </Snippet>
 
-:::note
+<AlertBox variant="note" title="">
 The line `user: ${UID:-1000}:${GID:-1000}` will ask Docker to use a specific user (not the `root` one) while creating files on your disk.
 
 The user `1000:1000` is, in the most cases, you i.e. it's your current Linux user (type `id -u` and, then, `id -g` to retrieve your user ID and your group ID and you'll see it'll be `1000` for both).
 
 If yours IDs are not `1000`, please edit the yaml file and put yours IDs instead.
-:::
 
-:::info
+</AlertBox>
+
+<AlertBox variant="info" title="">
 Compared with the default Docker configuration, I've made one change, which is to store the data on the hard disk rather than using a Docker volume.
 
 I had to reinstall Karakeep following a configuration change and I had to export the volume to retrieve the data (Docker Desktop offers this feature).
 
 To avoid this situation, I might as well keep the files immediately on my hard disk.
-:::
+
+</AlertBox>
 
 Once the `compose.yaml` file has been created, in your console, now, just run `docker compose up --build --detach`.
 

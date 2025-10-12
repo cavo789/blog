@@ -60,11 +60,12 @@ The `devcontainer.json` file is used by VSCode to understand and build our worki
 
 <Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.json" />
 
-:::tip
+<AlertBox variant="info" title="">
 Strictly speaking, we don't need the `compose.yaml` file but this is the only way to build the Docker image **once** and reuse it across projects.
 
 By opening a Devcontainer, even if the `Dockerfile` is strictly the same across your documentation projects, the context will be different (**project1**, **project2**, ...) and VSCode will rebuild the image for that context. To avoid this, we need to build the image and **give it a name**; this can only be done using a `compose.yaml` file.
-:::
+
+</AlertBox>
 
 ## Extra information
 
@@ -88,9 +89,10 @@ Indeed, under certain circumstances, when rendering your documentation to Word (
 
 Note: if you change the `Dockerfile` code or the `devcontainer.json` file, you'll need to rebuild the container as explained here below.
 
-:::tip Make sure you need it
+<AlertBox variant="info" title="Make sure you need it">
 Before installing Chromium, make sure you need it i.e. first render your documentation without and see if Quarto complaints about Chromium. This because Chromium requires a lot of dependencies and it will make your Docker image size much bigger.
-:::
+
+</AlertBox>
 
 ### Installation of Tiny
 
@@ -104,9 +106,10 @@ The third variable is `INSTALL_PRECOMMIT_HOOKS` and, if your documentation has h
 
 Right now, just press <kbd>F1</kbd> (or <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd>) and select **Dev containers: Rebuild and Reopen in Container**. If you don't have that command, please make sure to install the  `ms-vscode-remote.remote-containers` from Microsoft.
 
-:::tip
+<AlertBox variant="info" title="">
 You can install the extension from the console by running `code --install-extension ms-vscode-remote.remote-containers` or by opening this page: [Marketplace - Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
-:::
+
+</AlertBox>
 
 So, once you've fired the **Dev containers: Rebuild and Reopen in Container** command, VSCode will close your current session and open a new one. The very first time, VSCode will have to make some initializations (like building the Docker image and downloading extensions so it'll be slower).
 

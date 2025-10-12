@@ -75,9 +75,9 @@ After a few seconds, the container is ready to use and I surf to my site by goin
 
 ![Homepage](./images/homepage.png)
 
-:::important
+<AlertBox variant="highlyImportant" title="The --host 0.0.0.0 flag">
 It is really crucial to use the `--host 0.0.0.0` flag when calling `npx docusaurus start`. This will allow external access to the website. If missing, surfing to `http://localhost:3000` (or running `curl http://127.0.0.1:3000`) will display an error `Empty reply from server`.
-:::
+</AlertBox>
 
 ## Some settings
 
@@ -138,9 +138,10 @@ With my preferred editor ([vscode](https://code.visualstudio.com/)) I open my bl
 
 Now, in the `/blog` directory, I create a new folder called `2023-11-02-site-creation` and there I create the `index.md` file.
 
-:::note
+<AlertBox variant="note" title="">
 When my blog post only contains text and no images or linked files, I can just create a `.md` file like `/blog/2023-11-02-this-is-a-test.md`. The creation of a folder is thus not mandatory at all.
-:::
+
+</AlertBox>
 
 In the previous chapter, npx was executed using the `docker run --rm -it --name blog --user $UID:$GID -v ${PWD}/:/project -w /project -p 3000:3000 node /bin/bash -c "npx docusaurus start --host 0.0.0.0"` command so, every changes done to the blog will be immediately synchronized with Docker i.e., I just need to save my article and npx will reload my site; very easy and convenient.
 
@@ -156,9 +157,10 @@ Some **content** with _Markdown_ `syntax`.
 :::
 ```
 
-:::tip
+<AlertBox variant="info" title="">
 Some **content** with *Markdown* `syntax`.
-:::
+
+</AlertBox>
 
 To get the entire list of supported features, read [Markdown Features](https://docusaurus.io/docs/markdown-features).
 

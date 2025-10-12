@@ -24,6 +24,6 @@ Click on `Ok` and double-click on your site so you'll indeed make a connection.
 
 Start a Windows Explorer and go to your `%TEMP%` directory. Sort on the last-modified date/time. You should retrieve a file having the same name as your session and having `.log` as file extension.
 
-:::caution Don't forget to remove the file and uncheck the box
+<AlertBox variant="highlyImportant" title="Don't forget to remove the file and uncheck the box">
 Please return to the `preferences` - `Logging` page and uncheck the box. You don't want this to happen every time.
-:::
+</AlertBox>

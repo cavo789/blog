@@ -84,9 +84,10 @@ For instance, `take /tmp/new_folder` will create the folder if not yet present a
 
 Be honest, `take /tmp/new_folder` is easier and faster than `mkdir -p /tmp/new_folder && cd $?` no?
 
-:::info Take is just a custom function
+<AlertBox variant="info" title="Take is just a custom function">
 `take` is, in fact, a function defined in file `~/.oh-my-zsh/lib/functions.zsh`.
-:::
+
+</AlertBox>
 
 A second, so stupid but so valuable feature is `cd ..` followed by two or three or ... dots.
 

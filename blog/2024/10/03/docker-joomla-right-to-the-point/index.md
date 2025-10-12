@@ -36,10 +36,12 @@ Surf to `http://127.0.0.1:8080/administrator` and enjoy!
 
 ![Joomla administrator](./images/administrator.png)
 
-:::important
+<AlertBox variant="caution" title="">
 The admin account to use is `joomla` and his password is `joomla@secured` (as defined in the yaml file you've just copied earlier).
-:::
 
-:::tip
+</AlertBox>
+
+<AlertBox variant="info" title="">
 This article is deliberately simple; please follow the <Link to="/blog/tags/joomla">Joomla</Link> tag if you want more than this introduction.
-:::
+
+</AlertBox>

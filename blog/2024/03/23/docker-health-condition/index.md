@@ -107,7 +107,7 @@ It's pretty self-explanatory, I think. Docker will pause the creation of the Joo
 
 And do you know what? I'm mad I didn't know about this sooner, because I've already set up a script like the one below in my applications:
 
-:::note Very simplified script
+<AlertBox variant="note" title="Very simplified script">
 
 ```bash
 while [[ ! "$exitCode"  = "0" ]]; do
@@ -116,4 +116,5 @@ while [[ ! "$exitCode"  = "0" ]]; do
 done
 ```
 
-:::
+
+</AlertBox>

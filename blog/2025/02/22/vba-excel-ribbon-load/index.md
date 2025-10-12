@@ -81,9 +81,10 @@ You'll get an error message and it's perfectly normal: we still need to add some
 
 ![Error](./images/missing_code.png)
 
-:::info
+<AlertBox variant="info" title="">
 In our ribbon, we wrote, among other things, the following: `getItemCount="modToolbar_cbxPeriod.getItemCount"`. So, Excel is trying to run a function called `getItemCount` from a module called `modToolbar_cbxPeriod` and ... we don't have it yet.
-:::
+
+</AlertBox>
 
 Press <kbd>ALT</kbd>-<kbd>F11</kbd> to open the VBE editor
 
@@ -212,9 +213,10 @@ We're almost done: we need to give a name to the sheet where the range is locate
 
 ![Naming the sheet](./images/shParams.png)
 
-:::caution You should now use the .xlsm extension
+<AlertBox variant="caution" title="You should now use the .xlsm extension">
 Save the Excel workbook but, this time, with the `.xlsm` extension since the workbook contains VBA code.
-:::
+
+</AlertBox>
 
 Time to test our feature: close the workbook and re-open it again and, this time, your list has been populated and by selecting a value from the list, the value will be injected in your worksheet; ready to be used.
 

@@ -34,9 +34,10 @@ Please create the two files below in your blog directory structure:
 
 Then, you need to inject `<ScrollToTopButton />` in your pages.
 
-:::tip
+<AlertBox variant="info" title="">
 Make sure to create a `/img/up.png` in your `/static` folder with your own icon (on my site, the small meerkat).
-:::
+
+</AlertBox>
 
 ## Overriding the BlogPostItem page
 
@@ -113,14 +114,16 @@ export default function BlogPostItem({children, className}) {
 
 </Snippet>
 
-:::caution We need to restart Docusaurus
+<AlertBox variant="caution" title="We need to restart Docusaurus">
 Now, because we've just introduced an override, we need to restart our Docusaurus server so changes can be taken into account.
-:::
 
-:::info
+</AlertBox>
+
+<AlertBox variant="info" title="Run npm run start">
 If you're running Docusaurus locally, just run `npm run start` in your console.
 If like me you're running Docusaurus thanks to Docker, just kill the container and run a new one.
-:::
+
+</AlertBox>
 
 ## You can do this for other pages for sure
 

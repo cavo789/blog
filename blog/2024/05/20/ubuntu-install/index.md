@@ -30,9 +30,10 @@ Shortly, still in your Windows session, start your **Control Panel**, search for
 
 ![Disabling Bitlocker](./images/disabling_bitlocker.png)
 
-:::info Follow progression in the tray panel
+<AlertBox variant="info" title="Follow progression in the tray panel">
 If, like me, you didn't see any progression on the screen, think to click on the tray panel icon (near the clock). You'll find there an icon about the decryption process.
-:::
+
+</AlertBox>
 
 ## Download Ubuntu and create your bootable USB stick
 
@@ -66,28 +67,29 @@ A few notes:
 * The wizard will ask *how to install Ubuntu*; alongside Windows (so with a dual boot) or alone. I'm going to opt for the latter.
 Personally, that's my goal and I'm going to ask to delete my entire current disk (Windows) and to do that, I'm going to click on *Erase disk and install Ubuntu* and click on the *Advanced features* button. I'm going to opt for *Use LVM and encryption* which will allow me to have encryption like I had with Bitlocker: someone who came to steal my hard disk wouldn't have access to my files without the decryption key.
 
-:::caution IMPORTANT - DON'T INSTALL ADDITIONAL DRIVERS IF YOU'VE A NVIDIA GRAPHIC CARD
+<AlertBox variant="highlyImportant" title="IMPORTANT - DON'T INSTALL ADDITIONAL DRIVERS IF YOU'VE A NVIDIA GRAPHIC CARD">
 The wizard will ask if you want to **Install recommended proprietary software**. The first time, I've answered Yes on both options. The installation had been running for nearly twenty minutes and then I got an error message *The Secure Boot key is not valid*.
 
 While looking on the **askubuntu.com** website, someone has told this was a bug and that we shouldn't install drivers during the installation of Ubuntu but we can do this easily later one and refers to this bug: [https://bugs.launchpad.net/subiquity/+bug/2060353](https://bugs.launchpad.net/subiquity/+bug/2060353).
 
 So, I've abandoned the installation and start a new one.
-:::
-
+</AlertBox>
 
 You'll be asked to create your administrative account and to select your time zone.
 
 Then, once you've confirmed your choices, the wizard will start to prepare your machine then copy files on your computer. This process is, of course, the slowest one. It can takes 10 minutes or more.
 
-:::note The installation seems frozen
+<AlertBox variant="note" title="The installation seems frozen">
 For a few minutes, the screen seemed to be stuck on *Setting up the system...*. However, I could move the mouse pointer and, for example, view the menu (on the left). I kept waiting and everything *unblocked*. So be patient if you need to.
 
 You can start discovering the interface even before installation is complete! Just move the mouse cursor to the left side of your screen and you'll get access to some applications.
-:::
 
-:::tip See the progression in a console-mode
+</AlertBox>
+
+<AlertBox variant="info" title="See the progression in a console-mode">
 In the bottom right of the installation screen, you'll find a small button. Click on it and you'll get a log window where you can follow which action is running.
-:::
+
+</AlertBox>
 
 ![Installation is completed](./images/installation_done.png)
 

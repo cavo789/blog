@@ -38,13 +38,14 @@ It's simple, no?
 
 So, now, you've copied the scanner engine. Just access the scanner by starting your website like you do every time (let's say by starting  `http://localhost` for a local version of the site) and add the name of the script (so, in short, `http://localhost/scan.php`).
 
-:::info
+<AlertBox variant="info" title="">
 It's not recommended to do this directly on your real site on the internet but you can. In that case, start your FTP client, do a FTP connection to your site, create a remote `scan.php` file, start your browser and go to your website.
 
 It's not recommended because the scanner will require some computation time and your hosting company will probably stop the process when the PHP script will take more than xxx seconds (will depend on your configuration).
 
 By running the scanner locally, you'll not have such *timeout* problems.
-:::
+
+</AlertBox>
 
 ## Run the scanner
 
@@ -58,9 +59,9 @@ Once you've clicked on the first button and action is done, the second button *2
 
 A file won't be scanned if his signature (his hash) is strictly the same of a "whitelisted" one.
 
-:::White list concept
+<AlertBox variant="info" title="White list concept">
 Think to original files of Joomla. When you do a new installation of Joomla let's say 5.2.0; files contained in the ZIP of Joomla are considered as safe. You trust these files to not contains any viruses. So, original files; coming from Joomla installation if they're **unmodified** are safe. If their signature are strictly the same then files coming from Joomla, aeSecure QuickScan knows that the file is safe. These file's signatures are white listed.
-:::
+</AlertBox>
 
 So, step 2 will detect which files are not in a white list and should be scanned.
 

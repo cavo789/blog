@@ -174,11 +174,12 @@ As you can see, the image is centered, has a hover effect, rounded corners, ... 
 
 That's pretty cool: our component is working! -->
 
-:::caution
+<AlertBox variant="caution" title="">
 But, uh oh, on this blog, I've more than 250 articles right now (August 2025), I'm not going to go through all my articles to replace my images, am I?
 
 But also, maybe tomorrow I don't want this tag anymore, so I want to keep my articles in **vanilla Markdown** (standard language); how can I do that? The answer is: just write a plugin.
-:::
+
+</AlertBox>
 
 The plugin will be able to intercept the Markdown code of the article and manipulate it. That's exactly what we want here!
 
@@ -188,9 +189,10 @@ We'll intercept the conversion of images from Markdown to HTML and tell Docusaur
 
 So we need a plugin to intercept the conversion from `![Alt text](./img/example.png)` to a HTML image tag; automatically.
 
-:::caution
+<AlertBox variant="caution" title="">
 But let's add a complexity: we don't want to change the first article i.e. the blog post introduction image. For that first image, let Docusaurus doing his job (he's doing this really fine). We'll intercept as from the second image of the blog post.
-:::
+
+</AlertBox>
 
 Please create the `plugins/remark-image-transformer/index.cjs` file:
 

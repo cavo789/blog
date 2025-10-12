@@ -1,12 +1,21 @@
 {
-    "docusaurus.admonitions": {
-        "prefix": "admonitions",
+    "docusaurus.admonition": {
+        "prefix": "admonition",
         "body": [
-            ":::${1|note,tip,info,caution,danger,important|}",
-            "$2",
-            ":::",
+            "<AlertBox variant=\"${1|note,tip,info,caution,danger,important,highlyImportant,coreConcept|}\" title=\"$2\">",
+            "$3",
+            "</AlertBox>",
         ],
-        "description": "Docusaurus - Admonitions",
+        "description": "Docusaurus - AlertBox",
+    },
+    "docusaurus.alertbox": {
+        "prefix": "AlertBox",
+        "body": [
+            "<AlertBox variant=\"${1|note,tip,info,caution,danger,important|}\" title=\"$2\">",
+            "$3",
+            "</AlertBox>",
+        ],
+        "description": "Docusaurus - AlertBox",
     },
     "docusaurus.coreconcept": {
         "prefix": "CoreConcept",

@@ -26,8 +26,6 @@ Years ago, I've written such PHP utility, let's see how to use it.
 
 ![Kill tables](./images/kill_tables.png)
 
-:::important Make sure to click on `Remove this script`.
-:::
+<AlertBox variant="highlyImportant" title="Make sure to click on `Remove this script`." />
 
-:::caution Make sure you know what you're doing and to have a database backup, just in case.
-:::
+<AlertBox variant="highlyImportant" title="Make sure you know what you're doing and to have a database backup, just in case." />

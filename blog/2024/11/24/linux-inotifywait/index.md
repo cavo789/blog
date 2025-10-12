@@ -25,9 +25,10 @@ The command `ls folder_name | wc -l` works but didn't stay running. Let's see ho
 
 ## Let's create our Python environment
 
-:::important
+<AlertBox variant="caution" title="">
 You can skip this part if you already have Python installed on your computer.
-:::
+
+</AlertBox>
 
 I need a Python environment so let's quickly create it thanks to Docker.
 
@@ -143,9 +144,10 @@ done
 
 Make the script executable: `chmod +x ./monitor.sh` and make sure to install **inotify** by running `sudo apt-get update && sudo apt-get install -y --no-install-recommends inotify-tools`.
 
-:::info
+<AlertBox variant="info" title="">
 You can quickly check if `inotifywait` is already installed by running `which inotifywait`. If you don't get an answer (empty response); then it's not yet there.
-:::
+
+</AlertBox>
 
 We're finally ready.
 

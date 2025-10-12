@@ -13,11 +13,9 @@ tags: [chrome, docker, firefox, gimp, gui, tip]
 
 In my <Link to="/blog/docker-gui-in-browser">previous post</Link>, I've illustrated how to start Firefox or GIMP in a browser. This was the first part of this series about graphical user interfaces because, until very recently, I didn't know it was possible to run GUIs with Docker and that's just amazing.
 
-:::info `GUI` stands for `Graphical User Interface`
-:::
+<AlertBox variant="info" title="`GUI` stands for `Graphical User Interface`" />
 
 So, using Docker, we can start Firefox or GIMP or even ... [Doom 2](https://hub.docker.com/r/classiccontainers/doom2).
-
 
 In this blog post, we'll create our own xeyes Docker image, then play with Firefox and Gimp.
 
@@ -129,7 +127,6 @@ CMD ["google-chrome", "--disable-dev-shm-usage", "--disable-gpu"]
 </Snippet>
 
 Build the image using `docker build --tag cavo789/chrome .` then run it using `docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY cavo789/chrome`.
-
 
 ![Running Chrome in a window](./images/chrome.png)
 

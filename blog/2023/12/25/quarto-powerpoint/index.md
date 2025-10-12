@@ -17,9 +17,10 @@ In this article, we'll create a `pptx` file from our markdown documentation.
 
 <!-- truncate -->
 
-:::tip Docker image with Quarto
+<AlertBox variant="info" title="Docker image with Quarto">
 If you don't have yet a Docker image with Quarto, read this article <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link>.
-:::
+
+</AlertBox>
 
 ## Syntax
 
@@ -74,6 +75,7 @@ And you'll obtain this:
 
 You'll find a lot of tips and tricks on the [official documentation page](https://quarto.org/docs/presentations/powerpoint.html).
 
-:::tip Did you know you can generate an online slideshow easily?
+<AlertBox variant="info" title="Did you know you can generate an online slideshow easily?">
 Instead of running `quarto render slides.md --to pptx` and get a PowerPoint *offline* file, just run `quarto render slides.md --to revealjs` and enjoy your slideshow in your browser. Copy files to the internet and everyone can consult your great work.
-:::
+
+</AlertBox>

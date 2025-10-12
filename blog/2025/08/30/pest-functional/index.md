@@ -262,13 +262,14 @@ To create the Docker image, please run `make build`:
 $ make build
 </Terminal>
 
-:::info
+<AlertBox variant="info" title="">
 If you don't have `make` yet on your host, please run `sudo apt-get update && sudo apt-get -y install make`.
 
 <Terminal>
 $ sudo apt-get update && sudo apt-get -y install make
 </Terminal>
-:::
+
+</AlertBox>
 
 The build phase can be slow because a lot of things should be downloaded. The final image will be around 2 GB.
 
@@ -330,9 +331,10 @@ make: *** [makefile:26: start] Error 1`}
 
 As we can see, the test `it can search for a post` has failed while the previous ones have succeeded.
 
-:::note
+<AlertBox variant="note" title="">
 Did you've notice that others tests were well fired? Pest won't stop on failure.
-:::
+
+</AlertBox>
 
 The nice thing is: Pest has automatically take a snapshot. See the error message, it says that a file `Tests/Browser/Screenshots/it_can_search_for_a_post` has been created automatically.
 

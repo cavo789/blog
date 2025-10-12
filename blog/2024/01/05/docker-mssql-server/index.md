@@ -35,9 +35,10 @@ $ docker container list
 [...] mcr.microsoft.com/mssql/server:2022-latest  [...] sqlserverdb
 </Terminal>
 
-:::info The output above has been simplified
+<AlertBox variant="info" title="The output above has been simplified">
 For clarity, the output of `docker container list` has been simplified here above; not all columns were mentioned in the article.
-:::
+
+</AlertBox>
 
 Now, if you don't have **SQL Server Management Studio** (also called **SSMS**) yet on your machine, please download it for free from [https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16).
 
@@ -56,9 +57,10 @@ Use the value below for the authentication:
 * Login: `SA`
 * Password: `2Secure*Password2`
 
-:::info Why these values?
+<AlertBox variant="info" title="Why these values?">
 `1443` is the port number we've declared in our `docker run` instruction, the default *admin* user is `SA` and the password has been initialized earlier to `2Secure*Password2` (see the `SA_PASSWORD` environment variable in our `docker run` command.)
-:::
+
+</AlertBox>
 
 ![Authentication](./images/authentication.png)
 
@@ -108,9 +110,10 @@ Congratulations, you've created a `MyDB` database with a `dbo.Person` table:
 
 ![The database has been created](./images/database_created.png)
 
-:::tip Think to refresh the `Object Explorer`
+<AlertBox variant="info" title="Think to refresh the `Object Explorer`">
 If, after having fired the query, you don't see yet your database in the `Object Explorer` pane, think to refresh it. Click anywhere in the pane and press <kbd>F5</kbd> or, right-click on the `localhost, 1433` top-item and select `Refresh` in the contextual menu.
-:::
+
+</AlertBox>
 
 ## Write a PowerShell script and connect to the database
 

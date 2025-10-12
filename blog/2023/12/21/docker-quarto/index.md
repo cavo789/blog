@@ -40,9 +40,10 @@ As usual, you will now create a temporary folder for your experiments. Please st
 
 ### Create your own Docker image
 
-:::info Optional step
+<AlertBox variant="info" title="Optional step">
 If you prefer to use an existing prebuilt image; jump to the next chapter.
-:::
+
+</AlertBox>
 
 Create a new file called `Dockerfile` (there is no extension) with this content:
 
@@ -138,9 +139,10 @@ $ docker build -t cavo789/quarto .
  => => naming to docker.io/cavo789/quarto                                                   0.0s
 </Terminal>
 
-:::tip Choose your own name
+<AlertBox variant="info" title="Choose your own name">
 The previous instruction `docker build -t cavo789/quarto .` has created an image called `cavo789/quarto`. You can for sure choose a different name without any impact on the image.
-:::
+
+</AlertBox>
 
 You can quickly check the size of your image; quite huge but except you're very low in memory / disk space; this is really not a big deal.
 
@@ -177,7 +179,7 @@ Now, back to your Linux console and you'll convert that file to a pdf. **Please 
 
 To convert to a PDF, the instruction to fire is `quarto render test.md --to pdf`. But since you're using Quarto from a Docker image, the instruction becomes `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf`.
 
-:::tip Docker CLI reminder
+<AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run command are (almost always the same):
 
 * `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
@@ -187,7 +189,8 @@ As a reminder, the used Docker run command are (almost always the same):
 * `-u $(id -u):$(id -g)` ask Docker to reuse our local credentials so when a file is updated/created in the container, the file will be owned by you,
 * then `cavo789/quarto` which is the name of your Quarto Docker image, and, finally,
 * `quarto render test.md --to pdf` i.e. the command line to start within the container.
-:::
+
+</AlertBox>
 
 So, let's convert to PDF and run `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf` in your console.
 
@@ -229,9 +232,10 @@ Output created: test.pdf
 
 ![Your PDF file](./images/pdf_version.png)
 
-:::tip Hide non-essential information
+<AlertBox variant="info" title="Hide non-essential information">
 Add the `--log-level warning` CLI argument to Quarto to ask him to show only warning (and error) messages. Non-essential output will be hidden and you'll keep a clean console. The new command to use is thus `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf --log-level warning`
-:::
+
+</AlertBox>
 
 ### Using Quarto and generate a HTML file
 
@@ -269,9 +273,10 @@ So, if you want to create documents, presentations, or even books, Quarto and Ma
 
 Rerun `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to revealjs --log-level warning` to generate the slideshow as a `test.html` file.
 
-:::tip
+<AlertBox variant="info" title="">
 Just run `docker run -d --name static-site -p 8080:80 -v .:/usr/local/apache2/htdocs/ httpd:alpine` then surf to `http://127.0.0.1:8080/test.html` to see your slideshow.
-:::
+
+</AlertBox>
 
 Now your slideshow will have three slides (press <kbd>space</kbd> or arrow keys for navigation):
 
@@ -281,6 +286,7 @@ Now your slideshow will have three slides (press <kbd>space</kbd> or arrow keys 
 
 ![Revealjs - slide 3](./images/revealjs_slide3.png)
 
-:::tip Just deploy your slideshow online
+<AlertBox variant="info" title="Just deploy your slideshow online">
 The nice thing now is that your slideshow is ready to be deployed on your remote server. Copy the html file and the associated folder (in our use case here, file `test.html` and folder `test_files`) to your FTP server f.i. and your website can be publicly accessed. Nice, isn't it?
-:::
+
+</AlertBox>

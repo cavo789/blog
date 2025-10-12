@@ -27,9 +27,10 @@ A picture is worth a thousand words...
 
 So simply copy/paste your long formula in the first text area and click on the Beautify button.
 
-:::info
+<AlertBox variant="info" title="">
 The script will try to find if the used separator is `,` or `;` and, in case of trouble, just specify the good one.
-:::
+
+</AlertBox>
 
 You'll get this type of result:
 

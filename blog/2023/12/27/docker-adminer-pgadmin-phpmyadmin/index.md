@@ -79,9 +79,10 @@ $ docker run -d --rm --name adminer --network joomla_default --link joomla-jooml
 
 The flag `--network` should thus be set to the name of the used network and `--link` is a two part value, the name of the container to connect followed by `:db`.
 
-:::tip Use your own port using the `-p` flag
+<AlertBox variant="info" title="Use your own port using the `-p` flag">
 In the example, we'll make adminer available on port `8088`. Don't hesitate to use any other free ones.
-:::
+
+</AlertBox>
 
 Since we've defined port `8088` in our command above, just go to `http://127.0.0.1:8088` to get access to the Adminer web interface.
 
@@ -93,16 +94,16 @@ Since we've defined port `8088` in our command above, just go to `http://127.0.0
 
 To retrieve the name of the server, it's the name of the service as defined in your `compose.yaml` file but you can retrieve it also using this command: `docker inspect joomla-joomladb-1 | grep com.docker.compose.service`. Just replace `joomla-joomladb-1` by the name of your container.
 
-:::tip Using parametrized hyperlink
+<AlertBox variant="info" title="Using parametrized hyperlink">
 If you already know some of these values, you can provide them in a link, like `http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db`.
-:::
+
+</AlertBox>
 
 ![adminer](./images/adminer.png)
 
 ## Run pgadmin
 
-:::info pgadmin is only for PostgreSQL databases
-:::
+<AlertBox variant="info" title="pgadmin is only for PostgreSQL databases" />
 
 ## Run phpmyadmin
 

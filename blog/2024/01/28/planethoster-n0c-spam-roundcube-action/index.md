@@ -96,9 +96,10 @@ if allof (header :matches "from" "{{ pattern }}")
 
 ```
 
-:::caution Please keep the last empty line
+<AlertBox variant="caution" title="Please keep the last empty line">
 The last line of the `spam.template` file has to be an empty line so the file should have 6 lines, not 5.
-:::
+
+</AlertBox>
 
 ### Create the generation script
 
@@ -191,14 +192,14 @@ Now, go to your web email account (direct link: [https://mg.n0c.com/email/accoun
 
 ![RoundCube filters](./images/filters.png)
 
-:::note I've already added more spams domain for my own account
+<AlertBox variant="note" title="I've already added more spams domain for my own account">
 If you don't have the same list of filters; it's absolutely normal.
-:::
+
+</AlertBox>
 
 ### Create your own Github repository
 
-:::info Skip this chapter if you don't want full automation
-:::
+<AlertBox variant="info" title="Skip this chapter if you don't want full automation" />
 
 In order to be able to create automation using Github Actions, first, we need to create a Github repository.
 
@@ -245,8 +246,7 @@ And, too, to publish the new file to your FTP account so, to put it simply: you 
 
 ### Adding Github Actions
 
-:::info Skip this chapter if you don't want full automation
-:::
+<AlertBox variant="info" title="Skip this chapter if you don't want full automation" />
 
 Go back to your computer, jump back in the `~/sieve-generator` folder and create a new file called `.github/workflows/build_and_deploy.yaml`.
 
@@ -324,9 +324,10 @@ Go to [https://mg.n0c.com/files/ftp-accounts](https://mg.n0c.com/files/ftp-accou
 
 Restrict the path for that user to, exactly, where the sieve file is located on your FTP. As said in <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link>, for me, it's `/mail/avonture.be/christophe/mail/avonture.be/christophe/sieve`. Make sure to find the path for you.
 
-:::note
+<AlertBox variant="note" title="">
 In case the `sieve` folder didn't exists yet, the best way to create it, I think, is to manually create a filter in Roundcube. Here is the [official PlanetHoster documentation](https://kb.n0c.com/en/knowledge-base/redirecting-emails-with-a-filter-in-roundcube-2/).
-:::
+
+</AlertBox>
 
 Ok, so, now, you've a new FTP login, his very secure password and being able to, only, connect to your sieve folder.
 

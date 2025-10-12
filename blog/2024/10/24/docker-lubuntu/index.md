@@ -76,9 +76,10 @@ You may have to wait a minute before you'll start to see the Linux Lubuntu deskt
 
 ![Lubuntu desktop](./images/lubuntu-desktop.png)
 
-:::note Multi-screen support does not seem to work with X Server
+<AlertBox variant="note" title="Multi-screen support does not seem to work with X Server">
 During my tests, the display wasn't up to scratch and I had to remove the cable from my second screen to get a correct display.
-:::
+
+</AlertBox>
 
 ## Impressive
 

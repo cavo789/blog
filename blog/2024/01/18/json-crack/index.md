@@ -94,6 +94,7 @@ Another example (found [here](https://developer.mozilla.org/en-US/docs/Learn/Jav
 
 The advantage of the image is that it is much clearer: we can see straight away that the squad is made up of three members and that the strongest (and oldest) is *Eternal Flame*, who has five powers.
 
-:::note
+<AlertBox variant="note" title="">
 Json crack has some limitations for the free version like the number of lines in your JSON content. You can also install an [add-on for vscode](https://marketplace.visualstudio.com/items?itemName=AykutSarac.jsoncrack-vscode).
-:::
+
+</AlertBox>

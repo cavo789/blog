@@ -18,8 +18,7 @@ Simple! [phpDocumentor](https://docs.phpdoc.org/) do it for you and since a Dock
 
 ## Some preparation work
 
-:::note Skip this step if you already have a PHP codebase somewhere on your disk
-:::
+<AlertBox variant="note" title="Skip this step if you already have a PHP codebase somewhere on your disk" />
 
 For the illustration, please start a Linux shell and run `mkdir -p /tmp/wordpress && cd $_`.
 
@@ -65,9 +64,10 @@ To create the phpDocumentation, simply run `docker run -it --rm -u $(id -u):$(id
 
 That command will scan the project's codebase (here, the folder `src`) and will create a new directory called `.phpdoc` where the documentation will be saved.
 
-:::tip WSL2 - Windows
+<AlertBox variant="info" title="WSL2 - Windows">
 If you're running under WSL2, to get access to the documentation, just run `powershell.exe .phpdoc/index.html` file to start the documentation. Read the <Link to="/blog/wsl-powershell">Starting the default associated Windows program on WSL</Link> or <Link to="/blog/wsl-windows-explorer">Open your Linux folder in Windows Explorer</Link> for more information.
-:::
+
+</AlertBox>
 
 The phpDocumentor website will looks like this:
 

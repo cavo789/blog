@@ -32,9 +32,10 @@ As a support for this blog post, please create a new, empty, file in Excel calle
 
 ![Excel Ribbon.xslm](./images/Excel_empty_file.png)
 
-:::info Just creates an empty file
+<AlertBox variant="info" title="Just creates an empty file">
 Right now, we don't need to do something else than Create New - File Save as - FileType - Excel Macro-Enabled Workbook..
-:::
+
+</AlertBox>
 
 ## Add a ribbon in MS Office
 
@@ -46,9 +47,10 @@ Please start `CustomOfficeUIEditor` and open your `Ribbon.xlsm` file:
 
 ![UI - Open Ribbon.xlsm](./images/UI_open.png)
 
-:::caution Make sure to close it first if still open in Excel
+<AlertBox variant="caution" title="Make sure to close it first if still open in Excel">
 When using the editor, the file itself can't be opened in Excel! Imagine the following situation: the workbook is open both in the editor and in Excel. You make a lot of changes in Excel, switch to the editor and change the manifest. By saving the file in the editor, you'll lose every change made in Excel so... be careful.
-:::
+
+</AlertBox>
 
 The first time, you'll need to add a new ribbon: click on the `Insert` menu and select `Office 2010 Custom UI Part`.
 
@@ -99,9 +101,10 @@ Since the ribbon is correct, save the file and open it in Excel. If everything g
 
 ![Sample](./images/UI_Editor_Sample.png)
 
-:::info Your ribbon has been created
+<AlertBox variant="info" title="Your ribbon has been created">
 Congratulations, you've added a ribbon to your workbook. It was not too hard I think.
-:::
+
+</AlertBox>
 
 ### Manifest analysis
 

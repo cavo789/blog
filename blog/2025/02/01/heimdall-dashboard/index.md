@@ -62,9 +62,10 @@ services:
 ```
 </Snippet>
 
-:::note
+<AlertBox variant="note" title="">
 In the code here above, I've preferred the syntax `PUID=${USER_ID:-1000}` and `PGID=${GROUP_ID:-1000}` instead of just hardcoding `1000`: on my computer, my Linux user id is `1002`; not `1000` so I prefer to use a variable and, if the variable isn't defined, then use `1000` as default. Same for the group id.
-:::
+
+</AlertBox>
 
 ## Running the dashboard
 
@@ -72,9 +73,10 @@ Once the `compose.yaml` file has been created, just run this command: `USER_ID=$
 
 This command will define our two `USER_ID` and `GROUP_ID` variables, initialise them to your own values then run the container.
 
-:::note
+<AlertBox variant="note" title="">
 If you've hardcoded IDs in the `compose.yaml` file to, f.i. `1000` (because you know it's your IDs); then the command becomes shorter: `docker compose up --build --detach`
-:::
+
+</AlertBox>
 
 ## First run
 

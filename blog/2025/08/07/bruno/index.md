@@ -150,7 +150,7 @@ Very clean structure no?
 
 Bruno comes with a [Docker image](https://hub.docker.com/r/alpine/bruno): it'll help us to automate the execution of our requests from the command line.
 
-:::caution
+<AlertBox variant="caution" title="">
 Mid-july 2025, I wasn't able to make this image working as expected. I was facing *Cannot read properties of undefined (reading 'headers')* errors even when, I think, everything was correctly configured.
 
 For that reason, I've searched for another image and I've found that one [davidkarlsen/bruno-image](https://github.com/davidkarlsen/bruno-image) but, no luck, even the last version at that time (version 2.7.0) was giving a problem.
@@ -158,7 +158,8 @@ For that reason, I've searched for another image and I've found that one [davidk
 By looking at the [Dockerfile](https://github.com/davidkarlsen/bruno-image/blob/main/Dockerfile), I've seen the file was really easy and a newer version of [Bruno was released](https://github.com/usebruno/bruno/tags); version 2.8.
 
 So, in short, I'll create my own Docker image and check if things are better.
-:::
+
+</AlertBox>
 
 ### Create our own Bruno CLI image
 

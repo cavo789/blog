@@ -20,11 +20,12 @@ My tables, my models, my SQL queries, I was able to remove everything from my co
 
 "PostgREST is a standalone web server that turns your PostgreSQL database directly into a RESTful API. The structural constraints and permission in the database determine the API endpoints and operations". You can retrieve the official documentation [https://postgrest.org/en/](https://postgrest.org/en/).
 
-:::tip Will return JSON
+<AlertBox variant="info" title="Will return JSON">
 In short: using an API, PostgREST will retrieve data from your PostgreSQL database and will return a JSON answer to you.
-:::
 
-:::info PostgREST is magic: it takes all the complexity out of accessing your data
+</AlertBox>
+
+<AlertBox variant="info" title="PostgREST is magic: it takes all the complexity out of accessing your data">
 Back to my experience: after the migration from MySQL to PostgreSQL, I deleted 100% of my code that had to declare my tables and their fields (the models), I deleted the declaration of my relationships between tables, I deleted my queries, ... After my migration to PostgREST, I no longer had any PHP code of the "database" type. Everything was replaced by web calls to APIs. On top, in Javascript and using axios, I can directly access to my database using f.i.
 
 ```js
@@ -36,7 +37,8 @@ const todos = axios.create({
 })
 ```
 
-:::
+
+</AlertBox>
 
 ## Let's play
 
@@ -113,7 +115,7 @@ db-anon-role = "web_anon"
 
 </Snippet>
 
-:::info PostgREST will start as a service on port 3000 by default
+<AlertBox variant="info" title="PostgREST will start as a service on port 3000 by default">
 The instruction `./postgrest tutorial.conf` will start a service. You can stop it by pressing <kbd>CTRL</kbd>-<kbd>C</kbd> but leave it right now and start a new console.
 
 Add the line below to your conf file if you wish to use another port; f.i. port `3001`:
@@ -126,7 +128,8 @@ server-port = 3001
 
 </Snippet>
 
-:::
+
+</AlertBox>
 
 Now, we'll run a Docker container for PostgREST:
 

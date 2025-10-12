@@ -48,8 +48,7 @@ Once these commands have been fired, please jump to `http://locahost:8080` and y
 
 ![Website running as http](./images/running_http.png)
 
-:::tip Crazy easy, no?
-:::
+<AlertBox variant="info" title="Crazy easy, no?" />
 
 The site is running using the http protocol but https is not yet possible. So, let's continue...
 
@@ -96,10 +95,9 @@ services:
       - ./src:/usr/local/apache2/htdocs
 ```
 
-:::tip compose.yaml is strictly equivalent to docker-compose.yml
-:::
-
 </Snippet>
+
+<AlertBox variant="info" title="compose.yaml is strictly equivalent to docker-compose.yml" />
 
 The third file we'll need should be created in a `httpd` directory and has to be called `my-site.conf` with the following content:
 
@@ -123,10 +121,9 @@ The third file we'll need should be created in a `httpd` directory and has to be
 </VirtualHost>
 ```
 
-:::note For a container based on Apache, the website should be copied in folder /usr/local/apache2/htdocs and not, /var/www/html; that one is for a PHP image.
-:::
-
 </Snippet>
+
+<AlertBox variant="note" title="For a container based on Apache, the website should be copied in folder /usr/local/apache2/htdocs and not, /var/www/html; that one is for a PHP image." />
 
 Everything is now in place for to enable a http access. Still in the `/tmp/https_localhost` folder, now, just run `docker compose up -d --build` to build our custom Docker image and run a container i.e. start the website.
 
@@ -168,13 +165,14 @@ $ mkdir -p ssl
 
 The console will display a list of characters but you'll get two new files in the current directory: `server.crt` and `server.key`.
 
-:::info Valid for one year
+<AlertBox variant="info" title="Valid for one year">
 The certificate (the `.crt` file) and the private key (the `.key` file) will be valid for one year.
-:::
 
-:::note For an Apache image, files must be named like that, i.e. server.crt and server.key
+</AlertBox>
+
+<AlertBox variant="note" title="For an Apache image, files must be named like that, i.e. server.crt and server.key">
 As explained on [https://hub.docker.com/_/httpd](https://hub.docker.com/_/httpd), the two files should be named like that, `server.crt` and `server.key`.
-:::
+</AlertBox>
 
 ### Updating our Apache configuration file
 
@@ -243,9 +241,9 @@ Please edit the `httpd/my-site.conf` existing file and add the content below.
 
 </Snippet>
 
-:::caution Paths are crucial!
+<AlertBox variant="highlyImportant" title="Paths are crucial!">
 Folder and file names are of major importance. The two certificate files should be saved in folder `/usr/local/apache2/conf/` and be named `server.crt` and `server.key`. This because we're using an Apache Docker image; it's not the same if you're using, f.i., a PHP+Apache image.
-:::
+</AlertBox>
 
 ### Updating our compose.yaml file
 
@@ -353,13 +351,14 @@ We've enabled our site to be able to run on port 80 (http) and 443 (https).
 
 Now that everything is in place, just go to `https://localhost/` and badaboum... It's not working.
 
-:::danger Connection is not private
+<AlertBox variant="danger" title="Connection is not private">
 You'll most probably see the error below with the majority of browsers.
 
 ![Your connection is not private](./images/connection_not_private.png)
 
 The reason is we're using a **self-signed** certificate and browsers didn't like this.
-:::
+
+</AlertBox>
 
 To make it working, you'll need to create an exception for such certificates.
 
@@ -375,11 +374,12 @@ Now, by going back to `https://localhost` it'll work, you'll get the website but
 
 This flag is well expected so it's not an error. We're using a self-signed certificate and therefore not really trustworthy. However, it's enough to develop in localhost and under SSL.
 
-:::danger Be careful to files and folders names
+<AlertBox variant="danger" title="Be careful to files and folders names">
 I spent many hours - too many - writing this article. It looked simple, there are several articles here and there to give the impression that it would be easy, but it was not.
 
 Because the majority of examples I found used a PHP or Nginx image and not Apache. Files and folders names are not the same and we should carefully used the ones required by Apache. It was not explicit at all.
-:::
+
+</AlertBox>
 
 ## Using curl
 
@@ -397,9 +397,9 @@ how to fix it, please visit the web page mentioned above.
 
 As explained above, the certificate is not valid so you have to use the `--insecure` flag and thus run: `curl https://localhost --insecure`.
 
-:::tip See the bonus part below
+<AlertBox variant="info" title="See the bonus part below">
 Make sure to read the *Install a root CA certificate in the trust store* [chapter](#bonus---install-a-root-ca-certificate-in-the-trust-store).
-:::
+</AlertBox>
 
 ## Bonus - Configure nginx to use SSL
 
@@ -442,10 +442,9 @@ services:
       - ./src:/usr/share/nginx/html
 ```
 
-:::tip compose.yaml is strictly equivalent to docker-compose.yml
-:::
-
 </Snippet>
+
+<AlertBox variant="info" title="compose.yaml is strictly equivalent to docker-compose.yml" />
 
 The third file we'll need should be created in a `httpd` directory and has to be called `my-site.conf` with the following content:
 
@@ -517,10 +516,9 @@ services:
       - ./src:/var/www/html/
 ```
 
-:::tip compose.yaml is strictly equivalent to docker-compose.yml
-:::
-
 </Snippet>
+
+<AlertBox variant="info" title="compose.yaml is strictly equivalent to docker-compose.yml" />
 
 The third file we'll need should be created in a `httpd` directory and has to be called `my-site.conf` with the following content:
 
@@ -581,7 +579,6 @@ $ sudo cp ssl/server.crt /usr/local/share/ca-certificates
 $ sudo update-ca-certificates
 </Terminal>
 
-:::note The certificate should have the .crt extension
-:::
+<AlertBox variant="note" title="The certificate should have the `.crt` extension" />
 
 And, now, we can f.i. run `curl https://localost` (without the `--insecure` flag). We'll no more received an error.

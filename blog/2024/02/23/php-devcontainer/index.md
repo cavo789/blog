@@ -26,9 +26,10 @@ This article is the very short and straightforward version of <Link to="/blog/vs
 
 Just follow the guide...
 
-:::important The aim of this article is to create a development environment (aka devcontainer)
+<AlertBox variant="caution" title="The aim of this article is to create a development environment (aka devcontainer)">
 Please refers to my other articles about <Link to="/blog/tags/docker">Docker</Link> to see how to Dockerize the application and be able to run the application using <Link to="/blog/tags/apache">Apache</Link> and a database service like <Link to="/blog/tags/postgresql">PostgreSQL</Link>.
-:::
+
+</AlertBox>
 
 <!-- truncate -->
 
@@ -44,9 +45,10 @@ $ curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/he
 $ tar -xzvf php_devcontainer-main.tar.gz --strip-components 1 && rm -f php_devcontainer-main.tar.gz
 </Terminal>
 
-:::note Download a specific version
+<AlertBox variant="note" title="Download a specific version">
 If you don't want to download the latest version but a given one, specify the tags like: `curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz`.
-:::
+
+</AlertBox>
 
 You've thus download code from my [https://github.com/cavo789/php_devcontainer](https://github.com/cavo789/php_devcontainer) repo in your folder.
 

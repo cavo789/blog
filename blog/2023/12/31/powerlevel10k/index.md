@@ -31,9 +31,10 @@ $ docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -it --rm alpine sh -uec '
 
 So, inside a Docker container, you'll install Powerlevel10k, see how it's looks like, ... and decide if you want to adopt it or not.
 
-:::note Everything is done in RAM; nothing on your disk
+<AlertBox variant="note" title="Everything is done in RAM; nothing on your disk">
 Running the `docker run` command here above will download a Docker Alpine Linux image on your disk (less than 7 MB) then will install binaries inside the running container so, by leaving the container using the `exit` command, nothing will stay on your disk. Ideal for testing.
-:::
+
+</AlertBox>
 
 When you exit the Docker container, everything will be lost but, now, you know if you like it or not. And, if you like it, just proceed on the installation of Powerlevel10k by following his [installation guide](https://github.com/romkatv/powerlevel10k#installation).
 

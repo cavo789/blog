@@ -23,15 +23,17 @@ This will also have a positive impact on your SEO (by creating better internal l
 
 It's impossible natively so, let's create our component for this.
 
-:::caution Spoiler alert
+<AlertBox variant="caution" title="Spoiler alert">
 Just click on the <Link to="/series">Series</Link> link to see how the **SeriesPosts** component is soooo cool. You'll learn how to do this here.
-:::
+
+</AlertBox>
 
 <!-- truncate -->
 
-:::tip
+<AlertBox variant="info" title="">
 Hey, did you've already seen this article? Look at the top, you've a "This article is part of the **Creating Docusaurus components** series:"; this is exactly what we'll learn right now.
-:::
+
+</AlertBox>
 
 This long article will have two main sections: one on the actual creation of the component, and the other on navigating the blog.
 
@@ -113,9 +115,10 @@ In this article, we will learn how to ...
 
 Do this for a few posts (so we'll have a few articles in that series).
 
-:::caution
+<AlertBox variant="caution" title="">
 If you visit your blog right now and surf on your article, you'll not see any differences at all. And it's purely normal because we've just created a component; we still need to tell Docusaurus to use it.
-:::
+
+</AlertBox>
 
 ### 1.4. Overriding the BlogPostItem template
 
@@ -184,14 +187,16 @@ export default function BlogPostItem({ children, className }) {
 
 </Snippet>
 
-:::caution We need to restart Docusaurus
+<AlertBox variant="caution" title="We need to restart Docusaurus">
 Now, because we've just introduced an override, we need to restart our Docusaurus server so changes can be taken into account.
-:::
 
-:::info
+</AlertBox>
+
+<AlertBox variant="info" title="Run npm run start">
 If you're running Docusaurus locally, just run `npm run start` in your console.
 If like me you're running Docusaurus thanks to Docker, just kill the container and run a new one.
-:::
+
+</AlertBox>
 
 ### Let's try if it's working
 
@@ -205,9 +210,10 @@ We can create our series (in this example, I've edited three articles about Joom
 
 You can navigate from one article to the other.
 
-:::info
+<AlertBox variant="info" title="">
 We can stop here, but that would be like doing half the journey: we still need to implement a page that will display the list of series and by clicking on a series, the list of articles in it.
-:::
+
+</AlertBox>
 
 ## Part 2 - Adding a navigation to series
 
@@ -233,9 +239,10 @@ First, please create the `src/pages/series.mdx` file with this content:
 
 <Snippet filename="src/pages/series.mdx" source="src/pages/series.mdx" />
 
-:::caution
+<AlertBox variant="caution" title="">
 As you can see, that page is a Markdown content but with one special feature: it contains Javascript code. This is why, and it's really important, the extension is `.mdx`.
-:::
+
+</AlertBox>
 
 As you can see, there are some Markdown content (adapt it to fit your needs) and the use of a new component, the `SeriesCards` one, let's create it.
 
@@ -364,9 +371,10 @@ export default config;
 
 </Snippet>
 
-:::danger
+<AlertBox variant="danger" title="">
 The `onBrokenLinks` property has to be set to `ignore` because Docusaurus didn't load routers plugins while he's rendering the static version of the site. So he'll not understand any `/series/xxx` URLs and think they're broken.
-:::
+
+</AlertBox>
 
 For the last time, please restart your Docusaurus server.
 

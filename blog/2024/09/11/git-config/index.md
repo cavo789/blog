@@ -24,11 +24,12 @@ We'll also see how to better works with branches like sorting them by commit dat
 
 If you're using Linux (or WSL), your Git configuration file is located here: `~/.gitconfig`. You can edit the file using vi or vscode (`vi ~/.gitconfig` or `code ~/.gitconfig`).
 
-:::tip Using command line
+<AlertBox variant="info" title="Using command line">
 You can edit your global configuration by running `git config --global --edit` in the console.
 
 The default editor will be started (`vi` or perhaps `nano` if you've that one). If you prefer vscode, run `git config --global core.editor "code --wait"` in the console first. Now, you've associated git to use vscode also for, f.i., editing your commit message.
-:::
+
+</AlertBox>
 
 ## Aliases
 
@@ -49,9 +50,10 @@ Just add the two lines below in your `~/.gitconfig`:
 
 </Snippet>
 
-:::tip Using command line
+<AlertBox variant="info" title="Using command line">
 Instead of updating the file manually, you can obtain the exact same results by running `git config --global alias.undo '!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f'` in the console.
-:::
+
+</AlertBox>
 
 [source: https://github.com/git-tips/tips](https://github.com/git-tips/tips?tab=readme-ov-file#alias-git-undo)
 
@@ -95,9 +97,10 @@ Just add the two lines below in your `~/.gitconfig` file to ask git to make auto
 
 </Snippet>
 
-:::tip Using command line
+<AlertBox variant="info" title="Using command line">
 Instead of updating the file manually, you can obtain the exact same results by running `git config --global fetch.prune true` in the console.
-:::
+
+</AlertBox>
 
 ### Sorting branches on the last commit date
 
@@ -118,9 +121,10 @@ To do this, just add the block below to your `~/.gitconfig` file:
 
 </Snippet>
 
-:::tip Using command line
+<AlertBox variant="info" title="Using command line">
 Instead of updating the file manually, you can obtain the exact same results by running `git branch --sort=-committerdate` in the console.
-:::
+
+</AlertBox>
 
 ## Credentials
 
@@ -194,9 +198,10 @@ But, if you already have created a SSH key for your Github profile, then, you ca
 
 </Snippet>
 
-:::tip Using command line
+<AlertBox variant="info" title="Using command line">
 You can edit your global configuration by running `git config --global url.'git@github.com:'.insteadOf 'https://github.com/'` in the console.
-:::
+
+</AlertBox>
 
 From now, even if the repository is still configured to use `https` (as you can check in the `.git/config` file of that project on your hard disk), you've globally forced SSL.
 
@@ -215,8 +220,9 @@ Don't allow this by adding the next configuration item in your `~/.gitconfig`:
 
 </Snippet>
 
-:::tip Using command line
+<AlertBox variant="info" title="Using command line">
 You can edit your global configuration by running `git config --global core.autocrlf false` in the console.
-:::
+
+</AlertBox>
 
 [source: https://github.com/git-tips/tips](https://github.com/git-tips/tips?tab=readme-ov-file#prevent-auto-replacing-lf-with-crlf)

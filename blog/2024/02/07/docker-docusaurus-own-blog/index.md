@@ -11,9 +11,7 @@ tags: [docker, docusaurus, node, npm, tips, yarn]
 ---
 ![Running your own blog with Docusaurus and Docker](/img/v2/docusaurus_docker.webp)
 
-:::caution This is the second part of the <Link to="/blog/docusaurus-docker/">Running Docusaurus with Docker</Link>
 This article continues where <Link to="/blog/docusaurus-docker/">Running Docusaurus with Docker</Link> left off. Make sure to read it first and to create required files first.
-:::
 
 So you've created your own blog using Docker and Docusaurus. By following steps explained in the <Link to="/blog/docusaurus-docker/">Running Docusaurus with Docker</Link> article, now, you've a blog with the list of articles stored on your machine; in a `blog` folder.
 
@@ -41,11 +39,12 @@ There is a very important file in Docusaurus, i.e. `docusaurus.config.js` ([http
 
 We need to adjust the file to meet our wishes.
 
-:::caution We need the file on our computer
+<AlertBox variant="caution" title="We need the file on our computer">
 Ok, now, a very important concept: we need to keep a copy of everything we've to update on our computer.
 
 To copy a file from our container on our disk, the command to use is `docker compose cp <service-name>:/file/path/within/container /host/path/to/copy/file/to`
-:::
+
+</AlertBox>
 
 So, to copy the `docusaurus.config.js` file on your disk, you've to run `docker compose cp blog:/app/docusaurus.config.js /tmp/docusaurus/docusaurus.config.js` (replace `/tmp/docusaurus` with the folder name where you've created your blog, on your hard disk).
 
@@ -98,13 +97,14 @@ Just save and refresh your browser and you'll get:
 
 ![My own navbar](./images/navbar_me.png)
 
-:::tip You've learned a very important concept!
+<AlertBox variant="info" title="You've learned a very important concept!">
 When you wish to be able to update a file present in a container; you need to get the file on your disk (1) and, then, synchronize the file between your computer and the container (2).
 
 For the first thing, the command to use is `docker compose cp` followed by the name of the container (just look at your `compose.yaml` file, it's the name of the service) then you need to say where the file is stored in the container and where to copy it on your disk. That's why we've used `docker compose cp blog:/app/docusaurus.config.js docusaurus.config.js` to do this.
 
 The second thing is to allow changes done in that copied file to be reflected between your host and the container and this is why we've updated the list of `volumes` in the `compose.yaml` file. So, now, changes done on your disk or done by the container will be synchronized both sides.
-:::
+
+</AlertBox>
 
 Next step, still in file `docusaurus.config.js`, look for the `title`, `favicon` and `url`, then initialize them to your own values; f.i.
 
@@ -120,13 +120,15 @@ const config = {
 
 ![Favicon](./images/favicon.png)
 
-:::tip Just refresh
+<AlertBox variant="info" title="Just refresh">
 You don't need to restart the `docker up` command this time, just press <kbd>F5</kbd> to see your changes directly in your browser.
-:::
 
-:::important Read the official documentation
+</AlertBox>
+
+<AlertBox variant="caution" title="Read the official documentation">
 You can do a lot more when updating the `docusaurus.config.js` file; please refer to the official documentation [https://docusaurus.io/docs/api/docusaurus-config](https://docusaurus.io/docs/api/docusaurus-config).
-:::
+
+</AlertBox>
 
 ## The src/pages folder
 
@@ -160,9 +162,10 @@ services:
 
 That folder contains files to will be copied to your root directory when you deploy your blog. So this is the perfect place to put, f.i. a `.htaccess` or a `robots.txt` file.
 
-:::tip Real use case
+<AlertBox variant="info" title="Real use case">
 On my side, I use that the static folder to store my common images (the ones I use multiple times). So I've created a folder `static/img` on my own blog. That folder will thus be copied to the `/img` (directly under the root) on my server. Accessing images in my articles will then be easy, the source will be something like `/img/image_name.ext`.
-:::
+
+</AlertBox>
 
 Please run the command below to copy the folder on your host:
 

@@ -21,9 +21,10 @@ And, if my goal is to generate a slideshow, the last part of my documentation wi
 
 <!-- truncate -->
 
-:::tip Docker image with Quarto
+<AlertBox variant="info" title="Docker image with Quarto">
 If you don't have yet a Docker image with Quarto, read this article <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link>.
-:::
+
+</AlertBox>
 
 ## content-visible when
 
@@ -69,6 +70,7 @@ And since we don't have any paragraph only conditional ones, when converting to 
 
 The `when-format="xxx"` is thus working exactly as expected.
 
-:::tip `.content-hidden`
+<AlertBox variant="info" title="`.content-hidden`">
 The exact opposite can be done using `.content-hidden`, see [documentation](https://quarto.org/docs/authoring/conditional.html#content-hidden).
-:::
+
+</AlertBox>

@@ -77,9 +77,10 @@ drwxrwxrwt 19 christophe christophe 908K Dec 16 14:05 ..
 -rw-r--r--  1 christophe christophe  198 Dec 16 14:05 mindmap.md
 </Terminal>
 
-:::tip WSL User
+<AlertBox variant="info" title="WSL User">
 If you're running under Windows and WSL2, to open the `mindmap.html` file, one way is to run `explorer.exe .` in your Linux console (see <Link to="/blog/wsl-windows-explorer">this article</Link> to learn more). Windows Explorer will be started then just double-click on the `mindmap.html` file.
-:::
+
+</AlertBox>
 
 The generated HTML will display your mind map using the full-screen width and you can open/close some branches, use zoom features, ... Really cool.
 

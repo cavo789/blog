@@ -88,6 +88,7 @@ Sentence: One of the best features in vscode is the
 Sentence: With vscode, it's ultra-simple: multiple cursors.
 ```
 
-:::caution
+<AlertBox variant="caution" title="">
 The search&replace action won't be done on your original Markdown files but only during the HTML rendering. It's thus safe to run this plugin; your files won't be impacted at all.
-:::
+
+</AlertBox>

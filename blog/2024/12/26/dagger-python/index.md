@@ -128,13 +128,14 @@ As said above, we need to create some stuff to *daggerize* our application.
 
 To do this, we have to run the `dagger init` command and since we're using a Docker image where `dagger` is the entry point, the command to start is: `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon init --sdk=python --source=./.pipeline`
 
-:::info Let's understand this long command line:
+<AlertBox variant="info" title="Let's understand this long command line:">
 * by using `-it` we will interact (if needed) with the container and we'll allocate a TTY terminal i.e. get the output of running command just like if we've started it on our machine,
 * you've to share your local `/var/run/docker.sock` with the container because Dagger will use Docker-out-of-Docker (aka `DooD`) and for this reason, the container should be able to interact with your instance of Docker (`-v /var/run/docker.sock:/var/run/docker.sock`) and
 * you've to mount your local current folder with the container (`-v .:/app/src`).
 * `dagger_daemon` is the name of our image
 * `init --sdk=python --source=./.pipeline` is the Dagger command to start
-:::
+
+</AlertBox>
 
 It'll take around two minutes to download and initialise Dagger (for the first time). By looking at your file system, you'll see, oh, the owner is `root` and not you.
 
@@ -291,9 +292,10 @@ Running `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/
 
 Edit the `src/main.py` file again, f.i. make a typo by updating the line `else:` and remove the final `:` and the linter won't be happy anymore.
 
-:::info
+<AlertBox variant="info" title="">
 We've successfully created our first task and we've successfully fired it on our machine.
-:::
+
+</AlertBox>
 
 ## Create a makefile
 
@@ -784,9 +786,10 @@ Do a SSH connection to your GitLab runner server and edit the `/etc/gitlab-runne
 
 Also, make sure the Linux user used by your GitLab runner (default username is `gitlab-runner`) is part of the `docker` group. This is done by running `sudo usermod -aG docker gitlab-runner` in the CLI (see [https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-the-shell-executor](https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-the-shell-executor)).
 
-:::info
+<AlertBox variant="info" title="">
 Official Gitlab documentation about [volumes](https://docs.gitlab.com/runner/configuration/advanced-configuration.html#volumes-in-the-runnersdocker-section).
-:::
+
+</AlertBox>
 
 To check if it's working, run `sudo su gitlab-runner` to switch to that user and run `docker info` and `docker image list` and check if it's works. If yes, then your user is part of the Docker group.
 
@@ -832,11 +835,12 @@ ruff:
 
 And push the changes to GitLab. The presence of the `.gitlab-ci.yml` file will tells to GitLab to instantiate a pipeline after each commit and, here in our example, to start the four jobs.
 
-:::info Docker Socket Binding
+<AlertBox variant="info" title="Docker Socket Binding">
 The provided example is using the technique called **Docker Socket Binding**: we don't need to define the `DOCKER_HOST` variable for instance as we can see in [the official Dagger documentation](https://docs.dagger.io/integrations/gitlab/#docker-executor). Indeed, if not specified, `DOCKER_HOST` is set to `unix:///var/run/docker.sock` ([doc](https://docs.gitlab.com/runner/configuration/advanced-configuration.html#the-runnersdocker-section)).
 
 Since we've shared the Docker daemon (`/var/run/docker.sock`) in our GitLab `/etc/gitlab-runner/config.toml` configuration file, we've allowed the CI to access to the socket.
-:::
+
+</AlertBox>
 
 But, you can also use the asynchronous mode since we've implemented a `run-all` feature:
 

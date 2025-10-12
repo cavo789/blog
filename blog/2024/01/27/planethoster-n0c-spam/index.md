@@ -23,9 +23,10 @@ Ok, so, here is how to deal with spam at PlanetHoster - N0C platform.
 
 PlanetHoster support has told me that we need to use the RoundCube mail client found in their PH hosting (direct link: [https://mg.n0c.com/email/accounts](https://mg.n0c.com/email/accounts)).
 
-:::important You are not forced to use RoundCube as your email client.
+<AlertBox variant="caution" title="You are not forced to use RoundCube as your email client.">
 Rules defined in RoundCube will be executed at server level even if you don't open it. If your mail client is *it doesn't matter which one*, the RoundCube rules will be executed.
-:::
+
+</AlertBox>
 
 The official documentation of PH is, in English : [https://kb.n0c.com/en/knowledge-base/redirecting-emails-with-a-filter-in-roundcube-2/](https://kb.n0c.com/en/knowledge-base/redirecting-emails-with-a-filter-in-roundcube-2/) or, in French, [https://kb.n0c.com/knowledge-base/creation-et-redirection-de-tous-les-courriels-avec-un-filtre-dans-roundcube/#marche-a-suivre](https://kb.n0c.com/knowledge-base/creation-et-redirection-de-tous-les-courriels-avec-un-filtre-dans-roundcube/#marche-a-suivre)
 
@@ -37,8 +38,7 @@ Fill in the screen with your own rule; like for identifying all emails coming fr
 
 ![Identify as spam emails from Soviet Union](./images/rule_su.png)
 
-:::note In my case, all the emails coming from .su can only be unsolicited emails.
-:::
+<AlertBox variant="note" title="In my case, all the emails coming from `.su` can only be unsolicited emails." />
 
 Once saved, you can create other rules.
 
@@ -87,9 +87,10 @@ The location is, in the root directory of my FTP, in folder `/mail/DOMAIN.TLD/AC
 
 In that folder, you'll find a file `roundcube.sieve`.
 
-:::tip Create a first rule if the path didn't exists yet
+<AlertBox variant="info" title="Create a first rule if the path didn't exists yet">
 Just in case of you didn't find that specific path or file, just go to RoundCube and create a filter manually as we see in the previous chapter. Then go back to your FTP, the file should now be there.
-:::
+
+</AlertBox>
 
 ## Stay in touch
 
@@ -150,9 +151,10 @@ echo "File roundcube.sieve has been created. Now, you've to publish it on your F
 
 </Snippet>
 
-:::tip
+<AlertBox variant="info" title="">
 The article <Link to="/blog/planethoster-n0c-spam-roundcube-action">Exterminate them all, kill spam using GitHub Actions</Link> is now written; don't hesitate to read it.
-:::
+
+</AlertBox>
 
 ## Special thanks
 

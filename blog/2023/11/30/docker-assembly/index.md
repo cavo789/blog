@@ -60,6 +60,7 @@ $ docker run --rm -v %CD%:/code -w /code esolang/x86asm-nasm x86asm-nasm hello.a
 Hello, World! This message comes from Docker.
 </Terminal>
 
-:::tip Of course you can play under Linux
+<AlertBox variant="info" title="Of course you can play under Linux">
 Just replace `%CD%` by `${PWD}` and the instruction will be recognized by Linux: `docker run --rm -v ${PWD}:/code -w /code esolang/x86asm-nasm x86asm-nasm hello.asm`
-:::
+
+</AlertBox>

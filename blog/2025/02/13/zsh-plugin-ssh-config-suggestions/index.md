@@ -70,8 +70,8 @@ I just need to type (it's important): <kbd>ssh </kbd> followed by <kbd>TAB</kbd>
 
 ![Using ssh-config-suggestions](./images/zsh-plugin-ssh-config-suggestions.gif)
 
-:::caution You should add a space character after `ssh`
+<AlertBox variant="highlyImportant" title="You should add a space character after `ssh`">
 To make it working, please note: you should add a space character after having typed `ssh` and before pressing <kbd>tab</kbd>.
-:::
+</AlertBox>
 
 As you can see, the system will display the list of hosts defined in my configuration file! I can then edit the file, add a new application and hop, next time, I'll get his name in the list. I don't need anymore to connect to my vault. Nice no?

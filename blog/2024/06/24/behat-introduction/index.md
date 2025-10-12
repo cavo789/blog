@@ -188,9 +188,10 @@ Now, if you're curious, you'll see you've a new file called `composer.json` and 
 
 As stated in the [How to install?](https://docs.behat.org/en/latest/quick_start.html#installation) documentation, you just need to execute `composer require --dev behat/behat:^3` to install Behat as a dev dependency.
 
-:::info
+<AlertBox variant="info" title="">
 Make sure you're still in an interactive Bash session in the Docker container before running `composer require --dev behat/behat:^3`.  An interactive Bash session is started by running `docker compose exec -u $(id -u):$(id -g) app /bin/bash`.
-:::
+
+</AlertBox>
 
 ![Install Behat](./images/composer_install_behat.webp)
 
@@ -227,9 +228,10 @@ This has to be put in a file having the `.feature` extension in the  `features` 
 
 ![The Blog.feature file](./images/blog_feature.webp)
 
-:::note Think to install `Cucumber (Gerkin) Full Support`
+<AlertBox variant="note" title="Think to install `Cucumber (Gerkin) Full Support`">
 If you're using Visual Studio Code, you can install [Cucumber (Gerkin) Full Support](https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete) to get colorization, a better integration in vscode like autocompletion.
-:::
+
+</AlertBox>
 
 <StepsCard
   title="Your scenario here above is using three steps:"
@@ -336,8 +338,7 @@ Also, please edit the file `features/bootstrap/FeatureContext.php`, remove every
 
 We've changes a few `use` to add Mink libraries (and remove unneeded ones). We've also added a `$mink` private property and put some lines in the `__constructor`.
 
-:::warning Please update the url `https://www.avonture.be` to match your site
-:::
+<AlertBox variant="caution" title="Please update the url `https://www.avonture.be` to match your site" />
 
 <Snippet filename="features/bootstrap/FeatureContext.php">
 

@@ -88,14 +88,15 @@ For example, I'll create a new profile so I can immediately open my blog in a Do
 
 </Snippet>
 
-:::note Your settings
+<AlertBox variant="note" title="Your settings">
 
 * `commandline`: to start a Linux subsystem, start your command by `wsl.exe -d` followed by the distribution name like `wsl.exe -d Debian` f.i. Of course, that distribution needs to be on your machine. You can complete the command line by a parameter: the command to run on the startup like, f.i. `docker-compose` or `ls` or anything else.
 * `backgroundImage`: Optional. You should type here, in a Linux notation, the path to where you've saved the image to use for the background,
 * `backgroundImageOpacity`: Optional. Between `0` and `1`; in fact, it'll depend on the image you'll choose,
 * `guid`: You should, every time, generate a new GUID. To do this, just run `uuidgen` in a Linux console, then copy/paste the obtained value inside `{...}`,
 * `ìcon`: Optional. In order to customize the icon, grab any icon from the Internet and save the image in the `%USERPROFILE%\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\RoamingState` folder. The notation to use then is `ms-appdata:///roaming/your_image_name.png`
-:::
+
+</AlertBox>
 
 ![The blog profile](./images/blog.png)
 

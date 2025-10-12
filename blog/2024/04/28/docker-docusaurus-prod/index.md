@@ -17,9 +17,9 @@ A single command to download the blog and run it on your machine (Linux, Mac or 
 
 And as usual, you'll find all the information you need below so that you can do the same for your own Docusaurus installation.
 
-:::tip Don't wait more
+<AlertBox variant="info" title="Don't wait more">
 Start a console, run `docker pull cavo789/blog && docker run -d -p 80:80 --name blog cavo789/blog` to download a local copy of my blog and to start it. Once done, just open `http://localhost` on your computer and ... congratulations, you've just obtained an offline yet executable version!
-:::
+</AlertBox>
 
 Now, we'll learn to do the same for your own Docusaurus instance. Ladies and gentlemen, please follow the guide...
 
@@ -221,7 +221,7 @@ WORKDIR /usr/share/nginx/html
 
 As you can see, this stage is very basic. We just use nginx, copy in his default web folder the static website created earlier and it's done.
 
-:::tip Why a multi-stages image is better than a "monolithic" stage?
+<AlertBox variant="info" title="Why a multi-stages image is better than a `monolithic` stage?">
 Take a look on the last stage, our web server. We're just using the `nginx` web server and to make it working, we need to copy our `build` folder where Docusaurus has put his static files (html, css, js and images).
 
 Since we're only recovering the `build` folder from the previous stage, the final image will no longer contain `NodeJs`, `Yarn`, `Docusaurus` or anything else previously installed. Nor will we have any temporary files that may have been installed; we don't need the original version of our blog, i.e. our original markdown files.
@@ -229,11 +229,11 @@ Since we're only recovering the `build` folder from the previous stage, the fina
 We'll use the `nginx` image and in that image we'll just copy files we need from the previous stage. Doing so, our final image will be smaller in size and will just contain what we need to run the final application, here our Docusaurus static site.
 
 The image size of the `building_production` stage was 740MB and the one of the `nginx` stage is just 87MB. **Around 9 times lower!!!**
-:::
+</AlertBox>
 
-:::tip See my own Dockerfile
+<AlertBox variant="info" title="See my own Dockerfile">
 I'm using, for my own blog, a development stage. Take a look on my [Dockerfile](https://github.com/cavo789/blog/blob/main/Dockerfile) to see how I do. Make also sure to take a look on my [makefile](https://github.com/cavo789/blog/blob/main/makefile) and the different `docker-compose-xxx.yml` files in my project.
-:::
+</AlertBox>
 
 ### Create a .dockerignore file
 
@@ -293,11 +293,12 @@ Our objective was to create a Docker image containing our Docusaurus site.
 
 When creating a Docker image, we should give it a name.
 
-:::important The name of the image should be respect the `owner/name` pattern.
+<AlertBox variant="caution" title="The name of the image should be respect the `owner/name` pattern.">
 `owner` has to be your pseudo on Docker Hub. In my case, my pseudo there is `[cavo789](https://hub.docker.com/u/cavo789)` so if I wish to publish an image, I should use `cavo789` for the first part. Then, I need to specify an unique name not yet present in my profile.
 
 In my case `cavo789/blog` is then a good choice. For this article, I'll use `johndoe/blog` since I'll not publish that image on the Internet.
-:::
+
+</AlertBox>
 
 Still in your console, please run the following command:
 
@@ -307,19 +308,21 @@ $ docker build --tag johndoe/blog --target production .
 
 The final `.` in the instruction above means *current folder*; `/tmp/docusaurus` in my case.
 
-:::caution
+<AlertBox variant="caution" title="">
 Since our `Dockerfile` is a multi-stages one, we need to specify which stage we wish. This is done by using the `--target` CLI flag.
 
 If you look at our `Dockerfile` file we've created earlier, our three stages are called `base`, `building_production` and `production`. To build the image with the web server, you need to specify `production` for the target but if you're interested in the generated files, not the web server, you can run `docker build --tag johndoe/blog --target building_production .`.
-:::
+
+</AlertBox>
 
 The `docker build` command will take one or two minutes depending on the speed of your network connection and computer. Once successfully fired, you'll then have a new Docker image on your computer. You can retrieve it by running `docker image list` to get the list of local images.
 
-:::info
+<AlertBox variant="info" title="">
 By running `docker image list | grep -i blog`, you can retrieve the image and his size. It's 87MB for me on this moment for the dummy blog created in this blog post.
 
 By running `docker build --tag johndoe/blog --target building_production .` (without `nginx` thus but with `Node`) the size will be 740MB. As you can see, we've divided the size by, almost, 9.
-:::
+
+</AlertBox>
 
 ## And use it
 
@@ -361,13 +364,14 @@ Type `exit` to quit the shell and return to your console. Rerun `docker run -it 
 
 A container is something that is recreated every time so everything done in a container (when there is no mounted volumes like the one we use here) just stay in RAM.
 
-:::note Use Docker Desktop - Containers if you want to interact with your site
+<AlertBox variant="note" title="Use Docker Desktop - Containers if you want to interact with your site">
 Purely informative: if you're using Windows, you can jump in *Docker Desktop*, open the list of containers, click on your running one (the blog) then click on the *Exec* tab to start an interactive shell in *that* container. If you remove f.i. the blog folder as illustrated below; then if you go back to the browser, yes, you've removed the blog and refreshing the site will conduct to a 404 error page.
 
 ![Docker Desktop](./images/docker_desktop.png)
 
 Just remove the container and create it again to retrieve the blog.
-:::
+
+</AlertBox>
 
 ### Push it on Docker
 

@@ -45,7 +45,7 @@ Hello World!
 
 And voilà, my first Python script has been written. Remember the old days, before Docker, how many hours and how much reading did you need to be able to run your first script? **Here, it didn't take me five minutes to get up and running.**
 
-:::tip Docker CLI reminder
+<AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run command are (almost always the same):
 
 * `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
@@ -54,7 +54,8 @@ As a reminder, the used Docker run command are (almost always the same):
 * `-w /app` to tell Docker that the current directory, in the container, will be the `/app` folder
 * then `python` which is the name of the Docker image to use (you can also specify a version like `python:3.9.18` if needed; see [https://hub.docker.com/_/python/tags](https://hub.docker.com/_/python/tags)) and, finally,
 * `python Hello.py` i.e. the command line to start within the container.
-:::
+
+</AlertBox>
 
 ## Playing the hangman
 

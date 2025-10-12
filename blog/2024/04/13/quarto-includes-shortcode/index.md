@@ -31,9 +31,10 @@ Quarto will then merge the three files when you render `main.qmd`.
 
 <!-- truncate -->
 
-:::tip Docker image with Quarto
+<AlertBox variant="info" title="Docker image with Quarto">
 If you don't have yet a Docker image with Quarto, read this article <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link>.
-:::
+
+</AlertBox>
 
 ## Includes tag
 
@@ -78,8 +79,9 @@ Now, by running, f.i., `quarto render main.qmd --to html`, Quarto will merge fil
 
 ![Quarto includes](./images/includes.png)
 
-:::info What is a `.qmd` files?
+<AlertBox variant="info" title="What is a `.qmd` files?">
 For Quarto, the extension isn't very important: whether it's `.qmd` or `.md`, there's no difference in treatment.
 
 On the other hand, it's probably more interesting for us to use the `.qmd` extension when using a Quarto-specific syntax, as is the case here.
-:::
+
+</AlertBox>

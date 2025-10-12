@@ -20,8 +20,7 @@ One use case is to be able to retrieve the name of the network used by a given c
 
 ## Some preparation work
 
-:::note Skip this step if you already have a running container
-:::
+<AlertBox variant="note" title="Skip this step if you already have a running container" />
 
 For the illustration, please start a Linux shell and run `mkdir -p /tmp/inspect && cd $_`.
 
@@ -110,6 +109,7 @@ You'll get something like this:
 }
 ```
 
-:::tip jq
+<AlertBox variant="info" title="jq">
 If you don't have the `jq` binary yet, please read the <Link to="/blog/linux-jq">The jq utility for Linux</Link> article. See my article: <Link to="/blog/linux-jq">The jq utility for Linux</Link>.
-:::
+
+</AlertBox>

@@ -14,9 +14,10 @@ This is a very common source of problems using .env files: you've two or more di
 
 You're a programmer and coding a new amazing feature. You're adding one or more new environment variables to your local `.env` file and everything is working fine **on your computer**.
 
-:::danger Boum! Your feature is buggy.
+<AlertBox variant="danger" title="Boum! Your feature is buggy.">
 A colleague copy the source code from a versioning system like Github/GitLab or, second scenario, someone will deploy the feature on a server and your feature is broken.
-:::
+
+</AlertBox>
 
 Why? Because the variable(s) you've added have been added in **your local `.env`** file, on **your computer only**.
 

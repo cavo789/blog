@@ -86,9 +86,10 @@ Refers to [https://docs.docker.com/go/build-context-dockerignore/](https://docs.
 
 ### compose.yaml
 
-:::note
+<AlertBox variant="note" title="">
 Previously, the file was named `compose.yaml` (or `docker-compose.yaml`).
-:::
+
+</AlertBox>
 
 The file will teach Docker how to make more than one container work together, f.i. our PHP application and a database service.
 
@@ -188,12 +189,12 @@ secrets:
 
 </Snippet>
 
-:::info Docker secrets is used here
+<AlertBox variant="info" title="Docker secrets is used here">
 Hey! Did you see? Instead of hardcoding the password in the file, `docker init` has used a secret. This is smart.
-:::
 
-:::tip Read my <Link to="/blog/docker-use-ssh-during-build">Docker secrets - Using your SSH key during the build process</Link> article if you don't know what is a secret
-:::
+</AlertBox>
+
+<AlertBox variant="info" title="Read my Docker secrets - Using your SSH key during the build process article if you don't know what is a secret" />
 
 To make the example here above working, just create a folder called `db` with a file called `password.txt` there and paste it your database password.
 

@@ -154,11 +154,12 @@ Still in the VBE interface, please select the `test` module and scroll down unti
 
 ![CopyToSheet](./images/copy_to_sheet.png)
 
-:::caution We need to provide our SQL Server credentials
+<AlertBox variant="caution" title="We need to provide our SQL Server credentials">
 As illustrated on the image above, no username or password has been provided. Like this, the connection will be made using our Windows account but, in this article, we haven't made the required configuration for this.
 
 Nevertheless, we've a SQL account called `SA` so we'll use it.
-:::
+
+</AlertBox>
 
 Please update the subroutine and add two lines:
 
@@ -253,9 +254,10 @@ If the parameter bPersist is set to True, the connection string will be in plain
 * `rngTarget` : Destination of the returned recordset (f.i. `Sheet1!$A$1`)
 * `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query
 
-:::danger
+<AlertBox variant="danger" title="">
 IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN CLEAR IN THE CONNECTION STRING !
-:::
+
+</AlertBox>
 
 Sample code
 
@@ -297,9 +299,10 @@ The obtained workbook will be ready to be sent to someone.
 * `sReportTitle` : Title for the sheet
 * `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query
 
-:::danger
+<AlertBox variant="danger" title="">
 IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN CLEAR IN THE CONNECTION STRING !
-:::
+
+</AlertBox>
 
 Sample code
 

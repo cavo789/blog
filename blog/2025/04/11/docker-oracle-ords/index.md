@@ -71,11 +71,12 @@ $ chmod 777 ords_secrets
 $ echo 'CONN_STRING=SYS/admin@oracle-db:1521/ORCLPDB1' > ords_secrets/conn_string.txt
 </Terminal>
 
-:::tip
+<AlertBox variant="info" title="">
 If you've a doubt about which value has to be used as `service_name`; start a sqlplus console (`docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba`) and run `SELECT global_name FROM global_name;` in SQL*Plus.
 
 ![Getting service name](./images/getting_service_name.png)
-:::
+
+</AlertBox>
 
 The official ORDS Docker image comes with APEX (which is the abbreviation for *Oracle Application Express*).
 
@@ -98,7 +99,7 @@ $ docker run -d --rm \
     container-registry.oracle.com/database/ords-developer:latest
 </Terminal>
 
-:::info The `docker run` explained
+<AlertBox variant="info" title="The `docker run` explained">
 
 * `-d`: the ORDS will run as a daemon service,
 * `--rm`: once the service is terminated, the Docker container will be removed,
@@ -107,13 +108,14 @@ $ docker run -d --rm \
 * `-e IGNORE_APEX=TRUE`: as mentioned, we want ORDS; not APEX so tells Docker to not install APEX,
 * `-v ./ords_secrets/:/opt/oracle/variables`: as stated in the documentation, we need to provide a file called `conn_string.txt` and to map that file in the `/opt/oracle/variables` inside the container and, finally,
 * `-v ords_config:/etc/ords/config/`: we'll use a self-managed Docker volume to keep the configuration files of ORDS.
-:::
+
+</AlertBox>
 
 That command will add the ORDS layer in your database (based on the connection string; which is `ORCLPDB1` for us).
 
 ![Installation of ORDS](./images/ords_installation.png)
 
-:::caution On subsequent runs, we shouldn't provide connection string anymore.
+<AlertBox variant="caution" title="On subsequent runs, we shouldn't provide connection string anymore.">
 Once ORDS has been installed as done here above, if you need to rerun the ORDS container, we should no more provide the secret so we have to remove the `-v ./ords_secrets/:/opt/oracle/variables` flag.
 
 If you need to run the container once more; here is the command line:
@@ -127,7 +129,8 @@ $ docker run -d --rm \
     container-registry.oracle.com/database/ords-developer:latest
 </Terminal>
 
-:::
+
+</AlertBox>
 
 ### We need to create our user in our database
 
@@ -151,9 +154,10 @@ Once back in the sqlplus console (logged in as user `hr`), please run : `EXECUTE
 
 *(read [ORDS 101: Enabling Oracle Schemas for HTTPS/REST](https://www.thatjeffsmith.com/archive/2023/09/ords-101-enabling-oracle-schemas-for-https-rest/) if you want deeper info)*
 
-:::caution
+<AlertBox variant="caution" title="">
 If you get an error at this level, it means ORDS wasn't installed in your database. Please read again the **Installing ORDS on your DB** chapter.
-:::
+
+</AlertBox>
 
 #### Start ORDS web interface
 
@@ -161,9 +165,10 @@ At this stage, we've installed ORDS, configured our database to use it and we've
 
 ![ORDS Welcome page](./images/ords_welcome_page.png)
 
-:::note
+<AlertBox variant="note" title="">
 APEX wasn't installed and thus disabled
-:::
+
+</AlertBox>
 
 Use `hr` and `admin`, our custom user, for the login page:
 
@@ -222,9 +227,10 @@ As you can see, you'll obtain the list of employees.
 
 So, at this stage, we've added a view called `employees` in our `hr` schema and it works.
 
-:::caution Don't use SELECT * FROM
+<AlertBox variant="caution" title="Don't use SELECT * FROM">
 It's a very bad practice to use `SELECT * FROM ...`, always make sure to select the needed fields.
-:::
+
+</AlertBox>
 
 Go back to the Oracle SQL Developer interface, right-click on the `Views` node and choice `Refresh`.
 
@@ -321,9 +327,10 @@ So we can run multiple requests like `http://localhost:8181/ords/hr/employees/?o
 
 We can define the number of records by page using the `limit` querystring parameter: `http://localhost:8181/ords/hr/employees/?limit=100`.
 
-:::note
+<AlertBox variant="note" title="">
 The official documentation strongly discourages to remove the limit (and thus ask all records at once). For this reason there is no way to remove the limit. If you really wish to get the full list, try with a very high number like `limit=1000000` (one million).
-:::
+
+</AlertBox>
 
 #### Filtering
 
@@ -357,7 +364,7 @@ We can also use AND like in this example: `http://localhost:8181/ords/hr/employe
 
 ![Contains Alex and earn more than 5,000](./images/alex_5000.png)
 
-:::info Using complex filtering
+<AlertBox variant="info" title="Using complex filtering">
 The following URL `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"%CLERK"},"salary":{"$gt":2899},"hire_date":{"$gt":{"$date":"2016-12-31T12:59:59Z"}}}` will return every employee who:
 
 * working as clerk (`job_id` ending by the `CLERK` word),
@@ -365,6 +372,8 @@ The following URL `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like"
 * hired as from 1st January 2017.
 
 ![Using a combination of filters](./images/filtering_complex.png)
+
+</AlertBox>
 
 #### Sorting
 

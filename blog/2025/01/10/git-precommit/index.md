@@ -186,9 +186,10 @@ Now, reopen the `main.py` script:
 
 Ok, the idea wasn't to fire pre-commit hooks manually, right? Just run `pre-commit install` and, from now, every single time you'll run `git commit`, first, `pre-commit` controls will be made and only when all controls are successful (i.e. all will return an exit code of `0`), then your commit will be allowed.
 
-:::note
+<AlertBox variant="note" title="">
 If you're curious about how it works, simply show the `.git/hooks/pre-commit` file. The previous instruction has configured git to execute a small Bash script called `.git/hooks/pre-commit`.
-:::
+
+</AlertBox>
 
 ### Search for hooks
 
@@ -308,6 +309,6 @@ In some situation, you've to push your changes even if there are some code viola
 
 In that situation, you can add the `--no-verify` flag f.i. `git commit -m "wip: not yet finished" --no-verify`. And, then, pre-commit hooks won't be executed so your changes will be committed.
 
-:::caution
+<AlertBox variant="highlyImportant" title="The --no-verify flag">
 Only use this flag if you know exactly what you're doing. It would be a very bad idea to do this f.i. to the `dev` branch if you're working in a team.
-:::
+</AlertBox>

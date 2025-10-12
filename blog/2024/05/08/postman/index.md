@@ -97,8 +97,7 @@ pm.test("status OK", function () {
 });
 ```
 
-:::note Replace `testFlag` by the name of your node
-:::
+<AlertBox variant="note" title="Replace `testFlag` by the name of your node" />
 
 By running the request, in this example, we'll run five tests since we already have defined four tests for the collection.
 
@@ -161,9 +160,10 @@ By running the request, Postman will return:
 
 ## Some checks
 
-:::info I'll use `{{wsdl}}` as a placeholder
+<AlertBox variant="info" title="I'll use `{{wsdl}}` as a placeholder">
 In the examples below, you'll see `{{wsdl}}` in XML code sample. It's just a placeholder i.e. in a normal situation, you'll retrieve there a URL to a WSDL (or a REST API) service.
-:::
+
+</AlertBox>
 
 ### Check some metrics like the responseTime
 
@@ -290,7 +290,8 @@ pm.test('Validate SOAP-ENV:Envelope and SOAP-ENV:Body elements are present', fun
 })
 ```
 
-:::note `to.exist` is equivalent to `to.have.property`
+<AlertBox variant="note" title="`to.exist` is equivalent to `to.have.property`"/>
+
 `pm.expect(responseData['SOAP-ENV:Envelope']['SOAP-ENV:Body']).to.exist` can also be written like this: `pm.expect(responseData['SOAP-ENV:Envelope']]).to.have.property('SOAP-ENV:Body');`
 
 ### For XML, check the value of a given node
@@ -307,8 +308,6 @@ pm.test('Response body has the required fields', function () {
     pm.expect(responseData['SOAP-ENV:Body']['ns1:getSessionsLanguagesOutput'].list).to.exist;
 })
 ```
-
-:::
 
 #### Assertions for collections
 

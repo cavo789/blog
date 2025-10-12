@@ -113,9 +113,10 @@ Now, to allow this, we'll need to update our GitLab Runner server configuration 
 
 </Snippet>
 
-:::caution
+<AlertBox variant="caution" title="">
 The syntax `volumes = [ ..., "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]` used above is to inform you to append the two values to the list you already have. So, if, right now, you've `volumes = ["/cache", "/certs/client"]` then append values to get `volumes = ["/cache", "/certs/client", "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]`
-:::
+
+</AlertBox>
 
 We need to allow the **Docker daemon** which is running on the GitLab runner server to share its daemon (the file `/var/run/docker.sock`) so, the GitLab CI Docker container can run `docker run` statements like f.i. `docker run --rm --volume "$CI_PROJECT_DIR:/app" --workdir /app jakzal/phpqa phplint .`
 
@@ -125,9 +126,10 @@ Let's say `$CI_PROJECT_DIR` is initialized to `/builds/your-group/your-project`.
 
 Refers to the update we've already made in the `config.toml` file here above. We've shared `"/var/run/docker.sock:/var/run/docker.sock"` to allow to share the Docker socket but, too, we've shared `"/builds:/builds"` and here, it's to share the `builds` folder.
 
-:::info
+<AlertBox variant="info" title="">
 This technique is called **Docker Socket Passthrough**.
-:::
+
+</AlertBox>
 
 Now, it'll work: we we'll share our Docker daemon and, too, we'll share the folder on the server where our codebase was pulled before running the CI.
 

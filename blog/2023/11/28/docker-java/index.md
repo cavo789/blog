@@ -12,9 +12,10 @@ tags: [docker, java]
 
 In this post, we'll play with Docker and Java. Since there are ready-to-use Java images for Docker you don't need to install or configure anything other than Docker.
 
-:::note I don't know Java at all
+<AlertBox variant="note" title="I don't know Java at all">
 You just need to know, I've absolutely no skills in Java. Which software should be installed, how to run a script and so on. I'll just rely on a very few Docker commands and, about the installation, yeah, using Docker, it's easy: nothing to install, nothing to configure.
-:::
+
+</AlertBox>
 
 <!-- truncate -->
 
@@ -37,7 +38,7 @@ public class Main
 
 Now, you'll need to compile your source. For this, just run `docker run -it --rm -v ${PWD}:/app -w /app -u 1000:1000 openjdk:11 javac Main.java`.
 
-:::tip Docker CLI reminder
+<AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run command are (almost always the same):
 
 * `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
@@ -47,7 +48,8 @@ As a reminder, the used Docker run command are (almost always the same):
 * `-u 1000:1000` ask Docker to reuse our local credentials so when a file is updated/created in the container, the file will be owned by us,
 * then `openjdk:11` which is the name and the version of the Docker image to use, and, finally,
 * `javac Main.java` i.e. the command line to start within the container.
-:::
+
+</AlertBox>
 
 As a result of this command, your `Main.java` source will be compiled into the `Main.class` file.
 
@@ -62,9 +64,10 @@ drwxrwxrwt 29 root       root        12K Nov 22 14:58 ..
 -rw-r--r--  1 christophe christophe  117 Nov 22 14:58 Main.java
 </Terminal>
 
-:::tip And without to have to install something
+<AlertBox variant="info" title="And without to have to install something">
 Once again, you don't have install or configure something; just call the Docker image *that goes well*.
-:::
+
+</AlertBox>
 
 Last thing is to execute your Java program. Now, please run `docker run --rm -v $PWD:/app -w /app openjdk:11 java Main` to execute it.
 

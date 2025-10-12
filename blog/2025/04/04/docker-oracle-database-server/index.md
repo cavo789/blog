@@ -82,11 +82,12 @@ Fill in your **SSO Username** and your **Secret Key** (as given by the Auth Toke
 
 Docker will display *Login Succeeded*.
 
-:::note Optional, here is the disconnect command
+<AlertBox variant="note" title="Optional, here is the disconnect command">
 If needed, run `docker logout container-registry.oracle.com` to remove the authentication to oracle.com on your computer.
-:::
 
-:::info Optional, the authentication is stored in the config.json file
+</AlertBox>
+
+<AlertBox variant="info" title="Optional, the authentication is stored in the config.json file">
 By running `cat ~/.docker/config.json`, you'll see in `auths` the presence of the Oracle registry
 
 <Snippet filename="~/.docker/config.json">
@@ -102,15 +103,17 @@ By running `cat ~/.docker/config.json`, you'll see in `auths` the presence of th
 
 </Snippet>
 
-:::
+
+</AlertBox>
 
 ### Finally, you can pull the image
 
 If all previous steps have been correctly done, now, you should be able to run `docker pull container-registry.oracle.com/database/enterprise:latest` without any error and download the 3.5GB Docker image.
 
-:::note The latest image is huge but the slim one is too old
+<AlertBox variant="note" title="The latest image is huge but the slim one is too old">
 There is a slim image around 1.5GB (`docker pull container-registry.oracle.com/database/enterprise:12.2.0.1-slim`) but it's a very old one (somewhere in 2018).
-:::
+
+</AlertBox>
 
 ## Important concepts to consider when working with Oracle v12 and after
 
@@ -120,11 +123,12 @@ In Oracle's multi-tenant architecture (introduced since Oracle 12c), the concept
 
 In comparison with other database engines, a `PDB` is a database while the `CDB` is the *underlying container infrastructure that manages one or more PDBs, sharing common background processes and memory*.
 
-:::important For this article, we don't work at the CDB level at all
+<AlertBox variant="highlyImportant" title="For this article, we don't work at the CDB level at all">
+
 In this article, we're only interested to create tables in a database (PDB) **we always need to make sure to connect to a PDB like when creating tables.** We want that our tables are in a single database; not "shared" at CBD root level.
 
 So, every time we'll need to work on tables; make sure to connect to the `PDB`.
-:::
+</AlertBox>
 
 ## Create an Oracle database container
 
@@ -148,9 +152,10 @@ Please also run this statement to create the folder where we'll put our startup 
 
 Oracle provides some sample databases on the [Oracle Database Sample Schemas](https://github.com/oracle-samples/db-sample-schemas/releases) page. You can download from there the `db-sample-schemas-23.3.zip` archive, open it and go to the `human_resources` folder. You'll found there a file called `hr_create.sql` which is a sample of an HR database. There is a second file called `hr_populate.sql` to feed the tables with some data.
 
-:::tip
+<AlertBox variant="info" title="">
 For easiness, you can retrieve these files by clicking on these two links: [hr_create.sql](./files/hr_create.sql) and [hr_populate.sql](./files/hr_populate.sql).
-:::
+
+</AlertBox>
 
 Please download and copy these two files in the  `scripts/startup/sql/` folder you've previously created.
 
@@ -175,9 +180,10 @@ EOF
 
 Now, make the script executable: `chmod +x scripts/startup/populate_db.sh`.
 
-:::info Tables will be owned by the system user
+<AlertBox variant="info" title="Tables will be owned by the system user">
 Pay attention to the `CONNECT system/admin@orclpdb1` statement: we'll first connect as the system user before creating the tables. So, tables will be accessible by that user i.e. the `system` user.
-:::
+
+</AlertBox>
 
 If you need the data model, here it is:
 
@@ -213,9 +219,10 @@ $ docker run -d \
     container-registry.oracle.com/database/enterprise:latest
 </Terminal>
 
-:::note
+<AlertBox variant="note" title="">
 This is terribly slow... Oracle will need something like 10 minutes before the container can be used.
-:::
+
+</AlertBox>
 
 The `docker run` was terribly complex; here is a breakdown:
 
@@ -292,7 +299,7 @@ You can also use the command line: `docker logs oracle-db --follow` and wait unt
 
 Now, we can jump in the `oracle-db` container and run SQL*Plus by running `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` (remember: we'll connect to the `PDB`; not the `CDB`).
 
-:::tip Am I connected on the container database or in a pluggable database?
+<AlertBox variant="info" title="Am I connected on the container database or in a pluggable database?">
 Just run, in the SQL*Plus console, the `SHOW CON_NAME;` command.
 
 ![Connected on the PDB](./images/connected_on_pdb.png)
@@ -300,7 +307,8 @@ Just run, in the SQL*Plus console, the `SHOW CON_NAME;` command.
 If you're connected to the CDB, you'll get the next answer and it's wrong. Type `exit` and connect to the PDB.
 
 ![Connected on the CDB](./images/connected_on_cdb.png)
-:::
+
+</AlertBox>
 
 ### A word about schema
 
@@ -348,9 +356,10 @@ This understood, here is how we can see our data:
 
 ![Fake data are well loaded](./images/fake_data.png)
 
-:::tip
+<AlertBox variant="info" title="">
 `SET WRAP OFF` will allow to use the screen full width and not a ridiculous width of 80 characters and `SET PAGESIZE 1000` is to not have a paginated list every 10 records.
-:::
+
+</AlertBox>
 
 ### Accessing to the Oracle Enterprise Manager Database Express
 
@@ -379,9 +388,10 @@ Once installed, run it and create a new connection to:
 
 ![Creating a connection in Oracle SQL Developer as sys](./images/oracle_sql_dev_as_sys.png)
 
-:::note Remember; use should connect to our PDB; not to the CDB
+<AlertBox variant="note" title="Remember; use should connect to our PDB; not to the CDB">
 Tables are located in the *pluggable database* (`PDB`); not in the *container database* (`CDB`)
-:::
+
+</AlertBox>
 
 ![Getting data using Oracle SQL Developer](./images/oracle_sql_get_data.png)
 
@@ -415,8 +425,9 @@ Once connected, for instance, we can get the list of countries like this:
 
 ![Oracle sqlplus](./images/oracle_sqlplus_countries.png)
 
-:::note Intern versus extern
+<AlertBox variant="note" title="Intern versus extern">
 For this article, it was not really needed to use that image. Until now, we've more than once used SQL*Plus like when we've fired `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` to connect to the database.
 
 The difference is: `docker exec -it oracle-db [...]` jump in our database container and run sqlplus *internally* (from within the container where the database is stored) while `docker run [...] oracle oracletools/sqlplus:v19.18_lin [...]` run sqlplus *outside* as a separate container.
-:::
+
+</AlertBox>

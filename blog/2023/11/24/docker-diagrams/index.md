@@ -47,9 +47,10 @@ To run the conversion, go back to your console and run the following command:
 $ cat team.py | docker run -i --rm -v $(pwd):/out -u 1000:1000 gtramontina/diagrams:0.23.3
 </Terminal>
 
-:::note Windows notation
+<AlertBox variant="note" title="Windows notation">
 If you're working Windows, replace `$(pwd)` by `%CD%`. And replace `cat` by `type`.
-:::
+
+</AlertBox>
 
 And bingo, the script is converted to the image here below:
 
@@ -92,9 +93,10 @@ And the resulting image:
 
 Crazy no? And all without installing anything!
 
-:::tip More example
+<AlertBox variant="info" title="More example">
 Retrieve more samples on [https://diagrams.mingrammer.com/docs/getting-started/examples](https://diagrams.mingrammer.com/docs/getting-started/examples)
-:::
+
+</AlertBox>
 
 The Docker image code base is here: [https://github.com/gtramontina/docker-diagrams](https://github.com/gtramontina/docker-diagrams).
 

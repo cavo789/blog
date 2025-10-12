@@ -29,15 +29,16 @@ First things first, to display the list of commands you've entered in the past, 
 
 By default, your history is stored in a file called `.bash_history` in your home directory. You can display the last five commands f.i. by running `tail -n5 ~/.bash_history`.
 
-:::info On my own, since I'm using <Link to="/blog/tags/zsh">ZSH</Link>, my history is in `~/.zsh_history`.
+<AlertBox variant="info" title="On my own, since I'm using ZSH, my history is in `~/.zsh_history`.">
 The easiest way to determine where is stored your history is to show the content of the `$HISTFILE` variable like this: `echo $HISTFILE`.
-:::
+</AlertBox>
 
-:::tip
+<AlertBox variant="info" title="">
 Very recently, I had to take over a script developed by a colleague (let's call him JohnDoe) and I didn't know how to call it from the command line or what parameters to pass to it.
 
 As I'm a *root user* on the server, I simply consulted his history.  All I had to do was display its `/home/john_doe/.bash_history` file.
-:::
+
+</AlertBox>
 
 ### HISTIGNORE // HISTORY_IGNORE variables
 
@@ -63,9 +64,9 @@ $ curl --user name:password http://www.example.com
 $  curl --user name:password http://www.example.com
 ```
 
-:::info
+<AlertBox variant="info" title="">
 The space character is triggered by the `hist_ignore_space` option, defined in `.oh-my-zsh/lib/history.zsh`.
-:::
+</AlertBox>
 
 ## Using grep to filter your history
 
@@ -107,10 +108,12 @@ $ history -d 2130
 2131  history | grep -i "docker exec"
 </Terminal>
 
-:::tip
+<AlertBox variant="info" title="">
 But, then the command `history -d 2130` will appears in the history, of course. So editing the file using a text editor is perhaps more ... discreet.
-:::
 
-:::note
+</AlertBox>
+
+<AlertBox variant="note" title="">
 You can specify a range like `history -N 2100-2130`.
-:::
+
+</AlertBox>

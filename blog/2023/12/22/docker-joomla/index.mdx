@@ -53,10 +53,10 @@ When you need many services (Apache should be able to communicate with PHP and P
 
 You will find an example of the `compose.yaml` file on the Joomla image description page: [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla) *search for `docker-compose` on this page.*
 
-:::info The Docker Joomla image is built on PHP and Apache
+<AlertBox variant="info" title="The Docker Joomla image is built on PHP and Apache">
 It's for sure too technical now but if you click on the
 [https://github.com/joomla-docker/docker-joomla/blob/8cac4ff7ae88b9274870a95f5e22ea3c32f01fd7/5.0/php8.1/apache/Dockerfile#L8](https://github.com/joomla-docker/docker-joomla/blob/8cac4ff7ae88b9274870a95f5e22ea3c32f01fd7/5.0/php8.1/apache/Dockerfile#L8) link, you can see that the Docker image for Joomla 5.0.0 is built on a `php:8.1-apache` image. This means that using this image, you will get PHP, Apache and Joomla, altogether in a single image.
-:::
+</AlertBox>
 
 ## Download images
 
@@ -84,9 +84,9 @@ services:
 
 </Snippet>
 
-:::tip You want MariaDB, not MySQL?
+<AlertBox variant="info" title="You want MariaDB, not MySQL?">
 Nothing could be simpler! In the `compose.yaml` file, replace the line `image: mysql:8.0.13` with `image: mariadb:11.1.2` and save your change. That's it. It's piece of cake no?
-:::
+</AlertBox>
 
 To make things as clear as possible, here is my temporary folder content:
 
@@ -110,9 +110,10 @@ Now, if needed, please start a Linux console, and go to your joomla folder (i.e.
 $ docker compose up --detach
 </Terminal>
 
-:::tip `docker compose up --detach`
+<AlertBox variant="info" title="`docker compose up --detach`">
 That command is one of the most important to know. It asks Docker to proceed the `compose.yaml` file and run services. **In short: run your website**.
-:::
+
+</AlertBox>
 
 Docker will start downloading `joomla` and `joomladb`, the two services mentioned in the `compose.yaml` file.
 
@@ -179,10 +180,11 @@ So, the two images have been downloaded then,
 
 At this stage, your site is already being installed. Go to the URL `http://127.0.0.1:8080` to view it (make sure to use the `http` protocol and not `https`).
 
-:::note Not yet ready
+<AlertBox variant="note" title="Not yet ready">
 You may get an error page `ERR_EMPTY_RESPONSE`; this is because, for example, MySQL is not yet fully loaded and Joomla has to wait for it before it can display the installation page. In this case, please wait a little longer ... or read the rest of this article.
+</AlertBox>
 
-:::tip Solve it by adding a depends_on condition
+<AlertBox variant="info" title="Solve it by adding a depends_on condition">
 So Joomla can be ready before the database and that's not fun. Indeed, Joomla should be able to create his database, add tables and records but if MySQL is not yet ready, we'll have a problem.
 
 The solution provided by Docker is the notion of `healthcheck`. We have to define how Docker can *know* that MySQL is *healthy*. Then we'll ask Joomla to wait until the database layer is *healthy*.
@@ -216,7 +218,8 @@ services:
 
 </Snippet>
 
-:::
+
+</AlertBox>
 
 ### Why joomla-joomlaxxx names
 
@@ -259,7 +262,7 @@ mysql        8.0.13    102816b1ee7d   4 years ago   486MB
 
 Ok, so, Docker has downloaded Joomla (in its *latest* version) and MySQL (version 8.0.13).
 
-:::info What about a specific version of Joomla?
+<AlertBox variant="info" title="What about a specific version of Joomla?">
 By default, when we don't specify any version number (*which isn't recommended*), Docker will download the version known as the `latest` one. `latest`, here, is what Docker calls a *tag*.
 
 <Snippet filename="compose.yaml">
@@ -290,7 +293,8 @@ services:
 
 </Snippet>
 
-:::
+
+</AlertBox>
 
 ## Docker containers
 
@@ -312,9 +316,9 @@ Let us try by starting your favorite browser and navigating to `http://localhost
 
 ![Joomla installer](./images/joomla_installation_screen.png)
 
-:::info Just incredible; no?
+<AlertBox variant="info" title="Just incredible; no?">
 Wow, doesn't that sound crazy? With a single command (`docker compose up --detach`), you have downloaded everything you need to get Joomla running on your machine.
-:::
+</AlertBox>
 
 Let us rewind for a few seconds: to run Joomla, we knew we needed three things + 1; a web server, a database server, PHP and, of course, we need Joomla. **And here, just by running one command, hop, all the magic happens.** And nothing to configure too!
 
@@ -341,9 +345,10 @@ When Joomla will ask for your admin credentials, just fill in the value of your 
   ]}
 />
 
-:::important Why these values?
+<AlertBox variant="caution" title="Why these values?">
 These values can be retrieved inside the `compose.yaml` file. If you have named your database service something other than `joomladb`, then please use the name you have chosen.
-:::
+
+</AlertBox>
 
 <Snippet filename="compose.yaml">
 
@@ -451,13 +456,15 @@ Once Joomla will be ready, you will get the installation wizard of Joomla... jus
 $ docker compose down
 </Terminal>
 
-:::danger
+<AlertBox variant="danger" title="">
 As mentioned earlier, everything is done in RAM. By stopping a Docker container, you will lose everything not saved on your computer. It's great for playing/learning but not what you expect when you're developing a real site.
-:::
 
-:::info
+</AlertBox>
+
+<AlertBox variant="info" title="">
 Remember the change we made earlier. We had added the name `kingsbridge` as the project name in your `compose.yaml` file and we've named the two containers. You can see that after relaunching `docker compose up`, this time it's no longer `joomla-joomlaxxxx` but `kingsbridge-app` and `kingsbridge-db`. This because changes made to the yaml file are processed only after a `down / up` command. If you modify the yaml file, you should restart Docker containers.
-:::
+
+</AlertBox>
 
 ## Synchronize with your computer
 
@@ -521,20 +528,21 @@ The `/var/www/html` folder of the Joomla service should be synchronized with the
 
 And the `/var/lib/mysql` folder of the MySQL service should be synchronized with your local `db` subfolder.
 
-:::important Please create folders first
+<AlertBox variant="caution" title="Please create folders first">
 Make sure to, first, create these two directories on your computer so folder's permissions will be correct!
 
 <Terminal>
 $ mkdir site_joomla db
 </Terminal>
 
-:::
+
+</AlertBox>
 
 The two lines `user: 1000:1000` are really important and inform Docker to reuse your local credentials (the one used on your computer).
 
-:::caution Important
+<AlertBox variant="highlyImportant" title="The user UID/GID">
 If you don't do this, files and folders created by Docker will be owned by the `root` user on your computer and not by us (in my case, by the user called `christophe`).
-:::
+</AlertBox>
 
 Just check your folder's content:
 
@@ -669,9 +677,10 @@ $ docker compose kill && docker compose up --detach
 
 And since files/folders are now on your computer, you can do everything you want with your website like committing it on a GitHub repository f.i.
 
-:::tip Synchronization has a cost
+<AlertBox variant="info" title="Synchronization has a cost">
 When using one or more volumes, Docker must constantly check whether the files/folders on your computer are synchronized with the containers. This has a cost in terms of performance. Similarly, if Docker needs to write to a file (or to your Joomla database); if this is only in memory, it will be faster than if you also had to write the database to your disk. However, the difference in speed is not obvious under normal circumstances. If you're a developer writing hundreds or even thousands of records, you'll observe a noticeable difference.
-:::
+
+</AlertBox>
 
 ## Start a CLI command
 
@@ -763,9 +772,9 @@ Save the file. Now you can surf to `http://kingsbridge:8080`
 
 ![Using the Kingsbridge alias](./images/using_alias.png)
 
-:::note
+<AlertBox variant="note" title="">
 When creating an alias in the host file, some people prefer to use the `.local` suffix like in `127.0.0.1 kingsbridge.local` to make clear it's a localhost site. If you prefer this, so the URL will be `http://kingsbridge.local:8080`
-:::
+</AlertBox>
 
 ## Using another port
 
@@ -799,17 +808,18 @@ So, now and at the same time, we can access to `http://kingsbridge:8080` and to 
 
 Kingsbridge can be a Joomla 4.4 / PHP 7.4 website while Shiring is on Joomla 5.0 / PHP 8.2 without any conflict. **And that's just astonishingly simple, if you think back to the way you worked before Docker.**
 
-:::tip
+<AlertBox variant="info" title="">
 Using another port isn't mandatory. You can have several websites on the same port as `8080`. But, in that case, we won't be able to use these websites at the same time. You can start the first one and when trying to start the second one, Docker will say *port already in use*. This isn't a problem; you can just run `docker compose stop` for the first one so free the port then start the second one.
 
 <Terminal>
 $ docker compose stop
 </Terminal>
-:::
 
-:::note
+</AlertBox>
+
+<AlertBox variant="note" title="">
 In this article, I'm using port `8080` because Joomla has used it in his default `compose.yaml` file. You're not forced to use that one, you can perfectly use `80` and not `8080`. In my daily work, I'm using ports `80`, `81`, `82`, `83`, ... varying the second figures for my projects.
-:::
+</AlertBox>
 
 ## Did you prefer PostgreSQL or MariaDB
 
@@ -829,9 +839,9 @@ We also need to change a few variables:
 * We should define too the name of the database in both services; we'll name our db `joomla_db` and
 * We need to inform Joomla that we'll use PostgreSQL so we need to set `JOOMLA_DB_TYPE` to `pgsql` (can be either `mysql` or `pgsql`).
 
-:::note
+<AlertBox variant="note" title="">
 This information has been retrieved from this Pull requests: [https://github.com/joomla-docker/docker-joomla/pull/156](https://github.com/joomla-docker/docker-joomla/pull/156).
-:::
+</AlertBox>
 
 Our `compose.yaml` will become:
 
@@ -877,9 +887,10 @@ services:
 
 Now, during the configuration of Joomla, make sure to choose `PostgreSQL (PDO)` for the database type and fill in the database wizard with the correct values.
 
-:::tip Use alpine images wherever possible
+<AlertBox variant="info" title="Use alpine images wherever possible">
 For the first time during this tutorial, we're using an `alpine` image (`postgres:16.0-alpine` here). These images are lighter than the *not* alpine image. They contain the bare essentials for running the service, whereas a *traditional* image contains additional tools, binaries, ... that you may need but are not certain to use.
-:::
+
+</AlertBox>
 
 </Details>
 
@@ -1002,6 +1013,7 @@ services:
   </Terminal>
 5. Wait a few seconds and your new site is up.
 
-:::important
+<AlertBox variant="caution" title="">
 Make sure, for each project, to update the `name:` line and if you plan to be able to run your Joomla sites concurrently, make sure to update the port number for Joomla and chose a new one every time (can be `80`, `81`, `82` and so one).
-:::
+
+</AlertBox>

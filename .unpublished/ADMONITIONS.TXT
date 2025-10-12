@@ -1,0 +1,10 @@
+Search
+
+:::warning(?: (.+))?\n([\s\S]+?):::
+
+and replace by
+
+<AlertBox variant="warning" title="$1">
+$2
+</AlertBox>
+

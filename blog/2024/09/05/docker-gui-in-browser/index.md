@@ -43,8 +43,7 @@ Then open your browser and surf to `http://localhost:3000` to start Firefox. You
 
 ![Start Firefox inside Docker in Chrome](./images/firefox_in_chrome.png)
 
-:::info On my screenshot above, you'll see I'm using the port 5000 instead (this because my blog is running on port 3000)
-:::
+ <AlertBox variant="info" title="On my screenshot above, you'll see I'm using the port 5000 instead (this because my blog is running on port 3000)" />
 
 And, for the fun, here is the same but I've started Firefox in Docker in an MS-DOS environment and, then, I've used Edge instead of Chrome:
 

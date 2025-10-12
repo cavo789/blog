@@ -137,6 +137,7 @@ The output file will be something like this:
 "C:\temp\test\test.vbs";"C:\temp\test";"test.vbs";"21-01-24 08:43:49";"21-01-24 09:09:03";"21-01-24 09:09:03";"3246";"VBScript File";"vbs";"Christophe";
 ```
 
-:::tip Did you need tab delimited?
+<AlertBox variant="info" title="Did you need tab delimited?">
 If so, just make a search & replace to change `";"` to `vbTab` everywhere.
-:::
+
+</AlertBox>

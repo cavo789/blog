@@ -108,10 +108,11 @@ export default function BlogPostItem({ children, className }) {
 
 Now, because we've just introduced an override, we need to restart our Docusaurus server so changes can be taken into account.
 
-:::info
+<AlertBox variant="info" title="Run npm run start">
 If you're running Docusaurus locally, just run `npm run start` in your console.
 If like me you're running Docusaurus thanks to Docker, just kill the container and run a new one.
-:::
+
+</AlertBox>
 
 ## Editing our blog posts
 

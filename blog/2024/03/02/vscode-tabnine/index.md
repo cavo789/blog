@@ -80,13 +80,14 @@ It's really amazing.
 
 By default, Tabnine works offline i.e. don't use any cloud data provider like what GitHub Copilot does.
 
-:::info Complete code privacy
+<AlertBox variant="info" title="Complete code privacy">
 
 The information below comes from [https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode#complete-code-privacy](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode#complete-code-privacy.)
 
 > Your code always remains private.
 >
 > Tabnine NEVER stores or shares any of your code. Any action that shares your code with the Tabnine servers for the purpose of private code models (part of enterprise) requires explicit opt-in. Tabnine does not retain any user code beyond the immediate time frame required for training models. Private code models created by Tabnine Enterprise are only accessible by your team members.
-:::
+
+</AlertBox>
 
 Tabnine support a lot of languages, for instance, he's also working with pure text file (like this blog post).

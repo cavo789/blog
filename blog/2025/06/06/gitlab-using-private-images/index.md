@@ -38,9 +38,10 @@ Make sure variables are hidden and protected. This will prevent GitLab to echoed
 
 ![The two variables have been created](./images/variables.png)
 
-:::note
+<AlertBox variant="note" title="">
 You can add the variables in your repository's CI/CD settings page or at a higher level like the group level or at the instance level (you should be an admin for this).
-:::
+
+</AlertBox>
 
 ## Your gitlab-ci.yml file
 

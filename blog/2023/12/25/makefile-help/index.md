@@ -79,9 +79,10 @@ watch:
 
 </Snippet>
 
-:::danger
+<AlertBox variant="danger" title="">
 The indentation in a makefile **SHOULD BE** made using tabs and not spaces, this is crucial. So please make sure, if your file didn't work, you know what to do.
-:::
+
+</AlertBox>
 
 That file contains a few *targets* (=actions) and a simple `printf` statement to display a text. Except echoing something into the console that `makefile` does nothing.
 
@@ -316,8 +317,7 @@ Database management     Working with the database
   phpmyadmin            Run phpmyadmin web interface
 </Terminal>
 
-:::tip Now we have a clear grouping of actions. Much better.
-:::
+<AlertBox variant="info" title="Now we have a clear grouping of actions. Much better." />
 
 ## Take a look on mine, for this blog
 

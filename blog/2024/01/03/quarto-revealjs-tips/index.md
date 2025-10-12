@@ -17,9 +17,10 @@ In this article, we'll take a quick look at a few tips and tricks to make your r
 
 <!-- truncate -->
 
-:::tip Docker image with Quarto
+<AlertBox variant="info" title="Docker image with Quarto">
 If you don't have yet a Docker image with Quarto, read this article <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link>.
-:::
+
+</AlertBox>
 
 ## Working with slides
 
@@ -646,9 +647,10 @@ format:
 
 ![Vertical navigation](./images/vertical.webp)
 
-:::tip Press <kbd>esc</kbd> key
+<AlertBox variant="info" title="Press <kbd>esc</kbd> key">
 The <kbd>esc</kbd> key allow you to see the structure of your revealjs slideshow.
-:::
+
+</AlertBox>
 
 ### Define a name for your slide
 

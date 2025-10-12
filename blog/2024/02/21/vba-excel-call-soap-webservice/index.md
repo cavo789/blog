@@ -241,11 +241,12 @@ curl --silent http://ec.europa.eu/taxation_customs/vies/services/checkVatService
 </soapenv:Envelope>'
 ```
 
-:::tip Add `xmlstarlet` for a nice output
+<AlertBox variant="info" title="Add `xmlstarlet` for a nice output">
 See my <Link to="/blog/linux-xmlstarlet">The xmlstarlet utility for Linux</Link> article.
 
 Add `| xmlstarlet format --indent-spaces 4` at the end of the previous command to pipe the output to `xmlstarlet` (see <Link to="/blog/linux-xmlstarlet">The xmlstarlet utility for Linux</Link>)
-:::
+
+</AlertBox>
 
 The answer will be:
 

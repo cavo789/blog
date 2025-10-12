@@ -20,13 +20,15 @@ In fact, it's much simpler...
 
 The tip: start `powershell.exe` followed by the filename to open like `powershell.exe guide.pdf` or `powershell.exe index.html`.
 
-:::note Not available in Bash
+<AlertBox variant="note" title="Not available in Bash">
 `powershell.exe` only works in the console. You can't use it in a Bash script (`.sh`), it won't be recognized there.
-:::
 
-:::tip `xdg-open`
+</AlertBox>
+
+<AlertBox variant="info" title="`xdg-open`">
 You can also use `xdg-open` to start your default browser so `xdg-open index.html` will open the file in your Windows browser.
-:::
+
+</AlertBox>
 
 If you get the error below, you'll find a solution in the article <Link to="/blog/wsl-windows-explorer#wsl-localhost-is-not-accessible">Windows Explorer</Link>
 

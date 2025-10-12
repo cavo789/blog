@@ -28,9 +28,10 @@ It was a step-by-step introduction to Docker and the creation of a local Joomla-
 
 I explained, at length, the various steps involved in creating a website, choosing a database engine (MySQL, MariaDB or PostgreSQL), choosing a specific version of Joomla / database engine, the type of volumes (should the site and database be kept in RAM or on the hard disk (i.e. the notion of volumes)) and many other things such as choosing the port for the website, creating an alias (something like `http://my_project.local` instead of `http://127.0.0.1`). I strongly urge you to read or re-read this article before starting this one.
 
-:::important
+<AlertBox variant="caution" title="">
 Here is the link to that article : [Create your Joomla website using Docker - Part 1](/blog/docker-joomla).
-:::
+
+</AlertBox>
 
 As Docker and Joomla are evolving rapidly, I propose here to start from where we were and see what has changed since then.
 
@@ -52,17 +53,19 @@ Our orchestration file will also inform Docker that we want the Joomla site to b
 
 We need to do this so that, if we voluntarily **remove** the Docker container to release memory f.i., we want that the Joomla website is saved on disk. So, next time we will wake **up** our site, files and database tables will be restored.
 
-:::info Persistence
+<AlertBox variant="info" title="Persistence">
 There are two types of persistence, the one managed natively by Docker (*intern volumes*) or the one where we'll see the files in our project's folder (*mounted volumes*). We'll opt for the latter. See my article [Using volumes with Docker, use cases](/blog/docker-volumes) if you want to learn more.
-:::
+
+</AlertBox>
 
 We're also going to define a dependency (based on `depends_on` and `healthcheck`): Joomla must wait for the database server to be ready before starting its installation (in fact, if the Joomla installer tries to access MySQL before the system is even loaded, our project will crash during container loading).
 
 As you can see, our `compose.yaml` file is of tremendous importance for the proper definition of our project.
 
-:::note
+<AlertBox variant="note" title="">
 In recent months, the name of the file to be used has changed from `compose.yaml` to `compose.yaml`; still supported for now, but might as well use the new name. See [docs.docker.com](https://docs.docker.com/compose/intro/compose-application-model/#the-compose-file) if you want more info about this change.
-:::
+
+</AlertBox>
 
 Please create a new folder (f.i. `mkdir /tmp/joomla && cd $_`) on your hard disk and create the `compose.yaml` file with this content:
 
@@ -149,13 +152,14 @@ Using a `.env` file is really useful to no more do changes to the `compose.yaml`
 
 If you need two or more Joomla websites (you're a web agency starting to use Docker for your development), you'll be able to only do changes to the `.env` file by updating the `WEB_PORT` (each project should have his unique port) and, you'll probably update the `PROJECT_NAME` too to f.i. your customer name.
 
-:::tip
+<AlertBox variant="info" title="">
 `WEB_PORT`, `PROJECT_NAME`, ... are just *variables*. If you look back to your just copied/pasted `compose.yaml` content, you'll retrieve these variables like on the line `image: joomla:${JOOMLA_VERSION:-latest}`.
 
 The `${XXX:-yyy}` syntax means: if the variable exists, use it (the `XXX` part) otherwise use a default value (the `yyy` part).
 
 So, here, if `JOOMLA_VERSION` exists and this is the case in our `.env` file, then use his value. We'll then use `image: joomla:5.2.0-php8.3-apache`. If `JOOMLA_VERSION` was missing in our `.env`, then we'll use `latest` and thus `image: joomla:latest`.
-:::
+
+</AlertBox>
 
 ### Let's make our lives simpler and lazier; using a makefile
 
@@ -163,7 +167,7 @@ The third and last file we'll use is being called `makefile` and that file will 
 
 To be able to use a `makefile`, you should have `GNU Make` binary installed on your machine.
 
-:::important
+<AlertBox variant="caution" title="">
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
 
 <Terminal>
@@ -173,7 +177,8 @@ $ which make
 <Terminal>
 $ sudo apt-get update && sudo apt-get install make
 </Terminal>
-:::
+
+</AlertBox>
 
 So, please create a file called `makefile` in your current directory with this content:
 
@@ -224,13 +229,14 @@ up:
 
 </Snippet>
 
-:::caution Indentation should be TAB not spaces
+<AlertBox variant="highlyImportant" title="Indentation should be TAB not spaces">
 It's terribly vicious because it's totally silent: the indentation in a makefile must be tabs, not spaces. When you copy/paste the above code to create your file, make sure your text editor uses tabs. If it doesn't, the commands defined in the file won't work.
-:::
+</AlertBox>
 
-:::note
+<AlertBox variant="note" title="">
 If you want to learn more about GNU Make, check my [Linux Makefile - When to use a makefile](/blog/makefile-using-make) article
-:::
+
+</AlertBox>
 
 ## Before starting
 
@@ -284,15 +290,17 @@ services:
 [...]
 ```
 
-:::info
+<AlertBox variant="info" title="">
 The output here above is a **partial content** and just show the first lines displayed to the console by the `make config` command.
-:::
+
+</AlertBox>
 
 The objective of `make config` is to make sure that all files are correct (otherwise we'll get error messages) and that variables are well replaced by their values. You can see f.i. that the Joomla version is well the one we've specified in the `.env` file and the user line (the last line here above) is correctly initialised to the **user_id:group_id** of your current user.
 
-:::info
+<AlertBox variant="info" title="">
 The **user_id:group_id** will vary depending on your own configuration. It'll be `1000:1000` in the most situations but this can be something else when, f.i., you've defined more than one user in your Linux distribution; the first user probably be `1000:1000`, the second `1001:1001` and so on.
-:::
+
+</AlertBox>
 
 ## Let's wake up Joomla...
 
@@ -330,15 +338,17 @@ mysql:8.4.2                  joomla-db    Up 7 minutes (healthy)   3306/tcp, 330
 
 As we can see, yay!, we have our two services (named containers) which are Joomla and MySQL and they are both *Up* (see the `Status` column). We see that Joomla uses port `8080` and MySQL uses port `3306`.
 
-:::tip
+<AlertBox variant="info" title="">
 The port `8080` is the one we've specified in our `.env` (variable `WEB_PORT`) and, the same for MySQL, it uses port `3006` because that's the one we defined (`MYSQL_PORT`).
 
 Note that `3306` is the standard port for MySQL.
-:::
 
-:::success Hey! did you notice?
+</AlertBox>
+
+<AlertBox variant="info" title="Hey! did you notice?">
 We've created our Joomla website by **just running one command**. Don't trust? Open your browser and surf to `http://127.0.0.1:8080`.
-:::
+
+</AlertBox>
 
 ### ... or let's ask him to fall asleep (keep containers)
 
@@ -364,9 +374,10 @@ The `make reset` command will stop containers but, too, remove files on the disk
 $ make reset
 </Terminal>
 
-:::danger
+<AlertBox variant="danger" title="">
 By running `make reset`, you'll lose everything and be ready to create a new fresh website.
-:::
+
+</AlertBox>
 
 ## Getting access to Docker logs
 
@@ -509,9 +520,10 @@ The following environment variables are also recognised for configuring auto dep
 
 Pay attention to the last table here above.
 
-:::success Pretty cool!
+<AlertBox variant="info" title="Pretty cool!">
 We could therefore completely ignore the Joomla configuration screens!!! By specifying certain values, we could therefore install a beautiful, fresh Joomla and already display a functional website.
-:::
+
+</AlertBox>
 
 Let's try.
 
@@ -762,19 +774,21 @@ $ tree -a
 
 One directory by project and, again, our three files.
 
-:::note
+<AlertBox variant="note" title="">
 The `tree` command isn't native in Linux. If you wish to install it, just run `sudo apt-get update && sudo apt-get install tree`.
 
 <Terminal>
 $ sudo apt-get update && sudo apt-get install tree
 </Terminal>
-:::
+
+</AlertBox>
 
 ### Project 1 - Joomla 5.2
 
-:::info Project 1 will be a Joomla 5.2
+<AlertBox variant="info" title="Project 1 will be a Joomla 5.2">
 In a very few words: we'll install Joomla 5.2 and MySQL 8.4.2.
-:::
+
+</AlertBox>
 
 Please configure the `project_1/.env` file with the following content.
 
@@ -821,17 +835,19 @@ By going to `http://127.0.0.1:8081/administrator/` we've our first admin page (a
 
 ![Our first site is running under Joomla 5.2](./images/project_1.png)
 
-:::caution
+<AlertBox variant="caution" title="">
 Please really be careful to specify the port number of our project. For project 1, the port number is `8081`. As, in fact, we wished by setting the variable `WEB_PORT`.
 
 So, to access to the first project, our URL is well `http://127.0.0.1:8081`.
-:::
+
+</AlertBox>
 
 ### Project 2 - Joomla 4.0
 
-:::info Project 1 will be a Joomla 4.0
+<AlertBox variant="info" title="Project 1 will be a Joomla 4.0">
 In a very few words: we'll install Joomla 4.0 and MySQL 5.7.37.
-:::
+
+</AlertBox>
 
 Please configure the `project_2/.env` with the following content. As you can see (highlighted lines), that file is the same that the latest `.env` we've used earlier but, just, we'll adjust the name of the project and the web port (so our site will be available on `http://127.0.0.1:8082`).
 
@@ -873,17 +889,19 @@ $ make up
 
 ![Our two Joomla projects are running](./images/project_1_2.png)
 
-:::success Two Joomla sites having two different PHP and MySQL versions and ... no conflict!
+<AlertBox variant="info" title="Two Joomla sites having two different PHP and MySQL versions and ... no conflict!">
 Did you see? We've two websites running on our computer. The first one is a Joomla 5.2 and the second one is Joomla 4.0.
 
 If you're still awake after this long blog post, to get access to our second website, we need to go to `http://127.0.0.1:8082`.
-:::
+
+</AlertBox>
 
 ### Project 3 - Joomla 3.5
 
-:::info Project 1 will be a Joomla 3.5
+<AlertBox variant="info" title="Project 1 will be a Joomla 3.5">
 And now, you need to do some maintenance on an old J3.5 website. Let's create one on our computer.
-:::
+
+</AlertBox>
 
 Please now configure the `project_3/.env` with the following content.
 
@@ -925,11 +943,12 @@ $ make up && make start
 
 ![Our three Joomla projects are active at the same time on our development machine](./images/project_1_2_3.png)
 
-:::success Just wow no?
+<AlertBox variant="info" title="Just wow no?">
 Three different Joomla versions, MySQL and too PHP and no conflict at all!
 
 In fact, nothing surprising, it's normal with Docker: everything is isolated in its own container. 😊
-:::
+
+</AlertBox>
 
 ### Start all three projects in just one command
 
@@ -995,7 +1014,7 @@ By looking back to Docker Desktop, we can indeed see we've earned 1GB RAM.
 
 ![The first and the third projects are released](./images/docker_desktop_stopped.png)
 
-:::note
+<AlertBox variant="note" title="">
 In our example here, we've just kept the second project so we can still work on `http://127.0.0.1:8082/` but the two other projects (`http://127.0.0.1:8081/` and `http://127.0.0.1:8083/`) won't respond anymore. We've stopped them.
 
 Just run `make up` again in f.i. folder `project_1` to make the site back to life. Or, if you prefer the GUI, in Docker Desktop, just click on the `Start` button:
@@ -1005,7 +1024,8 @@ $ ( cd project_1 && make up )
 </Terminal>
 
 ![Starting a container in Docker Desktop](./images/docker_desktop_start.png)
-:::
+
+</AlertBox>
 
 ## Restoring a JPA backup using Docker
 

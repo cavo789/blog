@@ -70,9 +70,10 @@ REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
 demo/counter   latest    89505911ec33   21 minutes ago   5.61MB
 </Terminal>
 
-:::tip Can't be smaller
+<AlertBox variant="info" title="Can't be smaller">
 As you can see, our image is really small. This is the advantage using the alpine Docker image.
-:::
+
+</AlertBox>
 
 ## Using our image
 
@@ -147,9 +148,10 @@ $ docker compose exec counter /counter.sh
 You have executed this script 1 times.
 </Terminal>
 
-:::caution We've lost our data
+<AlertBox variant="caution" title="We've lost our data">
 As you can see, we've lost our counter. By stopping and starting the container, our data has been lost. And that's perfectly normal, because that's the intrinsic concept of a Docker container: it's ephemeral. **A container should be disposable; by restarting it, the container is reset.**
-:::
+
+</AlertBox>
 
 ## Introducing the notion of volume
 
@@ -238,9 +240,10 @@ $ docker compose exec counter /counter.sh
 You have executed this script 10 times.
 </Terminal>
 
-:::tip So, our counter was well persistent this time
+<AlertBox variant="info" title="So, our counter was well persistent this time">
 As you can see, by running `down` followed by `up`, we have kept the value of our counter. This value is saved in a file which is now stored in a Docker volume. As long as we don't delete the volume, our value will be preserved.
-:::
+
+</AlertBox>
 
 You can remove the volume by running `docker volume rm demo_counter_data` but:
 
@@ -275,13 +278,15 @@ drwxrwxrwt 28 root       root        12K Nov 22 09:35 ..
 -rw-r--r--  1 christophe christophe  190 Nov 22 10:09 compose.yaml
 </Terminal>
 
-:::info Files are not stored in our project
+<AlertBox variant="info" title="Files are not stored in our project">
 As you can see, we've only our files, not the counter. Files stored in a volume managed by Docker aren't stored in our project's directory.
-:::
 
-:::info Location
+</AlertBox>
+
+<AlertBox variant="info" title="Location">
 In fact, volumes are stored in `\\wsl$\docker-desktop-data\data\docker\volumes` if you're running WSL but it's really a bad idea to access files directly from there. Let Docker do the job for you.
-:::
+
+</AlertBox>
 
 #### Accessing files in the volume
 
@@ -416,9 +421,10 @@ drwxr-xr-x 3 christophe christophe 4.0K Nov 22 10:54 ..
 -rw-r--r-- 1 root       root          2 Nov 22 10:56 counter.txt
 </Terminal>
 
-:::caution Ouch, the file is owned by `root` not me
+<AlertBox variant="caution" title="Ouch, the file is owned by `root` not me">
 Uh oh! The file is owned by the root user and not me (i.e. user `christophe` in my case). That's annoying since I can't edit it or remove it without using `sudo`.
-:::
+
+</AlertBox>
 
 The file is owned by `root` because the current user; used inside the container, is the `root` user. We need to inform Docker that he has to use ours.
 
@@ -443,9 +449,10 @@ services:
 
 </Snippet>
 
-:::tip Why 1000:1000?
+<AlertBox variant="info" title="Why 1000:1000?">
 We need to pass to Docker our current user id and group id so Docker will be able to create files/folders using our user. To get your current user id and group id, just run `echo "$(id -u):$(id -g)"` in the console and, you'll see, the first created user (after the installation of Linux) is, always, user id 1000, group id 1000. Most probably you.
-:::
+
+</AlertBox>
 
 Let's try again but, first remove the incorrect file: `sudo rm -f data/counter.txt`
 

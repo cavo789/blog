@@ -16,9 +16,10 @@ There, you've two main options: the *Spam filter* and a *White list*.
 
 Using the first one, you can define email patterns like `*@hair.com` which mean: immediately kill those emails on the server. The second one is just the opposite f.i. `*@my-own-company.com` saying that you trust that domain.
 
-:::tip PlanetHoster - N0C
+<AlertBox variant="info" title="PlanetHoster - N0C">
 If you're hosted by PlanetHoster on the N0C infrastructure, please read <Link to="/blog/planethoster-n0c-spam">Exterminate them all, fight spam directly at PlanetHoster - N0C</Link> instead.
-:::
+
+</AlertBox>
 
 <!-- truncate -->
 
@@ -50,9 +51,10 @@ whitelist_from *@my-own-company.com
 
 As you can expect, you'll find two rules: `blacklist_from` and `whitelist_from` with the pattern you've filled in the SpamAssassin web interface of your hosting company:
 
-:::tip Spam Filters location
+<AlertBox variant="info" title="Spam Filters location">
 You can manipulate entries one by one using the web interface too. Go to your cPanel, search for `Spam Filters` and click on `Additional Configurations (For Advanced Users)`.
-:::
+
+</AlertBox>
 
 You can now manipulate the list with f.i. vscode and sort it alphabetically, simplify rules, remove duplicated entries (after refactoring), ...
 

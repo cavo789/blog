@@ -186,8 +186,7 @@ printf(
 
 By running `docker run -it --rm -v "${PWD}":/project -w /project php:8.2 php index.php`, it's still working.
 
-:::success You've refactored our code without breaking it. Congratulations!
-:::
+<AlertBox variant="info" title="success You've refactored our code without breaking it. Congratulations!" />
 
 The same thing in pictures:
 
@@ -201,15 +200,17 @@ As we can expect, the class name has been updated but the filename too. And, onc
 
 ![Renaming a class](./images/rename-a-class.png)
 
-:::info You can also rename from index.php
+<AlertBox variant="info" title="You can also rename from index.php">
 Locate the `$product = new Product();` line in your `index.php` file. Put the cursor on the `Product` word, press <kbd>F2</kbd> and rename it. This work too i.e. the class will be updated too in `Products.php` (since the file has been renamed too). Nice!
-:::
+
+</AlertBox>
 
 ![Rename a class](./images/rename_class.gif)
 
-:::caution Don't rename the file
+<AlertBox variant="caution" title="Don't rename the file">
 Renaming the file from the Explorer won't refactor the code. So, don't go to the `Explorer`, click on `Product.php` and rename it. This will not refactor the code. Avoid!
-:::
+
+</AlertBox>
 
 ### Extract to a new method
 
@@ -269,11 +270,12 @@ See the animation below:
 
 ![Extract to a new method](./images/extract-new-method.gif)
 
-:::tip Did you have noticed the use of input parameters?
+<AlertBox variant="info" title="Did you have noticed the use of input parameters?">
 In the lines we're moving, there are variables like `contentType` and `filename` that are not part of the new method. These variables are still local in our first, `download` method.
 
 And, as you can see, during the creation of the new method, these two local variables have been added to the definition of the new function. Nice feature.
-:::
+
+</AlertBox>
 
 ## Other extensions
 

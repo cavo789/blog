@@ -72,9 +72,10 @@ Sleeping for 3 seconds...
 Total running time: 30 seconds
 </Terminal>
 
-:::important Hey dude! I've more than one CPU
+<AlertBox variant="caution" title="Hey dude! I've more than one CPU">
 But, that's code is so old fashion now? How many CPU did I have? Just one? Oh thank you computer gods, I've got more than that!  So, why just using one?
-:::
+
+</AlertBox>
 
 ## Now, the optimised version
 
@@ -84,9 +85,10 @@ We just need to make sure we'll not kill our performances and for this, we'll re
 
 On my computer, I've 32 logical processors and since I can start 2 threads by CPU, I can calculate the maximum number of threads like this: `NUMBER_OF_THREADS=$(( $(nproc) * 2 ))`.
 
-:::tip Also pay attention to some limitation imposed by the third party
+<AlertBox variant="info" title="Also pay attention to some limitation imposed by the third party">
 In the Bash script below, no problem, it's just my computer but in my introduction, I've mentioned, "I need to call an API POST service". Here, I just make sure I will not be blacklisted by the web server. For instance, perhaps, there is a limitation like "Not more than 32 calls in a second for the same IP". In that case, I should take this info into account and don't start more than 32 process at a time (I'll then set `NUMBER_OF_THREADS=32`).
-:::
+
+</AlertBox>
 
 We'll adapt our sample like this:
 
@@ -217,6 +219,7 @@ Sleeping for 3 seconds...
 Total running time: 3 seconds
 </Terminal>
 
-:::tip Running 50 times the function
+<AlertBox variant="info" title="Running 50 times the function">
 In the first version of the script, by changing the line `for i in {1..10}; do` to `for i in {1..50}; do`, I'll wait 150 seconds; right? With the optimised version, just 4 seconds. Why 4 and not 3? Probably some delay introduced by the processor (who should handle 50 concurrent threads).
-:::
+
+</AlertBox>

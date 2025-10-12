@@ -50,9 +50,10 @@ done
 
 </Snippet>
 
-:::tip Get the list of all containers
+<AlertBox variant="info" title="Get the list of all containers">
 `docker container list --all --format "{{.Names}}"` return the list of all containers and only echo the column `Name` on the console.
-:::
+
+</AlertBox>
 
 Make sure to make the script executable: `chown +x health.sh`.
 

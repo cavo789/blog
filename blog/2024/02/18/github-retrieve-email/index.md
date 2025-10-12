@@ -16,9 +16,10 @@ As a result, the problem can be translated in *How to find the email address lin
 
 Recently, I had this need in order to contact someone with a [Docusaurus](https://docusaurus.io/) blog offering a feature that I couldn't find documented on the web. His blog was not on GitHub but other repos well.
 
-:::note It isn't always possible to retrieve the associated email.
+<AlertBox variant="note" title="It isn't always possible to retrieve the associated email.">
 Indeed, GitHub provides a.o.t. an option to make the email private in his user settings page.
-:::
+
+</AlertBox>
 
 <!-- truncate -->
 ## Using web interface

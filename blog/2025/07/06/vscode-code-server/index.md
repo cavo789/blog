@@ -36,7 +36,7 @@ $ {`docker run -d --name code-server -p 8080:8080 \
 
 Once triggered successfully, just open your browser and visit `http://127.0.0.1:8080` to start VSCode in the browser.
 
-:::info The `docker run` explained
+<AlertBox variant="info" title="The `docker run` explained">
 * `-d`: the code-server will run as a daemon service,
 * `-p 8080:8080`: we'll expose the service on our port 8080,
 * `--name`: it's just for giving a descriptive name to our container (optional),
@@ -44,7 +44,8 @@ Once triggered successfully, just open your browser and visit `http://127.0.0.1:
 * `-v ".:/home/coder/project"`: mount your current directory in the container so you can work on it in code-server,
 * `-u "$(id -u):$(id -g)"`: map the user used inside the container with local one so files/folders created/modified in the container will have the exact same permissions and
 * `-e "DOCKER_USER=${USER}"`: if you run `echo ${USER}` on your host, you'll see you'll get your Linux name (`christophe` for me) so, here, just inform the container about your name.
-:::
+
+</AlertBox>
 
 The code-server configuration is thus stored in your home directory, in the folder `/.config/`. Like this, config files will not be part of your current project and the configuration will be the same if you start code-server at several places, for different projects.
 

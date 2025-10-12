@@ -424,9 +424,10 @@ class Groups(Base):
 
 Crazy no?
 
-:::info
+<AlertBox variant="info" title="">
 The generated Python code isn't compliant with Python formatting standards but it's really not a problem. Just install the [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) extension and once installed, press <kbd>CTRL</kbd>+<kbd>P</kbd> then run the *Ruff: format document* command.
-:::
+
+</AlertBox>
 
 <!-- cspell:enable -->
 

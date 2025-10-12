@@ -175,9 +175,10 @@ As you can see on the image below, during the creation of our PostgreSQL contain
 
 ![The database exists but without any table right now](./images/pgadmin_database.png)
 
-:::info
+<AlertBox variant="info" title="">
 This is done thanks our `compose.yaml` file. If you're curious, open the `compose.yaml` file again and pay attention to the `environment` section for the `postgres` service. We've instruct PostgreSQL to create a database called `people`; owned by user called `admin`.
-:::
+
+</AlertBox>
 
 ## The pieces of the jigsaw are in place, create our flow
 

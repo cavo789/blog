@@ -31,13 +31,14 @@ You can provide your own credentials or using a token or copying your SSH key in
 
 Also, there are existing tools like [SecretScanner](https://github.com/deepfence/SecretScanner) allowing to deeply scan layers (a Docker image is composed in multiple layers) and even if the secret is stored in a file that no longer exists in the final image, if it has been saved in a layer, then this type of tool will be able to retrieve it.
 
-:::important
+<AlertBox variant="caution" title="">
 So, in conclusion: there is only one way to use secrets using Docker and you'll learn how in this article.
-:::
+
+</AlertBox>
 
 ## Which key to use
 
-:::warning
+<AlertBox variant="caution" title="">
 This part is one of the most important ones. First, of course, you should already have created a SSH key (see my <Link to="/blog/github-connect-using-ssh">Github - Connect your account using SSH and start to work with git@ protocol</Link> if needed).
 
 Then you should know which protocol you've used and that's really important. Is your key stored in a file called `id_ed25519` or `id_rsa` or something else. Only you know.
@@ -47,7 +48,8 @@ Just run `ls -alh ~/.ssh` to get the list of your keys:
 ![My own keys](./images/ssh_keys.png)
 
 I'm using two different keys as you can see: `id_ed25519` or `id_rsa`. Files having the `.pub` extensions are the public keys; those without extensions are the private keys.
-:::
+
+</AlertBox>
 
 It's important to know which key has been used to link your Github profile.
 
@@ -109,11 +111,12 @@ secrets:
 
 You can use what you want for `a_secret_name`; for instance, `my_ssh_key`.
 
-:::tip docker compose config
+<AlertBox variant="info" title="docker compose config">
 You can, if you want, run `docker compose config` to check if your file is correct. You'll also see the full path for the used key.
 
 ![Docker compose config](./images/config.png)
-:::
+
+</AlertBox>
 
 ### Dockerfile
 
@@ -150,8 +153,7 @@ ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 </Snippet>
 
-:::warning Think to replace cavo789/my_private_repo.git and refers one of your repositories
-:::
+<AlertBox variant="caution" title="Think to replace cavo789/my_private_repo.git and refers one of your repositories" />
 
 As you can see, we are setting `KEY_NAME="id_rsa"` as the default value (but will be overwritten by our declaration in the yaml file) then later on, we need to create the `/root/.ssh`folder and we are adding `github.com` in the list of known hosts.
 
@@ -233,13 +235,14 @@ Why? Because your SSH keys are now part of the container as we can see by runnin
 
 ![Keys are now part of the container](./images/container_ssh_keys.png)
 
-:::important Keys are not stored in the image even when you've shared them with the container
+<AlertBox variant="caution" title="Keys are not stored in the image even when you've shared them with the container">
 Just to be clear: the notion of volume we've just implemented concerns the container and not the image. In other words, SSH keys are not stored in the Docker image. You could give it to someone else (e.g. by saving the image on Docker Hub); your keys won't be there and will remain on your computer. Your image and your secrets are safe.
 
 Then, when the user run `docker compose up --detach` using the `compose.yaml` file where there are the two lines we've just added (the ones for adding the volume); these are his keys, on his computer, not yours.
-:::
 
-:::caution Please take note of the running user in your container
+</AlertBox>
+
+<AlertBox variant="caution" title="Please take note of the running user in your container">
 In our example here, the default user is `root` as we can see by jumping in the container and running `whoami`.
 
 ![Whoami](./images/whoami.png)
@@ -276,4 +279,5 @@ services:
 
 </Snippet>
 
-:::
+
+</AlertBox>

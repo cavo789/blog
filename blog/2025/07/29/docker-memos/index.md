@@ -58,13 +58,14 @@ services:
 
 </Snippet>
 
-:::note
+<AlertBox variant="note" title="">
 The line `user: ${UID:-1000}:${GID:-1000}` will ask Docker to use a specific user (not the `root` one) while creating files on your disk.
 
 The user `1000:1000` is, in the most cases, you i.e. it's your current Linux user (type `id -u` and, then, `id -g` to retrieve your user ID and your group ID and you'll see it'll be `1000` for both).
 
 If yours IDs are not `1000`, please edit the yaml file and put yours IDs instead.
-:::
+
+</AlertBox>
 
 In your console, now, just run `docker compose up --build --detach`.
 
@@ -76,9 +77,10 @@ Go to `http://localhost:5230` and you'll see the website is already running:
 
 ![First run](./images/first_run.png)
 
-:::tip
+<AlertBox variant="info" title="">
 See on the bottom left; it's possible to select another language; French is supported f.i.
-:::
+
+</AlertBox>
 
 I'll create my account (`admin/admin` since I'm working on my localhost) and I'm ready to create my first note. It took me less than one minute until now.
 

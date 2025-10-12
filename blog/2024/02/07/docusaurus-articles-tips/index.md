@@ -42,16 +42,18 @@ If you go to my [blog](/blog) page, each articles have an introduction followed 
 Used to highlight a paragraph in your document, f.i. a *Pay attention to...* or *Tip: Did you know that...* box.
 
 ```markdown
-:::caution Pay attention to...
+<AlertBox variant="caution" title="Pay attention to...">
 Never give your bank card code to a stranger.
-:::
+
+</AlertBox>
 ```
 
 Will be displayed by Docusaurus like this:
 
-:::caution Pay attention to...
+<AlertBox variant="caution" title="Pay attention to...">
 Never give your bank card code to a stranger.
-:::
+
+</AlertBox>
 
 ## Inline style
 

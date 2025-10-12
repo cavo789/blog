@@ -164,9 +164,10 @@ $ curl https://xxx/api/v1/countries?language=FR | jq
 
 `HEAD` can thus be used to get meta data about a resource.
 
-:::info How many countries have French as their official language?
+<AlertBox variant="info" title="How many countries have French as their official language?">
 In the returned headers of `HEAD` we will most probably get a `Content-Range` entry. In our fake example, we can determine that we've six countries where French is an official language.
-:::
+
+</AlertBox>
 
 
 | Code | Status | Reason |
@@ -204,8 +205,7 @@ In order to extract this information in JavaScript, the [parse-content-range-hea
 
 #### GET
 
-:::tip You can translate `GET` as `READ` in `CRUD`
-:::
+<AlertBox variant="info" title="You can translate `GET` as `READ` in `CRUD`" />
 
 Return a resource (can be a collection or just one).
 
@@ -236,8 +236,7 @@ The `204 - No content` code should not be used with `GET`.
 
 #### POST
 
-:::tip You can translate `POST` as `CREATE` in `CRUD`
-:::
+<AlertBox variant="info" title="You can translate `POST` as `CREATE` in `CRUD`" />
 
 Using `POST` **you'll create a new resource**. Calling `POST` five times for the same "new" employee will thus create five new employees. <span style={{color: 'red'}}>`POST` is not idempotent meaning calling it more than once will return every time a new resource (like the new employee id).</span>
 
@@ -245,9 +244,10 @@ Using `POST` **you'll create a new resource**. Calling `POST` five times for the
 $ {`curl -X POST -d '\{"firstname":"Christophe",...}' https://xxx/api/v1/employees`}
 </Terminal>
 
-:::note
+<AlertBox variant="note" title="">
 When calling `POST` you should provide all the fields required to create the resource. So, for a new employee, his firstname, lastname, birthdate, national register number, his hiring date, the department where he'll work and so on.
-:::
+
+</AlertBox>
 
 ##### POST - Returned code
 
@@ -267,15 +267,16 @@ The `200 - OK` code should not be used with `POST`.
 
 `POST` can also be used when calling a controller like in `curl -X POST -d '{"action":"sendBirthdayMail",...}' https://xxx/api/v1/employees/123/actions` or `curl -X POST https://xxx/api/v1/employees/123/sendBirthdayMail`.
 
-:::important The RESTful API standards recommends to use `POST` for actions.
+<AlertBox variant="caution" title="The RESTful API standards recommends to use `POST` for actions.">
 So, we shouldn't do `GET https://xxx/api/v1/employees/actions` because `actions` it's not a resource but an action.
-:::
+
+</AlertBox>
 
 #### PUT
 
-:::tip You can translate `PUT` as `UPDATE` in `CRUD`, when you'll update every field
+<AlertBox variant="info" title="You can translate `PUT` as `UPDATE` in `CRUD`, when you'll update every field">
 Using `PUT` implies you're intended to update each field of the record. If you plan to update just a few of them, take a look to the `PATCH` verb.
-:::
+</AlertBox>
 
 Using `PUT` you'll update an existing resource. Let's imagine we have just three fields in our employees table:
 
@@ -298,17 +299,18 @@ Consider using `PUT` only when **you'll update every information's** of the reso
 | `403` | `Access denied` | You're not allowed to call this method |
 | `404` | `Not found` | The requested resource didn't exists (f.i. you tried to access `/api/v1/employees/1` and that one didn't exists). |
 
-:::important
+<AlertBox variant="caution" title="">
 When getting `PUT -d '{"firstname":"Christophe"}' https://xxx/api/v1/employees/123456` the API developer can decide on his own to **CREATE** the resource 123456 if it didn't exists and if all required fields have been provided in the payload.
 
 So, when the resource didn't exist, the developer can return a `404 - Not found` error or, if he decide to create the new resource, then the API could return `201 - Created` (just like a `POST`) ([reference](https://www.belgif.be/specification/rest/api-guide/#put)).
-:::
+
+</AlertBox>
 
 #### PATCH
 
-:::tip You can translate `PATCH` as `UPDATE` in `CRUD`, when you'll DON'T update every fields
+<AlertBox variant="info" title="You can translate `PATCH` as `UPDATE` in `CRUD`, when you'll DON'T update every fields">
 If you plan to update all fields, you need to use `PUT`, not `PATCH`.
-:::
+</AlertBox>
 
 `PATCH` is to be used when the update is partial like updating one field: `curl -X PATCH -d '{"firstname": "John"} https://xxx/api/v1/employees/999'` will, only, update first name.
 
@@ -331,8 +333,7 @@ Note: like with `PUT` (see above), the developer can decide to create the resour
 
 #### DELETE
 
-:::tip You can translate `DELETE` as ... `DELETE` in `CRUD`
-:::
+<AlertBox variant="info" title="You can translate `DELETE` as ... `DELETE` in `CRUD`" />
 
 To remove employee #59:
 
@@ -492,9 +493,11 @@ A document MUST contain at least one of the following top-level members:
 * `errors`: an array of error objects.
 * `meta`: a meta object that contains non-standard meta-information.
 
-:::caution Never return both `data` and `errors`
+
+<AlertBox variant="caution" title="Never return both `data` and `errors`">
 If the query has generated an error, it is not expected to return any data. And vice versa.
-:::
+
+</AlertBox>
 
 The document's *primary data* is a representation of the resource or collection of resources targeted by a request.
 
@@ -527,9 +530,9 @@ or, if just one record, directly:
 }
 ```
 
-:::tip Most of the time, it's the developer choice for an array
+<AlertBox variant="info" title="Most of the time, it's the developer choice for an array">
 In fact, most of the time, an array is returned, as this allows the API to be modified in the future to return other results without generating BC (break changes) in the API.
-:::
+</AlertBox>
 
 ##### Data
 

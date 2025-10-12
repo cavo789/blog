@@ -15,15 +15,17 @@ Don't want to take the time to create a CSS class and figure out how to integrat
 
 Quarto supports an *inline css style* syntax for producing **HTML documents** (not working for, f.i., pdf or docx).
 
-:::tip Syntax
+<AlertBox variant="info" title="Syntax">
 You can apply styles to inline text by creating spans using `[]` to surround the text you want to style and `{}` to define the style you want to apply.
-:::
+
+</AlertBox>
 
 <!-- truncate -->
 
-:::tip Docker image with Quarto
+<AlertBox variant="info" title="Docker image with Quarto">
 If you don't have yet a Docker image with Quarto, read this article <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link>.
-:::
+
+</AlertBox>
 
 > [source](https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/posts/11-spans/).
 

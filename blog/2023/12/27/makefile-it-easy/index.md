@@ -18,9 +18,10 @@ So, you can define an `up` command (you choose the name of the command) which wi
 
 <!-- truncate -->
 
-:::note Only for Linux / WSL (not for DOS/PowerShell)
+<AlertBox variant="note" title="Only for Linux / WSL (not for DOS/PowerShell)">
 This chapter only concern Linux since DOS/PowerShell didn't support the GNU make command.
-:::
+
+</AlertBox>
 
 In the <Link to="/blog/docker-joomla">Create your Joomla website using Docker</Link> blog article, we have seen a lot of docker commands.
 
@@ -46,9 +47,10 @@ First run `which make` in your Linux console to check if `make` is installed. If
 
 This done, we will create a new file called `makefile` in your project's directory. A `makefile` is pure text so you can use any editor you want. On my side, I've now my own habits with Visual Studio Code.
 
-:::tip This file is specific to each project, not global.
+<AlertBox variant="info" title="This file is specific to each project, not global.">
 The `makefile`, being created in your project's directory, can contain instructions for that specific project. You could have one `makefile` for each project.
-:::
+
+</AlertBox>
 
 Being in your editor with an empty `makefile` file, just copy/paste the content below:
 
@@ -100,13 +102,15 @@ Make sure indentation is using tabs, not space.
 
 Save and close vscode.
 
-:::tip Add a help screen
+<AlertBox variant="info" title="Add a help screen">
 See my article <Link to="/blog/makefile-help">Linux Makefile - Adding a help screen</Link> to learn how to be able to add a help screen to the list of commands.
-:::
 
-:::danger
+</AlertBox>
+
+<AlertBox variant="danger" title="">
 The indentation in a makefile **SHOULD BE** made using tabs and not spaces, this is crucial. So please make sure, if your file didn't work, you know what to do.
-:::
+
+</AlertBox>
 
 Lines like `adminer:` or `bash:` are called `targets`; it's your commands. Take a look to the `up:` target: you'll retrieve one command and it's `docker compose up --detach`.
 
@@ -116,7 +120,7 @@ To launch the browser and surf on your site, it will be `make start`.
 
 It's much easier to remember a command like `make something` than remember all Docker commands here (can be everything else, not just Docker).
 
-:::tip Use printf to echo valuable information
+<AlertBox variant="info" title="Use printf to echo valuable information">
 By typing `make phpmyadmin`, it would be nice to see, on the console, the credentials to use and a small tip like this:
 
 <Terminal>
@@ -128,7 +132,8 @@ a0c37edd9f8c139556f1f0a6b028ec5102362f16233efbc05f56d184edfb83c9
 </Terminal>
 
 To do this, just use the `printf` function like illustrated above.
-:::
+
+</AlertBox>
 
 Please read my [Makefile - Tutorial and Tips & Tricks](https://github.com/cavo789/makefile_tips) GitHub repository if you wish to learn more about Make.
 

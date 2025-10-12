@@ -27,7 +27,7 @@ At the end, we'll have a `make import` command that will start **[Akeeba Kicksta
 
 ## Creating required files
 
-:::tip Skipping the files creation process
+<AlertBox variant="info" title="Skipping the files creation process">
 In the next chapters, you'll need to create several files using copy/paste. If you wish go faster, just run the following commands to retrieve files from my [Github repo](https://github.com/cavo789/docker_joomla_restore) so you don't need to create them.
 
 <Terminal>
@@ -38,7 +38,8 @@ $ tar -xzvf docker_joomla_restore.gz --strip-components 1 && rm -f docker_joomla
 </Terminal>
 
 By following the instructions below, you'll create a xxx folder where you can copy all the files you need to restore a Joomla site using Docker.  You can then proceed immediately to the “Run the import process” chapter, as the files are already in place.
-:::
+
+</AlertBox>
 
 *If you prefer to understand what you do and create files manually, please continue your lecture here below.*
 
@@ -154,9 +155,10 @@ WEB_PORT=8080
 
 </Snippet>
 
-:::caution
+<AlertBox variant="caution" title="">
 Since we need to restore an existing site, make sure to use the same PHP version than the one used by your site.
-:::
+
+</AlertBox>
 
 ### Our makefile
 
@@ -264,7 +266,7 @@ import: reset
 
 </Snippet>
 
-:::important
+<AlertBox variant="caution" title="">
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
 
 <Terminal>
@@ -274,7 +276,8 @@ $ which make
 <Terminal>
 $ sudo apt-get update && sudo apt-get install make
 </Terminal>
-:::
+
+</AlertBox>
 
 ### We also need a file called Dockerfile
 
@@ -351,13 +354,15 @@ drwxrwxrwt     - root       root       2024-10-18 13:30 ..
 .rw-r--r--  2.9k christophe christophe 2024-10-18 13:30 makefile
 </Terminal>
 
-:::tip Skipping the files creation process
+<AlertBox variant="info" title="Skipping the files creation process">
 If you've skipped file's creation earlier by downloading files from my repo; you'll have all the files listed here above.
-:::
 
-:::important
+</AlertBox>
+
+<AlertBox variant="caution" title="">
 Remember, for Linux users, we need `GNU make` to be able to run commands like `make import` or `make up`. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
-:::
+
+</AlertBox>
 
 ## Run the importation process
 
@@ -406,9 +411,10 @@ Continue restoration as you always have; close the window once Akeeba Kickstart 
 
 ![Site is restored](./images/site_is_restored.png)
 
-:::tip
+<AlertBox variant="info" title="">
 If you've used the provided demo site, the admin account is **joomla** and his password is **joomla@secured**.
-:::
+
+</AlertBox>
 
 ## Conclusion
 

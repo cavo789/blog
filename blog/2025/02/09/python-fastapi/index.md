@@ -113,19 +113,21 @@ Why? Mounting our folder inside the container will allow us to make changes to t
 
 The only thing we need to do is to run our container like this: `docker run -v .:/app -p 82:82 python-fastapi` ... but it didn't work as expected.
 
-:::info FastAPI is using Uvicorn under the hood
+<AlertBox variant="info" title="FastAPI is using Uvicorn under the hood">
 Uvicorn is a web server implementation for Python. Uvicorn has a built-in cache mechanism so even if we've updated the source of our `main.py` script, we'll still get the old version.
 
 We should start Uvicorn with a "hot reload" mechanism.
-:::
+
+</AlertBox>
 
 ### Recreating the Docker image for hot reload
 
 First stop the running container: go back to your console and press <kbd>CTRL</kbd>+<kbd>C</kbd> to stop the running container. We'll also remove the container. You can do this by going to `Docker Desktop`; click on the `Containers` menu and kill your *Python - Fastapi* container. Remove also the image called `python-fastapi`.
 
-:::note
+<AlertBox variant="note" title="">
 `python-fastapi` is the name of the Docker image we've built earlier.
-:::
+
+</AlertBox>
 
 If you prefer the command line, you can achieve the same result by running these two commands:
 
@@ -240,9 +242,10 @@ You immediately see it I think:
 * I've defined a new route called `/jokes` and that one will display a random joke
 * And finally I've defined a `jokes/{joke_id}` to be able to target a specific joke (like "Give me the second joke you know").
 
-:::info Use an external file instead of hardcoding jokes
+<AlertBox variant="info" title="Use an external file instead of hardcoding jokes">
 As an exercise; just remove the initialisation part of the  `jokes` array and, instead, read jokes from a text file. It would be really easy to do.
-:::
+
+</AlertBox>
 
 Go back to your browser and surf to the `jokes` endpoint (`http://127.0.0.1:82/jokes`) and, hop, you've a random joke.
 
@@ -254,9 +257,10 @@ If you want a specific one, just put an ID after like `http://127.0.0.1:82/jokes
 
 ![A specific joke](./images/specific_joke.png)
 
-:::note
+<AlertBox variant="note" title="">
 Please note that the array start at position 0 so the first joke is this one: `http://127.0.0.1:82/jokes/0`.
-:::
+
+</AlertBox>
 
 #### Our jokes endpoints are documented automatically
 
@@ -266,11 +270,12 @@ And looking back to the documentation (`http://127.0.0.1:82/docs`); we've now th
 
 Really, really impressive!
 
-:::tip Docs are interactive
+<AlertBox variant="info" title="Docs are interactive">
 And, more impressive, you can play directly from the documentation i.e. you can run the `jokes` endpoint. There is a button *Try it out* then *Execute* to see the endpoint in action.
 
 More info [https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-docs](https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-docs)
-:::
+
+</AlertBox>
 
 ## Discover FastAPI
 

@@ -28,9 +28,10 @@ You'll be prompted to enter your password before being connected to the server.
 
 If you need some automation, you can install `sshpass` using `sudo apt-get update && sudo apt-get install sshpass`.
 
-:::note
+<AlertBox variant="note" title="">
 The sshpass Linux utility is used by the script to allow a SFTP connection without to have to use the password in plain-text. [Get more info](https://www.redhat.com/sysadmin/ssh-automation-sshpass)
-:::
+
+</AlertBox>
 
 Let's imagine your user is `christophe`, your password is `p@ssword` and the server IP is `1.2.3.4` then you can connect to your user like this: `SSHPASS="p@ssword" sshpass -e sftp christophe@1.2.3.4`.
 

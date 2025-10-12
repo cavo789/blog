@@ -17,9 +17,10 @@ But what a happy and strange coincidence. In its new version (4.26) released yes
 
 > The official blog post: [https://www.docker.com/blog/docker-desktop-4-26/]
 
-:::caution
+<AlertBox variant="caution" title="">
 We'll give it a try but spoiler, it's still in a very early stage.
-:::
+
+</AlertBox>
 
 Please start a Linux shell and run `mkdir -p /tmp/docker-init && cd $_` to create a folder called `docker-init` in your Linux temporary folder and jump in it.
 
@@ -124,11 +125,12 @@ USER www-data
 
 </Snippet>
 
-:::danger Bug in Docker 4.26 - Docker init - PHP + Apache
+<AlertBox variant="danger" title="Bug in Docker 4.26 - Docker init - PHP + Apache">
 There is a bug in the release `4.26`, the `COPY` statement has to be `COPY . /var/www/html` (i.e. we need to specify the source folder `.`). I've created an issue on the Docker repository ([https://github.com/docker/cli/issues/4702](https://github.com/docker/cli/issues/4702))
 
 Please update the file `Dockerfile` and change the line `COPY /var/www/html` to `COPY . /var/www/html`
-:::
+
+</AlertBox>
 
 So, we can see we'll use the `php:8.2-apache` image (since we've asked for PHP `8.2`), we'll copy the content of your current folder (`.`) to the `/var/www/html` folder inside the Docker image, we'll also use the `php.ini` file for production and will switch the current Linux user used inside the container to `www-data`.
 

@@ -16,30 +16,34 @@ A callout (called *admonition* by [Docusaurus](https://docusaurus.io/docs/markdo
 On this blog powered by Docusaurus, the syntax for *admonition* is
 
 ```markdown
-:::caution Pay attention to...
+<AlertBox variant="caution" title="Pay attention to...">
 Never give your bank card code to a stranger.
-:::
+
+</AlertBox>
 ```
 
 and this is rendered like
 
-:::caution Pay attention to...
+<AlertBox variant="caution" title="Pay attention to...">
 Never give your bank card code to a stranger.
-:::
+
+</AlertBox>
 
 And now a nice tip:
 
-:::tip Did you know that...
+<AlertBox variant="info" title="Did you know that...">
 By going to bed earlier, you'll get better quality sleep.
-:::
+
+</AlertBox>
 
 Quarto implements this a little differently, so let's have a look...
 
 <!-- truncate -->
 
-:::tip Docker image with Quarto
+<AlertBox variant="info" title="Docker image with Quarto">
 If you don't have yet a Docker image with Quarto, read this article <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link>.
-:::
+
+</AlertBox>
 
 ## Syntax
 

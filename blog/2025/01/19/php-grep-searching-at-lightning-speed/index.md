@@ -28,9 +28,10 @@ A new Powershell prompt will be started and you'll see the list of scanned files
 
 ![Result](./images/result.png)
 
-:::tip It's a Powershell script
+<AlertBox variant="info" title="It's a Powershell script">
 WinSCP will, in fact, start a `.ps1` script located here: `C:\Program Files (x86)\WinSCP\Extensions\SearchText.WinSCPextension.ps1`. Feel free to update the file to match your needs.
-:::
+
+</AlertBox>
 
 It's terribly slow and you'll get a huge list with all your files; not only the ones where the search pattern is retrieved. This function has the merit of exciting, but it's not much.
 

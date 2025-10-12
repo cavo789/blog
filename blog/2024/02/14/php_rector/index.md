@@ -22,9 +22,10 @@ I REALLY LOVE RECTOR 💕
 
 <!-- truncate -->
 
-:::tip Rector can be downloaded on GitHub
+<AlertBox variant="info" title="Rector can be downloaded on GitHub">
 Don't wait and install [Rector](https://github.com/rectorphp/rector)
-:::
+
+</AlertBox>
 
 Like a lot of people, I learned PHP on my own and that was at the time of PHP 5. Like a lot of people, I certainly picked up some bad habits and because it's impossible to keep up with every evolution of the language, my skills don't increase at the same time as the language.
 
@@ -55,9 +56,10 @@ echo sayHello('Christophe');
 
 Simple and effective, isn't it?  And, above all, the code is perfectly functional and well written, respecting all the layout conventions.
 
-:::info I'm an excellent developer. Thank you and goodbye.
+<AlertBox variant="info" title="I'm an excellent developer. Thank you and goodbye.">
 Well, in fact, **I was an excellent developer** but I stopped being one ten years ago.
-:::
+
+</AlertBox>
 
 What's wrong with my code?
 
@@ -66,8 +68,7 @@ What's wrong with my code?
 * Using the `ternary operator`; the `$text` variable becomes useless and
 * the function is returning a string (the `$text` variable) but the prototype of the function didn't mention this. So why not write `function sayHello($firstname = ''): string`
 
-:::success I'll lend you my friend, my coach, Rector
-:::
+<AlertBox variant="info" title="I'll lend you my friend, my coach, Rector" />
 
 ## Install Rector
 
@@ -209,13 +210,14 @@ echo sayHello();
 
 </Snippet>
 
-:::important Am I happy with this? Oh yes!!!
+<AlertBox variant="caution" title="Am I happy with this? Oh yes!!!">
 Yes, I'm very happy and proud to see how my code is now better and easier to read.
 
 Yes, I'm happy to have learned something and, now, I'll no more use a temporary variable or think to use the ternary operator.
 
 Yes, I'm very grateful to Rector for teaching me these new approaches and making me a better programmer.
-:::
+
+</AlertBox>
 
 ## Last thing, make the change
 

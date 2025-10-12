@@ -35,7 +35,7 @@ Here is how to do:
 * open your browser and surf to [https://github.com/alexandreelise/frankenphp-joomla],
 * follow instructions given by Alexandre in his `Getting Started` readme file.
 
-:::tip Don't build the image yourself
+<AlertBox variant="info" title="Don't build the image yourself">
 My suggestion is to replace the `compose.yaml` file with the one below. Like this, you'll reuse the image publicly made available by Alexandre and don't need to build it yourself (much faster):
 
 <Snippet filename="compose.yaml">
@@ -77,7 +77,8 @@ volumes:
 
 </Snippet>
 
-:::
+
+</AlertBox>
 
 By running `docker compose pull`, Docker will download the two images; the one with FrankenPHP and Joomla and, the second, the one for MySQL. Depending on the speed of your Internet connection, this will take a few tens of seconds; only the first time.
 
@@ -85,28 +86,30 @@ Then, you just need to create containers based on the images by running `docker 
 
 ![Running FrankenPHP](./images/running_frankenphp.jpg)
 
-:::caution Please wait until MySQL is ready
+<AlertBox variant="highlyImportant" title="Please wait until MySQL is ready">
 You have now to wait **a few minutes** before the database connection is ready. You will have the feeling the installation fails due to a lot of `[ERROR] Connection refused` lines but just wait.
-:::
+</AlertBox>
 
 The fact is Joomla will try to connect to MySQL while the MySQL container is not ready to handle connections. You'll then see a lot of `[ERROR] Connection refused`. Stay patient and after a while, you'll get this:
 
 ![Joomla has been installed](./images/frankenphp_joomla_installed.jpg)
 
-:::note Logs can be different in your version
+<AlertBox variant="note" title="Logs can be different in your version">
 Depending on the version of the used Docker images, scripts and version of Joomla, the logs statements can differs in time.
-:::
+
+</AlertBox>
 
 When everything has been successfully done, just run surf to `https://localhost:443` to get your Joomla site running on FrankenPHP. To get access to your administrator page, surf to `https://localhost:443/administrator`. Credentials to use can be retrieved in the logs as showed by the red arrow on the image here above. You can retrieve them too using this command: `docker compose logs | grep -i "Here are your Joomla credentials:"`.
 
-:::note FrankenPHP is using SSL and thus https
+<AlertBox variant="note" title="FrankenPHP is using SSL and thus https">
 Please note that FrankenPHP is delivering your site using `https`. The way Alexandre has built his script, the port number is not fixed. To determine which port to use, start a new Linux console and run `docker container list` to get the list of running containers. You'll see the port to use to access to your FrankenPHP site in the `PORTS` column. Also displayed in your `Docker Desktop` Windows application, go then to the list of containers to get the port.
-:::
+
+</AlertBox>
 
 ![Joomla is now running on FrankenPHP](./images/frankenphp_joomla_homepage.jpg)
 
 You'll perhaps not see a major increase in speed on your machine since you're the only visitor but it's nice to think that you're surfing so fast ... locally ;).
 
-:::caution Ouch, it's terribly slow to run
+<AlertBox variant="highlyImportant" title="Ouch, it's terribly slow to run">
 To be honest, before being able to see my Joomla localhost homepage, I've wait more than 15 minutes (the first time). I would never have wait so long if I hadn't had to finish this chapter.
-:::
+</AlertBox>

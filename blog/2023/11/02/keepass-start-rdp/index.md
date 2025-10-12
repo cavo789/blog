@@ -26,9 +26,10 @@ To do this, even if you're not an administrator of your machine, just start a MS
 
 Update your KeePass entry and set the `URL` property to the following instruction: `cmd://putty.exe  -load "Default Settings" {S:host} -l {USERNAME} -pw {PASSWORD}`
 
-:::important
+<AlertBox variant="caution" title="">
 Make sure you have fill in the `host` advanced property.
-:::
+
+</AlertBox>
 
 ## Start WinSCP from KeePass
 
@@ -36,9 +37,10 @@ Make sure you have fill in the `host` advanced property.
 
 If you wish to open WinSCP and see files, you can achieve this by updating  your KeePass entry and set the `URL` property to the following instruction: `cmd://"{ENV_PROGRAMFILES_X86}\WinSCP\WinSCP.exe" sftp://{USERNAME}:{PASSWORD}@{S:ip}:{T-REPLACE-RX:/{S:port}/-1//}{S:path}`
 
-:::important
+<AlertBox variant="caution" title="">
 Make sure you have fill in the `ip` advanced property. You can also set the `port` and `path` properties; but they are optional.
-:::
+
+</AlertBox>
 
 ## Start a RDP/TS connection from KeePass
 
@@ -48,6 +50,7 @@ You can also start a remote desktop / terminal server connection from within Kee
 
 The URL has to be set like this: `cmd://mstsc.exe /v:{S:host} /f`
 
-:::important
+<AlertBox variant="caution" title="">
 Make sure you have fill in the `host` advanced property.
-:::
+
+</AlertBox>

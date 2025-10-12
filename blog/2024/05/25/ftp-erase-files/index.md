@@ -59,10 +59,12 @@ unlink(__FILE__);
 
 Start your browser, navigate to your website (`http://your_old_site.com`) and add `/erase.php` at the end to run the script.
 
-:::danger Make sure this is what you want
-:::danger Be really sure this is what you want
-:::danger Be extremely sure this is what you want
+<AlertBox variant="danger" title="Make sure this is what you want">
+Be really sure this is what you want
+</AlertBox>
+
+<AlertBox variant="danger" title="Be extremely sure this is what you want">
 The script will then start immediately and will remove everything without asking confirmation nor backup. Just killing files and folders.
 
 At the end of the process (i.e. in just a few seconds), the folder will be completely empty.
-:::
+</AlertBox>

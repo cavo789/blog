@@ -46,9 +46,10 @@ Back to your Windows environment and start `mstsc.exe` and set the computer name
 
 ![Start the RDP connection](./images/rdp_localhost.jpg)
 
-:::important
+<AlertBox variant="caution" title="">
 The connection is only possible when `xrdp` is started. So, if it didn't work, you know what to do (you can also run `sudo service xrdp status` to get detailed information's).
-:::
+
+</AlertBox>
 
 ![Authentication screen](./images/authentication.jpg)
 
@@ -99,9 +100,10 @@ $ (
 
 Run `sudo service xrdp restart` to restart the Remote Desktop Protocol Server and start `mstsc.exe` again. Now, you should have the full desktop.
 
-:::tip
+<AlertBox variant="info" title="">
 When you don't need RDP anymore, free some resources by running `sudo service xrdp stop` in your Linux console.
-:::
+
+</AlertBox>
 
 ### Set your keyboard
 

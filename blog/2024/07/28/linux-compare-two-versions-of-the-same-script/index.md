@@ -202,9 +202,10 @@ function console::printBlue() {
 
 </Snippet>
 
-:::info The order has no important
+<AlertBox variant="info" title="The order has no important">
 Unlike a comparison with `diff`, the order in which the functions appear in the scripts is irrelevant, as we are sorting them.
-:::
+
+</AlertBox>
 
 ## Compare Bash scripts in two folders
 

@@ -26,9 +26,10 @@ To enable `GitHub actions`, we first need to create a file in the folder `.githu
 
 As you can see, I need three secrets, `${{ secrets.ftp_server }}`, `${{ secrets.ftp_login }}` and `${{ secrets.ftp_password }}`.
 
-:::tip Make sure to use a restricted FTP user
+<AlertBox variant="info" title="Make sure to use a restricted FTP user">
 Don't use a too privileged user. Create a new one, just for your blog and having access to only the output folder (like `/var/www/html/public`) where your blog should be deployed.
-:::
+
+</AlertBox>
 
 I need to create them in my Settings page for my repository: `https://github.com/cavo789/blog/settings/secrets/actions` i.e. `Settings` -> `Secrets and variables` -> `Actions`.
 

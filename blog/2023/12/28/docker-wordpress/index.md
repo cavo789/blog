@@ -24,9 +24,10 @@ But we can run Docker containers by hand and, in that case, no such file is need
 
 Using a network will allow containers to communicate with each other.
 
-:::caution You need a network, don't skip
+<AlertBox variant="caution" title="You need a network, don't skip">
 As soon as you've two or more containers, you need a network.
-:::
+
+</AlertBox>
 
 We'll create our. Please copy/paste the command below in a terminal (DOS or Linux) and run it.
 
@@ -68,9 +69,10 @@ As you can see, we don't need to pay attention to the `wp-config.php` file since
 
 ![Installing WordPress](./images/installing_wordpress.png)
 
-:::info Error establishing a database connection
+<AlertBox variant="info" title="Error establishing a database connection">
 If you get `Error establishing a database connection`, please wait a little before refreshing the web page. It means MySQL / Maria wasn't yet ready to handle the connection.
-:::
+
+</AlertBox>
 
 ## Optional, start phpmyadmin
 

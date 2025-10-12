@@ -31,9 +31,10 @@ This will imply a big number of files but the idea is then to reuse created comp
 
 First, we'll retrieve the [Reusable Card Component](https://docuxlab.com/blog/card-component-docusaurus-infima/) of our friend, [Docux](https://github.com/Juniors017). It's a set of files you've to create; let's proceed.
 
-:::info
+<AlertBox variant="info" title="">
 That one can be retrieved too on the [Docusaurus Community](https://docusaurus.community/knowledge/component-library/new/Card/) site but perhaps not up to date.
-:::
+
+</AlertBox>
 
 In your Docusaurus site, please create these files:
 
@@ -91,11 +92,12 @@ If you run your blog right now, you should get this:
 
 ![Docux card](./images/docux_sample.png)
 
-:::note
+<AlertBox variant="note" title="">
 If you want to retrieve the cute dino image, just grab it from here [https://github.com/Juniors017/docux-blog/blob/main/static/img/docux.png](https://github.com/Juniors017/docux-blog/blob/main/static/img/docux.png) and store it in your `/static/img` folder with `docux.png` as a name.
 
 You can reuse any other image for sure.
-:::
+
+</AlertBox>
 
 ## Nice, it's works. Let's continue with a practical sample
 
@@ -109,9 +111,10 @@ For instance, this:
 
 ![Before our tag override](./images/tag_before.png)
 
-:::info
+<AlertBox variant="info" title="">
 It can be nice but ... OK, I've to scroll a lot before see all articles and find the one that might interest me.
-:::
+
+</AlertBox>
 
 We'll change this to a list of post cards. As an example, on my blog, I'm also writing about  [python](https://www.avonture.be/blog/tags/python) and here is how I'm rendering the page:
 
@@ -451,9 +454,10 @@ i.e.
 
 We're almost finished!
 
-:::important
+<AlertBox variant="caution" title="">
 Please stop and restart your Docusaurus server. On my case (I'm using Docker), I just need to stop and restart my container.
-:::
+
+</AlertBox>
 
 If everything is going fine after the restart (no error message), please visit your website tags page and open a tag. You should now see your posts as cards.
 

@@ -26,9 +26,10 @@ In this first article in a series of two, we'll see how can create our Docusauru
 
 <!-- truncate -->
 
-:::tip
+<AlertBox variant="info" title="">
 In a second article, we'll also create interactions with Bluesky like retrieving the number of likes, reposts and comments posted on Bluesky and display them below our articles but that's for a next article.
-:::
+
+</AlertBox>
 
 Because I had absolutely no idea on how to start; let's asked some AI to generate a skeleton. I've asked something like "*Hello my friend, I would like to show a Bluesky share button below my article on my Docusaurus blog. Give me a skeleton; please.*"
 
@@ -42,9 +43,10 @@ The AI gives me the content but ... hey my friend, from where comes that content
 
 I also learn we can **extract** the original file by using the so-called **Swizzle** action.
 
-:::info
+<AlertBox variant="info" title="">
 In the Docusaurus terminology, Swizzle can be understood as override: we'll extract, here, a template so we can then override it.
-:::
+
+</AlertBox>
 
 The `src/theme/BlogPostItem/index.js` file will **customize the layout and content of individual blog posts** so, by updating that file, I can override then change how every single post of my blog will look like.
 
@@ -144,9 +146,10 @@ On the image here above, we can see our stupid message:
 
 ![Are you ready?](./images/are_you_ready.png)
 
-:::note
+<AlertBox variant="note" title="">
 If it didn't work, please stop and restart your Docusaurus server. On my case (I'm using Docker), I just need to stop and restart my container.
-:::
+
+</AlertBox>
 
 So, as you can see, it's now quite easy. We can change the layout of our Docusaurus page just by manipulating the `ìndex.js` file.
 
@@ -212,11 +215,12 @@ Ok, now, we've to create a second file called `src/components/Bluesky/share.js` 
 
 As you can see, we've defined a function called `BlueskyShare` and that function ask a parameter called `metadata`.
 
-:::info
+<AlertBox variant="info" title="">
 Look back in the `src/components/Bluesky/index.js` we've just created before. We had this line: `<BlueskyShare metadata={metadata} />` so, yes, we're well passing that parameter.
 
 The `metadata` parameter is an object initialized by Docusaurus and that will contain all the front matter data from the Markdown file of the current blog post. It includes properties like title, description, date, tags, and any other custom fields you've defined in the front matter.
-:::
+
+</AlertBox>
 
 What does the `BlueskyShare` function? In fact, we'll just provide a button with a url like `https://bsky.app/intent/compose?text=<title>%20<url>` (where we'll inject the blog post title and url).
 
@@ -302,9 +306,10 @@ export default function BlogPostItem({ children, className }) {
 
 Congratulations! If you go to a page on your blog and refresh the page, you will see the Bluesky button at the bottom of the page.
 
-:::note
+<AlertBox variant="note" title="">
 If it didn't work, please stop and restart your Docusaurus server. On my case (I'm using Docker), I just need to stop and restart my container.
-:::
+
+</AlertBox>
 
 ## Result
 

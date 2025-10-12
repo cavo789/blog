@@ -15,9 +15,10 @@ A long time ago, years from now, I needed to expose data from my Joomla site in 
 
 The aim was to find the list of people who had bought software or services from me. Among other things, I needed their first name, family name, billing address, etc. so that I could create an invoice in Microsoft Word using the mail merge functionality (data source=Excel).
 
-:::tip Real world use case
+<AlertBox variant="info" title="Real world use case">
 Oh, wait, so a web page that would execute a SQL query of the type `SELECT ... FROM ... WHERE ...` against the Joomla database, retrieve the records then display them in an HTML page so Excel can link the table and Word can retrieve them and generate f.i. pdf. Cool, isn't it?
-:::
+
+</AlertBox>
 
 Of course, just running a query on your database and show the result as a web page can be really useful.
 
@@ -59,9 +60,10 @@ If you want to export that list to Excel, see the `Excel` button top left and cl
 
 Start Excel and click on the `Data` menu then in `Get & Transform Data`, click on the `From Web` button and paste the URL to your `showtable.php` script like this in my case: `http://localhost:8080/showtable.php?password=Joomla&format=raw`.
 
-:::caution The format should be raw
+<AlertBox variant="caution" title="The format should be raw">
 Make sure to add `&format=raw` for the URL. This is important so `showtable.php` knows he shouldn't add extra features like filtering or sortering options. Using RAW output, the script will only create a simple `<table></table>` HTML object and this will make life easier for Excel.
-:::
+
+</AlertBox>
 
 ![Accessing the table from within Excel](./images/excel_webdata.png)
 
@@ -71,9 +73,10 @@ And now, just right-click on the table in Excel and click then on `Refresh` to g
 
 You can give that Excel sheet to anyone like your client and tell him *Right click on the sheet to get an update from Joomla site.* Nothing more.
 
-:::caution
+<AlertBox variant="caution" title="">
 Yes! You should provide the password on the query string otherwise Excel won't be able to access the table. It's under your own responsibility to not show confidential data.
-:::
+
+</AlertBox>
 
 ## Using another password
 

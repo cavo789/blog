@@ -16,9 +16,10 @@ It's not something new, but it's probably not known well enough: by surfing on *
 
 Here is the blog in vscode.dev: [https://github.dev/cavo789/blog](https://github.dev/cavo789/blog).
 
-:::info Change the domain extension to github.dev
+<AlertBox variant="info" title="Change the domain extension to github.dev">
 You can achieve the same result by updating the URL and modify the `.com` extension to `.dev`
-:::
+
+</AlertBox>
 
 ## But what's the point? Why would I need it
 

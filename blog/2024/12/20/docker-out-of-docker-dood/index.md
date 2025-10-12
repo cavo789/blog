@@ -133,9 +133,9 @@ Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docke
 
 It didn't work anymore.
 
-:::important DooD should be able to access to the Docker daemon
+<AlertBox variant="highlyImportant" title="DooD should be able to access to the Docker daemon">
 As you can see, you should share your Docker socket (i.e. the file called `/var/run/docker.sock` on your host) with the container.
-:::
+</AlertBox>
 
 Type `exit` again, quit the container, update the `compose.yaml` file again like before (remove the commented lines) and run `docker compose up --detach --build && docker compose exec dood /bin/sh` again.
 
@@ -274,13 +274,14 @@ Jump in the container once more: `docker compose up --detach --build && docker c
 
 And try `docker ps` again; it works. You can now have access to all Docker commands again like `docker image list`.
 
-:::warning Still didn't work?
+<AlertBox variant="caution" title="Still didn't work?">
 It should work. If not, please make sure you've the latest Docker version (the one I've used for this tutorial is Docker Desktop v4.42.1).
 
 Inside your container, please run `ls -alh /var/run/docker.sock` to look at the permissions of the Docker socket inside the container. You'll see the file is owned by the `root` user **BUT SHOULDN'T BE** owned by `root`. If you see `root` for both the user and the group, you've find why it didn't work. Your unprivileged used isn't member of the `root` group but he's well member of the `docker` group (the one having group id `1001`).
 
 By running `ls -alh /var/run/docker.sock`, you should see `1001` (or `docker`) for the group.
-:::
+
+</AlertBox>
 
 ### What is this group 1001?
 
@@ -288,9 +289,10 @@ As said, to be able to run DooD as a unprivileged user, you should be a member o
 
 One way to retrieve that ID is to run `getent group docker | cut -d: -f3`.  You'll most probably see `1001` since it's the standard ID for that group.
 
-:::note
+<AlertBox variant="note" title="">
 As you've seen, I've not hardcoded the ID in the proposed yaml file but I've defined an operating system variable called `DOCKER_GROUPID` and, if that variable didn't exist, I'm using value `1001`.
-:::
+
+</AlertBox>
 
 So, to make the script robust, we just need to initialise the `DOCKER_GROUPID`variable before building the image:
 
@@ -304,9 +306,10 @@ Running Docker-out-of-Docker is a container running as root is quite easy, you j
 
 It's not so easy if you're using an unprivileged user but, well easy, as soon as you've found the right way: using the `group_add` property and retrieve the ID of the local `docker` group.
 
-:::note
+<AlertBox variant="note" title="">
 Don't try `group_add` with `docker` (the group name) instead the ID; it won't work.
-:::
+
+</AlertBox>
 
 ## Special thanks 🙏
 

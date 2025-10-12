@@ -42,9 +42,10 @@ In pure HTML, we can use the `<summary>` DOM element like this:
 </details>
 ```
 
-:::tip
+<AlertBox variant="info" title="">
 It works but ... can we do better. I think to f.i. add an icon based on the language type, also do color's distinction between language and much, much better, don't copy/paste the code anymore in the article but just read it from the disk.
-:::
+
+</AlertBox>
 
 In this article we'll learn how to create a `Snippets` component and get this look&feel:
 
@@ -143,13 +144,14 @@ Let's imagine this:
   - When previewing the site (dev mode), a plugin will read the content immediately from the disk and will inject its content. So, if the sourced file is updated, your article will always be up-to-date
   - When building the static version (prod mode), the Docusaurus build engine will also read the content of the file from the disk and inject it in your article.
 
-:::caution
+<AlertBox variant="caution" title="">
 You've two types of paths: from your root folder or relative to the blog post.
 
 If you use the `source="./files/example.js"` syntax (the path is starting with a dot), the file will be relative to your blog post.
 
 The second possible syntax is without the dot like `source="src/components/Blog/Snippet/index.js"` and, in this case, the filename will be relative to your Docusaurus root folder i.e. the folder where the `docusaurus.config.js` file is saved.
-:::
+
+</AlertBox>
 
 ### To make this working, a need a plugin
 

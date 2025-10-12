@@ -29,9 +29,10 @@ It sounds crazy, no? Windows will then *convert* the Linux `/home/christophe/rep
 
 Now, I can use Windows explorer to manage files / folders like I did since decades on Windows.
 
-:::info Windows 11
+<AlertBox variant="info" title="Windows 11">
 If you are running on Windows 11, the UNC is `\\wsl$\`, no more `\\wsl.localhost\`.
-:::
+
+</AlertBox>
 
 ## WSL localhost is not accessible
 
@@ -51,6 +52,7 @@ When done, please reboot your computer.
 
 ![Editing the registry](./images/registry.png)
 
-:::note
+<AlertBox variant="note" title="">
 If it still didn't work, remove `cbfsconnect2017` from the list and try again.
-:::
+
+</AlertBox>
