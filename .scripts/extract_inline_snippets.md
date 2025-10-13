@@ -8,7 +8,7 @@ The script searches for custom `<Snippet>` tags in your Markdown files:
 
 **Before:**
 
-```markdown
+````markdown
 <Snippet filename="compose.yaml">
 
 ```yaml
@@ -18,6 +18,7 @@ services:
 ```
 
 </Snippet>
+````
 
 **After Running the Script:**
 
@@ -35,6 +36,16 @@ services:
     ```markdown
     <Snippet filename="compose.yaml" source="./files/compose.yaml" />
     ```
+
+So, in short, the script will externalize the content of a `<Snippet>` tag by putting the content in an external file.
+
+Among other advantages:
+
+* The `.md` file size is smaller,
+* You can focus on the content of the article
+* If you modify the external file (from the `files/` folder), the article is automatically updated
+* It is easier to format both the Markdown file and external files with the appropriate tools,
+* ...
 
 ### Key Features
 
