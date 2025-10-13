@@ -7,7 +7,7 @@ description: Learn how to design a Docker setup that delivers a secure, minimal 
 mainTag: docker
 tags: [devcontainer, docker, tips]
 date: 2025-10-13
-blueskyRecordKey:
+blueskyRecordKey: 3m32ko2ssss2z
 ---
 <!-- cspell:ignore groupid,Debugpy -->
 

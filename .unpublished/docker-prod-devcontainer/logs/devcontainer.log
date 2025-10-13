@@ -1,0 +1,54 @@
+name: my_sample
+services:
+  app:
+    build:
+      context: /tmp/docker-prod-devcontainer/.devcontainer
+      dockerfile: Dockerfile
+      args:
+        APP_ENV: DEV
+        OS_GROUPID: "1000"
+        OS_USERID: "1000"
+        OS_USERNAME: vscode
+        PYTHON_VERSION: "3.13"
+    command:
+      - sleep
+      - infinity
+    container_name: my_sample_devcontainer_app
+    environment:
+      PYTHON_VERSION: "3.13"
+    image: my_sample_prod:latest
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8000"
+        protocol: tcp
+      - mode: ingress
+        target: 5679
+        published: "5679"
+        protocol: tcp
+    security_opt:
+      - no-new-privileges:true
+    user: 1001:1001
+    volumes:
+      - type: bind
+        source: /tmp/docker-prod-devcontainer
+        target: /app
+        bind:
+          create_host_path: true
+      - type: volume
+        source: vscode-extensions
+        target: /home/vscode/.vscode-server/extensions
+        volume: {}
+      - type: bind
+        source: /tmp/docker-prod-devcontainer/.devcontainer/history/.bash_history
+        target: /home/vscode/.bash_history
+        bind:
+          create_host_path: true
+networks:
+  default:
+    name: my_sample_default
+volumes:
+  vscode-extensions:
+    name: my_sample_vscode-extensions
