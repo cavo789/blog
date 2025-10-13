@@ -31,67 +31,27 @@ $ sudo apt-get update && sudo apt-get -y install make
 
 You can use the `test -s` statement like below:
 
-<Snippet filename="makefile">
-
-```makefile
-    @test -s .config/phpunit.xml || echo "phpunit.xml didn't exist"
-
-    @test -s .config/phpunit.xml && echo "phpunit.xml exists"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile" />
 
 Unlike the `ifeq` statement, `test` should be indented.
 
 We can use the `{ ... }` notation if we need to run more than one command; f.i.:
 
-<Snippet filename="makefile">
-
-```makefile
-    @test -s .config/phpunit.xml || { echo "phpunit.xml file is missing, please take actions! Exiting..."; exit 1; }
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part2" />
 
 We can also do this before, f.i., includes an external file:
 
-<Snippet filename="makefile">
-
-```makefile
-ifneq ("$(wildcard .env)","")
-	include .env
-endif
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part3" />
 
 Of course, we can also keep it simple i.e. just use the `-` before the command to ignore errors so, below, if the file didn't exist, no error will be raised and the script will continue.
 
-<Snippet filename="makefile">
-
-```makefile
--include .env
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part4" />
 
 ## How to check if a folder exists or not
 
 You can use the `ifeq` statement with a Linux shell command like below:
 
-<Snippet filename="makefile">
-
-```makefile
-ifeq ($(shell test -e vendor/a/b/c || echo -n no),no)
-    @echo "The folder didn't exist"
-endif
-
-ifeq ($(shell test -e vendor/a/b/c && echo -n yes),yes)
-    @echo "The folder exists"
-endif
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part5" />
 
 Unlike the `test` statement, `ifeq` should be used without indentation. Directly at position column zero.
 
@@ -99,21 +59,7 @@ Unlike the `test` statement, `ifeq` should be used without indentation. Directly
 
 By running `make php-cs-fixer`, we'll first run `vendor` then `update-them`, finally `php-cs-fixer` i.e. we can define a list of dependent targets.
 
-<Snippet filename="makefile">
-
-```makefile
-php-cs-fixer: vendor update-them
-	@echo "And finally run php-cs-fixer"
-    vendor/bin/php-cs-fixer
-
-vendor:
-	@echo "First get vendors"
-
-update-them:
-	@echo "Then update vendors"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part6" />
 
 <Terminal>
 $ make php-cs-fixer
@@ -126,22 +72,7 @@ And finally run php-cs-fixer
 
 If one of them fails, the script will stop.  In the example below, `php-cs-fixer` will never print `And finally run php-cs-fixer`.
 
-<Snippet filename="makefile">
-
-```makefile
-php-cs-fixer: vendor update-them
-	@echo "And finally run php-cs-fixer"
-    vendor/bin/php-cs-fixer
-
-vendor:
-	@echo "First get vendors"
-
-update-them:
-	@echo "Then update vendors"
-	exit 2 && echo "Oups, an error has occurred"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part7" />
 
 Running `make php-cs-fixer` will output this:
 
@@ -157,15 +88,7 @@ Imagine you've a lot of `.md` files in the directory. If one change, we'll conca
 
 This can be done using a shell command for the dependence:
 
-<Snippet filename="makefile">
-
-```makefile
-concat: $(shell find *.md -type f)
-	$(shell concat.sh)
-
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part8" />
 
 (source [https://tech.davis-hansson.com/p/make/#specifying-inputs](https://tech.davis-hansson.com/p/make/#specifying-inputs))
 
@@ -173,14 +96,7 @@ concat: $(shell find *.md -type f)
 
 Running `make helloWorld` like below will output two lines on the console.
 
-<Snippet filename="makefile">
-
-```makefile
-helloWorld:
-	echo "Hello world"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part9" />
 
 And the output in the console:
 
@@ -191,14 +107,7 @@ Hello world
 
 To avoid the first one i.e. the output of the fired instruction, just prefix it with an at sign (`@`).
 
-<Snippet filename="makefile">
-
-```makefile
-helloWorld:
-	@echo "Hello world"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part10" />
 
 Now, only the output will be echoed; no more the instruction itself.
 
@@ -206,65 +115,26 @@ Now, only the output will be echoed; no more the instruction itself.
 
 We can make some conditional statement like this but, be careful on the indentation:
 
-<Snippet filename="makefile">
-
-```makefile
-init:
-ifeq ($(shell expr $(SET_PHP_VERSION) \>= 8), 1)
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Upgrade dependencies to PHP 8"
-else
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Downgrade dependencies to PHP 7"
-endif
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part11" />
 
 `make init SET_PHP_VERSION=7.4` will display the downgrade message while `make init SET_PHP_VERSION=8.1` the upgrade one.
 
 Another example:
 
-<Snippet filename="makefile">
-
-```makefile
-ifneq ("$(DB_TYPE)","")
-	echo "The DB_TYPE variable is not empty
-endif
-
-ifeq ("$(DB_TYPE)","")
-	echo "The DB_TYPE variable is empty
-endif
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part12" />
 
 ## Ignore error
 
 Don't stop in case of error: add a `-` before the line like :`-php --lint index.php`
 
-<Snippet filename="makefile">
-
-```makefile
-phplint:
-	-php --lint index.php
-	echo "Yes, this script will continue..."
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part13" />
 
 In case of linting error in `index.php` don't stop the execution of the script and process the next command.
 
 
 Note: makefile can perhaps display a message like `make: [makefile:114: up] Error 1 (ignored)` to inform the user an error has occurred but has been skipped.  If you don't want it at all (silent output), this is how to do:
 
-<Snippet filename="makefile">
-
-```makefile
-[...]
-	@-docker network create -d bridge my_network >/dev/null 2>&1 || true
-[...]
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part14" />
 
 This command will create a new Docker network called `my_network` and if case of error (the network already exists f.i.), we don't care and don't want to see any output.
 
@@ -272,13 +142,7 @@ This command will create a new Docker network called `my_network` and if case of
 
 By default, `make` is using `/bin/sh`. This can be upgraded by adding this assignment at the top of the `makefile`:
 
-<Snippet filename="makefile">
-
-```makefile
-SHELL:=bash
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part15" />
 
 (source: [https://tech.davis-hansson.com/p/make/#always-use-a-recent-bash](https://tech.davis-hansson.com/p/make/#always-use-a-recent-bash))
 
@@ -286,33 +150,13 @@ SHELL:=bash
 
 By default, the first target defined in the file will be the default one i.e. the one fired when the user will just fire `make` on the command line.
 
-<Snippet filename="makefile">
-
-```makefile
-default: hello
-
-hello:
-	@echo "Hello World"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part16" />
 
 ## Substitution
 
 Consider `make convert INFILE=readme.md`
 
-<Snippet filename="makefile">
-
-```makefile
-outfile=$(INFILE:.md=.pdf)
-
-COLOR_BLUE:=34
-
-convert:
-	@printf "\e[1;${COLOR_BLUE}m%s\e[0m\n\n" "INPUT FILE IS ${INFILE}; OUTPUT WILL BE ${outfile}"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part17" />
 
 The syntax `outfile=$(INFILE:.md=.pdf)` will replace `.md` by `.pdf` so we can, in this example, derive the output file based on the input file.
 
@@ -320,28 +164,11 @@ The syntax `outfile=$(INFILE:.md=.pdf)` will replace `.md` by `.pdf` so we can, 
 
 The indentation to use when creating a `makefile` is the tabulation; not spaces. Using spaces will break the file.
 
-<Snippet filename="makefile">
-
-```makefile
-helloWorld:
-	echo "Hello World"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part18" />
 
 However it is possible to adapt this behavior using `.RECIPEPREFIX`:
 
-<Snippet filename="makefile">
-
-```makefile
-.RECIPEPREFIX = >
-
-changeExt:
-### This is a comment
-> @printf "%s\n" "It works"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part19" />
 
 (source: [https://tech.davis-hansson.com/p/make/#dont-use-tabs](https://tech.davis-hansson.com/p/make/#dont-use-tabs))
 
@@ -355,30 +182,13 @@ $ make hello firstname="Christophe"
 
 This will create a variable called `firstname`, we then can use it:
 
-<Snippet filename="makefile">
-
-```makefile
-hello:
-	@echo "Hi ${firstname}!"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part20" />
 
 ### Make sure parameters are set
 
 Imagine we want to run `make runsql SQL='SELECT * FROM users LIMIT 10'` i.e. the `SQL`argument should be defined otherwise we'll have a problem.
 
-<Snippet filename="makefile">
-
-```makefile
-COLOR_RED:=31
-COLOR_YELLOW:=33
-
-runsql:
-	@[ "${SQL}" ] && printf "\e[1;${COLOR_YELLOW}m\n%s\e[0m\n\n" "Running ${SQL}" || ( printf "\e[1;${COLOR_RED}m\n%s\e[0m\n\n" "ERROR - Please set the SQL to execute; consult the help if needed"; exit 1 )
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part21" />
 
 ## Working with Docker
 
@@ -386,35 +196,12 @@ In a makefile we can exit the command if we need a given Docker container runnin
 
 The `if` statement below will make sure the `sonarqube` container is running; if not because not yet created or in a exit mode f.i., an error statement will be executed and the script will be stopped.
 
-<Snippet filename="makefile">
-
-```makefile
-sonar-scan:
-ifeq ($(shell docker ps -a -q -f name=sonarqube -f status=running),)
-    ### The sonarqube container didn't exist yet or not running (exit mode f.i.)
-	@printf $(_RED) "ERROR - Please first run \"make sonar-server\""
-	exit 1
-endif
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part22" />
 
 The `if` below will check if the container exists and if not, will create it.
 The `else` statement knows thus that the container exists but will make sure it's running.
 
-<Snippet filename="makefile">
-
-```makefile
-ifeq ($(shell docker ps -a -q -f name=sonarqube),)
-    ### The sonarqube container didn't exist yet, create it.
-	docker run -d --name sonarqube sonarqube:latest
-else
-    ### Make sure the container is running
-	-@docker container start sonarqube > /dev/null 2>&1
-endif
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part23" />
 
 ## Configure Visual Studio Code
 
@@ -426,19 +213,7 @@ endif
 
 Make sure your `Makefile` file is correctly formatted; add a file called `.editorconfig` in your root directory.
 
-<Snippet filename=".editorconfig">
-
-```ini
-[*]
-end_of_line = lf
-insert_final_newline = true
-
-[Makefile]
-indent_style = tab
-indent_size = 4
-```
-
-</Snippet>
+<Snippet filename=".editorconfig" source="./files/.editorconfig" />
 
 ## Some tips
 
@@ -448,17 +223,7 @@ You've an existing target, let's say `hello` in our example, and you wish to ext
 
 `hello` can be defined in the same makefile or in an included one but let's illustrate this with a basic example: we wish to add the *Nice to meet you* output.
 
-<Snippet filename="makefile">
-
-```makefile
-hello:
-	@echo "Hello world"
-
-hello:
-	@echo "Nice to meet you"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part24" />
 
 If we run that file, here is the output.
 
@@ -471,20 +236,7 @@ Nice to meet you
 
 The solution: use `::` (this is called an *explicit rule*) and not a single `:` after the recipe; see the next sample:
 
-<Snippet filename="makefile">
-
-```makefile
-hello::
-	@echo "Hello world"
-
-hello::
-	@echo "Nice to meet you"
-
-hello::
-	@echo "Did you any plans for this weekend?"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part25" />
 
 If we run that file, here is the output.
 
@@ -499,16 +251,7 @@ Recipes are just extended, the second one is appended to the first and so on so 
 
 ### Getting the current directory into a variable
 
-<Snippet filename="makefile">
-
-```makefile
-PWD:=$(shell pwd)
-
-current_dir:
-	@echo "The current directory is ${PWD}"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part26" />
 
 ### Get a list of files and initialize a variable
 
@@ -518,14 +261,7 @@ The objective is to initialize an environment variable called `COMPOSE_FILE` (se
 
 So, getting the list of `compose*.yaml` can be done like this:
 
-<Snippet filename="makefile">
-
-```makefile
-DOCKER_YAML_FILES := $(shell find ./.docker -name 'compose*.yaml')
-DOCKER_YAML_FILES := $(shell echo "$(DOCKER_YAML_FILES)" | tr ' ' ':')
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part27" />
 
 The first line will return f.i. `compose.yaml compose.override.yaml compose.mysql.yaml`.
 
@@ -535,37 +271,15 @@ We'll thus obtain `compose.yaml:compose.override.yaml:compose.mysql.yaml`.
 
 Now, to run `docker compose config` for instance, we just need to do the following i.e. first declare the `COMPOSE_FILE` environment variable then run the desired action.
 
-<Snippet filename="makefile">
-
-```makefile
-.PHONY: config
-config:
- COMPOSE_FILE=${DOCKER_YAML_FILES} docker compose config
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part28" />
 
 ### Getting information from the .env file
 
 Getting a value from a `.env` file is easy, just include it then use variables:
 
-<Snippet filename=".env">
-```ini
-DOCKER_IMAGE=cavo789/my_image
-```
+<Snippet filename=".env" source="./files/.env" />
 
-</Snippet>
-
-<Snippet filename="makefile">
-
-```makefile
-include .env
-
-helloDocker:
-	@echo "The name of the image is ${DOCKER_IMAGE}"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part29" />
 
 This `include` tip will work with any file defining a variable and his value
 
@@ -579,62 +293,27 @@ That variable can be set to `local`, `test` or whatever you want. Will be set to
 
 So, based on that variable, we can define a variable like this:
 
-<Snippet filename="makefile">
-
-```makefile
-ifeq ($(APP_ENV), production)
-	CMD:=
-else
-	CMD:=docker compose exec my_docker_image
-endif
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part30" />
 
 This means: if we're not running in production, every command will be fired inside our Docker container. If running in production, the command will be executed directly.
 
 Here is an example:
 
-<Snippet filename="makefile">
-
-```makefile
-composer-update:
-	${CMD} composer update --no-interaction
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part31" />
 
 #### Use a default value if the variable is not defined
 
 If the OS environment variable `PHP_VERSION` is not defined, set its default value to `8.1`
 
-<Snippet filename="makefile">
-
-```makefile
-PHP_VERSION := $(or $(PHP_VERSION),8.1)
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part32" />
 
 Another example can be: imagine you've a `.env` file with the `DOCKER_APP_HOME` variable. But, if the variable is not defined, by using the syntax below, you can set a default value.
 
-<Snippet filename="makefile">
-
-```makefile
-echo $(or ${DOCKER_APP_HOME},/var/www/html)
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part33" />
 
 This will allow things like below i.e. target a custom version of a Docker image based on the selected PHP version.
 
-<Snippet filename="makefile">
-
-```makefile
-DOCKER_PHPQA:=jakzal/phpqa:php${PHP_VERSION}-alpine
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part34" />
 
 ##### Override a variable
 
@@ -650,20 +329,7 @@ This will start the `yamllint` target with `PHP_VERSION` set to `8.1` even if th
 
 The use case is: we have a variable called `PHP_VERSION` and we need to detect if we need to deal with PHP 7 code or PHP 8 or greater.
 
-<Snippet filename="makefile">
-
-```makefile
-IS_PHP_7 := $(shell [[ $(PHP_VERSION) =~ 7[0-9.]+$$ ]] && echo "yes")
-
-doThing:
-ifdef IS_PHP_7
-	@echo "Hey, it's an old version of PHP, why not migrate to PHP 8?"
-else
-	@echo "Nice! You're using PHP 8 or greater"
-endif
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part35" />
 
 Since Makefile didn't support regexes, we rely on the `shell` for running the regex and to return a non-empty string if the expression is matched. In that case, the `IS_PHP_7` variable is defined and the `ifdef` construction will be verified.
 
@@ -680,19 +346,7 @@ Using the "--quiet" argument in ARGS.
 * Verbose mode: run `make testme` on the command line
 * Silent  mode: run `make testme ARGS="--quiet"` on the command line
 
-<Snippet filename="makefile">
-
-```makefile
-QUIET=$(if $(findstring --quiet,${ARGS}),true,false)
-
-testme:
-ifeq ($(QUIET),false)
-	@printf '\e[1;30m%s\n\e[m' "QUIET MODE NOT ENABLED - We'll show any informative text."
-endif
-	@printf '\e[1;32m%s\n\n\e[m' "This is an important message"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part36" />
 
 The code above define a global variable `QUIET` that will be set to `true` or `false` depending on the presence of the `--quiet` keyword in `ARGS`.
 
@@ -706,51 +360,19 @@ By running `make testme ARGS="--quiet"` only *This is an important message* will
 
 Retrieve some important variables from the shell:
 
-<Snippet filename="makefile">
-
-```makefile
-GIT_CURRENT_BRANCH:=$(shell git rev-parse --abbrev-ref HEAD)
-
-GIT_ROOT_DIR:=$(shell git rev-parse --show-toplevel)
-
-GIT_URL_REPO:=$(shell git config --get remote.origin.url | sed -r 's:git@([^/]+)\:(.*\.git):https\://\1/\2:g' | grep -Po '.*(?=\.)')
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part37" />
 
 #### Some git targets
 
 When variables have been initialized, we can do things like this:
 
-<Snippet filename="makefile">
-
-```makefile
-git_open_repo:
-	@sensible-browser ${GIT_URL_REPO}
-
-git_open_pipeline:
-	@sensible-browser ${GIT_URL_REPO}/pipelines
-
-git_open_wiki:
-	@sensible-browser ${GIT_URL_REPO}/-/wikis/home
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part38" />
 
 #### Git - Work in progress
 
 Run `make git_wip` to quickly push your changes to the remote repository and skip the local hooks:
 
-<Snippet filename="makefile">
-
-```makefile
-git_wip:
-	git add .
-	git commit -m "wip --no-verify
-	git push
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part39" />
 
 ### Working with PHP project and vendors
 
@@ -762,17 +384,7 @@ If no changes have been made to the `composer.json` file, nothing has to be done
 
 Pretty easy.
 
-<Snippet filename="makefile">
-
-```makefile
-composer.lock: composer.json
-	${CMD} composer update --no-interaction
-
-vendor: composer.lock
-	${CMD} composer install
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part40" />
 
 To run the scenario, just run `make vendor`.
 
@@ -780,131 +392,25 @@ To run the scenario, just run `make vendor`.
 
 The portion below can just be copied/pasted in your own `Makefile` to add quality controls features based on the [https://github.com/jakzal/phpqa](https://github.com/jakzal/phpqa) Docker image.
 
-<Snippet filename="makefile">
-
-```makefile
-COLOR_BLUE:=34
-COLOR_CYAN:=36
-COLOR_YELLOW:=33
-
-#### region - Implement `Quality Assurance` features; relying on the jakzal/phpqa Docker image)
-#### Define the Docker image to use for PHPQA (https://github.com/jakzal/phpqa)
-#! PHP_VERSION should be defined in the `.env` file
-PHP_VERSION:=$(or $(PHP_VERSION),8.1)
-
-DOCKER_PHPQA:=jakzal/phpqa:php${PHP_VERSION}-alpine
-
-#### The full "docker run" command to be able to run a command in the jakzal/phpqa container
-DOCKER_PHPQA_ARGS:=-it --rm -v ${PWD}:/project -w /project -v ${PWD}/.output/tmp-phpqa:/tmp
-
-#### Get the current user/group ID and define the docker "-u" argument
-DOCKER_PHPQA_UID_GID:=-u $(shell id -u):$(shell id -g)
-
-#### Finally, the final command for running a command in the jakzal/phpqa container
-DOCKER_PHPQA_COMMAND:=docker run ${DOCKER_PHPQA_ARGS} ${DOCKER_PHPQA_UID_GID} ${DOCKER_PHPQA}
-
-##### Run PHAN and report problems
-phan:
-	clear
-    #### This is how to define a local variable
-	$(eval COMMAND := $(shell echo "phan --progress-bar --config-file .config/phan.php"))
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Report PHAN errors in your PHP files (no fix) using $(DOCKER_PHPQA)"
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Running \"${COMMAND}\""
-	@printf "\e[1;${COLOR_BLUE}m%s\e[0m\n\n" "Note: make sure your /vendor folder is populated..."
-	@docker run -it ${DOCKER_PHPQA_ARGS} ${DOCKER_PHPQA} phan --version
-	@echo ""
-	${DOCKER_PHPQA_COMMAND} ${COMMAND}
-
-##### Run PHP-CS-FIXER on the codebase IN A DRY-RUN MODE
-php-cs-fixer-dry-run:
-	clear
-    #### This is how to define a local variable
-	$(eval COMMAND := $(shell echo "php-cs-fixer fix --verbose --config=/project/.config/.php-cs-fixer.php --using-cache=no --diff"))
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Report code formatting issues in your PHP files (no fix) using $(DOCKER_PHPQA)"
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Running \"${COMMAND} --dry-run\""
-	${DOCKER_PHPQA_COMMAND} ${COMMAND} --dry-run
-
-##### Run PHP-CS-FIXER on the codebase and fix problems
-php-cs-fixer-fix:
-	clear
-    #### This is how to define a local variable
-	$(eval COMMAND := $(shell echo "php-cs-fixer fix --verbose --config=/project/.config/.php-cs-fixer.php --using-cache=no --diff"))
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Automatically fix formatting issues in your PHP files using $(DOCKER_PHPQA)"
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Running \"${COMMAND}\""
-	${DOCKER_PHPQA_COMMAND} ${COMMAND}
-
-##### PHP - Check the syntax of PHP files and report syntax errors if any
-phplint:
-	clear
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Check syntax validity of php files using $(DOCKER_PHPQA)"
-    #### https://github.com/overtrue/phplint
-	${DOCKER_PHPQA_COMMAND} phplint --no-cache --exclude=vendor
-
-##### YAML - Check the syntax of yaml files in the directory root folder and report syntax errors if any
-yamllint:
-	clear
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Check syntax validity of yaml files using $(DOCKER_PHPQA)"
-    #### https://github.com/j13k/yaml-lint
-    #### (it seems yaml-lint can't search in all the tree structure and *.yml won't get .gitlab-ci.yml; strange)
-	${DOCKER_PHPQA_COMMAND} yaml-lint .*.yml *.yml .install/CI/*.yml
-#### endregion
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part41" />
 
 ## Some functions
 
 ### Clean folders
 
-<Snippet filename="makefile">
-
-```makefile
-COLOR_YELLOW:=33
-
-clean:
-	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Remove node_modules and vendor folders"
-	rm --recursive --force node_modules/ vendor/
-	@printf "\e[1;${COLOR_YELLOW}m\n%s\e[0m\n\n" "Empty .cache, .output and storage/logs"
-	rm --recursive --force .cache/* .output/* storage/logs/*
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part42" />
 
 We can also test for the existence of the folder first:
 
-<Snippet filename="makefile">
-
-```makefile
-clean:
-	test ! -e vendor || rm -rf vendor
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part43" />
 
 ### Open a web browser
 
-<Snippet filename="makefile">
-
-```makefile
-open-browser:
-	@sensible-browser http://www.google.fr
-	@echo "The site has been opened in your browser"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part44" />
 
 This is pretty useful when you work with git repositories:
 
-<Snippet filename="makefile">
-
-```makefile
-GIT_URL_REPO:=$(shell git config --get remote.origin.url | sed -r 's:git@([^/]+)\:(.*\.git):https\://\1/\2:g' | grep -Po '.*(?=\.)')
-
-git_open_repo:
-	@sensible-browser ${GIT_URL_REPO}
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part45" />
 
 ### Self documenting makefile
 

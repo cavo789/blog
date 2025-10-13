@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        # Please update IDs below if you've another values by running "id -u" (UID) and "id -g" (GID) in your Linux console
+        - DOCKER_UID=1000
+        - DOCKER_GID=1000
+        # The name of the user in Docker; didn't have any importance
+        - USERNAME=johndoe
+    container_name: php-app
+    working_dir: /opt/behat
+    volumes:
+      # We'll synchronize our local project folder (on our machine) with the Docker container
+      - ./:/opt/behat

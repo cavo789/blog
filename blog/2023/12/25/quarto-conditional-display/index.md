@@ -23,7 +23,6 @@ And, if my goal is to generate a slideshow, the last part of my documentation wi
 
 <AlertBox variant="info" title="Docker image with Quarto">
 If you don't have yet a Docker image with Quarto, read this article <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link>.
-
 </AlertBox>
 
 ## content-visible when
@@ -32,7 +31,7 @@ The syntax is very easy since we need to use the special tag `:::` to delimit an
 
 Let's see in action; create a simple markdown file (`conditional-display.md`) on your disk and call quarto using `quarto render conditional-display.md --to xxx` and replace `xxx` by f.i. `docx`, `pdf`, `html`, `revealjs`, ...
 
-<Snippet filename="conditional-display.md">
+<Snippet filename="conditional_display.md">
 
 ```markdown
 # Conditional display
@@ -72,5 +71,4 @@ The `when-format="xxx"` is thus working exactly as expected.
 
 <AlertBox variant="info" title="`.content-hidden`">
 The exact opposite can be done using `.content-hidden`, see [documentation](https://quarto.org/docs/authoring/conditional.html#content-hidden).
-
 </AlertBox>

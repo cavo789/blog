@@ -32,31 +32,7 @@ Unzip it by running `unzip wordpress-develop-6.4.2.zip && rm wordpress-develop-6
 
 Please create a new file called `phpunit.xml` with this content, in your project's directory:
 
-<Snippet filename="phpunit.xml">
-
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<phpdocumentor
-    configVersion="3"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="https://www.phpdoc.org"
-    xsi:noNamespaceSchemaLocation="https://docs.phpdoc.org/latest/phpdoc.xsd"
->
-    <paths>
-        <output>./.phpdoc</output>
-        <cache>/tmp/phpdoc</cache>
-    </paths>
-    <version number="3.0.0">
-        <api>
-            <source dsn=".">
-                <path>src/</path>
-            </source>
-        </api>
-    </version>
-</phpdocumentor>
-```
-
-</Snippet>
+<Snippet filename="phpunit.xml" source="./files/phpunit.xml" />
 
 The configuration job is already finished.
 

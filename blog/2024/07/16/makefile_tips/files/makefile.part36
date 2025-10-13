@@ -1,0 +1,7 @@
+QUIET=$(if $(findstring --quiet,${ARGS}),true,false)
+
+testme:
+ifeq ($(QUIET),false)
+	@printf '\e[1;30m%s\n\e[m' "QUIET MODE NOT ENABLED - We'll show any informative text."
+endif
+	@printf '\e[1;32m%s\n\n\e[m' "This is an important message"

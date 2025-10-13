@@ -35,12 +35,24 @@
     "titleBar.activeForeground": "#e7e7e7",
     "titleBar.inactiveBackground": "#85690699",
     "titleBar.inactiveForeground": "#e7e7e799"
-},
+  },
   "peacock.remoteColor": "#856906",
   "markdownlint.config": {
     "MD010": false,
     "MD033": false,
     "MD034": false
   },
-  "cSpell.words": ["daggerize", "daggerized"]
+  "cSpell.words": [
+    "daggerize",
+    "daggerized"
+  ],
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  }
 }

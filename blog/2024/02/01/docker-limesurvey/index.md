@@ -24,42 +24,7 @@ Please start a Linux shell and run `mkdir -p /tmp/limesurvey && cd $_` to create
 
 Please then create a `compose.yaml` file in that folder with this content:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: limesurvey
-
-services:
-  limesurvey-app:
-    image: docker.io/martialblog/limesurvey:latest
-    container_name: limesurvey-app
-    restart: always
-    environment:
-      - DB_TYPE=mysql
-      - DB_HOST=limesurvey-db
-      - DB_NAME=limesurvey
-      - DB_USERNAME=admin
-      - DB_PASSWORD=admin
-      - ADMIN_USER=admin
-      - ADMIN_PASSWORD=admin
-      - ADMIN_NAME=admin
-      - ADMIN_EMAIL=admin@example.com
-    ports:
-      - 8080:8080
-    depends_on:
-      - limesurvey-db
-
-  limesurvey-db:
-    image: docker.io/mysql:latest
-    container_name: limesurvey-db
-    environment:
-      - MYSQL_USER=admin
-      - MYSQL_PASSWORD=admin
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=limesurvey
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 Now, simply run the following command to download (only the first time) required images (LimeSurvey and MySQL) and create the two containers:
 
@@ -117,57 +82,7 @@ Perhaps, if you want to test LimeSurvey over several days and keep your configur
 
 Here is an updated `compose.yaml` file to ask Docker to use self-managed volumes.
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: limesurvey
-
-services:
-  limesurvey-app:
-    image: docker.io/martialblog/limesurvey:latest
-    container_name: limesurvey-app
-    restart: always
-    environment:
-      - DB_TYPE=mysql
-      - DB_HOST=limesurvey-db
-      - DB_NAME=limesurvey
-      - DB_USERNAME=admin
-      - DB_PASSWORD=admin
-      - ADMIN_USER=admin
-      - ADMIN_PASSWORD=admin
-      - ADMIN_NAME=admin
-      - ADMIN_EMAIL=admin@example.com
-    // highlight-next-line
-    volumes:
-      // highlight-next-line
-      - limesurvey:/var/www/html/upload/surveys
-    ports:
-      - 8080:8080
-    depends_on:
-      - limesurvey-db
-
-  limesurvey-db:
-    image: docker.io/mysql:latest
-    container_name: limesurvey-db
-    // highlight-next-line
-    volumes:
-      // highlight-next-line
-      - data:/var/lib/mysql
-    environment:
-      - MYSQL_USER=admin
-      - MYSQL_PASSWORD=admin
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=limesurvey
-
-// highlight-next-line
-volumes:
-  // highlight-next-line
-  limesurvey:
-  // highlight-next-line
-  data:
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 
 <AlertBox variant="info" title="Want to learn more about volumes?">
 In that case, please read this blog post: <Link to="/blog/docker-volumes">Using volumes with Docker, use cases</Link>
@@ -193,47 +108,7 @@ For instance, we can see the version of MySQL used then was `mysql:5.7` (so, use
 
 Our `compose.yaml` will then become:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: limesurvey
-
-services:
-  limesurvey-app:
-    image: docker.io/martialblog/limesurvey:3.22.6_200219-apache
-    container_name: limesurvey-app
-    restart: always
-    environment:
-      - DB_TYPE=mysql
-      - DB_HOST=limesurvey-db
-      - DB_NAME=limesurvey
-      - DB_USERNAME=limesurvey
-      - DB_PASSWORD=secret
-      - ADMIN_USER=admin
-      - ADMIN_PASSWORD=admin
-      - ADMIN_NAME=admin
-      - ADMIN_EMAIL=admin@example.com
-    ports:
-      - 8080:80
-    depends_on:
-      limesurvey-db:
-        condition: service_healthy
-
-  limesurvey-db:
-    image: mysql:5.7
-    container_name: limesurvey-db
-    environment:
-      - MYSQL_USER=limesurvey
-      - MYSQL_PASSWORD=secret
-      - MYSQL_ROOT_PASSWORD=secret
-      - MYSQL_DATABASE=limesurvey
-    healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 10s
-      retries: 10
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part3.yaml" />
 
 <AlertBox variant="info" title="Using service_healthy">
 I've used the `depends_on` property for the `limesurvey-app` service and I've specified `condition: service_healthy`. This is a very cool feature: LimeSurvey, the PHP application, won't start before the database layer is running. Since LimeSurvey has to access the database, we just want to avoid some connectivity errors like *`nc: connect to limesurvey-db (xxxxx) port 3306 (tcp) failed: Connection refused`* or things like that.

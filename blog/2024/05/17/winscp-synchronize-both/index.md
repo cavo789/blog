@@ -20,28 +20,7 @@ I'm using such script for making a full backup of some of my folders to my Synol
 
 ## The script
 
-<Snippet filename="c:\temp\synchronize.txt">
-
-```batch
-option batch abort
-
-option confirm off
-
-open ftp://USERNAME:PASSWORD@HOST_OR_IP:PORT/
-
-option transfer ascii
-
-lcd "C:\Christophe"
-cd /Christophe
-
-synchronize remote -preservetime -transfer=automatic -filemask="|.git/"
-
-close
-
-exit
-```
-
-</Snippet>
+<Snippet filename="c:\temp\synchronize.txt" source="./files/c:\temp\synchronize.txt" />
 
 ## How to use
 

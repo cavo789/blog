@@ -1,0 +1,4 @@
+node_modules/**/*.markdown
+node_modules/**/*.md
+vendor/**/*.markdown
+vendor/**/*.md

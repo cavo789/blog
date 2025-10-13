@@ -115,40 +115,6 @@ Later in your article, you ask 'Please edit the file and make this and *please e
 
 With `// highlight-next-line`, it's really easy to highlight changes, for instance:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: kingsbridge
-
-services:
-  joomla:
-    image: joomla
-    restart: always
-    ports:
-      - 8080:80
-    environment:
-      - JOOMLA_DB_HOST=joomladb
-      - JOOMLA_DB_PASSWORD=example
-    // highlight-next-line
-    user: 1000:1000
-    // highlight-next-line
-    volumes:
-      // highlight-next-line
-      - ./site_joomla:/var/www/html
-
-  joomladb:
-    image: mysql:8.0.13
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=example
-    // highlight-next-line
-    user: 1000:1000
-    // highlight-next-line
-    volumes:
-      // highlight-next-line
-      - ./db:/var/lib/mysql
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 You can immediately see where I've made some changes in the file's content.

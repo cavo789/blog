@@ -1,0 +1,12 @@
+{
+    "callout": {
+        "prefix": "quarto-callout",
+        "body": [
+            ":::{.callout-${1|note,tip,warning,caution,important|}}",
+            "## ${2:title}",
+            "${3:body}",
+            ":::"
+        ],
+        "description": "Add a callout paragraph to your markdown file"
+    },
+}

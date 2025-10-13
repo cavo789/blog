@@ -33,26 +33,7 @@ So, perhaps, I'm still using *old-fashioned* syntax like doing a simple `if ... 
 
 Let's take a look at a very simple example (`sayHello.php`):
 
-<Snippet filename="sayHello.php">
-
-```php
-<?php
-
-function sayHello($firstname = '')
-{
-    if ($firstname == '') {
-        $text = 'Hello World!';
-    } else {
-        $text = 'Hello ' . $firstname;
-    }
-
-    return $text;
-}
-
-echo sayHello('Christophe');
-```
-
-</Snippet>
+<Snippet filename="sayHello.php" source="./files/sayHello.php" />
 
 Simple and effective, isn't it?  And, above all, the code is perfectly functional and well written, respecting all the layout conventions.
 
@@ -78,26 +59,7 @@ The next thing is to create a configuration file. You can use a standard one (to
 
 I suggest creating a `rector.php` file in your project with this content:
 
-<Snippet filename="rector.php">
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use Rector\Config\RectorConfig;
-
-return RectorConfig::configure()
-    ->withSkip(
-        [
-            '.git', 'node_modules','vendor'
-        ]
-    )
-    ->withPhpSets(php82: true)
-    ->withPreparedSets(codeQuality: true, deadCode: true, typeDeclarations: true);
-```
-
-</Snippet>
+<Snippet filename="rector.php" source="./files/rector.php" />
 
 For simplicity, create the `rector.php` file in your project's root directory.
 
@@ -195,20 +157,7 @@ class SomeClass
 
 So, back to our console, running `vendor/bin/rector process sayHello.php --dry-run rector.php` will show me, in the console, the new *refactored* version of my code:
 
-<Snippet filename="index.php">
-
-```php
-<?php
-
-function sayHello(string $firstname = ''): string
-{
-    return 'Hello ' . ($firstname == '' ? 'World!' : $firstname);
-}
-
-echo sayHello();
-```
-
-</Snippet>
+<Snippet filename="index.php" source="./files/index.php" />
 
 <AlertBox variant="caution" title="Am I happy with this? Oh yes!!!">
 Yes, I'm very happy and proud to see how my code is now better and easier to read.

@@ -62,31 +62,7 @@ $ docker exec -it tutorial psql -U postgres
 
 Copy/Paste the code below in your console. This will create a database called `api` with a table called `todos`; with two records. This will also create a `web_anon` user that we'll use with PostgREST to query our data:
 
-<Snippet filename="create_db.sql">
-
-```sql
-create schema api;
-
-create table api.todos (
-  id serial primary key,
-  done boolean not null default false,
-  task text not null,
-  due timestamptz
-);
-
-insert into api.todos (task) values
-  ('finish tutorial 0'), ('pat self on back');
-
-create role web_anon nologin;
-
-grant usage on schema api to web_anon;
-grant select on api.todos to web_anon;
-
-create role authenticator noinherit login password 'mysecretpassword';
-grant web_anon to authenticator;
-```
-
-</Snippet>
+<Snippet filename="create_db.sql" source="./files/create_db.sql" />
 
 Now, to leave the postgres console, just type `\q`.
 
@@ -105,28 +81,14 @@ You've now a file called `postgrest` in your folder.
 
 We need to create a configuration, please create a file called `tutorial.conf` with this content:
 
-<Snippet filename="tutorial.conf">
-
-```ini
-db-uri = "postgres://authenticator:mysecretpassword@localhost:5433/postgres"
-db-schemas = "api"
-db-anon-role = "web_anon"
-```
-
-</Snippet>
+<Snippet filename="tutorial.conf" source="./files/tutorial.conf" />
 
 <AlertBox variant="info" title="PostgREST will start as a service on port 3000 by default">
 The instruction `./postgrest tutorial.conf` will start a service. You can stop it by pressing <kbd>CTRL</kbd>-<kbd>C</kbd> but leave it right now and start a new console.
 
 Add the line below to your conf file if you wish to use another port; f.i. port `3001`:
 
-<Snippet filename="tutorial.conf">
-
-```ini
-server-port = 3001
-```
-
-</Snippet>
+<Snippet filename="tutorial.conf" source="./files/tutorial.part2.conf" />
 
 
 </AlertBox>

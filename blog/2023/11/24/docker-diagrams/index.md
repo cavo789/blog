@@ -22,24 +22,7 @@ Like always, for the demo, please start a Linux shell and run `mkdir -p /tmp/doc
 
 Please create a new file called `team.py` with this content:
 
-<Snippet filename="team.py">
-
-```python
-from diagrams import Diagram
-from diagrams.aws.compute import EC2
-from diagrams.aws.database import RDS
-from diagrams.aws.network import ELB
-
-with Diagram("My Team", show=False, direction="TB"):
-    ELB("Olivier") >> [
-        EC2("Christophe"),
-        EC2("Jason"),
-        EC2("Niki"),
-        EC2("Rudy"),
-        EC2("Stijn") ] >> RDS("Work together")
-```
-
-</Snippet>
+<Snippet filename="team.py" source="./files/team.py" />
 
 To run the conversion, go back to your console and run the following command:
 
@@ -62,30 +45,7 @@ Easy no?
 
 Another example:
 
-<Snippet filename="app/Providers/EventServiceProvider.php">
-
-```python
-from diagrams import Cluster, Diagram
-from diagrams.k8s.compute import Pod, StatefulSet
-from diagrams.k8s.network import Service
-from diagrams.k8s.storage import PV, PVC, StorageClass
-
-with Diagram("Stateful Architecture", show=False):
-    with Cluster("Apps"):
-        svc = Service("svc")
-        sts = StatefulSet("sts")
-
-        apps = []
-        for _ in range(3):
-            pod = Pod("pod")
-            pvc = PVC("pvc")
-            pod - sts - pvc
-            apps.append(svc >> pod >> pvc)
-
-    apps << PV("pv") << StorageClass("sc")
-```
-
-</Snippet>
+<Snippet filename="app/Providers/EventServiceProvider.php" source="./files/EventServiceProvider.php" />
 
 And the resulting image:
 

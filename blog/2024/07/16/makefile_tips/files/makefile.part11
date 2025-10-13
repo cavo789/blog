@@ -1,0 +1,6 @@
+init:
+ifeq ($(shell expr $(SET_PHP_VERSION) \>= 8), 1)
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Upgrade dependencies to PHP 8"
+else
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Downgrade dependencies to PHP 7"
+endif

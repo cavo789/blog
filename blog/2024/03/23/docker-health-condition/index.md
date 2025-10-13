@@ -17,20 +17,7 @@ Imagine a two services applications like Joomla (see my <Link to="/blog/docker-j
 <!-- truncate -->
 You've, roughly speaking, a `compose.yaml` file like this:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  joomla:
-    image: joomla
-    [...]
-
-  joomladb:
-    image: mysql:8.0.13
-    [...]
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 And, yeah, it works. You can execute `docker compose up --detach` and wait until the two services are up and soon or later, you'll got your application ready.
 
@@ -49,28 +36,7 @@ By searching on the Internet using `docker healthcheck` followed by the name of 
 
 For MySQL, we'll use the next one:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  joomla:
-    image: joomla
-    [...]
-
-  joomladb:
-    image: mysql:8.0.13
-    [...]
-    // highlight-next-line
-    healthcheck:
-      // highlight-next-line
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      // highlight-next-line
-      timeout: 20s
-      // highlight-next-line
-      retries: 10
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 
 The four lines here above informs Docker to check each 20 seconds and max 10 times the command defined by the `test` property. While that command didn't return `0`, the container will be considered as `unhealthy`. Then, hopefully, the command will return `0` and Docker will consider the service as `healthy`.
 
@@ -78,30 +44,7 @@ The four lines here above informs Docker to check each 20 seconds and max 10 tim
 
 Now, the second part is to create a dependency in our application. Back to the Joomla service (in our example), we'll add a `depends_on` property like below.
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  joomla:
-    image: joomla
-    [...]
-    // highlight-next-line
-    depends_on:
-      // highlight-next-line
-      joomladb:
-        // highlight-next-line
-        condition: service_healthy
-
-  joomladb:
-    image: mysql:8.0.13
-    [...]
-    healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 20s
-      retries: 10
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part3.yaml" />
 
 It's pretty self-explanatory, I think. Docker will pause the creation of the Joomla container (just the creation, not downloading the image or any previous step) while the `depends_on` service isn't healthy.
 

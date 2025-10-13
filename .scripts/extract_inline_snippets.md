@@ -1,0 +1,71 @@
+# Documentation Snippet Externalizer
+
+This Python script (`extract_inline_snippets.py`) automates the process of moving inline code blocks from Markdown documentation into separate, external files. This is useful for maintaining clean documentation while ensuring that code files can be easily referenced, reused, and managed.
+
+## 🚀 How It Works
+
+The script searches for custom `<Snippet>` tags in your Markdown files:
+
+**Before:**
+
+```markdown
+<Snippet filename="compose.yaml">
+
+```yaml
+services:
+  web:
+    image: nginx
+```
+
+</Snippet>
+
+**After Running the Script:**
+
+1. A directory named `files/` is created (relative to the Markdown file).
+2. A new file `files/compose.yaml` is created with the content:
+
+    ```yaml
+    services:
+      web:
+        image: nginx
+    ```
+
+3. The original Markdown block is replaced with:
+
+    ```markdown
+    <Snippet filename="compose.yaml" source="./files/compose.yaml" />
+    ```
+
+### Key Features
+
+| Feature | Description |
+| --- | --- |
+| **Path Handling** | Automatically strips directory paths from the `filename` attribute (e.g., `/etc/nginx/conf.d/default.conf` becomes `default.conf`). |
+| **Conflict Resolution** | If an external file already exists, the script appends a suffix (e.g., `default.conf.part2`). |
+| **Conditional Folder** | The `files/` subdirectory is only created if there is content to externalize. |
+| **Markdown Exclusion**| Snippets targeting files ending in `.md` are ignored and left in place. |
+
+## ⚙️ Setup and Usage
+
+### 1. Save the Script
+
+Save the Python code as `extract_inline_snippets.py`.
+
+### 2. Configure File Pattern
+
+Open `extract_inline_snippets.py` and set the `markdown_files_pattern` variable near the bottom of the script to match your documentation structure.
+
+```python
+# Recommended default: './**/*.md' to process all files recursively.
+markdown_files_pattern = './**/*.md' # <--- Adjust this if needed
+```
+
+### 3. Run the Script
+
+Navigate to your project's root directory in your terminal and run the script:
+
+```bash
+python extract_inline_snippets.py
+```
+
+The script will output its progress, showing which files are being processed and which external files are being created.

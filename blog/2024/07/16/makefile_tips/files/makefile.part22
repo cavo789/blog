@@ -1,0 +1,6 @@
+sonar-scan:
+ifeq ($(shell docker ps -a -q -f name=sonarqube -f status=running),)
+    ### The sonarqube container didn't exist yet or not running (exit mode f.i.)
+	@printf $(_RED) "ERROR - Please first run \"make sonar-server\""
+	exit 1
+endif

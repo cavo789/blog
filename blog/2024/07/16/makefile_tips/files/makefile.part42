@@ -1,0 +1,7 @@
+COLOR_YELLOW:=33
+
+clean:
+	@printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Remove node_modules and vendor folders"
+	rm --recursive --force node_modules/ vendor/
+	@printf "\e[1;${COLOR_YELLOW}m\n%s\e[0m\n\n" "Empty .cache, .output and storage/logs"
+	rm --recursive --force .cache/* .output/* storage/logs/*

@@ -1,0 +1,3 @@
+open-browser:
+	@sensible-browser http://www.google.fr
+	@echo "The site has been opened in your browser"

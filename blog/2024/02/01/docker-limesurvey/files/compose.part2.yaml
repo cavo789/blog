@@ -1,0 +1,45 @@
+name: limesurvey
+
+services:
+  limesurvey-app:
+    image: docker.io/martialblog/limesurvey:latest
+    container_name: limesurvey-app
+    restart: always
+    environment:
+      - DB_TYPE=mysql
+      - DB_HOST=limesurvey-db
+      - DB_NAME=limesurvey
+      - DB_USERNAME=admin
+      - DB_PASSWORD=admin
+      - ADMIN_USER=admin
+      - ADMIN_PASSWORD=admin
+      - ADMIN_NAME=admin
+      - ADMIN_EMAIL=admin@example.com
+    # highlight-next-line
+    volumes:
+      # highlight-next-line
+      - limesurvey:/var/www/html/upload/surveys
+    ports:
+      - 8080:8080
+    depends_on:
+      - limesurvey-db
+
+  limesurvey-db:
+    image: docker.io/mysql:latest
+    container_name: limesurvey-db
+    # highlight-next-line
+    volumes:
+      # highlight-next-line
+      - data:/var/lib/mysql
+    environment:
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=limesurvey
+
+# highlight-next-line
+volumes:
+  # highlight-next-line
+  limesurvey:
+  # highlight-next-line
+  data:

@@ -31,15 +31,7 @@ Please run `mkdir C:\tmp\pascal && cd C:\tmp\pascal` in a MS-DOS console to crea
 
 Please create a new file called `Hello.pas` with this content:
 
-<Snippet filename="Hello.pas">
-
-```pascal
-begin
-  writeln('Hello world! I''m a Turbo Pascal source code');
-end.
-```
-
-</Snippet>
+<Snippet filename="Hello.pas" source="./files/Hello.pas" />
 
 As you know, Pascal is a compiled language and should then be compiled into an `.exe`. The command below will do this:
 
@@ -83,33 +75,7 @@ I wrote this function in 1992 (published in the *SWAG* in 1997): [https://github
 
 Create the `Byte2Bin.pas` file on your disk with this content:
 
-<Snippet filename="Byte2Bin.pas">
-
-```pascal
-Function Byte2Bin (Chiffre : Byte) : String;
-
-Var I, Temp : Byte;
-    St      : String;
-
-Begin
-
-   St := '';
-
-   For I := 7 Downto 0 do Begin
-       Temp := (Chiffre and (1 shl I));
-       If (Temp = 0) then St := St + '0' Else St := St + '1';
-   End;
-
-   Byte2Bin := St;
-
-End;
-
-begin
-    WriteLn( Byte2Bin(197) );
-end.
-```
-
-</Snippet>
+<Snippet filename="Byte2Bin.pas" source="./files/Byte2Bin.pas" />
 
 <AlertBox variant="info" title="SHL for Shift left one position">
 The `shl` instruction will shift the number from on byte left.

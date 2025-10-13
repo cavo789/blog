@@ -23,21 +23,7 @@ Some people will say "Yes, but it's tedious to write these functions", but not a
 
 ## The bad scenario
 
-<Snippet filename="product.php">
-
-```php
-<?php
-
-namespace Cavo;
-
-class Product
-{
-    public string $name = '';
-    public float $price = 0;
-}
-```
-
-</Snippet>
+<Snippet filename="product.php" source="./files/product.php" />
 
 As you see `$name` is public so I can write things like below and it's ... OK.
 
@@ -55,25 +41,7 @@ By using a setter (a function called when the property is initialized) I can ver
 
 Let's create our class with private properties:
 
-<Snippet filename="product.php">
-
-```php
-<?php
-
-namespace Cavo;
-
-class Product
-{
-    private string $name = '';
-    private float $price = 0;
-
-    public function __construct()
-    {
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="product.php" source="./files/product.part2.php" />
 
 So, for each property, you need to write a function called `Getter` to read its contents and another function called `Setter` to modify it. It could be a hassle, but it's not, thanks to addon [PHP Getters & Setters](https://marketplace.visualstudio.com/items?itemName=phproberto.vscode-php-getters-setters).
 
@@ -97,41 +65,4 @@ $product->setPrice(-10);
 
 And the code using the class:
 
-<Snippet filename="product.php">
-
-```php
-//highlight-next-line
-public function getName(): string
-{
-    return $this->name;
-}
-
-//highlight-next-line
-public function setName(string $name): self
-{
-    // Force the product name to be written in lowercase
-    $this->name = strtolower($name);
-
-    return $this;
-}
-
-//highlight-next-line
-public function getPrice(): float
-{
-    return $this->price;
-}
-
-//highlight-next-line
-public function setPrice(float $price): self
-{
-    if ($price < 0) {
-        throw new \Exception("Negative prices are not correct; please review your code");
-    }
-
-    $this->price = $price;
-
-    return $this;
-}
-```
-
-</Snippet>
+<Snippet filename="product.php" source="./files/product.part3.php" />

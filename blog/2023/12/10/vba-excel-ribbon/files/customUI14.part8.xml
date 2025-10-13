@@ -1,0 +1,6 @@
+<button
+    id="customButton"
+    label="Button"
+    imageMso="HappyFace"
+    size="large"
+    onAction="OnButtonClicked" />

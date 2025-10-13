@@ -43,14 +43,12 @@ Below an example, just copy/paste it into the [editor](https://markmap.js.org/re
 - Daily.dev
 - Github
 
-
 ## Photo Sharing
 
 - Flicker
 - Pinterest
-```
 
-## Let's get an image directly
+```
 
 </Snippet>
 

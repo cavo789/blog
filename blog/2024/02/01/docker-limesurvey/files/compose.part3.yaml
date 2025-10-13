@@ -1,0 +1,35 @@
+name: limesurvey
+
+services:
+  limesurvey-app:
+    image: docker.io/martialblog/limesurvey:3.22.6_200219-apache
+    container_name: limesurvey-app
+    restart: always
+    environment:
+      - DB_TYPE=mysql
+      - DB_HOST=limesurvey-db
+      - DB_NAME=limesurvey
+      - DB_USERNAME=limesurvey
+      - DB_PASSWORD=secret
+      - ADMIN_USER=admin
+      - ADMIN_PASSWORD=admin
+      - ADMIN_NAME=admin
+      - ADMIN_EMAIL=admin@example.com
+    ports:
+      - 8080:80
+    depends_on:
+      limesurvey-db:
+        condition: service_healthy
+
+  limesurvey-db:
+    image: mysql:5.7
+    container_name: limesurvey-db
+    environment:
+      - MYSQL_USER=limesurvey
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=limesurvey
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10

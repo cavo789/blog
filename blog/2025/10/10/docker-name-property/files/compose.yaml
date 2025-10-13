@@ -1,0 +1,13 @@
+// highlight-next-line
+name: tools
+
+services:
+  memos:
+    image: neosmemo/memos:stable
+    container_name: memos
+    init: true
+    ports:
+      - "5230:5230"
+    volumes:
+      - ./data:/var/opt/memos
+    restart: unless-stopped

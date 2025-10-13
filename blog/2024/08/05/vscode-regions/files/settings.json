@@ -1,0 +1,10 @@
+{
+    "maptz.regionfolder": {
+        "[dockerfile]": {
+            "foldEnd": "\\# endregion",
+            "foldEndRegex": "\\# endregion[\\s]*(.*)$",
+            "foldStart": "\\# region [NAME],",
+            "foldStartRegex": "\\# region[\\s]*(.*)$"
+        }
+    }
+}

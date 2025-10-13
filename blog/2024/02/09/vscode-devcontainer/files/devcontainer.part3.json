@@ -1,0 +1,27 @@
+{
+    // ..
+    "customizations": {
+        "vscode": {
+            "settings": {
+                // ...
+                // highlight-next-line
+                "phpsab.executablePathCBF": "/usr/local/bin/phpcbf.phar",
+                // highlight-next-line
+                "phpsab.executablePathCS": "/usr/local/bin/phpcs.phar",
+                // highlight-next-line
+                "phpsab.fixerEnable": true,
+                // highlight-next-line
+                "phpsab.snifferShowSources": true,
+                // highlight-next-line
+                "phpsab.standard": "/var/www/html/.config/phpcs.xml",
+                // ...
+            },
+            "extensions": [
+                // ...
+                // highlight-next-line
+                "ValeryanM.vscode-phpsab",
+                // ...
+            ]
+        }
+    }
+}

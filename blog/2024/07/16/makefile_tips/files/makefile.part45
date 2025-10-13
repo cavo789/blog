@@ -1,0 +1,4 @@
+GIT_URL_REPO:=$(shell git config --get remote.origin.url | sed -r 's:git@([^/]+)\:(.*\.git):https\://\1/\2:g' | grep -Po '.*(?=\.)')
+
+git_open_repo:
+	@sensible-browser ${GIT_URL_REPO}

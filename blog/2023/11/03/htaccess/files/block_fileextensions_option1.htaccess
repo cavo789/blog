@@ -1,0 +1,2 @@
+RewriteCond %{REQUEST_FILENAME} !(.*)\.(bmp|css|eot|html?|icon?|jpe?g|js|gif|pdf|png|svg|te?xt|ttf|webp|woff2?|xml|zip)$
+RewriteRule . - [F]

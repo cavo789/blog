@@ -63,144 +63,13 @@ $ mkdir -p /tmp/oracle/dotnet/OracleConnector
 
 Let's create a Dockerfile:
 
-<Snippet filename="Dockerfile">
-
-```docker
-# cspell:ignore libaio1,instantclient,libclntsh,libocci,ldconfig
-
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-
-WORKDIR /app
-
-COPY OracleConnector/*.csproj ./OracleConnector/
-RUN dotnet restore ./OracleConnector/OracleConnector.csproj
-
-COPY OracleConnector/. ./OracleConnector/
-RUN dotnet publish ./OracleConnector/OracleConnector.csproj -c Release -o out
-
-FROM mcr.microsoft.com/dotnet/runtime:8.0 AS final
-
-WORKDIR /app
-
-COPY --from=build /app/out .
-
-# Install necessary Oracle Instant Client libraries
-ARG ORACLE_INSTANT_CLIENT_VERSION=21.12
-ARG ORACLE_DOWNLOAD_URL=https://download.oracle.com/otn_software/linux/instantclient/instantclient-basic-linuxx64.zip
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    unzip \
-    libaio1 \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN curl -sSL "${ORACLE_DOWNLOAD_URL}" -o instantclient.zip \
-    && mkdir -p /usr/lib/oracle/instantclient \
-    && unzip -qq instantclient.zip -d /usr/lib/oracle/instantclient \
-    && rm instantclient.zip \
-    && ln -s /usr/lib/oracle/instantclient/libclntsh.so.${ORACLE_INSTANT_CLIENT_VERSION}.1 /usr/lib/oracle/instantclient/libclntsh.so \
-    && ln -s /usr/lib/oracle/instantclient/libocci.so.${ORACLE_INSTANT_CLIENT_VERSION}.1 /usr/lib/oracle/instantclient/libocci.so \
-    && echo "/usr/lib/oracle/instantclient" > /etc/ld.so.conf.d/oracle-instantclient.conf \
-    && ldconfig
-
-ENTRYPOINT ["dotnet", "OracleConnector.dll"]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 Now, the DotNet part. We need two files: `OracleConnector/OracleConnector.csproj` and `OracleConnector.csproj/main.cs`.
 
-<Snippet filename="OracleConnector/OracleConnector.csproj">
+<Snippet filename="OracleConnector/OracleConnector.csproj" source="./files/OracleConnector.csproj" />
 
-<!-- cspell:disable -->
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.121" />
-  </ItemGroup>
-
-</Project>
-```
-
-<!-- cspell:enable -->
-
-</Snippet>
-
-<Snippet filename="OracleConnector/main.cs">
-
-<!-- cspell:disable -->
-
-```vbnet
-// cspell:ignore orclpdb1
-
-using Oracle.ManagedDataAccess.Client;
-using System;
-
-namespace OracleConnector
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            string dbHost = Environment.GetEnvironmentVariable("ORACLE_HOST") ?? "oracle-db";
-            string dbPort = Environment.GetEnvironmentVariable("ORACLE_PORT") ?? "1521";
-            string dbService = Environment.GetEnvironmentVariable("ORACLE_SERVICE") ?? "orclpdb1";
-            string dbUser = Environment.GetEnvironmentVariable("ORACLE_USER") ?? "system";
-            string dbPassword = Environment.GetEnvironmentVariable("ORACLE_PASSWORD") ?? "admin";
-
-            string connectionString = $"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST={dbHost})(PORT={dbPort})))(CONNECT_DATA=(SERVICE_NAME={dbService})));User ID={dbUser};Password={dbPassword};";
-
-            try
-            {
-                using (OracleConnection connection = new OracleConnection(connectionString))
-                {
-                    connection.Open();
-
-                    string sql = "SELECT employee_id, first_name, last_name, email FROM employees WHERE ROWNUM <= 25";
-
-                    using (OracleCommand command = new OracleCommand(sql, connection))
-                    using (OracleDataReader reader = command.ExecuteReader())
-                    {
-                        Console.WriteLine("\nEmployee ID | First Name           | Last Name            | Email");
-                        Console.WriteLine("------------|----------------------|----------------------|-------------------------");
-
-                        while (reader.Read())
-                        {
-                            int employeeId = reader.GetInt32(0);
-                            string firstName = reader.GetString(1);
-                            string lastName = reader.GetString(2);
-                            string email = reader.GetString(3);
-
-                            Console.WriteLine($"{employeeId,-12}| {firstName,-21}| {lastName,-21}| {email}");
-                        }
-                    }
-                }
-            }
-            catch (OracleException ex)
-            {
-                Console.WriteLine($"Error connecting to or querying Oracle: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
-            }
-        }
-    }
-}
-```
-
-<!-- cspell:enable -->
-
-</Snippet>
+<Snippet filename="OracleConnector/main.cs" source="./files/main.cs" />
 
 This is how your project looks like in VSCode:
 
@@ -222,53 +91,11 @@ $ mkdir -p /tmp/oracle/nodejs && cd $_
 
 Let's create a Dockerfile:
 
-<Snippet filename="Dockerfile">
-
-```docker
-# cspell:ignore libaio
-
-FROM node:20-alpine
-
-WORKDIR /app
-
-COPY package.json .
-
-RUN npm install -g npm@latest
-RUN npm install
-
-RUN apk add --no-cache --update curl unzip libaio
-
-COPY main.js .
-
-CMD ["npm", "start"]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part2" />
 
 We also need these files:
 
-<Snippet filename="package.json">
-
-<!-- cspell:disable -->
-
-```json
-{
-    "name": "oracle-connector-nodejs",
-    "version": "1.0.0",
-    "description": "Node.js script to connect to Oracle",
-    "main": "app.js",
-    "scripts": {
-      "start": "node main.js"
-    },
-    "dependencies": {
-      "oracledb": "^6.3.0"
-    }
-}
-```
-
-<!-- cspell:enable -->
-
-</Snippet>
+<Snippet filename="package.json" source="./files/package.json" />
 
 <Snippet filename="main.js" variant="js">
 
@@ -353,133 +180,13 @@ $ mkdir -p /tmp/oracle/php && cd $_
 
 And there, let's create a Dockerfile:
 
-<Snippet filename="Dockerfile">
-
-```docker
-# cspell:ignore instantclient,libaio1,libncurses5,libreadline8,ldconfig,pecl
-
-FROM php:fpm
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libaio1 \
-    libncurses5 \
-    libreadline8 \
-    locales \
-    unzip \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN locale-gen en_US.UTF-8
-ENV LANG=en_US.UTF-8
-ENV LANGUAGE=en_US:en
-ENV LC_ALL=en_US.UTF-8
-
-ARG ORACLE_INSTANT_CLIENT_VERSION=21.12
-
-# Downloading Oracle Instant Client
-RUN curl -o /tmp/instantclient-basic.zip -L "https://download.oracle.com/otn_software/linux/instantclient/instantclient-basic-linuxx64.zip" \
-    && curl -o /tmp/instantclient-sdk.zip -L "https://download.oracle.com/otn_software/linux/instantclient/instantclient-sdk-linuxx64.zip" \
-    && mkdir -p /usr/lib/oracle \
-    && unzip -o /tmp/instantclient-basic.zip -d /usr/lib/oracle \
-    && unzip -o /tmp/instantclient-sdk.zip -d /usr/lib/oracle \
-    && rm /tmp/*.zip \
-    && ln -s /usr/lib/oracle/instantclient_* /usr/lib/oracle/instantclient \
-    && sh -c "echo /usr/lib/oracle/instantclient > /etc/ld.so.conf.d/oracle-instantclient.conf" \
-    && ldconfig
-
-# Install OCI8 Extension
-RUN echo 'instantclient,/usr/lib/oracle/instantclient' | pecl install oci8 \
-    && docker-php-ext-enable oci8
-
-WORKDIR /app
-
-COPY main.php .
-
-CMD [ "php", "main.php" ]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part3" />
 
 Then let's create a PHP script (*generated using AI*)
 
 <!-- cspell:disable -->
 
-<Snippet filename="main.php">
-
-```php
-<?php
-
-declare(strict_types=1);
-
-// cspell:ignore orclpdb1,rownum,sqlt
-
-$dbUser = "system";
-$dbPassword = "admin";
-$dbHost = "oracle-db";
-$dbPort = "1521";
-$dbServiceName = "orclpdb1";
-
-$connection = null;
-$statement = null;
-
-try {
-    $dsn = "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST={$dbHost})(PORT={$dbPort})))(CONNECT_DATA=(SERVICE_NAME={$dbServiceName})))";
-
-    /** @var resource|false $connection */
-    $connection = oci_connect($dbUser, $dbPassword, $dsn, "");
-
-    if (!$connection) {
-        $e = oci_error();
-        throw new Exception("Error connecting to Oracle: " . $e['message']);
-    }
-
-    $sql = "SELECT employee_id, first_name, last_name, email FROM system.employees WHERE ROWNUM <= :max_rows";
-
-    /** @var resource|false $statement */
-    $statement = oci_parse($connection, $sql);
-
-    if (!$statement) {
-        $e = oci_error($connection);
-        throw new Exception("Error parsing SQL statement: " . $e['message']);
-    }
-
-    $numRows = 25;
-    oci_bind_by_name($statement, ":max_rows", $numRows, SQLT_INT);
-
-    $result = oci_execute($statement);
-
-    if (!$result) {
-        $e = oci_error($statement);
-        throw new Exception("Error executing SQL statement: " . $e['message']);
-    }
-
-    echo "Employee ID | First Name          | Last Name           | Email\n";
-    echo str_repeat("-", 80) . "\n";
-
-    while (($row = oci_fetch_array($statement, OCI_ASSOC + OCI_RETURN_NULLS)) !== false) {
-        $employeeId = (int) $row['EMPLOYEE_ID'];
-        $firstName = $row['FIRST_NAME'];
-        $lastName = $row['LAST_NAME'];
-        $email = $row['EMAIL'];
-        printf("%-12d| %-20s| %-20s| %-26s\n", $employeeId, $firstName, $lastName, $email);
-    }
-
-} catch (Exception $exception) {
-    echo "Error: " . $exception->getMessage() . "\n";
-} finally {
-    if (is_resource($statement)) {
-        oci_free_statement($statement);
-    }
-    if (is_resource($connection)) {
-        oci_close($connection);
-    }
-}
-
-?>
-
-```
-<!-- cspell:enable -->
-
-</Snippet>
+<Snippet filename="main.php" source="./files/main.php" />
 
 Still in the console, located in folder `/tmp/oracle/php`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-php . && docker run --rm -it --network oracle oracle-php`.
 
@@ -495,98 +202,13 @@ $ mkdir -p /tmp/oracle/python && cd $_
 
 And his Dockerfile; the only thing we need (except Python) is to install the `oracledb` dependency. Quite straightforward.
 
-<Snippet filename="Dockerfile">
-
-```docker
-# cspell:ignore oracledb
-
-FROM python:slim
-
-WORKDIR /app
-
-RUN pip install --no-cache-dir oracledb
-
-COPY main.py main.py
-
-CMD ["python", "main.py"]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part4" />
 
 Then let's create a Python script (*generated using AI*)
 
 <!-- cspell:disable -->
 
-<Snippet filename="main.py">
-
-```python
-import oracledb
-from typing import Optional, Tuple, List
-
-# cspell:ignore oracledb,orclpdb1,sysdba,rownum
-
-DB_USER: str = "SYS"
-DB_PASSWORD: str = "admin"
-DB_HOST: str = "oracle-db"
-DB_PORT: int = 1521
-DB_SERVICE_NAME: str = "orclpdb1"
-
-connection: Optional[oracledb.Connection] = None
-cursor: Optional[oracledb.Cursor] = None
-
-try:
-    dsn: str = f"{DB_HOST}:{DB_PORT}/{DB_SERVICE_NAME}"
-
-    connection = oracledb.connect(
-        user=DB_USER,
-        password=DB_PASSWORD,
-        dsn=dsn,
-        mode=oracledb.AuthMode.SYSDBA,
-    )
-
-    cursor = connection.cursor()
-
-    sql: str = (
-        "SELECT employee_id, first_name, last_name, email "
-        "FROM system.employees "
-        "WHERE ROWNUM <= :max_rows"
-    )
-
-    num_rows: int = 25
-    cursor.execute(sql, max_rows=num_rows)
-
-    records: List[Tuple[int, str, str, str]] = cursor.fetchall()
-
-    print("Employee ID | First Name          | Last Name           | Email")
-    print("-" * 80)
-
-    employee_id: int
-    first_name: str
-    last_name: str
-    email: str
-
-    for record in records:
-        employee_id, first_name, last_name, email = record
-        print(f"{employee_id:<12}| {first_name:<20}| {last_name:<20}| {email:<26}")
-
-except oracledb.Error as exception:
-    print(f"Error connecting to Oracle: {exception}")
-
-finally:
-    if cursor:
-        try:
-            cursor.close()
-        except oracledb.Error as exception:
-            print(f"Error closing cursor: {exception}")
-    if connection:
-        try:
-            connection.close()
-        except oracledb.Error as exception:
-            print(f"Error closing connection: {exception}")
-```
-<!-- cspell:enable -->
-
-</Snippet>
+<Snippet filename="main.py" source="./files/main.py" />
 
 Still in the console, located in folder `/tmp/oracle/python`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-python . && docker run --rm -it --network oracle oracle-python`.
 

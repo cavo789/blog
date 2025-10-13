@@ -45,38 +45,7 @@ The syntax is `[/\b(1)\b/g, "(2)"],` where `(1)` is the word to search for (exac
 
 The next thing to do is to register your plugin into your Docusaurus configuration. To do this, edit your `docusaurus.config.js` file and add the highlighted lines as illustrated below.
 
-<Snippet filename="docusaurus.config.js">
-
-```js
-
-// highlight-next-line
-import remarkReplaceWords from "./plugins/remark-replace-terms";
-
-const config = {
-  // [ ... ]
-  presets: [
-    [
-      'classic',
-      ({
-        // [ ... ]
-        blog: {
-          beforeDefaultRemarkPlugins: [
-            // [ ... ]
-            // highlight-next-line
-            remarkReplaceWords
-          ],
-        },
-        // [ ... ]
-      }),
-    ],
-  ],
-};
-
-export default config;
-
-```
-
-</Snippet>
+<Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.js" />
 
 This done, please restart your Docusaurus server and on the next start, if some changes have to be made, you can see them in your console:
 

@@ -1,0 +1,6 @@
+{
+    "auths": {
+        "container-registry.oracle.com": {},
+        "https://index.docker.io/v1/": {}
+    },
+}

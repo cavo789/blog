@@ -1,0 +1,7 @@
+[[runners]]
+  executor = "docker"
+
+  // highlight-next-line
+  [[runners.docker]]
+    // highlight-next-line
+    image = "php8.4"

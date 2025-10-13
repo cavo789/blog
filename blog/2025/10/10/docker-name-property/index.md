@@ -34,25 +34,7 @@ The solution is easy to implement: if you've a `compose.yaml` (or `compose.yaml`
 
 For instance:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-// highlight-next-line
-name: tools
-
-services:
-  memos:
-    image: neosmemo/memos:stable
-    container_name: memos
-    init: true
-    ports:
-      - "5230:5230"
-    volumes:
-      - ./data:/var/opt/memos
-    restart: unless-stopped
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 And that's all.
 

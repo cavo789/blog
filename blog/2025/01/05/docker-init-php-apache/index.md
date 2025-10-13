@@ -74,13 +74,7 @@ The `.dockerignore` file specifies files and directories that should be excluded
 
 By opening that file with a code editor, you'll then see that line:
 
-<Snippet filename=".dockerignore">
-
-```ignore
-**/.git
-```
-
-</Snippet>
+<Snippet filename=".dockerignore" source="./files/.dockerignore" />
 
 Refers to [https://docs.docker.com/go/build-context-dockerignore/](https://docs.docker.com/go/build-context-dockerignore/) for more explanations.
 
@@ -95,18 +89,7 @@ The file will teach Docker how to make more than one container work together, f.
 
 By opening the file, you'll see that right now, the only un-commented lines are those:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  server:
-    build:
-      context: .
-    ports:
-      - 8080:80
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 The rest is just for illustration.
 
@@ -116,19 +99,7 @@ Refers to [https://docs.docker.com/go/compose-spec-reference/](https://docs.dock
 
 There are a lot of commented lines, if we look at un-commented ones, we can see this:
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM php:8.2-apache
-
-COPY . /var/www/html
-
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
-
-USER www-data
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 So, we'll use the PHP 8.2 Docker image shipped with apache in it (one image with both PHP and Apache).
 
@@ -150,44 +121,7 @@ The generated files won't be modified by Docker while you'll not run `docker ini
 
 The example given in this blog post is a stand-alone project so `docker init` does all the magic. Assuming we'd needed a database, all we have to do is return to the `compose.yaml´ file and un-comment the lines like below:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  server:
-    build:
-      context: .
-    ports:
-      - 8080:80
-    depends_on:
-      db:
-        condition: service_healthy
-  db:
-    image: postgres
-    restart: always
-    user: postgres
-    secrets:
-      - db-password
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=example
-      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
-    expose:
-      - 5432
-    healthcheck:
-      test: [ "CMD", "pg_isready" ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-volumes:
-  db-data:
-secrets:
-  db-password:
-    file: db/password.txt
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 
 <AlertBox variant="info" title="Docker secrets is used here">
 Hey! Did you see? Instead of hardcoding the password in the file, `docker init` has used a secret. This is smart.

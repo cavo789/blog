@@ -27,66 +27,14 @@ You can reuse this snippet for any file you want (the language didn't matters).
 
 </AlertBox>
 
-<Snippet filename="script.sh">
-
-```bash
-FILE="string.sh"
-FOLDER_SOURCE="src"
-FOLDER_COMPARE_WITH="./../another_project/src"
-
-clear
-
-[[ ! -d "${FOLDER_SOURCE}" ]] && printf "\033[1;31mThe folder %s didn't exists\033[0m\n" "${FOLDER_SOURCE}" && return 0
-[[ ! -f "${FOLDER_SOURCE}/${FILE}" ]] && printf "\033[1;31mThe file %s didn't exists\033[0m\n" "${FOLDER_SOURCE}/${FILE}" && return 0
-[[ ! -d "${FOLDER_COMPARE_WITH}" ]] && printf "\033[1;31mThe folder %s didn't exists\033[0m\n" "${FOLDER_COMPARE_WITH}" && return 0
-[[ ! -f "${FOLDER_COMPARE_WITH}/${FILE}" ]] && printf "\033[1;31mThe file %s didn't exists\033[0m\n" "${FOLDER_COMPARE_WITH}/${FILE}" && return 0
-
-printf "\033[1;34m%s %s %s %s\033[0m\n" "Compare" "${FOLDER_SOURCE}/${FILE}" "against" "${FOLDER_COMPARE_WITH}/${FILE}"
-printf "\033[1;34m%s \033[1;31m%s \033[1;34m%s \033[1;32m%s\033[0m\n\n" "Below in red sentences from" "${FOLDER_SOURCE}/${FILE}" "and, in green, sentences from"  "${FOLDER_COMPARE_WITH}/${FILE}"
-
-pushd "${FOLDER_SOURCE}" > /dev/null && diff --suppress-common-lines "${FILE}" "${FOLDER_COMPARE_WITH}"/"${FILE}" && echo "Congratulations, the two files are exactly the same" ; popd > /dev/null
-```
-
-</Snippet>
+<Snippet filename="script.sh" source="./files/script.sh" />
 
 ## Compare two folders
 
 Compares two folders and displays a list of files that are only in one of the two folders or where there is a difference.
 
-<Snippet filename="script.sh">
-
-```bash
-FOLDER_SOURCE="src"
-FOLDER_COMPARE_WITH="./../another_project/src"
-
-clear
-
-[[ ! -d "${FOLDER_SOURCE}" ]] && printf "\033[1;31mThe folder %s didn't exists\033[0m\n" "${FOLDER_SOURCE}" && return 0
-[[ ! -d "${FOLDER_COMPARE_WITH}" ]] && printf "\033[1;31mThe folder %s didn't exists\033[0m\n" "${FOLDER_COMPARE_WITH}" && return 0
-
-printf "\033[1;34m%s %s %s %s\033[0m\n" "Compare folder" "${FOLDER_SOURCE}" "against" "${FOLDER_COMPARE_WITH}"
-
-pushd "${FOLDER_SOURCE}" > /dev/null && LC_ALL=C diff --brief --ignore-blank-line . "${FOLDER_COMPARE_WITH}" ; popd > /dev/null
-```
-
-</Snippet>
+<Snippet filename="script.sh" source="./files/script.part2.sh" />
 
 This variation allows to hide the message `Only in .` i.e. when a file is present in the first folder (the `SOURCE` one) and not in the second one (the `COMPARE_WITH` one).
 
-<Snippet filename="script.sh">
-
-```bash
-FOLDER_SOURCE="src"
-FOLDER_COMPARE_WITH="./../another_project/src"
-
-clear
-
-[[ ! -d "${FOLDER_SOURCE}" ]] && printf "\033[1;31mThe folder %s didn't exists\033[0m\n" "${FOLDER_SOURCE}" && return 0
-[[ ! -d "${FOLDER_COMPARE_WITH}" ]] && printf "\033[1;31mThe folder %s didn't exists\033[0m\n" "${FOLDER_COMPARE_WITH}" && return 0
-
-printf "\033[1;34m%s %s %s %s\033[0m\n" "Compare folder" "${FOLDER_SOURCE}" "against" "${FOLDER_COMPARE_WITH}"
-
-pushd "${FOLDER_SOURCE}" > /dev/null && LC_ALL=C diff --brief --ignore-blank-line . "${FOLDER_COMPARE_WITH}" | grep -v '^Only in \.' ; popd > /dev/null
-```
-
-</Snippet>
+<Snippet filename="script.sh" source="./files/script.part3.sh" />

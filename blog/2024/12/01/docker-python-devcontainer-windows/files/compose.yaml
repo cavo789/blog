@@ -1,0 +1,37 @@
+name: app_python
+
+services:
+  app_python:
+    build:
+      context: .
+      target: development
+      args:
+        # Version of Python to use
+        - DOCKER_PYTHON_VERSION=${DOCKER_PYTHON_VERSION}
+        # Application root directory in the container (PHP or NGINX) (--app-home)
+        - DOCKER_APP_HOME=${DOCKER_APP_HOME:-/app}
+        # Name of the container to show in the bash prompt
+        - DOCKER_CONTAINER_NAME=${DOCKER_CONTAINER_NAME:-python}
+        # Set OS groupid in your Docker Linux containers (1000 = root) (--os-groupid)
+        - DOCKER_OS_GROUPID=${DOCKER_OS_GROUPID:-1000}
+        # Set OS userid in your Docker Linux containers (1000 = root) (--os-userid)
+        - DOCKER_OS_USERID=${DOCKER_OS_USERID:-1000}
+        # Set OS username in your Docker Linux containers (--os-username)
+        - DOCKER_OS_USERNAME=${DOCKER_OS_USERNAME:-python}
+    user: ${DOCKER_OS_USERID:-1000}:${DOCKER_OS_GROUPID:-1000}
+    env_file:
+      - .docker.env
+    container_name: app_python
+    volumes:
+      # Our codebase on our host
+      - .:${DOCKER_APP_HOME}
+      # Keep installed VSCode extensions in a volume to avoid to reinstall them
+      - vscode-extensions:/home/${DOCKER_OS_USERNAME}/.vscode-server/extensions
+      # Remember the bash history
+      - bashhistory:/home/${DOCKER_OS_USERNAME}/commandhistory
+
+volumes:
+  # Use a Docker volume self-managed volume to store vscode's cache
+  vscode-extensions:
+  # Use a Docker volume self-managed volume to store bash history
+  bashhistory:

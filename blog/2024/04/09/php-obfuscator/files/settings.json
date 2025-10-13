@@ -1,0 +1,15 @@
+{
+    "replace": {
+        "getRandomWord":"ppmx",
+        "displayHangman":"ppnx",
+        "playHangman":"ppny",
+        "displayWord":"ppnz",
+        "guessesLeft":"ppnc",
+        "guessedLetters":"ppnt",
+        "randomIndex":"ppmw",
+        "wordList":"ppmu",
+        "generateWordList":"ppms",
+        "displayedWord":"ppmb",
+        "stages":"ppmc"
+    }
+}

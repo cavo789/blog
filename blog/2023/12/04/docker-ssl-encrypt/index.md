@@ -20,33 +20,11 @@ By using a [Docker Alpine/OpenSSL](https://hub.docker.com/r/alpine/openssl) imag
 
 Create a new file on your disk with this content. This is the `encrypt.sh` script.
 
-<Snippet filename="encrypt.sh">
-
-```bash
-#!/usr/bin/env bash
-
-(
-  MY_PASSWORD="ThisIsMyLongPasswordNobodyWillBeAbleToCrackIt" &&
-  docker run --rm -it -v $(pwd):/data -w /data -u $(id -u):$(id -g) alpine/openssl enc -aes-256-cbc -salt -pbkdf2 -a -in /data/secrets.md -out /data/secrets_encrypted.md -k ${MY_PASSWORD}
-)
-```
-
-</Snippet>
+<Snippet filename="encrypt.sh" source="./files/encrypt.sh" />
 
 And this is the `decrypt.sh` script:
 
-<Snippet filename="decrypt.sh">
-
-```bash
-#!/usr/bin/env bash
-
-(
-  MY_PASSWORD="ThisIsMyLongPasswordNobodyWillBeAbleToCrackIt" &&
-  docker run --rm -it -v $(pwd):/data -w /data -u $(id -u):$(id -g) alpine/openssl enc -aes-256-cbc -salt -pbkdf2 -a -d -in /data/secrets_encrypted.md -out //data/secrets_decrypted.md -k ${MY_PASSWORD}
-)
-```
-
-</Snippet>
+<Snippet filename="decrypt.sh" source="./files/decrypt.sh" />
 
 Update the `MY_PASSWORD` variable in both scripts to use yours.
 
@@ -56,38 +34,13 @@ For the illustration purpose, the DOS encryption script, `encrypt.cmd`, will ask
 
 Here is the content of the `encrypt.cmd` DOS script:
 
-<Snippet filename="encrypt.cmd">
-
-```batch
-@echo off
-
-cls
-
-docker run --rm -it -v %CD%:/data -w /data alpine/openssl enc -aes-256-cbc -salt -pbkdf2 -a -in /data/secrets.md -out /data/secrets.encrypted
-
-# Put this part in comment if you want to keep the original, unencrypted, file.
-IF EXIST secrets.encrypted (
-  del secrets.md
-)
-```
-
-</Snippet>
+<Snippet filename="encrypt.cmd" source="./files/encrypt.cmd" />
 
 The decryption script, `decrypt.cmd` will ask you for the password and will display the decrypted content on the console (since the `-out` parameter is not part of the instruction).
 
 Here is the content of the `decrypt.cmd` DOS script:
 
-<Snippet filename="decrypt.cmd">
-
-```batch
-@echo off
-
-cls
-
-docker run --rm -it -v C:\temp:/data -w /data alpine/openssl enc -aes-256-cbc -salt -pbkdf2 -a -d -in /data/secrets.encrypted
-```
-
-</Snippet>
+<Snippet filename="decrypt.cmd" source="./files/decrypt.cmd" />
 
 ## Use case
 
@@ -137,6 +90,7 @@ Imagine a text file like `secrets.md` with this content:
 * URL: `https://..../admin`
 * Login: `admin`
 * Password: `admin`
+
 ```
 
 </Snippet>
@@ -145,12 +99,13 @@ By running the `encrypt.sh` script, the file `secrets_encrypted.md` will be crea
 
 <Snippet filename="secrets_encrypted.md">
 
-```none
+```markdown
 U2FsdGVkX18jyyHAiaDcwolgvrCmB9SutNFhOFosDZvYA+t/8F5PWsxU+YIb0xLj
 /0swl1Mvh9XBcg3FwpQn5CGm5ltb3zKiExPO8WoTuYOmlJj2PN5eLJv3GWVVJ8/t
 q31xBBAlbI0k+a3pWiETl1qEmh4hwc4jeC5NOByYSAojiIdCNF0W5+VVkUlBeKGb
 sv8tpDWEb/dgHrfFPtZD5MqeNQw71/ndORZC1ZDIT/Ju6O7a6rd9ph0aQuPz49PU
 SzDUePUgn9wbR0tZvNM1JA1LkN1kDaguJ940TdKns+Q=
+
 ```
 
 </Snippet>

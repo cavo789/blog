@@ -50,18 +50,7 @@ Let's create a temporary folder for Dagger and jump in it: `mkdir /tmp/dagger &&
 
 Please create there a Python script in a subfolder `src` and let's call it `src/main.py`:
 
-<Snippet filename="src/main.py">
-
-```python
-import random
-
-if random.randint(0, 1) == 0:
-    print("Hello world")
-else:
-    print("Bonjour le monde!")
-```
-
-</Snippet>
+<Snippet filename="src/main.py" source="./files/main.py" />
 
 Amazing application to tell us, random, *Hello world* or *Bonjour le monde!*
 
@@ -84,41 +73,7 @@ No surprise there; at some point we have to install Dagger. Install? Ouch no; we
 
 Please create a new subfolder called `.docker` and in that folder, a file called `Dockerfile`:
 
-<Snippet filename=".docker/Dockerfile">
-
-<!-- cspell:disable -->
-
-```docker
-FROM python:3.11-slim-buster AS base
-
-# Dagger is using the Docker technology so we need to install Docker in the image
-# Also install required Linux dependencies
-# hadolint ignore=DL3008
-RUN set -e -x \
-    && apt-get update -yqq \
-    && apt-get install -y --no-install-recommends docker.io wget \
-    && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/*
-
-# Install Dagger
-ARG VERSION=0.15.1
-ARG ARCHIVE=dagger_v${VERSION}_linux_amd64.tar.gz
-ARG URL=https://github.com/dagger/dagger/releases/download/v${VERSION}/${ARCHIVE}
-
-# hadolint ignore=DL3003
-RUN set -e -x \
-    && cd /tmp \
-    && wget --quiet --output-document ${ARCHIVE} ${URL} \
-    && tar xvfz ${ARCHIVE} \
-    && mv dagger /usr/local/bin/ \
-    && rm -rf /tmp/
-
-WORKDIR /app/src
-
-ENTRYPOINT [ "/usr/local/bin/dagger" ]
-```
-<!-- cspell:enable -->
-</Snippet>
+<Snippet filename=".docker/Dockerfile" source="./files/Dockerfile" />
 
 We need to build our image so let's run `docker build -t dagger_daemon -f .docker/Dockerfile .`
 
@@ -195,18 +150,7 @@ Functions are defined in the `.pipeline/src/src/main.py` file.
 
 Please open that file and add a new function like below:
 
-<Snippet filename=".pipeline/src/src/main.py">
-
-```python
-@function
-async def lint(self, source: str) -> str:
-    """
-    Run Pylint on the codebase.
-    """
-    return f"\033[33mI'm inside your Dagger pipeline and I'll lint {source}\033[0m"
-```
-
-</Snippet>
+<Snippet filename=".pipeline/src/src/main.py" source="./files/main.part2.py" />
 
 Save the file and run `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call --help` again. See, we've our new function:
 
@@ -232,34 +176,7 @@ ARGUMENTS
 
 Now, back to the `.pipeline/src/src/main.py` and replace the entire file (we don't need sample functions) with this content:
 
-<Snippet filename=".pipeline/src/src/main.py">
-
-```python
-import dagger
-from dagger import dag, DefaultPath, Directory, function, object_type
-from typing import Annotated
-
-@object_type
-class Src:
-    @function
-    async def lint(self, source: Annotated[Directory, DefaultPath("src")]) -> str:
-        """
-        Run Pylint on the codebase.
-        """
-        print(f"\033[33mI'm inside your Dagger pipeline and I'll lint {source}\033[0m")
-
-        return await (
-            dag.container()
-            .from_("python:3.13-slim")
-            .with_exec(["pip","install","pylint"])
-            .with_mounted_directory("/app/src", source)
-            .with_workdir("/app/src")
-            .with_exec(["pylint","."])
-            .stdout()
-        )
-```
-
-</Snippet>
+<Snippet filename=".pipeline/src/src/main.py" source="./files/main.part3.py" />
 
 We'll thus remove the two sample functions and we'll implement our linting function. We'll also define the `src` folder as the default one so we don't need to add `--source src` anymore when calling dagger.
 
@@ -273,20 +190,7 @@ Yes!, PyLint has worked and alert us about missing module docstring.
 
 Edit `src/main.py` and add some valid module docstring (or just ignore that warning):
 
-<Snippet filename="src/main.py">
-
-```python
-# pylint: disable=missing-module-docstring
-
-import random
-
-if random.randint(0, 1) == 0:
-    print("Hello world")
-else:
-    print("Bonjour le monde!")
-```
-
-</Snippet>
+<Snippet filename="src/main.py" source="./files/main.part4.py" />
 
 Running `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call lint` again will congratulate us now with a score of 10/10.
 
@@ -307,80 +211,13 @@ You'll also have a `make bash` action to jump in an interactive shell (type `exi
 
 And `make help` will show the Dagger help screen.
 
-<Snippet filename="makefile">
-
-```makefile
-DAEMON_NAME=dagger_daemon
-DOCKER_SOCK=-v /var/run/docker.sock:/var/run/docker.sock
-
-.PHONY:build
-build:
-	docker build -t ${DAEMON_NAME} -f .docker/Dockerfile .
-
-.PHONY:bash
-bash:
-	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src --entrypoint /bin/bash ${DAEMON_NAME}
-
-.PHONY:help
-help:
-	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call --help
-
-.PHONY:lint
-lint:
-	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call lint
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile" />
 
 ## Formatting the code using Black
 
 Edit the `.pipeline/src/src/main.py` file and add this new function:
 
-<Snippet filename=".pipeline/src/src/main.py">
-
-```python
-import dagger
-from dagger import dag, DefaultPath, Directory, function, object_type
-from typing import Annotated
-
-@object_type
-class Src:
-    @function
-    async def lint(self, source: Annotated[Directory, DefaultPath("src")]) -> str:
-        """
-        Run Pylint on the codebase.
-        """
-        print(f"\033[33mI'm inside your Dagger pipeline and I'll lint {source}\033[0m")
-
-        return await (
-            dag.container()
-            .from_("python:3.13-slim")
-            .with_exec(["pip","install","pylint"])
-            .with_mounted_directory("/app/src", source)
-            .with_workdir("/app/src")
-            .with_exec(["pylint","."])
-            .stdout()
-        )
-
-    # highlight-start
-    @function
-    async def format(self, source: Annotated[Directory, DefaultPath("src")]) -> str:
-        """
-        Format the codebase using Black.
-        """
-        return await (
-            dag.container()
-            .from_("python:3.13-slim")
-            .with_exec(["pip","install","black"])
-            .with_mounted_directory("/app/src", source)
-            .with_workdir("/app/src")
-            .with_exec(["black","."])
-            .stdout()
-        )
-    # highlight-end
-```
-
-</Snippet>
+<Snippet filename=".pipeline/src/src/main.py" source="./files/main.part5.py" />
 
 So, from now, you can run `dagger call format` (from inside the container i.e. run `make bash` first) or `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call format` (from your host).
 
@@ -394,359 +231,37 @@ Ok, we've now two tasks and we've to implement a lot more. We can do a lot of co
 
 We need to make a little change to our Docker image:
 
-<Snippet filename=".docker/Dockerfile">
-
-<!-- cspell:disable -->
-
-```docker
-FROM python:3.11-slim-buster AS base
-
-# Dagger is using the Docker technology so we need to install Docker in the image
-# Also install required Linux dependencies
-# hadolint ignore=DL3008
-RUN set -e -x \
-    && apt-get update -yqq \
-    && apt-get install -y --no-install-recommends docker.io wget \
-    && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/*
-
-# Install Dagger
-ARG VERSION=0.15.1
-ARG ARCHIVE=dagger_v${VERSION}_linux_amd64.tar.gz
-ARG URL=https://github.com/dagger/dagger/releases/download/v${VERSION}/${ARCHIVE}
-
-# hadolint ignore=DL3003
-RUN set -e -x \
-    && cd /tmp \
-    && wget --quiet --output-document ${ARCHIVE} ${URL} \
-    && tar xvfz ${ARCHIVE} \
-    && mv dagger /usr/local/bin/ \
-    && rm -rf /tmp/
-
-# highlight-start
-# anyio is required by Python to be able to run tasks concurrently and asynchronously
-RUN set -e -x \
-    pip install anyio
-# highlight-end
-
-WORKDIR /app/src
-
-ENTRYPOINT [ "/usr/local/bin/dagger" ]
-```
-<!-- cspell:enable -->
-</Snippet>
+<Snippet filename=".docker/Dockerfile" source="./files/Dockerfile.part2" />
 
 This done, run `make build` to create a fresh Docker image with `anyio` installed.
 
 Now, we'll update the `.pipeline/src/src/main.py` file and add some more new functions:
 
-<Snippet filename=".pipeline/src/src/main.py">
-
-```python
-# cspell:ignore anyio,rcfile,pylintrc,workdir
-import anyio
-
-from typing import Annotated
-
-import dagger
-from dagger import DefaultPath, Doc, dag, function, object_type, Directory
-
-@object_type
-class Src:
-
-    # This is the directory where source files are located (f.i. "/app/src")
-    source: Annotated[
-        Directory,
-        Doc("The source folder; where the codebase is located"),
-        DefaultPath("src")
-    ]
-
-    # This is the directory where configuration files are located (f.i. "/app/.config")
-    config: Annotated[
-        Directory,
-        Doc("The folder container configuration files"),
-        DefaultPath(".config")
-    ]
-
-    @function
-    async def lint(self) -> str:
-        """
-        Lint python scripts using Pylint - Run analyses your code without actually running it (https://pypi.org/project/pylint/)
-        """
-        return await (
-            dag.container()
-            .from_("python:3.13-slim")
-            .with_exec(["pip","install","pylint"])
-            .with_mounted_directory("/app/src", self.source)
-            .with_mounted_directory("/app/config", self.config)
-            .with_workdir("/app/src")
-            .with_exec(["pylint",".","--rcfile","/app/config/.pylintrc"])
-            .stdout()
-        )
-
-    @function
-    async def format(self) -> str:
-        """
-        Format the script using Black (https://black.readthedocs.io/en/stable/)
-        """
-        return await (
-            dag.container()
-            .from_("python:3.13-slim")
-            .with_exec(["pip","install","black"])
-            .with_mounted_directory("/app/src", self.source)
-            .with_mounted_directory("/app/config", self.config)
-            .with_workdir("/app/src")
-            .with_exec(["black",".","--config","/app/config/black.toml"])
-            .stdout()
-        )
-
-    @function
-    async def mypy(self)-> str:
-        """
-        Mypy is a program that will type check your Python code (https://github.com/python/mypy/)
-        """
-        mypy_cache = dag.cache_volume("python_mypy")
-
-        return await (
-            dag.container()
-            .from_("python:3.13-slim")
-            .with_exec(["pip","install","mypy"])
-            .with_mounted_directory("/app/src", self.source)
-            .with_mounted_directory("/app/config", self.config)
-            .with_mounted_cache("/tmp/mypy", mypy_cache)
-            .with_workdir("/app/src")
-            # .with_exec(["ls","-alhR"])
-            .with_exec(["mypy","--config-file",f"/app/config/mypy.ini","."])
-            .stdout()
-        )
-
-    @function
-    async def ruff(self) -> str:
-        """
-        An extremely fast Python linter and code formatter (https://github.com/astral-sh/ruff)
-        """
-        return await (
-            dag.container()
-            .from_("python:3.13-slim")
-            .with_exec(["pip","install","ruff"])
-            .with_mounted_directory("/app/src", self.source)
-            .with_mounted_directory("/app/config", self.config)
-            .with_workdir("/app/src")
-            .with_exec(["ruff","check","--config","/app/config/pyproject.toml", "."])
-            .with_exec(["ruff","format","--config","/app/config/pyproject.toml", "."])
-            .stdout()
-        )
-
-    @function
-    async def run_all(self):
-        """Run linter, type-checker, unit tests concurrently"""
-        async with anyio.create_task_group() as tg:
-            tg.start_soon(self.ruff)
-            tg.start_soon(self.lint)
-            tg.start_soon(self.format)
-            tg.start_soon(self.mypy)
-```
-
-</Snippet>
+<Snippet filename=".pipeline/src/src/main.py" source="./files/main.part6.py" />
 
 This new file comes with a lot of changes:
 
 We've defined two global variables called `source` and `config`. So, now, we don't pass the `source` folder to the lint function anymore (local parameter) but just need to set it once (global parameter). We've also add a `config` folder to be able to tell Dagger where our configuration files are stored.
 
-<Snippet filename=".pipeline/src/src/main.py">
-
-```python
-source: Annotated[
-    Directory,
-    Doc("The source folder; where the codebase is located"),
-    DefaultPath("src")
-]
-
-config: Annotated[
-    Directory,
-    Doc("The folder container configuration files"),
-    DefaultPath(".config")
-]
-```
-
-</Snippet>
+<Snippet filename=".pipeline/src/src/main.py" source="./files/main.part7.py" />
 
 We've a two new functions called `mypy` and `ruff` and a last one called `run_all`:
 
-<Snippet filename=".pipeline/src/src/main.py">
-
-```python
-@function
-    async def run_all(self):
-        """Run linter, type-checker, unit tests concurrently"""
-        async with anyio.create_task_group() as tg:
-            tg.start_soon(self.ruff)
-            tg.start_soon(self.lint)
-            tg.start_soon(self.format)
-            tg.start_soon(self.mypy)
-```
-
-</Snippet>
+<Snippet filename=".pipeline/src/src/main.py" source="./files/main.part8.py" />
 
 That one will start all the four functions concurrently and will wait until one fails or the four succeed.
 
 Now, before running these functions, we need to create some configurations files.
 
-<Snippet filename=".config/.pylintrc">
+<Snippet filename=".config/.pylintrc" source="./files/.pylintrc" />
 
-```ini
-[MASTER]
-disable=
-    broad-exception-caught,
-    consider-using-assignment-expr,
-    invalid-name,
-    missing-module-docstring,
-    too-few-public-methods,
-    too-many-instance-attributes,
-    too-many-positional-arguments
+<Snippet filename=".config/black.toml" source="./files/black.toml" />
 
-; Pickle collected data for later comparisons.
-persistent=yes
+<Snippet filename=".config/mypy.ini" source="./files/mypy.ini" />
 
-; List of plugins (as comma-separated values of python modules names) to load,
-; usually to register additional checkers.
-load-plugins=
-    pylint.extensions.check_elif,
-    pylint.extensions.bad_builtin,
-    pylint.extensions.docparams,
-    pylint.extensions.for_any_all,
-    pylint.extensions.set_membership,
-    pylint.extensions.code_style,
-    pylint.extensions.overlapping_exceptions,
-    pylint.extensions.typing,
-    pylint.extensions.redefined_variable_type,
-    pylint.extensions.comparison_placement,
-    ; pylint.extensions.mccabe,
+<Snippet filename=".config/pyproject.toml" source="./files/pyproject.toml" />
 
-; Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
-; number of processors available to use.
-jobs=0
-
-; When enabled, pylint would attempt to guess common misconfiguration and emit
-; user-friendly hints instead of false-positive error messages.
-suggestion-mode=yes
-
-; Minimum supported python version
-py-version = 3.13.0
-
-; Specify a score threshold to be exceeded before program exits with error.
-fail-under=9.50
-
-[FORMAT]
-; The same as in prospector.yaml, .pylintrc, black.toml and pyproject.toml
-max-line-length=120
-```
-
-</Snippet>
-
-<Snippet filename=".config/black.toml">
-
-```toml
-[tool.black]
-
-# The same as in prospector.yaml, .pylintrc, black.toml and pyproject.toml
-line-length = 120
-
-# We'll format the code for Python 3.13.0; we can add multiple versions (the ones supported by
-# the script, all versions separated by a comma like in ['py312', 'py313'] (run "black --help" to get them)
-target-version = ['py313']
-```
-
-</Snippet>
-
-<Snippet filename=".config/mypy.ini">
-
-```ini
-[mypy]
-show_error_codes = true
-
-; First we turn on *all the checks*, and then we turn off those that are too annoying.
-strict = True
-
-; Don't know why but mypy returns errors like
-;     Customer? has no attribute "input_path"  [attr-defined]
-; when that attribute is well present. Ignore the error temporarily
-disable_error_code = attr-defined
-
-cache_dir = /tmp/mypy
-
-; Disallows defining functions without type annotations or with incomplete type annotations
-disallow_untyped_defs = true
-
-no_implicit_optional = true
-
-strict_equality = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-
-python_version = 3.13
-```
-
-</Snippet>
-
-<Snippet filename=".config/pyproject.toml">
-
-```toml
-[tool.ruff]
-
-exclude=[]
-
-# The same as in prospector.yaml, .pylintrc, black.toml and pyproject.toml
-line-length = 120
-indent-width = 4
-```
-
-</Snippet>
-
-<Snippet filename="makefile">
-
-```makefile
-DAEMON_NAME=dagger_daemon
-DOCKER_SOCK=-v /var/run/docker.sock:/var/run/docker.sock
-
-.PHONY:build
-build:
-	docker build -t ${DAEMON_NAME} -f .docker/Dockerfile .
-
-.PHONY:bash
-bash:
-	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src --entrypoint /bin/bash ${DAEMON_NAME}
-
-.PHONY:format
-format:
-	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call format
-
-.PHONY:help
-help:
-	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call --help
-
-.PHONY:lint
-lint:
-	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call lint
-
-.PHONY:mypy
-mypy:
-	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call mypy
-
-.PHONY:remove
-remove:
-	docker rmi --force ${DAEMON_NAME}
-
-.PHONY:ruff
-ruff:
-	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call ruff
-
-.PHONY:run-all
-run-all:
-	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call run-all
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile.part2" />
 
 ## Our CI is ready on our dev machine
 
@@ -772,17 +287,7 @@ I'm not expert in GitLab runner configuration but the following configuration is
 
 Do a SSH connection to your GitLab runner server and edit the `/etc/gitlab-runner/config.toml` file (you should be root). Just add `/var/run/docker.sock:/var/run/docker.sock` for the `volumes` property:
 
-<Snippet filename="/etc/gitlab-runner/config.toml">
-
-```toml
- [runners.docker]
-    # Adding /var/run/docker.sock:/var/run/docker.sock
-    # will allow to use commands like "docker image list" i.e. running Docker commands
-    # in CI scripts. This is called "Docker socket binding".
-    volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock"]
-```
-
-</Snippet>
+<Snippet filename="/etc/gitlab-runner/config.toml" source="./files/config.toml" />
 
 Also, make sure the Linux user used by your GitLab runner (default username is `gitlab-runner`) is part of the `docker` group. This is done by running `sudo usermod -aG docker gitlab-runner` in the CLI (see [https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-the-shell-executor](https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-the-shell-executor)).
 
@@ -799,39 +304,7 @@ Please create a GitLab repository, push your existing project there.
 
 Now, please create a file called `.gitlab-ci.yml` with this content:
 
-<Snippet filename=".gitlab-ci.yml">
-
-```yaml
-.docker:
-  image: docker:latest
-  services:
-    - docker:${DOCKER_VERSION}-dind
-  variables:
-    DOCKER_HOST: unix:///var/run/docker.sock # Docker Socket Binding
-.dagger:
-  extends: [.docker]
-  before_script:
-    - apk add curl
-    - curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=/usr/local/bin sh
-lint:
-  extends: [.dagger]
-  script:
-    - dagger call --source src --config .config lint
-format:
-  extends: [.dagger]
-  script:
-    - dagger call --source src --config .config format
-mypy:
-  extends: [.dagger]
-  script:
-    - dagger call --source src --config .config mypy
-ruff:
-  extends: [.dagger]
-  script:
-    - dagger call --source src --config .config ruff
-```
-
-</Snippet>
+<Snippet filename=".gitlab-ci.yml" source="./files/.gitlab-ci.yml" />
 
 And push the changes to GitLab. The presence of the `.gitlab-ci.yml` file will tells to GitLab to instantiate a pipeline after each commit and, here in our example, to start the four jobs.
 
@@ -844,24 +317,4 @@ Since we've shared the Docker daemon (`/var/run/docker.sock`) in our GitLab `/et
 
 But, you can also use the asynchronous mode since we've implemented a `run-all` feature:
 
-<Snippet filename=".gitlab-ci.yml">
-
-```yaml
-.docker:
-  image: docker:latest
-  services:
-    - docker:${DOCKER_VERSION}-dind
-  variables:
-    DOCKER_HOST: unix:///var/run/docker.sock # Docker Socket Binding
-.dagger:
-  extends: [.docker]
-  before_script:
-    - apk add curl
-    - curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=/usr/local/bin sh
-run-all:
-  extends: [.dagger]
-  script:
-    - dagger call --source src --config .config run-all
-```
-
-</Snippet>
+<Snippet filename=".gitlab-ci.yml" source="./files/.gitlab-ci.yml.part2" />

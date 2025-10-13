@@ -1,0 +1,8 @@
+# prevent accessing to all files excepted those mentioned (case sensitive!)
+
+<FilesMatch "(?<!\.png|\.jpe?g|\.gif|\.svg|\.icon?)$">
+# Apache 2.2
+#    deny from all
+# Apache 2.4
+#    Require all denied
+</FilesMatch>

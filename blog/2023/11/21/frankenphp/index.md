@@ -38,45 +38,7 @@ Here is how to do:
 <AlertBox variant="info" title="Don't build the image yourself">
 My suggestion is to replace the `compose.yaml` file with the one below. Like this, you'll reuse the image publicly made available by Alexandre and don't need to build it yourself (much faster):
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-
-  joomla:
-    image: alexandreelise/frankenphp-joomla:hardened-mysql-0.1.1
-    restart: always
-    ports:
-      - 80:80
-      - 443:443
-    environment:
-      - MYSQL_ROOT_PASSWORD=test
-      - JOOMLA_DB_HOST=db
-      - JOOMLA_DB_USER=exampleuser
-      - JOOMLA_DB_PASSWORD=examplepass
-      - JOOMLA_DB_NAME=exampledb
-    volumes:
-      - joomla:/app/public
-    depends_on:
-      - db
-
-  db:
-    image: mysql:8.2
-    environment:
-      - MYSQL_DATABASE=exampledb
-      - MYSQL_USER=exampleuser
-      - MYSQL_PASSWORD=examplepass
-      - MYSQL_ROOT_PASSWORD=test
-    volumes:
-      - db:/var/lib/mysql
-
-volumes:
-  joomla:
-  db:
-```
-
-</Snippet>
-
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 </AlertBox>
 

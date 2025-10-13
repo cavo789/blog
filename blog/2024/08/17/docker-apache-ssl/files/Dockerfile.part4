@@ -1,0 +1,11 @@
+FROM php:8.3-apache
+
+COPY ssl/server.crt /etc/ssl/certs/server.crt
+COPY ssl/server.key /etc/ssl/private/server.key
+
+COPY httpd/my-site.conf /etc/apache2/sites-available/my-ssl.conf
+
+RUN a2enmod ssl && \
+    a2enmod rewrite && \
+    a2dissite 000-default default-ssl && \
+    a2ensite my-ssl

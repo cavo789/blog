@@ -1,0 +1,12 @@
+{
+    "name": "oracle-connector-nodejs",
+    "version": "1.0.0",
+    "description": "Node.js script to connect to Oracle",
+    "main": "app.js",
+    "scripts": {
+      "start": "node main.js"
+    },
+    "dependencies": {
+      "oracledb": "^6.3.0"
+    }
+}

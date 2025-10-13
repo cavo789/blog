@@ -1,0 +1,8 @@
+services:
+  joomla:
+    image: joomla
+    [...]
+
+  joomladb:
+    image: mysql:8.0.13
+    [...]

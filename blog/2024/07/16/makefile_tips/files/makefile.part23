@@ -1,0 +1,7 @@
+ifeq ($(shell docker ps -a -q -f name=sonarqube),)
+    ### The sonarqube container didn't exist yet, create it.
+	docker run -d --name sonarqube sonarqube:latest
+else
+    ### Make sure the container is running
+	-@docker container start sonarqube > /dev/null 2>&1
+endif

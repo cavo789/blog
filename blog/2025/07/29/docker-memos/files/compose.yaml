@@ -1,0 +1,13 @@
+name: tools
+
+services:
+  memos:
+    image: neosmemo/memos:stable
+    container_name: memos
+    init: true
+    user: ${UID:-1000}:${GID:-1000}
+    ports:
+      - "5230:5230"
+    volumes:
+      - ./data:/var/opt/memos
+    restart: unless-stopped

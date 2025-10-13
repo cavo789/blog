@@ -1,0 +1,10 @@
+services:
+  joomla:
+    image: joomla
+    ports:
+      - 8080:80
+    depends_on:
+      - joomladb
+
+  joomladb:
+    image: postgres:16.0-alpine

@@ -1,0 +1,4 @@
+<editBox
+    id="customEditBox"
+    label="Edit Box"
+    onChange="OnEditBoxTextChanged" />

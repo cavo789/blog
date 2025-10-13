@@ -1,0 +1,5 @@
+.RECIPEPREFIX = >
+
+changeExt:
+### This is a comment
+> @printf "%s\n" "It works"

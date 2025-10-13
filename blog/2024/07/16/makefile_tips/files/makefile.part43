@@ -1,0 +1,2 @@
+clean:
+	test ! -e vendor || rm -rf vendor

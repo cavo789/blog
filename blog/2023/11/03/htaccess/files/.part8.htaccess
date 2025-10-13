@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+
+ # Rewrite the URL to force https and www.
+ RewriteEngine On
+
+ # Compliant with hstspreload.org : first redirect to https if needed
+ RewriteCond %{HTTPS} !=on
+ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+ #   then redirect to www. when the prefix wasn't mentioned
+ # hstspreload.org seems to not really like to make the two at once
+ RewriteCond %{HTTP_HOST} !^www\.
+ RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+</IfModule>

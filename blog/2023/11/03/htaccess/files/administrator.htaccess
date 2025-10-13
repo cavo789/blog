@@ -1,0 +1,5 @@
+# Be sure that pages under this folder won't be indexed
+
+<IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>

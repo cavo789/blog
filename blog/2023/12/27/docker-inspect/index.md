@@ -26,15 +26,7 @@ For the illustration, please start a Linux shell and run `mkdir -p /tmp/inspect 
 
 Create a new `index.php` file with this content:
 
-<Snippet filename="index.php">
-
-```php
-<?php
-
-phpinfo();
-```
-
-</Snippet>
+<Snippet filename="index.php" source="./files/index.php" />
 
 Then run `docker run --name phpinfo -d -p 8080:80 -u ${UID}:${GID} -v "$PWD":/var/www/html php:8.2-apache` to create a new Docker container (you can surf to `http://localhost:8080` to see it in action).
 

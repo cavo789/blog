@@ -1,0 +1,2 @@
+DOCKER_YAML_FILES := $(shell find ./.docker -name 'compose*.yaml')
+DOCKER_YAML_FILES := $(shell echo "$(DOCKER_YAML_FILES)" | tr ' ' ':')

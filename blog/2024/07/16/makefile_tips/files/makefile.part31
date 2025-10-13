@@ -1,0 +1,2 @@
+composer-update:
+	${CMD} composer update --no-interaction

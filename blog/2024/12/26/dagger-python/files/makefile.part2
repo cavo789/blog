@@ -1,0 +1,38 @@
+DAEMON_NAME=dagger_daemon
+DOCKER_SOCK=-v /var/run/docker.sock:/var/run/docker.sock
+
+.PHONY:build
+build:
+	docker build -t ${DAEMON_NAME} -f .docker/Dockerfile .
+
+.PHONY:bash
+bash:
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src --entrypoint /bin/bash ${DAEMON_NAME}
+
+.PHONY:format
+format:
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call format
+
+.PHONY:help
+help:
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call --help
+
+.PHONY:lint
+lint:
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call lint
+
+.PHONY:mypy
+mypy:
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call mypy
+
+.PHONY:remove
+remove:
+	docker rmi --force ${DAEMON_NAME}
+
+.PHONY:ruff
+ruff:
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call ruff
+
+.PHONY:run-all
+run-all:
+	docker run -it --rm ${DOCKER_SOCK} -v .:/app/src ${DAEMON_NAME} call run-all

@@ -33,30 +33,11 @@ As prerequisites, you should have access to the server where your GitLab instanc
 
 On my GitLab runner server, my current `/etc/gitlab-runner/config.toml` configuration defines Docker as the executor because I've this entry:
 
-<Snippet filename="/etc/gitlab-runner/config.toml">
-
-```toml
-[[runners]]
-  executor = "docker"
-```
-
-</Snippet>
+<Snippet filename="/etc/gitlab-runner/config.toml" source="./files/config.toml" />
 
 So, when running my CI, first GitLab will create a Docker container. The default base image can be forced in `/etc/gitlab-runner/config.toml` like below or you just have to specify the base image in your project's `.gitlab-ci.yml` using the `image` tag ([doc](https://docs.gitlab.com/ci/docker/using_docker_images/#define-image-in-the-gitlab-ciyml-file)).
 
-<Snippet filename="/etc/gitlab-runner/config.toml">
-
-```toml
-[[runners]]
-  executor = "docker"
-
-  // highlight-next-line
-  [[runners.docker]]
-    // highlight-next-line
-    image = "php8.4"
-```
-
-</Snippet>
+<Snippet filename="/etc/gitlab-runner/config.toml" source="./files/config.part2.toml" />
 
 ## Understanding the process
 
@@ -64,15 +45,7 @@ For this part, I'll take a very basic example. For sure, it's not needed to run 
 
 So, based on the `config.toml` file here above, I can have a `.gitlab-ci.yml` file like the one below:
 
-<Snippet filename=".gitlab-ci.yml">
-
-```yaml
-phplint:
-  script:
-    - find . -name "*.php" -print0 | xargs -0 -n1 php -l
-```
-
-</Snippet>
+<Snippet filename=".gitlab-ci.yml" source="./files/.gitlab-ci.yml" />
 
 It'll retrieve all `.php` file and run `php -l <filename.php>` for each inside a Docker container based on PHP 8.4.
 
@@ -82,36 +55,11 @@ Easy and straight-forward.
 
 Based on the same example, we can also use an existing Docker image; like [phpqa/jakzal](https://github.com/jakzal/phpqa):
 
-<Snippet filename=".gitlab-ci.yml">
-
-```
-phplint:
-  image: docker:28.1.1
-  variables:
-    DOCKER_HOST: unix:///var/run/docker.sock
-    DOCKER_TLS_CERTDIR: ""
-  script:
-    - docker run --rm --volume "$CI_PROJECT_DIR:/app" --workdir /app jakzal/phpqa phplint .
-```
-
-</Snippet>
+<Snippet filename=".gitlab-ci.yml" source="./files/.gitlab-ci.yml.part2" />
 
 Now, to allow this, we'll need to update our GitLab Runner server configuration file:
 
-<Snippet filename="/etc/gitlab-runner/config.toml">
-
-```toml
-[[runners]]
-  executor = "docker"
-
-  [[runners.docker]]
-    image = "php8.4"
-
-    // highlight-next-line
-    volumes = [ ..., "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]
-```
-
-</Snippet>
+<Snippet filename="/etc/gitlab-runner/config.toml" source="./files/config.part3.toml" />
 
 <AlertBox variant="caution" title="">
 The syntax `volumes = [ ..., "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]` used above is to inform you to append the two values to the list you already have. So, if, right now, you've `volumes = ["/cache", "/certs/client"]` then append values to get `volumes = ["/cache", "/certs/client", "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]`

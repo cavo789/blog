@@ -22,68 +22,11 @@ For the demo, please start a Linux shell and run `mkdir -p /tmp/refactor && cd $
 
 Please create two php files. The first one will be called `index.php` and will contain this code:
 
-<Snippet filename="/tmp/refactor/index.php">
-
-```php
-<?php
-
-namespace Cavo;
-
-require_once('Product.php');
-
-$product = new Product();
-
-$product->setProductName('keyboard');
-$product->setProductPrice(125);
-
-printf(
-    'The name is %s cost %d €'.PHP_EOL,
-    $product->getProductName(),
-    $product->getProductPrice()
-);
-```
-
-</Snippet>
+<Snippet filename="/tmp/refactor/index.php" source="./files/index.php" />
 
 The second file `Product.php` will contain:
 
-<Snippet filename="/tmp/refactor/Product.php">
-
-```php
-<?php
-
-namespace Cavo;
-
-class Product
-{
-    private string $productName = '';
-    private float $productPrice = 0;
-
-    public function __construct(string $name='', float $price=0)
-    {
-        $this->setProductName($name);
-        $this->setProductPrice($price);
-    }
-
-    public function getProductName(): string {
-        return $this->productName;
-    }
-
-    public function setProductName(string $name): void {
-        $this->productName = $name;
-    }
-
-    public function getProductPrice(): float {
-        return $this->productPrice;
-    }
-
-    public function setProductPrice(float $price): void {
-        $this->productPrice = $price;
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="/tmp/refactor/Product.php" source="./files/Product.php" />
 
 ### Run the example
 
@@ -121,68 +64,11 @@ Let's do it and see how it works:
 
 The new `Product.php` file is now:
 
-<Snippet filename="/tmp/refactor/Product.php">
-
-```php
-<?php
-
-namespace Cavo;
-
-class Product
-{
-    private string $name = '';
-    private float $price = 0;
-
-    public function __construct(string $name='', float $price=0)
-    {
-        $this->setName($name);
-        $this->setPrice($price);
-    }
-
-    public function getName(): string {
-        return $this->name;
-    }
-
-    public function setName(string $name): void {
-        $this->name = $name;
-    }
-
-    public function getPrice(): float {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): void {
-        $this->price = $price;
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="/tmp/refactor/Product.php" source="./files/Product.part2.php" />
 
 But the very cool thing is that `index.php` has been automatically updated. Open `index.php` and check:
 
-<Snippet filename="/tmp/refactor/index.php">
-
-```php
-<?php
-
-namespace Cavo;
-
-require_once('Product.php');
-
-$product = new Product();
-
-$product->setName('keyboard');
-$product->setPrice(125);
-
-printf(
-    'The name is %s cost %d €'.PHP_EOL,
-    $product->getName(),
-    $product->getPrice()
-);
-```
-
-</Snippet>
+<Snippet filename="/tmp/refactor/index.php" source="./files/index.part2.php" />
 
 By running `docker run -it --rm -v "${PWD}":/project -w /project php:8.2 php index.php`, it's still working.
 
@@ -218,51 +104,7 @@ The third very nice method is the `Extract method` from [PHP Refactoring](https:
 
 Consider the following example (the code isn't running, it's just for the illustration). Create a new file called `Pandoc.php` with this content:
 
-<Snippet filename="/tmp/refactor/Pandoc.php">
-
-```php
-<?php
-
-namespace Avonture;
-
-class Pandoc
-{
-    public function download(string $filename): void
-    {
-        $filename = Sanitize::sanitizeFileName(trim($filename));
-
-        if ('' == $filename) {
-            throw new PandocFileNotSpecified();
-        }
-
-        if (!is_file($this->outputFolder . $filename)) {
-            throw new PandocFileNotFound($filename);
-        }
-
-        // Make the filename absolute
-        $filename = $this->outputFolder . ltrim($filename, self::DS);
-
-        $this->outputType = pathinfo($filename)['extension'];
-
-        $contentType = $this->getContentType()['type'];
-
-        header('Content-Type: ' . $contentType);
-        header('Content-Transfer-Encoding: ' . $this->getContentType()['encoding']);
-
-        header('Content-Disposition: attachment; filename="' . basename($filename) . '"');
-        header('Content-Length: ' . filesize(utf8_decode($filename)));
-        header('Accept-Ranges: bytes');
-        header('Pragma: no-cache');
-        header('Expires: 0');
-
-        ob_end_flush();
-
-        @readfile(utf8_decode($filename));
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="/tmp/refactor/Pandoc.php" source="./files/Pandoc.php" />
 
 The `download` function didn't respect the single-responsibility concept. We've made a few initializations and assertions. Can we do better? Yes, we can extract the lines concerning the browser and create a new `sendToBrowser` function but instead of doing it manually, we'll use the `Extract` feature.
 

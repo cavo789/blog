@@ -1,0 +1,10 @@
+# cspell:ignore dood
+name: "dood-as-root"
+services:
+  dood:
+    build: .
+    tty: true
+    working_dir: /src
+    volumes:
+      # We need to share the Docker socket: this technique is called "Docker-out-of-Docker"
+      - /var/run/docker.sock:/var/run/docker.sock

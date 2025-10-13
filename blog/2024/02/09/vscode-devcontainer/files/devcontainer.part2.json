@@ -1,0 +1,38 @@
+{
+    // ...
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    // ...
+    "customizations": {
+        "vscode": {
+            "settings": {
+                // highlight-next-line
+                "[php]": {
+                    // highlight-next-line
+                    "editor.formatOnSave": true,
+                    // highlight-next-line
+                    "editor.defaultFormatter": "junstyle.php-cs-fixer"
+                },
+                // ...
+                // highlight-next-line
+                "files.autoSave": "onFocusChange",
+                // ...
+                // highlight-next-line
+                "php-cs-fixer.config": "/var/www/html/.config/.php-cs-fixer.php",
+                // highlight-next-line
+                "php-cs-fixer.executablePath": "/usr/local/bin/php-cs-fixer.phar",
+                // highlight-next-line
+                "php-cs-fixer.onsave": true,
+                // highlight-next-line
+                "php-cs-fixer.rules": "@PSR12",
+                //...
+            },
+            "extensions": [
+                // ...
+                // highlight-next-line
+                "junstyle.php-cs-fixer",
+            ]
+        }
+    }
+}

@@ -1,0 +1,7 @@
+AuthName "File access restriction"
+AuthType Basic
+AuthUserFile /home/your_account/.htpasswd
+
+<Files "confidential.md">
+Require valid-user
+</Files>

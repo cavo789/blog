@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "list": [
+      {
+        "name": "Ubuntu",
+        "source": "Windows.Terminal.Wsl",
+        "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\christophe\\"
+      }
+    ]
+  }
+}

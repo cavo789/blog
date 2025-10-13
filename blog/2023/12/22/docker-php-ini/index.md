@@ -24,73 +24,19 @@ Most probably, you'll have a `compose.yaml` file, please edit the file.
 
 For the illustration, below you'll find a copy of the simplest `compose.yaml` file you can retrieve in my <Link to="/blog/docker-joomla">Create your Joomla website using Docker</Link> blog post. *You can have yours of course*. This is just for example.
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  joomla:
-    image: joomla
-    restart: always
-    ports:
-      - 8080:80
-    environment:
-      - JOOMLA_DB_HOST=joomladb
-      - JOOMLA_DB_PASSWORD=example
-
-  joomladb:
-    image: mysql:8.0.13
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=example
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 ## Step one - Update your yaml file
 
 The solution is to add the `volumes` line if not yet present in your file and, the most important one, the line for *overriding* the `php.ini` file like below:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  joomla:
-    image: joomla
-    restart: always
-    ports:
-      - 8080:80
-    environment:
-      - JOOMLA_DB_HOST=joomladb
-      - JOOMLA_DB_PASSWORD=example
-    // highlight-next-line
-    volumes:
-      // highlight-next-line
-      - ./php.ini:/usr/local/etc/php/php.ini
-
-  joomladb:
-    image: mysql:8.0.13
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=example
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 
 ## Step two - Create your own php.ini file
 
 The second things to do is to create a file called `php.ini` in the same folder of your `compose.yaml` where you'll define your variables; f.i.
 
-<Snippet filename="php.ini">
-
-```ini
-file_uploads = On
-memory_limit = 500M
-upload_max_filesize = 500M
-post_max_size = 500M
-max_execution_time = 600
-```
-
-</Snippet>
+<Snippet filename="php.ini" source="./files/php.ini" />
 
 So, now, your folder contains at least two files:
 

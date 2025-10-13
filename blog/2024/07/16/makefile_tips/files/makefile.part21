@@ -1,0 +1,5 @@
+COLOR_RED:=31
+COLOR_YELLOW:=33
+
+runsql:
+	@[ "${SQL}" ] && printf "\e[1;${COLOR_YELLOW}m\n%s\e[0m\n\n" "Running ${SQL}" || ( printf "\e[1;${COLOR_RED}m\n%s\e[0m\n\n" "ERROR - Please set the SQL to execute; consult the help if needed"; exit 1 )

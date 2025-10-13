@@ -1,0 +1,10 @@
+name: my_docusaurus_blog
+
+services:
+  blog:
+    build: .
+    ports:
+      - 3000:3000
+    user: 1000:1000
+    volumes:
+      - ./blog:/app/blog

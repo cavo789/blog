@@ -1,0 +1,20 @@
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
+    <!-- highlight-next-line -->
+    <ribbon>
+        <!-- highlight-next-line -->
+        <tabs>
+            <!-- highlight-next-line -->
+            <tab id="customTab" insertAfterMso="TabView" label="Tab">
+                <!-- highlight-next-line -->
+                <group id="customGroup" label="Group">
+                    <!-- highlight-next-line -->
+                    YOUR FEATURES HERE
+                    <!-- highlight-next-line -->
+                </group>
+                <!-- highlight-next-line -->
+            </tab>
+            <!-- highlight-next-line -->
+        </tabs>
+        <!-- highlight-next-line -->
+    </ribbon>
+</customUI>

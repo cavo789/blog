@@ -68,60 +68,17 @@ To make things clean and maintainable, let's create some files.
 
 Make sure you're in the `/tmp/https_localhost` folder and create the following files.
 
-<Snippet filename="Dockerfile">
-
-Please create a file called `Dockerfile` with the following content:
-
-```docker
-FROM httpd:2.4
-
-COPY httpd/my-site.conf /etc/apache2/sites-available/my-site.conf
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 The second file we'll need should be called `compose.yaml` with the following content:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  apache:
-    build:
-      context: .
-    ports:
-      - "80:80"
-    volumes:
-      - ./src:/usr/local/apache2/htdocs
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 <AlertBox variant="info" title="compose.yaml is strictly equivalent to docker-compose.yml" />
 
 The third file we'll need should be created in a `httpd` directory and has to be called `my-site.conf` with the following content:
 
-<Snippet filename="httpd/my-site.conf">
-
-```apacheconf
-<VirtualHost *:80>
-    DocumentRoot /usr/local/apache2/htdocs
-    ServerName localhost
-
-    <Directory /usr/local/apache2/htdocs>
-        AllowOverride All
-        RewriteEngine On
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.html [QSA,L]
-    </Directory>
-
-    ErrorLog /usr/local/apache2/logs/error.log
-    CustomLog /usr/local/apache2/logs/access.log combined
-
-</VirtualHost>
-```
-
-</Snippet>
+<Snippet filename="httpd/my-site.conf" source="./files/my-site.conf" />
 
 <AlertBox variant="note" title="For a container based on Apache, the website should be copied in folder /usr/local/apache2/htdocs and not, /var/www/html; that one is for a PHP image." />
 
@@ -180,66 +137,7 @@ We need to update our Apache configuration file and add a Virtual host for port 
 
 Please edit the `httpd/my-site.conf` existing file and add the content below.
 
-<Snippet filename="httpd/my-site.conf">
-
-```apacheconf
-<VirtualHost *:80>
-    DocumentRoot /usr/local/apache2/htdocs
-    ServerName localhost
-
-    <Directory /usr/local/apache2/htdocs>
-        AllowOverride All
-        RewriteEngine On
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.html [QSA,L]
-    </Directory>
-
-    ErrorLog /usr/local/apache2/logs/error.log
-    CustomLog /usr/local/apache2/logs/access.log combined
-
-</VirtualHost>
-
-// highlight-next-line
-<VirtualHost *:443>
-    // highlight-next-line
-    DocumentRoot /usr/local/apache2/htdocs
-    // highlight-next-line
-    ServerName localhost
-    // highlight-next-line
-
-    // highlight-next-line
-    SSLEngine on
-    // highlight-next-line
-    SSLCertificateFile "/usr/local/apache2/conf/server.crt"
-    // highlight-next-line
-    SSLCertificateKeyFile "/usr/local/apache2/conf/server.key"
-    // highlight-next-line
-
-    // highlight-next-line
-    <Directory /usr/local/apache2/htdocs>
-        // highlight-next-line
-        AllowOverride All
-        // highlight-next-line
-        RewriteEngine On
-        // highlight-next-line
-        RewriteCond %{REQUEST_FILENAME} !-f
-        // highlight-next-line
-        RewriteRule ^(.*)$ index.html [QSA,L]
-    // highlight-next-line
-    </Directory>
-    // highlight-next-line
-
-    // highlight-next-line
-    ErrorLog /usr/local/apache2/logs/error.log
-    // highlight-next-line
-    CustomLog /usr/local/apache2/logs/access.log combined
-    // highlight-next-line
-
-// highlight-next-line
-</VirtualHost>
-```
-
-</Snippet>
+<Snippet filename="httpd/my-site.conf" source="./files/my-site.part2.conf" />
 
 <AlertBox variant="highlyImportant" title="Paths are crucial!">
 Folder and file names are of major importance. The two certificate files should be saved in folder `/usr/local/apache2/conf/` and be named `server.crt` and `server.key`. This because we're using an Apache Docker image; it's not the same if you're using, f.i., a PHP+Apache image.
@@ -249,22 +147,7 @@ Folder and file names are of major importance. The two certificate files should 
 
 Please edit the existing `compose.yaml` and add the new line below highlighted
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  apache:
-    build:
-      context: .
-    ports:
-      - "80:80"
-     # highlight-next-line
-      - "443:443"
-    volumes:
-      - ./src:/usr/local/apache2/htdocs
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 
 So we just need to expose the port 443 from the container to our host. That port is the standard one for the https protocol.
 
@@ -272,52 +155,7 @@ So we just need to expose the port 443 from the container to our host. That port
 
 The last file we need to update is our existing `Dockerfile` with the new lines below:
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM httpd:2.4
-# highlight-next-line
-
-# highlight-next-line
-RUN apt-get update \
-    # highlight-next-line
-    && apt-get install -y apache2-utils libapache2-mod-php openssl \
-    # highlight-next-line
-    && rm -rf /var/lib/apt/lists/*
-# highlight-next-line
-
-# highlight-next-line
-COPY ssl/server.crt /usr/local/apache2/conf/server.crt
-# highlight-next-line
-COPY ssl/server.key /usr/local/apache2/conf/server.key
-# highlight-next-line
-
-COPY httpd/my-site.conf /etc/apache2/sites-available/my-site.conf
-# highlight-next-line
-
-# highlight-next-line
-RUN sed -i \
-    # highlight-next-line
-	-e 's/^#\(Include .*httpd-ssl.conf\)/\1/' \
-    # highlight-next-line
-	-e 's/^#\(LoadModule .*mod_ssl.so\)/\1/' \
-    # highlight-next-line
-	-e 's/^#\(LoadModule .*mod_socache_shmcb.so\)/\1/' \
-    # highlight-next-line
-	/usr/local/apache2/conf/httpd.conf
-# highlight-next-line
-
-# highlight-next-line
-RUN a2enmod ssl \
-    # highlight-next-line
-    && a2enmod rewrite \
-    # highlight-next-line
-    && a2dissite 000-default default-ssl \
-    # highlight-next-line
-    && a2ensite my-site
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part2" />
 
 Here we need to do a lot of stuff. We've to install (`apt-get install`) some Linux binaries to allow later use of `a2enmod` and the SSL protocol.
 
@@ -407,72 +245,17 @@ If you don't want Apache but nginx, please use files below instead.
 
 It's basically the same but you'll notice some differences like in paths and the fact we don't need to install extra dependencies for PHP.
 
-<Snippet filename="Dockerfile">
-
-Please create a file called `Dockerfile` with the following content:
-
-```docker
-FROM nginx:latest
-
-RUN apt-get update \
-    && apt-get install -y openssl \
-    && rm -rf /var/lib/apt/lists/*
-
-COPY ssl/server.crt /etc/nginx/ssl/server.crt
-COPY ssl/server.key /etc/nginx/ssl/server.key
-
-COPY httpd/my-site.conf /etc/nginx/conf.d/my-site.conf
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part3" />
 
 The second file we'll need should be called `compose.yaml` with the following content:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  nginx:
-    build:
-      context: .
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./src:/usr/share/nginx/html
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part3.yaml" />
 
 <AlertBox variant="info" title="compose.yaml is strictly equivalent to docker-compose.yml" />
 
 The third file we'll need should be created in a `httpd` directory and has to be called `my-site.conf` with the following content:
 
-<Snippet filename="httpd/my-site.conf">
-
-```apacheconf
-server {
-    listen 80;
-
-    server_name localhost;
-
-    root /usr/share/nginx/html;
-}
-
-server {
-    listen 443 ssl;
-    listen [::]:443;
-
-    server_name localhost;
-
-    ssl_certificate /etc/nginx/ssl/server.crt;
-    ssl_certificate_key /etc/nginx/ssl/server.key;
-
-    root /usr/share/nginx/html;
- }
-```
-
-</Snippet>
+<Snippet filename="httpd/my-site.conf" source="./files/my-site.part3.conf" />
 
 ## Bonus - Configure PHP to use SSL
 
@@ -482,88 +265,17 @@ It's basically the same but you'll notice some differences like in paths and the
 
 Please create a file called `Dockerfile` with the following content:
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM php:8.3-apache
-
-COPY ssl/server.crt /etc/ssl/certs/server.crt
-COPY ssl/server.key /etc/ssl/private/server.key
-
-COPY httpd/my-site.conf /etc/apache2/sites-available/my-ssl.conf
-
-RUN a2enmod ssl && \
-    a2enmod rewrite && \
-    a2dissite 000-default default-ssl && \
-    a2ensite my-ssl
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part4" />
 
 The second file we'll need should be called `compose.yaml` with the following content:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  php:
-    build:
-      context: .
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./src:/var/www/html/
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part4.yaml" />
 
 <AlertBox variant="info" title="compose.yaml is strictly equivalent to docker-compose.yml" />
 
 The third file we'll need should be created in a `httpd` directory and has to be called `my-site.conf` with the following content:
 
-<Snippet filename="httpd/my-site.conf">
-
-```apacheconf
-<VirtualHost *:80>
-    DocumentRoot /var/www/html
-    ServerName localhost
-
-    <Directory /var/www/html>
-        AllowOverride All
-        RewriteEngine On
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.html [QSA,L]
-    </Directory>
-
-    ErrorLog /var/log/apache2/error.log
-    CustomLog /var/log/apache2/access.log combined
-
-
-</VirtualHost>
-
-<VirtualHost *:443>
-    DocumentRoot /var/www/html
-    ServerName localhost
-
-    SSLEngine on
-    SSLCertificateFile "/etc/ssl/certs/server.crt"
-    SSLCertificateKeyFile "/etc/ssl/private/server.key"
-
-    <Directory /var/www/html>
-        AllowOverride All
-        RewriteEngine On
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.html [QSA,L]
-    </Directory>
-
-    ErrorLog /var/log/apache2/error.log
-    CustomLog /var/log/apache2/access.log combined
-
-</VirtualHost>
-```
-
-</Snippet>
+<Snippet filename="httpd/my-site.conf" source="./files/my-site.part4.conf" />
 
 ## Bonus - Install a root CA certificate in the trust store
 

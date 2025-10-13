@@ -1,0 +1,8 @@
+[[runners]]
+  executor = "docker"
+
+  [[runners.docker]]
+    image = "php8.4"
+
+    // highlight-next-line
+    volumes = [ ..., "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]

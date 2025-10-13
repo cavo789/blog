@@ -75,63 +75,7 @@ We need to create a few files...
 
 Please create a file called `Dockerfile` with this content:
 
-<Snippet filename="Dockerfile">
-
-```docker
-# syntax=docker/dockerfile:1
-
-# Inspired by https://docusaurus.community/knowledge/deployment/docker/?package-managers=yarn
-
-# Stage 1: Base image.
-
-FROM node:21-alpine AS base
-
-# Disable color output from yarn to make logs easier to read.
-ENV FORCE_COLOR=0
-
-# Enable corepack.
-RUN corepack enable
-
-# --------------------------------------------------------------------
-
-# Stage 2: Production build mode.
-
-FROM base AS building_production
-
-# Install the latest version of Docusaurus
-RUN npx create-docusaurus@latest /opt/docusaurus/ classic --javascript \
-  # Uncomment the line below to remove dummy files like dummy blog, docs, src, ...
-  # && rm -rf /opt/docusaurus/blog /opt/docusaurus/docs /opt/docusaurus/src\
-  && chown -R node:node /opt/docusaurus/
-
-# Set the working directory to `/opt/docusaurus`.
-WORKDIR /opt/docusaurus
-
-# We need our package.json / package.lock file before running yarn install
-COPY package.* .
-
-# Install dependencies with `--immutable` to ensure reproducibility.
-RUN yarn install --immutable
-
-# Copy over the source code.
-COPY . /opt/docusaurus/
-
-# Build the static site (generated files will be created in /opt/docusaurus/build)
-RUN yarn build
-
-# --------------------------------------------------------------------
-
-# Stage 3: Serve with nginx
-
-FROM nginx:stable-alpine3.19-perl AS production
-
-# Copy the Docusaurus build output.
-COPY --from=building_production /opt/docusaurus/build /usr/share/nginx/html
-
-WORKDIR /usr/share/nginx/html
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 This file is a **multi-stages** Dockerfile. The main objectives are to have an improved cache layer system and a smaller, in size, final image. A multi-stages file is also really useful to be able to build more than one image like a development or a production one.
 
@@ -149,19 +93,7 @@ This is our three stages.
 
 **The stage 1 is called `base`**. In that stage, we do almost nothing, just download a `node` alpine version and initialize some variables. This step can be, in the future, be also used by a `development` stage but, in this article, let's concentrate on the `production` one.
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM node:21-alpine AS base
-
-# Disable color output from yarn to make logs easier to read.
-ENV FORCE_COLOR=0
-
-# Enable corepack.
-RUN corepack enable
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part2" />
 
 **In stage 2, called `building_production`**, we're extending the `base` stage.
 
@@ -171,34 +103,7 @@ Then we'll copy files from our current folder into the image in the process of b
 
 At the end of this stage, we'll obtain a static version of our Docusaurus site in the folder `/opt/docusaurus/build`.
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM base AS building_production
-
-# Install the latest version of Docusaurus
-RUN npx create-docusaurus@latest /opt/docusaurus/ classic --javascript \
-  # Uncomment the line below to remove dummy files like dummy blog, docs, src ...
-  # && rm -rf /opt/docusaurus/blog /opt/docusaurus/docs /opt/docusaurus/src \
-  && chown -R node:node /opt/docusaurus/
-
-# Set the working directory to `/opt/docusaurus`.
-WORKDIR /opt/docusaurus
-
-# We need our package.json / package.lock file before running yarn install
-COPY package.* .
-
-# Install dependencies with `--immutable` to ensure reproducibility.
-RUN yarn install --immutable
-
-# Copy over the source code.
-COPY . /opt/docusaurus/
-
-# Build the static site (generated files will be created in /opt/docusaurus/build)
-RUN yarn build
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part3" />
 
 What is important to note here is our working directory: `/opt/docusaurus/`. Our static site has been copied into that folder so the result of the last instruction of the second stage (`yarn build`) will thus create a subfolder `build` in `/opt/docusaurus/`.
 
@@ -206,18 +111,7 @@ At the end of this stage, we've our static website but not yet a web server.
 
 **In stage 3**, we will use [nginx](https://hub.docker.com/_/nginx).
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM nginx:stable-alpine3.19-perl AS production
-
-# Copy the Docusaurus build output.
-COPY --from=building_production /opt/docusaurus/build /usr/share/nginx/html
-
-WORKDIR /usr/share/nginx/html
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part4" />
 
 As you can see, this stage is very basic. We just use nginx, copy in his default web folder the static website created earlier and it's done.
 
@@ -239,26 +133,7 @@ I'm using, for my own blog, a development stage. Take a look on my [Dockerfile](
 
 The second file we need to create should be called `.dockerignore` and with this content:
 
-<Snippet filename=".dockerignore">
-
-```ignore
-build/
-node_modules/
-.git/
-
-.dockerignore
-.gitignore
-.markdownlint_ignore
-.markdownlint.json
-*.log
-compose.yaml
-Dockerfile
-LICENSE
-makefile
-README.md
-```
-
-</Snippet>
+<Snippet filename=".dockerignore" source="./files/.dockerignore" />
 
 The `.dockerignore` file is there to ask Docker not to copy everything in your final image when running the instruction `COPY . /opt/docusaurus/` present in the `Dockerfile`.
 

@@ -63,69 +63,7 @@ In order to be able to run this script, you should first run `pip install pandas
 
 </AlertBox>
 
-<Snippet filename="generate_fake_data.py">
-
-<!-- cspell:disable -->
-
-```python
-import pandas as pd
-
-from faker import Faker
-
-def generate_fake_data(filename: str = "employees") -> None:
-    fake = Faker()
-
-    max: int = 10
-
-    employees: dict = []
-
-    for id in range(max):
-        employee = {
-            "id" : id,
-            "first_name": fake.first_name(),
-            "last_name": fake.last_name(),
-        }
-
-        employees.append(employee)
-
-    extra_employees: dict = {
-        2020: ("François", "Damiens"),
-        2021: ("Albert", "Théo"),
-        2022: ("Marthe", "Louisa"),
-        2023: ("John", "John"),
-        2024: ("Matthias", "Gemini")
-    }
-
-    for year in { 2020, 2021, 2022, 2023, 2024 }:
-        salaries: dict = []
-
-        for id in range(max+1):
-
-            if id == max:
-                id = year
-                firstname, lastname = extra_employees[id]
-            else:
-                firstname = employees[id]["first_name"]
-                lastname = employees[id]["last_name"]
-
-            salary = {
-                "id": id,
-                "first_name": firstname,
-                "last_name": lastname,
-                "salary": int(fake.random.randint(2500, 8000))
-            }
-
-            salaries.append(salary)
-
-        df = pd.DataFrame(salaries)
-
-        df.to_csv(f"{filename}_{year}.csv", index=False, encoding="utf-8", sep=";")
-
-generate_fake_data("employees")
-
-```
-
-</Snippet>
+<Snippet filename="generate_fake_data.py" source="./files/generate_fake_data.py" />
 
 <!-- cspell:enable -->
 
@@ -148,39 +86,7 @@ id;first_name;last_name;salary
 
 Using Pandas, it's quite simple to loop over files and do a merge.
 
-<Snippet filename="merge.py">
-
-<!-- cspell:disable -->
-
-```python
-import pandas as pd
-
-def merge_data(filename: str = "employees") -> None:
-    # Initialize the merged DataFrame with the first year's data
-    merged_df: pd.DataFrame = pd.read_csv(f"{filename}_2020.csv", sep=";")
-    merged_df.rename(columns={'salary': 'salary_2020'}, inplace=True)
-
-    # Iterate over remaining years and merge
-    for year in range(2021, 2025):
-        df_year = pd.read_csv(f"{filename}_{year}.csv", sep=";")
-
-        # So, for the first run, rename column "salary" as "salary_2021"
-        df_year.rename(columns={'salary': f'salary_{year}'}, inplace=True)
-
-        # And merge both: for the first run, we'll retrieve all columns from files 2020 and append
-        # the salary of 2021. And do the same across years
-        merged_df = merged_df.merge(df_year, on=['id', 'first_name', 'last_name'], how='outer')
-
-    # Save the merged DataFrame to a new CSV file
-    merged_df.to_csv(f"{filename}_merged.csv", index=False, encoding="utf-8", sep=";")
-
-merge_data("employees")
-
-```
-
-<!-- cspell:enable -->
-
-</Snippet>
+<Snippet filename="merge.py" source="./files/merge.py" />
 
 The script will take the first file (`employees_2020.csv`) and load it in memory. The column `salary` will be, in memory, renamed as `salary_2020`.
 

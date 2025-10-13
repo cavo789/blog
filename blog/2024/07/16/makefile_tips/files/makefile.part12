@@ -1,0 +1,7 @@
+ifneq ("$(DB_TYPE)","")
+	echo "The DB_TYPE variable is not empty
+endif
+
+ifeq ("$(DB_TYPE)","")
+	echo "The DB_TYPE variable is empty
+endif

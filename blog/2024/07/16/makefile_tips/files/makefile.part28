@@ -1,0 +1,3 @@
+.PHONY: config
+config:
+ COMPOSE_FILE=${DOCKER_YAML_FILES} docker compose config

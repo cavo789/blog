@@ -75,20 +75,7 @@ The last thing we should do is to teach Docusaurus about our custom component.
 
 Please also edit the `src/theme/MDXComponents.js` file (and if not present, please create it)
 
-<Snippet filename="src/theme/MDXComponents.js">
-
-```js
-import MDXComponents from "@theme-original/MDXComponents";
-import Snippets from "@site/src/components/Snippets";
-
-export default {
-  // Reusing the default mapping
-  ...MDXComponents,
-  Snippets,
-};
-```
-
-</Snippet>
+<Snippet filename="src/theme/MDXComponents.js" source="./files/MDXComponents.js" />
 
 ### LogoIcon of Docux
 
@@ -116,20 +103,7 @@ Now, if you want to add a snippets in your blog, just do something like this:
 
 And it'll be rendered like this:
 
-<Snippet filename="who_are_you.py">
-
-```python
-name = input("What's your name? ")
-
-if name:
-    print(f"Hello, {name}!")
-else:
-    print("Hello, stranger!")
-
-print("Nice to meet you.")
-```
-
-</Snippet>
+<Snippet filename="who_are_you.py" source="./files/who_are_you.py" />
 
 ## Don't copying/pasting content anymore
 
@@ -167,36 +141,7 @@ Please create the `plugins/remark-snippet-loader/index.cjs` with the content bel
 
 Also please edit your `docusaurus.config.js` file like this:
 
-<Snippet filename="docusaurus.config.js">
-
-```js
-// highlight-next-line
-import remarkSnippetLoader from "./plugins/remark-snippet-loader/index.cjs";
-
-const config = {
-  // [ ... ]
-  presets: [
-    [
-      "classic",
-      {
-        // [ ... ]
-        blog: {
-          beforeDefaultRemarkPlugins: [
-            // [ ... ]
-            // highlight-next-line
-            remarkSnippetLoader,
-          ],
-        },
-        // [ ... ]
-      },
-    ],
-  ],
-};
-
-export default config;
-```
-
-</Snippet>
+<Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.js" />
 
 This done, please restart your Docusaurus server and on the next start, if some changes have to be made, you can see them in your console:
 
@@ -204,182 +149,39 @@ This done, please restart your Docusaurus server and on the next start, if some 
 
 In this section, I've copy/pasted the source inside the `<Snippet>` tag. Useful when I don't have the file on my disk.
 
-<Snippet filename="sample.apacheconf">
+<Snippet filename="sample.apacheconf" source="./files/sample.apacheconf" />
 
-```apacheconf
-<VirtualHost *:80>
-    ServerName www.example.com
-    DocumentRoot /www/domain
-</VirtualHost>
-```
+<Snippet filename="sample.asm" source="./files/sample.asm" />
 
-</Snippet>
+<Snippet filename="script.sh" source="./files/script.sh" />
 
-<Snippet filename="sample.asm">
+<Snippet filename="script.bat" source="./files/script.bat" />
 
-```asm
-section .data
-    msg db 'Hello, world!', 0Ah
-section .text
-    global _start
-_start:
-    mov edx, 13
-```
+<Snippet filename="styles.css" source="./files/styles.css" />
 
-</Snippet>
+<Snippet filename="data.csv" source="./files/data.csv" />
 
-<Snippet filename="script.sh">
+<Snippet filename="change.diff" source="./files/change.diff" />
 
-```bash
-#!/bin/bash
-echo "Hello, world!"
-```
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
-</Snippet>
+<Snippet filename="login.feature" source="./files/login.feature" />
 
-<Snippet filename="script.bat">
+<Snippet filename="hello.html" source="./files/hello.html" />
 
-```batch
-@echo off
-echo Hello, world!
-```
+<Snippet filename=".gitignore" source="./files/.gitignore" />
 
-</Snippet>
+<Snippet filename="config.ini" source="./files/config.ini" />
 
-<Snippet filename="styles.css">
+<Snippet filename="HelloWorld.java" source="./files/HelloWorld.java" />
 
-```css
-body {
-  background-color: #f0f0f0;
-}
-```
+<Snippet filename="script.js" source="./files/script.js" />
 
-</Snippet>
+<Snippet filename="data.json" source="./files/data.json" />
 
-<Snippet filename="data.csv">
+<Snippet filename="application.log" source="./files/application.log" />
 
-```csv
-name,age
-Alice,30
-Bob,25
-```
-
-</Snippet>
-
-<Snippet filename="change.diff">
-
-```diff
-- old line
-+ new line
-```
-
-</Snippet>
-
-<Snippet filename="Dockerfile">
-
-```docker
-FROM node:18
-WORKDIR /app
-COPY . .
-RUN npm install
-CMD ["node", "index.js"]
-```
-
-</Snippet>
-
-<Snippet filename="login.feature">
-
-```gherkin
-Feature: User login
-  Scenario: Valid login
-    Given the user is on the login page
-    When the user enters valid credentials
-    Then they are redirected to the dashboard
-```
-
-</Snippet>
-
-<Snippet filename="hello.html">
-
-```html
-<!DOCTYPE html>
-<html>
-  <body>
-    <p>Hello, world!</p>
-  </body>
-</html>
-```
-
-</Snippet>
-
-<Snippet filename=".gitignore">
-
-```ignore
-node_modules/
-dist/
-.env
-```
-
-</Snippet>
-
-<Snippet filename="config.ini">
-
-```ini
-[server]
-port=8080
-host=localhost
-```
-
-</Snippet>
-
-<Snippet filename="HelloWorld.java">
-
-```java
-public class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, world!");
-    }
-}
-
-```
-
-</Snippet>
-
-<Snippet filename="script.js">
-```js
-console.log("Hello, world!");
-```
-
-</Snippet>
-
-<Snippet filename="data.json">
-
-```json
-{
-  "name": "example",
-  "version": "1.0.0"
-}
-```
-
-</Snippet>
-
-<Snippet filename="application.log">
-
-```log
-[INFO] Server started at 10:00
-[ERROR] Connection failed
-```
-
-</Snippet>
-
-<Snippet filename="makefile">
-
-```makefile
-build:
-\tgcc main.c -o app
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile" />
 
 <Snippet filename="readme.md">
 
@@ -391,99 +193,25 @@ This is a markdown example.
 
 </Snippet>
 
-<Snippet filename="hello_world.pas">
+<Snippet filename="hello_world.pas" source="./files/hello_world.pas" />
 
-```pascal
-program HelloWorld;
-begin
-    writeln('Hello, world!');
-end.
-```
+<Snippet filename="HelloWorld.php" source="./files/HelloWorld.php" />
 
-</Snippet>
+<Snippet filename="Hello_World.ps1" source="./files/Hello_World.ps1" />
 
-<Snippet filename="HelloWorld.php">
+<Snippet filename="hello_world.py" source="./files/hello_world.part2.py" />
 
-```php
-<?php
-echo "Hello, world!";
-?>
-```
+<Snippet filename="active.sql" source="./files/active.sql" />
 
-</Snippet>
+<Snippet filename="logo.svg" source="./files/logo.svg" />
 
-<Snippet filename="Hello_World.ps1">
+<Snippet filename="pyproject.toml" source="./files/pyproject.toml" />
 
-```powershell
-Write-Output "Hello, world!"
-```
+<Snippet filename="HelloWorld.vb" source="./files/HelloWorld.vb" />
 
-</Snippet>
+<Snippet filename="message.xml" source="./files/message.xml" />
 
-<Snippet filename="hello_world.py">
-
-```python
-print("Hello, world!")
-```
-
-</Snippet>
-
-<Snippet filename="active.sql">
-
-```sql
-SELECT * FROM users WHERE active = 1;
-```
-
-</Snippet>
-
-<Snippet filename="logo.svg">
-```svg
-<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="50" r="40" fill="red" />
-</svg>
-```
-
-</Snippet>
-
-<Snippet filename="pyproject.toml">
-
-```toml
-[package]
-name = "example"
-version = "0.1.0"
-```
-
-</Snippet>
-
-<Snippet filename="HelloWorld.vb">
-```vbnet
-Public Module HelloWorld
-    Sub Main()
-        Console.WriteLine("Hello, world!")
-    End Sub
-End Module
-```
-
-</Snippet>
-
-<Snippet filename="message.xml">
-
-```xml
-<message>
-  <text>Hello, world!</text>
-</message>
-```
-
-</Snippet>
-
-<Snippet filename="config.yaml">
-
-```yaml
-name: Example
-version: 1.0.0
-```
-
-</Snippet>
+<Snippet filename="config.yaml" source="./files/config.yaml" />
 
 ## Demo, get content from the disk
 

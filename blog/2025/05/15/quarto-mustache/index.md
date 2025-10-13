@@ -34,31 +34,7 @@ Please run `mkdir /tmp/partials && cd $_` to create a temporary folder and jump 
 
 Create a file called `_quarto.yml` with this content:
 
-<Snippet filename="_quarto.yml">
-
-```yaml
-project:
-  type: website
-  output-dir: .
-
-lang: en
-
-website:
-  title: "Playing with Quarto partials"
-  page-navigation: true
-  bread-crumbs: true
-  sidebar:
-    style: "docked"
-    toc-depth: 4
-    contents: auto
-
-<!-- highlight-next-line -->
-filters:
-  <!-- highlight-next-line -->
-  - partials
-```
-
-</Snippet>
+<Snippet filename="_quarto.yml" source="./files/_quarto.yml" />
 
 This file tells to Quarto that we're about to create a website i.e. by running `quarto render` later on, we'll convert our pages written in Markdown as HTML pages.
 

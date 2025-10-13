@@ -40,22 +40,7 @@ If you want to, proceed like this:
 
 In my case, my profile has these settings:
 
-<Snippet filename="settings.json">
-
-```json
-{
-    "backgroundImage": "c:/Users/Christophe/Backgrounds/ubuntu.jpg",
-    "backgroundImageOpacity": 0.3,
-    "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-    "hidden": false,
-    "name": "Ubuntu",
-    "source": "Windows.Terminal.Wsl",
-    "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\christophe\\repositories",
-    "tabTitle": "Ubuntu"
-}
-```
-
-</Snippet>
+<Snippet filename="settings.json" source="./files/settings.json" />
 
 As you can see, I've downloaded some nice background picture and saved it in my `Backgrounds` folder then I use Linux notation to refer it.
 
@@ -65,28 +50,7 @@ To add a new profile, let's say a console inside one of your Docker containers (
 
 For example, I'll create a new profile so I can immediately open my blog in a Docker container (since, of course, my blog has his Docker image):
 
-<Snippet filename="settings.json">
-
-```json
-{
-    "profiles": {
-        "list": [
-            {
-                "commandline": "wsl.exe -d Ubuntu docker-compose exec docusaurus /bin/sh",
-                "backgroundImage": "c:/Users/Christophe/Backgrounds/blog.jpg",
-                "backgroundImageOpacity": 0.3,
-                "tabColor": "#2496ED",
-                "guid": "{d77a8e47-3017-4745-9300-d338d849ee20}",
-                "icon": "ms-appdata:///roaming/pen.png",
-                "name": "Docker - Blog",
-                "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\christophe\\repositories\\blog"
-            }
-        ]
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="settings.json" source="./files/settings.part2.json" />
 
 <AlertBox variant="note" title="Your settings">
 
@@ -110,23 +74,7 @@ Take a look the list of profiles defined in your `settings.json` file, each prof
 
 Directly opening the desired directory is done by setting the `startingDirectory` node in a profile. Let's say we wish to open the user home folder by starting a new Ubuntu shell:
 
-<Snippet filename="settings.json">
-
-```json
-{
-  "profiles": {
-    "list": [
-      {
-        "name": "Ubuntu",
-        "source": "Windows.Terminal.Wsl",
-        "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\christophe\\"
-      }
-    ]
-  }
-}
-```
-
-</Snippet>
+<Snippet filename="settings.json" source="./files/settings.part3.json" />
 
 You just need to specify the `startingDirectory` node and set it to `\\wsl$\Ubuntu\home\christophe\`
 
@@ -136,32 +84,10 @@ Windows Terminal has a `startupActions` property which allows you to specify act
 
 Let's imagine I wish to launch two tabs; the default one (nothing to foresee) and a second tab. To make things easier to maintain, I'll use a profile:
 
-<Snippet filename="settings.json">
-
-```json
-"startupActions": "; new-tab --profile \"DOS Command Prompt\"",
-```
-
-</Snippet>
+<Snippet filename="settings.json" source="./files/settings.part4.json" />
 
 So now I need to create a profile called `DOS Command Prompt` :
 
-<Snippet filename="settings.json">
-
-```json
-{
-    "profiles": {
-        "list": [
-            {
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": false,
-                "name": "DOS Command Prompt"
-            },
-        ]
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="settings.json" source="./files/settings.part5.json" />
 
 And tadaaa, now by starting Windows Terminal, my default terminal will be open (Ubuntu in my case) and, in a second tab, I'll also open a DOS console.

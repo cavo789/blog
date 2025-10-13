@@ -20,25 +20,7 @@ I really like the idea of not having to draw (actually, that is just because I a
 
 Let us take an example found randomly on the net [superheroes](https://medium.com/@Goldzila/superheroes-of-data-exploring-xml-json-and-binary-formats-through-the-lens-of-marvel-characters-3754f2691cdc). How can we represent Spider-Man as a JSON object? Below an attempt:
 
-<Snippet filename="superheroes.json">
-
-```json
-{
-  "superhero": "Spider-Man",
-  "realName": "Peter Parker",
-  "abilities": [
-    "Wall-Crawling",
-    "Spider-Sense",
-    "Super Strength"
-  ],
-  "equipment": {
-    "webShooters": "True",
-    "spiderTracers": "True"
-  }
-}
-```
-
-</Snippet>
+<Snippet filename="superheroes.json" source="./files/superheroes.json" />
 
 Isn't it nicer in visual form?
 
@@ -46,49 +28,7 @@ Isn't it nicer in visual form?
 
 Another example (found [here](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)):
 
-<Snippet filename="superheroes.json">
-
-```json
-{
-  "squadName": "Super hero squad",
-  "homeTown": "Metro City",
-  "formed": 2016,
-  "secretBase": "Super tower",
-  "active": true,
-  "members": [
-    {
-      "name": "Molecule Man",
-      "age": 29,
-      "secretIdentity": "Dan Jukes",
-      "powers": ["Radiation resistance", "Turning tiny", "Radiation blast"]
-    },
-    {
-      "name": "Madame Uppercut",
-      "age": 39,
-      "secretIdentity": "Jane Wilson",
-      "powers": [
-        "Million tonne punch",
-        "Damage resistance",
-        "Superhuman reflexes"
-      ]
-    },
-    {
-      "name": "Eternal Flame",
-      "age": 1000000,
-      "secretIdentity": "Unknown",
-      "powers": [
-        "Immortality",
-        "Heat Immunity",
-        "Inferno",
-        "Teleportation",
-        "Interdimensional travel"
-      ]
-    }
-  ]
-}
-```
-
-</Snippet>
+<Snippet filename="superheroes.json" source="./files/superheroes.part2.json" />
 
 ![Super hero squad](./images/super_hero_squad.png)
 

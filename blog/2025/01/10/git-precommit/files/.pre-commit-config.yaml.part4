@@ -1,0 +1,49 @@
+default_language_version:
+  python: python3.13
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-ast # Python linter - Simply check whether files parse as valid python.
+      - id: check-docstring-first # No code before the initial docstring
+      - id: check-json # JSON linter   - Attempts to load all json files to verify syntax.
+      - id: check-toml # TOML linter   - Attempts to load all TOML files to verify syntax.
+      - id: check-xml # XML linter    - Attempts to load all XML files to verify syntax.
+      - id: check-yaml # YAML linter   - Attempts to load all yaml files to verify syntax.
+      - id: check-merge-conflict # Check for files that contain merge conflict strings.
+      - id: end-of-file-fixer # Makes sure files end in a newline and only a newline.
+      - id: file-contents-sorter
+        files: \.config/*.txt$ # Sort all lines in any .config/*.txt file (like cspell.txt f.i.)
+        args: [--ignore-case]
+      - id: no-commit-to-branch
+        args: [--branch, main] # Don't allow to push directly on the main branch
+      - id: requirements-txt-fixer # Sorts entries in requirements.txt
+      - id: trailing-whitespace # Trims trailing whitespace.
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black # Python black formatter
+  - repo: local
+    hooks:
+      - id: isort # isort (should be installed using `pip install isort` or mentioned in the `requirements.txt` file)
+        name: isort
+        entry: isort
+        language: system
+        types: [python]
+        require_serial: true
+        args: ["--line-length 120"]
+      - id: mypy # Mypy (should be installed using `pip install mypy` or mentioned in the `requirements.txt` file)
+        name: mypy
+        entry: mypy
+        language: system
+        types: [python]
+        require_serial: true
+        args: ["--config-file=.config/mypy.ini"]
+      - id: pylint # Pylint (should be installed using `pip install pylint` or mentioned in the `requirements.txt` file)
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        require_serial: true
+        args: ["--rcfile=.config/.pylintrc"]

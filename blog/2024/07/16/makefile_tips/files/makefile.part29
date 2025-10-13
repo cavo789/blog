@@ -1,0 +1,4 @@
+include .env
+
+helloDocker:
+	@echo "The name of the image is ${DOCKER_IMAGE}"

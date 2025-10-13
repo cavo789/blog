@@ -1,0 +1,177 @@
+{
+    "name": "app_python",
+    "dockerComposeFile": [
+        "./../compose.yaml",
+    ],
+    "service": "app_python",
+    "remoteUser": "python",
+    "workspaceFolder": "/app",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "aaron-bond.better-comments",
+                "DavidAnson.vscode-markdownlint",
+                "eamodio.gitlens",
+                "EricSia.pythonsnippets3",
+                "foxundermoon.shell-format",
+                "gruntfuggly.todo-tree",
+                "mde.select-highlight-minimap",
+                "mgesbert.python-path",
+                "mikestead.dotenv",
+                "mrmlnc.vscode-duplicate",
+                "ms-azuretools.vscode-docker",
+                "ms-python.black-formatter",
+                "ms-python.debugpy",
+                "ms-python.isort",
+                "ms-python.mypy-type-checker",
+                "ms-python.pylint",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-vscode-remote.remote-containers",
+                "ms-vscode.makefile-tools",
+                "njpwerner.autodocstring",
+                "redhat.vscode-xml",
+                "redhat.vscode-yaml",
+                "sirtori.indenticator",
+                "sonarsource.sonarlint-vscode",
+                "streetsidesoftware.code-spell-checker-dutch",
+                "streetsidesoftware.code-spell-checker-french",
+                "streetsidesoftware.code-spell-checker",
+                "tomoki1207.pdf",
+                "tyriar.sort-lines"
+            ],
+            "settings": {
+                "[dockerfile]": {
+                    "files.eol": "\n",
+                    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+                },
+                "[json]": {
+                    "editor.defaultFormatter": "vscode.json-language-features"
+                },
+                "[jsonc]": {
+                    "editor.defaultFormatter": "vscode.json-language-features",
+                    "editor.wordWrap": "wordWrapColumn",
+                    "editor.wordWrapColumn": 80,
+                    "editor.wrappingIndent": "indent"
+                },
+                "[markdown]": {
+                    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+                    "editor.wordWrap": "wordWrapColumn",
+                    "editor.wordWrapColumn": 80,
+                    "editor.wrappingIndent": "indent"
+                },
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.black-formatter",
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": "always",
+                        "source.organizeImports": "always"
+                    }
+                },
+                "[shellscript]": {
+                    "editor.defaultFormatter": "foxundermoon.shell-format"
+                },
+                "[xml]": {
+                    "editor.defaultFormatter": "redhat.vscode-xml",
+                    "editor.wordWrap": "wordWrapColumn",
+                    "editor.wordWrapColumn": 80,
+                    "editor.wrappingIndent": "indent"
+                },
+                "[yaml]": {
+                    "editor.defaultFormatter": "redhat.vscode-yaml",
+                    "editor.insertSpaces": true,
+                    "editor.tabSize": 2
+                },
+                "cSpell.language": "en,fr,nl",
+                "docker-explorer.enableTelemetry": false,
+                "editor.bracketPairColorization.enabled": true,
+                "editor.codeActionsOnSave": {
+                    "source.fixAll": "explicit"
+                },
+                "editor.defaultFoldingRangeProvider": null,
+                "editor.detectIndentation": false,
+                "editor.folding": true,
+                "editor.foldingStrategy": "auto",
+                "editor.formatOnSave": true,
+                "editor.guides.bracketPairs": "active",
+                "editor.guides.bracketPairsHorizontal": "active",
+                "editor.guides.highlightActiveIndentation": true,
+                "editor.guides.indentation": true,
+                "editor.multiCursorModifier": "ctrlCmd",
+                "editor.renderWhitespace": "all",
+                "editor.rulers": [
+                    120,
+                    70
+                ],
+                "editor.stickyScroll.enabled": true,
+                "editor.tabCompletion": "on",
+                "editor.tabSize": 4,
+                "editor.wordBasedSuggestionsMode": "allDocuments",
+                "editor.wordWrapColumn": 120,
+                "explorer.compactFolders": false,
+                "explorer.confirmDelete": true,
+                "explorer.confirmDragAndDrop": true,
+                "extensions.autoCheckUpdates": false,
+                "files.autoSave": "onFocusChange",
+                "files.defaultLanguage": "${activeEditorLanguage}",
+                "files.eol": "\n",
+                "files.exclude": {
+                    "**/.cache": true,
+                    "**/.git": true
+                },
+                "files.insertFinalNewline": true,
+                "files.trimTrailingWhitespace": true,
+                "markdown.extension.toc.levels": "2..6",
+                "markdownlint.config": {
+                    "MD033": false,
+                    "MD036": false
+                },
+                "mypy-type-checker.args": [
+                    "--config-file=.config/.mypy.ini"
+                ],
+                "python.analysis.autoFormatStrings": true,
+                "python.analysis.autoImportCompletions": true,
+                "python.analysis.autoIndent": true,
+                "python.analysis.autoSearchPaths": true,
+                "python.analysis.fixAll": [
+                    "source.convertImportFormat"
+                ],
+                "python.analysis.typeCheckingMode": "strict",
+                "python.defaultInterpreterPath": "/usr/local/bin/python3",
+                "python.formatting.provider": "black",
+                "python.languageServer": "Pylance",
+                "python.linting.enabled": true,
+                "python.linting.flake8Enabled": true,
+                "python.linting.pylintEnabled": true,
+                "python.sortImports.args": [
+                    "--profile",
+                    "black"
+                ],
+                "redhat.telemetry.enabled": false,
+                "sonarlint.output.showAnalyzerLogs": true,
+                "sonarlint.disableTelemetry": true,
+                "sonarlint.rules": {
+                    "docker:S7031": {
+                        "level": "off"
+                    }
+                },
+                "telemetry.telemetryLevel": "off",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash",
+                        "icon": "terminal-bash"
+                    }
+                },
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.fontFamily": "MesloLGS NF",
+                "update.enableWindowsBackgroundUpdates": false,
+                "update.mode": "none",
+                "yaml.format.enable": true,
+                "yaml.completion": true,
+                "yaml.validate": true,
+                "workbench.editor.enablePreview": false,
+                "workbench.editor.wrapTabs": true
+            }
+        }
+    }
+}

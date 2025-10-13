@@ -1,0 +1,10 @@
+<!-- highlight-next-line -->
+<bookstore>
+    <!-- highlight-next-line -->
+    <book category="cooking">
+        <!-- highlight-next-line -->
+        <title lang="en">Everyday Italian</title>
+        [...]
+    </book>
+    [...]
+</bookstore>

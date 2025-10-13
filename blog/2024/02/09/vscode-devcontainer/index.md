@@ -73,20 +73,7 @@ Since we'll create a few files, please run `code .` to start Visual Studio Code 
 
 Create a new file called `index.php` with the PHP code below:
 
-<Snippet filename="index.php">
-
-```php
-<?php
-
-function sayHello(    )          {
-       $text="Hello World!";
-    return $text;
- }
-
-        echo sayHello();
-```
-
-</Snippet>
+<Snippet filename="index.php" source="./files/index.php" />
 
 ![Index php with poor written code](./images/index_php_bad_formatting.png)
 
@@ -125,160 +112,13 @@ The next step is to create a folder called `.devcontainer` and, there, a file ca
 
 In the rest of this article, we'll come back to this file.
 
-<Snippet filename=".devcontainer/devcontainer.json">
-
-```json
-{
-    "name": "php_devcontainer",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "args": {
-            "PHP_VERSION": "8.2",
-            "COMPOSER_VERSION": "2.5.5",
-            "PHPCSFIXER_INSTALL": "true",
-            "PHPCSFIXER_VERSION": "3.46.0",
-            "PHPCBF_INSTALL": "true",
-            "PHPCBF_VERSION": "3.7.2"
-        }
-    },
-    "workspaceMount": "source=${localWorkspaceFolder},target=/var/www/html,type=bind",
-    "workspaceFolder": "/var/www/html",
-    "remoteUser": "docker",
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "[php]": {
-                    "editor.formatOnSave": true,
-                    "editor.defaultFormatter": "junstyle.php-cs-fixer"
-                },
-                "editor.codeActionsOnSave": {
-                    "source.fixAll": true
-                },
-                "editor.formatOnSave": true,
-                "editor.renderWhitespace": "all",
-                "files.autoSave": "onFocusChange",
-                "files.eol": "\n",
-                "files.insertFinalNewline": true,
-                "files.trimTrailingWhitespace": true,
-                "intelephense.environment.phpVersion": "8.2",
-                "intelephense.telemetry.enabled": false,
-                "php-cs-fixer.config": "/var/www/html/.config/.php-cs-fixer.php",
-                "php-cs-fixer.executablePath": "/usr/local/bin/php-cs-fixer.phar",
-                "php-cs-fixer.onsave": true,
-                "php-cs-fixer.rules": "@PSR12",
-                "php.validate.executablePath": "/usr/local/bin/php",
-                "phpsab.executablePathCBF": "/usr/local/bin/phpcbf.phar",
-                "phpsab.executablePathCS": "/usr/local/bin/phpcs.phar",
-                "phpsab.fixerEnable": true,
-                "phpsab.snifferShowSources": true,
-                "phpsab.standard": "/var/www/html/.config/phpcs.xml",
-                "telemetry.telemetryLevel": "off",
-                "terminal.integrated.profiles.linux": {
-                    "bash": {
-                        "path": "/bin/bash",
-                        "icon": "terminal-bash"
-                    }
-                },
-                "terminal.integrated.defaultProfile.linux": "bash"
-            },
-            "extensions": [
-                "bmewburn.vscode-intelephense-client",
-                "junstyle.php-cs-fixer",
-                "ms-azuretools.vscode-docker",
-                "ValeryanM.vscode-phpsab",
-                "zobo.php-intellisense"
-            ]
-        }
-    },
-    "postCreateCommand": "composer require rector/rector --dev"
-}
-```
-
-</Snippet>
+<Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.json" />
 
 ## 4. Create the Dockerfile file
 
 Please continue and create a second file called `Dockerfile` with this content:
 
-<Snippet filename="Dockerfile">
-
-```docker
-ARG PHP_VERSION=8.2
-
-ARG COMPOSER_HOME="/var/cache/composer"
-ARG COMPOSER_VERSION=2.5.5
-
-ARG PHPCSFIXER_INSTALL=true
-ARG PHPCSFIXER_VERSION=3.46.0
-
-ARG PHPCBF_INSTALL=true
-ARG PHPCBF_VERSION=3.7.2
-
-ARG TIMEZONE="Europe/Brussels"
-
-ARG OS_USERID=1000
-ARG OS_USERNAME="docker"
-
-FROM composer:${COMPOSER_VERSION} AS composer_base
-
-FROM php:${PHP_VERSION}-fpm
-
-ARG TIMEZONE
-ENV TZ=${TIMEZONE}
-
-ARG PHPCSFIXER_INSTALL
-ARG PHPCSFIXER_VERSION
-
-RUN set -e -x \
-    && if [ "$PHPCSFIXER_INSTALL" = "true" ] ; then \
-    printf "\e[0;105m%s\e[0;0m\n" "Install php-cs-fixer.phar ${PHPCSFIXER_VERSION}" \
-    && curl -L https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v${PHPCSFIXER_VERSION}/php-cs-fixer.phar -o /usr/local/bin/php-cs-fixer.phar \
-    && chmod +x /usr/local/bin/php-cs-fixer.phar ; \
-    fi
-
-ARG PHPCBF_INSTALL
-ARG PHPCBF_VERSION
-
-RUN set -e -x \
-    && if [ "$PHPCBF_INSTALL" = "true" ] ; then \
-    printf "\e[0;105m%s\e[0;0m\n" "Install phpcbf.phar ${PHPCBF_VERSION}" \
-    && curl -L https://github.com/squizlabs/PHP_CodeSniffer/releases/download/${PHPCBF_VERSION}/phpcbf.phar -o /usr/local/bin/phpcbf.phar \
-    && chmod +x /usr/local/bin/phpcbf.phar \
-    && curl -L https://github.com/squizlabs/PHP_CodeSniffer/releases/download/${PHPCBF_VERSION}/phpcs.phar -o /usr/local/bin/phpcs.phar \
-    && chmod +x /usr/local/bin/phpcs.phar ; \
-    fi
-
-ARG COMPOSER_HOME
-ENV COMPOSER_HOME=${COMPOSER_HOME}
-
-RUN set -e -x \
-    && mkdir -p "${COMPOSER_HOME}/cache/files" \
-    && mkdir -p "${COMPOSER_HOME}/cache/vcs" \
-    && chmod -R 777 "${COMPOSER_HOME}"
-
-COPY --from=composer_base /usr/bin/composer /usr/bin/composer
-
-ARG OS_USERID
-ARG OS_USERNAME
-
-RUN set -e -x \
-    && useradd --password '' -G www-data,root -u ${OS_USERID} -l -d "/home/${OS_USERNAME}" "${OS_USERNAME}" \
-    && mkdir -p "/home/${OS_USERNAME}" \
-    && chown -R "${OS_USERNAME}":"${OS_USERNAME}" "/home/${OS_USERNAME}"
-
-RUN set -e -x \
-    && printf "\e[0;105m%s\e[0;0m\n" "Install Linux binaries" \
-    && apt-get update -yqq \
-    && apt-get install -y --no-install-recommends curl libzip-dev zip unzip \
-    && docker-php-ext-install zip \
-    && docker-php-source delete \
-    && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/*
-
-WORKDIR /var/www/html
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 ## 5. Reopen in the container
 
@@ -319,50 +159,7 @@ But let's understand when `PHP-CS-Fixer` was installed...
 
 Please reopen your `.devcontainer/devcontainer.json` file and look at the highlighted lines below:
 
-<Snippet filename=".devcontainer/devcontainer.json">
-
-```json
-{
-    // ...
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
-    // ...
-    "customizations": {
-        "vscode": {
-            "settings": {
-                //highlight-next-line
-                "[php]": {
-                    //highlight-next-line
-                    "editor.formatOnSave": true,
-                    //highlight-next-line
-                    "editor.defaultFormatter": "junstyle.php-cs-fixer"
-                },
-                // ...
-                //highlight-next-line
-                "files.autoSave": "onFocusChange",
-                // ...
-                //highlight-next-line
-                "php-cs-fixer.config": "/var/www/html/.config/.php-cs-fixer.php",
-                //highlight-next-line
-                "php-cs-fixer.executablePath": "/usr/local/bin/php-cs-fixer.phar",
-                //highlight-next-line
-                "php-cs-fixer.onsave": true,
-                //highlight-next-line
-                "php-cs-fixer.rules": "@PSR12",
-                //...
-            },
-            "extensions": [
-                // ...
-                //highlight-next-line
-                "junstyle.php-cs-fixer",
-            ]
-        }
-    }
-}
-```
-
-</Snippet>
+<Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.part2.json" />
 
 So, we're asking VSCode to, for PHP files, run a `formatter` when the file is saved and the tool to use for the formatting is `junstyle.php-cs-fixer`. Look directly at the end, in the `extensions` section, we instruct VSCode to install that extension.
 
@@ -378,48 +175,7 @@ And now, you need to take a look on the third file we've created: `Dockerfile`.
 
 Please reopen the `.devcontainer/Dockerfile` file and look at the highlighted lines below:
 
-<Snippet filename=".devcontainer/Dockerfile">
-
-```docker
-// highlight-next-line
-ARG PHP_VERSION=8.2
-
-// ...
-
-// highlight-next-line
-ARG PHPCSFIXER_INSTALL=true
-// highlight-next-line
-ARG PHPCSFIXER_VERSION=3.46.0
-
-// ...
-
-// highlight-next-line
-FROM php:${PHP_VERSION}-fpm
-
-// ...
-
-// highlight-next-line
-ARG PHPCSFIXER_INSTALL
-// highlight-next-line
-ARG PHPCSFIXER_VERSION
-
-// highlight-next-line
-RUN set -e -x \
-    // highlight-next-line
-    && if [ "$PHPCSFIXER_INSTALL" = "true" ] ; then \
-    // highlight-next-line
-    printf "\e[0;105m%s\e[0;0m\n" "Install php-cs-fixer.phar ${PHPCSFIXER_VERSION}" \
-    // highlight-next-line
-    && curl -L https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v${PHPCSFIXER_VERSION}/php-cs-fixer.phar -o /usr/local/bin/php-cs-fixer.phar \
-    // highlight-next-line
-    && chmod +x /usr/local/bin/php-cs-fixer.phar ; \
-    // highlight-next-line
-    fi
-
-// ...
-```
-
-</Snippet>
+<Snippet filename=".devcontainer/Dockerfile" source="./files/Dockerfile.part2" />
 
 That file will instruct VSCode to download a `php:8.2-fpm` Docker image and to install `PHP-CS-Fixer` (since `PHPCSFIXER_INSTALL` has been set to `true`).
 
@@ -442,60 +198,11 @@ Let's try and this time we'll make sure all our PHP files will have a header blo
 
 In VSCode, please create the `.config` folder and there the `.php-cs-fixer.php` file with this content:
 
-<Snippet filename=".config/.php-cs-fixer.php">
-
-```php
-<?php
-
-$finder = PhpCsFixer\Finder::create()
-    ->in('.')
-    ->exclude([
-        '.config', '.devcontainer', '.git', 'node_modules','vendor'
-    ]);
-
-$header = file_get_contents(__DIR__ . '/licenseHeader.txt');
-
-$config = new PhpCsFixer\Config();
-
-return $config->setRules(
-    [
-        '@PSR12' => true,
-        'header_comment' => [
-            'header'       => rtrim($header, "\r\n"),
-            'location'     => 'after_declare_strict',
-            'comment_type' => 'PHPDoc',
-        ],
-    ]
-)
-    ->setCacheFile('/tmp/.php-cs-fixer.cache')
-    ->setIndent('    ')
-    ->setLineEnding("\n")
-    ->setFinder($finder);
-
-```
-
-</Snippet>
+<Snippet filename=".config/.php-cs-fixer.php" source="./files/.php-cs-fixer.php" />
 
 Please also create a second file called `licenseHeader.txt` file with the content you wish, f.i.:
 
-<Snippet filename=".config/licenseHeader.txt">
-
-```none
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
-or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program. If not, see <https://www.gnu.org/licenses/>.
-```
-
-</Snippet>
+<Snippet filename=".config/licenseHeader.txt" source="./files/licenseHeader.txt" />
 
 Now, please reopen your `index.php` file and just press <kbd>CTRL</kbd>+<kbd>S</kbd> to save the file again and tadaaa...
 
@@ -528,26 +235,7 @@ Our `Dockerfile` container was configured to download and install [PHP_CodeSniff
 
 For instance, please update your `index.php` script with this content:
 
-<Snippet filename="index.php">
-
-```php
-<?php
-
-function sayHello($firstname)
-{
-    if($firstname == "") {
-        $text = "Hello World!";
-    }else{
-        $text = "Hello " . $firstname;
-    }
-
-    return $text;
-}
-
-echo sayHello();
-```
-
-</Snippet>
+<Snippet filename="index.php" source="./files/index.part2.php" />
 
 What's wrong with this syntax? Almost nothing but ... the standard (`PSR12`) ask to put one space after the `if` keyword and one space before and after `else`.
 
@@ -558,39 +246,7 @@ Did you've noticed? You have copied/pasted the script below where there were no 
 
 Like for `PHP-CS-Fixer`, we already have installed `PHPCBF` and `PHPCS` in our container. See your `.devcontainer/devcontainer.json` file:
 
-<Snippet filename=".devcontainer/devcontainer.json">
-
-```json
-{
-    // ..
-    "customizations": {
-        "vscode": {
-            "settings": {
-                // ...
-                // highlight-next-line
-                "phpsab.executablePathCBF": "/usr/local/bin/phpcbf.phar",
-                // highlight-next-line
-                "phpsab.executablePathCS": "/usr/local/bin/phpcs.phar",
-                // highlight-next-line
-                "phpsab.fixerEnable": true,
-                // highlight-next-line
-                "phpsab.snifferShowSources": true,
-                // highlight-next-line
-                "phpsab.standard": "/var/www/html/.config/phpcs.xml",
-                // ...
-            },
-            "extensions": [
-                // ...
-                // highlight-next-line
-                "ValeryanM.vscode-phpsab",
-                // ...
-            ]
-        }
-    }
-}
-```
-
-</Snippet>
+<Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.part3.json" />
 
 And the two executables `/usr/local/bin/phpcbf.phar` and `/usr/local/bin/phpcs.phar` have been downloaded thanks to your `Dockerfile`. Just take a look if needed.
 
@@ -598,20 +254,7 @@ And the two executables `/usr/local/bin/phpcbf.phar` and `/usr/local/bin/phpcs.p
 
 In VSCode, please create in the `.config` folder a file called `phpcs.xml` file with this content:
 
-<Snippet filename=".config/phpcs.xml">
-
-```xml
-<?xml version="1.0"?>
-<ruleset name="MyRules">
-    <arg name="colors" />
-    <arg name="extensions" value="php" />
-    <arg value="s" />
-    <arg value="p" />
-    <rule ref="PSR12" />
-</ruleset>
-```
-
-</Snippet>
+<Snippet filename=".config/phpcs.xml" source="./files/phpcs.xml" />
 
 Now, since we have defined our coding standard (`PSR12` here), just display the `index.php` script again:
 
@@ -672,25 +315,7 @@ You've probably already understood the syntax. Just use the `.` to scan the enti
 
 Here too, SonarLint was already installed in our Docker container thanks our `.devcontainer/devcontainer.json` file:
 
-<Snippet filename=".devcontainer/devcontainer.json">
-
-```json
-{
-    // ...
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                // ...
-                // highlight-next-line
-                "sonarsource.sonarlint-vscode",
-                // ...
-            ]
-        }
-    }
-}
-```
-
-</Snippet>
+<Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.part4.json" />
 
 <AlertBox variant="note" title="It's only a VSCode extension">
 SonarLint don't need external tool; it's a stand-alone VSCode extension so no need to foresee something in our `Dockerfile`.
@@ -699,26 +324,7 @@ SonarLint don't need external tool; it's a stand-alone VSCode extension so no ne
 
 So, please reopen the `index.php` file you've and now pay attention to the `echo sayHello()` line:
 
-<Snippet filename="index.php">
-
-```php
-<?php
-
-function sayHello($firstname)
-{
-    if ($firstname == "") {
-        $text = "Hello World!";
-    } else {
-        $text = "Hello " . $firstname;
-    }
-
-    return $text;
-}
-
-echo sayHello();
-```
-
-</Snippet>
+<Snippet filename="index.php" source="./files/index.part3.php" />
 
 ![SonarLint is seeing something](./images/sonarlint_underline.png)
 
@@ -739,26 +345,7 @@ Next to `SonarLint`, there is also `Intelephense` who will also detect a certain
 
 In the previous example; when the prototype was `function sayHello($firstname)`, `Intelephense` was also alerting the developer about the missing parameter.
 
-<Snippet filename="index.php">
-
-```php
-<?php
-
-function sayHello($firstname)
-{
-    if($firstname == "") {
-        $text = "Hello World!";
-    } else {
-        $text = "Hello " . $firstname;
-    }
-
-    return $text;
-}
-
-echo sayHello();
-```
-
-</Snippet>
+<Snippet filename="index.php" source="./files/index.part4.php" />
 
 ![Intelephense in action](./images/intelephense.png)
 
@@ -784,20 +371,7 @@ This time, we'll need to install Rector for our project and for this, we'll foll
 
 If you reopen it, take a look on the `postCreateCommand` node:
 
-<Snippet filename=".devcontainer/devcontainer.json">
-
-```json
-{
-    // ...
-    "customizations": {
-        // ...
-    },
-    //highlight-next-line
-    "postCreateCommand": "composer require rector/rector --dev"
-}
-```
-
-</Snippet>
+<Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.part5.json" />
 
 Rector will be added to the `composer.json` file (and the file will be created if not yet present).
 
@@ -818,26 +392,7 @@ $ vendor/bin/rector
 
 Finally, open the `rector.php` configuration file and update it like this:
 
-<Snippet filename="rector.php">
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use Rector\Config\RectorConfig;
-
-return RectorConfig::configure()
-    ->withSkip(
-        [
-            '.config', '.devcontainer', '.git', 'node_modules','vendor'
-        ]
-    )
-    ->withPhpSets(php82: true)
-    ->withPreparedSets(codeQuality: true, deadCode: true, typeDeclarations: true);
-```
-
-</Snippet>
+<Snippet filename="rector.php" source="./files/rector.php" />
 
 <AlertBox variant="caution" title="Tell to Rector which PHP version you use">
 Rector will suggest you changes but to do this, he needs to know which version of PHP you're running. Indeed, Rector won't suggest you a PHP 8.2 syntax f.i. if you're still running on an older version (see [PHP Version Features](https://getrector.com/documentation/php-version-features)).
@@ -853,26 +408,7 @@ You've noticed that Rector has created his configuration file in the root direct
 
 To illustrate what Rector can do, please edit the `index.php` with this content, once again:
 
-<Snippet filename="index.php">
-
-```php
-<?php
-
-function sayHello($firstname = "")
-{
-    if($firstname == "") {
-        $text = "Hello World!";
-    } else {
-        $text = "Hello " . $firstname;
-    }
-
-    return $text;
-}
-
-echo sayHello();
-```
-
-</Snippet>
+<Snippet filename="index.php" source="./files/index.part5.php" />
 
 In a terminal, run `vendor/bin/rector process index.php --dry-run --config .config/rector.php` as we did before.
 
@@ -898,40 +434,14 @@ Rector has updated our `index.php` file! **Now, our function is just one line an
 
 Our new, improved, code is now:
 
-<Snippet filename="index.php">
-
-```php
-<?php
-
-function sayHello(string $firstname = ""): string
-{
-    return $firstname == "" ? "Hello World!" : "Hello " . $firstname;
-}
-
-echo sayHello();
-```
-
-</Snippet>
+<Snippet filename="index.php" source="./files/index.part6.php" />
 
 Rector is **absolutely brilliantly powerful**. Learn more about it by reading carefully his documentation site: [https://getrector.com/documentation/](https://getrector.com/documentation/).
 
 <AlertBox variant="info" title="The programmer has the last word, but for how much longer?">
 We can do one more improvement by extracting the `Hello` prefix. Rector has not yet see this but until when?
 
-<Snippet filename="index.php">
-
-```php
-<?php
-
-function sayHello(string $firstname = ""): string
-{
-    return "Hello " . ($firstname == "" ? "World!" : $firstname);
-}
-
-echo sayHello();
-```
-
-</Snippet>
+<Snippet filename="index.php" source="./files/index.part7.php" />
 
 
 </AlertBox>

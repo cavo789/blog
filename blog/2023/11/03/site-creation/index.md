@@ -102,35 +102,11 @@ I will also make some changes to files like `docusaurus.config.js` or `blog/auth
 
 By setting `hideOnScroll` to `true`, the navigation bar will be hidden when the user will scroll down but will be displayed back as soon as he scroll up. Idea is to give more place on the screen for the content.
 
-<Snippet filename="docusaurus.config.js">
-
-```js
-export default {
-  themeConfig: {
-    navbar: {
-        // auto-hide the navbar when the user will scroll down, show again when scroll up
-        hideOnScroll: true,
-    },
-  },
-};
-```
-
-</Snippet>
+<Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.js" />
 
 Define the default image for social media:
 
-<Snippet filename="docusaurus.config.js">
-
-```js
-export default {
-  themeConfig: {
-    // Default image when sharing a post on social media
-    image: 'img/social-card.jpg',
-  },
-};
-```
-
-</Snippet>
+<Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.social_media.js" />
 
 ## Make my first article
 
@@ -188,17 +164,7 @@ Added by running `yarn add @docusaurus/plugin-sitemap` in the Docker container (
 
 When added, I have also manually created the `static/robots.txt` file to with this content:
 
-<Snippet filename="static/robots.txt">
-
-```ini
-User-Agent: *
-Sitemap: https://www.avonture.be/sitemap.xml
-Disallow: /*index.xml$
-Disallow: /index.json
-Disallow: /search/index.json
-```
-
-</Snippet>
+<Snippet filename="static/robots.txt" source="./files/robots.txt" />
 
 #### Image plugins
 
@@ -247,18 +213,6 @@ Next step is to start my FTP client (which is [WinSCP](https://winscp.net/eng/do
 
 By adding the lines below to the `docusaurus.config.js` as child node of `const config`, I'm injecting a script into the body part. This will then allow GPDR compliant stats on [https://withcabin.com/](https://withcabin.com/).
 
-<Snippet filename="docusaurus.config.js">
-
-```js
-scripts: [
-  {
-    src: 'https://scripts.withcabin.com/hello.js',
-    async: true,
-    defer: true,
-  },
-],
-```
-
-</Snippet>
+<Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.withcabin.js" />
 
 Note: the script is only injected to pages after a `yarn build` i.e. when the static site is rendered; not during a `yarn watch`.

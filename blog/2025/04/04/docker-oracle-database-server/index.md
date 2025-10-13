@@ -90,18 +90,7 @@ If needed, run `docker logout container-registry.oracle.com` to remove the authe
 <AlertBox variant="info" title="Optional, the authentication is stored in the config.json file">
 By running `cat ~/.docker/config.json`, you'll see in `auths` the presence of the Oracle registry
 
-<Snippet filename="~/.docker/config.json">
-
-```json
-{
-    "auths": {
-        "container-registry.oracle.com": {},
-        "https://index.docker.io/v1/": {}
-    },
-}
-```
-
-</Snippet>
+<Snippet filename="~/.docker/config.json" source="./files/config.json" />
 
 
 </AlertBox>
@@ -161,22 +150,7 @@ Please download and copy these two files in the  `scripts/startup/sql/` folder y
 
 The second thing to do is to create the file `scripts/startup/populate_db.sh` with the content below so we'll automate the creation of our tables and put some records in our database. As said in a previous chapter, it's important to make sure to connect to the `PDB` so tables are created in a database; not in the container.
 
-<Snippet filename="scripts/startup/populate_db.sh">
-
-```bash
-#!/usr/bin/env bash
-
-sqlplus -S sys/admin@localhost:1521/ORCLCDB AS SYSDBA <<EOF
-ALTER SESSION SET CONTAINER = ORCLPDB1;
-CONNECT system/admin@orclpdb1
-@/docker-entrypoint-initdb.d/startup/sql/hr_create.sql
-@/docker-entrypoint-initdb.d/startup/sql/hr_populate.sql
-COMMIT;
-EXIT;
-EOF
-```
-
-</Snippet>
+<Snippet filename="scripts/startup/populate_db.sh" source="./files/populate_db.sh" />
 
 Now, make the script executable: `chmod +x scripts/startup/populate_db.sh`.
 
@@ -251,23 +225,7 @@ Here are the constants to remember:
 
 If you look back at the `populate_db.sh` script, we had:
 
-<Snippet filename="scripts/startup/populate_db.sh">
-
-```bash
-# highlight-next-line
-sqlplus -S sys/admin@localhost:1521/ORCLCDB AS SYSDBA <<EOF
-# highlight-next-line
-ALTER SESSION SET CONTAINER = ORCLPDB1;
-# highlight-next-line
-CONNECT system/admin@orclpdb1
-@/docker-entrypoint-initdb.d/startup/sql/hr_create.sql
-@/docker-entrypoint-initdb.d/startup/sql/hr_populate.sql
-COMMIT;
-EXIT;
-EOF
-```
-
-</Snippet>
+<Snippet filename="scripts/startup/populate_db.sh" source="./files/populate_db.part2.sh" />
 
 And now, you understand why connection strings were:
 
@@ -314,22 +272,7 @@ If you're connected to the CDB, you'll get the next answer and it's wrong. Type 
 
 Previously, we've created our tables using the `scripts/startup/populate_db.sh` script. Here was the script used:
 
-<Snippet filename="scripts/startup/populate_db.sh">
-
-```bash
-#!/usr/bin/env bash
-
-sqlplus -S sys/admin@localhost:1521/ORCLCDB AS SYSDBA <<EOF
-ALTER SESSION SET CONTAINER = ORCLPDB1;
-CONNECT system/admin@orclpdb1
-@/docker-entrypoint-initdb.d/startup/sql/hr_create.sql
-@/docker-entrypoint-initdb.d/startup/sql/hr_populate.sql
-COMMIT;
-EXIT;
-EOF
-```
-
-</Snippet>
+<Snippet filename="scripts/startup/populate_db.sh" source="./files/populate_db.part3.sh" />
 
 The `CONNECT` statement will use the `system` Oracle user. Tables that will be created in the `system` schema.
 

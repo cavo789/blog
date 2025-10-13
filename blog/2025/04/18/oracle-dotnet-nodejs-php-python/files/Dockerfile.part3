@@ -1,0 +1,39 @@
+# cspell:ignore instantclient,libaio1,libncurses5,libreadline8,ldconfig,pecl
+
+FROM php:fpm
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libaio1 \
+    libncurses5 \
+    libreadline8 \
+    locales \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN locale-gen en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=en_US.UTF-8
+
+ARG ORACLE_INSTANT_CLIENT_VERSION=21.12
+
+# Downloading Oracle Instant Client
+RUN curl -o /tmp/instantclient-basic.zip -L "https://download.oracle.com/otn_software/linux/instantclient/instantclient-basic-linuxx64.zip" \
+    && curl -o /tmp/instantclient-sdk.zip -L "https://download.oracle.com/otn_software/linux/instantclient/instantclient-sdk-linuxx64.zip" \
+    && mkdir -p /usr/lib/oracle \
+    && unzip -o /tmp/instantclient-basic.zip -d /usr/lib/oracle \
+    && unzip -o /tmp/instantclient-sdk.zip -d /usr/lib/oracle \
+    && rm /tmp/*.zip \
+    && ln -s /usr/lib/oracle/instantclient_* /usr/lib/oracle/instantclient \
+    && sh -c "echo /usr/lib/oracle/instantclient > /etc/ld.so.conf.d/oracle-instantclient.conf" \
+    && ldconfig
+
+# Install OCI8 Extension
+RUN echo 'instantclient,/usr/lib/oracle/instantclient' | pecl install oci8 \
+    && docker-php-ext-enable oci8
+
+WORKDIR /app
+
+COPY main.php .
+
+CMD [ "php", "main.php" ]

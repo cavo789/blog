@@ -27,16 +27,7 @@ And the list can be huge if you're using dependencies like, for PHP, the `vendor
 
 Create a file called `.markdownlint_ignore` in the root directory of your project with this content:
 
-<Snippet filename=".markdownlint_ignore">
-
-```ignore
-node_modules/**/*.markdown
-node_modules/**/*.md
-vendor/**/*.markdown
-vendor/**/*.md
-```
-
-</Snippet>
+<Snippet filename=".markdownlint_ignore" source="./files/.markdownlint_ignore" />
 
 This time, please run `docker run --rm -v .:/md peterdavehello/markdownlint markdownlint --ignore-path .markdownlint_ignore .`.
 

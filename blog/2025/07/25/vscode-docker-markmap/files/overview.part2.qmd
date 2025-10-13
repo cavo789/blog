@@ -1,0 +1,4 @@
+{
+    "markmap.customCSS": ".markmap-link,\nline {\n\tstroke: #505050;\n\tstroke-width: 1.5px;\n}\n.markmap-node > circle {\n\tstroke: #202020;\n\tstroke-width: 1.5px;\n\tr: 6px;\n\tfill: #242424;\n}\n\n.markmap-foreign a {\n\ttext-decoration: none;\n\tcolor: #bbbbbb !important;\n}\n\n.markmap-highlight rect {\n\t/* fill: #303030 !important; */\n\tfill: transparent !important;\n\ttransform: scale(0.84, 0.7) !important;\n\ttransform-origin: center !important;\n\ttransform-box: fill-box;\n\ttransform-origin: center;\n}",
+    "markmap.defaultOptions": "{\n  \"color\": \"function(d, i) { return d3.interpolateRainbow(i / 10); }\",\n  \"nodeFont\": \"20px 'Segoe UI', 'Helvetica Neue', sans-serif\",\n  \"spacingVertical\": 40,\n  \"spacingHorizontal\": 140,\n  \"initialExpandLevel\": -1,\n  \"duration\": 1000,\n  \"paddingX\": 10,\n  \"paddingY\": 10\n}"
+}

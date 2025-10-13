@@ -12,7 +12,7 @@ tags: [php, tips, vscode]
 
 > [https://dev.to/amrsamy/vs-code-sticky-scroll-2jcd](https://dev.to/amrsamy/vs-code-sticky-scroll-2jcd)
 
-vscode has recently added a really useful new feature: sticky scroll.
+VSCode has recently added a really useful new feature: sticky scroll.
 
 This function allows you to scroll through a document such as a Markdown file, a source code written in PHP or JavaScript or any other supported language and, as you scroll, block contextual information such as the name of the class, the name of the function, the start of the loop, etc. in the upper part of the editor.
 
@@ -30,10 +30,4 @@ As you can see, I've opened a markdown file and I'm showing part of the article 
 
 To enable the feature, edit your `settings.json` file and add this entry:
 
-<Snippet filename="settings.json">
-
-```json
-"editor.stickyScroll.enabled": true
-```
-
-</Snippet>
+<Snippet filename="settings.json" source="./files/settings.json" />

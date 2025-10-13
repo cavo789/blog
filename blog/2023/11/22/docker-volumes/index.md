@@ -26,41 +26,11 @@ For the illustration, please start a Linux shell and run `mkdir -p /tmp/counter 
 
 Now that you're in a temporary folder on your disk, please create a new file called `Dockerfile` with this content:
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM alpine:3.14
-
-COPY counter.sh counter.sh
-
-RUN chmod +x counter.sh
-
-ENTRYPOINT ["tail", "-f", "/dev/null"]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 Please, too, create a file called `counter.sh` with this content:
 
-<Snippet filename="counter.sh">
-
-```bash
-#!/usr/bin/env sh
-
-if [[ ! -f /data/counter.txt ]]; then
-    mkdir -p /data
-    echo "Creating /data/counter.txt ..."
-    echo "0" > /data/counter.txt
-fi
-
-counter=$((`cat /data/counter.txt`+1))
-
-echo "You have executed this script ${counter} times."
-
-echo "${counter}" > /data/counter.txt
-```
-
-</Snippet>
+<Snippet filename="counter.sh" source="./files/counter.sh" />
 
 Now, just create the Docker image by running `docker build -t demo/counter .`.
 
@@ -79,20 +49,7 @@ As you can see, our image is really small. This is the advantage using the alpin
 
 Now, it's time to create our `compose.yaml` file with this content:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: demo
-
-services:
-
-  counter:
-    build: .
-    container_name: counter
-    image: demo/counter
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 We'll run our container by running `docker compose up --detach`:
 
@@ -161,29 +118,7 @@ There are two types of volumes, the ones **managed by Docker** and, on the other
 
 Update the `compose.yaml` file like this:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: demo
-
-services:
-
-  counter:
-    build: .
-    container_name: counter
-    image: demo/counter
-    // highlight-next-line
-    volumes:
-      // highlight-next-line
-      - counter_data:/data
-
-// highlight-next-line
-volumes:
-  // highlight-next-line
-  counter_data:
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.volumes.yaml" />
 
 As you can see, we're using a `volumes` (always plural form) and we're saying that the `/data` folder inside the container should be mapped to a volume called `counter_data`. At the bottom of the `compose.yaml` file, we are just declaring our volume.
 
@@ -348,24 +283,7 @@ Let's make a few cleaning right now, please run `docker compose down --volumes` 
 
 Update the `compose.yaml` file like this:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: demo
-
-services:
-
-  counter:
-    build: .
-    container_name: counter
-    image: demo/counter
-    // highlight-next-line
-    volumes:
-      // highlight-next-line
-      - ./data:/data
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.mounted_volumes.yaml" />
 
 The syntax now is, just a few, different: we don't have a `volumes` entry at the bottom of the file but we've used a relative notation like `./data:/data`.  So, the `./data` local folder (on your hard disk) has to be synchronized with the `/data` folder of the container.
 
@@ -430,24 +348,7 @@ The file is owned by `root` because the current user; used inside the container,
 
 To do this, we'll update once more our `compose.yaml` file:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: demo
-
-services:
-
-  counter:
-    build: .
-    container_name: counter
-    image: demo/counter
-    // highlight-next-line
-    user: 1000:1000
-    volumes:
-      - ./data:/data
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.mounted_volumes_permissions.yaml" />
 
 <AlertBox variant="info" title="Why 1000:1000?">
 We need to pass to Docker our current user id and group id so Docker will be able to create files/folders using our user. To get your current user id and group id, just run `echo "$(id -u):$(id -g)"` in the console and, you'll see, the first created user (after the installation of Linux) is, always, user id 1000, group id 1000. Most probably you.

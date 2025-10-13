@@ -23,18 +23,7 @@ Please start a Linux shell and run `mkdir -p /tmp/java && cd $_` to create a fol
 
 Please create a new file called `Main.java` with this content:
 
-<Snippet filename="Main.java">
-
-```java
-public class Main
-{
-     public static void main(String[] args) {
-        System.out.println("Hello, World");
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="Main.java" source="./files/Main.java" />
 
 Now, you'll need to compile your source. For this, just run `docker run -it --rm -v ${PWD}:/app -w /app -u 1000:1000 openjdk:11 javac Main.java`.
 
@@ -80,46 +69,7 @@ Hello, World
 
 Please create a new file called `API.java` with this content:
 
-<Snippet filename="API.java">
-
-```java
-package restclient;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-public class API {
-    public static void main(String[] args) {
-        try {
-            URL url = new URL("https://jsonplaceholder.typicode.com/todos/1");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Accept", "application/json");
-
-            if (conn.getResponseCode() != 200) {
-                throw new RuntimeException("Failed : HTTP Error code : "
-                        + conn.getResponseCode());
-            }
-
-            InputStreamReader in = new InputStreamReader(conn.getInputStream());
-            BufferedReader br = new BufferedReader(in);
-            String output;
-
-            while ((output = br.readLine()) != null) {
-                System.out.println(output);
-            }
-
-            conn.disconnect();
-
-        } catch (Exception e) {
-            System.out.println("Exception in NetClientGet:- " + e);
-        }
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="API.java" source="./files/API.java" />
 
 Compile it by running `docker run --rm -v $PWD:/app -w /app -u 1000:1000 openjdk:11 javac API.java`; get the `API.class` file.
 

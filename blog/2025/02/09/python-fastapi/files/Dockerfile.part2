@@ -1,0 +1,17 @@
+# We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
+FROM python:slim
+
+# We'll define the default folder in the image to /app
+WORKDIR /app
+
+# The only dependency we need is fastapi
+RUN pip install --no-cache-dir fastapi[standard]
+
+# We need to copy our Python script in the image
+COPY main.py main.py
+
+// highlight-start
+# Run Uvicorn with hot reload so any changes to our main.py script will force
+# the server to invalidate the cache and refresh the page.
+CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "82"]
+// highlight-end

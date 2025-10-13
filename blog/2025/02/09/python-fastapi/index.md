@@ -31,43 +31,13 @@ Please create a dummy folder and jump in it: `mkdir /tmp/fastapi && cd $_`.
 
 In that folder, please create a new file called `Dockerfile` with the following content:
 
-<Snippet filename="Dockerfile">
-
-```docker
-# We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
-FROM python:slim
-
-# We'll define the default folder in the image to /app
-WORKDIR /app
-
-# The only dependency we need is fastapi
-RUN pip install --no-cache-dir fastapi[standard]
-
-# We need to copy our Python script in the image
-COPY main.py main.py
-
-# And we'll run FastAPI and call our script. We'll expose the script on port 82
-CMD ["fastapi", "run", "main.py", "--port", "82"]
-```
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 The final image size will be about 184MB i.e. almost nothing.
 
 As you've seen, we need a file called `main.py`; let's create it:
 
-<Snippet filename="main.py">
-
-```python
-from fastapi import FastAPI
-
-app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-```
-
-</Snippet>
+<Snippet filename="main.py" source="./files/main.py" />
 
 This very straightforward code defines a route called `/`. It's a `GET` method and we'll return a JSON object:
 
@@ -140,29 +110,7 @@ $ docker rmi python-fastapi --force
 
 Now, please copy/paste the following content to your existing `Dockerfile`:
 
-<Snippet filename="Dockerfile">
-
-```docker
-# We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
-FROM python:slim
-
-# We'll define the default folder in the image to /app
-WORKDIR /app
-
-# The only dependency we need is fastapi
-RUN pip install --no-cache-dir fastapi[standard]
-
-# We need to copy our Python script in the image
-COPY main.py main.py
-
-// highlight-start
-# Run Uvicorn with hot reload so any changes to our main.py script will force
-# the server to invalidate the cache and refresh the page.
-CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "82"]
-// highlight-end
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part2" />
 
 Rebuild the image and run a new container by running these commands:
 
@@ -176,20 +124,7 @@ Now with a Docker image with hot reload and we've mounted our folder in the cont
 
 Please edit your `main.py` script like this:
 
-<Snippet filename="main.py">
-
-```python
-from fastapi import FastAPI
-
-app = FastAPI()
-
-@app.get("/")
-def read_root():
-    # highlight-next-line
-    return {"Hello": "Belgium!"}
-```
-
-</Snippet>
+<Snippet filename="main.py" source="./files/main.part2.py" />
 
 Refresh your web page, you'll see Hello Belgium!.  Change your `main.py` and replace `Belgium!` by `France`. Reload your web page; you'll see Hello France. So, nice, we've a hot reload and we can really start to play.
 
@@ -197,44 +132,7 @@ Refresh your web page, you'll see Hello Belgium!.  Change your `main.py` and rep
 
 We'll update our `main.py` script like this:
 
-<Snippet filename="main.py">
-
-```python
-// highlight-next-line
-from random import choice
-from fastapi import FastAPI
-
-app = FastAPI()
-
-// highlight-start
-jokes = [
-    "Why do programmers always mix up Halloween and Christmas? Because Oct 31 == Dec 25",
-    "Why don't programmers like nature? Because it's full of bugs!",
-    "How many programmers does it take to change a light bulb? None. That's a hardware problem.",
-    "What do you call 8 hobbits? A hobbyte",
-    "What is this [“hip”, ”hip”]? hip hip array!"
-]
-
-@app.get("/jokes")
-async def get_jokes():
-    """
-    Returns a random joke from the list.
-    """
-    return {"joke": choice(jokes)}
-
-@app.get("/jokes/{joke_id}")
-def read_item(joke_id: int):
-    """
-    Returns a specific joke (between 0 and 4).
-    """
-    try:
-        return {"joke": jokes[joke_id]}
-    except IndexError:
-        return {"error": f"Joke with ID {joke_id} not found."}, 404
-// highlight-end
-```
-
-</Snippet>
+<Snippet filename="main.py" source="./files/main.part3.py" />
 
 You immediately see it I think:
 

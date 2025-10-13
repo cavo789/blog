@@ -1,0 +1,12 @@
+name: demo
+
+services:
+
+  counter:
+    build: .
+    container_name: counter
+    image: demo/counter
+    # highlight-next-line
+    user: 1000:1000
+    volumes:
+      - ./data:/data

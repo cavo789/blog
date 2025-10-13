@@ -181,6 +181,11 @@ check-images: ## Browse some pages and run some checks on images
         mcr.microsoft.com/playwright/python:v1.55.0-jammy \
         -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python check-images.py"
 
+.PHONY: extract-inline-snippets
+extract-inline-snippets: ## Extract inline snippets
+	@clear
+	docker run -it --rm -v ${PWD}:/app -w /app python sh -c "python .scripts/extract_inline_snippets.py"
+
 .PHONY: invalid-language
 invalid-language: ## Show invalid languages in docblock like ```env (not supported by Prism)
 	@clear

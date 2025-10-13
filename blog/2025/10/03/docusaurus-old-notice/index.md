@@ -39,63 +39,11 @@ From now, you'll a new file on your disk: `src/theme/BlogPostItem/Content/index.
 
 Below, the original content of the file (Docusaurus v3.8.1):
 
-<Snippet filename="src/theme/BlogPostItem/Content/index.js">
-
-```js
-import React from 'react';
-import clsx from 'clsx';
-import {blogPostContainerID} from '@docusaurus/utils-common';
-import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
-import MDXContent from '@theme/MDXContent';
-export default function BlogPostItemContent({children, className}) {
-  const {isBlogPostPage} = useBlogPost();
-  return (
-    <div
-      // This ID is used for the feed generation to locate the main content
-      id={isBlogPostPage ? blogPostContainerID : undefined}
-      className={clsx('markdown', className)}>
-      <MDXContent>{children}</MDXContent>
-    </div>
-  );
-}
-```
-
-</Snippet>
+<Snippet filename="src/theme/BlogPostItem/Content/index.js" source="./files/index.js" />
 
 To inject our new `OldPostNotice` component, please edit the file like this (see highlighted lines):
 
-<Snippet filename="src/theme/BlogPostItem/Content/index.js">
-
-```js
-import React from 'react';
-import clsx from 'clsx';
-import {blogPostContainerID} from '@docusaurus/utils-common';
-import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
-import MDXContent from '@theme/MDXContent';
-// highlight-next-line
-import OldPostNotice from "@site/src/components/Blog/OldPostNotice/index.js";
-
-export default function BlogPostItemContent({children, className}) {
-  const {isBlogPostPage} = useBlogPost();
-  return (
-    // highlight-next-line
-    <>
-      // highlight-next-line
-      <OldPostNotice />
-      <div
-        // This ID is used for the feed generation to locate the main content
-        id={isBlogPostPage ? blogPostContainerID : undefined}
-        className={clsx('markdown', className)}>
-        <MDXContent>{children}</MDXContent>
-      </div>
-    // highlight-next-line
-    </>
-  );
-}
-
-```
-
-</Snippet>
+<Snippet filename="src/theme/BlogPostItem/Content/index.js" source="./files/index.part2.js" />
 
 Save the file and refresh your blog. You should get something like this picture below:
 

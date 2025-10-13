@@ -1,0 +1,6 @@
+outfile=$(INFILE:.md=.pdf)
+
+COLOR_BLUE:=34
+
+convert:
+	@printf "\e[1;${COLOR_BLUE}m%s\e[0m\n\n" "INPUT FILE IS ${INFILE}; OUTPUT WILL BE ${outfile}"

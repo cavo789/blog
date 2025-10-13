@@ -1,0 +1,10 @@
+SHELL:=bash
+
+# highlight-next-line
+default: help
+
+COLOR_YELLOW:=33
+
+.PHONY: bash
+bash:
+ @printf "\e[1;${COLOR_YELLOW}m%s\e[0m\n\n" "Start an interactive shell in the Docker container; type exit to quit"

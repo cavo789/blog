@@ -56,108 +56,11 @@ Let's start...
 * First, let's create a new directory: `mkdir /tmp/behat && cd $_`.
 * There, let's create a file called `Dockerfile` with the content below. That script is already big but; like this, we'll have everything we need right now.
 
-<Snippet filename="Dockerfile">
-
-<!-- cspell:disable -->
-```docker
-# The user ID and name and group ID of the user to create in our image
-ARG DOCKER_UID=1000
-ARG DOCKER_GID=1000
-ARG USERNAME=johndoe
-
-# The version of Chrome we'll install
-ARG CHROME_VERSION=115.0.5763.0
-
-# This is a PHP project
-FROM php:8.2-fpm
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y git jq zip unzip wget gnupg \
-    && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/*
-
-# We'll create a new user with the same uid/gid than ours, on our host machine.
-ARG DOCKER_UID
-ARG DOCKER_GID
-ARG USERNAME
-
-RUN groupadd --gid ${DOCKER_GID} "${USERNAME}" \
-    && useradd --home-dir /home/"${USERNAME}" --create-home --uid ${DOCKER_UID} \
-        --gid ${DOCKER_GID} --shell /bin/sh --skel /dev/null "${USERNAME}"
-
-# Download and install Chrome
-ARG CHROME_VERSION
-ARG DOWNLOAD_URL="https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json"
-
-# Download Chrome (the browser and the driver)
-RUN wget --no-check-certificate --no-verbose -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
-    && apt-get update -yqq \
-    && apt-get install -y --no-install-recommends -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 \
-        libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libgconf-2-4 \
-        libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 \
-        libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
-        libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 \
-        libxss1 libxtst6 ca-certificates fonts-liberation libnss3 lsb-release \
-        xdg-utils \
-    && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/* \
-    # --- Download the browser ---
-    && ZIP_URL=$(curl $DOWNLOAD_URL | jq -r ".versions[] | select(.version==\""$CHROME_VERSION"\").downloads.chrome[] | select(.platform==\""linux64"\") .url") \
-    && wget --no-check-certificate --no-verbose -O /tmp/chrome_browser.zip $ZIP_URL \
-    && printf "\e[0;105m%s\e[0;0m\n" "Using chromedriver $(/usr/local/bin/chrome/chromedriver --version)" \
-    #  Unzip and create the /usr/local/bin/chromedriver executable  (-j means don't create a subfolder with the name of the archive; unzip in the folder directly)
-    && unzip -j /tmp/chrome_browser.zip -d /usr/local/bin/chrome \
-    && rm -f /tmp/chrome_browser.zip \
-    && ls -alh /usr/local/bin/chrome \
-    && chmod +x /usr/local/bin/chrome/chrome \
-    # --- Download the driver ---
-    && ZIP_URL=$(curl $DOWNLOAD_URL | jq -r ".versions[] | select(.version==\""$CHROME_VERSION"\").downloads.chromedriver[] | select(.platform==\""linux64"\") .url") \
-    && wget --no-check-certificate --no-verbose -O /tmp/chrome_driver.zip $ZIP_URL \
-    #  Unzip and create the /usr/local/bin/chromedriver executable  (-j means don't create a subfolder with the name of the archive; unzip in the folder directly)
-    && unzip -j /tmp/chrome_driver.zip -d /usr/local/bin/chrome \
-    && rm -f /tmp/chrome_driver.zip \
-    && chmod +x /usr/local/bin/chrome/chrome \
-    # Make some cleanup
-    && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/*
-
-# Get latest composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Where we'll put our script
-RUN mkdir /opt/behat
-
-# Set working directory
-WORKDIR /opt/behat
-```
-<!-- cspell:enable -->
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 * Create a file called `compose.yaml` with this content:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  app:
-    build:
-      context: .
-      args:
-        # Please update IDs below if you've another values by running "id -u" (UID) and "id -g" (GID) in your Linux console
-        - DOCKER_UID=1000
-        - DOCKER_GID=1000
-        # The name of the user in Docker; didn't have any importance
-        - USERNAME=johndoe
-    container_name: php-app
-    working_dir: /opt/behat
-    volumes:
-      # We'll synchronize our local project folder (on our machine) with the Docker container
-      - ./:/opt/behat
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 * Run `docker compose up --detach` to create your Docker container
 
@@ -211,18 +114,7 @@ Now, if you look at your folder, you can see you've now a new folder called `fea
 
 The image here above is displaying a major concept of Behat: it's a feature. This is something you need to write and this will guide our automation. For instance:
 
-<Snippet filename="Blog.feature">
-
-```gherkin
-Feature: Clicking on the Blog menu item should give me the list of articles
-
-  Scenario: I click on the Blog menu
-    Given I am on "https://www.avonture.be"
-    Then I click on the "Blog" menu item
-    Then I should be on "/blog"
-```
-
-</Snippet>
+<Snippet filename="Blog.feature" source="./files/Blog.feature" />
 
 This has to be put in a file having the `.feature` extension in the  `features` folder; let's create the `Blog.feature` file with this content:
 
@@ -317,22 +209,7 @@ We'll now need to reference the `behat-chrome-extension` in a such called `behat
 
 Please create the file called `behat.yml` in your project's root directory; with this content:
 
-<Snippet filename="behat.yaml">
-
-```yaml
-default:
-    extensions:
-        DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
-        Behat\MinkExtension:
-            browser_name: chrome
-            base_url: https://www.avonture.be
-            sessions:
-                default:
-                    chrome:
-                      api_url: http://0.0.0.0:9222
-```
-
-</Snippet>
+<Snippet filename="behat.yaml" source="./files/behat.yaml" />
 
 Also, please edit the file `features/bootstrap/FeatureContext.php`, remove everything and replace the existing content below.
 
@@ -340,58 +217,7 @@ We've changes a few `use` to add Mink libraries (and remove unneeded ones). We'v
 
 <AlertBox variant="caution" title="Please update the url `https://www.avonture.be` to match your site" />
 
-<Snippet filename="features/bootstrap/FeatureContext.php">
-
-```php
-<?php
-
-use Behat\Mink\Mink;
-use Behat\Mink\Session;
-use DMore\ChromeDriver\ChromeDriver;
-use Behat\Behat\Tester\Exception\PendingException;
-
-/**
- * Defines application features from the specific context.
- */
-class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
-{
-
-    private Behat\Mink\Mink $mink;
-
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     */
-    public function __construct()
-    {
-        $this->mink = new Mink(
-            [
-                'browser' => new Session(
-                    new ChromeDriver(
-                        'http://0.0.0.0:9222',
-                        null,
-                        "https://www.avonture.be"  // <-- Think to update to the site you wish to test
-                    )
-                )
-            ]
-        );
-
-    }
-
-    /**
-     * @Then I click on the :arg1 menu item
-     */
-    public function iClickOnTheMenuItem($arg1)
-    {
-        throw new PendingException();
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="features/bootstrap/FeatureContext.php" source="./files/FeatureContext.php" />
 
 By running `vendor/bin/behat` again, we've now another error:
 
@@ -401,32 +227,7 @@ By running `vendor/bin/behat` again, we've now another error:
 
 Create a file called `run.sh` with this content:
 
-<Snippet filename="run.sh">
-
-```bash
-#!/usr/bin/env bash
-
-clear
-
-# We'll start Chrome on URL http://0.0.0.0:9222
-# If this URL has to be modified, think to update the constructor of FeatureContext.php too
-# Note: /usr/bin/google-chrome-stable has been installed in our Dockerfile
-nohup /usr/local/bin/chrome/chrome --headless --remote-debugging-address=0.0.0.0 \
-    --remote-debugging-port=9222 --no-sandbox --window-size="1920,1080" --disable-dev-shm-usage \
-    --disable-extensions --no-startup-window --no-first-run --no-pings > /dev/null 2>&1 &
-
-# Get the process ID of chrome so we can kill the process when we've finished
-chromePID=$!
-
-# shellcheck disable=SC2048,SC2086
-php -d memory_limit=-1 "vendor/bin/behat" --config=behat.yaml
-
-if ((chromePID > 0)); then
-    kill ${chromePID} > /dev/null 2>&1
-fi
-```
-
-</Snippet>
+<Snippet filename="run.sh" source="./files/run.sh" />
 
 Then make the file executable by running `chmod +x ./run.sh`.
 
@@ -444,26 +245,7 @@ Then the line `Then I click on the "Blog" menu item` is in yellow and this is no
 
 Back to the `bootstrap/FeatureContext.php` file. Replace the `iClickOnTheMenuItem` method with this code:
 
-<Snippet filename="features/bootstrap/FeatureContext.php">
-
-```php
-/**
- * @Then I click on the :menuItem menu item
- */
-public function iClickOnTheMenuItem(string $menuItem): void
-{
-    if (!is_dir('.output')) {
-        mkdir('.output', 0777);
-    }
-
-    // When entering in the method, take a screenshot so we can assert we're on the homepage
-    file_put_contents('.output/homepage.png', $this->getSession()->getDriver()->getScreenshot());
-
-    throw new PendingException();
-}
-```
-
-</Snippet>
+<Snippet filename="features/bootstrap/FeatureContext.php" source="./files/FeatureContext.part2.php" />
 
 As you can see, we'll create a `.output` folder and the only thing we'll do is to create a screenshot.
 
@@ -475,44 +257,7 @@ What have we just done? We've verified that when Behat executes our `iClickOnThe
 
 Replace the method with this new code:
 
-<Snippet filename="features/bootstrap/FeatureContext.php">
-
-```php
-/**
- * @Then I click on the :menu menu item
- */
-public function iClickOnTheMenuItem(string $menu): void
-{
-    if (!is_dir('.output')) {
-        mkdir('.output', 0777);
-    }
-
-    // When entering in the method, take a screenshot so we can assert we're on the homepage
-    file_put_contents('.output/homepage.png', $this->getSession()->getDriver()->getScreenshot());
-
-    /**
-     * @var $elements Behat\Mink\Element\NodeElement
-     */
-    $elements = $this->getSession()->getPage()->findAll('css', 'a[class="navbar__item navbar__link"]');
-
-    // Now we'll get all links from our navigation bar. $elements will contain more than one link in our case.
-    // The CSS selector has been written using our Web developer console; in Edge or Chromium for instance.
-    // Loop any elements (our navigation links) and when we've found the one having `Blog` as text, click on it
-    foreach ($elements as $element) {
-        if ($element->getText() === $menu) {
-            $element->click();
-        }
-    }
-
-    // Give one second to the website to handle the click and, so, to navigate to, as we expect it, the `/blog` path
-    sleep(1);
-
-    // Take a second image, now we should be in the list of posts
-    file_put_contents('.output/iClickOnBlog.png', $this->getSession()->getDriver()->getScreenshot());
-}
-```
-
-</Snippet>
+<Snippet filename="features/bootstrap/FeatureContext.php" source="./files/FeatureContext.part3.php" />
 
 Start `./run.sh` once more and bingo!
 
@@ -558,281 +303,32 @@ Finally, to run our `run.sh` script, you should run `docker compose exec -u $(id
 
 ### behat.yaml
 
-<Snippet filename="behat.yaml">
-
-```yaml
-default:
-    extensions:
-        DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
-        Behat\MinkExtension:
-            browser_name: chrome
-            base_url: https://www.avonture.be
-            sessions:
-                default:
-                    chrome:
-                      api_url: http://0.0.0.0:9222
-```
-
-</Snippet>
+<Snippet filename="behat.yaml" source="./files/behat.part2.yaml" />
 
 ### Blog.feature
 
 The relative filename is `features/Blog.feature`.
 
-<Snippet filename="features/Blog.feature">
-
-
-```gherkin
-Feature: Clicking on the Blog menu item should gives me the list of articles
-
-  Scenario: I click on the Blog menu
-    Given I am on "https://www.avonture.be"
-    Then I click on the "Blog" menu item
-    Then I should be on "/blog"
-```
-
-</Snippet>
+<Snippet filename="features/Blog.feature" source="./files/Blog.part2.feature" />
 
 ### composer.json
 
-<Snippet filename="composer.json">
-
-```json
-{
-    "name": "johndoe/behat",
-    "description": "Introduction to behat",
-    "type": "project",
-    "autoload": {
-        "psr-4": {
-            "Johndoe\\Behat\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "John Doe"
-        }
-    ],
-    "require-dev": {
-        "behat/behat": "^3",
-        "dmore/behat-chrome-extension": "^1.4",
-        "friends-of-behat/mink": "^1.11"
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="composer.json" source="./files/composer.json" />
 
 ### compose.yaml
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  app:
-    build:
-      context: .
-      args:
-        # Please update IDs below if you've another values by running "id -u" (UID) and "id -g" (GID) in your Linux console
-        - DOCKER_UID=1000
-        - DOCKER_GID=1000
-        # The name of the user in Docker; didn't have any importance
-        - USERNAME=johndoe
-    container_name: php-app
-    working_dir: /opt/behat
-    volumes:
-      # We'll synchronize our local project folder (on our machine) with the Docker container
-      - ./:/opt/behat
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 
 ### Dockerfile
 
-<Snippet filename="Dockerfile">
-
-<!-- cspell:disable -->
-```docker
-# The user ID and name and group ID of the user to create in our image
-ARG DOCKER_UID=1000
-ARG DOCKER_GID=1000
-ARG USERNAME=johndoe
-
-# The version of Chrome we'll install
-ARG CHROME_VERSION=115.0.5763.0
-
-# This is a PHP project
-FROM php:8.2-fpm
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y git jq zip unzip wget gnupg \
-    && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/*
-
-# We'll create a new user with the same uid/gid than ours, on our host machine.
-ARG DOCKER_UID
-ARG DOCKER_GID
-ARG USERNAME
-
-RUN groupadd --gid ${DOCKER_GID} "${USERNAME}" \
-    && useradd --home-dir /home/"${USERNAME}" --create-home --uid ${DOCKER_UID} \
-        --gid ${DOCKER_GID} --shell /bin/sh --skel /dev/null "${USERNAME}"
-
-# Download and install Chrome
-ARG CHROME_VERSION
-ARG DOWNLOAD_URL="https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json"
-
-# Download Chrome (the browser and the driver)
-RUN wget --no-check-certificate --no-verbose -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
-    && apt-get update -yqq \
-    && apt-get install -y --no-install-recommends -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 \
-        libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libgconf-2-4 \
-        libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 \
-        libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
-        libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 \
-        libxss1 libxtst6 ca-certificates fonts-liberation libnss3 lsb-release \
-        xdg-utils \
-    && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/* \
-    # --- Download the browser ---
-    && ZIP_URL=$(curl $DOWNLOAD_URL | jq -r ".versions[] | select(.version==\""$CHROME_VERSION"\").downloads.chrome[] | select(.platform==\""linux64"\") .url") \
-    && wget --no-check-certificate --no-verbose -O /tmp/chrome_browser.zip $ZIP_URL \
-    && printf "\e[0;105m%s\e[0;0m\n" "Using chromedriver $(/usr/local/bin/chrome/chromedriver --version)" \
-    #  Unzip and create the /usr/local/bin/chromedriver executable  (-j means don't create a subfolder with the name of the archive; unzip in the folder directly)
-    && unzip -j /tmp/chrome_browser.zip -d /usr/local/bin/chrome \
-    && rm -f /tmp/chrome_browser.zip \
-    && ls -alh /usr/local/bin/chrome \
-    && chmod +x /usr/local/bin/chrome/chrome \
-    # --- Download the driver ---
-    && ZIP_URL=$(curl $DOWNLOAD_URL | jq -r ".versions[] | select(.version==\""$CHROME_VERSION"\").downloads.chromedriver[] | select(.platform==\""linux64"\") .url") \
-    && wget --no-check-certificate --no-verbose -O /tmp/chrome_driver.zip $ZIP_URL \
-    #  Unzip and create the /usr/local/bin/chromedriver executable  (-j means don't create a subfolder with the name of the archive; unzip in the folder directly)
-    && unzip -j /tmp/chrome_driver.zip -d /usr/local/bin/chrome \
-    && rm -f /tmp/chrome_driver.zip \
-    && chmod +x /usr/local/bin/chrome/chrome \
-    # Make some cleanup
-    && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/*
-
-# Get latest composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Where we'll put our script
-RUN mkdir /opt/behat
-
-# Set working directory
-WORKDIR /opt/behat
-```
-<!-- cspell:enable -->
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part2" />
 
 ### FeatureContext.php
 
 The relative filename is `features/bootstrap/FeatureContext.php`.
 
-<Snippet filename="features/bootstrap/FeatureContext.php">
-
-```php
-<?php
-
-use Behat\Mink\Mink;
-use Behat\Mink\Session;
-use DMore\ChromeDriver\ChromeDriver;
-use Behat\Behat\Tester\Exception\PendingException;
-
-/**
- * Defines application features from the specific context.
- */
-class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
-{
-
-    private Behat\Mink\Mink $mink;
-
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     */
-    public function __construct()
-    {
-        $this->mink = new Mink(
-            [
-                'browser' => new Session(
-                    new ChromeDriver(
-                        'http://0.0.0.0:9222',
-                        null,
-                        "https://www.avonture.be"  // <-- Think to update to the site you wish to test
-                    )
-                )
-            ]
-        );
-    }
-
-    /**
-     * @Then I click on the :menu menu item
-     */
-    public function iClickOnTheMenuItem(string $menu): void
-    {
-        if (!is_dir('.output')) {
-            mkdir('.output', 0777);
-        }
-
-        // When entering in the method, take a screenshot so we can assert we're on the homepage
-        file_put_contents('.output/homepage.png', $this->getSession()->getDriver()->getScreenshot());
-
-        /**
-         * @var $elements Behat\Mink\Element\NodeElement
-         */
-        $elements = $this->getSession()->getPage()->findAll('css', 'a[class="navbar__item navbar__link"]');
-
-        // Now we'll get all links from our navigation bar. $elements will contain more than one link in our case.
-        // The CSS selector has been written using our Web developer console; in Edge or Chromium for instance.
-        // Loop any elements (our navigation links) and when we've found the one having `Blog` as text, click on it
-        foreach ($elements as $element) {
-            if ($element->getText() === $menu) {
-                $element->click();
-            }
-        }
-
-        // Give one second to the website to handle the click and, so, to navigate to, as we expect it, the `/blog` path
-        sleep(1);
-
-        // Take a second image, now we should be in the list of posts
-        file_put_contents('.output/iClickOnBlog.png', $this->getSession()->getDriver()->getScreenshot());
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="features/bootstrap/FeatureContext.php" source="./files/FeatureContext.part4.php" />
 
 ### run.sh
 
-<Snippet filename="run.sh">
-
-```bash
-#!/usr/bin/env bash
-
-clear
-
-# We'll start Chrome on URL http://0.0.0.0:9222
-# If this URL has to be modified, think to update the constructor of FeatureContext.php too
-# Note: /usr/bin/google-chrome-stable has been installed in our Dockerfile
-nohup /usr/local/bin/chrome/chrome --headless --remote-debugging-address=0.0.0.0 \
-    --remote-debugging-port=9222 --no-sandbox --window-size="1920,1080" --disable-dev-shm-usage \
-    --disable-extensions --no-startup-window --no-first-run --no-pings > /dev/null 2>&1 &
-
-# Get the process ID of chrome so we can kill the process when we've finished
-chromePID=$!
-
-# shellcheck disable=SC2048,SC2086
-php -d memory_limit=-1 "vendor/bin/behat" --config=behat.yaml
-
-if ((chromePID > 0)); then
-    kill ${chromePID} > /dev/null 2>&1
-fi
-```
-
-</Snippet>
+<Snippet filename="run.sh" source="./files/run.part2.sh" />

@@ -1,0 +1,6 @@
+FROM nginx:stable-alpine3.19-perl AS production
+
+# Copy the Docusaurus build output.
+COPY --from=building_production /opt/docusaurus/build /usr/share/nginx/html
+
+WORKDIR /usr/share/nginx/html

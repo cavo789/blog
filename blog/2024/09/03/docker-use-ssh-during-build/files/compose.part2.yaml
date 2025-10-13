@@ -1,0 +1,3 @@
+secrets:
+  a_secret_name:
+    file: existing_file

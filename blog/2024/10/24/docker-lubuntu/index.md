@@ -25,32 +25,7 @@ I encourage you to watch the video [Full Ubuntu GUI in a Container Displayed on 
 
 There is just one file to create called `Dockerfile` and with this content:
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM ubuntu:latest
-
-RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y lubuntu-desktop lightdm
-
-RUN rm -f /run/reboot-required*
-RUN echo "/usr/sbin/lightdm" > /etc/X11/default-display-manager
-RUN echo "\
-[LightDM]\n\
-[Seat:*]\n\
-type=xremote\n\
-xserver-hostname=host.docker.internal\n\
-xserver-display-number=0\n\
-autologin-user=root\n\
-autologin-user-timeout=0\n\
-autologin-session=Lubuntu\n\
-" > /etc/lightdm/lightdm.conf.d/lightdm.conf
-
-ENV DISPLAY=host.docker.internal:0.0
-
-CMD service dbus start ; service lightdm start
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 Build the image by running `docker build --tag cavo789/lubuntu .` (think to replace `cavo789` with your pseudo).
 

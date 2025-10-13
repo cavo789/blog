@@ -133,16 +133,7 @@ Let's create a `~/.ssh/config` file. If the file already exists, just edit it: `
 
 Add these lines in the file:
 
-<Snippet filename="~/.ssh/config">
-
-```none
-Host my_app
-    Hostname my_blog.be
-    User christophe
-    IdentityFile ~/.ssh/id_ed25519_my_blog
-```
-
-</Snippet>
+<Snippet filename="~/.ssh/config" source="./files/config" />
 
 Save the file and go back to the console.
 

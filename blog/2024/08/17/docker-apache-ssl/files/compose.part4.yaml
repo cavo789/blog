@@ -1,0 +1,9 @@
+services:
+  php:
+    build:
+      context: .
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./src:/var/www/html/

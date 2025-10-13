@@ -56,8 +56,8 @@ Consequatur debitis et sunt eos quod qui unde aut.
 ### Chapter 2.1
 
 Quis voluptate est quis in ea veniam qui incididunt ad cillum nostrud. Nisi proident adipisicing nulla proident esse consequat veniam qui magna deserunt cillum enim. Reprehenderit aliqua sit veniam quis amet dolore magna.
+
 ```
-<!-- cspell:enable -->
 
 </Snippet>
 

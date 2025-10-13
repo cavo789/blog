@@ -12,21 +12,7 @@ tags: [wsl, docker, php]
 
 The situation: you wish to run a piece of standard PHP code (no dependency) like the one below:
 
-<Snippet filename="index.php">
-
-```php
-<?php
-
-echo "<h2>Incorrect, silent bug</h2>";
-
-print_r(json_decode(utf8_decode("Ipso lorem"), true));
-
-echo "<h2>Incorrect, we got an exception</h2>";
-
-print_r(json_decode(utf8_decode("Ipso lorem"), true, 512, JSON_THROW_ON_ERROR));
-```
-
-</Snippet>
+<Snippet filename="index.php" source="./files/index.php" />
 
 <!-- truncate -->
 

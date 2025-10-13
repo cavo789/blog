@@ -64,32 +64,7 @@ When `customUI14.xml` is selected (like illustrated above), click somewhere in t
 
 Now, in the right pane, just copy/paste the XML source below:
 
-<Snippet filename="customUI14.xml">
-
-```xml
-<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
-    <ribbon>
-        <tabs>
-             <tab id="customTab" insertAfterMso="TabView" label="Tab">
-                <group id="customGroup" label="Group">
-                    <button
-                        id="customButton"
-                        label="Button"
-                        imageMso="HappyFace"
-                        size="large"
-                        onAction="OnButtonClicked" />
-                    <editBox
-                        id="customEditBox"
-                        label="Edit Box"
-                        onChange="OnEditBoxTextChanged" />
-                </group>
-            </tab>
-        </tabs>
-    </ribbon>
-</customUI>
-```
-
-</Snippet>
+<Snippet filename="customUI14.xml" source="./files/customUI14.xml" />
 
 ![Manifest added](./images/UI_Editor_Added_UI14.png)
 
@@ -112,13 +87,7 @@ Time to understand what has happened...
 
 #### The root customUI node and the namespace
 
-<Snippet filename="customUI14.xml">
-
-```xml
-<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
-```
-
-</Snippet>
+<Snippet filename="customUI14.xml" source="./files/customUI14.part2.xml" />
 
 The manifest is a XML content and should be valid. You'll need to define your content into a `<customUI>` node (mandatory) and you'll need to specify the `xmlns` (for `namespace`) attribute (mandatory).
 
@@ -149,32 +118,7 @@ So, a ribbon should be:
 
 Below, our manifest now, with the definition of the ribbon.
 
-<Snippet filename="customUI14.xml">
-
-```diff
-<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
-    //highlight-next-line
-    <ribbon>
-        //highlight-next-line
-        <tabs>
-            //highlight-next-line
-            <tab id="customTab" insertAfterMso="TabView" label="Tab">
-                //highlight-next-line
-                <group id="customGroup" label="Group">
-                    //highlight-next-line
-                    YOUR FEATURES HERE
-                //highlight-next-line
-                </group>
-            //highlight-next-line
-            </tab>
-        //highlight-next-line
-        </tabs>
-    //highlight-next-line
-    </ribbon>
-</customUI>
-```
-
-</Snippet>
+<Snippet filename="customUI14.xml" source="./files/customUI14.part3.xml" />
 
 #### Define the tab
 
@@ -193,21 +137,7 @@ The standard names are:
 
 So, if you want to add a button to the Home tab, just use `TabHome` as value for the `id`, f.i.,
 
-<Snippet filename="customUI14.xml">
-
-```xml
-<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
-    <ribbon>
-        <tabs>
-            //highlight-next-line
-            <tab id="TabHome">
-                ADD A BUTTON TO TabHome
-        </tabs>
-    </ribbon>
-</customUI>
-```
-
-</Snippet>
+<Snippet filename="customUI14.xml" source="./files/customUI14.part4.xml" />
 
 The XML below will, in one line,
 
@@ -215,13 +145,7 @@ The XML below will, in one line,
 2. Put the new tab after the existing `View` tab (use `insertBeforeMso` to add the tab before),
 3. And give him `Tab` as caption.
 
-<Snippet filename="customUI14.xml">
-
-```xml
-<tab id="customTab" insertAfterMso="TabView" label="Tab">
-```
-
-</Snippet>
+<Snippet filename="customUI14.xml" source="./files/customUI14.part5.xml" />
 
 Here is our added tab:
 
@@ -236,13 +160,7 @@ The XML below will:
 1. Create a new group since the id is a new one (`customGroup`),
 2. And give him `Group` as name.
 
-<Snippet filename="customUI14.xml">
-
-```xml
-<group id="customGroup" label="Group">
-```
-
-</Snippet>
+<Snippet filename="customUI14.xml" source="./files/customUI14.part6.xml" />
 
 Our tab with his group:
 
@@ -254,42 +172,7 @@ As you can see here above, just adding a group isn't enough, you'll need to defi
 
 The XML here below will add to things: a button and an edit box.
 
-<Snippet filename="customUI14.xml">
-
-```diff
-<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
-    <ribbon>
-        <tabs>
-             <tab id="customTab" insertAfterMso="TabView" label="Tab">
-                <group id="customGroup" label="Group">
-                    //highlight-next-line
-                    <button
-                        //highlight-next-line
-                        id="customButton"
-                        //highlight-next-line
-                        label="Button"
-                        //highlight-next-line
-                        imageMso="HappyFace"
-                        //highlight-next-line
-                        size="large"
-                        //highlight-next-line
-                        onAction="OnButtonClicked" />
-                        //highlight-next-line
-                    <editBox
-                        //highlight-next-line
-                        id="customEditBox"
-                        //highlight-next-line
-                        label="Edit Box"
-                        //highlight-next-line
-                        onChange="OnEditBoxTextChanged" />
-                </group>
-            </tab>
-        </tabs>
-    </ribbon>
-</customUI>
-```
-
-</Snippet>
+<Snippet filename="customUI14.xml" source="./files/customUI14.part7.xml" />
 
 The XML below will create a button
 
@@ -299,18 +182,7 @@ The XML below will create a button
 4. The size of the button will be `large` (a big button),
 5. The action assigned will be the VBA function called `OnButtonClicked`.
 
-<Snippet filename="customUI14.xml">
-
-```xml
-<button
-    id="customButton"
-    label="Button"
-    imageMso="HappyFace"
-    size="large"
-    onAction="OnButtonClicked" />
-```
-
-</Snippet>
+<Snippet filename="customUI14.xml" source="./files/customUI14.part8.xml" />
 
 This will result into this:
 
@@ -338,36 +210,7 @@ Now, you can close the *Microsoft Visual Basic for Application* window, go back 
 
 And we can add other features, like an edit box:
 
-<Snippet filename="customUI14.xml">
-
-```xml
-<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
-    <ribbon>
-        <tabs>
-             <tab id="customTab" insertAfterMso="TabView" label="Tab">
-                <group id="customGroup" label="Group">
-                    <button
-                        id="customButton"
-                        label="Button"
-                        imageMso="HappyFace"
-                        size="large"
-                        onAction="OnButtonClicked" />
-                    //highlight-next-line
-                    <editBox
-                        //highlight-next-line
-                        id="customEditBox"
-                        //highlight-next-line
-                        label="Edit Box"
-                        //highlight-next-line
-                        onChange="OnEditBoxTextChanged" />
-                </group>
-             </tab>
-        </tabs>
-    </ribbon>
-</customUI>
-```
-
-</Snippet>
+<Snippet filename="customUI14.xml" source="./files/customUI14.part9.xml" />
 
 ![Smiley_and_edit](./images/Smiley_and_edit.png)
 
@@ -406,30 +249,7 @@ You'll most probably use an existing, standard, image. This can be done by using
 
 The manifest is this one:
 
-<Snippet filename="customUI14.xml">
-
-```xml
-<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
-    <ribbon>
-        <tabs>
-            <tab idMso="TabHome" visible="false" />
-             <tab id="customTab" insertAfterMso="TabView" label="Tab">
-                <group id="customGroup" label="Group">
-                    <button
-                        id="customButton"
-                        label="Button"
-                        //highlight-next-line
-                        imageMso="AddFolderToFavorites"
-                        size="large"
-                        onAction="OnButtonClicked" />
-                </group>
-            </tab>
-        </tabs>
-    </ribbon>
-</customUI>
-```
-
-</Snippet>
+<Snippet filename="customUI14.xml" source="./files/customUI14.part10.xml" />
 
 But ... **how to retrieve the list of images?**
 
@@ -447,18 +267,7 @@ When the user clicks on a button of the ribbon which subroutine should be called
 
 The XML code below assign the `OnButtonClicked` subroutine to the `onAction` event of the button.
 
-<Snippet filename="customUI14.xml">
-
-```xml
-<button
-    id="customButton"
-    label="Button"
-    imageMso="AddFolderToFavorites"
-    size="large"
-    onAction="OnButtonClicked" />
-```
-
-</Snippet>
+<Snippet filename="customUI14.xml" source="./files/customUI14.part11.xml" />
 
 So, if we wish to catch that event, we'll need to add a public subroutine in our Excel file, that subroutine can be placed in any module, should be public and should have `OnButtonClicked` as name.
 
@@ -474,16 +283,7 @@ End Sub
 
 For an edit box and the `onChange` event, the callback is different:
 
-<Snippet filename="customUI14.xml">
-
-```xml
-<editBox
-    id="customEditBox"
-    label="Edit Box"
-    onChange="OnEditBoxTextChanged" />
-```
-
-</Snippet>
+<Snippet filename="customUI14.xml" source="./files/customUI14.part12.xml" />
 
 ```vbnet
 Public Sub OnEditBoxTextChanged(control As IRibbonControl, sText As String)

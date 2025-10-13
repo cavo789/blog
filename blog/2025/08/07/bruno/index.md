@@ -165,17 +165,7 @@ So, in short, I'll create my own Docker image and check if things are better.
 
 Let's create a file `bruno.Dockerfile` with the following content:
 
-<Snippet filename="bruno.Dockerfile">
-
-```docker
-FROM node:lts-bookworm-slim
-// highlight-next-line
-RUN npm install -g @usebruno/cli@2.8.0
-ENTRYPOINT ["bru"]
-CMD ["run"]
-```
-
-</Snippet>
+<Snippet filename="bruno.Dockerfile" source="./files/bruno.Dockerfile" />
 
 We'll create our image like this: `docker build --file bruno.Dockerfile  -t bruno-image .` (we can check our image by running `docker run -it --rm bruno-image --version`; we should see `2.8.0`).
 
@@ -266,37 +256,6 @@ For sure, the idea of the CLI tool is to be able to run assertions from the comm
 
 Let's update the `Get a random joke.bru` file like this:
 
-<Snippet filename="Get a random joke.bru">
-
-```none
-meta {
-  name: Get a random joke
-  type: http
-  seq: 1
-}
-
-get {
-  url: {{host}}/jokes
-  body: none
-  auth: none
-}
-
-<!-- highlight-start -->
-assert {
-  res.status: eq 200
-  res.headers["content-type"]: isDefined
-  res.headers["content-type"]: isString
-  res.headers["content-type"]: contains "application/json"
-  res.body.joke.length: gt 0
-  res.body.joke: isString
-}
-<!-- highlight-end -->
-
-settings {
-  encodeUrl: true
-}
-```
-
-</Snippet>
+<Snippet filename="Get a random joke.bru" source="./files/Get a random joke.bru" />
 
 ![Bruno CLI is running assertions](./images/bruno_cli_assertions.png)

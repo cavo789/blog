@@ -1,0 +1,51 @@
+# syntax=docker/dockerfile:1
+
+# cspell:ignore groupid,johndoe,addgroup,adduser# syntax=docker/dockerfile:1
+
+ARG DOCKER_OS_GROUPID=1000
+ARG DOCKER_OS_USERID=1000
+ARG DOCKER_OS_USERNAME="johndoe"
+
+FROM alpine:latest
+
+# hadolint ignore=DL3008
+# Note: use docker.io and not docker if you are using another image than alpine (i.e. with apt-get and not apk)
+RUN apk update && apk add docker
+
+ARG DOCKER_OS_GROUPID
+ARG DOCKER_OS_USERID
+ARG DOCKER_OS_USERNAME
+
+RUN set -e -x \
+    && mkdir -p "/home/${DOCKER_OS_USERNAME}" \
+    && addgroup -g "${DOCKER_OS_GROUPID}" "${DOCKER_OS_USERNAME}" \
+    # Create our application user
+    && adduser -S -D -u "${DOCKER_OS_USERID}"  -G "${DOCKER_OS_USERNAME}" -h "/home/${DOCKER_OS_USERNAME}" "${DOCKER_OS_USERNAME}" \
+    # And, finally, set the correct permissions to the home folder of our user
+    && chown -R "${DOCKER_OS_USERNAME}":"${DOCKER_OS_GROUPID}" "/home/${DOCKER_OS_USERNAME}"
+
+USER "${DOCKER_OS_USERNAME}"
+
+ARG DOCKER_OS_GROUPID=1000
+ARG DOCKER_OS_USERID=1000
+ARG DOCKER_OS_USERNAME="johndoe"
+
+FROM alpine:latest
+
+# hadolint ignore=DL3008
+# Note: use docker.io and not docker if you are using another image than alpine (i.e. with apt-get and not apk)
+RUN apk update && apk add docker
+
+ARG DOCKER_OS_GROUPID
+ARG DOCKER_OS_USERID
+ARG DOCKER_OS_USERNAME
+
+RUN set -e -x \
+    && mkdir -p "/home/${DOCKER_OS_USERNAME}" \
+    && addgroup -g "${DOCKER_OS_GROUPID}" "${DOCKER_OS_USERNAME}" \
+    # Create our application user
+    && adduser -S -D -u "${DOCKER_OS_USERID}"  -G "${DOCKER_OS_USERNAME}" -h "/home/${DOCKER_OS_USERNAME}" "${DOCKER_OS_USERNAME}" \
+    # And, finally, set the correct permissions to the home folder of our user
+    && chown -R "${DOCKER_OS_USERNAME}":"${DOCKER_OS_GROUPID}" "/home/${DOCKER_OS_USERNAME}"
+
+USER "${DOCKER_OS_USERNAME}"

@@ -24,15 +24,7 @@ For the illustration, please start a Linux shell and run `mkdir -p /tmp/xmlstarl
 
 Create a new file called `data.xml` with this content:
 
-<Snippet filename="data.xml">
-
-<!-- cspell:disable -->
-```xml
-<?xml version="1.0" encoding="UTF-8"?><bookstore><book category="cooking"><title lang="en">Everyday Italian</title><author>Giada De Laurentiis</author><year>2005</year><price>30.00</price></book><book category="children"><title lang="en">Harry Potter</title><author>J K. Rowling</author><year>2005</year><price>29.99</price></book><book category="web"><title lang="en">XQuery Kick Start</title><author>James McGovern</author><author>Per Bothner</author><author>Kurt Cagle</author><author>James Linn</author><author>Vaidyanathan Nagarajan</author><year>2003</year><price>49.99</price></book><book category="web"><title lang="en">Learning XML</title><author>Erik T. Ray</author><year>2003</year><price>39.95</price></book></bookstore>
-```
-<!-- cspell:enable -->
-
-</Snippet>
+<Snippet filename="data.xml" source="./files/data.xml" />
 
 As you can see, our XML has no format, everything on the same line.
 
@@ -42,45 +34,7 @@ We can beautify it using the `format` action:
 $ cat "data.xml" | xmlstarlet format --indent-spaces 4
 </Terminal>
 
-<Snippet filename="data.xml">
-
-<!-- cspell:disable -->
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<bookstore>
-    <book category="cooking">
-        <title lang="en">Everyday Italian</title>
-        <author>Giada De Laurentiis</author>
-        <year>2005</year>
-        <price>30.00</price>
-    </book>
-    <book category="children">
-        <title lang="en">Harry Potter</title>
-        <author>J K. Rowling</author>
-        <year>2005</year>
-        <price>29.99</price>
-    </book>
-    <book category="web">
-        <title lang="en">XQuery Kick Start</title>
-        <author>James McGovern</author>
-        <author>Per Bothner</author>
-        <author>Kurt Cagle</author>
-        <author>James Linn</author>
-        <author>Vaidyanathan Nagarajan</author>
-        <year>2003</year>
-        <price>49.99</price>
-    </book>
-    <book category="web">
-        <title lang="en">Learning XML</title>
-        <author>Erik T. Ray</author>
-        <year>2003</year>
-        <price>39.95</price>
-    </book>
-</bookstore>
-```
-<!-- cspell:enable -->
-
-</Snippet>
+<Snippet filename="data.xml" source="./files/data.part2.xml" />
 
 We can also use `Xpath` to specify our desired output:
 
@@ -96,22 +50,7 @@ Learning XML
 
 If you don't known XPath yet, we've used `"/bookstore/book/title"` because our XML is constructed like that. As you can see below, our root node is called `bookstore`, then we have one or more `book` and each book has a `title`.
 
-<Snippet filename="data.xml">
-
-```xml
-//highlight-next-line
-<bookstore>
-    //highlight-next-line
-    <book category="cooking">
-        //highlight-next-line
-        <title lang="en">Everyday Italian</title>
-        [...]
-    </book>
-    [...]
-</bookstore>
-```
-
-</Snippet>
+<Snippet filename="data.xml" source="./files/data.part3.xml" />
 
 We can also make some filtering like getting books for children:
 
@@ -123,19 +62,6 @@ Harry Potter
 
 And here, the XPath expression `//book[@category='children']/title` means: give me each `book`; it doesn't matter where the book node is located; but only if it has an attribute named `category` and whose value is `children`. Then, if found, display his `title`.
 
-<Snippet filename="data.xml">
-
-```xml
-<bookstore>
-    //highlight-next-line
-    <book category="children">
-        //highlight-next-line
-        <title lang="en">Harry Potter</title>
-        [...]
-    </book>
-</bookstore>
-```
-
-</Snippet>
+<Snippet filename="data.xml" source="./files/data.part4.xml" />
 
 Read the [official documentation](https://xmlstar.sourceforge.net/docs.php) to learn more about xmlstarlet.

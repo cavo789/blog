@@ -1,0 +1,15 @@
+services:
+  joomla:
+    image: joomla
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - JOOMLA_DB_HOST=joomladb
+      - JOOMLA_DB_PASSWORD=example
+
+  joomladb:
+    image: mysql:8.0.13
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=example

@@ -37,38 +37,11 @@ In our example below, we'll fire a `SampleEvent` class and his `SampleListener`.
 
 File `app/Providers/EventServiceProvider.php`
 
-<Snippet filename="app/Providers/EventServiceProvider.php">
-
-```php
-protected $listen = [
-    SampleEvent::class => [
-        SampleListener::class,
-    ],
-];
-```
-
-</Snippet>
+<Snippet filename="app/Providers/EventServiceProvider.php" source="./files/EventServiceProvider.php" />
 
 For our sample, your `routes/web.php` can look like this:
 
-<Snippet filename="routes/web.php">
-
-```php
-use App\Employee;
-use App\Events\SampleEvent;
-
-Route::get('/', function () {
-    $employee = new Employee();
-
-    SampleEvent::dispatch($employee);
-
-    echo 'FIRSTNAME is ' . $employee->getFirstName() . PHP_EOL;
-    echo 'NAME      is ' . $employee->getLastName()  . PHP_EOL;
-    echo 'PSEUDO    is ' . $employee->getPseudo()  . PHP_EOL;
-});
-```
-
-</Snippet>
+<Snippet filename="routes/web.php" source="./files/web.php" />
 
 What we do is:
 
@@ -85,58 +58,7 @@ This class will initialize our employee and provide setters and getters.
 
 By default, our employee will be called `John Doe (cavo789)`.
 
-<Snippet filename="app/Employee.php">
-
-```php
-<?php
-
-namespace App;
-
-class Employee
-{
-    public function __construct(
-        private string $firstname = 'John',
-        private string $lastname  = 'Doe',
-        private string $pseudo    = 'cavo789'
-    ) {
-    }
-
-    public function getFirstName(): string
-    {
-        return $this->firstname;
-    }
-
-    public function setFirstName(string $firstname)
-    {
-        $this->firstname = $firstname;
-        return $this;
-    }
-
-    public function getLastName(): string
-    {
-        return $this->lastname;
-    }
-
-    public function setLastName(string $lastname)
-    {
-        $this->lastname = $lastname;
-        return $this;
-    }
-
-    public function getPseudo(): string
-    {
-        return $this->pseudo;
-    }
-
-    public function setPseudo(string $pseudo)
-    {
-        $this->pseudo = $pseudo;
-        return $this;
-    }
-};
-```
-
-</Snippet>
+<Snippet filename="app/Employee.php" source="./files/Employee.php" />
 
 ### File app/Events/SampleEvent.php
 
@@ -144,69 +66,13 @@ Our event will receive an employee and make it private.
 
 Make three setters public to allow listeners to update the first and the last name. Also allow initializing the pseudo.
 
-<Snippet filename="app/Events/SampleEvent.php">
-
-```php
-<?php
-
-namespace App\Events;
-
-use App\Employee;
-use Illuminate\Foundation\Events\Dispatchable;
-
-class SampleEvent
-{
-    use Dispatchable;
-
-    public function __construct(private Employee $employee)
-    {
-    }
-
-    public function setFirstName(string $firstname): self
-    {
-        $this->employee->setFirstName($firstname);
-        return $this;
-    }
-
-    public function setLastName(string $lastname): self
-    {
-        $this->employee->setLastName($lastname);
-        return $this;
-    }
-
-    public function setPseudo(string $pseudo): self
-    {
-        $this->employee->setPseudo($pseudo);
-        return $this;
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="app/Events/SampleEvent.php" source="./files/SampleEvent.php" />
 
 ### File app/Listeners/SampleListener.php
 
 Our listener logic. `SampleListener` will receive the `SampleEvent` as parameter and, thus, has access to all his public methods. We'll here update the first and the lastname, we'll not update the pseudo.
 
-<Snippet filename="app/Listeners/SampleListener.php">
-
-```php
-<?php
-
-namespace App\Listeners;
-
-use App\Events\SampleEvent;
-
-class SampleListener
-{
-    public function handle(SampleEvent $event): void
-    {
-        $event->setFirstName('Georges')->setLastName('Washington');
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="app/Listeners/SampleListener.php" source="./files/SampleListener.php" />
 
 ### The result
 
@@ -222,17 +88,7 @@ PSEUDO    is cavo789
 
 If we edit back the `app/Providers/EventServiceProvider.php` file and comment the listener like below illustrated, our code will still work.
 
-<Snippet filename="app/Providers/EventServiceProvider.php">
-
-```php
-protected $listen = [
-    SampleEvent::class => [
-        // SampleListener::class,
-    ],
-];
-```
-
-</Snippet>
+<Snippet filename="app/Providers/EventServiceProvider.php" source="./files/EventServiceProvider.part2.php" />
 
 <Terminal>
 $ curl localhost

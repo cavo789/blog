@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REMOTE_ADDR} !127.0.0.1 [NC]
+    RewriteCond %{REMOTE_ADDR} !localhost [NC]
+    RewriteCond %{REMOTE_ADDR} !ADD_YOUR_IP_HERE [NC]
+    RewriteCond %{REQUEST_FILENAME} !maintenance.php(.*)$ [NC]
+    RewriteRule .* /maintenance.php [L,NC,QSA]
+</IfModule>

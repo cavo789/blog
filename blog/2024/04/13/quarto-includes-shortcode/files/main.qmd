@@ -1,0 +1,5 @@
+# My thesis in Latin
+
+{{< include chapter1.md >}}
+
+{{< include chapter2.md >}}

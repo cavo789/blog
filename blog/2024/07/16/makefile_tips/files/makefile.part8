@@ -1,0 +1,2 @@
+concat: $(shell find *.md -type f)
+	$(shell concat.sh)

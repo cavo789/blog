@@ -29,55 +29,7 @@ Let's look at how to install it.
 
 Please create a folder like `mkdir ~/tools/karakeep && cd $_`. In that folder, please create a `compose.yaml` file with the content below:
 
-<Snippet filename="compose.yaml">
-
-<!-- cspell:disable -->
-```yaml
-name: tools
-
-services:
-  web:
-    image: ghcr.io/karakeep-app/karakeep:${KARAKEEP_VERSION:-release}
-    restart: unless-stopped
-    volumes:
-      - ./data:/data
-    ports:
-      - 2000:3000
-    env_file:
-      - .env
-    user: ${UID:-1000}:${GID:-1000}
-    environment:
-      MEILI_ADDR: http://meilisearch:7700
-      BROWSER_WEB_URL: http://chrome:9222
-      DATA_DIR: /data
-
-  chrome:
-    image: gcr.io/zenika-hub/alpine-chrome:123
-    restart: unless-stopped
-    command:
-      - --no-sandbox
-      - --disable-gpu
-      - --disable-dev-shm-usage
-      - --remote-debugging-address=0.0.0.0
-      - --remote-debugging-port=9222
-      - --hide-scrollbars
-
-  meilisearch:
-    image: getmeili/meilisearch:v1.13.3
-    restart: unless-stopped
-    env_file:
-      - .env
-    environment:
-      MEILI_NO_ANALYTICS: "true"
-    volumes:
-      - meilisearch:/meili_data
-
-volumes:
-  meilisearch:
-```
-<!-- cspell:enable -->
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 <AlertBox variant="note" title="">
 The line `user: ${UID:-1000}:${GID:-1000}` will ask Docker to use a specific user (not the `root` one) while creating files on your disk.

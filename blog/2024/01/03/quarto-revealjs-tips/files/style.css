@@ -1,0 +1,23 @@
+.reveal .slide-logo-bottom-right {
+    bottom: 0 !important;
+    left: unset !important;
+    height: 100% !important;
+    max-height: 2.2rem !important;
+    right: 12px !important;
+}
+
+.slide-logo-max-size {
+    bottom: unset !important;
+    left: 12px;
+    height: 100px !important;
+    max-height: unset !important;
+    right: unset !important;
+    top: 5px;
+}
+
+.reveal .slide-logo {
+    display: block;
+    max-width: unset !important;
+    position: fixed;
+    width: 100x !important;
+}

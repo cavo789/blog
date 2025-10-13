@@ -1,0 +1,4 @@
+Host my_app
+    Hostname my_blog.be
+    User christophe
+    IdentityFile ~/.ssh/id_ed25519_my_blog

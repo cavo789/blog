@@ -1,0 +1,16 @@
+{
+    "profiles": {
+        "list": [
+            {
+                "commandline": "wsl.exe -d Ubuntu docker-compose exec docusaurus /bin/sh",
+                "backgroundImage": "c:/Users/Christophe/Backgrounds/blog.jpg",
+                "backgroundImageOpacity": 0.3,
+                "tabColor": "#2496ED",
+                "guid": "{d77a8e47-3017-4745-9300-d338d849ee20}",
+                "icon": "ms-appdata:///roaming/pen.png",
+                "name": "Docker - Blog",
+                "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\christophe\\repositories\\blog"
+            }
+        ]
+    }
+}

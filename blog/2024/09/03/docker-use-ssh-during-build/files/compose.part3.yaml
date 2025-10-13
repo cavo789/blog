@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      secrets:
+        - my_ssh_key
+      args:
+        - KEY_NAME=id_ed25519
+    // highlight-next-line
+    volumes:
+      // highlight-next-line
+      - ${HOME}/.ssh:/root/.ssh
+
+secrets:
+  my_ssh_key:
+    file: ${HOME}/.ssh/id_ed25519

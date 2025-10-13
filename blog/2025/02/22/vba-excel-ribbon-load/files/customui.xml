@@ -1,0 +1,11 @@
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
+  <ribbon>
+    <tabs>
+      <tab id="demoRibbon" label="demo Ribbon" insertBeforeMso="TabHome">
+        <group id="grpParams" label="Parameters">
+          <dropDown id="paramsCbxPeriod" label="Period" screentip="Select the period" supertip="Please select the period..." onAction="modToolbar_cbxPeriod.onAction" getSelectedItemID="modToolbar_cbxPeriod.getSelectedItemID" getItemLabel="modToolbar_cbxPeriod.getItemLabel" getItemID="modToolbar_cbxPeriod.getItemID" getItemCount="modToolbar_cbxPeriod.getItemCount"/>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>

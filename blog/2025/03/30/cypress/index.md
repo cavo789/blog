@@ -33,96 +33,25 @@ Create a temporary directory like `mkdir -p /tmp/cypress && cd $_`.
 
 Create the `package.json` file with the following content. The objective is to mention we need the `cypress` dependency and we'll define to commands, `open` and `run`.
 
-<Snippet filename="package.json">
-
-```json
-{
-    "name": "cypress_sandbox",
-    "version": "1.0.0",
-    "description": "Playing with cypress",
-    "scripts": {
-      "cypress:open": "cypress open",
-      "cypress:run": "cypress run"
-    },
-    "devDependencies": {
-      "cypress": "^12.17.4"
-    }
-}
-```
-
-</Snippet>
+<Snippet filename="package.json" source="./files/package.json" />
 
 We also need a configuration file and that one has to be called `cypress.config.js`. Create that file with the content below.
 
 In short, we'll define the URL to our local cypress engine to `http://localhost:3100`, we'll inform override the default port `3000` to `3100` and we'll specify we don't use a cypress support configuration file.
 
-<Snippet filename="cypress.config.js">
-
-```js
-const { defineConfig } = require('cypress');
-
-module.exports = defineConfig({
-  e2e: {
-    baseUrl: 'http://localhost:3100',
-    port: 3100,
-    supportFile: false,
-  },
-});
-```
-
-</Snippet>
+<Snippet filename="cypress.config.js" source="./files/cypress.config.js" />
 
 Let's create a very stupid first test: we'll visit my blog and check that, somewhere, my full name appears:
 
-<Snippet filename="cypress/e2e/example.cy.js">
-
-```js
-describe('Testing my blog', () => {
-    it('Check my last name is somewhere', () => {
-      cy.visit('https://www.avonture.be')
-      cy.contains('Christophe Avonture')
-    })
-})
-```
-
-</Snippet>
+<Snippet filename="cypress/e2e/example.cy.js" source="./files/example.cy.js" />
 
 An optional file to create is `.dockerignore`, it will tell Docker to not copy some files in our Docker image. In our tutorial here we don't really need it but it's always a good idea to have such file as a reminder to not forget that Docker can skip files with copying files and directories when building an image.
 
-<Snippet filename=".dockerignore">
-
-```ignore
-node_modules
-Dockerfile
-.dockerignore
-```
-
-</Snippet>
+<Snippet filename=".dockerignore" source="./files/.dockerignore" />
 
 Finally, last file to create, we'll create our own Docker image:
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM cypress/included:14.2.0
-
-WORKDIR /app
-
-COPY --chown=node:node package*.json ./
-
-RUN npm install
-
-COPY --chown=node:node cypress/ ./cypress/
-COPY --chown=node:node cypress.config.js ./
-
-RUN npx cypress verify
-
-USER node
-
-CMD ["npx", "cypress", "run", "--browser", "chrome"]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 If we look in VSCode our current project, it will look like this:
 
@@ -151,23 +80,7 @@ It's simple.
 
 First, let's create a second test:
 
-<Snippet filename="cypress/e2e/navigation.cy.js">
-
-```js
-describe('Navigation Test', () => {
-    it('should navigate to the tags page', () => {
-      cy.visit('https://www.avonture.be');
-
-      cy.contains('a', 'Tags').click();
-
-      cy.url().should('include', '/tags');
-
-      cy.get('h1').should('contain', 'Tags');
-    });
-});
-```
-
-</Snippet>
+<Snippet filename="cypress/e2e/navigation.cy.js" source="./files/navigation.cy.js" />
 
 In short, we want to go to the homepage then click on the **Tags** menu navigation item. We expect then that the URL of the new page will contain `/tags` and, too, we expect the new page HTML content will have a `h1` element with the word `Tags`.
 
@@ -193,23 +106,7 @@ If you pay close attention, you'll notice that there's a spelling mistake, which
 
 </AlertBox>
 
-<Snippet filename="cypress/e2e/joomla.cy.js">
-
-```js
-describe('Joomla Test', () => {
-    it('use tags and display Joomla posts', () => {
-      cy.visit('https://www.avonture.be');
-
-      // Find the "TAGS" link and click it. Adjust the selector if needed.
-      cy.contains('a', 'Tags').click();
-
-      // Assert that the URL includes '/tags'.
-      cy.contains('a', 'jomla').click();
-    });
-});
-```
-
-</Snippet>
+<Snippet filename="cypress/e2e/joomla.cy.js" source="./files/joomla.cy.js" />
 
 Let's run Cypress once more: `docker run --rm -v ./cypress:/app/cypress cypress-test`.
 
@@ -223,51 +120,7 @@ To do this, we'll need to update our Docker image to create a new user so, at th
 
 Please replace your existing Dockerfile with this one:
 
-<Snippet filename="Dockerfile">
-
-```docker
-ARG USER_ID=1000
-ARG GROUP_ID=1000
-ARG USER_NAME="johndoe"
-
-FROM cypress/included:14.2.0
-
-# Where we'll put our files in the image
-WORKDIR /app
-
-# We'll create our specific user
-ARG USER_ID
-ARG GROUP_ID
-ARG USER_NAME
-
-# Our user will be member of the standard node group too
-RUN groupadd -g ${GROUP_ID} "${USER_NAME}" && \
-    useradd -u ${USER_ID} -g "${USER_NAME}" -g node -m "${USER_NAME}"
-
-# Change the ownership of our /app folder
-RUN chown -R "${USER_NAME}":"${USER_NAME}" /app
-
-USER "${USER_NAME}"
-
-# Copy the package.json file to the Docker image
-COPY --chown="${USER_NAME}":"${USER_NAME}" package*.json ./
-
-# And run npm install i.e. install Cypress
-RUN npm install
-
-# Copy files into our image
-COPY --chown="${USER_NAME}":"${USER_NAME}" cypress/ ./cypress/
-COPY --chown="${USER_NAME}":"${USER_NAME}" cypress.config.js ./
-
-# Check Cypress installation
-RUN npx cypress verify
-
-# And run Cypress and specify we'll use Chrome
-CMD ["npx", "cypress", "run", "--browser", "chrome"]
-
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part2" />
 
 The script before will create a user called `johndoe` in the image (name didn't matter here) but, the most important thing is that the user will have a specific UID / GID.
 

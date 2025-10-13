@@ -1,0 +1,7 @@
+ifeq ($(shell test -e vendor/a/b/c || echo -n no),no)
+    @echo "The folder didn't exist"
+endif
+
+ifeq ($(shell test -e vendor/a/b/c && echo -n yes),yes)
+    @echo "The folder exists"
+endif

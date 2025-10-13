@@ -1,0 +1,9 @@
+- repo: local
+  hooks:
+    - id: mypy # Mypy (should be installed using `pip install mypy`)
+    name: mypy
+    entry: mypy
+    language: system
+    types: [python]
+    require_serial: true
+    args: ["--config-file=.config/mypy.ini"]

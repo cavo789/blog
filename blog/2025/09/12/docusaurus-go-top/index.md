@@ -47,72 +47,13 @@ You need to create the `src/theme/BlogPostItem/index.js` file.
 
 If you don't want the long story; don't read that chapter and just create this file:
 
-<Snippet filename="src/theme/BlogPostItem/index.js">
-
-```js
-import React from 'react';
-import clsx from 'clsx';
-import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
-import BlogPostItemContainer from '@theme/BlogPostItem/Container';
-import BlogPostItemHeader from '@theme/BlogPostItem/Header';
-import BlogPostItemContent from '@theme/BlogPostItem/Content';
-import BlogPostItemFooter from '@theme/BlogPostItem/Footer';
-// apply a bottom margin in list view
-function useContainerClassName() {
-  const {isBlogPostPage} = useBlogPost();
-  return !isBlogPostPage ? 'margin-bottom--xl' : undefined;
-}
-export default function BlogPostItem({children, className}) {
-  const containerClassName = useContainerClassName();
-  return (
-    <BlogPostItemContainer className={clsx(containerClassName, className)}>
-      <BlogPostItemHeader />
-      <BlogPostItemContent>{children}</BlogPostItemContent>
-      <BlogPostItemFooter />
-    </BlogPostItemContainer>
-  );
-}
-```
-
-</Snippet>
+<Snippet filename="src/theme/BlogPostItem/index.js" source="./files/index.js" />
 
 Once you've it, please edit it since we need to inject the `<ScrollToTopButton />` code.
 
 Below, see the two highlighted lines you should add:
 
-<Snippet filename="src/theme/BlogPostItem/index.js">
-
-```js
-import React from 'react';
-import clsx from 'clsx';
-import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
-import BlogPostItemContainer from '@theme/BlogPostItem/Container';
-import BlogPostItemHeader from '@theme/BlogPostItem/Header';
-import BlogPostItemContent from '@theme/BlogPostItem/Content';
-import BlogPostItemFooter from '@theme/BlogPostItem/Footer';
-// highlight-next-line
-import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
-
-// apply a bottom margin in list view
-function useContainerClassName() {
-  const {isBlogPostPage} = useBlogPost();
-  return !isBlogPostPage ? 'margin-bottom--xl' : undefined;
-}
-export default function BlogPostItem({children, className}) {
-  const containerClassName = useContainerClassName();
-  return (
-    <BlogPostItemContainer className={clsx(containerClassName, className)}>
-      <BlogPostItemHeader />
-      <BlogPostItemContent>{children}</BlogPostItemContent>
-      <BlogPostItemFooter />
-      // highlight-next-line
-      <ScrollToTopButton />
-    </BlogPostItemContainer>
-  );
-}
-```
-
-</Snippet>
+<Snippet filename="src/theme/BlogPostItem/index.js" source="./files/index.part2.js" />
 
 <AlertBox variant="caution" title="We need to restart Docusaurus">
 Now, because we've just introduced an override, we need to restart our Docusaurus server so changes can be taken into account.

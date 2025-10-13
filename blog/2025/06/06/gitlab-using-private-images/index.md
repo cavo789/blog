@@ -47,19 +47,4 @@ You can add the variables in your repository's CI/CD settings page or at a highe
 
 Once done, here is how to connect to Docker in your `.gitlab-ci.yml` file:
 
-<Snippet filename=".gitlab-ci.yml">
-
-```yaml
-demo:
-  image: docker:latest
-  before_script:
-    - | # Do a secure login
-      echo "$DOCKER_HUB_TOKEN_RO" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
-  script:
-    - | # Download the image
-      docker pull your_private_image
-    # - | # Use it
-    #   docker run [...] your_private_image [...]
-```
-
-</Snippet>
+<Snippet filename=".gitlab-ci.yml" source="./files/.gitlab-ci.yml" />

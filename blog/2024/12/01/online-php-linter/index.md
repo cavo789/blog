@@ -17,22 +17,7 @@ You'd like to have an online tool that you can use to quickly retrieve code with
 
 For example, how do you make the code below look cleaner in five seconds?
 
-<Snippet filename="my_collection.php">
-
-```php
-<?php
-abstract class mycollection implements Iterator
-{
-    protected function populate($array, $dataobject){
-foreach($array as $item){
-            $object = new $dataobject();
-            foreach($item as $key => $val){$object->$key = $val;}
-  $this->storage[] = $object;
-}}
-}
-```
-
-</Snippet>
+<Snippet filename="my_collection.php" source="./files/my_collection.php" />
 
 <!-- truncate -->
 

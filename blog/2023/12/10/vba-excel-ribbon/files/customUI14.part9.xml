@@ -1,0 +1,24 @@
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
+    <ribbon>
+        <tabs>
+            <tab id="customTab" insertAfterMso="TabView" label="Tab">
+                <group id="customGroup" label="Group">
+                    <button
+                        id="customButton"
+                        label="Button"
+                        imageMso="HappyFace"
+                        size="large"
+                        onAction="OnButtonClicked" />
+                    <!-- highlight-next-line -->
+                    <editBox
+                    <!-- highlight-next-line -->
+                    id="customEditBox"
+                    <!-- highlight-next-line -->
+                    label="Edit Box"
+                    <!-- highlight-next-line -->
+                    onChange="OnEditBoxTextChanged" />
+                </group>
+            </tab>
+        </tabs>
+    </ribbon>
+</customUI>

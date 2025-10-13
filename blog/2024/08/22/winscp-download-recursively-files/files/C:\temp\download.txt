@@ -1,0 +1,13 @@
+lcd "c:\temp"
+
+open ftp://USERNAME:PASSWORD@HOST_OR_IP/
+
+cd /public_html
+
+option transfer ascii
+
+get -filemask:*.php *
+
+close
+
+exit

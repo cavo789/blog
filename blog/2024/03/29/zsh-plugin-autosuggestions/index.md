@@ -28,16 +28,7 @@ $ {`git clone https://github.com/zsh-users/zsh-autosuggestions \${ZSH_CUSTOM:-~/
 
 Then edit the `~/.zshrc` file, search for `plugins=(` and add `zsh-autosuggestions` to the list. You'll have f.i. something like:
 
-<Snippet filename="~/.zshrc">
-
-```bash
-plugins=(
-  git
-  zsh-autosuggestions
-)
-```
-
-</Snippet>
+<Snippet filename="~/.zshrc" source="./files/.zshrc" />
 
 Close your console, open a new one and it's done.
 

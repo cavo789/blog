@@ -1,0 +1,11 @@
+name: "dood-as-root"
+services:
+  dood:
+    build: .
+    tty: true
+    working_dir: /src
+    // highlight-start
+    # volumes:
+    #   # We need to share the Docker socket: this technique is called "Docker-out-of-Docker"
+    #   - /var/run/docker.sock:/var/run/docker.sock
+    // highlight-end

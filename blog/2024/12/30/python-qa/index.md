@@ -39,46 +39,7 @@ The first thing first: make sure your Python code has no syntax error like a bad
 
 I'm running it like this: `pylint . --rcfile .config/.pylintrc`.
 
-<Snippet filename=".config/.pylintrc">
-
-```ini
-[MASTER]
-; Pickle collected data for later comparisons.
-persistent=yes
-
-; List of plugins (as comma-separated values of python modules names) to load,
-; usually to register additional checkers.
-load-plugins=
-    pylint.extensions.check_elif,
-    pylint.extensions.bad_builtin,
-    pylint.extensions.docparams,
-    pylint.extensions.for_any_all,
-    pylint.extensions.set_membership,
-    pylint.extensions.code_style,
-    pylint.extensions.overlapping_exceptions,
-    pylint.extensions.typing,
-    pylint.extensions.redefined_variable_type,
-    pylint.extensions.comparison_placement,
-
-; Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
-; number of processors available to use.
-jobs=0
-
-; When enabled, pylint would attempt to guess common misconfiguration and emit
-; user-friendly hints instead of false-positive error messages.
-suggestion-mode=yes
-
-; Minimum supported python version
-py-version = 3.13.0
-
-; Specify a score threshold to be exceeded before program exits with error.
-fail-under=9.50
-
-[FORMAT]
-max-line-length=120
-```
-
-</Snippet>
+<Snippet filename=".config/.pylintrc" source="./files/.pylintrc" />
 
 ## 2. Autoflake
 
@@ -123,18 +84,7 @@ Be careful with Vulture because his algorithm will detect a lot of false positiv
 
 Note: I've also configured my VSCode with the settings below so, while I'm coding, VSCode will notify me about unused things so I can immediately take action.
 
-<Snippet filename=".vscode/settings.json">
-
-```json
-"python.analysis.diagnosticSeverityOverrides": {
-    "reportUnusedClass": "information",
-    "reportUnusedFunction": "information",
-    "reportUnusedImport": "information",
-    "reportUnusedVariable": "information"
-},
-```
-
-</Snippet>
+<Snippet filename=".vscode/settings.json" source="./files/settings.json" />
 
 ## 5. pydocstyle
 
@@ -146,15 +96,7 @@ This tool will check the quality of your comments like the one of your functions
 
 I'm running it like this: `pydocstyle --config=.config/.pydocstyle`
 
-<Snippet filename=".config/.pydocstyle">
-
-```ini
-[pydocstyle]
-ignore = D100,D203,D205,D212,D213,D400,D404,D406,D407,D413,D415
-match = .*\.py
-```
-
-</Snippet>
+<Snippet filename=".config/.pydocstyle" source="./files/.pydocstyle" />
 
 ## 6. mypy
 
@@ -168,27 +110,7 @@ match = .*\.py
 
 I'm running it like this: `mypy --config-file .config/.mypy.ini .`
 
-<Snippet filename=".config/.mypy.ini">
-
-```ini
-[mypy]
-show_error_codes = true
-
-; First we turn on *all the checks*, and then we turn off those that are too annoying.
-strict = True
-
-cache_dir = /tmp/mypy
-
-no_implicit_optional = true
-
-strict_equality = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-
-python_version = 3.13
-```
-
-</Snippet>
+<Snippet filename=".config/.mypy.ini" source="./files/.mypy.ini" />
 
 ## 7. Pyright
 
@@ -198,18 +120,7 @@ python_version = 3.13
 
 I'm using it like this: `pyright --project .config/pyright.json`
 
-<Snippet filename=".config/pyright.json">
-
-```json
-{
-    "include": [ "." ],
-    "pythonVersion": "3.13",
-    "pythonPlatform": "Linux"
-  }
-
-```
-
-</Snippet>
+<Snippet filename=".config/pyright.json" source="./files/pyright.json" />
 
 ## 8. Black
 
@@ -223,20 +134,7 @@ I'm using it like this: `pyright --project .config/pyright.json`
 
 I'm using it like this: `black --config .config/black.toml .`
 
-<Snippet filename=".config/black.toml">
-
-```toml
-[tool.black]
-
-# The same as in prospector.yaml and .pylintrc
-line-length = 120
-
-# We'll format the code for Python 3.13.0; we can add multiple versions (the ones supported by
-# the script, all versions separated by a comma like in ['py312', 'py313'] (run "black --help" to get them)
-target-version = ['py313']
-```
-
-</Snippet>
+<Snippet filename=".config/black.toml" source="./files/black.toml" />
 
 ## 9. prospector
 
@@ -246,44 +144,7 @@ target-version = ['py313']
 
 I'm using it like this: `prospector . --profile .config/prospector.yaml --pylint-config-file .config/.pylintrc`
 
-<Snippet filename=".config/prospector.yaml">
-
-```yaml
-strictness: high
-test-warnings: true
-doc-warnings: false
-
-pycodestyle:
-  options:
-    max-line-length: 120
-
-  disable:
-    - D100
-    - D203
-    - D205
-    - D212
-    - D213
-    - D400
-    - D404
-    - D406
-    - D407
-    - D413
-    - D415
-
-bandit:
-  run: true
-
-dodgy:
-  run: true
-
-pyflakes:
-  run: true
-
-mccabe:
-  run: true
-```
-
-</Snippet>
+<Snippet filename=".config/prospector.yaml" source="./files/prospector.yaml" />
 
 ## Extra - Ruff
 
@@ -301,19 +162,7 @@ According to the Ruff [documentation](https://docs.astral.sh/ruff/faq/#how-does-
 
 I'm using it like this: `ruff format --cache-dir /tmp/ruff --config .config/pyproject.toml .` and `ruff check --cache-dir /tmp/ruff --config .config/pyproject.toml .`
 
-<Snippet filename=".config/pyproject.toml">
-
-```toml
-[tool.ruff]
-
-exclude=[]
-
-# The same as in prospector.yaml, .pylintrc, black.toml and pyproject.toml
-line-length = 120
-indent-width = 4
-```
-
-</Snippet>
+<Snippet filename=".config/pyproject.toml" source="./files/pyproject.toml" />
 
 ## Running them all at once
 
@@ -323,45 +172,6 @@ The first tool is `Pylint` and that make sense: there is no need to go further i
 
 I'm using a <Link to="/blog/tags/makefile">makefile</Link> with an action called `qa` like this:
 
-<Snippet filename="makefile">
-
-```makefile
-.PHONY: qa
-qa:
-	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " Step  Tool" "Run?" "Techno" "Description"
-	@echo "--------------------------------------------------------------------------------------------------------------"
-	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 1/9  RUNNING make Pylint" "Lint python scripts using Pylint (https://pypi.org/project/pylint/)"
-	@pylint . --rcfile .config/.pylintrc
-
-	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 2/9  RUNNING make Autoflake" "Detect unused variables and unused imports (https://pypi.org/project/autoflake/)"
-	@autoflake --remove-unused-variables --remove-all-unused-import --recursive .
-
-	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 3/9  RUNNING make isort" "Sort import statement using isort (https://pycqa.github.io/isort/)"
-	@isort .
-
-	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 4/9  RUNNING make Vulture" "Find dead Python code (https://github.com/jendrikseipp/vulture)"
-	@vulture --min-confidence 100 .
-
-	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 5/9  RUNNING make Pydocstyle" "pydocstyle is a static analysis tool for checking compliance with Python docstring conventions (https://www.pydocstyle.org/en/stable/)"
-	@pydocstyle --config=.config/.pydocstyle
-
-	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 6/9  RUNNING make Mypy" "Mypy is a program that will type check your Python code (https://github.com/python/mypy/)"
-	@mypy --config-file .config/.mypy.ini .
-
-	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 7/9  RUNNING make Pyright" "Pyright is a full-featured, standards-based static type checker for Python (https://github.com/microsoft/pyright)"
-	@pyright --project pyright.json
-
-	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 8/9  RUNNING make Black" "Format the script using Black (https://black.readthedocs.io/en/stable/)"
-	@black --config .config/black.toml .
-
-	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n\n" " 9/9  RUNNING make Prospector" "Inspects Python source files and provides information about type and location of classes, methods, ... (https://github.com/prospector-dev/prospector/)"
-	@prospector . --profile .config/prospector.yaml --pylint-config-file .config/.pylintrc
-
-	@printf "%s\n" "CONGRATULATIONS!!!"
-	@printf "%s\n" "Not the slightest error or notice detected, that's .. amazing!"
-	@printf "%s\n" "🥳 🎉 🎊 🤩 🕺 💃 👏"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile" />
 
 You've understood I think. As soon as an error is detected, the script stops. You'll see the **CONGRATULATIONS** message only if all checks are successful.

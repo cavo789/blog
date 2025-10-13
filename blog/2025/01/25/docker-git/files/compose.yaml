@@ -1,0 +1,9 @@
+services:
+  docker_git:
+    build: .
+    tty: true
+    volumes:
+      # Share our SSH key
+      - ${HOME}/.ssh/id_ed25519:/root/.ssh/id_ed25519:ro
+      # and share our git configuration file
+      - ${HOME}/.gitconfig:/root/.gitconfig

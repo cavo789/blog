@@ -15,17 +15,7 @@ Using the Quarto `includes` short code, writing a long document can easily be br
 
 Imagine the following `main.qmd` file:
 
-<Snippet filename="main.qmd">
-
-```markdown
-# My thesis in Latin
-
-{{< include chapter1.md >}}
-
-{{< include chapter2.md >}}
-```
-
-</Snippet>
+<Snippet filename="main.qmd" source="./files/main.qmd" />
 
 Quarto will then merge the three files when you render `main.qmd`.
 

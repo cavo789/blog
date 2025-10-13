@@ -20,39 +20,7 @@ I use [https://patorjk.com/software/taag](https://patorjk.com/software/taag) to 
 
 On my hand, I'm implementing the banner like this:
 
-<Snippet filename="script.sh">
-
-```bash
-#!/usr/bin/env bash
-
-function __main() {
-
-    clear
-
-    # http://patorjk.com/software/taag/#p=display&f=Big&t=My%20Nice%20Script
-    cat <<\EOF
-  __  __         _   _ _             _____           _       _
- |  \/  |       | \ | (_)           / ____|         (_)     | |
- | \  / |_   _  |  \| |_  ___ ___  | (___   ___ _ __ _ _ __ | |_
- | |\/| | | | | | . ` | |/ __/ _ \  \___ \ / __| '__| | '_ \| __|
- | |  | | |_| | | |\  | | (_|  __/  ____) | (__| |  | | |_) | |_
- |_|  |_|\__, | |_| \_|_|\___\___| |_____/ \___|_|  |_| .__/ \__|
-          __/ |                                       | |
-         |___/                                        |_|
-
-EOF
-    printf "%s\n\n" "(c) Copyright ..."
-
-    # Program the functions of your script here,
-    # such as calling your functions
-
-    return 0
-}
-
-__main $*
-```
-
-</Snippet>
+<Snippet filename="script.sh" source="./files/script.sh" />
 
 And this is how it'll look like in my bash terminal:
 

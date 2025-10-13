@@ -1,0 +1,8 @@
+IS_PHP_7 := $(shell [[ $(PHP_VERSION) =~ 7[0-9.]+$$ ]] && echo "yes")
+
+doThing:
+ifdef IS_PHP_7
+	@echo "Hey, it's an old version of PHP, why not migrate to PHP 8?"
+else
+	@echo "Nice! You're using PHP 8 or greater"
+endif

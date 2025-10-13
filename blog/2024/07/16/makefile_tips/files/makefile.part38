@@ -1,0 +1,8 @@
+git_open_repo:
+	@sensible-browser ${GIT_URL_REPO}
+
+git_open_pipeline:
+	@sensible-browser ${GIT_URL_REPO}/pipelines
+
+git_open_wiki:
+	@sensible-browser ${GIT_URL_REPO}/-/wikis/home

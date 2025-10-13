@@ -41,14 +41,7 @@ Would be nice to run `git undo` for this no? This is where the notion of aliases
 
 Just add the two lines below in your `~/.gitconfig`:
 
-<Snippet filename="~/.gitconfig`">
-
-```ini
-[alias]
-    undo = "!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f"
-```
-
-</Snippet>
+<Snippet filename="~/.gitconfig`" source="./files/.gitconfig`" />
 
 <AlertBox variant="info" title="Using command line">
 Instead of updating the file manually, you can obtain the exact same results by running `git config --global alias.undo '!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f'` in the console.
@@ -69,14 +62,7 @@ Indeed, git will complain that `myNewFeature` didn't exist remotely and that you
 
 You can git rid of this but adding the two lines below in your `~/.gitconfig`:
 
-<Snippet filename="~/.gitconfig`">
-
-```ini
-[push]
-    autoSetupRemote = true
-```
-
-</Snippet>
+<Snippet filename="~/.gitconfig`" source="./files/.gitconfig`.part2" />
 
 Now, if the local branch didn't exist remotely, git push will create it automatically for you.
 
@@ -88,14 +74,7 @@ So, after several months, if you run `git branch --list --all` on your computer,
 
 Just add the two lines below in your `~/.gitconfig` file to ask git to make automatic cleaning when running `git fetch`:
 
-<Snippet filename="~/.gitconfig`">
-
-```ini
-[fetch]
-    prune = true
-```
-
-</Snippet>
+<Snippet filename="~/.gitconfig`" source="./files/.gitconfig`.part3" />
 
 <AlertBox variant="info" title="Using command line">
 Instead of updating the file manually, you can obtain the exact same results by running `git config --global fetch.prune true` in the console.
@@ -112,14 +91,7 @@ It would be better to sort the list on the last commit made in the branch so, at
 
 To do this, just add the block below to your `~/.gitconfig` file:
 
-<Snippet filename="~/.gitconfig`">
-
-```ini
-[branch]
-    sort = -committerdate
-```
-
-</Snippet>
+<Snippet filename="~/.gitconfig`" source="./files/.gitconfig`.part4" />
 
 <AlertBox variant="info" title="Using command line">
 Instead of updating the file manually, you can obtain the exact same results by running `git branch --sort=-committerdate` in the console.
@@ -134,14 +106,7 @@ If you're on WSL2, you can reuse credentials you already have filled in in Windo
 
 To share credentials between the two environments, just add the two lines below in your `~/.gitconfig` file:
 
-<Snippet filename="~/.gitconfig`">
-
-```ini
-[credential]
-    helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager-core.exe
-```
-
-</Snippet>
+<Snippet filename="~/.gitconfig`" source="./files/.gitconfig`.part5" />
 
 ### Using multiple credentials on the same computer
 
@@ -156,30 +121,11 @@ But this isn't very practical when you're working on several types of projects, 
 
 When your `~/.gitconfig` looks like below, every time you'll push to Git, the published commit will comes from `me@work.be`.
 
-<Snippet filename="~/.gitconfig`">
-
-```ini
-[user]
-    email = me@work.be
-    name = Christophe Avonture
-```
-
-</Snippet>
+<Snippet filename="~/.gitconfig`" source="./files/.gitconfig`.part6" />
 
 And, with the configuration below, now, if you're pushing a repository located in the `~/private_repositories`, this time the author will be `me@private.be`; no more your professional email.
 
-<Snippet filename="~/.gitconfig`">
-
-```ini
-[user]
-    email = me@work.be
-    name = Christophe Avonture
-
-[includeIf "gitdir:~/private_repositories/"]
-    email = me@private.be
-```
-
-</Snippet>
+<Snippet filename="~/.gitconfig`" source="./files/.gitconfig`.part7" />
 
 ## Force SSH instead of HTTPs
 
@@ -189,14 +135,7 @@ So, for instance, if you've cloned your project using `git clone https://github.
 
 But, if you already have created a SSH key for your Github profile, then, you can stop to use https and force ssl by adding the two lines below in your `~/.gitconfig`:
 
-<Snippet filename="~/.gitconfig`">
-
-```ini
-[url "git@github.com"]
-    insteadOf = https://github.com/
-```
-
-</Snippet>
+<Snippet filename="~/.gitconfig`" source="./files/.gitconfig`.part8" />
 
 <AlertBox variant="info" title="Using command line">
 You can edit your global configuration by running `git config --global url.'git@github.com:'.insteadOf 'https://github.com/'` in the console.
@@ -211,14 +150,7 @@ If you're working on Windows and not in Linux/WSL, git, under Windows, will alwa
 
 Don't allow this by adding the next configuration item in your `~/.gitconfig`:
 
-<Snippet filename="~/.gitconfig`">
-
-```ini
-[core]
-    autocrlf = false
-```
-
-</Snippet>
+<Snippet filename="~/.gitconfig`" source="./files/.gitconfig`.part9" />
 
 <AlertBox variant="info" title="Using command line">
 You can edit your global configuration by running `git config --global core.autocrlf false` in the console.

@@ -1,0 +1,6 @@
+{
+  "name": "ergebnis/composer-normalize",
+  "description": "Provides a composer plugin for normalizing composer.json.",
+  "license": "MIT",
+  "type": "composer-plugin",
+}

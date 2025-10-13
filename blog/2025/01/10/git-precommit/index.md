@@ -50,46 +50,11 @@ First, run `mkdir /tmp/hooks && cd $_` then run `git init` to initialise our fol
 
 We'll need three files, a `Dockerfile` to create our Python Docker image, a `compose.yaml` to set some settings and `main.py` as a Python example script.
 
-<Snippet filename="Dockerfile">
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
-```docker
-# syntax=docker/dockerfile:1
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
-FROM python:3.13-slim AS base
-
-RUN apt-get -y update \
-    && apt-get install --yes --no-install-recommends git \
-    && rm -rf /var/lib/apt/lists/*
-
-WORKDIR "/app/src"
-
-# Keep the container running
-ENTRYPOINT ["tail", "-f", "/dev/null"]
-```
-
-</Snippet>
-
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  app_python:
-    build: .
-    volumes:
-      - .:/app/src
-```
-
-</Snippet>
-
-<Snippet filename="main.py">
-
-```python
-print("I'm your Python code")
-
-print('Who you, who are you?')
-```
-
-</Snippet>
+<Snippet filename="main.py" source="./files/main.py" />
 
 We'll create our Docker image and create a container with this single command: `docker compose up --detach --build`.
 
@@ -115,23 +80,7 @@ For a Python project, it's really easy, you just need to run `pip install pre-co
 Simple too, please create a file called `.pre-commit-config.yaml` with this content:
 
 
-<Snippet filename=".pre-commit-config.yaml">
-
-```yaml
-repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v2.3.0
-  hooks:
-  - id: check-yaml
-  - id: end-of-file-fixer
-  - id: trailing-whitespace
-- repo: https://github.com/psf/black
-  rev: 24.10.0
-  hooks:
-  - id: black
-```
-
-</Snippet>
+<Snippet filename=".pre-commit-config.yaml" source="./files/.pre-commit-config.yaml" />
 
 ### Manually fire the hook
 
@@ -201,94 +150,15 @@ As illustrated on [https://pre-commit.com/#repository-local-hooks](https://pre-c
 
 Imagine, you've already installed a tool like `prospector` (for Python) or `phpstan` (for PHP). These tools are installed on your machine (so you can call them on the command line). So, simply add a new hook like this:
 
-<Snippet filename=".pre-commit-config.yaml">
-
-```yaml
-- repo: local
-  hooks:
-  - id: prospector
-    name: prospector
-    entry: prospector
-    language: system
-```
-
-</Snippet>
+<Snippet filename=".pre-commit-config.yaml" source="./files/.pre-commit-config.yaml.part2" />
 
 You can also pass arguments:
 
-<Snippet filename=".pre-commit-config.yaml">
-
-```yaml
-- repo: local
-  hooks:
-    - id: mypy # Mypy (should be installed using `pip install mypy`)
-    name: mypy
-    entry: mypy
-    language: system
-    types: [python]
-    require_serial: true
-    args: ["--config-file=.config/mypy.ini"]
-```
-
-</Snippet>
+<Snippet filename=".pre-commit-config.yaml" source="./files/.pre-commit-config.yaml.part3" />
 
 For a Python 3.13 project, here is my `.pre-commit-config.yaml` file:
 
-<Snippet filename=".pre-commit-config.yaml">
-
-```yaml
-default_language_version:
-  python: python3.13
-
-repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
-    hooks:
-      - id: check-ast # Python linter - Simply check whether files parse as valid python.
-      - id: check-docstring-first # No code before the initial docstring
-      - id: check-json # JSON linter   - Attempts to load all json files to verify syntax.
-      - id: check-toml # TOML linter   - Attempts to load all TOML files to verify syntax.
-      - id: check-xml # XML linter    - Attempts to load all XML files to verify syntax.
-      - id: check-yaml # YAML linter   - Attempts to load all yaml files to verify syntax.
-      - id: check-merge-conflict # Check for files that contain merge conflict strings.
-      - id: end-of-file-fixer # Makes sure files end in a newline and only a newline.
-      - id: file-contents-sorter
-        files: \.config/*.txt$ # Sort all lines in any .config/*.txt file (like cspell.txt f.i.)
-        args: [--ignore-case]
-      - id: no-commit-to-branch
-        args: [--branch, main] # Don't allow to push directly on the main branch
-      - id: requirements-txt-fixer # Sorts entries in requirements.txt
-      - id: trailing-whitespace # Trims trailing whitespace.
-  - repo: https://github.com/psf/black
-    rev: 24.10.0
-    hooks:
-      - id: black # Python black formatter
-  - repo: local
-    hooks:
-      - id: isort # isort (should be installed using `pip install isort` or mentioned in the `requirements.txt` file)
-        name: isort
-        entry: isort
-        language: system
-        types: [python]
-        require_serial: true
-        args: ["--line-length 120"]
-      - id: mypy # Mypy (should be installed using `pip install mypy` or mentioned in the `requirements.txt` file)
-        name: mypy
-        entry: mypy
-        language: system
-        types: [python]
-        require_serial: true
-        args: ["--config-file=.config/mypy.ini"]
-      - id: pylint # Pylint (should be installed using `pip install pylint` or mentioned in the `requirements.txt` file)
-        name: pylint
-        entry: pylint
-        language: system
-        types: [python]
-        require_serial: true
-        args: ["--rcfile=.config/.pylintrc"]
-```
-
-</Snippet>
+<Snippet filename=".pre-commit-config.yaml" source="./files/.pre-commit-config.yaml.part4" />
 
 #### A few more  hooks
 

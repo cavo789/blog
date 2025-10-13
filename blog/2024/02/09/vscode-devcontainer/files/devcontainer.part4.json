@@ -1,0 +1,13 @@
+{
+    // ...
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // ...
+                // highlight-next-line
+                "sonarsource.sonarlint-vscode",
+                // ...
+            ]
+        }
+    }
+}

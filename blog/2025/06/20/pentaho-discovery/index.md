@@ -51,13 +51,7 @@ To finalize the installation, you also need to update the `PATH` Linux variable.
 
 Please run `code ~/.bashrc` (or `code ~/.zshrc` if you're using Oh-my-ZSH); search in the file if you already have a line with `PATH=`. If yes, please update and add `$HOME/tools/pentaho/data-integration` to it. If not, please go to the end of the file and add this line:
 
-<Snippet filename="~/.bashrc">
-
-```bash
-PATH="$HOME/tools/pentaho/data-integration:$PATH"
-```
-
-</Snippet>
+<Snippet filename="~/.bashrc" source="./files/.bashrc" />
 
 Save and quit.
 
@@ -96,64 +90,11 @@ Copy the table here below into Excel and save the new files as `people.xlsx` (ot
 
 For this, we'll use Docker. Please create a file called `compose.yaml` in your `/tmp/pentaho` folder with this content:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: pentaho
-
-services:
-  postgres:
-    image: postgres:9-alpine
-    hostname: postgresql
-    environment:
-      - DATABASE_HOST=postgresql
-      - POSTGRES_DB=people
-      - POSTGRES_HOST_AUTH_METHOD=trust
-      - POSTGRES_PASSWORD=admin
-      - POSTGRES_USER=admin
-    ports:
-      - "5432:5432"
-    expose:
-      - "5432"
-    networks:
-      - pentaho
-
-  pgadmin:
-    image: dpage/pgadmin4:6.12
-    hostname: pgadmin
-    ports:
-      - "8080:80"
-    depends_on:
-      - postgres
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@yopmail.com
-      - PGADMIN_DEFAULT_PASSWORD=admin
-    networks:
-      - pentaho
-
-networks:
-  pentaho:
-    external: false
-
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 ### And for our easiness, let's create a makefile
 
-<Snippet filename="makefile">
-
-```makefile
-.PHONY: start
-start:
-	SWT_GTK3=1 SKIP_WEBKITGTK_CHECK=1 KETTLE_HOME=${PWD} spoon.sh
-
-.PHONY: up
-up:
-	docker compose up
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile" />
 
 ### Let's run our Docker container
 

@@ -1,0 +1,3 @@
+phplint:
+	-php --lint index.php
+	echo "Yes, this script will continue..."

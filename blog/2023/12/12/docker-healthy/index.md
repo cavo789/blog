@@ -18,37 +18,7 @@ In this article, we'll look at how to create a bash script that can be used as a
 
 Please create somewhere on your disk, in a Linux console, a script f.i. called `health.sh` with this content:
 
-<Snippet filename="health.sh">
-
-```bash
-#!/usr/bin/env bash
-
-GRAY=30
-GREEN=32
-RED=31
-
-clear
-
-printf "\e[1;33m%s\e[0m\n\n" "Docker containers - Health check"
-
-docker container list --all --format "{{.Names}}" | while read -r name; do
-    healthcheckStatus=$(docker inspect --format='{{json .State.Health}}' $name | jq -r '.Status')
-
-    # Default color
-    COLOR=${GRAY}
-
-    if [[ "$healthcheckStatus" == "healthy" ]]; then
-        COLOR=${GREEN}
-        healthcheckStatus="${healthcheckStatus}"
-    elif [[ ! "$healthcheckStatus" == "null" ]]; then
-        COLOR=${RED}
-    fi
-
-    printf "%-40s\e[1;${COLOR}m%s\e[0m\n" "$name" "$healthcheckStatus"
-done
-```
-
-</Snippet>
+<Snippet filename="health.sh" source="./files/health.sh" />
 
 <AlertBox variant="info" title="Get the list of all containers">
 `docker container list --all --format "{{.Names}}"` return the list of all containers and only echo the column `Name` on the console.

@@ -1,0 +1,1 @@
+echo $(or ${DOCKER_APP_HOME},/var/www/html)

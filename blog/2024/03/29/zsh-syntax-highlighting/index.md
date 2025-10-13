@@ -30,17 +30,7 @@ $ {`git clone https://github.com/zsh-users/zsh-syntax-highlighting \${ZSH_CUSTOM
 
 Then edit the `~/.zshrc` file, search for `plugins=(` and add `zsh-autosuggestions` to the list. You'll have f.i. something like:
 
-<Snippet filename="~/.zshrc">
-
-```bash
-plugins=(
-  git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
-```
-
-</Snippet>
+<Snippet filename="~/.zshrc" source="./files/.zshrc" />
 
 Close your console, open a new one and it's done.
 

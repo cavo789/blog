@@ -1,0 +1,22 @@
+FROM base AS building_production
+
+# Install the latest version of Docusaurus
+RUN npx create-docusaurus@latest /opt/docusaurus/ classic --javascript \
+  # Uncomment the line below to remove dummy files like dummy blog, docs, src ...
+  # && rm -rf /opt/docusaurus/blog /opt/docusaurus/docs /opt/docusaurus/src \
+  && chown -R node:node /opt/docusaurus/
+
+# Set the working directory to `/opt/docusaurus`.
+WORKDIR /opt/docusaurus
+
+# We need our package.json / package.lock file before running yarn install
+COPY package.* .
+
+# Install dependencies with `--immutable` to ensure reproducibility.
+RUN yarn install --immutable
+
+# Copy over the source code.
+COPY . /opt/docusaurus/
+
+# Build the static site (generated files will be created in /opt/docusaurus/build)
+RUN yarn build

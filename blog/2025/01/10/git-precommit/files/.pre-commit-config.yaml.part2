@@ -1,0 +1,6 @@
+- repo: local
+  hooks:
+  - id: prospector
+    name: prospector
+    entry: prospector
+    language: system

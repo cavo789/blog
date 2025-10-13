@@ -1,0 +1,9 @@
+blacklist_from *.hr
+blacklist_from *.rest
+blacklist_from *.ru
+blacklist_from *.su
+
+blacklist_from *@hair.com
+
+whitelist_from *@avonture.be
+whitelist_from *@my-own-company.com

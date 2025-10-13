@@ -134,58 +134,7 @@ So, please remove any files/folders under `src/theme/BlogPostItem` except the `i
 
 In the code below, the highlighted lines are the ones we need to add.
 
-<Snippet filename="src/theme/BlogPostItem/index.js">
-
-```js
-import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
-import BlogPostItemContainer from "@theme/BlogPostItem/Container";
-import BlogPostItemContent from "@theme/BlogPostItem/Content";
-import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
-import BlogPostItemHeader from "@theme/BlogPostItem/Header";
-import clsx from "clsx";
-
-// highlight-next-line
-import SeriesPosts from "@site/src/components/Blog/SeriesPosts/index.js";
-
-// apply a bottom margin in list view
-function useContainerClassName() {
-  const { isBlogPostPage } = useBlogPost();
-  return !isBlogPostPage ? "margin-bottom--xl" : undefined;
-}
-export default function BlogPostItem({ children, className }) {
-  // We need to retrieve the isBlogPostPage flag
-  const { metadata, isBlogPostPage } = useBlogPost();
-  const containerClassName = useContainerClassName();
-  return (
-    <BlogPostItemContainer className={clsx(containerClassName, className)}>
-      <BlogPostItemHeader />
-      // highlight-start
-      {isBlogPostPage && (
-        <SeriesPosts
-          series={metadata.frontMatter.series}
-          excludePermalink={metadata.permalink}
-          highlightCurrent={true}
-        />
-      )}
-      // highlight-end
-      <BlogPostItemContent>{children}</BlogPostItemContent>
-      <BlogPostItemFooter />
-      // highlight-start
-      {isBlogPostPage && (
-        <SeriesPosts
-          series={metadata.frontMatter.series}
-          excludePermalink={metadata.permalink}
-          highlightCurrent={true}
-        />
-      )}
-      // highlight-end
-    </BlogPostItemContainer>
-  );
-}
-
-```
-
-</Snippet>
+<Snippet filename="src/theme/BlogPostItem/index.js" source="./files/index.js" />
 
 <AlertBox variant="caution" title="We need to restart Docusaurus">
 Now, because we've just introduced an override, we need to restart our Docusaurus server so changes can be taken into account.
@@ -294,31 +243,7 @@ Great no?
 
 Edit your `docusaurus.config.js` file and in the `navbar` -> `items` section, please add a link to `/series`:
 
-<Snippet filename="docusaurus.config.js">
-
-```js
-
-// [...]
-const config = {
-  themeConfig:
-    ({
-      navbar: {
-        items: [
-          // [...]
-          {
-            href: "/series",
-            label: "My series",
-          },
-          // [...]
-        ],
-      },
-    }),
-};
-
-export default config;
-```
-
-</Snippet>
+<Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.js" />
 
 ![My series](./images/my-series.png)
 
@@ -342,34 +267,7 @@ As you can see in the plugin source code, we need a new component: `src/componen
 
 And we need to load this plugin so we'll need to update the `docusaurus.config.js` file again:
 
-<Snippet filename="docusaurus.config.js">
-
-```js
-// [...]
-import pluginSeriesRoute from "./plugins/docusaurus-plugin-series-route/index.cjs"
-
-const config = {
-  // [...]
-
-  // WE SHOULD IGNORE BROKEN LINKS because Docusaurus’s link checker doesn't
-  // recognize dynamic routes created via plugins; and we're using at least one
-  // i.e. "plugins/docusaurus-plugin-series-route/index.cjs".
-  // If we don't ignore broken links, Docusaurus will always throw an error during build
-  // time.
-  onBrokenLinks: "ignore",
-  // [...]
-  plugins: [
-    // [...]
-    [pluginSeriesRoute, {}],
-  ],
-  // [...]
-};
-
-export default config;
-
-```
-
-</Snippet>
+<Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.part2.js" />
 
 <AlertBox variant="danger" title="">
 The `onBrokenLinks` property has to be set to `ignore` because Docusaurus didn't load routers plugins while he's rendering the static version of the site. So he'll not understand any `/series/xxx` URLs and think they're broken.

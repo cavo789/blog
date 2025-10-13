@@ -1,0 +1,6 @@
+[user]
+    email = me@work.be
+    name = Christophe Avonture
+
+[includeIf "gitdir:~/private_repositories/"]
+    email = me@private.be

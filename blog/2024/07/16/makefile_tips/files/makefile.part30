@@ -1,0 +1,5 @@
+ifeq ($(APP_ENV), production)
+	CMD:=
+else
+	CMD:=docker compose exec my_docker_image
+endif

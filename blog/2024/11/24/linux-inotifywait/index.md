@@ -34,24 +34,7 @@ I need a Python environment so let's quickly create it thanks to Docker.
 
 Please create a file called `Dockerfile` with this content:
 
-<Snippet filename="Dockerfile">
-
-```docker
-# syntax=docker/dockerfile:1
-
-FROM python:3.10-slim AS base
-
-# The /app/out folder where we'll create files
-RUN mkdir -p /app/out
-
-# The /app/src where we'll put our Python script
-WORKDIR "/app/src"
-
-# Keep the container running
-ENTRYPOINT ["tail", "-f", "/dev/null"]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 Create the image by running `docker build --tag inotify .`.
 
@@ -63,84 +46,14 @@ This will create a Docker container that will remain running. We'll share our sc
 
 We need a very small Python script to generate our files:
 
-<Snippet filename="src/script.py">
-
-```python
-import os
-import signal
-import tempfile
-import time
-
-from pathlib import Path
-
-def signal_handler(sig, frame):
-    print('Stop')
-    exit(0)
-
-signal.signal(signal.SIGINT, signal_handler)
-
-# We'll put files in our application out folder
-folder : Path = Path("/app/out/")
-
-folder.mkdir(parents=True, exist_ok=True)
-
-counter : int = 0
-
-while True:
-    file : Path = folder.joinpath(os.path.basename(tempfile.mktemp()))
-    print(file.absolute())
-
-    with open(file, 'w') as f:
-        pass
-
-    counter += 1
-
-    print(f"{counter} files have been created.")
-
-    time.sleep(1)
-```
-
-</Snippet>
+<Snippet filename="src/script.py" source="./files/script.py" />
 
 ## Creating the monitory.sh script
 
 Please create a script called `monitor.sh` with this content:
 
 
-<Snippet filename="monitory.sh">
-
-```bash
-#!/bin/bash
-
-# cspell:ignore inotifywait,inotify
-
-count=0
-
-# Folder to monitor
-folder="$1"
-
-# Monitor the directory for changes
-# -r - Recursively monitors subdirectories
-# -m - Monitor file modifications
-
-# shellcheck disable=SC2034
-inotifywait -m ${folder} | while read -r line; do
-    #shellcheck disable=SC2012
-    if (( count != $(ls "${folder}" | wc -l) )); then
-
-        count=$(ls "${folder}" | wc -l)
-
-        # Clear the terminal screen
-        clear
-
-        # Count the files and display the updated count
-        echo "Number of files in ${folder}: ${count}"
-    fi
-done
-
-```
-
-</Snippet>
+<Snippet filename="monitory.sh" source="./files/monitory.sh" />
 
 Make the script executable: `chmod +x ./monitor.sh` and make sure to install **inotify** by running `sudo apt-get update && sudo apt-get install -y --no-install-recommends inotify-tools`.
 

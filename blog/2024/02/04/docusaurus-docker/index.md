@@ -28,26 +28,7 @@ This done, start your preferred editor and open the folder. On my side, I'm usin
 
 In your project directory (so `/tmp/docusaurus`), create a file called `Dockerfile` with this content:
 
-<Snippet filename="/tmp/docusaurus/Dockerfile">
-
-```docker
-FROM node:21-alpine
-
-RUN npx create-docusaurus@latest /app classic --javascript && \
-    chown -R node:node /app
-
-USER node
-
-WORKDIR /app
-
-RUN cd /app && yarn install
-
-COPY . .
-
-CMD ["yarn", "start", "--host", "0.0.0.0"]
-```
-
-</Snippet>
+<Snippet filename="/tmp/docusaurus/Dockerfile" source="./files/Dockerfile" />
 
 #### Dockerfile - explanations line by line
 
@@ -69,50 +50,13 @@ But, also, we don't need to copy folders like `blog`, `pages`, `static`, ... sin
 
 So, please create a `.dockerignore` file with this content:
 
-<Snippet filename=".dockerignore">
-
-```ignore
-build/
-node_modules/
-
-.dockerignore
-.gitignore
-.markdownlint_ignore
-.markdownlint.json
-*.log
-compose.yaml
-Dockerfile
-LICENSE
-makefile
-README.md
-
-blog/
-pages/
-static/
-```
-
-</Snippet>
+<Snippet filename=".dockerignore" source="./files/.dockerignore" />
 
 ### Create a compose.yaml file
 
 The third file to create is `compose.yaml` with this content:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: my_docusaurus_blog
-
-services:
-  blog:
-    build: .
-    ports:
-      - 3000:3000
-    user: 1000:1000
-    volumes:
-      - ./blog:/app/blog
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 As you can see, we need to have a folder called `blog` on our machine and we'll synchronize that folder inside the Docker container. Our `blog` folder will be *mounted* in folder `/app/blog` in the container.
 

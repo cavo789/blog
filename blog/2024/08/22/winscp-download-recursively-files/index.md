@@ -24,29 +24,7 @@ As an example, we'll thus download any `.php` files from a host.
 
 The script is pretty straightforward, if you can believe it:
 
-<Snippet filename="C:\temp\download.txt">
-
-```batch
-option batch abort
-
-option confirm off
-
-lcd "c:\temp"
-
-open ftp://USERNAME:PASSWORD@HOST_OR_IP/
-
-cd /public_html
-
-option transfer ascii
-
-get -filemask:*.php *
-
-close
-
-exit
-```
-
-</Snippet>
+<Snippet filename="C:\temp\download.txt" source="./files/C:\temp\download.txt" />
 
 ## How to use
 

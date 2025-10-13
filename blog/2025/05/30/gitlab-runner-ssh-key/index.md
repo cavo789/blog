@@ -80,31 +80,7 @@ For an ubuntu image like the example below, it'll be `apt`. If, f.i. you're usin
 
 </AlertBox>
 
-<Snippet filename=".gitlab-ci.yml">
-
-```yaml
-using_ssh_key:
-  image: ubuntu
-  before_script:
-    - |
-      apt-get update -y && apt-get install openssh-client git -y
-      eval $(ssh-agent -s)
-      mkdir -p ~/.ssh && chmod 700 ~/.ssh
-    - |
-      echo "$SSH_PRIVATE_KEY" | base64 -d > ~/.ssh/id_ed25519
-      cat ~/.ssh/id_ed25519
-      chmod 400 ~/.ssh/id_ed25519
-    - |
-      ssh-keyscan my_self_hosted_gitlab >> ~/.ssh/known_hosts
-      chmod 644 ~/.ssh/known_hosts
-  script:
-    - | # try to connect to my GitLab server
-      ssh -T git@my_self_hosted_gitlab
-    # - | # try to clone a private repo
-    #   git clone git@my_self_hosted_gitlab:my_repo.git
-```
-
-</Snippet>
+<Snippet filename=".gitlab-ci.yml" source="./files/.gitlab-ci.yml" />
 
 <AlertBox variant="note" title="">
 If the CI fails with an error like *load pubkey "id_ed25519": invalid format* or *error in libcrypto*, one cause can be the key used: the variable `SSH_PRIVATE_KEY` should be initialized with the private key; not the public one.

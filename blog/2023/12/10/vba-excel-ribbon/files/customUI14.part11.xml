@@ -1,0 +1,6 @@
+<button
+    id="customButton"
+    label="Button"
+    imageMso="AddFolderToFavorites"
+    size="large"
+    onAction="OnButtonClicked" />

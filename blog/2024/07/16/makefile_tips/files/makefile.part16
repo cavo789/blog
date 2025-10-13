@@ -1,0 +1,4 @@
+default: hello
+
+hello:
+	@echo "Hello World"

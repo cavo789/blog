@@ -25,37 +25,7 @@ There is an alternative, the `erase.php` script.
 
 Open your FTP client, open your website folder (like `/var/www/html/old_site`); the one you wish to remove and create a new file called f.i. `erase.php` then copy/paste the code below in it.
 
-<Snippet filename="erase.php">
-
-```php
-<?php
-
-$script_name = basename(__FILE__);
-$directory = dirname(__FILE__);
-
-echo '<h1>Deleting all files and subfolders in '.$directory.'</h1>';
-
-$it = new RecursiveDirectoryIterator($directory);
-
-foreach (new RecursiveIteratorIterator($it, RecursiveIteratorIterator::CHILD_FIRST) as $file) {
-  if ( ($file->isDir()) && (!in_array($file->getFilename(), array('.', '..'))) ){
-    echo '<h3>Deleting folder '.$file->getPathname().'</h3>';
-    rmdir($file->getPathname());
-  } else {
-    if ( ($file->isFile()) && ($file->getPathname()!=__FILE__) ) {
-      echo '<p>Deleting file '.$file->getPathname().'</p>';
-      unlink ($file->getPathname());
-    }
-  }
-}
-
-echo '<h4 style="color:green;">Deletion complete.  Only the '.$script_name.' file remains in the folder.</h4>';
-
-unlink(__FILE__);
-?>
-```
-
-</Snippet>
+<Snippet filename="erase.php" source="./files/erase.php" />
 
 Start your browser, navigate to your website (`http://your_old_site.com`) and add `/erase.php` at the end to run the script.
 

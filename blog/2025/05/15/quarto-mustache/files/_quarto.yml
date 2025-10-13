@@ -1,0 +1,19 @@
+project:
+  type: website
+  output-dir: .
+
+lang: en
+
+website:
+  title: "Playing with Quarto partials"
+  page-navigation: true
+  bread-crumbs: true
+  sidebar:
+    style: "docked"
+    toc-depth: 4
+    contents: auto
+
+<!-- highlight-next-line -->
+filters:
+  <!-- highlight-next-line -->
+  - partials

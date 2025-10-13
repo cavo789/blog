@@ -89,24 +89,7 @@ Start to type `Configure User Snippets`, validate and select `markdown.json` sin
 
 If this is your first snippet, the JSON file will be empty. Copy/paste the text below. Otherwise, just copy the `callout` node and paste it in your file to the correct location.
 
-<Snippet filename="markdown.json">
-
-```json
-{
-    "callout": {
-        "prefix": "quarto-callout",
-        "body": [
-            ":::{.callout-${1|note,tip,warning,caution,important|}}",
-            "## ${2:title}",
-            "${3:body}",
-            ":::"
-        ],
-        "description": "Add a callout paragraph to your markdown file"
-    },
-}
-```
-
-</Snippet>
+<Snippet filename="markdown.json" source="./files/markdown.json" />
 
 Save and close the `markdown.json` file and go back to any markdown file (or create a new one).
 

@@ -1,0 +1,7 @@
+{
+    "better-pest.docker.enable": true,
+    "better-pest.docker.command": "docker compose exec -u root:root app",
+    "better-pest.docker.paths": {
+        "/your/local/path": "/your/remote/path"
+    }
+}

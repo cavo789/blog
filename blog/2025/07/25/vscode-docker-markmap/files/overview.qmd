@@ -1,0 +1,26 @@
+# 📚 Project Overview
+
+## 🚀 Goals
+
+- ✅ **Launch MVP**
+- 🌱 Collect ==user feedback==
+- 📈 Iterate every 2 weeks
+
+## 🧰 Tech Stack
+
+- `Next.js` + `Tailwind`
+- 🧠 AI via OpenAI
+
+- 🐘 PostgreSQL DB
+
+## 🔁 Feedback Loop
+
+- 📞 Customer interviews
+- 📝 Surveys
+- 📊 Usage metrics
+
+## 📅 Timeline
+
+- Q1 → Prototyping
+- Q2 → MVP 🚢
+- Q3 → Growth 📈

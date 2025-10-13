@@ -1,0 +1,11 @@
+# cspell:ignore oracledb
+
+FROM python:slim
+
+WORKDIR /app
+
+RUN pip install --no-cache-dir oracledb
+
+COPY main.py main.py
+
+CMD ["python", "main.py"]

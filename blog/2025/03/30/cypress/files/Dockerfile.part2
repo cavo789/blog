@@ -1,0 +1,38 @@
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+ARG USER_NAME="johndoe"
+
+FROM cypress/included:14.2.0
+
+# Where we'll put our files in the image
+WORKDIR /app
+
+# We'll create our specific user
+ARG USER_ID
+ARG GROUP_ID
+ARG USER_NAME
+
+# Our user will be member of the standard node group too
+RUN groupadd -g ${GROUP_ID} "${USER_NAME}" && \
+    useradd -u ${USER_ID} -g "${USER_NAME}" -g node -m "${USER_NAME}"
+
+# Change the ownership of our /app folder
+RUN chown -R "${USER_NAME}":"${USER_NAME}" /app
+
+USER "${USER_NAME}"
+
+# Copy the package.json file to the Docker image
+COPY --chown="${USER_NAME}":"${USER_NAME}" package*.json ./
+
+# And run npm install i.e. install Cypress
+RUN npm install
+
+# Copy files into our image
+COPY --chown="${USER_NAME}":"${USER_NAME}" cypress/ ./cypress/
+COPY --chown="${USER_NAME}":"${USER_NAME}" cypress.config.js ./
+
+# Check Cypress installation
+RUN npx cypress verify
+
+# And run Cypress and specify we'll use Chrome
+CMD ["npx", "cypress", "run", "--browser", "chrome"]

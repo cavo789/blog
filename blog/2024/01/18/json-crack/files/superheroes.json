@@ -1,0 +1,13 @@
+{
+  "superhero": "Spider-Man",
+  "realName": "Peter Parker",
+  "abilities": [
+    "Wall-Crawling",
+    "Spider-Sense",
+    "Super Strength"
+  ],
+  "equipment": {
+    "webShooters": "True",
+    "spiderTracers": "True"
+  }
+}

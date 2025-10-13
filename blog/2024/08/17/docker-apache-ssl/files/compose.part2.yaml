@@ -1,0 +1,10 @@
+services:
+  apache:
+    build:
+      context: .
+    ports:
+      - "80:80"
+     # highlight-next-line
+      - "443:443"
+    volumes:
+      - ./src:/usr/local/apache2/htdocs

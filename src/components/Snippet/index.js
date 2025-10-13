@@ -48,7 +48,7 @@ const mapLangToVariant = {
   bat: "batch",
   batch: "batch",
   cjs: "js",
-  cmd: "cmd",
+  cmd: "batch",
   css: "css",
   csv: "csv",
   diff: "diff",

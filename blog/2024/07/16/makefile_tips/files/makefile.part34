@@ -1,0 +1,1 @@
+DOCKER_PHPQA:=jakzal/phpqa:php${PHP_VERSION}-alpine

@@ -1,0 +1,4 @@
+services:
+  my_second_container:
+    build:
+      context: .

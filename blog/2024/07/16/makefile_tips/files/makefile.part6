@@ -1,0 +1,9 @@
+php-cs-fixer: vendor update-them
+	@echo "And finally run php-cs-fixer"
+    vendor/bin/php-cs-fixer
+
+vendor:
+	@echo "First get vendors"
+
+update-them:
+	@echo "Then update vendors"

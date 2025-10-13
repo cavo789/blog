@@ -38,25 +38,7 @@ So, please run `mkdir -p  ~/tools/memos && cd $_` to create a folder in your hom
 
 Then, please create a file called `compose.yaml` with this content:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: tools
-
-services:
-  memos:
-    image: neosmemo/memos:stable
-    container_name: memos
-    init: true
-    user: ${UID:-1000}:${GID:-1000}
-    ports:
-      - "5230:5230"
-    volumes:
-      - ./data:/var/opt/memos
-    restart: unless-stopped
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 <AlertBox variant="note" title="">
 The line `user: ${UID:-1000}:${GID:-1000}` will ask Docker to use a specific user (not the `root` one) while creating files on your disk.

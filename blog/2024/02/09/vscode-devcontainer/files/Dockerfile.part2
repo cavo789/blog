@@ -1,0 +1,36 @@
+# highlight-next-line
+ARG PHP_VERSION=8.2
+
+# ...
+
+# highlight-next-line
+ARG PHPCSFIXER_INSTALL=true
+# highlight-next-line
+ARG PHPCSFIXER_VERSION=3.46.0
+
+# ...
+
+# highlight-next-line
+FROM php:${PHP_VERSION}-fpm
+
+# ...
+
+# highlight-next-line
+ARG PHPCSFIXER_INSTALL
+# highlight-next-line
+ARG PHPCSFIXER_VERSION
+
+# highlight-next-line
+RUN set -e -x \
+    # highlight-next-line
+    && if [ "$PHPCSFIXER_INSTALL" = "true" ] ; then \
+    # highlight-next-line
+    printf "\e[0;105m%s\e[0;0m\n" "Install php-cs-fixer.phar ${PHPCSFIXER_VERSION}" \
+    # highlight-next-line
+    && curl -L https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v${PHPCSFIXER_VERSION}/php-cs-fixer.phar -o /usr/local/bin/php-cs-fixer.phar \
+    # highlight-next-line
+    && chmod +x /usr/local/bin/php-cs-fixer.phar ; \
+    # highlight-next-line
+    fi
+
+# ...

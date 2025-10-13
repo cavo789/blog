@@ -69,78 +69,11 @@ Create a new folder called `assets` and, in that folder, a file called `style.cs
 
 In `assets/style.css`, copy/paste the following code:
 
-<Snippet filename="assets/style.css">
-
-```css
-.reveal .slide-logo-bottom-right {
-    bottom: 0 !important;
-    left: unset !important;
-    height: 100% !important;
-    max-height: 2.2rem !important;
-    right: 12px !important;
-}
-
-.slide-logo-max-size {
-    bottom: unset !important;
-    left: 12px;
-    height: 100px !important;
-    max-height: unset !important;
-    right: unset !important;
-    top: 5px;
-}
-
-.reveal .slide-logo {
-    display: block;
-    max-width: unset !important;
-    position: fixed;
-    width: 100x !important;
-}
-```
-
-</Snippet>
+<Snippet filename="assets/style.css" source="./files/style.css" />
 
 In `assets/custom.js`, copy/paste the following code:
 
-<Snippet filename="assets/custom.js">
-
-```js
-// The script below will ensure the logo is displayed top left
-// in his full size (probably on the first slide; title-slide)
-// then as soon as a different slide is displayed, the logo will
-// be displayed bottom right with a smaller size.
-
-function updateLogoSizePosition(event) {
-    if (event.currentSlide.matches('#title-slide')) {
-    var elements = document.querySelectorAll(".slide-logo");
-    [].forEach.call(elements, function(elem) {
-        elem.classList.remove("slide-logo-bottom-right");
-        elem.classList.add("slide-logo-max-size");
-    });
-    } else {
-    var elements = document.querySelectorAll(".slide-logo");
-    [].forEach.call(elements, function(elem) {
-        elem.classList.add("slide-logo-bottom-right");
-        elem.classList.remove("slide-logo-max-size");
-    });
-    }
-};
-
-window.addEventListener("load", (event) => {
-    // Make sure the logo has his full size when the slideshow
-    // is loaded (i.e. apply the slide-logo-max-size css class)
-    var elements = document.querySelectorAll(".slide-logo");
-    [].forEach.call(elements, function(elem) {
-    elem.classList.remove("slide-logo-bottom-right");
-    elem.classList.add("slide-logo-max-size");
-    });
-
-    Reveal.on("slidechanged", function(event) {
-    updateLogoSizePosition(event);
-    });
-});
-```
-
-</Snippet>
+<Snippet filename="assets/custom.js" source="./files/custom.js" />
 
 Now, use them in your `slides.md` like this:
 
@@ -466,22 +399,7 @@ I like to be able to write `==Important text==` and, for a revealjs presentation
 
 First, create a `assets/custom.js` if not yet present and copy/paste the following code:
 
-<Snippet filename="assets/custom.js">
-
-```js
-window.addEventListener("load", (event) => {
-    // This function will search for short code like "==IpsoLorem=="
-    // i.e. a portion of text between two equal sign and will replace it
-    // to "<mark>IpsoLorem</mark>" so we can then use CSS to highlight
-    // that portion.
-    Reveal.on("slidechanged", function (event) {
-        var re = /==([^=]*)==/;
-        event.currentSlide.innerHTML = event.currentSlide.innerHTML.replace(new RegExp(re, "g"), "<mark>$1</mark>");
-    } );
-});
-```
-
-</Snippet>
+<Snippet filename="assets/custom.js" source="./files/custom.part2.js" />
 
 In your YAML front matter, add this:
 
@@ -546,16 +464,7 @@ format:
 
 Now, create the `custom.css` file in the same folder as your markdown one and, for instance, set the slide background to yellow:
 
-<Snippet filename="custom.css">
-
-```css
-/*-- scss:defaults --*/
-.reveal {
-    background-color: rgb(224, 226, 98);
-}
-```
-
-</Snippet>
+<Snippet filename="custom.css" source="./files/custom.css" />
 
 ![Custom css](./images/custom-css.webp)
 
@@ -563,15 +472,7 @@ Now, create the `custom.css` file in the same folder as your markdown one and, f
 
 By default, revealjs will display the caption of the image below it. You can hide it by using this stylesheet:
 
-<Snippet filename="custom.css">
-
-```css
-.reveal p.caption {
-  display: none;
-}
-```
-
-</Snippet>
+<Snippet filename="custom.css" source="./files/custom.part2.css" />
 
 ### Callout can be stylized
 
@@ -596,15 +497,7 @@ In revealjs, personally, I find that the rendering takes up too much space compa
 
 ![Callout title](./images/callout-title.webp)
 
-<Snippet filename="custom.css">
-
-```css
-.reveal .callout-title {
-    display: none;
-}
-```
-
-</Snippet>
+<Snippet filename="custom.css" source="./files/custom.part3.css" />
 
 ## Navigation
 

@@ -65,31 +65,7 @@ We'll need to files; `compose.yaml` and `Dockerfile`.
 
 Here is my `compose.yaml` content:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      // highlight-next-line
-      secrets:
-        // highlight-next-line
-        - my_ssh_key
-      args:
-        // highlight-next-line
-        - KEY_NAME=id_ed25519
-
-// highlight-next-line
-secrets:
-  // highlight-next-line
-  my_ssh_key:
-    // highlight-next-line
-    file: ${HOME}/.ssh/id_ed25519
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 As you can see, we've five specific lines.
 
@@ -99,15 +75,7 @@ I've also added an argument called `KEY_NAME` just because I need to inform Dock
 
 Secrets have to be defined at the same indentation level of `services` and the notation is this one:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-secrets:
-  a_secret_name:
-    file: existing_file
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 
 You can use what you want for `a_secret_name`; for instance, `my_ssh_key`.
 
@@ -122,36 +90,7 @@ You can, if you want, run `docker compose config` to check if your file is corre
 
 Time to create our second file, `Dockerfile`:
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM alpine:3.19
-
-ARG KEY_NAME="id_rsa"
-
-USER root
-
-RUN apk add --no-cache bash ca-certificates git openssh-client
-
-// highlight-next-line
-RUN mkdir -p -m 0700 /root/.ssh && ssh-keyscan "github.com" >> /root/.ssh/known_hosts
-
-// highlight-next-line
-RUN --mount=type=secret,id=my_ssh_key,dst=/root/.ssh/${KEY_NAME} \
-    // highlight-next-line
-    mkdir -p /app && cd app \
-    // highlight-next-line
-    && ssh -T git@github.com || true \
-    // highlight-next-line
-    && git clone git@github.com:cavo789/my_private_repo.git
-
-WORKDIR /app
-
-# Keep the container running
-ENTRYPOINT ["tail", "-f", "/dev/null"]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 <AlertBox variant="caution" title="Think to replace cavo789/my_private_repo.git and refers one of your repositories" />
 
@@ -205,29 +144,7 @@ But now, if we need to share our key also with the container so we can work on t
 
 Please edit the `compose.yaml` file and add these two lines:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      secrets:
-        - my_ssh_key
-      args:
-        - KEY_NAME=id_ed25519
-    // highlight-next-line
-    volumes:
-      // highlight-next-line
-      - ${HOME}/.ssh:/root/.ssh
-
-secrets:
-  my_ssh_key:
-    file: ${HOME}/.ssh/id_ed25519
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part3.yaml" />
 
 Then recreate the container by running `docker compose up --detach`. Jump in the container by running `docker compose exec app /bin/bash` and go in your project folder. Now, by running `git pull`, as you'll see, it'll work.
 
@@ -249,35 +166,11 @@ In our example here, the default user is `root` as we can see by jumping in the 
 
 So, when we've started `git pull`, it was under `root`. This is why we've mounted our volume like below:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  app:
-    [...]
-    // highlight-next-line
-    volumes:
-      // highlight-next-line
-      - ${HOME}/.ssh:/root/.ssh
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part4.yaml" />
 
 Imagine the current user was `christophe`. In that case the mount should be done like this:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  app:
-    [...]
-    // highlight-next-line
-    volumes:
-      // highlight-next-line
-      - ${HOME}/.ssh:/christophe/.ssh
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.part5.yaml" />
 
 
 </AlertBox>

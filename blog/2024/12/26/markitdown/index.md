@@ -33,21 +33,7 @@ Let's create a new folder and jump in it: `mkdir -p /tmp/markitdown && cd $_`
 
 Then please create a new file called `Dockerfile`:
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM python:3.13-slim AS base
-
-RUN set -e -x \
-    && pip install markitdown \
-    && mkdir -p /in
-
-WORKDIR "/in"
-
-ENTRYPOINT [ "/bin/sh" ]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 As you can see that file is quite straightforward: we'll start from a Python image, install the utility and just create a folder called `in` where we'll put files we wish to convert.
 
@@ -127,16 +113,6 @@ The second `markitdown` you can see is the name of the utility to run.
 
 Take a look on the [documentation](https://github.com/microsoft/markitdown/tree/main?tab=readme-ov-file#markitdown), you can also call it like any Python library:
 
-<Snippet filename="test.py">
-
-```python
-from markitdown import MarkItDown
-
-md = MarkItDown()
-result = md.convert("test.xlsx")
-print(result.text_content)
-```
-
-</Snippet>
+<Snippet filename="test.py" source="./files/test.py" />
 
 It then can be easy to grab any files in a directory f.i. and convert them in Markdown. Using Python will allow you to do things like downloading files, calling APIs, ... and convert files to `.md`.

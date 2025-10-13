@@ -1,0 +1,17 @@
+build/
+node_modules/
+
+.dockerignore
+.gitignore
+.markdownlint_ignore
+.markdownlint.json
+*.log
+compose.yaml
+Dockerfile
+LICENSE
+makefile
+README.md
+
+blog/
+pages/
+static/

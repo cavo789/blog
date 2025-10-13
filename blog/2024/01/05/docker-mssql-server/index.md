@@ -74,37 +74,7 @@ To do this, click on the `New Query` button (or press <kbd>CTRL</kbd>-<kbd>N</kb
 
 ![Create the database](./images/create_database.png)
 
-<Snippet filename="create_db.sql">
-
-```sql
-USE [master]
-GO
-
-CREATE DATABASE [MyDB]
- CONTAINMENT = NONE
- ON  PRIMARY
-( NAME = N'MyDB', FILENAME = N'/var/opt/mssql/data/MyDB.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON
-( NAME = N'MyDB_log', FILENAME = N'/var/opt/mssql/data/MyDB_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
- WITH CATALOG_COLLATION = DATABASE_DEFAULT
-GO
-
-USE [MyDB]
-GO
-
-CREATE TABLE [dbo].[Person](
- [FirstName] [varchar](50) NULL,
- [LastName] [varchar](50) NULL
-) ON [PRIMARY]
-GO
-
-INSERT INTO dbo.Person (LastName, FirstName) VALUES
- ('Avonture', 'Christophe'),
- ('Doe', 'John');
-GO
-```
-
-</Snippet>
+<Snippet filename="create_db.sql" source="./files/create_db.sql" />
 
 Congratulations, you've created a `MyDB` database with a `dbo.Person` table:
 
@@ -121,38 +91,7 @@ If, after having fired the query, you don't see yet your database in the `Object
 
 As an example, we'll create a DOS PowerShell script called `connect.ps1` to illustrate how to query our new database:
 
-<Snippet filename="connect.ps1">
-
-```powershell
-$SqlServer = 'localhost,1433';
-$SqlDatabase = 'MyDB';
-
-$SqlConnectionString = 'Data Source={0};Initial Catalog={1};User Id=SA;Password=2Secure*Password2;' -f $SqlServer, $SqlDatabase;
-$SqlQuery = "SELECT FirstName, LastName FROM dbo.Person ORDER BY LastName;";
-
-$SqlConnection = New-Object -TypeName System.Data.SqlClient.SqlConnection -ArgumentList $SqlConnectionString;
-
-$SqlCommand = $SqlConnection.CreateCommand();
-$SqlCommand.CommandText = $SqlQuery;
-
-$SqlConnection.Open();
-$SqlDataReader = $SqlCommand.ExecuteReader();
-
-Write-Host "Here is the content of dbo.Person"
-Write-Host "---------------------------------"
-Write-Host ""
-
-while ($SqlDataReader.Read()) {
-    Write-Host $SqlDataReader['LastName'] $SqlDataReader['FirstName'];
-}
-
-$SqlConnection.Close();
-$SqlConnection.Dispose();
-
-Write-Host ""
-```
-
-</Snippet>
+<Snippet filename="connect.ps1" source="./files/connect.ps1" />
 
 Please start a DOS or a PowerShell console and run this command: `powershell -executionpolicy bypass -File .\connect.ps1`.
 

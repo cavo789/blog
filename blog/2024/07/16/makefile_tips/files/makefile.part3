@@ -1,0 +1,3 @@
+ifneq ("$(wildcard .env)","")
+	include .env
+endif

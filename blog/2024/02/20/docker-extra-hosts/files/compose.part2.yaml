@@ -1,0 +1,15 @@
+services:
+  my_second_container:
+    build:
+      context: .
+    //highlight-next-line
+    networks:
+      //highlight-next-line
+      - my_network
+
+//highlight-next-line
+networks:
+  //highlight-next-line
+  my_network:
+    //highlight-next-line
+    external: true

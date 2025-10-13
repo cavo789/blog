@@ -1,0 +1,14 @@
+services:
+  my_second_container:
+    build:
+      context: .
+    networks:
+      - my_network
+    //highlight-next-line
+    extra_hosts:
+      //highlight-next-line
+      - "my_site.local:172.20.0.1"
+
+networks:
+  my_network:
+    external: true

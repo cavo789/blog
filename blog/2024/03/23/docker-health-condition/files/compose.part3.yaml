@@ -1,0 +1,18 @@
+services:
+  joomla:
+    image: joomla
+    [...]
+    // highlight-next-line
+    depends_on:
+      // highlight-next-line
+      joomladb:
+        // highlight-next-line
+        condition: service_healthy
+
+  joomladb:
+    image: mysql:8.0.13
+    [...]
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10

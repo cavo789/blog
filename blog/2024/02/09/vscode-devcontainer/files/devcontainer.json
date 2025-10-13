@@ -1,0 +1,64 @@
+{
+    "name": "php_devcontainer",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "PHP_VERSION": "8.2",
+            "COMPOSER_VERSION": "2.5.5",
+            "PHPCSFIXER_INSTALL": "true",
+            "PHPCSFIXER_VERSION": "3.46.0",
+            "PHPCBF_INSTALL": "true",
+            "PHPCBF_VERSION": "3.7.2"
+        }
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/var/www/html,type=bind",
+    "workspaceFolder": "/var/www/html",
+    "remoteUser": "docker",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "[php]": {
+                    "editor.formatOnSave": true,
+                    "editor.defaultFormatter": "junstyle.php-cs-fixer"
+                },
+                "editor.codeActionsOnSave": {
+                    "source.fixAll": true
+                },
+                "editor.formatOnSave": true,
+                "editor.renderWhitespace": "all",
+                "files.autoSave": "onFocusChange",
+                "files.eol": "\n",
+                "files.insertFinalNewline": true,
+                "files.trimTrailingWhitespace": true,
+                "intelephense.environment.phpVersion": "8.2",
+                "intelephense.telemetry.enabled": false,
+                "php-cs-fixer.config": "/var/www/html/.config/.php-cs-fixer.php",
+                "php-cs-fixer.executablePath": "/usr/local/bin/php-cs-fixer.phar",
+                "php-cs-fixer.onsave": true,
+                "php-cs-fixer.rules": "@PSR12",
+                "php.validate.executablePath": "/usr/local/bin/php",
+                "phpsab.executablePathCBF": "/usr/local/bin/phpcbf.phar",
+                "phpsab.executablePathCS": "/usr/local/bin/phpcs.phar",
+                "phpsab.fixerEnable": true,
+                "phpsab.snifferShowSources": true,
+                "phpsab.standard": "/var/www/html/.config/phpcs.xml",
+                "telemetry.telemetryLevel": "off",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash",
+                        "icon": "terminal-bash"
+                    }
+                },
+                "terminal.integrated.defaultProfile.linux": "bash"
+            },
+            "extensions": [
+                "bmewburn.vscode-intelephense-client",
+                "junstyle.php-cs-fixer",
+                "ms-azuretools.vscode-docker",
+                "ValeryanM.vscode-phpsab",
+                "zobo.php-intellisense"
+            ]
+        }
+    },
+    "postCreateCommand": "composer require rector/rector --dev"
+}

@@ -38,21 +38,7 @@ So, `_quarto.yml` can stay empty. His presence is just to tell to Quarto the mar
 
 Here is an example of what can be a `_variables.yml` content:
 
-<Snippet filename="_variables.yml">
-
-```yaml
-version: 1.2
-
-email:
-  info: info@example.com
-  support: support@example.com
-
-engine:
-  jupyter: "[Jupyter](https://jupyter.org)"
-  knitr: "[Knitr](<https://yihui.name/knitr>)"
-```
-
-</Snippet>
+<Snippet filename="_variables.yml" source="./files/_variables.yml" />
 
 And here is a markdown example (file `documentation.md`):
 
@@ -91,14 +77,7 @@ You can too retrieve environment variables using `{{< env xxx >}}` but, there, y
 
 For instance, you can have a `.env` file like this:
 
-<Snippet filename=".env">
-
-```ini
-APPLICATION_NAME=My application name
-VERSION_NUMBER=1.2
-```
-
-</Snippet>
+<Snippet filename=".env" source="./files/.env" />
 
 Then, before calling the Quarto rendering process, you should load the file. Since I'm using Docker, I do this like this:
 
@@ -117,6 +96,7 @@ title: Testing of variables and env short codes.
 
 :::{.callout-tip}
 ## Environment variables
+
 {{< env APPLICATION_NAME >}} v.{{< env VERSION_NUMBER >}}
 :::
 
@@ -128,6 +108,7 @@ Please contact us at {{< var email.info >}}.
 
 Quarto includes {{< var engine.jupyter >}} and
 {{< var engine.knitr >}} computation engines.
+
 ```
 
 </Snippet>

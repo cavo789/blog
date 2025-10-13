@@ -39,47 +39,7 @@ Use the value below for the authentication:
 
 You're now in SSMS. We'll create a dummy database. Using some AI, I've asked for a script, here it is:
 
-<Snippet filename="create_db.sql">
-
-```sql
--- Create a new database
-CREATE DATABASE SampleDB;
-GO
-
--- Switch to the new database
-USE SampleDB;
-GO
-
--- Create a sample table
-CREATE TABLE Customers (
-    CustomerID INT PRIMARY KEY IDENTITY(1,1),
-    FirstName VARCHAR(50),
-    LastName VARCHAR(50),
-    Email VARCHAR(100),
-    City VARCHAR(50)
-);
-GO
-
--- Insert sample data
-INSERT INTO Customers (FirstName, LastName, Email, City) VALUES
-('John', 'Doe', 'john.doe@example.com', 'New York'),
-('Jane', 'Smith', 'jane.smith@example.com', 'London'),
-('David', 'Lee', 'david.lee@example.com', 'Paris'),
-('Emily', 'Brown', 'emily.brown@example.com', 'Tokyo'),
-('Michael', 'Davis', 'michael.davis@example.com', 'Sydney'),
-('Sarah', 'Wilson', 'sarah.wilson@example.com', 'Berlin'),
-('Robert', 'Garcia', 'robert.garcia@example.com', 'Madrid'),
-('Jennifer', 'Rodriguez', 'jennifer.rodriguez@example.com', 'Rome'),
-('William', 'Martinez', 'william.martinez@example.com', 'Toronto'),
-('Linda', 'Anderson', 'linda.anderson@example.com', 'Chicago');
-GO
-
--- Verify the data
-SELECT * FROM Customers;
-GO
-```
-
-</Snippet>
+<Snippet filename="create_db.sql" source="./files/create_db.sql" />
 
 ![The creation script](./images/creation_sql.png)
 
@@ -128,15 +88,7 @@ Still in the `test` module, pay attention to the very first lines:
 
 You'll need to update these values to match yours. If you've created the SQL Server instance as explained here above, please use these values:
 
-<Snippet filename="clsData.bas">
-
-```vbnet
-Private Const cServerName = "localhost,1433"   ' <-- You'll need to mention here your server name
-Private Const cDBName = "SampleDB"       ' <-- You'll need to mention here your database name
-Private Const cSQLStatement = "SELECT * FROM dbo.Customers" ' <-- You'll need to mention here a valid SQL statement (SELECT ...)
-```
-
-</Snippet>
+<Snippet filename="clsData.bas" source="./files/clsData.bas" />
 
 ![With the initialization](./images/initialization_done.png)
 
@@ -163,26 +115,7 @@ Nevertheless, we've a SQL account called `SA` so we'll use it.
 
 Please update the subroutine and add two lines:
 
-<Snippet filename="module.bas">
-
-```vbnet
-Sub CopyToSheet()
-
-Dim rng As Range
-
-    cData.ServerName = cServerName
-    cData.DatabaseName = cDBName
-    ' highlight-next-line
-    cData.UserName = "SA"
-    ' highlight-next-line
-    cData.Password = "2Secure*Password2"
-
-    Set rng = cData.SQL_CopyToSheet(cSQLStatement, ActiveSheet.Range("A1"))
-
-End Sub
-```
-
-</Snippet>
+<Snippet filename="module.bas" source="./files/module.bas" />
 
 We're ready. Put your cursor in the `CopyToSheet` function, anywhere and press <kbd>F5</kbd> to execute it.
 
@@ -210,27 +143,7 @@ Don't keep any link with the DB, records are copied to Excel
 
 Sample code:
 
-<Snippet filename="module.bas">
-
-```vbnet
-Dim cData As New clsData
-Dim rng As Range
-
-    cData.ServerName = cServerName
-    cData.DatabaseName = cDBName
-    ' highlight-next-line
-    cData.UserName = "SA"
-    ' highlight-next-line
-    cData.Password = "2Secure*Password2"
-
-    ' When cData.UserName and cData.Password are not supplied
-    ' the connection will be made as "trusted" i.e. with the connected
-    ' user's credentials.
-
-    Set rng = cData.SQL_CopyToSheet("SELECT * FROM dbo.Customers", ActiveSheet.Range("A1"))
-```
-
-</Snippet>
+<Snippet filename="module.bas" source="./files/module.part2.bas" />
 
 ### AddQueryTable subroutine
 
@@ -261,29 +174,7 @@ IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN C
 
 Sample code
 
-<Snippet filename="module.bas">
-
-```vbnet
-Dim cData As New clsData
-Dim sSQL As String
-
-    cData.ServerName = cServerName
-    cData.DatabaseName = cDBName
-    ' highlight-next-line
-    cData.UserName = "SA"
-    ' highlight-next-line
-    cData.Password = "2Secure*Password2"
-
-    ' When cData.UserName and cData.Password are not supplied
-    ' the connection will be made as "trusted" i.e. with the connected
-    ' user's credentials.
-
-    sSQL = "SELECT * FROM dbo.Customers"
-
-    Call cData.AddQueryTable(sSQL, "qryTest", ActiveCell, True)
-```
-
-</Snippet>
+<Snippet filename="module.bas" source="./files/module.part3.bas" />
 
 ### RunSQLAndExportNewWorkbook subroutine
 
@@ -306,22 +197,4 @@ IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN C
 
 Sample code
 
-<Snippet filename="module.bas">
-
-```vbnet
-Dim cData As New clsData
-Dim sSQL As String
-
-    cData.ServerName = cServerName
-    cData.DatabaseName = cDBName
-    ' highlight-next-line
-    cData.UserName = "SA"
-    ' highlight-next-line
-    cData.Password = "2Secure*Password2"
-
-    sSQL = "SELECT * FROM dbo.Customers"
-
-    Call cData.RunSQLAndExportNewWorkbook(sSQL, "My Title", False)
-```
-
-</Snippet>
+<Snippet filename="module.bas" source="./files/module.part4.bas" />

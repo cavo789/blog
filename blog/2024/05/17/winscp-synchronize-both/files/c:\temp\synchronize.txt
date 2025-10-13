@@ -1,0 +1,12 @@
+open ftp://USERNAME:PASSWORD@HOST_OR_IP:PORT/
+
+option transfer ascii
+
+lcd "C:\Christophe"
+cd /Christophe
+
+synchronize remote -preservetime -transfer=automatic -filemask="|.git/"
+
+close
+
+exit

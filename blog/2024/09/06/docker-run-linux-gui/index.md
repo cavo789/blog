@@ -27,17 +27,7 @@ Let's start with something really geeky.
 
 Go to a temporary folder (f.i. `mkdir -p /tmp/xeyes && cd $_`) and create a file called `Dockerfile` with this content:
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM ubuntu:latest
-
-RUN apt-get update && apt-get install -y x11-apps
-
-CMD [ "xeyes" ]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 Now, create the image by docker build like this: `docker build --tag cavo789/xeyes .` (replace `cavo789` by anything else like your pseudo).
 
@@ -59,40 +49,7 @@ Let's try Firefox... By using my favourite search engine, I've found this post: 
 
 In a Dockerfile and with small changes, this give this:
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM ubuntu:latest
-
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update && \
-    apt-get install --no-install-recommends -y apt-utils ca-certificates curl gpg && \
-    rm -rf /var/lib/apt/lists/*
-
-# https://jetthoughts.com/blog/install-official-firefox-deb-in-dockerfile-docker-devops/
-RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
-    --mount=type=cache,target=/var/lib/apt,sharing=locked \
-    --mount=type=tmpfs,target=/var/log \
-    # Create a directory to store APT repository keys, repository lists, and preferences if they don't exist
-    install -d -m 0755 /etc/apt/keyrings /etc/apt/preferences.d /etc/apt/sources.list.d > /dev/null && \
-    # Import the Mozilla APT repository signing key
-    curl -fsSL https://packages.mozilla.org/apt/repo-signing-key.gpg |  \
-    gpg --dearmor --no-tty -o /etc/apt/keyrings/packages.mozilla.org.gpg > /dev/null && \
-    # Add the Mozilla APT repository to the APT sources list
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/packages.mozilla.org.gpg] https://packages.mozilla.org/apt mozilla main" |  \
-    tee /etc/apt/sources.list.d/packages.mozilla.org.list > /dev/null && \
-    # Configure APT to prioritize packages from the Mozilla repository
-    echo "Package: *\nPin: origin packages.mozilla.org\nPin-Priority: 1000\n\n" | tee /etc/apt/preferences.d/mozilla > /dev/null && \
-    # Update your package list and install the Firefox .deb package
-    apt-get update -qq > /dev/null && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -qq firefox > /dev/null && \
-    rm -rf /var/lib/apt/lists/*
-
-CMD [ "firefox" ]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part2" />
 
 To build the image, please run the next command (and think to change `cavo789` by your pseudo): `docker build --tag cavo789/firefox .`.
 
@@ -108,23 +65,7 @@ The old MS-DOS developer in me continues to be amazed by this possibility.
 
 We can do the same with Chrome:
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM ubuntu:latest
-
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update \
-    && apt-get install -y wget \
-    && wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-    && apt-get install -y ./google-chrome-stable_current_amd64.deb \
-    && rm -rf /var/lib/apt/lists/*
-
-CMD ["google-chrome", "--disable-dev-shm-usage", "--disable-gpu"]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part3" />
 
 Build the image using `docker build --tag cavo789/chrome .` then run it using `docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY cavo789/chrome`.
 
@@ -134,19 +75,7 @@ Build the image using `docker build --tag cavo789/chrome .` then run it using `d
 
 Ok, now, I think you've understood how it works. So, very shortly, here is how to run GIMP for Linux in a Docker container:
 
-<Snippet filename="Dockerfile">
-
-```docker
-FROM ubuntu:latest
-
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update && apt-get install --no-install-recommends -y gimp && rm -rf /var/lib/apt/lists/*
-
-CMD [ "gimp" ]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile.part4" />
 
 Create the image by running `docker build --tag cavo789/gimp .`.
 

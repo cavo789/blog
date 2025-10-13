@@ -1,0 +1,7 @@
+services:
+  app:
+    [...]
+    // highlight-next-line
+    volumes:
+      // highlight-next-line
+      - ${HOME}/.ssh:/root/.ssh

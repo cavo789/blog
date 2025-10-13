@@ -1,0 +1,40 @@
+FROM httpd:2.4
+# highlight-next-line
+
+# highlight-next-line
+RUN apt-get update \
+    # highlight-next-line
+    && apt-get install -y apache2-utils libapache2-mod-php openssl \
+    # highlight-next-line
+    && rm -rf /var/lib/apt/lists/*
+# highlight-next-line
+
+# highlight-next-line
+COPY ssl/server.crt /usr/local/apache2/conf/server.crt
+# highlight-next-line
+COPY ssl/server.key /usr/local/apache2/conf/server.key
+# highlight-next-line
+
+COPY httpd/my-site.conf /etc/apache2/sites-available/my-site.conf
+# highlight-next-line
+
+# highlight-next-line
+RUN sed -i \
+    # highlight-next-line
+	-e 's/^#\(Include .*httpd-ssl.conf\)/\1/' \
+    # highlight-next-line
+	-e 's/^#\(LoadModule .*mod_ssl.so\)/\1/' \
+    # highlight-next-line
+	-e 's/^#\(LoadModule .*mod_socache_shmcb.so\)/\1/' \
+    # highlight-next-line
+	/usr/local/apache2/conf/httpd.conf
+# highlight-next-line
+
+# highlight-next-line
+RUN a2enmod ssl \
+    # highlight-next-line
+    && a2enmod rewrite \
+    # highlight-next-line
+    && a2dissite 000-default default-ssl \
+    # highlight-next-line
+    && a2ensite my-site

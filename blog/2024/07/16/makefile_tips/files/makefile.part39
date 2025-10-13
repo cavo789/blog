@@ -1,0 +1,4 @@
+git_wip:
+	git add .
+	git commit -m "wip --no-verify
+	git push

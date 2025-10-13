@@ -24,59 +24,11 @@ To be able to reproduce examples used in this blog post, if you need it, please 
 
 Let's say `/tmp/bash/console.sh` for the first file with this content:
 
-<Snippet filename="/tmp/bash/console.sh">
-
-```bash
-#!/usr/bin/env bash
-
-function console::printCyan() {
-}
-
-function console::askYesNo() {
-}
-
-function console::printRed() {
-}
-
-function console::printError() {
-}
-
-function console::banner() {
-}
-```
-
-</Snippet>
+<Snippet filename="/tmp/bash/console.sh" source="./files/console.sh" />
 
 And, for `/tmp/bash/console_v2.sh`, we'll add two new functions, `printGreen` and `printBlue`, in that order:
 
-<Snippet filename="/tmp/bash/console_v2.sh">
-
-```bash
-#!/usr/bin/env bash
-
-function console::printCyan() {
-}
-
-function console::askYesNo() {
-}
-
-function console::printRed() {
-}
-
-function console::printError() {
-}
-
-function console::banner() {
-}
-
-function console::printGreen() {
-}
-
-function console::printBlue() {
-}
-```
-
-</Snippet>
+<Snippet filename="/tmp/bash/console_v2.sh" source="./files/console_v2.sh" />
 
 ## Get the list of functions in a Bash script
 
@@ -135,72 +87,11 @@ So now, we can see a new indicator `<`: the function was retrieved only in the f
 
 Right now, our `/tmp/bash/console.sh` contains this:
 
-<Snippet filename="/tmp/bash/console.sh">
-
-```bash
-#!/usr/bin/env bash
-
-function console::printCyan() {
-}
-
-function console::askYesNo() {
-}
-
-function console::printPurple() {
-}
-
-function console::verbose() {
-}
-
-function console::printError() {
-}
-
-function console::banner() {
-}
-
-function console::printBlue() {
-}
-
-function console::printGreen() {
-}
-
-function console::printRed() {
-}
-```
-
-</Snippet>
+<Snippet filename="/tmp/bash/console.sh" source="./files/console.part2.sh" />
 
 and, for `/tmp/bash/console_v2.sh`:
 
-<Snippet filename="/tmp/bash/console_v2.sh">
-
-```bash
-#!/usr/bin/env bash
-
-function console::printCyan() {
-}
-
-function console::askYesNo() {
-}
-
-function console::printRed() {
-}
-
-function console::printError() {
-}
-
-function console::banner() {
-}
-
-function console::printGreen() {
-}
-
-function console::printBlue() {
-}
-
-```
-
-</Snippet>
+<Snippet filename="/tmp/bash/console_v2.sh" source="./files/console_v2.part2.sh" />
 
 <AlertBox variant="info" title="The order has no important">
 Unlike a comparison with `diff`, the order in which the functions appear in the scripts is irrelevant, as we are sorting them.
@@ -213,61 +104,7 @@ In the previous chapter, we've seen how to compare two versions of the same scri
 
 To do this, create the `compare.sh` script on your hard drive with this content:
 
-<Snippet filename="compare.sh">
-
-```bash
-#!/usr/bin/env bash
-
-clear
-
-if [ ! $# -eq 2 ]; then
-  echo "Usage: $0 <folder_1> <folder_2>"
-  exit 1
-fi
-
-sourceFolder="$1"
-compareWithFolder="$2"
-
-[[ ! -d "${sourceFolder}" ]]      && echo "Error: Source folder ${sourceFolder} not found." &&  exit 1
-[[ ! -d "${compareWithFolder}" ]] && echo "Error: CompareWith folder ${compareWithFolder} not found." &&  exit 1
-
-pushd "${sourceFolder}" >/dev/null
-
-printf "\e[37;1m%s\e[0;1m\n\n" "Compare .sh scripts and detects functions that are in one of the files but not in the other between these two folders:"
-printf "\e[37;1m%s\e[0;1m\n" "LEFT SIDE  = ${sourceFolder}"
-printf "\e[37;1m%s\e[0;1m\n\n" "RIGHT SIDE = ${compareWithFolder}"
-
-printf "\e[37;1m%s\e[0;1m\n\n" "Legend:"
-printf "\e[37;1m1/ \e[34;1m%s\e[0;1m\n" "name1           <"
-printf "\e[37;1m\t%s\e[0;1m\n\n" "That function only exist in the first file; not in the second one"
-
-printf "\e[37;1m2/ \e[34;1m%s\e[0;1m\n" "name1           | name2"
-printf "\e[37;1m\t%s\e[0;1m\n\n" "The function name1 only exists in the first file and name2 only exists in the second file"
-
-printf "\e[37;1m3/ \e[34;1m%s\e[0;1m\n" "                > name2"
-printf "\e[37;1m\t%s\e[0;1m\n\n" "The function name2 only exists in the second file"
-
-printf "\e[41;1m%s\e[0;1m\n" "Warning: this script checks whether a function is present in one of the files and not in the other,"
-printf "\e[41;1m%s\e[0;1m\n" "but does not check whether the function code is identical. It just checks whether it is present or not."
-
-for bashScript in *.sh; do
-    if [[ -f "${compareWithFolder}/${bashScript}" ]]; then
-        (
-            FILE1="${sourceFolder}/${bashScript}"
-            FILE2="${compareWithFolder}/${bashScript}"
-            printf "\e[32;1m%s\e[0;1m\n" "File ${bashScript}"
-            diff --suppress-common-lines --side-by-side --width 83 \
-                <(grep -P "^(function\s+.*)\(\)" "${FILE1}" | awk '{print $2}' | sort) \
-                <(grep -P "^(function\s+.*)\(\)" "${FILE2}" | awk '{print $2}' | sort) && \
-            printf "\e[32;1m%s\e[0;1m\n"  "The two files are identical"
-        )
-    fi
-done
-
-popd >/dev/null
-```
-
-</Snippet>
+<Snippet filename="compare.sh" source="./files/compare.sh" />
 
 Now, to run it, just start `./compare.sh foldername1 foldername2`. You'll get something like below i.e. for each scripts in both folders (script in just one folder are ignored), you'll get the name of the script (like `array.sh`) followed by the text `The two files are identical` if both files are identical or, if not, a list of function names and the indicator already seen i.e. `<`, `>` or `|`.
 
@@ -279,60 +116,7 @@ Once a function has been identified, simply open the *right* file and copy/paste
 
 By adding `| grep -E -v "<$"` to our `grep` statement, we can improve the script by ignoring cases when functions are only added in the left-hand folder. Imagine the requirement *In the right-hand folder, if I've added functions to my scripts; what are these functions so that I can copy/paste them into the scripts in the left-hand folder?*
 
-<Snippet filename="compare.sh">
-
-```bash
-#!/usr/bin/env bash
-
-clear
-
-if [ ! $# -eq 2 ]; then
-  echo "Usage: $0 <folder_1> <folder_2>"
-  exit 1
-fi
-
-sourceFolder="$1"
-compareWithFolder="$2"
-
-[[ ! -d "${sourceFolder}" ]]      && echo "Error: Source folder ${sourceFolder} not found." &&  exit 1
-[[ ! -d "${compareWithFolder}" ]] && echo "Error: CompareWith folder ${compareWithFolder} not found." &&  exit 1
-
-pushd "${sourceFolder}" >/dev/null
-
-printf "\e[37;1m%s\e[0;1m\n\n" "Compare .sh scripts and detects functions that are in one of the files but not in the other between these two folders:"
-printf "\e[37;1m%s\e[0;1m\n" "LEFT SIDE  = ${sourceFolder}"
-printf "\e[37;1m%s\e[0;1m\n\n" "RIGHT SIDE = ${compareWithFolder}"
-
-printf "\e[37;1m%s\e[0;1m\n\n" "Legend:"
-printf "\e[37;1m1/ \e[34;1m%s\e[0;1m\n" "name1           <"
-printf "\e[37;1m\t%s\e[0;1m\n\n" "That function only exist in the first file; not in the second one"
-
-printf "\e[37;1m2/ \e[34;1m%s\e[0;1m\n" "name1           | name2"
-printf "\e[37;1m\t%s\e[0;1m\n\n" "The function name1 only exists in the first file and name2 only exists in the second file"
-
-printf "\e[37;1m3/ \e[34;1m%s\e[0;1m\n" "                > name2"
-printf "\e[37;1m\t%s\e[0;1m\n\n" "The function name2 only exists in the second file"
-
-printf "\e[41;1m%s\e[0;1m\n" "Warning: this script checks whether a function is present in one of the files and not in the other,"
-printf "\e[41;1m%s\e[0;1m\n" "but does not check whether the function code is identical. It just checks whether it is present or not."
-
-for bashScript in *.sh; do
-    if [[ -f "${compareWithFolder}/${bashScript}" ]]; then
-        (
-            FILE1="${sourceFolder}/${bashScript}"
-            FILE2="${compareWithFolder}/${bashScript}"
-            printf "\e[32;1m%s\e[0;1m\n" "File ${bashScript}"
-            diff --suppress-common-lines --side-by-side --width 83 \
-                <(grep -P "^(function\s+.*)\(\)" "${FILE1}" | awk '{print $2}' | sort) \
-                <(grep -P "^(function\s+.*)\(\)" "${FILE2}" | awk '{print $2}' | sort) | grep -E -v "<$"
-        )
-    fi
-done
-
-popd >/dev/null
-```
-
-</Snippet>
+<Snippet filename="compare.sh" source="./files/compare.part2.sh" />
 
 If we run this newer script on the exact same files, now, lines ending with `<` are hidden (only in the left-hand folder) and we just obtains cases when a function is present in the right-hand folder:
 

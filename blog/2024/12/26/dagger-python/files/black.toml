@@ -1,0 +1,8 @@
+[tool.black]
+
+# The same as in prospector.yaml, .pylintrc, black.toml and pyproject.toml
+line-length = 120
+
+# We'll format the code for Python 3.13.0; we can add multiple versions (the ones supported by
+# the script, all versions separated by a comma like in ['py312', 'py313'] (run "black --help" to get them)
+target-version = ['py313']

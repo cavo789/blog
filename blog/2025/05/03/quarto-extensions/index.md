@@ -117,14 +117,7 @@ Quarto filter extension for simple search-replace macros.
 
 This extension allows to search and replace when rendering documents. For instance, by putting the `+quarto` code in the frontmatter of the article or, better, in the `_quarto.yaml` global file, we can just write `+quarto` (a constant) in our document and let the replace action be done during the rendering of the documentation.
 
-<Snippet filename="_quarto.yaml">
-
-```yaml
-search-replace:
-  +quarto: "[Quarto](https://quarto.org)"
-```
-
-</Snippet>
+<Snippet filename="_quarto.yaml" source="./files/_quarto.yaml" />
 
 Make sure to add lines below in your YAML front matter:
 

@@ -1,0 +1,8 @@
+hello::
+	@echo "Hello world"
+
+hello::
+	@echo "Nice to meet you"
+
+hello::
+	@echo "Did you any plans for this weekend?"

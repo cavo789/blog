@@ -1,0 +1,16 @@
+services:
+  joomla:
+    image: joomla
+    [...]
+
+  joomladb:
+    image: mysql:8.0.13
+    [...]
+    // highlight-next-line
+    healthcheck:
+      // highlight-next-line
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      // highlight-next-line
+      timeout: 20s
+      // highlight-next-line
+      retries: 10

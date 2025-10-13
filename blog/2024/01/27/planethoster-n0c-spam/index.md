@@ -100,56 +100,13 @@ As we've seen, with a bit of programming, it's possible to automate the creation
 
 I've started programming such a little script in Linux bash that will take a JSON file as input (as shown below) and write the `roundcube.sieve` file.
 
-<Snippet filename="roundcube.sieve">
-
-```json
-{
-    "patterns": [
-      "*.india",
-      "*.ru",
-      "*.su",
-      "*@newsletter.*",
-      "newsletter@*"
-      "newsletters-noreply@*",
-      "newsletters@*",
-}
-```
-
-</Snippet>
+<Snippet filename="roundcube.sieve" source="./files/roundcube.sieve" />
 
 The code, in proof-of-concept mode, is already written (see below), but it needs to be refined and, above all, its execution automated.
 
 Give me some time to do this and as soon as it's done, I'll publish my solution.
 
-<Snippet filename="script.sh">
-
-```bash
-#!/usr/bin/env bash
-
-clear
-
-if [ ! -f patterns.json ]; then
-    echo "Please create a patterns.json file."
-    echo "Run 'cp patterns.json.dist patterns.js' to use an example."
-    exit 1
-fi
-
-rm -f roundcube.sieve && touch roundcube.sieve
-
-cat patterns.json \
-    | jq '.patterns[]' \
-    | sort \
-    | while read -r pattern; do \
-        # Trim quotes
-        pattern=$(echo "$pattern" | tr -d '"')
-        # Read the spam.template file, make the replace and append in file roundcube.sieve
-        sed "s/{{ pattern }}/${pattern}/g" spam.template >>roundcube.sieve; \
-    done
-
-echo "File roundcube.sieve has been created. Now, you've to publish it on your FTP."
-```
-
-</Snippet>
+<Snippet filename="script.sh" source="./files/script.sh" />
 
 <AlertBox variant="info" title="">
 The article <Link to="/blog/planethoster-n0c-spam-roundcube-action">Exterminate them all, kill spam using GitHub Actions</Link> is now written; don't hesitate to read it.

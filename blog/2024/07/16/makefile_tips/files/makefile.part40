@@ -1,0 +1,5 @@
+composer.lock: composer.json
+	${CMD} composer update --no-interaction
+
+vendor: composer.lock
+	${CMD} composer install

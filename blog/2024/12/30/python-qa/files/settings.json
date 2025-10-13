@@ -1,0 +1,6 @@
+"python.analysis.diagnosticSeverityOverrides": {
+    "reportUnusedClass": "information",
+    "reportUnusedFunction": "information",
+    "reportUnusedImport": "information",
+    "reportUnusedVariable": "information"
+},

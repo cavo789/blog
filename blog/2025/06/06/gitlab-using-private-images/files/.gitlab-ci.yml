@@ -1,0 +1,10 @@
+demo:
+  image: docker:latest
+  before_script:
+    - | # Do a secure login
+      echo "$DOCKER_HUB_TOKEN_RO" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
+  script:
+    - | # Download the image
+      docker pull your_private_image
+    # - | # Use it
+    #   docker run [...] your_private_image [...]

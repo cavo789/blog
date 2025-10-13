@@ -18,34 +18,7 @@ In a previous <Link to="/blog/linux-compare-two-versions-of-the-same-script">art
 
 Please create the `/tmp/bash/console.sh` file on your disk with this content:
 
-<Snippet filename="/tmp/bash/console.sh">
-
-```bash
-#!/usr/bin/env bash
-
-function console::printCyan() {
-}
-
-function console::askYesNo() {
-}
-
-function console::printRed() {
-}
-
-function console::printError() {
-}
-
-function console::banner() {
-}
-
-function console::printGreen() {
-}
-
-function console::printBlue() {
-}
-```
-
-</Snippet>
+<Snippet filename="/tmp/bash/console.sh" source="./files/console.sh" />
 
 As we can see, we'll just create empty functions in no particular order.
 
@@ -83,34 +56,7 @@ Back to the left column: the name displayed in white are already in the correct 
 
 Let's update partially the `/tmp/bash/console.sh` file and reorder some functions:
 
-<Snippet filename="/tmp/bash/console.sh">
-
-```bash
-#!/usr/bin/env bash
-
-function console::askYesNo() {
-}
-
-function console::banner() {
-}
-
-function console::printBlue() {
-}
-
-function console::printCyan() {
-}
-
-function console::printRed() {
-}
-
-function console::printError() {
-}
-
-function console::printGreen() {
-}
-```
-
-</Snippet>
+<Snippet filename="/tmp/bash/console.sh" source="./files/console.part2.sh" />
 
 Now, rerunning the same command:
 
@@ -144,47 +90,7 @@ If this is not the case, the left-hand side of the screen shows the current orde
 
 To do this, create the `order.sh` script on your hard drive with this content:
 
-<Snippet filename="order.sh">
-
-```bash
-#!/usr/bin/env bash
-
-clear
-
-if [ ! $# -eq 1 ]; then
-  echo "Usage: $0 <folder>"
-  exit 1
-fi
-
-sourceFolder="$1"
-
-[[ ! -d "${sourceFolder}" ]]  && echo "Error: Source folder ${sourceFolder} not found." &&  exit 1
-
-printf "\e[37;1m%s\e[0;1m\n\n" "Check if functions declared in Bash .sh script in folder ${sourceFolder} are correctly ordered in the file."
-
-printf "\e[33;1m%-39s %s\e[0;1m\n\n" "Left side: AS IS" "Right side: Using correct sorter"
-
-pushd "${sourceFolder}" >/dev/null
-
-set +e
-
-for bashScript in *.sh; do
-    result="$(diff --side-by-side --width 83 \
-        <(grep -P "^(function\s+.*)\(\)" "${bashScript}" | awk '{print $2}') \
-        <(grep -P "^(function\s+.*)\(\)" "${bashScript}" | awk '{print $2}' | sort))"
-
-    if ! [[ $? -eq 0 ]]; then
-        printf "\e[33;1m%s\e[0;1m\n" "The file ${bashScript} isn't correctly ordered"
-        printf "\e[37;1m%s\e[0;1m\n" "${result}"
-    fi
-done
-
-set -e
-
-popd >/dev/null
-```
-
-</Snippet>
+<Snippet filename="order.sh" source="./files/order.sh" />
 
 And now, start the script like this: `./order.sh  ~/helpers`. The expected parameter is the name of a folder containing `.sh` files.
 

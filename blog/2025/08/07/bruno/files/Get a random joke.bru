@@ -1,0 +1,26 @@
+meta {
+  name: Get a random joke
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}/jokes
+  body: none
+  auth: none
+}
+
+<!-- highlight-start -->
+assert {
+  res.status: eq 200
+  res.headers["content-type"]: isDefined
+  res.headers["content-type"]: isString
+  res.headers["content-type"]: contains "application/json"
+  res.body.joke.length: gt 0
+  res.body.joke: isString
+}
+<!-- highlight-end -->
+
+settings {
+  encodeUrl: true
+}

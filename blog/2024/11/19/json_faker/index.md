@@ -28,36 +28,7 @@ First install the library using `pip install faker`.
 
 And below a small Python script to generate fake data in French (just replace `range(1)` by f.i. `range(100)` to get 100 records):
 
-<Snippet filename="fake.py">
-
-```python
-import json
-
-from faker import Faker
-
-fake = Faker()
-
-fake = Faker('fr_FR')
-
-data = []
-
-for _ in range(1):
-    user = {
-        'firstname': fake.first_name(),
-        'lastname': fake.last_name(),
-        'address': fake.street_address(),
-        'city': fake.city(),
-        'country': fake.country(),
-        'gender': fake.random_element(elements=('Homme', 'Femme', 'Non binaire'))
-    }
-
-    data.append(user)
-
-# Pretty print the JSON data
-print(json.dumps(data, indent=4, ensure_ascii=False))
-```
-
-</Snippet>
+<Snippet filename="fake.py" source="./files/fake.py" />
 
 ![Faker in Python](./images/python.png)
 
@@ -96,38 +67,7 @@ I've created the *schema_test* like this:
 
 I can then use it in Python like this:
 
-<Snippet filename="schema_test.py">
-
-```python
-import requests
-
-# My API key as displayed in my profile page on Mockaroo
-api_key = "MY_API_KEY"
-
-# This is the name of my schema
-schema = "schema_test"
-
-# Number of records I want
-num_records = 10
-
-# Construct the API endpoint URL
-url = f"https://api.mockaroo.com/api/generate?key={api_key}&count={num_records}&schema={schema}"
-
-# Make the API request
-response = requests.get(url)
-
-# Check if the request was successful
-if response.status_code == 200:
-    # Parse the JSON response
-    data = response.json()
-
-    # Display the result on the console
-    print(data)
-else:
-    print(f"Error fetching data: {response.text}")
-```
-
-</Snippet>
+<Snippet filename="schema_test.py" source="./files/schema_test.py" />
 
 <AlertBox variant="info" title="">
 To make this code working, think to install the requests library: `pip install requests`.
@@ -146,32 +86,7 @@ The [https://www.liquid-technologies.com/online-json-to-schema-converter](https:
 
 Once you've the schema, you can use it in Python like this:
 
-<Snippet filename="validate.py">
-
-```python
-import json
-import jsonschema
-
-def validate_json(data_file, schema_file):
-  with open(schema_file) as f:
-    schema = json.load(f)
-
-  with open(data_file) as f:
-    data = json.load(f)
-
-  jsonschema.validate(instance=data, schema=schema)
-
-data_file = "data.json"
-schema_file = "schema.json"
-
-try:
-    validate_json(data_file, schema_file)
-    print("Data is valid!")
-except jsonschema.exceptions.ValidationError as exception:
-    print(f{"Data is invalid: {exception}")
-```
-
-</Snippet>
+<Snippet filename="validate.py" source="./files/validate.py" />
 
 <AlertBox variant="info" title="">
 You'll need to run `pip install jsonschema` first.

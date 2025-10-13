@@ -1,0 +1,8 @@
+{
+    // ...
+    "customizations": {
+        // ...
+    },
+    // highlight-next-line
+    "postCreateCommand": "composer require rector/rector --dev"
+}
