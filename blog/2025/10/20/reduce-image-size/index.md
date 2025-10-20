@@ -5,10 +5,10 @@ authors: [christophe]
 image: /img/v2/image_optimization.webp
 description: Fast and efficient lossy/lossless image compression tool
 mainTag: optimization
-tags: [images, optimization]
+tags: [images, optimization, tips]
 blueskyRecordKey:
 draft: true
-date: 2025-10-31
+date: 2025-10-20
 ---
 
 <!-- cspell:ignore Korben,Squoosh,brew,caesiumclt,behat -->
@@ -56,9 +56,7 @@ On my blog, I'm writing blog posts in folders like `blog/2025/10/02/` i.e. I cre
 This said, to retrieve the biggest folder on my disk, I'm running the command below. It will retrieve all `.png` files them sum their size by directories and list the directories by size.
 
 <Terminal>
-$  find . -type f -name "*.png" -printf '%h %s\n' \
-  | awk '{sizes[$1]+=$2} END {for (d in sizes) printf "%s %.2f MB\n", d, sizes[d]/1024/1024}' \
-  | sort -k2 -nr
+$ find . -type f -name "*.png" -printf '%h %s\n' | awk '\{sizes[$1]+=$2\} END \{for (d in sizes) printf "%s %.2f MB\n", d, sizes[d]/1024/1024\}' | sort -k2 -nr
 
 218M    total
 ./2025/02/01/heimdall-dashboard/images 15.05 MB
