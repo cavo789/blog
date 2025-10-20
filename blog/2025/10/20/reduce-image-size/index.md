@@ -7,7 +7,6 @@ description: Fast and efficient lossy/lossless image compression tool
 mainTag: optimization
 tags: [images, optimization, tips]
 blueskyRecordKey:
-draft: true
 date: 2025-10-20
 ---
 
