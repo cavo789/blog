@@ -37,7 +37,8 @@ export default function ScrollToTopButton() {
     >
       <img
         src={buttontop}
-        alt="Retour en haut"
+        alt="Back to top"
+        class="no-zoom"
         width="30"
         height="30"
       />

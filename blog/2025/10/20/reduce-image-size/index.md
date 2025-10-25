@@ -6,7 +6,7 @@ image: /img/v2/image_optimization.webp
 description: Fast and efficient lossy/lossless image compression tool
 mainTag: optimization
 tags: [images, optimization, tips]
-blueskyRecordKey:
+blueskyRecordKey: 3m3m74j2e6c2e
 date: 2025-10-20
 ---
 

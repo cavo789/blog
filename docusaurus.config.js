@@ -288,18 +288,13 @@ const config = {
       zoom: {
         // Sélecteur CSS pour cibler les images à zoomer (les images dans le markdown qui ne sont pas des liens)
         // selector: ".markdown :not(em) > img",
-        selector: 'img:not(.navbar-logo)',
+        selector: '.markdown img:not(.navbar-logo):not(.no-zoom img)',
 
-        // Couleur de fond du zoom (mode clair/sombre)
         background: {
-          light: "rgb(255, 255, 255)", // Blanc
-          dark: "rgb(50, 50, 50)", // Gris foncé
+          light: "rgb(255, 255, 255)",
+          dark: "rgb(50, 50, 50)",
         },
 
-        // Options supplémentaires pour medium-zoom
-        config: {
-          // par exemple : margin: 24,
-        },
       },
       algolia: {
         // @see https://docusaurus.io/docs/search for documentation
