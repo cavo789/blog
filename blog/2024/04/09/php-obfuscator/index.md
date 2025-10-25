@@ -6,7 +6,7 @@ authors: [christophe]
 description: Protect your PHP code with obfuscation. Discover how the php_obfuscator script works and if AI tools like Copilot can still de-obfuscate your proprietary source code.
 image: /img/v2/obfuscated_code.webp
 mainTag: php
-tags: [code-quality, AI, php]
+tags: [code-quality, ai, php]
 ---
 <!-- cspell:ignore ctype, fgets, ppmb, ppmc, ppms, ppmu, ppmw, ppmx, ppnc, ppnt, ppnx, ppny, ppnz, strlen, strpos, strtolower -->
 

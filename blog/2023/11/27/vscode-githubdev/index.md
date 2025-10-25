@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/v2/vscode_tips.webp
 description: Did you know you can open VSCode for any GitHub repository instantly? Discover the secret shortcut—just press the dot key (.). Start coding online now!
 mainTag: vscode
-tags: [Github, tips, vscode]
+tags: [github, tips, vscode]
 ---
 ![Start vscode from github.com](/img/v2/vscode_tips.webp)
 

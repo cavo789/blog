@@ -7,7 +7,7 @@ description: Learn to use Quarto's conditional display features (content-visible
 series: Discovering Quarto
 image: /img/v2/quarto.webp
 mainTag: quarto
-tags: [markdown, quarto, reveal, tips]
+tags: [markdown, quarto, revealjs, tips]
 ---
 ![Quarto conditional display](/img/v2/quarto.webp)
 

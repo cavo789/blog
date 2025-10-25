@@ -1,0 +1,106 @@
+# Markdown Tag Manager
+
+A command-line tool for managing YAML front matter tags in Markdown files across a project directory. This utility is designed to handle tag consolidation, renaming, and deletion while ensuring that the original YAML formatting (including list style and long string preservation) is maintained.
+
+## Features
+
+* **Tag Listing & Analysis:** Scans files, extracts tags, and provides flexible sorting options (by frequency or name).
+* **Tag Optimization Suggestions:** Automatically flags potential duplicate tags, including **case variations** (`GitHub` vs `github`) and **sub-string/singular-plural matches** (`tip` vs `tips`), to help maintain tag hygiene.
+* **Configurable Exceptions:** Allows defining a list of **merge exceptions** in the script to eliminate false-positive suggestions (e.g., intentionally separate tags like `php` and `phpcbf`).
+* **Tag Renaming:** Replaces an old tag with a new tag across all files.
+* **Tag Deletion:** Removes a specified tag from all files.
+* **YAML Formatting Preservation:** Uses `oyaml` with custom dumpers to ensure tags lists are kept in inline format (`[tag1, tag2]`) and prevents PyYAML from folding long strings (like descriptions).
+
+## Prerequisites
+
+The recommended way to run the tool is via a `make` command, which uses a Docker container to manage dependencies.
+
+You need **Docker** and **Make** installed.
+
+If you run the script directly (without `make` and Docker), you need Python 3.6+ and the following libraries:
+
+```bash
+pip install python-frontmatter oyaml
+```
+
+## Usage (Recommended via Make)
+
+The easiest and safest way to run the tool is by passing desired actions and arguments via the `ARGS` variable to the make `tags-manager` target. This prevents the Docker container from running if arguments are missing.
+
+### General Syntax
+
+```bash
+make tags-manager ARGS="<action> <arguments>"
+```
+
+| Action | Command example | Description |
+| --- | --- | --- |
+| **List Tags** | `make tags-manager ARGS="list"` | Lists all tags, default sort is by count. |
+| **List Tags (Sort by Name)** | `make tags-manager ARGS="list --sort name"` | Lists tags alphabetically. |
+| **Rename Tag** | `make tags-manager ARGS="rename old,new"` | Renames the old tag to new. |
+| **Delete Tag** | `make tags-manager ARGS="delete draft"` | Removes the draft tag from all files. |
+| **Show Help** | `make tags-manager ARGS="--help"` | Displays the full help page for the script. |
+
+## Detailed Actions
+
+### 1. List All Tags (list)
+
+The listing is followed by tag optimization suggestions.
+
+| Option | Value | Description |
+| --- | --- | --- |
+| `--sort` | `count` (Default) | Sorts primarily by **frequency (count, descending)**, then by name. |
+| `--sort` | `name` | Sorts strictly by **tag name** (alphabetical, ascending). |
+
+For instance:
+
+```bash
+make tags-manager ARGS="list --sort name"
+```
+
+### 2. Rename a Tag (rename)
+
+Replaces a single tag name with a new one across all files. The tag names must be separated by a comma.
+
+For instance:
+
+```bash
+make tags-manager ARGS="rename prog,programming"
+```
+
+### 3. Delete a Tag (delete)
+
+Completely removes the specified tag from the front matter of all files.
+
+For instance:
+
+```bash
+make tags-manager ARGS="delete obsolete-tag"
+```
+
+## Configuration
+
+### Project Directory
+
+The script currently targets Markdown files within a fixed directory structure.
+
+* **Target Directory**:  `blog`
+* **File Pattern**: `blog/**/{*.md,*.mdx}` (searches recursively for all `.md` and `.mdx` files)
+
+If your project directory differs, you must update the `DOCS_DIR` variable at the top of the `tag_manager.py` script.
+
+### Merge Exceptions (Advanced)
+
+The script uses heuristics (rules based on length difference and singular/plural form) to suggest tag mergers. If the tool suggests two tags that you know are intentionally separate (a **false positive**), you must add them to the `MERGE_EXCEPTIONS` set inside `tag_manager.py`.
+
+**Important Rule**: All entries in the `MERGE_EXCEPTIONS` set must be defined in **lowercase** and **sorted alphabetically** within the tuple.
+
+**Example of Configuration** in `tag_manager.py`
+
+```python
+MERGE_EXCEPTIONS: Set[Tuple[str, str]] = {
+    ('git', 'github'),    # Exclude git vs github
+    ('php', 'phpcbf'),    # Exclude php vs phpcbf
+    # Add any other ('tag_a', 'tag_b') pairs here
+}
+```

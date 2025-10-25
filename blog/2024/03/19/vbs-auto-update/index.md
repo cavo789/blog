@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/v2/vbs.webp
 mainTag: github
 description: Automate updates for your VBS (Visual Basic Script) console scripts! Learn how to create a self-updating VBS file that connects to GitHub, checks for new versions, and overwrites itself.
-tags: [dos, Github, vbs]
+tags: [dos, github, vbs]
 ---
 ![VBS - Auto update script](/img/v2/vbs.webp)
 

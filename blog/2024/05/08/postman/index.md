@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/v2/api.webp
 description: Master API testing with Postman. Use it as a powerful unit test tool to validate response status, enforce data structure, and prevent regressions in your API development workflow.
 mainTag: api
-tags: [api, code quality, php, postman, soap, tests, tool]
+tags: [api, code-quality, php, postman, soap, tests, tool]
 ---
 <!-- cSpell::ignore ELECTRABEL,taxud -->
 ![Using Postman to play with API](/img/v2/api.webp)

@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/v2/ai.webp
 mainTag: ai
 description: Recraft.ai - Discover an advanced AI image generation tool that offers fine-tuning, image variations, custom sizing, and accurate text rendering.
-tags: [ai, image generation, recraft]
+tags: [ai, recraft]
 ---
 <!-- cspell:ignore recraft -->
 ![AI - Image generation using recraft.ai](/img/v2/ai.webp)

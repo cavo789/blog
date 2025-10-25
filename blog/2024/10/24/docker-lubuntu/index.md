@@ -6,7 +6,7 @@ authors: [christophe]
 description: Learn how to run the Lubuntu Desktop GUI in a Docker container on Windows using an X Server. A perfect, disposable environment for Linux learning and experimenting.
 image: /img/v2/docker_tips.webp
 mainTag: linux
-tags: [chrome, docker, firefox, gimp, gui, tip]
+tags: [chrome, docker, firefox, gimp, gui, tips]
 ---
 <!-- cspell:ignore lubuntu,initialising,xremote,autologin,realise -->
 ![Start lubuntu Desktop](/img/v2/docker_tips.webp)

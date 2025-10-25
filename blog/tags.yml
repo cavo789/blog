@@ -1,0 +1,700 @@
+.env:
+  label: '.env Files'
+  permalink: '/tags/.env'
+  description: 'Configuration and management of environment variables.'
+.htaccess:
+  label: '.htaccess'
+  permalink: '/tags/.htaccess'
+  description: 'Specific Apache configuration files.'
+actions:
+  label: 'Actions'
+  permalink: '/tags/actions'
+  description: 'Content related to actions and automation scripts.'
+addon:
+  label: 'Addon / Extension'
+  permalink: '/tags/addon'
+  description: 'Installation and configuration of extensions and modules.'
+adminer:
+  label: 'Adminer'
+  permalink: '/tags/adminer'
+  description: 'Managing databases using Adminer.'
+aesecure:
+  label: 'AeSecure'
+  permalink: '/tags/aesecure'
+  description: 'Web security and protection (AeSecure).'
+ai:
+  label: 'Artificial Intelligence (AI)'
+  permalink: '/tags/ai'
+  description: 'Tools and concepts related to AI.'
+apache:
+  label: 'Apache HTTP Server'
+  permalink: '/tags/apache'
+  description: 'Configuration and troubleshooting for the Apache web server.'
+api:
+  label: 'API'
+  permalink: '/tags/api'
+  description: 'Development, consumption, and documentation of APIs.'
+assembly:
+  label: 'Assembly'
+  permalink: '/tags/assembly'
+  description: 'Programming in Assembly language.'
+autoflake:
+  label: 'Autoflake'
+  permalink: '/tags/autoflake'
+  description: 'Automatic cleaning of unused Python imports.'
+bash:
+  label: 'Bash'
+  permalink: '/tags/bash'
+  description: 'Scripts, commands, and tips for the Bash shell.'
+bdd:
+  label: 'BDD (Behavior-Driven Development)'
+  permalink: '/tags/bdd'
+  description: 'Development based on behavioral specifications.'
+behat:
+  label: 'Behat'
+  permalink: '/tags/behat'
+  description: 'Functional testing and BDD with Behat.'
+black:
+  label: 'Black (Formatter)'
+  permalink: '/tags/black'
+  description: 'Python code formatting using Black.'
+bluesky:
+  label: 'Bluesky'
+  permalink: '/tags/bluesky'
+  description: 'Content related to the decentralized social network Bluesky.'
+bookmark:
+  label: 'Bookmark'
+  permalink: '/tags/bookmark'
+  description: 'Tips for managing browser bookmarks.'
+bruno:
+  label: 'Bruno (API Client)'
+  permalink: '/tags/bruno'
+  description: 'Using the Bruno API client for testing requests.'
+captainhook:
+  label: 'CaptainHook'
+  permalink: '/tags/captainhook'
+  description: 'Managing Git Hooks with CaptainHook (PHP).'
+chrome:
+  label: 'Google Chrome'
+  permalink: '/tags/chrome'
+  description: 'Tips and configuration for the Chrome browser.'
+ci:
+  label: 'Continuous Integration (CI)'
+  permalink: '/tags/ci'
+  description: 'Implementing and configuring Continuous Integration.'
+code-quality:
+  label: 'Code Quality'
+  permalink: '/tags/code-quality'
+  description: 'Tools and practices to improve code quality (includes static analysis).'
+component:
+  label: 'Component / UI'
+  permalink: '/tags/component'
+  description: 'Creation and management of software or UI components.'
+composer:
+  label: 'Composer'
+  permalink: '/tags/composer'
+  description: 'Dependency manager for PHP.'
+console:
+  label: 'Console / CLI'
+  permalink: '/tags/console'
+  description: 'Commands and usage of the Command Line Interface.'
+cpanel:
+  label: 'cPanel'
+  permalink: '/tags/cpanel'
+  description: 'Managing web hosting with cPanel.'
+csv:
+  label: 'CSV'
+  permalink: '/tags/csv'
+  description: 'Processing and manipulation of CSV files.'
+customization:
+  label: 'Customization'
+  permalink: '/tags/customization'
+  description: 'Personalizing environments or applications.'
+cypress:
+  label: 'Cypress'
+  permalink: '/tags/cypress'
+  description: 'End-to-End testing with Cypress.'
+dagger:
+  label: 'Dagger'
+  permalink: '/tags/dagger'
+  description: 'CI/CD automation with Dagger.'
+dashboard:
+  label: 'Dashboard'
+  permalink: '/tags/dashboard'
+  description: 'Configuration and usage of monitoring dashboards.'
+database:
+  label: 'Database'
+  permalink: '/tags/database'
+  description: 'Concepts, administration, and queries for relational and NoSQL databases.'
+devcontainer:
+  label: 'DevContainer'
+  permalink: '/tags/devcontainer'
+  description: 'Containerized development environments (VS Code/Docker).'
+docker:
+  label: 'Docker'
+  permalink: '/tags/docker'
+  description: 'Containerization, Docker Compose, and image management.'
+docusaurus:
+  label: 'Docusaurus'
+  permalink: '/tags/docusaurus'
+  description: 'Documentation and tips for using Docusaurus.'
+docx:
+  label: 'DOCX (Microsoft Word)'
+  permalink: '/tags/docx'
+  description: 'Manipulation of Microsoft Word documents.'
+dood:
+  label: 'Dood'
+  permalink: '/tags/dood'
+  description: 'Tools and usage of Dood.'
+dos:
+  label: 'DOS / Command Prompt'
+  permalink: '/tags/dos'
+  description: 'Commands and environment of DOS/Windows Command Prompt.'
+encryption:
+  label: 'Encryption'
+  permalink: '/tags/encryption'
+  description: 'Encryption techniques and security best practices.'
+etl:
+  label: 'ETL'
+  permalink: '/tags/etl'
+  description: 'Data Extract, Transform, and Load processes.'
+excel:
+  label: 'Microsoft Excel'
+  permalink: '/tags/excel'
+  description: 'Formulas, VBA, and advanced usage of Excel.'
+fastapi:
+  label: 'FastAPI'
+  permalink: '/tags/fastapi'
+  description: 'Developing fast APIs with FastAPI (Python).'
+firefox:
+  label: 'Mozilla Firefox'
+  permalink: '/tags/firefox'
+  description: 'Tips and configuration for the Firefox browser.'
+frankenphp:
+  label: 'FrankenPHP'
+  permalink: '/tags/frankenphp'
+  description: 'Modern PHP application server based on Caddy.'
+ftp:
+  label: 'FTP (File Transfer Protocol)'
+  permalink: '/tags/ftp'
+  description: 'File transfer via FTP.'
+fzf:
+  label: 'fzf'
+  permalink: '/tags/fzf'
+  description: 'Fuzzy search in the command line.'
+gimp:
+  label: 'GIMP'
+  permalink: '/tags/gimp'
+  description: 'Image manipulation and creation with GIMP.'
+git:
+  label: 'Git'
+  permalink: '/tags/git'
+  description: 'Commands, workflow, and version control with Git.'
+github:
+  label: 'GitHub'
+  permalink: '/tags/github'
+  description: 'GitHub platform, features, and integrations.'
+gitlab:
+  label: 'GitLab'
+  permalink: '/tags/gitlab'
+  description: 'GitLab platform, CI/CD, and project management.'
+grumphp:
+  label: 'GrumPHP'
+  permalink: '/tags/grumphp'
+  description: 'GrumPHP for Git Hooks task checking.'
+gui:
+  label: 'GUI (Graphical User Interface)'
+  permalink: '/tags/gui'
+  description: 'Tools and usage of graphical user interfaces.'
+hooks:
+  label: 'Hooks'
+  permalink: '/tags/hooks'
+  description: 'Systems of hooks (Git, applications, etc.).'
+https:
+  label: 'HTTPS'
+  permalink: '/tags/https'
+  description: 'Securing web communications with HTTPS.'
+husky:
+  label: 'Husky'
+  permalink: '/tags/husky'
+  description: 'Managing Git Hooks with Husky (JavaScript).'
+iconify:
+  label: 'Iconify'
+  permalink: '/tags/iconify'
+  description: 'Using icon libraries like Iconify.'
+images:
+  label: 'Images'
+  permalink: '/tags/images'
+  description: 'Management, optimization, and manipulation of image files.'
+intelephense:
+  label: 'Intelephense'
+  permalink: '/tags/intelephense'
+  description: 'Language Server Protocol (LSP) for PHP in VS Code.'
+introspection:
+  label: 'Introspection'
+  permalink: '/tags/introspection'
+  description: 'Analysis and reflection on code or systems.'
+isort:
+  label: 'Isort'
+  permalink: '/tags/isort'
+  description: 'Sorting Python imports with Isort.'
+java:
+  label: 'Java'
+  permalink: '/tags/java'
+  description: 'Java development and tools.'
+javascript:
+  label: 'JavaScript'
+  permalink: '/tags/javascript'
+  description: 'JavaScript programming language and its ecosystem.'
+joomla:
+  label: 'Joomla'
+  permalink: '/tags/joomla'
+  description: 'Joomla Content Management System.'
+jq:
+  label: 'jq'
+  permalink: '/tags/jq'
+  description: 'Processing JSON data from the command line with jq.'
+json:
+  label: 'JSON'
+  permalink: '/tags/json'
+  description: 'Manipulation and formatting of JSON data.'
+keepass:
+  label: 'KeePass'
+  permalink: '/tags/keepass'
+  description: 'KeePass password manager.'
+laravel:
+  label: 'Laravel'
+  permalink: '/tags/laravel'
+  description: 'Laravel PHP framework.'
+limesurvey:
+  label: 'LimeSurvey'
+  permalink: '/tags/limesurvey'
+  description: 'Creating surveys and polls with LimeSurvey.'
+linux:
+  label: 'Linux'
+  permalink: '/tags/linux'
+  description: 'Administration, commands, and tips for Linux systems.'
+makefile:
+  label: 'Makefile'
+  permalink: '/tags/makefile'
+  description: 'Automating tasks with Makefiles.'
+markdown:
+  label: 'Markdown'
+  permalink: '/tags/markdown'
+  description: 'Syntax, tools, and conversion of Markdown documents.'
+matomo:
+  label: 'Matomo'
+  permalink: '/tags/matomo'
+  description: 'Self-hosted web analytics with Matomo.'
+mermaid:
+  label: 'Mermaid'
+  permalink: '/tags/mermaid'
+  description: 'Creating diagrams and charts from text.'
+mindmap:
+  label: 'Mindmap'
+  permalink: '/tags/mindmap'
+  description: 'Techniques and tools for mind mapping.'
+mink:
+  label: 'Mink'
+  permalink: '/tags/mink'
+  description: 'Acceptance testing framework for web applications.'
+monitoring:
+  label: 'Monitoring'
+  permalink: '/tags/monitoring'
+  description: 'System surveillance and alerting.'
+msaccess:
+  label: 'Microsoft Access'
+  permalink: '/tags/msaccess'
+  description: 'Database development with MS Access.'
+mssql-server:
+  label: 'MS SQL Server'
+  permalink: '/tags/mssql-server'
+  description: 'Administration and queries for Microsoft SQL Server.'
+mustache:
+  label: 'Mustache'
+  permalink: '/tags/mustache'
+  description: 'Mustache templating engine.'
+mypy:
+  label: 'mypy'
+  permalink: '/tags/mypy'
+  description: 'Static type checking for Python with mypy.'
+mysql:
+  label: 'MySQL / MariaDB'
+  permalink: '/tags/mysql'
+  description: 'Administration and queries for MySQL and MariaDB.'
+n0c:
+  label: 'n0c'
+  permalink: '/tags/n0c'
+  description: 'Management and configuration of the n0c hosting platform.'
+network:
+  label: 'Network'
+  permalink: '/tags/network'
+  description: 'Network configuration and protocols.'
+nginx:
+  label: 'Nginx'
+  permalink: '/tags/nginx'
+  description: 'Configuration and usage of the Nginx web server.'
+nodejs:
+  label: 'Node.js'
+  permalink: '/tags/nodejs'
+  description: 'Server-side JavaScript runtime environment.'
+note-taking:
+  label: 'Note Taking'
+  permalink: '/tags/note-taking'
+  description: 'Methods and tools for effective note-taking.'
+npm:
+  label: 'npm'
+  permalink: '/tags/npm'
+  description: 'Package manager for Node.js.'
+openapi:
+  label: 'OpenAPI / Swagger'
+  permalink: '/tags/openapi'
+  description: 'API specification and documentation with OpenAPI.'
+optimization:
+  label: 'Optimization'
+  permalink: '/tags/optimization'
+  description: 'Techniques to improve performance.'
+oracle:
+  label: 'Oracle Database'
+  permalink: '/tags/oracle'
+  description: 'Administration and queries for Oracle Database.'
+outlook:
+  label: 'Microsoft Outlook'
+  permalink: '/tags/outlook'
+  description: 'Tips and configuration for Microsoft Outlook.'
+pandas:
+  label: 'Pandas'
+  permalink: '/tags/pandas'
+  description: 'Python library for data analysis.'
+pandoc:
+  label: 'Pandoc'
+  permalink: '/tags/pandoc'
+  description: 'Universal document converter tool.'
+pascal:
+  label: 'Pascal'
+  permalink: '/tags/pascal'
+  description: 'Programming in the Pascal language.'
+pest:
+  label: 'Pest (PHP Testing)'
+  permalink: '/tags/pest'
+  description: 'Simple PHP unit testing framework.'
+phan:
+  label: 'Phan'
+  permalink: '/tags/phan'
+  description: 'Static code analysis tool for PHP with Phan.'
+php:
+  label: 'PHP'
+  permalink: '/tags/php'
+  description: 'PHP development, environment, and tips.'
+php-cs-fixer:
+  label: 'PHP-CS-Fixer'
+  permalink: '/tags/php-cs-fixer'
+  description: 'Tool for automatically fixing PHP coding standards.'
+php-grep:
+  label: 'PHP Grep'
+  permalink: '/tags/php-grep'
+  description: 'Searching within PHP files.'
+phpcbf:
+  label: 'PHPCBF'
+  permalink: '/tags/phpcbf'
+  description: 'PHP Code Beautifier and Fixer.'
+phpcs:
+  label: 'PHPCS'
+  permalink: '/tags/phpcs'
+  description: 'PHP Code Sniffer for checking coding standards.'
+phpdoc:
+  label: 'PHPDoc'
+  permalink: '/tags/phpdoc'
+  description: 'Generating documentation from PHP code.'
+phplint:
+  label: 'PHPLint'
+  permalink: '/tags/phplint'
+  description: 'PHP syntax checking.'
+phpmyadmin:
+  label: 'phpMyAdmin'
+  permalink: '/tags/phpmyadmin'
+  description: 'Web interface for managing MySQL/MariaDB.'
+phpstan:
+  label: 'PHPStan'
+  permalink: '/tags/phpstan'
+  description: 'Static analysis tool for PHP.'
+phpunit:
+  label: 'PHPUnit'
+  permalink: '/tags/phpunit'
+  description: 'PHP unit testing framework.'
+pipeline:
+  label: 'Pipeline / CI/CD'
+  permalink: '/tags/pipeline'
+  description: 'Setting up and managing CI/CD pipelines.'
+planethoster:
+  label: 'PlanetHoster'
+  permalink: '/tags/planethoster'
+  description: 'Web hosting and services by PlanetHoster.'
+plugin:
+  label: 'Plugin'
+  permalink: '/tags/plugin'
+  description: 'Development and usage of plugins.'
+postgresql:
+  label: 'PostgreSQL'
+  permalink: '/tags/postgresql'
+  description: 'Administration and queries for PostgreSQL.'
+postgrest:
+  label: 'PostgREST'
+  permalink: '/tags/postgrest'
+  description: 'Auto-generated REST API from a PostgreSQL database.'
+postman:
+  label: 'Postman'
+  permalink: '/tags/postman'
+  description: 'API testing and documentation tool (Postman).'
+powerpoint:
+  label: 'Microsoft PowerPoint'
+  permalink: '/tags/powerpoint'
+  description: 'Tips and usage of PowerPoint.'
+powershell:
+  label: 'PowerShell'
+  permalink: '/tags/powershell'
+  description: 'Scripts and commands for the Windows PowerShell shell.'
+pre-commit:
+  label: 'Pre-Commit'
+  permalink: '/tags/pre-commit'
+  description: 'Framework for managing pre-commit hooks.'
+prospector:
+  label: 'Prospector'
+  permalink: '/tags/prospector'
+  description: 'Python static code analysis tool.'
+putty:
+  label: 'PuTTY'
+  permalink: '/tags/putty'
+  description: 'SSH and Telnet client for Windows.'
+pydocstyle:
+  label: 'Pydocstyle'
+  permalink: '/tags/pydocstyle'
+  description: 'Checking Python docstring conventions.'
+pylint:
+  label: 'Pylint'
+  permalink: '/tags/pylint'
+  description: 'Python linter and code analyzer.'
+pyright:
+  label: 'Pyright'
+  permalink: '/tags/pyright'
+  description: 'Static type checker for Python (Microsoft).'
+python:
+  label: 'Python'
+  permalink: '/tags/python'
+  description: 'Python language development and its ecosystem.'
+quarto:
+  label: 'Quarto'
+  permalink: '/tags/quarto'
+  description: 'System for scientific and technical publishing.'
+rdp:
+  label: 'RDP (Remote Desktop Protocol)'
+  permalink: '/tags/rdp'
+  description: 'Remote connection and management via RDP.'
+react:
+  label: 'React'
+  permalink: '/tags/react'
+  description: 'JavaScript library for building user interfaces.'
+recraft:
+  label: 'Recraft (AI Design)'
+  permalink: '/tags/recraft'
+  description: 'AI-based design and image generation tool.'
+rectorphp:
+  label: 'RectorPHP'
+  permalink: '/tags/rectorphp'
+  description: 'Automatic refactoring tool for PHP.'
+refactoring:
+  label: 'Refactoring'
+  permalink: '/tags/refactoring'
+  description: 'Techniques and practices for improving code structure.'
+rest:
+  label: 'REST'
+  permalink: '/tags/rest'
+  description: 'Architecture and design of RESTful APIs.'
+revealjs:
+  label: 'Reveal.js'
+  permalink: '/tags/revealjs'
+  description: 'Creating HTML/Markdown presentations.'
+ribbon:
+  label: 'Microsoft Ribbon'
+  permalink: '/tags/ribbon'
+  description: 'Customizing the Microsoft Office Ribbon interface.'
+roundcube:
+  label: 'Roundcube'
+  permalink: '/tags/roundcube'
+  description: 'Roundcube webmail client.'
+ruff:
+  label: 'Ruff (Python Linter)'
+  permalink: '/tags/ruff'
+  description: 'Extremely fast Python linter.'
+scp:
+  label: 'SCP (Secure Copy)'
+  permalink: '/tags/scp'
+  description: 'Secure file transfer via SCP.'
+secrets:
+  label: 'Secrets Management'
+  permalink: '/tags/secrets'
+  description: 'Management and secure storage of sensitive information.'
+sed:
+  label: 'sed'
+  permalink: '/tags/sed'
+  description: 'Stream editor command-line tool (sed).'
+self-hosted:
+  label: 'Self-Hosted'
+  permalink: '/tags/self-hosted'
+  description: 'Software solutions hosted on one’s own server.'
+series:
+  label: 'Article Series'
+  permalink: '/tags/series'
+  description: 'Articles that are part of a thematic series.'
+sftp:
+  label: 'SFTP (SSH File Transfer Protocol)'
+  permalink: '/tags/sftp'
+  description: 'Secure file transfer via SFTP.'
+shell:
+  label: 'Shell'
+  permalink: '/tags/shell'
+  description: 'General commands and concepts of the command interpreter.'
+shellcheck:
+  label: 'ShellCheck'
+  permalink: '/tags/shellcheck'
+  description: 'Static analysis tool for shell scripts.'
+shellformat:
+  label: 'ShellFormat'
+  permalink: '/tags/shellformat'
+  description: 'Automatic formatting of shell scripts.'
+snippets:
+  label: 'Code Snippets'
+  permalink: '/tags/snippets'
+  description: 'Collections and use of reusable code fragments.'
+soap:
+  label: 'SOAP'
+  permalink: '/tags/soap'
+  description: 'XML-based information exchange protocol (SOAP).'
+sonarlint:
+  label: 'SonarLint'
+  permalink: '/tags/sonarlint'
+  description: 'Real-time code checking within the IDE.'
+spamassassin:
+  label: 'SpamAssassin'
+  permalink: '/tags/spamassassin'
+  description: 'Anti-spam filter.'
+sql:
+  label: 'SQL (Structured Query Language)'
+  permalink: '/tags/sql'
+  description: 'The Structured Query Language and database queries.'
+ssh:
+  label: 'SSH (Secure Shell)'
+  permalink: '/tags/ssh'
+  description: 'Secure remote connection and management via SSH.'
+sshpass:
+  label: 'SSHPass'
+  permalink: '/tags/sshpass'
+  description: 'Using non-interactive passwords with SSH.'
+ssl:
+  label: 'SSL / TLS'
+  permalink: '/tags/ssl'
+  description: 'Security certificates and the SSL/TLS protocol.'
+ssms:
+  label: 'SSMS (SQL Server Management Studio)'
+  permalink: '/tags/ssms'
+  description: 'Management tool for MS SQL Server.'
+swagger:
+  label: 'Swagger'
+  permalink: '/tags/swagger'
+  description: 'Tools and documentation based on the OpenAPI specification.'
+swizzle:
+  label: 'Docusaurus Swizzle'
+  permalink: '/tags/swizzle'
+  description: 'Customizing Docusaurus components.'
+synology:
+  label: 'Synology'
+  permalink: '/tags/synology'
+  description: 'Administration of Synology NAS servers.'
+telescope:
+  label: 'Laravel Telescope'
+  permalink: '/tags/telescope'
+  description: 'Debugging assistant for Laravel.'
+tests:
+  label: 'Testing'
+  permalink: '/tags/tests'
+  description: 'Strategies and tools for testing (unit, functional, etc.).'
+tips:
+  label: 'Tips & Tricks'
+  permalink: '/tags/tips'
+  description: 'Collection of practical advice and quick tips.'
+tool:
+  label: 'Tool / Utility'
+  permalink: '/tags/tool'
+  description: 'Recommendations and usage of general tools and utilities.'
+ubuntu:
+  label: 'Ubuntu'
+  permalink: '/tags/ubuntu'
+  description: 'Ubuntu operating system.'
+vba:
+  label: 'VBA (Visual Basic for Applications)'
+  permalink: '/tags/vba'
+  description: 'Programming macros in Microsoft Office applications.'
+vbs:
+  label: 'VBScript'
+  permalink: '/tags/vbs'
+  description: 'Scripts for the Windows environment (VBScript).'
+visualisation:
+  label: 'Data Visualization'
+  permalink: '/tags/visualisation'
+  description: 'Techniques and libraries for graphical data representation.'
+vscode:
+  label: 'VS Code'
+  permalink: '/tags/vscode'
+  description: 'Configuration, extensions, and tips for Visual Studio Code.'
+vulture:
+  label: 'Vulture (Python)'
+  permalink: '/tags/vulture'
+  description: 'Tool to find dead code in Python.'
+wamp:
+  label: 'WAMP'
+  permalink: '/tags/wamp'
+  description: 'WAMP development environment (Windows, Apache, MySQL, PHP).'
+windows:
+  label: 'Microsoft Windows'
+  permalink: '/tags/windows'
+  description: 'Administration, configuration, and tips for Windows.'
+windows-terminal:
+  label: 'Windows Terminal'
+  permalink: '/tags/windows-terminal'
+  description: 'Using and configuring the Windows Terminal application.'
+winget:
+  label: 'Winget'
+  permalink: '/tags/winget'
+  description: 'Package manager for Windows.'
+winscp:
+  label: 'WinSCP'
+  permalink: '/tags/winscp'
+  description: 'Graphical SFTP/FTP client for Windows.'
+wordpress:
+  label: 'WordPress'
+  permalink: '/tags/wordpress'
+  description: 'WordPress Content Management System.'
+workflow:
+  label: 'Workflow'
+  permalink: '/tags/workflow'
+  description: 'Optimization and standardization of work processes.'
+wsl:
+  label: 'WSL (Windows Subsystem for Linux)'
+  permalink: '/tags/wsl'
+  description: 'Running a Linux environment on Windows.'
+xml:
+  label: 'XML'
+  permalink: '/tags/xml'
+  description: 'eXtensible Markup Language.'
+xmlstarlet:
+  label: 'xmlstarlet'
+  permalink: '/tags/xmlstarlet'
+  description: 'Command-line utilities for XML manipulation.'
+yarn:
+  label: 'Yarn'
+  permalink: '/tags/yarn'
+  description: 'Fast, reliable, and secure dependency management for JavaScript.'
+zsh:
+  label: 'Zsh'
+  permalink: '/tags/zsh'
+  description: 'The Z shell and its configuration.'

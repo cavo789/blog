@@ -5,7 +5,7 @@ title: Opening a RDP connection to the Linux local instance
 authors: [christophe]
 description: Learn how to open an RDP connection to your WSLg Linux instance (Ubuntu) for a full graphical desktop environment. Follow this step-by-step guide to installing and configuring xrdp.
 mainTag: wsl
-tags: [wsl, wslg, docker, rdp]
+tags: [wsl, docker, rdp]
 image: /img/v2/wsl.webp
 ---
 ![Opening a RDP connection to the Linux local instance](/img/v2/wsl.webp)

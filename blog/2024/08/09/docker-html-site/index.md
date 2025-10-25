@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/v2/docker_tips.webp
 description: Run any static HTML website in seconds with just ONE Docker command. Skip the headache of installing and configuring Apache or Nginx for a quick local setup.
 mainTag: docker
-tags: [docker, easyphp, powershell, wamp]
+tags: [docker, powershell, wamp]
 blueskyRecordKey: 3lzxdp44mw223
 ---
 <!-- cspell:ignore easyphp,wamp,pffffiou,htdocs,lzxdp -->

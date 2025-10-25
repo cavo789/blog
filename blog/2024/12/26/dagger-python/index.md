@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/v2/dagger.webp
 description: Automate your CI/CD workflows with Dagger.io and Python. Quickly run code quality tools (Pylint, Black, Ruff) and test your entire pipeline locally to simplify integration.
 mainTag: dagger
-tags: [CI, dagger, Github, GitLab, pipeline, tip, workflow]
+tags: [ci, dagger, github, gitlab, tips, workflow]
 ---
 <!-- cspell:ignore pylint,pyproject,stopit,randint,workdir,pylintrc,docparams,mccabe,mypy -->
 <!-- cspell:ignore hadolint,xvfz,aaaaaargh,dind,dood,usermod -->

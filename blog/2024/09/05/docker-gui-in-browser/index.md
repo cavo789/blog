@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/v2/docker_gui.webp
 mainTag: docker
 description: Easily run Linux GUI applications like Firefox and GIMP in a Docker container and access them directly through your web browser with these simple commands.
-tags: [docker, firefox, gimp, tip]
+tags: [docker, firefox, gimp, tips]
 ---
 <!-- cspell:ignore seccomp,pgid,puid -->
 ![Docker - Running some GUI interfaces in the browser](/img/v2/docker_gui.webp)
@@ -78,4 +78,3 @@ Like earlier, now, just start your browser and surf to `http://localhost:3000` t
 ![Running GIMP in Docker](./images/gimp_in_docker.png)
 
 The MS-DOS version of the CLI is: `docker run -d --name=gimp --security-opt seccomp=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Etc/UTC -p 3000:3000 -p 3001:3001 -v %CD%/config:/config -v ./images:/images -w /images --restart unless-stopped lscr.io/linuxserver/gimp:latest`.
-

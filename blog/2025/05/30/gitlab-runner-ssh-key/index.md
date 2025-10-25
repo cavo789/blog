@@ -6,7 +6,7 @@ authors: [christophe]
 description: Step-by-step guide on configuring a GitLab CI/CD runner to securely use a private SSH key for accessing and cloning private repositories.
 image: /img/v2/gitlab.webp
 mainTag: gitlab
-tags: [CI, gitlab, ssh]
+tags: [ci, gitlab, ssh]
 blueskyRecordKey: 3lun2oxe3zs2r
 ---
 <!-- cspell:ignore libcrypto -->

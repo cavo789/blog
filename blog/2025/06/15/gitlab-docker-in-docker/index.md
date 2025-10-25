@@ -6,7 +6,7 @@ authors: [christophe]
 description: Learn how to set up Docker-out-of-Docker (DooD) in your GitLab CI/CD pipeline. This guide covers configuring your GitLab Runner to share the host's Docker socket and project files, allowing containers to run `docker run` commands.
 image: /img/v2/gitlab.webp
 mainTag: gitlab
-tags: [CI, dagger, dood, docker, gitlab, quarto]
+tags: [ci, dagger, dood, docker, gitlab, quarto]
 blueskyRecordKey: 3lun2kg2vmk2r
 ---
 ![GitLab - Running Docker-out-of-Docker in your CI](/img/v2/gitlab.webp)

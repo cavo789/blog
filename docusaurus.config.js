@@ -110,7 +110,7 @@ const config = {
           blogSidebarCount: "ALL",
           // showLastUpdateTime: true,
           // Useful options to enforce blogging best practices
-          onInlineTags: "warn",
+          onInlineTags: "throw",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "ignore",
           // Replace words like "vscode" or "markdown" to "VSCode" and "Markdown"

@@ -7,7 +7,7 @@ image: /img/v2/functional_tests.webp
 description: Get started with Cypress for functional testing. This comprehensive guide covers setup, running tests with Docker containers, synchronizing your test files, and capturing error screenshots.
 mainTag: tests
 series: Functional testing
-tags: [chrome, cypress, docker, javascript, node, tests]
+tags: [chrome, cypress, docker, javascript, nodejs, tests]
 blueskyRecordKey: 3lvnkku4dik2v
 ---
 ![Introduction to Cypress](/img/v2/functional_tests.webp)

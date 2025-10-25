@@ -48,7 +48,7 @@ help: ## Show the help with the list of commands
 	@printf $(_WHITE) "Retrieve the last version on https://github.com/cavo789/blog"
 
 
-	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-25s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 	@echo ""
 
 ##@ Blog                    Blog helpers (Note: the behavior will differs depending on the TARGET variable set in your .env file).
@@ -205,7 +205,28 @@ no-main-tag: ## Get the list of blog posts without mainTag defined in his YAML f
 	@clear
 	./.scripts/find-posts-without-maintag-yaml.sh
 
-.PHONY: most-used-tags
-most-used-tags: ## Get the list of the most used tags
+.PHONY: tags-manager
+tags-manager: ## Tags manager
 	@clear
-	docker run -it --rm -v ${PWD}:/app -w /app python sh -c "pip install pyyaml && python .scripts/most-used-tags.py"
+ifeq ($(strip $(ARGS)),)
+	@echo "--------------------------------------------------------"
+	@echo "🚨 ERROR: Missing command arguments (ARGS)."
+	@echo "--------------------------------------------------------"
+	@echo "USAGE EXAMPLE:"
+	@echo "  make tags-manager ARGS=\"delete tag\""
+	@echo ""
+	@echo "  make tags-manager ARGS=\"list\""
+	@echo "  make tags-manager ARGS=\"list --sort count\""
+	@echo "  make tags-manager ARGS=\"list --sort name\""
+	@echo ""
+	@echo "  make tags-manager ARGS=\"rename old,new\""
+	@echo ""
+	@echo "  make tags-manager ARGS=\"--help\""
+	@echo ""
+	@echo "For full help, run: make tags-manager ARGS=\"--help\""
+	@echo "--------------------------------------------------------"
+	@exit 1
+else
+	@echo "--- Running Tags Manager with arguments: $(ARGS) ---"
+	docker run -it --rm -v ${PWD}:/app -w /app python sh -c "pip install oyaml python-frontmatter > /dev/null 2>&1 && python .scripts/tags-manager.py $(ARGS)"
+endif

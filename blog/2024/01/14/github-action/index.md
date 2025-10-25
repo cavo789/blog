@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/v2/github_tips.webp
 description: Stop manual FTP deployments! Learn how to automate your blog's deployment with GitHub Actions. This step-by-step guide shows you how to set up the workflow and use repository secrets for automatic updates on every push.
 mainTag: github
-tags: [docusaurus, Github]
+tags: [docusaurus, github]
 ---
 ![GitHub - Use Actions to deploy this blog](/img/v2/github_tips.webp)
 
