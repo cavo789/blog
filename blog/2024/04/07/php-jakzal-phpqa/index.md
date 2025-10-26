@@ -1,13 +1,14 @@
 ---
-date: 2024-04-07
 slug: php-jakzal-phpqa
 title: Docker image that provides static analysis tools for PHP
+date: 2024-04-07
+description: Use the jakzal/phpqa Docker image to instantly run dozens of static analysis and code quality tools for your PHP codebase, including linters and fixers, without any installation.
 authors: [christophe]
 image: /img/v2/clean_code.webp
 series: code quality
-description: Use the jakzal/phpqa Docker image to instantly run dozens of static analysis and code quality tools for your PHP codebase, including linters and fixers, without any installation.
 mainTag: code-quality
 tags: [code-quality, composer, docker, laravel, php, php-cs-fixer, phpcs, phpcbf, refactoring]
+language: en
 ---
 ![Docker image that provides static analysis tools for PHP](/img/v2/clean_code.webp)
 

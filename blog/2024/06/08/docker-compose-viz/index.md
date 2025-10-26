@@ -1,12 +1,13 @@
 ---
-date: 2024-06-08
 slug: docker-compose-viz
 title: How to generate a graph from compose.yaml
+date: 2024-06-08
+description: Instantly visualize your Docker Compose architecture. Use `compose-viz` to generate a clear graph of services, dependencies, and exposed ports from your `compose.yaml` file.
 authors: [christophe]
 image: /img/v2/docker_tips.webp
-description: Instantly visualize your Docker Compose architecture. Use `compose-viz` to generate a clear graph of services, dependencies, and exposed ports from your `compose.yaml` file.
 mainTag: docker
 tags: [docker, visualisation, tips]
+language: en
 ---
 ![How to generate a graph from compose.yaml](/img/v2/docker_tips.webp)
 

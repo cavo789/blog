@@ -1,12 +1,13 @@
 ---
-date: 2024-12-26
 slug: dagger-python
 title: Dagger.io - Using dagger to automate your CI workflows
+date: 2024-12-26
+description: Automate your CI/CD workflows with Dagger.io and Python. Quickly run code quality tools (Pylint, Black, Ruff) and test your entire pipeline locally to simplify integration.
 authors: [christophe]
 image: /img/v2/dagger.webp
-description: Automate your CI/CD workflows with Dagger.io and Python. Quickly run code quality tools (Pylint, Black, Ruff) and test your entire pipeline locally to simplify integration.
 mainTag: dagger
 tags: [ci, dagger, github, gitlab, tips, workflow]
+language: en
 ---
 <!-- cspell:ignore pylint,pyproject,stopit,randint,workdir,pylintrc,docparams,mccabe,mypy -->
 <!-- cspell:ignore hadolint,xvfz,aaaaaargh,dind,dood,usermod -->

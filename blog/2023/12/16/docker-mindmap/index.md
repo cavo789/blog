@@ -1,12 +1,13 @@
 ---
-date: 2023-12-16
 slug: docker-mindmap
 title: Build a mind map using Docker and Markdown
+date: 2023-12-16
+description: Build an interactive mind map from Markdown text using the Markmap tool and Docker. Follow this step-by-step guide to convert your notes into a dynamic mind map HTML file.
 authors: [christophe]
 image: /img/v2/mindmaps.webp
 mainTag: mindmap
-description: Build an interactive mind map from Markdown text using the Markmap tool and Docker. Follow this step-by-step guide to convert your notes into a dynamic mind map HTML file.
 tags: [docker, mindmap, tips, visualisation]
+language: en
 ---
 ![Build a mind map using Docker and Markdown](/img/v2/mindmaps.webp)
 

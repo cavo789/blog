@@ -1,12 +1,13 @@
 ---
-date: 2025-05-25
 slug: excel-formatter
 title: Excel Formula Beautifier
+date: 2025-05-25
+description: Make your complex Excel formulas easy to read! Use the Excel Formula Beautifier to instantly format and clarify your spreadsheet formulas for better understanding.
 authors: [christophe]
 image: /img/v2/excel.webp
-description: Make your complex Excel formulas easy to read! Use the Excel Formula Beautifier to instantly format and clarify your spreadsheet formulas for better understanding.
 mainTag: excel
 tags: [excel, self-hosted]
+language: en
 blueskyRecordKey: 3lun2qjuxc22r
 ---
 ![Excel Formula Beautifier](/img/v2/excel.webp)

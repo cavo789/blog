@@ -1,12 +1,13 @@
 ---
-date: 2025-05-19
 slug: php-api-tips
 title: API REST - How to write good APIs
+date: 2025-05-19
+description: Master REST API best practices for clean and scalable design. Get tips on correct URI notation, using plural nouns, and utilizing HTTP verbs for semantically correct endpoints.
 authors: [christophe]
 image: /img/v2/api.webp
-description: Master REST API best practices for clean and scalable design. Get tips on correct URI notation, using plural nouns, and utilizing HTTP verbs for semantically correct endpoints.
 mainTag: api
 tags: [api, docker, php, rest]
+language: en
 blueskyRecordKey: 3lun2t72qus2r
 ---
 ![API REST - How to write good APIs](/img/v2/api.webp)

@@ -1,13 +1,14 @@
 ---
-date: 2024-03-30
 slug: linux-fzf-introduction
 title: Introduction to fzf - Fuzzy Finder
+date: 2024-03-30
+description: Master the Linux command line with fzf (Fuzzy Finder). Discover its powerful fuzzy search for history (CTRL+R) and file selection (CTRL+T) to boost your productivity.
 authors: [christophe]
 image: /img/v2/linux_tips.webp
-description: Master the Linux command line with fzf (Fuzzy Finder). Discover its powerful fuzzy search for history (CTRL+R) and file selection (CTRL+T) to boost your productivity.
 mainTag: linux
 tags: [bash, customization, fzf, linux, tips, linux]
-update: 2024/03/31
+language: en
+update: 2024-03-31
 ---
 ![Introduction to fzf - Fuzzy Finder](/img/v2/linux_tips.webp)
 

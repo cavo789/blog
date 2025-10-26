@@ -1,12 +1,13 @@
 ---
-date: 2024-04-28
 slug: docker-docusaurus-prod
 title: Encapsulate an entire Docusaurus site in a Docker image
+date: 2024-04-28
+description: Deploy your Docusaurus documentation site in production with Docker. Follow this step-by-step guide on creating a highly efficient, multi-stage Docker image.
 authors: [christophe]
 image: /img/v2/docusaurus_tips.webp
-description: Deploy your Docusaurus documentation site in production with Docker. Follow this step-by-step guide on creating a highly efficient, multi-stage Docker image.
 mainTag: docusaurus
 tags: [docker, docusaurus, nodejs, yarn]
+language: en
 ---
 <!-- cspell::ignore corepack,docusaurus,johndoe -->
 ![Encapsulate an entire Docusaurus site in a Docker image](/img/v2/docusaurus_tips.webp)

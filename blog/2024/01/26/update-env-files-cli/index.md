@@ -1,12 +1,13 @@
 ---
-date: 2024-01-26
 slug: update-env-files-cli
 title: Batch edit of environment file
+date: 2024-01-26
+description: Stop manually editing .env files! Learn how to use a simple Linux function to batch update environment variables safely for consistent deployment across all your servers.
 authors: [christophe]
 image: /img/v2/bash.webp
-description: Stop manually editing .env files! Learn how to use a simple Linux function to batch update environment variables safely for consistent deployment across all your servers.
 mainTag: linux
 tags: [.env, bash, linux, sed, tips]
+language: en
 ---
 ![Batch edit of environment file](/img/v2/bash.webp)
 

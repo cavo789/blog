@@ -1,12 +1,13 @@
 ---
-date: 2023-11-28
 slug: docker-java
 title: Play with Docker and Java
+date: 2023-11-28
+description: Learn how to compile and run Java applications using Docker. Set up a Java development environment quickly without local installation, perfect for developers new to Java and Docker.
 authors: [christophe]
 image: /img/v2/experiments.webp
-description: Learn how to compile and run Java applications using Docker. Set up a Java development environment quickly without local installation, perfect for developers new to Java and Docker.
 mainTag: java
 tags: [docker, java]
+language: en
 ---
 ![Play with Docker and Java](/img/v2/experiments.webp)
 

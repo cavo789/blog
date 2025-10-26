@@ -1,13 +1,14 @@
 ---
-date: 2025-08-30
 slug: pest-functional-testing
 title: Writing functional tests with Pest
+date: 2025-08-30
+description: Discover how to write clean and expressive functional tests using the Pest PHP testing framework.
 authors: [christophe]
 image: /img/v2/functional_tests.webp
 series: Functional testing
-description: Discover how to write clean and expressive functional tests using the Pest PHP testing framework.
 mainTag: component
 tags: [laravel, pest, php, tests]
+language: en
 blueskyRecordKey: 3lxm2amkjjk2m
 ---
 <!-- cspell:ignore  -->

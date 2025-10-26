@@ -1,12 +1,13 @@
 ---
-date: 2023-11-02
 slug: keepass-overriding-url
 title: KeePass - Overriding the URL field
-authors: [christophe]
+date: 2023-11-02
 description: Learn how to override the KeePass URL field to launch programs like PuTTY, WinSCP, or a Remote Desktop connection (RDP) directly from your entries.
+authors: [christophe]
+image: /img/v2/keepass.webp
 mainTag: keepass
 tags: [keepass, winscp, putty, rdp, tips]
-image: /img/v2/keepass.webp
+language: en
 ---
 ![KeePass - Overriding the URL field](/img/v2/keepass.webp)
 

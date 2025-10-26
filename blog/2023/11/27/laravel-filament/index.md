@@ -1,12 +1,13 @@
 ---
-date: 2023-11-27
 slug: laravel-filament
 title: Laravel Filament
+date: 2023-11-27
+description: Discover Laravel Filament, a collection of beautiful full-stack components for building administration interfaces with the TALL stack. A free alternative to Laravel Nova.
 authors: [christophe]
 image: /img/v2/laravel.webp
 mainTag: laravel
-description: Discover Laravel Filament, a collection of beautiful full-stack components for building administration interfaces with the TALL stack. A free alternative to Laravel Nova.
 tags: [laravel, php]
+language: en
 ---
 <!-- cspell:ignore ailwind,lpine,aravel,ivewire -->
 ![Laravel Filament](/img/v2/laravel.webp)

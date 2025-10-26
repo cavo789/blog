@@ -1,12 +1,13 @@
 ---
-date: 2023-12-22
 slug: docker-php-ini
 title: Update php.ini when using a Docker image
+date: 2023-12-22
+description: A step-by-step guide on how to update your php.ini file inside a Docker container using a compose.yaml volume mount. Solve common issues like maximum file upload size.
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
-description: A step-by-step guide on how to update your php.ini file inside a Docker container using a compose.yaml volume mount. Solve common issues like maximum file upload size.
 tags: [apache, docker, joomla, tips]
+language: en
 ---
 ![Update php.ini when using a Docker image](/img/v2/docker_tips.webp)
 

@@ -1,12 +1,13 @@
 ---
-date: 2023-12-19
 slug: bash-load-env
 title: Bash - Loading environment variables from a file
-authors: [christophe]
+date: 2023-12-19
 description: The reliable way to load .env configuration files into your Bash scripts. Use `source` with `set -o allexport` to safely import environment variables, even those with spaces.
+authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: bash
 tags: [bash, tips]
+language: en
 ---
 ![Bash - Loading environment variables from a file](/img/v2/bash.webp)
 

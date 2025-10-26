@@ -1,12 +1,13 @@
 ---
-date: 2024-02-21
 slug: vba-excel-call-soap-webservice
 title: MS Excel - How to call a SOAP web service
+date: 2024-02-21
+description: Master calling SOAP web services from MS Excel using VBA. Get the code and a step-by-step tutorial to validate VAT numbers with the VIES service.
 authors: [christophe]
 image: /img/v2/excel.webp
-description: Master calling SOAP web services from MS Excel using VBA. Get the code and a step-by-step tutorial to validate VAT numbers with the VIES service.
 mainTag: excel
 tags: [api, excel, ribbon, soap, vba]
+language: en
 ---
 ![MS Excel - How to call a SOAP web service](/img/v2/excel.webp)
 

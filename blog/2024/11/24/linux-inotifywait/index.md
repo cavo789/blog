@@ -1,13 +1,13 @@
 ---
-date: 2024-11-24
 slug: linux-inotifywait
 title: Keep running and count the number of files in a folder using inotifywait
-authors: [christophe]
+date: 2024-11-24
 description: Use Linux inotifywait to continuously monitor a directory and get a real-time, running count of newly created files with a simple Bash script.
+authors: [christophe]
 image: /img/v2/linux_tips.webp
 mainTag: bash
 tags: [linux, python, tips]
-
+language: en
 ---
 <!-- cspell:ignore joinpath,pathlib -->
 

@@ -1,12 +1,13 @@
 ---
-date: 2024-03-19
 slug: vbs-auto-update
 title: VBS - Auto update script
+date: 2024-03-19
+description: Automate updates for your VBS (Visual Basic Script) console scripts! Learn how to create a self-updating VBS file that connects to GitHub, checks for new versions, and overwrites itself.
 authors: [christophe]
 image: /img/v2/vbs.webp
 mainTag: github
-description: Automate updates for your VBS (Visual Basic Script) console scripts! Learn how to create a self-updating VBS file that connects to GitHub, checks for new versions, and overwrites itself.
 tags: [dos, github, vbs]
+language: en
 ---
 ![VBS - Auto update script](/img/v2/vbs.webp)
 

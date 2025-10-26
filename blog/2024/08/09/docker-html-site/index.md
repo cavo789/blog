@@ -1,12 +1,13 @@
 ---
-date: 2024-08-09
 slug: docker-html-site
 title: Running a HTML site in seconds using Docker
+date: 2024-08-09
+description: Run any static HTML website in seconds with just ONE Docker command. Skip the headache of installing and configuring Apache or Nginx for a quick local setup.
 authors: [christophe]
 image: /img/v2/docker_tips.webp
-description: Run any static HTML website in seconds with just ONE Docker command. Skip the headache of installing and configuring Apache or Nginx for a quick local setup.
 mainTag: docker
 tags: [docker, powershell, wamp]
+language: en
 blueskyRecordKey: 3lzxdp44mw223
 ---
 <!-- cspell:ignore easyphp,wamp,pffffiou,htdocs,lzxdp -->

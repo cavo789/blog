@@ -1,12 +1,13 @@
 ---
-date: 2024-07-19
 slug: linux-diff-file-folder
 title: Linux - Comparing two folders/files in the console
+date: 2024-07-19
+description: Efficiently compare two files or entire folders in Linux using the diff command. Get advanced bash scripts for industrial-level comparison.
 authors: [christophe]
 image: /img/v2/bash.webp
-description: Efficiently compare two files or entire folders in Linux using the diff command. Get advanced bash scripts for industrial-level comparison.
 mainTag: linux
 tags: [bash, linux, tips]
+language: en
 ---
 ![Linux - Comparing two folders/files in the console](/img/v2/bash.webp)
 

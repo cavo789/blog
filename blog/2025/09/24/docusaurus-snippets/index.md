@@ -1,14 +1,15 @@
 ---
 slug: docusaurus-snippets
 title: A component for showing code snippets in a Docusaurus blog
+date: 2025-09-24
+description: Learn how to build a custom React component to embed dynamic code snippets in your Docusaurus blog for a more interactive reader experience.
 authors: [christophe]
 image: /img/v2/docusaurus_react.webp
 series: Creating Docusaurus components
-description: Learn how to build a custom React component to embed dynamic code snippets in your Docusaurus blog for a more interactive reader experience.
 mainTag: component
 tags: [component, docusaurus, iconify, markdown, plugin, snippets]
+language: en
 blueskyRecordKey: 3lzkrxkfpo22m
-date: 2025-09-24
 ---
 <!-- markdownlint-disable MD046 -->
 <!-- cspell:ignore iconify,docux,pyproject -->

@@ -1,12 +1,13 @@
 ---
-date: 2024-07-28
 slug: linux-compare-two-versions-of-the-same-script
 title: Linux - Compare two versions of the same script
-authors: [christophe]
+date: 2024-07-28
 description: Use a simple Linux command-line trick with diff, grep, and awk to compare two versions of the same Bash script. Quickly identify missing or new functions across file versions or entire folders.
+authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: linux
 tags: [bash, introspection, linux, tips]
+language: en
 ---
 ![Linux - Compare two versions of the same script](/img/v2/bash.webp)
 

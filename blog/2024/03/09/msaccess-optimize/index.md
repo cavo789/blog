@@ -1,12 +1,13 @@
-﻿---
+---
 slug: msaccess-optimize
 title: How to optimize an existing MS Access database
+date: 2024-03-09
+description: Speed up your slow Microsoft Access database with this step-by-step optimization guide. Learn to improve table structure, use indexes, optimize queries, and compact your database for better performance.
 authors: [christophe]
 image: /img/v2/msaccess.webp
-description: Speed up your slow Microsoft Access database with this step-by-step optimization guide. Learn to improve table structure, use indexes, optimize queries, and compact your database for better performance.
 mainTag: msaccess
 tags: [database, msaccess, vba]
-date: 2024-03-09
+language: en
 ---
 ![How to optimize an existing MS Access database](/img/v2/msaccess.webp)
 

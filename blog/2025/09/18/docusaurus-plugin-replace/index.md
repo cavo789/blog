@@ -1,16 +1,16 @@
 ---
 slug: docusaurus-plugin-replace
 title: Creating a search&replace plugin for Docusaurus
+date: 2025-09-18
+description: Automatically replace “markdown” with “Markdown” across all your content to keep your posts consistent.
 authors: [christophe]
 image: /img/v2/docusaurus_component.webp
 series: Creating Docusaurus components
-description: Automatically replace “markdown” with “Markdown” across all your content to keep your posts consistent.
 mainTag: component
 tags: [component, docusaurus, react]
+language: en
 blueskyRecordKey: 3lz3pbmvd722f
-date: 2025-09-18
 ---
-
 <!-- cspell:ignore vstirbu -->
 
 ![Creating a search&replace plugin for Docusaurus](/img/v2/docusaurus_component.webp)

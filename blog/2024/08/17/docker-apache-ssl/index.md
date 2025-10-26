@@ -1,13 +1,14 @@
 ---
-date: 2024-08-17
 slug: docker-localhost-ssl
 title: Docker - Configure your localhost to use SSL
+date: 2024-08-17
+description: Configure your Docker localhost to use SSL (HTTPS). This step-by-step guide shows you how to set up self-signed certificates for Apache, Nginx, and PHP containers.
 authors: [christophe]
 image: /img/v2/docker_tips.webp
-description: Configure your Docker localhost to use SSL (HTTPS). This step-by-step guide shows you how to set up self-signed certificates for Apache, Nginx, and PHP containers.
 mainTag: ssl
 tags: [apache, docker, https, php, nginx, ssh]
-blueskyRecordKey:
+language: en
+blueskyRecordKey: null
 ---
 <!-- cspell:ignore htdocs,newkey,keyout,a2enmod,a2ensite,a2dissite,libapache2,unexpire,badaboum,socache,shmcb -->
 

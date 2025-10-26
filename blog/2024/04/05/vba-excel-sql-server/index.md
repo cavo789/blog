@@ -1,13 +1,14 @@
 ---
-date: 2024-04-05
 slug: vba-excel-sql-server
 title: MS Excel - Connect to a SQL Server database, run a query and get the results
+date: 2024-04-05
+description: Connect MS Excel to SQL Server with VBA. Run SQL queries, inject results directly into your spreadsheet, and preserve formatting. Learn the best method for data refresh or secure sharing.
 authors: [christophe]
 image: /img/v2/mssql.webp
-description: Connect MS Excel to SQL Server with VBA. Run SQL queries, inject results directly into your spreadsheet, and preserve formatting. Learn the best method for data refresh or secure sharing.
 series: MS Excel - Connect to a SQL Server database
 mainTag: excel
 tags: [excel, ribbon, mssql-server, vba]
+language: en
 blueskyRecordKey: 3lvnkbm63nc2v
 ---
 ![MS Excel - Connect to a SQL Server database, run a query and get the results](/img/v2/mssql.webp)

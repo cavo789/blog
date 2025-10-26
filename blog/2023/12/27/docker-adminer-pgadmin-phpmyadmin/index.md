@@ -1,12 +1,13 @@
 ---
-date: 2023-12-27
 slug: docker-adminer-pgadmin-phpmyadmin
 title: Using Adminer, pgadmin or phpmyadmin to access your Docker database container
-authors: [christophe]
+date: 2023-12-27
 description: Use Adminer, pgadmin, or phpmyadmin to access your Docker database container. Get the simple command-line instructions for MySQL, MariaDB, and PostgreSQL.
+authors: [christophe]
 image: /img/v2/database_admin.webp
 mainTag: database
 tags: [adminer, docker, mysql, postgresql]
+language: en
 ---
 ![Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/img/v2/database_admin.webp)
 

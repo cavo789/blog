@@ -1,13 +1,14 @@
 ---
-date: 2024-02-07
 slug: docusaurus-docker-own-blog
 title: Running your own blog with Docusaurus and Docker
+date: 2024-02-07
+description: Take full control of your self-hosted Docusaurus blog running in a Docker container. A step-by-step guide to site customization, volume mounting, and managing content.
 authors: [christophe]
 image: /img/v2/docusaurus_docker.webp
 series: Discovering Docusaurus
 mainTag: docusaurus
-description: Take full control of your self-hosted Docusaurus blog running in a Docker container. A step-by-step guide to site customization, volume mounting, and managing content.
 tags: [docker, docusaurus, nodejs, npm, tips, yarn]
+language: en
 ---
 ![Running your own blog with Docusaurus and Docker](/img/v2/docusaurus_docker.webp)
 

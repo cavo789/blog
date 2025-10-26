@@ -1,12 +1,13 @@
 ---
-date: 2023-11-21
 slug: frankenphp-docker-joomla
 title: FrankenPHP, a modern application server for PHP
+date: 2023-11-21
+description: Learn how to set up a Joomla website using Docker and FrankenPHP, a modern PHP server that's up to 3.5x faster than PHP-FPM. Includes a simple compose.yaml setup.
 authors: [christophe]
 image: /img/v2/frankenphp.webp
 mainTag: joomla
-description: Learn how to set up a Joomla website using Docker and FrankenPHP, a modern PHP server that's up to 3.5x faster than PHP-FPM. Includes a simple compose.yaml setup.
 tags: [docker, frankenphp, joomla]
+language: en
 ---
 ![FrankenPHP](/img/v2/frankenphp.webp)
 

@@ -1,13 +1,14 @@
 ---
-date: 2024-04-13
 slug: quarto-callout-blocks
 title: Quarto Callout Blocks
+date: 2024-04-13
+description: Discover the Quarto Callout Block syntax for creating attention-grabbing admonitions (Tips, Warnings, Cautions) in your reports. Includes a handy VSCode snippet.
 authors: [christophe]
 image: /img/v2/quarto.webp
 series: Discovering Quarto
-description: Discover the Quarto Callout Block syntax for creating attention-grabbing admonitions (Tips, Warnings, Cautions) in your reports. Includes a handy VSCode snippet.
 mainTag: quarto
 tags: [markdown, quarto, tips, vscode]
+language: en
 ---
 ![Quarto Callout Blocks](/img/v2/quarto.webp)
 

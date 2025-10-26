@@ -1,12 +1,13 @@
 ---
-date: 2024-10-17
 slug: docker-definition-like-im-five
 title: Docker - Explain me like I'm five - What's Docker for?
-authors: [christophe]
+date: 2024-10-17
 description: What is Docker? We use a simple recipe analogy to give you an easy-to-understand, 'explain like I'm five' definition of Docker images and containers.
+authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
 tags: [devcontainer, docker, python]
+language: en
 ---
 <!-- cspell:ignore Wépion,telework,virtualise -->
 

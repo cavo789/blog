@@ -1,12 +1,13 @@
 ---
-date: 2023-11-03
 slug: vscode-markdown-code-folding
 title: Markdown folding not working
+date: 2023-11-03
+description: Fix your VS Code Markdown code folding issue! Learn why folding may not be working and discover the simple solution to enable code blocks and headings folding for a cleaner editing experience.
 authors: [christophe]
-description:  Fix your VS Code Markdown code folding issue! Learn why folding may not be working and discover the simple solution to enable code blocks and headings folding for a cleaner editing experience.
+image: /img/v2/vscode_tips.webp
 mainTag: vscode
 tags: [vscode, markdown, tips]
-image: /img/v2/vscode_tips.webp
+language: en
 ---
 ![Markdown folding not working](/img/v2/vscode_tips.webp)
 

@@ -1,12 +1,13 @@
 ---
-date: 2025-01-25
 slug: docker-git
 title: Docker - Install and use Git in a container just like you do on your host
+date: 2025-01-25
+description: Improve your dev workflow! Learn to install and set up Git inside your Docker container by sharing your host's configuration and SSH key, allowing you to run all Git commands without exiting the container.
 authors: [christophe]
 image: /img/v2/git.webp
-description: Improve your dev workflow! Learn to install and set up Git inside your Docker container by sharing your host's configuration and SSH key, allowing you to run all Git commands without exiting the container.
 mainTag: docker
 tags: [devcontainer, docker, git, ssh, tips]
+language: en
 ---
 ![Docker - Install and use Git in a container just like you do on your host](/img/v2/git.webp)
 

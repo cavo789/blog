@@ -1,12 +1,13 @@
 ---
-date: 2023-11-27
 slug: vscode-sticky-scroll
 title: Sticky scroll in vscode
+date: 2023-11-27
+description: Enable VS Code's powerful Sticky Scroll feature! Keep contextual lines (like class, function, or section headings) pinned to the top of your editor for effortless code and document navigation.
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-description: Enable VS Code's powerful Sticky Scroll feature! Keep contextual lines (like class, function, or section headings) pinned to the top of your editor for effortless code and document navigation.
 tags: [php, tips, vscode]
+language: en
 ---
 ![Sticky scroll in vscode](/img/v2/vscode_tips.webp)
 

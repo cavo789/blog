@@ -1,12 +1,13 @@
 ---
 slug: docker-prod-devcontainer
 title: One Docker Image for Production and Devcontainers - The Clean Way
+date: 2025-10-13
+description: Learn how to design a Docker setup that delivers a secure, minimal production image while enabling effortless local development through VS Code Devcontainers with clean overrides and environment isolation
 authors: [christophe]
 image: /img/v2/docker_workflow_prod_devcontainer.webp
-description: Learn how to design a Docker setup that delivers a secure, minimal production image while enabling effortless local development through VS Code Devcontainers with clean overrides and environment isolation
 mainTag: docker
 tags: [devcontainer, docker, tips]
-date: 2025-10-13
+language: en
 blueskyRecordKey: 3m32ko2ssss2z
 ---
 <!-- cspell:ignore groupid,Debugpy -->
@@ -420,4 +421,3 @@ Press <kbd>F5</kbd> to start the debugger session.
 Go back to the browser, refresh the page and VSCode will break on that specific line.
 
 ![Success](./images/success.webp)
-

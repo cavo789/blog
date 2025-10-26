@@ -1,12 +1,13 @@
 ---
-date: 2023-11-03
 slug: docker-volume
 title: Share data between your running Docker container and your computer
+date: 2023-11-03
+description: Unlock data persistence in Docker! Learn how to use volumes (-v) to effectively share and manage files between your host machine and running containers.
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
 tags: [docker]
-description: Unlock data persistence in Docker! Learn how to use volumes (-v) to effectively share and manage files between your host machine and running containers.
+language: en
 ---
 ![Share data between your running Docker container and your computer](/img/v2/docker_tips.webp)
 

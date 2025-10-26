@@ -1,12 +1,13 @@
 ---
-date: 2024-04-01
 slug: windows-terminal
 title: Windows Terminal
+date: 2024-04-01
+description: A complete guide to Windows Terminal. Discover how to install, customize profiles, use backgrounds, and configure settings for WSL, Docker, and multi-tab startup actions.
 authors: [christophe]
 image: /img/v2/windows_terminal_tips.webp
-description: A complete guide to Windows Terminal. Discover how to install, customize profiles, use backgrounds, and configure settings for WSL, Docker, and multi-tab startup actions.
 mainTag: customization
 tags: [console, customization, dos, windows-terminal, wsl]
+language: en
 ---
 <!-- cspell:ignore wekyb,bbwe,xmens -->
 ![Windows Terminal](/img/v2/windows_terminal_tips.webp)

@@ -1,15 +1,15 @@
 ---
 slug: docusaurus-go-top
 title: Providing a go to the top button in Docusaurus posts
+date: 2025-09-12
+description: A Scroll to top button for long Docusaurus posts
 authors: [christophe]
 image: /img/v2/go_top_banner.webp
 mainTag: component
-description: A Scroll to top button for long Docusaurus posts
 tags: [component, docusaurus]
+language: en
 blueskyRecordKey: 3lynkx4gkjk2c
-date: 2025-09-12
 ---
-
 <!-- cspell:ignore  -->
 
 ![Providing a go to the top button in Docusaurus posts](/img/v2/go_top_banner.webp)

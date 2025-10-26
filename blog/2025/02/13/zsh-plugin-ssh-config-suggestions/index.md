@@ -1,12 +1,13 @@
 ---
-date: 2025-02-13
 slug: zsh-plugin-ssh-config-suggestions
 title: SSH - Autosuggestions with ZSH
+date: 2025-02-13
+description: Get instant SSH autosuggestions in ZSH. Learn to install the zsh-ssh-config-suggestions plugin and display all your ~/.ssh/config aliases with a simple TAB press.
 authors: [christophe]
 image: /img/v2/ssh.webp
-description: Get instant SSH autosuggestions in ZSH. Learn to install the zsh-ssh-config-suggestions plugin and display all your ~/.ssh/config aliases with a simple TAB press.
 mainTag: ssh
 tags: [customization, linux, ssh, wsl, zsh]
+language: en
 blueskyRecordKey: 3lwgca4zqh22i
 ---
 ![SSH - Autosuggestions with ZSH](/img/v2/ssh.webp)

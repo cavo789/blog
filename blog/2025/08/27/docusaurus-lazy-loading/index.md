@@ -1,16 +1,16 @@
 ---
-date: 2025-08-27
 slug: docusaurus-lazy-loading
 title: Overrides the generation of img tags with Docusaurus
+date: 2025-08-27
+description: Learn how to customize the rendering of <img> tags in Docusaurus for enhanced control over image output.
 authors: [christophe]
 image: /img/v2/docusaurus_component.webp
 series: Creating Docusaurus components
-description: Learn how to customize the rendering of <img> tags in Docusaurus for enhanced control over image output.
 mainTag: component
 tags: [component, docusaurus, react]
+language: en
 blueskyRecordKey: 3lxekkxhjwc26
 ---
-
 <!-- cspell:ignore -->
 
 ![Overrides the generation of img tags with Docusaurus](/img/v2/docusaurus_component.webp)

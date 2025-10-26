@@ -1,12 +1,13 @@
 ---
-date: 2024-03-03
 slug: vscode-errorlens
 title: Error Lens addon for VSCode
-authors: [christophe]
-mainTag: vscode
+date: 2024-03-03
 description: Never miss a warning again! The VSCode Error Lens addon shows errors, notices, and warnings directly in your editor's coding area, helping you write better code faster and catch typos that lead to silent bugs.
-tags: [addon, vscode]
+authors: [christophe]
 image: /img/v2/vscode_tips.webp
+mainTag: vscode
+tags: [addon, vscode]
+language: en
 ---
 ![Error Lens addon for VSCode](/img/v2/vscode_tips.webp)
 

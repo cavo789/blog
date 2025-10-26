@@ -1,12 +1,13 @@
 ---
-date: 2024-01-26
 slug: compare-env-files-cli
 title: Compare environment files in the Linux console
+date: 2024-01-26
+description: Struggling to sync your .env and .env.example files? Learn a powerful Linux CLI command using diff, grep, and sort to accurately compare environment variables and skip comments.
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: linux
-description: Struggling to sync your .env and .env.example files? Learn a powerful Linux CLI command using diff, grep, and sort to accurately compare environment variables and skip comments.
 tags: [.env, bash, linux, sed, tips]
+language: en
 ---
 ![Compare environment files in the Linux console](/img/v2/bash.webp)
 

@@ -1,13 +1,14 @@
 ---
-date: 2024-01-08
 slug: docusaurus-number-of-posts
 title: Getting the number of published posts
+date: 2024-01-08
+description: Learn the quick and easy way to display the total number of published blog posts on your Docusaurus site using custom components and theme API.
 authors: [christophe]
 image: /img/v2/docusaurus_tips.webp
 series: Discovering Docusaurus
-description: Learn the quick and easy way to display the total number of published blog posts on your Docusaurus site using custom components and theme API.
 mainTag: docusaurus
 tags: [markdown, docusaurus, tips]
+language: en
 ---
 <!-- cspell:ignore autoriser,collage -->
 ![Getting the number of published posts](/img/v2/docusaurus_tips.webp)

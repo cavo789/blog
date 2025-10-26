@@ -1,12 +1,13 @@
 ---
 slug: gemini-meerkat
 title: How I used Google Gemini Nano Banana on my blog
+date: 2025-09-29
+description: See how Google Gemini Nano was used to generate all the custom images for this blog, including a meerkat mascot. Get prompting tips and see the impressive results.
 authors: [christophe]
 image: /img/v2/gemini.webp
 mainTag: ai
-description: See how Google Gemini Nano was used to generate all the custom images for this blog, including a meerkat mascot. Get prompting tips and see the impressive results.
 tags: [ai, images]
-date: 2025-09-29
+language: en
 blueskyRecordKey: 3lzxdr6w3e223
 ---
 <!-- markdownlint-disable MD049 -->

@@ -1,12 +1,13 @@
 ---
-date: 2023-11-03
 slug: wsl-windows-explorer
 title: Open your Linux folder in Windows Explorer
-authors: [christophe]
-mainTag: wsl
+date: 2023-11-03
 description: Access your Linux files in Windows Explorer! Learn the simple command to open your current WSL folder and how to quickly fix the "wsl.localhost is not accessible" error.
-tags: [tips, wsl, windows]
+authors: [christophe]
 image: /img/v2/wsl.webp
+mainTag: wsl
+tags: [tips, wsl, windows]
+language: en
 ---
 <!-- cspell:ignore cbfsconnect -->
 ![Open your Linux folder in Windows Explorer](/img/v2/wsl.webp)

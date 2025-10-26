@@ -1,12 +1,13 @@
 ---
-date: 2025-04-24
 slug: windows-terminal-background
 title: Use a background image in your Windows Terminal console
-authors: [christophe]
+date: 2025-04-24
 description: Customize your Windows Terminal! Follow this simple, step-by-step guide to set a cool background image in your console and ditch the old, boring black screen.
+authors: [christophe]
 image: /img/v2/windows_terminal_customization.webp
 mainTag: customization
 tags: [console, customization, dos, windows-terminal, wsl]
+language: en
 blueskyRecordKey: 3lvnjj5g4ic2v
 ---
 ![Use a background image in your Windows Terminal console](/img/v2/windows_terminal_customization.webp)

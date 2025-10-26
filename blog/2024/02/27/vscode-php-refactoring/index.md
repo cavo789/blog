@@ -1,12 +1,13 @@
 ---
-date: 2024-02-27
 slug: vscode-php-refactoring
 title: PHP code refactoring in VSCode
+date: 2024-02-27
+description: Master PHP code refactoring in VSCode with this guide. Use the free PHP Refactor Tool extension to safely rename symbols, classes, and extract new methods.
 authors: [christophe]
+image: /img/v2/vscode_tips.webp
 mainTag: php
 tags: [php, refactoring, tips, vscode]
-description: Master PHP code refactoring in VSCode with this guide. Use the free PHP Refactor Tool extension to safely rename symbols, classes, and extract new methods.
-image: /img/v2/vscode_tips.webp
+language: en
 ---
 ![PHP code refactoring in VSCode](/img/v2/vscode_tips.webp)
 

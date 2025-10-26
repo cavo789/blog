@@ -1,13 +1,14 @@
 ---
-date: 2024-04-13
 slug: quarto-inline-style
 title: Quarto Inline style
-authors: [christophe]
+date: 2024-04-13
 description: Quickly apply inline CSS styles in Quarto for HTML documents using the []{}  syntax. Highlight text instantly without writing a full CSS class.
+authors: [christophe]
 image: /img/v2/quarto.webp
 series: Discovering Quarto
 mainTag: quarto
 tags: [markdown, quarto, tips]
+language: en
 ---
 ![Quarto Inline style](/img/v2/quarto.webp)
 

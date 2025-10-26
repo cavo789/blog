@@ -1,12 +1,13 @@
 ---
-date: 2023-12-13
 slug: linux-jq
 title: The jq utility for Linux
+date: 2023-12-13
+description: Use the powerful Linux jq utility to manipulate JSON data, prettify output, and filter nodes directly from your command line and shell scripts.
 authors: [christophe]
 image: /img/v2/json.webp
 mainTag: linux
-description: Use the powerful Linux jq utility to manipulate JSON data, prettify output, and filter nodes directly from your command line and shell scripts.
 tags: [bash, json, jq, linux, tips]
+language: en
 ---
 <!-- cspell:ignore Salomé -->
 ![The jq utility for Linux](/img/v2/json.webp)

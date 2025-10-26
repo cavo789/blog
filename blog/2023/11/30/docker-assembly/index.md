@@ -1,12 +1,13 @@
 ---
-date: 2023-11-30
 slug: docker-assembly
 title: Play with Docker and Assembly programming language
+date: 2023-11-30
+description: Learn how to combine modern Docker technology with the classic x86 Assembly programming language. This guide provides a step-by-step "Hello, World!" example for both MS-DOS and Linux environments.
 authors: [christophe]
 image: /img/v2/experiments.webp
-description: Learn how to combine modern Docker technology with the classic x86 Assembly programming language. This guide provides a step-by-step "Hello, World!" example for both MS-DOS and Linux environments.
 mainTag: assembly
 tags: [docker, assembly]
+language: en
 ---
 <!-- cspell:ignore erminate,esident,esolang,nasm -->
 ![Play with Docker and Assembly programming language](/img/v2/experiments.webp)

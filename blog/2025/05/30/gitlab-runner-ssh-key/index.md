@@ -1,12 +1,13 @@
 ---
-date: 2025-05-30
 slug: gitlab-runner-ssh-key
 title: GitLab - Using a SSH key to connect to private repo
-authors: [christophe]
+date: 2025-05-30
 description: Step-by-step guide on configuring a GitLab CI/CD runner to securely use a private SSH key for accessing and cloning private repositories.
+authors: [christophe]
 image: /img/v2/gitlab.webp
 mainTag: gitlab
 tags: [ci, gitlab, ssh]
+language: en
 blueskyRecordKey: 3lun2oxe3zs2r
 ---
 <!-- cspell:ignore libcrypto -->

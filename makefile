@@ -162,14 +162,9 @@ upgrade: ## Upgrade docusaurus and npm dependencies
 ##@ Utilities
 
 .PHONY: add-date
-add-date: ## Add the "date:" key in the YAML front matter if missing
+add-date: ## Add the "date:" key in the YAML front matter if missing based on the tree structure (i.e. blog/YYYY/MM/DD/slug/index.md)
 	@clear
 	./.scripts/add-date-in-blog-post.sh
-
-.PHONY: add-language
-add-language: ## Add the "inLanguage: en-GB" key in the YAML front matter if missing
-	@clear
-	./.scripts/add-language-in-blog-post.sh
 
 .PHONY: check-images
 check-images: ## Browse some pages and run some checks on images
@@ -190,20 +185,11 @@ extract-inline-snippets: ## Extract inline snippets
 invalid-language: ## Show invalid languages in docblock like ```env (not supported by Prism)
 	@clear
 	./.scripts/find-invalid-language.sh
+
 .PHONY: snippets
 snippets: ## Replace <detail><summary>(filename)</summary>(content)</detail> with <Snippets filename="(filename)">(content)</Snippets>
 	@clear
 	./.scripts/replace-details-with-snippets.sh
-
-.PHONY: not-yet-shared
-not-yet-shared: ## Get the list of blog posts not yet shared on BlueSky
-	@clear
-	./.scripts/find-posts-without-bluesky-repost.sh
-
-.PHONY: no-main-tag
-no-main-tag: ## Get the list of blog posts without mainTag defined in his YAML front matter
-	@clear
-	./.scripts/find-posts-without-maintag-yaml.sh
 
 .PHONY: tags-manager
 tags-manager: ## Tags manager
@@ -213,6 +199,8 @@ ifeq ($(strip $(ARGS)),)
 	@echo "🚨 ERROR: Missing command arguments (ARGS)."
 	@echo "--------------------------------------------------------"
 	@echo "USAGE EXAMPLE:"
+	@echo "  make tags-manager ARGS=\"--help\""
+	@echo ""
 	@echo "  make tags-manager ARGS=\"delete tag\""
 	@echo ""
 	@echo "  make tags-manager ARGS=\"list\""
@@ -229,4 +217,51 @@ ifeq ($(strip $(ARGS)),)
 else
 	@echo "--- Running Tags Manager with arguments: $(ARGS) ---"
 	docker run -it --rm -v ${PWD}:/app -w /app python sh -c "pip install oyaml python-frontmatter > /dev/null 2>&1 && python .scripts/tags-manager.py $(ARGS)"
+endif
+
+
+.PHONY: yaml-manager
+yaml-manager: ## YAML front matter manager
+	@clear
+
+ifeq ($(strip $(ARGS)),)
+	@echo "--------------------------------------------------------"
+	@echo "🚨 ERROR: Missing command arguments (ARGS)."
+	@echo "--------------------------------------------------------"
+	@echo "USAGE EXAMPLE:"
+	@echo "  make yaml-manager ARGS=\"--help\""
+	@echo ""
+	@echo "  make yaml-manager ARGS=\"add-key --help\""
+	@echo "  make yaml-manager ARGS=\"add-key language,en\""
+	@echo ""
+	@echo "  make yaml-manager ARGS=\"check-duplicates --help\""
+	@echo "  make yaml-manager ARGS=\"check-duplicates\""
+	@echo ""
+	@echo "  make yaml-manager ARGS=\"cleanup-variants --help\""
+	@echo "  make yaml-manager ARGS=\"cleanup-variants language lang,langue\""
+	@echo ""
+	@echo "  make yaml-manager ARGS=\"find-missing --help\""
+	@echo "  make yaml-manager ARGS=\"find-missing language\""
+	@echo ""
+	@echo "  make yaml-manager ARGS=\"find-present --help\""
+	@echo "  make yaml-manager ARGS=\"find-present updated\""
+	@echo ""
+	@echo "  make yaml-manager ARGS=\"list-keys --help\""
+	@echo "  make yaml-manager ARGS=\"list-keys\""
+	@echo ""
+	@echo "  make yaml-manager ARGS=\"list-values --help\""
+	@echo "  make yaml-manager ARGS=\"list-values\""
+	@echo ""
+	@echo "  make yaml-manager ARGS=\"remove-key --help\""
+	@echo "  make yaml-manager ARGS=\"remove-key old_key\""
+	@echo ""
+	@echo "  make yaml-manager ARGS=\"reorder --help\""
+	@echo "  make yaml-manager ARGS=\"reorder\""
+	@echo ""
+	@echo "For full help, run: make yaml-manager ARGS=\"--help\""
+	@echo "--------------------------------------------------------"
+	@exit 1
+else
+	@echo "--- Running Yaml Manager with arguments: $(ARGS) ---"
+	docker run -it --rm -v ${PWD}:/app -w /app python sh -c "pip install oyaml python-frontmatter > /dev/null 2>&1 && python .scripts/yaml-manager.py $(ARGS)"
 endif

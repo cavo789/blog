@@ -1,12 +1,13 @@
 ---
-date: 2023-12-25
 slug: makefile-help
 title: Linux Makefile - Adding a help screen
-authors: [christophe]
+date: 2023-12-25
 description: Implement a beautiful and clear help screen in your Linux Makefile. A simple guide to automatically list all targets, descriptions, and create grouped sections.
+authors: [christophe]
 image: /img/v2/makefile.webp
 mainTag: makefile
 tags: [makefile, tips]
+language: en
 ---
 ![Linux Makefile - Adding a help screen](/img/v2/makefile.webp)
 

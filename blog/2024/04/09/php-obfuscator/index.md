@@ -1,12 +1,13 @@
 ---
-date: 2024-04-09
 slug: php-obfuscator
 title: Obfuscate your PHP code
-authors: [christophe]
+date: 2024-04-09
 description: Protect your PHP code with obfuscation. Discover how the php_obfuscator script works and if AI tools like Copilot can still de-obfuscate your proprietary source code.
+authors: [christophe]
 image: /img/v2/obfuscated_code.webp
 mainTag: php
 tags: [code-quality, ai, php]
+language: en
 ---
 <!-- cspell:ignore ctype, fgets, ppmb, ppmc, ppms, ppmu, ppmw, ppmx, ppnc, ppnt, ppnx, ppny, ppnz, strlen, strpos, strtolower -->
 

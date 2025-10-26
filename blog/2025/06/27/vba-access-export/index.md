@@ -1,12 +1,13 @@
 ---
-date: 2025-06-27
 slug: vba-access-export
 title: Export MS Access objects
+date: 2025-06-27
+description: Easily version control your MS Access database! Export all VBA code, forms, modules, queries, and reports to flat files using a simple VBS script for GitHub integration.
 authors: [christophe]
 image: /img/v2/msaccess.webp
 mainTag: msaccess
-description: Easily version control your MS Access database! Export all VBA code, forms, modules, queries, and reports to flat files using a simple VBS script for GitHub integration.
 tags: [database, msaccess, vba, vbs]
+language: en
 blueskyRecordKey: 3lumzv3n42c2r
 ---
 ![Export MS Access objects](/img/v2/msaccess.webp)

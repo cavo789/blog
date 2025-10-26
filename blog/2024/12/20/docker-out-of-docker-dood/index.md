@@ -1,12 +1,13 @@
 ---
-date: 2024-12-20
 slug: docker-out-of-docker-dood
 title: Docker-out-of-Docker aka DooD
-authors: [christophe]
+date: 2024-12-20
 description: Master Docker-out-of-Docker (DooD) to run Docker commands inside a container. A practical guide covering setup for root and secure unprivileged users via Docker socket mounting.
+authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
 tags: [docker]
+language: en
 ---
 <!-- cspell:ignore phplint,dind,dood,groupid,johndoe,addgroup,adduser,getent,metin,meyay -->
 

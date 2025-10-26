@@ -1,12 +1,13 @@
 ---
-date: 2025-01-19
 slug: php-grep-searching-at-lightning-speed
 title: Search your FTP server at lightning speed
+date: 2025-01-19
+description: Tired of painfully slow FTP search functions? Discover php_grep, the ultra-fast PHP script that uses regular expressions to find content on your FTP server at lightning speed.
 authors: [christophe]
 image: /img/v2/winscp.webp
-description: Tired of painfully slow FTP search functions? Discover php_grep, the ultra-fast PHP script that uses regular expressions to find content on your FTP server at lightning speed.
 mainTag: winscp
 tags: [ftp, php-grep, tips, winscp]
+language: en
 ---
 ![Search your FTP server at lightning speed](/img/v2/winscp.webp)
 

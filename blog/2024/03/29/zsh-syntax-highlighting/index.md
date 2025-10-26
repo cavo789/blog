@@ -1,12 +1,13 @@
 ---
-date: 2024-03-29
 slug: zsh-syntax-highlighting
 title: Syntax highlighting in the console using ZSH
+date: 2024-03-29
+description: Enhance your Zsh console with syntax highlighting! See commands turn green (valid) or red (invalid) as you type. Quick installation guide for zsh-syntax-highlighting.
 authors: [christophe]
 image: /img/v2/zsh.webp
 mainTag: zsh
-description: Enhance your Zsh console with syntax highlighting! See commands turn green (valid) or red (invalid) as you type. Quick installation guide for zsh-syntax-highlighting.
 tags: [customization, linux, wsl, zsh]
+language: en
 ---
 ![Syntax highlighting in the console using ZSH](/img/v2/zsh.webp)
 

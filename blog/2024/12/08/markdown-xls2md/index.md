@@ -1,12 +1,13 @@
 ---
-date: 2024-12-08
 slug: markdown-xls2md
 title: Markdown - Convert Excel ranges to Markdown tables
-authors: [christophe]
+date: 2024-12-08
 description: Easily convert Excel ranges into clean Markdown tables with the XLS2MD online tool. Just copy your cells and paste to generate the code and a live HTML preview.
+authors: [christophe]
 image: /img/v2/markdown.webp
 mainTag: excel
 tags: [excel, markdown, tips]
+language: en
 ---
 ![Markdown - Convert Excel ranges to Markdown tables](/img/v2/markdown.webp)
 

@@ -1,12 +1,13 @@
 ---
-date: 2023-12-05
 slug: docker_uptime_kuma
 title: Self-hosted monitoring tool
+date: 2023-12-05
+description: Learn how to easily set up Uptime Kuma, a free, self-hosted website monitoring tool, using a simple Docker command. Keep track of your sites' uptime, ensure data persistence, and configure notifications.
 authors: [christophe]
 image: /img/v2/docker_playing_with_app.webp
 mainTag: docker
-description: Learn how to easily set up Uptime Kuma, a free, self-hosted website monitoring tool, using a simple Docker command. Keep track of your sites' uptime, ensure data persistence, and configure notifications.
 tags: [docker, monitoring, tool]
+language: en
 ---
 <!-- cspell:ignore kuma,louislam -->
 ![Self-hosted monitoring tool](/img/v2/docker_playing_with_app.webp)

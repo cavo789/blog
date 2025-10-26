@@ -1,12 +1,13 @@
 ---
-date: 2024-06-16
 slug: vscode-php-getter-setter
 title: PHP Getter and Setter in VSCode
-authors: [christophe]
+date: 2024-06-16
 description: Implement secure PHP Getters and Setters in VSCode effortlessly. Learn the best practices for private class properties and use the recommended extension to generate them instantly.
+authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
 tags: [tips, vscode]
+language: en
 ---
 <!-- cspell:ignore strtolower -->
 ![PHP Getter and Setter in VSCode](/img/v2/vscode_tips.webp)

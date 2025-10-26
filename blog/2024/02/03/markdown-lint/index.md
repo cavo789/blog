@@ -1,13 +1,14 @@
 ---
-date: 2024-02-03
 slug: markdown-lint
 title: Markdown linter - solve formatting issue in md files
+date: 2024-02-03
+description: Automatically solve Markdown formatting issues with the markdownlint tool and Docker. Learn how to check, configure, and use the --fix flag for consistent, clean .md files.
 authors: [christophe]
 image: /img/v2/clean_code.webp
 series: code quality
-description: Automatically solve Markdown formatting issues with the markdownlint tool and Docker. Learn how to check, configure, and use the --fix flag for consistent, clean .md files.
 mainTag: code-quality
 tags: [code-quality, makefile, markdown, tips, vscode]
+language: en
 ---
 ![Markdown linter - solve formatting issue in md files](/img/v2/clean_code.webp)
 

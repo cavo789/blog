@@ -1,16 +1,16 @@
 ---
-date: 2025-08-21
 slug: docusaurus-override-img
 title: Change how Docusaurus will create img tags
+date: 2025-08-21
+description: Customize the way Docusaurus generates <img> tags to better control image rendering and behavior.
 authors: [christophe]
 image: /img/v2/docusaurus_component.webp
 series: Creating Docusaurus components
-description: Customize the way Docusaurus generates <img> tags to better control image rendering and behavior.
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
+language: en
 blueskyRecordKey: 3lww5fbh2y22q
 ---
-
 <!-- cspell:ignore rgba,toggleable,unshift -->
 
 ![Change how Docusaurus will create img tags](/img/v2/docusaurus_component.webp)

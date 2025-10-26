@@ -1,12 +1,13 @@
 ---
-date: 2024-07-17
 slug: sql-formatter
 title: SQL - Formatting tool
+date: 2024-07-17
+description: Easily clean up unreadable, legacy SQL code with a simple formatting tool. Make your SQL queries instantly readable and kickstart your code review process.
 authors: [christophe]
 image: /img/v2/sql_format.webp
-description: Easily clean up unreadable, legacy SQL code with a simple formatting tool. Make your SQL queries instantly readable and kickstart your code review process.
 mainTag: self-hosted
 tags: [code-quality, sql, tips, tool]
+language: en
 ---
 ![SQL - Formatting tool](/img/v2/sql_format.webp)
 

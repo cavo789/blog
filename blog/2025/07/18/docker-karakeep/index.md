@@ -1,13 +1,14 @@
 ---
-date: 2025-07-18
 slug: docker-karakeep
 title: karakeep - The Bookmark Everything App
-authors: [christophe]
-mainTag: self-hosted
+date: 2025-07-18
 description: Discover karakeep, the self-hosted bookmark, note-taking, and image manager. Follow this easy guide to install the "Bookmark Everything App" using Docker Compose.
-tags: [bookmark, docker, self-hosted, tool]
-blueskyRecordKey: 3lujtc27n7s23
+authors: [christophe]
 image: /img/v2/docker_playing_with_app.webp
+mainTag: self-hosted
+tags: [bookmark, docker, self-hosted, tool]
+language: en
+blueskyRecordKey: 3lujtc27n7s23
 ---
 <!-- cspell:ignore karakeep,bitwarden -->
 

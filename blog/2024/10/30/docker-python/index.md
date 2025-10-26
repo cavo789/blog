@@ -1,13 +1,14 @@
 ---
-date: 2024-10-30
 slug: docker-python-devcontainer
 title: Docker - Python devcontainer
+date: 2024-10-30
+description: Learn how to quickly set up a VSCode devcontainer for Python development using Docker. Get the full Dockerfile, compose.yaml, and .docker.env configurations.
 authors: [christophe]
 image: /img/v2/devcontainer.webp
 series: Coding using a devcontainer
 mainTag: python
-description: Learn how to quickly set up a VSCode devcontainer for Python development using Docker. Get the full Dockerfile, compose.yaml, and .docker.env configurations.
 tags: [devcontainer, docker, python]
+language: en
 ---
 <!-- cspell:ignore PYTHONDONTWRITEBYTECODE,PYTHONUNBUFFERED,HISTFILE -->
 <!-- cspell:ignore addgroup,adduser,keyscan,hadolint,gecos,endregion -->

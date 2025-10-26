@@ -1,12 +1,13 @@
 ---
-date: 2024-01-25
 slug: linux-sed-tips
 title: Search and replace (or add) using sed
+date: 2024-01-25
+description: Master Linux sed for dynamic file editing. Learn how to search and replace an existing variable or seamlessly add a new line if the variable is not found in your configuration file.
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: linux
-description: Master Linux sed for dynamic file editing. Learn how to search and replace an existing variable or seamlessly add a new line if the variable is not found in your configuration file.
 tags: [.env, bash, linux, sed, tips]
+language: en
 ---
 ![Search and replace (or add) using sed](/img/v2/bash.webp)
 

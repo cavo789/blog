@@ -1,12 +1,13 @@
 ---
-date: 2024-02-14
 slug: php-rector
 title: Rector 1.0.0 🎉🎉🎉, my friend, my coach
+date: 2024-02-14
+description: Meet PHP Rector, the free, powerful tool for automatic PHP codebase upgrades and refactoring. Instantly improve code quality and become a better PHP developer.
 authors: [christophe]
 image: /img/v2/rector.webp
 mainTag: php
-description: Meet PHP Rector, the free, powerful tool for automatic PHP codebase upgrades and refactoring. Instantly improve code quality and become a better PHP developer.
 tags: [code-quality, composer, php, rectorphp]
+language: en
 ---
 ![Rector 1.0.0 🎉🎉🎉, my friend, my coach](/img/v2/rector.webp)
 

@@ -1,12 +1,13 @@
 ---
-date: 2023-12-10
 slug: vba-excel-ribbon
 title: MS Office - How to create a ribbon in Excel
+date: 2023-12-10
+description: Step-by-step guide on creating a custom VBA Excel Ribbon. Use XML and VBA to add your own tabs, groups, buttons, and powerful features to your Excel workbooks.
 authors: [christophe]
 image: /img/v2/ribbon.webp
-description: Step-by-step guide on creating a custom VBA Excel Ribbon. Use XML and VBA to add your own tabs, groups, buttons, and powerful features to your Excel workbooks.
 mainTag: excel
 tags: [excel, ribbon, vba, vscode]
+language: en
 ---
 ![MS Office - How to create a ribbon in Excel](/img/v2/ribbon.webp)
 

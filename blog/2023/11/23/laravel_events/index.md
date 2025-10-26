@@ -1,12 +1,13 @@
 ---
-date: 2023-11-23
 slug: laravel_events
 title: Working with Laravel events
+date: 2023-11-23
+description: Explore the power of Laravel events for clean, decoupled code. This guide provides a practical, step-by-step example of creating and dispatching an event with a listener.
 authors: [christophe]
 image: /img/v2/laravel.webp
-description: Explore the power of Laravel events for clean, decoupled code. This guide provides a practical, step-by-step example of creating and dispatching an event with a listener.
 mainTag: laravel
 tags: [laravel, php]
+language: en
 ---
 ![Working with Laravel events](/img/v2/laravel.webp)
 

@@ -1,12 +1,13 @@
 ---
-date: 2023-11-02
 slug: docker-php-run-script-or-website
 title: The easiest way to run a PHP script / website
+date: 2023-11-02
 description: The easiest way to run a standard PHP script or website instantly using Docker. Just one docker run command and your code is live for quick testing.
 authors: [christophe]
 image: /img/v2/php_tips.webp
 mainTag: php
 tags: [wsl, docker, php]
+language: en
 ---
 ![The easiest way to run a PHP script / website](/img/v2/php_tips.webp)
 

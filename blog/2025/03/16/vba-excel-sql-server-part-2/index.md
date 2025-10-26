@@ -1,13 +1,14 @@
 ---
-date: 2025-03-16
 slug: vba-excel-sql-server-part-2
 title: MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step
+date: 2025-03-16
+description: Connect MS Excel VBA to SQL Server with this step-by-step tutorial. Learn to run SQL queries, retrieve data, and output results into your spreadsheet. Docker setup included.
 authors: [christophe]
 image: /img/v2/mssql.webp
 series: MS Excel - Connect to a SQL Server database
-description: Connect MS Excel VBA to SQL Server with this step-by-step tutorial. Learn to run SQL queries, retrieve data, and output results into your spreadsheet. Docker setup included.
 mainTag: excel
 tags: [docker, excel, mssql-server, ssms, vba]
+language: en
 blueskyRecordKey: 3lvnkdmwmwk2v
 ---
 ![MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step](/img/v2/mssql.webp)

@@ -1,12 +1,13 @@
 ---
-date: 2024-01-14
 slug: github-action
 title: GitHub - Use Actions to deploy this blog
+date: 2024-01-14
+description: Stop manual FTP deployments! Learn how to automate your blog's deployment with GitHub Actions. This step-by-step guide shows you how to set up the workflow and use repository secrets for automatic updates on every push.
 authors: [christophe]
 image: /img/v2/github_tips.webp
-description: Stop manual FTP deployments! Learn how to automate your blog's deployment with GitHub Actions. This step-by-step guide shows you how to set up the workflow and use repository secrets for automatic updates on every push.
 mainTag: github
 tags: [docusaurus, github]
+language: en
 ---
 ![GitHub - Use Actions to deploy this blog](/img/v2/github_tips.webp)
 

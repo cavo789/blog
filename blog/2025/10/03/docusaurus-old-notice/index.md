@@ -1,16 +1,16 @@
 ---
 slug: docusaurus-old-notice
 title: A Docusaurus component that alerts readers the article is over a year old
+date: 2025-10-03
+description: Displays a warning banner when the page content is over a year old
 authors: [christophe]
 image: /img/v2/old_blog_notice.webp
 series: Creating Docusaurus components
-description: Displays a warning banner when the page content is over a year old
 mainTag: component
 tags: [component, docusaurus]
+language: en
 blueskyRecordKey: 3m2bjrehbnc2r
-date: 2025-10-03
 ---
-
 <!-- cspell:ignore  -->
 
 ![A Docusaurus component that alerts readers the article is over a year old](/img/v2/old_blog_notice.webp)

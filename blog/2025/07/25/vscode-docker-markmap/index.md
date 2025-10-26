@@ -1,12 +1,13 @@
 ---
-date: 2025-07-25
 slug: vscode-docker-markmap
 title: Getting a more attractive mindmap with Markmap and Quarto
+date: 2025-07-25
+description: Generate attractive mindmaps from Markdown using Markmap and customize them in VSCode. Render the final, beautiful HTML result with Quarto and Docker.
 authors: [christophe]
 image: /img/v2/mindmaps.webp
-description: Generate attractive mindmaps from Markdown using Markmap and customize them in VSCode. Render the final, beautiful HTML result with Quarto and Docker.
 mainTag: mindmap
 tags: [docker, mindmap, quarto, tips, visualisation, vscode]
+language: en
 blueskyRecordKey: 3lurgf4ddp22y
 ---
 ![Getting a more attractive mindmap with Markmap and Quarto](/img/v2/mindmaps.webp)

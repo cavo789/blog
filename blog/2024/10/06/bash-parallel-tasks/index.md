@@ -1,12 +1,13 @@
 ---
-date: 2024-10-06
 slug: bash-parallel-task
 title: Linux - Take advantage of the number of CPUs you have; start concurrent jobs
+date: 2024-10-06
+description: Optimize your Bash scripts! Learn how to run concurrent jobs and leverage all your CPU cores using process IDs (pids), wait, and nproc to dramatically reduce execution time.
 authors: [christophe]
 image: /img/v2/linux_parallel.webp
-description: Optimize your Bash scripts! Learn how to run concurrent jobs and leverage all your CPU cores using process IDs (pids), wait, and nproc to dramatically reduce execution time.
 mainTag: bash
 tags: [bash, linux, tips]
+language: en
 blueskyRecordKey: 3m2szdit6sc2y
 ---
 <!-- cspell:ignore bashpid, pids, nproc -->

@@ -1,12 +1,13 @@
 ---
-date: 2024-06-02
 slug: joomla-show-table
 title: Joomla - Run a SQL statement outside Joomla and display a nice HTML table
-authors: [christophe]
+date: 2024-06-02
 description: Easily export live Joomla data to Microsoft Excel. Learn to run a custom SQL query outside of Joomla and display the results in a refreshable HTML table for spreadsheet linking.
+authors: [christophe]
 image: /img/v2/joomla.webp
 mainTag: joomla
 tags: [database, excel, joomla, tips]
+language: en
 ---
 <!-- cspell:ignore showtable,sortering,qrjlq -->
 ![Joomla - Run a SQL statement outside Joomla and display a nice HTML table](/img/v2/joomla.webp)
@@ -93,5 +94,3 @@ To create your own SQL statement, you'll need to get access to your database. Yo
 I'll not explain each tool right now (read my <Link to="/blog/docker-adminer-pgadmin-phpmyadmin#run-adminer">Using Adminer, pgadmin or phpmyadmin to access your Docker database container</Link> blog post to get some info) but the objective is to be able to create a query in such interface and make sure the query is working.
 
 Once you've successfully created it, you'll get a query statement like `SELECT ... FROM ... WHERE ...`, copy the query in the `showtable.php` script: search for the `'SQL'` pattern and you'll see the current, used, SQL. Paste yours and make sure you've respected the syntax. You can replace the prefix of your database by the `#_` placeholder so f.i. `qrjlq_content` has to become `#_content`.
-
-

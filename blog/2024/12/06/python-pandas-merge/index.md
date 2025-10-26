@@ -1,12 +1,13 @@
 ---
-date: 2024-12-06
 slug: python-pandas-merge
 title: Pandas - Merge two or more files and create a merged one
+date: 2024-12-06
+description: Efficiently merge two or more CSV or Excel files in Python using the powerful Pandas library. Learn step-by-step how to handle mismatched records and consolidate data like employee salaries across multiple years into a single, clean DataFrame.
 authors: [christophe]
 image: /img/v2/pandas.webp
 mainTag: python
-description: Efficiently merge two or more CSV or Excel files in Python using the powerful Pandas library. Learn step-by-step how to handle mismatched records and consolidate data like employee salaries across multiple years into a single, clean DataFrame.
 tags: [csv, excel, pandas, python]
+language: en
 ---
 <!-- cspell:ignore vlookup,sheet -->
 <!-- markdownlint-disable-file MD010 -->

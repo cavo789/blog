@@ -1,12 +1,13 @@
 ---
-date: 2023-12-27
 slug: docker-phpdocumentor
 title: Generating documentation for a PHP codebase
+date: 2023-12-27
+description: Generate high-quality documentation for your PHP codebase effortlessly. This guide shows you how to use the phpDocumentor Docker image to create documentation with a single command.
 authors: [christophe]
 image: /img/v2/php_tips.webp
-description: Generate high-quality documentation for your PHP codebase effortlessly. This guide shows you how to use the phpDocumentor Docker image to create documentation with a single command.
 mainTag: php
 tags: [docker, php, phpdoc, wordpress]
+language: en
 ---
 ![Generating documentation for a PHP codebase](/img/v2/php_tips.webp)
 

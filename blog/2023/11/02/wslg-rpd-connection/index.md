@@ -1,12 +1,13 @@
 ---
-date: 2023-11-02
 slug: wslg-rpd-connection
 title: Opening a RDP connection to the Linux local instance
-authors: [christophe]
+date: 2023-11-02
 description: Learn how to open an RDP connection to your WSLg Linux instance (Ubuntu) for a full graphical desktop environment. Follow this step-by-step guide to installing and configuring xrdp.
+authors: [christophe]
+image: /img/v2/wsl.webp
 mainTag: wsl
 tags: [wsl, docker, rdp]
-image: /img/v2/wsl.webp
+language: en
 ---
 ![Opening a RDP connection to the Linux local instance](/img/v2/wsl.webp)
 

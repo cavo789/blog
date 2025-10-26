@@ -1,12 +1,13 @@
 ---
-date: 2024-01-23
 slug: cpanel-spam
 title: Exterminate them all, fight spam directly at your host company
-authors: [christophe]
+date: 2024-01-23
 description: Stop email spam at the source! Discover how to use cPanel's SpamAssassin to blacklist and whitelist domains, including an advanced method for directly editing the user_prefs file via FTP.
+authors: [christophe]
 image: /img/v2/planethoster.webp
 mainTag: spamassassin
 tags: [cpanel, spamassassin]
+language: en
 ---
 ![Exterminate them all, fight spam directly at your host company](/img/v2/planethoster.webp)
 

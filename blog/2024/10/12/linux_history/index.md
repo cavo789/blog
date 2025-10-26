@@ -1,12 +1,13 @@
 ---
-date: 2024-10-12
 slug: linux-history
 title: Linux - Working with the history of your last fired actions
+date: 2024-10-12
+description: Master your Linux command line history. Learn how to view, locate (.bash_history, .zsh_history), and manage your previously executed commands with essential tips.
 authors: [christophe]
 image: /img/v2/linux_tips.webp
-description: Master your Linux command line history. Learn how to view, locate (.bash_history, .zsh_history), and manage your previously executed commands with essential tips.
 mainTag: linux
 tags: [linux, zsh]
+language: en
 ---
 <!-- cspell:ignore DOSKEY,HISTIGNORE,HISTFILE,gacom -->
 ![Linux - Working with the history of your last fired actions](/img/v2/linux_tips.webp)

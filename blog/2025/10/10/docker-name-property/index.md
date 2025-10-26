@@ -1,14 +1,14 @@
 ---
 slug: docker-name-property
 title: Docker - How to group containers together
+date: 2025-10-10
+description: Learn how to organize Docker containers into logical groups using compose.yaml for a cleaner workflow.
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
 tags: [docker]
-date: 2025-10-10
-description: Learn how to organize Docker containers into logical groups using compose.yaml for a cleaner workflow.
-blueskyRecordKey: 3m2syybizfc2z
 language: en
+blueskyRecordKey: 3m2syybizfc2z
 ---
 ![Docker - How to group containers together](/img/v2/docker_tips.webp)
 

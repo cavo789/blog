@@ -1,12 +1,13 @@
 ---
-date: 2024-09-06
 slug: docker-run-linux-gui
 title: Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP
+date: 2024-09-06
+description: Unlock the power of Docker! A step-by-step guide to running Linux Graphical User Interfaces (GUIs) like Firefox, Chrome, and GIMP in Docker containers.
 authors: [christophe]
 image: /img/v2/docker_gui.webp
-description: Unlock the power of Docker! A step-by-step guide to running Linux Graphical User Interfaces (GUIs) like Firefox, Chrome, and GIMP in Docker containers.
 mainTag: docker
 tags: [chrome, docker, firefox, gimp, gui, tips]
+language: en
 ---
 <!-- cspell:ignore xeyes,xhost,dearmor,dpkg,favourite -->
 ![Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP](/img/v2/docker_gui.webp)

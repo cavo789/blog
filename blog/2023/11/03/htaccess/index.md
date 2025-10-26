@@ -1,12 +1,13 @@
 ---
-date: 2023-11-03
 slug: apache-htaccess
 title: Apache .htaccess file
-authors: [christophe]
-mainTag: apache
+date: 2023-11-03
 description: Master your Apache .htaccess file with essential tips and tricks for security, redirection, file access control, Content Security Policy (CSP), forcing HTTPS, and performance optimization.
-tags: [apache, snippets, .htaccess]
+authors: [christophe]
 image: /img/v2/htaccess.webp
+mainTag: apache
+tags: [apache, snippets, .htaccess]
+language: en
 ---
 <!-- cspell:ignore webm -->
 ![Apache .htaccess file](/img/v2/htaccess.webp)

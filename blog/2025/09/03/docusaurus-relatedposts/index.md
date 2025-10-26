@@ -1,16 +1,16 @@
 ---
-date: 2025-09-03
 slug: docusaurus-relatedposts
 title: Displaying related posts below our Docusaurus article
+date: 2025-09-03
+description: Enhance your Docusaurus blog by showing related posts beneath each article for better content discovery.
 authors: [christophe]
 image: /img/v2/docusaurus_react.webp
 series: Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide
-description: Enhance your Docusaurus blog by showing related posts beneath each article for better content discovery.
 mainTag: component
 tags: [component, docusaurus, markdown, react, swizzle]
+language: en
 blueskyRecordKey: 3lxvwdh3szc22
 ---
-
 <!-- cspell:ignore relatedposts -->
 
 ![Displaying related posts below our Docusaurus article](/img/v2/docusaurus_react.webp)

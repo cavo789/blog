@@ -1,13 +1,14 @@
 ---
-date: 2025-03-07
 slug: vscode-todo-tree
 title: Todo Tree in VSCode
+date: 2025-03-07
+description: Stop forgetting your TODOs and FIXMEs! Use the VSCode Todo Tree extension to summarize all code annotations like TODO, FIXME, and TEMPORARY into one easy-to-track dashboard.
 authors: [christophe]
+image: /img/v2/vscode_tips.webp
 mainTag: vscode
 tags: [tips, vscode]
-description: Stop forgetting your TODOs and FIXMEs! Use the VSCode Todo Tree extension to summarize all code annotations like TODO, FIXME, and TEMPORARY into one easy-to-track dashboard.
+language: en
 blueskyRecordKey: 3lvnk2w4vss2v
-image: /img/v2/vscode_tips.webp
 ---
 ![Todo Tree in VSCode](/img/v2/vscode_tips.webp)
 

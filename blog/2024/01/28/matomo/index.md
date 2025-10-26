@@ -1,12 +1,13 @@
 ---
-date: 2024-01-28
 slug: matomo-install
 title: How to self-host Matomo
+date: 2024-01-28
+description: Self-host Matomo for free and gain GDPR-compliant website analytics. This simple guide covers installation, database setup, and Docusaurus integration.
 authors: [christophe]
 image: /img/v2/matomo.webp
 mainTag: self-hosted
-description: Self-host Matomo for free and gain GDPR-compliant website analytics. This simple guide covers installation, database setup, and Docusaurus integration.
 tags: [docusaurus, matomo]
+language: en
 ---
 ![How to self-host Matomo](/img/v2/matomo.webp)
 

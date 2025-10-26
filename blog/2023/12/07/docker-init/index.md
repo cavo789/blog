@@ -1,12 +1,13 @@
 ---
-date: 2023-12-07
 slug: docker-init
 title: Docker init now supports PHP
+date: 2023-12-07
+description: Containerize your PHP application fast! This guide shows you how to use the new Docker init feature with PHP and Apache, including a walk-through of the generated Dockerfile and compose.yaml files.
 authors: [christophe]
 image: /img/v2/docker_init.webp
 mainTag: php
 tags: [docker, tips]
-description: Containerize your PHP application fast! This guide shows you how to use the new Docker init feature with PHP and Apache, including a walk-through of the generated Dockerfile and compose.yaml files.
+language: en
 ---
 <!-- cspell:ignore dbmdl -->
 ![Docker init now supports PHP](/img/v2/docker_init.webp)

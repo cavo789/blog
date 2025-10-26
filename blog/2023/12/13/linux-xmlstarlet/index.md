@@ -1,12 +1,13 @@
 ---
-date: 2023-12-13
 slug: linux-xmlstarlet
 title: The xmlstarlet utility for Linux
+date: 2023-12-13
+description: Master XML data manipulation on the Linux command line with xmlstarlet. This guide shows you how to beautify XML output and filter nodes using XPath expressions.
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: linux
-description: Master XML data manipulation on the Linux command line with xmlstarlet. This guide shows you how to beautify XML output and filter nodes using XPath expressions.
 tags: [bash, linux, tips, xml, xmlstarlet]
+language: en
 ---
 ![The xmlstarlet utility for Linux](/img/v2/bash.webp)
 

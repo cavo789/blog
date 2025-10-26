@@ -1,12 +1,13 @@
 ---
-date: 2024-08-05
 slug: vscode-regions
 title: Working with regions in VSCode
+date: 2024-08-05
 description: Master code folding in VSCode with regions. Learn how to use them in PHP and how to enable region support for unsupported files like Dockerfile with a simple extension.
 authors: [christophe]
+image: /img/v2/vscode_tips.webp
 mainTag: vscode
 tags: [tips, vscode]
-image: /img/v2/vscode_tips.webp
+language: en
 ---
 ![Working with regions in VSCode](/img/v2/vscode_tips.webp)
 

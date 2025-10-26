@@ -1,12 +1,13 @@
 ---
-date: 2024-08-22
 slug: winscp-download-recursively-files
 title: WinSCP - Download files with specific extension recursively
-authors: [christophe]
+date: 2024-08-22
 description: Learn how to use WinSCP's scripting feature to download files with a specific extension (like .php) recursively from your FTP/SFTP server. Includes a simple script example.
+authors: [christophe]
 image: /img/v2/winscp.webp
 mainTag: winscp
 tags: [tips, winscp]
+language: en
 ---
 ![WinSCP - Download files with specific extension recursively](/img/v2/winscp.webp)
 

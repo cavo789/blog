@@ -1,12 +1,13 @@
 ---
-date: 2024-03-28
 slug: zsh-install
 title: How to install Oh-My-ZSH
+date: 2024-03-28
+description: Install Zsh and Oh-My-ZSH easily! Learn to power up your Linux terminal with the Powerlevel10k theme, custom functions like take, and essential daily-use features.
 authors: [christophe]
 image: /img/v2/zsh.webp
 mainTag: zsh
-description: Install Zsh and Oh-My-ZSH easily! Learn to power up your Linux terminal with the Powerlevel10k theme, custom functions like take, and essential daily-use features.
 tags: [customization, linux, wsl, zsh]
+language: en
 ---
 ![How to install Oh-My-ZSH](/img/v2/zsh.webp)
 

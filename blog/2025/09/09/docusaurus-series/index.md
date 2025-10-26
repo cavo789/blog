@@ -1,16 +1,16 @@
 ---
 slug: docusaurus-series
 title: Organize Your Docusaurus Content with a Custom Series Component
+date: 2025-09-09
+description: Learn how to group related Docusaurus blog posts into a seamless reading experience using a custom Series component.
 authors: [christophe]
 image: /img/v2/docusaurus_component.webp
 series: Creating Docusaurus components
 mainTag: component
 tags: [component, docusaurus, markdown, plugin, react, series, swizzle]
+language: en
 blueskyRecordKey: 3lyhtzknd6s2j
-description: Learn how to group related Docusaurus blog posts into a seamless reading experience using a custom Series component.
-date: 2025-09-09
 ---
-
 <!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,docux -->
 
 ![Organize Your Docusaurus Content with a Custom Series Component](/img/v2/docusaurus_component.webp)

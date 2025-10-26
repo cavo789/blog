@@ -1,12 +1,13 @@
 ---
-date: 2024-01-21
 slug: winscp-retrieve-password
 title: WinSCP - Retrieve a stored password
+date: 2024-01-21
+description: Did you forget a saved WinSCP password? Follow this quick guide to enable logging and retrieve your stored password in plain text from your session log file.
 authors: [christophe]
 image: /img/v2/winscp.webp
 mainTag: winscp
-description: Did you forget a saved WinSCP password? Follow this quick guide to enable logging and retrieve your stored password in plain text from your session log file.
 tags: [tips, winscp]
+language: en
 ---
 ![WinSCP - Retrieve a stored password](/img/v2/winscp.webp)
 

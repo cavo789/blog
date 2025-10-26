@@ -1,13 +1,14 @@
 ---
-date: 2025-03-30
 slug: cypress
 title: Introduction to Cypress
+date: 2025-03-30
+description: Get started with Cypress for functional testing. This comprehensive guide covers setup, running tests with Docker containers, synchronizing your test files, and capturing error screenshots.
 authors: [christophe]
 image: /img/v2/functional_tests.webp
-description: Get started with Cypress for functional testing. This comprehensive guide covers setup, running tests with Docker containers, synchronizing your test files, and capturing error screenshots.
-mainTag: tests
 series: Functional testing
+mainTag: tests
 tags: [chrome, cypress, docker, javascript, nodejs, tests]
+language: en
 blueskyRecordKey: 3lvnkku4dik2v
 ---
 ![Introduction to Cypress](/img/v2/functional_tests.webp)

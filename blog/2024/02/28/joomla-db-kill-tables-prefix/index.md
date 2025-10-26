@@ -1,12 +1,13 @@
 ---
-date: 2024-02-28
 slug: joomla-db-kill-tables-prefix
 title: Joomla - delete tables from your database according to a certain prefix
+date: 2024-02-28
+description: Clean up your Joomla database by easily deleting unwanted tables using a specific prefix. Follow this step-by-step guide to use a simple PHP utility safely.
 authors: [christophe]
 image: /img/v2/joomla.webp
-description: Clean up your Joomla database by easily deleting unwanted tables using a specific prefix. Follow this step-by-step guide to use a simple PHP utility safely.
 mainTag: joomla
 tags: [database, joomla, tips]
+language: en
 ---
 ![Joomla : delete tables from your database according to a certain prefix](/img/v2/joomla.webp)
 

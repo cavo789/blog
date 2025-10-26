@@ -1,12 +1,13 @@
 ---
-date: 2024-12-18
 slug: python-pydot
 title: Python - Generate flows using pydot
-authors: [christophe]
+date: 2024-12-18
 description: Use Python and the pydot library to easily generate diagrams-as-code like ETL flowcharts, class diagrams, and decision trees. Includes Docker setup and code examples.
+authors: [christophe]
 image: /img/v2/diagrams.webp
 mainTag: python
 tags: [docker, python, visualisation]
+language: en
 ---
 <!-- cspell:ignore Pydot,PYTHONDONTWRITEBYTECODE,hadolint,rankdir,fillcolor -->
 

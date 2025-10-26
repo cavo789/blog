@@ -1,12 +1,13 @@
 ---
-date: 2024-03-30
 slug: putty-no-supported-authentication-methods
 title: Fatal error was starting Putty after having saved settings
+date: 2024-03-30
+description: Fix the frustrating PuTTY 'No supported authentication methods available' fatal error after saving settings. Learn the quick solution by deleting a specific PuTTY registry entry.
 authors: [christophe]
 image: /img/v2/putty.webp
 mainTag: putty
-description: Fix the frustrating PuTTY 'No supported authentication methods available' fatal error after saving settings. Learn the quick solution by deleting a specific PuTTY registry entry.
 tags: [putty, ssh]
+language: en
 ---
 ![Fatal error was starting Putty after having saved settings](/img/v2/putty.webp)
 

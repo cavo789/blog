@@ -1,12 +1,13 @@
 ---
-date: 2024-07-23
 slug: linux-eza
 title: Let's revisit the ls command thanks to eza
+date: 2024-07-23
+description: Tired of typing ls -alh? Discover eza, the modern, feature-rich replacement for the basic Linux ls command. Learn how to install it and set up a powerful new alias for a better command-line experience.
 authors: [christophe]
 image: /img/v2/linux_tips.webp
 mainTag: customization
-description: Tired of typing ls -alh? Discover eza, the modern, feature-rich replacement for the basic Linux ls command. Learn how to install it and set up a powerful new alias for a better command-line experience.
 tags: [customization, linux]
+language: en
 ---
 ![Let's revisit the ls command thanks to eza](/img/v2/linux_tips.webp)
 

@@ -1,13 +1,14 @@
 ---
-date: 2023-12-25
 slug: quarto-powerpoint
 title: Use Quarto and create a PowerPoint slideshow
+date: 2023-12-25
+description: Discover how to convert your Markdown documentation into a PowerPoint (.pptx) slideshow or an online reveal.js presentation using Quarto.
 authors: [christophe]
 image: /img/v2/quarto.webp
 series: Discovering Quarto
-description: Discover how to convert your Markdown documentation into a PowerPoint (.pptx) slideshow or an online reveal.js presentation using Quarto.
 mainTag: quarto
 tags: [markdown, powerpoint, quarto, revealjs, tips]
+language: en
 ---
 ![Use Quarto and create a PowerPoint slideshow](/img/v2/quarto.webp)
 

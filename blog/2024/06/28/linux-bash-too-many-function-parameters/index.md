@@ -1,12 +1,13 @@
 ---
-date: 2024-06-28
 slug: linux-bash-too-many-function-parameters
 title: Clean code - Linux Bash - Keep the number of function parameters as small as possible
-authors: [christophe]
+date: 2024-06-28
 description: Apply Clean Code to your Linux Bash scripts. Discover how to avoid too many function parameters by using a simple, robust associative array solution.
+authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: code-quality
 tags: [code-quality, linux, tips]
+language: en
 ---
 ![Clean code - Linux Bash - Keep the number of function parameters as small as possible](/img/v2/bash.webp)
 

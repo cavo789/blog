@@ -1,12 +1,13 @@
 ---
-date: 2024-01-27
 slug: planethoster-n0c-spam
 title: Exterminate them all, fight spam directly at PlanetHoster - N0C
+date: 2024-01-27
+description: Automate your spam fight on PlanetHoster N0C! Discover how to generate and deploy custom Sieve rules using RoundCube and a script to efficiently block large amounts of unwanted emails.
 authors: [christophe]
 image: /img/v2/planethoster.webp
-description: Automate your spam fight on PlanetHoster N0C! Discover how to generate and deploy custom Sieve rules using RoundCube and a script to efficiently block large amounts of unwanted emails.
 mainTag: roundcube
 tags: [n0c, planethoster, roundcube]
+language: en
 ---
 <!-- cspell:ignore allof,fileinto -->
 ![Exterminate them all, fight spam directly at PlanetHoster - N0C](/img/v2/planethoster.webp)

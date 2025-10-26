@@ -1,12 +1,13 @@
 ---
-date: 2024-03-23
 slug: docker-health-condition
 title: Understanding the depends_on condition in Docker compose files
+date: 2024-03-23
+description: Prevent startup errors in your multi-service applications. Learn to use the healthcheck property and depends_on condition service_healthy in Docker Compose to ensure your application waits for the database to be fully ready before starting.
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
 tags: [docker, tips]
-description: Prevent startup errors in your multi-service applications. Learn to use the healthcheck property and depends_on condition service_healthy in Docker Compose to ensure your application waits for the database to be fully ready before starting.
+language: en
 ---
 ![Understanding the depends_on condition in Docker compose files](/img/v2/docker_tips.webp)
 

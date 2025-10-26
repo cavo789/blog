@@ -1,12 +1,13 @@
 ---
-date: 2024-02-04
 slug: docusaurus-docker
 title: Running Docusaurus with Docker
+date: 2024-02-04
+description: Run Docusaurus with Docker! Follow this easy tutorial to create your Docusaurus Docker image, use docker compose, and get your documentation or blog running fast.
 authors: [christophe]
 image: /img/v2/docusaurus_tips.webp
 mainTag: docusaurus
 tags: [docker, docusaurus, nodejs, npm, tips, yarn]
-description: Run Docusaurus with Docker! Follow this easy tutorial to create your Docusaurus Docker image, use docker compose, and get your documentation or blog running fast.
+language: en
 ---
 ![Running Docusaurus with Docker](/img/v2/docusaurus_tips.webp)
 

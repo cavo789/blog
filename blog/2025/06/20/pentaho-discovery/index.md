@@ -1,12 +1,13 @@
 ---
-date: 2025-06-20
 slug: pentaho-discovery
 title: Discovering Pentaho, a ETL program
+date: 2025-06-20
+description: Discover Pentaho Data Integration (ETL). Follow this step-by-step guide to install Pentaho (PDI/Kettle) on Linux and load data from an Excel file into a PostgreSQL database using Docker.
 authors: [christophe]
 image: /img/v2/etl.webp
-description: Discover Pentaho Data Integration (ETL). Follow this step-by-step guide to install Pentaho (PDI/Kettle) on Linux and load data from an Excel file into a PostgreSQL database using Docker.
 mainTag: etl
 tags: [database, etl, msaccess, vba]
+language: en
 blueskyRecordKey: 3lumzwwoqsc2r
 ---
 ![Discovering Pentaho, a ETL program](/img/v2/etl.webp)

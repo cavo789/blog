@@ -1,12 +1,13 @@
 ---
-date: 2023-12-14
 slug: windows-winget
 title: Update all out-of-date Windows programs in batch
+date: 2023-12-14
+description: Update all your out-of-date Windows programs in a batch using the powerful winget command-line tool. Learn the commands for a fast and efficient system.
 authors: [christophe]
 image: /img/v2/windows_tips.webp
 mainTag: windows
-description: Update all your out-of-date Windows programs in a batch using the powerful winget command-line tool. Learn the commands for a fast and efficient system.
 tags: [tips, windows, winget]
+language: en
 ---
 ![Update all out-of-date Windows programs in batch](/img/v2/windows_tips.webp)
 

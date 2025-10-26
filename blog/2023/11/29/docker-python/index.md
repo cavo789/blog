@@ -1,11 +1,12 @@
 ---
-date: 2023-11-29
 slug: docker-python
 title: Play with Docker and Python
-authors: [christophe]
+date: 2023-11-29
 description: Forget complex Python setup. Learn how to quickly run your Python scripts using Docker containers, from "Hello World" to a Hangman game, and simplify your development.
+authors: [christophe]
 image: /img/v2/python.webp
 tags: [docker, python]
+language: en
 ---
 ![Play with Docker and Python](/img/v2/python.webp)
 

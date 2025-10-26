@@ -1,12 +1,13 @@
 ---
-date: 2024-09-19
 slug: vscode-jetbrains-font
 title: Using the JetBrains Mono font in vscode
-authors: [christophe]
-mainTag: vscode
+date: 2024-09-19
 description: Improve your coding experience! Learn how to install the free and highly legible JetBrains Mono font and enable beautiful font ligatures in VSCode with this quick configuration guide.
-tags: [tips, vscode]
+authors: [christophe]
 image: /img/v2/vscode_tips.webp
+mainTag: vscode
+tags: [tips, vscode]
+language: en
 ---
 ![Using the JetBrains Mono font in vscode](/img/v2/vscode_tips.webp)
 

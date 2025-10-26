@@ -1,12 +1,13 @@
 ---
-date: 2025-02-01
 slug: heimdall-dashboard
 title: Heimdall - Web dashboard
+date: 2025-02-01
+description: Tired of old browser bookmarks? Learn how to self-host and set up Heimdall, a beautiful web dashboard that gives you immediate, personalized access to all your favorite applications and links via Docker.
 authors: [christophe]
 image: /img/v2/docker_playing_with_app.webp
 mainTag: self-hosted
-description: Tired of old browser bookmarks? Learn how to self-host and set up Heimdall, a beautiful web dashboard that gives you immediate, personalized access to all your favorite applications and links via Docker.
 tags: [docker, dashboard, self-hosted, tool]
+language: en
 blueskyRecordKey: 3lwgbxok2ys2i
 ---
 <!-- cspell:ignore puid,pgid,Bitwarden -->

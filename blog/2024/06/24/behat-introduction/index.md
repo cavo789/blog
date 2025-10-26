@@ -1,13 +1,14 @@
 ---
-date: 2024-06-24
 slug: behat-introduction
 title: Introduction to Behat
+date: 2024-06-24
+description: Learn how to use Behat, the open-source Behavior-Driven Development (BDD) framework for PHP. This introduction covers writing powerful functional tests in plain language and setting up your first project.
 authors: [christophe]
 image: /img/v2/functional_tests.webp
 series: Functional testing
-description: Learn how to use Behat, the open-source Behavior-Driven Development (BDD) framework for PHP. This introduction covers writing powerful functional tests in plain language and setting up your first project.
 mainTag: tests
 tags: [bdd, behat, chrome, docker, mink, php, tests]
+language: en
 blueskyRecordKey: 3lxm22j3pa22t
 ---
 <!-- cspell:ignore behat,skel,johndoe,chromedriver,gerkin,dmore,nohup,autoload -->

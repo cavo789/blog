@@ -1,12 +1,13 @@
 ---
-date: 2024-11-08
 slug: json-lint
 title: JSON - Online linter
-authors: [christophe]
+date: 2024-11-08
 description: Find a quick and easy online JSON linter tool. Paste your JSON string to display it as a clear, readable tree-view with code folding features.
+authors: [christophe]
 image: /img/v2/json.webp
 mainTag: linux
 tags: [code-quality, json, tips, tool, vscode]
+language: en
 ---
 ![JSON - Online linter](/img/v2/json.webp)
 

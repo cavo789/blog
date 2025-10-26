@@ -1,12 +1,13 @@
 ---
-date: 2024-12-08
 slug: markdown-csv2md
 title: Markdown - Convert CSV to Markdown tables
+date: 2024-12-08
+description: Quickly convert CSV content into clean, formatted Markdown tables using the CSV2MD tool. Learn how to use this efficient converter, including options for delimiters and transposing tables.
 authors: [christophe]
 image: /img/v2/csv.webp
 mainTag: markdown
-description: Quickly convert CSV content into clean, formatted Markdown tables using the CSV2MD tool. Learn how to use this efficient converter, including options for delimiters and transposing tables.
 tags: [csv, excel, markdown, tips]
+language: en
 ---
 ![Markdown - Convert CSV to Markdown tables](/img/v2/csv.webp)
 

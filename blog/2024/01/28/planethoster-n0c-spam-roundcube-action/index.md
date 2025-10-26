@@ -1,12 +1,13 @@
 ---
-date: 2024-01-28
 slug: planethoster-n0c-spam-roundcube-action
 title: Exterminate them all, kill spam using GitHub Actions
+date: 2024-01-28
+description: Kill spam automatically! This guide shows how to leverage GitHub Actions, JSON, and a Bash script to generate and deploy Roundcube Sieve filters on your PlanetHoster N0C hosting environment, automating your blocklist management.
 authors: [christophe]
 image: /img/v2/planethoster.webp
 mainTag: roundcube
-description: Kill spam automatically! This guide shows how to leverage GitHub Actions, JSON, and a Bash script to generate and deploy Roundcube Sieve filters on your PlanetHoster N0C hosting environment, automating your blocklist management.
 tags: [actions, github, jq, n0c, planethoster, roundcube]
+language: en
 ---
 <!-- cSpell:ignore allof,fileinto -->
 ![Exterminate them all, kill spam using GitHub Actions](/img/v2/planethoster.webp)

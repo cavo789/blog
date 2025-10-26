@@ -1,12 +1,13 @@
 ---
-date: 2024-09-11
 slug: git-config
 title: Git - Some tips for your .gitconfig file
-authors: [christophe]
+date: 2024-09-11
 description: Customize your Git workflow with essential ~/.gitconfig file tips. Learn to create a git undo alias, manage remote branches, handle credentials, and enforce SSH.
+authors: [christophe]
 image: /img/v2/git.webp
 mainTag: git
 tags: [git, tips, wsl]
+language: en
 ---
 ![Git - Some tips for your .gitconfig file](/img/v2/git.webp)
 

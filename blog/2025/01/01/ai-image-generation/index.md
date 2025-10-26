@@ -1,12 +1,13 @@
 ---
-date: 2025-01-01
 slug: ai-image-generation
 title: AI - Image generation using recraft.ai
+date: 2025-01-01
+description: Recraft.ai - Discover an advanced AI image generation tool that offers fine-tuning, image variations, custom sizing, and accurate text rendering.
 authors: [christophe]
 image: /img/v2/ai.webp
 mainTag: ai
-description: Recraft.ai - Discover an advanced AI image generation tool that offers fine-tuning, image variations, custom sizing, and accurate text rendering.
 tags: [ai, recraft]
+language: en
 ---
 <!-- cspell:ignore recraft -->
 ![AI - Image generation using recraft.ai](/img/v2/ai.webp)

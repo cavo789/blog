@@ -1,12 +1,13 @@
 ---
-date: 2024-11-28
 slug: vbs-files-csv
 title: VBS - Get list of files and generate a CSV
+date: 2024-11-28
+description: Need a file list in CSV format? Use this VBScript to scan a folder, including sub-folders, and output file details like size, date, and owner for easy analysis.
 authors: [christophe]
 image: /img/v2/vbs.webp
-description: Need a file list in CSV format? Use this VBScript to scan a folder, including sub-folders, and output file details like size, date, and owner for easy analysis.
 mainTag: vbs
 tags: [dos, vbs]
+language: en
 ---
 ![VBS - Get list of files and generate a CSV](/img/v2/vbs.webp)
 

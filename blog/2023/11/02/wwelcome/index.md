@@ -1,10 +1,11 @@
 ---
-date: 2023-11-02
 slug: welcome
 title: Welcome
+date: 2023-11-02
+description: Built with Docusaurus, this is the welcome post for Christophe Avonture's blog. Find a collection of personal notes on Markdown, Docker, PHP development, and devOps.
 authors: [christophe]
 image: /img/v2/welcome.webp
-description: Built with Docusaurus, this is the welcome post for Christophe Avonture's blog. Find a collection of personal notes on Markdown, Docker, PHP development, and devOps.
+language: en
 ---
 ![Welcome](/img/v2/welcome.webp)
 

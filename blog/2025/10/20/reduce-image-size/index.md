@@ -1,15 +1,15 @@
 ---
 slug: reduce-image-size
 title: CaesiumCLT – Effortlessly compress your images right on your device
+date: 2025-10-20
+description: Fast and efficient lossy/lossless image compression tool
 authors: [christophe]
 image: /img/v2/image_optimization.webp
-description: Fast and efficient lossy/lossless image compression tool
 mainTag: optimization
 tags: [images, optimization, tips]
+language: en
 blueskyRecordKey: 3m3m74j2e6c2e
-date: 2025-10-20
 ---
-
 <!-- cspell:ignore Korben,Squoosh,brew,caesiumclt,behat -->
 
 ![CaesiumCLT – Effortlessly compress your images right on your device](/img/v2/image_optimization.webp)
