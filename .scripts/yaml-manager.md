@@ -38,6 +38,8 @@ Run the script using python `yaml_manager.py <action> [arguments]`.
 | --- | --- | --- |
 | `add-key` | Add a key with a default value to files where it's missing. | `python yaml_manager.py add-key 'language,en'` |
 | `check-duplicates` | Find files with literal (e.g., date vs Date) or conceptual key conflicts. | `python yaml_manager.py check-duplicates` |
+| `check-mandatory` | Verify that all files contain the required keys: `authors`, `date`, `description`, `image`, `language`, `mainTag`, `slug`, `tags`, `title` | `python yaml_manager.py check-mandatory` |
+| `check-seo` | Run content quality checks (mandatory keys, min/max lengths, lowercase tags). | `python yaml_manager.py check-seo` |
 | `cleanup-variants` | Consolidate variant keys to a single target key. | `python yaml_manager.py cleanup-variants canonicalUrl canonicalURL,canonical_url` |
 | `find-missing` | Show files without a specific key. | `python yaml_manager.py find-missing date` |
 | `find-present` | Show files with a specific key. | `python yaml_manager.py find-present subtitle` |
@@ -64,6 +66,24 @@ Performs a comprehensive check for common key conflicts.
     1. **Literal Duplicates (Case-Insensitive)**: Flags files where two different casings of the same key exist (e.g., having both `Title` and `title` in the same front matter).
     2. **Conceptual Duplicates (Misspellings/Faults)**: Flags files where multiple keys from a predefined conflict group (like the `CONCEPTUAL_DUPLICATE_GROUPS`) are present simultaneously (e.g., having both `status` and `deprecatedStatus`).
 * **Example**: `python yaml_manager.py check-duplicates`
+
+#### `check-mandatory`
+
+This action performs a general check to ensure a baseline set of required keys (`MANDATORY_KEYS`) is present in every post. This is used for structural integrity, separate from quality checks.
+
+* **Configuration**: The list of keys checked is defined by `MANDATORY_KEYS` in the script.
+* **Example:** `python yaml_manager.py check-mandatory`
+
+#### `check-seo`
+
+This action performs a comprehensive content quality and SEO check based on the dedicated configurations (`SEO_MIN_LENGTHS`, `SEO_MAX_LENGTHS`, `SEO_LOWERCASE_KEYS`, etc.).
+
+##### Checks Performed
+
+* **Mandatory SEO Keys**: Ensures keys like title, description, and slug are present.
+* **Length Constraints**: Verifies title and description meet minimum/maximum character length recommendations.
+* **Normalization**: Checks keys like tags and categories to ensure their values are consistently lowercase.
+* **Example:**: `python yaml_manager.py check-seo`
 
 #### `cleanup-variants`
 

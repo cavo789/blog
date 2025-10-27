@@ -2,7 +2,7 @@
 slug: bash-ascii-art
 title: Bash - ASCII art
 date: 2023-12-19
-description: Learn how to add eye-catching ASCII art banners to your Bash scripts for a bigger visual impact. Includes the recommended online tool (TAAG) and a full sample code implementation.
+description: Learn how to add eye-catching ASCII art banners to your Bash scripts for a bigger visual impact. Includes a full sample code implementation.
 authors: [christophe]
 image: /img/v2/ascii_art.webp
 mainTag: bash

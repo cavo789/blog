@@ -2,7 +2,7 @@
 slug: bash-load-env
 title: Bash - Loading environment variables from a file
 date: 2023-12-19
-description: The reliable way to load .env configuration files into your Bash scripts. Use `source` with `set -o allexport` to safely import environment variables, even those with spaces.
+description: Get health information from your running Docker containers instantly. This article shows a bash script using docker ps and docker inspect for quick checks.
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: bash

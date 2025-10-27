@@ -10,6 +10,8 @@ Key features:
 2. Add, remove, or check for presence/absence of specific keys.
 3. Clean up conceptual duplicates and misspellings (e.g., 'canonicalURL' -> 'canonicalurl').
 4. List all unique keys and their values across the entire content base.
+5. Check for SEO and content quality issues (check-seo).
+6. Check for general mandatory key presence (check-mandatory).
 
 Dependencies:
 - python-frontmatter: Used for reliable parsing and dumping of front matter.
@@ -67,6 +69,35 @@ FRONTMATTER_KEY_ORDER: List[str] = [
     'date', 'updated',
     'description', 'authors', 'image', 'series',
     'mainTag', 'tags', 'categories', 'language'
+]
+
+# --- General Mandatory Key Check Configuration (NEW) ---
+# List of essential keys that MUST be present in every post, regardless of SEO details.
+MANDATORY_KEYS: List[str] = [
+    'authors', 'date', 'description', 'image', 'language',
+    'mainTag', 'slug', 'tags', 'title'
+]
+
+# --- SEO/Quality Check Configuration ---
+# Minimum length check for essential SEO fields
+SEO_MIN_LENGTHS: Dict[str, int] = {
+    'title': 5, # Minimum 5 characters for a meaningful title
+    'description': 50 # Minimum 50 characters for a decent meta description
+}
+
+# Maximum length check for meta description
+SEO_MAX_LENGTHS: Dict[str, int] = {
+    'description': 160 # Max 160 characters before truncation
+}
+
+# List of keys that must be present in every file for optimal SEO
+SEO_MANDATORY_KEYS: List[str] = [
+    'title', 'description', 'slug', 'date', 'language'
+]
+
+# List of keys whose values must be normalized to lowercase (e.g., tags, categories)
+SEO_LOWERCASE_KEYS: List[str] = [
+    'tags', 'categories', 'mainTag'
 ]
 
 # Define groups of keys that should never coexist (misspellings, deprecated names, etc.)
@@ -245,6 +276,113 @@ def _process_default_value(default_value: str) -> Any:
 # ----------------------------------------------------------------------
 # Action Implementations
 # ----------------------------------------------------------------------
+
+def check_mandatory_keys() -> None:
+    """Action: Ensures a predefined list of keys (MANDATORY_KEYS) is present in all files."""
+    files: List[str] = _get_files()
+    if not files: return
+
+    print(f"{Colors.BOLD}Operation:{Colors.ENDC} {Colors.OKCYAN}Running Mandatory Key Presence Check on {len(files)} file(s).{Colors.ENDC}")
+    print(f"{Colors.BOLD}Mandatory Keys to check: {', '.join(MANDATORY_KEYS)}{Colors.ENDC}")
+
+    total_issues: int = 0
+
+    for filepath in files:
+        issues_found: List[str] = []
+        try:
+            post = frontmatter.load(filepath)
+            metadata: Dict[str, Any] = post.metadata
+
+            # Check if all mandatory keys are present
+            for key in MANDATORY_KEYS:
+                if key not in metadata:
+                    issues_found.append(f"Missing mandatory key: '{key}'")
+
+        except Exception as e:
+            issues_found.append(f"Critical parsing error: {e}")
+
+        # --- Reporting ---
+        if issues_found:
+            print(f"{Colors.FAIL}  ❌ Mandatory Keys missing in: {filepath}{Colors.ENDC}")
+            for issue in issues_found:
+                print(f"      - {Colors.WARNING}{issue}{Colors.ENDC}")
+            total_issues += 1
+
+    print("-" * 50)
+    if total_issues == 0:
+        print(f"{Colors.OKGREEN}{Colors.BOLD}Mandatory Key Check completed.{Colors.ENDC} All {len(files)} file(s) passed the check.")
+    else:
+        print(f"{Colors.FAIL}{Colors.BOLD}Mandatory Key Check completed with errors.{Colors.ENDC} {total_issues} file(s) are missing required keys.")
+
+def check_seo() -> None:
+    """Action: Performs a comprehensive check on essential SEO and quality front matter keys."""
+    files: List[str] = _get_files()
+    if not files: return
+
+    print(f"{Colors.BOLD}Operation:{Colors.ENDC} {Colors.OKCYAN}Running SEO and Quality Check on {len(files)} file(s).{Colors.ENDC}")
+
+    total_issues: int = 0
+
+    for filepath in files:
+        issues_found: List[str] = []
+        try:
+            post = frontmatter.load(filepath)
+            metadata: Dict[str, Any] = post.metadata
+
+            # ------------------------------------------------
+            # 1. Mandatory Key Presence Check
+            # ------------------------------------------------
+            for key in SEO_MANDATORY_KEYS:
+                if key not in metadata:
+                    issues_found.append(f"Missing mandatory SEO key: '{key}'")
+
+            # ------------------------------------------------
+            # 2. Length and Format Checks
+            # ------------------------------------------------
+            for key, min_len in SEO_MIN_LENGTHS.items():
+                if key in metadata and isinstance(metadata[key], str):
+                    content = metadata[key].strip()
+                    if len(content) < min_len:
+                        issues_found.append(f"Key '{key}' too short ({len(content)} chars). Min recommended: {min_len} chars.")
+
+            for key, max_len in SEO_MAX_LENGTHS.items():
+                if key in metadata and isinstance(metadata[key], str):
+                    content = metadata[key].strip()
+                    if len(content) > max_len:
+                        issues_found.append(f"Key '{key}' too long ({len(content)} chars). Max recommended: {max_len} chars.")
+
+            # ------------------------------------------------
+            # 3. Normalization (Lowercase) Check
+            # ------------------------------------------------
+            for key in SEO_LOWERCASE_KEYS:
+                if key in metadata:
+                    values_to_check: List[str] = []
+                    if isinstance(metadata[key], str):
+                        values_to_check = [metadata[key]]
+                    elif isinstance(metadata[key], list):
+                        values_to_check = [str(v) for v in metadata[key]]
+
+                    for value in values_to_check:
+                        if value and value != value.lower():
+                            issues_found.append(f"Key '{key}' value '{value}' is not normalized (must be lowercase).")
+                            # Flag the file, move to next key
+                            break
+
+        except Exception as e:
+            issues_found.append(f"Critical parsing error: {e}")
+
+        # --- Reporting ---
+        if issues_found:
+            print(f"{Colors.FAIL}  ❌ SEO Issues found in: {filepath}{Colors.ENDC}")
+            for issue in issues_found:
+                print(f"      - {Colors.WARNING}{issue}{Colors.ENDC}")
+            total_issues += 1
+
+    print("-" * 50)
+    if total_issues == 0:
+        print(f"{Colors.OKGREEN}{Colors.BOLD}SEO Check completed.{Colors.ENDC} All {len(files)} file(s) passed all checks.")
+    else:
+        print(f"{Colors.FAIL}{Colors.BOLD}SEO Check completed with errors.{Colors.ENDC} {total_issues} file(s) have SEO issues.")
 
 def reorder_keys() -> None:
     """Action: Reorder keys in the front matter of all files based on FRONTMATTER_KEY_ORDER."""
@@ -648,6 +786,18 @@ def main() -> None:
         help="Find files with literal (case-insensitive) or conceptual key duplicates."
     )
 
+    # NEW: CHECK-MANDATORY action
+    subparsers.add_parser(
+        'check-mandatory',
+        help=f"Verify that all files contain the required keys: {', '.join(MANDATORY_KEYS)}."
+    )
+
+    # CHECK-SEO action (Added to CLI flags)
+    subparsers.add_parser(
+        'check-seo',
+        help="Run content quality checks (mandatory keys, min/max lengths, lowercase tags)."
+    )
+
     # CLEANUP-VARIANTS action
     parser_cleanup = subparsers.add_parser(
         'cleanup-variants',
@@ -663,7 +813,7 @@ def main() -> None:
         "variants",
         type=str,
         metavar="<VARIANTS_TO_REMOVE>",
-        help="Comma-separated list of variant keys to remove (e.g., 'oldSeries,series_deprecated')."
+        help="Comma-separated list of variant keys to remove (e.g., 'Series,serie')."
     )
 
     # FIND-MISSING action
@@ -674,8 +824,7 @@ def main() -> None:
     parser_find_missing.add_argument(
         "key",
         type=str,
-        metavar="<KEY_TO_CHECK>",
-        help="The key to check for absence (e.g., 'date', 'language')."
+        metavar="<KEY_TO_CHECK>"
     )
 
     # FIND-PRESENT action
@@ -686,8 +835,7 @@ def main() -> None:
     parser_find_present.add_argument(
         "key",
         type=str,
-        metavar="<KEY_TO_CHECK>",
-        help="The key to check for presence (e.g., 'date', 'language')."
+        metavar="<KEY_TO_CHECK>"
     )
 
     # LIST-KEYS action
@@ -704,8 +852,7 @@ def main() -> None:
     parser_list_values.add_argument(
         "key",
         type=str,
-        metavar="<KEY_TO_CHECK>",
-        help="The key whose values should be listed (e.g., 'series', 'tags')."
+        metavar="<KEY_TO_CHECK>"
     )
 
     # REMOVE-KEY action
@@ -716,8 +863,7 @@ def main() -> None:
     parser_remove.add_argument(
         "key",
         type=str,
-        metavar="<KEY_TO_REMOVE>",
-        help="The key to REMOVE (e.g., 'old_status')."
+        metavar="<KEY_TO_REMOVE>"
     )
 
     # REORDER action
@@ -725,7 +871,6 @@ def main() -> None:
         'reorder',
         help="Reorder all front matter keys according to the predefined standard."
     )
-
 
     # Display full help page if no arguments are provided
     if len(sys.argv) == 1:
@@ -751,12 +896,18 @@ def main() -> None:
     elif args.action == 'find-present':
         find_key_present(args.key)
 
+    elif args.action == 'check-seo':
+        check_seo()
+
+    elif args.action == 'check-mandatory':
+        check_mandatory_keys() # NEW EXECUTION POINT
+
     elif args.action == 'add-key':
         try:
-            key, default_value = _parse_key_value_arg(args.key_value)
+            key, default_value_str = _parse_key_value_arg(args.key_value)
 
-            # Confirmation for empty value
-            if not default_value:
+            # Interactive confirmation if the user intends to add an empty key
+            if not default_value_str:
                 confirmation_prompt: str = (
                     f"{Colors.WARNING}⚠️ Warning: The default value for '{key}' is an empty string ('').\n"
                     f"Are you sure you want to create an empty key? ({Colors.BOLD}yes/no{Colors.ENDC}{Colors.WARNING}){Colors.ENDC} "
@@ -766,7 +917,7 @@ def main() -> None:
                     print(f"{Colors.OKCYAN}Operation 'add-key' cancelled by user.{Colors.ENDC}")
                     sys.exit(0)
 
-            add_missing_key(key, default_value)
+            add_missing_key(key, default_value_str)
 
         except (ValueError, EOFError) as e:
             print(f"{Colors.FAIL}Error: {e}{Colors.ENDC}")
@@ -783,7 +934,7 @@ def main() -> None:
             print(f"{Colors.FAIL}Error: Both target_key and variants_to_remove must be specified.{Colors.ENDC}")
             sys.exit(1)
 
-        # Remove the target key from the variants list if mistakenly included
+        # Ensure the target key isn't included in the list of keys to remove
         variants_to_remove = [v for v in variants_to_remove if v != target_key]
 
         if not variants_to_remove:
@@ -796,6 +947,7 @@ def main() -> None:
         check_duplicates()
 
     else:
+        # Fallback in case a subparser was defined but not handled in the if/elif block
         parser.print_help()
 
 if __name__ == "__main__":

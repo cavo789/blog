@@ -1,11 +1,14 @@
 ---
 slug: vba-excel-list-references
 title: MS Excel - Get the list of references used in your modules
+date: 2025-10-27
+description: VBA developer? Stop manually checking references! Use this VBS script to automatically retrieve a list of all VBA references in multiple Excel .xlsm or .xlam files.
 authors: [christophe]
 image: /img/v2/excel.webp
 mainTag: excel
 tags: [excel, vba]
-date: 2025-10-27
+language: en
+blueskyRecordKey: 3m45z7onhnc2o
 ---
 ![MS Excel - Get the list of references used in your modules](/img/v2/vba_export_xlsm.webp)
 
