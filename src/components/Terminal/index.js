@@ -24,7 +24,7 @@ function getCopyText(children) {
 }
 
 export default function Terminal({ children, title, wrap = true }) {
-  const displayTitle = title || "christophe@machine: ~";
+  const displayTitle = title || "user@machine: ~/yourproject";
   const [copied, setCopied] = useState(false);
   const codeRef = useRef(null);
 

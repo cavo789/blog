@@ -7,6 +7,7 @@ authors: [christophe]
 image: /img/v2/msaccess.webp
 mainTag: msaccess
 tags: [database, msaccess, vba]
+blueskyRecordKey: 3m4kn37zsn22k
 language: en
 ---
 ![How to optimize an existing MS Access database](/img/v2/msaccess.webp)

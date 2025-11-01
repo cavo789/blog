@@ -219,7 +219,7 @@ endif
 
 
 .PHONY: yaml-manager
-yaml-manager: ## YAML front matter manager
+yaml-manager: ## YAML front matter manager (run make yaml-manager ARGS="--help" for more info)
 	@clear
 
 ifeq ($(strip $(ARGS)),)

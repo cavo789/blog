@@ -1,0 +1,64 @@
+# Pre-commit configuration for Quarto projects
+exclude: "^.build/|^.git/|^.quarto/"
+
+repos:
+  # --- Universal hooks for clean files ---
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  # Markdown linter
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.45.0
+    hooks:
+      - id: markdownlint
+        args:
+          - "--config=.config/.markdownlint.yaml"
+
+  # Checks all of the hyperlinks in a markdown text to determine if they are alive or dead
+  - repo: https://github.com/tcort/markdown-link-check
+    rev: v3.13.7
+    hooks:
+      - id: markdown-link-check
+        name: Check Markdown Links
+        entry: markdown-link-check
+        language: node
+        types: [markdown]
+
+  # The hook below hook extracts the YAML front matter from each .qmd
+  # file and validates its syntax using yq.
+  # It helps catch formatting errors (e.g. missing colons, invalid keys)
+  # before committing.
+  # Only the YAML block between the first pair of --- lines is checked.
+  - repo: local
+    hooks:
+      - id: validate-qmd-yaml
+        name: Validate YAML front matter in .qmd
+        entry: bash -c 'awk "/^---/{f=!f;next}f" "$1" | yq eval "." - > /dev/null'
+        language: system
+        pass_filenames: true
+        args: ["{}"]
+        files: \.qmd$
+
+  # --- Spelling ---
+  # Requires to install cspell in the Docker file as a binary. This implies to install NPM tool
+  # The .vscode/cspell.json file is shared with VSCode
+  - repo: local
+    hooks:
+      - id: cspell
+        name: Spell check with cspell
+        entry: cspell
+        language: system
+        args:
+          - "--config=.vscode/cspell.json"
+          - "--no-progress"
+          - "--no-summary"
+        exclude: ^.*_extensions/.*

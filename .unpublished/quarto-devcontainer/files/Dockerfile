@@ -7,9 +7,9 @@ ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=1000
 
-ARG INSTALL_CHROMIUM="false"
-ARG INSTALL_CSPELL="false"
-ARG INSTALL_PRECOMMIT_HOOKS="false"
+ARG INSTALL_CHROMIUM=false
+ARG INSTALL_CSPELL=false
+ARG INSTALL_PRECOMMIT_HOOKS=false
 
 # Yaml tooling
 ARG YQ_VERSION=v4.42.1
@@ -133,6 +133,7 @@ RUN set -eux && \
 RUN set -eux && \
     cat <<EOF >> "/home/${USERNAME}/.bashrc"
 echo -e "\n📘 Welcome to the Quarto Docs Dev Container!"
+echo -e ""
 echo -e "Below are some useful commands:"
 echo -e ""
 echo -e "  \e[1mQuarto Commands\e[0m"
@@ -141,12 +142,15 @@ echo -e "  ✨ \e[32mquarto preview .\e[0m                             Start a h
 echo -e "  ✨ \e[32mquarto render .\e[0m                              Build the documentation (based on _quarto.yml)."
 echo -e "  ✨ \e[32mquarto render . --profile docx\e[0m               Build a .docx file (requires _quarto-docx.yml)."
 echo -e ""
-echo -e "  \e[1mData quality checks\e[0m"
-echo -e "  ───────────────────"
 EOF
 
 # Append conditional commands depending on optional tools
 RUN set -eux && \
+    if [ "${INSTALL_CSPELL}" = "true" ] || [ "${INSTALL_PRECOMMIT_HOOKS}" = "true" ]; then \
+        echo -e 'echo -e ""' >> "/home/${USERNAME}/.bashrc"; \
+        echo -e 'echo -e "  \e[1mData quality checks\e[0m"' >> "/home/${USERNAME}/.bashrc"; \
+        echo -e 'echo -e "  ───────────────────"' >> "/home/${USERNAME}/.bashrc"; \
+    fi && \
     if [ "${INSTALL_CSPELL}" = "true" ]; then \
         echo 'echo -e "  ✍️  \e[32mcspell lint . --config .vscode/cspell.json\e[0m  Run spell checks.\n"' >> "/home/${USERNAME}/.bashrc"; \
     fi && \

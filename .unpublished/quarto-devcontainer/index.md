@@ -2,19 +2,20 @@
 slug: quarto-devcontainer
 title: Make your Quarto project Devcontainer-Ready — No More Setup Headaches
 authors: [christophe]
-image: /img/v2/devcontainer.webp
+image: /img/v2/devcontainer_quarto.webp
 series: Creating Docusaurus components
 description: Convert any Quarto project into a fully portable, VSCode-powered devcontainer in minutes.
 mainTag: devcontainer
 tags: [devcontainer, docker, markdown, pre-commit, quarto, vscode]
 blueskyRecordKey:
-date: 2025-09-30
+date: 2025-11-01
+draft: true
 ---
 
 <!-- markdownlint-disable MD046 -->
 <!-- cspell:ignore  -->
 
-![Make your Quarto project Devcontainer-Ready — No More Setup Headaches](/img/v2/devcontainer.webp)
+![Make your Quarto project Devcontainer-Ready — No More Setup Headaches](/img/v2/devcontainer_quarto.webp)
 
 I love using Quarto and I've plenty of *documentation* projects on my disk. I'm writing user documentation, developer ones and, too, installation guide for almost every project I'm coding.
 
@@ -42,17 +43,17 @@ cd brand/brand-simple
 
 Run `code .` to open the project in VSCode and you'll get this:
 
-![Opening the brand-simple project in VSCode](./images/opening-in-vscode.png)
+![Opening the brand-simple project in VSCode](./images/opening-in-vscode.webp)
 
 ## We'll need to create three files
 
 To get the best performance in terms of Docker image build speed and use of the Docker cache mechanism, we will need to create three files:
 
-The `compose.yaml` file is necessary to tell VSCode to create our Docker image if it does not already exist, or to reuse it if it does. This file is therefore essential in terms of performance.
+The `.devcontainer/compose.yaml` file is necessary to tell VSCode to create our Docker image if it does not already exist, or to reuse it if it does. This file is therefore essential in terms of performance.
 
-The `Dockerfile` file defines our Docker image: the binaries we need, user configuration, etc.
+The `.devcontainer/Dockerfile` file defines our Docker image: the binaries we need, user configuration, etc.
 
-The `devcontainer.json` file is used by VSCode to understand and build our working environment.
+The `.devcontainer/devcontainer.json` file is used by VSCode to understand and build our working environment.
 
 <Snippet filename=".devcontainer/compose.yaml" source="./files/compose.yaml" />
 
@@ -61,9 +62,9 @@ The `devcontainer.json` file is used by VSCode to understand and build our worki
 <Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.json" />
 
 <AlertBox variant="info" title="">
-Strictly speaking, we don't need the `compose.yaml` file but this is the only way to build the Docker image **once** and reuse it across projects.
+Strictly speaking, we don't need the `.devcontainer/compose.yaml` file but this is the only way to build the Docker image **once** and reuse it across projects.
 
-By opening a Devcontainer, even if the `Dockerfile` is strictly the same across your documentation projects, the context will be different (**project1**, **project2**, ...) and VSCode will rebuild the image for that context. To avoid this, we need to build the image and **give it a name**; this can only be done using a `compose.yaml` file.
+By opening a Devcontainer, even if the `Dockerfile` is strictly the same across your documentation projects, the context will be different (**project1**, **project2**, ...) and VSCode will rebuild the image for that context. To avoid this, we need to build the image and **give it a name**; this can only be done using a `.devcontainer/compose.yaml` file.
 
 </AlertBox>
 
@@ -71,30 +72,24 @@ By opening a Devcontainer, even if the `Dockerfile` is strictly the same across 
 
 ### Installation of sudo
 
-During the creation of the Docker image, we also install the `sudo` command and allow our `vscode` user to run `sudo su root` in the devcontainer without to have to fill in a password. The reason here is, sometimes, Quarto will complaints about a missing dependency (like exporting to PDF). To allow the developer to quickly add the dependency and do some tests without to rebuild the container again and again, `sudo` is installed.
-
-So, while you're in the console, you'll be able to do something like:
-
-<Terminal wrap={true}>
-$ sudo apt-get update && sudo apt-get install -y --no-install-recommends the-missing-dependency
-</Terminal>
+During the creation of the Docker image, we also install the `sudo` command and allow our `vscode` user to run `sudo su root` in the devcontainer without to have to fill in a password. The reason here is, sometimes, Quarto will complaints about a missing dependency (like when we are exporting to PDF and there is a missing library). To allow the developer to quickly add the dependency and do some tests without to rebuild the container again and again, `sudo` is installed.
 
 ## Build arguments
 
 ### Installation of Chromium
 
-If you pay attention to `compose.yaml` file, you'll see an argument called `INSTALL_CHROMIUM`. Depending on your project, you'll need it or not.
+If you pay attention to `.devcontainer/compose.yaml` file, you'll see an argument called `INSTALL_CHROMIUM`. Depending on your project, you'll need it or not.
 
-Indeed, under certain circumstances, when rendering your documentation to Word (i.e. by running f.i. `quarto render . --profile docx`), Quarto can ask you to install Chromium. To avoid to do this every-time, simply open the `devcontainer.json` file, search for `INSTALL_CHROMIUM` and initialize it to `true`.
+Indeed, under certain circumstances, when rendering your documentation to Word (i.e. by running f.i. `quarto render . --profile docx`), Quarto can ask you to install Chromium. To avoid to do this every-time, simply open the `.devcontainer/devcontainer.json` file, search for `INSTALL_CHROMIUM` and initialize it to `true`.
 
-Note: if you change the `Dockerfile` code or the `devcontainer.json` file, you'll need to rebuild the container as explained here below.
+Note: if you change the `.devcontainer/Dockerfile` code or the `.devcontainer/devcontainer.json` file, you'll need to rebuild the container as explained here below.
 
 <AlertBox variant="info" title="Make sure you need it">
 Before installing Chromium, make sure you need it i.e. first render your documentation without and see if Quarto complaints about Chromium. This because Chromium requires a lot of dependencies and it will make your Docker image size much bigger.
 
 </AlertBox>
 
-### Installation of Tiny
+### Installation of Code Spell Checker
 
 The same way, you've a variable called `INSTALL_CSPELL`. Initialize it to `true` if you want to install the Code-spell check tool (requires Node.js).
 
@@ -102,35 +97,56 @@ The same way, you've a variable called `INSTALL_CSPELL`. Initialize it to `true`
 
 The third variable is `INSTALL_PRECOMMIT_HOOKS` and, if your documentation has his own `.git` folder, it'll be a good idea to initialize the variable to `true` so, when committing your changes, a few data quality controls / formatting tools will be applied.
 
-## Opening our project
+## Opening our project as a Devcontainer
 
-Right now, just press <kbd>F1</kbd> (or <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd>) and select **Dev containers: Rebuild and Reopen in Container**. If you don't have that command, please make sure to install the  `ms-vscode-remote.remote-containers` from Microsoft.
+Right now, just press <kbd>F1</kbd> (or <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd>) and select **Dev Containers: Rebuild and Reopen in Container**. If you don't have that command, please make sure to install the `ms-vscode-remote.remote-containers` extension from Microsoft.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info" title="The remote container of Microsoft">
 You can install the extension from the console by running `code --install-extension ms-vscode-remote.remote-containers` or by opening this page: [Marketplace - Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
-
 </AlertBox>
 
-So, once you've fired the **Dev containers: Rebuild and Reopen in Container** command, VSCode will close your current session and open a new one. The very first time, VSCode will have to make some initializations (like building the Docker image and downloading extensions so it'll be slower).
+So, once you've fired the **Dev Containers: Rebuild and Reopen in Container** command, VSCode will close your current session and open a new one. The very first time, VSCode will have to make some initializations (like building the Docker image and downloading extensions so it'll be slower).
 
 After a few seconds, you'll get a screen like this:
 
-![The Devcontainer has been opened](./images/devcontainer.png)
+![The Devcontainer has been opened](./images/devcontainer.webp)
 
-1. See bottom left, you've in the status bar the text "Dev Container: xxx" (followed by the name of our container).
-2. In the **Terminal window** (if you don't see it press <kbd>CTRL</kbd>+<kbd>ù</kbd>), you'll see that something was already fired: `quarto preview` has been already triggered and your website is already running.
+1. See bottom left, you've in the status bar the text "Dev Container: xxx" (followed by the name of our container as configured in the `devcontainer.json` file).
+2. In the **Terminal window** (if you don't see it press <kbd>CTRL</kbd>+<kbd>ù</kbd>), you'll see a cheatsheet with main commands like `quarto preview .` to run the site with hot reload.
 
-Just follow the link by pressing <kbd>ALT</kbd> and clicking on the link.
+So, still in the Terminal, please type `quarto preview .` then press <kbd>Enter</kbd> as illustrated below:
 
-![The site is already running](./images/preview.png)
+![Running quarto preview](./images/running_in_preview_mode.webp)
 
-## Render the documentation
+In theory, your browser will be automatically fired and the site opened. If not, just follow the link by pressing <kbd>ALT</kbd> and clicking on the link.
 
-By opening a Bash terminal and running from there `quarto preview .`, your documentation will be render and if you do a change, it'll be rendered automatically.
+![The site is already running](./images/preview.webp)
 
-Let's check this: please edit the `index.qmd` file and change something.  For instance, I'll change the `Overview` chapter title to `Preface`.
+Crazy easo no?
 
-![The synchronization is already enabled](./images/synchronization-enabled.png)
+## What have we done?
+
+At this stage, what have we done?  We retrieved a Quarto website project and made sure to “dockerize” it.
+
+Let's see the `_quarto.yml` file of the project we've just cloned (you'll find more information on the official Quarto site: [Creating a website](https://quarto.org/docs/websites/)):
+
+<Snippet filename="_quarto.yml" source="./files/_quarto.yml" />
+
+We've added three files to the project in a special folder called `.devcontainer`. That folder will tell to VSCode that we would like to use a Docker container when working on that project. The container will be based on a custom Docker image (as coded in `.devcontainer/Dockerfile`). The image will reuse the official Quarto image.
+
+So, without having to install Quarto on our computer, we'll be able to use all features of Quarto.
+
+Finally, we've to *switch to the devcontainer* i.e. just after we've opened VSCode, we've to run a special command to reopen the project as a devcontainer.
+
+That command is, the first time, **Dev Containers: Rebuild and Reopen in Container** but as soon as the custom image has been created once, we can simply use **Dev Containers: Rebuild and reopen container**.
+
+## Writing our documentation
+
+So far, we've already fired `quarto preview .` in a terminal. The documentation was rendered and our website is already displayed (on `http://localhost:7519` or any other port).
+
+Let's check the hot reload feature: please edit the `index.qmd` file you'll retrieve in the root folder and change something.  For instance, change the word `Overview` to `Preface` and save.
+
+![The synchronization is already enabled](./images/synchronization-enabled.webp)
 
 As you can see on the image here above, I just need to make a change, save my file and wait less than one second and the website is updated automatically. Nothing to do (I don't need to refresh the page). Easy no?
 
@@ -138,21 +154,17 @@ As you can see on the image here above, I just need to make a change, save my fi
 
 Go to the **Terminal window** (if you don't see it press <kbd>CTRL</kbd>+<kbd>ù</kbd>).
 
-Look now at the right part: there is a `Configuring...` terminal but too a `bash brand-simple` (the name of our project).
+Look now at the right part: there is a `Configuring...` terminal but too a `bash workspace` (the name of our project). If you don't see that one, look just above `Configuring...` and click on the `+` button.
 
-![The terminal](./images/terminal-brand-simple.png)
+![The terminal](./images/terminal.webp)
 
-Click on that one to display that, already configured, terminal:
-
-![Terminal with instructions](./images/terminal-with-instructions.png)
-
-These instructions were configured in our `.devcontainer/Dockerfile` for our easiness.
+As you can see, you'll see a few *instructions*. These instructions were coded in the final part of the `.devcontainer/Dockerfile` file. They are there just to help the first time user.
 
 So, if your objective is to render the final documentation, you can always see *Oh yes, I simply need to run `quarto render .`*
 
 ## What's is pre-commit?
 
-[pre-commit](https://pre-commit.com/) is a tool that will run some validation controls to your project before you'll push it to your versioning system (like Github or GitLab).
+In this project, I've foresee the installation of [pre-commit](https://pre-commit.com/). This is an optional tool that will run some validation controls to your project before you'll push it to your versioning system (like Github or GitLab).
 
 By adding `pre-commit` in the devcontainer, you'll get the privilege to never again commit files with some fault like f.i. formatting issues in your Markdown content.
 
@@ -160,76 +172,7 @@ If you like this idea, please create the `.pre-commit-config.yaml` file in your 
 
 Just copy/paste the content below:
 
-<Snippet filename=".pre-commit-config.yaml">
-
-```yaml
-# Pre-commit configuration for Quarto projects
-exclude: "^.build/|^.git/|^.quarto/"
-
-repos:
-  # --- Universal hooks for clean files ---
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
-    hooks:
-      - id: check-added-large-files
-      - id: check-case-conflict
-      - id: check-json
-      - id: check-merge-conflict
-      - id: check-yaml
-      - id: detect-private-key
-      - id: end-of-file-fixer
-      - id: trailing-whitespace
-
-  # Markdown linter
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.45.0
-    hooks:
-      - id: markdownlint
-        args:
-          - "--config=.config/.markdownlint.yaml"
-
-  # Checks all of the hyperlinks in a markdown text to determine if they are alive or dead
-  - repo: https://github.com/tcort/markdown-link-check
-    rev: v3.13.7
-    hooks:
-      - id: markdown-link-check
-        name: Check Markdown Links
-        entry: markdown-link-check
-        language: node
-        types: [markdown]
-
-  # The hook below hook extracts the YAML front matter from each .qmd
-  # file and validates its syntax using yq.
-  # It helps catch formatting errors (e.g. missing colons, invalid keys)
-  # before committing.
-  # Only the YAML block between the first pair of --- lines is checked.
-  - repo: local
-    hooks:
-      - id: validate-qmd-yaml
-        name: Validate YAML front matter in .qmd
-        entry: bash -c 'awk "/^---/{f=!f;next}f" "$1" | yq eval "." - > /dev/null'
-        language: system
-        pass_filenames: true
-        args: ["{}"]
-        files: \.qmd$
-
-  # --- Spelling ---
-  # Requires to install cspell in the Docker file as a binary. This implies to install NPM tool
-  # The .vscode/cspell.json file is shared with VSCode
-  - repo: local
-    hooks:
-      - id: cspell
-        name: Spell check with cspell
-        entry: cspell
-        language: system
-        args:
-          - "--config=.vscode/cspell.json"
-          - "--no-progress"
-          - "--no-summary"
-        exclude: ^.*_extensions/.*
-```
-
-</Snippet>
+<Snippet filename=".pre-commit-config.yaml" source="./files/.pre-commit-config.yaml" />
 
 Once this file is in place, when you'll fire the `git commit` command from the terminal (<kbd>CTRL</kbd>+<kbd>ù</kbd>), `git` will first run `pre-commit` to run *hooks*. In the `.pre-commit-config.yaml` file above, we've defined two hooks; the first one to make generic checks on files then the ensure there is no linting errors with .md files (just check the official repo for more info).
 
@@ -243,6 +186,6 @@ This command will check all files.
 
 ## Conclusion
 
-With just two files (`.devcontainer/Dockerfile` and `.devcontainer/devcontainer.json`), we've converted a simple project to a Devcontainer where Quarto is preinstalled, extensions installed and configured and some features like the automatic preview is running.
+With just three files (`.devcontainer/compose.yaml`, `.devcontainer/Dockerfile` and `.devcontainer/devcontainer.json`), we've converted a simple project to a Devcontainer where Quarto is preinstalled, extensions installed and configured and some features like the automatic preview is running.
 
 Cool no?
