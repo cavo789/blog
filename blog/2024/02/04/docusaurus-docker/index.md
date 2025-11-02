@@ -91,8 +91,7 @@ $ (
 
 So if you take the time to look at what we've now in our `/tmp/docusaurus` folder, here is the list of files / folders:
 
-<Terminal>
-$ tree -a -L 2
+```tree expanded=true showJSX=false debug=false title="/tmp/docusaurus"
 .
 ├── .dockerignore
 ├── Dockerfile
@@ -101,7 +100,8 @@ $ tree -a -L 2
 │   ├── 2024-02-05-my-first-post.md
 │   └── 2024-02-06-my-second-post.md
 └── compose.yaml
-</Terminal>
+
+```
 
 <AlertBox variant="info" title="`tree` is not part of core Linux installation">
 Just in case you're interested by the `tree` utility and don't have yet, simply run `sudo apt-get update && sudo apt-get install tree` to install it. This step is optional.

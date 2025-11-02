@@ -27,7 +27,7 @@ Ce composant affiche un bouton flottant en bas à droite de l'écran qui :
 
 ## 📁 Structure des fichiers
 
-```
+```bash
 src/components/ScrollToTopButton/
 ├── index.js              # Composant React principal
 ├── styles.module.css     # Styles CSS modulaires

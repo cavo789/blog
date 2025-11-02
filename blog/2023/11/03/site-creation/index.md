@@ -47,15 +47,14 @@ $ npx create-docusaurus@latest blog classic --javascript
 
 After a long time, the blog folder is created and I can take a look on his content:
 
-<Terminal>
-$ tree -d -L 1
+```tree
 .
 ├── blog
 ├── docs
 ├── node_modules
 ├── src
 └── static
-</Terminal>
+```
 
 The installation step is now finished, I will exit the container and return to my computer, to do this, from the Docker console, I just type `exit`.
 
@@ -88,14 +87,13 @@ For keeping things manageable, I will only keep the blog and remove the tutorial
 
 Now, I can remove the `/docs` folder from my `blog` directory:
 
-<Terminal>
-$ tree -d -L 1
+```tree
 .
 ├── blog
 ├── node_modules
 ├── src
 └── static
-</Terminal>
+```
 
 I will also make some changes to files like `docusaurus.config.js` or `blog/authors.yml` to fit my needs.
 

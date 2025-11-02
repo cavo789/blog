@@ -126,6 +126,15 @@
         ],
         "description": "Docusaurus - Inline table of contents",
     },
+    "docusaurus.tree": {
+        "prefix": "Tree",
+        "body": [
+            "```tree expanded=true showJSX=false debug=false title=\"$1\"",
+            "",
+            "```",
+        ],
+        "description": "Docusaurus - Treeview component",
+    },
     "docusaurus.updated": {
         "prefix": "UpdatedAt",
         "body": [

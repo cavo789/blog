@@ -247,16 +247,16 @@ Our Bluesky component is ready. We have created our four files.
 
 You should have this:
 
-```bash
+```tree expanded=true showJSX=false debug=false title="src"
 .
-├── src/components/Bluesky
-│   ├── bluesky.svg             -- The Bluesky logo
-│   ├── index.js                -- Our Bluesky component
-│   ├── share.js                -- Our BlueskyShare sub-component
-│   └── styles.module.css       -- Our stylesheet
+├── components/Bluesky
+│   ├── bluesky.svg
+│   ├── index.js
+│   ├── share.js
+│   └── styles.module.css
 ...
-└── src/theme/BlogPostItem
-    ├── index.js                -- The BlogPostItem template
+└── theme/BlogPostItem
+    ├── index.js
 ```
 
 Let's go back to what was said earlier: in order to adapt the page layout, Docusaurus uses the file `src/theme/BlogPostItem/index.js`. So it's time to inject our newly-created component in that script.

@@ -109,20 +109,19 @@ Please run `sudo chown -R christophe:christophe .` (and replace my firstname by 
 
 Let's look at the tree structure:
 
-<Terminal>
+```tree expanded=true showJSX=false debug=false
 .
 ├── LICENSE
 ├── dagger.json
 └── .pipeline
     ├── pyproject.toml
     ├── sdk
-    │   ├── [...]
     ├── src
     │   └── src
     │       ├── __init__.py
     │       └── main.py
-    └── [...]
-</Terminal>
+
+```
 
 ## Calling functions
 

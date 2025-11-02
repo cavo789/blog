@@ -70,13 +70,13 @@ So, in the new test function, we'll just try to remove a not-existing file and w
 
 Imagine the following, simplified, tree structure:
 
-<Terminal>
+```tree expanded=true showJSX=false debug=false title=""
 .
 ├── src
 │   └── assert.sh
 └── tests
     ├── assert.bats
-</Terminal>
+```
 
 The file `src/assert.sh` contains your Linux shell code you want to test. Your test scenario should be stored in the `tests` folder. Since we'll write tests for the `src/assert.sh` file, let's create the  `tests/assert.bats`.
 

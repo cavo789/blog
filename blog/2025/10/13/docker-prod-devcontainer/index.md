@@ -142,8 +142,7 @@ And finally, we'll create, for the demo, a FastAPI Python script that will retur
 
 So at this point, our project looks like this i.e. we've five files.
 
-```bash
-docker-prod-devcontainer/
+```tree expanded=true showJSX=false debug=false title="docker-prod-devcontainer"
 ├─ .env
 ├── Dockerfile
 ├── compose.yaml
@@ -310,8 +309,7 @@ In VSCode, to be able to run a `Devcontainer:` command (from the **Command Palet
 
 So at this point, our project looks like this i.e. we've ten files.
 
-```bash
-docker-prod-devcontainer/
+```tree expanded=true showJSX=false debug=false title="docker-prod-devcontainer/"
 ├── .devcontainer
 │   ├── .env
 │   ├── Dockerfile
