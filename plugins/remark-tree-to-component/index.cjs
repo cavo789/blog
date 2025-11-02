@@ -1,5 +1,44 @@
+/**
+ * @fileoverview A Docusaurus Remark plugin that transforms fenced code blocks with the
+ * language identifier `tree` into an MDX component structure (<Trees> / <Folder> / <File>).
+ * It supports attributes like `expanded`, `showJSX`, `debug`, and `title`.
+ */
+
 const { visit } = require("unist-util-visit");
 
+/**
+ * @typedef {Object} Node
+ * @property {string} label - The file or folder name.
+ * @property {'file'|'folder'} type - The type of the node.
+ * @property {Node[]} children - Array of child nodes.
+ */
+
+/**
+ * @typedef {Object} Settings
+ * @property {boolean} expanded - Whether the root folder should be expanded by default.
+ * @property {boolean} showJSX - Whether to display the generated JSX code block.
+ * @property {boolean} debug - Whether to display the parsed settings as a JSON block.
+ * @property {string} title - The project title displayed above the tree.
+ */
+
+/**
+ * @typedef {Object} MdxJsxAttribute
+ * @property {'mdxJsxAttribute'} type
+ * @property {string} name
+ * @property {string | boolean} value
+ */
+
+/**
+ * @typedef {Object} MdxJsxFlowElement
+ * @property {'mdxJsxFlowElement'} type
+ * @property {'Trees'|'Folder'|'File'} name
+ * @property {MdxJsxAttribute[]} attributes
+ * @property {MdxJsxFlowElement[]} children
+ */
+
+/**
+ * @type {Object<string, string>} Mapping from file extension/name to a variant key for icon selection.
+ */
 const mapLangToVariant = {
   apacheconf: "apacheconf",
   asm: "asm",
@@ -46,6 +85,9 @@ const mapLangToVariant = {
   zsh: "bash",
 };
 
+/**
+ * @type {Object<string, string>} Mapping from variant key to the actual icon identifier (e.g., Lucide icon, or custom).
+ */
 const variantIcons = {
   apacheconf: "logos:apache",
   asm: "vscode-icons:file-type-assembly",
@@ -84,14 +126,22 @@ const variantIcons = {
   yaml: "devicon-plain:yaml",
 };
 
+/**
+ * Determines the variant key for icon selection based on filename and type.
+ * @param {string} filename - The name of the file or folder.
+ * @param {'file'|'folder'} [type='file'] - The type of node.
+ * @returns {string} The variant key for icon lookup.
+ */
 function getVariantKey(filename, type = "file") {
   if (type === "folder") return "folder";
   if (!filename) return "none";
+
   const lower = filename.toLowerCase();
   const base = lower.split("/").pop();
 
   if (base === "docusaurus.config.js") return "docusaurus";
 
+  // Specific handling for Docker files
   if (
     base === "dockerfile" ||
     base === "docker" ||
@@ -108,42 +158,55 @@ function getVariantKey(filename, type = "file") {
   return mapLangToVariant[ext] || "none";
 }
 
+/**
+ * Parses the raw tree structure text into a hierarchical array of Node objects.
+ * @param {string} treeText - The raw text content of the code block.
+ * @returns {Node[]} The array of root-level Node objects.
+ */
 function parseTree(treeText) {
   const lines = treeText
     .split("\n")
-    .map((l) => l.replace(/\r$/, "")) // Remove \r for Windows
-    .filter((l) => l.trim().length > 0 && !l.startsWith(".")); // Skip empty or hidden files
+    .map((l) => l.replace(/\r$/, "")) // Clean Windows line endings
+    .filter((l) => l.trim().length > 0 && !l.startsWith(".")); // Filter out empty lines and hidden root
 
+  /** @type {Node[]} */
   const root = [];
-  const stack = [{ depth: -1, children: root }]; // root in stack
+  /** @type {Array<{depth: number, children: Node[]}>} */
+  const stack = [{ depth: -1, children: root }]; // Stack for tracking parent folders
 
   for (const line of lines) {
-    // Match indentation + optional tree characters
+    // Match indentation and node name, ignoring tree characters (│, ├──, └──)
     const match = line.match(/^(\s*[\│\s]*)?(?:├── |└── )?(.+)$/);
     if (!match) continue;
 
     const [, indentChars = "", nameRaw] = match;
 
-    // Each level corresponds roughly to 4 spaces
-    const depth = Math.floor(indentChars.replace(/[\│]/g, " ").length / 4);
+    // Normalize all tree drawing characters (like │) in the indentation to spaces for consistent depth calculation
+    const normalizedIndent = indentChars
+      .replace(/[\│\─\├\└]/g, " ")
+      .replace(/[^\S\r\n]/g, " ");
+
+    // Calculate depth based on 4 spaces per level
+    const depth = Math.floor(normalizedIndent.length / 4);
 
     const name = nameRaw.replace(/[\│\├\└\─]+/g, "").trim();
 
+    /** @type {Node} */
     const node = {
       label: name,
       type: name.includes(".") ? "file" : "folder",
       children: [],
     };
 
-    // Pop stack until we find the correct parent
+    // Traverse up the stack to find the correct parent based on depth
     while (stack.length > 1 && depth <= stack[stack.length - 1].depth) {
       stack.pop();
     }
 
-    // Add to parent's children
+    // Add node to the current parent's children
     stack[stack.length - 1].children.push(node);
 
-    // If it's a folder, push it to the stack with its depth
+    // If it's a folder, push it onto the stack to become the next parent
     if (node.type === "folder") {
       stack.push({ depth, children: node.children });
     }
@@ -152,24 +215,36 @@ function parseTree(treeText) {
   return root;
 }
 
-// Recursive conversion respecting children and nesting
+/**
+ * Recursively converts a parsed Node into an MDAST MDX JSX Element structure.
+ * @param {Node} node - The parsed tree node (file or folder).
+ * @param {Settings} [settings={}] - The configuration settings from the code block header.
+ * @returns {MdxJsxFlowElement} The MDAST representation of the component.
+ */
 function nodeToMdxElement(node, settings = {}) {
   const variantKey = getVariantKey(node.label, node.type);
   const icon = variantIcons[variantKey] || variantIcons.none;
 
   if (node.type === "folder") {
+    /** @type {MdxJsxAttribute[]} */
+    const attributes = [
+      { type: "mdxJsxAttribute", name: "label", value: node.label },
+      { type: "mdxJsxAttribute", name: "icon", value: icon },
+    ];
+
+    // Only include the 'expanded' prop if it is explicitly set to true.
+    if (settings.expanded === true) {
+      attributes.push({
+        type: "mdxJsxAttribute",
+        name: "expanded",
+        value: true,
+      });
+    }
+
     return {
       type: "mdxJsxFlowElement",
       name: "Folder",
-      attributes: [
-        { type: "mdxJsxAttribute", name: "label", value: node.label },
-        {
-          type: "mdxJsxAttribute",
-          name: "expanded",
-          value: settings.expanded ?? false,
-        },
-        { type: "mdxJsxAttribute", name: "icon", value: icon },
-      ],
+      attributes: attributes,
       children: node.children.map((child) => nodeToMdxElement(child, settings)),
     };
   } else {
@@ -185,42 +260,179 @@ function nodeToMdxElement(node, settings = {}) {
   }
 }
 
+/**
+ * Custom recursive function to convert an MDX JSX element (MDAST node)
+ * back into a formatted, indented JSX string for display.
+ * @param {MdxJsxFlowElement} node - The MDAST node representing the component element.
+ * @param {number} [indent=0] - Current indentation level (in spaces, 2 per level).
+ * @returns {string} The formatted JSX string.
+ */
+function nodeToJsxString(node, indent = 0) {
+  if (node.type !== "mdxJsxFlowElement") return "";
+
+  // Use two standard spaces for indentation
+  const indentStr = "   ".repeat(indent);
+
+  // Process attributes into a string
+  const attributes = node.attributes
+    .map((attr) => {
+      if (attr.type === "mdxJsxAttribute") {
+        let value;
+        // Values that are strings need quotes in the JSX string
+        if (typeof attr.value === "string") {
+          value = `"${attr.value}"`;
+        } else if (typeof attr.value === "boolean") {
+          // Boolean values need braces
+          value = `{${attr.value}}`;
+        } else {
+          value = attr.value;
+        }
+        return `${attr.name}=${value}`;
+      }
+      return "";
+    })
+    .filter(Boolean)
+    .join(" ");
+
+  let startTag = `<${node.name}${attributes ? ` ${attributes}` : ""}`;
+
+  if (node.children && node.children.length > 0) {
+    startTag += ">";
+
+    // Recursively process children with increased indentation
+    const childrenStrings = node.children
+      .map((child) => nodeToJsxString(child, indent + 1))
+      .join("\n");
+
+    const endTag = `${indentStr}</${node.name}>`;
+
+    // Combine and format the multi-line tag structure
+    return [indentStr + startTag, childrenStrings, endTag].join("\n");
+  } else {
+    // Self-closing tag for <File /> elements
+    return `${indentStr}${startTag} />`;
+  }
+}
+
+/**
+ * The main Remark plugin function. It visits all code blocks and replaces those
+ * with the `tree` language identifier with an MDX component structure.
+ * @returns {function(import('unist').Node, import('unist').VFile): void} The Unist Transformer function.
+ */
 function remarkTreeToComponent() {
   return (tree) => {
     visit(tree, "code", (node, index, parent) => {
-      // Safe check for node.lang
+      // Combine node.lang ("tree") and node.meta (attributes) for full header parsing
       const lang = node.lang || "";
-      if (!lang.startsWith("tree")) return;
+      const meta = node.meta || "";
+      const fullHeader = [lang, meta].filter(Boolean).join(" ").trim();
 
-      // Default settings
-      const settings = { expanded: false };
+      // Skip if it's not a 'tree' block
+      if (!fullHeader.startsWith("tree")) return;
 
-      // Parse settings from code block meta (e.g., "tree expanded=true")
-      const langParts = lang.split(/\s+/);
-      if (langParts.length > 1) {
-        langParts.slice(1).forEach((part) => {
-          const [key, value] = part.split("=");
-          if (key === "expanded") settings.expanded = value === "true";
-          // Add more settings here if needed
+      /** @type {Settings} */
+      const settings = {
+        expanded: false,
+        showJSX: false,
+        debug: false,
+        title: "",
+      };
+
+      // Regex to robustly extract key=value pairs, handling both unquoted and quoted values (with spaces)
+      // Group 1: key, Group 3: quoted value, Group 4: unquoted value
+      const attributeRegex = /\s*([a-zA-Z0-9]+)=("([^"]*)"|([^\s"]+))/g;
+      let match;
+
+      // Start parsing after the "tree" keyword
+      const attributeString = fullHeader
+        .substring(fullHeader.indexOf("tree") + 4)
+        .trim();
+
+      while ((match = attributeRegex.exec(attributeString)) !== null) {
+        const key = match[1];
+        const value = match[3] !== undefined ? match[3] : match[4];
+
+        // console.log(`Remark Plugin: Evaluating param: ${key}=${value}`);
+
+        if (key === "expanded") settings.expanded = value === "true";
+        if (key === "showJSX") settings.showJSX = value === "true";
+        if (key === "debug") settings.debug = value === "true";
+        if (key === "title") settings.title = value;
+      }
+
+      //  console.log("Remark Plugin Settings (Final):", settings);
+
+      // Parse the raw tree structure text
+      const parsed = parseTree(node.value);
+
+      // Convert parsed structure into an MDX AST structure
+      const childrenMdx = parsed.map((child) =>
+        nodeToMdxElement(child, settings)
+      );
+
+      // Prepare attributes for the root <Trees> component
+      /** @type {MdxJsxAttribute[]} */
+      const treesAttributes = [];
+
+      // Add the title attribute if provided
+      if (settings.title) {
+        treesAttributes.push({
+          type: "mdxJsxAttribute",
+          name: "title",
+          value: settings.title,
         });
       }
 
-      // Parse the nested tree text
-      const parsed = parseTree(node.value);
-
-      // Convert parsed nodes recursively
-      const childrenMdx = parsed.map((child) => nodeToMdxElement(child, settings));
-
-      // Wrap everything in a single <Trees> component
+      // 1. Create the <Trees> component MDAST node
+      /** @type {MdxJsxFlowElement} */
       const treesNode = {
         type: "mdxJsxFlowElement",
         name: "Trees",
-        attributes: [],
+        attributes: treesAttributes,
         children: childrenMdx,
       };
 
-      // Replace the code block with the MDX JSX node
-      parent.children.splice(index, 1, treesNode);
+      /** @type {import('unist').Node[]} */
+      let nodesToInsert = [treesNode];
+
+      // 2. Generate and insert the JSX code block if showJSX is true
+      if (settings.showJSX) {
+        // Convert the MDX children AST back to a raw, indented JSX string
+        const rawJsxChildren = childrenMdx
+          .map((child) => nodeToJsxString(child, 1))
+          .join("\n");
+
+        // Build the root tag string with the quoted title attribute
+        const treesTitleAttr = settings.title
+          ? ` title="${settings.title}"`
+          : "";
+        const finalJsxString = `<Trees${treesTitleAttr}>\n${rawJsxChildren}\n</Trees>`;
+
+        // Create an MDX code block node for the generated JSX
+        const jsxCodeBlock = {
+          type: "code",
+          lang: "jsx",
+          value: finalJsxString.trim(),
+        };
+
+        // Insert the JSX code block before the component output
+        nodesToInsert.unshift(jsxCodeBlock);
+      }
+
+      // 3. Insert debug output first if debug is true
+      if (settings.debug) {
+        const debugBlock = {
+          type: "code",
+          lang: "json",
+          value: JSON.stringify(settings, null, 2),
+        };
+
+        // Insert the debug block at the very start of the replacement array
+        nodesToInsert.unshift(debugBlock);
+      }
+
+      // 4. Replace the original code block with the new set of nodes
+      parent.children.splice(index, 1, ...nodesToInsert);
     });
   };
 }

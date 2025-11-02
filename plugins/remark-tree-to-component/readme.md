@@ -1,18 +1,19 @@
 # remark-tree-to-component
 
-A Remark/MDX plugin for Docusaurus that converts **`tree` code blocks** into nested `<Trees>` / `<Folder>` / `<File>` JSX components.
+A **Docusaurus Remark plugin** that automatically converts fenced code blocks with the language identifier `tree` into a structured [Trees component](https://docuxlab.com/blog/trees-component-docusaurus/) (created by Docux).
 
-The **Trees component** has been created by Docux and you can find it here: [Component Trees](https://docuxlab.com/blog/trees-component-docusaurus/).
+This plugin is designed to take the raw output of the Linux `tree` command and transform it into a beautiful, interactive file tree in your Docusaurus documentation.
 
-It supports **folder/file icons** and optional **expanded/collapsed state** for folders.
+## ✨ Features
 
-## Features
-
-* Converts tree-like code blocks into nested JSX components.
-* Auto-detects file type icons based on file extension.
-* Supports `expanded=true/false` at the code block level.
-* Nested folders preserve hierarchy.
-* Safe: won’t crash if code block has no language or malformed meta.
+* Converts tree-style code blocks into `<Trees>`, `<Folder>` and `<File>` MDX components.
+* Supports **[icons of Iconify](https://icon-sets.iconify.design/)** for many file types (JS, JSON, Docker, Markdown, etc.).
+* Configurable attributes:
+  * `expanded` → expand all folders by default
+  * `showJSX` → display the generated JSX code alongside the rendered tree
+  * `debug` → show parsed settings as JSON
+  * `title` → add a title above the tree
+* Works seamlessly with Docusaurus MDX pages.
 
 ## ⚙️ Installation and Setup
 
@@ -51,101 +52,152 @@ const config = {
 export default config;
 ```
 
-## Usage
+## 🖼 Example: Basic Tree
 
-### Basic tree
+If you write this in your MDX file:
 
 ````md
 ```tree
 .
 ├── src
-│   ├── components
-│   │   └── App.jsx
-└── index.js
+│   ├── index.js
+│   └── App.js
+├── package.json
+└── README.md
 ```
 ````
 
-will generate this:
+the plugin will generate this:
 
-```jsx
+````md
+```html
 <Trees>
-  <Folder label="src" expanded={false} icon="flat-color-icons:folder">
-    <Folder label="components" expanded={false} icon="flat-color-icons:folder">
-      <File label="App.jsx" icon="logos:javascript" />
-    </Folder>
+  <Folder label="src" icon="flat-color-icons:folder">
+    <File label="index.js" icon="logos:javascript" />
+    <File label="App.js" icon="logos:javascript" />
   </Folder>
-  <File label="index.js" icon="logos:javascript" />
+  <File label="package.json" icon="ix:json-document" />
+  <File label="README.md" icon="ph:markdown-logo" />
 </Trees>
 ```
+````
 
-By default, all folders are collapsed (`expanded=false`).
+And rendered in Docusaurus, you’ll see the Docux Trees component with icons.
 
-### Tree with expanded folders
+If you want to see live, please consult the official documentation of Docux: [Component Trees](https://docuxlab.com/blog/trees-component-docusaurus/)
+
+## 🔧 Options
+
+You can pass options directly in the code block header:
+
+### 1. `expanded`
+
+Expands all folders by default.
 
 ````md
 ```tree expanded=true
 .
-├── src
-│   ├── components
-│   │   └── App.jsx
-└── index.js
+├── docs
+│   ├── intro.md
+│   └── tutorial.md
+└── docusaurus.config.js
 ```
 ````
 
-will generate this:
+### 2. `title`
 
-```jsx
-<Trees>
-  <Folder label="src" expanded={true} icon="flat-color-icons:folder">
-    <Folder label="components" expanded={true} icon="flat-color-icons:folder">
-      <File label="App.jsx" icon="logos:javascript" />
-    </Folder>
-  </Folder>
-  <File label="index.js" icon="logos:javascript" />
-</Trees>
-```
-
-All folders are expanded (`expanded=true`).
-
-### Notes
-
-* Only the **root** `tree` **code block** can have the `expanded` setting. All nested folders inherit it.
-* File icons are automatically determined based on file extension (`.js`, `.jsx`, `.py`, etc.).
-* Folder icons default to `flat-color-icons:folder`.
-
-### Example
+Adds a title above the tree.
 
 ````md
-```tree expanded=false
+```tree title="My Project Structure"
 .
 ├── src
-│   ├── components
-│   │   ├── Trees
-│   │   │   └── index.js
-│   │   └── App.jsx
 │   └── index.js
-└── TreeItem.js
+└── package.json
 ```
 ````
 
-will generate this:
+### 3. `showJSX`
 
-```jsx
-<Trees>
-  <Folder label="src" expanded={false} icon="flat-color-icons:folder">
-    <Folder label="components" expanded={false} icon="flat-color-icons:folder">
-      <Folder label="Trees" expanded={false} icon="flat-color-icons:folder">
-        <File label="index.js" icon="logos:javascript" />
-      </Folder>
-      <File label="App.jsx" icon="logos:javascript" />
-    </Folder>
-    <File label="index.js" icon="logos:javascript" />
-  </Folder>
-  <File label="TreeItem.js" icon="logos:javascript" />
-</Trees>
+Displays the generated JSX code block before the rendered tree.
+
+````md
+```tree showJSX=true
+.
+├── src
+│   └── index.js
+└── package.json
 ```
+````
 
-## 📄 License
+This will render both the `<Trees>` component and a syntax-highlighted JSX snippet.
+
+### 4. `debug`
+
+Shows the parsed settings as a JSON block for debugging.
+
+````md
+```tree debug=true expanded=true title="Debug Example"
+.
+├── src
+│   └── index.js
+└── package.json
+```
+````
+
+## 🧩 Combined Example
+
+You can combine multiple attributes:
+
+````md
+```tree expanded=true showJSX=true title="Full Example"
+.
+├── src
+│   ├── index.js
+│   └── App.js
+├── package.json
+└── README.md
+```
+````
+
+This will:
+
+* Expand all folders
+* Show the JSX code
+* Add a title above the tree
+
+## 📚 Advanced Example with Docker & Config Files
+
+````md
+```tree expanded=true title="Docusaurus Project"
+.
+├── docs
+│   ├── intro.md
+│   └── tutorial.md
+├── docusaurus.config.js
+├── Dockerfile
+├── docker-compose.yml
+├── package.json
+└── README.md
+```
+````
+
+Output will include proper **icons** for Docker, JSON, Markdown, and Docusaurus config.
+
+## 🛠 How It Works
+
+1. The plugin scans all fenced code blocks in your MDX files.
+2. If the block starts with tree, it:
+    * Parses the ASCII tree structure.
+    * Converts it into a hierarchy of `<Trees>`, `<Folder>` and `<File>` components.
+    * Adds icons based on file extensions or special filenames.
+3. Optionally, it inserts debug info or JSX code blocks.
+
+## 🙏 Credits
+
+The [Trees](https://docuxlab.com/blog/trees-component-docusaurus/) component is created by Docux. That component is also using [LogoIcon](https://docuxlab.com/blog/logoicon-component-docusaurus/); another component of Docux.
+
+## 📜 License
 
 MIT
 
