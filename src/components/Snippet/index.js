@@ -60,6 +60,7 @@ const mapLangToVariant = {
   java: "java",
   javascript: "js",
   js: "js",
+  jsx: "js",
   json: "json",
   log: "log",
   makefile: "makefile",

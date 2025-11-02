@@ -20,7 +20,9 @@ import Tabs from '@theme/Tabs';
 import Terminal from "@site/src/components/Terminal";
 import TOCInline from '@theme/TOCInline';
 import UpdateAt from "@site/src/components/Updated";
-
+import Trees from '@site/src/components/Trees';
+import Folder from '@site/src/components/Trees/Folder';
+import File from '@site/src/components/Trees/File';
 
 export default {
   // Reusing the default mapping
@@ -35,6 +37,8 @@ export default {
   Column,
   Columns,
   Details,
+  File,
+  Folder,
   Hero,
   Highlight,
   Link,
@@ -45,5 +49,6 @@ export default {
   Tabs,
   Terminal,
   TOCInline,
+  Trees,
   UpdateAt,
 };

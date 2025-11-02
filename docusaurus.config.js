@@ -14,6 +14,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 import pluginSeriesRoute from "./plugins/docusaurus-plugin-series-route/index.cjs";
 import pluginTagRoute from "./plugins/docusaurus-plugin-tag-route/index.cjs";
 import remarkReplaceWords from "./plugins/remark-replace-terms/index.cjs";
+import remarkTreeToComponent from "./plugins/remark-tree-to-component/index.cjs";
 import remarkSnippetLoader from "./plugins/remark-snippet-loader/index.cjs";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -114,7 +115,11 @@ const config = {
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "ignore",
           // Replace words like "vscode" or "markdown" to "VSCode" and "Markdown"
-          beforeDefaultRemarkPlugins: [remarkSnippetLoader, remarkReplaceWords],
+          beforeDefaultRemarkPlugins: [
+            remarkSnippetLoader,
+            remarkReplaceWords,
+            remarkTreeToComponent
+          ],
         },
         sitemap: {
           changefreq: "weekly",
