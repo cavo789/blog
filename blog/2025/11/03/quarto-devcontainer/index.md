@@ -7,7 +7,7 @@ series: Creating Docusaurus components
 description: Convert any Quarto project into a fully portable, VSCode-powered devcontainer in minutes.
 mainTag: devcontainer
 tags: [devcontainer, docker, markdown, pre-commit, quarto, vscode]
-blueskyRecordKey:
+blueskyRecordKey: 3m4piap723s2r
 date: 2025-11-03
 ---
 
