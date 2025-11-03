@@ -14,6 +14,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 USER root
 
+#! If you get an error during the execution of this block, make sure the "my_sample_prod"
+#! image isn't running with a non-root user. It should be "root". Rebuild the image to be sure.
 RUN --mount=type=cache,target=/var/cache/apt,rw \
     set -eux \
     && printf "\e[0;105m%s\e[0;0m\n" "Install required Linux binaries for devcontainer..." \

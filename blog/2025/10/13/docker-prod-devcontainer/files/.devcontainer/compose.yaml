@@ -4,10 +4,10 @@ services:
       context: ./.devcontainer
       dockerfile: Dockerfile
       args:
-        APP_HOME: ${APP_HOME:-/app}
-        OS_USERID: ${LOCAL_UID:-1000}
-        OS_GROUPID: ${LOCAL_GID:-1000}
-        OS_USERNAME: ${LOCAL_USER:-vscode}
+        - APP_HOME=${APP_HOME:-/app}
+        - OS_USERID=${LOCAL_UID:-1000}
+        - OS_GROUPID=${LOCAL_GID:-1000}
+        - OS_USERNAME=${LOCAL_USER:-vscode}
     container_name: my_sample_devcontainer_app
     ports:
       - 5679:5679  # Debugpy port

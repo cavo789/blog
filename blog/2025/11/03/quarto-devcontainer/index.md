@@ -8,8 +8,7 @@ description: Convert any Quarto project into a fully portable, VSCode-powered de
 mainTag: devcontainer
 tags: [devcontainer, docker, markdown, pre-commit, quarto, vscode]
 blueskyRecordKey:
-date: 2025-11-01
-draft: true
+date: 2025-11-03
 ---
 
 <!-- markdownlint-disable MD046 -->

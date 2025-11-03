@@ -35,11 +35,12 @@ COPY requirements.txt .
 RUN --mount=type=cache,target=/root/.cache/pip \
     set -eux \
     && printf "\e[0;105m%s\e[0;0m\n" "Install Python prod dependencies..." \
-    && python -m pip install --no-cache-dir -r requirements.txt 
+    && pip install --no-cache-dir -r requirements.txt
+
+# Make sure installed dependencies are in the PATH
+ENV PATH="/root/.local/bin:$PATH"
 
 COPY . .
-
-RUN ls -alh
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
