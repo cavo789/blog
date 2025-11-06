@@ -1,0 +1,12 @@
+name: blog
+
+services:
+  docusaurus:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: docusaurus
+    env_file: .env
+    ports:
+      - "80:80"
+      - "443:443"

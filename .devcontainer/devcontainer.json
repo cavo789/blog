@@ -1,73 +1,84 @@
 {
-    "name": "docusaurus",
-    "service": "docusaurus",
-    "dockerComposeFile": [
-        "../.docker/compose.yaml",
-        "../.docker/compose-dev.yaml"
-    ],
-    "workspaceFolder": "/opt/docusaurus",
-    "remoteUser": "node",
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "[markdown]": {
-                    "editor.codeActionsOnSave": {
-                        "source.fixAll": "always"
-                    },
-                    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
-                    "editor.formatOnSave": true,
-                    "editor.wordWrap": "wordWrapColumn",
-                    "editor.wordWrapColumn": 80,
-                    "editor.wrappingIndent": "indent"
-                },
-                "cspell.language": "en",
-                "editor.bracketPairColorization.enabled": true,
-                "editor.codeActionsOnSave": {
-                  "source.fixAll.markdownlint": "always"
-                },
-                "editor.folding": true,
-                "editor.foldingStrategy": "auto",
-                "editor.formatOnSave": true,
-                "editor.guides.bracketPairs": "active",
-                "editor.guides.bracketPairsHorizontal": "active",
-                "editor.guides.highlightActiveBracketPair": true,
-                "editor.guides.indentation": true,
-                "editor.renderWhitespace": "all",
-                "editor.rulers": [
-                    120,
-                    70
-                ],
-                "editor.stickyScroll.enabled": true,
-                "editor.tabCompletion": "on",
-                "files.autoSave": "onFocusChange",
-                "files.eol": "\n",
-                "files.defaultLanguage": "markdown",
-                "files.insertFinalNewline": true,
-                "files.trimTrailingWhitespace": true,
-                "markdownlint.configFile": ".config/.markdownlint.json",
-                "markdownlint.fixOnSave": true,
-                "sonarlint.disableTelemetry": true,
-                "telemetry.telemetryLevel": "off",
-                "terminal.integrated.profiles.linux": {
-                    "bash": {
-                        "path": "/bin/bash",
-                        "icon": "terminal-bash"
-                    }
-                },
-                "terminal.integrated.defaultProfile.linux": "Bash",
-                "terminal.integrated.fontFamily": "MesloLGS MS"
-            },
-            "extensions": [
-              "Codeium.codeium",
-              "DavidAnson.vscode-markdownlint",
-              "esbenp.prettier-vscode",
-              "streetsidesoftware.code-spell-checker-british-english",
-              "streetsidesoftware.code-spell-checker-french",
-              "streetsidesoftware.code-spell-checker",
-              "TomasDahlqvist.markdown-admonitions",
-              "usernamehw.errorlens",
-              "zokugun.explicit-folding"
-            ]
-        }
+  "name": "MyBlog",
+  "service": "docusaurus",
+  "dockerComposeFile": ["../.devcontainer/compose.yaml"],
+  "workspaceFolder": "/opt/docusaurus",
+  "portsAttributes": {
+    "3000": {
+      "onAutoForward": "openBrowser"
     }
+  },
+  "containerEnv": {
+    "GIT_SSH_COMMAND": "ssh -i /home/vscode/.ssh/id_ed25519 -o 'UserKnownHostsFile=/dev/null'"
+  },
+  "initializeCommand": "mkdir -p .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
+  "postCreateCommand": "HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem yarn start --host 0.0.0.0",
+  "remoteUser": "vscode",
+  "containerUser": "vscode",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "[markdown]": {
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "always"
+          },
+          "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+          "editor.formatOnSave": true,
+          "editor.wordWrap": "wordWrapColumn",
+          "editor.wordWrapColumn": 80,
+          "editor.wrappingIndent": "indent"
+        },
+        "cspell.language": "en",
+        "editor.bracketPairColorization.enabled": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.markdownlint": "always"
+        },
+        "editor.folding": true,
+        "editor.foldingStrategy": "auto",
+        "editor.formatOnSave": true,
+        "editor.guides.bracketPairs": "active",
+        "editor.guides.bracketPairsHorizontal": "active",
+        "editor.guides.highlightActiveBracketPair": true,
+        "editor.guides.indentation": true,
+        "editor.renderWhitespace": "all",
+        "editor.rulers": [120, 70],
+        "editor.stickyScroll.enabled": true,
+        "editor.tabCompletion": "on",
+        "files.autoSave": "onFocusChange",
+        "files.eol": "\n",
+        "files.defaultLanguage": "markdown",
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true,
+        "markdownlint.configFile": ".config/.markdownlint.json",
+        "markdownlint.fixOnSave": true,
+        "sonarlint.disableTelemetry": true,
+        "telemetry.telemetryLevel": "off",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "icon": "terminal-bash"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "Bash",
+        "terminal.integrated.fontFamily": "MesloLGS MS",
+        "window.title": "${dirty}${rootName} ${separator} [DevContainer]",
+        "workbench.colorTheme": "Visual Studio Light"
+      },
+      "extensions": [
+        "Codeium.codeium",
+        "DavidAnson.vscode-markdownlint",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "shd101wyy.markdown-preview-enhanced",
+        "streetsidesoftware.code-spell-checker-british-english",
+        "streetsidesoftware.code-spell-checker-french",
+        "streetsidesoftware.code-spell-checker",
+        "TomasDahlqvist.markdown-admonitions",
+        "usernamehw.errorlens",
+        "usernamehw.errorlens",
+        "yzhang.markdown-all-in-one",
+        "zokugun.explicit-folding"
+      ]
+    }
+  }
 }

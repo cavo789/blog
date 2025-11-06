@@ -1,20 +1,20 @@
-.config/
-.devcontainer/
+# .config/
+# .devcontainer/
 .docusaurus/
-.git/
-.github/
-.vscode/
+# .git/
+# .github/
+# .vscode/
 node_modules/
 
-.dockerignore
-.editorconfig
-.env
-.env.example
-.gitignore
+# .dockerignore
+# .editorconfig
+# .env
+# .env.example
+# .gitignore
 
-compose*
-Dockerfile*
+# compose*
+# Dockerfile*
 
-makefile
-LICENSE
-README.md
+# makefile
+# LICENSE
+# README.md

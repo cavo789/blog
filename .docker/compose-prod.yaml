@@ -1,4 +1,0 @@
-services:
-  docusaurus:
-    ports:
-      - "80:80"

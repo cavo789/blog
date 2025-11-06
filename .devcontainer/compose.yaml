@@ -1,0 +1,21 @@
+services:
+  docusaurus:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - APP_HOME=${APP_HOME:-/app}
+        - OS_USERID=${OS_USERID:-1000}
+        - OS_GROUPID=${OS_GROUPID:-1000}
+    container_name: cavo_789_blog
+    env_file:
+      - .env
+    volumes:
+      - ..:${APP_HOME:-/app}
+      - vscode-extensions:/home/vscode/.vscode-server/extensions
+      - ../history/.bash_history:/home/vscode/.bash_history:rw
+
+    command: sleep infinity
+
+volumes:
+  vscode-extensions:
