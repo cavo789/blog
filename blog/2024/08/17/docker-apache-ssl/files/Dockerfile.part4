@@ -1,3 +1,5 @@
+# cspell:disable
+
 FROM php:8.3-apache
 
 COPY ssl/server.crt /etc/ssl/certs/server.crt

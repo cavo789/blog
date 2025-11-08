@@ -11,6 +11,7 @@ tags: [component, docusaurus, markdown, react, swizzle]
 language: en
 blueskyRecordKey: 3lycuo7n5gk2w
 ---
+
 <!-- cspell:ignore  -->
 
 ![Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide](/img/v2/docusaurus_react.webp)
@@ -38,17 +39,35 @@ That one can be retrieved too on the [Docusaurus Community](https://docusaurus.c
 
 In your Docusaurus site, please create these files:
 
-<Snippet filename="src/components/Card/index.js" source="src/components/Card/index.js" />
+<Snippet
+  filename="src/components/Card/index.js"
+  source="src/components/Card/index.js"
+/>
 
-<Snippet filename="src/components/Card/styles.module.css" source="src/components/Card/styles.module.css" />
+<Snippet
+  filename="src/components/Card/styles.module.css"
+  source="src/components/Card/styles.module.css"
+/>
 
-<Snippet filename="src/components/Card/CardBody/index.js" source="src/components/Card/CardBody/index.js" />
+<Snippet
+  filename="src/components/Card/CardBody/index.js"
+  source="src/components/Card/CardBody/index.js"
+/>
 
-<Snippet filename="src/components/Card/CardFooter/index.js" source="src/components/Card/CardFooter/index.js" />
+<Snippet
+  filename="src/components/Card/CardFooter/index.js"
+  source="src/components/Card/CardFooter/index.js"
+/>
 
-<Snippet filename="src/components/Card/CardHeader/index.js" source="src/components/Card/CardHeader/index.js" />
+<Snippet
+  filename="src/components/Card/CardHeader/index.js"
+  source="src/components/Card/CardHeader/index.js"
+/>
 
-<Snippet filename="src/components/Card/CardImage/index.js" source="src/components/Card/CardImage/index.js" />
+<Snippet
+  filename="src/components/Card/CardImage/index.js"
+  source="src/components/Card/CardImage/index.js"
+/>
 
 So right now, you've created six files on your disk.
 
@@ -101,7 +120,7 @@ You can reuse any other image for sure.
 
 ## Nice, it's works. Let's continue with a practical sample
 
-In this article, we'll create override the standard page with the list of tags. As you know, natively, Docusaurus can display a page with the list of tags used across your articles if you access to the **/blog/tags** page.  So for my own blog, the page is [https://www.avonture.be/blog/tags](https://www.avonture.be/blog/tags) and you'll get something like this:
+In this article, we'll create override the standard page with the list of tags. As you know, natively, Docusaurus can display a page with the list of tags used across your articles if you access to the **/blog/tags** page. So for my own blog, the page is [https://www.avonture.be/blog/tags](https://www.avonture.be/blog/tags) and you'll get something like this:
 
 ![The tags page](./images/tags.png)
 
@@ -116,7 +135,7 @@ It can be nice but ... OK, I've to scroll a lot before see all articles and find
 
 </AlertBox>
 
-We'll change this to a list of post cards. As an example, on my blog, I'm also writing about  [python](https://www.avonture.be/blog/tags/python) and here is how I'm rendering the page:
+We'll change this to a list of post cards. As an example, on my blog, I'm also writing about [python](https://www.avonture.be/blog/tags/python) and here is how I'm rendering the page:
 
 ![The Python tag page](./images/tag_python.png)
 
@@ -126,7 +145,10 @@ This concrete example will allow us to implement two Docusaurus concepts: **the 
 
 Please create the file here above.
 
-<Snippet filename="plugins/docusaurus-plugin-tag-route/index.cjs" source="plugins/docusaurus-plugin-tag-route/index.cjs" />
+<Snippet
+  filename="plugins/docusaurus-plugin-tag-route/index.cjs"
+  source="plugins/docusaurus-plugin-tag-route/index.cjs"
+/>
 
 Take a few seconds to read this short script: as you can see that one will tell to Docusaurus to no more use his own standard `/blog/tags/:tag` page but ours (i.e. `src/components/Blog/Tags/TagArticlesPage`). Let's create that one.
 
@@ -134,7 +156,10 @@ Take a few seconds to read this short script: as you can see that one will tell 
 
 Please create the file below. It's the `TagArticlesPage` function that'll be called by Docusaurus when he'll display a specific tag.
 
-<Snippet filename="src/components/Blog/Tags/TagArticlesPage.js" source="src/components/Blog/Tags/TagArticlesPage.js" />
+<Snippet
+  filename="src/components/Blog/Tags/TagArticlesPage.js"
+  source="src/components/Blog/Tags/TagArticlesPage.js"
+/>
 
 As you can see at the very top of the `TagArticlesPage.js` file, we're importing a few files. Some already exists in your Docusaurus site; some should be created.
 
@@ -142,7 +167,10 @@ There are three files we should create
 
 ## The slug generator
 
-<Snippet filename="src/components/Blog/utils/slug.js" source="src/components/Blog/utils/slug.js" />
+<Snippet
+  filename="src/components/Blog/utils/slug.js"
+  source="src/components/Blog/utils/slug.js"
+/>
 
 ## The getBlogMetaData function
 
@@ -150,7 +178,7 @@ We need a function to loop all our existing blog posts (all `.md` or `.mdx` file
 
 <Snippet filename="src/components/Blog/utils/posts.js">
 
-```js
+````js
 /**
  * 🧠 getBlogMetadata
  *
@@ -227,8 +255,7 @@ export function getBlogMetadata() {
     })
     .filter(Boolean);
 }
-
-```
+````
 
 </Snippet>
 
@@ -398,12 +425,11 @@ PostCard.propTypes = {
   layout: PropTypes.oneOf(["big", "small"]),
   defaultImage: PropTypes.string,
 };
-
 ```
 
 </Snippet>
 
-Finally, we'll create a CSS file to allow us to do some customisation:
+Finally, we'll create a CSS file to allow us to do some customization:
 
 <Snippet filename="src/components/Blog/PostCard/styles.module.css">
 
@@ -433,7 +459,7 @@ Please edit your existing `docusaurus.config.js` file like below illustrated:
 <Snippet filename="docusaurus.config.js">
 
 ```js
-import pluginTagRoute from "./plugins/docusaurus-plugin-tag-route/index.cjs"
+import pluginTagRoute from "./plugins/docusaurus-plugin-tag-route/index.cjs";
 
 const config = {
   // [...]

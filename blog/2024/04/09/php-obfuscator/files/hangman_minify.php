@@ -1,4 +1,5 @@
 <?php
+// cspell:disable
 function ppms(){return [
 "apple",
 "banana",

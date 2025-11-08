@@ -215,7 +215,7 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     var mdTable = marked(this.Markdown, {
                         sanitize: true
                     });
-                    // Add Boostrap classes
+                    // Add Bootstrap classes
                     mdTable = mdTable.replace('<table>', '<table class="table table-hover table-striped">');
                     return mdTable;
                 }

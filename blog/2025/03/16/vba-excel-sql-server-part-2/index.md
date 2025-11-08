@@ -122,7 +122,7 @@ We're ready. Put your cursor in the `CopyToSheet` function, anywhere and press <
 
 Nothing has happened? Are you sure?
 
-Please switch from the VBE interface to your Excel worksheet and tadaaaam
+Please switch from the VBE interface to your Excel worksheet and tadaaa
 
 ![You got the list of customers](./images/worksheet.png)
 

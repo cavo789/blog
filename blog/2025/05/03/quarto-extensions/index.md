@@ -1,8 +1,8 @@
 ---
 slug: quarto-extensions
-title: My favourite Quarto extensions
+title: My favorite Quarto extensions
 date: 2025-05-03
-description: My favourite Quarto extensions - Learn about essential Quarto filters for partial content templating, Font Awesome icons, including external code files, and simple search-replace macros to enhance your documentation workflow.
+description: My favorite Quarto extensions - Learn about essential Quarto filters for partial content templating, Font Awesome icons, including external code files, and simple search-replace macros to enhance your documentation workflow.
 authors: [christophe]
 image: /img/v2/quarto.webp
 mainTag: quarto
@@ -12,7 +12,7 @@ blueskyRecordKey: 3lun2yevo622r
 ---
 <!-- cspell:ignore frontmatter,fontawesome,gadenbuie,shafayetShafee -->
 
-![My favourite Quarto extensions](/img/v2/quarto.webp)
+![My favorite Quarto extensions](/img/v2/quarto.webp)
 
 I'm using Quarto now since 18 months to generate my documentation: I'm writing Markdown files (`.md`) and convert them as a Word document, PDF, static HTML site or as a revealjs slideshow.
 

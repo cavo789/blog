@@ -1,3 +1,5 @@
+# cspell:disable
+
 FROM python:3.11-slim-buster AS base
 
 # Dagger is using the Docker technology so we need to install Docker in the image

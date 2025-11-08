@@ -1,3 +1,4 @@
+# cspell:disable
 FROM httpd:2.4
 # highlight-next-line
 

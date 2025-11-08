@@ -223,13 +223,13 @@ Class clsMSExcel
 End Class
 
 ' ----------------------------------------------------------
-' When the user double-clic on a .vbs file (from Windows explorer f.i.)
+' When the user double-click on a .vbs file (from Windows explorer f.i.)
 ' the running process will be WScript.exe while it's CScript.exe when
 ' the .vbs is started from the command prompt.
 '
 ' This subroutine will check if the script has been started with cscript
 ' and if not, will run the script again with cscript and terminate the
-' "wscript" version. This is usefull when the script generate a lot of
+' "wscript" version. This is useful when the script generate a lot of
 ' wScript.echo statements, easier to read in a command prompt.'
 ' ----------------------------------------------------------
 Sub ForceCScriptExecution()
@@ -238,7 +238,7 @@ Sub ForceCScriptExecution()
 
     If Not LCase(Right(WScript.FullName, 12)) = "\cscript.exe" Then
 
-        ' Get command lines paramters'
+        ' Get command lines parameters'
         sArguments = ""
         For Each Arg In WScript.Arguments
             sArguments=sArguments & Chr(34) & Arg & Chr(34) & Space(1)
@@ -262,8 +262,8 @@ End Sub
 ' Get the current folder
 '
 ' Use the wScript.ScriptFullName and not the
-' wshShell.CurrentDirectory propertie to make the folder dependant of
-' where the script is located since the script can be runned with, f.i.,
+' wshShell.CurrentDirectory property to make the folder dependant of
+' where the script is located since the script can be fired with, f.i.,
 ' c:\temp > cscript i:\folder\app.vbs.
 ' We wish to get "i:\folder"
 ' ------------------------------------------------------

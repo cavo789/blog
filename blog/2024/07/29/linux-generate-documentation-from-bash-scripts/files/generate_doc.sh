@@ -554,7 +554,7 @@ function string::rtrim() {
 # ## Examples
 #
 # ```bash
-# echo "HEllow WoRLD!" | string::slugify  # will return `hellow-world`
+# echo "HEllo WoRLD!" | string::slugify  # will return `hello-world`
 # ```
 #
 # ## Parameters

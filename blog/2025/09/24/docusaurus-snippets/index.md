@@ -113,10 +113,10 @@ Let's imagine this:
 
 `<Snippet filename="src/components/Blog/Snippet/index.js" source="src/components/Blog/Snippet/index.js" />`
 
-- `filename` is thus the title to show in the article so the reader knows the file should be named like that
-- `source` is the relative path (from your Docusaurus root folder) when the file can be retrieved. In this scenario, we don't have to put the source code in the file but Docusaurus will do the job for us:
-  - When previewing the site (dev mode), a plugin will read the content immediately from the disk and will inject its content. So, if the sourced file is updated, your article will always be up-to-date
-  - When building the static version (prod mode), the Docusaurus build engine will also read the content of the file from the disk and inject it in your article.
+* `filename` is thus the title to show in the article so the reader knows the file should be named like that
+* `source` is the relative path (from your Docusaurus root folder) when the file can be retrieved. In this scenario, we don't have to put the source code in the file but Docusaurus will do the job for us:
+  * When previewing the site (dev mode), a plugin will read the content immediately from the disk and will inject its content. So, if the sourced file is updated, your article will always be up-to-date
+  * When building the static version (prod mode), the Docusaurus build engine will also read the content of the file from the disk and inject it in your article.
 
 <AlertBox variant="caution" title="">
 You've two types of paths: from your root folder or relative to the blog post.

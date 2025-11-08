@@ -10,6 +10,7 @@ tags: [dos, tips]
 language: en
 blueskyRecordKey: 3lvnjvuk5x22v
 ---
+<!-- cspell:ignore fsutil -->
 ![Enable case sensitivity for filenames under DOS](/img/v2/msdos_tips.webp)
 
 This is just ... for fun.

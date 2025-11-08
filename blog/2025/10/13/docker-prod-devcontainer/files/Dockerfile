@@ -1,3 +1,5 @@
+# cspell:disable
+
 # Production Dockerfile
 
 ARG DOCKER_APP_HOME="/app"

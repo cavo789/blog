@@ -43,6 +43,6 @@ But the easier way is:
 
 * Then copy paste these entries:
 
-<Snippet filename=".vscode/settings.json`" source="./files/settings.json`" />
+<Snippet filename=".vscode/settings.json" source="./files/settings.json" />
 
 Save, close VSCode and open it again (or simply press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> and run `Developer: Reload Window`)

@@ -1,28 +1,35 @@
 {
-    "dictionaries": [
-        "en-GB",
-        "blog"
-    ],
-    "words":[
-      "iconify"
-    ],
-    "dictionaryDefinitions": [
-        {
-           "name": "blog",
-           "path": "../.config/cspell_blog.txt",
-           "addWords": true
-        }
-    ],
-    "ignorePaths": [
-        ".git/**",
-        "blog/2023/12/22/docker-joomla-fr/index.md",
-        "build/**",
-        "docusaurus.config.js",
-        "node_modules/**",
-        "src/components/**",
-        "src/css/**",
-        "src/theme/**",
-        "static/**",
-        "vendor/**"
-    ]
+  "dictionaries": ["en-GB", "blog"],
+  "dictionaryDefinitions": [
+    {
+      "name": "blog",
+      "path": "../.config/cspell_blog.txt",
+      "addWords": true
+    }
+  ],
+  "ignoreRegExpList": ["/\\b[a-z0-9]{10,}\\b/"],
+  "ignorePaths": [
+    ".git/**",
+    "**/*.bats",
+    "**/*.cs",
+    "**/*.ktr",
+    "**/*.lock",
+    "**/*.sql",
+    "**/*.xml",
+    "**/composer.json",
+    "**/devcontainer.json",
+    "blog/2023/12/22/docker-joomla-fr/index.md",
+    "build/**",
+    "**/settings.json",
+    "*.pas",
+    "docusaurus.config.js",
+    "node_modules/**",
+    "plugins/**",
+    "*.htaccess",
+    "src/components/**",
+    "src/css/**",
+    "src/theme/**",
+    "static/**",
+    "vendor/**"
+  ]
 }

@@ -1,3 +1,4 @@
+# cspell:disable
 # Version number of Quarto to download and use
 # See https://github.com/quarto-dev/quarto-cli/pkgs/container/quarto for existing versions
 ARG QUARTO_VERSION=1.6.36

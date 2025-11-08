@@ -59,7 +59,7 @@ In a Pest test, `$this` refers to the PHPUnit `Tests\TestCase` class.
 
 #### it or test
 
-Pest give us the choice between `it()` and `test()`. *Use the one that best fits your test naming convention, or both. They share the same behaviour & syntax.*
+Pest give us the choice between `it()` and `test()`. *Use the one that best fits your test naming convention, or both. They share the same behavior & syntax.*
 
 Read more: [https://pestphp.com/docs/writing-tests#api-reference](https://pestphp.com/docs/writing-tests#api-reference)
 
@@ -164,7 +164,7 @@ We can also check if a class is final:
 
 There is also a feature called `Snapshots`. The idea is to store a content as a snapshot then compares future run with that snapshot.
 
-A snapshot can be the content of an HTML page, a JSON answer, the content of a file / array, ... everything in fact (for an object; we can serialise it so we can store it too as a snapshot).
+A snapshot can be the content of an HTML page, a JSON answer, the content of a file / array, ... everything in fact (for an object; we can serialize it so we can store it too as a snapshot).
 
 <Snippet filename="tests/Feature/AnyTest.php" source="./files/AnyTest.part8.php" />
 

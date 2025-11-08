@@ -1,3 +1,5 @@
+# cspell:disable
+
 # The user ID and name and group ID of the user to create in our image
 ARG DOCKER_UID=1000
 ARG DOCKER_GID=1000

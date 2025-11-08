@@ -1,3 +1,5 @@
+# cspell:disable
+
 def generate_fake_data(filename: str = "employees") -> None:
     fake = Faker()
 

@@ -4,9 +4,9 @@ services:
   docusaurus:
     build:
       context: .
+      target: development
       dockerfile: Dockerfile
     container_name: docusaurus
     env_file: .env
     ports:
-      - "80:80"
       - "443:443"

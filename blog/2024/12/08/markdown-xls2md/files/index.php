@@ -1,5 +1,7 @@
 <?php
 
+// cspell:disable
+
 declare(strict_types = 1);
 
 /*
@@ -198,7 +200,7 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                         }
                         // Call marked() to convert the MD string into a HTML table
                         var mdTable = marked(this.Markdown, { sanitize: true });
-                        // Add Boostrap classes
+                        // Add Bootstrap classes
                         mdTable = mdTable.replace('<table>', '<table class="table table-hover table-striped">');
                         return mdTable;
                     }

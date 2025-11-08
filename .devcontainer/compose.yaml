@@ -4,16 +4,16 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - APP_HOME=${APP_HOME:-/app}
-        - OS_USERID=${OS_USERID:-1000}
-        - OS_GROUPID=${OS_GROUPID:-1000}
+        - APP_HOME=${APP_HOME:-/opt/docusaurus}
+        - OS_USERID=${OS_USERID:-1002}
+        - OS_GROUPID=${OS_GROUPID:-1002}
     container_name: cavo_789_blog
     env_file:
       - .env
     volumes:
-      - ..:${APP_HOME:-/app}
+      - ..:${APP_HOME:-/opt/docusaurus}
       - vscode-extensions:/home/vscode/.vscode-server/extensions
-      - ../history/.bash_history:/home/vscode/.bash_history:rw
+      - ./history/.bash_history:/home/vscode/.bash_history:rw
 
     command: sleep infinity
 

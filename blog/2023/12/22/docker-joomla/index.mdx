@@ -7,10 +7,23 @@ authors: [christophe]
 image: /img/v2/joomla.webp
 series: Create your joomla website using Docker
 mainTag: joomla
-tags: [adminer, apache, docker, joomla, makefile, mysql, phpmyadmin, postgresql, vscode, wsl]
+tags:
+  [
+    adminer,
+    apache,
+    docker,
+    joomla,
+    makefile,
+    mysql,
+    phpmyadmin,
+    postgresql,
+    vscode,
+    wsl,
+  ]
 language: en
 blueskyRecordKey: 3lx57pqunek23
 ---
+
 ![Create your Joomla website using Docker - Part 1](/img/v2/joomla.webp)
 
 <!-- cspell:ignore apac,ibdata,ibtmp -->
@@ -18,14 +31,18 @@ blueskyRecordKey: 3lx57pqunek23
 <UpdateAt
   title="Recent Changes"
   updates={[
-    { date: "2024-03-23", content: "adding health condition in yml and update Joomla tag to 5.1-php8.2-apache" },
+    {
+      date: "2024-03-23",
+      content:
+        "adding health condition in yml and update Joomla tag to 5.1-php8.2-apache",
+    },
     { date: "2025-08-25", content: "Using Joomla 5.3.3" },
   ]}
 />
 
-In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** *(don't want to wait? Jump to the "Final compose.yaml" chapter)*.
+In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** _(don't want to wait? Jump to the "Final compose.yaml" chapter)_.
 
-I will use a Linux console *(I'm running WSL on my Windows computer and I have chosen Ubuntu for my distribution)* but since Docker can also be used on Windows, you can perfectly run, exactly, the same commands in an MS-DOS / Powershell console.
+I will use a Linux console _(I'm running WSL on my Windows computer and I have chosen Ubuntu for my distribution)_ but since Docker can also be used on Windows, you can perfectly run, exactly, the same commands in an MS-DOS / Powershell console.
 
 <!-- truncate -->
 
@@ -42,7 +59,7 @@ If you don't have Docker yet, please consult my "[Install Docker and play with P
     "We need a web server like **Apache** or **nginx**",
     "We need a database service like **MySQL**, **MariaDB** or **PostgreSQL** or any other supported databases and",
     "We need **PHP** and",
-    "Of course, we need **Joomla**"
+    "Of course, we need **Joomla**",
   ]}
 />
 
@@ -52,16 +69,22 @@ In terms of Docker: we need three services.
 
 When you need many services (Apache should be able to communicate with PHP and PHP should be able to request data from MySQL), you need to configure a special file called `compose.yaml`. That file should be placed in the root of the project and will define the list of services required and how they will collaborate together.
 
-You will find an example of the `compose.yaml` file on the Joomla image description page: [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla) *search for `docker-compose` on this page.*
+You will find an example of the `compose.yaml` file on the Joomla image description page: [https://hub.docker.com/\_/joomla](https://hub.docker.com/_/joomla) _search for `docker-compose` on this page._
 
-<AlertBox variant="info" title="The Docker Joomla image is built on PHP and Apache">
-It's for sure too technical now but if you click on the
-[https://github.com/joomla-docker/docker-joomla/blob/8cac4ff7ae88b9274870a95f5e22ea3c32f01fd7/5.0/php8.1/apache/Dockerfile#L8](https://github.com/joomla-docker/docker-joomla/blob/8cac4ff7ae88b9274870a95f5e22ea3c32f01fd7/5.0/php8.1/apache/Dockerfile#L8) link, you can see that the Docker image for Joomla 5.0.0 is built on a `php:8.1-apache` image. This means that using this image, you will get PHP, Apache and Joomla, altogether in a single image.
+<AlertBox
+  variant="info"
+  title="The Docker Joomla image is built on PHP and Apache"
+>
+  It's for sure too technical now but if you click on the
+  [https://github.com/joomla-docker/docker-joomla/blob/8cac4ff7ae88b9274870a95f5e22ea3c32f01fd7/5.0/php8.1/apache/Dockerfile#L8](https://github.com/joomla-docker/docker-joomla/blob/8cac4ff7ae88b9274870a95f5e22ea3c32f01fd7/5.0/php8.1/apache/Dockerfile#L8)
+  link, you can see that the Docker image for Joomla 5.0.0 is built on a
+  `php:8.1-apache` image. This means that using this image, you will get PHP,
+  Apache and Joomla, altogether in a single image.
 </AlertBox>
 
 ## Download images
 
-Please create on your disk, let us say in the `/tmp/joomla` folder a file called `compose.yaml` with this content (you can retrieve that file on [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla)):
+Please create on your disk, let us say in the `/tmp/joomla` folder a file called `compose.yaml` with this content (you can retrieve that file on [https://hub.docker.com/\_/joomla](https://hub.docker.com/_/joomla)):
 
 <Snippet filename="compose.yaml">
 
@@ -86,7 +109,9 @@ services:
 </Snippet>
 
 <AlertBox variant="info" title="You want MariaDB, not MySQL?">
-Nothing could be simpler! In the `compose.yaml` file, replace the line `image: mysql:8.0.13` with `image: mariadb:11.1.2` and save your change. That's it. It's piece of cake no?
+  Nothing could be simpler! In the `compose.yaml` file, replace the line `image:
+  mysql:8.0.13` with `image: mariadb:11.1.2` and save your change. That's it.
+  It's piece of cake no?
 </AlertBox>
 
 To make things as clear as possible, here is my temporary folder content:
@@ -96,20 +121,18 @@ $ pwd
 /tmp/joomla
 
 $ ls -alh
-Permissions Size User       Group      Date Modified    Name
-drwxr-xr-x     - christophe christophe 2025-08-25 09:32  .
-drwxrwxrwt     - christophe christophe 2025-08-25 09:32 ..
-.rw-r--r--   325 christophe christophe 2025-08-25 09:32 compose.yaml
-</Terminal>
+Permissions Size User Group Date Modified Name
+drwxr-xr-x - christophe christophe 2025-08-25 09:32 .
+drwxrwxrwt - christophe christophe 2025-08-25 09:32 ..
+.rw-r--r-- 325 christophe christophe 2025-08-25 09:32 compose.yaml
 
+</Terminal>
 
 So, I just have one file, and this is the newly, created, `compose.yaml` file.
 
 Now, if needed, please start a Linux console, and go to your joomla folder (i.e. `cd /tmp/joomla`). From there, run the command below:
 
-<Terminal>
-$ docker compose up --detach
-</Terminal>
+<Terminal>$ docker compose up --detach</Terminal>
 
 <AlertBox variant="info" title="`docker compose up --detach`">
 That command is one of the most important to know. It asks Docker to proceed the `compose.yaml` file and run services. **In short: run your website**.
@@ -138,17 +161,18 @@ You will obtain something like this, please wait until everything is downloaded.
 $ docker compose up --detach
 
 [+] Running 16/35
- ⠹ joomladb 12 layers [⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]    0B/0B  Pulling  19.3s
-   ⠧ 177e7ef0df69 Waiting   15.8s
-   ⠧ cac25352c4c8 Waiting   15.8s
-   ⠧ 8585afabb40a Waiting   15.8s
-   [...]
- ⠹ joomla 21 layers [⣿⣿⣦⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣿⣿⣿⣿⣀⠀⠀] 94.59MB/155.9MB Pulling  19.3s
-   ✔ 578acb154839 Pull complete  11.3s
-   ✔ c053f6f43c12 Pull complete  11.9s
-   ⠋ 65cebbf4d847 Downloading [==============>         ]  68.41MB/104.4MB  16.1s
-   ✔ 34045bc93960 Download complete  1.0s
-   [...]
+⠹ joomladb 12 layers [⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀] 0B/0B Pulling 19.3s
+⠧ 177e7ef0df69 Waiting 15.8s
+⠧ cac25352c4c8 Waiting 15.8s
+⠧ 8585afabb40a Waiting 15.8s
+[...]
+⠹ joomla 21 layers [⣿⣿⣦⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣿⣿⣿⣿⣀⠀⠀] 94.59MB/155.9MB Pulling 19.3s
+✔ 578acb154839 Pull complete 11.3s
+✔ c053f6f43c12 Pull complete 11.9s
+⠋ 65cebbf4d847 Downloading [==============> ] 68.41MB/104.4MB 16.1s
+✔ 34045bc93960 Download complete 1.0s
+[...]
+
 </Terminal>
 
 At the end, once images have been downloaded, the console will show something like this:
@@ -157,20 +181,21 @@ At the end, once images have been downloaded, the console will show something li
 $ docker compose up --detach
 
 [+] Running 35/35
- ✔ joomladb 12 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]  0B/0B   Pulled  84.9s
-   ✔ 177e7ef0df69 Pull complete  26.9s
-   ✔ cac25352c4c8 Pull complete  27.5s
-   ✔ 8585afabb40a Pull complete  28.2s
-   [...]
- ✔ joomla 21 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿] 0B/0B  Pulled  146.4s
-   ✔ 578acb154839 Pull complete   11.3s
-   ✔ c053f6f43c12 Pull complete   11.9s
-   ✔ 65cebbf4d847 Pull complete   31.2s
-   [...]
+✔ joomladb 12 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿] 0B/0B Pulled 84.9s
+✔ 177e7ef0df69 Pull complete 26.9s
+✔ cac25352c4c8 Pull complete 27.5s
+✔ 8585afabb40a Pull complete 28.2s
+[...]
+✔ joomla 21 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿] 0B/0B Pulled 146.4s
+✔ 578acb154839 Pull complete 11.3s
+✔ c053f6f43c12 Pull complete 11.9s
+✔ 65cebbf4d847 Pull complete 31.2s
+[...]
 [+] Running 3/3
- ✔ Network joomla_default       Created  0.3s
- ✔ Container joomla-joomladb-1  Started  52.9s
- ✔ Container joomla-joomla-1    Started  38.8s
+✔ Network joomla_default Created 0.3s
+✔ Container joomla-joomladb-1 Started 52.9s
+✔ Container joomla-joomla-1 Started 38.8s
+
 </Terminal>
 
 So, the two images have been downloaded then,
@@ -182,13 +207,16 @@ So, the two images have been downloaded then,
 At this stage, your site is already being installed. Go to the URL `http://127.0.0.1:8080` to view it (make sure to use the `http` protocol and not `https`).
 
 <AlertBox variant="note" title="Not yet ready">
-You may get an error page `ERR_EMPTY_RESPONSE`; this is because, for example, MySQL is not yet fully loaded and Joomla has to wait for it before it can display the installation page. In this case, please wait a little longer ... or read the rest of this article.
+  You may get an error page `ERR_EMPTY_RESPONSE`; this is because, for example,
+  MySQL is not yet fully loaded and Joomla has to wait for it before it can
+  display the installation page. In this case, please wait a little longer ...
+  or read the rest of this article.
 </AlertBox>
 
 <AlertBox variant="info" title="Solve it by adding a depends_on condition">
 So Joomla can be ready before the database and that's not fun. Indeed, Joomla should be able to create his database, add tables and records but if MySQL is not yet ready, we'll have a problem.
 
-The solution provided by Docker is the notion of `healthcheck`. We have to define how Docker can *know* that MySQL is *healthy*. Then we'll ask Joomla to wait until the database layer is *healthy*.
+The solution provided by Docker is the notion of `healthcheck`. We have to define how Docker can _know_ that MySQL is _healthy_. Then we'll ask Joomla to wait until the database layer is _healthy_.
 
 <Snippet filename="compose.yaml">
 
@@ -218,7 +246,6 @@ services:
 ```
 
 </Snippet>
-
 
 </AlertBox>
 
@@ -256,12 +283,13 @@ If you're curious, you can run the `docker image list` command to get the list o
 <Terminal>
 $ docker image list
 
-REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
-joomla       latest    882b2151d890   2 days ago    663MB
-mysql        8.0.13    102816b1ee7d   4 years ago   486MB
+REPOSITORY TAG IMAGE ID CREATED SIZE
+joomla latest 882b2151d890 2 days ago 663MB
+mysql 8.0.13 102816b1ee7d 4 years ago 486MB
+
 </Terminal>
 
-Ok, so, Docker has downloaded Joomla (in its *latest* version) and MySQL (version 8.0.13).
+Ok, so, Docker has downloaded Joomla (in its _latest_ version) and MySQL (version 8.0.13).
 
 <AlertBox variant="info" title="What about a specific version of Joomla?">
 By default, when we don't specify any version number (*which isn't recommended*), Docker will download the version known as the `latest` one. `latest`, here, is what Docker calls a *tag*.
@@ -278,9 +306,9 @@ services:
 
 </Snippet>
 
-To retrieve the list of all tags, please navigate to [https://hub.docker.com/_/joomla/tags](https://hub.docker.com/_/joomla/tags).
+To retrieve the list of all tags, please navigate to [https://hub.docker.com/\_/joomla/tags](https://hub.docker.com/_/joomla/tags).
 
-During writing this article, Joomla *latest* correspond to Joomla version 5.3.3. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: *joomla:5.3.3-php8.2-apache*. So just replace `image: joomla` with `image: joomla:5.3.3-php8.2-apache` in `compose.yaml` and it's done. You're forcing a version. **Note: make sure to use a tag ending by `-apache`.**
+During writing this article, Joomla _latest_ correspond to Joomla version 5.3.3. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: _joomla:5.3.3-php8.2-apache_. So just replace `image: joomla` with `image: joomla:5.3.3-php8.2-apache` in `compose.yaml` and it's done. You're forcing a version. **Note: make sure to use a tag ending by `-apache`.**
 
 <Snippet filename="compose.yaml">
 
@@ -294,7 +322,6 @@ services:
 
 </Snippet>
 
-
 </AlertBox>
 
 ## Docker containers
@@ -304,21 +331,24 @@ We're almost done. Please run `docker container list` to get the list of contain
 <Terminal>
 $ docker container list
 
-CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                    NAMES
-0798f8f25d2b   joomla         "/entrypoint.sh apac…"   8 minutes ago    Up 5 minutes    0.0.0.0:8080->80/tcp     joomla-joomla-1
-7b7fcd3809b0   mysql:8.0.13   "docker-entrypoint.s…"   8 minutes ago    Up 7 minutes    3306/tcp, 33060/tcp      joomla-joomladb-1
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+0798f8f25d2b joomla "/entrypoint.sh apac…" 8 minutes ago Up 5 minutes 0.0.0.0:8080->80/tcp joomla-joomla-1
+7b7fcd3809b0 mysql:8.0.13 "docker-entrypoint.s…" 8 minutes ago Up 7 minutes 3306/tcp, 33060/tcp joomla-joomladb-1
+
 </Terminal>
 
 We have two running containers (your two services). Pay attention to the `PORTS` column: your `joomla` container is listening on the port `8080` and your `mysql` container is listening on port `3306`.
 
 Hey, port `8080`, does that mean anything to you? That is a port for a web page, isn't it?
 
-Let us try by starting your favorite browser and navigating to `http://localhost:8080` (*or `http://127.0.0.1:8080`, it's strictly the same*) and... Wow!
+Let us try by starting your favorite browser and navigating to `http://localhost:8080` (_or `http://127.0.0.1:8080`, it's strictly the same_) and... Wow!
 
 ![Joomla installer](./images/joomla_installation_screen.png)
 
 <AlertBox variant="info" title="Just incredible; no?">
-Wow, doesn't that sound crazy? With a single command (`docker compose up --detach`), you have downloaded everything you need to get Joomla running on your machine.
+  Wow, doesn't that sound crazy? With a single command (`docker compose up
+  --detach`), you have downloaded everything you need to get Joomla running on
+  your machine.
 </AlertBox>
 
 Let us rewind for a few seconds: to run Joomla, we knew we needed three things + 1; a web server, a database server, PHP and, of course, we need Joomla. **And here, just by running one command, hop, all the magic happens.** And nothing to configure too!
@@ -342,7 +372,7 @@ When Joomla will ask for your admin credentials, just fill in the value of your 
     "The database type should be `MySQLi` (since we're using MySQL),",
     "The name of the host should be `joomladb` (the name we have chosen for the database service),",
     "The username should be `root` (default value) and",
-    "The password for that user should be `example`"
+    "The password for that user should be `example`",
   ]}
 />
 
@@ -395,10 +425,11 @@ $ pwd
 /tmp/joomla
 
 $ ls -alh
-Permissions Size User       Group      Date Modified    Name
-drwxr-xr-x     - christophe christophe 2025-08-25 09:32  .
-drwxrwxrwt     - christophe christophe 2025-08-25 09:32 ..
-.rw-r--r--   325 christophe christophe 2025-08-25 09:32 compose.yaml
+Permissions Size User Group Date Modified Name
+drwxr-xr-x - christophe christophe 2025-08-25 09:32 .
+drwxrwxrwt - christophe christophe 2025-08-25 09:32 ..
+.rw-r--r-- 325 christophe christophe 2025-08-25 09:32 compose.yaml
+
 </Terminal>
 
 Oh? Nothing... **Nothing has been downloaded in your folder.** You don't have Joomla on your computer. How is this possible?
@@ -412,9 +443,10 @@ Still on your console, type again `docker container list`:
 <Terminal>
 $ docker container list
 
-CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                    NAMES
-0798f8f25d2b   joomla         "/entrypoint.sh apac…"   8 minutes ago    Up 5 minutes    0.0.0.0:8080->80/tcp     joomla-joomla-1
-7b7fcd3809b0   mysql:8.0.13   "docker-entrypoint.s…"   8 minutes ago    Up 7 minutes    3306/tcp, 33060/tcp      joomla-joomladb-1
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+0798f8f25d2b joomla "/entrypoint.sh apac…" 8 minutes ago Up 5 minutes 0.0.0.0:8080->80/tcp joomla-joomla-1
+7b7fcd3809b0 mysql:8.0.13 "docker-entrypoint.s…" 8 minutes ago Up 7 minutes 3306/tcp, 33060/tcp joomla-joomladb-1
+
 </Terminal>
 
 Pay attention this time to the last column, called `NAMES`.
@@ -427,18 +459,17 @@ We will stop them by running `docker compose down`:
 $ docker compose down
 
 [+] Running 3/3
- ✔ Container joomla-joomla-1    Removed 2.6s
- ✔ Container joomla-joomladb-1  Removed 4.2s
- ✔ Network joomla       Removed
+✔ Container joomla-joomla-1 Removed 2.6s
+✔ Container joomla-joomladb-1 Removed 4.2s
+✔ Network joomla Removed
+
 </Terminal>
 
 If you go back to `http://localhost:8080` with your browser and refresh the page; the site didn't exist anymore.
 
 Run `docker compose up --detach` again.
 
-<Terminal>
-$ docker compose up --detach
-</Terminal>
+<Terminal>$ docker compose up --detach</Terminal>
 
 Surf to the site again, refresh the page and the site is, oh? not yet responding. Wait a few... a few more... and after a certain period, the site will be there. Why?
 
@@ -446,16 +477,11 @@ Docker must (re)start two services, the Joomla one and the database server. Init
 
 You can see this by running `docker compose logs --follow` (press <kbd>CTRL</kbd>+<kbd>C</kbd> to quit).
 
-<Terminal>
-$ docker compose logs --follow
-the_output
-</Terminal>
+<Terminal>$ docker compose logs --follow the_output</Terminal>
 
 Once Joomla will be ready, you will get the installation wizard of Joomla... just like the first time. So, by running `docker compose down` you have lost your work.
 
-<Terminal>
-$ docker compose down
-</Terminal>
+<Terminal>$ docker compose down</Terminal>
 
 <AlertBox variant="danger" title="">
 As mentioned earlier, everything is done in RAM. By stopping a Docker container, you will lose everything not saved on your computer. It's great for playing/learning but not what you expect when you're developing a real site.
@@ -532,17 +558,16 @@ And the `/var/lib/mysql` folder of the MySQL service should be synchronized with
 <AlertBox variant="caution" title="Please create folders first">
 Make sure to, first, create these two directories on your computer so folder's permissions will be correct!
 
-<Terminal>
-$ mkdir site_joomla db
-</Terminal>
-
+<Terminal>$ mkdir site_joomla db</Terminal>
 
 </AlertBox>
 
 The two lines `user: 1000:1000` are really important and inform Docker to reuse your local credentials (the one used on your computer).
 
 <AlertBox variant="highlyImportant" title="The user UID/GID">
-If you don't do this, files and folders created by Docker will be owned by the `root` user on your computer and not by us (in my case, by the user called `christophe`).
+  If you don't do this, files and folders created by Docker will be owned by the
+  `root` user on your computer and not by us (in my case, by the user called
+  `christophe`).
 </AlertBox>
 
 Just check your folder's content:
@@ -552,12 +577,13 @@ $ pwd
 /tmp/joomla
 
 $ ls -alh
-Permissions Size User       Group      Date Modified    Name
-drwxr-xr-x     - christophe christophe 2025-08-25 20:13  .
-drwxrwxrwt     - christophe christophe 2025-08-25 20:13 ..
-drwxr-xr-x     - christophe christophe 2025-08-25 20:13 db
-drwxr-xr-x     - christophe christophe 2025-08-25 20:13 site_joomla
-.rw-r--r--   478 christophe christophe 2025-08-25 20:13 compose.yaml
+Permissions Size User Group Date Modified Name
+drwxr-xr-x - christophe christophe 2025-08-25 20:13 .
+drwxrwxrwt - christophe christophe 2025-08-25 20:13 ..
+drwxr-xr-x - christophe christophe 2025-08-25 20:13 db
+drwxr-xr-x - christophe christophe 2025-08-25 20:13 site_joomla
+.rw-r--r-- 478 christophe christophe 2025-08-25 20:13 compose.yaml
+
 </Terminal>
 
 Run Docker again but first, make sure the previous containers are removed (not only stopped): `docker compose kill`.
@@ -566,8 +592,9 @@ Run Docker again but first, make sure the previous containers are removed (not o
 $ docker compose kill
 
 [+] Killing 2/2
- ✔ Container kingsbridge-db   Killed   2.1s
- ✔ Container kingsbridge-app  Killed   1.5s
+✔ Container kingsbridge-db Killed 2.1s
+✔ Container kingsbridge-app Killed 1.5s
+
 </Terminal>
 
 Run `docker compose up --detach` again.
@@ -576,9 +603,10 @@ Run `docker compose up --detach` again.
 $ docker compose up --detach
 
 [+] Running 3/3
- ✔ Network kingsbridge_default       Created    0.3s
- ✔ Container kingsbridge-db   Started    3.3s
- ✔ Container kingsbridge-app  Started
+✔ Network kingsbridge_default Created 0.3s
+✔ Container kingsbridge-db Started 3.3s
+✔ Container kingsbridge-app Started
+
 </Terminal>
 
 And you can, already, run `ls` again to see that, yes, your local `site_joomla` and `db` folders are populated now. This is the result of the `volumes` entry we have added in your `compose.yaml` file.
@@ -588,57 +616,58 @@ $ pwd
 /tmp/joomla
 
 $ ls -alh site_joomla
-Permissions Size User       Group      Date Modified    Name
-drwxr-xr-x     - christophe christophe 2025-08-25 20:20 .
-drwxr-xr-x     - christophe christophe 2025-08-25 20:16 ..
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 administrator
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 api
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 cache
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 cli
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 components
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 images
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 includes
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 installation
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 language
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 layouts
-drwxr-xr-x     - christophe christophe 2023-10-14 14:43 libraries
-drwxr-xr-x     - christophe christophe 2023-10-14 14:43 media
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 modules
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 plugins
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 templates
-drwxr-xr-x     - christophe christophe 2023-10-14 14:42 tmp
-.rw-r--r--  6.9k christophe christophe 2025-08-25 20:20 .htaccess
-.rw-r--r--  6.9k christophe christophe 2023-10-14 14:42 htaccess.txt
-.rw-r--r--  1.1k christophe christophe 2023-10-14 14:42 index.php
-.rw-r--r--   18k christophe christophe 2023-10-14 14:42 LICENSE.txt
-.rw-r--r--  4.9k christophe christophe 2023-10-14 14:42 README.txt
-.rw-r--r--   764 christophe christophe 2023-10-14 14:42 robots.txt.dist
-.rw-r--r--  3.0k christophe christophe 2023-10-14 14:42 web.config.txt
+Permissions Size User Group Date Modified Name
+drwxr-xr-x - christophe christophe 2025-08-25 20:20 .
+drwxr-xr-x - christophe christophe 2025-08-25 20:16 ..
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 administrator
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 api
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 cache
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 cli
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 components
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 images
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 includes
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 installation
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 language
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 layouts
+drwxr-xr-x - christophe christophe 2023-10-14 14:43 libraries
+drwxr-xr-x - christophe christophe 2023-10-14 14:43 media
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 modules
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 plugins
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 templates
+drwxr-xr-x - christophe christophe 2023-10-14 14:42 tmp
+.rw-r--r-- 6.9k christophe christophe 2025-08-25 20:20 .htaccess
+.rw-r--r-- 6.9k christophe christophe 2023-10-14 14:42 htaccess.txt
+.rw-r--r-- 1.1k christophe christophe 2023-10-14 14:42 index.php
+.rw-r--r-- 18k christophe christophe 2023-10-14 14:42 LICENSE.txt
+.rw-r--r-- 4.9k christophe christophe 2023-10-14 14:42 README.txt
+.rw-r--r-- 764 christophe christophe 2023-10-14 14:42 robots.txt.dist
+.rw-r--r-- 3.0k christophe christophe 2023-10-14 14:42 web.config.txt
 
 $ ls -alh db
-Permissions Size User       Group      Date Modified    Name
-drwxr-x---     - christophe christophe 2025-08-25 20:20 #innodb_temp
-drwxr-xr-x     - christophe christophe 2025-08-25 20:21 .
-drwxr-xr-x     - christophe christophe 2025-08-25 20:16 ..
-drwxr-x---     - christophe christophe 2025-08-25 20:21 mysql
-drwxr-x---     - christophe christophe 2025-08-25 20:21 performance_schema
-drwxr-x---     - christophe christophe 2025-08-25 20:21 sys
-.rw-r-----    56 christophe christophe 2025-08-25 20:21 auto.cnf
-.rw-------  1.7k christophe christophe 2025-08-25 20:21 ca-key.pem
-.rw-r--r--  1.1k christophe christophe 2025-08-25 20:21 ca.pem
-.rw-r--r--  1.1k christophe christophe 2025-08-25 20:21 client-cert.pem
-.rw-------  1.7k christophe christophe 2025-08-25 20:21 client-key.pem
-.rw-r-----   50M christophe christophe 2025-08-25 20:21 ib_logfile0
-.rw-r-----   50M christophe christophe 2025-08-25 20:20 ib_logfile1
-.rw-r-----   13M christophe christophe 2025-08-25 20:21 ibdata1
-.rw-r-----   13M christophe christophe 2025-08-25 20:20 ibtmp1
-.rw-r-----   24M christophe christophe 2025-08-25 20:21 mysql.ibd
-.rw-------  1.7k christophe christophe 2025-08-25 20:21 private_key.pem
-.rw-r--r--   452 christophe christophe 2025-08-25 20:21 public_key.pem
-.rw-r--r--  1.1k christophe christophe 2025-08-25 20:21 server-cert.pem
-.rw-------  1.7k christophe christophe 2025-08-25 20:21 server-key.pem
-.rw-r-----   10M christophe christophe 2025-08-25 20:21 undo_001
-.rw-r-----   10M christophe christophe 2025-08-25 20:21 undo_002
+Permissions Size User Group Date Modified Name
+drwxr-x--- - christophe christophe 2025-08-25 20:20 #innodb_temp
+drwxr-xr-x - christophe christophe 2025-08-25 20:21 .
+drwxr-xr-x - christophe christophe 2025-08-25 20:16 ..
+drwxr-x--- - christophe christophe 2025-08-25 20:21 mysql
+drwxr-x--- - christophe christophe 2025-08-25 20:21 performance_schema
+drwxr-x--- - christophe christophe 2025-08-25 20:21 sys
+.rw-r----- 56 christophe christophe 2025-08-25 20:21 auto.cnf
+.rw------- 1.7k christophe christophe 2025-08-25 20:21 ca-key.pem
+.rw-r--r-- 1.1k christophe christophe 2025-08-25 20:21 ca.pem
+.rw-r--r-- 1.1k christophe christophe 2025-08-25 20:21 client-cert.pem
+.rw------- 1.7k christophe christophe 2025-08-25 20:21 client-key.pem
+.rw-r----- 50M christophe christophe 2025-08-25 20:21 ib_logfile0
+.rw-r----- 50M christophe christophe 2025-08-25 20:20 ib_logfile1
+.rw-r----- 13M christophe christophe 2025-08-25 20:21 ibdata1
+.rw-r----- 13M christophe christophe 2025-08-25 20:20 ibtmp1
+.rw-r----- 24M christophe christophe 2025-08-25 20:21 mysql.ibd
+.rw------- 1.7k christophe christophe 2025-08-25 20:21 private_key.pem
+.rw-r--r-- 452 christophe christophe 2025-08-25 20:21 public_key.pem
+.rw-r--r-- 1.1k christophe christophe 2025-08-25 20:21 server-cert.pem
+.rw------- 1.7k christophe christophe 2025-08-25 20:21 server-key.pem
+.rw-r----- 10M christophe christophe 2025-08-25 20:21 undo_001
+.rw-r----- 10M christophe christophe 2025-08-25 20:21 undo_002
+
 </Terminal>
 
 Back to your browser and continue the installation of Joomla like we did in the previous chapter.
@@ -651,8 +680,8 @@ $ pwd
 
 $ ls site_joomla/configuration.php
 
-Permissions Size User       Group      Date Modified    Name
-.rw-r--r--  2.0k christophe christophe 2025-08-25 20:29 configuration.php
+Permissions Size User Group Date Modified Name
+.rw-r--r-- 2.0k christophe christophe 2025-08-25 20:29 configuration.php
 
 $ head -n 10 site_joomla/configuration.php
 {`<?php
@@ -666,15 +695,14 @@ class JConfig \{
         public \$captcha = '0';
         public \$list_limit = 20;
 `}
+
 </Terminal>
 
 Yes! This time we have stored your Joomla website on your computer.
 
 For the exercise, we can kill your containers by running `docker compose kill` and run `docker compose up --detach` again to start your containers again and, this time, we will retrieve your Joomla site as we just leave it. Nothing is lost now.
 
-<Terminal>
-$ docker compose kill && docker compose up --detach
-</Terminal>
+<Terminal>$ docker compose kill && docker compose up --detach</Terminal>
 
 And since files/folders are now on your computer, you can do everything you want with your website like committing it on a GitHub repository f.i.
 
@@ -687,7 +715,7 @@ When using one or more volumes, Docker must constantly check whether the files/f
 
 When working with a Joomla website, sometimes you need to run some PHP command like `php joomla.php`.
 
-To be able to do this, you will need to start a *interactive shell session* in the Joomla container.
+To be able to do this, you will need to start a _interactive shell session_ in the Joomla container.
 
 Did you remember the name of your Joomla service? If no, just open the `compose.yaml` file again.
 
@@ -704,11 +732,9 @@ services:
 
 The name of your Joomla service is `joomla` (and `joomladb` is the name of your database service).
 
-Now we know everything we need: to run an interactive shell session in the Joomla container, just run `docker compose exec joomla /bin/sh` to *jump* into the Joomla container (*and `docker compose exec joomladb /bin/sh` for the database container*).
+Now we know everything we need: to run an interactive shell session in the Joomla container, just run `docker compose exec joomla /bin/sh` to _jump_ into the Joomla container (_and `docker compose exec joomladb /bin/sh` for the database container_).
 
-<Terminal>
-$ docker compose exec joomla /bin/sh
-</Terminal>
+<Terminal>$ docker compose exec joomla /bin/sh</Terminal>
 
 Let us rewind for a few seconds because it's complicated to understand.
 
@@ -716,7 +742,7 @@ On your computer, in your Linux console, if you type `pwd` to get the current fo
 
 Then, we jump in the Joomla Docker container by running `docker compose exec joomla /bin/sh` and, you can see it, we don't have any longer a prompt starting with `>` but with `$` but that isn't the only difference. If now, we run `pwd` again, we're no more in your `/tmp/joomla` folder but in `/var/www/html`.
 
-It can drive you mad but ... when entering in the Docker container, you're *no more* on your computer, you're virtually in another computer, the container. In that *computer*, the current folder is thus `/var/www/html`. By typing `exit`, you will leave the container, go back to your computer and back in the `/tmp/joomla` folder.
+It can drive you mad but ... when entering in the Docker container, you're _no more_ on your computer, you're virtually in another computer, the container. In that _computer_, the current folder is thus `/var/www/html`. By typing `exit`, you will leave the container, go back to your computer and back in the `/tmp/joomla` folder.
 
 <Terminal>
 $ pwd
@@ -731,6 +757,7 @@ $ exit
 
 $ pwd
 /tmp/joomla
+
 </Terminal>
 
 Something else to try:
@@ -742,12 +769,13 @@ command not found: php
 $ docker compose exec joomla /bin/sh
 
 $ php --version
-PHP 8.1.25 (cli) (built: Nov  1 2023 06:20:35) (NTS)
+PHP 8.1.25 (cli) (built: Nov 1 2023 06:20:35) (NTS)
 
 $ exit
+
 </Terminal>
 
-So, on my computer (and probably on yours), by typing `php --version`, I got an error. That is correct. I don't have PHP on my computer. *I work daily with PHP for years and I don't have it on my machine.* 😄
+So, on my computer (and probably on yours), by typing `php --version`, I got an error. That is correct. I don't have PHP on my computer. _I work daily with PHP for years and I don't have it on my machine._ 😄
 
 Then I jump in the Joomla container and type the same command again and, yes, inside the Docker container of Joomla, yes, PHP is installed and here, It's the version 8.1.25.
 
@@ -774,7 +802,10 @@ Save the file. Now you can surf to `http://kingsbridge:8080`
 ![Using the Kingsbridge alias](./images/using_alias.png)
 
 <AlertBox variant="note" title="">
-When creating an alias in the host file, some people prefer to use the `.local` suffix like in `127.0.0.1 kingsbridge.local` to make clear it's a localhost site. If you prefer this, so the URL will be `http://kingsbridge.local:8080`
+  When creating an alias in the host file, some people prefer to use the
+  `.local` suffix like in `127.0.0.1 kingsbridge.local` to make clear it's a
+  localhost site. If you prefer this, so the URL will be
+  `http://kingsbridge.local:8080`
 </AlertBox>
 
 ## Using another port
@@ -812,19 +843,20 @@ Kingsbridge can be a Joomla 4.4 / PHP 7.4 website while Shiring is on Joomla 5.0
 <AlertBox variant="info" title="">
 Using another port isn't mandatory. You can have several websites on the same port as `8080`. But, in that case, we won't be able to use these websites at the same time. You can start the first one and when trying to start the second one, Docker will say *port already in use*. This isn't a problem; you can just run `docker compose stop` for the first one so free the port then start the second one.
 
-<Terminal>
-$ docker compose stop
-</Terminal>
+<Terminal>$ docker compose stop</Terminal>
 
 </AlertBox>
 
 <AlertBox variant="note" title="">
-In this article, I'm using port `8080` because Joomla has used it in his default `compose.yaml` file. You're not forced to use that one, you can perfectly use `80` and not `8080`. In my daily work, I'm using ports `80`, `81`, `82`, `83`, ... varying the second figures for my projects.
+  In this article, I'm using port `8080` because Joomla has used it in his
+  default `compose.yaml` file. You're not forced to use that one, you can
+  perfectly use `80` and not `8080`. In my daily work, I'm using ports `80`,
+  `81`, `82`, `83`, ... varying the second figures for my projects.
 </AlertBox>
 
 ## Did you prefer PostgreSQL or MariaDB
 
-So far, we've chosen to use MySQL as our database manager. Our `compose.yaml` file is the one, slightly modified, that can be found on [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla).
+So far, we've chosen to use MySQL as our database manager. Our `compose.yaml` file is the one, slightly modified, that can be found on [https://hub.docker.com/\_/joomla](https://hub.docker.com/_/joomla).
 
 Could you opt for something other than MySQL? Of course, as long as Joomla supports this system (see [https://manual.joomla.org/docs/next/get-started/technical-requirements/](https://manual.joomla.org/docs/next/get-started/technical-requirements/)).
 
@@ -832,16 +864,17 @@ We just need to replace the `joomladb` service, don't use anymore `mysql` but th
 
 <Details label="Using PostgreSQL">
 
-Let's try PostgreSQL... We'll replace `mysql`. The official PostgreSQL Docker image can be retrieved on [https://hub.docker.com/_/postgres](https://hub.docker.com/_/postgres).  The documentation tell us which `image` we should use and how to define variables like the default password (`POSTGRES_PASSWORD`).
+Let's try PostgreSQL... We'll replace `mysql`. The official PostgreSQL Docker image can be retrieved on [https://hub.docker.com/\_/postgres](https://hub.docker.com/_/postgres). The documentation tell us which `image` we should use and how to define variables like the default password (`POSTGRES_PASSWORD`).
 
 We also need to change a few variables:
 
-* The default database user should be specified and it will be f.i. `postgres`,
-* We should define too the name of the database in both services; we'll name our db `joomla_db` and
-* We need to inform Joomla that we'll use PostgreSQL so we need to set `JOOMLA_DB_TYPE` to `pgsql` (can be either `mysql` or `pgsql`).
+- The default database user should be specified and it will be f.i. `postgres`,
+- We should define too the name of the database in both services; we'll name our db `joomla_db` and
+- We need to inform Joomla that we'll use PostgreSQL so we need to set `JOOMLA_DB_TYPE` to `pgsql` (can be either `mysql` or `pgsql`).
 
 <AlertBox variant="note" title="">
-This information has been retrieved from this Pull requests: [https://github.com/joomla-docker/docker-joomla/pull/156](https://github.com/joomla-docker/docker-joomla/pull/156).
+  This information has been retrieved from this Pull requests:
+  [https://github.com/joomla-docker/docker-joomla/pull/156](https://github.com/joomla-docker/docker-joomla/pull/156).
 </AlertBox>
 
 Our `compose.yaml` will become:
@@ -897,7 +930,7 @@ For the first time during this tutorial, we're using an `alpine` image (`postgre
 
 <Details label="Using MariaDB">
 
-If you plan to use MariaDB, here is the Docker Official Image: [https://hub.docker.com/_/mariadb](https://hub.docker.com/_/mariadb).
+If you plan to use MariaDB, here is the Docker Official Image: [https://hub.docker.com/\_/mariadb](https://hub.docker.com/_/mariadb).
 
 <Snippet filename="compose.yaml">
 
@@ -950,18 +983,14 @@ Another use case, you wish to start the Windows Explorer program and navigate in
 
 ### Final compose.yaml
 
-In the introduction of this article, I have said *we will learn how to use Docker to install Joomla and start a new website **in seconds***.
+In the introduction of this article, I have said \*we will learn how to use Docker to install Joomla and start a new website **in seconds\***.
 
 This is how:
 
 1. On your computer, create a folder for your new project (f.i. `mkdir ~/projects/my_new_project && cd $_`)
-  <Terminal>
-  $ mkdir ~/projects/my_new_project && cd $_
-  </Terminal>
+   <Terminal>$ mkdir ~/projects/my_new_project && cd $_</Terminal>
 2. Also create the two following folders to make your site and your database persistents: `mkdir site_joomla db`
-  <Terminal>
-  $ mkdir site_joomla db
-  </Terminal>
+   <Terminal>$ mkdir site_joomla db</Terminal>
 3. In that folder, create a `compose.yaml` file with this content:
 
 <Snippet filename="compose.yaml">
@@ -993,7 +1022,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=example
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 20s
       retries: 10
     user: 1000:1000
@@ -1004,14 +1033,11 @@ services:
 </Snippet>
 
 <!-- markdownlint-disable MD029 -->
+
 3. Create your two sub-folders
-  <Terminal>
-  $ mkdir db site_joomla
-  </Terminal>
+   <Terminal>$ mkdir db site_joomla</Terminal>
 4. Run `docker compose up --detach` to start Docker and create your containers
-  <Terminal>
-  $ docker compose up --detach
-  </Terminal>
+   <Terminal>$ docker compose up --detach</Terminal>
 5. Wait a few seconds and your new site is up.
 
 <AlertBox variant="caution" title="">

@@ -69,6 +69,6 @@ Now, for the demo, create a new file called `main.py` with this line `print("Hel
 
 Save the file.
 
-Click in the terminal and type `python main.py` to execute the script and tadaaaa:
+Click in the terminal and type `python main.py` to execute the script and tadaaa:
 
 ![Running the script](./images/running_the_script.png)

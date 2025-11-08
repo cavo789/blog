@@ -7,7 +7,7 @@
 # ## Examples
 #
 # ```bash
-# echo "HEllow WoRLD!" | string::upper
+# echo "HEllo WoRLD!" | string::upper
 # #Output
 # HELLO WORLD!
 #

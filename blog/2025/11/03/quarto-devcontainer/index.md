@@ -121,7 +121,7 @@ In theory, your browser will be automatically fired and the site opened. If not,
 
 ![The site is already running](./images/preview.webp)
 
-Crazy easo no?
+Crazy easy no?
 
 ## What have we done?
 

@@ -17,6 +17,7 @@
         "@docusaurus/core": "^3.9.2",
         "@docusaurus/faster": "^3.9.2",
         "@docusaurus/plugin-ideal-image": "^3.9.2",
+        "@docusaurus/plugin-sitemap": "^3.9.2",
         "@docusaurus/preset-classic": "^3.9.2",
         "@docusaurus/theme-search-algolia": "^3.9.2",
         "@iconify/react": "^6.0.2",
@@ -30,8 +31,8 @@
         "react-medium-image-zoom": "^5.4.0"
     },
     "devDependencies": {
-        "@docusaurus/module-type-aliases": "^3.9.1",
-        "@docusaurus/types": "^3.9.1",
+        "@docusaurus/module-type-aliases": "^3.9.2",
+        "@docusaurus/types": "^3.9.2",
         "@types/node": "^24.5.2"
     },
     "browserslist": {

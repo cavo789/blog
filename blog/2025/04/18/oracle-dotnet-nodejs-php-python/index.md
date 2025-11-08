@@ -2,7 +2,7 @@
 slug: oracle-dotnet-nodejs-php-python
 title: Accessing an Oracle database using .Net, NodeJS, PHP and Python
 date: 2025-04-18
-description: Step-by-step guide to accessing an Oracle database container with .Net, Node.js, PHP, and Python. Includes Dockerfiles and full code samples for each language. (154 characters)
+description: Step-by-step guide to accessing an Oracle database container with .Net, Node.js, PHP, and Python. Includes Dockerfile and full code samples for each language. (154 characters)
 authors: [christophe]
 image: /img/v2/oracle.webp
 series: Running Oracle Database Server as a Docker container

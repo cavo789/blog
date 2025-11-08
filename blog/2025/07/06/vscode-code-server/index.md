@@ -12,7 +12,7 @@ blueskyRecordKey: 3lujtglddu223
 ---
 ![Do I need VSCode on my machine to use it?](/img/v2/vscode_tips.webp)
 
-<!-- cspell:ignore codercom,tadaaaa -->
+<!-- cspell:ignore codercom -->
 
 Maybe one day we won't need to install an operating system, just have Docker on our machine.  Well, it won't be tomorrow yet, but as far as VSCode is concerned, yes, we can.
 
@@ -65,7 +65,7 @@ password: d8345b9abff6c01d044fac59
 cert: false
 </Terminal>
 
-Copy/paste the password in the form and submit it and tadaaaa:
+Copy/paste the password in the form and submit it and tadaaa:
 
 ![VScode in the browser](./images/code_server.png)
 

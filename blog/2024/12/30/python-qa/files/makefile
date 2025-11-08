@@ -1,3 +1,4 @@
+# cspell:disable
 .PHONY: qa
 qa:
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " Step  Tool" "Run?" "Techno" "Description"

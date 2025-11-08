@@ -3,6 +3,15 @@
   "service": "docusaurus",
   "dockerComposeFile": ["../.devcontainer/compose.yaml"],
   "workspaceFolder": "/opt/docusaurus",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "enableNonRootDocker": "host"
+    }
+  },
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
   "portsAttributes": {
     "3000": {
       "onAutoForward": "openBrowser"
@@ -12,7 +21,7 @@
     "GIT_SSH_COMMAND": "ssh -i /home/vscode/.ssh/id_ed25519 -o 'UserKnownHostsFile=/dev/null'"
   },
   "initializeCommand": "mkdir -p .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
-  "postCreateCommand": "HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem yarn start --host 0.0.0.0",
+  "postCreateCommand": "/opt/docusaurus/.devcontainer/bootstrap.sh",
   "remoteUser": "vscode",
   "containerUser": "vscode",
   "customizations": {
@@ -44,6 +53,9 @@
         "editor.rulers": [120, 70],
         "editor.stickyScroll.enabled": true,
         "editor.tabCompletion": "on",
+        "files.associations": {
+          ".mdx": "Markdown"
+        },
         "files.autoSave": "onFocusChange",
         "files.eol": "\n",
         "files.defaultLanguage": "markdown",
@@ -59,8 +71,7 @@
             "icon": "terminal-bash"
           }
         },
-        "terminal.integrated.defaultProfile.linux": "Bash",
-        "terminal.integrated.fontFamily": "MesloLGS MS",
+        "terminal.integrated.defaultProfile.linux": "bash",
         "window.title": "${dirty}${rootName} ${separator} [DevContainer]",
         "workbench.colorTheme": "Visual Studio Light"
       },
@@ -69,15 +80,16 @@
         "DavidAnson.vscode-markdownlint",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
+        "GitHub.vscode-github-actions",
         "shd101wyy.markdown-preview-enhanced",
         "streetsidesoftware.code-spell-checker-british-english",
         "streetsidesoftware.code-spell-checker-french",
         "streetsidesoftware.code-spell-checker",
         "TomasDahlqvist.markdown-admonitions",
+        "ms-vscode.makefile-tools",
         "usernamehw.errorlens",
         "usernamehw.errorlens",
-        "yzhang.markdown-all-in-one",
-        "zokugun.explicit-folding"
+        "yzhang.markdown-all-in-one"
       ]
     }
   }

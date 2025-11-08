@@ -1,10 +1,10 @@
 # .config/
 # .devcontainer/
-.docusaurus/
+/.docusaurus
 # .git/
 # .github/
 # .vscode/
-node_modules/
+/node_modules
 
 # .dockerignore
 # .editorconfig

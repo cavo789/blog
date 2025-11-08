@@ -73,7 +73,7 @@ Note: I've also configured my VSCode with this setting `"python.sortImports.args
 >
 > Vulture finds unused code in Python programs. This is useful for cleaning up and finding errors in large code bases. If you run Vulture on both your library and test suite you can find untested code.
 >
-> Due to Python's dynamic nature, static code analysers like Vulture are likely to miss some dead code. Also, code that is only called implicitly may be reported as unused. Nonetheless, Vulture can be a very helpful tool for higher code quality.
+> Due to Python's dynamic nature, static code analyzers like Vulture are likely to miss some dead code. Also, code that is only called implicitly may be reported as unused. Nonetheless, Vulture can be a very helpful tool for higher code quality.
 
 I'm running it like this: `vulture --min-confidence 100 .`
 

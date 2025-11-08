@@ -11,6 +11,7 @@ tags: [.env, docker, joomla, makefile]
 language: en
 blueskyRecordKey: 3lx57wpmj6223
 ---
+
 <!-- cspell:ignore Akeeba -->
 <!-- markdownlint-disable-file MD010 MD026 -->
 
@@ -32,23 +33,22 @@ At the end, we'll have a `make import` command that will start **[Akeeba Kicksta
 In the next chapters, you'll need to create several files using copy/paste. If you wish go faster, just run the following commands to retrieve files from my [Github repo](https://github.com/cavo789/docker_joomla_restore) so you don't need to create them.
 
 <Terminal>
-$ mkdir /tmp/joomla_restore && cd $_
-$ curl -LOJ --silent https://github.com/cavo789/docker_joomla_restore/archive/refs/tags/1.0.0.tar.gz
-$ tar -xzvf docker_joomla_restore-1.0.0.tar.gz --strip-components 1 && rm -f docker_joomla_restore-1.0.0.tar.gz
-$ tar -xzvf docker_joomla_restore.gz --strip-components 1 && rm -f docker_joomla_restore.gz
+  $ mkdir /tmp/joomla_restore && cd $_ $ curl -LOJ --silent
+  https://github.com/cavo789/docker_joomla_restore/archive/refs/tags/1.0.0.tar.gz
+  $ tar -xzvf docker_joomla_restore-1.0.0.tar.gz --strip-components 1 && rm -f
+  docker_joomla_restore-1.0.0.tar.gz $ tar -xzvf docker_joomla_restore.gz
+  --strip-components 1 && rm -f docker_joomla_restore.gz
 </Terminal>
 
-By following the instructions below, you'll create a xxx folder where you can copy all the files you need to restore a Joomla site using Docker.  You can then proceed immediately to the “Run the import process” chapter, as the files are already in place.
+By following the instructions below, you'll create a xxx folder where you can copy all the files you need to restore a Joomla site using Docker. You can then proceed immediately to the “Run the import process” chapter, as the files are already in place.
 
 </AlertBox>
 
-*If you prefer to understand what you do and create files manually, please continue your lecture here below.*
+_If you prefer to understand what you do and create files manually, please continue your lecture here below._
 
 Please create a new folder on your computer like f.i. `mkdir /tmp/joomla_restore && cd $_`.
 
-<Terminal>
-$ mkdir /tmp/joomla_restore && cd $_
-</Terminal>
+<Terminal>$ mkdir /tmp/joomla_restore && cd $_</Terminal>
 
 In that folder, you'll need to create several files (please refer to [Part 2](/blog/docker-joomla-part-2)) if you need more explanations about these files.
 
@@ -105,7 +105,7 @@ services:
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-rootpass}
       - MYSQL_USER=${DB_USER:-joomla}
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 20s
       retries: 10
     user: ${UID:-1000}:${GID:-1000}
@@ -236,7 +236,7 @@ import: reset
     # highlight-next-line
 
     # highlight-next-line
-	@printf "\n\n\033[1;33m%s\033[0m\n\n" "Please now jump to http://127.0.0.1:${WEB_PORT}/kickstart.php to finalise your site restoration."
+	@printf "\n\n\033[1;33m%s\033[0m\n\n" "Please now jump to http://127.0.0.1:${WEB_PORT}/kickstart.php to finalize your site restoration."
     # highlight-next-line
 
     # highlight-next-line
@@ -270,13 +270,9 @@ import: reset
 <AlertBox variant="caution" title="">
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
 
-<Terminal>
-$ which make
-</Terminal>
+<Terminal>$ which make</Terminal>
 
-<Terminal>
-$ sudo apt-get update && sudo apt-get install make
-</Terminal>
+<Terminal>$ sudo apt-get update && sudo apt-get install make</Terminal>
 
 </AlertBox>
 
@@ -334,7 +330,7 @@ Finally, we also need to have two files coming from **[Akeeba Kickstart](https:/
 
 By following the link [Akeeba Kickstart](https://www.akeeba.com/download.html#kickstart), we'll be able to download a `.zip` file (called `kickstart-core-xxx.zip` where `xxx` is a version number). Proceed to the download and open the archives: we'll get two files in it. Please copy these files in your folder.
 
-The two files we need are called `en-GB.kickstart.ini` and `kickstart.phsp`.
+The two files we need are called `en-GB.kickstart.ini` and `kickstart.php`.
 
 ## Before starting
 
@@ -343,16 +339,17 @@ We're ready. Just before you begin, please check that you have all the required 
 <Terminal>
 $ ls -alh
 
-Permissions Size User       Group      Date Modified    Name
-drwxr-xr-x     - christophe christophe 2024-10-18 13:30 .
-drwxrwxrwt     - root       root       2024-10-18 13:30 ..
-.rw-r--r--   151 christophe christophe 2024-10-18 13:30 .env
-.rw-r--r--   34M christophe christophe 2024-10-18 13:30 backup.jpa
-.rw-r--r--  1.3k christophe christophe 2024-10-18 13:30 compose.yaml
-.rw-r--r--   162 christophe christophe 2024-10-18 13:30 Dockerfile
-.rw-r--r--   11k christophe christophe 2024-10-18 13:30 en-GB.kickstart.ini
-.rw-r--r--  390k christophe christophe 2024-10-18 13:30 kickstart.php
-.rw-r--r--  2.9k christophe christophe 2024-10-18 13:30 makefile
+Permissions Size User Group Date Modified Name
+drwxr-xr-x - christophe christophe 2024-10-18 13:30 .
+drwxrwxrwt - root root 2024-10-18 13:30 ..
+.rw-r--r-- 151 christophe christophe 2024-10-18 13:30 .env
+.rw-r--r-- 34M christophe christophe 2024-10-18 13:30 backup.jpa
+.rw-r--r-- 1.3k christophe christophe 2024-10-18 13:30 compose.yaml
+.rw-r--r-- 162 christophe christophe 2024-10-18 13:30 Dockerfile
+.rw-r--r-- 11k christophe christophe 2024-10-18 13:30 en-GB.kickstart.ini
+.rw-r--r-- 390k christophe christophe 2024-10-18 13:30 kickstart.php
+.rw-r--r-- 2.9k christophe christophe 2024-10-18 13:30 makefile
+
 </Terminal>
 
 <AlertBox variant="info" title="Skipping the files creation process">
@@ -374,12 +371,9 @@ For Linux users, simply take advantage of `GNU Make` and run the `make import` i
 For Windows (Powershell or DOS), please run these commands:
 
 <Terminal title="Powershell">
-mkdir db_data
-mkdir joomla_data
-copy en-GB.kickstart.ini joomla_data\
-copy kickstart.php joomla_data\
-copy backup.jpa joomla_data\
-docker compose up --detach
+  mkdir db_data mkdir joomla_data copy en-GB.kickstart.ini joomla_data\ copy
+  kickstart.php joomla_data\ copy backup.jpa joomla_data\ docker compose up
+  --detach
 </Terminal>
 
 For both users (Linux and Windows), you'll something like this output in the console:
@@ -395,9 +389,10 @@ For both users (Linux and Windows), you'll something like this output in the con
  => [joomla] resolving provenance for metadata file                        0.0s
 
 [+] Running 3/3
- ✔ Network running-joomla-in-docker_joomla_network  Created                0.0s
- ✔ Container joomla-db                              Healthy               31.0s
- ✔ Container joomla-app                             Started               31.3s
+✔ Network running-joomla-in-docker_joomla_network Created 0.0s
+✔ Container joomla-db Healthy 31.0s
+✔ Container joomla-app Started 31.3s
+
 </Terminal>
 
 When finished, just start your browser and surf to `http://127.0.0.1:8080/kickstart.php` to start the restoration of your website using the **Akeeba Kickstart** wizard.
@@ -408,7 +403,7 @@ Once you'll need to fill in the database information's, please refer to what was
 
 ![Restoring the database](./images/database.png)
 
-Continue restoration as you always have; close the window once Akeeba Kickstart ask for, then click on the *Clean Up* button; then on *Visit your site's frontend* and enjoy:
+Continue restoration as you always have; close the window once Akeeba Kickstart ask for, then click on the _Clean Up_ button; then on _Visit your site's frontend_ and enjoy:
 
 ![Site is restored](./images/site_is_restored.png)
 
@@ -425,9 +420,7 @@ All you need to do is retrieve a few configuration files, and just the one named
 
 You download the local backup of your site and, with a single command (`make import`), your site is restored.
 
-<Terminal>
-$ make import
-</Terminal>
+<Terminal>$ make import</Terminal>
 
 No matter what version of Joomla or MySQL you're using.
 

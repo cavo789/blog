@@ -1,9 +1,16 @@
-# cspell:ignore beautifulsoup4,repost,maintag
+# cspell:ignore beautifulsoup4,repost,maintag,oyaml
 
 SHELL:=bash
 
 # Load .env file if there is one (if none, no error will be fired)
 -include .env
+
+DOCKER_UID:=$(shell id -u)
+DOCKER_GID:=$(shell id -g)
+
+# If not defined on the command line, default to development
+# Use "TARGET=production make build" f.i. to switch to PROD and then build the PROD image
+TARGET ?= development
 
 # region - Helpers
 COLOR_RED=31
@@ -37,14 +44,30 @@ bash: ## Open an interactive shell in the Docker container
 	@printf $(_YELLOW) "Start an interactive shell in the Docker PROD container; type exit to quit"
 	docker run -it cavo789/blog:node /bin/sh
 
+# region: BUILD
 .PHONY: build
-build: _checkEnv ## Build the Docker image (tip: you can pass CLI flags to Docker using ARGS like f.i. ARGS="--progress=plain --no-cache").
-	@printf $(_YELLOW) "Build the Docker PROD image. You can add arguments like, f.i. ARGS=\"--progress=plain --no-cache\""
+build: _build-$(TARGET) ## Build dev/prod image. Use TARGET=production for production build, and pass CLI flags via ARGS like ARGS="--no-cache --progress=plain"
+
+# Build the DEV image i.e. using docker compose and with all our environment variables
+.PHONY: _build-development
+_build-development: _checkEnv
+	@printf $(_YELLOW) "-> Building DEVELOPMENT image using docker compose..."
+	@printf $(_WHITE) "Use 'TARGET=PRODUCTION make build' for the PRODUCTION image."
 	@echo ""
-    # Build the Docker image as a stand alone one. We can then publish it on hub.docker.com if we want to
-	docker build --tag cavo789/blog:node --target devcontainer ${ARGS} .
+	DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose build ${ARGS}
 	@echo ""
-	@printf $(_YELLOW) "Now, continue by running \"make up\"."
+	@printf $(_GREEN) "Development build finished. Now, continue by running \"make devcontainer\"."
+	@echo ""
+
+# Build the PROD image i.e. a light nginx image
+.PHONY: _build-production
+_build-production: _checkEnv
+	@printf $(_YELLOW) "-> Building PRODUCTION stand alone image..."
+	@echo ""
+	docker build --tag cavo789/blog:latest --target production ${ARGS} .
+	@echo ""
+	@printf $(_GREEN) "Production build finished. You can now publish this image."
+# endregion
 
 .PHONY: config
 config: ## Show the Docker configuration
@@ -78,18 +101,30 @@ remove: ## Remove the image
     # Don't remove these files / folders so the next build won't download anymore dependencies
     # @rm -rf node_modules *.lock package-lock.json
 
-.PHONY: start
-start: ## Start the local web server and open the webpage
-	@printf $(_YELLOW) "Open the PROD blog (https://localhost:${PORT})"
-	@sensible-browser https://localhost:${PORT}
 
+
+# region: UP
 .PHONY: up
-up: ## Create the Docker container
-	@printf $(_YELLOW) "Create the Docker PROD container"
+up: _up-$(TARGET) ## Create the Docker container. Use TARGET=production for production
+
+.PHONY: _up-development
+_up-development:
+	@printf $(_YELLOW) "-> No need to create the container; just run 'make devcontainer' instead."
+	@printf $(_WHITE) "Use 'TARGET=production make up' to start the PRODUCTION environment."
 	@echo ""
+
+.PHONY: _up-production
+_up-production:
+	@printf $(_YELLOW) "-> Create the PRODUCTION stand alone image..."
+	@echo ""
+	@-docker stop blog > /dev/null 2>&1 || true
+	@-docker rm blog > /dev/null 2>&1 || true
 	docker run -d --publish 443:443 --name blog cavo789/blog:latest
 	@echo ""
-	@printf $(_YELLOW) "Now, continue by running \"make start\"."
+	@printf $(_YELLOW) "Open the PROD blog (https://localhost:${PORT})"
+# endregion
+
+
 
 .PHONY: push
 push: ## Push the image on Docker hub (only when TARGET=production in .env)

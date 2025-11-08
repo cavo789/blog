@@ -10,6 +10,7 @@ tags: [api, docker, fastapi, python]
 language: en
 blueskyRecordKey: 3lwgccocnws2i
 ---
+<!-- cspell:ignore Nodidju,pussibe -->
 ![Python - Fast API - Create your JSON API in Python in one minute](/img/v2/api.webp)
 
 > TLDR: one minute is the time you'll need to copy/paste two files' content and to run one Docker statement.

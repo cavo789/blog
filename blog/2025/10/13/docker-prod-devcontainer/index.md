@@ -10,7 +10,7 @@ tags: [devcontainer, docker, tips]
 language: en
 blueskyRecordKey: 3m32ko2ssss2z
 ---
-<!-- cspell:ignore groupid,Debugpy -->
+<!-- cspell:ignore groupid,Debugpy,johndoe -->
 
 ![One Docker Image for Production and Devcontainers - The Clean Way](/img/v2/docker_workflow_prod_devcontainer.webp)
 
@@ -228,7 +228,7 @@ In case we need some more configuration items, let's create the `.devcontainer/.
 
 #### The .devcontainer/Dockerfile file
 
-One of the most important file is the `.devcontainer/Dockerfile` where we'll add extra things (Linux dependendies, Python libraries, ...) to allow us to have a better development experience.
+One of the most important file is the `.devcontainer/Dockerfile` where we'll add extra things (Linux dependencies, Python libraries, ...) to allow us to have a better development experience.
 
 <Snippet filename="/tmp/docker-prod-devcontainer/.devcontainer/Dockerfile" source="./files/.devcontainer/Dockerfile" />
 
@@ -298,7 +298,7 @@ In VSCode, to be able to run a `Devcontainer:` command (from the **Command Palet
 
 <Snippet filename="/tmp/docker-prod-devcontainer/.devcontainer/devcontainer.json" source="./files/.devcontainer/devcontainer.json" />
 
-1. We've to use the `dockerComposeFile` item to load our two `compose.yaml` files i.e. the one of the root (the prod one) and the one from the `.devcontainer` folder. This is needed because we just need to extend the production `compose.yaml` file. We'll reuse all services and keys defined in `../compose.yaml` and just add (extend) or update (override) somes.
+1. We've to use the `dockerComposeFile` item to load our two `compose.yaml` files i.e. the one of the root (the prod one) and the one from the `.devcontainer` folder. This is needed because we just need to extend the production `compose.yaml` file. We'll reuse all services and keys defined in `../compose.yaml` and just add (extend) or update (override) some.
 2. We need to tell to VSCode which folder should be open in our VSCode Devcontainer session, it has to be `/app` (has to match the `APP_HOME` variable from `.devcontainer/compose.yaml`)),
 3. We'll define our remoteUser name, it'll be `vscode` (has to match the `OS_USERNAME` variable from `.devcontainer/compose.yaml`),
 4. We'll also add a `GIT_SSH_COMMAND` environment variable. This is optional but it'll allow us to run a `git` command (like `git pull`) from inside our devcontainer,

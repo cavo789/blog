@@ -10,7 +10,7 @@ tags: [bash, linux, tips]
 language: en
 blueskyRecordKey: 3m2sz4hqz322z
 ---
-<!-- cspell:ignore bashpid, pids, nproc -->
+<!-- cspell:ignore bashpid, pids, nproc,ephase  -->
 <!-- markdownlint-disable MD022,MD025 -->
 
 ![Linux - Using a progression bar in your script](/img/v2/linux_progress_bar.webp)

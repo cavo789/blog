@@ -5,12 +5,17 @@
   "MD007": { "indent": 2 },
   "MD013": false,
   "MD033": {
-      "allowed_elements": [
-          "details",
-          "kbd",
-          "summary",
-          "snippets"
-      ]
+    "allowed_elements": [
+      "alertbox",
+      "browserwindow",
+      "details",
+      "highlight",
+      "kbd",
+      "link",
+      "summary",
+      "snippet",
+      "terminal"
+    ]
   },
   "MD034": false,
   "no-hard-tabs": true,

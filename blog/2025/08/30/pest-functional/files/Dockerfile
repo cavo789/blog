@@ -1,3 +1,5 @@
+# cspell:disable
+
 # syntax=docker/dockerfile:1.4
 
 ARG PHP_CLI_VERSION=8.3-cli
