@@ -4,13 +4,18 @@ title: Encapsulate an entire Docusaurus site in a Docker image
 date: 2024-04-28
 description: Deploy your Docusaurus documentation site in production with Docker. Follow this step-by-step guide on creating a highly efficient, multi-stage Docker image.
 authors: [christophe]
-image: /img/v2/docusaurus_tips.webp
+image: /img/v2/docusaurus_using_docker.webp
+series: Running Docusaurus using Docker
 mainTag: docusaurus
 tags: [docker, docusaurus, nodejs, yarn]
 language: en
 ---
 <!-- cspell::ignore corepack,docusaurus,johndoe -->
 ![Encapsulate an entire Docusaurus site in a Docker image](/img/v2/docusaurus_tips.webp)
+
+<AlertBox variant="important" title="This article is deprecated">
+This article has been recently reviewed, please read [Running Docusaurus using Docker](/blog/running-docusaurus-with-docker) instead.
+</AlertBox>
 
 Started on 2 November 2023, this article is already the hundredth I've published on this blog. To mark the occasion, I wanted to do something a bit special to honor the blog. What better way than to build a **100% Docker version**, i.e. in the form of a downloadable Docker image that **you can run with a single command line**.
 

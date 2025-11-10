@@ -28,7 +28,8 @@
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-icons": "^5.5.0",
-        "react-medium-image-zoom": "^5.4.0"
+        "react-medium-image-zoom": "^5.4.0",
+        "sharp": "^0.34.5"
     },
     "devDependencies": {
         "@docusaurus/module-type-aliases": "^3.9.2",

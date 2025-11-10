@@ -13,7 +13,7 @@ date: 2025-09-30
 
 Over the last few days, I've needed to propose a database schema, and a colleague showed me [dbdiagram.io](https://dbdiagram.io/) with a proposal of his own. It's a really cool and easy tool.
 
-In the free version we were not able to collaborate, but all you have to do is create a new project, copy/paste the pseudo-code from the colleague and you're off.
+In the free version we were not able to collaborate, but all you have to do is create a new project, copy/paste the pseudocode from the colleague and you're off.
 
 The aim of this article is to share a personal experience which, thanks to AI, has enabled me to create even the Python code for my tables.
 
@@ -25,7 +25,7 @@ Jump to [https://dbdiagram.io/d](https://dbdiagram.io/d) and unfold the left pan
 
 By just opening the website, you'll immediately get an example. It's a very easy language.
 
-In the example below, let's create three tables: we'll create a web interface and we need a `users` table, a `groups` one and a `users_groups`. We'll define fields for sure but also constraints, relations and foresee a comment for each field:
+In the example below, let's create three tables: we'll create a web interface, and we need a `users` table, a `groups` one and a `users_groups`. We'll define fields for sure but also constraints, relations and foresee a comment for each field:
 
 <Snippet filename="dbdiagram.txt">
 
@@ -157,7 +157,7 @@ Since I'm using [SqlAlchemy](https://www.sqlalchemy.org/), I should do this:
 * For each table in my database, I need to create a [model](https://docs.sqlalchemy.org/en/20/orm/quickstart.html#declare-models)
 * For each table I also need to create a [Pydantic](https://docs.pydantic.dev/latest/) file to make data validation easier.
 
-What I want: since it's a one-shot and not a core feature of my project, I would appreciate to not lose time here. I would like to, by some magic hand, my generated `.sql` file can be processed and *translated* in Python code. I want to be able to work on dbdiagram.io again to make some fine-tuning and hocus pocus, generate the Python files again ... and again.
+What I want: since it's a one-shot and not a core feature of my project, I would appreciate to not lose time here. I would like to, by some magic hand, my generated `.sql` file can be processed and *translated* in Python code. I want to be able to work on dbdiagram.io again to make some fine-tuning and hocus-pocus, generate the Python files again ... and again.
 
 In short: I would appreciate that some AI will generate a helper for this single task. I would like to get a Python script f.i. that I can run on my dev machine (only; not on the server!).
 

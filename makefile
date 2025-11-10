@@ -31,22 +31,29 @@ _checkEnv:
 help: ## Show the help with the list of commands
 	@clear
 	@printf $(_WHITE) "List of commands to work with the Blog published on https://www.avonture.be"
-	@printf $(_WHITE) "Retrieve the last version on https://github.com/cavo789/blog"
 
 
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-25s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 	@echo ""
 
-##@ Blog                    Blog helpers (Note: the behavior will differs depending on the TARGET variable set in your .env file).
+##@ Blog                    Blog helpers (!!  Use TARGET=production for production actions !!)
 
 .PHONY: bash
-bash: ## Open an interactive shell in the Docker container
+bash: _bash-$(TARGET)  ## Open an interactive shell in the Docker container
+
+.PHONY: _bash-development
+_bash-development:
+	@printf $(_YELLOW) "Start an interactive shell in the Docker DEVELOPMENT container; type exit to quit"
+	docker compose run --rm docusaurus /bin/bash
+
+.PHONY: _bash-production
+_bash-production:
 	@printf $(_YELLOW) "Start an interactive shell in the Docker PROD container; type exit to quit"
 	docker run -it cavo789/blog:node /bin/sh
 
 # region: BUILD
 .PHONY: build
-build: _build-$(TARGET) ## Build dev/prod image. Use TARGET=production for production build, and pass CLI flags via ARGS like ARGS="--no-cache --progress=plain"
+build: _build-$(TARGET) ## Build dev/prod image. You can pass CLI flags via ARGS like ARGS="--no-cache"
 
 # Build the DEV image i.e. using docker compose and with all our environment variables
 .PHONY: _build-development
@@ -80,9 +87,16 @@ devcontainer: ## Open the blog in Visual Studio Code in devcontainer
 	code .
 
 .PHONY: down
-down: ## Stop the container
+down: _down-$(TARGET) ## Stop the container
+
+.PHONY: _down-development
+_down-development:
 	docker run --rm -it --user root -v $${PWD}/:/project -w /project node /bin/bash -c "yarn run clear"
 	docker compose down
+
+.PHONY: _down-production
+_down-production:
+	@docker stop blog > /dev/null 2>&1 || true
 
 .PHONY: logs
 logs: ## Show the log of Docusaurus
@@ -92,7 +106,10 @@ logs: ## Show the log of Docusaurus
 	@docker logs --follow docusaurus
 
 .PHONY: remove
-remove: ## Remove the image
+remove: _remove-$(TARGET) ## Remove the image
+
+.PHONY: _remove-development
+_remove-development:
     #--volumes
 	docker compose down --remove-orphans --rmi all
     #-docker image rmi blog-docusaurus
@@ -100,12 +117,15 @@ remove: ## Remove the image
 	@rm -rf .docusaurus
     # Don't remove these files / folders so the next build won't download anymore dependencies
     # @rm -rf node_modules *.lock package-lock.json
+	@echo ""
 
-
+.PHONY: _remove-production
+_remove-production: _down-production
+	@docker rmi --force cavo789/blog:latest
 
 # region: UP
 .PHONY: up
-up: _up-$(TARGET) ## Create the Docker container. Use TARGET=production for production
+up: _up-$(TARGET) ## Create the Docker container.
 
 .PHONY: _up-development
 _up-development:
@@ -124,34 +144,11 @@ _up-production:
 	@printf $(_YELLOW) "Open the PROD blog (https://localhost:${PORT})"
 # endregion
 
-
-
 .PHONY: push
 push: ## Push the image on Docker hub (only when TARGET=production in .env)
     # Make sure you're already logged in on docker.com, if not run "docker login" and proceed to make an authentication.
 	docker build --tag cavo789/blog:latest --target final ${ARGS} .
  	docker image push cavo789/blog:latest
-
-##@ Data quality            Code analysis
-
-# .PHONY: lint
-# lint: ## Lint markdown files
-# 	@printf $(_YELLOW) "Lint markdown files"
-# 	docker run --rm -it --user ${DOCKER_UID}:${DOCKER_GID}) -v $${PWD}:/md peterdavehello/markdownlint markdownlint --fix --config .config/.markdownlint.json --ignore-path .config/.markdownlint_ignore .
-
-# .PHONY: spellcheck
-# spellcheck: ## Check for spell checks errors (https://github.com/streetsidesoftware/cspell)
-# 	@printf $(_YELLOW) "Run spellcheck"
-# 	docker run --rm -it --user ${DOCKER_UID}:${DOCKER_GID}) -v $${PWD}:/src -w /src ghcr.io/streetsidesoftware/cspell:latest lint . --unique --gitignore --quiet --no-progress --config .vscode/cspell.json
-
-.PHONY: upgrade
-upgrade: ## Upgrade docusaurus and npm dependencies
-	@clear
-	@printf $(_YELLOW) "Upgrade docusaurus and npm dependencies"
-	docker run --rm -it --user root -v $${PWD}/:/project -w /project node /bin/bash -c "yarn upgrade"
-	docker run --rm -it --user root -v $${PWD}/:/project -w /project node /bin/bash -c "yarn upgrade @docusaurus/core@latest @docusaurus/plugin-ideal-image@latest @docusaurus/plugin-sitemap@latest @docusaurus/preset-classic@latest @docusaurus/theme-search-algolia@latest @docusaurus/module-type-aliases@latest @docusaurus/types@latest"
-	@printf $(_YELLOW) "Current version of docusaurus"
-	docker run --rm -it -v $${PWD}/:/project -w /project node /bin/bash -c "npx docusaurus -V"
 
 ##@ Utilities
 

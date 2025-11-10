@@ -3,35 +3,25 @@
   "service": "docusaurus",
   "dockerComposeFile": ["../.devcontainer/compose.yaml"],
   "workspaceFolder": "/opt/docusaurus",
-  // "features": {
-  //   "ghcr.io/devcontainers/features/docker-in-docker:2": {
-  //     "version": "latest",
-  //     "enableNonRootDocker": "host"
-  //   }
-  // },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "enableNonRootDocker": "host"
+    }
+  },
   "mounts": [
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
-    "source=docusaurus-build,target=/opt/docusaurus/.docusaurus,type=volume",
-    "source=node_modules,target=/opt/docusaurus/node_modules,type=volume",
-    "source=yarn-cache,target=/home/vscode/.cache/yarn/v6,type=volume"
+    "source=yarn-cache,target=/usr/local/share/.cache/yarn/v6"
   ],
   "portsAttributes": {
     "3000": {
       "onAutoForward": "openBrowser",
       "label": "Docusaurus Blog"
-    },
-    "8010": {
-      "label": "LanguageTool"
     }
   },
-  "forwardPorts": [3000, 8010],
-  "containerEnv": {
-    "GIT_SSH_COMMAND": "ssh -i /home/vscode/.ssh/id_ed25519 -o 'UserKnownHostsFile=/dev/null'",
-    "YARN_CACHE_FOLDER": "/home/vscode/.cache/yarn/v6"
-  },
+  "forwardPorts": [3000],
   "initializeCommand": "mkdir -p .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
   "postCreateCommand": "/opt/docusaurus/.devcontainer/bootstrap.sh",
-
   "remoteUser": "vscode",
   "containerUser": "vscode",
   "customizations": {
@@ -71,9 +61,6 @@
         "files.defaultLanguage": "markdown",
         "files.insertFinalNewline": true,
         "files.trimTrailingWhitespace": true,
-        "languageToolLinter.languageTool.motherTongue": "en",
-        "languageToolLinter.languageTool.language": "en",
-        "languageToolLinter.external.url": "http://172.17.0.1:8010",
         "markdownlint.configFile": ".config/.markdownlint.json",
         "markdownlint.fixOnSave": true,
         "sonarlint.disableTelemetry": true,
@@ -90,17 +77,17 @@
         "workbench.startupEditor": "terminal"
       },
       "extensions": [
+        "Codeium.codeium",
         "DavidAnson.vscode-markdownlint",
-        "davidlday.languagetool-linter",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "GitHub.vscode-github-actions",
-        "ms-vscode.makefile-tools",
         "shd101wyy.markdown-preview-enhanced",
         "streetsidesoftware.code-spell-checker-british-english",
         "streetsidesoftware.code-spell-checker-french",
         "streetsidesoftware.code-spell-checker",
         "TomasDahlqvist.markdown-admonitions",
+        "ms-vscode.makefile-tools",
         "usernamehw.errorlens",
         "usernamehw.errorlens",
         "yzhang.markdown-all-in-one"

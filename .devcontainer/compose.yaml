@@ -1,3 +1,5 @@
+# cspell:ignore erikvl87,langtool,ngrams
+
 services:
   docusaurus:
     build:
@@ -12,10 +14,28 @@ services:
       - .env
     volumes:
       - ..:${APP_HOME:-/opt/docusaurus}
-      - vscode-extensions:/home/vscode/.vscode-server/extensions
       - ./history/.bash_history:/home/vscode/.bash_history:rw
+      - node_modules:/opt/docusaurus/node_modules
+      - vscode-extensions:/home/vscode/.vscode-server/extensions
+      - yarn-cache:/home/vscode/.cache/yarn/v6
 
     command: sleep infinity
 
+  languagetool:
+    image: erikvl87/languagetool
+    container_name: LanguageTool
+    restart: always
+    ports:
+      - 8010:8010
+    environment:
+      - langtool_languageModel=/ngrams
+      - Java_Xms=512m
+      - Java_Xmx=1g
+    volumes:
+      - ngrams:/ngrams
+
 volumes:
+  ngrams:
+  node_modules:
   vscode-extensions:
+  yarn-cache:

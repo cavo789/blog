@@ -11,11 +11,9 @@ services:
     ports:
       - "443:443"
     volumes:
-      - docusaurus-build:/opt/docusaurus/.docusaurus
       - yarn-cache:/home/vscode/.cache/yarn/v6
 
     command: sleep infinity
 
 volumes:
-  docusaurus-build:
   yarn-cache:

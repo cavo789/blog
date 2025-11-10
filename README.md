@@ -14,39 +14,30 @@ Start a console and run `cd ~ && git clone https://github.com/cavo789/blog.git &
 
 Then run `make install` to install dependencies.
 
-*If you don't have `make` on your computer, please run  `sudo apt-get update && sudo apt-get -y install make` .*
+*If you don't have `make` on your computer, please run `sudo apt-get update && sudo apt-get -y install make`.*
 
 ## Build, run and start the blog in production mode
 
-Make sure to initialize the `.env` with `MODE=production`.
+Just run `TARGET=production make build` to create the Docker image then `TARGET=production make up` to run a container based on that image.
 
-Run `make build && make up && make start` on your local machine to build the Docker image, create the container and open your browser and start to surf on the blog locally.
+This done, the site is now running, and you can access to it using `https://localhost`. *If you don't have the site running, please wait a little and refresh the page. Sometimes it helps to create a new browser tab and surf to `https://localhost` again.*
 
-In this mode (`MODE=production`), Docker will create a self-container image and container too without any sharing with your host machine.
-
-This mode is near what you'll have on your production server and use fast mechanism to deliver files.
+If you want to remove the image later on, just run `TARGET=production make remove` and that's all.
 
 ## Build, run and open the blog as a developer
 
-Make sure to initialize the `.env` with `MODE=development`.
-Run `make build && make up && make start && make devcontainer` on your local machine to build the Docker image, create the container and open Visual Studio Code so you can start to create new articles.
+This time, please run `make build && make devcontainer`. Once in VSCode, press <kbd>F1</kbd> and select the option **Dev Containers: Rebuild without cache and Reopen in Container**.  *If you don't have this command, please make sure to install the VSCode [Dev Container from Microsoft](https://marketplace.visualstudio.com/publishers/Microsoft).*
 
-In this mode (`MODE=development`), Docker will listen changes you'll do on your computer and will reflect changes automatically in the Docker container. You just need to refresh the web page to get the latest version.
+Wait until the devcontainer is fully created then so to `https://localhost:3000` to surf on the site.
 
-This mode is suitable for adding new articles.
+This is the development i.e. if you make changes to VSCode files, they will be reflected in your browser.
 
 ## Bash console
 
-Run `( export MODE=prod && make bash )` or `( export MODE=dev && make bash )` if you need to start an interactive console in the Docker container.
+Depending on if you're working with the production image or with devcontainer, please run `TARGET=production make bash` (for the production image) or just `make bash` for the devcontainer.
 
-This is the case when, f.i., you will need to run a `npm` (or `yarn`) command like `yarn add @cmfcmf/docusaurus-search-local`.
-
-## Open the blog on your machine
-
-Just run `( export MODE=prod && make start )` or `( export MODE=dev && make start )` to start the Docusaurus watcher and open the local website.
-
-Once started, every changes done in the blog will be reflected to the browser without reloading.
+You'll then start an interactive console in the Docker container.
 
 ### Deployment
 
-For this repository, the deployment is made using GitHub actions. By pushing changes to github, there is a `CI/CD` pipeline who'll be started by GitHub, download NodeJs, run `yarn build` and, once HTML files have been generated in the `build` folder, a FTP copy job will copy every files from GitHub to the host where the blog is running.
+For this repository, the deployment is made using GitHub actions. By pushing changes to GitHub, there is a `CI/CD` pipeline who'll be started by GitHub, download Node, run `yarn build` and, once HTML files have been generated in the `build` folder, an FTP copy job will copy every file from GitHub to the host where the blog is running.

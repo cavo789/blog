@@ -11,6 +11,11 @@
     "**/node_modules/**": true
   },
   "files.autoSave": "onFocusChange",
+  "languageToolLinter.languageTool.motherTongue": "en",
+  "languageToolLinter.languageTool.language": "en",
+  "languageToolLinter.external.url": "http://172.17.0.1:8010",
+  "languageToolLinter.serviceType": "external",
+  "workbench.startupEditor": "terminal",
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#8be959",
     "activityBar.background": "#8be959",
@@ -42,5 +47,6 @@
       "start": "^# region",
       "end": "^# endregion"
     }
-  }
+  },
+  "cSpell.words": ["NOPASSWD"]
 }

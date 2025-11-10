@@ -22,6 +22,7 @@ autologin
 automagically
 avonture
 azuretools
+balena
 bashhistory
 behat
 belgique
@@ -193,6 +194,7 @@ libzip
 licence
 limesurvey
 livewire
+lockfiles
 logfile
 ltrim
 makefiles
@@ -448,3 +450,4 @@ yoursite
 yzhang
 zobo
 zokugun
+Zorin
