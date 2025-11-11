@@ -9,7 +9,7 @@ mainTag: Docusaurus
 series: Running Docusaurus using Docker
 tags: [devcontainer, docker, docusaurus, nodejs, vscode, yarn]
 language: en
-blueskyRecordKey:
+blueskyRecordKey: 3m5ec6d4zn22x
 ---
 ![Running Docusaurus using Docker](/img/v2/docusaurus_using_docker.webp)
 
