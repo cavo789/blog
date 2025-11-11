@@ -13,13 +13,17 @@ blueskyRecordKey:
 ---
 ![Running Docusaurus using Docker](/img/v2/docusaurus_using_docker.webp)
 
-18 months ago, I've written [Encapsulate an entire Docusaurus site in a Docker image](/blog/docker-docusaurus-prod) to explain how I maintain this blog using VSCode, Docker and Docusaurus.
+Streamline your Docusaurus workflow with a clean, reproducible setup. In this updated guide, you'll learn how to maintain a Docusaurus blog using a single Docker image, VSCode DevContainers, and a workflow that makes both production builds and day-to-day writing fast and reliable.
 
-It's time to revisit this approach and improve it. Indeed, recently I worked on a more robust approach about production versus development (see [One Docker Image for Production and Devcontainers - The Clean Way](/blog/docker-prod-devcontainer)).
+Eighteen months ago, I've published [Encapsulate an entire Docusaurus site in a Docker image](/blog/docker-docusaurus-prod) but, since then, I've refined the approach, especially around separating **production** and **development** environments cleanly (see [One Docker Image for Production and Devcontainers - The Clean Way](/blog/docker-prod-devcontainer)).
 
-So from now on, for this blog, I'll run `make build` just once to create my base Docker image and the only thing I've to run is `make devcontainer` to jump in my VSCode editor and *let's VSCode to create my container with everything in place*. I've just need to wait a few seconds before being able to work on my blog.
+With this setup:
 
-Let's see this in detail.
+* You run `make build` once to create a base Docker image.
+* You launch your editing environment with `make devcontainer`.
+* VSCode automatically builds and opens an isolated container with everything configured.
+
+Let’s walk through the complete workflow.
 
 <!-- truncate -->
 
@@ -27,41 +31,40 @@ Let's see this in detail.
   title="What we'll learn here:"
   variant="steps"
   steps={[
-    "First, we'll retrieve a Docusaurus blog,",
-    "Then we'll create a Docker image to run the blog",
-    "And finally we'll open VSCode using the *devcontainer* feature.",
-    "And to prove it's so cool, we'll use LanguageTool which provides basic grammar and spellchecking for your posts."
+    "Retrieve a Docusaurus blog,",
+    "Create a Docker image to run the blog",
+    "Open the project in VSCode using DevContainers",
+    "Enhance the environment with extensions like LanguageTool, Code Spell Checker or Markdown lint."
   ]}
 />
 
 ## Retrieve a Docusaurus blog
 
-If you already have a blog, just skip this chapter. For learning purposes, we'll use the blog of a friend, [Docux](http://docuxlab.com/).
+If you already have a Docusaurus blog, just skip this chapter. For demonstration purposes, we'll use my friend's blog, [Docux](http://docuxlab.com/) who is publishing very useful Docusaurus components and plugins.
 
-Please run the command below to get a copy of his blog and jump in it.
+Grab a copy of his blog by running commands below:
 
 <Terminal wrap={true}>
 $ cd /tmp && git clone git@github.com:Juniors017/docux-blog.git && cd docux-blog
 </Terminal>
 
-## Create the Docker base image
+## Create the base Docker image
 
-Now, if you're not familiar with Docusaurus comes the question: how can I just run the blog on my computer?
+If you're new to Docusaurus, you might wonder: *How can I just run the blog locally?*. The fast answer is: by running a self-contained Docker image and we'll learn that in this chapter.
 
-Let's create a self-container Docker image.
+Please first open VSCode by running `code .`:
 
-Please first open VSCode by running `code .`
 <Terminal wrap={true}>
 $ code .
 </Terminal>
 
-VSCode will open the current project and you'll see something like this:
+You should now see the project structure in your editor.
 
 ![The blog opened in VSCode](./images/initial_after_clone.webp)
 
-### Let's create a few files
+### Create required files
 
-Please create the following files in the root folder of the project:
+In the root of the project, create the following files:
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
@@ -75,29 +78,35 @@ Please create the following files in the root folder of the project:
 
 <Snippet filename="nginx.conf" source="./files/nginx.conf" />
 
-### Running make actions
+### Build and run the production image
 
-Ok, once you've copied/pasted these files, in a console, you'll be able to run `make` and you'll get a screen like this:
+Once the files are in place, in a console, please run `make` and you'll get a screen like this:
 
 ![Getting the list of targets](./images/make_help.webp)
 
-If you get an error, please make sure to first install `make`:
+If `make` isn't yet installed on your machine, you'll get an error so please make sure to first install `make`:
 
 <Terminal wrap={true}>
 $ sudo apt-get update && sudo apt-get install make
 </Terminal>
 
-Ok, now we've to run two commands:
+Now we've to run two commands, the first one will create a Docker image for production i.e. where everything is included in the image.
 
 <Terminal wrap={true}>
 $ TARGET=production make build
-
-...
-
-$ TARGET=production make up
-
-...
 </Terminal>
+
+You'll get a screen like this one and you'll have to wait something like 80 seconds until the image is built.
+
+![Running make build for PROD](./images/make_build.webp)
+
+This done, please run the second command to create a running instance of the image i.e. a container:
+
+<Terminal wrap={true}>
+$ TARGET=production make up
+</Terminal>
+
+This will be very fast and you'll see on the console a message telling `Open the PROD blog (https://localhost)`.
 
 And you know what? It's already done: just surf to `https://localhost` and be surprised, the blog is running.
 
@@ -111,23 +120,19 @@ We've created the final image by using nginx and by copying static files created
 By running `TARGET=production make up` we've created a running instance (called `container`) of that image and we've ask our operating system to access the container on port `443` (the one of the `https` protocol). That's why, if we access to `https://localhost` we've running the website.
 </AlertBox>
 
-## Using Devcontainer
+## Using DevContainers for Development
 
-That's so great but, ok, it's the production image but right now, I want to open my blog and add a new article, edit existing ones, ... how can I do?
+Building the production image is nice and helpful if you want to publish it on Docker Hub, but we also need a smooth editing workflow. Using VS Code DevContainers, we get a fully isolated environment tailored for Docusaurus.
 
-For sure, we can do it in any editor then run `TARGET=production make build && TARGET=production make up` every single time we want to refresh our image.
+First, run `make build` (notice, we don't specify `TARGET=production` here). It'll be extremely fast since everything was already created before.
 
-It can be a solution when you've a small blog but that's not really the way to do.
+Next, run `make devcontainer` to open VSCode and nothing happens right now: it's normal, we need to create additional files.
 
-Just run `make build` (notice, we don't specify `TARGET=production` here) once. It'll be extremely fast since everything was already created before.
-
-<AlertBox variant="caution" title="You've to run 'make build'">
-Please don't forget to run `make build` right now to build your Docker image for development. If you miss this command, you'll get an error while starting the devcontainer feature.
+<AlertBox variant="tip" title="Run both in one command">
+Under Linux, you can run `make build && make devcontainer` to run both in just one command.
 </AlertBox>
 
-Now, run `make devcontainer` to open VSCode and nothing happens right now: it's normal, we need to create additional files.
-
-### Let's create a .devcontainer folder
+### Create the .devcontainer folder
 
 We'll need to create a new `.devcontainer` folder with a few files:
 
@@ -153,7 +158,13 @@ Since we've two bash scripts, we need to make them executable. Please run this c
 $ chmod +x .devcontainer/bootstrap.sh .devcontainer/bash_helpers.sh
 </Terminal>
 
-Once done, please press <kbd>F1</kbd> to open the **Command Palette** and run **Dev Containers: Rebuild and Reopen in Container**.
+Now we've to open the devcontainer so please run:
+
+<Terminal wrap={true}>
+$ make build && make devcontainer
+</Terminal>
+
+Once in VSCode, please press <kbd>F1</kbd> to open the **Command Palette** and run **Dev Containers: Rebuild Without Cache and Reopen in Container**.
 
 <AlertBox variant="note" title="Don't have it?">
 If you don't have this command, please make sure to install the VSCode [Dev Container from Microsoft](https://marketplace.visualstudio.com/publishers/Microsoft).
@@ -220,7 +231,21 @@ Let's see one of the many advantages: instead of *just using VSCode to write our
 
 And you know what? You already have it. See your `.devcontainer/compose.yml` file. You'll see a service called `languagetool` based on a Docker image called **erikvl87/languagetool**. And now, see your `.devcontainer/devcontainer.json` file. Search for **languageToolLinter** and you'll see a local URL (based on an IP); this is the one exposed by the service. And look further for the **davidlday.languagetool-linter** extension, this is the one who'll make the magic happens.
 
-Hey! Did you see? By using the devcontainer feature, you've received a predefined environment where you'll have a few tools already installed, like the **Code spell checker** too (search for extensions **streetsidesoftware**). This is one of the biggest advantage to work with devcontainer.
+Here an example of how LanguageTool will works:
+
+![LanguageTool in action](./images/language_tool_in_action.webp)
+
+For sure, the correct sentence should be *This example illustrates LanguageTool in action*.
+
+## Code Spell Checker
+
+Here another example, a mistake a French speaking people can do by inadvertance:
+
+![The word example is misspelled](./images/example_is_misspelled.webp)
+
+Here, the extension used is *Code Spell Checker* from **streetsidesoftware**.
+
+## Markdown lint
 
 And perhaps, while you'll write your Markdown content, VSCode will show you errors displayed in orange like `MD047/single-training-newline` to tells you you've forgot to add an empty line at the very bottom of the file.
 

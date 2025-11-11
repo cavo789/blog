@@ -1,11 +1,13 @@
 #!/bin/bash
 
-BASHRC="/home/${OS_USERNAME:-vscode}/.bashrc"
+BASHRC="/home/${OS_USERNAME:-node}/.bashrc"
 MARKER="# DEV CONTAINER WELCOME MESSAGE"
 
 if ! grep -qxF "$MARKER" "$BASHRC"; then
     cat <<EOF >> "$BASHRC"
 $MARKER
+
+BLOG_HOST_DIR='${BLOG_HOST_DIR}'
 
 alias ls='ls -alh'
 alias upgrade='yarn upgrade && yarn upgrade @docusaurus/core@latest @docusaurus/plugin-ideal-image@latest @docusaurus/plugin-sitemap@latest @docusaurus/preset-classic@latest @docusaurus/theme-search-algolia@latest @docusaurus/module-type-aliases@latest @docusaurus/types@latest'

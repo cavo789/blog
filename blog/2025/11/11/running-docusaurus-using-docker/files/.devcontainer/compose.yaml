@@ -7,8 +7,8 @@ services:
       dockerfile: Dockerfile
       args:
         - APP_HOME=${APP_HOME:-/opt/docusaurus}
-        - OS_USERID=${OS_USERID:-1000}
-        - OS_GROUPID=${OS_GROUPID:-1000}
+        - OS_USERID=${OS_USERID:-1002}
+        - OS_GROUPID=${OS_GROUPID:-1002}
     container_name: my_blog
     env_file:
       - .env
@@ -17,9 +17,7 @@ services:
       - ./history/.bash_history:/home/node/.bash_history:rw
       - node_modules:/opt/docusaurus/node_modules
       - vscode-extensions:/home/node/.vscode-server/extensions
-      - yarn-cache:/home/node/.cache/yarn/v6
-    tmpfs:
-      - /opt/docusaurus/.docusaurus
+
     command: sleep infinity
 
   languagetool:
@@ -39,4 +37,3 @@ volumes:
   ngrams:
   node_modules:
   vscode-extensions:
-  yarn-cache:

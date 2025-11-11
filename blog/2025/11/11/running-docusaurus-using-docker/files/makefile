@@ -27,13 +27,10 @@ default: help
 .PHONY: help
 help: ## Show the help with the list of commands
 	@clear
-	@printf $(_WHITE) "List of commands to work with the Blog published on https://www.avonture.be"
-
-
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-25s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 	@echo ""
 
-##@ Blog                    Blog helpers (!!  Use TARGET=production for production actions !!)
+##@ Blog                    Blog helpers (!!  For production, please always add "TARGET=production" before like "TARGET=production make build" !!)
 
 .PHONY: bash
 bash: _bash-$(TARGET)  ## Open an interactive shell in the Docker container
@@ -46,18 +43,27 @@ _bash-development:
 .PHONY: _bash-production
 _bash-production:
 	@printf $(_YELLOW) "Start an interactive shell in the Docker PROD container; type exit to quit"
-	docker run -it me/blog:node /bin/sh
+	docker run -it my/blog:node /bin/sh
 
 # region: BUILD
 .PHONY: build
 build: _build-$(TARGET) ## Build dev/prod image. You can pass CLI flags via ARGS like ARGS="--no-cache"
 
 # Build the DEV image i.e. using docker compose and with all our environment variables
+# Pre-create folders to avoid permission problems while building devcontainer
 .PHONY: _build-development
 _build-development:
 	@printf $(_YELLOW) "-> Building DEVELOPMENT image using docker compose..."
 	@printf $(_WHITE) "Use 'TARGET=PRODUCTION make build' for the PRODUCTION image."
 	@echo ""
+	@if [ ! -d ".docusaurus" ]; then \
+		printf $(_YELLOW) "-> Creating .docusaurus directory on host..."; \
+		mkdir -p .docusaurus; \
+	fi
+	@if [ ! -d "node_modules" ]; then \
+		printf $(_YELLOW) "-> Creating node_modules directory on host..."; \
+		mkdir -p node_modules; \
+	fi
 	DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose build ${ARGS}
 	@echo ""
 	@printf $(_GREEN) "Development build finished. Now, continue by running \"make devcontainer\"."
@@ -68,7 +74,7 @@ _build-development:
 _build-production:
 	@printf $(_YELLOW) "-> Building PRODUCTION stand alone image..."
 	@echo ""
-	docker build --tag me/blog:latest --target production ${ARGS} .
+	docker build --tag my/blog:latest --target production ${ARGS} .
 	@echo ""
 	@printf $(_GREEN) "Production build finished. You can now publish this image."
 # endregion
@@ -106,7 +112,7 @@ _remove-development:
 
 .PHONY: _remove-production
 _remove-production: _down-production
-	@docker rmi --force me/blog:latest
+	@docker rmi --force my/blog:latest
 
 # region: UP
 .PHONY: up
@@ -124,7 +130,7 @@ _up-production:
 	@echo ""
 	@-docker stop blog > /dev/null 2>&1 || true
 	@-docker rm blog > /dev/null 2>&1 || true
-	docker run -d --publish 443:443 --name blog me/blog:latest
+	docker run -d --publish 443:443 --name blog my/blog:latest
 	@echo ""
 	@printf $(_YELLOW) "Open the PROD blog (https://localhost)"
 # endregion
@@ -132,4 +138,5 @@ _up-production:
 .PHONY: push
 push: ## Push the image on Docker hub (only when TARGET=production in .env)
     # Make sure you're already logged in on docker.com, if not run "docker login" and proceed to make an authentication.
-	docker image push me/blog:latest
+# 	docker build --tag my/blog:latest --target final ${ARGS} .
+	docker image push my/blog:latest

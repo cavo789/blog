@@ -33,7 +33,7 @@ help: ## Show the help with the list of commands
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-25s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 	@echo ""
 
-##@ Blog                    Blog helpers (!!  Use TARGET=production for production actions !!)
+##@ Blog                    Blog helpers (!!  For production, please always add "TARGET=production" before like "TARGET=production make build" !!)
 
 .PHONY: bash
 bash: _bash-$(TARGET)  ## Open an interactive shell in the Docker container
@@ -82,11 +82,6 @@ _build-production:
 	@printf $(_GREEN) "Production build finished. You can now publish this image."
 # endregion
 
-.PHONY: config
-config: ## Show the Docker configuration
-	@clear
-	docker compose config
-
 .PHONY: devcontainer
 devcontainer: ## Open the blog in Visual Studio Code in devcontainer
 	@printf $(_YELLOW) "Open the blog in Visual Studio Code in devcontainer"
@@ -103,13 +98,6 @@ _down-development:
 .PHONY: _down-production
 _down-production:
 	@docker stop blog > /dev/null 2>&1 || true
-
-.PHONY: logs
-logs: ## Show the log of Docusaurus
-	@clear
-	@printf $(_CYAN) "Press CTRL-C to stop to follow logs"
-	@printf ""
-	@docker logs --follow docusaurus
 
 .PHONY: remove
 remove: _remove-$(TARGET) ## Remove the image

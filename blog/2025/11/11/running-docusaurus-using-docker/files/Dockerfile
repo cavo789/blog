@@ -1,7 +1,15 @@
 # syntax=docker/dockerfile:1.6
 
-# Define build-time arguments for user and workspace configuration
+# By default, 1000:1000 but can be different like 1002:1002.
+# There parameters are initialized using the "make build" command.
+ARG OS_USERID=1000
+ARG OS_GROUPID=1000
+
+# Don't change, we'll reuse the standard user (the "node" user is
+# the one is node Docker image having user 1000:1000
 ARG OS_USERNAME="node"
+
+# Root folder where Docusaurus will be installed in the Docker image
 ARG APP_HOME="/opt/docusaurus"
 
 # ─────────────────────────────────────────────────────────────
@@ -19,21 +27,32 @@ RUN --mount=type=cache,target=/var/cache/apt \
         bash-completion; \
     rm -rf /var/lib/apt/lists/*
 
-# We'll create our user in order to make sure files are owned by the right user
-# and not root. This will avoid to force us to run a "chown" command every time
-# which will be really slow.
+# If the host userid/groupid is different from 1000:1000 then update the
+# existing node user to these IDs. This is not needed here for the production
+# image but well for devcontainer to remove permissions problems while synchronizing
+# with the host
+ARG OS_USERID
+ARG OS_GROUPID
 ARG OS_USERNAME
-ARG APP_HOME
-
-ARG OS_USERNAME
-ARG APP_HOME
 
 RUN set -eux && \
+    if [ "$OS_USERID" != 1000 ] || [ "$OS_GROUPID" != "1000" ]; then \
+        groupmod -g "$OS_GROUPID" node; \
+        usermod -u "$OS_USERID" -g "$OS_GROUPID" "${OS_USERNAME}"; \
+    fi
+
+# Add the node user to the docker group (create it if needed) to allow,
+# in devcontainer, to run Docker-in-Docker actions if needed
+RUN set -eux && \
+    groupadd docker || true && \
+    usermod -aG docker "${OS_USERNAME}"
+
+ARG APP_HOME
+RUN set -eux && \
+    # Make sure the home folder exists
     mkdir -p "${APP_HOME}" && \
-    chown -R "${OS_USERNAME}:${OS_USERNAME}" "${APP_HOME}" /home/${OS_USERNAME}
-
-# Pre-create the .docusaurus folder to avoid permission issues during build
-RUN set -eux && \
+    # Pre-create the .docusaurus folder to avoid permission issues during build
+    # Note: this folder will be stored in memory (tmpfs) when running devcontainer
     mkdir -p "${APP_HOME}/.docusaurus" && \
     chown -R "${OS_USERNAME}":"${OS_USERNAME}" "${APP_HOME}"
 
@@ -46,10 +65,10 @@ WORKDIR "${APP_HOME}"
 # ─────────────────────────────────────────────────────────────
 FROM base AS dependencies
 
-ENV HOME=/tmp
-
 ARG APP_HOME
 ARG OS_USERNAME
+ARG OS_USERID
+ARG OS_GROUPID
 
 # Configure the cache folder for yarn so we can reuse it in our Devcontainer later on
 ENV YARN_CACHE_FOLDER=/home/${OS_USERNAME}/.cache/yarn/v6
@@ -58,13 +77,12 @@ RUN set -eux && \
     chown -R "${OS_USERNAME}":"${OS_USERNAME}" "${YARN_CACHE_FOLDER}"
 
 # Copy package manifests and lockfiles for dependency installation
-COPY --chown=node:node package.json package-*.* yarn*.* ./
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" package.json package-*.* yarn*.* ./
 
 USER "${OS_USERNAME}"
 
-# Install dependencies using Yarn with cache mount (1000:1000 is the UID/GID
-# of the current "node" user)
-RUN --mount=type=cache,target=${YARN_CACHE_FOLDER},uid=1000,gid=1000 \
+# Install dependencies using Yarn with cache mount
+RUN --mount=type=cache,target=${YARN_CACHE_FOLDER},uid=${OS_USERID},gid=${OS_GROUPID} \
     yarn install --immutable --frozen-lockfile --prefer-offline
 
 # ─────────────────────────────────────────────────────────────
@@ -76,14 +94,9 @@ FROM base AS development
 
 ARG APP_HOME
 
-# Ensure working directory exists
-RUN mkdir -p "${APP_HOME}"
-
-WORKDIR "${APP_HOME}"
-
 # Copy full project source code and installed node_modules from dependencies stage
-COPY --chown=node:node . .
-COPY --chown=node:node --from=dependencies "${APP_HOME}"/node_modules ./node_modules
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" . .
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"/node_modules ./node_modules
 
 # ─────────────────────────────────────────────────────────────
 # 🏗️ Stage 3: Static Site Build
@@ -95,7 +108,6 @@ FROM development AS build
 
 # Build the Docusaurus site into static HTML/CSS/JS
 RUN yarn build
-
 
 # ─────────────────────────────────────────────────────────────
 # 🚀 Stage 4: Production Image (Nginx)

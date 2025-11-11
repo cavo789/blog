@@ -4,7 +4,7 @@
   "dockerComposeFile": ["../.devcontainer/compose.yaml"],
   "workspaceFolder": "/opt/docusaurus",
   "mounts": [
-    "source=docusaurus-build,target=/opt/docusaurus/.docusaurus,type=volume",
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
     "source=node_modules,target=/opt/docusaurus/node_modules,type=volume",
     "source=yarn-cache,target=/home/node/.cache/yarn/v6,type=volume"
   ],
@@ -19,11 +19,11 @@
   },
   "forwardPorts": [3000, 8010],
   "containerEnv": {
+    "OS_USERNAME": "node",
     "YARN_CACHE_FOLDER": "/home/node/.cache/yarn/v6"
   },
-  "initializeCommand": "mkdir -p .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
-  "postStartCommand": "sudo mkdir -p /opt/docusaurus/node_modules/.cache && sudo chown -R node:node /opt/docusaurus/node_modules",
-  "postCreateCommand": "/opt/docusaurus/.devcontainer/bootstrap.sh",
+  "initializeCommand": "mkdir -p .docusaurus .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
+  "postCreateCommand": "sudo chown -R node:node /opt/docusaurus/node_modules && /opt/docusaurus/.devcontainer/bootstrap.sh",
   "remoteUser": "node",
   "containerUser": "${OS_USERID}:${OS_GROUPID}",
   "customizations": {
@@ -90,6 +90,7 @@
         "ms-vscode.makefile-tools",
         "shd101wyy.markdown-preview-enhanced",
         "streetsidesoftware.code-spell-checker-british-english",
+        "streetsidesoftware.code-spell-checker-french",
         "streetsidesoftware.code-spell-checker",
         "TomasDahlqvist.markdown-admonitions",
         "usernamehw.errorlens",
