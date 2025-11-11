@@ -11,8 +11,9 @@ services:
     ports:
       - "443:443"
     volumes:
-      - yarn-cache:/home/vscode/.cache/yarn/v6
-
+      - yarn-cache:/home/node/.cache/yarn/v6
+    tmpfs:
+      - /opt/docusaurus/.docusaurus
     command: sleep infinity
 
 volumes:

@@ -7,15 +7,7 @@ services:
       target: ${TARGET:-development}
       dockerfile: Dockerfile
     container_name: docusaurus
-    env_file: .env
     ports:
       - "443:443"
-    volumes:
-      - docusaurus-build:/opt/docusaurus/.docusaurus
-      - yarn-cache:/home/vscode/.cache/yarn/v6
 
     command: sleep infinity
-
-volumes:
-  docusaurus-build:
-  yarn-cache:

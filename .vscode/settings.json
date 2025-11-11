@@ -8,7 +8,8 @@
     ".mdx": "Markdown"
   },
   "files.exclude": {
-    "**/node_modules/**": true
+    "**/node_modules/**": true,
+    ".docusaurus/**": true
   },
   "files.autoSave": "onFocusChange",
   "languageToolLinter.languageTool.motherTongue": "en",

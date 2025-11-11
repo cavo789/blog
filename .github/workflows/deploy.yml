@@ -12,6 +12,7 @@ jobs:
   deploy:
     name: Deploy blog on avonture.be
     runs-on: ubuntu-latest
+    if: startsWith(github.event.head_commit.message, 'wip') == false
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

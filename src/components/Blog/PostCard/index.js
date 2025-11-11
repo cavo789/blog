@@ -63,56 +63,60 @@ const FormattedDate = ({ date, layout }) => {
 export default function PostCard({
   post,
   layout = "big",
-  defaultImage = "/img/default.webp",
+  defaultImage = "/img/default.jpg",
 }) {
   const { permalink, image, title, description, date } = post;
 
   if (layout === "small") {
     return (
       <div
-        className="card"
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-        }}
+        className="col col--4"
+        style={{ marginBottom: "2rem", display: "flex" }}
       >
-        <div className="card__image">
-          <img
-            src={image || defaultImage}
-            alt={title}
-            loading="lazy"
-            style={{
-              width: "100%",
-              height: 180,
-              objectFit: "cover",
-              borderTopLeftRadius: 8,
-              borderTopRightRadius: 8,
-            }}
-          />
-        </div>
-        <div className="card__body" style={{ flex: 1 }}>
-          <h3>
-            <Link to={permalink}>{title}</Link>
-          </h3>
-          {description && (
-            <div
+        <div
+          className="card"
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+          }}
+        >
+          <div className="card__image">
+            <img
+              src={image || defaultImage}
+              alt={title}
               style={{
-                color: "#6c63ff",
-                fontWeight: "bold",
-                marginBottom: 6,
+                width: "100%",
+                height: 180,
+                objectFit: "cover",
+                borderTopLeftRadius: 8,
+                borderTopRightRadius: 8,
               }}
-            >
-              {description}
-            </div>
-          )}
-          <FormattedDate date={date} layout={layout} />
-        </div>
-        <div className="card__footer" style={{ textAlign: "right" }}>
-          <Link className="button button--primary button--sm" to={permalink}>
-            Read more
-          </Link>
+            />
+          </div>
+          <div className="card__body" style={{ flex: 1 }}>
+            <h3>
+              <Link to={permalink}>{title}</Link>
+            </h3>
+            {description && (
+              <div
+                style={{
+                  color: "#6c63ff",
+                  fontWeight: "bold",
+                  marginBottom: 6,
+                }}
+              >
+                {description}
+              </div>
+            )}
+            <FormattedDate date={date} layout={layout} />
+          </div>
+          <div className="card__footer" style={{ textAlign: "right" }}>
+            <Link className="button button--primary button--sm" to={permalink}>
+              Read more
+            </Link>
+          </div>
         </div>
       </div>
     );
@@ -120,23 +124,24 @@ export default function PostCard({
 
   // Default "big" layout
   return (
-    // 🛑 CRITICAL CHECK: Ensure this is the absolute root element
-    <Card shadow="md">
-      <CardImage
-        cardImageUrl={image || defaultImage}
-        alt={title}
-        title={title}
-      />
-      <CardBody className="padding-vert--md text--center" textAlign="center">
-        <h3>
-          <Link href={permalink} aria-label={`Read article: ${title}`}>
-            {title}&nbsp;→
-          </Link>
-        </h3>
-        {description && <p className={styles.description}>{description}</p>}
-        <FormattedDate date={date} layout={layout} />
-      </CardBody>
-    </Card>
+    <div className="col col--3 margin-bottom--lg">
+      <Card shadow="md">
+        <CardImage
+          cardImageUrl={image || defaultImage}
+          alt={title}
+          title={title}
+        />
+        <CardBody className="padding-vert--md text--center" textAlign="center">
+          <h3>
+            <Link href={permalink} aria-label={`Read article: ${title}`}>
+              {title}&nbsp;→
+            </Link>
+          </h3>
+          {description && <p className={styles.description}>{description}</p>}
+          <FormattedDate date={date} layout={layout} />
+        </CardBody>
+      </Card>
+    </div>
   );
 }
 

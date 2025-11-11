@@ -40,12 +40,6 @@ export default function SeriesPosts({
 
   if (!posts.length) return null;
 
-  // Function to format the date
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
-
   return (
     <div className={styles.seriesBlogPost}>
       <p>
@@ -62,8 +56,7 @@ export default function SeriesPosts({
                 <span
                   style={{
                     fontWeight: "bold",
-                    opacity: highlightCurrent ? 0.9 : 1,
-                    textDecoration: highlightCurrent ? "underline" : "none",
+                    opacity: highlightCurrent ? 0.6 : 1,
                   }}
                 >
                   {post.title}

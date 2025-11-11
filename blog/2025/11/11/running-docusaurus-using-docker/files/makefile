@@ -24,12 +24,12 @@ _WHITE:="\033[1;${COLOR_WHITE}m%s\033[0m %s\n"
 
 default: help
 
-_checkEnv:
-	@test -s .env || { printf $(_RED) "File .env missing. Please create yours by running \"cp .env.example .env\""; exit 1; }
-
 .PHONY: help
 help: ## Show the help with the list of commands
 	@clear
+	@printf $(_WHITE) "List of commands to work with the Blog published on https://www.avonture.be"
+
+
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-25s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0;33m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 	@echo ""
 
@@ -46,15 +46,15 @@ _bash-development:
 .PHONY: _bash-production
 _bash-production:
 	@printf $(_YELLOW) "Start an interactive shell in the Docker PROD container; type exit to quit"
-	docker run -it my/blog:node /bin/sh
+	docker run -it me/blog:node /bin/sh
 
 # region: BUILD
 .PHONY: build
-build: _build-$(TARGET) ## Build dev/prod image. You pass CLI flags via ARGS like ARGS="--no-cache"
+build: _build-$(TARGET) ## Build dev/prod image. You can pass CLI flags via ARGS like ARGS="--no-cache"
 
 # Build the DEV image i.e. using docker compose and with all our environment variables
 .PHONY: _build-development
-_build-development: _checkEnv
+_build-development:
 	@printf $(_YELLOW) "-> Building DEVELOPMENT image using docker compose..."
 	@printf $(_WHITE) "Use 'TARGET=PRODUCTION make build' for the PRODUCTION image."
 	@echo ""
@@ -65,10 +65,10 @@ _build-development: _checkEnv
 
 # Build the PROD image i.e. a light nginx image
 .PHONY: _build-production
-_build-production: _checkEnv
+_build-production:
 	@printf $(_YELLOW) "-> Building PRODUCTION stand alone image..."
 	@echo ""
-	docker build --tag my/blog:latest --target production ${ARGS} .
+	docker build --tag me/blog:latest --target production ${ARGS} .
 	@echo ""
 	@printf $(_GREEN) "Production build finished. You can now publish this image."
 # endregion
@@ -77,6 +77,36 @@ _build-production: _checkEnv
 devcontainer: ## Open the blog in Visual Studio Code in devcontainer
 	@printf $(_YELLOW) "Open the blog in Visual Studio Code in devcontainer"
 	code .
+
+.PHONY: down
+down: _down-$(TARGET) ## Stop the container
+
+.PHONY: _down-development
+_down-development:
+	docker run --rm -it --user root -v $${PWD}/:/project -w /project node /bin/bash -c "yarn run clear"
+	docker compose down
+
+.PHONY: _down-production
+_down-production:
+	@docker stop blog > /dev/null 2>&1 || true
+
+.PHONY: remove
+remove: _remove-$(TARGET) ## Remove the image
+
+.PHONY: _remove-development
+_remove-development:
+    #--volumes
+	docker compose down --remove-orphans --rmi all
+    #-docker image rmi blog-docusaurus
+    # Remove the old build folder if present
+	@rm -rf .docusaurus
+    # Don't remove these files / folders so the next build won't download anymore dependencies
+    # @rm -rf node_modules *.lock package-lock.json
+	@echo ""
+
+.PHONY: _remove-production
+_remove-production: _down-production
+	@docker rmi --force me/blog:latest
 
 # region: UP
 .PHONY: up
@@ -94,7 +124,12 @@ _up-production:
 	@echo ""
 	@-docker stop blog > /dev/null 2>&1 || true
 	@-docker rm blog > /dev/null 2>&1 || true
-	docker run -d --publish 443:443 --name blog my/blog:latest
+	docker run -d --publish 443:443 --name blog me/blog:latest
 	@echo ""
-	@printf $(_YELLOW) "Open the PROD blog (https://localhost:${PORT})"
+	@printf $(_YELLOW) "Open the PROD blog (https://localhost)"
 # endregion
+
+.PHONY: push
+push: ## Push the image on Docker hub (only when TARGET=production in .env)
+    # Make sure you're already logged in on docker.com, if not run "docker login" and proceed to make an authentication.
+	docker image push me/blog:latest

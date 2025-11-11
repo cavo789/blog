@@ -1,24 +1,23 @@
 ---
 slug: running-docusaurus-with-docker
 title: Running Docusaurus using Docker
-date: 2025-11-09
+date: 2025-11-11
 description: Streamline Docusaurus blog development! Build a single Docker image for production and use VS Code Dev Containers for consistent, fast, and isolated editing.
 authors: [christophe]
 image: /img/v2/docusaurus_using_docker.webp
 mainTag: Docusaurus
 series: Running Docusaurus using Docker
-tags: [docker, docusaurus, nodejs, yarn]
+tags: [devcontainer, docker, docusaurus, nodejs, vscode, yarn]
 language: en
-draft: true
 blueskyRecordKey:
 ---
 ![Running Docusaurus using Docker](/img/v2/docusaurus_using_docker.webp)
 
-18 months ago, I've written [Encapsulate an entire Docusaurus site in a Docker image](/blog/docker-docusaurus-prod) to explain how I maintain this blog.
+18 months ago, I've written [Encapsulate an entire Docusaurus site in a Docker image](/blog/docker-docusaurus-prod) to explain how I maintain this blog using VSCode, Docker and Docusaurus.
 
-It's time to revisit this approach a little, since I recently worked on a more robust approach about production versus development (see [One Docker Image for Production and Devcontainers - The Clean Way](/blog/docker-prod-devcontainer)).
+It's time to revisit this approach and improve it. Indeed, recently I worked on a more robust approach about production versus development (see [One Docker Image for Production and Devcontainers - The Clean Way](/blog/docker-prod-devcontainer)).
 
-So from now on, I'll run `make build` just once to create my base Docker image and the only thing I've to run is `make devcontainer` to jump in my VSCode editor and *let's VSCode to create my container with everything in place*. I've just need to wait a few seconds before being able to work on my blog.
+So from now on, for this blog, I'll run `make build` just once to create my base Docker image and the only thing I've to run is `make devcontainer` to jump in my VSCode editor and *let's VSCode to create my container with everything in place*. I've just need to wait a few seconds before being able to work on my blog.
 
 Let's see this in detail.
 
@@ -31,19 +30,18 @@ Let's see this in detail.
     "First, we'll retrieve a Docusaurus blog,",
     "Then we'll create a Docker image to run the blog",
     "And finally we'll open VSCode using the *devcontainer* feature.",
+    "And to prove it's so cool, we'll use LanguageTool which provides basic grammar and spellchecking for your posts."
   ]}
 />
 
 ## Retrieve a Docusaurus blog
 
-If you already have a blog, just skip this chapter.
-
-For learning purposes, we'll use the blog of a friend, [Docux](http://docuxlab.com/).
+If you already have a blog, just skip this chapter. For learning purposes, we'll use the blog of a friend, [Docux](http://docuxlab.com/).
 
 Please run the command below to get a copy of his blog and jump in it.
 
 <Terminal wrap={true}>
-$ git clone git@github.com:Juniors017/docux-blog.git && cd docux-blog
+$ cd /tmp && git clone git@github.com:Juniors017/docux-blog.git && cd docux-blog
 </Terminal>
 
 ## Create the Docker base image
@@ -64,8 +62,6 @@ VSCode will open the current project and you'll see something like this:
 ### Let's create a few files
 
 Please create the following files in the root folder of the project:
-
-<Snippet filename=".env" source="./files/.env" />
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
@@ -125,6 +121,10 @@ It can be a solution when you've a small blog but that's not really the way to d
 
 Just run `make build` (notice, we don't specify `TARGET=production` here) once. It'll be extremely fast since everything was already created before.
 
+<AlertBox variant="caution" title="You've to run 'make build'">
+Please don't forget to run `make build` right now to build your Docker image for development. If you miss this command, you'll get an error while starting the devcontainer feature.
+</AlertBox>
+
 Now, run `make devcontainer` to open VSCode and nothing happens right now: it's normal, we need to create additional files.
 
 ### Let's create a .devcontainer folder
@@ -132,6 +132,10 @@ Now, run `make devcontainer` to open VSCode and nothing happens right now: it's 
 We'll need to create a new `.devcontainer` folder with a few files:
 
 <Snippet filename=".devcontainer/.env" source="./files/.devcontainer/.env" />
+
+<AlertBox variant="danger" title="Make sure to use your own UID/GID">
+Please edit the `.devcontainer/.env` file and make sure these values are the ones you're using: please run `id -u` in your console and check if you get `1000`. If not, please report the obtained figure (f.i. `1002`) as `OS_USERID` and do the same with  the command `id -g`, here, it's for the `OS_GROUPID` variable.
+</AlertBox>
 
 <Snippet filename=".devcontainer/bootstrap.sh" source="./files/.devcontainer/bootstrap.sh" />
 
@@ -209,3 +213,15 @@ Using a Devcontainer like illustrated in this article, you can also fine-tune yo
 Since everything is isolated, you can *drop* the container and recreate it without pain.
 
 Someone has to work with you? Devcontainer is then the way-to-go since everyone will have the exact same environment.
+
+## Using LanguageTool in VSCode
+
+Let's see one of the many advantages: instead of *just using VSCode to write our posts*, let's use LanguageTool which provides basic grammar and spellchecking for your posts.
+
+And you know what? You already have it. See your `.devcontainer/compose.yml` file. You'll see a service called `languagetool` based on a Docker image called **erikvl87/languagetool**. And now, see your `.devcontainer/devcontainer.json` file. Search for **languageToolLinter** and you'll see a local URL (based on an IP); this is the one exposed by the service. And look further for the **davidlday.languagetool-linter** extension, this is the one who'll make the magic happens.
+
+Hey! Did you see? By using the devcontainer feature, you've received a predefined environment where you'll have a few tools already installed, like the **Code spell checker** too (search for extensions **streetsidesoftware**). This is one of the biggest advantage to work with devcontainer.
+
+And perhaps, while you'll write your Markdown content, VSCode will show you errors displayed in orange like `MD047/single-training-newline` to tells you you've forgot to add an empty line at the very bottom of the file.
+
+These warnings comes from Markdownlint which is another extension already installed in the devcontainer.

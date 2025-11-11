@@ -5,8 +5,8 @@
 # This Dockerfile is designed for use in a Devcontainer setup with VSCode
 
 # Define build-time arguments for user and workspace configuration
-ARG OS_USERID=1002
-ARG OS_GROUPID=1002
+ARG OS_USERID=1000
+ARG OS_GROUPID=1000
 ARG OS_USERNAME="node"
 ARG APP_HOME="/opt/docusaurus"
 
@@ -37,13 +37,9 @@ RUN --mount=type=cache,target=/var/lib/apt/lists \
     rm -rf /var/lib/apt/lists/* && \
     git config --global --add safe.directory "${APP_HOME}"  # Avoid Git safety warnings
 
-# Re-declare user-related build arguments
-ARG OS_USERID
-ARG OS_GROUPID
+# Grant passwordless sudo access to the VSCode user
+# Allow our VSCode user to run "sudo xxx" in case of very specific use case
 ARG OS_USERNAME
-
-# Grant passwordless sudo access to the node user
-# Allow our node user to run "sudo xxx" in case of very specific use case
 RUN set -eux && \
     echo "${OS_USERNAME} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/"${OS_USERNAME}" && \
     chmod 0440 /etc/sudoers.d/"${OS_USERNAME}"
@@ -56,7 +52,7 @@ RUN set -eux && \
     chown -R "${OS_USERNAME}:${OS_USERNAME}" "/home/${OS_USERNAME}/.vscode-server"
 
 # ---------- Shell and history setup ----------
-# Configure bash history behavior for the node user
+# Configure bash history behavior for the VSCode user
 RUN echo "export HISTFILE=/home/${OS_USERNAME}/.bash_history" >> "/home/${OS_USERNAME}/.bashrc" && \
     echo 'export HISTSIZE=10000' >> "/home/${OS_USERNAME}/.bashrc" && \
     echo 'export HISTFILESIZE=10000' >> "/home/${OS_USERNAME}/.bashrc" && \
@@ -76,12 +72,15 @@ RUN set -eux && \
     chown -R "${OS_USERNAME}:${OS_USERNAME}" "${YARN_CACHE_FOLDER}"
 
 # Install project dependencies and the Sharp image plugin required by Docusaurus
+
+ARG OS_USERID
+ARG OS_GROUPID
 RUN --mount=type=cache,target=${YARN_CACHE_FOLDER},uid=${OS_USERID},gid=${OS_GROUPID} \
     set -eux && \
     yarn install --immutable --frozen-lockfile --prefer-offline && \
     yarn add --platform=linux --arch=x64 sharp
 
-# Switch to the node user for development tasks
+# Switch to the VSCode user for development tasks
 USER "${OS_USERNAME}"
 
 # Set the working directory to the application root

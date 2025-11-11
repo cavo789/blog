@@ -24,6 +24,13 @@ This done, the site is now running, and you can access to it using `https://loca
 
 If you want to remove the image later on, just run `TARGET=production make remove` and that's all.
 
+### Push the production image
+
+If you want to push your blog as a Docker image on Docker Hub:
+
+* Do a login using `docker login` (you'll see `Authenticating with existing credentials...`),
+* run `make push`
+
 ## Build, run and open the blog as a developer
 
 This time, please run `make build && make devcontainer`. Once in VSCode, press <kbd>F1</kbd> and select the option **Dev Containers: Rebuild without cache and Reopen in Container**.  *If you don't have this command, please make sure to install the VSCode [Dev Container from Microsoft](https://marketplace.visualstudio.com/publishers/Microsoft).*
@@ -38,6 +45,6 @@ Depending on if you're working with the production image or with devcontainer, p
 
 You'll then start an interactive console in the Docker container.
 
-### Deployment
+## Deployment
 
 For this repository, the deployment is made using GitHub actions. By pushing changes to GitHub, there is a `CI/CD` pipeline who'll be started by GitHub, download Node, run `yarn build` and, once HTML files have been generated in the `build` folder, an FTP copy job will copy every file from GitHub to the host where the blog is running.

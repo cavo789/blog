@@ -11,6 +11,8 @@ allexport
 anson
 anyio
 apache
+davidlday
+erikvl
 apacheconf
 appdata
 autem

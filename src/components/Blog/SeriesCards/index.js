@@ -34,24 +34,9 @@ export default function SeriesCards() {
     <div className="container margin-top--lg margin-bottom--lg">
       <div className="row">
         {seriesList.map((serie) => (
-          <div
-            key={serie.title}
-            className="col col--12 col--sm-6 col--md-4 margin-bottom--lg"
-          >
-            <PostCard post={serie} />
-          </div>
+          <PostCard post={serie} />
         ))}
       </div>
     </div>
   );
-
-  // return (
-  //   <div className="container margin-top--lg margin-bottom--lg">
-  //     <div className="row">
-  //       {seriesList.map((serie) => (
-  //         <PostCard post={serie} />
-  //       ))}
-  //     </div>
-  //   </div>
-  // );
 }

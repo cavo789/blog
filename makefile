@@ -24,9 +24,6 @@ _WHITE:="\033[1;${COLOR_WHITE}m%s\033[0m %s\n"
 
 default: help
 
-_checkEnv:
-	@test -s .env || { printf $(_RED) "File .env missing. Please create yours by running \"cp .env.example .env\""; exit 1; }
-
 .PHONY: help
 help: ## Show the help with the list of commands
 	@clear
@@ -56,11 +53,20 @@ _bash-production:
 build: _build-$(TARGET) ## Build dev/prod image. You can pass CLI flags via ARGS like ARGS="--no-cache"
 
 # Build the DEV image i.e. using docker compose and with all our environment variables
+# Pre-create folders to avoid permission problems while building devcontainer
 .PHONY: _build-development
-_build-development: _checkEnv
+_build-development:
 	@printf $(_YELLOW) "-> Building DEVELOPMENT image using docker compose..."
 	@printf $(_WHITE) "Use 'TARGET=PRODUCTION make build' for the PRODUCTION image."
 	@echo ""
+	@if [ ! -d ".docusaurus" ]; then \
+		printf $(_YELLOW) "-> Creating .docusaurus directory on host..."; \
+		mkdir -p .docusaurus; \
+	fi
+	@if [ ! -d "node_modules" ]; then \
+		printf $(_YELLOW) "-> Creating node_modules directory on host..."; \
+		mkdir -p node_modules; \
+	fi
 	DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose build ${ARGS}
 	@echo ""
 	@printf $(_GREEN) "Development build finished. Now, continue by running \"make devcontainer\"."
@@ -68,7 +74,7 @@ _build-development: _checkEnv
 
 # Build the PROD image i.e. a light nginx image
 .PHONY: _build-production
-_build-production: _checkEnv
+_build-production:
 	@printf $(_YELLOW) "-> Building PRODUCTION stand alone image..."
 	@echo ""
 	docker build --tag cavo789/blog:latest --target production ${ARGS} .
@@ -141,14 +147,14 @@ _up-production:
 	@-docker rm blog > /dev/null 2>&1 || true
 	docker run -d --publish 443:443 --name blog cavo789/blog:latest
 	@echo ""
-	@printf $(_YELLOW) "Open the PROD blog (https://localhost:${PORT})"
+	@printf $(_YELLOW) "Open the PROD blog (https://localhost)"
 # endregion
 
 .PHONY: push
 push: ## Push the image on Docker hub (only when TARGET=production in .env)
     # Make sure you're already logged in on docker.com, if not run "docker login" and proceed to make an authentication.
-	docker build --tag cavo789/blog:latest --target final ${ARGS} .
- 	docker image push cavo789/blog:latest
+# 	docker build --tag cavo789/blog:latest --target final ${ARGS} .
+	docker image push cavo789/blog:latest
 
 ##@ Utilities
 

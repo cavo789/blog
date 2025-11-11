@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASHRC="/home/${OS_USERNAME:-vscode}/.bashrc"
+BASHRC="/home/${OS_USERNAME:-node}/.bashrc"
 MARKER="# DEV CONTAINER WELCOME MESSAGE"
 
 # Local folder where the blog is stored on the host machine

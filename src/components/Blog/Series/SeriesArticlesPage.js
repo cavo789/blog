@@ -8,7 +8,10 @@ import PostCard from "@site/src/components/Blog/PostCard";
 export default function SeriesArticlesPage() {
   const location = useLocation();
 
-  const match = matchPath(location.pathname, { path: "/series/:slug", exact: true });
+  const match = matchPath(location.pathname, {
+    path: "/series/:slug",
+    exact: true,
+  });
   const slug = match?.params?.slug;
 
   if (!slug) {

@@ -11,9 +11,8 @@
   // },
   "mounts": [
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
-    "source=docusaurus-build,target=/opt/docusaurus/.docusaurus,type=volume",
     "source=node_modules,target=/opt/docusaurus/node_modules,type=volume",
-    "source=yarn-cache,target=/home/vscode/.cache/yarn/v6,type=volume"
+    "source=yarn-cache,target=/home/node/.cache/yarn/v6,type=volume"
   ],
   "portsAttributes": {
     "3000": {
@@ -26,14 +25,14 @@
   },
   "forwardPorts": [3000, 8010],
   "containerEnv": {
-    "GIT_SSH_COMMAND": "ssh -i /home/vscode/.ssh/id_ed25519 -o 'UserKnownHostsFile=/dev/null'",
-    "YARN_CACHE_FOLDER": "/home/vscode/.cache/yarn/v6"
+    "GIT_SSH_COMMAND": "ssh -i /home/node/.ssh/id_ed25519 -o 'UserKnownHostsFile=/dev/null'",
+    "OS_USERNAME": "node",
+    "YARN_CACHE_FOLDER": "/home/node/.cache/yarn/v6"
   },
-  "initializeCommand": "mkdir -p .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
-  "postCreateCommand": "/opt/docusaurus/.devcontainer/bootstrap.sh",
-
-  "remoteUser": "vscode",
-  "containerUser": "vscode",
+  "initializeCommand": "mkdir -p .docusaurus .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
+  "postCreateCommand": "sudo chown -R node:node /opt/docusaurus/node_modules && /opt/docusaurus/.devcontainer/bootstrap.sh",
+  "remoteUser": "node",
+  "containerUser": "${OS_USERID}:${OS_GROUPID}",
   "customizations": {
     "vscode": {
       "settings": {
