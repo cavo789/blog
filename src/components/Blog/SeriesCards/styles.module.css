@@ -1,0 +1,10 @@
+.seriesCardsGrid {
+  row-gap: 2rem;
+  column-gap: 1rem;
+}
+
+.seriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}

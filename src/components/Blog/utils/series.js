@@ -60,7 +60,7 @@ export function generateSeriesList(
       const publishedCount = posts.filter((post) => !post.draft).length;
       const draftCount = posts.filter((post) => post.draft).length;
 
-      const description =
+      const counter =
         `${publishedCount} published article(s)` +
         (draftCount > 0 ? ` • ${draftCount} in progress` : "");
 
@@ -69,7 +69,7 @@ export function generateSeriesList(
         permalink: `${permalink}${createSlug(seriesName)}`,
         image: sortedPosts[0]?.image || defaultImage,
         title: seriesName,
-        description,
+        counter,
       };
     });
 }

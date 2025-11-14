@@ -1,5 +1,6 @@
 import { generateSeriesList } from "@site/src/components/Blog/utils/series";
 import PostCard from "@site/src/components/Blog/PostCard";
+import styles from "./styles.module.css";
 
 /**
  * SeriesCards component
@@ -19,10 +20,28 @@ import PostCard from "@site/src/components/Blog/PostCard";
  * Location: src/components/SeriesCards/index.js
  */
 
+import SERIES_DATA from "../../../data/series.js";
+
+const DEFAULT_IMAGE = "/img/default.webp";
+
 export default function SeriesCards() {
   const seriesList = generateSeriesList();
 
-  if (seriesList.length === 0) {
+  const enriched = seriesList.map((serie) => {
+    const data = SERIES_DATA.find((s) => s.name === serie.seriesName);
+
+    let imagePath = data?.image ?? DEFAULT_IMAGE;
+
+    return {
+      ...serie,
+      counter: data?.counter ?? serie.counter,
+      description: data?.description ?? serie.description,
+      image: imagePath,
+      title: data?.title ?? serie.title,
+    };
+  });
+
+  if (enriched.length === 0) {
     return (
       <div className="text--center margin-vert--xl">
         <h2>No article series found</h2>
@@ -32,9 +51,9 @@ export default function SeriesCards() {
 
   return (
     <div className="container margin-top--lg margin-bottom--lg">
-      <div className="row">
-        {seriesList.map((serie) => (
-          <PostCard post={serie} />
+      <div className={styles.seriesGrid}>
+        {enriched.map((serie) => (
+          <PostCard key={serie.permalink} post={serie} />
         ))}
       </div>
     </div>

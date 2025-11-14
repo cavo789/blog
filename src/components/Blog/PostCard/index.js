@@ -65,7 +65,7 @@ export default function PostCard({
   layout = "big",
   defaultImage = "/img/default.jpg",
 }) {
-  const { permalink, image, title, description, date } = post;
+  const { permalink, image, title, description, date, counter } = post;
 
   if (layout === "small") {
     return (
@@ -99,7 +99,7 @@ export default function PostCard({
             <h3>
               <Link to={permalink}>{title}</Link>
             </h3>
-            {description && (
+            {counter && (
               <div
                 style={{
                   color: "#6c63ff",
@@ -107,7 +107,7 @@ export default function PostCard({
                   marginBottom: 6,
                 }}
               >
-                {description}
+                {counter}
               </div>
             )}
             <FormattedDate date={date} layout={layout} />
@@ -125,19 +125,25 @@ export default function PostCard({
   // Default "big" layout
   return (
     <div className="col col--3 margin-bottom--lg">
-      <Card shadow="md">
+      <Card className={styles.cardEnhanced} shadow="md">
         <CardImage
           cardImageUrl={image || defaultImage}
           alt={title}
           title={title}
+          className={styles.cardImageEnhanced}
         />
-        <CardBody className="padding-vert--md text--center" textAlign="center">
+        <CardBody className={styles.cardBodyEnhanced}>
           <h3>
-            <Link href={permalink} aria-label={`Read article: ${title}`}>
+            <Link
+              href={permalink}
+              aria-label={`Read article: ${title}`}
+              className={styles.cardTitleLink}
+            >
               {title}&nbsp;→
             </Link>
           </h3>
           {description && <p className={styles.description}>{description}</p>}
+          {counter && <p className={styles.counter}>{counter}</p>}
           <FormattedDate date={date} layout={layout} />
         </CardBody>
       </Card>

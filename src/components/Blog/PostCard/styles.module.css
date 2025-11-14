@@ -1,5 +1,11 @@
-.description {
-  font-size: 12px;
+.counter {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  border-radius: 8px;
+  background: #eef2ff;
+  color: #4f46e5;
+  margin-top: 0.5rem;
 }
 
 .date {
@@ -7,4 +13,50 @@
   font-size: 0.95em;
   margin-bottom: 8;
   font-style: italic;
+}
+
+.cardEnhanced {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 14px;
+  background: #fafbff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* IMPORTANT to avoid super thin cards */
+  min-width: 280px;
+}
+
+.cardBodyEnhanced {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardEnhanced:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.cardImageEnhanced img {
+  height: 180px;
+  width: 100%;
+  object-fit: cover; /* IMPORTANT: avoid vertical stretching */
+  padding: 1rem;
+  background: #f7f9fc;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+.cardEnhanced:hover .cardImageEnhanced img {
+  transform: scale(1.03);
+}
+
+.cardTitleLink {
+  transition: color 0.15s ease;
+}
+
+.cardTitleLink:hover {
+  color: #6c63ff;
 }

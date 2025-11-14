@@ -5,8 +5,8 @@
  */
 
 :root {
-  --ifm-font-family-base: 'Inter', sans-serif;
-  --ifm-font-family-monospace: 'Fira Code', 'JetBrains Mono', monospace;
+  --ifm-font-family-base: "Inter", sans-serif;
+  --ifm-font-family-monospace: "Fira Code", "JetBrains Mono", monospace;
 
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
@@ -22,7 +22,7 @@
   --ifm-container-width: 100%;
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
@@ -159,7 +159,7 @@
 }
 
 /* DocSearch : barre de recherche (light & dark) */
-[data-theme='light'] .DocSearch {
+[data-theme="light"] .DocSearch {
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
   --docsearch-container-background: rgba(94, 100, 112, 0.7);
   --docsearch-modal-background: var(--ifm-color-secondary-lighter);
@@ -171,7 +171,7 @@
   --docsearch-footer-background: var(--ifm-color-white);
 }
 
-[data-theme='dark'] .DocSearch {
+[data-theme="dark"] .DocSearch {
   --docsearch-text-color: var(--ifm-font-color-base);
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
   --docsearch-container-background: rgba(47, 55, 69, 0.7);
