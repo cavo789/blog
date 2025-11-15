@@ -22,6 +22,7 @@ export default function BlogPostItem({ children, className }) {
   // We need to retrieve the isBlogPostPage flag
   const { metadata, isBlogPostPage } = useBlogPost();
   const containerClassName = useContainerClassName();
+
   return (
     <>
       {isBlogPostPage && <StructuredData metadata={metadata} />}

@@ -71,9 +71,7 @@ function InnerBlogPostPage({ sidebar, BlogPostContent }) {
     >
       <BlogPostPageMetadata />
       <BlogPostPageStructuredData />
-
       {metadata && <StructuredData metadata={metadata} />}
-
       <BlogPostPageContent sidebar={sidebar}>
         <BlogPostContent />
       </BlogPostPageContent>

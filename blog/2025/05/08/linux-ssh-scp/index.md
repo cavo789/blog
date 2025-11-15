@@ -9,17 +9,12 @@ mainTag: ssh
 tags: [linux, putty, scp, ssh, tips]
 language: en
 blueskyRecordKey: 3lun2x6tugs2r
+updates:
+  - date: 2025-05-08
+    note: Adding the config file chapter
 ---
 <!-- markdownlint-disable MD012 -->
 ![SSH - Launch a terminal on your session without having to authenticate yourself](/img/v2/ssh.webp)
-
-<UpdateAt
-  title="Recent Changes"
-  updates={[
-    { date: "2025-05-08", content: "Adding the config file chapter" },
-  ]}
-/>
-
 
 <!-- cspell:ignore randomart -->
 

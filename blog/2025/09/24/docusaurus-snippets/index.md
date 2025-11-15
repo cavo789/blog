@@ -10,17 +10,13 @@ mainTag: component
 tags: [component, docusaurus, iconify, markdown, plugin, snippets]
 language: en
 blueskyRecordKey: 3lzkrxkfpo22m
+updates:
+  - date: 2025-10-10
+    note: Allow relative paths
 ---
 <!-- markdownlint-disable MD046 -->
 <!-- cspell:ignore iconify,docux,pyproject -->
 ![A component for showing code snippets in a Docusaurus blog](/img/v2/docusaurus_react.webp)
-
-<UpdateAt
-  title="Recent Changes"
-  updates={[
-    { date: "2025-10-10", content: "Allow relative paths" },
-  ]}
-/>
 
 If you're a regular reader of this blog, you know I'm sharing a lot of code snippets.
 
@@ -81,7 +77,7 @@ Please also edit the `src/theme/MDXComponents.js` file (and if not present, plea
 
 You'll also need the [LogoIcon](https://docuxlab.com/blog/logoicon-component-docusaurus/) created by [Docux](https://github.com/Juniors017).
 
-This component will make easy to retrieve a SVG icon for a language (let's say Python) and display it. Under the scenes, LogoIcon is using [Iconify](https://icon-sets.iconify.design/).
+This component will make easy to retrieve an SVG icon for a language (let's say Python) and display it. Under the scenes, LogoIcon is using [Iconify](https://icon-sets.iconify.design/).
 
 In very short:
 
@@ -92,7 +88,7 @@ In very short:
 
 ## Using the Snippets component
 
-Now, if you want to add a snippets in your blog, just do something like this:
+Now, if you want to add a snippet in your blog, just do something like this:
 
 ```html
 <Snippet filename="who_are_you.py">
@@ -105,7 +101,7 @@ And it'll be rendered like this:
 
 <Snippet filename="who_are_you.py" source="./files/who_are_you.py" />
 
-## Don't copying/pasting content anymore
+## Don't copy/paste content anymore
 
 Let's do much, much better: don't copy/paste the code to the article but read it from the disk.
 
@@ -113,7 +109,7 @@ Let's imagine this:
 
 `<Snippet filename="src/components/Blog/Snippet/index.js" source="src/components/Blog/Snippet/index.js" />`
 
-* `filename` is thus the title to show in the article so the reader knows the file should be named like that
+* `filename` is thus the title to show in the article, so the reader knows the file should be named like that
 * `source` is the relative path (from your Docusaurus root folder) when the file can be retrieved. In this scenario, we don't have to put the source code in the file but Docusaurus will do the job for us:
   * When previewing the site (dev mode), a plugin will read the content immediately from the disk and will inject its content. So, if the sourced file is updated, your article will always be up-to-date
   * When building the static version (prod mode), the Docusaurus build engine will also read the content of the file from the disk and inject it in your article.
@@ -139,7 +135,7 @@ Please create the `plugins/remark-snippet-loader/index.cjs` with the content bel
 
 <Snippet filename="plugins/remark-snippet-loader/index.cjs" source="plugins/remark-snippet-loader/index.cjs" />
 
-Also please edit your `docusaurus.config.js` file like this:
+Also, please edit your `docusaurus.config.js` file like this:
 
 <Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.js" />
 

@@ -9,17 +9,14 @@ series: Coding using a devcontainer
 mainTag: php
 tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, sonarlint, vscode]
 language: en
+updates:
+  - date: 2024-02-23
+    note: Install Rector automatically
+  - date: 2024-02-29
+    note: Install [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) and [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 blueskyRecordKey: 3lymrewibzk2l
 ---
 ![PHP development in a devcontainer with preinstalled code quality tools](/img/v2/devcontainer.webp)
-
-<UpdateAt
-  title="Recent Changes"
-  updates={[
-    { date: "2024-02-23", content: "install Rector automatically" },
-    { date: "2024-02-29", content: "install [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) and [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)" },
-  ]}
-/>
 
 <AlertBox variant="info" title="Don't want to read this long article">
 So jump to <Link to="/blog/php-devcontainer">Install a PHP Docker environment in a matter of seconds</Link>

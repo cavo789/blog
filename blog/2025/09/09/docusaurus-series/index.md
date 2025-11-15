@@ -10,17 +10,13 @@ mainTag: component
 tags: [component, docusaurus, markdown, plugin, react, series, swizzle]
 language: en
 blueskyRecordKey: 3lyhtzknd6s2j
+updates:
+  - date: 2025-11-15
+    note: Add the `/src/data/series.js` file
 ---
 <!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,docux -->
 
 ![Organize Your Docusaurus Content with a Custom Series Component](/img/v2/docusaurus_component.webp)
-
-<UpdateAt
-  title="Recent Changes"
-  updates={[
-    { date: "2025-11-15", content: "Add the /src/data/series.js file" },
-  ]}
-/>
 
 If you have been using Docusaurus for a long time, you may have noticed that it is not possible to create links between articles as one would like to do for a series.
 

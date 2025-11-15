@@ -1,0 +1,56 @@
+.revisionHistoryContainer {
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  border-radius: var(--ifm-border-radius);
+}
+
+.revisionHistoryTitle {
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.revisionList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.revisionItem {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--ifm-hr-border-color);
+}
+
+.revisionItem:last-child {
+  border-bottom: none;
+}
+
+.revisionDate {
+  flex-shrink: 0;
+  width: 100px;
+  font-weight: bold;
+  color: var(--ifm-color-primary);
+  margin-right: 1rem;
+  font-size: 0.9em;
+}
+
+.revisionDescription {
+  flex-grow: 1;
+  line-height: 1.6;
+}
+
+@media screen and (max-width: 768px) {
+  .revisionItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .revisionDate {
+    width: auto;
+    margin-right: 0;
+    margin-bottom: 0.25rem;
+  }
+}

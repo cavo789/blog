@@ -1,4 +1,4 @@
-import AlertBox from '@site/src/components/Blog/AlertBox';
+import AlertBox from "@site/src/components/Blog/AlertBox";
 import BrowserWindow from "@site/src/components/BrowserWindow";
 import Card from "@site/src/components/Card";
 import CardBody from "@site/src/components/Card/CardBody";
@@ -10,19 +10,18 @@ import Columns from "@site/src/components/Columns";
 import Details from "@site/src/components/Details";
 import Hero from "@site/src/components/Hero";
 import Highlight from "@site/src/components/Highlight";
-import Link from '@docusaurus/Link';
-import LogoIcon from '@site/src/components/Blog/LogoIcon';
+import Link from "@docusaurus/Link";
+import LogoIcon from "@site/src/components/Blog/LogoIcon";
 import MDXComponents from "@theme-original/MDXComponents";
 import Snippet from "@site/src/components/Snippet";
 import StepsCard from "@site/src/components/StepsCard";
-import TabItem from '@theme/TabItem';
-import Tabs from '@theme/Tabs';
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 import Terminal from "@site/src/components/Terminal";
-import TOCInline from '@theme/TOCInline';
-import UpdateAt from "@site/src/components/Updated";
-import Trees from '@site/src/components/Trees';
-import Folder from '@site/src/components/Trees/Folder';
-import File from '@site/src/components/Trees/File';
+import TOCInline from "@theme/TOCInline";
+import Trees from "@site/src/components/Trees";
+import Folder from "@site/src/components/Trees/Folder";
+import File from "@site/src/components/Trees/File";
 
 export default {
   // Reusing the default mapping
@@ -50,5 +49,4 @@ export default {
   Terminal,
   TOCInline,
   Trees,
-  UpdateAt,
 };

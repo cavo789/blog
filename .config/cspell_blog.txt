@@ -11,8 +11,6 @@ allexport
 anson
 anyio
 apache
-davidlday
-erikvl
 apacheconf
 appdata
 autem
@@ -64,6 +62,7 @@ daggerize
 daggerized
 dahlqvist
 dataobject
+davidlday
 dbaeumer
 dbmdl
 dbml
@@ -94,6 +93,7 @@ elisé
 endregion
 engie
 ergebnis
+erikvl
 errexit
 errorlens
 esbenp
@@ -198,6 +198,7 @@ limesurvey
 livewire
 lockfiles
 logfile
+ltex
 ltrim
 makefiles
 makurison
@@ -221,6 +222,7 @@ msaccess
 msdos
 msgbox
 mspellcheck
+mstart
 mstsc
 msxml
 mupgrade

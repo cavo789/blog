@@ -9,19 +9,15 @@ mainTag: api
 tags: [api, docker, php, rest]
 language: en
 blueskyRecordKey: 3lun2t72qus2r
+updates:
+  - date: 2025-05-19
+    note: Add belgif.be specifications
 ---
 ![API REST - How to write good APIs](/img/v2/api.webp)
 
 <!-- cspell:ignore Belgif -->
 
-<UpdateAt
-  title="Recent Changes"
-  updates={[
-    { date: "2025-05-19", content: "Add belgif.be specifications" },
-  ]}
-/>
-
-When developing APIs *from scratch*, you can do it in the mode *I get behind the PC and start programming* or *I learn about the standards first and then program in compliance with these standards*.
+When developing APIs *from scratch*, you can do it in the mode *I get behind the PC and start programming*, or *I learn about the standards first and then program in compliance with these standards*.
 
 And if we lose sight of these norms, we quickly come back to writing endpoints like `/articles/insert` that are semantically incorrect (and even stupid). In fact, we'll never `GET` here.
 
@@ -44,13 +40,13 @@ The purpose of the article below is to list best practices by way of examples.
 | <span style={{color: 'green'}}>`https://xxx/api/v1/ipsoLorem/331`</span> | <span style={{color: 'red'}}>`https://xxx/api/v1/ipsoLorem/331/`</span> |
 | <span style={{color: 'green'}}>`https://xxx/api/v1/ipsoLorem?country=BE`</span> | <span style={{color: 'red'}}>`https://xxx/api/v1/Ipso_Lorem?Country=BE`</span> |
 
-URI shouldn't ends with a `/` and neither with a file extension so don't <span style={{color: 'red'}}>`https://xxx/api/v1/ipso-lorem/331.json`</span> but simply use HTTP headers like `Content-Type: application/json;charset=UTF-8` to inform it's a JSON answer.
+URI shouldn't end with a `/` and neither with a file extension so don't <span style={{color: 'red'}}>`https://xxx/api/v1/ipso-lorem/331.json`</span> but simply use HTTP headers like `Content-Type: application/json;charset=UTF-8` to inform it's a JSON answer.
 
 #### Prefer plural noun
 
 Always use the plural like `GET /api/v1/employees/1` to return the first employee and not `GET /api/v1/employee/1` ([reference](https://www.belgif.be/specification/rest/api-guide/#collection)).
 
-Using the plural make it easier to understand that `employees` is a collection and we can use verbs like `GET` to get all, one or a range, `POST` to add a new employee, `PUT` to update a employee's information, ...
+Using the plural make it easier to understand that `employees` is a collection, and we can use verbs like `GET` to get all, one or a range, `POST` to add a new employee, `PUT` to update an employee's information, ...
 
 Also, using the plural form, the user will immediately understand he'll be able to add filters like `/1` to get, f.i. the employee #1.
 
@@ -70,14 +66,14 @@ This makes URI more readable, intuitive and more scalable like in `/api/v1/emplo
 
 HTTP has verbs like `GET`, `POST`, `DELETE`, ... so don't use calls like:
 
-* `/api/v1/articles/gettitle`,
-* `/api/v1/articles/insert`,
+* `/api/v1/articles/gettitle`
+* `/api/v1/articles/insert`
 * `/api/v1/articles/1/delete`
 
 But use the adequate HTTP verb:
 
-* `GET /api/v1/articles/title`,
-* `PUT /api/v1/articles`,
+* `GET /api/v1/articles/title`
+* `PUT /api/v1/articles`
 * `DELETE /api/v1/articles/1`
 
 #### Send the HTTP Accept header
@@ -133,11 +129,9 @@ So `/api/v1/employees?page=1&pageSize=5` will display the first five employees a
 | `pageSize` | When a collection resources is paged, use this parameter to specify the page size. | `?page=3&pageSize=20` | Pagination |
 | `q` | The standard search parameter to do a full-text search. | `?q=RESTFul` | Filtering |
 | `select`| Filter the resource properties to the ones specified. | `?select=(name,address)` | Consult (Document) |
-| `sort` | Multi-value query param with list of properties to sort on. Default sorting direction is ascending. To indicate descending direction, the property may be prefixed with -. |  `?sort=name&&sort=-age` | Collection |
+| `sort` | Multi-value query param with list of properties to sort on. Default sorting direction is ascending. To indicate descending direction, the property may be prefixed with -. | `?sort=name&&sort=-age` | Collection |
 | `embed` | Request to embed sub-resource. For instance `api/v1/countries` returns countries and `api/v1/countries?embed=political` countries with their political infos. This will prevent additional API calls. | `?embed=mainAddress` | Embedding resources |
-| ``lang` | language to filter multi-language descriptions | `?lang=fr` | Multi-language descriptions |
-
-
+| `lang` | language to filter multi-language descriptions | `?lang=fr` | Multi-language descriptions |
 
 ### Verbs
 
@@ -157,13 +151,13 @@ Content-Type: application/json; charset=utf-8
 
 ##### HEAD - Returned code
 
-If we get a HTTP return code `200`, we can run a `GET` action to get records:
+If we get an HTTP return code `200`, we can run a `GET` action to get records:
 
 <Terminal>
 $ curl https://xxx/api/v1/countries?language=FR | jq
 </Terminal>
 
-`HEAD` can thus be used to get meta data about a resource.
+`HEAD` can thus be used to get metadata about a resource.
 
 <AlertBox variant="info" title="How many countries have French as their official language?">
 In the returned headers of `HEAD` we will most probably get a `Content-Range` entry. In our fake example, we can determine that we've six countries where French is an official language.
@@ -174,11 +168,11 @@ In the returned headers of `HEAD` we will most probably get a `Content-Range` en
 | Code | Status | Reason |
 | --- | --- | --- |
 | `200` | `OK` | The server has successfully processed the request. This means that the requested resource exists. |
-| `401`| `Unauthorized` | The endpoint is secured and the request didn't pass a valid access token. |
+| `401`| `Unauthorized` | The endpoint is secured, and the request didn't pass a valid access token. |
 | `403` | `Access denied` | You're not allowed to access to the requested resource. |
-| `404` | `Not found` | The requested resource didn't exists |
+| `404` | `Not found` | The requested resource didn't exist |
 
-The code `204 - No Content` isn't expected because even if `HEAD` didn't returns a response, the server well return HTTP headers and this is similar to a response. So, the standard code is to return `200`; not `204`.
+The code `204 - No Content` isn't expected because even if `HEAD` didn't return a response, the server well returns HTTP headers and this is similar to a response. So, the standard code is to return `200`; not `204`.
 
 ##### Count number of items in a resource
 
@@ -229,9 +223,9 @@ $ curl -X GET -H "Accept: application/json" https://xxx/api/v1/employees/1
 | Code | Status | Reason |
 | --- | --- | --- |
 | `200` | `OK` | The server has successfully processed the request. The requested resource exists and is returned to you. |
-| `401`| `Unauthorized` | The endpoint is secured and the request didn't pass a valid access token. |
+| `401`| `Unauthorized` | The endpoint is secured, and the request didn't pass a valid access token. |
 | `403` | `Access denied` | You're not allowed to access to the requested resource. |
-| `404` | `Not found` | The requested resource didn't exists. |
+| `404` | `Not found` | The requested resource didn't exist. |
 
 The `204 - No content` code should not be used with `GET`.
 
@@ -239,7 +233,7 @@ The `204 - No content` code should not be used with `GET`.
 
 <AlertBox variant="info" title="You can translate `POST` as `CREATE` in `CRUD`" />
 
-Using `POST` **you'll create a new resource**. Calling `POST` five times for the same "new" employee will thus create five new employees. <span style={{color: 'red'}}>`POST` is not idempotent meaning calling it more than once will return every time a new resource (like the new employee id).</span>
+Using `POST` **you'll create a new resource**. Calling `POST` five times for the same "new" employee will thus create five new employees. <span style={{color: 'red'}}>`POST` is not idempotent meaning calling it more than once will return every time a new resource (like the new employee ID).</span>
 
 <Terminal>
 $ {`curl -X POST -d '\{"firstname":"Christophe",...}' https://xxx/api/v1/employees`}
@@ -257,8 +251,8 @@ The example here above will create a new employee, the server will return the HT
 | Code | Status | Reason |
 | --- | --- | --- |
 | `200`| `Created`| The resource has been successfully created. |
-| `303` | `See Other` | The resource already exists and a link is provided to the resource. `303` is used to denote it's a normal check. |
-| `401`| `Unauthorized` | The endpoint is secured and the request didn't pass a valid access token. |
+| `303` | `See Other` | The resource already exists, and a link is provided to the resource. `303` is used to denote it's a normal check. |
+| `401`| `Unauthorized` | The endpoint is secured, and the request didn't pass a valid access token. |
 | `403` | `Access denied` | You're not allowed to call this method. |
 | `409` | `Conflict` | The resource can't be created (f.i. already exists). `409` is used when we didn't expect such use case. |
 
@@ -296,14 +290,14 @@ Consider using `PUT` only when **you'll update every information's** of the reso
 | `200` | `OK` | The record was successfully updated and the updated version of the resource is returned. |
 | `204` | `No Content` | The record was successfully updated and nothing is returned as HTTP response. |
 | `400` | `Bad request` | The request is incorrect (f.i. you're trying to update a field `first_name` while his correct name is `firstname`). |
-| `401`| `Unauthorized` | The endpoint is secured and the request didn't pass a valid access token. |
+| `401`| `Unauthorized` | The endpoint is secured, and the request didn't pass a valid access token. |
 | `403` | `Access denied` | You're not allowed to call this method |
-| `404` | `Not found` | The requested resource didn't exists (f.i. you tried to access `/api/v1/employees/1` and that one didn't exists). |
+| `404` | `Not found` | The requested resource didn't exist (f.i. you tried to access `/api/v1/employees/1` and that one didn't exist). |
 
 <AlertBox variant="caution" title="">
-When getting `PUT -d '{"firstname":"Christophe"}' https://xxx/api/v1/employees/123456` the API developer can decide on his own to **CREATE** the resource 123456 if it didn't exists and if all required fields have been provided in the payload.
+When getting `PUT -d '{"firstname":"Christophe"}' https://xxx/api/v1/employees/123456` the API developer can decide on his own to **CREATE** the resource 123456 if it didn't exist and if all required fields have been provided in the payload.
 
-So, when the resource didn't exist, the developer can return a `404 - Not found` error or, if he decide to create the new resource, then the API could return `201 - Created` (just like a `POST`) ([reference](https://www.belgif.be/specification/rest/api-guide/#put)).
+So, when the resource didn't exist, the developer can return a `404 - Not found` error or, if he decides to create the new resource, then the API could return `201 - Created` (just like a `POST`) ([reference](https://www.belgif.be/specification/rest/api-guide/#put)).
 
 </AlertBox>
 
@@ -317,7 +311,7 @@ If you plan to update all fields, you need to use `PUT`, not `PATCH`.
 
 `PATCH` on an in-existing resource will return an error while, perhaps, `PUT` will create the resource. If's then safer to use `PATCH` and not `PUT` when updating partial content.
 
-It's indeed impossible to create a new record with `PATCH` since the request just mention a few information's, not all.
+It's indeed impossible to create a new record with `PATCH` since the request just mention little information, not all.
 
 ##### PATCH - Returned code
 
@@ -326,9 +320,9 @@ It's indeed impossible to create a new record with `PATCH` since the request jus
 | `200` | `OK` | The record was successfully updated and the updated version of the resource is returned. |
 | `204` | `No Content` | The record was successfully updated and nothing is returned as HTTP response. |
 | `400` | `Bad request` | The request is incorrect (f.i. you're trying to update a field `first_name` while his correct name is `firstname`). |
-| `401`| `Unauthorized` | The endpoint is secured and the request didn't pass a valid access token. |
+| `401`| `Unauthorized` | The endpoint is secured, and the request didn't pass a valid access token. |
 | `403` | `Access denied` | You're not allowed to call this method |
-| `404` | `Not found` | The requested resource didn't exists (f.i. you tried to access `/api/v1/employees/1` and that one didn't exists). |
+| `404` | `Not found` | The requested resource didn't exist (f.i. you tried to access `/api/v1/employees/1` and that one didn't exist). |
 
 Note: like with `PUT` (see above), the developer can decide to create the resource. In that case `201 - Created` can be returned.
 
@@ -349,9 +343,9 @@ $ curl -X DELETE https://xxx/api/v1/employees/59
 | `200` | `OK` | The record was successfully deleted and a message like *The resource has been successfully deleted* is returned. |
 | `204` | `No Content` | The record was successfully deleted and nothing is returned as HTTP response. |
 | `400` | `Bad request` | The syntax of the request is invalid. |
-| `401`| `Unauthorized` | The endpoint is secured and the request didn't pass a valid access token. |
+| `401`| `Unauthorized` | The endpoint is secured, and the request didn't pass a valid access token. |
 | `403` | `Access denied` | You're not allowed to call this method. |
-| `404` | `Not found` | The requested resource didn't exists (f.i. you tried to access `/api/v1/employees/1` and that one didn't exists). |
+| `404` | `Not found` | The requested resource didn't exist (f.i. you tried to access `/api/v1/employees/1` and that one didn't exist). |
 | `409` | `Conflict` | The resource can't be deleted (f.i. you can't dismiss an employee while there are still payments to be mode). |
 
 #### OPTIONS
@@ -370,7 +364,7 @@ When `DELETE` was used, we can also return `204 No Content` to inform the callin
 
 ##### 201 Created
 
-If the requested resource has been created successfully and the server changes the resource in any way (for example, by assigning an id), the server MUST return a `201 Created` response and the new added resource in body.
+If the requested resource has been created successfully and the server changes the resource in any way (for example, by assigning an ID), the server MUST return a `201 Created` response and the new added resource in body.
 
 ##### 202 Accepted
 
@@ -378,7 +372,7 @@ If a request to create/update or delete a resource has been accepted for process
 
 ##### 204 No Content
 
-If the requested resource has been created successfully and the server does not change the resource in any way (for example, by assigning an id or `createdAt` attribute), the server MUST return either a `201 Created` status code and the resource in response or a `204 No Content` status code with no response document.
+If the requested resource has been created successfully and the server does not change the resource in any way (for example, by assigning an ID or `createdAt` attribute), the server MUST return either a `201 Created` status code and the resource in response or a `204 No Content` status code with no response document.
 
 If the deletion was done successfully, `204 No Content` can be used too.
 
@@ -396,7 +390,7 @@ The requested API is a secured one and a call to it has been made without a vali
 
 A server MUST return `403 Forbidden` in response to an unsupported request to, for instance, create a resource (with `POST` verb with a client-generated `ID` since the `ID` has to be generated by the server, not the client).
 
-The error `403 Forbidden` has to be used too when a valid token is used but when the called resources requires a specific scope (like `canManageCustomers`) and the used token don't have that one.
+The error `403 Forbidden` has to be used too when a valid token is used but when the called resources require a specific scope (like `canManageCustomers`) and the used token don't have that one.
 
 ##### 404 Not Found
 
@@ -420,7 +414,7 @@ A server MUST return `409 Conflict` when processing a `POST` request in which th
 
 Like `406 Not Acceptable`, the server can't process the request but here, it's because the server didn't know how to process the received information ([reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/415)).
 
-As an example, if the request is a POST with a JSON payload like `curl -X POST -d '{"firstname":"Christophe",...}' https://xxx/api/v1/employees`, the server can return the code `415 - Unsupported Media Type` when the server was expecting a XML payload; not a JSON one.
+As an example, if the request is a POST with a JSON payload like `curl -X POST -d '{"firstname":"Christophe",...}' https://xxx/api/v1/employees`, the server can return the code `415 - Unsupported Media Type` when the server was expecting an XML payload; not a JSON one.
 
 The response would contain the supported type so, f.i.,
 
@@ -435,11 +429,11 @@ In this example, the server didn't support `application/x-www-form-urlencoded` f
 
 #### Media Types
 
-The requestor application should specify the media type(s) that is(are) acceptable using the `Accept` HTTP header.
+The requestor application should specify the media type(s) that is (are) acceptable using the `Accept` HTTP header.
 
 A REST response or request with payload must include the `Content-Type` HTTP header to indicate the media type of the HTTP payload.
 
-For example, the request has to define `-H "Accept: application/json"` in his header to let the server to know which media type is needed and the server (the response) should provide the `Content-Type` too.
+For example, the request has to define `-H "Accept: application/json"` in his header to let the server know which media type is needed and the server (the response) should provide the `Content-Type` too.
 
 <Terminal>
 $ curl -X -H "Accept: application/json" GET https://xxx/api/v1/employees
@@ -451,7 +445,7 @@ If returning JSON is not managed by the API, the server has to return the HTTP c
 
 #### The returned answer
 
-All RESTful APIs must support JSON and it's the default representation to use (i.e. when no `Content-Type` header is sent with the request).
+All RESTful APIs must support JSON, and it's the default representation to use (i.e. when no `Content-Type` header is sent with the request).
 
 Following guidelines SHOULD be respected when determining a name for a JSON property ([reference](https://www.belgif.be/specification/rest/api-guide/#json-2)):
 
@@ -491,9 +485,8 @@ In order to make the API flexible, make sure the answer is a JSON object `{ ... 
 A document MUST contain at least one of the following top-level members:
 
 * `data`: the document's *primary data*. This node has to be renamed to better describe the object, f.i. `employees` or `countries`, ...
-* `errors`: an array of error objects.
-* `meta`: a meta object that contains non-standard meta-information.
-
+* `errors`: an array of error objects
+* `meta`: a metaobject that contains non-standard meta-information.
 
 <AlertBox variant="caution" title="Never return both `data` and `errors`">
 If the query has generated an error, it is not expected to return any data. And vice versa.
@@ -632,7 +625,7 @@ Each REST API should expose a `GET /api/v1/health` endpoint which returns the av
 | Status | Status Code | Description |
 | --- | --- | --- |
 | `UP` | `200` | The API is functioning as expected. |
-| `DEGRADED` | `200` | The API is partly unavailable but service can be continued with reduced functionality. |
+| `DEGRADED` | `200` | The API is partly unavailable, but service can be continued with reduced functionality. |
 | `DOWN` | `503` | The API is suffering unexpected failures. |
 
 ## Some lectures

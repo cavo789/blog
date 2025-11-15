@@ -8,15 +8,11 @@ image: /img/v2/frankenphp.webp
 mainTag: joomla
 tags: [docker, frankenphp, joomla]
 language: en
+updates:
+  - date: 2025-01-12
+    note: "Docker image available on hub.docker.com"
 ---
 ![FrankenPHP](/img/v2/frankenphp.webp)
-
-<UpdateAt
-  title="Recent Changes"
-  updates={[
-    { date: "2023-11-21", content: "Docker image available on hub.docker.com" },
-  ]}
-/>
 
 <!-- markdownlint-disable MD036 -->
 

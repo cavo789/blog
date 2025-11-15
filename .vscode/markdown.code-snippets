@@ -1,157 +1,131 @@
 {
-    "docusaurus.admonition": {
-        "prefix": "admonition",
-        "body": [
-            "<AlertBox variant=\"${1|note,tip,info,caution,danger,important,highlyImportant,coreConcept|}\" title=\"$2\">",
-            "$3",
-            "</AlertBox>",
-        ],
-        "description": "Docusaurus - AlertBox",
-    },
-    "docusaurus.alertbox": {
-        "prefix": "AlertBox",
-        "body": [
-            "<AlertBox variant=\"${1|note,tip,info,caution,danger,important|}\" title=\"$2\">",
-            "$3",
-            "</AlertBox>",
-        ],
-        "description": "Docusaurus - AlertBox",
-    },
-    "docusaurus.coreconcept": {
-        "prefix": "CoreConcept",
-        "body": [
-            "<CoreConcept title=\"$1\">",
-            "$2",
-            "</CoreConcept>",
-        ],
-        "description": "Docusaurus - Core concept",
-    },
-    "docusaurus.link": {
-        "prefix": "Link",
-        "body": [
-            "<Link to=\"/blog/$1\">$2</Link>",
-        ],
-        "description": "Docusaurus - Link",
-    },
-    "docusaurus.highlyimportant": {
-        "prefix": "HighlyImportant",
-        "body": [
-            "<HighlyImportant title=\"$1\">",
-            "$2",
-            "</HighlyImportant>",
-        ],
-        "description": "Docusaurus - Highly important part",
-    },
-    "docusaurus.prerequisites": {
-        "prefix": "Prerequisites",
-        "body": [
-            "<StepsCard",
-            "  title=\"${1:Before you begin make sure...}\"",
-            "  variant=\"prerequisites\"",
-            "  steps={[",
-            "    \"prerequisite_1\",",
-            "    \"prerequisite_2\",",
-            "    \"prerequisite_3\",",
-            "  ]}",
-            "/>",        ],
-        "description": "Docusaurus - Prerequisites",
-    },
-    "docusaurus.remember": {
-        "prefix": "Remember",
-        "body": [
-            "<StepsCard",
-            "  title=\"${1:Things to remember...}\"",
-            "  variant=\"remember\"",
-            "  steps={[",
-            "    \"remember_1\",",
-            "    \"remember_2\",",
-            "    \"remember_3\",",
-            "  ]}",
-            "/>",        ],
-        "description": "Docusaurus - Remember / Keep in mind",
-    },
-    "docusaurus.snippet": {
-        "prefix": "Snippet",
-        "body": [
-            "<Snippet filename=\"$1\" source=\"./files/$1\" />"
-        ],
-        "description": "Docusaurus - Snippet",
-    },
-    "docusaurus.steps": {
-        "prefix": "Steps",
-        "body": [
-            "<StepsCard",
-            "  title=\"${1:The workflow will be}:\"",
-            "  variant=\"steps\"",
-            "  steps={[",
-            "    'step1',",
-            "    'step2',",
-            "    'step3',",
-            "  ]}",
-            "/>",
-        ],
-        "description": "Docusaurus - Steps to follow",
-    },
-    "docusaurus.tabs": {
-        "prefix": "Tabs",
-        "body": [
-            "<Tabs>",
-            "",
-            "<TabItem value=\"$1\" label=\"$1\">",
-            "",
-            "</TabItem>",
-            "",
-            "<TabItem value=\"$2\" label=\"$2\">",
-            "",
-            "</TabItem>",
-            "",
-            "</Tabs>",
-        ],
-        "description": "Docusaurus - Tabs",
-    },
-    "docusaurus.terminal": {
-        "prefix": "Terminal",
-        "body": [
-            "<Terminal wrap={true}>",
-            "$ ${1:the_command_issued}",
-            "${2:the_output}",
-            "</Terminal>",
-        ],
-        "description": "Docusaurus - Tabs",
-    },
-    "docusaurus.toc": {
-        "prefix": "Toc",
-        "body": [
-            "<TOCInline toc={toc} />",
-        ],
-        "description": "Docusaurus - Inline table of contents",
-    },
-    "docusaurus.tree": {
-        "prefix": "Tree",
-        "body": [
-            "```tree expanded=true showJSX=false debug=false title=\"$1\"",
-            "",
-            "```",
-        ],
-        "description": "Docusaurus - Treeview component",
-    },
-    "docusaurus.updated": {
-        "prefix": "UpdatedAt",
-        "body": [
-            "<UpdateAt",
-            "  title=\"Recent Changes\"",
-            "  updates={[",
-            "    { date: \"$1\", content: \"$2\" },",
-            "  ]}",
-            "/>",
-        ],
-        "description": "Docusaurus - UpdatedAt timeline",
-    },
-    "docusaurus.blueskyRecordKey": {
-        "prefix": "blueskyRecordKey",
-        "body": [
-            "blueskyRecordKey: ",
-        ],
-        "description": "Docusaurus - blueskyRecordKey YAML entry",
-    }
+  "docusaurus.admonition": {
+    "prefix": "admonition",
+    "body": [
+      "<AlertBox variant=\"${1|note,tip,info,caution,danger,important,highlyImportant,coreConcept|}\" title=\"$2\">",
+      "$3",
+      "</AlertBox>"
+    ],
+    "description": "Docusaurus - AlertBox"
+  },
+  "docusaurus.alertbox": {
+    "prefix": "AlertBox",
+    "body": [
+      "<AlertBox variant=\"${1|note,tip,info,caution,danger,important|}\" title=\"$2\">",
+      "$3",
+      "</AlertBox>"
+    ],
+    "description": "Docusaurus - AlertBox"
+  },
+  "docusaurus.coreconcept": {
+    "prefix": "CoreConcept",
+    "body": ["<CoreConcept title=\"$1\">", "$2", "</CoreConcept>"],
+    "description": "Docusaurus - Core concept"
+  },
+  "docusaurus.link": {
+    "prefix": "Link",
+    "body": ["<Link to=\"/blog/$1\">$2</Link>"],
+    "description": "Docusaurus - Link"
+  },
+  "docusaurus.highlyimportant": {
+    "prefix": "HighlyImportant",
+    "body": ["<HighlyImportant title=\"$1\">", "$2", "</HighlyImportant>"],
+    "description": "Docusaurus - Highly important part"
+  },
+  "docusaurus.prerequisites": {
+    "prefix": "Prerequisites",
+    "body": [
+      "<StepsCard",
+      "  title=\"${1:Before you begin make sure...}\"",
+      "  variant=\"prerequisites\"",
+      "  steps={[",
+      "    \"prerequisite_1\",",
+      "    \"prerequisite_2\",",
+      "    \"prerequisite_3\",",
+      "  ]}",
+      "/>"
+    ],
+    "description": "Docusaurus - Prerequisites"
+  },
+  "docusaurus.remember": {
+    "prefix": "Remember",
+    "body": [
+      "<StepsCard",
+      "  title=\"${1:Things to remember...}\"",
+      "  variant=\"remember\"",
+      "  steps={[",
+      "    \"remember_1\",",
+      "    \"remember_2\",",
+      "    \"remember_3\",",
+      "  ]}",
+      "/>"
+    ],
+    "description": "Docusaurus - Remember / Keep in mind"
+  },
+  "docusaurus.snippet": {
+    "prefix": "Snippet",
+    "body": ["<Snippet filename=\"$1\" source=\"./files/$1\" />"],
+    "description": "Docusaurus - Snippet"
+  },
+  "docusaurus.steps": {
+    "prefix": "Steps",
+    "body": [
+      "<StepsCard",
+      "  title=\"${1:The workflow will be}:\"",
+      "  variant=\"steps\"",
+      "  steps={[",
+      "    'step1',",
+      "    'step2',",
+      "    'step3',",
+      "  ]}",
+      "/>"
+    ],
+    "description": "Docusaurus - Steps to follow"
+  },
+  "docusaurus.tabs": {
+    "prefix": "Tabs",
+    "body": [
+      "<Tabs>",
+      "",
+      "<TabItem value=\"$1\" label=\"$1\">",
+      "",
+      "</TabItem>",
+      "",
+      "<TabItem value=\"$2\" label=\"$2\">",
+      "",
+      "</TabItem>",
+      "",
+      "</Tabs>"
+    ],
+    "description": "Docusaurus - Tabs"
+  },
+  "docusaurus.terminal": {
+    "prefix": "Terminal",
+    "body": [
+      "<Terminal wrap={true}>",
+      "$ ${1:the_command_issued}",
+      "${2:the_output}",
+      "</Terminal>"
+    ],
+    "description": "Docusaurus - Tabs"
+  },
+  "docusaurus.toc": {
+    "prefix": "Toc",
+    "body": ["<TOCInline toc={toc} />"],
+    "description": "Docusaurus - Inline table of contents"
+  },
+  "docusaurus.tree": {
+    "prefix": "Tree",
+    "body": [
+      "```tree expanded=true showJSX=false debug=false title=\"$1\"",
+      "",
+      "```"
+    ],
+    "description": "Docusaurus - Treeview component"
+  },
+  "docusaurus.blueskyRecordKey": {
+    "prefix": "blueskyRecordKey",
+    "body": ["blueskyRecordKey: "],
+    "description": "Docusaurus - blueskyRecordKey YAML entry"
+  }
 }

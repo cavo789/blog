@@ -10,18 +10,15 @@ mainTag: joomla
 tags: [.env, docker, joomla, makefile]
 language: en
 blueskyRecordKey: 3lx57rla64c23
+updates:
+  - date: 2025-08-25
+    note: Using Joomla 5.3.3
 ---
+
 ![Create your Joomla website using Docker - Part 2](/img/v2/joomla.webp)
 
 <!--cspell:ignore runningjoomlaindocker, mysqli -->
 <!-- markdownlint-disable-file MD010 MD026 -->
-
-<UpdateAt
-  title="Recent Changes"
-  updates={[
-    { date: "2025-08-25", content: "Using Joomla 5.3.3" },
-  ]}
-/>
 
 At the end of 2023, I wrote a very long post about using Joomla with Docker: [Create your Joomla website using Docker - Part 1](/blog/docker-joomla).
 
@@ -70,9 +67,7 @@ In recent months, the name of the file to be used has changed from `compose.yaml
 
 Please create a new folder (f.i. `mkdir /tmp/joomla && cd $_`) on your hard disk and create the `compose.yaml` file with this content:
 
-<Terminal>
-$ mkdir /tmp/joomla && cd $_
-</Terminal>
+<Terminal>$ mkdir /tmp/joomla && cd $_</Terminal>
 
 <Snippet filename="compose.yaml">
 
@@ -112,7 +107,7 @@ services:
       - MYSQL_RANDOM_ROOT_PASSWORD='1'
       - MYSQL_USER=${DB_USER:-joomla}
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 20s
       retries: 10
     user: ${UID:-1000}:${GID:-1000}
@@ -164,20 +159,16 @@ So, here, if `JOOMLA_VERSION` exists and this is the case in our `.env` file, th
 
 ### Let's make our lives simpler and lazier; using a makefile
 
-The third and last file we'll use is being called `makefile` and that file will contain some *scripts* i.e we'll create a script called `up` for building our website.
+The third and last file we'll use is being called `makefile` and that file will contain some _scripts_ i.e we'll create a script called `up` for building our website.
 
 To be able to use a `makefile`, you should have `GNU Make` binary installed on your machine.
 
 <AlertBox variant="caution" title="">
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
 
-<Terminal>
-$ which make
-</Terminal>
+<Terminal>$ which make</Terminal>
 
-<Terminal>
-$ sudo apt-get update && sudo apt-get install make
-</Terminal>
+<Terminal>$ sudo apt-get update && sudo apt-get install make</Terminal>
 
 </AlertBox>
 
@@ -230,8 +221,14 @@ up:
 
 </Snippet>
 
-<AlertBox variant="highlyImportant" title="Indentation should be TAB not spaces">
-It's terribly vicious because it's totally silent: the indentation in a makefile must be tabs, not spaces. When you copy/paste the above code to create your file, make sure your text editor uses tabs. If it doesn't, the commands defined in the file won't work.
+<AlertBox
+  variant="highlyImportant"
+  title="Indentation should be TAB not spaces"
+>
+  It's terribly vicious because it's totally silent: the indentation in a
+  makefile must be tabs, not spaces. When you copy/paste the above code to
+  create your file, make sure your text editor uses tabs. If it doesn't, the
+  commands defined in the file won't work.
 </AlertBox>
 
 <AlertBox variant="note" title="">
@@ -246,21 +243,20 @@ We're ready. Just before you begin, please check that you have the three files b
 <Terminal>
 $ ls -alh
 
-Permissions Size User       Group      Date Modified    Name
-drwxr-xr-x     - christophe christophe 2024-10-18 13:30 .
-drwxrwxrwt     - root       root       2024-10-18 13:30 ..
-.rw-r--r--   140 christophe christophe 2024-10-18 13:30 .env
-.rw-r--r--   838 christophe christophe 2024-10-18 13:30 compose.yaml
-.rw-r--r--   327 christophe christophe 2024-10-18 13:30 makefile
+Permissions Size User Group Date Modified Name
+drwxr-xr-x - christophe christophe 2024-10-18 13:30 .
+drwxrwxrwt - root root 2024-10-18 13:30 ..
+.rw-r--r-- 140 christophe christophe 2024-10-18 13:30 .env
+.rw-r--r-- 838 christophe christophe 2024-10-18 13:30 compose.yaml
+.rw-r--r-- 327 christophe christophe 2024-10-18 13:30 makefile
+
 </Terminal>
 
 ### Check our configuration
 
-By running `make config` (`config` is an action we've defined in our `makefile`), we can display the configuration of our project on the screen *(just display, nothing is fired)*.
+By running `make config` (`config` is an action we've defined in our `makefile`), we can display the configuration of our project on the screen _(just display, nothing is fired)_.
 
-<Terminal>
-$ make config
-</Terminal>
+<Terminal>$ make config</Terminal>
 
 We should see a lot of technical information starting with something like:
 
@@ -316,28 +312,30 @@ $ make up
 
 UID=$(id -u) GID=$(id -g) docker compose up --detach
 [+] Running 33/12
- ✔ joomla Pulled                                         16.1s
- ✔ joomladb Pulled                                       10.7s
+✔ joomla Pulled 16.1s
+✔ joomladb Pulled 10.7s
 
 [+] Running 3/3
- ✔ Network runningjoomlaindocker_default  Created         0.0s
- ✔ Container joomla-db                    Healthy        31.7s
- ✔ Container joomla-app                   Started        31.1s
+✔ Network runningjoomlaindocker_default Created 0.0s
+✔ Container joomla-db Healthy 31.7s
+✔ Container joomla-app Started 31.1s
+
 </Terminal>
 
-What does that mean? Docker has retrieved (*pulled*) from the Internet our `joomla` and `joomladb` services (in other terms, has downloaded the Joomla CMS (including PHP and Apache) and MySQL).
+What does that mean? Docker has retrieved (_pulled_) from the Internet our `joomla` and `joomladb` services (in other terms, has downloaded the Joomla CMS (including PHP and Apache) and MySQL).
 
-By running then command below (or just `docker container list` to get all the columns),  you'll get the list of running containers:
+By running then command below (or just `docker container list` to get all the columns), you'll get the list of running containers:
 
 <Terminal>
 $ {`docker container list --all --format "table {{.Image}}\\t{{.Names}}\\t{{.Status}}\\t{{.Ports}}"`}
 
-IMAGE                        NAMES        STATUS                   PORTS
-joomla:5.2.0-php8.3-apache   joomla-app   Up 6 minutes             0.0.0.0:8080->80/tcp
-mysql:8.4.2                  joomla-db    Up 7 minutes (healthy)   3306/tcp, 33060/tcp
+IMAGE NAMES STATUS PORTS
+joomla:5.2.0-php8.3-apache joomla-app Up 6 minutes 0.0.0.0:8080->80/tcp
+mysql:8.4.2 joomla-db Up 7 minutes (healthy) 3306/tcp, 33060/tcp
+
 </Terminal>
 
-As we can see, yay!, we have our two services (named containers) which are Joomla and MySQL and they are both *Up* (see the `Status` column). We see that Joomla uses port `8080` and MySQL uses port `3306`.
+As we can see, yay!, we have our two services (named containers) which are Joomla and MySQL and they are both _Up_ (see the `Status` column). We see that Joomla uses port `8080` and MySQL uses port `3306`.
 
 <AlertBox variant="info" title="">
 The port `8080` is the one we've specified in our `.env` (variable `WEB_PORT`) and, the same for MySQL, it uses port `3006` because that's the one we defined (`MYSQL_PORT`).
@@ -355,25 +353,19 @@ We've created our Joomla website by **just running one command**. Don't trust? O
 
 The opposite command to `make up` is `make stop`. The `stop` action will stop our Joomla and MySQL containers (read `make them sleeping`) but without removing files (your site and your database) from your hard drive. By running `make up` again, you'll retrieve them. `up` and `stop` are like a light switch.
 
-<Terminal>
-$ make stop
-</Terminal>
+<Terminal>$ make stop</Terminal>
 
 ### ... or let's ask him to remove containers (free more memory)
 
 The `make down` command will stop the containers as well remove them. But in our case, we'll still have files on our hard disk so we'll not lose our website.
 
-<Terminal>
-$ make down
-</Terminal>
+<Terminal>$ make down</Terminal>
 
 ### ... or let's ask him to suicide (remove containers and files)
 
 The `make reset` command will stop containers but, too, remove files on the disk.
 
-<Terminal>
-$ make reset
-</Terminal>
+<Terminal>$ make reset</Terminal>
 
 <AlertBox variant="danger" title="">
 By running `make reset`, you'll lose everything and be ready to create a new fresh website.
@@ -384,13 +376,12 @@ By running `make reset`, you'll lose everything and be ready to create a new fre
 
 Sometimes, if something goes wrong, it's nice to have access to the Docker logs. Simply run `make log` to achieve this.
 
-<Terminal>
-$ make log
-</Terminal>
+<Terminal>$ make log</Terminal>
 
 Logs will look like this:
 
 <!-- cspell:disable -->
+
 ```log
 joomla-db  | 2024-10-13 13:30:25+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.2-1.el9 started.
 joomla-db  | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
@@ -424,23 +415,20 @@ joomla-app  | [Fri Oct 04 13:31:46.880743 2024] [mpm_prefork:notice] [pid 1:tid 
 joomla-app  | [Fri Oct 04 13:31:46.880782 2024] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
 joomla-app  | 172.19.0.1 - - [04/Oct/2024:06:57:36 +0000] "POST /installation/index.php HTTP/1.1" 200 6497 "http://127.0.0.1:8080/installation/index.php" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
 ```
+
 <!-- cspell:enable -->
 
 ## Time to starting the website
 
 Once `make up` has been fired and your containers in a `Up` state, our Joomla site is ready.
 
-<Terminal>
-$ make up
-</Terminal>
+<Terminal>$ make up</Terminal>
 
-You will need some information like credentials for the database;  this is why the `make start` screen was defined.
+You will need some information like credentials for the database; this is why the `make start` screen was defined.
 
 Please run `make start` in console. You'll get a screen like the one below:
 
-<Terminal>
-$ make start
-</Terminal>
+<Terminal>$ make start</Terminal>
 
 ```none
 To start your site, please jump to http://127.0.0.1:8080
@@ -482,7 +470,7 @@ You'll need to configure your new fresh site. In the **Database Configuration** 
     "Without having anything other than Docker you can install Joomla and MySQL from the command line, in the version you want;",
     "That with an `.env` file we can vary certain values ​​to allow us to have several projects on our hard drive (several Joomla sites);",
     "That with the `compose.yaml` file we tell Docker what to do to make Joomla and MySQL talk each other, and",
-    "The `compose.yaml` file is valuable since it allows you to define a number of configuration variables."
+    "The `compose.yaml` file is valuable since it allows you to define a number of configuration variables.",
   ]}
 />
 
@@ -490,34 +478,34 @@ Let's go a little further.
 
 ## Advanced configuration for Joomla
 
-The official Joomla Docker image is maintained by the Joomla community on Docker Hub: [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla).
+The official Joomla Docker image is maintained by the Joomla community on Docker Hub: [https://hub.docker.com/\_/joomla](https://hub.docker.com/_/joomla).
 
-You'll retrieve there a list of *tags* i.e. a list of versions you can install using Docker but you'll also find a **How to use this image** section and that one is really useful.
+You'll retrieve there a list of _tags_ i.e. a list of versions you can install using Docker but you'll also find a **How to use this image** section and that one is really useful.
 
 Below the list of variables supported by Joomla by the end of September 2024:
 
-| Variable name | Description |
-| --- | --- |
-| `JOOMLA_DB_HOST` | Defaults to the IP and port of the linked mysql container |
-| `JOOMLA_DB_USER` | Defaults to `root` |
-| `JOOMLA_DB_PASSWORD` | Defaults to the value of the `MYSQL_ROOT_PASSWORD` environment variable from the linked mysql container |
-| `JOOMLA_DB_PASSWORD_FILE` | Path to a file containing the database password |
-| `JOOMLA_DB_NAME` | Defaults to `joomla` |
-| `JOOMLA_DB_TYPE` | Defaults to `mysqli`; options: `mysqli`, `pgsql` |
+| Variable name             | Description                                                                                             |
+| ------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `JOOMLA_DB_HOST`          | Defaults to the IP and port of the linked mysql container                                               |
+| `JOOMLA_DB_USER`          | Defaults to `root`                                                                                      |
+| `JOOMLA_DB_PASSWORD`      | Defaults to the value of the `MYSQL_ROOT_PASSWORD` environment variable from the linked mysql container |
+| `JOOMLA_DB_PASSWORD_FILE` | Path to a file containing the database password                                                         |
+| `JOOMLA_DB_NAME`          | Defaults to `joomla`                                                                                    |
+| `JOOMLA_DB_TYPE`          | Defaults to `mysqli`; options: `mysqli`, `pgsql`                                                        |
 
 The following environment variables are also recognized for configuring auto deployment (i.e. skip the browser setup) for your Joomla instance:
 
-| Variable name | Description |
-| --- | --- |
-| `JOOMLA_SITE_NAME` | Name of the Joomla site |
-| `JOOMLA_ADMIN_USER` | Full name of the Joomla administrator |
-| `JOOMLA_ADMIN_USERNAME` | Username of the Joomla administrator |
-| `JOOMLA_ADMIN_PASSWORD` | Password of the Joomla administrator |
-| `JOOMLA_ADMIN_EMAIL` | Email address of the Joomla administrator |
-| `JOOMLA_EXTENSIONS_URLS` | Semicolon-separated list of URLs to install Joomla extensions from |
+| Variable name             | Description                                                              |
+| ------------------------- | ------------------------------------------------------------------------ |
+| `JOOMLA_SITE_NAME`        | Name of the Joomla site                                                  |
+| `JOOMLA_ADMIN_USER`       | Full name of the Joomla administrator                                    |
+| `JOOMLA_ADMIN_USERNAME`   | Username of the Joomla administrator                                     |
+| `JOOMLA_ADMIN_PASSWORD`   | Password of the Joomla administrator                                     |
+| `JOOMLA_ADMIN_EMAIL`      | Email address of the Joomla administrator                                |
+| `JOOMLA_EXTENSIONS_URLS`  | Semicolon-separated list of URLs to install Joomla extensions from       |
 | `JOOMLA_EXTENSIONS_PATHS` | Semicolon-separated list of file paths to install Joomla extensions from |
-| `JOOMLA_SMTP_HOST` | SMTP host for outgoing email |
-| `JOOMLA_SMTP_HOST_PORT` | SMTP port for outgoing email |
+| `JOOMLA_SMTP_HOST`        | SMTP host for outgoing email                                             |
+| `JOOMLA_SMTP_HOST_PORT`   | SMTP port for outgoing email                                             |
 
 Pay attention to the last table here above.
 
@@ -582,7 +570,7 @@ services:
       - MYSQL_RANDOM_ROOT_PASSWORD='1'
       - MYSQL_USER=${DB_USER:-joomla}
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 20s
       retries: 10
     user: ${UID:-1000}:${GID:-1000}
@@ -691,15 +679,13 @@ up:
 
 </Snippet>
 
-As you can see, we've configured some `JOOMLA_ADMIN_xxx` keys and set `JOOMLA_SITE_NAME` to *Joomla*; the name of our website.
+As you can see, we've configured some `JOOMLA_ADMIN_xxx` keys and set `JOOMLA_SITE_NAME` to _Joomla_; the name of our website.
 
 ### Running the website and skip the installation process
 
 Once you've updated the three files; just run `make reset` (to remove our previous site if any) then run `make up` to create a new one. Finally, run `make start` to show a list of important variables:
 
-<Terminal>
-$ make reset && make up && make start
-</Terminal>
+<Terminal>$ make reset && make up && make start</Terminal>
 
 ```none
 To start your site, please jump to http://127.0.0.1:8080
@@ -746,11 +732,9 @@ Let's try a real-world example: we are a small web agency and we wish to use Doc
 
 Please create a structure like below i.e. `cd /tmp/joomla && mkdir project_1 project_2 project_3`.
 
-<Terminal>
-$ cd /tmp/joomla && mkdir project_1 project_2 project_3
-</Terminal>
+<Terminal>$ cd /tmp/joomla && mkdir project_1 project_2 project_3</Terminal>
 
-Then go back to the *Updated compose.yaml* chapter and create the `compose.yaml` file in both the three projects' folder. Do the same for the `.env` and the `makefile`.
+Then go back to the _Updated compose.yaml_ chapter and create the `compose.yaml` file in both the three projects' folder. Do the same for the `.env` and the `makefile`.
 
 The same three files in the three projects folders.
 
@@ -776,9 +760,7 @@ One directory by project and, again, our three files.
 <AlertBox variant="note" title="">
 The `tree` command isn't native in Linux. If you wish to install it, just run `sudo apt-get update && sudo apt-get install tree`.
 
-<Terminal>
-$ sudo apt-get update && sudo apt-get install tree
-</Terminal>
+<Terminal>$ sudo apt-get update && sudo apt-get install tree</Terminal>
 
 </AlertBox>
 
@@ -793,10 +775,10 @@ Please configure the `project_1/.env` file with the following content.
 
 As you can see (highlighted lines), that file is the same that the latest `.env` we've used earlier but:
 
-* We'll set the `CONTAINER_PREFIX` to an unique value; in our example `joomla_5`,
-* We need to do the same (i.e. define an unique value) for the MySQL port number; we can use the standard port `3306` for our first project but, let's use `3301` (`1` because it's our first project)
-* You've understood; we'll do the same for `JOOMLA_SITE_NAME` and `PROJECT_NAME`; remain humble and opt for `Joomla_5` and `joomla5` and
-* Finally, we need to define a web port number; we'll use `8081` (so our site will be available on `http://127.0.0.1:8081`).
+- We'll set the `CONTAINER_PREFIX` to an unique value; in our example `joomla_5`,
+- We need to do the same (i.e. define an unique value) for the MySQL port number; we can use the standard port `3306` for our first project but, let's use `3301` (`1` because it's our first project)
+- You've understood; we'll do the same for `JOOMLA_SITE_NAME` and `PROJECT_NAME`; remain humble and opt for `Joomla_5` and `joomla5` and
+- Finally, we need to define a web port number; we'll use `8081` (so our site will be available on `http://127.0.0.1:8081`).
 
 Here is the `.env` file for **our first** project:
 
@@ -882,9 +864,7 @@ WEB_PORT=8082
 
 Save the file and run `make up` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
 
-<Terminal>
-$ make up
-</Terminal>
+<Terminal>$ make up</Terminal>
 
 ![Our two Joomla projects are running](./images/project_1_2.png)
 
@@ -936,9 +916,7 @@ WEB_PORT=8083
 
 Save the file and run `make up && make start` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
 
-<Terminal>
-$ make up && make start
-</Terminal>
+<Terminal>$ make up && make start</Terminal>
 
 ![Our three Joomla projects are active at the same time on our development machine](./images/project_1_2_3.png)
 
@@ -954,7 +932,8 @@ In fact, nothing surprising, it's normal with Docker: everything is isolated in 
 If I'm located in my `/tmp/joomla` folder; I can start my three projects at once like this:
 
 <Terminal wrap={true}>
-$ cd project_1 && make up && cd ../project_2 && make up && cd ../project_3 && make up
+  $ cd project_1 && make up && cd ../project_2 && make up && cd ../project_3 &&
+  make up
 </Terminal>
 
 Here is something you can get:
@@ -964,25 +943,26 @@ $ cd project_1
 
 $ make up
 [+] Running 3/23
- ✔ Network joomla_5_network  Created               0.0s
- ✔ Container joomla_5-db     Healthy              11.5s
- ✔ Container joomla_5-app    Started               0.4s
+✔ Network joomla_5_network Created 0.0s
+✔ Container joomla_5-db Healthy 11.5s
+✔ Container joomla_5-app Started 0.4s
 
 $ cd ../project_2
 
 $ make up
 [+] Running 3/3
- ✔ Network joomla_4_network  Created               0.0s
- ✔ Container joomla_4-db     Healthy              31.0s
- ✔ Container joomla_4-app    Started              31.4s
+✔ Network joomla_4_network Created 0.0s
+✔ Container joomla_4-db Healthy 31.0s
+✔ Container joomla_4-app Started 31.4s
 
 $ cd ../project_3
 
 $ make up
 [+] Running 3/3
- ✔ Network joomla_3_network  Created                0.0s
- ✔ Container joomla_3-db     Healthy               62.7s
- ✔ Container joomla_3-app    Started               61.5s
+✔ Network joomla_3_network Created 0.0s
+✔ Container joomla_3-db Healthy 62.7s
+✔ Container joomla_3-app Started 61.5s
+
 </Terminal>
 
 ### Other projects? How many sites can I have?
@@ -1006,7 +986,7 @@ But? Did I need to be able to work on the three projects at the same time??? Pro
 In the console, just run `make stop` in folder project 1 and 3 by, running `( cd project_1 ; make stop ; cd ../project_3 ; make stop)`. We'll thus stop (not remove; just freeze and release memory) our first and third project.
 
 <Terminal>
-$ ( cd project_1 ; make stop ; cd ../project_3 ; make stop )
+  $ ( cd project_1 ; make stop ; cd ../project_3 ; make stop )
 </Terminal>
 
 By looking back to Docker Desktop, we can indeed see we've earned 1GB RAM.
@@ -1018,9 +998,7 @@ In our example here, we've just kept the second project so we can still work on 
 
 Just run `make up` again in f.i. folder `project_1` to make the site back to life. Or, if you prefer the GUI, in Docker Desktop, just click on the `Start` button:
 
-<Terminal>
-$ ( cd project_1 && make up )
-</Terminal>
+<Terminal>$ ( cd project_1 && make up )</Terminal>
 
 ![Starting a container in Docker Desktop](./images/docker_desktop_start.png)
 

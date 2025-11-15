@@ -8,25 +8,21 @@ image: /img/v2/docker_tips.webp
 mainTag: docker
 tags: [docker]
 language: en
+updates:
+  - date: 2025-08-03
+    note: Corrections based on Metin Y.
 ---
 <!-- cspell:ignore phplint,dind,dood,groupid,johndoe,addgroup,adduser,getent,metin,meyay -->
 
 ![Docker-out-of-Docker aka DooD](/img/v2/docker_tips.webp)
 
-<UpdateAt
-  title="Recent Changes"
-  updates={[
-    { date: "2025-08-03", content: "Corrections based on Metin Y" },
-  ]}
-/>
-
 In very exceptional situations, you may need to be able to run Docker commands from a Docker container. Wait? What?
 
-Imagine this situation: you're running a PHP container, everything is fine and you wish to run a code quality tool like, let's start easy, `phplint` (<Link to="/blog/php-jakzal-phpqa/#php-parallel-lint">see this article for deeper info</Link>). You don't want to install phplint because you know a very cool Docker image who already contains it (think to **[jakzal/phpqa](https://hub.docker.com/r/jakzal/phpqa)**)
+Imagine this situation: you're running a PHP container, everything is fine and, you wish to run a code quality tool like, let's start easy, `phplint` (<Link to="/blog/php-jakzal-phpqa/#php-parallel-lint">see this article for deeper info</Link>). You don't want to install phplint because you know a very cool Docker image who already contains it (think to **[jakzal/phpqa](https://hub.docker.com/r/jakzal/phpqa)**)
 
 So, you're inside a container and you wish to run another container.
 
-Another example: you're still inside a container and you wish to access to the list of running containers, already installed Docker images, volumes, ... (think to [portainer](https://www.portainer.io/))
+Another example: you're still inside a container and, you wish to access to the list of running containers, already installed Docker images, volumes, ... (think to [portainer](https://www.portainer.io/))
 
 Let's see in this article how to create your own Docker image, running as root or not, and configure it to allow docker requests.
 
@@ -135,7 +131,7 @@ And try `docker ps` again; it works. You can now have access to all Docker comma
 <AlertBox variant="caution" title="Still didn't work?">
 It should work. If not, please make sure you've the latest Docker version (the one I've used for this tutorial is Docker Desktop v4.42.1).
 
-Inside your container, please run `ls -alh /var/run/docker.sock` to look at the permissions of the Docker socket inside the container. You'll see the file is owned by the `root` user **BUT SHOULDN'T BE** owned by `root`. If you see `root` for both the user and the group, you've find why it didn't work. Your unprivileged used isn't member of the `root` group but he's well member of the `docker` group (the one having group id `1001`).
+Inside your container, please run `ls -alh /var/run/docker.sock` to look at the permissions of the Docker socket inside the container. You'll see the file is owned by the `root` user **BUT SHOULDN'T BE** owned by `root`. If you see `root` for both the user and the group, you've found why it didn't work. Your unprivileged used isn't member of the `root` group, but he's well member of the `docker` group (the one having group ID `1001`).
 
 By running `ls -alh /var/run/docker.sock`, you should see `1001` (or `docker`) for the group.
 
@@ -143,7 +139,7 @@ By running `ls -alh /var/run/docker.sock`, you should see `1001` (or `docker`) f
 
 ### What is this group 1001?
 
-As said, to be able to run DooD as a unprivileged user, you should be a member of the `docker` group on the host (not the `docker` group you can retrieve in the container).
+As said, to be able to run DooD as an unprivileged user, you should be a member of the `docker` group on the host (not the `docker` group you can retrieve in the container).
 
 One way to retrieve that ID is to run `getent group docker | cut -d: -f3`.  You'll most probably see `1001` since it's the standard ID for that group.
 

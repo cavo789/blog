@@ -8,15 +8,11 @@ image: /img/v2/docker_tips.webp
 mainTag: docker
 tags: [docker, visualisation, tips]
 language: en
+updates:
+  - date: 2025-05-14
+    note: Adding the `--format` flag
 ---
 ![How to generate a graph from compose.yaml](/img/v2/docker_tips.webp)
-
-<UpdateAt
-  title="Recent Changes"
-  updates={[
-    { date: "2025-05-14", content: "Adding the `--format` flag" },
-  ]}
-/>
 
 Imagine you to have a very big `compose.yaml` file with a lot of services and dependencies.
 

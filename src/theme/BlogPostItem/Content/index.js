@@ -22,6 +22,7 @@ import React, { useEffect, useRef, useState } from "react";
 import MDXContent from "@theme/MDXContent";
 import SeriesPosts from "@site/src/components/Blog/SeriesPosts/index.js";
 import OldPostNotice from "@site/src/components/Blog/OldPostNotice/index.js";
+import Updated from "@site/src/components/Blog/Updated/index.js";
 
 export default function BlogPostContent({ children }) {
   const contentRef = useRef(null);
@@ -58,6 +59,7 @@ export default function BlogPostContent({ children }) {
             excludePermalink={metadata.permalink}
             highlightCurrent={true}
           />
+          <Updated updates={metadata.frontMatter.updates} />
         </>
       )}
 
