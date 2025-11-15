@@ -4,6 +4,7 @@ import { useLocation, matchPath } from "@docusaurus/router";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import PostCard from "@site/src/components/Blog/PostCard";
+import styles from "./styles.module.css";
 
 export default function SeriesArticlesPage() {
   const location = useLocation();
@@ -43,9 +44,9 @@ export default function SeriesArticlesPage() {
       <div className="container margin-top--lg margin-bottom--lg">
         <h1>Series articles: {originalSeriesName}</h1>
         {sortedPosts.length > 0 ? (
-          <div className="row">
+          <div className={styles.seriesGrid}>
             {sortedPosts.map((post) => (
-              <PostCard key={post.title} post={post} />
+              <PostCard key={post.permalink} post={post} />
             ))}
           </div>
         ) : (

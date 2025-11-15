@@ -15,6 +15,13 @@ blueskyRecordKey: 3lyhtzknd6s2j
 
 ![Organize Your Docusaurus Content with a Custom Series Component](/img/v2/docusaurus_component.webp)
 
+<UpdateAt
+  title="Recent Changes"
+  updates={[
+    { date: "2025-11-15", content: "Add the /src/data/series.js file" },
+  ]}
+/>
+
 If you have been using Docusaurus for a long time, you may have noticed that it is not possible to create links between articles as one would like to do for a series.
 
 It would be nice to write a first article, a second, a third one, ... and teach Docusaurus these articles are part of the same series.
@@ -151,7 +158,7 @@ If like me you're running Docusaurus thanks to Docker, just kill the container a
 
 Return to your blog and refresh the page; you should get something like this (with your own content for sure):
 
-![Our component is now running](./images/our-component-is-running.png)
+![Our component is now running](./images/our-component-is-running.webp)
 
 Great, the component is now running.
 
@@ -235,7 +242,7 @@ Now, simply access to the `/series` URL. On my localhost, it's `http://127.0.0.1
 
 Here is what you can get without any stylization:
 
-![A page will all series](./images/series-page.png)
+![A page will all series](./images/series-page.webp)
 
 Great no?
 
@@ -245,13 +252,13 @@ Edit your `docusaurus.config.js` file and in the `navbar` -> `items` section, pl
 
 <Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.js" />
 
-![My series](./images/my-series.png)
+![My series](./images/my-series.webp)
 
 ### 2.5 Handling the /series/slug URL
 
 Ok, it works but ... from the `/series` page, if you click on a series, you'll get this error:
 
-![Page 404 when visiting a specific series](./images/page-404.png)
+![Page 404 when visiting a specific series](./images/page-404.webp)
 
 So, we've just created the `/series` page but when you reader will click on a series to get the list of articles, the URL will become something like `/series/the-name-of-the-series` and, thus, we need to tell to Docusaurus how to handle these new URLs.
 
@@ -278,7 +285,28 @@ For the last time, please restart your Docusaurus server.
 
 Now, in your main menu, you should have your `Series` entry and by clicking on it, you'll get the list of series. By clicking on a series, you'll obtain a new page with the list of articles in that series. Just click on a article to jump to it.
 
-![Seeing a specific serie](./images/a-serie.png)
+![Seeing a specific serie](./images/a-serie.webp)
+
+## Part 3 - Adding a /src/data/series.js file for customization
+
+The component is working fine right now but we miss two important features:
+
+1. Being able to write a description for the series
+2. Being able to use a custom image.
+
+Let's create a new file called `/src/data/series.js` with a content like this one:
+
+<Snippet filename="/src/data/series.js" source="./files/series.js" />
+
+You've to respect one important: the value you'll specify in the `name` key should match the value of your `series` as specified in your YAML front matter.
+
+So, for instance, for this blog post, my YAML key is `series: Creating Docusaurus components`, so I should find in my `/src/data/series.js`.
+
+The component will then be able to find the `description` and the `image` to use.
+
+Now, your Series page will look like this:
+
+![The series page with a description](./images/with-description.webp)
 
 ## Conclusion
 

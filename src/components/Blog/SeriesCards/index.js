@@ -20,12 +20,26 @@ import styles from "./styles.module.css";
  * Location: src/components/SeriesCards/index.js
  */
 
-import SERIES_DATA from "../../../data/series.js";
-
 const DEFAULT_IMAGE = "/img/default.webp";
+
+/**
+ * Safely imports the series data and returns it, or an empty array if the import fails.
+ * This prevents the application from crashing if the data file is missing.
+ * @returns {Array} The series data or an empty array.
+ */
+function getSeriesData() {
+  try {
+    const data = require("@site/src/data/series.js");
+    return data?.default ?? data;
+  } catch (error) {
+    return [];
+  }
+}
 
 export default function SeriesCards() {
   const seriesList = generateSeriesList();
+
+  const SERIES_DATA = getSeriesData();
 
   const enriched = seriesList.map((serie) => {
     const data = SERIES_DATA.find((s) => s.name === serie.seriesName);
