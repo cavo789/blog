@@ -2,5 +2,9 @@
   text-align: center;
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  color: #444;
+  color: var(--ifm-font-color-secondary);
+}
+
+html[data-theme="dark"] .seriesIntro {
+  color: var(--ifm-color-emphasis-600);
 }
