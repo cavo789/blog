@@ -68,7 +68,7 @@ For simplicity, create the `rector.php` file in your project's root directory.
 
 Call your friend, your coach, by just running `vendor/bin/rector process sayHello.php --dry-run rector.php`.
 
-![Rector is simplifying our sayHello function](./images/rector_say_hello.png)
+![Rector is simplifying our sayHello function](./images/rector_say_hello.webp)
 
 Let's take a look on the command:
 

@@ -167,7 +167,7 @@ running xelatex - 2
 Output created: test.pdf
 </Terminal>
 
-![Your PDF file](./images/pdf_version.png)
+![Your PDF file](./images/pdf_version.webp)
 
 <AlertBox variant="info" title="Hide non-essential information">
 Add the `--log-level warning` CLI argument to Quarto to ask him to show only warning (and error) messages. Non-essential output will be hidden and you'll keep a clean console. The new command to use is thus `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf --log-level warning`
@@ -186,7 +186,7 @@ This time, the `--to` argument should be set to `revealjs`: `docker run -it --rm
 
 Open the `test.html` file and you'll get this:
 
-![Revealjs - one slide](./images/revealjs_version1.png)
+![Revealjs - one slide](./images/revealjs_version1.webp)
 
 Ok, you've just one slide now. Reopen the `test.md` file and you'll insert *slide breaks*. This can be done using the `----` syntax:
 
@@ -217,11 +217,11 @@ Just run `docker run -d --name static-site -p 8080:80 -v .:/usr/local/apache2/ht
 
 Now your slideshow will have three slides (press <kbd>space</kbd> or arrow keys for navigation):
 
-![Revealjs - slide 1](./images/revealjs_slide1.png)
+![Revealjs - slide 1](./images/revealjs_slide1.webp)
 
-![Revealjs - slide 2](./images/revealjs_slide2.png)
+![Revealjs - slide 2](./images/revealjs_slide2.webp)
 
-![Revealjs - slide 3](./images/revealjs_slide3.png)
+![Revealjs - slide 3](./images/revealjs_slide3.webp)
 
 <AlertBox variant="info" title="Just deploy your slideshow online">
 The nice thing now is that your slideshow is ready to be deployed on your remote server. Copy the html file and the associated folder (in our use case here, file `test.html` and folder `test_files`) to your FTP server f.i. and your website can be publicly accessed. Nice, isn't it?

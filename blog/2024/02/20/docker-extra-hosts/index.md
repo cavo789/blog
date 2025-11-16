@@ -57,7 +57,7 @@ And run the script using `docker run -d -p 8080:80 -u ${UID}:${GID} -v "$PWD":/v
 
 That command will run a Apache container and we can surf to our local website using `http://127.0.0.1:8080`
 
-![Our local site](./images/localsite.png)
+![Our local site](./images/localsite.webp)
 
 ## Creating our second container
 
@@ -162,7 +162,7 @@ Imagine you've create an alias like:
 
 and thus, on your host, you're not using `http://127.0.0.1:8080` but `http://mysite.local:8080`
 
-![My site](./images/mysite.png)
+![My site](./images/mysite.webp)
 
 If we try to access it from inside the second container, it didn't work:
 

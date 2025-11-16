@@ -15,7 +15,7 @@ The extension [CodeSnap](https://marketplace.visualstudio.com/items?itemName=adp
 
 Open your file in vscode, select the desired lines, press <kbd>CTRL</kbd>-<kbd>SHIFT</kbd>-<kbd>P</kbd>, run `CodeSnap`. You just need to select lines now.
 
-![CodeSnap partial example](./images/partial.png)
+![CodeSnap partial example](./images/partial.webp)
 
 <!-- truncate -->
 
@@ -27,4 +27,4 @@ When you're done, just click on the `Polaroid` button just above the preview, sa
 
 Below an example of a PHP source code:
 
-![Sample example for CodeSnap](./images/codesnap.png)
+![Sample example for CodeSnap](./images/codesnap.webp)

@@ -54,13 +54,13 @@ Once the `compose.yaml` file has been created, in your console, now, just run `d
 
 You've now karakeep running. Surf to `http://localhost:2000/` and you'll get this screen:
 
-![karakeep - Logon screen](./images/logon.png)
+![karakeep - Logon screen](./images/logon.webp)
 
 Because it's your first time, click on `Sign Up` and let's create a new user. karakeep will force the password to respect some rules so, once defined, don't forget to add it in your password safe program (Bitwarden for my own).
 
 You'll get the dashboard:
 
-![karakeep - Dashboard](./images/dashboard.png)
+![karakeep - Dashboard](./images/dashboard.webp)
 
 ## Add a bookmark
 
@@ -68,7 +68,7 @@ And now, it's really piece of cake; just click in the **New Item** text area and
 
 I'll type `https://awesome-docker-compose.com/apps` and save it and immediately, I'll get this:
 
-![Awesome Docker](./images/awesome_docker.png)
+![Awesome Docker](./images/awesome_docker.webp)
 
 As you can see, karakeep has grab a picture of the web page.
 
@@ -76,15 +76,15 @@ As you can see, karakeep has grab a picture of the web page.
 
 First, create a list and fill in the different options (name, icon, ...):
 
-![Creating a list](./images/adding_list_1.png)
+![Creating a list](./images/adding_list_1.webp)
 
 Being back to the dashboard, click on the `...` button of the desired item and click on the `Manage Lists` option to be able to create a new list:
 
-![Adding to a specific list](./images/adding_list_2.png)
+![Adding to a specific list](./images/adding_list_2.webp)
 
 It's also possible to create a list as a child of an existing one and thus, you can easily do something like this:
 
-![Examples of lists](./images/lists.png)
+![Examples of lists](./images/lists.webp)
 
 ### Tips - Select a list before adding an item
 

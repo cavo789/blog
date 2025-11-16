@@ -73,7 +73,7 @@ Create a new file called `index.php` with the PHP code below:
 
 <Snippet filename="index.php" source="./files/index.php" />
 
-![Index php with poor written code](./images/index_php_bad_formatting.png)
+![Index php with poor written code](./images/index_php_bad_formatting.webp)
 
 <AlertBox variant="note" title="Pay attention to extra whitespace">
 On the screen capture here above, you can see *dots* to illustrate spaces and you can see there are a lot of spaces here and there and there are just unneeded.
@@ -86,7 +86,7 @@ We can run that script in a browser by running `docker run -d -p 80:80 -u $(id -
 
 As you can expect, the script is running fine:
 
-![Running the index page in a browser](./images/browser_index.png)
+![Running the index page in a browser](./images/browser_index.webp)
 
 <AlertBox variant="danger" title="Stop reading here if ...">
 ... you're one of those people who thinks *The script works, doesn't it? So why all the noise?*, **please turn off your computer and promise never to touch a single line of code again**. Even if the code *work* ... it stinks.
@@ -124,23 +124,23 @@ So, we've now three files: a disgusting `index.php`, `.devcontainer/devcontainer
 
 What we will do now is to *jump* in a Docker container. Take a look at the bottom left of your screen:
 
-![Running in WSL](./images/running_in_wsl.png)
+![Running in WSL](./images/running_in_wsl.webp)
 
 You'll see something like, in my case, `WSL: Ubuntu-20.04`. *It can be different on your computer depending on your operating system.* What VSCode says here is *I'm coding on my machine*.
 
 Click on that status or, as an alternative way, press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> to open the *Command Palette* and then search for `Reopen in Container` and press <kbd>Enter</kbd>.
 
-![Reopen in Container](./images/reopen_in_container.png)
+![Reopen in Container](./images/reopen_in_container.webp)
 
 Visual Studio Code will do a lot of stuff and, the first time, it can take a few minutes.
 
-![Now, you're in the container](./images/dev_container_vscode.png)
+![Now, you're in the container](./images/dev_container_vscode.webp)
 
 ## 6. Working in the container
 
 Now the magic happens: please reopen the so badly formatted `index.php` file and save the file **without any changes**. Just press <kbd>CTRL</kbd>+<kbd>S</kbd> and tadaaa 🎉🎉🎉
 
-![Your script has been correctly formatted this time](./images/index_php_correctly_formatted.png)
+![Your script has been correctly formatted this time](./images/index_php_correctly_formatted.webp)
 
 <AlertBox variant="info" title="How is this possible?">
 This because we taught VSCode to use a specific formatter for our PHP file and we told him to format the file each time it's saved. And do you know where we did it? In our `.devcontainer/devcontainers.json` and `.devcontainer/Dockerfile` files, of course!
@@ -182,7 +182,7 @@ The version `3.46.0` of the `PHP-CS-Fixer` executable will be downloaded and sto
 <AlertBox variant="info" title="Need to check?">
 Still in VSCode, open a terminal by pressing <kbd>CTRL</kbd>+<kbd>´</kbd> and, in the prompt, type `ls -l /usr/local/bin`. As you can see, `php-cs-fixer.phar` is well there. *It was installed downloaded and installed by VSCode when you've jump in the container.*
 
-![The php-cs-fixer.phar binary is well there](./images/php-cs-fixer-phar.png)
+![The php-cs-fixer.phar binary is well there](./images/php-cs-fixer-phar.webp)
 
 </AlertBox>
 
@@ -256,7 +256,7 @@ In VSCode, please create in the `.config` folder a file called `phpcs.xml` file 
 
 Now, since we have defined our coding standard (`PSR12` here), just display the `index.php` script again:
 
-![PHPCS in VSCode](./images/vscode_phpcs.png)
+![PHPCS in VSCode](./images/vscode_phpcs.webp)
 
 Open a terminal by pressing <kbd>CTRL</kbd>+<kbd>´</kbd> (or by clicking on the `View` menu then `Terminal`) and run this command:
 
@@ -324,11 +324,11 @@ So, please reopen the `index.php` file you've and now pay attention to the `echo
 
 <Snippet filename="index.php" source="./files/index.part3.php" />
 
-![SonarLint is seeing something](./images/sonarlint_underline.png)
+![SonarLint is seeing something](./images/sonarlint_underline.webp)
 
 Move the mouse cursor on the `sayHello()` variable and get extra information from SonarLint as a popup. You can, too, press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>M</kbd> to show the `Problems` pane (or menu `View` then `Problems`) to get the list of every SonarLint problems encountered in the current file and, too, in any file you'll open from now.
 
-![SonarLint explained](./images/sonarlint_explained.png)
+![SonarLint explained](./images/sonarlint_explained.webp)
 
 One solution would be to update the prototype of `sayHello` like this: `function sayHello($firstname = "")`.
 
@@ -345,7 +345,7 @@ In the previous example; when the prototype was `function sayHello($firstname)`,
 
 <Snippet filename="index.php" source="./files/index.part4.php" />
 
-![Intelephense in action](./images/intelephense.png)
+![Intelephense in action](./images/intelephense.webp)
 
 <AlertBox variant="caution" title="We need several tools">
 This example illustrates this point: to date, in February 2024, we still have to juggle with several extensions and tools to achieve clean, bug-free code.
@@ -410,7 +410,7 @@ To illustrate what Rector can do, please edit the `index.php` with this content,
 
 In a terminal, run `vendor/bin/rector process index.php --dry-run --config .config/rector.php` as we did before.
 
-![Rector is simplifying our sayHello function](./images/rector_say_hello.png)
+![Rector is simplifying our sayHello function](./images/rector_say_hello.webp)
 
 Take a look on the image here above. In red, your current code and, yes, we knew that, didn't we, the code quality is poor.
 

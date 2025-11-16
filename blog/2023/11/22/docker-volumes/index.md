@@ -230,15 +230,15 @@ In fact, volumes are stored in `\\wsl$\docker-desktop-data\data\docker\volumes` 
 
 One of the easiest ways to access the files contained in a volume is to use the Docker Desktop graphical interface.
 
-![Docker Desktop - List of volumes](./images/docker_desktop_volumes.png)
+![Docker Desktop - List of volumes](./images/docker_desktop_volumes.webp)
 
 By clicking of the volume name (`demo_counter_data` here)
 
-![Docker Desktop - Show the data folder](./images/showing_data.png)
+![Docker Desktop - Show the data folder](./images/showing_data.webp)
 
 By double-clicking on the filename, you'll start a basic text editor where you can, if you want, update the counter and save the change.
 
-![Docker Desktop - Updating the counter](./images/updating_data.png)
+![Docker Desktop - Updating the counter](./images/updating_data.webp)
 
 A new call to our counter shows that we have hacked the number:
 
@@ -267,7 +267,7 @@ Open the `data` root folder and right-click on `counter.txt`, our counter file a
 
 Now, you can edit that file from vscode, make changes and save them.
 
-![VSCode - Accessing to files in the container](./images/vscode.png)
+![VSCode - Accessing to files in the container](./images/vscode.webp)
 
 <Terminal>
 $ docker compose exec counter /counter.sh

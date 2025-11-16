@@ -37,7 +37,7 @@ You can find all the information on my repo at [https://github.com/cavo789/jooml
 
 4. By default, you'll get the list of users of your Joomla site:
 
-    ![The list of your users](./images/list_of_users.png)
+    ![The list of your users](./images/list_of_users.webp)
 
 So you can see how easy it is to use the script: there's nothing to configure for it to work.
 
@@ -47,15 +47,15 @@ As you can see, the script comes with an already predefined query to show the li
 
 Let's show the list of articles: open your preferred editor and open the `showtable.php` script; go to the line 70 and comment that line until line 79. Then uncomment the next query, as illustrated below.
 
-![Comment the users query](./images/comment_users_query.png)
+![Comment the users query](./images/comment_users_query.webp)
 
 We'll then use another predefined example... Save and refresh your web page. You'll get a new result:
 
-![The list of articles](./images/list_of_articles.png)
+![The list of articles](./images/list_of_articles.webp)
 
 If you want to export that list to Excel, see the `Excel` button top left and click on it :
 
-![Export to Excel](./images/export_to_excel.png)
+![Export to Excel](./images/export_to_excel.webp)
 
 ## From within Excel, retrieve our Joomla data
 
@@ -66,11 +66,11 @@ Make sure to add `&format=raw` for the URL. This is important so `showtable.php`
 
 </AlertBox>
 
-![Accessing the table from within Excel](./images/excel_webdata.png)
+![Accessing the table from within Excel](./images/excel_webdata.webp)
 
 And now, just right-click on the table in Excel and click then on `Refresh` to get an update of your Joomla content's at any time.
 
-![Refreshing from Excel](./images/excel_refresh.png)
+![Refreshing from Excel](./images/excel_refresh.webp)
 
 You can give that Excel sheet to anyone like your client and tell him *Right click on the sheet to get an update from Joomla site.* Nothing more.
 

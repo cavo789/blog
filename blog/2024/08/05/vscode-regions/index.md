@@ -46,7 +46,7 @@ Let's take a look and the following Dockerfile:
 
 By opening such file in VSCode didn't provide any collapse/expand features and we will need to scroll a lot. And we don't have a global overview of the structure.
 
-![No region support in VSCode for Dockerfile](./images/dockerfile-before.png)
+![No region support in VSCode for Dockerfile](./images/dockerfile-before.webp)
 
 The solution comes by installing a specialised extension: [https://marketplace.visualstudio.com/items?itemName=maptz.regionfolder](https://marketplace.visualstudio.com/items?itemName=maptz.regionfolder).
 
@@ -56,7 +56,7 @@ And, too, by adding these settings in your `.vscode/settings.json` file:
 
 Switch back to your tab in VSCode with your opened Dockerfile, press <kbd>CTRL</kbd>+<kbd>P</kbd> and run `Developer: Reload Window` to reload the window once the extension has been enabled and tadaaa!
 
-![Now, VSCode supports regions in Dockerfile](./images/dockerfile-after.png)
+![Now, VSCode supports regions in Dockerfile](./images/dockerfile-after.webp)
 
 <AlertBox variant="info" title="No, it's not just a visual trick">
 When you're working on very long files like, for me, a Dockerfile of over 900 lines, it's really imperative to be able to have regions that you can reduce/expand.
@@ -77,4 +77,4 @@ If you don't know how to do, just press <kbd>CTRL</kbd>-<kbd>,</kbd> (the comma)
 
 Now, if you open a file, his content will be automatically folded.
 
-![Autofold](./images/autofold.png)
+![Autofold](./images/autofold.webp)

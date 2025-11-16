@@ -33,7 +33,7 @@ Please create the file `/tmp/bash/generate_doc.sh` with this content:
 
 Once you've created the `/tmp/bash/generate_doc.sh` file and make it executable (`chmod +x ./generate_doc.sh`), just run `./generate_doc.sh` in the console.
 
-![Generate the documentation](./images/generate_doc.png)
+![Generate the documentation](./images/generate_doc.webp)
 
 The script will process any `.sh` file located in the `helpers` sub-folder (we've created the `string.sh` earlier).
 

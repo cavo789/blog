@@ -36,16 +36,16 @@ Now, please,
 1. Create an empty Excel workbook,
 2. Press <kbd>ALT</kbd>-<kbd>F11</kbd> to get the Visual Basic Editor (aka `vbe`).
 3. Create a new module:
-    ![Create a new module](./images/insert_module.png)
+    ![Create a new module](./images/insert_module.webp)
 4. Copy/Paste the VBA code from here below to it.
 5. Check the path for the `InputXmlFile` constant. Make sure it's the same as where you've saved your `.xml` file earlier.
 6. Click on the `Tools` menu then select `References` and add a reference to `Microsoft XML, v6.0`
-    ![Tools - References](./images/tools_references.png)
-    ![Microsoft XML, v6.0](./images/microsoft_xml6.png)
+    ![Tools - References](./images/tools_references.webp)
+    ![Microsoft XML, v6.0](./images/microsoft_xml6.webp)
 7. Finally, put the cursor anywhere in the `run` subroutine and press <kbd>F5</kbd> to run it.
-    ![Activate run subroutine](./images/sub_run.png)
+    ![Activate run subroutine](./images/sub_run.webp)
 8. After a few seconds, a new workbook will be created with the answer from the SOAP web service:
-    ![SOAP answer](./images/soap_answer.png)
+    ![SOAP answer](./images/soap_answer.webp)
 
 ```vbnet
 Option Explicit

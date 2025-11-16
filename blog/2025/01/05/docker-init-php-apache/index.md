@@ -47,7 +47,7 @@ You've now a local version of the script. It's a single `index.php` script; noth
 
 Just start `docker init` in the console:
 
-![Starting docker init](./images/docker_init.png)
+![Starting docker init](./images/docker_init.webp)
 
 As we can see, Docker init has already detected the presence of a PHP file so he's suggesting **PHP with Apache**. Great, just press <kbd>Enter</kbd>.
 
@@ -59,13 +59,13 @@ Now, you'll need to specify which port should be used for the application, I'll 
 
 And that's it.
 
-![Docker init has created our files](./images/docker_init_done.png)
+![Docker init has created our files](./images/docker_init_done.webp)
 
 It's too simple, isn't it? Let's try the suggested commands and see if the site actually works.
 
 First, create the container by running the `docker compose up --build` command then, once finished, just open your browser and surf to your local site (in my case `http://localhost:8080`) and ...
 
-![The application is running](./images/localhost.png)
+![The application is running](./images/localhost.webp)
 
 ## Let's take a look on created files
 

@@ -24,7 +24,7 @@ Thanks to Telescope, not only did I have a perfect view of what was being collec
 
 <!-- truncate -->
 
-![Dashboard](./images/telescope-dashboard.jpg)
+![Dashboard](./images/telescope-dashboard.webp)
 
 For an eloquent model f.i. we'll retrieve in Telescope (the default URL is `http://your_site/telescope`), we'll get the raw SQL so it's easy to copy/paste and run directly in pgadmin f.i.
 

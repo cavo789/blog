@@ -28,7 +28,7 @@ Simplicity is the key.
 
 There are a lot of applications but, because I really need one simple and fast (it's the end of the day, I should leave for my train, hop hop, a few seconds, ok, the note for tomorrow has been created), I've tried **[memos](https://www.usememos.com/)** and I appreciate it a lot.
 
-![memos demo](./images/memos.png)
+![memos demo](./images/memos.webp)
 
 ## Let's install memos
 
@@ -53,11 +53,11 @@ In your console, now, just run `docker compose up --build --detach`.
 
 In just six seconds, memos has been installed on my machine and a container has been created:
 
-![Installing memos](./images/installation.png)
+![Installing memos](./images/installation.webp)
 
 Go to `http://localhost:5230` and you'll see the website is already running:
 
-![First run](./images/first_run.png)
+![First run](./images/first_run.webp)
 
 <AlertBox variant="info" title="">
 See on the bottom left; it's possible to select another language; French is supported f.i.
@@ -66,7 +66,7 @@ See on the bottom left; it's possible to select another language; French is supp
 
 I'll create my account (`admin/admin` since I'm working on my localhost) and I'm ready to create my first note. It took me less than one minute until now.
 
-![The memos homepage](./images/homepage.png)
+![The memos homepage](./images/homepage.webp)
 
 Click in the `Any thoughts...` edit box and start to type your thought... For instance:
 
@@ -78,17 +78,17 @@ Click in the `Any thoughts...` edit box and start to type your thought... For in
 - [ ] Develop user login endpoint (`/login`) with JWT token generation.
 ```
 
-![My first note](./images/first_note.png)
+![My first note](./images/first_note.webp)
 
 By pressing the `Save` button, the note is created. It's clean and, tomorrow, oh nice, oh yes, that's true, I need to do these three things.
 
 Imagine it's tomorrow and I've achieved the first one, I just need to check the box and it's automatically saved:
 
-![The first task is done](./images/first_task_is_done.png)
+![The first task is done](./images/first_task_is_done.webp)
 
 I can still edit, pin, delete, archive, ... the task using the three-dots button:
 
-![The different options](./images/task_options.png)
+![The different options](./images/task_options.webp)
 
 ## Let's create a few more tasks
 
@@ -114,19 +114,19 @@ Write the missing documentation for the new user authentication module, covering
 Review the Dockerfile for the user authentication service to ensure optimal image size and security practices. #docker #python
 ```
 
-![A few more tasks](./images/few_tasks.png)
+![A few more tasks](./images/few_tasks.webp)
 
 ## Filtering using tags
 
 When you've used tags, you'll see them immediately bottom left under `Tags`. Simply click on a tag to filter on it. You can click on more than ones if you want. In the example below, I've three notes for `Python` and just one with the Docker tag:
 
-![Filtering using tags](./images/filtering_using_tags.png)
+![Filtering using tags](./images/filtering_using_tags.webp)
 
 ## Creating shortcuts
 
 Next to tags, you can use more sophisticated filters like what memos call `shortcut`.
 
-![Creating shortcuts](./images/creating_shortcuts.png)
+![Creating shortcuts](./images/creating_shortcuts.webp)
 
 The used filter is `has_task_list && tag in ["python"]`.
 

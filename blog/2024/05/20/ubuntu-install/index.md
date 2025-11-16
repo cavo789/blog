@@ -29,7 +29,7 @@ You can follow the official documentation here: [Turn Bitlocker off](https://ubu
 
 Shortly, still in your Windows session, start your **Control Panel**, search for **Bitlocker** and click on **Turn off Bitlocker**. Depending on the speed of your computer and the size of the hard disk, it'll take minutes.
 
-![Disabling Bitlocker](./images/disabling_bitlocker.png)
+![Disabling Bitlocker](./images/disabling_bitlocker.webp)
 
 <AlertBox variant="info" title="Follow progression in the tray panel">
 If, like me, you didn't see any progression on the screen, think to click on the tray panel icon (near the clock). You'll find there an icon about the decryption process.
@@ -56,7 +56,7 @@ There, make sure to select the option allowing you to boot on a USB stick; save 
 
 Your computer you'll now boot on the USB stick and start the installation process of Ubuntu.
 
-![Booting on the USB stick](./images/boot_usb.png)
+![Booting on the USB stick](./images/boot_usb.webp)
 
 Everything is nicely covered by the [official tutorial](https://ubuntu.com/tutorials/install-ubuntu-desktop).
 
@@ -92,7 +92,7 @@ In the bottom right of the installation screen, you'll find a small button. Clic
 
 </AlertBox>
 
-![Installation is completed](./images/installation_done.png)
+![Installation is completed](./images/installation_done.webp)
 
 ## Reboot and enable Ubuntu Pro
 

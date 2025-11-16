@@ -42,4 +42,4 @@ $ alias ls='eza --all --long --group --group-directories-first --icons --header 
 
 And, now, by just typing `ls`, I'll get this:
 
-![eza](./images/eza.png)
+![eza](./images/eza.webp)

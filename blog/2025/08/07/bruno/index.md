@@ -117,27 +117,27 @@ Please refers to the [Download & Install](https://docs.usebruno.com/get-started/
 
 Once installed, just start `bruno` from the command line to start the interface:
 
-![Bruno homepage](./images/homepage.png)
+![Bruno homepage](./images/homepage.webp)
 
 First thing first, let's create a collection:
 
-![Creating a collection](./images/create_collection.png)
+![Creating a collection](./images/create_collection.webp)
 
 And, because we're smart, let's create an environment too (so we can define our website root URL once):
 
-![Create the root environment variable](./images/environment.png)
+![Create the root environment variable](./images/environment.webp)
 
 Now, we're ready, let's create a new request:
 
-![Create a request](./images/new_request.png)
+![Create a request](./images/new_request.webp)
 
 Getting a random joke:
 
-![Getting a random joke](./images/random_joke.png)
+![Getting a random joke](./images/random_joke.webp)
 
 Once the request has been created, press <kbd>CTRL</kbd>+<kbd>ENTER</kbd> or click on the right arrow:
 
-![Running a request](./images/run_request.png)
+![Running a request](./images/run_request.webp)
 
 ## Opening the project with VSCode
 
@@ -145,7 +145,7 @@ By opening the project in VSCode, we can see there is a new folder called `Jokes
 
 Very clean structure no?
 
-![The project in VSCode](./images/vscode.png)
+![The project in VSCode](./images/vscode.webp)
 
 ## Running requests from the command line
 
@@ -177,7 +177,7 @@ As we've just seen:
 
 With this in mind, just run `docker run -it --rm -v "./Jokes":/apps -w /apps alpine/bruno run --env=dev`
 
-![Running for the first time the collection from the CLI](./images/connection_refused.png)
+![Running for the first time the collection from the CLI](./images/connection_refused.webp)
 
 Ok, something goes wrong. We've fired one request and it has failed. But when running the request from Bruno GUI, it was well working. Why? The answer is: because we are using Docker.
 
@@ -239,7 +239,7 @@ vars {
 
 That file won't work from the Bruno GUI: we'll be able to select `dev` and it'll work but not `dev-docker`
 
-![Having a second configuration file](./images/second_environment.png)
+![Having a second configuration file](./images/second_environment.webp)
 
 But from Bruno CLI container it'll works:
 
@@ -249,7 +249,7 @@ $ docker run -it --rm -v "./Jokes":/apps -w /apps \
   bruno-image run --env=dev-docker
 </Terminal>
 
-![Bruno CLI is working](./images/bruno_cli_is_working.png)
+![Bruno CLI is working](./images/bruno_cli_is_working.webp)
 
 ## Adding some assertions
 
@@ -259,4 +259,4 @@ Let's update the `Get a random joke.bru` file like this:
 
 <Snippet filename="Get a random joke.bru" source="./files/Get a random joke.bru" />
 
-![Bruno CLI is running assertions](./images/bruno_cli_assertions.png)
+![Bruno CLI is running assertions](./images/bruno_cli_assertions.webp)

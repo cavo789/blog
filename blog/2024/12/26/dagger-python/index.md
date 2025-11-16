@@ -39,7 +39,7 @@ Anyone who has to set up a CI that runs on a remote server knows this: it's the 
 
 It's extremely complicated to manage the reproducibility of the scripts because, when a CI error occurs on the server, you have to read the error log and try to understand why it occurs before trying to try to patch it (perhaps you'll need to update your yaml file), push the changes, wait, hope that it was the right correction, oh no, not the good one and you need to restart the loop and, oh no, ... and push again and ... It's a real pain and can take hours!
 
-![Pushing and wait](./images/push_and_wait_angry.jpg)
+![Pushing and wait](./images/push_and_wait_angry.webp)
 
 And, finally, you've solved the issue after having pushed for the 46th time.
 
@@ -68,7 +68,7 @@ These steps are fired in our CI (GitLab, Github, ...) every time we'll push our 
 
 ## We want Dagger
 
-![Dagger](./images/dagger.png)
+![Dagger](./images/dagger.webp)
 
 No surprise there; at some point we have to install Dagger. Install? Ouch no; we're not going to install it because, being Docker lovers, we're going to use Docker and create our Dagger image.
 
@@ -184,7 +184,7 @@ By running `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 Since it's the first time, Dagger will need to make some initializations (like installing PyLint) then we'll get the output:
 
-![Partial output - Pylint](./images/pylint.png)
+![Partial output - Pylint](./images/pylint.webp)
 
 Yes!, PyLint has worked and alert us about missing module docstring.
 

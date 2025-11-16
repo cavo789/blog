@@ -28,13 +28,13 @@ In this way, we could offer a nicer user experience by proposing a list and exec
 
 First, create an empty workbook. Create then a new sheet called f.i. `Params` with a list of values. For this article, let's create a list of periods:
 
-![The range](./images/range.png)
+![The range](./images/range.webp)
 
 Nothing difficult right now. To be flexible, please select the range and name it: `_rngParamsPeriod`. This is much better to hardcode a range like `$A$2:$A$14` isn't it?
 
 Second things to do is to foresee a cell in your sheet where the selected value will be written i.e. when the user will select a value from the list, we'll ask Excel to put the selected value there. To do this, just click on the cell where you wish to see the selected period and name that cell `_Period`. On the image below, I'll select cell `$C$2` on the same sheet but it can be else where.
 
-![The period range](./images/selected_period.png)
+![The period range](./images/selected_period.webp)
 
 Time to save for the first time your Excel file let's say in `c:\temp\ribbon.xlsx`, then close the workbook.
 
@@ -42,7 +42,7 @@ Time to save for the first time your Excel file let's say in `c:\temp\ribbon.xls
 
 Time to add our ribbon. To do this, just download this free tool: [https://bettersolutions.com/vba/ribbon/custom-ui-editor-download.htm](https://bettersolutions.com/vba/ribbon/custom-ui-editor-download.htm). You'll find an executable called `CustomUIEditor.exe`. Double-click on it to start the editor then open your `c:\temp\ribbon.xlsx` file:
 
-![Custom UI editor](./images/editor.png)
+![Custom UI editor](./images/editor.webp)
 
 Click on the Insert menu then select `Office 2010 Custom UI Part`.
 
@@ -52,7 +52,7 @@ Paste the XML below in the editor window:
 
 You'll then have this:
 
-![Custom UI editor](./images/xml.png)
+![Custom UI editor](./images/xml.webp)
 
 Save your changes and quit the editor.
 
@@ -62,7 +62,7 @@ From your explorer, double-click on your `c:\temp\ribbon.xlsx` file to start Exc
 
 You'll get an error message and it's perfectly normal: we still need to add some VBA code so just press on **Ok**.
 
-![Error](./images/missing_code.png)
+![Error](./images/missing_code.webp)
 
 <AlertBox variant="info" title="">
 In our ribbon, we wrote, among other things, the following: `getItemCount="modToolbar_cbxPeriod.getItemCount"`. So, Excel is trying to run a function called `getItemCount` from a module called `modToolbar_cbxPeriod` and ... we don't have it yet.
@@ -73,7 +73,7 @@ Press <kbd>ALT</kbd>-<kbd>F11</kbd> to open the VBE editor
 
 As illustrated below, right-click on the `VBEProject` project and insert a new module.
 
-![Inserting a new module](./images/insert_module.png)
+![Inserting a new module](./images/insert_module.webp)
 
 This done, click on the added module and bottom left, you can give it a name, f.i. `modToolbar_cbxPeriod`.
 
@@ -83,7 +83,7 @@ In the right, main, part of the screen, please paste this code:
 
 We're almost done: we need to give a name to the sheet where the range is located. If you still remember the beginning of this blog post, we've added the range in a sheet called `Params` so, now in the VBE editor, just select the `Params` sheet as illustrated below (see 1.) and name the sheet `shParams` (see 2).
 
-![Naming the sheet](./images/shParams.png)
+![Naming the sheet](./images/shParams.webp)
 
 <AlertBox variant="caution" title="You should now use the .xlsm extension">
 Save the Excel workbook but, this time, with the `.xlsm` extension since the workbook contains VBA code.
@@ -92,6 +92,6 @@ Save the Excel workbook but, this time, with the `.xlsm` extension since the wor
 
 Time to test our feature: close the workbook and re-open it again and, this time, your list has been populated and by selecting a value from the list, the value will be injected in your worksheet; ready to be used.
 
-![Demo](./images/demo.png)
+![Demo](./images/demo.webp)
 
 <Link to="/blog/tags/ribbon">Want to keep playing with ribbons? Check out my other articles on the subject.</Link>

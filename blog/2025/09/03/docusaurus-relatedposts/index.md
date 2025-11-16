@@ -21,7 +21,7 @@ When you surf on my blog, you'll see below every articles a list of **Related bl
 
 The objective of our component will be to display something like this:
 
-![Related Blog posts](./images/related.png)
+![Related Blog posts](./images/related.webp)
 
 <!-- truncate -->
 
@@ -86,7 +86,7 @@ We've made all the required configuration but ... when you visit your blog, you 
 
 For instance, on the image here below, we don't see any cards.
 
-![There is no related articles, why?](./images/no_related_articles.png)
+![There is no related articles, why?](./images/no_related_articles.webp)
 
 <StepsCard
   title="This because we need to things:"
@@ -124,4 +124,4 @@ Then, all posts in your blog should have the, standard, `tags` array where you c
 
 The `RelatedPosts` component will then search for `docusaurus` across your posts and display up to 6 cards.
 
-![The final result](./images/final.png)
+![The final result](./images/final.webp)

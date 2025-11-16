@@ -127,11 +127,11 @@ If you wish another port like `3002` f.i., just edit the yaml file and replace `
 
 </AlertBox>
 
-![Docusaurus homepage](./images/homepage.png)
+![Docusaurus homepage](./images/homepage.webp)
 
 And if we click on the `Blog` menu, we can see our posts:
 
-![Our posts](./images/posts.png)
+![Our posts](./images/posts.webp)
 
 <AlertBox variant="info" title="Chronology of blog posts">
 As you can see, the default ordering follows chronological order: the last blog item we've created (`2024-02-06-my-second-post.md`) is the first one in the list.
@@ -144,17 +144,17 @@ For this tutorial, images comes from `unsplash.com` but with a theme: dinosaurs.
 
 We'll create on our computer a file in our `blog` folder. I'm using vscode so I jump in my editor, go to the `blog` folder and create a new file, let's say: `2024-02-07-really-better.md`
 
-![Really better one](./images/vscode.png)
+![Really better one](./images/vscode.webp)
 
 For ease of use, go to this tutorial: [https://docusaurus.io/docs/blog#adding-posts](https://docusaurus.io/docs/blog#adding-posts).
 
 Copy/paste the `2019-09-05-hello-docusaurus.md` example to your `2024-02-07-really-better.md` file.
 
-![Our new article](./images/vscode-article.png)
+![Our new article](./images/vscode-article.webp)
 
 Just go back to your browser and refresh the page (press <kbd>F5</kbd>). Your new post is there!
 
-![Your new post is there](./images/with-new-post.png)
+![Your new post is there](./images/with-new-post.webp)
 
 ## Stop and restart
 

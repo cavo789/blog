@@ -61,7 +61,7 @@ Never give your bank card code to a stranger.
 
 And, that paragraph is converted like this in PDF:
 
-![Callout Caution in PDF](./images/caution-pdf.png)
+![Callout Caution in PDF](./images/caution-pdf.webp)
 
 The Quarto syntax for a tip is:
 
@@ -72,7 +72,7 @@ By going to bed earlier, you'll get better quality sleep.
 :::
 ```
 
-![Callout Tip in PDF](./images/tip-pdf.png)
+![Callout Tip in PDF](./images/tip-pdf.webp)
 
 Callouts are supported in PDF, HTML, revealJS and other formats.
 
@@ -86,7 +86,7 @@ Press <kbd>CTRL</kbd>-<kbd>SHIFT</kbd>-<kbd>P</kbd> to get access to the **Comma
 
 Start to type `Configure User Snippets`, validate and select `markdown.json` since our snippets should be available only when writing Markdown content.
 
-![Creating a snippet](./images/create-snippets.png)
+![Creating a snippet](./images/create-snippets.webp)
 
 If this is your first snippet, the JSON file will be empty. Copy/paste the text below. Otherwise, just copy the `callout` node and paste it in your file to the correct location.
 
@@ -96,7 +96,7 @@ Save and close the `markdown.json` file and go back to any markdown file (or cre
 
 Now, by typing `quarto` and by pressing <kbd>CTRL</kbd>-<kbd>space</kbd>, VSCode will show the list of possibilities for that word and you'll retrieve your snippet. Select it and press <kbd>Enter</kbd> to validate.
 
-![Call the snippet](./images/call-snippets.png)
+![Call the snippet](./images/call-snippets.webp)
 
 And, as you can see on the image below, VSCode will ask you three things:
 
@@ -104,7 +104,7 @@ And, as you can see on the image below, VSCode will ask you three things:
 2. Then, after having pressed the <kbd>tab</kbd> key, you'll be prompted to type a title and, finally,
 3. The body of your paragraph.
 
-![Using the snippet](./images/using-snippet.png)
+![Using the snippet](./images/using-snippet.webp)
 
 VSCode will show you the snippet interactively and you can then, easily, create it without having to remind the correct syntax.
 

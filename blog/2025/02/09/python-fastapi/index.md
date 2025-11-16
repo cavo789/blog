@@ -61,7 +61,7 @@ $ docker build -t python-fastapi . && docker run -p 82:82 python-fastapi
 
 Once done, just surf to `http://127.0.0.1:82` and you'll obtain your first JSON answer; crazy no?
 
-![Hello World](./images/hello_world.png)
+![Hello World](./images/hello_world.webp)
 
 ## Automated documentation of your API
 
@@ -69,11 +69,11 @@ And it's just the beginning: FastAPI comes with a self-documented API based on t
 
 Please jump to `http://127.0.0.1:82/docs` and you'll see it in action:
 
-![Automated documentation - Swagger UI](./images/doc.png)
+![Automated documentation - Swagger UI](./images/doc.webp)
 
 There is an second, alternative template called ReDoc. You can access it using the `redoc` endpoint i.e. `http://127.0.0.1/redoc`:
 
-![Automated documentation - Redoc](./images/redoc.png)
+![Automated documentation - Redoc](./images/redoc.webp)
 
 ## Let's play - Creating a joke generator
 
@@ -149,13 +149,13 @@ As an exercise; just remove the initialisation part of the  `jokes` array and, i
 
 Go back to your browser and surf to the `jokes` endpoint (`http://127.0.0.1:82/jokes`) and, hop, you've a random joke.
 
-![Getting a random joke](./images/random_joke.png)
+![Getting a random joke](./images/random_joke.webp)
 
 Just refresh the page; again and again. Every time you'll get a random joke (from a list of 5).
 
 If you want a specific one, just put an ID after like `http://127.0.0.1:82/jokes/1`
 
-![A specific joke](./images/specific_joke.png)
+![A specific joke](./images/specific_joke.webp)
 
 <AlertBox variant="note" title="">
 Please note that the array start at position 0 so the first joke is this one: `http://127.0.0.1:82/jokes/0`.
@@ -166,7 +166,7 @@ Please note that the array start at position 0 so the first joke is this one: `h
 
 And looking back to the documentation (`http://127.0.0.1:82/docs`); we've now three routes and, take a look, the Python docstring is used to describe the route.
 
-![Swagger UI - With new routes](./images/doc_with_jokes.png)
+![Swagger UI - With new routes](./images/doc_with_jokes.webp)
 
 Really, really impressive!
 

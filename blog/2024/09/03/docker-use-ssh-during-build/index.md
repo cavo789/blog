@@ -46,7 +46,7 @@ Then you should know which protocol you've used and that's really important. Is 
 
 Just run `ls -alh ~/.ssh` to get the list of your keys:
 
-![My own keys](./images/ssh_keys.png)
+![My own keys](./images/ssh_keys.webp)
 
 I'm using two different keys as you can see: `id_ed25519` or `id_rsa`. Files having the `.pub` extensions are the public keys; those without extensions are the private keys.
 
@@ -83,7 +83,7 @@ You can use what you want for `a_secret_name`; for instance, `my_ssh_key`.
 <AlertBox variant="info" title="docker compose config">
 You can, if you want, run `docker compose config` to check if your file is correct. You'll also see the full path for the used key.
 
-![Docker compose config](./images/config.png)
+![Docker compose config](./images/config.webp)
 
 </AlertBox>
 
@@ -111,19 +111,19 @@ Run `docker compose --progress plain build --no-cache` in your console to build 
 
 As you can see below, we can confirm that our SSH key was shared during the build process.
 
-![You're authenticated](./images/authenticated.png)
+![You're authenticated](./images/authenticated.webp)
 
 You'll now create the container; by running `docker compose up --detach`.
 
-![The container is being created](./images/container_created.png)
+![The container is being created](./images/container_created.webp)
 
 Now, just to check, we can jump inside the container by running `docker compose exec app /bin/bash`.
 
-![Starting an interactive console](./images/bash_session.png)
+![Starting an interactive console](./images/bash_session.webp)
 
 We can verify that our key wasn't stored in the image by running `ls -alh /root/.ssh/`
 
-![No keys in the .ssh folder](./images/root_ssh_folder.png)
+![No keys in the .ssh folder](./images/root_ssh_folder.webp)
 
 We can check too: jumping in our project folder and running `git pull` will fail with the error below:
 
@@ -151,7 +151,7 @@ Then recreate the container by running `docker compose up --detach`. Jump in the
 
 Why? Because your SSH keys are now part of the container as we can see by running `ls -alh /root/.ssh`:
 
-![Keys are now part of the container](./images/container_ssh_keys.png)
+![Keys are now part of the container](./images/container_ssh_keys.webp)
 
 <AlertBox variant="caution" title="Keys are not stored in the image even when you've shared them with the container">
 Just to be clear: the notion of volume we've just implemented concerns the container and not the image. In other words, SSH keys are not stored in the Docker image. You could give it to someone else (e.g. by saving the image on Docker Hub); your keys won't be there and will remain on your computer. Your image and your secrets are safe.
@@ -163,7 +163,7 @@ Then, when the user run `docker compose up --detach` using the `compose.yaml` fi
 <AlertBox variant="caution" title="Please take note of the running user in your container">
 In our example here, the default user is `root` as we can see by jumping in the container and running `whoami`.
 
-![Whoami](./images/whoami.png)
+![Whoami](./images/whoami.webp)
 
 So, when we've started `git pull`, it was under `root`. This is why we've mounted our volume like below:
 

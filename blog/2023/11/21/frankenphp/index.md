@@ -43,7 +43,7 @@ By running `docker compose pull`, Docker will download the two images; the one w
 
 Then, you just need to create containers based on the images by running `docker compose up`. You'll start the get logs messages on the console *(because, here, you've not used the `--detach` flag for the illustration)*:
 
-![Running FrankenPHP](./images/running_frankenphp.jpg)
+![Running FrankenPHP](./images/running_frankenphp.webp)
 
 <AlertBox variant="highlyImportant" title="Please wait until MySQL is ready">
 You have now to wait **a few minutes** before the database connection is ready. You will have the feeling the installation fails due to a lot of `[ERROR] Connection refused` lines but just wait.
@@ -51,7 +51,7 @@ You have now to wait **a few minutes** before the database connection is ready. 
 
 The fact is Joomla will try to connect to MySQL while the MySQL container is not ready to handle connections. You'll then see a lot of `[ERROR] Connection refused`. Stay patient and after a while, you'll get this:
 
-![Joomla has been installed](./images/frankenphp_joomla_installed.jpg)
+![Joomla has been installed](./images/frankenphp_joomla_installed.webp)
 
 <AlertBox variant="note" title="Logs can be different in your version">
 Depending on the version of the used Docker images, scripts and version of Joomla, the logs statements can differs in time.
@@ -65,7 +65,7 @@ Please note that FrankenPHP is delivering your site using `https`. The way Alexa
 
 </AlertBox>
 
-![Joomla is now running on FrankenPHP](./images/frankenphp_joomla_homepage.jpg)
+![Joomla is now running on FrankenPHP](./images/frankenphp_joomla_homepage.webp)
 
 You'll perhaps not see a major increase in speed on your machine since you're the only visitor but it's nice to think that you're surfing so fast ... locally ;).
 

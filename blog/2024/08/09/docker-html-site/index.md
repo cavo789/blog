@@ -43,6 +43,6 @@ Docker will download Apache if not yet on your machine, then will start a Apache
 
 Once done, just start your preferred browser and surf to `http://localhost:8080`. Bingo!
 
-![Your local website](./images/localhost.png)
+![Your local website](./images/localhost.webp)
 
 You've a fully, working, site. Crazy no?

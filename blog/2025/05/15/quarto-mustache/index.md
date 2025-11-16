@@ -117,7 +117,7 @@ Imagine you're working on a complex project – perhaps writing a research paper
 
 Time to create our website. Please run `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render`.
 
-![Rendering the Contextual Canvas feature](./images/render_canvas.png)
+![Rendering the Contextual Canvas feature](./images/render_canvas.webp)
 
 This will call the `render` command of Quarto. Quarto will then process the `_quarto.yml` file, see we want to produce a website and start HTML rendering. It'll take just one or two seconds.
 
@@ -127,7 +127,7 @@ Finally, surf to `http://localhost:8080/documentation/canvas.html` and we'll see
 
 And now, we're ready to copy/paste the file `documentation/canvas.md` to `documentation/feature_2.md` and just update the command variable. And do this again and again until we've documented all features.
 
-![Our Canvas feature](./images/html_canvas.png)
+![Our Canvas feature](./images/html_canvas.webp)
 
 ### What have we just done
 
@@ -170,7 +170,7 @@ The *Intent-Driven Interface Builder* would then leverage AI and a vast library 
 
 and render our site again by running again `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render`.
 
-![Our second feature](./images/html_builder.png)
+![Our second feature](./images/html_builder.webp)
 
 ## My use case
 

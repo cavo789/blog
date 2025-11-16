@@ -1,0 +1,136 @@
+{
+  "name": "Quarto Docs Project - Demo",
+  "dockerComposeFile": "compose.yaml",
+  "service": "quarto-doc-base",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "vscode",
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/paul-gilber/devcontainer-features/yamllint-homebrew:1": {}
+  },
+  "initializeCommand": "mkdir -p .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
+  "postAttachCommand": "if which pre-commit >/dev/null 2>&1; then pre-commit install || true; fi",
+  "forwardPorts": [8000],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "[dockerfile]": {
+          "files.eol": "\n",
+          "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+        },
+        "[json]": {
+          "editor.defaultFormatter": "vscode.json-language-features"
+        },
+        "[jsonc]": {
+          "editor.defaultFormatter": "vscode.json-language-features",
+          "editor.wordWrap": "wordWrapColumn",
+          "editor.wordWrapColumn": 80,
+          "editor.wrappingIndent": "indent"
+        },
+        "[markdown]": {
+          "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+          "editor.wordWrap": "wordWrapColumn",
+          "editor.wordWrapColumn": 80,
+          "editor.wrappingIndent": "indent"
+        },
+        "[yaml]": {
+          "editor.defaultFormatter": "redhat.vscode-yaml"
+        },
+        "cSpell.language": "en,fr,nl",
+        "cSpell.words": [
+          "Quarto",
+          "devcontainer",
+          "frontmatter",
+          "Pandoc",
+          "Gitlens"
+        ],
+        "editor.formatOnSave": true,
+        "editor.guides.bracketPairs": "active",
+        "editor.guides.bracketPairsHorizontal": "active",
+        "editor.guides.highlightActiveIndentation": true,
+        "editor.guides.indentation": true,
+        "editor.multiCursorModifier": "ctrlCmd",
+        "editor.renderWhitespace": "all",
+        "editor.rulers": [120, 70],
+        "editor.stickyScroll.enabled": true,
+        "editor.tabCompletion": "on",
+        "editor.tabSize": 4,
+        "editor.wordBasedSuggestionsMode": "allDocuments",
+        "editor.wordWrapColumn": 120,
+        "explorer.compactFolders": false,
+        "explorer.confirmDelete": true,
+        "explorer.confirmDragAndDrop": true,
+        "extensions.autoCheckUpdates": false,
+        "files.associations": {
+          "resources/*.json": "jsonc"
+        },
+        "files.autoSave": "onFocusChange",
+        "files.defaultLanguage": "${activeEditorLanguage}",
+        "files.eol": "\n",
+        "files.exclude": {
+          "**/.cache": true,
+          "**/.git": true,
+          "**/.quarto": true,
+          "**/*.html": true,
+          "**/readme_files/**": true,
+          "**/site_libs/**": true
+        },
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true,
+        "maptz.regionfolder": {
+          "[dockerfile]": {
+            "foldEnd": "[\\S]*\\#[\\s]*endregion",
+            "foldEndRegex": "[\\S]*\\#[\\s]*endregion[\\s]*(.*)$",
+            "foldStart": "[\\S]*\\#[\\s]*region [NAME]",
+            "foldStartRegex": "[\\S]*\\#[\\s]*region[\\s]*(.*)$"
+          }
+        },
+        "markdown.extension.toc.levels": "2..6",
+        "markdown.extension.tableFormatter.enabled": true,
+        "markdownlint.config": {
+          "MD033": false,
+          "MD036": false
+        },
+        "quarto.preview.renderOnSave": true,
+        "telemetry.telemetryLevel": "off",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "icon": "terminal-bash"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.fontFamily": "MesloLGS NF",
+        "terminal.integrated.tabs.defaultLocation": "editorGroup",
+        "yaml.schemas": {
+          "https://json.schemastore.org/json-schema-v7.json": [
+            "_quarto.yml",
+            "_quarto-*.yml"
+          ],
+          "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.yml"
+        },
+        "window.title": "${dirty}${rootName} ${separator} [DevContainer]",
+        "workbench.colorTheme": "Visual Studio Light"
+      },
+      "extensions": [
+        "DavidAnson.vscode-markdownlint",
+        "esbenp.prettier-vscode",
+        "gitkraken.gitlens",
+        "maptz.regionfolder",
+        "mde.select-highlight-minimap",
+        "mikestead.dotenv",
+        "ms-vscode.makefile-tools",
+        "quarto.quarto",
+        "redhat.vscode-yaml",
+        "sirtori.indenticator",
+        "streetsidesoftware.code-spell-checker-dutch",
+        "streetsidesoftware.code-spell-checker-french",
+        "streetsidesoftware.code-spell-checker",
+        "yzhang.markdown-all-in-one"
+      ]
+    }
+  }
+}

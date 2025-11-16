@@ -47,7 +47,7 @@ $ docker run -d --name static-site -p 80:80 -v ./src:/usr/local/apache2/htdocs h
 
 Once these commands have been fired, please jump to `http://locahost:8080` and you'll get this:
 
-![Website running as http](./images/running_http.png)
+![Website running as http](./images/running_http.webp)
 
 <AlertBox variant="info" title="Crazy easy, no?" />
 
@@ -87,15 +87,15 @@ Everything is now in place for to enable a http access. Still in the `/tmp/https
 
 You'll get something like this in the console:
 
-![Docker run http](./images/docker_run_http.png)
+![Docker run http](./images/docker_run_http.webp)
 
 If we take a look on Docker Desktop, list of containers, we'll see our project (called `https_localhost` since it's the name of our folder in this blog post) and we'll see our `apache` service running on port 80.
 
-![Docker Desktop - Running on port 80](./images/docker_desktop_80.png)
+![Docker Desktop - Running on port 80](./images/docker_desktop_80.webp)
 
 By accessing `http://localhost` with the browser, we'll get our site, up and running:
 
-![Website running as http](./images/running_http.png)
+![Website running as http](./images/running_http.webp)
 
 Okay, so now we have confirmation that the three files we created above work and allow us http access. Let's go further with https.
 
@@ -170,7 +170,7 @@ Finally, we should enable SSL and the mod rewrite of Apache, we've to disable th
 
 At this stage, you should have a folder structure like this:
 
-![The folder structure](./images/files.png)
+![The folder structure](./images/files.webp)
 
 1. A folder called `httpd` containing a file called `my-site.conf` the configuration file for Apache,
 2. A folder called `src` with the HTML static website files (plenty of files; coming from Github),
@@ -184,7 +184,7 @@ We need to update our Docker image since we've updated the Dockerfile so we'll r
 
 If we go back to Docker Desktop, we should see this:
 
-![Docker Desktop - Running on ports 80 and 443](./images/docker_desktop_80_443.png)
+![Docker Desktop - Running on ports 80 and 443](./images/docker_desktop_80_443.webp)
 
 We've enabled our site to be able to run on port 80 (http) and 443 (https).
 
@@ -193,7 +193,7 @@ Now that everything is in place, just go to `https://localhost/` and badaboum...
 <AlertBox variant="danger" title="Connection is not private">
 You'll most probably see the error below with the majority of browsers.
 
-![Your connection is not private](./images/connection_not_private.png)
+![Your connection is not private](./images/connection_not_private.webp)
 
 The reason is we're using a **self-signed** certificate and browsers didn't like this.
 
@@ -205,11 +205,11 @@ First follow this link: [chrome://flags/#temporary-unexpire-flags-m118](chrome:/
 
 Press <kbd>CTRL</kbd>+<kbd>F</kbd> and search for **localhost** then switch the feature to `Enabled`:
 
-![Allow invalid certificates for resources loaded from localhost](./images/expirements_allow_certificates_localhost.png)
+![Allow invalid certificates for resources loaded from localhost](./images/expirements_allow_certificates_localhost.webp)
 
 Now, by going back to `https://localhost` it'll work, you'll get the website but still with a **Not secure** flag:
 
-![Website running as https](./images/running_https.png)
+![Website running as https](./images/running_https.webp)
 
 This flag is well expected so it's not an error. We're using a self-signed certificate and therefore not really trustworthy. However, it's enough to develop in localhost and under SSL.
 

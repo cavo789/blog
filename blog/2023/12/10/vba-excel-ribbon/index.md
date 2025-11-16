@@ -31,7 +31,7 @@ For this exercise; please extract all files and folders to your `C:\tmp\ribbon` 
 
 As a support for this blog post, please create a new, empty, file in Excel called `Ribbon.xslm`  in your `C:\tmp\ribbon` folder (or elsewhere).
 
-![Excel Ribbon.xslm](./images/Excel_empty_file.png)
+![Excel Ribbon.xslm](./images/Excel_empty_file.webp)
 
 <AlertBox variant="info" title="Just creates an empty file">
 Right now, we don't need to do something else than Create New - File Save as - FileType - Excel Macro-Enabled Workbook..
@@ -46,7 +46,7 @@ By default, a standard MS Office document doesn't contain any ribbon so, when yo
 
 Please start `CustomOfficeUIEditor` and open your `Ribbon.xlsm` file:
 
-![UI - Open Ribbon.xlsm](./images/UI_open.png)
+![UI - Open Ribbon.xlsm](./images/UI_open.webp)
 
 <AlertBox variant="caution" title="Make sure to close it first if still open in Excel">
 When using the editor, the file itself can't be opened in Excel! Imagine the following situation: the workbook is open both in the editor and in Excel. You make a lot of changes in Excel, switch to the editor and change the manifest. By saving the file in the editor, you'll lose every change made in Excel so... be careful.
@@ -55,11 +55,11 @@ When using the editor, the file itself can't be opened in Excel! Imagine the fol
 
 The first time, you'll need to add a new ribbon: click on the `Insert` menu and select `Office 2010 Custom UI Part`.
 
-![Insert](./images/UI_Editor_Insert.png)
+![Insert](./images/UI_Editor_Insert.webp)
 
 You'll then obtain a screen like this:
 
-![Office 2010 Custom UI Part](./images/UI_Editor_Insert_UI14.png)
+![Office 2010 Custom UI Part](./images/UI_Editor_Insert_UI14.webp)
 
 When `customUI14.xml` is selected (like illustrated above), click somewhere in the right pane and start to code your XML content.
 
@@ -67,15 +67,15 @@ Now, in the right pane, just copy/paste the XML source below:
 
 <Snippet filename="customUI14.xml" source="./files/customUI14.xml" />
 
-![Manifest added](./images/UI_Editor_Added_UI14.png)
+![Manifest added](./images/UI_Editor_Added_UI14.webp)
 
 Before saving your file, be sure to click on the `Validate` button so a check is made to verify the quality of the content.
 
-![Check](./images/UI_Editor_Check.png)
+![Check](./images/UI_Editor_Check.webp)
 
 Since the ribbon is correct, save the file and open it in Excel. If everything goes fine, you'll obtain this:
 
-![Sample](./images/UI_Editor_Sample.png)
+![Sample](./images/UI_Editor_Sample.webp)
 
 <AlertBox variant="info" title="Your ribbon has been created">
 Congratulations, you've added a ribbon to your workbook. It was not too hard I think.
@@ -106,11 +106,11 @@ The ribbon should define inside the `<ribbon>` node but not immediately since a 
 
 Below we can see the standard ribbon of Excel and you can see a lot of tabs: `File`, `Insert`, `Page layout`, `Formulas`, `Data`, `Review`, `View`, ...
 
-![Tabs](./images/Tabs.png)
+![Tabs](./images/Tabs.webp)
 
 Each tab comes with features (buttons, checkboxes, ...). For the `Insert` tab, we've first a group of three buttons into a group called `Tables`:
 
-![Insert - Group Tables](./images/Tab_Insert_Tables.png)
+![Insert - Group Tables](./images/Tab_Insert_Tables.webp)
 
 So, a ribbon should be:
 
@@ -150,7 +150,7 @@ The XML below will, in one line,
 
 Here is our added tab:
 
-![Add_new_tab](./images/Add_new_tab.png)
+![Add_new_tab](./images/Add_new_tab.webp)
 
 ##### Implement our ribbon
 
@@ -165,7 +165,7 @@ The XML below will:
 
 Our tab with his group:
 
-![Just a group defined](./images/Group_is_required.png)
+![Just a group defined](./images/Group_is_required.webp)
 
 As you can see here above, just adding a group isn't enough, you'll need to define which features (buttons, checkboxes, ...) should be added in the group.
 
@@ -187,7 +187,7 @@ The XML below will create a button
 
 This will result into this:
 
-![Smiley](./images/Smiley.png)
+![Smiley](./images/Smiley.webp)
 
 `OnButtonClicked` is the VBA callback: to make it work, add a module in your Excel file, create a subroutine like this:
 
@@ -199,21 +199,21 @@ End Sub
 
 To do this, in MS Excel, please press <kbd>ALT</kbd>-<kbd>F11</kbd>, in the **Project explorer**, right-click on the **VBAProject (Ribbon.xslm)** entry (1), then select **Insert** (2) and **Module** (3).
 
-![Insert a module](./images/VBE_insert_module.png)
+![Insert a module](./images/VBE_insert_module.webp)
 
 A `Module1` will be added and, in the right pane, please copy/paste the code given here above and save the file.
 
-![Add code](./images/VBE_add_code.png)
+![Add code](./images/VBE_add_code.webp)
 
 Now, you can close the *Microsoft Visual Basic for Application* window, go back to the well-known Excel window and, now, you click on the smiley button:
 
-![Button clicked](./images/Button_clicked.png)
+![Button clicked](./images/Button_clicked.webp)
 
 And we can add other features, like an edit box:
 
 <Snippet filename="customUI14.xml" source="./files/customUI14.part9.xml" />
 
-![Smiley_and_edit](./images/Smiley_and_edit.png)
+![Smiley_and_edit](./images/Smiley_and_edit.webp)
 
 As you can see here above, the list of properties depends on the type: for a button, we've a `onAction` attribute while it's an `onChange` for an editBox.
 
@@ -246,7 +246,7 @@ By adding a button f.i., you'll assign an image to it.
 
 You'll most probably use an existing, standard, image. This can be done by using the `imageMso` attribute and telling Office which image to use; f.i.  `AddFolderToFavorites`:
 
-![Favorites](./images/Favorites.png)
+![Favorites](./images/Favorites.webp)
 
 The manifest is this one:
 

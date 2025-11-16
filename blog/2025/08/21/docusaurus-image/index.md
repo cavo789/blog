@@ -17,7 +17,7 @@ blueskyRecordKey: 3lww5fbh2y22q
 
 I'll start a series about writing components for Docusaurus.
 
-Since it's always nice to start with something very concrete and practical, here's what we're going to do: we'll intercept the conversion from `![Alt text](./img/example.png)` to a HTML `<img>` tag. We'll force Docusaurus to use instead a component `<Image>` from our own.
+Since it's always nice to start with something very concrete and practical, here's what we're going to do: we'll intercept the conversion from `![Alt text](./img/example.webp)` to a HTML `<img>` tag. We'll force Docusaurus to use instead a component `<Image>` from our own.
 
 We'll customize our `<Image>` tag to first inject a `<div>` parent, we'll force our `<img>` with attributes like CSS, lazy loading, ... **but, not for all tags in the blog post since we'll skip the first one.**
 
@@ -60,7 +60,7 @@ Everything is now in place.
 From now, in a blog post, instead of writing
 
 ```html
-![A happy meerkat](./images/happy.jpg)
+![A happy meerkat](./images/happy.webp)
 ```
 
 we can write
@@ -98,7 +98,7 @@ We'll intercept the conversion of images from Markdown to HTML and tell Docusaur
 
 ## 4. Writing and registering a plugin
 
-So we need a plugin to intercept the conversion from `![Alt text](./img/example.png)` to a HTML image tag; automatically.
+So we need a plugin to intercept the conversion from `![Alt text](./img/example.webp)` to a HTML image tag; automatically.
 
 <AlertBox variant="caution" title="">
 But let's add a complexity: we don't want to change the first article i.e. the blog post introduction image. For that first image, let Docusaurus doing his job (he's doing this really fine). We'll intercept as from the second image of the blog post.
@@ -109,7 +109,7 @@ Please create the `plugins/remark-image-transformer/index.cjs` file:
 
 <Snippet filename="plugins/remark-image-transformer/index.cjs" source="./files/index.cjs" />
 
-*This plugin is more complex because we need to make sure paths to images are correctly handled (we use use relative paths like `![](./img/example.png)` or absolute (`![](/img/example.png)`) or even external ones).*
+*This plugin is more complex because we need to make sure paths to images are correctly handled (we use use relative paths like `![](./img/example.webp)` or absolute (`![](/img/example.webp)`) or even external ones).*
 
 Once the plugin has been created, we need to update the Docusaurus configuration to load it.
 

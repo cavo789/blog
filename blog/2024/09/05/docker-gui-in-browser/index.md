@@ -42,13 +42,13 @@ $ docker run -d \
 
 Then open your browser and surf to `http://localhost:3000` to start Firefox. You can then surf to any amazing site:
 
-![Start Firefox inside Docker in Chrome](./images/firefox_in_chrome.png)
+![Start Firefox inside Docker in Chrome](./images/firefox_in_chrome.webp)
 
  <AlertBox variant="info" title="On my screenshot above, you'll see I'm using the port 5000 instead (this because my blog is running on port 3000)" />
 
 And, for the fun, here is the same but I've started Firefox in Docker in an MS-DOS environment and, then, I've used Edge instead of Chrome:
 
-![Start Firefox inside Docker in Edge](./images/firefox_in_edge.png)
+![Start Firefox inside Docker in Edge](./images/firefox_in_edge.webp)
 
 The command I've used in DOS is: `docker run -d --name=firefox --security-opt seccomp=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Etc/UTC -e FIREFOX_CLI=https://www.linuxserver.io/ -p 3000:3000 -p 3001:3001 -v %CD%\temp:/config --shm-size="1gb" --restart unless-stopped lscr.io/linuxserver/firefox:latest`.
 
@@ -76,6 +76,6 @@ $ docker run -d \
 
 Like earlier, now, just start your browser and surf to `http://localhost:3000` to start GIMP:
 
-![Running GIMP in Docker](./images/gimp_in_docker.png)
+![Running GIMP in Docker](./images/gimp_in_docker.webp)
 
 The MS-DOS version of the CLI is: `docker run -d --name=gimp --security-opt seccomp=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Etc/UTC -p 3000:3000 -p 3001:3001 -v %CD%/config:/config -v ./images:/images -w /images --restart unless-stopped lscr.io/linuxserver/gimp:latest`.

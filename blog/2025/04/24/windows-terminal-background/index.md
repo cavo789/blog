@@ -18,7 +18,7 @@ Fortunately, we're no longer in the 1980s and 2000s, and since then, even under 
 
 Let's see how to easily do things like this:
 
-![My console](./images/console.png)
+![My console](./images/console.webp)
 
 <!-- truncate -->
 
@@ -28,11 +28,11 @@ I really like it because just like a web browser, I can work with tabs. One of t
 
 But, for this article, let's concentrate to the appearance of the terminal.
 
-First, let's generate (using [Recraft.ai](https://www.recraft.ai/) f.i.) a nice image or go to [unsplash.com](https://unsplash.com/) if you want to reuse an existing one. Click on this link to download the [JackJack background image](./images/wallpaper.jpg), the meerkat.
+First, let's generate (using [Recraft.ai](https://www.recraft.ai/) f.i.) a nice image or go to [unsplash.com](https://unsplash.com/) if you want to reuse an existing one. Click on this link to download the [JackJack background image](./images/wallpaper.webp), the meerkat.
 
 Start an instance of Windows Terminal and, as illustrated on the image below, click on the down arrow and select `Settings`.
 
-![Accessing to the settings page](./images/settings.png)
+![Accessing to the settings page](./images/settings.webp)
 
 On the left side, select your desired profile then on the right side, scroll down until you see the `Appearance` accordion and click on it.
 
@@ -42,6 +42,6 @@ Click on the `Save` button and voilà!
 
 You can also, for sure, have two tabs: one with a console and the second one with the Settings page opened so, from now, by updating a setting like the `Background image -> Background image opacity` or the `Transparency -> Background opacity` you can see the changes immediately on your first tab.
 
-![Nice no?](./images/full_image.png)
+![Nice no?](./images/full_image.webp)
 
 That was for the background image. If you wish to learn how I did for the global look&feel, I'm using Powerlevel 10k: read my previous <Link to="/blog/powerlevel10k_sandbox">Customize your Linux prompt with Powerlevel 10k</Link> blog post.

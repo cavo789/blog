@@ -23,11 +23,11 @@ Probably you never had noticed (it was my case), you can start searching files o
 
 To do this, go to the `Commands` menu, then `Static custom` commands and finally `Search for Text...`.  Type your search pattern and press <kbd>Enter</kbd>.
 
-![Search for Text](./images/search_for_text.png)
+![Search for Text](./images/search_for_text.webp)
 
 A new Powershell prompt will be started and you'll see the list of scanned files.
 
-![Result](./images/result.png)
+![Result](./images/result.webp)
 
 <AlertBox variant="info" title="It's a Powershell script">
 WinSCP will, in fact, start a `.ps1` script located here: `C:\Program Files (x86)\WinSCP\Extensions\SearchText.WinSCPextension.ps1`. Feel free to update the file to match your needs.
@@ -44,6 +44,6 @@ You just need to download a copy of my script (a single PHP page), copy the scri
 
 This done, you'll get an interface where you can type, for sure, the search expression but also restricts the search to f.i. `.html` files.
 
-![php_grep in action](./images/php_grep.png)
+![php_grep in action](./images/php_grep.webp)
 
 More info on [https://github.com/cavo789/php_grep](https://github.com/cavo789/php_grep)

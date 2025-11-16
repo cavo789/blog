@@ -66,7 +66,7 @@ On subsequent runs, the PHP image is already present, so it is no longer downloa
 
 </AlertBox>
 
-![The PHP container is running](./images/php_container_is_running.png)
+![The PHP container is running](./images/php_container_is_running.webp)
 
 We can see that the PHP image is now present in Docker Desktop.
 
@@ -85,7 +85,7 @@ Explanation of the arguments used in our `docker run --detach --name step_1_1a -
 
 Let's try to access the local site: `http://127.0.0.1:80`.
 
-![localhost-is-forbidden](./images/localhost_is_forbidden.png)
+![localhost-is-forbidden](./images/localhost_is_forbidden.webp)
 
 It works in the means that *something is listening and has respond*, but doesn't display anything, since we haven't set anything up yet.
 
@@ -112,7 +112,7 @@ $ exit
 
 Back to our browser and... Bingo! Our first Docker instance running a PHP script!
 
-![phpinfo - PHP 7.4.29](./images/phpinfo_7_4_29.png)
+![phpinfo - PHP 7.4.29](./images/phpinfo_7_4_29.webp)
 
 Let us go back to the instruction we used before:
 
@@ -139,7 +139,7 @@ $ echo "phpinfo();" >> index.php
 $ exit
 </Terminal>
 
-![phpinfo - PHP 8.1.5](./images/phpinfo_8_1_5.png)
+![phpinfo - PHP 8.1.5](./images/phpinfo_8_1_5.webp)
 
 **No headaches and zero conflicts!!!** We have installed a new version of PHP in seconds.
 

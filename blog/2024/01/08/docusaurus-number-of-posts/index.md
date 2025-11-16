@@ -21,7 +21,7 @@ On that page, all blog posts are displayed by year and months. With a `document.
 
 <!-- truncate -->
 
-![The archive page](./images/archive.png)
+![The archive page](./images/archive.webp)
 
 Once the archive page has been displayed, press <kbd>F12</kbd> to start the **Developer console**.
 
@@ -37,4 +37,4 @@ Then copy/paste again.
 
 The `document.querySelectorAll` instruction will retrieve every bullet i.e. the list of posts. You'll immediately see the number, in my case, as illustrated below, `51`:
 
-![Console](./images/console.png)
+![Console](./images/console.webp)

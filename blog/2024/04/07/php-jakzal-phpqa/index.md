@@ -63,7 +63,7 @@ Add `--dry-run` if you just want to see what the changes will be; but do not mod
 
 By running `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa composer-unused` in your project, you'll get something like this:
 
-![composer unused](./images/composer_unused.png)
+![composer unused](./images/composer_unused.webp)
 
 So, the tool detects that I'm referencing `spatie/laravel-db-snapshots` in my `composer.json` file but, in my codebase, the tool (in fact, the namespace added by the tool) isn't used at all so, yes, probably, I can remove that dependency.
 
@@ -128,6 +128,6 @@ How to solve this? Really easy in fact. As you know, by using `docker run [...] 
 
 So, to solve our issue: we need to use a specific tag for PHP 7.4. Simply jump on [https://hub.docker.com/r/jakzal/phpqa/tags](https://hub.docker.com/r/jakzal/phpqa/tags) and type `7.4` in the `Filter Tags` area.
 
-![Tags](./images/tags.png)
+![Tags](./images/tags.webp)
 
 You'll find some tags. Now you can start `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa:1.80-php7.4-alpine parallel-lint . --exclude vendor` to run the PHP 7.4 linter.

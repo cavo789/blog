@@ -81,7 +81,7 @@ The <kbd>CTRL</kbd>+<kbd>R</kbd> keystrokes will display a small popup window (b
 
 Below the look&feel for ZSH; much better and easier than under Bash.
 
-![CTRL-R in ZSH](./images/ctrl_r.png)
+![CTRL-R in ZSH](./images/ctrl_r.webp)
 
 So press <kbd>CTRL</kbd>+<kbd>R</kbd> then start to type some letters like *gacom* and every entry having these letters (like **g**it add . ; git **com**mit ... will be retrieved).
 

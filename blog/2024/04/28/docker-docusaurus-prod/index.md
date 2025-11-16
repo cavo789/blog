@@ -221,13 +221,13 @@ Very quickly, you'll get a very long ID as result like f.i. `cae6989bee2a2339a4c
 
 Now, start your browser and surf to `http://localhost`.
 
-![Homepage of your running Docusaurus instance](./images/homepage.png)
+![Homepage of your running Docusaurus instance](./images/homepage.webp)
 
 As you can see, the Docusaurus website is now running on your machine.
 
 Click on the **Blog** menu item; top left and enjoy your reading:
 
-![Our blog](./images/blog.png)
+![Our blog](./images/blog.webp)
 
 As mentioned, the site will be running on your computer i.e. offline. You can disconnect from the Internet, everything is running in RAM; on your machine.
 
@@ -248,7 +248,7 @@ A container is something that is recreated every time so everything done in a co
 <AlertBox variant="note" title="Use Docker Desktop - Containers if you want to interact with your site">
 Purely informative: if you're using Windows, you can jump in *Docker Desktop*, open the list of containers, click on your running one (the blog) then click on the *Exec* tab to start an interactive shell in *that* container. If you remove f.i. the blog folder as illustrated below; then if you go back to the browser, yes, you've removed the blog and refreshing the site will conduct to a 404 error page.
 
-![Docker Desktop](./images/docker_desktop.png)
+![Docker Desktop](./images/docker_desktop.webp)
 
 Just remove the container and create it again to retrieve the blog.
 

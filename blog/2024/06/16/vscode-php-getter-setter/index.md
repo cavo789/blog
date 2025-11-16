@@ -48,7 +48,7 @@ So, for each property, you need to write a function called `Getter` to read its 
 
 Once enabled, we just need to right-click on a property, select what we wish as action and run it.
 
-![PHP Getters & Setters](./images/phproberto.png)
+![PHP Getters & Setters](./images/phproberto.webp)
 
 Here is in action:
 

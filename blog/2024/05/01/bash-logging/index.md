@@ -42,7 +42,7 @@ Please create a file called `log.sh`, in the exact same folder of your script, a
 
 By running the script, we can see our different `echo` but, too, the content of the generated log.
 
-![USing log](./images/logging.png)
+![USing log](./images/logging.webp)
 
 You can for sure not display the log automatically, just comment the line `log::__displayLog`.
 

@@ -31,7 +31,7 @@ And below a small Python script to generate fake data in French (just replace `r
 
 <Snippet filename="fake.py" source="./files/fake.py" />
 
-![Faker in Python](./images/python.png)
+![Faker in Python](./images/python.webp)
 
 <AlertBox variant="info" title="">
 Continue your reading with the official Faker documentation: [https://faker.readthedocs.io/en/master/](https://faker.readthedocs.io/en/master/)
@@ -42,13 +42,13 @@ Continue your reading with the official Faker documentation: [https://faker.read
 
 The [https://www.mockaroo.com/](https://www.mockaroo.com/) website allows you to create, for free (to access certain functions, you will need to create a free account).
 
-![Using Mockaroo](./images/mockaroo.png)
+![Using Mockaroo](./images/mockaroo.webp)
 
 ### Creating a fake data using a schema
 
 By creating a free account on Mockaroo, click on the `Schemas` button, then select `Create a schema`. In the next screen, click on `Generate fields using AI...` and paste a JSON existing string:
 
-![Creating a schema](./images/creating_schema.png)
+![Creating a schema](./images/creating_schema.webp)
 
 This done, you'll be able to generate a big number of rows like f.i. creating a file with more than 1,000 records.
 
@@ -64,7 +64,7 @@ Like previously, click on the `Schemas` button, create a schema and save it.
 
 I've created the *schema_test* like this:
 
-![Mockaroo - Schema test](./images/mockaroo_schema_test.png)
+![Mockaroo - Schema test](./images/mockaroo_schema_test.webp)
 
 I can then use it in Python like this:
 
@@ -77,13 +77,13 @@ To make this code working, think to install the requests library: `pip install r
 
 By calling my script twice; each time I got a different set of data:
 
-![Calling Mockaroo API](./images/calling_mockaroo_api.png)
+![Calling Mockaroo API](./images/calling_mockaroo_api.webp)
 
 ## Online JSON to Schema Converter
 
 The [https://www.liquid-technologies.com/online-json-to-schema-converter](https://www.liquid-technologies.com/online-json-to-schema-converter) site will allow you to copy/paste existing JSON and get a skeleton of a JSON schema.
 
-![Generate a schema](./images/generate_schema.png)
+![Generate a schema](./images/generate_schema.webp)
 
 Once you've the schema, you can use it in Python like this:
 
@@ -96,7 +96,7 @@ You'll need to run `pip install jsonschema` first.
 
 Now, I'll test my file. The first time, my JSON file will be correct. I've then removed the `city` record in my JSON and rerunning the script will indeed fails as expected:
 
-![JSON validation](./images/validate.png)
+![JSON validation](./images/validate.webp)
 
 <AlertBox variant="info" title="">
 As we can see, quite quickly, we've generated 1,000 records and, too, a validation schema. Then using few lines in Python, we've ensure the file is correct or, if not, we've spotted where the error is located.

@@ -31,7 +31,7 @@ To get the list of functions declared in a script, just run the command below:
 $ {`grep -P "^(function\s+.*)\(\)" "/tmp/bash/console.sh" | awk '{print \$2}' | sort`}
 </Terminal>
 
-![Get the list of functions](./images/display_list_of_functions.png)
+![Get the list of functions](./images/display_list_of_functions.webp)
 
 Ok, now, we know how to sort the list of functions in the console.
 
@@ -51,7 +51,7 @@ As we can see on the image below, the column at the left show that the first-def
 
 In the right column, we can see that the first, sorted, function is `console::askYesNo`, the second is `console::banner` and so on.
 
-![Bad sorter](./images/bad_sorter.png)
+![Bad sorter](./images/bad_sorter.webp)
 
 Back to the left column: the name displayed in white are already in the correct order!
 
@@ -61,7 +61,7 @@ Let's update partially the `/tmp/bash/console.sh` file and reorder some function
 
 Now, rerunning the same command:
 
-![Almost correct](./images/almost_correct.png)
+![Almost correct](./images/almost_correct.webp)
 
 We just need to put `console::printRed()` at the end and we'll be fine and, to give some positive feedback, use this enhanced version:
 
@@ -75,7 +75,7 @@ We just need to put `console::printRed()` at the end and we'll be fine and, to g
 )
 ```
 
-![Congratulations](./images/congratulations.png)
+![Congratulations](./images/congratulations.webp)
 
 If you see this, perfect, functions are correctly ordered in your script.
 
@@ -95,7 +95,7 @@ To do this, create the `order.sh` script on your hard drive with this content:
 
 And now, start the script like this: `./order.sh  ~/helpers`. The expected parameter is the name of a folder containing `.sh` files.
 
-![Running the batch script](./images/batch_script.png)
+![Running the batch script](./images/batch_script.webp)
 
 What does that means?  My `~/helpers/api.sh` script is actually (left side) really poorly sorted since there are a lot of differences with the right column (perfect ordering).
 
@@ -103,12 +103,12 @@ The first function in my file is `api::__injectLogsToApplicationLog` while there
 
 By editing my file and moving `api::__assertHttpMethod` at the top of my script, now, by rerunning the script:
 
-![Move the assert method first](./images/api_move_assert_first.png)
+![Move the assert method first](./images/api_move_assert_first.webp)
 
 Ok, so now, still at the right side, we can see `api::__debugCurlStatement` is expected in the second position, `api::__doSomeCleaning` as the third one then `api::__executeCall()` and so one (as we can see in the right side).
 
 As soon as the `api.sh` file is correctly sorted, rerunning the script won't mention anymore the script but other ones.
 
-![The console.sh script isn't ordered](./images/console.png)
+![The console.sh script isn't ordered](./images/console.webp)
 
 The final objective is thus: we expect no output with the script. If all Bash scripts are correctly sorted then the `order.sh` script is no longer going to find any differences, which is in fact what we want.

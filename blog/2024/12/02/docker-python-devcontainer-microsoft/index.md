@@ -51,19 +51,19 @@ Here is how to use VSCode and Docker to create a ready-to-user Python environmen
 
 This done, VSCode will create a file called `.devcontainer/devcontainer.json`
 
-![VSCode has created the .devcontainer/devcontainer.json file](./images/devcontainer_created.png)
+![VSCode has created the .devcontainer/devcontainer.json file](./images/devcontainer_created.webp)
 
 See bottom right, please click on the `Reopen in Container` button.
 
 Depending on the speed of your computer and if things were already downloaded, you'll get this screen:
 
-![VSCode and his terminal](./images/terminal.png)
+![VSCode and his terminal](./images/terminal.webp)
 
 See the bottom part, a terminal window has been displayed and you've a prompt showing `vscode -> /workspaces/python $`.
 
 Click in the terminal and type `python --version`:
 
-![Version](./images/version.png)
+![Version](./images/version.webp)
 
 Now, for the demo, create a new file called `main.py` with this line `print("Hello from your Python Devcontainer!")`.
 
@@ -71,4 +71,4 @@ Save the file.
 
 Click in the terminal and type `python main.py` to execute the script and tadaaa:
 
-![Running the script](./images/running_the_script.png)
+![Running the script](./images/running_the_script.webp)

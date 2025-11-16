@@ -48,4 +48,4 @@ If you're running under WSL2, to get access to the documentation, just run `powe
 
 The phpDocumentor website will looks like this:
 
-![WordPress 6.4.2 PHP documentation](./images/wordpress_phpdoc.png)
+![WordPress 6.4.2 PHP documentation](./images/wordpress_phpdoc.webp)

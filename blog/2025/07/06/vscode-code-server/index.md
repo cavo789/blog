@@ -52,7 +52,7 @@ The code-server configuration is thus stored in your home directory, in the fold
 
 By opening `http://127.0.0.1:8080` you'll get this screen:
 
-![Asking for a password](./images/prompt_for_password.png)
+![Asking for a password](./images/prompt_for_password.webp)
 
 Back to your console, run `cat ${HOME}/.config/code-server/config.yaml` to discover the configuration for code-server. You'll see something like this:
 
@@ -67,6 +67,6 @@ cert: false
 
 Copy/paste the password in the form and submit it and tadaaa:
 
-![VScode in the browser](./images/code_server.png)
+![VScode in the browser](./images/code_server.webp)
 
 Continue your journey with the official documentation: [https://github.com/coder/code-server](https://github.com/coder/code-server) or [https://coder.com/docs/code-server/guide](https://coder.com/docs/code-server/guide) to get more info.

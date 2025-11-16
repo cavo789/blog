@@ -66,9 +66,9 @@ The following command will run WordPress in an Apache container and making the s
 
 As you can see, we don't need to pay attention to the `wp-config.php` file since we are setting environment variables in our `docker run` command.
 
-![Running WordPress](./images/run_wp.png)
+![Running WordPress](./images/run_wp.webp)
 
-![Installing WordPress](./images/installing_wordpress.png)
+![Installing WordPress](./images/installing_wordpress.webp)
 
 <AlertBox variant="info" title="Error establishing a database connection">
 If you get `Error establishing a database connection`, please wait a little before refreshing the web page. It means MySQL / Maria wasn't yet ready to handle the connection.
@@ -85,7 +85,7 @@ $ docker run -d --rm --network wordpress --name phpmyadmin -e PMA_HOST=db_wordpr
 
 By surfing to `http://127.0.0.1:8089`, you can connect to the database. Credentials to use for the connection are `wpuser` / `example`.
 
-![phpmyadmin](./images/phpmyadmin.png)
+![phpmyadmin](./images/phpmyadmin.webp)
 
 ## Remove containers
 

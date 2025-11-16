@@ -40,10 +40,10 @@ To draw attention to a specific part of the text, you might want to make it [red
 
 This is correctly rendered in HTML:
 
-![html](./images/html.png)
+![html](./images/html.webp)
 
 But just ignored in Word or PDF:
 
-![docx](./images/docx.png)
+![docx](./images/docx.webp)
 
-![pdf](./images/pdf.png)
+![pdf](./images/pdf.webp)

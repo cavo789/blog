@@ -28,7 +28,7 @@ Windows Terminal is part of Windows 11, so you already have it if you're running
 
 On my computer this is how my Ubuntu console looks like. I'm using Windows Terminal and <Link to="/blog/powerlevel10k_sandbox">PowerLevel10k</Link>:
 
-![Windows Terminal with an Ubuntu console](./images/windows_terminal.png)
+![Windows Terminal with an Ubuntu console](./images/windows_terminal.webp)
 
 But to make the interface geekier, I'm using a wallpaper instead of, just, a black screen.
 
@@ -36,7 +36,7 @@ If you want to, proceed like this:
 
 * Click on the `+` button and chose `settings`
 * Click on the gear wheel, bottom left to open settings as a JSON file (in my case VSCode will be open)
-    ![The gear wheel](./images/gear.png)
+    ![The gear wheel](./images/gear.webp)
 * In the opened editor, unfold the `list` of `profiles` and retrieve the one you wish to customize (in my case `Ubuntu`)
 
 In my case, my profile has these settings:
@@ -63,9 +63,9 @@ For example, I'll create a new profile so I can immediately open my blog in a Do
 
 </AlertBox>
 
-![The blog profile](./images/blog.png)
+![The blog profile](./images/blog.webp)
 
-![The blog console](./images/blog_opened.png)
+![The blog console](./images/blog_opened.webp)
 
 ## Set the default profile
 

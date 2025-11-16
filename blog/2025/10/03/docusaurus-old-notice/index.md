@@ -47,7 +47,7 @@ To inject our new `OldPostNotice` component, please edit the file like this (see
 
 Save the file and refresh your blog. You should get something like this picture below:
 
-![Old post notice in action](./images/old_notice.png)
+![Old post notice in action](./images/old_notice.webp)
 
 <AlertBox variant="info" title="">
 The component is using the `date` field that you've to mention in your YAML front matter.

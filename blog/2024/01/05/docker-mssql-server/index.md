@@ -45,11 +45,11 @@ Now, if you don't have **SQL Server Management Studio** (also called **SSMS**) y
 
 Start the installation program and wait until it's installed on your machine.
 
-![Installing SQL Server Management Studio](./images/download_ssms.png)
+![Installing SQL Server Management Studio](./images/download_ssms.webp)
 
 Start now SSMS (you'll find it in your `Start` Windows menu):
 
-![Opening SSMS](./images/opening_ssms.png)
+![Opening SSMS](./images/opening_ssms.webp)
 
 Use the value below for the authentication:
 
@@ -63,7 +63,7 @@ Use the value below for the authentication:
 
 </AlertBox>
 
-![Authentication](./images/authentication.png)
+![Authentication](./images/authentication.webp)
 
 Click on the `Connect` button and then, SSMS will be connected to your Docker instance. Now it's time to create our database.
 
@@ -73,13 +73,13 @@ Once connected on SSMS, run the following query for creating a sample `MyDB` dat
 
 To do this, click on the `New Query` button (or press <kbd>CTRL</kbd>-<kbd>N</kbd>), paste the SQL below and then click on the `Execute` button (or press <kbd>F5</kbd>).
 
-![Create the database](./images/create_database.png)
+![Create the database](./images/create_database.webp)
 
 <Snippet filename="create_db.sql" source="./files/create_db.sql" />
 
 Congratulations, you've created a `MyDB` database with a `dbo.Person` table:
 
-![The database has been created](./images/database_created.png)
+![The database has been created](./images/database_created.webp)
 
 <AlertBox variant="info" title="Think to refresh the `Object Explorer`">
 If, after having fired the query, you don't see yet your database in the `Object Explorer` pane, think to refresh it. Click anywhere in the pane and press <kbd>F5</kbd> or, right-click on the `localhost, 1433` top-item and select `Refresh` in the contextual menu.
@@ -96,6 +96,6 @@ As an example, we'll create a DOS PowerShell script called `connect.ps1` to illu
 
 Please start a DOS or a PowerShell console and run this command: `powershell -executionpolicy bypass -File .\connect.ps1`.
 
-![Running PowerShell script](./images/run_powershell.png)
+![Running PowerShell script](./images/run_powershell.webp)
 
 Now we've validated that your database is functional and accessible. It's now up to you to make this example your own!

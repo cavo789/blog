@@ -38,7 +38,7 @@ Now, run `xhost +local:docker` in your console. That command grants permission t
 
 Now, simply run a container using and make sure to share the `DISPLAY` variable: `docker run --rm --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix cavo789:xeyes`.
 
-![xeyes under Docker](./images/xeyes_in_docker.png)
+![xeyes under Docker](./images/xeyes_in_docker.webp)
 
 Yes, it's true, it's useless, but wow! it's possible to run a GUI from a container and replicate the image in real time on our host machine.
 
@@ -56,7 +56,7 @@ To build the image, please run the next command (and think to change `cavo789` b
 
 And to start Firefox, just run `docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY cavo789/firefox`.
 
-![Running Firefox in a window](./images/firefox.png)
+![Running Firefox in a window](./images/firefox.webp)
 
 As you know, my OS is Windows 11 and I'm running Linux thanks the amazing WSL2 technology. So, in short, here above, you can see I've started Firefox for Debian as a windowed application in my Windows.
 
@@ -70,7 +70,7 @@ We can do the same with Chrome:
 
 Build the image using `docker build --tag cavo789/chrome .` then run it using `docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY cavo789/chrome`.
 
-![Running Chrome in a window](./images/chrome.png)
+![Running Chrome in a window](./images/chrome.webp)
 
 ## Creating our own GIMP Docker image
 
@@ -82,4 +82,4 @@ Create the image by running `docker build --tag cavo789/gimp .`.
 
 And to start GIMP, just run `docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY cavo789/gimp`.
 
-![Running GIMP for Linux in a Docker container](./images/gimp.png)
+![Running GIMP for Linux in a Docker container](./images/gimp.webp)

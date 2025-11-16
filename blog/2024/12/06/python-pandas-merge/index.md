@@ -81,7 +81,7 @@ id;first_name;last_name;salary
 ```
 <!-- cspell:enable -->
 
-![Generating fake data](./images/generate_fake_data.png)
+![Generating fake data](./images/generate_fake_data.webp)
 
 ## Do the merge
 
@@ -99,13 +99,13 @@ Then process remaining files (2022 till 2024).
 
 At the end, the script will save the file on disk as `employees_merged.csv`.
 
-![Merged](./images/merged.png)
+![Merged](./images/merged.webp)
 
 As we can see on the image, we've well a merge i.e. our 10 employees (from 0 till 9) then if an employee was present in a file (like employee 2023 called `John John`). We can see their salary in our result.
 
 And, opened using Excel, here our final result:
 
-![Merged employees; in Excel](./images/excel.png)
+![Merged employees; in Excel](./images/excel.webp)
 
 Next year, we'll have a file called `employees_2025.csv` and we just need to run the merge again.
 

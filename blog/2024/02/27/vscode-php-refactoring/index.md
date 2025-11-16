@@ -85,7 +85,7 @@ For the example, reopen the `Product.php` file and, on line 5, put the cursor on
 
 As we can expect, the class name has been updated but the filename too. And, once again, if you open the `index.php` file, you can see that `$product = new Product();` has been perfectly changed to `$product = new Products();`.
 
-![Renaming a class](./images/rename-a-class.png)
+![Renaming a class](./images/rename-a-class.webp)
 
 <AlertBox variant="info" title="You can also rename from index.php">
 Locate the `$product = new Product();` line in your `index.php` file. Put the cursor on the `Product` word, press <kbd>F2</kbd> and rename it. This work too i.e. the class will be updated too in `Products.php` (since the file has been renamed too). Nice!

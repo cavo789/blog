@@ -17,7 +17,7 @@ A real-world example is: you've followed my article <Link to="/blog/docker-jooml
 
 <!-- truncate -->
 
-![Your PHP settings before changes](./images/before.png)
+![Your PHP settings before changes](./images/before.webp)
 
 One of the easiest ways to do is to create a `.ini` file on your disk and share the file with your container.
 
@@ -59,4 +59,4 @@ This done, just run `docker compose down ; docker compose up --detach` in your t
 
 Now, when restarting, Docker will take into account your latest changes and update accordingly the `php.ini` file that is present in Docker.
 
-![Your PHP settings after changes](./images/after.png)
+![Your PHP settings after changes](./images/after.webp)

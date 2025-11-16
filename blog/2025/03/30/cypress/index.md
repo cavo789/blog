@@ -57,13 +57,13 @@ Finally, last file to create, we'll create our own Docker image:
 
 If we look in VSCode our current project, it will look like this:
 
-![Our Cypress project in VSCode](./images/vscode.png)
+![Our Cypress project in VSCode](./images/vscode.webp)
 
 To create our image and run Cypress, jump in a console and run this command: `clear ; docker build -t cypress-test . && docker run --rm cypress-test`.
 
 If everything is running fine, you'll get this output:
 
-![First run](./images/first_run.png)
+![First run](./images/first_run.webp)
 
 <AlertBox variant="info" title="">
 Right now, you've copied a few files, build a Docker image and run Cypress in a container and you've got a *All specs passed!* message.
@@ -90,7 +90,7 @@ And to run this new test, simply run `docker run --rm -v ./cypress:/app/cypress 
 
 As you can see, it's working.
 
-![Navigation](./images/navigation.png)
+![Navigation](./images/navigation.webp)
 
 <AlertBox variant="info" title="Mounting a volume">
 So, by using `-v ./cypress:/app/cypress`, we'll mount the folder `cypress` from our host in the `/app/cypress` folder in the container. By updating a test on our host, Docker will replicate the change in the container.
@@ -114,7 +114,7 @@ Let's run Cypress once more: `docker run --rm -v ./cypress:/app/cypress cypress-
 
 When an error occurs, Cypress will take a screenshot as we can see on the image below:
 
-![Taking a screenshot](./images/screenshots.png)
+![Taking a screenshot](./images/screenshots.webp)
 
 As you can see on the image, Cypress has taken a screenshot and saved it in folder `/app/cypress/screenshots/`. That folder is inside the container and this is useless: we want to get it on our disk.
 
@@ -141,11 +141,11 @@ We're still mounting our current `cypress` folder with the container thanks the 
 
 Our current workspace looks like this in VSCode:
 
-![vscode with our three tests](./images/vscode_user.png)
+![vscode with our three tests](./images/vscode_user.webp)
 
 By running `docker run --rm -v ./cypress:/app/cypress cypress-test` once more, now, we can see changes:
 
-![Tag Joomla](./images/tag_joomla.png)
+![Tag Joomla](./images/tag_joomla.webp)
 
 Cypress has taken a screenshot and save it on our disk. Now, it's really clear, by looking at the image, that the error concern the check `-contains a, jomla` on the Tags page. Uh oh, there is a typo.
 

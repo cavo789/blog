@@ -43,7 +43,7 @@ Save the file onto your hard disk and give `access_get_fields_list.cmd` as filen
 
 Once the process is finished, Excel will be automatically fired with something like this:
 
-![MS Access Get fields list](./images/get_fields_list.png)
+![MS Access Get fields list](./images/get_fields_list.webp)
 
 * Filename: The MS Access filename (absolute)
 * TableName: The name of the table

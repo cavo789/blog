@@ -32,7 +32,7 @@ Let's move on and install it under Linux; it's really easy to do.
 
 1. Go to [https://pentaho.com/pentaho-developer-edition/](https://pentaho.com/pentaho-developer-edition/); fill in the form (it's mandatory) before getting the list of files you can download),
 2. Download the `pdi-ce-10.2.0.0-222.zip` file. If like me you're under Windows, the archive will be put on your Windows partition; let's copy it to your Linux one.
-  ![Download Pentaho](./images/download.png)
+  ![Download Pentaho](./images/download.webp)
    1. Start your Linux console and create a new folder like f.i. `~/tools/pentaho` (you can decide to use another path but, in this documentation, we'll refer to `~/tools/pentaho`)
    2. Still in your console, run `explorer.exe .` in the command line to run Windows Explorer and open your Linux folder in it.
    3. In a new tab (in Windows Explorer thus), go to your download directories to retrieve the downloaded file.
@@ -103,7 +103,7 @@ Please run `docker compose up --detach` to start the PostgreSQL container and th
 
 As you've seen, we've already foresee a pgAdmin interface; we can open it by going to `http://localhost:8080`.
 
-![pgAdmin login screen](./images/pgadmin_login.png)
+![pgAdmin login screen](./images/pgadmin_login.webp)
 
 Use `admin@yopmail.com` and `admin` as credentials.
 
@@ -111,11 +111,11 @@ Once in the interface of pgAdmin, we've to create a new server by clicking on th
 
 Give a name to the server then, in the `Connection` tab, fill in as below:
 
-![Creation of a server in pgAdmin](./images/pgadmin_new_server.png)
+![Creation of a server in pgAdmin](./images/pgadmin_new_server.webp)
 
 As you can see on the image below, during the creation of our PostgreSQL container, a new database called `people` has been created. That database has a `public` schema and, right now, no tables.
 
-![The database exists but without any table right now](./images/pgadmin_database.png)
+![The database exists but without any table right now](./images/pgadmin_database.webp)
 
 <AlertBox variant="info" title="">
 This is done thanks our `compose.yaml` file. If you're curious, open the `compose.yaml` file again and pay attention to the `environment` section for the `postgres` service. We've instruct PostgreSQL to create a database called `people`; owned by user called `admin`.
@@ -126,7 +126,7 @@ This is done thanks our `compose.yaml` file. If you're curious, open the `compos
 
 Now, run `spoon.sh` to start the graphical user interface of Pentaho. That interface is called **Spoon**.
 
-![Opening Pentaho](./images/empty_project.png)
+![Opening Pentaho](./images/empty_project.webp)
 
 ### We need to create a new transformation file
 
@@ -136,20 +136,20 @@ Click on the `File` menu, then `New` and select `Transformation`.
 
 In our scenario, we want to load an Excel file so click on the `Input` category and scroll down until you see `Microsoft Excel input` and drop it to the main canvas.
 
-![Load from Excel](./images/input_excel.png)
+![Load from Excel](./images/input_excel.webp)
 
 Double-click on the just added step so you can configure it:
 
 * Give it a clear name (like *Load people from Excel*),
 * Click on the Browse... button to retrieve your file (f.i. `/tmp/pentaho/people.xlsx`) then click on the `Add` button to add that file to the list of *Selected files*
-  ![Add files](./images/input_excel_add_file.png)
+  ![Add files](./images/input_excel_add_file.webp)
 * In the `Sheets` tab, click on the `Get sheetname(s)...` button, retrieve the name of the sheet and add it.
-  ![Add the sheet](./images/input_excel_add_sheet.png)
+  ![Add the sheet](./images/input_excel_add_sheet.webp)
 * In the `Content` tab, there is nothing to change (since our Excel file has a header row then the data without empty rows between)
 * In the `Fields` tab, click on `Get fields from header row...` to load names then adjust some properties like below illustrated:
-  ![Loading fields](./images/input_excel_add_fields.png)
+  ![Loading fields](./images/input_excel_add_fields.webp)
 * Click on the `Preview rows` button if you want to check if everything is OK
-  ![Previewing rows](./images/input_excel_preview.png)
+  ![Previewing rows](./images/input_excel_preview.webp)
 
 We're done; click on the `OK` button.
 
@@ -157,7 +157,7 @@ We're done; click on the `OK` button.
 
 Now, click on `View` tab as illustrated below and double-click on the `Database connections` item.
 
-![Database connections](./images/database_connections.png)
+![Database connections](./images/database_connections.webp)
 
 Remember our `compose.yaml` file and fill in the screen like this:
 
@@ -167,11 +167,11 @@ Remember our `compose.yaml` file and fill in the screen like this:
 * Username: `admin`
 * Password: `admin`
 
-![Define our People connection](./images/database_people.png)
+![Define our People connection](./images/database_people.webp)
 
 Click on the `Test` button to make sure the connection is correctly configured.
 
-![Testing the database connection](./images/database_test.png)
+![Testing the database connection](./images/database_test.webp)
 
 Click on the `Ok` button to save your connection.
 
@@ -179,15 +179,15 @@ Click on the `Ok` button to save your connection.
 
 Click on the `Design` table then on the `Output` category and find `Table output`. Do a drag&drop to the canvas.
 
-![Prepare the table output](./images/table_output.png)
+![Prepare the table output](./images/table_output.webp)
 
 Click onn the `Load people from Excel` box and wait until the small icons below are displayed:
 
-![Showing the list of icons from Excel](./images/input_excel_icons.png)
+![Showing the list of icons from Excel](./images/input_excel_icons.webp)
 
 Click on the button with the *output connector* (the one with the right arrow) and drop the line onto the **Table output** box:
 
-![Output connector](./images/output_connector.png)
+![Output connector](./images/output_connector.webp)
 
 It tells to Pentaho that, once the **Load people from Excel** step is successfully done to continue with **Table output**.
 
@@ -200,15 +200,15 @@ Now double-click on **Table output** and let's do some configuration:
 
 Now, click on the `SQL` button to see that Pentaho will provide a popup (think to resize the window) with a `CREATE TABLE` instruction:
 
-![Creating the table](./images/create_table.png)
+![Creating the table](./images/create_table.webp)
 
 Since our table didn't exists yet, click on the `Execute` button:
 
-![The table has been created](./images/create_table_done.png)
+![The table has been created](./images/create_table_done.webp)
 
 Let's verify thanks to pgAdmin:
 
-![The table has been created](./images/pgadmin_table_created.png)
+![The table has been created](./images/pgadmin_table_created.webp)
 
 Nice. We can now close the two popup window, go back to the configuration of our table. Click on the `OK` button since we've finished this step.
 
@@ -222,17 +222,17 @@ Save the file to `/tmp/pentaho` with the `load_people_from_excel.ktr` name.
 
 See the `Run` icon:
 
-![We are ready to run the transformation](./images/ready_to_run.png)
+![We are ready to run the transformation](./images/ready_to_run.webp)
 
 Click on it. You'll get a new window with bottom right a `Run` button; click on it.
 
 If everything was correctly configured and fired, you'll get this screen:
 
-![Successfully executed](./images/run_with_success.png)
+![Successfully executed](./images/run_with_success.webp)
 
 Back to pgAdmin, get the list of records from the `people` table to verify if the Excel file was well loaded and, yes, it is.
 
-![The records have been successfully loaded in PostgreSQL](./images/successfully_loaded_in_postgres.png)
+![The records have been successfully loaded in PostgreSQL](./images/successfully_loaded_in_postgres.webp)
 
 ### Download the transformation file
 

@@ -25,7 +25,7 @@ And what if, today, with artificial intelligence, this type of code was no longe
 
 Just to give you some PHP code to use as an example for this article, let's create a hangman game using artificial intelligence.
 
-![Asking Gemini](./images/gemini.png)
+![Asking Gemini](./images/gemini.webp)
 
 Here is the code proposed by [Gemini](https://gemini.google.com/). Save it to your disk as `hangman.php`:
 
@@ -35,7 +35,7 @@ To play with this game, just run `docker run -it -v ${PWD}:/src -w /src php:7.4-
 
 As you'll see the script works fine without any change!
 
-![Playing](./images/playing.png)
+![Playing](./images/playing.webp)
 
 ## Obfuscate
 
@@ -59,7 +59,7 @@ drwxrwxrwt 22 root root 4.0K Apr  7 19:55 ..
 
 Time to make the `hangman.php` file unreadable by running `docker run -it -v ${PWD}:/src -w /src php:7.4-fpm php minify.php input=hangman.php output=hangman_minify.php`.
 
-![Obfuscating your PHP code](./images/obfuscate.png)
+![Obfuscating your PHP code](./images/obfuscate.webp)
 
 Now, you've a new file called `hangman_minify.php`:
 
@@ -69,11 +69,11 @@ What you see here above is the newer version of the `hangman.php` file and it's 
 
 ## Make the code readable again, ask Copilot
 
-![Asking copilot](./images/copilot.png)
+![Asking copilot](./images/copilot.webp)
 
 The first time, [Copilot](https://copilot.microsoft.com/) has kept my minified function name. By asking him *Can you suggest me another version?*, Copilot suggests this code:
 
-![Rewriting the code](./images/copilot_rewritting.png)
+![Rewriting the code](./images/copilot_rewritting.webp)
 
 <Snippet filename="hangman.php" source="./files/hangman.part2.php" />
 

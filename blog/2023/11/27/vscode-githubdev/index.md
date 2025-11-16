@@ -30,7 +30,7 @@ But also that you're on a bus/train/plane and want to correct a typeface you've 
 
 You can still want to make a very small update like changing your readme.md file. It's really faster to do online than having to clone/update the project on your computer, make the change, add/commit/push it.
 
-![Using a smartphone](./images/smartphone_view.jpg)
+![Using a smartphone](./images/smartphone_view.webp)
 
 Just surf on your repo using your smartphone, nothing more than using a basic web browser, change the extension to `.dev` and bingo, you can start to edit your repo (or the one of someone else if you want to suggest a Pull request (aka a `PR`)).
 

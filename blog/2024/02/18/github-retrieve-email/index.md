@@ -39,16 +39,16 @@ The first thing is, for sure, to go to a public repository maintained by this pe
 
 On the main page of the repo, locate f.i. the last commit ID he's made:
 
-![Last commit ID](./images/find_any_commit.png)
+![Last commit ID](./images/find_any_commit.webp)
 
 Click on the ID and you'll get a new web page with a URL like f.i. `https://github.com/<USERNAME>/<REPONAME>/commit/<LONG_COMMIT_ID>`. Edit the URL and just append the `.patch` suffix to it (so now, the URL should be `https://github.com/<USERNAME>/<REPONAME>/commit/<LONG_COMMIT_ID>.patch`).
 
 Before the suffix was added, this is what the page looked like:
 
-![Before adding the suffix](./images/before.png)
+![Before adding the suffix](./images/before.webp)
 
 And once added:
 
-![Once the .patch suffix has been added](./images/after.png)
+![Once the .patch suffix has been added](./images/after.webp)
 
 As you can see, the email address associated with the Github account used to send the commit is now displayed.

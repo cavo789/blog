@@ -42,13 +42,13 @@ You're now in SSMS. We'll create a dummy database. Using some AI, I've asked for
 
 <Snippet filename="create_db.sql" source="./files/create_db.sql" />
 
-![The creation script](./images/creation_sql.png)
+![The creation script](./images/creation_sql.webp)
 
 We just need to click on the `Execute` button or press <kbd>F5</kbd> to run it i.e. to create our `SampleDB` database.
 
 Now, right on the `Databases` node (in the top left tree-view) and you'll see, we've now our DB:
 
-![The SampleDB](./images/customers.png)
+![The SampleDB](./images/customers.webp)
 
 ## The Excel part
 
@@ -56,56 +56,56 @@ Surf to [https://github.com/cavo789/vba_excel_sql](https://github.com/cavo789/vb
 
 Please start Excel and create a new workbook.
 
-![New workbook](./images/new_workbook.png)
+![New workbook](./images/new_workbook.webp)
 
 Press <kbd>ALT</kbd>+<kbd>F11</kbd> to open the VBE interface.
 
 Right-click on *Microsoft Excel Objects* in the left *Project - VBAProject* pane and insert a new class.
 
-![Insertion of a new class](./images/insert_class.png)
+![Insertion of a new class](./images/insert_class.webp)
 
 Go to [https://github.com/cavo789/vba_excel_sql/blob/master/src/SQL2Excel.xlsm/clsData.cls](https://github.com/cavo789/vba_excel_sql/blob/master/src/SQL2Excel.xlsm/clsData.cls) and click on the *Copy raw file* button
 
-![Copy raw file](./images/copy_raw_file.png)
+![Copy raw file](./images/copy_raw_file.webp)
 
 Paste the content in the VBE editor and remove the first lines as displayed below.
 Also, see in the bottom left *Properties* pane, click on the *(Name)* field and type `clsData` as new name.
 
-![clsData](./images/clsData.png)
+![clsData](./images/clsData.webp)
 
 Now, please create a new module.
 
-![Insertion of a new module](./images/insert_module.png)
+![Insertion of a new module](./images/insert_module.webp)
 
 Go to [https://github.com/cavo789/vba_excel_sql/blob/master/src/SQL2Excel.xlsm/test.bas](https://github.com/cavo789/vba_excel_sql/blob/master/src/SQL2Excel.xlsm/test.bas) and click on the *Copy raw file* button.
 
 Paste the content in the VBE editor and remove the first line as displayed below. Also, in the bottom left *Properties* page, click on the *(Name)* field and type `test` as new name.
 
-![Module test](./images/test.png)
+![Module test](./images/test.webp)
 
 Still in the `test` module, pay attention to the very first lines:
 
-![Initialization of the module](./images/initialization.png)
+![Initialization of the module](./images/initialization.webp)
 
 You'll need to update these values to match yours. If you've created the SQL Server instance as explained here above, please use these values:
 
 <Snippet filename="clsData.bas" source="./files/clsData.bas" />
 
-![With the initialization](./images/initialization_done.png)
+![With the initialization](./images/initialization_done.webp)
 
 Still in the VBA, please click on the `Tools` menu then select `References`
 
-![Tools -> References](./images/tools_references.png)
+![Tools -> References](./images/tools_references.webp)
 
 In the list, scroll down until you find `Microsoft ActiveX Data Objects 2.8 Library` and once retrieved, please select it.
 
-![Microsoft ActiveX Data Objects 2.8 Library](./images/activex_data_objects.png)
+![Microsoft ActiveX Data Objects 2.8 Library](./images/activex_data_objects.webp)
 
 ### Let's play with CopyToSheet
 
 Still in the VBE interface, please select the `test` module and scroll down until the `CopyToSheet` subroutine.
 
-![CopyToSheet](./images/copy_to_sheet.png)
+![CopyToSheet](./images/copy_to_sheet.webp)
 
 <AlertBox variant="caution" title="We need to provide our SQL Server credentials">
 As illustrated on the image above, no username or password has been provided. Like this, the connection will be made using our Windows account but, in this article, we haven't made the required configuration for this.
@@ -124,7 +124,7 @@ Nothing has happened? Are you sure?
 
 Please switch from the VBE interface to your Excel worksheet and tadaaa
 
-![You got the list of customers](./images/worksheet.png)
+![You got the list of customers](./images/worksheet.webp)
 
 ## The list of features
 

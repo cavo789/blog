@@ -33,7 +33,7 @@ With the last instruction, you'll be asked if you want to change the default she
 
 And very quickly you can see a change in your console:
 
-![ZSH has been installed](./images/zsh_install.png)
+![ZSH has been installed](./images/zsh_install.webp)
 
 One first change concern the prompt. Right now, I'm in my blog folder and it's a git repository. So, Oh-My-ZSH is showing me that info and, on top, the current branch I'm working on (branch `master` here).
 
@@ -49,19 +49,19 @@ The second action to take is to edit the `~/.zshrc` file. Since I'm using VSCode
 
 Search for `ZSH_THEME` and set the value to `powerlevel10k/powerlevel10k`.
 
-![ZSH theme](./images/zsh_theme.png)
+![ZSH theme](./images/zsh_theme.webp)
 
 The last thing is to close your current Linux console and start a new one. The first time, you'll get the Powerlevel10k configuration wizard:
 
-![ZSH configuration](./images/zsh_configuration.png)
+![ZSH configuration](./images/zsh_configuration.webp)
 
 Just answer to all questions and when it's time to define your preference, just select the option you like the most.
 
-![ZSH - Set your preferences](./images/zsh_preferences.png)
+![ZSH - Set your preferences](./images/zsh_preferences.webp)
 
 When done, here is my prompt will look like:
 
-![Powerlevel10k - New prompt](./images/powerlevel10k_prompt.png)
+![Powerlevel10k - New prompt](./images/powerlevel10k_prompt.webp)
 
 And this is so much better (and much prettier). Quickly, I know I'm in my `blog` folder, that it's a Git repository, that I'm on branch `main` and `?1` means I've one *untracked* or *modified* file on my computer and not yet pushed to the central repo (Github here).
 
@@ -75,7 +75,7 @@ Powerlevel10k has a great documentation and by reading [How do I add username an
 
 Just edit the `~/.p10k.zsh` file, search for `POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS` and then retrieve his `context` entry and comment the line. Save the file, open a new console and bingo, the right side of the prompt don't contain anymore the username.
 
-![Powerlevel10k - Prompt without username](./images/powerlevel10k_prompt_no_user.png)
+![Powerlevel10k - Prompt without username](./images/powerlevel10k_prompt_no_user.webp)
 
 ## Some features I use daily
 
@@ -96,15 +96,15 @@ Imagine you're in the folder `/tmp/new_folder/a/b/c/d/e/f` and you want to use `
 
 There is also one king key with ZSH and it's <kbd>TAB</kbd>. Imagine you're in a folder having multiple sub-folders. Just type `cd` (the space is really important) and press <kbd>TAB</kbd>. You'll then get the list of sub-folders. Navigate between suggestions by using <kbd>TAB</kbd> and press <kbd>ENTER</kbd> to select one.
 
-![ZSH - CD with tab](./images/zsh_cd.png)
+![ZSH - CD with tab](./images/zsh_cd.webp)
 
 Then, continue, press <kbd>TAB</kbd> again and you'll be able to select a sub-folder and you can continue like that.
 
-![ZSH - CD with tab](./images/zsh_cd_again.png)
+![ZSH - CD with tab](./images/zsh_cd_again.webp)
 
 <kbd>TAB</kbd> is then used by ZSH for auto-completion. Let's try something else: `head -` followed by <kbd>TAB</kbd>. As you can see below, I'll get the list of command line flags I can use, I can navigate still using <kbd>TAB</kbd> and continue to type my command line.
 
-![ZSH - head command auto-completion](./images/zsh_head_autocompletion.png)
+![ZSH - head command auto-completion](./images/zsh_head_autocompletion.webp)
 
 In term of aliases, one I use several times a day is `gst` for `git status`. You can retrieve the list of all aliases for Git in your `/root/.oh-my-zsh/plugins/git/git.plugin.zsh` file. A nice one is `gwip` to commit all your changes as `work in progress` allowing you to store your current work, checkout another branch (f.i. to work on an issue) and when done, checkout back your feature branch and retrieve your work. Easy.
 

@@ -26,7 +26,7 @@ As read in the [official documentation](https://github.com/louislam/uptime-kuma#
 $ {`docker run -d --restart=always -p 3001:3001 -v \${PWD}:/app/data --name uptime-kuma louislam/uptime-kuma:1`}
 </Terminal>
 
-![Dashboard](./images/dashboard.png)
+![Dashboard](./images/dashboard.webp)
 
 <AlertBox variant="info" title="Think to add a volume">
 The `-v ${PWD}:/app/data` flag is important if you want to keep track of the sites you'll add to the dashboard (i.e. if you restart the tool). If you wish, only, play once with the interface first, you can omit it so nothing will be written on the disk.
@@ -35,7 +35,7 @@ The `-v ${PWD}:/app/data` flag is important if you want to keep track of the sit
 
 In the setting page, site by site, you can define a lot of actions like what the monitoring tool should do when the site is down. For instance, send you a notification on *Mattermost* or an email or ...
 
-![Notification through Mattermost](./images/notification.png)
+![Notification through Mattermost](./images/notification.webp)
 
 <AlertBox variant="info" title="There are so many settings to configure">
 On top of configuration items site by site, you'll also find in the *Profile -> Settings* page, a large number of global settings like the choice of the language's interface (French is available).

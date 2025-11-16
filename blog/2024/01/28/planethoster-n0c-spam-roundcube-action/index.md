@@ -191,7 +191,7 @@ Push the file there, on your host.
 
 Now, go to your web email account (direct link: [https://mg.n0c.com/email/accounts](https://mg.n0c.com/email/accounts)) and start RoundCube. Open your account, click on `Settings` then `Filters` and tadaaa...
 
-![RoundCube filters](./images/filters.png)
+![RoundCube filters](./images/filters.webp)
 
 <AlertBox variant="note" title="I've already added more spams domain for my own account">
 If you don't have the same list of filters; it's absolutely normal.
@@ -239,7 +239,7 @@ $ git push
 
 Back to github, you'll obtain a repo like this one:
 
-![Github repo](./images/github_repo.png)
+![Github repo](./images/github_repo.webp)
 
 So, now, each time you'll update the list of domains (in the `patterns.json` file), our objective is to ask Github to run itself the `./generate.sh` script to generate the `build/roundcube.sieve` file.
 
@@ -315,7 +315,7 @@ Back to your browser, go to your Github repository you've created in the previou
 
 Click on `Settings` then `Secrets and variables` and finally, click on `Actions`
 
-![Github secrets](./images/settings_actions_secrets.png)
+![Github secrets](./images/settings_actions_secrets.webp)
 
 Click on the green button `New repository secret` and create the first one called `FTP_SERVER` (seems to be in uppercase). Put there the name of your FTP server like `node99-xx.N0c.com` (get the name from your *My planethoster* page).
 
@@ -336,7 +336,7 @@ Copy the login and the password in the Github secrets page.
 
 You'll then have this:
 
-![Secrets](./images/secrets.png)
+![Secrets](./images/secrets.webp)
 
 ## Everything is now in place for automation
 
@@ -348,11 +348,11 @@ Push the change to Github (`git add . ; git commit -m "chore: new pattern" ; git
 
 Just for the curiosity, go to Github - Actions tabs:
 
-![Build and deploy](./images/build_and_deploy.png)
+![Build and deploy](./images/build_and_deploy.webp)
 
 If you've configured everything correctly, you should get this:
 
-![FTP Deploy Action](./images/ftp_deploy_action.png)
+![FTP Deploy Action](./images/ftp_deploy_action.webp)
 
 ## Conclusion
 

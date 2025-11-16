@@ -417,7 +417,7 @@ This is pretty useful when you work with git repositories:
 
 You can use a tip for creating a target like `help`. The idea is to scan the current `makefile` and extract the list of all verbs and their description.
 
-![Self documenting makefile](./images/help.png)
+![Self documenting makefile](./images/help.webp)
 
 There are a few different ways to achieve this. I already have written a blog post for this: <Link to="/blog/makefile-help">Linux Makefile - Adding a help screen</Link>.
 

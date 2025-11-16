@@ -37,7 +37,7 @@ In the right side of the screen, click on the `Settings` icon then `Filters` and
 
 Fill in the screen with your own rule; like for identifying all emails coming from `*.su` (Soviet Union) as spam:
 
-![Identify as spam emails from Soviet Union](./images/rule_su.png)
+![Identify as spam emails from Soviet Union](./images/rule_su.webp)
 
 <AlertBox variant="note" title="In my case, all the emails coming from `.su` can only be unsolicited emails." />
 
@@ -49,7 +49,7 @@ We all agree that to get to the 'Save' button we had to click at least 13 times,
 
 If needed click again on the `Settings` menu then `Filters`. Now that you've at least one rule, click on the `Actions` button you'll see in the top part of the screen and there you'll find a `Download` action.
 
-![Download rules](./images/actions.png)
+![Download rules](./images/actions.webp)
 
 Open the downloaded file and you'll get something like this:
 

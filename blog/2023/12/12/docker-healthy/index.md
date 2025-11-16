@@ -30,7 +30,7 @@ Make sure to make the script executable: `chown +x health.sh`.
 
 Here is the output of the script when launched:
 
-![Docker health checks](./images/healthy.png)
+![Docker health checks](./images/healthy.webp)
 
 I've a few containers running on my machine, a lot are `healthy` meaning that they're running and without any issue, I've two containers in a `null` state i.e. they are sleeping and none are stopped due to an error.
 

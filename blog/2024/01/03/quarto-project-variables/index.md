@@ -68,7 +68,7 @@ As you can see, the short code is something like `{{< meta xxx >}}` or `{{< var 
 
 By running `quarto preview documentation.md --to html`, you'll get this:
 
-![Using variables with Quarto](./images/variables.png)
+![Using variables with Quarto](./images/variables.webp)
 
 This solution is perfect when you want to isolate the "static" content of your documentation from variables, i.e. anything that is subject to regular change or would be repeated in several places in your document.
 
@@ -116,6 +116,6 @@ Quarto includes {{< var engine.jupyter >}} and
 
 I'm thus using `--env-file .env` in the `docker run` instruction so Docker will load my variables and make them available in the container. Quarto can then access them.
 
-![Using environment variables](./images/environment.png)
+![Using environment variables](./images/environment.webp)
 
 This solution is even better if you have an application such as Laravel, and therefore already have such an .env file. As a result, you reuse the same values for both the application and the documentation.

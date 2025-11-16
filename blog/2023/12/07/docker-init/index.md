@@ -121,7 +121,7 @@ Ok, nothing really difficult until now. We'll create the image by running `docke
 
 Once built, we can surf to `http://localhost:8080` and ... ouch.
 
-![Forbidden](./images/forbidden.png)
+![Forbidden](./images/forbidden.webp)
 
 **And this is totally normal.** Remember, your current folder only contains actually the four files created by `docker init`.
 
@@ -131,7 +131,7 @@ Please create the `index.php` file with this content:
 
 Go back to your console, press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop the first container and run `docker compose up --detach --build` this time (so the console won't be blocked and the container stay running in background).
 
-![phpinfo](./images/phpinfo.png)
+![phpinfo](./images/phpinfo.webp)
 
 ## Enter in the container
 

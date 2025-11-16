@@ -19,7 +19,7 @@ Did you know WinSCP provide an option to show you, in plain text, a stored passw
 
 To do this, just go to the `Preferences` menu then go to `Logging` and check *Log passwords and other sensitive information*.
 
-![Log password](./images/log_password.png)
+![Log password](./images/log_password.webp)
 
 Click on `Ok` and double-click on your site so you'll indeed make a connection.
 

@@ -40,7 +40,7 @@ $ docker run --rm -it -w /code/tests -v .:/code bats/bats:latest simple.bats
 
 And ... it works.
 
-![Simple test](./images/simple_test.png)
+![Simple test](./images/simple_test.webp)
 
 ### What did we do?
 
@@ -64,7 +64,7 @@ Of course we can also assert a failure. Edit your `simple.bats` file like this:
 
 So, in the new test function, we'll just try to remove a not-existing file and we expect, for sure, a failure:
 
-![Asserting for a failure](./images/assert_failure.png)
+![Asserting for a failure](./images/assert_failure.webp)
 
 ## Some real-world use cases
 

@@ -93,6 +93,7 @@
         "davidlday.languagetool-linter",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
+        "GitHub.copilot",
         "GitHub.vscode-github-actions",
         "ms-vscode.makefile-tools",
         "shd101wyy.markdown-preview-enhanced",

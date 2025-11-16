@@ -25,13 +25,13 @@ Let us take an example found randomly on the net [superheroes](https://medium.co
 
 Isn't it nicer in visual form?
 
-![Json crack](./images/spiderman_json.png)
+![Json crack](./images/spiderman_json.webp)
 
 Another example (found [here](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)):
 
 <Snippet filename="superheroes.json" source="./files/superheroes.part2.json" />
 
-![Super hero squad](./images/super_hero_squad.png)
+![Super hero squad](./images/super_hero_squad.webp)
 
 The advantage of the image is that it is much clearer: we can see straight away that the squad is made up of three members and that the strongest (and oldest) is *Eternal Flame*, who has five powers.
 

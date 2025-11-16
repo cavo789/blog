@@ -66,7 +66,7 @@ $ code .
 
 VSCode will automatically suggest opening a Dev Container. Click on the `Reopen in Container` button.
 
-![VSCode automatically suggest opening a Dev Container](./images/vscode_starting.png).
+![VSCode automatically suggest opening a Dev Container](./images/vscode_starting.webp).
 
 If you don't have this popup, just press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> to open the **Command Palette** and search for `Dev Containers: Rebuild and Reopen in Dev Container` and click on it.
 
@@ -76,7 +76,7 @@ VSCode will now take a while to build the Docker image then start a Docker conta
 
 For instance, press <kbd>CTRL</kbd>+<kbd>ù</kbd> to open the **Terminal** pane and type there `/usr/local/bin/php-cs-fixer.phar fix --config /var/www/html/.config/.php-cs-fixer.php index.php` to run [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer).
 
-![PHP-CS-Fixer](./images/php-cs-fixer.png)
+![PHP-CS-Fixer](./images/php-cs-fixer.webp)
 
 You can also run `/usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml /var/www/html/index.php` for reformating your code using [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
 

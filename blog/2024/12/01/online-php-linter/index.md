@@ -26,11 +26,11 @@ There are a huge number of *linters* on the internet, but this is perhaps one of
 
 So, here was how the code looks&like before:
 
-![Correctly formatted PHP code](./images/before.png)
+![Correctly formatted PHP code](./images/before.webp)
 
 Jump to [Pint-express](https://benjamincrozat.com/pint-express), copy the code in the **Code** textarea of the script and let's the reformatting occurs:
 
-![Correctly formatted PHP code](./images/after.png)
+![Correctly formatted PHP code](./images/after.webp)
 
 Much better.
 

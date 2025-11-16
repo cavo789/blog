@@ -39,7 +39,7 @@ The important part here is: `-v $(pwd):/var/www/html`. We are telling to Docker 
 
 Go to `http://127.0.0.1:81/` to see if Apache is running and yes, it is.
 
-![Localhost is forbidden](./images/localhost_is_forbidden.png)
+![Localhost is forbidden](./images/localhost_is_forbidden.webp)
 
 As you probably know, Apache is displaying by default the content of the `/var/www/html` folder. And, in our Docker container, we do not have an `index.php` file in our container so ... yeah, we got the **Forbidden** page.
 
@@ -59,7 +59,7 @@ Write anything valid like for instance:
 
 Save the file and just return to your browser. Refresh the page `http://127.0.0.1:81/`
 
-![Hello world!](./images/hello_world.png)
+![Hello world!](./images/hello_world.webp)
 
 Using the `-v` command line argument, you have synchronize a local folder with a folder inside the running Docker container. Each changes done in the local folder but also in the Docker container (**bi-directional**) will be reflected immediately.
 

@@ -74,11 +74,11 @@ Now, the DotNet part. We need two files: `OracleConnector/OracleConnector.csproj
 
 This is how your project looks like in VSCode:
 
-![.Net project in VSCode](./images/vscode_dotnet.png)
+![.Net project in VSCode](./images/vscode_dotnet.webp)
 
 Still in the console, located in folder `/tmp/oracle/dotnet`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-dotnet . && docker run --rm -it --network oracle oracle-dotnet`.
 
-![Using .Net to access to the list of employees](./images/using_dotnet.png)
+![Using .Net to access to the list of employees](./images/using_dotnet.webp)
 
 Job done, our .Net code has accessed to the list.
 
@@ -167,7 +167,7 @@ run();
 
 Still in the console, located in folder `/tmp/oracle/nodejs`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-nodejs . && docker run --rm -it --network oracle oracle-nodejs`.
 
-![Using NodeJS to access to the list of employees](./images/using_nodejs.png)
+![Using NodeJS to access to the list of employees](./images/using_nodejs.webp)
 
 Nice! As you can see, we can quite easily access to our Oracle database using NodeJS.
 
@@ -191,7 +191,7 @@ Then let's create a PHP script (*generated using AI*)
 
 Still in the console, located in folder `/tmp/oracle/php`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-php . && docker run --rm -it --network oracle oracle-php`.
 
-![Using PHP to access to the list of employees](./images/using_php.png)
+![Using PHP to access to the list of employees](./images/using_php.webp)
 
 ## Access our Oracle DB container using Python
 
@@ -213,7 +213,7 @@ Then let's create a Python script (*generated using AI*)
 
 Still in the console, located in folder `/tmp/oracle/python`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-python . && docker run --rm -it --network oracle oracle-python`.
 
-![Using Python to access to the list of employees](./images/using_python.png)
+![Using Python to access to the list of employees](./images/using_python.webp)
 
 Nice! As you can see, we can quite easily access to our Oracle database using Python.
 

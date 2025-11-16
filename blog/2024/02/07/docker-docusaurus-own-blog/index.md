@@ -26,11 +26,11 @@ Please run `cd /tmp/docusaurus` to jump in it, then open the folder using your e
 
 In Visual Studio Code, you should see this (if not, read and run commands from the first article):
 
-![Starting point in vscode](./images/vscode_starting_point.png)
+![Starting point in vscode](./images/vscode_starting_point.webp)
 
 And by running `docker compose up --detach --build` to start the blog, you'll get this screen:
 
-![Starting point blog](./images/blog_starting_point.png)
+![Starting point blog](./images/blog_starting_point.webp)
 
 ## Customize the name, title, icons and URL of your site
 
@@ -51,7 +51,7 @@ So, to copy the `docusaurus.config.js` file on your disk, you've to run `docker 
 
 Once the copy has been done, you can retrieve the file in your editor:
 
-![Docusaurus.config.js on local disk](./images/docusaurus.config.js.png)
+![Docusaurus.config.js on local disk](./images/docusaurus.config.js.webp)
 
 And the second thing we need to do to allow us to update the file and reflect changes in our Docker container is to mount the file.
 
@@ -80,7 +80,7 @@ So, open `docusaurus.config.js` and search for `themeConfig` then, there, for th
 
 You'll find something like this:
 
-![The navbar in config.js](./images/navbar_default.png)
+![The navbar in config.js](./images/navbar_default.webp)
 
 Change the tex to what you wish, f.i.
 
@@ -96,7 +96,7 @@ navbar: {
 
 Just save and refresh your browser and you'll get:
 
-![My own navbar](./images/navbar_me.png)
+![My own navbar](./images/navbar_me.webp)
 
 <AlertBox variant="info" title="You've learned a very important concept!">
 When you wish to be able to update a file present in a container; you need to get the file on your disk (1) and, then, synchronize the file between your computer and the container (2).
@@ -119,7 +119,7 @@ const config = {
 };
 ```
 
-![Favicon](./images/favicon.png)
+![Favicon](./images/favicon.webp)
 
 <AlertBox variant="info" title="Just refresh">
 You don't need to restart the `docker up` command this time, just press <kbd>F5</kbd> to see your changes directly in your browser.

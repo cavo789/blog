@@ -22,9 +22,9 @@ And adding words like *Realistic photo* will generate images as if they were pho
 
 <!-- truncate -->
 
-![Fine-tune](./images/fine-tune.png)
+![Fine-tune](./images/fine-tune.webp)
 
-![Variate](./images/variate.png)
+![Variate](./images/variate.webp)
 
 Also, unlike Bing, recraft.ai allow to specify the size of the image (horizontal, vertical, `2:1`, `4:3`, `1:2` and much more).
 

@@ -54,19 +54,19 @@ I'm part of the slideshow
 
 When rendering the markdown sample here above to Word, we'll have the title and the paragraph `when-format="docx"`:
 
-![Quarto conditional display - docx](./images/docx.png)
+![Quarto conditional display - docx](./images/docx.webp)
 
 For `when-format="html"`, too, only the title and one paragraph:
 
-![Quarto conditional display - html](./images/html.png)
+![Quarto conditional display - html](./images/html.webp)
 
 For `when-format="revealjs"`, it's a little bit smarter since revealjs is an HTML document:
 
-![Quarto conditional display - revealjs](./images/revealjs.png)
+![Quarto conditional display - revealjs](./images/revealjs.webp)
 
 And since we don't have any paragraph only conditional ones, when converting to PDF, we just have the title.
 
-![Quarto conditional display - pdf](./images/pdf.png)
+![Quarto conditional display - pdf](./images/pdf.webp)
 
 The `when-format="xxx"` is thus working exactly as expected.
 

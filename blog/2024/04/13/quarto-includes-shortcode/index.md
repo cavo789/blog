@@ -68,7 +68,7 @@ Consequatur debitis et sunt eos quod qui unde aut.
 
 Now, by running, f.i., `quarto render main.qmd --to html`, Quarto will merge files and you'll get:
 
-![Quarto includes](./images/includes.png)
+![Quarto includes](./images/includes.webp)
 
 <AlertBox variant="info" title="What is a `.qmd` files?">
 For Quarto, the extension isn't very important: whether it's `.qmd` or `.md`, there's no difference in treatment.

@@ -100,7 +100,7 @@ If you already know some of these values, you can provide them in a link, like `
 
 </AlertBox>
 
-![adminer](./images/adminer.png)
+![adminer](./images/adminer.webp)
 
 ## Run pgadmin
 
@@ -122,6 +122,6 @@ $ docker run -d --rm --name phpmyadmin --network joomla_default  --link joomla-j
 
 To open phpmyadmin, start your browser and navigate to `http://127.0.0.1:8089` since we have defined port `8089` here.
 
-![phpmyadmin](./images/phpmyadmin.png)
+![phpmyadmin](./images/phpmyadmin.webp)
 
-![List of databases](./images/phpmyadmin_databases.png)
+![List of databases](./images/phpmyadmin_databases.webp)

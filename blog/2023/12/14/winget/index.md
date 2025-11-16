@@ -21,11 +21,11 @@ Under Windows, since a few years (starting with Windows 10), there is such comma
 
 By running `winget upgrade --all --silent` in **a DOS (or Powershell) console** started with admin rights, you'll start a process that will scan (in a second) your computer, detect which programs are installed on it and check if a newer version exists (and known by winget).
 
-![Starting winget](./images/start-winget.png)
+![Starting winget](./images/start-winget.webp)
 
 Then, because we've added the `--all --silent` flags, we just allow winget to process to the updates without asking confirmation. Let the computer do his work during a few minutes and... tadaaa... you've fresh and updated versions of your software *(the ones supported by winget)*.
 
-![Running winget](./images/running-winget.png)
+![Running winget](./images/running-winget.webp)
 
 Winget has detected that 17 software should be upgraded and, one by one, will download and install newer versions.
 

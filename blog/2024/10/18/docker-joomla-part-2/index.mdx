@@ -455,7 +455,7 @@ DATABASE
 
 As you can see, the port number is `8080`; the one we've specified in our `.env` file. Simply CTRL click on the URL if your terminal support this option (otherwise, manually start your preferred web browser and navigate to the specified URL).
 
-![Joomla installer](./images/joomla_installer.png)
+![Joomla installer](./images/joomla_installer.webp)
 
 **Congratulations, you have successfully installed a fresh Joomla website using Docker!**
 
@@ -814,7 +814,7 @@ Go to your console and run `cd project_1` to jump in the first project's folder 
 
 By going to `http://127.0.0.1:8081/administrator/` we've our first admin page (as you can see, the site is well called **Joomla_5** as expected).
 
-![Our first site is running under Joomla 5.2](./images/project_1.png)
+![Our first site is running under Joomla 5.2](./images/project_1.webp)
 
 <AlertBox variant="caution" title="">
 Please really be careful to specify the port number of our project. For project 1, the port number is `8081`. As, in fact, we wished by setting the variable `WEB_PORT`.
@@ -866,7 +866,7 @@ Save the file and run `make up` to start the second website. Go to `http://127.0
 
 <Terminal>$ make up</Terminal>
 
-![Our two Joomla projects are running](./images/project_1_2.png)
+![Our two Joomla projects are running](./images/project_1_2.webp)
 
 <AlertBox variant="info" title="Two Joomla sites having two different PHP and MySQL versions and ... no conflict!">
 Did you see? We've two websites running on our computer. The first one is a Joomla 5.2 and the second one is Joomla 4.0.
@@ -918,7 +918,7 @@ Save the file and run `make up && make start` to start the second website. Go to
 
 <Terminal>$ make up && make start</Terminal>
 
-![Our three Joomla projects are active at the same time on our development machine](./images/project_1_2_3.png)
+![Our three Joomla projects are active at the same time on our development machine](./images/project_1_2_3.webp)
 
 <AlertBox variant="info" title="Just wow no?">
 Three different Joomla versions, MySQL and too PHP and no conflict at all!
@@ -973,7 +973,7 @@ But how many can I have? Well, that just depends on your machine.
 
 For information, here's what I'm seeing right now on my Windows computer (I'm using Docker Desktop and WSL2).
 
-![Docker desktop](./images/docker_desktop.png)
+![Docker desktop](./images/docker_desktop.webp)
 
 As you can see, I've actually four projects: my current blog (running on Docker too) and the three Joomla projects.
 
@@ -991,7 +991,7 @@ In the console, just run `make stop` in folder project 1 and 3 by, running `( cd
 
 By looking back to Docker Desktop, we can indeed see we've earned 1GB RAM.
 
-![The first and the third projects are released](./images/docker_desktop_stopped.png)
+![The first and the third projects are released](./images/docker_desktop_stopped.webp)
 
 <AlertBox variant="note" title="">
 In our example here, we've just kept the second project so we can still work on `http://127.0.0.1:8082/` but the two other projects (`http://127.0.0.1:8081/` and `http://127.0.0.1:8083/`) won't respond anymore. We've stopped them.
@@ -1000,7 +1000,7 @@ Just run `make up` again in f.i. folder `project_1` to make the site back to lif
 
 <Terminal>$ ( cd project_1 && make up )</Terminal>
 
-![Starting a container in Docker Desktop](./images/docker_desktop_start.png)
+![Starting a container in Docker Desktop](./images/docker_desktop_start.webp)
 
 </AlertBox>
 

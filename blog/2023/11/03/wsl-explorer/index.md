@@ -24,7 +24,7 @@ So, yes!, it's possible to call any Windows program (like the calculator (`calc.
 
 The final `.` means *current folder* so `explorer.exe .` will open the current folder in Windows Explorer.
 
-![Navigating on the Linux filesystem with Explorer.exe](./images/explorer.png)
+![Navigating on the Linux filesystem with Explorer.exe](./images/explorer.webp)
 
 It sounds crazy, no? Windows will then *convert* the Linux `/home/christophe/repositories/blog` folder to `\\wsl.localhost\Ubuntu\home\christophe\repositories\blog` (Windows style) and open it. That address is called an UNC (UNC stands for *Uniform Naming Convention*).
 
@@ -41,7 +41,7 @@ If you are running on Windows 11, the UNC is `\\wsl$\`, no more `\\wsl.localhost
 
 It can happen, on your Windows 10 computer, that the folder won't be opened and you'll get the error: /*\\wsl.localhost is not accessible. You might not have permission to use this network resource. Contact the administrator of this server to find out if you have access permissions.*.
 
-![wsl.localhost not accessible](./images/wsl_localhost_not_accessible.png)
+![wsl.localhost not accessible](./images/wsl_localhost_not_accessible.webp)
 
 **It is not a permission problem** but something to modify in your Windows registry.
 
@@ -51,7 +51,7 @@ Search for the key `KEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\NetworkPr
 
 When done, please reboot your computer.
 
-![Editing the registry](./images/registry.png)
+![Editing the registry](./images/registry.webp)
 
 <AlertBox variant="note" title="">
 If it still didn't work, remove `cbfsconnect2017` from the list and try again.

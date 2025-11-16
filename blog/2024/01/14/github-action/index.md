@@ -40,10 +40,10 @@ This done, I can push my local changes (the `.github/workflows/deploy.yml`) to g
 
 Once pushed to github, the page `https://github.com/cavo789/blog/actions` will show my action and I can see it's now running.
 
-![My action is running](./images/action_is_running.png)
+![My action is running](./images/action_is_running.webp)
 
 By clicking on the running action, details of each steps is displayed and I can easily follow:
 
-![Pushing files](./images/pushing.png)
+![Pushing files](./images/pushing.webp)
 
 After a given time period (actually four minutes), the action was successfully completed and the blog updated.

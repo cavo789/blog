@@ -27,7 +27,7 @@ It's easy: go to [https://www.jetbrains.com/lp/mono/#how-to-install](https://www
 
 Once downloaded, go to your downloads folder and unzip the file then jump in the `JetBrainsMono` newly created folder and go in the `fonts/ttf`. You'll find there several subfolders. Under Windows, just open the first folder, select all files and do a right-click. From the contextual menu, select `Install` as you can see below:
 
-![Install JetBrains Mono font](./images/install_font.png)
+![Install JetBrains Mono font](./images/install_font.webp)
 
 ## Configure VSCode to use JetBrains Mono font
 
@@ -39,7 +39,7 @@ But the easier way is:
 * Press <kbd>CTRL</kbd>+<kbd>,</kbd> to open your settings page
 * In the top right part of the screen, retrieve the `Open Settings (JSON)` button and click on it
 
-![Open settings.json](./images/open_settings_json.png)
+![Open settings.json](./images/open_settings_json.webp)
 
 * Then copy paste these entries:
 

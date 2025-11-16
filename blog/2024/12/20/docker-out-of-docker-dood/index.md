@@ -52,7 +52,7 @@ And, now, we'll jump in the container by running: `docker compose exec dood /bin
 
 By running `docker version` in the container, you can verify that Docker is well present.
 
-![Docker version](./images/version.png)
+![Docker version](./images/version.webp)
 
 Now to check if you can access to the list of images installed on your host (which is in theory impossible), please run `docker image list` and ... it works.
 

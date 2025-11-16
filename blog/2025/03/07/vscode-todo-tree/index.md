@@ -22,7 +22,7 @@ The idea behind the `Todo Tree` vscode addon (you can find the download page [ht
 
 Once the addon has been installed, you'll get a new icon in your left sidebar (see indicator 1. on the image below). By clicking on it, you'll get items like `BUG`, `CHECK`, `FIXME`, `TODO`, ... and by clicking on an item you'll be directly redirected to where the todo is located in your codebase.
 
-![Todo Tree in VSCode](./images/todo-tree.png)
+![Todo Tree in VSCode](./images/todo-tree.webp)
 
 Thanks to this summary, you'll never forget anymore your todos, temporary hack, things you should still fix, ...
 

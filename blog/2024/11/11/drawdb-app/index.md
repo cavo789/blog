@@ -34,7 +34,7 @@ So just copy/paste this SQL in Notepad; save it on your disk and go back to [htt
 
 And let's the magic happens:
 
-![The model](./images/model.jpg)
+![The model](./images/model.webp)
 
 <AlertBox variant="info" title="The image here above as been done using the `File` -> `Export as` feature." />
 
@@ -48,7 +48,7 @@ To run it, just start `docker run --name some-drawdb -p 81:80 -d xinsodev/drawdb
 
 From now, take time to check export features; click on the `File` menu again and click on `Export as`.
 
-![Export](./images/export.png)
+![Export](./images/export.webp)
 
 It's really cool to export a SQL file so easily to JSON but it's even cooler to export as markdown.
 

@@ -56,7 +56,7 @@ $ ssh-add ~/.ssh/id_ed25519
 
 Finally, add the key to GitHub by surfing to [https://github.com/settings/ssh/new](https://github.com/settings/ssh/new).
 
-![Github - Add SSH key](./images/ssh_add_key.png)
+![Github - Add SSH key](./images/ssh_add_key.webp)
 
 Give a clear title like f.i. `Home computer`.
 

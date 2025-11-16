@@ -15,7 +15,7 @@ I write a lot of Bash scripts, and I like to have a similar approach for each on
 
 I use [https://patorjk.com/software/taag](https://patorjk.com/software/taag) to create my banners, so let's take a closer look.
 
-![Sample ASCII art](./images/sample.png)
+![Sample ASCII art](./images/sample.webp)
 
 <!-- truncate -->
 
@@ -25,4 +25,4 @@ On my hand, I'm implementing the banner like this:
 
 And this is how it'll look like in my bash terminal:
 
-![Terminal](./images/terminal.png)
+![Terminal](./images/terminal.webp)

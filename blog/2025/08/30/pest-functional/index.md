@@ -80,7 +80,7 @@ $ sudo apt-get update && sudo apt-get -y install make
 
 The build phase can be slow because a lot of things should be downloaded. The final image will be around 2 GB.
 
-![Building our image](./images/make_build.png)
+![Building our image](./images/make_build.webp)
 
 ## Create the container
 
@@ -145,11 +145,11 @@ Did you've notice that others tests were well fired? Pest won't stop on failure.
 
 The nice thing is: Pest has automatically take a snapshot. See the error message, it says that a file `Tests/Browser/Screenshots/it_can_search_for_a_post` has been created automatically.
 
-![Running tests; one has failed](./images/running_tests.png)
+![Running tests; one has failed](./images/running_tests.webp)
 
 Pest has taken a screenshot; we were searching for `Create our own Docusaurus React component` (as coded in our `tests/Browser/HomepageTest.php` scenario) and indeed, we don't see that title at all:
 
-![The test has failed](./images/it_can_search_for_a_post.png)
+![The test has failed](./images/it_can_search_for_a_post.webp)
 
 But we see `React component and provide a "Share on Bluesky" button` so let's update the script:
 
@@ -181,7 +181,7 @@ docker exec -it demo_pest sh -c "WEBSITE=https://www.avonture.be vendor/bin/pest
 
 Congratulations, we've just tested 10 features in less than 26 seconds.
 
-![Success](./images/success.png)
+![Success](./images/success.webp)
 
 ## In-depth
 

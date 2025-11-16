@@ -24,7 +24,7 @@ Tools like Heimdall, Memos and Karakeep, I'm using them to make my daily work ea
 
 See below: I'm grouping tools of different origin under `Tools` so it'
 
-![Grouping tools](./images/grouping_tools.png)
+![Grouping tools](./images/grouping_tools.webp)
 
 This way, I have a smaller overview of the containers and can quickly sort out my tools and projects.  Also, if the need arises, I can stop all the tools at once. That's handy.
 

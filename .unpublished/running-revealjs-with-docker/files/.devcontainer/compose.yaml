@@ -1,0 +1,38 @@
+---
+# cspell:ignore tinytex
+
+services:
+  quarto-doc-base:
+    image: quarto-devcontainer:latest
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # We use default values here. The actual UID/GID mapping is handled
+        # by the VS Code Dev Container CLI at runtime, overriding these defaults
+        # when the container starts via the user: vscode directive in the Dockerfile.
+        USER_UID: 1000
+        USER_GID: 1000
+        # Flags you'll need to adjust depending on your project
+        INSTALL_CHROMIUM: "false"
+        INSTALL_CSPELL: "false"
+        INSTALL_PRECOMMIT_HOOKS: "false"
+
+    user: vscode
+
+    working_dir: /workspace
+
+    volumes:
+      - ..:/workspace:cached
+      - ./history/.bash_history:/home/vscode/.bash_history:rw
+      - type: bind
+        source: ${HOME}/.quarto
+        target: /home/vscode/.quarto
+      - type: bind
+        source: ${HOME}/.ssh/id_ed25519
+        target: /home/vscode/.ssh/id_ed25519
+        read_only: true
+
+    # Base command to keep the container running indefinitely
+    command: /bin/sh -c "while sleep 1000; do :; done"

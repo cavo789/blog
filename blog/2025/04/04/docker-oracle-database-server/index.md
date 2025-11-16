@@ -45,15 +45,15 @@ Error response from daemon: Head "https://container-registry.oracle.com/v2/datab
 
 Please surf on [https://container-registry.oracle.com/ords/ocr/ba/database/enterprise](https://container-registry.oracle.com/ords/ocr/ba/database/enterprise) and create a user by clicking on the `Sign In` button / top right link.
 
-![Make sure to be logged in](./images/oracle_signin.png)
+![Make sure to be logged in](./images/oracle_signin.webp)
 
-![Oracle sign in page](./images/oracle_signin_page.png)
+![Oracle sign in page](./images/oracle_signin_page.webp)
 
 ### Generate a token
 
 Once your user has been validated (after reception of an email); go back to the [https://container-registry.oracle.com/ords/ocr/ba/database/enterprise](https://container-registry.oracle.com/ords/ocr/ba/database/enterprise) website; do a login and click on your profile then choice `Auth Token`.
 
-![Creation of your Auth Token](./images/auth_token.png)
+![Creation of your Auth Token](./images/auth_token.webp)
 
 Click on the `Generate Secret Key` button and copy your **SSO Username** and your **Secret Key** somewhere (in your password vault application f.i.).
 
@@ -61,17 +61,17 @@ Click on the `Generate Secret Key` button and copy your **SSO Username** and you
 
 Please go to [https://container-registry.oracle.com/ords/ocr/ba/database](https://container-registry.oracle.com/ords/ocr/ba/database) and search for `enterprise` in the `Repository` column.
 
-![Click on enterprise](./images/oracle_enterprise.png)
+![Click on enterprise](./images/oracle_enterprise.webp)
 
 Being logged in, please click on the `Continue` button that appears on the right.
 
-![Accepting the license terms](./images/accepting_license.png)
+![Accepting the license terms](./images/accepting_license.webp)
 
 A popup window will be displayed and, at the bottom, you'll need to click on `Accept`.
 
 Optional, by going back to [https://container-registry.oracle.com/ords/ocr/ba/database](https://container-registry.oracle.com/ords/ocr/ba/database) you'll see that Oracle has recorded the fact you've accepted their terms.
 
-![Accepting License Agreement](./images/accepted_license.png)
+![Accepting License Agreement](./images/accepted_license.webp)
 
 ### Configure your local Docker environment
 
@@ -162,7 +162,7 @@ Pay attention to the `CONNECT system/admin@orclpdb1` statement: we'll first conn
 
 If you need the data model, here it is:
 
-![The Oracle Human Resources sample relations](./images/hr_schema.png)
+![The Oracle Human Resources sample relations](./images/hr_schema.webp)
 
 ### Create the OracleDBData volume
 
@@ -240,7 +240,7 @@ If you need to jump in the container, simply run `docker exec -it oracle-db bash
 
 As a fictive example, we can go to the `/docker-entrypoint-initdb.d/startup` folder inside the container and run our `./populate_db.sh` script again (again because was fired by Oracle during the creation of the container):
 
-![Running the script manually](./images/run_script_manually.png)
+![Running the script manually](./images/run_script_manually.webp)
 
 And of course, we'll get a lot of errors illustrating the fact that tables and records were already created/inserted.
 
@@ -252,7 +252,7 @@ So the `docker run` command will take something like 10 minutes to run.
 
 If you've Docker Desktop, switch to its interface, click on the `Containers` link and click on your `oracle-db` container to see the log.  Wait until you see:
 
-![Database is ready to use](./images/container_db_is_ready.png)
+![Database is ready to use](./images/container_db_is_ready.webp)
 
 You can also use the command line: `docker logs oracle-db --follow` and wait until we see the `DATABASE IS READY TO USE!` message. Press <kbd>CTRL</kbd>+<kbd>C</kbd> to quit the log.
 
@@ -261,11 +261,11 @@ Now, we can jump in the `oracle-db` container and run SQL*Plus by running `docke
 <AlertBox variant="info" title="Am I connected on the container database or in a pluggable database?">
 Just run, in the SQL*Plus console, the `SHOW CON_NAME;` command.
 
-![Connected on the PDB](./images/connected_on_pdb.png)
+![Connected on the PDB](./images/connected_on_pdb.webp)
 
 If you're connected to the CDB, you'll get the next answer and it's wrong. Type `exit` and connect to the PDB.
 
-![Connected on the CDB](./images/connected_on_cdb.png)
+![Connected on the CDB](./images/connected_on_cdb.webp)
 
 </AlertBox>
 
@@ -279,7 +279,7 @@ The `CONNECT` statement will use the `system` Oracle user. Tables that will be c
 
 If we run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` and try to display records of the `COUNTRIES` table; it will not work unless we specify the schema:
 
-![The system schema](./images/system_schema.png)
+![The system schema](./images/system_schema.webp)
 
 This is because the `sys` user use the `sys` schema by default (we can see this by running `SELECT SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') FROM dual;`).
 
@@ -287,7 +287,7 @@ This is why, because our tables are in the `system` schema; we can access to the
 
 But, we can also change our user, no more using `sys` but `system` by running `CONNECT system/admin@orclpdb1`.
 
-![Connect using the system account](./images/connect_as_system.png)
+![Connect using the system account](./images/connect_as_system.webp)
 
 ### Check our fake data
 
@@ -298,7 +298,7 @@ This understood, here is how we can see our data:
 * For esthetic purposes, we'll run `SET WRAP OFF` and `SET PAGESIZE 1000` and
 * we can access to our tables like this: `SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL FROM EMPLOYEES;`
 
-![Fake data are well loaded](./images/fake_data.png)
+![Fake data are well loaded](./images/fake_data.webp)
 
 <AlertBox variant="info" title="">
 `SET WRAP OFF` will allow to use the screen full width and not a ridiculous width of 80 characters and `SET PAGESIZE 1000` is to not have a paginated list every 10 records.
@@ -313,7 +313,7 @@ This is a web application we can reach by surfing to `https://localhost:5500/em/
 
 Connect to it using `system` / `admin` and `orclpdb1` as container name.
 
-![Oracle Enterprise Manager Database Express](./images/oem_express.png)
+![Oracle Enterprise Manager Database Express](./images/oem_express.webp)
 
 ### Accessing our database using Oracle tools
 
@@ -330,32 +330,32 @@ Once installed, run it and create a new connection to:
 * Port: `1521` and
 * Service name: `orclpdb1`
 
-![Creating a connection in Oracle SQL Developer as sys](./images/oracle_sql_dev_as_sys.png)
+![Creating a connection in Oracle SQL Developer as sys](./images/oracle_sql_dev_as_sys.webp)
 
 <AlertBox variant="note" title="Remember; use should connect to our PDB; not to the CDB">
 Tables are located in the *pluggable database* (`PDB`); not in the *container database* (`CDB`)
 
 </AlertBox>
 
-![Getting data using Oracle SQL Developer](./images/oracle_sql_get_data.png)
+![Getting data using Oracle SQL Developer](./images/oracle_sql_get_data.webp)
 
 Start to type `SELECT * FROM system.` and press <kbd>CTRL</kbd>+<kbd>SPACE</kbd> to get the list of objects in that schema. By scrolling a few, you'll find employees.
 
-![Oracle get employees](./images/oracle_get_employees.png)
+![Oracle get employees](./images/oracle_get_employees.webp)
 
 Validate or simply type the full SQL `SELECT * FROM system.employees`. In the example below, I'll ask the list of regions and the list of employees. I will run the query by simply pressing <kb>F5</kb>:
 
-![Oracle getting the list of employees](./images/oracle_getting_employees.png)
+![Oracle getting the list of employees](./images/oracle_getting_employees.webp)
 
 ##### Connect to Oracle SQL Developer using the correct user
 
 In the previous chapter, we've established a login using `sys` for the username and for that reason, if we click in the `Tables (Filtered)` menu in the left tree view, we'll get a bunch of tables but not the one of the `system` user like our employees table.
 
-![Creating a connection in Oracle SQL Developer as system](./images/oracle_sql_dev_as_system.png)
+![Creating a connection in Oracle SQL Developer as system](./images/oracle_sql_dev_as_system.webp)
 
 Now, by unfolding the list of tables, we can see ours:
 
-![Seeing our Human Resources tables](./images/oracle_sql_dev_tables.png)
+![Seeing our Human Resources tables](./images/oracle_sql_dev_tables.webp)
 
 #### Access our Oracle DB container using Oracle SQLPlus
 
@@ -367,7 +367,7 @@ $ docker run --rm -it --network oracle oracletools/sqlplus:v19.18_lin SYS/admin@
 
 Once connected, for instance, we can get the list of countries like this:
 
-![Oracle sqlplus](./images/oracle_sqlplus_countries.png)
+![Oracle sqlplus](./images/oracle_sqlplus_countries.webp)
 
 <AlertBox variant="note" title="Intern versus extern">
 For this article, it was not really needed to use that image. Until now, we've more than once used SQL*Plus like when we've fired `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` to connect to the database.

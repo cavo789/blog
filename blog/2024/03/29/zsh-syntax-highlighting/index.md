@@ -41,8 +41,8 @@ In fact, nothing has to be done.
 
 From now, when you'll type a command like f.i. `cat` or `head`, the command will appears in green meaning this is a valid one, correctly typed and executable.
 
-![Highlight in green](./images/head.png)
+![Highlight in green](./images/head.webp)
 
 As the opposite, it'll appears in red when the command contains a typo i.e. isn't an executable one:
 
-![Highlight in red](./images/docker_dompose.png)
+![Highlight in red](./images/docker_dompose.webp)

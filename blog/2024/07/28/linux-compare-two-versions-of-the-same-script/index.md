@@ -41,7 +41,7 @@ $ {`grep -P "^(function\s+.*)\(\)" "/tmp/bash/console.sh" | awk '{print \$2}' | 
 
 This function will retrieve any functions in the file i.e. lines starting with the word `function` followed by any whitespace character then the name of the function then followed by parenthesis. And, finally, sort the list:
 
-![Get the list of functions in a Bash script](./images/functions_list.png)
+![Get the list of functions in a Bash script](./images/functions_list.webp)
 
 ## Compare the two versions of the same Bash script and shows which functions are in one and not the other
 
@@ -62,11 +62,11 @@ Regardless of the order in which the functions are declared, the script below, w
 
 As you can see, we immediately see that the second file has two additions.
 
-![Compare the two versions of the same Bash script and shows which functions are in one and not the other](./images/compare_functions.png)
+![Compare the two versions of the same Bash script and shows which functions are in one and not the other](./images/compare_functions.webp)
 
 Of course, if we add a new function in `console.sh` and f.i. remove an existing one, we can see it too:
 
-![Compare the two versions of the same Bash script and shows which functions are not the same in both files](./images/compare_functions_both_side.png)
+![Compare the two versions of the same Bash script and shows which functions are not the same in both files](./images/compare_functions_both_side.webp)
 
 On the image here above, we see three indicators in the middle of the screen:
 
@@ -82,7 +82,7 @@ And lines with the `|` indicator highlight that we've a mismatch. On both sides 
 
 By adding `printBlue`, `printGreen` and `printRed` in our first file, now we got:
 
-![Compare the two versions of the same Bash script and shows which functions are not the same in both files](./images/compare_functions_both_side_bis.png)
+![Compare the two versions of the same Bash script and shows which functions are not the same in both files](./images/compare_functions_both_side_bis.webp)
 
 So now, we can see a new indicator `<`: the function was retrieved only in the first file and not in the second one. Once again, we've the confirmation that we've two new functions (`printPurple` and `verbose`) in our first file and not in the second one.
 
@@ -109,7 +109,7 @@ To do this, create the `compare.sh` script on your hard drive with this content:
 
 Now, to run it, just start `./compare.sh foldername1 foldername2`. You'll get something like below i.e. for each scripts in both folders (script in just one folder are ignored), you'll get the name of the script (like `array.sh`) followed by the text `The two files are identical` if both files are identical or, if not, a list of function names and the indicator already seen i.e. `<`, `>` or `|`.
 
-![Compare Bash scripts in two folders](./images/compare_folders.png)
+![Compare Bash scripts in two folders](./images/compare_folders.webp)
 
 Using this script, it is easy to keep one of the two folders as the *master* (the left-hand folder), i.e. to reproduce in it all the functions that would have been added in a script in the second folder (the one corresponding to the right-hand column).
 
@@ -121,6 +121,6 @@ By adding `| grep -E -v "<$"` to our `grep` statement, we can improve the script
 
 If we run this newer script on the exact same files, now, lines ending with `<` are hidden (only in the left-hand folder) and we just obtains cases when a function is present in the right-hand folder:
 
-![Hide when functions are just in the left-hand folder](./images/no_more_left.png)
+![Hide when functions are just in the left-hand folder](./images/no_more_left.webp)
 
 This makes it even easier to identify these functions and copy/paste them to the left, for example.

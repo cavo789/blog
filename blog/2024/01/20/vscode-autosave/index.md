@@ -25,7 +25,7 @@ It's really easy: press <kbd>CTRL</kbd>-<kbd>,</kbd> (comma) to show the setting
 
 The concerned settings will be displayed and set `Files: Auto save` on `onFocusChange`.
 
-![Settings page](./images/autosave.png)
+![Settings page](./images/autosave.webp)
 
 Or, you can also simply add the following line in your `settings.json` file:
 

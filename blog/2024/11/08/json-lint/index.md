@@ -31,8 +31,8 @@ If you're using Chrome and if the web page output is a JSON string, the [JSON Fo
 
 For instance, instead of getting this page:
 
-![Json webpage](./images/json_page.png)
+![Json webpage](./images/json_page.webp)
 
 Chrome will show this:
 
-![Chrome addon](./images/chrome_addon.png)
+![Chrome addon](./images/chrome_addon.webp)

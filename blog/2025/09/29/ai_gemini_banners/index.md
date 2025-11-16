@@ -29,7 +29,7 @@ A few days later, I discovered this GitHub repository: [Awesome-Nano-Banana-imag
 
 There was an example: uploading a image (my meerkat character) and use this prompt: _Please create a pose sheet for this illustration, making various poses!_
 
-![Various poses](./images/different_positions.png)
+![Various poses](./images/different_positions.webp)
 
 i.e. :
 
@@ -39,7 +39,7 @@ i.e. :
 
 And after just a few seconds, the unimaginable happened: I received a flood of offers, each one more impressive than the last.
 
-![Various poses - Result](./images/different_positions_result.png)
+![Various poses - Result](./images/different_positions_result.webp)
 
 Repeating the same prompt again and again and got others ones:
 
@@ -71,4 +71,4 @@ Often, the image was impressive from the very first result, but sometimes I woul
 
 My next article banner:
 
-![Old blog post banner](./images/old_blog_post_notice.png)
+![Old blog post banner](./images/old_blog_post_notice.webp)

@@ -73,11 +73,11 @@ If you don't know if you already have `GNU make`, just run `which make` in the c
 
 Right now, we can run `make up` in our console and we'll get this screen:
 
-![Makefile](./images/make.png)
+![Makefile](./images/make.webp)
 
 As you can see, we've a lot of commands like `make up` to start our Docker container. Let's try and, ouch, we miss a file called `/src/requirements.txt`.
 
-![requirements.txt is missing](./images/requirements_txt.png)
+![requirements.txt is missing](./images/requirements_txt.webp)
 
 ### src/requirements.txt
 
@@ -85,11 +85,11 @@ Please create an empty file called `src/requirements.txt`. The file can stay emp
 
 By running `make up` again, yes!, this time we can build our images and create our container:
 
-![Docker up](./images/docker-up.png)
+![Docker up](./images/docker-up.webp)
 
 This time we can, if you need to, enter in our container by running `make bash` and f.i. what is inside our current folder and which version of Python has been installed:
 
-![Inside the container](./images/container-python.png)
+![Inside the container](./images/container-python.webp)
 
 <AlertBox variant="note" title="">
 As you see, Python 3.13 is used. Why that specific version? Just go back to your `.docker.env` file and take a look to the `DOCKER_PYTHON_VERSION` variable. If you need another just update the `.docker.env` file and run `make up` again.
@@ -108,11 +108,11 @@ Be creative and type a simple `print` statement:
 print("I'm your Python code")
 ```
 
-![Hello](./images/hello.png)
+![Hello](./images/hello.webp)
 
 To be able to run the code, start `make bash` again (to jump in the container) and start `python hello.py`
 
-![Run hello](./images/run-hello.png)
+![Run hello](./images/run-hello.webp)
 
 <AlertBox variant="info" title="">
 It will works because, in the container, the working directory is `/app/src`. If this had not been the case, we would have had to write, for example, `python /app/src/hello.py` i.e. the absolute path to the script.
@@ -125,7 +125,7 @@ As you can see, files on your machine are synchronised with your host. If VSCode
 print("Hey! It's synchronised; cool!")
 ```
 
-![It's synchronised](./images/it-is-synchronized.png)
+![It's synchronised](./images/it-is-synchronized.webp)
 
 ## What have we done so far?
 
@@ -145,7 +145,7 @@ This file is very long; can be shorter but ... the idea is to configure VSCode s
 
 We've finished our set-up. Here is our final project's structure:
 
-![Our final project's structure](./images/final-structure.png)
+![Our final project's structure](./images/final-structure.webp)
 
 ## Start the project in a devcontainer
 
@@ -155,13 +155,13 @@ Now, please run `make devcontainer` (on your host machine thus) which is one of 
 
 VSCode will start and open the project directly *inside* the container:
 
-![VSCode - Devcontainer](./images/vscode_devcontainer.png)
+![VSCode - Devcontainer](./images/vscode_devcontainer.webp)
 
 VSCode will ask (see bottom right) to install the Microsoft Python extension; just allow this and click on `Install`.
 
 VSCode will also ask if you want to install recommended extensions; please do it.
 
-![Install recommended extensions](./images/vscode_install_extensions.png)
+![Install recommended extensions](./images/vscode_install_extensions.webp)
 
 ## Conclusion
 

@@ -27,7 +27,7 @@ What if we asked DOS to change its ways?
 
 To do this, you'll need to start `Windows PowerShell` as an admin.
 
-![Start PowerShell as an admin](./images/powershell_admin.png)
+![Start PowerShell as an admin](./images/powershell_admin.webp)
 
 Then jump in the folder where you want to enable case sensitivity. Let's say in C:\Temp.
 
@@ -37,6 +37,6 @@ You can now use `MyFile.txt`, `myfile.txt` or `MYFILE.txt` as filenames; you'll 
 
 If you don't believe me:
 
-![Case sensitivity has been enabled](./images/case_sensitivity_enabled.png)
+![Case sensitivity has been enabled](./images/case_sensitivity_enabled.webp)
 
 To revert your change, run `fsutil.exe file setCaseSensitiveInfo . disable` but, first, you'll have to remove at least two files because DOS will prevent to disable the feature if this will give conflicts.

@@ -66,13 +66,13 @@ Now, run the conversion using `quarto render slides.md --to pptx`
 
 And you'll obtain this:
 
-![PowerPoint - Slide 1](./images/pptx_slide_1.png)
+![PowerPoint - Slide 1](./images/pptx_slide_1.webp)
 
-![PowerPoint - Slide 2](./images/pptx_slide_2.png)
+![PowerPoint - Slide 2](./images/pptx_slide_2.webp)
 
-![PowerPoint - Slide 3](./images/pptx_slide_3.png)
+![PowerPoint - Slide 3](./images/pptx_slide_3.webp)
 
-![PowerPoint - Slide 4](./images/pptx_slide_4.png)
+![PowerPoint - Slide 4](./images/pptx_slide_4.webp)
 
 You'll find a lot of tips and tricks on the [official documentation page](https://quarto.org/docs/presentations/powerpoint.html).
 

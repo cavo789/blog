@@ -38,11 +38,11 @@ During the creation of the image, please install [Windows X Server](https://sour
 
 Once installed, run it program. On the first screen, as explained on the video, select *One large window*; click on `Next` and keep all default values then click on `Finish´ on the last screen.
 
-![Windows X Server](./images/xserver.png)
+![Windows X Server](./images/xserver.webp)
 
 By clicking on `Finish` you'll get a black screen. **It's normal.**
 
-![The X Server black window](./images/xserver-black-window.png)
+![The X Server black window](./images/xserver-black-window.webp)
 
 ## Step 3 - Start the container
 
@@ -50,7 +50,7 @@ Run your container by starting `docker run -t cavo789/lubuntu` and **wait, wait 
 
 You may have to wait a minute before you'll start to see the Linux Lubuntu desktop and then, you'll still need to wait because the operating system is loading and initialising (since it's the first time you start it).
 
-![Lubuntu desktop](./images/lubuntu-desktop.png)
+![Lubuntu desktop](./images/lubuntu-desktop.webp)
 
 <AlertBox variant="note" title="Multi-screen support does not seem to work with X Server">
 During my tests, the display wasn't up to scratch and I had to remove the cable from my second screen to get a correct display.

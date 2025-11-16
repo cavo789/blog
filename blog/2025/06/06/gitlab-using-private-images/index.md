@@ -37,7 +37,7 @@ In your GitLab CI/CD settings page, add two new variables:
 
 Make sure variables are hidden and protected. This will prevent GitLab to echoed the value in any output like when you initialize `CI_DEBUG_TRACE=true` ([doc](https://docs.gitlab.com/ci/variables/variables_troubleshooting/#enable-debug-logging)) for full debug.
 
-![The two variables have been created](./images/variables.png)
+![The two variables have been created](./images/variables.webp)
 
 <AlertBox variant="note" title="">
 You can add the variables in your repository's CI/CD settings page or at a higher level like the group level or at the instance level (you should be an admin for this).

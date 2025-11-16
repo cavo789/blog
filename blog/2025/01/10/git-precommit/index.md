@@ -130,7 +130,7 @@ The first time I've used double quotes (in the first `print` statement) while I'
 
 Now, reopen the `main.py` script:
 
-![Black has reformatted our script](./images/black.png)
+![Black has reformatted our script](./images/black.webp)
 
 ### Install hooks
 

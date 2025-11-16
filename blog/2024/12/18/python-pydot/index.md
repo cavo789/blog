@@ -25,7 +25,7 @@ Let's see how in this article.
 
 Pydot can generate an image like the one below:
 
-![ETL](./images/etl.png)
+![ETL](./images/etl.webp)
 
 First, we'll need a Python Docker container. Please create a file called `Dockerfile` with this content:
 
@@ -53,22 +53,22 @@ You'll find there Python examples and, too, the rendered image.
 
 <Snippet filename="class_diagram.py" source="./files/class_diagram.py" />
 
-![Class diagram](./images/class_diagram.png)
+![Class diagram](./images/class_diagram.webp)
 
 ### Data flow
 
 <Snippet filename="data_flow.py" source="./files/data_flow.py" />
 
-![Data flow](./images/data_flow_diagram.png)
+![Data flow](./images/data_flow_diagram.webp)
 
 ### Decision flow
 
 <Snippet filename="decision_flow.py" source="./files/decision_flow.py" />
 
-![Decision flow](./images/decision_flow.png)
+![Decision flow](./images/decision_flow.webp)
 
 ### Decision tree
 
 <Snippet filename="decision_tree.py" source="./files/decision_tree.py" />
 
-![Decision tree](./images/decision_tree.png)
+![Decision tree](./images/decision_tree.webp)

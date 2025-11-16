@@ -38,7 +38,7 @@ If you're working Windows, replace `$(pwd)` by `%CD%`. And replace `cat` by `typ
 
 And bingo, the script is converted to the image here below:
 
-![Team](./images/team.jpg)
+![Team](./images/team.webp)
 
 *0.23.3 is the latest version available when writing this document. See [https://hub.docker.com/r/gtramontina/diagrams/tags](https://hub.docker.com/r/gtramontina/diagrams/tags) to retrieve the latest one.*
 
@@ -50,7 +50,7 @@ Another example:
 
 And the resulting image:
 
-![Stateful Architecture](./images/stateful_architecture.jpg)
+![Stateful Architecture](./images/stateful_architecture.webp)
 
 Crazy no? And all without installing anything!
 

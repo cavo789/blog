@@ -65,15 +65,15 @@ Press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop listening to the logs.
 
 When LimeSurvey is ready, you'll see the following page on `http://localhost:8080`:
 
-![LimeSurvey welcome page](./images/homepage.png)
+![LimeSurvey welcome page](./images/homepage.webp)
 
 Go to `http://localhost:8080/admin` to start the administration interface. The credentials to use are `admin` / `admin` (as defined in the `compose.yaml` file, see variables `ADMIN_USER` and `ADMIN_PASSWORD`).
 
-![LimeSurvey administration page](./images/admin.png)
+![LimeSurvey administration page](./images/admin.webp)
 
 You're now ready to start and play with LimeSurvey on your machine.
 
-![LimeSurvey dashboard](./images/dashboard.png)
+![LimeSurvey dashboard](./images/dashboard.webp)
 
 ## Using volumes
 

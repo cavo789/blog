@@ -47,7 +47,7 @@ The macro will not work with Office online.
 
 You should see your new group, in my case, I've created the new group in `Home` and at the first position left so I've this:
 
-![The new group](./images/ribbon_macro.png)
+![The new group](./images/ribbon_macro.webp)
 
 ## How to use
 
@@ -55,13 +55,13 @@ Select one or more emails then click on your new button.
 
 The macro will ask a first confirmation:
 
-![Five emails selected](./images/five_emails_selected.png)
+![Five emails selected](./images/five_emails_selected.webp)
 
 Press `Yes` to continue.
 
 Then, you'll be prompted to select a folder on your disk where to save emails as PDF.
 
-![Where emails should be saved?](./images/where_to_save.png)
+![Where emails should be saved?](./images/where_to_save.webp)
 
 The first dialog will ask if, once exported as PDF, you wish to keep emails in Outlook and remove them.
 

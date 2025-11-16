@@ -45,18 +45,18 @@ When done, run `sudo service xrdp start` to start the service. You will get the 
 
 Back to your Windows environment and start `mstsc.exe` and set the computer name to `localhost:3390` (or the port number you are using).
 
-![Start the RDP connection](./images/rdp_localhost.jpg)
+![Start the RDP connection](./images/rdp_localhost.webp)
 
 <AlertBox variant="caution" title="">
 The connection is only possible when `xrdp` is started. So, if it didn't work, you know what to do (you can also run `sudo service xrdp status` to get detailed information's).
 
 </AlertBox>
 
-![Authentication screen](./images/authentication.jpg)
+![Authentication screen](./images/authentication.webp)
 
 Use your local Linux user and make a connection.
 
-![Desktop screen](./images/desktop.jpg)
+![Desktop screen](./images/desktop.webp)
 
 ## Get the desktop environment
 
@@ -110,8 +110,8 @@ When you don't need RDP anymore, free some resources by running `sudo service xr
 
 By default, the keyboard is set to `QWERTY` so go to `Applications` -> `Settings` -> `Keyboard`.
 
-![Set your keyboard](./images/settings_keyboard.jpg)
+![Set your keyboard](./images/settings_keyboard.webp)
 
 In the third tab, retrieve your own keyboard setting. If you are using the keyboard `Français - Belgique` in Windows, you should set your keyboard to `Belgian (alt.)` in Ubuntu.
 
-![Set your keyboard to Belgian](./images/settings_keyboard_belgian.jpg)
+![Set your keyboard to Belgian](./images/settings_keyboard_belgian.webp)

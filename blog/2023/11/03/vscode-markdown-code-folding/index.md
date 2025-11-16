@@ -19,4 +19,4 @@ In case code folding is not working in markdown mode like illustrated below, mak
 
 ![code_folding](./images/code_folding.gif)
 
-![Markdown Language Features](./images/markdown_language_features.png)
+![Markdown Language Features](./images/markdown_language_features.webp)

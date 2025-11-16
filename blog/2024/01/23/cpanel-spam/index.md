@@ -26,7 +26,7 @@ If you're hosted by PlanetHoster on the N0C infrastructure, please read <Link to
 
 My personal use case is even if I don't like shortcuts on my desktop, I've well one for `https://(my_host_company)/xxxxx/mail/spam/index.html#/blacklist` i.e. a direct access to the page where I can add my spam filters. And it works quite well.
 
-![Spam filters](./images/spam_filters.png)
+![Spam filters](./images/spam_filters.webp)
 
 But, did you know there is another way to do this?
 
