@@ -45,11 +45,23 @@ The system was immediately operational i.e. no problem at all with my graphic ca
 
 Zorin comes with a lot of preinstalled software like Libre-Office
 
-<AlertBox variant="info" title="Re-format USB flash drive">
-Now that Zorin has been installed, you can reformat your USB drive to be able to reuse it.
+<AlertBox variant="caution" title="Re-format USB flash drive">
+Now that Zorin has been installed, you can reformat your USB drive to be able to reuse it... but please notice if you format it using Xorin (Linus thus) your USB stick won't work anymore under Windows.
 
-Just read the [Re-format USB flash drive](https://help.zorin.com/docs/getting-started/reuse-your-zorin-os-usb-install-drive/) chapter in the official documentation.
+If you already have formatted your stick using Xorin, you'll have to start the `diskpart` utility in a DOS console.
 
+* Plug in your USB drive.
+* Press <kbd>Win</kbd>+<kbd>R</kbd>, type `diskpart`, and hit <kbd>Enter</kbd>.
+* In the Diskpart window, execute these commands:
+  * `list disk` to show the list of disk you've,
+  * `select disk X` (replace `X` with your USB’s number). Don't select disk `0`, it's your hard drive. Most probably your USB stick will be disk `1` but check more than once! before pressing <kbd>Enter</kbd>,
+  * `clean` to remove everything on the stick,
+  * `create partition primary` to create a primary partition,
+  * `format fs=ntfs quick` to format the stick using NTFS file system,
+  * `assign` to assign a drive letter to the stick
+  * finally run `exit` to quick the diskpart utility.
+
+Now, the stick will be recognize again by Windows.
 </AlertBox>
 
 To get more information about Zorin and his latest version: [Zorin OS 18 Has Arrived](https://blog.zorin.com/2025/10/14/zorin-os-18-has-arrived/).
