@@ -8,7 +8,7 @@ image: /img/v2/changelog.webp
 mainTag: laravel
 series: Creating Docusaurus components
 tags: [component, docusaurus, react]
-blueskyRecordKey:
+blueskyRecordKey: 3m5vewhxkok2k
 ---
 ![Showing the changelog of your post](/img/v2/changelog.webp)
 
