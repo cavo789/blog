@@ -1,14 +1,13 @@
 ---
 slug: docusaurus-changelog
 title: Showing the changelog of your post
-date: 2025-11-15
+date: 2025-11-18
 description: Showing the changelog of your post
 authors: [christophe]
 image: /img/v2/changelog.webp
 mainTag: laravel
 series: Creating Docusaurus components
 tags: [component, docusaurus, react]
-draft: true
 blueskyRecordKey:
 ---
 ![Showing the changelog of your post](/img/v2/changelog.webp)
@@ -56,7 +55,7 @@ Below the minimum sentences to add at the right place in your own file.
 
 ## Use the component
 
-Now, just edit any of your existing post and add a `updates` entry in your YAML front matter like for instance:
+Now, just edit any of your existing post and add a `updates` entry in your YAML front matter like for instance
 
 ```yaml
 updates:

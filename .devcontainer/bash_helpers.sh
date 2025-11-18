@@ -15,6 +15,7 @@ BLOG_HOST_DIR='${BLOG_HOST_DIR}'
 alias ls='ls -alh'
 alias upgrade='yarn upgrade && yarn upgrade @docusaurus/core@latest @docusaurus/plugin-ideal-image@latest @docusaurus/plugin-sitemap@latest @docusaurus/preset-classic@latest @docusaurus/theme-search-algolia@latest @docusaurus/module-type-aliases@latest @docusaurus/types@latest'
 alias version='npx docusaurus -V'
+alias build='yarn docusaurus clear && yarn docusaurus build'
 alias start='yarn docusaurus clear && yarn docusaurus start'
 alias lint='docker run --rm -it --user \$(id -u):\$(id -g) -v \${BLOG_HOST_DIR}:/md peterdavehello/markdownlint markdownlint --fix --config .config/.markdownlint.json --ignore-path .config/.markdownlint_ignore .'
 alias spellcheck='docker run --rm -it --user \$(id -u):\$(id -g) -v \${BLOG_HOST_DIR}:/src -w /src ghcr.io/streetsidesoftware/cspell:latest lint . --unique --gitignore --quiet --no-progress --config .vscode/cspell.json'
@@ -23,12 +24,14 @@ echo -e "🚀 Welcome to your Docusaurus Dev Container!"
 echo -e ""
 echo -e "📚 Quick Commands Reference:"
 echo -e ""
-echo -e "  ▶️  \e[33mstart\e[0m        Start / Restart Docusaurus."
+echo -e "  ▶️  \e[33mbuild\e[0m        Build as a static website (to check if everything is OK)"
+echo -e "  ⬆️  \e[33mupgrade\e[0m      Upgrade Docusaurus core and plugins to the latest version."
 echo -e "  📦 \e[33mversion\e[0m      Show current Docusaurus version."
-echo -e "  ⬆️  \e[33mupgrade\e[0m      Upgrade Docusaurus core and plugins."
+echo -e "  🚀 \e[33mserve\e[0m        Serve as a static website (first think to run 'build')"
+echo -e "  🟢 \e[33mstart\e[0m        Start / Restart Docusaurus."
 echo -e ""
 echo -e "  🧹 \e[33mlint\e[0m         Lint Markdown files with markdownlint."
-echo -e "  📝 \e[33mspellcheck\e[0m   Spell check content with cspell."
+echo -e "  ✍️ \e[33mspellcheck\e[0m   Spell check content with cspell."
 echo -e ""
 
 EOF
