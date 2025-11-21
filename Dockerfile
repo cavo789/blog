@@ -95,7 +95,7 @@ FROM base AS development
 ARG APP_HOME
 
 # Copy full project source code and installed node_modules from dependencies stage
-COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" . .
+
 COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"/node_modules ./node_modules
 
 # ─────────────────────────────────────────────────────────────
@@ -105,6 +105,11 @@ COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"
 # "TARGET=production make build" is fired.
 # ─────────────────────────────────────────────────────────────
 FROM development AS build
+
+ARG APP_HOME
+
+# Copy full project source code
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" . .
 
 # Build the Docusaurus site into static HTML/CSS/JS
 RUN yarn build

@@ -23,7 +23,7 @@ In this article, let's take a look at how I went about generating these images.
 
 First, and somewhat by chance, I asked Gemini to generate a clipart-style image of a meerkat. I got this one:
 
-![The meerkat](/img/meerkat/surricate.webp)
+![The meerkat](/img/meerkat/suricate.webp)
 
 A few days later, I discovered this GitHub repository: [Awesome-Nano-Banana-images](https://github.com/PicoTrex/Awesome-Nano-Banana-images/blob/main/README_en.md) and just had one desire, to try.
 
@@ -43,13 +43,13 @@ And after just a few seconds, the unimaginable happened: I received a flood of o
 
 Repeating the same prompt again and again and got others ones:
 
-![Different poses - 1](/img/meerkat/surricate_positions_1.webp)
+![Different poses - 1](/img/meerkat/suricate_positions_1.webp)
 
-![Different poses - 2](/img/meerkat/surricate_positions_2.webp)
+![Different poses - 2](/img/meerkat/suricate_positions_2.webp)
 
-![Different poses - 3](/img/meerkat/surricate_positions_3.webp)
+![Different poses - 3](/img/meerkat/suricate_positions_3.webp)
 
-![Different poses - 4](/img/meerkat/surricate_positions_4.webp)
+![Different poses - 4](/img/meerkat/suricate_positions_4.webp)
 
 How easy, how crazy it's.
 

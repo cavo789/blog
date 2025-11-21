@@ -118,7 +118,7 @@ const config = {
           beforeDefaultRemarkPlugins: [
             remarkSnippetLoader,
             remarkReplaceWords,
-            remarkTreeToComponent
+            remarkTreeToComponent,
           ],
         },
         sitemap: {
@@ -150,6 +150,10 @@ const config = {
     ],
     [pluginSeriesRoute, {}],
     [pluginTagRoute, {}],
+    [
+      "./plugins/ascii-injector/index.mjs",
+      { bannerPath: "src/data/banner.txt" },
+    ],
     require.resolve("docusaurus-plugin-image-zoom"),
   ],
   headTags: [
@@ -293,13 +297,12 @@ const config = {
       zoom: {
         // Sélecteur CSS pour cibler les images à zoomer (les images dans le markdown qui ne sont pas des liens)
         // selector: ".markdown :not(em) > img",
-        selector: '.markdown img:not(.navbar-logo):not(.no-zoom img)',
+        selector: ".markdown img:not(.navbar-logo):not(.no-zoom img)",
 
         background: {
           light: "rgb(255, 255, 255)",
           dark: "rgb(50, 50, 50)",
         },
-
       },
       algolia: {
         // @see https://docusaurus.io/docs/search for documentation

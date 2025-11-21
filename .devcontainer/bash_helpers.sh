@@ -31,7 +31,7 @@ echo -e "  🚀 \e[33mserve\e[0m        Serve as a static website (first think t
 echo -e "  🟢 \e[33mstart\e[0m        Start / Restart Docusaurus."
 echo -e ""
 echo -e "  🧹 \e[33mlint\e[0m         Lint Markdown files with markdownlint."
-echo -e "  ✍️ \e[33mspellcheck\e[0m   Spell check content with cspell."
+echo -e "  ✍️  \e[33mspellcheck\e[0m   Spell check content with cspell."
 echo -e ""
 
 EOF
