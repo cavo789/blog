@@ -9,7 +9,7 @@ series: Creating Docusaurus components
 mainTag: docusaurus
 tags: [docusaurus, plugin]
 language: en
-blueskyRecordKey:
+blueskyRecordKey: 3m6bvf4ph6224
 ---
 ![Inject ASCII Art in any HTML pages rendered by Docusaurus](/img/v2/ascii_art_html.webp)
 
