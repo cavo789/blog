@@ -5,7 +5,7 @@ date: 2025-11-18
 description: Showing the changelog of your post
 authors: [christophe]
 image: /img/v2/changelog.webp
-mainTag: laravel
+mainTag: docusaurus
 series: Creating Docusaurus components
 tags: [component, docusaurus, react]
 blueskyRecordKey: 3m5vewhxkok2k

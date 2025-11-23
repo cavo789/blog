@@ -1,3 +1,18 @@
+/**
+ * Docusaurus Plugin: ascii-injector
+ *
+ * Purpose:
+ * This plugin will prepend an ASCII art banner (from a specified text file)
+ * in all generated HTML files as an HTML comment.
+ *
+ * Usage:
+ * - Save this plugin as `plugins/ascii-injector/index.mjs`
+ * - Create the file containing the ASCII art in `src/data/banner.txt`.
+ * - Add the plugin to `docusaurus.config.js` plugins array.
+ *
+ * Please see readme.md for more details
+ */
+
 import { promises as fs } from "node:fs";
 import path from "node:path";
 
@@ -37,29 +52,63 @@ export default function asciiInjectorPlugin(context, options) {
     async postBuild({ outDir, siteDir }) {
       const bannerPath = path.resolve(siteDir, options.bannerPath);
 
-      let asciiContent;
+      let rawBanner;
       try {
-        const raw = await fs.readFile(bannerPath, "utf8");
-        asciiContent = `<!--\n${raw}\n-->\n\n`;
+        rawBanner = await fs.readFile(bannerPath, "utf8");
       } catch (err) {
         console.error(`[ascii-injector] Banner file missing: ${err.message}`);
         return;
       }
 
+      const commentBanner = `<!--\n${rawBanner}\n-->\n\n`;
+
       const htmlFiles = await collectHtmlFiles(outDir);
       console.log(
-        `[ascii-injector] Injecting banner into ${htmlFiles.length} HTML files...`
+        `[ascii-injector] Preparing to inject banner into ${htmlFiles.length} HTML files...`
       );
 
-      await Promise.allSettled(
+      const results = await Promise.allSettled(
         htmlFiles.map(async (filePath) => {
-          const html = await fs.readFile(filePath, "utf8");
-          if (html.trimStart().startsWith("<!--")) return;
-          await fs.writeFile(filePath, asciiContent + html, "utf8");
+          try {
+            const html = await fs.readFile(filePath, "utf8");
+
+            // proceed to inject; files are always regenerated during build
+
+            let updated;
+
+            // Default: insert comment after <!doctype ...>
+            const doctype = /<!doctype[^>]*>/i;
+            if (doctype.test(html)) {
+              updated = html.replace(doctype, (m) => `${m}\n${commentBanner}`);
+            } else {
+              // fallback to prepending comment
+              updated = commentBanner + html;
+            }
+
+            await fs.writeFile(filePath, updated, "utf8");
+            return { status: "ok", filePath };
+          } catch (err) {
+            return { status: "error", filePath, error: err };
+          }
         })
       );
 
-      console.log("[ascii-injector] Injection complete ✅");
+      const ok = results.filter(
+        (r) => r.status === "fulfilled" && r.value && r.value.status === "ok"
+      ).length;
+      const skipped = results.filter(
+        (r) =>
+          r.status === "fulfilled" && r.value && r.value.status === "skipped"
+      ).length;
+      const failed =
+        results.filter(
+          (r) =>
+            r.status === "fulfilled" && r.value && r.value.status === "error"
+        ).length + results.filter((r) => r.status === "rejected").length;
+
+      console.log(
+        `[ascii-injector] Injection complete — ok: ${ok}, skipped: ${skipped}, failed: ${failed}`
+      );
     },
   };
 }
