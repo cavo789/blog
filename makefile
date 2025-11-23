@@ -1,4 +1,3 @@
-# cspell:ignore beautifulsoup4,repost,maintag,oyaml
 
 SHELL:=bash
 
@@ -14,10 +13,12 @@ TARGET ?= development
 
 # region - Helpers
 COLOR_RED=31
+COLOR_GREEN=32
 COLOR_YELLOW=33
 COLOR_WHITE=37
 
 _RED:="\033[1;${COLOR_RED}m%s\033[0m %s\n"
+_GREEN:="\033[1;${COLOR_GREEN}m%s\033[0m %s\n"
 _YELLOW:="\033[1;${COLOR_YELLOW}m%s\033[0m %s\n"
 _WHITE:="\033[1;${COLOR_WHITE}m%s\033[0m %s\n"
 # endregion
@@ -35,38 +36,39 @@ help: ## Show the help with the list of commands
 
 ##@ Blog                    Blog helpers (!!  For production, please always add "TARGET=production" before like "TARGET=production make build" !!)
 
-.PHONY: bash
-bash: _bash-$(TARGET)  ## Open an interactive shell in the Docker container
+.PHONY: bash build down remove up
+bash: _bash-$(TARGET) ## Open an interactive shell in the Docker container
+build: _build-$(TARGET) ## Build dev/prod image. You can pass CLI flags via ARGS like ARGS="--no-cache"
+down: _down-$(TARGET) ## Stop the container
+remove: _remove-$(TARGET) ## Remove the image
+up: _up-$(TARGET) ## Create the Docker container.
 
 .PHONY: _bash-development
 _bash-development:
 	@printf $(_YELLOW) "Start an interactive shell in the Docker DEVELOPMENT container; type exit to quit"
-	docker compose run --rm docusaurus /bin/bash
+	DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose run --rm --entrypoint /bin/bash docusaurus
 
 .PHONY: _bash-production
 _bash-production:
 	@printf $(_YELLOW) "Start an interactive shell in the Docker PROD container; type exit to quit"
 	docker run -it cavo789/blog:node /bin/sh
 
-# region: BUILD
-.PHONY: build
-build: _build-$(TARGET) ## Build dev/prod image. You can pass CLI flags via ARGS like ARGS="--no-cache"
+.PHONY: _ensure-host-volumes
+_ensure-host-volumes:
+	@for dir in .docusaurus node_modules; do \
+        if [ ! -d "$$dir" ]; then \
+            printf $(_YELLOW) "-> Creating $$dir directory on host..."; \
+            mkdir -p "$$dir"; \
+        fi; \
+    done
 
 # Build the DEV image i.e. using docker compose and with all our environment variables
 # Pre-create folders to avoid permission problems while building devcontainer
 .PHONY: _build-development
-_build-development:
+_build-development: _ensure-host-volumes
 	@printf $(_YELLOW) "-> Building DEVELOPMENT image using docker compose..."
 	@printf $(_WHITE) "Use 'TARGET=PRODUCTION make build' for the PRODUCTION image."
 	@echo ""
-	@if [ ! -d ".docusaurus" ]; then \
-		printf $(_YELLOW) "-> Creating .docusaurus directory on host..."; \
-		mkdir -p .docusaurus; \
-	fi
-	@if [ ! -d "node_modules" ]; then \
-		printf $(_YELLOW) "-> Creating node_modules directory on host..."; \
-		mkdir -p node_modules; \
-	fi
 	DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose build ${ARGS}
 	@echo ""
 	@printf $(_GREEN) "Development build finished. Now, continue by running \"make devcontainer\"."
@@ -80,46 +82,40 @@ _build-production:
 	docker build --tag cavo789/blog:latest --target production ${ARGS} .
 	@echo ""
 	@printf $(_GREEN) "Production build finished. You can now publish this image."
-# endregion
 
 .PHONY: devcontainer
 devcontainer: ## Open the blog in Visual Studio Code in devcontainer
 	@printf $(_YELLOW) "Open the blog in Visual Studio Code in devcontainer"
 	code .
 
-.PHONY: down
-down: _down-$(TARGET) ## Stop the container
-
 .PHONY: _down-development
 _down-development:
-	docker run --rm -it --user root -v $${PWD}/:/project -w /project node /bin/bash -c "yarn run clear"
-	docker compose down
+	DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose run --rm docusaurus yarn run clear || true
+	DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose down
 
 .PHONY: _down-production
 _down-production:
 	@docker stop blog > /dev/null 2>&1 || true
 
-.PHONY: remove
-remove: _remove-$(TARGET) ## Remove the image
-
 .PHONY: _remove-development
 _remove-development:
-    #--volumes
-	docker compose down --remove-orphans --rmi all
-    #-docker image rmi blog-docusaurus
+    # 1. Remove the containers and volumes
+	@DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose \
+        -f .devcontainer/compose.yaml \
+        --project-name blog_devcontainer \
+        down --volumes --remove-orphans
+    # 2. Remove the main blog containers and volumes
+	DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose down --volumes --remove-orphans --rmi all
+    # 3. Make sure all images are removed
+	@docker rmi -f blog-docusaurus > /dev/null 2>&1 || true
+	@docker rmi -f vsc-blog-* > /dev/null 2>&1 || true
     # Remove the old build folder if present
-	@rm -rf .docusaurus
-    # Don't remove these files / folders so the next build won't download anymore dependencies
-    # @rm -rf node_modules *.lock package-lock.json
+	@rm -rf .docusaurus build node_modules
 	@echo ""
 
 .PHONY: _remove-production
 _remove-production: _down-production
 	@docker rmi --force cavo789/blog:latest
-
-# region: UP
-.PHONY: up
-up: _up-$(TARGET) ## Create the Docker container.
 
 .PHONY: _up-development
 _up-development:
@@ -136,7 +132,6 @@ _up-production:
 	docker run -d --publish 443:443 --name blog cavo789/blog:latest
 	@echo ""
 	@printf $(_YELLOW) "Open the PROD blog (https://localhost)"
-# endregion
 
 .PHONY: push
 push: ## Push the image on Docker hub (only when TARGET=production in .env)

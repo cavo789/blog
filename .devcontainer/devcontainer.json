@@ -3,21 +3,23 @@
   "service": "docusaurus",
   "dockerComposeFile": ["../.devcontainer/compose.yaml"],
   "workspaceFolder": "/opt/docusaurus",
-  // "features": {
-  //   "ghcr.io/devcontainers/features/docker-in-docker:2": {
-  //     "version": "latest",
-  //     "enableNonRootDocker": "host"
-  //   }
-  // },
   "mounts": [
+    "source=../.devcontainer/history/.bash_history,target=/home/node/.bash_history,type=bind",
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
     "source=node_modules,target=/opt/docusaurus/node_modules,type=volume",
+    "source=vscode-extensions,target=/home/node/.vscode-server/extensions,type=volume",
     "source=yarn-cache,target=/home/node/.cache/yarn/v6,type=volume"
   ],
   "portsAttributes": {
     "3000": {
-      "onAutoForward": "openBrowser",
-      "label": "Docusaurus Blog"
+      "label": "Docusaurus Blog",
+      "requireLocalPort": true,
+      "localPortService": "http-get:http://localhost:3000/",
+      "localPortReady": "wait:30000",
+      "onAutoForwardAction": {
+        "type": "openBrowser",
+        "url": "https://localhost:3000"
+      }
     },
     "8010": {
       "label": "LanguageTool"
@@ -26,13 +28,11 @@
   "forwardPorts": [3000, 8010],
   "containerEnv": {
     "GIT_SSH_COMMAND": "ssh -i /home/node/.ssh/id_ed25519 -o 'UserKnownHostsFile=/dev/null'",
-    "OS_USERNAME": "node",
     "YARN_CACHE_FOLDER": "/home/node/.cache/yarn/v6"
   },
   "initializeCommand": "mkdir -p .docusaurus .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
-  "postCreateCommand": "sudo chown -R node:node /opt/docusaurus/node_modules && /opt/docusaurus/.devcontainer/bootstrap.sh",
+  "postCreateCommand": "sudo chown -R node:node /home/node/.cache/yarn /opt/docusaurus/node_modules",
   "remoteUser": "node",
-  "containerUser": "${OS_USERID}:${OS_GROUPID}",
   "customizations": {
     "vscode": {
       "settings": {
@@ -72,7 +72,7 @@
         "files.trimTrailingWhitespace": true,
         "languageToolLinter.languageTool.motherTongue": "en",
         "languageToolLinter.languageTool.language": "en",
-        "languageToolLinter.external.url": "http://172.17.0.1:8010",
+        "languageToolLinter.external.url": "http://languagetool:8010",
         "markdownlint.configFile": ".config/.markdownlint.json",
         "markdownlint.fixOnSave": true,
         "sonarlint.disableTelemetry": true,
@@ -97,11 +97,8 @@
         "GitHub.vscode-github-actions",
         "ms-vscode.makefile-tools",
         "shd101wyy.markdown-preview-enhanced",
-        "streetsidesoftware.code-spell-checker-british-english",
-        "streetsidesoftware.code-spell-checker-french",
         "streetsidesoftware.code-spell-checker",
         "TomasDahlqvist.markdown-admonitions",
-        "usernamehw.errorlens",
         "usernamehw.errorlens",
         "yzhang.markdown-all-in-one"
       ]

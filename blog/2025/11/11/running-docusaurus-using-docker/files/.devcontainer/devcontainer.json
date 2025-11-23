@@ -4,8 +4,10 @@
   "dockerComposeFile": ["../.devcontainer/compose.yaml"],
   "workspaceFolder": "/opt/docusaurus",
   "mounts": [
+    "source=../.devcontainer/history/.bash_history,target=/home/node/.bash_history,type=bind",
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
     "source=node_modules,target=/opt/docusaurus/node_modules,type=volume",
+    "source=vscode-extensions,target=/home/node/.vscode-server/extensions,type=volume",
     "source=yarn-cache,target=/home/node/.cache/yarn/v6,type=volume"
   ],
   "portsAttributes": {
@@ -65,7 +67,7 @@
         "files.trimTrailingWhitespace": true,
         "languageToolLinter.languageTool.motherTongue": "en",
         "languageToolLinter.languageTool.language": "en",
-        "languageToolLinter.external.url": "http://172.17.0.1:8010",
+        "languageToolLinter.external.url": "http://languagetool:8010",
         "markdownlint.configFile": ".config/.markdownlint.json",
         "markdownlint.fixOnSave": true,
         "sonarlint.disableTelemetry": true,
@@ -89,11 +91,8 @@
         "GitHub.vscode-github-actions",
         "ms-vscode.makefile-tools",
         "shd101wyy.markdown-preview-enhanced",
-        "streetsidesoftware.code-spell-checker-british-english",
-        "streetsidesoftware.code-spell-checker-french",
         "streetsidesoftware.code-spell-checker",
         "TomasDahlqvist.markdown-admonitions",
-        "usernamehw.errorlens",
         "usernamehw.errorlens",
         "yzhang.markdown-all-in-one"
       ]

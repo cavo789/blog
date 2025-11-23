@@ -9,6 +9,9 @@ ARG OS_GROUPID=1000
 # the one is node Docker image having user 1000:1000
 ARG OS_USERNAME="node"
 
+# Yarn cache folder location
+ARG YARN_CACHE_FOLDER="/home/${OS_USERNAME}/.cache/yarn/v6"
+
 # Root folder where Docusaurus will be installed in the Docker image
 ARG APP_HOME="/opt/docusaurus"
 
@@ -69,9 +72,11 @@ ARG APP_HOME
 ARG OS_USERNAME
 ARG OS_USERID
 ARG OS_GROUPID
+ARG YARN_CACHE_FOLDER
 
 # Configure the cache folder for yarn so we can reuse it in our Devcontainer later on
-ENV YARN_CACHE_FOLDER=/home/${OS_USERNAME}/.cache/yarn/v6
+ENV YARN_CACHE_FOLDER=${YARN_CACHE_FOLDER}
+
 RUN set -eux && \
     mkdir -p "${YARN_CACHE_FOLDER}" && \
     chown -R "${OS_USERNAME}":"${OS_USERNAME}" "${YARN_CACHE_FOLDER}"
@@ -81,9 +86,10 @@ COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" package.json package-*.* yarn*.* 
 
 USER "${OS_USERNAME}"
 
-# Install dependencies using Yarn with cache mount
+# Install dependencies using Yarn with cache mount and install sharp for Linux x64
 RUN --mount=type=cache,target=${YARN_CACHE_FOLDER},uid=${OS_USERID},gid=${OS_GROUPID} \
-    yarn install --immutable --frozen-lockfile --prefer-offline
+    yarn install --immutable --frozen-lockfile --prefer-offline && \
+    yarn add --platform=linux --arch=x64 sharp
 
 # ─────────────────────────────────────────────────────────────
 # 🧪 Stage 2: Development Environment Setup
@@ -97,6 +103,15 @@ ARG APP_HOME
 # Copy full project source code and installed node_modules from dependencies stage
 
 COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"/node_modules ./node_modules
+
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"/package.json "${APP_HOME}"/package-*.* "${APP_HOME}"yarn*.* ./
+
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" .devcontainer/bash_helpers.sh /usr/local/bin/
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" .devcontainer/docker-entrypoint.sh /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/bash_helpers.sh /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 # ─────────────────────────────────────────────────────────────
 # 🏗️ Stage 3: Static Site Build

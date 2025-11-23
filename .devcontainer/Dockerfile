@@ -13,7 +13,7 @@ ARG APP_HOME="/opt/docusaurus"
 # Use a custom base image that includes Node.js and Docusaurus dependencies
 # This image is built from the `blog-docusaurus` Dockerfile file you'll
 # find in the root directory of this blog
-FROM blog-docusaurus:latest
+FROM blog-docusaurus:development
 
 # Re-declare APP_HOME to ensure it's available in later stages
 ARG APP_HOME
@@ -35,7 +35,7 @@ RUN --mount=type=cache,target=/var/lib/apt/lists \
         sudo && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    git config --global --add safe.directory "${APP_HOME}"  # Avoid Git safety warnings
+    git config --global --add safe.directory "${APP_HOME}"
 
 # Re-declare user-related build arguments
 ARG OS_USERID
@@ -65,21 +65,6 @@ RUN echo "export HISTFILE=/home/${OS_USERNAME}/.bash_history" >> "/home/${OS_USE
 # Customize the shell prompt for clarity and style
 RUN set -eux && \
     echo "PS1='\n\e[0;33m🐳 \e[0;36m\$(whoami)\e[0m \w # '" >> "/home/${OS_USERNAME}/.bashrc"
-
-# ---------- Yarn setup and dependency caching ----------
-# Define Yarn cache location to improve install performance
-ENV YARN_CACHE_FOLDER="/home/${OS_USERNAME}/.cache/yarn/v6"
-
-# Create the cache folder and assign correct ownership
-RUN set -eux && \
-    mkdir -p "${YARN_CACHE_FOLDER}" && \
-    chown -R "${OS_USERNAME}:${OS_USERNAME}" "${YARN_CACHE_FOLDER}"
-
-# Install project dependencies and the Sharp image plugin required by Docusaurus
-RUN --mount=type=cache,target=${YARN_CACHE_FOLDER},uid=${OS_USERID},gid=${OS_GROUPID} \
-    set -eux && \
-    yarn install --immutable --frozen-lockfile --prefer-offline && \
-    yarn add --platform=linux --arch=x64 sharp
 
 # Switch to the node user for development tasks
 USER "${OS_USERNAME}"
