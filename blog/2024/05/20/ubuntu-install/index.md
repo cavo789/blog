@@ -69,7 +69,7 @@ A few notes:
 Personally, that's my goal and I'm going to ask to delete my entire current disk (Windows) and to do that, I'm going to click on *Erase disk and install Ubuntu* and click on the *Advanced features* button. I'm going to opt for *Use LVM and encryption* which will allow me to have encryption like I had with Bitlocker: someone who came to steal my hard disk wouldn't have access to my files without the decryption key.
 
 <AlertBox variant="highlyImportant" title="IMPORTANT - DON'T INSTALL ADDITIONAL DRIVERS IF YOU'VE A NVIDIA GRAPHIC CARD">
-The wizard will ask if you want to **Install recommended proprietary software**. The first time, I've answered Yes on both options. The installation had been running for nearly twenty minutes and then I got an error message *The Secure Boot key is not valid*.
+The wizard will ask if you want to **Install recommended proprietary software**. The first time, I have answered Yes on both options. The installation had been running for nearly twenty minutes and then I got an error message *The Secure Boot key is not valid*.
 
 While looking on the **askubuntu.com** website, someone has told this was a bug and that we shouldn't install drivers during the installation of Ubuntu but we can do this easily later one and refers to this bug: [https://bugs.launchpad.net/subiquity/+bug/2060353](https://bugs.launchpad.net/subiquity/+bug/2060353).
 

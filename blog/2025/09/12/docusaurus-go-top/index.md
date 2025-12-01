@@ -68,6 +68,6 @@ If like me you're running Docusaurus thanks to Docker, just kill the container a
 
 ## You can do this for other pages for sure
 
-On my site, I've an `archive` page. You want to use the `<ScrollToTopButton />` button there too? Just swizzle the page by running `yarn docusaurus swizzle @docusaurus/theme-classic BlogArchivePage` in a console then update the `index.js` file as illustrated above.
+On my site, I have an `archive` page. You want to use the `<ScrollToTopButton />` button there too? Just swizzle the page by running `yarn docusaurus swizzle @docusaurus/theme-classic BlogArchivePage` in a console then update the `index.js` file as illustrated above.
 
 If you've any other pages in your `src/pages/` folder (like `about.mdx`, `index.mdx`, ...), no need to swizzle first but directly add the two lines in these files too.
