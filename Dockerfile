@@ -98,6 +98,9 @@ RUN --mount=type=cache,target=${YARN_CACHE_FOLDER},uid=${OS_USERID},gid=${OS_GRO
 # ─────────────────────────────────────────────────────────────
 FROM base AS development
 
+# https://github.com/facebook/docusaurus/discussions/10580
+ENV DOCUSAURUS_IGNORE_SSG_WARNINGS=true
+
 ARG APP_HOME
 
 # Copy full project source code and installed node_modules from dependencies stage

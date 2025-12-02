@@ -8,7 +8,7 @@ image: /img/v2/zorin_os.webp
 mainTag: Linux
 tags: [linux]
 language: en
-blueskyRecordKey:
+blueskyRecordKey: 3m6w2zwj7u22n
 ---
 ![Discovering Zorin](/img/v2/zorin_os.webp)
 
