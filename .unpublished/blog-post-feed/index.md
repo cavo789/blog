@@ -5,8 +5,10 @@ date: 2025-12-12
 description: Upgrade your Docusaurus blog's RSS file. Write a plugin to disable the basic feed and include full article content, images and enhanced metadata for better readers.
 authors: [christophe]
 image: /img/v2/github_profile_automate.webp
-mainTag: Github
+mainTag: docusaurus
+series: Creating Docusaurus components
 tags: [actions, docusaurus, github]
+draft: true
 language: en
 blueskyRecordKey:
 ---
