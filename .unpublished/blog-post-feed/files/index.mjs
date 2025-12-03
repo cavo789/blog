@@ -233,7 +233,7 @@ function computeSlug(attributes, relativeFilePath) {
 
 export default function blogFeedPlugin(context, options = {}) {
   const {
-    maxItems = 10,
+    maxItems = 20,
     includeContent = true,
     includeImages = true,
     stripSelectors = [],
@@ -383,7 +383,16 @@ export default function blogFeedPlugin(context, options = {}) {
 
         const rssPath = path.join(outDir, "blog", "rss.xml");
         await fs.ensureDir(path.dirname(rssPath));
-        await fs.writeFile(rssPath, feed.rss2());
+
+        let rssContent = feed.rss2();
+
+        // Inject the stylesheet instruction right after the XML declaration
+        rssContent = rssContent.replace(
+          /^<\?xml[^>]+\?>/,
+          '<?xml version="1.0" encoding="utf-8"?>\n<?xml-stylesheet type="text/xsl" href="rss.xsl"?>'
+        );
+
+        await fs.writeFile(rssPath, rssContent);
 
         console.log(
           `[BlogFeedPlugin] ✅ RSS feed written to ${rssPath} (${finalFeedItems.length} items).`

@@ -6,7 +6,7 @@ presets: [
         blog: {
           // ...
           feedOptions: {
-            type: null,
+            type: ["atom"],
           },
       }),
     ],

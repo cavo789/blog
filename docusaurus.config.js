@@ -13,7 +13,6 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 import pluginSeriesRoute from "./plugins/docusaurus-plugin-series-route/index.cjs";
 import pluginTagRoute from "./plugins/docusaurus-plugin-tag-route/index.cjs";
-import blogFeedPlugin from "./plugins/blog-feed-plugin/index.mjs";
 import remarkReplaceWords from "./plugins/remark-replace-terms/index.cjs";
 import remarkTreeToComponent from "./plugins/remark-tree-to-component/index.cjs";
 import remarkSnippetLoader from "./plugins/remark-snippet-loader/index.cjs";
@@ -105,7 +104,8 @@ const config = {
           showReadingTime: true,
           exclude: isProd ? ["**/.unpublished/**"] : [], // only exclude in prod
           feedOptions: {
-            type: null,
+            type: ["atom"],
+            xslt: true,
           },
           blogSidebarTitle: "All posts",
           blogSidebarCount: "ALL",
