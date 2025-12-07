@@ -9,9 +9,9 @@ mainTag: docusaurus
 series: Creating Docusaurus components
 tags: [actions, docusaurus, github]
 language: en
-blueskyRecordKey:
+blueskyRecordKey: 3m7f4ftmub22c
 ---
-![Best Practice: Customizing the Docusaurus RSS Feed for Full Content & Images](/img/v2/github_profile_automate.webp)
+![Best Practice: Customizing the Docusaurus RSS Feed for Full Content & Images](/img/v2/docusaurus_rss_enhanced.webp)
 
 If you're running Docusaurus, you can ask it to generate a `rss.xml` file by adding the code below in the `blog` section of `docusaurus.config.js`.
 
