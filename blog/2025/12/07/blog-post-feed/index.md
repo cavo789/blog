@@ -4,7 +4,7 @@ title: Best Practice - Customizing the Docusaurus RSS Feed for Full Content & Im
 date: 2025-12-07
 description: Upgrade your Docusaurus blog's RSS file. Write a plugin to disable the basic feed and include full article content, images and enhanced metadata for better readers.
 authors: [christophe]
-image: /img/v2/github_profile_automate.webp
+image: /img/v2/docusaurus_rss_enhanced.webp
 mainTag: docusaurus
 series: Creating Docusaurus components
 tags: [actions, docusaurus, github]
