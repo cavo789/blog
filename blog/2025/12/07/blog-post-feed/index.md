@@ -1,14 +1,13 @@
 ---
 slug: blog-post-feed
-title: Best Practice: Customizing the Docusaurus RSS Feed for Full Content & Images
-date: 2025-12-12
+title: Best Practice - Customizing the Docusaurus RSS Feed for Full Content & Images
+date: 2025-12-07
 description: Upgrade your Docusaurus blog's RSS file. Write a plugin to disable the basic feed and include full article content, images and enhanced metadata for better readers.
 authors: [christophe]
 image: /img/v2/github_profile_automate.webp
 mainTag: docusaurus
 series: Creating Docusaurus components
 tags: [actions, docusaurus, github]
-draft: true
 language: en
 blueskyRecordKey:
 ---
@@ -57,6 +56,14 @@ In the next chapters, we'll see how to improve our `rss.xml`. Once done, you'll 
 And by opening an article, we'll get this:
 
 ![Displaying an article](./images/article_inoreader.webp)
+
+## How Docusaurus is managing feeds
+
+The generation of feeds is defined by the `feedOptions` item in the `docusaurus.config.js` file.
+
+I've tried the official documentation ([https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog)) but **didn't success to manage the `createFeedItems` element**: we're supposed to be able to define which informations (author, categories, description, content, images, ...) we want in the feed but, I've to admit, all my attempts have failed.
+
+That's why, after hours, I've created my own plugin using AI.
 
 ## Let's optimize it
 

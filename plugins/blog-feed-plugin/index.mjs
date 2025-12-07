@@ -22,22 +22,22 @@
  * - ignorePatterns?: string[]
  *
  * Usage:
- *   import blogFeedPlugin from "./plugins/blog-feed-plugin/index.mjs";
+ * import blogFeedPlugin from "./plugins/blog-feed-plugin/index.mjs";
  *
- *   export default {
- *     // ...
- *     plugins: [
+ * export default {
+ *    // ...
+ *    plugins: [
  *       [blogFeedPlugin, {
- *         maxItems: 20,
- *         includeContent: true,
- *         includeImages: true,
- *         stripSelectors: [
- *           ".custom-ads",
- *           ".share-buttons"
- *         ],
+ *          maxItems: 20,
+ *          includeContent: true,
+ *          includeImages: true,
+ *          stripSelectors: [
+ *             ".custom-ads",
+ *             ".share-buttons"
+ *          ],
  *       }],
- *     ],
- *   };
+ *    ],
+ * };
  *
  * Output:
  * - The RSS file is written to: <outDir>/blog/rss.xml (served at /blog/rss.xml).
@@ -45,6 +45,7 @@
  * @license MIT — free to use, modify, and contribute.
  */
 
+import yaml from "js-yaml";
 import { Feed } from "feed";
 import fs from "fs-extra";
 import path from "path";
@@ -56,7 +57,6 @@ import * as cheerio from "cheerio";
 
 /**
  * Join URL segments with POSIX semantics and ensure leading slash consistency.
- * Avoids Windows backslashes and double slashes.
  * @param {string[]} parts
  * @returns {string}
  */
@@ -67,9 +67,9 @@ function posixJoin(...parts) {
 
 /**
  * Resolve an absolute URL from site config components.
- * @param {string} siteUrl - e.g., https://example.com
- * @param {string} baseUrl - e.g., /docs/ (may be "/")
- * @param {string} relPath - e.g., /blog/my-post
+ * @param {string} siteUrl
+ * @param {string} baseUrl
+ * @param {string} relPath
  * @returns {string}
  */
 function absoluteUrl(siteUrl, baseUrl, relPath) {
@@ -91,6 +91,7 @@ function getMimeTypeFromUrl(url) {
     case ".jpeg":
       return "image/jpeg";
     case ".png":
+    case ".avif":
       return "image/png";
     case ".gif":
       return "image/gif";
@@ -109,19 +110,20 @@ function getMimeTypeFromUrl(url) {
  * @returns {string}
  */
 function cleanProblemChars(s) {
-  return String(s)
-    .replace(/\u00a0/g, " ")
-    .replace(/\u200b/g, "")
-    .replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/g, "")
-    .trim();
+  return (
+    String(s)
+      .replace(/\u00a0/g, " ")
+      .replace(/\u200b/g, "")
+      // eslint-disable-next-line no-control-regex
+      .replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/g, "")
+      .trim()
+  );
 }
 
 // --- Strip selectors ---------------------------------------------------------
 
-// Always-strip selectors (universal and safe to remove)
 const CRITICAL_STRIP_SELECTORS = ["header", "svg"];
 
-// Default optional selectors (safe baseline, can be overridden/extended)
 const DEFAULT_STRIP_SELECTORS = [
   'h3:contains("Related posts")',
   "div.row:has(div.col.col--4)",
@@ -131,11 +133,6 @@ const DEFAULT_STRIP_SELECTORS = [
   ".scrollBtn_Pv66",
 ];
 
-/**
- * Merge critical, default, and user-provided selectors.
- * @param {string[]} userSelectors
- * @returns {string[]}
- */
 function getStripSelectors(userSelectors = []) {
   return [
     ...CRITICAL_STRIP_SELECTORS,
@@ -146,13 +143,6 @@ function getStripSelectors(userSelectors = []) {
 
 // --- Article extraction ------------------------------------------------------
 
-/**
- * Extract and clean the article HTML from the built page.
- * @param {string} permalink - site-relative permalink (e.g., /blog/my-post)
- * @param {string} outDir - Docusaurus build directory
- * @param {string[]} stripSelectors - selectors to remove (merged list)
- * @returns {Promise<string|null>}
- */
 async function getArticleHtml(permalink, outDir, stripSelectors = []) {
   const htmlFilePath = path.join(outDir, permalink, "index.html");
   if (!fs.existsSync(htmlFilePath)) {
@@ -165,7 +155,7 @@ async function getArticleHtml(permalink, outDir, stripSelectors = []) {
   const htmlContent = await fs.readFile(htmlFilePath, "utf8");
   const $ = cheerio.load(htmlContent);
 
-  // Try common article containers
+  // Attempt to find the main article container using multiple fallbacks
   let articleContainer = $("article").first();
   if (!articleContainer.length) {
     articleContainer = $(".theme-doc-content, .theme-doc-markdown").first();
@@ -177,13 +167,13 @@ async function getArticleHtml(permalink, outDir, stripSelectors = []) {
     return null;
   }
 
-  // Remove unwanted UI elements
+  // Remove elements based on strip selectors
   const selectorsToRemove = getStripSelectors(stripSelectors);
   selectorsToRemove.forEach((sel) => {
     articleContainer.find(sel).remove();
   });
 
-  // Simplify snippet blocks: keep only code content
+  // Handle Docusaurus code snippet wrapper cleanup for cleaner RSS content
   articleContainer.find(".snippet_block_pySp").each((_, element) => {
     const $snippet = $(element);
     const $codeBlock = $snippet.find(".codeBlockContainer_Ckt0").first();
@@ -194,7 +184,6 @@ async function getArticleHtml(permalink, outDir, stripSelectors = []) {
     }
   });
 
-  // Extract and clean
   const contentHtml = articleContainer.html();
   if (!contentHtml) return null;
   return cleanProblemChars(contentHtml);
@@ -202,13 +191,6 @@ async function getArticleHtml(permalink, outDir, stripSelectors = []) {
 
 // --- Slug computation --------------------------------------------------------
 
-/**
- * Build a normalized slug from front matter or file path.
- * Ensures lowercase and hyphenated if inferred.
- * @param {Record<string, any>} attributes
- * @param {string} relativeFilePath
- * @returns {string|null}
- */
 function computeSlug(attributes, relativeFilePath) {
   if (attributes.slug) {
     const normalized = String(attributes.slug).replace(/^\/|\/$/g, "");
@@ -218,6 +200,7 @@ function computeSlug(attributes, relativeFilePath) {
   const slugWithDate = relativeFilePath.replace(/\.(md|mdx)$/i, "");
   const parts = slugWithDate.split(path.sep);
   let finalSlug;
+  // Handle index file inside a folder (e.g., folder/index.md)
   if (parts[parts.length - 1].toLowerCase() === "index" && parts.length > 1) {
     finalSlug = parts[parts.length - 2];
   } else {
@@ -225,7 +208,7 @@ function computeSlug(attributes, relativeFilePath) {
   }
   if (!finalSlug) return null;
 
-  // Normalize only when inferred
+  // Normalize slug to lowercase and use hyphens
   return finalSlug.toLowerCase().replace(/_/g, "-");
 }
 
@@ -245,7 +228,7 @@ export default function blogFeedPlugin(context, options = {}) {
 
     async postBuild({ siteConfig, outDir, siteDir }) {
       try {
-        console.log(`[BlogFeedPlugin] 🚀 Generating RSS feed…`);
+        console.log(`[BlogFeedPlugin] 🚀 Generating RSS feed...`);
 
         const blogDir = path.join(siteDir, "blog");
         const baseUrl = siteConfig.baseUrl || "/";
@@ -254,7 +237,7 @@ export default function blogFeedPlugin(context, options = {}) {
 
         if (!siteUrl) {
           console.error(
-            `[BlogFeedPlugin] siteConfig.url is missing. Please set it to your site's origin (e.g., https://example.com).`
+            `[BlogFeedPlugin] siteConfig.url is missing. Please set it to your site's origin.`
           );
           return;
         }
@@ -266,11 +249,20 @@ export default function blogFeedPlugin(context, options = {}) {
           return;
         }
 
+        // --- Load Authors ---
+        const authorsFile = path.join(siteDir, "blog", "authors.yml");
+        let authorsData = {};
+        if (fs.existsSync(authorsFile)) {
+          authorsData = yaml.load(fs.readFileSync(authorsFile, "utf8"));
+          console.log(`[BlogFeedPlugin] Loaded authors from ${authorsFile}`);
+        }
+
         const postFiles = glob.sync("**/*.{md,mdx}", {
           cwd: blogDir,
           ignore: ignorePatterns,
         });
 
+        // Collect raw metadata from blog files
         const rawMetadataItems = await Promise.all(
           postFiles.map(async (relativeFilePath) => {
             const fullPath = path.join(blogDir, relativeFilePath);
@@ -280,6 +272,7 @@ export default function blogFeedPlugin(context, options = {}) {
 
             const date = attributes.date || fs.statSync(fullPath).birthtime;
             const finalSlug = computeSlug(attributes, relativeFilePath);
+            // Ignore files that map to "index" or have no slug
             if (!finalSlug || finalSlug === "index") return null;
 
             const permalink = posixJoin(blogBasePath, finalSlug);
@@ -288,7 +281,7 @@ export default function blogFeedPlugin(context, options = {}) {
               title: attributes.title || finalSlug,
               description: attributes.description || "No description",
               date,
-              permalink, // site-relative path
+              permalink,
               frontMatter: attributes,
               finalSlug,
             };
@@ -301,6 +294,7 @@ export default function blogFeedPlugin(context, options = {}) {
           return;
         }
 
+        // Collect full HTML content for each post (required for RSS body)
         const feedItemsWithContent = await Promise.all(
           metadataItems.map(async (item) => {
             const fullContentBody = await getArticleHtml(
@@ -312,6 +306,7 @@ export default function blogFeedPlugin(context, options = {}) {
           })
         );
 
+        // Filter out drafts (published: false) and articles with no content body
         const publishedFeedItems = feedItemsWithContent
           .filter(
             (item) =>
@@ -319,13 +314,7 @@ export default function blogFeedPlugin(context, options = {}) {
           )
           .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        if (!publishedFeedItems.length) {
-          console.log(
-            `[BlogFeedPlugin] No published posts with content found.`
-          );
-          return;
-        }
-
+        // Apply maxItems limit
         const finalFeedItems = publishedFeedItems.slice(
           0,
           Math.max(1, Number(maxItems))
@@ -334,13 +323,46 @@ export default function blogFeedPlugin(context, options = {}) {
         const feed = new Feed({
           title: siteConfig.title,
           description: siteConfig.tagline || "Personal blog feed",
-          id: siteUrl, // unique ID for the feed itself
+          id: siteUrl,
           link: absoluteUrl(siteUrl, baseUrl, "blog"),
           language: siteConfig.i18n?.defaultLocale || "en-US",
           updated: new Date(),
         });
 
+        // Loop items to populate feed
         finalFeedItems.forEach((item) => {
+          // Resolve authors
+          const authorKeys = Array.isArray(item.frontMatter.authors)
+            ? item.frontMatter.authors
+            : item.frontMatter.authors
+            ? [item.frontMatter.authors]
+            : [];
+
+          const rssAuthors = authorKeys
+            .map((key) => authorsData[key])
+            .filter(Boolean)
+            .map((a) => ({ name: a.name }));
+
+          // Create the custom dc:creator XML string for later injection
+          const creatorCDataString = rssAuthors
+            .map(
+              (a) =>
+                `<dc:creator><![CDATA[${cleanProblemChars(
+                  a.name
+                )}]]></dc:creator>`
+            )
+            .join("");
+
+          // Log to confirm data is ready
+          if (rssAuthors.length > 0) {
+            console.log(
+              `[BlogFeedPlugin] ✍️ Post "${
+                item.title
+              }" - Found authors: ${rssAuthors.map((a) => a.name).join(", ")}`
+            );
+          }
+
+          // Handle enclosure image and description injection
           const postImageUrl = item.frontMatter?.image;
           const absoluteImageUrl = postImageUrl
             ? absoluteUrl(siteUrl, baseUrl, postImageUrl)
@@ -364,20 +386,31 @@ export default function blogFeedPlugin(context, options = {}) {
             title: cleanProblemChars(item.title),
             id: item.permalink,
             link: itemLink,
+            category: Array.isArray(item.frontMatter.tags)
+              ? item.frontMatter.tags.map((t) => ({ name: t }))
+              : item.frontMatter.tags
+              ? [{ name: item.frontMatter.tags }]
+              : undefined,
             description: descriptionWithImage,
             content: includeContent
               ? cleanProblemChars(item.fullContentBody || "")
               : undefined,
             date: new Date(item.date),
+            author: rssAuthors,
+            // Add enclosure tag if image is present
             ...(includeImages &&
               absoluteImageUrl &&
               mimeType && {
                 enclosure: {
                   url: absoluteImageUrl,
                   type: mimeType,
-                  length: 0,
+                  length: 0, // Length is often 0 for dynamically generated feeds
                 },
               }),
+            // Store the custom dc:creator XML string for manual injection later
+            customRssData: {
+              creatorCData: creatorCDataString,
+            },
           });
         });
 
@@ -386,7 +419,55 @@ export default function blogFeedPlugin(context, options = {}) {
 
         let rssContent = feed.rss2();
 
-        // Inject the stylesheet instruction right after the XML declaration
+        // --- CUSTOM XML MANIPULATION (Cheerio) ---
+        // The 'feed' library does not natively support dc:creator with CData,
+        // so we use Cheerio for post-generation injection.
+
+        // 1. Load the content
+        const $ = cheerio.load(rssContent, { xmlMode: true });
+
+        // 2. Inject the namespace cleanly into the root <rss> element
+        $("rss").attr("xmlns:dc", "http://purl.org/dc/elements/1.1/");
+
+        // 3. Get ALL generated XML items
+        // In XML mode, the path is typically rss > channel > item
+        const xmlItems = $("channel > item");
+
+        console.log(
+          `[BlogFeedPlugin] 🔧 Injecting DC tags into ${xmlItems.length} items...`
+        );
+
+        // 4. Iterate through our source array (finalFeedItems) by INDEX
+        // Since 'feed' generates the XML in the same order, index 0 of the array = item 0 of the XML.
+        finalFeedItems.forEach((sourceItem, index) => {
+          // Get the corresponding XML element by its index
+          const $xmlItem = xmlItems.eq(index);
+
+          if ($xmlItem.length === 0) {
+            console.error(
+              `[BlogFeedPlugin] ❌ Error: XML Item index ${index} not found!`
+            );
+            return;
+          }
+
+          const creatorData = sourceItem.customRssData?.creatorCData;
+
+          if (creatorData) {
+            // DEBUG LOG: Confirm the injection
+            console.log(
+              `[BlogFeedPlugin] 💉 Injecting for "${sourceItem.title}": ${creatorData}`
+            );
+
+            // Injection
+            $xmlItem.append(creatorData);
+          }
+        });
+
+        // 5. Get the final XML content
+        rssContent = $.xml();
+        // -----------------------------------------
+
+        // Apply a custom XML declaration and stylesheet reference for better browser rendering
         rssContent = rssContent.replace(
           /^<\?xml[^>]+\?>/,
           '<?xml version="1.0" encoding="utf-8"?>\n<?xml-stylesheet type="text/xsl" href="rss.xsl"?>'

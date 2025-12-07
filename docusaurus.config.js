@@ -104,8 +104,7 @@ const config = {
           showReadingTime: true,
           exclude: isProd ? ["**/.unpublished/**"] : [], // only exclude in prod
           feedOptions: {
-            type: ["atom"],
-            xslt: true,
+            type: ["atom", "json"],
           },
           blogSidebarTitle: "All posts",
           blogSidebarCount: "ALL",

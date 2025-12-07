@@ -10,7 +10,8 @@ ARG OS_GROUPID=1000
 ARG OS_USERNAME="node"
 
 # Yarn cache folder location
-ARG YARN_CACHE_FOLDER="/home/${OS_USERNAME}/.cache/yarn/v6"
+ARG HOME_FOLDER="/home/${OS_USERNAME}"
+ARG YARN_CACHE_FOLDER="${CACHE_FOLDER}/.cache/yarn/v6"
 
 # Root folder where Docusaurus will be installed in the Docker image
 ARG APP_HOME="/opt/docusaurus"
@@ -102,13 +103,17 @@ FROM base AS development
 ENV DOCUSAURUS_IGNORE_SSG_WARNINGS=true
 
 ARG APP_HOME
+ARG HOME_FOLDER
+
+# The home folder has to be owned by the user
+RUN set -eux && \
+    mkdir -p "${HOME_FOLDER}" && \
+    chown -R "${OS_USERNAME}":"${OS_USERNAME}" "${HOME_FOLDER}"
 
 # Copy full project source code and installed node_modules from dependencies stage
 
 COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"/node_modules ./node_modules
-
 COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"/package.json "${APP_HOME}"/package-*.* "${APP_HOME}"yarn*.* ./
-
 COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" .devcontainer/bash_helpers.sh /usr/local/bin/
 COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" .devcontainer/docker-entrypoint.sh /usr/local/bin/
 

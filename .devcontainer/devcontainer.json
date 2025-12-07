@@ -95,6 +95,7 @@
         "esbenp.prettier-vscode",
         "GitHub.copilot",
         "GitHub.vscode-github-actions",
+        "Google.geminicodeassist",
         "ms-vscode.makefile-tools",
         "shd101wyy.markdown-preview-enhanced",
         "streetsidesoftware.code-spell-checker",
