@@ -1,0 +1,26 @@
+{
+  "your_network": {
+    "IPAMConfig": null,
+    "Links": [
+    ],
+    "Aliases": [
+      "facade",
+      "facade"
+    ],
+    "DriverOpts": null,
+    "GwPriority": 0,
+    "NetworkID": "528b60827ec7469dfb2c604c3443ac716f8fa1f3d1934089f49e53f6e65500ca",
+    "EndpointID": "be75366d271b090f3d47f236ddff0236993af02a73c5d501f44fbef8f351be5e",
+    "Gateway": "192.168.0.1",
+    "IPAddress": "192.168.0.4",
+    "MacAddress": "62:5b:7b:9e:12:fe",
+    "IPPrefixLen": 24,
+    "IPv6Gateway": "",
+    "GlobalIPv6Address": "",
+    "GlobalIPv6PrefixLen": 0,
+    "DNSNames": [
+      "facade",
+      "5abd45eecfa3"
+    ]
+  }
+}

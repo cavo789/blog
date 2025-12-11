@@ -1,0 +1,15 @@
+*   Trying 127.0.0.1:8001...
+* Connected to 127.0.0.1 (127.0.0.1) port 8001 (#0)
+> GET / HTTP/1.1
+> Host: 127.0.0.1:8001
+> User-Agent: curl/7.76.1
+> Accept: */*
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< date: Sun, 14 Dec 2025 08:17:16 GMT
+< server: uvicorn
+< content-length: 106
+< content-type: application/json
+<
+* Connection #0 to host 127.0.0.1 left intact
