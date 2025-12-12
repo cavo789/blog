@@ -9,6 +9,9 @@ mainTag: devcontainer
 tags: [devcontainer, docker, markdown, pre-commit, quarto, vscode]
 blueskyRecordKey: 3m4piap723s2r
 date: 2025-11-03
+updates:
+  - date: 2025-12-12
+    note: Extra - Install GraphViz as optional dependency
 ---
 
 <!-- markdownlint-disable MD046 -->
@@ -92,6 +95,29 @@ Before installing Chromium, make sure you need it i.e. first render your documen
 
 The same way, you've a variable called `INSTALL_CSPELL`. Initialize it to `true` if you want to install the Code-spell check tool (requires Node.js).
 
+### Installation of GraphViz
+
+The same way, you've a variable called `INSTALL_GRAPHVIZ`. Initialize it to `true` if you want to install the GraphViz converter.
+
+This is needed when, in your `.qmd` file you've a graph like this one:
+
+```markdown
+digraph flow {
+  rankdir = LR;
+
+  A [shape=box, label="Source"];
+  B [shape=ellipse, label="Processor"];
+  C [shape=box, label="Destination"];
+
+  A -> B;
+  B -> C;
+}
+```
+
+<AlertBox variant="note" title="GraphViz">
+If you've a graphviz graph and didn't install GraphViz, you'll get an error like this: `ERROR: AssertionError: Error occurred during cleanup: TypeError: Child process has already terminated`.
+</AlertBox>
+
 ### Installation of pre-commit-hooks
 
 The third variable is `INSTALL_PRECOMMIT_HOOKS` and, if your documentation has his own `.git` folder, it'll be a good idea to initialize the variable to `true` so, when committing your changes, a few data quality controls / formatting tools will be applied.
@@ -137,7 +163,7 @@ So, without having to install Quarto on our computer, we'll be able to use all f
 
 Finally, we've to *switch to the devcontainer* i.e. just after we've opened VSCode, we've to run a special command to reopen the project as a devcontainer.
 
-That command is, the first time, **Dev Containers: Rebuild and Reopen in Container** but as soon as the custom image has been created once, we can simply use **Dev Containers: Rebuild and reopen container**.
+That command is, the first time, **Dev Containers: Rebuild and Reopen in Container** but as soon as the custom image has been created once, we can simply use **Dev Containers: Reopen in Container**.
 
 ## Writing our documentation
 

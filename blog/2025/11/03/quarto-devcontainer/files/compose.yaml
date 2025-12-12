@@ -15,8 +15,9 @@ services:
         USER_UID: 1000
         USER_GID: 1000
         # Flags you'll need to adjust depending on your project
-        INSTALL_CHROMIUM: "false"
+        INSTALL_CHROMIUM: "true"
         INSTALL_CSPELL: "false"
+        INSTALL_GRAPHVIZ: "true"
         INSTALL_PRECOMMIT_HOOKS: "false"
 
     user: vscode

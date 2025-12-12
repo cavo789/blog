@@ -9,6 +9,7 @@ ARG USER_GID=1000
 
 ARG INSTALL_CHROMIUM=false
 ARG INSTALL_CSPELL=false
+ARG INSTALL_GRAPHVIZ=false
 ARG INSTALL_PRECOMMIT_HOOKS=false
 
 # Yaml tooling
@@ -55,6 +56,7 @@ RUN --mount=type=cache,target=/var/cache/yq \
 FROM base AS extras
 
 ARG INSTALL_CSPELL
+ARG INSTALL_GRAPHVIZ
 ARG INSTALL_PRECOMMIT_HOOKS
 ARG USERNAME
 
@@ -83,6 +85,20 @@ RUN --mount=type=cache,target=/home/${USERNAME}/.npm \
         npm cache clean --force && \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*; \
+    fi
+
+# Install Graphviz for Quarto (dot diagrams support)
+RUN --mount=type=cache,target=/var/cache/apt \
+    --mount=type=cache,target=/var/lib/apt \
+    if [ "${INSTALL_GRAPHVIZ}" = "true" ]; then \
+        set -eux; \
+        apt-get update \
+        && apt-get install -y --no-install-recommends \
+            libcairo2 \
+            libpango-1.0-0 \
+            graphviz \
+        && apt-get clean \
+        && rm -rf /var/lib/apt/lists/*; \
     fi
 
 # ---------- Stage 3: Finalization ----------
@@ -123,7 +139,8 @@ RUN --mount=type=cache,target=/home/${USERNAME}/.quarto/tools \
 RUN echo "export HISTFILE=/home/${USERNAME}/.bash_history" >> "/home/${USERNAME}/.bashrc" && \
     echo 'export HISTSIZE=10000' >> "/home/${USERNAME}/.bashrc" && \
     echo 'export HISTFILESIZE=10000' >> "/home/${USERNAME}/.bashrc" && \
-    echo 'shopt -s histappend' >> "/home/${USERNAME}/.bashrc"
+    echo 'shopt -s histappend' >> "/home/${USERNAME}/.bashrc" && \
+    echo "alias render_graphviz='find . -name \"flow.dot\" -exec sh -c '\''for f; do dir=\$(dirname \"\$f\"); dot -Tpng \"\$f\" -o \"\$dir/flow.png\"; done'\'' sh {} +'" >> "/home/${USERNAME}/.bashrc"
 
 # Set up the shell prompt
 RUN set -eux && \
@@ -141,7 +158,6 @@ echo -e "  ───────────────"
 echo -e "  ✨ \e[32mquarto preview .\e[0m                             Start a hot-reloading preview in your browser."
 echo -e "  ✨ \e[32mquarto render .\e[0m                              Build the documentation (based on _quarto.yml)."
 echo -e "  ✨ \e[32mquarto render . --profile docx\e[0m               Build a .docx file (requires _quarto-docx.yml)."
-echo -e ""
 EOF
 
 # Append conditional commands depending on optional tools
@@ -156,4 +172,13 @@ RUN set -eux && \
     fi && \
     if [ "${INSTALL_PRECOMMIT_HOOKS}" = "true" ]; then \
         echo 'echo -e "  ⚙️  \e[32mpre-commit run --all-files\e[0m                  Run code quality checks on all files.\n"' >> "/home/${USERNAME}/.bashrc"; \
+    fi
+
+# Tools
+RUN set -eux && \
+    if [ "${INSTALL_GRAPHVIZ}" = "true" ]; then \
+        echo 'echo -e ""' >> "/home/${USERNAME}/.bashrc"; \
+        echo 'echo -e "  \e[1mTools\e[0m"' >> "/home/${USERNAME}/.bashrc"; \
+        echo 'echo -e "  ─────"' >> "/home/${USERNAME}/.bashrc"; \
+        echo 'echo -e "  📊 \e[32mrender_graphviz\e[0m                              Scan your documentation, process .dot files and generate .png ones.\n"' >> "/home/${USERNAME}/.bashrc"; \
     fi
