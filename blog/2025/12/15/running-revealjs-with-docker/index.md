@@ -7,7 +7,7 @@ authors: [christophe]
 image: /img/v2/quarto_reveal_docker.webp
 mainTag: Quarto
 series: Coding using a devcontainer
-tags: [devcontainer, docker, powerpoint, quartorevealjs, vscode]
+tags: [devcontainer, docker, powerpoint, quarto, revealjs, vscode]
 language: en
 blueskyRecordKey:
 ---
