@@ -1,0 +1,23 @@
+project:
+  type: default
+  render: ["*.qmd"]
+
+format:
+  revealjs:
+    css: style.css
+    author: You
+    ratio: "16:9"
+    code-line-numbers: false
+    center: true
+    footer: https://www.yoursite.com/
+    navigation-mode: linear
+    transition: convex
+    preview-links: auto
+    scrollable: true
+    show-notes: false
+    slide-level: 6
+    slide-number: c/t
+    theme: default
+    title-slide-attributes:
+      data-background-image: images/background.webp
+      data-background-size: cover
