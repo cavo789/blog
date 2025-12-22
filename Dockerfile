@@ -78,6 +78,8 @@ ARG YARN_CACHE_FOLDER
 # Configure the cache folder for yarn so we can reuse it in our Devcontainer later on
 ENV YARN_CACHE_FOLDER=${YARN_CACHE_FOLDER}
 
+USER root
+
 RUN set -eux && \
     mkdir -p "${YARN_CACHE_FOLDER}" && \
     chown -R "${OS_USERNAME}":"${OS_USERNAME}" "${YARN_CACHE_FOLDER}"

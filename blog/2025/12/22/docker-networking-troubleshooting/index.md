@@ -8,7 +8,7 @@ image: /img/v2/autopsy_binary_crime.webp
 mainTag: Docker
 tags: [docker, network]
 language: en
-blueskyRecordKey:
+blueskyRecordKey: 3maksv6gjks25
 ---
 ![Troubleshooting for Docker containers - Accessing the other one](/img/v2/autopsy_binary_crime.webp)
 
@@ -17,6 +17,8 @@ The situation: I've two containers; one called `provider` and the other one call
 And ... it didn't work: something in my configuration is not correct because I get connection errors when trying to call the `provider`, let's start the investigation and understand the solution.
 
 In the rest of this article, let's call them like that: `provider` for the first container and `consumer` for the second one.
+
+<!-- truncate -->
 
 ## First, they should be on the same network
 

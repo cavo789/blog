@@ -53,7 +53,7 @@ RUN set -eux && \
     mkdir -p "/home/${OS_USERNAME}/.vscode-server/bin" && \
     mkdir -p "/home/${OS_USERNAME}/.vscode-server/extensions" && \
     mkdir -p "/home/${OS_USERNAME}/.vscode-server/data" && \
-    chown -R "${OS_USERNAME}:${OS_USERNAME}" "/home/${OS_USERNAME}/.vscode-server"
+    chown -R "${OS_USERNAME}:${OS_USERNAME}" "/home/${OS_USERNAME}"
 
 # ---------- Shell and history setup ----------
 # Configure bash history behavior for the node user

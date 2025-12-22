@@ -12,72 +12,85 @@ date: 2025-09-30
 
 <!-- cspell:ignore ssword -->
 
-At work, I was faced with the following situation: I had to program a complex script in Python to attack an Oracle database. The difficulty lay in network security: I couldn't access the database either from my computer or even from my virtual machine (a Windows VM), **but only from the Linux server**.
+At work, I was faced with the following situation: I had to program a complex application in Python to attack an Oracle database. The difficulty lay in network security: I couldn't access the database either from my computer or even from my virtual machine (a Windows VM), **but only from the Linux server**.
 
-Given that my development tools are on my PC as well as my virtual machine: I would have had to develop *blind*, push my changes to GitLab, connect to the server, do a git pull to be able to test my code. And that over and over again. No, really, not possible.
+If I need to run my script, I should then jump on the server (using SSH) and run the script. And it's OK once but what should I do if I need to make changes to my code? I will need to update my code on my machine f.i., push changes to GitLab / GitHub, connect to the server using SSH, do there a git pull to, just be able to run the newer version of my code. And that over and over again. No, really, not possible.
 
-The solution: develop under VSCode with an SSH gateway and therefore ask VSCode to give me access to the server filesystem and, from the terminal integrated into VSCode, open an SSH session so that I can run commands as if I were on the server.
+In this article, we'll see how to start VSCode with a *SSH gateway* and therefore ask VSCode to open the filesystem of the server just like if I was on the sever. And it's not just that: from the integrated terminal of VSCode, I'll be able to run a command just like if I was on the server.
+
+Let's deep in the SSH Remote Development using VSCode...
 
 <!-- truncate -->
 
-Like always, let's experiment this thanks to Docker. We'll create a Docker container that will act as a Linux server. We'll install a SSH client on it so we can connect to that server (the container) using VSCode.
+Like always, let's experiment this on our computer by using Docker. This will let us to see how it will works locally before doing this on a real, production, server.
+
+## Play locally, on our host
+
+So, we'll create a Docker container that will act as a Linux server. We'll install a SSH client on it so we can connect to that server (the container) using VSCode.
 
 Please create a temporary folder using `mkdir -p /tmp/remote-ssh && cd $_`. Once in that folder, just run `code .` to start VSCode.
 
-## Create the Docker container that will act as our SSH server
+### Create the Docker container that will act as our SSH server
 
 Please create the `Dockerfile` with the content below.
 
-<Snippet filename="Dockerfile">
-
-```docker
-# cspell:ignore ssword
-
-FROM ubuntu:latest
-
-# Install the SSH server so we can use the `ssh` command to connect to the container
-# Also create the required `/var/run/sshd` directory
-RUN apt-get update \
-    && apt-get install -y openssh-server \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /var/run/sshd
-
-# Create our test user (christophe) and assign him a password (p@ssword)
-RUN useradd -rm -d /home/christophe -s /bin/bash christophe \
-    && echo 'christophe:p@ssword' | chpasswd
-
-# Do some changes to the ssh configuration like disabling authentication with the `root` user
-RUN sed -i 's/^#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config \
-    && sed -i 's/^#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config \
-    && sed -i 's/^#ChallengeResponseAuthentication.*/ChallengeResponseAuthentication no/' /etc/ssh/sshd_config \
-    && sed -i 's/^UsePAM.*/UsePAM no/' /etc/ssh/sshd_config \
-    && sed -i 's/^#ListenAddress.*/ListenAddress 0.0.0.0/' /etc/ssh/sshd_config \
-    && sed -i 's/^#Port.*/Port 22/' /etc/ssh/sshd_config
-
-EXPOSE 22
-
-CMD ["/usr/sbin/sshd", "-D"]
-```
-
-</Snippet>
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 This done, please create the Docker image by running `docker build -t ssh-server .` then, create the container by running `docker run -d -p 2222:22 --name remote-dev ssh-server`.
 
-So, now, we've a container that will act as our SSH server. We've defined a user called `christophe` with
+<Terminal wrap={true}>
+$ docker build -t ssh-server .
+
+$ docker run -d -p 2222:22 --name remote-dev ssh-server
+</Terminal>
+
+So, now, we've a container that will act as a SSH server. We've defined a user called `christophe` with
 `p@ssword` for his password.
 
-### Test our container
+#### Test our container
 
 In your console, run `ssh christophe@localhost -p 2222` to start a SSH connection, just to make sure your container is correctly configured.
 
-Once prompted, fill in `p@ssword` as password.
+You'll have to accept the authenticity of the host then to fill in the password. When prompted, please fill in `p@ssword` as password.
 
-You should be able to enter in the container and run actions like `ls -alh`.
+<Terminal wrap={true}>
+$ ssh christophe@localhost -p 2222
 
-## The Remote - SSH extension
+The authenticity of host '[localhost]:2222 ([127.0.0.1]:2222)' can't be established.
+ECDSA key fingerprint is SHA256:/XRLXCojjc9ykoYiuM0aEhDKu5MyZuUU793NokTqxlI.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2222' (ECDSA) to the list of known hosts.
 
-First, we need to install [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh), a Microsoft extension.
+christophe@localhost's password:
+
+</Terminal>
+
+Once connected, you can do things like `ls -alh` or asking the name of the machine or the connected user name, and so on.
+
+<Terminal wrap={true}>
+christophe@eeb860d446a3:~$ ls -alh
+
+total 20K
+drwxr-x--- 2 christophe christophe 4.0K Dec 22 12:43 .
+drwxr-xr-x 1 root       root       4.0K Dec 22 12:43 ..
+-rw-r--r-- 1 christophe christophe  220 Mar 31  2024 .bash_logout
+-rw-r--r-- 1 christophe christophe 3.7K Mar 31  2024 .bashrc
+-rw-r--r-- 1 christophe christophe  807 Mar 31  2024 .profile
+
+christophe@eeb860d446a3:~$ hostname
+eeb860d446a3
+christophe@eeb860d446a3:~$ whoami
+christophe
+
+</Terminal>
+
+Type `exit` to quit the terminal and return to your host.
+
+This small test has just illustrate this: our container is working fine and we can connect to it using SSH.
+
+### The Remote - SSH extension
+
+Our objective was to be able to start VSCode and to do "SSH Remote Dev"; let's first install the required [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) extension from Microsoft.
 
 ![Install the Remote - SSH extension](./images/installing_remote_ssh_extension.png)
 
@@ -125,16 +138,33 @@ As you can see here above, it's possible to create a new file called `hello.sh`,
 
 By running `hostname` we can retrieve the name of the container; not the name of our machine.
 
-<AlertBox variant="note" title="">
-We can see `d3cacfe67885` for the host name; in fact, it's the container ID.
-
-</AlertBox>
+<AlertBox variant="note" title="The hostname is the Docker container ID" />
 
 Just for illustration, exit VSCode, go back to the console and run `ssh christophe@localhost -p 2222`.
 
 We can well see our `hello.sh` file:
 
 ![Checking the hello.sh Bash script](./images/ssh_check.png)
+
+<AlertBox variant="info" title="What have we just done?">
+
+We created a local Docker container to simulate the ability to launch VSCode on our host and program as if we were connected directly to the server.
+
+Instead of editing our local files, we modified those on the server.
+
+Instead of having to connect to the server via SSH to execute a command, we were able to do so from our editor.
+
+We use our local tools to program... remotely.
+
+</AlertBox>
+
+## Now, just do the same but on a real, production, server
+
+Ok, now that we know it's possible, let's do it on a production server.
+
+On my own, I'm currently hosted on [PlanetHoster](https://www.planethoster.com/en) so in this chapter, I'll first create a SSH connection to my server before playing with VSCode.
+
+
 
 ## Conclusion
 
