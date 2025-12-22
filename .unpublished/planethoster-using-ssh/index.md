@@ -42,7 +42,7 @@ At the top of [the page](https://mg.n0c.com/), you'll find the three required pi
 The fourth piece of information to gather is the password associated with your user account.
 
 <StepsCard
-  title="For the rest of this article, we'll use these placeholders:"
+  title="For the rest of this article, we'll use these values:"
   variant="steps"
   steps={[
     "User: `john_doe`",
