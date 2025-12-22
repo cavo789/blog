@@ -4,13 +4,13 @@ title: Troubleshooting for Docker containers - Accessing the other one
 date: 2025-12-22
 description: Troubleshoot Docker container networking - test ports, DNS, and fix proxy issues so one container can reliably call another API on the same network.
 authors: [christophe]
-image: /img/v2/github_profile_automate.webp
+image: /img/v2/autopsy_binary_crime.webp
 mainTag: Docker
 tags: [docker, network]
 language: en
 blueskyRecordKey:
 ---
-![Troubleshooting for Docker containers - Accessing the other one](/img/v2/github_profile_automate.webp)
+![Troubleshooting for Docker containers - Accessing the other one](/img/v2/autopsy_binary_crime.webp)
 
 The situation: I've two containers; one called `provider` and the other one called `consumer`. The `consumer` should be able to run an API on the `provider`.
 
