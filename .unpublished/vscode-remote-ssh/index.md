@@ -6,7 +6,7 @@ mainTag: ssh
 tags: [ssh, tips, vscode]
 image: /img/v2/vscode_tips.webp
 draft: true
-date: 2025-09-30
+date: 2025-12-22
 ---
 ![SSH Remote development with VSCode](/img/v2/vscode_tips.webp)
 
@@ -160,11 +160,18 @@ We use our local tools to program... remotely.
 
 ## Now, just do the same but on a real, production, server
 
-Ok, now that we know it's possible, let's do it on a production server.
+First, we have to configure our system to be able to connect on the production server.
 
-On my own, I'm currently hosted on [PlanetHoster](https://www.planethoster.com/en) so in this chapter, I'll first create a SSH connection to my server before playing with VSCode.
+As an example, just read my <Link to="/blog/planethoster-using-ssh">How to connect to your PlanetHoster server using SSH</Link> blog post.
 
-
+** TO CONTINUE **
+** TO CONTINUE **
+** TO CONTINUE **
+** TO CONTINUE **
+** TO CONTINUE **
+** TO CONTINUE **
+** TO CONTINUE **
+** TO CONTINUE **
 
 ## Conclusion
 
