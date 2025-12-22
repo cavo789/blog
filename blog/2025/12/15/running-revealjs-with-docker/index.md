@@ -9,7 +9,7 @@ mainTag: Quarto
 series: Coding using a devcontainer
 tags: [devcontainer, docker, powerpoint, quarto, revealjs, vscode]
 language: en
-blueskyRecordKey:
+blueskyRecordKey: 3m7z22w3yjk2y
 ---
 ![Level Up Your Presentations with Quarto, reveal.js, Docker and DevContainers](/img/v2/quarto_reveal_docker.webp)
 
