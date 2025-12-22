@@ -6,7 +6,7 @@ description: Troubleshoot Docker container networking - test ports, DNS, and fix
 authors: [christophe]
 image: /img/v2/github_profile_automate.webp
 mainTag: Docker
-tags: [docker, Network]
+tags: [docker, network]
 language: en
 blueskyRecordKey:
 ---
