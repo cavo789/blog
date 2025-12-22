@@ -26,10 +26,6 @@ By running `docker ps` you'll get the `container_id` and the `name` of your two 
 
 The command to retrieve the name of the Docker network is `docker inspect --format '{{json .NetworkSettings.Networks}}' CONTAINER_NAME | jq` so, for the first container, please run `docker inspect --format '{{json .NetworkSettings.Networks}}' provider | jq` and `docker inspect --format '{{json .NetworkSettings.Networks}}' consumer | jq` for the second.
 
-<Terminal wrap={true}>
-$ docker inspect --format '{{json .NetworkSettings.Networks}}' consumer | jq
-</Terminal>
-
 You'll get something like that:
 
 <Snippet source="./files/network.json" />
@@ -54,13 +50,7 @@ So they both are running port `8000` internally but the `consumer` is exposed on
 
 In the previous chapter, we just have seen the network is called `your_network`.
 
-We can ensure the processus running on port `8000` in both containers is running by executing `docker inspect -f '{{.NetworkSettings.Networks.your_network.IPAddress}}' consumer` in the console to get the IP of that container:
-
-<Terminal wrap={true}>
-$ docker inspect -f '{{.NetworkSettings.Networks.your_network.IPAddress}}' consumer
-
-192.168.0.4
-</Terminal>
+We can ensure the processus running on port `8000` in both containers is running by executing `docker inspect -f '{{.NetworkSettings.Networks.your_network.IPAddress}}' consumer` in the console to get the IP of that container. In my case, I get `192.168.0.4` as response.
 
 Now that we've it, we can test the internal port:
 
