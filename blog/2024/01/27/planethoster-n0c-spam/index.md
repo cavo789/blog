@@ -4,13 +4,13 @@ title: Exterminate them all, fight spam directly at PlanetHoster - N0C
 date: 2024-01-27
 description: Automate your spam fight on PlanetHoster N0C! Discover how to generate and deploy custom Sieve rules using RoundCube and a script to efficiently block large amounts of unwanted emails.
 authors: [christophe]
-image: /img/v2/planethoster.webp
+image: /img/v2/fighting_against_spam.webp
 mainTag: roundcube
 tags: [n0c, planethoster, roundcube]
 language: en
 ---
 <!-- cspell:ignore allof,fileinto -->
-![Exterminate them all, fight spam directly at PlanetHoster - N0C](/img/v2/planethoster.webp)
+![Exterminate them all, fight spam directly at PlanetHoster - N0C](/img/v2/fighting_against_spam.webp)
 
 A few days ago, I've published a post about how to <Link to="/blog/cpanel-spam">fight against spam if you've a cpanel</Link>. If you're hosted on the N0C infrastructure of PlanetHoster; it will not work.
 

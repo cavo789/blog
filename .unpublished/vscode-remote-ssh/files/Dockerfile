@@ -1,5 +1,3 @@
-# cspell:ignore ssword
-
 FROM ubuntu:latest
 
 # Install the SSH server so we can use the `ssh` command to connect to the container
