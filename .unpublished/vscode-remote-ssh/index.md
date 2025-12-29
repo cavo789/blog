@@ -3,7 +3,7 @@ slug: vscode-remote-ssh
 title: SSH Remote development with VSCode
 authors: [christophe]
 mainTag: ssh
-tags: [ssh, tips, vscode]
+tags: [planethoster, ssh, tips, vscode]
 image: /img/v2/vscode_tips.webp
 draft: true
 date: 2025-12-22
@@ -12,7 +12,7 @@ date: 2025-12-22
 
 <!-- cspell:ignore ssword -->
 
-At work, I was faced with the following situation: I had to program a complex application in Python to attack an Oracle database. The difficulty lay in network security: I couldn't access the database either from my computer or even from my virtual machine (a Windows VM), **but only from the Linux server**.
+At work, I was faced with the following situation: I had to program a complex application in Python to attack an Oracle database. The difficulty lay in network security: I couldn't access the database either from my computer or even from my virtual machine which has a fixed IP (a Windows VM), **but only from the Linux server**.
 
 If I need to run my script, I should then jump on the server (using SSH) and run the script. And it's OK once but what should I do if I need to make changes to my code? I will need to update my code on my machine f.i., push changes to GitLab / GitHub, connect to the server using SSH, do there a git pull to, just be able to run the newer version of my code. And that over and over again. No, really, not possible.
 
@@ -38,14 +38,13 @@ Please create the `Dockerfile` with the content below.
 
 This done, please create the Docker image by running `docker build -t ssh-server .` then, create the container by running `docker run -d -p 2222:22 --name remote-dev ssh-server`.
 
-<Terminal wrap={true}>
+<Terminal>
 $ docker build -t ssh-server .
 
 $ docker run -d -p 2222:22 --name remote-dev ssh-server
 </Terminal>
 
-So, now, we've a container that will act as a SSH server. We've defined a user called `christophe` with
-`p@ssword` for his password.
+So, now, we've a container that will act as a SSH server. We've defined a user called `christophe` with `p@ssword` for his password.
 
 #### Test our container
 
@@ -53,7 +52,7 @@ In your console, run `ssh christophe@localhost -p 2222` to start a SSH connectio
 
 You'll have to accept the authenticity of the host then to fill in the password. When prompted, please fill in `p@ssword` as password.
 
-<Terminal wrap={true}>
+<Terminal>
 $ ssh christophe@localhost -p 2222
 
 The authenticity of host '[localhost]:2222 ([127.0.0.1]:2222)' can't be established.
@@ -67,7 +66,7 @@ christophe@localhost's password:
 
 Once connected, you can do things like `ls -alh` or asking the name of the machine or the connected user name, and so on.
 
-<Terminal wrap={true}>
+<Terminal>
 christophe@eeb860d446a3:~$ ls -alh
 
 total 20K
@@ -162,16 +161,11 @@ We use our local tools to program... remotely.
 
 First, we have to configure our system to be able to connect on the production server.
 
-As an example, just read my <Link to="/blog/planethoster-using-ssh">How to connect to your PlanetHoster server using SSH</Link> blog post.
+As an example, just read my <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link> blog post.
 
-** TO CONTINUE **
-** TO CONTINUE **
-** TO CONTINUE **
-** TO CONTINUE **
-** TO CONTINUE **
-** TO CONTINUE **
-** TO CONTINUE **
-** TO CONTINUE **
+If you've followed that article, you should be able to connect to your production server using SSH keys and your `~/.ssh/config` file is correctly configured i.e. you've added an alias like `planethoster` to connect to your server.
+
+So, now, just open VSCode, go to the *Remote Explorer* pane, click on the `+` button to add a new connection.
 
 ## Conclusion
 
