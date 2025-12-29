@@ -6,6 +6,7 @@ mainTag: ssh
 tags: [planethoster, ssh, tips]
 image: /img/v2/planethoster-using-ssh.webp
 date: 2025-12-29
+blueskyRecordKey: 3mb4feo4u7c2t
 ---
 ![How to connect to your hosting  server using SSH](/img/v2/planethoster-using-ssh.webp)
 
