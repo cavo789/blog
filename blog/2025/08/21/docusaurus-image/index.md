@@ -109,7 +109,7 @@ Please create the `plugins/remark-image-transformer/index.cjs` file:
 
 <Snippet filename="plugins/remark-image-transformer/index.cjs" source="./files/index.cjs" />
 
-*This plugin is more complex because we need to make sure paths to images are correctly handled (we use use relative paths like `![](./img/example.webp)` or absolute (`![](/img/example.webp)`) or even external ones).*
+*This plugin is more complex because we need to make sure paths to images are correctly handled (we use relative paths like `![Example image](./img/example.webp)` or absolute (`![Example image](/img/example.webp)`) or even external ones).*
 
 Once the plugin has been created, we need to update the Docusaurus configuration to load it.
 

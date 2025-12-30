@@ -255,7 +255,7 @@ Consider the example below:
 
 Here is an image:
 
-![](image.webp){.r-stretch}
+![Quarto slide with stretched image](image.webp){.r-stretch}
 
 Some text after the image.
 ```
@@ -286,7 +286,7 @@ Would you like to see a candy dog?
 :::
 
 ::: {.fragment .fade-up}
-![](./images/dog.webp)
+![Candy dog reveal.js example](./images/dog.webp)
 :::
 ```
 
@@ -307,13 +307,13 @@ You can use `columns` to divide your slide:
 
 ::: columns
 ::: {.column width="70%"}
-![](./images/image_1.webp)
+![Left column: slide example image](./images/image_1.webp)
 :::
 
 ::: {.column width="30%"}
-![](./images/image_2.webp)
+![Right column: top image](./images/image_2.webp)
 
-![](./images/image_3.webp)
+![Right column: bottom image](./images/image_3.webp)
 :::
 :::
 ```
@@ -340,7 +340,7 @@ The idea is to split the slides in four parts and display content clockwise, sta
 ::: {.column width="40%"}
 ::: bulletbox
 ::: {.fragment .fade-in-then-semi-out}
-![](./images/top-left.webp){width="450px"}
+![Top-left quadrant example](./images/top-left.webp){width="450px"}
 :::
 :::
 :::
@@ -351,7 +351,7 @@ The idea is to split the slides in four parts and display content clockwise, sta
 ::: {.column width="40%"}
 ::: bulletbox
 ::: {.fragment .fade-in-then-semi-out}
-![](./images/top-right.webp){width="450px"}
+![Top-right quadrant example](./images/top-right.webp){width="450px"}
 :::
 :::
 :::
@@ -367,7 +367,7 @@ The idea is to split the slides in four parts and display content clockwise, sta
 ::: {.column width="40%"}
 ::: bulletbox
 ::: {.fragment .fade-in-then-semi-out}
-![](./images/bottom-left.webp){width="450px"}
+![Bottom-left quadrant example](./images/bottom-left.webp){width="450px"}
 :::
 :::
 :::
@@ -378,7 +378,7 @@ The idea is to split the slides in four parts and display content clockwise, sta
 ::: {.column width="40%"}
 ::: bulletbox
 ::: {.fragment .fade-in-then-semi-out}
-![](./images/bottom-right.webp){width="450px"}
+![Bottom-right quadrant example](./images/bottom-right.webp){width="450px"}
 :::
 :::
 :::
@@ -456,7 +456,7 @@ format:
 ---
 ##
 
-![](./images/mimikyu.webp){style="width:400px;"}
+![Mimikyu example image](./images/mimikyu.webp){style="width:400px;"}
 ```
 
 </Snippet>
@@ -647,13 +647,13 @@ The example below illustrate this. The way to insert such presenter's notes is b
 
 ::: columns
 ::: {.column width="70%"}
-![](./images/image_1.webp)
+![Left column: speaker notes example image](./images/image_1.webp)
 :::
 
 ::: {.column width="30%"}
-![](./images/image_2.webp)
+![Right column: speaker notes top image](./images/image_2.webp)
 
-![](./images/image_3.webp)
+![Right column: speaker notes bottom image](./images/image_3.webp)
 :::
 :::
 
@@ -665,7 +665,7 @@ The second image has been ...
 
 ##
 
-![](./images/image_4.webp)
+![Example slide image 4](./images/image_4.webp)
 ```
 
 </Snippet>

@@ -18,13 +18,15 @@ Let's dive into SSH Remote Development with VS Code...
 
 <!-- truncate -->
 
-In this article, I suggest to first play locally, using Docker, to see how it works. Then, we'll do the same on a real, production, server.
+We'll first simulate a server locally with Docker so you can learn the workflow safely, then repeat the same steps against a real production server.
 
-## To gain experience, let's use Docker on our machine
+## Simulate a server locally with Docker
 
-So, we'll create a Docker container that will act as a Linux server. We'll install a SSH client on it so we can connect to that server (the container) using VSCode.
+Create a Docker container that acts as a Linux SSH server so you can practice connecting from VS Code.
 
-Please create a temporary folder using `mkdir -p /tmp/remote-ssh && cd $_`. Once in that folder, just run `code .` to start VSCode.
+Create a temporary folder and open it in VS Code:
+
+`mkdir -p /tmp/remote-ssh && cd $_ && code .`
 
 ### Create the Docker container that will act as our SSH server
 
@@ -40,13 +42,11 @@ $ docker build -t ssh-server .
 $ docker run -d -p 2222:22 --name remote-dev ssh-server
 </Terminal>
 
-From now on, we have a container that acts as an SSH server. The image creates a user called `christophe` with the password `p@ssword`.
+The container acts as an SSH server and (for this demo) creates a user `christophe` with the password `p@ssword`.
 
 #### Test our container
 
-In your console, run `ssh christophe@localhost -p 2222` to start an SSH connection and verify the container is correctly configured.
-
-You'll have to accept the authenticity of the host then to fill in the password. When prompted, please fill in `p@ssword` as password.
+Test the container and accept the host fingerprint and enter the password (`p@ssword`) when prompted.
 
 <Terminal>
 $ ssh christophe@localhost -p 2222
@@ -94,13 +94,13 @@ In our example, it'll be `christophe@localhost -p 2222` because:
 
 VSCode will then ask which SSH configuration file you want to update.
 
-<AlertBox variant="important" title="Are you on WSL?">
-Since I'm working on WSL2, VS Code (running on Windows) does not read my Linux `~/.ssh/config` file. I copied the relevant configuration lines to my Windows `C:\Users\Christophe\.ssh\config` file and copied my SSH keys (public and private) so VS Code can use them.
+<AlertBox variant="important" title="WSL2 & Windows users">
+If you're using WSL2, note that VS Code running on Windows may not read your Linux `~/.ssh/config` file. Copy any needed entries into your Windows SSH config (typically `C:\Users\<you>\.ssh\config`) and copy your SSH keys (public and private) too so VS Code can use them.
 
-If you're on Linux, the file to select is `~/.ssh/config`.
+Also make sure the SSH key files are accessible to the client you use.
 </AlertBox>
 
-VS Code will create or update the file and show something like this:
+VS Code will create or update the chosen SSH config file and show something like this:
 
 ![The SSH config file](./images/ssh_config_file.webp)
 
@@ -108,23 +108,7 @@ Now, if you click on the **SSH** link in the left pane, you'll see the `remote-d
 
 ![The server is present under SSH](./images/ssh_unfolded.webp)
 
-You'll need to specify the operating system (Linux here).
-
-When prompted, fill in the password to use (it's `p@ssword`).
-
-After a few seconds, you'll be able to open a folder:
-
-![Opening a folder](./images/open_folder.webp)
-
-Just click on OK to open the home folder of the user.
-
-And now, we can play:
-
-![Playing in the SSH terminal](./images/playing_with_ssh.webp)
-
-As you can see above, it's possible to create a new file called `hello.sh`, add some commands, then make the script executable and run it from the VS Code terminal.
-
-By running `hostname` we can retrieve the name of the container; not the name of our machine.
+Select the remote OS type (Linux), authenticate, and then open the user's home folder. You can create files (for example `hello.sh`), make them executable and run them from the integrated terminal. Running `hostname` shows the container's hostname (not your local machine's).
 
 <AlertBox variant="note" title="The hostname is the Docker container ID" />
 
@@ -134,25 +118,19 @@ We can see our `hello.sh` file:
 
 ![Checking the hello.sh Bash script](./images/ssh_check.webp)
 
-<AlertBox variant="info" title="What have we just done?">
+<AlertBox variant="info" title="What we demonstrated">
 
-We created a local Docker container to simulate the ability to launch VSCode on our host and program as if we were connected directly to the server.
-
-Instead of editing our local files, we modified those on the server.
-
-Instead of having to connect to the server via SSH to execute a command, we were able to do so from our editor.
-
-We use our local tools to program... remotely.
+We used a local Docker container as an SSH server to simulate remote development. The editor edits files on the remote host and the integrated terminal runs commands there — a smooth workflow for development and debugging.
 
 </AlertBox>
 
-## Now, just do the same but on a real, production, server
+## Now repeat on a real production server
 
-First, we have to configure our system to be able to connect on the production server.
+First, make sure your SSH configuration and keys are in place so you can connect to the production server.
 
-I've recently explain how to create a SSH connection to your hosting server (PlanetHoster in my case); please read my <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link> blog post.
+I've explained how to create an SSH connection to a hosting server (PlanetHoster in my case) in this post: <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link>.
 
-So, if you've followed that article, you should be able to connect to your production server using SSH keys and your `~/.ssh/config` file is correctly configured i.e. you've added an alias like `planethoster` to connect to your server.
+If you've followed that guide, you should be able to connect to your production server using SSH keys and a configured `~/.ssh/config` alias (for example `planethoster`).
 
 <AlertBox variant="important" title="Because I'm working on WSL2">
 But, here, something important in my own situation: I'm working on WSL2 so my Linux `~/.ssh/config` file **is not used** by VSCode (running on Windows). I've to copy the configuration to my Windows `C:\Users\Christophe\.ssh\config` file (in my case, I've just opened Notepad and copy the lines I need)
@@ -167,35 +145,25 @@ Below the content of my Windows SSH configuration:
 
 </AlertBox>
 
-Back to VSCode. Please reopen VSCode and go to the *Remote Explorer* pane. Like below, make sure to click on the `Remote Explorer` dropdown and to select `Remotes (Tunnels/SSH)`.
+In VS Code, open the *Remote Explorer* pane and choose `Remotes (Tunnels/SSH)`. Select your configured host (for example `planethoster`) and click the connect arrow. Choose the OS (Linux) and the folder to open (usually the user's home directory). Once connected, edits and terminal commands act on the remote host directly — no uploads required.
 
 ![The Remote Explorer dropdown](./images/remote_explorer_dropdown.webp)
 
-VSCode will automatically read your `C:\Users\Christophe\.ssh\config` file and will show the list of configured SSH sessions so, in my case, I'll immediately see `planethoster`; nothing to do.
-
 ![Planethoster connection](./images/vscode_remote_planethoster.webp)
 
-Click on the arrow button to start the connection.
-
 ![Connecting to Planethoster](./images/vscode_connecting_planethoster.webp)
-
-When prompted, select the operating system (Linux here).
-
-You'll also be asked to select the folder to open; just click on OK to open the home folder of the user.
-
-And you're connected!
 
 ![Working on the production server](./images/vscode_ssh_planethoster.webp)
 
 From now, you're connected to your production server using VSCode and the Remote - SSH extension. If you change some files, you're directly modifying those on the server. No need to upload anything anymore.
 
 <AlertBox variant="warning" title="Work carefully on production">
-You're editing files directly on a production server — mistakes can cause downtime or data loss. Prefer SSH key authentication, test changes in a staging environment, and make risky changes during maintenance windows.
+Editing files directly on a production server is risky — mistakes can cause downtime or data loss. Prefer SSH key authentication, test changes in staging, keep backups, and perform risky operations during maintenance windows.
 </AlertBox>
 
 ## Conclusion
 
-This article shows how, thanks to VS Code and the [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) extension, you can connect to an SSH server and edit files as if you were on the server.
+VS Code's [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) extension lets you develop directly on remote hosts using the full power of your local editor and tools. Combined with a safe workflow (test locally, use SSH keys, and follow the security best practices above), it's a powerful option when network constraints prevent local development.
 
 Commands executed in VS Code's integrated terminal run on the remote host, just like being logged in via SSH.
 

@@ -1,6 +1,6 @@
 ---
 slug: github-profile-last-blogposts
-title: Updating your GitHub profile and inject your last blog posts
+title: Automate your GitHub README with your latest blog posts
 date: 2025-12-12
 description:
 authors: [christophe]
@@ -11,13 +11,13 @@ language: en
 draft: true
 blueskyRecordKey:
 ---
-![Updating your GitHub profile and inject your last blog posts](/img/v2/github_profile_automate.webp)
+![Automate your GitHub README with your latest blog posts](/img/v2/github_profile_automate.webp)
 
-A few days ago, I saw an article about the GitHub action `gautamkrishnar/blog-post-workflow` in my feeds.
+I recently found the GitHub Action `gautamkrishnar/blog-post-workflow` and thought: *this could keep my profile README up to date automatically*.
 
-Since I already took the time to refactor the Docusaurus [blog/rss.xml](https://www.avonture.be/blog/rss.xml) file on my blog, bingo!, it's a grea way to use it to automate the publication of the ten latest articles on my GitHub profile page.
+Since I already refactored my Docusaurus [RSS feed]((https://www.avonture.be/blog/rss.xml)), it's a great fit for automating the latest ten posts on my GitHub profile
 
-Let's see how to add a cron task on GitHub so, f.i., every Sunday, my [cavo789](https://github.com/cavo789/cavo789) repo is updated automatically.
+Let's add a scheduled GitHub Action (for example, every Sunday) to update my [cavo789](https://github.com/cavo789/cavo789) repo automatically
 
 <!-- truncate -->
 
@@ -26,7 +26,7 @@ So, just to make things clear:
 * Once a week, I want the `README.md` file in my [cavo789](https://github.com/cavo789/cavo789) repo is updated automatically.
 * The content of the `My last published articles on my blog` chapter will be rewritten and the list of articles will comes from my [blog/rss.xml](https://www.avonture.be/blog/rss.xml) file.
 
-Let's start by clowning the repository.
+Let's start by cloning the repository.
 
 So, in my case, I'll clone my [cavo789](https://github.com/cavo789/cavo789) repo on my disk then start VSCode to edit it.
 
@@ -49,7 +49,7 @@ name: Latest blog post workflow
 ```
 
 Here, we'll instruct GitHub to run our workflow using a cron i.e. automatically based on a specific time schedule.
-In the exemple below, every Sunday at 00:00 UTC.
+In the example below, every Sunday at 00:00 UTC.
 
 ```yaml
 on:
@@ -58,7 +58,7 @@ on:
   workflow_dispatch:    # This will allow to run the workflow manually too
 ```
 
-but, too, we want to be able to start the workflow manually. To do this, just open your repo using a browser, click on the `Actions` button and, in the left sidebar, you'll see the action (`Latest blog post workflow` in our example) and find the `Run workflow` button somewhere at the rigth part of the screen.
+but, too, we want to be able to start the workflow manually. To do this, just open your repo using a browser, click on the `Actions` button and, in the left sidebar, you'll see the action (`Latest blog post workflow` in our example) and find the `Run workflow` button somewhere at the right part of the screen.
 
 We also need to allow the action to write files back (since we'll update the `README.md` file).
 
@@ -94,7 +94,7 @@ jobs:
           commit_message: 'feat: Update README with latest blog posts'
 ```
 
-You can find detailled documentation on his official site: [https://github.com/marketplace/actions/blog-post-workflow](https://github.com/marketplace/actions/blog-post-workflow) but, in short:
+You can find detailed documentation on its official site: [https://github.com/marketplace/actions/blog-post-workflow](https://github.com/marketplace/actions/blog-post-workflow) but, in short:
 
 * `feed_list` is the source RSS to query for articles
 * `max_post_count` is the maximum number of blog posts to retrieve and to inject in your `README.md` file
@@ -115,6 +115,6 @@ As you can see, there is a `<!-- BLOG-POST-LIST:START -->`  and `<!-- BLOG-POST-
 
 And now, not really a secret : the GitHub action will thus generate a HTML string with my 10 articles then inject it in my file by removing the two comment tags and push the change to GitHub.
 
-From now on, every Sundy, my repo will be automatically updated.
+From now on, every Sunday, my repo will be automatically updated.
 
 Easy no?
