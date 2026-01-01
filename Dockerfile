@@ -11,7 +11,7 @@ ARG OS_USERNAME="node"
 
 # Yarn cache folder location
 ARG HOME_FOLDER="/home/${OS_USERNAME}"
-ARG YARN_CACHE_FOLDER="${CACHE_FOLDER}/.cache/yarn/v6"
+ARG YARN_CACHE_FOLDER="${HOME_FOLDER}/.cache/yarn/v6"
 
 # Root folder where Docusaurus will be installed in the Docker image
 ARG APP_HOME="/opt/docusaurus"
@@ -64,6 +64,12 @@ RUN set -eux && \
 USER "${OS_USERNAME}"
 WORKDIR "${APP_HOME}"
 
+# Ensure yarn cache folder exists in the image and contains a placeholder so
+# Docker will populate named volumes with content owned by the correct user.
+ARG YARN_CACHE_FOLDER
+RUN mkdir -p "${YARN_CACHE_FOLDER}" && \
+    touch "${YARN_CACHE_FOLDER}/.keep"
+
 # ─────────────────────────────────────────────────────────────
 # 📦 Stage 1: Dependency Installation
 # ─────────────────────────────────────────────────────────────
@@ -103,6 +109,9 @@ FROM base AS development
 
 # https://github.com/facebook/docusaurus/discussions/10580
 ENV DOCUSAURUS_IGNORE_SSG_WARNINGS=true
+
+ARG YARN_CACHE_FOLDER
+ENV YARN_CACHE_FOLDER=${YARN_CACHE_FOLDER}
 
 ARG APP_HOME
 ARG HOME_FOLDER

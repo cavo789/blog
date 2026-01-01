@@ -37,7 +37,7 @@ RUN --mount=type=cache,target=/var/lib/apt/lists \
     rm -rf /var/lib/apt/lists/* && \
     git config --global --add safe.directory "${APP_HOME}"
 
-# Re-declare user-related build arguments
+ARG APP_HOME
 ARG OS_USERID
 ARG OS_GROUPID
 ARG OS_USERNAME

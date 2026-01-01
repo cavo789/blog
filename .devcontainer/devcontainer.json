@@ -31,8 +31,9 @@
     "YARN_CACHE_FOLDER": "/home/node/.cache/yarn/v6"
   },
   "initializeCommand": "mkdir -p .docusaurus .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
-  "postCreateCommand": "sudo chown -R node:node /home/node/.cache/yarn /opt/docusaurus/node_modules",
   "remoteUser": "node",
+  "updateRemoteUserUID": false,
+  "overrideCommand": false,
   "customizations": {
     "vscode": {
       "settings": {
