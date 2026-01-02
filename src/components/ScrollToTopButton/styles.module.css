@@ -9,6 +9,9 @@
   visibility: hidden;
   transition: opacity 0.4s, visibility 0.4s;
   z-index: 1000;
+  border: none;
+  background: transparent;
+  padding: 0;
 }
 
 .scrollBtn img {

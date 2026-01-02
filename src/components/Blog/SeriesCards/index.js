@@ -1,4 +1,6 @@
+import React, { useMemo } from "react";
 import { generateSeriesList } from "@site/src/components/Blog/utils/series";
+import Translate from "@docusaurus/Translate";
 import PostCard from "@site/src/components/Blog/PostCard";
 import styles from "./styles.module.css";
 
@@ -36,12 +38,12 @@ function getSeriesData() {
   }
 }
 
+const SERIES_DATA = getSeriesData();
+
 export default function SeriesCards() {
   const seriesList = generateSeriesList();
 
-  const SERIES_DATA = getSeriesData();
-
-  const enriched = seriesList.map((serie) => {
+  const enriched = useMemo(() => seriesList.map((serie) => {
     const data = SERIES_DATA.find((s) => s.name === serie.seriesName);
 
     let imagePath = data?.image ?? DEFAULT_IMAGE;
@@ -53,12 +55,14 @@ export default function SeriesCards() {
       image: imagePath,
       title: data?.title ?? serie.title,
     };
-  });
+  }), [seriesList]);
 
   if (enriched.length === 0) {
     return (
       <div className="text--center margin-vert--xl">
-        <h2>No article series found</h2>
+        <h2>
+          <Translate id="blog.seriesCards.noSeries">No article series found</Translate>
+        </h2>
       </div>
     );
   }

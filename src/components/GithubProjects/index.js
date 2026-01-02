@@ -28,6 +28,8 @@ import Card from "@site/src/components/Card";
 import CardHeader from "@site/src/components/Card/CardHeader";
 import CardFooter from "@site/src/components/Card/CardFooter";
 import CardBody from "@site/src/components/Card/CardBody";
+import Translate, { translate } from "@docusaurus/Translate";
+import clsx from "clsx";
 import styles from "./styles.module.css";
 import { FaStar, FaCodeBranch } from "react-icons/fa";
 
@@ -70,8 +72,10 @@ export default function GithubProjects({ username }) {
   });
   const [searchTerm, setSearchTerm] = useState("");
 
+  const cacheKey = `githubRepos_${username}`;
+
   const loadCachedRepos = () => {
-    const cachedData = localStorage.getItem("githubRepos");
+    const cachedData = localStorage.getItem(cacheKey);
     const now = new Date().getTime();
     if (cachedData) {
       const { repos, expiration } = JSON.parse(cachedData);
@@ -109,7 +113,7 @@ export default function GithubProjects({ username }) {
 
       const expirationTime = new Date().getTime() + 24 * 60 * 60 * 1000;
       localStorage.setItem(
-        "githubRepos",
+        cacheKey,
         JSON.stringify({ repos: allRepos, expiration: expirationTime })
       );
     } catch (error) {
@@ -173,7 +177,7 @@ export default function GithubProjects({ username }) {
     return (
       <div
         key={repo.id}
-        className={`col col--4 margin-bottom--lg ${styles.fadeIn}`}
+        className={clsx("col col--4 margin-bottom--lg", styles.fadeIn)}
       >
         <Card
           shadow="md"
@@ -192,7 +196,11 @@ export default function GithubProjects({ username }) {
             >
               {repo.name}
               {isArchived && (
-                <span className={styles.archived_label}> (Archived)</span>
+                <span className={styles.archived_label}>
+                  {" ("}
+                  <Translate id="githubProjects.archived">Archived</Translate>
+                  {")"}
+                </span>
               )}
             </a>
           </CardHeader>
@@ -204,7 +212,13 @@ export default function GithubProjects({ username }) {
               rel="noopener noreferrer"
               style={{ textDecoration: "none" }}
             >
-              <p>{repo.description || "No description available"}</p>
+              <p>
+                {repo.description || (
+                  <Translate id="githubProjects.noDescription">
+                    No description available
+                  </Translate>
+                )}
+              </p>
             </a>
           </CardBody>
 
@@ -215,37 +229,52 @@ export default function GithubProjects({ username }) {
               className={styles.language_dot}
               style={{ backgroundColor: languageColor }}
             ></span>
-            {repo.language || "Unknown"}
+            {repo.language || (
+              <Translate id="githubProjects.unknown">Unknown</Translate>
+            )}
           </CardFooter>
         </Card>
       </div>
     );
   };
 
-  if (loading) return <p>Loading repositories...</p>;
+  if (loading) {
+    return (
+      <p>
+        <Translate id="githubProjects.loading">
+          Loading repositories...
+        </Translate>
+      </p>
+    );
+  }
 
   return (
-    <div className={`${styles.github_projects_container} container`}>
+    <div className={clsx(styles.github_projects_container, "container")}>
       <div className={styles.filters_panel}>
         <label>
-          Search:
+          <Translate id="githubProjects.filters.search">Search:</Translate>
           <input
             type="text"
-            placeholder="Search by name or description"
+            placeholder={translate({
+              id: "githubProjects.filters.searchPlaceholder",
+              message: "Search by name or description",
+            })}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </label>
 
         <label>
-          Language:
+          <Translate id="githubProjects.filters.language">Language:</Translate>
           <select
             value={filters.language}
             onChange={(e) =>
               setFilters((prev) => ({ ...prev, language: e.target.value }))
             }
           >
-            <option value="All">All</option>
+            <option value="All">
+              {translate({ id: "githubProjects.filters.all", message: "All" })}
+            </option>
             {languageOptions.map((lang) => (
               <option key={lang} value={lang}>
                 {lang}
@@ -255,21 +284,33 @@ export default function GithubProjects({ username }) {
         </label>
 
         <label>
-          Status:
+          <Translate id="githubProjects.filters.status">Status:</Translate>
           <select
             value={filters.archived}
             onChange={(e) =>
               setFilters((prev) => ({ ...prev, archived: e.target.value }))
             }
           >
-            <option value="All">All</option>
-            <option value="false">Active</option>
-            <option value="true">Archived</option>
+            <option value="All">
+              {translate({ id: "githubProjects.filters.all", message: "All" })}
+            </option>
+            <option value="false">
+              {translate({
+                id: "githubProjects.filters.active",
+                message: "Active",
+              })}
+            </option>
+            <option value="true">
+              {translate({
+                id: "githubProjects.filters.archived",
+                message: "Archived",
+              })}
+            </option>
           </select>
         </label>
 
         <label>
-          Min Stars:
+          <Translate id="githubProjects.filters.minStars">Min Stars:</Translate>
           <input
             type="number"
             value={filters.minStars}
@@ -289,7 +330,11 @@ export default function GithubProjects({ username }) {
           {filteredRepos.map((repo) => renderRepoCard(repo, repo.archived))}
         </div>
       ) : (
-        <p>No repositories match your filters.</p>
+        <p>
+          <Translate id="githubProjects.noMatches">
+            No repositories match your filters.
+          </Translate>
+        </p>
       )}
     </div>
   );

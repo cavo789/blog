@@ -1,11 +1,11 @@
 .seriesBlogPost {
-  background-color: #f7f7f7;
-  border-left: 4px solid #428bca;
+  background-color: var(--ifm-color-secondary-lightest);
+  border-left: 4px solid var(--ifm-color-primary);
   padding: 1.5rem;
   margin-bottom: 2rem;
   border-radius: 4px;
-  color: #333;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  color: var(--ifm-font-color-base);
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out, border-color 200ms ease-in-out;
 }
 
 .seriesBlogPost p {
@@ -26,49 +26,41 @@
   counter-increment: post-counter;
   display: flex;
   align-items: center;
-  margin-bottom: 0.5rem;
 }
 
-.seriesBlogPost li:last-child {
-  margin-bottom: 0;
+.seriesBlogPost li:not(:last-child) {
+  margin-bottom: 0.5rem;
 }
 
 .seriesBlogPost li::before {
   content: counter(post-counter);
   margin-right: 0.75rem;
   font-weight: bold;
-  color: #555;
+  color: var(--ifm-color-content-secondary);
   font-size: 1.1rem;
 }
 
 .seriesBlogPost li a,
 .seriesBlogPost li span {
   text-decoration: none;
-  color: #333;
+  color: var(--ifm-font-color-base);
 }
 
 .seriesBlogPost li a:hover {
   text-decoration: underline;
+  color: var(--ifm-color-primary);
 }
 
-.seriesBlogPost li span {
+.currentPost {
   font-weight: bold;
-  opacity: 0.8;
 }
 
-@media (prefers-color-scheme: dark) {
-  .seriesBlogPost {
-    background-color: #2c2c2c;
-    border-left-color: #79b8f2;
-    color: #e0e0e0;
-  }
+.currentPostDimmed {
+  opacity: 0.6;
+}
 
-  .seriesBlogPost li::before {
-    color: #a0a0a0;
-  }
-
-  .seriesBlogPost li a,
-  .seriesBlogPost li span {
-    color: #e0e0e0;
-  }
+/* Dark Mode Override using Docusaurus data-attribute */
+:global(html[data-theme='dark']) .seriesBlogPost {
+  background-color: var(--ifm-background-surface-color);
+  border-left-color: var(--ifm-color-primary);
 }

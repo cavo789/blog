@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import Translate from "@docusaurus/Translate";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import styles from "./styles.module.css";
 
@@ -39,7 +41,8 @@ function parseMarkdown(text) {
     ); // links
 }
 
-const Updated = ({ updates }) => {
+export default function Updated({ updates }) {
+  const { i18n } = useDocusaurusContext();
   if (!updates || updates.length === 0) return null;
 
   return (
@@ -53,10 +56,8 @@ const Updated = ({ updates }) => {
     >
       <div className="card__header">
         <h3 className={styles.revisionHistoryTitle}>
-          <span role="img" aria-label="Changelog">
-            📜
-          </span>{" "}
-          Changelog
+          <span aria-hidden="true">📜</span>{" "}
+          <Translate id="blog.updated.changelog">Changelog</Translate>
         </h3>
       </div>
       <div className="card__body">
@@ -64,7 +65,16 @@ const Updated = ({ updates }) => {
           {updates.map((update, i) => (
             <li key={i} className={styles.revisionItem}>
               <div className={styles.revisionDate}>
-                <time dateTime={update.date}>{formatDate(update.date)}</time>
+                <time dateTime={update.date}>
+                  {new Date(update.date).toLocaleDateString(
+                    i18n.currentLocale,
+                    {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                    }
+                  )}
+                </time>
               </div>
               <div
                 className={styles.revisionDescription}
@@ -78,22 +88,7 @@ const Updated = ({ updates }) => {
       </div>
     </div>
   );
-};
-
-// Utility function to format date strings
-const formatDate = (dateString) => {
-  try {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-CA", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    });
-  } catch (e) {
-    console.error("Date formatting error:", e);
-    return dateString;
-  }
-};
+}
 
 Updated.propTypes = {
   updates: PropTypes.arrayOf(
@@ -103,5 +98,3 @@ Updated.propTypes = {
     })
   ),
 };
-
-export default Updated;

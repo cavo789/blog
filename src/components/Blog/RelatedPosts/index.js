@@ -25,6 +25,7 @@
 
 import PropTypes from "prop-types";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
+import Translate from "@docusaurus/Translate";
 import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import PostCard from "@site/src/components/Blog/PostCard";
 
@@ -34,58 +35,62 @@ export default function RelatedPosts({ count = 3, description = false }) {
   const mainTag = metadata.frontMatter.mainTag;
   const tags = metadata.frontMatter.tags || [];
 
-  if (!mainTag && tags.length === 0) return null; // nothing to filter on
+  if (!mainTag && tags.length === 0) {
+    return null;
+  }
 
   const posts = getBlogMetadata();
-  let filtered = posts;
+  let filtered = [];
+
+  const hasTag = (post, targetTag) =>
+    post.tags.some((t) => (typeof t === "string" ? t : t.label) === targetTag);
+
+  const hasAnyTag = (post, targetTags) =>
+    post.tags.some((t) =>
+      targetTags.includes(typeof t === "string" ? t : t.label)
+    );
 
   // Prefer mainTag if available
   if (mainTag) {
-    const filteredByMainTag = posts.filter((post) => {
-      const postTags = post.tags.map((t) =>
-        typeof t === "string" ? t : t.label
-      );
-      return postTags.includes(mainTag);
-    });
+    filtered = posts.filter((post) => hasTag(post, mainTag));
+  }
 
-    if (filteredByMainTag.length > 0) {
-      filtered = filteredByMainTag;
-    } else if (tags.length > 0) {
-      filtered = posts.filter((post) => {
-        const postTagLabels = post.tags.map((t) =>
-          typeof t === "string" ? t : t.label
-        );
-        return postTagLabels.some((label) => tags.includes(label));
-      });
-    } else {
-      filtered = [];
-    }
-  } else if (tags.length > 0) {
-    filtered = filtered.filter((post) => {
-      const postTagLabels = post.tags.map((t) =>
-        typeof t === "string" ? t : t.label
-      );
-      return postTagLabels.some((label) => tags.includes(label));
-    });
+  // Fallback to shared tags if mainTag yielded no results (or wasn't present)
+  if (filtered.length === 0 && tags.length > 0) {
+    filtered = posts.filter((post) => hasAnyTag(post, tags));
   }
 
   // Exclude current post
   filtered = filtered.filter((post) => post.permalink !== currentPermalink);
 
-  // Randomize and take top N
-  const ordered = [...filtered].sort(() => 0.5 - Math.random());
-  const related = ordered.slice(0, count);
+  // Sort by date (newest first) to avoid hydration mismatch caused by Math.random()
+  filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  if (!related.length) return <p>No related posts.</p>;
+  const related = filtered.slice(0, count);
+
+  if (!related.length) {
+    return (
+      <p>
+        <Translate id="blog.relatedPosts.noRelated">
+          No related posts.
+        </Translate>
+      </p>
+    );
+  }
 
   return (
     <>
-      <h3>Related posts</h3>
+      <h3>
+        <Translate id="blog.relatedPosts.title">Related posts</Translate>
+      </h3>
       <div className="row">
-        {related.map((post) => {
-          const postToRender = description ? post : { ...post, description: null };
-          return <PostCard key={post.id} layout="small" post={postToRender} />;
-        })}
+        {related.map((post) => (
+          <PostCard
+            key={post.id}
+            layout="small"
+            post={description ? post : { ...post, description: null }}
+          />
+        ))}
       </div>
     </>
   );

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Volume2, VolumeX, ArrowRight } from "lucide-react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import Link from "@docusaurus/Link"; // Pour les liens internes optimisés
+import Link from "@docusaurus/Link";
+import Translate, { translate } from "@docusaurus/Translate";
 import styles from "./styles.module.css";
 
 const HeroSection = ({ videoFileName }) => {
@@ -11,32 +12,37 @@ const HeroSection = ({ videoFileName }) => {
   return (
     <header className={styles.heroHeader}>
       <div className={styles.heroGrid}>
-        {/* Colonne Gauche : Le Pitch */}
         <div className={styles.introText}>
           <h1>
-            Hi, I'm <span>Christophe</span>
+            <Translate
+              id="homepage.hero.title"
+              values={{ name: <span>Christophe</span> }}
+            >
+              {"Hi, I'm {name}"}
+            </Translate>
           </h1>
           <p>
-            Welcome to my digital garden. I share practical guides on
-            streamlining workflows with Docker, Linux, Python, PHP, Quarto,
-            Docusaurus, ...
+            <Translate id="homepage.hero.description">
+              Welcome to my digital garden. I share practical guides on
+              streamlining workflows with Docker, Linux, Python, PHP, Quarto,
+              Docusaurus, ...
+            </Translate>
           </p>
 
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+          <div className={styles.buttonsContainer}>
             <Link className="button button--primary button--lg" to="/blog">
-              Read the Blog{" "}
-              <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+              <Translate id="homepage.hero.readBlog">Read the Blog</Translate>{" "}
+              <ArrowRight size={18} className={styles.arrowIcon} />
             </Link>
             <Link
               className="button button--secondary button--lg"
               to="/blog/archive"
             >
-              Archive
+              <Translate id="homepage.hero.archive">Archive</Translate>
             </Link>
           </div>
         </div>
 
-        {/* Colonne Droite : La Vidéo */}
         <div className={styles.videoWrapper}>
           <video
             className={styles.videoElement}
@@ -45,14 +51,23 @@ const HeroSection = ({ videoFileName }) => {
             muted={isMuted}
             loop
             playsInline
-            // Important : cover permet de remplir le cadre sans déformer
           />
 
           <button
             type="button"
             onClick={() => setIsMuted(!isMuted)}
             className={styles.muteButton}
-            aria-label={isMuted ? "Unmute" : "Mute"}
+            aria-label={
+              isMuted
+                ? translate({
+                    id: "homepage.hero.video.unmute",
+                    message: "Unmute",
+                  })
+                : translate({
+                    id: "homepage.hero.video.mute",
+                    message: "Mute",
+                  })
+            }
           >
             {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
           </button>

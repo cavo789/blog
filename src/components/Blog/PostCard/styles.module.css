@@ -1,56 +1,49 @@
-/* --- Styles pour .counter --- */
+:root {
+  --card-radius: 14px;
+  --card-transition: 0.2s ease-in-out;
+  --card-hover-transform: translateY(-4px);
+  --card-img-height: 180px;
+}
+
 .counter {
   display: inline-block;
   padding: 4px 10px;
   font-size: 0.8rem;
   border-radius: 8px;
-  /* Utilisation de variables CSS pour le fond et le texte */
-  color: var(--ifm-color-primary-dark); /* Texte foncé pour le badge */
+  color: var(--ifm-color-primary-dark);
   margin-top: 0.5rem;
 }
 
-/* Surcharge en mode sombre pour le counter */
-html[data-theme="dark"] .counter {
-  background: var(--ifm-color-primary-darkest); /* Fond foncé */
-  color: var(--ifm-color-primary-light); /* Texte clair */
+[data-theme="dark"] .counter {
+  background: var(--ifm-color-primary-darkest);
+  color: var(--ifm-color-primary-light);
 }
 
-/* --- Styles pour .date --- */
 .date {
-  color: var(
-    --ifm-color-secondary-dark
-  ); /* Couleur neutre/foncée pour la date */
+  color: var(--ifm-color-secondary-dark);
   font-size: 0.95em;
-  margin-bottom: 8px; /* J'ai corrigé l'unité manquante */
+  margin-bottom: 8px;
   font-style: italic;
 }
 
-/* Surcharge en mode sombre pour la date */
-html[data-theme="dark"] .date {
-  color: var(
-    --ifm-color-secondary-light
-  ); /* Couleur neutre/claire pour la date */
+[data-theme="dark"] .date {
+  color: var(--ifm-color-secondary-light);
 }
 
-/* --- Styles pour .cardEnhanced (Layout 'big') --- */
 .cardEnhanced {
   display: flex;
   flex-direction: column;
   height: 100%;
-  border-radius: 14px;
-  /* Utilisation de la variable pour le fond de la carte */
-  background: var(--ifm-background-color);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   min-width: 280px;
-  /* Ajout d'une bordure légère en mode clair pour délimiter les cartes */
+  border-radius: var(--card-radius);
+  background: var(--ifm-background-color);
   border: 1px solid var(--ifm-color-emphasis-200);
+  transition: transform var(--card-transition), box-shadow var(--card-transition);
+  overflow: hidden;
 }
 
-/* Surcharge en mode sombre pour le cardEnhanced */
-html[data-theme="dark"] .cardEnhanced {
-  /* En mode sombre, le fond est géré par --ifm-background-color (qui est sombre) */
-  /* J'ajuste la bordure pour qu'elle reste visible mais subtile */
-  border: 1px solid var(--ifm-color-emphasis-800);
+[data-theme="dark"] .cardEnhanced {
+  border-color: var(--ifm-color-emphasis-800);
 }
 
 .cardBodyEnhanced {
@@ -58,35 +51,29 @@ html[data-theme="dark"] .cardEnhanced {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 1rem;
 }
 
 .cardEnhanced:hover {
-  transform: translateY(-4px);
-  /* Utilisation de variables pour l'ombre */
+  transform: var(--card-hover-transform);
   box-shadow: var(--ifm-global-shadow-md);
 }
 
-/* Surcharge de l'ombre au survol en mode sombre */
-html[data-theme="dark"] .cardEnhanced:hover {
-  /* Une ombre un peu plus claire ou colorée peut aider en mode sombre */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Ombre plus foncée */
+[data-theme="dark"] .cardEnhanced:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* --- Styles pour .cardImageEnhanced img --- */
 .cardImageEnhanced img {
-  height: 180px;
   width: 100%;
+  height: var(--card-img-height);
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   padding: 1rem;
-  /* Utilisation de la variable pour le fond de l'image (si l'image n'est pas remplie) */
   background: var(--ifm-color-emphasis-100);
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
+  transition: transform var(--card-transition);
 }
 
-/* Surcharge en mode sombre pour l'image */
-html[data-theme="dark"] .cardImageEnhanced img {
-  /* Fond de l'image légèrement ajusté en mode sombre */
+[data-theme="dark"] .cardImageEnhanced img {
   background: var(--ifm-color-emphasis-900);
 }
 
@@ -94,20 +81,16 @@ html[data-theme="dark"] .cardImageEnhanced img {
   transform: scale(1.03);
 }
 
-/* --- Styles pour .cardTitleLink --- */
 .cardTitleLink {
-  /* Utilisation de la variable principale de couleur de texte par défaut */
   color: var(--ifm-font-color-base);
   transition: color 0.15s ease;
+  text-decoration: none;
 }
 
 .cardTitleLink:hover {
-  /* Utilisation de la couleur primaire pour le survol */
   color: var(--ifm-color-primary);
 }
 
-/* --- Styles pour .description (Si vous avez un style spécifique pour la description) --- */
 .description {
-  /* La couleur du texte par défaut est souvent suffisante, mais vous pouvez ajuster */
   color: var(--ifm-font-color-secondary);
 }

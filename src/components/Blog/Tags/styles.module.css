@@ -1,0 +1,15 @@
+.postRow {
+  display: flex;
+  flex-wrap: wrap;
+  /* Replicate Infima's negative margin for row gutters */
+  margin-left: calc(-1 * var(--ifm-spacing-horizontal));
+  margin-right: calc(-1 * var(--ifm-spacing-horizontal));
+}
+
+/* Force la largeur de la première carte à 25% (col--3 standard) pour contrer
+   la règle globale de custom.css (.col.col--3:first-child) qui cible la sidebar */
+.postRow > :global(.col.col--3):first-child {
+  flex-basis: 25%;
+  max-width: 25%;
+  padding-right: var(--ifm-spacing-horizontal);
+}

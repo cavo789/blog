@@ -188,7 +188,7 @@
     var(--ifm-color-emphasis-100) 100%
   );
 }
-/* Limite la largeur du contenu central pour une meilleure lisibilité */
+
 .main-wrapper > .container > .row > .col.col--9,
 .main-wrapper > .container > .row > .col.col--6,
 .main-wrapper > .container > .row > .col.col--7 {

@@ -22,6 +22,8 @@
  */
 
 import Link from "@docusaurus/Link";
+import Translate from "@docusaurus/Translate";
+import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 import MAIN_CARDS from "../../data/main_tags.js";
 
@@ -37,21 +39,36 @@ const Card = ({ title, description, url, icon }) => (
   </Link>
 );
 
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+};
+
 export default function MainTags() {
   return (
     <section className={styles.cardsSection}>
-      <h2>Explore the main topics</h2>
+      <h2>
+        <Translate id="homepage.mainTags.title">
+          Explore the main topics
+        </Translate>
+      </h2>
       <div className={styles.cardsGrid}>
         {MAIN_CARDS?.length > 0 ? (
           MAIN_CARDS.map((card) => <Card key={card.title} {...card} />)
         ) : (
-          <p>No tags to display.</p>
+          <p>
+            <Translate id="homepage.mainTags.noTags">
+              No tags to display.
+            </Translate>
+          </p>
         )}
       </div>
 
       <div className={styles.seeMoreContainer}>
         <Link to="/blog/tags" className={styles.seeMoreLink}>
-          See all tags →
+          <Translate id="homepage.mainTags.seeAll">See all tags</Translate> →
         </Link>
       </div>
     </section>

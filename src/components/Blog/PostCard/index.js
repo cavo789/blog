@@ -135,7 +135,7 @@ export default function PostCard({
         <CardBody className={styles.cardBodyEnhanced}>
           <h3>
             <Link
-              href={permalink}
+              to={permalink}
               aria-label={`Read article: ${title}`}
               className={styles.cardTitleLink}
             >

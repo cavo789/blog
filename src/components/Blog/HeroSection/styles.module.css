@@ -52,6 +52,16 @@
   margin-bottom: 2rem;
 }
 
+.buttonsContainer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.arrowIcon {
+  margin-left: 8px;
+}
+
 .videoWrapper {
   position: relative;
   width: 100%;

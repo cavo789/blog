@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
+import Translate, { translate } from "@docusaurus/Translate";
 import styles from "./styles.module.css";
 import buttontop from '@site/static/img/up.webp'
 
@@ -27,21 +28,30 @@ export default function ScrollToTopButton() {
   };
 
   return (
-    <div
+    <button
+      type="button"
       className={clsx(
         styles.scrollBtn,
         isVisible && styles.show,
         fly && styles.fly
       )}
       onClick={scrollToTop}
+      aria-label={translate({
+        id: "theme.common.scrollToTop",
+        message: "Scroll to top",
+        description: "The aria label for the scroll to top button",
+      })}
     >
       <img
         src={buttontop}
-        alt="Back to top"
+        alt={translate({
+          id: "theme.common.scrollToTop",
+          message: "Scroll to top",
+        })}
         className="no-zoom"
         width="30"
         height="30"
       />
-    </div>
+    </button>
   );
 }

@@ -22,6 +22,7 @@
  */
 
 import PropTypes from "prop-types";
+import Translate from "@docusaurus/Translate";
 import GithubProjects from "@site/src/components/GithubProjects";
 import Hero from "@site/src/components/Hero";
 
@@ -31,14 +32,20 @@ export default function MyRepositories({ username }) {
   return (
     <main className={styles.main}>
       <Hero>
-        <h1>My GitHub Projects</h1>
+        <h1>
+          <Translate id="myRepositories.title">My GitHub Projects</Translate>
+        </h1>
         <p>
-          Below you'll find a list of my public repositories stored on
-          GitHub.com. They're divided in two parts; the active and the inactive
-          ones.
+          <Translate id="myRepositories.description.intro">
+            Below you'll find a list of my public repositories stored on
+            GitHub.com. They're divided in two parts; the active and the
+            inactive ones.
+          </Translate>
           <br />
-          Feel free to grab the code and reuse it in your project if it can
-          help.
+          <Translate id="myRepositories.description.usage">
+            Feel free to grab the code and reuse it in your project if it can
+            help.
+          </Translate>
         </p>
       </Hero>
       <GithubProjects username={username} />

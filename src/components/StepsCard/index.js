@@ -67,6 +67,7 @@
 import { MDXProvider } from "@mdx-js/react";
 import { useThemeConfig } from "@docusaurus/theme-common";
 import PropTypes from "prop-types";
+import clsx from "clsx";
 import styles from "./styles.module.css";
 
 // Simple Markdown parser
@@ -76,45 +77,47 @@ function MDXContent({ children }) {
       dangerouslySetInnerHTML={{
         __html: children
           .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-          .replace(/`(.*?)`/g, "<code>$1</code>")
+          .replace(/`(.*?)`/g, "<code>$1</code>"),
       }}
     />
   );
 }
 
 function StepItem({ step, index, level, variant, circleColor, cardBg }) {
-  const isString = typeof step === "string";
-  const hasSubsteps = typeof step === "object" && step.substeps;
+  const content = typeof step === "string" ? step : step.content;
+  const substeps = typeof step === "object" ? step.substeps : null;
 
   // Icon for "remember" variant
-  const circleContent =
-    variant === "remember"
-      ? "💡"
-      : level === 1
-      ? index + 1
-      : `${index + 1}`;
+  const circleContent = variant === "remember" ? "💡" : index + 1;
 
   return (
     <div
-      className={`${styles.step_card} ${
-        level > 1 ? styles.step_card_nested : ""
-      } ${variant === "remember" ? styles.remember_bg : ""}`}
+      className={clsx(
+        styles.step_card,
+        level > 1 && styles.step_card_nested,
+        variant === "remember" && styles.remember_bg
+      )}
       style={{ backgroundColor: cardBg }}
     >
       <div
-        className={`${styles.step_number} ${
-          level > 1 ? styles.step_number_nested : ""
-        }`}
+        className={clsx(
+          styles.step_number,
+          level > 1 && styles.step_number_nested
+        )}
         style={{ backgroundColor: circleColor }}
       >
         {circleContent}
       </div>
       <div className={styles.step_content}>
-        {isString ? <MDXContent>{step}</MDXContent> : step.content}
+        {typeof content === "string" ? (
+          <MDXContent>{content}</MDXContent>
+        ) : (
+          content
+        )}
 
-        {hasSubsteps && (
+        {substeps && substeps.length > 0 && (
           <div className={styles.substeps_container}>
-            {step.substeps.map((substep, subIndex) => (
+            {substeps.map((substep, subIndex) => (
               <StepItem
                 key={subIndex}
                 step={substep}

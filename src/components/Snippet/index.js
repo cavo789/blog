@@ -4,11 +4,13 @@ import React, {
   useEffect,
   useCallback,
   useMemo,
+  useId,
 } from "react";
 
 import CodeBlock from "@theme/CodeBlock";
 import LogoIcon from "@site/src/components/Blog/LogoIcon";
 import PropTypes from "prop-types";
+import clsx from "clsx";
 import styles from "./styles.module.css";
 
 // Extract language from <code className="language-xyz"> inside children
@@ -262,6 +264,7 @@ const variantIcons = {
 
 export default function Snippet({
   filename,
+  title,
   code,
   children,
   defaultOpen = false,
@@ -279,9 +282,7 @@ export default function Snippet({
   }, [open, code, children]);
 
   const handleToggle = useCallback(() => setOpen((prev) => !prev), []);
-  const contentId = useRef(
-    `snippet-content-${Math.random().toString(36).slice(2, 11)}`
-  ).current;
+  const contentId = `snippet-content-${useId()}`;
 
   // Memoize lang & variantKey so they don't recalc on every render
   // const lang = useMemo(() => getLanguageFromChildren(children), [children]);
@@ -347,19 +348,16 @@ export default function Snippet({
   const variantClass = styles[`variant_${variantKey}`] || "";
 
   // Get icon info if available
-  const IconInfo = variantIcons[variantKey];
-
-  if (!IconInfo) {
-    throw new Error(
-      `Unknown variantKey in Snippet component: ${variantKey}; detected language was: ${lang}`
-    );
-  }
+  const IconInfo = variantIcons[variantKey] || variantIcons.none;
 
   const { iconClassName, iconify, ariaLabel } = IconInfo;
 
+  const displayTitle =
+    title || filename || (lang ? lang.toUpperCase() : "Snippet");
+
   return (
     <div
-      className={`${styles.snippet_block} ${variantClass} alert alert--info`}
+      className={clsx(styles.snippet_block, variantClass, "alert alert--info")}
     >
       <button
         className={styles.snippet_summary}
@@ -376,7 +374,7 @@ export default function Snippet({
               size="32"
             />
           )}{" "}
-          {filename}
+          {displayTitle}
         </span>
         <span className={`${styles.chevron} ${open ? styles.rotate : ""}`}>
           &#9662;
@@ -396,7 +394,8 @@ export default function Snippet({
 }
 
 Snippet.propTypes = {
-  filename: PropTypes.string.isRequired,
+  filename: PropTypes.string,
+  title: PropTypes.string,
   code: PropTypes.string,
   lang: PropTypes.string,
   children: PropTypes.node,

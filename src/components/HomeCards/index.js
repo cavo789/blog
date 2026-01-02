@@ -23,6 +23,8 @@
  */
 
 import Link from "@docusaurus/Link";
+import Translate from "@docusaurus/Translate";
+import PropTypes from "prop-types";
 import HOME_CARDS from "../../data/home_cards.js";
 import styles from "./styles.module.css";
 import Card from "@site/src/components/Card";
@@ -34,7 +36,7 @@ const HomeCardItem = ({ title, description, url, image, alt }) => (
     <Card>
       <CardImage
         cardImageUrl={`/img/homepage/${image}`}
-        alt={alt || title || description}
+        alt={alt || title}
         lazy={false}
       />
       <CardBody
@@ -49,10 +51,20 @@ const HomeCardItem = ({ title, description, url, image, alt }) => (
   </Link>
 );
 
+HomeCardItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  alt: PropTypes.string,
+};
+
 export default function HomeCards() {
   return (
     <section className={styles.cardsSection}>
-      <h2 className={styles.sectionTitle}>Explore the site</h2>
+      <h2 className={styles.sectionTitle}>
+        <Translate id="homepage.homeCards.title">Explore the site</Translate>
+      </h2>
       <div className={styles.cardsGrid}>
         {HOME_CARDS.map((card) => (
           <HomeCardItem key={card.title} {...card} />

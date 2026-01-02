@@ -24,6 +24,8 @@
 
 import PropTypes from "prop-types";
 import Link from "@docusaurus/Link";
+import Translate from "@docusaurus/Translate";
+import clsx from "clsx";
 import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import { createSlug } from "@site/src/components/Blog/utils/slug";
 
@@ -43,21 +45,29 @@ export default function SeriesPosts({
   return (
     <div className={styles.seriesBlogPost}>
       <p>
-        This article is part of the{" "}
-        <Link href={`/series/${createSlug(series)}`}>{series}</Link> series:
+        <Translate
+          id="blog.seriesPosts.intro"
+          values={{
+            seriesLink: (
+              <Link href={`/series/${createSlug(series)}`}>{series}</Link>
+            ),
+          }}
+        >
+          {"This article is part of the {seriesLink} series:"}
+        </Translate>
       </p>
       <ul>
         {posts.map((post) => {
           const isCurrent = post.permalink === excludePermalink;
 
           return (
-            <li key={post.permalink} style={{ marginBottom: "0.5rem" }}>
+            <li key={post.permalink}>
               {isCurrent ? (
                 <span
-                  style={{
-                    fontWeight: "bold",
-                    opacity: highlightCurrent ? 0.6 : 1,
-                  }}
+                  className={clsx(
+                    styles.currentPost,
+                    highlightCurrent && styles.currentPostDimmed
+                  )}
                 >
                   {post.title}
                 </span>

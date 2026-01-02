@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Translate from "@docusaurus/Translate";
+import clsx from "clsx";
 import styles from './styles.module.css';
 import {
   FaInfoCircle,
@@ -11,78 +13,34 @@ import {
 
 const variantMap = {
   info: {
-    icon: FaInfoCircle,
-    defaultTitle: 'Information',
-    light: {
-      bg: '#eef8ff',
-      border: '#48a4ff',
-      color: '#11334c',
-      iconColor: '#3182ce',
-    },
-    dark: {
-      bg: '#1a2b3c',
-      border: '#48a4ff',
-      color: '#cbe7ff',
-      iconColor: '#63b3ed',
-    }
+    Icon: FaInfoCircle,
+    label: <Translate id="blog.alertBox.info">Information</Translate>,
   },
   note: {
-    icon: FaRegStickyNote,
-    defaultTitle: 'Note',
-    /* ...colors here */
+    Icon: FaRegStickyNote,
+    label: <Translate id="blog.alertBox.note">Note</Translate>,
   },
   tip: {
-    icon: FaLightbulb,
-    defaultTitle: 'Tip',
-    /* ...colors here */
+    Icon: FaLightbulb,
+    label: <Translate id="blog.alertBox.tip">Tip</Translate>,
   },
   caution: {
-    icon: FaExclamationTriangle,
-    defaultTitle: 'Caution',
-    /* ...colors here */
+    Icon: FaExclamationTriangle,
+    label: <Translate id="blog.alertBox.caution">Caution</Translate>,
   },
   important: {
-    icon: FaExclamationCircle,
-    defaultTitle: 'Important',
-    /* ...colors here */
+    Icon: FaExclamationCircle,
+    label: <Translate id="blog.alertBox.important">Important</Translate>,
   },
   highlyImportant: {
-    icon: FaExclamationTriangle,
-    defaultTitle: 'Highly Important',
-    light: {
-      bg: '#ffebee',
-      borderLeft: '#e53935',
-      border: '#f44336',
-      color: '#3e2723',
-      iconColor: '#e53935',
-      titleColor: '#b71c1c',
-    },
-    dark: {
-      bg: '#4a1b1b',
-      borderLeft: '#e53935',
-      border: '#f44336',
-      color: '#f9c5c5',
-      iconColor: '#ef5350',
-      titleColor: '#ff8a80',
-    }
+    Icon: FaExclamationTriangle,
+    label: (
+      <Translate id="blog.alertBox.highlyImportant">Highly Important</Translate>
+    ),
   },
   coreConcept: {
-    icon: FaLightbulb,
-    defaultTitle: 'Core Concept',
-    light: {
-      bg: '#fffbe6',
-      borderLeft: '#f9c846',
-      color: '#333',
-      iconColor: '#f9c846',
-      titleColor: '#333',
-    },
-    dark: {
-      bg: '#363636',
-      borderLeft: '#ffda79',
-      color: '#e0e0e0',
-      iconColor: '#ffda79',
-      titleColor: '#e0e0e0',
-    },
+    Icon: FaLightbulb,
+    label: <Translate id="blog.alertBox.coreConcept">Core Concept</Translate>,
   },
 };
 
@@ -101,28 +59,22 @@ const variantMap = {
  * @param {string} [props.title] - Custom title for the alert. Defaults to variant's title.
  * @param {React.ReactNode} props.children - Content to display inside the alert box.
  */
-export default function AlertBox({ variant = 'info', title, children }) {
-  const variantData = variantMap[variant] || variantMap.info;
-  const Icon = variantData.icon;
-  const finalTitle = title || variantData.defaultTitle;
+export default function AlertBox({ variant = "info", title, children }) {
+  const { Icon, label } = variantMap[variant] || variantMap.info;
 
   return (
-    <div className={`${styles.alertBox} ${styles[variant]}`}>
+    <div className={clsx(styles.alertBox, styles[variant])} role="note">
       <div className={styles.header}>
-        <Icon className={styles.icon} style={{ color: variantData.iconColor }} />
-        <h4 style={variant === 'highlyImportant' ? { color: variantData.titleColor } : undefined}>
-          {finalTitle}
-        </h4>
+        <Icon className={styles.icon} aria-hidden="true" />
+        <h4>{title || label}</h4>
       </div>
-      <div className={styles.content} style={{ color: variantData.color }}>
-        {children}
-      </div>
+      <div className={styles.content}>{children}</div>
     </div>
   );
 }
 
 AlertBox.propTypes = {
   variant: PropTypes.oneOf(Object.keys(variantMap)),
-  title: PropTypes.string,
+  title: PropTypes.node,
   children: PropTypes.node.isRequired,
 };
