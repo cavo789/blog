@@ -1,28 +1,33 @@
 /* Hero Section Container */
 .heroHeader {
   padding: 4rem 0;
-  /* Utilise une couleur système Docusaurus pour supporter le Dark Mode automatiquement */
-  /* C'est souvent un gris très très léger ou une teinte secondaire */
-  background: #fcfcec;
-  /* Ou un dégradé très subtil pour faire "Tech" */
-  /* background: linear-gradient(to bottom, var(--ifm-color-emphasis-100), transparent); */
-
-  /* Pour s'assurer que ça prend toute la largeur */
   width: 100%;
-  margin-bottom: 2rem; /* Espace avant "Explore the site" */
+  margin-bottom: 2rem;
+
+  /* Default Light Mode background (Pale Yellow) */
+  background: #fcfcec;
+
+  /* Smooth transition when toggling themes */
+  transition: background-color 200ms ease-in-out;
+}
+
+/* Dark Mode Override - Targeting the Docusaurus global theme attribute */
+:global(html[data-theme='dark']) .heroHeader {
+  /* Uses standard Docusaurus dark surface color */
+  background: var(--ifm-background-surface-color);
 }
 
 .heroGrid {
   display: grid;
-  grid-template-columns: 1fr 0.8fr; /* 1. Donne un peu plus d'espace au texte, moins à la vidéo */
+  grid-template-columns: 1fr 0.8fr; /* More space for text, less for video */
   gap: 4rem;
-  align-items: center; /* Important : centre verticalement */
+  align-items: center; /* Center vertically */
   max-width: var(--ifm-container-width);
   margin: 0 auto;
   padding: 0 var(--ifm-spacing-horizontal);
 }
 
-/* Colonne Texte */
+/* Text Column */
 .introText h1 {
   font-size: 3rem;
   font-weight: 800;
@@ -31,7 +36,7 @@
 }
 
 .introText h1 span {
-  color: var(--ifm-color-primary); /* Met en valeur ton nom ou mot clé */
+  color: var(--ifm-color-primary); /* Highlights name or keyword */
   background: linear-gradient(
     120deg,
     var(--ifm-color-primary) 0%,
@@ -56,19 +61,15 @@
   border-radius: 24px;
   overflow: hidden;
 
-  /* On garde l'ombre pour le relief */
+  /* Keep shadow for depth */
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
 
-  /* FIX 1 : On retire la bordure grise si tu veux un look "sticker" pur */
-  /* border: 1px solid var(--ifm-color-emphasis-200); */
-
-  /* FIX 2 : Le coupable est ici ! */
-  /* Au lieu de NOIR, on met TRANSPARENT ou la couleur crème de ta vidéo */
+  /* Transparent background to blend perfectly with the container */
   background-color: transparent;
 
   aspect-ratio: 1 / 1;
 
-  /* Optionnel : Si le navigateur bug sur les coins arrondis avec la vidéo */
+  /* Optional: Fix for border-radius glitches on some browsers */
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
@@ -77,11 +78,11 @@
   height: 100%;
   object-fit: cover;
 
-  /* FIX 3 : L'astuce magique */
-  /* On zoome la vidéo de 1% pour qu'elle "morde" sur les bords et cache le vide */
+  /* Scale fix: 1% zoom to hide potential sub-pixel gaps */
   transform: scale(1.01);
 }
-/* Bouton Mute (Positionné sur la vidéo) */
+
+/* Mute Button (Positioned over the video) */
 .muteButton {
   position: absolute;
   bottom: 1rem;
@@ -105,7 +106,7 @@
   transform: scale(1.1);
 }
 
-/* Mobile : Stack vertical */
+/* Mobile: Vertical Stack */
 @media (max-width: 996px) {
   .heroGrid {
     grid-template-columns: 1fr;
