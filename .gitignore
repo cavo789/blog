@@ -15,3 +15,5 @@
 /*.log*
 
 */**/*:Zone.Identifier
+
+.devcontainer/.env
