@@ -4,22 +4,23 @@
 # https://docs.docker.com/build/dockerfile/frontend/
 # This Dockerfile is designed for use in a Devcontainer setup with VSCode
 
-# Define build-time arguments for user and workspace configuration
-ARG OS_USERID=1002
-ARG OS_GROUPID=1002
-ARG OS_USERNAME="node"
-ARG APP_HOME="/opt/docusaurus"
-
 # Use a custom base image that includes Node.js and Docusaurus dependencies
 # This image is built from the `blog-docusaurus` Dockerfile file you'll
 # find in the root directory of this blog
 FROM blog-docusaurus:development
 
-# Re-declare APP_HOME to ensure it's available in later stages
-ARG APP_HOME
+# Define build-time arguments for user and workspace configuration
+# Moved after FROM to avoid redundancy and ensure availability in the build stage
+ARG OS_USERID=1000
+ARG OS_GROUPID=1000
+ARG OS_USERNAME="node"
+ARG APP_HOME="/opt/docusaurus"
 
 # Switch to root to install system packages and configure environment
 USER root
+
+# Prevent apt from prompting for user input
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Install essential packages with caching to speed up rebuilds
 RUN --mount=type=cache,target=/var/lib/apt/lists \
@@ -32,15 +33,16 @@ RUN --mount=type=cache,target=/var/lib/apt/lists \
         bash-completion \
         curl \
         ca-certificates \
+        passwd \
         sudo && \
+    # Update the node user UID/GID to match the host if provided
+    # This ensures file permissions work correctly with mounted volumes
+    if [ "$OS_USERID" -ne 1000 ]; then usermod -u ${OS_USERID} ${OS_USERNAME}; fi && \
+    if [ "$OS_GROUPID" -ne 1000 ]; then groupmod -g ${OS_GROUPID} ${OS_USERNAME}; fi && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    git config --global --add safe.directory "${APP_HOME}"
-
-ARG APP_HOME
-ARG OS_USERID
-ARG OS_GROUPID
-ARG OS_USERNAME
+    # Use --system so the config applies to all users (including node)
+    git config --system --add safe.directory "${APP_HOME}"
 
 # Grant passwordless sudo access to the node user
 # Allow our node user to run "sudo xxx" in case of very specific use case
@@ -50,17 +52,19 @@ RUN set -eux && \
 
 # Create and set permissions for VSCode server folders used for extensions and remote features
 RUN set -eux && \
-    mkdir -p "/home/${OS_USERNAME}/.vscode-server/bin" && \
-    mkdir -p "/home/${OS_USERNAME}/.vscode-server/extensions" && \
-    mkdir -p "/home/${OS_USERNAME}/.vscode-server/data" && \
-    chown -R "${OS_USERNAME}:${OS_USERNAME}" "/home/${OS_USERNAME}"
+    mkdir -p "/home/${OS_USERNAME}/.vscode-server/bin" \
+             "/home/${OS_USERNAME}/.vscode-server/extensions" \
+             "/home/${OS_USERNAME}/.vscode-server/data" && \
+    chown -R "${OS_USERNAME}:${OS_USERNAME}" "/home/${OS_USERNAME}/.vscode-server"
 
 # ---------- Shell and history setup ----------
 # Configure bash history behavior for the node user
-RUN echo "export HISTFILE=/home/${OS_USERNAME}/.bash_history" >> "/home/${OS_USERNAME}/.bashrc" && \
-    echo 'export HISTSIZE=10000' >> "/home/${OS_USERNAME}/.bashrc" && \
-    echo 'export HISTFILESIZE=10000' >> "/home/${OS_USERNAME}/.bashrc" && \
-    echo 'shopt -s histappend' >> "/home/${OS_USERNAME}/.bashrc"
+RUN cat <<EOF >> "/home/${OS_USERNAME}/.bashrc"
+export HISTFILE=/home/${OS_USERNAME}/.bash_history
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+shopt -s histappend
+EOF
 
 # Customize the shell prompt for clarity and style
 RUN set -eux && \

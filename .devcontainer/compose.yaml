@@ -7,25 +7,31 @@ services:
       dockerfile: Dockerfile
       args:
         - APP_HOME=${APP_HOME:-/opt/docusaurus}
-        - OS_USERID=${OS_USERID:-1002}
-        - OS_GROUPID=${OS_GROUPID:-1002}
+        - OS_USERID=${OS_USERID:-1000}
+        - OS_GROUPID=${OS_GROUPID:-1000}
     user: node
     env_file:
-      - .env
+      - ../.env
     volumes:
       - ..:${APP_HOME:-/opt/docusaurus}
       - node_modules:/opt/docusaurus/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - languagetool
     command: sleep infinity
 
   languagetool:
     image: erikvl87/languagetool
-    restart: always
+    restart: unless-stopped
     environment:
       - langtool_languageModel=/ngrams
       - Java_Xms=512m
       - Java_Xmx=1g
     volumes:
       - ngrams:/ngrams
+    ports:
+      - "8010:8010"
 
 volumes:
   ngrams:

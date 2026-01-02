@@ -8,11 +8,14 @@ services:
       dockerfile: Dockerfile
       args:
         - APP_HOME=${APP_HOME:-/opt/docusaurus}
-        - OS_USERID=${OS_USERID:-1002}
-        - OS_GROUPID=${OS_GROUPID:-1002}
-    user: ${OS_USERID:-1002}:${OS_GROUPID:-1002}
+        - OS_USERID=${OS_USERID:-1000}
+        - OS_GROUPID=${OS_GROUPID:-1000}
+    user: ${OS_USERID:-1000}:${OS_GROUPID:-1000}
+    env_file:
+      - ../.env
     image: blog-docusaurus:${TARGET:-development}
     container_name: docusaurus
     ports:
+      - "80:80"
       - "443:443"
     command: sleep infinity

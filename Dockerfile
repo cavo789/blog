@@ -22,6 +22,7 @@ ARG APP_HOME="/opt/docusaurus"
 FROM mcr.microsoft.com/devcontainers/javascript-node:20-bookworm AS base
 
 # Install bash and bash-completion (required for Devcontainer shell features)
+ENV DEBIAN_FRONTEND=noninteractive
 RUN --mount=type=cache,target=/var/cache/apt \
     --mount=type=cache,target=/var/lib/apt/lists \
     set -eux; \
@@ -40,7 +41,7 @@ ARG OS_GROUPID
 ARG OS_USERNAME
 
 RUN set -eux && \
-    if [ "$OS_USERID" != 1000 ] || [ "$OS_GROUPID" != "1000" ]; then \
+    if [ "$OS_USERID" -ne 1000 ] || [ "$OS_GROUPID" -ne 1000 ]; then \
         groupmod -g "$OS_GROUPID" node; \
         usermod -u "$OS_USERID" -g "$OS_GROUPID" "${OS_USERNAME}"; \
     fi
@@ -115,6 +116,7 @@ ENV YARN_CACHE_FOLDER=${YARN_CACHE_FOLDER}
 
 ARG APP_HOME
 ARG HOME_FOLDER
+ARG OS_USERNAME
 
 # The home folder has to be owned by the user
 RUN set -eux && \
@@ -124,11 +126,14 @@ RUN set -eux && \
 # Copy full project source code and installed node_modules from dependencies stage
 
 COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"/node_modules ./node_modules
-COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"/package.json "${APP_HOME}"/package-*.* "${APP_HOME}"yarn*.* ./
-COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" .devcontainer/bash_helpers.sh /usr/local/bin/
-COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" .devcontainer/docker-entrypoint.sh /usr/local/bin/
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"/package.json "${APP_HOME}"/package-*.* "${APP_HOME}"/yarn*.* ./
 
+# Switch to root to install global scripts
+USER root
+COPY .devcontainer/bash_helpers.sh /usr/local/bin/
+COPY .devcontainer/docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/bash_helpers.sh /usr/local/bin/docker-entrypoint.sh
+USER "${OS_USERNAME}"
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
@@ -140,7 +145,7 @@ ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 # ─────────────────────────────────────────────────────────────
 FROM development AS build
 
-ARG APP_HOME
+ARG OS_USERNAME
 
 # Copy full project source code
 COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" . .
@@ -159,7 +164,6 @@ FROM nginx:stable-alpine AS production
 RUN rm -rf /usr/share/nginx/html/*
 
 ARG APP_HOME
-RUN mkdir -p "${APP_HOME}"
 
 # Copy built static site from build stage into Nginx's web root
 COPY --from=build "${APP_HOME}"/build /usr/share/nginx/html
