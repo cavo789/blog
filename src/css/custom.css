@@ -55,31 +55,33 @@
 
 /* --- DESKTOP "GHOST" TOC LOGIC - REFINED --- */
 @media (min-width: 997px) {
-  .col.col--3 {
+  /* CORRECTION: On cible les colonnes .col--3
+     MAIS on exclut explicitement celles qui contiennent des cartes (.card).
+     Cela protège la page Series et les autres grilles de contenu.
+  */
+  .col.col--3:not(:has(.card)) {
     /* 1. Base State (Inactive) */
-    opacity: 0.15; /* Slightly more visible than 0.1 so users perceive text structure */
-    filter: grayscale(100%); /* Keeps it neutral/unobtrusive */
+    opacity: 0.15;
+    filter: grayscale(100%);
 
     /* 2. The Animation */
-    transform: translateX(10px); /* Pushed slightly to the right */
+    transform: translateX(10px);
     transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
       transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.4s ease;
 
-    /* 3. Visual Cue: A subtle border on the left to indicate "Something is here" */
+    /* 3. Visual Cue */
     border-left: 1px solid var(--ifm-color-emphasis-200);
   }
 
   /* Hover State (Active) */
-  .col.col--3:hover {
+  .col.col--3:not(:has(.card)):hover {
     opacity: 1;
     filter: grayscale(0%);
-    transform: translateX(0); /* Slides back into place */
-
-    /* Visual upgrade: Remove the border cue when active so it looks clean,
-       OR keep it. Here we keep it but color it with your primary brand color. */
+    transform: translateX(0);
     border-left: 1px solid var(--ifm-color-primary);
   }
 }
+
 /* --- MOBILE STICKY TOC LOGIC --- */
 .blog-toc-mobile {
   display: none; /* Hidden by default on Desktop */

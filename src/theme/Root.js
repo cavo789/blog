@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
 import { useLocation } from "@docusaurus/router";
 
-// This Root component allows injecting code globally into the application
+/**
+ * This Root component allows injecting code globally into the application.
+ *
+ * We use it here to implement a dynamic Table of Contents (TOC) label for mobile devices.
+ * As the user scrolls, the TOC button text updates to reflect the current section heading,
+ * providing better context than the static "On this page" label.
+ */
 export default function Root({ children }) {
   const location = useLocation();
 
