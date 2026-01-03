@@ -15,7 +15,10 @@ import BlogPostPageMetadata from "@theme/BlogPostPage/Metadata";
 import StructuredData from "@site/src/components/StructuredData";
 import BlogPostPageStructuredData from "@theme/BlogPostPage/StructuredData";
 import TOC from "@theme/TOC";
+import TOCCollapsible from "@theme/TOCCollapsible";
 import ContentVisibility from "@theme/ContentVisibility";
+// NEW: Import hook to track URL changes
+import { useLocation } from "@docusaurus/router";
 
 function BlogPostPageContent({ sidebar, children }) {
   const { metadata, toc } = useBlogPost();
@@ -25,6 +28,9 @@ function BlogPostPageContent({ sidebar, children }) {
     toc_min_heading_level: tocMinHeadingLevel,
     toc_max_heading_level: tocMaxHeadingLevel,
   } = frontMatter;
+
+  // NEW: Get current location to force re-render on hash change
+  const location = useLocation();
 
   return (
     <BlogLayout
@@ -40,7 +46,24 @@ function BlogPostPageContent({ sidebar, children }) {
       }
     >
       <ContentVisibility metadata={metadata} />
+
+      {/* MOBILE TOC IMPLEMENTATION
+        We use 'key={location.hash}' to force the component to re-mount
+        when the user clicks an anchor link. This effectively resets the
+        component to its default 'collapsed' state, closing the menu automatically.
+      */}
+      {!hideTableOfContents && toc.length > 0 && (
+        <TOCCollapsible
+          key={location.hash}
+          toc={toc}
+          minHeadingLevel={tocMinHeadingLevel}
+          maxHeadingLevel={tocMaxHeadingLevel}
+          className={clsx(ThemeClassNames.docs.docTocMobile, "blog-toc-mobile")}
+        />
+      )}
+
       <BlogPostItem>{children}</BlogPostItem>
+
       {(nextItem || prevItem) && (
         <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />
       )}
@@ -58,7 +81,6 @@ export default function BlogPostPage(props) {
   );
 }
 
-// ✅ This is where we can safely use useBlogPost()
 function InnerBlogPostPage({ sidebar, BlogPostContent }) {
   const { metadata } = useBlogPost();
 
