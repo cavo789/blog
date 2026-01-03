@@ -16,7 +16,7 @@
   "languageToolLinter.languageTool.language": "en",
   "languageToolLinter.external.url": "http://172.17.0.1:8010",
   "languageToolLinter.serviceType": "external",
-  "languageToolLinter.languageTool.disabledRules": "UNLIKELY_OPENING_PUNCTUATION",
+  "languageToolLinter.languageTool.disabledRules": "COMMA_PARENTHESIS_WHITESPACE,EN_UNPAIRED_QUOTES,UNLIKELY_OPENING_PUNCTUATION,WHITESPACE_RULE",
   "workbench.startupEditor": "terminal",
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#8be959",

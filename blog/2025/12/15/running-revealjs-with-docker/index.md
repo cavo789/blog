@@ -45,13 +45,13 @@ If you already have an existing Quarto project, just jump in it and run `code .`
 
 Then, add the following files to your project root:
 
-<Snippet filename="_quarto.yml" source="./files/_quarto.yml" />
-
-<Snippet filename=".devcontainer/compose.yaml" source="./files/.devcontainer/compose.yaml" />
-
-<Snippet filename=".devcontainer/devcontainer.json" source="./files/.devcontainer/devcontainer.json" />
-
-<Snippet filename=".devcontainer/Dockerfile" source="./files/.devcontainer/Dockerfile" />
+<ProjectSetup folderName="/tmp/revealjs/demo">
+  <Guideline>Now, start 'code .' to open VScode. Press 'F1' and select 'Dev containers: Rebuild and Reopen in Devcontainer' to open the project as a devcontainer</Guideline>
+  <Snippet filename="_quarto.yml" source="./files/_quarto.yml" />
+  <Snippet filename=".devcontainer/compose.yaml" source="./files/.devcontainer/compose.yaml" />
+  <Snippet filename=".devcontainer/devcontainer.json" source="./files/.devcontainer/devcontainer.json" />
+  <Snippet filename=".devcontainer/Dockerfile" source="./files/.devcontainer/Dockerfile" />
+</ProjectSetup>
 
 <AlertBox variant="note" title="Images below will be based on my project, for sure, some will be different for you.">
 </AlertBox>

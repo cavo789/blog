@@ -9,9 +9,11 @@
       "alertbox",
       "browserwindow",
       "details",
+      "guideline",
       "highlight",
       "kbd",
       "link",
+      "projectsetup",
       "summary",
       "snippet",
       "terminal"

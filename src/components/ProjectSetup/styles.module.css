@@ -1,0 +1,32 @@
+.projectSetupContainer {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  margin: 2rem 0;
+  overflow: hidden;
+}
+
+.header {
+  padding: 10px 15px;
+  background: var(--ifm-color-emphasis-100);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  padding: 15px;
+}
+
+.scriptContainer {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.tip {
+  margin-bottom: 1rem;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 0.5rem;
+}

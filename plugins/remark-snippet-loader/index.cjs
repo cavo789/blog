@@ -36,7 +36,7 @@ function snippetLoader() {
     visit(tree, "mdxJsxFlowElement", (node) => {
       if (node.name !== "Snippet") return;
 
-      const sourceAttr = node.attributes.find(attr => attr.name === "source");
+      const sourceAttr = node.attributes.find((attr) => attr.name === "source");
       if (!sourceAttr || typeof sourceAttr.value !== "string") return;
 
       const sourcePath = sourceAttr.value;
@@ -45,7 +45,7 @@ function snippetLoader() {
       // 🚀 CORRECTED PATH LOGIC:
       // 1. If the path starts with '.' (e.g., ./file.js or ../../file.js),
       //    it is treated as relative to the current MDX file.
-      if (sourcePath.startsWith('./') || sourcePath.startsWith('../')) {
+      if (sourcePath.startsWith("./") || sourcePath.startsWith("../")) {
         absolutePath = path.resolve(currentFileDir, sourcePath);
       } else {
         // 2. Otherwise (e.g., src/components/...), it is treated as relative
@@ -57,22 +57,25 @@ function snippetLoader() {
         const code = fs.readFileSync(absolutePath, "utf-8");
 
         // Determine extension for language detection
-        const ext = path.extname(sourcePath).slice(1).toLowerCase() || path.basename(sourcePath).toLowerCase();
+        const ext =
+          path.extname(sourcePath).slice(1).toLowerCase() ||
+          path.basename(sourcePath).toLowerCase();
 
         let lang = extensionToLang[ext];
         if (!lang) {
-            // Try to detect language based on the base file name (useful for Dockerfile, compose.yaml)
-            const baseName = path.basename(sourcePath).toLowerCase();
-            if (baseName === 'dockerfile') {
-                lang = 'docker';
-            } else if (baseName.includes('compose.yaml') || baseName.includes('.yml')) {
-                lang = 'yaml';
-            } else {
-                lang = ext; // Use the extension or base name as fallback
-            }
+          // Try to detect language based on the base file name (useful for Dockerfile, compose.yaml)
+          const baseName = path.basename(sourcePath).toLowerCase();
+          if (baseName === "dockerfile") {
+            lang = "docker";
+          } else if (
+            baseName.includes("compose.yaml") ||
+            baseName.includes(".yml")
+          ) {
+            lang = "yaml";
+          } else {
+            lang = ext; // Use the extension or base name as fallback
+          }
         }
-
-        // console.log(`Snippet plugin: reading ${absolutePath} for blog post ${blogPostPath}, auto-detected language is ${lang}`);
 
         node.attributes.push({
           type: "mdxJsxAttribute",
@@ -86,7 +89,10 @@ function snippetLoader() {
           value: lang,
         });
       } catch (err) {
-        console.error(`Snippet plugin: error reading ${absolutePath} for blog post ${blogPostPath}`, err);
+        console.error(
+          `Snippet plugin: error reading ${absolutePath} for blog post ${blogPostPath}`,
+          err
+        );
         node.attributes.push({
           type: "mdxJsxAttribute",
           name: "code",

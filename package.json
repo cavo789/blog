@@ -28,6 +28,7 @@
         "feed": "^5.1.0",
         "front-matter": "^4.0.2",
         "glob": "^13.0.0",
+        "jszip": "^3.10.1",
         "lucide-react": "^0.562.0",
         "prism-react-renderer": "^2.3.0",
         "react": "^19.0.0",

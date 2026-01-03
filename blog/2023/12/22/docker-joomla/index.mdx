@@ -25,6 +25,8 @@ updates:
     note: adding health condition in yml and update Joomla tag to 5.1-php8.2-apache
   - date: 2025-08-25
     note: Using Joomla 5.3.3
+  - date: 2026-01-03
+    note: Add the Bonus chapter with a <a href="#bonus---install-joomla-with-a-cli-one-liner">CLI one-liner to install Joomla 6</a>
 language: en
 blueskyRecordKey: 3lx57pqunek23
 ---
@@ -33,7 +35,7 @@ blueskyRecordKey: 3lx57pqunek23
 
 <!-- cspell:ignore apac, ibdata, ibtmp -->
 
-In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** _(don't want to wait? Jump to the "Final compose.yaml" chapter)_.
+In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** _(don't want to wait? Jump to the <a href="#bonus---install-joomla-with-a-cli-one-liner">Bonus - Install Joomla with a CLI one-liner</a>" chapter)_.
 
 I will use a Linux console _(I'm running WSL on my Windows computer and I have chosen Ubuntu for my distribution)_ but since Docker can also be used on Windows, you can perfectly run, exactly, the same commands in an MS-DOS / Powershell console.
 
@@ -974,66 +976,27 @@ It's easy: just run `code .` to open the current folder so your project within v
 
 Another use case, you wish to start the Windows Explorer program and navigate in your project's structure. Here too, it's possible, just run `explorer.exe .` to open it and load the current directory. See my "[Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer)" article to read more about this feature.
 
-### Final compose.yaml
+## Bonus - Install Joomla with a CLI one-liner
 
 In the introduction of this article, I have said \*we will learn how to use Docker to install Joomla and start a new website **in seconds\***.
 
-This is how:
+And here is the promise. Just clic on the `Generate install script` below, copy/paste the script in your console, run it and follow the instruction. After a few seconds, you'll have a running Joomla website.
 
-1. On your computer, create a folder for your new project (f.i. `mkdir ~/projects/my_new_project && cd $_`)
-   <Terminal>$ mkdir ~/projects/my_new_project && cd $_</Terminal>
-2. Also create the two following folders to make your site and your database persistents: `mkdir site_joomla db`
-   <Terminal>$ mkdir site_joomla db</Terminal>
-3. In that folder, create a `compose.yaml` file with this content:
-
-<Snippet filename="compose.yaml">
-
-```yaml
-name: yourprojectname
-
-services:
-  joomla:
-    image: joomla:5.3.3-php8.2-apache
-    container_name: kingsbridge-app
-    restart: always
-    ports:
-      - 8080:80
-    environment:
-      - JOOMLA_DB_HOST=joomladb
-      - JOOMLA_DB_PASSWORD=example
-    depends_on:
-      joomladb:
-        condition: service_healthy
-    user: 1000:1000
-    volumes:
-      - ./site_joomla:/var/www/html
-
-  joomladb:
-    image: mysql:8.0.13
-    container_name: kingsbridge-db
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=example
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      timeout: 20s
-      retries: 10
-    user: 1000:1000
-    volumes:
-      - ./db:/var/lib/mysql
-```
-
-</Snippet>
+<ProjectSetup folderName="/tmp/joomla">
+  <Guideline>
+    Now, please run 'UID=$(id -u) GID=$(id -g) docker compose up --detach' to
+    create your Joomla site. The database type should be `MySQLi`, the name of
+    the host should be `joomladb`, the username should be `root` and the
+    password for that user should be `example`.
+  </Guideline>
+  <Snippet filename="compose.yaml" source="./files/final_compose.yaml" />
+  <EmptyFolder name="site_joomla" />
+  <EmptyFolder name="db" />
+</ProjectSetup>
 
 <!-- markdownlint-disable MD029 -->
 
-3. Create your two sub-folders
-   <Terminal>$ mkdir db site_joomla</Terminal>
-4. Run `docker compose up --detach` to start Docker and create your containers
-   <Terminal>$ docker compose up --detach</Terminal>
-5. Wait a few seconds and your new site is up.
-
 <AlertBox variant="caution" title="">
-Make sure, for each project, to update the `name:` line and if you plan to be able to run your Joomla sites concurrently, make sure to update the port number for Joomla and chose a new one every time (can be `80`, `81`, `82` and so one).
+Make sure, for each project, to update the `name:` line and if you plan to be able to run your Joomla sites concurrently, make sure to update the port number for Joomla and chose a new one every time (can be `80`, `81`, `82` and so on).
 
 </AlertBox>

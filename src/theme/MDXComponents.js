@@ -23,6 +23,11 @@ import Trees from "@site/src/components/Trees";
 import Folder from "@site/src/components/Trees/Folder";
 import File from "@site/src/components/Trees/File";
 
+import ProjectSetup, {
+  EmptyFolder,
+  Guideline,
+} from "@site/src/components/ProjectSetup/index.js";
+
 export default {
   // Reusing the default mapping
   ...MDXComponents,
@@ -36,12 +41,15 @@ export default {
   Column,
   Columns,
   Details,
+  EmptyFolder,
   File,
   Folder,
+  Guideline,
   Hero,
   Highlight,
   Link,
   LogoIcon,
+  ProjectSetup,
   Snippet,
   StepsCard,
   TabItem,
