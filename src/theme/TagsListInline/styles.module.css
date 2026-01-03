@@ -1,0 +1,13 @@
+.tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.tag {
+  margin-bottom: var(--ifm-spacing-vertical-small);
+}
+
+.tag:not(:last-child) {
+  margin-right: var(--ifm-spacing-horizontal-small);
+}

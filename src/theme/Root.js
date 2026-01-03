@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useLocation } from "@docusaurus/router";
+import React, { useEffect } from 'react';
+import { useLocation } from '@docusaurus/router';
 
 /**
  * This Root component allows injecting code globally into the application.
@@ -17,9 +17,8 @@ export default function Root({ children }) {
 
     const updateTocOnScroll = () => {
       // 1. Target the mobile TOC button
-      // We look in .blog-toc-mobile (your custom class) or the standard class
       const tocButton =
-        document.querySelector(".blog-toc-mobile button") ||
+        document.querySelector('.blog-toc-mobile button') ||
         document.querySelector('button[class*="tocCollapsibleButton"]');
 
       if (!tocButton) return;
@@ -29,39 +28,56 @@ export default function Root({ children }) {
         defaultText = tocButton.innerText;
       }
 
-      // 2. Select all headings in the main content
-      // Using 'main' is more robust than specific class names like '.markdown'
+      // 2. Get all valid TOC link hrefs to ensure we only track article headings
+      const tocLinks = Array.from(
+        document.querySelectorAll('.table-of-contents a'),
+      );
+      const validTocIds = new Set(tocLinks.map((a) => a.getAttribute('href')));
+
+      // If there's no TOC, restore default text and do nothing else.
+      if (validTocIds.size === 0) {
+        if (defaultText && tocButton.innerText !== defaultText) {
+          tocButton.innerText = defaultText;
+        }
+        return;
+      }
+
+      // 3. Select all headings in the main content that could be in the TOC
       const headings = Array.from(
         document.querySelectorAll(
-          "main h1, main h2, main h3, main h4, main h5, main h6"
-        )
+          'main h2, main h3, main h4, main h5, main h6',
+        ),
       );
 
-      // 3. Find the active heading (the one that has passed above the reading area)
-      // We use an offset (e.g., 100px) to detect the heading under the nav/toc bar
+      // Filter headings to only include those that are actually in the TOC
+      const tocHeadings = headings.filter(
+        (h) => h.id && validTocIds.has(`#${h.id}`),
+      );
+
+      // 4. Find the active heading from the bottom up from our filtered list.
       const offset = 100;
-      const currentHeading = headings
+      const currentTocHeading = tocHeadings
         .reverse()
         .find((h) => h.getBoundingClientRect().top < offset);
 
-      if (currentHeading) {
-        // 4. Update the button text
-        if (tocButton.innerText !== currentHeading.innerText) {
-          tocButton.innerText = currentHeading.innerText;
+      // 5. If a valid TOC heading is active, update the button text
+      if (currentTocHeading) {
+        if (tocButton.innerText !== currentTocHeading.innerText) {
+          tocButton.innerText = currentTocHeading.innerText;
         }
       } else {
-        // Restore default text if no heading is active
+        // Otherwise, restore default text (we are likely at the top of the page)
         if (defaultText && tocButton.innerText !== defaultText) {
           tocButton.innerText = defaultText;
         }
       }
     };
 
-    window.addEventListener("scroll", updateTocOnScroll);
+    window.addEventListener('scroll', updateTocOnScroll);
     // Trigger once on mount to handle initial scroll position
     updateTocOnScroll();
 
-    return () => window.removeEventListener("scroll", updateTocOnScroll);
+    return () => window.removeEventListener('scroll', updateTocOnScroll);
   }, [location]);
 
   return <>{children}</>;
