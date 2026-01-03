@@ -985,9 +985,10 @@ And here is the promise. Just clic on the `Generate install script` below, copy/
 <ProjectSetup folderName="/tmp/joomla">
   <Guideline>
     Now, please run 'UID=$(id -u) GID=$(id -g) docker compose up --detach' to
-    create your Joomla site. The database type should be `MySQLi`, the name of
-    the host should be `joomladb`, the username should be `root` and the
-    password for that user should be `example`.
+    create your Joomla site. Wait a few and open your browser, surf to
+    http://localhost:8080 to open your Joomla site. The database type should be
+    `MySQLi`, the name of the host should be `joomladb`, the username should be
+    `root` and the password for that user should be `example`.
   </Guideline>
   <Snippet filename="compose.yaml" source="./files/final_compose.yaml" />
   <EmptyFolder name="site_joomla" />
