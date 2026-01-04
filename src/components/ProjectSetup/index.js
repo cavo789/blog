@@ -215,6 +215,13 @@ export default function ProjectSetup({
           📦 <Translate>Project setup:</Translate> {folderName}
         </strong>
         <div className={styles.buttonGroup}>
+          <a
+            className="button button--secondary button--sm"
+            href="/project_setup"
+            target="_blank"
+          >
+            <Translate>Help</Translate>
+          </a>
           {showScript ? (
             <button
               className="button button--secondary button--sm"
@@ -277,9 +284,8 @@ export default function ProjectSetup({
               <small>
                 <span aria-hidden="true">💡</span>{" "}
                 <Translate id="theme.projectSetup.tip">
-                  Click on the ZIP button to download the project as an archive
-                  or click 'Generate install script' for a one-line command to
-                  initialize this project in your console.
+                  Need help here? Click the "Help" button above for setup
+                  instructions.
                 </Translate>
               </small>
             </p>
