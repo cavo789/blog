@@ -38,7 +38,7 @@ This component does not accept any props. It uses `useBlogPost()` internally to 
 
 ## 📅 Logic
 
-The component compares the blog post's `metadata.date` to the current date. If the post is older than one year, it renders a warning message.
+The component compares the blog post's date to the current date. It first checks for an `updates` array in the post's frontmatter. If available, it uses the most recent date from that array. If not, it falls back to the original `metadata.date`. If the effective date is older than one year, it renders a warning message.
 
 ## 🧑‍🎓 Authoring Tips
 
