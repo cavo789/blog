@@ -19,14 +19,17 @@ For this article, let's assume you have a PlanetHoster hosting account so, at th
 
 <!-- truncate -->
 
-## Collect Required Information
+<StepsCard
+  title="You'll need to obtain the following pieces of information:"
+  variant="prerequisites"
+  steps={[
+    "The username for the connection",
+    "The server name (or its IP address)",
+    "The port number to use",
+    "The password associated with the user account."
+  ]}
+/>
 
-You'll need to obtain the following pieces of information:
-
-1. The username for the connection
-2. The server name (or its IP address)
-3. The port number to use
-4. The password associated with the user account.
 
 For the first three items, log in to the [PlanetHoster dashboard](https://my.planethoster.com/v2/hosting-management/overview).
 
@@ -48,7 +51,7 @@ The fourth piece of information to gather is the password associated with your u
 
 <StepsCard
   title="For the rest of this article, let's assume these values:"
-  variant="steps"
+  variant="prerequisites"
   steps={[
     "User: `john_doe`",
     "Server name: `node30-eu.n0c.com`",

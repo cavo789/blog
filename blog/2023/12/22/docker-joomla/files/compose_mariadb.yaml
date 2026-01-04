@@ -1,0 +1,22 @@
+name: kingsbridge
+
+services:
+  joomla:
+    image: joomla
+    container_name: kingsbridge-app
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - JOOMLA_DB_HOST=joomladb
+      - JOOMLA_DB_PASSWORD=example
+    depends_on:
+      - joomladb
+
+  joomladb:
+    // highlight-next-line
+    image: mariadb:11.1.2
+    container_name: kingsbridge-db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=example

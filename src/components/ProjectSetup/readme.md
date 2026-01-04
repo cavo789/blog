@@ -47,6 +47,7 @@ You can too use the `code` prop directly for small snippets:
 | Prop | Type | Default | Description |
 |---|---|---|---|
 | `folderName` | `string` | `"my-project"` | The name of the root directory to be created. |
+| `createFolder` | `boolean` | `true` | If set to `false`, the generated script will not create the root folder. This should be the case when f.i. files should be created inside an existing folder|
 | `children` | `node` | - | Should contain `<Snippet>` and `<Guideline>` components. |
 
 ## Components
@@ -75,6 +76,21 @@ The component uses CSS Modules. Customize the appearance in `styles.module.css`.
 * `header`: Top bar containing the title and buttons.
 * `buttonGroup`: Container for the ZIP and Script buttons.
 * `scriptContainer`: Scrollable area for the generated Bash script.
+
+## Advanced Usage
+
+### Preventing Root Folder Creation
+
+In some cases, you may want to provide files that should be created inside an existing project structure. By setting `createFolder={false}`, the generated script will not create the root `folderName` directory. Instead, it will assume the user is already inside it.
+
+```jsx
+<ProjectSetup folderName="/your_docusaurus_site" createFolder={false}>
+  <Snippet filename="src/components/MyNewComponent/index.js" code={`// Your component code`} />
+  <Snippet filename="src/components/MyNewComponent/styles.css" code={`.my-class { color: hotpink; }`} />
+</ProjectSetup>
+```
+
+This is useful for demonstrating how to add files to an existing Docusaurus site, where `folderName` is just a contextual reference for the user.
 
 ## 💬 AI generated
 

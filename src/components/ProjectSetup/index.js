@@ -41,6 +41,7 @@ EmptyFolder.isEmptyFolder = true;
  */
 export default function ProjectSetup({
   folderName = "my-project",
+  createFolder = true,
   files,
   children,
 }) {
@@ -132,7 +133,10 @@ export default function ProjectSetup({
    * to recreate the folder structure.
    */
   const generateShellScript = () => {
-    let script = `mkdir -p ${folderName} && cd ${folderName}\n`;
+    let script = "";
+    if (createFolder) {
+      script += `mkdir -p ${folderName} && cd ${folderName}\n`;
+    }
 
     // Create explicit folders
     folders.forEach((f) => {
@@ -270,8 +274,15 @@ export default function ProjectSetup({
             <p>
               <small>
                 <Translate>
-                  Copy this block to your terminal (Linux/WSL2):
+                  Copy this block to your terminal (Linux/WSL2).
                 </Translate>
+                {!createFolder && (
+                  <mark>
+                    {" "}
+                    Make sure you are located in the{" "}
+                    <strong>{folderName}</strong> folder.
+                  </mark>
+                )}
               </small>
             </p>
             <div className={styles.scriptContainer}>

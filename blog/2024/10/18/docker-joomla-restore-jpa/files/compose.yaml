@@ -1,0 +1,68 @@
+name: ${PROJECT_NAME:-your-project-name}
+
+services:
+  joomla:
+    # highlight-next-line
+    build:
+      # highlight-next-line
+      context: .
+      # highlight-next-line
+      args:
+        # highlight-next-line
+        - PHP_VERSION=${PHP_VERSION:-8.3-apache}
+    container_name: ${CONTAINER_PREFIX:-joomla}-app
+    restart: always
+    ports:
+      - ${WEB_PORT:-8080}:80
+    environment:
+      - JOOMLA_DB_HOST=joomladb
+      - JOOMLA_DB_NAME=${DB_NAME:-joomla}
+      - JOOMLA_DB_PASSWORD=${DB_PASSWORD:-examplepass}
+      - JOOMLA_DB_USER=${DB_USER:-joomla}
+    depends_on:
+      joomladb:
+        condition: service_healthy
+    user: ${UID:-1000}:${GID:-1000}
+    volumes:
+      - ./joomla_data:/var/www/html
+    networks:
+      - joomla_network
+
+  joomladb:
+    image: mysql:${MYSQL_VERSION:-latest}
+    container_name: ${CONTAINER_PREFIX:-joomla}-db
+    restart: always
+    ports:
+      - ${MYSQL_PORT-:3306}:3306
+    environment:
+      - MYSQL_DATABASE=${DB_NAME:-joomla}
+      - MYSQL_PASSWORD=${DB_PASSWORD:-examplepass}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-rootpass}
+      - MYSQL_USER=${DB_USER:-joomla}
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    user: ${UID:-1000}:${GID:-1000}
+    volumes:
+      - ./db_data:/var/lib/mysql
+    networks:
+      - joomla_network
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: ${CONTAINER_PREFIX:-joomla}-phpmyadmin
+    restart: always
+    depends_on:
+      joomladb:
+        condition: service_healthy
+    ports:
+      - 8081:80
+    environment:
+      - PMA_HOST=joomladb
+      - PMA_PASSWORD=${DB_ROOT_PASSWORD:-rootpass}
+    networks:
+      - joomla_network
+
+networks:
+  joomla_network:

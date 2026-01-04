@@ -1,0 +1,5 @@
+services:
+  joomla:
+    image: joomla:5.3.3-php8.2-apache
+
+[...]

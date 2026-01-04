@@ -1,0 +1,8 @@
+services:
+  [...]
+  // highlight-next-line
+  joomladb:
+    [...]
+    environment:
+      // highlight-next-line
+      - MYSQL_ROOT_PASSWORD=example

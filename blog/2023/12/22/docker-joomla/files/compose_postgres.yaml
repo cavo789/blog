@@ -1,0 +1,33 @@
+name: kingsbridge
+
+services:
+  joomla:
+    image: joomla
+    container_name: kingsbridge-app
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - JOOMLA_DB_HOST=joomladb
+      // highlight-next-line
+      - JOOMLA_DB_USER=postgres
+      - JOOMLA_DB_PASSWORD=example
+      // highlight-next-line
+      - JOOMLA_DB_NAME=joomla_db
+      // highlight-next-line
+      - JOOMLA_DB_TYPE=pgsql
+    depends_on:
+      - joomladb
+
+  joomladb:
+    // highlight-next-line
+    image: postgres:16.0-alpine
+    container_name: kingsbridge-db
+    restart: always
+    environment:
+      // highlight-next-line
+      - POSTGRES_DB=joomla_db
+      // highlight-next-line
+      - POSTGRES_USER=postgres
+      // highlight-next-line
+      - POSTGRES_PASSWORD=example

@@ -1,0 +1,4 @@
+services:
+  // highlight-next-line
+  joomla:
+    [...]

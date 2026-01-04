@@ -10,6 +10,9 @@ mainTag: joomla
 tags: [.env, docker, joomla, makefile]
 language: en
 blueskyRecordKey: 3lx57wpmj6223
+updates:
+  - date: 2026-01-03
+    note: Review and update YAML files to Joomla 6
 ---
 
 <!-- cspell:ignore Akeeba -->
@@ -60,101 +63,13 @@ Here is why: this time we don't need to download a fresh copy of Joomla since **
 
 Except highlighted lines, all the rest is the same that in [Part 2](/blog/docker-joomla-part-2).
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: ${PROJECT_NAME:-your-project-name}
-
-services:
-  joomla:
-    # highlight-next-line
-    build:
-      # highlight-next-line
-      context: .
-      # highlight-next-line
-      args:
-        # highlight-next-line
-        - PHP_VERSION=${PHP_VERSION:-8.3-apache}
-    container_name: ${CONTAINER_PREFIX:-joomla}-app
-    restart: always
-    ports:
-      - ${WEB_PORT:-8080}:80
-    environment:
-      - JOOMLA_DB_HOST=joomladb
-      - JOOMLA_DB_NAME=${DB_NAME:-joomla}
-      - JOOMLA_DB_PASSWORD=${DB_PASSWORD:-examplepass}
-      - JOOMLA_DB_USER=${DB_USER:-joomla}
-    depends_on:
-      joomladb:
-        condition: service_healthy
-    user: ${UID:-1000}:${GID:-1000}
-    volumes:
-      - ./joomla_data:/var/www/html
-    networks:
-      - joomla_network
-
-  joomladb:
-    image: mysql:${MYSQL_VERSION:-latest}
-    container_name: ${CONTAINER_PREFIX:-joomla}-db
-    restart: always
-    ports:
-      - ${MYSQL_PORT-:3306}:3306
-    environment:
-      - MYSQL_DATABASE=${DB_NAME:-joomla}
-      - MYSQL_PASSWORD=${DB_PASSWORD:-examplepass}
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-rootpass}
-      - MYSQL_USER=${DB_USER:-joomla}
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      timeout: 20s
-      retries: 10
-    user: ${UID:-1000}:${GID:-1000}
-    volumes:
-      - ./db_data:/var/lib/mysql
-    networks:
-      - joomla_network
-
-  phpmyadmin:
-    image: phpmyadmin
-    container_name: ${CONTAINER_PREFIX:-joomla}-phpmyadmin
-    restart: always
-    depends_on:
-      joomladb:
-        condition: service_healthy
-    ports:
-      - 8081:80
-    environment:
-      - PMA_HOST=joomladb
-      - PMA_PASSWORD=${DB_ROOT_PASSWORD:-rootpass}
-    networks:
-      - joomla_network
-
-networks:
-  joomla_network:
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 ### The .env file
 
 As introduced above; we don't need Joomla anymore but just PHP and Apache. We'll then define a `PHP_VERSION` variable and initialise it to the desired version.
 
-<Snippet filename=".env">
-
-```.env
-CONTAINER_PREFIX=joomla
-DB_NAME=joomla
-DB_PASSWORD=examplepass
-DB_USER=joomla
-MYSQL_PORT=3306
-MYSQL_VERSION=8.4.2
-// highlight-next-line
-PHP_VERSION=8.3-apache
-PROJECT_NAME=running-joomla-in-docker
-WEB_PORT=8080
-```
-
-</Snippet>
+<Snippet filename=".env" source="./files/.env" />
 
 <AlertBox variant="caution" title="">
 Since we need to restore an existing site, make sure to use the same PHP version than the one used by your site.
@@ -165,107 +80,7 @@ Since we need to restore an existing site, make sure to use the same PHP version
 
 We'll need a new action called `import`:
 
-<Snippet filename="makefile">
-
-```makefile
--include .env
-
-config:
-	@UID=$$(id -u) GID=$$(id -g) docker compose config
-
-down: stop
-	-@UID=$$(id -u) GID=$$(id -g) docker compose down
-
-log:
-	-@UID=$$(id -u) GID=$$(id -g) docker compose logs
-
-reset: down
-	-@rm -rf db_data joomla_data
-
-start:
-	@clear
-	@printf "\033[1;33m%s\033[0m\n\n" "To start your site, please jump to http://127.0.0.1:${WEB_PORT}"
-	@printf "\033[1;33m%s\033[0m\n\n" "Go to http://127.0.0.1:${WEB_PORT}/administrator to open your backend."
-
-	@printf "\033[1;104m%s\033[0m\n\n" "Below a summary of your current installation:"
-
-	@printf "\033[1;34m%s\033[0m\n\n" "JOOMLA"
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Project name" "${PROJECT_NAME}"
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Version" "${JOOMLA_VERSION}"
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n\n" "  * Port" "${WEB_PORT}"
-
-	@printf "\033[1;34m%s\033[0m\n\n" "DATABASE"
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Host" "joomla-db"
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * User name" "${DB_USER}"
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Password" "${DB_PASSWORD}"
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Database name" "${DB_NAME}"
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Version" "${MYSQL_VERSION}"
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n\n" "  * Port" "${MYSQL_PORT}"
-
-stop:
-	-@UID=$$(id -u) GID=$$(id -g) docker compose stop
-
-up:
-	-@mkdir -p db_data joomla_data
-	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach --build
-
-# highlight-next-line
-import: reset
-    # highlight-next-line
-	-@mkdir -p db_data joomla_data
-    # highlight-next-line
-
-    # highlight-next-line
-	@clear
-    # highlight-next-line
-	@printf "\033[1;33m%s\033[0m\n" "Copying Akeeba Kickstart to the Docker Joomla container..."
-    # highlight-next-line
-	@cp en-GB.kickstart.ini ./joomla_data
-    # highlight-next-line
-	@cp kickstart.php ./joomla_data/kickstart.php
-    # highlight-next-line
-
-    # highlight-next-line
-	@printf "\033[1;33m%s\033[0m\n\n" "Copying your backup to the Docker Joomla container..."
-    # highlight-next-line
-	@cp backup.jpa ./joomla_data
-    # highlight-next-line
-
-    # highlight-next-line
-	@UID=$$(id -u) GID=$$(id -g) docker compose up --detach
-    # highlight-next-line
-
-    # highlight-next-line
-	@printf "\n\n\033[1;33m%s\033[0m\n\n" "Please now jump to http://127.0.0.1:${WEB_PORT}/kickstart.php to finalize your site restoration."
-    # highlight-next-line
-
-    # highlight-next-line
-	@printf "\033[1;104m%s\033[0m\n\n" "Below a summary of your current installation:"
-    # highlight-next-line
-
-    # highlight-next-line
-	@printf "\033[1;34m%s\033[0m\n\n" "JOOMLA"
-    # highlight-next-line
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n\n" "  * Port" "${WEB_PORT}"
-    # highlight-next-line
-
-    # highlight-next-line
-	@printf "\033[1;34m%s\033[0m\n\n" "DATABASE"
-    # highlight-next-line
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Host" "joomla-db"
-    # highlight-next-line
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * User name" "${DB_USER}"
-    # highlight-next-line
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Password" "${DB_PASSWORD}"
-    # highlight-next-line
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Database name" "${DB_NAME}"
-    # highlight-next-line
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n" "  * Version" "${MYSQL_VERSION}"
-    # highlight-next-line
-	@printf "\033[1;34m%-30s\033[0m\033[1;104m%s\033[0m\n\n" "  * Port" "${MYSQL_PORT}"
-```
-
-</Snippet>
+<Snippet filename="makefile" source="./files/makefile" />
 
 <AlertBox variant="caution" title="">
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
@@ -280,43 +95,15 @@ If you don't know if you already have `GNU make`, just run `which make` in the c
 
 In the very first lines of the `compose.yaml` file we've this portion:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: ${PROJECT_NAME:-your-project-name}
-
-services:
-  joomla:
-    # highlight-next-line
-    build:
-      # highlight-next-line
-      context: .
-      # highlight-next-line
-      args:
-        # highlight-next-line
-        - PHP_VERSION=${PHP_VERSION:-8.3-apache}
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose_dockerfile.yaml" />
 
 We don't see here an `image:` statement but a `build:` one. This means that we need a special file called `Dockerfile`.
 
 Please create a new file called `Dockerfile` in your folder with this content:
 
-<Snippet filename="Dockerfile">
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
-```docker
-ARG PHP_VERSION=8.3-apache
-
-FROM php:${PHP_VERSION:-latest}
-
-RUN set -e -x ; \
-    docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
-```
-
-</Snippet>
-
-That file is quite simple right now: it tells we need a PHP Docker image and we also need to install the `mysqli` drivers.
+That file is quite simple right now: it tells we need a PHP Docker image, and we also need to install the `mysqli` drivers.
 
 ### We need a backup for sure
 

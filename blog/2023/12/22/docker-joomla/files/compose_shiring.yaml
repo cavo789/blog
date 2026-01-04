@@ -1,0 +1,11 @@
+// highlight-next-line
+name: shiring
+
+services:
+  joomla:
+    image: joomla
+    ports:
+      // highlight-next-line
+      - 8081:80
+
+  [...]

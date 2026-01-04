@@ -1,0 +1,12 @@
+name: ${PROJECT_NAME:-your-project-name}
+
+services:
+  joomla:
+    # highlight-next-line
+    build:
+      # highlight-next-line
+      context: .
+      # highlight-next-line
+      args:
+        # highlight-next-line
+        - PHP_VERSION=${PHP_VERSION:-8.3-apache}

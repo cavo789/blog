@@ -1,56 +1,80 @@
 .revisionHistoryContainer {
-  background-color: var(--ifm-background-color);
-  color: var(--ifm-font-color-base);
-  border-radius: var(--ifm-border-radius);
+  /* On imite le background plat de Series */
+  background-color: var(--ifm-color-emphasis-100) !important;
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 4px;
+  padding: 1.25rem;
+  box-shadow: none !important;
 }
 
 .revisionHistoryTitle {
-  margin-bottom: 0;
-  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem; /* Réduit pour matcher la discrétion de Series */
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.revisionList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.revisionItem {
-  display: flex;
-  align-items: flex-start;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--ifm-hr-border-color);
-}
-
-.revisionItem:last-child {
-  border-bottom: none;
-}
-
-.revisionDate {
-  flex-shrink: 0;
-  width: 100px;
-  font-weight: bold;
   color: var(--ifm-color-primary);
-  margin-right: 1rem;
-  font-size: 0.9em;
 }
 
-.revisionDescription {
-  flex-grow: 1;
-  line-height: 1.6;
+.timeline {
+  position: relative;
 }
 
-@media screen and (max-width: 768px) {
-  .revisionItem {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .revisionDate {
-    width: auto;
-    margin-right: 0;
-    margin-bottom: 0.25rem;
-  }
+/* Ligne verticale grise */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 17px; /* Milieu de l'icône de 34px */
+  height: calc(100% - 10px);
+  width: 2px;
+  background: var(--ifm-color-emphasis-300);
+}
+
+.timelineItem {
+  display: flex;
+  position: relative;
+  margin-bottom: 1.5rem;
+  min-height: 34px;
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+.timelineIcon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* On utilise le fond du container pour l'icône */
+  background: var(--ifm-color-emphasis-100);
+  border: 2px solid var(--ifm-color-success);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.timelineContent {
+  /* On décale tout le texte après l'icône */
+  padding-left: 45px;
+  flex: 1;
+}
+
+.timelineDate {
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--ifm-color-success);
+  margin-bottom: 0.25rem;
+}
+
+.timelineDescription {
+  line-height: 1.5;
+  color: var(--ifm-color-content);
+  font-size: 0.95rem;
 }

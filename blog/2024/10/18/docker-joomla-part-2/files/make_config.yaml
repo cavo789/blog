@@ -1,0 +1,64 @@
+name: running-joomla-in-docker
+services:
+  joomla:
+    container_name: joomla-app
+    depends_on:
+      joomladb:
+        condition: service_healthy
+        required: true
+    environment:
+      JOOMLA_DB_HOST: joomladb
+      JOOMLA_DB_NAME: joomla
+      JOOMLA_DB_PASSWORD: examplepass
+      JOOMLA_DB_USER: joomla
+    image: joomla:5.2.0-php8.3-apache
+    networks:
+      joomla_network: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "8080"
+        protocol: tcp
+    restart: always
+    user: 1002:1002
+    volumes:
+      - type: bind
+        source: /tmp/joomla/joomla_data
+        target: /var/www/html
+        bind:
+          create_host_path: true
+  joomladb:
+    container_name: joomla-db
+    environment:
+      MYSQL_DATABASE: joomla
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: "'1'"
+      MYSQL_USER: joomla
+    healthcheck:
+      test:
+        - CMD
+        - mysqladmin
+        - ping
+        - -h
+        - localhost
+      timeout: 20s
+      retries: 10
+    image: mysql:8.4.2
+    networks:
+      joomla_network: null
+    ports:
+      - mode: ingress
+        target: 3306
+        published: "3306"
+        protocol: tcp
+    restart: always
+    user: 1002:1002
+    volumes:
+      - type: bind
+        source: /tmp/joomla/db_data
+        target: /var/lib/mysql
+        bind:
+          create_host_path: true
+networks:
+  joomla_network:
+    name: running-joomla-in-docker_joomla_network

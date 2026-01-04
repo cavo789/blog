@@ -1,0 +1,56 @@
+name: ${PROJECT_NAME:-your-project-name}
+
+services:
+  joomla:
+    image: joomla:${JOOMLA_VERSION:-latest}
+    container_name: ${CONTAINER_PREFIX:-joomla}-app
+    restart: always
+    ports:
+      - ${WEB_PORT:-8080}:80
+    environment:
+      - JOOMLA_DB_HOST=joomladb
+      - JOOMLA_DB_NAME=${DB_NAME:-joomla}
+      - JOOMLA_DB_PASSWORD=${DB_PASSWORD:-examplepass}
+      - JOOMLA_DB_USER=${DB_USER:-joomla}
+      # highlight-next-line
+      - JOOMLA_SITE_NAME=${JOOMLA_SITE_NAME:-Joomla}
+      # highlight-next-line
+      - JOOMLA_ADMIN_USER=${JOOMLA_ADMIN_USER:-Joomla Hero}
+      # highlight-next-line
+      - JOOMLA_ADMIN_USERNAME=${JOOMLA_ADMIN_USERNAME:-joomla}
+      # highlight-next-line
+      - JOOMLA_ADMIN_PASSWORD=${JOOMLA_ADMIN_PASSWORD:-joomla@secured}
+      # highlight-next-line
+      - JOOMLA_ADMIN_EMAIL=${JOOMLA_ADMIN_EMAIL:-joomla@example.com}
+    depends_on:
+      joomladb:
+        condition: service_healthy
+    user: ${UID:-1000}:${GID:-1000}
+    volumes:
+      - ./joomla_data:/var/www/html
+    networks:
+      - joomla_network
+
+  joomladb:
+    image: mysql:${MYSQL_VERSION:-latest}
+    container_name: ${CONTAINER_PREFIX:-joomla}-db
+    restart: always
+    ports:
+      - ${MYSQL_PORT-:3306}:3306
+    environment:
+      - MYSQL_DATABASE=${DB_NAME:-joomla}
+      - MYSQL_PASSWORD=${DB_PASSWORD:-examplepass}
+      - MYSQL_RANDOM_ROOT_PASSWORD='1'
+      - MYSQL_USER=${DB_USER:-joomla}
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    user: ${UID:-1000}:${GID:-1000}
+    volumes:
+      - ./db_data:/var/lib/mysql
+    networks:
+      - joomla_network
+
+networks:
+  joomla_network:

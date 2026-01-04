@@ -1,0 +1,12 @@
+// highlight-next-line
+name: kingsbridge
+services:
+  joomla:
+    // highlight-next-line
+    container_name: kingsbridge-app
+    [...]
+
+  joomladb:
+    // highlight-next-line
+    container_name: kingsbridge-db
+    [...]

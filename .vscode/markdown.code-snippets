@@ -127,5 +127,22 @@
     "prefix": "blueskyRecordKey",
     "body": ["blueskyRecordKey: "],
     "description": "Docusaurus - blueskyRecordKey YAML entry"
+  },
+  "docusaurus.projectSetup": {
+    "prefix": "ProjectSetup",
+    "body": [
+      "<ProjectSetup folderName=\"/tmp/joomla\" createFolder={true} >",
+      "  <Guideline>",
+      "    Now, please run 'UID=$(id -u) GID=$(id -g) docker compose up --detach' to",
+      "    create your Joomla site. Wait a few and open your browser, surf to",
+      "    http://localhost:8080 to open your Joomla site. The database type should be",
+      "    `MySQLi`, the name of the host should be `joomladb`, the username should be",
+      "    `root` and the password for that user should be `example`.",
+      "  </Guideline>",
+      "  <Snippet filename=\"compose.yaml\" source=\"./files/compose.yaml\" />",
+      "  <Snippet filename=\"Dockerfile\" source=\"./files/Dockerfile\" />",
+      "</ProjectSetup>"
+    ],
+    "description": "Docusaurus - ProjectSetup component"
   }
 }

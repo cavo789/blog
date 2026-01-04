@@ -71,72 +71,54 @@ You will find an example of the `compose.yaml` file on the Joomla image descript
   title="The Docker Joomla image is built on PHP and Apache"
 >
   It's for sure too technical now but if you click on the
-  [https://github.com/joomla-docker/docker-joomla/blob/8cac4ff7ae88b9274870a95f5e22ea3c32f01fd7/5.0/php8.1/apache/Dockerfile#L8](https://github.com/joomla-docker/docker-joomla/blob/8cac4ff7ae88b9274870a95f5e22ea3c32f01fd7/5.0/php8.1/apache/Dockerfile#L8)
-  link, you can see that the Docker image for Joomla 5.0.0 is built on a
-  `php:8.1-apache` image. This means that using this image, you will get PHP,
+  [https://github.com/joomla-docker/docker-joomla/blob/master/6.0/php8.3/apache/Dockerfile#L8](https://github.com/joomla-docker/docker-joomla/blob/master/6.0/php8.3/apache/Dockerfile#L8)
+  link, you can see that the Docker image for Joomla 6.0 is built on a
+  `php:8.3-apache` image. This means that using this image, you will get PHP,
   Apache and Joomla, altogether in a single image.
 </AlertBox>
 
 ## Download images
 
-Please create on your disk, let us say in the `/tmp/joomla` folder a file called `compose.yaml` with this content (you can retrieve that file on [https://hub.docker.com/\_/joomla](https://hub.docker.com/_/joomla)):
+Click on the `Generate install script` below and copy/paste the script in a terminal.
 
-<Snippet filename="compose.yaml">
+<ProjectSetup folderName="/tmp/joomla" createFolder={true}>
+  <Snippet
+    filename="compose.yaml"
+    source="./files/compose_joomla_latest.yaml"
+  />
+  <Guideline>
+    Now, simply run 'docker compose up -d' to start the project then open your
+    browser and surf to http://localhost:8080
+  </Guideline>
+</ProjectSetup>
 
-```yaml
-services:
-  joomla:
-    image: joomla
-    restart: always
-    ports:
-      - 8080:80
-    environment:
-      - JOOMLA_DB_HOST=joomladb
-      - JOOMLA_DB_PASSWORD=example
-
-  joomladb:
-    image: mysql:8.0.13
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=example
-```
-
-</Snippet>
-
-<AlertBox variant="info" title="You want MariaDB, not MySQL?">
-  Nothing could be simpler! In the `compose.yaml` file, replace the line `image:
-  mysql:8.0.13` with `image: mariadb:11.1.2` and save your change. That's it.
-  It's piece of cake no?
-</AlertBox>
-
-To make things as clear as possible, here is my temporary folder content:
+To make things as clear as possible, here is my temporary folder content once I've run the generation script:
 
 <Terminal>
-$ pwd
-/tmp/joomla
+cd /tmp/joomla
 
 $ ls -alh
-Permissions Size User Group Date Modified Name
-drwxr-xr-x - christophe christophe 2025-08-25 09:32 .
-drwxrwxrwt - christophe christophe 2025-08-25 09:32 ..
-.rw-r--r-- 325 christophe christophe 2025-08-25 09:32 compose.yaml
+total 12K
+drwxr-xr-x 2 christophe christophe 4.0K Jan 4 15:31 .
+drwxrwxrwt 12 root root 4.0K Jan 4 15:31 ..
+-rw-r--r-- 1 christophe christophe 279 Jan 4 15:31 compose.yaml
 
 </Terminal>
 
 So, I just have one file, and this is the newly, created, `compose.yaml` file.
 
-Now, if needed, please start a Linux console, and go to your joomla folder (i.e. `cd /tmp/joomla`). From there, run the command below:
+In your terminal, please run the following command:
 
 <Terminal>$ docker compose up --detach</Terminal>
 
-<AlertBox variant="info" title="`docker compose up --detach`">
-That command is one of the most important to know. It asks Docker to proceed the `compose.yaml` file and run services. **In short: run your website**.
-
-</AlertBox>
+<AlertBox
+  variant="info"
+  title="That command is one of the most important to know. It asks Docker to proceed the `compose.yaml` file and run services. In short: run your website."
+/>
 
 Docker will start downloading `joomla` and `joomladb`, the two services mentioned in the `compose.yaml` file.
 
-<Snippet filename="compose.yaml">
+<Snippet filename="compose.yaml" defaultOpen={true}>
 
 ```yaml
 services:
@@ -213,34 +195,11 @@ So Joomla can be ready before the database and that's not fun. Indeed, Joomla sh
 
 The solution provided by Docker is the notion of `healthcheck`. We have to define how Docker can _know_ that MySQL is _healthy_. Then we'll ask Joomla to wait until the database layer is _healthy_.
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  // highlight-next-line
-  joomla:
-    [...]
-    // highlight-next-line
-    depends_on:
-      // highlight-next-line
-      joomladb:
-        // highlight-next-line
-        condition: service_healthy
-
-  // highlight-next-line
-  joomladb:
-    [...]
-    // highlight-next-line
-    healthcheck:
-      // highlight-next-line
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      // highlight-next-line
-      timeout: 20s
-      // highlight-next-line
-      retries: 10
-```
-
-</Snippet>
+<Snippet
+  filename="compose.yaml"
+  source="./files/compose_depends_on.yaml"
+  defaultOpen={true}
+/>
 
 </AlertBox>
 
@@ -250,24 +209,11 @@ We didn't give your project a name, we just created a `compose.yaml` file in you
 
 Let us introduce a minor, optional, change, we will give a name to your Docker project and containers: edit the `compose.yaml` file and add a line with `name: xxxx` where `xxxx` is the name of your choice. Do the same but using `container_name` this time for the two services; for instance:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-// highlight-next-line
-name: kingsbridge
-services:
-  joomla:
-    // highlight-next-line
-    container_name: kingsbridge-app
-    [...]
-
-  joomladb:
-    // highlight-next-line
-    container_name: kingsbridge-db
-    [...]
-```
-
-</Snippet>
+<Snippet
+  filename="compose.yaml"
+  source="./files/compose_project_name.yaml"
+  defaultOpen={true}
+/>
 
 We won't be restarting your Docker containers yet. For now, the `kingsbridge` name won't be considered. For this to be the case, we would need to launch `docker compose down` followed by `docker compose up --detach`, but let us wait a little longer before doing so.
 
@@ -286,38 +232,16 @@ mysql 8.0.13 102816b1ee7d 4 years ago 486MB
 
 Ok, so, Docker has downloaded Joomla (in its _latest_ version) and MySQL (version 8.0.13).
 
-<AlertBox variant="info" title="What about a specific version of Joomla?">
-By default, when we don't specify any version number (*which isn't recommended*), Docker will download the version known as the `latest` one. `latest`, here, is what Docker calls a *tag*.
+<Details label="How to use a specific version of Joomla?">
+By default, when we don't specify any version number (which isn't recommended for production), Docker will download the version known as `latest`. `latest` is what Docker calls a "tag".
 
-<Snippet filename="compose.yaml">
+To ensure your setup is stable and predictable, it's best to use a specific version tag. You can find all available tags on the [official Joomla Docker Hub page](https://hub.docker.com/_/joomla/tags).
 
-```yaml
-services:
-  joomla:
-    // highlight-next-line
-    image: joomla
-[...]
-```
+For example, to use Joomla version 5.3.3 with PHP 8.2, you would change the `image` line in your `compose.yaml` like this:
 
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose_joomla_5.3.3.yaml" />
 
-To retrieve the list of all tags, please navigate to [https://hub.docker.com/\_/joomla/tags](https://hub.docker.com/_/joomla/tags).
-
-During writing this article, Joomla _latest_ correspond to Joomla version 5.3.3. So, what about to force to use Joomla 5.0. By surfing on the [tags](https://hub.docker.com/_/joomla/tags) page, you can retrieve in the list of tags this one: _joomla:5.3.3-php8.2-apache_. So just replace `image: joomla` with `image: joomla:5.3.3-php8.2-apache` in `compose.yaml` and it's done. You're forcing a version. **Note: make sure to use a tag ending by `-apache`.**
-
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  joomla:
-    // highlight-next-line
-    image: joomla:5.3.3-php8.2-apache
-[...]
-```
-
-</Snippet>
-
-</AlertBox>
+</Details>
 
 ## Docker containers
 
@@ -339,14 +263,6 @@ Hey, port `8080`, does that mean anything to you? That is a port for a web page,
 Let us try by starting your favorite browser and navigating to `http://localhost:8080` (_or `http://127.0.0.1:8080`, it's strictly the same_) and... Wow!
 
 ![Joomla installer](./images/joomla_installation_screen.webp)
-
-<AlertBox variant="info" title="Just incredible; no?">
-  Wow, doesn't that sound crazy? With a single command (`docker compose up
-  --detach`), you have downloaded everything you need to get Joomla running on
-  your machine.
-</AlertBox>
-
-Let us rewind for a few seconds: to run Joomla, we knew we needed three things + 1; a web server, a database server, PHP and, of course, we need Joomla. **And here, just by running one command, hop, all the magic happens.** And nothing to configure too!
 
 ## Install Joomla
 
@@ -376,20 +292,11 @@ These values can be retrieved inside the `compose.yaml` file. If you have named 
 
 </AlertBox>
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  [...]
-  // highlight-next-line
-  joomladb:
-    [...]
-    environment:
-      // highlight-next-line
-      - MYSQL_ROOT_PASSWORD=example
-```
-
-</Snippet>
+<Snippet
+  filename="compose.yaml"
+  source="./files/compose_mysql_root.yaml"
+  defaultOpen={true}
+/>
 
 ![Joomla Database configuration](./images/joomla_admin_database_configuration.webp)
 
@@ -420,10 +327,10 @@ $ pwd
 /tmp/joomla
 
 $ ls -alh
-Permissions Size User Group Date Modified Name
-drwxr-xr-x - christophe christophe 2025-08-25 09:32 .
-drwxrwxrwt - christophe christophe 2025-08-25 09:32 ..
-.rw-r--r-- 325 christophe christophe 2025-08-25 09:32 compose.yaml
+total 12K
+drwxr-xr-x 2 christophe christophe 4.0K Jan 4 15:31 .
+drwxrwxrwt 12 root root 4.0K Jan 4 15:31 ..
+-rw-r--r-- 1 christophe christophe 279 Jan 4 15:31 compose.yaml
 
 </Terminal>
 
@@ -466,7 +373,7 @@ Run `docker compose up --detach` again.
 
 <Terminal>$ docker compose up --detach</Terminal>
 
-Surf to the site again, refresh the page and the site is, oh? not yet responding. Wait a few... a few more... and after a certain period, the site will be there. Why?
+Surf to the site again, refresh the page and the site are, oh? not yet responding. Wait a few... a few more... and after a certain period, the site will be there. Why?
 
 Docker must (re)start two services, the Joomla one and the database server. Initialization of both services may take a few seconds, and the database service must be up so that Joomla can continue its initialization.
 
@@ -484,7 +391,7 @@ As mentioned earlier, everything is done in RAM. By stopping a Docker container,
 </AlertBox>
 
 <AlertBox variant="info" title="">
-Remember the change we made earlier. We had added the name `kingsbridge` as the project name in your `compose.yaml` file and we've named the two containers. You can see that after relaunching `docker compose up`, this time it's no longer `joomla-joomlaxxxx` but `kingsbridge-app` and `kingsbridge-db`. This because changes made to the yaml file are processed only after a `down / up` command. If you modify the yaml file, you should restart Docker containers.
+Remember the change we made earlier. We had added the name `kingsbridge` as the project name in your `compose.yaml` file, and we've named the two containers. You can see that after relaunching `docker compose up`, this time it's no longer `joomla-joomlaxxxx` but `kingsbridge-app` and `kingsbridge-db`. This because changes made to the yaml file are processed only after a `down / up` command. If you modify the yaml file, you should restart Docker containers.
 
 </AlertBox>
 
@@ -503,66 +410,29 @@ We will now require that Docker store files/folders on your computer.
 
 To do this, please edit the `compose.yaml` file and add the highlighted lines below:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: kingsbridge
-
-services:
-  joomla:
-    image: joomla
-    restart: always
-    ports:
-      - 8080:80
-    environment:
-      - JOOMLA_DB_HOST=joomladb
-      - JOOMLA_DB_PASSWORD=example
-    depends_on:
-      joomladb:
-        condition: service_healthy
-    // highlight-next-line
-    user: 1000:1000
-    // highlight-next-line
-    volumes:
-      // highlight-next-line
-      - ./site_joomla:/var/www/html
-
-  joomladb:
-    image: mysql:8.0.13
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=example
-    healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 20s
-      retries: 10
-    // highlight-next-line
-    user: 1000:1000
-    // highlight-next-line
-    volumes:
-      // highlight-next-line
-      - ./db:/var/lib/mysql
-```
-
-</Snippet>
+<Snippet
+  filename="compose.yaml"
+  source="./files/compose_with_synchronization.yaml"
+/>
 
 The `/var/www/html` folder of the Joomla service should be synchronized with the `site_joomla` subfolder on your computer. This is for the Joomla website.
 
 And the `/var/lib/mysql` folder of the MySQL service should be synchronized with your local `db` subfolder.
 
 <AlertBox variant="caution" title="Please create folders first">
-Make sure to, first, create these two directories on your computer so folder's permissions will be correct!
+Make sure to, first, create these two directories on your computer, so folder's permissions will be correct!
 
 <Terminal>$ mkdir site_joomla db</Terminal>
 
 </AlertBox>
 
-The two lines `user: 1000:1000` are really important and inform Docker to reuse your local credentials (the one used on your computer).
+The two lines `user: ${UID:-1000}:${GID:-1000}` are really important and inform Docker to reuse your local user (the one used on your Linux session).
 
 <AlertBox variant="highlyImportant" title="The user UID/GID">
-  If you don't do this, files and folders created by Docker will be owned by the
-  `root` user on your computer and not by us (in my case, by the user called
-  `christophe`).
+This part is crucial: if you type `id -u` and `id -g` on Linux, you'll get your own user_id and group_id (aka UID and GID). Most of the time, it'll be `1000` for both but ... sometimes not.
+
+The syntax `user: ${UID:-1000}:${GID:-1000}` means to use `1000` as default value except if OS variables `UID` and `GID` exists and in that case, use their values.
+
 </AlertBox>
 
 Just check your folder's content:
@@ -572,12 +442,12 @@ $ pwd
 /tmp/joomla
 
 $ ls -alh
-Permissions Size User Group Date Modified Name
-drwxr-xr-x - christophe christophe 2025-08-25 20:13 .
-drwxrwxrwt - christophe christophe 2025-08-25 20:13 ..
-drwxr-xr-x - christophe christophe 2025-08-25 20:13 db
-drwxr-xr-x - christophe christophe 2025-08-25 20:13 site_joomla
-.rw-r--r-- 478 christophe christophe 2025-08-25 20:13 compose.yaml
+total 20K
+drwxr-xr-x 4 christophe christophe 4.0K Jan 4 15:57 .
+drwxrwxrwt 12 root root 4.0K Jan 4 15:31 ..
+-rw-r--r-- 1 christophe christophe 279 Jan 4 15:31 compose.yaml
+drwxr-xr-x 2 christophe christophe 4.0K Jan 4 15:57 db
+drwxr-xr-x 2 christophe christophe 4.0K Jan 4 15:57 site_joomla
 
 </Terminal>
 
@@ -592,10 +462,10 @@ $ docker compose kill
 
 </Terminal>
 
-Run `docker compose up --detach` again.
+Please now run the following command and, as you can see, we'll first initialize UID and GID variables so we'll not meet permissions issues:
 
 <Terminal>
-$ docker compose up --detach
+$ UID=$(id -u) GID=$(id -g) docker compose up --detach
 
 [+] Running 3/3
 ✔ Network kingsbridge_default Created 0.3s
@@ -611,57 +481,63 @@ $ pwd
 /tmp/joomla
 
 $ ls -alh site_joomla
-Permissions Size User Group Date Modified Name
-drwxr-xr-x - christophe christophe 2025-08-25 20:20 .
-drwxr-xr-x - christophe christophe 2025-08-25 20:16 ..
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 administrator
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 api
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 cache
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 cli
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 components
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 images
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 includes
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 installation
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 language
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 layouts
-drwxr-xr-x - christophe christophe 2023-10-14 14:43 libraries
-drwxr-xr-x - christophe christophe 2023-10-14 14:43 media
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 modules
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 plugins
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 templates
-drwxr-xr-x - christophe christophe 2023-10-14 14:42 tmp
-.rw-r--r-- 6.9k christophe christophe 2025-08-25 20:20 .htaccess
-.rw-r--r-- 6.9k christophe christophe 2023-10-14 14:42 htaccess.txt
-.rw-r--r-- 1.1k christophe christophe 2023-10-14 14:42 index.php
-.rw-r--r-- 18k christophe christophe 2023-10-14 14:42 LICENSE.txt
-.rw-r--r-- 4.9k christophe christophe 2023-10-14 14:42 README.txt
-.rw-r--r-- 764 christophe christophe 2023-10-14 14:42 robots.txt.dist
-.rw-r--r-- 3.0k christophe christophe 2023-10-14 14:42 web.config.txt
+total 132K
+drwxr-xr-x 19 christophe christophe 4.0K Jan 4 15:59 .
+drwxr-xr-x 4 christophe christophe 4.0K Jan 4 15:57 ..
+-rw-r--r-- 1 christophe christophe 6.8K Jan 4 15:59 .htaccess
+-rw-r--r-- 1 christophe christophe 18K Nov 19 19:54 LICENSE.txt
+-rw-r--r-- 1 christophe christophe 5.2K Nov 19 19:54 README.txt
+drwxr-xr-x 11 christophe christophe 4.0K Nov 19 19:54 administrator
+drwxr-xr-x 5 christophe christophe 4.0K Nov 19 19:54 api
+drwxr-xr-x 2 christophe christophe 4.0K Nov 19 19:54 cache
+drwxr-xr-x 2 christophe christophe 4.0K Nov 19 19:54 cli
+drwxr-xr-x 18 christophe christophe 4.0K Nov 19 19:54 components
+drwxr-xr-x 2 christophe christophe 4.0K Nov 19 19:54 files
+-rw-r--r-- 1 christophe christophe 6.8K Nov 19 19:54 htaccess.txt
+drwxr-xr-x 5 christophe christophe 4.0K Nov 19 19:54 images
+drwxr-xr-x 2 christophe christophe 4.0K Nov 19 19:54 includes
+-rw-r--r-- 1 christophe christophe 1.6K Nov 19 19:54 index.php
+drwxr-xr-x 10 christophe christophe 4.0K Nov 19 19:54 installation
+drwxr-xr-x 4 christophe christophe 4.0K Nov 19 19:54 language
+drwxr-xr-x 6 christophe christophe 4.0K Nov 19 19:54 layouts
+drwxr-xr-x 6 christophe christophe 4.0K Nov 19 19:57 libraries
+drwxr-xr-x 75 christophe christophe 4.0K Nov 19 19:58 media
+drwxr-xr-x 27 christophe christophe 4.0K Nov 19 19:54 modules
+drwxr-xr-x 26 christophe christophe 4.0K Nov 19 19:54 plugins
+-rw-r--r-- 1 christophe christophe 764 Nov 19 19:54 robots.txt.dist
+drwxr-xr-x 5 christophe christophe 4.0K Nov 19 19:54 templates
+drwxr-xr-x 2 christophe christophe 4.0K Nov 19 19:54 tmp
+-rw-r--r-- 1 christophe christophe 3.0K Nov 19 19:54 web.config.txt
 
 $ ls -alh db
-Permissions Size User Group Date Modified Name
-drwxr-x--- - christophe christophe 2025-08-25 20:20 #innodb_temp
-drwxr-xr-x - christophe christophe 2025-08-25 20:21 .
-drwxr-xr-x - christophe christophe 2025-08-25 20:16 ..
-drwxr-x--- - christophe christophe 2025-08-25 20:21 mysql
-drwxr-x--- - christophe christophe 2025-08-25 20:21 performance_schema
-drwxr-x--- - christophe christophe 2025-08-25 20:21 sys
-.rw-r----- 56 christophe christophe 2025-08-25 20:21 auto.cnf
-.rw------- 1.7k christophe christophe 2025-08-25 20:21 ca-key.pem
-.rw-r--r-- 1.1k christophe christophe 2025-08-25 20:21 ca.pem
-.rw-r--r-- 1.1k christophe christophe 2025-08-25 20:21 client-cert.pem
-.rw------- 1.7k christophe christophe 2025-08-25 20:21 client-key.pem
-.rw-r----- 50M christophe christophe 2025-08-25 20:21 ib_logfile0
-.rw-r----- 50M christophe christophe 2025-08-25 20:20 ib_logfile1
-.rw-r----- 13M christophe christophe 2025-08-25 20:21 ibdata1
-.rw-r----- 13M christophe christophe 2025-08-25 20:20 ibtmp1
-.rw-r----- 24M christophe christophe 2025-08-25 20:21 mysql.ibd
-.rw------- 1.7k christophe christophe 2025-08-25 20:21 private_key.pem
-.rw-r--r-- 452 christophe christophe 2025-08-25 20:21 public_key.pem
-.rw-r--r-- 1.1k christophe christophe 2025-08-25 20:21 server-cert.pem
-.rw------- 1.7k christophe christophe 2025-08-25 20:21 server-key.pem
-.rw-r----- 10M christophe christophe 2025-08-25 20:21 undo_001
-.rw-r----- 10M christophe christophe 2025-08-25 20:21 undo_002
+total 176M
+drwxr-x--- 2 christophe christophe 4.0K Jan 4 15:59 '#innodb_temp'
+drwxr-xr-x 7 christophe christophe 4.0K Jan 4 15:59 .
+drwxr-xr-x 4 christophe christophe 4.0K Jan 4 15:57 ..
+-rw-r----- 1 christophe christophe 56 Jan 4 15:59 auto.cnf
+-rw-r----- 1 christophe christophe 3.0M Jan 4 15:59 binlog.000001
+-rw-r----- 1 christophe christophe 358 Jan 4 15:59 binlog.000002
+-rw-r----- 1 christophe christophe 32 Jan 4 15:59 binlog.index
+-rw------- 1 christophe christophe 1.7K Jan 4 15:59 ca-key.pem
+-rw-r--r-- 1 christophe christophe 1.1K Jan 4 15:59 ca.pem
+-rw-r--r-- 1 christophe christophe 1.1K Jan 4 15:59 client-cert.pem
+-rw------- 1 christophe christophe 1.7K Jan 4 15:59 client-key.pem
+-rw-r----- 1 christophe christophe 5.9K Jan 4 15:59 ib_buffer_pool
+-rw-r----- 1 christophe christophe 48M Jan 4 15:59 ib_logfile0
+-rw-r----- 1 christophe christophe 48M Jan 4 15:59 ib_logfile1
+-rw-r----- 1 christophe christophe 12M Jan 4 15:59 ibdata1
+-rw-r----- 1 christophe christophe 12M Jan 4 15:59 ibtmp1
+drwxr-x--- 2 christophe christophe 4.0K Jan 4 15:59 joomla
+drwxr-x--- 2 christophe christophe 4.0K Jan 4 15:59 mysql
+-rw-r----- 1 christophe christophe 30M Jan 4 15:59 mysql.ibd
+drwxr-x--- 2 christophe christophe 4.0K Jan 4 15:59 performance_schema
+-rw------- 1 christophe christophe 1.7K Jan 4 15:59 private_key.pem
+-rw-r--r-- 1 christophe christophe 452 Jan 4 15:59 public_key.pem
+-rw-r--r-- 1 christophe christophe 1.1K Jan 4 15:59 server-cert.pem
+-rw------- 1 christophe christophe 1.7K Jan 4 15:59 server-key.pem
+drwxr-x--- 2 christophe christophe 4.0K Jan 4 15:59 sys
+-rw-r----- 1 christophe christophe 12M Jan 4 15:59 undo_001
+-rw-r----- 1 christophe christophe 10M Jan 4 15:59 undo_002
 
 </Terminal>
 
@@ -674,9 +550,7 @@ $ pwd
 /tmp/joomla
 
 $ ls site_joomla/configuration.php
-
-Permissions Size User Group Date Modified Name
-.rw-r--r-- 2.0k christophe christophe 2025-08-25 20:29 configuration.php
+.rw-r--r-- 2.0k christophe christophe 6.8K Jan 4 15:59 .htaccess
 
 $ head -n 10 site_joomla/configuration.php
 {`<?php
@@ -714,16 +588,11 @@ To be able to do this, you will need to start a _interactive shell session_ in t
 
 Did you remember the name of your Joomla service? If no, just open the `compose.yaml` file again.
 
-<Snippet filename="compose.yaml">
-
-```yaml
-services:
-  // highlight-next-line
-  joomla:
-    [...]
-```
-
-</Snippet>
+<Snippet
+  filename="compose.yaml"
+  source="./files/compose_service_joomla.yaml"
+  defaultOpen={true}
+/>
 
 The name of your Joomla service is `joomla` (and `joomladb` is the name of your database service).
 
@@ -764,7 +633,10 @@ command not found: php
 $ docker compose exec joomla /bin/sh
 
 $ php --version
-PHP 8.1.25 (cli) (built: Nov 1 2023 06:20:35) (NTS)
+PHP 8.3.29 (cli) (built: Dec 29 2025 23:29:22) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.3.29, Copyright (c) Zend Technologies
+with Zend OPcache v8.3.29, Copyright (c), by Zend Technologies
 
 $ exit
 
@@ -772,7 +644,7 @@ $ exit
 
 So, on my computer (and probably on yours), by typing `php --version`, I got an error. That is correct. I don't have PHP on my computer. _I work daily with PHP for years and I don't have it on my machine._ 😄
 
-Then I jump in the Joomla container and type the same command again and, yes, inside the Docker container of Joomla, yes, PHP is installed and here, It's the version 8.1.25.
+Then I jump in the Joomla container and type the same command again and, yes, inside the Docker container of Joomla, yes, PHP is installed and here, It's the version 8.3.29.
 
 ## Using alias
 
@@ -811,23 +683,7 @@ You just need to make sure to use another, unused, port.
 
 Consider the `Shiring` project `compose.yaml` file
 
-<Snippet filename="compose.yaml">
-
-```yaml
-// highlight-next-line
-name: shiring
-
-services:
-  joomla:
-    image: joomla
-    ports:
-      // highlight-next-line
-      - 8081:80
-
-  [...]
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose_shiring.yaml" />
 
 We will use the port `8081` for that project and, in your host file, we will add `127.0.0.1 shiring`.
 
@@ -863,7 +719,7 @@ Let's try PostgreSQL... We'll replace `mysql`. The official PostgreSQL Docker im
 
 We also need to change a few variables:
 
-- The default database user should be specified and it will be f.i. `postgres`,
+- The default database user should be specified, and it will be f.i. `postgres`,
 - We should define too the name of the database in both services; we'll name our db `joomla_db` and
 - We need to inform Joomla that we'll use PostgreSQL so we need to set `JOOMLA_DB_TYPE` to `pgsql` (can be either `mysql` or `pgsql`).
 
@@ -874,45 +730,7 @@ We also need to change a few variables:
 
 Our `compose.yaml` will become:
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: kingsbridge
-
-services:
-  joomla:
-    image: joomla
-    container_name: kingsbridge-app
-    restart: always
-    ports:
-      - 8080:80
-    environment:
-      - JOOMLA_DB_HOST=joomladb
-      // highlight-next-line
-      - JOOMLA_DB_USER=postgres
-      - JOOMLA_DB_PASSWORD=example
-      // highlight-next-line
-      - JOOMLA_DB_NAME=joomla_db
-      // highlight-next-line
-      - JOOMLA_DB_TYPE=pgsql
-    depends_on:
-      - joomladb
-
-  joomladb:
-    // highlight-next-line
-    image: postgres:16.0-alpine
-    container_name: kingsbridge-db
-    restart: always
-    environment:
-      // highlight-next-line
-      - POSTGRES_DB=joomla_db
-      // highlight-next-line
-      - POSTGRES_USER=postgres
-      // highlight-next-line
-      - POSTGRES_PASSWORD=example
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose_postgres.yaml" />
 
 Now, during the configuration of Joomla, make sure to choose `PostgreSQL (PDO)` for the database type and fill in the database wizard with the correct values.
 
@@ -927,34 +745,7 @@ For the first time during this tutorial, we're using an `alpine` image (`postgre
 
 If you plan to use MariaDB, here is the Docker Official Image: [https://hub.docker.com/\_/mariadb](https://hub.docker.com/_/mariadb).
 
-<Snippet filename="compose.yaml">
-
-```yaml
-name: kingsbridge
-
-services:
-  joomla:
-    image: joomla
-    container_name: kingsbridge-app
-    restart: always
-    ports:
-      - 8080:80
-    environment:
-      - JOOMLA_DB_HOST=joomladb
-      - JOOMLA_DB_PASSWORD=example
-    depends_on:
-      - joomladb
-
-  joomladb:
-    // highlight-next-line
-    image: mariadb:11.1.2
-    container_name: kingsbridge-db
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=example
-```
-
-</Snippet>
+<Snippet filename="compose.yaml" source="./files/compose_mariadb.yaml" />
 
 For MariaDB, please select `MySQLi` during the installation wizard.
 
@@ -978,7 +769,7 @@ Another use case, you wish to start the Windows Explorer program and navigate in
 
 ## Bonus - Install Joomla with a CLI one-liner
 
-In the introduction of this article, I have said \*we will learn how to use Docker to install Joomla and start a new website **in seconds\***.
+In the introduction of this article, I have said \*we will learn how to use Docker to install Joomla and start a new website **in seconds**\*.
 
 And here is the promise. Just clic on the `Generate install script` below, copy/paste the script in your console, run it and follow the instruction. After a few seconds, you'll have a running Joomla website.
 
