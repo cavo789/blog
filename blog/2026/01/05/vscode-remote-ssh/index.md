@@ -7,6 +7,7 @@ tags: [planethoster, ssh, tips, vscode]
 image: /img/v2/vscode_ssh_dev.webp
 description: "Use VS Code Remote - SSH: connect to production servers, and edit/execute remotely while avoiding common pitfalls."
 date: 2026-01-05
+blueskyRecordKey: 3mbnw2vy6as2l
 ---
 ![SSH Remote development with VSCode](/img/v2/vscode_ssh_dev.webp)
 
