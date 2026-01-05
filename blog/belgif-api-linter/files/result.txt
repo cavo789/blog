@@ -1,0 +1,60 @@
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< org.apache.maven:standalone-pom >-------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] --- belgif-rest-guide-validator:3.1.0:validate-openapi (default-cli) @ standalone-pom ---
+[INFO] Validating following files:[/app/openapi.json]
+[INFO] Found kmodule: jar:file:/root/.m2/repository/io/github/belgif/rest/guide/validator/belgif-rest-guide-validator-rules/3.1.0/belgif-rest-guide-validator-rules-3.1.0.jar!/META-INF/kmodule.xml
+[INFO] Creating KieModule for artifact io.github.belgif.rest.guide.validator:belgif-rest-guide-validator-rules:3.1.0
+[INFO] Artifact io.github.belgif.rest.guide.validator:belgif-rest-guide-validator-rules:3.1.0 has executable model
+[INFO] Start creation of KieBase: defaultKieBase
+[...]
+
+OpenApi validation summary: 30 violations and 0 ignored violations.
+[MANDATORY]    [err-problem] Each error response of each operation SHOULD have a media type "application/problem+json" 2 occurrences:
+openapi.json    ln   1  #/paths/items/{item_id}/get/responses/422 -- [Operation: GET /items/{item_id}]
+openapi.json    ln   1  #/paths/items//get/responses/422 -- [Operation: GET /items/]
+[MANDATORY]    [evo-object] In a request or response body, if any, you MUST always return a JSON object (and not e.g. an array) as a top level data structure to support future extensibility.  5 occurrences:
+openapi.json    ln   1  #/paths//get/responses/200/content/application/json
+openapi.json    ln   1  #/paths/items//get/responses/200/content/application/json
+openapi.json    ln   1  #/paths/items/{item_id}/get/responses/200/content/application/json
+openapi.json    ln   1  #/paths/items/{item_id}/get/responses/422/content/application/json
+openapi.json    ln   1  #/paths/items//get/responses/422/content/application/json
+[MANDATORY]    [oas-comp]   Component names SHOULD use UpperCamelCase notation. For abbreviations as well, all letters except the first one should be lowercased. 1 occurrence:
+openapi.json    ln   1  #/components/schemas/HTTPValidationError
+[MANDATORY]    [oas-contra] OpenAPI 3.1 improves upon OpenAPI 3.0, but to avoid interoperability problems it SHOULD NOT be used yet because it is not yet widely supported by most tooling. 1 occurrence:
+#
+[MANDATORY]    [oas-descr]  The title property of a Schema MUST NOT be used. 10 occurrences:
+openapi.json    ln   1  #/paths/items//get/parameters/0/schema
+openapi.json    ln   1  #/components/schemas/ValidationError/properties/msg
+openapi.json    ln   1  #/components/schemas/HTTPValidationError
+openapi.json    ln   1  #/components/schemas/ValidationError/properties/type
+openapi.json    ln   1  #/paths/items/{item_id}/get/parameters/1/schema
+openapi.json    ln   1  #/components/schemas/ValidationError/properties/loc
+openapi.json    ln   1  #/paths/items/{item_id}/get/parameters/0/schema
+openapi.json    ln   1  #/components/schemas/ValidationError
+openapi.json    ln   1  #/paths/items//get/parameters/1/schema
+openapi.json    ln   1  #/components/schemas/HTTPValidationError/properties/detail
+[MANDATORY]    [openapi-opid] A unique operationId MUST be specified on each operation. It SHOULD have a lowerCamelCase value following common programming naming conventions for method (function) names. 3 occurrences:
+openapi.json    ln   1  #/paths/items//get -- OperationId not lowerCamelCase: read_items_items__get
+openapi.json    ln   1  #/paths//get -- OperationId not lowerCamelCase: read_root__get
+openapi.json    ln   1  #/paths/items/{item_id}/get -- OperationId not lowerCamelCase: read_item_items__item_id__get
+[MANDATORY]    [path-param] Path parameters SHOULD use lowerCamelCase notation. 1 occurrence:
+openapi.json    ln   1  #/paths/items/{item_id}/get/parameters/0
+[MANDATORY]    [prb-defaul] A default Problem response SHOULD be added to each operation with media type "application/problem+json" 3 occurrences:
+openapi.json    ln   1  #/paths/items/{item_id}/get -- [Operation: GET /items/{item_id}]
+openapi.json    ln   1  #/paths/items//get -- [Operation: GET /items/]
+openapi.json    ln   1  #/paths//get -- [Operation: GET /]
+[MANDATORY]    [uri-format] The server url should follow the format [/pathPrefix]/apiName/vMajorVersion optionally prefixed by https://hostname[:port] or http://localhost[:port]. The apiName must consist of one or more path segments in lowerCamelCase. 1 occurrence:
+#/servers/0
+[MANDATORY]    [uri-notat]  Trailing slashes MUST NOT be used. 2 occurrences:
+openapi.json    ln   1  #/paths/
+openapi.json    ln   1  #/paths/items/
+[RECOMMENDED]  [hlth-res]   Each REST API SHOULD expose a GET /health operation which returns the availability of the API’s functionality for its clients. 1 occurrence:
+openapi.json    ln   1  #/paths
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[...]

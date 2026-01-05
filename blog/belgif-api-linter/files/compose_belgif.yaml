@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:80"
+    volumes:
+      - ./main.py:/code/main.py
+
+  # Belgif Validator Service
+  belgif-lint:
+    image: maven:3.9.9-eclipse-temurin-17-alpine
+    volumes:
+      - .:/app:ro
+      - maven-cache:/root/.m2
+    working_dir: /app
+    command: >
+      mvn io.github.belgif.rest.guide.validator:belgif-rest-guide-validator-maven-plugin:3.1.0:validate-openapi
+      -Drest-guide-validator.files=openapi.json
+      -Drest-guide-validator.outputTypes=CONSOLE
+
+volumes:
+  maven-cache:
