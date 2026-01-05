@@ -24,15 +24,16 @@ We'll first simulate a server locally with Docker so you can learn the workflow 
 
 Create a Docker container that acts as a Linux SSH server so you can practice connecting from VS Code.
 
-Create a temporary folder and open it in VS Code:
-
-`mkdir -p /tmp/remote-ssh && cd $_ && code .`
-
 ### Create the Docker container that will act as our SSH server
 
 Please create the `Dockerfile` with the content below.
 
-<Snippet filename="Dockerfile" source="./files/Dockerfile" />
+<ProjectSetup folderName="/tmp/remote-ssh" createFolder={true} >
+  <Guideline>
+    Now, please run 'docker build -t ssh-server' to build the Docker image then 'docker run -d -p 2222:22 --name remote-dev ssh-server' to create the container.
+  </Guideline>
+  <Snippet filename="Dockerfile" source="./files/Dockerfile" />
+</ProjectSetup>
 
 Then, we need to build our Docker image and create the container. To build it, run `docker build -t ssh-server .` then create the container with `docker run -d -p 2222:22 --name remote-dev ssh-server`.
 

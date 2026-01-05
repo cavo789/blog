@@ -1,7 +1,7 @@
 ---
 slug: windows-terminal-ssh-profile
 title: Windows Terminal - Adding a SSH profile
-date: 2026-12-31
+date: 2026-01-05
 description: Adding a SSH profile to Windows Terminal to quickly connect to your servers without typing the full SSH command each time.
 authors: [christophe]
 image: /img/v2/adding_ssh_profile_to_windows_terminal.webp
@@ -14,7 +14,7 @@ language: en
 
 In this article, we'll see how to create a new SSH profile in Windows Terminal so we even don't need anymore to remember how to connect to the server; we just need to open the profile and that's all.
 
-For illustration purposes, I'll use my hosting server at PlanetHoster but you can use the same technique for any SSH server you want to connect to.
+For illustration purposes, I'll use my hosting server at PlanetHoster, but you can use the same technique for any SSH server you want to connect to.
 
 <!-- truncate -->
 
@@ -31,7 +31,7 @@ To open the Windows Terminal settings, you can use the following methods:
 
 ## Add a profile for any SSH connection
 
-In a recent article, we've seen how to create a SSH profile and be able to run a command like `ssh planethoster` (or anything else). If you missed it, please read <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link>.
+In a recent article, we've seen how to create an SSH profile and be able to run a command like `ssh planethoster` (or anything else). If you missed it, please read <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link>.
 
 So, right now, to connect to your hosting server, you only need to run `ssh planethoster` in a Windows Terminal console (PowerShell, CMD or WSL).
 

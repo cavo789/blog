@@ -53,35 +53,6 @@
   width: auto;
 }
 
-/* --- DESKTOP "GHOST" TOC LOGIC - REFINED --- */
-@media (min-width: 997px) {
-  /* CORRECTION: On cible les colonnes .col--3
-     MAIS on exclut explicitement celles qui contiennent des cartes (.card).
-     Cela protège la page Series et les autres grilles de contenu.
-  */
-  .col.col--3:not(:has(.card)) {
-    /* 1. Base State (Inactive) */
-    opacity: 0.15;
-    filter: grayscale(100%);
-
-    /* 2. The Animation */
-    transform: translateX(10px);
-    transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-      transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.4s ease;
-
-    /* 3. Visual Cue */
-    border-left: 1px solid var(--ifm-color-emphasis-200);
-  }
-
-  /* Hover State (Active) */
-  .col.col--3:not(:has(.card)):hover {
-    opacity: 1;
-    filter: grayscale(0%);
-    transform: translateX(0);
-    border-left: 1px solid var(--ifm-color-primary);
-  }
-}
-
 /* --- MOBILE STICKY TOC LOGIC --- */
 .blog-toc-mobile {
   display: none; /* Hidden by default on Desktop */
@@ -282,4 +253,3 @@
 [data-theme="dark"] .screenshot {
   border-color: var(--ifm-color-emphasis-500);
 }
-
