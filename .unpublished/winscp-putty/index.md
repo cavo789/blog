@@ -6,7 +6,7 @@ image: /img/v2/putty.webp
 mainTag: winscp
 tags: [putty, ssh, tips, winscp]
 draft: true
-date: 2025-09-30
+date: 2026-12-31
 ---
 ![WinSCP - Start PuTTY without typing a password](/img/v2/putty.webp)
 

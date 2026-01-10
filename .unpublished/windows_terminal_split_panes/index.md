@@ -108,6 +108,12 @@ There are many ways to create layouts—see the full `wt` command reference here
 
 ## Bonus
 
+### Toogle zoom for a pane
+
+This one is my favorite. You can zoom in and out of a pane by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> then selecting **Toggle zoom for pane**. And do the same to unzoom.
+
+This is very useful when you want to focus on a specific pane without closing the others.
+
 ### Keyboard shortcuts to manage panes
 
 Here is a list of useful keyboard shortcuts to manage panes in Windows Terminal:
@@ -118,13 +124,13 @@ Here is a list of useful keyboard shortcuts to manage panes in Windows Terminal:
 * <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> : Split the current pane horizontally.
 * <kbd>Alt</kbd> + <kbd>Shift</kbd> and play with arrow keys : Increase or decrease the size of the current pane in the direction of the arrow key pressed.
 
-Simply type `exit` in a pane to close it.
+Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> to close the current pane.
 
 ### Control panel actions
 
 You can broadcast input to all panes by toggling the **Toggle broadcast input to all panes** option from the **Control Panel** menu (the one you get by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>).
 
-So, toggle this option and you'll see the cursor change to indicate that broadcasting is active. Now, whatever you type in one pane will be sent to all panes.
+So, toggle this option and, you'll see the cursor change to indicate that broadcasting is active. Now, whatever you type in one pane will be sent to all panes.
 
 ![Broadcast input to all panes](./images/panes_broadcasting.gif)
 
