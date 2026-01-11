@@ -36,7 +36,7 @@
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveBackground": "#6ce32c99",
     "titleBar.inactiveForeground": "#15202b99"
-},
+  },
   "peacock.remoteColor": "#6ce32c",
   "markdownlint.config": {
     "MD010": false,

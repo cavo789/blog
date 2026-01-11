@@ -8,6 +8,9 @@ image: /img/v2/vscode_ssh_dev.webp
 description: "Use VS Code Remote - SSH: connect to production servers, and edit/execute remotely while avoiding common pitfalls."
 date: 2026-01-05
 blueskyRecordKey: 3mbnw2vy6as2l
+updates:
+  - date: 2026-01-11
+    note: Adding extra note about SSH key pair security.
 ---
 ![SSH Remote development with VSCode](/img/v2/vscode_ssh_dev.webp)
 
@@ -163,6 +166,18 @@ From now, you're connected to your production server using VSCode and the Remote
 Editing files directly on a production server is risky — mistakes can cause downtime or data loss. Prefer SSH key authentication, test changes in staging, keep backups, and perform risky operations during maintenance windows.
 </AlertBox>
 
+## Bonus - A word about SSH key pair
+
+Just like passwords; you can have just one password for multiple services, but if that password is compromised, all your services are at risk. Everyone knows this no?
+
+This is the same with SSH keys. If you use the same SSH key pair for multiple servers, and that key pair is compromised, all those servers are at risk.
+
+When you use an instruction like `ssh-keygen -t ed25519 -C "john_doe" -f ~/.ssh/id_ed25519`, `john_doe` is just a label to help you identify the key later. It doesn't add any security. It's not the username to connect to the server; it's just a comment.
+
+You can perfectly use `ssh-keygen -t ed25519 -C "this is my super SSH key for all servers" -f ~/.ssh/id_ed25519` then use that same key for multiple servers. But if that key is compromised, all those servers are at risk.
+
+This is the reason, here above, I insisted on creating a dedicated SSH key pair for each server you connect to. This way, if one key is compromised, only that server is at risk.
+
 ## Conclusion
 
 VS Code's [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) extension lets you develop directly on remote hosts using the full power of your local editor and tools. Combined with a safe workflow (test locally, use SSH keys, and follow the security best practices above), it's a powerful option when network constraints prevent local development.
@@ -170,3 +185,4 @@ VS Code's [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-
 Commands executed in VS Code's integrated terminal run on the remote host, just like being logged in via SSH.
 
 At the beginning of this article I mentioned I couldn't connect to the database from my computer due to network restrictions. With the Remote - SSH extension, connecting from the editor to the server becomes possible and relatively straightforward.
+

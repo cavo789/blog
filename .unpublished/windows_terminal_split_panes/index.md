@@ -13,13 +13,13 @@ language: en
 
 ![Windows Terminal - Split Panes](/img/v2/windows_terminal_splitted_panes.webp)
 
-In this article we'll show how to create a Windows Terminal profile with three (or more) split panes so you can monitor multiple consoles at the same time.
+In this article, we'll show how to create a Windows Terminal profile with three (or more) split panes so you can monitor multiple consoles at the same time.
 
-I often need this when working on a large project composed of several repositories. Instead of opening multiple Windows Terminal windows, I prefer a single window with split panes.
+I often need this when working on a large project composed of several repositories: a backend application, a consumer application, a shared library, and a proof-of-concept that ties them together. Instead of opening four separate terminal windows, I prefer a single window with split panes.
 
-My project has several repositories: a backend application, a consumer application, a shared library, and a proof-of-concept that ties them together. Instead of opening four separate terminal windows, I prefer a single window with split panes.
+This also lets me run the same command in all panes (for example, run tests), monitor logs, or push changes to Git — all from one window.
 
-This lets me run the same command in all four panes (for example, run tests), monitor logs, or push changes to Git — all from one window.
+And when I need to focus on one pane, I can zoom in on it and hide the others temporarily.
 
 <!-- truncate -->
 
@@ -42,7 +42,7 @@ Look at the **bottom-left** and click **Open JSON file**. This opens an editor (
 
 ## Create a new profile manually
 
-Inside `settings.json` add a new profile object to the `profiles.list` array.
+Inside `settings.json`, add a new profile object to the `profiles.list` array.
 
 Copy and paste the code below as a new entry in the `list` array and adapt it to your needs (profile name, icon, command line, etc.).
 
@@ -108,9 +108,9 @@ There are many ways to create layouts—see the full `wt` command reference here
 
 ## Bonus
 
-### Toogle zoom for a pane
+### Toggle zoom for a pane
 
-This one is my favorite. You can zoom in and out of a pane by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> then selecting **Toggle zoom for pane**. And do the same to unzoom.
+This one is my favorite. You can zoom in and out of a pane by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> then selecting **Toggle zoom for pane**. Repeat the shortcut to restore the view.
 
 This is very useful when you want to focus on a specific pane without closing the others.
 
@@ -130,7 +130,7 @@ Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> to close the current pan
 
 You can broadcast input to all panes by toggling the **Toggle broadcast input to all panes** option from the **Control Panel** menu (the one you get by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>).
 
-So, toggle this option and, you'll see the cursor change to indicate that broadcasting is active. Now, whatever you type in one pane will be sent to all panes.
+So, toggle this option, and you'll see the cursor change to indicate that broadcasting is active. Now, whatever you type in one pane will be sent to all panes.
 
 ![Broadcast input to all panes](./images/panes_broadcasting.gif)
 
