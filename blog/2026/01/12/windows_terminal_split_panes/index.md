@@ -8,6 +8,7 @@ image: /img/v2/windows_terminal_splitted_panes.webp
 mainTag: customization
 tags: [console, customization, windows-terminal, wsl]
 language: en
+blueskyRecordKey: 3mc7k5cv3js2m
 ---
 
 ![Windows Terminal - Split Panes](/img/v2/windows_terminal_splitted_panes.webp)
