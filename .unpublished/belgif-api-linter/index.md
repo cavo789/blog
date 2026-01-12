@@ -117,3 +117,121 @@ It'll produce something like this:
 <AlertBox variant="note" title="Please refer to the official site">
 From now on, please refer to [https://www.belgif.be/specification/rest/api-guide](https://www.belgif.be/specification/rest/api-guide) to learn how to manage errors reported by the tool.
 </AlertBox>
+<<<<<<< Updated upstream
+=======
+
+## Bonus - Get rid of Belgif intern warnings
+
+While running the Belgif linter, you may encounter a lot of warnings like below:
+
+<Snippet filename="warnings.txt" source="./files/warnings.txt" />
+
+The warnings are about the linter itself (in fact, comes from a tool called `Drools`) and thus **they have nothing to do with your code**.  It's just visual pollution for us; the only thing we can do is to hide them.
+
+Look at the new file below:
+
+<Snippet filename="compose.yaml" source="./files/compose_belgif_no_warnings.yaml" />
+
+In short, we'll run a custom command where we'll collect both STDERR and STDIN in just one output stream then we'll run a few `grep` commands to expurge the output for specific messages (the ones we can't solve).
+
+## Bonus - FastAPI tips
+
+<AlertBox variant="important" title="My own experience">
+When integrating belgif into a FastAPI project, I encountered several linting errors that required manual troubleshooting. The guide below outlines the solution I developed to resolve these issues. **Please note that this approach is based on my personal findings and may differ from standard best practices.**
+</AlertBox>
+
+### oas-tags - Managing tags
+
+You'll get the `[MANDATORY]    [oas-tags]   Each tag used on an operation SHOULD also be declared in the top level tags list of the OpenAPI document, with an optional description.` error when you're using one or more tags in your endpoints and if these tags are not declared.
+
+To solve this, you've to use the `openapi_tags` attribute like illustrated below:
+
+<Snippet filename="tags.py" source="./files/tags.py"  defaultOpen={true}/>
+
+### oas-contra - Don't use OpenAPI 3.1 yet
+
+If you get `[MANDATORY]    [oas-contra] OpenAPI 3.1 improves upon OpenAPI 3.0, but to avoid interoperability problems it SHOULD NOT be used yet because it is not yet widely supported by most tooling.`, you can address this error by downgrading the OpenAPI version used by FastAPI like this:
+
+```python
+app = FastAPI(
+    # ...
+    openapi_version="3.0.2", # belgif [oas-contra]
+)
+```
+
+### oas-descr - Title property has to be removed
+
+You'll get the `[MANDATORY]    [oas-descr]  The title property of a Schema MUST NOT be used.` when FastAPI will generate both a `title` and a `description` property for your objects.
+
+The solution is to add a helper function and remove the `title` (since `description` is always generated):
+
+Partial code:
+
+```python
+if "components" in openapi_schema and "schemas" in openapi_schema["components"]:
+    for schema in openapi_schema["components"]["schemas"].values():
+        _remove_titles(schema)
+```
+
+See the helper provided later on in the post.
+
+### oas-comp - Component names SHOULD use UpperCamelCase notation
+
+If you get the `[MANDATORY]    [oas-comp]   Component names SHOULD use UpperCamelCase notation. For abbreviations as well, all letters except the first one should be lowercased.` error, you'll need to foresee a rename function to update f.i. `HTTPValidationError` to `httpValidationError`.
+
+It can be done f.i. like this (partial code):
+
+```python
+def _fix_schema_names(openapi_schema: dict[str, Any]) -> None:
+    """
+    Renames schemas that violate Belgif's naming conventions.
+
+    Specifically targets 'HTTPValidationError' (abbreviations must be camel-cased
+    like 'Http', not 'HTTP').
+    """
+    components: Any = openapi_schema.get("components", {})
+    schemas: Any = components.get("schemas", {})
+
+    # Fix: HTTPValidationError -> HttpValidationError
+    if "HTTPValidationError" in schemas:
+        # 1. Move the definition to the new key
+        schemas["HttpValidationError"] = schemas.pop("HTTPValidationError")
+
+        # 2. Update all references ($ref) in the entire document to point to the new key
+        _update_refs(
+            openapi_schema, "#/components/schemas/HTTPValidationError", "#/components/schemas/HttpValidationError"
+        )
+```
+
+See the helper provided later on in the post.
+
+### openapi-opid - lowerCamelCase for operationId
+
+The message `[MANDATORY]    [openapi-opid] A unique operationId MUST be specified on each operation. It SHOULD have a lowerCamelCase value following common programming naming conventions for method (function) names.` notify you about the use of a wrong syntax.
+
+Partial code:
+
+```python
+def _fix_operation_ids(openapi_schema: dict[str, Any]) -> None:
+    """
+    Iterates over all paths and converts snake_case operationIds to camelCase.
+    """
+    paths: Any = openapi_schema.get("paths", {})
+
+    for path_item in paths.values():
+        for operation in path_item.values():
+            if isinstance(operation, dict) and "operationId" in operation:
+                old_id: str = cast(str, operation["operationId"])
+                operation["operationId"] = _to_camel_case(old_id)
+```
+
+### The openapi.py helper
+
+The helper provided below can help you to solve `oas-descr` and `oas-comp` errors.
+
+The `main.py` file illustrate how to call it the helper.
+
+<Snippet filename="main.py" source="./files/main_configure.py" />
+
+<Snippet filename="helpers/openapi.py" source="./files/main_helper.py" />
+>>>>>>> Stashed changes

@@ -1,0 +1,36 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:80"
+    volumes:
+      - ./main.py:/code/main.py
+
+  # Belgif Validator Service
+  belgif-lint:
+    image: maven:3.9.9-eclipse-temurin-17-alpine
+    volumes:
+      - .:/app:ro
+      - maven-cache:/root/.m2
+    working_dir: /app
+    # 1. We override the entrypoint to use a shell (required for pipes)
+    entrypoint: ["/bin/bash", "-c"]
+    # 2. We use 'set +e' to not close the terminal if an error is met
+    #    Use style.color=always to keep ANSI colors while piping output to grep
+    #    Use 2>&1 to merge STDIN and STDOUT so line ordering is keept during the pipe
+    command: >
+      "set +e &&
+      mvn \
+      io.github.belgif.rest.guide.validator:belgif-rest-guide-validator-maven-plugin:3.1.0:validate-openapi \
+      -Dstyle.color=always \
+      -Drest-guide-validator.files=openapi.json \
+      -Drest-guide-validator.outputTypes=CONSOLE \
+      2>&1 \
+      | grep -v 'eval expression' \
+      | grep -v 'More eval warnings will be suppressed' \
+      | grep -v 'comes from previous pattern' \
+      | grep -v 'No correct line number'"
+
+
+volumes:
+  maven-cache:
