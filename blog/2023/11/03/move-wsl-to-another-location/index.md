@@ -13,25 +13,25 @@ language: en
 
 > [https://dev.to/mefaba/installing-wsl-on-another-drive-in-windows-5c4a](https://dev.to/mefaba/installing-wsl-on-another-drive-in-windows-5c4a)
 
-By default, the Linux distribution is installed on your C: drive. If, like me, you have a D: drive with almost nothing on it, it can be really interesting to move Linux on that second drive.
+By default, the Linux distribution is installed on your C: drive. If, like me, you have a D: drive with almost nothing on it, it can be really interesting to move Linux to that second drive.
 
 <!-- truncate -->
 
-To do this, please:
+To do this:
 
-* Run `wsl --list --verbose` from a **PowerShell** console; you'll get the name of your distribution (`Ubuntu` in my case),
-* From a **PowerShell Admin** console,
+* Run `wsl --list --verbose` from a **PowerShell** console; you will get the name of your distribution (`Ubuntu` in my case),
+* From a **administrator PowerShell** console,
   * Run `wsl --shutdown` to shutdown WSL,
   * On your second drive, create a temporary folder like `d:\wsl`,
-  * Run `wsl --export Ubuntu d:\wsl\ubuntu.tar"`,
-  * When finished, run `wsl --unregister Ubuntu` and, finally,
+  * Run `wsl --export Ubuntu d:\wsl\ubuntu.tar`,
+  * When finished, run `wsl --unregister Ubuntu` and then,
   * Run `wsl --import Ubuntu d:\wsl\ubuntu d:\wsl\ubuntu.tar --version 2`
   * Run `del d:\wsl\ubuntu.tar`
 
-You will need to do this for every distribution you have installed and if you want to move it.
+You will need to do this for every distribution you have installed that you want to move.
 
 <AlertBox variant="info" title="">
-If you have Docker, you can do the same i.e. move the Docker partition to your second disk.
+If you have Docker, you can do the same and move the Docker partition to your second disk.
 
 <Terminal title="Powershell">
 $ wsl --export docker-desktop d:\wsl\docker-desktop.tar

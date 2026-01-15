@@ -17,7 +17,7 @@ blueskyRecordKey: 3lymragaqr22l
 
 ![Python - Code Quality tools](/img/v2/clean_code.webp)
 
-If you're a self-respecting programmer, you can't develop without code analysis tools.  For PHP programmers, you already know a lot of them (`rector`, `phpstan`, `phan`, `phpcs`, ...). See my previous articles <Link to="/blog/php-rector">Rector 1.0.0, my friend, my coach</Link> and <Link to="/blog/php-jakzal-phpqa">Docker image that provides static analysis tools for PHP</Link> f.i.
+If you're a self-respecting programmer, you can't develop without code analysis tools.  For PHP programmers, you already know a lot of them (`rector`, `phpstan`, `phan`, `phpcs`, ...). See my previous articles <Link to="/blog/php-rector">Rector 1.0.0, my friend, my coach</Link> and <Link to="/blog/php-jakzal-phpqa">Docker image that provides static analysis tools for PHP</Link> e.g.
 
 What about Python?
 
@@ -31,11 +31,11 @@ I'm a big fan of static code quality tools and here is my short list:
 >
 > [VSCode Addon](https://marketplace.visualstudio.com/items?itemName=ms-python.pylint)
 >
-> Pylint is a static code analyser for Python 2 or 3. The latest version supports Python 3.9.0 and above.
+> Pylint is a static code analyzer for Python 2 or 3. The latest version supports Python 3.9.0 and above.
 >
-> Pylint analyses your code without actually running it. It checks for errors, enforces a coding standard, looks for code smells, and can make suggestions about how the code could be refactored.
+> Pylint analyzes your code without actually running it. It checks for errors, enforces a coding standard, looks for code-smells, and can make suggestions about how the code could be refactored.
 
-The first thing first: make sure your Python code has no syntax error like a bad indentation, you didn't forget a `:` at the end of a control (like an `if` or `for` statement, ...)
+First things first: make sure your Python code has no syntax error like a bad indentation, you didn't forget a `:` at the end of a control (like an `if` or `for` statement).
 
 I'm running it like this: `pylint . --rcfile .config/.pylintrc`.
 
@@ -59,13 +59,13 @@ I'm running it like this: `Autoflake --remove-unused-variables --remove-all-unus
 >
 > [VSCode Addon](https://marketplace.visualstudio.com/items?itemName=ms-python.isort)
 >
-> isort your imports, so you don't have to.
+> `isort` your imports, so you don't have to.
 >
-> isort is a Python utility / library to sort imports alphabetically, and automatically separated into sections and by type. It provides a command line utility, Python library and plugins for various editors to quickly sort all your imports. It requires Python 3.7+ to run but supports formatting Python 2 code too.
+> isort is a Python utility / library to sort imports alphabetically, and automatically separates into sections and by type. It provides a command line utility, Python library and plugins for various editors to quickly sort all your imports. It requires Python 3.7+ to run but supports formatting Python 2 code too.
 
 I'm running it like this: `isort .`
 
-Note: I've also configured my VSCode with this setting `"python.sortImports.args": ["--profile", "black"]` so import statement are automatically sorted while I'm coding.
+Note: I've also configured my VSCode with this setting `"python.sortImports.args": ["--profile", "black"]` so import statements are automatically sorted while I'm coding.
 
 ## 4. vulture
 
@@ -78,7 +78,7 @@ Note: I've also configured my VSCode with this setting `"python.sortImports.args
 I'm running it like this: `vulture --min-confidence 100 .`
 
 <AlertBox variant="danger" title="">
-Be careful with Vulture because his algorithm will detect a lot of false positive so this is why, in my automation process, I've used `--min-confidence 100` to make sure I've **only** real unused code / variables.
+Be careful with Vulture because its algorithm will detect a lot of false positives so this is why, in my automation process, I've used `--min-confidence 100` to make sure I've **only** real unused code / variables.
 
 </AlertBox>
 
@@ -90,9 +90,9 @@ Note: I've also configured my VSCode with the settings below so, while I'm codin
 
 > [https://www.pydocstyle.org/en/stable/](https://www.pydocstyle.org/en/stable/))
 >
-> pydocstyle is a static analysis tool for checking compliance with Python docstring conventions.
+> `pydocstyle` is a static analysis tool for checking compliance with Python docstring conventions.
 
-This tool will check the quality of your comments like the one of your functions description and f.i. make sure if you've a function with two arguments that your description explain these two arguments (there is a control about the name and the type).
+This tool will check the quality of your comments like the one of your function descriptions and e.g. make sure if you've a function with two arguments that your description explains these two arguments (there is a control about the name and the type).
 
 I'm running it like this: `pydocstyle --config=.config/.pydocstyle`
 
@@ -140,7 +140,7 @@ I'm using it like this: `black --config .config/black.toml .`
 
 > [https://github.com/prospector-dev/prospector/](https://github.com/prospector-dev/prospector/)
 >
-> Inspects Python source files and provides information about type and location of classes, methods etc
+> Inspects Python source files and provides information about type and location of classes, methods etc.
 
 I'm using it like this: `prospector . --profile .config/prospector.yaml --pylint-config-file .config/.pylintrc`
 
@@ -156,9 +156,9 @@ I'm using it like this: `prospector . --profile .config/prospector.yaml --pylint
 
 Right now, I've too little experience with Ruff so I prefer to add it as **extra**.
 
-The documentation mentions it's extremely fast and I should admit the first time I've run it I was thinking nothing was done (really too fast). I've made an intentional error in my code and it was well detected so, yes, the tool is extremely fast.
+The documentation mentions it is extremely fast and I should admit the first time I've run it I was thinking nothing was done (really too fast). I've made an intentional error in my code and it was detected correctly so, yes, the tool is extremely fast.
 
-According to the Ruff [documentation](https://docs.astral.sh/ruff/faq/#how-does-ruffs-linter-compare-to-flake8), this tool can completely replace Pylint (the linter), Autoflake (deletion of unused imports/variables), Black (the formatting tool) but didn't replace MyPy and Pyright ([doc](https://docs.astral.sh/ruff/faq/#how-does-ruff-compare-to-mypy-or-pyright-or-pyre)).
+According to the Ruff documentation, this tool can completely replace Pylint (the linter), Autoflake (deletion of unused imports/variables), Black (the formatting tool) but does not replace MyPy and Pyright (doc).
 
 I'm using it like this: `ruff format --cache-dir /tmp/ruff --config .config/pyproject.toml .` and `ruff check --cache-dir /tmp/ruff --config .config/pyproject.toml .`
 
@@ -166,12 +166,12 @@ I'm using it like this: `ruff format --cache-dir /tmp/ruff --config .config/pypr
 
 ## Running them all at once
 
-But why have I numbered the tools from 1 to 9 and why this order? That's because I'm running them one after the other and I'm running first the faster tool but too the more logical one.
+But why have I numbered the tools from 1 to 9 and why this order? That's because I'm running them one after the other and I'm running first the fastest tool but also the more logical one.
 
-The first tool is `Pylint` and that make sense: there is no need to go further if the syntax is incorrect. The second tool is `Autoflake` and it make sense too to remove unused variables and imports before.
+The first tool is `Pylint` and that makes sense: there is no need to go further if the syntax is incorrect. The second tool is `Autoflake` and it makes sense too to remove unused variables and imports before.
 
 I'm using a <Link to="/blog/tags/makefile">makefile</Link> with an action called `qa` like this:
 
 <Snippet filename="makefile" source="./files/makefile" />
 
-You've understood I think. As soon as an error is detected, the script stops. You'll see the **CONGRATULATIONS** message only if all checks are successful.
+I think you have understood. As soon as an error is detected, the script stops. You'll see the **CONGRATULATIONS** message only if all checks are successful.

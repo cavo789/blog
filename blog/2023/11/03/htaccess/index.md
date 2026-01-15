@@ -18,7 +18,7 @@ Some tips and tricks for your .htaccess file (Apache)
 
 ## CSP - Content Security Policy
 
-Be inspired by the following lines:
+Use the following lines as inspiration:
 
 <Snippet filename=".htaccess" source="./files/csp.htaccess" />
 
@@ -26,13 +26,13 @@ Be inspired by the following lines:
 
 ### Block access to some files based on their names
 
-Refuse requests to these files:
+Block requests to these files:
 
 <Snippet filename=".htaccess" source="./files/block_filenames.htaccess" />
 
 ### Block access to some files based on their extensions
 
-Blocks access to all files except those whose extension is mentioned in the list below:
+Block access to all files except those whose extension is mentioned in the list below:
 
 First option:
 
@@ -44,7 +44,7 @@ Second option:
 
 ### Block access to hidden files & directories
 
-Don't allow to access to a file or folder when the name start with a dot (i.e. a hidden file / folder):
+Block access to a file or folder when the name starts with a dot (i.e., a hidden file or folder):
 
 <Snippet filename=".htaccess" source="./files/block_hidden_files_folders.htaccess" />
 
@@ -52,19 +52,19 @@ Don't allow to access to a file or folder when the name start with a dot (i.e. a
 
 ### Force download
 
-Don't allow the browser to download such files but tell him how to display them (text in the example):
+Don't allow the browser to download such files but tell it how to display them (text in the example):
 
 <Snippet filename=".htaccess" source="./files/.part6.htaccess" />
 
 #### Prevent downloading
 
-For instance, force download for pdf files:
+For instance, force the download of PDF files:
 
 <Snippet filename=".htaccess" source="./files/.part7.htaccess" />
 
 #### Force https and www, compatible hstspreload
 
-> When implemented in your .htaccess, try to get access to `yoursite.com` or `http://yoursite.com` should redirect to `https://www.yoursite.com`.
+> When implemented in your .htaccess, accessing `yoursite.com` or `http://yoursite.com` should redirect to `https://www.yoursite.com`.
 
 Also, test your site with [https://hstspreload.org/](https://hstspreload.org/) to verify that your preloading is correct (green).
 
@@ -74,21 +74,21 @@ Also, test your site with [https://hstspreload.org/](https://hstspreload.org/) t
 
 ### Disable error reporting
 
-Don't show errors (just like a `error_reporting=E_NONE` does)
+Don't show errors (just like `error_reporting = E_NONE` does)
 
 <Snippet filename=".htaccess" source="./files/.part9.htaccess" />
 
 #### Enable error reporting
 
-Show errors (just like a `error_reporting=E_ALL` does).
+Show errors (just like `error_reporting = E_ALL` does).
 
-Only use this on a development server otherwise you'll expose sensitive information to your visitor.
+Only use this on a development server otherwise you'll expose sensitive information to your visitors.
 
 <Snippet filename=".htaccess" source="./files/.part10.htaccess" />
 
 #### Enable a maintenance mode
 
-Redirect every requests done to your site to a specific page (called `maintenance.php` here below). Just think to replace the code `ADD_YOUR_IP_HERE` by your current IP address.
+Redirect every request made to your site to a specific page (called `maintenance.php` below). Just remember to replace the code `ADD_YOUR_IP_HERE` with your current IP address.
 
 <Snippet filename=".htaccess" source="./files/.part11.htaccess" />
 
@@ -112,7 +112,7 @@ Enable ETAGs
 
 ### Deny All Access except you
 
-Just replace `xxx.xxx.xxx.xxx` by your IP address.
+Just replace `xxx.xxx.xxx.xxx` with your IP address.
 
 <Snippet filename=".htaccess" source="./files/.part15.htaccess" />
 
@@ -126,13 +126,13 @@ Just replace `xxx.xxx.xxx.xxx` by your IP address.
 
 ### Disable script execution
 
-Put these lines in f.i. `/tmp/.htaccess` to prevent execution of scripts in the `/tmp` folder.
+Put these lines in e.g. `/tmp/.htaccess` to prevent execution of scripts in the `/tmp` folder.
 
 <Snippet filename="/tmp/.htaccess" source="./files/no_execution.htaccess" />
 
 ### Disallow listing for directories
 
-Don't allow the web server to provide the list of files / folders like a `dir` does.
+Don't allow the web server to provide the list of files / folders as a `dir` command does.
 
 <Snippet filename=".htaccess" source="./files/.part18.htaccess" />
 
@@ -146,7 +146,7 @@ Don't allow the web server to provide the list of files / folders like a `dir` d
 
 #### Folder password
 
-Place these lines in a file called `.htaccess` in the folder to protect (f.i. `folder_name`):
+Place these lines in a file called `.htaccess` in the folder to protect (e.g. `folder_name`):
 
 <Snippet filename="folder_name/.htaccess" source="./files/folder_password.htaccess" />
 
@@ -174,7 +174,7 @@ For instance, redirect `/category/apple.php` to `apple.php`
 
 <Snippet filename=".htaccess" source="./files/.part24.htaccess" />
 
-or solve spelling issue by f.i. redirect every requests to the `fruit` folder to the plural form.
+or solve spelling issues by e.g. redirect every request to the `fruit` folder to the plural form.
 
 <Snippet filename=".htaccess" source="./files/.part25.htaccess" />
 
@@ -186,6 +186,6 @@ Another example: redirecting URLs from `/archive/2020/...` to `/2020/...`.
 
 ### Disallow indexing
 
-Put these lines in f.i. `yoursite/administrator` to inform search engines that you don't allow him to index files in that folder (and sub-folders).
+Put these lines in e.g. `yoursite/administrator` to inform search engines that you don't allow them to index files in that folder (and sub-folders).
 
 <Snippet filename="administrator/.htaccess" source="./files/administrator.htaccess" />

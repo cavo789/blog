@@ -19,17 +19,17 @@ Here are the steps I followed to create this blog.
 
 ## Using Docusaurus
 
-Since I really like the simplicity of Docker, I will not install NodeJs on my machine but use the official Docker image
+Since I really like the simplicity of Docker, I will not install Node.js on my machine but use the official Docker image
 
 <Terminal>
 $ {`docker run --rm --name blog --user \$UID:\$GID -it -v \${PWD}/:/project -w /project node /bin/bash`}
 </Terminal>
 
-The instruction here above will download NodeJs (the latest version) on my machine if not yet present and create a running instance (called a *container* of it). The flag `--user $UID:$GID` is used to start the container using the same credentials than my local one (i.e., reuse my local Unix `christophe` user so files/folders created in the container will be owned by my local user).
+The instruction above will download Node.js (the latest version) on my machine if it is not already present and create a running instance (called a *container* of it). The flag `--user $UID:$GID` is used to start the container using the same credentials as my local one (i.e., reuse my local Unix `christophe` user so files/folders created in the container will be owned by my local user).
 
-The `-v ${PWD}/:/project` command line argument will share my current folder on my computer with the container i.e., the `/project` folder in the container will be my current folder on my computer.
+The `-v ${PWD}/:/project` command line argument will share my current folder on my computer with the container that is, the `/project` folder in the container will be my current folder on my computer.
 
-And finally, I run an interactive shell since I have mentioned `/bin/bash` as entry point.
+And finally, I run an interactive shell since I have mentioned `/bin/bash` as the entry point.
 
 Now that I have a prompt in the container, I will create my blog using Docusaurus (as explained in the [official documentation](https://docusaurus.io/docs/installation)).
 
@@ -37,7 +37,7 @@ Now that I have a prompt in the container, I will create my blog using Docusauru
 $ npx create-docusaurus@latest blog classic --javascript
 </Terminal>
 
-After a long time, the blog folder is created and I can take a look on his content:
+After a long time, the blog folder is created and I can take a look at its content:
 
 ```tree
 .
@@ -48,13 +48,13 @@ After a long time, the blog folder is created and I can take a look on his conte
 └── static
 ```
 
-The installation step is now finished, I will exit the container and return to my computer, to do this, from the Docker console, I just type `exit`.
+The installation step is now finished, I will exit the container and return to my computer, and to do this, from the Docker console, I just type `exit`.
 
 ## Run the website
 
-Back to my computer, I will now go inside my `blog` folder (`cd blog`) and run the Docker command again but this time with the `-p 3000:3000` extra parameter. This parameter will expose the port `3000` from the container with my machine so I can see the website by surfing to `http://localhost:3000`.
+Back to my computer, I will now go inside my `blog` folder (`cd blog`) and run the Docker command again but this time with the `-p 3000:3000` extra parameter. This parameter will expose the port `3000` from the container to my machine so I can see the website by surfing to `http://localhost:3000`.
 
-Instead of running an interactive shell session I prefer to run `/bin/bash -c "npx docusaurus start"` to run Docusaurus watcher and serve my files:
+Instead of running an interactive shell session I prefer to run `/bin/bash -c "npx docusaurus start"` to run the Docusaurus watcher and serve my files:
 
 <Terminal>
 $ cd blog
@@ -68,14 +68,14 @@ After a few seconds, the container is ready to use and I surf to my site by goin
 ![Homepage](./images/homepage.webp)
 
 <AlertBox variant="highlyImportant" title="The --host 0.0.0.0 flag">
-It is really crucial to use the `--host 0.0.0.0` flag when calling `npx docusaurus start`. This will allow external access to the website. If missing, surfing to `http://localhost:3000` (or running `curl http://127.0.0.1:3000`) will display an error `Empty reply from server`.
+It is really crucial to use the `--host 0.0.0.0` flag when calling `npx docusaurus start`. This will allow external access to the website. If missing, browsing to `http://localhost:3000` (or running `curl http://127.0.0.1:3000`) will display an error `Empty reply from server`.
 </AlertBox>
 
 ## Some settings
 
-By default (using the standard installation), Docusaurus will create a skeleton of website having two main entries: a blog and a tutorial.
+By default (using the standard installation), Docusaurus will create a skeleton of a website having two main entries: a blog and a tutorial.
 
-For keeping things manageable, I will only keep the blog and remove the tutorial part. For this, I have followed this official article: [https://docusaurus.io/docs/blog#blog-only-mode](https://docusaurus.io/docs/blog#blog-only-mode).
+To keep things manageable, I will only keep the blog and remove the tutorial part. For this, I have followed this official article: [https://docusaurus.io/docs/blog#blog-only-mode](https://docusaurus.io/docs/blog#blog-only-mode).
 
 Now, I can remove the `/docs` folder from my `blog` directory:
 
@@ -91,7 +91,7 @@ I will also make some changes to files like `docusaurus.config.js` or `blog/auth
 
 ### File docusaurus.config.js
 
-By setting `hideOnScroll` to `true`, the navigation bar will be hidden when the user will scroll down but will be displayed back as soon as he scroll up. Idea is to give more place on the screen for the content.
+By setting `hideOnScroll` to `true`, the navigation bar will be hidden when the user scrolls down but will be displayed back as soon as they scroll up. Idea is to give more space on the screen for the content.
 
 <Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.js" />
 
@@ -101,20 +101,20 @@ Define the default image for social media:
 
 ## Make my first article
 
-With my preferred editor ([vscode](https://code.visualstudio.com/)) I open my blog website (I just type `code .` in my Linux console to open my `blog` project).
+With my preferred editor ([vscode](https://code.visualstudio.com/)) I open my blog's website (I just type `code .` in my Linux console to open my `blog` project).
 
 Now, in the `/blog` directory, I create a new folder called `2023-11-02-site-creation` and there I create the `index.md` file.
 
 <AlertBox variant="note" title="">
-When my blog post only contains text and no images or linked files, I can just create a `.md` file like `/blog/2023-11-02-this-is-a-test.md`. The creation of a folder is thus not mandatory at all.
+When my blog post contains only text and no images or linked files, I can just create a `.md` file like `/blog/2023-11-02-this-is-a-test.md`. The creation of a folder is therefore not mandatory at all.
 
 </AlertBox>
 
-In the previous chapter, npx was executed using the `docker run --rm -it --name blog --user $UID:$GID -v ${PWD}/:/project -w /project -p 3000:3000 node /bin/bash -c "npx docusaurus start --host 0.0.0.0"` command so, every changes done to the blog will be immediately synchronized with Docker i.e., I just need to save my article and npx will reload my site; very easy and convenient.
+In the previous chapter, npx was executed using the `docker run --rm -it --name blog --user $UID:$GID -v ${PWD}/:/project -w /project -p 3000:3000 node /bin/bash -c "npx docusaurus start --host 0.0.0.0"` command so, any changes made to the blog will be immediately synchronized with Docker meaning, I just need to save my article and npx will reload my site; very easy and convenient.
 
 ### Using some layouts
 
-Docusaurus support some Markdown special tags called *admonition* (see [https://docusaurus.io/docs/markdown-features/admonitions](https://docusaurus.io/docs/markdown-features/admonitions)).
+Docusaurus supports some Markdown special tags called *admonition* (see [https://docusaurus.io/docs/markdown-features/admonitions](https://docusaurus.io/docs/markdown-features/admonitions)).
 
 For instance, to display a paragraph as a tip, like below, just use the following syntax:
 
@@ -129,7 +129,7 @@ Some **content** with *Markdown* `syntax`.
 
 </AlertBox>
 
-To get the entire list of supported features, read [Markdown Features](https://docusaurus.io/docs/markdown-features).
+To get the entire list of supported features, see [Markdown Features](https://docusaurus.io/docs/markdown-features).
 
 ### Adding plugins
 
@@ -175,7 +175,7 @@ Adding Giscus to allow comments and feedback.
 
 ## Push to Github
 
-On Github.com, I have created a new repository called `blog` ([https://github.com/cavo789/blog](https://github.com/cavo789/blog)). This done, back to my console and I run a few git commands:
+On Github.com, I have created a new repository called `blog` ([https://github.com/cavo789/blog](https://github.com/cavo789/blog)). Once this is done, back to my console and I run a few git commands:
 
 <Terminal>
 $ git init
@@ -190,7 +190,7 @@ $ git push -u origin master
 ...
 </Terminal>
 
-This done, I have thus pushed my files to Github as foresee by Docusaurus i.e., for instance, the `/node_modules` is not part of my repo; which is fine since we will create that folder later by running some npx command on the web server where the site will be hosted.
+Once this was done, I have thus pushed my files to Github as foreseen by Docusaurus that is, for instance, the `/node_modules` is not part of my repo; which is fine since we will create that folder later by running some npx command on the web server where the site will be hosted.
 
 ## Build static version of the blog
 
@@ -198,12 +198,12 @@ In order to build static pages, I run `docker run --rm -it --user $UID:$GID -v $
 
 This will create/update the `/build` folder with a fresh version of the site.
 
-Next step is to start my FTP client (which is [WinSCP](https://winscp.net/eng/download.php)) and copy my local `/blog/build` folder to my remote website.
+The next step is to start my FTP client (which is [WinSCP](https://winscp.net/eng/download.php)) and copy my local `/blog/build` folder to my remote website.
 
-## Adding withcabin for GPDR compliant stats
+## Adding withcabin for GDPR compliant stats
 
-By adding the lines below to the `docusaurus.config.js` as child node of `const config`, I'm injecting a script into the body part. This will then allow GPDR compliant stats on [https://withcabin.com/](https://withcabin.com/).
+By adding the lines below to the `docusaurus.config.js` as child node of `const config`, I'm injecting a script into the body part. This will then allow GDPR compliant stats on [https://withcabin.com/](https://withcabin.com/).
 
 <Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.withcabin.js" />
 
-Note: the script is only injected to pages after a `yarn build` i.e. when the static site is rendered; not during a `yarn watch`.
+Note: the script is only injected to pages after a `yarn build` that is when the static site is rendered; not during a `yarn watch`.

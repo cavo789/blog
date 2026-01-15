@@ -1,0 +1,10 @@
+# Folders and files to be ignored by Gemini Code Assist
+
+exclude:
+  - "**/node_modules/**"
+  - "**/.docusaurus/**"
+  - "**/build/**"
+  - "**/.cache/**"
+  - "**/.git/**"
+  - "**/*.lock"
+  - "**/*.log"

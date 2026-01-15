@@ -14,7 +14,7 @@ language: en
 > [https://www.nextofwindows.com/how-to-enable-wsl2-ubuntu-gui-and-use-rdp-to-remote](https://www.nextofwindows.com/how-to-enable-wsl2-ubuntu-gui-and-use-rdp-to-remote)
 > [https://medium.com/@riley.kao/wsl2-ubuntu20-04-gui-remote-desktop-connection-rdp-2bbd21d2fa71](https://medium.com/@riley.kao/wsl2-ubuntu20-04-gui-remote-desktop-connection-rdp-2bbd21d2fa71)
 
-When WSLg is enabled, it's possible to access to the graphical user interface of your Linux distribution (in my case, it's Ubuntu).
+When WSLg is enabled, it's possible to access the graphical user interface of your Linux distribution (in my case, it's Ubuntu).
 
 If you don't have `xrdp` yet, you can install it by running:
 
@@ -27,7 +27,7 @@ $ sudo apt-get install -y xrdp
 
 <!-- truncate -->
 
-Also think to change the port number to `3390` by running the command below and some minor changes. *It seems to be required since, using the default 3389 port number, you will get the 'already in use' error with mstsc.*:
+Also consider changing the port number to `3390` by running the command below and some minor changes. *It seems to be required since using the default 3389 port number, you will get the 'already in use' error with mstsc.*:
 
 <Terminal>
 $ (
@@ -41,28 +41,28 @@ $ (
 
 (see [https://www.nextofwindows.com/how-to-enable-wsl2-ubuntu-gui-and-use-rdp-to-remote](https://www.nextofwindows.com/how-to-enable-wsl2-ubuntu-gui-and-use-rdp-to-remote) for more in-depth information)
 
-When done, run `sudo service xrdp start` to start the service. You will get the `* Starting Remote Desktop Protocol server` notification in the console.
+Once done, run `sudo service xrdp start` to start the service. You will see the `* Starting Remote Desktop Protocol server` notification in the console.
 
-Back to your Windows environment and start `mstsc.exe` and set the computer name to `localhost:3390` (or the port number you are using).
+Go back to your Windows environment and start `mstsc.exe` and set the computer name to `localhost:3390` (or the port number you are using).
 
 ![Start the RDP connection](./images/rdp_localhost.webp)
 
 <AlertBox variant="caution" title="">
-The connection is only possible when `xrdp` is started. So, if it didn't work, you know what to do (you can also run `sudo service xrdp status` to get detailed information's).
+The connection is only possible when `xrdp` is started. So, if it does not work, you know what to do (you can also run `sudo service xrdp status` to get detailed information).
 
 </AlertBox>
 
 ![Authentication screen](./images/authentication.webp)
 
-Use your local Linux user and make a connection.
+Use your local Linux user and connect.
 
 ![Desktop screen](./images/desktop.webp)
 
 ## Get the desktop environment
 
-By default, you will just get a bash console and not the desktop as illustrated on the image here above.
+By default, you will just get a bash console and not the desktop as illustrated on the image above.
 
-If you wish the desktop and all features; please run `sudo apt-get install -y xubuntu-desktop xfce4 xfce4-goodies`. You will be prompted to make a choice between `gdm3` or `lightdm`; select the first one to get all the features.
+If you wish the desktop and all its features, please run `sudo apt-get install -y xubuntu-desktop xfce4 xfce4-goodies`. You will be prompted to make a choice between `gdm3` or `lightdm`; select the first one to get all features.
 
 Also run `sudo nano /etc/xrdp/startwm.sh` to edit the file.
 
@@ -88,7 +88,7 @@ Also run `sudo nano /etc/xrdp/startwm.sh` to edit the file.
 
     </Snippet>
 
-Finally enable `dBus`:
+Finally enable `dbus`:
 
 <Terminal>
 $ (
@@ -102,7 +102,7 @@ $ (
 Run `sudo service xrdp restart` to restart the Remote Desktop Protocol Server and start `mstsc.exe` again. Now, you should have the full desktop.
 
 <AlertBox variant="info" title="">
-When you don't need RDP anymore, free some resources by running `sudo service xrdp stop` in your Linux console.
+When you don't need RDP anymore, free up some resources by running `sudo service xrdp stop` in your Linux console.
 
 </AlertBox>
 
@@ -112,6 +112,6 @@ By default, the keyboard is set to `QWERTY` so go to `Applications` → `Setting
 
 ![Set your keyboard](./images/settings_keyboard.webp)
 
-In the third tab, retrieve your own keyboard setting. If you are using the keyboard `Français - Belgique` on Windows, you should set your keyboard to `Belgian (alt.)` on Ubuntu.
+In the third tab, find your own keyboard setting. If you are using the `Français - Belgique` on Windows, you should set your keyboard to `Belgian (alt.)` on Ubuntu.
 
 ![Set your keyboard to Belgian](./images/settings_keyboard_belgian.webp)

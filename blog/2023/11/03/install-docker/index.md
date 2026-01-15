@@ -12,36 +12,36 @@ language: en
 <!-- cspell:ignore wamp -->
 ![Install Docker and play with PHP](/img/v2/docker_tips.webp)
 
-Docker can be installed free of charge for personal or small-scale use: [https://www.docker.com/products/personal/](https://www.docker.com/products/docker-desktop/).
+Docker can be installed free of charge for personal or small-scale usage: [https://www.docker.com/products/personal/](https://www.docker.com/products/docker-desktop/).
 
 You can install it on Linux, Mac or Windows.
 
-The easiest way, under Windows, is to use [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+The easiest way, on Windows, is to use [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
 <!-- truncate -->
 
 ## Why Docker images
 
-Thanks to Docker, you no longer need to install PHP or Apache to run a website. You just need to use one, two or more, existing, images.
+Thanks to Docker, you do not need to install PHP or Apache to run a website. You just need to use one, two, or more existing images.
 
-Images are most of time just *plug&play*: once downloaded, they are ready to use. You will probably add some configuration items but, most of time, it's even not needed.
+Images are most of the time just plug-and-play: once downloaded, they are ready to use. You will probably add some configuration items but, most of the time, it is not even needed.
 
-On [Docker Hub](https://hub.docker.com) you'll find a huge number of "images" that can be used to run software such as PHP, PHP+Apache, MySQL and many, many more.
+On [Docker Hub](https://hub.docker.com) you'll find a huge number of images that can be used to run software such as PHP, PHP+Apache, MySQL and many, many more.
 
-All these images are totally free; they can be public or private. You can create your own images and store them on [Docker Hub](https://hub.docker.com) free of charge.
+All these images are completely free; they can be public or private. You can create your own images and store them on [Docker Hub](https://hub.docker.com) for free.
 
 In this blog post, we will be using the PHP images available at [https://hub.docker.com/_/php](https://hub.docker.com/_/php)
 
 ## Real use case: PHP and Apache
 
-We will run a simple PHP script to show how ... not to ... install PHP and Apache. Not to install sounds crazy but yeah, it is the idea. Using the *old fashion* way, without Docker, before running a web page locally, we need to first install a web server (Apache f.i.) and the PHP interpreter. It is boring.
+We will run a simple PHP script to show how not to install PHP and Apache. Not to install sounds crazy but yes, it is the idea. Using the old-fashioned way, without Docker, before running a web page locally, we need to first install a web server (e.g., Apache) and the PHP interpreter. It is boring.
 
 <AlertBox variant="info" title="">
-But since Docker has a public image for running PHP and Apache (a single image for both services), it becomes ultra-simple
+But since Docker has a public image for running PHP and Apache (a single image for both services), it becomes very simple
 
 </AlertBox>
 
-So, in our discovery step, we will also change the PHP version from `7.4` to `8.1` with just a few ... keystrokes. Have you ever tried to change your PHP version if you are using EasyPhp, wamp or another software program: it's a real pain! With Docker, it is so easy.
+So, in our discovery step, we will also change the PHP version from `7.4` to `8.1` with just a few keystrokes. Have you ever tried to change your PHP version if you are using EasyPHP, WAMP or another software program: it is a real pain! With Docker, it is so easy.
 
 <AlertBox variant="note" title="">
 In this chapter, as we discover Docker, we will use different port numbers each time to access our local site. We will see later how to reuse the same port number.
@@ -55,7 +55,7 @@ The commands we will use in this step will be the same whether you are running L
 
 Let's begin. Start a new console (DOS, Powershell or Linux) and run the instruction below.
 
-Docker will, the very first time, download PHP `7.4.29` (including Apache) and, once downloaded, start the image:
+Docker will, the first time, download PHP `7.4.29` (including Apache) and, once downloaded, start the image:
 
 <Terminal>
 $ docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache
@@ -87,7 +87,7 @@ Let's try to access the local site: `http://127.0.0.1:80`.
 
 ![localhost-is-forbidden](./images/localhost_is_forbidden.webp)
 
-It works in the means that *something is listening and has respond*, but doesn't display anything, since we haven't set anything up yet.
+It works in the sense that *something is listening and has responded*, but does not display anything, since we haven't set anything up yet.
 
 <AlertBox variant="info" title="">
 The site is functional, Apache is ready, but there's no index.php file; let's add one.
@@ -114,7 +114,7 @@ Back to our browser and... Bingo! Our first Docker instance running a PHP script
 
 ![phpinfo - PHP 7.4.29](./images/phpinfo_7_4_29.webp)
 
-Let us go back to the instruction we used before:
+Let's go back to the instruction we used before:
 
 <Terminal>
 $ docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache
@@ -123,7 +123,7 @@ $ docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache
 This shows that we are targeting PHP version 7.4.29. By going to the page
 [https://hub.docker.com/_/php?tab=tags](https://hub.docker.com/_/php?tab=tags) and searching for `-apache` images, you'll find versions such as `php:8.1.1-apache` or `php:8.1.5-apache`.
 
-Let's change `7.4.29` to `8.1.5` and, for the example, use another port (we will use `801` this time).
+Let's change `7.4.29` to `8.1.5` and, for example, use another port (we will use `801` this time).
 
 <Terminal>
 $ docker run --detach --name step_1_1b -p 801:80 php:8.1.5-apache
@@ -141,10 +141,10 @@ $ exit
 
 ![phpinfo - PHP 8.1.5](./images/phpinfo_8_1_5.webp)
 
-**No headaches and zero conflicts!!!** We have installed a new version of PHP in seconds.
+***No headaches and zero conflicts!*** We have installed a new version of PHP in seconds.
 
 <AlertBox variant="info" title="">
-This is just crazy in fact. Think of the benefits: you are developing a PHP script and want to check whether it works with different versions of PHP. It's child's play.
+This is just crazy. Think of the benefits: you are developing a PHP script and want to check whether it works with different versions of PHP. It's child's play.
 
 </AlertBox>
 
@@ -159,4 +159,4 @@ This is just crazy in fact. Think of the benefits: you are developing a PHP scri
   ]}
 />
 
-Now let's move up a gear and synchronize the files on our hard disk with the container.
+Now let's take it to the next level and synchronize the files on our hard disk with the container.

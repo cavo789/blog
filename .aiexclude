@@ -1,0 +1,43 @@
+# --- Dependencies ---
+node_modules/
+.npm/
+.yarn/
+
+# --- Docusaurus Specific ---
+# Ignore generated metadata and temporary build files
+.docusaurus/
+build/
+.build/
+.cache/
+.temp/
+
+# --- Environment & Secrets ---
+.env
+.env.*
+!.env.example
+.secret
+.key
+**/*.pem
+id_ed25519*
+
+# --- Logs & Performance ---
+*.log
+logs/
+.eslintcache
+.stylelintcache
+
+# --- OS & IDE Specific ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.git/
+
+# --- Media (Optional but recommended) ---
+# Ignore large binary files that Gemini cannot "read" anyway
+static/img/**/*.png
+static/img/**/*.jpg
+static/img/**/*.jpeg
+static/img/**/*.gif
+static/img/**/*.svg
+static/img/**/*.webp

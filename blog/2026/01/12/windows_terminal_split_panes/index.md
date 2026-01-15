@@ -25,7 +25,7 @@ And when I need to focus on one pane, I can zoom in on it and hide the others te
 
 We'll use Windows Terminal. It ships with Windows 10 and later and is the default terminal for Windows. If you don't have it, download it here: [Windows Terminal on Microsoft Store](https://www.microsoft.com/store/productId/9N0DX20HK701).
 
-There are two approach:
+There are two approaches:
 
 1. We can "hardcode" the command line.
 2. We can reuse existing profiles
@@ -51,7 +51,7 @@ Look at the **bottom-left** and click **Open JSON file**. This opens an editor (
 
 Inside `settings.json`, add a new profile object to the `profiles.list` array.
 
-Copy and paste the code below as a new entry in the `list` array and adapt it to your needs (profile name, icon, command line, etc.).
+Copy and paste the code below as a new entry in the `list` array and adjust it to your needs (profile name, icon, command line, etc.).
 
 ```json
 {
@@ -63,12 +63,12 @@ Copy and paste the code below as a new entry in the `list` array and adapt it to
 ```
 
 <AlertBox variant="note" title="-p 'Ubuntu 24.04'">
-In the suggested command line here above, I've used `-p "Ubuntu 24.04"` because it's the name of an existing profile in my Windows Terminal. You'll certainly use something else here.
+In the suggested command line above, I've used `-p "Ubuntu 24.04"` because it's the name of an existing profile in my Windows Terminal. You'll certainly use something else here.
 </AlertBox>
 
 This will create a new profile named `My complex project - Workspace` with three split panes, each running a different WSL Ubuntu instance in a specific directory (project_1, project_2, project_3).
 
-Go back to Windows Terminal and display the list of profiles and, you'll see the newly created one. Click on it to start it.
+Go back to Windows Terminal and display the list of profiles and you'll see the newly created one. Click on it to start it.
 
 <AlertBox variant="info" title="Due to the use of the `wt.exe nt` command, Windows Terminal will open a new window with the specified layout." />
 
@@ -119,11 +119,11 @@ There are many ways to create layouts—see the full `wt` command reference here
 
 ## Create a workspace profile and reuse existing profiles
 
-As you can see, by using hardcoding command line, the CLI becomes quickly quite complex to maintain.
+As you can see, by using a hard-coded command line, the CLI becomes quickly quite complex to maintain.
 
 Let's do better by reusing existing profiles.
 
-In the example below, I'm creating up to six profiles; one by subprojects. In each profile, I'm forcing the working directory (see the `commandline` attribute) and a specific background (image, opacity and stretch mode). Then, I'll set the `hidden` attribute to `false` so the profile won't be displayed in the list of profiles.
+In the example below, I'm creating up to six profiles; one by subprojects. In each profile, I'm forcing the working directory (see the `commandline` attribute) and a specific background (image, opacity and stretch mode). Then, I'll set the `hidden` attribute to `true` so the profile won't be displayed in the list of profiles.
 
 ```json
 {
@@ -189,11 +189,11 @@ In the example below, I'm creating up to six profiles; one by subprojects. In ea
 ```
 
 <AlertBox variant="tip" title="guid is no more needed in newer version of Windows Terminal">
-In the code here above, I've use a legacy one: for the illustration, I've keep the `guid` attribute because older version of Windows Terminal will force you to specify that field.
+In the code above, I've used a legacy one: for the illustration, I've kept the `guid` attribute because older versions of Windows Terminal will force you to specify that field.
 
-If you've a recent version, you can drop the `guid` line; no more required.
+If you've a recent version, you can drop the `guid` line; it's no longer required.
 
-If you should specify that attribute and ask you *How can I generate a guid string?*, there is a command on Linux here; simply type `uuidgen` in your console.  Each time, you'll get a new, and valid, guid.
+If you should specify that attribute and you ask yourself *How can I generate a guid string?*, there is a command on Linux for that; simply type `uuidgen` in your console.  Each time, you'll get a new, and valid, GUID.
 
 </AlertBox>
 
@@ -210,7 +210,7 @@ Now, add this final profile:
 },
 ```
 
-If you save this file and go back to Windows Terminal, by clicking on the `+` button to display the list of profiles:
+If you save this file and go back to Windows Terminal, by clicking the `+` button to display the list of profiles:
 
 ![The workspace in Windows Terminal](./images/windows_terminal_workspace.webp)
 
@@ -223,13 +223,13 @@ By clicking on it, you'll now have a new terminal having 6 different panes, each
 
 ### Toggle zoom for a pane
 
-This one is my favorite. You can zoom in and out of a pane by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> then selecting **Toggle zoom for pane**. Repeat the shortcut to restore the view.
+This one is my favorite. You can zoom in and out of a pane by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> then selecting **Toggle pane zoom**. Repeat the shortcut to restore the view.
 
 This is very useful when you want to focus on a specific pane without closing the others.
 
 ### Keyboard shortcuts to manage panes
 
-Here is a list of useful keyboard shortcuts to manage panes in Windows Terminal:
+Here are a list of useful keyboard shortcuts to manage panes in Windows Terminal:
 
 <AlertBox variant="note" title="`+` and `-` refer to the keys on the main keyboard, not the numeric keypad." />
 
@@ -243,7 +243,7 @@ Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> to close the current pan
 
 You can broadcast input to all panes by toggling the **Toggle broadcast input to all panes** option from the **Control Panel** menu (the one you get by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>).
 
-So, toggle this option, and you'll see the cursor change to indicate that broadcasting is active. Now, whatever you type in one pane will be sent to all panes.
+So, toggle this option, and you'll see the cursor changes to indicate that broadcasting is active. Now, whatever you type in one pane will be sent to all panes.
 
 ![Broadcast input to all panes](./images/panes_broadcasting.gif)
 
