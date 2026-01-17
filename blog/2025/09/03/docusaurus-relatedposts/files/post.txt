@@ -1,0 +1,12 @@
+---
+date: 2025-09-03
+slug: docusaurus-relatedposts
+title: Displaying related posts below our Docusaurus article
+authors: [christophe]
+image: /img/social-card.webp
+series: Creating Docusaurus components
+# highlight-start
+mainTag: docusaurus
+tags: [component, docusaurus, markdown, react, swizzle]
+# highlight-end
+---

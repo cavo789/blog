@@ -1,0 +1,7 @@
+In order to run this action, please run `{{ command }}`.
+
+Existing flags:
+
+  * `--debug`: output debug information's,
+  * `--no-color`: disable ANSI colors and
+  * `--verbose`: enable verbose mode; showing more information's on screen

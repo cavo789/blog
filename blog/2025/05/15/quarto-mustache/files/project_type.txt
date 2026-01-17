@@ -1,0 +1,13 @@
+<!-- #type means defined and thus has been set to something like "PHP" or "PYTHON" -->
+{{#type}}
+
+This job only for **{{ type }}** project.
+
+{{/type}}
+
+<!-- ^type means empty/missing so, in this case, the command is for all type of projects -->
+{{^type}}
+
+This stage is for **all** type of projects.
+
+{{/type}}

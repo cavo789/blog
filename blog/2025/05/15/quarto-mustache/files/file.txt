@@ -1,0 +1,13 @@
+<!-- #config_file means defined and thus there is a configuration file -->
+{{#config_file}}
+
+{{ name }} uses a settings file named .config/{{ config_file }} ([learn more]({{ config_url }})).
+
+{{/config_file}}
+
+<!-- ^config_file means empty/missing so no configuration file -->
+{{^config_file}}
+
+There is no configuration file.
+
+{{/config_file}}

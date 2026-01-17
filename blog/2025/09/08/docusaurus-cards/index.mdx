@@ -75,37 +75,7 @@ Before going any further in this tutorial, let's first play around with the Card
 
 Please create a new post in your `blog` folder but pay attention to the extension, it should be a `.mdx` file (because we'll add some code that should be interpreted).
 
-<Snippet filename="blog/card.mdx">
-
-```md
-import Card from "@site/src/components/Card";
-import CardFooter from "@site/src/components/Card/CardFooter";
-import CardImage from "@site/src/components/Card/CardImage";
-
-<div className="container">
-   <div className="row padding-bottom--xl">
-      <div className="col col--6">
-         <div className="">
-            <Card>
-               <CardImage cardImageUrl="/img/docux.png" />
-               <CardFooter
-               style={{ backgroundColor: "#07ac2aff", color: "#eeff00ff" }}
-               className="text--center"
-               >
-               <div className="button-group button-group--block">
-                  <button className="button button--primary button--sm">Like</button>
-                  <button className="button button--secondary button--sm">Comment</button>
-                  <button className="button button--info button--sm">Share</button>
-               </div>
-               </CardFooter>
-            </Card>
-         </div>
-      </div>
-   </div>
-</div>
-```
-
-</Snippet>
+<Snippet filename="blog/card.mdx" source="./files/card.txt" />
 
 If you run your blog right now, you should get this:
 
@@ -176,88 +146,10 @@ There are three files we should create
 
 We need a function to loop all our existing blog posts (all `.md` or `.mdx` files under the `blog` folder) and collect information like the post title, image, slug and so on.
 
-<Snippet filename="src/components/Blog/utils/posts.js">
-
-````js
-/**
- * 🧠 getBlogMetadata
- *
- * Extracts metadata from all MDX blog posts located in the `/blog` directory.
- * Uses Webpack's `require.context` to dynamically load and parse frontmatter
- * from each post, returning a structured array of metadata objects.
- *
- * 🔍 Behavior:
- * - Resolves permalinks based on `slug` or folder structure
- * - Normalizes image paths for static assets
- * - Filters out invalid or missing entries
- *
- * 📦 Returned metadata includes:
- * - `title`: Post title
- * - `description`: Short summary
- * - `image`: Resolved image path
- * - `draft`: Boolean flag for unpublished posts
- * - `unlisted`: Boolean flag for hidden posts
- * - `permalink`: URL path to the post
- * - `tags`: Array of tags
- * - `mainTag`: Primary tag (optional); used by the RelatedBlogPost component
- * - `authors`: Array of author names
- * - `date`: Publication date
- * - `series`: Series name (optional); used by the SeriesBlogPost component
- *
- * 🛠️ Usage:
- * ```js
- * import { getBlogMetadata } from './getBlogMetadata';
- * const posts = getBlogMetadata();
- * ```
- *
- * ⚠️ Note:
- * This function is intended for use in static site generation or client-side rendering
- * where Webpack's `require.context` is available.
- */
-
-const posts = require.context("../../../../blog", true, /\.mdx?$/);
-
-export function getBlogMetadata() {
-  return posts
-    .keys()
-    .map((key) => {
-      const post = posts(key);
-
-      const dir = key.replace(/\/index\.mdx?$/, "").replace(/^\.\//, "");
-
-      let permalink;
-      if (post.frontMatter.slug) {
-        permalink = post.frontMatter.slug.startsWith("/")
-          ? post.frontMatter.slug
-          : `/blog/${post.frontMatter.slug.replace(/^\//, "")}`;
-      } else {
-        permalink = `/blog/${dir}/`;
-      }
-
-      let imageUrl = post.frontMatter.image;
-      if (imageUrl && imageUrl.startsWith("./")) {
-        imageUrl = `/blog/${dir}/${imageUrl.replace("./", "")}`;
-      }
-
-      return {
-        title: post.frontMatter.title,
-        description: post.frontMatter.description,
-        image: imageUrl,
-        draft: post.frontMatter.draft || false,
-        unlisted: post.frontMatter.unlisted || false,
-        permalink,
-        tags: post.frontMatter.tags || [],
-        mainTag: post.frontMatter.mainTag || null,
-        authors: post.frontMatter.authors || [],
-        date: post.frontMatter.date,
-        series: post.frontMatter.series || null,
-      };
-    })
-    .filter(Boolean);
-}
-````
-
-</Snippet>
+<Snippet
+  filename="src/components/Blog/utils/posts.js"
+  source="./files/posts.js"
+/>
 
 ## Our PostCard component
 
@@ -265,188 +157,17 @@ And, finally, we need our PostCard component; the one who will display a blog po
 
 You can see, in the top of the code, that we're importing a few parts of the [Card component](https://docusaurus.community/knowledge/component-library/new/Card/) of Docux.
 
-<Snippet filename="src/components/Blog/PostCard/index.js">
-
-```js
-/**
- * ♣️ PostCard component
- *
- * A reusable Docusaurus component that displays a blog post preview card.
- * It shows the post image (with fallback), title (as a link), and description.
- *
- * Accessibility:
- * - The title is wrapped in a semantic link with an aria-label for screen readers.
- * - The image includes alt and title attributes.
- *
- * Styling:
- * - Uses Infima utility classes for layout and spacing.
- * - Custom styles can be applied via `styles.module.css`.
- *
- * Location: src/components/Blog/PostCard/index.js
- */
-
-import Card from "@site/src/components/Card";
-import CardBody from "@site/src/components/Card/CardBody";
-import CardImage from "@site/src/components/Card/CardImage";
-import Link from "@docusaurus/Link";
-import PropTypes from "prop-types";
-import styles from "./styles.module.css";
-
-/**
- * Renders a formatted date string.
- * @param {Object} props
- * @param {string} props.date - The date string to format.
- * @param {string} props.layout - The layout variant ('big' or 'small').
- * @returns {JSX.Element | null}
- */
-const FormattedDate = ({ date, layout }) => {
-  if (!date) {
-    return null;
-  }
-  return (
-    <p
-      className={layout === "small" ? "" : styles.date}
-      style={
-        layout === "small"
-          ? { color: "#888", fontSize: "0.95em", marginBottom: 8 }
-          : {}
-      }
-    >
-      <span>
-        {new Date(date).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })}
-      </span>
-    </p>
-  );
-};
-
-/**
- * @param {Object} props
- * @param {Object} props.post - Blog post metadata.
- * @param {string} [props.layout='big'] - The layout variant: 'big' or 'small'.
- * @param {string} props.defaultImage - Fallback image used when no image is provided.
- * @returns {JSX.Element}
- */
-export default function PostCard({
-  post,
-  layout = "big",
-  defaultImage = "/img/default.jpg",
-}) {
-  const { permalink, image, title, description, date } = post;
-
-  if (layout === "small") {
-    return (
-      <div
-        className="col col--4"
-        style={{ marginBottom: "2rem", display: "flex" }}
-      >
-        <div
-          className="card"
-          style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            height: "100%",
-          }}
-        >
-          <div className="card__image">
-            <img
-              src={image || defaultImage}
-              alt={title}
-              style={{
-                width: "100%",
-                height: 180,
-                objectFit: "cover",
-                borderTopLeftRadius: 8,
-                borderTopRightRadius: 8,
-              }}
-            />
-          </div>
-          <div className="card__body" style={{ flex: 1 }}>
-            <h3>
-              <Link to={permalink}>{title}</Link>
-            </h3>
-            {description && (
-              <div
-                style={{
-                  color: "#6c63ff",
-                  fontWeight: "bold",
-                  marginBottom: 6,
-                }}
-              >
-                {description}
-              </div>
-            )}
-            <FormattedDate date={date} layout={layout} />
-          </div>
-          <div className="card__footer" style={{ textAlign: "right" }}>
-            <Link className="button button--primary button--sm" to={permalink}>
-              Read more
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Default "big" layout
-  return (
-    <div className="col col--3 margin-bottom--lg">
-      <Card shadow="md">
-        <CardImage
-          cardImageUrl={image || defaultImage}
-          alt={title}
-          title={title}
-        />
-        <CardBody className="padding-vert--md text--center" textAlign="center">
-          <h3>
-            <Link href={permalink} aria-label={`Read article: ${title}`}>
-              {title}&nbsp;→
-            </Link>
-          </h3>
-          {description && <p className={styles.description}>{description}</p>}
-          <FormattedDate date={date} layout={layout} />
-        </CardBody>
-      </Card>
-    </div>
-  );
-}
-
-PostCard.propTypes = {
-  post: PropTypes.shape({
-    permalink: PropTypes.string.isRequired,
-    image: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string,
-  }).isRequired,
-  layout: PropTypes.oneOf(["big", "small"]),
-  defaultImage: PropTypes.string,
-};
-```
-
-</Snippet>
+<Snippet
+  filename="src/components/Blog/PostCard/index.js"
+  source="./files/index.js"
+/>
 
 Finally, we'll create a CSS file to allow us to do some customization:
 
-<Snippet filename="src/components/Blog/PostCard/styles.module.css">
-
-```css
-.description {
-  font-size: 12px;
-}
-
-.date {
-  color: #888;
-  font-size: 0.95em;
-  margin-bottom: 8;
-  font-style: italic;
-}
-```
-
-</Snippet>
+<Snippet
+  filename="src/components/Blog/PostCard/styles.module.css"
+  source="./files/styles.modules.css"
+/>
 
 ## We need to load our plugin
 
@@ -456,22 +177,10 @@ Remember, the very first file we've created was `plugins/docusaurus-plugin-tag-r
 
 Please edit your existing `docusaurus.config.js` file like below illustrated:
 
-<Snippet filename="docusaurus.config.js">
-
-```js
-import pluginTagRoute from "./plugins/docusaurus-plugin-tag-route/index.cjs";
-
-const config = {
-  // [...]
-  plugins: [
-    // [...]
-    [pluginTagRoute, {}],
-  ],
-  // [...]
-};
-```
-
-</Snippet>
+<Snippet
+  filename="docusaurus.config.js"
+  source="./files/docusaurus.config.js"
+/>
 
 i.e.
 
@@ -497,73 +206,7 @@ If you want your blog posts are listed from the newest one to the older one, ple
 
 But make sure every blog post you've has a `date` field in his YAML front matter.
 
-<Snippet filename="src/components/Blog/Tags/TagArticlesPage.js">
-
-```js
-import { createSlug } from "@site/src/components/Blog/utils/slug";
-import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
-import { useLocation } from "@docusaurus/router";
-import Layout from "@theme/Layout";
-import Link from "@docusaurus/Link";
-import PostCard from "@site/src/components/Blog/PostCard";
-
-function getTagFromPathname(pathname) {
-  const match = pathname.match(/\/blog\/tags\/([^/]+)/);
-  return match ? decodeURIComponent(match[1]) : null;
-}
-
-export default function TagArticlesPage() {
-  const location = useLocation();
-  const rawTag = getTagFromPathname(location.pathname);
-
-  if (!rawTag) {
-    return (
-      <Layout>
-        <div className="container">
-          <p>No tag specified.</p>
-          <Link href="/blog/tags">Go back to all tags</Link>
-        </div>
-      </Layout>
-    );
-  }
-
-  const posts = getBlogMetadata();
-
-  // Find original tag name based on slug
-  const allTags = Array.from(new Set(posts.flatMap((post) => post.tags || [])));
-  const displayTag = allTags.find((t) => createSlug(t) === rawTag) || rawTag;
-
-  // highlight-start
-  // Filter and sort posts by slug-matched tag (most recent first)
-  const taggedPosts = posts
-    .filter((post) => post.tags?.some((t) => createSlug(t) === rawTag))
-    .sort((a, b) => new Date(b.date) - new Date(a.date)); // Descending
-  // highlight-end
-
-  if (taggedPosts.length === 0) {
-    return (
-      <Layout title={`Tag: ${displayTag}`}>
-        <div className="container margin-top--lg margin-bottom--lg text--center">
-          <h2>No articles found with tag "{displayTag}"</h2>
-          <Link href="/blog/tags">Browse all tags</Link>
-        </div>
-      </Layout>
-    );
-  }
-
-  return (
-    <Layout title={`Tag: ${displayTag}`}>
-      <div className="container margin-top--lg margin-bottom--lg">
-        <h1>Articles tagged: {displayTag}</h1>
-        <div className="row">
-          {taggedPosts.map((post) => (
-            <PostCard key={post.title} post={post} />
-          ))}
-        </div>
-      </div>
-    </Layout>
-  );
-}
-```
-
-</Snippet>
+<Snippet
+  filename="src/components/Blog/Tags/TagArticlesPage.js"
+  source="./files/TagArticlesPage.js"
+/>

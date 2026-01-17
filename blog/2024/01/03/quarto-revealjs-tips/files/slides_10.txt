@@ -1,0 +1,13 @@
+##
+
+::: columns
+::: {.column width="70%"}
+![Left column: slide example image](./images/image_1.webp)
+:::
+
+::: {.column width="30%"}
+![Right column: top image](./images/image_2.webp)
+
+![Right column: bottom image](./images/image_3.webp)
+:::
+:::

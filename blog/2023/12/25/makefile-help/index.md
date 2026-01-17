@@ -11,7 +11,7 @@ language: en
 ---
 ![Linux Makefile - Adding a help screen](/img/v2/makefile.webp)
 
-By using a makefile, you know it already, you can gather in one place a lot of *actions* like `make bash`, `make build`, `make deploy`, ... just like I do when working on this blog (see my makefile on [https://github.com/cavo789/blog/blob/main/makefile](https://github.com/cavo789/blog/blob/main/makefile)).
+By using a makefile, as you already know, you can gather in one place a lot of *actions* like `make bash`, `make build`, `make deploy`, ... just like I do when working on this blog (see my makefile on https://github.com/cavo789/blog/blob/main/makefile).
 
 What's really nice is being able to type `make` at the command line without any other options and then get a screen with lists of existing commands and a short one-line explanation.
 
@@ -23,8 +23,8 @@ That's what we'll be looking at in this article.
   title="Before you begin make sure..."
   variant="prerequisites"
   steps={[
-    "You've GNU Make installed",
-    "You've an existing makefile",
+    "You have GNU Make installed",
+    "You have an existing makefile",
   ]}
 />
 
@@ -32,7 +32,7 @@ That's what we'll be looking at in this article.
 
 We will use `GNU make` so you need to have it.
 
-Please run `which make` in your Linux console to check if `make` is already installed. If so, you will get f.i. `/usr/bin/make` as result.
+Please run `which make` in your Linux console to check if `make` is already installed. If so, you will get, for example, `/usr/bin/make` as a result.
 
 If you got `make not found`, please run `sudo apt-get update && sudo apt-get -y install make` to install it.
 
@@ -49,7 +49,7 @@ The indentation in a makefile **SHOULD BE** made using tabs and not spaces, this
 
 </AlertBox>
 
-That file contains a few *targets* (=actions) and a simple `printf` statement to display a text. Except echoing something into the console that `makefile` does nothing.
+That file contains a few *targets* (=actions) and a simple `printf` statement to display a text. Except for echoing something into the console, that `makefile` does nothing.
 
 <Terminal>
 $ ls -alh
@@ -67,14 +67,14 @@ We're ready to start our implementation.
 We have to do three things for this:
 
 1. Add a `default: help` action
-2. Add a `help:` target (a target is, in the Make terminology an action)
+2. Add a `help:` target (a target is, in Make terminology, an action)
 3. Edit each target and add a small description.
 
 ### Step 1 - Adding the default action
 
-In the absence of a `default:` action defined in the file, like in your example, the first action will be executed.
+In the absence of a `default:` action defined in the file, as in your example, the first action will be executed.
 
-So, right now, if you run `make` (without any other arguments), you'll get the *Start an interactive shell...* message, that's the result of the `bash:` target; the first in the file
+So, right now, if you run `make` (without any other arguments), you'll get the *Start an interactive shell...* message, that's the result of the `bash:` target; the first one in the file
 
 <Terminal>
 $ make
@@ -87,7 +87,7 @@ Please edit the file and add the highlighted line below:
 
 ### Step 2 - Adding the help target
 
-Still in your editor, please add the highlighted block below; the position where you'll copy/paste it is not important but, logically, let's put this new action as the first since it's the one that will be executed by default.
+Still in your editor, please add the highlighted block below; the position where you'll copy/paste it is not important but, logically, let's put this new action as the first one since it's the one that will be executed by default.
 
 <Snippet filename="makefile" source="./files/makefile.part3" />
 
@@ -102,11 +102,11 @@ Usage:
 
 ### Step 3 - Add a description for each target
 
-Take a look on your new `help` target: the description *Show the help with the list of commands* is prefixed by a double `#`. This is how to add a description.
+Take a look at your new `help` target: the description *Show the help with the list of commands* is prefixed by a double `#`. This is how to add a description.
 
 <Snippet filename="makefile" source="./files/makefile.part4" />
 
-So, you've to edit your makefile for the last time, and, for each target, add a `## a small, one line, description` text; like below, our final file:
+So, you have to edit your makefile for the last time, and, for each target, add a `## a small, one line, description` text; like below, our final file:
 
 <Snippet filename="makefile" source="./files/makefile.part5" />
 
@@ -128,7 +128,7 @@ Usage:
 `}
 </Terminal>
 
-As you can see, the order of targets respect the order in your file. `help` is displayed first because it's the first target in the file so, think to reorder targets in your file based on your logic (f.i. alphabetically).
+As you can see, the order of targets respects the order in your file. `help` is displayed first because it's the first target in the file, so remember to reorder targets in your file based on your logic (e.g., alphabetically).
 
 ## Step 4 - Add a subtitle between each "main section"
 
@@ -161,4 +161,4 @@ Database management     Working with the database
 
 ## Take a look on mine, for this blog
 
-This blog is maintained using such makefile, you can get a copy here: [https://github.com/cavo789/blog/blob/main/makefile](https://github.com/cavo789/blog/blob/main/makefile)
+This blog is maintained using such a makefile; you can get a copy here: https://github.com/cavo789/blog/blob/main/makefile

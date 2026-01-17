@@ -73,43 +73,11 @@ Now, when you'll run `decrypt.sh` the decrypted content will be displayed on the
 
 Imagine a text file like `secrets.md` with this content:
 
-<Snippet filename="secrets.md">
-
-```markdown
-# My password
-
-## My secret site
-
-### FTP server
-
-* Name: `127.0.0.1`
-* Login: `admin`
-* Password: `admin`
-
-### Admin interface
-
-* URL: `https://..../admin`
-* Login: `admin`
-* Password: `admin`
-
-```
-
-</Snippet>
+<Snippet filename="secrets.md" source="./files/secrets.txt" />
 
 By running the `encrypt.sh` script, the file `secrets_encrypted.md` will be created on your disk and will have this content:
 
-<Snippet filename="secrets_encrypted.md">
-
-```markdown
-U2FsdGVkX18jyyHAiaDcwolgvrCmB9SutNFhOFosDZvYA+t/8F5PWsxU+YIb0xLj
-/0swl1Mvh9XBcg3FwpQn5CGm5ltb3zKiExPO8WoTuYOmlJj2PN5eLJv3GWVVJ8/t
-q31xBBAlbI0k+a3pWiETl1qEmh4hwc4jeC5NOByYSAojiIdCNF0W5+VVkUlBeKGb
-sv8tpDWEb/dgHrfFPtZD5MqeNQw71/ndORZC1ZDIT/Ju6O7a6rd9ph0aQuPz49PU
-SzDUePUgn9wbR0tZvNM1JA1LkN1kDaguJ940TdKns+Q=
-
-```
-
-</Snippet>
+<Snippet filename="secrets_encrypted.md" source="./files/secrets_encrypted.txt" />
 
 From now, you can remove `secrets.md` since you've the encrypted version.
 

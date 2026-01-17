@@ -39,6 +39,10 @@ function snippetLoader() {
       const sourceAttr = node.attributes.find((attr) => attr.name === "source");
       if (!sourceAttr || typeof sourceAttr.value !== "string") return;
 
+      const filenameAttr = node.attributes.find(
+        (attr) => attr.name === "filename"
+      );
+
       const sourcePath = sourceAttr.value;
       let absolutePath;
 
@@ -56,15 +60,20 @@ function snippetLoader() {
       try {
         const code = fs.readFileSync(absolutePath, "utf-8");
 
+        const pathForLang =
+          filenameAttr && typeof filenameAttr.value === "string"
+            ? filenameAttr.value
+            : sourcePath;
+
         // Determine extension for language detection
         const ext =
-          path.extname(sourcePath).slice(1).toLowerCase() ||
-          path.basename(sourcePath).toLowerCase();
+          path.extname(pathForLang).slice(1).toLowerCase() ||
+          path.basename(pathForLang).toLowerCase();
 
         let lang = extensionToLang[ext];
         if (!lang) {
           // Try to detect language based on the base file name (useful for Dockerfile, compose.yaml)
-          const baseName = path.basename(sourcePath).toLowerCase();
+          const baseName = path.basename(pathForLang).toLowerCase();
           if (baseName === "dockerfile") {
             lang = "docker";
           } else if (

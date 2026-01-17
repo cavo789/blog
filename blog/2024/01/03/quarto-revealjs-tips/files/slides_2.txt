@@ -1,0 +1,15 @@
+---
+title: "My Slide Show"
+subtitle: "Playing with logo"
+author: "Christophe Avonture"
+date: last-modified
+lang: "en"
+
+format:
+  revealjs:
+    logo: images/my-logo.svg
+    css: assets/style.css
+    resources: images
+    header-includes: |
+      <script src="assets/custom.js" type="application/javascript"></script>
+---

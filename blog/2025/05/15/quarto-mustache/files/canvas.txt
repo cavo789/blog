@@ -1,0 +1,13 @@
+---
+title: Contextual Canvas
+---
+
+## Description
+
+Imagine you're working on a complex project – perhaps writing a research paper, designing a website, or planning a marketing campaign. You have various documents open, browser tabs scattered, and maybe even some handwritten notes nearby. It can feel like juggling multiple realities at once.
+
+*Contextual Canvas* aims to streamline this by creating a dynamic, visual workspace directly within your primary application. Instead of just seeing a static file or interface, you can summon the Canvas, which intelligently pulls in relevant information based on what you're currently working on
+
+## How to run
+
+{{< partial ../_partials/run.md >}}

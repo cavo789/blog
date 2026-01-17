@@ -1,0 +1,37 @@
+---
+title: PHP linter
+categories: [linting, php]
+order: 1
+partial-data:
+  command: "lint-php"
+  config_file: ".phplint.yml"
+  config_url: "https://github.com/tengattack/phplint/blob/master/.phplint.yml"
+  constant: "PHPLINT"
+  type: "PHP"
+---
+
+<!-- cspell:ignore phplint -->
+
+## Description
+
+This is a brief description of the functionality. This text is hardcoded because it is different each time, from one feature to another.
+
+## For what type of project
+
+{{< partial ../_partials/project_type.md >}}
+
+## How to run
+
+{{< partial ../_partials/run.md >}}
+
+## How to configure
+
+{{< partial ../_partials/configure/file.md >}}
+
+## Attention points
+
+None.
+
+## Remarks
+
+None.

@@ -1,0 +1,6 @@
+---
+format:
+  revealjs:
+    header-includes: |
+      <script src="assets/custom.js" type="application/javascript"></script>
+---

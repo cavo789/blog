@@ -1,0 +1,15 @@
+---
+title: Intent-Driven Interface Builder
+partial-data:
+  command: "make builder"
+---
+
+## Description
+
+Imagine the process of building user interfaces. Developers and designers often spend significant time translating conceptual designs and user stories into the specific widgets, layouts, and interactions of a software application. *Intent-Driven Interface Builder* aims to revolutionize this by allowing users to describe the intent of a UI element or section, rather than manually configuring every pixel and property.
+
+The *Intent-Driven Interface Builder* would then leverage AI and a vast library of pre-built, adaptable UI components and design patterns to automatically generate the corresponding interface elements. It would intelligently choose appropriate widgets, arrange them in a logical layout, and even suggest relevant styling based on the application's overall design language and best practices.
+
+## How to run
+
+{{< partial ../_partials/run.md >}}

@@ -1,0 +1,9 @@
+---
+pagetitle: "Using my custom css"
+format:
+  revealjs:
+    theme: custom.css
+---
+##
+
+![Mimikyu example image](./images/mimikyu.webp){style="width:400px;"}

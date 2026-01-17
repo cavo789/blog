@@ -1,0 +1,8 @@
+## Customize your terminal
+
+:::{.callout-note}
+## Notice
+Skip this part if you do not want to customize your terminal right now
+:::
+
+As you can see on the image below, we can customize the terminal:

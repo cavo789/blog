@@ -11,7 +11,9 @@ tags: [bluesky, component, docusaurus, markdown, react, swizzle]
 language: en
 blueskyRecordKey: 3lwnnydhdk22x
 ---
+
 <!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,3lwnnydhdk22x -->
+
 ![Show Bluesky comments on Docusaurus and, too, number of likes/reposts](/img/v2/docusaurus_bluesky.webp)
 
 In a [previous article](/blog/docusaurus-bluesky-share), we've seen how we can, simply said, provide a "Share the article on Bluesky".
@@ -24,11 +26,11 @@ This is not really interactive right? Let's see in this article how to make the 
   title="The workflow will be:"
   variant="steps"
   steps={[
-    'You publish your article on your blog,',
+    "You publish your article on your blog,",
     'You share the article on Bluesky (by using the "Share the article" feature of course),',
-    'You retrieve the **Bluesky Record key** i.e. the very last part of Bluesky post URL (something like `3lun2qjuxc22r`),',
-    'You edit back your Docusaurus article and you add a key in your YAML front matter (the YAML block at the top of your article). The key to add is `blueskyRecordKey: xxxx` where `xxxx` is your **Bluesky Record key**.',
-    'You publish your updated article on your blog again.'
+    "You retrieve the **Bluesky Record key** i.e. the very last part of Bluesky post URL (something like `3lun2qjuxc22r`),",
+    "You edit back your Docusaurus article and you add a key in your YAML front matter (the YAML block at the top of your article). The key to add is `blueskyRecordKey: xxxx` where `xxxx` is your **Bluesky Record key**.",
+    "You publish your updated article on your blog again.",
   ]}
 />
 
@@ -39,8 +41,8 @@ So, from now, you've clearly make the link between your article and your Bluesky
   variant="steps"
   steps={[
     'Display a button "Like, share or comment on Bluesky": the visitor can then jump to your Bluesky post and like, share or comment your article,',
-    'Display the number of likes and reposts below your article and,',
-    'Display the list of comments you\'ve received on your Bluesky post and, if none, display a *Call to action* area to encourage your reader to share his thoughts'
+    "Display the number of likes and reposts below your article and,",
+    "Display the list of comments you've received on your Bluesky post and, if none, display a *Call to action* area to encourage your reader to share his thoughts",
   ]}
 />
 
@@ -50,7 +52,10 @@ In the previous article (see [Create our own Docusaurus React component and prov
 
 Here is our new Bluesky layout for our component:
 
-<Snippet filename="src/components/Bluesky/index.js" source="src/components/Bluesky/index.js" />
+<Snippet
+  filename="src/components/Bluesky/index.js"
+  source="src/components/Bluesky/index.js"
+/>
 
 <AlertBox variant="info" title="">
 The highlighted lines are the new ones compared of the previous version of the file if you've already followed the first tutorial.
@@ -61,28 +66,40 @@ The highlighted lines are the new ones compared of the previous version of the f
   title="As you can see, this time, we'll foresee four components:"
   variant="steps"
   steps={[
-    'A Share button,',
-    'A Post button (to jump to your post on Bluesky),',
-    'A likes area (to show the number of likes and reposts of your post on Bluesky) and',
-    'An area for displaying comments you\'ve on Bluesky'
+    "A Share button,",
+    "A Post button (to jump to your post on Bluesky),",
+    "A likes area (to show the number of likes and reposts of your post on Bluesky) and",
+    "An area for displaying comments you've on Bluesky",
   ]}
 />
 
 ## 2/5 Our "Like, share or comment" button
 
-<Snippet filename="src/components/Bluesky/post.js" source="src/components/Bluesky/post.js" />
+<Snippet
+  filename="src/components/Bluesky/post.js"
+  source="src/components/Bluesky/post.js"
+/>
 
 ## 3/5 Our component for getting the number of likes and reposts
 
-<Snippet filename="src/components/Bluesky/likes.js" source="src/components/Bluesky/likes.js" />
+<Snippet
+  filename="src/components/Bluesky/likes.js"
+  source="src/components/Bluesky/likes.js"
+/>
 
 ## 4/5 Retrieving all comments
 
-<Snippet filename="src/components/Bluesky/comments.js" source="src/components/Bluesky/comments.js" />
+<Snippet
+  filename="src/components/Bluesky/comments.js"
+  source="src/components/Bluesky/comments.js"
+/>
 
 ## 5/5 Our new CSS
 
-<Snippet filename="src/components/Bluesky/styles.module.css" source="src/components/Bluesky/styles.module.css" />
+<Snippet
+  filename="src/components/Bluesky/styles.module.css"
+  source="src/components/Bluesky/styles.module.css"
+/>
 
 ## Update the Docusaurus configuration file
 
@@ -90,22 +107,10 @@ We're almost done. In order to be able to retrieve likes, shares and comments fr
 
 You've to edit the `docusaurus.config.js` file and add a new section called `customFields` as illustrated below:
 
-<Snippet filename="docusaurus.config.js">
-
-```js
-const config = {
-  // [...]
-  customFields: {
-    bluesky: {
-      // This is the Bluesky handle as displayed in your Bluesky profile page
-      handle: "avonture.be",
-    },
-  },
-  // [...]
-};
-```
-
-</Snippet>
+<Snippet
+  filename="docusaurus.config.js"
+  source="./files/docusaurus.config.js"
+/>
 
 <AlertBox variant="danger" title="">
 For sure, use yours; not mine ;-)

@@ -118,19 +118,11 @@ In your terminal, please run the following command:
 
 Docker will start downloading `joomla` and `joomladb`, the two services mentioned in the `compose.yaml` file.
 
-<Snippet filename="compose.yaml" defaultOpen={true}>
-
-```yaml
-services:
-  // highlight-next-line
-  joomla:
-    [...]
-  // highlight-next-line
-  joomladb:
-    [...]
-```
-
-</Snippet>
+<Snippet
+  filename="compose.yaml"
+  source="./files/compose.yaml"
+  defaultOpen={true}
+/>
 
 You will obtain something like this, please wait until everything is downloaded.
 
@@ -654,15 +646,10 @@ Instead of using the IP address, it would be much nicer to use an alias like `ht
 
 For this, on Windows, edit the file `C:\Windows\System32\Drivers\etc\hosts` and add the `kingsbridge` line as below illustrated:
 
-<Snippet filename="C:\Windows\System32\Drivers\etc\hosts">
-
-```ini
-127.0.0.1 localhost
-// highlight-next-line
-127.0.0.1 kingsbridge
-```
-
-</Snippet>
+<Snippet
+  filename="C:\Windows\System32\Drivers\etc\hosts"
+  source="./files/windows_hosts.txt"
+/>
 
 Save the file. Now you can surf to `http://kingsbridge:8080`
 

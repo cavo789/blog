@@ -1,0 +1,7 @@
+# Slide 1
+
+Here is an image:
+
+![Quarto slide with stretched image](image.webp){.r-stretch}
+
+Some text after the image.

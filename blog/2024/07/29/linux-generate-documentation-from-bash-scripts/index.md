@@ -41,69 +41,8 @@ For one file found in the `helpers` folder, the same file will be created in the
 
 Here the content of the `documentation/string.md` file:
 
-<Snippet filename="documentation/string.md">
-
-```markdown
-<!--
-    This documentation has been generated automatically.
-    Run the generation script (true) to update it if needed
-
-    Last refresh date: xxx
--->
-
-# Documentation string.sh
-
-## List of functions
-
-  * [public function string::upper](#public-function-stringupper)
-    * [Description](#description)
-    * [Examples](#examples)
-    * [Return](#return)
-    * [Exit code](#exit-code)
-
-### public function string::upper
-
-#### Description
-
-Make a string uppercase.
-
-#### Examples
-
-echo "HEllow WoRLD!" | string::upper
-#Output
-HELLO WORLD!
-
-title="$(echo "Project title" | string::upper)"
-
-#### Return
-
-The string in uppercase
-
-#### Exit code
-
-* 0 If successful.
-* 1 An error has occurred.
-
-https://github.com/jmcantrell/bashful/blob/master/bin/bashful-utils#L33
-```
-
-</Snippet>
+<Snippet filename="documentation/string.md" source="./files/string.txt" />
 
 And, once every .sh files are processed, a final `documentation/readme.md` file will be created:
 
-<Snippet filename="documentation/readme.md">
-
-```markdown
-<!--
-    This documentation has been generated automatically.
-    Run the generation script (generate_doc.sh) to update it if needed
-
-    Last refresh date: xxx
--->
-
-# List of helpers
-
-* [string.md](string.md)
-```
-
-</Snippet>
+<Snippet filename="documentation/readme.md" source="./files/readme.txt" />

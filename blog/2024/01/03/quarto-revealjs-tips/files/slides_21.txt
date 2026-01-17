@@ -1,0 +1,24 @@
+##
+
+::: columns
+::: {.column width="70%"}
+![Left column: speaker notes example image](./images/image_1.webp)
+:::
+
+::: {.column width="30%"}
+![Right column: speaker notes top image](./images/image_2.webp)
+
+![Right column: speaker notes bottom image](./images/image_3.webp)
+:::
+:::
+
+::: notes
+On the left side, you have ... and, on the right side, the first image is ....
+
+The second image has been ...
+:::
+
+##
+
+![Example slide image 4](./images/image_4.webp)
+```

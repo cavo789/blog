@@ -1,0 +1,9 @@
+# It's a candy dog
+
+::: {style="font-size: 2em; color: #75AADB;"}
+Would you like to see a candy dog?
+:::
+
+::: {.fragment .fade-up}
+![Candy dog reveal.js example](./images/dog.webp)
+:::

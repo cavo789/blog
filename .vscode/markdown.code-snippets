@@ -64,7 +64,9 @@
   },
   "docusaurus.snippet": {
     "prefix": "Snippet",
-    "body": ["<Snippet filename=\"$1\" source=\"./files/$1\" />"],
+    "body": [
+      "<Snippet filename=\"$1\" source=\"./files/$1\" defaultOpen={false} />"
+    ],
     "description": "Docusaurus - Snippet"
   },
   "docusaurus.steps": {

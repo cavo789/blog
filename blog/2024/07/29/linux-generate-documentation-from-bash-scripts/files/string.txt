@@ -1,0 +1,41 @@
+<!--
+    This documentation has been generated automatically.
+    Run the generation script (true) to update it if needed
+
+    Last refresh date: xxx
+-->
+
+# Documentation string.sh
+
+## List of functions
+
+  * [public function string::upper](#public-function-stringupper)
+    * [Description](#description)
+    * [Examples](#examples)
+    * [Return](#return)
+    * [Exit code](#exit-code)
+
+### public function string::upper
+
+#### Description
+
+Make a string uppercase.
+
+#### Examples
+
+echo "HEllow WoRLD!" | string::upper
+#Output
+HELLO WORLD!
+
+title="$(echo "Project title" | string::upper)"
+
+#### Return
+
+The string in uppercase
+
+#### Exit code
+
+* 0 If successful.
+* 1 An error has occurred.
+
+https://github.com/jmcantrell/bashful/blob/master/bin/bashful-utils#L33

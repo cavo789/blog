@@ -29,24 +29,7 @@ If you don't have yet a Docker image with Quarto, read this article <Link to="/b
 
 The [title slide](https://quarto.org/docs/presentations/revealjs/advanced.html#title-slide) is the first one of your presentation. You can add such slide with a few yaml lines:
 
-<Snippet filename="slides.md">
-
-```markdown
----
-title: "My Slide Show"
-title-slide-attributes:
-  data-background-image: ./img/background.jpg
-  data-background-size: cover
-  data-background-opacity: "0.9"
----
-# Slide 1
-
-# Slide 2
-
-# Slide 3
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_1.txt" />
 
 The slideshow will have four slides, the first one will be the title-slide.
 
@@ -78,27 +61,7 @@ In `assets/custom.js`, copy/paste the following code:
 
 Now, use them in your `slides.md` like this:
 
-<Snippet filename="slides.md">
-
-```markdown
----
-title: "My Slide Show"
-subtitle: "Playing with logo"
-author: "Christophe Avonture"
-date: last-modified
-lang: "en"
-
-format:
-  revealjs:
-    logo: images/my-logo.svg
-    css: assets/style.css
-    resources: images
-    header-includes: |
-      <script src="assets/custom.js" type="application/javascript"></script>
----
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_2.txt" />
 
 As you can see above, the JavaScript code is injected in your presentation using the `header-includes` directive. For the stylesheet, the `css` directive is used (*there is no `js:` directive unfortunately*).
 
@@ -108,13 +71,7 @@ As you can see above, the JavaScript code is injected in your presentation using
 
 A background, a title and some style:
 
-<Snippet filename="slides.md">
-
-```markdown
-# Merry Christmas {background-image="images/winter.jpg" style="text-align: center; background-color: #cfb0f399; color: #210753;"}
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_3.txt" />
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
@@ -130,15 +87,7 @@ This can be corrected by using the attribute `background-size`. When not mention
 
 You can ask the browser to resize the image so it's fully displayed. This is the behavior when `background-size` is set to `contain`.
 
-<Snippet filename="slides.md">
-
-```markdown
-## {background-image="images/2024.jpg"}
-
-## {background-image="images/2024.jpg" background-size="contain"}
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_4.txt" />
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
@@ -156,23 +105,7 @@ The slide level is an important configuration item ([official documentation](htt
 
 If we look at the markdown below, how many slides will we have? Two or three? The first is for the title, the second for `Technologies and tools`, but will `Apache` be a separate slide or not?
 
-<Snippet filename="slides.md">
-
-```markdown
----
-title: "Playing with slide-level"
----
-
-## Technologies and tools
-
-### Apache
-
-Our web applications are running under [Apache](https://httpd.apache.org/).
-
-We don't need to have Apache locally since we're using it as a Docker image.
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_5.txt" />
 
 In fact, it depends on the `slide-level` setting. By default, `slide-level` is equal to `2` and then, the result will be:
 
@@ -182,29 +115,7 @@ We've two slides. On the second slide, we can see our `Apache` heading 3 as a te
 
 If you want a slide to be created for each level 2 and level 3 (or higher) title, you need to set this with slide-level.
 
-<Snippet filename="slides.md">
-
-```markdown
----
-title: "Playing with slide-level"
-# highlight-next-line
-format:
-  # highlight-next-line
-  revealjs:
-    # highlight-next-line
-    slide-level: 3
----
-
-## Technologies and tools
-
-### Apache
-
-Our web applications are running under [Apache](https://httpd.apache.org/).
-
-We don't need to have Apache locally since we're using it as a Docker image.
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_6.txt" />
 
 And the result will give:
 
@@ -228,17 +139,7 @@ You can find a full list on [https://gist.github.com/rxaviers/7360908](https://g
 
 The `r-fit-text` class ([official doc](https://quarto.org/docs/presentations/revealjs/advanced.html#fit-text)) will give the maximum size to your content i.e.
 
-<Snippet filename="slides.md">
-
-```markdown
-#
-
-::: {.r-fit-text}
-Big Text
-:::
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_7.txt" />
 
 ![Big text](./images/big-text.webp)
 
@@ -248,19 +149,7 @@ The `r-stretch` class ([official doc](https://quarto.org/docs/presentations/reve
 
 Consider the example below:
 
-<Snippet filename="slides.md">
-
-```markdown
-# Slide 1
-
-Here is an image:
-
-![Quarto slide with stretched image](image.webp){.r-stretch}
-
-Some text after the image.
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_8.txt" />
 
 This will generate this slide:
 
@@ -276,21 +165,7 @@ The image height will be resized automatically so both text and images can be di
 
 Using `::: {.fragment .fade-up}` to define a content area, you are asking reveal.js to show its content only the next key sequence.
 
-<Snippet filename="slides.md">
-
-```markdown
-# It's a candy dog
-
-::: {style="font-size: 2em; color: #75AADB;"}
-Would you like to see a candy dog?
-:::
-
-::: {.fragment .fade-up}
-![Candy dog reveal.js example](./images/dog.webp)
-:::
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_9.txt" />
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
@@ -404,18 +279,7 @@ First, create a `assets/custom.js` if not yet present and copy/paste the followi
 
 In your YAML front matter, add this:
 
-<Snippet filename="slides.md">
-
-```markdown
----
-format:
-  revealjs:
-    header-includes: |
-      <script src="assets/custom.js" type="application/javascript"></script>
----
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_12.txt" />
 
 And now, when the slideshow will be played, a custom JavaScript code will replace on-the-fly each fragment with `==xxxx==` and replace with `<mark>xxx</mark>`.
 
@@ -425,15 +289,7 @@ And now, when the slideshow will be played, a custom JavaScript code will replac
 
 You can apply styles to inline text by creating spans using `[]` to surround the text you want to style and `{}` to define the style you want to apply.
 
-<Snippet filename="slides.md">
-
-```markdown
-# Inline style
-
-To draw attention to a specific part of the text, you might want to make it [red]{style="color: red;"} with a [yellow background]{style="background-color: yellow;"}; [like this]{style="color: red; background-color: yellow;"}.
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_13.txt" />
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
@@ -445,21 +301,7 @@ This is correctly rendered in HTML:
 
 Use the YAML header block for this.
 
-<Snippet filename="slides.md">
-
-```markdown
----
-pagetitle: "Using my custom css"
-format:
-  revealjs:
-    theme: custom.css
----
-##
-
-![Mimikyu example image](./images/mimikyu.webp){style="width:400px;"}
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_14.txt" />
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
@@ -479,20 +321,7 @@ By default, revealjs will display the caption of the image below it. You can hid
 
 A callout is a special div like below:
 
-<Snippet filename="slides.md">
-
-```markdown
-## Customize your terminal
-
-:::{.callout-note}
-## Notice
-Skip this part if you do not want to customize your terminal right now
-:::
-
-As you can see on the image below, we can customize the terminal:
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_15.txt" />
 
 In revealjs, personally, I find that the rendering takes up too much space compared to the content of my slide. So I use css to hide the title:
 
@@ -514,30 +343,7 @@ In a `vertical` or `grid` navigation, it's just like you're showing the chapter'
 
 The `navigation-mode` in the yaml header allows you to enable `vertical` mode, below an example:
 
-<Snippet filename="slides.md">
-
-```markdown
----
-title: "Presentation"
-format:
-  revealjs:
-    navigation-mode: vertical
----
-
-# Slide 1
-
-## Slide 1.1
-
-# Slide 2
-
-## Slide 2.1
-
-## Slide 2.2
-
-## Slide 2.3
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_16.txt" />
 
 ![Vertical navigation](./images/vertical.webp)
 
@@ -552,21 +358,7 @@ By default, reveal.js will generate a slug from the title so you can reference t
 
 Consider the following example:
 
-<Snippet filename="slides.md">
-
-<!-- cspell:disable -->
-```markdown
-## Elit ad fugiat proident culpa sint
-
-Elit ad fugiat proident culpa sint qui id pariatur nostrud ullamco velit irure tempor culpa. Laborum occaecat ea tempor voluptate duis pariatur proident ea. Aute adipisicing ut ullamco exercitation nisi nulla sint. Reprehenderit tempor quis non cupidatat.
-
-## Cillum do et commodo minim ullamco elit culpa
-
-Occaecat minim eu veniam laborumanim. Nostrud duis eiusmod ut amet velit commodo. Aliqua laborum cillum officia culpa quis duis enim cillum esse duis excepteur cillum do qui. Veniam dolore enim qui labore proident. Minim ipsum nisi Lorem cillum proident labore cupidatat aliqua pariatur. Nisi id magna incididunt et culpa.
-```
-<!-- cspell:enable -->
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_17.txt" />
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
@@ -574,23 +366,7 @@ The generated URL for the first slide will be `http://[...]index.html#/elit-ad-f
 
 To define the name yourself, just add `{#}` followed by the slug you desire.
 
-<Snippet filename="slides.md">
-
-<!-- cspell:disable -->
-```markdown
-<!-- highlight-next-line -->
-## Elit ad fugiat proident culpa sint {#intro}
-
-Elit ad fugiat proident culpa sint qui id pariatur nostrud ullamco velit irure tempor culpa. Laborum occaecat ea tempor voluptate duis pariatur proident ea. Aute adipisicing ut ullamco exercitation nisi nulla sint. Reprehenderit tempor quis non cupidatat.
-
-<!-- highlight-next-line -->
-## Cillum do et commodo minim ullamco elit culpa {#chapter1}
-
-Occaecat minim eu veniam laborumanim. Nostrud duis eiusmod ut amet velit commodo. Aliqua laborum cillum officia culpa quis duis enim cillum esse duis excepteur cillum do qui. Veniam dolore enim qui labore proident. Minim ipsum nisi Lorem cillum proident labore cupidatat aliqua pariatur. Nisi id magna incididunt et culpa.
-```
-<!-- cspell:enable -->
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_18.txt" />
 
 ![Define a name for your slide](./images/set-slide-slug.webp)
 
@@ -600,33 +376,13 @@ But, pay attention to the slide's menu (bottom left): perhaps it's also good to 
 
 To do this, set the `data-menu-title` attribute; f.i.:
 
-<Snippet filename="slides.md">
-
-<!-- cspell:disable -->
-```markdown
-<!-- highlight-next-line -->
-## Elit ad fugiat proident culpa sint {#intro data-menu-title="Introduction"}
-
-<!-- highlight-next-line -->
-## Cillum do et commodo minim ullamco elit culpa {#chapter1 data-menu-title="Chapter 1"}
-```
-<!-- cspell:enable -->
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_19.txt" />
 
 ### Show slide number
 
 To only show the current slide number, you can use `slide-number: true` but, if you also want the total number of slides, you should use `slide-number: c/t` :
 
-<Snippet filename="slides.md">
-
-```yaml
-format:
-  revealjs:
-    slide-number: c/t
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_20.txt" />
 
 ![Slide / Total of slides](./images/slides_c_t.webp)
 
@@ -640,35 +396,7 @@ You can write messages in your presentation that will not be displayed when the 
 
 The example below illustrate this. The way to insert such presenter's notes is by using the `::: notes` block.
 
-<Snippet filename="slides.md">
-
-```markdown
-##
-
-::: columns
-::: {.column width="70%"}
-![Left column: speaker notes example image](./images/image_1.webp)
-:::
-
-::: {.column width="30%"}
-![Right column: speaker notes top image](./images/image_2.webp)
-
-![Right column: speaker notes bottom image](./images/image_3.webp)
-:::
-:::
-
-::: notes
-On the left side, you have ... and, on the right side, the first image is ....
-
-The second image has been ...
-:::
-
-##
-
-![Example slide image 4](./images/image_4.webp)
-```
-
-</Snippet>
+<Snippet filename="slides.md" source="./files/slides_21.txt" />
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 

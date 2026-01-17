@@ -1,0 +1,53 @@
+::: columns
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
+![Top-left quadrant example](./images/top-left.webp){width="450px"}
+:::
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
+![Top-right quadrant example](./images/top-right.webp){width="450px"}
+:::
+:::
+:::
+
+::: {.column width="5%"}
+:::
+:::
+
+::: columns
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
+![Bottom-left quadrant example](./images/bottom-left.webp){width="450px"}
+:::
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
+![Bottom-right quadrant example](./images/bottom-right.webp){width="450px"}
+:::
+:::
+:::
+
+::: {.column width="5%"}
+:::
+:::

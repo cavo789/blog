@@ -19,35 +19,35 @@ This article demonstrates how to configure Windows Terminal for efficient multit
 
 In this article, we'll show how to create a Windows Terminal profile with three (or more) split panes so you can monitor multiple consoles at the same time.
 
-I often need this when working on a large project composed of several repositories: a backend application, a consumer application, a shared library, a proof-of-concept, ... that ties them together. Instead of opening separate terminal windows, I prefer a single window with split panes.
+I often need this when working on a large project composed of several repositories: a backend application, a consumer application, a shared library, and a proof-of-concept that ties them all together. Instead of opening separate terminal windows, I prefer a single window with split panes.
 
-This also lets me run the same command in all panes (for example, run tests), monitor logs, or push changes to Git - all from one window.
+This also lets me run the same command in all panes (for example, to run tests), monitor logs, or push changes to Git—all from one window.
 
 And when I need to focus on one pane, I can zoom in on it and hide the others temporarily.
 
 <!-- truncate -->
 
-We'll use Windows Terminal. It ships with Windows 10 and later and is the default terminal for Windows. If you don't have it, download it here: [Windows Terminal on Microsoft Store](https://www.microsoft.com/store/productId/9N0DX20HK701).
+We'll use Windows Terminal. It ships with Windows 10 and later and is the default terminal for Windows. If you don't have it, you can download it here: [Windows Terminal on Microsoft Store](https://www.microsoft.com/store/productId/9N0DX20HK701).
 
 There are two approaches:
 
-1. We can "hardcode" the command line.
-2. We can reuse existing profiles
+1.  We can "hardcode" the command line.
+2.  We can reuse existing profiles
 
 Let's see both.
 
 ## Open Windows Terminal Settings
 
-The first step is to open the Windows Terminal settings page. You can use one of these methods:
+The first step is to open the Windows Terminal settings. You can use one of these methods:
 
-1. Click the `+` button to open a new tab, then select **Settings** from the dropdown menu.
-2. Press `Ctrl + ,` in Windows Terminal.
-3. Right-click the title bar and select **Settings**.
-4. Run `wt -p` from PowerShell or CMD.
+1.  Click the `+` button to open a new tab, then select **Settings** from the dropdown menu.
+2.  Press `Ctrl + ,` in Windows Terminal.
+3.  Right-click the title bar and select **Settings**.
+4.  Run `wt -p` from PowerShell or CMD.
 
 ![Getting access to Windows Terminal Settings](./images/windows_terminal_access_to_settings.webp)
 
-Look at the **bottom-left** and click **Open JSON file**. This opens an editor (for example, VS Code) with the `settings.json` file.
+In the **bottom-left** corner, click **Open JSON file**. This will open the `settings.json` file in your default editor (for example, VS Code).
 
 ![Open JSON file link](./images/windows_terminal_open_json_file.webp)
 
@@ -55,7 +55,7 @@ Look at the **bottom-left** and click **Open JSON file**. This opens an editor (
 
 Inside `settings.json`, add a new profile object to the `profiles.list` array.
 
-Copy and paste the code below as a new entry in the `list` array and adjust it to your needs (profile name, icon, command line, etc.).
+Copy and paste the code below as a new entry in the `list` array, adjusting it to your needs (profile name, icon, command line, etc.).
 
 ```json
 {
@@ -67,16 +67,16 @@ Copy and paste the code below as a new entry in the `list` array and adjust it t
 ```
 
 <AlertBox variant="note" title="-p 'Ubuntu 24.04'">
-In the suggested command line above, I've used `-p "Ubuntu 24.04"` because it's the name of an existing profile in my Windows Terminal. You'll certainly use something else here.
+In the suggested command line above, I've used `-p "Ubuntu 24.04"` because that is the name of an existing profile in my Windows Terminal. You will likely use something else.
 </AlertBox>
 
 This will create a new profile named `My complex project - Workspace` with three split panes, each running a different WSL Ubuntu instance in a specific directory (project_1, project_2, project_3).
 
-Go back to Windows Terminal and display the list of profiles and you'll see the newly created one. Click on it to start it.
+Go back to Windows Terminal, display the list of profiles, and you will see the new one. Click it to start.
 
 <AlertBox variant="info" title="Due to the use of the `wt.exe nt` command, Windows Terminal will open a new window with the specified layout." />
 
-The first pane will be the main one, and the other two will be split horizontally and vertically as illustrated below.
+The first pane will be the main one, and the other two will be split horizontally and vertically, as illustrated below.
 
 ![Three panes in Windows Terminal](./images/windows_terminal_three_splitted_panes.webp)
 
@@ -93,7 +93,7 @@ If you need four panes, you can add another `sp` command in the `commandline` pr
 
 ![Four panes in Windows Terminal](./images/windows_terminal_four_splitted_panes.webp)
 
-Or if you want a layout with a screen divided by four; two on top and two at the bottom, you can use this command line:
+Or, if you want a layout with the screen divided into four quadrants (two on top and two at the bottom), you can use this command line:
 
 ```json
 {
@@ -123,11 +123,11 @@ There are many ways to create layouts—see the full `wt` command reference here
 
 ## Create a workspace profile and reuse existing profiles
 
-As you can see, by using a hard-coded command line, the CLI becomes quickly quite complex to maintain.
+As you can see, using a hard-coded command line quickly becomes complex to maintain.
 
-Let's do better by reusing existing profiles.
+We can do better by reusing existing profiles.
 
-In the example below, I'm creating up to six profiles; one by subprojects. In each profile, I'm forcing the working directory (see the `commandline` attribute) and a specific background (image, opacity and stretch mode). Then, I'll set the `hidden` attribute to `true` so the profile won't be displayed in the list of profiles.
+In the example below, I'm creating six profiles, one for each subproject. In each profile, I'm setting the working directory (see the `commandline` attribute) and a specific background (image, opacity, and stretch mode). Then, I will set the `hidden` attribute to `true` so the profile will not be displayed in the list of profiles.
 
 ```json
 {
@@ -192,16 +192,16 @@ In the example below, I'm creating up to six profiles; one by subprojects. In ea
 },
 ```
 
-<AlertBox variant="tip" title="guid is no more needed in newer version of Windows Terminal">
-In the code above, I've used a legacy one: for the illustration, I've kept the `guid` attribute because older versions of Windows Terminal will force you to specify that field.
+<AlertBox variant="tip" title="GUID is no longer needed in newer versions of Windows Terminal">
+In the code above, I've used a legacy one for illustration. I've kept the `guid` attribute because older versions of Windows Terminal require it.
 
-If you've a recent version, you can drop the `guid` line; it's no longer required.
+If you have a recent version, you can drop the `guid` line; it is no longer required.
 
-If you should specify that attribute and you ask yourself *How can I generate a guid string?*, there is a command on Linux for that; simply type `uuidgen` in your console.  Each time, you'll get a new, and valid, GUID.
+If you need to specify that attribute and are wondering *How can I generate a GUID string?*, there is a Linux command for that. Simply type `uuidgen` in your console. Each time you run it, you will get a new, valid GUID.
 
 </AlertBox>
 
-Ok, that was to define profiles I'll reuse in my workspace.
+Okay, that was to define profiles I will reuse in my workspace.
 
 Now, add this final profile:
 
@@ -214,11 +214,11 @@ Now, add this final profile:
 },
 ```
 
-If you save this file and go back to Windows Terminal, by clicking the `+` button to display the list of profiles:
+If you save this file and go back to Windows Terminal, clicking the `+` button will display the list of profiles:
 
 ![The workspace in Windows Terminal](./images/windows_terminal_workspace.webp)
 
-By clicking on it, you'll now have a new terminal having 6 different panes, each of them will be clearly identified thanks the background image:
+By clicking on it, you will now have a new terminal with 6 different panes, each clearly identified by its background image:
 
 ![Having up to six profiles](./images/windows_terminal_six_profiles.webp)
 
@@ -227,30 +227,30 @@ By clicking on it, you'll now have a new terminal having 6 different panes, each
 
 ### Toggle zoom for a pane
 
-This one is my favorite. You can zoom in and out of a pane by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> then selecting **Toggle pane zoom**. Repeat the shortcut to restore the view.
+This one is my favorite. You can zoom in and out of a pane by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> and then selecting **Toggle pane zoom**. Repeat the action to restore the view.
 
 This is very useful when you want to focus on a specific pane without closing the others.
 
 ### Keyboard shortcuts to manage panes
 
-Here are a list of useful keyboard shortcuts to manage panes in Windows Terminal:
+Here is a list of useful keyboard shortcuts to manage panes in Windows Terminal:
 
 <AlertBox variant="note" title="`+` and `-` refer to the keys on the main keyboard, not the numeric keypad." />
 
-* <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>+</kbd> : Split the current pane vertically.
-* <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> : Split the current pane horizontally.
-* <kbd>Alt</kbd> + <kbd>Shift</kbd> and play with arrow keys : Increase or decrease the size of the current pane in the direction of the arrow key pressed.
+*   <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>+</kbd> : Split the current pane vertically.
+*   <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> : Split the current pane horizontally.
+*   <kbd>Alt</kbd> + <kbd>Shift</kbd> and use the arrow keys : Increase or decrease the size of the current pane in the direction of the arrow key.
 
 Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> to close the current pane.
 
 ### Control panel actions
 
-You can broadcast input to all panes by toggling the **Toggle broadcast input to all panes** option from the **Control Panel** menu (the one you get by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>).
+You can broadcast input to all panes by toggling the **Toggle broadcast input to all panes** option from the **Command Palette** menu (which you can open by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>).
 
-So, toggle this option, and you'll see the cursor changes to indicate that broadcasting is active. Now, whatever you type in one pane will be sent to all panes.
+So, toggle this option, and you will see the cursor change to indicate that broadcasting is active. Now, whatever you type in one pane will be sent to all panes.
 
 ![Broadcast input to all panes](./images/panes_broadcasting.gif)
 
 Toggle the option again to disable broadcasting.
 
-Use cases: you can clear the screen in all panes at once by typing `clear` or, like in my use case, I can push my changes to Git in all repositories by typing something like `git add . && git commit -m 'wip' && git push` once.
+For example, you can clear the screen in all panes at once by typing `clear`, or you could push your changes to Git in all repositories by typing `git add . && git commit -m 'wip' && git push` just once.

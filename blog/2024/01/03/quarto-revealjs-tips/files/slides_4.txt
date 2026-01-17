@@ -1,0 +1,3 @@
+## {background-image="images/2024.jpg"}
+
+## {background-image="images/2024.jpg" background-size="contain"}

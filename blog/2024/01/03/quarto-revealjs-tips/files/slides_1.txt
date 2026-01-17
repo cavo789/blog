@@ -1,0 +1,12 @@
+---
+title: "My Slide Show"
+title-slide-attributes:
+  data-background-image: ./img/background.jpg
+  data-background-size: cover
+  data-background-opacity: "0.9"
+---
+# Slide 1
+
+# Slide 2
+
+# Slide 3

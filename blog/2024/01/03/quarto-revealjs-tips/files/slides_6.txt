@@ -1,0 +1,17 @@
+---
+title: "Playing with slide-level"
+# highlight-next-line
+format:
+  # highlight-next-line
+  revealjs:
+    # highlight-next-line
+    slide-level: 3
+---
+
+## Technologies and tools
+
+### Apache
+
+Our web applications are running under [Apache](https://httpd.apache.org/).
+
+We don't need to have Apache locally since we're using it as a Docker image.

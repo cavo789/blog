@@ -1,0 +1,10 @@
+.description {
+  font-size: 12px;
+}
+
+.date {
+  color: #888;
+  font-size: 0.95em;
+  margin-bottom: 8;
+  font-style: italic;
+}
