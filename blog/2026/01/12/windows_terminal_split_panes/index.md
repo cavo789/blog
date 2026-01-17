@@ -13,6 +13,10 @@ blueskyRecordKey: 3mc7k5cv3js2m
 
 ![Windows Terminal - Split Panes](/img/v2/windows_terminal_splitted_panes.webp)
 
+<TLDR>
+This article demonstrates how to configure Windows Terminal for efficient multitasking using split panes. It details two methods: hardcoding command lines within new profiles or reusing existing, potentially hidden, profiles to build complex workspace layouts. The guide also covers useful keyboard shortcuts, pane zooming, and broadcasting input to multiple panes simultaneously.
+</TLDR>
+
 In this article, we'll show how to create a Windows Terminal profile with three (or more) split panes so you can monitor multiple consoles at the same time.
 
 I often need this when working on a large project composed of several repositories: a backend application, a consumer application, a shared library, a proof-of-concept, ... that ties them together. Instead of opening separate terminal windows, I prefer a single window with split panes.

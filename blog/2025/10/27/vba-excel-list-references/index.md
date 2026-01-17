@@ -12,6 +12,11 @@ blueskyRecordKey: 3m45z7onhnc2o
 ---
 ![MS Excel - Get the list of references used in your modules](/img/v2/vba_export_xlsm.webp)
 
+<TLDR>
+This article presents a VBS script that automates the process of retrieving VBA references from multiple Excel `.xlsm` or `.xlam` files. Instead of manually checking each workbook, developers can run a simple `run.vbs` script in a target folder. The script will then open the files, disable macros, and output a list of all references found.
+</TLDR>
+
+
 So you're a VBA developer and you've created a lot of Excel `.xlsm` (or `.xlam`) workbooks i.e. files having VBA modules in it.
 
 How can you retrieve the list of references used by any of your files? For sure you can open the workbook, open the VBE editor, click on the `Tools` menu then `References` to get the dialog window with the list of references. Yes, you can.

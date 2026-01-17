@@ -12,6 +12,11 @@ blueskyRecordKey: 3m5vewhxkok2k
 ---
 ![Showing the changelog of your post](/img/v2/changelog.webp)
 
+<TLDR>
+This article demonstrates how to implement a detailed changelog for Docusaurus blog posts, extending beyond the default `last_update` field. It involves creating a custom React component that parses an `updates` array from the post's YAML frontmatter, allowing for multiple dated notes. The solution requires creating this component and then swizzling the `BlogPostItem/Content` theme to automatically display the update history.
+</TLDR>
+
+
 As a blog author, no doubt, it happens that you'll edit previous posts to add / clarify some part. Or just remove obsolete information.
 
 Docusaurus support the `last_update` ([source](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#last_update)) entry like illustrated below, but you just can foresee one date and no description.

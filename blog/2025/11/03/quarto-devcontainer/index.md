@@ -19,6 +19,11 @@ updates:
 
 ![Make your Quarto project Devcontainer-Ready — No More Setup Headaches](/img/v2/devcontainer_quarto.webp)
 
+<TLDR>
+This article details how to convert any Quarto project into a portable, VSCode-powered devcontainer, eliminating setup headaches. By adding three specific configuration files (`compose.yaml`, `Dockerfile`, `devcontainer.json`), users can create a fully equipped development environment. This setup includes pre-installed Quarto, configured VSCode extensions, and features like automatic preview and optional pre-commit hooks, simplifying documentation workflow.
+</TLDR>
+
+
 I love using Quarto and I've plenty of *documentation* projects on my disk. I'm writing user documentation, developer ones and, too, installation guide for almost every project I'm coding.
 
 I quickly came up with the idea of creating a Docker image so that I could develop my documentation in peace, as well as a devcontainer configuration for VSCode.  Now, when I want to write my documentation, in less than a minute, I can create an environment entirely dedicated to writing documentation.

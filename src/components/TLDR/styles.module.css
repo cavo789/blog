@@ -1,0 +1,26 @@
+.tldrContainer {
+  border-left-width: 5px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tldrHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.tldrIcon {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.tldrTitle {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tldrContent {
+  padding-left: 2.5rem;
+  opacity: 0.9;
+}

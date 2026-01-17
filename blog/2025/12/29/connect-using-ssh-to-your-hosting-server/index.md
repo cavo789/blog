@@ -11,6 +11,11 @@ blueskyRecordKey: 3mb4feo4u7c2t
 ---
 ![How to connect to your hosting  server using SSH](/img/v2/planethoster-using-ssh.webp)
 
+<TLDR>
+This guide explains how to configure SSH for passwordless, key-based authentication to your hosting server. It details gathering connection information, generating and copying an SSH public key, and setting up an alias in `~/.ssh/config`. This allows for convenient, one-command access like `ssh planethoster`.
+</TLDR>
+
+
 This guide explains how to configure SSH to connect to your hosting server using a short alias so you can SSH without entering a password each time you want to start the connection.
 
 You'll learn how to gather the required information, generate an SSH key pair, copy your public key to the server, and set up `~/.ssh/config` for a convenient shortcut.

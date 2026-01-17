@@ -12,6 +12,11 @@ blueskyRecordKey: 3m6w2zwj7u22n
 ---
 ![Discovering Zorin](/img/v2/zorin_os.webp)
 
+<TLDR>
+Zorin OS 18 is an Ubuntu-based Linux distribution designed for Windows users seeking an alternative, especially for older PCs. It features an easy installation process and a familiar, Windows-like interface, making the switch straightforward. The OS also boasts compatibility with many Windows applications via WINE and strong gaming support, positioning it as a top choice.
+</TLDR>
+
+
 Like everyone else, I have an old computer and with Windows 10 support coming to an end, I saw so many blog posts or news articles about [Zorin OS 18](https://zorin.com/) that I became curious and wanted to try it out.
 
 Zorin OS is a Linux distribution based on Ubuntu that targets users switching from Windows or macOS, with a desktop environment very similar to Windows.

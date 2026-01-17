@@ -13,6 +13,11 @@ blueskyRecordKey: 3m5ec6d4zn22x
 ---
 ![Running Docusaurus using Docker](/img/v2/docusaurus_using_docker.webp)
 
+<TLDR>
+This guide details how to streamline Docusaurus blog development using Docker. It outlines creating a single Docker image for production builds and leveraging VS Code Dev Containers for a consistent, fast, and isolated development environment. The setup enhances the workflow with integrated tools like LanguageTool and Code Spell Checker for improved content quality.
+</TLDR>
+
+
 Streamline your Docusaurus workflow with a clean, reproducible setup. In this updated guide, you'll learn how to maintain a Docusaurus blog using a single Docker image, VSCode DevContainers, and a workflow that makes both production builds and day-to-day writing fast and reliable.
 
 Eighteen months ago, I've published [Encapsulate an entire Docusaurus site in a Docker image](/blog/docker-docusaurus-prod) but, since then, I've refined the approach, especially around separating **production** and **development** environments cleanly (see [One Docker Image for Production and Devcontainers - The Clean Way](/blog/docker-prod-devcontainer)).

@@ -18,6 +18,7 @@ import StepsCard from "@site/src/components/StepsCard";
 import TabItem from "@theme/TabItem";
 import Tabs from "@theme/Tabs";
 import Terminal from "@site/src/components/Terminal";
+import TLDR from "@site/src/components/TLDR";
 import TOCInline from "@theme/TOCInline";
 import Trees from "@site/src/components/Trees";
 import Folder from "@site/src/components/Trees/Folder";
@@ -55,6 +56,7 @@ export default {
   TabItem,
   Tabs,
   Terminal,
+  TLDR,
   TOCInline,
   Trees,
 };

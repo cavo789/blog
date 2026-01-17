@@ -18,6 +18,11 @@ updates:
 
 ![A Docusaurus component that alerts readers the article is over a year old](/img/v2/old_blog_notice.webp)
 
+<TLDR>
+This article demonstrates creating a Docusaurus component to alert readers when a blog post is over a year old. It involves building a React component and "swizzling" the `BlogPostPage` template to inject this notice. The component determines an article's age by checking its `last_update` or `date` field in the front matter.
+</TLDR>
+
+
 In this article let's see how we can display a small frame "Warning: This article is at least a year old, which in tech years is basically prehistoric.".
 
 We'll create a React component for Docusaurus, and we'll inject it in our blog post page so, once in place, everything will work automagically.

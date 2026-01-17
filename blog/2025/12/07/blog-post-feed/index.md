@@ -13,6 +13,11 @@ blueskyRecordKey: 3m7f4ftmub22c
 ---
 ![Best Practice: Customizing the Docusaurus RSS Feed for Full Content & Images](/img/v2/docusaurus_rss_enhanced.webp)
 
+<TLDR>
+Docusaurus's default RSS feed is basic, lacking full article content and images, which limits its utility for RSS readers. This article provides a solution by guiding users to create a custom plugin that disables the default feed generation. The new plugin produces an enhanced `rss.xml` file, incorporating full article HTML content, images, and improved metadata for a richer reader experience.
+</TLDR>
+
+
 If you're running Docusaurus, you can ask it to generate a `rss.xml` file by adding the code below in the `blog` section of `docusaurus.config.js`.
 
 ```javascript

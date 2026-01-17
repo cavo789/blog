@@ -12,6 +12,11 @@ blueskyRecordKey: 3maksv6gjks25
 ---
 ![Troubleshooting for Docker containers - Accessing the other one](/img/v2/autopsy_binary_crime.webp)
 
+<TLDR>
+This article details troubleshooting steps for Docker containers unable to communicate, specifically when one container needs to access another's API on the same network. It systematically checks network configuration, port accessibility, and DNS resolution between containers. The ultimate solution involved configuring `no_proxy` environment variables within the consumer container to bypass an interfering proxy for internal Docker network addresses.
+</TLDR>
+
+
 The situation: I've two containers; one called `provider` and the other one called `consumer`. The `consumer` should be able to run an API on the `provider`.
 
 And ... it didn't work: something in my configuration is not correct because I get connection errors when trying to call the `provider`, let's start the investigation and understand the solution.

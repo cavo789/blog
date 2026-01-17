@@ -14,6 +14,11 @@ updates:
 ---
 ![SSH Remote development with VSCode](/img/v2/vscode_ssh_dev.webp)
 
+<TLDR>
+The article guides users on leveraging VS Code's Remote - SSH extension for direct development on remote servers. It details setting up connections, from a local Docker simulation to a production environment, to overcome network restrictions and avoid manual file transfers. This enables seamless editing and command execution directly on the remote host, integrating the full power of VS Code.
+</TLDR>
+
+
 In this article, let's explore how to develop directly on the server using VS Code on my machine while editing files stored on the server, without maintaining a local copy and manual uploads.
 
 My use case was simple: I had to run a Python script on a Linux server that could access an Oracle database, while my development environment (my computer or my Windows VM) could not reach that database due to network restrictions.
@@ -185,4 +190,3 @@ VS Code's [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-
 Commands executed in VS Code's integrated terminal run on the remote host, just like being logged in via SSH.
 
 At the beginning of this article I mentioned I couldn't connect to the database from my computer due to network restrictions. With the Remote - SSH extension, connecting from the editor to the server becomes possible and relatively straightforward.
-

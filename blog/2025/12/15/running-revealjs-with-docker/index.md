@@ -13,6 +13,11 @@ blueskyRecordKey: 3m7z22w3yjk2y
 ---
 ![Level Up Your Presentations with Quarto, reveal.js, Docker and DevContainers](/img/v2/quarto_reveal_docker.webp)
 
+<TLDR>
+This article details how to create and manage reveal.js presentations using Markdown, Quarto, Docker, and VSCode DevContainers. It outlines setting up a Quarto project within a DevContainer to write slides in Markdown, preview them live, and automatically reflect updates. The workflow also covers exporting presentations as static HTML sites and high-quality PDFs using Decktape, offering a streamlined alternative to traditional tools.
+</TLDR>
+
+
 It's been years, perhaps eight years, since I last used PowerPoint for a presentation.  Clicking, dragging, resizing, changing slide resolutions, damn it, starting all over again... Drawing text boxes, playing around with fonts and sizes, moving things around... Oh no, enough already!  No more PowerPoint. I'm still shaking.
 
 I use Markdown for all my documentation and exports (PDF, DOCX, etc.), so it made perfect sense to choose [reveal.js](https://revealjs.com/), which allow me to write my slides without touching the mouse, just by writing Markdown code.

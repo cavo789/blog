@@ -14,6 +14,11 @@ blueskyRecordKey: 3m32ko2ssss2z
 
 ![One Docker Image for Production and Devcontainers - The Clean Way](/img/v2/docker_workflow_prod_devcontainer.webp)
 
+<TLDR>
+This article presents a clean method for using a single Docker image for both production deployments and VS Code Devcontainers. The approach involves building a minimal, secure production image first, then extending it with development tools, specific user configurations, and overrides for a separate devcontainer image. This ensures a lightweight production environment with a reduced attack surface, while providing a rich and isolated development experience.
+</TLDR>
+
+
 This article is the result of intense reflection: how to define a Docker image for deployment in production as cleanly as possible and, while avoiding copy/paste and other repetitions as much as possible, create an image for development in devcontainer.
 
 In other words: I want to create the lightest and most secure image possible for deployment in production, but of course, I need to be able to develop this image in my VSCode environment, and for that, I need my development tools, a specific Linux user to synchronize files with my host and avoid permissions problems, etc.
