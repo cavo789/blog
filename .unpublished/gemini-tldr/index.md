@@ -5,6 +5,8 @@ date: 2026-01-17
 description: Improve your reader's experience by automatically generating concise TL;DR summaries for your blog posts using Google's Gemini AI and Python.
 authors: [christophe]
 image: /img/v2/gemini_tldr.webp
+series: Creating Docusaurus components
+mainTag: component
 tags: [ai, docker, docusaurus, python]
 draft: true
 language: en
@@ -116,4 +118,11 @@ You'll find below all the files you'll need to set this up in your own Docusauru
 Based on your Gemini AI plan, there may be limitations on the number of requests or the length of text you can process. Be sure to check your plan details to avoid unexpected charges or interruptions.
 
 Currently, my own plan allows me run 20 calls a day.
+</AlertBox>
+
+<AlertBox variant="note" title="src/theme/MDXComponents.js">
+
+Please don't forget to update your `src/theme/MDXComponents.js` file to include the new `TLDR` component, so Docusaurus knows how to render it. If you don't have that file yet, you can create it. Here is the content:
+
+<Snippet filename="src/theme/MDXComponents.js" source="./files/MDXComponents.js" defaultOpen={false} />
 </AlertBox>
