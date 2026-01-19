@@ -5,11 +5,12 @@ date: 2025-04-24
 description: Customize your Windows Terminal! Follow this simple, step-by-step guide to set a cool background image in your console and ditch the old, boring black screen.
 authors: [christophe]
 image: /img/v2/windows_terminal_customization.webp
-mainTag: customization
+mainTag: windows-terminal
 tags: [console, customization, dos, windows-terminal, wsl]
 language: en
 blueskyRecordKey: 3lvnjj5g4ic2v
 ---
+
 ![Use a background image in your Windows Terminal console](/img/v2/windows_terminal_customization.webp)
 
 If we're talking about the MS DOS console, everyone has in mind a very austere black screen with a fixed-width font. The display was monochrome, white on black. Not very sexy neither exciting, isn't it.

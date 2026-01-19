@@ -5,16 +5,18 @@ date: 2024-04-01
 description: A complete guide to Windows Terminal. Discover how to install, customize profiles, use backgrounds, and configure settings for WSL, Docker, and multi-tab startup actions.
 authors: [christophe]
 image: /img/v2/windows_terminal_tips.webp
-mainTag: customization
+mainTag: windows-terminal
 tags: [console, customization, dos, windows-terminal, wsl]
 language: en
 ---
+
 <!-- cspell:ignore wekyb,bbwe,xmens -->
+
 ![Windows Terminal](/img/v2/windows_terminal_tips.webp)
 
-For people who like working in a console, Windows Terminal can be seen as a successor of the old DOS console; you know the *black screen* where you can type commands like `dir` or `mkdir`.
+For people who like working in a console, Windows Terminal can be seen as a successor of the old DOS console; you know the _black screen_ where you can type commands like `dir` or `mkdir`.
 
-Windows Terminal is a multi-tab software so instead of having multiple windows, you just have multiple tabs but the most killing features for me is the possibility to have a DOS console in one tab, a Powershell one in a second tab, having one or more tabs for Linux and why not, a tab for a SSH connection.
+Windows Terminal is a multi-tab software so instead of having multiple windows, you just have multiple tabs but the most killing features for me is the possibility to have a DOS console in one tab, a Powershell one in a second tab, having one or more tabs for Linux and, why not, a tab for an SSH connection.
 
 And that feature is really comfortable! Using the same window, you can have multiple active consoles and f.i. share your Linux history between tabs. Pretty cool!
 
@@ -36,7 +38,7 @@ If you want to, proceed like this:
 
 * Click on the `+` button and chose `settings`
 * Click on the gear wheel, bottom left to open settings as a JSON file (in my case VSCode will be open)
-    ![The gear wheel](./images/gear.webp)
+  ![The gear wheel](./images/gear.webp)
 * In the opened editor, unfold the `list` of `profiles` and retrieve the one you wish to customize (in my case `Ubuntu`)
 
 In my case, my profile has these settings:

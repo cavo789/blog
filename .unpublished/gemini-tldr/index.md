@@ -98,13 +98,29 @@ $ python .scripts/python_tldr/main.py blog/2026/01/
 
 The script is smart enough to skip files that already have a `<TLDR>` tag, so you can run it safely on your entire blog archive.
 
+## Error - 429 RESOURCE_EXHAUSTED
+
+This error indicates that you've exceeded your usage limits for the Gemini API. Depending on your plan, there may be restrictions on the number of requests you can make or the amount of data you can process within a certain time frame.
+
+You can still use the same feature but manually: go to [https://gemini.google.com/app](https://gemini.google.com/app), paste the content of your blog post, and ask Gemini to generate a TL;DR summary for you. Then, copy the result and paste it into your blog post inside the `<TLDR>` component.
+
+Here is the prompt used to get the summary:
+
+```text
+You are an expert technical editor.
+
+Read the following article content and generate a 'TL;DR' summary.
+
+The summary must be concise (max 3 sentences) and written in the same language as the article.
+```
+
 ## Conclusion
 
 You'll find below all the files you'll need to set this up in your own Docusaurus blog. Feel free to adapt and improve the script as needed!
 
 <ProjectSetup folderName="/your_docusaurus_site" createFolder={false} >
   <Guideline>
-    Now, please run 'docker run -it --rm -v .:/app -w /app python sh -c "pip install google-genai python-dotenv && /bin/bash"' to start a terminal in the Python container. Then run something like 'python .scripts/python_tldr/main.py blog/2026/' for instance to add the TLDR summary in each blog post under that path..
+    Now, please run 'docker run -it --rm -v .:/app -w /app python sh -c "pip install google-genai python-dotenv && python .scripts/python_tldr/main.py blog/"' to add the TLDR summary in each blog post under /blog/.
   </Guideline>
   <Snippet filename=".env" source="./files/.env" defaultOpen={true} />
   <Snippet filename=".scripts/python_tldr/main.py" source="./files/main.py" />

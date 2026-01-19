@@ -5,7 +5,7 @@ date: 2026-01-12
 description: Learn how to split panes in Windows Terminal for efficient multitasking; shortcuts, configuration tips, and workflow examples.
 authors: [christophe]
 image: /img/v2/windows_terminal_splitted_panes.webp
-mainTag: customization
+mainTag: windows-terminal
 tags: [console, customization, windows-terminal, wsl]
 language: en
 blueskyRecordKey: 3mc7k5cv3js2m
@@ -84,10 +84,10 @@ If you need four panes, you can add another `sp` command in the `commandline` pr
 
 ```json
 {
-    "name": "My complex project - Workspace",
-    "icon": "🐍",
-    "commandline": "wt.exe nt -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_1 ; sp -H -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_2 ; sp -V -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_3 ; sp -V -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_4",
-    "hidden": false
+  "name": "My complex project - Workspace",
+  "icon": "🐍",
+  "commandline": "wt.exe nt -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_1 ; sp -H -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_2 ; sp -V -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_3 ; sp -V -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_4",
+  "hidden": false
 }
 ```
 
@@ -97,10 +97,10 @@ Or, if you want a layout with the screen divided into four quadrants (two on top
 
 ```json
 {
-    "name": "My complex project - Workspace",
-    "icon": "🐍",
-    "commandline": "wt.exe nt -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_1 ; sp -H -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_3 ; sp -V -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_4 ; mf up ; sp -V -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_2",
-    "hidden": false
+  "name": "My complex project - Workspace",
+  "icon": "🐍",
+  "commandline": "wt.exe nt -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_1 ; sp -H -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_3 ; sp -V -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_4 ; mf up ; sp -V -p \"Ubuntu 24.04\" wsl.exe -d Ubuntu-24.04 --cd ~/repositories/project_2",
+  "hidden": false
 }
 ```
 
@@ -197,7 +197,7 @@ In the code above, I've used a legacy one for illustration. I've kept the `guid`
 
 If you have a recent version, you can drop the `guid` line; it is no longer required.
 
-If you need to specify that attribute and are wondering *How can I generate a GUID string?*, there is a Linux command for that. Simply type `uuidgen` in your console. Each time you run it, you will get a new, valid GUID.
+If you need to specify that attribute and are wondering _How can I generate a GUID string?_, there is a Linux command for that. Simply type `uuidgen` in your console. Each time you run it, you will get a new, valid GUID.
 
 </AlertBox>
 
@@ -222,7 +222,6 @@ By clicking on it, you will now have a new terminal with 6 different panes, each
 
 ![Having up to six profiles](./images/windows_terminal_six_profiles.webp)
 
-
 ## Bonus
 
 ### Toggle zoom for a pane
@@ -237,9 +236,9 @@ Here is a list of useful keyboard shortcuts to manage panes in Windows Terminal:
 
 <AlertBox variant="note" title="`+` and `-` refer to the keys on the main keyboard, not the numeric keypad." />
 
-*   <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>+</kbd> : Split the current pane vertically.
-*   <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> : Split the current pane horizontally.
-*   <kbd>Alt</kbd> + <kbd>Shift</kbd> and use the arrow keys : Increase or decrease the size of the current pane in the direction of the arrow key.
+* <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>+</kbd> : Split the current pane vertically.
+* <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> : Split the current pane horizontally.
+* <kbd>Alt</kbd> + <kbd>Shift</kbd> and use the arrow keys : Increase or decrease the size of the current pane in the direction of the arrow key.
 
 Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> to close the current pane.
 

@@ -1,16 +1,20 @@
 ---
 slug: windows-terminal-ssh-profile
 title: Windows Terminal - Adding a SSH profile
-date: 2026-01-05
+date: 2026-01-19
 description: Adding a SSH profile to Windows Terminal to quickly connect to your servers without typing the full SSH command each time.
 authors: [christophe]
 image: /img/v2/adding_ssh_profile_to_windows_terminal.webp
-mainTag: customization
+mainTag: windows-terminal
 tags: [console, customization, dos, windows-terminal, wsl]
-draft: true
 language: en
 ---
+
 ![Windows Terminal - Adding a SSH profile](/img/v2/adding_ssh_profile_to_windows_terminal.webp)
+
+<TLDR>
+This guide demonstrates how to streamline server connections by creating a dedicated SSH profile directly within the Windows Terminal settings. Users simply need to add a new empty profile, configure the command line with their specific SSH instruction, and optionally customize the appearance with icons or background images. This setup enables immediate access to remote servers through the Terminal dropdown menu, eliminating the need to manually type connection commands.
+</TLDR>
 
 In this article, we'll see how to create a new SSH profile in Windows Terminal so we even don't need anymore to remember how to connect to the server; we just need to open the profile and that's all.
 
