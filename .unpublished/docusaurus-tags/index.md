@@ -69,7 +69,7 @@ But, for sure, that command is quite complex to remember so I'm using a Makefile
 $ make tags-manager ARGS="list"
 </Terminal>
 
-![List of tags](./images/list.png)
+![List of tags](./images/list.webp)
 
 **2. Renaming a tag:**
 

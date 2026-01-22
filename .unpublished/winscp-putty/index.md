@@ -8,13 +8,14 @@ tags: [putty, ssh, tips, winscp]
 draft: true
 date: 2026-12-31
 ---
+
 ![WinSCP - Start PuTTY without typing a password](/img/v2/putty.webp)
 
-[WinSCP](https://winscp.net/) is a free tool for Windows allowing you to connect to a remote server and start to upload/download files using various protocols like SFTP, FTP, SCP, ...  In short, it's a FTP client.
+[WinSCP](https://winscp.net/) is a free tool for Windows allowing you to connect to a remote server and start to upload/download files using various protocols like SFTP, FTP, SCP, ... In short, it's a FTP client.
 
-But not just that. Did you ever see there is an *Open session in PuTTY* button?
+But not just that. Did you ever see there is an _Open session in PuTTY_ button?
 
-![Open session in PuTTY](./images/putty.png)
+![Open session in PuTTY](./images/putty.webp)
 
 This will allow you to start a remote SSH connection on your server.
 
@@ -24,11 +25,11 @@ In this short article, we'll learn a tip: start an SSH connection without having
 
 First, make sure you've PuTTY installed. Visit the [official](https://www.putty.org/) site and just download the Windows executable. Save the **putty.exe** executable to, f.i., **C:\Program Files (x86)\PuTTY\putty.exe** (you'll need to create the folder yourself).
 
-Now, back to WinSCP, go to the `Options` menu then `Preferences`. In the left menu, click on  `Applications` under `Integrations`. Be sure to check *Remember session password and pass it to PuTTY*.
+Now, back to WinSCP, go to the `Options` menu then `Preferences`. In the left menu, click on `Applications` under `Integrations`. Be sure to check _Remember session password and pass it to PuTTY_.
 
-![Settings](./images/settings.png)
+![Settings](./images/settings.webp)
 
-Now by starting PuTTY, you won't be anymore prompted for credentials. Easy!
+Now by starting PuTTY, you won't be any-more prompted for credentials. Easy!
 
 ## Tip
 
