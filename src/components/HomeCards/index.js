@@ -37,7 +37,7 @@ const HomeCardItem = ({ title, description, url, image, alt }) => (
       <CardImage
         cardImageUrl={`/img/homepage/${image}`}
         alt={alt || title}
-        lazy={false}
+        lazy={true}
       />
       <CardBody
         className="padding-vert--md text--center"

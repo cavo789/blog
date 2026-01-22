@@ -42,7 +42,7 @@ docker run -it --rm \
     -v ${PWD}:/app \
     -w /app \
     --entrypoint /bin/sh \
-    mcr.microsoft.com/playwright/python:v1.55.0-jammy \
+    mcr.microsoft.com/playwright/python:v1.57.0-jammy \
     -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python lazy-load.py"
 ```
 

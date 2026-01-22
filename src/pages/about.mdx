@@ -9,22 +9,52 @@ import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
 
 <!-- cspell:ignore Racour,Marknotes,nowrap,docux -->
 
-My name is **Christophe Avonture**, a passionate developer based in [Racour](https://fr.wikipedia.org/wiki/Racour), Belgium.
+<Columns>
+  <Column className='text--justify'>
+    My name is **Christophe Avonture**, a passionate developer based in [Racour](https://fr.wikipedia.org/wiki/Racour), Belgium.
 
-With an insatiable curiosity, I devote a large part of my life to programming, exploring open source, and sharing knowledge, whether through projects, articles, or exchanges within tech communities.
+    With an insatiable curiosity, I devote a large part of my life to programming, exploring open source, and sharing knowledge, whether through projects, articles, or exchanges within tech communities.
 
-For years, I have been actively contributing to the Joomla ecosystem, both in Belgium and in the [French-speaking](https://forum.joomla.fr/member/38299-cavo789) world: participating in the organization of [JoomlaDays](https://www.joomladay.fr/?view=article&id=56:christophe-avonture&catid=17), writing articles for tje [Joomla Community Magazine](https://magazine.joomla.org/), developing extensions now obsoletes (SportingEvents & AllEvents) and sharing tutorials.
+    For years, I have been actively contributing to the Joomla ecosystem, both in Belgium and in the [French-speaking](https://forum.joomla.fr/member/38299-cavo789) world: participating in the organization of [JoomlaDays](https://www.joomladay.fr/?view=article&id=56:christophe-avonture&catid=17), writing articles for the [Joomla Community Magazine](https://magazine.joomla.org/), developing extensions now obsolete (SportingEvents & AllEvents) and sharing tutorials.
 
-In addition, Docker plays now a central role in my daily life since four years. I enjoy popularizing its use: creating tutorials, leading sessions, but also building reproducible environments so that developers can work more efficiently. I also explore modern tools such as Dagger.io to refine and automate my CI.CD workflows.
+    In addition, Docker has played a central role in my daily life for the past four years. I enjoy popularizing its use: creating tutorials, leading sessions, but also building reproducible environments so that developers can work more efficiently. I also explore modern tools such as Dagger.io to refine and automate my CI/CD workflows.
 
-I place vital importance on code quality. For me, it goes without saying that code should work, but it must also be clean, optimized, well formatted and documented, and refactored every time you can. Code should always reflect the best of your skills.
+    As far back as I can remember, even as a kid, I have kept this quote in mind:
 
+    <div style={{ borderLeft: '4px solid var(--ifm-color-primary)', paddingLeft: '1rem', margin: '1.5rem 0', fontStyle: 'italic' }}>
+      “Go back to your work twenty times: polish it constantly and polish it again; add something now and then, and often erase.”
+      <br/>
+      <small>— Nicolas Boileau/L'Art poétique (*"Vingt fois sur le métier remettez votre ouvrage : Polissez-le sans cesse et le repolissez ; Ajoutez quelquefois, et souvent effacez"*)</small>
+    </div>
+
+    This is, for me, the most important thing in being a developer: never stop striving to do better, and if you have to refactor your code, just do it—right now.
+
+    I would also add this:
+
+    <div
+      style={{
+        borderLeft: "4px solid var(--ifm-color-primary)",
+        paddingLeft: "1rem",
+        margin: "1.5rem 0",
+        fontStyle: "italic",
+      }}
+    >
+      It goes without saying that code should work, but it must also be clean,
+      optimized, well-formatted and documented, and refactored every time you can.
+      Code should always reflect the best of your skills.
+    </div>
+
+  </Column>
+  <Column>
+    ![Christophe Avonture](/img/avatar.webp)
+  </Column>
+</Columns>
 <Tabs>
 
   <TabItem value="achievements" label="Achievements" default>
     <Columns>
       <Column className='text--left'>
-        <img src="/img/about/achievements.webp" class="about_images" loading="lazy" alt="Achievements" />
+        ![Achievements](/img/about/achievements.webp)
       </Column>
       <Column className='text--justify'>
         In terms of achievements, I have published a lot of open source projects, mainly in PHP or related to automation (VBS and VBA scripts for Excel, [MarkNotes](https://github.com/cavo789/marknotes), a Markdown note management, guide for Visual Studio Code, etc.). My GitHub repository ([cavo789](https://github.com/cavo789)) includes [Excel macro export scripts](https://github.com/cavo789/vba_excel_export_code), [aeSecure QuickScan](https://github.com/cavo789/aesecure_quickscan) a PHP file scanning tools to detect viruses, solutions to improve productivity in VSCode, and ways to simplify Markdown note-taking.
@@ -40,43 +70,26 @@ I place vital importance on code quality. For me, it goes without saying that co
 <TabItem value="major" label="Major achievements">
   <Columns>
     <Column className="text--justify">
-      * `AllEvents`: Successor of SportingEvents, I created this events
-      extension for Joomla!, enabling advanced management of online events and
-      calendars. I transferred ownership of the extension to a friend who
-      ensured its evolution to Joomla 3 and 4.
+      ### AllEvents
+      Successor of SportingEvents, I created this event extension for Joomla!, enabling advanced management of online events and calendars. I transferred ownership of the extension to a friend who ensured its evolution to Joomla 3 and 4.
 
-      * `aeSecure`: I developed this
-      web-application firewall (WAF), widely used to secure Joomla! sites.
-      aeSecure offers different versions and includes the “QuickScan” antivirus
-      scan to detect malicious files. Many professionals have adopted it as an
-      essential protection solution. Now the maintenance of QuickScan is ensured
-      by the French Joomla Users community.
+      ### aeSecure
+      I developed this web-application firewall (WAF), widely used to secure Joomla! sites. aeSecure offers different versions and includes the “QuickScan” antivirus scan to detect malicious files. Many professionals have adopted it as an essential protection solution. Now the maintenance of QuickScan is ensured by the French Joomla Users community.
 
-      * `Marknotes`: Passionate about
-      productivity tools, I developed Marknotes, an open-source application for
-      efficiently organizing, searching, and managing Markdown notes, designed
-      for demanding users and knowledge management enthusiasts.
+      ### Marknotes
+      Passionate about productivity tools, I developed Marknotes, an open-source application for efficiently organizing, searching, and managing Markdown notes, designed for demanding users and knowledge management enthusiasts.
     </Column>
     <Column className="text--left">
-      <img
-        src="/img/about/major_achievements.webp"
-        class="about_images"
-        loading="lazy"
-        alt="Major achievements"
-      />
+      ![Major achievements](/img/about/major_achievements.webp)
     </Column>
+
   </Columns>
 </TabItem>
 
 <TabItem value="highlights" label="Highlights">
   <Columns>
     <Column className="text--left">
-      <img
-        src="/img/about/highlights.webp"
-        class="about_images"
-        loading="lazy"
-        alt="Highlights"
-      />
+      ![Highlights](/img/about/highlights.webp)
     </Column>
     <Column className="text--justify">
       * Developer and open source enthusiast based in Belgium.
@@ -97,18 +110,18 @@ I place vital importance on code quality. For me, it goes without saying that co
       * Spirit of transmission, continuous learning, and mutual aid in
       the tech ecosystem.
     </Column>
+
   </Columns>
 </TabItem>
 
   <TabItem value="networks" label="Social networks">
     <Columns>
       <Column className='text--justify'>
-      <div style={{ paddingBottom: '1em' }}>My public social networks are:</div>
+      <div style={{ paddingBottom: '1em', textAlign: 'center' }}>You can find me on:</div>
       <div style={{
-        alignContent: 'flex-start',
-        flexDirection: 'column',
         display: 'flex',
-        flexWrap: 'nowrap',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
         justifyContent: 'center',
         gap: '2rem'
       }}>
@@ -124,7 +137,7 @@ I place vital importance on code quality. For me, it goes without saying that co
       </div>
     </Column>
       <Column className='text--left'>
-        <img src="/img/about/social_networks.webp" class="about_images" loading="lazy" alt="Social networks" />
+        ![Social networks](/img/about/social_networks.webp)
       </Column>
     </Columns>
   </TabItem>

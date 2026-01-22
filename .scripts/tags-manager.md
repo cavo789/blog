@@ -33,13 +33,13 @@ The easiest and safest way to run the tool is by passing desired actions and arg
 make tags-manager ARGS="<action> <arguments>"
 ```
 
-| Action | Command example | Description |
-| --- | --- | --- |
-| **List Tags** | `make tags-manager ARGS="list"` | Lists all tags, default sort is by count. |
-| **List Tags (Sort by Name)** | `make tags-manager ARGS="list --sort name"` | Lists tags alphabetically. |
-| **Rename Tag** | `make tags-manager ARGS="rename old,new"` | Renames the old tag to new. |
-| **Delete Tag** | `make tags-manager ARGS="delete draft"` | Removes the draft tag from all files. |
-| **Show Help** | `make tags-manager ARGS="--help"` | Displays the full help page for the script. |
+| Action                       | Command example                             | Description                                 |
+| ---------------------------- | ------------------------------------------- | ------------------------------------------- |
+| **List Tags**                | `make tags-manager ARGS="list"`             | Lists all tags, default sort is by count.   |
+| **List Tags (Sort by Name)** | `make tags-manager ARGS="list --sort name"` | Lists tags alphabetically.                  |
+| **Rename Tag**               | `make tags-manager ARGS="rename old,new"`   | Renames the old tag to new.                 |
+| **Delete Tag**               | `make tags-manager ARGS="delete draft"`     | Removes the draft tag from all files.       |
+| **Show Help**                | `make tags-manager ARGS="--help"`           | Displays the full help page for the script. |
 
 ## Detailed Actions
 
@@ -47,10 +47,10 @@ make tags-manager ARGS="<action> <arguments>"
 
 The listing is followed by tag optimization suggestions.
 
-| Option | Value | Description |
-| --- | --- | --- |
+| Option   | Value             | Description                                                         |
+| -------- | ----------------- | ------------------------------------------------------------------- |
 | `--sort` | `count` (Default) | Sorts primarily by **frequency (count, descending)**, then by name. |
-| `--sort` | `name` | Sorts strictly by **tag name** (alphabetical, ascending). |
+| `--sort` | `name`            | Sorts strictly by **tag name** (alphabetical, ascending).           |
 
 For instance:
 
@@ -84,7 +84,7 @@ make tags-manager ARGS="delete obsolete-tag"
 
 The script currently targets Markdown files within a fixed directory structure.
 
-* **Target Directory**:  `blog`
+* **Target Directory**: `blog`
 * **File Pattern**: `blog/**/{*.md,*.mdx}` (searches recursively for all `.md` and `.mdx` files)
 
 If your project directory differs, you must update the `DOCS_DIR` variable at the top of the `tag_manager.py` script.

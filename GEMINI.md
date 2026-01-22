@@ -14,7 +14,7 @@ This document outlines the governance guidelines to be followed for maintaining 
 ## Coding Standards & Philosophy
 
 * **Modular Design:** Follow the Single Responsibility Principle (SRP). Keep components and functions short and focused.
-* **Strict Typing:** Always use ReactJS for React components. As much as possible prefer self-describing code. Add proper type annotations.  Add prop-types.
+* **Strict Typing:** Always use ReactJS for React components. As much as possible prefer self-describing code. Add proper type annotations. Add prop-types.
 * **Language:**
   * **Code & Comments:** Strictly **American English**. No French comments or documentation allowed within the codebase.
   * **Content:** The blog posts are written in **American English**. Always suggest correction if you see typos or better way to write things.
@@ -54,7 +54,7 @@ A **Docker-first** methodology is mandatory. All development, testing, and deplo
 * **Language:** All blog posts must be written in clear, concise American English.
 * **Structure:** Follow the established format for blog posts: `YYYY/MM/DD/slug/index.md'.
 * **Relative Resources:** Use relative paths like `./files/` or `./images/` for files to include or images (Co-location pattern).
-* **Snippets:** Use the custom `Snippet` component for code blocks to ensure consistent styling and formatting.
+* **Import code snippets:** Use the `Snippet` component to import code snippets from external files for better maintainability. Don't use inline code blocks but create separate files in the `files/` sub-folder. For instace, instead of writing code directly in the blog post, create a file like `files/example.js` and import it using the `Snippet` component like this: <Snippet filename="example.js" source="./files/example.js" defaultOpen={false} />.
 * **ProjectSetup:** Use the `ProjectSetup` component for setup instructions.
 * **Unpublished Posts:** These are posts that are not yet ready for publication and should be excluded from the main blog feed. They are stored in the `.unpublished/` directory. Ensure that these posts are properly marked (i.e. with `Draft: true` in their frontmatter) and not linked from published content.
 * **Homepage:** The homepage is located in `src/pages/index.mdx`. Any changes to the homepage layout or content should be made here.

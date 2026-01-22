@@ -153,7 +153,7 @@ check-images: ## Browse some pages and run some checks on images
         -v ${PWD}/.scripts:/app \
         -w /app \
         --entrypoint /bin/sh \
-        mcr.microsoft.com/playwright/python:v1.55.0-jammy \
+        mcr.microsoft.com/playwright/python:v1.57.0-jammy \
         -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python check-images.py"
 
 .PHONY: extract-inline-snippets

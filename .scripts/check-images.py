@@ -19,7 +19,7 @@ Usage in Docker:
         -v ${PWD}:/app \
         -w /app \
         --entrypoint /bin/sh \
-        mcr.microsoft.com/playwright/python:v1.55.0-jammy \
+        mcr.microsoft.com/playwright/python:v1.57.0-jammy \
         -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python lazy-load.py"
 
 Notes:
@@ -40,9 +40,9 @@ import urllib3
 # List of pages to check
 urls = [
     "https://host.docker.internal:3000/",
-    "https://host.docker.internal:3000/about",
-    "https://host.docker.internal:3000/blog",
-    "https://host.docker.internal:3000/blog/archive",
+    # "https://host.docker.internal:3000/about",
+    # "https://host.docker.internal:3000/blog",
+    # "https://host.docker.internal:3000/blog/archive",
     # add more pages here
 ]
 
