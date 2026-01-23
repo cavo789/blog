@@ -87,7 +87,7 @@ During the creation of the Docker image, we also install the `sudo` command and 
 
 If you pay attention to `.devcontainer/compose.yaml` file, you'll see an argument called `INSTALL_CHROMIUM`. Depending on your project, you'll need it or not.
 
-Indeed, under certain circumstances, when rendering your documentation to Word (i.e. by running f.i. `quarto render . --profile docx`), Quarto can ask you to install Chromium. To avoid to do this every-time, simply open the `.devcontainer/devcontainer.json` file, search for `INSTALL_CHROMIUM` and initialize it to `true`.
+Indeed, under certain circumstances, when rendering your documentation to Word (i.e. by running f.i. `quarto render . --profile docx --to docx`), Quarto can ask you to install Chromium. To avoid to do this every-time, simply open the `.devcontainer/devcontainer.json` file, search for `INSTALL_CHROMIUM` and initialize it to `true`.
 
 Note: if you change the `.devcontainer/Dockerfile` code or the `.devcontainer/devcontainer.json` file, you'll need to rebuild the container as explained here below.
 

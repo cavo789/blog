@@ -157,7 +157,7 @@ echo -e "  \e[1mQuarto Commands\e[0m"
 echo -e "  ───────────────"
 echo -e "  ✨ \e[32mquarto preview .\e[0m                             Start a hot-reloading preview in your browser."
 echo -e "  ✨ \e[32mquarto render .\e[0m                              Build the documentation (based on _quarto.yml)."
-echo -e "  ✨ \e[32mquarto render . --profile docx\e[0m               Build a .docx file (requires _quarto-docx.yml)."
+echo -e "  ✨ \e[32mquarto render . --profile docx --to docx\e[0m     Build a .docx file (requires _quarto-docx.yml)."
 EOF
 
 # Append conditional commands depending on optional tools
