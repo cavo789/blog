@@ -9,6 +9,9 @@ mainTag: quarto
 tags: [markdown, pandoc, quarto, revealjs]
 language: en
 blueskyRecordKey: 3lun2yevo622r
+updates:
+  - date: 2026-01-26
+    note: "Note about extension include-code-files"
 ---
 <!-- cspell:ignore frontmatter,fontawesome,gadenbuie,shafayetShafee -->
 
@@ -89,6 +92,26 @@ filters:
 </Snippet>
 
 ## quarto-ext/include-code-files
+
+<AlertBox variant="tip" title="Is this still needed?">
+Not sure this addon is still needed: in one of my documentation, I've used it like this:
+
+````markdown
+```{.yaml include="files/.gitlab-ci.yml"}
+```
+````
+
+It was working as expecting but during the generation of a `.docx` file (MS Word), the included file was missing.
+
+I've then use the native shortcode like below and, now, it works both for `.html` and `.docx`.
+
+````markdown
+```yaml
+{{< include files/.gitlab-ci.yml >}}
+```
+````
+
+</AlertBox>
 
 See [https://github.com/quarto-ext/include-code-files](https://github.com/quarto-ext/include-code-files)
 
