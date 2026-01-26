@@ -1,14 +1,13 @@
 ---
 slug: docusaurus-check-images
 title: Running some checks on your Docusaurus images
-date: 2026-10-31
+date: 2026-01-26
 description: A Python script to verify lazy loading and size of images in your Docusaurus site using Playwright and BeautifulSoup.
 authors: [christophe]
 image: /img/v2/check_images.webp
 series: Creating Docusaurus components
 mainTag: Docusaurus
 tags: [docker, docusaurus, python]
-draft: true
 language: en
 ---
 
@@ -86,9 +85,9 @@ For instance:
 
 ![Example output](./images/output.webp)
 
-Up to you, now, to act on the results! On my own blog, I've add some missing attributes and optimized some images that were too large. I've reviewed my React components too to ensure they also include lazy loading where appropriate.
+Up to you, now, to act on the results! On my own blog, I've added some missing attributes and optimized some images that were too large. I've reviewed my React components too to ensure they also include lazy loading where appropriate.
 
-### Additionnal Checks
+### Additional Checks
 
 The script also do these checks:
 
