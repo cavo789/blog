@@ -1,18 +1,22 @@
 ---
 slug: docusaurus-tags
 title: Tags management in Docusaurus
-date: 2026-12-31
-description:
+date: 2026-02-02
+description: Automate Docusaurus tag management with this Python script. Clean up duplicates, fix casing, and merge tags safely across hundreds of Markdown files via Docker.
 authors: [christophe]
 image: /img/v2/tags_manager.webp
 series: Creating Docusaurus components
 mainTag: Docusaurus
 tags: [docker, docusaurus, python]
-draft: true
 language: en
+blueskyRecordKey:
 ---
 
 ![Tags management in Docusaurus](/img/v2/tags_manager.webp)
+
+<TLDR>
+This article introduces a custom Python script designed to automate the cleanup and management of inconsistent tags within a Docusaurus blog. The tool runs in a Docker container to list, rename, and delete tags while providing smart suggestions for merging duplicates or fixing case variations. It also discusses using Docusaurus's native configuration options to enforce stricter tag usage policies moving forward.
+</TLDR>
 
 More than 200 blog posts later, my Docusaurus site has accumulated a bit of tag chaos. Too many similar tags, inconsistent capitalization, singular vs plural forms... Tags with just one or two posts. And so on.
 

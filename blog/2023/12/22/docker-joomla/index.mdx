@@ -33,6 +33,15 @@ blueskyRecordKey: 3lx57pqunek23
 
 ![Create your Joomla website using Docker - Part 1](/img/v2/joomla.webp)
 
+<TLDR>
+  This article details how to rapidly set up a local Joomla website using Docker
+  by configuring a `compose.yaml` file to orchestrate the application and
+  database services. It explains critical steps for ensuring data persistence
+  through volume synchronization, managing ports for multiple projects, and
+  customizing database connections. The tutorial concludes with a CLI one-liner
+  to deploy the entire environment in seconds.
+</TLDR>
+
 <!-- cspell:ignore apac, ibdata, ibtmp -->
 
 In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** _(don't want to wait? Jump to the <a href="#bonus---install-joomla-with-a-cli-one-liner">Bonus - Install Joomla with a CLI one-liner</a>" chapter)_.

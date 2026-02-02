@@ -9,9 +9,14 @@ series: Creating Docusaurus components
 mainTag: Docusaurus
 tags: [docker, docusaurus, python]
 language: en
+blueskyRecordKey: 3mdcpoxnzjc2h
 ---
 
 ![Running some checks on your Docusaurus images](/img/v2/check_images.webp)
+
+<TLDR>
+This article explains how to enforce lazy loading on a Docusaurus blog by overriding the default MDX image component to automatically inject the loading attribute. It further details how to validate this behavior using a containerized Python and Playwright script that simulates user scrolling to check image attributes and file sizes. This workflow ensures that performance best practices are consistently applied and verified across all blog content.
+</TLDR>
 
 Like you know me well enough now, you know I care a lot about performance. For a lot of good reasons but mainly because it's fun to optimize things and see the results immediately. And it's a good challenge too!
 

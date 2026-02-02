@@ -20,6 +20,15 @@ updates:
 
 ![Restore a Joomla backup using Docker](/img/v2/joomla.webp)
 
+<TLDR>
+  This guide explains how to restore a Joomla site locally by combining Docker,
+  an Akeeba Backup archive, and the Akeeba Kickstart utility. Users configure a
+  custom environment with PHP and Apache, then execute a simple import command
+  to deploy the necessary files and containers. The process is completed by
+  accessing the Kickstart wizard in a browser to finalize the database
+  connection and site restoration.
+</TLDR>
+
 In previous articles ([Part 1](/blog/docker-joomla) and [Part 2](/blog/docker-joomla-part-2)), we've seen how to create a Joomla site from scratch by using Docker: pull Joomla, PHP, Apache and MySQL from Docker Hub and do magic stuff so we have a fresh `http://127.0.0.1:8080` local site.
 
 In this article, we'll see how to restore on our machine, a backup created thanks to great **[Akeeba Backup](https://www.akeeba.com/products/akeeba-backup.html)** component.

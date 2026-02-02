@@ -8,6 +8,7 @@ image: /img/v2/adding_ssh_profile_to_windows_terminal.webp
 mainTag: windows-terminal
 tags: [console, customization, dos, windows-terminal, wsl]
 language: en
+blueskyRecordKey: 3mcr66gr7zk2k
 ---
 
 ![Windows Terminal - Adding a SSH profile](/img/v2/adding_ssh_profile_to_windows_terminal.webp)

@@ -19,6 +19,17 @@ updates:
 
 ![Create your Joomla website using Docker - Part 2](/img/v2/joomla.webp)
 
+<TLDR>
+  This guide details how to automate local Joomla development with Docker by
+  combining `compose.yaml`, `.env`, and `makefile` configurations to deploy
+  fully configured sites with a single command. It explains how to bypass the
+  standard installation wizard by pre-defining environment variables and
+  demonstrates how to manage multiple isolated projects with different Joomla
+  and PHP versions simultaneously on one machine. The tutorial provides specific
+  configuration examples to ensure data persistence and enable conflict-free
+  operation across concurrent instances.
+</TLDR>
+
 <!--cspell:ignore runningjoomlaindocker, mysqli -->
 <!-- markdownlint-disable-file MD010 MD026 -->
 
