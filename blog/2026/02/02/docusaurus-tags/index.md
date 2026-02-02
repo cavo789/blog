@@ -9,7 +9,7 @@ series: Creating Docusaurus components
 mainTag: Docusaurus
 tags: [docker, docusaurus, python]
 language: en
-blueskyRecordKey:
+blueskyRecordKey: 3mdubzzquds2t
 ---
 
 ![Tags management in Docusaurus](/img/v2/tags_manager.webp)
