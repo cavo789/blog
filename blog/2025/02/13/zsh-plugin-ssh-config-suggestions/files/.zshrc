@@ -1,5 +1,5 @@
 plugins=(
   git
   # ... your existing plugins
-  zsh-autosuggestions
+  zsh-ssh-config-suggestions
 )

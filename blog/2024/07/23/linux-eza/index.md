@@ -8,6 +8,9 @@ image: /img/v2/linux_tips.webp
 mainTag: customization
 tags: [customization, linux]
 language: en
+updates:
+  - date: 2026-02-04
+    note: still accurate, no obsolete info
 ---
 ![Let's revisit the ls command thanks to eza](/img/v2/linux_tips.webp)
 

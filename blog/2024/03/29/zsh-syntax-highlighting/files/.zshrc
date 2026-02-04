@@ -1,5 +1,5 @@
 plugins=(
   git
-  zsh-autosuggestions
+  # ... your existing plugins
   zsh-syntax-highlighting
 )

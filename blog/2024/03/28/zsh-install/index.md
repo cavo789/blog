@@ -8,6 +8,9 @@ image: /img/v2/zsh.webp
 mainTag: zsh
 tags: [customization, linux, wsl, zsh]
 language: en
+updates:
+  - date: 2026-02-04
+    note: still accurate, no obsolete info
 ---
 ![How to install Oh-My-ZSH](/img/v2/zsh.webp)
 

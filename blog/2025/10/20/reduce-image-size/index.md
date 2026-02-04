@@ -8,6 +8,9 @@ image: /img/v2/image_optimization.webp
 mainTag: optimization
 tags: [images, optimization, tips]
 language: en
+updates:
+  - date: 2026-02-04
+    note: add recursive CLI
 blueskyRecordKey: 3m3m74j2e6c2e
 ---
 <!-- cspell:ignore Korben,Squoosh,brew,caesiumclt,behat -->
@@ -47,6 +50,10 @@ Compressed 7 files (7 success, 0 skipped, 0 errors)
 As we can see here above, I've converted seven PNG to WEBP, the new files are stored in the same folder.
 
 Now, I just need to manually edit my blog post (using these images)
+
+<AlertBox variant="tip" title="Do it recursively">
+Add the `--recursive` flag like in `caesiumclt -q 85 --recursive --format webp --same-folder-as-input *.png` to process all files from your current folder.
+</AlertBox>
 
 ## How to determine the biggest folders on your disk
 

@@ -8,6 +8,9 @@ image: /img/v2/zsh.webp
 mainTag: zsh
 tags: [customization, linux, wsl, zsh]
 language: en
+updates:
+  - date: 2026-02-04
+    note: updated plugins array; show only installed plugins
 ---
 ![Syntax highlighting in the console using ZSH](/img/v2/zsh.webp)
 
@@ -33,7 +36,7 @@ Then edit the `~/.zshrc` file, search for `plugins=(` and add `zsh-autosuggestio
 
 <Snippet filename="~/.zshrc" source="./files/.zshrc" />
 
-Close your console, open a new one and it's done.
+Close your console, open a new one (or run `source ~/.zshrc` to load your change) and it's done.
 
 ## How to use it
 
@@ -45,4 +48,4 @@ From now, when you'll type a command like f.i. `cat` or `head`, the command will
 
 As the opposite, it'll appears in red when the command contains a typo i.e. isn't an executable one:
 
-![Highlight in red](./images/docker_dompose.webp)
+![Highlight in red](./images/docker_compose.webp)

@@ -8,6 +8,9 @@ image: /img/v2/ssh.webp
 mainTag: ssh
 tags: [customization, linux, ssh, wsl, zsh]
 language: en
+updates:
+  - date: 2026-02-04
+    note: updated plugins array; show only installed plugins
 blueskyRecordKey: 3lwgca4zqh22i
 ---
 ![SSH - Autosuggestions with ZSH](/img/v2/ssh.webp)
@@ -30,14 +33,17 @@ This is where the `~/.ssh/config` is so helpful (please refer to this <Link to="
 
 ## Installation of the zsh-ssh-config-suggestions plugin
 
-If you've a ZSH user, please surf to [https://github.com/yngc0der/zsh-ssh-config-suggestions](https://github.com/yngc0der/zsh-ssh-config-suggestions) and follow installation's instructions.
+Just clone the official repository like below:
 
-In short:
+<Terminal>
+$ {`git clone https://github.com/yngc0der/zsh-ssh-config-suggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-ssh-config-suggestions`}
+</Terminal>
 
-1. First run this command `git clone https://github.com/yngc0der/zsh-ssh-config-suggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-ssh-config-suggestions` to get a local copy of the plugin in your `Oh-my-zsh` plugin folder.
-2. Edit your `~/.zshrc` file, search the line with the `plugins=(` declaration and just add `zsh-ssh-config-suggestions` in the list.
-3. Close and save your changes.
-4. Run `source ~/.zshrc` to reload that file so your change can be taken into account.
+Then edit the `~/.zshrc` file, search for `plugins=(` and add `zsh-ssh-config-suggestions` to the list. You'll have f.i. something like:
+
+<Snippet filename="~/.zshrc" source="./files/.zshrc" />
+
+Close your console, open a new one (or run `source ~/.zshrc` to load your change) and it's done.
 
 ## Use it
 

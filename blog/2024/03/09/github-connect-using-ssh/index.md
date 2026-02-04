@@ -8,6 +8,9 @@ image: /img/v2/github_tips.webp
 mainTag: github
 tags: [github, ssh, tips]
 language: en
+updates:
+  - date: 2026-02-04
+    note: remove /root in paths; replaced by ~ for the current user
 ---
 ![Github - Connect your account using SSH and start to work with git@ protocol](/img/v2/github_tips.webp)
 
@@ -31,11 +34,11 @@ You'll then see something like this on your console:
 
 <Terminal>
 Generating public/private ed25519 key pair.
-Enter file in which to save the key (/root/.ssh/id_ed25519):
+Enter file in which to save the key (~/.ssh/id_ed25519):
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
-Your identification has been saved in /root/.ssh/id_ed25519
-Your public key has been saved in /root/.ssh/id_ed25519.pub
+Your identification has been saved in ~/.ssh/id_ed25519
+Your public key has been saved in ~/.ssh/id_ed25519.pub
 The key fingerprint is:
 SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx your_email@example.com
 The key's randomart image is:
@@ -62,8 +65,8 @@ Give a clear title like f.i. `Home computer`.
 
 In the `Key` textarea, you'll need to paste there your **public** key.
 
-Take a look on what you got on screen previously when running the `ssh-keygen` command. The public key path was mentioned; f.i., `Your public key has been saved in /root/.ssh/id_ed25519.pub`.
+Take a look on what you got on screen previously when running the `ssh-keygen` command. The public key path was mentioned; f.i., `Your public key has been saved in ~/.ssh/id_ed25519.pub`.
 
-So, just run `cat /root/.ssh/id_ed25519.pub` in your Linux console and you'll get the key value. Copy/paste that line in Github settings page and, then, click on the `Add SSH key` button.
+So, just run `cat ~/.ssh/id_ed25519.pub` in your Linux console and you'll get the key value. Copy/paste that line in Github settings page and, then, click on the `Add SSH key` button.
 
 Finally, if you want to test if the connection is successfully created, just run `ssh -T git@github.com`. You should get `Hi cavo789! You've successfully authenticated, but GitHub does not provide shell access.` (with your own pseudo of course).
