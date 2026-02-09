@@ -8,7 +8,7 @@ image: /img/v2/github_profile_automate.webp
 mainTag: Github
 tags: [actions, docusaurus, github]
 language: en
-blueskyRecordKey:
+blueskyRecordKey: 3meftwuqydk2x
 ---
 ![Automate your GitHub README with your latest blog posts](/img/v2/github_profile_automate.webp)
 
@@ -39,7 +39,7 @@ I've to create a GitHub action (so I should create the `.github/workflows` folde
 
 And in that folder, I'll create a new YAML file, let's call it `blog-post-workflow.yml`:
 
-<Snippet filename=".github/workflows/blog-post-workflow.yml" source="./files/blog-post-workflow.yml" />
+<Snippet filename=".github/workflows/blog-post-workflow.yml" source=".github/workflows/blog-post-workflow.yml" />
 
 ### Step by step explanations
 
