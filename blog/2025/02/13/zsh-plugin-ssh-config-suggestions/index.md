@@ -33,11 +33,7 @@ This is where the `~/.ssh/config` is so helpful (please refer to this <Link to="
 
 ## Installation of the zsh-ssh-config-suggestions plugin
 
-Just clone the official repository like below:
-
-<Terminal>
-$ {`git clone https://github.com/yngc0der/zsh-ssh-config-suggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-ssh-config-suggestions`}
-</Terminal>
+Just clone the official repository by running this command: `git clone https://github.com/yngc0der/zsh-ssh-config-suggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-ssh-config-suggestions`. You'll get a local copy of the plugin in your `Oh-my-zsh` plugin folder.
 
 Then edit the `~/.zshrc` file, search for `plugins=(` and add `zsh-ssh-config-suggestions` to the list. You'll have f.i. something like:
 
