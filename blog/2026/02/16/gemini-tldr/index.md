@@ -9,6 +9,7 @@ series: Creating Docusaurus components
 mainTag: component
 tags: [ai, docker, docusaurus, python]
 language: en
+blueskyRecordKey: 3mexhwsmhac2n
 ---
 
 ![Automating TL;DR Summaries with Gemini AI](/img/v2/gemini_tldr.webp)
