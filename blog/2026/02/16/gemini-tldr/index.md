@@ -1,14 +1,13 @@
 ---
 slug: gemini-tldr
 title: Automating TL;DR Summaries with Gemini AI
-date: 2026-01-17
+date: 2026-02-16
 description: Improve your reader's experience by automatically generating concise TL;DR summaries for your blog posts using Google's Gemini AI and Python.
 authors: [christophe]
 image: /img/v2/gemini_tldr.webp
 series: Creating Docusaurus components
 mainTag: component
 tags: [ai, docker, docusaurus, python]
-draft: true
 language: en
 ---
 
@@ -101,6 +100,8 @@ The script is smart enough to skip files that already have a `<TLDR>` tag, so yo
 ## Error - 429 RESOURCE_EXHAUSTED
 
 This error indicates that you've exceeded your usage limits for the Gemini API. Depending on your plan, there may be restrictions on the number of requests you can make or the amount of data you can process within a certain time frame.
+
+*The free plan is quite limited, so if you have a lot of blog posts, you might want to consider upgrading your plan or running the script in batches to avoid hitting the limit.*
 
 You can still use the same feature but manually: go to [https://gemini.google.com/app](https://gemini.google.com/app), paste the content of your blog post, and ask Gemini to generate a TL;DR summary for you. Then, copy the result and paste it into your blog post inside the `<TLDR>` component.
 
