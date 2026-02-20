@@ -15,6 +15,10 @@ blueskyRecordKey: 3lxm2amkjjk2m
 
 ![Writing functional tests with Pest](/img/v2/functional_tests.webp)
 
+<TLDR>
+This article provides a comprehensive guide to writing functional tests for your website using Pest v4. It walks you through setting up a complete Docker-based testing environment from scratch, including creating a Dockerfile and a Makefile for easy command execution. You'll learn how to write a browser test case, run it against a live website, and interpret the results. The post also covers how Pest automatically captures screenshots on failure, making debugging easier, and provides insights into the underlying technology like Playwright.
+</TLDR>
+
 Last year, I wrote [Write PHP unit tests using Pest](/blog/pest_tips). Since then [Nuno Maduro](https://nunomaduro.com/) has released [Pest](https://pestphp.com/) in a version 4 with **built-in browser testing**.
 
 What does that mean? Now, aside unit testing (see my previous article), we can also ask Pest to visit a website and make actions like clicking on a button, filling in some fields (think to a login page, a search field, ...), submitting forms, navigating, ... and thus, yes, running some functional tests.

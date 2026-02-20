@@ -14,6 +14,10 @@ blueskyRecordKey: 3lynkx4gkjk2c
 
 ![Providing a go to the top button in Docusaurus posts](/img/v2/go_top_banner.webp)
 
+<TLDR>
+This article is a quick tutorial on how to add a 'scroll to top' button to your Docusaurus blog. It walks you through implementing a custom `<ScrollToTopButton>` React component, including its CSS for styling. You'll learn how to override the default `BlogPostItem` theme component to automatically inject the button at the bottom of every blog post. The guide also provides tips on adding the button to other parts of your site, such as the blog archive or custom pages.
+</TLDR>
+
 More on smartphones than on computers; it's pretty nice to have a *Back to top of page* button to avoid dislocating your thumb.
 
 [Docux](http://docuxlab.com/), a friend, recently developed this feature and I was really happy to add it, especially since it's terribly easy to use and adds a fun element; it's cool.

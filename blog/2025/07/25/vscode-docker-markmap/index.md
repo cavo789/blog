@@ -12,6 +12,10 @@ blueskyRecordKey: 3lurgf4ddp22y
 ---
 ![Getting a more attractive mindmap with Markmap and Quarto](/img/v2/mindmaps.webp)
 
+<TLDR>
+This article provides a step-by-step guide on how to create attractive, interactive mind maps from simple Markdown files. You'll learn how to use the Markmap VS Code extension to instantly visualize your Markdown lists as mind maps directly within your editor. The post also covers how to customize the appearance of your mind map using VS Code settings. Finally, it demonstrates how to use Quarto, via a simple Docker-based shell script, to render your mind map into a polished, standalone HTML page, without needing to install any tools locally.
+</TLDR>
+
 In 2023, I wrote this <Link to="/blog/docker-mindmap">Build a mind map using Docker and Markdown</Link> blog post about how to render a Markdown document as a mindmap.
 
 This time, I would like to go one step further and make it more attractive.

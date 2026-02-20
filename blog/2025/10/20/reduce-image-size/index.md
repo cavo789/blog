@@ -17,6 +17,10 @@ blueskyRecordKey: 3m3m74j2e6c2e
 
 ![CaesiumCLT – Effortlessly compress your images right on your device](/img/v2/image_optimization.webp)
 
+<TLDR>
+This article introduces CaesiumCLT, a command-line tool for efficiently compressing images. The author explains how to install the tool using Homebrew and provides a practical command to convert and compress PNG files into the modern WEBP format, demonstrating significant file size reduction. The post also includes a helpful shell command to identify directories with the largest image files, allowing you to target your optimization efforts effectively, and mentions how to run the compression recursively through subfolders.
+</TLDR>
+
 Korben, a well-known French blogger, has recently posted this article: [https://korben.info/caesium-compression-images-ecologie-numerique.html](https://korben.info/caesium-compression-images-ecologie-numerique.html) and, damned, just a few days too late for me.
 
 I just recreate all images on my blog and I've manually converted all images ... one by one ... using [Squoosh](https://squoosh.app/).

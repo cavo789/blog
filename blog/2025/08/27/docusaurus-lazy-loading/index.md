@@ -15,6 +15,10 @@ blueskyRecordKey: 3lxekkxhjwc26
 
 ![Overrides the generation of img tags with Docusaurus](/img/v2/docusaurus_component.webp)
 
+<TLDR>
+This article provides a simple solution for enabling lazy loading for images in Docusaurus to improve performance. It explains how to intercept the default rendering of `<img>` tags by customizing the `src/theme/MDXComponents.js` file. By adding a simple mapping, you can force all images to be lazy-loaded and even apply custom styles, without needing to create a complex component or plugin.
+</TLDR>
+
 While searching for good tips & tricks about Docusaurus when the number of articles become important, I read that we need to pay attention to lazy load images and, indeed, by default all images are loaded when a blog post is first accessed.
 
 In this article, we'll see how to, so easily, we can intercept the creation of the `<img>` tag when the Markdown content is converted to HTML.

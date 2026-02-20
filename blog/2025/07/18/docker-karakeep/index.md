@@ -14,6 +14,10 @@ blueskyRecordKey: 3lujtc27n7s23
 
 ![karakeep - The Bookmark Everything App](/img/v2/docker_playing_with_app.webp)
 
+<TLDR>
+This article introduces karakeep, a self-hosted, all-in-one application for managing bookmarks, notes, and images, highlighting its powerful search capabilities. The guide provides a step-by-step tutorial on how to install karakeep using a custom Docker Compose setup. It explains how to configure the `compose.yaml` file to persist data on the host system for easy access and to set the correct user permissions. After installation, the post walks through the initial user setup and demonstrates key features like adding new items and organizing them into hierarchical lists.
+</TLDR>
+
 Since a few months, I'm using <Link to="/blog/heimdall-dashboard">Heimdall</Link> but it has one major weakness: its hyper-basic search engine (which is even non-existent, since it's not possible to search for a link globally).
 
 So I was rather dissatisfied and waiting to find something better: karakeep.

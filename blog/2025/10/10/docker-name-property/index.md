@@ -14,6 +14,10 @@ blueskyRecordKey: 3m2syybizfc2z
 
 <!-- cspell:ignore Karakeep,neosmemo,heimdall -->
 
+<TLDR>
+This article provides a quick tip for organizing your containers in Docker Desktop. It explains how to use the top-level `name` property in your `compose.yaml` files to group related services together under a single, collapsible entry in the Docker Desktop UI. This simplifies management, allowing you to start and stop multiple containers at once and keep your workspace tidy. The post also notes that this is a UI feature and suggests converting `docker run` commands to a compose file to take advantage of it.
+</TLDR>
+
 On a daily base, I'm running several tools as Docker containers: <Link to="/blog/heimdall-dashboard">Heimdall</Link>, <Link to="/blog/docker-memos">Memos</Link> and <Link to="/blog/docker-karakeep">Karakeep</Link>. It can be one or more containers buy tools.
 
 I'm working under Windows so I'm using Docker Desktop to get a list of containers and, because I'm working with Docker for my own projects (can be Python, PHP or whatever), I'm facing with the following situation: I've a big list of containers and I would like some order.

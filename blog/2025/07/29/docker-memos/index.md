@@ -14,6 +14,10 @@ blueskyRecordKey: 3lv3hzdh4mk2v
 
 ![Self-hosted note-taking application](/img/v2/docker_playing_with_app.webp)
 
+<TLDR>
+This article introduces 'memos', a lightweight and simple self-hosted note-taking application perfect for developers' daily reminders and tasks. The guide provides a complete walkthrough of installing memos using a custom Docker Compose setup, emphasizing how to configure it for data persistence and correct file permissions. You'll learn how to get started, create notes using Markdown and checklists, organize them with tags, and use advanced filters called 'shortcuts'. The post also highlights practical features like the ability to paste images directly into your notes.
+</TLDR>
+
 As a developer, I'm working all day on a computer and sometimes (too often in fact), at the end of the day, I send myself an email for tomorrow's me *Don't forget to ...*, *you have to continue [a task]*, *I stopped at [a file], I've to continue the others*, in short, I use my inbox like a to-dos/to-remember manager.
 
 Can we do better? Of course, but which tool should I choose?

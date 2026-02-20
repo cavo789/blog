@@ -14,6 +14,10 @@ blueskyRecordKey: 3lujtglddu223
 
 <!-- cspell:ignore codercom -->
 
+<TLDR>
+This article shows you how to run a full VS Code environment directly in your browser using the `code-server` Docker image. It's a perfect solution if you need to code on a machine without VS Code installed. The guide provides a single `docker run` command and breaks down each flag to explain how it mounts your project, persists configuration, and avoids file permission issues by mapping your local user. You'll learn how to find the auto-generated password and get started with your browser-based editor in minutes.
+</TLDR>
+
 Maybe one day we won't need to install an operating system, just have Docker on our machine.  Well, it won't be tomorrow yet, but as far as VSCode is concerned, yes, we can.
 
 You read that right: there's a Docker image that's nothing other than VSCode in a browser.

@@ -92,3 +92,9 @@ A **Docker-first** methodology is mandatory. All development, testing, and deplo
 
 * **Snippets:** Custom VSCode snippets are provided in `.vscode/markdown.code-snippets` for common patterns and components.
 * **Settings:** Recommended settings are in `.vscode/settings.json` to ensure consistent formatting and linting.
+
+## Instructions for Gemini/Jules
+
+* Minimize confirmation prompts for routine code generation.
+* When generating new React components for Docusaurus, apply changes directly.
+* I prefer to review changes via Git diff rather than manual 'Accept' buttons.

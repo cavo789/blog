@@ -15,6 +15,10 @@ blueskyRecordKey: 3lww5fbh2y22q
 
 ![Change how Docusaurus will create img tags](/img/v2/docusaurus_component.webp)
 
+<TLDR>
+This post explains how to customize image rendering in Docusaurus by creating a custom `<Image>` React component. You'll learn how to build the component, style it with CSS, and then use a custom Remark plugin to automatically replace standard Markdown images with your new component. The guide also covers how to configure the plugin to skip the first image in a post and how to register it in your Docusaurus configuration, giving you full control over how images are displayed.
+</TLDR>
+
 I'll start a series about writing components for Docusaurus.
 
 Since it's always nice to start with something very concrete and practical, here's what we're going to do: we'll intercept the conversion from `![Alt text](./img/example.webp)` to a HTML `<img>` tag. We'll force Docusaurus to use instead a component `<Image>` from our own.

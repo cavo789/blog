@@ -18,6 +18,10 @@ updates:
 
 ![Organize Your Docusaurus Content with a Custom Series Component](/img/v2/docusaurus_component.webp)
 
+<TLDR>
+This in-depth guide teaches you how to implement a complete 'blog post series' feature in Docusaurus. You'll learn to create a `<SeriesPosts>` component that displays a series banner on individual posts, and a dedicated `/series` page that lists all your series as cards. The tutorial covers creating multiple React components, utility helpers for fetching post data, overriding Docusaurus theme components via swizzling, and building a custom local plugin to handle dynamic series routes. Finally, it shows how to add custom descriptions and images to your series using a centralized data file.
+</TLDR>
+
 If you have been using Docusaurus for a long time, you may have noticed that it is not possible to link articles together as a series.
 
 It would be nice to write a first article, a second, a third, and so on, and be able to tell Docusaurus that these articles are part of the same series.

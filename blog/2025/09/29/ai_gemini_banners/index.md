@@ -15,6 +15,10 @@ blueskyRecordKey: 3lzxdr6w3e223
 
 ![How I used Google Gemini Nano Banana on my blog](/img/v2/gemini.webp)
 
+<TLDR>
+This article details the author's journey of using Google Gemini to create all the custom banner images and a meerkat mascot for their blog. It explains the process of using Gemini's image-to-image generation to create various poses and scenes featuring the mascot. The author shares practical tips for getting the best results, such as providing reference images for style consistency, specifying aspect ratios, and iterating on prompts. The post also touches on the challenges, like getting the AI to render text correctly, while expressing admiration for the technology's power.
+</TLDR>
+
 Over the last few days, I've been using [Google Gemini](https://gemini.google.com/app) to redo all the images on my blog, and those who know me can count the number of times I've expressed my admiration for this technology. Prodigious, incredible, crazy... but, at the same time, fearful of how much these achievements will undermine an entire generation of young people who are going to embark on these careers.
 
 In this article, let's take a look at how I went about generating these images.

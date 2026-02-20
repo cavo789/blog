@@ -14,6 +14,10 @@ blueskyRecordKey: 3lujtej7xhs23
 
 ![Linux - Bash scripts - Running unit tests with bats/bats](/img/v2/bash.webp)
 
+<TLDR>
+This article provides a comprehensive introduction to unit testing Bash scripts using the `bats-core` framework. It shows how to get started quickly by running tests within a Docker container, eliminating complex setup. The guide covers writing basic tests, using various assertion types like `assert_output`, `assert_failure`, and `assert_equal`, and demonstrates how to structure tests for real-world shell functions. More advanced topics such as mocking commands, testing multi-line and colored output, checking file contents, and using `setup`/`teardown` functions for test fixtures are also explained with practical examples.
+</TLDR>
+
 Like all command-line developers, I write Linux Bash scripts.  Like any programmer, I'm supposed to write unit tests. Well, I have to admit that I rarely write them.
 
 Some time ago, I wrote a set of Bash scripts that make up a library of functions (just like a framework) and here, the interest in having unit tests is even greater since these functions are supposed to be stable and can be used as foundations for more advanced scripts.

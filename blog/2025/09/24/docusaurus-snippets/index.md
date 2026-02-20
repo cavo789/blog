@@ -18,6 +18,10 @@ updates:
 <!-- cspell:ignore iconify,docux,pyproject -->
 ![A component for showing code snippets in a Docusaurus blog](/img/v2/docusaurus_react.webp)
 
+<TLDR>
+This article guides you through creating a powerful `<Snippet>` component for Docusaurus to display code blocks. This custom component improves on native HTML by adding features like file-type-specific icons and custom styling. The tutorial shows how to build the React component, integrate it with an icon library, and then takes it a step further by creating a remark plugin. This plugin allows you to dynamically load code from source files directly into your articles, ensuring your snippets are always up-to-date without manual copy-pasting. You'll learn how to handle both relative and absolute file paths and register the plugin in your site's configuration.
+</TLDR>
+
 If you're a regular reader of this blog, you know I'm sharing a lot of code snippets.
 
 The HTML native way of doing this is by using the `<summary>` element (see [official documentation](https://www.w3schools.com/tags/tag_summary.asp)).

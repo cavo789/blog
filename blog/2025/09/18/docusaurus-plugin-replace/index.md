@@ -15,6 +15,10 @@ blueskyRecordKey: 3lz3pbmvd722f
 
 ![Creating a search&replace plugin for Docusaurus](/img/v2/docusaurus_component.webp)
 
+<TLDR>
+This article demonstrates how to create a custom Docusaurus remark plugin for automatically finding and replacing specific terms across your entire site. The goal is to ensure consistent terminology (e.g., changing 'vscode' to 'VSCode') without modifying the original Markdown files. You'll learn how to write a plugin that traverses the content's abstract syntax tree (AST) to safely apply replacements only to plain text, avoiding code blocks and URLs. The guide also shows how to configure the plugin in your `docusaurus.config.js`.
+</TLDR>
+
 For fun (because that solution is perhaps not bullet proof), I've asked to an AI to generate a plugin to scan my 200 articles and to replace patterns like `docusaurus` by `Docusaurus`, `github` by `GitHub`, `vscode` by `VSCode` so to normalize them across all my content.
 
 It can be risky because if the word `vscode` appears in:
