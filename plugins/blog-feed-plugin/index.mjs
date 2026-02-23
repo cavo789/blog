@@ -45,13 +45,17 @@
  * @license MIT — free to use, modify, and contribute.
  */
 
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
 import yaml from "js-yaml";
-import { Feed } from "feed";
 import fs from "fs-extra";
 import path from "path";
 import frontMatter from "front-matter";
 import * as glob from "glob";
 import * as cheerio from "cheerio";
+
+const { Feed } = require("feed");
 
 // --- Utilities ---------------------------------------------------------------
 
@@ -147,7 +151,7 @@ async function getArticleHtml(permalink, outDir, stripSelectors = []) {
   const htmlFilePath = path.join(outDir, permalink, "index.html");
   if (!fs.existsSync(htmlFilePath)) {
     console.warn(
-      `[BlogFeedPlugin] HTML file not found for ${permalink} at: ${htmlFilePath}`
+      `[BlogFeedPlugin] HTML file not found for ${permalink} at: ${htmlFilePath}`,
     );
     return null;
   }
@@ -162,7 +166,7 @@ async function getArticleHtml(permalink, outDir, stripSelectors = []) {
   }
   if (!articleContainer.length) {
     console.warn(
-      `[BlogFeedPlugin] Could not find article container for ${permalink}.`
+      `[BlogFeedPlugin] Could not find article container for ${permalink}.`,
     );
     return null;
   }
@@ -237,14 +241,14 @@ export default function blogFeedPlugin(context, options = {}) {
 
         if (!siteUrl) {
           console.error(
-            `[BlogFeedPlugin] siteConfig.url is missing. Please set it to your site's origin.`
+            `[BlogFeedPlugin] siteConfig.url is missing. Please set it to your site's origin.`,
           );
           return;
         }
 
         if (!fs.existsSync(blogDir)) {
           console.error(
-            `[BlogFeedPlugin] Blog source directory not found: ${blogDir}`
+            `[BlogFeedPlugin] Blog source directory not found: ${blogDir}`,
           );
           return;
         }
@@ -285,7 +289,7 @@ export default function blogFeedPlugin(context, options = {}) {
               frontMatter: attributes,
               finalSlug,
             };
-          })
+          }),
         );
 
         const metadataItems = rawMetadataItems.filter(Boolean);
@@ -300,24 +304,24 @@ export default function blogFeedPlugin(context, options = {}) {
             const fullContentBody = await getArticleHtml(
               item.permalink,
               outDir,
-              stripSelectors
+              stripSelectors,
             );
             return { ...item, fullContentBody };
-          })
+          }),
         );
 
         // Filter out drafts (published: false) and articles with no content body
         const publishedFeedItems = feedItemsWithContent
           .filter(
             (item) =>
-              item.frontMatter.published !== false && item.fullContentBody
+              item.frontMatter.published !== false && item.fullContentBody,
           )
           .sort((a, b) => new Date(b.date) - new Date(a.date));
 
         // Apply maxItems limit
         const finalFeedItems = publishedFeedItems.slice(
           0,
-          Math.max(1, Number(maxItems))
+          Math.max(1, Number(maxItems)),
         );
 
         const feed = new Feed({
@@ -335,8 +339,8 @@ export default function blogFeedPlugin(context, options = {}) {
           const authorKeys = Array.isArray(item.frontMatter.authors)
             ? item.frontMatter.authors
             : item.frontMatter.authors
-            ? [item.frontMatter.authors]
-            : [];
+              ? [item.frontMatter.authors]
+              : [];
 
           const rssAuthors = authorKeys
             .map((key) => authorsData[key])
@@ -348,8 +352,8 @@ export default function blogFeedPlugin(context, options = {}) {
             .map(
               (a) =>
                 `<dc:creator><![CDATA[${cleanProblemChars(
-                  a.name
-                )}]]></dc:creator>`
+                  a.name,
+                )}]]></dc:creator>`,
             )
             .join("");
 
@@ -358,7 +362,7 @@ export default function blogFeedPlugin(context, options = {}) {
             console.log(
               `[BlogFeedPlugin] ✍️ Post "${
                 item.title
-              }" - Found authors: ${rssAuthors.map((a) => a.name).join(", ")}`
+              }" - Found authors: ${rssAuthors.map((a) => a.name).join(", ")}`,
             );
           }
 
@@ -375,7 +379,7 @@ export default function blogFeedPlugin(context, options = {}) {
           if (includeImages && absoluteImageUrl) {
             descriptionWithImage =
               `<img src="${absoluteImageUrl}" alt="${cleanProblemChars(
-                item.title
+                item.title,
               )}" style="display:block;max-width:100%;height:auto;">` +
               descriptionWithImage;
           }
@@ -389,8 +393,8 @@ export default function blogFeedPlugin(context, options = {}) {
             category: Array.isArray(item.frontMatter.tags)
               ? item.frontMatter.tags.map((t) => ({ name: t }))
               : item.frontMatter.tags
-              ? [{ name: item.frontMatter.tags }]
-              : undefined,
+                ? [{ name: item.frontMatter.tags }]
+                : undefined,
             description: descriptionWithImage,
             content: includeContent
               ? cleanProblemChars(item.fullContentBody || "")
@@ -434,7 +438,7 @@ export default function blogFeedPlugin(context, options = {}) {
         const xmlItems = $("channel > item");
 
         console.log(
-          `[BlogFeedPlugin] 🔧 Injecting DC tags into ${xmlItems.length} items...`
+          `[BlogFeedPlugin] 🔧 Injecting DC tags into ${xmlItems.length} items...`,
         );
 
         // 4. Iterate through our source array (finalFeedItems) by INDEX
@@ -445,7 +449,7 @@ export default function blogFeedPlugin(context, options = {}) {
 
           if ($xmlItem.length === 0) {
             console.error(
-              `[BlogFeedPlugin] ❌ Error: XML Item index ${index} not found!`
+              `[BlogFeedPlugin] ❌ Error: XML Item index ${index} not found!`,
             );
             return;
           }
@@ -455,7 +459,7 @@ export default function blogFeedPlugin(context, options = {}) {
           if (creatorData) {
             // DEBUG LOG: Confirm the injection
             console.log(
-              `[BlogFeedPlugin] 💉 Injecting for "${sourceItem.title}": ${creatorData}`
+              `[BlogFeedPlugin] 💉 Injecting for "${sourceItem.title}": ${creatorData}`,
             );
 
             // Injection
@@ -470,13 +474,13 @@ export default function blogFeedPlugin(context, options = {}) {
         // Apply a custom XML declaration and stylesheet reference for better browser rendering
         rssContent = rssContent.replace(
           /^<\?xml[^>]+\?>/,
-          '<?xml version="1.0" encoding="utf-8"?>\n<?xml-stylesheet type="text/xsl" href="rss.xsl"?>'
+          '<?xml version="1.0" encoding="utf-8"?>\n<?xml-stylesheet type="text/xsl" href="rss.xsl"?>',
         );
 
         await fs.writeFile(rssPath, rssContent);
 
         console.log(
-          `[BlogFeedPlugin] ✅ RSS feed written to ${rssPath} (${finalFeedItems.length} items).`
+          `[BlogFeedPlugin] ✅ RSS feed written to ${rssPath} (${finalFeedItems.length} items).`,
         );
       } catch (err) {
         console.error(`[BlogFeedPlugin] RSS feed generation failed:`, err);
