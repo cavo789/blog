@@ -51,7 +51,6 @@ const path = require("path");
 const frontMatter = require("front-matter");
 const glob = require("glob");
 const cheerio = require("cheerio");
-const { Feed } = require("feed");
 
 // --- Utilities ---------------------------------------------------------------
 
@@ -228,6 +227,9 @@ module.exports = function blogFeedPlugin(context, options = {}) {
 
     async postBuild({ siteConfig, outDir, siteDir }) {
       try {
+        // AJOUTEZ CETTE LIGNE ICI 👇
+        const { Feed } = await import("feed");
+
         console.log(`[BlogFeedPlugin] 🚀 Generating RSS feed...`);
 
         const blogDir = path.join(siteDir, "blog");
