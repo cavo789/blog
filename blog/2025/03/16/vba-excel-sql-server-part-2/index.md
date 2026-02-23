@@ -13,6 +13,10 @@ blueskyRecordKey: 3lvnkdmwmwk2v
 ---
 ![MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step](/img/v2/mssql.webp)
 
+<TLDR>
+This detailed, step-by-step tutorial teaches you how to connect Microsoft Excel to a SQL Server database using VBA. It covers everything from setting up a SQL Server instance with Docker and creating a sample database to writing the VBA code to execute queries and import data into your spreadsheet. You will learn how to configure the connection, use a custom VBA class to handle data retrieval, and output the results directly into your worksheet, with or without a live connection for refreshing the data.
+</TLDR>
+
 In April 2024, I wrote a small <Link to="/blog/vba-excel-sql-server">blog post</Link> about a VBA script that will connect to a MS SQL database, run a SELECT query to retrieve data and put them in an Excel worksheet.
 
 Let's rewrite this article in a full tutorial. We'll install run a SQL Server database using Docker, download MS SQL Server Management Studio, connect to our SQL Server, create a new database with dummy data and, finally, in Excel, retrieve the list of our customers.

@@ -16,6 +16,10 @@ updates:
 <!-- markdownlint-disable MD012 -->
 ![SSH - Launch a terminal on your session without having to authenticate yourself](/img/v2/ssh.webp)
 
+<TLDR>
+This guide explains how to set up passwordless SSH login to your Linux servers. Learn how to generate an SSH key pair, use `ssh-copy-id` to securely transfer your public key to the server, and connect without a password. The tutorial also covers using `scp` for secure file transfers and demonstrates how to create convenient shortcuts for your connections by using a `~/.ssh/config` file, allowing you to connect with a simple alias.
+</TLDR>
+
 <!-- cspell:ignore randomart -->
 
 Imagine that you regularly need to connect to your Linux server: you need to launch a tool such as Putty, you need to enter your login, password, etc. and carry out various operations before you can access the terminal.

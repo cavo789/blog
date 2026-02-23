@@ -13,6 +13,10 @@ blueskyRecordKey: 3lvnjmthgj22v
 ---
 ![Running Oracle Database Server as a Docker container](/img/v2/oracle.webp)
 
+<TLDR>
+This comprehensive guide provides a step-by-step walkthrough for running an Oracle Enterprise Database server in a Docker container. It covers the entire process, from the initial setup of creating an Oracle account and handling authentication to pull the official image, to deploying the container with persistent storage and custom startup scripts. You'll learn the key concepts of Oracle's multi-tenant architecture (CDB vs. PDB) and how to connect to and manage your database using tools like `sqlplus`, Oracle SQL Developer, and the web-based Oracle Enterprise Manager.
+</TLDR>
+
 <!-- cspell:ignore ORCLCDB,ORCLPDB,initdb,sqlplus,oradata,PDBADMIN,USERENV,oracletools,sysdba -->
 
 At work, I had to create an Oracle Enterprise database locally so that I could code scripts in different languages to show how to connect to Oracle using, for example .Net, NodeJS, Python or PHP.

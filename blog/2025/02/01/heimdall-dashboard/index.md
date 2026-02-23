@@ -14,6 +14,10 @@ blueskyRecordKey: 3lwgbxok2ys2i
 
 ![Heimdall - Web dashboard](/img/v2/docker_playing_with_app.webp)
 
+<TLDR>
+Tired of cluttered browser bookmarks? This article introduces Heimdall, a visually appealing, self-hostable web dashboard for organizing your favorite applications and links. Learn how to quickly deploy Heimdall using Docker with a simple `compose.yaml` file. The guide walks you through the initial setup, from customizing the appearance and creating organizational tags to adding your first applications. It also explains how to ensure your dashboard's configuration persists even if the container is removed.
+</TLDR>
+
 > [https://heimdall.site/](https://heimdall.site/)
 
 I've never been a big fan of browser's bookmarks and in fact I have almost none. And, quite logically, I almost never display the favorite bar.

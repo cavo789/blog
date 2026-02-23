@@ -112,7 +112,7 @@ We've seen that, in your step, we've instructed `gautamkrishnar/blog-post-workfl
 
 Let's now see how it can be used:
 
-<Snippet filename="README.md" source="./files/readme.md" />
+<Snippet filename="README.md" source="./files/readme.txt" />
 
 As you can see, there is a `<!-- BLOG-POST-LIST:START -->`  and `<!-- BLOG-POST-LIST:END -->` block in my file.
 

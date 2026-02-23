@@ -11,6 +11,10 @@ language: en
 ---
 ![Docker - Install and use Git in a container just like you do on your host](/img/v2/git.webp)
 
+<TLDR>
+Streamline your development workflow by running Git commands directly inside your Docker container. This guide shows you how to install Git in your container and configure it to use your host machine's Git settings and SSH keys. By mounting your local `.gitconfig` and `.ssh` directory into the container, you can `git clone`, `git commit`, and `git push` from within your development environment, eliminating the need to switch back to your host for version control tasks.
+</TLDR>
+
 So, no need to tell it anymore, I'm doing everything in Docker containers even coding (since I'm coding using devcontainers) but ... till now, I was using `git` on my host only.
 
 I mean, I need `git` on my host because I should be able to clone a repository. But the question is: should I use git from my host except for `git clone`? Can I work in my container and from there do actions like a `git push`?

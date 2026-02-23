@@ -1,6 +1,6 @@
 christophe:
   name: Christophe
-  title: Markdown, WSL and Docker lover ~ PHP developer ~ Insatiable curious.
+  title: Markdown, WSL and Docker lover ~ Insatiable curious.
   url: https://bsky.app/profile/avonture.be
   image_url: /img/avatar.webp
 docux:
@@ -8,3 +8,8 @@ docux:
   title: Curious explorer, a bit of a mad experimenter, and a bit of a contributor.
   url: https://docuxlab.com/blog/
   image_url: /img/docux.webp
+gemini:
+  name: Google Gemini
+  title: AI Assistant
+  url: https://gemini.google.com/
+  image_url: /img/gemini-logo.webp

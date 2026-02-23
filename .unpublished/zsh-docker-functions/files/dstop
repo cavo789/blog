@@ -1,0 +1,60 @@
+#!/usr/bin/env zsh
+
+# Batch Stop/Kill Docker Containers
+_d_check_env fzf docker || return 1
+_d_has_running_containers || return 0
+
+local fzf_out key selection action_cmd color
+
+# Multi-line preview command rearranged for better UX:
+# 1. Core container metadata (IP, Ports, Compose).
+# 2. Live Resource Usage placed HIGH up so it's always visible (preventing accidental stops of busy containers).
+# 3. Mounts placed at the BOTTOM (since devcontainers can have massive lists).
+# Note: You can scroll the preview window in fzf using Shift-Up/Shift-Down or mouse wheel.
+local preview_cmd='docker inspect --format "Container: {{.Name}}
+Status:      {{.State.Status}}
+Compose Dir: {{index .Config.Labels \"com.docker.compose.project.working_dir\"}}
+IP Address:  {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}
+Ports:       {{range \$p, \$conf := .NetworkSettings.Ports}}{{if \$conf}}{{\$p}} {{end}}{{end}}" {1}
+echo "------------------------------------------------------------"
+echo -e "\033[1;33m>>> Live Resource Usage (Snapshot):\033[0m"
+docker stats --no-stream --format "CPU: {{.CPUPerc}} | MEM: {{.MemUsage}} | NET: {{.NetIO}} | BLOCK I/O: {{.BlockIO}}" {1}
+echo "------------------------------------------------------------"
+echo -e "\033[1;34m>>> Mounts (Scroll down to see all):\033[0m"
+docker inspect --format "{{range .Mounts}}• {{.Source}}
+  -> {{.Destination}}
+{{end}}" {1}'
+
+# Full-screen fzf with multi-selection enabled (-m)
+fzf_out=$(docker ps --format "{{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}" | \
+    fzf -m --ansi --layout=reverse --border \
+        --header "TAB: Select | Ctrl-A: Select All | Enter: Stop | Ctrl-K: Kill (Scroll preview with Shift+Up/Down)" \
+        --bind "ctrl-a:select-all" \
+        --expect=ctrl-k \
+        --preview "$preview_cmd" --preview-window=right:55%:wrap)
+
+[[ -z "$fzf_out" ]] && return 0
+
+# Extract the key pressed (Enter or ctrl-k)
+key=$(head -n 1 <<< "$fzf_out")
+# Extract only the container IDs (first column) from the selected rows
+selection=$(tail -n +2 <<< "$fzf_out" | awk '{print $1}')
+
+[[ -z "$selection" ]] && return 0
+
+# Convert selection string into a proper Zsh array
+local -a target_ids=("${(@f)selection}")
+
+# Default action is graceful stop
+action_cmd="docker stop"
+color="\033[1;33m" # Yellow color for stop
+
+# Switch to forceful kill if triggered by Ctrl-K
+if [[ "$key" == "ctrl-k" ]]; then
+    action_cmd="docker kill"
+    color="\033[1;31m" # Red color for kill
+fi
+
+# Print and execute the command
+_d_print_cmd "${action_cmd} ${target_ids[*]}" "$color"
+eval "${action_cmd} ${target_ids[@]}"

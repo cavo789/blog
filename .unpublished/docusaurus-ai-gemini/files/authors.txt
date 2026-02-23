@@ -1,0 +1,5 @@
+gemini:
+  name: Google Gemini
+  title: AI Assistant
+  url: https://gemini.google.com/
+  image_url: /img/gemini-logo.webp

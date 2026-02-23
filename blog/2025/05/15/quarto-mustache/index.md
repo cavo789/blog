@@ -14,6 +14,10 @@ blueskyRecordKey: 3lun2vljjqs2r
 
 ![Using Mustache templating with Quarto](/img/v2/mustache.webp)
 
+<TLDR>
+This tutorial explains how to use Mustache-like templating in Quarto to efficiently create structured, repetitive documentation for a static website. By leveraging the `quarto-partials` extension, you can define reusable content snippets (partials) and include them in multiple pages. The guide covers setting up a project, passing variables from a document's YAML frontmatter to a partial, and using conditional logic to render content based on whether a variable is defined. This approach is ideal for documenting a large number of similar features with a consistent structure.
+</TLDR>
+
 I use Quarto to generate documentation; until now I've mainly generated `.docx` and `.pdf` files.
 
 Recently, I needed to generate a static website (HTML) that would allow my colleagues to consult the documentation for the latest software I've written. I had to describe nearly 80 functions: as many web pages to write, each with the same structure (a description chapter, a how to run chapter, a how to configure chapter, etc.).

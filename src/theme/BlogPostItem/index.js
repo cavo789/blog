@@ -1,3 +1,4 @@
+import AIIcon from "@site/src/components/Blog/AIIcon";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import BlogPostItemContainer from "@theme/BlogPostItem/Container";
 import BlogPostItemContent from "@theme/BlogPostItem/Content";
@@ -21,13 +22,15 @@ function useContainerClassName() {
 export default function BlogPostItem({ children, className }) {
   // We need to retrieve the isBlogPostPage flag
   const { metadata, isBlogPostPage } = useBlogPost();
+  const { frontMatter } = metadata;
   const containerClassName = useContainerClassName();
+  const aiIcon = frontMatter.ai_assisted && isBlogPostPage ? <AIIcon /> : null;
 
   return (
     <>
       {isBlogPostPage && <StructuredData metadata={metadata} />}
       <BlogPostItemContainer className={clsx(containerClassName, className)}>
-        <BlogPostItemHeader />
+        <BlogPostItemHeader aiIcon={aiIcon} />
         <BlogPostItemContent>{children}</BlogPostItemContent>
         <BlogPostItemFooter />
 

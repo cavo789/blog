@@ -12,6 +12,10 @@ language: en
 <!-- cspell:ignore dbmdl -->
 ![Using Docker init to quickly dockerize your PHP application](/img/v2/docker_init.webp)
 
+<TLDR>
+Learn how to quickly dockerize an existing PHP and Apache application using the `docker init` command. This guide walks you through the interactive wizard that automatically generates your `Dockerfile`, `compose.yaml`, and `.dockerignore` files. It demonstrates the process with a sample PHP script, shows how to run the newly containerized application, and explains the purpose of each generated file. The article also provides a tip on how to extend the configuration to securely add a database service using Docker Secrets.
+</TLDR>
+
 How about asking Docker to create the files it needs itself?
 
 If you're a regular reader of this blog, you'll know by now that you need a `Dockerfile` to describe how the Docker image should be created and what should be included in it, and very often you'll also need a `compose.yaml` file to explain how the container should be created, e.g. which port to map to, which volumes to use, and so on.

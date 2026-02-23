@@ -13,6 +13,10 @@ blueskyRecordKey: 3lvnjvuk5x22v
 <!-- cspell:ignore fsutil -->
 ![Enable case sensitivity for filenames under DOS](/img/v2/msdos_tips.webp)
 
+<TLDR>
+Did you know you can make a folder on Windows case-sensitive, just like on Linux? This quick tutorial shows you how to enable case-sensitivity for filenames in a specific directory using a single command. By running `fsutil.exe file setCaseSensitiveInfo . enable` in an administrative PowerShell, you can have `MyFile.txt` and `myfile.txt` exist as two separate files in the same folder.
+</TLDR>
+
 This is just ... for fun.
 
 As you know, MS DOS didn't make any differences between `MyFile.txt`, `myfile.txt`, `MYFILE.txt` since DOS isn't case sensitive.

@@ -70,6 +70,7 @@ export default function BlogPostContent({ children }) {
       {/* Only display our RelatedPosts and Bluesky components on the post page; not the blog view */}
       {isBlogPostPage && (
         <>
+          <hr />
           <SeriesPosts
             series={metadata.frontMatter.series}
             excludePermalink={metadata.permalink}

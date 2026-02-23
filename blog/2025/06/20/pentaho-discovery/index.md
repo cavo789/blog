@@ -12,6 +12,10 @@ blueskyRecordKey: 3lumzwwoqsc2r
 ---
 ![Discovering Pentaho, a ETL program](/img/v2/etl.webp)
 
+<TLDR>
+This guide provides a step-by-step introduction to Pentaho Data Integration (PDI/Kettle) on Linux. It walks through the entire process of setting up your environment, from installing Pentaho and its Java dependencies to creating a sample ETL job. You will learn how to use Docker to quickly spin up a PostgreSQL database and then use Pentaho's Spoon graphical interface to build a transformation that extracts data from an Excel file, and loads it into a PostgreSQL table.
+</TLDR>
+
 <!-- cspell:ignore pentaho,xtract,ransform,sheetname,dpage,webkitgtk -->
 
 Pentaho Data Integration is a ETL tool (**E**xtract, **T**ransform and **L**oad) used for data integration. Let's imagine you've an Excel file and you want to extract records (only those matching a specific rule), then apply a transformation (like adding some new columns based on current data) and load them in a PostgreSQL database.

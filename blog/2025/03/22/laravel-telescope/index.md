@@ -12,6 +12,10 @@ blueskyRecordKey: 3lvnkgebz3c2v
 ---
 ![Laravel Telescope](/img/v2/laravel.webp)
 
+<TLDR>
+Laravel Telescope is an elegant debugging assistant for your Laravel applications. This article introduces Telescope and explains how it provides a clear, real-time overview of your application's inner workings. From inspecting database queries and exceptions to monitoring cache usage and logs, Telescope gives you the context you need to understand and resolve issues quickly. It's an indispensable tool for both local development and for monitoring applications on a test server, allowing you to proactively identify and fix problems.
+</TLDR>
+
 I don't work as often with Laravel (one of the most famous PHP frameworks) so I'm losing my reflexes a bit when it comes to debugging the code, e.g. when it comes to finding the queries that have been executed, the exceptions that have been thrown, the list of keys that have been created or read from the Redis cache, etc.
 
 By installing [Laravel Telescope](https://laravel.com/docs/master/telescope), we can get realtime information about cache, logs, queries and models, exceptions, ... and this will help a lot to understand how the application is working and what is running.

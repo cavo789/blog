@@ -1,0 +1,222 @@
+#!/usr/bin/env zsh
+
+# Docker Cleanup Wizard
+_d_check_env docker || return 1
+
+local force=0
+local prune_all=0
+
+# Function to display usage instructions
+local _show_help() {
+    echo -e "\033[1;34mUsage: dnuke [OPTIONS]\033[0m"
+    echo -e "Interactive Docker cleanup wizard to remove unused resources."
+    echo -e ""
+    echo -e "\033[1;33mOptions:\033[0m"
+    echo -e "  \033[1;32m-a, --all\033[0m    Deep clean: Remove ALL unused images (not just dangling)."
+    echo -e "  \033[1;32m-y, --force\033[0m  Non-interactive mode: Auto-confirm all steps."
+    echo -e "  \033[1;32m-h, --help\033[0m   Show this help message."
+    echo -e ""
+    echo -e "\033[1;33mExamples:\033[0m"
+    echo -e "  dnuke          # Standard cleanup (dangling images only)"
+    echo -e "  dnuke -a       # Deep cleanup (all unused images)"
+    echo -e "  dnuke -y       # Instant cleanup (no questions asked)"
+}
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -y|--force) force=1; shift ;;
+        -a|--all) prune_all=1; shift ;;
+        -h|--help) _show_help; return 0 ;;
+        *) echo -e "\033[0;31mUnknown option: $1\033[0m"; _show_help; return 1 ;;
+    esac
+done
+
+echo -e "\033[1;34m=== Docker Cleanup Wizard ===\033[0m"
+echo -n "Scanning Docker environment... "
+
+# 1. Gather data silently
+local c_out v_out cache_size
+c_out=$(docker ps -a -f "status=exited" -q)
+v_out=$(docker volume ls -qf dangling=true)
+cache_size=$(docker system df | awk '/Build Cache/ {print $5}') # $5 usually holds the size
+
+# Safely populate containers and volumes arrays
+local -a c_ids v_ids i_ids
+[[ -n "$c_out" ]] && c_ids=("${(@f)c_out}")
+[[ -n "$v_out" ]] && v_ids=("${(@f)v_out}")
+
+local s_cont="pending" s_img="pending" s_vol="pending" s_cache="pending"
+[[ ${#c_ids[@]} -eq 0 ]] && s_cont="none"
+[[ ${#v_ids[@]} -eq 0 ]] && s_vol="none"
+[[ "$cache_size" == "0B" || "$cache_size" == "0" || -z "$cache_size" ]] && s_cache="none"
+
+local img_desc=""
+local img_cmd=""
+
+# Handle image logic: Dangling vs All Unused
+if [[ $prune_all -eq 1 ]]; then
+    # Mode: --all
+    # Logic: Get ALL image IDs, subtract IDs used by containers (running or stopped)
+    local -a all_imgs=("${(@f)$(docker images -q)}")
+    local -a used_imgs=()
+
+    # Get images used by containers
+    local c_all_imgs
+    c_all_imgs=$(docker ps -a --format "{{.Image}}")
+    if [[ -n "$c_all_imgs" ]]; then
+        # We need to resolve image names to IDs to perform accurate subtraction
+        # (This might be slow on huge systems, but accurate)
+        used_imgs=("${(@f)$(docker inspect --format='{{.Id}}' ${(f)c_all_imgs} 2>/dev/null | sed 's/sha256://' | cut -c1-12)}")
+    fi
+
+    # Zsh Array Subtraction: i_ids = all_imgs - used_imgs
+    i_ids=(${all_imgs:|used_imgs})
+
+    [[ ${#i_ids[@]} -eq 0 ]] && s_img="none"
+    img_desc="Remove ${#i_ids[@]} unused image(s) (Deep Clean)"
+    img_cmd="docker image prune -a -f"
+else
+    # Mode: Standard (Dangling only)
+    local i_out=$(docker images -f "dangling=true" -q)
+    [[ -n "$i_out" ]] && i_ids=("${(@f)i_out}")
+
+    [[ ${#i_ids[@]} -eq 0 ]] && s_img="none"
+    img_desc="Remove ${#i_ids[@]} dangling image(s)"
+    img_cmd="docker rmi ${i_ids[*]}"
+fi
+
+echo -e "Done.\n"
+
+# Helper function to display the dynamic roadmap (Execution Plan)
+_draw_plan() {
+    local current_step=$1
+    echo -e "\033[1;36m[ Execution Plan ]\033[0m"
+
+    local _fmt() {
+        local step_name=$1
+        local state=$2
+        local desc=$3
+
+        local prefix="  "
+        local color="\033[1;30m" # Dark Gray
+        local step_status="[Pending]"
+
+        if [[ "$step_name" == "$current_step" ]]; then
+            prefix="➜ "
+            color="\033[1;37m" # White (Current step)
+            step_status="[Next]   "
+        elif [[ "$state" == "done" ]]; then
+            color="\033[1;32m" # Green (Finished)
+            step_status="[Done]   "
+        elif [[ "$state" == "skipped" ]]; then
+            color="\033[0;33m" # Yellow (Skipped manually)
+            step_status="[Skipped]"
+        elif [[ "$state" == "none" ]]; then
+            color="\033[1;30m" # Dark Gray (Nothing to do)
+            step_status="[Empty]  "
+        fi
+
+        echo -e "${prefix}${color}${step_status} ${desc}\033[0m"
+    }
+
+    _fmt "cont" "$s_cont" "Remove ${#c_ids[@]} stopped container(s)"
+    _fmt "img" "$s_img" "$img_desc"
+    _fmt "vol" "$s_vol" "Remove ${#v_ids[@]} unused volume(s)"
+    _fmt "cache" "$s_cache" "Prune build cache (Size: ${cache_size:-0B})"
+    echo "----------------------------------------"
+}
+
+# Fast-exit if the environment is already clean
+if [[ "$s_cont" == "none" && "$s_img" == "none" && "$s_vol" == "none" && "$s_cache" == "none" ]]; then
+    _draw_plan "finish"
+    echo -e "\033[1;32mEnvironment is already clean. Nothing to do!\033[0m"
+    return 0
+fi
+
+# Helper function to handle user prompts consistently
+local _ask() {
+    if [[ $force -eq 1 ]]; then return 0; fi
+    if read -q "?Execute this step? (y/N): "; then
+        echo "\n"
+        return 0
+    else
+        echo -e "\n\033[0;33mSkipped.\033[0m\n"
+        return 1
+    fi
+}
+
+# --- Step 1: Stopped Containers ---
+if [[ "$s_cont" == "pending" ]]; then
+    _draw_plan "cont"
+    docker ps -a -f "status=exited" --format "table {{.Names}}\t{{.Status}}\t{{.Image}}"
+    echo ""
+    _d_print_cmd "docker rm ${c_ids[*]}" "\033[1;35m"
+    if _ask; then
+        docker rm "${c_ids[@]}" >/dev/null && echo -e "\033[1;32mContainers removed successfully.\033[0m\n"
+        s_cont="done"
+    else
+        s_cont="skipped"
+    fi
+fi
+
+# --- Step 2: Images (Dangling or All Unused) ---
+if [[ "$s_img" == "pending" ]]; then
+    _draw_plan "img"
+    if [[ $prune_all -eq 1 ]]; then
+        # Warning specific to --all mode
+        echo -e "\n\033[0;33mWarning: This will remove ALL images not currently used by a container.\033[0m"
+        _d_print_cmd "$img_cmd" "\033[1;35m"
+        if _ask; then
+            eval "$img_cmd" >/dev/null && echo -e "\033[1;32mImages removed successfully.\033[0m\n"
+            s_img="done"
+        else
+            s_img="skipped"
+        fi
+    else
+        # Standard mode
+        docker images -f "dangling=true"
+        echo ""
+        _d_print_cmd "$img_cmd" "\033[1;35m"
+        if _ask; then
+            docker rmi "${i_ids[@]}" >/dev/null && echo -e "\033[1;32mImages removed successfully.\033[0m\n"
+            s_img="done"
+        else
+            s_img="skipped"
+        fi
+    fi
+fi
+
+# --- Step 3: Dangling Volumes ---
+if [[ "$s_vol" == "pending" ]]; then
+    _draw_plan "vol"
+    docker volume ls -f dangling=true
+    echo ""
+    _d_print_cmd "docker volume rm ${v_ids[*]}" "\033[1;35m"
+    if _ask; then
+        docker volume rm "${v_ids[@]}" >/dev/null && echo -e "\033[1;32mVolumes removed successfully.\033[0m\n"
+        s_vol="done"
+    else
+        s_vol="skipped"
+    fi
+fi
+
+# --- Step 4: Build Cache ---
+if [[ "$s_cache" == "pending" ]]; then
+    _draw_plan "cache"
+    local prune_cmd="docker builder prune -f"
+    if docker buildx version >/dev/null 2>&1; then
+        prune_cmd="docker buildx prune -f"
+    fi
+    _d_print_cmd "$prune_cmd" "\033[1;35m"
+    if _ask; then
+        eval "$prune_cmd" >/dev/null && echo -e "\033[1;32mCache pruned successfully.\033[0m\n"
+        s_cache="done"
+    else
+        s_cache="skipped"
+    fi
+fi
+
+# Final recap
+_draw_plan "finish"
+echo -e "\033[1;32mCleanup Wizard completed.\033[0m"

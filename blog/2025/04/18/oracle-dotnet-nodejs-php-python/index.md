@@ -13,6 +13,10 @@ blueskyRecordKey: 3lvnjmthgj22v
 ---
 ![Accessing an Oracle database using .Net, NodeJS, PHP and Python](/img/v2/oracle.webp)
 
+<TLDR>
+This step-by-step guide demonstrates how to connect to an Oracle database from .Net, Node.js, PHP, and Python. For each language, you'll find a complete, ready-to-use example that includes the `Dockerfile` for building a container with all necessary dependencies, and a sample script to query the database. This article provides a quickstart template for anyone needing to integrate an Oracle database into their application, regardless of the programming language.
+</TLDR>
+
 In a previous article (<Link to="/blog/docker-oracle-database-server">Running Oracle Database Server as a Docker container</Link>), we've created a Docker container called `oracle-db` where a Human Resources database is running.
 
 This time, let's play with .Net, NodeJS, PHP and Python to access to it and display records.

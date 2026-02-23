@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+
+# Interactive Menu for Docker Operations
+_d_check_env fzf || return 1
+
+local -a options=(
+    "dex: Exec into a container (smart shell & root toggle)"
+    "dlogs: View logs (smart viewer & JSON support)"
+    "dnuke: Cleanup wizard (BuildKit aware)"
+    "dstop: Batch stop or kill containers"
+)
+
+local selected_op
+selected_op=$(print -l "${options[@]}" | \
+    fzf --height 30% --layout=reverse --header "Select Docker Operation" --border | \
+    awk -F':' '{print $1}')
+
+[[ -z "$selected_op" ]] && return 0
+
+# Verify the selected function exists in the current Zsh session before executing
+if type "$selected_op" >/dev/null 2>&1; then
+    "$selected_op"
+else
+    echo >&2 "Error: Function '$selected_op' is not loaded or found."
+fi

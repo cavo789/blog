@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+# Verify if at least one container is currently running
+# Utilizing 'read' is faster than piping to 'grep'
+if [[ -z "$(docker ps -q -n 1)" ]]; then
+    echo >&2 -e "\033[0;33mInfo:\033[0m No running containers found."
+    return 1
+fi
+return 0

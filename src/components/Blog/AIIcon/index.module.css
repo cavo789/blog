@@ -1,0 +1,19 @@
+.aiIcon {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  gap: 8px;
+  border: 1px solid var(--ifm-color-primary-dark);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: var(--ifm-color-primary-dark);
+
+  margin-left: 4px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}

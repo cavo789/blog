@@ -13,7 +13,10 @@ blueskyRecordKey: 3lzkrxkfpo22m
 updates:
   - date: 2025-10-10
     note: Allow relative paths
+  - date: 2026-02-23
+    note: Add a cross reference to the <Link to="/blog/docusaurus-project-setup">Introducing the ProjectSetup Component - A Standardized Way to Share Project Structures</Link> article
 ---
+
 <!-- markdownlint-disable MD046 -->
 <!-- cspell:ignore iconify,docux,pyproject -->
 ![A component for showing code snippets in a Docusaurus blog](/img/v2/docusaurus_react.webp)
@@ -79,7 +82,7 @@ Please also edit the `src/theme/MDXComponents.js` file (and if not present, plea
 
 ### LogoIcon of Docux
 
-You'll also need the [LogoIcon](https://docuxlab.com/blog/logoicon-component-docusaurus/) created by [Docux](https://github.com/Juniors017).
+You'll also need the [LogoIcon](https://docuxlab.com/blog/logoicon-component-docusaurus/) created by <img alt="Docux" src="/img/docux.webp" style={{border: "none", borderRadius: 0, height: "1.2em", verticalAlign: "middle", margin: "0 0.2em"}} /> <Link to="https://github.com/Juniors017">Docux</Link>.
 
 This component will make easy to retrieve an SVG icon for a language (let's say Python) and display it. Under the scenes, LogoIcon is using [Iconify](https://icon-sets.iconify.design/).
 
@@ -226,3 +229,11 @@ Unlike the previous chapter, here, the syntax `<Snippet filename="src/components
 And, last demo, retrieve the content of file relative to this blog post **(so the source filename starts here with a dot to tell it's relative to the `.md` file)**:
 
 <Snippet filename="./files/hello_world.py" source="./files/hello_world.py" />
+
+## Go further with ProjectSetup
+
+The `Snippet` component is a great way to display code snippets in your Docusaurus blog, but what if you want to share an entire project structure with your readers? That's where the `ProjectSetup` component comes in.
+
+Continue reading to learn about the `ProjectSetup` component, which allows you to display a project's file structure in a clean, interactive, and standardized way. It not only shows the files and their content but also provides tools to scaffold the project with a single command or download it as a ZIP file.
+
+<Link to="/blog/docusaurus-project-setup">Introducing the ProjectSetup Component - A Standardized Way to Share Project Structures</Link>

@@ -17,6 +17,10 @@ updates:
 
 ![My favorite Quarto extensions](/img/v2/quarto.webp)
 
+<TLDR>
+This article shares a curated list of the author's favorite Quarto extensions to enhance your documentation workflow. Discover useful filters for templating content with `quarto-partials`, embedding icons with `fontawesome`, including external code snippets, creating simple text-replacement macros with `search-replace`, and improving code block visibility in reveal.js presentations with `code-fullscreen`.
+</TLDR>
+
 I'm using Quarto now since 18 months to generate my documentation: I'm writing Markdown files (`.md`) and convert them as a Word document, PDF, static HTML site or as a revealjs slideshow.
 
 Quarto is supporting external extensions (also called `plugins` elsewhere).

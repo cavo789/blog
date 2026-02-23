@@ -12,6 +12,10 @@ blueskyRecordKey: 3lun25dkf322r
 ---
 ![GitLab - Using Docker private images](/img/v2/gitlab.webp)
 
+<TLDR>
+To use a private Docker image from Docker Hub in a GitLab CI/CD pipeline, first generate a read-only personal access token from your Docker Hub settings. Then, in your GitLab project's CI/CD settings, create two protected and masked variables: `DOCKER_HUB_USERNAME` for your Docker username and `DOCKER_HUB_TOKEN_RO` for the access token. Finally, in your `.gitlab-ci.yml`, use `docker login` with these variables to authenticate before pulling the image.
+</TLDR>
+
 In one of my GitLab CI, I came across the need to use a Docker image stored on `hub.docker.com` in a private repository.
 
 I couldn't simply do a `docker pull my_image` because, first of all, I had to authenticate myself in the CI before I could retrieve the image (it's a private one).

@@ -1,0 +1,64 @@
+#!/usr/bin/env zsh
+
+# Interactive Docker Logs Viewer
+_d_check_env fzf docker || return 1
+
+local fzf_out key selection container_id cmd_logs bat_cmd
+
+# Determine the best available syntax highlighter (batcat for Debian/Ubuntu)
+if command -v batcat >/dev/null 2>&1; then
+    bat_cmd="batcat"
+elif command -v bat >/dev/null 2>&1; then
+    bat_cmd="bat"
+fi
+
+# Define the base preview command for container metadata
+local preview_cmd='docker inspect --format "Container: {{.Name}}
+Status:      {{.State.Status}}
+Compose Dir: {{index .Config.Labels \"com.docker.compose.project.working_dir\"}}" {1}
+echo "------------------------------------------------------------"
+'
+
+# Append the log fetching command to the preview with color support
+if [[ -n "$bat_cmd" ]]; then
+    # Use bat for rich, out-of-the-box log syntax highlighting
+    preview_cmd+="docker logs --tail 50 {1} 2>&1 | $bat_cmd --language=log --color=always --style=plain"
+else
+    # Fallback to awk to manually colorize ERROR/FATAL (red) and WARN/WARNING (yellow)
+    local awk_colors='{gsub(/ERROR|FATAL|ERR/,"\033[1;31m&\033[0m"); gsub(/WARNING|WARN/,"\033[1;33m&\033[0m"); print}'
+    preview_cmd+="docker logs --tail 50 {1} 2>&1 | awk '$awk_colors'"
+fi
+
+# Full-screen fzf experience with an expanded right panel.
+# CRITICAL: --ansi is required to render color codes inside the preview window.
+fzf_out=$(docker ps -a --format "{{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}" | \
+    fzf --ansi --layout=reverse --border \
+        --header "Enter: View Logs | Ctrl-E: Edit Command" \
+        --preview "$preview_cmd" --preview-window=right:60%:wrap \
+        --expect=ctrl-e)
+
+# Exit if user canceled
+[[ -z "$fzf_out" ]] && return 0
+
+key=$(head -n 1 <<< "$fzf_out")
+selection=$(tail -n +2 <<< "$fzf_out")
+container_id=$(awk '{print $1}' <<< "$selection")
+
+[[ -z "$container_id" ]] && return 0
+
+# Construct log command based on available tools (Priority: lnav > bat > standard)
+if command -v lnav >/dev/null 2>&1; then
+    cmd_logs="docker logs -f --tail 500 ${container_id} 2>&1 | lnav"
+elif [[ -n "$bat_cmd" ]]; then
+    cmd_logs="docker logs -f --tail 500 ${container_id} 2>&1 | ${bat_cmd} --language=log --style=plain --pager=\"less +F -R\""
+else
+    cmd_logs="docker logs -f --tail 500 ${container_id}"
+fi
+
+# Place command in buffer for editing or execute immediately
+if [[ "$key" == "ctrl-e" ]]; then
+    print -z "$cmd_logs"
+else
+    _d_print_cmd "$cmd_logs" "\033[1;36m"
+    eval "$cmd_logs"
+fi

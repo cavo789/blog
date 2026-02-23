@@ -12,6 +12,10 @@ blueskyRecordKey: 3lun2kg2vmk2r
 ---
 ![GitLab - Running Docker-out-of-Docker in your CI](/img/v2/gitlab.webp)
 
+<TLDR>
+To run Docker commands within a GitLab CI job (Docker-out-of-Docker), you need to configure your GitLab Runner to share the host's Docker socket. This is achieved by modifying the runner's `/etc/gitlab-runner/config.toml` file. In the `[[runners.docker]]` section, you must add `"/var/run/docker.sock:/var/run/docker.sock"` to the `volumes` list. This allows the CI container to communicate with the host's Docker daemon. Additionally, to share project files with nested containers, map the builds directory by adding `"/builds:/builds"` to the volumes as well.
+</TLDR>
+
 <!-- cspell:ignore dood,phplint,certdir -->
 
 At work, I'm running my CI using Docker. Each time I push changes to GitLab, a CI is running: a Docker container is started by GitLab, pulling my code and running a set of tools.

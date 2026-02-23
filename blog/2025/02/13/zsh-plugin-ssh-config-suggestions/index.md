@@ -15,6 +15,10 @@ blueskyRecordKey: 3lwgca4zqh22i
 ---
 ![SSH - Autosuggestions with ZSH](/img/v2/ssh.webp)
 
+<TLDR>
+Stop memorizing server IPs and SSH commands. This article shows you how to streamline your SSH workflow with `zsh-ssh-config-suggestions`, a ZSH plugin that provides autosuggestions for your SSH connections. By leveraging your `~/.ssh/config` file, this plugin allows you to simply type `ssh ` and press Tab to see a list of all your configured server aliases. Learn how to install and configure this handy plugin to make connecting to your servers faster and more efficient.
+</TLDR>
+
 A few weeks ago, I've posted a <Link to="/blog/linux-ssh-scp#using-the-config-file">SSH - Launch a terminal on your session without having to authenticate yourself</Link> article about the `ssh` command in Linux.
 
 I'm pretty sure, like me, you are tired to use command line like `ssh christophe@1.2.3.4` to start a ssh connection because ... you know, you don't need to connect on a server; no, you need to connect to the server where the application is running; you know the name of the *MyAmazingApp* application but certainly not the name of the server or its IP.

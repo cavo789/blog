@@ -26,6 +26,7 @@ import PropTypes from "prop-types";
 import Link from "@docusaurus/Link";
 import Translate from "@docusaurus/Translate";
 import clsx from "clsx";
+import Details from "@site/src/components/Details";
 import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import { createSlug } from "@site/src/components/Blog/utils/slug";
 
@@ -44,40 +45,43 @@ export default function SeriesPosts({
 
   return (
     <div className={styles.seriesBlogPost}>
-      <p>
-        <Translate
-          id="blog.seriesPosts.intro"
-          values={{
-            seriesLink: (
-              <Link href={`/series/${createSlug(series)}`}>{series}</Link>
-            ),
-          }}
-        >
-          {"This article is part of the {seriesLink} series:"}
-        </Translate>
-      </p>
-      <ul>
-        {posts.map((post) => {
-          const isCurrent = post.permalink === excludePermalink;
+      <Details
+        label={
+          <Translate
+            id="blog.seriesPosts.intro"
+            values={{
+              seriesLink: (
+                <Link href={`/series/${createSlug(series)}`}>{series}</Link>
+              ),
+            }}
+          >
+            {"This article is part of the {seriesLink} series:"}
+          </Translate>
+        }
+      >
+        <ul>
+          {posts.map((post) => {
+            const isCurrent = post.permalink === excludePermalink;
 
-          return (
-            <li key={post.permalink}>
-              {isCurrent ? (
-                <span
-                  className={clsx(
-                    styles.currentPost,
-                    highlightCurrent && styles.currentPostDimmed
-                  )}
-                >
-                  {post.title}
-                </span>
-              ) : (
-                <Link to={post.permalink}>{post.title}</Link>
-              )}
-            </li>
-          );
-        })}
-      </ul>
+            return (
+              <li key={post.permalink}>
+                {isCurrent ? (
+                  <span
+                    className={clsx(
+                      styles.currentPost,
+                      highlightCurrent && styles.currentPostDimmed,
+                    )}
+                  >
+                    {post.title}
+                  </span>
+                ) : (
+                  <Link to={post.permalink}>{post.title}</Link>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </Details>
     </div>
   );
 }

@@ -11,6 +11,10 @@ language: en
 ---
 ![Search your FTP server at lightning speed](/img/v2/winscp.webp)
 
+<TLDR>
+Searching for text on an FTP server can be incredibly slow, especially with tools like WinSCP's built-in search. This article introduces `php_grep`, a lightweight and ultra-fast PHP script that revolutionizes FTP searching. By simply uploading this single file to your server and accessing it via a URL, you can perform lightning-fast, regular-expression-based searches for content within your files, and even filter results by file type.
+</TLDR>
+
 Did you know that using [WinSCP](https://winscp.net/), you can run a search on your FTP to find all the documents containing a given string? It's native in WinSCP; nothing more to install but...
 
 However, it's insanely slow; let's see how we can do it better and almost instantaneous.

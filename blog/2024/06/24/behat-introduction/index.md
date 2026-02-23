@@ -14,6 +14,10 @@ blueskyRecordKey: 3lxm22j3pa22t
 <!-- cspell:ignore behat,skel,johndoe,chromedriver,gerkin,dmore,nohup,autoload -->
 ![Introduction to Behat](/img/v2/functional_tests.webp)
 
+<TLDR>
+This tutorial introduces Behavior-Driven Development (BDD) in PHP using Behat and Docker. It covers setting up a testing environment with Chrome and Mink, writing Gherkin scenarios, and implementing step definitions to automate functional tests for web applications.
+</TLDR>
+
 > Also read my article about <Link to="/blog/cypress">Cypress</Link>
 
 At work, I'm part of a team of PHP developers where we work together to create a very large proprietary application with a web interface.

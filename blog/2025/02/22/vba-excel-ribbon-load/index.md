@@ -12,6 +12,10 @@ blueskyRecordKey: 3lwgc3uymnc2i
 ---
 ![MS Office - Load dropdown from Excel's range](/img/v2/ribbon.webp)
 
+<TLDR>
+Learn how to create a dynamic dropdown menu in a custom Excel ribbon that is populated with values from a worksheet range. This step-by-step guide walks you through the entire process: naming your data range in Excel, defining the custom ribbon layout with XML using the Custom UI Editor, and writing the necessary VBA callback functions to load the items, handle selections, and write the chosen value back to a specific cell. This technique allows for flexible and user-friendly interfaces in your VBA projects.
+</TLDR>
+
 In this article, we'll see how, very easily, we can load an Excel range into a ribbon and display it inside a dropdown.
 
 The idea is to provide a list of values in a ribbon but to not have to hardcode values in the list but, just, to link to a range, anywhere in your workbook.

@@ -1,0 +1,8 @@
+---
+slug: my-awesome-post
+title: My Awesome Post
+authors: [christophe]
+ai_assisted: true
+---
+
+... content ...

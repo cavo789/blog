@@ -12,6 +12,10 @@ language: en
 <!-- cspell:ignore recraft -->
 ![AI - Image generation using recraft.ai](/img/v2/ai.webp)
 
+<TLDR>
+This article introduces Recraft.ai, an AI-powered image generation tool. Unlike other tools, Recraft.ai offers advanced features like fine-tuning image details, creating multiple variations from a single prompt, specifying custom image dimensions, and rendering text within images accurately without typos.
+</TLDR>
+
 Very small article today, just to introduce [recraft.ai](https://www.recraft.ai/) (thanks Pierre for the tip) which is an image generation tool assisted by AI.
 
 Unlike other tools like [Bing image creator](https://www.bing.com/images/create) (the one I used to illustrate my articles), recraft.ai can produce the same image but using some variations (using the fine-tune or the variate feature).

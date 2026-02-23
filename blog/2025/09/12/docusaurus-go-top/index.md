@@ -20,7 +20,7 @@ This article is a quick tutorial on how to add a 'scroll to top' button to your 
 
 More on smartphones than on computers; it's pretty nice to have a *Back to top of page* button to avoid dislocating your thumb.
 
-[Docux](http://docuxlab.com/), a friend, recently developed this feature and I was really happy to add it, especially since it's terribly easy to use and adds a fun element; it's cool.
+<img alt="Docux" src="/img/docux.webp" style={{border: "none", borderRadius: 0, height: "1.2em", verticalAlign: "middle", margin: "0 0.2em"}} /> <Link to="https://github.com/Juniors017">Docux</Link>, a friend, recently developed this feature and I was really happy to add it, especially since it's terribly easy to use and adds a fun element; it's cool.
 
 Just scroll down any page of this blog to see a little meerkat appear in the bottom right corner. Click on it and take the lift back to the top of the page.
 

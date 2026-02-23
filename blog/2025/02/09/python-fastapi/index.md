@@ -13,6 +13,10 @@ blueskyRecordKey: 3lwgccocnws2i
 <!-- cspell:ignore Nodidju,pussibe -->
 ![Python - Fast API - Create your JSON API in Python in one minute](/img/v2/api.webp)
 
+<TLDR>
+Create your first Python JSON API with FastAPI in just one minute. This tutorial guides you through setting up a basic API using Docker, from a simple 'Hello World' to a more interactive joke generator. You'll learn how to leverage FastAPI's powerful features like automatic, interactive API documentation (Swagger and ReDoc) and how to configure a development environment with hot-reloading for rapid development cycles.
+</TLDR>
+
 > TLDR: one minute is the time you'll need to copy/paste two files' content and to run one Docker statement.
 
 Sounds crazy but it's TRUE. You'll just need one minute to create the example provided here below i.e. create your project's directory, create two files and run two Docker statements and ... it's done.

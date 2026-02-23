@@ -14,6 +14,10 @@ blueskyRecordKey: 3lun2oxe3zs2r
 
 ![GitLab - Using a SSH key to connect to private repo](/img/v2/gitlab.webp)
 
+<TLDR>
+This guide provides a step-by-step tutorial on how to use a private SSH key within a GitLab CI/CD pipeline to access private repositories. You will learn how to generate an SSH key, securely store the base64-encoded private key as a masked CI/CD variable, and configure your `.gitlab-ci.yml` to use this key for authenticating and cloning private repos during your CI jobs.
+</TLDR>
+
 In this article, we'll see how to use a private SSH key using a GitLab CI.
 
 The need: when running my CI, the GitLab runner has to be able to connect to my self-hosted (and private) GitLab environment. This because he'll need to pull from there private projects. Think to a PHP project f.i. : in my `composer.json`, I'm referring to dependencies hosted on my GitLab server. Or, same for a Javascript project and his `package.json` file.

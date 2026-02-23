@@ -11,6 +11,10 @@ language: en
 ---
 ![Running Docusaurus with Docker](/img/v2/docusaurus_tips.webp)
 
+<TLDR>
+This guide explains how to run Docusaurus using Docker to avoid local Node.js dependencies. You'll learn to create a custom Dockerfile, set up a `compose.yaml` for development with hot-reloading, and manage your blog content within a containerized environment.
+</TLDR>
+
 As you know, this blog is powered by [Docusaurus](https://docusaurus.io/).
 
 I'm writing blog posts in Markdown files (one post = one `.md` file) and Docusaurus will convert them into HTML pages.

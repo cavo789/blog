@@ -12,6 +12,10 @@ blueskyRecordKey: 3lumzv3n42c2r
 ---
 ![Export MS Access objects](/img/v2/msaccess.webp)
 
+<TLDR>
+This article introduces a VBS script for exporting all objects—forms, modules, queries, reports, and macros—from a Microsoft Access database into individual text-based files. This process allows developers to easily version control their Access application's source code using tools like Git and GitHub. The script automatically organizes the exported files into a structured `src` folder, creating a separate file for each object, making it simple to track changes and maintain a history of the database's design and logic.
+</TLDR>
+
 A long time ago, in a previous life, I developed a lot of MS Access databases and unlike modern tools, it wasn't possible to version the code (modules, macros, queries, etc.) in a tool like Github.
 
 These objects are an integral part of the database in the same way as the tables and their data. Everything is stored inside the `.mdb` format (or `.mda` or `.accdb`). If you want to version them, you must first extract them.

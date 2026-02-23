@@ -1,0 +1,53 @@
+#!/usr/bin/env zsh
+
+# Interactive Docker Exec utilizing fzf
+_d_check_env fzf docker || return 1
+_d_has_running_containers || return 0
+
+local fzf_out key selection container_id cmd_exec user_flag
+
+# Multi-line preview command using Docker Go templates
+# We use literal newlines here to ensure proper formatting inside fzf's subshell.
+# It extracts standard info, health state, ports, and the Docker Compose working directory.
+local preview_cmd='docker inspect --format "Container: {{.Name}}
+----------------------------------------
+Status:      {{.State.Status}}
+Health:      {{if .State.Health}}{{.State.Health.Status}}{{else}}No Healthcheck{{end}}
+Image:       {{.Config.Image}}
+IP Address:  {{range .NetworkSettings.Networks}}{{.IPAddress}} {{end}}
+Ports:       {{range \$p, \$conf := .NetworkSettings.Ports}}{{\$p}} {{end}}
+Compose Dir: {{index .Config.Labels \"com.docker.compose.project.working_dir\"}}" {1}'
+
+# Removed the --height parameter to allow a full-screen fzf experience
+fzf_out=$(docker ps --format "{{.ID}}\t{{.Names}}\t{{.Image}}" | \
+    fzf --layout=reverse --border \
+        --header "Enter: Run | Ctrl-E: Edit | Ctrl-R: Run as Root" \
+        --preview "$preview_cmd" --preview-window=right:50%:wrap \
+        --expect=ctrl-e,ctrl-r)
+
+# Exit if user canceled
+[[ -z "$fzf_out" ]] && return 0
+
+key=$(head -n 1 <<< "$fzf_out")
+selection=$(tail -n +2 <<< "$fzf_out")
+container_id=$(awk '{print $1}' <<< "$selection")
+
+[[ -z "$container_id" ]] && return 0
+
+# Toggle root user execution based on keypress
+user_flag=""
+if [[ "$key" == "ctrl-r" ]]; then
+    user_flag="--user root"
+fi
+
+# Smart shell execution: attempts zsh, then bash, fallbacks to sh
+local smart_shell="sh -c 'exec \$(command -v zsh || command -v bash || echo sh)'"
+cmd_exec=$(echo "docker exec -it ${user_flag} ${container_id} ${smart_shell}" | tr -s ' ')
+
+# Place command in buffer for editing or execute immediately
+if [[ "$key" == "ctrl-e" ]]; then
+    print -z "$cmd_exec"
+else
+    _d_print_cmd "$cmd_exec" "\033[1;36m"
+    eval "$cmd_exec"
+fi

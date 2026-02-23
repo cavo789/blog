@@ -29,7 +29,7 @@ export default function Details({ label, children }) {
 
 Details.propTypes = {
   /** The label */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
 
   /** Content to render inside the hero container */
   children: PropTypes.node.isRequired,

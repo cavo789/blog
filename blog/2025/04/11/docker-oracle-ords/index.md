@@ -13,6 +13,10 @@ blueskyRecordKey: 3lvnjmthgj22v
 ---
 ![Transform an Oracle DB as OpenData using Oracle REST Data Services](/img/v2/oracle.webp)
 
+<TLDR>
+This tutorial demonstrates how to transform your Oracle Database into a powerful RESTful API using Oracle REST Data Services (ORDS) in Docker. Building on a previously established Oracle DB container, this guide walks you through deploying the ORDS container, linking it to your database, and configuring schemas for REST access. You'll learn how to REST-enable specific database tables or views using Oracle SQL Developer and then access your data via auto-generated OpenAPI endpoints. The article also covers how to use URL parameters for advanced querying, including filtering, sorting, and pagination.
+</TLDR>
+
 <!-- cspell:ignore ords,ORCLPDB,sqlplus,sysdba,hr,admin,TABLESPACE,AUTOREST,instring -->
 
 In a previous article (<Link to="/blog/docker-oracle-database-server">Running Oracle Database Server as a Docker container</Link>), we've created a Docker container called `oracle-db` where a Human Resources database is running.
