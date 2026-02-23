@@ -22,7 +22,7 @@
  * - ignorePatterns?: string[]
  *
  * Usage:
- *   import blogFeedPlugin from "./plugins/blog-feed-plugin/index.mjs";
+ *   import blogFeedPlugin from "./plugins/blog-feed-plugin/index.js";
  *
  *   export default {
  *     // ...
@@ -157,7 +157,7 @@ async function getArticleHtml(permalink, outDir, stripSelectors = []) {
   const htmlFilePath = path.join(outDir, permalink, "index.html");
   if (!fs.existsSync(htmlFilePath)) {
     console.warn(
-      `[BlogFeedPlugin] HTML file not found for ${permalink} at: ${htmlFilePath}`
+      `[BlogFeedPlugin] HTML file not found for ${permalink} at: ${htmlFilePath}`,
     );
     return null;
   }
@@ -172,7 +172,7 @@ async function getArticleHtml(permalink, outDir, stripSelectors = []) {
   }
   if (!articleContainer.length) {
     console.warn(
-      `[BlogFeedPlugin] Could not find article container for ${permalink}.`
+      `[BlogFeedPlugin] Could not find article container for ${permalink}.`,
     );
     return null;
   }
@@ -254,14 +254,14 @@ export default function blogFeedPlugin(context, options = {}) {
 
         if (!siteUrl) {
           console.error(
-            `[BlogFeedPlugin] siteConfig.url is missing. Please set it to your site's origin (e.g., https://example.com).`
+            `[BlogFeedPlugin] siteConfig.url is missing. Please set it to your site's origin (e.g., https://example.com).`,
           );
           return;
         }
 
         if (!fs.existsSync(blogDir)) {
           console.error(
-            `[BlogFeedPlugin] Blog source directory not found: ${blogDir}`
+            `[BlogFeedPlugin] Blog source directory not found: ${blogDir}`,
           );
           return;
         }
@@ -292,7 +292,7 @@ export default function blogFeedPlugin(context, options = {}) {
               frontMatter: attributes,
               finalSlug,
             };
-          })
+          }),
         );
 
         const metadataItems = rawMetadataItems.filter(Boolean);
@@ -306,29 +306,29 @@ export default function blogFeedPlugin(context, options = {}) {
             const fullContentBody = await getArticleHtml(
               item.permalink,
               outDir,
-              stripSelectors
+              stripSelectors,
             );
             return { ...item, fullContentBody };
-          })
+          }),
         );
 
         const publishedFeedItems = feedItemsWithContent
           .filter(
             (item) =>
-              item.frontMatter.published !== false && item.fullContentBody
+              item.frontMatter.published !== false && item.fullContentBody,
           )
           .sort((a, b) => new Date(b.date) - new Date(a.date));
 
         if (!publishedFeedItems.length) {
           console.log(
-            `[BlogFeedPlugin] No published posts with content found.`
+            `[BlogFeedPlugin] No published posts with content found.`,
           );
           return;
         }
 
         const finalFeedItems = publishedFeedItems.slice(
           0,
-          Math.max(1, Number(maxItems))
+          Math.max(1, Number(maxItems)),
         );
 
         const feed = new Feed({
@@ -353,7 +353,7 @@ export default function blogFeedPlugin(context, options = {}) {
           if (includeImages && absoluteImageUrl) {
             descriptionWithImage =
               `<img src="${absoluteImageUrl}" alt="${cleanProblemChars(
-                item.title
+                item.title,
               )}" style="display:block;max-width:100%;height:auto;">` +
               descriptionWithImage;
           }
@@ -389,13 +389,13 @@ export default function blogFeedPlugin(context, options = {}) {
         // Inject the stylesheet instruction right after the XML declaration
         rssContent = rssContent.replace(
           /^<\?xml[^>]+\?>/,
-          '<?xml version="1.0" encoding="utf-8"?>\n<?xml-stylesheet type="text/xsl" href="rss.xsl"?>'
+          '<?xml version="1.0" encoding="utf-8"?>\n<?xml-stylesheet type="text/xsl" href="rss.xsl"?>',
         );
 
         await fs.writeFile(rssPath, rssContent);
 
         console.log(
-          `[BlogFeedPlugin] ✅ RSS feed written to ${rssPath} (${finalFeedItems.length} items).`
+          `[BlogFeedPlugin] ✅ RSS feed written to ${rssPath} (${finalFeedItems.length} items).`,
         );
       } catch (err) {
         console.error(`[BlogFeedPlugin] RSS feed generation failed:`, err);

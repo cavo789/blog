@@ -16,7 +16,7 @@ By default, Docusaurus’s built-in blog feed may include UI artifacts or miss c
 
 ## Setup
 
-1. Place the plugin code in `plugins/blog-feed-plugin/index.mjs`.
+1. Place the plugin code in `plugins/blog-feed-plugin/index.js`.
 
 2. Register the plugin in your `docusaurus.config.js`:
 
@@ -24,7 +24,7 @@ By default, Docusaurus’s built-in blog feed may include UI artifacts or miss c
    const config = {
      // ...
      plugins: [
-     [ "./plugins/blog-feed-plugin/index.mjs", {
+     [ "./plugins/blog-feed-plugin/index.js", {
          maxItems: 20,           // optional
          includeContent: true,   // optional
          includeImages: true,    // optional

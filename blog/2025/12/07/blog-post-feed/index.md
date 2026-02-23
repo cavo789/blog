@@ -82,9 +82,9 @@ $ yarn add cheerio feed front-matter fs-extra glob
 
 ### Create the plugin
 
-Please create the `plugins/blog-feed-plugin/index.mjs` with the code below
+Please create the `plugins/blog-feed-plugin/index.js` with the code below
 
-<Snippet filename="plugins/blog-feed-plugin/index.mjs" source="plugins/blog-feed-plugin/index.mjs" />
+<Snippet filename="plugins/blog-feed-plugin/index.js" source="plugins/blog-feed-plugin/index.js" />
 
 ### Update your configuration
 

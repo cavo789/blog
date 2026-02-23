@@ -149,7 +149,7 @@ const config = {
     ],
     [pluginSeriesRoute, {}],
     [pluginTagRoute, {}],
-    ["./plugins/blog-feed-plugin/index.mjs", { maxItems: 20 }],
+    ["./plugins/blog-feed-plugin/index.js", { maxItems: 20 }],
     [
       "./plugins/ascii-injector/index.mjs",
       { bannerPath: "src/data/banner.txt" },

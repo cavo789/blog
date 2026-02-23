@@ -14,7 +14,7 @@ presets: [
 plugins: [
     // [...]
     [
-        "./plugins/blog-feed-plugin/index.mjs",
+        "./plugins/blog-feed-plugin/index.js",
         { maxItems: 20 },
     ],
 ],

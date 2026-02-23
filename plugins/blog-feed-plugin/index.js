@@ -22,21 +22,21 @@
  * - ignorePatterns?: string[]
  *
  * Usage:
- * import blogFeedPlugin from "./plugins/blog-feed-plugin/index.mjs";
+ * const blogFeedPlugin = require("./plugins/blog-feed-plugin/index.js");
  *
- * export default {
- *    // ...
- *    plugins: [
- *       [blogFeedPlugin, {
- *          maxItems: 20,
- *          includeContent: true,
- *          includeImages: true,
- *          stripSelectors: [
- *             ".custom-ads",
- *             ".share-buttons"
- *          ],
- *       }],
- *    ],
+ * module.exports = {
+ * // ...
+ * plugins: [
+ * [blogFeedPlugin, {
+ * maxItems: 20,
+ * includeContent: true,
+ * includeImages: true,
+ * stripSelectors: [
+ * ".custom-ads",
+ * ".share-buttons"
+ * ],
+ * }],
+ * ],
  * };
  *
  * Output:
@@ -45,16 +45,12 @@
  * @license MIT — free to use, modify, and contribute.
  */
 
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-
-import yaml from "js-yaml";
-import fs from "fs-extra";
-import path from "path";
-import frontMatter from "front-matter";
-import * as glob from "glob";
-import * as cheerio from "cheerio";
-
+const yaml = require("js-yaml");
+const fs = require("fs-extra");
+const path = require("path");
+const frontMatter = require("front-matter");
+const glob = require("glob");
+const cheerio = require("cheerio");
 const { Feed } = require("feed");
 
 // --- Utilities ---------------------------------------------------------------
@@ -218,7 +214,7 @@ function computeSlug(attributes, relativeFilePath) {
 
 // --- Plugin ------------------------------------------------------------------
 
-export default function blogFeedPlugin(context, options = {}) {
+module.exports = function blogFeedPlugin(context, options = {}) {
   const {
     maxItems = 20,
     includeContent = true,
@@ -487,4 +483,4 @@ export default function blogFeedPlugin(context, options = {}) {
       }
     },
   };
-}
+};
