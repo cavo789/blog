@@ -9,6 +9,7 @@ mainTag: component
 tags: [docusaurus]
 date: 2026-02-23
 ai_assisted: true
+blueskyRecordKey: 3mfj335ykxc2d
 ---
 ![Introducing the ProjectSetup Component - A Standardized Way to Share Project Structures](/img/v2/project_setup.webp)
 
