@@ -1,6 +1,6 @@
 ---
 slug: docusaurus-ai-gemini
-title: How to Indicate AI-Assisted Content in a Docusaurus Blog
+title: How to indicate AI-assisted content in a Docusaurus blog
 description: A step-by-step guide to show when a blog post has been written with the help of an AI like Google Gemini, by adding an icon and an author.
 image: /img/v2/gemini-co-author.webp
 series: Creating Docusaurus components
@@ -8,11 +8,10 @@ mainTag: docusaurus
 tags: [ai, docusaurus]
 authors: [christophe]
 ai_assisted: true
-date: 2026-12-31
-draft: true
+date: 2026-03-09
 ---
 
-![How to Indicate AI-Assisted Content in a Docusaurus Blog](/img/v2/gemini-co-author.webp)
+![How to indicate AI-assisted content in a Docusaurus blog](/img/v2/gemini-co-author.webp)
 
 <TLDR>
 This blog post explains how to indicate AI-assisted content in a Docusaurus blog by adding an icon and a co-author.

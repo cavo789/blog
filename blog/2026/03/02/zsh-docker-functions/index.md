@@ -7,7 +7,7 @@ image: /img/v2/zsh.webp
 mainTag: zsh
 tags: [customization, docker, fzf, linux, zsh]
 date: 2026-03-02
-blueskyRecordKey:
+blueskyRecordKey: 3mfj335ykxc2d
 ---
 ![ZSH Functions - Customizing Your Shell for Docker Management](/img/v2/zsh.webp)
 
