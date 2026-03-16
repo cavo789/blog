@@ -1,0 +1,44 @@
+---
+title: "Project Self-Analysis"
+---
+
+## 🛠️ Automated Infrastructure Map
+
+```{python}
+#| echo: false
+#| output: asis
+from project_viz import render_project_arch
+render_project_arch()
+```
+
+## 📈 File System Analytics
+
+The following chart analyzes the physical structure of this DevContainer.
+It counts every file in our workspace by its extension.
+
+```{python}
+#| echo: false
+#| output: asis
+from file_stats import render_extension_pie
+render_extension_pie(".")
+```
+
+## 📊 Business Logic Flow
+
+```{python}
+#| echo: false
+#| output: asis
+from my_feature import generate_flow
+generate_flow(["Load Balancer", "API Gateway", "Auth Service", "Database"])
+```
+
+## 🧑 Call API
+
+Call RandomUser API and return a list of 10 fake users.
+
+```{python}
+#| echo: false
+#| output: asis
+from call_api import main
+main()
+```

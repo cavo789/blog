@@ -1,0 +1,24 @@
+{
+  "name": "WritingDoc Lab",
+  "dockerComposeFile": "../compose.yaml",
+  "service": "docs",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "quarto.quarto",
+        "ms-python.python",
+        "yzhang.markdown-all-in-one",
+        "tomoyukim.vscode-mermaid-editor"
+      ],
+      "settings": {
+        "files.exclude": {
+          "index_files/": true,
+          "index.html": true
+        },
+        "quarto.renderOnSave": true,
+        "editor.formatOnSave": true
+      }
+    }
+  }
+}

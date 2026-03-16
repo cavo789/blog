@@ -1,0 +1,11 @@
+services:
+  docs:
+    build: .
+    volumes:
+      - .:/workspace
+    ports:
+      - "4242:4242"
+    environment:
+      - PYTHONPATH=/workspace/scripts
+    command: >
+      bash -c "chmod +x /workspace/scripts/preview.sh && sleep infinity"
