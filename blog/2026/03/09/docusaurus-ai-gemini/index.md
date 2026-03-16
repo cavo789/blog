@@ -9,6 +9,7 @@ tags: [ai, docusaurus]
 authors: [christophe]
 ai_assisted: true
 date: 2026-03-09
+blueskyRecordKey: 3mgmbqloqk222
 ---
 
 ![How to indicate AI-assisted content in a Docusaurus blog](/img/v2/gemini-co-author.webp)

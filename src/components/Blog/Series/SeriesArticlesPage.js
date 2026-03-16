@@ -41,7 +41,7 @@ export default function SeriesArticlesPage() {
     seriesPosts.length > 0 ? seriesPosts[0].series : slug;
 
   const sortedPosts = seriesPosts.sort(
-    (a, b) => new Date(a.date) - new Date(b.date)
+    (a, b) => new Date(b.date) - new Date(a.date)
   );
 
   return (
