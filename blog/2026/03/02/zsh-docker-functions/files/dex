@@ -4,7 +4,7 @@
 _d_check_env fzf docker || return 1
 _d_has_running_containers || return 0
 
-local fzf_out key selection container_id cmd_exec user_flag
+local fzf_out key selection container_id cmd_exec user_flag query
 
 # Multi-line preview command using Docker Go templates
 # We use literal newlines here to ensure proper formatting inside fzf's subshell.
@@ -20,7 +20,7 @@ Compose Dir: {{index .Config.Labels \"com.docker.compose.project.working_dir\"}}
 
 # Removed the --height parameter to allow a full-screen fzf experience
 fzf_out=$(docker ps --format "{{.ID}}\t{{.Names}}\t{{.Image}}" | \
-    fzf --layout=reverse --border \
+    fzf --layout=reverse --border --query="$query" \
         --header "Enter: Run | Ctrl-E: Edit | Ctrl-R: Run as Root" \
         --preview "$preview_cmd" --preview-window=right:50%:wrap \
         --expect=ctrl-e,ctrl-r)

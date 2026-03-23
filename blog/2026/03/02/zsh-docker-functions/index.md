@@ -7,6 +7,9 @@ image: /img/v2/zsh.webp
 mainTag: zsh
 tags: [customization, docker, fzf, linux, zsh]
 date: 2026-03-02
+updates:
+  - date: 2026-03-23
+    note: Adding drun
 blueskyRecordKey: 3mfj335ykxc2d
 ---
 ![ZSH Functions - Customizing Your Shell for Docker Management](/img/v2/zsh.webp)
@@ -36,6 +39,10 @@ So, by simply running `dex` in your terminal, you can easily access any of your 
 
 <AlertBox variant="tip" title="Root access">
 Press <kbd>Ctrl</kbd>+<kbd>R</kbd> while selecting a container with `dex` to start the session with root access. This is useful when you need to perform administrative tasks inside the container that require elevated privileges.
+</AlertBox>
+
+<AlertBox variant="tip" title="Filtering">
+Run `dex any_pattern` to filter the list of containers to the ones with that pattern.
 </AlertBox>
 
 ## Stop one or more running Docker containers
@@ -74,6 +81,15 @@ If the environment is already clean, the wizard detects it immediately and exits
 
 ![Running dnuke to clean up unused Docker resources](./images/dnuke.webp)
 
+## Creating a new container
+
+The last function is `drun` to get the list of existing images and create a new container based on the selected one.
+
+<AlertBox variant="tip" title="Filtering">
+Run `drun any_pattern` to filter the list of images to the ones with that pattern.
+</AlertBox>
+
+
 ## One to rule them all
 
 The `dops` function is a wrapper around the other functions. It allows you to quickly access the other functions by using a single command. Simply run `dops` in your terminal, and it will list all the available functions. You can then select the function you want to use, and it will execute the corresponding command.
@@ -90,7 +106,7 @@ Edit your `~/.zshrc` file and add the following lines at the end of the file:
 fpath=(~/.zsh/docker-fns $fpath)
 
 autoload -Uz _d_check_env _d_print_cmd _d_has_running_containers
-autoload -Uz dex dlogs dnuke dops dstop
+autoload -Uz dex dlogs dnuke dops drun dstop
 
 # Setup alias for the interactive menu
 alias d='dops'
@@ -98,8 +114,8 @@ alias d='dops'
 # Print quick reference menu only in interactive sessions to avoid breaking scripts
 if [[ -o interactive ]]; then
     echo -e "\033[1;30mDocker Utils loaded:\033[0m"
-    echo -e "  \033[0;36mdex\033[0m   (exec/root) \033[0;36mdlogs\033[0m (logs/json)   \033[0;36mdstop\033[0m (stop/kill)"
-    echo -e "  \033[0;36mdnuke\033[0m (clean)     \033[0;36mdops\033[0m  (menu/alias \033[1;32md\033[0m)"
+    echo -e "  \033[0;36mdex\033[0m   (exec/root) \033[0;36mdlogs\033[0m (logs/json)    \033[0;36mdstop\033[0m (stop/kill)"
+    echo -e "  \033[0;36mdnuke\033[0m (clean)     \033[0;36mdops\033[0m  (menu/alias \033[1;32md\033[0m) \033[0;36mdrun\033[0m  (create new container)"
 fi
 ```
 
@@ -116,5 +132,6 @@ Now, create the `~/.zsh/docker-fns` directory and move the individual function f
   <Snippet filename="dlogs" source="./files/dlogs" />
   <Snippet filename="dnuke" source="./files/dnuke" />
   <Snippet filename="dops" source="./files/dops" />
+  <Snippet filename="drun" source="./files/drun" />
   <Snippet filename="dstop" source="./files/dstop" />
 </ProjectSetup>

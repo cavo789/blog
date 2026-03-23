@@ -6,7 +6,7 @@ description: Master the Linux command line with fzf (Fuzzy Finder). Discover its
 authors: [christophe]
 image: /img/v2/linux_tips.webp
 mainTag: linux
-tags: [bash, customization, fzf, linux, tips, linux]
+tags: [bash, customization, fzf, linux, tips]
 language: en
 update: 2024-03-31
 ---

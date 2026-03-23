@@ -1,0 +1,46 @@
+#!/usr/bin/env zsh
+
+# Interactive Docker Run (Ephemeral)
+_d_check_env fzf docker || return 1
+
+local fzf_out key selection image_id cmd_run user_flag query
+query="$1"
+
+# Preview showing Image layers, Env vars and Labels
+local preview_cmd='docker inspect --format "Image: {{.RepoTags}}
+----------------------------------------
+ID:          {{.Id}}
+Created:     {{.Created}}
+Size:        {{.Size}}
+Architecture: {{.Architecture}}
+----------------------------------------
+Labels:      {{range \$k, \$v := .Config.Labels}}{{\$k}}={{\$v}} {{end}}
+" {2}'
+
+# Full-screen fzf to select image
+# Format: Repository:Tag | ID | Size | Created
+fzf_out=$(docker images --format "{{.Repository}}:{{.Tag}}\t{{.ID}}\t{{.Size}}\t{{.CreatedAt}}" | \
+    fzf --layout=reverse --border --query="$query" \
+        --header "Enter: Run --rm | Ctrl-R: Run as Root" \
+        --preview "$preview_cmd" --preview-window=right:50%:wrap \
+        --expect=ctrl-r)
+
+# Exit if user canceled
+[[ -z "$fzf_out" ]] && return 0
+
+key=$(head -n 1 <<< "$fzf_out")
+selection=$(tail -n +2 <<< "$fzf_out")
+image_id=$(awk '{print $2}' <<< "$selection")
+
+[[ -z "$image_id" ]] && return 0
+
+# Toggle root user
+user_flag=""
+[[ "$key" == "ctrl-r" ]] && user_flag="--user root"
+
+# Smart shell execution
+local smart_shell="sh -c 'exec \$(command -v zsh || command -v bash || echo sh)'"
+cmd_run=$(echo "docker run --rm -it ${user_flag} ${image_id} ${smart_shell}" | tr -s ' ')
+
+_d_print_cmd "$cmd_run" "\033[1;36m"
+eval "$cmd_run"
