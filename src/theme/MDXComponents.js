@@ -8,6 +8,7 @@ import CardImage from "@site/src/components/Card/CardImage";
 import Column from "@site/src/components/Column";
 import Columns from "@site/src/components/Columns";
 import Details from "@site/src/components/Details";
+import DownloadButton from "@site/src/components/DownloadButton";
 import Hero from "@site/src/components/Hero";
 import Highlight from "@site/src/components/Highlight";
 import Link from "@docusaurus/Link";
@@ -42,6 +43,7 @@ export default {
   Column,
   Columns,
   Details,
+  DownloadButton,
   EmptyFolder,
   File,
   Folder,

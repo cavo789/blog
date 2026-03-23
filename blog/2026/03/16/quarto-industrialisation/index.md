@@ -9,7 +9,7 @@ tags: [quarto]
 authors: [christophe]
 ai_assisted: true
 date: 2026-03-16
-blueskyRecordKey:
+blueskyRecordKey: 3mh5um7gpgs2x
 ---
 
 ![Quarto - How I Built a Self-Documenting Ecosystem for 50+ Projects](/img/v2/quarto-industrialisation.webp)
