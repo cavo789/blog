@@ -59,6 +59,7 @@
         "editor.guides.bracketPairsHorizontal": "active",
         "editor.guides.highlightActiveBracketPair": true,
         "editor.guides.indentation": true,
+        "editor.inlineSuggest.enabled": true,
         "editor.renderWhitespace": "all",
         "editor.rulers": [120, 70],
         "editor.stickyScroll.enabled": true,

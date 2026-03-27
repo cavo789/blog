@@ -1,6 +1,7 @@
 ---
 slug: ollama-installation
 title: Installing Ollama and get local AI
+description: Learn how to deploy Ollama locally via Docker to run private, free LLMs and enable AI-powered code autocompletion in VSCode.
 authors: [christophe]
 image: /img/v2/playing_with_ollama.webp
 mainTag: ai
@@ -10,19 +11,24 @@ date: 2026-12-31
 
 ![Installing Ollama and get local AI](/img/v2/playing_with_ollama.webp)
 
-In one of my last article about my <Link to="/blog/gemini-tldr">TL;DR summary</Link> component, I've created a Python script to consume Gemini API and boum, after just a few requests, I got a maximum quota exceeded error.
+<TLDR>This guide explains how to install Ollama locally using Docker to run large language models for free while maintaining complete data privacy. It details how to select appropriate models based on your available system memory for tasks like rapid code autocompletion and complex refactoring. You will also learn to integrate these tools directly into your workflow using Open WebUI and the Continue extension for VSCode.</TLDR>
+
+In one of my last articles about my <Link to="/blog/gemini-tldr">TL;DR summary</Link> component, I created a Python script to consume the Gemini API and boom, after just a few requests, I got a maximum quota exceeded error.
+
+If you need to install Docker, please follow
 
 What if we can solve this for free? How? Simply by installing a LLM locally, on our host. No more quota.
 
 <!-- truncate -->
 
-## Did you need a local LLM?
+## Do you need a local LLM?
 
-Probably the most important reason is privacy: having it locally, on your host, means that your documents stays on your computer.  You'll not share your codebase f.i. with AI companies.
+Probably the most important reason is privacy: having it locally, on your host, means that your documents stay on your computer. You won't share your codebase, for example, with AI companies.
 
-You can also think to automation: you'll be able to run automation scripts without the fear to reach any quota. Also, you don't have to be afraid for the billing; it's on your host, it's free.
+You can also think about automation: you'll be able to run automation scripts without the fear of reaching any quota. Also, you don't have to be afraid of billing; since it runs on your host, it's completely free.
 
-## Installing Ollama and run it
+
+## Installing and running Ollama
 
 You know, as a Docker lover, I'll not install Ollama by hand.
 
@@ -32,17 +38,19 @@ Run `mkdir ~/tools/ollama && cd $_` then create a `compose.yaml` with this conte
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" defaultOpen={false} />
 
+
 Still in the `~/tools/ollama` folder, simply run `docker compose up --detach` to download ollama and run it as a Docker container.
 
-## Download a LLM model
+## Download an LLM model
 
-First, you've to think about your use. Most probably you'll expect speed and accuracy.
+First, you need to think about your use case. Most probably you'll expect speed and accuracy.
 
-For speed, you've to use a "small" LLM like `llama3.1:8b`. Let's take an example: you plan to use a VSCode extension and, you then need speed for autocompletion.
+For speed, you should use a "small" LLM like `llama3.1:8b`. Let's take an example: you plan to use a VSCode extension and, you need speed for autocompletion.
 
-For accuracy, you are OK to wait a few more in order to get better result.
+For accuracy, you might be okay with waiting a bit longer to get better results.
 
-First, pay attention to how many free RAM you've.
+First, pay attention to how much free RAM you have.
+
 
 ```bash
 $ free -h

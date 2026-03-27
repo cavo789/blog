@@ -1,5 +1,7 @@
 {
+  "continue.enableTabAutocomplete": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.inlineSuggest.enabled": true,
   "search.exclude": {
     "**/node_modules": true
   },
