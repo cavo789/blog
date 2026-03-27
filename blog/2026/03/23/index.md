@@ -8,7 +8,7 @@ tags: [ai, docusaurus]
 authors: [christophe]
 ai_assisted: true
 date: 2026-03-23
-blueskyRecordKey:
+blueskyRecordKey: 3mhpgarpcks2o
 ---
 
 ![Restore Marknotes with Lovable.dev](/img/v2/lovable_dev.webp)

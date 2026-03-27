@@ -1,0 +1,4 @@
+# Getting Started with Ollama
+
+Ollama is a fantastic tool that allows you to run large language models (LLMs) like Llama 3 and Mistral locally on your own machine. This guide will walk you through installing Ollama, pulling your first model, and interacting with it via the command line and its REST API. Local LLMs offer privacy and cost-effectiveness.
+

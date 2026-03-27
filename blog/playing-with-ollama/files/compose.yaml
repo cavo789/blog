@@ -1,0 +1,35 @@
+# This is the main Docker Compose file.
+# It defines two services:
+# 1. ollama: The LLM service itself.
+# 2. app: A service for our development environment.
+
+services:
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    # Uncomment the following lines if you have an NVIDIA GPU and want to use it
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+  app:
+    # This service is for the VS Code Dev Container
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - .:/workspaces/blog_analyzer
+    depends_on:
+      - ollama
+    # Keep the container running
+    command: sleep infinity
+
+volumes:
+  ollama_data:

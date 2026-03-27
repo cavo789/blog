@@ -1,0 +1,4 @@
+# Advanced Python Scripting
+
+This post dives into more advanced topics in Python programming. We will explore decorators, generators, and context managers. These powerful features can make your code more efficient and readable. We will also see how to interact with a REST API using the popular `requests` library, a key skill for any modern developer.
+

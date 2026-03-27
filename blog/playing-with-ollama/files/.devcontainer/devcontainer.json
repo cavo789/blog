@@ -1,0 +1,20 @@
+{
+  "name": "Blog Analyzer Dev Environment",
+  "dockerComposeFile": ["../compose.yaml"],
+  "service": "app",
+  "workspaceFolder": "/workspaces/blog_analyzer",
+  "containerUser": "vscode",
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": true,
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "window.title": "${dirty}${rootName} ${separator} [DevContainer]",
+        "workbench.colorTheme": "Visual Studio Light",
+        "workbench.startupEditor": "terminal"
+      },
+      "extensions": ["ms-python.python", "ms-python.vscode-pylance"]
+    }
+  },
+  "postCreateCommand": "pip install --user -r requirements.txt"
+}

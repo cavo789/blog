@@ -1,0 +1,18 @@
+[
+  {
+    "source_article": "001-intro-to-docker.md",
+    "suggested_links": []
+  },
+  {
+    "source_article": "004-local-llms-future.md",
+    "suggested_links": ["002-getting-started-with-ollama.md"]
+  },
+  {
+    "source_article": "003-advanced-python.md",
+    "suggested_links": []
+  },
+  {
+    "source_article": "002-getting-started-with-ollama.md",
+    "suggested_links": ["004-local-llms-future.md"]
+  }
+]

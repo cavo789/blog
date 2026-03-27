@@ -1,0 +1,4 @@
+# Why Local LLMs are the Future
+
+Running Large Language Models (LLMs) locally provides unmatched privacy, control, and cost savings. Tools like Ollama make it easier than ever. This article explores the benefits of a local-first approach to AI development and contrasts it with cloud-based solutions. We will cover hardware requirements and suitable use cases.
+

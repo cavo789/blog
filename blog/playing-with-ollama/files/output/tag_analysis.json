@@ -1,0 +1,85 @@
+{
+  "total_unique_tags": 23,
+  "top_tags": [
+    {
+      "tag": "local",
+      "count": 2
+    },
+    {
+      "tag": "LLMs",
+      "count": 2
+    },
+    {
+      "tag": "docker",
+      "count": 1
+    },
+    {
+      "tag": "containers",
+      "count": 1
+    },
+    {
+      "tag": "images",
+      "count": 1
+    },
+    {
+      "tag": "compose",
+      "count": 1
+    },
+    {
+      "tag": "future",
+      "count": 1
+    },
+    {
+      "tag": "AI",
+      "count": 1
+    },
+    {
+      "tag": "development",
+      "count": 1
+    },
+    {
+      "tag": "advanced",
+      "count": 1
+    },
+    {
+      "tag": "python",
+      "count": 1
+    },
+    {
+      "tag": "scripting",
+      "count": 1
+    },
+    {
+      "tag": "decorators",
+      "count": 1
+    },
+    {
+      "tag": "generators",
+      "count": 1
+    },
+    {
+      "tag": "context",
+      "count": 1
+    },
+    {
+      "tag": "managers",
+      "count": 1
+    },
+    {
+      "tag": "rest",
+      "count": 1
+    },
+    {
+      "tag": "api",
+      "count": 1
+    },
+    {
+      "tag": "language models",
+      "count": 1
+    },
+    {
+      "tag": "Ollama",
+      "count": 1
+    }
+  ]
+}
