@@ -4,7 +4,6 @@ title: Installing Ollama and get local AI
 authors: [christophe]
 image: /img/v2/playing_with_ollama.webp
 mainTag: ai
-draf: true
 tags: [ai, ollama]
 date: 2026-12-31
 ---
@@ -15,11 +14,13 @@ In one of my last article about my <Link to="/blog/gemini-tldr">TL;DR summary</L
 
 What if we can solve this for free? How? Simply by installing a LLM locally, on our host. No more quota.
 
+<!-- truncate -->
+
 ## Did you need a local LLM?
 
 Probably the most important reason is privacy: having it locally, on your host, means that your documents stays on your computer.  You'll not share your codebase f.i. with AI companies.
 
-You can also think to automation: you'll be able to run automation scripts without the fear to reach any quota. You'll not pay for your consumption too.
+You can also think to automation: you'll be able to run automation scripts without the fear to reach any quota. Also, you don't have to be afraid for the billing; it's on your host, it's free.
 
 ## Installing Ollama and run it
 
@@ -27,7 +28,7 @@ You know, as a Docker lover, I'll not install Ollama by hand.
 
 Let's create the `compose.yaml` file on your disk. I use a few Docker containers every day, and I save their configuration files in a `~/tools` folder; let’s do the same here.
 
-Run `mkdir ~/tools/ollama && cd $?` then create a `compose.yaml` with this content:
+Run `mkdir ~/tools/ollama && cd $_` then create a `compose.yaml` with this content:
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" defaultOpen={false} />
 
@@ -68,6 +69,14 @@ This is why, f.i. we're running `docker exec -it ollama ollama pull llama3.1:8b`
 
 If you run `free -h` again, look at the `Available` column again. I had ~9.9G before, now I've ~5.5G.
 
+<AlertBox variant="note" title="Where are stored LLMs?">
+
+Since we're using Docker, look at the `compose.yaml` file. We're using a `ollama_data` Docker self-managed volume.
+
+Like any other volume, nothing will pollute our disk. If one day we wish to remove Ollama, we just need to remove the Docker container and the associated volume. Et voilà.
+
+</AlertBox>
+
 ### More power needed?
 
 There are a lot of models available, look at the suffix at the end of `llama3.1:8b` f.i. `8b` means 8 billion of parameters. The more you can have the more knowledge you'll get but, it has a price: the size.
@@ -106,26 +115,13 @@ The command to run is `ollama run <model_name>` so, if you've followed this tuto
 $ docker exec -it ollama ollama run llama3.1:8b
 </Terminal>
 
-You can now start to ask anything.
+You can now start to ask anything like a comparaison between Quarto and Docusaurus:
 
-<Terminal wrap={true}>
-$ Can you create a very simple one-line CLI for retrieving a joke from a free online API? I want a simple curl statement, asking for plain text and show the joke in my terminal
+![Asking to compare Quarto and Docusaurus](./images/test_quarto_docusaurus_comparaison.webp)
 
-Here is a simple one-liner using curl to fetch a random joke from the Chuck Norris Joke API:
+Or getting a joke :
 
-curl -s https://api.chucknorris.io/jokes/random | jq '.value' | sed 's/"//g'
-
-Let me explain what each part does:
-
-* curl -s: Sends an HTTP GET request to the specified URL, and suppresses progress meter and error messages.
-* https://api.chucknorris.io/jokes/random: This is the API endpoint that returns a random Chuck Norris joke. The response will be in JSON format.
-* jq '.value': Extracts only the joke text from the JSON response.
-* sed 's/"//g': Removes double quotes surrounding the joke text.
-
-You can run this command in your terminal to get a random Chuck Norris joke!
-
-Note: Make sure you have jq installed on your system, as it is used for parsing and transforming JSON data. If you don't have it, you can install it with your package manager (e.g., apt-get install jq on Ubuntu-based systems).
-</Terminal>
+![Getting a joke](./images/test_joke.webp)
 
 Type `/bye` to exit.
 
@@ -139,19 +135,9 @@ And, if you don't use the model anymore the next five minutes, ollama will unloa
 
 ### Should I speak English with the model?
 
-In fact, no. Just like using a webpage; you can speak your own language:
+In fact, no. Just like using a webpage; you can speak your own language. In the example below you can also see another way to ask a question: instead of asking jumping in a terminal, you can also type your question directly in the command line.
 
-can now start to ask anything.
-
-<!-- cspell:disable -->
-<Terminal wrap={true}>
-$ Pourrais-tu me dire quel temps il faut aujourd'hui à Bruxelles?
-
-Je peux t'aider à trouver la météo actuelle à Bruxelles !
-
-Il existe plusieurs façons de faire cela, mais je vais te suggérer quelques options : [...]
-</Terminal>
-<!-- cspell:enable -->
+![Asking in French](./images/test_asking_in_french.webp)
 
 ## Using a web interface
 
@@ -159,33 +145,47 @@ You can download a WebGUI to interact with Ollama and the most used one is **Ope
 
 Let's edit our `compose.yaml` file and add a new service:
 
-<Snippet filename="compose.yaml" source="./files/compose_webui.yaml" defaultOpen={true} />
+<Snippet filename="compose.yaml" source="./files/compose_webui.yaml" defaultOpen={false} />
 
-Run `docker compose up --detach` to download the open-webui image (~1.7G) and create the container.
+Run `docker compose up --detach` to download the `open-webui` image (~1.7G) and create the container.
 
 Now, simply surf to `http://localhost:4000` and you'll have your interface and, you can start to interact with your local LLM.
 
+![Asking for suggestions for a gift for my wife](./images/open_webui.webp)
+
 Pay attention top left: you can see there the list of installed models.
+
+![The list of models is available in the Open WebUI interface](./images/open_webui_models.webp)
 
 ## Using a VSCode extension
 
 If you want to add AI in VSCode, you can install [Continue - open-source AI agent](https://marketplace.visualstudio.com/items?itemName=Continue.continue).
 
+![Installing Continue extension in VSCode](./images/install_continue_extension.webp)
+
 Continue requires a `config.json` file **in your Windows home folder**; not WSL side.
 
-Start a Powershell terminal, run `cd ~/.continue ; notepad config.json` and paste the content of this file:
+Start a Powershell terminal, run `cd ~/.continue ; del config.yaml ; notepad config.json` and paste the content of this file:
 
 <Snippet filename=".continue/config.json" source="./files/continue/config.json" defaultOpen={false} />
+
+![Configure Continue extension](./images/configure_continue_extension.webp)
 
 Restart VSCode again or, in the Continue pannel, fin the `Local config` option and select `Refresh`.
 
 When you'll see your model name in the list of loaded models, Continue is ready to manage your first question.
 
+![Selecting a model in Continue extension](./images/continue_select_model.webp)
+
+From now one, you can use Continue to ask questions about your codebase, generate unit tests, refactor some code, and so on.
+
+The speed will depend on the model you've selected and your hardware for sure.
+
 ### Using autocompletion
 
 When you're typing some text in VSCode, you wish immediate autocompletion and not to wait one second or more.
 
-For this, you'll need to use a fastest model; let's use `qwen2.5-coder:1.5b`  (1.5 billion of parameters, around ~1G).
+For this, you'll need to use a faster model; let's use `qwen2.5-coder:1.5b`  (1.5 billion of parameters, around ~1G).
 
 <Terminal wrap={true}>
 $ docker exec -it ollama ollama pull qwen2.5-coder:1.5b
@@ -195,17 +195,58 @@ Update your `.continue/config.json` file (on Windows side) with this new content
 
 <Snippet filename=".continue/config.json" source="./files/continue/config_with_autocompletion.json" defaultOpen={false} />
 
-### With a better LLM
+Now that I've added the `qwen2.5-coder:1.5b` model in my config file, let's create a `calculate.sh` file with this content:
 
-You've a powerfull CPU and/or GPU with 32GB or more, you can also add a better model `gemma2:27b` (27 billion of parameters, around ~17G):
+<Snippet filename="calculate.sh" source="./files/calculate.sh" defaultOpen={true} />
 
-<Snippet filename=".continue/config.json" source="./files/continue/config_with_expert.json.json" defaultOpen={false} />
+... and nothing more.
+
+After just one second, VSCode will suggest me to complete the function with the right code:
+
+![Continue autocompletion in action](./images/continue_autocompletion.webp)
+
+I've accepted the suggestion and, I've typed `function main` and again, after one second, the rest of the code is autocompleted.
+
+Then I've typed `function help`, accept the proposal and the last thing was to accept the last lines of the script.
+
+So, in less than 5 seconds, I've got a complete script with the right code and the right comments. All this without writing a single line of code, just by accepting suggestions from the LLM.
+
+<Snippet filename="calculate.sh" source="./files/calculate_autocompleted.sh" defaultOpen={false} />
+
+And it's works out-of-the-box!
+
+<Terminal wrap={true}>
+
+$ chmod +x ./calculate.sh
+
+$ ./calculate.sh
+Usage: ./calculate.sh \<num1\> \<num2\> \<operator\>
+Example: ./calculate.sh 5 3 +
+
+❯ ./calculate.sh 5 3 -
+5 - 3 = 2
+
+</Terminal>
+
+### Using more powerfull LLM depending on your expectations
+
+If you've a powerfull CPU and/or GPU with 32GB or more, you can also add a better model `gemma2:27b` (27 billion of parameters, around ~17G):
+
+<Snippet filename=".continue/config.json" source="./files/continue/config_with_expert.json" defaultOpen={false} />
 
 <Terminal wrap={true}>
 $ docker exec -it ollama ollama pull gemma2:27b
 </Terminal>
 
 This model will be much more accurate, but also slower. Save it for intensive code analysis tasks such as code refactoring, generating complex unit tests, and so on.
+
+I've selected `gemma2:27b` and asked for a refactoring. It was really slow even on my machine (i9 - 64GB).
+
+![Refactory my current file using Continue](./images/continue_refactor_current_file.webp)
+
+And using autocompletion for the `readme.md`
+
+![Using autocompletion for the readme.md file](./images/readme_autocompletion.webp)
 
 ## Bonus
 
