@@ -1,0 +1,16 @@
+[wsl2]
+
+# Limits RAM to leave 12GB for Windows
+memory=20GB
+
+# (Optional) Adds some dedicated swap space for WSL
+swap=8GB
+
+# Enables automatic RAM reclamation so, Windows can reclaim it
+autoMemoryReclaim=gradual
+
+# Mirror Windows network interfaces to WSL for seamless localhost access
+networkingMode=mirrored
+
+# Automatically shrink the WSL virtual disk when files are deleted to free up space
+sparseVhd=true

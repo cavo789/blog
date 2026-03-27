@@ -214,6 +214,7 @@ michi
 mindmap
 mindmaps
 mitm
+mixtral
 mktemp
 mlint
 mnpx
@@ -256,6 +257,7 @@ nounset
 nuno
 octocat
 oldcomp
+ollama
 onbrokenanchors
 onsave
 openapi
@@ -427,6 +429,7 @@ WEBKITGTK
 webmail
 webp
 webservice
+webui
 winget
 winscp
 winword
@@ -436,6 +439,7 @@ wpuser
 writeline
 writeln
 wscript
+wslconfig
 wslg
 xclock
 xelatex

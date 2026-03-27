@@ -1,14 +1,15 @@
 ---
-slug: playing-with-ollama
+slug: docusaurus-ollama-tags
 title: Playing with Ollama - Create a blog post analyzer with a local LLM
 authors: [christophe]
 image: /img/v2/ollama_docusaurus_tags.webp
-mainTag: winscp
+mainTag: ai
+draft: true
 tags: [ai, ollama]
 date: 2026-12-31
 ---
 
-![Playing with Ollama: Create a blog post analyzer with a local LLM](/img/v2/ollama_docusaurus_tags.webp)
+![Playing with Ollama - Create a blog post analyzer with a local LLM](/img/v2/ollama_docusaurus_tags.webp)
 
 ## Copy the directory structure and files
 
@@ -38,7 +39,7 @@ It will take a few minutes to build the container and install the dependencies. 
 
 ## Download the LLM model
 
-Then, return to your terminal (on your host) and run the following command to donwload the LLM model:
+Then, return to your terminal (on your host) and run the following command to download the LLM model:
 
 <Terminal wrap={true}>
 $ docker exec -it blog_analyzer-ollama-1 ollama pull llama3:8b
@@ -151,11 +152,3 @@ $ docker exec -it blog_analyzer-ollama-1 ollama pull mistral
 <AlertBox variant="tip" title="Not enough RAM?">
 
 On my machine with 64GB of RAM, I can run the `70b` model, but it does consume a lot of resources. If you have less RAM, you might want to stick with the `8b` or `mistral` models for a smoother experience.
-
-I was quite surprised when I got the "You don't have enough RAM to run this model" message while trying to run the `70b` model. I've thus added a `.wslconfig` file to the project to increase the amount of RAM allocated to WSL, which is required to run the `70b` model. If you want to run this model, make sure to add this file in your home directory (e.g., `C:\Users\YourUsername\.wslconfig`) and restart WSL for the changes to take effect.
-
-<Snippet filename=".wslconfig" source="./files/.wslconfig" defaultOpen={true} />
-
-(Think to run `wsl --shutdown` in a Powershell console if you've created/updated the `.wslconfig` file.)
-
-</AlertBox>

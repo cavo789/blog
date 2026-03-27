@@ -32,7 +32,7 @@
   },
   "initializeCommand": "mkdir -p .docusaurus .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
   "remoteUser": "node",
-  "updateRemoteUserUID": false,
+  "updateRemoteUserUID": true,
   "overrideCommand": false,
   "customizations": {
     "vscode": {

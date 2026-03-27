@@ -1,0 +1,21 @@
+{
+  "models": [
+    {
+      "title": "Assistant (fast)",
+      "provider": "ollama",
+      "model": "llama3.1:8b",
+      "apiBase": "http://127.0.0.1:11434"
+    },
+    {
+      "title": "Assistant Expert (Gemma2)",
+      "provider": "ollama",
+      "model": "gemma2:27b"
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "Autocompletion",
+    "provider": "ollama",
+    "model": "qwen2.5-coder:1.5b",
+    "apiBase": "http://127.0.0.1:11434"
+  }
+}

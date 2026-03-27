@@ -1,0 +1,10 @@
+{
+  "models": [
+    {
+      "title": "Assistant (fast)",
+      "provider": "ollama",
+      "model": "llama3.1:8b",
+      "apiBase": "http://127.0.0.1:11434"
+    }
+  ]
+}
