@@ -7,6 +7,7 @@ image: /img/v2/playing_with_ollama.webp
 mainTag: ai
 tags: [ai, ollama]
 date: 2026-12-31
+blueskyRecordKey: 3miaxwivces2d
 ---
 
 ![Installing Ollama and get local AI](/img/v2/playing_with_ollama.webp)
@@ -27,7 +28,6 @@ Probably the most important reason is privacy: having it locally, on your host, 
 
 You can also think about automation: you'll be able to run automation scripts without the fear of reaching any quota. Also, you don't have to be afraid of billing; since it runs on your host, it's completely free.
 
-
 ## Installing and running Ollama
 
 You know, as a Docker lover, I'll not install Ollama by hand.
@@ -37,7 +37,6 @@ Let's create the `compose.yaml` file on your disk. I use a few Docker containers
 Run `mkdir ~/tools/ollama && cd $_` then create a `compose.yaml` with this content:
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" defaultOpen={false} />
-
 
 Still in the `~/tools/ollama` folder, simply run `docker compose up --detach` to download ollama and run it as a Docker container.
 
@@ -50,7 +49,6 @@ For speed, you should use a "small" LLM like `llama3.1:8b`. Let's take an exampl
 For accuracy, you might be okay with waiting a bit longer to get better results.
 
 First, pay attention to how much free RAM you have.
-
 
 ```bash
 $ free -h
