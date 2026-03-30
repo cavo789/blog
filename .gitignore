@@ -16,5 +16,5 @@
 
 */**/*:Zone.Identifier
 
-/.scripts/python_tldr/src/__pycache__/
+**/__pycache__/**
 

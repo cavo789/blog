@@ -1,0 +1,3 @@
+oyaml
+python-frontmatter
+requests

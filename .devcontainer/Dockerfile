@@ -34,7 +34,9 @@ RUN --mount=type=cache,target=/var/lib/apt/lists \
         curl \
         ca-certificates \
         passwd \
-        sudo && \
+        sudo \
+        python3 \
+        python3-pip && \
     # Update the node user UID/GID to match the host if provided
     # This ensures file permissions work correctly with mounted volumes
     if [ "$OS_USERID" -ne 1000 ]; then usermod -u ${OS_USERID} ${OS_USERNAME}; fi && \
@@ -70,8 +72,21 @@ EOF
 RUN set -eux && \
     echo "PS1='\n\e[0;33m🐳 \e[0;36m\$(whoami)\e[0m \w # '" >> "/home/${OS_USERNAME}/.bashrc"
 
+    # Bypass PEP 668 system-wide package block since this is an isolated container
+ENV PIP_BREAK_SYSTEM_PACKAGES=1, \
+     PYTHONDONTWRITEBYTECODE=1
+
 # Switch to the node user for development tasks
 USER "${OS_USERNAME}"
+
+# Install Python dependencies using BuildKit pip cache with proper user ownership
+# The uid=1000 and gid=1000 must match your OS_USERID and OS_GROUPID
+RUN --mount=type=cache,target=/home/${OS_USERNAME}/.cache/pip,uid=1000,gid=1000 \
+    pip install --upgrade pip && \
+    pip install \
+        oyaml \
+        python-frontmatter \
+        requests
 
 # Set the working directory to the application root
 WORKDIR "${APP_HOME}"

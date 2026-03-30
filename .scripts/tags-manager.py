@@ -1,6 +1,7 @@
 # tag_manager.py
 
 import argparse
+import requests
 from typing import List, Dict, Any, Tuple, Set
 import os
 import glob
@@ -266,6 +267,38 @@ def list_tags(sort_by: str = 'count') -> None:
     print("-" * 50)
 
 
+def suggest_tags_for_file(filepath: str) -> List[str]:
+    """
+    Sends the file content to Ollama to get suggested tags.
+    """
+    with open(filepath, 'r', encoding='utf-8') as f:
+        post = frontmatter.load(f)
+        content = post.content
+
+    prompt = f"""
+    Analyze the following blog post content and suggest 3 to 5 relevant technical tags.
+    Return ONLY a comma-separated list of tags, nothing else.
+
+    Content:
+    {content[:3000]}
+    """
+
+    try:
+        response = requests.post(
+            'http://host.docker.internal:11434/api/generate',
+            json={'model': 'llama3.1:8b', 'prompt': prompt, 'stream': False},
+            timeout=30
+        )
+
+        print(f"\n{Colors.WARNING}{Colors.BOLD}--- CALLING  http://host.docker.internal:11434/api/generate ---{Colors.ENDC}")
+        if response.status_code == 200:
+            raw_tags = response.json()['response'].strip()
+            return [t.strip() for t in raw_tags.split(',')]
+    except Exception as e:
+        print(f"  {Colors.FAIL}Error calling Ollama: {e}{Colors.ENDC}")
+    return []
+
+
 # ----------------------------------------------------------------------
 # Argparse Configuration (Remains unchanged)
 # ----------------------------------------------------------------------
@@ -400,6 +433,13 @@ if __name__ == "__main__":
         help="The tags to rename, in 'old_tag,new_tag' format (e.g., 'prog,programming')."
     )
 
+    # SUGGEST action
+    parser_suggest = subparsers.add_parser(
+        'suggest',
+        help="Use AI to suggest tags for a specific file."
+    )
+    parser_suggest.add_argument("file", type=str, help="Path to the .md file.")
+
     # Display full help page if no arguments are provided
     if len(os.sys.argv) == 1:
         parser.print_help()
@@ -411,6 +451,11 @@ if __name__ == "__main__":
     # Execute actions
     if args.action == 'list':
         list_tags(args.sort)
+
+    elif args.action == 'suggest':
+        print(f"{Colors.BOLD}Suggesting tags for: {Colors.OKBLUE}{args.file}{Colors.ENDC}")
+        suggestions = suggest_tags_for_file(args.file)
+        print(f"{Colors.OKGREEN}Suggested tags: {', '.join(suggestions)}{Colors.ENDC}")
 
     elif args.action == 'delete' or args.action == 'rename':
 

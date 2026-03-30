@@ -187,6 +187,8 @@ ifeq ($(strip $(ARGS)),)
 	@echo ""
 	@echo "  make tags-manager ARGS=\"rename old,new\""
 	@echo ""
+	@echo "  make tags-manager ARGS=\"suggest\""
+	@echo ""
 	@echo "  make tags-manager ARGS=\"--help\""
 	@echo ""
 	@echo "For full help, run: make tags-manager ARGS=\"--help\""
@@ -245,5 +247,5 @@ ifeq ($(strip $(ARGS)),)
 	@exit 1
 else
 	@echo "--- Running Yaml Manager with arguments: $(ARGS) ---"
-	docker run -it --rm -v ${PWD}:/app -w /app python sh -c "pip install oyaml python-frontmatter > /dev/null 2>&1 && python .scripts/yaml-manager.py $(ARGS)"
+	docker run -it --rm -v ${PWD}:/app -w /app python sh -c "pip install oyaml python-frontmatter requests > /dev/null 2>&1 && python .scripts/yaml-manager.py $(ARGS)"
 endif

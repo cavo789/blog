@@ -258,6 +258,12 @@ And using autocompletion for the `readme.md`
 
 ## Bonus
 
+### CanIRun.ai
+
+The website [https://www.canirun.ai/](https://www.canirun.ai/) automatically detects your CPU, GPU, and memory configuration—strictly locally, without transmitting your system data to an external server—and instantly outputs a realistic assessment of which AI models your machine can execute smoothly.
+
+By visiting that web page, the system will calculate which AI models can run on your hardware and how fast. No data is sent to any server. Everything is computed client-side.
+
 ### Freeing Up RAM with ollama stop
 
 If you ever need to instantly reclaim your system's memory, you can force a model to unload by running `docker exec -it ollama ollama stop <model_name>`.

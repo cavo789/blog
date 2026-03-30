@@ -20,6 +20,7 @@ alias serve='yarn run serve --port 3001'
 alias start='yarn docusaurus clear && yarn docusaurus start'
 alias lint='docker run --rm -it --user \$(id -u):\$(id -g) -v \${BLOG_HOST_DIR}:/md peterdavehello/markdownlint markdownlint --fix --config .config/.markdownlint.json --ignore-path .config/.markdownlint_ignore .'
 alias spellcheck='docker run --rm -it --user \$(id -u):\$(id -g) -v \${BLOG_HOST_DIR}:/src -w /src ghcr.io/streetsidesoftware/cspell:latest lint . --unique --gitignore --quiet --no-progress --config .vscode/cspell.json'
+alias tags='python3 .scripts/tags-manager.py'
 
 printf "\n🚀 Welcome to your Docusaurus Dev Container!\n\n"
 printf "📚 Quick Commands Reference:\n\n"
@@ -28,6 +29,8 @@ printf "  ⬆️  \033[1;33mupgrade\033[0m      Upgrade Docusaurus core and plug
 printf "  📦 \033[1;33mversion\033[0m      Show current Docusaurus version.\n"
 printf "  🚀 \033[1;33mserve\033[0m        Serve as a static website (don't forget to run 'build' first)\n"
 printf "  🟢 \033[1;33mstart\033[0m        Start / Restart Docusaurus.\n"
+printf "\n"
+printf "  🏷️  \033[1;33mtags\033[0m         Run tags tools.\n"
 printf "\n"
 printf "  🧹 \033[1;33mlint\033[0m         Lint Markdown files with markdownlint.\n"
 printf "  ✍️  \033[1;33mspellcheck\033[0m   Spell check content with cspell.\n"
