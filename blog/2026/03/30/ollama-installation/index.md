@@ -6,7 +6,7 @@ authors: [christophe]
 image: /img/v2/playing_with_ollama.webp
 mainTag: ai
 tags: [ai, ollama]
-date: 2026-12-31
+date: 2026-03-30
 blueskyRecordKey: 3miaxwivces2d
 ---
 
