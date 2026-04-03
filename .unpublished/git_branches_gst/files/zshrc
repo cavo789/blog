@@ -1,0 +1,40 @@
+# !!! PUT THIS NEW BLOCK AT THE END OF YOUR ~/.zshrc FILE
+# !!! DON'T REPLACE ALL THE FILE, JUST APPEND
+
+# Core function to display the 3 most recently modified local branches
+_display_recent_git_context() {
+    # Fallback immediately if the current directory is not a git repository
+    if ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        return 0
+    fi
+
+    # Fallback if the repository is entirely empty (no commits yet)
+    if ! command git rev-parse HEAD >/dev/null 2>&1; then
+        return 0
+    fi
+
+    local current_branch
+    current_branch=$(command git rev-parse --abbrev-ref HEAD 2>/dev/null)
+
+    echo $'\e[1;36m=== Recent Local Branches ===\e[0m'
+
+    # Extract and format the 3 most recently modified local branches
+    command git for-each-ref --sort=-committerdate refs/heads/ \
+        --format="%(if:equals=${current_branch})%(refname:short)%(then)%(color:green)* %(refname:short)%(color:reset)%(else)  %(color:yellow)%(refname:short)%(color:reset)%(end) - %(color:blue)%(committerdate:relative)%(color:reset)" \
+        | head -n 3
+
+    echo ""
+}
+
+# Smart wrapper for git status
+unalias gst 2>/dev/null
+gst() {
+    _display_recent_git_context
+    command git status "$@"
+    return $?
+}
+
+# Triggered automatically by Zsh on directory change
+chpwd() {
+    _display_recent_git_context
+}
