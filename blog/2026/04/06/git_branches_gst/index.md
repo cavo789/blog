@@ -7,7 +7,7 @@ image: /img/v2/git_branches_status.webp
 mainTag: git
 tags: [git, zsh]
 date: 2026-04-06
-blueskyRecordKey:
+blueskyRecordKey: 3misnmd2jqs2f
 ---
 
 ![Showing the last 3 updated branches when you jump in a git repo](/img/v2/git_branches_status.webp)
