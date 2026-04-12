@@ -1,0 +1,11 @@
+model: "qwen2.5-coder:7b"
+verbose: true
+tasks:
+  docstring: true
+  tests: true
+  run_tests: true
+  format: true
+ollama:
+  url: "http://host.docker.internal:11434"
+  timeout: 300
+  temperature: 0.0

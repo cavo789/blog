@@ -1,0 +1,28 @@
+services:
+  ai-agent:
+    build:
+      context: .
+      args:
+        USER_ID: ${UID:-1000}
+        GROUP_ID: ${GID:-1000}
+    image: cavo789/ai-agent:latest
+    # Read-only root filesystem for security
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    # Mount /tmp as tmpfs for logs and volatile files
+    tmpfs:
+      - /tmp:mode=1777
+    volumes:
+      # Feature 1: Mount the code and config for live development     
+      - ./src:/app/src:ro
+      - ./agent.yaml:/app/agent.yaml:ro
+      # Mount the target project to be analyzed
+      - ${MOUNT_SRC}:/app/project
+    environment:
+      - OLLAMA_URL=http://host.docker.internal:11434
+      - PYTHONPATH=/app/src
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # Overridable command for flexibility
+    command: ["--path", "/app/project", "--docstring", "--verbose"]

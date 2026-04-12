@@ -1,16 +1,16 @@
 ---
-slug: ai-python-docstring-pytest
+slug: python-ai-helper
 title: Auto-documenting and testing python scripts
 authors: [christophe]
 mainTag: Python
 tags: [ai, python]
-image: /img/v2/ai-python-docstring-pytest.webp
+image: /img/v2/python-ai-helper.webp
 date: 2026-12-31
 draft: true
 blueskyRecordKey:
 ---
 
-![Auto-documenting and testing python scripts](/img/v2/ai-python-docstring-pytest.webp)
+![Auto-documenting and testing python scripts](/img/v2/python-ai-helper.webp)
 
 To build and run in the same time: `make build && clear && make run PROJECT_PATH=$(pwd)`
 

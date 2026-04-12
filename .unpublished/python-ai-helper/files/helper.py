@@ -1,7 +1,6 @@
-"""Module for handling file operations with logging and error handling.
-This module provides functions to read from and write to text files, get file information,
-list files by extension, and safely delete files. Each function includes detailed logging
-to help diagnose issues during file operations."""
+"""
+This module provides functions for reading and writing text files, retrieving file information, listing files by extension, and safely deleting files. It includes error handling to log issues and raise exceptions when necessary.
+"""
 
 import logging
 from pathlib import Path
@@ -45,9 +44,7 @@ def list_files_by_extension(directory: Path, extension: str) -> list[Path]:
         return []
 
     ext: str = extension if extension.startswith(".") else f".{extension}"
-    return [
-        path for path in directory.iterdir() if path.is_file() and path.suffix == ext
-    ]
+    return [path for path in directory.iterdir() if path.is_file() and path.suffix == ext]
 
 
 def safe_delete(file_path: Path) -> bool:
