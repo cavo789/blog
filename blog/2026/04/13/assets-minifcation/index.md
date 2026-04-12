@@ -12,7 +12,7 @@ blueskyRecordKey:
 
 ![Streamline Your Frontend - Minifying Assets with Docker, Bash, and YAML](/img/v2/minification.webp)
 
-<TDLR>This guide demonstrates how to build a clean, modular, and blazing-fast asset pipeline without polluting your host machine. By combining a declarative YAML manifest, a straightforward Bash orchestrator, and a Dockerized Go-based minifier (`tdewolff/minify`), you get reproducible, isolated builds. It is the perfect setup for projects that require a lean, Docker-first approach to frontend optimization.</TDLR>
+<TLDR>This guide demonstrates how to build a clean, modular, and blazing-fast asset pipeline without polluting your host machine. By combining a declarative YAML manifest, a straightforward Bash orchestrator, and a Dockerized Go-based minifier (`tdewolff/minify`), you get reproducible, isolated builds. It is the perfect setup for projects that require a lean, Docker-first approach to frontend optimization.</TLDR>
 
 In modern web development, keeping your CSS and JavaScript files lean is crucial for performance. While heavy-duty bundlers like Webpack or Vite are great for complex apps, sometimes you just need a simple, portable way to concatenate and minify files without installing a massive Node.js ecosystem on your local machine or CI/CD runner.
 
