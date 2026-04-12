@@ -1,0 +1,47 @@
+mkdir /tmp/minification && cd $_ && \
+mkdir -p public/assets/css public/assets/js dist/assets && \
+cat << 'EOF' > public/assets/css/reset.css
+html, body { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: sans-serif; line-height: 1.5; }
+EOF
+cat << 'EOF' > public/assets/css/variables.css
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --dark-bg: #2c3e50;
+    --light-text: #ecf0f1;
+}
+EOF
+cat << 'EOF' > public/assets/css/layout.css
+.container { width: 90%; margin: 0 auto; max-width: 1200px; }
+.flex-row { display: flex; gap: 20px; flex-wrap: wrap; }
+header { background: var(--dark-bg); color: var(--light-text); padding: 2rem; }
+EOF
+cat << 'EOF' > public/assets/css/components.css
+.btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+.btn-primary { background-color: var(--primary-color); color: white; }
+.btn-primary:hover { filter: brightness(1.1); }
+EOF
+cat << 'EOF' > public/assets/js/utils.js
+const logger = (msg) => {
+    const timestamp = new Date().toISOString();
+    console.log(`[${timestamp}] INFO: ${msg}`);
+};
+EOF
+cat << 'EOF' > public/assets/js/api.js
+async function fetchData(endpoint) {
+    logger(`Fetching data from /api/${endpoint}`);
+    const response = await fetch(`/api/${endpoint}`);
+    return await response.json();
+}
+EOF
+cat << 'EOF' > public/assets/js/main.js
+document.addEventListener('DOMContentLoaded', () => {
+    logger('Application initialized');
+    const appContainer = document.querySelector('.container');
+    if(appContainer) {
+        appContainer.innerHTML += '<p>Assets loaded successfully.</p>';
+    }
+});
+EOF
+echo "Directory structure and files created successfully."

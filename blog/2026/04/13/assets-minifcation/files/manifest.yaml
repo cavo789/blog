@@ -1,0 +1,16 @@
+bundles:
+  - name: "Main Styles"
+    type: "css"
+    output: "dist/assets/app.min.css"
+    inputs:
+      - "public/assets/css/components.css"
+      - "public/assets/css/layout.css"
+      - "public/assets/css/reset.css"
+      - "public/assets/css/variables.css"
+  - name: "App Logic"
+    type: "js"
+    output: "dist/assets/bundle.min.js"
+    inputs:
+      - "public/assets/js/api.js"
+      - "public/assets/js/main.js"
+      - "public/assets/js/utils.js"

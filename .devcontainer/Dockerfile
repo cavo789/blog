@@ -72,9 +72,9 @@ EOF
 RUN set -eux && \
     echo "PS1='\n\e[0;33m🐳 \e[0;36m\$(whoami)\e[0m \w # '" >> "/home/${OS_USERNAME}/.bashrc"
 
-    # Bypass PEP 668 system-wide package block since this is an isolated container
-ENV PIP_BREAK_SYSTEM_PACKAGES=1, \
-     PYTHONDONTWRITEBYTECODE=1
+# Bypass PEP 668 system-wide package block since this is an isolated container
+ENV PIP_BREAK_SYSTEM_PACKAGES=1 \
+    PYTHONDONTWRITEBYTECODE=1
 
 # Switch to the node user for development tasks
 USER "${OS_USERNAME}"
