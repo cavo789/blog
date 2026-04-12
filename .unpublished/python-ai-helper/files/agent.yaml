@@ -1,11 +1,49 @@
+# =============================================================================
+# AI Maintenance Agent - Global Configuration Profile
+# =============================================================================
+
+# The specific LLM model to use for all code generation and analysis tasks.
+# Ensure this model is already pulled in your local Ollama instance.
 model: "qwen2.5-coder:7b"
+
+# Toggles exhaustive logging. When set to true, the agent outputs the exact
+# prompts, API responses, generated code sizes, and detailed Pytest outputs.
 verbose: true
+
+# Controls idempotency. If false, the agent skips files that already have 
+# docstrings or existing test files to save time. If true, it overwrites them.
+force: false
+
+# =============================================================================
+# Task Execution Pipeline
+# Enable or disable specific maintenance operations here.
+# =============================================================================
 tasks:
+  # Generates missing module-level docstrings based on the code's behavior.
   docstring: true
-  tests: true
-  run_tests: true
+
+  # Formats the codebase using Ruff to enforce strict style guidelines.
   format: true
+
+  # Automatically generates a dedicated pytest file for the target module.
+  tests: true
+
+  # If true, immediately executes the generated test file using pytest
+  # to validate that the AI-generated tests actually pass.
+  run_tests: true
+
+# =============================================================================
+# Local LLM Infrastructure (Ollama)
+# =============================================================================
 ollama:
+  # The endpoint of the Ollama API. 'host.docker.internal' allows the Docker 
+  # container to securely communicate with the Ollama instance running on your host.
   url: "http://host.docker.internal:11434"
+
+  # Maximum time (in seconds) the agent will wait for the LLM to generate a response.
+  # Increase this if running larger models on slower hardware.
   timeout: 300
+
+  # Controls the LLM's creativity. Set to 0.0 for strict, highly deterministic 
+  # output, which is mandatory for reliable code generation.
   temperature: 0.0

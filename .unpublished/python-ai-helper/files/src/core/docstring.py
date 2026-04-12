@@ -15,23 +15,33 @@ class DocstringTask:
         self.log = logging.getLogger("AI-Agent")
 
     class _Transformer(cst.CSTTransformer):
-        def __init__(self, docstring: str):
-            # Clean up residual quotes
+        def __init__(self, docstring: str, replace_existing: bool):
             self.docstring = docstring.strip('`"\'\n')
+            self.replace_existing = replace_existing
 
         def leave_Module(self, original_node: cst.Module, updated_node: cst.Module) -> cst.Module:
             ds = cst.SimpleStatementLine([cst.Expr(cst.SimpleString(f'"""\n{self.docstring}\n"""'))])
-            return updated_node.with_changes(body=[ds] + list(updated_node.body))
+            
+            body = list(updated_node.body)
+            # If we are forcing an overwrite, we pop the first element (the old docstring)
+            if self.replace_existing and body:
+                body = body[1:]
+                
+            return updated_node.with_changes(body=[ds] + body)
 
-    def run(self, file_path: Path, code: str) -> bool:
+    def run(self, file_path: Path, code: str, force: bool = False) -> bool:
         tree = cst.parse_module(code)
+        has_docstring = False
 
         if tree.body and isinstance(tree.body[0], cst.SimpleStatementLine):
             first_stmt = tree.body[0].body[0]
             if isinstance(first_stmt, cst.Expr) and isinstance(first_stmt.value, cst.SimpleString):
-                return False
+                has_docstring = True
 
-        # Optimized Prompt: Strictly forbid code generation
+        if has_docstring and not force:
+            self.log.info(f"↷ Skipping docstring: Already exists. Use --force to overwrite.")
+            return False
+
         prompt = (
             f"Write a 2-sentence module docstring for the following code. "
             f"DO NOT output Python code. DO NOT output imports or functions. "
@@ -40,9 +50,7 @@ class DocstringTask:
         ds = self.llm.call(prompt, "You are a technical writer. Output ONLY text.")
 
         if ds:
-            # Failsafe: If the LLM hallucinates and includes code, truncate it.
             if "import " in ds or "def " in ds:
-                self.log.warning("LLM hallucinated code. Truncating to text only.")
                 clean_lines = []
                 for line in ds.splitlines():
                     if line.startswith(("import ", "def ", "class ", "logger")):
@@ -50,11 +58,10 @@ class DocstringTask:
                     clean_lines.append(line)
                 ds = "\n".join(clean_lines).strip()
 
-            # Clean logging: Only show a preview
             preview = ds[:100].replace('\n', ' ') + "..." if len(ds) > 100 else ds
             self.log.debug(f"Proposed Docstring: {preview}")
 
-            modified = tree.visit(self._Transformer(ds))
+            modified = tree.visit(self._Transformer(ds, replace_existing=has_docstring))
 
             try:
                 final_code = subprocess.run(

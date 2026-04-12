@@ -2,15 +2,15 @@
 
 import argparse
 import os
-import sys
+import time
 from pathlib import Path
 from typing import Any, List
 
 import yaml
 
+from core.docstring import DocstringTask
 from core.llm import OllamaClient
 from core.logger import AgentLogger
-from core.docstring import DocstringTask
 from tasks.unit_test import UnitTestTask
 
 
@@ -30,16 +30,12 @@ class AgentOrchestrator:
         self.llm = OllamaClient(url=ollama_url, model=self.model)
 
     def _get_target_files(self, root: Path) -> List[Path]:
-        """Discovers files based on whether the path is a file or a directory."""
         if root.is_file():
-            # Standardizing: If it's a file, we process it regardless of suffix 
-            # if it was explicitly requested, but we still log a warning if not .py
             if root.suffix != ".py":
                 self.log.warning(f"Processing {root.name} despite missing .py extension.")
             return [root]
 
         if root.is_dir():
-            # If root is a directory, find all .py files (original logic)
             return [
                 f
                 for f in root.rglob("*.py")
@@ -50,7 +46,8 @@ class AgentOrchestrator:
         return []
 
     def execute(self) -> None:
-        """Executes selected tasks on discovered files."""
+        start_time = time.time()
+        
         root_path = Path(self.args.path).resolve()
         files = self._get_target_files(root_path)
 
@@ -58,28 +55,33 @@ class AgentOrchestrator:
             self.log.warning("No valid Python files found to process.")
             return
 
+        force_flag = self.args.force or self.config.get("force", False)
+
         for py_file in files:
-            display_name = (
-                py_file.name if root_path.is_file() else py_file.relative_to(root_path)
-            )
-            self.log.info(f"Analyzing {display_name}")
+            display_name = py_file.name if root_path.is_file() else py_file.relative_to(root_path)
+            self.log.info(f"--- Analyzing {display_name} ---")
 
             try:
                 code = py_file.read_text(encoding="utf-8")
 
                 if self.args.docstring or self.config.get("tasks", {}).get("docstring"):
-                    if DocstringTask(self.llm).run(py_file, code):
+                    if DocstringTask(self.llm).run(py_file, code, force=force_flag):
                         self.log.info(f"✓ Docstring updated: {py_file.name}")
 
                 if self.args.tests or self.config.get("tasks", {}).get("tests"):
-                    # Extract the run_tests flag from CLI args or YAML config
                     run_tests_flag = self.args.run_tests or self.config.get("tasks", {}).get("run_tests", False)
-                    
-                    if UnitTestTask(self.llm).run(py_file, code, run_tests=run_tests_flag):
+                    if UnitTestTask(self.llm).run(py_file, code, run_tests=run_tests_flag, force=force_flag):
                         self.log.info(f"✓ Test generation completed: {py_file.name}")
 
             except Exception as e:
                 self.log.error(f"Failed to process {py_file.name}: {e}")
+
+        # Calculate and display execution time
+        elapsed = time.time() - start_time
+        mins, secs = divmod(elapsed, 60)
+        time_str = f"{int(mins)}m {secs:.2f}s" if mins > 0 else f"{secs:.2f}s"
+        self.log.info(f"Done. Total Execution Time: {time_str}")
+
 
 def main() -> None:
     """CLI Entrypoint."""
@@ -91,6 +93,7 @@ def main() -> None:
     parser.add_argument("--run-tests", action="store_true")
     parser.add_argument("--model", type=str)
     parser.add_argument("--verbose", action="store_true")
+    parser.add_argument("--force", action="store_true", help="Overwrite existing assets")
     args = parser.parse_args()
 
     config_path = Path(args.config)
@@ -101,6 +104,7 @@ def main() -> None:
             config = yaml.safe_load(f) or {}
 
     AgentOrchestrator(config, args).execute()
+
 
 if __name__ == "__main__":
     main()

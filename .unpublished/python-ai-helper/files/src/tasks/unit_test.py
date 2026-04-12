@@ -15,10 +15,15 @@ class UnitTestTask:
         self.llm = llm
         self.log = logging.getLogger("AI-Agent")
 
-    def run(self, file_path: Path, code: str, run_tests: bool = False) -> bool:
+    def run(self, file_path: Path, code: str, run_tests: bool = False, force: bool = False) -> bool:
         test_dir = file_path.parent / "tests"
         test_dir.mkdir(exist_ok=True)
         test_path = test_dir / f"test_{file_path.name}"
+
+        # Idempotency Check
+        if test_path.exists() and not force:
+            self.log.info(f"↷ Skipping test generation: {test_path.name} already exists. Use --force to overwrite.")
+            return False
 
         prompt = (
             f"Generate a pytest file for the following code. "
@@ -27,7 +32,6 @@ class UnitTestTask:
         test_code = self.llm.call(prompt, "Output ONLY raw Python code.")
 
         if test_code:
-            # Clean Logging: Avoid dumping the whole file
             self.log.debug(f"✓ Generated unit test code ({len(test_code)} bytes).")
             test_path.write_text(test_code, encoding="utf-8")
 
@@ -50,7 +54,6 @@ class UnitTestTask:
 
                 if res.returncode == 0:
                     self.log.info(f"✓ Tests PASSED for {file_path.name}")
-                    # Log the clean summary output from Pytest
                     self.log.debug(f"Pytest Output:\n{res.stdout.strip()}")
                 else:
                     self.log.error(f"✗ Tests FAILED for {file_path.name}")

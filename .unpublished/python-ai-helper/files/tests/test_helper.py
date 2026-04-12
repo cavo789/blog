@@ -35,7 +35,8 @@ def test_list_files_by_extension(tmp_path):
 
 def test_safe_delete(tmp_path):
     file_path = tmp_path / "test.txt"
-    with open(file_path, "w") as f:
-        f.write("Test content")
+    file_path.touch()
     assert safe_delete(file_path)
     assert not file_path.exists()
+
+    assert not safe_delete(file_path)
