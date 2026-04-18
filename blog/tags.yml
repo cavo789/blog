@@ -130,6 +130,10 @@ devcontainer:
   label: "DevContainer"
   permalink: "/tags/devcontainer"
   description: "Containerized development environments (VS Code/Docker)."
+doc-as-code:
+  label: "Documentation as code"
+  permalink: "/tags/doc-as-code"
+  description: "Managing documentation with the same tools and processes as software development: version control, automated testing, and CI/CD pipelines.."
 docker:
   label: "Docker"
   permalink: "/tags/docker"

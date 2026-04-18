@@ -1,0 +1,45 @@
+services:
+  nginx-proxy:
+    image: nginx:alpine
+    ports: ["80:80", "443:443"]
+    networks: [frontend]
+    volumes: ["./nginx.conf:/etc/nginx/nginx.conf"]
+
+  api-gateway:
+    build: ./services/gateway
+    depends_on: [auth-service, user-service]
+    networks: [frontend, backend]
+    environment:
+      - DB_URL=postgres://db:5432/app
+
+  auth-service:
+    image: node:18
+    networks: [backend]
+    volumes: ["auth_data:/data"]
+
+  user-service:
+    image: python:3.11
+    networks: [backend, database]
+    environment:
+      - REDIS_URL=redis:6379
+
+  db-primary:
+    image: postgres:15
+    networks: [database]
+    volumes: ["pg_data:/var/lib/postgresql/data"]
+    environment:
+      - POSTGRES_PASSWORD=secret
+
+  redis-cache:
+    image: redis:alpine
+    networks: [database]
+
+networks:
+  frontend:
+  backend:
+  database:
+    driver: bridge
+
+volumes:
+  pg_data:
+  auth_data:

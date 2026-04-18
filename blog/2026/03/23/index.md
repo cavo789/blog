@@ -13,6 +13,8 @@ blueskyRecordKey: 3mhpgarpcks2o
 
 ![Restore Marknotes with Lovable.dev](/img/v2/lovable_dev.webp)
 
+<TLDR>Can an AI code generator rebuild a full-stack note-taking app from a single prompt? I tested Lovable.dev to recreate my legacy app, Marknotes, mandating a strict Docker-first architecture with a Python/FastAPI backend, a React frontend, Redis for caching, and Meilisearch for indexing.</TLDR>
+
 This week, a colleague told me about [Lovable.dev](https://lovable.dev), saying: "*In a prompt, you just have to describe the program you want to generate, and the tool will build it and even deploy it for you*". Wow, I definitely needed to try it.
 
 But what should I ask for? What if I asked it to create a clone of [Marknotes](https://github.com/cavo789/marknotes)? Those who have been following me for years know that I created Marknotes, a note-taking application, 10 years ago. I worked on it for five years before moving on.

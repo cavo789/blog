@@ -1,0 +1,27 @@
+{
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Inter, Segoe UI, Arial",
+    "fontSize": "16px",
+    "lineColor": "#475569",
+    "mainBkg": "#ffffff",
+
+    "cScale0": "#0f172a",
+    "cScaleLabel0": "#ffffff",
+
+    "cScale1": "#2563eb",
+    "cScaleLabel1": "#ffffff",
+
+    "cScale2": "#059669",
+    "cScaleLabel2": "#ffffff",
+
+    "cScale3": "#d97706",
+    "cScaleLabel3": "#ffffff",
+
+    "cScale4": "#6366f1",
+    "cScaleLabel4": "#ffffff",
+
+    "nodeBorder": "#cbd5e1",
+    "clusterBkg": "#f8fafc"
+  }
+}
