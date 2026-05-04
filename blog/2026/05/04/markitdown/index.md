@@ -65,7 +65,7 @@ However, this approach is not very practical for daily use. It would be much eas
 
 Let's create the `md-convert` file:
 
-<Snippet filename="/usr/local/bin/md-convert" source="./files/md-convert" />
+<Snippet filename="/usr/local/bin/md-convert" source="./files/md-convert.sh" />
 
 And make sure to make this file executable: `sudo chmod +x /usr/local/bin/md-convert`.
 
