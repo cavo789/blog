@@ -1,0 +1,5 @@
+- STRICTNESS: Must include 'declare(strict_types=1);' at the top.
+- TYPING: Use full property, parameter, and return typing. Use Union Types or Intersection Types where appropriate.
+- TOOLS: Compatible with PHPStan level 9 and Psalm.
+- MODERNITY: Use constructor property promotion and readonly classes.
+- ARCHITECTURE: Reject "God Classes". Use Dependency Injection.

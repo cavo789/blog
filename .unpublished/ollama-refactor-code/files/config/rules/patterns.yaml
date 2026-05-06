@@ -1,0 +1,18 @@
+patterns:
+  # Dockerfiles (Dockerfile, Dockerfile.dev, etc.)
+  - regex: ".*Dockerfile.*"
+    rule: "dockerfile.txt"
+
+  # Docker Compose (compose.yml, compose.prod.yaml, etc.)
+  - regex: "^compose.*\\.ya?ml$"
+    rule: "docker-compose.txt"
+  - regex: "^docker-compose.*\\.ya?ml$"
+    rule: "docker-compose.txt"
+
+  # GitHub Actions / CI-CD
+  - regex: "^\\.github/workflows/.*\\.ya?ml$"
+    rule: "ci-cd-rules.txt"
+
+  # Python specific
+  - regex: ".*test.*\\.py$"
+    rule: "python-tests.txt"

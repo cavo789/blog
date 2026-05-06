@@ -1,118 +1,149 @@
+import os
 import re
 import sys
 from pathlib import Path
 from typing import Final
 
-from analyzer import CodeAnalyzer
-from diff_engine import DiffEngine
-from git_utils import GitManager
-from ollama_client import OllamaClient
+from rich.text import Text
 
-# This script orchestrates the code review via Ollama.
-# If the AI returns "LGTM", the script exits with code 0.
-# If the AI rejects the code, it displays suggestions and a diff, exiting with code 1.
+from cli.diff import DiffEngine
+from cli.ui import UIHelper
+from core.analyzer import CodeAnalyzer
+from core.rules import RuleProvider
+from core.types import AppConfig, RuntimeConfig, VerbosityConfig, VerbosityLevel
+from infra.cache import CacheManager
+from infra.git import GitManager
+from infra.ollama import OllamaClient
+
+# Global UI instance for standard output
+UI: Final[UIHelper] = UIHelper()
 
 
 def extract_fixed_code(text: str) -> str | None:
-    """Extracts the code and cleans potential markdown backticks."""
+    """Extracts code between [FIXED_CODE] tags."""
     pattern: Final[str] = r"\[FIXED_CODE\](.*?)\[/FIXED_CODE\]"
-    match: re.Match[str] | None = re.search(pattern, text, re.DOTALL)
+    match: Final[re.Match[str] | None] = re.search(pattern, text, re.DOTALL)
     if match:
         code: str = match.group(1).strip()
-        code = re.sub(r"^```python\n|^```\n|```$", "", code, flags=re.MULTILINE)
+        code = re.sub(r"^```[a-zA-Z]*\n|```$", "", code, flags=re.MULTILINE)
         return code.strip()
     return None
 
 
-def process_review(analyzer: CodeAnalyzer, filename: str, content: str) -> bool:
-    """Analyzes a file and prints the feedback. Returns True on rejection."""
-    review: str | None = analyzer.check_file(filename, content)
+def process_review(analyzer: CodeAnalyzer, filename: str, content: str, show_diff: bool) -> bool:
+    """Runs the AI review and prints stylized feedback."""
+    review: Final[str | None] = analyzer.check_file(filename, content)
 
     if review and "REJECTED" in review.upper():
-        print(f"\n\033[1m\033[91mREJECTED: {filename}\033[0m")
+        UI.print_header(f"REJECTED: {filename}", "❌", "red")
 
-        parts: list[str] = review.split("[FIXED_CODE]")
-        explanation: str = parts[0].replace("REJECTED:", "").strip()
-        print(f"\033[93mReasons:\033[0m\n{explanation}")
+        explanation: Final[str] = review.split("[FIXED_CODE]")[0].replace("REJECTED:", "")
+        UI.print_analysis_results(explanation)
 
-        fixed_code: str | None = extract_fixed_code(review)
+        fixed_code: Final[str | None] = extract_fixed_code(review)
         if fixed_code:
-            print(f"\n\033[1m\033[94m--- Suggested Diff for {filename} ---\033[0m")
-            diff: str = DiffEngine.generate_colored_diff(content, fixed_code, filename)
-            print(diff)
-        else:
-            print("\n\033[33m[!] AI failed to provide [FIXED_CODE] tags for a diff.\033[0m")
+            UI.print_header("Refactored Source", "🛠️", "cyan")
+            UI.print_code_block(fixed_code, filename)
+
+            if show_diff:
+                UI.print_header("Differential View", "Δ", "blue")
+
+                # On récupère l'objet Text et on l'imprime via la console de l'UI
+                diff_output: Final[Text] = DiffEngine.generate_colored_diff(
+                    content, fixed_code, filename
+                )
+                UI.console.print(diff_output)
+
         return True
 
-    print(f"\033[32m✓ {filename}: LGTM\033[0m")
+    UI.print_info(f"✔ {filename}: LGTM", "green")
     return False
 
 
 def main() -> None:
-    """Main orchestrator for the AI Code Reviewer."""
-    # Strict path initialization using pathlib
-    current_file_path: Final[Path] = Path(__file__).resolve()
-    base_path: Final[Path] = current_file_path.parent.parent
-    config_file: Final[Path] = base_path / "config" / "settings.yaml"
-    prompt_file: Final[Path] = base_path / "config" / "system_prompt.txt"
+    """Main execution flow with strict pathing and permissions."""
+    base_dir: Final[Path] = Path(__file__).resolve().parent.parent
+    config_path: Final[Path] = base_dir / "config" / "settings.yaml"
+    rules_dir: Final[Path] = base_dir / "config" / "rules"
 
-    # Initialize Ollama Client
-    client: Final[OllamaClient] = OllamaClient(str(config_file))
+    # Path aligned with Docker volume mount for persistence
+    cache_path: Final[Path] = Path("/app/.cache")
 
-    # Connection check (for office/home portability)
-    if not client.is_available():
-        print("\033[93mOllama not found or offline; skipping AI review.\033[0m")
-        sys.exit(0)
+    client: Final[OllamaClient] = OllamaClient(str(config_path))
+    config: Final[AppConfig] = client.config
 
-    # Load system prompt
-    if not prompt_file.exists():
-        print(f"Error: Prompt file not found at {prompt_file}")
+    # Strict typing added here
+    runtime_cfg: Final[RuntimeConfig] = config["runtime"]
+    verbosity_cfg: Final[VerbosityConfig] = runtime_cfg["verbosity"]
+
+    # 1. Start-up: Restoration of the Magenta Box
+    if verbosity_cfg.get("show_config"):
+        info_str: Final[str] = f"{config['ollama']['model']} @ {config['ollama']['url']}"
+        UI.print_config(info_str)
+
+    # 2. Cache Permissions
+    is_cache_enabled: Final[bool] = runtime_cfg.get("cache_enabled", True)
+    cache: Final[CacheManager] = CacheManager(cache_path, is_cache_enabled)
+
+    if is_cache_enabled and not cache.verify_permissions():
+        UI.print_fatal(
+            "Cache Permission Error",
+            f"The directory '{cache_path}' is NOT writable by UID {os.getuid()}.",
+        )
         sys.exit(1)
 
-    system_prompt: Final[str] = prompt_file.read_text(encoding="utf-8")
-    analyzer: Final[CodeAnalyzer] = CodeAnalyzer(client, system_prompt)
+    # 3. Connection Validation
+    if not client.is_available():
+        UI.print_info("Ollama unreachable. Skipping AI review.", "yellow")
+        sys.exit(0)
 
+    # 4. Analyzer Init
+    level_name: Final[str] = verbosity_cfg.get("show_system_instructions", "name")
+    verbosity_level: Final[VerbosityLevel] = VerbosityLevel(level_name)
+    analyzer: Final[CodeAnalyzer] = CodeAnalyzer(
+        client, RuleProvider(rules_dir), cache, verbosity_level
+    )
+
+    # 5. File Gathering
+    git: Final[GitManager] = GitManager()
     files_to_review: list[tuple[str, str]] = []
 
-    # Case 1: Manual Mode (arguments passed to docker run)
     if len(sys.argv) > 1:
-        print("--- Manual AI Review Mode ---")
-        for file_arg in sys.argv[1:]:
-            path: Path = Path("/repo") / file_arg
-            if path.exists() and path.is_file():
-                files_to_review.append((file_arg, path.read_text(encoding="utf-8")))
+        for manual_arg in sys.argv[1:]:
+            target: Path = Path("/repo") / manual_arg
+            if target.exists() and target.is_file():
+                files_to_review.append((manual_arg, target.read_text(encoding="utf-8")))
             else:
-                print(f"\033[91mFile not found: {file_arg}\033[0m")
-
-    # Case 2: Git Hook Mode (staged files)
+                # LOUD ERROR: The file doesn't exist
+                UI.print_fatal(
+                    "File Not Found", f"The manually specified file does not exist: {manual_arg}"
+                )
+                sys.exit(1)
     else:
-        git: Final[GitManager] = GitManager()
-        staged_files: list[str] = git.get_staged_files()
-        if not staged_files:
-            # No files staged, nothing to do
-            sys.exit(0)
+        for staged_name in git.get_staged_files():
+            staged_content: str = git.get_file_content(staged_name)
+            if staged_content:
+                files_to_review.append((staged_name, staged_content))
 
-        print(f"--- Git Pre-commit AI Review ({len(staged_files)} files) ---")
-        for f_name in staged_files:
-            content: str | None = git.get_file_content(f_name)
-            if content:
-                files_to_review.append((f_name, content))
+    if not files_to_review:
+        sys.exit(0)
 
-    # Execution of the reviews
+    # 6. Execute Reviews (No Final variables inside loop)
     rejection_count: int = 0
-    for f_name, f_content in files_to_review:
-        is_rejected: bool = process_review(analyzer, f_name, f_content)
+    diff_on: Final[bool] = verbosity_cfg.get("show_diff", True)
+
+    for current_name, current_content in files_to_review:
+        # Strict boolean typing enforced
+        is_rejected: bool = process_review(analyzer, current_name, current_content, diff_on)
         if is_rejected:
             rejection_count += 1
 
-    # Exit logic
+    # 7. Outcome
     if rejection_count > 0:
-        print(f"\n\033[91mFAILED: {rejection_count} file(s) did not pass the AI review.\033[0m")
-        print("Use 'git commit --no-verify' to bypass if necessary.")
+        UI.print_info(f"\nFAILED: {rejection_count} file(s) rejected.", "red")
         sys.exit(1)
 
-    print("\n\033[92mPASSED: All files are clean.\033[0m")
-    sys.exit(0)
+    UI.print_info("\nPASSED: All staged files are clean.", "green")
 
 
 if __name__ == "__main__":

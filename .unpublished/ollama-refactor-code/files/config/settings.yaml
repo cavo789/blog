@@ -1,3 +1,31 @@
-model: "qwen2.5-coder:7b"
-ollama_url: "http://localhost:11434"
-timeout: 90 # seconds
+ollama:
+  # Run 'curl http://192.168.0.218:11434/api/tags | jq' to get the list of installed models
+  model: "qwen2.5-coder:32b" # deepseek-r1:32b | qwen2.5-coder:14b
+
+  # Exposed URL accross the network to access to the Ollama AI engine
+  url: "http://192.168.0.218:11434"
+
+runtime:
+  # In seconds, time given to the AI to provide an answer
+  timeout: 180
+
+  # When true, calling the AI Code Reviewer more than once for the exact same file (no change) won't 
+  # generate subsequent calls to the LLM but, instead, a cache will be used.
+  cache_enabled: true
+
+  verbosity:
+    # Display the model name and the URL
+    show_config: true
+
+    # Show system instructions
+    # Levels:
+    #   - none: No output
+    #   - name: Only the file header [SYSTEM INSTRUCTIONS: filename]
+    #   - full: Header + complete prompt content
+    show_system_instructions: full
+
+    # If applicable, show the final source when the AI has suggested a new version
+    show_full_source: false
+
+    # If applicable, show the diff between the original and the refactored source
+    show_diff: true

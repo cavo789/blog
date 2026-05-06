@@ -1,0 +1,5 @@
+- POLICY: Every service must have a 'restart' policy.
+- SECURITY: Use secrets or .env files; never hardcode environment variables.
+- NETWORKING: Define custom networks; do not use the default bridge.
+- PERFORMANCE: Use 'volumes' for persistent data, but optimize with 'read_only: true' where possible.
+- RELIABILITY: Include 'healthcheck' for critical services.

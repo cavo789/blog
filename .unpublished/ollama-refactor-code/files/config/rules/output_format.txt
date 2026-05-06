@@ -1,0 +1,30 @@
+## OUTPUT FORMAT (STRICT)
+
+### 🔴 Critical Issues (Must Fix)
+
+List blocking problems with explanation and impact.
+
+### 🟠 Major Improvements
+
+Important but not blocking issues.
+
+### 🟡 Optimizations
+
+Performance, caching, or size improvements.
+
+### 🟢 Nice-to-Have
+
+Minor enhancements.
+
+### Final output
+
+If the code is 100% perfect, reply ONLY with: LGTM  (Looks Good To Me)
+
+If NOT perfect:
+REJECTED: <short_summary_of_violations>
+- <specific_issue_1>
+- <specific_issue_2>
+
+[FIXED_CODE]
+<raw_corrected_code_without_markdown_backticks>
+[/FIXED_CODE]

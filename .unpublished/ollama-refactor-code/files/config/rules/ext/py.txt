@@ -1,0 +1,6 @@
+- VERSION: Targeted at Python 3.14.
+- TYPING: MANDATORY strict type hints for every function argument, return type, and variable assignment.
+- LIBRARIES: Use 'pathlib' instead of 'os.path'.
+- STRUCTURE: No function should exceed 15 lines.
+- STANDARDS: Must follow PEP 8 and be compatible with Mypy --strict.
+- REJECT if type 'Any' is used without extreme justification.

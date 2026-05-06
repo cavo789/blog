@@ -124,13 +124,18 @@ If you are in a hurry, have a false positive from the AI, or are working offline
 
 * If you're updating the configuration or the code, you've to rebuild the image each time. To avoid this, simply mount the `config` and `src` folder like this:
 
-    ```bash
-    docker run --rm \
-        -v "$(pwd)/src:/app/src" \
-        -v "$(pwd)/config:/app/config" \
-        -v "$(pwd):/repo" \
-        --network="host" \
-        ai-reviewer:3.14-alpine src/main.py
+   ```bash
+   # Create the folder first to make sure permissions are correct
+   mkdir -p /tmp/.ai_cache
+
+   docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "/tmp/.ai_cache:/app/.cache" \
+    -v "$(pwd)/src:/app/src" \
+    -v "$(pwd)/config:/app/config" \
+    -v "$(pwd):/repo" \
+    --network="host" \
+    ai-reviewer:3.14-alpine src/main.py
     ```
 
     When finished, think to run `DOCKER_BUILDKIT=1 docker build -t ai-reviewer:3.14-alpine .` to build the final image

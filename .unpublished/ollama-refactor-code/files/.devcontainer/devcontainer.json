@@ -3,12 +3,12 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
-    // 1. FORCE le dossier de travail à une valeur simple
     "workspaceFolder": "/app",
-
-    // 2. FORCE le montage du dossier actuel UNIQUEMENT
-    // source=${localWorkspaceFolder} = le dossier où tu as lancé "code ."
-    // target=/app = là où il sera dans le container
+    "containerEnv": {
+        "UV_CACHE_DIR": "/home/vscode/.cache/uv",
+        "PYTHONPYCACHEPREFIX": "/home/vscode/.cache/pycache",
+        "UV_SYSTEM_PYTHON": "1"
+    },
     "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
     "customizations": {
         "vscode": {
@@ -48,9 +48,8 @@
             }
         }
     },
-    // Commande lancée une fois que le container est prêt
-    "postCreateCommand": "sudo uv pip install --system -r pyproject.toml --group dev",
-    
+    "postCreateCommand": "uv venv /home/vscode/venv && uv pip install --python /home/vscode/venv -r pyproject.toml --group dev",
+  
     "remoteUser": "vscode",
     "updateRemoteUserUID": true
 }

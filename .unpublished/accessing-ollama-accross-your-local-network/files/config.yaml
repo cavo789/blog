@@ -1,0 +1,48 @@
+name: My Config
+version: 1.0.0
+schema: v1
+
+models:
+  - name: Qwen 14B (Fast Chat)
+    provider: ollama
+    model: qwen2.5-coder:14b-instruct
+    apiBase: http://192.168.0.218:11434
+    capabilities:
+      - tool_use
+      - image_input
+    roles:
+      - chat
+      - edit
+      - apply
+
+  - name: Qwen 32B (Architect)
+    provider: ollama
+    model: qwen2.5-coder:32b
+    apiBase: http://192.168.0.218:11434
+    roles:
+      - chat
+      - edit
+      - apply
+    defaultCompletionOptions:
+      temperature: 0.7
+      maxTokens: 1500
+
+  - name: Qwen 7B Base (Autocomplete)
+    provider: ollama
+    model: qwen2.5-coder:7b-base
+    apiBase: http://192.168.0.218:11434
+    roles:
+      - autocomplete
+    autocompleteOptions:
+      debounceDelay: 250
+      maxPromptTokens: 1024
+      onlyMyCode: true
+
+context:
+  - provider: code
+  - provider: docs
+  - provider: diff
+  - provider: terminal
+  - provider: problems
+  - provider: folder
+  - provider: codebase

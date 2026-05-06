@@ -1,0 +1,4 @@
+- SYNCING: 'updateRemoteUserUID' must be true.
+- PERMISSIONS: Ensure 'remoteUser' is not root.
+- WORKSPACE: 'workspaceFolder' and 'workspaceMount' must be explicitly set to avoid leaking the host filesystem.
+- EXTENSIONS: Only essential extensions should be listed to keep the container lean.

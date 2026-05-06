@@ -1,0 +1,5 @@
+- BOILERPLATE: Must start with 'set -euo pipefail'.
+- LOCALITY: All variables inside functions MUST be declared with 'local'.
+- QUOTING: All variables MUST be double-quoted to prevent word splitting.
+- TOOLS: Code must pass ShellCheck without warnings.
+- BASHISM: Avoid non-POSIX features if running on Alpine (use /bin/sh compatibility or install bash).

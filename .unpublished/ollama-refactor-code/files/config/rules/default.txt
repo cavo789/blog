@@ -1,0 +1,3 @@
+- Check for security vulnerabilities (hardcoded secrets, weak permissions).
+- Ensure the code is readable and maintainable.
+- Reject any code with "TODO" or "FIXME" comments.
