@@ -1,13 +1,42 @@
-import sys
+import re
 from pathlib import Path
-from typing import Final
+from typing import Any, Final
+
+import yaml
+
+from core.exceptions import EmptyRuleFileError, MissingRuleFileError
+from core.file_utils import get_file_extension
+
+PatternRule = tuple[re.Pattern[str], str]
 
 
 class RuleProvider:
     """Handles retrieval and validation of code review rules."""
 
     def __init__(self, rules_path: Path) -> None:
+        """Initializes the provider with the base path for rules."""
         self.rules_path: Final[Path] = rules_path
+        self.patterns: Final[list[PatternRule]] = self._load_patterns()
+
+    def _load_patterns(self) -> list[PatternRule]:
+        """Loads and compiles regex patterns from patterns.yaml."""
+        patterns_file: Final[Path] = self.rules_path / "patterns.yaml"
+        if not patterns_file.exists():
+            return []
+
+        try:
+            with patterns_file.open("r", encoding="utf-8") as f:
+                data: Any = yaml.safe_load(f)
+                config_patterns: list[dict[str, str]] = data.get("patterns", [])
+
+                compiled: list[PatternRule] = []
+                for item in config_patterns:
+                    pattern: re.Pattern[str] = re.compile(item["regex"])
+                    rule_path: str = item["rule"]
+                    compiled.append((pattern, rule_path))
+                return compiled
+        except (yaml.YAMLError, KeyError, FileNotFoundError):
+            return []
 
     def get_base_rules(self) -> str:
         """
@@ -20,33 +49,41 @@ class RuleProvider:
         for file_name in required_files:
             file_path: Path = self.rules_path / file_name
             if not file_path.exists():
-                print("\n\033[1m\033[41m FATAL ERROR \033[0m")
-                print(f"\033[91mRequired core rule file is MISSING: {file_path}\033[0m")
-                print("\033[91mThe AI cannot review code without these instructions.\033[0m\n")
-                sys.exit(1)
+                raise MissingRuleFileError(file_path)
 
             content: str = file_path.read_text(encoding="utf-8").strip()
             if not content:
-                print("\n\033[1m\033[41m FATAL ERROR \033[0m")
-                print(f"\033[91mRequired core rule file is EMPTY: {file_path}\033[0m")
-                sys.exit(1)
+                raise EmptyRuleFileError(file_path)
 
             parts.append(content)
 
         return "\n\n".join(parts)
 
-    def get_specific_rules(self, filename: str) -> str:
-        """Retrieves rules specific to the file type or name."""
+    def get_specific_rules(self, filename: str) -> tuple[str, Path | None]:
+        """
+        Retrieves rules specific to the file type or name.
+        Returns the content and the path of the found rule file.
+        """
+        for pattern, rule_file in self.patterns:
+            if pattern.match(filename):
+                rule_path: Path = self.rules_path / rule_file
+                if rule_path.exists():
+                    content: str = rule_path.read_text(encoding="utf-8").strip()
+                    return content, rule_path
+
         name_lower: Final[str] = filename.lower()
-        extension: Final[str] = Path(filename).suffix.lstrip(".").lower()
+        extension: Final[str] = get_file_extension(filename)
 
         potential_paths: Final[list[Path]] = [
             self.rules_path / "files" / f"{name_lower}.txt",
             self.rules_path / "templates" / f"{name_lower}.txt",
             self.rules_path / "ext" / f"{extension}.txt",
+            self.rules_path / "default.txt",  # Fallback rule
         ]
 
         for rule_path in potential_paths:
             if rule_path.exists():
-                return rule_path.read_text(encoding="utf-8").strip()
-        return ""
+                content = rule_path.read_text(encoding="utf-8").strip()
+                return content, rule_path
+
+        return "", None

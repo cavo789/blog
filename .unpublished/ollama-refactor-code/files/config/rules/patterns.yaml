@@ -1,18 +1,28 @@
 patterns:
   # Dockerfiles (Dockerfile, Dockerfile.dev, etc.)
   - regex: ".*Dockerfile.*"
-    rule: "dockerfile.txt"
+    rule: "templates/dockerfile.txt"
 
   # Docker Compose (compose.yml, compose.prod.yaml, etc.)
   - regex: "^compose.*\\.ya?ml$"
-    rule: "docker-compose.txt"
+    rule: "templates/docker-compose.txt"
   - regex: "^docker-compose.*\\.ya?ml$"
-    rule: "docker-compose.txt"
+    rule: "templates/docker-compose.txt"
 
   # GitHub Actions / CI-CD
   - regex: "^\\.github/workflows/.*\\.ya?ml$"
-    rule: "ci-cd-rules.txt"
+    rule: "templates/ci-cd-rules.txt"
 
   # Python specific
   - regex: ".*test.*\\.py$"
-    rule: "python-tests.txt"
+    rule: "templates/python-tests.txt"
+
+   # Shell and Bash scripts
+  - regex: ".*\\.sh$"
+    rule: "ext/sh.txt"
+  - regex: ".*\\.bash$"
+    rule: "ext/sh.txt"
+
+   # Yaml
+  - regex: ".*\\.ya?ml$"
+    rule: "ext/yaml.txt"

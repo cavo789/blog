@@ -13,18 +13,16 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-python.python",              // Extension Python officielle
-                "ms-python.vscode-pylance",      // Intelligence de code (Pyright)
-                "charliermarsh.ruff",            // Ruff (Linter & Formatter)
-                "ms-python.mypy-type-checker",   // Mypy pour le typage strict
-                "tamasfe.even-better-toml",      // Support TOML (pour pyproject.toml)
-                "mechatroner.rainbow-csv"        // Confort pour les logs/csv
+                "charliermarsh.ruff",
+                "mechatroner.rainbow-csv",
+                "ms-python.mypy-type-checker",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "tamasfe.even-better-toml",
+                "usernamehw.errorlens"
             ],
             "settings": {
-                // Interpréteur
-                "python.defaultInterpreterPath": "/usr/local/bin/python",
-                
-                // Ruff (Remplace Black/Flake8/Isort)
+                "python.defaultInterpreterPath": "/home/vscode/venv/bin/python",
                 "python.formatting.provider": "none",
                 "[python]": {
                     "editor.formatOnSave": true,
@@ -34,12 +32,8 @@
                         "source.organizeImports": "explicit"
                     }
                 },
-                
-                // Analyse Statique & Typage (Strict)
                 "python.analysis.typeCheckingMode": "strict",
                 "python.analysis.autoImportCompletions": true,
-                
-                // Mypy
                 "mypy-type-checker.args": [
                     "--strict",
                     "--ignore-missing-imports"
@@ -48,8 +42,7 @@
             }
         }
     },
-    "postCreateCommand": "uv venv /home/vscode/venv && uv pip install --python /home/vscode/venv -r pyproject.toml --group dev",
-  
+    "postCreateCommand": "uv venv /home/vscode/venv && uv pip install -e .[dev] --python /home/vscode/venv",
     "remoteUser": "vscode",
     "updateRemoteUserUID": true
 }

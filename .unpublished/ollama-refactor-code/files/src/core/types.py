@@ -34,8 +34,16 @@ class RuntimeConfig(TypedDict):
     verbosity: VerbosityConfig
 
 
+class GitStagingAnalyzerConfig(TypedDict):
+    """Configuration for the Git staging area analyzer."""
+
+    supported_extensions: list[str]
+    special_filenames: list[str]
+
+
 class AppConfig(TypedDict):
     """Global configuration structure matching settings.yaml."""
 
     ollama: OllamaConfig
     runtime: RuntimeConfig
+    git_staging_analyzer: GitStagingAnalyzerConfig

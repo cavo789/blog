@@ -2,7 +2,7 @@
 name = "ai-reviewer"
 version = "0.1.0"
 description = "Elite AI Code Reviewer via Ollama"
-readme = "README.md"
+readme = "readme.md"
 requires-python = ">=3.12"
 dependencies = [
     "requests>=2.31.0",
@@ -10,7 +10,7 @@ dependencies = [
     "rich>=13.7.0",
 ]
 
-[dependency-groups]
+[project.optional-dependencies]
 dev = [
     "ruff",
     "mypy",
@@ -21,6 +21,13 @@ dev = [
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+# --- START: CORRECTED SECTION ---
+# This section explicitly tells the wheel builder what to include in the package.
+# For a "src" layout, this is the modern and correct way to configure it.
+[tool.hatch.build.targets.wheel]
+include = ["/src"]
+# --- END: CORRECTED SECTION ---
 
 [tool.mypy]
 strict = true

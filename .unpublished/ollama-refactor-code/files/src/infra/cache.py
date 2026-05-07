@@ -1,7 +1,9 @@
 import hashlib
-import json
 from pathlib import Path
-from typing import Final
+from typing import Any, Final
+
+from core.exceptions import DirectoryAccessError, FileWriteError
+from core.file_utils import ensure_writable_directory, read_json_file, write_json_file
 
 
 class CacheManager:
@@ -20,16 +22,11 @@ class CacheManager:
             return True
 
         try:
-            # Create directory if it doesn't exist
-            self.cache_dir.mkdir(parents=True, exist_ok=True)
-
-            # Performance test: Try to write and then remove a canary file
-            canary_file: Final[Path] = self.cache_dir / ".write_test"
-            canary_file.write_text("test", encoding="utf-8")
-            canary_file.unlink()
-            return True
-        except (OSError, PermissionError):
+            ensure_writable_directory(self.cache_dir)
+        except DirectoryAccessError:
             return False
+
+        return True
 
     def generate_key(self, filename: str, content: str, prompt: str) -> str:
         """Generates a unique SHA256 key based on content and rules."""
@@ -42,15 +39,14 @@ class CacheManager:
             return None
 
         cache_file: Final[Path] = self.cache_dir / f"{key}.json"
-        if not cache_file.exists():
+        data: dict[str, Any] | None = read_json_file(cache_file)
+        if data is None:
             return None
 
-        try:
-            raw_data: Final[str] = cache_file.read_text(encoding="utf-8")
-            data: Final[dict[str, str]] = json.loads(raw_data)
-            return data.get("response")
-        except (json.JSONDecodeError, OSError):
-            return None
+        response_value: Any = data.get("response")
+        if isinstance(response_value, str):
+            return response_value
+        return None
 
     def set(self, key: str, response: str) -> None:
         """Persists an AI response to the cache directory."""
@@ -58,10 +54,11 @@ class CacheManager:
             return
 
         cache_file: Final[Path] = self.cache_dir / f"{key}.json"
+        payload: Final[dict[str, str]] = {"response": response}
+
         try:
-            payload: Final[str] = json.dumps({"response": response}, indent=2)
-            cache_file.write_text(payload, encoding="utf-8")
-        except OSError:
-            # Silently fail on write errors during execution
-            # since we verified at startup.
+            write_json_file(cache_file, payload)
+        except FileWriteError:
+            # Silently fail on write errors, as per the original logic.
+            # Permissions were already verified at startup.
             pass
