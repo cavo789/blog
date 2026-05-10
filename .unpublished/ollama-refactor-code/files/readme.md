@@ -12,6 +12,27 @@ An automated, local code review system that leverages **Ollama** and high-perfor
 * **Work/Home Awareness:** If the Ollama service is unreachable (e.g., at the office without your local GPU), the hook gracefully skips the review without blocking your workflow.
 * **Commit Guard:** Blocks the commit if the AI suggests improvements.
 
+### Debugging
+
+If the AI behavior is unexpected or you want to see the exact prompts being sent to Ollama, you can enable **Debug Mode** by setting the `AI_REVIEWER_DEBUG` environment variable to `1`.
+
+**In your Git Hook or manual command:**
+
+```bash
+docker run --rm \
+    -e AI_REVIEWER_DEBUG=1 \
+    -v "$(pwd):/repo" \
+    --network="host" \
+    cavo789/ai-reviewer:3.14-alpine
+```
+
+This will display:
+
+* The full system prompt (including the specific rules merged for the file type).
+* The raw request payload sent to the Ollama API.
+* The unprocessed response from the LLM before parsing.
+
+
 ## Prerequisites
 
 * **Python 3.11+**
@@ -40,9 +61,65 @@ An automated, local code review system that leverages **Ollama** and high-perfor
 
 4. Build the Docker image
 
-    ```bash
-    DOCKER_BUILDKIT=1 docker build -t ai-reviewer:3.14-alpine .
-    ```
+   First, we should create the `uv.lock` file, here is how:
+
+   ```bash
+   docker run --rm \
+      -v "$(pwd)":/app \
+      -w /app \
+      python:3.14-alpine \
+      sh -c "pip install --no-cache-dir uv && uv lock && chown $(id -u):$(id -g) uv.lock"
+  ```
+
+  Then we can build the image:
+
+   ```bash
+   PYTHON_VERSION=3.14
+   DOCKER_BUILDKIT=1 docker build -t ai-reviewer:${PYTHON_VERSION}-alpine .
+   ```
+
+## Running Ollama in a container
+
+```compose.yaml
+name: tools
+
+services:
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: always
+    # This part is to enable to use of the VRAM
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    ports:
+      - "4000:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    volumes:
+      - open-webui_data:/app/backend/data
+    restart: always
+    depends_on:
+      - ollama
+
+volumes:
+  ollama_data:
+  open-webui_data:
+```
 
 ## Global Hook Installation
 
@@ -72,10 +149,38 @@ To ensure this hook runs on **every** Git repository on your machine:
    # --network="host": needed to be able to access to localhost:11434 (Ollama)
 
    docker run --rm \
-       -v "$(pwd):/repo" \
-       --network="host" \
-       ai-reviewer:3.14
+      -v "$(pwd):/repo" \
+      --network="host" \
+      cavo789/ai-reviewer:3.14
    ```
+
+## Check GPU use
+
+Run `watch -n 0.5 nvidia-smi` while a request is running to see the use of the GPU.
+
+We can also run `docker exec -it ollama ollama ps` and we've to see **100% GPU** when no RAM is used.
+
+```bash
+❯ docker exec -it ollama ollama ps
+NAME                ID              SIZE      PROCESSOR    CONTEXT    UNTIL
+qwen2.5-coder:7b    dae161e27b0e    8.2 GB    100% GPU     32768      4 minutes from now
+```
+
+If you see this:
+
+```bash
+❯ docker exec -it ollama ollama ps
+NAME                 ID              SIZE     PROCESSOR          CONTEXT    UNTIL
+qwen2.5-coder:32b    b92d6a0bd47e    31 GB    27%/73% CPU/GPU    32768      4 minutes from now
+```
+
+It's a confirmation Ollama didn't find enough VRAM and has used RAM. In that case, if you want speed, you've to use another LLM
+
+```bash
+❯ docker exec -it ollama ollama ps
+NAME                 ID              SIZE     PROCESSOR    CONTEXT    UNTIL
+qwen2.5-coder:14b    9ec8897f747e    17 GB    100% GPU     32768      4 minutes from now
+```
 
 ### Initialize existing repositories
 
@@ -111,7 +216,7 @@ If you are in a hurry, have a false positive from the AI, or are working offline
 ## Configuration
 
 * **`config/settings.yaml`**: Define the model name (`codestral`, `llama3`, etc.) and the connection URL.
-* **`config/system_prompt.txt`**: The "brain" of the reviewer. You can update your coding standards here without touching the Python code.
+* **`config/rules/`**: This directory contains the "brain" of the reviewer. It is split into `common.txt` (global rules) and language-specific files (e.g., `python.txt`, `php.txt`). You can update these to refine your standards without touching the Python code.
 
 ## Architecture
 
@@ -122,20 +227,18 @@ If you are in a hurry, have a false positive from the AI, or are working offline
 
 ## Coding tips
 
-* If you're updating the configuration or the code, you've to rebuild the image each time. To avoid this, simply mount the `config` and `src` folder like this:
+## Coding tips
 
-   ```bash
-   # Create the folder first to make sure permissions are correct
-   mkdir -p /tmp/.ai_cache
+If you're updating the configuration or the code, you have to rebuild the image each time. To avoid this, simply mount the `config` and `src` folders and use the debug flag:
 
-   docker run --rm \
-    -u "$(id -u):$(id -g)" \
-    -v "/tmp/.ai_cache:/app/.cache" \
+```bash
+docker run --rm \
+    -e AI_REVIEWER_DEBUG=1 \
     -v "$(pwd)/src:/app/src" \
     -v "$(pwd)/config:/app/config" \
     -v "$(pwd):/repo" \
     --network="host" \
     ai-reviewer:3.14-alpine src/main.py
-    ```
+```
 
-    When finished, think to run `DOCKER_BUILDKIT=1 docker build -t ai-reviewer:3.14-alpine .` to build the final image
+    When finished, think to build the final image

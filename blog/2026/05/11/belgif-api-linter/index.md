@@ -3,22 +3,23 @@ slug: belgif-api-linter
 title: Validate your OpenAPI schema against the Belgif REST standards
 authors: [christophe]
 mainTag: api
-tags: [api, code-quality, docker, fastapi, rest, belgif, openapi]
+tags: [api, code-quality, docker, fastapi, rest, openapi]
 image: /img/v2/belgif.webp
 description: "Use VS Code Remote - SSH: connect to production servers, and edit/execute remotely while avoiding common pitfalls."
-date: 2026-12-31
+date: 2026-05-11
 draft: true
 blueskyRecordKey:
 ---
 
 ![Validate your OpenAPI schema against the Belgif REST standards](/img/v2/belgif.webp)
 
-A RETRAVAILLER... L'OBJECTIF EST D'EXPLIQUER COMMENT LANCER UN LINT BELGIF
+Building APIs is relatively easy, but building *compliant* and *interoperable* APIs is an entirely different challenge. If you are working on projects for the Belgian government or public sector, you have likely encountered the **[Belgif REST standards](https://www.belgif.be/specification/rest/api-guide/)**. These comprehensive guidelines ensure that APIs across various institutions remain consistent, predictable, and easy to consume.
 
-AJOUTER UN LIEN VERS L'ARTICLE A PROPOS DE FASTAPI QUE J'AI DEJA ECRIT.
+While modern frameworks like **FastAPI** are fantastic for rapidly building APIs and automatically generating OpenAPI documentation, their default schema generation doesn't always align perfectly with Belgif's strict linting rules.
 
+In this article, we'll explore how to use the official Belgif OpenAPI linter via Docker to validate your FastAPI application. More importantly, we'll walk through practical, step-by-step solutions to resolve the most common linting errors caused by FastAPI's default behaviors, ensuring your API gets a clean bill of health.
 
-<Link to="/blog/php-api-tips">API REST - How to write good APIs</Link>
+*Before we dive in, if you are looking for general advice on designing robust APIs, check out my previous article:* <Link to="/blog/php-api-tips">API REST - How to write good APIs</Link>.
 
 <!-- truncate -->
 
@@ -117,8 +118,6 @@ It'll produce something like this:
 <AlertBox variant="note" title="Please refer to the official site">
 From now on, please refer to [https://www.belgif.be/specification/rest/api-guide](https://www.belgif.be/specification/rest/api-guide) to learn how to manage errors reported by the tool.
 </AlertBox>
-<<<<<<< Updated upstream
-=======
 
 ## Bonus - Get rid of Belgif intern warnings
 
@@ -234,4 +233,3 @@ The `main.py` file illustrate how to call it the helper.
 <Snippet filename="main.py" source="./files/main_configure.py" />
 
 <Snippet filename="helpers/openapi.py" source="./files/main_helper.py" />
->>>>>>> Stashed changes
