@@ -7,17 +7,18 @@ tags: [api, code-quality, docker, fastapi, rest, openapi]
 image: /img/v2/belgif.webp
 description: "Use VS Code Remote - SSH: connect to production servers, and edit/execute remotely while avoiding common pitfalls."
 date: 2026-05-11
-draft: true
 blueskyRecordKey:
 ---
 
 ![Validate your OpenAPI schema against the Belgif REST standards](/img/v2/belgif.webp)
 
+<TLDR>This post explores how to use Microsoft's Markitdown, a highly capable utility for converting files like Word documents, Excel spreadsheets, and PDFs into clean Markdown format. To keep your local system clean and avoid managing Python dependencies globally, the author provides a step-by-step guide to setting up the tool inside an isolated, lightweight Docker container. The tutorial covers creating a customized Dockerfile, using Docker Compose for orchestration, and ultimately building a global executable wrapper script (md-convert). This setup allows you to securely and effortlessly run document conversions from any directory directly via your terminal.</TLDR>
+
 Building APIs is relatively easy, but building *compliant* and *interoperable* APIs is an entirely different challenge. If you are working on projects for the Belgian government or public sector, you have likely encountered the **[Belgif REST standards](https://www.belgif.be/specification/rest/api-guide/)**. These comprehensive guidelines ensure that APIs across various institutions remain consistent, predictable, and easy to consume.
 
 While modern frameworks like **FastAPI** are fantastic for rapidly building APIs and automatically generating OpenAPI documentation, their default schema generation doesn't always align perfectly with Belgif's strict linting rules.
 
-In this article, we'll explore how to use the official Belgif OpenAPI linter via Docker to validate your FastAPI application. More importantly, we'll walk through practical, step-by-step solutions to resolve the most common linting errors caused by FastAPI's default behaviors, ensuring your API gets a clean bill of health.
+In this article, we'll explore how to use the official Belgif OpenAPI linter via Docker and how to validate your FastAPI application against some potentials errors. More importantly, we'll walk through practical, step-by-step solutions to resolve the most common linting errors caused by FastAPI's default behaviors, ensuring your API gets a clean bill of health.
 
 *Before we dive in, if you are looking for general advice on designing robust APIs, check out my previous article:* <Link to="/blog/php-api-tips">API REST - How to write good APIs</Link>.
 
