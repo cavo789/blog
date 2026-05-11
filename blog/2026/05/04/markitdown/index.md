@@ -8,6 +8,7 @@ image: /img/v2/markdown.webp
 mainTag: markdown
 tags: [docker, docx, excel]
 language: en
+blueskyRecordKey: 3mkzumi3cf22g
 ---
 ![Markitdown - Convert files and MS Office documents to Markdown](/img/v2/markdown.webp)
 

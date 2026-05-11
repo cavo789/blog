@@ -7,7 +7,7 @@ tags: [api, code-quality, docker, fastapi, rest, openapi]
 image: /img/v2/belgif.webp
 description: "Use VS Code Remote - SSH: connect to production servers, and edit/execute remotely while avoiding common pitfalls."
 date: 2026-05-11
-blueskyRecordKey:
+blueskyRecordKey: 3mlkngj2bp225
 ---
 
 ![Validate your OpenAPI schema against the Belgif REST standards](/img/v2/belgif.webp)
