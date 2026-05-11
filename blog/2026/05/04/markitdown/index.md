@@ -13,6 +13,8 @@ language: en
 
 <!-- cspell:ignore markitdown -->
 
+<TLDR>This post explores how to use Microsoft's Markitdown, a highly capable utility for converting files like Word documents, Excel spreadsheets, and PDFs into clean Markdown format. To keep your local system clean and avoid managing Python dependencies globally, the author provides a step-by-step guide to setting up the tool inside an isolated, lightweight Docker container. The tutorial covers creating a customized Dockerfile, using Docker Compose for orchestration, and ultimately building a global executable wrapper script (md-convert). This setup allows you to securely and effortlessly run document conversions from any directory directly via your terminal.</TLDR>
+
 Recently, a friend told me about a tool from Microsoft called [Markitdown](https://github.com/microsoft/markitdown/): a utility for converting PDF and MS Office files (like `.docx` or `.xlsx`) into Markdown. Looking at the GitHub repository, it seems highly capable. They claim it converts PDFs, PowerPoint, Word, Excel, images, audio, HTML, and text-based formats like CSV, JSON, or XML—and even iterates through ZIP files. That is a huge promise! Since it is always useful to quickly convert `.docx` files from colleagues who do not write in Markdown, I wanted to rigorously test it.
 
 In this article, we'll create a Docker image and a small conversion script called `md-convert` that you'll be able to call from everywhere on your disk to easily convert `docx`, `xlsx` and `pdf` files to Markdown thanks to Markitdown.
