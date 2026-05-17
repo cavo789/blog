@@ -62,7 +62,7 @@ Approximate round trip times in milliseconds:
 
 </Terminal>
 
-This output means that our second computer can access to the master one with almost zero latency (`tim < 1ms`).
+This output means that our second computer can access to the master one with almost zero latency (`time < 1ms`).
 
 ### Running Open WebUI
 
@@ -105,12 +105,9 @@ If you are using Windows with a Linux subsystem (WSL2) for your development, **t
 
 To ensure it installs smoothly within the Linux environment (WSL), I carefully followed these steps:
 
-1. I've opened my WSL terminal and, I've started an Ubuntu session,
-2. In the terminal, I've executed `code .` to open VSCode on my WSL session,
-3. I've opened a terminal in VSCode and, I've fired `code --install-extension continue.continue --force` to make 100% sure the extension is installed on WSL (not on Windows; it's important!)
-4. I opened my WSL terminal and started an Ubuntu session.
-5. In the terminal, I ran `code .` to open VSCode connected to my WSL session.
-6. I opened a terminal inside VSCode and ran `code --install-extension continue.continue --force` to make 100% sure the extension is installed on the Linux side (not on Windows; this is important!)
+1. I opened my WSL terminal and started an Ubuntu session.
+2. In the terminal, I ran `code .` to open VSCode connected to my WSL session.
+3. I opened a terminal inside VSCode and ran `code --install-extension continue.continue --force` to make 100% sure the extension is installed on the Linux side (not on Windows; this is important!)
 
 Once installed, the Continue icon appears in the left bar in VSCode. Click on it and, you'll see a list of available features.
 
@@ -119,6 +116,10 @@ Once installed, the Continue icon appears in the left bar in VSCode. Click on it
 Click on the `Configs` entry then click on the gear icon to get access to the configuration file. As illustrated on the image below, the path is well on WSL so, my configuration is fine.
 
 ![Getting access to the configuration of Continue](./images/continue_settings.webp)
+
+<AlertBox variant="info" title="This screenshot has been taken in a Devcontainer">
+This is why you see a full path like `/home/node/.continue/config.yaml`.  On your WSL, it should be like `/home/you/.continue/config.yaml`.
+</AlertBox>
 
 If you want a ready-to-use configuration file, you can use this one:
 
