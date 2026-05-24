@@ -1,9 +1,9 @@
 #!/bin/zsh
 # Description: Navigate to projects and optionally open in an editor.
-# Usage: fproj [search_path]
+# Usage: repo [search_path]
 
-# Private helper for fproj to check dependencies.
-_fproj_check_deps() {
+# Private helper for repo to check dependencies.
+_repo_check_deps() {
     local missing_dep=0
     local os_type
     os_type=$(uname -s)
@@ -38,8 +38,8 @@ _fproj_check_deps() {
 }
 
 # 1. Run the private dependency check
-# Since _fproj_check_deps is also in fpath, we can call it directly.
-if ! _fproj_check_deps; then
+# Since _repo_check_deps is also in fpath, we can call it directly.
+if ! _repo_check_deps; then
     return 1
 fi
 
@@ -55,13 +55,15 @@ fi
 local visual_editor="${EDITOR:-code}"
 
 # 4. Search logic
-local search_path="${1:-$HOME/repositories}"
+local search_path="$HOME/repositories"
+local query="$1"
 local selected_dir
 
 selected_dir=$("$fd_bin" '^\.git$' "$search_path" \
     --hidden --no-ignore --type d --max-depth 3 | \
     sed 's|/\.git/\?$||' | \
-    fzf --reverse --height 40% --border --header 'Navigate to Project')
+    fzf --reverse --height 40% --border --header 'Navigate to Project' \
+        --query "$query" --select-1 --exit-0)
 
 # 5. Handling exit
 if [[ -z "$selected_dir" ]]; then
