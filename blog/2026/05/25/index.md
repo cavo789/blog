@@ -119,8 +119,6 @@ repo blg   # will find f.i. "blog"
 <AlertBox variant="info" title="Pro Tip">
 This is perfect for projects you visit often. If your pattern is unique enough, it becomes a lightning-fast shortcut!
 </AlertBox>
-```
-
 
 ## Conclusion
 
