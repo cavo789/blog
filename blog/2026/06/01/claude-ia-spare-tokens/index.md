@@ -5,7 +5,7 @@ authors: [christophe]
 image: /img/v2/claude-code-tokens.webp
 mainTag: ai
 tags: [ai]
-draft: true
+description: A practical guide to reducing token consumption in Claude Code;  CLI commands, optimization of CLAUDE.md, and other context management.
 ai_assisted: true
 date: 2026-05-31
 ---

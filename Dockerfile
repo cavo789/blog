@@ -120,7 +120,10 @@ ARG OS_USERNAME
 
 # The home folder has to be owned by the user
 RUN set -eux && \
-    mkdir -p "${HOME_FOLDER}" && \
+    mkdir -p "${HOME_FOLDER}" \
+        "${HOME_FOLDER}/.vscode-server/extensions" \
+        "${HOME_FOLDER}/.vscode-server/data/Machine" \
+        "${HOME_FOLDER}/.cache/yarn/v6" && \
     chown -R "${OS_USERNAME}":"${OS_USERNAME}" "${HOME_FOLDER}"
 
 # Copy full project source code and installed node_modules from dependencies stage
@@ -138,7 +141,44 @@ USER "${OS_USERNAME}"
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 # ─────────────────────────────────────────────────────────────
-# 🏗️ Stage 3: Static Site Build
+# 🔧 Stage 3: Devcontainer (extends development)
+#
+# Single self-contained build target for VSCode devcontainers.
+# "code . → Reopen in Container" works without any prior make build.
+# ─────────────────────────────────────────────────────────────
+FROM development AS devcontainer
+
+ARG OS_USERNAME="node"
+ARG OS_USERID=1000
+ARG OS_GROUPID=1000
+
+USER root
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PIP_BREAK_SYSTEM_PACKAGES=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+RUN --mount=type=cache,target=/var/lib/apt/lists \
+    --mount=type=cache,target=/var/cache/apt \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        python3 \
+        python3-pip && \
+    rm -rf /var/lib/apt/lists/* && \
+    echo "${OS_USERNAME} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/"${OS_USERNAME}" && \
+    chmod 0440 /etc/sudoers.d/"${OS_USERNAME}"
+
+USER "${OS_USERNAME}"
+
+RUN --mount=type=cache,target=/home/${OS_USERNAME}/.cache/pip,uid=${OS_USERID},gid=${OS_GROUPID} \
+    pip install --upgrade pip && \
+    pip install \
+        oyaml \
+        python-frontmatter \
+        requests
+
+# ─────────────────────────────────────────────────────────────
+# 🏗️ Stage 4: Static Site Build
 #
 # This stage is used to build the static site; when
 # "TARGET=production make build" is fired.

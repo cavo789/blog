@@ -3,8 +3,9 @@
 services:
   docusaurus:
     build:
-      context: .
+      context: ..
       dockerfile: Dockerfile
+      target: devcontainer
       args:
         - APP_HOME=${APP_HOME:-/opt/docusaurus}
         - OS_USERID=${OS_USERID:-1000}
@@ -15,6 +16,9 @@ services:
     volumes:
       - ..:${APP_HOME:-/opt/docusaurus}
       - node_modules:/opt/docusaurus/node_modules
+      - vscode-server:/home/node/.vscode-server
+      - vscode-extensions:/home/node/.vscode-server/extensions
+      - yarn-cache:/home/node/.cache/yarn/v6
     ports:
       - "3000:3000"
     depends_on:
@@ -36,3 +40,6 @@ services:
 volumes:
   ngrams:
   node_modules:
+  vscode-server:
+  vscode-extensions:
+  yarn-cache:

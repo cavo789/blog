@@ -62,16 +62,18 @@ _ensure-host-volumes:
         fi; \
     done
 
-# Build the DEV image i.e. using docker compose and with all our environment variables
-# Pre-create folders to avoid permission problems while building devcontainer
+# Build the devcontainer image directly from the root Dockerfile (target: devcontainer).
+# Optional — VSCode builds it automatically on "Reopen in Container".
+# Run manually only to pre-warm the cache or force a rebuild: make build ARGS="--no-cache"
 .PHONY: _build-development
 _build-development: _ensure-host-volumes
-	@printf $(_YELLOW) "-> Building DEVELOPMENT image using docker compose..."
-	@printf $(_WHITE) "Use 'TARGET=PRODUCTION make build' for the PRODUCTION image."
+	@printf $(_YELLOW) "-> Building DEVCONTAINER image..."
+	@printf $(_WHITE) "Use 'TARGET=production make build' for the PRODUCTION image."
 	@echo ""
-	DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose build ${ARGS}
+	DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} \
+	    docker compose -f .devcontainer/compose.yaml build ${ARGS}
 	@echo ""
-	@printf $(_GREEN) "Development build finished. Now, continue by running \"make devcontainer\"."
+	@printf $(_GREEN) "Build finished. Run 'make devcontainer' (or 'code .' then 'Reopen in Container')."
 	@echo ""
 
 # Build the PROD image i.e. a light nginx image
@@ -99,17 +101,12 @@ _down-production:
 
 .PHONY: _remove-development
 _remove-development:
-    # 1. Remove the containers and volumes
+	@printf $(_YELLOW) "-> Removing devcontainer containers, images, and volumes..."
 	@DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose \
         -f .devcontainer/compose.yaml \
         --project-name blog_devcontainer \
-        down --volumes --remove-orphans
-    # 2. Remove the main blog containers and volumes
-	DOCKER_UID=${DOCKER_UID} DOCKER_GID=${DOCKER_GID} docker compose down --volumes --remove-orphans --rmi all
-    # 3. Make sure all images are removed
-	@docker rmi -f blog-docusaurus > /dev/null 2>&1 || true
+        down --volumes --remove-orphans --rmi all 2>/dev/null || true
 	@docker rmi -f vsc-blog-* > /dev/null 2>&1 || true
-    # Remove the old build folder if present
 	@rm -rf .docusaurus build node_modules
 	@echo ""
 
