@@ -126,4 +126,8 @@
   .introText h1 {
     font-size: 2.2rem;
   }
+
+  .buttonsContainer {
+    justify-content: center;
+  }
 }

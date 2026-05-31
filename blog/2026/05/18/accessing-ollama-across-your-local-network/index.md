@@ -1,6 +1,7 @@
 ---
 slug: accessing-ollama-across-your-local-network
 title: Accessing Ollama across your local network
+authors: [christophe]
 date: 2026-05-18
 image: /img/v2/using_ollama_local_network.webp
 description: Learn how to set up a dedicated Ollama server on your local network and configure VSCode with the Continue extension for a private, free AI coding assistant.
@@ -8,7 +9,7 @@ mainTag: ai
 tags: [ai, ollama]
 language: en
 ai_assisted: true
-blueskyRecordKey:
+blueskyRecordKey: 3mm44p55oik2p
 ---
 ![Accessing Ollama across your local network](/img/v2/using_ollama_local_network.webp)
 
@@ -62,7 +63,7 @@ Approximate round trip times in milliseconds:
 
 </Terminal>
 
-This output means that our second computer can access to the master one with almost zero latency (`time < 1ms`).
+This output means that our second computer can access the master one with almost zero latency (`time < 1ms`).
 
 ### Running Open WebUI
 
@@ -94,10 +95,8 @@ Make sure the LLM `qwen2.5-coder:1.5b-base` model is well present; use another o
 
 As a developer, you can turn your editor into a smart assistant using just one extension. It provides:
 
-1. **Inline Autocomplete**: Get real-time code suggestions as you type, powered by **FIM** (Fill-In-the-Middle) inference and
-2. **Chat Interface**: Engage in direct conversations with the AI assistant for debugging, refactoring, and general Q&A.
-3. **Inline Autocomplete**: Get real-time code suggestions as you type (the AI guesses the middle part of your code), and
-4. **Chat Interface**: Talk directly with your AI assistant to help you find bugs, rewrite code, or answer questions.
+1. **Inline Autocomplete**: Get real-time code suggestions as you type, powered by **FIM** (Fill-In-the-Middle) inference.
+2. **Chat Interface**: Talk directly with your AI assistant to help you find bugs, rewrite code, or answer questions.
 
 ### Install the Continue extension on WSL
 
@@ -105,9 +104,14 @@ If you are using Windows with a Linux subsystem (WSL2) for your development, **t
 
 To ensure it installs smoothly within the Linux environment (WSL), I carefully followed these steps:
 
-1. I opened my WSL terminal and started an Ubuntu session.
-2. In the terminal, I ran `code .` to open VSCode connected to my WSL session.
-3. I opened a terminal inside VSCode and ran `code --install-extension continue.continue --force` to make 100% sure the extension is installed on the Linux side (not on Windows; this is important!)
+<StepsCard
+  title="Installing Continue on WSL"
+  steps={[
+    "Open your WSL terminal and start an Ubuntu session.",
+    "In the terminal, run `code .` to open VSCode connected to your WSL session.",
+    "Inside VSCode's terminal, run `code --install-extension continue.continue --force` to make 100% sure the extension is installed on the **Linux** side, not on Windows — this distinction is critical."
+  ]}
+/>
 
 Once installed, the Continue icon appears in the left bar in VSCode. Click on it and, you'll see a list of available features.
 
@@ -129,11 +133,15 @@ If you want a ready-to-use configuration file, you can use this one:
 In some tutorials on the web (and even in AI's answers), you'll still see `config.json` instead of `config.yaml`. JSON is deprecated; use the YAML format. Read the official [config.yaml reference guide](https://docs.continue.dev/reference).
 </AlertBox>
 
-<AlertBox variant="important" title="That yaml is refering LLM like `qwen2.5-coder:14b-instruct`, make sure to replace with yours" />
+<AlertBox variant="important" title="Replace the model name">
+The config references `qwen2.5-coder:14b-instruct` — replace it with a model you actually have installed. Run `ollama list` on your server to see what is available.
+</AlertBox>
 
-<AlertBox variant="important" title="Make sure to use your own IP" />
+<AlertBox variant="important" title="Use your own server IP">
+Replace every occurrence of `192.168.0.218` in this guide with your server's actual IP address.
+</AlertBox>
 
-If everything has been correctly configured, you've now an AI auto-completion. Also, make sure autocomplete is enabled; look at the status bar of VSCode; you'll see an icon having the text `✓ Continue (NE)`.
+If everything has been correctly configured, you now have AI auto-completion. Also, make sure autocomplete is enabled; look at the status bar of VSCode; you'll see an icon having the text `✓ Continue (NE)`.
 
 #### Using chat with Continue
 

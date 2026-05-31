@@ -15,7 +15,7 @@ export default function TreeItem({ icon, iconSize = 24, badge, label, expanded =
 
   const toggleExpand = () => {
     if (hasChildren) {
-      setIsExpanded(!isExpanded);
+      setIsExpanded((prev) => !prev);
     }
   };
 

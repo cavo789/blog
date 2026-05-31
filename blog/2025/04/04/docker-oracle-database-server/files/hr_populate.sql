@@ -2392,5 +2392,3 @@ REM enable integrity constraint to DEPARTMENTS
 
 ALTER TABLE departments
   ENABLE CONSTRAINT dept_mgr_fk;
-
-

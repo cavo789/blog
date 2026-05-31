@@ -9,7 +9,7 @@ import requests
 
 class OllamaClient:
     """Dedicated client for LLM interaction."""
-    
+
     def __init__(self, url: str, model: str, temperature: float = 0.0):
         self.url: Final[str] = f"{url}/api/generate"
         self.model: Final[str] = model
@@ -39,7 +39,7 @@ class OllamaClient:
         match = re.search(r"```(?:python)?(.*?)```", text, re.DOTALL)
         if match:
             return match.group(1).strip()
-            
+
         # Fallback filter for common LLM conversational filler
         forbidden = ["Certainly", "Here is", "I've", "Explanation:"]
         lines = [l for l in text.splitlines() if not any(f in l for f in forbidden)]

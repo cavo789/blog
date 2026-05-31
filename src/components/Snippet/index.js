@@ -284,9 +284,6 @@ export default function Snippet({
   const handleToggle = useCallback(() => setOpen((prev) => !prev), []);
   const contentId = `snippet-content-${useId()}`;
 
-  // Memoize lang & variantKey so they don't recalc on every render
-  // const lang = useMemo(() => getLanguageFromChildren(children), [children]);
-
   const lang = useMemo(() => {
     // 1. Check for the `lang` prop provided by your plugin
     if (pluginLang) return pluginLang;
@@ -310,40 +307,41 @@ export default function Snippet({
     children
   );
 
-  // Small anonymous function to determine if the file is one of Docker or not
-  // (here we don't look at the extension)
+  const baseName = useMemo(
+    () => (typeof filename === "string" ? filename.split("/").pop().toLowerCase() : null),
+    [filename]
+  );
+
   const isDockerFile = useMemo(() => {
-    if (typeof filename !== "string") return false;
-    // Make sure to get the filename (like Dockerfile) and not any parent paths before
-    const lower = filename.split("/").pop().toLowerCase();
+    if (!baseName) return false;
     return (
-      lower === "dockerfile" ||
-      lower === "docker" ||
-      lower.endsWith(".docker") ||
-      lower.endsWith(".dockerfile") ||
-      lower.endsWith(".dockerignore") ||
-      lower.endsWith("compose.yaml") ||
-      lower.endsWith("compose.yml") ||
-      lower.endsWith("docker-compose.yaml")
+      baseName === "dockerfile" ||
+      baseName === "docker" ||
+      baseName.endsWith(".docker") ||
+      baseName.endsWith(".dockerfile") ||
+      baseName.endsWith(".dockerignore") ||
+      baseName.endsWith("compose.yaml") ||
+      baseName.endsWith("compose.yml") ||
+      baseName.endsWith("docker-compose.yaml")
     );
-  }, [filename]);
+  }, [baseName]);
 
-  // Same for Docusaurus (even if it's a .js file), it's more fun to show the
-  // Docusaurus icon and not the Javascript one.
-  const isDocusaurus = useMemo(() => {
-    if (typeof filename !== "string") return false;
-    const lower = filename.split("/").pop().toLowerCase();
-    return lower === "docusaurus.config.js";
-  }, [filename]);
+  const isDocusaurus = useMemo(
+    () => baseName === "docusaurus.config.js",
+    [baseName]
+  );
 
-  const variantKey =
-    variant ||
-    (isDockerFile
-      ? "docker"
-      : isDocusaurus
-      ? "docusaurus"
-      : mapLangToVariant[lang]) ||
-    "none";
+  const variantKey = useMemo(
+    () =>
+      variant ||
+      (isDockerFile
+        ? "docker"
+        : isDocusaurus
+        ? "docusaurus"
+        : mapLangToVariant[lang]) ||
+      "none",
+    [variant, isDockerFile, isDocusaurus, lang]
+  );
 
   const variantClass = styles[`variant_${variantKey}`] || "";
 

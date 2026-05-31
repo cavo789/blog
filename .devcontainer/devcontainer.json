@@ -26,7 +26,7 @@
     "HOST_PROJECT_DIR": "${localWorkspaceFolder}"
   },
   "initializeCommand": "mkdir -p .docusaurus .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
-  "postCreateCommand": "mkdir -p /home/node/.claude/projects/-opt-docusaurus && ln -sfn /opt/docusaurus/.claude/memory /home/node/.claude/projects/-opt-docusaurus/memory",
+  "postCreateCommand": "mkdir -p /home/node/.claude/projects/-opt-docusaurus && ln -sfn /opt/docusaurus/.claude/memory /home/node/.claude/projects/-opt-docusaurus/memory && pre-commit install --config .config/.pre-commit-config.yaml",
   "remoteUser": "node",
   "updateRemoteUserUID": true,
   "overrideCommand": false,

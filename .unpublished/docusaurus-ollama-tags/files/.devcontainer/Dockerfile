@@ -6,4 +6,3 @@ FROM mcr.microsoft.com/devcontainers/python:3.11
 
 # Set the working directory
 WORKDIR /workspaces/blog_analyzer
-

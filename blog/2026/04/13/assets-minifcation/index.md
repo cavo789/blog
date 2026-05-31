@@ -47,7 +47,7 @@ We've two parts, one for CSS and one for JS and, we'll tell two things
 
 ### 2. The Orchestrator Script (`build.sh`)
 
-This Bash script uses `yq` (a lightweight YAML processor) to parse our manifest. It concatenates the files and then calls the Docker image `[tdewolff/minify](https://hub.docker.com/r/tdewolff/minify)` to handle the heavy lifting. So, we'll not pollute our system with additionnal dependencies; just one, small, Docker image.
+This Bash script uses `yq` (a lightweight YAML processor) to parse our manifest. It concatenates the files and then calls the Docker image `[tdewolff/minify](https://hub.docker.com/r/tdewolff/minify)` to handle the heavy lifting. So, we'll not pollute our system with additional dependencies; just one, small, Docker image.
 
 ### 3. How to Run It
 

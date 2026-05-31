@@ -7,6 +7,7 @@ series: Discovering Quarto
 mainTag: Doc-as-code
 tags: [quarto]
 authors: [christophe]
+language: en
 ai_assisted: true
 date: 2026-03-16
 blueskyRecordKey: 3mh5um7gpgs2x
@@ -150,28 +151,64 @@ Actually I've more than 40 different "Features" that can analyze my codebase, ex
 
 A few examples of these features:
 
-* **Python AST Semantic Analyzers**
-  * **The Power:** These are the "brains" of the system. They perform Abstract Syntax Tree (AST) analysis on your source code to extract logic without executing it. They automatically generate UML diagrams, API endpoint tables, and data dictionaries that stay perfectly in sync with the code.
-* **Live Database Introspection**
-  * **The Power:** Bridges the gap between data and docs. It connects to a running PostgreSQL instance to generate real-time ERD diagrams (Mermaid), functional domain flows, and complete data dictionaries with data previews, all while handling complex architectural layering.
-* **Format-Aware Mermaid Engine with Global Caching**
-  * **The Power:** Solves the "Static Export" problem. It intelligently detects if you are rendering for HTML (interactive SVG) or PDF/Word (high-res PNG via Puppeteer). It includes a fingerprint-based caching system and a centralized BOSA-branded theme configuration.
-* **Secure Authenticated API Orchestrator**
-  * **The Power:** Allows documentation to pull live data from protected production or staging environments. It handles the full OAuth2/Bearer token handshake and uses the **Secrets Resolver** (`env:` prefix) to ensure credentials never touch the Git repository.
-* **Intelligent Terminal High-Fidelity Capture**
-  * **The Power:** Instead of plain text, it captures real CLI execution into a vector-based SVG image. It preserves ANSI colors, complex ASCII borders, and layout integrity, ensuring dashboards and logs look professional in any output format.
-* **GitLab CI/CD Infrastructure Mapper**
-  * **The Power:** Reconstructs the effective pipeline by resolving recursive `includes` and `extends`. It generates a visual architecture of the CI/CD stages and extracts human-readable job descriptions directly from the shell scripts.
-* **Docker Ecosystem Visualizers**
-  * **The Power:** Provides a 360-degree view of the infrastructure. It maps image inheritance chains, service topology (ports, networks, volumes), and multi-stage build sequences into clean, understandable diagrams.
-* **The "Invisible" TODO Dashboard**
-  * **The Power:** Scans hidden HTML comments (`<!-- TODO: -->`) across the project to generate a consolidated internal backlog. It allows writers to leave notes without polluting the final customer-facing PDF or Word documents.
-* **Dynamic Workspace Assistant**
-  * **The Power:** Eliminates manual navigation maintenance. It automatically manages the Quarto sidebar based on file structure and provides real-time VS Code IntelliSense snippets for every variable and helper script in the project.
-* **Smart Multi-Format Data Viewer**
-  * **The Power:** A polymorphic renderer for CSV, JSON, and XML. It can switch between horizontal comparison tables and vertical "detail" views, supporting deep node selection (XPath/Dot-notation) and high-performance TTL caching.
-* **Language-Aware Project Scaffolder**
-  * **The Power:** A tech-aware template engine. It uses a subset-tagging system (`file.python.fastapi.qmd`) to instantly generate a complete, tailored documentation structure based on the specific technologies used in the project.
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(290px, 1fr))', gap: '1rem', margin: '1.5rem 0'}}>
+
+<Card shadow="md">
+<div className="card__header"><h4>🧠 Python AST Semantic Analyzers</h4></div>
+<div className="card__body">Perform Abstract Syntax Tree analysis on source code to extract logic <em>without executing it</em>. Automatically generates UML diagrams, API tables, and data dictionaries that stay in sync with the code.</div>
+</Card>
+
+<Card shadow="md">
+<div className="card__header"><h4>🗄️ Live Database Introspection</h4></div>
+<div className="card__body">Connects to a live PostgreSQL instance to generate real-time ERD diagrams (Mermaid), functional domain flows, and complete data dictionaries with data previews.</div>
+</Card>
+
+<Card shadow="md">
+<div className="card__header"><h4>🎨 Format-Aware Mermaid Engine</h4></div>
+<div className="card__body">Detects the render target (HTML → SVG, PDF/Word → PNG via Puppeteer at 300 DPI). Includes a fingerprint-based caching system to skip unchanged diagrams.</div>
+</Card>
+
+<Card shadow="md">
+<div className="card__header"><h4>🔐 Secure Authenticated API Orchestrator</h4></div>
+<div className="card__body">Pulls live data from protected environments during the render. Handles the full OAuth2/Bearer handshake and uses a <strong>Secrets Resolver</strong> (<code>env:</code> prefix) so credentials never touch Git.</div>
+</Card>
+
+<Card shadow="md">
+<div className="card__header"><h4>🖥️ Terminal High-Fidelity Capture</h4></div>
+<div className="card__body">Captures real CLI execution into a vector SVG image, preserving ANSI colors, ASCII borders, and layout integrity across HTML, PDF, and Word outputs.</div>
+</Card>
+
+<Card shadow="md">
+<div className="card__header"><h4>⚙️ GitLab CI/CD Infrastructure Mapper</h4></div>
+<div className="card__body">Reconstructs the effective pipeline by resolving recursive <code>includes</code> and <code>extends</code>. Generates a visual architecture of CI/CD stages with human-readable job descriptions.</div>
+</Card>
+
+<Card shadow="md">
+<div className="card__header"><h4>🐳 Docker Ecosystem Visualizers</h4></div>
+<div className="card__body">Maps image inheritance chains, service topology (ports, networks, volumes), and multi-stage build sequences into clean, understandable diagrams.</div>
+</Card>
+
+<Card shadow="md">
+<div className="card__header"><h4>📋 "Invisible" TODO Dashboard</h4></div>
+<div className="card__body">Scans hidden HTML comments (<code>&lt;!-- TODO: --&gt;</code>) across the project to generate a consolidated internal backlog — invisible in the final customer-facing PDF or Word export.</div>
+</Card>
+
+<Card shadow="md">
+<div className="card__header"><h4>✨ Dynamic Workspace Assistant</h4></div>
+<div className="card__body">Automatically manages the Quarto sidebar based on file structure and provides real-time VS Code IntelliSense snippets for every variable and helper script in the project.</div>
+</Card>
+
+<Card shadow="md">
+<div className="card__header"><h4>📊 Smart Multi-Format Data Viewer</h4></div>
+<div className="card__body">A polymorphic renderer for CSV, JSON, and XML. Supports horizontal comparison tables and vertical detail views, with deep node selection (XPath/Dot-notation) and TTL caching.</div>
+</Card>
+
+<Card shadow="md">
+<div className="card__header"><h4>🏗️ Language-Aware Project Scaffolder</h4></div>
+<div className="card__body">Uses a subset-tagging system (<code>file.python.fastapi.qmd</code>) to instantly generate a complete, tailored documentation structure based on the specific technologies in the project.</div>
+</Card>
+
+</div>
 
 ### Visualizing the Invisible: Mermaid & Caching
 

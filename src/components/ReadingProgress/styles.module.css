@@ -1,0 +1,15 @@
+.bar {
+  position: fixed;
+  top: var(--ifm-navbar-height);
+  left: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--ifm-color-primary),
+    var(--ifm-color-primary-lighter)
+  );
+  z-index: 1000;
+  transition: width 80ms linear;
+  pointer-events: none;
+  border-radius: 0 2px 2px 0;
+}

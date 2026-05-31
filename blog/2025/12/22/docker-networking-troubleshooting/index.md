@@ -89,7 +89,7 @@ If you know that the service is a web service, you can run `curl -vvv 127.0.0.1:
 
 Run `docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}"` again the get the container name and his associated container ID back.
 
-In our preambule, we've said: the `consumer` should be able to run an API from the `provider` so let's jump in the `consumer` by creating a console. We'll using the CONTAINER_ID of the consumer and we'll connect as `root`:
+In our preamble, we've said: the `consumer` should be able to run an API from the `provider` so let's jump in the `consumer` by creating a console. We'll using the CONTAINER_ID of the consumer and we'll connect as `root`:
 
 <Terminal wrap={true}>
 $ docker exec --user root -it 5abd45eecfa3 sh
@@ -195,7 +195,7 @@ export NO_PROXY="provider,192.168.0.0/24,127.0.0.1,localhost"
 * the well-known `127.0.0.1,localhost` is our localhost
 
 <AlertBox variant="tip" title="The no_proxy variable">
-To make sure all tools (`curl`, `wget`, `apt-get`, ...) are well using the `no_proxy` variable, it's recommanded to use both notation: lower and upper case.
+To make sure all tools (`curl`, `wget`, `apt-get`, ...) are well using the `no_proxy` variable, it's recommended to use both notation: lower and upper case.
 </AlertBox>
 
 Now, finally, the command I get consume my API using a command like `curl -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' http://provider:8000/api/v1/fetch`.

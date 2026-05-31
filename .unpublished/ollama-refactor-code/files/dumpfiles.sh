@@ -91,7 +91,7 @@ EOF
 echo "Gathering files and dumping into $OUTPUT_FILE..."
 
 # 2. Dynamic file discovery
-# We use 'find' to be future-proof. 
+# We use 'find' to be future-proof.
 # - we include hidden folders like .devcontainer
 # - we exclude .git and __pycache__
 # - we exclude the output file and the script itself
@@ -105,9 +105,9 @@ find . -type f \
 
     # Clean the path (remove ./ prefix for clarity)
     CLEAN_PATH="${FILE#./}"
-    
+
     echo "Adding: $CLEAN_PATH"
-    
+
     {
         echo -e "\n--- START OF FILE: $CLEAN_PATH ---"
         cat "$FILE"

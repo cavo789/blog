@@ -10,9 +10,11 @@ import {
 } from "@docusaurus/plugin-content-blog/client";
 import BlogLayout from "@theme/BlogLayout";
 import BlogPostItem from "@theme/BlogPostItem";
+import ReadingProgress from "@site/src/components/ReadingProgress";
 import BlogPostPaginator from "@theme/BlogPostPaginator";
 import BlogPostPageMetadata from "@theme/BlogPostPage/Metadata";
 import StructuredData from "@site/src/components/StructuredData";
+import OpenGraphArticle from "@site/src/components/OpenGraphArticle";
 import BlogPostPageStructuredData from "@theme/BlogPostPage/StructuredData";
 import TOC from "@theme/TOC";
 import TOCCollapsible from "@theme/TOCCollapsible";
@@ -45,6 +47,7 @@ function BlogPostPageContent({ sidebar, children }) {
         ) : undefined
       }
     >
+      <ReadingProgress />
       <ContentVisibility metadata={metadata} />
 
       {/* MOBILE TOC IMPLEMENTATION
@@ -93,6 +96,7 @@ function InnerBlogPostPage({ sidebar, BlogPostContent }) {
     >
       <BlogPostPageMetadata />
       <BlogPostPageStructuredData />
+      <OpenGraphArticle />
       {metadata && <StructuredData metadata={metadata} />}
       <BlogPostPageContent sidebar={sidebar}>
         <BlogPostContent />

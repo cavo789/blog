@@ -23,7 +23,7 @@ Zorin OS is a Linux distribution based on Ubuntu that targets users switching fr
 
 <!-- truncate -->
 
-Zorin can be [download](https://zorin.com/os/download/) for free (i.e. the Core edition or the `Education` one). If you want to support developpers or need additional features, you can download the Pro edition (less than 50€ incl. sales tax end of 2025).
+Zorin can be [download](https://zorin.com/os/download/) for free (i.e. the Core edition or the `Education` one). If you want to support developers or need additional features, you can download the Pro edition (less than 50€ incl. sales tax end of 2025).
 
 You'll have to download a `.iso` file and a program called `balenaEtcher` in order to flash a USB drive. Everything is clearly described on the [how to install Zorin OS page](https://help.zorin.com/docs/getting-started/install-zorin-os/).
 

@@ -75,7 +75,7 @@ $ ssh -p 5022 john_doe@node30-eu.n0c.com
 
 You'll be prompted for a password; enter your account password.
 
-If everthing is correctly configured, you will get a shell. You'll be located in your user's home directory (not the system root).
+If everything is correctly configured, you will get a shell. You'll be located in your user's home directory (not the system root).
 
 Please type `ls -al` to list files and `pwd` or `whoami` to confirm you are in your home directory:
 

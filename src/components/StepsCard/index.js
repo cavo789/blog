@@ -2,26 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import styles from "./styles.module.css";
+import { parseMarkdown } from "@site/src/components/Blog/utils/markdown";
 
-const parseMarkdown = (text) => {
-  if (typeof text !== "string") return text;
-  return text
-    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-    .replace(/`(.*?)`/g, "<code>$1</code>")
-    .replace(
-      /\[([^\]]+)\]\(([^)]+)\)/g,
-      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
-    );
+const VARIANT_ICONS = {
+  steps: "",
+  prerequisites: "",
+  remember: "",
 };
 
 export default function StepsCard({ steps = [], title, variant = "steps" }) {
   if (!steps || steps.length === 0) return null;
-
-  const variantIcons = {
-    steps: "",
-    prerequisites: "",
-    remember: "",
-  };
 
   return (
     /* Ajout des classes card et shadow--md pour matcher Updated */
@@ -32,7 +22,7 @@ export default function StepsCard({ steps = [], title, variant = "steps" }) {
       {title && (
         <div className="card__header">
           <h3 className={styles.steps_title}>
-            <span aria-hidden="true">{variantIcons[variant]}</span> {title}
+            <span aria-hidden="true">{VARIANT_ICONS[variant]}</span> {title}
           </h3>
         </div>
       )}

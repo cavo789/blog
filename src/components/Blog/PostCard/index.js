@@ -3,6 +3,7 @@ import CardBody from "@site/src/components/Card/CardBody";
 import CardImage from "@site/src/components/Card/CardImage";
 import Link from "@docusaurus/Link";
 import PropTypes from "prop-types";
+import Translate from "@docusaurus/Translate";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { formatPostDate } from "@site/src/components/Blog/utils/date";
 import styles from "./styles.module.css";
@@ -37,7 +38,7 @@ export default function PostCard({
           </div>
           <div className={`card__footer ${styles.cardSmallFooter}`}>
             <Link className="button button--primary button--sm" to={permalink}>
-              Read more
+              <Translate id="blog.postCard.readMore">Read more</Translate>
             </Link>
           </div>
         </div>
@@ -56,7 +57,7 @@ export default function PostCard({
           className={styles.cardImageEnhanced}
         />
         <CardBody className={styles.cardBodyEnhanced}>
-          <h3>
+          <h3 className={styles.cardTitle}>
             <Link
               to={permalink}
               aria-label={`Read article: ${title}`}

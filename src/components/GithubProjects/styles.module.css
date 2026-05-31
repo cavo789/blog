@@ -40,16 +40,26 @@
   background-position: center;
   background-repeat: no-repeat;
   background-blend-mode: lighten;
-  background-color: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(8px);
-  border: 1px solid #eaeaea;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="dark"] .github_projects_card {
+  background-blend-mode: multiply;
+  background-color: rgba(20, 24, 28, 0.9);
+  border-color: var(--ifm-color-emphasis-400);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
 }
 
 .github_projects_card:hover {
   transform: scale(1.02);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .github_projects_card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
 }
 
 /* Hover icon overlay */
@@ -73,18 +83,30 @@
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  color: #2d2d2d;
+  color: var(--ifm-font-color-base);
   text-decoration: none;
 }
 
 .repo_link:hover {
-  color: #0078e7;
+  color: var(--ifm-color-primary);
 }
 
 /* Archived label */
 .archived_label {
-  color: gray;
+  color: var(--ifm-color-secondary-dark);
   font-weight: normal;
+}
+
+[data-theme="dark"] .archived_label {
+  color: var(--ifm-color-secondary-light);
+}
+
+/* Text inside cards */
+.github_projects_card p,
+.github_projects_card span,
+.github_projects_card li {
+  color: var(--ifm-font-color-base);
+  line-height: 1.6;
 }
 
 /* Footer styling */
@@ -95,9 +117,9 @@
   align-items: center;
   gap: 0.5rem;
   padding-top: 0.5rem;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
   font-size: 0.85rem;
-  color: #555;
+  color: var(--ifm-color-content-secondary);
 }
 
 .github_projects_card .card__footer svg {
@@ -114,15 +136,21 @@
   vertical-align: middle;
 }
 
+/* Filters panel */
 .filters_panel {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 2rem;
   padding: 1rem;
-  background-color: #f9f9f9;
+  background-color: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .filters_panel {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 .filters_panel label {
@@ -130,7 +158,7 @@
   flex-direction: column;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #333;
+  color: var(--ifm-font-color-base);
 }
 
 .filters_panel select,
@@ -138,21 +166,14 @@
   margin-top: 0.25rem;
   padding: 0.4rem;
   border-radius: 4px;
-  border: 1px solid #ccc;
-}
-.filters_panel input[type="text"] {
-  margin-top: 0.25rem;
-  padding: 0.4rem;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-.github_projects_card p,
-.github_projects_card span,
-.github_projects_card li {
-  color: #1a1a1a; /* much darker, close to black */
-  line-height: 1.6; /* improves readability */
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
 }
 
-.github_projects_card .card__footer {
-  color: #333; /* darker than #555 */
+.filters_panel select:focus,
+.filters_panel input:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
 }

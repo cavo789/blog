@@ -36,9 +36,9 @@ const HeroSection = ({ videoFileName }) => {
             </Link>
             <Link
               className="button button--secondary button--lg"
-              to="/blog/archive"
+              to="/about"
             >
-              <Translate id="homepage.hero.archive">Archive</Translate>
+              <Translate id="homepage.hero.about">About me</Translate>
             </Link>
           </div>
         </div>

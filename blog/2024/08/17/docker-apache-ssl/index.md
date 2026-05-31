@@ -45,7 +45,7 @@ $ unzip master.zip && rm master.zip && mv Sedna-master src
 $ docker run -d --name static-site -p 80:80 -v ./src:/usr/local/apache2/htdocs httpd:2.4
 </Terminal>
 
-Once these commands have been fired, please jump to `http://locahost:8080` and you'll get this:
+Once these commands have been fired, please jump to `http://localhost:8080` and you'll get this:
 
 ![Website running as http](./images/running_http.webp)
 

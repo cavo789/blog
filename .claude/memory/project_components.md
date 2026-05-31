@@ -1,7 +1,7 @@
 ---
 name: project-components
 description: Custom React components and plugins available in blog posts
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 00c5ecbb-c9bf-4541-b607-05360c5e9363

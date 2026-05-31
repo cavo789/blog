@@ -5,7 +5,7 @@
         "compose.yaml"
     ],
     "service": "app",
-    "workspaceFolder": "/app",    
+    "workspaceFolder": "/app",
     "remoteUser": "vscode",
     "containerUser": "vscode",
     "containerEnv": {

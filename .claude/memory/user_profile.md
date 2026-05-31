@@ -1,7 +1,7 @@
 ---
 name: user-profile
 description: "Christophe Avonture — technical blogger, Docker/WSL/Markdown enthusiast, GitHub cavo789"
-metadata: 
+metadata:
   node_type: memory
   type: user
   originSessionId: 00c5ecbb-c9bf-4541-b607-05360c5e9363

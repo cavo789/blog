@@ -21,6 +21,7 @@ alias start='yarn docusaurus clear && yarn docusaurus start'
 alias lint='docker run --rm -it --user \$(id -u):\$(id -g) -v \${BLOG_HOST_DIR}:/md peterdavehello/markdownlint markdownlint --fix --config .config/.markdownlint.json --ignore-path .config/.markdownlint_ignore .'
 alias spellcheck='docker run --rm -it --user \$(id -u):\$(id -g) -v \${BLOG_HOST_DIR}:/src -w /src ghcr.io/streetsidesoftware/cspell:latest lint . --unique --gitignore --quiet --no-progress --config .vscode/cspell.json'
 alias tags='python3 .scripts/tags-manager.py'
+alias check='pre-commit run --all-files --config .config/.pre-commit-config.yaml'
 
 printf "\n🚀 Welcome to your Docusaurus Dev Container!\n\n"
 printf "📚 Quick Commands Reference:\n\n"
@@ -34,6 +35,7 @@ printf "  🏷️  \033[1;33mtags\033[0m         Run tags tools.\n"
 printf "\n"
 printf "  🧹 \033[1;33mlint\033[0m         Lint Markdown files with markdownlint.\n"
 printf "  ✍️  \033[1;33mspellcheck\033[0m   Spell check content with cspell.\n"
+printf "  🔍 \033[1;33mcheck\033[0m        Run all pre-commit hooks on every file.\n"
 printf "\n"
 
 EOF

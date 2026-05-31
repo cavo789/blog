@@ -10,13 +10,13 @@ rem Software is furnished to do so, subject to the following conditions:
 rem
 rem The above copyright notice and this permission notice shall be included in
 rem all copies or substantial portions rem of the Software.
-rem 
+rem
 rem THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 rem IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 rem FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
 rem THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-rem LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-rem FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+rem LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+rem FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 rem DEALINGS IN THE SOFTWARE.
 rem
 rem NAME
@@ -34,16 +34,16 @@ rem   03-FEB-2022
 rem
 rem SUPPORTED with DB VERSIONS
 rem   19c and higher
-rem 
+rem
 rem MAJOR CHANGES IN THIS RELEASE
-rem   
+rem
 rem
 rem SCHEMA DEPENDENCIES AND REQUIREMENTS
 rem   This script is called from the hr_install.sql script
-rem 
+rem
 rem INSTALL INSTRUCTIONS
 rem    Run the hr_install.sql script to call this script
-rem 
+rem
 rem --------------------------------------------------------------------------
 
 SET FEEDBACK 1
@@ -52,7 +52,7 @@ SET LINESIZE 80
 SET TRIMSPOOL ON
 SET TAB OFF
 SET PAGESIZE 100
-SET ECHO OFF 
+SET ECHO OFF
 
 rem ********************************************************************
 rem Create the REGIONS table to hold region information for locations
@@ -61,9 +61,9 @@ rem HR.LOCATIONS table has a foreign key to this table.
 Prompt ******  Creating REGIONS table ....
 
 CREATE TABLE regions
-    ( region_id      NUMBER 
-       CONSTRAINT  region_id_nn NOT NULL 
-    , region_name    VARCHAR2(25) 
+    ( region_id      NUMBER
+       CONSTRAINT  region_id_nn NOT NULL
+    , region_name    VARCHAR2(25)
     );
 
 CREATE UNIQUE INDEX reg_id_pk
@@ -81,20 +81,20 @@ rem OE.CUSTOMERS table and HR.LOCATIONS have a foreign key to this table.
 
 Prompt ******  Creating COUNTRIES table ....
 
-CREATE TABLE countries 
-    ( country_id      CHAR(2) 
-       CONSTRAINT  country_id_nn NOT NULL 
-    , country_name    VARCHAR2(60) 
-    , region_id       NUMBER 
-    , CONSTRAINT     country_c_id_pk 
-        	     PRIMARY KEY (country_id) 
-    ) 
-    ORGANIZATION INDEX; 
+CREATE TABLE countries
+    ( country_id      CHAR(2)
+       CONSTRAINT  country_id_nn NOT NULL
+    , country_name    VARCHAR2(60)
+    , region_id       NUMBER
+    , CONSTRAINT     country_c_id_pk
+        	     PRIMARY KEY (country_id)
+    )
+    ORGANIZATION INDEX;
 
 ALTER TABLE countries
 ADD ( CONSTRAINT countr_reg_fk
         	 FOREIGN KEY (region_id)
-          	  REFERENCES regions(region_id) 
+          	  REFERENCES regions(region_id)
     ) ;
 
 rem ********************************************************************
@@ -121,7 +121,7 @@ ADD ( CONSTRAINT loc_id_pk
        		 PRIMARY KEY (location_id)
     , CONSTRAINT loc_c_id_fk
        		 FOREIGN KEY (country_id)
-        	  REFERENCES countries(country_id) 
+        	  REFERENCES countries(country_id)
     ) ;
 
 Rem 	Useful for any subsequent addition of rows to locations table
@@ -160,7 +160,7 @@ ADD ( CONSTRAINT dept_id_pk
      ) ;
 
 Rem 	Useful for any subsequent addition of rows to departments table
-Rem 	Starts with 280 
+Rem 	Starts with 280
 
 CREATE SEQUENCE departments_seq
  START WITH     280
@@ -183,7 +183,7 @@ CREATE TABLE jobs
     , max_salary     NUMBER(6)
     ) ;
 
-CREATE UNIQUE INDEX job_id_pk 
+CREATE UNIQUE INDEX job_id_pk
 ON jobs (job_id) ;
 
 ALTER TABLE jobs
@@ -215,7 +215,7 @@ CREATE TABLE employees
     , manager_id     NUMBER(6)
     , department_id  NUMBER(4)
     , CONSTRAINT     emp_salary_min
-                     CHECK (salary > 0) 
+                     CHECK (salary > 0)
     , CONSTRAINT     emp_email_uk
                      UNIQUE (email)
     ) ;
@@ -246,7 +246,7 @@ ADD ( CONSTRAINT dept_mgr_fk
 
 
 Rem 	Useful for any subsequent addition of rows to employees table
-Rem 	Starts with 207 
+Rem 	Starts with 207
 
 
 CREATE SEQUENCE employees_seq
@@ -276,7 +276,7 @@ CREATE TABLE job_history
                     CHECK (end_date > start_date)
     ) ;
 
-CREATE UNIQUE INDEX jhist_emp_id_st_date_pk 
+CREATE UNIQUE INDEX jhist_emp_id_st_date_pk
 ON job_history (employee_id, start_date) ;
 
 ALTER TABLE job_history
@@ -318,9 +318,9 @@ CREATE OR REPLACE VIEW emp_details_view
    country_name,
    region_name)
 AS SELECT
-  e.employee_id, 
-  e.job_id, 
-  e.manager_id, 
+  e.employee_id,
+  e.job_id,
+  e.manager_id,
   e.department_id,
   d.location_id,
   l.country_id,
@@ -345,7 +345,7 @@ WHERE e.department_id = d.department_id
   AND d.location_id = l.location_id
   AND l.country_id = c.country_id
   AND c.region_id = r.region_id
-  AND j.job_id = e.job_id 
+  AND j.job_id = e.job_id
 WITH READ ONLY;
 
 rem ********************************************************************
@@ -380,7 +380,7 @@ CREATE INDEX jhist_department_ix
 CREATE INDEX loc_city_ix
        ON locations (city);
 
-CREATE INDEX loc_state_province_ix	
+CREATE INDEX loc_state_province_ix
        ON locations (state_province);
 
 CREATE INDEX loc_country_ix
@@ -392,7 +392,7 @@ rem Add table column comments
 
 Prompt ******  Adding table column comments ...
 
-COMMENT ON TABLE regions 
+COMMENT ON TABLE regions
 IS 'Regions table that contains region numbers and names. references with the Countries table.';
 
 COMMENT ON COLUMN regions.region_id
@@ -414,15 +414,15 @@ IS 'Street address of an office, warehouse, or production site of a company.
 Contains building number and street name';
 
 COMMENT ON COLUMN locations.postal_code
-IS 'Postal code of the location of an office, warehouse, or production site 
+IS 'Postal code of the location of an office, warehouse, or production site
 of a company. ';
 
 COMMENT ON COLUMN locations.city
-IS 'A not null column that shows city where an office, warehouse, or 
+IS 'A not null column that shows city where an office, warehouse, or
 production site of a company is located. ';
 
 COMMENT ON COLUMN locations.state_province
-IS 'State or Province where an office, warehouse, or production site of a 
+IS 'State or Province where an office, warehouse, or production site of a
 company is located.';
 
 COMMENT ON COLUMN locations.country_id
@@ -433,15 +433,15 @@ located. Foreign key to country_id column of the countries table.';
 rem *********************************************
 
 COMMENT ON TABLE departments
-IS 'Departments table that shows details of departments where employees 
+IS 'Departments table that shows details of departments where employees
 work. references with locations, employees, and job_history tables.';
 
 COMMENT ON COLUMN departments.department_id
 IS 'Primary key column of departments table.';
 
 COMMENT ON COLUMN departments.department_name
-IS 'A not null column that shows name of a department. Administration, 
-Marketing, Purchasing, Human Resources, Shipping, IT, Executive, Public 
+IS 'A not null column that shows name of a department. Administration,
+Marketing, Purchasing, Human Resources, Shipping, IT, Executive, Public
 Relations, Sales, Finance, and Accounting. ';
 
 COMMENT ON COLUMN departments.manager_id
@@ -454,28 +454,28 @@ IS 'Location id where a department is located. Foreign key to location_id column
 rem *********************************************
 
 COMMENT ON TABLE job_history
-IS 'Table that stores job history of the employees. If an employee 
-changes departments within the job or changes jobs within the department, 
-new rows get inserted into this table with old job information of the 
+IS 'Table that stores job history of the employees. If an employee
+changes departments within the job or changes jobs within the department,
+new rows get inserted into this table with old job information of the
 employee. Contains a complex primary key: employee_id+start_date.
 References with jobs, employees, and departments tables.';
 
 COMMENT ON COLUMN job_history.employee_id
-  IS 'A not null column in the complex primary key employee_id+start_date. 
+  IS 'A not null column in the complex primary key employee_id+start_date.
 Foreign key to employee_id column of the employee table';
 
 COMMENT ON COLUMN job_history.start_date
-  IS 'A not null column in the complex primary key employee_id+start_date. 
-Must be less than the end_date of the job_history table. (enforced by 
+  IS 'A not null column in the complex primary key employee_id+start_date.
+Must be less than the end_date of the job_history table. (enforced by
 constraint jhist_date_interval)';
 
 COMMENT ON COLUMN job_history.end_date
-  IS 'Last day of the employee in this job role. A not null column. Must be 
-greater than the start_date of the job_history table. 
+  IS 'Last day of the employee in this job role. A not null column. Must be
+greater than the start_date of the job_history table.
 (enforced by constraint jhist_date_interval)';
 
 COMMENT ON COLUMN job_history.job_id
-  IS 'Job role in which the employee worked in the past; foreign key to 
+  IS 'Job role in which the employee worked in the past; foreign key to
 job_id column in the jobs table. A not null column.';
 
 COMMENT ON COLUMN job_history.department_id
@@ -538,22 +538,22 @@ COMMENT ON COLUMN employees.hire_date
   IS 'Date when the employee started on this job. A not null column.';
 
 COMMENT ON COLUMN employees.job_id
-  IS 'Current job of the employee; foreign key to job_id column of the 
+  IS 'Current job of the employee; foreign key to job_id column of the
 jobs table. A not null column.';
 
 COMMENT ON COLUMN employees.salary
-  IS 'Monthly salary of the employee. Must be greater 
+  IS 'Monthly salary of the employee. Must be greater
 than zero (enforced by constraint emp_salary_min)';
 
 COMMENT ON COLUMN employees.commission_pct
-  IS 'Commission percentage of the employee; Only employees in sales 
+  IS 'Commission percentage of the employee; Only employees in sales
 department elgible for commission percentage';
 
 COMMENT ON COLUMN employees.manager_id
-  IS 'Manager id of the employee; has same domain as manager_id in 
-departments table. Foreign key to employee_id column of employees table. 
+  IS 'Manager id of the employee; has same domain as manager_id in
+departments table. Foreign key to employee_id column of employees table.
 (useful for reflexive joins and CONNECT BY query)';
 
 COMMENT ON COLUMN employees.department_id
-  IS 'Department id where employee works; foreign key to department_id 
+  IS 'Department id where employee works; foreign key to department_id
 column of the departments table';

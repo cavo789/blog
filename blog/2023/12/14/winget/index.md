@@ -36,9 +36,9 @@ Easy no?
 
 </AlertBox>
 
-## Getting the list of softwares
+## Getting the list of software
 
-Running `winget list` returns the list of all softwares installed on your machine and `winget list --upgrade-available` only those when a newer version is available on the internet.
+Running `winget list` returns the list of all software installed on your machine and `winget list --upgrade-available` only those when a newer version is available on the internet.
 
 And, to get the list sorted, make sure you're under **PowerShell** and run this command instead: `winget list --upgrade-available | Sort-Object`. The result isn't really nice but, at least, application names are sorted.
 

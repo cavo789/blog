@@ -1,48 +1,3 @@
-/**
- * 📊 BlueskyLikes Component
- *
- * Displays the number of likes and reposts for a specific Bluesky post.
- * This component is conditionally rendered based on the presence of a `blueskyRecordKey`
- * in the document's YAML frontmatter.
- *
- * 🔍 Behavior:
- * - If `blueskyRecordKey` is missing or empty:
- *   → The component returns `null` and nothing is displayed.
- * - If present:
- *   → Fetches post metadata from the Bluesky public API and displays:
- *     • Total likes
- *
- * 🧾 Frontmatter Requirement:
- * ---
- * title: "My Post"
- * blueskyRecordKey: 3lun2qjuxc22r
- * ---
- *
- * ⚙️ Configuration:
- * Ensure your Bluesky handle is defined in `docusaurus.config.js`:
- *
- * ```js
- * const config = {
- *   customFields: {
- *     blueSky: {
- *       handle: 'your-handle.bsky.social',
- *     },
- *   },
- * };
- * ```
- *
- * 📦 Props:
- * @param {object} props
- * @param {object} props.metadata - Docusaurus document metadata
- * @param {object} [props.metadata.frontMatter] - Frontmatter object
- * @param {string} [props.metadata.frontMatter.blueskyRecordKey] - Unique key identifying the Bluesky post
- *
- * 🧠 Notes:
- * - Uses `useEffect` to fetch post stats asynchronously
- * - Gracefully handles loading and error states
- * - Requires Bluesky API access to retrieve post thread data
- */
-
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.module.css";
@@ -53,7 +8,6 @@ export default function BlueskyLikes({ metadata }) {
   const blueSkyConfig = siteConfig?.customFields?.bluesky;
   const blueskyRecordKey = metadata?.frontMatter?.blueskyRecordKey;
 
-  // Consolidate state into a single object
   const [postStats, setPostStats] = useState({
     likes: null,
     reposts: null,
@@ -61,8 +15,7 @@ export default function BlueskyLikes({ metadata }) {
   });
 
   useEffect(() => {
-    // Only run if a Bluesky post exists
-    if (!blueskyRecordKey) {
+    if (!blueskyRecordKey || !blueSkyConfig?.handle) {
       setPostStats({ likes: null, reposts: null, loading: false });
       return;
     }
@@ -92,13 +45,9 @@ export default function BlueskyLikes({ metadata }) {
     };
 
     fetchData();
-  }, [blueskyRecordKey, blueSkyConfig.handle]);
+  }, [blueskyRecordKey, blueSkyConfig?.handle]);
 
-  if (postStats.loading) {
-    return null;
-  }
-
-  if (postStats.likes === null) {
+  if (postStats.loading || postStats.likes === null) {
     return null;
   }
 
@@ -123,7 +72,7 @@ export default function BlueskyLikes({ metadata }) {
 BlueskyLikes.propTypes = {
   metadata: PropTypes.shape({
     frontMatter: PropTypes.shape({
-      blueskyRecordKey: PropTypes.string, // Optional. If missing, the BlueskyLikes component won't display anything
+      blueskyRecordKey: PropTypes.string,
     }),
   }).isRequired,
 };

@@ -3,21 +3,9 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import Translate from "@docusaurus/Translate";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { parseMarkdown } from "@site/src/components/Blog/utils/markdown";
 
 import styles from "./styles.module.css";
-
-function parseMarkdown(text) {
-  if (!text) return "";
-
-  return text
-    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\*(.*?)\*/g, "<em>$1</em>")
-    .replace(/`(.*?)`/g, "<code>$1</code>")
-    .replace(
-      /\[([^\]]+)\]\(([^)]+)\)/g,
-      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
-    );
-}
 
 export default function Updated({ updates }) {
   const { i18n } = useDocusaurusContext();

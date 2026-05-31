@@ -8,6 +8,7 @@ mainTag: fzf
 ai_assisted: true
 tags: [fzf, zsh]
 date: 2026-05-25
+blueskyRecordKey: 3mmnv4igbvk2f
 ---
 ![Modular ZSH Workflow](/img/v2/repo_with_fzf.webp)
 

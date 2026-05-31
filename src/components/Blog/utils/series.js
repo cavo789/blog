@@ -53,7 +53,7 @@ export function generateSeriesList(
     .sort()
     .map((seriesName) => {
       const posts = seriesMap[seriesName];
-      const sortedPosts = posts.sort(
+      const sortedPosts = [...posts].sort(
         (a, b) => new Date(a.date) - new Date(b.date)
       );
 

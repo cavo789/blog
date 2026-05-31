@@ -34,7 +34,7 @@ export default function LatestPosts({
 
   return (
     <section className={styles.cardsSection}>
-      <h2 className={styles.sectionTitle}>
+      <h2>
         <Translate
           id="blog.latestPosts.header"
           values={{
@@ -48,14 +48,14 @@ export default function LatestPosts({
       </h2>
 
       <div className={styles.cardsGrid}>
-        {sortedPosts.map((post) => (
+        {sortedPosts.map((post, index) => (
           <Link key={post.id} to={post.permalink} className={styles.cardLink}>
             <Card>
               {post.image && (
                 <CardImage
                   cardImageUrl={post.image}
                   alt={post.title}
-                  lazy={false}
+                  lazy={index >= 3}
                 />
               )}
               <CardBody

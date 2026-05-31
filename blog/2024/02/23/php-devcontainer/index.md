@@ -78,7 +78,7 @@ For instance, press <kbd>CTRL</kbd>+<kbd>ù</kbd> to open the **Terminal** pane 
 
 ![PHP-CS-Fixer](./images/php-cs-fixer.webp)
 
-You can also run `/usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml /var/www/html/index.php` for reformating your code using [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
+You can also run `/usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml /var/www/html/index.php` for reformatting your code using [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
 
 You can run [Rector](https://github.com/rectorphp/rector) too by running `vendor/bin/rector process index.php --config .config/rector.php`.
 

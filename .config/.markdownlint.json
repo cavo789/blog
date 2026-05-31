@@ -6,20 +6,31 @@
   "MD013": false,
   "MD033": {
     "allowed_elements": [
+      "a",
       "alertbox",
+      "br",
       "browserwindow",
+      "card",
+      "code",
       "details",
+      "div",
+      "em",
       "guideline",
+      "h4",
       "highlight",
       "kbd",
       "link",
+      "p",
       "projectsetup",
+      "stepscard",
+      "strong",
       "summary",
       "snippet",
       "terminal",
       "TLDR"
     ]
   },
+  "MD024": { "siblings_only": true },
   "MD034": false,
   "no-hard-tabs": true,
   "whitespace": false

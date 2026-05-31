@@ -1,0 +1,46 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//usr/**)",
+      "Read(//home/**)",
+      "Read(//root/**)",
+      "Bash(npm root *)",
+      "Bash(npx --yes playwright screenshot --browser chromium --ignore-https-errors \"https://localhost:3000/blog/claude-ia-spare-tokens\" /tmp/ss_tokens.png)",
+      "Bash(node -e ' *)",
+      "Bash(curl -s http://localhost:3000/series -o /dev/null -w \"%{http_code}\")",
+      "Bash(npm run start -- --no-open &>/tmp/docusaurus-start.log & *)",
+      "Bash(timeout 60 bash -c 'until curl -s http://localhost:3000 -o /dev/null -w \"%{http_code}\" 2>/dev/null | grep -q \"200\"; do sleep 2; done && echo \"Server ready\"')",
+      "Bash(curl -s http://localhost:3000 -o /dev/null -w \"%{http_code}\")",
+      "Bash(netstat -tlnp)",
+      "Bash(curl -v http://127.0.0.1:3000/)",
+      "Bash(curl -s --max-time 10 http://127.0.0.1:3000/series)",
+      "Bash(kill 44)",
+      "Bash(npm run *)",
+      "Bash(echo \"Started PID $!\")",
+      "Bash(curl -s http://127.0.0.1:3000/series -o /dev/null -w \"%{http_code}\")",
+      "Bash(node /opt/docusaurus/node_modules/.bin/playwright --version)",
+      "Bash(npx --yes playwright codegen --help)",
+      "Bash(npm list *)",
+      "Bash(curl -s http://127.0.0.1:3000/series)",
+      "Bash(identify /tmp/series-v2.png)",
+      "Bash(convert /tmp/series-v2.png -crop 1646x600+0+1200 +repage /tmp/series-row3.png)",
+      "Bash(convert /tmp/series-v2.png -crop 1646x600+0+250 +repage /tmp/series-row1.png)",
+      "Bash(identify /tmp/series-v3.png)",
+      "Bash(convert /tmp/series-fullpage.png -crop 1646x400+0+1200 +repage /tmp/before-row3.png)",
+      "Bash(convert /tmp/series-v2.png -crop 1646x400+0+1200 +repage /tmp/after-row3.png)",
+      "Bash(convert /tmp/series-final.png -crop 1400x600+0+1300 +repage /tmp/series-cards-crop.png)",
+      "Bash(identify /tmp/series-final.png)",
+      "Bash(convert /tmp/series-final.png -crop 1651x520+0+250 +repage /tmp/after-row1.png)",
+      "Bash(convert /tmp/series-fullpage.png -crop 1646x520+0+250 +repage /tmp/before-row1.png)",
+      "Bash(convert /tmp/series-fullpage.png -crop 1646x520+0+1220 +repage /tmp/before-row3-v2.png)",
+      "Bash(convert /tmp/series-final.png -crop 1651x520+0+1220 +repage /tmp/after-row3-v2.png)",
+      "Bash(convert /tmp/series-fixed.png -crop 1651x520+0+1220 +repage /tmp/series-fixed-row3.png)",
+      "Bash(identify /tmp/series-fixed.png)",
+      "Bash(convert /tmp/series-fixed.png -crop 1651x500+0+800 +repage /tmp/series-fixed-row2.png)",
+      "Bash(convert /tmp/series-fixed.png -crop 1651x450+0+850 +repage /tmp/series-fixed-functional.png)"
+    ],
+    "additionalDirectories": [
+      "/tmp"
+    ]
+  }
+}

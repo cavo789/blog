@@ -1,7 +1,7 @@
 const HOME_CARDS = [
   {
     title: "Blog",
-    description: "I'm publishing at least one article by week.",
+    description: "I'm publishing at least one article per week.",
     url: "/blog",
     image: "blog.webp",
   },

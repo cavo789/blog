@@ -14,7 +14,7 @@ services:
     tmpfs:
       - /tmp:mode=1777
     volumes:
-      # Feature 1: Mount the code and config for live development     
+      # Feature 1: Mount the code and config for live development
       - ./src:/app/src:ro
       - ./agent.yaml:/app/agent.yaml:ro
       # Mount the target project to be analyzed

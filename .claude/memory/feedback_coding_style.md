@@ -1,7 +1,7 @@
 ---
 name: feedback-coding-style
 description: "Coding rules validated by project's AGENTS.md — React, CSS, Docker, comments"
-metadata: 
+metadata:
   node_type: memory
   type: feedback
   originSessionId: 00c5ecbb-c9bf-4541-b607-05360c5e9363

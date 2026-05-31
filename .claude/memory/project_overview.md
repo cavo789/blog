@@ -1,7 +1,7 @@
 ---
 name: project-overview
 description: "Docusaurus 3.x personal blog — stack, URLs, repo, key conventions"
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 00c5ecbb-c9bf-4541-b607-05360c5e9363

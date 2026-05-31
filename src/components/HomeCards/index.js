@@ -62,7 +62,7 @@ HomeCardItem.propTypes = {
 export default function HomeCards() {
   return (
     <section className={styles.cardsSection}>
-      <h2 className={styles.sectionTitle}>
+      <h2>
         <Translate id="homepage.homeCards.title">Explore the site</Translate>
       </h2>
       <div className={styles.cardsGrid}>

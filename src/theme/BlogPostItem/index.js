@@ -5,7 +5,7 @@ import BlogPostItemContent from "@theme/BlogPostItem/Content";
 import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
 import BlogPostItemHeader from "@theme/BlogPostItem/Header";
 import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
-import StructuredData from "@site/src/components/StructuredData";
+import Reaction from "@site/src/components/Reaction";
 import clsx from "clsx";
 
 // Our posts components
@@ -28,7 +28,6 @@ export default function BlogPostItem({ children, className }) {
 
   return (
     <>
-      {isBlogPostPage && <StructuredData metadata={metadata} />}
       <BlogPostItemContainer className={clsx(containerClassName, className)}>
         <BlogPostItemHeader aiIcon={aiIcon} />
         <BlogPostItemContent>{children}</BlogPostItemContent>
@@ -37,6 +36,7 @@ export default function BlogPostItem({ children, className }) {
         {/* Only display our RelatedPosts and Bluesky components on the post page; not the blog view */}
         {isBlogPostPage && (
           <>
+            <Reaction metadata={metadata} />
             <Bluesky metadata={metadata} />
             <RelatedPosts count="6" description="false" />
           </>

@@ -1,0 +1,7 @@
+# Disable directory listing
+Options -Indexes
+
+# Block direct HTTP access to internal files
+<FilesMatch "^(reactions-data\.json|notifications\.json|README\.md)$">
+    Require all denied
+</FilesMatch>

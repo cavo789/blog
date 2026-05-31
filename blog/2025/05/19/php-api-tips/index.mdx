@@ -13,6 +13,7 @@ updates:
   - date: 2025-05-19
     note: Add belgif.be specifications
 ---
+
 ![API REST - How to write good APIs](/img/v2/api.webp)
 
 <TLDR>
@@ -20,7 +21,7 @@ This comprehensive guide covers essential best practices for designing clean, sc
 </TLDR>
 <!-- cspell:ignore Belgif -->
 
-When developing APIs *from scratch*, you can do it in the mode *I get behind the PC and start programming*, or *I learn about the standards first and then program in compliance with these standards*.
+When developing APIs _from scratch_, you can do it in the mode _I get behind the PC and start programming_, or _I learn about the standards first and then program in compliance with these standards_.
 
 And if we lose sight of these norms, we quickly come back to writing endpoints like `/articles/insert` that are semantically incorrect (and even stupid). In fact, we'll never `GET` here.
 
@@ -34,13 +35,13 @@ The purpose of the article below is to list best practices by way of examples.
 
 #### URI notation
 
-*Path segments and query parameters should use lowerCamelCase notation to enhance readability and to separate compounds names.* ([reference](https://www.belgif.be/specification/rest/api-guide/#resource-uri))
+_Path segments and query parameters should use lowerCamelCase notation to enhance readability and to separate compounds names._ ([reference](https://www.belgif.be/specification/rest/api-guide/#resource-uri))
 
-| GOOD | BAD |
-| --- | --- |
-| <span style={{color: 'green'}}>`https://xxx/api/v1/ipsoLorem/331`</span>| <span style={{color: 'red'}}>`https://xxx/api/v1/Ipso_Lorem/331`</span> |
-| | <span style={{color: 'red'}}>`https://xxx/api/v1/ipso-lorem/331`</span> |
-| <span style={{color: 'green'}}>`https://xxx/api/v1/ipsoLorem/331`</span> | <span style={{color: 'red'}}>`https://xxx/api/v1/ipsoLorem/331/`</span> |
+| GOOD                                                                            | BAD                                                                            |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| <span style={{color: 'green'}}>`https://xxx/api/v1/ipsoLorem/331`</span>        | <span style={{color: 'red'}}>`https://xxx/api/v1/Ipso_Lorem/331`</span>        |
+|                                                                                 | <span style={{color: 'red'}}>`https://xxx/api/v1/ipso-lorem/331`</span>        |
+| <span style={{color: 'green'}}>`https://xxx/api/v1/ipsoLorem/331`</span>        | <span style={{color: 'red'}}>`https://xxx/api/v1/ipsoLorem/331/`</span>        |
 | <span style={{color: 'green'}}>`https://xxx/api/v1/ipsoLorem?country=BE`</span> | <span style={{color: 'red'}}>`https://xxx/api/v1/Ipso_Lorem?Country=BE`</span> |
 
 URI shouldn't end with a `/` and neither with a file extension so don't <span style={{color: 'red'}}>`https://xxx/api/v1/ipso-lorem/331.json`</span> but simply use HTTP headers like `Content-Type: application/json;charset=UTF-8` to inform it's a JSON answer.
@@ -57,11 +58,11 @@ Also, using the plural form, the user will immediately understand he'll be able 
 
 When building a URI think to the hierarchy and relationship between collections. If you need to return the list of tasks of John, you can use multiple notations like below illustrated:
 
-| GOOD | BAD |
-| --- | --- |
-| <span style={{color: 'green'}}>`/api/v1/employees/john/tasks`</span>| <span style={{color: 'red'}}>`/api/v1/tasks/employees/john`</span> |
+| GOOD                                                                 | BAD                                                                |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <span style={{color: 'green'}}>`/api/v1/employees/john/tasks`</span> | <span style={{color: 'red'}}>`/api/v1/tasks/employees/john`</span> |
 
-About the hierarchy: does *Tasks have employees* or *Employees have tasks*? This hierarchy clearly defined (an employee can have multiple tasks), put collections in that order in the URI so `/api/v1/employees/john` will return the employee and by adding `/tasks` we'll obtain his list of tasks (then we can filter to a specific one `/api/v1/employees/john/tasks/1` f.i.).
+About the hierarchy: does _Tasks have employees_ or _Employees have tasks_? This hierarchy clearly defined (an employee can have multiple tasks), put collections in that order in the URI so `/api/v1/employees/john` will return the employee and by adding `/tasks` we'll obtain his list of tasks (then we can filter to a specific one `/api/v1/employees/john/tasks/1` f.i.).
 
 This makes URI more readable, intuitive and more scalable like in `/api/v1/employees/john/projects`.
 
@@ -69,15 +70,15 @@ This makes URI more readable, intuitive and more scalable like in `/api/v1/emplo
 
 HTTP has verbs like `GET`, `POST`, `DELETE`, ... so don't use calls like:
 
-* `/api/v1/articles/gettitle`
-* `/api/v1/articles/insert`
-* `/api/v1/articles/1/delete`
+- `/api/v1/articles/gettitle`
+- `/api/v1/articles/insert`
+- `/api/v1/articles/1/delete`
 
 But use the adequate HTTP verb:
 
-* `GET /api/v1/articles/title`
-* `PUT /api/v1/articles`
-* `DELETE /api/v1/articles/1`
+- `GET /api/v1/articles/title`
+- `PUT /api/v1/articles`
+- `DELETE /api/v1/articles/1`
 
 #### Send the HTTP Accept header
 
@@ -87,19 +88,19 @@ Don't do this:
 
 ```js
 const employee = axios.create({
-    baseURL: 'https://xxx/api/v1/employees/123'
-})
+  baseURL: "https://xxx/api/v1/employees/123",
+});
 ```
 
 But well:
 
 ```js
 const employee = axios.create({
-    baseURL: 'https://xxx/api/v1/employees/123',
-    headers: {
-      'Accept': 'application/json'
-    }
-})
+  baseURL: "https://xxx/api/v1/employees/123",
+  headers: {
+    Accept: "application/json",
+  },
+});
 ```
 
 Now, in the second example, you tell the web server that you want a JSON representation and nothing else.
@@ -126,15 +127,15 @@ So `/api/v1/employees?page=1&pageSize=5` will display the first five employees a
 
 ([reference](https://www.belgif.be/specification/rest/api-guide/#query-parameters-2))
 
-| Term | Description | Example | Ref |
-| --- | --- | --- | --- |
-| `page` | When a collection resources is paged, use this parameter to request a specific page. Page numbers are 1-based. | `?page=3&pageSize=20`| Pagination |
-| `pageSize` | When a collection resources is paged, use this parameter to specify the page size. | `?page=3&pageSize=20` | Pagination |
-| `q` | The standard search parameter to do a full-text search. | `?q=RESTFul` | Filtering |
-| `select`| Filter the resource properties to the ones specified. | `?select=(name,address)` | Consult (Document) |
-| `sort` | Multi-value query param with list of properties to sort on. Default sorting direction is ascending. To indicate descending direction, the property may be prefixed with -. | `?sort=name&&sort=-age` | Collection |
-| `embed` | Request to embed sub-resource. For instance `api/v1/countries` returns countries and `api/v1/countries?embed=political` countries with their political infos. This will prevent additional API calls. | `?embed=mainAddress` | Embedding resources |
-| `lang` | language to filter multi-language descriptions | `?lang=fr` | Multi-language descriptions |
+| Term       | Description                                                                                                                                                                                           | Example                  | Ref                         |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | --------------------------- |
+| `page`     | When a collection resources is paged, use this parameter to request a specific page. Page numbers are 1-based.                                                                                        | `?page=3&pageSize=20`    | Pagination                  |
+| `pageSize` | When a collection resources is paged, use this parameter to specify the page size.                                                                                                                    | `?page=3&pageSize=20`    | Pagination                  |
+| `q`        | The standard search parameter to do a full-text search.                                                                                                                                               | `?q=RESTFull`            | Filtering                   |
+| `select`   | Filter the resource properties to the ones specified.                                                                                                                                                 | `?select=(name,address)` | Consult (Document)          |
+| `sort`     | Multi-value query param with list of properties to sort on. Default sorting direction is ascending. To indicate descending direction, the property may be prefixed with -.                            | `?sort=name&&sort=-age`  | Collection                  |
+| `embed`    | Request to embed sub-resource. For instance `api/v1/countries` returns countries and `api/v1/countries?embed=political` countries with their political infos. This will prevent additional API calls. | `?embed=mainAddress`     | Embedding resources         |
+| `lang`     | language to filter multi-language descriptions                                                                                                                                                        | `?lang=fr`               | Multi-language descriptions |
 
 ### Verbs
 
@@ -145,20 +146,16 @@ So `/api/v1/employees?page=1&pageSize=5` will display the first five employees a
 For instance, imagine a resource called `countries`, we can verify if `language=FR` will return something:
 
 <Terminal>
-$ curl --head https://xxx/api/v1/countries?language=FR
-HTTP/2 200 OK
-Content-Range: 0-5/*
-Content-Location: /api/v1/countries?language=FR
-Content-Type: application/json; charset=utf-8
+  $ curl --head https://xxx/api/v1/countries?language=FR HTTP/2 200 OK
+  Content-Range: 0-5/* Content-Location: /api/v1/countries?language=FR
+  Content-Type: application/json; charset=utf-8
 </Terminal>
 
 ##### HEAD - Returned code
 
 If we get an HTTP return code `200`, we can run a `GET` action to get records:
 
-<Terminal>
-$ curl https://xxx/api/v1/countries?language=FR | jq
-</Terminal>
+<Terminal>$ curl https://xxx/api/v1/countries?language=FR | jq</Terminal>
 
 `HEAD` can thus be used to get metadata about a resource.
 
@@ -167,13 +164,12 @@ In the returned headers of `HEAD` we will most probably get a `Content-Range` en
 
 </AlertBox>
 
-
-| Code | Status | Reason |
-| --- | --- | --- |
-| `200` | `OK` | The server has successfully processed the request. This means that the requested resource exists. |
-| `401`| `Unauthorized` | The endpoint is secured, and the request didn't pass a valid access token. |
-| `403` | `Access denied` | You're not allowed to access to the requested resource. |
-| `404` | `Not found` | The requested resource didn't exist |
+| Code  | Status          | Reason                                                                                            |
+| ----- | --------------- | ------------------------------------------------------------------------------------------------- |
+| `200` | `OK`            | The server has successfully processed the request. This means that the requested resource exists. |
+| `401` | `Unauthorized`  | The endpoint is secured, and the request didn't pass a valid access token.                        |
+| `403` | `Access denied` | You're not allowed to access to the requested resource.                                           |
+| `404` | `Not found`     | The requested resource didn't exist                                                               |
 
 The code `204 - No Content` isn't expected because even if `HEAD` didn't return a response, the server well returns HTTP headers and this is similar to a response. So, the standard code is to return `200`; not `204`.
 
@@ -190,11 +186,9 @@ Imagine a database table called `countries` having `984` records (i.e. the resul
 This info can be retrieved from our API like this:
 
 <Terminal>
-$ curl --head https://xxx/api/v1/countries
-HTTP/2 200 OK
-Content-Range: 0-983/*
-Content-Location: /api/v1/countries
-Content-Type: application/json; charset=utf-8
+  $ curl --head https://xxx/api/v1/countries HTTP/2 200 OK Content-Range:
+  0-983/* Content-Location: /api/v1/countries Content-Type: application/json;
+  charset=utf-8
 </Terminal>
 
 `curl --head` (similar to `curl -i`) is using the `HEAD` HTTP verb.
@@ -210,36 +204,40 @@ Return a resource (can be a collection or just one).
 Return all employees:
 
 <Terminal>
-$ curl -X GET -H "Accept: application/json" https://xxx/api/v1/employees
+  $ curl -X GET -H "Accept: application/json" https://xxx/api/v1/employees
 </Terminal>
 
 Return the employee #1:
 
 <Terminal>
-$ curl -X GET -H "Accept: application/json" https://xxx/api/v1/employees/1
+  $ curl -X GET -H "Accept: application/json" https://xxx/api/v1/employees/1
 </Terminal>
 
 `GET` is a strict read-only method, which should never modify the state of the resource ([reference](https://www.belgif.be/specification/rest/api-guide/#get)).
 
 ##### GET - Returned code
 
-| Code | Status | Reason |
-| --- | --- | --- |
-| `200` | `OK` | The server has successfully processed the request. The requested resource exists and is returned to you. |
-| `401`| `Unauthorized` | The endpoint is secured, and the request didn't pass a valid access token. |
-| `403` | `Access denied` | You're not allowed to access to the requested resource. |
-| `404` | `Not found` | The requested resource didn't exist. |
+| Code  | Status          | Reason                                                                                                   |
+| ----- | --------------- | -------------------------------------------------------------------------------------------------------- |
+| `200` | `OK`            | The server has successfully processed the request. The requested resource exists and is returned to you. |
+| `401` | `Unauthorized`  | The endpoint is secured, and the request didn't pass a valid access token.                               |
+| `403` | `Access denied` | You're not allowed to access to the requested resource.                                                  |
+| `404` | `Not found`     | The requested resource didn't exist.                                                                     |
 
 The `204 - No content` code should not be used with `GET`.
 
 #### POST
 
-<AlertBox variant="info" title="You can translate `POST` as `CREATE` in `CRUD`" />
+<AlertBox
+  variant="info"
+  title="You can translate `POST` as `CREATE` in `CRUD`"
+/>
 
 Using `POST` **you'll create a new resource**. Calling `POST` five times for the same "new" employee will thus create five new employees. <span style={{color: 'red'}}>`POST` is not idempotent meaning calling it more than once will return every time a new resource (like the new employee ID).</span>
 
 <Terminal>
-$ {`curl -X POST -d '\{"firstname":"Christophe",...}' https://xxx/api/v1/employees`}
+  ${" "}
+  {`curl -X POST -d '\{"firstname":"Christophe",...}' https://xxx/api/v1/employees`}
 </Terminal>
 
 <AlertBox variant="note" title="">
@@ -251,13 +249,13 @@ When calling `POST` you should provide all the fields required to create the res
 
 The example here above will create a new employee, the server will return the HTTP status code `201` (CREATED) and, probably, also return a location-header with a link, like `https://xxx/api/v1/employees/999` i.e. the link to the newly created employee.
 
-| Code | Status | Reason |
-| --- | --- | --- |
-| `200`| `Created`| The resource has been successfully created. |
-| `303` | `See Other` | The resource already exists, and a link is provided to the resource. `303` is used to denote it's a normal check. |
-| `401`| `Unauthorized` | The endpoint is secured, and the request didn't pass a valid access token. |
-| `403` | `Access denied` | You're not allowed to call this method. |
-| `409` | `Conflict` | The resource can't be created (f.i. already exists). `409` is used when we didn't expect such use case. |
+| Code  | Status          | Reason                                                                                                            |
+| ----- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `200` | `Created`       | The resource has been successfully created.                                                                       |
+| `303` | `See Other`     | The resource already exists, and a link is provided to the resource. `303` is used to denote it's a normal check. |
+| `401` | `Unauthorized`  | The endpoint is secured, and the request didn't pass a valid access token.                                        |
+| `403` | `Access denied` | You're not allowed to call this method.                                                                           |
+| `409` | `Conflict`      | The resource can't be created (f.i. already exists). `409` is used when we didn't expect such use case.           |
 
 The `200 - OK` code should not be used with `POST`.
 
@@ -272,30 +270,39 @@ So, we shouldn't do `GET https://xxx/api/v1/employees/actions` because `actions`
 
 #### PUT
 
-<AlertBox variant="info" title="You can translate `PUT` as `UPDATE` in `CRUD`, when you'll update every field">
-Using `PUT` implies you're intended to update each field of the record. If you plan to update just a few of them, take a look to the `PATCH` verb.
+<AlertBox
+  variant="info"
+  title="You can translate `PUT` as `UPDATE` in `CRUD`, when you'll update every field"
+>
+  Using `PUT` implies you're intended to update each field of the record. If you
+  plan to update just a few of them, take a look to the `PATCH` verb.
 </AlertBox>
 
 Using `PUT` you'll update an existing resource. Let's imagine we have just three fields in our employees table:
 
 <Terminal>
-$ {`curl -X PUT -d '\{"firstname":"Christophe", "lastname":"AVONTURE", "national_number": 123456789}' https://xxx/api/v1/employees/999`}
+  ${" "}
+  {`curl -X PUT -d '\{"firstname":"Christophe", "lastname":"AVONTURE", "national_number": 123456789}' https://xxx/api/v1/employees/999`}
 </Terminal>
 
 Consider using `PUT` only when **you'll update every information's** of the resource (except calculated fields like f.i. `employee_id`). If you wish to update just a few ones (partial content), Consider using `PATCH`.
 
-<span style={{color: 'green'}}>`PUT` is idempotent since running the same update won't have other effects on the server. You can update once, five or one thousand times the firstname of the employee #999, the result will always be the same.</span>
+<span style={{ color: "green" }}>
+  `PUT` is idempotent since running the same update won't have other effects on
+  the server. You can update once, five or one thousand times the firstname of
+  the employee #999, the result will always be the same.
+</span>
 
 ##### PUT - Returned code
 
-| Code | Status | Reason |
-| --- | --- | --- |
-| `200` | `OK` | The record was successfully updated and the updated version of the resource is returned. |
-| `204` | `No Content` | The record was successfully updated and nothing is returned as HTTP response. |
-| `400` | `Bad request` | The request is incorrect (f.i. you're trying to update a field `first_name` while his correct name is `firstname`). |
-| `401`| `Unauthorized` | The endpoint is secured, and the request didn't pass a valid access token. |
-| `403` | `Access denied` | You're not allowed to call this method |
-| `404` | `Not found` | The requested resource didn't exist (f.i. you tried to access `/api/v1/employees/1` and that one didn't exist). |
+| Code  | Status          | Reason                                                                                                              |
+| ----- | --------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `200` | `OK`            | The record was successfully updated and the updated version of the resource is returned.                            |
+| `204` | `No Content`    | The record was successfully updated and nothing is returned as HTTP response.                                       |
+| `400` | `Bad request`   | The request is incorrect (f.i. you're trying to update a field `first_name` while his correct name is `firstname`). |
+| `401` | `Unauthorized`  | The endpoint is secured, and the request didn't pass a valid access token.                                          |
+| `403` | `Access denied` | You're not allowed to call this method                                                                              |
+| `404` | `Not found`     | The requested resource didn't exist (f.i. you tried to access `/api/v1/employees/1` and that one didn't exist).     |
 
 <AlertBox variant="caution" title="">
 When getting `PUT -d '{"firstname":"Christophe"}' https://xxx/api/v1/employees/123456` the API developer can decide on his own to **CREATE** the resource 123456 if it didn't exist and if all required fields have been provided in the payload.
@@ -306,8 +313,11 @@ So, when the resource didn't exist, the developer can return a `404 - Not found`
 
 #### PATCH
 
-<AlertBox variant="info" title="You can translate `PATCH` as `UPDATE` in `CRUD`, when you'll DON'T update every fields">
-If you plan to update all fields, you need to use `PUT`, not `PATCH`.
+<AlertBox
+  variant="info"
+  title="You can translate `PATCH` as `UPDATE` in `CRUD`, when you'll DON'T update every fields"
+>
+  If you plan to update all fields, you need to use `PUT`, not `PATCH`.
 </AlertBox>
 
 `PATCH` is to be used when the update is partial like updating one field: `curl -X PATCH -d '{"firstname": "John"} https://xxx/api/v1/employees/999'` will, only, update first name.
@@ -318,38 +328,39 @@ It's indeed impossible to create a new record with `PATCH` since the request jus
 
 ##### PATCH - Returned code
 
-| Code | Status | Reason |
-| --- | --- | --- |
-| `200` | `OK` | The record was successfully updated and the updated version of the resource is returned. |
-| `204` | `No Content` | The record was successfully updated and nothing is returned as HTTP response. |
-| `400` | `Bad request` | The request is incorrect (f.i. you're trying to update a field `first_name` while his correct name is `firstname`). |
-| `401`| `Unauthorized` | The endpoint is secured, and the request didn't pass a valid access token. |
-| `403` | `Access denied` | You're not allowed to call this method |
-| `404` | `Not found` | The requested resource didn't exist (f.i. you tried to access `/api/v1/employees/1` and that one didn't exist). |
+| Code  | Status          | Reason                                                                                                              |
+| ----- | --------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `200` | `OK`            | The record was successfully updated and the updated version of the resource is returned.                            |
+| `204` | `No Content`    | The record was successfully updated and nothing is returned as HTTP response.                                       |
+| `400` | `Bad request`   | The request is incorrect (f.i. you're trying to update a field `first_name` while his correct name is `firstname`). |
+| `401` | `Unauthorized`  | The endpoint is secured, and the request didn't pass a valid access token.                                          |
+| `403` | `Access denied` | You're not allowed to call this method                                                                              |
+| `404` | `Not found`     | The requested resource didn't exist (f.i. you tried to access `/api/v1/employees/1` and that one didn't exist).     |
 
 Note: like with `PUT` (see above), the developer can decide to create the resource. In that case `201 - Created` can be returned.
 
 #### DELETE
 
-<AlertBox variant="info" title="You can translate `DELETE` as ... `DELETE` in `CRUD`" />
+<AlertBox
+  variant="info"
+  title="You can translate `DELETE` as ... `DELETE` in `CRUD`"
+/>
 
 To remove employee #59:
 
-<Terminal>
-$ curl -X DELETE https://xxx/api/v1/employees/59
-</Terminal>
+<Terminal>$ curl -X DELETE https://xxx/api/v1/employees/59</Terminal>
 
 ##### DELETE - Returned code
 
-| Code | Status | Reason |
-| --- | --- | --- |
-| `200` | `OK` | The record was successfully deleted and a message like *The resource has been successfully deleted* is returned. |
-| `204` | `No Content` | The record was successfully deleted and nothing is returned as HTTP response. |
-| `400` | `Bad request` | The syntax of the request is invalid. |
-| `401`| `Unauthorized` | The endpoint is secured, and the request didn't pass a valid access token. |
-| `403` | `Access denied` | You're not allowed to call this method. |
-| `404` | `Not found` | The requested resource didn't exist (f.i. you tried to access `/api/v1/employees/1` and that one didn't exist). |
-| `409` | `Conflict` | The resource can't be deleted (f.i. you can't dismiss an employee while there are still payments to be mode). |
+| Code  | Status          | Reason                                                                                                           |
+| ----- | --------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `200` | `OK`            | The record was successfully deleted and a message like _The resource has been successfully deleted_ is returned. |
+| `204` | `No Content`    | The record was successfully deleted and nothing is returned as HTTP response.                                    |
+| `400` | `Bad request`   | The syntax of the request is invalid.                                                                            |
+| `401` | `Unauthorized`  | The endpoint is secured, and the request didn't pass a valid access token.                                       |
+| `403` | `Access denied` | You're not allowed to call this method.                                                                          |
+| `404` | `Not found`     | The requested resource didn't exist (f.i. you tried to access `/api/v1/employees/1` and that one didn't exist).  |
+| `409` | `Conflict`      | The resource can't be deleted (f.i. you can't dismiss an employee while there are still payments to be mode).    |
 
 #### OPTIONS
 
@@ -422,10 +433,9 @@ As an example, if the request is a POST with a JSON payload like `curl -X POST -
 The response would contain the supported type so, f.i.,
 
 <Terminal>
-$ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" https://xxx/api/v1/employees [...]
-HTTP/2 415 Unsupported Media Type
-Accept-Post: application/json; charset=UTF-8
-Content-Length: 0
+  $ curl -X POST -H "Content-Type: application/x-www-form-urlencoded"
+  https://xxx/api/v1/employees [...] HTTP/2 415 Unsupported Media Type
+  Accept-Post: application/json; charset=UTF-8 Content-Length: 0
 </Terminal>
 
 In this example, the server didn't support `application/x-www-form-urlencoded` for that route but will `application/json`.
@@ -439,9 +449,8 @@ A REST response or request with payload must include the `Content-Type` HTTP hea
 For example, the request has to define `-H "Accept: application/json"` in his header to let the server know which media type is needed and the server (the response) should provide the `Content-Type` too.
 
 <Terminal>
-$ curl -X -H "Accept: application/json" GET https://xxx/api/v1/employees
-HTTP/2 200 OK
-Content-Type: application/json; charset=utf-8
+  $ curl -X -H "Accept: application/json" GET https://xxx/api/v1/employees
+  HTTP/2 200 OK Content-Type: application/json; charset=utf-8
 </Terminal>
 
 If returning JSON is not managed by the API, the server has to return the HTTP code `406 - Not Acceptable`.
@@ -452,18 +461,18 @@ All RESTful APIs must support JSON, and it's the default representation to use (
 
 Following guidelines SHOULD be respected when determining a name for a JSON property ([reference](https://www.belgif.be/specification/rest/api-guide/#json-2)):
 
-* use lowerCamelCase notation,
-* also for abbreviations: all letters after the first should be lowercase,
-* use American English,
-* do not use underscores (_), hyphens (-) or dots (.) in a property name, nor use a digit as first letter,
-* the name should refer to the business meaning of its value in relation to the object in which it is specified, rather than how it is defined and
-* omit parts of the name that are already clear from the context.
+- use lowerCamelCase notation,
+- also for abbreviations: all letters after the first should be lowercase,
+- use American English,
+- do not use underscores (\_), hyphens (-) or dots (.) in a property name, nor use a digit as first letter,
+- the name should refer to the business meaning of its value in relation to the object in which it is specified, rather than how it is defined and
+- omit parts of the name that are already clear from the context.
 
 Properties used from other standards, like OpenID Connect and OAuth2, are allowed to deviate from this rule.
 
 ##### Handling null values
 
-When a property is set to null, that property shouldn't be sent.  For instance
+When a property is set to null, that property shouldn't be sent. For instance
 
 ```json
 {
@@ -487,16 +496,16 @@ In order to make the API flexible, make sure the answer is a JSON object `{ ... 
 
 A document MUST contain at least one of the following top-level members:
 
-* `data`: the document's *primary data*. This node has to be renamed to better describe the object, f.i. `employees` or `countries`, ...
-* `errors`: an array of error objects
-* `meta`: a metaobject that contains non-standard meta-information.
+- `data`: the document's _primary data_. This node has to be renamed to better describe the object, f.i. `employees` or `countries`, ...
+- `errors`: an array of error objects
+- `meta`: a metaobject that contains non-standard meta-information.
 
 <AlertBox variant="caution" title="Never return both `data` and `errors`">
 If the query has generated an error, it is not expected to return any data. And vice versa.
 
 </AlertBox>
 
-The document's *primary data* is a representation of the resource or collection of resources targeted by a request.
+The document's _primary data_ is a representation of the resource or collection of resources targeted by a request.
 
 `data` can be an array or not:
 
@@ -521,14 +530,19 @@ or, if just one record, directly:
 {
   "data": {
     "key1": "value1",
-    "key2": "value2",
+    "key2": "value2"
     // ...
   }
 }
 ```
 
-<AlertBox variant="info" title="Most of the time, it's the developer choice for an array">
-In fact, most of the time, an array is returned, as this allows the API to be modified in the future to return other results without generating BC (break changes) in the API.
+<AlertBox
+  variant="info"
+  title="Most of the time, it's the developer choice for an array"
+>
+  In fact, most of the time, an array is returned, as this allows the API to be
+  modified in the future to return other results without generating BC (break
+  changes) in the API.
 </AlertBox>
 
 ##### Data
@@ -561,12 +575,12 @@ As described in [Top-Level items](https://jsonapi.org/format/#document-top-level
 
 Prefer to use HTTP status code `400 Bad Request` when the call was incorrect like an unknown value is used for a parameter (like `&lang=it` when Italian isn't supported). Use code `500 Internal Server Error` when the server has returned an error.
 
-`errors` has to be an array so we can return more than once and should contain at least one of these keys (*not exhaustive*):
+`errors` has to be an array so we can return more than once and should contain at least one of these keys (_not exhaustive_):
 
-* `status`: the HTTP status code applicable to this problem, expressed as a string value. This SHOULD be provided.
-* `code`: an application-specific error code, expressed as a string value.
-* `title`: a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization.
-* `parameter`: a string indicating which URI query parameter caused the error.
+- `status`: the HTTP status code applicable to this problem, expressed as a string value. This SHOULD be provided.
+- `code`: an application-specific error code, expressed as a string value.
+- `title`: a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization.
+- `parameter`: a string indicating which URI query parameter caused the error.
 
 ```json
 "errors": [
@@ -592,13 +606,13 @@ When using pagination, the JSON answer of `GET https://xxx/api/v1/employees?page
       "href": "/api/v1/employees/3",
       "id": 3,
       "firstname": "John",
-      "lastname": "Doe",
+      "lastname": "Doe"
     },
     {
       "href": "/api/v1/employees/4",
       "id": 4,
       "firstname": "Jane",
-      "lastname": "Doe",
+      "lastname": "Doe"
     }
   ],
   "pageSize": 2,
@@ -611,27 +625,27 @@ When using pagination, the JSON answer of `GET https://xxx/api/v1/employees?page
 }
 ```
 
-| Key | Description |
-| --- | --- |
-| `next` | MANDATORY (except for the last page) hyperlink to the next page |
-| `prev` | OPTIONAL hyperlink to the previous page |
-| `pageSize` | RECOMMENDED Maximum number of items per page. For the last page, its value should be independent of the number of actually returned items. |
-| `page` | MANDATORY (offset-based); N/A (cursor-based) Index of the current page of items, should be 1-based (the default and first page is 1) |
-| `first` | OPTIONAL Hyperlink to the first page |
-| `last` | OPTIONAL Hyperlink to the last page |
-| `total` | OPTIONAL Total number of items across all pages. If query parameters are used to filter the result set, this is the total of the collection result set, not of the entire collection. |
+| Key        | Description                                                                                                                                                                           |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `next`     | MANDATORY (except for the last page) hyperlink to the next page                                                                                                                       |
+| `prev`     | OPTIONAL hyperlink to the previous page                                                                                                                                               |
+| `pageSize` | RECOMMENDED Maximum number of items per page. For the last page, its value should be independent of the number of actually returned items.                                            |
+| `page`     | MANDATORY (offset-based); N/A (cursor-based) Index of the current page of items, should be 1-based (the default and first page is 1)                                                  |
+| `first`    | OPTIONAL Hyperlink to the first page                                                                                                                                                  |
+| `last`     | OPTIONAL Hyperlink to the last page                                                                                                                                                   |
+| `total`    | OPTIONAL Total number of items across all pages. If query parameters are used to filter the result set, this is the total of the collection result set, not of the entire collection. |
 
 ### Expected endpoints
 
 Each REST API should expose a `GET /api/v1/health` endpoint which returns the availability of the API's functionality.
 
-| Status | Status Code | Description |
-| --- | --- | --- |
-| `UP` | `200` | The API is functioning as expected. |
-| `DEGRADED` | `200` | The API is partly unavailable, but service can be continued with reduced functionality. |
-| `DOWN` | `503` | The API is suffering unexpected failures. |
+| Status     | Status Code | Description                                                                             |
+| ---------- | ----------- | --------------------------------------------------------------------------------------- |
+| `UP`       | `200`       | The API is functioning as expected.                                                     |
+| `DEGRADED` | `200`       | The API is partly unavailable, but service can be continued with reduced functionality. |
+| `DOWN`     | `503`       | The API is suffering unexpected failures.                                               |
 
 ## Some lectures
 
-* [7 Laravel RESTful APIs best practices for 2023](https://benjamincrozat.com/laravel-restful-api-best-practices)
-* [Belgif - REST Guidelines](https://www.belgif.be/specification/rest/api-guide)
+- [7 Laravel RESTful APIs best practices for 2023](https://benjamincrozat.com/laravel-restful-api-best-practices)
+- [Belgif - REST Guidelines](https://www.belgif.be/specification/rest/api-guide)

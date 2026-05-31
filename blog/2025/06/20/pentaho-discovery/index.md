@@ -185,7 +185,7 @@ Click on the `Design` table then on the `Output` category and find `Table output
 
 ![Prepare the table output](./images/table_output.webp)
 
-Click onn the `Load people from Excel` box and wait until the small icons below are displayed:
+Click on the `Load people from Excel` box and wait until the small icons below are displayed:
 
 ![Showing the list of icons from Excel](./images/input_excel_icons.webp)
 

@@ -21,12 +21,12 @@ class DocstringTask:
 
         def leave_Module(self, original_node: cst.Module, updated_node: cst.Module) -> cst.Module:
             ds = cst.SimpleStatementLine([cst.Expr(cst.SimpleString(f'"""\n{self.docstring}\n"""'))])
-            
+
             body = list(updated_node.body)
             # If we are forcing an overwrite, we pop the first element (the old docstring)
             if self.replace_existing and body:
                 body = body[1:]
-                
+
             return updated_node.with_changes(body=[ds] + body)
 
     def run(self, file_path: Path, code: str, force: bool = False) -> bool:

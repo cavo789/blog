@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.9rem 1.25rem;
+  margin: 1.5rem 0 0.5rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+}
+
+.question {
+  font-weight: 500;
+  color: var(--ifm-color-content);
+  white-space: nowrap;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ifm-color-content);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover {
+  background-color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.btnNeutral:hover {
+  background-color: var(--ifm-color-emphasis-400);
+  border-color: var(--ifm-color-emphasis-400);
+  color: #fff;
+}
+
+.thanks {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.thanksMsg {
+  font-weight: 500;
+  color: var(--ifm-color-content);
+}
+
+.counts {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--ifm-color-content-secondary);
+}

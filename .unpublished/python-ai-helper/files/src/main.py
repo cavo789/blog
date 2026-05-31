@@ -47,7 +47,7 @@ class AgentOrchestrator:
 
     def execute(self) -> None:
         start_time = time.time()
-        
+
         root_path = Path(self.args.path).resolve()
         files = self._get_target_files(root_path)
 
@@ -98,7 +98,7 @@ def main() -> None:
 
     config_path = Path(args.config)
     config: dict[str, Any] = {}
-    
+
     if config_path.exists():
         with open(config_path, "r", encoding="utf-8") as f:
             config = yaml.safe_load(f) or {}

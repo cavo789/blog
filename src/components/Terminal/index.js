@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import clsx from "clsx";
 import Icon from "./icon.svg"; // your SVG
 import styles from "./styles.module.css";
@@ -23,89 +23,6 @@ function getCopyText(children) {
   return text;
 }
 
-export default function Terminal({ children, title, wrap = true }) {
-  const displayTitle = title || "user@machine: ~/yourproject";
-  const [copied, setCopied] = useState(false);
-  const codeRef = useRef(null);
-
-  const handleCopy = async () => {
-    const textToCopy = getCopyText(children);
-    try {
-      await navigator.clipboard.writeText(textToCopy);
-      setCopied(true);
-    } catch (err) {
-      console.error("Failed to copy text: ", err);
-    }
-  };
-
-  useEffect(() => {
-    if (copied) {
-      const timer = setTimeout(() => {
-        setCopied(false);
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [copied]);
-
-  return (
-    <div className={clsx(styles.terminal, styles.codeBlock)}>
-      <div className={styles.terminal_header}>
-        <div className={styles.terminal_left}>
-          <Icon className={styles.terminal_icon} />
-          <span className={styles.terminal_title}>{displayTitle}</span>
-        </div>
-        <div className={styles.terminal_controls}>
-          <span className={clsx(styles.dot, styles.red)}></span>
-          <span className={clsx(styles.dot, styles.yellow)}></span>
-          <span className={clsx(styles.dot, styles.green)}></span>
-        </div>
-      </div>
-
-      <pre
-        ref={codeRef}
-        className={clsx(styles.terminal_body, {
-          [styles.no_wrap]: !wrap,
-        })}
-      >
-        {children}
-      </pre>
-
-      <button
-        type="button"
-        aria-label="Copy code to clipboard"
-        className={clsx(
-          "clean-btn", // Docusaurus's base style for buttons
-          "button--sm", // Small button size
-          "button--secondary", // Secondary color for hover effect
-          styles.copyButton, // Your custom styles for position and behavior
-          {
-            [styles.copied]: copied, // State-based class for feedback
-          }
-        )}
-        onClick={handleCopy}
-      >
-        {copied ? (
-          <CheckIcon className={clsx(styles.copyButtonSvg)} />
-        ) : (
-          <CopyIcon className={clsx(styles.copyButtonSvg)} />
-        )}
-      </button>
-    </div>
-  );
-}
-
-Terminal.propTypes = {
-  /** Terminal content to display inside the code block */
-  children: PropTypes.node.isRequired,
-
-  /** Optional terminal title displayed in the header */
-  title: PropTypes.string,
-
-  /** Enable or disable word wrap in the terminal body (default: true) */
-  wrap: PropTypes.bool,
-};
-
-// SVG icons for the button, using `fill="currentColor"` for theming
 const CopyIcon = (props) => (
   <svg
     viewBox="0 0 24 24"
@@ -129,3 +46,81 @@ const CheckIcon = (props) => (
     ></path>
   </svg>
 );
+
+export default function Terminal({ children, title, wrap = true }) {
+  const displayTitle = title || "user@machine: ~/yourproject";
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = useCallback(async () => {
+    const textToCopy = getCopyText(children);
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+      setCopied(true);
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+    }
+  }, [children]);
+
+  useEffect(() => {
+    if (copied) {
+      const timer = setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [copied]);
+
+  return (
+    <div className={styles.terminal}>
+      <div className={styles.terminal_header}>
+        <div className={styles.terminal_left}>
+          <Icon className={styles.terminal_icon} />
+          <span className={styles.terminal_title}>{displayTitle}</span>
+        </div>
+        <div className={styles.terminal_controls}>
+          <span className={clsx(styles.dot, styles.red)}></span>
+          <span className={clsx(styles.dot, styles.yellow)}></span>
+          <span className={clsx(styles.dot, styles.green)}></span>
+        </div>
+      </div>
+
+      <pre
+        className={clsx(styles.terminal_body, {
+          [styles.no_wrap]: !wrap,
+        })}
+      >
+        {children}
+      </pre>
+
+      <button
+        type="button"
+        aria-label="Copy code to clipboard"
+        className={clsx(
+          "clean-btn",
+          "button--sm",
+          "button--secondary",
+          styles.copyButton,
+          { [styles.copied]: copied }
+        )}
+        onClick={handleCopy}
+      >
+        {copied ? (
+          <CheckIcon className={styles.copyButtonSvg} />
+        ) : (
+          <CopyIcon className={styles.copyButtonSvg} />
+        )}
+      </button>
+    </div>
+  );
+}
+
+Terminal.propTypes = {
+  /** Terminal content to display inside the code block */
+  children: PropTypes.node.isRequired,
+
+  /** Optional terminal title displayed in the header */
+  title: PropTypes.string,
+
+  /** Enable or disable word wrap in the terminal body (default: true) */
+  wrap: PropTypes.bool,
+};

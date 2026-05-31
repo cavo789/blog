@@ -40,7 +40,7 @@ class UnitTestTask:
 
             if run_tests:
                 self.log.debug(f"Executing Pytest for {test_path.name}...")
-                
+
                 env = os.environ.copy()
                 env["PYTHONPATH"] = f"{file_path.parent}:{env.get('PYTHONPATH', '')}"
                 env["PYTHONDONTWRITEBYTECODE"] = "1"

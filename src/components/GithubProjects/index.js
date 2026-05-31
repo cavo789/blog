@@ -149,7 +149,7 @@ export default function GithubProjects({ username }) {
     return Array.from(langs).sort();
   }, [allRepos]);
 
-  const getFilteredRepos = () => {
+  const filteredRepos = useMemo(() => {
     return allRepos.filter((repo) => {
       const matchesLanguage =
         filters.language === "All" || repo.language === filters.language;
@@ -166,9 +166,7 @@ export default function GithubProjects({ username }) {
         matchesLanguage && matchesArchived && matchesStars && matchesSearch
       );
     });
-  };
-
-  const filteredRepos = getFilteredRepos();
+  }, [allRepos, filters, searchTerm]);
 
   const renderRepoCard = (repo, isArchived = false) => {
     const languageColor =

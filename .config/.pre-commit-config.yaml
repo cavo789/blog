@@ -1,0 +1,47 @@
+# Pre-commit hooks for the Docusaurus blog.
+# Install hooks:  pre-commit install --config .config/.pre-commit-config.yaml
+# Run all files:  pre-commit run --all-files --config .config/.pre-commit-config.yaml
+# Update versions: pre-commit autoupdate --config .config/.pre-commit-config.yaml
+
+repos:
+  # ── Standard hygiene checks ──────────────────────────────────────────────
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md, --markdown-linebreak-ext=mdx]
+        exclude: '\.(jpg|jpeg|png|webp|gif|svg|ico|bmp|woff2?|ttf|eot|pdf)$'
+      - id: end-of-file-fixer
+        exclude: '\.(jpg|jpeg|png|webp|gif|svg|ico|bmp|woff2?|ttf|eot|pdf)$'
+      - id: check-yaml
+        # Blog code examples in files/ subdirectories are intentional YAML fragments
+        exclude: '^(blog|\.unpublished)/.+/files/'
+      - id: check-json
+        # .vscode/ uses JSONC (comments allowed); blog files/ contains JSON snippets
+        exclude: '^(\.vscode/|blog/.+/files/|\.unpublished/.+/files/)'
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+      - id: mixed-line-ending
+        args: [--fix=lf]
+        exclude: '\.(jpg|jpeg|png|webp|gif|svg|ico|bmp|woff2?|ttf|eot|pdf)$'
+
+  # ── Rust-based spell checker — blog posts only (fast) ────────────────────
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.30.2
+    hooks:
+      - id: typos
+        args: [--config, .config/typos.toml]
+        # Check blog posts and pages; skip component/plugin/script internal docs
+        files: '\.(md|mdx)$'
+        exclude: '^(src/components/|plugins/|\.scripts/|\.claude/|\.github/)'
+
+  # ── Markdown linter (uses existing .config/.markdownlint.json) ───────────
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.17.2
+    hooks:
+      - id: markdownlint-cli2
+        args: [--config, .config/.markdownlint.json]
+        types: [markdown]
+        # Internal files: memory, readmes, script docs, GitHub config, root README
+        exclude: '^(\.claude/|\.github/|src/components/.+/readme\.md|plugins/.+/readme\.md|\.scripts/|README\.md$|\.unpublished/.+/files/)'

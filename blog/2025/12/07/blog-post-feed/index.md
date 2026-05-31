@@ -66,7 +66,7 @@ And by opening an article, we'll get this:
 
 The generation of feeds is defined by the `feedOptions` item in the `docusaurus.config.js` file.
 
-I've tried the official documentation ([https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog)) but **didn't success to manage the `createFeedItems` element**: we're supposed to be able to define which informations (author, categories, description, content, images, ...) we want in the feed but, I've to admit, all my attempts have failed.
+I've tried the official documentation ([https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog)) but **didn't success to manage the `createFeedItems` element**: we're supposed to be able to define which information (author, categories, description, content, images, ...) we want in the feed but, I've to admit, all my attempts have failed.
 
 That's why, after hours, I've created my own plugin using AI.
 

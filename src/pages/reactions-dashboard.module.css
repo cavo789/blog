@@ -1,0 +1,170 @@
+.page {
+  max-width: 860px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.9rem;
+}
+
+/* ── Summary cards ── */
+.summary {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.card {
+  flex: 1;
+  min-width: 140px;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+}
+
+.cardValue {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.cardLabel {
+  font-size: 0.8rem;
+  color: var(--ifm-color-content-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── Table ── */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table th {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 2px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-content-secondary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.table th.right,
+.table td.right {
+  text-align: right;
+}
+
+.table td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover td {
+  background: var(--ifm-hover-overlay);
+}
+
+.articleLink {
+  font-weight: 500;
+  word-break: break-all;
+}
+
+/* ── Approval bar ── */
+.barWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 120px;
+}
+
+.bar {
+  flex: 1;
+  height: 6px;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: var(--ifm-color-success);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.barLabel {
+  font-size: 0.8rem;
+  color: var(--ifm-color-content-secondary);
+  white-space: nowrap;
+}
+
+/* ── Auth form ── */
+.authWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  gap: 1rem;
+}
+
+.authWrap p {
+  color: var(--ifm-color-content-secondary);
+}
+
+.authForm {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.authInput {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-color-content);
+  font-size: 0.9rem;
+  min-width: 280px;
+}
+
+.authBtn {
+  padding: 0.45rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.error {
+  color: var(--ifm-color-danger);
+  font-size: 0.9rem;
+}
+
+.empty {
+  text-align: center;
+  padding: 3rem;
+  color: var(--ifm-color-content-secondary);
+}

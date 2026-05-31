@@ -46,7 +46,7 @@ const MAIN_CARDS = [
     title: "WSL",
     description: "Guides for Windows Subsystem for Linux (WSL 2) setup and usage.",
     url: "/blog/tags/wsl",
-    icon: "🏠", // Home directory / environment
+    icon: "🪟",
   },
   {
     title: "Quarto",

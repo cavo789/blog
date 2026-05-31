@@ -10,7 +10,7 @@ model: "qwen2.5-coder:7b"
 # prompts, API responses, generated code sizes, and detailed Pytest outputs.
 verbose: true
 
-# Controls idempotency. If false, the agent skips files that already have 
+# Controls idempotency. If false, the agent skips files that already have
 # docstrings or existing test files to save time. If true, it overwrites them.
 force: false
 
@@ -36,7 +36,7 @@ tasks:
 # Local LLM Infrastructure (Ollama)
 # =============================================================================
 ollama:
-  # The endpoint of the Ollama API. 'host.docker.internal' allows the Docker 
+  # The endpoint of the Ollama API. 'host.docker.internal' allows the Docker
   # container to securely communicate with the Ollama instance running on your host.
   url: "http://host.docker.internal:11434"
 
@@ -44,6 +44,6 @@ ollama:
   # Increase this if running larger models on slower hardware.
   timeout: 300
 
-  # Controls the LLM's creativity. Set to 0.0 for strict, highly deterministic 
+  # Controls the LLM's creativity. Set to 0.0 for strict, highly deterministic
   # output, which is mandatory for reliable code generation.
   temperature: 0.0

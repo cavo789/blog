@@ -1,5 +1,5 @@
 .hero {
-  background: linear-gradient(to right, #4a69bd, #6a82fb);
+  background: linear-gradient(to right, var(--ifm-color-primary-darkest), var(--ifm-color-primary-lighter));
   color: white;
-  padding: 20px;;
+  padding: 20px;
 }

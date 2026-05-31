@@ -347,7 +347,7 @@ Start to type `SELECT * FROM system.` and press <kbd>CTRL</kbd>+<kbd>SPACE</kbd>
 
 ![Oracle get employees](./images/oracle_get_employees.webp)
 
-Validate or simply type the full SQL `SELECT * FROM system.employees`. In the example below, I'll ask the list of regions and the list of employees. I will run the query by simply pressing <kb>F5</kb>:
+Validate or simply type the full SQL `SELECT * FROM system.employees`. In the example below, I'll ask the list of regions and the list of employees. I will run the query by simply pressing <kbd>F5</kbd>:
 
 ![Oracle getting the list of employees](./images/oracle_getting_employees.webp)
 

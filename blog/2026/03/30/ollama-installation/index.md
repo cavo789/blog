@@ -122,7 +122,7 @@ The command to run is `ollama run <model_name>` so, if you've followed this tuto
 $ docker exec -it ollama ollama run llama3.1:8b
 </Terminal>
 
-You can now start to ask anything like a comparaison between Quarto and Docusaurus:
+You can now start to ask anything like a comparison between Quarto and Docusaurus:
 
 ![Asking to compare Quarto and Docusaurus](./images/test_quarto_docusaurus_comparaison.webp)
 
@@ -178,7 +178,7 @@ Start a Powershell terminal, run `cd ~/.continue ; del config.yaml ; notepad con
 
 ![Configure Continue extension](./images/configure_continue_extension.webp)
 
-Restart VSCode again or, in the Continue pannel, fin the `Local config` option and select `Refresh`.
+Restart VSCode again or, in the Continue panel, fin the `Local config` option and select `Refresh`.
 
 When you'll see your model name in the list of loaded models, Continue is ready to manage your first question.
 
@@ -235,9 +235,9 @@ Example: ./calculate.sh 5 3 +
 
 </Terminal>
 
-### Using more powerfull LLM depending on your expectations
+### Using more powerful LLM depending on your expectations
 
-If you've a powerfull CPU and/or GPU with 32GB or more, you can also add a better model `gemma2:27b` (27 billion of parameters, around ~17G):
+If you've a powerful CPU and/or GPU with 32GB or more, you can also add a better model `gemma2:27b` (27 billion of parameters, around ~17G):
 
 <Snippet filename=".continue/config.json" source="./files/continue/config_with_expert.json" defaultOpen={false} />
 

@@ -1,7 +1,7 @@
 ---
 name: project-blog-conventions
 description: "Blog post structure, frontmatter fields, co-location pattern, key components"
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 00c5ecbb-c9bf-4541-b607-05360c5e9363

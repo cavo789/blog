@@ -1,0 +1,23 @@
+[files]
+extend-exclude = [
+  "*.lock",
+  "build/",
+  ".docusaurus/",
+  "node_modules/",
+  "static/",
+  "blog/2026/01/05/vscode-remote-ssh/index.md"
+]
+
+[default.extend-words]
+# VBA/Access built-in function (not a typo of "If")
+Iif = "Iif"
+# Oracle HR sample schema constraint abbreviation (external sample code)
+countr = "countr"
+# French preposition in a French literary quote (about.mdx)
+sur = "sur"
+# Latin word appearing in Quarto lorem ipsum placeholder text
+optio = "optio"
+# Hex fragment inside Docker container IDs (e.g. "5abd45eecfa3")
+abd = "abd"
+# Vietnamese proper noun (author name "Son Tung PHAM")
+tung = "tung"

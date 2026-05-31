@@ -1,4 +1,4 @@
-import React, { useState, Children, isValidElement } from "react";
+import React, { useState, Children, isValidElement, useMemo, useCallback, useRef, useEffect } from "react";
 import CodeBlock from "@theme/CodeBlock";
 import Snippet from "@site/src/components/Snippet";
 import Translate from "@docusaurus/Translate";
@@ -9,19 +9,28 @@ import styles from "./styles.module.css";
  * Guideline Component
  * Minimalist component to capture post-install instructions.
  */
-export const Guideline = () => {
-  return null;
-};
+export const Guideline = () => null;
 Guideline.isGuideline = true;
 
 /**
  * EmptyFolder Component
  * Use this to ensure a specific empty directory is created.
  */
-export const EmptyFolder = () => {
-  return null;
-};
+export const EmptyFolder = () => null;
 EmptyFolder.isEmptyFolder = true;
+
+// Extract plain text from Guideline children (handles MDX wrapping like <p>)
+const getGuidelineText = (nodes) => {
+  let text = "";
+  Children.forEach(nodes, (child) => {
+    if (typeof child === "string" || typeof child === "number") {
+      text += child;
+    } else if (isValidElement(child)) {
+      text += getGuidelineText(child.props.children);
+    }
+  });
+  return text;
+};
 
 /**
  * ProjectSetup Component
@@ -48,97 +57,73 @@ export default function ProjectSetup({
   const [showScript, setShowScript] = useState(false);
   const [expandAll, setExpandAll] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [zipError, setZipError] = useState(null);
+  const copiedTimerRef = useRef(null);
 
-  const fileList = [];
-  const guidelines = [];
-  const folders = [];
+  useEffect(() => {
+    return () => {
+      if (copiedTimerRef.current) clearTimeout(copiedTimerRef.current);
+    };
+  }, []);
 
-  // 1. Handle legacy "files" prop (inline object)
-  if (files) {
-    Object.entries(files).forEach(([fileName, content]) => {
-      fileList.push({ fileName, content });
-    });
-  }
-  // 2. Handle children (Snippet or Guideline components)
-  else if (children) {
-    const processChildren = (nodes) => {
-      Children.forEach(nodes, (child) => {
-        if (isValidElement(child)) {
+  // Parse children once; recalculate only when files or children change
+  const { fileList, guidelines, folders } = useMemo(() => {
+    const fileList = [];
+    const guidelines = [];
+    const folders = [];
+
+    if (files) {
+      Object.entries(files).forEach(([fileName, content]) => {
+        fileList.push({ fileName, content });
+      });
+    } else if (children) {
+      const processChildren = (nodes) => {
+        Children.forEach(nodes, (child) => {
+          if (!isValidElement(child)) return;
+
           if (child.type === Guideline || child.type?.isGuideline) {
             guidelines.push(child);
             return;
           }
 
           if (child.type === EmptyFolder || child.type?.isEmptyFolder) {
-            if (child.props.name) {
-              folders.push(child.props.name);
-            }
+            if (child.props.name) folders.push(child.props.name);
             return;
           }
 
-          // Check if this child is a Snippet or looks like a file definition.
-          // We exclude HTML elements (like <div title="...">) from being treated as files via 'title'.
+          // Exclude HTML elements (like <div title="...">) from being treated as files.
           const isFileComponent =
             child.type === Snippet ||
             child.props.filename ||
             (child.props.title && typeof child.type !== "string");
 
           if (isFileComponent) {
-            const {
-              filename,
-              title,
-              code,
-              source,
-              children: childChildren,
-            } = child.props;
-
+            const { filename, title, code, children: childChildren } = child.props;
             const name = filename || title || "unknown";
-
             // The remark plugin injects the file content into the 'code' prop.
             // We prioritize 'code'. We do NOT use 'source' as content because it is just the file path.
             let content = code;
-
-            if (!content && typeof childChildren === "string") {
-              content = childChildren;
-            }
-
-            if (content) {
-              fileList.push({ fileName: name, content, originalNode: child });
-            }
+            if (!content && typeof childChildren === "string") content = childChildren;
+            if (content) fileList.push({ fileName: name, content, originalNode: child });
           } else if (child.props.children) {
-            // If not a file component, recurse (handles Fragments, divs, etc.)
             processChildren(child.props.children);
           }
-        }
-      });
-    };
-    processChildren(children);
-  }
-
-  // Helper to extract plain text from Guideline children (handles MDX wrapping like <p>)
-  const getGuidelineText = (nodes) => {
-    let text = "";
-    Children.forEach(nodes, (child) => {
-      if (typeof child === "string" || typeof child === "number") {
-        text += child;
-      } else if (isValidElement(child)) {
-        text += getGuidelineText(child.props.children);
-      }
-    });
-    return text;
-  };
-
-  /**
-   * Generates a Bash script using heredocs (EOF)
-   * to recreate the folder structure.
-   */
-  const generateShellScript = () => {
-    let script = "";
-    if (createFolder) {
-      script += `mkdir -p ${folderName} && cd ${folderName}\n`;
+        });
+      };
+      processChildren(children);
     }
 
-    // Create explicit folders
+    return { fileList, guidelines, folders };
+  }, [files, children]);
+
+  // Memoize the generated script so it isn't rebuilt on every UI state change
+  const shellScript = useMemo(() => {
+    let script = "";
+    if (createFolder) {
+      script += `mkdir -p "${folderName}" && cd "${folderName}"\n`;
+    }
+
     folders.forEach((f) => {
       script += `\nmkdir -p "${f}"\n`;
     });
@@ -150,67 +135,60 @@ export default function ProjectSetup({
 
     script += `\necho "✅ Setup completed in folder: ${folderName}"`;
 
-    if (guidelines.length > 0) {
-      guidelines.forEach((g) => {
-        const text = getGuidelineText(g.props.children)
-          .trim()
-          .replace(/\s+/g, " ");
-        script += `\necho "🚀 ${text}"`;
-      });
-    }
+    guidelines.forEach((g) => {
+      const text = getGuidelineText(g.props.children).trim().replace(/\s+/g, " ");
+      script += `\necho "🚀 ${text}"`;
+    });
 
     return script;
-  };
+  }, [createFolder, folderName, folders, fileList, guidelines]);
 
-  /**
-   * Generates and triggers a ZIP download using JSZip.
-   * Includes a README.md if guidelines are provided.
-   */
-  const downloadZip = async () => {
+  const handleCopyScript = useCallback(() => {
+    navigator.clipboard.writeText(shellScript);
+    setCopied(true);
+    if (copiedTimerRef.current) clearTimeout(copiedTimerRef.current);
+    copiedTimerRef.current = setTimeout(() => setCopied(false), 2000);
+  }, [shellScript]);
+
+  const downloadZip = useCallback(async () => {
     if (fileList.length === 0 && folders.length === 0) {
-      alert("No files or folders found to zip!");
+      setZipError("No files or folders found to zip.");
       return;
     }
+    setZipError(null);
+    setIsDownloading(true);
+    try {
+      const zip = new JSZip();
+      // Remove leading slashes to ensure a valid zip folder path (fixes issues with "/tmp/...")
+      const safeFolderName = folderName.replace(/^\/+/, "");
+      const folder = zip.folder(safeFolderName);
 
-    const zip = new JSZip();
-    // Remove leading slashes to ensure a valid zip folder path (fixes issues with "/tmp/...")
-    const safeFolderName = folderName.replace(/^\/+/, "");
-    const folder = zip.folder(safeFolderName);
+      folders.forEach((f) => folder.folder(f));
+      fileList.forEach(({ fileName, content }) => folder.file(fileName, content.trim()));
 
-    folders.forEach((f) => {
-      folder.folder(f);
-    });
+      if (guidelines.length > 0) {
+        let readme = `# Project Setup: ${folderName}\n\n## Next Steps:\n\n`;
+        guidelines.forEach((g) => {
+          const text = getGuidelineText(g.props.children).trim().replace(/\s+/g, " ");
+          readme += `- ${text}\n`;
+        });
+        folder.file("README.md", readme);
+      }
 
-    fileList.forEach(({ fileName, content }) => {
-      folder.file(fileName, content.trim());
-    });
-
-    // Auto-generate a README for the ZIP archive
-    if (guidelines.length > 0) {
-      let readme = `# Project Setup: ${folderName}\n\n## Next Steps:\n\n`;
-      guidelines.forEach((g) => {
-        const text = getGuidelineText(g.props.children)
-          .trim()
-          .replace(/\s+/g, " ");
-        readme += `- ${text}\n`;
-      });
-      folder.file("README.md", readme);
+      const blob = await zip.generateAsync({ type: "blob" });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${safeFolderName}.zip`;
+      // Append to DOM before clicking for Firefox compatibility
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } finally {
+      setIsDownloading(false);
     }
-
-    const blob = await zip.generateAsync({ type: "blob" });
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `${folderName}.zip`;
-    link.click();
-    window.URL.revokeObjectURL(url);
-  };
-
-  const handleCopyScript = () => {
-    navigator.clipboard.writeText(generateShellScript());
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  }, [fileList, folders, folderName, guidelines]);
 
   return (
     <div className={styles.projectSetupContainer}>
@@ -230,6 +208,7 @@ export default function ProjectSetup({
             <button
               className="button button--secondary button--sm"
               onClick={handleCopyScript}
+              aria-live="polite"
             >
               {copied ? (
                 <Translate>Copied!</Translate>
@@ -240,7 +219,7 @@ export default function ProjectSetup({
           ) : (
             <button
               className="button button--secondary button--sm"
-              onClick={() => setExpandAll(!expandAll)}
+              onClick={() => setExpandAll((v) => !v)}
             >
               {expandAll ? (
                 <Translate>Collapse all</Translate>
@@ -252,12 +231,14 @@ export default function ProjectSetup({
           <button
             className="button button--outline button--primary button--sm"
             onClick={downloadZip}
+            disabled={isDownloading}
+            aria-label="Download project as ZIP"
           >
-            ZIP
+            {isDownloading ? "⏳" : "ZIP"}
           </button>
           <button
             className="button button--secondary button--sm"
-            onClick={() => setShowScript(!showScript)}
+            onClick={() => setShowScript((v) => !v)}
           >
             {showScript ? (
               <Translate>View files</Translate>
@@ -269,6 +250,11 @@ export default function ProjectSetup({
       </div>
 
       <div className={styles.content}>
+        {zipError && (
+          <p className={styles.error} role="alert">
+            {zipError}
+          </p>
+        )}
         {showScript ? (
           <div>
             <p>
@@ -286,7 +272,7 @@ export default function ProjectSetup({
               </small>
             </p>
             <div className={styles.scriptContainer}>
-              <CodeBlock language="bash">{generateShellScript()}</CodeBlock>
+              <CodeBlock language="bash">{shellScript}</CodeBlock>
             </div>
           </div>
         ) : (
@@ -300,26 +286,22 @@ export default function ProjectSetup({
                 </Translate>
               </small>
             </p>
-            {fileList.map(({ fileName, content, originalNode }, index) => (
-              <React.Fragment key={index}>
-                {originalNode ? (
-                  // Clone the element to ensure it receives the resolved content string
-                  // (fixing the issue where it might just have the path string or a module object)
-                  React.cloneElement(originalNode, {
-                    code: content,
-                    defaultOpen: expandAll,
-                    key: `${index}-${expandAll}`,
-                  })
-                ) : (
-                  <Snippet
-                    filename={fileName}
-                    code={content}
-                    defaultOpen={expandAll}
-                    key={`${index}-${expandAll}`}
-                  />
-                )}
-              </React.Fragment>
-            ))}
+            {fileList.map(({ fileName, content, originalNode }, index) =>
+              originalNode ? (
+                React.cloneElement(originalNode, {
+                  code: content,
+                  defaultOpen: expandAll,
+                  key: `${fileName || index}-${expandAll}`,
+                })
+              ) : (
+                <Snippet
+                  key={`${fileName || index}-${expandAll}`}
+                  filename={fileName}
+                  code={content}
+                  defaultOpen={expandAll}
+                />
+              )
+            )}
           </div>
         )}
       </div>

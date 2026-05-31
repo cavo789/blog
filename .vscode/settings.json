@@ -40,6 +40,7 @@
     "titleBar.inactiveForeground": "#15202b99"
   },
   "peacock.remoteColor": "#6ce32c",
+  "markdownlint.ignore": ["**/.htaccess"],
   "markdownlint.config": {
     "MD010": false,
     "MD033": false,

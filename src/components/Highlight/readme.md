@@ -43,4 +43,4 @@ The component applies the following default styles:
 
 ## 📄 License
 
-This component is originaly coming from [https://docusaurus.io/docs/markdown-features/react#exporting-components](https://docusaurus.io/docs/markdown-features/react#exporting-components).
+This component is originally coming from [https://docusaurus.io/docs/markdown-features/react#exporting-components](https://docusaurus.io/docs/markdown-features/react#exporting-components).

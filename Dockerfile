@@ -172,6 +172,7 @@ RUN --mount=type=cache,target=/home/${OS_USERNAME}/.cache/pip,uid=${OS_USERID},g
     pip install --upgrade pip && \
     pip install \
         oyaml \
+        pre-commit \
         python-frontmatter \
         requests
 

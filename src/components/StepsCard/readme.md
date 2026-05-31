@@ -78,7 +78,7 @@ This component lives at `src/components/StepsCard/index.js`.
 | --- | --- | --- | --- | --- |
 | `steps` | `Array<string React.ReactNode>` | ✅ | — | List of items to display. Markdown is supported. |
 | `title` | string | ❌ | `Steps to follow` | title displayed above the list. |
-| `variant` | `prerequisites`, `remember` or `steps` | ❌ | `steps` | Visual style: `prerequisites` uses neutral tone, `remember` use a bulb icon on yellow backgroudn and `steps` uses primary color . |
+| `variant` | `prerequisites`, `remember` or `steps` | ❌ | `steps` | Visual style: `prerequisites` uses neutral tone, `remember` use a bulb icon on yellow background and `steps` uses primary color . |
 
 ## 🧪 Markdown Support
 
