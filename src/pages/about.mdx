@@ -6,145 +6,214 @@ authors: [christophe]
 ---
 
 import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
+import styles from "./about.module.css";
 
 <!-- cspell:ignore Racour,Marknotes,nowrap,docux -->
 
-<Columns>
-  <Column className='text--justify'>
-    My name is **Christophe Avonture**, a passionate developer based in [Racour](https://fr.wikipedia.org/wiki/Racour), Belgium.
-
-    With an insatiable curiosity, I devote a large part of my life to programming, exploring open source, and sharing knowledge, whether through projects, articles, or exchanges within tech communities.
-
-    For years, I have been actively contributing to the Joomla ecosystem, both in Belgium and in the [French-speaking](https://forum.joomla.fr/member/38299-cavo789) world: participating in the organization of [JoomlaDays](https://www.joomladay.fr/?view=article&id=56:christophe-avonture&catid=17), writing articles for the [Joomla Community Magazine](https://magazine.joomla.org/), developing extensions now obsolete (SportingEvents & AllEvents) and sharing tutorials.
-
-    In addition, Docker has played a central role in my daily life for the past four years. I enjoy popularizing its use: creating tutorials, leading sessions, but also building reproducible environments so that developers can work more efficiently. I also explore modern tools such as Dagger.io to refine and automate my CI/CD workflows.
-
-    As far back as I can remember, even as a kid, I have kept this quote in mind:
-
-    <div style={{ borderLeft: '4px solid var(--ifm-color-primary)', paddingLeft: '1rem', margin: '1.5rem 0', fontStyle: 'italic' }}>
-      “Go back to your work twenty times: polish it constantly and polish it again; add something now and then, and often erase.”
-      <br/>
-      <small>— Nicolas Boileau/L'Art poétique (*"Vingt fois sur le métier remettez votre ouvrage : Polissez-le sans cesse et le repolissez ; Ajoutez quelquefois, et souvent effacez"*)</small>
-    </div>
-
-    This is, for me, the most important thing in being a developer: never stop striving to do better, and if you have to refactor your code, just do it—right now.
-
-    I would also add this:
-
-    <div
-      style={{
-        borderLeft: "4px solid var(--ifm-color-primary)",
-        paddingLeft: "1rem",
-        margin: "1.5rem 0",
-        fontStyle: "italic",
-      }}
-    >
-      It goes without saying that code should work, but it must also be clean,
-      optimized, well-formatted and documented, and refactored every time you can.
-      Code should always reflect the best of your skills.
-    </div>
-
-  </Column>
-  <Column>
-    ![Christophe Avonture](/img/avatar.webp)
-  </Column>
-</Columns>
-<Tabs>
-
-  <TabItem value="achievements" label="Achievements" default>
-    <Columns>
-      <Column className='text--left'>
-        ![Achievements](/img/about/achievements.webp)
-      </Column>
-      <Column className='text--justify'>
-        In terms of achievements, I have published a lot of open source projects, mainly in PHP or related to automation (VBS and VBA scripts for Excel, [MarkNotes](https://github.com/cavo789/marknotes), a Markdown note management, guide for Visual Studio Code, etc.). My GitHub repository ([cavo789](https://github.com/cavo789)) includes [Excel macro export scripts](https://github.com/cavo789/vba_excel_export_code), [aeSecure QuickScan](https://github.com/cavo789/aesecure_quickscan) a PHP file scanning tools to detect viruses, solutions to improve productivity in VSCode, and ways to simplify Markdown note-taking.
-
-        My blog reflects my desire to share: I post tips, tutorials, feedback on the tools I test, and thoughts on the world of development. My goal is to help other enthusiasts progress, avoid common pitfalls, or simply exchange ideas about a shared passion.
-
-        Finally, community is essential to me: whether on GitHub, forums ([Joomla](https://forum.joomla.fr/member/38299-cavo789), [Docker](https://forums.docker.com/u/cavo789/summary), ...), or at events, I enjoy learning from others, sharing my experience, and contributing to an open, collaborative, and stimulating tech environment.
-      </Column>
-    </Columns>
-
-  </TabItem>
-
-<TabItem value="major" label="Major achievements">
-  <Columns>
-    <Column className="text--justify">
-      ### AllEvents
-      Successor of SportingEvents, I created this event extension for Joomla!, enabling advanced management of online events and calendars. I transferred ownership of the extension to a friend who ensured its evolution to Joomla 3 and 4.
-
-      ### aeSecure
-      I developed this web-application firewall (WAF), widely used to secure Joomla! sites. aeSecure offers different versions and includes the “QuickScan” antivirus scan to detect malicious files. Many professionals have adopted it as an essential protection solution. Now the maintenance of QuickScan is ensured by the French Joomla Users community.
-
-      ### Marknotes
-      Passionate about productivity tools, I developed Marknotes, an open-source application for efficiently organizing, searching, and managing Markdown notes, designed for demanding users and knowledge management enthusiasts.
-    </Column>
-    <Column className="text--left">
-      ![Major achievements](/img/about/major_achievements.webp)
-    </Column>
-
-  </Columns>
-</TabItem>
-
-<TabItem value="highlights" label="Highlights">
-  <Columns>
-    <Column className="text--left">
-      ![Highlights](/img/about/highlights.webp)
-    </Column>
-    <Column className="text--justify">
-      * Developer and open source enthusiast based in Belgium.
-
-      * Active in the
-      Joomla community (organization, development, writing, events).
-
-      * Fan of
-      Docker, Dagger, VSCode, Markdown and much more.
-
-      * Numerous open source
-      projects, mainly in PHP (note management, scripts, security tools,
-      productivity).
-
-      * Continual sharing via his blog avonture.be and his GitHub
-      account.
-
-      * Spirit of transmission, continuous learning, and mutual aid in
-      the tech ecosystem.
-    </Column>
-
-  </Columns>
-</TabItem>
-
-  <TabItem value="networks" label="Social networks">
-    <Columns>
-      <Column className='text--justify'>
-      <div style={{ paddingBottom: '1em', textAlign: 'center' }}>You can find me on:</div>
-      <div style={{
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        gap: '2rem'
-      }}>
-        <a href="https://bsky.app/profile/avonture.be" title="Bluesky">
-          <LogoIcon name="logos:bluesky" size='128' />
-        </a>
-        <a href="https://github.com/cavo789/" title="GitHub">
-          <LogoIcon name="logos:github" size='128' />
-        </a>
-        <a href="https://joomlacommunity.cloud.mattermost.com/main/messages/@cavo789" title="Mattermost">
-          <LogoIcon name="logos:mattermost" size='128' />
-        </a>
+<div className={styles.profileHero}>
+  <div className={styles.profileHeroInner}>
+    <img
+      src="/img/avatar.webp"
+      alt="Christophe Avonture"
+      className={styles.profileAvatar}
+    />
+    <div className={styles.profileInfo}>
+      <h1 className={styles.profileName}>Christophe Avonture</h1>
+      <p className={styles.profileTagline}>
+        Developer · Open Source Enthusiast
+      </p>
+      <div className={styles.profileLocation}>📍 Racour, Belgium</div>
+      <div className={styles.techBadges}>
+        <span className={styles.badge}>Docker</span>
+        <span className={styles.badge}>Joomla</span>
+        <span className={styles.badge}>Markdown</span>
+        <span className={styles.badge}>Open Source</span>
+        <span className={styles.badge}>PHP</span>
+        <span className={styles.badge}>Python</span>
+        <span className={styles.badge}>VSCode</span>
       </div>
-    </Column>
-      <Column className='text--left'>
-        ![Social networks](/img/about/social_networks.webp)
-      </Column>
-    </Columns>
-  </TabItem>
-</Tabs>
+    </div>
+  </div>
+</div>
 
-This site is powered by [Docusaurus](https://docusaurus.io/).
+<div className={styles.bioSection}>
 
-A few components on this site have been developed by [Docux](https://github.com/Juniors017), I invite you to visit his website: [@DocuxLab Blog](https://docuxlab.com/).
+With an insatiable curiosity, I devote a large part of my life to programming, exploring open source, and sharing knowledge, whether through projects, articles, or exchanges within tech communities.
+
+For years, I have been actively contributing to the Joomla ecosystem, both in Belgium and in the [French-speaking](https://forum.joomla.fr/member/38299-cavo789) world: participating in the organization of [JoomlaDays](https://www.joomladay.fr/?view=article&id=56:christophe-avonture&catid=17), writing articles for the [Joomla Community Magazine](https://magazine.joomla.org/), developing extensions now obsolete (SportingEvents & AllEvents) and sharing tutorials.
+
+In addition, Docker has played a central role in my daily life for the past four years. I enjoy popularizing its use: creating tutorials, leading sessions, but also building reproducible environments so that developers can work more efficiently. I also explore modern tools such as Dagger.io to refine and automate my CI/CD workflows.
+
+As far back as I can remember, even as a kid, I have kept this quote in mind:
+
+<div className={styles.blockquote}>
+  "Go back to your work twenty times: polish it constantly and polish it again;
+  add something now and then, and often erase."
+  <br />
+  <small>
+    — Nicolas Boileau / L'Art poétique · *"Vingt fois sur le métier remettez
+    votre ouvrage : Polissez-le sans cesse et le repolissez ; Ajoutez
+    quelquefois, et souvent effacez"*
+  </small>
+</div>
+
+This is, for me, the most important thing in being a developer: never stop striving to do better, and if you have to refactor your code, just do it — right now. I would also add this:
+
+<div className={styles.blockquote}>
+  It goes without saying that code should work, but it must also be clean,
+  optimized, well-formatted and documented, and refactored every time you can.
+  Code should always reflect the best of your skills.
+</div>
+
+</div>
+
+<h2 className={styles.sectionHeading}>Achievements</h2>
+
+<div className={styles.achievementGrid}>
+  <div className={styles.achievementCard}>
+    <div className={styles.achievementEmoji}>🔧</div>
+    <h3>Open Source</h3>
+    <p>
+      Dozens of repositories on <a href="https://github.com/cavo789">GitHub</a>:
+      PHP tools, VBA/VBS automation scripts for Excel,{" "}
+      <a href="https://github.com/cavo789/aesecure_quickscan">
+        aeSecure QuickScan
+      </a>
+      , productivity helpers for VSCode, and Markdown utilities.
+    </p>
+  </div>
+  <div className={styles.achievementCard}>
+    <div className={styles.achievementEmoji}>✍️</div>
+    <h3>Blog & Tutorials</h3>
+    <p>
+      Regularly publishing tips, tutorials, and honest feedback on the tools I
+      test — helping developers progress, avoid common pitfalls, and share a
+      common passion for clean code.
+    </p>
+  </div>
+  <div className={styles.achievementCard}>
+    <div className={styles.achievementEmoji}>🤝</div>
+    <h3>Community</h3>
+    <p>
+      Active on{" "}
+      <a href="https://forum.joomla.fr/member/38299-cavo789">Joomla</a> and{" "}
+      <a href="https://forums.docker.com/u/cavo789/summary">Docker</a> forums,
+      and at events — sharing experience and contributing to an open,
+      collaborative, and stimulating tech ecosystem.
+    </p>
+  </div>
+</div>
+
+<h2 className={styles.sectionHeading}>Major Projects</h2>
+
+<div className={styles.achievementGrid}>
+  <div className={styles.achievementCard}>
+    <div className={styles.achievementEmoji}>📅</div>
+    <h3>AllEvents</h3>
+    <p>
+      Successor of SportingEvents, I created this event extension for Joomla!,
+      enabling advanced management of online events and calendars. I transferred
+      ownership to a friend who ensured its evolution to Joomla 3 and 4.
+    </p>
+  </div>
+  <div className={styles.achievementCard}>
+    <div className={styles.achievementEmoji}>🛡️</div>
+    <h3>aeSecure</h3>
+    <p>
+      A web-application firewall (WAF) widely used to secure Joomla! sites,
+      including the "QuickScan" antivirus scan to detect malicious files.
+      Maintenance of QuickScan is now ensured by the French Joomla Users
+      community.
+    </p>
+  </div>
+  <div className={styles.achievementCard}>
+    <div className={styles.achievementEmoji}>📝</div>
+    <h3>Marknotes</h3>
+    <p>
+      An open-source application for efficiently organizing, searching, and
+      managing Markdown notes, designed for demanding users and knowledge
+      management enthusiasts.
+    </p>
+  </div>
+</div>
+
+<h2 className={styles.sectionHeading}>At a Glance</h2>
+
+<div className={styles.highlightsGrid}>
+  <div className={styles.highlightItem}>
+    <span className={styles.highlightEmoji}>🇧🇪</span>
+    <div className={styles.highlightText}>
+      <strong>Belgium-based developer</strong>
+      Open source enthusiast from Racour, passionate about code quality and
+      continuous improvement.
+    </div>
+  </div>
+  <div className={styles.highlightItem}>
+    <span className={styles.highlightEmoji}>🐘</span>
+    <div className={styles.highlightText}>
+      <strong>PHP, Python & Automation</strong>
+      Dozens of repositories covering scripting, security tools, and
+      productivity — mainly in PHP, VBA, and VBS.
+    </div>
+  </div>
+  <div className={styles.highlightItem}>
+    <span className={styles.highlightEmoji}>🐳</span>
+    <div className={styles.highlightText}>
+      <strong>Docker</strong>
+      Advocate for containerized development environments and modern CI/CD
+      automation workflows.
+    </div>
+  </div>
+  <div className={styles.highlightItem}>
+    <span className={styles.highlightEmoji}>📝</span>
+    <div className={styles.highlightText}>
+      <strong>Markdown & VSCode</strong>
+      Power user of both — from custom note management systems to fine-tuned
+      editor configurations.
+    </div>
+  </div>
+  <div className={styles.highlightItem}>
+    <span className={styles.highlightEmoji}>🌐</span>
+    <div className={styles.highlightText}>
+      <strong>Joomla Ecosystem</strong>
+      Years of contributions: JoomlaDays organization, Community Magazine
+      articles, and extension development.
+    </div>
+  </div>
+  <div className={styles.highlightItem}>
+    <span className={styles.highlightEmoji}>💡</span>
+    <div className={styles.highlightText}>
+      <strong>Sharing & Transmission</strong>
+      Continuous learning, mutual aid, and knowledge sharing — the core of how I
+      engage with the tech world.
+    </div>
+  </div>
+</div>
+
+<h2 className={styles.sectionHeading}>Find Me Online</h2>
+
+<div className={styles.socialGrid}>
+  <a href="https://bsky.app/profile/avonture.be" className={styles.socialCard}>
+    <LogoIcon name="logos:bluesky" size="72" />
+    <span className={styles.socialLabel}>Bluesky</span>
+  </a>
+  <a href="https://github.com/cavo789/" className={styles.socialCard}>
+    <LogoIcon name="logos:github" size="72" />
+    <span className={styles.socialLabel}>GitHub</span>
+  </a>
+  <a
+    href="https://joomlacommunity.cloud.mattermost.com/main/messages/@cavo789"
+    className={styles.socialCard}
+  >
+    <LogoIcon name="logos:mattermost" size="72" />
+    <span className={styles.socialLabel}>Mattermost</span>
+  </a>
+</div>
+
+<div className={styles.pageFooter}>
+  This site is powered by [Docusaurus](https://docusaurus.io/). · A few
+  components were developed by [Docux](https://github.com/Juniors017) — visit
+  [@DocuxLab Blog](https://docuxlab.com/).
+</div>
 
 <ScrollToTopButton />
