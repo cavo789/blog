@@ -29,8 +29,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         bash \
-        bash-completion; \
-    rm -rf /var/lib/apt/lists/*
+        bash-completion
 
 # If the host userid/groupid is different from 1000:1000 then update the
 # existing node user to these IDs. This is not needed here for the production
@@ -164,7 +163,6 @@ RUN --mount=type=cache,target=/var/lib/apt/lists \
     apt-get install -y --no-install-recommends \
         python3 \
         python3-pip && \
-    rm -rf /var/lib/apt/lists/* && \
     echo "${OS_USERNAME} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/"${OS_USERNAME}" && \
     chmod 0440 /etc/sudoers.d/"${OS_USERNAME}"
 

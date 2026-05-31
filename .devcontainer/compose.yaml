@@ -22,8 +22,8 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - languagetool
-    command: sleep infinity
+      languagetool:
+        condition: service_healthy
 
   languagetool:
     image: erikvl87/languagetool
@@ -36,6 +36,12 @@ services:
       - ngrams:/ngrams
     ports:
       - "8010:8010"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8010/v2/languages"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
 volumes:
   ngrams:

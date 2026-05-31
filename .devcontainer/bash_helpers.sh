@@ -4,7 +4,7 @@ BASHRC="/home/${OS_USERNAME:-node}/.bashrc"
 MARKER="# DEV CONTAINER WELCOME MESSAGE"
 
 # Local folder where the blog is stored on the host machine
-BLOG_HOST_DIR="/home/christophe/repositories/blog"
+BLOG_HOST_DIR="${HOST_PROJECT_DIR:-/opt/docusaurus}"
 
 if ! grep -qxF "$MARKER" "$BASHRC"; then
     cat <<EOF >> "$BASHRC"

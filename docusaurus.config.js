@@ -108,6 +108,7 @@ const config = {
           },
           blogSidebarTitle: "All posts",
           blogSidebarCount: "ALL",
+          postsPerPage: 12,
           // showLastUpdateTime: true,
           // Useful options to enforce blogging best practices
           onInlineTags: "throw",

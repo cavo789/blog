@@ -1,6 +1,7 @@
 import Link from '@docusaurus/Link';
 import PropTypes from 'prop-types';
 import { getBlogMetadata } from '@site/src/components/Blog/utils/posts';
+import { formatPostDate } from '@site/src/components/Blog/utils/date';
 import BlogPostCount from '@site/src/components/Blog/PostCount';
 import Translate from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -11,39 +12,12 @@ import CardImage from '@site/src/components/Card/CardImage';
 
 import styles from './styles.module.css';
 
-/**
- * Renders a formatted date string in "Month Day, Year" format.
- * @param {Object} props
- * @param {string} props.date - ISO date string to format
- * @returns {JSX.Element|null}
- */
-const FormattedDate = ({ date }) => {
-  const { i18n } = useDocusaurusContext();
-  if (!date) return null;
-  return (
-    <span>
-      {new Date(date).toLocaleDateString(i18n.currentLocale, {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })}
-    </span>
-  );
-};
-
-/**
- * Displays the latest blog posts in a card grid layout.
- *
- * @param {Object} props
- * @param {number} [props.count=9] - Number of posts to display
- * @param {boolean} [props.description=true] - Whether to show post descriptions
- * @returns {JSX.Element}
- */
 export default function LatestPosts({
   count = 9,
   description = true,
 }) {
   const posts = getBlogMetadata();
+  const { i18n } = useDocusaurusContext();
 
   const sortedPosts = posts
     .filter((p) => p.date)
@@ -87,11 +61,10 @@ export default function LatestPosts({
               <CardBody
                 className="padding-vert--md text--center"
                 textAlign="center"
-                transform="uppercase"
               >
                 <h3>{post.title}</h3>
                 {description && <p>{post.description || ""} →</p>}
-                <FormattedDate date={post.date} />
+                <span>{formatPostDate(post.date, i18n.currentLocale)}</span>
               </CardBody>
             </Card>
           </Link>

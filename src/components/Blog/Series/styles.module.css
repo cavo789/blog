@@ -1,6 +1,22 @@
 .seriesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  justify-content: flex-start;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.seriesGrid > :global(.col.col--3) {
+  max-width: 100%;
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 996px) {
+  .seriesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .seriesGrid {
+    grid-template-columns: 1fr;
+  }
 }

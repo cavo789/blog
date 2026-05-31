@@ -68,7 +68,6 @@
   height: var(--card-img-height);
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  padding: 1rem;
   background: var(--ifm-color-emphasis-100);
   transition: transform var(--card-transition);
 }
@@ -93,4 +92,40 @@
 
 .description {
   color: var(--ifm-font-color-secondary);
+}
+
+/* ── Small layout ─────────────────────────────────────── */
+
+.cardSmallWrapper {
+  margin-bottom: 2rem;
+  display: flex;
+}
+
+.cardSmall {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cardSmallImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.cardSmallBody {
+  flex: 1;
+}
+
+.cardSmallCounter {
+  color: var(--ifm-color-primary);
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.cardSmallFooter {
+  text-align: right;
 }

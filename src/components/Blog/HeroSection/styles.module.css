@@ -4,8 +4,7 @@
   width: 100%;
   margin-bottom: 2rem;
 
-  /* Default Light Mode background (Pale Yellow) */
-  background: #fcfcec;
+  background: var(--hero-background-light);
 
   /* Smooth transition when toggling themes */
   transition: background-color 200ms ease-in-out;
@@ -39,8 +38,8 @@
   color: var(--ifm-color-primary); /* Highlights name or keyword */
   background: linear-gradient(
     120deg,
-    var(--ifm-color-primary) 0%,
-    #d946ef 100%
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary-lightest) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

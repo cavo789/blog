@@ -8,6 +8,9 @@
   --ifm-font-family-base: "Inter", sans-serif;
   --ifm-font-family-monospace: "Fira Code", "JetBrains Mono", monospace;
 
+  /* Hero section background */
+  --hero-background-light: #fcfcec;
+
   /* Green Palette */
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
@@ -79,21 +82,12 @@
     /* Stronger shadow to lift it above scrolling content */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
-    /* Optional: Backdrop blur for a modern "frosted glass" feel (supported browsers only) */
     backdrop-filter: blur(8px);
-    /* Need to make background slightly transparent for blur to work.
-       We use a hex with alpha or rgba. Here is a generic approach: */
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.85);
   }
 
-  /* Dark mode specific adjustment for the background transparency */
   [data-theme="dark"] .blog-toc-mobile {
-    background: rgba(
-      30,
-      30,
-      30,
-      0.95
-    ); /* Adjust based on your dark theme bg color */
+    background: rgba(30, 30, 30, 0.85);
   }
 
   /* --- FIX: Anchor Scrolling Overlap ---
@@ -164,6 +158,10 @@
   /* Hides the desktop ToC on mobile */
   .theme-doc-toc-desktop {
     display: none !important;
+  }
+  /* Prevent oversized article titles on small screens */
+  article h1 {
+    font-size: clamp(1.4rem, 5vw, 2.2rem);
   }
 }
 
