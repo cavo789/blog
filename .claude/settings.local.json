@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs -I{} head -25 {})",
+      "Bash(mkdir -p /opt/docusaurus/.claude/memory)",
+      "Bash(cp /home/node/.claude/projects/-opt-docusaurus/memory/*.md /opt/docusaurus/.claude/memory/)"
+    ]
+  }
+}
