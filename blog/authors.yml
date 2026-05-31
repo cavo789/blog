@@ -13,3 +13,8 @@ gemini:
   title: AI Assistant
   url: https://gemini.google.com/
   image_url: /img/gemini-logo.webp
+claude:
+  name: Claude Code
+  title: AI Assistant
+  url: https://claude.ai/code
+  image_url: /img/claude-logo.webp

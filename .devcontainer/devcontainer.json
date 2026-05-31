@@ -31,6 +31,7 @@
     "YARN_CACHE_FOLDER": "/home/node/.cache/yarn/v6"
   },
   "initializeCommand": "mkdir -p .docusaurus .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
+  "postCreateCommand": "mkdir -p /home/node/.claude/projects/-opt-docusaurus && ln -sfn /opt/docusaurus/.claude/memory /home/node/.claude/projects/-opt-docusaurus/memory",
   "remoteUser": "node",
   "updateRemoteUserUID": true,
   "overrideCommand": false,

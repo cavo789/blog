@@ -14,14 +14,26 @@ export default function BlogPostItemHeaderAuthors({ className }) {
   const allAuthors = [...authors];
 
   if (frontMatter.ai_assisted) {
-    const geminiAuthor = {
-      name: "Google Gemini",
-      title: "AI Assistant",
-      url: "https://gemini.google.com/",
-      imageURL: "/img/gemini-logo.webp",
-    };
-    if (!allAuthors.find((a) => a.name === geminiAuthor.name)) {
-      allAuthors.push(geminiAuthor);
+    const postDate = frontMatter.date ? new Date(frontMatter.date) : null;
+    const claudeCutoff = new Date("2026-05-25");
+    const useClaudeCode = postDate && postDate > claudeCutoff;
+
+    const aiAuthor = useClaudeCode
+      ? {
+          name: "Claude Code",
+          title: "AI Assistant",
+          url: "https://claude.ai/code",
+          imageURL: "/img/claude-logo.webp",
+        }
+      : {
+          name: "Google Gemini",
+          title: "AI Assistant",
+          url: "https://gemini.google.com/",
+          imageURL: "/img/gemini-logo.webp",
+        };
+
+    if (!allAuthors.find((a) => a.name === aiAuthor.name)) {
+      allAuthors.push(aiAuthor);
     }
   }
 
