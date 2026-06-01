@@ -127,16 +127,22 @@ function AuthForm({ onSubmit }) {
   );
 }
 
+const STORAGE_KEY = "reactions_admin_token";
+
 // ── Page ─────────────────────────────────────────────────────────────────────
 
 export default function ReactionsDashboard() {
   const { siteConfig } = useDocusaurusContext();
   const apiUrl = `${siteConfig.url}/api/reactions.php`;
 
-  // Token: read from URL hash first (e.g. /reactions-dashboard#mytoken), then from form
+  // Priority: URL hash → localStorage → empty (show form)
   const [token,  setToken]  = useState(() => {
     if (typeof window === "undefined") return "";
-    return window.location.hash.slice(1);
+    return (
+      window.location.hash.slice(1) ||
+      localStorage.getItem(STORAGE_KEY) ||
+      ""
+    );
   });
   const [data,   setData]   = useState(null);
   const [error,  setError]  = useState(null);
@@ -148,8 +154,14 @@ export default function ReactionsDashboard() {
     setError(null);
     try {
       const res = await fetch(`${apiUrl}?admin=${encodeURIComponent(t)}`);
-      if (res.status === 403) { setError("Invalid token."); setData(null); return; }
+      if (res.status === 403) {
+        localStorage.removeItem(STORAGE_KEY);
+        setError("Invalid token.");
+        setData(null);
+        return;
+      }
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      localStorage.setItem(STORAGE_KEY, t);
       setData(await res.json());
     } catch (e) {
       setError(`Failed to load data: ${e.message}`);
@@ -162,6 +174,13 @@ export default function ReactionsDashboard() {
   useEffect(() => { if (token) fetchData(token); }, [token, fetchData]);
 
   const handleTokenSubmit = (t) => { setToken(t); fetchData(t); };
+
+  const handleForget = () => {
+    localStorage.removeItem(STORAGE_KEY);
+    setToken("");
+    setData(null);
+    setError(null);
+  };
 
   const stats = data ? computeTotals(data) : null;
 
@@ -183,6 +202,9 @@ export default function ReactionsDashboard() {
           <>
             <SummaryCards {...stats} />
             <ReactionsTable rows={stats.rows} siteUrl={siteConfig.url} />
+            <button className={styles.forgetBtn} onClick={handleForget}>
+              Forget token
+            </button>
           </>
         )}
       </div>

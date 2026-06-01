@@ -168,3 +168,20 @@
   padding: 3rem;
   color: var(--ifm-color-content-secondary);
 }
+
+.forgetBtn {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.forgetBtn:hover {
+  border-color: var(--ifm-color-danger);
+  color: var(--ifm-color-danger);
+}
