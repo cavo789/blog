@@ -151,6 +151,7 @@ const config = {
     [pluginSeriesRoute, {}],
     [pluginTagRoute, {}],
     ["./plugins/blog-feed-plugin/index.js", { maxItems: 20 }],
+    ["./plugins/admin-data-plugin/index.cjs", {}],
     [
       "./plugins/ascii-injector/index.mjs",
       { bannerPath: "src/data/banner.txt" },
