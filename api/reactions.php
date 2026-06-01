@@ -2,10 +2,13 @@
 declare(strict_types=1);
 
 // ── Configuration ─────────────────────────────────────────────────────────────
-// Change ADMIN_TOKEN to a long random string before deploying.
-// The dashboard page reads it from the URL hash and sends it as a query param.
+// Copy api/.env.example to api/.env and set your values before deploying.
+$_envVars = file_exists(__DIR__ . '/.env')
+    ? (parse_ini_file(__DIR__ . '/.env') ?: [])
+    : [];
+
 define('ADMIN_EMAIL',            'cavo789@gmail.com');
-define('ADMIN_TOKEN',            '18wNSuCb6HamS9P6oeDa8dR6s2AOpr');
+define('ADMIN_TOKEN',            $_envVars['ADMIN_TOKEN'] ?? '');
 define('NOTIFY_COOLDOWN_SECONDS', 3600);   // minimum gap between emails per article
 define('SITE_URL',               'https://www.avonture.be');
 
@@ -14,17 +17,22 @@ $allowedOrigins = [
     SITE_URL,
     'http://localhost:3000',
 ];
+
+// Same-origin requests carry no Origin header — allow them unconditionally.
+// Only cross-origin requests need to be validated.
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-if (!in_array($origin, $allowedOrigins, true)) {
+if ($origin !== '' && !in_array($origin, $allowedOrigins, true)) {
     http_response_code(403);
     exit;
 }
 
 header('Content-Type: application/json; charset=utf-8');
-header("Access-Control-Allow-Origin: $origin");
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
-header('Vary: Origin');
+if ($origin !== '') {
+    header("Access-Control-Allow-Origin: $origin");
+    header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type');
+    header('Vary: Origin');
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(204);
@@ -117,7 +125,7 @@ $vote   = '';
 if ($method === 'GET') {
     // Admin request: return all reaction data
     if (array_key_exists('admin', $_GET)) {
-        if (($_GET['admin'] ?? '') !== ADMIN_TOKEN) {
+        if (ADMIN_TOKEN === '' || ($_GET['admin'] ?? '') !== ADMIN_TOKEN) {
             jsonError(403, 'Forbidden');
         }
         echo json_encode(loadData(__DIR__ . '/reactions-data.json'));
