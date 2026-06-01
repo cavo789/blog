@@ -7,7 +7,7 @@ $_envVars = file_exists(__DIR__ . '/.env')
     ? (parse_ini_file(__DIR__ . '/.env') ?: [])
     : [];
 
-define('ADMIN_EMAIL',            'cavo789@gmail.com');
+define('ADMIN_EMAIL',            $_envVars['ADMIN_EMAIL'] ?? '');
 define('ADMIN_TOKEN',            $_envVars['ADMIN_TOKEN'] ?? '');
 define('NOTIFY_COOLDOWN_SECONDS', 3600);   // minimum gap between emails per article
 define('SITE_URL',               'https://www.avonture.be');
