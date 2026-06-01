@@ -135,18 +135,21 @@ export default function ReactionsDashboard() {
   const { siteConfig } = useDocusaurusContext();
   const apiUrl = `${siteConfig.url}/api/reactions.php`;
 
-  // Priority: URL hash → localStorage → empty (show form)
-  const [token,  setToken]  = useState(() => {
-    if (typeof window === "undefined") return "";
-    return (
-      window.location.hash.slice(1) ||
-      localStorage.getItem(STORAGE_KEY) ||
-      ""
-    );
-  });
+  const [token,  setToken]  = useState("");
   const [data,   setData]   = useState(null);
   const [error,  setError]  = useState(null);
   const [loading, setLoading] = useState(false);
+
+  // Priority: URL hash → localStorage → empty (show form).
+  // Must run in useEffect — localStorage is unavailable during SSR,
+  // and React does not re-run useState initializers on client hydration.
+  useEffect(() => {
+    const initial =
+      window.location.hash.slice(1) ||
+      localStorage.getItem(STORAGE_KEY) ||
+      "";
+    if (initial) setToken(initial);
+  }, []);
 
   const fetchData = useCallback(async (t) => {
     if (!t) return;
