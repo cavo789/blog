@@ -4,6 +4,20 @@ on:
   push:
     branches:
       - main
+  # Manual trigger: use clean-slate to recover from a corrupted FTP sync state.
+  # A corrupted state causes error 553 ("replacing … No such file or directory")
+  # because the action skips directory creation for files it thinks already exist.
+  # Fix: run this workflow manually with clean_slate=true once, then go back to normal.
+  workflow_dispatch:
+    inputs:
+      clean_slate:
+        description: "Delete all remote files and re-upload everything (recovers from FTP sync errors)"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
 
 permissions:
   contents: write
@@ -12,7 +26,7 @@ jobs:
   deploy:
     name: Deploy blog on avonture.be
     runs-on: ubuntu-latest
-    if: startsWith(github.event.head_commit.message, 'wip') == false
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.head_commit.message, 'wip') == false
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -50,3 +64,6 @@ jobs:
           password: ${{ secrets.ftp_password }}
           # We need to deploy the build folder from GitHub to our FTP; not everything (f.i. don't need node_modules)
           local-dir: ./build/
+          # Deletes all remote files before uploading — use only via manual trigger
+          # to recover from a corrupted .ftp-deploy-sync-state.json (error 553).
+          dangerous-clean-slate: ${{ github.event.inputs.clean_slate == 'true' }}
