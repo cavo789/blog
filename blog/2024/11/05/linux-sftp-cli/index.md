@@ -5,8 +5,10 @@ date: 2024-11-05
 description: Connect to SFTP servers using the Linux command line. Get tips on automation with sshpass, setting custom ports, and configuring proxy server access.
 authors: [christophe]
 image: /img/v2/sftp.webp
-mainTag: sftp
-tags: [linux, scp, sftp, ssh, sshpass, tips]
+mainTag: ssh
+tags:
+  - linux
+  - ssh
 language: en
 ---
 <!-- cspell:ignore sshpass,ssword -->

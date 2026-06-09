@@ -6,7 +6,9 @@ description: Install Docker and run PHP with Apache instantly using containers. 
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: php
-tags: [docker, php]
+tags:
+  - docker
+  - php
 language: en
 ---
 <!-- cspell:ignore wamp -->

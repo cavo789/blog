@@ -6,7 +6,9 @@ description: Self-host Matomo for free and gain GDPR-compliant website analytics
 authors: [christophe]
 image: /img/v2/matomo.webp
 mainTag: self-hosted
-tags: [docusaurus, matomo]
+tags:
+  - docusaurus
+  - self-hosted
 language: en
 ---
 ![How to self-host Matomo](/img/v2/matomo.webp)

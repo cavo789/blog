@@ -6,7 +6,9 @@ description: Add robust logging features to your Bash scripts with this simple, 
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: bash
-tags: [bash, tips]
+tags:
+  - bash
+  - linux
 language: en
 ---
 <!-- cspell:ignore uplzaefi -->

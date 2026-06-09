@@ -6,7 +6,12 @@ description: Run Docusaurus with Docker! Follow this easy tutorial to create you
 authors: [christophe]
 image: /img/v2/docusaurus_tips.webp
 mainTag: docusaurus
-tags: [docker, docusaurus, nodejs, npm, tips, yarn]
+tags:
+  - docker
+  - docusaurus
+  - nodejs
+  - npm
+  - yarn
 language: en
 ---
 ![Running Docusaurus with Docker](/img/v2/docusaurus_tips.webp)

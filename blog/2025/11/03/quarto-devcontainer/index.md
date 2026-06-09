@@ -6,7 +6,13 @@ image: /img/v2/devcontainer_quarto.webp
 series: Discovering Quarto
 description: Convert any Quarto project into a fully portable, VSCode-powered devcontainer in minutes.
 mainTag: devcontainer
-tags: [devcontainer, docker, markdown, pre-commit, quarto, vscode]
+tags:
+  - code-quality
+  - devcontainer
+  - docker
+  - markdown
+  - quarto
+  - vscode
 blueskyRecordKey: 3m4piap723s2r
 date: 2025-11-03
 updates:

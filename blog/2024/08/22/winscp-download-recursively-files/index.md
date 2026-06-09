@@ -6,7 +6,9 @@ description: Learn how to use WinSCP's scripting feature to download files with 
 authors: [christophe]
 image: /img/v2/winscp.webp
 mainTag: winscp
-tags: [tips, winscp]
+tags:
+  - ssh
+  - winscp
 language: en
 ---
 ![WinSCP - Download files with specific extension recursively](/img/v2/winscp.webp)

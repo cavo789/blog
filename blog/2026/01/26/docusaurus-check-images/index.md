@@ -6,8 +6,11 @@ description: A Python script to verify lazy loading and size of images in your D
 authors: [christophe]
 image: /img/v2/check_images.webp
 series: Creating Docusaurus components
-mainTag: Docusaurus
-tags: [docker, docusaurus, python]
+mainTag: docusaurus
+tags:
+  - docker
+  - docusaurus
+  - python
 language: en
 blueskyRecordKey: 3mdcpoxnzjc2h
 ---

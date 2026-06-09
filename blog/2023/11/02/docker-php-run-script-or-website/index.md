@@ -6,7 +6,10 @@ description: The easiest way to run a standard PHP script or website instantly u
 authors: [christophe]
 image: /img/v2/php_tips.webp
 mainTag: php
-tags: [wsl, docker, php]
+tags:
+  - docker
+  - php
+  - wsl
 language: en
 ---
 ![The easiest way to run a PHP script / website](/img/v2/php_tips.webp)

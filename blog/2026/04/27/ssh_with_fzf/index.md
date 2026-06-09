@@ -6,7 +6,11 @@ authors: [christophe]
 image: /img/v2/sshf.webp
 description: Build an interactive, searchable SSH host selector using FZF. Learn to modularize your SSH configurations, add rich documentation, and trigger advanced custom actions via a fast Terminal User Interface.
 mainTag: linux
-tags: [bash, customization, fzf, linux, tips]
+tags:
+  - bash
+  - customization
+  - fzf
+  - linux
 language: en
 blueskyRecordKey: 3mkhfxskcdk2z
 ---

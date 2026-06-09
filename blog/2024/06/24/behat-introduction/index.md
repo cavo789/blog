@@ -7,7 +7,10 @@ authors: [christophe]
 image: /img/v2/functional_tests.webp
 series: Functional testing
 mainTag: tests
-tags: [bdd, behat, chrome, docker, mink, php, tests]
+tags:
+  - docker
+  - php
+  - tests
 language: en
 blueskyRecordKey: 3lxm22j3pa22t
 ---

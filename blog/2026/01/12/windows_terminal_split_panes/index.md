@@ -6,7 +6,10 @@ description: Learn how to split panes in Windows Terminal for efficient multitas
 authors: [christophe]
 image: /img/v2/windows_terminal_splitted_panes.webp
 mainTag: windows-terminal
-tags: [console, customization, windows-terminal, wsl]
+tags:
+  - customization
+  - windows-terminal
+  - wsl
 language: en
 blueskyRecordKey: 3mc7k5cv3js2m
 ---

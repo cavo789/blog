@@ -6,7 +6,9 @@ description: Master Docker volumes to stop losing data! Explore Docker-managed v
 authors: [christophe]
 image: /img/v2/docker_concepts.webp
 mainTag: docker
-tags: [wsl, docker]
+tags:
+  - docker
+  - wsl
 language: en
 ---
 ![Using volumes with Docker, use cases](/img/v2/docker_concepts.webp)

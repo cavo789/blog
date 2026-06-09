@@ -5,8 +5,10 @@ date: 2024-05-20
 description: Install Ubuntu Desktop 24.04 from scratch with this easy, step-by-step guide. Learn how to turn off Bitlocker, create a bootable USB, and solve the NVIDIA driver installation bug.
 authors: [christophe]
 image: /img/v2/linux_tips.webp
-mainTag: ubuntu
-tags: [linux, ubuntu]
+mainTag: linux
+tags:
+  - linux
+  - wsl
 language: en
 ---
 <!-- cspell:ignore Bitlocker,bootable,balena,askubuntu -->

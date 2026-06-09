@@ -6,7 +6,9 @@ description: Master Docker-out-of-Docker (DooD) to run Docker commands inside a 
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
-tags: [docker]
+tags:
+  - docker
+  - linux
 language: en
 updates:
   - date: 2025-08-03

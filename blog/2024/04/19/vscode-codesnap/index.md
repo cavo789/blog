@@ -6,7 +6,9 @@ description: Easily take beautiful, shareable screenshots of your code snippets 
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-tags: [vscode, markdown, tips]
+tags:
+  - markdown
+  - vscode
 language: en
 ---
 ![CodeSnap addon for VSCode](/img/v2/vscode_tips.webp)

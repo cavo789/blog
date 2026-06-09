@@ -6,7 +6,10 @@ description: Stop typing your SSH password! Learn how to use SSH keys and `ssh-c
 authors: [christophe]
 image: /img/v2/ssh.webp
 mainTag: ssh
-tags: [linux, putty, scp, ssh, tips]
+tags:
+  - linux
+  - ssh
+  - winscp
 language: en
 blueskyRecordKey: 3lun2x6tugs2r
 updates:

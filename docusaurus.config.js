@@ -239,7 +239,7 @@ const config = {
       image: "img/social-card.jpg",
       navbar: {
         // auto-hide the navbar when the user will scroll down, show again when scroll up
-        // hideOnScroll: true,
+        hideOnScroll: true,
         title: "Christophe Avonture (cavo789)",
         logo: {
           alt: "Christophe Avonture",

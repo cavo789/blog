@@ -6,7 +6,10 @@ description: Master Linux sed for dynamic file editing. Learn how to search and 
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: linux
-tags: [.env, bash, linux, sed, tips]
+tags:
+  - bash
+  - docker
+  - linux
 language: en
 ---
 ![Search and replace (or add) using sed](/img/v2/bash.webp)

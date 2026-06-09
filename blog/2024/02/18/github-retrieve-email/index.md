@@ -6,7 +6,9 @@ description: Quickly find a GitHub user's email address. Learn three effective m
 authors: [christophe]
 image: /img/v2/github_tips.webp
 mainTag: github
-tags: [github, tips]
+tags:
+  - github
+  - linux
 language: en
 ---
 ![Github - How to find email addresses for most users](/img/v2/github_tips.webp)

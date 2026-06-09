@@ -6,7 +6,9 @@ description: Optimize your Bash scripts! Learn how to run concurrent jobs and le
 authors: [christophe]
 image: /img/v2/linux_parallel.webp
 mainTag: bash
-tags: [bash, linux, tips]
+tags:
+  - bash
+  - linux
 language: en
 blueskyRecordKey: 3m2szdit6sc2y
 ---

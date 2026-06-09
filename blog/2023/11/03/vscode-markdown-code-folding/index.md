@@ -6,7 +6,9 @@ description: Fix your VS Code Markdown code folding issue! Learn why folding may
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-tags: [vscode, markdown, tips]
+tags:
+  - markdown
+  - vscode
 language: en
 ---
 ![Markdown folding not working](/img/v2/vscode_tips.webp)

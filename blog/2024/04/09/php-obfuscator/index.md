@@ -6,7 +6,10 @@ description: Protect your PHP code with obfuscation. Discover how the php_obfusc
 authors: [christophe]
 image: /img/v2/obfuscated_code.webp
 mainTag: php
-tags: [code-quality, ai, php]
+tags:
+  - ai
+  - code-quality
+  - php
 language: en
 ---
 <!-- cspell:ignore ctype, fgets, ppmb, ppmc, ppms, ppmu, ppmw, ppmx, ppnc, ppnt, ppnx, ppny, ppnz, strlen, strpos, strtolower -->

@@ -6,7 +6,10 @@ description: Build your first Python JSON API with FastAPI in under a minute! Th
 authors: [christophe]
 image: /img/v2/api.webp
 mainTag: api
-tags: [api, docker, fastapi, python]
+tags:
+  - api
+  - docker
+  - python
 language: en
 blueskyRecordKey: 3lwgccocnws2i
 ---

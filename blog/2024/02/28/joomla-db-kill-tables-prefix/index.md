@@ -6,7 +6,9 @@ description: Clean up your Joomla database by easily deleting unwanted tables us
 authors: [christophe]
 image: /img/v2/joomla.webp
 mainTag: joomla
-tags: [database, joomla, tips]
+tags:
+  - database
+  - joomla
 language: en
 ---
 ![Joomla : delete tables from your database according to a certain prefix](/img/v2/joomla.webp)

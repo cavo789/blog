@@ -5,8 +5,10 @@ date: 2023-12-28
 description: Install a complete WordPress site with Docker in just three simple commands. Learn how to set up the network, database (MySQL/MariaDB), and WordPress container quickly and easily.
 authors: [christophe]
 image: /img/v2/wordpress.webp
-mainTag: wordpress
-tags: [docker, wordpress]
+mainTag: docker
+tags:
+  - docker
+  - php
 language: en
 ---
 ![Quickly install WordPress in just three commands](/img/v2/wordpress.webp)

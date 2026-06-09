@@ -6,7 +6,10 @@ description: Step-by-step guide on configuring a GitLab CI/CD runner to securely
 authors: [christophe]
 image: /img/v2/gitlab.webp
 mainTag: gitlab
-tags: [ci, gitlab, ssh]
+tags:
+  - code-quality
+  - gitlab
+  - ssh
 language: en
 blueskyRecordKey: 3lun2oxe3zs2r
 ---

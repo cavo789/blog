@@ -6,7 +6,11 @@ description: Adding a SSH profile to Windows Terminal to quickly connect to your
 authors: [christophe]
 image: /img/v2/adding_ssh_profile_to_windows_terminal.webp
 mainTag: windows-terminal
-tags: [console, customization, dos, windows-terminal, wsl]
+tags:
+  - customization
+  - windows
+  - windows-terminal
+  - wsl
 language: en
 blueskyRecordKey: 3mcr66gr7zk2k
 ---

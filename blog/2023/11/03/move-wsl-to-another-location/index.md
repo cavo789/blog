@@ -6,7 +6,9 @@ description: Running low on C drive space? Follow this step-by-step guide to saf
 authors: [christophe]
 image: /img/v2/wsl.webp
 mainTag: wsl
-tags: [docker, tips, wsl]
+tags:
+  - docker
+  - wsl
 language: en
 ---
 ![Move WSL to another location](/img/v2/wsl.webp)

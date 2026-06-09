@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import {
   HtmlClassNameProvider,
@@ -34,6 +34,19 @@ function BlogPostPageContent({ sidebar, children }) {
   // NEW: Get current location to force re-render on hash change
   const location = useLocation();
 
+  const [tocHidden, setTocHidden] = useState(false);
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y > lastY && y > 80) setTocHidden(true);
+      else if (y < lastY) setTocHidden(false);
+      lastY = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <BlogLayout
       sidebar={sidebar}
@@ -61,7 +74,7 @@ function BlogPostPageContent({ sidebar, children }) {
           toc={toc}
           minHeadingLevel={tocMinHeadingLevel}
           maxHeadingLevel={tocMaxHeadingLevel}
-          className={clsx(ThemeClassNames.docs.docTocMobile, "blog-toc-mobile")}
+          className={clsx(ThemeClassNames.docs.docTocMobile, "blog-toc-mobile", tocHidden && "blog-toc-mobile--hidden")}
         />
       )}
 

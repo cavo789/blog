@@ -6,7 +6,9 @@ description: See how Google Gemini Nano was used to generate all the custom imag
 authors: [christophe]
 image: /img/v2/gemini.webp
 mainTag: ai
-tags: [ai, images]
+tags:
+  - ai
+  - docusaurus
 language: en
 blueskyRecordKey: 3lzxdr6w3e223
 ---

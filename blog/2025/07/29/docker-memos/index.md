@@ -6,7 +6,9 @@ description: Deploy the memos self-hosted note-taking application quickly using 
 authors: [christophe]
 image: /img/v2/docker_playing_with_app.webp
 mainTag: self-hosted
-tags: [docker, note-taking, self-hosted, tool]
+tags:
+  - docker
+  - self-hosted
 language: en
 blueskyRecordKey: 3lv3hzdh4mk2v
 ---

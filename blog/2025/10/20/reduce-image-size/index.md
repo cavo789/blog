@@ -5,8 +5,10 @@ date: 2025-10-20
 description: Fast and efficient lossy/lossless image compression tool
 authors: [christophe]
 image: /img/v2/image_optimization.webp
-mainTag: optimization
-tags: [images, optimization, tips]
+mainTag: linux
+tags:
+  - docker
+  - linux
 language: en
 updates:
   - date: 2026-02-04

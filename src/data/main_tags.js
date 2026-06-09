@@ -7,7 +7,19 @@ const MAIN_CARDS = [
     icon: "🐳",
   },
   {
-    title: "VSCode",
+    title: "Linux",
+    description: "Command line, system administration, and general Linux workflows.",
+    url: "/blog/tags/linux",
+    icon: "🐧",
+  },
+  {
+    title: "Docusaurus",
+    description: "Building, customizing, and extending static sites with Docusaurus.",
+    url: "/blog/tags/docusaurus",
+    icon: "🦖",
+  },
+  {
+    title: "VS Code",
     description: "Tips, extensions, and configuration guides for Visual Studio Code.",
     url: "/blog/tags/vscode",
     icon: "💻",
@@ -19,22 +31,16 @@ const MAIN_CARDS = [
     icon: "📝",
   },
   {
-    title: "Linux",
-    description: "Command line, system administration, and general Linux workflows.",
-    url: "/blog/tags/linux",
-    icon: "🐧",
-  },
-  {
     title: "PHP",
     description: "Backend development, framework guides, and language features.",
     url: "/blog/tags/php",
     icon: "🐘",
   },
   {
-    title: "Docusaurus",
-    description: "Building, customizing, and extending static sites with Docusaurus.",
-    url: "/blog/tags/docusaurus",
-    icon: "🦖",
+    title: "Code Quality",
+    description: "Static analysis, linters, formatters, and Git hooks for cleaner code.",
+    url: "/blog/tags/code-quality",
+    icon: "✅",
   },
   {
     title: "Bash",

@@ -5,8 +5,11 @@ date: 2024-11-19
 description: Generate and validate JSON data using Python's Faker library and Mockaroo. Learn to create fake data for testing and ensure file quality with schemas.
 authors: [christophe]
 image: /img/v2/json.webp
-mainTag: json
-tags: [json, python, tips, tool, vscode]
+mainTag: linux
+tags:
+  - linux
+  - python
+  - vscode
 language: en
 ---
 ![JSON - Faker & Mockup](/img/v2/json.webp)

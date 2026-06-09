@@ -5,7 +5,12 @@ description: A collection of ZSH functions to enhance your terminal experience, 
 authors: [christophe]
 image: /img/v2/zsh.webp
 mainTag: zsh
-tags: [customization, docker, fzf, linux, zsh]
+tags:
+  - customization
+  - docker
+  - fzf
+  - linux
+  - zsh
 date: 2026-03-02
 updates:
   - date: 2026-03-23

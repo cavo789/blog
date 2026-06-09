@@ -6,7 +6,10 @@ description: Use Linux inotifywait to continuously monitor a directory and get a
 authors: [christophe]
 image: /img/v2/linux_tips.webp
 mainTag: bash
-tags: [linux, python, tips]
+tags:
+  - bash
+  - linux
+  - python
 language: en
 ---
 <!-- cspell:ignore joinpath,pathlib -->

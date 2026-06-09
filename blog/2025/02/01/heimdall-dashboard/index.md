@@ -6,7 +6,9 @@ description: Tired of old browser bookmarks? Learn how to self-host and set up H
 authors: [christophe]
 image: /img/v2/docker_playing_with_app.webp
 mainTag: self-hosted
-tags: [docker, dashboard, self-hosted, tool]
+tags:
+  - docker
+  - self-hosted
 language: en
 blueskyRecordKey: 3lwgbxok2ys2i
 ---

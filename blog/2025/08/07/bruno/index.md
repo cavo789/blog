@@ -6,7 +6,10 @@ description: Explore Bruno, a powerful Postman-like API testing tool with both G
 authors: [christophe]
 image: /img/v2/api.webp
 mainTag: api
-tags: [api, bruno, docker, postman, tests, tool]
+tags:
+  - api
+  - docker
+  - tests
 language: en
 blueskyRecordKey: 3lvs336stus2j
 ---

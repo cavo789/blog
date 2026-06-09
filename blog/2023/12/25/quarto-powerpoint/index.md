@@ -7,7 +7,9 @@ authors: [christophe]
 image: /img/v2/quarto.webp
 series: Discovering Quarto
 mainTag: quarto
-tags: [markdown, powerpoint, quarto, revealjs, tips]
+tags:
+  - markdown
+  - quarto
 language: en
 ---
 ![Use Quarto and create a PowerPoint slideshow](/img/v2/quarto.webp)

@@ -6,7 +6,12 @@ description: Get instant SSH autosuggestions in ZSH. Learn to install the zsh-ss
 authors: [christophe]
 image: /img/v2/ssh.webp
 mainTag: ssh
-tags: [customization, linux, ssh, wsl, zsh]
+tags:
+  - customization
+  - linux
+  - ssh
+  - wsl
+  - zsh
 language: en
 updates:
   - date: 2026-02-04

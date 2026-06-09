@@ -7,7 +7,11 @@ authors: [christophe]
 image: /img/v2/docusaurus_react.webp
 series: Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide
 mainTag: component
-tags: [component, docusaurus, markdown, react, swizzle]
+tags:
+  - component
+  - docusaurus
+  - markdown
+  - react
 language: en
 blueskyRecordKey: 3lxvwdh3szc22
 ---

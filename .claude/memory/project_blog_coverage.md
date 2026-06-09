@@ -72,12 +72,15 @@ Coverage map built from full `/blog` analysis (2026-06-08). Before suggesting ar
 - `eza` (modern `ls` replacement)
 - `bat` (mentioned as dependency in some articles)
 
-## Notable gaps (not yet covered as of 2026-06-08)
-- `fzf` + `ripgrep` with live `bat` preview
-- `git worktree` (multiple branches simultaneously)
+## Notable gaps (not yet covered as of 2026-06-09)
 - `direnv` (auto-load `.env` per project on `cd`)
 - ZSH startup profiling & optimization (`zprof`, lazy-load)
 - SSH `ProxyJump` / bastion hosts / port forwarding tunnels
 - `tmux` (session persistence, different from Windows Terminal split panes)
 - `asdf` / `mise` for version management
 - Git interactive rebase workflows
+
+## Drafts in progress (`.unpublished/`)
+- `git-delta` — syntax-highlighted pager for git diff
+- `git-bisect` — binary search through history to find broken commit
+- `git-worktree` — work on two branches simultaneously, Docker angle

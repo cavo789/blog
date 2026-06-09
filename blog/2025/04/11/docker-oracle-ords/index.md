@@ -7,7 +7,10 @@ authors: [christophe]
 image: /img/v2/oracle.webp
 series: Running Oracle Database Server as a Docker container
 mainTag: oracle
-tags: [docker, openapi, oracle, postgrest, swagger]
+tags:
+  - api
+  - docker
+  - oracle
 language: en
 blueskyRecordKey: 3lvnjmthgj22v
 ---

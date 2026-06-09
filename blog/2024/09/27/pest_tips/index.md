@@ -6,7 +6,12 @@ description: Master PHP unit testing with Pest! Discover easy installation, the 
 authors: [christophe]
 image: /img/v2/unit_tests.webp
 mainTag: tests
-tags: [laravel, pest, php, phpunit, rectorphp, tests, tips, vscode]
+tags:
+  - code-quality
+  - laravel
+  - php
+  - tests
+  - vscode
 language: en
 ---
 <!-- cspell:ignore Nuno -->

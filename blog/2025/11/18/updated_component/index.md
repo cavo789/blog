@@ -7,7 +7,10 @@ authors: [christophe]
 image: /img/v2/changelog.webp
 mainTag: docusaurus
 series: Creating Docusaurus components
-tags: [component, docusaurus, react]
+tags:
+  - component
+  - docusaurus
+  - react
 blueskyRecordKey: 3m5vewhxkok2k
 ---
 ![Showing the changelog of your post](/img/v2/changelog.webp)

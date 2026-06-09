@@ -5,8 +5,10 @@ date: 2024-06-08
 description: Instantly visualize your Docker Compose architecture. Use `compose-viz` to generate a clear graph of services, dependencies, and exposed ports from your `compose.yaml` file.
 authors: [christophe]
 image: /img/v2/docker_tips.webp
-mainTag: Doc-as-code
-tags: [docker, visualisation, tips]
+mainTag: doc-as-code
+tags:
+  - doc-as-code
+  - docker
 language: en
 updates:
   - date: 2025-05-14

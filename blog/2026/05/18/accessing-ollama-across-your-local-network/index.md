@@ -6,7 +6,9 @@ date: 2026-05-18
 image: /img/v2/using_ollama_local_network.webp
 description: Learn how to set up a dedicated Ollama server on your local network and configure VSCode with the Continue extension for a private, free AI coding assistant.
 mainTag: ai
-tags: [ai, ollama]
+tags:
+  - ai
+  - ollama
 language: en
 ai_assisted: true
 blueskyRecordKey: 3mm44p55oik2p
@@ -29,7 +31,7 @@ The server should have as much Video RAM (VRAM) and regular memory (RAM) as poss
 
 In this article, we'll implement this architecture. Please refer to my previous article (<Link to="/blog/ollama-installation">Installing Ollama and get local AI</Link>) for the set-up of the **Local AI Server**.
 
-![Our local IA](./images/diagram.webp)
+![Our local AI](./images/diagram.webp)
 
 ## Using a Local Network
 
@@ -63,7 +65,7 @@ Approximate round trip times in milliseconds:
 
 </Terminal>
 
-This output means that our second computer can access the master one with almost zero latency (`time < 1ms`).
+This output means that our second computer can access the server with almost zero latency (`time < 1ms`).
 
 ### Running Open WebUI
 
@@ -87,7 +89,7 @@ $ curl -X POST http://192.168.0.218:11434/api/generate \
         }'
 ```
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note" title="Check your model name">
 Make sure the LLM `qwen2.5-coder:1.5b-base` model is well present; use another one based on your own list.
 </AlertBox>
 
@@ -145,9 +147,9 @@ If everything has been correctly configured, you now have AI auto-completion. Al
 
 #### Using chat with Continue
 
-Actually, the provided `config.yaml` for Continue already include two models for chat sessions. You can use them by clicking on the `Chat` entry in the left bar and then select one of the available models.
+Actually, the provided `config.yaml` for Continue already includes two models for chat sessions. You can use them by clicking on the `Chat` entry in the left bar and then select one of the available models.
 
-If you look at the configuration, we've defined a model called `Fast Chat (Qwen 14B)` (for fast reaction) and a smaller one but stronger called `Architect (Qwen 32B)` and that works fine.
+If you look at the configuration, we've defined a model called `Fast Chat (Qwen 14B)` (for fast reaction) and a smaller but stronger one called `Architect (Qwen 32B)` and that works fine.
 
 Depending on your server's hardware (how much memory it has), feel free to experiment with different AI models.
 

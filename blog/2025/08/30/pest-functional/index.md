@@ -7,7 +7,11 @@ authors: [christophe]
 image: /img/v2/functional_tests.webp
 series: Functional testing
 mainTag: component
-tags: [laravel, pest, php, tests]
+tags:
+  - component
+  - laravel
+  - php
+  - tests
 language: en
 blueskyRecordKey: 3lxm2amkjjk2m
 ---

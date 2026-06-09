@@ -6,7 +6,11 @@ description: Improve your dev workflow! Learn to install and set up Git inside y
 authors: [christophe]
 image: /img/v2/git.webp
 mainTag: docker
-tags: [devcontainer, docker, git, ssh, tips]
+tags:
+  - devcontainer
+  - docker
+  - git
+  - ssh
 language: en
 ---
 ![Docker - Install and use Git in a container just like you do on your host](/img/v2/git.webp)

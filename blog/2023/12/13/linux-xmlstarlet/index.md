@@ -6,7 +6,9 @@ description: Master XML data manipulation on the Linux command line with xmlstar
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: linux
-tags: [bash, linux, tips, xml, xmlstarlet]
+tags:
+  - bash
+  - linux
 language: en
 ---
 ![The xmlstarlet utility for Linux](/img/v2/bash.webp)

@@ -6,7 +6,10 @@ description: Learn how to use diff and sort in Bash to check if functions in you
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: bash
-tags: [bash, introspection, linux, tips]
+tags:
+  - bash
+  - database
+  - linux
 language: en
 ---
 ![Linux - Sort functions in a Bash script](/img/v2/bash.webp)

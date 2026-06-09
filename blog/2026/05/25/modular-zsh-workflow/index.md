@@ -6,7 +6,9 @@ authors: [christophe]
 image: /img/v2/repo_with_fzf.webp
 mainTag: fzf
 ai_assisted: true
-tags: [fzf, zsh]
+tags:
+  - fzf
+  - zsh
 date: 2026-05-25
 blueskyRecordKey: 3mmnv4igbvk2f
 ---
@@ -40,7 +42,7 @@ When you call a function, ZSH looks into these folders. If it finds a file match
 
 ## 💎 The Super Function: `repo` (Universal Project Navigator)
 
-As developers, we switch contexts constantly. We jump between a PHP backend, a PHP API project, a Vue.js frontend, a Python application, ... and between multiple documentation folders; all the day. Doing `cd ~/repositories/project-xyz` hundred times a day is a waste of life.
+As developers, we switch contexts constantly. We jump between a PHP backend, an API project, a Vue.js frontend, a Python application, ... and between multiple documentation folders; all day. Doing `cd ~/repositories/project-xyz` hundreds of times a day is a waste of life.
 
 The `repo` function uses `fd` (or `find`) and `fzf` to let you search all your git repositories and:
 
@@ -85,7 +87,7 @@ Create a file at `~/.zsh/fns/repo` (no extension!) and paste the following code.
 
 <ProjectSetup folderName="~/.zsh/fns" createFolder={true} >
   <Guideline>
-    Ensure the filename is exactly "repo". Do not add .sh or .zsh,
+    Ensure the filename is exactly "repo". Do not add .sh or .zsh.
   </Guideline>
   <Snippet filename="repo" source="./files/repo.zsh" defaultOpen={true}/>
 </ProjectSetup>
@@ -96,7 +98,7 @@ Think to update the `search_path` variable to where you're saving your projects 
 
 ### 4. Use it
 
-Create a new terminal or run `source ~/.zshrc` (because you've updated `.zshrc`) and simply run `repo` to start the function. So cool no?
+Create a new terminal or run `source ~/.zshrc` (because you've updated `.zshrc`) and simply run `repo` to start the function. How cool is that?
 
 <AlertBox variant="tip" title="Reload">
 

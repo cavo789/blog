@@ -6,7 +6,9 @@ description: Master your Linux command line history. Learn how to view, locate (
 authors: [christophe]
 image: /img/v2/linux_tips.webp
 mainTag: linux
-tags: [linux, zsh]
+tags:
+  - linux
+  - zsh
 language: en
 ---
 <!-- cspell:ignore DOSKEY,HISTIGNORE,HISTFILE,gacom -->

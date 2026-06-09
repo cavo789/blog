@@ -6,7 +6,10 @@ description: My favorite Quarto extensions - Learn about essential Quarto filter
 authors: [christophe]
 image: /img/v2/quarto.webp
 mainTag: quarto
-tags: [markdown, pandoc, quarto, revealjs]
+tags:
+  - doc-as-code
+  - markdown
+  - quarto
 language: en
 blueskyRecordKey: 3lun2yevo622r
 updates:

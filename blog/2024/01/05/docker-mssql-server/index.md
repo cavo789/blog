@@ -5,8 +5,10 @@ date: 2024-01-05
 description: Easily run MSSQL Server 2022 using Docker. This step-by-step guide shows you how to install the container, connect with SSMS, and start querying your database.
 authors: [christophe]
 image: /img/v2/mssql.webp
-mainTag: mssql-server
-tags: [docker, mssql-server, ssms]
+mainTag: database
+tags:
+  - database
+  - docker
 language: en
 ---
 ![Play with Microsoft SQL Server 2022 using Docker](/img/v2/mssql.webp)

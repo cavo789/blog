@@ -7,7 +7,10 @@ authors: [christophe]
 image: /img/v2/clean_code.webp
 series: code quality
 mainTag: code-quality
-tags: [black, captainhook, ci, code-quality, git, grumphp, hooks, husky, mypy, phan, php-cs-fixer, phpcbf, phplint, phpstan, pre-commit, prospector, pylint, python, ruff, shellcheck, shellformat, tips]
+tags:
+  - code-quality
+  - git
+  - python
 language: en
 ---
 ![Git - pre-commit-hooks](/img/v2/clean_code.webp)

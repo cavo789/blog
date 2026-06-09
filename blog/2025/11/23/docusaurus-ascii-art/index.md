@@ -7,7 +7,9 @@ authors: [christophe]
 image: /img/v2/ascii_art_html.webp
 series: Creating Docusaurus components
 mainTag: docusaurus
-tags: [docusaurus, plugin]
+tags:
+  - docusaurus
+  - linux
 language: en
 blueskyRecordKey: 3m6bvf4ph6224
 ---

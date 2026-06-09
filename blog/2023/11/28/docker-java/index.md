@@ -5,8 +5,8 @@ date: 2023-11-28
 description: Learn how to compile and run Java applications using Docker. Set up a Java development environment quickly without local installation, perfect for developers new to Java and Docker.
 authors: [christophe]
 image: /img/v2/experiments.webp
-mainTag: java
-tags: [docker, java]
+mainTag: docker
+tags: [docker]
 language: en
 ---
 ![Play with Docker and Java](/img/v2/experiments.webp)

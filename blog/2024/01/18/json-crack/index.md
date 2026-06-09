@@ -5,8 +5,11 @@ date: 2024-01-18
 description: Transform complex JSON data into clear, interactive mind maps with JSON Crack. Discover how this powerful tool simplifies data visualization and enhances data understanding.
 authors: [christophe]
 image: /img/v2/mindmaps.webp
-mainTag: Doc-as-code
-tags: [json, mindmap, visualisation, vscode]
+mainTag: doc-as-code
+tags:
+  - doc-as-code
+  - linux
+  - vscode
 language: en
 ---
 ![Rendering a JSON file as a mind map](/img/v2/mindmaps.webp)

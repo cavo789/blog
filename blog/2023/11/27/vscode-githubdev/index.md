@@ -6,7 +6,9 @@ description: Did you know you can open VSCode for any GitHub repository instantl
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-tags: [github, tips, vscode]
+tags:
+  - github
+  - vscode
 language: en
 ---
 ![Start vscode from github.com](/img/v2/vscode_tips.webp)

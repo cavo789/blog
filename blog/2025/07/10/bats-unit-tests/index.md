@@ -6,7 +6,10 @@ description: Learn how to effectively unit test your Bash scripts on Linux using
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: tests
-tags: [linux, shell, tests]
+tags:
+  - bash
+  - linux
+  - tests
 language: en
 blueskyRecordKey: 3lujtej7xhs23
 ---

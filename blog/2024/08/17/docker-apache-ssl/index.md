@@ -6,7 +6,12 @@ description: Configure your Docker localhost to use SSL (HTTPS). This step-by-st
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: ssl
-tags: [apache, docker, https, php, nginx, ssh]
+tags:
+  - apache
+  - docker
+  - php
+  - ssh
+  - ssl
 language: en
 blueskyRecordKey: null
 ---

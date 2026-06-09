@@ -3,7 +3,10 @@ slug: vscode-remote-ssh
 title: SSH Remote development with VSCode
 authors: [christophe]
 mainTag: ssh
-tags: [planethoster, ssh, tips, vscode]
+tags:
+  - self-hosted
+  - ssh
+  - vscode
 image: /img/v2/vscode_ssh_dev.webp
 description: "Use VS Code Remote - SSH: connect to production servers, and edit/execute remotely while avoiding common pitfalls."
 date: 2026-01-05

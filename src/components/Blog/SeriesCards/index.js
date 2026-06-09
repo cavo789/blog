@@ -68,7 +68,7 @@ export default function SeriesCards() {
   }
 
   return (
-    <div className="container margin-top--lg margin-bottom--lg">
+    <div className="margin-top--lg margin-bottom--lg">
       <div className={styles.seriesGrid}>
         {enriched.map((serie) => (
           <PostCard key={serie.permalink} post={serie} />

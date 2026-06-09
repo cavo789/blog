@@ -6,7 +6,9 @@ description: Stop the slow process of deleting files via FTP! Learn how to remov
 authors: [christophe]
 image: /img/v2/winscp.webp
 mainTag: linux
-tags: [ftp, tips]
+tags:
+  - linux
+  - ssh
 language: en
 ---
 <!-- cspell:ignore subfolders -->

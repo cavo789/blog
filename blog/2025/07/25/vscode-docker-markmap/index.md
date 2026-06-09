@@ -5,8 +5,12 @@ date: 2025-07-25
 description: Generate attractive mindmaps from Markdown using Markmap and customize them in VSCode. Render the final, beautiful HTML result with Quarto and Docker.
 authors: [christophe]
 image: /img/v2/mindmaps.webp
-mainTag: mindmap
-tags: [docker, mindmap, quarto, tips, visualisation, vscode]
+mainTag: doc-as-code
+tags:
+  - doc-as-code
+  - docker
+  - quarto
+  - vscode
 language: en
 blueskyRecordKey: 3lurgf4ddp22y
 ---

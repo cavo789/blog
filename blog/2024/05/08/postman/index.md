@@ -6,7 +6,11 @@ description: Master API testing with Postman. Use it as a powerful unit test too
 authors: [christophe]
 image: /img/v2/api.webp
 mainTag: api
-tags: [api, code-quality, php, postman, soap, tests, tool]
+tags:
+  - api
+  - code-quality
+  - php
+  - tests
 language: en
 ---
 <!-- cSpell::ignore ELECTRABEL,taxud -->

@@ -2,6 +2,7 @@
 slug: new-year-2024
 title: Happy New Year 2024
 date: 2023-12-31
+tags: [docusaurus]
 description: Happy New Year 2024! Wish you success, curiosity, and new skills in Docker, Linux, Markdown, and PHP this year.
 authors: [christophe]
 image: /img/v2/happy_new_year.webp

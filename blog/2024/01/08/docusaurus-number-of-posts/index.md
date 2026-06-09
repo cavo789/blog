@@ -7,7 +7,9 @@ authors: [christophe]
 image: /img/v2/docusaurus_tips.webp
 series: Discovering Docusaurus
 mainTag: docusaurus
-tags: [markdown, docusaurus, tips]
+tags:
+  - docusaurus
+  - markdown
 language: en
 ---
 <!-- cspell:ignore autoriser,collage -->

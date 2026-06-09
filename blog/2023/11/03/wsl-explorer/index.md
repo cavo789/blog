@@ -6,7 +6,9 @@ description: Access your Linux files in Windows Explorer! Learn the simple comma
 authors: [christophe]
 image: /img/v2/wsl.webp
 mainTag: wsl
-tags: [tips, wsl, windows]
+tags:
+  - windows
+  - wsl
 language: en
 ---
 <!-- cspell:ignore cbfsconnect -->

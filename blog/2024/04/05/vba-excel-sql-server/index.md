@@ -7,7 +7,10 @@ authors: [christophe]
 image: /img/v2/mssql.webp
 series: MS Excel - Connect to a SQL Server database
 mainTag: excel
-tags: [excel, ribbon, mssql-server, vba]
+tags:
+  - database
+  - excel
+  - vba
 language: en
 blueskyRecordKey: 3lvnkbm63nc2v
 ---

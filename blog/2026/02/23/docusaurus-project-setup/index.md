@@ -6,7 +6,9 @@ authors: [christophe]
 image: /img/v2/project_setup.webp
 series: Creating Docusaurus components
 mainTag: component
-tags: [docusaurus]
+tags:
+  - component
+  - docusaurus
 date: 2026-02-23
 ai_assisted: true
 blueskyRecordKey: 3mfj335ykxc2d

@@ -5,7 +5,9 @@ description: Learn how to configure ZSH to automatically display your most recen
 authors: [christophe]
 image: /img/v2/git_branches_status.webp
 mainTag: git
-tags: [git, zsh]
+tags:
+  - git
+  - zsh
 date: 2026-04-06
 blueskyRecordKey: 3misnmd2jqs2f
 ---

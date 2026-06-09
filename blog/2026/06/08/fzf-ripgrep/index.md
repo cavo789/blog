@@ -6,7 +6,11 @@ authors: [christophe]
 image: /img/v2/fzf_ripgrep.webp
 description: Combine ripgrep and fzf with a bat syntax-highlighted preview panel to build an interactive code search — then open the result directly in VSCode at the exact matching line.
 mainTag: fzf
-tags: [bash, fzf, linux, zsh]
+tags:
+  - bash
+  - fzf
+  - linux
+  - zsh
 language: en
 ai_assisted: true
 blueskyRecordKey:

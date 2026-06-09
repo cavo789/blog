@@ -6,7 +6,9 @@ description: Containerize your PHP application fast! This guide shows you how to
 authors: [christophe]
 image: /img/v2/docker_init.webp
 mainTag: php
-tags: [docker, tips]
+tags:
+  - docker
+  - php
 language: en
 ---
 <!-- cspell:ignore dbmdl -->

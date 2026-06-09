@@ -5,7 +5,9 @@ description: A step-by-step guide to show when a blog post has been written with
 image: /img/v2/gemini-co-author.webp
 series: Creating Docusaurus components
 mainTag: docusaurus
-tags: [ai, docusaurus]
+tags:
+  - ai
+  - docusaurus
 authors: [christophe]
 ai_assisted: true
 date: 2026-03-09

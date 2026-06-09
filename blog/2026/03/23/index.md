@@ -4,7 +4,9 @@ title: Restore Marknotes with Lovable.dev
 description: Ask loveable.dev to create a full dockerized application with a backend using Python and FastAPI and a frontend using React.
 image: /img/v2/lovable_dev.webp
 mainTag: ai
-tags: [ai, docusaurus]
+tags:
+  - ai
+  - docusaurus
 authors: [christophe]
 ai_assisted: true
 date: 2026-03-23

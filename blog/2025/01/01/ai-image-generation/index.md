@@ -6,7 +6,7 @@ description: Recraft.ai - Discover an advanced AI image generation tool that off
 authors: [christophe]
 image: /img/v2/ai.webp
 mainTag: ai
-tags: [ai, recraft]
+tags: [ai]
 language: en
 ---
 <!-- cspell:ignore recraft -->

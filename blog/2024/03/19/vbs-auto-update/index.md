@@ -6,7 +6,10 @@ description: Automate updates for your VBS (Visual Basic Script) console scripts
 authors: [christophe]
 image: /img/v2/vbs.webp
 mainTag: github
-tags: [dos, github, vbs]
+tags:
+  - github
+  - vba
+  - windows
 language: en
 ---
 ![VBS - Auto update script](/img/v2/vbs.webp)

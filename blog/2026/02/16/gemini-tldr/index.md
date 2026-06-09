@@ -7,7 +7,12 @@ authors: [christophe]
 image: /img/v2/gemini_tldr.webp
 series: Creating Docusaurus components
 mainTag: component
-tags: [ai, docker, docusaurus, python]
+tags:
+  - ai
+  - component
+  - docker
+  - docusaurus
+  - python
 language: en
 blueskyRecordKey: 3mexhwsmhac2n
 ---

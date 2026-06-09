@@ -85,7 +85,11 @@ export default function asciiInjectorPlugin(context, options) {
               updated = commentBanner + html;
             }
 
-            await fs.writeFile(filePath, updated, "utf8");
+            // Write atomically: temp file + rename avoids race conditions
+            // with other postBuild plugins that read HTML concurrently.
+            const tmpPath = `${filePath}.tmp`;
+            await fs.writeFile(tmpPath, updated, "utf8");
+            await fs.rename(tmpPath, filePath);
             return { status: "ok", filePath };
           } catch (err) {
             return { status: "error", filePath, error: err };

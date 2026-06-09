@@ -6,7 +6,10 @@ description: Generate high-quality documentation for your PHP codebase effortles
 authors: [christophe]
 image: /img/v2/php_tips.webp
 mainTag: php
-tags: [docker, php, phpdoc, wordpress]
+tags:
+  - code-quality
+  - docker
+  - php
 language: en
 ---
 ![Generating documentation for a PHP codebase](/img/v2/php_tips.webp)

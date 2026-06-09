@@ -6,7 +6,10 @@ description: Use a script with WinSCP to easily synchronize files between your l
 authors: [christophe]
 image: /img/v2/winscp.webp
 mainTag: winscp
-tags: [dos, synology, tips, winscp]
+tags:
+  - self-hosted
+  - windows
+  - winscp
 language: en
 ---
 ![WinSCP - Synchronize host and remote](/img/v2/winscp.webp)

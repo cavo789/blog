@@ -7,7 +7,9 @@ authors: [christophe]
 image: /img/v2/quarto.webp
 series: Discovering Quarto
 mainTag: quarto
-tags: [markdown, quarto, revealjs, tips]
+tags:
+  - markdown
+  - quarto
 language: en
 ---
 ![Quarto conditional display](/img/v2/quarto.webp)

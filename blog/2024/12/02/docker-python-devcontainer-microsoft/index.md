@@ -7,7 +7,10 @@ authors: [christophe]
 image: /img/v2/devcontainer.webp
 series: Coding using a devcontainer
 mainTag: python
-tags: [devcontainer, docker, python]
+tags:
+  - devcontainer
+  - docker
+  - python
 language: en
 ---
 ![Docker - Even easier setup of Python](/img/v2/devcontainer.webp)

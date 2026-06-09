@@ -6,7 +6,9 @@ description: Efficiently compare two files or entire folders in Linux using the 
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: linux
-tags: [bash, linux, tips]
+tags:
+  - bash
+  - linux
 language: en
 ---
 ![Linux - Comparing two folders/files in the console](/img/v2/bash.webp)

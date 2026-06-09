@@ -5,7 +5,9 @@ description: Drop the heavy Node toolchains. Build a fast, dependency-free asset
 authors: [christophe]
 image: /img/v2/minification.webp
 mainTag: bash
-tags: [bash, tips]
+tags:
+  - bash
+  - docker
 date: 2026-04-13
 blueskyRecordKey: 3mje5jxw6ts2a
 ---

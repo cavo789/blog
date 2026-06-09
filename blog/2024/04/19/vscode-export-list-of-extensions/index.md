@@ -6,7 +6,9 @@ description: Export and share your list of installed VS Code extensions using th
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-tags: [tips, vscode]
+tags:
+  - linux
+  - vscode
 language: en
 ---
 ![Export the list of extensions you've installed in VSCode](/img/v2/vscode_tips.webp)

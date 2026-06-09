@@ -5,8 +5,10 @@ date: 2026-02-09
 description: Keep your GitHub profile README up to date with your latest blog posts using GitHub Actions. Learn how to set up a scheduled workflow that fetches your RSS feed and updates your README automatically every week.
 authors: [christophe]
 image: /img/v2/github_profile_automate.webp
-mainTag: Github
-tags: [actions, docusaurus, github]
+mainTag: github
+tags:
+  - docusaurus
+  - github
 language: en
 blueskyRecordKey: 3meftwuqydk2x
 ---

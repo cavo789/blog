@@ -6,7 +6,10 @@ description: Learn to auto-generate documentation for your Bash scripts on Linux
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: bash
-tags: [bash, introspection, linux, tips]
+tags:
+  - bash
+  - database
+  - linux
 language: en
 ---
 ![Linux - Generate documentation from Bash scripts](/img/v2/bash.webp)

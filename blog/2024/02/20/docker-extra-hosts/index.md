@@ -6,7 +6,9 @@ description: Resolve host aliases inside Docker containers! Learn to use docker 
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
-tags: [docker, network, tips]
+tags:
+  - docker
+  - linux
 language: en
 ---
 <!-- cspell:ignore allnodes,allrouters,localnet,mcastprefix -->

@@ -6,7 +6,11 @@ description: Run Quarto Markdown in Docker for easy documentation and slideshow 
 authors: [christophe]
 image: /img/v2/quarto.webp
 mainTag: quarto
-tags: [docker, markdown, pandoc, quarto, revealjs]
+tags:
+  - doc-as-code
+  - docker
+  - markdown
+  - quarto
 language: en
 updates:
   - date: 2024-11-19

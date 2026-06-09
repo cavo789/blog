@@ -6,7 +6,10 @@ description: Use a private Docker image from Docker Hub in your GitLab CI/CD pip
 authors: [christophe]
 image: /img/v2/gitlab.webp
 mainTag: gitlab
-tags: [ci, gitlab, ssh]
+tags:
+  - code-quality
+  - gitlab
+  - ssh
 language: en
 blueskyRecordKey: 3lun25dkf322r
 ---

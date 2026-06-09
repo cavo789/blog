@@ -7,7 +7,11 @@ authors: [christophe]
 image: /img/v2/functional_tests.webp
 series: Functional testing
 mainTag: tests
-tags: [chrome, cypress, docker, javascript, nodejs, tests]
+tags:
+  - docker
+  - nodejs
+  - react
+  - tests
 language: en
 blueskyRecordKey: 3lvnkku4dik2v
 ---

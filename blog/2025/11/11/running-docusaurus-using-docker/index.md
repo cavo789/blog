@@ -5,9 +5,15 @@ date: 2025-11-11
 description: Streamline Docusaurus blog development! Build a single Docker image for production and use VS Code Dev Containers for consistent, fast, and isolated editing.
 authors: [christophe]
 image: /img/v2/docusaurus_using_docker.webp
-mainTag: Docusaurus
+mainTag: docusaurus
 series: Running Docusaurus using Docker
-tags: [devcontainer, docker, docusaurus, nodejs, vscode, yarn]
+tags:
+  - devcontainer
+  - docker
+  - docusaurus
+  - nodejs
+  - vscode
+  - yarn
 language: en
 blueskyRecordKey: 3m5ec6d4zn22x
 ---

@@ -6,7 +6,10 @@ description: Master calling SOAP web services from MS Excel using VBA. Get the c
 authors: [christophe]
 image: /img/v2/excel.webp
 mainTag: excel
-tags: [api, excel, ribbon, soap, vba]
+tags:
+  - api
+  - excel
+  - vba
 language: en
 ---
 ![MS Excel - How to call a SOAP web service](/img/v2/excel.webp)

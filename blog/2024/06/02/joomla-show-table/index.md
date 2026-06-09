@@ -6,7 +6,10 @@ description: Easily export live Joomla data to Microsoft Excel. Learn to run a c
 authors: [christophe]
 image: /img/v2/joomla.webp
 mainTag: joomla
-tags: [database, excel, joomla, tips]
+tags:
+  - database
+  - excel
+  - joomla
 language: en
 ---
 <!-- cspell:ignore showtable,sortering,qrjlq -->

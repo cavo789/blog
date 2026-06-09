@@ -7,7 +7,9 @@ authors: [christophe]
 image: /img/v2/docusaurus_rss_enhanced.webp
 mainTag: docusaurus
 series: Creating Docusaurus components
-tags: [actions, docusaurus, github]
+tags:
+  - docusaurus
+  - github
 language: en
 blueskyRecordKey: 3m7f4ftmub22c
 ---

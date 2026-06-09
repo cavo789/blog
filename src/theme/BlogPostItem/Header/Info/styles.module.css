@@ -8,3 +8,32 @@
 .container {
   font-size: 0.9rem;
 }
+
+.mainTagBadge {
+  display: inline-block;
+  margin-right: 0.35rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 2rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: var(--ifm-color-primary);
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.mainTagBadge:hover {
+  background-color: var(--ifm-color-primary-dark);
+  color: #fff;
+  text-decoration: none;
+}
+
+[data-theme="dark"] .mainTagBadge {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+[data-theme="dark"] .mainTagBadge:hover {
+  background-color: var(--ifm-color-primary-darker);
+}

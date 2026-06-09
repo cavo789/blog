@@ -7,7 +7,11 @@ authors: [christophe]
 image: /img/v2/clean_code.webp
 series: code quality
 mainTag: code-quality
-tags: [code-quality, makefile, markdown, tips, vscode]
+tags:
+  - code-quality
+  - makefile
+  - markdown
+  - vscode
 language: en
 ---
 ![Markdown linter - solve formatting issue in md files](/img/v2/clean_code.webp)

@@ -6,7 +6,10 @@ description: Easily convert MS Office documents (Word, Excel) and PDFs into Mark
 authors: [christophe]
 image: /img/v2/markdown.webp
 mainTag: markdown
-tags: [docker, docx, excel]
+tags:
+  - docker
+  - excel
+  - markdown
 language: en
 blueskyRecordKey: 3mkzumi3cf22g
 ---
@@ -22,7 +25,7 @@ In this article, we'll create a Docker image and a small conversion script calle
 
 <!-- truncate -->
 
-Like always, I'll first create a Docker image so I don't need to install Python on my machine neither to install the utility and all its dependencies.
+Like always, I'll first create a Docker image so I don't need to install Python on my machine nor manage the utility and all its dependencies.
 
 <AlertBox variant="info" title="I love Docker also for this">
 This is exactly why Docker is indispensable: complete isolation. Everything runs within the container. Once I am done experimenting, I can delete the image, leaving nothing on my disk except the Dockerfile needed to recreate it on demand.
@@ -30,7 +33,7 @@ This is exactly why Docker is indispensable: complete isolation. Everything runs
 
 ## Create our Docker image
 
-Let's create a new folder and jump in it: `mkdir -p /tmp/markitdown && cd $_`
+Let's create a new folder and jump into it: `mkdir -p /tmp/markitdown && cd $_`
 
 Then please create a new file called `Dockerfile`:
 
@@ -62,7 +65,7 @@ Now, copy any `.docx` file into the same folder containing your `Dockerfile` and
 
 You can then run the conversion by running this command: `docker compose run --rm markitdown sample.docx > sample.md`.
 
-However, this approach is not very practical for daily use. It would be much easier to run the conversion from any directory
+However, this approach is not very practical for daily use. It would be much easier to run the conversion from any directory.
 
 ### Using a binary
 
@@ -72,20 +75,20 @@ Let's create the `md-convert` file:
 
 And make sure to make this file executable: `sudo chmod +x /usr/local/bin/md-convert`.
 
-From now on, simply navigate to any folder containing a document you want to convert. For example
+From now on, simply navigate to any folder containing a document you want to convert. For example:
 
 <Terminal>
 $ cd ~/documents/
 
-md-convert sample.docx > sample.md
-md-convert budget.xlsx > budget.md
-md-convert user_guide.pdf > user_guide.md
+$ md-convert sample.docx > sample.md
+$ md-convert budget.xlsx > budget.md
+$ md-convert user_guide.pdf > user_guide.md
 
 </Terminal>
 
 ## Conclusion
 
-Thanks to MarkItDown and the `md-convert` wrapper script we just built, converting office documents into clean Markdown is now effortless, secure, and native to your terminal.
+Thanks to Markitdown and the `md-convert` wrapper script we just built, converting office documents into clean Markdown is now effortless, secure, and native to your terminal.
 
 Check the [official repository](https://github.com/microsoft/markitdown/) for the complete list of supported file formats:
 

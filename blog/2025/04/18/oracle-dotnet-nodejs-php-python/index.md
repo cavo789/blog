@@ -7,7 +7,9 @@ authors: [christophe]
 image: /img/v2/oracle.webp
 series: Running Oracle Database Server as a Docker container
 mainTag: oracle
-tags: [docker, oracle]
+tags:
+  - docker
+  - oracle
 language: en
 blueskyRecordKey: 3lvnjmthgj22v
 ---

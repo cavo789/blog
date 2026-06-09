@@ -16,18 +16,18 @@ Proposals generated 2026-06-08 after full blog analysis. See [[project-blog-cove
 
 ## Proposals
 
-### [ ] FZF + ripgrep: supercharged code search with live preview
+### [x] FZF + ripgrep: supercharged code search with live preview
 - `rg` as fzf source, `bat` for preview (`--preview`), open result in VSCode at exact line
 - ZSH function `fgrep` wrapping it all
 - Natural follow-up to existing `linux-fzf-introduction` and `ssh_with_fzf`
 - **Priority: high** (fits existing FZF series, very visual)
 
-### [ ] Git Worktrees: work on multiple branches simultaneously
+### [x] Git Worktrees: work on multiple branches simultaneously
 - `git worktree add/list/remove`
 - Avoids stash/switch for hotfix-while-feature-in-progress workflow
 - FZF function `gwt` to navigate/create worktrees interactively
 - Docker angle: each worktree can have its own container
-- **Priority: high** (Git gap, very practical, no existing coverage)
+- Draft written: `/opt/docusaurus/.unpublished/git-worktree/index.md`
 
 ### [ ] direnv: auto-load environment variables per project
 - `eval "$(direnv hook zsh)"`, `.envrc` with `dotenv`
@@ -40,6 +40,14 @@ Proposals generated 2026-06-08 after full blog analysis. See [[project-blog-cove
 - Lazy-loading strategy with `autoload`
 - Complements existing `modular-zsh-workflow` article
 - **Priority: medium**
+
+### [x] delta: syntax-highlighted pager for git diff
+- Drop-in `core.pager` replacement, side-by-side, word-level diff, themes
+- Draft written: `/opt/docusaurus/.unpublished/git-delta/index.md`
+
+### [x] git bisect: binary search to find the broken commit
+- Step-by-step + automated `git bisect run <script>`, Docker scenario
+- Draft written: `/opt/docusaurus/.unpublished/git-bisect/index.md`
 
 ### [ ] SSH ProxyJump and tunnels: reach internal services via bastion
 - `ProxyJump` in `~/.ssh/config`, `LocalForward` for DB/port tunneling

@@ -6,7 +6,9 @@ description: Improve your coding experience! Learn how to install the free and h
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-tags: [tips, vscode]
+tags:
+  - customization
+  - vscode
 language: en
 ---
 ![Using the JetBrains Mono font in vscode](/img/v2/vscode_tips.webp)

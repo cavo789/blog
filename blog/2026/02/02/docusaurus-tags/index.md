@@ -6,8 +6,11 @@ description: Automate Docusaurus tag management with this Python script. Clean u
 authors: [christophe]
 image: /img/v2/tags_manager.webp
 series: Creating Docusaurus components
-mainTag: Docusaurus
-tags: [docker, docusaurus, python]
+mainTag: docusaurus
+tags:
+  - docker
+  - docusaurus
+  - python
 language: en
 blueskyRecordKey: 3mdubzzquds2t
 ---

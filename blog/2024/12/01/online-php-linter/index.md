@@ -7,7 +7,11 @@ authors: [christophe]
 image: /img/v2/clean_code.webp
 series: code quality
 mainTag: code-quality
-tags: [php, code-quality, laravel, phpcs, php-cs-fixer, tips, vscode]
+tags:
+  - code-quality
+  - laravel
+  - php
+  - vscode
 language: en
 ---
 ![Format poorly formatted PHP code](/img/v2/clean_code.webp)

@@ -7,7 +7,11 @@ authors: [christophe]
 image: /img/v2/clean_code.webp
 series: code quality
 mainTag: code-quality
-tags: [code-quality, composer, docker, laravel, php, php-cs-fixer, phpcs, phpcbf, refactoring]
+tags:
+  - code-quality
+  - docker
+  - laravel
+  - php
 language: en
 ---
 ![Docker image that provides static analysis tools for PHP](/img/v2/clean_code.webp)

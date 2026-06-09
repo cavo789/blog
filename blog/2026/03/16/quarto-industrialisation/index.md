@@ -4,8 +4,10 @@ title: Quarto - How I Built a Self-Documenting Ecosystem for 50+ Projects
 description: A deep dive into how I engineered a fully automated documentation ecosystem using Quarto and Docker, transforming documentation from a chore into a high-performance build pipeline.
 image: /img/v2/quarto-industrialisation.webp
 series: Discovering Quarto
-mainTag: Doc-as-code
-tags: [quarto]
+mainTag: doc-as-code
+tags:
+  - doc-as-code
+  - quarto
 authors: [christophe]
 language: en
 ai_assisted: true

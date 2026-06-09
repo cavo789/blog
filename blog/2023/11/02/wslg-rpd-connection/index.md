@@ -6,7 +6,10 @@ description: Learn how to open an RDP connection to your WSLg Linux instance (Ub
 authors: [christophe]
 image: /img/v2/wsl.webp
 mainTag: wsl
-tags: [wsl, docker, rdp]
+tags:
+  - docker
+  - windows
+  - wsl
 language: en
 ---
 ![Opening a RDP connection to the Linux local instance](/img/v2/wsl.webp)
