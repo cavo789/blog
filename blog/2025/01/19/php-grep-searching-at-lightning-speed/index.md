@@ -6,7 +6,10 @@ description: Tired of painfully slow FTP search functions? Discover php_grep, th
 authors: [christophe]
 image: /img/v2/winscp.webp
 mainTag: winscp
-tags: [ftp, php-grep, tips, winscp]
+tags:
+  - code-quality
+  - ssh
+  - winscp
 language: en
 ---
 ![Search your FTP server at lightning speed](/img/v2/winscp.webp)

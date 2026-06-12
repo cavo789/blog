@@ -7,7 +7,9 @@ authors: [christophe]
 image: /img/v2/quarto.webp
 series: Discovering Quarto
 mainTag: quarto
-tags: [markdown, quarto, tips]
+tags:
+  - markdown
+  - quarto
 language: en
 ---
 ![Quarto Inline style](/img/v2/quarto.webp)

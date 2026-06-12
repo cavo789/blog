@@ -5,8 +5,11 @@ date: 2024-12-26
 description: Automate your CI/CD workflows with Dagger.io and Python. Quickly run code quality tools (Pylint, Black, Ruff) and test your entire pipeline locally to simplify integration.
 authors: [christophe]
 image: /img/v2/dagger.webp
-mainTag: dagger
-tags: [ci, dagger, github, gitlab, tips, workflow]
+mainTag: code-quality
+tags:
+  - code-quality
+  - github
+  - gitlab
 language: en
 ---
 <!-- cspell:ignore pylint,pyproject,stopit,randint,workdir,pylintrc,docparams,mccabe,mypy -->

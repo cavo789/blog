@@ -6,7 +6,9 @@ description: Learn how to easily add a "go to the top" button, often with a fun 
 authors: [christophe]
 image: /img/v2/go_top_banner.webp
 mainTag: component
-tags: [component, docusaurus]
+tags:
+  - component
+  - docusaurus
 language: en
 blueskyRecordKey: 3lynkx4gkjk2c
 ---

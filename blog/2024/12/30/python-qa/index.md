@@ -7,7 +7,11 @@ authors: [christophe]
 image: /img/v2/clean_code.webp
 series: code quality
 mainTag: code-quality
-tags: [autoflake, black, code-quality, devcontainer, docker, isort, mypy, prospector, pydocstyle, pylint, pyright, python, ruff, vulture]
+tags:
+  - code-quality
+  - devcontainer
+  - docker
+  - python
 language: en
 blueskyRecordKey: 3lymragaqr22l
 ---

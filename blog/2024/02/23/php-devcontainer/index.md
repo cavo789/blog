@@ -7,7 +7,12 @@ authors: [christophe]
 image: /img/v2/devcontainer.webp
 series: Coding using a devcontainer
 mainTag: php
-tags: [code-quality, composer, devcontainer, docker, intelephense, php, php-cs-fixer, phpcs, phpcbf, rectorphp, sonarlint, vscode]
+tags:
+  - code-quality
+  - devcontainer
+  - docker
+  - php
+  - vscode
 language: en
 ---
 ![Install a PHP Docker environment in a matter of seconds](/img/v2/devcontainer.webp)

@@ -5,8 +5,11 @@ date: 2025-06-20
 description: Discover Pentaho Data Integration (ETL). Follow this step-by-step guide to install Pentaho (PDI/Kettle) on Linux and load data from an Excel file into a PostgreSQL database using Docker.
 authors: [christophe]
 image: /img/v2/etl.webp
-mainTag: etl
-tags: [database, etl, msaccess, vba]
+mainTag: database
+tags:
+  - database
+  - msaccess
+  - vba
 language: en
 blueskyRecordKey: 3lumzwwoqsc2r
 ---

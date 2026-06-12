@@ -5,7 +5,9 @@ description: Learn how to deploy Ollama locally via Docker to run private, free 
 authors: [christophe]
 image: /img/v2/playing_with_ollama.webp
 mainTag: ai
-tags: [ai, ollama]
+tags:
+  - ai
+  - ollama
 date: 2026-03-30
 ai_assisted: true
 blueskyRecordKey: 3miaxwivces2d

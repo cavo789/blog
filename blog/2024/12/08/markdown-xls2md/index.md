@@ -6,7 +6,9 @@ description: Easily convert Excel ranges into clean Markdown tables with the XLS
 authors: [christophe]
 image: /img/v2/markdown.webp
 mainTag: excel
-tags: [excel, markdown, tips]
+tags:
+  - excel
+  - markdown
 language: en
 ---
 ![Markdown - Convert Excel ranges to Markdown tables](/img/v2/markdown.webp)

@@ -6,7 +6,9 @@ description: Quickly convert CSV content into clean, formatted Markdown tables u
 authors: [christophe]
 image: /img/v2/csv.webp
 mainTag: markdown
-tags: [csv, excel, markdown, tips]
+tags:
+  - excel
+  - markdown
 language: en
 ---
 ![Markdown - Convert CSV to Markdown tables](/img/v2/csv.webp)

@@ -56,6 +56,34 @@
   width: auto;
 }
 
+/* --- NAVBAR PREMIUM --- */
+
+/* Smooth slide animation for hideOnScroll + subtle shadow */
+.navbar {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+[data-theme="dark"] .navbar {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Dark/light toggle button: ensure it's visible and styled */
+[class*="colorModeToggle"] button,
+.navbar__items--right .clean-btn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  padding: 4px 6px;
+  transition: background 0.2s ease;
+}
+
+[class*="colorModeToggle"] button:hover,
+.navbar__items--right .clean-btn:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
 /* --- MOBILE STICKY TOC LOGIC --- */
 .blog-toc-mobile {
   display: none; /* Hidden by default on Desktop */
@@ -84,6 +112,14 @@
 
     backdrop-filter: blur(8px);
     background: rgba(255, 255, 255, 0.85);
+
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .blog-toc-mobile--hidden {
+    transform: translate3d(0, calc(-100% - var(--ifm-navbar-height) - 8px), 0);
+    opacity: 0;
+    pointer-events: none;
   }
 
   [data-theme="dark"] .blog-toc-mobile {

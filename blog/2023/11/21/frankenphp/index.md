@@ -6,7 +6,10 @@ description: Learn how to set up a Joomla website using Docker and FrankenPHP, a
 authors: [christophe]
 image: /img/v2/frankenphp.webp
 mainTag: joomla
-tags: [docker, frankenphp, joomla]
+tags:
+  - docker
+  - joomla
+  - php
 language: en
 updates:
   - date: 2025-01-12

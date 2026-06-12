@@ -6,7 +6,9 @@ description: Customize your Git workflow with essential ~/.gitconfig file tips. 
 authors: [christophe]
 image: /img/v2/git.webp
 mainTag: git
-tags: [git, tips, wsl]
+tags:
+  - git
+  - wsl
 language: en
 updates:
   - date: 2026-02-04

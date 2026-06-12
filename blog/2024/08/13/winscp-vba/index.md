@@ -6,7 +6,9 @@ description: Automate secure SFTP/FTP file transfers directly from MS Office. Le
 authors: [christophe]
 image: /img/v2/winscp.webp
 mainTag: winscp
-tags: [tips, vba, winscp]
+tags:
+  - vba
+  - winscp
 language: en
 ---
 ![WinSCP - Visual Basic for Application use](/img/v2/winscp.webp)

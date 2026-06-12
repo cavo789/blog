@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import Link from "@docusaurus/Link";
 import { translate } from "@docusaurus/Translate";
 import { usePluralForm } from "@docusaurus/theme-common";
 import { useDateTimeFormat } from "@docusaurus/theme-common/internal";
@@ -34,9 +35,22 @@ function DateTime({ date, formattedDate }) {
 function Spacer() {
   return <>{" · "}</>;
 }
+function MainTagBadge({ mainTag, tags }) {
+  const tagObj = tags.find((t) => t.label.toLowerCase() === mainTag.toLowerCase()
+    || t.permalink.endsWith(`/${mainTag}`));
+  if (!tagObj) return null;
+  const permalink = tagObj.permalink.replace("/blog/tags/tags/", "/blog/tags/");
+  return (
+    <Link to={permalink} className={styles.mainTagBadge}>
+      {tagObj.label}
+    </Link>
+  );
+}
+
 export default function BlogPostItemHeaderInfo({ className, aiIcon }) {
-  const { metadata } = useBlogPost();
-  const { date, readingTime } = metadata;
+  const { metadata, isBlogPostPage } = useBlogPost();
+  const { date, readingTime, tags, frontMatter } = metadata;
+  const mainTag = frontMatter.mainTag;
   const dateTimeFormat = useDateTimeFormat({
     day: "numeric",
     month: "long",
@@ -46,6 +60,12 @@ export default function BlogPostItemHeaderInfo({ className, aiIcon }) {
   const formatDate = (blogDate) => dateTimeFormat.format(new Date(blogDate));
   return (
     <div className={clsx(styles.container, "margin-vert--md", className)}>
+      {isBlogPostPage && mainTag && tags?.length > 0 && (
+        <>
+          <MainTagBadge mainTag={mainTag} tags={tags} />
+          <Spacer />
+        </>
+      )}
       <DateTime date={date} formattedDate={formatDate(date)} />
       {typeof readingTime !== "undefined" && (
         <>

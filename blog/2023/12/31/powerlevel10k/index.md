@@ -6,7 +6,11 @@ description: Test and customize the Powerlevel10k Zsh theme for your Linux or WS
 authors: [christophe]
 image: /img/v2/customization_prompt.webp
 mainTag: customization
-tags: [customization, docker, tips, wsl, zsh]
+tags:
+  - customization
+  - docker
+  - wsl
+  - zsh
 language: en
 ---
 ![Customize your Linux prompt with Powerlevel10k](/img/v2/customization_prompt.webp)

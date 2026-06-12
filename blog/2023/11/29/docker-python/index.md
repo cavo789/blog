@@ -6,7 +6,9 @@ description: Forget complex Python setup. Learn how to quickly run your Python s
 authors: [christophe]
 image: /img/v2/python.webp
 mainTag: python
-tags: [docker, python]
+tags:
+  - docker
+  - python
 language: en
 ---
 ![Play with Docker and Python](/img/v2/python.webp)

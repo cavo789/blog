@@ -6,7 +6,9 @@ description: Never miss a warning again! The VSCode Error Lens addon shows error
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-tags: [addon, vscode]
+tags:
+  - code-quality
+  - vscode
 language: en
 ---
 ![Error Lens addon for VSCode](/img/v2/vscode_tips.webp)

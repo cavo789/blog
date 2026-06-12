@@ -6,7 +6,9 @@ description: Need to edit multiple lines in VSCode where search/replace fails? L
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-tags: [tips, vscode]
+tags:
+  - markdown
+  - vscode
 language: en
 ---
 ![Multiple cursors in vscode](/img/v2/vscode_tips.webp)

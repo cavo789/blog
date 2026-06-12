@@ -6,7 +6,9 @@ description: Learn how to run VSCode in your browser using Docker and the `code-
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-tags: [docker, vscode]
+tags:
+  - docker
+  - vscode
 language: en
 blueskyRecordKey: 3lujtglddu223
 ---

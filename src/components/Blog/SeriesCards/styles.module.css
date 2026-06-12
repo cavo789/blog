@@ -5,9 +5,11 @@
 }
 
 /* PostCard renders a col col--3 wrapper (Infima flex). Override its max-width
-   so cards fill the full grid cell instead of being capped at 25% of container. */
+   so cards fill the full grid cell instead of being capped at 25% of container.
+   min-width: 0 is required to let grid items shrink below their content min-size. */
 .seriesGrid > :global(.col.col--3) {
   max-width: 100%;
+  min-width: 0;
   margin-bottom: 0 !important;
 }
 
@@ -17,8 +19,9 @@
   }
 }
 
+/* !important prevents CSS module compilation from reordering this after the 996px rule */
 @media (max-width: 600px) {
   .seriesGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 }

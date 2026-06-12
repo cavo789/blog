@@ -6,7 +6,9 @@ description: Use the powerful Linux jq utility to manipulate JSON data, prettify
 authors: [christophe]
 image: /img/v2/json.webp
 mainTag: linux
-tags: [bash, json, jq, linux, tips]
+tags:
+  - bash
+  - linux
 language: en
 ---
 <!-- cspell:ignore Salomé -->

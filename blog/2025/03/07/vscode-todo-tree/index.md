@@ -6,7 +6,9 @@ description: Stop forgetting your TODOs and FIXMEs! Use the VSCode Todo Tree ext
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-tags: [tips, vscode]
+tags:
+  - code-quality
+  - vscode
 language: en
 blueskyRecordKey: 3lvnk2w4vss2v
 ---

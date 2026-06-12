@@ -6,7 +6,9 @@ description: Use Adminer, pgadmin, or phpmyadmin to access your Docker database 
 authors: [christophe]
 image: /img/v2/database_admin.webp
 mainTag: database
-tags: [adminer, docker, mysql, postgresql]
+tags:
+  - database
+  - docker
 language: en
 ---
 ![Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/img/v2/database_admin.webp)

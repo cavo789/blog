@@ -6,7 +6,9 @@ description: Easily visualize and document your database model with DrawDB-app. 
 authors: [christophe]
 image: /img/v2/diagrams.webp
 mainTag: database
-tags: [database, mermaid, tips, visualisation]
+tags:
+  - database
+  - doc-as-code
 language: en
 ---
 <!-- cspell:ignore drawdb,xinsodev -->

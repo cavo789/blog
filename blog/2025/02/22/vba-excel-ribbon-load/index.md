@@ -6,7 +6,10 @@ description: Load an Excel range into your custom VBA Ribbon dropdown control. T
 authors: [christophe]
 image: /img/v2/ribbon.webp
 mainTag: excel
-tags: [excel, ribbon, vba, vscode]
+tags:
+  - excel
+  - vba
+  - vscode
 language: en
 blueskyRecordKey: 3lwgc3uymnc2i
 ---

@@ -6,7 +6,9 @@ description: Discover karakeep, the self-hosted bookmark, note-taking, and image
 authors: [christophe]
 image: /img/v2/docker_playing_with_app.webp
 mainTag: self-hosted
-tags: [bookmark, docker, self-hosted, tool]
+tags:
+  - docker
+  - self-hosted
 language: en
 blueskyRecordKey: 3lujtc27n7s23
 ---

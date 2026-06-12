@@ -6,7 +6,10 @@ description: Easily clean up unreadable, legacy SQL code with a simple formattin
 authors: [christophe]
 image: /img/v2/sql_format.webp
 mainTag: self-hosted
-tags: [code-quality, sql, tips, tool]
+tags:
+  - code-quality
+  - database
+  - self-hosted
 language: en
 ---
 ![SQL - Formatting tool](/img/v2/sql_format.webp)

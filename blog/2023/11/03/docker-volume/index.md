@@ -6,7 +6,9 @@ description: Unlock data persistence in Docker! Learn how to use volumes (-v) to
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
-tags: [docker]
+tags:
+  - docker
+  - linux
 language: en
 ---
 ![Share data between your running Docker container and your computer](/img/v2/docker_tips.webp)

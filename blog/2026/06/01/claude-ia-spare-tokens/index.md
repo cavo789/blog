@@ -4,7 +4,8 @@ title: Claude Code - Optimizing Token Usage
 authors: [christophe]
 image: /img/v2/claude-code-tokens.webp
 mainTag: ai
-tags: [ai]
+tags:
+  - ai
 description: A practical guide to reducing token consumption in Claude Code; CLI commands, optimization of CLAUDE.md, and other context management.
 language: en
 ai_assisted: true

@@ -6,7 +6,10 @@ description: Master PHP code refactoring in VSCode with this guide. Use the free
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: php
-tags: [php, refactoring, tips, vscode]
+tags:
+  - code-quality
+  - php
+  - vscode
 language: en
 ---
 ![PHP code refactoring in VSCode](/img/v2/vscode_tips.webp)

@@ -5,8 +5,10 @@ date: 2024-08-01
 description: Quickly scan your Joomla website for viruses and suspicious files using the free aeSecure QuickScan tool. Supports Joomla 1.0.13 up to J5.1.0 and features a file whitelist.
 authors: [christophe]
 image: /img/v2/viruses.webp
-mainTag: aesecure
-tags: [docker, tips]
+mainTag: security
+tags:
+  - docker
+  - security
 language: en
 ---
 ![aeSecure - QuickScan - Free viruses scanner](/img/v2/viruses.webp)

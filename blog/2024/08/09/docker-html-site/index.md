@@ -6,7 +6,9 @@ description: Run any static HTML website in seconds with just ONE Docker command
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
-tags: [docker, powershell, wamp]
+tags:
+  - docker
+  - windows
 language: en
 blueskyRecordKey: 3lzxdp44mw223
 ---

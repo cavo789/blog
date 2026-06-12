@@ -6,7 +6,11 @@ description: Securely access private Git repositories during your Docker build u
 authors: [christophe]
 image: /img/v2/docker_secrets.webp
 mainTag: ssh
-tags: [docker, git, github, secrets, ssh]
+tags:
+  - docker
+  - git
+  - github
+  - ssh
 language: en
 blueskyRecordKey: null
 ---

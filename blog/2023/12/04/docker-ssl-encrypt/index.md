@@ -6,7 +6,9 @@ description: Securely encrypt and decrypt sensitive files using the OpenSSL imag
 authors: [christophe]
 image: /img/v2/encryption.webp
 mainTag: ssl
-tags: [docker, encryption, ssl]
+tags:
+  - docker
+  - ssl
 language: en
 ---
 ![Encrypt sensitive data using SSL and Docker](/img/v2/encryption.webp)

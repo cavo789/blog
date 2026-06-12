@@ -6,7 +6,9 @@ description: Efficiently merge two or more CSV or Excel files in Python using th
 authors: [christophe]
 image: /img/v2/pandas.webp
 mainTag: python
-tags: [csv, excel, pandas, python]
+tags:
+  - excel
+  - python
 language: en
 ---
 <!-- cspell:ignore vlookup,sheet -->

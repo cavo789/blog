@@ -6,7 +6,9 @@ description: Explore the power of Laravel events for clean, decoupled code. This
 authors: [christophe]
 image: /img/v2/laravel.webp
 mainTag: laravel
-tags: [laravel, php]
+tags:
+  - laravel
+  - php
 language: en
 ---
 ![Working with Laravel events](/img/v2/laravel.webp)

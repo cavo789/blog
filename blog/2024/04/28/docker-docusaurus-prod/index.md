@@ -7,7 +7,11 @@ authors: [christophe]
 image: /img/v2/docusaurus_using_docker.webp
 series: Running Docusaurus using Docker
 mainTag: docusaurus
-tags: [docker, docusaurus, nodejs, yarn]
+tags:
+  - docker
+  - docusaurus
+  - nodejs
+  - yarn
 language: en
 ---
 <!-- cspell::ignore corepack,docusaurus,johndoe -->

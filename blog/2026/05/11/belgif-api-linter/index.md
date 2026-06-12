@@ -3,9 +3,13 @@ slug: belgif-api-linter
 title: Validate your OpenAPI schema against the Belgif REST standards
 authors: [christophe]
 mainTag: api
-tags: [api, code-quality, docker, fastapi, rest, openapi]
+tags:
+  - api
+  - code-quality
+  - docker
+  - python
 image: /img/v2/belgif.webp
-description: "Use VS Code Remote - SSH: connect to production servers, and edit/execute remotely while avoiding common pitfalls."
+description: "Validate your FastAPI OpenAPI schema against the Belgif REST standards using Docker, with step-by-step fixes for the most common linting errors."
 date: 2026-05-11
 blueskyRecordKey: 3mlkngj2bp225
 ---
@@ -44,8 +48,8 @@ If you don't have one yet, just click on the `Generate install script` below and
 The `main.py` code defines:
 
 * A root endpoint `/` that returns a simple JSON.
-* An endpoint `/items/{item_id}` that accepts an integer `item_id` as a path parameter and an optional string query parameter `q`. [2, 3, 6]
-* An endpoint `/items/` that accepts `skip` and `limit` query parameters for pagination. [1, 7, 18]
+* An endpoint `/items/{item_id}` that accepts an integer `item_id` as a path parameter and an optional string query parameter `q`.
+* An endpoint `/items/` that accepts `skip` and `limit` query parameters for pagination.
 
 To run it, simply start `docker compose up --build -d` in your terminal:
 
@@ -87,7 +91,7 @@ You can test it using `curl` or your browser:
 
 If you want to check if your API is compliant, you can use the [belgif-rest-guide-validator](https://github.com/belgif/rest-guide-validator) as documented in the [Tools](https://www.belgif.be/specification/rest/api-guide/#openapi-tools) section.
 
-An easy way to do this is by using a Docker container. In the code sample below, take a look to the newer version of `compose.yaml`, we've added a new service called `belgif-lint` based on `maven`.
+An easy way to do this is by using a Docker container. In the code sample below, take a look at the newer version of `compose.yaml`, we've added a new service called `belgif-lint` based on `maven`.
 
 <ProjectSetup folderName="/tmp/fastapi" createFolder={true} >
   <Guideline>
@@ -100,7 +104,7 @@ An easy way to do this is by using a Docker container. In the code sample below,
   <Snippet filename="Dockerfile" source="./files/Dockerfile" />
 </ProjectSetup>
 
-Once you've fired `docker compose up --build -d` again to create the `belgif-lint` container, you're almost ready to use it but first, you need to make sure you've a `openapi.json` file on your disk. So let's create it by running the following command:
+Once you've fired `docker compose up --build -d` again to create the `belgif-lint` container, you're almost ready to use it but first, you need to make sure you have an `openapi.json` file on your disk. So let's create it by running the following command:
 
 <Terminal wrap={true}>
 $ curl -s http://localhost:8000/openapi.json > openapi.json
@@ -132,7 +136,7 @@ Look at the new file below:
 
 <Snippet filename="compose.yaml" source="./files/compose_belgif_no_warnings.yaml" />
 
-In short, we'll run a custom command where we'll collect both STDERR and STDIN in just one output stream then we'll run a few `grep` commands to expurge the output for specific messages (the ones we can't solve).
+In short, we'll run a custom command where we'll collect both STDERR and STDIN in just one output stream then we'll run a few `grep` commands to purge specific messages from the output (the ones we can't solve).
 
 ## Bonus - FastAPI tips
 
@@ -177,7 +181,7 @@ See the helper provided later on in the post.
 
 ### oas-comp - Component names SHOULD use UpperCamelCase notation
 
-If you get the `[MANDATORY]    [oas-comp]   Component names SHOULD use UpperCamelCase notation. For abbreviations as well, all letters except the first one should be lowercased.` error, you'll need to foresee a rename function to update f.i. `HTTPValidationError` to `httpValidationError`.
+If you get the `[MANDATORY]    [oas-comp]   Component names SHOULD use UpperCamelCase notation. For abbreviations as well, all letters except the first one should be lowercased.` error, you'll need to foresee a rename function to update e.g. `HTTPValidationError` to `httpValidationError`.
 
 It can be done f.i. like this (partial code):
 

@@ -6,7 +6,10 @@ description: Struggling to sync your .env and .env.example files? Learn a powerf
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: linux
-tags: [.env, bash, linux, sed, tips]
+tags:
+  - bash
+  - docker
+  - linux
 language: en
 ---
 ![Compare environment files in the Linux console](/img/v2/bash.webp)

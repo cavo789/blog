@@ -6,7 +6,10 @@ description: Step-by-step guide on creating a custom VBA Excel Ribbon. Use XML a
 authors: [christophe]
 image: /img/v2/ribbon.webp
 mainTag: excel
-tags: [excel, ribbon, vba, vscode]
+tags:
+  - excel
+  - vba
+  - vscode
 language: en
 ---
 ![MS Office - How to create a ribbon in Excel](/img/v2/ribbon.webp)

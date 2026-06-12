@@ -6,7 +6,9 @@ description: Learn how to design a Docker setup that delivers a secure, minimal 
 authors: [christophe]
 image: /img/v2/docker_workflow_prod_devcontainer.webp
 mainTag: docker
-tags: [devcontainer, docker, tips]
+tags:
+  - devcontainer
+  - docker
 language: en
 blueskyRecordKey: 3m32ko2ssss2z
 ---

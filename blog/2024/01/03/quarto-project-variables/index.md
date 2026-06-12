@@ -7,7 +7,9 @@ authors: [christophe]
 image: /img/v2/quarto.webp
 series: Discovering Quarto
 mainTag: quarto
-tags: [markdown, quarto, tips]
+tags:
+  - markdown
+  - quarto
 language: en
 ---
 ![Using variables from external file in your Quarto project](/img/v2/quarto.webp)

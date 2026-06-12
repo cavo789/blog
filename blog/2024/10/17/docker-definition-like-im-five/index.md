@@ -6,7 +6,10 @@ description: What is Docker? We use a simple recipe analogy to give you an easy-
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
-tags: [devcontainer, docker, python]
+tags:
+  - devcontainer
+  - docker
+  - python
 language: en
 ---
 <!-- cspell:ignore Wépion,telework,virtualise -->

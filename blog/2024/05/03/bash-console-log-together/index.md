@@ -6,7 +6,9 @@ description: Tired of silent Bash scripts? Learn the simple, effective method to
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: bash
-tags: [bash, tips]
+tags:
+  - bash
+  - linux
 language: en
 ---
 ![Bash - Echo on the console and in a logfile in the same time](/img/v2/bash.webp)

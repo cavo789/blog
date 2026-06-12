@@ -6,7 +6,9 @@ description: VBA developer? Stop manually checking references! Use this VBS scri
 authors: [christophe]
 image: /img/v2/excel.webp
 mainTag: excel
-tags: [excel, vba]
+tags:
+  - excel
+  - vba
 language: en
 blueskyRecordKey: 3m45z7onhnc2o
 ---

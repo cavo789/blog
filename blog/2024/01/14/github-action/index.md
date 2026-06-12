@@ -6,7 +6,9 @@ description: Stop manual FTP deployments! Learn how to automate your blog's depl
 authors: [christophe]
 image: /img/v2/github_tips.webp
 mainTag: github
-tags: [docusaurus, github]
+tags:
+  - docusaurus
+  - github
 language: en
 ---
 ![GitHub - Use Actions to deploy this blog](/img/v2/github_tips.webp)

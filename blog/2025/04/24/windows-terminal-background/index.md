@@ -6,7 +6,11 @@ description: Customize your Windows Terminal! Follow this simple, step-by-step g
 authors: [christophe]
 image: /img/v2/windows_terminal_customization.webp
 mainTag: windows-terminal
-tags: [console, customization, dos, windows-terminal, wsl]
+tags:
+  - customization
+  - windows
+  - windows-terminal
+  - wsl
 language: en
 blueskyRecordKey: 3lvnjj5g4ic2v
 ---

@@ -6,7 +6,9 @@ description: Implement secure PHP Getters and Setters in VSCode effortlessly. Le
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-tags: [tips, vscode]
+tags:
+  - php
+  - vscode
 language: en
 ---
 <!-- cspell:ignore strtolower -->

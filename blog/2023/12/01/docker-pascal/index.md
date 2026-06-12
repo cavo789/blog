@@ -5,8 +5,8 @@ date: 2023-12-01
 description: Can you run 30-year-old Pascal code today? Yes! This guide shows you how to use Docker and the Free Pascal Compiler (FPC) to compile and execute your legacy Turbo Pascal programs.
 authors: [christophe]
 image: /img/v2/experiments.webp
-mainTag: pascal
-tags: [docker, pascal]
+mainTag: docker
+tags: [docker]
 language: en
 ---
 <!-- cspell:ignore ource,rchive,roupn,chiffre,downto -->

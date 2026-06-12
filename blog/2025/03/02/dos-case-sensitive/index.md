@@ -5,8 +5,8 @@ date: 2025-03-02
 description: Learn how to enable case sensitivity for filenames in a specific folder on Windows, just like on Linux. Use PowerShell and the fsutil.exe command.
 authors: [christophe]
 image: /img/v2/msdos_tips.webp
-mainTag: dos
-tags: [dos, tips]
+mainTag: windows
+tags: [windows]
 language: en
 blueskyRecordKey: 3lvnjvuk5x22v
 ---

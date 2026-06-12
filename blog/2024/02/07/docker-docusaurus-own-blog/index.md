@@ -7,7 +7,12 @@ authors: [christophe]
 image: /img/v2/docusaurus_docker.webp
 series: Discovering Docusaurus
 mainTag: docusaurus
-tags: [docker, docusaurus, nodejs, npm, tips, yarn]
+tags:
+  - docker
+  - docusaurus
+  - nodejs
+  - npm
+  - yarn
 language: en
 ---
 ![Running your own blog with Docusaurus and Docker](/img/v2/docusaurus_docker.webp)

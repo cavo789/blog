@@ -6,7 +6,11 @@ description: Quickly dockerize your PHP application with Apache using the docker
 authors: [christophe]
 image: /img/v2/docker_init.webp
 mainTag: docker
-tags: [aesecure, apache, docker, php, tips]
+tags:
+  - apache
+  - docker
+  - php
+  - security
 language: en
 ---
 <!-- cspell:ignore dbmdl -->

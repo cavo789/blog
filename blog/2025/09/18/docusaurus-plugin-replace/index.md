@@ -7,7 +7,10 @@ authors: [christophe]
 image: /img/v2/docusaurus_component.webp
 series: Creating Docusaurus components
 mainTag: component
-tags: [component, docusaurus, react]
+tags:
+  - component
+  - docusaurus
+  - react
 language: en
 blueskyRecordKey: 3lz3pbmvd722f
 ---

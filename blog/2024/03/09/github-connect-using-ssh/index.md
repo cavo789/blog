@@ -6,7 +6,9 @@ description: Secure your GitHub connection! Follow this easy, step-by-step guide
 authors: [christophe]
 image: /img/v2/github_tips.webp
 mainTag: github
-tags: [github, ssh, tips]
+tags:
+  - github
+  - ssh
 language: en
 updates:
   - date: 2026-02-04

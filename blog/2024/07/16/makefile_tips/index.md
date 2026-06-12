@@ -6,7 +6,9 @@ description: Essential Makefile tips and tricks for automation. Learn to check f
 authors: [christophe]
 image: /img/v2/makefile.webp
 mainTag: makefile
-tags: [makefile, tips]
+tags:
+  - linux
+  - makefile
 language: en
 ---
 <!-- cspell:ignore ifeq,ifneq,ifdef,Oups,phplint,infile,recipeprefix,sonarqube,testme,findstring,toplevel,concat,outfile -->

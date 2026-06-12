@@ -6,7 +6,10 @@ description: Stop memorizing complex Docker commands. Learn when and how to use 
 authors: [christophe]
 image: /img/v2/makefile.webp
 mainTag: makefile
-tags: [makefile, tips]
+tags:
+  - docker
+  - linux
+  - makefile
 language: en
 ---
 ![Linux Makefile - When to use a makefile](/img/v2/makefile.webp)

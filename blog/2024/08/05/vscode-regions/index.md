@@ -6,7 +6,9 @@ description: Master code folding in VSCode with regions. Learn how to use them i
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-tags: [tips, vscode]
+tags:
+  - php
+  - vscode
 language: en
 ---
 ![Working with regions in VSCode](/img/v2/vscode_tips.webp)

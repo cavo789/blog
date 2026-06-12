@@ -6,7 +6,9 @@ description: Unlock the power of Docker! A step-by-step guide to running Linux G
 authors: [christophe]
 image: /img/v2/docker_gui.webp
 mainTag: docker
-tags: [chrome, docker, firefox, gimp, gui, tips]
+tags:
+  - docker
+  - linux
 language: en
 ---
 <!-- cspell:ignore xeyes,xhost,dearmor,dpkg,favourite -->

@@ -6,7 +6,10 @@ description: A step-by-step guide on how to update your php.ini file inside a Do
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
-tags: [apache, docker, joomla, tips]
+tags:
+  - apache
+  - docker
+  - joomla
 language: en
 ---
 ![Update php.ini when using a Docker image](/img/v2/docker_tips.webp)

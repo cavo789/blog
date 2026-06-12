@@ -6,7 +6,9 @@ description: Learn the simple command to open files like PDFs and HTML from your
 authors: [christophe]
 image: /img/v2/wsl.webp
 mainTag: wsl
-tags: [powershell, tips, wsl]
+tags:
+  - windows
+  - wsl
 language: en
 ---
 ![Starting the default associated Windows program on WSL](/img/v2/wsl.webp)

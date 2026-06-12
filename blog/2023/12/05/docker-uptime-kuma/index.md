@@ -6,7 +6,9 @@ description: Learn how to easily set up Uptime Kuma, a free, self-hosted website
 authors: [christophe]
 image: /img/v2/docker_playing_with_app.webp
 mainTag: docker
-tags: [docker, monitoring, tool]
+tags:
+  - docker
+  - self-hosted
 language: en
 ---
 <!-- cspell:ignore kuma,louislam -->

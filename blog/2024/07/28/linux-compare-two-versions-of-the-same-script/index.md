@@ -6,7 +6,10 @@ description: Use a simple Linux command-line trick with diff, grep, and awk to c
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: linux
-tags: [bash, introspection, linux, tips]
+tags:
+  - bash
+  - database
+  - linux
 language: en
 ---
 ![Linux - Compare two versions of the same script](/img/v2/bash.webp)

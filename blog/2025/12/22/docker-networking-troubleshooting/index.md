@@ -5,8 +5,10 @@ date: 2025-12-22
 description: Troubleshoot Docker container networking - test ports, DNS, and fix proxy issues so one container can reliably call another API on the same network.
 authors: [christophe]
 image: /img/v2/autopsy_binary_crime.webp
-mainTag: Docker
-tags: [docker, network]
+mainTag: docker
+tags:
+  - docker
+  - linux
 language: en
 blueskyRecordKey: 3maksv6gjks25
 ---

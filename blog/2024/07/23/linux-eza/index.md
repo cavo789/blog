@@ -6,7 +6,9 @@ description: Tired of typing ls -alh? Discover eza, the modern, feature-rich rep
 authors: [christophe]
 image: /img/v2/linux_tips.webp
 mainTag: customization
-tags: [customization, linux]
+tags:
+  - customization
+  - linux
 language: en
 updates:
   - date: 2026-02-04

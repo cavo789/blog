@@ -6,7 +6,9 @@ description: Laravel Telescope is your ultimate debugging assistant, offering re
 authors: [christophe]
 image: /img/v2/laravel.webp
 mainTag: laravel
-tags: [laravel, php, telescope]
+tags:
+  - laravel
+  - php
 language: en
 blueskyRecordKey: 3lvnkgebz3c2v
 ---

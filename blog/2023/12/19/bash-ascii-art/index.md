@@ -6,7 +6,9 @@ description: Learn how to add eye-catching ASCII art banners to your Bash script
 authors: [christophe]
 image: /img/v2/ascii_art.webp
 mainTag: bash
-tags: [bash, tips]
+tags:
+  - bash
+  - linux
 language: en
 ---
 ![Bash - ASCII art](/img/v2/ascii_art.webp)

@@ -7,7 +7,9 @@ authors: [christophe]
 image: /img/v2/old_blog_notice.webp
 series: Creating Docusaurus components
 mainTag: component
-tags: [component, docusaurus]
+tags:
+  - component
+  - docusaurus
 language: en
 blueskyRecordKey: 3m2bjrehbnc2r
 updates:

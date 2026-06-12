@@ -6,7 +6,9 @@ description: Did you forget a saved WinSCP password? Follow this quick guide to 
 authors: [christophe]
 image: /img/v2/winscp.webp
 mainTag: winscp
-tags: [tips, winscp]
+tags:
+  - ssh
+  - winscp
 language: en
 ---
 ![WinSCP - Retrieve a stored password](/img/v2/winscp.webp)

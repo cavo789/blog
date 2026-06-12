@@ -151,6 +151,7 @@ const config = {
     [pluginSeriesRoute, {}],
     [pluginTagRoute, {}],
     ["./plugins/blog-feed-plugin/index.js", { maxItems: 20 }],
+    ["./plugins/admin-data-plugin/index.cjs", {}],
     [
       "./plugins/ascii-injector/index.mjs",
       { bannerPath: "src/data/banner.txt" },
@@ -238,7 +239,7 @@ const config = {
       image: "img/social-card.jpg",
       navbar: {
         // auto-hide the navbar when the user will scroll down, show again when scroll up
-        // hideOnScroll: true,
+        hideOnScroll: true,
         title: "Christophe Avonture (cavo789)",
         logo: {
           alt: "Christophe Avonture",

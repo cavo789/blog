@@ -6,7 +6,11 @@ description: Follow the steps taken to create this Docusaurus blog. Learn about 
 authors: [christophe]
 image: /img/v2/site_creation.webp
 mainTag: docusaurus
-tags: [docusaurus, nodejs, docker, winscp]
+tags:
+  - docker
+  - docusaurus
+  - nodejs
+  - winscp
 language: en
 ---
 > [Docusaurus.io](https://docusaurus.io/)

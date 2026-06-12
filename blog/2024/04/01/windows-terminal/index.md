@@ -6,7 +6,11 @@ description: A complete guide to Windows Terminal. Discover how to install, cust
 authors: [christophe]
 image: /img/v2/windows_terminal_tips.webp
 mainTag: windows-terminal
-tags: [console, customization, dos, windows-terminal, wsl]
+tags:
+  - customization
+  - windows
+  - windows-terminal
+  - wsl
 language: en
 ---
 

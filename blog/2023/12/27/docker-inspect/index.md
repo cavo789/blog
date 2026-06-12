@@ -6,7 +6,9 @@ description: Use docker inspect to quickly retrieve detailed configuration and n
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
-tags: [docker, network, tips]
+tags:
+  - docker
+  - linux
 language: en
 ---
 ![Docker inspect - Retrieve network's information](/img/v2/docker_tips.webp)

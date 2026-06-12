@@ -6,7 +6,9 @@ description: Learn how to run the Lubuntu Desktop GUI in a Docker container on W
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: linux
-tags: [chrome, docker, firefox, gimp, gui, tips]
+tags:
+  - docker
+  - linux
 language: en
 ---
 <!-- cspell:ignore lubuntu,initialising,xremote,autologin,realise -->

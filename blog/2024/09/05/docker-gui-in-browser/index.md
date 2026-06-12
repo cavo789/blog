@@ -6,7 +6,9 @@ description: Easily run Linux GUI applications like Firefox and GIMP in a Docker
 authors: [christophe]
 image: /img/v2/docker_gui.webp
 mainTag: docker
-tags: [docker, firefox, gimp, tips]
+tags:
+  - docker
+  - linux
 language: en
 ---
 <!-- cspell:ignore seccomp,pgid,puid -->

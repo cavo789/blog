@@ -6,7 +6,11 @@ description: Enhance your Zsh console with syntax highlighting! See commands tur
 authors: [christophe]
 image: /img/v2/zsh.webp
 mainTag: zsh
-tags: [customization, linux, wsl, zsh]
+tags:
+  - customization
+  - linux
+  - wsl
+  - zsh
 language: en
 updates:
   - date: 2026-02-04

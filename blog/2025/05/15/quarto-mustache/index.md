@@ -6,7 +6,10 @@ description: Master Mustache templating in Quarto! Discover how to use the quart
 authors: [christophe]
 image: /img/v2/mustache.webp
 mainTag: quarto
-tags: [markdown, mustache, quarto]
+tags:
+  - markdown
+  - php
+  - quarto
 language: en
 blueskyRecordKey: 3lun2vljjqs2r
 ---

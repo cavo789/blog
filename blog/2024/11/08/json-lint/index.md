@@ -6,7 +6,10 @@ description: Find a quick and easy online JSON linter tool. Paste your JSON stri
 authors: [christophe]
 image: /img/v2/json.webp
 mainTag: linux
-tags: [code-quality, json, tips, tool, vscode]
+tags:
+  - code-quality
+  - linux
+  - vscode
 language: en
 ---
 ![JSON - Online linter](/img/v2/json.webp)

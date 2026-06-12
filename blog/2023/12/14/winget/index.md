@@ -6,7 +6,9 @@ description: Update all your out-of-date Windows programs in a batch using the p
 authors: [christophe]
 image: /img/v2/windows_tips.webp
 mainTag: windows
-tags: [tips, windows, winget]
+tags:
+  - customization
+  - windows
 language: en
 ---
 ![Update all out-of-date Windows programs in batch](/img/v2/windows_tips.webp)

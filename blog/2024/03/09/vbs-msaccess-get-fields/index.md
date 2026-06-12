@@ -6,7 +6,10 @@ description: Use a VBScript to easily retrieve a detailed list of fields from yo
 authors: [christophe]
 image: /img/v2/msaccess.webp
 mainTag: msaccess
-tags: [database, msaccess, vbs]
+tags:
+  - database
+  - msaccess
+  - vba
 language: en
 ---
 ![VBS - Retrieve the list of fields in a MS Access Database](/img/v2/msaccess.webp)

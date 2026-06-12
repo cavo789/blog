@@ -6,7 +6,11 @@ description: Learn how to set up Docker-out-of-Docker (DooD) in your GitLab CI/C
 authors: [christophe]
 image: /img/v2/gitlab.webp
 mainTag: gitlab
-tags: [ci, dagger, dood, docker, gitlab, quarto]
+tags:
+  - code-quality
+  - docker
+  - gitlab
+  - quarto
 language: en
 blueskyRecordKey: 3lun2kg2vmk2r
 ---

@@ -6,7 +6,9 @@ description: Discover Laravel Filament, a collection of beautiful full-stack com
 authors: [christophe]
 image: /img/v2/laravel.webp
 mainTag: laravel
-tags: [laravel, php]
+tags:
+  - laravel
+  - php
 language: en
 ---
 <!-- cspell:ignore ailwind,lpine,aravel,ivewire -->

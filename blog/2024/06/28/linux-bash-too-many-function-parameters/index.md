@@ -6,7 +6,9 @@ description: Apply Clean Code to your Linux Bash scripts. Discover how to avoid 
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: code-quality
-tags: [code-quality, linux, tips]
+tags:
+  - code-quality
+  - linux
 language: en
 ---
 ![Clean code - Linux Bash - Keep the number of function parameters as small as possible](/img/v2/bash.webp)

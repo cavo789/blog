@@ -7,7 +7,10 @@ authors: [christophe]
 image: /img/v2/quarto.webp
 series: Discovering Quarto
 mainTag: quarto
-tags: [markdown, quarto, tips, vscode]
+tags:
+  - markdown
+  - quarto
+  - vscode
 language: en
 ---
 ![Quarto Callout Blocks](/img/v2/quarto.webp)

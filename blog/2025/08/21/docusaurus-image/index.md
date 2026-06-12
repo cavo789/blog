@@ -7,7 +7,11 @@ authors: [christophe]
 image: /img/v2/docusaurus_component.webp
 series: Creating Docusaurus components
 mainTag: component
-tags: [component, docusaurus, markdown, react, swizzle]
+tags:
+  - component
+  - docusaurus
+  - markdown
+  - react
 language: en
 blueskyRecordKey: 3lww5fbh2y22q
 ---

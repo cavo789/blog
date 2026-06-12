@@ -6,7 +6,9 @@ description: Prevent startup errors in your multi-service applications. Learn to
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: docker
-tags: [docker, tips]
+tags:
+  - docker
+  - linux
 language: en
 ---
 ![Understanding the depends_on condition in Docker compose files](/img/v2/docker_tips.webp)

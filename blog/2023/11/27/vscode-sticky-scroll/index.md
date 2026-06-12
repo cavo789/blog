@@ -6,7 +6,9 @@ description: Enable VS Code's powerful Sticky Scroll feature! Keep contextual li
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-tags: [php, tips, vscode]
+tags:
+  - php
+  - vscode
 language: en
 ---
 ![Sticky scroll in vscode](/img/v2/vscode_tips.webp)

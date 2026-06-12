@@ -6,7 +6,10 @@ description: Stop manually editing .env files! Learn how to use a simple Linux f
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: linux
-tags: [.env, bash, linux, sed, tips]
+tags:
+  - bash
+  - docker
+  - linux
 language: en
 ---
 ![Batch edit of environment file](/img/v2/bash.webp)

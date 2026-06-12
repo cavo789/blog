@@ -5,9 +5,13 @@ date: 2025-12-15
 description: Create reveal.js slideshow with Quarto, Decktape, Docker and DevContainers. Write your content in Markdown. Export as HTML and PDF (thanks to Decktape)
 authors: [christophe]
 image: /img/v2/quarto_reveal_docker.webp
-mainTag: Quarto
+mainTag: quarto
 series: Coding using a devcontainer
-tags: [devcontainer, docker, powerpoint, quarto, revealjs, vscode]
+tags:
+  - devcontainer
+  - docker
+  - quarto
+  - vscode
 language: en
 blueskyRecordKey: 3m7z22w3yjk2y
 ---

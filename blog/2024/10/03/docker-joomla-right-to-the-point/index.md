@@ -6,7 +6,11 @@ description: Start your Joomla website with Docker in just a few clicks! Follow 
 authors: [christophe]
 image: /img/v2/joomla.webp
 mainTag: joomla
-tags: [docker, joomla, makefile, mysql]
+tags:
+  - database
+  - docker
+  - joomla
+  - makefile
 language: en
 ---
 ![Start Joomla with Docker in just a few clicks](/img/v2/joomla.webp)

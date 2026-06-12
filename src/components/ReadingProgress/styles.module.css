@@ -1,6 +1,6 @@
 .bar {
   position: fixed;
-  top: var(--ifm-navbar-height);
+  top: 0;
   left: 0;
   height: 3px;
   background: linear-gradient(

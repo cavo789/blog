@@ -6,7 +6,9 @@ description: Tired of forgetting to save files in VS Code? Learn how to easily e
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: vscode
-tags: [vscode, markdown, tips]
+tags:
+  - markdown
+  - vscode
 language: en
 ---
 ![Autosave feature in VSCode](/img/v2/vscode_tips.webp)

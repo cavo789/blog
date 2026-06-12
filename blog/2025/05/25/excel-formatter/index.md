@@ -6,7 +6,9 @@ description: Make your complex Excel formulas easy to read! Use the Excel Formul
 authors: [christophe]
 image: /img/v2/excel.webp
 mainTag: excel
-tags: [excel, self-hosted]
+tags:
+  - excel
+  - self-hosted
 language: en
 blueskyRecordKey: 3lun2qjuxc22r
 ---

@@ -7,7 +7,11 @@ authors: [christophe]
 image: /img/v2/mssql.webp
 series: MS Excel - Connect to a SQL Server database
 mainTag: excel
-tags: [docker, excel, mssql-server, ssms, vba]
+tags:
+  - database
+  - docker
+  - excel
+  - vba
 language: en
 blueskyRecordKey: 3lvnkdmwmwk2v
 ---

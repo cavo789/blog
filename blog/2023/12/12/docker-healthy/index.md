@@ -6,7 +6,9 @@ description: Get health information from your running Docker containers instantl
 authors: [christophe]
 image: /img/v2/docker_tips.webp
 mainTag: bash
-tags: [bash, docker, tips]
+tags:
+  - bash
+  - docker
 language: en
 ---
 ![Get health information from your running containers](/img/v2/docker_tips.webp)

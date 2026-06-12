@@ -6,7 +6,9 @@ description: Meet PHP Rector, the free, powerful tool for automatic PHP codebase
 authors: [christophe]
 image: /img/v2/rector.webp
 mainTag: php
-tags: [code-quality, composer, php, rectorphp]
+tags:
+  - code-quality
+  - php
 language: en
 ---
 ![Rector 1.0.0 🎉🎉🎉, my friend, my coach](/img/v2/rector.webp)

@@ -6,7 +6,10 @@ description: Use Python and the pydot library to easily generate diagrams-as-cod
 authors: [christophe]
 image: /img/v2/diagrams.webp
 mainTag: python
-tags: [docker, python, visualisation]
+tags:
+  - doc-as-code
+  - docker
+  - python
 language: en
 ---
 <!-- cspell:ignore Pydot,PYTHONDONTWRITEBYTECODE,hadolint,rankdir,fillcolor -->

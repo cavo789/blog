@@ -3,8 +3,11 @@ slug: docker-python-mermaid
 title: Documentation as Code - Transform Your Infrastructure into Beautiful Diagrams with Python and Mermaid
 description: Automate your Documentation as Code by building a Dockerized Python and Mermaid CLI stack to generate dynamic architecture diagrams directly from your codebase.
 authors: [christophe]
-mainTag: Doc-as-code
-tags: [doc-as-code, docker, mermaid, mindmap, python]
+mainTag: doc-as-code
+tags:
+  - doc-as-code
+  - docker
+  - python
 image: /img/v2/docker-python-mermaid.webp
 date: 2026-04-20
 ai_assisted: true

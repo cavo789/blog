@@ -6,7 +6,10 @@ description: Easily version control your MS Access database! Export all VBA code
 authors: [christophe]
 image: /img/v2/msaccess.webp
 mainTag: msaccess
-tags: [database, msaccess, vba, vbs]
+tags:
+  - database
+  - msaccess
+  - vba
 language: en
 blueskyRecordKey: 3lumzv3n42c2r
 ---

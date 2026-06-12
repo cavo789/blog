@@ -6,7 +6,9 @@ description: Get health information from your running Docker containers instantl
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: bash
-tags: [bash, tips]
+tags:
+  - bash
+  - linux
 language: en
 ---
 ![Bash - Loading environment variables from a file](/img/v2/bash.webp)

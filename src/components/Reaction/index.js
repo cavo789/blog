@@ -10,9 +10,17 @@ export default function Reaction({ metadata }) {
   const storageKey = `reaction_${slug}`;
 
   const [counts, setCounts] = useState(null);
-  const [voted, setVoted] = useState(() => {
-    try { return localStorage.getItem(storageKey); } catch { return null; }
-  });
+  // null until the client-side effect runs — avoids SSR/hydration mismatch (#418).
+  // If voted were read in useState(), SSR would produce null (no localStorage)
+  // while the client would produce "helpful", causing a React tree mismatch.
+  const [voted, setVoted] = useState(null);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(storageKey);
+      if (stored) setVoted(stored);
+    } catch {}
+  }, [storageKey]);
 
   useEffect(() => {
     if (!slug) return;

@@ -6,7 +6,9 @@ description: Master your Apache .htaccess file with essential tips and tricks fo
 authors: [christophe]
 image: /img/v2/htaccess.webp
 mainTag: apache
-tags: [apache, snippets, .htaccess]
+tags:
+  - apache
+  - linux
 language: en
 ---
 <!-- cspell:ignore webm -->

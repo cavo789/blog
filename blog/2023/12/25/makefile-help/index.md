@@ -6,7 +6,9 @@ description: Implement a beautiful and clear help screen in your Linux Makefile.
 authors: [christophe]
 image: /img/v2/makefile.webp
 mainTag: makefile
-tags: [makefile, tips]
+tags:
+  - linux
+  - makefile
 language: en
 ---
 ![Linux Makefile - Adding a help screen](/img/v2/makefile.webp)
