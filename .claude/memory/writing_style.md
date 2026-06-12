@@ -1,7 +1,7 @@
 ---
 name: writing-style
 description: "Christophe's blog writing style — openings, phrases, TLDR, sections, AlertBox, Conclusion, transitions"
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 771ca3a9-f666-4860-bab3-6091afb7179a

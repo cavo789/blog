@@ -1,7 +1,7 @@
 ---
 name: project-images-tags
 description: All available banner images (/img/v2/*.webp) and all 175 defined tag slugs
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 771ca3a9-f666-4860-bab3-6091afb7179a
