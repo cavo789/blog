@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:17.199Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "3": "The && operator chains commands together so the second command only runs if the first succeeds; here we update the package list first, then install x11-apps in one layer to keep the image smaller.",
+    "5": "CMD sets the default program that runs when the container starts, but unlike ENTRYPOINT, it can be overridden by passing a different command when you run the container."
+  }
+}

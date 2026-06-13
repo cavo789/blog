@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:21.169Z",
+  "source": ".part15.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "2": "This line sets the default rule-checking order: first deny requests, then check allow rules—so allows can override denies.",
+    "3": "This blocks all visitors by default, like a closed door.",
+    "4": "This opens the door only for the specific IP address, allowing it through even though everything else is blocked.",
+    "7": "This is the Apache 2.4 way to say 'block everyone'—the newer syntax replaced the older Order/Deny/Allow rules.",
+    "8": "This is the Apache 2.4 way to say 'but let this specific IP address through'—it's the modern equivalent of line 4."
+  }
+}

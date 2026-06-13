@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:34.294Z",
+  "source": "compose_depends_on.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "6": "depends_on lists services that must start before this one; it's how you control the startup order.",
+    "10": "condition: service_healthy means Docker will wait until joomladb reports it's actually ready, not just started.",
+    "16": "healthcheck defines how Docker checks if the database is really working and accepting connections.",
+    "18": "This test command runs inside the container to verify the database is alive—mysqladmin ping is like poking it to see if it responds.",
+    "20": "timeout: 20s means Docker will give the ping command up to 20 seconds to complete before considering it a failure.",
+    "22": "retries: 10 means Docker will run that test up to 10 times before marking the service as unhealthy if it keeps failing."
+  }
+}

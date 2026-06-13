@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:55.339Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "10": "This creates a named volume called ollama_data and mounts it at /root/.ollama inside the container, so the AI model data persists even if the container stops.",
+    "11": "The container will automatically restart if it crashes or if Docker is restarted on your machine."
+  }
+}

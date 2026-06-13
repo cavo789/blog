@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:55.293Z",
+  "source": "simple.part9.bats",
+  "lang": "bats",
+  "explanations": {
+    "9": "The ${2:-...} syntax means \"use the second argument if provided, otherwise use this default message as a fallback\".",
+    "11": "The [[ ... ]] checks if the binary wasn't found, and || true prevents the script from crashing if 'which' itself fails; if the binary is missing, it prints the message and exits with code 1 (failure)."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:54:23.967Z",
+  "source": "main_configure.py",
+  "lang": "python",
+  "explanations": {
+    "1": "This imports a function from a helpers module that sets up custom OpenAPI documentation for FastAPI.",
+    "11": "This calls the helper function and passes the FastAPI app object to it, so the helper can modify how the API documentation looks and behaves."
+  }
+}

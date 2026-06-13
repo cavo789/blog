@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:11.333Z",
+  "source": "simple.part12.bats",
+  "lang": "bats",
+  "explanations": {
+    "2": "mktemp creates a temporary file with a unique name and stores that filename in the variable tempfile.",
+    "5": "The > operator redirects output to overwrite the file; >> appends to the file instead.",
+    "28": "cat --show-ends --show-tabs makes invisible characters visible ($ for line endings, ^I for tabs), then tr converts each newline character into a # so the entire file becomes one long string.",
+    "31": "The backslashes before the dollar signs escape them so they're treated as literal $ characters in the expected string, not as shell variable references."
+  }
+}

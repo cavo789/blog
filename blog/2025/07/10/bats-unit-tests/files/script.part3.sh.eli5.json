@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:18.999Z",
+  "source": "script.part3.sh",
+  "lang": "bash",
+  "explanations": {
+    "2": "The 'local' keyword means this variable only exists inside this function, not outside it.",
+    "3": "The ':-' syntax means: use the second parameter if provided, otherwise use the default text in the braces.",
+    "6": "The '&&' chains commands: if the first part is true (image doesn't exist), run the echo and exit; the '2>/dev/null' silences error messages."
+  }
+}

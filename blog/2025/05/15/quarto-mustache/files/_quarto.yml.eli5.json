@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:34.738Z",
+  "source": "_quarto.yml",
+  "lang": "yaml",
+  "explanations": {
+    "17": "Filters are plugins that process your content during the build; this one adds support for reusable partial files.",
+    "19": "The 'partials' filter lets you include snippet files (like headers or footers) in multiple places without repeating code."
+  }
+}

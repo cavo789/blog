@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:59.944Z",
+  "source": "Dockerfile.part2",
+  "lang": "part2",
+  "explanations": {
+    "3": "ARG creates a build-time variable that can be overridden when building the image; this one sets a default user ID of 1000.",
+    "13": "These ARG lines repeat the same variable names from earlier—they're needed again here so they're available in later build stages after the FROM statement.",
+    "18": "The ${GROUP_ID} syntax substitutes the variable value into the command; the -g flag tells groupadd to use that specific numeric group ID.",
+    "19": "This useradd command adds a user and assigns them to two groups at once (the one matching their username, plus the 'node' group) so they have permissions for both.",
+    "27": "The --chown flag during COPY ensures the copied files are owned by your custom user instead of root, so they can actually edit those files later.",
+    "40": "CMD sets the default command to run when the container starts; unlike RUN, this happens every time someone runs the container, not just during the build."
+  }
+}

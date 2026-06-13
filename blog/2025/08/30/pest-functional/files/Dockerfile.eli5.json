@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:26.006Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "3": "This special comment tells Docker to use a newer syntax version (1.4) which enables advanced features like cache mounting.",
+    "26": "The --mount flag caches the apt package lists between builds so Docker doesn't re-download everything; the id and sharing options control how that cache is managed.",
+    "27": "The 'set -eux' command makes the shell script strict: exit on errors, show each command being run, and fail if any piped command fails.",
+    "42": "This creates a package.json file inline using echo rather than copying it, which is a lightweight way to define Node dependencies without a separate file.",
+    "48": "Similar to line 26, this mounts the Composer cache directory so dependency downloads are reused between builds.",
+    "54": "This starts a new stage called 'php' from a fresh FPM image; previous 'builder' stage files won't be in the final image unless explicitly copied.",
+    "78": "The --gid flag creates a group with a specific numeric ID; this ensures the group has the same ID inside and outside the container for file permissions.",
+    "79": "The --password '' sets an empty password, --gid links the user to the group created above, and -l prevents the user from being added to the login database.",
+    "84": "The --from=builder syntax copies files from the earlier builder stage, and --chown ensures the copied files are owned by our new user.",
+    "89": "This adds the node_modules bin directory to PATH so npm packages' executable commands can be run directly without typing the full path."
+  }
+}

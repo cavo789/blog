@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:04.692Z",
+  "source": ".pre-commit-config.yaml.part3",
+  "lang": "part3",
+  "explanations": {
+    "8": "require_serial: true means this hook must run one file at a time instead of in parallel, which is necessary because mypy needs to see all the code together to do proper type checking.",
+    "9": "args passes command-line options to mypy when it runs; in this case, it tells mypy to use a custom configuration file located at .config/mypy.ini instead of the default one."
+  }
+}

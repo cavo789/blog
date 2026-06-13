@@ -6,6 +6,8 @@ import React, {
   useMemo,
   useId,
 } from "react";
+import { createPortal } from "react-dom";
+import Prism from "prismjs";
 
 import CodeBlock from "@theme/CodeBlock";
 import LogoIcon from "@site/src/components/Blog/LogoIcon";
@@ -262,6 +264,115 @@ const variantIcons = {
   },
 };
 
+// ELI5 line-by-line renderer — used when eli5json prop is present.
+// Calls Prism.highlight() directly to get syntax-colored HTML per line,
+// then overlays interactive ? badges for annotated lines.
+// The tooltip is rendered via a React Portal into document.body so it
+// escapes every overflow:hidden / stacking-context ancestor.
+function Eli5CodeBlock({ code, lang, eli5 }) {
+  const [activeLine, setActiveLine] = useState(null);
+  const [tooltipStyle, setTooltipStyle] = useState(null);
+  const [mounted, setMounted] = useState(false);
+  const badgeRefs = useRef({});
+
+  useEffect(() => { setMounted(true); }, []);
+
+  const { lines, highlightedLines } = useMemo(() => {
+    const rawLines = code.split("\n");
+    // Remove trailing empty line that comes from a trailing newline
+    if (rawLines.length > 0 && rawLines[rawLines.length - 1] === "") {
+      rawLines.pop();
+    }
+    const grammar =
+      Prism.languages[lang] ||
+      Prism.languages.plaintext ||
+      Prism.languages.clike;
+    const fullHighlighted = grammar
+      ? Prism.highlight(code, grammar, lang)
+      : code;
+    const hl = fullHighlighted.split("\n");
+    // Align with trimmed rawLines
+    while (hl.length > rawLines.length) hl.pop();
+    return { lines: rawLines, highlightedLines: hl };
+  }, [code, lang]);
+
+  // Compute position: tooltip appears above the badge, right-aligned.
+  const positionTooltip = useCallback((lineNum) => {
+    const el = badgeRefs.current[lineNum];
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    setTooltipStyle({
+      top: rect.top,                            // translateY(-100%-gap) shifts it above
+      right: window.innerWidth - rect.right,    // right-align with the badge
+    });
+  }, []);
+
+  const handleBadgeClick = useCallback(
+    (lineNum) => setActiveLine((prev) => (prev === lineNum ? null : lineNum)),
+    []
+  );
+
+  const activeExplanation = activeLine ? eli5[activeLine] : null;
+
+  return (
+    <>
+      <pre className={clsx(`language-${lang}`, styles.eli5_pre)}>
+        <code className={`language-${lang}`}>
+          {lines.map((_, i) => {
+            const lineNum = String(i + 1);
+            const explanation = eli5[lineNum];
+            const isActive = activeLine === lineNum;
+
+            return (
+              <div key={i} className={styles.eli5_line}>
+                <span
+                  className={styles.eli5_code}
+                  // Prism returns safe HTML (only wraps tokens in <span>)
+                  // eslint-disable-next-line react/no-danger
+                  dangerouslySetInnerHTML={{
+                    __html: highlightedLines[i] ?? "",
+                  }}
+                />
+                {explanation ? (
+                  <span className={styles.eli5_badge_wrapper}>
+                    <button
+                      type="button"
+                      ref={(el) => { badgeRefs.current[lineNum] = el; }}
+                      className={clsx(
+                        styles.eli5_badge,
+                        isActive && styles.eli5_badge_active
+                      )}
+                      aria-label={`Explain line ${lineNum}`}
+                      aria-expanded={isActive}
+                      onClick={() => handleBadgeClick(lineNum)}
+                      onMouseEnter={() => { positionTooltip(lineNum); setActiveLine(lineNum); }}
+                      onMouseLeave={() => setActiveLine(null)}
+                      onFocus={() => { positionTooltip(lineNum); setActiveLine(lineNum); }}
+                      onBlur={() => setActiveLine(null)}
+                    >
+                      ?
+                    </button>
+                  </span>
+                ) : (
+                  <span className={styles.eli5_badge_placeholder} />
+                )}
+              </div>
+            );
+          })}
+        </code>
+      </pre>
+      {mounted && activeExplanation && tooltipStyle &&
+        createPortal(
+          <span role="tooltip" className={styles.eli5_tooltip} style={tooltipStyle}>
+            {activeExplanation}
+          </span>,
+          document.body
+        )
+      }
+    </>
+  );
+}
+
 export default function Snippet({
   filename,
   title,
@@ -269,11 +380,22 @@ export default function Snippet({
   children,
   defaultOpen = false,
   variant,
-  lang: pluginLang, // <-- Destructure the lang prop and rename it
+  lang: pluginLang,
+  eli5json,
 }) {
   const [open, setOpen] = useState(defaultOpen);
   const contentRef = useRef(null);
   const [height, setHeight] = useState("0px");
+
+  // Parse eli5json string (injected by remark-snippet-loader) into an object
+  const eli5 = useMemo(() => {
+    if (!eli5json || typeof eli5json !== "string") return null;
+    try {
+      return JSON.parse(eli5json);
+    } catch {
+      return null;
+    }
+  }, [eli5json]);
 
   useEffect(() => {
     if (contentRef.current) {
@@ -301,11 +423,17 @@ export default function Snippet({
     return "plaintext";
   }, [pluginLang, children, filename]);
 
-  const codeBlock = code ? (
-    <CodeBlock className={`language-${lang}`}>{code}</CodeBlock>
-  ) : (
-    children
-  );
+  // Use line-by-line ELI5 renderer when annotations are available and code is a string.
+  // Otherwise fall back to Docusaurus CodeBlock (or raw children).
+  const codeBlock = useMemo(() => {
+    if (code && eli5 && Object.keys(eli5).length > 0) {
+      return <Eli5CodeBlock code={code} lang={lang} eli5={eli5} />;
+    }
+    if (code) {
+      return <CodeBlock className={`language-${lang}`}>{code}</CodeBlock>;
+    }
+    return children;
+  }, [code, eli5, lang, children]);
 
   const baseName = useMemo(
     () => (typeof filename === "string" ? filename.split("/").pop().toLowerCase() : null),
@@ -399,4 +527,5 @@ Snippet.propTypes = {
   children: PropTypes.node,
   defaultOpen: PropTypes.bool,
   variant: PropTypes.string,
+  eli5json: PropTypes.string,
 };

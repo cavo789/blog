@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:42.088Z",
+  "source": "docusaurus.config.js",
+  "lang": "javascript",
+  "explanations": {
+    "4": "The opening parenthesis here wraps the entire object — it's extra syntax that doesn't change the behavior, sometimes used for formatting or as a placeholder for future logic.",
+    "15": "This closing parenthesis matches the one on line 4 and closes that wrapper around the themeConfig object."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:25:45.955Z",
+  "source": "csp.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "This checks if Apache has the mod_headers module installed; everything inside only runs if it does.",
+    "4": "This sets a custom header called 'Protected-by' — the comment suggests you can either put a value here or delete this line entirely.",
+    "7": "This line sets permissions for what browser features (like camera or microphone) are allowed; replace XXXXXXXXXXXXXX with your actual domain name.",
+    "21": "The condition at the end (after the quotes) means this header only gets sent when the connection is using HTTPS — it won't apply on regular http.",
+    "40": "This entire line is commented out as a safety measure because Content-Security-Policy can easily break a site if configured wrong; uncomment and test thoroughly before using it."
+  }
+}

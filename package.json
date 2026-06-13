@@ -11,7 +11,9 @@
         "clear": "docusaurus clear",
         "serve": "docusaurus serve",
         "write-translations": "docusaurus write-translations",
-        "write-heading-ids": "docusaurus write-heading-ids"
+        "write-heading-ids": "docusaurus write-heading-ids",
+        "eli5": "node scripts/generate-eli5.mjs",
+        "eli5:bulk": "node scripts/bulk-eli5.mjs"
     },
     "dependencies": {
         "@docusaurus/core": "^3.9.2",
@@ -38,10 +40,12 @@
         "sharp": "^0.34.5"
     },
     "devDependencies": {
+        "@anthropic-ai/sdk": "^0.104.1",
         "@docusaurus/module-type-aliases": "^3.9.2",
         "@docusaurus/types": "^3.9.2",
         "@types/node": "^24.5.2",
-        "baseline-browser-mapping": "^2.9.15"
+        "baseline-browser-mapping": "^2.9.15",
+        "dotenv": "^17.4.2"
     },
     "browserslist": {
         "production": [

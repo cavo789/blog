@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:38.285Z",
+  "source": "posts.js",
+  "lang": "javascript",
+  "explanations": {
+    "37": "This line uses Webpack's require.context to find all MDX files in the blog folder—it's a special build-time feature that bundles file references so we can load them dynamically later.",
+    "41": "The .keys() method returns an array of file paths that matched our search pattern, so we can loop through each blog post file.",
+    "43": "This actually loads and executes the MDX file, giving us back an object that contains the frontMatter (the metadata at the top of the file) plus any exported content.",
+    "45": "This extracts the folder name by removing '/index.mdx' or '/index.md' from the end, then strips off the leading './' that Webpack adds—so 'blog/my-post/index.mdx' becomes just 'my-post'.",
+    "57": "If the image path starts with './', that means it's a relative path from the post file, so we need to convert it to an absolute path the browser can actually load.",
+    "76": "The .filter(Boolean) removes any falsy values (null, undefined, false) from the array, so invalid posts won't make it into the final list."
+  }
+}

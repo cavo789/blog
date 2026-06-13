@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:29.091Z",
+  "source": "slides_4.txt",
+  "lang": "plaintext",
+  "explanations": {}
+}

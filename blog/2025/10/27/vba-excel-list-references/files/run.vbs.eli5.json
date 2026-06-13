@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:52.743Z",
+  "source": "run.vbs",
+  "lang": "vbs",
+  "explanations": {
+    "87": "On error Resume Next tells the script to keep going even if an error happens on the next line, so we can check if Excel is already running.",
+    "89": "GetObject with no first parameter tries to find an already-running Excel application instead of starting a new one.",
+    "91": "This checks both if there was an error (Err.number <> 0) and if we somehow still don't have an Excel object, covering both failure cases.",
+    "101": "Err.clear resets the error tracking so old errors don't interfere with future error checking.",
+    "103": "On error Goto 0 turns off the error-ignoring mode we started on line 87, so errors will cause problems again if they happen.",
+    "109": "The function returns whether Excel was freshly started by this script, not whether instantiation succeeded—True means we started it and should close it later.",
+    "133": "The second parameter False means 'don't automatically update links in the spreadsheet' when opening the file.",
+    "156": "GetFileName extracts just the filename (like 'book.xlsm') from a full path, which is needed because Excel's Workbooks collection uses basenames, not full paths.",
+    "196": "Right(ref.FullPath,5) grabs the last 5 characters of the file path to check if it ends with '.xlam'.",
+    "239": "Right(WScript.FullName, 12) extracts the last 12 characters to see if the script engine is cscript.exe, since that's that many characters long.",
+    "244": "Chr(34) is the double-quote character, used here to wrap command-line arguments so spaces inside them don't break the command.",
+    "252": "The second parameter 1 activates the window when the command runs, and the third parameter true keeps it open instead of closing immediately.",
+    "280": "THen is a typo—should be Then—but VBScript is case-insensitive so it still works."
+  }
+}

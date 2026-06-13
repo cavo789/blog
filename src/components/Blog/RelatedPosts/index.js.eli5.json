@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:41.260Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "45": "This function checks if a post has a specific tag, handling both simple string tags and object tags with a label property.",
+    "46": "Tags might be stored as either plain strings or objects with properties, so we normalize them to compare against the target.",
+    "48": "This function checks if a post shares any tags from a list of target tags we're looking for.",
+    "67": "We sort by date instead of randomizing to avoid hydration mismatches—this ensures the server and client render the same posts in the same order.",
+    "91": "If descriptions are enabled, pass the post as-is; otherwise, pass a copy of the post with the description set to null to hide it."
+  }
+}

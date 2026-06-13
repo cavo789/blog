@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:53.551Z",
+  "source": "_d_has_running_containers",
+  "lang": "plaintext",
+  "explanations": {
+    "5": "The -q flag makes docker ps show only container IDs, and -n 1 limits it to just the first one; the -z test checks if that result is empty (meaning no containers running).",
+    "6": "The >&2 redirects the output to stderr instead of stdout, and \\033[0;33m is an ANSI color code that makes the word 'Info:' appear in yellow.",
+    "7": "We use 'return' instead of 'exit' because this script is meant to be sourced (run in the current shell) rather than executed as a standalone script."
+  }
+}

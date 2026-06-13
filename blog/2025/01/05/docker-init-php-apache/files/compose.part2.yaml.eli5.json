@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:57.571Z",
+  "source": "compose.part2.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "6": "The first number (8080) is the port on your computer; the second number (80) is the port inside the container that the server listens on.",
+    "8": "The 'depends_on' section tells Docker to start the db service first, but it won't wait for it to be ready unless you add the 'condition' check below it.",
+    "9": "This makes Docker Compose wait until the database actually responds to health checks before starting the server, preventing connection errors on startup.",
+    "12": "Setting 'restart: always' means Docker will automatically restart this database container if it crashes or stops for any reason.",
+    "15": "Instead of putting passwords directly in the file, 'secrets' lets you reference sensitive data stored separately and pass it to the container securely.",
+    "17": "This creates a named volume (a persistent storage area) and mounts it into the container so database files survive even if the container is deleted.",
+    "20": "Rather than storing the password as plain text in environment variables, this tells PostgreSQL to read the password from a file that Docker injected securely.",
+    "23": "The healthcheck runs a command periodically to verify the database is actually ready to accept connections, not just that the container started."
+  }
+}

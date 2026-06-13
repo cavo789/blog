@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:56.801Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "37": "The `= true` sets a default value, so if someone doesn't pass a `lazy` prop, it will behave as if they passed `lazy={true}`.",
+    "41": "This hook translates a relative image path into the correct full URL based on where your website is deployed, so images work whether the site is at the root or in a subfolder.",
+    "45": "The `clsx` function combines multiple CSS class names together—it always includes `\"card__image\"` and adds any extra classes from the `className` prop if provided.",
+    "50": "If `lazy` is true, this sets `loading=\"lazy\"` on the image tag; if false, it sets it to `undefined` (which means no loading attribute at all, so the browser loads it immediately)."
+  }
+}

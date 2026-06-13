@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:23.785Z",
+  "source": "Dockerfile.part3",
+  "lang": "part3",
+  "explanations": {
+    "1": "This line tells the spell-checker to ignore certain technical terms specific to Oracle database tools so it doesn't mark them as misspellings.",
+    "3": "This starts with a pre-built PHP image that includes PHP and a FastCGI process manager, so you don't have to install them from scratch.",
+    "5": "The && chains multiple commands together, and --no-install-recommends installs only what's needed without extra optional packages, keeping the image smaller.",
+    "11": "This deletes temporary package lists after installation to reduce the Docker image size, since those files aren't needed anymore.",
+    "18": "ARG defines a build-time variable that you can pass when building the Docker image; it's not available when the container runs.",
+    "27": "This creates a symbolic link (shortcut) pointing to the versioned instantclient folder with a generic name, so code can always reference the same path regardless of version.",
+    "28": "sh -c runs a shell command that writes the Oracle library path to a system configuration file, telling the system where to find Oracle libraries.",
+    "29": "ldconfig reads the configuration file from the previous line and updates the system's library cache so the operating system can find the Oracle libraries.",
+    "32": "This pipes (|) a configuration string directly into pecl install, telling it where the Oracle client library is located while installing the oci8 PHP extension."
+  }
+}

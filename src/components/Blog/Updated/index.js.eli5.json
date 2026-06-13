@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:50.727Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "15": "The spread operator [...updates] creates a shallow copy so we don't modify the original array when we sort it.",
+    "16": "This converts date strings into Date objects so we can subtract them and sort from newest (b) to oldest (a).",
+    "22": "The aria-hidden=\"true\" tells screen readers to ignore the emoji because it's just decorative, not essential information.",
+    "27": "We combine the date and index (i) as the key because using just the date might cause issues if multiple updates have the same date.",
+    "33": "The dateTime attribute stores the actual machine-readable date while the displayed text shows a user-friendly format.",
+    "34": "toLocaleDateString converts the date string into the user's language and format based on their locale setting.",
+    "42": "dangerouslySetInnerHTML is a special React prop that lets you insert raw HTML, here because parseMarkdown returns HTML instead of plain text."
+  }
+}

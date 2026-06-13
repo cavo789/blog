@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:53.994Z",
+  "source": "prompt.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "23": "SHA256 hash is a way to create a unique fingerprint of the file content; if the file hasn't changed, the hash stays the same, so we can recognize it in the cache.",
+    "28": "On startup means when the backend service first starts up; the backend needs to scan all Markdown files once and send them to Meilisearch so they become searchable.",
+    "53": "The `prefers-color-scheme` is a browser setting that tells us whether the user's operating system is set to dark mode or light mode, and we should respect that choice automatically.",
+    "64": "A multi-stage build means we use one Docker image to compile/prepare the code, then copy only the final result into a smaller image, so the deployed container isn't bloated with build tools.",
+    "70": "The `:ro` at the end means read-only; the backend can read the documentation files but cannot modify or delete them."
+  }
+}

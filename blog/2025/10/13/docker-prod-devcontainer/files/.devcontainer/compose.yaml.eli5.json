@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:37.268Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "7": "The syntax ${APP_HOME:-/app} means 'use the APP_HOME variable if it exists, otherwise use /app as a fallback default'.",
+    "8": "This sets the numeric user ID inside the container; LOCAL_UID is read from your host machine's environment, falling back to 1000 if not set.",
+    "9": "Similar to the user ID, this sets the group ID inside the container, using LOCAL_GID from your environment or 1000 as the default.",
+    "10": "This defines the username that will own files in the container, reading LOCAL_USER from your environment or defaulting to 'vscode'.",
+    "13": "The 5679 port is used by Debugpy (a Python debugger) to communicate between your IDE and the running code inside the container.",
+    "18": "The dot (.) represents your current local directory, and it's being mounted (made accessible) inside the container at the APP_HOME path.",
+    "19": "This creates a special named volume that persists VS Code extensions between container restarts instead of re-downloading them each time.",
+    "20": "Your bash command history file is being mounted with read-write (rw) permissions so your shell history is saved between container sessions.",
+    "22": "The 'sleep infinity' command keeps the container running indefinitely instead of exiting, which allows you to connect and work inside it.",
+    "24": "This top-level 'volumes' section defines named volumes that can be reused; 'vscode-extensions' is referenced above on line 19."
+  }
+}

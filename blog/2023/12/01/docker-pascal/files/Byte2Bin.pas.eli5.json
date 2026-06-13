@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:31.901Z",
+  "source": "Byte2Bin.pas",
+  "lang": "pas",
+  "explanations": {
+    "1": "This function takes a number (Byte type, which is 0-255) and returns it as a text string of 1s and 0s showing its binary representation.",
+    "10": "The loop counts down from 7 to 0 because a byte has 8 bits numbered that way, with 7 being the leftmost (most important) bit.",
+    "11": "This line checks if a specific bit position in the number is 'on' by using bit shifting (1 shl I makes a 1 jump I positions left) and the 'and' operation (which checks if both sides have a 1 in that spot)."
+  }
+}

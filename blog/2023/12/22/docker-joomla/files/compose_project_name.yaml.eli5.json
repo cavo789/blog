@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:35.502Z",
+  "source": "compose_project_name.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "1": "This is a special comment that tells a documentation tool (like a code renderer) to highlight the next line of code visually.",
+    "5": "This is a special comment that tells a documentation tool to highlight the next line of code visually.",
+    "10": "This is a special comment that tells a documentation tool to highlight the next line of code visually."
+  }
+}

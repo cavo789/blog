@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:47:22.724Z",
+  "source": "MDXComponents.js",
+  "lang": "javascript",
+  "explanations": {
+    "6": "The three dots (called spread operator) copy all the properties from MDXComponents into this object, so we inherit all the default components and then add or override them with our own."
+  }
+}

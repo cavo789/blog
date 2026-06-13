@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:34:11.832Z",
+  "source": "makefile.part29",
+  "lang": "part29",
+  "explanations": {
+    "1": "This line loads variables from a .env file so you can use them in this Makefile, similar to how you'd load environment variables in a script.",
+    "4": "The ${DOCKER_IMAGE} syntax retrieves the value of the DOCKER_IMAGE variable that was defined in the .env file and prints it out."
+  }
+}

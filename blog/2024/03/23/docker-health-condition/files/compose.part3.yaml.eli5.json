@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:38.579Z",
+  "source": "compose.part3.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "6": "depends_on tells Docker that the joomla service needs the joomladb service to be running before it starts.",
+    "10": "condition: service_healthy means Docker will wait until joomladb passes its health check before starting joomla, not just wait for the container to exist.",
+    "15": "healthcheck defines a test that Docker runs periodically to confirm the database is actually working and ready to accept connections."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:01.397Z",
+  "source": "tutorial.conf",
+  "lang": "conf",
+  "explanations": {
+    "1": "This sets the database connection string; it tells the app where to find the PostgreSQL database and how to log in to it.",
+    "3": "This defines the default user role (like a permission level) that unauthenticated visitors will use when accessing the database."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:18.794Z",
+  "source": "styles.module.css",
+  "lang": "css",
+  "explanations": {
+    "2": "This sets only the left border width to 5px; the other sides have no border unless defined elsewhere.",
+    "4": "This creates a subtle shadow effect around the box using RGBA (a color format with transparency), with the shadow spreading 5px and being 10% opaque black.",
+    "20": "Letter-spacing adds extra space between each character to make the title more spaced out and readable.",
+    "24": "This indents the content 2.5rem from the left, which typically aligns it under the icon in the header above.",
+    "25": "Opacity at 0.9 makes the text slightly see-through (90% visible), creating a lighter, secondary appearance."
+  }
+}

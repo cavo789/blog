@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:58.246Z",
+  "source": "likes.js",
+  "lang": "javascript",
+  "explanations": {
+    "8": "The optional chaining operator (?.) safely checks if siteConfig exists before accessing customFields, returning undefined if it doesn't rather than throwing an error.",
+    "18": "This condition checks if either piece of required data is missing; if so, it stops the fetch and marks loading as false to prevent trying to call the API.",
+    "25": "The `at://` protocol is Bluesky's internal URI format for identifying posts; it's being constructed from the account handle and post key to create a unique post identifier.",
+    "26": "encodeURIComponent() escapes special characters in the URI so it's safe to pass as a URL parameter without breaking the query string.",
+    "34": "After the API returns the full post thread data, this line extracts just the like and repost counts from the nested post object for easier access.",
+    "48": "These dependencies tell React to re-run the effect whenever either the record key or handle changes, ensuring the stats stay up-to-date if the post ID changes."
+  }
+}

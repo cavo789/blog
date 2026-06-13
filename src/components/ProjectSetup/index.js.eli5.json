@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:39.557Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "25": "Children.forEach is a React utility that safely loops through child elements, even if there's only one child or if some children are null.",
+    "28": "isValidElement checks if something is actually a React component (not plain text), so we can safely call methods on it.",
+    "62": "useRef creates a box that holds a value (like a timer ID) without causing re-renders when it changes—useful for cleanup tasks.",
+    "64": "This cleanup function runs when the component unmounts, clearing any leftover timeout so we don't try to update a component that no longer exists.",
+    "71": "useMemo caches the result of parsing children so we don't re-parse every time the component re-renders; it only re-parses if files or children actually change.",
+    "81": "processChildren is defined inside useMemo and called recursively to handle nested React components (like when a file is wrapped in extra divs).",
+    "85": "We check both child.type === Guideline and child.type?.isGuideline because the component reference might be wrapped or transformed by build tools.",
+    "96": "This logic distinguishes between actual file components (Snippet or things with a filename) and regular HTML tags like <div> that just happen to have props.",
+    "106": "The code prop is prioritized because a plugin may have already processed the file and injected its content there, rather than as raw children text.",
+    "132": "We use a custom delimiter string in a bash here-document so we can safely paste files with special characters without breaking the shell command.",
+    "147": "navigator.clipboard.writeText copies text to the user's clipboard—a modern way to handle copy-to-clipboard without Flash plugins.",
+    "150": "We store the timeout ID in copiedTimerRef so the cleanup function in useEffect can cancel it if the component unmounts before 2 seconds pass.",
+    "163": "We strip leading slashes (like /tmp/folder) because zip file paths shouldn't start with /, which would cause issues on Windows and some zip tools.",
+    "178": "zip.generateAsync({ type: 'blob' }) converts the in-memory zip into a downloadable file blob; await waits for that conversion to complete.",
+    "184": "We append the link to the DOM before clicking because some browsers (like older Firefox) require the element to be in the document for the download to work."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:12.168Z",
+  "source": "script.sh",
+  "lang": "bash",
+  "explanations": {
+    "5": "The `[ ! -f patterns.json ]` syntax checks if a file does NOT exist; the `!` means 'not' and `-f` means 'is a file'.",
+    "11": "This line deletes any old roundcube.sieve file with `rm -f`, then creates a fresh empty one with `touch` so we can append to it later.",
+    "13": "The backslash at the end of line 13 tells bash this command continues on the next line; it's how we break long pipes across multiple lines for readability.",
+    "18": "The `tr -d '\"'` command removes all quote characters from the pattern string, essentially stripping away the outer quotes that jq included."
+  }
+}

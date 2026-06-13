@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:37:44.674Z",
+  "source": "makefile_updated",
+  "lang": "plaintext",
+  "explanations": {
+    "1": "This line tells make to include variables from a .env file if it exists, so you can set configuration values outside this file.",
+    "4": "The $$ is an escape sequence in make that becomes a single $ when executed; it's getting your current user and group IDs to pass to Docker so containers run with your permissions.",
+    "17": "The \\033 sequences are ANSI color codes that make the text yellow and bold in your terminal; the ${WEB_PORT} gets replaced with the actual port number from your environment.",
+    "52": "The -@ prefix means make will ignore errors if this command fails and won't print the command itself, so a missing directory won't stop the build.",
+    "53": "The $$ escapes the $ for make, and --detach means Docker will run in the background instead of taking over your terminal."
+  }
+}

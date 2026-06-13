@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:33:10.809Z",
+  "source": "compose.part2.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "1": "This line tells the spell-checker to ignore this file so it doesn't complain about Docker-specific terms or configuration values.",
+    "7": "The comment explains that UID and GID are numeric identifiers for users and groups in Linux; you can find your own values by running those commands if your system is different.",
+    "10": "The comment is clarifying that while this USERNAME variable is set, Docker doesn't actually care what name you give it for this setup to work.",
+    "16": "This line creates a two-way bridge between your computer's current folder and the `/opt/behat` folder inside the container, so changes in one place automatically appear in the other."
+  }
+}

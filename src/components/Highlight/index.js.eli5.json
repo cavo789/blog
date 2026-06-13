@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:24.164Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "31": "propTypes is a separate validation system that checks the types of props passed to a component at runtime, helping catch bugs during development."
+  }
+}

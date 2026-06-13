@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:09.281Z",
+  "source": "customUI14.part11.xml",
+  "lang": "xml",
+  "explanations": {
+    "4": "imageMso refers to a built-in Microsoft Office icon set; 'AddFolderToFavorites' is the name of a specific icon from that set.",
+    "6": "onAction points to a function called 'OnButtonClicked' that will run when someone clicks this button."
+  }
+}

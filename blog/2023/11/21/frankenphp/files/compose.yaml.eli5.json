@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:54.372Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "4": "This image name includes 'hardened' and a version tag, meaning it's a customized security-focused version of FrankenPHP with Joomla pre-configured, not the standard FrankenPHP image.",
+    "11": "JOOMLA_DB_HOST is set to 'db' because in Docker Compose, services can reach each other by their service name as a hostname instead of an IP address.",
+    "16": "The volume 'joomla:/app/public' creates a persistent storage location so that Joomla files survive container restarts; the left side is the volume name, the right side is where it mounts inside the container.",
+    "28": "Similarly, the 'db' volume persists MySQL data at /var/lib/mysql so your database isn't lost when the container stops."
+  }
+}

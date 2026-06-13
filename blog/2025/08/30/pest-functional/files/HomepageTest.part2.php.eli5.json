@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:33.313Z",
+  "source": "HomepageTest.part2.php",
+  "lang": "php",
+  "explanations": {
+    "4": "getenv('WEBSITE') retrieves an environment variable (a setting stored outside the code) that contains the website's URL to test against.",
+    "14": "The dot (.) concatenates strings together, so this builds the full URL by combining the website base with '/blog'.",
+    "20": "The ->click() method simulates a user clicking on an element; here it's clicking a link labeled 'Blog'.",
+    "37": "The '.DocSearch-Button' is a CSS selector that targets a specific HTML element by its class name so the test can interact with it.",
+    "38": "The ->type() method simulates typing text into a form field; here it types 'Bluesky' into the search input.",
+    "45": "This clicks on a link with that exact text; the test is checking that such a link exists and can be clicked."
+  }
+}

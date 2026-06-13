@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:06.318Z",
+  "source": ".gitlab-ci.yml.part2",
+  "lang": "part2",
+  "explanations": {
+    "2": "This specifies which Docker image version to use for this job—think of it like saying which tool you want to install.",
+    "4": "This tells Docker where to find its control socket, which is how the container communicates with the Docker daemon running on the host machine.",
+    "5": "This disables TLS certificate verification for Docker, which is a security setting that's turned off here to simplify the setup.",
+    "7": "This command runs a PHP linting tool inside a temporary Docker container, mounting your project directory so the linter can check your PHP files."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:21.110Z",
+  "source": "main.part3.py",
+  "lang": "python",
+  "explanations": {
+    "17": "The 'async' keyword means this function can pause and wait for other work to happen, which is useful when handling multiple web requests at once.",
+    "24": "Notice this function doesn't have 'async' like the one above — that's fine for simpler operations, but 'async' would be better practice here too for consistency.",
+    "31": "This tuple with a status code (404) won't actually work as written — FastAPI needs a special Response object to set HTTP status codes properly."
+  }
+}

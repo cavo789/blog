@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:56.019Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "8": "The 'set -e -x' command makes the script exit immediately if any command fails and print each command before running it, which helps catch errors early.",
+    "15": "ARG creates a build-time variable that can be passed when building the image with '--build-arg VERSION=...' to change which Dagger version gets installed.",
+    "16": "This uses variable substitution to build the filename from the VERSION variable, so if VERSION changes, the filename updates automatically.",
+    "22": "The ${ARCHIVE} and ${URL} variables are being substituted here with the values defined on lines 16 and 17."
+  }
+}

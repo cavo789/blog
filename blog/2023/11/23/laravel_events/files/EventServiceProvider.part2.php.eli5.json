@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:10.774Z",
+  "source": "EventServiceProvider.part2.php",
+  "lang": "php",
+  "explanations": {
+    "1": "This $listen array is a property that maps event classes to listener classes—it tells Laravel which listeners to run when specific events are fired.",
+    "2": "SampleEvent::class gets the fully-qualified class name as a string, which Laravel uses to identify which event triggers these listeners."
+  }
+}

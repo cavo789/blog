@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:11.607Z",
+  "source": ".pre-commit-config.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "2": "This line tells pre-commit to skip checking files in those three directories (the ^ means start of path, and | means 'or').",
+    "23": "The args list here passes a command-line flag to the markdownlint tool telling it where to find its configuration file.",
+    "32": "This line specifies the exact command that will run; it's needed here because this is a custom 'local' hook, not a standard pre-built one.",
+    "33": "This declares that the hook runs a Node.js tool, so pre-commit knows to look for it in your Node environment rather than your system PATH.",
+    "45": "This awk/yq command extracts only the YAML section between the first pair of --- lines in .qmd files, then validates that YAML syntax.",
+    "48": "The {} gets replaced with each filename that matches, so the script processes files one at a time.",
+    "64": "This exclusion pattern prevents the spell checker from looking inside the _extensions folder, which typically contains third-party code you don't want checked."
+  }
+}

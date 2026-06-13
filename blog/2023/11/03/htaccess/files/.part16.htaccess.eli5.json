@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:22.923Z",
+  "source": ".part16.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "This checks if the mod_headers module is available in Apache before trying to use it; if the module isn't installed, Apache will ignore the rules inside.",
+    "2": "This tells browsers to trust the Content-Type header we send and not try to guess what the file actually is, which prevents certain security exploits."
+  }
+}

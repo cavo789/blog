@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:39.567Z",
+  "source": "decrypt.cmd",
+  "lang": "batch",
+  "explanations": {
+    "1": "The @echo off command hides each command from being printed to the screen as the script runs, so you only see the output, not the commands themselves.",
+    "5": "This runs a Docker container (a isolated mini-computer environment) that decrypts a file using AES encryption, with -v mounting a folder from your PC into the container and -w setting the working directory inside it."
+  }
+}

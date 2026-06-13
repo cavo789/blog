@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:02.194Z",
+  "source": "script.part2.sh",
+  "lang": "bash",
+  "explanations": {
+    "3": "The %-40s format means 'print the argument left-aligned in a 40-character wide space', so the text gets padded with spaces on the right to fit nicely between the equals signs."
+  }
+}

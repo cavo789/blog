@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:12.665Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "1": "This is a special comment syntax for documentation tools like Docusaurus to highlight the next line visually in rendered docs.",
+    "8": "The init: true setting ensures the container properly handles signals and reaps zombie processes, which is important for clean shutdowns."
+  }
+}

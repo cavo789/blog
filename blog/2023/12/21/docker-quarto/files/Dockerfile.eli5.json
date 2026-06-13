@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:29.038Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "14": "This mounts a cache directory so package downloads persist between builds, making rebuilds faster.",
+    "15": "The 'set -e -x' makes the script exit on any error and print each command before running it, which helps catch problems.",
+    "37": "This re-declares the ARG from line 6 so it's available in this later build stage; ARGs don't automatically carry forward.",
+    "42": "The '-o' flag allows creating a group with a GID that might already exist, which prevents errors if the ID is taken."
+  }
+}

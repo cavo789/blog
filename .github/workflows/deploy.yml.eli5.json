@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:05.434Z",
+  "source": "deploy.yml",
+  "lang": "yaml",
+  "explanations": {
+    "29": "This line decides whether to run the deployment: it runs if manually triggered OR if the commit message doesn't start with 'wip' (meaning WIP commits are skipped).",
+    "47": "This creates a cache key using the operating system name and a hash of the yarn.lock file, so different projects or lock file changes get different caches.",
+    "52": "This step only runs if the previous cache step didn't find a match, avoiding unnecessary reinstalls when dependencies are already cached.",
+    "69": "This converts the user's input from the workflow trigger (a string 'true' or 'false') into a boolean that the FTP action understands."
+  }
+}

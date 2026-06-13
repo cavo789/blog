@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:24.649Z",
+  "source": "customui.xml",
+  "lang": "xml",
+  "explanations": {
+    "1": "This declares an XML file that defines custom UI elements (ribbons and buttons) for Microsoft Office applications.",
+    "4": "The insertBeforeMso attribute places this custom tab before the standard Home tab in the ribbon interface.",
+    "6": "Each callback attribute (onAction, getSelectedItemID, etc.) points to a VBA function that handles different dropdown interactions—for example, onAction runs when the user selects an item."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:54.833Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "12": "This checks if the user has scrolled down more than 300 pixels from the top, and updates the isVisible state accordingly.",
+    "13": "The passive option tells the browser this scroll listener won't call preventDefault, so it can optimize performance.",
+    "21": "After the smooth scroll animation finishes (800 milliseconds), the fly animation state is turned off so the button returns to normal.",
+    "27": "clsx is a utility that conditionally combines CSS class names together based on whether conditions are true or false."
+  }
+}

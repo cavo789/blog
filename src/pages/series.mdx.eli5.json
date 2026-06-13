@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:28.184Z",
+  "source": "series.mdx",
+  "lang": "markdown",
+  "explanations": {
+    "1": "This is YAML frontmatter—metadata at the top of the file that tells the site generator about the page's title, image, and author.",
+    "3": "This setting prevents the automatic table of contents from showing on this page.",
+    "8": "This imports a CSS file to style elements that appear later on the page.",
+    "12": "This comment tells the markdown linter to ignore a specific rule for this file so it doesn't complain about formatting."
+  }
+}

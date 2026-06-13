@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:14.423Z",
+  "source": "styles.modules.css",
+  "lang": "css",
+  "explanations": {
+    "8": "Missing 'px' unit after the number 8; it should be '8px' or another valid unit so the browser knows what 8 means."
+  }
+}

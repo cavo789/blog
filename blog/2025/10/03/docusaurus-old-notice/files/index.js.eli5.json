@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:09.874Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "3": "This imports a constant (a fixed value) called blogPostContainerID from a utility library, which is probably used to mark the main content area with a special ID.",
+    "4": "This is a React hook (a special function) that gives us information about the current blog post, like whether we're viewing the full post page or just a preview.",
+    "7": "We're extracting the isBlogPostPage value from the hook we imported — it's a boolean (true/false) that tells us if we're on the actual blog post page.",
+    "11": "This conditionally sets the ID only when viewing the full blog post page; when it's a preview, the ID stays undefined so the feed generator only processes the real post content."
+  }
+}

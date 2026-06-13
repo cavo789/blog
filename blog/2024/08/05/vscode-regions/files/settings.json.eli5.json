@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:30.510Z",
+  "source": "settings.json",
+  "lang": "json",
+  "explanations": {
+    "4": "The backslash before # is escaping the hash symbol so it's treated as a literal character in the search pattern, not a special regex character.",
+    "5": "The square brackets [\\s] match any whitespace character (spaces, tabs, newlines), and the * means 'zero or more of them'; the parentheses capture whatever comes after for later use.",
+    "6": "This is the plain text pattern to search for when folding code, while foldStartRegex on line 7 is the more flexible pattern-matching version that finds the same thing.",
+    "7": "The .* at the end captures any characters after 'region' into a group, letting the editor extract the region name even if it has extra spaces or special formatting."
+  }
+}

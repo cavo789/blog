@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:37.406Z",
+  "source": "run.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "5": "The backtick characters around --debug are markdown syntax to format it as code; this makes it display in a fixed-width font in documentation.",
+    "7": "The semicolon at the end of this line is punctuation for the sentence, not part of the flag name itself."
+  }
+}

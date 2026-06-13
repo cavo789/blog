@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:58.184Z",
+  "source": "devcontainer.part5.json",
+  "lang": "json",
+  "explanations": {
+    "7": "This runs a command automatically after the container is created—think of it like a setup script that installs the Rector tool (a PHP code modernizer) as a dev dependency so it's ready to use immediately."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:50:37.249Z",
+  "source": "curl.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "1": "This shows curl is attempting to connect to a local server running on port 8001 (127.0.0.1 is your own computer).",
+    "8": "This is curl noting that the server doesn't support HTTP connection reuse, meaning each request needs a fresh connection.",
+    "15": "The connection is being closed after the response; this happens when the server or client doesn't want to keep the connection open for future requests."
+  }
+}

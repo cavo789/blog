@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:26.015Z",
+  "source": "index.module.css",
+  "lang": "css",
+  "explanations": {
+    "2": "inline-flex makes this element sit inline with text but behave like a flex container, so you can arrange its children in a row.",
+    "4": "vertical-align: middle doesn't actually work on flex containers, so this line does nothing here — it's likely leftover from before display: inline-flex was added.",
+    "6": "var(--ifm-color-primary-dark) is a CSS variable (a reusable color value defined elsewhere) that pulls the dark version of the primary brand color."
+  }
+}

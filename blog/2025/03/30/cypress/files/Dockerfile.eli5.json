@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:52.672Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "5": "The package*.json pattern matches both package.json and package-lock.json (the asterisk is a wildcard), and --chown=node:node makes sure the node user owns these files instead of root.",
+    "12": "This command tells Cypress to check that it's properly installed and ready to run, catching any setup problems before tests actually start.",
+    "14": "Switching to the node user means the rest of the container runs as a non-root user, which is a security best practice."
+  }
+}

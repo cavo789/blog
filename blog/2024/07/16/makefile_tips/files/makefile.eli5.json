@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:33:27.960Z",
+  "source": "makefile",
+  "lang": "makefile",
+  "explanations": {
+    "1": "The -s flag checks if a file exists and has content (non-zero size); the || means 'if that fails, then echo this message'.",
+    "3": "The -s flag checks if the file exists and has content; the && means 'if that succeeds, then echo this message'."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:59.839Z",
+  "source": "index.mjs",
+  "lang": "javascript",
+  "explanations": {
+    "24": "Promise.all waits for all the async operations (the map calls) to finish before returning their results as an array.",
+    "32": "The .flat() method flattens nested arrays into a single list, so if some entries returned [path1] and some returned [], they all merge into one array.",
+    "42": "This function returns an object (not called immediately); Docusaurus will call the returned object's postBuild method after building the site.",
+    "70": "Promise.allSettled runs all file updates in parallel and captures both successes and failures instead of stopping at the first error.",
+    "82": "The replace method here uses a function callback that receives the matched text (m) so we can insert the banner right after the doctype tag.",
+    "90": "Writing to a temporary file first, then renaming it, is safer because the rename is atomic (all-or-nothing), preventing other processes from reading incomplete data.",
+    "101": "This filters for results where the outer Promise settled successfully (fulfilled) and the inner operation also succeeded (status ok)."
+  }
+}

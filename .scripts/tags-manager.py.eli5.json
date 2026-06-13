@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:02.655Z",
+  "source": "tags-manager.py",
+  "lang": "python",
+  "explanations": {
+    "8": "This imports Counter, which is a dictionary-like tool that automatically counts how many times each item appears in a list.",
+    "30": "This sets a threshold—if two tag names differ by 3 characters or fewer AND one is contained in the other, the code will suggest merging them.",
+    "34": "This is a set of tag pairs that are similar but should NOT be suggested for merging, like 'php' and 'phpcbf' which are legitimately different tools.",
+    "50": "This function tells the YAML library how to format lists when writing to files—it uses the compact [item1, item2] style instead of a multi-line format.",
+    "54": "This function controls how text strings are written to YAML files, using a special pipe character style for multi-line strings and plain style for single lines.",
+    "64": "These lines register the custom formatting rules above with the YAML library so they apply whenever you save metadata to a file.",
+    "75": "StringIO is like an invisible file in memory where we can build up text before writing it to an actual file.",
+    "86": "The function gets the YAML text that was written to the invisible file and stores it in a variable.",
+    "104": "Counter is a special dictionary that keeps track of how many times each tag appears across all files.",
+    "122": "This creates an empty set (a collection that stores unique items) to collect all distinct tags found, treating 'Python' and 'python' as different.",
+    "158": "Python's sort is 'stable', meaning when you sort twice, the secondary sort order (by name) is preserved—this achieves multi-level sorting.",
+    "177": "This list comprehension filters to find only groups of tags that have multiple spelling variations (like 'Python', 'python', 'PYTHON').",
+    "182": "This creates an empty set to store pairs of tags that the code thinks should probably be merged together.",
+    "191": "This creates a canonical order (alphabetically sorted) of the lowercase tag pair so that ('php', 'phpcbf') and ('phpcbf', 'php') are treated as the same pair.",
+    "224": "This calculates how many characters different two tag names are—for example, 'snippet' (7 chars) vs 'snippets' (8 chars) has a difference of 1.",
+    "332": "The pipe symbol here means the type is either a string OR None (absence of a value), allowing the code to represent 'no old tag' with None.",
+    "356": "This checks if the new tag (in lowercase) is already in the list to avoid accidentally adding the same tag twice under different capitalizations.",
+    "362": "Before adding a tag to the new list, this ensures a case-insensitive duplicate doesn't already exist (e.g., 'Python' and 'python' count as the same).",
+    "444": "os.sys.argv is the list of command-line arguments passed to the script; checking if its length is 1 means the user ran the script with no arguments."
+  }
+}

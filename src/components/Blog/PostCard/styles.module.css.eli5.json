@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:40.548Z",
+  "source": "styles.module.css",
+  "lang": "css",
+  "explanations": {
+    "37": "min-width: 0 is a trick to let flexbox shrink content below its natural size, preventing text overflow in flex children.",
+    "41": "This line animates two properties at once — the card moves up and its shadow changes — both using the same timing speed.",
+    "50": "flex: 1 means this body section grows to fill all available space, pushing any footer content to the bottom.",
+    "63": "white-space: nowrap forces the title onto one line, and text-overflow: ellipsis adds '...' if it's too long.",
+    "106": "-webkit- prefixes are vendor-specific CSS for older browsers; these lines let text cut off after exactly 2 lines.",
+    "129": "This hardcodes the height to 180px instead of using the CSS variable defined at the top, which is inconsistent."
+  }
+}

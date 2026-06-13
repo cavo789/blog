@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:01.876Z",
+  "source": ".part8.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "This checks if Apache's rewrite module is available before running any rewrite rules, so the server won't error if the module isn't installed.",
+    "7": "This condition checks the HTTPS variable; !=on means 'is not equal to on', so it's true when the connection is not secure.",
+    "8": "The [L,R=301] means stop processing rules after this one (L) and send a permanent redirect response (301) to the browser.",
+    "12": "The !^ means 'does not start with', so this condition is true when the domain doesn't start with 'www.'."
+  }
+}

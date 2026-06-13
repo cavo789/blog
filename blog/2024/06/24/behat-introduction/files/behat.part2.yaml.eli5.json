@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:33:05.562Z",
+  "source": "behat.part2.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "3": "The tilde (~) means 'no configuration needed' — this extension will use its default settings without any custom parameters.",
+    "10": "This is the internal debugging port that Chrome exposes; Behat uses it to remote-control the browser during tests."
+  }
+}

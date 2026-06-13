@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:51.211Z",
+  "source": "Blog.feature",
+  "lang": "feature",
+  "explanations": {
+    "1": "This is the overall title describing what the feature does — it's the high-level goal you're testing.",
+    "3": "A 'Scenario' is one specific test case or example of how the feature should work.",
+    "4": "The 'Given' keyword sets up the starting conditions — it's like saying 'assume I'm already here' before we test anything.",
+    "5": "The 'Then' keyword here actually describes an action we're taking, even though 'Then' usually means checking results — it's a quirk of this test framework's language."
+  }
+}

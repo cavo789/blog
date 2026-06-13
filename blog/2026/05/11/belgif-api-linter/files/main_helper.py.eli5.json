@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:54:28.245Z",
+  "source": "main_helper.py",
+  "lang": "python",
+  "explanations": {
+    "22": "This creates a type alias called JsonNode that can be either a dictionary, a list, or any other type—it's used to describe the flexible structure of JSON data.",
+    "31": "The cast() function tells the type checker to treat this variable as a dictionary, even though we already know it is one; it silences warnings from strict linters.",
+    "47": "This line keeps the first word lowercase and capitalizes the first letter of every following word (e.g., 'hello_world' becomes 'helloWorld').",
+    "60": "The get() method safely looks up the '$ref' key without crashing if it doesn't exist; if it doesn't, it returns None.",
+    "79": "Using .get() with a default empty dictionary means if 'components' doesn't exist in the schema, we'll just work with an empty dict instead of crashing.",
+    "85": "The pop() method removes the old key from the dictionary and returns its value, then we store that value under the new key name—this effectively renames it.",
+    "102": "The cast() function tells the type checker to treat this value as a string, even though we already checked it exists in the operationId field.",
+    "143": "We're assigning our custom function directly to app.openapi, which overrides FastAPI's default OpenAPI generator; the type: ignore comment tells the linter not to complain about this unusual assignment."
+  }
+}

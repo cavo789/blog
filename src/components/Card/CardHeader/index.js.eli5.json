@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:54.124Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "22": "This line uses the `styles` object (imported CSS module) to apply a truncate class, while other text properties use plain strings—they come from different sources.",
+    "26": "The clsx function takes multiple arguments (some strings, some variables) and combines them into a single className, ignoring any empty or false values so only active styles are applied."
+  }
+}

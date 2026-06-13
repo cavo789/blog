@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:04.572Z",
+  "source": "calculate_autocompleted.sh",
+  "lang": "bash",
+  "explanations": {
+    "1": "This is a shebang line that tells the system to run this file with the bash interpreter.",
+    "4": "The 'local' keyword makes these variables only exist within this function, so they won't accidentally affect variables with the same names elsewhere.",
+    "10": "The $((...)) syntax evaluates the math expression inside the parentheses and returns the result.",
+    "19": "The '-ne' operator means 'not equal'; this checks if num2 is not zero before dividing.",
+    "32": "$# is a special variable that counts how many arguments were passed to the script; this line checks if exactly 3 arguments were provided.",
+    "48": "The double brackets [[ ]] allow pattern matching and are safer than single brackets in bash; here it's checking if the first argument is the word 'help'.",
+    "51": "The '$@' expands to all arguments passed to the script, so you're forwarding them to the main function."
+  }
+}

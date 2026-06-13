@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:28.375Z",
+  "source": "assert.sh",
+  "lang": "bash",
+  "explanations": {
+    "1": "This special line tells the system to use bash to run this script, no matter which shell the user is currently using.",
+    "4": "The 'local -r' keywords make this variable local to the function and read-only (can't be changed), and the '${1:-}' syntax means 'use the first argument, or an empty string if no argument was given'.",
+    "7": "The '[[ -z ... ]]' test checks if the variable is empty, and '&&' means 'if that's true, then run the echo command'; the '>&2' redirects the message to the error stream instead of normal output.",
+    "18": "The 'command -v' is a safe way to check if a program exists, the '|| true' means 'if command -v fails, pretend it succeeded anyway', and the '$(...)' wraps all that to capture what it prints."
+  }
+}

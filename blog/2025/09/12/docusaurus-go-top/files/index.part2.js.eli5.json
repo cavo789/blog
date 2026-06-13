@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:47:00.839Z",
+  "source": "index.part2.js",
+  "lang": "javascript",
+  "explanations": {
+    "3": "This hook from Docusaurus gives us information about the current blog post, like whether we're viewing a single post or a list of posts.",
+    "12": "This is a custom hook (a reusable function) that figures out what CSS class name the container should have based on where we are in the app.",
+    "14": "If we're NOT on a single blog post page, add extra spacing at the bottom; otherwise don't add any spacing class."
+  }
+}

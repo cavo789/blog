@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:29.280Z",
+  "source": "nginx.conf",
+  "lang": "conf",
+  "explanations": {
+    "8": "This line takes any request coming to the HTTP port and permanently redirects it to HTTPS while keeping the rest of the URL the same — $host is the domain name and $request_uri is everything after it.",
+    "13": "This tells nginx to listen on port 443 (HTTPS), use SSL encryption, and support HTTP/2 which is a faster protocol for transferring web content.",
+    "28": "This restricts which encryption protocols nginx will accept from browsers — only newer, more secure versions of TLS so older insecure ones can't be used.",
+    "30": "This is a list of allowed encryption algorithms (ciphers), excluding weak ones like aNULL and MD5 which hackers could potentially break.",
+    "40": "This is a fallback rule for single-page apps like Docusaurus — if a file doesn't exist on disk, send back index.html so the app's JavaScript can handle the routing.",
+    "44": "The ~* means case-insensitive pattern matching, and this line targets static files like images and fonts so they can be cached by browsers for a year instead of re-downloading."
+  }
+}

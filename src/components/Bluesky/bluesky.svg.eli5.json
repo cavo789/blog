@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:43.125Z",
+  "source": "bluesky.svg",
+  "lang": "svg",
+  "explanations": {
+    "2": "The viewBox attribute defines the coordinate system for the SVG; think of it as telling the image 'your canvas is 600 units wide and 530 units tall, starting from position 0,0'.",
+    "3": "This path element draws a complex shape using a series of move and curve commands (the letters and numbers in the 'd' attribute); it's like giving a robot very detailed instructions to draw by hand, and the 'fill' attribute colors it blue."
+  }
+}

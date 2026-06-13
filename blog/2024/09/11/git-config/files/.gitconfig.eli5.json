@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:28.029Z",
+  "source": ".gitconfig",
+  "lang": "plaintext",
+  "explanations": {
+    "2": "This creates a git shortcut called 'undo' that uses a bash function to revert your current branch to a previous state; the ${1-1} part means 'use the argument you passed in, or default to 1 if you didn't pass anything'."
+  }
+}

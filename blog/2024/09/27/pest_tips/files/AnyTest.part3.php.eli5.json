@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:48.466Z",
+  "source": "AnyTest.part3.php",
+  "lang": "php",
+  "explanations": {
+    "1": "This is a test function that receives different email values one at a time; the ->with() method at the end provides the list of emails to test.",
+    "2": "The 'not' keyword inverts the expectation, so this checks that the email is NOT empty (instead of checking that it IS empty)."
+  }
+}

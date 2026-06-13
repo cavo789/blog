@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:13.430Z",
+  "source": "makefile.part6",
+  "lang": "part6",
+  "explanations": {
+    "1": "This sets the SHELL variable to bash, which tells Make to use bash as the command interpreter instead of the default sh.",
+    "3": "This defines a color code (33 is yellow in ANSI terminal colors) that can be reused elsewhere in the Makefile.",
+    "5": ".PHONY tells Make that 'help' is not a real file to create, just a target name for a command you want to run.",
+    "8": "This uses awk (a text processing tool) to parse the Makefile and automatically generate a formatted help menu from comments marked with ##.",
+    "12": "Lines starting with ##@ create section headers in the help output; the text after ##@ becomes a bold yellow section title.",
+    "19": "This is another ##@ section header that will appear in the help menu to organize related commands.",
+    "30": "This ##@ section header groups database-related commands together in the help output."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:48.505Z",
+  "source": "composer.part2.json",
+  "lang": "json",
+  "explanations": {
+    "4": "This tells Composer that this package is a special plugin that extends Composer's functionality, rather than just a regular library you'd use in your code."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:38.177Z",
+  "source": "call_api.py",
+  "lang": "python",
+  "explanations": {
+    "22": "raise_for_status() throws an error if the HTTP request failed (like a 404 or 500), so we don't accidentally use bad data.",
+    "34": "The ['---'] * len(headers) creates a list of dashes repeated as many times as there are column headers, which Markdown needs to separate the table header from the body rows.",
+    "37": "We're diving into nested dictionaries here—user['name'] is itself a dictionary containing 'first' and 'last' keys, so we have to go two levels deep to get the actual name values."
+  }
+}

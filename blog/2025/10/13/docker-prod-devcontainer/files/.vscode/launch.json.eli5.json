@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:45.271Z",
+  "source": "launch.json",
+  "lang": "json",
+  "explanations": {
+    "6": "debugpy is the debugging protocol that Python uses; this tells VS Code to use Python's debugger instead of a generic one.",
+    "7": "attach means VS Code will connect to a debugger that's already running somewhere, rather than starting a new one.",
+    "8": "connect specifies where to find the running debugger—here it's on your local machine at a specific port number.",
+    "12": "justMyCode set to true means the debugger will skip stepping into Python library code and only debug your own project files.",
+    "13": "pathMappings tells the debugger how to translate file paths between your computer and wherever the code is actually running."
+  }
+}

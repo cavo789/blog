@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:54:17.248Z",
+  "source": "warnings.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "1": "This warning means the code is checking a condition using eval (dynamic evaluation) after already extracting some data from patterns, which is slower than checking the condition directly in the pattern matching itself.",
+    "2": "The system is warning that checking if a content type is JSON using eval is inefficient; it would be faster to filter for JSON types during the initial pattern matching.",
+    "10": "A simple null-check like this one should ideally be part of the pattern matching rules from the start, rather than evaluated as an afterthought, because it would skip unnecessary processing."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:37:04.476Z",
+  "source": "AnyTest.part11.php",
+  "lang": "php",
+  "explanations": {
+    "1": "This line tells the test framework to use the TestCase class from the Tests namespace for all test files in the 'Unit' directory, so you don't have to import it in every test file."
+  }
+}

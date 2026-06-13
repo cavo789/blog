@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:14.388Z",
+  "source": "compose.part4.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "7": "The ${HOME} syntax substitutes your actual home directory path at runtime, and the colon separates the path on your computer from where it appears inside the container."
+  }
+}

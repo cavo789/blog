@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:33.074Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "6": "The first number (80) is the port on your computer, and the second number (80) is the port inside the container—traffic coming to your machine on port 80 gets forwarded to the container's port 80.",
+    "8": "This makes a folder on your computer (./src) appear inside the container at that path, so changes you make locally show up immediately without rebuilding."
+  }
+}

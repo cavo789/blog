@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:25:42.112Z",
+  "source": "index.php",
+  "lang": "php",
+  "explanations": {
+    "5": "utf8_decode converts text from UTF-8 to a single-byte format, but \"Ipso lorem\" is already plain text, so this doesn't help; json_decode will fail silently and return null because the string isn't valid JSON.",
+    "9": "The JSON_THROW_ON_ERROR flag makes json_decode throw an exception instead of returning null when it encounters invalid JSON, so you'll see the error instead of silent failure."
+  }
+}

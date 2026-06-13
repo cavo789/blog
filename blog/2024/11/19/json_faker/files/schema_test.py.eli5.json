@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:31.260Z",
+  "source": "schema_test.py",
+  "lang": "python",
+  "explanations": {
+    "11": "This creates the full web address (URL) by plugging the api_key, num_records, and schema values into the template string using f-string syntax (the 'f' prefix lets us use curly braces to insert variables).",
+    "17": "The status_code 200 means the server successfully processed our request; any other number indicates something went wrong."
+  }
+}

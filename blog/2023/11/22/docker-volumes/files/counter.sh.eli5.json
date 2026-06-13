@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:57.484Z",
+  "source": "counter.sh",
+  "lang": "bash",
+  "explanations": {
+    "1": "This line tells the system to use the sh shell to run this script, finding it automatically from your system's PATH.",
+    "3": "The [[ ! -f /data/counter.txt ]] checks if the file does NOT exist; the ! means 'not' and -f means 'is this a file'.",
+    "9": "This reads the current counter value from the file, adds 1 to it using backticks (which run the cat command), and stores the result in the counter variable."
+  }
+}

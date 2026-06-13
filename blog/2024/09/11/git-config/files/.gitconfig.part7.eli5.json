@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:36.067Z",
+  "source": ".gitconfig.part7",
+  "lang": "part7",
+  "explanations": {
+    "5": "This is a conditional block that applies only to git repositories inside the ~/private_repositories/ folder, allowing you to use different git settings for different project locations.",
+    "6": "When you're working in a private repository matching the condition above, your commits will use this email address instead of the default one from the [user] section."
+  }
+}

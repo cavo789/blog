@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:42.946Z",
+  "source": "devcontainer.log",
+  "lang": "log",
+  "explanations": {
+    "8": "APP_HOME is set to /ap, which is a shortened path that will be used as the application's home directory inside the container.",
+    "16": "The sleep infinity command keeps the container running indefinitely instead of exiting, which is useful for development environments where you want to connect and work inside the container.",
+    "24": "Setting default to null means this service will use Docker's default network behavior rather than a custom network configuration.",
+    "36": "The user ID 1001:1001 specifies which user account runs processes inside the container (the format is userid:groupid).",
+    "42": "create_host_path: true tells Docker to automatically create the /tmp/docker-prod-devcontainer directory on your computer if it doesn't already exist.",
+    "46": "volume: {} is an empty configuration that uses default settings for this named volume, which stores VS Code extensions persistently between container restarts."
+  }
+}

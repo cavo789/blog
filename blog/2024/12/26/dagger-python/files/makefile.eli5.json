@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:05.160Z",
+  "source": "makefile",
+  "lang": "makefile",
+  "explanations": {
+    "2": "This stores a Docker flag that mounts the host's Docker socket (a special file that lets containers talk to Docker) into the container, so we can use Docker from inside the container.",
+    "4": ".PHONY tells Make that 'build' is not a real file we're creating, just a command label to run.",
+    "10": "The ${DOCKER_SOCK} and other ${...} parts are variable substitutions—Make replaces them with the values defined at the top of the file."
+  }
+}

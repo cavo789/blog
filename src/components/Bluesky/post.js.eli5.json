@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:55.290Z",
+  "source": "post.js",
+  "lang": "javascript",
+  "explanations": {
+    "8": "The question mark and then another question mark in `siteConfig?.customFields?.bluesky` means 'safely access this property even if the thing before it doesn't exist' — it prevents crashes if siteConfig or customFields is missing.",
+    "11": "This checks if both the handle and record key exist; if either one is missing, the function returns nothing (null) so the button won't appear.",
+    "21": "The `rel` attribute tells browsers that this link opens in a new tab but shouldn't let that new page access information about where the user came from — it's a security best practice."
+  }
+}

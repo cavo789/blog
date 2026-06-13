@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:24.585Z",
+  "source": "my_class.part2.php",
+  "lang": "php",
+  "explanations": {
+    "8": "getQuery(true) creates a new SQL query object; the 'true' parameter tells it to use the database-specific query builder instead of a plain string.",
+    "10": "The '#__' prefix is a placeholder that gets replaced with your actual database table prefix (like 'wp_' or 'my_') when the query runs.",
+    "16": "loadColumn() runs the query and returns just one column of results as a flat array, rather than returning complete rows with all columns."
+  }
+}

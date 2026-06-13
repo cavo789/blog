@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:16.661Z",
+  "source": "EventServiceProvider.php",
+  "lang": "php",
+  "explanations": {
+    "1": "This is actually Python code, not PHP—it imports a diagramming library to create visual architecture drawings.",
+    "6": "The 'show=False' parameter means the diagram will be created and saved to a file, but won't automatically pop open in your browser.",
+    "15": "The minus signs and arrows here aren't math—they're special operators that tell the diagram library how to draw connections between the components.",
+    "16": "The '>>' operator chains the connections together, and 'append' adds each completed chain to the list so we can reference it later.",
+    "18": "The '<<' operator points in the opposite direction compared to '>>', showing that the storage class feeds into the persistent volume."
+  }
+}

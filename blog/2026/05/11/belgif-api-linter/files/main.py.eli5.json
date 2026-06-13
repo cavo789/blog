@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:54:02.204Z",
+  "source": "main.py",
+  "lang": "python",
+  "explanations": {
+    "6": "The @app.get decorator tells FastAPI that this function should respond to GET requests at the root URL path.",
+    "11": "Union[str, None] means the parameter q can be either a string or None (nothing), and it defaults to None if not provided in the request.",
+    "14": "This route path /items/ is different from line 10's /items/{item_id} because it has no variable placeholder, so it only matches the exact path without any item ID."
+  }
+}

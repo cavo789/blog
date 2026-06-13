@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:39.658Z",
+  "source": "compose_with_synchronization.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "16": "This sets the user ID and group ID for the container; the ${UID:-1000} syntax means use the UID environment variable if it exists, otherwise default to 1000.",
+    "20": "This mounts your local './site_joomla' folder into the container at '/var/www/html' so changes you make locally appear inside the container.",
+    "28": "This is a health check that runs the mysqladmin ping command inside the container to verify the database is responding.",
+    "32": "Like line 16, this sets the user ID and group ID for the MySQL container to match your host user.",
+    "36": "This mounts your local './db' folder into the container at '/var/lib/mysql' so the database files persist even if the container stops."
+  }
+}

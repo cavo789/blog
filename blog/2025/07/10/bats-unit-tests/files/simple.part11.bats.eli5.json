@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:09.181Z",
+  "source": "simple.part11.bats",
+  "lang": "bats",
+  "explanations": {
+    "2": "The 'run' command executes the function being tested and captures its output so we can check it with assertions below.",
+    "4": "The '${lines[0]}' syntax gets the first line of output from the 'run' command; 'lines' is an array that bats automatically creates for us."
+  }
+}

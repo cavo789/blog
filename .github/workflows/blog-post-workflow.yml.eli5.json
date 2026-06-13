@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:12.204Z",
+  "source": "blog-post-workflow.yml",
+  "lang": "yaml",
+  "explanations": {
+    "3": "The 'schedule' keyword tells GitHub to run this workflow automatically on a timer, like a scheduled task on your computer.",
+    "4": "This cron expression means 'every Monday at noon UTC'—the five numbers represent minute, hour, day-of-month, month, and day-of-week.",
+    "5": "workflow_dispatch lets someone manually trigger this workflow by clicking a button in the GitHub UI, not just waiting for the schedule.",
+    "22": "The comment_tag_name is a marker that the action will search for in your README file to know exactly where to insert the blog posts."
+  }
+}

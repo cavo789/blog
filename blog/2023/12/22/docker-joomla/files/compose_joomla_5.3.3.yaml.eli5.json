@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:36.077Z",
+  "source": "compose_joomla_5.3.3.yaml",
+  "lang": "yaml",
+  "explanations": {}
+}

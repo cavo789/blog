@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:31.770Z",
+  "source": "MDXComponents.js",
+  "lang": "javascript",
+  "explanations": {
+    "8": "The three dots (...) spread the MDXComponents object, which means we copy all of its properties into our new object so we can add or override specific ones.",
+    "11": "We're adding the TLDR component to the export so it can be used directly in MDX files without needing to import it separately."
+  }
+}

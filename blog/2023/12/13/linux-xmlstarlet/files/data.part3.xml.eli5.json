@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:17.839Z",
+  "source": "data.part3.xml",
+  "lang": "xml",
+  "explanations": {
+    "1": "This XML comment tells a documentation tool to highlight the next line (line 2) in generated docs or IDE displays.",
+    "3": "Another highlight marker, this time pointing to the book element on line 4 to emphasize it in documentation.",
+    "5": "The third highlight comment marks line 6 (the title element) as something important to draw attention to."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:48.816Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "1": "This comment tells the spell-checker to ignore typos in this file, which is useful for config files with non-standard words.",
+    "7": "UID and GID are numeric IDs that define which user account Docker should run as; the comment suggests running 'id -u' and 'id -g' commands to find your system's values.",
+    "8": "DOCKER_UID=1000 is a build argument passed to the Dockerfile; 1000 is a common default UID for the first non-root user on Linux.",
+    "10": "The USERNAME variable doesn't affect Docker's behavior much, but it's still passed to the Dockerfile for convenience."
+  }
+}

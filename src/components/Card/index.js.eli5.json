@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:47.811Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "9": "This line builds a CSS class name string that only includes the shadow class if a shadow prop was actually provided; if shadow is undefined or false, cardShadow becomes an empty string.",
+    "11": "The clsx function merges multiple class names together intelligently, so if cardShadow is empty it won't add extra spaces, and it handles the conditional className prop smoothly."
+  }
+}

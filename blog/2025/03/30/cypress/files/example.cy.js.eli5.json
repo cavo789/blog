@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:49.446Z",
+  "source": "example.cy.js",
+  "lang": "javascript",
+  "explanations": {
+    "1": "This `describe` function groups related tests together—think of it as a folder that contains all tests about your blog.",
+    "3": "The `cy.visit` command tells Cypress (a testing tool) to open that website URL in a browser.",
+    "4": "The `cy.contains` command searches the webpage to verify that the text 'Christophe Avonture' appears somewhere on the page."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:57.338Z",
+  "source": "AnyTest.part6.php",
+  "lang": "php",
+  "explanations": {
+    "1": "This starts a test that checks rules about how code in the Controllers folder should behave.",
+    "2": "The expect() method tells the test which part of your codebase to examine — in this case, everything in the App\\Http\\Controllers directory.",
+    "3": "The not->toUse() part means 'this code should NOT use this thing'; so controllers aren't allowed to directly use Laravel's Request class.",
+    "7": "This targets the Models folder specifically, preparing to set rules about which other parts of the code are allowed to depend on these models.",
+    "8": "toOnlyBeUsedOn() means 'the thing we're testing should only ever be imported/used by this other folder'; models should only be used by Repositories.",
+    "9": "toOnlyUse() restricts what the Models folder itself is allowed to depend on; models can only import from Illuminate\\Database.",
+    "13": "This says Repositories can only be used by Controllers — they're internal helpers, not used everywhere.",
+    "17": "This is a list of global PHP functions you want to forbid; dd, dump, and var_dump are usually left in by accident during debugging.",
+    "22": "The not->toBeUsed() means these facades shouldn't appear anywhere in the codebase.",
+    "23": "ignoring() carves out an exception — the rule above doesn't apply to code in the App\\Providers folder."
+  }
+}

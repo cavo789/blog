@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:44.557Z",
+  "source": ".part25.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "This line redirects any URL starting with /fruit/ to /fruits/ (note the 's'), keeping everything after /fruit/ the same—for example, /fruit/apple becomes /fruits/apple. The 301 means it's a permanent redirect so search engines update their records."
+  }
+}

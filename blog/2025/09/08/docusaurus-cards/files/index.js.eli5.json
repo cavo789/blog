@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:13.313Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "38": "When layout is 'small', we apply no CSS class (empty string), otherwise we use the date style from our CSS module.",
+    "46": "We're converting the date string into a JavaScript Date object, then formatting it as a readable string like 'January 15, 2024'.",
+    "68": "We're extracting specific fields from the post object using destructuring, so we can use them as simple variables instead of post.permalink, post.image, etc.",
+    "73": "The 'col col--4' class makes this card take up 4 columns in a 12-column grid layout (Infima CSS framework).",
+    "98": "Setting flex: 1 makes the card body grow to fill available space, pushing the footer button to the bottom.",
+    "136": "The Link component here uses 'href' instead of 'to' (line 100 uses 'to'), which is inconsistent but both work in Docusaurus—'to' is preferred for internal links.",
+    "137": "The '→' arrow character is a visual indicator that this is a link to read the full article."
+  }
+}

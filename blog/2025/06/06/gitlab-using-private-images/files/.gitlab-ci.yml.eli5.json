@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:00.018Z",
+  "source": ".gitlab-ci.yml",
+  "lang": "yaml",
+  "explanations": {
+    "5": "The pipe character (|) after the dash means the following text is a multi-line command that runs as-is; the --password-stdin flag tells docker to read the password from the piped input instead of as a command argument.",
+    "7": "Similar to line 5, the pipe lets us write a multi-line script block; this one downloads a Docker image from a registry."
+  }
+}

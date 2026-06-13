@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:09.760Z",
+  "source": "roundcube.sieve",
+  "lang": "sieve",
+  "explanations": {
+    "6": "This pattern matches any email address where something comes before @newsletter and then any domain after the dot — for example, spam@newsletter.com would match.",
+    "7": "This line is missing a comma at the end, which will cause a syntax error when the file is parsed.",
+    "8": "This pattern matches emails from any domain where the sender is literally named newsletters-noreply, like newsletters-noreply@example.com."
+  }
+}

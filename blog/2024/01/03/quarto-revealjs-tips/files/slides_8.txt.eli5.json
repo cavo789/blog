@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:32.351Z",
+  "source": "slides_8.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "5": "The curly braces with `.r-stretch` at the end tell the presentation software to make this image stretch to fill the entire slide, rather than keeping it at its normal size."
+  }
+}

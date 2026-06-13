@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:50:34.848Z",
+  "source": "network.json",
+  "lang": "json",
+  "explanations": {
+    "3": "IPAMConfig is set to null, meaning no custom IP address management configuration is being applied to this network.",
+    "7": "The same alias 'facade' appears twice in the list, which is redundant but won't cause an error.",
+    "12": "NetworkID is a long hex string that uniquely identifies this Docker network across your system.",
+    "13": "EndpointID is like a unique ticket for this container on this specific network—it's how Docker tracks the connection.",
+    "17": "IPPrefixLen of 24 means the network uses a /24 subnet mask (255.255.255.0), allowing 256 total addresses.",
+    "20": "GlobalIPv6PrefixLen is 0 because this network isn't using IPv6 addresses—no public IPv6 routing is set up."
+  }
+}

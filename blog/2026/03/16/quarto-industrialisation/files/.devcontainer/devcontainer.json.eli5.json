@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:35.952Z",
+  "source": "devcontainer.json",
+  "lang": "json",
+  "explanations": {
+    "3": "This points to a Docker Compose file in the parent directory that defines how the development environment should be set up.",
+    "4": "The 'docs' service refers to a specific service defined in that Docker Compose file — it's the container this dev environment will run inside.",
+    "5": "This is the folder path inside the Docker container where your project files will be mounted and available to edit.",
+    "16": "The 'index_files/' folder is auto-generated output that you don't want cluttering your file explorer, so it's hidden.",
+    "19": "When you save a Quarto file, VS Code will automatically run it to generate the output document."
+  }
+}

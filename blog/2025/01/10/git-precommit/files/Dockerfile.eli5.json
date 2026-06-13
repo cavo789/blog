@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:59.983Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "This special comment tells Docker to use a specific version of the Dockerfile syntax parser, which gives you access to newer Docker features.",
+    "3": "The 'AS base' part names this stage 'base' so you can refer to it later if you want to build multiple images from different stages.",
+    "5": "The backslash at the end of the line lets you continue a long command across multiple lines for readability.",
+    "7": "This deletes the temporary package cache files that apt-get left behind, which shrinks the final image size.",
+    "12": "Instead of running a normal application, this keeps the container alive indefinitely by running a command that does nothing—useful for debugging or testing."
+  }
+}

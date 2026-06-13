@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:43.758Z",
+  "source": "simple.part6.bats",
+  "lang": "bats",
+  "explanations": {
+    "3": "Inside this test, we're replacing the real 'which' command with a fake one that always fails—this lets us test what happens when a binary isn't found.",
+    "16": "The syntax ${2:-...} means 'use the second argument if it was provided; otherwise use this default message'.",
+    "18": "This line checks if 'which' returns nothing (meaning the binary doesn't exist), and the '|| true' prevents the whole line from failing if 'which' errors out."
+  }
+}

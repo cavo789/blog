@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:03.183Z",
+  "source": "TagArticlesPage.js",
+  "lang": "javascript",
+  "explanations": {
+    "12": "matchPath is checking if the current URL matches the pattern '/blog/tags/:slug', where ':slug' is a variable part of the URL we want to capture.",
+    "16": "The question mark after 'match' means 'only try to access params.slug if match exists', so we don't crash if the URL didn't match the pattern.",
+    "36": "This helper function handles tags that can be either plain strings or objects with a label property — it extracts whichever format is being used.",
+    "42": "We're converting the tag's display name to a URL-friendly slug and comparing it against the slug from the URL to find matching tags.",
+    "55": "Subtracting dates in descending order sorts posts from newest to oldest — the bigger date value comes first."
+  }
+}

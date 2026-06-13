@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:50.512Z",
+  "source": "makefile",
+  "lang": "makefile",
+  "explanations": {
+    "2": ".PHONY is a special Makefile keyword that tells Make these are not real files—they're just command names you can run.",
+    "4": "The \\e[1;37m and \\e[m are escape codes that add bold white color to the terminal output; %-35s means 'left-align this text in a 35-character wide space'.",
+    "6": "This printf line is malformed—it has four format specifiers (%s) but only provides three arguments, so the last part won't print correctly.",
+    "10": "The @ symbol before a command hides that command from being printed to the terminal; without it, you'd see the command echoed before it runs."
+  }
+}

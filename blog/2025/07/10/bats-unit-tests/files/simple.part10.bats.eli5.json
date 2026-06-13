@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:58.315Z",
+  "source": "simple.part10.bats",
+  "lang": "bats",
+  "explanations": {
+    "3": "The strange characters like [1;31m are ANSI escape codes that tell the terminal to display text in red; [0m resets the color back to normal."
+  }
+}

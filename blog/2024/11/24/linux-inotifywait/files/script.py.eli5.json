@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:37.442Z",
+  "source": "script.py",
+  "lang": "python",
+  "explanations": {
+    "5": "This line tells Python to run signal_handler whenever Ctrl+C is pressed (SIGINT is the interrupt signal).",
+    "10": "The parents=True creates any missing parent folders, and exist_ok=True prevents errors if the folder already exists.",
+    "15": "This creates a unique temporary filename and then extracts just the filename part (not the full path) to use in our output folder."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:06.898Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "3": "The DEBIAN_FRONTEND=noninteractive flag tells the package installer not to ask interactive questions, so the build doesn't hang waiting for user input.",
+    "5": "This removes files that indicate the system needs to reboot, which isn't applicable inside a Docker container.",
+    "6": "This tells the system which display manager to use by default — lightdm is the one that handles the graphical login screen.",
+    "10": "The xremote type tells lightdm to use X11 graphics over the network instead of locally, connecting to the host machine's display.",
+    "11": "This points lightdm to where the X server (the graphics system) is running — on your actual computer, not inside the container.",
+    "18": "This environment variable tells applications where to send their graphics output, pointing to the host machine's display at display number 0.",
+    "20": "This starts two background services when the container runs: dbus handles system messaging and lightdm provides the graphical login interface."
+  }
+}

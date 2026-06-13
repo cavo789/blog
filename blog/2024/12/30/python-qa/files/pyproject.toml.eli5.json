@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:47.807Z",
+  "source": "pyproject.toml",
+  "lang": "toml",
+  "explanations": {
+    "1": "This starts a configuration section for Ruff, a Python linter and code formatter tool.",
+    "3": "The exclude list is empty, meaning Ruff will check all files (not skipping anything).",
+    "5": "This comment explains that the line-length value matches settings in other config files to keep the whole project consistent.",
+    "6": "Lines of code are allowed to be up to 120 characters long before Ruff complains about line length."
+  }
+}

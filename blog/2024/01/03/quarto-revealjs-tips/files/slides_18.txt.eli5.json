@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:46.042Z",
+  "source": "slides_18.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "1": "This HTML comment tells a documentation tool (like Docusaurus) to highlight the very next line visually, so readers' eyes are drawn to it.",
+    "2": "The curly braces with a hash symbol at the end create a custom URL anchor, so people can link directly to this section using #intro in the URL.",
+    "6": "Like line 1, this tells the documentation tool to highlight the next line for emphasis.",
+    "7": "This creates another custom URL anchor for this section, allowing direct links via #chapter1."
+  }
+}

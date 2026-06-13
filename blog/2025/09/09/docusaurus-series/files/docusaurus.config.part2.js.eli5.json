@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:51.961Z",
+  "source": "docusaurus.config.part2.js",
+  "lang": "javascript",
+  "explanations": {
+    "16": "This syntax passes the imported plugin function as the first element of an array, and an empty object (for configuration options) as the second element—that's how Docusaurus expects plugins to be configured."
+  }
+}

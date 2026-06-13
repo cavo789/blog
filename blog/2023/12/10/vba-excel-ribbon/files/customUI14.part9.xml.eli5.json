@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:05.211Z",
+  "source": "customUI14.part9.xml",
+  "lang": "xml",
+  "explanations": {
+    "1": "This declares a customUI XML file that defines the ribbon interface for Microsoft Office applications like Word or Excel.",
+    "4": "The insertAfterMso attribute positions this custom tab right after the built-in View tab in the ribbon menu.",
+    "9": "imageMso references a built-in Microsoft Office icon (in this case a smiley face); you can use these pre-made icons instead of creating your own.",
+    "11": "onAction specifies the name of a function that will run when someone clicks this button—you'll need to write that function elsewhere in your code.",
+    "19": "onChange specifies the function name that runs whenever the user modifies the text in this edit box."
+  }
+}

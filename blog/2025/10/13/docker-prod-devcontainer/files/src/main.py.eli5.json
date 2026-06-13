@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:19.663Z",
+  "source": "main.py",
+  "lang": "python",
+  "explanations": {
+    "5": "The @app.get decorator tells FastAPI that this function handles HTTP GET requests to the root path (/) of your website."
+  }
+}

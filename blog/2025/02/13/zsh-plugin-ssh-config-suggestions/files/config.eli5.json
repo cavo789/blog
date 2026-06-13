@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:23.049Z",
+  "source": "config",
+  "lang": "plaintext",
+  "explanations": {
+    "1": "This is an SSH config file where 'Host' is a label you'll use when connecting (like 'ssh MyAmazingApp_PROD'), not the actual server name.",
+    "2": "The 'Hostname' is the real IP address or domain that SSH will actually connect to.",
+    "3": "The 'User' specifies which username to use for that particular host when you don't explicitly provide one."
+  }
+}

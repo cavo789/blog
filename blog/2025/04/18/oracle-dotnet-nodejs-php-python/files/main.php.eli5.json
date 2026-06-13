@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:27.813Z",
+  "source": "main.php",
+  "lang": "php",
+  "explanations": {
+    "3": "This tells PHP to enforce strict types, meaning you must pass exactly the right data type to functions or PHP will error instead of trying to convert.",
+    "17": "This creates a connection string (DSN) for Oracle database using string interpolation — the curly braces inject the variable values into the string.",
+    "19": "This is a type hint comment telling developers and tools that oci_connect() returns either a resource (a database connection handle) or false if it fails.",
+    "20": "The empty string at the end is the character set parameter; leaving it empty tells Oracle to use the database's default character set.",
+    "38": "oci_bind_by_name() links the :max_rows placeholder in the SQL to the $numRows variable, and SQLT_INT tells Oracle to treat it as an integer.",
+    "50": "OCI_ASSOC + OCI_RETURN_NULLS means: return results as an associative array (keys are column names) and keep NULL values instead of converting them to empty strings.",
+    "51": "The (int) cast forces $row['EMPLOYEE_ID'] to be an integer; this is defensive programming in case Oracle returns it as a string.",
+    "61": "is_resource() checks if $statement is still a valid resource before trying to free it, preventing errors if it was never created."
+  }
+}

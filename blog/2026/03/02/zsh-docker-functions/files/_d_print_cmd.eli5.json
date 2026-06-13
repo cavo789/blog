@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:51.340Z",
+  "source": "_d_print_cmd",
+  "lang": "plaintext",
+  "explanations": {
+    "5": "The ${2:-\\033[1;32m} syntax means 'use the second argument if it was passed in, otherwise use this default ANSI color code for bold green'.",
+    "9": "The ${#cmd_str} syntax gets the length (number of characters) of the cmd_str variable, and -gt means 'greater than'.",
+    "10": "The ${cmd_str:0:197} syntax takes a substring starting at position 0 and grabs the first 197 characters, then we append '...' to show it was cut off.",
+    "13": "The -e flag tells echo to interpret ANSI escape sequences (like the color codes) so they actually render as colors instead of printing the code itself."
+  }
+}

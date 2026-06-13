@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:29.286Z",
+  "source": "pyproject.toml",
+  "lang": "toml",
+  "explanations": {
+    "1": "This starts a configuration section for a tool called ruff, which is a Python linter (a tool that checks code quality).",
+    "3": "The exclude list is empty, meaning ruff will check all Python files it finds (nothing is being skipped)."
+  }
+}

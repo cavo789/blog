@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:22.197Z",
+  "source": "simple.part16.bats",
+  "lang": "bats",
+  "explanations": {
+    "6": "This creates a fake 'docker' function that overrides the real docker command just for this test, so we can control what it returns.",
+    "10": "This loads the assert.sh file which contains the functions we want to test.",
+    "11": "The 'run' keyword executes the function we're testing and captures its output and exit code so we can check them afterward."
+  }
+}

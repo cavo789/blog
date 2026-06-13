@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:54.701Z",
+  "source": "create_db.sql",
+  "lang": "sql",
+  "explanations": {
+    "5": "CONTAINMENT = NONE means the database won't use features that make it portable between SQL Server instances; it's the standard setting.",
+    "7": "SIZE sets the initial storage space to 8192 kilobytes, MAXSIZE allows it to grow unlimited, and FILEGROWTH means it expands by 65536KB chunks each time.",
+    "8": "LOG ON tells SQL Server where to store the transaction log file (the .ldf file), which records all changes so the database can recover from crashes.",
+    "9": "The log file starts smaller but caps at 2048GB; this limits how much space the transaction log can consume.",
+    "10": "CATALOG_COLLATION = DATABASE_DEFAULT means all objects in the database will use the same sorting/comparison rules as the database itself.",
+    "19": "ON [PRIMARY] specifies that this table's data will be stored in the primary filegroup; it's usually unnecessary because PRIMARY is the default.",
+    "22": "This inserts two rows at once by listing multiple value sets separated by commas, rather than running two separate INSERT statements."
+  }
+}

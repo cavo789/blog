@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:22.975Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "8": "This sets the user ID and group ID (1000:1000) that the container will run as, instead of root, for security reasons.",
+    "10": "This mounts your local ./blog directory into the container at /app/blog so changes you make locally appear inside the running container."
+  }
+}

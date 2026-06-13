@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:42.410Z",
+  "source": ".part24.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "This line tells the server to permanently redirect (301) any URL starting with /category/ to the same path without that prefix, so /category/books becomes /books. The (.*) is a wildcard that captures everything after /category/, and $1 refers back to that captured part."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:52.638Z",
+  "source": "compose.part4.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "7": "This passes the Docker group ID from your host machine into the build process, defaulting to 1000 if the variable isn't set.",
+    "8": "This passes the Docker user ID from your host machine into the build process, defaulting to 1000 if the variable isn't set.",
+    "10": "This sets which user and group (by their numeric IDs) will run commands inside the container, using the same IDs passed in earlier.",
+    "13": "This adds an extra group to the container's user so they can access resources owned by that group.",
+    "15": "This is the numeric ID of the group being added, which defaults to 1001 if not specified in your environment."
+  }
+}

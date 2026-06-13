@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:49.040Z",
+  "source": "styles.module.css",
+  "lang": "css",
+  "explanations": {
+    "2": "The `-webkit-` prefix is for older browsers (Chrome, Safari) that don't yet understand the standard `line-clamp` property.",
+    "3": "This limits the paragraph to show only 3 lines of text before cutting it off.",
+    "5": "This tells the browser to lay out text vertically (top to bottom) instead of horizontally, which is required for line-clamping to work properly."
+  }
+}

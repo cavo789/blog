@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:32.151Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "5": "The format '8080:80' means 'forward port 8080 on your computer to port 80 inside the container' — the left number is yours, the right is the container's.",
+    "10": "The 'alpine' variant is a stripped-down, lightweight version of postgres that uses much less disk space and memory than the full version."
+  }
+}

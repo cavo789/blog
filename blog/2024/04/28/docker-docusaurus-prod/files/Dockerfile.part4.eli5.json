@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:13.612Z",
+  "source": "Dockerfile.part4",
+  "lang": "part4",
+  "explanations": {
+    "1": "This starts with a base image (nginx:stable-alpine3.19-perl) and gives this build stage a name ('production') so other stages can reference it later.",
+    "4": "This copies files from a previous build stage called 'building_production' into the nginx container's web directory, so nginx will serve those files."
+  }
+}

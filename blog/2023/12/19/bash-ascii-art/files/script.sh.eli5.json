@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:22.185Z",
+  "source": "script.sh",
+  "lang": "bash",
+  "explanations": {
+    "8": "The <<\\EOF syntax means \"print everything until you see EOF\" (it's like a multi-line string), and the backslash before EOF tells bash to treat the content literally without expanding variables.",
+    "27": "The $* passes all command-line arguments that were given to this script into the __main function so it can use them if needed."
+  }
+}

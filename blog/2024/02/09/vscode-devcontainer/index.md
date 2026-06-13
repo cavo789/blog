@@ -271,7 +271,7 @@ $ /usr/local/bin/phpcs.phar --standard=/var/www/html/.config/phpcs.xml /var/www/
 
 And you'll get this output:
 
-<Terminal typewriter>
+<Terminal>
 FILE: /var/www/html/index.php
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 FOUND 1 ERROR AND 1 WARNING AFFECTING 2 LINES
@@ -294,7 +294,7 @@ $ /usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml /var/www
 
 You'll get this:
 
-<Terminal typewriter>
+<Terminal>
 PHPCBF RESULT SUMMARY
 ----------------------------------------------------------------------
 FILE                                                  FIXED  REMAINING

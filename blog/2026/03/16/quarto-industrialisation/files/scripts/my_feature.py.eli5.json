@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:43.895Z",
+  "source": "my_feature.py",
+  "lang": "python",
+  "explanations": {
+    "4": "enumerate gives us both the position (i) and the value (name) from the list at the same time, so we can number each node while also getting its name.",
+    "5": "The f-string creates text that looks like 'node0[\"First Node\"]', which is the syntax Mermaid uses to define a labeled box in a flowchart.",
+    "9": "Quarto is a document processor that turns special markdown blocks (the triple backticks with {mermaid}) into diagrams; 'asis' tells it to render the content as-is without modification."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:37:59.906Z",
+  "source": "makefile",
+  "lang": "makefile",
+  "explanations": {
+    "1": "This line tries to load a .env file if it exists (the minus sign means 'don't fail if it's missing'), which probably contains your environment variables like database passwords.",
+    "4": "The $$ is how you escape a dollar sign in makefiles—it becomes a single $ that the shell sees; here it's getting your user ID and group ID to pass to Docker so file ownership stays correct.",
+    "13": "The minus sign at the start tells make 'keep going even if this command fails', useful here because the directories might not exist yet.",
+    "17": "The \\033 sequences are ANSI color codes that make the text yellow in your terminal; ${WEB_PORT} is a variable placeholder that gets replaced with your actual port number.",
+    "43": "This target depends on 'reset', meaning 'reset' will run first before this target's commands execute."
+  }
+}

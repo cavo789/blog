@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:31.939Z",
+  "source": "main.py",
+  "lang": "python",
+  "explanations": {
+    "11": "Optional[oracledb.Connection] means this variable starts as None but will hold a database connection object once we connect.",
+    "21": "AuthMode.SYSDBA is a special permission level that gives us admin access to the Oracle database.",
+    "29": "ROWNUM <= :max_rows is Oracle's way of limiting results; the colon means we'll pass the actual number separately as a parameter.",
+    "35": "We're telling Python that fetchall() will return a list of tuples, where each tuple has four values: an int and three strings.",
+    "46": "Unpacking takes one tuple from the list and splits it into four separate variables in a single assignment.",
+    "47": "The <12, <20, <26 format specifiers left-align text in fields of that width, creating neat columns."
+  }
+}

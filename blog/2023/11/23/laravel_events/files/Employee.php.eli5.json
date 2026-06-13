@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:06.155Z",
+  "source": "Employee.php",
+  "lang": "php",
+  "explanations": {
+    "7": "The parameters in this constructor are declared with visibility modifiers (private), which means they automatically become class properties — you don't need separate $this->firstname = $firstname lines.",
+    "22": "Returning $this allows you to chain method calls together, like $employee->setFirstName('Jane')->setLastName('Smith'), instead of calling each setter separately.",
+    "46": "The semicolon after the closing brace is not needed for a class definition — it's legal but unusual in PHP."
+  }
+}

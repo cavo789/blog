@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:37:55.088Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "1": "The ${PROJECT_NAME:-your-project-name} syntax means 'use the PROJECT_NAME variable if it exists, otherwise use the default value your-project-name'.",
+    "10": "The 'args' section passes build-time variables to the Docker build process, which is different from environment variables that are set when the container runs.",
+    "12": "This is passing PHP_VERSION as a build argument so Docker knows which PHP version to install when creating the image.",
+    "23": "The 'condition: service_healthy' means this container won't start until joomladb reports back that it's healthy (passing its healthcheck).",
+    "36": "There's a typo here: it should be '${MYSQL_PORT:-3306}' not '${MYSQL_PORT-:3306}' — the colon is in the wrong place, which might cause this variable substitution to fail.",
+    "43": "The healthcheck runs a MySQL ping command inside the container to verify the database is actually responding and ready to accept connections."
+  }
+}

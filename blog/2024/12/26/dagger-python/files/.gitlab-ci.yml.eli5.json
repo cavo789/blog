@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:34.878Z",
+  "source": ".gitlab-ci.yml",
+  "lang": "yaml",
+  "explanations": {
+    "4": "The dind suffix stands for 'Docker in Docker' — it's a special Docker image that lets you run Docker commands inside a Docker container.",
+    "8": "The extends keyword means this .dagger job inherits all the settings from .docker, so it gets the Docker setup automatically.",
+    "11": "This pipes the output of a curl download directly into a shell script, which downloads and installs Dagger in one step."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:05.151Z",
+  "source": "make.bat",
+  "lang": "batch",
+  "explanations": {
+    "1": "@echo off turns off the display of each command before it runs, so you only see the output, not the commands themselves.",
+    "5": "This checks if the user provided any command-line argument; if not, it jumps to the help section.",
+    "12": "This is the app name converted to hexadecimal characters so it can be used in a special VSCode remote URL format.",
+    "18": "The quotes around start are special syntax in batch—they're not part of the command name, they just help batch parse the arguments correctly.",
+    "47": "This constructs a special VSCode URL using the hex-encoded app name so VSCode knows which Docker container to attach to.",
+    "65": "The %* symbol captures all remaining arguments passed to this function as one string.",
+    "66": "This removes the first and last character (the surrounding quotes) from the error message so it displays cleanly.",
+    "68": "The [31m and [0m are ANSI color codes—they make the error message display in red in the terminal."
+  }
+}

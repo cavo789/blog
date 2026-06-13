@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:25.662Z",
+  "source": "makefile",
+  "lang": "makefile",
+  "explanations": {
+    "6": "The minus sign means 'don't fail if this file doesn't exist'—it's optional.",
+    "8": "This runs the shell command `id -u` right now and stores the user ID number as a variable.",
+    "9": "Same as line 8, but captures the group ID instead of user ID.",
+    "13": "The `?=` operator means 'use this value only if TARGET hasn't been set already'—it's a default with lower priority.",
+    "21": "These are ANSI color codes wrapped in escape sequences; they make colored terminal output when combined with printf.",
+    "32": "This uses `awk` to parse the Makefile itself and extract all targets with `##` comments to auto-generate help text.",
+    "38": "This line creates a target that delegates to either `_bash-development` or `_bash-production` depending on the TARGET variable.",
+    "46": "The `printf $(_YELLOW)` passes the color format string as the first argument, then the two strings after it fill the `%s` placeholders.",
+    "59": "This is a shell for-loop inside the Makefile; the backslash continues the command across multiple lines.",
+    "60": "The `$$dir` uses double-dollar because Make interprets one `$`, so you need two to get a literal `$` for the shell.",
+    "67": "The colon syntax means '_build-development depends on _ensure-host-volumes being run first'.",
+    "71": "The `${ARGS}` lets you pass extra Docker build flags from the command line, like `make build ARGS='--no-cache'`.",
+    "92": "The `$${PWD}` uses double-dollar for the same reason as line 60—it passes a literal `${PWD}` to the shell.",
+    "97": "The `|| true` part means 'if the docker stop fails, ignore the error and continue anyway'.",
+    "127": "The `@-` prefix suppresses both the normal command echo AND treats errors as non-fatal."
+  }
+}

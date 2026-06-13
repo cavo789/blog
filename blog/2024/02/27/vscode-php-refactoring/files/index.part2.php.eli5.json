@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:24.768Z",
+  "source": "index.part2.php",
+  "lang": "php",
+  "explanations": {
+    "12": "printf() works like echo but lets you insert variable values into a string using placeholders like %s (for strings) and %d (for numbers).",
+    "13": "PHP_EOL is a built-in constant that represents the end-of-line character (like a newline), and the dot (.) is concatenating it to the string so the output will move to the next line after printing."
+  }
+}

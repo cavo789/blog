@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:53.420Z",
+  "source": "styles.module.css",
+  "lang": "css",
+  "explanations": {
+    "3": "The !important flag forces this background color to apply even if other CSS rules try to override it, which we need here to ensure consistency.",
+    "30": "The left position of 17px centers the vertical line with a 34px icon (half of 34 is 17), since the icon starts at position 0.",
+    "52": "We're matching the icon's background color to the container's background so the vertical line appears to pass behind the icon instead of showing through it.",
+    "65": "The 45px padding gives enough room for the 34px icon plus an 11px gap, pushing the text content to the right of the icon."
+  }
+}

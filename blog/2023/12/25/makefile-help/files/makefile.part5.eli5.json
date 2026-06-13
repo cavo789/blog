@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:06.363Z",
+  "source": "makefile.part5",
+  "lang": "part5",
+  "explanations": {
+    "1": "SHELL:=bash sets the default shell that Make will use to execute commands in this file.",
+    "3": "COLOR_YELLOW:=33 stores the ANSI color code for yellow text, so we can reuse it without typing the number repeatedly.",
+    "8": "This line uses awk (a text processing tool) to parse the Makefile itself and extract help text from comments marked with ##, then prints them in a formatted, colored list.",
+    "13": "The printf command with escape codes like \\e[1;33m applies yellow bold formatting to the text that follows; \\e[0m resets formatting back to normal.",
+    "24": "The 'deploy: build' syntax means the build target must run successfully before deploy runs—it's a dependency."
+  }
+}

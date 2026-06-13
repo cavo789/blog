@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:53.996Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "This special comment tells Docker to use an advanced version of the Dockerfile syntax that includes experimental features.",
+    "3": "This creates a temporary intermediate image called 'builder' that we'll use to install dependencies, but won't include in the final image.",
+    "13": "The --mount flag creates a temporary cache folder during this build step so pip doesn't re-download packages if you rebuild the image.",
+    "14": "The --prefix flag installs the Python package to a specific folder (/python) instead of the default system location, making it easy to copy later.",
+    "16": "This starts a fresh final image from a clean Python base; the previous 'builder' image is discarded to keep the final image smaller.",
+    "22": "This tells Python where to find the installed packages (/python/lib/python3.14/site-packages) since we installed them to a custom location.",
+    "23": "This adds the /python/bin directory to the system PATH so commands installed by pip can be run directly.",
+    "28": "The /usr/sbin/nologin shell prevents anyone from logging in as this user, even if they had the password, which is a security best practice.",
+    "39": "This makes the container automatically run the markitdown tool when started, treating the container like a standalone command-line application."
+  }
+}

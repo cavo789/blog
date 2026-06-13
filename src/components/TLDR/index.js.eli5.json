@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:16.329Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "9": "This line flattens an array of text nodes into a single string by calling extractText on each item and joining them together with no spaces.",
+    "10": "This checks if the node is a React element (an object with props) and if it has children inside, then recursively extracts text from those children.",
+    "18": "useMemo tells React to only recalculate the structuredData object when the children prop actually changes, not on every render.",
+    "30": "This tells the browser that the JSON inside is structured data for search engines (like Google), not regular JavaScript to execute."
+  }
+}

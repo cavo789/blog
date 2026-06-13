@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:43.411Z",
+  "source": "devcontainer.json",
+  "lang": "json",
+  "explanations": {
+    "7": "This creates a special folder mount that saves your bash command history between container restarts, so you don't lose your terminal history.",
+    "8": "This shares Docker's control socket with the container so you can run Docker commands from inside the container itself.",
+    "9": "This uses a named volume to store node_modules separately so npm/yarn packages persist and don't get lost when the container restarts.",
+    "10": "This stores VS Code extensions in a separate volume so you don't have to reinstall them every time you start the container.",
+    "15": "When port 3000 is forwarded, VS Code will automatically open it in your browser instead of just showing a notification.",
+    "30": "This references environment variables to dynamically set the container user ID and group ID, which prevents file permission problems.",
+    "36": "When you save a markdown file, VS Code will automatically run all available fixes from the linter to clean up the formatting.",
+    "70": "This tells the spell-checker to connect to a LanguageTool service running on a different container at that network address.",
+    "82": "This customizes the VS Code window title to show the project name and remind you that you're working inside a development container."
+  }
+}

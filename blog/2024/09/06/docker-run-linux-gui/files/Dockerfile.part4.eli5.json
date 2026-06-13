@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:25.877Z",
+  "source": "Dockerfile.part4",
+  "lang": "part4",
+  "explanations": {
+    "3": "This tells the system not to prompt for user input during installation, which is necessary in Docker because there's no interactive terminal.",
+    "5": "The && chains commands so they run in sequence, apt-get install installs GIMP, and the rm at the end deletes cached package files to make the image smaller."
+  }
+}

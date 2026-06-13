@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:21.988Z",
+  "source": "Dockerfile.part2",
+  "lang": "part2",
+  "explanations": {
+    "5": "This tells the system not to ask interactive questions during package installation, letting the Docker build run automatically without waiting for user input.",
+    "12": "The --mount flags create temporary storage areas during this single build step: one for caching apt packages to speed up rebuilds, and one for temporary log files that won't be saved in the final image.",
+    "16": "The install command creates directories with specific permissions (0755 means readable/executable by everyone), and > /dev/null hides the output so it doesn't clutter the build logs.",
+    "18": "This downloads Mozilla's GPG key (used to verify that packages are authentic) and pipes it to the next command; the pipe symbol | means 'send this output as input to the next command'.",
+    "19": "The gpg command converts the key from text format into binary format and saves it to a file where apt can find and use it to verify Firefox packages.",
+    "21": "This creates an apt source entry that tells the package manager where to download Firefox from, including which GPT key to use to verify it's legitimate.",
+    "24": "This file tells apt to strongly prefer Firefox packages from Mozilla's repository over any other source, using a priority score of 1000.",
+    "27": "The -qq flags make apt extra quiet (only show errors), and DEBIAN_FRONTEND is set again here to ensure no interactive prompts happen during the install.",
+    "30": "This tells Docker that when someone runs this container, the default action is to start Firefox."
+  }
+}

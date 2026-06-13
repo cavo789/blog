@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:35.906Z",
+  "source": "canvas.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "13": "This line uses a special template syntax that pulls in content from another file located at '../_partials/run.md' and inserts it here at build time."
+  }
+}

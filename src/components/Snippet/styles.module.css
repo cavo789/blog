@@ -116,3 +116,136 @@ code:hover {
 .variant_vbnet       { border-color: #68217a; }
 .variant_xml         { border-color: #bf3b1b; }
 .variant_yaml        { border-color: #a31416; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ELI5 — "Explain Like I'm Five" line-by-line renderer
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.eli5_pre {
+  margin: 0;
+  padding: 0.75rem 0;
+  overflow-x: auto;
+  /* --prism-background-color is only set inside Docusaurus's CodeBlockContainer
+     (via inline style), never in scope here — hardcode the dark background so
+     the block is always readable regardless of light/dark site theme. */
+  background: #282c34;
+  color: #abb2bf;
+  border-radius: 0 0 4px 4px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: var(--ifm-code-font-size, 0.875rem);
+  line-height: 1.5;
+}
+
+.eli5_line {
+  display: flex;
+  align-items: flex-start;
+  min-height: 1.5em;
+  padding: 0 1rem;
+}
+
+.eli5_line:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.eli5_code {
+  flex: 1;
+  white-space: pre;
+  overflow: hidden;
+}
+
+/* Placeholder keeps line height consistent on lines without a badge */
+.eli5_badge_placeholder {
+  display: inline-block;
+  width: 1.2rem;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+/* ── Badge wrapper — hover zone covers both button and tooltip ── */
+.eli5_badge_wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+/* ── ? button — always on a dark Prism background, so colours are dark-optimised ── */
+.eli5_badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  border: 1px solid rgba(150, 150, 200, 0.5);
+  background: rgba(100, 100, 180, 0.22);
+  color: rgba(200, 200, 240, 0.78);
+  font-size: 0.6rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.eli5_badge:hover,
+.eli5_badge:focus-visible,
+.eli5_badge_active {
+  background: rgba(80, 130, 230, 0.42);
+  color: #e8eaf6;
+  border-color: rgba(120, 170, 255, 0.75);
+  outline: none;
+}
+
+/* ── Tooltip — rendered via React Portal into document.body, position:fixed
+      so it floats above every overflow:hidden / stacking-context ancestor.
+      JS sets `top` and `right` via inline style; transform shifts it above. ── */
+.eli5_tooltip {
+  position: fixed;
+  /* Shift the tooltip above its anchor: bottom edge = badge top − 8px */
+  transform: translateY(calc(-100% - 8px));
+  z-index: 9999;
+  width: 270px;
+  max-width: min(270px, 90vw);
+  padding: 0.5rem 0.75rem;
+  /* Light mode: solid white for maximum contrast against the dark code block */
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: #1c1e21;
+  white-space: normal;
+  pointer-events: none;
+}
+
+/* Arrow pointing DOWN toward the badge */
+.eli5_tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  transform: rotate(45deg);
+}
+
+[data-theme="dark"] .eli5_tooltip {
+  background: #1e2030;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
+  color: #c9d1d9;
+}
+
+[data-theme="dark"] .eli5_tooltip::before {
+  background: #1e2030;
+  border-right-color: rgba(255, 255, 255, 0.12);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}

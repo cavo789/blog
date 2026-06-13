@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:16.411Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "15": "The --mount=type=cache option tells Docker to reuse the apt package cache across builds, which speeds things up and saves space.",
+    "16": "The 'set -eux' command makes the shell script strict: it exits on errors, shows each command that runs, and fails if any variable is undefined.",
+    "37": "Similar to line 15, this caches pip's downloaded packages so rebuilding the image doesn't re-download everything.",
+    "47": "Tini is a small init process that properly handles signals and zombie processes when your app runs inside the container.",
+    "49": "This adds the 'src' folder to Python's search path, so your code can import modules from that directory without specifying the full path."
+  }
+}

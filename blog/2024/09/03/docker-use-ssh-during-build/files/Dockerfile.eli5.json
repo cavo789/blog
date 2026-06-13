@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:11.457Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "3": "ARG lets you define variables that can be passed when building the image, like a function parameter for docker build.",
+    "10": "The `-m 0700` sets restrictive permissions (only owner can read/write) on the .ssh folder for security, and ssh-keyscan pre-populates known_hosts so git doesn't prompt you about trusting github.com.",
+    "13": "The `--mount=type=secret` temporarily mounts your SSH key into the container during build without baking it into the final image, keeping it secret.",
+    "15": "The backslash at the end of line 13 continues the RUN command onto the next line; this typo `cd app` should be `cd /app` or the git clone will go to the wrong directory.",
+    "17": "The `|| true` at the end means 'ignore errors' — the SSH test to github.com might fail but we still want the build to continue.",
+    "24": "This keeps the container running indefinitely by tailing an empty file, useful for containers you want to stay alive for debugging or manual commands."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:58.643Z",
+  "source": "card.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "12": "The style prop is using inline CSS with hex color codes — #07ac2aff is green and #eeff00ff is yellow, with 'ff' at the end meaning fully opaque (not transparent).",
+    "15": "button-group--block makes the buttons stretch to fill their container width instead of staying narrow.",
+    "16": "button--primary, button--secondary, and button--info are CSS class names that apply different visual styles to each button (colors, borders, etc.)."
+  }
+}

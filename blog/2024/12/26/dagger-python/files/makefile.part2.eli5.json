@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:31.745Z",
+  "source": "makefile.part2",
+  "lang": "part2",
+  "explanations": {
+    "2": "This stores the Docker socket mount flag as a variable so you can reuse it in multiple commands without typing it repeatedly.",
+    "4": ".PHONY tells Make that 'build' is not a file name but an action to always run, even if a file called 'build' exists.",
+    "10": "The ${DOCKER_SOCK} variable gets replaced with the socket mount, and -v .:/app/src mounts your current folder into the container so your code changes are visible inside.",
+    "30": "The --force flag removes the image even if containers are still using it, which is helpful for cleanup."
+  }
+}

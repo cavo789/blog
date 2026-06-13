@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:40.563Z",
+  "source": "compose.part2.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "6": "This maps port 80 on your computer to port 80 inside the container, so web traffic coming to your machine gets forwarded to Apache.",
+    "8": "This does the same thing as line 6, but for HTTPS traffic on port 443, so secure connections also work.",
+    "10": "This shares your local ./src folder with the container's /usr/local/apache2/htdocs folder, so any files you edit locally appear immediately inside Apache without rebuilding."
+  }
+}

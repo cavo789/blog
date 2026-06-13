@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:33:59.629Z",
+  "source": "makefile.part23",
+  "lang": "part23",
+  "explanations": {
+    "1": "This line checks if the docker ps command returns nothing (empty string), which means no container named sonarqube is running; the ifeq is a Makefile conditional, like an if statement.",
+    "6": "The dash before the @ symbol tells Make to ignore errors from this command, and the @symbol hides the command output; the > /dev/null 2>&1 redirects all output to nowhere so nothing prints to the console."
+  }
+}

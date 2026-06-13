@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:35.795Z",
+  "source": "decrypt.sh",
+  "lang": "bash",
+  "explanations": {
+    "3": "The parenthesis here creates a subshell, which is a separate environment that won't affect your current shell's variables when it exits.",
+    "4": "The && operator means the next command only runs if this one succeeds; it's a way to chain commands safely.",
+    "5": "The $(pwd) and $(id -u):$(id -g) are command substitution—they run those commands and replace them with their output so docker knows your current directory and user permissions."
+  }
+}

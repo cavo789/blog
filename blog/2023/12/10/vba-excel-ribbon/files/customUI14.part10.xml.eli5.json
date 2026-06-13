@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:07.841Z",
+  "source": "customUI14.part10.xml",
+  "lang": "xml",
+  "explanations": {
+    "1": "This declares that the XML file uses Microsoft Office's custom UI schema, which tells Office how to customize the ribbon (toolbar) in applications like Word or Excel.",
+    "4": "The idMso attribute references a built-in Office tab by its internal name, and visible=\"false\" hides that standard Home tab from the user.",
+    "5": "insertAfterMso positions your custom tab right after another built-in tab (TabView) so users see it in a familiar location on the ribbon.",
+    "11": "imageMso=\"AddFolderToFavorites\" uses a pre-made icon from Office's icon library instead of you having to create or provide your own image file."
+  }
+}

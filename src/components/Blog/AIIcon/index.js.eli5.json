@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:23.616Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "2": "This imports a CSS module file (a special kind of stylesheet) that scopes styles to only this component, so class names won't accidentally conflict with styles elsewhere in the app.",
+    "7": "The className is pulling a style called 'aiIcon' from that imported CSS module, and currentColor makes the SVG use whatever text color is currently set on the parent element."
+  }
+}

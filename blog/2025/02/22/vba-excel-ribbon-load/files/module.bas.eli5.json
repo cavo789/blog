@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:28.230Z",
+  "source": "module.bas",
+  "lang": "bas",
+  "explanations": {
+    "1": "Option Base 0 means array indices will start at 0 instead of 1, which is unusual in VBA where arrays normally start at 1.",
+    "2": "Option Compare Text makes string comparisons case-insensitive, so \"ABC\" and \"abc\" are treated as equal.",
+    "25": "Byte is a data type that holds whole numbers from 0 to 255; it's used here because the row count won't be very large.",
+    "28": "shParams appears to be a worksheet object defined elsewhere; this line gets how many rows are in the named range.",
+    "56": "IRibbonControl is a special object passed by Excel's ribbon system when a user interacts with a custom ribbon button or dropdown.",
+    "71": "The ByRef keyword means the returnedVal variable will be modified inside this function and those changes will be visible to the caller.",
+    "82": "index + 1 is used because ribbon callbacks use zero-based indexing, but Excel ranges use one-based indexing, so we add 1 to get the correct row."
+  }
+}

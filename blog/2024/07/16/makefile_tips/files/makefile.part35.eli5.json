@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:34:22.351Z",
+  "source": "makefile.part35",
+  "lang": "part35",
+  "explanations": {
+    "1": "This line runs a shell command that checks if the PHP_VERSION matches the pattern for PHP 7 (like 7.0, 7.4, etc.), and stores either 'yes' or nothing in the variable IS_PHP_7; the $$ is how you write a single $ in a Makefile.",
+    "4": "The ifdef keyword checks if IS_PHP_7 was defined (has a value), so it will be true whenever IS_PHP_7 contains 'yes'."
+  }
+}

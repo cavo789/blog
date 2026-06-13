@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:20.223Z",
+  "source": "data.part4.xml",
+  "lang": "xml",
+  "explanations": {
+    "2": "This comment tells XML viewers or processors to highlight the next line visually, often used in documentation tools.",
+    "4": "This is another highlight comment, marking the title element below it for emphasis in rendered output."
+  }
+}

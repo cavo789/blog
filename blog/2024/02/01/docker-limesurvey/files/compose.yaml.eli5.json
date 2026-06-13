@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:13.519Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "10": "DB_HOST is set to 'limesurvey-db' because that's the container name of the database service below, and Docker automatically makes containers reachable by their service names within the same network.",
+    "20": "depends_on tells Docker to start the database service before starting the app service, ensuring the database is ready when the app tries to connect."
+  }
+}

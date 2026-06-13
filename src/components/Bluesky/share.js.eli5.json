@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:41.108Z",
+  "source": "share.js",
+  "lang": "javascript",
+  "explanations": {
+    "8": "The `?.` operator safely accesses nested properties — if `metadata` or `frontMatter` doesn't exist, it returns `undefined` instead of crashing.",
+    "10": "This line has backwards logic: it returns `null` (hides the button) when `blueskyRecordKey` EXISTS, which seems intentional but might be confusing at first glance.",
+    "17": "This builds a URL by concatenating strings with `encodeURIComponent()`, which converts special characters so they're safe to use in web links."
+  }
+}

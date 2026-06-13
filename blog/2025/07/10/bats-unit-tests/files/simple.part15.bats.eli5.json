@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:20.639Z",
+  "source": "simple.part15.bats",
+  "lang": "bats",
+  "explanations": {
+    "5": "This creates a fake `docker` function that overrides the real docker command for this test only, so we can control what it returns instead of needing actual Docker installed.",
+    "9": "This loads a helper file containing the `assert::dockerImageExists` function that we're testing.",
+    "10": "The `run` keyword captures both the output and exit code of the function we're testing so we can check them in the next lines."
+  }
+}

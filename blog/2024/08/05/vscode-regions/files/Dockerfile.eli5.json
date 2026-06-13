@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:27.765Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "24": "This command modifies the bash prompt (the text shown before you type) to include a whale emoji and color codes, using the TARGET variable we defined earlier.",
+    "45": "The 'set -e -x' makes the script exit if any command fails and print each command before running it, helping catch errors.",
+    "46": "This checks if DOCKER_UID is not equal to 1000; if true, it creates a new user with a custom ID instead of using the default.",
+    "66": "NODE_ENV is being set to the TARGET variable value (either 'development' or 'production'), which tells Node.js how to run the application.",
+    "70": "This creates a brand new Docusaurus project scaffolding in the directory, then immediately deletes some template files we don't need.",
+    "82": "The '--immutable' flag means yarn will fail if the lock file doesn't match the package.json, ensuring everyone builds the exact same dependencies.",
+    "107": "This copies the 'build' folder from the building_production stage into the nginx folder, but the syntax appears to be missing a closing quote after 'build'."
+  }
+}

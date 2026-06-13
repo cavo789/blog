@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:54:22.705Z",
+  "source": "tags.py",
+  "lang": "python",
+  "explanations": {
+    "3": "This creates a list that holds dictionaries; each dictionary describes a tag used to organize API endpoints in the documentation.",
+    "16": "We're passing the tags_metadata list to FastAPI so it knows how to label and describe groups of endpoints in the auto-generated API documentation."
+  }
+}

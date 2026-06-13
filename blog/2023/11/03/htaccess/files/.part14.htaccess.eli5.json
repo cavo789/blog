@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:17.963Z",
+  "source": ".part14.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "2": "This line blocks all incoming requests to this directory and everything inside it, but only works with older Apache servers (version 2.2).",
+    "5": "This is the newer way to block all requests for Apache 2.4+; the '#' makes it a comment so it's ignored unless you uncomment it for your server version."
+  }
+}

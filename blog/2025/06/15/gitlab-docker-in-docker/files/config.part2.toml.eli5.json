@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:03.102Z",
+  "source": "config.part2.toml",
+  "lang": "toml",
+  "explanations": {
+    "1": "This creates an array of runner configurations; the double brackets mean you can have multiple runners, and each one is a separate section.",
+    "5": "The double brackets with a dot create a nested array inside the current runner, so docker is a sub-section that belongs to this specific runner."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:01.268Z",
+  "source": "compose_dockerfile.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "1": "The ${PROJECT_NAME:-your-project-name} syntax means 'use the PROJECT_NAME variable if it exists, otherwise use the default text your-project-name'.",
+    "12": "The ${PHP_VERSION:-8.3-apache} syntax works the same way—it uses the PHP_VERSION variable if set, or falls back to version 8.3 with Apache."
+  }
+}

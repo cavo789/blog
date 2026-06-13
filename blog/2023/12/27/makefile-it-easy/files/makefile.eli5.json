@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:19.502Z",
+  "source": "makefile",
+  "lang": "makefile",
+  "explanations": {
+    "2": "The @ symbol silences the output of this command, and \\e[1;033m are special codes that make the text yellow and bold in the terminal.",
+    "4": "The --link flag connects this container to another service, and --network puts it on a specific Docker network so containers can talk to each other.",
+    "5": "The leading dash means \"ignore if this command fails\"; sensible-browser tries to open a URL in your default browser, and the & at the end runs it in the background.",
+    "28": "The leading dash means \"don't error out if the browser-opening command fails\"; the & at the end runs it in the background so the Makefile continues.",
+    "36": "The --link flag connects this container to the joomladb service, and --network ensures it can communicate with other containers in the same Docker network."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:02.477Z",
+  "source": "customUI14.part7.xml",
+  "lang": "xml",
+  "explanations": {
+    "4": "insertAfterMso means this custom tab will appear right after Microsoft's built-in View tab in the ribbon.",
+    "13": "imageMso=\"HappyFace\" uses a pre-made icon from Office's library instead of loading a custom image file.",
+    "17": "onAction=\"OnButtonClicked\" is the name of a function (probably in VBA or another language) that runs when someone clicks this button.",
+    "25": "onChange=\"OnEditBoxTextChanged\" triggers a function whenever the user types or modifies the text in this edit box."
+  }
+}

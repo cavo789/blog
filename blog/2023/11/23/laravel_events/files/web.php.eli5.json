@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:04.021Z",
+  "source": "web.php",
+  "lang": "php",
+  "explanations": {
+    "7": "SampleEvent::dispatch() triggers an event that might modify the $employee object—think of it like broadcasting a message that listeners can respond to and potentially change data.",
+    "9": "PHP_EOL is a constant that adds a newline character, making each echo statement print on its own line instead of running together."
+  }
+}

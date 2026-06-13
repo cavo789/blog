@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:02.498Z",
+  "source": "makefile.part3",
+  "lang": "part3",
+  "explanations": {
+    "1": "SHELL:=bash sets which command interpreter (bash) will run the commands in this Makefile.",
+    "5": "COLOR_YELLOW:=33 is storing the ANSI color code number for yellow text, which will be used later to colorize output.",
+    "8": ".PHONY: help tells Make that 'help' is a fake target (not a real file), so it will always run even if a file named 'help' exists.",
+    "12": "@clear runs the clear command silently (@ suppresses printing the command itself before executing it).",
+    "14": "This awk command parses the Makefile to find lines with '##' comments and formats them nicely; the $$ means 'use a literal $ in the output' because Make interprets single $ as variable syntax."
+  }
+}

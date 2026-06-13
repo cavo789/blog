@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:19.118Z",
+  "source": "Dockerfile.part2",
+  "lang": "part2",
+  "explanations": {
+    "12": "This line installs system-level tools (curl, unzip, and libaio) directly into the container using Alpine Linux's package manager, separate from the npm packages we installed earlier."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:51.833Z",
+  "source": "Dockerfile.part3",
+  "lang": "part3",
+  "explanations": {
+    "5": "The 'rm -rf' command deletes the package cache after installation to make the Docker image smaller, since we don't need those files once packages are installed.",
+    "7": "This copies an SSL certificate file from your computer into the container so nginx can use it for secure HTTPS connections.",
+    "8": "This copies the private key file that pairs with the certificate—nginx needs both files together to enable HTTPS."
+  }
+}

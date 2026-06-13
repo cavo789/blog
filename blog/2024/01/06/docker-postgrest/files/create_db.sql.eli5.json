@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:59.805Z",
+  "source": "create_db.sql",
+  "lang": "sql",
+  "explanations": {
+    "1": "This creates a namespace called 'api' to organize your tables, similar to a folder for database objects.",
+    "7": "timestamptz means a timestamp that includes timezone information, so the same moment in time is stored consistently across different regions.",
+    "13": "nologin means this role is just a group of permissions that real users will inherit from; it can't log in directly itself.",
+    "18": "noinherit means the authenticator role won't automatically get the permissions of other roles it belongs to unless explicitly requested.",
+    "19": "This gives the authenticator role all the permissions that web_anon has, essentially saying 'authenticator users can do what web_anon users can do'."
+  }
+}

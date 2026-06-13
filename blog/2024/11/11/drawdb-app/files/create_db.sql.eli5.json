@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:27.217Z",
+  "source": "create_db.sql",
+  "lang": "sql",
+  "explanations": {
+    "2": "SERIAL means the database automatically generates a unique number for each new region, starting from 1.",
+    "7": "CHARACTER (2) means exactly 2 characters, unlike CHARACTER VARYING which allows up to that length—useful here because country codes are always 2 letters.",
+    "10": "ON UPDATE CASCADE ON DELETE CASCADE means if a region changes or is deleted, all countries linked to it will automatically update or delete too.",
+    "26": "location_id doesn't have NOT NULL, so a department can exist without being assigned to a location yet.",
+    "33": "NUMERIC (8, 2) means the number can have up to 8 total digits with 2 after the decimal point, like 123456.78.",
+    "46": "manager_id references employees back to itself, allowing each employee to have a manager who is also an employee.",
+    "50": "This line creates a self-referential relationship—an employee can be managed by another employee in the same table."
+  }
+}

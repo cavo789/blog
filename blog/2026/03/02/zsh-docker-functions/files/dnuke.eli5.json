@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:11.452Z",
+  "source": "dnuke",
+  "lang": "plaintext",
+  "explanations": {
+    "4": "This line calls a function _d_check_env to verify Docker is installed; if it fails (returns non-zero), the whole script stops and returns 1.",
+    "10": "In Zsh, you can define a function inside a local scope using 'local' keyword, which keeps it private to this script block.",
+    "26": "This loop processes command-line arguments one at a time; $# is the count of arguments, and shift removes the first one each iteration.",
+    "42": "The awk command extracts the fifth column ($5) from the 'Build Cache' line in docker system df output; this gives us the cache size.",
+    "46": "The ${(@f)variable} syntax splits the variable's contents by newlines into array elements; @f means 'split on field separator'.",
+    "70": "This converts Docker image names to their short IDs (first 12 characters of the SHA256 hash) so they can be accurately compared and subtracted from the all_imgs array.",
+    "74": "The ${all_imgs:|used_imgs} syntax is Zsh array subtraction—it removes any elements from all_imgs that appear in used_imgs, leaving only unused images.",
+    "96": "This defines a nested function _fmt inside _draw_plan; it's a helper to format and color each step's status line consistently.",
+    "139": "If force mode is on, this function immediately returns success (0) without prompting, so all cleanup steps auto-confirm.",
+    "140": "The read -q flag makes the prompt non-blocking and case-insensitive; it returns 0 if the user presses 'y' or 'Y'.",
+    "171": "The eval command executes the string stored in $img_cmd as if you'd typed it directly; this is needed because img_cmd contains the command to run.",
+    "208": "This checks if buildx (Docker's newer builder system) is installed; if so, the script uses the newer buildx prune command instead of the older builder prune."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:15:46.061Z",
+  "source": "rgf.zsh",
+  "lang": "bash",
+  "explanations": {
+    "10": "This captures what operating system the script is running on (like macOS, Linux, etc.) so we can give the right installation instructions later.",
+    "22": "This checks if either 'bat' or 'batcat' exists—they're the same tool, but Debian/Ubuntu renamed it to 'batcat', so we need to handle both names.",
+    "31": "This file path is how we detect if the system is Debian or Ubuntu—if that file exists, we know we should use apt for installing packages.",
+    "61": "This creates a temporary file with a unique name using XXXXXX as a placeholder that gets replaced with random characters, so multiple runs don't overwrite each other.",
+    "67": "The {2} and {1} are placeholders that fzf will fill in with the line number and file name from each search result, letting bat highlight the exact matching line.",
+    "75": "This returns early (exits the function) if the user cancelled fzf with Escape, or if fzf found no matches—the two different exit codes are handled together.",
+    "79": "This sed command strips out ANSI color codes (the invisible escape sequences that create colored text), then cuts out just the filename which comes before the first colon.",
+    "80": "Same idea as line 79, but this time we extract the line number, which is the second field after splitting by colons."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:40.854Z",
+  "source": "monitory.sh",
+  "lang": "bash",
+  "explanations": {
+    "14": "This tells the shell checker to ignore a warning about the 'count' variable appearing unused in this scope, because it's actually used in the subshell below.",
+    "15": "The pipe sends inotifywait's output into a while loop, but because pipes create a subshell in bash, the 'count' variable changes inside the loop won't persist after the loop ends.",
+    "16": "This disables a warning about using 'ls' with pipes, which some purists avoid, but here it's acceptable for getting a simple file count.",
+    "17": "This compares the old count with a fresh count of files; if they differ, something changed in the directory."
+  }
+}

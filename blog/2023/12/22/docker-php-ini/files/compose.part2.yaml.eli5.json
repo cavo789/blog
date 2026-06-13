@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:54.161Z",
+  "source": "compose.part2.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "6": "The left number (8080) is the port on your computer; the right number (80) is the port inside the container—traffic to localhost:8080 gets forwarded to the container's port 80.",
+    "8": "This tells the Joomla container where to find its database by hostname; 'joomladb' matches the service name below, so Docker's network will resolve it automatically.",
+    "13": "This mounts your local php.ini file into the container at a specific path, so the container uses your custom PHP settings instead of its defaults."
+  }
+}

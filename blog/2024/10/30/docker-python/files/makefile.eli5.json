@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:19.194Z",
+  "source": "makefile",
+  "lang": "makefile",
+  "explanations": {
+    "17": "This variable stores a flag (--env-file) plus a filename together, so when you use ${ENV} later, it expands to the complete flag and file path as one piece.",
+    "20": "This sets an environment variable for docker compose itself (not a make variable), so the syntax is different—it's COMPOSE_FILE= with no space before the equals sign.",
+    "23": "This creates a special format string for printing colored text in the terminal; the escape codes tell your terminal to make text bold cyan, then reset the color back to normal.",
+    "27": "This converts the container name to hexadecimal using a shell command—vscode needs this special format to identify which Docker container to connect to.",
+    "50": "This uses awk (a text-processing tool) to parse the Makefile itself and extract all the comments with ## to auto-generate a help menu showing available commands."
+  }
+}

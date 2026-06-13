@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:56.174Z",
+  "source": "settings.json",
+  "lang": "json",
+  "explanations": {
+    "2": "This 'replace' object is a mapping that tells a tool to swap out original variable and function names (on the left) with shorter, obfuscated names (on the right), likely for code minification or obfuscation.",
+    "3": "Each line here pairs a readable name like 'getRandomWord' with a cryptic replacement like 'ppmx'—this is how the tool will rename things throughout your code."
+  }
+}

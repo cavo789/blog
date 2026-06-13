@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:28.382Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "5": "This service is on the 'frontend' network, which means it can only communicate with other services also on that network.",
+    "10": "The api-gateway won't start until auth-service and user-service are both running; this ensures dependencies are ready before this service tries to use them.",
+    "11": "This service sits on both 'frontend' and 'backend' networks, acting as a bridge so it can receive requests from the frontend and talk to backend services.",
+    "18": "This creates a persistent storage location called 'auth_data' that survives even if the container is deleted; it's mounted at /data inside the container.",
+    "41": "The 'bridge' driver is explicitly specified for this network, which is Docker's default networking mode that isolates containers while allowing them to communicate."
+  }
+}

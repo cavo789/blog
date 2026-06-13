@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:54:30.157Z",
+  "source": "config.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "9": "This URL points to a local machine on your network where the Ollama service is running; it's the address the application will contact to access the AI model.",
+    "26": "These settings override the model's default behavior for this specific configuration, letting you control how creative or focused the responses should be.",
+    "37": "This delay in milliseconds prevents the autocomplete feature from making too many requests while you're typing, giving the system time to wait between keystroke events."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:21.334Z",
+  "source": "Product.php",
+  "lang": "php",
+  "explanations": {
+    "10": "The `=''` and `=0` set default values for these parameters, so if someone creates a Product without providing a name or price, they'll get an empty string and zero instead of an error."
+  }
+}

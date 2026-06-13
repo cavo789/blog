@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:36.998Z",
+  "source": "devcontainer.part2.json",
+  "lang": "json",
+  "explanations": {
+    "11": "The [php] key tells VS Code these settings apply only to PHP files, not all file types.",
+    "19": "This setting automatically saves your file whenever you click away from the editor to another window or tab.",
+    "22": "This tells the PHP formatter where to find the configuration file that defines your code style rules.",
+    "24": "This is the path to the actual PHP formatter program that will run to clean up your code.",
+    "28": "PSR12 is a standard set of PHP formatting rules; this line uses those built-in rules instead of custom ones.",
+    "34": "This installs the junstyle.php-cs-fixer extension so VS Code can use that formatter."
+  }
+}

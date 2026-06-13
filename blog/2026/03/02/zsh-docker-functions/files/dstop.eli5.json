@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:20.769Z",
+  "source": "dstop",
+  "lang": "plaintext",
+  "explanations": {
+    "4": "This calls a helper function to verify that both 'fzf' and 'docker' tools are installed; if either is missing, the script exits early.",
+    "5": "This checks if there are any running containers; if there aren't any, the script exits without doing anything.",
+    "39": "This extracts just the first line of fzf's output, which tells us which key the user pressed (Enter for stop, or Ctrl-K for kill).",
+    "41": "This takes all lines after the first one from fzf's output and uses awk to grab only the first column (the container IDs), discarding the other columns.",
+    "46": "The `(@f)` syntax splits the selection string by newlines into separate array elements, so each container ID becomes its own item in the array.",
+    "59": "The `${target_ids[*]}` joins all container IDs into a single space-separated string for display; this is different from line 60 which uses `[@]` to pass them as separate arguments.",
+    "60": "The `eval` command executes the docker command stored in the variable; we use `[@]` here to pass each container ID as a separate argument to docker."
+  }
+}

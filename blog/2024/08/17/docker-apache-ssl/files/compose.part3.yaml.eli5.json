@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:54.210Z",
+  "source": "compose.part3.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "3": "The 'build' section tells Docker to create an image by reading instructions from a Dockerfile in the specified context (current directory).",
+    "6": "Port mapping syntax: the first number (80) is what you access on your computer, the second number (80) is the port inside the container that nginx actually listens on.",
+    "9": "A volume mount shares a folder from your computer (./src) with the container (/usr/share/nginx/html) so changes you make locally appear inside the container without rebuilding."
+  }
+}

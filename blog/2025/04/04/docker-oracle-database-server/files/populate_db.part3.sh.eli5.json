@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:06.566Z",
+  "source": "populate_db.part3.sh",
+  "lang": "bash",
+  "explanations": {
+    "3": "This runs sqlplus (Oracle's command-line tool) with the -S flag to suppress headers, then uses a here-document (the <<EOF...EOF wrapper) to send multiple SQL commands to it as if you typed them interactively.",
+    "5": "After connecting as sys, this switches to the system user account within the specific database container (orclpdb1) so the following scripts run with the right permissions."
+  }
+}

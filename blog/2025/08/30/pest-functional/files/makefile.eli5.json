@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:28.462Z",
+  "source": "makefile",
+  "lang": "makefile",
+  "explanations": {
+    "2": "The ?= operator means 'set this variable to this value only if it hasn't been set already'; so you can override WEBSITE when running make by doing WEBSITE=something make start.",
+    "4": "The $(shell ...) syntax runs a command in your terminal and uses its output as the variable's value; here it's getting your user ID number.",
+    "7": ".PHONY tells make that 'build' is not a real file to create, just a command label you can run.",
+    "10": "The ${UID} and ${GID} syntax substitutes the values of those variables into the docker command.",
+    "26": "The $(WEBSITE) here substitutes the WEBSITE variable value into the command that runs inside the docker container."
+  }
+}

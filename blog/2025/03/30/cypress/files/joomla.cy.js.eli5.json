@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:56.303Z",
+  "source": "joomla.cy.js",
+  "lang": "javascript",
+  "explanations": {
+    "1": "describe() creates a test group with a label; it() defines individual test cases inside that group.",
+    "6": "cy.contains() finds an HTML element (here, a link) that displays the text 'Tags', then .click() simulates clicking it.",
+    "10": "This clicks a link containing the text 'jomla' — note the typo (should be 'joomla'), which the cspell comment on line 9 tells the spell-checker to ignore."
+  }
+}

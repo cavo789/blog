@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:52.474Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "4": "clsx is a utility library that combines multiple CSS class names together, filtering out any empty ones so you don't end up with extra spaces in your class attribute.",
+    "22": "This line is different from the others because it uses styles.truncate (from the imported CSS module) instead of a plain string, which means truncate is a CSS class defined in that specific module file rather than a global class name."
+  }
+}

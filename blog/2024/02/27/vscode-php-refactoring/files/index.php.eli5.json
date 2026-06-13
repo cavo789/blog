@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:20.134Z",
+  "source": "index.php",
+  "lang": "php",
+  "explanations": {
+    "3": "This declares that this file belongs to the 'Cavo' namespace, which is like putting your code in a labeled folder to avoid naming conflicts with other people's code.",
+    "5": "This manually includes the Product.php file so we can use the Product class; in modern PHP you'd usually use autoloading instead.",
+    "13": "PHP_EOL is a built-in constant that represents a newline character (the thing that makes text go to the next line), and it works across different operating systems."
+  }
+}

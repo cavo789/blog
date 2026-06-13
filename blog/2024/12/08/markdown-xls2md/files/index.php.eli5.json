@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:24.704Z",
+  "source": "index.php",
+  "lang": "php",
+  "explanations": {
+    "5": "This tells PHP to enforce strict type checking, meaning variables must match their declared types exactly.",
+    "32": "The code checks if a file exists and stores its path in $cat, then uses that path to read the file — it's a compact way to do two things at once.",
+    "89": "This Vue.js directive (v-if) checks if the Markdown variable is not empty before showing that section of the page.",
+    "106": "Math.max.apply() finds the largest number in an array by treating null as 'this' and the array elements as individual arguments.",
+    "115": "The regex here matches various types of line break characters (newlines, carriage returns, and Unicode line separators) to split the pasted data into rows.",
+    "119": "This maps over the first row to figure out how wide each column needs to be by checking the longest cell in that column.",
+    "134": "This pads each cell with spaces so all cells in a column have the same width, which is needed for markdown table formatting.",
+    "140": "This line does nothing — it just references the map function without calling it, so it's dead code that can be safely removed.",
+    "149": "This creates a separator line with dashes for the markdown table header; the number of dashes matches the column width.",
+    "202": "The marked() function converts markdown syntax into HTML, and sanitize=true removes any potentially dangerous HTML tags."
+  }
+}

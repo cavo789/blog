@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:05.959Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "7": "The 'secrets' section here passes secret files into the Docker build process so the Dockerfile can access them securely without baking them into the image.",
+    "9": "This references a secret named 'my_ssh_key' that's defined later in the file, making it available during the build.",
+    "12": "This passes the filename 'id_ed25519' as a build argument so the Dockerfile knows which key file to use inside the build container.",
+    "15": "This top-level 'secrets' section defines where Docker can find the actual secret files on your machine that should be made available to builds.",
+    "19": "The ${HOME} syntax substitutes your home directory path at runtime, so Docker knows where to find your SSH key file."
+  }
+}

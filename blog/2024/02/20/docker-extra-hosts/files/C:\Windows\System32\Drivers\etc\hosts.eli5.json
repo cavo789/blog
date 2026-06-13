@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:14.208Z",
+  "source": "C:\\Windows\\System32\\Drivers\\etc\\hosts",
+  "lang": "plaintext",
+  "explanations": {
+    "3": "This line maps the IP address 127.0.0.1 (your own computer) to a custom domain name 'mysite.local', so when you type mysite.local in your browser, it points to your local machine instead of the real internet."
+  }
+}

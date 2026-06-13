@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:15.014Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "2": "The 'slim' variant is a smaller version of the Python image that saves disk space by removing unnecessary tools.",
+    "8": "The '--no-cache-dir' flag tells pip not to store downloaded packages on disk, which reduces the final image size.",
+    "14": "CMD sets the default command to run when the container starts; in this case, it launches your FastAPI app on port 82 instead of the default port 8000."
+  }
+}

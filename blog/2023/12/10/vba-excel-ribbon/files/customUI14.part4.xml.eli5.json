@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:59.172Z",
+  "source": "customUI14.part4.xml",
+  "lang": "xml",
+  "explanations": {
+    "1": "This declares the XML file uses the Office 2009 custom UI schema, which tells the Office application how to interpret the ribbon layout you're defining.",
+    "7": "This is a placeholder comment showing where you'd actually insert button XML elements; it's not real code yet."
+  }
+}

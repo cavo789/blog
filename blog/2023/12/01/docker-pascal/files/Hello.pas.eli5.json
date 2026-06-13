@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:29.449Z",
+  "source": "Hello.pas",
+  "lang": "pas",
+  "explanations": {
+    "1": "The two single quotes next to each other ('') is how you write a literal single quote character inside a string in Pascal — it's an escape sequence."
+  }
+}

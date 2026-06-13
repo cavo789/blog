@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:16.230Z",
+  "source": "compose.part3.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "8": "extra_hosts lets this container access custom hostnames (like my_site.local) by mapping them to IP addresses, similar to adding entries to your /etc/hosts file.",
+    "10": "This line maps the hostname 'my_site.local' to the IP address 172.20.0.1, so when code inside the container tries to reach my_site.local, it will connect to that IP instead.",
+    "14": "external: true means this network already exists outside this Docker Compose file, so Docker won't try to create it—it will just connect to an existing one."
+  }
+}

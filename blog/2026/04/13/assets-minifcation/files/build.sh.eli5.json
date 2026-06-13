@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:18.451Z",
+  "source": "build.sh",
+  "lang": "bash",
+  "explanations": {
+    "4": "The `command -v yq &> /dev/null` checks if yq exists and runs silently by redirecting all output to nowhere; if it doesn't exist, the command fails and we enter the if block.",
+    "18": "The `-r` flag tells yq to output raw strings without quote marks, so you get actual file paths instead of strings wrapped in quotes.",
+    "20": "This is a C-style for loop in bash that counts from 0 up to (but not including) the bundle count, letting us process each bundle by index.",
+    "47": "The `dirname` command extracts just the folder path from a full file path, so if OUTPUT is `dist/css/style.min.css`, dirname gives you `dist/css` to create.",
+    "49": "The backslash at the end of the line lets us continue a long command on the next line without bash thinking it's a new statement."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:41.594Z",
+  "source": ".mypy.ini",
+  "lang": "ini",
+  "explanations": {
+    "7": "This tells mypy to store its cache (a speedup feature) in the /tmp directory instead of the default location, which is useful for temporary builds or CI environments."
+  }
+}

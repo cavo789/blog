@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:55.239Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "6": "useBlogPost() is a custom hook that gives us blog metadata and a flag telling us whether we're on a blog post page or somewhere else.",
+    "12": "The && operator here means 'only show this content if isBlogPostPage is true'; if it's false, React renders nothing instead."
+  }
+}

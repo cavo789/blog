@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:31.415Z",
+  "source": "bootstrap.sh",
+  "lang": "bash",
+  "explanations": {
+    "7": "These lines set environment variables that will be used by the yarn start command; the backslash at the end of each line tells bash to continue reading the next line as part of the same command.",
+    "9": "SSL_KEY_FILE is the private encryption key file that pairs with the certificate to enable HTTPS security for the local server."
+  }
+}

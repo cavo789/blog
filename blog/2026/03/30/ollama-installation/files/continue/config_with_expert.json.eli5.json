@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:05.993Z",
+  "source": "config_with_expert.json",
+  "lang": "json",
+  "explanations": {
+    "12": "When apiBase is missing (like here), the system will use a default API endpoint instead of a custom one.",
+    "15": "This separate configuration object is specifically for the feature that auto-suggests code as you type, rather than full conversations."
+  }
+}

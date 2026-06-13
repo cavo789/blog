@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:16.713Z",
+  "source": "phpunit.xml",
+  "lang": "xml",
+  "explanations": {
+    "1": "This line declares that the file is XML and uses UTF-8 character encoding, which tells the parser how to read the text.",
+    "4": "This is a reference to the XML Schema validation standard, which allows the file to be checked against a schema definition for correctness.",
+    "6": "This points to the official schema file that defines what elements and attributes are allowed in this phpDocumentor configuration file.",
+    "10": "This sets where temporary files will be stored during documentation generation, keeping them separate from your source code."
+  }
+}

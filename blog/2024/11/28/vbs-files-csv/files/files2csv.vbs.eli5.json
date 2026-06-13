@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:45.266Z",
+  "source": "files2csv.vbs",
+  "lang": "vbs",
+  "explanations": {
+    "16": "Option Explicit forces you to declare every variable before using it, which helps catch typos early.",
+    "34": "chr(34) produces a double-quote character; it's used here to wrap CSV fields so commas inside them don't break the format.",
+    "42": "getextensionname extracts just the file extension (like 'txt' from 'document.txt') from the full file path.",
+    "45": "Shell.Application is a Windows COM object that gives access to shell features; it's created fresh inside the loop to fetch file metadata like owner.",
+    "50": "GetDetailsOf with parameter 10 retrieves the file owner; the 0 parameter in line 49 retrieves the filename for comparison.",
+    "59": "This line calls FilesTree recursively on each subfolder, meaning the function calls itself to process nested directories.",
+    "71": "ForWriting = 2 is a VBS constant meaning 'open file for writing'; using a named constant makes the code more readable than just writing 2.",
+    "79": "CreateTextFile with ForWriting and True creates a new CSV file, overwriting any existing one (the True enables Unicode encoding).",
+    "82": "The underscore (_) at the end of a line is VBS syntax for line continuation, allowing long statements to span multiple lines for readability."
+  }
+}

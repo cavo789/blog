@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:46.923Z",
+  "source": "_d_check_env",
+  "lang": "plaintext",
+  "explanations": {
+    "6": "The command -v checks if a program exists in your PATH, and >/dev/null 2>&1 silently discards both normal output and error messages so the user doesn't see noise.",
+    "7": "This uses ANSI color codes (the \\033[0;31m part) to print 'Error:' in red on standard error stream (>&2) so error messages stand out.",
+    "13": "docker info is a lightweight command that talks to the Docker daemon and fails if Docker isn't running; it's faster than starting a container just to test if Docker works."
+  }
+}

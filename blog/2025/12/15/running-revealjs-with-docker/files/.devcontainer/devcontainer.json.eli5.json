@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:50:28.173Z",
+  "source": "devcontainer.json",
+  "lang": "json",
+  "explanations": {
+    "8": "This variable gets replaced with the actual path of your local workspace folder on your computer when the dev container starts.",
+    "13": "Setting this to 'true' allows the non-root user (vscode) to run Docker commands inside the container without needing admin privileges.",
+    "14": "This uses Moby (an open-source project that Docker is built on) instead of the full Docker engine, which is lighter weight for running Docker inside Docker.",
+    "19": "This command runs once before the container is created—it sets up a directory for bash history and tells git to ignore the history file so it doesn't get committed.",
+    "20": "This command runs after you connect to the container and silently installs git pre-commit hooks if the pre-commit tool exists, without failing if it doesn't.",
+    "34": "This wraps long lines in the editor, but only at the column number specified on the next line (80 characters).",
+    "62": "These numbers are visual guides showing where lines should ideally be kept short—120 and 70 characters are common limits for code readability.",
+    "72": "This tells VS Code to treat JSON files in the 'resources' folder as JSONC (JSON with Comments), so you can add comments in those files.",
+    "76": "When you save a file, VS Code will use whatever language mode the currently active editor has, rather than guessing based on the filename.",
+    "88": "This configures how VS Code should find and fold code regions in Dockerfiles when you use special comments like '# region' and '# endregion'.",
+    "113": "This maps file paths to JSON schema URLs—VS Code uses these schemas to validate your YAML files and provide helpful autocompletion.",
+    "120": "The title bar will show the project name, a separator, and '[DevContainer]' to remind you that you're working inside a container, plus a dot if there are unsaved changes."
+  }
+}

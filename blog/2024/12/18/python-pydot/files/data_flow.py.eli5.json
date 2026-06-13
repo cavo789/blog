@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:33.055Z",
+  "source": "data_flow.py",
+  "lang": "python",
+  "explanations": {
+    "1": "We're creating a new directed graph object (think of it as a blank canvas) where arrows will point from one thing to another.",
+    "20": "We're creating a connection (edge) between source1 and process1, then immediately adding it to the graph — we could also create the edge first and add it later, but this does both at once.",
+    "27": "This takes the graph we built and exports it as a PNG image file that you can view and share."
+  }
+}

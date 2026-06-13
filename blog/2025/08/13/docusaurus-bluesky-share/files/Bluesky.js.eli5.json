@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:39.578Z",
+  "source": "Bluesky.js",
+  "lang": "javascript",
+  "explanations": {
+    "14": "PropTypes.shape() lets you specify what properties an object should have and their types, kind of like defining a schema for the object.",
+    "18": "isRequired means this metadata prop must always be passed to the Bluesky component, or React will warn you in development."
+  }
+}

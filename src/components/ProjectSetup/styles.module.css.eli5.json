@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:41.506Z",
+  "source": "styles.module.css",
+  "lang": "css",
+  "explanations": {
+    "2": "This uses a CSS custom property (a variable defined elsewhere) to set the border color, so the color stays consistent across the whole site if it's changed in one place.",
+    "5": "Overflow hidden means if content inside this container is too big, it gets cut off at the edges instead of spilling out.",
+    "22": "Overflow auto means if the content inside gets too tall (over 400px), scrollbars will appear so users can still see everything."
+  }
+}

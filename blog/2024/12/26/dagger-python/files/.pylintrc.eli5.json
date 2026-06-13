@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:22.766Z",
+  "source": ".pylintrc",
+  "lang": "plaintext",
+  "explanations": {
+    "2": "This section lists all the pylint rules we're intentionally turning off because we've decided they don't match how we want to code.",
+    "12": "Setting persistent to yes means pylint will save what it learned about the code between runs, so it can give smarter feedback next time.",
+    "16": "We're loading extra plugins that add more specialized checks beyond pylint's built-in rules.",
+    "31": "Setting jobs to 0 tells pylint to automatically figure out how many processor cores it can use to check code faster in parallel.",
+    "35": "When suggestion-mode is on, pylint tries to be helpful by guessing what you actually meant instead of just complaining about errors.",
+    "38": "This tells pylint that our code is written for Python version 3.13, so it should check for compatibility with that specific version.",
+    "41": "The code will fail the check and exit with an error if the quality score drops below 9.50 out of 10."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:15.549Z",
+  "source": "OracleConnector.csproj",
+  "lang": "csproj",
+  "explanations": {
+    "1": "This tells the build system to use the standard .NET SDK, which provides all the tools needed to compile a C# project.",
+    "4": "OutputType=Exe means this project will compile into a standalone executable program that can be run directly.",
+    "6": "ImplicitUsings=enable automatically includes common namespaces like System, so you don't have to write 'using System;' at the top of every file.",
+    "7": "Nullable=enable enforces strict null checking, which means the compiler will warn you if you might accidentally use a variable that could be null.",
+    "11": "This downloads and adds the Oracle database library as a dependency, so your code can connect to Oracle databases."
+  }
+}

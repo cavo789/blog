@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:54.019Z",
+  "source": "hangman.php",
+  "lang": "php",
+  "explanations": {
+    "15": "array_rand() returns the key (index number) of a random item in the array, not the item itself — that's why we use it to look up the actual word on the next line.",
+    "29": "We're using the number of guesses left as an index to pick which hangman stage to display, so fewer guesses left means a more complete hangman drawing.",
+    "42": "trim() removes the extra spaces we added after each letter, so the output looks clean instead of having trailing spaces.",
+    "56": "fgets(STDIN) reads a line of text that the user types into the terminal, and trim() removes the newline character at the end.",
+    "58": "ctype_alpha() checks if the input contains only letters — this ensures the guess is a valid letter and not a number or symbol.",
+    "72": "strpos() searches for the guessed letter in the word and returns false if it's not found anywhere, which means the guess was wrong.",
+    "76": "This line tries to display the word, captures its output, and then checks if all blanks have been filled in — but this is buggy because displayWord() echoes output instead of returning it."
+  }
+}

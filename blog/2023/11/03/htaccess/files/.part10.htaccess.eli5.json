@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:04.785Z",
+  "source": ".part10.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "This checks if the mod_php5 module is available on the server; if it is, the rules inside this block will apply.",
+    "4": "This tells PHP to keep track of the last error that occurred so you can access it later in your code with the $php_errormsg variable."
+  }
+}

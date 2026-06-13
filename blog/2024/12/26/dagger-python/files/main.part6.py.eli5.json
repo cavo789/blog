@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:14.975Z",
+  "source": "main.part6.py",
+  "lang": "python",
+  "explanations": {
+    "2": "anyio is a library that lets you run multiple async tasks at the same time in a way that works with different async backends.",
+    "13": "Annotated is a type hint wrapper that lets you attach extra metadata (like Doc and DefaultPath) to a type without changing what the type actually is.",
+    "31": "The await keyword waits for this chain of container operations to finish; the chain ends with stdout() which returns the text output from running the commands.",
+    "63": "This creates a persistent storage volume that survives between container runs, so mypy can reuse cached type information and run faster the next time.",
+    "74": "The f-string (f\"/app/config/mypy.ini\") lets you embed the variable value directly into the string.",
+    "98": "This creates an async task group so all four methods can run in parallel instead of waiting for each one to finish before starting the next."
+  }
+}

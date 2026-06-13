@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:58.332Z",
+  "source": ".gitlab-ci.yml",
+  "lang": "yaml",
+  "explanations": {
+    "6": "ssh-agent -s outputs shell commands that set up SSH authentication; the eval command runs those commands in the current shell so SSH knows how to find your keys.",
+    "9": "The SSH_PRIVATE_KEY variable contains your key in base64 format (a safe text encoding), so we decode it back to binary with base64 -d and save it to the standard SSH key file.",
+    "13": "ssh-keyscan connects to the server to grab its public key fingerprint and adds it to known_hosts, which prevents SSH from prompting you to verify the server's identity interactively."
+  }
+}

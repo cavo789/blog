@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:46.870Z",
+  "source": "project_viz.py",
+  "lang": "python",
+  "explanations": {
+    "16": "The regex pattern searches for the word FROM followed by whitespace and captures whatever comes after it; group(1) gets that captured part.",
+    "18": "strip() removes any extra whitespace from the beginning and end of the matched parent image name.",
+    "23": "This chains two .get() calls: first it safely gets the 'services' dictionary (or an empty dict if missing), then from that result it gets the 'docs' service.",
+    "25": "This line splits the volume string on colons to extract just the host path, but only if a colon exists; otherwise it uses the whole string.",
+    "32": "The stroke-dasharray: 5 5 creates a dashed border line with a pattern of 5 pixels solid, 5 pixels gap.",
+    "50": "The f-string inside the regular string won't actually interpolate; the mermaid content is static because the f was on line 38, not here."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:50.061Z",
+  "source": "Dockerfile.part2",
+  "lang": "part2",
+  "explanations": {
+    "6": "The backslash at the end of this line tells Docker to continue the command on the next line, so all three apt-get commands are chained together with && (meaning if one fails, the rest won't run).",
+    "10": "This line cleans up the temporary package lists that apt-get created, which reduces the final Docker image size by removing files we don't need anymore.",
+    "23": "The sed command (stream editor) is being used to uncomment certain lines in Apache's configuration file by finding lines that start with # and removing that # character.",
+    "25": "This uses a regular expression pattern to find lines starting with '#Include' and removes the '#' so that line becomes active in the Apache config.",
+    "27": "Similar to line 25, this uncomments the line that loads the SSL module so Apache can handle HTTPS traffic.",
+    "35": "The a2enmod command enables Apache modules (in this case SSL for HTTPS support), and the && chains multiple commands so they all run in sequence."
+  }
+}

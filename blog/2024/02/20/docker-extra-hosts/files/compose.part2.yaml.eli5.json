@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:12.943Z",
+  "source": "compose.part2.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "6": "This 'networks' key tells the container which network to connect to; it's different from the 'networks' section below that defines what networks exist.",
+    "15": "Setting 'external: true' means this network already exists outside this compose file, so Docker won't try to create it."
+  }
+}

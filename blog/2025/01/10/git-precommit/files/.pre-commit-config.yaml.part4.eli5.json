@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:07.143Z",
+  "source": ".pre-commit-config.yaml.part4",
+  "lang": "part4",
+  "explanations": {
+    "1": "This sets the Python version that pre-commit will use when running hooks; it's telling the system to use Python 3.13.",
+    "16": "This hook sorts all lines alphabetically in files matching the pattern, which is useful for keeping lists organized consistently.",
+    "27": "The 'local' repo type means these hooks are custom scripts on your machine, not downloaded from GitHub like the others above.",
+    "34": "This ensures the hook runs one file at a time instead of in parallel, which some tools need to work correctly.",
+    "41": "Like line 34, this prevents the hook from running multiple files simultaneously, since mypy can behave differently in parallel mode."
+  }
+}

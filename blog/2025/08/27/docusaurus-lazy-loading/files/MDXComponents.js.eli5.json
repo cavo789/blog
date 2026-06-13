@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:20.729Z",
+  "source": "MDXComponents.js",
+  "lang": "javascript",
+  "explanations": {
+    "8": "The three dots (...) here means 'copy all the properties from MDXComponents into this object', so we inherit the default behavior for other components.",
+    "11": "The first part before the equals sign pulls out specific props we want to handle separately, and the ...rest collects all the remaining props we don't explicitly name.",
+    "15": "The {...rest} spreads those leftover props back onto the img element so we don't lose any attributes we didn't explicitly extract.",
+    "20": "This uses the 'or' operator (||) to provide a default value—if loading wasn't passed in, we use 'lazy' instead.",
+    "22": "The backticks allow us to embed the className variable into a template string; the || '' part ensures we at least have an empty string if className is undefined."
+  }
+}

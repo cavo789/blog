@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:46.071Z",
+  "source": ".part26.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "This rule catches URLs starting with 'archive/2020/' and redirects them to '/2020/' instead, keeping whatever came after 'archive/2020/' intact. The [R=301,NC,L] part means: send a permanent redirect (301), ignore uppercase/lowercase differences (NC), and stop processing other rules (L)."
+  }
+}

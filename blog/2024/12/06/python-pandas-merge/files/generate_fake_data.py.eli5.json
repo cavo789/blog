@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:09.815Z",
+  "source": "generate_fake_data.py",
+  "lang": "python",
+  "explanations": {
+    "8": "This should be a list (use [] or list()), not a dict — it's being used with .append() on line 17.",
+    "19": "This variable is named 'dict' but it's actually a dictionary mapping years to tuples of names; the type hint is misleading.",
+    "27": "This creates a set (with curly braces) instead of a list, which works here but is unusual for iteration — sets have no guaranteed order.",
+    "28": "Like line 8, this should be a list [], not a dict, since it's used with .append() on line 46.",
+    "33": "The code reassigns the loop variable 'id' to 'year' here, which shadows (hides) the loop variable and can be confusing; it's a way to sneak in the extra employee data for that year."
+  }
+}

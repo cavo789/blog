@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:56.954Z",
+  "source": "styles.module.css",
+  "lang": "css",
+  "explanations": {
+    "8": "opacity: 0 means the button starts invisible but still takes up space; visibility: hidden on line 9 makes it not take up any space at all.",
+    "10": "This transition rule makes both the opacity and visibility properties smoothly animate over 0.4 seconds when they change.",
+    "11": "z-index: 1000 ensures this button sits on top of almost everything else on the page so it's always clickable.",
+    "20": "border-radius: 50% turns the square image into a perfect circle.",
+    "37": "The 'forwards' keyword means the image stays in its final state after the animation ends, rather than snapping back to how it looked before."
+  }
+}

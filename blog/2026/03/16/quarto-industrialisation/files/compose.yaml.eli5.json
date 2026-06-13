@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:29.293Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "5": "This mounts the current directory (.) from your computer into the container at /workspace, so changes you make locally show up inside the container.",
+    "9": "This tells Python where to find your custom modules—anything in /workspace/scripts will be importable as if it were installed.",
+    "11": "The sleep infinity keeps the container running forever instead of exiting, so you can connect to it and run commands manually."
+  }
+}

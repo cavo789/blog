@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:47:38.859Z",
+  "source": "script.bat",
+  "lang": "batch",
+  "explanations": {
+    "1": "The @ symbol prevents the command itself from being displayed in the console, and echo off turns off the printing of all subsequent commands, so only their output shows up."
+  }
+}

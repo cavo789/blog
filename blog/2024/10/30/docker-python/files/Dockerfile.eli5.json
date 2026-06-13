@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:11.399Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "This special comment tells Docker to use a specific syntax version for parsing the Dockerfile, which enables newer Docker features.",
+    "30": "The --mount flags here are Docker BuildKit features that cache pip packages and bind-mount the requirements file to avoid copying it into the image layer.",
+    "45": "This RUN command uses two mounts: one caches pip's download folder across builds (speeding things up), and one reads requirements.txt without copying it into the image.",
+    "51": "The tail command keeps the container running indefinitely; without it, the container would exit immediately after startup.",
+    "65": "The backslash at the end continues this single RUN command across multiple lines; Docker treats it all as one command to minimize image layers.",
+    "76": "The addgroup command creates a user group (like a team) identified by a numeric ID; this is required before you can create a user that belongs to that group.",
+    "92": "This command writes a fancy colored bash prompt into the user's shell config file; it will display each time the user opens a terminal in the container.",
+    "98": "This SNIPPET variable stores a bash export command that will be added to .bashrc, making bash automatically save history to a file for persistence."
+  }
+}

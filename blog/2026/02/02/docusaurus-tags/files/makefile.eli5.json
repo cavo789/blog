@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:04.590Z",
+  "source": "makefile",
+  "lang": "makefile",
+  "explanations": {
+    "1": "This line declares that 'tags-manager' is a phony target, meaning it's not a real file—it's just a command you can run with 'make tags-manager'.",
+    "4": "This checks if the ARGS variable is empty (after stripping whitespace); if it is, the code between here and 'else' will run to show an error message.",
+    "24": "This line runs a Python script inside a Docker container, installing two Python libraries silently first, then passing your ARGS to the script so it can execute the tag management command you requested."
+  }
+}

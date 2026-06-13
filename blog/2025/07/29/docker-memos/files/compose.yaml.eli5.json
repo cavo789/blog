@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:30.347Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "7": "The init flag ensures that if the container process crashes, it gets properly cleaned up instead of becoming a zombie process.",
+    "8": "This uses the UID and GID environment variables from your host machine (with fallbacks to 1000 if not set) so files created inside the container have the same ownership as your user account."
+  }
+}

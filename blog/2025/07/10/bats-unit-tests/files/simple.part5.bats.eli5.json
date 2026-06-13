@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:41.696Z",
+  "source": "simple.part5.bats",
+  "lang": "bats",
+  "explanations": {
+    "8": "The 'local -n' syntax creates a reference to another variable—so 'array_length' becomes an alias pointing to whatever variable name you pass in, rather than copying its value.",
+    "9": "The ${#array[@]} syntax is bash's way of asking 'how many elements are in this array'—the # means 'count' and [@] means 'all elements'."
+  }
+}

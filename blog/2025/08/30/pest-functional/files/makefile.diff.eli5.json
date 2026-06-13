@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:34.326Z",
+  "source": "makefile.diff",
+  "lang": "diff",
+  "explanations": {
+    "2": "The --parallel flag tells Pest to run multiple tests at the same time instead of one after another, which makes the test suite finish faster."
+  }
+}

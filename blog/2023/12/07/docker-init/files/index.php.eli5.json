@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:49.716Z",
+  "source": "index.php",
+  "lang": "php",
+  "explanations": {
+    "3": "This function displays detailed information about your PHP installation, including version, enabled extensions, and server settings — it's mostly used for debugging to check what your PHP environment has available."
+  }
+}

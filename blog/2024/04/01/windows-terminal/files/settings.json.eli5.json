@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:42.035Z",
+  "source": "settings.json",
+  "lang": "json",
+  "explanations": {
+    "3": "This number between 0 and 1 controls how transparent the background image appears—0.3 means it's 70% see-through so you can read text over it.",
+    "4": "This is a unique identifier (guid) that Windows Terminal uses internally to distinguish this profile from others, even if they have the same name.",
+    "8": "The four backslashes at the start are an escape sequence—each pair (\\\\) represents a single backslash in the actual file path to the WSL (Windows Subsystem for Linux) Ubuntu filesystem."
+  }
+}

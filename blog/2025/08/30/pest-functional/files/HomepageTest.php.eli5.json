@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:30.699Z",
+  "source": "HomepageTest.php",
+  "lang": "php",
+  "explanations": {
+    "4": "getenv('WEBSITE') reads an environment variable (a configuration value stored outside the code) that contains the base URL of the website being tested.",
+    "20": "The ->click('Blog') method simulates a user clicking on an element with the text 'Blog' on the page.",
+    "37": "The ->click('.DocSearch-Button') targets an element using a CSS class selector (the dot means 'class'), similar to how you'd select it in CSS.",
+    "38": "The ->type() method simulates a user typing text into a specific input field identified by the CSS selector '.DocSearch-Input'."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:47:05.257Z",
+  "source": "docusaurus.config.js",
+  "lang": "javascript",
+  "explanations": {
+    "15": "This is a function being passed to the blog system that will run before other markdown processors—it's the plugin we imported earlier being put to work."
+  }
+}

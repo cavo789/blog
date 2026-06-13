@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:31.191Z",
+  "source": ".part19.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "AuthName sets the label that appears in the browser's login popup when someone tries to access a protected resource.",
+    "2": "AuthType Basic means Apache will use the simple username/password authentication method (as opposed to more complex schemes).",
+    "3": "AuthUserFile tells Apache where to find the file that stores the usernames and encrypted passwords for authentication.",
+    "5": "The <Files> directive wraps rules that apply only to files matching the pattern inside the quotes—in this case, just the file named confidential.md.",
+    "6": "Require valid-user is the actual rule that says 'only let through requests from users who successfully logged in with a valid username and password'."
+  }
+}

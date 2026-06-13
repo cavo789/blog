@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:43.865Z",
+  "source": "black.toml",
+  "lang": "toml",
+  "explanations": {
+    "8": "This tells Black (a code formatter) to format your code assuming it will run on Python 3.13, which lets Black use newer language features when cleaning up your code."
+  }
+}

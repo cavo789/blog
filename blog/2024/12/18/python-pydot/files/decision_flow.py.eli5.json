@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:34.608Z",
+  "source": "decision_flow.py",
+  "lang": "python",
+  "explanations": {
+    "1": "This creates a new directed graph (digraph means arrows point in one direction, like a flowchart).",
+    "11": "We're creating a connection (edge) between two nodes and immediately adding it to the graph in one step.",
+    "18": "This exports the graph as a PNG image file so you can actually see the flowchart as a picture."
+  }
+}

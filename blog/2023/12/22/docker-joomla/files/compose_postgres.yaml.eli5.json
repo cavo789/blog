@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:46.307Z",
+  "source": "compose_postgres.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "9": "The left number (8080) is the port on your computer; the right number (80) is the port inside the container—traffic from your browser on 8080 gets forwarded to the app running on 80 inside.",
+    "13": "Even though this is a Joomla container, it's being set to use PostgreSQL (postgres) as the database instead of the default MySQL, so the username and password must match what the database container expects.",
+    "18": "This tells Joomla to connect using the PostgreSQL database driver (pgsql) rather than MySQL, which matches the postgres:16.0-alpine image being used for the database.",
+    "24": "Alpine is a super lightweight Linux distribution that keeps the Docker image small; postgres:16.0-alpine is PostgreSQL version 16.0 running on Alpine Linux.",
+    "29": "This creates a PostgreSQL database named 'joomla_db', which must match the JOOMLA_DB_NAME value on line 16 so Joomla can find its database."
+  }
+}

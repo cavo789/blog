@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:33:06.801Z",
+  "source": "Blog.part2.feature",
+  "lang": "feature",
+  "explanations": {
+    "1": "This is the main feature description that explains what the user should be able to do overall; it's like a title for all the test scenarios below it."
+  }
+}
