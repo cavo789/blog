@@ -2,6 +2,6 @@
 Options -Indexes
 
 # Block direct HTTP access to internal files
-<FilesMatch "^(reactions-data\.json|notifications\.json|README\.md)$">
+<FilesMatch "^(reactions-data\.json|notifications\.json|typo-data\.json|typo-ratelimit\.json|typo-notifications\.json|README\.md)$">
     Require all denied
 </FilesMatch>

@@ -6,6 +6,7 @@ import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
 import BlogPostItemHeader from "@theme/BlogPostItem/Header";
 import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
 import Reaction from "@site/src/components/Reaction";
+import TypoReport from "@site/src/components/TypoReport";
 import clsx from "clsx";
 
 // Our posts components
@@ -36,6 +37,7 @@ export default function BlogPostItem({ children, className }) {
         {/* Only display our RelatedPosts and Bluesky components on the post page; not the blog view */}
         {isBlogPostPage && (
           <>
+            <TypoReport metadata={metadata} />
             <Reaction metadata={metadata} />
             <Bluesky metadata={metadata} />
             <RelatedPosts count="6" description="false" />
