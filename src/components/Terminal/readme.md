@@ -48,9 +48,9 @@ If no title is provided, the default is: `christophe@home: ~`
 | `children` | `React.ReactNode` | ✅ | — | Terminal content to display inside the code block |
 | `title` | string | ❌ | `christophe@home: ~` | Optional terminal title shown in the header |
 | `wrap` | boolean | ❌ | `true` | Enables word wrapping in the terminal body. Set to `false` to disable it. |
-| `typewriter` | boolean | ❌ | `false` | Enables typewriter animation. Lines starting with `$` or `#` are typed char-by-char; output lines appear whole. Click the terminal to skip. |
-| `typewriterSpeed` | number | ❌ | `40` | Milliseconds per character for command lines. Lower = faster. |
-| `typewriterLineDelay` | number | ❌ | `400` | Milliseconds to pause before revealing each output line. |
+| `typewriter` | boolean | ❌ | `false` | Enables typewriter animation. Lines starting with `$` or `#` are typed char-by-char; output lines appear whole. Click the terminal to skip. Animation starts only when the terminal scrolls into view. |
+| `typewriterSpeed` | number | ❌ | auto | ms per character on command lines. Omit to auto-scale: ≤5 lines→40, ≤10→25, ≤20→20, >20→12. |
+| `typewriterLineDelay` | number | ❌ | auto | ms before each output line appears. Omit to auto-scale: ≤5 lines→400, ≤10→200, ≤20→150, >20→100. |
 
 ### Typewriter mode example
 
@@ -64,12 +64,12 @@ If no title is provided, the default is: `christophe@home: ~`
 </Terminal>
 ```
 
-Faster typing with less pause between output lines:
+Speed is auto-scaled from line count by default — no need to set `typewriterSpeed` or `typewriterLineDelay` manually. Override only when you want a specific pacing:
 
 ```jsx
-<Terminal typewriter typewriterSpeed={25} typewriterLineDelay={200}>
-  {`$ npm install
-added 342 packages in 4s`}
+<Terminal typewriter typewriterSpeed={60} typewriterLineDelay={600}>
+  {`$ fzf --version
+0.54.3`}
 </Terminal>
 ```
 

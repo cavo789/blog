@@ -46,7 +46,7 @@ Finally, the function is called like this: `updateEnv "APP_DEBUG" "false" ".env"
 
 Before seeing the function, like always, just create a sample file:
 
-<Terminal>
+<Terminal typewriter>
 $ mkdir -p /tmp/playing_env && cd $_
 $ echo 'APP_ENV = local' > .env
 $ echo 'APP_DEBUG = true' >> .env
@@ -92,7 +92,7 @@ Now, we can run in our console:
 
 The output will be, for this example:
 
-<Terminal>
+<Terminal typewriter>
 .env UPDATED APP_DEBUG = false
 .env UPDATED APP_ENV = production
 .env UPDATED APP_NAME = My application is running on production
@@ -148,7 +148,7 @@ Now, we've introduced a fourth argument; by default set to `true`.
 
 The output of the previous command will be the one below. If not present, variables are not added and this is just perfect.
 
-<Terminal>
+<Terminal typewriter>
 .env SKIP    DEFAULT_CACHE
 .env SKIP    REDIS_HOST
 </Terminal>

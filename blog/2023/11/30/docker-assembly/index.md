@@ -32,7 +32,7 @@ Please create a new file called `Hello.asm` with this content:
 
 To run the script, just call Docker, like this:
 
-<Terminal title="Powershell">
+<Terminal typewriter title="Powershell">
 $ docker run --rm -v %CD%:/code -w /code esolang/x86asm-nasm x86asm-nasm hello.asm
 Hello, World! This message comes from Docker.
 </Terminal>

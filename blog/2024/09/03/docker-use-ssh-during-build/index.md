@@ -131,7 +131,7 @@ We can verify that our key wasn't stored in the image by running `ls -alh /root/
 
 We can check too: jumping in our project folder and running `git pull` will fail with the error below:
 
-<Terminal>
+<Terminal typewriter>
 git@github.com: Permission denied (publickey).
 fatal: Could not read from remote repository.
 

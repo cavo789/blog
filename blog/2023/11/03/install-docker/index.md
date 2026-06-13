@@ -59,7 +59,7 @@ Let's begin. Start a new console (DOS, Powershell or Linux) and run the instruct
 
 Docker will, the first time, download PHP `7.4.29` (including Apache) and, once downloaded, start the image:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache
 </Terminal>
 
@@ -100,13 +100,13 @@ The site is functional, Apache is ready, but there's no index.php file; let's ad
 
 With the instruction below, we can launch a Linux console and display the contents of the image *as if* it were a folder on our hard disk:
 
-<Terminal>
+<Terminal typewriter>
 $ docker exec -it step_1_1a /bin/bash
 </Terminal>
 
 Once in the console, let's quickly create an `index.php` file and exit the console; we will not need it again.
 
-<Terminal>
+<Terminal typewriter>
 $ echo "\<\?php" > index.php
 $ echo "phpinfo();" >> index.php
 $ exit
@@ -118,7 +118,7 @@ Back to our browser and... Bingo! Our first Docker instance running a PHP script
 
 Let's go back to the instruction we used before:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache
 </Terminal>
 
@@ -127,15 +127,15 @@ This shows that we are targeting PHP version 7.4.29. By going to the page
 
 Let's change `7.4.29` to `8.1.5` and, for example, use another port (we will use `801` this time).
 
-<Terminal>
+<Terminal typewriter>
 $ docker run --detach --name step_1_1b -p 801:80 php:8.1.5-apache
 </Terminal>
 
-<Terminal>
+<Terminal typewriter>
 $ docker exec -it step_1_1b /bin/bash
 </Terminal>
 
-<Terminal>
+<Terminal typewriter>
 $ echo "\<\?php" > index.php
 $ echo "phpinfo();" >> index.php
 $ exit

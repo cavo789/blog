@@ -38,14 +38,14 @@ This article builds on top of <Link to="/blog/linux-fzf-introduction">fzf</Link>
 
 Check if ripgrep is already available:
 
-<Terminal>
+<Terminal typewriter>
 $ rg --version
 ripgrep 14.1.0
 </Terminal>
 
 If not, install it:
 
-<Terminal>
+<Terminal typewriter>
 $ sudo apt install ripgrep
 </Terminal>
 
@@ -53,14 +53,14 @@ $ sudo apt install ripgrep
 
 [bat](https://github.com/sharkdp/bat) (batcat on Debian/Ubuntu) is a modern replacement for cat that displays files with syntax highlighting, Git integration, paging, and other developer-friendly features. It is used here to power the preview panel.
 
-<Terminal>
+<Terminal typewriter>
 $ bat --version
 bat 0.24.0
 </Terminal>
 
 If not installed:
 
-<Terminal>
+<Terminal typewriter>
 $ sudo apt install bat
 </Terminal>
 
@@ -78,7 +78,7 @@ On some Ubuntu/Debian systems, the binary is named `batcat` instead of `bat`. If
 
 A quick comparison — searching for `TODO` in a Node.js project with `node_modules` present:
 
-<Terminal>
+<Terminal typewriter>
 $ time grep -rn "TODO" .
 
 ... hundreds of results from node_modules ...

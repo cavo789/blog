@@ -26,7 +26,7 @@ Imagine you're a web developer and just want to check if your site can be displa
 
 Copy/paste the command below in your console (coming from [https://hub.docker.com/r/linuxserver/firefox](https://hub.docker.com/r/linuxserver/firefox)):
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -d \
     --name=firefox \
     --security-opt seccomp=unconfined \
@@ -60,7 +60,7 @@ Another example is running GIMP in the browser. Take a look on [https://github.c
 
 First, make sure to create a subfolder called `config` and, in my example below, I'll also create a subfolder `images` where I've copied an avatar of a meerkat.
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -d \
     --name=gimp \
     --security-opt seccomp=unconfined \

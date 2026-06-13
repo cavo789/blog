@@ -29,7 +29,7 @@ Please create a new file called `team.py` with this content:
 
 To run the conversion, go back to your console and run the following command:
 
-<Terminal>
+<Terminal typewriter>
 $ cat team.py | docker run -i --rm -v $(pwd):/out -u 1000:1000 gtramontina/diagrams:0.23.3
 </Terminal>
 

@@ -49,7 +49,7 @@ Just edit the `.cmd` file and you'll see how it works: you just need to run the 
 
 For instance, by running `cscript vbs_access_export.vbs C:\Christophe\db1.mdb` in a DOS console, you'll get this:
 
-<Terminal title="Powershell">
+<Terminal typewriter title="Powershell">
 Process database C:\Christophe\db1.mdb
 
 Exporting sources to C:\Christophe\src\db1.mdb\

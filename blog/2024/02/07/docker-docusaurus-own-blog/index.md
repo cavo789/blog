@@ -142,7 +142,7 @@ The `src/pages` folder contain files like `index.md` that will be translated to 
 
 You have to copy the folder from the container to your host and, as you've already seen it. Please run the command below to copy the folder on your host:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose cp blog:/app/src src
 </Terminal>
 
@@ -175,7 +175,7 @@ On my side, I use that the static folder to store my common images (the ones I u
 
 Please run the command below to copy the folder on your host:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose cp blog:/app/static static
 </Terminal>
 

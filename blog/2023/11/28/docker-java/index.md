@@ -45,7 +45,7 @@ As a result of this command, your `Main.java` source will be compiled into the `
 
 By running `ls -alh` you can verify that, yes, the java script has been compiled into a `.class` file.
 
-<Terminal>
+<Terminal typewriter>
 $ ls -alh
 total 24K
 drwxr-xr-x  2 christophe christophe 4.0K Nov 22 15:02 .
@@ -61,7 +61,7 @@ Once again, you did not have to install or configure anything; just call the Doc
 
 The last thing to do is to execute your Java program. Now, please run `docker run --rm -v $PWD:/app -w /app openjdk:11 java Main` to execute it.
 
-<Terminal>
+<Terminal typewriter>
 $ docker run --rm -v $PWD:/app -w /app openjdk:11 java Main
 Hello, World
 </Terminal>
@@ -76,7 +76,7 @@ Compile it by running `docker run --rm -v $PWD:/app -w /app -u 1000:1000 openjdk
 
 Finally, call `docker run --rm -v $PWD:/app -w /app openjdk:11 java API.java` to execute the API call and display the result on the screen:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run --rm -v $PWD:/app -w /app openjdk:11 java API.java
 </Terminal>
 

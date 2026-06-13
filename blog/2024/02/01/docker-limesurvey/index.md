@@ -31,13 +31,13 @@ Please then create a `compose.yaml` file in that folder with this content:
 
 Now, simply run the following command to download (only the first time) required images (LimeSurvey and MySQL) and create the two containers:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose up --detach
 </Terminal>
 
 Once everything has been downloaded and started, you can check you've well two containers by running the following command:
 
-<Terminal>
+<Terminal typewriter>
 $ docker container list
 
 [...] IMAGE                         [...] NAMES

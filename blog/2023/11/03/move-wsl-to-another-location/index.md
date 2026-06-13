@@ -35,7 +35,7 @@ You will need to do this for every distribution you have installed that you want
 <AlertBox variant="info" title="">
 If you have Docker, you can do the same and move the Docker partition to your second disk.
 
-<Terminal title="Powershell">
+<Terminal typewriter title="Powershell">
 $ wsl --export docker-desktop d:\wsl\docker-desktop.tar
 ...
 $ wsl --export docker-desktop-data d:\wsl\docker-desktop-data.tar

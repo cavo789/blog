@@ -71,7 +71,7 @@ The fourth piece of information to gather is the password associated with your u
 
 In a Linux (or Windows Powershell) console, run the following command:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ ssh -p 5022 john_doe@node30-eu.n0c.com
 </Terminal>
 
@@ -111,7 +111,7 @@ Please run `ssh-copy-id -i ~/.ssh/id_ed25519_hosting -p 5022 john_doe@node30-eu.
 
 You'll be prompted to enter your password one last time.
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ ssh-copy-id -i ~/.ssh/id_ed25519_hosting -p 5022 john_doe@node30-eu.n0c.com
 
 /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/john_doe/.ssh/id_ed25519_hosting.pub"
@@ -129,7 +129,7 @@ From now, you will be able to connect without providing a password.
 
 Run the command below as a test:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ ssh -i ~/.ssh/id_ed25519_hosting -p 5022 john_doe@node30-eu.n0c.com
 </Terminal>
 

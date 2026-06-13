@@ -53,7 +53,7 @@ The `main.py` code defines:
 
 To run it, simply start `docker compose up --build -d` in your terminal:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker compose up --build -d
 </Terminal>
 
@@ -106,13 +106,13 @@ An easy way to do this is by using a Docker container. In the code sample below,
 
 Once you've fired `docker compose up --build -d` again to create the `belgif-lint` container, you're almost ready to use it but first, you need to make sure you have an `openapi.json` file on your disk. So let's create it by running the following command:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ curl -s http://localhost:8000/openapi.json > openapi.json
 </Terminal>
 
 We've now everything to run the check:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker compose run --rm belgif-lint
 </Terminal>
 

@@ -37,7 +37,7 @@ Please, too, create a file called `counter.sh` with this content:
 
 Now, just create the Docker image by running `docker build -t demo/counter .`.
 
-<Terminal>
+<Terminal typewriter>
 $ docker image list
 REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
 demo/counter   latest    89505911ec33   21 minutes ago   5.61MB
@@ -56,7 +56,7 @@ Now, it's time to create our `compose.yaml` file with this content:
 
 We'll run our container by running `docker compose up --detach`:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose up --detach
 
 [+] Building 0.0s (0/0)                    docker:default
@@ -68,7 +68,7 @@ $ docker compose up --detach
 
 We can verify our container is running using `docker container list` (simplified output):
 
-<Terminal>
+<Terminal typewriter>
 $ docker container list
 
 CONTAINER ID   IMAGE          STATUS          NAMES
@@ -79,7 +79,7 @@ CONTAINER ID   IMAGE          STATUS          NAMES
 
 `docker compose exec counter /counter.sh` is the command to use to execute our script and we'll call it multiple times:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose exec counter /counter.sh
 You have executed this script 1 times.
 
@@ -103,7 +103,7 @@ What about if we stop the container and start it again by running `docker compos
 
 Running our counter again:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose exec counter /counter.sh
 You have executed this script 1 times.
 </Terminal>
@@ -129,7 +129,7 @@ We'll start our container again: `docker compose down ; docker compose up --deta
 
 But now, we should have a Docker volume called `counter_data`; let's check:
 
-<Terminal>
+<Terminal typewriter>
 $ docker volume list
 DRIVER    VOLUME NAME
 local     demo_counter_data
@@ -139,7 +139,7 @@ Yes, we've it.
 
 Let's try again some calls then stop/restart and a few calls then:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose exec counter /counter.sh
 Creating /data/counter.txt ...
 You have executed this script 1 times.
@@ -185,7 +185,7 @@ As you can see, by running `down` followed by `up`, we have kept the value of ou
 
 You can remove the volume by running `docker volume rm demo_counter_data` but:
 
-<Terminal>
+<Terminal typewriter>
 $ docker volume rm demo_counter_data
 Error response from daemon: remove demo_counter_data: volume is in use - [b976c92eed6ed4e54f6ec75d652b8977bbbd86392e604216dd61d0c446e1fc0c]
 </Terminal>
@@ -204,7 +204,7 @@ Volumes are stored *somewhere* on the disk by Docker, you don't need to take car
   ]}
 />
 
-<Terminal>
+<Terminal typewriter>
 $ cd /tmp/counter
 
 $ ls -alh
@@ -244,7 +244,7 @@ By double-clicking on the filename, you'll start a basic text editor where you c
 
 A new call to our counter shows that we have hacked the number:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose exec counter /counter.sh
 You have executed this script 51 times.
 </Terminal>
@@ -271,7 +271,7 @@ Now, you can edit that file from vscode, make changes and save them.
 
 ![VSCode - Accessing to files in the container](./images/vscode.webp)
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose exec counter /counter.sh
 You have executed this script 101 times.
 </Terminal>
@@ -292,7 +292,7 @@ The syntax now is, just a few, different: we don't have a `volumes` entry at the
 
 By running `docker compose up --detach && docker compose exec counter /counter.sh` we'll run our counter and expect to see `You have executed this script 1 times.` but you'll probably get an error:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose exec counter /counter.sh
 Creating /data/counter.txt ...
 
@@ -305,7 +305,7 @@ You have executed this script 1 times.
 
 We need to create our local `data` folder:
 
-<Terminal>
+<Terminal typewriter>
 $ mkdir data
 
 $ ls -alh
@@ -320,7 +320,7 @@ drwxr-xr-x  2 christophe christophe 4.0K Nov 22 10:54 data
 
 Now that we've our data folder, try again:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose up --detach && docker compose exec counter /counter.sh
 
 [+] Building 0.0s (0/0)        docker:default
@@ -333,7 +333,7 @@ You have executed this script 1 times.
 
 This time, the `counter.txt` file is present in our directory:
 
-<Terminal>
+<Terminal typewriter>
 $ ls -alh data
 
 total 12K
@@ -364,7 +364,7 @@ Then run `docker compose down && docker compose up --detach && docker compose ex
 
 Now, the file will be yours:
 
-<Terminal>
+<Terminal typewriter>
 $ ls -alh data
 total 12K
 drwxr-xr-x 2 christophe christophe 4.0K Nov 22 10:56 .

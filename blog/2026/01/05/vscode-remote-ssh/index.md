@@ -49,7 +49,7 @@ Create a `Dockerfile` with the content below.
 
 Next, we need to build our Docker image and create the container. To build it, run `docker build -t ssh-server .`. Then, create the container with `docker run -d -p 2222:22 --name remote-dev ssh-server`.
 
-<Terminal>
+<Terminal typewriter>
 $ docker build -t ssh-server .
 
 $ docker run -d -p 2222:22 --name remote-dev ssh-server
@@ -61,7 +61,7 @@ The container acts as an SSH server and (for this demo) creates a user `christop
 
 Test the container by accepting the host fingerprint and entering the password (`p@ssword`) when prompted.
 
-<Terminal>
+<Terminal typewriter>
 $ ssh christophe@localhost -p 2222
 
 The authenticity of host '[localhost]:2222 ([127.0.0.1]:2222)' can't be established.

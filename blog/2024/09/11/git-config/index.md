@@ -118,7 +118,7 @@ To share credentials between the two environments, just add the two lines below 
 
 As you know, during the installation of Git, you need to provide your name and your email. These two information are given on the console using command like below:
 
-<Terminal>
+<Terminal typewriter>
 $ git config --global user.email "me@work.be"
 $ git config --global user.name "Christophe Avonture"
 </Terminal>

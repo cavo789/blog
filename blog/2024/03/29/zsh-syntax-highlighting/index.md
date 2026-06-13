@@ -32,7 +32,7 @@ It sounds simple, but it's so practical.
 
 Just clone the official repository like below:
 
-<Terminal>
+<Terminal typewriter>
 $ {`git clone https://github.com/zsh-users/zsh-syntax-highlighting \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`}
 </Terminal>
 

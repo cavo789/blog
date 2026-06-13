@@ -34,7 +34,7 @@ Pest is a wrapper around PhpUnit so, for instance, every command line arguments 
 
 Simply run the commands below in your PHP application folder:
 
-<Terminal>
+<Terminal typewriter>
 $ composer require pestphp/pest --dev --with-all-dependencies
 
 $ composer require pestphp/pest-plugin-laravel --dev
@@ -80,7 +80,7 @@ This illustrates that Pest start with a `expect` verb and some method like `toBe
 
 Running our test can be simply done using `./vendor/bin/pest tests/Feature/MyFirstTest.php` and here is the result:
 
-<Terminal>
+<Terminal typewriter>
    PASS  Tests\Feature\MyFirstTest
   ✓ assert true is true
   ✓ assert false is not true
@@ -233,7 +233,7 @@ Install the plugin like this: `composer require pestphp/pest-plugin-laravel --de
 
 Then some new artisan commands will be available:
 
-<Terminal>
+<Terminal typewriter>
 $ php artisan | grep pest
  pest
   pest:dataset           Create a new dataset file

@@ -39,7 +39,7 @@ That's all. The script will retrieve any `.xlam` or `.xlsm` files and do automat
 
 The output you'll get will be something like this:
 
-<Terminal>
+<Terminal typewriter>
 Processing files in C:\Christophe
 
 Get the list of references used in C:\Christophe\Application.xlsm

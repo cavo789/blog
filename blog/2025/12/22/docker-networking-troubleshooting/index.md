@@ -63,7 +63,7 @@ We can ensure the processus running on port `8000` in both containers is running
 
 Now that we've it, we can test the internal port:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ telnet 192.168.0.4 8000
 
 Trying 192.168.0.4...
@@ -93,13 +93,13 @@ Run `docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}"` again the get t
 
 In our preamble, we've said: the `consumer` should be able to run an API from the `provider` so let's jump in the `consumer` by creating a console. We'll using the CONTAINER_ID of the consumer and we'll connect as `root`:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker exec --user root -it 5abd45eecfa3 sh
 </Terminal>
 
 We'll first try `ping` to see if we can connect to the `provider` container:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ apt-get update
 
 $ apt-get install -y iputils-ping
@@ -107,7 +107,7 @@ $ apt-get install -y iputils-ping
 
 Once done, try `ping` followed by the container name (we've already identify `provider` and `consumer` being our containers name thanks our `docker ps` command).
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ ping provider
 
 PING provider (192.168.0.3) 56(84) bytes of data.
@@ -128,7 +128,7 @@ This means that the DNS resolution is working fine.
 
 Still in the `consumer` container, install `telnet` if needed
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ apt-get update
 
 $ apt-get install -y telnet
@@ -136,7 +136,7 @@ $ apt-get install -y telnet
 
 Then run `telnet provider 8000` i.e. the name of the container and his internal port (not the exposed one)
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ telnet provider 8000
 
 Trying 192.168.0.3...
@@ -161,7 +161,7 @@ Now that we know containers can communicate, let's try the **application layer**
 
 In my use case, the `provider` container is offering an API so I should be able to reach it using `curl`.
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ curl -v http://provider:8000
 </Terminal>
 

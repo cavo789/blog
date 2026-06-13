@@ -65,7 +65,7 @@ In this implementation, the logic is spread across three components: `BlogPostIt
 
 Run the following commands in your terminal:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ yarn run swizzle @docusaurus/theme-classic BlogPostItem
 
 $ yarn run swizzle @docusaurus/theme-classic BlogPostItem/Header
@@ -176,7 +176,7 @@ First, define your AI author in `blog/authors.yml`.
 
 We need to swizzle one more component to inject the author logic.
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ yarn run swizzle @docusaurus/theme-classic BlogPostItem/Header/Authors
 </Terminal>
 

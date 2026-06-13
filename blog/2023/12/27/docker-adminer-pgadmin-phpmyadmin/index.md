@@ -32,7 +32,7 @@ We'll use `docker container list` to get the list of containers, we just want to
 
 **For illustration purpose**, here is the output on my machine right now:
 
-<Terminal>
+<Terminal typewriter>
 $ {`docker container list --all --format "table {{.Image}}\t{{.Names}}"`}
 
 IMAGE                        NAMES
@@ -44,7 +44,7 @@ For our example, we want to connect to the MySQL 8.x `joomla-joomladb-1` contain
 
 The second thing to determine is the name of the network used by that container. We'll use `docker inspect` here (read my article <Link to="/blog/docker-inspect">Docker inspect - Retrieve network's information</Link>).
 
-<Terminal>
+<Terminal typewriter>
 $ docker inspect joomla-joomladb-1 | jq -r '.[0].NetworkSettings.Networks'
 </Terminal>
 
@@ -70,13 +70,13 @@ The name of the network used by `joomla-joomladb-1` is thus `joomla_default` as 
 
 The command line to start is something like
 
-<Terminal>
+<Terminal typewriter>
 $ {`docker run -d --rm --name adminer --network <network_name> --link <container-name>:db -p 8088:8080 adminer`}
 </Terminal>
 
 and thus, with values from our example,
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -d --rm --name adminer --network joomla_default --link joomla-joomladb-1:db -p 8088:8080 adminer
 </Terminal>
 
@@ -112,13 +112,13 @@ If you already know some of these values, you can provide them in a link, like `
 
 For phpmyadmin, the command line to start is something like
 
-<Terminal>
+<Terminal typewriter>
 $ {`docker run -d --rm --name phpmyadmin --network <network_name> --link <container-name>:db -p 8089:80 phpmyadmin`}
 </Terminal>
 
 and thus, with values from our example,
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -d --rm --name phpmyadmin --network joomla_default  --link joomla-joomladb-1:db -p 8089:80 phpmyadmin
 </Terminal>
 

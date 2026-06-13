@@ -50,7 +50,7 @@ The Dockerfile we'll use is this one.  It's quite simple.
 
 To build this image run `docker build -t yourself/docker-python-mermaid .` in your terminal:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 docker build -t yourself/docker-python-mermaid .
 </Terminal>
 
@@ -90,7 +90,7 @@ Here is the dummy `compose.yaml` I'll use as an example:
 
 Now, the best part: please run this command to render the image:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker run --rm -u $(id -u):$(id -g) -e HOME=/tmp -v .:/app yourself/docker-python-mermaid python3 /app/scripts/mindmap.py /app/samples/compose.yaml -o /app/compose.png
 
 Generating single mermaid chart
@@ -115,7 +115,7 @@ This script will look at our file structure, identify the files we have, and cre
 
 <Snippet filename="project-dna.py" source="./files/scripts/project-dna.py" defaultOpen={false} />
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker run --rm -u $(id -u):$(id -g) -e HOME=/tmp -v .:/app yourself/docker-python-mermaid python3 /app/scripts/project-dna.py /app -o /app/project-dna.png
 
 Generating single mermaid chart
@@ -133,7 +133,7 @@ This time a Pie chart:
 
 <Snippet filename="pie.py" source="./files/scripts/pie.py" defaultOpen={false} />
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker run --rm -u $(id -u):$(id -g) -e HOME=/tmp -v .:/app yourself/docker-python-mermaid python3 /app/scripts/pie.py /app -o /app/pie.png
 
 Generating single mermaid chart

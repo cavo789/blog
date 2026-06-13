@@ -21,7 +21,7 @@ When WSLg is enabled, it's possible to access the graphical user interface of yo
 
 If you don't have `xrdp` yet, you can install it by running:
 
-<Terminal>
+<Terminal typewriter>
 $ sudo apt update && sudo apt -y upgrade
 ...
 $ sudo apt-get install -y xrdp
@@ -32,7 +32,7 @@ $ sudo apt-get install -y xrdp
 
 Also consider changing the port number to `3390` by running the command below and some minor changes. *It seems to be required since using the default 3389 port number, you will get the 'already in use' error with mstsc.*:
 
-<Terminal>
+<Terminal typewriter>
 $ (
   sudo cp /etc/xrdp/xrdp.ini /etc/xrdp/xrdp.ini.bak
   sudo sed -i 's/3389/3390/g' /etc/xrdp/xrdp.ini
@@ -93,7 +93,7 @@ Also run `sudo nano /etc/xrdp/startwm.sh` to edit the file.
 
 Finally enable `dbus`:
 
-<Terminal>
+<Terminal typewriter>
 $ (
   sudo systemctl enable dbus
   sudo /etc/init.d/dbus start

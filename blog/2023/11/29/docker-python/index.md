@@ -36,7 +36,7 @@ So, now, how to run that script? Because I'm familiar with Docker, I know that:
 3. I will need to share my script using a volume and
 4. I need to know how to run the script.
 
-<Terminal>
+<Terminal typewriter>
 $ {`docker run -it --rm -v \${PWD}:/app -w /app python python Hello.py`}
 Hello World!
 </Terminal>

@@ -34,7 +34,7 @@ As soon as you've two or more containers, you need a network.
 
 We'll create our. Please copy/paste the command below in a terminal (DOS or Linux) and run it.
 
-<Terminal>
+<Terminal typewriter>
 $ docker network create wordpress
 </Terminal>
 
@@ -44,13 +44,13 @@ For this article, I propose to use MySQL 8.x or, if you prefer it, MariaDB 11.x.
 
 For MySQL 8.x:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mysql:8.0.13
 </Terminal>
 
 For MariaDB:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mariadb:11.2.2
 </Terminal>
 
@@ -60,7 +60,7 @@ Once started by Docker, the MySQL / MariaDB container will create an empty datab
 
 And now, we need a second container for WordPress itself. I propose to use the latest version on that time:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -d --name app_wordpress --hostname app_wordpress --network wordpress -p 8080:80 -e WORDPRESS_DB_HOST=db_wordpress -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=example wordpress:6.4.2-php8.2-apache
 </Terminal>
 
@@ -81,7 +81,7 @@ If you get `Error establishing a database connection`, please wait a little befo
 
 As we've seen in the [Using Adminer, pgadmin or phpmyadmin to access your Docker database container](docker-adminer-pgadmin-phpmyadmin) article, we can access to a database container using f.i. phpmyadmin. To do this, just run the following command in a terminal:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -d --rm --network wordpress --name phpmyadmin -e PMA_HOST=db_wordpress -p 8089:80 phpmyadmin
 </Terminal>
 
@@ -93,7 +93,7 @@ By surfing to `http://127.0.0.1:8089`, you can connect to the database. Credenti
 
 If you wish to stop and remove containers after usage, you can run the following bloc of instructions in a Linux terminal:
 
-<Terminal>
+<Terminal typewriter>
 $ docker rm $(docker stop $(docker ps -a -q --filter="name=app_wordpress"))
 
 $ docker rm $(docker stop $(docker ps -a -q --filter="name=db_wordpress"))
@@ -108,7 +108,7 @@ Or, by hand, go to your `Docker Desktop` interface, click on the `containers` ta
 
 As introduced, we just need three commands to create, from nihil, a new wordpress site on our disk. This just in seconds (depends on the speed of your computer). Easy no?
 
-<Terminal>
+<Terminal typewriter>
 $ docker network create wordpress
 
 $ docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mysql:8.0.13

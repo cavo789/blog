@@ -30,7 +30,7 @@ I've chosen [Oh My ZSH](https://ohmyz.sh/) since years, let's see how to install
 
 The installation is quite easy, just three commands:
 
-<Terminal>
+<Terminal typewriter>
 $ sudo apt-get update && sudo apt-get install zsh
 $ chsh -s /usr/bin/zsh
 $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

@@ -37,7 +37,7 @@ There are some tools that allow comparing two files like `diff` but not really t
 
 Let's try... Below we'll create the file `.env.example` with two lines then copy it to `.env` and just add a new line in `.env.example`. Finally, we'll sort  sort -o `.env.example` so the order will differs with `.env`.
 
-<Terminal>
+<Terminal typewriter>
 $ mkdir -p /tmp/playing_env && cd $_
 $ echo 'APP_NAME = My application' > .env.example
 $ echo 'APP_ENV = local' >> .env.example
@@ -76,7 +76,7 @@ Left side: .env                   Right side: .env.example
 
 For the illustration, we can now add a new key but just in `.env` (real world situation: I'm coding a new feature and I add a variable like a switch on/off)
 
-<Terminal>
+<Terminal typewriter>
 $ echo 'ALLOW_FEATURE_DO_THIS = true' >> .env
 </Terminal>
 
@@ -92,7 +92,7 @@ The column on the left represents the first file (in our example `.env`) while t
 
 Last sample:
 
-<Terminal>
+<Terminal typewriter>
 $ echo 'DATABASE_TYPE = pgsql' >> .env
 $ echo 'DATABASE_TYPE = mysql' >> .env.example
 </Terminal>

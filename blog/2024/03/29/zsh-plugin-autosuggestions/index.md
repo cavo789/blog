@@ -30,7 +30,7 @@ The more you use your Linux console, the more valuable this plugin will prove to
 
 Just clone the official repository like below:
 
-<Terminal>
+<Terminal typewriter>
 $ {`git clone https://github.com/zsh-users/zsh-autosuggestions \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`}
 </Terminal>
 

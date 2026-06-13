@@ -62,7 +62,7 @@ You know what? It's already done.
 
 We need to build our Docker image and run it:
 
-<Terminal>
+<Terminal typewriter>
 $ docker build -t python-fastapi . && docker run -p 82:82 python-fastapi
 </Terminal>
 
@@ -110,7 +110,7 @@ First stop the running container: go back to your console and press <kbd>CTRL</k
 
 If you prefer the command line, you can achieve the same result by running these two commands:
 
-<Terminal>
+<Terminal typewriter>
 $ docker rm $(docker ps -aq --filter "ancestor=python-fastapi")
 
 $ docker rmi python-fastapi --force
@@ -125,7 +125,7 @@ Rebuild the image and run a new container by running these commands:
 
 OK, we'll run the container again but, now, with a volume:
 
-<Terminal>
+<Terminal typewriter>
 $ docker build -t python-fastapi . && docker run -v .:/app -p 82:82 python-fastapi
 </Terminal>
 

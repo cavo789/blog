@@ -36,7 +36,7 @@ The `main` function is quite basic here, I'll do a loop from 1 till 10 and, each
 
 So, by running the script, since we're calling ten times our demo function and the function is waiting for three seconds, then, we'll not be surprises by the total duration time:
 
-<Terminal>
+<Terminal typewriter>
 Sleeping for 3 seconds...
 Sleeping for 3 seconds...
 Sleeping for 3 seconds...
@@ -104,7 +104,7 @@ Did you know how many times I need to wait? Remember, in the first version of th
 
 With the optimised version here above and to do **exactly the same thing**, I waited ... just three seconds:
 
-<Terminal>
+<Terminal typewriter>
 Number of threads: 64
 Sleeping for 3 seconds...
 Sleeping for 3 seconds...

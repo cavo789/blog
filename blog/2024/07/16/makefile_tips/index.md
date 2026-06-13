@@ -26,7 +26,7 @@ Below is a note that I took and revised several times when I took the time to cr
 
 Just run the following commands to install the `Make` executable on your host machine:
 
-<Terminal>
+<Terminal typewriter>
 $ sudo apt-get update && sudo apt-get -y install make
 </Terminal>
 
@@ -64,7 +64,7 @@ By running `make php-cs-fixer`, we'll first run `vendor` then `update-them`, fin
 
 <Snippet filename="makefile" source="./files/makefile.part6" />
 
-<Terminal>
+<Terminal typewriter>
 $ make php-cs-fixer
 First get vendors
 Then update vendors
@@ -79,7 +79,7 @@ If one of them fails, the script will stop.  In the example below, `php-cs-fixer
 
 Running `make php-cs-fixer` will output this:
 
-<Terminal>
+<Terminal typewriter>
 First get vendors
 Then update vendors
 And finally run php-cs-fixer
@@ -103,7 +103,7 @@ Running `make helloWorld` like below will output two lines on the console.
 
 And the output in the console:
 
-<Terminal>
+<Terminal typewriter>
 $ echo "Hello world"
 Hello world
 </Terminal>
@@ -179,7 +179,7 @@ However it is possible to adapt this behavior using `.RECIPEPREFIX`:
 
 Running a target with a parameter should be done using named parameters like this:
 
-<Terminal>
+<Terminal typewriter>
 $ make hello firstname="Christophe"
 </Terminal>
 
@@ -230,7 +230,7 @@ You've an existing target, let's say `hello` in our example, and you wish to ext
 
 If we run that file, here is the output.
 
-<Terminal>
+<Terminal typewriter>
 $ make hello
 makefile:198: warning: overriding recipe for target 'hello'
 makefile:195: warning: ignoring old recipe for target 'hello'
@@ -243,7 +243,7 @@ The solution: use `::` (this is called an *explicit rule*) and not a single `:` 
 
 If we run that file, here is the output.
 
-<Terminal>
+<Terminal typewriter>
 $ make hello
 Hello world
 Nice to meet you
@@ -322,7 +322,7 @@ This will allow things like below i.e. target a custom version of a Docker image
 
 Even if the variable is still defined, you can override it by passing it on the command line:
 
-<Terminal>
+<Terminal typewriter>
 $ make yamllint PHP_VERSION=8.1
 </Terminal>
 

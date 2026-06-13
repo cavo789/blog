@@ -81,7 +81,7 @@ Our listener logic. `SampleListener` will receive the `SampleEvent` as a paramet
 
 If we run `curl localhost` in the console, we'll get the output below showing us it has worked perfectly as expected.
 
-<Terminal>
+<Terminal typewriter>
 $ curl localhost
 
 FIRSTNAME is Georges
@@ -93,7 +93,7 @@ If we edit back the `app/Providers/EventServiceProvider.php` file and comment th
 
 <Snippet filename="app/Providers/EventServiceProvider.php" source="./files/EventServiceProvider.part2.php" />
 
-<Terminal>
+<Terminal typewriter>
 $ curl localhost
 
 FIRSTNAME is John

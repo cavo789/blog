@@ -57,7 +57,7 @@ Unlike the Docker Oracle Database Server image, we don't need any credentials fo
 
 Simply run `docker pull container-registry.oracle.com/database/ords-developer:latest` to get it. It's a 2.2 GB file size image.
 
-<Terminal>
+<Terminal typewriter>
 $ docker pull container-registry.oracle.com/database/ords-developer:latest
 </Terminal>
 
@@ -73,7 +73,7 @@ ORDS requires two folders, one for what he called **his secrets** and one for **
 
 In order to be able to start ORDS, the official doc states we need to create a file called `conn_string.txt` with our connection string. In our use case, here is the file we need to create:
 
-<Terminal>
+<Terminal typewriter>
 $ mkdir -p ords_secrets
 $ chmod 777 ords_secrets
 $ echo 'CONN_STRING=SYS/admin@oracle-db:1521/ORCLPDB1' > ords_secrets/conn_string.txt
@@ -96,7 +96,7 @@ For our needs, we just want ORDS; we don't need APEX. For this purpose, we'll in
 
 To create our ORDS (without APEX) container; please run:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -d --rm \
     --name oracle-ords \
     --network oracle \
@@ -128,7 +128,7 @@ Once ORDS has been installed as done here above, if you need to rerun the ORDS c
 
 If you need to run the container once more; here is the command line:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -d --rm \
     --name oracle-ords \
     --network oracle \

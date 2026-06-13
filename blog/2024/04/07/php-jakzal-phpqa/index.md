@@ -88,7 +88,7 @@ Think about adding exclusions like `--exclude vendor` not to scan the code that 
 
 As you can see below, in less than two seconds, the tool has checked 823 files of my codebase. Pretty fast.
 
-<Terminal>
+<Terminal typewriter>
 PHP 8.3.3 | 10 parallel jobs
 ............................................................  60/823 (7 %)
 ............................................................ 120/823 (14 %)

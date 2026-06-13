@@ -44,7 +44,7 @@ Let's play...
 
 First, we'll create a temporary folder and grab a copy of the script:
 
-<Terminal>
+<Terminal typewriter>
 $ mkdir -p /tmp/aesecure_quickscan && cd $_
 $ curl https://raw.githubusercontent.com/cavo789/aesecure_quickscan/master/aesecure_quickscan.php -o index.php
 </Terminal>

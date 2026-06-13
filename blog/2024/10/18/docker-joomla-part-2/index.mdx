@@ -83,7 +83,7 @@ In recent months, the name of the file to be used has changed from `compose.yaml
 
 Please create a new folder (f.i. `mkdir /tmp/joomla && cd $_`) on your hard disk and create the `compose.yaml` file with this content:
 
-<Terminal>$ mkdir /tmp/joomla && cd $_</Terminal>
+<Terminal typewriter>$ mkdir /tmp/joomla && cd $_</Terminal>
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
@@ -117,9 +117,9 @@ To be able to use a `makefile`, you should have `GNU Make` binary installed on y
 <AlertBox variant="caution" title="">
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
 
-<Terminal>$ which make</Terminal>
+<Terminal typewriter>$ which make</Terminal>
 
-<Terminal>$ sudo apt-get update && sudo apt-get install make</Terminal>
+<Terminal typewriter>$ sudo apt-get update && sudo apt-get install make</Terminal>
 
 </AlertBox>
 
@@ -159,7 +159,7 @@ We're ready. Just before you begin, please check that you have the three files b
   <Snippet filename="makefile" source="./files/makefile" />
 </ProjectSetup>
 
-<Terminal>
+<Terminal typewriter>
 $ ls -alh
 
 total 20K
@@ -175,7 +175,7 @@ drwxrwxrwt 13 root root 4.0K Jan 4 16:10 ..
 
 By running `make config` (`config` is an action we've defined in our `makefile`), we can display the configuration of our project on the screen _(just display, nothing is fired)_.
 
-<Terminal>$ make config</Terminal>
+<Terminal typewriter>$ make config</Terminal>
 
 We should see a lot of technical information starting with something like:
 
@@ -201,7 +201,7 @@ The answer is "Yes" and `make up` will do the magic.
 
 In your console, just run `make up`, and please wait one minute. The very first time, you'll get something like this in your console:
 
-<Terminal>
+<Terminal typewriter>
 $ make up
 
 UID=$(id -u) GID=$(id -g) docker compose up --detach
@@ -220,7 +220,7 @@ What does that mean? Docker has retrieved (_pulled_) from the Internet our `joom
 
 By running then command below (or just `docker container list` to get all the columns), you'll get the list of running containers:
 
-<Terminal>
+<Terminal typewriter>
 $ {`docker container list --all --format "table {{.Image}}\\t{{.Names}}\\t{{.Status}}\\t{{.Ports}}"`}
 
 IMAGE NAMES STATUS PORTS
@@ -247,19 +247,19 @@ We've created our Joomla website by **just running one command**. Don't trust? O
 
 The opposite command to `make up` is `make stop`. The `stop` action will stop our Joomla and MySQL containers (read `make them sleeping`) but without removing files (your site and your database) from your hard drive. By running `make up` again, you'll retrieve them. `up` and `stop` are like a light switch.
 
-<Terminal>$ make stop</Terminal>
+<Terminal typewriter>$ make stop</Terminal>
 
 ### ... or let's ask him to remove containers (free more memory)
 
 The `make down` command will stop the containers as well remove them. But in our case, we'll still have files on our hard disk so we'll not lose our website.
 
-<Terminal>$ make down</Terminal>
+<Terminal typewriter>$ make down</Terminal>
 
 ### ... or let's ask him to suicide (remove containers and files)
 
 The `make reset` command will stop containers but, too, remove files on the disk.
 
-<Terminal>$ make reset</Terminal>
+<Terminal typewriter>$ make reset</Terminal>
 
 <AlertBox variant="danger" title="">
 By running `make reset`, you'll lose everything and be ready to create a new fresh website.
@@ -270,7 +270,7 @@ By running `make reset`, you'll lose everything and be ready to create a new fre
 
 Sometimes, if something goes wrong, it's nice to have access to the Docker logs. Simply run `make log` to achieve this.
 
-<Terminal>$ make log</Terminal>
+<Terminal typewriter>$ make log</Terminal>
 
 Logs will look like this:
 
@@ -316,13 +316,13 @@ joomla-app  | 172.19.0.1 - - [04/Oct/2024:06:57:36 +0000] "POST /installation/in
 
 Once `make up` has been fired and your containers in a `Up` state, our Joomla site is ready.
 
-<Terminal>$ make up</Terminal>
+<Terminal typewriter>$ make up</Terminal>
 
 You will need some information like credentials for the database; this is why the `make start` screen was defined.
 
 Please run `make start` in console. You'll get a screen like the one below:
 
-<Terminal>$ make start</Terminal>
+<Terminal typewriter>$ make start</Terminal>
 
 ```none
 To start your site, please jump to http://127.0.0.1:8080
@@ -436,7 +436,7 @@ As you can see, we've configured some `JOOMLA_ADMIN_xxx` keys and set `JOOMLA_SI
 
 Once you've updated the three files; just run `make reset` (to remove our previous site if any) then run `make up` to create a new one. Finally, run `make start` to show a list of important variables:
 
-<Terminal>$ make reset && make up && make start</Terminal>
+<Terminal typewriter>$ make reset && make up && make start</Terminal>
 
 ```none
 To start your site, please jump to http://127.0.0.1:8080
@@ -483,7 +483,7 @@ Let's try a real-world example: we are a small web agency and we wish to use Doc
 
 Please create a structure like below i.e. `cd /tmp/joomla && mkdir project_1 project_2 project_3`.
 
-<Terminal>$ cd /tmp/joomla && mkdir project_1 project_2 project_3</Terminal>
+<Terminal typewriter>$ cd /tmp/joomla && mkdir project_1 project_2 project_3</Terminal>
 
 Then go back to the _Updated compose.yaml_ chapter and create the `compose.yaml` file in both the three projects' folder. Do the same for the `.env` and the `makefile`.
 
@@ -511,7 +511,7 @@ One directory by project and, again, our three files.
 <AlertBox variant="note" title="">
 The `tree` command isn't native on Linux. If you wish to install it, just run `sudo apt-get update && sudo apt-get install tree`.
 
-<Terminal>$ sudo apt-get update && sudo apt-get install tree</Terminal>
+<Terminal typewriter>$ sudo apt-get update && sudo apt-get install tree</Terminal>
 
 </AlertBox>
 
@@ -563,7 +563,7 @@ Do the same changes as for project 1 but just replace `1` by `2`:
 
 Save the file and run `make up` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
 
-<Terminal>$ make up</Terminal>
+<Terminal typewriter>$ make up</Terminal>
 
 ![Our two Joomla projects are running](./images/project_1_2.webp)
 
@@ -589,7 +589,7 @@ This time, we'll use `3` as suffixes:
 
 Save the file and run `make up && make start` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
 
-<Terminal>$ make up && make start</Terminal>
+<Terminal typewriter>$ make up && make start</Terminal>
 
 ![Our three Joomla projects are active at the same time on our development machine](./images/project_1_2_3.webp)
 
@@ -604,14 +604,14 @@ In fact, nothing surprising, it's normal with Docker: everything is isolated in 
 
 If I'm located in my `/tmp/joomla` folder; I can start my three projects at once like this:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
   $ cd project_1 && make up && cd ../project_2 && make up && cd ../project_3 &&
   make up
 </Terminal>
 
 Here is something you can get:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ cd project_1
 
 $ make up
@@ -658,7 +658,7 @@ But? Did I need to be able to work on the three projects at the same time??? Pro
 
 In the console, just run `make stop` in folder project 1 and 3 by, running `( cd project_1 ; make stop ; cd ../project_3 ; make stop)`. We'll thus stop (not remove; just freeze and release memory) our first and third project.
 
-<Terminal>
+<Terminal typewriter>
   $ ( cd project_1 ; make stop ; cd ../project_3 ; make stop )
 </Terminal>
 
@@ -671,7 +671,7 @@ In our example here, we've just kept the second project so we can still work on 
 
 Just run `make up` again in f.i. folder `project_1` to make the site back to life. Or, if you prefer the GUI, in Docker Desktop, just click on the `Start` button:
 
-<Terminal>$ ( cd project_1 && make up )</Terminal>
+<Terminal typewriter>$ ( cd project_1 && make up )</Terminal>
 
 ![Starting a container in Docker Desktop](./images/docker_desktop_start.webp)
 

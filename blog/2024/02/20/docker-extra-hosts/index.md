@@ -37,7 +37,7 @@ Please then create a `index.php` file in that folder with this content:
 
 Here is the content of your current directory:
 
-<Terminal>
+<Terminal typewriter>
 $ pwd
 /tmp/network
 
@@ -50,7 +50,7 @@ drwxrwxrwt 23 root       root       908K Feb 20 18:15 ..
 
 Since we need a Docker network, please create one:
 
-<Terminal>
+<Terminal typewriter>
 $ docker network create my_network
 1df43879fbfc2b328bf36f9205c68168e45a88cea481bc244fab94ff04486da7
 </Terminal>
@@ -75,7 +75,7 @@ And a second file called `compose.yaml` with this content:
 
 To make things clear, here is the content of our current directory:
 
-<Terminal>
+<Terminal typewriter>
 $ ls -alh
 total 920K
 drwxr-xr-x  2 christophe christophe 4.0K Feb 20 18:15 .
@@ -89,7 +89,7 @@ We need to create our image. To do this, simply run `docker compose build`.
 
 Then we'll start an interactive bash shell in our second container and we'll try to access to our local website:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose run -it --rm --entrypoint /bin/sh my_second_container
 
 $ curl http://127.0.0.1:8080
@@ -123,7 +123,7 @@ But, there is something else to do now: we need to obtain the **Gateway IP addre
 
 Back on your machine (not from inside the container), please run:
 
-<Terminal>
+<Terminal typewriter>
 $ {`docker network inspect -f '\{\{json .IPAM.Config}}' 'my_network'`}
 [\{"Subnet":"172.20.0.0/16","Gateway":"172.20.0.1"}]
 </Terminal>
@@ -134,7 +134,7 @@ The IP we need is `172.20.0.1` (`Gateway`) as illustrated above.
 
 Now, we can try again, please start an interface shell once more. It'll still not work with the local `127.0.0.1` IP but well, now, using the **Gateway IP address of the network**:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose run -it --rm --entrypoint /bin/sh my_second_container
 
 $ curl http://127.0.0.1:8080
@@ -168,7 +168,7 @@ and thus, on your host, you're not using `http://127.0.0.1:8080` but `http://mys
 
 If we try to access it from inside the second container, it didn't work:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose run -it --rm --entrypoint /bin/sh my_second_container
 
 $ curl http://my_site.local:8080
@@ -177,7 +177,7 @@ curl: (6) Could not resolve host: my_site.local
 
 And **this is normal** since `my_site.local` is an alias defined on your host machine; not in the container:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose run -it --rm --entrypoint /bin/sh my_second_container
 
 $ cat /etc/hosts
@@ -196,7 +196,7 @@ The last thing we need to do in this case is to edit our `compose.yaml` file and
 
 Now, we can jump in the container for the last time, check the `/etc/hosts` file, we can now see our alias and thus, by running `curl http://mysite.local:8080` it will work.
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose run -it --rm --entrypoint /bin/sh my_second_container
 
 $ cat /etc/hosts

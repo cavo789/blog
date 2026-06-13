@@ -43,7 +43,7 @@ To illustrate this, simply create a file called f.i. `test.sh` with this content
 
 Using the `.env` file provided here above, we'll obtain this output:
 
-<Terminal>
+<Terminal typewriter>
 $ ./test.sh
 Christophe Avonture (christophe@me.com)
 </Terminal>

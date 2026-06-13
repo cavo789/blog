@@ -91,7 +91,7 @@ If you don't have the **Terminal** screen like on the image above, look at the r
 
 So, look at the list of commands you can see on the Terminal, there is one for the preview. Just run it as suggested so please run `quarto preview . --port 5931 --host 0.0.0.0`.
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 quarto preview . --port 5931 --host 0.0.0.0
 </Terminal>
 
@@ -121,7 +121,7 @@ Now that your slideshow is running, just go back in your Terminal (press <kbd>CT
 
 There, run `decktape` in the Terminal to generate a file called `slides.pdf`:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ decktape
 </Terminal>
 
@@ -131,7 +131,7 @@ This will generate a nice PDF file (better than when using the PDF export featur
 
 By running `quarto render . --output-dir build` you'll create a folder called ` build` with your slideshow there:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ quarto render . --output-dir build
 </Terminal>
 

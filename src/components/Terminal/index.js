@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import clsx from "clsx";
 import Icon from "./icon.svg";
 import styles from "./styles.module.css";
@@ -21,6 +21,15 @@ function getCopyText(children) {
     }
   }
   return text;
+}
+
+// Auto-scales speed based on line count so long terminals don't drag on.
+// Explicit props always take priority over these defaults.
+function autoSpeed(lineCount) {
+  if (lineCount <= 5)  return { speed: 40, delay: 400 };
+  if (lineCount <= 10) return { speed: 25, delay: 200 };
+  if (lineCount <= 20) return { speed: 20, delay: 150 };
+  return                      { speed: 12, delay: 100 };
 }
 
 const CopyIcon = (props) => (
@@ -46,27 +55,62 @@ export default function Terminal({
   title,
   wrap = true,
   typewriter = false,
-  typewriterSpeed = 40,
-  typewriterLineDelay = 400,
+  typewriterSpeed,
+  typewriterLineDelay,
 }) {
   const displayTitle = title || "user@machine: ~/yourproject";
+  const containerRef = useRef(null);
   const [copied, setCopied] = useState(false);
 
   // Extract lines once from children text content
   const animLines = useMemo(
     () => (typewriter ? getCopyText(children).split("\n") : []),
+    // children is static MDX content — recompute only if typewriter flag changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [typewriter]
   );
+
+  // Effective speed: explicit prop wins; otherwise auto-scale to line count
+  const { speed: effectiveSpeed, delay: effectiveDelay } = useMemo(() => {
+    const auto = autoSpeed(animLines.length);
+    return {
+      speed: typewriterSpeed ?? auto.speed,
+      delay: typewriterLineDelay ?? auto.delay,
+    };
+  }, [animLines.length, typewriterSpeed, typewriterLineDelay]);
+
+  // Start animation only when the terminal scrolls into view
+  const [hasBeenVisible, setHasBeenVisible] = useState(false);
+
+  useEffect(() => {
+    if (!typewriter) return;
+    const el = containerRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      // Fallback for environments without IntersectionObserver (SSR, old browsers)
+      setHasBeenVisible(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasBeenVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [typewriter]);
 
   const [revealedLines, setRevealedLines] = useState([]);
   const [lineIdx, setLineIdx] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
   const [animDone, setAnimDone] = useState(false);
 
-  // Animation tick: command lines type char-by-char; output lines appear whole
+  // Animation tick — only runs once the component is visible
   useEffect(() => {
-    if (!typewriter || animDone) return;
+    if (!typewriter || !hasBeenVisible || animDone) return;
 
     if (lineIdx >= animLines.length) {
       setAnimDone(true);
@@ -77,19 +121,19 @@ export default function Terminal({
     const isCommand = /^\s*[$#]/.test(line);
 
     if (isCommand && charIdx < line.length) {
-      const t = setTimeout(() => setCharIdx((c) => c + 1), typewriterSpeed);
+      const t = setTimeout(() => setCharIdx((c) => c + 1), effectiveSpeed);
       return () => clearTimeout(t);
     }
 
-    // Line complete — pause, then advance to next line
-    const pause = line.trim() === "" ? 80 : typewriterLineDelay;
+    // Line complete — pause then advance
+    const pause = line.trim() === "" ? 80 : effectiveDelay;
     const t = setTimeout(() => {
       setRevealedLines((prev) => [...prev, line]);
       setLineIdx((l) => l + 1);
       setCharIdx(0);
     }, pause);
     return () => clearTimeout(t);
-  }, [typewriter, animDone, lineIdx, charIdx, animLines, typewriterSpeed, typewriterLineDelay]);
+  }, [typewriter, hasBeenVisible, animDone, lineIdx, charIdx, animLines, effectiveSpeed, effectiveDelay]);
 
   const skipAnimation = useCallback(() => {
     if (!typewriter || animDone) return;
@@ -115,7 +159,6 @@ export default function Terminal({
     }
   }, [copied]);
 
-  // Text shown during animation: revealed lines + current partial line
   const animDisplay = useMemo(() => {
     if (!typewriter || animDone) return null;
     const partial = animLines[lineIdx]?.slice(0, charIdx) ?? "";
@@ -126,6 +169,7 @@ export default function Terminal({
 
   return (
     <div
+      ref={containerRef}
       className={styles.terminal}
       onClick={skipAnimation}
       style={isAnimating ? { cursor: "pointer" } : undefined}
@@ -169,7 +213,7 @@ export default function Terminal({
           { [styles.copied]: copied }
         )}
         onClick={(e) => {
-          e.stopPropagation(); // don't trigger skip
+          e.stopPropagation();
           handleCopy();
         }}
       >
@@ -187,10 +231,10 @@ Terminal.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
   wrap: PropTypes.bool,
-  /** Enables typewriter animation — command lines ($/#) are typed char-by-char, output lines appear whole */
+  /** Enables typewriter animation. Command lines ($/#) typed char-by-char; output lines appear whole. Click to skip. */
   typewriter: PropTypes.bool,
-  /** Milliseconds per character for command lines (default: 40) */
+  /** ms per character on command lines. Omit to auto-scale based on line count. */
   typewriterSpeed: PropTypes.number,
-  /** Milliseconds to pause before revealing each output line (default: 400) */
+  /** ms before each output line appears. Omit to auto-scale based on line count. */
   typewriterLineDelay: PropTypes.number,
 };

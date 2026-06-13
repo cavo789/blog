@@ -58,7 +58,7 @@ One for the deploy and a second one to extend the first with additional tools an
 
 Please create a new folder in your temporary folder for our example.
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ mkdir -p /tmp/docker-prod-devcontainer && cd $_
 </Terminal>
 
@@ -162,7 +162,7 @@ So at this point, our project looks like this i.e. we've five files.
 
 Jump in a Linux console and run the command below to see if everything is fine i.e. if there are no error and f.i. our `.env` file where we've specified the version to use for Python is well retrieved and used.
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose config
 </Terminal>
 
@@ -179,7 +179,7 @@ Now, we'll build and create the container by running the command below.
 <AlertBox variant="highlyImportant" title="EXTREMELY IMPORTANT - WE HAVE TO BUILD THE IMAGE FIRST">
 Because our future devcontainer will be derived from the production image, we MUST build it first:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose build
 
 </Terminal>
@@ -194,7 +194,7 @@ So, once again, before going further in this tutorial, please run `docker compos
 
 Now, we can create a container if we want by running the command below:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose up --detach
 
 </Terminal>
@@ -211,7 +211,7 @@ Since our demo project is a FastAPI Python application, simply start a browser a
 
 Optional, let's run a parametrized command into the container to see who is the current user:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker compose exec app /bin/sh -c 'echo "Container user ID is $(id -u) and his group ID is $(id -g)"'
 
 Container user ID is 1001 and his group ID is 1001
@@ -337,7 +337,7 @@ This part is pure optional, it's just to check if everything is correctly filled
 
 Jump in the `.devcontainer` folder (`cd .devcontainer`) and run this command:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose -f ../compose.yaml -f compose.yaml config
 
 </Terminal>
@@ -356,7 +356,7 @@ You can look at the configuration to see if everything looks correct i.e. if you
 
 Time to open the project using the Devcontainer feature of VSCode.
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ cd /tmp/docker-prod-devcontainer && code .
 
 </Terminal>
