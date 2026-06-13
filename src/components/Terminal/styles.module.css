@@ -140,5 +140,18 @@
 
 .terminal a {
   text-decoration: none;
-  color: var(--docusaurus-color-primary); /* Use a readable color from Docusaurus */
+  color: var(--docusaurus-color-primary);
+}
+
+/* Typewriter blinking cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor {
+  display: inline-block;
+  color: #00ff00;
+  animation: blink 1s step-end infinite;
+  font-family: "Fira Code", monospace;
 }

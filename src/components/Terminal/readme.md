@@ -8,6 +8,7 @@ A stylized terminal emulator UI for Docusaurus pages. Ideal for showcasing CLI c
 * 📝 Customizable terminal title
 * 💻 Styled code block for terminal content
 * 🎨 Theme-friendly layout using scoped CSS
+* ⌨️ Optional typewriter animation — command lines typed char-by-char, output appears whole
 
 ## Example
 
@@ -46,7 +47,31 @@ If no title is provided, the default is: `christophe@home: ~`
 | --- | --- | --- | --- | --- |
 | `children` | `React.ReactNode` | ✅ | — | Terminal content to display inside the code block |
 | `title` | string | ❌ | `christophe@home: ~` | Optional terminal title shown in the header |
-| `wrap` | boolean | ❌ | `true` | Enables word wrapping in the terminal body. Set to false to disable it. |
+| `wrap` | boolean | ❌ | `true` | Enables word wrapping in the terminal body. Set to `false` to disable it. |
+| `typewriter` | boolean | ❌ | `false` | Enables typewriter animation. Lines starting with `$` or `#` are typed char-by-char; output lines appear whole. Click the terminal to skip. |
+| `typewriterSpeed` | number | ❌ | `40` | Milliseconds per character for command lines. Lower = faster. |
+| `typewriterLineDelay` | number | ❌ | `400` | Milliseconds to pause before revealing each output line. |
+
+### Typewriter mode example
+
+```jsx
+<Terminal title="user@machine: ~/project" typewriter>
+  {`$ docker compose up -d
+[+] Running 3/3
+ ✔ Network myapp_default   Created
+ ✔ Container myapp-db-1    Started
+ ✔ Container myapp-web-1   Started`}
+</Terminal>
+```
+
+Faster typing with less pause between output lines:
+
+```jsx
+<Terminal typewriter typewriterSpeed={25} typewriterLineDelay={200}>
+  {`$ npm install
+added 342 packages in 4s`}
+</Terminal>
+```
 
 ## 💡 Command Detection
 
