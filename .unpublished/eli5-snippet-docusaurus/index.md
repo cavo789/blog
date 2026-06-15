@@ -1,9 +1,9 @@
 ---
 slug: docusaurus-eli5-snippet-tooltips
 title: "AI-Powered Code Tooltips in Docusaurus — Explain Like I'm Five"
-date: 2026-06-13
+date: 2026-12-31
 authors: [christophe]
-image: /img/v2/ai.webp
+image: /img/v2/ai_snippets.webp
 description: Add hover tooltips to tricky code lines in your Docusaurus blog — powered by Claude, generated at build time, zero browser latency. Covers the remark plugin, the React renderer, and the CLI script.
 mainTag: docusaurus
 tags:
@@ -11,13 +11,12 @@ tags:
   - component
   - react
   - ai
-  - claude
 language: en
 ai_assisted: true
 draft: true
 ---
 
-![AI-Powered Code Tooltips in Docusaurus — Explain Like I'm Five](/img/v2/ai.webp)
+![AI-Powered Code Tooltips in Docusaurus — Explain Like I'm Five](/img/v2/ai_snippets.webp)
 
 <TLDR>
 Your Dockerfile is crystal-clear to you. To a junior reader, `RUN npm ci --omit=dev` is gibberish. This article adds a `?` badge to the tricky lines of your `<Snippet>` code blocks. Hovering reveals a plain-English explanation generated once by Claude and stored in a JSON file — no API key in the browser, no hover latency. The whole system has three parts: a Node.js script that calls the Claude API and writes a `.eli5.json` file, a one-line extension to your existing `remark-snippet-loader` plugin that auto-injects the annotations, and a custom React renderer inside the `Snippet` component that overlays the badges. The author workflow is: run the script, commit the JSON, done.
@@ -383,8 +382,9 @@ The Snippet component needs two changes: a new `Eli5CodeBlock` sub-component tha
 When `eli5json` is present and `code` is a string, the component calls `Prism.highlight()` directly instead of delegating to Docusaurus's `<CodeBlock>`. Prism is already bundled by Docusaurus — importing it is safe and has no bundle-size cost.
 
 The highlighted HTML is split by newline. Each line becomes a `<div>` containing:
-- A `<span>` with the syntax-highlighted code (via `dangerouslySetInnerHTML` — safe because Prism only wraps tokens in `<span>` elements)
-- Either a `?` button (if the line has an explanation) or an invisible placeholder of the same width (to keep all lines aligned)
+
+* A `<span>` with the syntax-highlighted code (via `dangerouslySetInnerHTML` — safe because Prism only wraps tokens in `<span>` elements)
+* Either a `?` button (if the line has an explanation) or an invisible placeholder of the same width (to keep all lines aligned)
 
 The tooltip appears on hover via a `onMouseEnter`/`onMouseLeave` pair on the badge wrapper, and toggles on click for keyboard/mobile access. Focus/blur handlers make it keyboard-accessible without extra ARIA trickery.
 
