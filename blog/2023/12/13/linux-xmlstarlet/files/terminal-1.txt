@@ -1,0 +1,7 @@
+$ cat "data.xml" | xmlstarlet sel -t -v "/bookstore/book/title"
+
+Everyday Italian
+Harry Potter
+XQuery Kick Start
+Learning XML
+

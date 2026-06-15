@@ -1,0 +1,21 @@
+? What application platform does your project use? PHP with Apache
+? What version of PHP do you want to use? 8.2
+? What's the relative directory (with a leading .) for your app?
+? What local port do you want to use to access your server? 8080
+
+CREATED: .dockerignore
+CREATED: Dockerfile
+CREATED: compose.yaml
+CREATED: README.Docker.md
+
+✔ Your Docker files are ready!
+
+Take a moment to review them and tailor them to your application.
+
+If your application requires specific PHP extensions, you can follow the instructions in the Dockerfile to add them.
+
+When you're ready, start your application by running: docker compose up --build
+
+Your application will be available at http://localhost:8080
+
+Consult README.Docker.md for more information about using the generated files.

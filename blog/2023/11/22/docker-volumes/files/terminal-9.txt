@@ -1,0 +1,7 @@
+$ docker compose up --detach
+
+[+] Building 0.0s (0/0)                    docker:default
+[+] Running 3/3
+ ✔ Network demo_default  Created           0.2s
+ ✔ Volume "demo_data"    Created           0.1s
+ ✔ Container counter     Started

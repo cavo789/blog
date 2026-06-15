@@ -1,0 +1,5 @@
+$ yarn run swizzle @docusaurus/theme-classic BlogPostItem
+
+$ yarn run swizzle @docusaurus/theme-classic BlogPostItem/Header
+
+$ yarn run swizzle @docusaurus/theme-classic BlogPostItem/Header/Info

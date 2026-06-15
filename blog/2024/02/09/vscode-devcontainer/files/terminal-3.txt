@@ -1,0 +1,6 @@
+$ mkdir /tmp/devcontainer_php && cd $_
+
+$ curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/heads/main.tar.gz
+
+$ tar -xzvf php_devcontainer-main.tar.gz --strip-components 1 && rm -f php_devcontainer-main.tar.gz
+

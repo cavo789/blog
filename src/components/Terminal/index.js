@@ -194,8 +194,18 @@ export default function Terminal({
       >
         {isAnimating ? (
           <>
-            {animDisplay}
-            <span className={styles.cursor} aria-hidden="true">▋</span>
+            {/*
+             * Ghost: renders the real children invisibly so the <pre> immediately
+             * occupies its final height. Prevents page reflow on every typed line.
+             */}
+            <span className={styles.terminal_ghost} aria-hidden="true">
+              {children}
+            </span>
+            {/* Animated text overlaid on the ghost */}
+            <span className={styles.terminal_overlay}>
+              {animDisplay}
+              <span className={styles.cursor} aria-hidden="true">▋</span>
+            </span>
           </>
         ) : (
           children

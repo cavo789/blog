@@ -1,0 +1,5 @@
+$ php artisan | grep pest
+ pest
+  pest:dataset           Create a new dataset file
+  pest:install           Creates Pest resources in your current PHPUnit test suite
+  pest:test              Create a new test file

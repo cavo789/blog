@@ -107,42 +107,7 @@ And, last thing to do, once the container has been created, you can run all test
 
 I've **intentionally** created an error to illustrate some nice feature:
 
-<Terminal typewriter>
-$ make start
-
-{`docker exec -it demo_pest sh -c "WEBSITE=https://www.avonture.be vendor/bin/pest"
-
-  FAIL  Tests\Browser\HomepageTest
-  ✓ it loads the homepage                                                 3.00s
-  ✓ it displays my name somewhere                                         2.50s
-  ✓ it shows blog posts on the blog page                                  2.89s
-  ✓ it navigates to the blog from the homepage                            3.39s
-  ✓ it loads a specific blog post                                         3.09s
-  ✓ it displays the about page                                            2.68s
-  ⨯ it can search for a post                                              8.77s
-  ✓ it navigates to the archive and click on aeSecure QuickScan article   5.42s
-  ✓ it shows 404 for non-existent page                                    2.73s
-  ✓ it can load the robots.txt file                                       0.59s
-  ──────────────────────────────────────────────────────────────────────────────
-   FAILED  Tests\Browser\HomepageTest > it can search for a post
-  Expected to see text [Create our own Docusaurus React component] on the page initially with the url [https://www.avonture.be], but it was not found or not visible. A screenshot of the page has been saved to [Tests/Browser/Screenshots/it_can_search_for_a_post].
-
-  at tests/Browser/HomepageTest.php:39
-     35▕ it('can search for a post', function () {
-     36▕     visit(getenv('WEBSITE'))
-     37▕         ->click('.DocSearch-Button')
-     38▕         ->type('.DocSearch-Input', 'Bluesky')
-  ➜ 39▕         ->assertSee('Create our own Docusaurus React component');
-     40▕ });
-     41▕
-     42▕ it('navigates to the archive and click on aeSecure QuickScan article', function () {
-     43▕     visit(getenv('WEBSITE') . '/blog/archive')
-
-  Tests:    1 failed, 9 passed (11 assertions)
-  Duration: 35.46s
-
-make: *** [makefile:26: start] Error 1`}
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 As we can see, the test `it can search for a post` has failed while the previous ones have succeeded.
 
@@ -165,27 +130,7 @@ But we see `React component and provide a "Share on Bluesky" button` so let's up
 
 We don't need to build the image again neither to recreate the container; just run `make start` again.
 
-<Terminal typewriter>
-$ make start
-
-docker exec -it demo_pest sh -c "WEBSITE=https://www.avonture.be vendor/bin/pest"
-
-  PASS  Tests\Browser\HomepageTest
-  ✓ it loads the homepage                                                 2.39s
-  ✓ it displays my name somewhere                                         2.33s
-  ✓ it shows blog posts on the blog page                                  2.57s
-  ✓ it navigates to the blog from the homepage                            3.30s
-  ✓ it loads a specific blog post                                         2.79s
-  ✓ it displays the about page                                            2.47s
-  ✓ it can search for a post                                              3.51s
-  ✓ it navigates to the archive and click on aeSecure QuickScan article   2.69s
-  ✓ it shows 404 for non-existent page                                    2.68s
-  ✓ it can load the robots.txt file                                       0.59s
-
-  Tests:    10 passed (12 assertions)
-  Duration: 25.56s
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 Congratulations, we've just tested 10 features in less than 26 seconds.
 

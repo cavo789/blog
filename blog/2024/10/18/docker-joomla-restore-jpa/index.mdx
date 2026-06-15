@@ -47,13 +47,7 @@ At the end, we'll have a `make import` command that will start **[Akeeba Kicksta
 <AlertBox variant="info" title="Skipping the files creation process">
 In the next chapters, you'll need to create several files using copy/paste. If you wish go faster, just run the following commands to retrieve files from my [Github repo](https://github.com/cavo789/docker_joomla_restore) so you don't need to create them.
 
-<Terminal typewriter>
-  $ mkdir /tmp/joomla_restore && cd $_ $ curl -LOJ --silent
-  https://github.com/cavo789/docker_joomla_restore/archive/refs/tags/1.0.0.tar.gz
-  $ tar -xzvf docker_joomla_restore-1.0.0.tar.gz --strip-components 1 && rm -f
-  docker_joomla_restore-1.0.0.tar.gz $ tar -xzvf docker_joomla_restore.gz
-  --strip-components 1 && rm -f docker_joomla_restore.gz
-</Terminal>
+<Terminal typewriter source="./files/terminal-3.txt" />
 
 By following the instructions below, you'll create a xxx folder where you can copy all the files you need to restore a Joomla site using Docker. You can then proceed immediately to the “Run the import process” chapter, as the files are already in place.
 
@@ -135,21 +129,7 @@ The two files we need are called `en-GB.kickstart.ini` and `kickstart.php`.
 
 We're ready. Just before you begin, please check that you have all the required files (please run `ls -alh`):
 
-<Terminal typewriter>
-$ ls -alh
-
-Permissions Size User Group Date Modified Name
-drwxr-xr-x - christophe christophe 2024-10-18 13:30 .
-drwxrwxrwt - root root 2024-10-18 13:30 ..
-.rw-r--r-- 151 christophe christophe 2024-10-18 13:30 .env
-.rw-r--r-- 34M christophe christophe 2024-10-18 13:30 backup.jpa
-.rw-r--r-- 1.3k christophe christophe 2024-10-18 13:30 compose.yaml
-.rw-r--r-- 162 christophe christophe 2024-10-18 13:30 Dockerfile
-.rw-r--r-- 11k christophe christophe 2024-10-18 13:30 en-GB.kickstart.ini
-.rw-r--r-- 390k christophe christophe 2024-10-18 13:30 kickstart.php
-.rw-r--r-- 2.9k christophe christophe 2024-10-18 13:30 makefile
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 <AlertBox variant="info" title="Skipping the files creation process">
 If you've skipped file's creation earlier by downloading files from my repo; you'll have all the files listed here above.
@@ -177,22 +157,7 @@ For Windows (Powershell or DOS), please run these commands:
 
 For both users (Linux and Windows), you'll something like this output in the console:
 
-<Terminal typewriter>
-[+] Building 1.4s (7/7) FINISHED                                 docker:default
-=> [joomla internal] load build definition from Dockerfile                 0.0s
- => => transferring dockerfile: 200B                                       0.0s
- => [joomla internal] load metadata for docker.io/library/php:8.3-apache   1.2s
- => [joomla internal] load .dockerignore                                   0.0s
- => => transferring context: 2B                                            0.0s
- [...]
- => [joomla] resolving provenance for metadata file                        0.0s
-
-[+] Running 3/3
-✔ Network running-joomla-in-docker_joomla_network Created 0.0s
-✔ Container joomla-db Healthy 31.0s
-✔ Container joomla-app Started 31.3s
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 When finished, just start your browser and surf to `http://127.0.0.1:8080/kickstart.php` to start the restoration of your website using the **Akeeba Kickstart** wizard.
 

@@ -1,0 +1,6 @@
+$ docker container list
+
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+0798f8f25d2b joomla "/entrypoint.sh apac…" 8 minutes ago Up 5 minutes 0.0.0.0:8080->80/tcp joomla-joomla-1
+7b7fcd3809b0 mysql:8.0.13 "docker-entrypoint.s…" 8 minutes ago Up 7 minutes 3306/tcp, 33060/tcp joomla-joomladb-1
+

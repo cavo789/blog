@@ -40,13 +40,7 @@ $ docker compose up --detach
 
 Once everything has been downloaded and started, you can check you have two containers by running the following command:
 
-<Terminal typewriter>
-$ docker container list
-
-[...] IMAGE                         [...] NAMES
-[...] martialblog/limesurvey:latest [...] limesurvey-app
-[...] mysql:8.4                     [...] limesurvey-db
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 <AlertBox variant="info" title="The output above has been simplified">
 For clarity, the output of `docker container list` has been simplified here above; not all columns were mentioned in the article.

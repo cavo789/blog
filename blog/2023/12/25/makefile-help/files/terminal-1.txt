@@ -1,0 +1,14 @@
+Usage:
+  make \<target\>
+
+  help                  Show the help with the list of commands
+
+My project              Helpers to work with the application
+  bash                  Open an interactive shell in the Docker container
+
+Data quality            Code analysis tools
+  phan                  Run phan analysis
+  php-cs-fixer          Run php-cs-fixer
+
+Database management     Working with the database
+  phpmyadmin            Run phpmyadmin web interface

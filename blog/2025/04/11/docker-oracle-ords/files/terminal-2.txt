@@ -1,0 +1,8 @@
+$ docker run -d --rm \
+    --name oracle-ords \
+    --network oracle \
+    -p 8181:8181 \
+    -e IGNORE_APEX=TRUE \
+    -v ./ords_secrets/:/opt/oracle/variables \
+    -v ords_config:/etc/ords/config/ \
+    container-registry.oracle.com/database/ords-developer:latest

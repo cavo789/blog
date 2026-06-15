@@ -1,0 +1,5 @@
+$ cd /tmp
+git clone --filter=blob:none --sparse https://github.com/quarto-dev/quarto-examples
+cd quarto-examples
+git sparse-checkout set brand
+cd brand/brand-simple

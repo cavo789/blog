@@ -1,0 +1,7 @@
+$ ls -alh
+Permissions Size User       Group      Date Modified    Name
+drwxr-xr-x     - christophe christophe 2024-12-26 16:00 .docker
+drwxr-xr-x     - christophe christophe 2024-12-26 16:02 .pipeline
+drwxr-xr-x     - christophe christophe 2024-12-26 16:02 src
+.rw-r--r--    94 christophe christophe 2024-12-26 16:02 dagger.json
+.rw-------   10k christophe christophe 2024-12-26 16:02 LICENSE

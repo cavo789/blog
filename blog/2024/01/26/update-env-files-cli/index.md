@@ -46,16 +46,7 @@ Finally, the function is called like this: `updateEnv "APP_DEBUG" "false" ".env"
 
 Before seeing the function, like always, just create a sample file:
 
-<Terminal typewriter>
-$ mkdir -p /tmp/playing_env && cd $_
-$ echo 'APP_ENV = local' > .env
-$ echo 'APP_DEBUG = true' >> .env
-$ echo 'APP_KEY = 3445118442a942d1/afd37466fadd5223' >> .env
-$ echo 'APP_NAME = My application' >> .env
-$ echo 'CACHE_DRIVER = redis' >> .env
-$ echo 'DATABASE_TYPE = mysql' >> .env
-$ echo 'FORCE_HTTPS = false' >> .env
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 Now, we can run in our console:
 
@@ -92,13 +83,7 @@ Now, we can run in our console:
 
 The output will be, for this example:
 
-<Terminal typewriter>
-.env UPDATED APP_DEBUG = false
-.env UPDATED APP_ENV = production
-.env UPDATED APP_NAME = My application is running on production
-.env ADDED   CAN_REGISTER=false
-.env UPDATED FORCE_HTTPS = true
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 We can see four variables have been updated and one has been added (`CAN_REGISTER`).
 

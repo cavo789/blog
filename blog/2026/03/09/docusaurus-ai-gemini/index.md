@@ -65,13 +65,7 @@ In this implementation, the logic is spread across three components: `BlogPostIt
 
 Run the following commands in your terminal:
 
-<Terminal typewriter wrap={true}>
-$ yarn run swizzle @docusaurus/theme-classic BlogPostItem
-
-$ yarn run swizzle @docusaurus/theme-classic BlogPostItem/Header
-
-$ yarn run swizzle @docusaurus/theme-classic BlogPostItem/Header/Info
-</Terminal>
+<Terminal typewriter wrap={true} source="./files/terminal-1.txt" />
 
 This will copy the original theme files into your `src/theme` directory, ready for you to edit.
 

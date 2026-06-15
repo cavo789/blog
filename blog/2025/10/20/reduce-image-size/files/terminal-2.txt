@@ -1,0 +1,10 @@
+$ find . -type f -name "*.png" -printf '%h %s\n' | awk '\{sizes[$1]+=$2\} END \{for (d in sizes) printf "%s %.2f MB\n", d, sizes[d]/1024/1024\}' | sort -k2 -nr
+
+218M    total
+./2025/02/01/heimdall-dashboard/images 15.05 MB
+./2024/01/03/quarto-revealjs-tips/images 4.30 MB
+./2025/08/30/pest-functional/images 3.62 MB
+./2025/03/30/cypress/images 3.05 MB
+./2024/10/30/docker-python/images 3.04 MB
+./2024/03/30/linux-fzf-introduction/images 2.24 MB
+[...]

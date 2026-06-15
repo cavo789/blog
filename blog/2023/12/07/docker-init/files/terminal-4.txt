@@ -1,0 +1,22 @@
+$ docker init
+
+Welcome to the Docker Init CLI!
+
+This utility will walk you through creating the following files with sensible defaults for your project:
+  \- .dockerignore
+  \- Dockerfile
+  \- compose.yaml
+  \- README.Docker.md
+
+Let's get started!
+
+? What application platform does your project use?  [Use arrows to move, type to filter]
+  Go - suitable for a Go server application
+  Python - suitable for a Python server application
+  Node - suitable for a Node server application
+  Rust - suitable for a Rust server application
+  ASP.NET Core - suitable for an ASP.NET Core application
+\> PHP with Apache - suitable for a PHP web application
+  Other - general purpose starting point for containerizing your application
+  Don't see something you need? Let us know!
+  Quit

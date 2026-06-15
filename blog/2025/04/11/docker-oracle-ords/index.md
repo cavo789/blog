@@ -96,16 +96,7 @@ For our needs, we just want ORDS; we don't need APEX. For this purpose, we'll in
 
 To create our ORDS (without APEX) container; please run:
 
-<Terminal typewriter>
-$ docker run -d --rm \
-    --name oracle-ords \
-    --network oracle \
-    -p 8181:8181 \
-    -e IGNORE_APEX=TRUE \
-    -v ./ords_secrets/:/opt/oracle/variables \
-    -v ords_config:/etc/ords/config/ \
-    container-registry.oracle.com/database/ords-developer:latest
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 <AlertBox variant="info" title="The `docker run` explained">
 
@@ -128,14 +119,7 @@ Once ORDS has been installed as done here above, if you need to rerun the ORDS c
 
 If you need to run the container once more; here is the command line:
 
-<Terminal typewriter>
-$ docker run -d --rm \
-    --name oracle-ords \
-    --network oracle \
-    -p 8181:8181 \
-    -v ords_config:/etc/ords/config/ \
-    container-registry.oracle.com/database/ords-developer:latest
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 
 </AlertBox>

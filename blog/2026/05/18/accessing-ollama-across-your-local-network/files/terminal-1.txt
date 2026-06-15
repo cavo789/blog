@@ -1,0 +1,13 @@
+$ Pinging 192.168.0.218 with 32 bytes of data:
+
+Reply from 192.168.0.218: bytes=32 time&lt;1ms TTL=128
+Reply from 192.168.0.218: bytes=32 time&lt;1ms TTL=128
+Reply from 192.168.0.218: bytes=32 time=1ms TTL=128
+Reply from 192.168.0.218: bytes=32 time=1ms TTL=128
+
+Ping statistics for 192.168.0.218:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+
+Approximate round trip times in milliseconds:
+    Minimum = 0ms, Maximum = 1ms, Average = 0ms
+

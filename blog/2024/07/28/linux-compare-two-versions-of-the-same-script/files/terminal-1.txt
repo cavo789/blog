@@ -1,0 +1,10 @@
+{`
+(
+  FILE1=/tmp/bash/console.sh
+  FILE2=/tmp/bash/console_v2.sh
+  printf "\e[33;1m%-39s %s\e[0;1m\n" "Left side: \${FILE1}" "Right side: \${FILE2}"
+  diff --side-by-side --width 83 \
+    <(grep -P "^(function\s+.*)\(\)" "\${FILE1}" | awk '{print \$2}' | sort) \
+    <(grep -P "^(function\s+.*)\(\)" "\${FILE2}" | awk '{print \$2}' | sort)
+)
+`}

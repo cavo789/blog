@@ -1,0 +1,5 @@
+$ ls -alh data
+total 12K
+drwxr-xr-x 2 christophe christophe 4.0K Nov 22 10:56 .
+drwxr-xr-x 3 christophe christophe 4.0K Nov 22 10:54 ..
+-rw-r--r-- 1 christophe christophe    2 Nov 22 10:56 counter.txt

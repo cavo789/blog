@@ -46,13 +46,7 @@ For sure, if you've one, just jump in your project. Here, for this blog post, we
 
 By running the commands below in a console, you'll download just the `brand` folder from the `quarto-examples` project:
 
-<Terminal typewriter wrap={true}>
-$ cd /tmp
-git clone --filter=blob:none --sparse https://github.com/quarto-dev/quarto-examples
-cd quarto-examples
-git sparse-checkout set brand
-cd brand/brand-simple
-</Terminal>
+<Terminal typewriter wrap={true} source="./files/terminal-1.txt" />
 
 Run `code .` to open the project in VSCode and you'll get this:
 

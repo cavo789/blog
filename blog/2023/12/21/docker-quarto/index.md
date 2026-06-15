@@ -52,33 +52,7 @@ Create a new file called `Dockerfile` (there is no extension) with this content:
 
 This done, please run `docker build -t cavo789/quarto .` and after something like three minutes the first time, you'll get your own Docker image:
 
-<Terminal typewriter wrap={false} >
-$ docker build -t cavo789/quarto .
-[+] Building 183.3s (9/9) FINISHED                                                docker:default
- => [internal] load build definition from Dockerfile                                        0.1s
- => => transferring dockerfile: 1.80kB                                                      0.0s
- => [internal] load metadata for ghcr.io/quarto-dev/quarto:1.6.36                           0.7s
- => [internal] load .dockerignore                                                           0.0s
- => => transferring context: 2B                                                             0.0s
- => [stage-0 1/6] FROM ghcr.io/quarto-dev/quarto:1.6.36@sha256:7c800f23602e532de8d2e35de8  19.6s
- => => resolve ghcr.io/quarto-dev/quarto:1.6.36@sha256:7c800f23602e532de8d2e35de838e9f5331  0.0s
- => => sha256:7c800f23602e532de8d2e35de838e9f53310af381daa34cf3d733c05fd7dec72 955B / 955B  0.0s
- => => sha256:a9220a0c1eb7e69d971f705b026870f03e511a0c6a95ae0d1140d45089c2 1.73kB / 1.73kB  0.0s
- => => sha256:7478e0ac0f23f94b2f27848fbcdf804a670fbf8d4bab26df842d40a10c 30.44MB / 30.44MB  3.2s
- => => sha256:14a397168681603ca2ef7ec883ab375f79cc39ed6abfc602de3d16d 126.00MB / 126.00MB  13.0s
- => => sha256:682f5bc1f33ef91c217708dbd0f9c287f896d05632b47cdeb1ced02 130.07MB / 130.07MB  16.1s
- => => extracting sha256:7478e0ac0f23f94b2f27848fbcdf804a670fbf8d4bab26df842d40a10cd33059   1.8s
- => => extracting sha256:14a397168681603ca2ef7ec883ab375f79cc39ed6abfc602de3d16dc40197b37   0.7s
- => => extracting sha256:682f5bc1f33ef91c217708dbd0f9c287f896d05632b47cdeb1ced02166e3aa8d   3.2s
- => [stage-0 2/6] RUN --mount=type=cache,target=/var/cache/apt,rw     set -e -x &&     ap  79.5s
- => [stage-0 3/6] RUN set -e -x &&     mkdir -p /input                                      0.4s
- => [stage-0 4/6] RUN set -e -x &&     groupadd -g 1000 -o "quarto" &&     useradd -l -m -  0.6s
- => [stage-0 5/6] RUN set -e -x &&     quarto install tool tinytex --update-path &&     ~  80.4s
- => exporting to image                                                                      1.9s
- => => exporting layers                                                                     1.9s
- => => writing image sha256:f7222fdd5856beb8fb209a609fc9271a0f8f3a586449bc5d90a6b338e54453  0.0s
- => => naming to docker.io/cavo789/quarto                                                   0.0s
-</Terminal>
+<Terminal typewriter wrap={false}  source="./files/terminal-2.txt" />
 
 <AlertBox variant="info" title="Choose your own name">
 The previous instruction `docker build -t cavo789/quarto .` has created an image called `cavo789/quarto`. You can for sure choose a different name without any impact on the image.
@@ -135,41 +109,7 @@ As a reminder, the used Docker run command are (almost always the same):
 
 So, let's convert to PDF and run `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf` in your console.
 
-<Terminal typewriter>
-$ docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf
-pandoc
-  to: latex
-  output-file: test.tex
-  standalone: true
-  pdf-engine: xelatex
-  variables:
-    graphics: true
-    tables: true
-  default-image-extension: pdf
-
-metadata
-  documentclass: scrartcl
-  classoption:
-    - DIV=11
-    - numbers=noendperiod
-  papersize: letter
-  header-includes:
-    - \KOMAoption\{captions}\{tableheading}
-  block-headings: true
-
-Rendering PDF
-running xelatex - 1
-  This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex)
-   restricted \write18 enabled.
-  entering extended mode
-
-running xelatex - 2
-  This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex)
-   restricted \write18 enabled.
-  entering extended mode
-
-Output created: test.pdf
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 ![Your PDF file](./images/pdf_version.webp)
 

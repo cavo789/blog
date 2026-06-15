@@ -101,16 +101,7 @@ Click on the `Generate install script` below and copy/paste the script in a term
 
 To make things as clear as possible, here is my temporary folder content once I've run the generation script:
 
-<Terminal typewriter>
-cd /tmp/joomla
-
-$ ls -alh
-total 12K
-drwxr-xr-x 2 christophe christophe 4.0K Jan 4 15:31 .
-drwxrwxrwt 12 root root 4.0K Jan 4 15:31 ..
--rw-r--r-- 1 christophe christophe 279 Jan 4 15:31 compose.yaml
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-15.txt" />
 
 So, I just have one file, and this is the newly, created, `compose.yaml` file.
 
@@ -133,46 +124,11 @@ Docker will start downloading `joomla` and `joomladb`, the two services mentione
 
 You will obtain something like this, please wait until everything is downloaded.
 
-<Terminal typewriter>
-$ docker compose up --detach
-
-[+] Running 16/35
-⠹ joomladb 12 layers [⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀] 0B/0B Pulling 19.3s
-⠧ 177e7ef0df69 Waiting 15.8s
-⠧ cac25352c4c8 Waiting 15.8s
-⠧ 8585afabb40a Waiting 15.8s
-[...]
-⠹ joomla 21 layers [⣿⣿⣦⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣿⣿⣿⣿⣀⠀⠀] 94.59MB/155.9MB Pulling 19.3s
-✔ 578acb154839 Pull complete 11.3s
-✔ c053f6f43c12 Pull complete 11.9s
-⠋ 65cebbf4d847 Downloading [==============> ] 68.41MB/104.4MB 16.1s
-✔ 34045bc93960 Download complete 1.0s
-[...]
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-14.txt" />
 
 At the end, once images have been downloaded, the console will show something like this:
 
-<Terminal typewriter>
-$ docker compose up --detach
-
-[+] Running 35/35
-✔ joomladb 12 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿] 0B/0B Pulled 84.9s
-✔ 177e7ef0df69 Pull complete 26.9s
-✔ cac25352c4c8 Pull complete 27.5s
-✔ 8585afabb40a Pull complete 28.2s
-[...]
-✔ joomla 21 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿] 0B/0B Pulled 146.4s
-✔ 578acb154839 Pull complete 11.3s
-✔ c053f6f43c12 Pull complete 11.9s
-✔ 65cebbf4d847 Pull complete 31.2s
-[...]
-[+] Running 3/3
-✔ Network joomla_default Created 0.3s
-✔ Container joomla-joomladb-1 Started 52.9s
-✔ Container joomla-joomla-1 Started 38.8s
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-13.txt" />
 
 So, the two images have been downloaded then,
 
@@ -220,14 +176,7 @@ We won't be restarting your Docker containers yet. For now, the `kingsbridge` na
 
 If you're curious, you can run the `docker image list` command to get the list of Docker images already downloaded on your machine.
 
-<Terminal typewriter>
-$ docker image list
-
-REPOSITORY TAG IMAGE ID CREATED SIZE
-joomla latest 882b2151d890 2 days ago 663MB
-mysql 8.0.13 102816b1ee7d 4 years ago 486MB
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-12.txt" />
 
 Ok, so, Docker has downloaded Joomla (in its _latest_ version) and MySQL (version 8.0.13).
 
@@ -246,14 +195,7 @@ For example, to use Joomla version 5.3.3 with PHP 8.2, you would change the `ima
 
 We're almost done. Please run `docker container list` to get the list of containers created by Docker:
 
-<Terminal typewriter>
-$ docker container list
-
-CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
-0798f8f25d2b joomla "/entrypoint.sh apac…" 8 minutes ago Up 5 minutes 0.0.0.0:8080->80/tcp joomla-joomla-1
-7b7fcd3809b0 mysql:8.0.13 "docker-entrypoint.s…" 8 minutes ago Up 7 minutes 3306/tcp, 33060/tcp joomla-joomladb-1
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-11.txt" />
 
 We have two running containers (your two services). Pay attention to the `PORTS` column: your `joomla` container is listening on the port `8080` and your `mysql` container is listening on port `3306`.
 
@@ -321,17 +263,7 @@ In the previous chapter, we have installed Joomla so we should have Joomla on yo
 
 Let us verify by returning to our Linux console:
 
-<Terminal typewriter>
-$ pwd
-/tmp/joomla
-
-$ ls -alh
-total 12K
-drwxr-xr-x 2 christophe christophe 4.0K Jan 4 15:31 .
-drwxrwxrwt 12 root root 4.0K Jan 4 15:31 ..
--rw-r--r-- 1 christophe christophe 279 Jan 4 15:31 compose.yaml
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-10.txt" />
 
 Oh? Nothing... **Nothing has been downloaded in your folder.** You don't have Joomla on your computer. How is this possible?
 
@@ -341,14 +273,7 @@ We will discuss this later but yes, by default with Docker, everything happens i
 
 Still on your console, type again `docker container list`:
 
-<Terminal typewriter>
-$ docker container list
-
-CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
-0798f8f25d2b joomla "/entrypoint.sh apac…" 8 minutes ago Up 5 minutes 0.0.0.0:8080->80/tcp joomla-joomla-1
-7b7fcd3809b0 mysql:8.0.13 "docker-entrypoint.s…" 8 minutes ago Up 7 minutes 3306/tcp, 33060/tcp joomla-joomladb-1
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-9.txt" />
 
 Pay attention this time to the last column, called `NAMES`.
 
@@ -356,15 +281,7 @@ We have thus two containers, one named `joomla-joomla-1` and one name `joomla-jo
 
 We will stop them by running `docker compose down`:
 
-<Terminal typewriter>
-$ docker compose down
-
-[+] Running 3/3
-✔ Container joomla-joomla-1 Removed 2.6s
-✔ Container joomla-joomladb-1 Removed 4.2s
-✔ Network joomla Removed
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-8.txt" />
 
 If you go back to `http://localhost:8080` with your browser and refresh the page; the site didn't exist anymore.
 
@@ -436,135 +353,25 @@ The syntax `user: ${UID:-1000}:${GID:-1000}` means to use `1000` as default valu
 
 Just check your folder's content:
 
-<Terminal typewriter>
-$ pwd
-/tmp/joomla
-
-$ ls -alh
-total 20K
-drwxr-xr-x 4 christophe christophe 4.0K Jan 4 15:57 .
-drwxrwxrwt 12 root root 4.0K Jan 4 15:31 ..
--rw-r--r-- 1 christophe christophe 279 Jan 4 15:31 compose.yaml
-drwxr-xr-x 2 christophe christophe 4.0K Jan 4 15:57 db
-drwxr-xr-x 2 christophe christophe 4.0K Jan 4 15:57 site_joomla
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-7.txt" />
 
 Run Docker again but first, make sure the previous containers are removed (not only stopped): `docker compose kill`.
 
-<Terminal typewriter>
-$ docker compose kill
-
-[+] Killing 2/2
-✔ Container kingsbridge-db Killed 2.1s
-✔ Container kingsbridge-app Killed 1.5s
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-6.txt" />
 
 Please now run the following command and, as you can see, we'll first initialize UID and GID variables so we'll not meet permissions issues:
 
-<Terminal typewriter>
-$ UID=$(id -u) GID=$(id -g) docker compose up --detach
-
-[+] Running 3/3
-✔ Network kingsbridge_default Created 0.3s
-✔ Container kingsbridge-db Started 3.3s
-✔ Container kingsbridge-app Started
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-5.txt" />
 
 And you can, already, run `ls` again to see that, yes, your local `site_joomla` and `db` folders are populated now. This is the result of the `volumes` entry we have added in your `compose.yaml` file.
 
-<Terminal typewriter>
-$ pwd
-/tmp/joomla
-
-$ ls -alh site_joomla
-total 132K
-drwxr-xr-x 19 christophe christophe 4.0K Jan 4 15:59 .
-drwxr-xr-x 4 christophe christophe 4.0K Jan 4 15:57 ..
--rw-r--r-- 1 christophe christophe 6.8K Jan 4 15:59 .htaccess
--rw-r--r-- 1 christophe christophe 18K Nov 19 19:54 LICENSE.txt
--rw-r--r-- 1 christophe christophe 5.2K Nov 19 19:54 README.txt
-drwxr-xr-x 11 christophe christophe 4.0K Nov 19 19:54 administrator
-drwxr-xr-x 5 christophe christophe 4.0K Nov 19 19:54 api
-drwxr-xr-x 2 christophe christophe 4.0K Nov 19 19:54 cache
-drwxr-xr-x 2 christophe christophe 4.0K Nov 19 19:54 cli
-drwxr-xr-x 18 christophe christophe 4.0K Nov 19 19:54 components
-drwxr-xr-x 2 christophe christophe 4.0K Nov 19 19:54 files
--rw-r--r-- 1 christophe christophe 6.8K Nov 19 19:54 htaccess.txt
-drwxr-xr-x 5 christophe christophe 4.0K Nov 19 19:54 images
-drwxr-xr-x 2 christophe christophe 4.0K Nov 19 19:54 includes
--rw-r--r-- 1 christophe christophe 1.6K Nov 19 19:54 index.php
-drwxr-xr-x 10 christophe christophe 4.0K Nov 19 19:54 installation
-drwxr-xr-x 4 christophe christophe 4.0K Nov 19 19:54 language
-drwxr-xr-x 6 christophe christophe 4.0K Nov 19 19:54 layouts
-drwxr-xr-x 6 christophe christophe 4.0K Nov 19 19:57 libraries
-drwxr-xr-x 75 christophe christophe 4.0K Nov 19 19:58 media
-drwxr-xr-x 27 christophe christophe 4.0K Nov 19 19:54 modules
-drwxr-xr-x 26 christophe christophe 4.0K Nov 19 19:54 plugins
--rw-r--r-- 1 christophe christophe 764 Nov 19 19:54 robots.txt.dist
-drwxr-xr-x 5 christophe christophe 4.0K Nov 19 19:54 templates
-drwxr-xr-x 2 christophe christophe 4.0K Nov 19 19:54 tmp
--rw-r--r-- 1 christophe christophe 3.0K Nov 19 19:54 web.config.txt
-
-$ ls -alh db
-total 176M
-drwxr-x--- 2 christophe christophe 4.0K Jan 4 15:59 '#innodb_temp'
-drwxr-xr-x 7 christophe christophe 4.0K Jan 4 15:59 .
-drwxr-xr-x 4 christophe christophe 4.0K Jan 4 15:57 ..
--rw-r----- 1 christophe christophe 56 Jan 4 15:59 auto.cnf
--rw-r----- 1 christophe christophe 3.0M Jan 4 15:59 binlog.000001
--rw-r----- 1 christophe christophe 358 Jan 4 15:59 binlog.000002
--rw-r----- 1 christophe christophe 32 Jan 4 15:59 binlog.index
--rw------- 1 christophe christophe 1.7K Jan 4 15:59 ca-key.pem
--rw-r--r-- 1 christophe christophe 1.1K Jan 4 15:59 ca.pem
--rw-r--r-- 1 christophe christophe 1.1K Jan 4 15:59 client-cert.pem
--rw------- 1 christophe christophe 1.7K Jan 4 15:59 client-key.pem
--rw-r----- 1 christophe christophe 5.9K Jan 4 15:59 ib_buffer_pool
--rw-r----- 1 christophe christophe 48M Jan 4 15:59 ib_logfile0
--rw-r----- 1 christophe christophe 48M Jan 4 15:59 ib_logfile1
--rw-r----- 1 christophe christophe 12M Jan 4 15:59 ibdata1
--rw-r----- 1 christophe christophe 12M Jan 4 15:59 ibtmp1
-drwxr-x--- 2 christophe christophe 4.0K Jan 4 15:59 joomla
-drwxr-x--- 2 christophe christophe 4.0K Jan 4 15:59 mysql
--rw-r----- 1 christophe christophe 30M Jan 4 15:59 mysql.ibd
-drwxr-x--- 2 christophe christophe 4.0K Jan 4 15:59 performance_schema
--rw------- 1 christophe christophe 1.7K Jan 4 15:59 private_key.pem
--rw-r--r-- 1 christophe christophe 452 Jan 4 15:59 public_key.pem
--rw-r--r-- 1 christophe christophe 1.1K Jan 4 15:59 server-cert.pem
--rw------- 1 christophe christophe 1.7K Jan 4 15:59 server-key.pem
-drwxr-x--- 2 christophe christophe 4.0K Jan 4 15:59 sys
--rw-r----- 1 christophe christophe 12M Jan 4 15:59 undo_001
--rw-r----- 1 christophe christophe 10M Jan 4 15:59 undo_002
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-4.txt" />
 
 Back to your browser and continue the installation of Joomla like we did in the previous chapter.
 
 When the installation wizard has finished successfully, return to your Linux console and check if you can see the `configuration.php` file now.
 
-<Terminal typewriter>
-$ pwd
-/tmp/joomla
-
-$ ls site_joomla/configuration.php
-.rw-r--r-- 2.0k christophe christophe 6.8K Jan 4 15:59 .htaccess
-
-$ head -n 10 site_joomla/configuration.php
-{`<?php
-class JConfig \{
-        public \$offline = false;
-        public \$offline_message = 'Ce site est en maintenance.<br>Merci de revenir ultérieurement.';
-        public \$display_offline_message = 1;
-        public \$offline_image = '';
-        public \$sitename = 'Kingsbridge';
-        public \$editor = 'tinymce';
-        public \$captcha = '0';
-        public \$list_limit = 20;
-`}
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-3.txt" />
 
 Yes! This time we have stored your Joomla website on your computer.
 
@@ -607,39 +414,11 @@ Then, we jump in the Joomla Docker container by running `docker compose exec joo
 
 It can drive you mad but ... when entering in the Docker container, you're _no more_ on your computer, you're virtually in another computer, the container. In that _computer_, the current folder is thus `/var/www/html`. By typing `exit`, you will leave the container, go back to your computer and back in the `/tmp/joomla` folder.
 
-<Terminal typewriter>
-$ pwd
-/tmp/joomla
-
-$ docker compose exec joomla /bin/sh
-
-$ pwd
-/var/www/html
-
-$ exit
-
-$ pwd
-/tmp/joomla
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 Something else to try:
 
-<Terminal typewriter>
-$ php --version
-command not found: php
-
-$ docker compose exec joomla /bin/sh
-
-$ php --version
-PHP 8.3.29 (cli) (built: Dec 29 2025 23:29:22) (NTS)
-Copyright (c) The PHP Group
-Zend Engine v4.3.29, Copyright (c) Zend Technologies
-with Zend OPcache v8.3.29, Copyright (c), by Zend Technologies
-
-$ exit
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 So, on my computer (and probably on yours), by typing `php --version`, I got an error. That is correct. I don't have PHP on my computer. _I work daily with PHP for years and I don't have it on my machine._ 😄
 

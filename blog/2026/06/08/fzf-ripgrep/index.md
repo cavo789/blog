@@ -78,20 +78,7 @@ On some Ubuntu/Debian systems, the binary is named `batcat` instead of `bat`. If
 
 A quick comparison — searching for `TODO` in a Node.js project with `node_modules` present:
 
-<Terminal typewriter>
-$ time grep -rn "TODO" .
-
-... hundreds of results from node_modules ...
-
-real 0m4.2s
-
-$ time rg "TODO"
-src/auth/login.ts:47:  // TODO: add rate limiting
-src/api/users.ts:123:  // TODO: validate email format
-src/components/Header.tsx:8:  // TODO: make logo clickable
-real 0m0.08s
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 The speed and noise-reduction alone make it worth switching.
 

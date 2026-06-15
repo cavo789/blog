@@ -1,0 +1,14 @@
+[+] Building 1.4s (7/7) FINISHED                                 docker:default
+=> [joomla internal] load build definition from Dockerfile                 0.0s
+ => => transferring dockerfile: 200B                                       0.0s
+ => [joomla internal] load metadata for docker.io/library/php:8.3-apache   1.2s
+ => [joomla internal] load .dockerignore                                   0.0s
+ => => transferring context: 2B                                            0.0s
+ [...]
+ => [joomla] resolving provenance for metadata file                        0.0s
+
+[+] Running 3/3
+✔ Network running-joomla-in-docker_joomla_network Created 0.0s
+✔ Container joomla-db Healthy 31.0s
+✔ Container joomla-app Started 31.3s
+

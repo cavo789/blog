@@ -98,30 +98,7 @@ Now, to manually start all controls defined in the yaml file simply run `pre-com
 
 You'll see something like this on your console:
 
-<Terminal typewriter wrap={false}>
-[INFO] Initializing environment for https://github.com/pre-commit/pre-commit-hooks.
-[WARNING] repo `https://github.com/pre-commit/pre-commit-hooks` uses deprecated stage names (commit, push) which will be removed in a future version.  Hint: often `pre-commit autoupdate --repo https://github.com/pre-commit/pre-commit-hooks` will fix this.  if it does not -- consider reporting an issue to that repo.
-[INFO] Installing environment for https://github.com/pre-commit/pre-commit-hooks.
-[INFO] Once installed this environment will be reused.
-[INFO] This may take a few minutes...
-Check Yaml...........................................(no files to check)Skipped
-Fix End of Files.....................................(no files to check)Skipped
-Trim Trailing Whitespace.............................(no files to check)Skipped
-black................................................(no files to check)Skipped
-# git add .
-# pre-commit run --all-files
-Check Yaml...............................................................Passed
-Fix End of Files.........................................................Passed
-Trim Trailing Whitespace.................................................Passed
-black....................................................................Failed
-- hook id: black
-- files were modified by this hook
-
-reformatted main.py
-
-All done! ✨ 🍰 ✨
-1 file reformatted.
-</Terminal>
+<Terminal typewriter wrap={false} source="./files/terminal-1.txt" />
 
 Oh? Did you see the **reformatted main.py** line? Something was wrong with that file.
 

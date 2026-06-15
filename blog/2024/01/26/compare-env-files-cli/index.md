@@ -37,16 +37,7 @@ There are some tools that allow comparing two files like `diff` but not really t
 
 Let's try... Below we'll create the file `.env.example` with two lines then copy it to `.env` and just add a new line in `.env.example`. Finally, we'll sort `.env.example` so the order will differ with `.env`.
 
-<Terminal typewriter>
-$ mkdir -p /tmp/playing_env && cd $_
-$ echo 'APP_NAME = My application' > .env.example
-$ echo 'APP_ENV = local' >> .env.example
-$ cp .env.example .env
-$ echo 'APP_KEY = 5a0678afd37f4b8d/8d9451a7381266e3' >> .env
-$ echo 'APP_KEY = 3445118442a942d1/afd37466fadd5223' >> .env.example
-$ echo 'CACHE_DRIVER = redis' >> .env.example
-$ sort -o .env.example .env.example
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 Now that we have our two files with some differences, we can run this command:
 

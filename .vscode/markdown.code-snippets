@@ -4,33 +4,33 @@
     "body": [
       "<AlertBox variant=\"${1|note,tip,info,caution,danger,important,highlyImportant,coreConcept|}\" title=\"$2\">",
       "$3",
-      "</AlertBox>"
+      "</AlertBox>",
     ],
-    "description": "Docusaurus - AlertBox"
+    "description": "Docusaurus - AlertBox",
   },
   "docusaurus.alertbox": {
     "prefix": "AlertBox",
     "body": [
       "<AlertBox variant=\"${1|note,tip,info,caution,danger,important|}\" title=\"$2\">",
       "$3",
-      "</AlertBox>"
+      "</AlertBox>",
     ],
-    "description": "Docusaurus - AlertBox"
+    "description": "Docusaurus - AlertBox",
   },
   "docusaurus.coreconcept": {
     "prefix": "CoreConcept",
     "body": ["<CoreConcept title=\"$1\">", "$2", "</CoreConcept>"],
-    "description": "Docusaurus - Core concept"
+    "description": "Docusaurus - Core concept",
   },
   "docusaurus.link": {
     "prefix": "Link",
     "body": ["<Link to=\"/blog/$1\">$2</Link>"],
-    "description": "Docusaurus - Link"
+    "description": "Docusaurus - Link",
   },
   "docusaurus.highlyimportant": {
     "prefix": "HighlyImportant",
     "body": ["<HighlyImportant title=\"$1\">", "$2", "</HighlyImportant>"],
-    "description": "Docusaurus - Highly important part"
+    "description": "Docusaurus - Highly important part",
   },
   "docusaurus.prerequisites": {
     "prefix": "Prerequisites",
@@ -43,9 +43,9 @@
       "    \"prerequisite_2\",",
       "    \"prerequisite_3\",",
       "  ]}",
-      "/>"
+      "/>",
     ],
-    "description": "Docusaurus - Prerequisites"
+    "description": "Docusaurus - Prerequisites",
   },
   "docusaurus.remember": {
     "prefix": "Remember",
@@ -58,16 +58,16 @@
       "    \"remember_2\",",
       "    \"remember_3\",",
       "  ]}",
-      "/>"
+      "/>",
     ],
-    "description": "Docusaurus - Remember / Keep in mind"
+    "description": "Docusaurus - Remember / Keep in mind",
   },
   "docusaurus.snippet": {
     "prefix": "Snippet",
     "body": [
-      "<Snippet filename=\"$1\" source=\"./files/$1\" defaultOpen={false} />"
+      "<Snippet filename=\"$1\" source=\"./files/$1\" defaultOpen={false} />",
     ],
-    "description": "Docusaurus - Snippet"
+    "description": "Docusaurus - Snippet",
   },
   "docusaurus.steps": {
     "prefix": "Steps",
@@ -80,9 +80,9 @@
       "    'step2',",
       "    'step3',",
       "  ]}",
-      "/>"
+      "/>",
     ],
-    "description": "Docusaurus - Steps to follow"
+    "description": "Docusaurus - Steps to follow",
   },
   "docusaurus.tabs": {
     "prefix": "Tabs",
@@ -97,38 +97,38 @@
       "",
       "</TabItem>",
       "",
-      "</Tabs>"
+      "</Tabs>",
     ],
-    "description": "Docusaurus - Tabs"
+    "description": "Docusaurus - Tabs",
   },
   "docusaurus.terminal": {
     "prefix": "Terminal",
     "body": [
-      "<Terminal wrap={true}>",
-      "$ ${1:the_command_issued}",
-      "${2:the_output}",
-      "</Terminal>"
+      "<Terminal source=\"./files/$1\" wrap={true}>",
+      "$ ${2:the_command_issued}",
+      "${3:the_output}",
+      "</Terminal>",
     ],
-    "description": "Docusaurus - Tabs"
+    "description": "Docusaurus - Tabs",
   },
   "docusaurus.toc": {
     "prefix": "Toc",
     "body": ["<TOCInline toc={toc} />"],
-    "description": "Docusaurus - Inline table of contents"
+    "description": "Docusaurus - Inline table of contents",
   },
   "docusaurus.tree": {
     "prefix": "Tree",
     "body": [
       "```tree expanded=true showJSX=false debug=false title=\"$1\"",
       "",
-      "```"
+      "```",
     ],
-    "description": "Docusaurus - Treeview component"
+    "description": "Docusaurus - Treeview component",
   },
   "docusaurus.blueskyRecordKey": {
     "prefix": "blueskyRecordKey",
     "body": ["blueskyRecordKey: "],
-    "description": "Docusaurus - blueskyRecordKey YAML entry"
+    "description": "Docusaurus - blueskyRecordKey YAML entry",
   },
   "docusaurus.projectSetup": {
     "prefix": "ProjectSetup",
@@ -143,8 +143,8 @@
       "  </Guideline>",
       "  <Snippet filename=\"compose.yaml\" source=\"./files/compose.yaml\" />",
       "  <Snippet filename=\"Dockerfile\" source=\"./files/Dockerfile\" />",
-      "</ProjectSetup>"
+      "</ProjectSetup>",
     ],
-    "description": "Docusaurus - ProjectSetup component"
-  }
+    "description": "Docusaurus - ProjectSetup component",
+  },
 }

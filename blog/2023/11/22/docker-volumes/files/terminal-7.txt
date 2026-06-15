@@ -1,0 +1,36 @@
+$ docker compose exec counter /counter.sh
+Creating /data/counter.txt ...
+You have executed this script 1 times.
+
+$ docker compose exec counter /counter.sh
+You have executed this script 2 times.
+
+$ docker compose exec counter /counter.sh
+You have executed this script 3 times.
+
+$ docker compose exec counter /counter.sh
+You have executed this script 4 times.
+
+$ docker compose exec counter /counter.sh
+You have executed this script 5 times.
+
+$ docker compose exec counter /counter.sh
+You have executed this script 6 times.
+
+$ docker compose down ; docker compose up --detach
+[+] Running 2/2
+ ✔ Container counter     Removed    11.1s
+ ✔ Network demo_default  Removed     0.5s
+[+] Building 0.0s (0/0)    docker:default
+[+] Running 2/2
+ ✔ Network demo_default  Created     0.2s
+ ✔ Container counter     Started     0.7s
+
+$ docker compose exec counter /counter.sh
+You have executed this script 7 times.
+$ docker compose exec counter /counter.sh
+You have executed this script 8 times.
+$ docker compose exec counter /counter.sh
+You have executed this script 9 times.
+$ docker compose exec counter /counter.sh
+You have executed this script 10 times.

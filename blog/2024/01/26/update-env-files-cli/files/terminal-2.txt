@@ -1,0 +1,8 @@
+$ mkdir -p /tmp/playing_env && cd $_
+$ echo 'APP_ENV = local' > .env
+$ echo 'APP_DEBUG = true' >> .env
+$ echo 'APP_KEY = 3445118442a942d1/afd37466fadd5223' >> .env
+$ echo 'APP_NAME = My application' >> .env
+$ echo 'CACHE_DRIVER = redis' >> .env
+$ echo 'DATABASE_TYPE = mysql' >> .env
+$ echo 'FORCE_HTTPS = false' >> .env

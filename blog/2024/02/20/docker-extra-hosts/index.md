@@ -37,16 +37,7 @@ Please then create a `index.php` file in that folder with this content:
 
 Here is the content of your current directory:
 
-<Terminal typewriter>
-$ pwd
-/tmp/network
-
-$ ls -alh
-total 920K
-drwxr-xr-x  2 christophe christophe 4.0K Feb 20 18:15 .
-drwxrwxrwt 23 root       root       908K Feb 20 18:15 ..
--rw-r--r--  1 christophe christophe   18 Feb 20 18:15 index.php
-</Terminal>
+<Terminal typewriter source="./files/terminal-5.txt" />
 
 Since we need a Docker network, please create one:
 
@@ -75,15 +66,7 @@ And a second file called `compose.yaml` with this content:
 
 To make things clear, here is the content of our current directory:
 
-<Terminal typewriter>
-$ ls -alh
-total 920K
-drwxr-xr-x  2 christophe christophe 4.0K Feb 20 18:15 .
-drwxrwxrwt 23 root       root       908K Feb 20 18:15 ..
--rw-r--r--  1 christophe christophe   18 Feb 20 18:25 Dockerfile
--rw-r--r--  1 christophe christophe   18 Feb 20 18:25 compose.yaml
--rw-r--r--  1 christophe christophe   18 Feb 20 18:15 index.php
-</Terminal>
+<Terminal typewriter source="./files/terminal-4.txt" />
 
 We need to create our image. To do this, simply run `docker compose build`.
 
@@ -134,13 +117,7 @@ The IP we need is `172.20.0.1` (`Gateway`) as illustrated above.
 
 Now, we can try again, please start an interface shell once more. It'll still not work with the local `127.0.0.1` IP but well, now, using the **Gateway IP address of the network**:
 
-<Terminal typewriter>
-$ docker compose run -it --rm --entrypoint /bin/sh my_second_container
-
-$ curl http://127.0.0.1:8080
-curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect to server
-$ curl http://172.20.0.1:8080
-</Terminal>
+<Terminal typewriter source="./files/terminal-3.txt" />
 
 ```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
@@ -177,18 +154,7 @@ curl: (6) Could not resolve host: my_site.local
 
 And **this is normal** since `my_site.local` is an alias defined on your host machine; not in the container:
 
-<Terminal typewriter>
-$ docker compose run -it --rm --entrypoint /bin/sh my_second_container
-
-$ cat /etc/hosts
-127.0.0.1       localhost
-::1     localhost ip6-localhost ip6-loopback
-fe00::0 ip6-localnet
-ff00::0 ip6-mcastprefix
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-172.20.0.3      5e9e2debaf79
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 The last thing we need to do in this case is to edit our `compose.yaml` file and add the `extra_hosts` property:
 
@@ -196,21 +162,7 @@ The last thing we need to do in this case is to edit our `compose.yaml` file and
 
 Now, we can jump in the container for the last time, check the `/etc/hosts` file, we can now see our alias and thus, by running `curl http://mysite.local:8080` it will work.
 
-<Terminal typewriter>
-$ docker compose run -it --rm --entrypoint /bin/sh my_second_container
-
-$ cat /etc/hosts
-
-127.0.0.1       localhost
-::1     localhost ip6-localhost ip6-loopback
-fe00::0 ip6-localnet
-ff00::0 ip6-mcastprefix
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-172.20.0.1      my_site.local
-
-$ curl http://my_site.local:8080
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 ```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">

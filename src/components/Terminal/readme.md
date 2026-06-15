@@ -45,12 +45,34 @@ If no title is provided, the default is: `christophe@home: ~`
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
-| `children` | `React.ReactNode` | ✅ | — | Terminal content to display inside the code block |
-| `title` | string | ❌ | `christophe@home: ~` | Optional terminal title shown in the header |
+| `children` | `React.ReactNode` | ✅* | — | Terminal content to display. Not needed when `source` is used (plugin injects it automatically). |
+| `source` | string | ❌ | — | Path to an external `.txt` file relative to the article (e.g. `./files/terminal-1.txt`). The `remark-snippet-loader` plugin reads the file at build time and injects its content as children. Use this to keep long terminal outputs out of the MDX file. |
+| `title` | string | ❌ | `user@machine: ~/yourproject` | Optional terminal title shown in the header |
 | `wrap` | boolean | ❌ | `true` | Enables word wrapping in the terminal body. Set to `false` to disable it. |
 | `typewriter` | boolean | ❌ | `false` | Enables typewriter animation. Lines starting with `$` or `#` are typed char-by-char; output lines appear whole. Click the terminal to skip. Animation starts only when the terminal scrolls into view. |
 | `typewriterSpeed` | number | ❌ | auto | ms per character on command lines. Omit to auto-scale: ≤5 lines→40, ≤10→25, ≤20→20, >20→12. |
 | `typewriterLineDelay` | number | ❌ | auto | ms before each output line appears. Omit to auto-scale: ≤5 lines→400, ≤10→200, ≤20→150, >20→100. |
+
+\* `children` is required when `source` is not provided.
+
+### Loading content from a file (`source`)
+
+For long terminal outputs (typically > 5 lines), you can store the content in a separate `.txt` file and reference it with `source`. The `remark-snippet-loader` plugin injects the file content at build time — no runtime fetch involved.
+
+```jsx
+<Terminal typewriter source="./files/terminal-1.txt" />
+```
+
+The file `./files/terminal-1.txt` is co-located with the article (same `files/` subfolder used by `Snippet`). Its content is plain text, exactly as it would appear inline:
+
+```text
+$ docker compose up --detach
+[+] Running 2/2
+ ✔ Network demo_default  Created
+ ✔ Container counter     Started
+```
+
+All other props (`typewriter`, `title`, `wrap`, etc.) work exactly the same.
 
 ### Typewriter mode example
 

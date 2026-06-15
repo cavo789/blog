@@ -47,27 +47,7 @@ You're now in the `/tmp/docusaurus` folder.
 
 Copy/paste in the console instructions below, with the parentheses included. This will create a subfolder called `blog` with three markdown files in it, our three fake articles.
 
-<Terminal typewriter>
-(
-  $ mkdir -p blog && cd $_
-  $ echo '---' > 2024-04-26-welcome-world.md
-  $ echo 'title: Hello World!' >> 2024-04-26-welcome-world.md
-  $ echo '---' >> 2024-04-26-welcome-world.md
-  $ echo 'Hello world! Proud to be here!!!' >> 2024-04-26-welcome-world.md
-  $ echo '---' > 2024-04-27-my-first-post.md
-  $ echo 'title: My first blog post' >> 2024-04-27-my-first-post.md
-  $ echo '---' >> 2024-04-27-my-first-post.md
-  $ echo 'My first blog post' >> 2024-04-27-my-first-post.md
-  $ echo '' >> 2024-04-27-my-first-post.md
-  $ echo '![Unsplash random](https://source.unsplash.com/random?dinosaure)' >> 2024-04-27-my-first-post.md
-  $ echo '---' > 2024-04-28-my-second-post.md
-  $ echo 'title: My second blog post' >> 2024-04-28-my-second-post.md
-  $ echo '---' >> 2024-04-28-my-second-post.md
-  $ echo 'My second blog post' >> 2024-04-28-my-second-post.md
-  $ echo '' >> 2024-04-28-my-second-post.md
-  $ echo '![Unsplash random](https://source.unsplash.com/random?dinosaure)' >> 2024-04-28-my-second-post.md
-)
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 So, now, we've a dummy blog.
 
@@ -155,22 +135,7 @@ The `.dockerignore` file is then needed to keep the image smaller in size and to
 
 If you've followed the creation of the temporary folder as described here above, you should have the following situation: two files in the `/tmp/docusaurus` folder and three Markdown files in the `blog` subdirectory.
 
-<Terminal typewriter>
-$ ls -alhR
-drwxr-xr-x  3 root root 4.0K Apr 28 11:02 .
-drwxrwxrwt 25 root root  12K Apr 28 10:44 ..
--rw-r--r--  1 root root  155 Apr 27 09:47 .dockerignore
--rw-r--r--  1 root root 1.2K Apr 28 10:45 Dockerfile
-drwxr-xr-x  2 root root 4.0K Apr 28 11:02 blog
-.
-$ ls -alh ./blog:
-.
-drwxr-xr-x 2 root root 4.0K Apr 28 11:02 .
-drwxr-xr-x 3 root root 4.0K Apr 28 11:02 ..
--rw-r--r-- 1 root root   61 Apr 28 11:02 2024-04-26-welcome-world.md
--rw-r--r-- 1 root root  119 Apr 28 11:02 2024-04-27-my-first-post.md
--rw-r--r-- 1 root root  121 Apr 28 11:02 2024-04-28-my-second-post.md
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 ## Build our Docker image
 

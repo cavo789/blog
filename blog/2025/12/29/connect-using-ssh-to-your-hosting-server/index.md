@@ -111,17 +111,7 @@ Please run `ssh-copy-id -i ~/.ssh/id_ed25519_hosting -p 5022 john_doe@node30-eu.
 
 You'll be prompted to enter your password one last time.
 
-<Terminal typewriter wrap={true}>
-$ ssh-copy-id -i ~/.ssh/id_ed25519_hosting -p 5022 john_doe@node30-eu.n0c.com
-
-/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/john_doe/.ssh/id_ed25519_hosting.pub"
-/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
-/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-
-john_doe@node30-eu.n0c.com's password:
-
-Number of key(s) added: 1
-</Terminal>
+<Terminal typewriter wrap={true} source="./files/terminal-1.txt" />
 
 Make sure you see a message indicating that the key(s) were added successfully.
 

@@ -49,32 +49,7 @@ Just edit the `.cmd` file and you'll see how it works: you just need to run the 
 
 For instance, by running `cscript vbs_access_export.vbs C:\Christophe\db1.mdb` in a DOS console, you'll get this:
 
-<Terminal typewriter title="Powershell">
-Process database C:\Christophe\db1.mdb
-
-Exporting sources to C:\Christophe\src\db1.mdb\
-
-Export all forms
-        Export form 1/2 - frmCustomers to Forms\frmCustomers.frm
-        Export form 2/2 - frmInvoices to Forms\frmInvoices.frm
-
-Export all macros
-        Export macro 1/15 - mcrPrint to Macros\mcrPrint.txt
-        [...]
-
-Export all modules
-        Export module 1/2 - Helper to Modules\Helper.bas
-        Export module 2/2 - SQL_Server to Modules\SQL_Server.bas
-
-Export all queries
-        Export query 1/23 - qryCustomers to Queries\qryCustomers.sql
-        Export query 2/23 - qryInvoices to Queries\qryInvoices.sql
-        [...]
-
-Export all reports
-        Export report 1/8 - Invoice to Reports\Invoice.txt
-        [...]
-</Terminal>
+<Terminal typewriter title="Powershell" source="./files/terminal-1.txt" />
 
 Once finished, you'll have a subfolder called `src` with one file by object so, indirectly, you've a backup of your code 👌.
 

@@ -1,0 +1,24 @@
+$ cd project_1
+
+$ make up
+[+] Running 3/23
+✔ Network joomla_5_network Created 0.0s
+✔ Container joomla_5-db Healthy 11.5s
+✔ Container joomla_5-app Started 0.4s
+
+$ cd ../project_2
+
+$ make up
+[+] Running 3/3
+✔ Network joomla_4_network Created 0.0s
+✔ Container joomla_4-db Healthy 31.0s
+✔ Container joomla_4-app Started 31.4s
+
+$ cd ../project_3
+
+$ make up
+[+] Running 3/3
+✔ Network joomla_3_network Created 0.0s
+✔ Container joomla_3-db Healthy 62.7s
+✔ Container joomla_3-app Started 61.5s
+

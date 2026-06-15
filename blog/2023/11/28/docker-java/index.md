@@ -45,14 +45,7 @@ As a result of this command, your `Main.java` source will be compiled into the `
 
 By running `ls -alh` you can verify that, yes, the java script has been compiled into a `.class` file.
 
-<Terminal typewriter>
-$ ls -alh
-total 24K
-drwxr-xr-x  2 christophe christophe 4.0K Nov 22 15:02 .
-drwxrwxrwt 29 root       root        12K Nov 22 14:58 ..
--rw-r--r--  1 christophe christophe  414 Nov 22 15:02 Main.class
--rw-r--r--  1 christophe christophe  117 Nov 22 14:58 Main.java
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 <AlertBox variant="info" title="And without having to install something">
 Once again, you did not have to install or configure anything; just call the Docker image that works.

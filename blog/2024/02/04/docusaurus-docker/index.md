@@ -76,27 +76,7 @@ Just to have a bit of content, let's create a few articles automatically.
 
 Please run the following commands to create three Markdown files (our posts) in the `blog` folder:
 
-<Terminal typewriter>
-$ (
-  mkdir -p blog && cd $_
-  echo '---' > 2024-02-04-welcome-world.md
-  echo 'title: Hello World!' >> 2024-02-04-welcome-world.md
-  echo '---' >> 2024-02-04-welcome-world.md
-  echo 'Hello world! Proud to be here!!!' >> 2024-02-04-welcome-world.md
-  echo '---' > 2024-02-05-my-first-post.md
-  echo 'title: My first blog post' >> 2024-02-05-my-first-post.md
-  echo '---' >> 2024-02-05-my-first-post.md
-  echo 'My first blog post' >> 2024-02-05-my-first-post.md
-  echo '' >> 2024-02-05-my-first-post.md
-  echo '![Unsplash random](https://source.unsplash.com/random?dinosaure)' >> 2024-02-05-my-first-post.md
-  echo '---' > 2024-02-06-my-second-post.md
-  echo 'title: My second blog post' >> 2024-02-06-my-second-post.md
-  echo '---' >> 2024-02-06-my-second-post.md
-  echo 'My second blog post' >> 2024-02-06-my-second-post.md
-  echo '' >> 2024-02-06-my-second-post.md
-  echo '![Unsplash random](https://source.unsplash.com/random?dinosaure)' >> 2024-02-06-my-second-post.md
-)
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 So if you take the time to look at what we've now in our `/tmp/docusaurus` folder, here is the list of files / folders:
 

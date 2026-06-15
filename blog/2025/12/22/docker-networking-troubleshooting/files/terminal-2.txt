@@ -1,0 +1,7 @@
+$ ping provider
+
+PING provider (192.168.0.3) 56(84) bytes of data.
+64 bytes from provider (192.168.0.3): icmp_seq=1 ttl=64 time=0.176 ms
+64 bytes from provider (192.168.0.3): icmp_seq=2 ttl=64 time=0.064 ms
+64 bytes from provider (192.168.0.3): icmp_seq=3 ttl=64 time=0.064 ms
+64 bytes from provider (192.168.0.3): icmp_seq=4 ttl=64 time=0.068 ms

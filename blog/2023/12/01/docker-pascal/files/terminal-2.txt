@@ -1,0 +1,7 @@
+$ docker run -it --rm -v %CD%:/app -w /app signumtemporis/fpc:cross.x86_64-win64.slim Hello.pas
+Free Pascal Compiler version 3.2.2 [2021/12/10] for x86_64
+Copyright (c) 1993-2021 by Florian Klaempfl and others
+Target OS: Win64 for x64
+Compiling Hello.pas
+Linking Hello.exe
+2 lines compiled, 0.1 sec, 32432 bytes code, 1508 bytes data

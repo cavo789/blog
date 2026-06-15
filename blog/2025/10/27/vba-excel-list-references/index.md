@@ -39,19 +39,4 @@ That's all. The script will retrieve any `.xlam` or `.xlsm` files and do automat
 
 The output you'll get will be something like this:
 
-<Terminal typewriter>
-Processing files in C:\Christophe
-
-Get the list of references used in C:\Christophe\Application.xlsm
-
-    Name My_AddIn
-    Full Path: C:\Christophe\My_Addin\My_AddIn.xlam
-
-    Name A_Second_AddIn
-    Full Path: C:\Christophe\A_Second_AddIn\A_Second_AddIn.xlam
-
-Get the list of references used in C:\Christophe\Invoices.xlam
-
-    Name My_AddIn
-    Full Path: C:\Christophe\My_Addin\My_AddIn.xlam
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />

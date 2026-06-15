@@ -81,25 +81,13 @@ Our listener logic. `SampleListener` will receive the `SampleEvent` as a paramet
 
 If we run `curl localhost` in the console, we'll get the output below showing us it has worked perfectly as expected.
 
-<Terminal typewriter>
-$ curl localhost
-
-FIRSTNAME is Georges
-NAME      is Washington
-PSEUDO    is cavo789
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 If we edit back the `app/Providers/EventServiceProvider.php` file and comment the listener as illustrated below, our code will still work.
 
 <Snippet filename="app/Providers/EventServiceProvider.php" source="./files/EventServiceProvider.part2.php" />
 
-<Terminal typewriter>
-$ curl localhost
-
-FIRSTNAME is John
-NAME      is Doe
-PSEUDO    is cavo789
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 ## PHP example (not Laravel)
 

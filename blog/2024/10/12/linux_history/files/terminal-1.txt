@@ -1,0 +1,5 @@
+$ history -d 2130
+
+2129  history | grep -i "docker exec"
+2130  vi $HISTFILE
+2131  history | grep -i "docker exec"

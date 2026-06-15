@@ -73,13 +73,7 @@ $ grep -q "^APP_ENV =" .env && echo "FOUND" || echo "NOT FOUND"
 
 Ok, first we can make our replace statement:
 
-<Terminal typewriter>
-$ echo 'APP_NAME = My application' > .env
-$ echo 'APP_ENV = local' >> .env
-$ grep -q "^APP_ENV =" .env \
-    && sed -i "s/APP_ENV =.*/APP_ENV = production/" .env \
-    || echo "NOT FOUND"
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 By running `cat .env`, you will get, as expected, `APP_ENV = production`.
 

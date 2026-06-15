@@ -1,0 +1,5 @@
+$ echo 'APP_NAME = My application' > .env
+$ echo 'APP_ENV = local' >> .env
+$ grep -q "^APP_ENV =" .env \
+    && sed -i "s/APP_ENV =.*/APP_ENV = production/" .env \
+    || echo "NOT FOUND"

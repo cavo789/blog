@@ -1,0 +1,6 @@
+$ docker compose kill
+
+[+] Killing 2/2
+✔ Container kingsbridge-db Killed 2.1s
+✔ Container kingsbridge-app Killed 1.5s
+

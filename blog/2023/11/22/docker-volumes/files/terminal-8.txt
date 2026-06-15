@@ -1,0 +1,15 @@
+$ docker compose exec counter /counter.sh
+You have executed this script 1 times.
+
+$ docker compose exec counter /counter.sh
+You have executed this script 2 times.
+
+$ docker compose exec counter /counter.sh
+You have executed this script 3 times.
+
+$ docker compose exec counter /counter.sh
+You have executed this script 4 times.
+
+$ docker compose exec counter /counter.sh
+You have executed this script 5 times.
+

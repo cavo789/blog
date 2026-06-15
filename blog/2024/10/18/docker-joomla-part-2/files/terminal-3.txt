@@ -1,0 +1,12 @@
+$ make up
+
+UID=$(id -u) GID=$(id -g) docker compose up --detach
+[+] Running 33/12
+✔ joomla Pulled 16.1s
+✔ joomladb Pulled 10.7s
+
+[+] Running 3/3
+✔ Network runningjoomlaindocker_default Created 0.0s
+✔ Container joomla-db Healthy 31.7s
+✔ Container joomla-app Started 31.1s
+

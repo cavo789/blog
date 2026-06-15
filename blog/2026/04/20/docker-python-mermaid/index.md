@@ -90,14 +90,7 @@ Here is the dummy `compose.yaml` I'll use as an example:
 
 Now, the best part: please run this command to render the image:
 
-<Terminal typewriter wrap={true}>
-$ docker run --rm -u $(id -u):$(id -g) -e HOME=/tmp -v .:/app yourself/docker-python-mermaid python3 /app/scripts/mindmap.py /app/samples/compose.yaml -o /app/compose.png
-
-Generating single mermaid chart
-
-🚀 Generating Pro diagram...
-✨ Done! Image: /app/compose.png
-</Terminal>
+<Terminal typewriter wrap={true} source="./files/terminal-3.txt" />
 
 Using a single command line will create this image:
 
@@ -115,13 +108,7 @@ This script will look at our file structure, identify the files we have, and cre
 
 <Snippet filename="project-dna.py" source="./files/scripts/project-dna.py" defaultOpen={false} />
 
-<Terminal typewriter wrap={true}>
-$ docker run --rm -u $(id -u):$(id -g) -e HOME=/tmp -v .:/app yourself/docker-python-mermaid python3 /app/scripts/project-dna.py /app -o /app/project-dna.png
-
-Generating single mermaid chart
-🔎 Analyzing /app...
-✨ DNA successfully generated in /app/project-dna.png
-</Terminal>
+<Terminal typewriter wrap={true} source="./files/terminal-2.txt" />
 
 ![The project-dna mindmap](./files/images/project-dna.webp)
 
@@ -133,13 +120,7 @@ This time a Pie chart:
 
 <Snippet filename="pie.py" source="./files/scripts/pie.py" defaultOpen={false} />
 
-<Terminal typewriter wrap={true}>
-$ docker run --rm -u $(id -u):$(id -g) -e HOME=/tmp -v .:/app yourself/docker-python-mermaid python3 /app/scripts/pie.py /app -o /app/pie.png
-
-Generating single mermaid chart
-🔎 Analyzing /app...
-✨ Pie chart successfully generated in /app/pie.png
-</Terminal>
+<Terminal typewriter wrap={true} source="./files/terminal-1.txt" />
 
 ![The project-dna pie](./files/images/pie.webp)
 

@@ -41,15 +41,7 @@ $ cat "data.xml" | xmlstarlet format --indent-spaces 4
 
 We can also use `Xpath` to specify our desired output:
 
-<Terminal typewriter>
-$ cat "data.xml" | xmlstarlet sel -t -v "/bookstore/book/title"
-
-Everyday Italian
-Harry Potter
-XQuery Kick Start
-Learning XML
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 If you don't known XPath yet, we've used `"/bookstore/book/title"` because our XML is constructed like that. As you can see below, our root node is called `bookstore`, then we have one or more `book` and each book has a `title`.
 

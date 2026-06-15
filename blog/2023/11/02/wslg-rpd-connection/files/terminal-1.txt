@@ -1,0 +1,6 @@
+$ (
+  sudo systemctl enable dbus
+  sudo /etc/init.d/dbus start
+  sudo /etc/init.d/xrdp start
+  sudo /etc/init.d/xrdp status
+)

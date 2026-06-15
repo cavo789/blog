@@ -1,0 +1,6 @@
+$ docker rm $(docker stop $(docker ps -a -q --filter="name=app_wordpress"))
+
+$ docker rm $(docker stop $(docker ps -a -q --filter="name=db_wordpress"))
+
+$ docker network rm wordpress
+

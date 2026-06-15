@@ -70,18 +70,7 @@ From there, rebuild the image and the container by running again `docker compose
 
 Once in the container's console, type `docker version` again and boum.
 
-<Terminal typewriter>
-$ docker version
-Client:
- Version:           28.3.3
- API version:       1.51
- Go version:        go1.24.4
- Git commit:        980b85681696fbd95927fd8ded8f6d91bdca95b0
- Built:             Tue Jul 29 15:17:52 2025
- OS/Arch:           linux/amd64
- Context:           default
-Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 It didn't work anymore.
 

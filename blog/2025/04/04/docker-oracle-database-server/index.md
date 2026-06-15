@@ -186,19 +186,7 @@ And lastly, we'll create a specific network for our Oracle container: `docker ne
 
 We're ready to create our container by running this command:
 
-<Terminal typewriter>
-$ docker run -d \
-    --name oracle-db \
-    --network oracle \
-    -p 1521:1521 \
-    -p 5500:5500 \
-    -e ORACLE_SID=ORCLCDB \
-    -e ORACLE_PDB=ORCLPDB1 \
-    -e ORACLE_PWD=admin \
-    -v OracleDBData:/opt/oracle/oradata \
-    -v ./scripts/startup/:/docker-entrypoint-initdb.d/startup \
-    container-registry.oracle.com/database/enterprise:latest
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 <AlertBox variant="note" title="">
 This is terribly slow... Oracle will need something like 10 minutes before the container can be used.

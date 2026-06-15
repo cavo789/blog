@@ -1,0 +1,8 @@
+$ docker compose up --detach && docker compose exec counter /counter.sh
+
+[+] Building 0.0s (0/0)        docker:default
+[+] Running 2/2
+ ✔ Network demo_default  Created         0.2s
+ ✔ Container counter     Started         0.8s
+Creating /data/counter.txt ...
+You have executed this script 1 times.

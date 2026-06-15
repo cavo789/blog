@@ -32,15 +32,7 @@ $ sudo apt-get install -y xrdp
 
 Also consider changing the port number to `3390` by running the command below and some minor changes. *It seems to be required since using the default 3389 port number, you will get the 'already in use' error with mstsc.*:
 
-<Terminal typewriter>
-$ (
-  sudo cp /etc/xrdp/xrdp.ini /etc/xrdp/xrdp.ini.bak
-  sudo sed -i 's/3389/3390/g' /etc/xrdp/xrdp.ini
-  sudo sed -i 's/max_bpp=32/#max_bpp=32\nmax_bpp=128/g' /etc/xrdp/xrdp.ini
-  sudo sed -i 's/xserverbpp=24/#xserverbpp=24\nxserverbpp=128/g' /etc/xrdp/xrdp.ini
-)
-...
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 (see [https://www.nextofwindows.com/how-to-enable-wsl2-ubuntu-gui-and-use-rdp-to-remote](https://www.nextofwindows.com/how-to-enable-wsl2-ubuntu-gui-and-use-rdp-to-remote) for more in-depth information)
 
@@ -93,14 +85,7 @@ Also run `sudo nano /etc/xrdp/startwm.sh` to edit the file.
 
 Finally enable `dbus`:
 
-<Terminal typewriter>
-$ (
-  sudo systemctl enable dbus
-  sudo /etc/init.d/dbus start
-  sudo /etc/init.d/xrdp start
-  sudo /etc/init.d/xrdp status
-)
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 Run `sudo service xrdp restart` to restart the Remote Desktop Protocol Server and start `mstsc.exe` again. Now, you should have the full desktop.
 

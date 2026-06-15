@@ -1,0 +1,6 @@
+aaron-bond.better-comments
+alefragnani.Bookmarks
+bajdzis.vscode-twig-pack
+bmewburn.vscode-intelephense-client
+bobmagicii.autofoldyeah
+calebporzio.better-phpunit

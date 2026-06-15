@@ -77,14 +77,7 @@ And make sure to make this file executable: `sudo chmod +x /usr/local/bin/md-con
 
 From now on, simply navigate to any folder containing a document you want to convert. For example:
 
-<Terminal typewriter>
-$ cd ~/documents/
-
-$ md-convert sample.docx > sample.md
-$ md-convert budget.xlsx > budget.md
-$ md-convert user_guide.pdf > user_guide.md
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 ## Conclusion
 

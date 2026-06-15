@@ -1,0 +1,6 @@
+$ www-data@86e3fd14ea18:~/html$ ls -alh
+total 20K
+drwxrwxrwt 1 www-data www-data 4.0K Dec  7 17:52 .
+drwxr-xr-x 1 root     root     4.0K Nov 21 17:46 ..
+-rw-r--r-- 1 root     root      742 Dec  7 17:34 README.Docker.md
+-rw-r--r-- 1 root     root       17 Dec  7 17:49 index.php

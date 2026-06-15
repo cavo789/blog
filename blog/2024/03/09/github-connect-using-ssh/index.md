@@ -34,23 +34,7 @@ You'll be prompted to enter a *passphrase*, this is not required so just press <
 
 You'll then see something like this on your console:
 
-<Terminal typewriter>
-Generating public/private ed25519 key pair.
-Enter file in which to save the key (~/.ssh/id_ed25519):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in ~/.ssh/id_ed25519
-Your public key has been saved in ~/.ssh/id_ed25519.pub
-The key fingerprint is:
-SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx your_email@example.com
-The key's randomart image is:
-+--[ED25519 256]--+
-| ( ...... )      |
-| ( ...... )      |
-| ( ...... )      |
-| ( ...... )      |
-+----[SHA256]-----+
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 Then you'll need to add the key to your SSH agent. Simply run:
 

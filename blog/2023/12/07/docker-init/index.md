@@ -29,30 +29,7 @@ Please start a Linux shell and run `mkdir -p /tmp/docker-init && cd $_` to creat
 
 Now, in your console, just run `docker init` and follow the wizard.
 
-<Terminal typewriter>
-$ docker init
-
-Welcome to the Docker Init CLI!
-
-This utility will walk you through creating the following files with sensible defaults for your project:
-  \- .dockerignore
-  \- Dockerfile
-  \- compose.yaml
-  \- README.Docker.md
-
-Let's get started!
-
-? What application platform does your project use?  [Use arrows to move, type to filter]
-  Go - suitable for a Go server application
-  Python - suitable for a Python server application
-  Node - suitable for a Node server application
-  Rust - suitable for a Rust server application
-  ASP.NET Core - suitable for an ASP.NET Core application
-\> PHP with Apache - suitable for a PHP web application
-  Other - general purpose starting point for containerizing your application
-  Don't see something you need? Let us know!
-  Quit
-</Terminal>
+<Terminal typewriter source="./files/terminal-4.txt" />
 
 Make sure to select `PHP with Apache - suitable for a PHP web application`.
 
@@ -62,29 +39,7 @@ For the next questions:
 * `What's the relative directory for your app?`, just press enter to select the current directory,
 * `What local port do you want to use to access your server?`, just press enter to use the proposed port number or f.i. enter `8080`.
 
-<Terminal typewriter>
-? What application platform does your project use? PHP with Apache
-? What version of PHP do you want to use? 8.2
-? What's the relative directory (with a leading .) for your app?
-? What local port do you want to use to access your server? 8080
-
-CREATED: .dockerignore
-CREATED: Dockerfile
-CREATED: compose.yaml
-CREATED: README.Docker.md
-
-✔ Your Docker files are ready!
-
-Take a moment to review them and tailor them to your application.
-
-If your application requires specific PHP extensions, you can follow the instructions in the Dockerfile to add them.
-
-When you're ready, start your application by running: docker compose up --build
-
-Your application will be available at http://localhost:8080
-
-Consult README.Docker.md for more information about using the generated files.
-</Terminal>
+<Terminal typewriter source="./files/terminal-3.txt" />
 
 The wizard is quite straight-forward but, then, we got four files.
 
@@ -152,14 +107,7 @@ www-data@86e3fd14ea18:~/html$
 
 As expected, you're now inside the container. You can display the list of files by running `ls -alh`
 
-<Terminal typewriter>
-$ www-data@86e3fd14ea18:~/html$ ls -alh
-total 20K
-drwxrwxrwt 1 www-data www-data 4.0K Dec  7 17:52 .
-drwxr-xr-x 1 root     root     4.0K Nov 21 17:46 ..
--rw-r--r-- 1 root     root      742 Dec  7 17:34 README.Docker.md
--rw-r--r-- 1 root     root       17 Dec  7 17:49 index.php
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 So, even if your current folder, on your machine, contains now five files, only `README.Docker.md` and `index.php` are present. Why not the other files?
 
@@ -167,17 +115,7 @@ So, even if your current folder, on your machine, contains now five files, only 
 
 On your machine, we've thus five files:
 
-<Terminal typewriter>
-$ ls -alh
-total 36K
-drwxr-xr-x  2 christophe christophe 4.0K Dec  7 17:59 .
-drwxrwxrwt 32 root       root        12K Dec  7 17:59 ..
--rw-r--r--  1 christophe christophe  646 Dec  7 17:34 .dockerignore
--rw-r--r--  1 christophe christophe 2.3K Dec  7 17:03 Dockerfile
--rw-r--r--  1 christophe christophe  742 Dec  7 17:34 README.Docker.md
--rw-r--r--  1 christophe christophe 1.7K Dec  7 17:34 compose.yaml
--rw-r--r--  1 christophe christophe   17 Dec  7 17:49 index.php
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 And only `README.Docker.md` and `index.php` have been copied into the container.
 

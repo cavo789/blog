@@ -1,0 +1,6 @@
+   PASS  Tests\Feature\MyFirstTest
+  ✓ assert true is true
+  ✓ assert false is not true
+
+  Tests:  2 passed
+  Time:   0.08s

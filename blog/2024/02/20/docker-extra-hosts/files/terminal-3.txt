@@ -1,0 +1,5 @@
+$ docker compose run -it --rm --entrypoint /bin/sh my_second_container
+
+$ curl http://127.0.0.1:8080
+curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect to server
+$ curl http://172.20.0.1:8080

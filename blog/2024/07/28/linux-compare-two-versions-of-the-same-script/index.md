@@ -50,18 +50,7 @@ This function will retrieve any functions in the file i.e. lines starting with t
 
 Regardless of the order in which the functions are declared, the script below, which you can copy and paste into the console, will find the list of functions in the two files, sort the list and compare which functions are in one version and which are not in the other:
 
-<Terminal typewriter>
-{`
-(
-  FILE1=/tmp/bash/console.sh
-  FILE2=/tmp/bash/console_v2.sh
-  printf "\e[33;1m%-39s %s\e[0;1m\n" "Left side: \${FILE1}" "Right side: \${FILE2}"
-  diff --side-by-side --width 83 \
-    <(grep -P "^(function\s+.*)\(\)" "\${FILE1}" | awk '{print \$2}' | sort) \
-    <(grep -P "^(function\s+.*)\(\)" "\${FILE2}" | awk '{print \$2}' | sort)
-)
-`}
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 As you can see, we immediately see that the second file has two additions.
 

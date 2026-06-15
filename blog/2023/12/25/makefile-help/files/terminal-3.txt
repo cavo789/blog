@@ -1,0 +1,6 @@
+$ ls -alh
+
+total 920K
+drwxr-xr-x  2 christophe christophe 4.0K Dec  10 12:19 .
+drwxrwxrwt 17 root       root       908K Dec  10 12:19 ..
+-rw-r--r--  1 christophe christophe 1.4K Dec  10 12:19 makefile

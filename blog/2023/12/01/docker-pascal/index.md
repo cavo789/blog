@@ -36,15 +36,7 @@ Please create a new file called `Hello.pas` with this content:
 
 As you know, Pascal is a compiled language and should then be compiled into an `.exe`. The command below will do this:
 
-<Terminal typewriter title="Powershell">
-$ docker run -it --rm -v %CD%:/app -w /app signumtemporis/fpc:cross.x86_64-win64.slim Hello.pas
-Free Pascal Compiler version 3.2.2 [2021/12/10] for x86_64
-Copyright (c) 1993-2021 by Florian Klaempfl and others
-Target OS: Win64 for x64
-Compiling Hello.pas
-Linking Hello.exe
-2 lines compiled, 0.1 sec, 32432 bytes code, 1508 bytes data
-</Terminal>
+<Terminal typewriter title="Powershell" source="./files/terminal-2.txt" />
 
 Our executable has been created. Time to start it by running `Hello.exe`:
 
@@ -85,16 +77,7 @@ The `shl` instruction will shift the number from one byte left.
 
 And compiled it:
 
-<Terminal typewriter title="Powershell">
-$ docker run -it --rm -v %CD%:/workspace signumtemporis/fpc:cross.x86_64-win64.slim Byte2Bin.pas
-
-Free Pascal Compiler version 3.2.2 [2021/12/10] for x86_64
-Copyright (c) 1993-2021 by Florian Klaempfl and others
-Target OS: Win64 for x64
-Compiling Byte2Bin.pas
-Linking Byte2Bin.exe
-20 lines compiled, 0.1 sec, 32656 bytes code, 1508 bytes data
-</Terminal>
+<Terminal typewriter title="Powershell" source="./files/terminal-1.txt" />
 
 As you can see in the source code, the idea was to show the binary representation of `197` and, yes!, it's indeed `11000101`. Still in 2023.
 

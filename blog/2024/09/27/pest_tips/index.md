@@ -34,15 +34,7 @@ Pest is a wrapper around PhpUnit so, for instance, every command line arguments 
 
 Simply run the commands below in your PHP application folder:
 
-<Terminal typewriter>
-$ composer require pestphp/pest --dev --with-all-dependencies
-
-$ composer require pestphp/pest-plugin-laravel --dev
-
-$ php artisan pest:install
-
-$ ./vendor/bin/pest --init
-</Terminal>
+<Terminal typewriter source="./files/terminal-3.txt" />
 
 From now, we can run `./vendor/bin/pest` to run our Pest tests.
 
@@ -80,14 +72,7 @@ This illustrates that Pest starts with an `expect` verb and some method like `to
 
 Running our test can be simply done using `./vendor/bin/pest tests/Feature/MyFirstTest.php` and here is the result:
 
-<Terminal typewriter>
-   PASS  Tests\Feature\MyFirstTest
-  ✓ assert true is true
-  ✓ assert false is not true
-
-  Tests:  2 passed
-  Time:   0.08s
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 #### Autocomplete
 
@@ -233,13 +218,7 @@ Install the plugin like this: `composer require pestphp/pest-plugin-laravel --de
 
 Then some new artisan commands will be available:
 
-<Terminal typewriter>
-$ php artisan | grep pest
- pest
-  pest:dataset           Create a new dataset file
-  pest:install           Creates Pest resources in your current PHPUnit test suite
-  pest:test              Create a new test file
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 ### Visual Studio Code Add-on
 

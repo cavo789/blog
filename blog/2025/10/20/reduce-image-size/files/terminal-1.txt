@@ -1,0 +1,5 @@
+$ caesiumclt -q 85 --format webp --same-folder-as-input *.png
+
+[00:00:00] [#########################################]
+Compressed 9 files (9 success, 0 skipped, 0 errors)
+10.5 MiB -> 616.9 KiB [-9.9 MiB | -94.28%]

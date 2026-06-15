@@ -59,24 +59,11 @@ For the demo, please start a Linux shell and run `mkdir -p /tmp/markmap && cd $_
 
 Please create a new file called `mindmap.md` with this markdown content about *Social Media Uses* provided just here above.
 
-<Terminal typewriter>
-$ ls -alh
-total 920K
-drwxr-xr-x  2 christophe christophe 4.0K Dec 16 14:05 .
-drwxrwxrwt 19 christophe christophe 908K Dec 16 14:05 ..
--rw-r--r--  1 christophe christophe  198 Dec 16 14:05 mindmap.md
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 And now run `docker run -it --rm -v ${PWD}:/project -w /project -u $(id -u):$(id -g) leopoul/markmap:1.0.0 mindmap.md --output mindmap.html` to convert the markdown document into an HTML page. The image is automatically created as a SVG content in the `.html` file.
 
-<Terminal typewriter>
-$ ls -alh
-total 920K
-drwxr-xr-x  2 christophe christophe 4.0K Dec 16 14:05 .
-drwxrwxrwt 19 christophe christophe 908K Dec 16 14:05 ..
--rw-r--r--  1 christophe christophe 2.2K Dec 16 14:10 mindmap.html
--rw-r--r--  1 christophe christophe  198 Dec 16 14:05 mindmap.md
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 <AlertBox variant="info" title="WSL User">
 If you're running under Windows and WSL2, to open the `mindmap.html` file, one way is to run `explorer.exe .` in your Linux console (see <Link to="/blog/wsl-windows-explorer">this article</Link> to learn more). Windows Explorer will be started then just double-click on the `mindmap.html` file.

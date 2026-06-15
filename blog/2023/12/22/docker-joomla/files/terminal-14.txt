@@ -1,0 +1,15 @@
+$ docker compose up --detach
+
+[+] Running 16/35
+⠹ joomladb 12 layers [⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀] 0B/0B Pulling 19.3s
+⠧ 177e7ef0df69 Waiting 15.8s
+⠧ cac25352c4c8 Waiting 15.8s
+⠧ 8585afabb40a Waiting 15.8s
+[...]
+⠹ joomla 21 layers [⣿⣿⣦⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣿⣿⣿⣿⣀⠀⠀] 94.59MB/155.9MB Pulling 19.3s
+✔ 578acb154839 Pull complete 11.3s
+✔ c053f6f43c12 Pull complete 11.9s
+⠋ 65cebbf4d847 Downloading [==============> ] 68.41MB/104.4MB 16.1s
+✔ 34045bc93960 Download complete 1.0s
+[...]
+

@@ -1,0 +1,19 @@
+$ pwd
+/tmp/joomla
+
+$ ls site_joomla/configuration.php
+.rw-r--r-- 2.0k christophe christophe 6.8K Jan 4 15:59 .htaccess
+
+$ head -n 10 site_joomla/configuration.php
+{`<?php
+class JConfig \{
+        public \$offline = false;
+        public \$offline_message = 'Ce site est en maintenance.<br>Merci de revenir ultérieurement.';
+        public \$display_offline_message = 1;
+        public \$offline_image = '';
+        public \$sitename = 'Kingsbridge';
+        public \$editor = 'tinymce';
+        public \$captcha = '0';
+        public \$list_limit = 20;
+`}
+

@@ -1,0 +1,19 @@
+$ make start
+
+docker exec -it demo_pest sh -c "WEBSITE=https://www.avonture.be vendor/bin/pest"
+
+  PASS  Tests\Browser\HomepageTest
+  ✓ it loads the homepage                                                 2.39s
+  ✓ it displays my name somewhere                                         2.33s
+  ✓ it shows blog posts on the blog page                                  2.57s
+  ✓ it navigates to the blog from the homepage                            3.30s
+  ✓ it loads a specific blog post                                         2.79s
+  ✓ it displays the about page                                            2.47s
+  ✓ it can search for a post                                              3.51s
+  ✓ it navigates to the archive and click on aeSecure QuickScan article   2.69s
+  ✓ it shows 404 for non-existent page                                    2.68s
+  ✓ it can load the robots.txt file                                       0.59s
+
+  Tests:    10 passed (12 assertions)
+  Duration: 25.56s
+

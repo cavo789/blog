@@ -1,0 +1,8 @@
+$ docker run -it --rm -v %CD%:/workspace signumtemporis/fpc:cross.x86_64-win64.slim Byte2Bin.pas
+
+Free Pascal Compiler version 3.2.2 [2021/12/10] for x86_64
+Copyright (c) 1993-2021 by Florian Klaempfl and others
+Target OS: Win64 for x64
+Compiling Byte2Bin.pas
+Linking Byte2Bin.exe
+20 lines compiled, 0.1 sec, 32656 bytes code, 1508 bytes data

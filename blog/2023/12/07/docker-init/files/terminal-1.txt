@@ -1,0 +1,9 @@
+$ ls -alh
+total 36K
+drwxr-xr-x  2 christophe christophe 4.0K Dec  7 17:59 .
+drwxrwxrwt 32 root       root        12K Dec  7 17:59 ..
+-rw-r--r--  1 christophe christophe  646 Dec  7 17:34 .dockerignore
+-rw-r--r--  1 christophe christophe 2.3K Dec  7 17:03 Dockerfile
+-rw-r--r--  1 christophe christophe  742 Dec  7 17:34 README.Docker.md
+-rw-r--r--  1 christophe christophe 1.7K Dec  7 17:34 compose.yaml
+-rw-r--r--  1 christophe christophe   17 Dec  7 17:49 index.php

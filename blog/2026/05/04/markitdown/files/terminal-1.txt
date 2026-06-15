@@ -1,0 +1,6 @@
+$ cd ~/documents/
+
+$ md-convert sample.docx > sample.md
+$ md-convert budget.xlsx > budget.md
+$ md-convert user_guide.pdf > user_guide.md
+

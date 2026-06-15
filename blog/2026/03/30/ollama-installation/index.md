@@ -222,18 +222,7 @@ So, in less than 5 seconds, I've got a complete script with the right code and t
 
 And it works out-of-the-box!
 
-<Terminal typewriter wrap={true}>
-
-$ chmod +x ./calculate.sh
-
-$ ./calculate.sh
-Usage: ./calculate.sh \<num1\> \<num2\> \<operator\>
-Example: ./calculate.sh 5 3 +
-
-❯ ./calculate.sh 5 3 -
-5 - 3 = 2
-
-</Terminal>
+<Terminal typewriter wrap={true} source="./files/terminal-1.txt" />
 
 ### Using more powerful LLM depending on your expectations
 

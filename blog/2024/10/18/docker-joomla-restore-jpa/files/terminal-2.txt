@@ -1,0 +1,13 @@
+$ ls -alh
+
+Permissions Size User Group Date Modified Name
+drwxr-xr-x - christophe christophe 2024-10-18 13:30 .
+drwxrwxrwt - root root 2024-10-18 13:30 ..
+.rw-r--r-- 151 christophe christophe 2024-10-18 13:30 .env
+.rw-r--r-- 34M christophe christophe 2024-10-18 13:30 backup.jpa
+.rw-r--r-- 1.3k christophe christophe 2024-10-18 13:30 compose.yaml
+.rw-r--r-- 162 christophe christophe 2024-10-18 13:30 Dockerfile
+.rw-r--r-- 11k christophe christophe 2024-10-18 13:30 en-GB.kickstart.ini
+.rw-r--r-- 390k christophe christophe 2024-10-18 13:30 kickstart.php
+.rw-r--r-- 2.9k christophe christophe 2024-10-18 13:30 makefile
+

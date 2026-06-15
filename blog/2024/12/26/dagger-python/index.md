@@ -98,15 +98,7 @@ To do this, we have to run the `dagger init` command and since we're using a Doc
 
 It'll take around two minutes to download and initialise Dagger (for the first time). By looking at your file system, you'll see, oh, the owner is `root` and not you.
 
-<Terminal typewriter>
-$ ls -alh
-Permissions Size User       Group      Date Modified    Name
-drwxr-xr-x     - christophe christophe 2024-12-26 16:00 .docker
-drwxr-xr-x     - christophe christophe 2024-12-26 16:02 .pipeline
-drwxr-xr-x     - christophe christophe 2024-12-26 16:02 src
-.rw-r--r--    94 christophe christophe 2024-12-26 16:02 dagger.json
-.rw-------   10k christophe christophe 2024-12-26 16:02 LICENSE
-</Terminal>
+<Terminal typewriter source="./files/terminal-4.txt" />
 
 Please run `sudo chown -R christophe:christophe .` (and replace my firstname by your Linux username).
 
@@ -132,18 +124,7 @@ Remember, `dagger` has been defined as our entrypoint (see our `Dockerfile`) so,
 
 You'll get the list of functions available (this first time it'll take more time since Dagger needs to build the pipeline):
 
-<Terminal typewriter>
-Setup tracing at https://dagger.cloud/traces/setup. To hide: export STOPIT=1
-
-Call one or more functions, interconnected into a pipeline
-
-USAGE
-  dagger call [options] \<function>
-
-FUNCTIONS
-  container-echo   Returns a container that echoes whatever string argument is provided
-  grep-dir         Returns lines that match a pattern in the files of the provided Directory
-</Terminal>
+<Terminal typewriter source="./files/terminal-3.txt" />
 
 You'll see two functions: `container-echo` and `grep-dir`.
 
@@ -157,25 +138,11 @@ Please open that file and add a new function like below:
 
 Save the file and run `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call --help` again. See, we've our new function:
 
-<Terminal typewriter>
-USAGE
-  dagger call [options] \<function>
-
-FUNCTIONS
-  container-echo   Returns a container that echoes whatever string argument is provided
-  grep-dir         Returns lines that match a pattern in the files of the provided Directory
-  lint             Run Pylint on the codebase.
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 And we also get the list of parameters for our lint function `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call lint --help`:
 
-<Terminal typewriter>
-USAGE
-  dagger call lint [arguments]
-
-ARGUMENTS
-  --source string   [required]
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 Now, back to the `.pipeline/src/src/main.py` and replace the entire file (we don't need sample functions) with this content:
 

@@ -1,0 +1,6 @@
+$ docker image list
+
+REPOSITORY TAG IMAGE ID CREATED SIZE
+joomla latest 882b2151d890 2 days ago 663MB
+mysql 8.0.13 102816b1ee7d 4 years ago 486MB
+

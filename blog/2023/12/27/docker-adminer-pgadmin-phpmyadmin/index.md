@@ -32,13 +32,7 @@ We'll use `docker container list` to get the list of containers, we just want to
 
 **For illustration purpose**, here is the output on my machine right now:
 
-<Terminal typewriter>
-$ {`docker container list --all --format "table {{.Image}}\t{{.Names}}"`}
-
-IMAGE                        NAMES
-mysql:8.0.13                 joomla-joomladb-1
-joomla:5.0.1-php8.2-apache   joomla-joomla-1
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 For our example, we want to connect to the MySQL 8.x `joomla-joomladb-1` container.
 

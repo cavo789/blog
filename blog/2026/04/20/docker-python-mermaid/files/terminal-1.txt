@@ -1,0 +1,5 @@
+$ docker run --rm -u $(id -u):$(id -g) -e HOME=/tmp -v .:/app yourself/docker-python-mermaid python3 /app/scripts/pie.py /app -o /app/pie.png
+
+Generating single mermaid chart
+🔎 Analyzing /app...
+✨ Pie chart successfully generated in /app/pie.png

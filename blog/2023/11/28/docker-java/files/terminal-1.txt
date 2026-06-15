@@ -1,0 +1,6 @@
+$ ls -alh
+total 24K
+drwxr-xr-x  2 christophe christophe 4.0K Nov 22 15:02 .
+drwxrwxrwt 29 root       root        12K Nov 22 14:58 ..
+-rw-r--r--  1 christophe christophe  414 Nov 22 15:02 Main.class
+-rw-r--r--  1 christophe christophe  117 Nov 22 14:58 Main.java

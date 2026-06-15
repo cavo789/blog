@@ -1,0 +1,8 @@
+$ docker compose exec counter /counter.sh
+Creating /data/counter.txt ...
+
+/counter.sh: line 6: can't create /data/counter.txt: nonexistent directory
+cat: can't open '/data/counter.txt': No such file or directory
+You have executed this script 1 times.
+
+/counter.sh: line 13: can't create /data/counter.txt: nonexistent directory

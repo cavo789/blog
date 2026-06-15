@@ -1,0 +1,5 @@
+$ curl localhost
+
+FIRSTNAME is Georges
+NAME      is Washington
+PSEUDO    is cavo789

@@ -68,6 +68,7 @@
   word-break: break-all;  /* wrap long words or paths */
   font-family: "Fira Code", monospace;
   background-color: #1e1e1e;
+  position: relative;     /* contains the absolute animation overlay */
 }
 
 /* Each line inside terminal */
@@ -141,6 +142,25 @@
 .terminal a {
   text-decoration: none;
   color: var(--docusaurus-color-primary);
+}
+
+/* Ghost span: invisible clone that reserves the pre's final height during animation */
+.terminal_ghost {
+  visibility: hidden;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Animation overlay: sits on top of the ghost, absolutely filling the pre's content area.
+ * padding: inherit copies the pre's 0.75rem 1rem so text aligns exactly. */
+.terminal_overlay {
+  position: absolute;
+  inset: 0;
+  padding: inherit;
+  white-space: inherit;
+  word-break: inherit;
+  font-family: inherit;
+  color: #d4d4d4;
 }
 
 /* Typewriter blinking cursor */

@@ -1,0 +1,11 @@
+$ docker run -d \
+    --name oracle-db \
+    --network oracle \
+    -p 1521:1521 \
+    -p 5500:5500 \
+    -e ORACLE_SID=ORCLCDB \
+    -e ORACLE_PDB=ORCLPDB1 \
+    -e ORACLE_PWD=admin \
+    -v OracleDBData:/opt/oracle/oradata \
+    -v ./scripts/startup/:/docker-entrypoint-initdb.d/startup \
+    container-registry.oracle.com/database/enterprise:latest

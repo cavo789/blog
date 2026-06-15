@@ -1,0 +1,19 @@
+$ (
+  mkdir -p blog && cd $_
+  echo '---' > 2024-02-04-welcome-world.md
+  echo 'title: Hello World!' >> 2024-02-04-welcome-world.md
+  echo '---' >> 2024-02-04-welcome-world.md
+  echo 'Hello world! Proud to be here!!!' >> 2024-02-04-welcome-world.md
+  echo '---' > 2024-02-05-my-first-post.md
+  echo 'title: My first blog post' >> 2024-02-05-my-first-post.md
+  echo '---' >> 2024-02-05-my-first-post.md
+  echo 'My first blog post' >> 2024-02-05-my-first-post.md
+  echo '' >> 2024-02-05-my-first-post.md
+  echo '![Unsplash random](https://source.unsplash.com/random?dinosaure)' >> 2024-02-05-my-first-post.md
+  echo '---' > 2024-02-06-my-second-post.md
+  echo 'title: My second blog post' >> 2024-02-06-my-second-post.md
+  echo '---' >> 2024-02-06-my-second-post.md
+  echo 'My second blog post' >> 2024-02-06-my-second-post.md
+  echo '' >> 2024-02-06-my-second-post.md
+  echo '![Unsplash random](https://source.unsplash.com/random?dinosaure)' >> 2024-02-06-my-second-post.md
+)

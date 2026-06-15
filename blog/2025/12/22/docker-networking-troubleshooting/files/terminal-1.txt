@@ -1,0 +1,5 @@
+$ telnet provider 8000
+
+Trying 192.168.0.3...
+Connected to bim_provider_api.
+Escape character is '^]'.

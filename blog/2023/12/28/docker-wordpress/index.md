@@ -93,14 +93,7 @@ By surfing to `http://127.0.0.1:8089`, you can connect to the database. Credenti
 
 If you wish to stop and remove containers after usage, you can run the following bloc of instructions in a Linux terminal:
 
-<Terminal typewriter>
-$ docker rm $(docker stop $(docker ps -a -q --filter="name=app_wordpress"))
-
-$ docker rm $(docker stop $(docker ps -a -q --filter="name=db_wordpress"))
-
-$ docker network rm wordpress
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 Or, by hand, go to your `Docker Desktop` interface, click on the `containers` tab and remove the containers manually.
 
@@ -108,10 +101,4 @@ Or, by hand, go to your `Docker Desktop` interface, click on the `containers` ta
 
 As introduced, we just need three commands to create, from nihil, a new wordpress site on our disk. This just in seconds (depends on the speed of your computer). Easy no?
 
-<Terminal typewriter>
-$ docker network create wordpress
-
-$ docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mysql:8.0.13
-
-$ docker run -d --name app_wordpress --hostname app_wordpress --network wordpress -p 8080:80 -e WORDPRESS_DB_HOST=db_wordpress -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=example wordpress:6.4.2-php8.2-apache
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />

@@ -1,0 +1,18 @@
+$ docker compose up --detach
+
+[+] Running 35/35
+✔ joomladb 12 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿] 0B/0B Pulled 84.9s
+✔ 177e7ef0df69 Pull complete 26.9s
+✔ cac25352c4c8 Pull complete 27.5s
+✔ 8585afabb40a Pull complete 28.2s
+[...]
+✔ joomla 21 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿] 0B/0B Pulled 146.4s
+✔ 578acb154839 Pull complete 11.3s
+✔ c053f6f43c12 Pull complete 11.9s
+✔ 65cebbf4d847 Pull complete 31.2s
+[...]
+[+] Running 3/3
+✔ Network joomla_default Created 0.3s
+✔ Container joomla-joomladb-1 Started 52.9s
+✔ Container joomla-joomla-1 Started 38.8s
+

@@ -1,0 +1,11 @@
+$ pwd
+/tmp/joomla
+
+$ ls -alh
+total 20K
+drwxr-xr-x 4 christophe christophe 4.0K Jan 4 15:57 .
+drwxrwxrwt 12 root root 4.0K Jan 4 15:31 ..
+-rw-r--r-- 1 christophe christophe 279 Jan 4 15:31 compose.yaml
+drwxr-xr-x 2 christophe christophe 4.0K Jan 4 15:57 db
+drwxr-xr-x 2 christophe christophe 4.0K Jan 4 15:57 site_joomla
+

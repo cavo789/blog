@@ -63,13 +63,7 @@ We can ensure the process running on port `8000` in both containers is running b
 
 Now that we've it, we can test the internal port:
 
-<Terminal typewriter wrap={true}>
-$ telnet 192.168.0.4 8000
-
-Trying 192.168.0.4...
-Connected to 192.168.0.4.
-Escape character is '^]'.
-</Terminal>
+<Terminal typewriter wrap={true} source="./files/terminal-3.txt" />
 
 Press <kbd>CTRL</kbd>+<kbd>C</kbd> to quit.
 
@@ -107,15 +101,7 @@ $ apt-get install -y iputils-ping
 
 Once done, try `ping` followed by the container name (we've already identified `provider` and `consumer` as our container names thanks to our `docker ps` command).
 
-<Terminal typewriter wrap={true}>
-$ ping provider
-
-PING provider (192.168.0.3) 56(84) bytes of data.
-64 bytes from provider (192.168.0.3): icmp_seq=1 ttl=64 time=0.176 ms
-64 bytes from provider (192.168.0.3): icmp_seq=2 ttl=64 time=0.064 ms
-64 bytes from provider (192.168.0.3): icmp_seq=3 ttl=64 time=0.064 ms
-64 bytes from provider (192.168.0.3): icmp_seq=4 ttl=64 time=0.068 ms
-</Terminal>
+<Terminal typewriter wrap={true} source="./files/terminal-2.txt" />
 
 Press <kbd>CTRL</kbd>+<kbd>C</kbd> to stop.
 
@@ -136,13 +122,7 @@ $ apt-get install -y telnet
 
 Then run `telnet provider 8000` i.e. the name of the container and his internal port (not the exposed one)
 
-<Terminal typewriter wrap={true}>
-$ telnet provider 8000
-
-Trying 192.168.0.3...
-Connected to bim_provider_api.
-Escape character is '^]'.
-</Terminal>
+<Terminal typewriter wrap={true} source="./files/terminal-1.txt" />
 
 <AlertBox variant="tip" title="Trying the exposed port">
 Just rerun the last `telnet` command but using port `8888` this time: it'll not work.

@@ -1,0 +1,5 @@
+$ curl localhost
+
+FIRSTNAME is John
+NAME      is Doe
+PSEUDO    is cavo789

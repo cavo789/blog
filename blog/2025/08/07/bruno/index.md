@@ -101,22 +101,7 @@ In short, please:
 
 To install Bruno GUI on my Ubuntu distribution, I'm running these commands:
 
-<Terminal typewriter>
-$ sudo mkdir -p /root/.gnupg
-
-$ sudo chmod 700 /root/.gnupg
-
-$ sudo mkdir -p /etc/apt/keyrings
-
-$ sudo gpg --no-default-keyring --keyring /etc/apt/keyrings/bruno.gpg --keyserver keyserver.ubuntu.com --recv-keys 9FA6017ECABE0266
-
-$ echo "deb [signed-by=/etc/apt/keyrings/bruno.gpg] http://debian.usebruno.com/ bruno stable" | sudo tee /etc/apt/sources.list.d/bruno.list
-
-$ sudo apt update
-
-$ sudo apt install bruno
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 Please refers to the [Download & Install](https://docs.usebruno.com/get-started/bruno-basics/download) official documentation for more info.
 
@@ -206,29 +191,7 @@ Why? Because the GUI is running on our host and `127.0.0.1` is our machine. If w
 
 <!-- cspell:disable -->
 
-<Terminal typewriter>
-$ curl -v http://127.0.0.1:82/jokes
-{`
-* Uses proxy env variable no_proxy == 'localhost,127.0.0.1,*.local'
-*   Trying 127.0.0.1:82...
-* TCP_NODELAY set
-* Connected to 127.0.0.1 (127.0.0.1) port 82 (#0)
-> GET /jokes HTTP/1.1
-> Host: 127.0.0.1:82
-> User-Agent: curl/7.68.0
-> Accept: */*
->
-* Mark bundle as not supporting multiuse
-< HTTP/1.1 200 OK
-< date: Wed, 23 Jul 2025 08:36:40 GMT
-< server: uvicorn
-< content-length: 72
-< content-type: application/json
-<
-* Connection #0 to host 127.0.0.1 left intact
-\{"joke":"Why don't programmers like nature? Because it's full of bugs!"}
-`}
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 <!-- cspell:enable -->
 

@@ -1,0 +1,9 @@
+$ ls -alh
+
+total 20K
+drwxr-xr-x 2 christophe christophe 4.0K Jan 4 16:10 .
+drwxrwxrwt 13 root root 4.0K Jan 4 16:10 ..
+-rw-r--r-- 1 christophe christophe 201 Jan 4 16:10 .env
+-rw-r--r-- 1 christophe christophe 1.2K Jan 4 16:10 compose.yaml
+-rw-r--r-- 1 christophe christophe 1.6K Jan 4 16:10 makefile
+

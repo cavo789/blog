@@ -32,14 +32,7 @@ Or ... you're not yet convinced by VSCode and just want to try it out.
 
 By running the instruction below, you'll download (once) the `codercom/code-server` Docker image then run a container as a daemon.
 
-<Terminal typewriter>
-$ {`docker run -d --name code-server -p 8080:8080 \
-  -v "\${HOME}/.config:/home/coder/.config" \
-  -v ".:/home/coder/project" \
-  -u "\$(id -u):\$(id -g)" \
-  -e "DOCKER_USER=\${USER}" \
-  codercom/code-server:latest`}
-</Terminal>
+<Terminal typewriter source="./files/terminal-2.txt" />
 
 Once triggered successfully, just open your browser and visit `http://127.0.0.1:8080` to start VSCode in the browser.
 
@@ -62,14 +55,7 @@ By opening `http://127.0.0.1:8080` you'll get this screen:
 
 Back to your console, run `cat ${HOME}/.config/code-server/config.yaml` to discover the configuration for code-server. You'll see something like this:
 
-<Terminal typewriter>
-$ {`cat \${HOME}/.config/code-server/config.yaml`}
-
-bind-addr: 127.0.0.1:8080
-auth: password
-password: d8345b9abff6c01d044fac59
-cert: false
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 Copy/paste the password in the form and submit it and tadaaa:
 

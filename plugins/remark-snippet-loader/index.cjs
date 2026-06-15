@@ -34,28 +34,43 @@ function snippetLoader() {
     const projectRoot = process.cwd();
 
     visit(tree, "mdxJsxFlowElement", (node) => {
-      if (node.name !== "Snippet") return;
+      if (node.name !== "Snippet" && node.name !== "Terminal") return;
 
       const sourceAttr = node.attributes.find((attr) => attr.name === "source");
       if (!sourceAttr || typeof sourceAttr.value !== "string") return;
 
-      const filenameAttr = node.attributes.find(
-        (attr) => attr.name === "filename"
-      );
-
       const sourcePath = sourceAttr.value;
       let absolutePath;
 
-      // 🚀 CORRECTED PATH LOGIC:
-      // 1. If the path starts with '.' (e.g., ./file.js or ../../file.js),
-      //    it is treated as relative to the current MDX file.
       if (sourcePath.startsWith("./") || sourcePath.startsWith("../")) {
         absolutePath = path.resolve(currentFileDir, sourcePath);
       } else {
-        // 2. Otherwise (e.g., src/components/...), it is treated as relative
-        //    to the Docusaurus project root (process.cwd()).
         absolutePath = path.resolve(projectRoot, sourcePath);
       }
+
+      // Terminal: inject the file content as a text child of the node.
+      // This reproduces exactly what <Terminal>...inline content...</Terminal> does,
+      // avoiding any issues with JSX attribute serialisation of multi-line strings.
+      if (node.name === "Terminal") {
+        let rawContent;
+        try {
+          rawContent = fs.readFileSync(absolutePath, "utf-8");
+        } catch (err) {
+          console.error(
+            `Terminal plugin: error reading ${absolutePath} for blog post ${blogPostPath}`,
+            err
+          );
+          rawContent = `Error loading source file: ${sourcePath}`;
+        }
+        // Replace self-closing node with one that has a text child.
+        node.children = [{ type: "text", value: rawContent }];
+        return;
+      }
+
+      // Snippet: existing logic — language detection, code injection, eli5.
+      const filenameAttr = node.attributes.find(
+        (attr) => attr.name === "filename"
+      );
 
       try {
         const code = fs.readFileSync(absolutePath, "utf-8");

@@ -44,26 +44,12 @@ By using a **devcontainer**, you (and your team colleague) will use a preinstall
 This article is written in the form of a step-by-step tutorial. If you don't want to take the time to create the configuration files yourself and download them directly, please run the commands below in a Linux console. You'll then get all the files and every time the tutorial below tells you to create a file, you'll already have it.
 </AlertBox>
 
-<Terminal typewriter>
-$ mkdir /tmp/devcontainer_php && cd $_
-
-curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
-
-tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devcontainer-1.0.0.tar.gz
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-4.txt" />
 
 <AlertBox variant="note" title="Download the very latest version">
 The php_devcontainer repository will evolve over time. If you wish to download the latest version and not the use frozen for this article, please use the following commands and not the ones of here above:
 
-<Terminal typewriter>
-$ mkdir /tmp/devcontainer_php && cd $_
-
-$ curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/heads/main.tar.gz
-
-$ tar -xzvf php_devcontainer-main.tar.gz --strip-components 1 && rm -f php_devcontainer-main.tar.gz
-
-</Terminal>
+<Terminal typewriter source="./files/terminal-3.txt" />
 
 
 </AlertBox>
@@ -271,18 +257,7 @@ $ /usr/local/bin/phpcs.phar --standard=/var/www/html/.config/phpcs.xml /var/www/
 
 And you'll get this output:
 
-<Terminal>
-FILE: /var/www/html/index.php
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-FOUND 1 ERROR AND 1 WARNING AFFECTING 2 LINES
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | WARNING | [ ] A file should declare new symbols (classes, functions, constants, etc.) and cause no other side effects, or it should execute logic with side effects, but should not do
-    |         |     both. The first symbol is defined on line 18 and the first side effect is on line 29. (PSR1.Files.SideEffects.FoundWithSymbols)
- 20 | ERROR   | [x] Expected 1 space(s) after IF keyword; 0 found (Squiz.ControlStructures.ControlSignature.SpaceAfterKeyword)
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-</Terminal>
+<Terminal source="./files/terminal-2.txt" />
 
 There is one warning and one error concerning *coding convention violation* and the nice thing is **phpcbf can fix some.**.
 
@@ -294,16 +269,7 @@ $ /usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml /var/www
 
 You'll get this:
 
-<Terminal>
-PHPCBF RESULT SUMMARY
-----------------------------------------------------------------------
-FILE                                                  FIXED  REMAINING
-----------------------------------------------------------------------
-/var/www/html/index.php                               1      1
-----------------------------------------------------------------------
-A TOTAL OF 1 ERROR WERE FIXED IN 1 FILE
-----------------------------------------------------------------------
-</Terminal>
+<Terminal source="./files/terminal-1.txt" />
 
 And, indeed, if you look at your PHP script, now, there is a space after the `if` keyword.
 

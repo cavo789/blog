@@ -1,0 +1,7 @@
+$ ls -alh
+total 28K
+drwxr-xr-x  2 root root 4.0K Apr  7 20:11 .
+drwxrwxrwt 22 root root 4.0K Apr  7 19:55 ..
+-rw-r--r--  1 root root 1.9K Apr  7 20:07 hangman.php
+-rw-r--r--  1 root root  12K Apr  7 19:34 minify.php
+-rw-r--r--  1 root root  731 Apr  7 19:47 settings.json

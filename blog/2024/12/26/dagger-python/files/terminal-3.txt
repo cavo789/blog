@@ -1,0 +1,10 @@
+Setup tracing at https://dagger.cloud/traces/setup. To hide: export STOPIT=1
+
+Call one or more functions, interconnected into a pipeline
+
+USAGE
+  dagger call [options] \<function>
+
+FUNCTIONS
+  container-echo   Returns a container that echoes whatever string argument is provided
+  grep-dir         Returns lines that match a pattern in the files of the provided Directory

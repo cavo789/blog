@@ -181,18 +181,7 @@ Adding Giscus to allow comments and feedback.
 
 On Github.com, I have created a new repository called `blog` ([https://github.com/cavo789/blog](https://github.com/cavo789/blog)). Once this is done, back to my console and I run a few git commands:
 
-<Terminal typewriter>
-$ git init
-...
-$ git add .
-...
-$ git commit -m "Initial commit"
-...
-$ git remote add origin git@github.com:cavo789/blog
-...
-$ git push -u origin master
-...
-</Terminal>
+<Terminal typewriter source="./files/terminal-1.txt" />
 
 Once this was done, I have thus pushed my files to Github as foreseen by Docusaurus that is, for instance, the `/node_modules` is not part of my repo; which is fine since we will create that folder later by running some npx command on the web server where the site will be hosted.
 
