@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:28.686Z",
+  "source": "render.sh",
+  "lang": "bash",
+  "explanations": {
+    "3": "This creates the directory structure needed for caching files that Deno (a JavaScript runtime) will use inside the Docker container later.",
+    "4": "This gives full read-write-execute permissions to everyone on that cache directory so the container process can write files to it.",
+    "8": "$(id -u):$(id -g) gets your user ID and group ID so the container runs as you instead of root, preventing permission issues with files you create.",
+    "11": "This shares your cache directory from your computer into the container at /container_cache, so cached files persist between runs.",
+    "18": "This changes into the .build folder and opens the rendered HTML file in Windows Explorer (this script is meant to run on Windows)."
+  }
+}

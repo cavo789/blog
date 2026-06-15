@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:18.692Z",
+  "source": "TagArticlesPage.js",
+  "lang": "javascript",
+  "explanations": {
+    "9": "The regex /\\/blog\\/tags\\/([^/]+)/ extracts the tag name from a URL path like '/blog/tags/javascript' by capturing everything after 'tags/' until the next slash.",
+    "10": "decodeURIComponent converts URL-encoded characters (like %20 for spaces) back to normal text so 'my%20tag' becomes 'my tag'.",
+    "31": "This creates a unique list of all tags across all posts by flattening the tags arrays and removing duplicates using a Set.",
+    "32": "This finds the original tag name by comparing it against slug versions—so if 'JavaScript' was slugified to 'javascript', we find and display the original 'JavaScript'.",
+    "37": "The optional chaining operator ?. safely checks if post.tags exists before calling some(), preventing errors if a post has no tags."
+  }
+}

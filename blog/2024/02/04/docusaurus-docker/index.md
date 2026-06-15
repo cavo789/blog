@@ -76,7 +76,7 @@ Just to have a bit of content, let's create a few articles automatically.
 
 Please run the following commands to create three Markdown files (our posts) in the `blog` folder:
 
-<Terminal>
+<Terminal typewriter>
 $ (
   mkdir -p blog && cd $_
   echo '---' > 2024-02-04-welcome-world.md
@@ -121,7 +121,7 @@ Just in case you're interested by the `tree` utility and don't have yet, simply 
 
 At this stage of the tutorial, you've all required files and a few blog posts so, let's start everything:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose up --detach --build
 </Terminal>
 

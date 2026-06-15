@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:01.641Z",
+  "source": "hangman.part2.php",
+  "lang": "php",
+  "explanations": {
+    "12": "array_rand() picks a random index from the array, so $words[array_rand($words)] gets a random word from the list.",
+    "26": "We're using the incorrect guess count as an index to pick which hangman drawing to show—0 guesses wrong shows the first drawing, 1 shows the second, and so on.",
+    "33": "str_split() breaks a string into an array of individual characters, so we can check each letter one by one.",
+    "40": "trim() removes the extra space from the end of the string we built by adding spaces after each letter or underscore.",
+    "54": "fgets(STDIN) reads what the user types from the keyboard and trim() removes the newline character at the end.",
+    "56": "strlen($guess) !== 1 checks that exactly one character was entered, and !ctype_alpha($guess) checks that it's actually a letter.",
+    "70": "strpos() looks for the guessed letter in the word; if it returns false (meaning not found), we subtract from incorrect guesses.",
+    "74": "This line has a logic problem—displayWord() echoes output instead of returning a string, so comparing it won't work as intended to detect a win."
+  }
+}

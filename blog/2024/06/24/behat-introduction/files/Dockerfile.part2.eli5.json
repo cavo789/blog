@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:33:17.312Z",
+  "source": "Dockerfile.part2",
+  "lang": "part2",
+  "explanations": {
+    "1": "This disables spell-checking for this entire file, which is common in Docker files since they contain technical terms that spell-checkers might flag incorrectly.",
+    "12": "This line pulls a pre-made image that already has PHP 8.2 and the FPM (FastCGI Process Manager) installed, so we don't have to install them manually.",
+    "20": "We're declaring the ARG variables again here even though we defined them earlier — this is required in Docker because ARG values don't persist across different RUN commands.",
+    "24": "We're creating a new user group with a specific numeric ID (gid) that matches the one on the host machine, which helps avoid file permission issues when sharing folders.",
+    "25": "We're creating a new user account with home directory, matching the uid/gid from the host machine so files created inside the container are owned by the right user outside.",
+    "30": "We're storing a URL to a JSON file that lists all available Chrome versions and their download locations, which we'll query later to find the exact version we want.",
+    "46": "This line queries the JSON file to find the download URL for a specific Chrome browser version on Linux, using jq to filter through the data.",
+    "49": "The -j flag tells unzip to extract files directly into the destination folder without creating a subfolder, so we get the executables right where we need them.",
+    "55": "Similar to line 46, but this time we're finding the download URL for the chromedriver (the tool that controls Chrome) instead of the browser itself.",
+    "60": "This makes the chromedriver file executable so it can actually be run, though the variable name here says 'chrome' which might be slightly confusing since it's actually the driver.",
+    "66": "This copies the composer tool (a PHP dependency manager) from a separate pre-built image into our image, rather than downloading and compiling it ourselves."
+  }
+}

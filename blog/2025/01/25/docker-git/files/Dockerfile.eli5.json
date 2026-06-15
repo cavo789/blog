@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:09.498Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "This special comment tells Docker to use a specific version of the Dockerfile syntax, which enables newer features.",
+    "10": "The 'set -e -x' command makes the shell exit immediately if any command fails and print each command before running it, which helps catch errors early.",
+    "11": "The '-m 0700' flag sets permissions so only the owner (root) can read, write, and enter the .ssh directory for security.",
+    "14": "This keeps the container alive indefinitely by running a command that never finishes, otherwise the container would exit immediately after starting."
+  }
+}

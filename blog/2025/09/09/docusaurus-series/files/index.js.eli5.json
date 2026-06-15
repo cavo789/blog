@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:26.324Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "13": "useBlogPost() is a hook that gives us information about whether we're currently viewing the full blog post page (true) or just a preview in a list (false).",
+    "14": "This returns a CSS class name to add spacing only when viewing previews in a list, not when viewing the full post itself.",
+    "24": "This checks if we're on the full blog post page, and only then renders the SeriesPosts component to show related posts in the same series.",
+    "26": "metadata.frontMatter.series accesses the 'series' field from the blog post's front matter — that's the metadata block at the top of the markdown file.",
+    "35": "SeriesPosts appears twice in this code, once near the top of the post and once at the bottom, to show related posts in context at both locations."
+  }
+}

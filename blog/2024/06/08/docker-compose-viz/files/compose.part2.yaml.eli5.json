@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:37.931Z",
+  "source": "compose.part2.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "6": "The port 6379 is exposed without mapping to a host port—containers can reach it, but the outside world cannot unless you specify a host port like '6379:6379'.",
+    "10": "This means Docker will run 2 copies of the Redis service across your cluster for load balancing and redundancy.",
+    "12": "Parallelism means how many replicas get updated at the same time; setting it to 2 means both Redis copies update simultaneously rather than one at a time.",
+    "25": "This constraint forces the database to only run on manager nodes in your Docker Swarm cluster, ensuring it stays in a controlled location.",
+    "32": "The vote service won't start until Redis is ready, preventing errors from connection attempts to a service that doesn't exist yet.",
+    "59": "The worker service connects to both frontend and backend networks so it can talk to both the voting app and the database.",
+    "62": "Mode 'replicated' means you want multiple copies running (as opposed to 'global' which runs one on every node).",
+    "64": "Labels are metadata tags you can attach to containers to identify or organize them; this one marks the service as part of the VOTING app.",
+    "67": "Delay is the waiting period before Docker attempts to restart a failed container; 10 seconds gives the service time to cool down.",
+    "68": "Max attempts limits restart tries to 3; if it fails 3 times, Docker stops trying to restart it automatically.",
+    "69": "Window is a time span (120 seconds here) during which Docker counts restart attempts; failures older than 2 minutes don't count toward the max.",
+    "77": "Stop grace period gives the visualizer 90 seconds to shut down gracefully before Docker force-kills it.",
+    "79": "This mounts the Docker daemon's socket file into the container so the visualizer can ask Docker for information about running services."
+  }
+}

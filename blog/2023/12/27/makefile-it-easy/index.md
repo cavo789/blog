@@ -85,7 +85,7 @@ It's much easier to remember a command like `make something` than remember all D
 <AlertBox variant="info" title="Use printf to echo valuable information">
 By typing `make phpmyadmin`, it would be nice to see, on the console, the credentials to use and a small tip like this:
 
-<Terminal>
+<Terminal typewriter>
 $ make phpmyadmin
 User is root and password is example. Please open http://127.0.0.1:8089 to open phpmyadmin.
 

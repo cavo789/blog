@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:16.291Z",
+  "source": ".part13.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "IfModule checks if a specific Apache module is installed before running the code inside it, so your server won't crash if the module doesn't exist.",
+    "3": "This header tells the browser to reuse the same connection for multiple requests instead of opening a new connection each time, which speeds things up.",
+    "11": "The comment says 1 hour but the code says 1 month — this is a mistake in the comment, the actual expiration time is 1 month.",
+    "14": "Line 14 is missing the word 'plus' — it should be 'access plus 1 month' to match the other lines and work correctly.",
+    "35": "AddType tells Apache to recognize .cur files as a specific image type, so browsers know how to handle them.",
+    "56": "This line uses seconds (2592000) instead of the time format used elsewhere, which is equivalent to 30 days but harder to read.",
+    "78": "FilesMatch is a pattern that selects files based on their name — in this case, any file ending in .swf.",
+    "79": "This sets an Expires header specifically for SWF files as a backup, in case the earlier ExpiresByType rules didn't apply."
+  }
+}

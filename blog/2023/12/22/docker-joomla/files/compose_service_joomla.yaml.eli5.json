@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:40.758Z",
+  "source": "compose_service_joomla.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "2": "This is a comment syntax that doesn't actually work in YAML; YAML uses # for comments, not //, so this line will likely cause an error or be treated as literal text."
+  }
+}

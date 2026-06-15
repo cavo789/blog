@@ -103,7 +103,7 @@ Or, perhaps easier, just use `history -d` followed by the line number as display
 
 So if the output of `history` is the one below, I can remove the `vi` line by running `history -d 2130`
 
-<Terminal>
+<Terminal typewriter>
 $ history -d 2130
 
 2129  history | grep -i "docker exec"

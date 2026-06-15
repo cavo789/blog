@@ -46,7 +46,7 @@ For sure, if you've one, just jump in your project. Here, for this blog post, we
 
 By running the commands below in a console, you'll retrieve download just the `brand` folder from the `quarto-examples` project:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ cd /tmp
 git clone --filter=blob:none --sparse https://github.com/quarto-dev/quarto-examples
 cd quarto-examples

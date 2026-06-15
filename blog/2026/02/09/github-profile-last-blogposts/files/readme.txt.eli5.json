@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:14.584Z",
+  "source": "readme.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "1": "This line tells the markdown linter to ignore a specific rule (MD033) that would normally complain about using HTML in markdown files — the file uses HTML tables below, so it needs this exception.",
+    "7": "This line embeds a dynamic GitHub stats card as an image; it pulls your repository and contribution statistics from an external service and displays them visually.",
+    "17": "These HTML comments act as markers where an automated tool will insert your blog posts — the tool looks for these exact comment boundaries and fills in the content between them."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:30.237Z",
+  "source": "devcontainer.json",
+  "lang": "json",
+  "explanations": {
+    "14": "This line connects your local folder on your computer to a folder inside the Docker container, so files you edit locally are instantly available inside the container.",
+    "22": "This tells VS Code to use the PHP CS Fixer extension as the tool that automatically formats your PHP code when you save.",
+    "38": "PSR12 is a widely-adopted PHP style standard; this line tells PHP CS Fixer to follow those rules when reformatting your code.",
+    "63": "This command runs automatically after Docker finishes setting up the container, installing Rector (a tool for refactoring PHP code) as a development dependency."
+  }
+}

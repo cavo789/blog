@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:04.726Z",
+  "source": "slug.js",
+  "lang": "javascript",
+  "explanations": {
+    "19": "The normalize method breaks apart accented letters into their base letter plus separate accent marks, so we can remove just the accents in the next step.",
+    "20": "This removes the accent marks that were separated out by normalize; the Unicode range \\u0300-\\u036f covers all diacritical marks like tildes and umlauts."
+  }
+}

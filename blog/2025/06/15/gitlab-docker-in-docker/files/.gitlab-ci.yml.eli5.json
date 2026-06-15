@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:04.311Z",
+  "source": ".gitlab-ci.yml",
+  "lang": "yaml",
+  "explanations": {
+    "3": "This command finds all PHP files and checks their syntax: find locates them, print0 pipes them safely (handling filenames with spaces), xargs passes each one to php -l (the linter) one at a time with -n1."
+  }
+}

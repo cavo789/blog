@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:47:24.017Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "4": "The function accepts props including a destructured 'aria-label' which is renamed to ariaLabel because hyphens aren't valid in JavaScript variable names—we need to extract it this way, then pass it back as aria-label on line 5."
+  }
+}

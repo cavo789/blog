@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:08.931Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "This special comment tells Docker to use a newer syntax version that enables advanced features; it should be the very first line of the Dockerfile.",
+    "7": "AS base creates a named intermediate stage that we can refer to later with --from, like saving a checkpoint we can build on top of.",
+    "13": "Corepack is a tool bundled with Node.js that manages package managers like yarn; this enables it so yarn will work properly.",
+    "19": "AS building_production names this stage so we can reference it later to copy files from this intermediate build without including everything in the final image.",
+    "22": "The backslash at the end of this line lets us continue the same RUN command on the next line, keeping related steps together.",
+    "31": "The asterisk in package.* is a wildcard that matches both package.json and package-lock.json (or yarn.lock), copying whichever lock file exists.",
+    "49": "COPY --from=building_production pulls files from that earlier named stage instead of from your local machine, so we only copy the final build output."
+  }
+}

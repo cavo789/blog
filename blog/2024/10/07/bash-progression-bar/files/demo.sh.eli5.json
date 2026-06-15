@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:37:16.648Z",
+  "source": "demo.sh",
+  "lang": "bash",
+  "explanations": {
+    "10": "The {1..50} syntax creates a list of numbers from 1 to 50, which the loop iterates through one at a time.",
+    "17": "The >() syntax is process substitution—it takes the output from main and pipes it into the progress_bar::process function as if it were a file, allowing real-time processing of the output."
+  }
+}

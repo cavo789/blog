@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:34:09.753Z",
+  "source": "makefile.part28",
+  "lang": "part28",
+  "explanations": {
+    "1": "The .PHONY declaration tells make that 'config' is a command target, not a file, so it runs every time you call it.",
+    "3": "This sets the COMPOSE_FILE environment variable to a list of Docker files, then runs docker compose config to validate and print the merged configuration."
+  }
+}

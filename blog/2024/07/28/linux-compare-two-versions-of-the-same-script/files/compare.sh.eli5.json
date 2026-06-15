@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:34:59.645Z",
+  "source": "compare.sh",
+  "lang": "bash",
+  "explanations": {
+    "5": "The condition checks if the number of arguments is NOT equal to 2; the '!' means 'not' and '$#' counts how many arguments were passed.",
+    "13": "The '&&' chains commands together—if the first part (checking if folder doesn't exist) is true, it runs the echo and exit commands.",
+    "16": "This command saves your current directory location so you can return to it later with 'popd'; the '>/dev/null' hides the output message.",
+    "18": "The backslash sequences like '\\e[37;1m' are ANSI color codes that make the text appear bold and white on the terminal.",
+    "41": "The '<(...)' syntax is called process substitution—it lets you treat the output of a command as if it were a file that 'diff' can read.",
+    "42": "This extracts function names by finding lines starting with 'function', then using 'awk' to grab just the function name (the second field), and 'sort' to order them alphabetically."
+  }
+}

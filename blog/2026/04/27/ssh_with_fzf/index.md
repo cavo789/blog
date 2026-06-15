@@ -40,7 +40,7 @@ Let's get started...
 
 Check out my previous <Link to="/blog/linux-fzf-introduction">Fuzzy Finder</Link> blog post if you need more detailed information. Otherwise, simply run the command below and complete the installation by answering "Yes" to all prompts, following the instructions displayed in your terminal.
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf ; ~/.fzf/install
 </Terminal>
 
@@ -50,7 +50,7 @@ While this isn't strictly related to SSH, you can now press <kbd>CTRL</kbd>+<kbd
 
 The goal here is to organize your configuration more intelligently. Let's create an `~/.ssh/conf.d` folder where your configuration files will reside.
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ mkdir -p ~/.ssh/conf.d
 </Terminal>
 

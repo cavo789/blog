@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:36.455Z",
+  "source": "custom.part2.js",
+  "lang": "javascript",
+  "explanations": {
+    "1": "This waits for the page to fully load before running the code inside, so all elements are ready to use.",
+    "7": "This creates a pattern (regex) that finds text wrapped in double equals signs like ==example==, where [^=]* means 'any characters except equals signs'.",
+    "8": "The replace method finds all matches of that pattern and swaps them for <mark> tags, where $1 refers back to the text that was between the equals signs."
+  }
+}

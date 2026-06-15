@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:41.966Z",
+  "source": "windows_hosts.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "3": "This line maps the IP address 127.0.0.1 (your local machine) to the hostname 'kingsbridge', so you can type 'kingsbridge' in your browser instead of the IP address."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:59.877Z",
+  "source": "compose.volumes.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "12": "This mounts a Docker volume named counter_data into the container at the /data path, so data saved there persists even if the container stops.",
+    "15": "This top-level volumes section defines named volumes that can be reused across services, rather than creating anonymous temporary storage.",
+    "17": "This creates an empty named volume called counter_data that Docker will manage for you automatically."
+  }
+}

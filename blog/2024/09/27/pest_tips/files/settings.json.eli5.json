@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:37:09.578Z",
+  "source": "settings.json",
+  "lang": "json",
+  "explanations": {
+    "3": "This tells the extension what command to run when executing tests—it uses 'docker compose exec' to run commands inside a Docker container, and '-u root:root' means run as the root user.",
+    "4": "This section maps paths from your computer to paths inside the Docker container, so files can be found correctly when tests run."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:02.291Z",
+  "source": "comments.js",
+  "lang": "javascript",
+  "explanations": {
+    "13": "TextEncoder converts a string into raw bytes, which is necessary because Bluesky uses byte positions (not character positions) to mark where links and special text formatting start and end.",
+    "14": "TextDecoder does the opposite—it converts bytes back into readable text, which we need when we've sliced the byte array into pieces.",
+    "27": "The find() method searches through the facet's features array and returns the first feature that matches the condition (in this case, one marked as a link).",
+    "97": "The split('/').pop() extracts the last segment from a URL-like URI string, which is the unique record ID needed to build links to this specific Bluesky post.",
+    "111": "This uses a template literal to dynamically calculate left padding based on reply.depth, making nested replies indent deeper on the page.",
+    "208": "This defines a helper function inside the useEffect that recursively flattens a tree of nested replies into a single array, tracking how deep each reply is nested.",
+    "212": "When a reply has its own replies, this line calls the function recursively with those nested replies and increments the depth counter."
+  }
+}

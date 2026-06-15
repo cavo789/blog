@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:39.399Z",
+  "source": ".part22.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "RedirectPermanent tells the server to send visitors from the old URL to the new one, and it tells their browser to remember this change permanently (with a 301 status code) so it doesn't have to ask the server again next time."
+  }
+}

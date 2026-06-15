@@ -92,7 +92,7 @@ You can display or edit the content of the `~/.ssh/authorized_keys` file by runn
 
 Now that we can connect the server so easily, we can f.i. copy files from our host like this:
 
-<Terminal>
+<Terminal typewriter>
 $ scp -i ~/.ssh/id_ed25519_my_blog local_file christophe@my_blog.be:/remote_file
 </Terminal>
 
@@ -102,7 +102,7 @@ First we need to specify our local file (or folder) then where to copy it.
 
 Now, in the other direction, from the server to your host:
 
-<Terminal>
+<Terminal typewriter>
 $ scp -i ~/.ssh/id_ed25519_my_blog christophe@my_blog.be:/remote_file local_file
 </Terminal>
 

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:29.251Z",
+  "source": "customer.php",
+  "lang": "php",
+  "explanations": {
+    "7": "This line is incomplete—it looks like someone started typing a method name but didn't finish. The comment is showing an example of what an IDE (like Tabnine) might suggest to auto-complete it."
+  }
+}

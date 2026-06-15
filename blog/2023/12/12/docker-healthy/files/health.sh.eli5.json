@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:11.797Z",
+  "source": "health.sh",
+  "lang": "bash",
+  "explanations": {
+    "11": "This pipes the list of container names into a loop, reading one name at a time into the variable `name`.",
+    "12": "This gets detailed info about the container, converts it to JSON format, then uses `jq` (a JSON parser tool) to extract just the health status value.",
+    "20": "This checks if the status is NOT equal to 'null', meaning the container has a health check configured but it's not healthy (so we color it red)."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:58.240Z",
+  "source": "compose_webui.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "8": "This maps port 11434 from inside the container to port 11434 on your computer, so you can talk to the ollama service from the outside.",
+    "10": "This creates a named storage area called ollama_data that persists even if the container stops, and mounts it to /root/.ollama inside the container.",
+    "25": "This maps port 4000 on your computer to port 8080 inside the container, so the web interface is accessible at localhost:4000.",
+    "27": "This allows the open-webui container to reach your host machine using the special hostname host.docker.internal, which Docker automatically translates.",
+    "29": "This tells open-webui where to find the ollama service by using the container name 'ollama' as a hostname, since Docker networks let containers talk to each other this way.",
+    "34": "This ensures ollama starts before open-webui, since open-webui needs ollama to be running first to function properly."
+  }
+}

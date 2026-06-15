@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:01.559Z",
+  "source": "compose.mounted_volumes.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "12": "This line connects a folder on your computer (./data) to a folder inside the container (/data), so files created inside the container are saved on your actual machine and persist even after the container stops."
+  }
+}

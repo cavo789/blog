@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:25.195Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "This tells Docker to use a specific syntax version for parsing the Dockerfile, which enables newer features like the cache mount on line 19.",
+    "12": "These environment variables tell Python not to create .pyc files and to output logs immediately instead of buffering them, which is useful for seeing real-time output in containers.",
+    "19": "This creates a temporary cache folder that persists between builds so apt-get doesn't re-download the same packages every time you rebuild the image.",
+    "39": "This checks if a user with that name already exists before trying to create it, preventing errors if the image was already set up.",
+    "69": "This checks if the welcome message marker already exists in the file, so it only adds the message once even if you rebuild the container multiple times.",
+    "89": "Like line 19, this caches pip's downloaded packages between builds to speed up dependency installation on subsequent rebuilds."
+  }
+}

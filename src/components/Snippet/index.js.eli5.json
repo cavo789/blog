@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:47:15.517Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "22": "React.isValidElement() checks if something is actually a React component (not just a plain object or string).",
+    "26": "The regex /language-(\\w+)/ looks for the word 'language-' followed by letters/numbers, and match[1] grabs just the part after 'language-'.",
+    "29": "The ?. operator (optional chaining) safely accesses node.props.children even if node.props doesn't exist — it just returns undefined instead of crashing.",
+    "31": "This checks if nested is an array so we can loop through multiple children; otherwise we treat it as a single child.",
+    "273": "useMemo wraps code that shouldn't re-run every render — here we split the code into lines and syntax-highlight them only when code or lang changes.",
+    "279": "If Prism doesn't have a syntax highlighter for the language, we fall back to plaintext or a generic 'clike' grammar so highlighting doesn't break.",
+    "288": "We remove extra lines from the highlighted output to match the number of raw lines, since syntax highlighting sometimes adds or removes content.",
+    "293": "This toggle function switches activeLine between the line number and null — clicking the same line twice turns the explanation off.",
+    "311": "dangerouslySetInnerHTML tells React 'I know this is risky, but I'm putting safe HTML here' — Prism's output is safe because it only wraps code in span tags.",
+    "318": "These mouse events make the tooltip appear on hover; onMouseLeave hides it again when you move the mouse away.",
+    "367": "useMemo parses the eli5json string (which comes as JSON text) into a JavaScript object, and caches it so we don't re-parse it every render.",
+    "383": "useId() generates a unique string ID that persists across renders, so the button's aria-controls always matches the content div's id.",
+    "385": "This useMemo tries three ways to find the language: from a prop, from HTML children, or from the filename extension.",
+    "395": "filename.split('.').pop() splits the filename by dots and takes the last piece — so 'app.tsx' becomes 'tsx'.",
+    "404": "This useMemo decides which code block renderer to use: fancy line-by-line ELI5 renderer if annotations exist, otherwise Docusaurus's CodeBlock, otherwise just raw children.",
+    "415": "This takes the last part of a file path (like '/src/app.tsx' becomes 'app.tsx') and lowercases it for consistent matching.",
+    "419": "isDockerFile checks multiple Docker filename patterns because the Dockerfile could be named 'Dockerfile', 'docker', or have various extensions.",
+    "438": "variantKey picks a style variant in order: use the variant prop if given, otherwise detect Docker/Docusaurus, otherwise use the language map, otherwise 'none'.",
+    "450": "styles[`variant_${variantKey}`] looks up a CSS class name by constructing the string 'variant_docker' or 'variant_python' etc., falling back to an empty string if not found.",
+    "457": "displayTitle builds the heading text, preferring an explicit title, then filename, then the language name in uppercase, or 'Snippet' as last resort."
+  }
+}

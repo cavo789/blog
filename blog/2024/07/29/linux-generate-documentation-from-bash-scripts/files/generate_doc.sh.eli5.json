@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:18.982Z",
+  "source": "generate_doc.sh",
+  "lang": "bash",
+  "explanations": {
+    "5": "This uses BASH_SOURCE[0] instead of $0 to reliably find where the current script file is located, even if it's been sourced from another script.",
+    "38": "The 'local -n' syntax creates a reference (like a pointer) to the array passed as an argument, so modifications inside the function affect the original array.",
+    "41": "The IFS variable controls how bash splits text; here it's set to newline so the sort output is split by line breaks instead of spaces, then restored to its original value on line 42.",
+    "87": "These are regex patterns (not regular variables) used later with sed to find lines that start with specific text in the file.",
+    "131": "The '${2:-}' syntax means 'use the second argument if it exists, otherwise use an empty string'—it's a way to make an optional parameter.",
+    "182": "This overwrites the createTOC variable from line 177; it should probably use a different variable name like generateScriptName to avoid confusion.",
+    "254": "The 'sed -i' command modifies the file in-place; the '1 i' means 'insert before line 1', and the backslash before $2 escapes the variable so sed processes it literally.",
+    "316": "The result of find is stored as a string, not as a proper bash array, which is why it needs to be processed through array::sort on the next line.",
+    "319": "This calls array::sort with the variable name (without $), and the function returns sorted content that overwrites arrFiles.",
+    "342": "The $'\n' syntax in bash inserts a literal newline character into the string, used here to format the markdown list across multiple lines.",
+    "407": "This removes any carriage return characters (\r) from the headings string to normalize line endings to Unix-style (LF only).",
+    "425": "BASH_REMATCH is a special array that bash automatically fills when a regex pattern matches; index [0] is the whole match, [1] is the first captured group.",
+    "441": "After replacing ## with #, this line removes all remaining # characters and replaces them with two spaces, effectively converting heading levels to bullet indentation.",
+    "469": "The '< <(...)' syntax is called process substitution; it feeds the output of printf as input to the while loop without creating a subshell."
+  }
+}

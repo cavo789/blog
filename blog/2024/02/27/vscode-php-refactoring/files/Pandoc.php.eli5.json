@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:27.829Z",
+  "source": "Pandoc.php",
+  "lang": "php",
+  "explanations": {
+    "20": "This line makes the filename absolute by combining it with the output folder path, and removes any leading slashes from the filename to avoid double slashes.",
+    "22": "This extracts just the file extension (like 'pdf' or 'docx') from the full filename path by using pathinfo, which breaks a path into its parts.",
+    "24": "This calls getContentType() and immediately pulls out just the 'type' value from the returned array, so $contentType ends up being something like 'application/pdf'.",
+    "30": "The utf8_decode here converts the filename from UTF-8 encoding before passing it to filesize, which is sometimes needed on certain systems that don't handle UTF-8 paths well.",
+    "35": "This flushes any output that PHP has been buffering (holding in memory), making sure nothing gets stuck before the file download begins.",
+    "37": "The @ symbol suppresses any error messages that readfile might produce, and utf8_decode is used again here for the same reason as line 30."
+  }
+}

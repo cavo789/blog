@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:34:28.404Z",
+  "source": "makefile.part38",
+  "lang": "part38",
+  "explanations": {
+    "2": "The @ symbol tells Make to run this command silently without printing the command itself; sensible-browser is a Linux tool that opens a URL in whatever browser the user has set as default.",
+    "5": "The ${GIT_URL_REPO} syntax substitutes a variable (like a placeholder) with its actual value, similar to how you'd use a variable in any programming language.",
+    "8": "The /-/wikis/home path is GitLab's specific URL structure for accessing a project's wiki; it's not a standard web pattern, just how GitLab organizes its features."
+  }
+}

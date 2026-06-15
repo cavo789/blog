@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:47:49.220Z",
+  "source": "makefile",
+  "lang": "makefile",
+  "explanations": {
+    "1": "The 'build:' label is a target name — when you run 'make build', it will execute the commands listed below it.",
+    "2": "The tab character at the start is required by make syntax; spaces won't work here, which trips up many people at first."
+  }
+}

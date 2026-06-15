@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:26.192Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "13": "This sets the user ID and group ID (1000:1000) that the Joomla container will run as, rather than as root for security reasons.",
+    "17": "This mounts a folder from your computer (./site_joomla) into the container's web directory (/var/www/html) so changes you make locally appear in the running container.",
+    "25": "Like line 13, this runs the MySQL database container as user 1000 instead of root for better security.",
+    "29": "This stores the MySQL database files in ./db on your computer so the data persists even if the container is stopped or deleted."
+  }
+}

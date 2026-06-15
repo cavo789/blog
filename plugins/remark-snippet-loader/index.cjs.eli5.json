@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:47:30.530Z",
+  "source": "index.cjs",
+  "lang": "javascript",
+  "explanations": {
+    "3": "unist-util-visit is a library function that walks through a syntax tree (like a document structure) and lets you find and process specific node types.",
+    "28": "This returns a function that acts as a plugin—Docusaurus will call it with the parsed document tree and file information.",
+    "36": "visit() searches the tree for all nodes named 'mdxJsxFlowElement' (a special component-like element in MDX) and runs your function on each one.",
+    "52": "If the source path starts with ./ or ../, treat it as relative to the current MDX file's folder; otherwise treat it as relative to the project root.",
+    "63": "If the MDX component has a 'filename' attribute, use that for language detection; otherwise fall back to the actual source file path.",
+    "70": "Extract the file extension (like 'js' from 'file.js'), convert to lowercase, or if there's no extension, use the whole filename as fallback.",
+    "102": "The code looks for a companion .eli5.json file right next to the source file to inject human-friendly explanations.",
+    "107": "Check that eli5Data.explanations exists and is actually an object before trying to use it."
+  }
+}

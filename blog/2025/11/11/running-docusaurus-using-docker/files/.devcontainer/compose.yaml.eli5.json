@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:39.110Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "9": "The APP_HOME variable is set to /opt/docusaurus if it's not already defined in the environment; the ${VAR:-default} syntax means 'use VAR if it exists, otherwise use the default value after the colon'.",
+    "12": "This tells Docker which user account to run the container as, using the same OS_USERID and OS_GROUPID variables from the build args.",
+    "16": "The double dot (..) means 'the parent directory of the current directory', so this mounts everything one level up into the container at APP_HOME.",
+    "19": "The sleep infinity command keeps the container running indefinitely instead of starting the normal application, which is useful for development where you might run commands manually inside the container.",
+    "25": "This is setting a Java environment variable that tells the LanguageTool service where to find its language model files, which it will load from the ngrams volume.",
+    "32": "These named volumes are persistent storage areas managed by Docker itself rather than directories on your computer—they survive even if you delete the containers."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:17.260Z",
+  "source": "drun",
+  "lang": "plaintext",
+  "explanations": {
+    "4": "This calls a function _d_check_env to verify that both 'fzf' and 'docker' commands are available on your system; if either is missing, the script stops and returns an error.",
+    "31": "head -n 1 extracts just the first line from fzf_out, which contains the special key you pressed (like ctrl-r); if you didn't press a special key, this will be empty.",
+    "32": "tail -n +2 means 'show me everything starting from line 2 onward', so this grabs the actual selected Docker image info minus the key that was pressed.",
+    "42": "This builds a shell command that tries to find zsh first, falls back to bash if zsh doesn't exist, and finally uses sh as a last resort—ensuring the container starts with whatever shell is available.",
+    "43": "tr -s ' ' squeezes multiple spaces into single spaces, cleaning up the command string so it looks neat before being executed."
+  }
+}

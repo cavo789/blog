@@ -33,7 +33,7 @@ As you can see, our XML has no format, everything on the same line.
 
 We can beautify it using the `format` action:
 
-<Terminal>
+<Terminal typewriter>
 $ cat "data.xml" | xmlstarlet format --indent-spaces 4
 </Terminal>
 
@@ -41,7 +41,7 @@ $ cat "data.xml" | xmlstarlet format --indent-spaces 4
 
 We can also use `Xpath` to specify our desired output:
 
-<Terminal>
+<Terminal typewriter>
 $ cat "data.xml" | xmlstarlet sel -t -v "/bookstore/book/title"
 
 Everyday Italian
@@ -57,7 +57,7 @@ If you don't known XPath yet, we've used `"/bookstore/book/title"` because our X
 
 We can also make some filtering like getting books for children:
 
-<Terminal>
+<Terminal typewriter>
 $ cat "data.xml" | xmlstarlet sel -t -v "//book[@category='children']/title"
 
 Harry Potter

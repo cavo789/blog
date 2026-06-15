@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:59.058Z",
+  "source": "AnyTest.part7.php",
+  "lang": "php",
+  "explanations": {
+    "1": "This starts a test that will check rules about all the controller files in your App\\Http\\Controllers folder.",
+    "7": "This checks that every controller class is marked 'final', which means other classes can't extend it and create a subclass.",
+    "8": "This verifies that your controller classes don't inherit from any parent class—they all stand alone without extending anything."
+  }
+}

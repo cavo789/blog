@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:24.620Z",
+  "source": "Dockerfile.part3",
+  "lang": "part3",
+  "explanations": {
+    "3": "This tells the system to skip interactive prompts during installation, so the Docker build won't get stuck waiting for user input.",
+    "7": "The `-q` flag makes wget run quietly without printing download progress, keeping the Docker build output cleaner.",
+    "9": "After installing Chrome, we delete the apt package cache to reduce the final Docker image size, since we won't need those files again.",
+    "11": "The `--disable-dev-shm-usage` flag tells Chrome to use disk instead of shared memory (which might be limited in containers), and `--disable-gpu` turns off GPU acceleration since containers often can't access the host's graphics hardware."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:49.835Z",
+  "source": "sshf_actions.zsh",
+  "lang": "bash",
+  "explanations": {
+    "8": "This line exits the function early if the 'target' variable is empty, which prevents the function from running with no host to work with.",
+    "12": "This uses 'fzf' (a fuzzy finder tool) to show a menu with three options, then stores whichever option the user picks into the 'cmd' variable.",
+    "14": "This extracts the actual hostname from SSH config by running 'ssh -G' (which dumps all SSH settings for that host) and finding the line that starts with 'hostname'.",
+    "24": "This reads a single keypress from the user without echoing it to the screen, so it can wait silently for them to press any key.",
+    "65": "The code stores ';; ' as a separator string that will be used later to join multiple comment lines together.",
+    "66": "This removes Windows-style line endings (carriage returns) and strips the newline from the end of each line.",
+    "70": "This strips the '#' comment character and any whitespace after it from the beginning of a line, leaving just the comment text.",
+    "80": "When a new Host entry is found, the code prints out the previous host's info (if any exists) and then resets the variables to start collecting info for the new host.",
+    "95": "The code pads the output with 150 spaces between the hostname column and the description separator, so descriptions don't visually overlap with the hostname list.",
+    "113": "This launches Perl to convert the special color tags (like '<red>') into ANSI escape codes that terminals understand for displaying colors.",
+    "124": "When fzf is run with '--expect', it outputs the pressed key on the first line and the selected item on the second line, so this extracts that key.",
+    "125": "This extracts the second line of fzf's output, which contains the full row the user selected from the list.",
+    "126": "This grabs just the first column (the alias name) from the selected row by splitting on whitespace.",
+    "133": "This runs 'ssh -G' with the alias name, which expands it to show all the real SSH settings that would actually be used (like the real username, real hostname, and key file)."
+  }
+}

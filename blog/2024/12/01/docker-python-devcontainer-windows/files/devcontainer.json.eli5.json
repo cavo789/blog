@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:50.376Z",
+  "source": "devcontainer.json",
+  "lang": "json",
+  "explanations": {
+    "4": "This points to a compose file in the parent directory; the ../ means go up one folder level to find the Docker Compose configuration.",
+    "7": "This sets which user account the VS Code container will log in as; in this case, a user named 'python' instead of root.",
+    "53": "This tells the editor to wrap lines at a specific column number (80) instead of wrapping at the window edge.",
+    "67": "The 'always' value means automatically fix issues and organize imports every time you save, without asking.",
+    "85": "This enables spell-checking for three languages: English, French, and Dutch, separated by commas.",
+    "89": "The 'explicit' value means only apply fixes when you specifically request them, unlike 'always' which happens automatically.",
+    "102": "These numbers (120 and 70) create vertical guide lines in your editor to help you keep line lengths readable.",
+    "116": "This dynamically uses whatever language the current file is written in as the default for new files.",
+    "124": "This controls which heading levels appear in the table of contents; '2..6' means include headings 2 through 6, skip level 1.",
+    "129": "This passes a custom configuration file path to the mypy type checker so it knows where to find your project's typing rules.",
+    "139": "Setting this to 'strict' means the type checker will enforce very strict rules about type safety in your Python code.",
+    "147": "This tells the import organizer to use the 'black' style, matching your code formatter's preferences."
+  }
+}

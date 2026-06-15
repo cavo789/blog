@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:36.904Z",
+  "source": "amazing.conf",
+  "lang": "conf",
+  "explanations": {
+    "5": "This shows the database connection details: it's PostgreSQL running on IP 1.2.3.4, listening on port 5438 (a non-standard port), with the database name 'amazing'.",
+    "12": "This 'Host' keyword defines a named SSH configuration block—when you type 'ssh MyAmazingApp_PROD', it will use the settings defined in the lines below it.",
+    "20": "Notice the database name is 'amazing_newx' (different from production's 'amazing'), so the test environment has its own separate database.",
+    "26": "This creates another SSH host configuration block, this time for the test environment with a different IP address and username."
+  }
+}

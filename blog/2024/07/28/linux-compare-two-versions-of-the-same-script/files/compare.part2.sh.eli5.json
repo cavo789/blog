@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:03.429Z",
+  "source": "compare.part2.sh",
+  "lang": "bash",
+  "explanations": {
+    "5": "The condition checks if the number of arguments is NOT equal to 2; the '!' negates the equality test, so this line exits if you didn't provide exactly two arguments.",
+    "13": "The '&&' chains commands together so that the next command only runs if the previous one succeeded; here it's used to echo an error and exit only if the source folder doesn't exist.",
+    "16": "This command changes your current directory to the source folder, and '>/dev/null' hides the normal output that would show the new directory path.",
+    "18": "The '\\e[37;1m' and '\\e[0;1m' are ANSI color codes that make the text appear in bright white; they're not actually part of the message.",
+    "41": "The '<(...)' syntax is called process substitution; it lets you use the output of a command as if it were a file, so diff can compare two command outputs side-by-side."
+  }
+}

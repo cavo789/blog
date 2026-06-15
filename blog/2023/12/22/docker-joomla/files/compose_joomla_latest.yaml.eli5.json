@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:30.620Z",
+  "source": "compose_joomla_latest.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "6": "The first number (8080) is the port on your computer where you'll access Joomla; the second number (80) is the port inside the container that Joomla listens on.",
+    "8": "This tells the Joomla container where to find its database—it uses the service name 'joomladb' as a hostname, which Docker automatically resolves."
+  }
+}

@@ -36,7 +36,7 @@ Please create a new file called `Hello.pas` with this content:
 
 As you know, Pascal is a compiled language and should then be compiled into an `.exe`. The command below will do this:
 
-<Terminal title="Powershell">
+<Terminal typewriter title="Powershell">
 $ docker run -it --rm -v %CD%:/app -w /app signumtemporis/fpc:cross.x86_64-win64.slim Hello.pas
 Free Pascal Compiler version 3.2.2 [2021/12/10] for x86_64
 Copyright (c) 1993-2021 by Florian Klaempfl and others
@@ -48,7 +48,7 @@ Linking Hello.exe
 
 Our executable has been created. Time to start it by running `Hello.exe`:
 
-<Terminal title="Powershell">
+<Terminal typewriter title="Powershell">
 $ Hello.exe
 
 Hello world! I'm a Turbo Pascal source code
@@ -85,7 +85,7 @@ The `shl` instruction will shift the number from on byte left.
 
 And compiled it:
 
-<Terminal title="Powershell">
+<Terminal typewriter title="Powershell">
 $ docker run -it --rm -v %CD%:/workspace signumtemporis/fpc:cross.x86_64-win64.slim Byte2Bin.pas
 
 Free Pascal Compiler version 3.2.2 [2021/12/10] for x86_64
@@ -98,7 +98,7 @@ Linking Byte2Bin.exe
 
 As you can see in the source code, the idea was to show the binary representation of `197` and, yes!, it's indeed `11000101`. Still in 2023.
 
-<Terminal title="Powershell">
+<Terminal typewriter title="Powershell">
 $ Byte2Bin.exe
 11000101
 </Terminal>

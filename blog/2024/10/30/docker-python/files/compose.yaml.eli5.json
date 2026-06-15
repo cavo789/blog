@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:14.063Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "7": "This tells Docker to use the 'development' stage from your Dockerfile instead of the default final stage, which lets you include extra tools for coding.",
+    "21": "This sets which user account the container runs as (the numbers are user ID and group ID); it's using the variables you defined above with fallback values if they're not set.",
+    "27": "The dot (.) means your current folder on your computer gets mapped into the container at the path stored in DOCKER_APP_HOME, so changes you make locally appear instantly in the container.",
+    "29": "This creates a persistent storage space just for VSCode extensions so they survive container restarts and you don't have to reinstall them each time.",
+    "31": "This stores your bash command history in a Docker volume so you keep your terminal history even after the container stops and restarts."
+  }
+}

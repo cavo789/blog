@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:51.840Z",
+  "source": "php_lint_2.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "5": "The HTML comment with 'highlight-next-line' tells the documentation system to visually highlight line 6 when rendering this file.",
+    "6": "The 'partial-data' section provides configuration details that get passed to a reusable template block elsewhere in the documentation system.",
+    "11": "Another highlight marker, this time to emphasize that the 'type' field below it is set to 'PHP'.",
+    "23": "This is a template tag that includes content from another file (_partials/project_type/is_for.md) into this document at render time."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:49.387Z",
+  "source": "devcontainer.part3.json",
+  "lang": "json",
+  "explanations": {
+    "8": "This tells VS Code where to find the phpcbf tool (a PHP code formatter) on your computer — it's an absolute file path to the executable.",
+    "10": "This tells VS Code where to find the phpcs tool (a PHP code sniffer that detects style violations) — similar to line 8 but for a different tool.",
+    "12": "This enables the fixer, meaning VS Code will automatically try to correct PHP code style issues when you save or request a fix.",
+    "14": "When phpcs finds style problems, this setting makes it show you the name/source of which rule was violated, not just the error.",
+    "16": "This points to a configuration file that defines which PHP coding standard (like PSR-12) your project should follow.",
+    "22": "This installs the phpsab extension into VS Code, which is the plugin that uses those phpcs and phpcbf tools you configured above."
+  }
+}

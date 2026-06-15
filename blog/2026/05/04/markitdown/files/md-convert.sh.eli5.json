@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:54:00.236Z",
+  "source": "md-convert.sh",
+  "lang": "bash",
+  "explanations": {
+    "6": "The 'exec' command replaces the current shell process with the docker command, so when docker finishes, the script exits immediately instead of continuing.",
+    "7": "The ':cached' suffix tells Docker to use a performance optimization for this mount on Mac, which trades perfect file consistency for speed since we're only reading files.",
+    "13": "This substitutes the current user's numeric ID and group ID so the container runs as the same user instead of root, which is a security practice."
+  }
+}

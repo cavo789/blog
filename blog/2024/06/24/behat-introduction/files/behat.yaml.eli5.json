@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:53.116Z",
+  "source": "behat.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "3": "The tilde (~) here means 'no configuration needed' — it's YAML shorthand for an empty object, so ChromeExtension will load with all its default settings.",
+    "10": "This is telling the browser automation tool where to find the Chrome debugging service; 0.0.0.0 means 'listen on all network interfaces' and 9222 is the standard port Chrome uses for remote control."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:58.561Z",
+  "source": "compose.part4.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "3": "This tells Docker to build an image by reading the Dockerfile in the current directory (the dot means 'here').",
+    "6": "The first number is the port on your computer, the second is the port inside the container—so requests to your machine's port 80 get forwarded to the container's port 80.",
+    "9": "This syncs a folder on your computer (./src) with a folder inside the container (/var/www/html/), so changes you make locally appear immediately in the running container."
+  }
+}

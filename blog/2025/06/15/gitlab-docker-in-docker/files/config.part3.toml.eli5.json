@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:08.299Z",
+  "source": "config.part3.toml",
+  "lang": "toml",
+  "explanations": {
+    "8": "The three dots (called 'spread operator' in some languages) mean 'keep whatever was already in this list, then add these new items to it'—it's a way to extend an existing volumes configuration without replacing it entirely."
+  }
+}

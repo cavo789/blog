@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:30.526Z",
+  "source": "erase.php",
+  "lang": "php",
+  "explanations": {
+    "3": "basename(__FILE__) extracts just the filename from the full path — so if the file is at /home/user/script.php, this gives you 'script.php'.",
+    "4": "dirname(__FILE__) does the opposite of basename — it gives you the directory path without the filename.",
+    "8": "RecursiveDirectoryIterator creates an object that can walk through a folder and all its subfolders to access files.",
+    "10": "RecursiveIteratorIterator::CHILD_FIRST means process the deepest files and folders first before moving up — this is important because you can't delete a folder until it's empty.",
+    "11": "The check for '.' and '..' prevents trying to delete the current directory and parent directory shortcuts, which would cause errors."
+  }
+}

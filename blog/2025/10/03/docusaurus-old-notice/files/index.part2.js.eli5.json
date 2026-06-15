@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:11.316Z",
+  "source": "index.part2.js",
+  "lang": "javascript",
+  "explanations": {
+    "13": "The <> and </> syntax is a React Fragment, which lets you return multiple elements without wrapping them in an extra div.",
+    "18": "This line conditionally sets the id attribute only when viewing the full blog post page (not on a list), using the ternary operator to choose between the ID value or undefined."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:26.360Z",
+  "source": "test.sh",
+  "lang": "bash",
+  "explanations": {
+    "3": "The 'allexport' option tells bash to automatically export every variable you define, so they become available to child processes like Docker.",
+    "4": "This line loads variables from a .env file into your current shell session so you can use them in your script.",
+    "5": "This turns off the allexport behavior so that any variables defined after this point won't automatically be exported to child processes."
+  }
+}

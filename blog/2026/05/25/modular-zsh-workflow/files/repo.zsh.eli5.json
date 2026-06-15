@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:54:35.671Z",
+  "source": "repo.zsh",
+  "lang": "bash",
+  "explanations": {
+    "9": "This runs the 'uname -s' command and stores its output (like 'Darwin' for Mac or 'Linux') in the os_type variable.",
+    "12": "The 'command -v' checks if a program exists, and '>/dev/null 2>&1' throws away any output so we only care about success or failure.",
+    "18": "The '&&' means both conditions must fail for this to trigger — it's checking that neither 'fd' nor 'fdfind' exist on this system.",
+    "25": "This checks if the operating system is macOS by comparing the os_type variable to 'Darwin', which is macOS's internal name.",
+    "27": "The '-f' flag checks if a file exists; this file only exists on Debian-based Linux systems, so it's a way to detect that OS type.",
+    "48": "This checks which fd variant is available (sometimes it's called 'fdfind' on some Linux systems instead of 'fd').",
+    "55": "This sets visual_editor to the $EDITOR environment variable, but if that's not set, it defaults to 'code' (VS Code).",
+    "62": "The backslash at the end of a line lets you continue a long command on the next line — it's just breaking up the command for readability.",
+    "64": "The 'sed' command removes the '/.git' directory name from the path, leaving just the project folder name.",
+    "74": "The '%' operator removes the matching suffix from the end of the string — so this strips off any trailing '/.git' that might still be there.",
+    "85": "The '-k 1' tells 'read' to wait for exactly 1 keypress instead of waiting for Enter, so the user gets immediate feedback.",
+    "88": "This checks if REPLY is either a newline character (when the user just presses Enter) or the letters Y or y."
+  }
+}

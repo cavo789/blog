@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:02.831Z",
+  "source": "compose.mounted_volumes_permissions.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "10": "This sets the user ID and group ID (1000:1000) that will run processes inside the container, instead of running as root for security reasons."
+  }
+}

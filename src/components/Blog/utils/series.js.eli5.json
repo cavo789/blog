@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:33.423Z",
+  "source": "series.js",
+  "lang": "javascript",
+  "explanations": {
+    "34": "seriesMap is an empty object that will store blog posts grouped by their series name, like a filing cabinet where each series gets its own drawer.",
+    "56": "We create a copy of the posts array using the spread operator (...) so we can sort it without changing the original order of posts in seriesMap.",
+    "70": "The optional chaining operator (?.) safely checks if the first sorted post exists and has an image; if not, it falls back to the defaultImage instead of crashing."
+  }
+}

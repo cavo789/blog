@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:29.337Z",
+  "source": "file_manager.py",
+  "lang": "python",
+  "explanations": {
+    "2": "Final is a type hint that means this value cannot be changed after it's set — it's a constant.",
+    "9": "These underscores at the start signal that these are private constants meant only for use inside this class.",
+    "33": "splitlines() breaks the entire file content into a list of individual lines, removing the line break characters.",
+    "39": "The second argument (1) tells index() to start searching from position 1, skipping the first delimiter we already found.",
+    "41": "This catches the case where there's an opening --- but no closing ---, so we give up and insert at the top instead.",
+    "52": "This creates a multi-line string by chaining strings together with the f before each part.",
+    "59": "insert() adds the formatted TLDR at the specific position in the list without replacing what's already there.",
+    "60": "join() takes all the list items and glues them back together into one string, using a newline between each line."
+  }
+}

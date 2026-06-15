@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:34:18.150Z",
+  "source": "makefile.part33",
+  "lang": "part33",
+  "explanations": {
+    "1": "The ${DOCKER_APP_HOME} syntax checks if that variable exists; if it's empty or not set, it uses /var/www/html as a fallback instead. The $(…) wraps the whole thing so bash evaluates it and passes the result to echo."
+  }
+}

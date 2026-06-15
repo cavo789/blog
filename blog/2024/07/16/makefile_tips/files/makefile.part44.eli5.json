@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:34:41.042Z",
+  "source": "makefile.part44",
+  "lang": "part44",
+  "explanations": {
+    "2": "The @ symbol tells Make to run this command without printing it first, and sensible-browser is a utility that automatically picks your default web browser to open the URL."
+  }
+}

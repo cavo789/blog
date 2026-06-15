@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:34.775Z",
+  "source": "module.bas",
+  "lang": "bas",
+  "explanations": {
+    "5": "This line assigns a server name from a variable cServerName to the ServerName property of the cData object, which likely represents a database connection configuration.",
+    "6": "Similarly, this sets up the database name that the connection will use.",
+    "8": "The hardcoded username 'SA' (System Administrator) is being set directly in the code, which is a security risk because anyone reading the source file can see it.",
+    "10": "The password is written directly in the source code as plain text, which is a serious security vulnerability—never hardcode passwords like this in production code.",
+    "12": "This calls a method on cData that runs a SQL query and pastes the results starting at cell A1 of the currently active spreadsheet, storing the result range in the rng variable."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:01.607Z",
+  "source": "main.part3.py",
+  "lang": "python",
+  "explanations": {
+    "1": "This imports tools from Dagger, a framework that lets you build containerized pipelines—think of it like Docker but with Python code instead of shell scripts.",
+    "2": "This imports Annotated and typing helpers, which let you add extra information to function parameters (like default values) without changing how Python sees them.",
+    "4": "The @object_type decorator tells Dagger to treat this class as a reusable component in your pipeline that can be called from other tools.",
+    "7": "The Annotated syntax with DefaultPath means this Directory parameter will automatically use the 'src' folder if the caller doesn't specify one—it's a smart default.",
+    "11": "The \\033[33m and \\033[0m are ANSI color codes that make the text yellow in your terminal output; it's just for readability when the pipeline runs.",
+    "13": "This starts a chain of operations (called a fluent interface) where each line modifies the container step-by-step, and the entire thing is awaited because it's async.",
+    "20": ".stdout() captures and returns the text output from the pylint command instead of just running it silently."
+  }
+}

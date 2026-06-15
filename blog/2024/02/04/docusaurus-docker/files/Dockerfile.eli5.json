@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:20.557Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "3": "This creates a new Docusaurus project (a documentation site builder) at /app using npx, then changes ownership of all files to the node user so they can be modified later.",
+    "4": "The chown command changes who owns the /app folder and everything inside it from root to the node user, which is required because the next line switches to that user.",
+    "6": "This switches from running commands as root (the default) to running them as the 'node' user, which is more secure and is needed to match the file ownership we set earlier.",
+    "14": "The --host 0.0.0.0 tells the development server to listen on all network interfaces, not just localhost, so you can access it from outside the container."
+  }
+}

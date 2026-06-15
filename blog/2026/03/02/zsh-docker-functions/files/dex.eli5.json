@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:58.369Z",
+  "source": "dex",
+  "lang": "plaintext",
+  "explanations": {
+    "4": "This checks that both the fzf and docker commands are available on your system, and stops the script if either one is missing.",
+    "5": "This checks if there are any running Docker containers, and stops the script early if there aren't any.",
+    "7": "This declares several variables that will be used later to store user input and selections from the fzf menu.",
+    "12": "This creates a multi-line string that tells Docker how to format and display detailed information about a container when you hover over it in the menu.",
+    "18": "The backslash before the dollar signs tells Docker to treat $p and $conf as template variables rather than shell variables.",
+    "19": "The {1} at the end means \"pass the first column of data (the container ID) from the fzf selection to this preview command\".",
+    "31": "This extracts just the first line of fzf's output, which tells you which key combination the user pressed (like Ctrl-E or Ctrl-R).",
+    "32": "This extracts everything after the first line, which is the actual container information the user selected.",
+    "33": "This pulls out just the container ID (the first column) from the selected row using awk, a text-processing tool.",
+    "44": "This creates a command that tries to start zsh, falls back to bash if zsh doesn't exist, and finally falls back to sh as a last resort.",
+    "45": "This uses tr to remove any extra spaces that might have been added, ensuring the docker command is clean before running it.",
+    "49": "Instead of executing the command immediately, this puts it into the zsh input buffer so you can edit it first before pressing Enter."
+  }
+}

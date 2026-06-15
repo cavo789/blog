@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:07.354Z",
+  "source": "styles.module.css",
+  "lang": "css",
+  "explanations": {
+    "11": "This removes the default spacing that browsers add to paragraphs, so the notice text sits flush without extra gaps.",
+    "15": "This adds a small gap to the right of bold text inside the notice, creating breathing room between the bold word and whatever comes after it."
+  }
+}

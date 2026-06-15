@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:17.331Z",
+  "source": "compose.part3.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "5": "This specifies which pre-built Docker image to use; the version number (3.22.6_200219) tells Docker exactly which release of LimeSurvey to run.",
+    "22": "This tells Docker not to start the LimeSurvey app until the database container reports it's healthy, preventing connection errors during startup.",
+    "33": "This is a health check command that Docker runs periodically; it connects to MySQL and pings it to verify the database is actually responding and ready."
+  }
+}

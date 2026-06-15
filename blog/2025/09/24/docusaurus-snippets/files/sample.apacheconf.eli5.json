@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:47:34.453Z",
+  "source": "sample.apacheconf",
+  "lang": "apacheconf",
+  "explanations": {
+    "1": "This creates a virtual host configuration that listens on port 80 (standard HTTP) for any IP address on the server.",
+    "3": "DocumentRoot tells Apache where on the filesystem to find the actual website files to serve when someone visits this domain."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:37.044Z",
+  "source": "module.part2.bas",
+  "lang": "bas",
+  "explanations": {
+    "4": "This hardcodes the SQL Server login username as 'SA' (the system administrator account) into the code, which is a security risk because anyone reading the code can see it.",
+    "6": "This hardcodes the database password directly in the source code, which is a major security vulnerability—passwords should never be stored in plain text in files.",
+    "12": "This calls a custom method that runs a SQL query and pastes all results starting at cell A1 in the currently active worksheet."
+  }
+}

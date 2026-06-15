@@ -38,7 +38,7 @@ Run `docker run -it --rm -v "${PWD}":/project -w /project php:8.2 php index.php`
 
 You'll get, as expected:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -it --rm -v "$PWD":/project -w /project php:8.2 php index.php
 The name is keyboard cost 125 €
 </Terminal>

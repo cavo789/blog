@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:25.937Z",
+  "source": "ai_service.py",
+  "lang": "python",
+  "explanations": {
+    "4": "Final is a type hint that means this variable will never change after it's set—it's like declaring a constant.",
+    "17": "The underscore prefix means this is a private variable meant for internal use only, not for code outside this class to access.",
+    "19": "The pipe symbol (|) is Python's way of saying the parameter can be either a string or None—it's a union type.",
+    "42": "This loop will run up to 5 times, and the attempt variable starts at 0 and counts up (0, 1, 2, 3, 4).",
+    "55": "This line first removes markdown quote symbols (>) from the start, then trims whitespace from both ends of the response text.",
+    "60": "This checks if we've used up all our retries—if attempt is 4 and max_retries is 5, we've failed 5 times and should give up.",
+    "64": "This calculates exponential backoff: each time we retry, we wait twice as long as before (5s, 10s, 20s, 40s, etc.)."
+  }
+}

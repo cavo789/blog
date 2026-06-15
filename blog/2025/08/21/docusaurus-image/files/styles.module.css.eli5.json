@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:09.213Z",
+  "source": "styles.module.css",
+  "lang": "css",
+  "explanations": {
+    "5": "This applies a blur effect and makes colors more vivid to the background; it's being overridden by line 9, so you can delete it.",
+    "6": "This sets a semi-transparent white background, but line 8 overwrites it with a different transparency level, so this line does nothing.",
+    "9": "This repeats the blur effect from line 5 with slightly different settings, replacing the earlier one since CSS uses the last rule it encounters.",
+    "10": "This overwrites the gray border from line 3 with a more subtle semi-transparent white border that works better with the glassmorphism effect.",
+    "16": "The transition property smooths out changes to three different CSS properties (transform, box-shadow, and filter) over 0.4 seconds when you hover.",
+    "20": "This makes the image 5% larger and shifts it up 4 pixels when you hover, creating a lifting effect combined with the shadow change.",
+    "22": "On hover, this slightly brightens the image and intensifies its colors to make it feel more vibrant and interactive."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:37:15.225Z",
+  "source": "demo.part2.sh",
+  "lang": "bash",
+  "explanations": {
+    "13": "The 'declare -a' command creates an array variable named pids; the '-a' flag tells bash this will hold multiple values instead of just one.",
+    "15": "This resets pids to an empty array, which might seem redundant after line 13 but ensures it's definitely empty in case the function runs multiple times.",
+    "22": "The 'nproc' command returns how many CPU cores your machine has; this line multiplies that by 2 and stores the result in NUMBER_OF_THREADS.",
+    "33": "The '&' at the end runs the demo function in the background, meaning the script continues immediately without waiting for demo to finish.",
+    "38": "The '$!' variable holds the process ID (a unique number) of the last background job we started; '+=' adds it to the pids array.",
+    "43": "The 'jobs' command lists all running background processes; this line checks if we have as many or more running jobs than our thread limit.",
+    "47": "The 'wait' command pauses the script until the background process with that specific PID finishes.",
+    "70": "The '$(date +%s)' command gets the current time in seconds since 1970; this is used to measure how long the script takes to run.",
+    "73": "This subtracts the start time from the end time to calculate total elapsed seconds."
+  }
+}

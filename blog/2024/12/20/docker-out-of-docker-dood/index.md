@@ -70,7 +70,7 @@ From there, rebuild the image and the container by running again `docker compose
 
 Once in the container's console, type `docker version` again and boum.
 
-<Terminal>
+<Terminal typewriter>
 $ docker version
 Client:
  Version:           28.3.3
@@ -113,7 +113,7 @@ Since we're still sharing our `/var/run/docker.sock` in our yaml file, we're exp
 
 Let's try: `docker ps` to obtain the list of containers.
 
-<Terminal>
+<Terminal typewriter>
 $ docker ps
 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.51/containers/json": dial unix /var/run/docker.sock: connect: permission denied
 </Terminal>
@@ -152,7 +152,7 @@ As you've seen, I've not hardcoded the ID in the proposed yaml file but I've def
 
 So, to make the script robust, we just need to initialise the `DOCKER_GROUPID`variable before building the image:
 
-<Terminal>
+<Terminal typewriter>
 $ DOCKER_GROUPID="$(getent group docker | cut -d: -f3)" docker compose up --detach --build && docker compose exec Dood /bin/sh
 </Terminal>
 

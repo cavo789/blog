@@ -213,7 +213,7 @@ Go to [https://github.com/new](https://github.com/new) and create a new **privat
 
 Then just copy/paste the example given by Github; something like:
 
-<Terminal>
+<Terminal typewriter>
 $ echo "# Sieve generator" >> README.md
 $ git init
 
@@ -231,7 +231,7 @@ $ git push -u origin main
 
 Now push the other files:
 
-<Terminal>
+<Terminal typewriter>
 $ git add .
 
 $ git commit -m "Initial upload"

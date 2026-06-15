@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:50:45.488Z",
+  "source": "MDXComponents.js",
+  "lang": "javascript",
+  "explanations": {
+    "9": "This line pulls out specific properties (loading, decoding, className, style) from the props object, and the '...rest' collects all the remaining properties that weren't explicitly named into a new variable.",
+    "13": "The '...rest' spreads all those remaining properties back onto the img element, so any props we didn't explicitly handle still get passed through to the HTML tag."
+  }
+}

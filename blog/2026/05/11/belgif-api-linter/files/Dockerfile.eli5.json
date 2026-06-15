@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:54:05.934Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "2": "This pulls a lightweight Python image (version 3.11) that's smaller than the default because it only includes essentials.",
+    "9": "The --no-cache-dir flag tells pip not to save downloaded packages locally, which saves space in the final image.",
+    "18": "The --host 0.0.0.0 makes the app accessible from outside the container (not just from localhost), and we bind it to port 80 which was exposed on line 15."
+  }
+}

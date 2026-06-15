@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:50:53.408Z",
+  "source": "check-images.py",
+  "lang": "python",
+  "explanations": {
+    "1": "This comment tells Python to ignore type-checking errors in this file, which is useful when the code might not strictly match Python's type system but works fine at runtime.",
+    "54": "The code skips data URLs (images encoded as base64 text strings) because they don't need to be downloaded separately—they're already embedded in the HTML.",
+    "60": "This requests the image with verify=False, which means it won't check if the SSL certificate is valid; this is a shortcut for development but risky in production.",
+    "62": "BytesIO wraps the raw image bytes in a file-like object so that PIL's Image.open() can read it, even though it's coming from the internet instead of disk.",
+    "88": "networkidle means the script waits until the page stops making network requests, ensuring all initial content (including lazy-loaded images triggered on page load) is downloaded.",
+    "116": "This checks if the HTML tag has loading=\"lazy\" attribute; if it does, the browser will delay loading that image until it's about to appear on screen.",
+    "119": "The 'and' operator here requires *both* width and height attributes to exist; if either one is missing, has_dimensions becomes false."
+  }
+}

@@ -30,13 +30,13 @@ I prefer to use a different approach, perhaps not the *native one* but, yeah, I 
 
 Imagine a `.env` file with just one line, like f.i.:
 
-<Terminal>
+<Terminal typewriter>
 $ echo 'APP_ENV = local' > .env
 </Terminal>
 
 I can update `APP_ENV` f.i. using:
 
-<Terminal>
+<Terminal typewriter>
 $ sed -i "s/APP_ENV =.*/APP_ENV = production/" .env
 </Terminal>
 
@@ -50,7 +50,7 @@ Of course, by running `sed -i "s/APP_ENV =.*/APP_ENV = production/" .env` nothin
 
 Before seeing how to do, run the following block and you'll get a `NOT FOUND` message.
 
-<Terminal>
+<Terminal typewriter>
 $ echo 'APP_NAME = My application' > .env
 
 $ grep -q "^APP_ENV =" .env && echo "FOUND" || echo "NOT FOUND"
@@ -63,7 +63,7 @@ So if `grep -q` is successful (we've retrieved `APP_ENV` in the file) then we co
 
 So, the next example will now display `FOUND`.
 
-<Terminal>
+<Terminal typewriter>
 $ echo 'APP_NAME = My application' > .env
 $ echo 'APP_ENV = local' >> .env
 $ grep -q "^APP_ENV =" .env && echo "FOUND" || echo "NOT FOUND"
@@ -73,7 +73,7 @@ $ grep -q "^APP_ENV =" .env && echo "FOUND" || echo "NOT FOUND"
 
 Ok, first we can make our replace statement:
 
-<Terminal>
+<Terminal typewriter>
 $ echo 'APP_NAME = My application' > .env
 $ echo 'APP_ENV = local' >> .env
 $ grep -q "^APP_ENV =" .env \
@@ -85,7 +85,7 @@ By running `cat .env`, you will get, as expected, `APP_ENV = production`.
 
 And the next block will still display `NOT FOUND`:
 
-<Terminal>
+<Terminal typewriter>
 $ echo 'APP_NAME = My application' > .env
 $ grep -q "^APP_ENV =" .env \
     && sed -i "s/APP_ENV =.*/APP_ENV = production/" .env \
@@ -98,7 +98,7 @@ The *insert a new line* command is this one: `sed -i -e '$aAPP_ENV = production'
 
 Here it's:
 
-<Terminal>
+<Terminal typewriter>
 $ echo 'APP_NAME = My application' > .env
 $ grep -q "^APP_ENV =" .env \
     && sed -i "s/APP_ENV =.*/APP_ENV = production/" .env \
@@ -107,7 +107,7 @@ $ grep -q "^APP_ENV =" .env \
 
 Finally, by running `cat .env` we can see the result:
 
-<Terminal>
+<Terminal typewriter>
 $ cat .env
 
 APP_NAME = My application

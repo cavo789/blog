@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:50.715Z",
+  "source": "AnyTest.part4.php",
+  "lang": "php",
+  "explanations": {
+    "1": "This is a test function that takes two parameters ($name and $email) and will run multiple times with different data pairs from the 'with' array below.",
+    "3": "The 'with' method tells the test to run the function multiple times, once for each pair of values in the array (so it runs twice here, with different names and emails each time)."
+  }
+}

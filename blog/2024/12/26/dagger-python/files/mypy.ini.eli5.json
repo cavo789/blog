@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:25.744Z",
+  "source": "mypy.ini",
+  "lang": "ini",
+  "explanations": {
+    "10": "This tells mypy to ignore a specific type-checking error (attr-defined) that's giving false positives in this codebase.",
+    "12": "This sets where mypy stores its cache files so it doesn't have to re-check everything from scratch every time.",
+    "15": "This enforces that every function must have type hints (like def foo(x: int) -> str:) or mypy will complain.",
+    "17": "This makes mypy stricter about Optional types — if something might be None, you have to explicitly say Optional[SomeType] instead of just SomeType."
+  }
+}

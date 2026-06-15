@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:28.095Z",
+  "source": "etl.py",
+  "lang": "python",
+  "explanations": {
+    "1": "This creates a directed graph (digraph means arrows go one way) with rankdir='TB' meaning the flow goes Top to Bottom on the page.",
+    "13": "We're creating an Edge object between two nodes and immediately adding it to the graph — you could also pass node names as strings instead of node objects.",
+    "23": "This renders the graph definition into an actual PNG image file on disk."
+  }
+}

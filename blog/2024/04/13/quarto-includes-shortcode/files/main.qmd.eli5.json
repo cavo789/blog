@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:05.275Z",
+  "source": "main.qmd",
+  "lang": "qmd",
+  "explanations": {
+    "3": "This line tells Quarto to pull in the content from a separate file called chapter1.md and insert it here, as if you'd typed it directly.",
+    "5": "Same idea as line 3, but this time it's including chapter2.md instead."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:40.885Z",
+  "source": ".part23.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "A 301 redirect is a permanent move that tells browsers and search engines to go to a new URL instead; this line sends anyone visiting /old.php to the new location at http://www.yoursite.com/new.php."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:18.109Z",
+  "source": "C:\\temp\\checkVat.xml",
+  "lang": "xml",
+  "explanations": {
+    "2": "This creates a SOAP envelope, which is a standard XML wrapper used to send messages to web services; think of it like an envelope that holds your message.",
+    "4": "The 'urn:' prefix and the xmlns attribute define a namespace, which is a way to avoid naming conflicts when XML elements from different sources are combined together.",
+    "5": "The %COUNTRY% and %VATNUMBER% are placeholders that will be replaced with actual values before this message is sent to the VAT checking service."
+  }
+}

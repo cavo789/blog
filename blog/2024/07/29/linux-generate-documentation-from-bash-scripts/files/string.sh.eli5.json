@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:10.879Z",
+  "source": "string.sh",
+  "lang": "bash",
+  "explanations": {
+    "30": "This uses the `tr` command to translate all lowercase letters ([:lower:]) into their uppercase equivalents ([:upper:]); it reads from stdin (the pipe) and outputs the result."
+  }
+}

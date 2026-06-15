@@ -10,7 +10,7 @@ metadata:
 ## Identity
 - **Site:** https://www.avonture.be
 - **Repo:** https://github.com/cavo789/blog
-- **Local dev:** http://localhost:3000
+- **Local dev:** https://localhost:3000 (HTTPS with Let's Encrypt cert — use `ignoreHTTPSErrors: true` in Playwright; actual bind IP in WSL2: `172.20.0.3:3000`)
 - **Working dir:** /opt/docusaurus
 
 ## Stack

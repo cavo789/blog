@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:46.071Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "This disables spell-checking for this entire Dockerfile, probably because it contains URLs or technical terms that would otherwise trigger warnings.",
+    "19": "We're re-declaring these ARG variables here because Docker needs to know about them again after the FROM statement, which resets the build context.",
+    "23": "The double quotes around ${USERNAME} are needed because the variable might contain spaces or special characters, and without them the shell could misinterpret the command.",
+    "29": "This ARG isn't actually used in the visible RUN commands below, so it might be a leftover or intended for future use.",
+    "45": "This uses jq (a JSON query tool) to parse Google's Chrome version list and extract the download URL for the specific Chrome version we want, filtering for Linux 64-bit.",
+    "47": "The backslash-e codes are ANSI escape sequences that make the output display in magenta; this is just for prettier console output during the build.",
+    "54": "This does the same jq parsing as line 45, but this time it extracts the chromedriver (the automation tool) instead of the browser itself."
+  }
+}

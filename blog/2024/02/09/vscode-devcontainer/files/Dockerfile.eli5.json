@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:34.643Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "17": "This pulls the Composer tool from a specific version image and labels it 'composer_base' so we can copy files from it later.",
+    "27": "The 'set -e -x' makes the script exit on any error and print each command as it runs, which helps catch problems early.",
+    "29": "The '\\e[0;105m' and '\\e[0;0m' are ANSI color codes that make the output text appear in bright magenta for visibility during the build.",
+    "54": "This copies the Composer executable from the earlier 'composer_base' image into the current image—we only need the final tool, not the whole image.",
+    "60": "The '--password ''' creates a user with no password set, and '-u ${OS_USERID}' lets you specify the exact numeric ID instead of letting Docker assign one.",
+    "69": "After installing PHP extensions, 'docker-php-source delete' cleans up temporary build files to keep the image smaller.",
+    "71": "The '/var/list/apt/*' path looks suspicious—it should probably be '/var/lib/apt/*' to properly clean the package manager cache."
+  }
+}

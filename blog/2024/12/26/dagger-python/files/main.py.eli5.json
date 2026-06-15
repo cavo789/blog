@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:53.959Z",
+  "source": "main.py",
+  "lang": "python",
+  "explanations": {
+    "1": "This generates a random number that's either 0 or 1, then checks if it equals 0 to randomly choose between two print statements."
+  }
+}

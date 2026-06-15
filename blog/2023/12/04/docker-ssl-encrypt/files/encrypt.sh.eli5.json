@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:33.311Z",
+  "source": "encrypt.sh",
+  "lang": "bash",
+  "explanations": {
+    "3": "The parentheses create a subshell, which is like a separate environment that won't affect your current shell — useful here to keep the password variable isolated.",
+    "4": "The && means 'only run the next command if this one succeeds', so the docker command only starts if the password assignment works.",
+    "5": "$(pwd) runs the pwd command and inserts its output (your current directory) into the string, and $(id -u):$(id -g) does the same to get your user and group IDs so the container runs as you instead of root."
+  }
+}

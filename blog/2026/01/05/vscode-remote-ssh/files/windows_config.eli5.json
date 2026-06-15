@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:50:43.490Z",
+  "source": "windows_config",
+  "lang": "plaintext",
+  "explanations": {
+    "1": "This is the start of a named SSH configuration block; everything indented below it applies when you connect to 'planethoster'.",
+    "5": "IdentityFile tells SSH which private key file to use for authentication; the tilde (~) is a shortcut for your home directory."
+  }
+}

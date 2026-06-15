@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:53.276Z",
+  "source": "file.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "2": "The {{#config_file}} syntax checks if the config_file variable exists and has a value; if it does, the text below will be shown.",
+    "9": "The {{^config_file}} syntax is the opposite — it shows the text below only if config_file is empty or missing."
+  }
+}

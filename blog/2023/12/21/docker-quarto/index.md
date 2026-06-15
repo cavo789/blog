@@ -52,7 +52,7 @@ Create a new file called `Dockerfile` (there is no extension) with this content:
 
 This done, please run `docker build -t cavo789/quarto .` and after something like three minutes the first time, you'll get your own Docker image:
 
-<Terminal wrap={false} >
+<Terminal typewriter wrap={false} >
 $ docker build -t cavo789/quarto .
 [+] Building 183.3s (9/9) FINISHED                                                docker:default
  => [internal] load build definition from Dockerfile                                        0.1s
@@ -87,7 +87,7 @@ The previous instruction `docker build -t cavo789/quarto .` has created an image
 
 You can quickly check the size of your image; quite huge but except you're very low in memory / disk space; this is really not a big deal.
 
-<Terminal>
+<Terminal typewriter>
 $ docker image list | grep quarto
 cavo789/quarto  latest  fe1d20bd71a6  1 minute ago  1.55GB
 </Terminal>
@@ -135,7 +135,7 @@ As a reminder, the used Docker run command are (almost always the same):
 
 So, let's convert to PDF and run `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf` in your console.
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf
 pandoc
   to: latex

@@ -22,7 +22,7 @@ Now, just copy/paste that list and you can send it to a friend *Hey, here are th
 The output of `code --list-extensions` will be something like this:
 
 <!-- cspell:disable -->
-<Terminal>
+<Terminal typewriter>
 aaron-bond.better-comments
 alefragnani.Bookmarks
 bajdzis.vscode-twig-pack
@@ -35,7 +35,7 @@ calebporzio.better-phpunit
 If you've a PowerShell user, you can also run `code --list-extensions | % { "code --install-extension $_" }` and now the output will look like this:
 
 <!-- cspell:disable -->
-<Terminal>
+<Terminal typewriter>
 code --install-extension aaron-bond.better-comments
 code --install-extension alefragnani.Bookmarks
 code --install-extension bajdzis.vscode-twig-pack

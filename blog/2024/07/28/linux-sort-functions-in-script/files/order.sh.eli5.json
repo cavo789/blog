@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:09.131Z",
+  "source": "order.sh",
+  "lang": "bash",
+  "explanations": {
+    "5": "The `$#` variable counts how many arguments were passed to the script; this line checks that exactly one argument was provided, otherwise it shows usage and exits.",
+    "12": "This checks if the folder doesn't exist (the `!` means 'not'), and if true, it prints an error and exits—the `&&` chains these three commands to run only if the previous one succeeds.",
+    "18": "The `pushd` command changes into that folder and saves the current location on a stack so you can return to it later with `popd`; the `>/dev/null` hides the usual output.",
+    "20": "Setting `set +e` tells bash to keep running even if a command fails, which is useful here because `diff` exits with a non-zero status when files differ.",
+    "23": "The `diff --side-by-side` compares two lists and displays them in columns; the `<(...)` syntax runs a command and treats its output as a temporary file that `diff` can read.",
+    "27": "After the diff command runs, `$?` holds its exit code (0 means identical, non-zero means different), so this checks if they weren't equal.",
+    "33": "Setting `set -e` restores normal bash behavior so the script will exit immediately if any command fails after this point."
+  }
+}

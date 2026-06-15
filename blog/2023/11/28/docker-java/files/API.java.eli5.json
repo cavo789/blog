@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:20.379Z",
+  "source": "API.java",
+  "lang": "java",
+  "explanations": {
+    "11": "We're casting the result of openConnection() to HttpURLConnection because openConnection() returns a generic URLConnection, but we need the HTTP-specific version to access methods like setRequestMethod().",
+    "15": "We check if the HTTP status code is exactly 200 (success); if it's anything else, we throw an exception to stop execution rather than trying to read invalid response data.",
+    "24": "The assignment inside the while condition reads one line at a time, and the loop continues until readLine() returns null, which signals there are no more lines to read."
+  }
+}

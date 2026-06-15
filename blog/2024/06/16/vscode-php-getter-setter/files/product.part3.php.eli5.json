@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:41.680Z",
+  "source": "product.part3.php",
+  "lang": "php",
+  "explanations": {
+    "8": "The ': self' at the end means this function returns the object itself, which lets you chain multiple setter calls together like setName()->setPrice().",
+    "23": "The ': self' return type here works the same way as line 8 — it allows method chaining so you can call setters one after another.",
+    "26": "The backslash before Exception tells PHP to use the built-in Exception class from the global namespace, not a custom one you might have defined locally."
+  }
+}

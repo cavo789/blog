@@ -53,7 +53,7 @@ The indentation in a makefile **SHOULD BE** made using tabs and not spaces, this
 
 That file contains a few *targets* (=actions) and a simple `printf` statement to display a text. Except for echoing something into the console, that `makefile` does nothing.
 
-<Terminal>
+<Terminal typewriter>
 $ ls -alh
 
 total 920K
@@ -78,7 +78,7 @@ In the absence of a `default:` action defined in the file, as in your example, t
 
 So, right now, if you run `make` (without any other arguments), you'll get the *Start an interactive shell...* message, that's the result of the `bash:` target; the first one in the file
 
-<Terminal>
+<Terminal typewriter>
 $ make
 Start an interactive shell in the Docker container; type exit to quit
 </Terminal>
@@ -95,7 +95,7 @@ Still in your editor, please add the highlighted block below; the position where
 
 Right now, if you type `make` on your console, you'll get this:
 
-<Terminal wrap={false}>
+<Terminal typewriter wrap={false}>
 Usage:
   make \<target>
 
@@ -114,7 +114,7 @@ So, you have to edit your makefile for the last time, and, for each target, add 
 
 And now, by running `make` you'll get a nice help screen:
 
-<Terminal wrap={false}>
+<Terminal typewriter wrap={false}>
 {`
 Usage:
   make \<target>
@@ -142,7 +142,7 @@ To do this, simply add a line with this syntax: `##@ My project` as illustrated 
 
 And here is the final result:
 
-<Terminal wrap={false}>
+<Terminal typewriter wrap={false}>
 Usage:
   make \<target\>
 

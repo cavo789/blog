@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:54:03.768Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "5": "The part before the colon (8000) is the port on your computer; the part after (80) is the port inside the container where the app listens.",
+    "7": "This connects a file on your computer (./main.py) to a file path inside the container (/code/main.py), so changes you make locally show up inside the container instantly."
+  }
+}

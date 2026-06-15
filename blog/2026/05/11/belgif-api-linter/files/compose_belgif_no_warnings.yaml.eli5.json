@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:54:21.211Z",
+  "source": "compose_belgif_no_warnings.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "5": "The left number (8000) is the port on your computer; the right number (80) is the port inside the container—traffic coming to your machine on 8000 gets forwarded to the container's port 80.",
+    "7": "This mounts your local main.py file into the container at /code/main.py so changes you make locally are immediately visible inside the running container.",
+    "13": "The ':ro' at the end means 'read-only'—the container can see these files but cannot modify them, which protects your source code from accidental changes.",
+    "14": "This creates a persistent storage volume named 'maven-cache' that survives even after the container stops, so Maven doesn't have to re-download dependencies every time.",
+    "17": "Normally this container would run Maven directly, but we're replacing that with a bash shell so we can chain multiple commands together using pipes (the | symbol on line 29).",
+    "21": "The '>' character means the command continues on the next lines—it's a way to write a really long command in a readable format without actually pressing Enter.",
+    "28": "'2>&1' merges error messages (stderr) and normal output (stdout) into one stream so the grep filters catch all the noise equally."
+  }
+}

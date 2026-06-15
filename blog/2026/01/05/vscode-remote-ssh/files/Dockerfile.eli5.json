@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:50:42.089Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "5": "The backslash at the end of this line lets us continue the command on the next line, so we can keep related commands together and readable.",
+    "7": "This removes cached package files that apt downloaded, which shrinks the Docker image size since we don't need them anymore.",
+    "8": "This deletes the apt package lists to save more space in the image—Docker images should be as small as possible.",
+    "12": "The -rm flags create the home directory and use bash as the shell; useradd is the command to add a new user account to the system.",
+    "13": "We're piping the username and password into chpasswd, which is a tool that changes passwords by reading them from input.",
+    "16": "sed is a text editor tool that finds and replaces patterns in files; the 's/' means substitute, and the ^ means start of line.",
+    "25": "CMD tells Docker what command to run when the container starts; -D means sshd runs in the foreground so Docker can track it."
+  }
+}

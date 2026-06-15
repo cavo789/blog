@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:29.926Z",
+  "source": "class_diagram.py",
+  "lang": "python",
+  "explanations": {
+    "1": "We're creating a directed graph object (digraph) using pydot, which is a library that helps us draw diagrams and save them as images.",
+    "14": "We're creating an Edge object that connects two nodes and immediately adding it to the graph; this shows that Student inherits from Person in our class hierarchy.",
+    "18": "This writes the graph we built to a PNG image file on disk, so we can actually see the diagram we created."
+  }
+}

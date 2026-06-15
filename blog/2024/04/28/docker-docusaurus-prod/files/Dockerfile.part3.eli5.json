@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:12.306Z",
+  "source": "Dockerfile.part3",
+  "lang": "part3",
+  "explanations": {
+    "1": "This line names this Docker build stage 'building_production' so we can refer to it later, like when copying files from it into a final image.",
+    "4": "The backslash at the end lets us continue this command on the next line; it's just telling Docker 'this command isn't finished yet'.",
+    "13": "The `package.*` pattern matches both `package.json` and `package-lock.json` (or `yarn.lock`) — it's a wildcard that grabs both at once.",
+    "16": "The `--immutable` flag means yarn will fail if the lockfile doesn't match what's in package.json, guaranteeing the same versions build every time."
+  }
+}

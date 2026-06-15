@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:15.439Z",
+  "source": "compose.part5.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "7": "This line mounts your computer's SSH keys (stored in ~/.ssh) into the container at /christophe/.ssh, so the app inside can use your SSH credentials."
+  }
+}

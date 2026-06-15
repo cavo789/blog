@@ -54,7 +54,7 @@ The very last thing to do is to restart your docusaurus website to load the upda
 
 Nothing new here, just generate the static version of your site.
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ yarn docusaurus build
 
 $ yarn docusaurus serve

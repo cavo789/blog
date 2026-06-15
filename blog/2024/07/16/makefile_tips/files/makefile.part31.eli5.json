@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:34:15.129Z",
+  "source": "makefile.part31",
+  "lang": "part31",
+  "explanations": {
+    "1": "This is a target name in a Makefile that can be run with 'make composer-update'.",
+    "2": "The ${CMD} is a variable (defined elsewhere) that gets replaced with an actual command, and '--no-interaction' tells composer to run without asking for confirmation."
+  }
+}

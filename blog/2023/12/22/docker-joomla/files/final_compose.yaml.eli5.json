@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:50.435Z",
+  "source": "final_compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "15": "This tells Docker to wait until the database container reports it's healthy before starting the Joomla container, preventing connection errors on startup.",
+    "16": "This uses your computer's user ID and group ID (or defaults to 1000 if not set) so files created inside the container belong to your user account instead of root.",
+    "27": "This runs a health check command inside the container every few seconds; if it succeeds, Docker knows the database is ready to accept connections.",
+    "30": "Like line 16, this ensures the database container runs with your user's permissions so you can edit database files without permission problems."
+  }
+}

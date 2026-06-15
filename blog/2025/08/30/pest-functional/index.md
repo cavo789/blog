@@ -39,7 +39,7 @@ My idea, like always, is to use (or create) a Docker image so we can immediately
 
 First, let's create a temporary folder and jump in it:
 
-<Terminal>
+<Terminal typewriter>
 $ mkdir /tmp/pestphp && cd $_
 </Terminal>
 
@@ -73,14 +73,14 @@ And ... we're almost there. We just need to create a Pest test script. Please cr
 
 To create the Docker image, please run `make build`:
 
-<Terminal>
+<Terminal typewriter>
 $ make build
 </Terminal>
 
 <AlertBox variant="info" title="">
 If you don't have `make` yet on your host, please run `sudo apt-get update && sudo apt-get -y install make`.
 
-<Terminal>
+<Terminal typewriter>
 $ sudo apt-get update && sudo apt-get -y install make
 </Terminal>
 
@@ -94,7 +94,7 @@ The build phase can be slow because a lot of things should be downloaded. The fi
 
 Once the image has been created; we can now create our Docker container:
 
-<Terminal>
+<Terminal typewriter>
 $ make up
 
 docker run --detach -v ./tests:/var/www/html/tests --name demo_pest pestphp
@@ -107,7 +107,7 @@ And, last thing to do, once the container has been created, you can run all test
 
 I've **intentionnaly** create an error to illustrate some nice feature:
 
-<Terminal>
+<Terminal typewriter>
 $ make start
 
 {`docker exec -it demo_pest sh -c "WEBSITE=https://www.avonture.be vendor/bin/pest"
@@ -165,7 +165,7 @@ But we see `React component and provide a "Share on Bluesky" button` so let's up
 
 We don't need to build the image again neither to recreate the container; just run `make start` again.
 
-<Terminal>
+<Terminal typewriter>
 $ make start
 
 docker exec -it demo_pest sh -c "WEBSITE=https://www.avonture.be vendor/bin/pest"

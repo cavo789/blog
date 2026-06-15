@@ -38,7 +38,7 @@ And, for `/tmp/bash/console_v2.sh`, we'll add two new functions, `printGreen` an
 
 To get the list of functions declared in a script (let's say `/tmp/bash/console.sh`), just run the command below:
 
-<Terminal>
+<Terminal typewriter>
 $ {`grep -P "^(function\s+.*)\(\)" "/tmp/bash/console.sh" | awk '{print \$2}' | sort`}
 </Terminal>
 
@@ -50,7 +50,7 @@ This function will retrieve any functions in the file i.e. lines starting with t
 
 Regardless of the order in which the functions are declared, the script below, which you can copy and paste into the console, will find the list of functions in the two files, sort the list and compare which functions are in one version and which are not in the other:
 
-<Terminal>
+<Terminal typewriter>
 {`
 (
   FILE1=/tmp/bash/console.sh

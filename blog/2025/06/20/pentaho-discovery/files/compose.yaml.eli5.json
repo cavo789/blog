@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:11.744Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "10": "This setting allows PostgreSQL to accept connections without requiring a password, which is convenient for development but insecure for production.",
+    "15": "The 'expose' keyword makes the port available to other services in the same Docker network, but not to your host machine—that's what 'ports' does.",
+    "24": "This maps port 8080 on your computer to port 80 inside the pgadmin container, so you'll visit http://localhost:8080 to access pgadmin.",
+    "35": "Setting 'external: false' means Docker will create this network as part of this compose file rather than expecting it to already exist."
+  }
+}

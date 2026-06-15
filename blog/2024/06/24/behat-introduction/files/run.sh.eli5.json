@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:58.156Z",
+  "source": "run.sh",
+  "lang": "bash",
+  "explanations": {
+    "8": "nohup runs the Chrome command in the background so the script doesn't wait for it to finish, and the backslash at the end continues the command on the next line.",
+    "10": "The > /dev/null 2>&1 & redirects all Chrome output to nowhere and the & at the end puts it in the background so the script can continue.",
+    "13": "$! is a special variable that holds the process ID (PID) of the last command that ran in the background.",
+    "15": "This tells the shell checker to ignore certain warnings about variable expansion in the next line.",
+    "16": "The -d memory_limit=-1 flag tells PHP to use unlimited memory instead of the default limit."
+  }
+}

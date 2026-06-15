@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:27.727Z",
+  "source": "Hello.asm",
+  "lang": "asm",
+  "explanations": {
+    "11": "The edx register holds the byte count of the string we want to print—we're telling the operating system how many characters to write.",
+    "12": "We're loading the memory address (not the actual string content) of our 'hello' variable into ecx, which tells the system where to find the data to print.",
+    "14": "In this old Linux calling convention, putting 4 in eax tells the operating system we want to use the sys_write function.",
+    "15": "int 0x80 is like pressing a button that tells the CPU to stop normal execution and let the operating system handle our request using the values we just set up in those registers.",
+    "18": "eax = 1 means we're asking the OS to run the sys_exit function, which shuts down our program.",
+    "19": "This second interrupt 0x80 actually executes the exit call and terminates the program."
+  }
+}

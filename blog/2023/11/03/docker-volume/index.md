@@ -28,7 +28,7 @@ For this post, let us create a temporary folder in your `/tmp` folder: start a L
 
 Let's run the command below to start the PHP 8.1.5 + Apache image:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html php:8.1.5-apache
 </Terminal>
 
@@ -74,7 +74,7 @@ Files or folders created in the Docker container will be owned by the current us
 
 To make sure files/folders created in the container will be owned by you and not `root`, change the command line like this:
 
-<Terminal>
+<Terminal typewriter>
 {`$ docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html -u \${UID}:\${GID} php:8.1.5-apache`}
 </Terminal>
 

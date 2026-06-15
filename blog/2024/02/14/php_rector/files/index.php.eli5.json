@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:09.111Z",
+  "source": "index.php",
+  "lang": "php",
+  "explanations": {
+    "3": "The parameter $firstname has a default value of an empty string, so you can call sayHello() without passing any argument.",
+    "5": "This uses a ternary operator (the ? and :) which is a shorthand if-else: if $firstname is empty, return 'Hello World!', otherwise return 'Hello ' plus whatever name was passed in."
+  }
+}

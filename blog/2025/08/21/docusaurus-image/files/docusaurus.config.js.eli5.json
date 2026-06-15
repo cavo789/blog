@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:17.978Z",
+  "source": "docusaurus.config.js",
+  "lang": "javascript",
+  "explanations": {
+    "6": "This is destructuring syntax—it's pulling out properties from the object being passed in, so you can use them directly by name instead of accessing them through a parent object.",
+    "9": "This array runs custom processing functions on blog content before Docusaurus applies its built-in markdown transformers, which is why it's called 'beforeDefaultRemarkPlugins'."
+  }
+}

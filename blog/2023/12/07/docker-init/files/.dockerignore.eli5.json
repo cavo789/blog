@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:53.185Z",
+  "source": ".dockerignore",
+  "lang": "plaintext",
+  "explanations": {
+    "8": "This is a special comment marker used by documentation tools to highlight the next line for readers.",
+    "20": "The ** means any folder at any depth, and *.*proj.user matches Visual Studio project user files at any location.",
+    "25": "This is another documentation highlight marker for the line that follows it.",
+    "27": "The exclamation mark means 'actually, DO copy this file' — it undoes the ignore rule from line 24.",
+    "30": "This ignores all Dockerfile variations (like Dockerfile.prod, Dockerfile.dev, etc.) at any folder level."
+  }
+}

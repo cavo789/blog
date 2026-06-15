@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:44.888Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "12": "The useBlogPost() hook gives us an object with an isBlogPostPage property that tells us if we're viewing a single blog post page versus a list of posts.",
+    "13": "This returns a CSS class name only when we're in list view (not on a single post page), otherwise it returns undefined which means no extra styling is applied.",
+    "25": "The && operator here means 'only render the RelatedPosts component if isBlogPostPage is true', so related posts only show on individual post pages, not in lists."
+  }
+}

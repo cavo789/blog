@@ -25,7 +25,7 @@ Here are the steps I followed to create this blog.
 
 Since I really like the simplicity of Docker, I will not install Node.js on my machine but use the official Docker image
 
-<Terminal>
+<Terminal typewriter>
 $ {`docker run --rm --name blog --user \$UID:\$GID -it -v \${PWD}/:/project -w /project node /bin/bash`}
 </Terminal>
 
@@ -37,7 +37,7 @@ And finally, I run an interactive shell since I have mentioned `/bin/bash` as th
 
 Now that I have a prompt in the container, I will create my blog using Docusaurus (as explained in the [official documentation](https://docusaurus.io/docs/installation)).
 
-<Terminal>
+<Terminal typewriter>
 $ npx create-docusaurus@latest blog classic --javascript
 </Terminal>
 
@@ -60,7 +60,7 @@ Back to my computer, I will now go inside my `blog` folder (`cd blog`) and run t
 
 Instead of running an interactive shell session I prefer to run `/bin/bash -c "npx docusaurus start"` to run the Docusaurus watcher and serve my files:
 
-<Terminal>
+<Terminal typewriter>
 $ cd blog
 ...
 $ {`docker run --rm -it --name blog --user \$UID:\$GID -v \${PWD}/:/project -w /project -p 3000:3000 node /bin/bash -c "npx docusaurus start --host 0.0.0.0"`}
@@ -181,7 +181,7 @@ Adding Giscus to allow comments and feedback.
 
 On Github.com, I have created a new repository called `blog` ([https://github.com/cavo789/blog](https://github.com/cavo789/blog)). Once this is done, back to my console and I run a few git commands:
 
-<Terminal>
+<Terminal typewriter>
 $ git init
 ...
 $ git add .

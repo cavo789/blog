@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:50:16.116Z",
+  "source": "_quarto.yml",
+  "lang": "yaml",
+  "explanations": {
+    "3": "This tells the system to process all files ending in .qmd (Quarto markdown files) and turn them into presentations.",
+    "13": "This setting makes slides progress linearly one after another instead of allowing free navigation between them.",
+    "18": "This controls which heading level (in this case, the smallest heading size, level 6) will create a new slide.",
+    "19": "This displays the slide number as 'current slide / total slides' (like '3/10') at the bottom of each slide.",
+    "22": "This sets a background image for your title slide using a file path to a webp image in an images folder."
+  }
+}

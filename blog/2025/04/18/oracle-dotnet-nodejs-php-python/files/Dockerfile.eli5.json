@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:12.949Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "3": "This starts with a pre-built image that has the .NET SDK (the compiler and build tools), and tags this stage as 'build' so we can reference it later.",
+    "13": "This starts a new, smaller image with just the .NET runtime (no compiler), and tags it 'final' because this will be our actual application container.",
+    "17": "This copies only the compiled output from the 'build' stage into the 'final' stage, so the final image doesn't include the compiler or source code—making it much smaller.",
+    "20": "This declares a build argument (a variable you can pass in) that specifies which version of Oracle's client library to download.",
+    "29": "This long chain of commands downloads the Oracle client, extracts it, sets up symbolic links (shortcuts to specific library versions), and registers those libraries so the system can find them.",
+    "33": "The `ln -s` command creates a symbolic link: a shortcut from `libclntsh.so` to the specific version number, so the application can find the library without knowing the exact version."
+  }
+}

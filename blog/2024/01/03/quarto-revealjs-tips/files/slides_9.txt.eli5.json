@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:34.394Z",
+  "source": "slides_9.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "3": "This is a special formatting directive that makes the text bigger and changes its color to a light blue; the colons and curly braces tell the document processor (like Pandoc or Quarto) to apply these styling rules.",
+    "7": "These curly braces with 'fragment' and 'fade-up' tell a presentation tool (like reveal.js) to make the image appear with a fade-up animation effect when you advance the slide."
+  }
+}

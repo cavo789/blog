@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:33:23.916Z",
+  "source": "run.part2.sh",
+  "lang": "bash",
+  "explanations": {
+    "8": "nohup runs the chrome command in the background so the script doesn't wait for it to finish, and the backslash lets us continue the command on the next line.",
+    "10": "The > /dev/null 2>&1 & redirects all output to nowhere and the & at the end puts chrome in the background so we can continue with the script.",
+    "13": "$! is a special variable that holds the process ID (PID) of the last command we ran in the background, so we can shut it down later.",
+    "15": "This tells the shell checker to ignore warnings about unquoted variables on line 16, which is safe here because behat handles spaces in filenames correctly.",
+    "19": "We're using braces like ${chromePID} instead of $chromePID to clearly show where the variable name ends, especially useful if there were text right after it."
+  }
+}

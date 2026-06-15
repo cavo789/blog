@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:34.623Z",
+  "source": "get_folder_size.vbs",
+  "lang": "vbs",
+  "explanations": {
+    "19": "CreateObject makes a new instance of an XML HTTP requester object that can download files from the internet.",
+    "21": "setTimeouts sets four timeout values (in milliseconds) for different stages of the HTTP request: connection, send, receive, and total time.",
+    "27": "The open method prepares a GET request to download the file, and the False parameter means it will happen synchronously (the script waits for it to finish).",
+    "39": "The number 1 means open the file for reading only; if it were 2, it would mean open for writing.",
+    "44": "The <> operator means 'not equal to', so this checks whether the downloaded content differs from what's currently in the script."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:50:10.620Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "64": "The function adds a leading slash if the joined path doesn't already have one, ensuring consistent URL formatting.",
+    "78": "This removes all trailing slashes from the site URL, then concatenates it with the full path to create a complete absolute URL.",
+    "87": "We extract the file extension from the URL and convert it to lowercase so we can match it against known image formats.",
+    "94": "AVIF images are treated as PNG MIME type here, which is a simplification—AVIF should ideally return 'image/avif' but some older systems may not recognize it.",
+    "117": "This regex removes invisible control characters and special Unicode characters that could break XML parsing, using hexadecimal character codes.",
+    "127": "This selector uses the custom :contains() pseudo-selector to find headings that have the exact text 'Related posts', which cheerio can handle.",
+    "128": "The :has() pseudo-selector finds a div with class 'row' that contains a child div with classes 'col' and 'col--4'.",
+    "159": "Since the HTML structure might vary, if we don't find an <article> tag, we try alternative selectors that Docusaurus commonly uses.",
+    "176": "We're finding code snippet wrapper elements and replacing the wrapper with just the inner code block to clean up the RSS output.",
+    "195": "We remove leading and trailing slashes from the slug attribute because URL paths shouldn't have those characters on the edges.",
+    "203": "For files named 'index.md' inside a folder, we use the folder name as the slug instead of the word 'index' itself.",
+    "231": "We dynamically import the 'feed' library here (instead of at the top) because it's only needed inside this function when the build actually runs.",
+    "258": "We parse the YAML file into a JavaScript object so we can look up author data by their ID keys later.",
+    "275": "If no explicit date is set in front matter, we fall back to using the file's creation date from the filesystem.",
+    "317": "We sort posts in descending order so the newest articles appear first in the RSS feed.",
+    "322": "We ensure maxItems is at least 1 and convert it to a number, in case someone passes an invalid value.",
+    "337": "We check if authors is already an array; if not but it exists, we wrap it in an array so the code below always works with an array.",
+    "349": "We build a custom XML string with CDATA sections manually because the 'feed' library doesn't natively support dc:creator with CDATA wrapping.",
+    "403": "The spread operator here conditionally adds the 'enclosure' property only if all three conditions are true (image enabled, URL exists, and MIME type found).",
+    "429": "We load the RSS XML into Cheerio in 'xmlMode' so it properly parses XML structure rather than treating it as HTML.",
+    "432": "We add the Dublin Core namespace declaration to the root <rss> element so the XML knows what 'dc:' means.",
+    "436": "We select all <item> elements from the RSS structure to match them with our source data array by index.",
+    "444": "Since the 'feed' library generates XML items in the same order as our array, we iterate by index to match each source item with its generated XML element.",
+    "474": "We replace the auto-generated XML declaration with a custom one that also includes a stylesheet reference so RSS readers can apply better formatting."
+  }
+}

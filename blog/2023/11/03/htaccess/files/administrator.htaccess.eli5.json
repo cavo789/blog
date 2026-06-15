@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:47.642Z",
+  "source": "administrator.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "3": "This checks if the mod_headers module is available on the server before trying to use it, so the code doesn't break if the module isn't installed.",
+    "4": "This tells search engine robots not to index (add to search results) or follow (click) any links on pages in this folder."
+  }
+}

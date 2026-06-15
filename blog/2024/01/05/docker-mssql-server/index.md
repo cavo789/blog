@@ -21,7 +21,7 @@ The official Microsoft SQL Server Docker repository can be retrieved on [https:/
 
 First, we'll download and run an instance of SQL Server 2022 by running the following instruction:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=2Secure*Password2" -p 1433:1433 --name sqlserverdb -h mysqlserver -d mcr.microsoft.com/mssql/server:2022-latest
 </Terminal>
 
@@ -31,7 +31,7 @@ The port that we'll use on our host is port `1433` (mapped to the port `1433` of
 
 We can check the list of running containers thanks to docker container list:
 
-<Terminal>
+<Terminal typewriter>
 $ docker container list
 
 [...] IMAGE                                       [...] NAMES

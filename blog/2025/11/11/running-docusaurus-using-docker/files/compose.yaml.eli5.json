@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:12.901Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "7": "The ${TARGET:-development} syntax means 'use the TARGET variable if it's set, otherwise default to development' — it's a fallback mechanism.",
+    "13": "This command keeps the container running indefinitely instead of exiting, which is useful for development when you want to exec into the container later."
+  }
+}

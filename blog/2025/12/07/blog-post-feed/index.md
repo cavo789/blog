@@ -78,7 +78,7 @@ That's why, after hours, I've created my own plugin using AI.
 
 Please start a console and add some dependencies needed by the plugin we'll create.
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ yarn add cheerio feed front-matter fs-extra glob
 </Terminal>
 
@@ -109,7 +109,7 @@ There are two types of feeds, the older one (**rss**) and the newer (**atom**).
 
 Once done, just run `yarn run build` in a terminal to generate the static version of your site.
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ yarn run build
 </Terminal>
 

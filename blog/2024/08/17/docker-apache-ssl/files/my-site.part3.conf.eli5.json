@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:54.972Z",
+  "source": "my-site.part3.conf",
+  "lang": "conf",
+  "explanations": {
+    "11": "The [::] syntax means IPv6 (the newer internet address format), so this line makes the server listen on port 443 for both IPv4 and IPv6 connections."
+  }
+}

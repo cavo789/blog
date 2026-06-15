@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:48.554Z",
+  "source": "index.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "8": "The '#| echo: false' directive tells the document renderer to hide the Python code itself from the final output—only the results will show.",
+    "9": "The '#| output: asis' directive means 'render whatever this code produces directly as formatted content, don't wrap it in extra formatting'.",
+    "23": "The dot '.' is a shorthand meaning 'start analyzing files from the current directory and look in all subdirectories'."
+  }
+}

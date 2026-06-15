@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:22.444Z",
+  "source": "main.py",
+  "lang": "python",
+  "explanations": {
+    "34": "This checks if the current directory isn't already in Python's search path, and adds it if needed so Python can find the 'src' module no matter where you run the script from.",
+    "71": "This loads environment variables from a .env file in the script's directory first, so it finds your API key.",
+    "80": "If you gave a relative path (like 'blog/'), this converts it to an absolute path starting from wherever you are in the terminal.",
+    "88": "The `str | None` syntax means this variable can either be a string or None (nothing), depending on whether the environment variable exists.",
+    "109": "The `rglob` method recursively searches through all folders and subfolders for files matching '*.md', collecting them into a list."
+  }
+}

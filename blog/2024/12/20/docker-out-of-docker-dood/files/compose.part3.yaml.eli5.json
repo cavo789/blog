@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:50.370Z",
+  "source": "compose.part3.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "7": "This passes a Docker group ID to the build process; the syntax ${DOCKER_OS_GROUPID:-1000} means 'use the environment variable DOCKER_OS_GROUPID if it exists, otherwise default to 1000'.",
+    "8": "Same pattern as line 7, but for the user ID instead of group ID.",
+    "9": "Same default pattern, but for the username; johndoe is the fallback username if no environment variable is provided.",
+    "10": "This sets which user and group the container runs as; the format is userid:groupid, and both also use the same default-fallback syntax as the build args above.",
+    "13": "This shares the host machine's Docker socket file with the container, which allows the container to control Docker on the host machine."
+  }
+}

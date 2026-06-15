@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:56.706Z",
+  "source": "Dockerfile.part4",
+  "lang": "part4",
+  "explanations": {
+    "1": "This tells the spell-checker to ignore this file so it doesn't complain about technical words or domain names.",
+    "10": "These commands enable SSL (secure connections) and rewrite modules in Apache, then disable the default sites and enable your custom SSL site.",
+    "12": "The a2dissite command disables Apache's pre-built default websites so your custom configuration takes over instead."
+  }
+}

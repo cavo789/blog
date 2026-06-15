@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:57.135Z",
+  "source": "script.sh",
+  "lang": "bash",
+  "explanations": {
+    "1": "This sets a variable to 31, which is the ANSI color code for red text in terminal output.",
+    "4": "The loop iterates through all arguments passed to this function, with each one temporarily called 'line'.",
+    "5": "This uses printf with escape sequences: \\e[ starts a formatting command, 1; makes text bold, the number is the color, m ends the command, and \\e[0m resets formatting back to normal."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:34:16.816Z",
+  "source": "makefile.part32",
+  "lang": "part32",
+  "explanations": {
+    "1": "This line sets PHP_VERSION to 8.1 if it hasn't been defined already; the $(or ...) syntax means 'use the first value that exists, or fall back to the second one'."
+  }
+}

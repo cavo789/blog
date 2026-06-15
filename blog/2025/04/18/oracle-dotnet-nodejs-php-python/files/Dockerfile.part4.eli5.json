@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:29.066Z",
+  "source": "Dockerfile.part4",
+  "lang": "part4",
+  "explanations": {
+    "3": "This pulls a lightweight Python image (slim) from Docker Hub as the starting point for our container.",
+    "7": "The --no-cache-dir flag tells pip not to save downloaded packages locally, keeping the final image smaller.",
+    "9": "This copies the main.py file from your computer into the container's /app folder so it can be run."
+  }
+}

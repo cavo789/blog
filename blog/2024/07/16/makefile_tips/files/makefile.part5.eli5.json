@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:33:33.275Z",
+  "source": "makefile.part5",
+  "lang": "part5",
+  "explanations": {
+    "1": "This checks if a folder doesn't exist by running a shell test command; if the test fails (folder missing), it echoes 'no' which matches the string 'no' on the right, making the condition true.",
+    "5": "This checks if a folder exists by running a shell test command; if the test succeeds, it echoes 'yes' which matches the string 'yes' on the right, making the condition true."
+  }
+}

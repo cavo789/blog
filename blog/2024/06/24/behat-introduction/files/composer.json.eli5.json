@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:33:08.424Z",
+  "source": "composer.json",
+  "lang": "json",
+  "explanations": {
+    "6": "PSR-4 is a standard way to organize PHP code; this tells the system that classes starting with 'Johndoe\\Behat\\' can be found in the 'src/' folder.",
+    "15": "require-dev means these packages are only needed during development and testing, not when the code runs in production."
+  }
+}

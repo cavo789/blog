@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:25:56.425Z",
+  "source": ".part6.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "FilesMatch uses a regex pattern to match filenames ending in .tex, .log, or .aux - the dollar sign means 'end of filename' and the backslash escapes the dots so they're treated as literal periods instead of regex wildcards."
+  }
+}

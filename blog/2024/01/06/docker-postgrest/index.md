@@ -52,7 +52,7 @@ For this post, let u's create a temporary folder in your `/tmp` folder: start a 
 
 We'll create a Docker container for our PostgreSQL database:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run --name tutorial -p 5433:5432 \
     -e POSTGRES_PASSWORD=mysecretpassword \
     -d postgres
@@ -60,7 +60,7 @@ $ docker run --name tutorial -p 5433:5432 \
 
 Now, we'll enter in our PostgreSQL container and run `psql`:
 
-<Terminal>
+<Terminal typewriter>
 $ docker exec -it tutorial psql -U postgres
 </Terminal>
 
@@ -74,7 +74,7 @@ Now, to leave the postgres console, just type `\q`.
 
 PostgREST is a binary, download it by running:
 
-<Terminal>
+<Terminal typewriter>
 curl -o postgrest-v10.1.1-linux-static-x64.tar.xz -L https://github.com/PostgREST/postgrest/releases/download/v10.1.1/postgrest-v10.1.1-linux-static-x64.tar.xz
 
 tar xJf postgrest-v10.1.1-linux-static-x64.tar.xz && rm -f postgrest-v10.1.1-linux-static-x64.tar.xz
@@ -99,7 +99,7 @@ Add the line below to your conf file if you wish to use another port; f.i. port 
 
 Now, we'll run a Docker container for PostgREST:
 
-<Terminal>
+<Terminal typewriter>
 $ ./postgrest tutorial.conf
 </Terminal>
 
@@ -117,7 +117,7 @@ To get the content of a table, just mention his name so `http://localhost:3000/t
 
 For esthetic reason here, I'm using `| jq` (you can remove that part if you want). See my <Link to="/blog/linux-jq">The jq utility for Linux</Link> article to learn more about `jq`.
 
-<Terminal>
+<Terminal typewriter>
 $ curl http://localhost:3000/todos | jq
 </Terminal>
 
@@ -146,13 +146,13 @@ It's awfully easy, isn't it?
 
 You can use filters by typing f.i. `?` followed by a field name and a criteria. To get only the record having the `id` 2, here is how to do:
 
-<Terminal>
+<Terminal typewriter>
 $ curl http://localhost:3000/todos\?id\=eq.2 | jq
 </Terminal>
 
 And if you wish to make a *Full text search* to retrieve a content based on a value, here is how to do:
 
-<Terminal>
+<Terminal typewriter>
 $ curl http://localhost:3000/todos\?task=fts.tutorial | jq
 </Terminal>
 
@@ -160,13 +160,13 @@ In the example above, we'll search any todo where the field `task` contains the 
 
 Below, a query on the field `done` which should be true.
 
-<Terminal>
+<Terminal typewriter>
 $ curl http://localhost:3000/todos\?done=is.true | jq
 </Terminal>
 
 Below, we are asking for getting only fields `id` and `task`:
 
-<Terminal>
+<Terminal typewriter>
 $ curl http://localhost:3000/todos?select=id,task | jq
 </Terminal>
 

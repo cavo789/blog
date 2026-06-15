@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:53.486Z",
+  "source": "AnyTest.part5.php",
+  "lang": "php",
+  "explanations": {
+    "3": "declare(strict_types=1) makes PHP enforce that function arguments and return types must match exactly what you declared—no sneaky type conversions allowed.",
+    "9": "VisitLoginPageTest extends TestWebCase, meaning it inherits test helper methods from a parent class (TestWebCase) that sets up common test functionality.",
+    "11": "The @test annotation tells PHPUnit that this method is a test it should run, even though the method name starts with 'test_' which would trigger it anyway.",
+    "14": "The false argument tells assertSee to search for the exact string literally, not as HTML-escaped text—so it looks for the raw id=\"password\" in the response."
+  }
+}

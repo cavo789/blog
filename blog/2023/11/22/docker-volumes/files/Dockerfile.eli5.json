@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:55.685Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "5": "This makes the script executable by adding the 'run' permission; without this, you couldn't run the script even if you tried.",
+    "7": "This keeps the container running by tailing an empty file that never changes, so the container doesn't immediately exit after startup."
+  }
+}

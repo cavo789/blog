@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:25.670Z",
+  "source": "mindmap.py",
+  "lang": "python",
+  "explanations": {
+    "8": "The `any()` function returns true if at least one of those database-related keywords is found anywhere in the service name.",
+    "18": "yaml.safe_load() reads the YAML file and converts it into a Python dictionary we can work with.",
+    "23": "data.get('services', {}) safely retrieves the services section from the YAML, returning an empty dictionary if it doesn't exist.",
+    "28": "config['depends_on'] is a list of service names that this service depends on, so we loop through each one.",
+    "32": ".keys() gives us just the network names (not their full configuration objects).",
+    "64": "cmd.extend() adds more arguments to the command list only if the style file actually exists on disk."
+  }
+}

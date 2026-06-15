@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:58.147Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "8": "The UID variable is set to the host user's ID if provided, otherwise defaults to 1000; this ensures files created in the container are owned by your user, not root.",
+    "9": "Same idea as UID but for the group ID, so the container process runs as a regular user instead of root for security.",
+    "11": "The current directory is mounted into /workspace with 'cached' mode, which speeds up file access on Mac/Windows but means the container's view of files might lag slightly behind your actual edits.",
+    "13": "This creates a temporary /tmp folder inside the container with a 64MB size limit and restrictions (noexec means no executables can run from there, nosuid blocks special permissions) to prevent misuse.",
+    "15": "ALL capabilities are being dropped, meaning the container loses most Linux power-user abilities—this is a security hardening measure to prevent container breakout attacks.",
+    "18": "This prevents the container from gaining new privileges even if it somehow exploits a vulnerability, adding another layer of security.",
+    "19": "The container's filesystem is read-only, so the process can't modify files on disk except in the writable tmpfs areas defined above—this prevents accidental (or malicious) changes to your code."
+  }
+}

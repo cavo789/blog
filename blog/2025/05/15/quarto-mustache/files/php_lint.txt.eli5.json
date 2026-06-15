@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:48.161Z",
+  "source": "php_lint.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "5": "This section defines data that will be shared with template partials (reusable chunks of content) when rendering the page.",
+    "13": "This is a hint to spell-checkers to ignore the word 'phplint' so it doesn't flag it as a misspelling.",
+    "21": "This pulls in a reusable template file from a parent directory to avoid repeating the same content on every similar page."
+  }
+}

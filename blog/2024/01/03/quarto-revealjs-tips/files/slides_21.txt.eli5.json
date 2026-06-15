@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:49.826Z",
+  "source": "slides_21.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "3": "This starts a two-column layout using a special markup syntax called Pandoc—the triple colons tell the renderer to split the content into side-by-side sections.",
+    "4": "The curly braces with `.column` and `width=\"70%\"` specify that this column takes up 70% of the horizontal space.",
+    "8": "This is the second column, which takes up the remaining 30% of the width.",
+    "15": "The `::: notes` block creates speaker notes that won't display on the slide itself—only the presenter sees these when giving the talk."
+  }
+}

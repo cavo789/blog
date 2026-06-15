@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:34:26.127Z",
+  "source": "makefile.part37",
+  "lang": "part37",
+  "explanations": {
+    "1": "This runs a git command and stores the result in a variable; the := means it only runs once when the Makefile starts.",
+    "3": "This gets the root directory of your git repository (the folder where .git lives) and saves it for later use.",
+    "5": "This extracts your repository's web URL from git config, converts SSH format to HTTPS if needed, then removes the .git extension at the end."
+  }
+}

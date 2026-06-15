@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:04.728Z",
+  "source": "dlogs",
+  "lang": "plaintext",
+  "explanations": {
+    "4": "This line checks if two required programs (fzf and docker) are installed and available; if either is missing, the script stops here and returns an error.",
+    "6": "This declares multiple variables that will be used later to store the output from fzf, which key was pressed, the user's selection, and various command strings.",
+    "9": "The command -v checks if a program exists in your system's PATH, and >/dev/null 2>&1 hides any output from that check.",
+    "16": "This is a multi-line string that gets passed to docker inspect to extract specific container information in a formatted way.",
+    "28": "This awk command uses regex patterns to find certain words (like ERROR or WARN) and wraps them with special escape codes that tell the terminal to display them in red or yellow.",
+    "29": "The single quotes protect the awk pattern from being interpreted by the shell, so it gets passed as-is to awk for execution.",
+    "33": "The --ansi flag tells fzf that the preview window contains special color codes (like the ones from bat or our awk command) and it should interpret them to show colors.",
+    "43": "head -n 1 gets just the first line from fzf_out (which tells us which key was pressed), and the <<< syntax passes the variable's content as input.",
+    "44": "tail -n +2 means 'start from line 2 and show everything after', so this skips the first line (the key) and gets the actual user selection.",
+    "45": "awk '{print $1}' splits the selection by whitespace and extracts just the first field, which is the container ID.",
+    "60": "print -z puts the command into your shell's input buffer so you can edit it before pressing Enter, instead of running it immediately."
+  }
+}

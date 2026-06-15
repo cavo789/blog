@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:42.676Z",
+  "source": "sshf.zsh",
+  "lang": "bash",
+  "explanations": {
+    "35": "BEGIN is a special Perl block that runs once at the start—it's where we set up variables before processing any lines.",
+    "42": "The expression ($buf eq \"\") checks if the buffer is empty; if it is, we don't add the separator, otherwise we do—this keeps us from starting with extra characters.",
+    "64": "We're creating a string of 150 spaces to act as invisible padding, which pushes the description far to the right so it doesn't clutter the left side of the display.",
+    "65": "The printf statement uses format specifiers like %-20s (left-align in 20 spaces) to create columnar output that fzf will later split on the ###### delimiter.",
+    "70": "The --delimiter parameter tells fzf to treat ##### (from the Perl output) as the split point, so it knows which part is the searchable list and which is the preview data.",
+    "77": "The --preview parameter runs a Perl command on field {2} (everything after the #####) when you highlight an item—that's how the right pane gets populated.",
+    "91": "ssh -G is a special command that outputs all the computed SSH settings for an alias (like the actual hostname and username), rather than connecting.",
+    "94": "We use head -n 1 to grab only the first identity file because ssh -G can output multiple keys, but we just need one.",
+    "97": "The \\e codes are ANSI escape sequences—\\e[1;36m means bold cyan text, and \\e[0m resets the formatting back to normal."
+  }
+}

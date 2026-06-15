@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:39.012Z",
+  "source": "module.part3.bas",
+  "lang": "bas",
+  "explanations": {
+    "4": "We're hardcoding the username as 'SA' (the SQL Server admin account) instead of letting the system use the current user's Windows login.",
+    "6": "We're hardcoding a password directly in the code, which is a security risk because anyone reading the source code can see it.",
+    "14": "This calls a custom function that runs the SQL query and pastes the results as a table starting at wherever the cursor is currently positioned, with True meaning it will add headers."
+  }
+}

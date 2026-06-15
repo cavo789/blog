@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:33:57.447Z",
+  "source": "makefile.part22",
+  "lang": "part22",
+  "explanations": {
+    "2": "This line checks if the SonarQube Docker container is currently running by looking for a container named 'sonarqube' with status 'running'; if the command returns nothing (empty string), the condition is true and an error will be shown.",
+    "4": "The $(_RED) is a variable that contains color codes to make the error message print in red, and the backslash at the end escapes the newline so the printf doesn't include an actual line break in the output."
+  }
+}

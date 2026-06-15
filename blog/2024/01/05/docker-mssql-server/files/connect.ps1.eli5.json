@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:57.595Z",
+  "source": "connect.ps1",
+  "lang": "powershell",
+  "explanations": {
+    "4": "The -f operator is PowerShell's string formatting tool; it replaces {0} and {1} with the values that follow it, similar to printf in other languages.",
+    "7": "New-Object creates an instance of a .NET class; we're making a SQL connection object and passing the connection string as an argument to its constructor.",
+    "9": "CreateCommand() is a method that builds a command object attached to this specific connection, so the command knows which database to talk to.",
+    "13": "ExecuteReader() runs the query and returns a special object that lets us read results one row at a time instead of all at once.",
+    "19": "The while loop calls SqlDataReader.Read() which grabs the next row each time; when there are no more rows, Read() returns false and the loop stops.",
+    "20": "SqlDataReader works like a dictionary where you can access columns by their name in quotes, like ['LastName'], to get the value from the current row."
+  }
+}

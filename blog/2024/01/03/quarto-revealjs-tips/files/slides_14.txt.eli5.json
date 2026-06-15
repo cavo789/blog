@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:39.374Z",
+  "source": "slides_14.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "5": "This tells the reveal.js presentation engine to load your custom.css file as the theme instead of using one of the built-in themes.",
+    "9": "The curly braces with 'style=' inside let you add custom CSS properties directly to an image in markdown, in this case making the image 400 pixels wide."
+  }
+}

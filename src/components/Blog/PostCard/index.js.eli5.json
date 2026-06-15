@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:37.143Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "13": "The `layout` parameter defaults to 'big' if not provided, meaning this component has two different display modes.",
+    "14": "If no image is provided in the post data, this fallback image path will be used instead.",
+    "16": "This pulls out individual properties from the post object using destructuring, so we can use them directly as variables instead of writing `post.title` everywhere.",
+    "17": "This hook gives us information about the current website context, including which language the user is viewing the site in.",
+    "26": "The `||` operator here means 'use the post's image if it exists, otherwise use the default image as a backup'.",
+    "36": "The `&&` operator means 'only render this counter element if the counter value actually exists and is truthy'.",
+    "63": "The `aria-label` attribute provides an accessibility description for screen readers, telling them what the link does.",
+    "66": "The `&nbsp;` is a special character that creates a non-breaking space before the arrow, keeping them together visually.",
+    "87": "This tells PropTypes to only accept 'big' or 'small' as valid values for the layout prop."
+  }
+}

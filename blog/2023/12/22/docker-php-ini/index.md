@@ -44,7 +44,7 @@ The second things to do is to create a file called `php.ini` in the same folder 
 
 So, now, your folder contains at least two files:
 
-<Terminal>
+<Terminal typewriter>
 $ pwd
 /tmp/joomla
 

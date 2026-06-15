@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:22.429Z",
+  "source": "styles.module.css",
+  "lang": "css",
+  "explanations": {
+    "8": "This line tells the browser to smoothly animate three properties (background color, text color, and border color) over 200 milliseconds whenever they change, creating a gentle fade effect rather than instant changes.",
+    "21": "This resets a counter to zero so that the list items can be numbered automatically using the counter-increment property below.",
+    "26": "This increases the counter by 1 for each list item, so the ::before pseudo-element can display auto-numbered labels (1, 2, 3, etc.).",
+    "36": "This inserts the current counter value as text before each list item, creating automatic numbering without hardcoding the numbers.",
+    "63": "This is a special selector that applies different styles only when the page is in dark mode, overriding the light mode styles above for better contrast."
+  }
+}

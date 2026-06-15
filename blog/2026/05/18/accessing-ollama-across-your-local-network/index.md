@@ -49,7 +49,7 @@ Since my server runs on Windows 11, I can find it by opening a Powershell window
 
 On your second computer (the client), let's first check if it can "talk" to your server. We do this using a networking command called `ping`. Open your terminal and type `ping 192.168.0.218` (replace with your server's IP):
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ Pinging 192.168.0.218 with 32 bytes of data:
 
 Reply from 192.168.0.218: bytes=32 time&lt;1ms TTL=128

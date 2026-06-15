@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:05.871Z",
+  "source": "sayHello.php",
+  "lang": "php",
+  "explanations": {
+    "3": "The $firstname = '' syntax means this parameter is optional — if you call sayHello() without an argument, $firstname automatically becomes an empty string.",
+    "8": "The . operator concatenates (joins) strings together, so 'Hello ' . $firstname combines them into one string."
+  }
+}

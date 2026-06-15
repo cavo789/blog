@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:57.725Z",
+  "source": "customUI14.part3.xml",
+  "lang": "xml",
+  "explanations": {
+    "1": "This declares that we're using the Microsoft Office 2009 customization XML format, which tells Office how to add custom buttons and features to the ribbon toolbar.",
+    "7": "The insertAfterMso attribute means 'place this tab right after the built-in View tab in the ribbon' — it's like saying where to insert a new tab in the menu bar."
+  }
+}

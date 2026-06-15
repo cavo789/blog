@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:26.093Z",
+  "source": "overview.part2.qmd",
+  "lang": "qmd",
+  "explanations": {
+    "2": "This is a CSS string that styles the visual appearance of a markmap diagram—things like line colors, node circles, and link styling.",
+    "3": "This is a JSON string containing default configuration options for markmap, including spacing, timing, and a JavaScript function for coloring nodes; note that the function is stored as a string and would need to be evaluated as code later."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:55.572Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "2": "This is a special comment telling the spell-checker to ignore the word 'tinytex' so it doesn't flag it as a misspelling.",
+    "12": "These are default user ID and group ID numbers (like permissions identifiers in Linux), but VS Code will override them with your actual system values when the container starts.",
+    "28": "The 'cached' option is a performance hint for Docker on Mac/Windows to cache file reads, making the shared folder faster.",
+    "39": "This command keeps the container running indefinitely by repeatedly sleeping, so the dev environment stays alive even when you're not actively running code."
+  }
+}

@@ -42,7 +42,7 @@ So, yes, there is a Docker image called `container-registry.oracle.com/database/
 
 If you miss one step and try to download the image immediately, you'll get this error:
 
-<Terminal>
+<Terminal typewriter>
 $ docker pull container-registry.oracle.com/database/enterprise:latest
 Error response from daemon: Head "https://container-registry.oracle.com/v2/database/enterprise/manifests/21.3.0.0": unauthorized: Auth failed.
 </Terminal>
@@ -186,7 +186,7 @@ And lastly, we'll create a specific network for our Oracle container: `docker ne
 
 We're ready to create our container by running this command:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -d \
     --name oracle-db \
     --network oracle \
@@ -367,7 +367,7 @@ Now, by unfolding the list of tables, we can see ours:
 
 Another way would be to use the official sql*plus Docker image like this:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run --rm -it --network oracle oracletools/sqlplus:v19.18_lin SYS/admin@oracle-db:1521/orclpdb1 as sysdba
 </Terminal>
 

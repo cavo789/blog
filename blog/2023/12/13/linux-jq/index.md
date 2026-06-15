@@ -35,7 +35,7 @@ On each request, the `randomuser` API is returning a new object.
 
 By running `curl https://randomuser.me/api/` you'll get something like
 
-<Terminal>
+<Terminal typewriter>
 $ curl https://randomuser.me/api/
 </Terminal>
 
@@ -49,7 +49,7 @@ The JSON is just echoed on the screen, not really readable.
 
 But, as soon as we are redirecting to `jq`, it'll be better:
 
-<Terminal>
+<Terminal typewriter>
 $ curl --silent https://randomuser.me/api/ | jq
 </Terminal>
 
@@ -153,7 +153,7 @@ The output is a JSON representation having a root property called `results`. Tha
 
 If we just want to retrieve the `name` node, the filter to use with `jq` is `.results[0].name`.
 
-<Terminal>
+<Terminal typewriter>
 $ curl --silent https://randomuser.me/api/ | jq '.results[0].name'
 </Terminal>
 

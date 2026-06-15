@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:33.775Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "6": "This downloads Quarto from GitHub in one long command; the backslash at the end means the command continues on the next line.",
+    "7": "The tar command extracts the downloaded file into /opt/quarto, and --strip-components=1 removes the top folder level so files go directly where we want them.",
+    "8": "This creates a shortcut (symlink) so you can type 'quarto' from anywhere instead of typing the full path /opt/quarto/bin/quarto.",
+    "13": "This tells Python not to create compiled .pyc files, which saves space in the container since we don't need them.",
+    "19": "The --no-cache-dir flag tells pip not to keep a copy of downloaded packages after installing, which shrinks the final image size."
+  }
+}

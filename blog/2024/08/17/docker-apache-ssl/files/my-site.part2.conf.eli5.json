@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:38.262Z",
+  "source": "my-site.part2.conf",
+  "lang": "conf",
+  "explanations": {
+    "8": "This checks if the requested file doesn't actually exist on disk (the !-f means 'not a file'), so we can send non-existent requests to index.html.",
+    "9": "This rewrites all requests to index.html while preserving query parameters (QSA) and stopping any further rewrites (L means 'last rule').",
+    "26": "This tells Apache to enable SSL/TLS encryption for this virtual host running on port 443.",
+    "28": "This points Apache to the certificate file that proves your server's identity to browsers.",
+    "30": "This is the private key that matches your certificate—keep this secure, as it's needed to decrypt HTTPS traffic."
+  }
+}

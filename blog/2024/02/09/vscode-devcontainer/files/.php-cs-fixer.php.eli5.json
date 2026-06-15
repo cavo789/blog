@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:43.564Z",
+  "source": ".php-cs-fixer.php",
+  "lang": "php",
+  "explanations": {
+    "3": "This creates a 'finder' object that will search for PHP files to check, starting from the current directory but skipping the folders listed below.",
+    "13": "This reads the contents of a license header file from disk and stores it as a string so it can be added to the top of PHP files.",
+    "21": "The rtrim function removes trailing carriage returns and newlines from the header text so it's clean before being inserted into files."
+  }
+}

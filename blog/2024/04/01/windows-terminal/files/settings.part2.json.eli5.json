@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:44.362Z",
+  "source": "settings.part2.json",
+  "lang": "json",
+  "explanations": {
+    "5": "This runs a command inside a Docker container through WSL (Windows Subsystem for Linux); it's saying 'start this terminal by executing this command in the Ubuntu docker-compose environment'.",
+    "7": "This is a decimal number between 0 and 1 that controls how transparent the background image is — 0.3 means 30% opaque (70% see-through).",
+    "9": "A GUID is a globally unique identifier, like a serial number for this profile; Windows uses it internally to track settings even if you rename things.",
+    "12": "This path uses double backslashes because it's pointing to a network location (the WSL filesystem mounted as a network drive in Windows)."
+  }
+}

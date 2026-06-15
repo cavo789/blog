@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:58.001Z",
+  "source": "hangman_minify.php",
+  "lang": "php",
+  "explanations": {
+    "10": "This function picks a random element from an array by generating a random index and returning that element.",
+    "11": "This array stores the stages of a hangman drawing, where each index represents how many wrong guesses have been made, plus a string for displaying wrong guesses.",
+    "19": "PHP_EOL is a constant that means 'end of line' — it's just a newline character that works on any operating system.",
+    "21": "This loop checks each letter in the word: if it was guessed, it shows the letter, otherwise it shows an underscore.",
+    "25": "The function ppnz() both prints the word AND returns it, so here we're capturing the return value to check if the player won."
+  }
+}

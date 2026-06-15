@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:16.618Z",
+  "source": "main.part7.py",
+  "lang": "python",
+  "explanations": {
+    "1": "The `Annotated` wrapper lets us attach extra information (like descriptions and default values) to a type without changing what the type actually is.",
+    "4": "`DefaultPath` sets a fallback folder path that will be used if no other value is provided.",
+    "10": "This sets `.config` as the default folder for configuration files if nothing else is specified."
+  }
+}

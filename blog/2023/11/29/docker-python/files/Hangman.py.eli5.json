@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:24.713Z",
+  "source": "Hangman.py",
+  "lang": "python",
+  "explanations": {
+    "4": "The `lower()` method converts the input to lowercase so it matches against lowercase 'y' and 'n', and `not in` checks if the answer isn't in that approved list.",
+    "14": "This creates a string of underscores with the same length as the word to hide — for example, if the word is 'cat', display starts as '___'.",
+    "17": "Converting the word to a list makes it easier to check if a guessed letter exists and to remove it later.",
+    "31": "The `find()` method returns the position (index) of the first occurrence of the guessed letter in the word.",
+    "32": "This replaces one underscore with the correct letter by taking everything before the position, adding the letter, then adding everything after the position.",
+    "101": "The double backslash `\\` is needed because a single backslash is special in Python strings, so `\\` represents one actual backslash character in the output."
+  }
+}

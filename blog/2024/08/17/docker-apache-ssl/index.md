@@ -43,7 +43,7 @@ After a quick search on github.com, I've found a nice free one page html5/css3 t
 
 Let's download the **Sedna** demo site in a temporary folder on our hard disk, unzip the file, rename the default folder name `Sedna-master` to `src` and run the website using Docker:
 
-<Terminal>
+<Terminal typewriter>
 $ mkdir -p /tmp/https_localhost && cd $_
 $ wget https://github.com/peterfinlan/Sedna/archive/refs/heads/master.zip
 $ unzip master.zip && rm master.zip && mv Sedna-master src
@@ -60,7 +60,7 @@ The site is running using the http protocol but https is not yet possible. So, l
 
 Right now, please remove the running container; we'll create it back later on:
 
-<Terminal>
+<Terminal typewriter>
 $ docker container rm static-site --force
 </Terminal>
 
@@ -118,7 +118,7 @@ Still in our `/tmp/https_localhost` folder, please create a directory called `ss
 
 To do this, you can just copy/paste the code below in your console:
 
-<Terminal>
+<Terminal typewriter>
 $ mkdir -p ssl
 (
     cd ssl
@@ -229,7 +229,7 @@ Because the majority of examples I found used a PHP or Nginx image and not Apach
 
 If you want to use curl to test your website, you'll get an error:
 
-<Terminal>
+<Terminal typewriter>
 $ curl https://localhost
 curl: (60) SSL certificate problem: self-signed certificate
 More details here: https://curl.se/docs/sslcerts.html
@@ -291,7 +291,7 @@ To do this, we simply need to copy our `.crt` file to our `/usr/local/share/ca-c
 
 The code below will install the certificate we've created in the blog post (`ssl/server.crt`) to the `/usr/local/share/ca-certificates` then run the `update-ca-certificates` command:
 
-<Terminal>
+<Terminal typewriter>
 $ sudo apt-get install -y ca-certificates
 $ sudo cp ssl/server.crt /usr/local/share/ca-certificates
 $ sudo update-ca-certificates

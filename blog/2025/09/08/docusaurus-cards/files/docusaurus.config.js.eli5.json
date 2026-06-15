@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:15.910Z",
+  "source": "docusaurus.config.js",
+  "lang": "javascript",
+  "explanations": {
+    "7": "The plugin is registered as an array with two elements: the plugin function itself and an empty object for its configuration options."
+  }
+}

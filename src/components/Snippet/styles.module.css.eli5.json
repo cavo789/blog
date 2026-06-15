@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:47:20.671Z",
+  "source": "styles.module.css",
+  "lang": "css",
+  "explanations": {
+    "3": "The !important flag forces this style to override any conflicting styles, which is sometimes necessary but can make CSS harder to maintain.",
+    "28": "This creates a custom CSS variable called --chevron-rotation that can be changed by other rules to rotate the chevron icon.",
+    "35": "This selector targets elements with aria-expanded=\"true\", which is an accessibility attribute that indicates whether a collapsible section is open or closed.",
+    "52": "This uses the custom variable defined on line 28 to rotate the chevron; the variable gets updated when the element's aria-expanded state changes.",
+    "73": "The bracket notation [class$=\"_icon\"] selects any element whose class name ends with \"_icon\", so it matches .copy_icon, .alert_icon, etc.",
+    "81": "The bracket notation [class^=\"variant_\"] selects any element whose class name starts with \"variant_\", so it matches .variant_python, .variant_bash, etc.",
+    "128": "This uses a fallback value (#282c34) in case the CSS variable --prism-background-color isn't defined, so the code block still has a dark background.",
+    "148": "The white-space: pre property preserves all whitespace and line breaks exactly as written, which is essential for displaying code.",
+    "156": "The flex-shrink: 0 prevents this placeholder from shrinking smaller than its natural size, keeping it at a consistent width.",
+    "202": "The calc() function adds 6px to 100% of the tooltip's height, pushing the tooltip up above the badge with a small gap.",
+    "217": "The pointer-events: none makes the tooltip invisible to the mouse, so clicks pass through it to elements below.",
+    "221": "The ::before pseudo-element creates a small arrow shape that points downward from the tooltip toward the badge button."
+  }
+}

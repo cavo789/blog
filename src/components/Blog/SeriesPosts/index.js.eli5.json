@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:20.024Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "42": "This sorts posts by converting their date strings into actual Date objects so JavaScript can compare them numerically — oldest dates come first.",
+    "72": "This applies the 'dimmed' styling class only if highlightCurrent is true, making the current post look faded when that prop is enabled."
+  }
+}

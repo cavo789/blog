@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:10.846Z",
+  "source": "MDXComponents.js",
+  "lang": "javascript",
+  "explanations": {
+    "6": "The three dots (...) spread operator copies all the properties from MDXComponents into this new object, so we inherit all the default components and then add or override with our own.",
+    "7": "This shorthand syntax (Image,) is the same as writing Image: Image, which means the Image component can be used as a custom tag in MDX markdown files."
+  }
+}

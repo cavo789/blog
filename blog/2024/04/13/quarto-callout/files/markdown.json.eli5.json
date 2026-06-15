@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:03.580Z",
+  "source": "markdown.json",
+  "lang": "json",
+  "explanations": {
+    "5": "The ${1|note,tip,warning,caution,important|} syntax lets the user choose one option from that pipe-separated list when they insert this snippet.",
+    "6": "The ${2:title} is a placeholder that gets replaced with whatever the user types second; the number just controls the order of prompts.",
+    "7": "The ${3:body} is another placeholder for the user to fill in—think of these numbered slots as a sequence of questions the editor will ask."
+  }
+}

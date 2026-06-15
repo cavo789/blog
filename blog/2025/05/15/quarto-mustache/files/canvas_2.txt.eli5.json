@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:43.488Z",
+  "source": "canvas_2.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "3": "The HTML comment with 'highlight-next-line' tells the documentation renderer to visually emphasize line 6 when displaying this file.",
+    "5": "This is another highlight directive—it marks line 6 for special visual treatment in the rendered documentation.",
+    "17": "This syntax is a Hugo template tag that includes another file's content (like inserting a reusable snippet) at this location in the final output."
+  }
+}

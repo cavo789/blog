@@ -44,7 +44,7 @@ By using a **devcontainer**, you (and your team colleague) will use a preinstall
 This article is written in the form of a step-by-step tutorial. If you don't want to take the time to create the configuration files yourself and download them directly, please run the commands below in a Linux console. You'll then get all the files and every time the tutorial below tells you to create a file, you'll already have it.
 </AlertBox>
 
-<Terminal>
+<Terminal typewriter>
 $ mkdir /tmp/devcontainer_php && cd $_
 
 curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
@@ -56,7 +56,7 @@ tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devcon
 <AlertBox variant="note" title="Download the very latest version">
 The php_devcontainer repository will evolve over time. If you wish to download the latest version and not the use frozen for this article, please use the following commands and not the ones of here above:
 
-<Terminal>
+<Terminal typewriter>
 $ mkdir /tmp/devcontainer_php && cd $_
 
 $ curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/heads/main.tar.gz
@@ -224,7 +224,7 @@ One step further: is it possible to run `PHP-CS-Fixer` not just on the file bein
 
 In VSCode, please press <kbd>CTRL</kbd>+<kbd>´</kbd> (or click on the `View` menu then `Terminal`) to open a terminal. Make sure you're in the `/var/www/html` folder (run `cd /var/www/html` if needed) and run the following command:
 
-<Terminal>
+<Terminal typewriter>
 $ /usr/local/bin/php-cs-fixer.phar fix --config /var/www/html/.config/.php-cs-fixer.php .
 </Terminal>
 
@@ -265,7 +265,7 @@ Now, since we have defined our coding standard (`PSR12` here), just display the 
 
 Open a terminal by pressing <kbd>CTRL</kbd>+<kbd>´</kbd> (or by clicking on the `View` menu then `Terminal`) and run this command:
 
-<Terminal>
+<Terminal typewriter>
 $ /usr/local/bin/phpcs.phar --standard=/var/www/html/.config/phpcs.xml /var/www/html/index.php
 </Terminal>
 
@@ -288,7 +288,7 @@ There is one warning and one error concerning *coding convention violation* and 
 
 Now, run almost the same command but no more `phpcs` (to detect violations) but `phpcbf` (to fix them -the ones that can be fixed automatically-).
 
-<Terminal>
+<Terminal typewriter>
 $ /usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml /var/www/html/index.php
 </Terminal>
 
@@ -389,7 +389,7 @@ If you're thinking *Yes, but I haven't installed composer...*, well, it's wrong.
 
 The second step in the installation guide asks us to run the command below. When prompted, please answer `yes` to create your `rector.php` configuration file.
 
-<Terminal>
+<Terminal typewriter>
 $ vendor/bin/rector
 </Terminal>
 
@@ -429,7 +429,7 @@ And if you think it's over, you're wrong. Rector now look at our function parame
 
 Since we've analyzed the suggestions of Rector and we agree with, please rerun the same command but, this time, without, the `--dry-run` flag.
 
-<Terminal>
+<Terminal typewriter>
 $ vendor/bin/rector process index.php --config .config/rector.php
 </Terminal>
 
@@ -453,7 +453,7 @@ We can do one more improvement by extracting the `Hello` prefix. Rector has not 
 
 Back in your terminal and run the command below to scan your entire codebase.
 
-<Terminal>
+<Terminal typewriter>
 $ vendor/bin/rector process . --dry-run --config .config/rector.php
 </Terminal>
 

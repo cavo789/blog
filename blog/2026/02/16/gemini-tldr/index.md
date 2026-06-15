@@ -71,7 +71,7 @@ Because I'm a huge fan of Docker, I wanted to ensure that the script runs in a c
 
 Here is how to start the container:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker run -it --rm --env-file .env -v .:/app -w /app python sh -c "pip install google-genai python-dotenv > /dev/null 2>&1 && /bin/bash"
 </Terminal>
 
@@ -91,13 +91,13 @@ Once inside the container, you can run the script against a specific file or an 
 
 To process a single file:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ python .scripts/python_tldr/main.py blog/2026/01/index.md
 </Terminal>
 
 To process all posts for a specific month:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ python .scripts/python_tldr/main.py blog/2026/01/
 </Terminal>
 

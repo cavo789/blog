@@ -47,7 +47,7 @@ At the end, we'll have a `make import` command that will start **[Akeeba Kicksta
 <AlertBox variant="info" title="Skipping the files creation process">
 In the next chapters, you'll need to create several files using copy/paste. If you wish go faster, just run the following commands to retrieve files from my [Github repo](https://github.com/cavo789/docker_joomla_restore) so you don't need to create them.
 
-<Terminal>
+<Terminal typewriter>
   $ mkdir /tmp/joomla_restore && cd $_ $ curl -LOJ --silent
   https://github.com/cavo789/docker_joomla_restore/archive/refs/tags/1.0.0.tar.gz
   $ tar -xzvf docker_joomla_restore-1.0.0.tar.gz --strip-components 1 && rm -f
@@ -63,7 +63,7 @@ _If you prefer to understand what you do and create files manually, please conti
 
 Please create a new folder on your computer like f.i. `mkdir /tmp/joomla_restore && cd $_`.
 
-<Terminal>$ mkdir /tmp/joomla_restore && cd $_</Terminal>
+<Terminal typewriter>$ mkdir /tmp/joomla_restore && cd $_</Terminal>
 
 In that folder, you'll need to create several files (please refer to [Part 2](/blog/docker-joomla-part-2)) if you need more explanations about these files.
 
@@ -97,9 +97,9 @@ We'll need a new action called `import`:
 <AlertBox variant="caution" title="">
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
 
-<Terminal>$ which make</Terminal>
+<Terminal typewriter>$ which make</Terminal>
 
-<Terminal>$ sudo apt-get update && sudo apt-get install make</Terminal>
+<Terminal typewriter>$ sudo apt-get update && sudo apt-get install make</Terminal>
 
 </AlertBox>
 
@@ -135,7 +135,7 @@ The two files we need are called `en-GB.kickstart.ini` and `kickstart.php`.
 
 We're ready. Just before you begin, please check that you have all the required files (please run `ls -alh`):
 
-<Terminal>
+<Terminal typewriter>
 $ ls -alh
 
 Permissions Size User Group Date Modified Name
@@ -169,7 +169,7 @@ For Linux users, simply take advantage of `GNU Make` and run the `make import` i
 
 For Windows (Powershell or DOS), please run these commands:
 
-<Terminal title="Powershell">
+<Terminal typewriter title="Powershell">
   mkdir db_data mkdir joomla_data copy en-GB.kickstart.ini joomla_data\ copy
   kickstart.php joomla_data\ copy backup.jpa joomla_data\ docker compose up
   --detach
@@ -177,7 +177,7 @@ For Windows (Powershell or DOS), please run these commands:
 
 For both users (Linux and Windows), you'll something like this output in the console:
 
-<Terminal>
+<Terminal typewriter>
 [+] Building 1.4s (7/7) FINISHED                                 docker:default
 => [joomla internal] load build definition from Dockerfile                 0.0s
  => => transferring dockerfile: 200B                                       0.0s
@@ -219,7 +219,7 @@ All you need to do is retrieve a few configuration files, and just the one named
 
 You download the local backup of your site and, with a single command (`make import`), your site is restored.
 
-<Terminal>$ make import</Terminal>
+<Terminal typewriter>$ make import</Terminal>
 
 No matter what version of Joomla or MySQL you're using.
 

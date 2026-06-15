@@ -55,7 +55,7 @@ If you already have a Docusaurus blog, just skip this chapter. For demonstration
 
 Grab a copy of his blog by running commands below:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ cd /tmp && git clone git@github.com:Juniors017/docux-blog.git && cd docux-blog
 </Terminal>
 
@@ -65,7 +65,7 @@ If you're new to Docusaurus, you might wonder: *How can I just run the blog loca
 
 Please first open VSCode by running `code .`:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ code .
 </Terminal>
 
@@ -97,13 +97,13 @@ Once the files are in place, in a console, please run `make` and you'll get a sc
 
 If `make` isn't yet installed on your machine, you'll get an error so please make sure to first install `make`:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ sudo apt-get update && sudo apt-get install make
 </Terminal>
 
 Now we've to run two commands, the first one will create a Docker image for production i.e. where everything is included in the image.
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ TARGET=production make build
 </Terminal>
 
@@ -113,7 +113,7 @@ You'll get a screen like this one and you'll have to wait something like 80 seco
 
 This done, please run the second command to create a running instance of the image i.e. a container:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ TARGET=production make up
 </Terminal>
 
@@ -165,13 +165,13 @@ Please edit the `.devcontainer/.env` file and make sure these values are the one
 
 Since we've two bash scripts, we need to make them executable. Please run this command in a terminal:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ chmod +x .devcontainer/bootstrap.sh .devcontainer/bash_helpers.sh
 </Terminal>
 
 Now we've to open the devcontainer so please run:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ make build && make devcontainer
 </Terminal>
 

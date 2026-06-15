@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:52.893Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "22": "This adds validation rules to the Bluesky component, checking that it receives a metadata object with the right structure—like a contract that says 'you must pass me an object shaped like this'.",
+    "23": "PropTypes.shape() checks that an object has specific properties with specific types, kind of like describing what keys and value types a JavaScript object should have."
+  }
+}

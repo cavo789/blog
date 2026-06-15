@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:35.605Z",
+  "source": "BlogPostItem.js",
+  "lang": "javascript",
+  "explanations": {
+    "2": "clsx is a utility function that combines CSS class names together, letting you conditionally include classes based on logic.",
+    "3": "useBlogPost is a custom hook (a reusable function) from Docusaurus that gives you information about the current blog post you're viewing.",
+    "10": "isBlogPostPage is a boolean value (true or false) that tells you whether the user is viewing a single full blog post or a list of multiple posts.",
+    "11": "This returns a margin class name only if we're NOT on a single post page; if we are on a single post page, it returns undefined (no extra spacing needed)."
+  }
+}

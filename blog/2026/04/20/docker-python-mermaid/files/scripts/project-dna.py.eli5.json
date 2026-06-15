@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:32.053Z",
+  "source": "project-dna.py",
+  "lang": "python",
+  "explanations": {
+    "6": "os.path.splitext() splits a filename into two parts: the name and the extension; [1] grabs just the extension part like '.py'.",
+    "22": "dirs[:] = [...] modifies the list in-place so os.walk() won't descend into those folders; this filters out hidden folders and Python cache folders.",
+    "26": "setdefault() is a shortcut that returns the category's set if it exists, or creates an empty set and returns it; then add() puts the filename in that set.",
+    "36": "sorted(list(files)) converts the set to a sorted list because sets have no guaranteed order, and we want consistent file ordering.",
+    "41": "This removes parentheses and square brackets from filenames because Mermaid (the diagram tool) uses those characters for its own syntax and gets confused otherwise.",
+    "61": "subprocess.run() executes the 'mmdc' command-line tool (a Mermaid diagram compiler) with various options; check=True makes it raise an error if the command fails."
+  }
+}

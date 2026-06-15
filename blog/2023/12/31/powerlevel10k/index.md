@@ -25,7 +25,7 @@ The tip comes from [https://github.com/romkatv/powerlevel10k/blob/master/README.
 
 By running the single command below, you'll download a very small Linux Alpine image then start some initializations like installing `git`, `nano`, `zsh`, ... The Powerlevel10k repository will be downloaded from Github and its wizard will be started.
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -it --rm alpine sh -uec '
   apk add git zsh nano vim
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k

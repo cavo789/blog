@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:59.795Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "This tells Docker to use a specific syntax version for parsing the Dockerfile itself, enabling newer features.",
+    "24": "The --mount flags create temporary cache folders during this RUN command so repeated apt-get installs reuse downloaded packages instead of downloading again.",
+    "48": "Similar to line 24, this caches the yq download so if the image rebuilds, it won't re-download the same file.",
+    "64": "This caches pip's package cache during the RUN command, so reinstalling Python packages on rebuild is faster.",
+    "78": "This caches npm's package cache in the user's home directory, speeding up repeated npm installs.",
+    "114": "The ${VAR:-default} syntax means 'use VAR if set, otherwise use the default value after the colon'.",
+    "127": "From this point forward, all commands run as the vscode user instead of root, which is a security best practice.",
+    "130": "This caches Quarto's tools directory so downloaded Chromium won't need to be re-downloaded on rebuild.",
+    "143": "This long line defines a bash alias that finds all .dot files and converts them to .png images using the 'dot' command."
+  }
+}

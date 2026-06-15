@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:35.730Z",
+  "source": "assert.part2.sh",
+  "lang": "bash",
+  "explanations": {
+    "4": "The `local -r` makes a read-only variable, and `${1:-}` means use the first argument if it exists, otherwise use an empty string.",
+    "7": "This line checks if the variable is empty (the `-z` test), and if it is, prints the error message to stderr (the `>&2` part) and continues anyway.",
+    "18": "The `command -v` finds programs in your PATH, the `|| true` prevents an error if the command isn't found, and the whole thing is in a subshell (the `$()`) so we can check if it returned anything.",
+    "29": "The double quotes inside the string need escaping with backslashes so bash doesn't think the string ends early.",
+    "34": "The `2> /dev/null` silences any error messages from docker, and we're comparing the output to an empty string to check if the image doesn't exist."
+  }
+}

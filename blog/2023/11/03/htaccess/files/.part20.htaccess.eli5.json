@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:36.707Z",
+  "source": ".part20.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "3": "This regex pattern matches any filename that does NOT end with .png, .jpg, .jpeg, .gif, .svg, or .icon (the ?<! part means 'not preceded by'), so the rules inside will apply to all other files."
+  }
+}

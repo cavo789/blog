@@ -59,7 +59,7 @@ For the demo, please start a Linux shell and run `mkdir -p /tmp/markmap && cd $_
 
 Please create a new file called `mindmap.md` with this markdown content about *Social Media Uses* provided just here above.
 
-<Terminal>
+<Terminal typewriter>
 $ ls -alh
 total 920K
 drwxr-xr-x  2 christophe christophe 4.0K Dec 16 14:05 .
@@ -69,7 +69,7 @@ drwxrwxrwt 19 christophe christophe 908K Dec 16 14:05 ..
 
 And now run `docker run -it --rm -v ${PWD}:/project -w /project -u $(id -u):$(id -g) leopoul/markmap:1.0.0 mindmap.md --output mindmap.html` to convert the markdown document into an HTML page. The image is automatically created as a SVG content in the `.html` file.
 
-<Terminal>
+<Terminal typewriter>
 $ ls -alh
 total 920K
 drwxr-xr-x  2 christophe christophe 4.0K Dec 16 14:05 .

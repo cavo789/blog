@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:44.309Z",
+  "source": "index.cjs",
+  "lang": "javascript",
+  "explanations": {
+    "23": "This exports a function that Docusaurus will call to set up the plugin; the function returns an object describing what the plugin does.",
+    "26": "The contentLoaded method is a lifecycle hook that Docusaurus calls after all content is loaded, and it gives you the actions object to register new routes.",
+    "27": "actions.addRoute() tells Docusaurus to create a new URL pattern; the :slug part is a placeholder that captures whatever series name the user visits."
+  }
+}

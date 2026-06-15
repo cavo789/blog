@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:19.947Z",
+  "source": "main.part8.py",
+  "lang": "python",
+  "explanations": {
+    "1": "This decorator (@function) modifies the behavior of the function below it, similar to how a wrapper changes how something works.",
+    "2": "The 'async' keyword means this function can pause and resume, allowing other code to run while it waits for tasks to complete.",
+    "4": "This creates a task group that will run all the scheduled tasks at the same time instead of one after another, making everything faster.",
+    "5": "start_soon() schedules a task to run without waiting for it to finish, similar to starting multiple workers instead of doing jobs one at a time."
+  }
+}

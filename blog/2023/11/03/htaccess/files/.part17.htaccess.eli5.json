@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:25.018Z",
+  "source": ".part17.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "This matches files ending in .pl, .php, .cgi, or .spl — the dollar sign means 'end of filename' and the pipe | means 'or'.",
+    "2": "This checks if the mod_headers module (which lets Apache add custom HTTP response headers) is installed before trying to use it.",
+    "4": "This tells browsers to never display this page inside a frame on another website, protecting against clickjacking attacks.",
+    "5": "This enables the browser's built-in cross-site scripting (XSS) protection and tells it to block the page if an XSS attack is detected."
+  }
+}

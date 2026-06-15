@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:39.174Z",
+  "source": ".pylintrc",
+  "lang": "plaintext",
+  "explanations": {
+    "21": "Setting jobs=0 tells Pylint to automatically figure out how many processor cores your computer has and use all of them to speed up checking.",
+    "28": "This tells Pylint that your code is written for Python version 3.13.0, so it won't complain about using features from newer versions.",
+    "31": "Pylint gives your code a score out of 10; this setting makes the program exit with an error if the score drops below 9.50."
+  }
+}

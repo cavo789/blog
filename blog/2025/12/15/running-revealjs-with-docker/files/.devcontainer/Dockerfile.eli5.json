@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:50:32.235Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "This line tells Docker to use a newer syntax version that enables advanced caching features used later in the file.",
+    "24": "The --mount flags create temporary storage caches during this build step so apt package downloads don't have to be repeated if you rebuild the image.",
+    "56": "Similar to line 24, this caches downloaded files for the yq tool installation to speed up rebuilds.",
+    "71": "This caches pip's package downloads so Python dependencies don't have to be re-downloaded on future rebuilds.",
+    "85": "This caches npm package downloads in the user's home directory to speed up Node.js package installation on rebuilds.",
+    "108": "The ${USER_UID:-1000} syntax means 'use the value of USER_UID if it's set, otherwise default to 1000' — it's a fallback pattern.",
+    "124": "This caches Quarto's downloaded tools directory so the Chromium installation doesn't need to be repeated on rebuilds.",
+    "136": "The ${LOCAL_WORKSPACE} variable here isn't defined in this Dockerfile — it's expected to be passed in from the host environment when the container runs."
+  }
+}

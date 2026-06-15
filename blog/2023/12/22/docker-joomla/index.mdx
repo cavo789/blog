@@ -101,7 +101,7 @@ Click on the `Generate install script` below and copy/paste the script in a term
 
 To make things as clear as possible, here is my temporary folder content once I've run the generation script:
 
-<Terminal>
+<Terminal typewriter>
 cd /tmp/joomla
 
 $ ls -alh
@@ -116,7 +116,7 @@ So, I just have one file, and this is the newly, created, `compose.yaml` file.
 
 In your terminal, please run the following command:
 
-<Terminal>$ docker compose up --detach</Terminal>
+<Terminal typewriter>$ docker compose up --detach</Terminal>
 
 <AlertBox
   variant="info"
@@ -133,7 +133,7 @@ Docker will start downloading `joomla` and `joomladb`, the two services mentione
 
 You will obtain something like this, please wait until everything is downloaded.
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose up --detach
 
 [+] Running 16/35
@@ -153,7 +153,7 @@ $ docker compose up --detach
 
 At the end, once images have been downloaded, the console will show something like this:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose up --detach
 
 [+] Running 35/35
@@ -220,7 +220,7 @@ We won't be restarting your Docker containers yet. For now, the `kingsbridge` na
 
 If you're curious, you can run the `docker image list` command to get the list of Docker images already downloaded on your machine.
 
-<Terminal>
+<Terminal typewriter>
 $ docker image list
 
 REPOSITORY TAG IMAGE ID CREATED SIZE
@@ -246,7 +246,7 @@ For example, to use Joomla version 5.3.3 with PHP 8.2, you would change the `ima
 
 We're almost done. Please run `docker container list` to get the list of containers created by Docker:
 
-<Terminal>
+<Terminal typewriter>
 $ docker container list
 
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
@@ -321,7 +321,7 @@ In the previous chapter, we have installed Joomla so we should have Joomla on yo
 
 Let us verify by returning to our Linux console:
 
-<Terminal>
+<Terminal typewriter>
 $ pwd
 /tmp/joomla
 
@@ -341,7 +341,7 @@ We will discuss this later but yes, by default with Docker, everything happens i
 
 Still on your console, type again `docker container list`:
 
-<Terminal>
+<Terminal typewriter>
 $ docker container list
 
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
@@ -356,7 +356,7 @@ We have thus two containers, one named `joomla-joomla-1` and one name `joomla-jo
 
 We will stop them by running `docker compose down`:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose down
 
 [+] Running 3/3
@@ -370,7 +370,7 @@ If you go back to `http://localhost:8080` with your browser and refresh the page
 
 Run `docker compose up --detach` again.
 
-<Terminal>$ docker compose up --detach</Terminal>
+<Terminal typewriter>$ docker compose up --detach</Terminal>
 
 Surf to the site again, refresh the page and the site are, oh? not yet responding. Wait a few... a few more... and after a certain period, the site will be there. Why?
 
@@ -378,11 +378,11 @@ Docker must (re)start two services, the Joomla one and the database server. Init
 
 You can see this by running `docker compose logs --follow` (press <kbd>CTRL</kbd>+<kbd>C</kbd> to quit).
 
-<Terminal>$ docker compose logs --follow the_output</Terminal>
+<Terminal typewriter>$ docker compose logs --follow the_output</Terminal>
 
 Once Joomla will be ready, you will get the installation wizard of Joomla... just like the first time. So, by running `docker compose down` you have lost your work.
 
-<Terminal>$ docker compose down</Terminal>
+<Terminal typewriter>$ docker compose down</Terminal>
 
 <AlertBox variant="danger" title="">
 As mentioned earlier, everything is done in RAM. By stopping a Docker container, you will lose everything not saved on your computer. It's great for playing/learning but not what you expect when you're developing a real site.
@@ -421,7 +421,7 @@ And the `/var/lib/mysql` folder of the MySQL service should be synchronized with
 <AlertBox variant="caution" title="Please create folders first">
 Make sure to, first, create these two directories on your computer, so folder's permissions will be correct!
 
-<Terminal>$ mkdir site_joomla db</Terminal>
+<Terminal typewriter>$ mkdir site_joomla db</Terminal>
 
 </AlertBox>
 
@@ -436,7 +436,7 @@ The syntax `user: ${UID:-1000}:${GID:-1000}` means to use `1000` as default valu
 
 Just check your folder's content:
 
-<Terminal>
+<Terminal typewriter>
 $ pwd
 /tmp/joomla
 
@@ -452,7 +452,7 @@ drwxr-xr-x 2 christophe christophe 4.0K Jan 4 15:57 site_joomla
 
 Run Docker again but first, make sure the previous containers are removed (not only stopped): `docker compose kill`.
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose kill
 
 [+] Killing 2/2
@@ -463,7 +463,7 @@ $ docker compose kill
 
 Please now run the following command and, as you can see, we'll first initialize UID and GID variables so we'll not meet permissions issues:
 
-<Terminal>
+<Terminal typewriter>
 $ UID=$(id -u) GID=$(id -g) docker compose up --detach
 
 [+] Running 3/3
@@ -475,7 +475,7 @@ $ UID=$(id -u) GID=$(id -g) docker compose up --detach
 
 And you can, already, run `ls` again to see that, yes, your local `site_joomla` and `db` folders are populated now. This is the result of the `volumes` entry we have added in your `compose.yaml` file.
 
-<Terminal>
+<Terminal typewriter>
 $ pwd
 /tmp/joomla
 
@@ -544,7 +544,7 @@ Back to your browser and continue the installation of Joomla like we did in the 
 
 When the installation wizard has finished successfully, return to your Linux console and check if you can see the `configuration.php` file now.
 
-<Terminal>
+<Terminal typewriter>
 $ pwd
 /tmp/joomla
 
@@ -570,7 +570,7 @@ Yes! This time we have stored your Joomla website on your computer.
 
 For the exercise, we can kill your containers by running `docker compose kill` and run `docker compose up --detach` again to start your containers again and, this time, we will retrieve your Joomla site as we just leave it. Nothing is lost now.
 
-<Terminal>$ docker compose kill && docker compose up --detach</Terminal>
+<Terminal typewriter>$ docker compose kill && docker compose up --detach</Terminal>
 
 And since files/folders are now on your computer, you can do everything you want with your website like committing it on a GitHub repository f.i.
 
@@ -597,7 +597,7 @@ The name of your Joomla service is `joomla` (and `joomladb` is the name of your 
 
 Now we know everything we need: to run an interactive shell session in the Joomla container, just run `docker compose exec joomla /bin/sh` to _jump_ into the Joomla container (_and `docker compose exec joomladb /bin/sh` for the database container_).
 
-<Terminal>$ docker compose exec joomla /bin/sh</Terminal>
+<Terminal typewriter>$ docker compose exec joomla /bin/sh</Terminal>
 
 Let us rewind for a few seconds because it's complicated to understand.
 
@@ -607,7 +607,7 @@ Then, we jump in the Joomla Docker container by running `docker compose exec joo
 
 It can drive you mad but ... when entering in the Docker container, you're _no more_ on your computer, you're virtually in another computer, the container. In that _computer_, the current folder is thus `/var/www/html`. By typing `exit`, you will leave the container, go back to your computer and back in the `/tmp/joomla` folder.
 
-<Terminal>
+<Terminal typewriter>
 $ pwd
 /tmp/joomla
 
@@ -625,7 +625,7 @@ $ pwd
 
 Something else to try:
 
-<Terminal>
+<Terminal typewriter>
 $ php --version
 command not found: php
 
@@ -688,7 +688,7 @@ Kingsbridge can be a Joomla 4.4 / PHP 7.4 website while Shiring is on Joomla 5.0
 <AlertBox variant="info" title="">
 Using another port isn't mandatory. You can have several websites on the same port as `8080`. But, in that case, we won't be able to use these websites at the same time. You can start the first one and when trying to start the second one, Docker will say *port already in use*. This isn't a problem; you can just run `docker compose stop` for the first one so free the port then start the second one.
 
-<Terminal>$ docker compose stop</Terminal>
+<Terminal typewriter>$ docker compose stop</Terminal>
 
 </AlertBox>
 

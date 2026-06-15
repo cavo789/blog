@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:07.606Z",
+  "source": "rector.php",
+  "lang": "php",
+  "explanations": {
+    "3": "This tells PHP to enforce strict type checking, so if you pass the wrong type of value to a function, it will error instead of trying to convert it.",
+    "13": "This syntax uses a named argument to tell Rector to apply modernizations for PHP 8.2, the latest version of the language.",
+    "14": "These are predefined rule sets that Rector will apply: codeQuality improves how the code is written, deadCode removes unused stuff, and typeDeclarations adds type hints where they're missing."
+  }
+}

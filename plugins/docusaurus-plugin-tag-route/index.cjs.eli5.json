@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:00.474Z",
+  "source": "index.cjs",
+  "lang": "javascript",
+  "explanations": {
+    "1": "This exports a function that returns an object; the function itself is what Node.js will load when you require this file.",
+    "4": "The `async` keyword means this function will do something that takes time, and we'll wait for it to finish before moving on.",
+    "5": "The `actions.addRoute` call tells Docusaurus to create a new page route; anything after `/blog/tags/` will be captured as the `tag` variable."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:35.875Z",
+  "source": "bash_helpers.sh",
+  "lang": "bash",
+  "explanations": {
+    "3": "This sets a file path, but uses a default value 'node' if the OS_USERNAME variable isn't already set — the ${VAR:-default} syntax means 'use VAR, or if it's empty, use default instead'.",
+    "6": "The -qxF flags mean: be quiet (no output), match the exact whole line (-x), and treat the search term as a fixed string not a pattern (-F), so it won't break if the marker contains special characters.",
+    "7": "The <<EOF syntax is a 'here document' — it lets you write multiple lines of text that will all be appended to the file at once, ending when you type EOF on its own line.",
+    "10": "Even though this is inside the here-document, the single quotes prevent bash from expanding ${BLOG_HOST_DIR} right now — it will stay as literal text and only get expanded later when someone sources the bashrc file.",
+    "20": "The \\e[33m and \\e[0m are ANSI color codes — 33m makes text yellow, and 0m resets it back to normal, so 'version' appears in yellow in the terminal."
+  }
+}

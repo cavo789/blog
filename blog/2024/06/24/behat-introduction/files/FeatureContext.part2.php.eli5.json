@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:59.736Z",
+  "source": "FeatureContext.part2.php",
+  "lang": "php",
+  "explanations": {
+    "6": "is_dir checks whether a directory exists, similar to checking if a folder is actually there on the disk.",
+    "7": "mkdir creates a new directory with permissions 0777, which means anyone can read, write, and execute files in that folder.",
+    "11": "This line takes a screenshot of the current webpage state and saves it to a file so you can visually inspect what the test saw at that moment."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:31.468Z",
+  "source": "bruno.Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "3": "This installs a specific tool called @usebruno/cli version 2.8.0 globally (the -g flag) so it's available everywhere in the container, not just in one folder."
+  }
+}

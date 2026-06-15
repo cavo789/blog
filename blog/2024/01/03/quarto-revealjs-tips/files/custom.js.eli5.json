@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:24.968Z",
+  "source": "custom.js",
+  "lang": "javascript",
+  "explanations": {
+    "9": "We're converting the NodeList returned by querySelectorAll into a real array so we can use forEach on it; this is an older pattern before JavaScript had better array methods.",
+    "22": "This arrow function syntax with parentheses around the parameter is equivalent to function(event) { }, just a more modern way to write it.",
+    "31": "Reveal is a library (probably Reveal.js for presentations) that's being used to listen for when slides change so we can update the logo position."
+  }
+}

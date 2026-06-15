@@ -29,7 +29,7 @@ Please start a Linux shell and run `mkdir -p /tmp/docker-init && cd $_` to creat
 
 Now, in your console, just run `docker init` and follow the wizard.
 
-<Terminal>
+<Terminal typewriter>
 $ docker init
 
 Welcome to the Docker Init CLI!
@@ -62,7 +62,7 @@ For the next questions:
 * `What's the relative directory for your app?`, just press enter to select the current directory,
 * `What local port do you want to us to access your server?`, just press enter to use the proposed port number or f.i. enter `8080`.
 
-<Terminal>
+<Terminal typewriter>
 ? What application platform does your project use? PHP with Apache
 ? What version of PHP do you want to use? 8.2
 ? What's the relative directory (with a leading .) for your app?
@@ -145,14 +145,14 @@ Back to the `compose.yaml` file, we can retrieve the name of the container; it's
 
 To run an interactive shell, please run the following command:
 
-<Terminal>
+<Terminal typewriter>
 $ docker compose exec server /bin/bash
 www-data@86e3fd14ea18:~/html$
 </Terminal>
 
 As expected, you're now inside the container. You can display the list of files by running `ls -alh`
 
-<Terminal>
+<Terminal typewriter>
 $ www-data@86e3fd14ea18:~/html$ ls -alh
 total 20K
 drwxrwxrwt 1 www-data www-data 4.0K Dec  7 17:52 .
@@ -167,7 +167,7 @@ So, even if your current folder, on your machine, contains now five files, only 
 
 On your machine, we've thus five files:
 
-<Terminal>
+<Terminal typewriter>
 $ ls -alh
 total 36K
 drwxr-xr-x  2 christophe christophe 4.0K Dec  7 17:59 .

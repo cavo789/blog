@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:31.734Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "2": "This is a comment marker in YAML that some tools recognize to highlight the next line visually, but it's not standard YAML syntax and might cause parsing errors.",
+    "5": "This is the same highlight comment marker again; it's being used to call attention to the joomladb service definition below it."
+  }
+}

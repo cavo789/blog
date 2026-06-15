@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:13.816Z",
+  "source": "team.py",
+  "lang": "python",
+  "explanations": {
+    "5": "This creates a diagram object named 'My Team' that you can draw on; show=False means it won't automatically open, and direction='TB' means elements flow top-to-bottom.",
+    "8": "The >> operator chains these AWS components together visually, and the square brackets create a list of multiple EC2 instances that all connect from Olivier.",
+    "9": "The final >> connects all those EC2 instances to the RDS database, completing the flow diagram from load balancer through servers to database."
+  }
+}

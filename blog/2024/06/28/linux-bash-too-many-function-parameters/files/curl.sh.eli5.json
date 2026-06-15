@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:33:26.718Z",
+  "source": "curl.sh",
+  "lang": "bash",
+  "explanations": {
+    "8": "This creates a reference to the array passed as the first argument — think of it as an alias so we can access the original array's contents inside the function.",
+    "14": "This checks if the 'header' key exists in the array; if it doesn't exist, it sets header to an empty string, otherwise it uses the value from the array.",
+    "15": "Same pattern as line 14, but for the 'method' key with a default value of 'GET' instead of empty.",
+    "16": "Same pattern as line 14, but for the 'payload' key.",
+    "17": "Same pattern as line 14, but for the 'proxy' key.",
+    "18": "Same pattern as line 14, but for the 'token' key.",
+    "31": "The eval keyword executes the string stored in cmd as if you had typed it directly — this is powerful but risky because it can run unexpected code if the string contains special characters.",
+    "33": "The $? variable holds the exit status (success or failure code) of the last command, so this checks if the curl command failed."
+  }
+}

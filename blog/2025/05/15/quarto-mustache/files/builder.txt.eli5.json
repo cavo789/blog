@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:42:44.963Z",
+  "source": "builder.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "3": "This is YAML metadata that tells the build system to run 'make builder' as a prerequisite before processing this page.",
+    "15": "This is a template directive that includes content from another file (_partials/run.md) into this page at build time."
+  }
+}

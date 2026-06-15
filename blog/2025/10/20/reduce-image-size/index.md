@@ -45,7 +45,7 @@ Make sure to read the information's displayed on the console because you'll need
 
 On my own, I just go in the folder where I've my images and run this command:
 
-<Terminal>
+<Terminal typewriter>
 $ caesiumclt -q 85 --format webp --same-folder-as-input *.png
 
 [00:00:00] [#########################################]
@@ -67,7 +67,7 @@ On my blog, I'm writing blog posts in folders like `blog/2025/10/02/` i.e. I cre
 
 This said, to retrieve the biggest folder on my disk, I'm running the command below. It will retrieve all `.png` files them sum their size by directories and list the directories by size.
 
-<Terminal>
+<Terminal typewriter>
 $ find . -type f -name "*.png" -printf '%h %s\n' | awk '\{sizes[$1]+=$2\} END \{for (d in sizes) printf "%s %.2f MB\n", d, sizes[d]/1024/1024\}' | sort -k2 -nr
 
 218M    total
@@ -82,7 +82,7 @@ $ find . -type f -name "*.png" -printf '%h %s\n' | awk '\{sizes[$1]+=$2\} END \{
 
 So, I can jump in `2025/02/01/heimdall-dashboard/images` and run `caesiumclt -q 85 --format webp --same-folder-as-input *.png` to optimize these images:
 
-<Terminal>
+<Terminal typewriter>
 $ caesiumclt -q 85 --format webp --same-folder-as-input *.png
 
 [00:00:00] [#########################################]

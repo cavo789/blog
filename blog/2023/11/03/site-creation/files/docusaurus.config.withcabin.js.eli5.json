@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:51.556Z",
+  "source": "docusaurus.config.withcabin.js",
+  "lang": "javascript",
+  "explanations": {
+    "4": "The 'async' attribute means this script can download while the page loads, instead of blocking everything until it finishes.",
+    "5": "The 'defer' attribute means the script waits to run until after the page's HTML is fully loaded, so it doesn't slow down initial rendering."
+  }
+}

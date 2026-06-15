@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:45:05.365Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "26": "This checks if src is a string AND starts with a forward slash; if both are true, we pass it through useBaseUrl to fix the path for Docusaurus, otherwise we use src as-is.",
+    "32": "If no alt text is provided, we fall back to using the title as alt text so the image still has accessibility text for screen readers.",
+    "38": "The src prop can be either a string or an object, and it's required—this is a broader type than just a string, so check your usage if you're passing objects."
+  }
+}

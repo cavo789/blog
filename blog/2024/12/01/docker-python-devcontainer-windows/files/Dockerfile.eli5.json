@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:00.724Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "This special comment tells Docker to use a specific syntax version for parsing the Dockerfile, which enables newer Docker features.",
+    "30": "This RUN command uses a cache mount, which is a Docker feature that preserves downloaded packages between builds so you don't have to re-download them every time.",
+    "45": "This RUN command uses both a cache mount for pip packages and a bind mount to read requirements.txt without copying it into the image layer.",
+    "76": "The addgroup command is being run inside the container; it creates a user group with a specific ID so permissions work correctly between your host machine and container.",
+    "78": "The adduser command creates a new user account inside the container with special flags: --system means it's a system user, --disabled-password means it has no password, and --gecos \"\" skips the usual user info prompt.",
+    "92": "This long bash command customizes the shell prompt (the text that appears when you open a terminal) to show an emoji, container name, and who you are logged in as.",
+    "98": "This SNIPPET variable stores shell commands that get added to .bashrc to make bash history persist to a file, so your command history survives when the container restarts."
+  }
+}

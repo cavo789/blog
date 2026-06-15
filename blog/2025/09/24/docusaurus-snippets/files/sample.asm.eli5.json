@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:47:36.922Z",
+  "source": "sample.asm",
+  "lang": "asm",
+  "explanations": {
+    "1": "This declares a section called .data where we store fixed data like strings and numbers that don't change while the program runs.",
+    "2": "We're creating a label 'msg' that points to the text 'Hello, world!' followed by a newline character (0Ah); the 0 at the end marks where the string ends.",
+    "3": "This declares a section called .text where we write the actual instructions our CPU will execute.",
+    "4": "We're telling the assembler that _start is a global symbol, meaning the operating system can find and run our program starting from this label.",
+    "6": "We're putting the number 13 into the edx register, which tells the system call how many characters to print (the length of 'Hello, world!')."
+  }
+}

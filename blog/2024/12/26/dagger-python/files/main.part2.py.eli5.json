@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:57.843Z",
+  "source": "main.part2.py",
+  "lang": "python",
+  "explanations": {
+    "1": "The @function decorator tells Dagger (a CI/CD tool) that this method is a special step that can be run in a pipeline.",
+    "2": "The 'async' keyword means this function can pause and resume, allowing other tasks to run while it waits—useful for slow operations like linting.",
+    "6": "The \\033[33m and \\033[0m are special codes that make text appear yellow in the terminal; they're ANSI color codes, not actual characters."
+  }
+}

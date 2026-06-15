@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:43:13.862Z",
+  "source": "makefile",
+  "lang": "makefile",
+  "explanations": {
+    "1": ".PHONY tells Make that 'start' is not a real file to create, just a command label to run.",
+    "3": "SWT_GTK3=1 and the other assignments set environment variables before running spoon.sh, kind of like passing instructions to the program as it starts.",
+    "5": ".PHONY marks 'up' as a command label too, so Make knows you're not trying to create an actual file called 'up'."
+  }
+}

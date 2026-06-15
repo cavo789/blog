@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:50.718Z",
+  "source": "SeriesArticlesPage.js",
+  "lang": "javascript",
+  "explanations": {
+    "13": "matchPath checks if the current URL matches the pattern /series/:slug, and if it does, it extracts the slug part into an object we can access.",
+    "17": "The question mark before params is optional chaining — it safely gets the slug value even if match is null, preventing an error.",
+    "37": "This converts the post's series name into a slug (lowercase, no spaces, etc.) so we can compare it against the URL slug to find matching posts.",
+    "43": "This sorts the posts so newer ones (later dates) appear first; subtracting b's date from a's date gives us descending order."
+  }
+}

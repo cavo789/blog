@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:44.438Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "6": "This maps port 8080 on your computer to port 80 inside the container, so when you visit localhost:8080, it reaches the web server running on port 80 inside."
+  }
+}

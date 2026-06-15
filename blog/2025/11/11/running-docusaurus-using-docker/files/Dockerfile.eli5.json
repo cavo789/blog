@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:16.736Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "This special comment tells Docker to use a newer Dockerfile syntax version (1.6) that has better features like cache mounts.",
+    "21": "The `--mount=type=cache` options tell Docker to reuse package cache between builds so installing dependencies is faster next time.",
+    "39": "This checks if the user ID or group ID is different from the default 1000, and only updates them if needed.",
+    "47": "The `|| true` means 'if the docker group already exists and the command fails, ignore the error and keep going anyway'.",
+    "74": "This sets an environment variable that tells Yarn where to store downloaded packages so they can be reused across container rebuilds.",
+    "85": "The `uid=${OS_USERID},gid=${OS_GROUPID}` part makes sure the cached yarn folder has the correct ownership so the non-root user can access it.",
+    "99": "This copies the `node_modules` folder from the earlier 'dependencies' stage instead of installing them again, which saves time.",
+    "126": "This copies the built static files from the 'build' stage and puts them in Nginx's default web directory where it will serve them."
+  }
+}

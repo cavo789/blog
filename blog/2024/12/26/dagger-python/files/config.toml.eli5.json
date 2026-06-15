@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:33.172Z",
+  "source": "config.toml",
+  "lang": "toml",
+  "explanations": {
+    "5": "This line sets up two paths: /cache is a simple folder for storage, while /var/run/docker.sock:/var/run/docker.sock means 'expose the Docker control file from the host machine so the container can run Docker commands'."
+  }
+}

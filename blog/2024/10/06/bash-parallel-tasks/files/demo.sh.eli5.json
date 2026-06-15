@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:37:11.354Z",
+  "source": "demo.sh",
+  "lang": "bash",
+  "explanations": {
+    "10": "The {1..10} syntax creates a range from 1 to 10, so this loop runs exactly 10 times.",
+    "15": "The date +%s command returns the current time as a number of seconds since January 1, 1970; we store it in a variable so we can compare it later.",
+    "18": "The $(( )) syntax lets you do math in bash; here we're subtracting the start time from the end time to get how many seconds passed."
+  }
+}

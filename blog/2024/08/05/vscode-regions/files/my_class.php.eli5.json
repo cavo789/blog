@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:35:22.744Z",
+  "source": "my_class.php",
+  "lang": "php",
+  "explanations": {
+    "7": "getQuery(true) creates a new database query object; the 'true' parameter means we want to use the database driver's native query builder instead of raw SQL.",
+    "13": "loadColumn() runs the query and returns only a single column of results as an array, rather than full rows."
+  }
+}

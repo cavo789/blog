@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:25:49.789Z",
+  "source": "block_fileextensions_option1.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "This line checks if the requested file does NOT match a list of allowed file types (like images, stylesheets, scripts, etc.); the exclamation mark means 'not', and the vertical bars are 'or' operators separating each file extension.",
+    "2": "If the condition above is true (meaning someone requested a file type we don't allow), the dash tells Apache to skip rewriting and the [F] flag returns a forbidden error to block the request."
+  }
+}

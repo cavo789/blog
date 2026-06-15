@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:47:04.105Z",
+  "source": "index.cjs",
+  "lang": "javascript",
+  "explanations": {
+    "19": "This imports the `visit` function from a helper library that walks through the Markdown document structure (AST) to find and process specific parts.",
+    "30": "This function returns another function that receives the Markdown document tree and file metadata; this is the standard pattern for Docusaurus plugins.",
+    "31": "The `visit` call walks through every text node in the document and runs the callback function on each one.",
+    "43": "The `replace` method here uses a callback function instead of a simple string, which lets us run custom logic to decide whether to replace each match or keep it as-is.",
+    "44": "This grabs the character right before the matched word (like the dash in 'vscode-docker') or an empty string if we're at the start.",
+    "45": "This grabs the character right after the matched word to check if it's a connector character like a dash or dot."
+  }
+}

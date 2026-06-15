@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:59.696Z",
+  "source": "rector.php",
+  "lang": "php",
+  "explanations": {
+    "3": "declare(strict_types=1) tells PHP to be strict about data types in function arguments and return values, so passing a string when a number is expected will cause an error instead of silent conversion.",
+    "13": "php82: true means this configuration applies Rector rules for PHP version 8.2, which will update your code to use modern PHP 8.2 syntax and features.",
+    "14": "The withPreparedSets call enables three pre-made bundles of code improvement rules: codeQuality checks for better patterns, deadCode removes unused code, and typeDeclarations adds type hints to functions."
+  }
+}

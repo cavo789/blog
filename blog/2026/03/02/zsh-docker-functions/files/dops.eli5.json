@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:13.798Z",
+  "source": "dops",
+  "lang": "plaintext",
+  "explanations": {
+    "4": "This checks if the fzf command is available on the system; if not, the script stops here.",
+    "15": "The backslash at the end tells the shell to continue this command on the next line—it's just splitting a long line for readability.",
+    "17": "The awk command splits each line at the colon and grabs just the first part, so 'dex: Exec...' becomes 'dex'.",
+    "19": "This checks if the user cancelled the menu (selected_op is empty) and exits early if they did.",
+    "22": "The 'type' command verifies that the function actually exists and is loaded before we try to run it, preventing errors."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:47:26.061Z",
+  "source": "who_are_you.py",
+  "lang": "python",
+  "explanations": {
+    "3": "This checks whether the user actually typed something—an empty string is considered False in Python, so this branch only runs if name has at least one character.",
+    "4": "The f-string syntax (the 'f' before the quotes) lets you insert variable values directly into a string using curly braces instead of concatenating."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:48.598Z",
+  "source": "styles.module.css",
+  "lang": "css",
+  "explanations": {
+    "9": "This uses a CSS variable (--ifm-color-emphasis-200) that's defined elsewhere in your project, so the actual color depends on your theme setup.",
+    "29": "This uses flexbox (display: flex) to arrange child elements horizontally; align-items: center vertically aligns them to the middle.",
+    "35": "This creates a vertical stack of elements (flex-direction: column means items go down instead of across).",
+    "42": "The border-radius: 50% trick makes a square element into a perfect circle by rounding it completely.",
+    "56": "The display: block makes this element take up full width and start on a new line, even though it's probably a span or inline element.",
+    "60": "margin-left: auto pushes this element to the right side by eating up all available space to its left.",
+    "73": "The \\a0 is a non-breaking space character that creates spacing after the heart emoji.",
+    "99": "display: inline-flex lets this link use flexbox layout while staying in the text flow instead of taking up a full line.",
+    "106": "This selector targets img elements that have the blueskyCommentEmbedThumb class (the type matters here).",
+    "112": "flex-wrap: wrap means if images run out of space horizontally, they'll move to the next line instead of squishing.",
+    "159": "This transition makes the background color and text color fade smoothly over 0.2 seconds when the button state changes.",
+    "169": "This @media query applies different styles when the user's system is set to dark mode."
+  }
+}

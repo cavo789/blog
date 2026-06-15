@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:15.298Z",
+  "source": "compose.part2.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "21": "This line tells Docker to create a named volume called 'limesurvey' and mount it inside the container at /var/www/html/upload/surveys, so survey data persists even if the container restarts.",
+    "33": "This line does the same thing for the database: it creates a 'data' volume and mounts it at /var/lib/mysql, so the database files aren't lost when the container stops.",
+    "41": "This top-level 'volumes' section defines the named volumes that both containers will use; without this declaration, the volume mounts in the services above wouldn't work."
+  }
+}

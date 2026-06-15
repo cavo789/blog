@@ -75,7 +75,7 @@ You know me very well now; I like to containerize things. So, I'm not using Pyth
 
 To run the script, I first start a Linux console, then go to my blog folder and finally I run:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker run -it --rm -v .:/app -w /app --entrypoint /bin/sh mcr.microsoft.com/playwright/python:v1.57.0-jammy -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python .scripts/check-images.py"
 </Terminal>
 

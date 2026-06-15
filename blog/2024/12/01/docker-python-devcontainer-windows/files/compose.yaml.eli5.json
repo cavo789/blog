@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:56.166Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "7": "The 'target' field tells Docker which stage of a multi-stage build to use—in this case, it's building the 'development' stage, not production.",
+    "10": "This syntax ${VARIABLE_NAME} pulls a value from your environment; if DOCKER_PYTHON_VERSION isn't set, the build will fail because there's no fallback.",
+    "12": "The syntax ${VARIABLE:-default_value} means 'use DOCKER_APP_HOME if it's set, otherwise use /app'—the :- gives you a safe default.",
+    "21": "This line sets which user (by ID) and group (by ID) the container process runs as; without it, containers often run as root, which is a security risk.",
+    "27": "The period (.) means 'mount the current directory on your host machine' into the container at the path stored in DOCKER_APP_HOME, so your code changes appear instantly inside the container.",
+    "29": "VSCode extensions are stored in a Docker volume so they persist across container restarts instead of being re-downloaded every time.",
+    "31": "Bash history is stored in a volume so when you exit and re-enter the container, your command history is still there."
+  }
+}

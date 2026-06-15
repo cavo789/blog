@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:59.044Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "10": "useBlogPost() is a hook (a special function) that gives us information about whether we're currently viewing a single blog post or a list of posts.",
+    "11": "This returns a CSS class name for spacing if we're in list view, or undefined (nothing) if we're viewing a single post—it's a ternary operator, a shorthand if/else statement.",
+    "16": "clsx() is a utility function that combines multiple CSS class names together, ignoring any that are undefined or false, so we don't end up with extra spaces in our class attribute."
+  }
+}

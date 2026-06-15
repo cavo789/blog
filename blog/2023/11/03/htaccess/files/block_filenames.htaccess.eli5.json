@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:25:47.616Z",
+  "source": "block_filenames.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "This pattern uses parentheses and the pipe symbol (|) to match multiple filenames at once, like saying 'apply these rules to file_1.gif OR file_2.png'.",
+    "2": "This sets the order in which Apache evaluates Allow and Deny rules, checking Allow rules first, then Deny rules.",
+    "3": "This denies access from all IP addresses, effectively blocking everyone from viewing these files."
+  }
+}

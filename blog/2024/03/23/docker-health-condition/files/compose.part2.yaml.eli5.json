@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:36.842Z",
+  "source": "compose.part2.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "10": "Healthcheck tells Docker to periodically test if the MySQL database is still running and healthy.",
+    "12": "This command runs mysqladmin ping to check if MySQL is responding; Docker executes it inside the container.",
+    "14": "Timeout is how long Docker waits for the ping command to complete before deciding it failed.",
+    "16": "Retries is how many times Docker will try the healthcheck before marking the database as unhealthy."
+  }
+}

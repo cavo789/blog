@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:39:26.383Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "6": "This tells hadolint (a Dockerfile linter) to ignore rule DL3008, which warns about not pinning package versions in apt-get commands.",
+    "7": "The 'set -e -x' makes the shell exit immediately if any command fails and print each command before running it, so errors don't silently continue.",
+    "13": "This tells hadolint to ignore rule DL3013, which warns about not pinning pip package versions for reproducibility."
+  }
+}

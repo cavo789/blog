@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:23.458Z",
+  "source": "log.sh",
+  "lang": "bash",
+  "explanations": {
+    "19": "This tells bash to immediately stop running if any command fails or if you use a variable that was never set, which prevents silent errors.",
+    "44": "The trap command sets up a function to automatically run when the script exits, like a cleanup routine that always happens at the end.",
+    "48": "This checks if LOG_FILE was never set before, and if so, creates a temporary log file with a random name in /tmp.",
+    "51": "This defines a small helper function inside the main function so it can be used later; it just gets the current date and time.",
+    "60": "BASH_LINENO is a special array that tracks which line each function was called from; this gets its length.",
+    "62": "This loop starts at index 2 because index 0 is the trace function itself and index 1 is the write function, so we skip those.",
+    "63": "FUNCNAME is an array of all the function names in the call stack, and BASH_LINENO has the line numbers; this builds a string showing the chain of function calls.",
+    "66": "This removes the trailing semicolon from the trace string using sed, a text replacement tool.",
+    "74": "This opens file descriptor 3 (a way to write to a file) and points it to the log file, so later >&3 writes go to that file.",
+    "98": "[[ -s ]] means the file exists AND has content; this checks both conditions at once.",
+    "141": "This creates the log file if it doesn't exist yet, but skips creation if LOG_FILE is set to /dev/stdout (which is already writable).",
+    "154": "The >&3 redirects the output to file descriptor 3, which was set up to point to the log file.",
+    "184": "This sets the text color to gray using ANSI codes; the \\033[ and m are color instructions for the terminal.",
+    "185": "This sed command removes ANSI color codes from the log file before displaying it, so you see clean text without the color control characters.",
+    "195": "This clever trick checks if the script was sourced (included) or run directly by trying to return from the subshell; return only works in sourced scripts."
+  }
+}

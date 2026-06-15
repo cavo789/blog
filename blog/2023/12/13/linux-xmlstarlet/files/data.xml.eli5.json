@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:14.051Z",
+  "source": "data.xml",
+  "lang": "xml",
+  "explanations": {
+    "1": "This line declares the XML version and character encoding; it must be the very first line of any XML file.",
+    "18": "This book has multiple author elements instead of one; XML allows you to repeat the same tag several times to represent a list of related values."
+  }
+}

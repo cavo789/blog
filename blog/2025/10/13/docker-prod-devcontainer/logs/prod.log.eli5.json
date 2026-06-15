@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:21.527Z",
+  "source": "prod.log",
+  "lang": "log",
+  "explanations": {
+    "7": "The 'args' section passes build-time variables to Docker during image creation, which is different from 'environment' that sets runtime variables after the container starts.",
+    "18": "Setting 'default: null' explicitly tells Docker to use the default network with no custom configuration, rather than omitting the line entirely.",
+    "20": "The 'mode: ingress' specifies this port mapping uses Docker's ingress networking for load balancing across swarm nodes, if you're running Docker Swarm."
+  }
+}

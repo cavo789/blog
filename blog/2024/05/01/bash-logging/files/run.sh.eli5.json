@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:16.154Z",
+  "source": "run.sh",
+  "lang": "bash",
+  "explanations": {
+    "1": "This special line tells the system to use whatever bash interpreter is available in the environment, rather than assuming it's in a fixed location like /bin/bash.",
+    "36": "The 'source' command reads and executes another shell script file (log.sh) inside the current script, making any functions from that file available to use here.",
+    "53": "$* expands to all the command-line arguments passed to this script; we're passing them along to the __main function so it can use them."
+  }
+}

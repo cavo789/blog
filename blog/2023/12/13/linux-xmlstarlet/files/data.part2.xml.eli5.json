@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:28:15.855Z",
+  "source": "data.part2.xml",
+  "lang": "xml",
+  "explanations": {
+    "1": "This line declares that the file is XML version 1.0 and uses UTF-8 character encoding, which tells the parser how to read the file correctly.",
+    "3": "The category attribute is metadata attached to the book element that classifies what type of book it is, similar to tagging.",
+    "18": "XML allows the same element name (author) to appear multiple times in a row when there are multiple values, rather than creating a special 'authors' container."
+  }
+}

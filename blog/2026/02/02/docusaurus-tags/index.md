@@ -60,7 +60,7 @@ As always, I don't want to pollute my host machine with Python dependencies. I r
 
 I have a `Makefile` target set up, but essentially, it runs a command like this:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker run -it --rm -v .:/app -w /app --entrypoint /bin/sh python:3.14-slim -c "pip install --root-user-action=ignore oyaml python-frontmatter >/dev/null && python .scripts/tags-manager.py list"
 </Terminal>
 
@@ -72,7 +72,7 @@ But, for sure, that command is quite complex to remember so I'm using a Makefile
 
 **1. Listing tags and getting suggestions:**
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ make tags-manager ARGS="list"
 </Terminal>
 
@@ -82,7 +82,7 @@ $ make tags-manager ARGS="list"
 
 If, by looking at the list of tags, I see I've a `snippets` tag and a `snippet` one, I'll merge them like this:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 make tags-manager ARGS="rename snippets,snippet"
 </Terminal>
 
@@ -90,7 +90,7 @@ make tags-manager ARGS="rename snippets,snippet"
 
 I can also find that a specific tag didn't have any added-value so, to remove it, I'll run something like this:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ make tags-manager ARGS="delete draft"
 </Terminal>
 

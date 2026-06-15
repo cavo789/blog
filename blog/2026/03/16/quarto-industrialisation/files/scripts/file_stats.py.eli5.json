@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:40.833Z",
+  "source": "file_stats.py",
+  "lang": "python",
+  "explanations": {
+    "12": "The rglob('*') method recursively searches through all folders and files starting from the directory, kind of like asking 'show me everything inside this folder and all its subfolders'.",
+    "13": "This checks if the file is actually a file (not a folder) AND that none of its parent folder names are in the ignored_folders set—it's our way of skipping files in .git, node_modules, etc.",
+    "14": "If the file has no extension (like a README file), we give it the label 'No extension' instead of leaving it blank.",
+    "21": "This removes the dot from extensions like '.py' to make them look nicer in the chart (so '.py' becomes 'PY'), but leaves non-extension labels like 'No extension' unchanged."
+  }
+}

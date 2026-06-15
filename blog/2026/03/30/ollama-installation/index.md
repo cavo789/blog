@@ -64,7 +64,7 @@ Look at the last column **available**.  I've actually ~10GB free so I can easily
 
 Start a new terminal and run this command:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker exec -it ollama ollama pull llama3.1:8b
 </Terminal>
 
@@ -110,7 +110,7 @@ Because it selectively uses its experts, mixtral is an incredibly versatile and 
 
 If you want to retrieve models you've already installed:
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker exec -it ollama ollama list
 </Terminal>
 
@@ -120,7 +120,7 @@ The entire list of existing models in online: [https://ollama.com/library](https
 
 The command to run is `ollama run <model_name>` so, if you've followed this tutorial, our command would be `docker exec -it ollama ollama run llama3.1:8b`.
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker exec -it ollama ollama run llama3.1:8b
 </Terminal>
 
@@ -196,7 +196,7 @@ When you're typing some text in VSCode, you wish immediate autocompletion and no
 
 For this, you'll need to use a faster model; let's use `qwen2.5-coder:1.5b`  (1.5 billion of parameters, around ~1G).
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker exec -it ollama ollama pull qwen2.5-coder:1.5b
 </Terminal>
 
@@ -224,7 +224,7 @@ So, in less than 5 seconds, I've got a complete script with the right code and t
 
 And it's works out-of-the-box!
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 
 $ chmod +x ./calculate.sh
 
@@ -243,7 +243,7 @@ If you've a powerful CPU and/or GPU with 32GB or more, you can also add a better
 
 <Snippet filename=".continue/config.json" source="./files/continue/config_with_expert.json" defaultOpen={false} />
 
-<Terminal wrap={true}>
+<Terminal typewriter wrap={true}>
 $ docker exec -it ollama ollama pull gemma2:27b
 </Terminal>
 

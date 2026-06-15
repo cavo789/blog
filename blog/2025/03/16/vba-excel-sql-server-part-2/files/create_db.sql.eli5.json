@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:29.845Z",
+  "source": "create_db.sql",
+  "lang": "sql",
+  "explanations": {
+    "3": "GO is a batch separator in SQL Server that tells the database to execute all the commands written so far as one group.",
+    "11": "IDENTITY(1,1) means the database will automatically assign each customer a unique ID starting at 1 and incrementing by 1 for each new row.",
+    "31": "GO here executes the INSERT statement; without it, SQL Server wouldn't know you're done entering the data."
+  }
+}

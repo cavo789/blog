@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:30:54.940Z",
+  "source": "index.part3.php",
+  "lang": "php",
+  "explanations": {
+    "5": "The double equals (==) checks if the firstname is an empty string; if nobody passes a name to the function, this condition will be true.",
+    "8": "The dot (.) is PHP's way of joining strings together, so this creates 'Hello ' combined with whatever name was passed in.",
+    "14": "This calls sayHello() without passing any argument, so $firstname will be empty and the function will return 'Hello World!'."
+  }
+}

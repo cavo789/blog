@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:47.860Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "This special first line tells Docker to use an advanced Dockerfile syntax version that unlocks extra features like cache mounts, which help speed up image rebuilds.",
+    "16": "This pulls from a custom base image called 'blog-docusaurus' that you've already built elsewhere; it comes pre-loaded with Node.js and Docusaurus so we don't have to install them here.",
+    "19": "We're re-declaring the APP_HOME variable here because Docker arguments don't automatically carry through after a FROM statement, so we need to repeat it.",
+    "25": "The --mount options here are caching layers: they tell Docker to reuse downloaded packages across builds instead of re-downloading them every time, making rebuilds much faster.",
+    "38": "This git command prevents errors when Docker tries to access the app folder; it tells git 'it's okay, this folder is safe even though you didn't clone it yourself'.",
+    "48": "This creates a special file that lets the 'node' user run any command with 'sudo' without needing to type a password, which is convenient in a development container.",
+    "79": "The --mount here is similar to line 25, but with uid and gid parameters that ensure the yarn cache folder has the correct ownership so the non-root user can access it."
+  }
+}

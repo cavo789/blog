@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:13.240Z",
+  "source": "compose.part3.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "13": "This line mounts your local SSH folder into the container's root user SSH folder, so the app inside can use your SSH keys for authentication.",
+    "17": "This tells Docker where to find the actual SSH key file on your computer that should be made available as the 'my_ssh_key' secret."
+  }
+}

@@ -1,0 +1,170 @@
+.wrapper {
+  position: absolute;
+  z-index: 9999;
+  max-width: 280px;
+}
+
+/* ── Trigger button ───────────────────────────────────────────────────── */
+.triggerBtn {
+  padding: 6px 12px;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.triggerBtn:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+/* ── Form card ────────────────────────────────────────────────────────── */
+.form {
+  width: 280px;
+  padding: 12px;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.selectedPreview {
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-700);
+  border-left: 3px solid var(--ifm-color-primary);
+  padding-left: 8px;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 0 4px 4px 0;
+  word-break: break-word;
+}
+
+.commentInput {
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+  padding: 6px 8px;
+  font-size: 0.82rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.commentInput:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+  tab-index: -1;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btnPrimary {
+  padding: 5px 14px;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btnPrimary:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+.btnSecondary {
+  padding: 5px 14px;
+  background: transparent;
+  color: var(--ifm-color-emphasis-700);
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 5px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.btnSecondary:hover {
+  border-color: var(--ifm-color-emphasis-600);
+}
+
+/* ── Status badges ────────────────────────────────────────────────────── */
+.status,
+.statusError {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.status {
+  background: var(--ifm-color-success-contrast-background, #e6f4ea);
+  color: var(--ifm-color-success-dark, #1a7f37);
+}
+
+.statusError {
+  background: var(--ifm-color-danger-contrast-background, #fde8e8);
+  color: var(--ifm-color-danger-dark, #c0392b);
+}
+
+.dismissBtn {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: inherit;
+  opacity: 0.7;
+  padding: 0 2px;
+  line-height: 1;
+}
+
+.dismissBtn:hover {
+  opacity: 1;
+}
+
+/* ── Dark mode overrides ──────────────────────────────────────────────── */
+[data-theme="dark"] .form {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .selectedPreview {
+  background: var(--ifm-color-emphasis-200);
+}
+
+[data-theme="dark"] .status {
+  background: #1a3d2a;
+  color: #6fcf97;
+}
+
+[data-theme="dark"] .statusError {
+  background: #3d1a1a;
+  color: #eb5757;
+}

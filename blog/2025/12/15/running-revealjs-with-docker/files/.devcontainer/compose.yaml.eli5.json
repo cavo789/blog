@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:50:21.955Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "2": "This is a special comment telling the spell-checker to ignore the word 'tinytex' so it doesn't complain about it being misspelled.",
+    "15": "This sets a default user ID (UID) to 1000, but it will be overridden later when the container actually starts.",
+    "16": "This sets a default group ID (GID) to 1000, but it will also be overridden later when the container actually starts.",
+    "18": "This is a flag you can change to 'true' if you want Chromium (a web browser) installed in the container.",
+    "19": "This is a flag you can change to 'true' if you want the cspell spell-checker tool installed in the container.",
+    "20": "This is a flag you can change to 'true' if you want Git pre-commit hooks (automated checks before commits) installed in the container.",
+    "22": "This runs the entire container as the root user, which gives it extra permissions but is sometimes necessary for development tools.",
+    "31": "This uses ${HOME} which means 'the home directory of the person running this command' — it expands to their actual path at runtime.",
+    "34": "This is mounting your SSH private key file into the container so it can authenticate with Git or other services, similar to line 31."
+  }
+}

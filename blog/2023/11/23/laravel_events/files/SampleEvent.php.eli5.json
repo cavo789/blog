@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:08.118Z",
+  "source": "SampleEvent.php",
+  "lang": "php",
+  "explanations": {
+    "10": "The 'use Dispatchable' statement adds special methods to this class that let it be sent through Laravel's event system.",
+    "12": "The 'private Employee $employee' syntax means this Employee object is stored as a private property and automatically assigned from the constructor parameter.",
+    "16": "This method modifies the employee and returns '$this' (the event object itself), which lets you chain multiple setters together like setFirstName(...)->setLastName(...)."
+  }
+}

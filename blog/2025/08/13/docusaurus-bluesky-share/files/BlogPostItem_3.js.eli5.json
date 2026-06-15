@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:44:50.665Z",
+  "source": "BlogPostItem_3.js",
+  "lang": "javascript",
+  "explanations": {
+    "16": "useBlogPost() is a hook that gives you information about the current blog post context, including whether you're viewing a single post page or a list of posts.",
+    "17": "This returns a CSS class name for spacing only when viewing the blog list; it returns undefined (no class) when viewing an individual post page.",
+    "24": "We're calling that same hook again here to get the metadata (like title, date, author) and the isBlogPostPage flag so we can decide what to render.",
+    "34": "The && operator here means 'only render the Bluesky component if isBlogPostPage is true', so it only shows up on individual post pages, not on the blog list view."
+  }
+}

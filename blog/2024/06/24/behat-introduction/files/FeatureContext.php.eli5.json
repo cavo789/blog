@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:55.996Z",
+  "source": "FeatureContext.php",
+  "lang": "php",
+  "explanations": {
+    "14": "This declares a private property that holds the Mink object, which is the browser automation tool that lets you interact with web pages during tests.",
+    "25": "This creates a new Mink instance and stores it; Mink acts as a wrapper around the browser driver so you can control it programmatically.",
+    "27": "A Session represents one active browser connection; you're creating it with a ChromeDriver, which is the tool that actually controls Chrome.",
+    "28": "ChromeDriver is the bridge that talks to a running Chrome browser instance; the URL points to where that Chrome instance is listening for commands.",
+    "44": "This throws a PendingException to tell Behat this test step isn't implemented yet—it's a placeholder so the test won't fail, just mark the step as incomplete."
+  }
+}

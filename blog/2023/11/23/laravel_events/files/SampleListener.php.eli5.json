@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:09.247Z",
+  "source": "SampleListener.php",
+  "lang": "php",
+  "explanations": {
+    "11": "This chains two method calls together—setFirstName returns the object itself, so you can immediately call setLastName on that same object."
+  }
+}

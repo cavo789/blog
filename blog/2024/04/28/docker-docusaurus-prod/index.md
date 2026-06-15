@@ -47,7 +47,7 @@ You're now in the `/tmp/docusaurus` folder.
 
 Copy/paste in the console instructions below, with the parentheses included. This will create a subfolder called `blog` with three markdown files in it, our three fake articles.
 
-<Terminal>
+<Terminal typewriter>
 (
   $ mkdir -p blog && cd $_
   $ echo '---' > 2024-04-26-welcome-world.md
@@ -155,7 +155,7 @@ The `.dockerignore` file is then needed to keep the image smaller in size and to
 
 If you've followed the creation of the temporary folder as described here above, you should have the following situation: two files in the `/tmp/docusaurus` folder and three Markdown files in the `blog` subdirectory.
 
-<Terminal>
+<Terminal typewriter>
 $ ls -alhR
 drwxr-xr-x  3 root root 4.0K Apr 28 11:02 .
 drwxrwxrwt 25 root root  12K Apr 28 10:44 ..
@@ -187,7 +187,7 @@ In my case `cavo789/blog` is then a good choice. For this article, I'll use `joh
 
 Still in your console, please run the following command:
 
-<Terminal>
+<Terminal typewriter>
 $ docker build --tag johndoe/blog --target production .
 </Terminal>
 
@@ -217,7 +217,7 @@ Now that our image is created, we can do a few things like just running it and g
 
 To do this, just run the following command:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run -d --publish 80:80 --name blog johndoe/blog
 </Terminal>
 

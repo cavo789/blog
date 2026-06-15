@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:34:42.433Z",
+  "source": "makefile.part45",
+  "lang": "part45",
+  "explanations": {
+    "1": "This line extracts your Git repository's HTTPS URL by running a shell command that reads your Git config, converts SSH format (git@...) to HTTPS format (https://...), and removes the .git suffix at the end."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:28.448Z",
+  "source": ".part18.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "1": "This checks if Apache has the autoindex module loaded before applying rules inside it—it's a safety check so the server doesn't error if the module isn't available.",
+    "2": "The minus sign means 'remove' or 'disable', so this line turns off the automatic directory listing that normally shows files when you visit a folder with no index.html."
+  }
+}

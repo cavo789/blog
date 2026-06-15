@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:26:26.722Z",
+  "source": "no_execution.htaccess",
+  "lang": "htaccess",
+  "explanations": {
+    "2": "This line is telling the server that certain file types (.php, .pl, etc.) should be treated as CGI scripts, which is actually counterintuitive given the comment above wanting to disable execution.",
+    "6": "The pattern `asp?x` matches both .asp and .aspx files — the `?` makes the 'x' optional, so it catches both file extensions with a single pattern."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:37:22.173Z",
+  "source": "progress_bar.sh",
+  "lang": "bash",
+  "explanations": {
+    "48": "This tells bash to stop immediately if any command fails, instead of continuing—it's a safety feature for scripts.",
+    "49": "This tells bash to error out if you try to use a variable that was never defined, catching typos.",
+    "52": "This creates an array with two characters: a filled block (█) for the completed part and a lighter block (▒) for the incomplete part of the progress bar.",
+    "74": "This uses printf with a special format to print empty spaces equal to the terminal width, which clears the line—the '>&2' sends this to error output instead of regular output.",
+    "88": "This declares the variable as read-only (immutable after set) and uses the '?' operator to make it a required parameter that throws an error if missing.",
+    "103": "This calculates what percentage of the total work is done using integer division (no decimals).",
+    "111": "This subtracts the width of the text segments from the available terminal width to figure out how much space is left for the bar itself.",
+    "119": "This replaces every space character in the progress_segment with the 'completed' character (█), essentially filling in the done portion of the bar.",
+    "155": "This sets up a signal handler: when the terminal window is resized (WINCH signal), bash automatically calls the function to recalculate the bar size.",
+    "159": "This uses a regex to look for the pattern 'Progress=<number>' in each line, and if found, stores the number in BASH_REMATCH[1].",
+    "167": "This trick tests if the script was sourced (included) or run directly—if it was sourced, the return command succeeds; if run directly, it fails."
+  }
+}

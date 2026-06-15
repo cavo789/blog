@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:40.147Z",
+  "source": "devcontainer.json",
+  "lang": "json",
+  "explanations": {
+    "3": "This is an array of two compose files—the first one from a parent directory will be loaded first, then the local one, allowing you to override or extend settings.",
+    "12": "This SSH command tells Git to use a specific private key file and skip the usual host verification, which is useful in containerized development but less secure.",
+    "14": "This command runs once when the container is first created; it sets up a persistent bash history file so your command history survives container restarts.",
+    "19": "The ${dirty} and ${rootName} are template variables that VS Code will replace with actual values like whether you have unsaved changes and your project folder name."
+  }
+}

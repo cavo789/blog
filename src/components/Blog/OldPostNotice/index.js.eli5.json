@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:48:05.177Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "27": "useBlogPost() is a hook that gives us access to the current blog post's data—think of it as reaching into Docusaurus to grab the post's metadata.",
+    "32": "This checks if there's an updates array in the frontMatter (the YAML metadata at the top of a markdown file) and if it has at least one item.",
+    "34": "We're spreading the updates array to make a copy, then sorting it so newest dates come first, then grabbing the first one—this finds the most recent update date.",
+    "50": "clsx() is a utility that lets us combine multiple CSS class names together—in this case, Docusaurus's alert styles plus our custom styles.",
+    "54": "aria-hidden='true' tells screen readers to ignore the emoji so they don't hear 'warning sign' twice (since the text already says the message)."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:33.898Z",
+  "source": "validate.py",
+  "lang": "python",
+  "explanations": {
+    "8": "This function uses jsonschema.validate to check if the data matches the schema structure; it raises an exception if something doesn't match instead of returning true/false.",
+    "16": "This catches a specific type of error (ValidationError) that jsonschema throws when validation fails, so we can handle it differently than other unexpected errors.",
+    "17": "This line has a syntax error — the f-string is missing the opening quote after f, it should be f\"Data is invalid: {exception}\" instead."
+  }
+}

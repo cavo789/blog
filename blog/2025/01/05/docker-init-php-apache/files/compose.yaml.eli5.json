@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:52.183Z",
+  "source": "compose.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "6": "The first number (8080) is the port on your computer, and the second number (80) is the port inside the container—traffic coming to localhost:8080 gets forwarded to port 80 inside the running container."
+  }
+}

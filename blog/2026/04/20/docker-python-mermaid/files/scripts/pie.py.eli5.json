@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:34.525Z",
+  "source": "pie.py",
+  "lang": "python",
+  "explanations": {
+    "6": "os.path.splitext splits a filename into two parts: the name and the extension, so [1] grabs just the extension part like '.py'.",
+    "22": "dirs[:] = ... replaces the list in-place so that os.walk won't descend into hidden folders (starting with '.') or __pycache__; this saves time scanning.",
+    "26": "counts.get(cat, 0) returns the current count for that category, or 0 if it doesn't exist yet, so we can safely add 1 to it.",
+    "54": "subprocess.run executes the mmdc command-line tool with these arguments to convert the Mermaid diagram file into a PNG image; check=True makes it error if the command fails."
+  }
+}

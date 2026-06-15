@@ -41,7 +41,7 @@ We'll create a simple illustration file, let's call it `tests/simple.bats` and c
 
 And now, the very difficult part is, ouch no, really easy in fact, to run [Bats-core](https://bats-core.readthedocs.io/en/stable/):
 
-<Terminal>
+<Terminal typewriter>
 $ docker run --rm -it -w /code/tests -v .:/code bats/bats:latest simple.bats
 </Terminal>
 
@@ -97,7 +97,7 @@ Below the content of the `tests/assert.bats`.
 
 The command line:
 
-<Terminal>
+<Terminal typewriter>
 $ docker run --rm -it -w /code/tests -v .:/code bats/bats:latest assert.bats
 </Terminal>
 

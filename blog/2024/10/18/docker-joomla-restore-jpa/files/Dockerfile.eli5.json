@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:03.385Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "ARG declares a build-time variable that can be overridden when building the image, like passing --build-arg PHP_VERSION=8.2-apache to docker build.",
+    "3": "The ${PHP_VERSION:-latest} syntax means 'use the PHP_VERSION variable, but fall back to latest if it wasn't set'.",
+    "5": "set -e -x makes the script stop on any error (e) and print each command before running it (x), which helps catch and debug problems.",
+    "6": "docker-php-ext-install compiles and installs PHP extensions, while docker-php-ext-enable activates them so PHP knows to use them."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:49:06.426Z",
+  "source": "devcontainer.json",
+  "lang": "json",
+  "explanations": {
+    "8": "This sets up SSH to use a specific private key file and tells SSH not to verify the server's identity by redirecting known hosts checks to /dev/null (useful in containers where you don't have a normal SSH setup).",
+    "10": "This creates a bash history file before the container starts so your command history persists between sessions, and tells git to ignore that history file.",
+    "11": "This checks if pre-commit (a code quality tool) exists in the container, and if so, installs its git hooks; the 'true' at the end means 'don't fail if pre-commit isn't installed'.",
+    "27": "This tells the editor to wrap long JSON comments at a specific column width (80 characters) rather than letting them run off the screen.",
+    "40": "This configures the spell checker to understand words in English, French, and Dutch so it doesn't flag them as misspellings.",
+    "53": "This makes the keyboard shortcut for multi-cursor selection use Ctrl+Click on Windows/Linux or Cmd+Click on Mac (instead of the default Alt+Click).",
+    "55": "These numbers tell the editor to show vertical guide lines at the 120 and 70 character positions so you can see when lines get too long.",
+    "59": "This keeps the current scope (function or class name) visible at the top of the editor as you scroll down through code.",
+    "69": "This tells VS Code to treat JSON files inside a 'resources' folder as JSONC (JSON with Comments), which allows comments in those files.",
+    "72": "This makes the editor automatically switch its language mode to match whatever file is currently active, so you get the right syntax highlighting instantly.",
+    "86": "These are regex patterns (a way to match text using special symbols) that tell a code folding extension where 'region' markers start and end in Docker files.",
+    "109": "This tells VS Code to validate certain YAML files against official schema definitions online, so you get error checking and autocomplete for those file formats."
+  }
+}

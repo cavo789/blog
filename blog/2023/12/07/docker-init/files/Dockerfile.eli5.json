@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:48.679Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "2": "This moves the production-ready PHP configuration file into place so PHP uses the secure settings instead of the development settings.",
+    "4": "This switches the user from root to www-data, which is a non-root user that Apache typically runs as for security reasons."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:51:43.476Z",
+  "source": "project_setup.mdx",
+  "lang": "markdown",
+  "explanations": {
+    "6": "This imports the main ProjectSetup component and two helper components (EmptyFolder and Guideline) from a file within the site's source code.",
+    "20": "There's a typo here—it should say 'Below is a fully functional example' instead of 'Below a fully functional example'.",
+    "77": "There's a typo—it should say 'unzip it,' with a comma instead of a space before the comma."
+  }
+}

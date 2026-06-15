@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:21.423Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "3": "The backslash at the end of line 3 tells Docker to continue reading the next line as part of the same command, so all those packages get installed together instead of running separate install commands.",
+    "15": "This command rebuilds the font cache so the operating system can find and use all the fonts we just installed.",
+    "19": "We're creating a directory where Puppeteer (a tool that automates browser tasks) will store cached data, and making sure the node user has full read/write permissions to it.",
+    "22": "This tells Puppeteer not to download its own copy of Chromium since we already installed it system-wide on line 4.",
+    "23": "This environment variable points Puppeteer to the Chromium browser we installed, so it knows exactly where to find it when it needs to run."
+  }
+}

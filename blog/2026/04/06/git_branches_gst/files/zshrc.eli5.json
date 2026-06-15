@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:12.028Z",
+  "source": "zshrc",
+  "lang": "plaintext",
+  "explanations": {
+    "7": "This checks if we're inside a git repository by trying to run a git command; the '>/dev/null 2>&1' part silently throws away any output so we only care whether the command succeeded or failed.",
+    "12": "This checks if the repository has at least one commit yet, because some git commands fail on brand-new repos with no commits.",
+    "19": "The '$\\'e[1;36m' and '$\\'e[0m' are ANSI escape codes that add color and formatting to terminal text—this makes the header cyan and bold.",
+    "23": "The '%(if:equals=...)%(then)...%(else)...%(end)' is a conditional formatting syntax in git that checks if the branch name matches the current branch, then colors it differently.",
+    "30": "This removes any shell alias named 'gst' if it exists, so the function you're about to define won't be shadowed by an older command.",
+    "38": "This is a special Zsh hook function that automatically runs every time you change directories, making the git info display update whenever you 'cd' around."
+  }
+}

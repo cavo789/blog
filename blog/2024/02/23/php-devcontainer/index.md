@@ -45,7 +45,7 @@ Please refers to my other articles about <Link to="/blog/tags/docker">Docker</Li
 
 For this blog article, I'll create a temporary folder in `/tmp/devcontainer_php`. Don't hesitate to update the path to something like `~/my_project` to match your need.
 
-<Terminal>
+<Terminal typewriter>
 $ mkdir /tmp/devcontainer_php && cd $_
 $ curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/heads/main.tar.gz
 $ tar -xzvf php_devcontainer-main.tar.gz --strip-components 1 && rm -f php_devcontainer-main.tar.gz
@@ -62,7 +62,7 @@ You've thus download code from my [https://github.com/cavo789/php_devcontainer](
 
 Start VSCode on your machine:
 
-<Terminal>
+<Terminal typewriter>
 $ cd /tmp/devcontainer_php
 $ code .
 </Terminal>
@@ -97,7 +97,7 @@ Start a terminal and open the folder where you've your codebase.
 
 For this blog post, I'll download a very old learning Laravel codebase I've done years ago:
 
-<Terminal>
+<Terminal typewriter>
 $ cd /tmp
 $ git clone https://github.com/cavo789/laravel_todos.git
 </Terminal>
@@ -106,7 +106,7 @@ So, my project will be in folder `/tmp/laravel_todos`.
 
 In my project folder, now, I'll run:
 
-<Terminal>
+<Terminal typewriter>
 $ cd /tmp/laravel_todos
 $ curl -LOJ --silent https://github.com/cavo789/php_devcontainer/archive/refs/tags/1.0.0.tar.gz
 $ tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devcontainer-1.0.0.tar.gz
@@ -120,14 +120,14 @@ And voilà, I've Dockerized my PHP coding environment. In my case, I've made `La
 
 And like in the previous chapter, I can run the commands below to fix coding style issues and fixes all files in my repo:
 
-<Terminal>
+<Terminal typewriter>
 $ /usr/local/bin/php-cs-fixer.phar fix --config /var/www/html/.config/.php-cs-fixer.php .
 $ /usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml .
 </Terminal>
 
 And I **will be able** to run Rector to refactor my entire codebase:
 
-<Terminal>
+<Terminal typewriter>
 $ composer require rector/rector --dev
 $ vendor/bin/rector process . --config .config/rector.php
 </Terminal>

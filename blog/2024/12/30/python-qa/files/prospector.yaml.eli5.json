@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:40:46.115Z",
+  "source": "prospector.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "1": "This sets how strict the code quality checker will be when looking for problems.",
+    "2": "This tells the tool to report warnings found in test files, not just in regular code.",
+    "3": "This tells the tool to ignore warnings about missing or bad documentation.",
+    "9": "This starts a list of specific rules to turn off for the pycodestyle checker; each rule below (like D100, D203) is a documentation or style rule we're choosing to ignore."
+  }
+}

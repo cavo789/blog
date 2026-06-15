@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:32:25.167Z",
+  "source": "script.sh",
+  "lang": "bash",
+  "explanations": {
+    "3": "The -r flag makes this variable read-only, so it can't be accidentally changed later in the script.",
+    "9": "The >> operator appends to the file instead of overwriting it; each call adds a new line rather than replacing the old content.",
+    "13": "eval runs the string stored in $command as if you typed it directly, letting the shell re-interpret things like wildcards and pipes."
+  }
+}

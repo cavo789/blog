@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:52:50.490Z",
+  "source": "preview.sh",
+  "lang": "bash",
+  "explanations": {
+    "2": "The -e flag tells echo to interpret backslash escape sequences like \\e[1;34m (which sets the text color to blue) and \\n (which creates a newline).",
+    "3": "Similarly, this line uses -e with echo to print colored text; \\e[1;32m makes the text green, and \\e[0m resets the color back to normal.",
+    "6": "The --host 0.0.0.0 makes the server listen on all network interfaces (not just localhost), and --no-browser prevents Quarto from automatically opening a web browser."
+  }
+}

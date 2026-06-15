@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:35.739Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "This special comment tells Docker to use a specific version of the Dockerfile syntax parser, which gives us access to newer Docker features.",
+    "3": "The 'AS base' part gives this stage a name so we can refer back to it later if we're building multiple stages in one Dockerfile.",
+    "12": "This keeps the container alive by running a command that never exits, so the container doesn't immediately shut down after starting."
+  }
+}

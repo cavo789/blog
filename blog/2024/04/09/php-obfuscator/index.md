@@ -50,7 +50,7 @@ To do such obfuscation, just download my [https://github.com/cavo789/php_obfusca
 
 Right now, in your folder, you've three files:
 
-<Terminal>
+<Terminal typewriter>
 $ ls -alh
 total 28K
 drwxr-xr-x  2 root root 4.0K Apr  7 20:11 .

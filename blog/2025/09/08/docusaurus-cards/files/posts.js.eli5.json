@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:08.833Z",
+  "source": "posts.js",
+  "lang": "javascript",
+  "explanations": {
+    "37": "require.context is a Webpack feature that dynamically loads all files matching a pattern from a folder — here it's grabbing all .md and .mdx files from the blog directory.",
+    "41": "The .keys() method returns an array of file paths (like './my-post/index.mdx') that Webpack found; we're mapping over each one to extract its metadata.",
+    "43": "posts(key) actually loads and executes the file at that path, which gives us the frontMatter object (the YAML metadata at the top of each MDX file).",
+    "45": "This line strips away the './index.mdx' or '.mdx' extension and the leading './' from the file path, leaving just the folder name to use as part of the URL.",
+    "49": "If the post's frontMatter has a custom slug field, we use it as the permalink; otherwise we fall back to building the URL from the folder structure.",
+    "57": "Image paths that start with './' are relative paths within the blog folder, so we're converting them to absolute URLs by prefixing with the blog directory structure.",
+    "75": "filter(Boolean) removes any falsy values (like undefined or null) from the array, in case something went wrong parsing a post."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:23.335Z",
+  "source": "mermaid-config.json",
+  "lang": "json",
+  "explanations": {
+    "9": "cScale0 through cScale4 are color definitions for different data categories or priority levels in a chart or diagram.",
+    "10": "cScaleLabel0 through cScaleLabel4 are the text colors that will be displayed on top of their corresponding cScale background colors."
+  }
+}

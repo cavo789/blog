@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:18.785Z",
+  "source": "main.part2.py",
+  "lang": "python",
+  "explanations": {
+    "1": "FastAPI() creates a web application object that will handle incoming HTTP requests and send back responses.",
+    "3": "The @app.get decorator tells FastAPI that this function should run when someone visits the root URL (/) using an HTTP GET request."
+  }
+}

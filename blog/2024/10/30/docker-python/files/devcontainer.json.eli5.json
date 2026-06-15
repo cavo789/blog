@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:38:24.384Z",
+  "source": "devcontainer.json",
+  "lang": "json",
+  "explanations": {
+    "4": "This references a Docker Compose file located one directory level up from the current folder using '../' to go back.",
+    "7": "This specifies which user account inside the Docker container will run the development environment—in this case, a user named 'python'.",
+    "53": "This tells the editor to break long lines at a specific column width (80 characters) rather than letting them extend infinitely across the screen.",
+    "67": "The 'always' value means VS Code will automatically fix and organize your code every time you save, without asking you first.",
+    "85": "This enables spell-checking in three languages: English, French, and Dutch, so the spell checker accepts words from all three.",
+    "89": "Unlike line 67, 'explicit' means code fixes only run when you manually request them, not automatically on save.",
+    "91": "Setting this to null disables VS Code's built-in code folding and allows extensions to provide their own folding logic instead.",
+    "102": "These two numbers (120 and 70) create vertical guide lines in the editor to help you see when your lines are getting too long.",
+    "116": "This automatically detects what programming language you're working in and applies that language's rules to new files.",
+    "124": "This controls which heading levels appear in the table of contents—in this case, headings from level 2 to level 6 will be included.",
+    "139": "Strict type checking means Python's type-checking tool (mypy) will be very thorough and catch more potential type-related errors.",
+    "146": "These settings tell the import-sorting tool to use the 'black' profile, which matches how the Black formatter expects imports to be organized."
+  }
+}

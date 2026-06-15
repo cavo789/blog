@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:08.102Z",
+  "source": ".wslconfig",
+  "lang": "plaintext",
+  "explanations": {
+    "4": "This sets WSL's memory to 20GB total, leaving 12GB free for Windows itself (the comment assumes your computer has 32GB total).",
+    "10": "This makes WSL use the same network as Windows instead of being isolated, so localhost:8000 in WSL and Windows both refer to the same service.",
+    "18": "This tells WSL to gradually release unused memory back to Windows instead of holding onto it forever, but it's experimental so it might not be completely stable."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:41:17.656Z",
+  "source": "Dockerfile.part2",
+  "lang": "part2",
+  "explanations": {
+    "2": "This pulls a lightweight Python image from Docker Hub—'slim' means it's smaller than the default image by excluding unnecessary files.",
+    "8": "The --no-cache-dir flag tells pip not to store downloaded packages locally, which saves disk space in the Docker image.",
+    "16": "The --host 0.0.0.0 makes the server listen on all network interfaces (not just localhost), so it can receive requests from outside the container; --port 82 runs it on port 82 instead of the default 8000."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:46:31.458Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "34": "This uses `require()` to load a JavaScript file at runtime (while the app is already running) instead of importing it at the top like normal—it's useful here because the data file might not exist, and we want to handle that gracefully.",
+    "35": "This line tries to get the `default` export from the data file, but falls back to the entire `data` object if that doesn't exist—it's a safety check for different ways the file might have been exported.",
+    "46": "`useMemo` remembers the result of this map operation so it doesn't recalculate every time the component re-renders, which saves performance when dealing with many series.",
+    "47": "This finds the matching metadata object for each series by comparing the series name, so we can pull in extra details like custom descriptions or images.",
+    "49": "The `??` operator (called nullish coalescing) means \"use the left side if it exists and isn't null/undefined, otherwise use the right side\"—here it falls back to a default image if no custom image was provided."
+  }
+}

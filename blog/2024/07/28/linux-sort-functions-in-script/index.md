@@ -30,7 +30,7 @@ As we can see, we'll just create empty functions in no particular order.
 
 To get the list of functions declared in a script, just run the command below:
 
-<Terminal>
+<Terminal typewriter>
 $ {`grep -P "^(function\s+.*)\(\)" "/tmp/bash/console.sh" | awk '{print \$2}' | sort`}
 </Terminal>
 

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:53:15.370Z",
+  "source": "cli.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "1": "The backslash at the end of line 1 tells the shell to continue this command on the next line, so lines 1-2 are actually one single command.",
+    "3": "The 'cat << EOF' syntax is a way to write multiple lines of text into a file; everything between the opening EOF and closing EOF (line 6) becomes the content of reset.css.",
+    "27": "toISOString() converts the current date and time into a standardized text format like '2024-01-15T10:30:45.123Z' that's easy to read in logs.",
+    "32": "The 'async' keyword means this function can pause and wait for long operations (like downloading data) without freezing the rest of the code.",
+    "34": "The 'await' keyword pauses here and waits for the fetch to finish downloading before moving to the next line.",
+    "39": "'DOMContentLoaded' is an event that fires when the browser has finished building the page structure, so it's safe to modify the page at this point."
+  }
+}

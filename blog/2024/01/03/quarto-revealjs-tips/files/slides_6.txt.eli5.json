@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:29:30.440Z",
+  "source": "slides_6.txt",
+  "lang": "plaintext",
+  "explanations": {
+    "8": "The slide-level: 3 setting tells the presentation software to treat heading level 3 (###) as the start of a new slide, rather than the default level 2 (##)."
+  }
+}

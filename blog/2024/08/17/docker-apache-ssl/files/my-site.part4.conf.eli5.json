@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:01.151Z",
+  "source": "my-site.part4.conf",
+  "lang": "conf",
+  "explanations": {
+    "8": "This checks if the requested file doesn't actually exist on disk — the !-f means 'not a file'. If it doesn't exist, the next rule will fire.",
+    "9": "This sends all requests that matched the previous condition to index.html, with QSA preserving the query string and L stopping further rule processing.",
+    "29": "Same as line 8 — checking that the requested file doesn't exist before redirecting to index.html.",
+    "30": "Same as line 9 — catch-all redirect for the HTTPS side that sends missing files to index.html with query strings intact."
+  }
+}

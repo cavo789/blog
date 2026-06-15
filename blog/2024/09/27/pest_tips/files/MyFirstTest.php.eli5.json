@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:42.620Z",
+  "source": "MyFirstTest.php",
+  "lang": "php",
+  "explanations": {
+    "8": "The `->not->` syntax inverts the expectation, so this checks that false is NOT true; it's a chainable way to negate the test condition."
+  }
+}

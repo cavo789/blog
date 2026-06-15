@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:27:55.386Z",
+  "source": "customUI14.xml",
+  "lang": "xml",
+  "explanations": {
+    "1": "This XML file is for customizing the Office ribbon interface—the toolbar at the top of Word, Excel, etc.",
+    "4": "The insertAfterMso='TabView' attribute means this custom tab will appear right after the built-in View tab in the ribbon.",
+    "9": "imageMso='HappyFace' references a built-in Office icon by name rather than providing your own image file.",
+    "11": "onAction='OnButtonClicked' is the name of a VBA or macro function that will run when someone clicks this button.",
+    "15": "onChange='OnEditBoxTextChanged' is the function name that gets called whenever a user types something in this text box."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:36:44.041Z",
+  "source": "AnyTest.php",
+  "lang": "php",
+  "explanations": {
+    "5": "toBe() checks both the value AND the type, so 4 (a number) won't match '4' (a string), even though they look the same.",
+    "8": "toEqual() is more lenient and only checks if the values are the same, ignoring the type difference between the number 4 and the string '4'."
+  }
+}

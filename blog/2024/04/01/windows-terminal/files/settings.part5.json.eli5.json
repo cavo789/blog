@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:31:46.892Z",
+  "source": "settings.part5.json",
+  "lang": "json",
+  "explanations": {
+    "8": "There's a trailing comma after the last item in the array, which is actually allowed in JSON but some parsers might reject it—generally you'd remove it."
+  }
+}

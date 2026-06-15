@@ -32,7 +32,7 @@ Or ... you're not yet convinced by VSCode and just want to try it out.
 
 By running the instruction below, you'll download (once) the `codercom/code-server` Docker image then run a container as a daemon.
 
-<Terminal>
+<Terminal typewriter>
 $ {`docker run -d --name code-server -p 8080:8080 \
   -v "\${HOME}/.config:/home/coder/.config" \
   -v ".:/home/coder/project" \
@@ -62,7 +62,7 @@ By opening `http://127.0.0.1:8080` you'll get this screen:
 
 Back to your console, run `cat ${HOME}/.config/code-server/config.yaml` to discover the configuration for code-server. You'll see something like this:
 
-<Terminal>
+<Terminal typewriter>
 $ {`cat \${HOME}/.config/code-server/config.yaml`}
 
 bind-addr: 127.0.0.1:8080

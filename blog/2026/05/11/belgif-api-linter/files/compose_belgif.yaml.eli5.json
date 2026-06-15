@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T12:54:08.160Z",
+  "source": "compose_belgif.yaml",
+  "lang": "yaml",
+  "explanations": {
+    "5": "This maps port 80 inside the container to port 8000 on your computer, so you can visit localhost:8000 to reach the app.",
+    "7": "This syncs your local main.py file into the container so changes you make appear immediately without rebuilding.",
+    "13": "The :ro at the end means 'read-only'—the container can read these files but can't modify them.",
+    "14": "This creates a named volume that persists Maven's downloaded dependencies between container runs, so it doesn't re-download everything each time.",
+    "16": "The > character lets you break a long command across multiple lines for readability."
+  }
+}
