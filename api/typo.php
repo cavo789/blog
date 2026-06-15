@@ -1,6 +1,9 @@
 <?php
 declare(strict_types=1);
 
+ini_set('log_errors', 'On');
+ini_set('error_log', __DIR__ . '/typo-errors.log');
+
 // ── Configuration ─────────────────────────────────────────────────────────────
 $_envVars = file_exists(__DIR__ . '/.env')
     ? (parse_ini_file(__DIR__ . '/.env') ?: [])
@@ -17,8 +20,8 @@ define('NOTIFY_COOLDOWN_SECONDS', 21600); // 6h between emails per article
 
 define('GLOBAL_WINDOW',   60);   // global rate-limit window (seconds)
 define('GLOBAL_MAX',      20);   // max requests in that window
-define('IP_HOURLY_MAX',   10);   // max reports per IP per hour
-define('IP_ARTICLE_MAX',  3);    // max reports per IP per article per 24h
+define('IP_HOURLY_MAX',   15);   // max reports per IP per hour
+define('IP_ARTICLE_MAX',  5);    // max reports per IP per article per 24h
 
 // ── CORS ──────────────────────────────────────────────────────────────────────
 $allowedOrigins = [
@@ -57,7 +60,7 @@ function loadData(string $file): array
 
 function saveData(string $file, array $data): void
 {
-    $fp = fopen($file, 'c+');
+    $fp = @fopen($file, 'c+');
     if (!$fp) {
         return;
     }
@@ -150,7 +153,7 @@ function checkRateLimits(string $slug): void
     $ipKey = hash('sha256', IP_HASH_SALT . $ip);
     $now   = time();
 
-    $fp = fopen($file, 'c+');
+    $fp = @fopen($file, 'c+');
     if (!$fp) {
         return;
     }
@@ -191,7 +194,6 @@ function checkRateLimits(string $slug): void
         jsonError(429, 'Too many requests');
     }
 
-    $articleCount = count(array_filter($ipData['articles'], fn($ts) => $ts > $cutoffDay, ARRAY_FILTER_USE_VALUES));
     // count per article for this IP
     $perArticleKey = $ipKey . '|' . $slug;
     $articlesForSlug = $data[$perArticleKey] ?? [];
@@ -252,7 +254,7 @@ function storeReport(array $fields): void
         'ip_hash'   => hash('sha256', IP_HASH_SALT . $ip),
     ];
 
-    $fp = fopen($dataFile, 'c+');
+    $fp = @fopen($dataFile, 'c+');
     if (!$fp) {
         return;
     }
@@ -303,7 +305,7 @@ function maybeNotifyTypo(string $slug, string $text, string $type): void
         "Content-Type: text/plain; charset=utf-8",
     ]);
 
-    if (@mail(ADMIN_EMAIL, $subject, $body, $headers)) {
+    if (function_exists('mail') && @mail(ADMIN_EMAIL, $subject, $body, $headers)) {
         $throttle[$slug] = time();
         saveData($throttleFile, $throttle);
     }

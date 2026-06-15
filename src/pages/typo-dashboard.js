@@ -129,7 +129,7 @@ export default function TypoDashboard() {
 
   useEffect(() => {
     if (token) fetchData(token);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [token, fetchData]);
 
   // Flatten all reports sorted newest-first.
   const allReports = data
