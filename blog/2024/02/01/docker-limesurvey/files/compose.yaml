@@ -18,13 +18,18 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - limesurvey-db
+      limesurvey-db:
+        condition: service_healthy
 
   limesurvey-db:
-    image: docker.io/mysql:latest
+    image: docker.io/mysql:8.4
     container_name: limesurvey-db
     environment:
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=admin
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=limesurvey
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10

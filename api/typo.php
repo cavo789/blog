@@ -122,6 +122,12 @@ function validateAndSanitize(array $body): array
         jsonError(400, 'Invalid text');
     }
 
+    $allowedTypes = ['typo', 'incorrect', 'outdated', 'suggestion'];
+    $type = trim($body['type'] ?? '');
+    if (!in_array($type, $allowedTypes, true)) {
+        jsonError(400, 'Invalid type');
+    }
+
     $comment = trim($body['comment'] ?? '');
     if ($comment !== '' && (mb_strlen($comment) > 300 || !isPrintableUnicode($comment))) {
         jsonError(400, 'Invalid comment');
@@ -132,7 +138,7 @@ function validateAndSanitize(array $body): array
         $context = mb_substr($context, 0, 300);
     }
 
-    return compact('slug', 'text', 'comment', 'context');
+    return compact('slug', 'text', 'type', 'comment', 'context');
 }
 
 // ── Rate limiting ─────────────────────────────────────────────────────────────
@@ -230,13 +236,14 @@ function isDuplicate(string $slug, string $text): bool
 
 function storeReport(array $fields): void
 {
-    ['slug' => $slug, 'text' => $text, 'comment' => $comment, 'context' => $context] = $fields;
+    ['slug' => $slug, 'text' => $text, 'type' => $type, 'comment' => $comment, 'context' => $context] = $fields;
 
     $dataFile = __DIR__ . '/typo-data.json';
     $ip       = $_SERVER['REMOTE_ADDR'] ?? '';
 
     $report = [
         'id'        => bin2hex(random_bytes(6)),
+        'type'      => $type,
         'text'      => $text,
         'text_hash' => hash('sha256', $slug . '|' . mb_strtolower($text)),
         'context'   => $context,
@@ -263,7 +270,7 @@ function storeReport(array $fields): void
 
 // ── Email notification ────────────────────────────────────────────────────────
 
-function maybeNotifyTypo(string $slug, string $text): void
+function maybeNotifyTypo(string $slug, string $text, string $type): void
 {
     $throttleFile = __DIR__ . '/typo-notifications.json';
     $throttle     = loadData($throttleFile);
@@ -272,12 +279,20 @@ function maybeNotifyTypo(string $slug, string $text): void
         return;
     }
 
+    $typeLabels = [
+        'typo'       => '🔤 Typo',
+        'incorrect'  => '❌ Incorrect info',
+        'outdated'   => '⏰ Outdated content',
+        'suggestion' => '💡 Suggestion',
+    ];
+    $typeLabel  = $typeLabels[$type] ?? $type;
     $articleUrl = SITE_URL . '/' . $slug;
-    $subject    = "[Blog] Typo report on: $slug";
+    $subject    = "[Blog] Feedback ($type) on: $slug";
     $body       = implode("\n", [
-        "A reader reported a potential typo.",
+        "A reader flagged an issue.",
         "",
         "Article : $articleUrl",
+        "Type    : $typeLabel",
         "Text    : $text",
         "",
         "Review all reports: GET " . SITE_URL . "/api/typo.php?admin=TOKEN",
@@ -349,6 +364,6 @@ if (isDuplicate($slug, $text)) {
 }
 
 storeReport($fields);
-maybeNotifyTypo($slug, $text);
+maybeNotifyTypo($slug, $text, $fields['type']);
 
 echo json_encode(['ok' => true]);

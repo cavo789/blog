@@ -1,6 +1,6 @@
 ---
 name: project-images-tags
-description: All available banner images (/img/v2/*.webp) and all 175 defined tag slugs
+description: All available banner images (/img/v2/*.webp) and the 44 valid tag slugs in tags.yml (cleaned 2026-06-15)
 metadata:
   node_type: memory
   type: project
@@ -42,32 +42,18 @@ wordpress, workflows, wsl, zorin_os, zsh
 
 When picking an image for a new post, choose the closest semantic match. If nothing fits, flag it — the user may need to create a new one.
 
-## All Tags (from `blog/tags.yml` — count may evolve, always verify against the file)
+## All Tags (from `blog/tags.yml` — cleaned 2026-06-15, 44 tags)
 
 All tags used in frontmatter `tags:` must exist here. `onInlineTags: "throw"` makes unrecognized tags break the build.
 
 ```
-.env, .htaccess, actions, addon, adminer, aesecure, ai, apache, api,
-assembly, autoflake, bash, bdd, behat, black, bluesky, bookmark, bruno,
-captainhook, chrome, ci, code-quality, component, composer, console, cpanel,
-csv, customization, cypress, dagger, dashboard, database, devcontainer,
-doc-as-code, docker, docusaurus, docx, dood, dos, encryption, etl, excel,
-fastapi, firefox, frankenphp, ftp, fzf, gimp, git, github, gitlab, grumphp,
-gui, hooks, https, husky, iconify, images, intelephense, introspection, isort,
-java, javascript, joomla, jq, json, keepass, laravel, limesurvey, linux,
-makefile, markdown, matomo, mermaid, mindmap, mink, monitoring, msaccess,
-mssql-server, mustache, mypy, mysql, n0c, network, nginx, nodejs, note-taking,
-npm, ollama, openapi, optimization, oracle, outlook, pandas, pandoc, pascal,
-pest, phan, php, php-cs-fixer, php-grep, phpcbf, phpcs, phpdoc, phplint,
-phpmyadmin, phpstan, phpunit, pipeline, planethoster, plugin, postgresql,
-postgrest, postman, powerpoint, powershell, pre-commit, prospector, putty,
-pydocstyle, pylint, pyright, python, quarto, rdp, react, recraft, rectorphp,
-refactoring, rest, revealjs, ribbon, roundcube, ruff, scp, secrets, sed,
-self-hosted, series, sftp, shell, shellcheck, shellformat, snippets, soap,
-sonarlint, spamassassin, sql, ssh, sshpass, ssl, ssms, swagger, swizzle,
-synology, telescope, tests, tips, tool, ubuntu, vba, vbs, visualisation,
-vscode, vulture, wamp, windows, windows-terminal, winget, winscp, wordpress,
-workflow, wsl, xml, xmlstarlet, yarn, zsh
+ai, apache, api, bash, code-quality, component, customization, database,
+devcontainer, doc-as-code, docker, docusaurus, excel, fzf, git, github,
+gitlab, joomla, laravel, linux, makefile, markdown, msaccess, nodejs, npm,
+ollama, oracle, php, python, quarto, react, security, self-hosted, ssh, ssl,
+tests, vba, vscode, windows, windows-terminal, winscp, wsl, yarn, zsh
 ```
+
+Supprimés le 2026-06-15 car non utilisés dans aucun article : `adminer`, `bluesky`, `mysql`, `phpmyadmin`, `postgresql`.
 
 **Why:** Build fails if any tag in a post's frontmatter is not declared in `tags.yml`. Always pick from this list.

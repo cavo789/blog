@@ -16,6 +16,13 @@ const TOOLS = [
     href: "/reactions-dashboard",
     accent: "#3cad6e",
   },
+  {
+    icon: "🔤",
+    title: "Feedback Reports",
+    description: "Reader-flagged issues — typos, incorrect info, outdated content, suggestions.",
+    href: "/typo-dashboard",
+    accent: "#e07b00",
+  },
 ];
 
 const SITE_RESOURCES = [

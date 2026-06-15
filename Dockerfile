@@ -164,7 +164,10 @@ RUN --mount=type=cache,target=/var/lib/apt/lists \
         python3 \
         python3-pip && \
     echo "${OS_USERNAME} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/"${OS_USERNAME}" && \
-    chmod 0440 /etc/sudoers.d/"${OS_USERNAME}"
+    chmod 0440 /etc/sudoers.d/"${OS_USERNAME}" && \
+    ARCH=$(dpkg --print-architecture) && \
+    curl -sSL "https://dl.filippo.io/mkcert/latest?for=linux/${ARCH}" -o /usr/local/bin/mkcert && \
+    chmod +x /usr/local/bin/mkcert
 
 USER "${OS_USERNAME}"
 

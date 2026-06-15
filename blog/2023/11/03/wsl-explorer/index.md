@@ -10,6 +10,9 @@ tags:
   - windows
   - wsl
 language: en
+updates:
+  - date: 2026-06-15
+    note: Fixed inverted Windows 10/11 UNC path note (the AlertBox had `\\wsl$` and `\\wsl.localhost` the wrong way round); fixed Markdown formatting of the error message; corrected the OS version in the accessibility error section.
 ---
 <!-- cspell:ignore cbfsconnect -->
 ![Open your Linux folder in Windows Explorer](/img/v2/wsl.webp)
@@ -32,16 +35,15 @@ It sounds crazy, doesn't it? Windows will then *convert* the Linux `/home/christ
 
 Now, I can use Windows explorer to manage files / folders like I have for decades on Windows.
 
-<AlertBox variant="info" title="Windows 11">
-If you are running on Windows 11, the UNC is `\\wsl$\`, not `\\wsl.localhost\`.
-
+<AlertBox variant="info" title="Windows 10">
+If you are running on Windows 10, the UNC path uses the older `\\wsl$\` prefix instead of `\\wsl.localhost\`. The `\\wsl.localhost\` format was introduced with Windows 11.
 </AlertBox>
 
 ## WSL localhost is not accessible
 
 > [https://github.com/microsoft/WSL/discussions/7742#discussioncomment-6069601](https://github.com/microsoft/WSL/discussions/7742#discussioncomment-6069601).
 
-It can happen, on your Windows 10 computer, that the folder will not be opened and you will get the error: /*\\wsl.localhost is not accessible. You might not have permission to use this network resource. Contact the administrator of this server to find out if you have access permissions.*.
+It can happen, on your Windows 11 computer, that the folder will not be opened and you will get the error: *\\wsl.localhost is not accessible. You might not have permission to use this network resource. Contact the administrator of this server to find out if you have access permissions.*
 
 ![wsl.localhost not accessible](./images/wsl_localhost_not_accessible.webp)
 
@@ -55,7 +57,6 @@ When done, please reboot your computer.
 
 ![Editing the registry](./images/registry.webp)
 
-<AlertBox variant="note" title="">
-If it still does not work, remove `cbfsconnect2017` from the list and try again.
-
+<AlertBox variant="note" title="Still not working?">
+Remove `cbfsconnect2017` from the list and try again.
 </AlertBox>

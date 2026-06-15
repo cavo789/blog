@@ -10,12 +10,15 @@ tags:
   - docker
   - self-hosted
 language: en
+updates:
+  - date: 2026-06-15
+    note: Pinned MySQL to `8.4` (MySQL 9.x removed `mysql_native_password`, breaking LimeSurvey authentication); added `healthcheck` and `service_healthy` to all compose files to eliminate startup race conditions; fixed several grammar errors.
 ---
 ![Install LimeSurvey using Docker](/img/v2/limesurvey.webp)
 
 LimeSurvey is an open-source survey tool that allows users to create and conduct surveys online. It is a powerful and intuitive tool that can be used by everyone.
 
-Once again, it's easy to play with it and create a sandbox site to take a look on all his features; thanks to Docker.
+Once again, it's easy to play with it and create a sandbox site to take a look at all its features; thanks to Docker.
 
 To do this, we'll use the [https://github.com/martialblog/docker-limesurvey](https://github.com/martialblog/docker-limesurvey) Docker image.
 
@@ -35,14 +38,14 @@ Now, simply run the following command to download (only the first time) required
 $ docker compose up --detach
 </Terminal>
 
-Once everything has been downloaded and started, you can check you've well two containers by running the following command:
+Once everything has been downloaded and started, you can check you have two containers by running the following command:
 
 <Terminal typewriter>
 $ docker container list
 
 [...] IMAGE                         [...] NAMES
 [...] martialblog/limesurvey:latest [...] limesurvey-app
-[...] mysql:latest                  [...] limesurvey-db
+[...] mysql:8.4                     [...] limesurvey-db
 </Terminal>
 
 <AlertBox variant="info" title="The output above has been simplified">
@@ -50,20 +53,15 @@ For clarity, the output of `docker container list` has been simplified here abov
 
 </AlertBox>
 
-Please wait **one or two minutes** more (depending on your machine), time needed by LimeSurvey to f.i. connect to the database container and create his database.
+The `service_healthy` condition in the compose file ensures LimeSurvey won't start until MySQL is ready, which eliminates the connectivity errors you might have read about in older tutorials. Still, please wait **one or two minutes** (depending on your machine) for LimeSurvey to initialize its database tables.
 
-Go to `http://localhost:8080` and while you got an error like `ERR_CONNECTION_REFUSED`, please wait and try again. When it's ready, you should see the default LimeSurvey welcome page.
+Go to `http://localhost:8080` and if you see `ERR_CONNECTION_REFUSED`, wait a little longer and refresh. When it's ready, you should see the default LimeSurvey welcome page.
 
 <AlertBox variant="info" title="Look at the logs">
-If you think that you've waited already a long time and it seems something is going wrong, run `docker compose logs -f` to get access to the logs. If there is a fatal error, you can see it there. If you see `nc: connect to limesurvey-db (xxxxx) port 3306 (tcp) failed: Connection refused`, it's normal, the LimeSurvey container is trying to connect to the database server and that one isn't yet ready, just wait a few more.
+If you have been waiting a long time and something seems wrong, run `docker compose logs -f` to inspect the logs. You should see `[core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'` when LimeSurvey is ready, meaning the web server is up and accepting connections.
 
-**You should see, in the logs, something like `[core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'` when LimeSurvey is ready (meaning that the web server is ready to handle connections).**
-
-Press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop listening to the logs.
-
+Press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop following the logs.
 </AlertBox>
-
-<AlertBox variant="info" title="Using service_healthy will preserve from such errors, see the example at the end of this post" />
 
 When LimeSurvey is ready, you'll see the following page on `http://localhost:8080`:
 
@@ -113,8 +111,8 @@ Our `compose.yaml` will then become:
 
 <Snippet filename="compose.yaml" source="./files/compose.part3.yaml" />
 
-<AlertBox variant="info" title="Using service_healthy">
-I've used the `depends_on` property for the `limesurvey-app` service and I've specified `condition: service_healthy`. This is a very cool feature: LimeSurvey, the PHP application, won't start before the database layer is running. Since LimeSurvey has to access the database, we just want to avoid some connectivity errors like *`nc: connect to limesurvey-db (xxxxx) port 3306 (tcp) failed: Connection refused`* or things like that.
+<AlertBox variant="danger" title="MySQL 5.7 is end-of-life">
+MySQL 5.7 reached end of life in October 2023 and no longer receives security patches. This configuration is intentional here because it mirrors an old production environment. **Never use `mysql:5.7` for anything other than local reproduction of a legacy setup.**
 </AlertBox>
 
-Just run `docker compose up --detach` and surf to `http://localhost:8080` and, congratulations, you've a local LimeSurvey v3.22.6 website.
+Just run `docker compose up --detach` and surf to `http://localhost:8080` and, congratulations, you have a local LimeSurvey v3.22.6 website.

@@ -8,6 +8,13 @@ import styles from "./styles.module.css";
 const STORAGE_KEY = "typo_reports"; // [{ts, hash}]
 const MAX_PER_HOUR = 5;
 
+const FEEDBACK_TYPES = [
+  { id: "typo",       icon: "🔤", label: "Typo" },
+  { id: "incorrect",  icon: "❌", label: "Incorrect" },
+  { id: "outdated",   icon: "⏰", label: "Outdated" },
+  { id: "suggestion", icon: "💡", label: "Suggestion" },
+];
+
 // FNV-1a 32-bit hash (no crypto needed for client-side dedup)
 function fnv1a(str) {
   let hash = 0x811c9dc5;
@@ -52,22 +59,22 @@ export default function TypoReport({ metadata }) {
   const slug = metadata?.permalink?.replace(/^\/|\/$/g, "") ?? "";
   const apiUrl = `${siteConfig.url}/api/typo.php`;
 
-  // State machine: idle → selected → confirming → submitting → done | error
+  // State machine: idle → selecting → confirming → submitting → done | error
   const [phase, setPhase] = useState("idle");
   const [selectedText, setSelectedText] = useState("");
   const [tooltipPos, setTooltipPos] = useState({ top: 0, left: 0 });
+  const [feedbackType, setFeedbackType] = useState("");
   const [comment, setComment] = useState("");
 
-  const nonceRef    = useRef(null);
-  const articleRef  = useRef(null);
-  const wrapperRef  = useRef(null);
-  const contextRef  = useRef("");  // ±100 chars around selection
+  const nonceRef   = useRef(null);
+  const articleRef = useRef(null);
+  const wrapperRef = useRef(null);
+  const contextRef = useRef(""); // ±100 chars around selection
 
   // Fetch nonce + wire up DOM listeners on mount.
   useEffect(() => {
     if (!slug) return;
 
-    // Fetch nonce eagerly.
     fetch(`${apiUrl}?nonce`)
       .then((r) => r.ok ? r.json() : null)
       .then((data) => { if (data?.nonce) nonceRef.current = data.nonce; })
@@ -77,7 +84,7 @@ export default function TypoReport({ metadata }) {
     if (!article) return;
     articleRef.current = article;
 
-    function handleMouseUp() {
+    function handleSelection() {
       const sel = window.getSelection();
       if (!sel || sel.isCollapsed) return;
 
@@ -87,24 +94,20 @@ export default function TypoReport({ metadata }) {
       const range = sel.getRangeAt(0);
       const rect  = range.getBoundingClientRect();
 
-      // Ensure selection is inside the article.
       if (!article.contains(range.commonAncestorContainer)) return;
 
-      // Capture ±100-char context from the article's plain text.
       const fullText = article.innerText || "";
       const idx = fullText.indexOf(text);
-      if (idx !== -1) {
-        contextRef.current = fullText.slice(Math.max(0, idx - 100), idx + text.length + 100);
-      } else {
-        contextRef.current = "";
-      }
+      contextRef.current = idx !== -1
+        ? fullText.slice(Math.max(0, idx - 100), idx + text.length + 100)
+        : "";
 
       const top  = window.scrollY + rect.bottom + 8;
       const left = Math.min(window.scrollX + rect.left, window.innerWidth - 296);
 
       setSelectedText(text);
       setTooltipPos({ top, left });
-      setPhase("selected");
+      setPhase("selecting");
     }
 
     function handleMouseDown(e) {
@@ -113,15 +116,17 @@ export default function TypoReport({ metadata }) {
       }
     }
 
-    article.addEventListener("mouseup", handleMouseUp);
+    article.addEventListener("mouseup", handleSelection);
+    article.addEventListener("touchend", handleSelection);
     document.addEventListener("mousedown", handleMouseDown);
     return () => {
-      article.removeEventListener("mouseup", handleMouseUp);
+      article.removeEventListener("mouseup", handleSelection);
+      article.removeEventListener("touchend", handleSelection);
       document.removeEventListener("mousedown", handleMouseDown);
     };
   }, [slug, apiUrl]);
 
-  const handleOpen = useCallback(() => {
+  const handleTypeSelect = useCallback((type) => {
     if (isLocalRateLimited()) {
       setPhase("error");
       return;
@@ -130,6 +135,7 @@ export default function TypoReport({ metadata }) {
       setPhase("done");
       return;
     }
+    setFeedbackType(type);
     setComment("");
     setPhase("confirming");
   }, [slug, selectedText]);
@@ -138,7 +144,6 @@ export default function TypoReport({ metadata }) {
     e.preventDefault();
     setPhase("submitting");
 
-    // Refresh nonce if missing (e.g. expired tab).
     let nonce = nonceRef.current;
     if (!nonce) {
       try {
@@ -158,6 +163,7 @@ export default function TypoReport({ metadata }) {
         body: JSON.stringify({
           slug,
           text:    selectedText,
+          type:    feedbackType,
           comment,
           context: contextRef.current,
           website: honeypot,
@@ -173,18 +179,16 @@ export default function TypoReport({ metadata }) {
     } catch {
       setPhase("error");
     }
-  }, [slug, selectedText, comment, apiUrl]);
+  }, [slug, selectedText, feedbackType, comment, apiUrl]);
 
-  const handleCancel = useCallback(() => {
-    setPhase("idle");
-  }, []);
-
-  const handleDismiss = useCallback(() => {
-    setPhase("idle");
-  }, []);
+  const handleBack    = useCallback(() => setPhase("selecting"), []);
+  const handleCancel  = useCallback(() => setPhase("idle"), []);
+  const handleDismiss = useCallback(() => setPhase("idle"), []);
 
   // SSR-safe: render nothing when idle.
   if (phase === "idle") return null;
+
+  const typeInfo = FEEDBACK_TYPES.find((t) => t.id === feedbackType);
 
   return (
     <div
@@ -192,10 +196,23 @@ export default function TypoReport({ metadata }) {
       className={styles.wrapper}
       style={{ top: tooltipPos.top, left: tooltipPos.left }}
     >
-      {phase === "selected" && (
-        <button className={styles.triggerBtn} onClick={handleOpen}>
-          ✏️ Report typo?
-        </button>
+      {phase === "selecting" && (
+        <div className={styles.typeCard}>
+          <p className={styles.typePrompt}>What kind of issue?</p>
+          <div className={styles.typeGrid}>
+            {FEEDBACK_TYPES.map(({ id, icon, label }) => (
+              <button
+                key={id}
+                className={styles.typeBtn}
+                onClick={() => handleTypeSelect(id)}
+              >
+                <span className={styles.typeIcon}>{icon}</span>
+                <span>{label}</span>
+              </button>
+            ))}
+          </div>
+          <button className={styles.cancelSmall} onClick={handleCancel}>Cancel</button>
+        </div>
       )}
 
       {phase === "confirming" && (
@@ -203,9 +220,15 @@ export default function TypoReport({ metadata }) {
           <div className={styles.selectedPreview}>
             "{selectedText.length > 80 ? selectedText.slice(0, 80) + "…" : selectedText}"
           </div>
+          {typeInfo && (
+            <div className={styles.typeBadge}>
+              {typeInfo.icon} {typeInfo.label}
+              <button type="button" className={styles.changeTypeBtn} onClick={handleBack}>change</button>
+            </div>
+          )}
           <textarea
             className={styles.commentInput}
-            placeholder="Optional comment (max 300 chars)"
+            placeholder="Optional details (max 300 chars)"
             maxLength={300}
             value={comment}
             onChange={(e) => setComment(e.target.value)}
@@ -216,6 +239,7 @@ export default function TypoReport({ metadata }) {
             <button type="submit" className={styles.btnPrimary}>Send</button>
             <button type="button" className={styles.btnSecondary} onClick={handleCancel}>Cancel</button>
           </div>
+          <p className={styles.disclaimer}>One-way signal — no reply will be sent.</p>
         </form>
       )}
 
@@ -225,7 +249,7 @@ export default function TypoReport({ metadata }) {
 
       {phase === "done" && (
         <div className={styles.status}>
-          Thanks! ✓
+          Thanks for the feedback! ✓
           <button className={styles.dismissBtn} onClick={handleDismiss} aria-label="Dismiss">✕</button>
         </div>
       )}

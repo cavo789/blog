@@ -1,7 +1,7 @@
 adminer:
   label: "Adminer"
   permalink: "/tags/adminer"
-  description: "Lightweight web-based database management tool (MySQL, PostgreSQL, SQLite)."
+  description: "Lightweight web-based database management tool supporting MySQL, PostgreSQL, SQLite, and more."
 ai:
   label: "Artificial Intelligence (AI)"
   permalink: "/tags/ai"
@@ -21,7 +21,7 @@ bash:
 bluesky:
   label: "Bluesky"
   permalink: "/tags/bluesky"
-  description: "Content related to the decentralized social network Bluesky."
+  description: "Bluesky social network — integration, sharing, and embedding in web projects."
 code-quality:
   label: "Code Quality"
   permalink: "/tags/code-quality"
@@ -101,7 +101,7 @@ msaccess:
 mysql:
   label: "MySQL"
   permalink: "/tags/mysql"
-  description: "MySQL relational database — setup, configuration, and Docker-based usage."
+  description: "MySQL relational database — configuration, queries, and Docker-based setups."
 nodejs:
   label: "Node.js"
   permalink: "/tags/nodejs"
@@ -125,11 +125,11 @@ php:
 phpmyadmin:
   label: "phpMyAdmin"
   permalink: "/tags/phpmyadmin"
-  description: "Web-based MySQL administration tool — setup and Docker-based usage."
+  description: "Web-based MySQL/MariaDB administration interface."
 postgresql:
   label: "PostgreSQL"
   permalink: "/tags/postgresql"
-  description: "PostgreSQL relational database — setup, configuration, and Docker-based usage."
+  description: "PostgreSQL relational database — configuration, queries, and Docker-based setups."
 python:
   label: "Python"
   permalink: "/tags/python"

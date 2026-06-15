@@ -4,23 +4,73 @@
   max-width: 280px;
 }
 
-/* ── Trigger button ───────────────────────────────────────────────────── */
-.triggerBtn {
-  padding: 6px 12px;
-  background: var(--ifm-color-primary);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  white-space: nowrap;
-  transition: background 0.15s;
+/* ── Type selection card ──────────────────────────────────────────────── */
+.typeCard {
+  width: 250px;
+  padding: 10px 12px 8px;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.triggerBtn:hover {
-  background: var(--ifm-color-primary-dark);
+.typePrompt {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-700);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.typeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.typeBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--ifm-font-color-base);
+  transition: background 0.12s, border-color 0.12s;
+  text-align: left;
+}
+
+.typeBtn:hover {
+  background: var(--ifm-color-primary-lightest, #e8f4ff);
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary-dark);
+}
+
+.typeIcon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.cancelSmall {
+  align-self: center;
+  background: transparent;
+  border: none;
+  font-size: 0.75rem;
+  color: var(--ifm-color-emphasis-500);
+  cursor: pointer;
+  padding: 0;
+}
+
+.cancelSmall:hover {
+  color: var(--ifm-color-emphasis-800);
 }
 
 /* ── Form card ────────────────────────────────────────────────────────── */
@@ -47,9 +97,38 @@
   word-break: break-word;
 }
 
+.typeBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary-dark);
+  background: var(--ifm-color-primary-lightest, #e8f4ff);
+  border: 1px solid var(--ifm-color-primary-light);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+.changeTypeBtn {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--ifm-color-emphasis-600);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.changeTypeBtn:hover {
+  color: var(--ifm-color-emphasis-900);
+}
+
 .commentInput {
   width: 100%;
-  min-height: 60px;
+  min-height: 56px;
   resize: vertical;
   padding: 6px 8px;
   font-size: 0.82rem;
@@ -111,6 +190,13 @@
   border-color: var(--ifm-color-emphasis-600);
 }
 
+.disclaimer {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--ifm-color-emphasis-500);
+  text-align: center;
+}
+
 /* ── Status badges ────────────────────────────────────────────────────── */
 .status,
 .statusError {
@@ -151,12 +237,27 @@
 }
 
 /* ── Dark mode overrides ──────────────────────────────────────────────── */
+[data-theme="dark"] .typeCard,
 [data-theme="dark"] .form {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
+[data-theme="dark"] .typeBtn {
+  background: var(--ifm-color-emphasis-200);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme="dark"] .typeBtn:hover {
+  background: var(--ifm-color-emphasis-300);
+  border-color: var(--ifm-color-primary);
+}
+
 [data-theme="dark"] .selectedPreview {
   background: var(--ifm-color-emphasis-200);
+}
+
+[data-theme="dark"] .typeBadge {
+  background: rgba(var(--ifm-color-primary-rgb, 0 100 200) / 0.15);
 }
 
 [data-theme="dark"] .status {
