@@ -64,7 +64,7 @@ In a Pest test, `$this` refers to the PHPUnit `Tests\TestCase` class.
 
 #### it or test
 
-Pest give us the choice between `it()` and `test()`. *Use the one that best fits your test naming convention, or both. They share the same behavior & syntax.*
+Pest gives us the choice between `it()` and `test()`. *Use the one that best fits your test naming convention, or both. They share the same behavior & syntax.*
 
 Read more: [https://pestphp.com/docs/writing-tests#api-reference](https://pestphp.com/docs/writing-tests#api-reference)
 
@@ -76,7 +76,7 @@ Create a file like `tests/Feature/MyFirstTest.php` with this content:
 
 <Snippet filename="tests/Feature/MyFirstTest.php" source="./files/MyFirstTest.php" />
 
-This illustrates that Pest start with a `expect` verb and some method like `toBeTrue()`.  Methods can be negated using `not->` ([https://pestphp.com/docs/expectations#expect-not](https://pestphp.com/docs/expectations#expect-not)).
+This illustrates that Pest starts with an `expect` verb and some method like `toBeTrue()`.  Methods can be negated using `not->` ([https://pestphp.com/docs/expectations#expect-not](https://pestphp.com/docs/expectations#expect-not)).
 
 Running our test can be simply done using `./vendor/bin/pest tests/Feature/MyFirstTest.php` and here is the result:
 
@@ -97,7 +97,7 @@ Make sure to install and enable [PHP Intelephense](https://marketplace.visualstu
 
 <Snippet filename="tests/Feature/AnyTest.php" source="./files/AnyTest.php" />
 
-`toBe` will be stricter i.e. will check both the value and the data type when, `toBe` will just check the value.
+`toBe` will be stricter i.e. will check both the value and the data type when, `toEqual` will just check the value.
 
 ### Assertions
 
@@ -193,7 +193,7 @@ The line above will make `Tests\TestCase` available in all tests in `tests/Featu
 
 <Snippet filename="tests/Feature/AnyTest.php" source="./files/AnyTest.part10.php" />
 
-And also in the `test/Unit` folder:
+And also in the `tests/Unit` folder:
 
 <Snippet filename="tests/Feature/AnyTest.php" source="./files/AnyTest.part11.php" />
 
@@ -207,7 +207,7 @@ We can use the `dd` method to dump the current expectation value and end the tes
 
 ## Convert from PHPUnit
 
-> [[Migrate from PHPUnit to Pest - Online migration tool](https://benjamincrozat.com/phpunit-to-pest)t](https://benjamincrozat.com/phpunit-to-pest)
+> [Migrate from PHPUnit to Pest - Online migration tool](https://benjamincrozat.com/phpunit-to-pest)
 
 Introduced in Pest since v2.9, there is a tool to convert from PHPUnit to Pest.
 

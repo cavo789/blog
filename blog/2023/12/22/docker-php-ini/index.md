@@ -38,7 +38,7 @@ The solution is to add the `volumes` line if not yet present in your file and, t
 
 ## Step two - Create your own php.ini file
 
-The second things to do is to create a file called `php.ini` in the same folder of your `compose.yaml` where you'll define your variables; f.i.
+The second thing to do is to create a file called `php.ini` in the same folder of your `compose.yaml` where you'll define your variables; f.i.
 
 <Snippet filename="php.ini" source="./files/php.ini" />
 

@@ -34,7 +34,7 @@ The syntax is very easy since we need to use the special tag `:::` to delimit an
 
 Let's see in action; create a simple markdown file (`conditional-display.md`) on your disk and call quarto using `quarto render conditional-display.md --to xxx` and replace `xxx` by f.i. `docx`, `pdf`, `html`, `revealjs`, ...
 
-<Snippet filename="conditional_display.md">
+<Snippet filename="conditional-display.md">
 
 ```markdown
 # Conditional display

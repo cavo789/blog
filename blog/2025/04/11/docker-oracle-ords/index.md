@@ -53,7 +53,7 @@ Please read that article and follow steps so, before continuing here, you've a r
 
 ## Download a Docker image for Oracle REST Data Services
 
-Unlike the Docker Oracle Database Server image, we don't need any credentials for downloading the official [Oracle ORDS]((https://container-registry.oracle.com/ords/ocr/ba/database/ords-developer)) image.
+Unlike the Docker Oracle Database Server image, we don't need any credentials for downloading the official [Oracle ORDS](https://container-registry.oracle.com/ords/ocr/ba/database/ords-developer) image.
 
 Simply run `docker pull container-registry.oracle.com/database/ords-developer:latest` to get it. It's a 2.2 GB file size image.
 
@@ -342,7 +342,7 @@ The official documentation strongly discourages to remove the limit (and thus as
 
 #### Filtering
 
-The general syntax is using `/?=q{"column":{"$eq":"value"}}`.
+The general syntax is using `/?q={"column":{"$eq":"value"}}`.
 
 ##### Greater than
 
@@ -385,7 +385,7 @@ The following URL `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like"
 
 #### Sorting
 
-The general syntax is using `/?=q{"$orderby":{"fieldname1":"asc","fieldname2":"desc"}}`.
+The general syntax is using `/?q={"$orderby":{"fieldname1":"asc","fieldname2":"desc"}}`.
 
 To sort on the first name desc and, then based on the salary (the higher first): `http://localhost:8181/ords/hr/employees/?q={"$orderby":{"first_name":"desc","salary":"desc"}}`.
 

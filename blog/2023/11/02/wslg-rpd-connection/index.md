@@ -85,7 +85,7 @@ Also run `sudo nano /etc/xrdp/startwm.sh` to edit the file.
     <Snippet filename="/etc/xrdp/startwm.sh">
 
     ```bash
-    # xce4
+    # xfce4
     startxfce4
     ```
 
@@ -98,7 +98,7 @@ $ (
   sudo systemctl enable dbus
   sudo /etc/init.d/dbus start
   sudo /etc/init.d/xrdp start
-  sudo /etc/init.d/xrdp statusgst
+  sudo /etc/init.d/xrdp status
 )
 </Terminal>
 

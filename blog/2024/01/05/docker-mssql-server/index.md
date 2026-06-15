@@ -61,7 +61,7 @@ Use the value below for the authentication:
 * Password: `2Secure*Password2`
 
 <AlertBox variant="info" title="Why these values?">
-`1443` is the port number we've declared in our `docker run` instruction, the default *admin* user is `SA` and the password has been initialized earlier to `2Secure*Password2` (see the `SA_PASSWORD` environment variable in our `docker run` command.)
+`1433` is the port number we've declared in our `docker run` instruction, the default *admin* user is `SA` and the password has been initialized earlier to `2Secure*Password2` (see the `SA_PASSWORD` environment variable in our `docker run` command.)
 
 </AlertBox>
 

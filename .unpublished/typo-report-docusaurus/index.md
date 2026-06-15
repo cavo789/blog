@@ -1,10 +1,10 @@
 ---
 slug: docusaurus-typo-report-component
-title: "Let Readers Report Typos — A Full-Stack Docusaurus Component"
+title: "Let Readers Flag Issues — A Multi-Type Feedback Widget for Docusaurus"
 date: 2026-06-13
 authors: [christophe]
 image: /img/v2/docusaurus_component.webp
-description: Build a secure, SSR-safe typo-report feature for your Docusaurus blog — text selection tooltip, PHP API with HMAC nonce, rate limiting, deduplication, and email notifications.
+description: Build a secure, SSR-safe reader-feedback widget for your Docusaurus blog — text selection, 4 feedback types, PHP API with HMAC nonce, rate limiting, deduplication, admin dashboard, and email notifications.
 mainTag: docusaurus
 tags:
   - docusaurus
@@ -17,13 +17,15 @@ ai_assisted: true
 draft: true
 ---
 
-![Let Readers Report Typos — A Full-Stack Docusaurus Component](/img/v2/docusaurus_component.webp)
+![Let Readers Flag Issues — A Multi-Type Feedback Widget for Docusaurus](/img/v2/docusaurus_component.webp)
 
 <TLDR>
-A reader spots a typo. They have no way to tell you. They move on. You look unprofessional. This article builds a complete typo-reporting feature from scratch: readers select text, a floating "✏️ Report typo?" button appears, they optionally add a comment, and the report lands in a JSON file on your server — with an email notification. The PHP API is hardened with HMAC nonces, honeypot, rate limiting, and deduplication. The React component is SSR-safe, uses a clean state machine, and stores local rate limits in `localStorage`. No database, no third-party service, no npm dependency beyond what Docusaurus already ships.
+A reader spots a problem in your article — a typo, a factual error, an outdated command. They have no way to tell you. They move on. You stay unaware. This article builds a complete, one-way feedback widget from scratch: readers select a passage, a popover appears with four issue types (typo, incorrect info, outdated content, suggestion), they optionally add details, and the report lands in a JSON file on your server with an email notification. It is explicitly one-way — no reply mechanism, no expectations created. The PHP API is hardened with HMAC nonces, honeypot, rate limiting, and deduplication. The React component is SSR-safe, uses a clean state machine, and rate-limits submissions in `localStorage`. A companion admin dashboard at `/typo-dashboard` lets you review all reports by type. No database, no third-party service, no npm dependencies beyond what Docusaurus already ships.
 </TLDR>
 
-Your blog is your public face. A stray typo costs you credibility every time someone hits that paragraph. The problem is that most readers will not bother opening a GitHub issue or sending an email. But if you make it trivially easy — one click, right where they are — a surprising number will.
+Your blog is your public face. A stray typo, a command that no longer works, an API that changed — these cost you credibility every time someone hits that paragraph. The problem is that most readers will not bother opening a GitHub issue or sending an email. But if you make it trivially easy — one click, right where they are — a surprising number will.
+
+There is one important design constraint: **this is a one-way signal**. You have no way to reply to reporters. You do not know their email. The widget makes this explicit so no one expects a response.
 
 This article builds that mechanism end to end.
 
@@ -35,9 +37,9 @@ The feature has two independent halves that mirror the pattern used by the [Reac
 
 ```
 Reader selects text
-  └─ mouseup fires on <article>
-       └─ floating button appears (phase: selected)
-            └─ reader clicks → form opens (phase: confirming)
+  └─ mouseup / touchend fires on <article>
+       └─ popover shows 4 feedback-type buttons (phase: selecting)
+            └─ reader picks a type → optional details form (phase: confirming)
                  └─ POST api/typo.php
                       └─ validates nonce, honeypot, rate limits, dedup
                            └─ writes typo-data.json
@@ -57,6 +59,9 @@ Reader selects text
 | `src/components/TypoReport/index.js` | React component |
 | `src/components/TypoReport/styles.module.css` | CSS module |
 | `src/theme/BlogPostItem/index.js` | Mount point (swizzled theme file) |
+| `src/pages/typo-dashboard.js` | Admin dashboard (token-gated) |
+| `src/pages/typo-dashboard.module.css` | Dashboard styles |
+| `src/pages/admin.js` | Add "Feedback Reports" card to admin hub |
 
 ---
 
@@ -71,12 +76,12 @@ Docusaurus produces a static site. It has no server-side runtime. If you host on
 ```
 public_html/
   api/
-    .env                   ← secrets (never committed)
-    .env.example           ← template committed to git
-    .htaccess              ← protects JSON files
-    typo.php               ← the API
-    typo-data.json         ← reports (writable by web server)
-    typo-ratelimit.json    ← counters
+    .env                    ← secrets (never committed)
+    .env.example            ← template committed to git
+    .htaccess               ← protects JSON files
+    typo.php                ← the API
+    typo-data.json          ← reports (writable by web server)
+    typo-ratelimit.json     ← counters
     typo-notifications.json ← email throttle
 ```
 
@@ -86,7 +91,7 @@ Before writing a single line, let's think through what can go wrong and how each
 
 **Layer 1 — CORS**
 
-Only `https://www.yourdomain.com` and `http://localhost:3000` (dev) are allowed as `Origin`. Any other origin gets a silent `403`. Same-origin requests carry no `Origin` header and are allowed through — they are legitimate browser navigations.
+Only `https://www.yourdomain.com` and `http://localhost:3000` (dev) are allowed as `Origin`. Any other origin gets a silent `403`. Same-origin requests carry no `Origin` header and are allowed through.
 
 **Layer 2 — Method whitelist**
 
@@ -94,7 +99,7 @@ The API only responds to `GET` (nonce + admin), `POST` (submit), and `OPTIONS` (
 
 **Layer 3 — HMAC nonce**
 
-This is the most important layer. Without it, anyone who knows your API URL can submit arbitrary reports with a simple `curl` command. The nonce is a time-keyed HMAC token:
+Without this, anyone who knows your API URL can submit arbitrary reports with a simple `curl` command. The nonce is a time-keyed HMAC token:
 
 ```php
 $nonce = hash_hmac('sha256', floor(time() / 900) . '|typo-report', NONCE_SECRET);
@@ -102,39 +107,40 @@ $nonce = hash_hmac('sha256', floor(time() / 900) . '|typo-report', NONCE_SECRET)
 
 The token is valid for the current 15-minute window and the previous one (to avoid edge-case expiry when a user fetches the nonce at minute 14 and submits at minute 15). There is no storage — the token is self-validating. Every `POST` must include this value in the body.
 
-**Layer 4 — Input validation and honeypot**
+**Layer 4 — Input validation, type whitelist, and honeypot**
 
-The honeypot is a hidden `<input name="website">` that is invisible to humans but filled in by bots. If `website !== ""`, the API returns `200 OK` without storing anything — the bot believes it succeeded.
+The honeypot is a hidden `<input name="website">` that is invisible to humans but filled in by bots. If `website !== ""`, the API returns `200 OK` without storing anything.
 
 Real input is then validated:
 
 - `slug` — alphanumeric, hyphens, slashes, max 200 chars
 - `text` — 3 to 150 chars, printable Unicode only (`\P{C}` — no control characters)
+- `type` — must be one of `typo`, `incorrect`, `outdated`, `suggestion` (any other value → 400)
 - `comment` — optional, max 300 chars, same character filter
 - `context` — optional, max 300 chars, trimmed
 
 **Layer 5 — Global rate limit**
 
-A sliding 60-second window with a max of 20 requests across all IPs. This protects against sudden bursts (e.g. a bot that found the nonce by intercepting browser traffic). The window state is stored under a `__global__` key in `typo-ratelimit.json`, updated inside a single `LOCK_EX` block.
+A sliding 60-second window with a max of 20 requests across all IPs. This protects against sudden bursts. The window state is stored under a `__global__` key in `typo-ratelimit.json`, updated inside a single `LOCK_EX` block.
 
 **Layer 6 — Per-IP rate limits**
 
-Two limits tracked independently, both stored in `typo-ratelimit.json`:
+Two limits tracked independently:
 
 - Max 10 reports per IP per rolling hour
 - Max 3 reports per IP per article per 24 hours
 
-IP addresses are never stored raw. They are hashed with a secret salt: `hash('sha256', IP_HASH_SALT . $ip)`. This is one-way — you cannot recover the original IP — but consistent, so you can aggregate across requests.
+IP addresses are never stored raw. They are hashed with a secret salt: `hash('sha256', IP_HASH_SALT . $ip)`. One-way — you cannot recover the original IP — but consistent enough to aggregate.
 
-Why `REMOTE_ADDR` and not `X-Forwarded-For`? Because on shared hosting, the `X-Forwarded-For` header can be spoofed by the client, allowing a single IP to impersonate thousands of IPs and bypass per-IP limits.
+Why `REMOTE_ADDR` and not `X-Forwarded-For`? Because on shared hosting, `X-Forwarded-For` can be spoofed by the client, allowing a single IP to impersonate thousands and bypass per-IP limits.
 
 **Layer 7 — Deduplication**
 
-A SHA-256 hash of `slug + "|" + lowercase(text)` is stored as `text_hash` on every report. Before writing, we scan the existing reports for that slug. If the hash is already present, we return `200 OK` without storing. This silently absorbs duplicate submissions (refreshed page, double-click, etc.).
+A SHA-256 hash of `slug + "|" + lowercase(text)` is stored as `text_hash` on every report. Before writing, we scan existing reports for that slug. If the hash already exists, we return `200 OK` without storing. This silently absorbs duplicate submissions.
 
 **Layer 8 — File-locked writes**
 
-PHP on shared hosting is multi-process. Two requests arriving simultaneously could both read the JSON, both modify it, and one would overwrite the other's changes. Every write uses `fopen` + `flock(LOCK_EX)` + `ftruncate` + `rewind` + `fwrite` + `flock(LOCK_UN)` + `fclose`. The rate-limit check and write happen in the same lock to avoid TOCTOU races.
+PHP on shared hosting is multi-process. Every write uses `fopen` + `flock(LOCK_EX)` + `ftruncate` + `rewind` + `fwrite` + `flock(LOCK_UN)` + `fclose`. The rate-limit check and write happen in the same lock to avoid TOCTOU races.
 
 **Layer 9 — Email throttle**
 
@@ -181,7 +187,7 @@ if ($origin !== '') {
 }
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 
-// ── Shared helpers (identical to reactions.php) ───────────────────────────────
+// ── Shared helpers ────────────────────────────────────────────────────────────
 function loadData(string $file): array {
     if (!file_exists($file)) return [];
     return json_decode(file_get_contents($file), true) ?: [];
@@ -230,13 +236,17 @@ function validateAndSanitize(array $body): array {
     if (mb_strlen($text) < 3 || mb_strlen($text) > 150
         || !preg_match('/^\P{C}+$/u', $text)) jsonError(400, 'Invalid text');
 
+    $allowedTypes = ['typo', 'incorrect', 'outdated', 'suggestion'];
+    $type = trim($body['type'] ?? '');
+    if (!in_array($type, $allowedTypes, true)) jsonError(400, 'Invalid type');
+
     $comment = trim($body['comment'] ?? '');
     if ($comment !== '' && (mb_strlen($comment) > 300
         || !preg_match('/^\P{C}+$/u', $comment))) jsonError(400, 'Invalid comment');
 
     $context = mb_substr(trim($body['context'] ?? ''), 0, 300);
 
-    return compact('slug', 'text', 'comment', 'context');
+    return compact('slug', 'text', 'type', 'comment', 'context');
 }
 
 // ── Rate limiting ─────────────────────────────────────────────────────────────
@@ -247,23 +257,20 @@ function checkRateLimits(string $slug): void {
     $now   = time();
 
     $fp = fopen($file, 'c+');
-    if (!$fp || !flock($fp, LOCK_EX)) { fclose($fp); return; }
+    if (!$fp || !flock($fp, LOCK_EX)) { if ($fp) fclose($fp); return; }
 
     $raw  = stream_get_contents($fp);
     $data = $raw !== '' ? (json_decode($raw, true) ?: []) : [];
 
-    // Global sliding window
     $g = $data['__global__'] ?? ['window_start' => $now, 'count' => 0];
     if ($now - $g['window_start'] > GLOBAL_WINDOW) $g = ['window_start' => $now, 'count' => 0];
     if (++$g['count'] > GLOBAL_MAX) { flock($fp, LOCK_UN); fclose($fp); jsonError(429, 'Too many requests'); }
     $data['__global__'] = $g;
 
-    // Per-IP hourly
     $ipData = $data[$ipKey] ?? ['hourly' => [], 'articles' => []];
     $ipData['hourly'] = array_values(array_filter($ipData['hourly'], fn($ts) => $ts > $now - 3600));
     if (count($ipData['hourly']) >= IP_HOURLY_MAX) { flock($fp, LOCK_UN); fclose($fp); jsonError(429, 'Too many requests'); }
 
-    // Per-IP per-article (24h)
     $artKey  = $ipKey . '|' . $slug;
     $artData = array_values(array_filter($data[$artKey] ?? [], fn($ts) => $ts > $now - 86400));
     if (count($artData) >= IP_ARTICLE_MAX) { flock($fp, LOCK_UN); fclose($fp); jsonError(429, 'Too many requests'); }
@@ -287,20 +294,23 @@ function isDuplicate(string $slug, string $text): bool {
     return false;
 }
 
-function storeReport(array $f): void {
-    $ip   = $_SERVER['REMOTE_ADDR'] ?? '';
-    $data = loadData(__DIR__ . '/typo-data.json');
-    $fp   = fopen(__DIR__ . '/typo-data.json', 'c+');
+function storeReport(array $fields): void {
+    ['slug' => $slug, 'text' => $text, 'type' => $type,
+     'comment' => $comment, 'context' => $context] = $fields;
+
+    $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+    $fp = fopen(__DIR__ . '/typo-data.json', 'c+');
     if (!$fp) return;
     if (flock($fp, LOCK_EX)) {
         $raw  = stream_get_contents($fp);
         $data = $raw !== '' ? (json_decode($raw, true) ?: []) : [];
-        $data[$f['slug']][] = [
+        $data[$slug][] = [
             'id'        => bin2hex(random_bytes(6)),
-            'text'      => $f['text'],
-            'text_hash' => hash('sha256', $f['slug'] . '|' . mb_strtolower($f['text'])),
-            'context'   => $f['context'],
-            'comment'   => $f['comment'],
+            'type'      => $type,
+            'text'      => $text,
+            'text_hash' => hash('sha256', $slug . '|' . mb_strtolower($text)),
+            'context'   => $context,
+            'comment'   => $comment,
             'ts'        => time(),
             'ip_hash'   => hash('sha256', IP_HASH_SALT . $ip),
         ];
@@ -311,13 +321,29 @@ function storeReport(array $f): void {
     fclose($fp);
 }
 
-function maybeNotifyTypo(string $slug, string $text): void {
-    $file    = __DIR__ . '/typo-notifications.json';
+function maybeNotifyTypo(string $slug, string $text, string $type): void {
+    $file     = __DIR__ . '/typo-notifications.json';
     $throttle = loadData($file);
     if (time() - ($throttle[$slug] ?? 0) < NOTIFY_COOLDOWN_SECONDS) return;
 
-    $subject = "[Blog] Typo report on: $slug";
-    $body    = "Article: " . SITE_URL . "/$slug\nText: $text";
+    $typeLabels = [
+        'typo'       => '🔤 Typo',
+        'incorrect'  => '❌ Incorrect info',
+        'outdated'   => '⏰ Outdated content',
+        'suggestion' => '💡 Suggestion',
+    ];
+    $typeLabel  = $typeLabels[$type] ?? $type;
+    $articleUrl = SITE_URL . '/' . $slug;
+    $subject    = "[Blog] Feedback ($type) on: $slug";
+    $body       = implode("\n", [
+        "A reader flagged an issue.",
+        "",
+        "Article : $articleUrl",
+        "Type    : $typeLabel",
+        "Text    : $text",
+        "",
+        "Review all reports: GET " . SITE_URL . "/api/typo.php?admin=TOKEN",
+    ]);
     $headers = "From: noreply@yourdomain.com\r\nContent-Type: text/plain; charset=utf-8";
 
     if (@mail(ADMIN_EMAIL, $subject, $body, $headers)) {
@@ -344,12 +370,12 @@ if ($method === 'GET') {
 
 if ($method !== 'POST') jsonError(405, 'Method not allowed');
 
-$body   = json_decode(file_get_contents('php://input'), true) ?? [];
-$nonce  = $body['nonce'] ?? '';
+$body  = json_decode(file_get_contents('php://input'), true) ?? [];
+$nonce = $body['nonce'] ?? '';
 if ($nonce === '' || !validateNonce($nonce)) jsonError(403, 'Invalid nonce');
 
 $fields = validateAndSanitize($body);
-if ($fields === []) { echo json_encode(['ok' => true]); exit; } // honeypot hit
+if ($fields === []) { echo json_encode(['ok' => true]); exit; }
 
 ['slug' => $slug, 'text' => $text] = $fields;
 
@@ -358,17 +384,16 @@ checkRateLimits($slug);
 if (isDuplicate($slug, $text)) { echo json_encode(['ok' => true]); exit; }
 
 storeReport($fields);
-maybeNotifyTypo($slug, $text);
+maybeNotifyTypo($slug, $text, $fields['type']);
 
 echo json_encode(['ok' => true]);
 ```
 
 ### Protect the JSON files
 
-Add this to `api/.htaccess` (or extend the existing `FilesMatch` block if you have one):
+Add to `api/.htaccess`:
 
 ```apache
-# Disable directory listing
 Options -Indexes
 
 <FilesMatch "^(typo-data\.json|typo-ratelimit\.json|typo-notifications\.json)$">
@@ -380,7 +405,7 @@ Without this, anyone can `GET https://yourdomain.com/api/typo-data.json` and rea
 
 ### Environment variables
 
-Add to `api/.env.example` (and set real values in `api/.env` on the server):
+Add to `api/.env.example`:
 
 ```ini
 ADMIN_EMAIL=your_email@example.com
@@ -406,31 +431,31 @@ Docusaurus renders pages server-side (Node.js) before hydrating them in the brow
 
 The rules:
 1. All DOM access goes inside `useEffect` — it only runs in the browser.
-2. State is initialized to `null` or `"idle"`, not to a value read from the browser.
+2. State is initialized to `"idle"`, not a value read from the browser.
 3. The component returns `null` when idle — no DOM, no SSR mismatch.
 
 ### State machine
 
-Five phases, linear with one fork:
+Six phases, linear with one fork:
 
 ```
 idle
-  └─ user selects text → selected
-       └─ user clicks button → confirming
+  └─ user selects text → selecting
+       └─ user picks a feedback type → confirming
             └─ form submitted → submitting
                  ├─ success → done
                  └─ error   → error
 ```
 
-Both `done` and `error` show a dismissible badge that resets to `idle`. Both `selected` and `confirming` reset to `idle` if the user clicks outside the tooltip.
+`done` and `error` show a dismissible badge that resets to `idle`. `selecting` and `confirming` reset to `idle` if the user clicks outside the popover. `confirming` has a "change" link that goes back to `selecting`.
 
 ### localStorage helpers
 
-Before the form ever opens, two client-side guards run:
+Before the type-selection popover appears, two client-side guards run:
 
 1. **Rate limit** — max 5 submissions per browser per hour. Timestamps are stored as a JSON array in `localStorage` under `"typo_reports"`. Entries older than 24 hours are pruned on every write.
 
-2. **Deduplication** — a FNV-1a hash of `slug + "|" + lowercase(text)` is stored alongside the timestamp. If the same text was already reported from this browser, the component skips straight to `done` (silent accept, no network request).
+2. **Deduplication** — a FNV-1a hash of `slug + "|" + lowercase(text)` is stored alongside the timestamp. If the same text was already reported from this browser (regardless of type), the component skips straight to `done`.
 
 FNV-1a is used instead of `crypto.subtle.digest` because it is synchronous and the collision risk is acceptable for this use case.
 
@@ -445,6 +470,21 @@ function fnv1a(str) {
 }
 ```
 
+### Feedback types
+
+Four types cover the vast majority of issues readers might notice:
+
+```js
+const FEEDBACK_TYPES = [
+  { id: "typo",       icon: "🔤", label: "Typo" },
+  { id: "incorrect",  icon: "❌", label: "Incorrect" },
+  { id: "outdated",   icon: "⏰", label: "Outdated" },
+  { id: "suggestion", icon: "💡", label: "Suggestion" },
+];
+```
+
+They are displayed in a 2×2 grid. The PHP API validates the `type` field against this same whitelist — any other value gets a 400.
+
 ### Capturing context
 
 When the user selects text, the component records ±100 characters of surrounding text from `article.innerText`. This context is sent to the API so you can locate the exact sentence without opening the post:
@@ -452,14 +492,14 @@ When the user selects text, the component records ±100 characters of surroundin
 ```js
 const fullText = article.innerText || "";
 const idx = fullText.indexOf(text);
-if (idx !== -1) {
-  contextRef.current = fullText.slice(Math.max(0, idx - 100), idx + text.length + 100);
-}
+contextRef.current = idx !== -1
+  ? fullText.slice(Math.max(0, idx - 100), idx + text.length + 100)
+  : "";
 ```
 
 ### Tooltip positioning
 
-The tooltip appears just below the selection. `window.scrollY + rect.bottom + 8` puts it 8px below the selected text's bottom edge. To prevent the 280px-wide form from overflowing the right edge of the viewport, the left position is clamped:
+The popover appears just below the selection. `window.scrollY + rect.bottom + 8` puts it 8px below the selected text's bottom edge. To prevent the 280px-wide form from overflowing the right edge of the viewport:
 
 ```js
 const left = Math.min(window.scrollX + rect.left, window.innerWidth - 296);
@@ -475,9 +515,15 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 
-// ── LocalStorage helpers ───────────────────────────────────────────────────────
 const STORAGE_KEY = "typo_reports";
 const MAX_PER_HOUR = 5;
+
+const FEEDBACK_TYPES = [
+  { id: "typo",       icon: "🔤", label: "Typo" },
+  { id: "incorrect",  icon: "❌", label: "Incorrect" },
+  { id: "outdated",   icon: "⏰", label: "Outdated" },
+  { id: "suggestion", icon: "💡", label: "Suggestion" },
+];
 
 function fnv1a(str) {
   let hash = 0x811c9dc5;
@@ -499,30 +545,30 @@ function isLocalRateLimited() {
 }
 
 function isLocalDuplicate(slug, text) {
-  return getStored().some((r) => r.hash === fnv1a(slug + "|" + text.toLowerCase()));
+  const hash = fnv1a(slug + "|" + text.toLowerCase());
+  return getStored().some((r) => r.hash === hash);
 }
 
 function recordLocalSubmission(slug, text) {
   const now = Date.now();
+  const hash = fnv1a(slug + "|" + text.toLowerCase());
   const pruned = getStored().filter((r) => r.ts > now - 86_400_000);
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify([
-      ...pruned,
-      { ts: now, hash: fnv1a(slug + "|" + text.toLowerCase()) }
-    ]));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([...pruned, { ts: now, hash }]));
   } catch {}
 }
 
-// ── Component ─────────────────────────────────────────────────────────────────
 export default function TypoReport({ metadata }) {
   const { siteConfig } = useDocusaurusContext();
   const slug   = metadata?.permalink?.replace(/^\/|\/$/g, "") ?? "";
   const apiUrl = `${siteConfig.url}/api/typo.php`;
 
-  const [phase, setPhase]           = useState("idle");
+  // State machine: idle → selecting → confirming → submitting → done | error
+  const [phase, setPhase]               = useState("idle");
   const [selectedText, setSelectedText] = useState("");
-  const [tooltipPos, setTooltipPos] = useState({ top: 0, left: 0 });
-  const [comment, setComment]       = useState("");
+  const [tooltipPos, setTooltipPos]     = useState({ top: 0, left: 0 });
+  const [feedbackType, setFeedbackType] = useState("");
+  const [comment, setComment]           = useState("");
 
   const nonceRef   = useRef(null);
   const wrapperRef = useRef(null);
@@ -531,7 +577,6 @@ export default function TypoReport({ metadata }) {
   useEffect(() => {
     if (!slug) return;
 
-    // Prefetch nonce so it is ready when the user submits.
     fetch(`${apiUrl}?nonce`)
       .then((r) => r.ok ? r.json() : null)
       .then((d) => { if (d?.nonce) nonceRef.current = d.nonce; })
@@ -541,7 +586,7 @@ export default function TypoReport({ metadata }) {
       || document.querySelector(".theme-doc-markdown");
     if (!article) return;
 
-    function handleMouseUp() {
+    function handleSelection() {
       const sel = window.getSelection();
       if (!sel || sel.isCollapsed) return;
       const text = sel.toString().trim();
@@ -550,9 +595,9 @@ export default function TypoReport({ metadata }) {
       const range = sel.getRangeAt(0);
       if (!article.contains(range.commonAncestorContainer)) return;
 
-      const rect    = range.getBoundingClientRect();
+      const rect     = range.getBoundingClientRect();
       const fullText = article.innerText || "";
-      const idx     = fullText.indexOf(text);
+      const idx      = fullText.indexOf(text);
       contextRef.current = idx !== -1
         ? fullText.slice(Math.max(0, idx - 100), idx + text.length + 100)
         : "";
@@ -562,7 +607,7 @@ export default function TypoReport({ metadata }) {
         top:  window.scrollY + rect.bottom + 8,
         left: Math.min(window.scrollX + rect.left, window.innerWidth - 296),
       });
-      setPhase("selected");
+      setPhase("selecting");
     }
 
     function handleMouseDown(e) {
@@ -571,17 +616,20 @@ export default function TypoReport({ metadata }) {
       }
     }
 
-    article.addEventListener("mouseup", handleMouseUp);
+    article.addEventListener("mouseup", handleSelection);
+    article.addEventListener("touchend", handleSelection);
     document.addEventListener("mousedown", handleMouseDown);
     return () => {
-      article.removeEventListener("mouseup", handleMouseUp);
+      article.removeEventListener("mouseup", handleSelection);
+      article.removeEventListener("touchend", handleSelection);
       document.removeEventListener("mousedown", handleMouseDown);
     };
   }, [slug, apiUrl]);
 
-  const handleOpen = useCallback(() => {
+  const handleTypeSelect = useCallback((type) => {
     if (isLocalRateLimited()) { setPhase("error"); return; }
     if (isLocalDuplicate(slug, selectedText)) { setPhase("done"); return; }
+    setFeedbackType(type);
     setComment("");
     setPhase("confirming");
   }, [slug, selectedText]);
@@ -590,7 +638,6 @@ export default function TypoReport({ metadata }) {
     e.preventDefault();
     setPhase("submitting");
 
-    // Re-fetch nonce if expired or missing.
     let nonce = nonceRef.current;
     if (!nonce) {
       try {
@@ -608,6 +655,7 @@ export default function TypoReport({ metadata }) {
         body: JSON.stringify({
           slug,
           text:    selectedText,
+          type:    feedbackType,
           comment,
           context: contextRef.current,
           website: e.target.elements["website"]?.value ?? "",
@@ -620,9 +668,15 @@ export default function TypoReport({ metadata }) {
     } catch {
       setPhase("error");
     }
-  }, [slug, selectedText, comment, apiUrl]);
+  }, [slug, selectedText, feedbackType, comment, apiUrl]);
+
+  const handleBack    = useCallback(() => setPhase("selecting"), []);
+  const handleCancel  = useCallback(() => setPhase("idle"), []);
+  const handleDismiss = useCallback(() => setPhase("idle"), []);
 
   if (phase === "idle") return null;
+
+  const typeInfo = FEEDBACK_TYPES.find((t) => t.id === feedbackType);
 
   return (
     <div
@@ -630,10 +684,23 @@ export default function TypoReport({ metadata }) {
       className={styles.wrapper}
       style={{ top: tooltipPos.top, left: tooltipPos.left }}
     >
-      {phase === "selected" && (
-        <button className={styles.triggerBtn} onClick={handleOpen}>
-          ✏️ Report typo?
-        </button>
+      {phase === "selecting" && (
+        <div className={styles.typeCard}>
+          <p className={styles.typePrompt}>What kind of issue?</p>
+          <div className={styles.typeGrid}>
+            {FEEDBACK_TYPES.map(({ id, icon, label }) => (
+              <button
+                key={id}
+                className={styles.typeBtn}
+                onClick={() => handleTypeSelect(id)}
+              >
+                <span className={styles.typeIcon}>{icon}</span>
+                <span>{label}</span>
+              </button>
+            ))}
+          </div>
+          <button className={styles.cancelSmall} onClick={handleCancel}>Cancel</button>
+        </div>
       )}
 
       {phase === "confirming" && (
@@ -641,19 +708,28 @@ export default function TypoReport({ metadata }) {
           <div className={styles.selectedPreview}>
             "{selectedText.length > 80 ? selectedText.slice(0, 80) + "…" : selectedText}"
           </div>
+          {typeInfo && (
+            <div className={styles.typeBadge}>
+              {typeInfo.icon} {typeInfo.label}
+              <button type="button" className={styles.changeTypeBtn} onClick={handleBack}>
+                change
+              </button>
+            </div>
+          )}
           <textarea
             className={styles.commentInput}
-            placeholder="Optional comment (max 300 chars)"
+            placeholder="Optional details (max 300 chars)"
             maxLength={300}
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
-          {/* Honeypot — invisible to humans, filled by bots */}
-          <input name="website" className={styles.honeypot} tabIndex={-1} autoComplete="off" defaultValue="" />
+          <input name="website" className={styles.honeypot}
+            tabIndex={-1} autoComplete="off" defaultValue="" />
           <div className={styles.actions}>
             <button type="submit" className={styles.btnPrimary}>Send</button>
-            <button type="button" className={styles.btnSecondary} onClick={() => setPhase("idle")}>Cancel</button>
+            <button type="button" className={styles.btnSecondary} onClick={handleCancel}>Cancel</button>
           </div>
+          <p className={styles.disclaimer}>One-way signal — no reply will be sent.</p>
         </form>
       )}
 
@@ -661,15 +737,15 @@ export default function TypoReport({ metadata }) {
 
       {phase === "done" && (
         <div className={styles.status}>
-          Thanks! ✓
-          <button className={styles.dismissBtn} onClick={() => setPhase("idle")} aria-label="Dismiss">✕</button>
+          Thanks for the feedback! ✓
+          <button className={styles.dismissBtn} onClick={handleDismiss} aria-label="Dismiss">✕</button>
         </div>
       )}
 
       {phase === "error" && (
         <div className={styles.statusError}>
           Could not send.
-          <button className={styles.dismissBtn} onClick={() => setPhase("idle")} aria-label="Dismiss">✕</button>
+          <button className={styles.dismissBtn} onClick={handleDismiss} aria-label="Dismiss">✕</button>
         </div>
       )}
     </div>
@@ -680,6 +756,12 @@ TypoReport.propTypes = {
   metadata: PropTypes.shape({ permalink: PropTypes.string }).isRequired,
 };
 ```
+
+Three things worth noting:
+
+- `touchend` is registered alongside `mouseup` so the widget works on touch devices.
+- `handleTypeSelect` runs the rate-limit and dedup checks when the type is chosen, not on selection — this avoids burning a rate-limit slot when the user just selects text to copy.
+- The `disclaimer` paragraph ("One-way signal — no reply will be sent") is intentional: readers should not expect a response, and making that explicit prevents frustration.
 
 ---
 
@@ -694,21 +776,69 @@ Create `src/components/TypoReport/styles.module.css`:
   max-width: 280px;
 }
 
-.triggerBtn {
-  padding: 6px 12px;
-  background: var(--ifm-color-primary);
-  color: #fff;
-  border: none;
+/* ── Type selection card ── */
+.typeCard {
+  width: 250px;
+  padding: 10px 12px 8px;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.typePrompt {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-700);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.typeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.typeBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
   border-radius: 6px;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  white-space: nowrap;
-  transition: background 0.15s;
+  color: var(--ifm-font-color-base);
+  transition: background 0.12s, border-color 0.12s;
 }
-.triggerBtn:hover { background: var(--ifm-color-primary-dark); }
 
+.typeBtn:hover {
+  background: var(--ifm-color-primary-lightest, #e8f4ff);
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary-dark);
+}
+
+.typeIcon { font-size: 1rem; line-height: 1; }
+
+.cancelSmall {
+  align-self: center;
+  background: transparent;
+  border: none;
+  font-size: 0.75rem;
+  color: var(--ifm-color-emphasis-500);
+  cursor: pointer;
+  padding: 0;
+}
+.cancelSmall:hover { color: var(--ifm-color-emphasis-800); }
+
+/* ── Confirming form ── */
 .form {
   width: 280px;
   padding: 12px;
@@ -732,9 +862,35 @@ Create `src/components/TypoReport/styles.module.css`:
   word-break: break-word;
 }
 
+.typeBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary-dark);
+  background: var(--ifm-color-primary-lightest, #e8f4ff);
+  border: 1px solid var(--ifm-color-primary-light);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+.changeTypeBtn {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--ifm-color-emphasis-600);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+.changeTypeBtn:hover { color: var(--ifm-color-emphasis-900); }
+
 .commentInput {
   width: 100%;
-  min-height: 60px;
+  min-height: 56px;
   resize: vertical;
   padding: 6px 8px;
   font-size: 0.82rem;
@@ -779,6 +935,14 @@ Create `src/components/TypoReport/styles.module.css`:
   cursor: pointer;
 }
 
+.disclaimer {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--ifm-color-emphasis-500);
+  text-align: center;
+}
+
+/* ── Status badges ── */
 .status, .statusError {
   display: flex;
   align-items: center;
@@ -804,14 +968,17 @@ Create `src/components/TypoReport/styles.module.css`:
 }
 .dismissBtn:hover { opacity: 1; }
 
-/* Dark mode */
-[data-theme="dark"] .form      { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); }
+/* ── Dark mode ── */
+[data-theme="dark"] .typeCard,
+[data-theme="dark"] .form        { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); }
+[data-theme="dark"] .typeBtn     { background: var(--ifm-color-emphasis-200); }
+[data-theme="dark"] .typeBtn:hover { background: var(--ifm-color-emphasis-300); }
 [data-theme="dark"] .selectedPreview { background: var(--ifm-color-emphasis-200); }
 [data-theme="dark"] .status      { background: #1a3d2a; color: #6fcf97; }
 [data-theme="dark"] .statusError { background: #3d1a1a; color: #eb5757; }
 ```
 
-The CSS uses Docusaurus CSS custom properties exclusively (`--ifm-*`) so it adapts automatically to any theme — no hardcoded colors except the dark mode overrides.
+The CSS uses Docusaurus `--ifm-*` custom properties throughout so it adapts to any theme automatically.
 
 ---
 
@@ -823,7 +990,7 @@ This is where Docusaurus swizzling comes in. Rather than modifying the upstream 
 yarn swizzle @docusaurus/theme-classic BlogPostItem --wrap
 ```
 
-This creates `src/theme/BlogPostItem/index.js`. Open it and add the import and the component:
+This creates `src/theme/BlogPostItem/index.js`. Open it and add:
 
 ```js
 // existing imports…
@@ -841,10 +1008,7 @@ export default function BlogPostItem({ children, className }) {
         <BlogPostItemFooter />
 
         {isBlogPostPage && (
-          <>
-            <TypoReport metadata={metadata} />   {/* ← new */}
-            {/* your other post-page components */}
-          </>
+          <TypoReport metadata={metadata} />
         )}
       </BlogPostItemContainer>
     </>
@@ -852,20 +1016,41 @@ export default function BlogPostItem({ children, className }) {
 }
 ```
 
-The `isBlogPostPage` guard is critical — without it, the component would also mount on the blog list page, where there is no article element and the `mouseup` listener would silently do nothing (best case) or throw (worst case).
+The `isBlogPostPage` guard is critical — without it, the component would also mount on the blog list page, where there is no article element.
 
 ---
 
-## Part 5 — Deployment
+## Part 5 — The admin dashboard
+
+The PHP admin endpoint (`GET ?admin=TOKEN`) returns raw JSON. Rather than reading that raw response, a small React page at `/typo-dashboard` presents it in a readable format.
+
+The dashboard is token-gated: it reuses the same `reactions_admin_token` key in `localStorage` so you only authenticate once across both dashboards.
+
+Add to the `TOOLS` array in `src/pages/admin.js`:
+
+```js
+{
+  icon: "🔤",
+  title: "Feedback Reports",
+  description: "Reader-flagged issues — typos, incorrect info, outdated content, suggestions.",
+  href: "/typo-dashboard",
+  accent: "#e07b00",
+},
+```
+
+Create `src/pages/typo-dashboard.js` — the structure follows the same pattern as `reactions-dashboard.js`: token form, fetch from API, display. The page flattens all per-slug report arrays into a single list sorted newest-first, and shows summary counters by type at the top.
+
+---
+
+## Part 6 — Deployment
 
 ### PHP version requirement
 
 The API uses:
 - `declare(strict_types=1)` — PHP 7.0+
 - `never` return type on `jsonError()` — **PHP 8.1+**
-- Named arguments via `compact()` — PHP 5.3+
 
-Make sure your server runs PHP 8.1 or newer. Check with:
+Make sure your server runs PHP 8.1 or newer:
 
 ```bash
 php -v
@@ -873,7 +1058,7 @@ php -v
 
 ### File permissions
 
-The three JSON files must be writable by the web server process. On most shared hosting:
+The three JSON files must be writable by the web server process:
 
 ```bash
 chmod 664 api/typo-data.json api/typo-ratelimit.json api/typo-notifications.json
@@ -890,22 +1075,28 @@ NONCE=$(curl -s "https://yourdomain.com/api/typo.php?nonce" | jq -r .nonce)
 # 2. Submit a test report
 curl -s -X POST "https://yourdomain.com/api/typo.php" \
   -H "Content-Type: application/json" \
-  -d "{\"slug\":\"test/smoke\",\"text\":\"hello world\",\"comment\":\"\",\"context\":\"\",\"website\":\"\",\"nonce\":\"$NONCE\"}"
+  -d "{\"slug\":\"test/smoke\",\"text\":\"hello world\",\"type\":\"typo\",\"comment\":\"\",\"context\":\"\",\"website\":\"\",\"nonce\":\"$NONCE\"}"
 # → {"ok":true}
 
 # 3. Confirm the admin endpoint
 curl -s "https://yourdomain.com/api/typo.php?admin=YOUR_TOKEN" | jq .
-# → {"test/smoke": [...]}
+# → {"test/smoke": [{"type":"typo",...}]}
 
 # 4. Confirm .htaccess is protecting the file
 curl -I "https://yourdomain.com/api/typo-data.json"
 # → HTTP/1.1 403 Forbidden
 
-# 5. Confirm POST without nonce is rejected
+# 5. Confirm POST without a nonce is rejected
 curl -s -X POST "https://yourdomain.com/api/typo.php" \
   -H "Content-Type: application/json" \
-  -d '{"slug":"test","text":"hello world","comment":"","context":"","website":""}'
+  -d '{"slug":"test","text":"hello world","type":"typo","comment":"","context":"","website":""}'
 # → {"error":"Invalid nonce"}
+
+# 6. Confirm an invalid type is rejected
+curl -s -X POST "https://yourdomain.com/api/typo.php" \
+  -H "Content-Type: application/json" \
+  -d "{\"slug\":\"test\",\"text\":\"hello world\",\"type\":\"question\",\"comment\":\"\",\"context\":\"\",\"website\":\"\",\"nonce\":\"$NONCE\"}"
+# → {"error":"Invalid type"}
 ```
 
 Clean up after testing:
@@ -920,32 +1111,28 @@ echo '{}' > api/typo-notifications.json
 
 ## Known limitations
 
-**Mobile / touch devices**
-
-`mouseup` does not fire reliably on touch screens. The feature is silently absent on mobile. This is an acceptable trade-off: touch selection is awkward for text, and the typical person who bothers reporting a typo is at a desk. A future iteration could add a `touchend` listener.
-
-**Tooltip overflow on the right edge**
+**Tooltip overflow on the left edge**
 
 The `Math.min(left, window.innerWidth - 296)` clamp prevents the 280px-wide form from going off-screen on the right. A left overflow (selection near the left edge of very narrow viewports) is not clamped — it is rare enough to leave as a follow-up.
 
-**No dashboard UI**
-
-The admin endpoint (`GET ?admin=TOKEN`) returns raw JSON. Building a `/typo-dashboard` React page — a table with article slug, selected text, comment, timestamp — follows the exact same pattern as a reactions dashboard and can be added later without touching any of the code written here.
-
 **Shared hosting NAT**
 
-Users behind the same NAT (e.g. office WiFi) share the same `REMOTE_ADDR`. If three different people from the same office report typos on the same article within 24 hours, the fourth will be rate-limited. This is an acceptable trade-off given the shared-hosting constraint.
+Users behind the same NAT (e.g. office WiFi) share the same `REMOTE_ADDR`. If three different people from the same office report issues on the same article within 24 hours, the fourth will be rate-limited. This is an acceptable trade-off given the shared-hosting constraint.
 
 ---
 
 ## Summary
 
-In about 300 lines of PHP and 150 lines of React (plus CSS), you have a complete typo-reporting system:
+In about 350 lines of PHP and 200 lines of React (plus CSS), you have a complete reader-feedback system:
 
 - **Zero new dependencies** — PHP's standard library, React hooks you already use
 - **No database** — file-locked JSON writes, safe under concurrent load
-- **Defense in depth** — CORS, HMAC nonce, honeypot, global rate limit, per-IP rate limit, deduplication, all independently effective
+- **Defense in depth** — CORS, HMAC nonce, type whitelist, honeypot, global rate limit, per-IP rate limit, deduplication, all independently effective
+- **Four feedback types** — typo, incorrect info, outdated content, suggestion — covering the realistic space of issues a reader can spot
+- **One-way by design** — the disclaimer is part of the UI; no reader expects a reply
+- **Mobile-ready** — `touchend` alongside `mouseup`
 - **SSR-safe** — returns `null` until the browser loads, no hydration mismatch
 - **Dark mode ready** — Docusaurus CSS variables do the work
+- **Admin dashboard** — `/typo-dashboard` shows all reports sorted newest-first with type badges
 
-The architecture is deliberately simple. Every piece can be understood, debugged, and modified by reading the file. There is no framework magic to unravel when something goes wrong at 2 AM.
+The architecture is deliberately simple. Every piece can be understood, debugged, and modified by reading the file.

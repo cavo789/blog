@@ -71,12 +71,12 @@ We've the following line:
 This tells Docker to share (mount) our local `${HOME}/.gitconfig` file (i.e. our configuration file) with the container. Since, in this example, we're running the container as root, we need to put `/root/.gitconfig` as the target.
 
 <AlertBox variant="info" title="">
-If you don't know yet what is this file, just type `cat ${HOME}/.gitconfig` in the console to see his content; its your git configuration settings.
+If you don't know yet what is this file, just type `cat ${HOME}/.gitconfig` in the console to see its content; it's your git configuration settings.
 
 </AlertBox>
 
 
-Let's check if it works still in the console inside the container, please run `git config list` in your container's shell. You'll see the same configuration you've on your host machine. The sharing as worked as expected.
+Let's check if it works still in the console inside the container, please run `git config --list` in your container's shell. You'll see the same configuration you've on your host machine. The sharing has worked as expected.
 
 <AlertBox variant="caution" title="">
 In case, for instance, your container is running as `john_doe`, the line has to be `- ${HOME}/.gitconfig:/home/john_doe/.gitconfig` in the yaml file.

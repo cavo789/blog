@@ -105,7 +105,7 @@ docker run --detach -v ./tests:/var/www/html/tests --name demo_pest pestphp
 
 And, last thing to do, once the container has been created, you can run all tests by just running `make start`.
 
-I've **intentionnaly** create an error to illustrate some nice feature:
+I've **intentionally** created an error to illustrate some nice feature:
 
 <Terminal typewriter>
 $ make start
@@ -194,7 +194,7 @@ Congratulations, we've just tested 10 features in less than 26 seconds.
 ## In-depth
 
 * Pest is using [playwright](https://pestphp.com/docs/browser-testing#content-getting-started); this is why our Dockerfile is more complex because we should also install NodeJS,
-* Something really cooooool: we don't need to `wait_for` something change on the page, Pest will do it for us. For instance, with CyPress and Behat, when we click on a button, we have to wait that f.i. the Ajax script on that page has been fired and the `DOM element` has been loaded. With Pest, we shouldn't care about this and that's an amazing feature!
+* Something really cooooool: we don't need to `wait_for` something change on the page, Pest will do it for us. For instance, with Cypress and Behat, when we click on a button, we have to wait that f.i. the Ajax script on that page has been fired and the `DOM element` has been loaded. With Pest, we shouldn't care about this and that's an amazing feature!
 * We also have to create a specific user in the Docker image to match our local one. This because when a test will fail, Pest (running in Docker) will create an image and that one should be created on our host machine with our UID/GID,
 * The `make up` action defined in the `makefile` is mounting our local `tests` folder in the container. It means that if we create new tests files or update existing ones, they will be immediately synchronized with the running container; nothing special to do here,
 * To reduce the need for configuration files, a `WEBSITE` operating system variable has been defined (see the `makefile`). That variable will be created in the container. A PHP script will then refer to the variable like this `getenv('WEBSITE')`.

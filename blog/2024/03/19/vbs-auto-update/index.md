@@ -26,7 +26,7 @@ Do you think it would be possible to offer an auto-update function in such scrip
 
 Imagine a script called `get_folder_size.vbs` you've publicly saved on Github (source [https://github.com/cavo789/vbs_utilities/blob/master/src/folders/get_folder_size/get_folder_size.vbs](https://github.com/cavo789/vbs_utilities/blob/master/src/folders/get_folder_size/get_folder_size.vbs)).
 
-Someone download it his computer and enjoy using it.
+Someone downloads it to their computer and enjoys using it.
 
 By adding to it a new *auto-update* function, each time the script will be started, first, a connection to Github will be made, download the script from there and a check will be made if the downloaded version is different and, if so, the script will be overridden.
 

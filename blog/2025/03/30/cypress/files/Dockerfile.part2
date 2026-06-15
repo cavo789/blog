@@ -16,7 +16,7 @@ ARG USER_NAME
 
 # Our user will be member of the standard node group too
 RUN groupadd -g ${GROUP_ID} "${USER_NAME}" && \
-    useradd -u ${USER_ID} -g "${USER_NAME}" -g node -m "${USER_NAME}"
+    useradd -u ${USER_ID} -g "${USER_NAME}" -G node -m "${USER_NAME}"
 
 # Change the ownership of our /app folder
 RUN chown -R "${USER_NAME}":"${USER_NAME}" /app

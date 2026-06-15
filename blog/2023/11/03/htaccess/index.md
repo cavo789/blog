@@ -52,7 +52,7 @@ Block access to a file or folder when the name starts with a dot (i.e., a hidden
 
 ## Force
 
-### Force download
+### Force display
 
 Don't allow the browser to download such files but tell it how to display them (text in the example):
 
@@ -76,7 +76,7 @@ Also, test your site with [https://hstspreload.org/](https://hstspreload.org/) t
 
 ### Disable error reporting
 
-Don't show errors (just like `error_reporting = E_NONE` does)
+Don't show errors (just like `error_reporting(0)` does)
 
 <Snippet filename=".htaccess" source="./files/.part9.htaccess" />
 

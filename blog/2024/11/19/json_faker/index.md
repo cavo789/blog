@@ -43,7 +43,7 @@ Continue your reading with the official Faker documentation: [https://faker.read
 
 ## Using Mockaroo.com
 
-The [https://www.mockaroo.com/](https://www.mockaroo.com/) website allows you to create, for free (to access certain functions, you will need to create a free account).
+The [https://www.mockaroo.com/](https://www.mockaroo.com/) website allows you to create fake data for free (to access certain functions, you will need to create a free account).
 
 ![Using Mockaroo](./images/mockaroo.webp)
 

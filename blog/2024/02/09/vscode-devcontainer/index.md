@@ -148,7 +148,7 @@ Now the magic happens: please reopen the so badly formatted `index.php` file and
 ![Your script has been correctly formatted this time](./images/index_php_correctly_formatted.webp)
 
 <AlertBox variant="info" title="How is this possible?">
-This because we taught VSCode to use a specific formatter for our PHP file and we told him to format the file each time it's saved. And do you know where we did it? In our `.devcontainer/devcontainers.json` and `.devcontainer/Dockerfile` files, of course!
+This because we taught VSCode to use a specific formatter for our PHP file and we told him to format the file each time it's saved. And do you know where we did it? In our `.devcontainer/devcontainer.json` and `.devcontainer/Dockerfile` files, of course!
 
 **This is why we're working in a Devcontainer!** We've done the configuration once and for all, so all we have to do is reuse it, whatever the PHP project.
 

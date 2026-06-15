@@ -21,7 +21,7 @@ I use [https://patorjk.com/software/taag](https://patorjk.com/software/taag) to 
 
 <!-- truncate -->
 
-On my hand, I'm implementing the banner like this:
+For my part, I'm implementing the banner like this:
 
 <Snippet filename="script.sh" source="./files/script.sh" />
 

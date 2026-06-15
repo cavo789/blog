@@ -42,7 +42,7 @@ If, like me, you didn't see any progression on the screen, think to click on the
 
 You'll need to get the ISO of Ubuntu; just go to [https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image](https://ubuntu.com/tutorials/install-ubuntu-desktop#2-download-an-ubuntu-image) and download it.
 
-Once the file **ubuntu-24.04-desktop-amd64.iso** is successfully downloaded, you'll need an additional software called [balenaEtc](https://etcher.balena.io/). balenaEtc has to be used to create the bootable USB stick. It couldn't be simpler: just select the downloaded ISO file, then the letter of the USB drive (D: for me) and confirm.
+Once the file **ubuntu-24.04-desktop-amd64.iso** is successfully downloaded, you'll need an additional software called [balenaEtcher](https://etcher.balena.io/). balenaEtcher has to be used to create the bootable USB stick. It couldn't be simpler: just select the downloaded ISO file, then the letter of the USB drive (D: for me) and confirm.
 
 After a few minutes, the USB stick will be ready.
 
@@ -104,7 +104,7 @@ The post-installation wizard will welcome you and ask if you wish to enable the 
 
 [Ubuntu Pro](https://ubuntu.com/pro) is a free (for personal use) service proposed by Canonical and will keep your computer up-to-date.
 
-As very last step, run the **Software Updater** application to check if there is no additional software to install. If you're a pro of the console, it's the same as you run `sudo apt update`.
+As very last step, run the **Software Updater** application to check if there is no additional software to install. If you're a pro of the console, it's the same as running `sudo apt update`.
 
 ## Time to add software
 

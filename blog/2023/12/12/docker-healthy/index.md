@@ -28,7 +28,7 @@ Please create somewhere on your disk, in a Linux console, a script f.i. called `
 
 </AlertBox>
 
-Make sure to make the script executable: `chown +x health.sh`.
+Make sure to make the script executable: `chmod +x health.sh`.
 
 Here is the output of the script when launched:
 

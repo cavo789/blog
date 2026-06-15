@@ -1,11 +1,29 @@
 [files]
 extend-exclude = [
-  "*.lock",
-  "build/",
   ".docusaurus/",
+  ".todos/",
+  ".unpublished/",
+  "*.lock",
+  "api",
+  "build/",
   "node_modules/",
-  "static/",
-  "blog/2026/01/05/vscode-remote-ssh/index.md"
+  "static/"
+]
+
+[default]
+extend-ignore-re = [
+  # 1. Ignore SSH key fingerprints (e.g., SHA256:...)
+  "SHA256:[A-Za-z0-9+/]+={0,2}",
+
+  # 2. Ignore full SSH public keys (e.g., ssh-ed25519 AAA...)
+  "ssh-(rsa|ed25519|dss)\\s+[A-Za-z0-9+/]+={0,2}",
+
+  # 3. Ignore Docker IDs (12–64-character hexadecimal strings)
+  "\\b[a-f0-9]{12,64}\\b",
+
+  # 4. Enable inline exclusion comments for Markdown
+  "(?s).*?",
+  ".*$"
 ]
 
 [default.extend-words]

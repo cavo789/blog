@@ -32,9 +32,9 @@ For this exercise; please extract all files and folders to your `C:\tmp\ribbon` 
 
 ## Create an empty file
 
-As a support for this blog post, please create a new, empty, file in Excel called `Ribbon.xslm`  in your `C:\tmp\ribbon` folder (or elsewhere).
+As a support for this blog post, please create a new, empty, file in Excel called `Ribbon.xlsm`  in your `C:\tmp\ribbon` folder (or elsewhere).
 
-![Excel Ribbon.xslm](./images/Excel_empty_file.webp)
+![Excel Ribbon.xlsm](./images/Excel_empty_file.webp)
 
 <AlertBox variant="info" title="Just creates an empty file">
 Right now, we don't need to do something else than Create New - File Save as - FileType - Excel Macro-Enabled Workbook..
@@ -105,7 +105,7 @@ The job of the DTD is to make sure that the syntax of your manifest is correct; 
 
 ##### Define the ribbon
 
-The ribbon should define inside the `<ribbon>` node but not immediately since a ribbon is, in fact, always defined in a tab.
+The ribbon should be defined inside the `<ribbon>` node but not immediately since a ribbon is, in fact, always defined in a tab.
 
 Below we can see the standard ribbon of Excel and you can see a lot of tabs: `File`, `Insert`, `Page layout`, `Formulas`, `Data`, `Review`, `View`, ...
 
@@ -174,7 +174,7 @@ As you can see here above, just adding a group isn't enough, you'll need to defi
 
 #### Add features
 
-The XML here below will add to things: a button and an edit box.
+The XML here below will add two things: a button and an edit box.
 
 <Snippet filename="customUI14.xml" source="./files/customUI14.part7.xml" />
 
@@ -196,11 +196,11 @@ This will result into this:
 
 ```vbnet
 Public Sub OnButtonClicked(control As IRibbonControl)
-    Msgbox "You've clicked on the button", vbInformation
+    MsgBox "You've clicked on the button", vbInformation
 End Sub
 ```
 
-To do this, in MS Excel, please press <kbd>ALT</kbd>-<kbd>F11</kbd>, in the **Project explorer**, right-click on the **VBAProject (Ribbon.xslm)** entry (1), then select **Insert** (2) and **Module** (3).
+To do this, in MS Excel, please press <kbd>ALT</kbd>-<kbd>F11</kbd>, in the **Project explorer**, right-click on the **VBAProject (Ribbon.xlsm)** entry (1), then select **Insert** (2) and **Module** (3).
 
 ![Insert a module](./images/VBE_insert_module.webp)
 

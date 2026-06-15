@@ -240,7 +240,7 @@ Someone has to work with you? Devcontainer is then the way-to-go since everyone 
 
 Let's see one of the many advantages: instead of *just using VSCode to write our posts*, let's use LanguageTool which provides basic grammar and spellchecking for your posts.
 
-And you know what? You already have it. See your `.devcontainer/compose.yml` file. You'll see a service called `languagetool` based on a Docker image called **erikvl87/languagetool**. And now, see your `.devcontainer/devcontainer.json` file. Search for **languageToolLinter** and you'll see a local URL (based on an IP); this is the one exposed by the service. And look further for the **davidlday.languagetool-linter** extension, this is the one who'll make the magic happens.
+And you know what? You already have it. See your `.devcontainer/compose.yaml` file. You'll see a service called `languagetool` based on a Docker image called **erikvl87/languagetool**. And now, see your `.devcontainer/devcontainer.json` file. Search for **languageToolLinter** and you'll see a local URL (based on an IP); this is the one exposed by the service. And look further for the **davidlday.languagetool-linter** extension, this is the one who'll make the magic happens.
 
 Here an example of how LanguageTool will works:
 
@@ -250,7 +250,7 @@ For sure, the correct sentence should be *This example illustrates LanguageTool 
 
 ## Code Spell Checker
 
-Here another example, a mistake a French speaking people can do by inadvertance:
+Here is another example, a mistake a French-speaking person can do by inadvertence:
 
 ![The word example is misspelled](./images/example_is_misspelled.webp)
 

@@ -46,7 +46,7 @@ In terms of Docusaurus, we'll need to **swizzle** the page that is responsible t
 
 To do this, please start a console and run `yarn swizzle @docusaurus/theme-classic BlogPostItem/Content`.
 
-From now, you'll a new file on your disk: `src/theme/BlogPostItem/Content/index.js`
+From now, you'll have a new file on your disk: `src/theme/BlogPostItem/Content/index.js`
 
 Below, the original content of the file (Docusaurus v3.8.1):
 
@@ -76,6 +76,7 @@ So, in each of your `.md` post, you should have a YAML block like this:
 title: Your blog post article
 authors: [you]
 date: 2025-09-30
+---
 ```
 
 

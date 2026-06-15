@@ -4,7 +4,8 @@
       "*.ru",
       "*.su",
       "*@newsletter.*",
-      "newsletter@*"
+      "newsletter@*",
       "newsletters-noreply@*",
-      "newsletters@*",
+      "newsletters@*"
+    ]
 }

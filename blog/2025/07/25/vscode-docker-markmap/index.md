@@ -65,7 +65,7 @@ By creating a `.vscode/settings.json` file, you can specify some CSS and default
 
 Please create the `.vscode/settings.json` file with this content:
 
-<Snippet filename="overview.qmd" source="./files/overview.part2.qmd" />
+<Snippet filename=".vscode/settings.json" source="./files/overview.part2.qmd" />
 
 Save the file, go back to the `overview.qmd` file and if needed, run `Markmap: open as markmap` again.
 

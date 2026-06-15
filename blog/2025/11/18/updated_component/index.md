@@ -52,10 +52,9 @@ Please first check if you don't have the `src/theme/BlogPostItem/Content/index.j
 
 If not, please start a console and run `yarn swizzle @docusaurus/theme-classic BlogPostItem/Content`.
 
-From now, you'll a new file on your disk: `src/theme/BlogPostItem/Content/index.js`.
+From now, you'll have a new file on your disk: `src/theme/BlogPostItem/Content/index.js`.
 
-We'll have to inject our new `Updated` component, please edit the `index.js
-` file to inject the required code.
+We'll have to inject our new `Updated` component, please edit the `index.js` file to inject the required code.
 
 Below the minimum sentences to add at the right place in your own file.
 

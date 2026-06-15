@@ -48,8 +48,8 @@ Our image must be clean, as efficient and lightweight as possible... We must min
 
 Everything we need for our development will then have to be part of a second Docker image, which we will use when we activate the devcontainer feature in VSCode.  This is where we will create our user, add development tools, and activate certain configurations such as debugging, etc.
 
-<AlertBox variant="coreConcept" title="So, in short, we'll have two Docker image">
-One for the deploy and a second one to extend the first with additional tools and configuration items. That one will never leave our host and we'll never build it ourself but let VSCode does it for us.
+<AlertBox variant="coreConcept" title="So, in short, we'll have two Docker images">
+One for the deploy and a second one to extend the first with additional tools and configuration items. That one will never leave our host and we'll never build it ourselves but let VSCode do it for us.
 </AlertBox>
 
 ![Core concept - Two images](./images/production_devcontainer.webp)
@@ -107,7 +107,7 @@ This is a key concept here:
 
 The `compose.yaml` file is used by Docker compose (which is a part of Docker) to know how to build your image and how to create your container.
 
-This is a very important file since we'll foresee here all the required configurations, we'll specify our `.env` file so Docker can translate variables to their values, ...
+This is a very important file since we'll define here all the required configurations, we'll specify our `.env` file so Docker can translate variables to their values, ...
 
 We'll also tell to Docker which port of the running container has to be shared with our host, ...
 
@@ -217,7 +217,7 @@ $ docker compose exec app /bin/sh -c 'echo "Container user ID is $(id -u) and hi
 Container user ID is 1001 and his group ID is 1001
 </Terminal>
 
-This, just to confirm: when running our container, it'll run using a not-privileged user thanks our `compose.yaml` orchestration file.
+This, just to confirm: when running our container, it'll run using a not-privileged user thanks to our `compose.yaml` orchestration file.
 
 ![The production image has been created](./images/prod_image_created.webp)
 
@@ -286,7 +286,7 @@ If you look at this `.devcontainer/compose.yaml` file, we're configuring a few t
 
 * The list of build arguments (`args`) should mention the user id, group id and name of our user. This is important: when we'll work inside the devcontainer, any files created in the container will be owned by this specific user. If we are using `johndoe` with `1001` for both user id and group id; then files will be synchronized on your host like that; owned by `johndoe` not you. If you are the user `1000:1000` locally, you understand that files won't be yours and you'll get permission’s problems. It's something we've to avoid. For this, we've to correctly configure the `.devcontainer/compose.yaml` file.
 
-See the syntax: `${LOCAL_UID:-1000}`. By default, the file will assign `1000` (which is often the correct ID). But first, Docker will check if a variable called `LOCAL_ID` exists on the host. If this is the case, that value will be used. So, if running `id -u` (or `id -g` for the group id) didn't give `1000` on your host; make sure to create the `LOCAL_UID` or `LOCAL_GID` variable in your `.bashrc` file and assign them to the correct value.
+See the syntax: `${LOCAL_UID:-1000}`. By default, the file will assign `1000` (which is often the correct ID). But first, Docker will check if a variable called `LOCAL_UID` exists on the host. If this is the case, that value will be used. So, if running `id -u` (or `id -g` for the group id) doesn't give `1000` on your host; make sure to create the `LOCAL_UID` or `LOCAL_GID` variable in your `.bashrc` file and assign them to the correct value.
 
 * Because our current sample if about Python, we'll also expose the DebugPy standard port thanks the line `5679:5679` so, when starting a debug session in the container will work.
 
@@ -385,7 +385,7 @@ In this demo project, you can see this message; once:
 
 The idea is thus to provide contextual help to the developer and to tell him, here, how he can start the FastAPI server using hot reload and with Debugpy enabled.
 
-### Let's tests
+### Let's test
 
 If we return to the `http://localhost:8000` URL we can still get the JSON answer (so the container is well running).
 

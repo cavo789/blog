@@ -33,7 +33,7 @@ The scanner is running on demo website so you can see how it looks like.
 
 ## Download
 
-Please follow this URL: [https://raw.githubusercontent.com/cavo789/aesecure_quickscan/master/aesecure_quickscan.php](https://raw.githubusercontent.com/cavo789/aesecure_quickscan/master/aesecure_quickscan.php), press <kbd>CTRL</kbd>+<kbd>A</kbd> to select the entire content add press <kbd>CTRL</kbd>+<kbd>C</kbd> to copy it in memory.
+Please follow this URL: [https://raw.githubusercontent.com/cavo789/aesecure_quickscan/master/aesecure_quickscan.php](https://raw.githubusercontent.com/cavo789/aesecure_quickscan/master/aesecure_quickscan.php), press <kbd>CTRL</kbd>+<kbd>A</kbd> to select the entire content and press <kbd>CTRL</kbd>+<kbd>C</kbd> to copy it in memory.
 
 Go to the folder containing your website (preferably on your local computer), create a new file called f.i. `scan.php` and paste there the content by using <kbd>CTRL</kbd>+<kbd>V</kbd>.
 
@@ -60,7 +60,7 @@ The first button *1. Clean the cache and temp folders* will allow you to remove 
 
 Once you've clicked on the first button and action is done, the second button *2. Getting the file list* will browse your website and check if files should be scanned or not.
 
-A file won't be scanned if his signature (his hash) is strictly the same of a "whitelisted" one.
+A file won't be scanned if its signature (its hash) is strictly the same as a "whitelisted" one.
 
 <AlertBox variant="info" title="White list concept">
 Think to original files of Joomla. When you do a new installation of Joomla let's say 5.2.0; files contained in the ZIP of Joomla are considered as safe. You trust these files to not contains any viruses. So, original files; coming from Joomla installation if they're **unmodified** are safe. If their signature are strictly the same then files coming from Joomla, aeSecure QuickScan knows that the file is safe. These file's signatures are white listed.
@@ -80,7 +80,7 @@ During the discovering of your website (*2. Getting the file list*), the scanner
 
 As soon as the scanner has, f.i., detected you're running Joomla 5.2.0, the scanner engine will go to [https://github.com/cavo789/aesecure_quickscan/tree/master/hashes/joomla](https://github.com/cavo789/aesecure_quickscan/tree/master/hashes/joomla) and try to find a file for that version (i.e. `J!5.2.0.json`). If found that version is supported by the scanner and a JSON file will be downloaded. That one contains the file's signatures as we've introduced in the previous chapter.
 
-The scanner will start the get the list of all files of your website and calculate his signature (hash). If the signature is retrieved in the signature file (the JSON), the file will be known as safe.
+The scanner will start to get the list of all files of your website and calculate their signature (hash). If the signature is retrieved in the signature file (the JSON), the file will be known as safe.
 
 At the end of action 2, we've then the list of unknown files, the ones the scanner should scan for viruses.
 

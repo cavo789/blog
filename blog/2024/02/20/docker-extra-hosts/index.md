@@ -55,7 +55,7 @@ $ docker network create my_network
 1df43879fbfc2b328bf36f9205c68168e45a88cea481bc244fab94ff04486da7
 </Terminal>
 
-And run the script using `docker run -d -p 8080:80 -u ${UID}:${GID} -v "$PWD":/var/www/html --network my_network php:8.2-apache`.
+And run the script using `docker run -d -p 8080:80 -u $(id -u):$(id -g) -v "$PWD":/var/www/html --network my_network php:8.2-apache`.
 
 That command will run a Apache container and we can surf to our local website using `http://127.0.0.1:8080`
 

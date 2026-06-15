@@ -34,7 +34,7 @@ The `docker init` command is the one you're looking for.
 
 ## Get some scripts
 
-As an illustration, I'll use my <Link to="/blog/aesecure-quickscan">aeSecure Quickscan](https://github.com/cavo789/aesecure_quickscan) project already introduced in my blog (see my [aeSecure - QuickScan - Free viruses scanner</Link> post).
+As an illustration, I'll use my <Link to="/blog/aesecure-quickscan">aeSecure - QuickScan - Free viruses scanner</Link> project already introduced in my blog.
 
 This is a Web application that scans files (a local website) for patterns that might indicate the presence of a virus.
 
@@ -85,12 +85,12 @@ By opening that file with a code editor, you'll then see that line:
 
 <Snippet filename=".dockerignore" source="./files/.dockerignore" />
 
-Refers to [https://docs.docker.com/go/build-context-dockerignore/](https://docs.docker.com/go/build-context-dockerignore/) for more explanations.
+Refer to [https://docs.docker.com/go/build-context-dockerignore/](https://docs.docker.com/go/build-context-dockerignore/) for more explanations.
 
 ### compose.yaml
 
 <AlertBox variant="note" title="">
-Previously, the file was named `compose.yaml` (or `docker-compose.yaml`).
+Previously, the file was named `docker-compose.yaml` (or `docker-compose.yml`).
 
 </AlertBox>
 
@@ -102,7 +102,7 @@ By opening the file, you'll see that right now, the only un-commented lines are 
 
 The rest is just for illustration.
 
-Refers to [https://docs.docker.com/go/compose-spec-reference/](https://docs.docker.com/go/compose-spec-reference/) for more explanation.
+Refer to [https://docs.docker.com/go/compose-spec-reference/](https://docs.docker.com/go/compose-spec-reference/) for more explanation.
 
 ### Dockerfile
 
@@ -118,17 +118,17 @@ Docker has also foreseen to rename the standard `php.ini-production` file as `ph
 
 The last command is to switch to the `www-data` user (so the container will not be running as `root`).
 
-Refers to [https://docs.docker.com/go/dockerfile-reference/](https://docs.docker.com/go/dockerfile-reference/) for more explanation.
+Refer to [https://docs.docker.com/go/dockerfile-reference/](https://docs.docker.com/go/dockerfile-reference/) for more explanation.
 
 ### README.Docker.md
 
-As a remember of how to use your dockerized application, this file will give you the essentials commands to run.
+As a reminder of how to use your dockerized application, this file will give you the essential commands to run.
 
 ## Generated files are yours
 
-The generated files won't be modified by Docker while you'll not run `docker init` again. This means you can make any changes you like to the files, but your changes won't be lost. It's a great way to quickly dockerized an application.
+The generated files won't be modified by Docker while you'll not run `docker init` again. This means you can make any changes you like to the files, but your changes won't be lost. It's a great way to quickly dockerize an application.
 
-The example given in this blog post is a stand-alone project so `docker init` does all the magic. Assuming we'd needed a database, all we have to do is return to the `compose.yaml´ file and un-comment the lines like below:
+The example given in this blog post is a stand-alone project so `docker init` does all the magic. Assuming we'd needed a database, all we have to do is return to the `compose.yaml` file and un-comment the lines like below:
 
 <Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 

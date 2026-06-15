@@ -34,7 +34,7 @@ Before calling the `main` function, I remember the actual start time, call `main
 
 The `main` function is quite basic here, I'll do a loop from 1 till 10 and, each time, call the `demo` function. That function will sleep for 3 seconds.
 
-So, by running the script, since we're calling ten times our demo function and the function is waiting for three seconds, then, we'll not be surprises by the total duration time:
+So, by running the script, since we're calling ten times our demo function and the function is waiting for three seconds, then, we'll not be surprised by the total duration time:
 
 <Terminal typewriter>
 Sleeping for 3 seconds...
@@ -58,7 +58,7 @@ But, that's code is so old fashion now? How many CPU did I have? Just one? Oh th
 
 ## Now, the optimised version
 
-Ok, now, we'll not start our function in a sequential order but we'll call it once and **don't wait until the function is finished**, we'll continue our loop and call the same function as a second time, a third time, ...
+Ok, now, we'll not start our function in a sequential order but we'll call it once and **don't wait until the function is finished**, we'll continue our loop and call the same function a second time, a third time, ...
 
 We just need to make sure we'll not kill our performances and for this, we'll retrieve the number of CPU cores we've on the machine. In Linux, this is very easy: the `nproc` command will do this.
 
@@ -75,7 +75,7 @@ We'll adapt our sample like this:
 
 ### In depth
 
-By adding the `&` character, I'm asking Bash to now wait that the function finish his job before returning. So, the code below will run `demo` 10 times even before the first `demo` call is finished.
+By adding the `&` character, I'm asking Bash to not wait that the function finish his job before returning. So, the code below will run `demo` 10 times even before the first `demo` call is finished.
 
 ```bash
 for i in {1..10}; do
@@ -94,7 +94,7 @@ So before running the next call of `demo`, I need to do two things:
 1. I'll keep the process id (`pid`) of the just fired `demo` function (each call has his own `pid`) and store that value in an array,
 2. I'll need to check how many jobs are running and not yet finished (retrieved using `$( jobs | wc -l )`) and compare that number with the number of threads we can start (*64* for me). As soon as the number of running jobs is equal to my max, Ok, I should wait.  I shouldn't start a 65th job but I'll wait that all the previous 64 ones are finished.
 
-And, when it's done, I can continue for the next wave and so one.
+And, when it's done, I can continue for the next wave and so on.
 
 Finally, after the loop, I do the same i.e. make sure that all jobs defined in our `pids` array are done.
 

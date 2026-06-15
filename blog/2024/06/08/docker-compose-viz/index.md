@@ -16,11 +16,11 @@ updates:
 ---
 ![How to generate a graph from compose.yaml](/img/v2/docker_tips.webp)
 
-Imagine you to have a very big `compose.yaml` file with a lot of services and dependencies.
+Imagine you have a very big `compose.yaml` file with a lot of services and dependencies.
 
-You've too multiple exposed ports.
+You also have multiple exposed ports.
 
-You'd like to have an at-a-glance view of services, dependencies and open ports. Is this possible? Yes! [https://github.com/compose-viz/compose-viz](https://github.com/compose-viz/compose-viz) do the magic for us.
+You'd like to have an at-a-glance view of services, dependencies and open ports. Is this possible? Yes! [https://github.com/compose-viz/compose-viz](https://github.com/compose-viz/compose-viz) does the magic for us.
 
 <!-- truncate -->
 
@@ -46,7 +46,7 @@ We can see that the port `8080` is exposed to the computer. That port is, in fac
 By adding `--format svg`, you'll get a SVG instead of a PNG. The list of supported output formats is huge: `png|dot|jpeg|json|svg|bmp|canon|cmap|cmapx|cmapx_np|dot_json|emf|emfplus|eps|fig|gif|gv|imap|imap_np|ismap|jpe|jpg|json0|metafile|mp|pdf|pic|plain|plain-ext|pov|ps|ps2|tif|tiff|tk|vml|xdot|xdot1.2|xdot1.4|xdot_json`.
 
 </AlertBox>
-<!-- cspell:enmkeable -->
+<!-- cspell:enable -->
 
 ## Much complex example
 

@@ -14,6 +14,7 @@
     ],
     "require-dev": {
         "behat/behat": "^3",
+        "behat/mink-extension": "^2.3",
         "dmore/behat-chrome-extension": "^1.4",
         "friends-of-behat/mink": "^1.11"
     }

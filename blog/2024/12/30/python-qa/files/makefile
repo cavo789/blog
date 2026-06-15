@@ -22,7 +22,7 @@ qa:
 	@mypy --config-file .config/.mypy.ini .
 
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 7/9  RUNNING make Pyright" "Pyright is a full-featured, standards-based static type checker for Python (https://github.com/microsoft/pyright)"
-	@pyright --project pyright.json
+	@pyright --project .config/pyright.json
 
 	@printf "\e[1;37m%-35s%-10s%-10s\e[m%s\n" " 8/9  RUNNING make Black" "Format the script using Black (https://black.readthedocs.io/en/stable/)"
 	@black --config .config/black.toml .

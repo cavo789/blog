@@ -31,7 +31,7 @@ I'm speaking about magic but, let's go in details in the article below. I could 
 
 ## Create a file/folder structure
 
-Please create a folder on your Windows machine, f.i. let's create a folder called `Python` in your documents (in MS-DOS, here is the command to run `mkdir %USERPROFILE%\Documents\Python` and jump in in `cd %USERPROFILE%\Documents\Python`).
+Please create a folder on your Windows machine, f.i. let's create a folder called `Python` in your documents (in MS-DOS, here is the command to run `mkdir %USERPROFILE%\Documents\Python` and jump in it: `cd %USERPROFILE%\Documents\Python`).
 
 Of course, you can start Windows Explorer, go to your *Documents* folder and create the folder and all the files like that:
 

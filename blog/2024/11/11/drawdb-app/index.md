@@ -22,7 +22,7 @@ Let's take a quick look at how it works.
 
 <!--truncate-->
 
-By opening the [https://www.drawdb.app/editor](https://www.drawdb.app/editor) website, the first thing you'll be prompted to do is to choose your target database format. For instance, let's choice PostgreSQL (Situation: *I'm coding a Laravel application using PostgreSQL and I want to relations of my DB in a nice pic*).
+By opening the [https://www.drawdb.app/editor](https://www.drawdb.app/editor) website, the first thing you'll be prompted to do is to choose your target database format. For instance, let's choose PostgreSQL (Situation: *I'm coding a Laravel application using PostgreSQL and I want to see the relations of my DB in a nice pic*).
 
 I think the most common use I could personally make of it is to load an SQL file. To do this, just click on the `File` menu, then choose `Import from SQL` and, finally, retrieve a previously created .sql file from your hard drive.
 

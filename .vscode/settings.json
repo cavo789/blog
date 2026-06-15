@@ -5,6 +5,12 @@
   "search.exclude": {
     "**/node_modules": true
   },
+  "diffEditor.diffAlgorithm": "advanced",
+  "diffEditor.renderSideBySide": false,
+  "diffEditor.renderMarginRevertIcon": true,
+
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "diffEditor.wordWrap": "on",
   "files.trimTrailingWhitespace": true,
   "files.associations": {
     ".mdx": "Markdown"
@@ -21,6 +27,8 @@
   "languageToolLinter.languageTool.disabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,EN_UNPAIRED_QUOTES,ENGLISH_WORD_REPEAT_RULE,FILE_EXTENSIONS_CASE,UNLIKELY_OPENING_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE",
   "workbench.startupEditor": "terminal",
   "workbench.colorCustomizations": {
+    "diffEditor.insertedLineBackground": "#00000000",
+    "diffEditor.removedLineBackground": "#00000000",
     "activityBar.activeBackground": "#8be959",
     "activityBar.background": "#8be959",
     "activityBar.foreground": "#15202b",

@@ -88,7 +88,7 @@ This technique is called **Docker Socket Passthrough**.
 
 </AlertBox>
 
-Now, it'll work: we we'll share our Docker daemon and, too, we'll share the folder on the server where our codebase was pulled before running the CI.
+Now, it'll work: we'll share our Docker daemon and, too, we'll share the folder on the server where our codebase was pulled before running the CI.
 
 From now, we can not only run `docker run [...]` statements but, too, share our folder with the newly created container.
 

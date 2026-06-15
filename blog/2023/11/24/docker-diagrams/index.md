@@ -48,7 +48,7 @@ Easy, right?
 
 Another example:
 
-<Snippet filename="app/Providers/EventServiceProvider.php" source="./files/EventServiceProvider.php" />
+<Snippet filename="stateful.py" source="./files/stateful.py" />
 
 And the resulting image:
 

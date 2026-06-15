@@ -60,11 +60,11 @@ It's important to know which key has been used to link your Github profile.
 
 You can just display the file to your console like f.i. `cat ~/.ssh/id_ed25519.pub` or `cat ~/.ssh/id_rsa.pub` (the public key file) and look at the end: is the mentioned email is the one you're using on Github.com? If yes, you've probably identified the key.
 
-In my case, the key I've used for github.com is `id_25519` so I'll use that one in the next chapter.
+In my case, the key I've used for github.com is `id_ed25519` so I'll use that one in the next chapter.
 
 ## Creating files
 
-We'll need to files; `compose.yaml` and `Dockerfile`.
+We'll need two files: `compose.yaml` and `Dockerfile`.
 
 ### compose.yaml
 
@@ -99,9 +99,9 @@ Time to create our second file, `Dockerfile`:
 
 <AlertBox variant="caution" title="Think to replace cavo789/my_private_repo.git and refers one of your repositories" />
 
-As you can see, we are setting `KEY_NAME="id_rsa"` as the default value (but will be overwritten by our declaration in the yaml file) then later on, we need to create the `/root/.ssh`folder and we are adding `github.com` in the list of known hosts.
+As you can see, we are setting `KEY_NAME="id_rsa"` as the default value (but will be overwritten by our declaration in the yaml file) then later on, we need to create the `/root/.ssh` folder and we are adding `github.com` in the list of known hosts.
 
-The most important thing comes then. We should use the `RUN --mount=type=secret` syntax so inform Docker that this layer will use a Docker secret. We need to provide the name of our secret (which was set in our yaml file and it's `my_ssh_key` here) then we need to define where that secret has to be stored **during this layer**. Our variable `KEY_NAME` find his interest here: our SSH key was `id_ed25519` and this is the value of the `KEY_NAME` variable.
+The most important thing comes then. We should use the `RUN --mount=type=secret` syntax so inform Docker that this layer will use a Docker secret. We need to provide the name of our secret (which was set in our yaml file and it's `my_ssh_key` here) then we need to define where that secret has to be stored **during this layer**. Our variable `KEY_NAME` finds its use here: our SSH key was `id_ed25519` and this is the value of the `KEY_NAME` variable.
 
 So, in short `--mount=type=secret,id=my_ssh_key,dst=/root/.ssh/${KEY_NAME}` will be translated to `--mount=type=secret,id=my_ssh_key,dst=/root/.ssh/id_ed25519`.
 

@@ -21,7 +21,7 @@ Open your file in vscode, select the desired lines, press <kbd>CTRL</kbd>-<kbd>S
 
 <!-- truncate -->
 
-As soon as you've called `CodeSnap` a preview vertical window will appears.
+As soon as you've called `CodeSnap` a preview vertical window will appear.
 
 In your source code, select one or more lines and the CodeSnap will update the preview.
 

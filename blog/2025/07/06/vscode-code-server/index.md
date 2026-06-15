@@ -54,7 +54,7 @@ Once triggered successfully, just open your browser and visit `http://127.0.0.1:
 
 </AlertBox>
 
-The code-server configuration is thus stored in your home directory, in the folder `/.config/`. Like this, config files will not be part of your current project and the configuration will be the same if you start code-server at several places, for different projects.
+The code-server configuration is thus stored in your home directory, in the folder `~/.config/`. Like this, config files will not be part of your current project and the configuration will be the same if you start code-server at several places, for different projects.
 
 By opening `http://127.0.0.1:8080` you'll get this screen:
 

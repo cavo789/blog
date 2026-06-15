@@ -18,7 +18,7 @@ Because you're an excellent developer, you deny anyone access to the properties 
 
 In other words, in your PHP class, you don't have `public` properties (they're devil) but exclusively `protected` ones or better `private`.
 
-And using getter and setters you allow other objects to interact with your private methods by reading them (getters) or updating their values (setters).
+And using getter and setters you allow other objects to interact with your private properties by reading them (getters) or updating their values (setters).
 
 Some people will say "Yes, but it's tedious to write these functions", but not at all.
 

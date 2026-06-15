@@ -30,7 +30,7 @@ However, I'm not averse to a personalized homepage and I'm quite happy with Heim
 
 <!-- truncate -->
 
-Heimdall is a web application you can self-hosted (and it's a piece of cake using Docker) on your computer.
+Heimdall is a web application you can self-host (and it's a piece of cake using Docker) on your computer.
 
 Here is the official demo:
 
@@ -77,7 +77,7 @@ It's a lot more fun, isn't it?
 
 ### Saving the configuration on disk
 
-Did you've noticed that, in the `compose.yaml` file there is a section called `volumes` with the following configuration?
+Did you notice that, in the `compose.yaml` file there is a section called `volumes` with the following configuration?
 
 <Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 
@@ -103,7 +103,7 @@ Add so many tags you want. For this tutorial, I'll just create one.
 
 When finished, click on the `Cancel` button top right or click on the fourth button bottom right (called `Application list`)
 
-Create a new application. You can choose between an `Application type` or a `Website`. In my current use, I always choice `Website`. I fill then the URL and click on `Go`.
+Create a new application. You can choose between an `Application type` or a `Website`. In my current use, I always choose `Website`. I fill then the URL and click on `Go`.
 
 Heimdall will extract the favicon in different sizes. I click on the one I wish.
 

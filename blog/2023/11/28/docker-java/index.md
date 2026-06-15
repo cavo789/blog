@@ -74,10 +74,10 @@ Please create a new file called `API.java` with this content:
 
 Compile it by running `docker run --rm -v $PWD:/app -w /app -u 1000:1000 openjdk:11 javac API.java`; get the `API.class` file.
 
-Finally, call `docker run --rm -v $PWD:/app -w /app openjdk:11 java API.java` to execute the API call and display the result on the screen:
+Finally, call `docker run --rm -v $PWD:/app -w /app openjdk:11 java API` to execute the API call and display the result on the screen:
 
 <Terminal typewriter>
-$ docker run --rm -v $PWD:/app -w /app openjdk:11 java API.java
+$ docker run --rm -v $PWD:/app -w /app openjdk:11 java API
 </Terminal>
 
 ```json

@@ -57,8 +57,8 @@ Simply return to the console and run `./demo.sh` and... wow; that's pretty cool.
 
 ![Progression bar](./images/progression_bar.gif)
 
-In a real-life example, I've implement this feature in a Bash script where I need to read a CSV file and for each record retrieved in the file, I need to do run a `curl` statement for calling a RestFull POST API and upload a PDF.
+In a real-life example, I've implemented this feature in a Bash script where I need to read a CSV file and for each record retrieved in the file, I need to run a `curl` statement for calling a RESTful POST API and upload a PDF.
 
 And, when started in an interactive way, the screen output is really practical and terribly effective.
 
-Of course, I'm also using a log file where I redirect a maximum number of information's.
+Of course, I'm also using a log file where I redirect a maximum amount of information.

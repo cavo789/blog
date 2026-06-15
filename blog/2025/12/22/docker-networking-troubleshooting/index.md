@@ -59,7 +59,7 @@ So they both are running port `8000` internally but the `consumer` is exposed on
 
 In the previous chapter, we just have seen the network is called `your_network`.
 
-We can ensure the processus running on port `8000` in both containers is running by executing `docker inspect -f '{{.NetworkSettings.Networks.your_network.IPAddress}}' consumer` in the console to get the IP of that container. In my case, I get `192.168.0.4` as response.
+We can ensure the process running on port `8000` in both containers is running by executing `docker inspect -f '{{.NetworkSettings.Networks.your_network.IPAddress}}' consumer` in the console to get the IP of that container. In my case, I get `192.168.0.4` as response.
 
 Now that we've it, we can test the internal port:
 
@@ -91,7 +91,7 @@ If you know that the service is a web service, you can run `curl -vvv 127.0.0.1:
 
 Run `docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}"` again the get the container name and his associated container ID back.
 
-In our preamble, we've said: the `consumer` should be able to run an API from the `provider` so let's jump in the `consumer` by creating a console. We'll using the CONTAINER_ID of the consumer and we'll connect as `root`:
+In our preamble, we've said: the `consumer` should be able to run an API from the `provider` so let's jump in the `consumer` by creating a console. We'll use the CONTAINER_ID of the consumer and we'll connect as `root`:
 
 <Terminal typewriter wrap={true}>
 $ docker exec --user root -it 5abd45eecfa3 sh
@@ -105,7 +105,7 @@ $ apt-get update
 $ apt-get install -y iputils-ping
 </Terminal>
 
-Once done, try `ping` followed by the container name (we've already identify `provider` and `consumer` being our containers name thanks our `docker ps` command).
+Once done, try `ping` followed by the container name (we've already identified `provider` and `consumer` as our container names thanks to our `docker ps` command).
 
 <Terminal typewriter wrap={true}>
 $ ping provider
@@ -152,7 +152,7 @@ By using the container name with telnet, we should use the internal port; not th
 
 <AlertBox variant="tip" title="Ok, our consumer can reach the provider both containers are correctly exposed on their external port.">
 
-`telnet` is used to test the **transport layer** (layer #4 in the [OSI model](https://en.wikipedia.org/wiki/OSI_model)) and our test here is showing it's work.
+`telnet` is used to test the **transport layer** (layer #4 in the [OSI model](https://en.wikipedia.org/wiki/OSI_model)) and our test here is showing it's working.
 </AlertBox>
 
 ### Testing the application

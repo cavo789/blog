@@ -200,7 +200,7 @@ SELECT ... FROM ... WHERE (Year([dteHiring]) = 2018)
 Prefer the native SQL `BETWEEN` verb:
 
 ```SQL
-SELECT ... FROM ... WHERE ([dteHiring] between '1/1/2018 00:00:00' and '12/1/2018 23:59:59')
+SELECT ... FROM ... WHERE ([dteHiring] between '1/1/2018 00:00:00' and '12/31/2018 23:59:59')
 ```
 
 Here the index is well used, .JET also don't need to make VBA call record by record but can work on a set of records in one time.

@@ -108,7 +108,7 @@ By editing my file and moving `api::__assertHttpMethod` at the top of my script,
 
 ![Move the assert method first](./images/api_move_assert_first.webp)
 
-Ok, so now, still at the right side, we can see `api::__debugCurlStatement` is expected in the second position, `api::__doSomeCleaning` as the third one then `api::__executeCall()` and so one (as we can see in the right side).
+Ok, so now, still at the right side, we can see `api::__debugCurlStatement` is expected in the second position, `api::__doSomeCleaning` as the third one then `api::__executeCall()` and so on (as we can see in the right side).
 
 As soon as the `api.sh` file is correctly sorted, rerunning the script won't mention anymore the script but other ones.
 

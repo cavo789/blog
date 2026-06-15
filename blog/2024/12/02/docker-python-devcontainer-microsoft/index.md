@@ -19,7 +19,7 @@ language: en
 
 Nothing to install, nothing to configure, nothing to create first.
 
-Here is how to use VSCode and Docker to create a ready-to-user Python environment, whatever if you're under Windows, Linux or Mac.
+Here is how to use VSCode and Docker to create a ready-to-use Python environment, whatever if you're under Windows, Linux or Mac.
 
 <StepsCard
   title="The only prerequisites are:"

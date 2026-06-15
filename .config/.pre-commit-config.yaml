@@ -34,7 +34,7 @@ repos:
         args: [--config, .config/typos.toml]
         # Check blog posts and pages; skip component/plugin/script internal docs
         files: '\.(md|mdx)$'
-        exclude: '^(src/components/|plugins/|\.scripts/|\.claude/|\.github/)'
+        exclude: '^(api|src/components/|plugins/|\.scripts/|\.claude/|\.github/|\.todos/|\.unpublished/)'
 
   # ── Markdown linter (uses existing .config/.markdownlint.json) ───────────
   - repo: https://github.com/DavidAnson/markdownlint-cli2
@@ -44,4 +44,4 @@ repos:
         args: [--config, .config/.markdownlint.json]
         types: [markdown]
         # Internal files: memory, readmes, script docs, GitHub config, root README
-        exclude: '^(\.claude/|\.github/|src/components/.+/readme\.md|plugins/.+/readme\.md|\.scripts/|README\.md$|\.unpublished/.+/files/)'
+        exclude: '^(\.claude/|\.github/|\.todos/|\.unpublished/|api|src/components/.+/readme\.md|plugins/.+/readme\.md|\.scripts/|README\.md$|\.unpublished/.+/files/)'

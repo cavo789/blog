@@ -36,7 +36,7 @@ Once files will be created, you can then reuse the devcontainer for all your Pyt
 
 Like always, we'll create a new folder and create files there. Please run `mkdir /tmp/python && cd $_` to create that folder and jump in it.
 
-Start VSCode from there i.e. run `code .-` in the console when you're located in the folder. This will open VSCode and you'll be able to create as many files you want.
+Start VSCode from there i.e. run `code .` in the console when you're located in the folder. This will open VSCode and you'll be able to create as many files you want.
 
 ### Dockerfile
 

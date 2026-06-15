@@ -23,7 +23,7 @@ In this article, we'll see how, very easily, we can load an Excel range into a r
 
 The idea is to provide a list of values in a ribbon but to not have to hardcode values in the list but, just, to link to a range, anywhere in your workbook.
 
-I've used this technique in many of my Excel application's (i.e. Excel having VBA code).
+I've used this technique in many of my Excel applications (i.e. Excel files having VBA code).
 
 For this blog post, we'll create a list of periods (YYYYMM) in a worksheet and load that list in our custom ribbon.
 

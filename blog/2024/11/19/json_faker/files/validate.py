@@ -14,4 +14,4 @@ try:
     validate_json(data_file, schema_file)
     print("Data is valid!")
 except jsonschema.exceptions.ValidationError as exception:
-    print(f{"Data is invalid: {exception}")
+    print(f"Data is invalid: {exception}")

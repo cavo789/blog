@@ -37,7 +37,7 @@ COPY requirements.txt .
 RUN --mount=type=cache,target=/root/.cache/pip \
     set -eux \
     && printf "\e[0;105m%s\e[0;0m\n" "Install Python prod dependencies..." \
-    && pip install --no-cache-dir -r requirements.txt
+    && pip install -r requirements.txt
 
 # Make sure installed dependencies are in the PATH
 ENV PATH="/root/.local/bin:$PATH"

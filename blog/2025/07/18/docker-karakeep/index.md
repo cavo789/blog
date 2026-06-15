@@ -43,7 +43,7 @@ The line `user: ${UID:-1000}:${GID:-1000}` will ask Docker to use a specific use
 
 The user `1000:1000` is, in the most cases, you i.e. it's your current Linux user (type `id -u` and, then, `id -g` to retrieve your user ID and your group ID and you'll see it'll be `1000` for both).
 
-If yours IDs are not `1000`, please edit the yaml file and put yours IDs instead.
+If your IDs are not `1000`, please edit the yaml file and put your IDs instead.
 
 </AlertBox>
 
@@ -94,7 +94,7 @@ It's also possible to create a list as a child of an existing one and thus, you 
 
 ### Tips - Select a list before adding an item
 
-By first selecting a list, new items will be adding directly to that list.
+By first selecting a list, new items will be added directly to that list.
 
 ## Extra features
 

@@ -46,7 +46,7 @@ One first change concern the prompt. Right now, I'm in my blog folder and it's a
 
 Nice but, we can do much better.
 
-Time to install a template engine called <Link to="/blog/powerlevel10k_sandbox">Powerlevel10k](https://github.com/romkatv/powerlevel10k)? You can read my previous article [Customize your Linux prompt with Powerlevel 10k</Link> if you wish to just test it. In the next paragraph, I'll well install PowerLevel10 on my computer so let's go ahead.
+Time to install a template engine called <Link to="/blog/powerlevel10k_sandbox">Powerlevel10k</Link> ([https://github.com/romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k))? You can read my previous article <Link to="/blog/powerlevel10k_sandbox">Customize your Linux prompt with Powerlevel 10k</Link> if you wish to just test it. In the next paragraph, I'll well install PowerLevel10 on my computer so let's go ahead.
 
 ### Powerlevel10k
 
@@ -90,7 +90,7 @@ You might think these features are not needed but the fact is I'm using them so 
 
 For instance, `take /tmp/new_folder` will create the folder if not yet present and will jump in it.
 
-Be honest, `take /tmp/new_folder` is easier and faster than `mkdir -p /tmp/new_folder && cd $?` no?
+Be honest, `take /tmp/new_folder` is easier and faster than `mkdir -p /tmp/new_folder && cd $_` no?
 
 <AlertBox variant="info" title="Take is just a custom function">
 `take` is, in fact, a function defined in file `~/.oh-my-zsh/lib/functions.zsh`.

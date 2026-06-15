@@ -35,7 +35,7 @@ There are some tools that allow comparing two files like `diff` but not really t
 2. We don't care about the position in the file where the variable is declared. If `APP_ENV = local` is on the first line, in the middle of the file or just before the last line, we don't care about it.
 3. We can also ignore some variables that we know they should be different like `APP_KEY` f.i.
 
-Let's try... Below we'll create the file `.env.example` with two lines then copy it to `.env` and just add a new line in `.env.example`. Finally, we'll sort  sort -o `.env.example` so the order will differs with `.env`.
+Let's try... Below we'll create the file `.env.example` with two lines then copy it to `.env` and just add a new line in `.env.example`. Finally, we'll sort `.env.example` so the order will differ with `.env`.
 
 <Terminal typewriter>
 $ mkdir -p /tmp/playing_env && cd $_

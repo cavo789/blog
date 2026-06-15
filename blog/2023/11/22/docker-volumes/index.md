@@ -135,7 +135,7 @@ DRIVER    VOLUME NAME
 local     demo_counter_data
 </Terminal>
 
-Yes, we've it.
+Yes, there it is.
 
 Let's try again some calls then stop/restart and a few calls then:
 
@@ -234,7 +234,7 @@ One of the easiest ways to access the files contained in a volume is to use the 
 
 ![Docker Desktop - List of volumes](./images/docker_desktop_volumes.webp)
 
-By clicking of the volume name (`demo_counter_data` here)
+By clicking on the volume name (`demo_counter_data` here)
 
 ![Docker Desktop - Show the data folder](./images/showing_data.webp)
 

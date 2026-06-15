@@ -125,7 +125,7 @@ All done! ✨ 🍰 ✨
 
 Oh? Did you see the **reformatted main.py** line? Something was wrong with that file.
 
-Did you've noticed my typo?
+Did you notice my typo?
 
 ```python
 print("I'm your Python code")

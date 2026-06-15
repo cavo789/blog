@@ -68,7 +68,7 @@ For simplicity, create the `rector.php` file in your project's root directory.
 
 ## Run Rector
 
-Call your friend, your coach, by just running `vendor/bin/rector process sayHello.php --dry-run rector.php`.
+Call your friend, your coach, by just running `vendor/bin/rector process sayHello.php --dry-run --config rector.php`.
 
 ![Rector is simplifying our sayHello function](./images/rector_say_hello.webp)
 
@@ -78,9 +78,9 @@ Let's take a look on the command:
 * `process`: the action to run, it's always `process`,
 * `sayHello.php`: the file to scan. You can type `.` for your entire project or f.i. `app` when `app` is a folder,
 * `--dry-run`: ask Rector to, only, show suggestions and not to update the file and
-* `rector.php`: this is the name of our configuration file.
+* `--config rector.php`: this is the name of our configuration file.
 
-So running `vendor/bin/rector process sayHello.php --dry-run rector.php` is just like to ask **Hey my friend and coach, please take a look to my sayHello.php script and show me how I can improve my syntax and be a better programmer.**  And Rector does it; quickly and without judgment.
+So running `vendor/bin/rector process sayHello.php --dry-run --config rector.php` is just like to ask **Hey my friend and coach, please take a look to my sayHello.php script and show me how I can improve my syntax and be a better programmer.**  And Rector does it; quickly and without judgment.
 
 He'll show you the changes **he could make**, automatically, and explain why he thinks it's better.
 
@@ -158,7 +158,7 @@ class SomeClass
 
 ## Final code
 
-So, back to our console, running `vendor/bin/rector process sayHello.php --dry-run rector.php` will show me, in the console, the new *refactored* version of my code:
+So, back to our console, running `vendor/bin/rector process sayHello.php --dry-run --config rector.php` will show me, in the console, the new *refactored* version of my code:
 
 <Snippet filename="index.php" source="./files/index.php" />
 
@@ -173,11 +173,11 @@ Yes, I'm very grateful to Rector for teaching me these new approaches and making
 
 ## Last thing, make the change
 
-Now that we've taken the time to analyze the rules that could be applied and that we think are perfectly adequate, it's time to start refactoring for real: simply remove the `--dry-run` flag and, thus, the final command to run is: `vendor/bin/rector process sayHello.php rector.php`.
+Now that we've taken the time to analyze the rules that could be applied and that we think are perfectly adequate, it's time to start refactoring for real: simply remove the `--dry-run` flag and, thus, the final command to run is: `vendor/bin/rector process sayHello.php --config rector.php`.
 
 You know what? **I LOVE RECTOR 💕**
 
-Imagine what it could do for my entire project if I run `vendor/bin/rector process . --dry-run rector.php`.
+Imagine what it could do for my entire project if I run `vendor/bin/rector process . --dry-run --config rector.php`.
 
 ## Learn more
 

@@ -105,7 +105,7 @@ Create a new `test.md` file in your `/tmp/docker-quarto` folder with this conten
 <Snippet filename="/tmp/docker-quarto/test.md">
 
 ```markdown
-# What's is Quarto? Explain like I'm five
+# What is Quarto? Explain like I'm five
 
 Imagine you want to write a story or a report, but instead of using a fancy computer program, you use plain text. That's kind of like Markdown, a simple language that lets you format your text without getting too complicated.
 
@@ -126,7 +126,7 @@ As a reminder, the used Docker run command are (almost always the same):
 * `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
 * `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
 * `-v .:/input` to share your current folder with a folder called `/input` in the Docker container,
-* `-w /input` to tell Docker that the current directory, in the container, will be the `/app` folder,
+* `-w /input` to tell Docker that the current directory, in the container, will be the `/input` folder,
 * `-u $(id -u):$(id -g)` ask Docker to reuse our local credentials so when a file is updated/created in the container, the file will be owned by you,
 * then `cavo789/quarto` which is the name of your Quarto Docker image, and, finally,
 * `quarto render test.md --to pdf` i.e. the command line to start within the container.
@@ -197,7 +197,7 @@ Ok, you've just one slide now. Reopen the `test.md` file and you'll insert *slid
 <Snippet filename="/tmp/docker-quarto/test.md">
 
 ```markdown
-# What's is Quarto? Explain like I'm five
+# What is Quarto? Explain like I'm five
 
 Imagine you want to write a story or a report, but instead of using a fancy computer program, you use plain text. That's kind of like Markdown, a simple language that lets you format your text without getting too complicated.
 

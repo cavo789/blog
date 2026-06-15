@@ -61,9 +61,9 @@ Zorin comes with a lot of preinstalled software like **Libre-Office**.
 I haven't gone any further in my discovering of Zorin, but if I ever needed to do without Windows, Zorin would definitely be at the top of my list of options.
 
 <AlertBox variant="caution" title="Re-format USB flash drive">
-Now that Zorin has been installed, you can reformat your USB drive to be able to reuse it... but please notice if you format it using Xorin (Linus thus) your USB stick won't work anymore under Windows.
+Now that Zorin has been installed, you can reformat your USB drive to be able to reuse it... but please notice if you format it using Zorin (Linux thus) your USB stick won't work anymore under Windows.
 
-If you already have formatted your stick using Xorin, you'll have to start the `diskpart` utility in a DOS console.
+If you already have formatted your stick using Zorin, you'll have to start the `diskpart` utility in a DOS console.
 
 * Plug in your USB drive.
 * Press <kbd>Win</kbd>+<kbd>R</kbd>, type `diskpart`, and hit <kbd>Enter</kbd>.
@@ -74,7 +74,7 @@ If you already have formatted your stick using Xorin, you'll have to start the `
   * `create partition primary` to create a primary partition,
   * `format fs=ntfs quick` to format the stick using NTFS file system,
   * `assign` to assign a drive letter to the stick
-  * finally run `exit` to quick the diskpart utility.
+  * finally run `exit` to quit the diskpart utility.
 
 Now, the stick will be recognize again by Windows.
 </AlertBox>

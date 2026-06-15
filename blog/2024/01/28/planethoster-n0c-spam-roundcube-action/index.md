@@ -116,7 +116,7 @@ clear
 
 if [ ! -f patterns.json ]; then
     echo "Please create a patterns.json file."
-    echo "Run 'cp patterns.json.dist patterns.js' to use an example."
+    echo "Run 'cp patterns.json.dist patterns.json' to use an example."
     exit 1
 fi
 
@@ -126,7 +126,7 @@ if [ ! -f spam.template ]; then
     echo "# rule:[Identify as spam: {{ pattern }}]"
     echo "if allof (header :matches \"from\" \"{{ pattern }}\")"
     echo "{"
- echo "  fileinto \"spam\";"
+    echo "  fileinto \"spam\";"
     echo "}"
     echo ""
     exit 1
@@ -149,7 +149,7 @@ cat patterns.json \
         sed "s/{{ pattern }}/${pattern}/g" spam.template >>"${outFile}"; \
     done
 
-echo "File "${outFile}" has been created."
+echo "File ${outFile} has been created."
 ```
 
 Also run `chmod +x generate.sh` to make it executable.

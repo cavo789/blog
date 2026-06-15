@@ -141,4 +141,4 @@ In your host, just jump in the `build` folder and run `docker run -d --name stat
 It's an easy way to validate it's working.
 </AlertBox>
 
-Now, you can start your SFTP client f.i. and upload the `static` folder to your webserver if it was your objective.
+Now, you can start your SFTP client f.i. and upload the `build` folder to your webserver if it was your objective.

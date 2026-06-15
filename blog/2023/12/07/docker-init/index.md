@@ -60,7 +60,7 @@ For the next questions:
 
 * `What version of PHP do you want to use?`, please enter f.i. `8.2`,
 * `What's the relative directory for your app?`, just press enter to select the current directory,
-* `What local port do you want to us to access your server?`, just press enter to use the proposed port number or f.i. enter `8080`.
+* `What local port do you want to use to access your server?`, just press enter to use the proposed port number or f.i. enter `8080`.
 
 <Terminal typewriter>
 ? What application platform does your project use? PHP with Apache
@@ -139,7 +139,7 @@ Go back to your console, press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop the first co
 
 We'll start an interactive shell in the container. We just need to know how the container is named.
 
-Back to the `compose.yaml` file, we can retrieve the name of the container; it's ne name of the service: `server` in this case.
+Back to the `compose.yaml` file, we can retrieve the name of the container; it's the name of the service: `server` in this case.
 
 <Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 

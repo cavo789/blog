@@ -1,3 +1,8 @@
+import os
+import random
+import time
+
+
 def play_again():
     question = "Do You want to play again? y = yes, n = no \n"
     play_game = input(question)

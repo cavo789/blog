@@ -30,6 +30,6 @@ And adding words like *Realistic photo* will generate images as if they were pho
 
 ![Variate](./images/variate.webp)
 
-Also, unlike Bing, recraft.ai allow to specify the size of the image (horizontal, vertical, `2:1`, `4:3`, `1:2` and much more).
+Also, unlike Bing, recraft.ai allows to specify the size of the image (horizontal, vertical, `2:1`, `4:3`, `1:2` and much more).
 
 During my attempts, I didn't notice typos i.e. when I've asked to see f.i. a banner with some words on it; it was correct. Sometimes, for this blog and using Bing, I need to rework the image to remove/add some letters because the generator has made typos. Here; at first sight, it's OK.

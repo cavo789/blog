@@ -14,7 +14,7 @@ tags:
   - yarn
 language: en
 ---
-<!-- cspell::ignore corepack,docusaurus,johndoe -->
+<!-- cspell:ignore corepack,docusaurus,johndoe -->
 ![Encapsulate an entire Docusaurus site in a Docker image](/img/v2/docusaurus_tips.webp)
 
 <AlertBox variant="important" title="This article is deprecated">
@@ -73,7 +73,7 @@ So, now, we've a dummy blog.
 
 ## Prepare our Docusaurus installation for Docker
 
-*If you've skipped the previous folder because you already had a Docusaurus instance, jump in your it (`cd <your_docusaurus_folder>`).*
+*If you've skipped the previous folder because you already had a Docusaurus instance, jump in it (`cd <your_docusaurus_folder>`).*
 
 We'll need to create some files for Docker.
 
@@ -101,7 +101,7 @@ Before being able to do this, we need to:
 
 This is our three stages.
 
-**The stage 1 is called `base`**. In that stage, we do almost nothing, just download a `node` alpine version and initialize some variables. This step can be, in the future, be also used by a `development` stage but, in this article, let's concentrate on the `production` one.
+**The stage 1 is called `base`**. In that stage, we do almost nothing, just download a `node` alpine version and initialize some variables. This step can, in the future, also be used by a `development` stage but, in this article, let's concentrate on the `production` one.
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile.part2" />
 
@@ -147,7 +147,7 @@ The second file we need to create should be called `.dockerignore` and with this
 
 The `.dockerignore` file is there to ask Docker not to copy everything in your final image when running the instruction `COPY . /opt/docusaurus/` present in the `Dockerfile`.
 
-Indeed, in our final image we don't need f.i. folders like `build/` or `node_modules/` because they'll be created while building the image. We don't need too our `.git/` folder (if present), we don't need temporary or files needed just for the build.
+Indeed, in our final image we don't need f.i. folders like `build/` or `node_modules/` because they'll be created while building the image. We don't need our `.git/` folder (if present) either, we don't need temporary or files needed just for the build.
 
 The `.dockerignore` file is then needed to keep the image smaller in size and to prevent to copy sensitive files (those containing secrets or configuration items) in the final image.
 
@@ -178,7 +178,7 @@ Our objective was to create a Docker image containing our Docusaurus site.
 
 When creating a Docker image, we should give it a name.
 
-<AlertBox variant="caution" title="The name of the image should be respect the `owner/name` pattern.">
+<AlertBox variant="caution" title="The name of the image should respect the `owner/name` pattern.">
 `owner` has to be your pseudo on Docker Hub. In my case, my pseudo there is `[cavo789](https://hub.docker.com/u/cavo789)` so if I wish to publish an image, I should use `cavo789` for the first part. Then, I need to specify an unique name not yet present in my profile.
 
 In my case `cavo789/blog` is then a good choice. For this article, I'll use `johndoe/blog` since I'll not publish that image on the Internet.
@@ -221,7 +221,7 @@ To do this, just run the following command:
 $ docker run -d --publish 80:80 --name blog johndoe/blog
 </Terminal>
 
-Very quickly, you'll get a very long ID as result like f.i. `cae6989bee2a2339a4c0116be2b86ee3dae0b46d47a6c53dcb6e50098726c0b1`. Just ignore this at this moment, it just means you're container has been created successfully.
+Very quickly, you'll get a very long ID as result like f.i. `cae6989bee2a2339a4c0116be2b86ee3dae0b46d47a6c53dcb6e50098726c0b1`. Just ignore this at this moment, it just means your container has been created successfully.
 
 Now, start your browser and surf to `http://localhost`.
 
@@ -262,7 +262,7 @@ Just remove the container and create it again to retrieve the blog.
 
 Before being able to publish your image on Docker hub, first, you should make sure you've logged in.
 
-Run `docker login` on your command line and make a login with a valid account. *If you were already authenticated, you'll see `Authenticating with existing credentials...`
+Run `docker login` on your command line and make a login with a valid account. *If you were already authenticated, you'll see `Authenticating with existing credentials...`*
 
 Now, push your image by running `docker image push` followed by your image name; in my case, it'll be `cavo789/blog` since I'm logged in as `cavo789`.
 

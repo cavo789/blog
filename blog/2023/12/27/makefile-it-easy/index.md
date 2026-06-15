@@ -74,7 +74,7 @@ The indentation in a makefile **SHOULD BE** made using tabs and not spaces, this
 
 </AlertBox>
 
-Lines like `adminer:` or `bash:` are called `targets`; it's your commands. Take a look to the `up:` target: you'll retrieve one command and it's `docker compose up --detach`.
+Lines like `adminer:` or `bash:` are called `targets`; it's your commands. Take a look at the `up:` target: you'll retrieve one command and it's `docker compose up --detach`.
 
 So, from now, instead of running (and remember) `docker compose up --detach` to run your application, now, just run `make up` to get the same.
 

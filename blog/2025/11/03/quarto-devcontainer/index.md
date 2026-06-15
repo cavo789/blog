@@ -44,7 +44,7 @@ Let's see how to do this; you'll see, it's so simple.
 
 For sure, if you've one, just jump in your project. Here, for this blog post, we'll just reuse an existing one.
 
-By running the commands below in a console, you'll retrieve download just the `brand` folder from the `quarto-examples` project:
+By running the commands below in a console, you'll download just the `brand` folder from the `quarto-examples` project:
 
 <Terminal typewriter wrap={true}>
 $ cd /tmp
@@ -200,7 +200,7 @@ So, if your objective is to render the final documentation, you can always see *
 
 ## What's is pre-commit?
 
-In this project, I've foresee the installation of [pre-commit](https://pre-commit.com/). This is an optional tool that will run some validation controls to your project before you'll push it to your versioning system (like Github or GitLab).
+In this project, I've planned the installation of [pre-commit](https://pre-commit.com/). This is an optional tool that will run some validation controls to your project before you'll push it to your versioning system (like Github or GitLab).
 
 By adding `pre-commit` in the devcontainer, you'll get the privilege to never again commit files with some fault like f.i. formatting issues in your Markdown content.
 

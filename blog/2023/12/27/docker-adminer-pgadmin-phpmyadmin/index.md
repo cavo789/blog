@@ -21,7 +21,7 @@ This can be done in just one command line instruction.
 
 <!-- truncate -->
 
-Before to be able to start the command, you should provide a few information:
+Before being able to start the command, you should provide some information:
 
 * you should know the **name of the docker container** to connect and
 * you should know the **name of the used network**.

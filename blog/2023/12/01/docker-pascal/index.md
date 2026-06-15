@@ -14,7 +14,7 @@ language: en
 
 Good old memories... During my studies (in 1991-1993), I was a huge fan of Turbo Pascal 7.0. It was the first language that I really learned and loves it so much. I used to spend dozens of hours behind my computer writing anything and everything.
 
-If you good remember that time, Turbo Pascal 7.0 was used to create executables for MS-DOS.
+If you still remember that time, Turbo Pascal 7.0 was used to create executables for MS-DOS.
 
 The idea for this article came after the one written on <Link to="/blog/docker-assembly">assembly language</Link>: is it possible in 2023 to run Pascal code written 30 years earlier?
 
@@ -64,7 +64,7 @@ As a reminder, the used Docker run command are (almost always the same):
 * `-v %CD%:/app` to share your current folder with a folder called `/app` in the Docker container,
 * `-w /app` to tell Docker that the current directory, in the container, will be the `/app` folder
 * then `signumtemporis/fpc:cross.x86_64-win64.slim` which is the name of the Docker image to use and, finally,
-* `Hello.pas` i.e. our source file (the fpc image seems to not request to specify the `fpc` executable; just the source file.
+* `Hello.pas` i.e. our source file (the fpc image seems to not request to specify the `fpc` executable; just the source file).
 
 </AlertBox>
 
@@ -79,7 +79,7 @@ Create the `Byte2Bin.pas` file on your disk with this content:
 <Snippet filename="Byte2Bin.pas" source="./files/Byte2Bin.pas" />
 
 <AlertBox variant="info" title="SHL for Shift left one position">
-The `shl` instruction will shift the number from on byte left.
+The `shl` instruction will shift the number from one byte left.
 
 </AlertBox>
 

@@ -54,7 +54,7 @@ You're now in SSMS. We'll create a dummy database. Using some AI, I've asked for
 
 We just need to click on the `Execute` button or press <kbd>F5</kbd> to run it i.e. to create our `SampleDB` database.
 
-Now, right on the `Databases` node (in the top left tree-view) and you'll see, we've now our DB:
+Now, right-click on the `Databases` node (in the top left tree-view) and you'll see, we've now our DB:
 
 ![The SampleDB](./images/customers.webp)
 
@@ -146,7 +146,7 @@ Get a recordset from the database and output it into a sheet. This function make
 
 Fast
 
-#### Inconvenient
+#### Drawback
 
 Don't keep any link with the DB, records are copied to Excel
 
@@ -165,7 +165,7 @@ Create a query table in a sheet : create the connection, the query table, give i
 Keep the connection alive. The end user will be able to make a Data -> Refresh to obtain an update of the sheet.
 If the user doesn't have access to the database, the records will well be visible but without any chance to refresh them
 
-#### Inconvenient
+#### Drawback
 
 If the parameter bPersist is set to True, the connection string will be in plain text in the file (=> avoid this if you're using a login / password).
 

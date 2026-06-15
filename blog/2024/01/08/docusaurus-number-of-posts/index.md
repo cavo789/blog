@@ -33,7 +33,7 @@ Click on the `Console` tab then, in the right bottom part, copy/paste the instru
 document.querySelectorAll("#__docusaurus_skipToContent_fallback > main > section > div > div > div > ul > li")
 ```
 
-The first time, the console will notify you that you should allow pasting (in French *autoriser le collage*). Please type it.
+The first time, the console will notify you that you should allow pasting (in French *autoriser le collage*). Please type `allow paste` to confirm.
 
 Then copy/paste again.
 

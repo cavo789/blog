@@ -57,7 +57,7 @@ Repeating the same prompt again and again and got others ones:
 
 ![Different poses - 4](/img/meerkat/suricate_positions_4.webp)
 
-How easy, how crazy it's.
+How easy, how crazy it is.
 
 To generate all the images for this blog, I used Gemini's free plan, which allowed me to create about ten images per day.
 

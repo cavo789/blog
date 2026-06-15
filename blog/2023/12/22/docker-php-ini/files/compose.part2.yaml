@@ -9,7 +9,7 @@ services:
       - JOOMLA_DB_PASSWORD=example
     # highlight-next-line
     volumes:
-      // highlight-next-line
+      # highlight-next-line
       - ./php.ini:/usr/local/etc/php/php.ini
 
   joomladb:

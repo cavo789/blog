@@ -28,7 +28,7 @@ What tool should you use for this type of requirement?
 
 Cypress is a front-end testing tool that empowers developers to automate functional tests directly within the browser. It enables actions like navigating web pages, interacting with elements, submitting forms, and asserting content or URL changes, streamlining end-to-end and integration testing.
 
-In june 2024, I've written an article about a PHP functional test tool called <Link to="/blog/behat-introduction">Behat</Link>, let's see how to proceed with Cypress which is a Javascript tool.
+In June 2024, I've written an article about a PHP functional test tool called <Link to="/blog/behat-introduction">Behat</Link>, let's see how to proceed with Cypress which is a JavaScript tool.
 
 <!-- truncate -->
 
@@ -41,7 +41,7 @@ It's really easy to use Cypress and writing tests is pretty straightforward.  Un
 
 Create a temporary directory like `mkdir -p /tmp/cypress && cd $_`.
 
-Create the `package.json` file with the following content. The objective is to mention we need the `cypress` dependency and we'll define to commands, `open` and `run`.
+Create the `package.json` file with the following content. The objective is to mention we need the `cypress` dependency and we'll define two commands, `open` and `run`.
 
 <Snippet filename="package.json" source="./files/package.json" />
 

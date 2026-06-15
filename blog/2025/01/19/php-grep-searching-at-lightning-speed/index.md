@@ -41,7 +41,7 @@ WinSCP will, in fact, start a `.ps1` script located here: `C:\Program Files (x86
 
 </AlertBox>
 
-It's terribly slow and you'll get a huge list with all your files; not only the ones where the search pattern is retrieved. This function has the merit of exciting, but it's not much.
+It's terribly slow and you'll get a huge list with all your files; not only the ones where the search pattern is retrieved. This function has the merit of existing, but it's not much.
 
 ## php_grep
 

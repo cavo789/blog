@@ -90,6 +90,6 @@ RUN --mount=type=cache,target=/home/${OS_USERNAME}/.cache/pip \
     set -eux \
     && cat requirements.txt \
     && printf "\e[0;105m%s\e[0;0m\n" "Install Python dev dependencies..." \
-    && python -m pip install --no-cache-dir -r requirements.txt
+    && python -m pip install -r requirements.txt
 
 WORKDIR "${DOCKER_APP_HOME}"

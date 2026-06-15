@@ -32,7 +32,7 @@ I invite you to play with it on your development machine (unless you have your o
 Here's how to do it:
 
 * go, for instance, in your `/tmp/joomla` folder
-* open your browser and surf to [https://github.com/alexandreelise/frankenphp-joomla],
+* open your browser and surf to [https://github.com/alexandreelise/frankenphp-joomla](https://github.com/alexandreelise/frankenphp-joomla),
 * follow the instructions given by Alexandre in his `Getting Started` readme file.
 
 <AlertBox variant="info" title="Don't build the image yourself">

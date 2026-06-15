@@ -55,7 +55,7 @@ I'm running it like this: `pylint . --rcfile .config/.pylintrc`.
 >
 > Autoflake also removes useless pass statements by default.
 
-I'm running it like this: `Autoflake --remove-unused-variables --remove-all-unused-import --recursive .`
+I'm running it like this: `autoflake --remove-unused-variables --remove-all-unused-import --recursive .`
 
 ## 3. isort
 

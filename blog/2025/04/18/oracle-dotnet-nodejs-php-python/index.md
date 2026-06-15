@@ -72,7 +72,7 @@ Let's create a Dockerfile:
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
-Now, the DotNet part. We need two files: `OracleConnector/OracleConnector.csproj` and `OracleConnector.csproj/main.cs`.
+Now, the DotNet part. We need two files: `OracleConnector/OracleConnector.csproj` and `OracleConnector/main.cs`.
 
 <Snippet filename="OracleConnector/OracleConnector.csproj" source="./files/OracleConnector.csproj" />
 

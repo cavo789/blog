@@ -79,7 +79,7 @@ If you get `Error establishing a database connection`, please wait a little befo
 
 ## Optional, start phpmyadmin
 
-As we've seen in the [Using Adminer, pgadmin or phpmyadmin to access your Docker database container](docker-adminer-pgadmin-phpmyadmin) article, we can access to a database container using f.i. phpmyadmin. To do this, just run the following command in a terminal:
+As we've seen in the <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Using Adminer, pgadmin or phpmyadmin to access your Docker database container</Link> article, we can access to a database container using f.i. phpmyadmin. To do this, just run the following command in a terminal:
 
 <Terminal typewriter>
 $ docker run -d --rm --network wordpress --name phpmyadmin -e PMA_HOST=db_wordpress -p 8089:80 phpmyadmin

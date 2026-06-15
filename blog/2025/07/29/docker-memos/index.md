@@ -51,7 +51,7 @@ The line `user: ${UID:-1000}:${GID:-1000}` will ask Docker to use a specific use
 
 The user `1000:1000` is, in the most cases, you i.e. it's your current Linux user (type `id -u` and, then, `id -g` to retrieve your user ID and your group ID and you'll see it'll be `1000` for both).
 
-If yours IDs are not `1000`, please edit the yaml file and put yours IDs instead.
+If your IDs are not `1000`, please edit the yaml file and put your IDs instead.
 
 </AlertBox>
 
@@ -124,7 +124,7 @@ Review the Dockerfile for the user authentication service to ensure optimal imag
 
 ## Filtering using tags
 
-When you've used tags, you'll see them immediately bottom left under `Tags`. Simply click on a tag to filter on it. You can click on more than ones if you want. In the example below, I've three notes for `Python` and just one with the Docker tag:
+When you've used tags, you'll see them immediately bottom left under `Tags`. Simply click on a tag to filter on it. You can click on more than one if you want. In the example below, I've three notes for `Python` and just one with the Docker tag:
 
 ![Filtering using tags](./images/filtering_using_tags.webp)
 

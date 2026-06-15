@@ -210,7 +210,7 @@ The `docker run` was terribly complex; here is a breakdown:
 * `--name oracle-db`: Our running container will be named `oracle_db` (so we can access to it later on by running `docker exec -it oracle-db [...]`),
 * `--network oracle`: We will create our container on the `oracle` network,
 * `-p 1521:1521`: Oracle use a port number 1521 (Oracle Listener) and we'll expose that port on our machine,
-* `-p 5500:5500`: Optional. Oracle use a second port number 5550 (OEM Express) and we'll expose that port too so we'll be able to access to `http://localhost:5500`,
+* `-p 5500:5500`: Optional. Oracle use a second port number 5500 (OEM Express) and we'll expose that port too so we'll be able to access to `http://localhost:5500`,
 * `-e ORACLE_SID=ORCLCDB`: The Oracle Database SID (SID stands for *System identifier*) is a very important setting. We'll keep the default value which is `ORCLCDB` (remember; `CDB` stands for `Container database`)
 * `-e ORACLE_PDB=ORCLPDB1`: The Oracle Database PDB name. Here too, we'll keep the default value which is `ORCLPDB1`. (remember; `PDB` stands for `pluggable database`).
 * `-e ORACLE_PWD=admin`: The Oracle database SYS, SYSTEM and PDBADMIN password. There is no default value since the password is auto generated and should be retrieved from the logs (`docker log`). This parameter modifies the password for the SYS, SYSTEM and PDBADMIN users.
@@ -223,7 +223,7 @@ From now on, our Oracle database server is running as a Docker container. We'll 
 
 Here are the constants to remember:
 
-* `1512` is the port number to use when connecting to the Oracle DB service,
+* `1521` is the port number to use when connecting to the Oracle DB service,
 * `oracle-db` is the name of our container,
 * `ORCLCDB` is the name of our CDB,
 * `ORCLPDB1` is the name of our pluggable database,

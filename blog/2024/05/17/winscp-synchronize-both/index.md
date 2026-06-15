@@ -39,7 +39,7 @@ I'm using such script for making a full backup of some of my folders to my Synol
    7. The remote folder from where the files should be copied (line `cd /Christophe`), can be the ftp root or any subfolder
 3. Start a DOS session
 4. Run `cd \temp`
-5. Run `winscp.com` from there: type `"c:\program files (86)\WinSCP\WinSCP.com" /script="c:\temp\synchronize.txt"`
+5. Run `winscp.com` from there: type `"c:\program files (x86)\WinSCP\WinSCP.com" /script="c:\temp\synchronize.txt"`
 
 If everything is correctly set up, WinSCP will start a session terminal and will start the synchronization.
 

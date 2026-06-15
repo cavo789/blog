@@ -1,5 +1,7 @@
 from typing import Optional, Tuple, List
 
+import oracledb
+
 # cspell:ignore oracledb,orclpdb1,sysdba,rownum
 
 DB_USER: str = "SYS"

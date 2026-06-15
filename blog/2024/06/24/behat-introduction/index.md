@@ -106,7 +106,7 @@ Make sure you're still in an interactive Bash session in the Docker container be
 
 ![Install Behat](./images/composer_install_behat.webp)
 
-Once installed, you can start Behat by running `vendor/bin/behat` but right now, you'll got an error and this is perfectly normal since we need to start to write our first scenario.
+Once installed, you can start Behat by running `vendor/bin/behat` but right now, you'll get an error and this is perfectly normal since we need to start to write our first scenario.
 
 ![FeatureContext not found](./images/FeatureContext_not_found.webp)
 
@@ -171,7 +171,7 @@ Please open the file `features/bootstrap/FeatureContext.php` once more in your p
 
 ![Now we have our steps](./images/vscode_edit_1_FeatureContext.webp)
 
-Nice isn't? Behat has look at our `Blog.feature` file and create as many methods in our PHP code that we had sentences in our scenario and, each method is assigned to the sentence (take a look to the php comment before each method).
+Nice isn't? Behat has looked at our `Blog.feature` file and created as many methods in our PHP code as we had sentences in our scenario and, each method is assigned to the sentence (take a look to the php comment before each method).
 
 And, now, before even starting to code, let's ask Behat to run our scenario; please run `vendor/bin/behat` in the console:
 
@@ -207,13 +207,13 @@ We got the *Ambiguous match of ...* error on the very first step, our *I am on h
 
 By running `vendor/bin/behat` again and you'll have the same error for `iShouldBeOn` so remove that function too.
 
-Run `clear ; vendor/bin/behat` once more and now we'll got a new error:
+Run `clear ; vendor/bin/behat` once more and now we'll get a new error:
 
 ![Mink instance not set](./images/mink_instance_not_set.webp)
 
 ## Installing the Mink extension
 
-We'll now need to reference the `behat-chrome-extension` in a such called `behat.yml` file.
+We'll now need to reference the `behat-chrome-extension` in a so-called `behat.yml` file.
 
 Please create the file called `behat.yml` in your project's root directory; with this content:
 
@@ -289,7 +289,7 @@ We'll be able to write scenarios, simulate user actions like clicking on any obj
 
 We can do this before the application exists (concept of BDD), during the coding (to ensure features are still working even after a big refactoring f.i.) or during the life cycle (to make sure the application is still working as expected).
 
-Continue your journey thanks these websites:
+Continue your journey thanks to these websites:
 
 * [Automate testing with Behat](https://docs.pantheon.io/behat),
 * [Behat-chrome-extension repository](https://gitlab.com/behat-chrome/behat-chrome-extension),

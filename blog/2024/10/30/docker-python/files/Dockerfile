@@ -33,7 +33,7 @@ RUN --mount=type=cache,target=/var/cache/apk,rw \
     && apt-get update -yqq \
     && apt-get install -y --no-install-recommends bash git openssh-client tree \
     && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/*
+    && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Install Python dependencies
 #
@@ -63,7 +63,7 @@ ARG DOCKER_OS_USERID
 ARG DOCKER_OS_USERNAME
 
 RUN set -e -x \
-    mkdir -p "/home/.vscode-server/bin" \
+    && mkdir -p "/home/.vscode-server/bin" \
     && mkdir -p "/home/.vscode-server/extensions" \
     && mkdir -p "/home/.vscode-server/extensionsCache" \
     && printf "\e[0;105m%s\e[0;0m\n" "Create our ${DOCKER_OS_USERNAME} application user" \

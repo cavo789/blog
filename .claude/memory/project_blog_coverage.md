@@ -1,7 +1,7 @@
 ---
 name: project-blog-coverage
 description: Compact coverage map of /blog articles by technology — read this before suggesting new topics to avoid duplicates
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 708860e8-3efc-4d08-a254-45060a383296

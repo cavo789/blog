@@ -93,7 +93,7 @@ Using Pandas, it's quite simple to loop over files and do a merge.
 
 The script will take the first file (`employees_2020.csv`) and load it in memory. The column `salary` will be, in memory, renamed as `salary_2020`.
 
-Then, for each remaining years (from 2021 till 2025), the script will load a second file and do a merge to the previous one (so, first, merge 2020 and 2021).
+Then, for each remaining year (from 2021 till 2024), the script will load a second file and do a merge to the previous one (so, first, merge 2020 and 2021).
 
 The merge action means: retrieve `id`, `first_name` and `last_name` then also `salary_2020` from the first file and `salary_2021` from the second file and create a new file (a `DataFrame` in terms of Pandas).
 

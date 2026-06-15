@@ -6,8 +6,8 @@ services:
     image: lscr.io/linuxserver/heimdall:latest
     container_name: heimdall
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${USER_ID:-1000}
+      - PGID=${GROUP_ID:-1000}
       - TZ=Europe/Brussels
     volumes:
       - ./config:/config

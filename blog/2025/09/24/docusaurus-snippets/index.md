@@ -92,7 +92,7 @@ This component will make easy to retrieve an SVG icon for a language (let's say 
 
 In very short:
 
-1. Please run `yarn install @iconify/react` to install the iconify library
+1. Please run `yarn add @iconify/react` to install the iconify library
 2. Please create this file `src/components/Blog/LogoIcon/index.js`:
 
 <Snippet filename="src/components/Blog/LogoIcon/index.js" source="src/components/Blog/LogoIcon/index.js" />

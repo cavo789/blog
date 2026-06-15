@@ -61,6 +61,6 @@ Each statement logged will have a trace as you can see. For instance, the block 
 [2024-03-25T12:29:08+0100] Duration: 0 second(s)
 ```
 
-When there are multiple parents, you'll get the entire trace, f.i. `[Function test5 line 4;Function test4 line 10;Function test3 line 16;Function test2 line 24;Function test1 line 30;Function __main line 48]`: the function `__main` on line 48 has called `test1` who has called then `test2` and so.
+When there are multiple parents, you'll get the entire trace, f.i. `[Function test5 line 4;Function test4 line 10;Function test3 line 16;Function test2 line 24;Function test1 line 30;Function __main line 48]`: the function `__main` on line 48 has called `test1` who has called then `test2` and so on.
 
 Each statement in the log will then contain the entire trace, making debugging easier.

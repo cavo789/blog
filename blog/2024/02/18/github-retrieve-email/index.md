@@ -29,7 +29,7 @@ Indeed, GitHub provides a.o.t. an option to make the email private in his user s
 
 Such tool exists on the web like [https://emailaddress.github.io/](https://emailaddress.github.io/). Just copy/paste there and, perhaps, the system will return any used emails associated to this account.
 
-## Using parametrized URl
+## Using parametrized URL
 
 GitHub provides, in his public API, the list of public events of a given user.
 

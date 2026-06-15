@@ -12,7 +12,7 @@ RUN mkdir -p -m 0700 /root/.ssh && ssh-keyscan "github.com" >> /root/.ssh/known_
 // highlight-next-line
 RUN --mount=type=secret,id=my_ssh_key,dst=/root/.ssh/${KEY_NAME} \
     // highlight-next-line
-    mkdir -p /app && cd app \
+    mkdir -p /app && cd /app \
     // highlight-next-line
     && ssh -T git@github.com || true \
     // highlight-next-line

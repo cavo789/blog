@@ -39,7 +39,7 @@ The installation is simple, you just need to run `sudo apt-get update && sudo ap
 
 From now, simply run `eza` on the command line and you'll get the list of files with all the defaults presets.
 
-On my computer, I've chosen for this list of parameters: `--all --long --group --group-directories-first --icons --header --time-style long-iso` and, for sure, I've update by `~/.bashrc` file by adding an alias:
+On my computer, I've chosen for this list of parameters: `--all --long --group --group-directories-first --icons --header --time-style long-iso` and, for sure, I've updated my `~/.bashrc` file by adding an alias:
 
 <Terminal typewriter>
 $ alias ls='eza --all --long --group --group-directories-first --icons --header --time-style long-iso'

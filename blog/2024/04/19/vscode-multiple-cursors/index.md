@@ -15,7 +15,7 @@ language: en
 
 One of the best features in vscode is the *Multiple cursors* one.
 
-Imagine you've a bunch of lines where you need for instance remove the first two characters. Each lines starts with '//' and you wish to remove them but only there (a search & replace can't be used).
+Imagine you've a bunch of lines where you need for instance remove the first two characters. Each line starts with '//' and you wish to remove them but only there (a search & replace can't be used).
 
 Or, for another example, you must enclose each line in double brackets.
 
@@ -40,7 +40,7 @@ Here is how to do:
 
 * Select all the lines you need to update,
 * Press <kbd>SHIFT</kbd>-<kbd>ALT</kbd>-<kbd>I</kbd> to enable multiple cursors,
-* Press <kbd>Home</kbd> to put cursors at the beginning of each lines,
+* Press <kbd>Home</kbd> to put cursors at the beginning of each line,
 * Press `*` followed by a space to transform the list of lines to a bullet list.
 * Press <kbd>ESC</kbd> to quit the multiple cursors mode.
 

@@ -18,7 +18,7 @@ During my summer holidays, I've watched this video: [Full Ubuntu GUI in a Contai
 
 The idea is to start a Lubuntu Desktop distribution as a Docker container. Lubuntu is a lightweight Ubuntu distribution designed to be more resource-efficient than the standard Ubuntu.
 
-Using Docker and [Windows X Server](https://sourceforge.net/projects/vcxsrv/), we'll be able to play with Lubuntu just like any other containers i.e. play and drop without any impact on our ghost. Ideal for learning purposes then.
+Using Docker and [Windows X Server](https://sourceforge.net/projects/vcxsrv/), we'll be able to play with Lubuntu just like any other containers i.e. play and drop without any impact on our host. Ideal for learning purposes then.
 
 <!-- truncate -->
 

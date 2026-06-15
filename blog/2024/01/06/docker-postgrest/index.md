@@ -46,7 +46,7 @@ const todos = axios.create({
 
 ## Let's play
 
-For this post, let u's create a temporary folder in your `/tmp` folder: start a Linux console and run `mkdir /tmp/postgrest && cd $_`.
+For this post, let's create a temporary folder in your `/tmp` folder: start a Linux console and run `mkdir /tmp/postgrest && cd $_`.
 
 ### Step 1 - Create and populate our PostgreSQL database
 

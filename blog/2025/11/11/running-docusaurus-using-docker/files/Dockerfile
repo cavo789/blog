@@ -83,7 +83,7 @@ USER "${OS_USERNAME}"
 
 # Install dependencies using Yarn with cache mount
 RUN --mount=type=cache,target=${YARN_CACHE_FOLDER},uid=${OS_USERID},gid=${OS_GROUPID} \
-    yarn install --immutable --frozen-lockfile --prefer-offline
+    yarn install --frozen-lockfile --prefer-offline
 
 # ─────────────────────────────────────────────────────────────
 # 🧪 Stage 2: Development Environment Setup

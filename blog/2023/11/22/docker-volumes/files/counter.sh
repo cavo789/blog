@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 if [[ ! -f /data/counter.txt ]]; then
     mkdir -p /data

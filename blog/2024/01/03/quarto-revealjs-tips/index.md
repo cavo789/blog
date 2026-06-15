@@ -341,7 +341,7 @@ If you use vertical or grid navigation, you should structure your slides using l
 
 In a normal, `linear` navigation, revealjs will show each slide, whatever the key the user is pressing on his keyboard. In a `linear` navigation, as author, you are sure that your visitor will see each of them.
 
-In a `vertical` or `grid` navigation, it's just like you're showing the chapter's title and if the user press the <kbd>down</kbd> or <kbd>space</kbd>key, he will jump in the chapter (and this *vertically*). But if he is pressing the <kbd>right</kbd> key he'll skip it and go to the next chapter.
+In a `vertical` or `grid` navigation, it's just like you're showing the chapter's title and if the user press the <kbd>down</kbd> or <kbd>space</kbd> key, he will jump in the chapter (and this *vertically*). But if he is pressing the <kbd>right</kbd> key he'll skip it and go to the next chapter.
 
 The `navigation-mode` in the yaml header allows you to enable `vertical` mode, below an example:
 
@@ -388,7 +388,7 @@ To only show the current slide number, you can use `slide-number: true` but, if 
 
 ![Slide / Total of slides](./images/slides_c_t.webp)
 
-You can retrieve more information [here](https://quarto.org/docs/presentations/revealjs/presenting.html#slide-numbers).
+You can retrieve more information in the [Quarto slide numbers documentation](https://quarto.org/docs/presentations/revealjs/presenting.html#slide-numbers).
 
 ## Misc
 

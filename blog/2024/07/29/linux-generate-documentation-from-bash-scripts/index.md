@@ -28,7 +28,7 @@ Let's consider this `/tmp/bash/helpers/string.sh` file:
 
 <Snippet filename="/tmp/bash/helpers/string.sh" source="./files/string.sh" />
 
-We now need to create the `generate_doc.sh` script. Since it's a big script, please click on the next line to get his content. Click again to hide the code.
+We now need to create the `generate_doc.sh` script. Since it's a big script, please click on the next line to get its content. Click again to hide the code.
 
 Please create the file `/tmp/bash/generate_doc.sh` with this content:
 

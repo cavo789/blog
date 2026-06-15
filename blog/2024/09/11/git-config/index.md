@@ -66,7 +66,7 @@ Then you'll do some coding works and the time will come to push towards git usin
 
 Indeed, git will complain that `myNewFeature` didn't exist remotely and that you need first to create the branch.
 
-You can git rid of this but adding the two lines below in your `~/.gitconfig`:
+You can get rid of this by adding the two lines below in your `~/.gitconfig`:
 
 <Snippet filename="~/.gitconfig" source="./files/.gitconfig.part2" />
 
@@ -139,7 +139,7 @@ Even if you've cloned a repository using `git clone https://...` you can force, 
 
 So, for instance, if you've cloned your project using `git clone https://github.com/you/your_repo.git` (`https` thus), every time you'll push to it, you'll perhaps be prompted to provide your login and password. Really painful.
 
-But, if you already have created a SSH key for your Github profile, then, you can stop to use https and force ssl by adding the two lines below in your `~/.gitconfig`:
+But, if you already have created a SSH key for your Github profile, then, you can stop to use https and force SSH by adding the two lines below in your `~/.gitconfig`:
 
 <Snippet filename="~/.gitconfig" source="./files/.gitconfig.part8" />
 

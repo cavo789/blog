@@ -153,7 +153,7 @@ As you've seen, I've not hardcoded the ID in the proposed yaml file but I've def
 So, to make the script robust, we just need to initialise the `DOCKER_GROUPID`variable before building the image:
 
 <Terminal typewriter>
-$ DOCKER_GROUPID="$(getent group docker | cut -d: -f3)" docker compose up --detach --build && docker compose exec Dood /bin/sh
+$ DOCKER_GROUPID="$(getent group docker | cut -d: -f3)" docker compose up --detach --build && docker compose exec dood /bin/sh
 </Terminal>
 
 ## Conclusion

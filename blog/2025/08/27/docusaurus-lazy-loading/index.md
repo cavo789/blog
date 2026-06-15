@@ -41,6 +41,6 @@ The `// [...]` notation is there as a placeholder to show you that perhaps you'l
 
 <Snippet filename="src/theme/MDXComponents.js" source="./files/MDXComponents.js" />
 
-Once added to your `MDXComponents.js` file, just return to the browser; open any post and refresh the page. You'll see that images have now the `lazy` attributes (you can verify using the dev tools panel of your browser). If like in the example given here above, you've added some CSS style; you'll see it immediately.
+Once added to your `MDXComponents.js` file, just return to the browser; open any post and refresh the page. You'll see that images have now the `loading="lazy"` attribute (you can verify using the dev tools panel of your browser). If like in the example given here above, you've added some CSS style; you'll see it immediately.
 
 Easy no?

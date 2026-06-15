@@ -97,7 +97,7 @@ and, for `/tmp/bash/console_v2.sh`:
 
 <Snippet filename="/tmp/bash/console_v2.sh" source="./files/console_v2.part2.sh" />
 
-<AlertBox variant="info" title="The order has no important">
+<AlertBox variant="info" title="The order does not matter">
 Unlike a comparison with `diff`, the order in which the functions appear in the scripts is irrelevant, as we are sorting them.
 
 </AlertBox>

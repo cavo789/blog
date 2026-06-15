@@ -1,7 +1,7 @@
 ---
 name: project-article-proposals
 description: Proposed but not-yet-written article topics for the WSL2/ZSH/Git/Docker/FZF workflow series
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 708860e8-3efc-4d08-a254-45060a383296

@@ -18,7 +18,7 @@ blueskyRecordKey: 3m2syybizfc2z
 This article provides a quick tip for organizing your containers in Docker Desktop. It explains how to use the top-level `name` property in your `compose.yaml` files to group related services together under a single, collapsible entry in the Docker Desktop UI. This simplifies management, allowing you to start and stop multiple containers at once and keep your workspace tidy. The post also notes that this is a UI feature and suggests converting `docker run` commands to a compose file to take advantage of it.
 </TLDR>
 
-On a daily base, I'm running several tools as Docker containers: <Link to="/blog/heimdall-dashboard">Heimdall</Link>, <Link to="/blog/docker-memos">Memos</Link> and <Link to="/blog/docker-karakeep">Karakeep</Link>. It can be one or more containers buy tools.
+On a daily base, I'm running several tools as Docker containers: <Link to="/blog/heimdall-dashboard">Heimdall</Link>, <Link to="/blog/docker-memos">Memos</Link> and <Link to="/blog/docker-karakeep">Karakeep</Link>. It can be one or more containers but tools.
 
 I'm working under Windows so I'm using Docker Desktop to get a list of containers and, because I'm working with Docker for my own projects (can be Python, PHP or whatever), I'm facing with the following situation: I've a big list of containers and I would like some order.
 
@@ -26,7 +26,7 @@ Tools like Heimdall, Memos and Karakeep, I'm using them to make my daily work ea
 
 <!-- truncate -->
 
-See below: I'm grouping tools of different origin under `Tools` so it'
+See below: I'm grouping tools of different origin under `Tools` so it's easier to manage them.
 
 ![Grouping tools](./images/grouping_tools.webp)
 
@@ -34,7 +34,7 @@ This way, I have a smaller overview of the containers and can quickly sort out m
 
 ## The name property in the compose.yaml file
 
-The solution is easy to implement: if you've a `compose.yaml` (or `compose.yaml` if using the old name convention), just add a `name: tools` entry in the file, at the top.
+The solution is easy to implement: if you've a `compose.yaml` (or `docker-compose.yml` if using the old name convention), just add a `name: tools` entry in the file, at the top.
 
 For instance:
 
@@ -54,6 +54,6 @@ Easy and really handy.
 
 ## Tools can be located in different folders
 
-Just to tell, if can put your files, volumes, ... in different tools, it didn't matters. On my disk, I've a `~/tools` folder with one directory by tools (one for Heimdall, one for Memos, one for Karakeep, ...) and it's not a problem at all.
+Just to say, you can put your files, volumes, ... in different folders, it doesn't matter. On my disk, I've a `~/tools` folder with one directory by tools (one for Heimdall, one for Memos, one for Karakeep, ...) and it's not a problem at all.
 
 This let me to store files and volumes properly.

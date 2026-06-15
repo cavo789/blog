@@ -13,7 +13,7 @@ FROM php:8.2-fpm
 # Install system dependencies
 RUN apt-get update && apt-get install -y git jq zip unzip wget gnupg \
     && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/*
+    && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # We'll create a new user with the same uid/gid than ours, on our host machine.
 ARG DOCKER_UID
@@ -40,7 +40,7 @@ RUN wget --no-check-certificate --no-verbose -O - https://dl-ssl.google.com/linu
         libxss1 libxtst6 ca-certificates fonts-liberation libnss3 lsb-release \
         xdg-utils \
     && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/* \
+    && rm -rf /tmp/* /var/lib/apt/lists/* \
     # --- Download the browser ---
     && ZIP_URL=$(curl $DOWNLOAD_URL | jq -r ".versions[] | select(.version==\""$CHROME_VERSION"\").downloads.chrome[] | select(.platform==\""linux64"\") .url") \
     && wget --no-check-certificate --no-verbose -O /tmp/chrome_browser.zip $ZIP_URL \
@@ -59,7 +59,7 @@ RUN wget --no-check-certificate --no-verbose -O - https://dl-ssl.google.com/linu
     && chmod +x /usr/local/bin/chrome/chrome \
     # Make some cleanup
     && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/*
+    && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Get latest composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

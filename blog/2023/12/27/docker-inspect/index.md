@@ -74,7 +74,7 @@ Now by running `docker inspect <container_name>` (in our case, `docker inspect p
 ]
 ```
 
-The name of the used network can be retrieved in the `NetworksSettings.Networks` property.
+The name of the used network can be retrieved in the `NetworkSettings.Networks` property.
 
 You can retrieve it more easily using this command:
 
@@ -105,6 +105,6 @@ You'll get something like this:
 ```
 
 <AlertBox variant="info" title="jq">
-If you don't have the `jq` binary yet, please read the <Link to="/blog/linux-jq">The jq utility for Linux</Link> article. See my article: <Link to="/blog/linux-jq">The jq utility for Linux</Link>.
+If you don't have the `jq` binary yet, please read the <Link to="/blog/linux-jq">The jq utility for Linux</Link> article.
 
 </AlertBox>

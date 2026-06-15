@@ -21,7 +21,7 @@ This guide provides a step-by-step introduction to Pentaho Data Integration (PDI
 
 <!-- cspell:ignore pentaho,xtract,ransform,sheetname,dpage,webkitgtk -->
 
-Pentaho Data Integration is a ETL tool (**E**xtract, **T**ransform and **L**oad) used for data integration. Let's imagine you've an Excel file and you want to extract records (only those matching a specific rule), then apply a transformation (like adding some new columns based on current data) and load them in a PostgreSQL database.
+Pentaho Data Integration is an ETL tool (**E**xtract, **T**ransform and **L**oad) used for data integration. Let's imagine you've an Excel file and you want to extract records (only those matching a specific rule), then apply a transformation (like adding some new columns based on current data) and load them in a PostgreSQL database.
 
 Pentaho (also called **PDI** or **Kettle**) will allow you to *draw* a data flow (load files, do some merge, apply transformation, run some piece of code (Shell or Javascript), ... and store the result somewhere (a database or a file) or, even, send information by email in case of failure).
 

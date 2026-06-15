@@ -17,7 +17,7 @@ You may also need to select several emails from Microsoft Outlook and save them 
 
 In my case, it was when I was complementary self-employed. I had to keep track of the orders I received and the invoices I sent. Saving my orders as PDFs meant that I could keep them as archives, even if my mail server failed.
 
-This post will explain to you how to create such macro for Outlook.
+This post will explain to you how to create such a macro for Outlook.
 
 <!-- truncate -->
 

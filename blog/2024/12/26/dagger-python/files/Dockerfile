@@ -9,7 +9,7 @@ RUN set -e -x \
     && apt-get update -yqq \
     && apt-get install -y --no-install-recommends docker.io wget \
     && apt-get clean \
-    && rm -rf /tmp/* /var/list/apt/*
+    && rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Install Dagger
 ARG VERSION=0.15.1

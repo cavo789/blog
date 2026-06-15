@@ -28,7 +28,7 @@ And that feature is really comfortable! Using the same window, you can have mult
 
 ## Installation
 
-Windows Terminal is part of Windows 11, so you already have it if you're running that OS. If you're running an older version of Windows, you can install Windows Terminal using the Windows Store, or, third possibilities, if you can't, you can download [the latest release from GitHub](https://github.com/microsoft/terminal/releases).
+Windows Terminal is part of Windows 11, so you already have it if you're running that OS. If you're running an older version of Windows, you can install Windows Terminal using the Windows Store, or, a third possibility, if you can't, you can download [the latest release from GitHub](https://github.com/microsoft/terminal/releases).
 
 ## Customize your profile
 
@@ -40,7 +40,7 @@ But to make the interface geekier, I'm using a wallpaper instead of, just, a bla
 
 If you want to, proceed like this:
 
-* Click on the `+` button and chose `settings`
+* Click on the `+` button and choose `settings`
 * Click on the gear wheel, bottom left to open settings as a JSON file (in my case VSCode will be open)
   ![The gear wheel](./images/gear.webp)
 * In the opened editor, unfold the `list` of `profiles` and retrieve the one you wish to customize (in my case `Ubuntu`)
@@ -65,7 +65,7 @@ For example, I'll create a new profile so I can immediately open my blog in a Do
 * `backgroundImage`: Optional. You should type here, in a Linux notation, the path to where you've saved the image to use for the background,
 * `backgroundImageOpacity`: Optional. Between `0` and `1`; in fact, it'll depend on the image you'll choose,
 * `guid`: You should, every time, generate a new GUID. To do this, just run `uuidgen` in a Linux console, then copy/paste the obtained value inside `{...}`,
-* `ìcon`: Optional. In order to customize the icon, grab any icon from the Internet and save the image in the `%USERPROFILE%\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\RoamingState` folder. The notation to use then is `ms-appdata:///roaming/your_image_name.png`
+* `icon`: Optional. In order to customize the icon, grab any icon from the Internet and save the image in the `%USERPROFILE%\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\RoamingState` folder. The notation to use then is `ms-appdata:///roaming/your_image_name.png`
 
 </AlertBox>
 

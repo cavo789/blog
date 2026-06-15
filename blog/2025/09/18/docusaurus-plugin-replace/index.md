@@ -29,10 +29,10 @@ It can be risky because if the word `vscode` appears in:
 * an URL (like `https://github.com/microsoft/vscode/`),
 * a name (like `vstirbu.vscode-mermaid-preview`),
 * as a file name (like `vscode.png`),
-* a code snippets (inside a <code>\```...\```</code> or <code>\`.\`</code> block),
+* a code snippet (inside a <code>\```...\```</code> or <code>\`.\`</code> block),
 * ...
 
-we certainly not want to make the replacement.
+we certainly do not want to make the replacement.
 
 But well if the word is inside a simple paragraph.
 

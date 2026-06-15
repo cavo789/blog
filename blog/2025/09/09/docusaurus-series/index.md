@@ -275,7 +275,7 @@ For the last time, please restart your Docusaurus server.
 
 Now, in your main menu, you should have your `Series` entry. By clicking on it, you will get the list of series. By clicking on a series, you will get a new page with the list of articles in that series. Just click on an article to jump to it.
 
-!Seeing a specific series
+![Seeing a specific series](./images/a-series.webp)
 
 ## Part 3 - Adding a /src/data/series.js file for customization
 

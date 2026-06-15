@@ -32,7 +32,7 @@ I'll jump in my `C:\temp` directory and download the zip. To do this, I will exe
 
 The next thing to do is to unzip the file. I can do it with Windows Explorer for sure but I'm a console guy so let's run `Expand-Archive demo.zip -DestinationPath demo`.
 
-Ok, now, we've a `demo` folder containing a static website. Jump in in: `cd demo`.
+Ok, now, we've a `demo` folder containing a static website. Jump into it: `cd demo`.
 
 <AlertBox variant="caution" title="Our promise">
 And now, let's fulfil the promise made above: we've got a static website on our hard disk and we want to run it.

@@ -13,7 +13,7 @@ tags:
   - tests
 language: en
 ---
-<!-- cSpell::ignore ELECTRABEL,taxud -->
+<!-- cSpell:ignore ELECTRABEL,taxud -->
 ![Using Postman to play with API](/img/v2/api.webp)
 
 If you are developing your own API (whatever the language) or if you need to consume some, [Postman](https://www.postman.com/) can be really handy.
@@ -297,7 +297,7 @@ pm.test('Validate SOAP-ENV:Envelope and SOAP-ENV:Body elements are present', fun
 
 <AlertBox variant="note" title="`to.exist` is equivalent to `to.have.property`"/>
 
-`pm.expect(responseData['SOAP-ENV:Envelope']['SOAP-ENV:Body']).to.exist` can also be written like this: `pm.expect(responseData['SOAP-ENV:Envelope']]).to.have.property('SOAP-ENV:Body');`
+`pm.expect(responseData['SOAP-ENV:Envelope']['SOAP-ENV:Body']).to.exist` can also be written like this: `pm.expect(responseData['SOAP-ENV:Envelope']).to.have.property('SOAP-ENV:Body');`
 
 ### For XML, check the value of a given node
 

@@ -87,7 +87,7 @@ You'll find something like this:
 
 ![The navbar in config.js](./images/navbar_default.webp)
 
-Change the tex to what you wish, f.i.
+Change the text to what you wish, f.i.
 
 ```js
 navbar: {
@@ -158,15 +158,15 @@ services:
       - 3000:3000
     user: 1000:1000
     volumes:
-      - ./blog:/docusaurus/blog
-      - ./docusaurus.config.js:/docusaurus/docusaurus.config.js
+      - ./blog:/app/blog
+      - ./docusaurus.config.js:/app/docusaurus.config.js
       //highlight-next-line
-      - ./src:/docusaurus/src
+      - ./src:/app/src
 ```
 
 ## The static folder
 
-That folder contains files to will be copied to your root directory when you deploy your blog. So this is the perfect place to put, f.i. a `.htaccess` or a `robots.txt` file.
+That folder contains files that will be copied to your root directory when you deploy your blog. So this is the perfect place to put, f.i. a `.htaccess` or a `robots.txt` file.
 
 <AlertBox variant="info" title="Real use case">
 On my side, I use that the static folder to store my common images (the ones I use multiple times). So I've created a folder `static/img` on my own blog. That folder will thus be copied to the `/img` (directly under the root) on my server. Accessing images in my articles will then be easy, the source will be something like `/img/image_name.ext`.
@@ -191,11 +191,11 @@ services:
       - 3000:3000
     user: 1000:1000
     volumes:
-      - ./blog:/docusaurus/blog
-      - ./docusaurus.config.js:/docusaurus/docusaurus.config.js
-      - ./src:/docusaurus/src
+      - ./blog:/app/blog
+      - ./docusaurus.config.js:/app/docusaurus.config.js
+      - ./src:/app/src
       //highlight-next-line
-      - ./static:/docusaurus/static
+      - ./static:/app/static
 ```
 
 ## You now have the basics

@@ -80,7 +80,7 @@ Such a tool can produce false positive; just make some checks before removing th
 
 As a third example, we'll see [PHP-Parallel-Lint](https://github.com/php-parallel-lint/PHP-Parallel-Lint).
 
-This tool will scan all `.php` files present in your codebase and ensure there is no syntax error like a forgetting `}`.
+This tool will scan all `.php` files present in your codebase and ensure there is no syntax error like a missing `}`.
 
 The command to run here is `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa parallel-lint . --exclude vendor`.
 
@@ -110,7 +110,7 @@ PHP 8.3.3 | 10 parallel jobs
 
 Another tool, [PHP-CS-FIXER](https://cs.symfony.com/). *The PHP Coding Standards Fixer (PHP CS Fixer) tool fixes your code to follow standards.*
 
-Here the command will be `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa php-cs-fixer fix` to reformat all your codebase according to the selected rulesets. If none is mentioned, `PSR12` will be the default one.
+Here the command will be `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa php-cs-fixer fix` to reformat all your codebase according to the selected rulesets. If none is mentioned, `PSR-12` will be the default one.
 
 ## PHP_CodeSniffer
 
@@ -120,7 +120,7 @@ This time, the command will be `docker run -it --rm -v "${PWD}":/project -w /pro
 
 ## A whole host of other tools await you
 
-As you can see, we can use a lot of tools using `jakzal/phpqa` in a zero-installation schema. That's really impressive. We you can find a lot more tools than described in this article, just go to [Available tools](https://github.com/jakzal/phpqa?tab=readme-ov-file#available-tools) and see which ones can help you.
+As you can see, we can use a lot of tools using `jakzal/phpqa` in a zero-installation schema. That's really impressive. You can find a lot more tools than described in this article, just go to [Available tools](https://github.com/jakzal/phpqa?tab=readme-ov-file#available-tools) and see which ones can help you.
 
 ## Change PHP versions
 

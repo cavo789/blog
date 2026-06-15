@@ -46,7 +46,7 @@ Let's take a look and the following Dockerfile:
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
-By opening such file in VSCode didn't provide any collapse/expand features and we will need to scroll a lot. And we don't have a global overview of the structure.
+By opening such a file in VSCode doesn't provide any collapse/expand features and we will need to scroll a lot. And we don't have a global overview of the structure.
 
 ![No region support in VSCode for Dockerfile](./images/dockerfile-before.webp)
 
@@ -69,13 +69,13 @@ Not only does this make it easier to read, it also facilitates the succession of
 
 ## Auto fold extension
 
-There some extensions like [Auto Fold](https://marketplace.visualstudio.com/items?itemName=bobmagicii.autofoldyeah) who can automatically fold regions when opening a file.
+There are some extensions like [Auto Fold](https://marketplace.visualstudio.com/items?itemName=bobmagicii.autofoldyeah) that can automatically fold regions when opening a file.
 
 The idea is: when you open a file with a lot of methods, all functions are first *folded* (we just see the function name, not his content). That way you can directly see the structure of the file, the list of functions and so on without to scroll much.
 
 If you install [Auto Fold](https://marketplace.visualstudio.com/items?itemName=bobmagicii.autofoldyeah), you also need to add the `"autofold.default": 1,` setting in your `settings.json` file.
 
-If you don't know how to do, just press <kbd>CTRL</kbd>-<kbd>,</kbd> (the comma) to display the `Settings` page then start to type `autofold` to get access to the setting.
+If you don't know how to do, just press <kbd>CTRL</kbd>+<kbd>,</kbd> (the comma) to display the `Settings` page then start to type `autofold` to get access to the setting.
 
 Now, if you open a file, his content will be automatically folded.
 

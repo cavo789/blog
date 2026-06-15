@@ -202,7 +202,7 @@ vars {
 
 We've created a `root` variable and assign it to `http://127.0.0.1:82` and when we run Bruno GUI, it works.
 
-Why? Because the GUI is running on our host and `127.0.0.1` is our machine. If we do a `curl -v http://127.0.0.1:82/jokes` from the command line, it's works too.
+Why? Because the GUI is running on our host and `127.0.0.1` is our machine. If we do a `curl -v http://127.0.0.1:82/jokes` from the command line, it works too.
 
 <!-- cspell:disable -->
 
@@ -248,7 +248,7 @@ That file won't work from the Bruno GUI: we'll be able to select `dev` and it'll
 
 ![Having a second configuration file](./images/second_environment.webp)
 
-But from Bruno CLI container it'll works:
+But from Bruno CLI container it'll work:
 
 <Terminal typewriter>
 $ docker run -it --rm -v "./Jokes":/apps -w /apps \

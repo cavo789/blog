@@ -38,7 +38,7 @@ Make sure you've a variable called `DISPLAY`. You can check this by running `pri
 
 Now, run `xhost +local:docker` in your console. That command grants permission to connect to an X server using the Docker socket. This means that applications running within Docker containers can display their graphical user interface (GUI) on the host system. The expected result is this text: `non-network local connections being added to access control list`
 
-Now, simply run a container using and make sure to share the `DISPLAY` variable: `docker run --rm --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix cavo789:xeyes`.
+Now, simply run a container and make sure to share the `DISPLAY` variable: `docker run --rm --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix cavo789/xeyes`.
 
 ![xeyes under Docker](./images/xeyes_in_docker.webp)
 
@@ -64,7 +64,7 @@ As you know, my OS is Windows 11 and I'm running Linux thanks the amazing WSL2 t
 
 The old MS-DOS developer in me continues to be amazed by this possibility.
 
-## Creation our own Chrome Docker image
+## Creating our own Chrome Docker image
 
 We can do the same with Chrome:
 

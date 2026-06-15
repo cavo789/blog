@@ -111,7 +111,7 @@ and the updated `tests/assert.bats` file:
 
 <Snippet filename="tests/assert.bats" source="./files/assert.part2.bats" />
 
-## Another examples
+## More examples
 
 ### assert_equal
 

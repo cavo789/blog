@@ -32,7 +32,7 @@ By pressing <kbd>CTRL</kbd>+<kbd>R</kbd>, you'll natively get a *reverse search*
 
 ## Installation
 
-The installation of `fzf` is simple, you just need to run `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf ; ~/.fzf/install` and answer by `Y`es to two questions.
+The installation of `fzf` is simple, you just need to run `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install` and answer by `Y`es to two questions.
 
 When done, close and restart a new console (so Linux will take into account changes made to your configuration files).
 

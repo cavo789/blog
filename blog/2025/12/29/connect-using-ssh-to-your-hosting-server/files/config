@@ -2,4 +2,4 @@ Host planethoster
     HostName node30-eu.n0c.com
     User john_doe
     Port 5022
-    IdentityFile ~/.ssh/id_ed25519_planethoster
+    IdentityFile ~/.ssh/id_ed25519_hosting

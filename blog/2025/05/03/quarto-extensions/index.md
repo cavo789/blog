@@ -93,7 +93,7 @@ Make sure to add lines below in your YAML front matter:
 
 ```yaml
 filters:
-   - include-code-files
+   - fontawesome
 ```
 
 </Snippet>

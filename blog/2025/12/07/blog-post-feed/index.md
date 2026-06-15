@@ -150,7 +150,7 @@ See below all optional options you can use:
 const config = {
     // ...
     plugins: [
-    [ "./plugins/blog-feed-plugin/index.mjs", {
+    [ "./plugins/blog-feed-plugin/index.js", {
         maxItems: 20,           // optional
         includeContent: true,   // optional
         includeImages: true,    // optional

@@ -11,7 +11,7 @@ function runCurl() {
     local -r endpoint="${arrCall["endpoint"]}"
 
     # The other properties are optional; initialize to an empty string or any other default values
-    [[ ! -v arrCall[header] ]]  && local -r header=""    || local -r header="${ arrCall["header"]}"
+    [[ ! -v arrCall[header] ]]  && local -r header=""    || local -r header="${arrCall["header"]}"
     [[ ! -v arrCall[method] ]]  && local -r method="GET" || local -r method="${arrCall["method"]}"
     [[ ! -v arrCall[payload] ]] && local -r payload=""   || local -r payload="${arrCall["payload"]}"
     [[ ! -v arrCall[proxy] ]]   && local -r proxy=""     || local -r proxy="${arrCall["proxy"]}"

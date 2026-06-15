@@ -78,7 +78,7 @@ Please jump to `http://127.0.0.1:82/docs` and you'll see it in action:
 
 ![Automated documentation - Swagger UI](./images/doc.webp)
 
-There is an second, alternative template called ReDoc. You can access it using the `redoc` endpoint i.e. `http://127.0.0.1/redoc`:
+There is a second, alternative template called ReDoc. You can access it using the `redoc` endpoint i.e. `http://127.0.0.1:82/redoc`:
 
 ![Automated documentation - Redoc](./images/redoc.webp)
 

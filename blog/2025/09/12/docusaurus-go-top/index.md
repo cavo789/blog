@@ -28,7 +28,7 @@ Just scroll down any page of this blog to see a little meerkat appear in the bot
 
 <!-- truncate -->
 
-## How it's works
+## How it works
 
 Docux has created a [ScrollToTopButton Docusaurus component](https://github.com/Juniors017/docux-blog/tree/main/src/components/ScrollToTopButton) i.e. a piece of Javascript with css; nothing more.
 

@@ -52,7 +52,7 @@ $ unzip master.zip && rm master.zip && mv Sedna-master src
 $ docker run -d --name static-site -p 80:80 -v ./src:/usr/local/apache2/htdocs httpd:2.4
 </Terminal>
 
-Once these commands have been fired, please jump to `http://localhost:8080` and you'll get this:
+Once these commands have been fired, please jump to `http://localhost` and you'll get this:
 
 ![Website running as http](./images/running_http.webp)
 
@@ -90,7 +90,7 @@ The third file we'll need should be created in a `httpd` directory and has to be
 
 <AlertBox variant="note" title="For a container based on Apache, the website should be copied in folder /usr/local/apache2/htdocs and not, /var/www/html; that one is for a PHP image." />
 
-Everything is now in place for to enable a http access. Still in the `/tmp/https_localhost` folder, now, just run `docker compose up -d --build` to build our custom Docker image and run a container i.e. start the website.
+Everything is now in place to enable a http access. Still in the `/tmp/https_localhost` folder, now, just run `docker compose up -d --build` to build our custom Docker image and run a container i.e. start the website.
 
 You'll get something like this in the console:
 

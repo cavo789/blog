@@ -100,7 +100,7 @@ The output will be, for this example:
 .env UPDATED FORCE_HTTPS = true
 </Terminal>
 
-We can see fourth variables have been updated and one has been added (`CAN_REGISTER`).
+We can see four variables have been updated and one has been added (`CAN_REGISTER`).
 
 ## Adding a skip boolean
 
@@ -121,7 +121,7 @@ And now, if we call `updateEnv "FORCE_HTTPS" "false" "${dotEnv}"`, same thing, w
     # search the variable in the file. If found, update. It not, add the entry
     grepStatus="$(grep -E -q "^${variable}\s?=" "${file}" \
       && (sed -i -r "s~${variable}(\s?)=(\s?).*~${variable}\1=\2${newValue}~" "${file}" && echo "UPDATED") \
-      || (if ( $add -eq true ); then \
+      || (if [ "$add" = "true" ]; then \
             sed -i -e "\$a${variable}=${newValue}" "${file}"
             echo "ADDED"
           else

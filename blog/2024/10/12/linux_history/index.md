@@ -51,7 +51,7 @@ Let's take an example: `HISTIGNORE="sudo *"` will prevent all commands starting 
 
 You can also use a pattern like `HISTIGNORE="*password*"` to prevent commands having the word *password* to be written.
 
-To be able to specify more than one rule, just use the pipe `|` character like in `HISTIGNORE="sudo * | *password*"`.
+To be able to specify more than one rule, just use the colon `:` character like in `HISTIGNORE="sudo *:*password*"`.
 
 ## Don't put a specific command in the history
 
@@ -117,6 +117,6 @@ But, then the command `history -d 2130` will appears in the history, of course. 
 </AlertBox>
 
 <AlertBox variant="note" title="">
-You can specify a range like `history -N 2100-2130`.
+You can specify a range like `history -d 2100-2130` (Bash 5.1+).
 
 </AlertBox>
