@@ -96,7 +96,7 @@ Last thing is to make it executable (`chmod +x /tmp/minification/build.sh`).
 
 #### Execution
 
-You're now ready. Simply run `./build.sh` to start the concatenation and the minifaction:
+You're now ready. Simply run `./build.sh` to start the concatenation and the minification:
 
 ![Running the minification](./images/running.png)
 

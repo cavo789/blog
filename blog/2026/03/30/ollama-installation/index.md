@@ -19,8 +19,6 @@ blueskyRecordKey: 3miaxwivces2d
 
 In one of my last articles about my <Link to="/blog/gemini-tldr">TL;DR summary</Link> component, I created a Python script to consume the Gemini API and boom, after just a few requests, I got a maximum quota exceeded error.
 
-If you need to install Docker, please follow
-
 What if we can solve this for free? How? Simply by installing a LLM locally, on our host. No more quota.
 
 <!-- truncate -->
@@ -180,13 +178,13 @@ Start a Powershell terminal, run `cd ~/.continue ; del config.yaml ; notepad con
 
 ![Configure Continue extension](./images/configure_continue_extension.webp)
 
-Restart VSCode again or, in the Continue panel, fin the `Local config` option and select `Refresh`.
+Restart VSCode again or, in the Continue panel, find the `Local config` option and select `Refresh`.
 
 When you'll see your model name in the list of loaded models, Continue is ready to manage your first question.
 
 ![Selecting a model in Continue extension](./images/continue_select_model.webp)
 
-From now one, you can use Continue to ask questions about your codebase, generate unit tests, refactor some code, and so on.
+From now on, you can use Continue to ask questions about your codebase, generate unit tests, refactor some code, and so on.
 
 The speed will depend on the model you've selected and your hardware for sure.
 
@@ -222,7 +220,7 @@ So, in less than 5 seconds, I've got a complete script with the right code and t
 
 <Snippet filename="calculate.sh" source="./files/calculate_autocompleted.sh" defaultOpen={false} />
 
-And it's works out-of-the-box!
+And it works out-of-the-box!
 
 <Terminal typewriter wrap={true}>
 

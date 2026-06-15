@@ -30,7 +30,7 @@ In modern DevOps, documentation often lags behind code. How many times has your 
 
 Thanks to AI, Docker, Python, [Mermaid](https://mermaid.js.org/) and [mermaid-cli](https://github.com/mermaid-js/mermaid-cli), we can automate such things.
 
-We can write a Python script that will analyze a file, a codebase, ... anything in reality ("Your imagination is your own limit*). Python will analyze and will create a Mermaid diagram. It's a *pseudocode* that can be rendered as an image.
+We can write a Python script that will analyze a file, a codebase, ... anything in reality ("Your imagination is your own limit"). Python will analyze and will create a Mermaid diagram. It's a *pseudocode* that can be rendered as an image.
 
 Look at this [example](https://mermaid.live/edit#pako:eNpFjctqwzAQRX9FzNoNtmzJtrYtfUALhWbT4o1ijR0RWRMUmTYN-fcqCU3uauZw7swBejIICqKd0FmPnWcp0UaH7NnuIoU9o4F9UG-1Y29orGbvTseBwnRxeZ5zptir9Rs0L_4KqwQfdY8ros0FnqPYE9Ho8OqJhD5pXs6rG5OJLb9tjBgggzFYAyqGGTOYMEz6tMLhZHcQ1zhhByqNBgc9u9hB54-pttX-i2j6bwaaxzWoQbtd2uat0REfrB6DvinoDYZ7mn0EVYi6Ph8BdYAfUHdFVS7aVuZlK9uiraumzGAPipcLIaXkKTWvmrqRxwx-z4-LBW8L0XDR5GVTiroSxz-rtW0b):
 
@@ -51,7 +51,7 @@ The Dockerfile we'll use is this one.  It's quite simple.
 To build this image run `docker build -t yourself/docker-python-mermaid .` in your terminal:
 
 <Terminal typewriter wrap={true}>
-docker build -t yourself/docker-python-mermaid .
+$ docker build -t yourself/docker-python-mermaid .
 </Terminal>
 
 The final image size will be around 2GB.
@@ -138,7 +138,7 @@ $ docker run --rm -u $(id -u):$(id -g) -e HOME=/tmp -v .:/app yourself/docker-py
 
 Generating single mermaid chart
 🔎 Analyzing /app...
-✨ DNA successfully generated in /app/project-dna.png
+✨ Pie chart successfully generated in /app/pie.png
 </Terminal>
 
 ![The project-dna pie](./files/images/pie.webp)

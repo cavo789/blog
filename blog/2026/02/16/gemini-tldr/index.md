@@ -23,9 +23,9 @@ blueskyRecordKey: 3mexhwsmhac2n
 Writing summaries for long blog posts improves user experience but can be time-consuming. This article explains how to automate the generation of "Too Long; Didn't Read" (TL;DR) sections using a Python script and Google's Gemini AI. We'll cover the Docker setup, the script usage, and how to integrate it into your Docusaurus workflow.
 </TLDR>
 
-As a technical blogger, I was searching for a way to enhance my readers' experience by providing concise summaries at the beginning of my articles. Not loosing time (I hope not!) to read the full article and thinking "How, that was not what I was looking for".
+As a technical blogger, I was searching for a way to enhance my readers' experience by providing concise summaries at the beginning of my articles. Not losing time (I hope not!) to read the full article and thinking "How, that was not what I was looking for".
 
-So, I decided to automate the generation of TL;DR summaries using Google's Gemini AI and a simple Python script. In this article, I'll explain how I did.
+So, I decided to automate the generation of TL;DR summaries using Google's Gemini AI and a simple Python script. In this article, I'll explain how I did it.
 
 <!-- truncate -->
 

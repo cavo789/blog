@@ -19,7 +19,7 @@ from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 
 # Define a recursive type for JSON schemas to fix strict typing issues.
-type JsonNode = dict[str, Any] | list[Any] | Any
+JsonNode = dict[str, Any] | list[Any] | Any
 
 
 def _remove_titles(schema: Any) -> None:

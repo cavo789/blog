@@ -311,6 +311,60 @@ function maybeNotifyTypo(string $slug, string $text, string $type): void
     }
 }
 
+// ── Admin actions ─────────────────────────────────────────────────────────────
+
+function toggleResolve(string $id): void
+{
+    $dataFile = __DIR__ . '/typo-data.json';
+    $fp = @fopen($dataFile, 'c+');
+    if (!$fp) {
+        return;
+    }
+    if (flock($fp, LOCK_EX)) {
+        $raw  = stream_get_contents($fp);
+        $data = $raw !== '' ? (json_decode($raw, true) ?: []) : [];
+        foreach ($data as &$reports) {
+            foreach ($reports as &$report) {
+                if (($report['id'] ?? '') === $id) {
+                    $report['resolved'] = !($report['resolved'] ?? false);
+                    break 2;
+                }
+            }
+        }
+        unset($report, $reports);
+        ftruncate($fp, 0);
+        rewind($fp);
+        fwrite($fp, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        flock($fp, LOCK_UN);
+    }
+    fclose($fp);
+}
+
+function deleteReport(string $id): void
+{
+    $dataFile = __DIR__ . '/typo-data.json';
+    $fp = @fopen($dataFile, 'c+');
+    if (!$fp) {
+        return;
+    }
+    if (flock($fp, LOCK_EX)) {
+        $raw  = stream_get_contents($fp);
+        $data = $raw !== '' ? (json_decode($raw, true) ?: []) : [];
+        foreach ($data as $slug => &$reports) {
+            $reports = array_values(array_filter($reports, fn($r) => ($r['id'] ?? '') !== $id));
+            if ($reports === []) {
+                unset($data[$slug]);
+            }
+        }
+        unset($reports);
+        ftruncate($fp, 0);
+        rewind($fp);
+        fwrite($fp, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        flock($fp, LOCK_UN);
+    }
+    fclose($fp);
+}
+
 // ── Router ────────────────────────────────────────────────────────────────────
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -342,6 +396,27 @@ if ($method !== 'POST') {
 // ── POST flow ─────────────────────────────────────────────────────────────────
 
 $body = json_decode(file_get_contents('php://input'), true) ?? [];
+
+// Admin actions (resolve / delete).
+if (array_key_exists('admin', $_GET)) {
+    if (ADMIN_TOKEN === '' || ($_GET['admin'] ?? '') !== ADMIN_TOKEN) {
+        jsonError(403, 'Forbidden');
+    }
+    $action = $body['action'] ?? '';
+    $id     = preg_replace('/[^a-f0-9]/', '', $body['id'] ?? '');
+    if ($id === '') {
+        jsonError(400, 'Missing id');
+    }
+    if ($action === 'resolve') {
+        toggleResolve($id);
+    } elseif ($action === 'delete') {
+        deleteReport($id);
+    } else {
+        jsonError(400, 'Unknown action');
+    }
+    echo json_encode(['ok' => true]);
+    exit;
+}
 
 // Nonce validation.
 $nonce = $body['nonce'] ?? '';

@@ -124,7 +124,7 @@ if [[ -o interactive ]]; then
 fi
 ```
 
-Now, create the `~/.zsh/docker-fns` directory and move the individual function files (`dex.zsh`, `dlogs.zsh`, `dnuke.zsh`, `dops.zsh`, `dstop.zsh`) into that directory. This way, you can keep your functions organized and easily maintainable.
+Now, create the `~/.zsh/docker-fns` directory and move the individual function files (`dex`, `dlogs`, `dnuke`, `dops`, `drun`, `dstop`) into that directory. This way, you can keep your functions organized and easily maintainable.
 
 <ProjectSetup folderName="~/.zsh/docker-fns" createFolder={true} >
   <Guideline>

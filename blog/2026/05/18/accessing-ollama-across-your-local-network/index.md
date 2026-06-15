@@ -149,7 +149,7 @@ If everything has been correctly configured, you now have AI auto-completion. Al
 
 Actually, the provided `config.yaml` for Continue already includes two models for chat sessions. You can use them by clicking on the `Chat` entry in the left bar and then select one of the available models.
 
-If you look at the configuration, we've defined a model called `Fast Chat (Qwen 14B)` (for fast reaction) and a smaller but stronger one called `Architect (Qwen 32B)` and that works fine.
+If you look at the configuration, we've defined a model called `Qwen 14B (Fast Chat)` (for fast reaction) and a larger, stronger one called `Qwen 32B (Architect)` and that works fine.
 
 Depending on your server's hardware (how much memory it has), feel free to experiment with different AI models.
 

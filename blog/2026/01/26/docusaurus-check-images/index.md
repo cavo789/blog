@@ -97,7 +97,7 @@ Up to you, now, to act on the results! On my own blog, I've added some missing a
 
 ### Additional Checks
 
-The script also do these checks:
+The script also does these checks:
 
 * Check to see if the image format is WebP; if not, it issues a warning.
 * Check if the image size exceeds a certain threshold (200 KB); if so, it issues a warning.

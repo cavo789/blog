@@ -38,13 +38,11 @@ Just edit your `~/.zshrc` file and add this block at the end:
 
 The `_display_recent_git_context` function runs `git rev-parse --is-inside-work-tree` to verify you are actually inside a Git repository. If you are not, it silently stops. If you are inside a repo, it runs `git rev-parse HEAD` to check if the repository is completely empty. If it is, there's nothing to do, so it stops.
 
-If the repository isn't empty, the function retrieves the active branch name, then runs `git for-each-ref` to iterate over your **local* branches, sorting them by the date of their last commit in descending order (`--sort=-committerdate`).
+If the repository isn't empty, the function retrieves the active branch name, then runs `git for-each-ref` to iterate over your **local** branches, sorting them by the date of their last commit in descending order (`--sort=-committerdate`).
 
 The script also defines (or overrides) a `gst` ZSH alias. The new `gst` command calls our custom function before executing the native `git status` command.
 
 Finally, since we're using ZSH, we can leverage a standard hook called `chpwd` (which triggers when *changing the current working directory*). This hook is called automatically by OS commands like `cd` or `pushd`.
-
-## Back to real use case
 
 ## A real-world example
 

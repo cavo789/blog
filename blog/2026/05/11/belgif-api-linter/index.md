@@ -136,7 +136,7 @@ Look at the new file below:
 
 <Snippet filename="compose.yaml" source="./files/compose_belgif_no_warnings.yaml" />
 
-In short, we'll run a custom command where we'll collect both STDERR and STDIN in just one output stream then we'll run a few `grep` commands to purge specific messages from the output (the ones we can't solve).
+In short, we'll run a custom command where we'll collect both STDERR and STDOUT in just one output stream then we'll run a few `grep` commands to purge specific messages from the output (the ones we can't solve).
 
 ## Bonus - FastAPI tips
 
@@ -181,7 +181,7 @@ See the helper provided later on in the post.
 
 ### oas-comp - Component names SHOULD use UpperCamelCase notation
 
-If you get the `[MANDATORY]    [oas-comp]   Component names SHOULD use UpperCamelCase notation. For abbreviations as well, all letters except the first one should be lowercased.` error, you'll need to foresee a rename function to update e.g. `HTTPValidationError` to `httpValidationError`.
+If you get the `[MANDATORY]    [oas-comp]   Component names SHOULD use UpperCamelCase notation. For abbreviations as well, all letters except the first one should be lowercased.` error, you'll need to foresee a rename function to update e.g. `HTTPValidationError` to `HttpValidationError`.
 
 It can be done f.i. like this (partial code):
 

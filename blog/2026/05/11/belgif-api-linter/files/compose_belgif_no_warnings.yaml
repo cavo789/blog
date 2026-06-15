@@ -14,10 +14,10 @@ services:
       - maven-cache:/root/.m2
     working_dir: /app
     # 1. We override the entrypoint to use a shell (required for pipes)
-    entrypoint: ["/bin/bash", "-c"]
+    entrypoint: ["/bin/sh", "-c"]
     # 2. We use 'set +e' to not close the terminal if an error is met
     #    Use style.color=always to keep ANSI colors while piping output to grep
-    #    Use 2>&1 to merge STDIN and STDOUT so line ordering is keept during the pipe
+    #    Use 2>&1 to merge STDERR and STDOUT so line ordering is kept during the pipe
     command: >
       "set +e &&
       mvn \

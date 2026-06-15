@@ -46,7 +46,7 @@ It looks for:
 * **Case variations**: `GitHub` vs `github`.
 * **Plurals**: `snippet` vs `snippets`.
 * **Substrings**: `visual studio code` vs `vscode`.
-* \*his helps me spot the mess I didn't even know I had.
+* This helps me spot the mess I didn't even know I had.
 
 ### The Script
 
@@ -83,7 +83,7 @@ $ make tags-manager ARGS="list"
 If, by looking at the list of tags, I see I've a `snippets` tag and a `snippet` one, I'll merge them like this:
 
 <Terminal typewriter wrap={true}>
-make tags-manager ARGS="rename snippets,snippet"
+$ make tags-manager ARGS="rename snippets,snippet"
 </Terminal>
 
 **3. Deleting a tag:**

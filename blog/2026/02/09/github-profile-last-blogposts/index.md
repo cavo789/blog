@@ -28,7 +28,7 @@ Let's add a scheduled GitHub Action (for example, every Sunday) to update my [ca
 
 So, just to make things clear:
 
-* Once a week, I want the `README.md` file in my [cavo789](https://github.com/cavo789/cavo789) repo is updated automatically.
+* Once a week, I want the `README.md` file in my [cavo789](https://github.com/cavo789/cavo789) repo to be updated automatically.
 * The content of the `My last published articles on my blog` chapter will be rewritten and the list of articles will come from my [blog/rss.xml](https://www.avonture.be/blog/rss.xml) file.
 
 Let's start by cloning the repository.
@@ -54,7 +54,7 @@ name: Latest blog post workflow
 ```
 
 Here, we'll instruct GitHub to run our workflow using a cron i.e. automatically based on a specific time schedule.
-In the example below, every Sunday at 00:00 UTC.
+In the example below, every Monday at 12:00 UTC.
 
 ```yaml
 on:
