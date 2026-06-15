@@ -4,11 +4,14 @@ title: "delta: a Syntax-Highlighted Pager for git diff"
 authors: [christophe]
 image: /img/v2/git-delta.webp
 mainTag: git
-draft: true
-tags: [git, linux, bash, tool]
-draft: true
+tags: [git, linux, bash]
 ai_assisted: true
+date: 2026-06-15
+description: Stop squinting at raw git diff outputs. Learn how to install and configure Delta to add syntax highlighting and side-by-side views in under 5 minutes.
+language: en
+blueskyRecordKey: 3mnrw7ah2kc2o
 ---
+
 
 ![delta: a Syntax-Highlighted Pager for git diff](/img/v2/git-delta.webp)
 
@@ -111,7 +114,7 @@ Let's look at what each option does.
 
 ### A changed line without delta
 
-```
+```diff
 -  const expiry = token.exp * 1000;
 +  const expiry = token.exp * 1000 + TOKEN_GRACE_MS;
 ```
@@ -125,7 +128,7 @@ Delta highlights `+ TOKEN_GRACE_MS` at the character level — the rest of the l
 This word-level diff is especially valuable when:
 
 * A variable was renamed (`getUserById` → `findUserById`)
-* A string had a typo fixed (`"recieved"` → `"received"`)
+* A string had a typo fixed
 * A flag was added or removed from a long function call
 
 Without word-level diff, each of those scenarios produces a fully-red removed line and a fully-green added line. With delta, only the changed word is highlighted.
