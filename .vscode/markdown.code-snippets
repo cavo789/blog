@@ -104,7 +104,7 @@
   "docusaurus.terminal": {
     "prefix": "Terminal",
     "body": [
-      "<Terminal source=\"./files/$1\" wrap={true}>",
+      "<Terminal source=\"./files/$1\" wrap={true} typewriter>",
       "$ ${2:the_command_issued}",
       "${3:the_output}",
       "</Terminal>",

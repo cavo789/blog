@@ -5,7 +5,8 @@
   "workspaceFolder": "/opt/docusaurus",
   "mounts": [
     "source=../.devcontainer/history/.bash_history,target=/home/node/.bash_history,type=bind",
-    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,readonly"
   ],
   "postStartCommand": "bash -c 'until curl -sk https://localhost:3000/ -o /dev/null 2>&1; do sleep 2; done'",
   "portsAttributes": {
@@ -21,7 +22,7 @@
   },
   "forwardPorts": [3000, 8010],
   "containerEnv": {
-    "GIT_SSH_COMMAND": "ssh -i /home/node/.ssh/id_ed25519 -o 'UserKnownHostsFile=/dev/null'",
+    "GIT_SSH_COMMAND": "ssh -i /home/node/.ssh/id_ed25519",
     "YARN_CACHE_FOLDER": "/home/node/.cache/yarn/v6",
     "HOST_PROJECT_DIR": "${localWorkspaceFolder}"
   },

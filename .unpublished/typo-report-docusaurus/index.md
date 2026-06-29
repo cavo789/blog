@@ -1,9 +1,9 @@
 ---
 slug: docusaurus-typo-report-component
 title: "Let Readers Flag Issues — A Multi-Type Feedback Widget for Docusaurus"
-date: 2026-06-13
+date: 2026-12-31
 authors: [christophe]
-image: /img/v2/docusaurus_component.webp
+image: /img/v2/docusaurus_typos.webp
 description: Build a secure, SSR-safe reader-feedback widget for your Docusaurus blog — text selection, 4 feedback types, PHP API with HMAC nonce, rate limiting, deduplication, admin dashboard, and email notifications.
 mainTag: docusaurus
 tags:
@@ -13,11 +13,11 @@ tags:
   - react
   - security
 language: en
-ai_assisted: true
 draft: true
+ai_assisted: true
 ---
 
-![Let Readers Flag Issues — A Multi-Type Feedback Widget for Docusaurus](/img/v2/docusaurus_component.webp)
+![Let Readers Flag Issues — A Multi-Type Feedback Widget for Docusaurus](/img/v2/docusaurus_typos.webp)
 
 <TLDR>
 A reader spots a problem in your article — a typo, a factual error, an outdated command. They have no way to tell you. They move on. You stay unaware. This article builds a complete, one-way feedback widget from scratch: readers select a passage, a popover appears with four issue types (typo, incorrect info, outdated content, suggestion), they optionally add details, and the report lands in a JSON file on your server with an email notification. It is explicitly one-way — no reply mechanism, no expectations created. The PHP API is hardened with HMAC nonces, honeypot, rate limiting, and deduplication. The React component is SSR-safe, uses a clean state machine, and rate-limits submissions in `localStorage`. A companion admin dashboard at `/typo-dashboard` lets you review all reports by type. No database, no third-party service, no npm dependencies beyond what Docusaurus already ships.
@@ -113,11 +113,11 @@ The honeypot is a hidden `<input name="website">` that is invisible to humans bu
 
 Real input is then validated:
 
-- `slug` — alphanumeric, hyphens, slashes, max 200 chars
-- `text` — 3 to 150 chars, printable Unicode only (`\P{C}` — no control characters)
-- `type` — must be one of `typo`, `incorrect`, `outdated`, `suggestion` (any other value → 400)
-- `comment` — optional, max 300 chars, same character filter
-- `context` — optional, max 300 chars, trimmed
+* `slug` — alphanumeric, hyphens, slashes, max 200 chars
+* `text` — 3 to 150 chars, printable Unicode only (`\P{C}` — no control characters)
+* `type` — must be one of `typo`, `incorrect`, `outdated`, `suggestion` (any other value → 400)
+* `comment` — optional, max 300 chars, same character filter
+* `context` — optional, max 300 chars, trimmed
 
 **Layer 5 — Global rate limit**
 
@@ -127,8 +127,8 @@ A sliding 60-second window with a max of 20 requests across all IPs. This protec
 
 Two limits tracked independently:
 
-- Max 10 reports per IP per rolling hour
-- Max 3 reports per IP per article per 24 hours
+* Max 10 reports per IP per rolling hour
+* Max 3 reports per IP per article per 24 hours
 
 IP addresses are never stored raw. They are hashed with a secret salt: `hash('sha256', IP_HASH_SALT . $ip)`. One-way — you cannot recover the original IP — but consistent enough to aggregate.
 
@@ -430,6 +430,7 @@ openssl rand -hex 32   # NONCE_SECRET
 Docusaurus renders pages server-side (Node.js) before hydrating them in the browser. Any code that touches `window`, `document`, or `localStorage` will crash the SSR pass if it runs at the module level or inside the component body.
 
 The rules:
+
 1. All DOM access goes inside `useEffect` — it only runs in the browser.
 2. State is initialized to `"idle"`, not a value read from the browser.
 3. The component returns `null` when idle — no DOM, no SSR mismatch.
@@ -759,9 +760,9 @@ TypoReport.propTypes = {
 
 Three things worth noting:
 
-- `touchend` is registered alongside `mouseup` so the widget works on touch devices.
-- `handleTypeSelect` runs the rate-limit and dedup checks when the type is chosen, not on selection — this avoids burning a rate-limit slot when the user just selects text to copy.
-- The `disclaimer` paragraph ("One-way signal — no reply will be sent") is intentional: readers should not expect a response, and making that explicit prevents frustration.
+* `touchend` is registered alongside `mouseup` so the widget works on touch devices.
+* `handleTypeSelect` runs the rate-limit and dedup checks when the type is chosen, not on selection — this avoids burning a rate-limit slot when the user just selects text to copy.
+* The `disclaimer` paragraph ("One-way signal — no reply will be sent") is intentional: readers should not expect a response, and making that explicit prevents frustration.
 
 ---
 
@@ -1047,8 +1048,9 @@ Create `src/pages/typo-dashboard.js` — the structure follows the same pattern 
 ### PHP version requirement
 
 The API uses:
-- `declare(strict_types=1)` — PHP 7.0+
-- `never` return type on `jsonError()` — **PHP 8.1+**
+
+* `declare(strict_types=1)` — PHP 7.0+
+* `never` return type on `jsonError()` — **PHP 8.1+**
 
 Make sure your server runs PHP 8.1 or newer:
 
@@ -1125,14 +1127,14 @@ Users behind the same NAT (e.g. office WiFi) share the same `REMOTE_ADDR`. If th
 
 In about 350 lines of PHP and 200 lines of React (plus CSS), you have a complete reader-feedback system:
 
-- **Zero new dependencies** — PHP's standard library, React hooks you already use
-- **No database** — file-locked JSON writes, safe under concurrent load
-- **Defense in depth** — CORS, HMAC nonce, type whitelist, honeypot, global rate limit, per-IP rate limit, deduplication, all independently effective
-- **Four feedback types** — typo, incorrect info, outdated content, suggestion — covering the realistic space of issues a reader can spot
-- **One-way by design** — the disclaimer is part of the UI; no reader expects a reply
-- **Mobile-ready** — `touchend` alongside `mouseup`
-- **SSR-safe** — returns `null` until the browser loads, no hydration mismatch
-- **Dark mode ready** — Docusaurus CSS variables do the work
-- **Admin dashboard** — `/typo-dashboard` shows all reports sorted newest-first with type badges
+* **Zero new dependencies** — PHP's standard library, React hooks you already use
+* **No database** — file-locked JSON writes, safe under concurrent load
+* **Defense in depth** — CORS, HMAC nonce, type whitelist, honeypot, global rate limit, per-IP rate limit, deduplication, all independently effective
+* **Four feedback types** — typo, incorrect info, outdated content, suggestion — covering the realistic space of issues a reader can spot
+* **One-way by design** — the disclaimer is part of the UI; no reader expects a reply
+* **Mobile-ready** — `touchend` alongside `mouseup`
+* **SSR-safe** — returns `null` until the browser loads, no hydration mismatch
+* **Dark mode ready** — Docusaurus CSS variables do the work
+* **Admin dashboard** — `/typo-dashboard` shows all reports sorted newest-first with type badges
 
 The architecture is deliberately simple. Every piece can be understood, debugged, and modified by reading the file.

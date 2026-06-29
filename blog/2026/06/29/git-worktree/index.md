@@ -4,9 +4,8 @@ title: "git worktree: Work on Two Branches at the Same Time"
 authors: [christophe]
 image: /img/v2/git_worktree.webp
 mainTag: git
-draft: true
-tags: [git, linux, bash, workflow, zsh]
-date: 2026-12-31
+tags: [git, linux, bash, zsh]
+date: 2026-06-29
 ai_assisted: true
 ---
 
@@ -28,16 +27,18 @@ What do you do?
 
 The classic approach:
 
-```bash
-git stash push -m "WIP: feature/user-notifications"
-git checkout main
-git pull
-# ... fix the bug ...
-git commit -m "fix: correct invoice calculation"
-git push
-git checkout feature/user-notifications
-git stash pop
-```
+<Terminal typewriter>
+$ git stash push -m "WIP: feature/user-notifications"
+$ git checkout main
+$ git pull
+
+// ... fix the bug ...
+
+$ git commit -m "fix: correct invoice calculation"
+$ git push
+$ git checkout feature/user-notifications
+$ git stash pop
+</Terminal>
 
 It works. Most of the time. But:
 
@@ -54,7 +55,7 @@ A git worktree is a second (or third, or fourth) working directory linked to the
 
 Instead of one folder with one checked-out branch, you get:
 
-```
+```plaintext
 ~/projects/my-blog/                     ← main branch (original)
 ~/projects/my-blog-hotfix/              ← hotfix/invoice-fix branch (worktree)
 ~/projects/my-blog-feature-auth/        ← feature/auth branch (worktree)
@@ -68,42 +69,42 @@ You never leave your feature branch. The hotfix lives next door.
 
 ### Add a worktree
 
-```bash
-git worktree add <path> [branch]
-```
+<Terminal typewriter>
+$ git worktree add \<path> [branch]
+</Terminal>
 
 Create a new directory at `<path>` with `[branch]` checked out:
 
-```bash
-git worktree add ../my-blog-hotfix hotfix/invoice-fix
-```
+<Terminal typewriter>
+$ git worktree add ../my-blog-hotfix hotfix/invoice-fix
+</Terminal>
 
 If the branch doesn't exist yet, create it at the same time:
 
-```bash
-git worktree add -b hotfix/invoice-fix ../my-blog-hotfix main
-```
+<Terminal typewriter>
+$ git worktree add -b hotfix/invoice-fix ../my-blog-hotfix main
+</Terminal>
 
 This creates `hotfix/invoice-fix` branching off `main`, checked out into `../my-blog-hotfix`.
 
 ### List all worktrees
 
-```bash
-git worktree list
-```
+<Terminal typewriter>
+$ git worktree list
+</Terminal>
 
 Output:
 
-```
+```plaintext
 /home/christophe/projects/my-blog              a4b2c1d [main]
 /home/christophe/projects/my-blog-hotfix       e8f3d2a [hotfix/invoice-fix]
 ```
 
 ### Remove a worktree
 
-```bash
+<Terminal typewriter>
 git worktree remove ../my-blog-hotfix
-```
+</Terminal>
 
 This deletes the folder and unregisters the worktree. The branch itself (`hotfix/invoice-fix`) still exists — you can delete it separately with `git branch -d`.
 
@@ -113,25 +114,29 @@ Back to Thursday afternoon. Here's the same situation handled with worktrees.
 
 ### 1. You're on your feature branch, in the middle of work
 
-```bash
-# Current state
+<Terminal typewriter>
+// Current state
 $ git branch
-* feature/user-notifications
+
+\* feature/user-notifications
   main
+
 $ git status
+
 On branch feature/user-notifications
 Changes not staged for commit:
   modified: src/components/Notifications.tsx
   modified: src/api/notifications.ts
-```
+
+</Terminal>
 
 You don't touch this. You don't stash anything.
 
 ### 2. Create a hotfix worktree next to your project
 
-```bash
+<Terminal>
 git worktree add -b hotfix/invoice-fix ../my-blog-hotfix main
-```
+</Terminal>
 
 <Terminal>
 Preparing worktree (new branch 'hotfix/invoice-fix')
@@ -140,39 +145,39 @@ HEAD is now at a4b2c1d chore: update dependencies
 
 ### 3. Open a new terminal, cd into the hotfix folder
 
-```bash
+<Terminal typewriter>
 cd ../my-blog-hotfix
-```
+</Terminal>
 
 This directory has `main`'s files. Your feature branch directory is untouched, still running, still open in your editor.
 
 ### 4. Fix the bug and push
 
-```bash
-# Inside ../my-blog-hotfix
+<Terminal typewriter>
+// Inside ../my-blog-hotfix
 vim src/billing/invoice.ts
 git add src/billing/invoice.ts
 git commit -m "fix: correct VAT calculation for EU invoices"
 git push origin hotfix/invoice-fix
-# open PR, merge, done
-```
+// open PR, merge, done
+</Terminal>
 
 ### 5. Clean up the worktree
 
-```bash
-# Back in the original repo
+<Terminal typewriter>
+// Back in the original repo
 git worktree remove ../my-blog-hotfix
 git branch -d hotfix/invoice-fix
-```
+</Terminal>
 
 ### 6. Back to your feature branch — nothing changed
 
-```bash
+<Terminal typewriter>
 cd ~/projects/my-blog
-# Docker containers: still running
-# Editor: still open on the same files
-# git status: exactly as you left it
-```
+// Docker containers: still running
+// Editor: still open on the same files
+//git status: exactly as you left it
+</Terminal>
 
 No stash, no conflicts, no context switch.
 
@@ -180,9 +185,9 @@ No stash, no conflicts, no context switch.
 
 Git enforces this. If `feature/user-notifications` is checked out in your main directory, you cannot add a second worktree with the same branch. Attempting it gives:
 
-```
+<Terminal typewriter>
 fatal: 'feature/user-notifications' is already checked out at '/home/christophe/projects/my-blog'
-```
+</Terminal>
 
 This is intentional — two directories writing to the same branch simultaneously would corrupt the working tree. Each worktree gets its own branch.
 
@@ -194,27 +199,27 @@ Each worktree is a separate directory. Each directory can have its own `.env` fi
 
 A practical convention: use a different port per worktree. Keep the ports in `.env`, which is `.gitignore`d:
 
-```bash
-# ~/projects/my-blog/.env
+<Terminal typewriter>
+// ~/projects/my-blog/.env
 APP_PORT=3000
 DB_PORT=5432
 
-# ~/projects/my-blog-hotfix/.env
+// ~/projects/my-blog-hotfix/.env
 APP_PORT=3001
 DB_PORT=5433
-```
+</Terminal>
 
 Now you can run both stacks simultaneously:
 
-```bash
-# Terminal 1 — feature branch
+<Terminal>
+// Terminal 1 — feature branch
 cd ~/projects/my-blog
 docker compose up
 
-# Terminal 2 — hotfix branch
+// Terminal 2 — hotfix branch
 cd ~/projects/my-blog-hotfix
 docker compose up
-```
+</Terminal>
 
 Both servers are running at the same time. You can test the hotfix at `http://localhost:3001` without stopping your feature development at `http://localhost:3000`.
 
@@ -226,37 +231,7 @@ Docker Compose uses the folder name as the default project name. Since your work
 
 If you follow the <Link to="/blog/modular-zsh-workflow">modular ZSH workflow</Link> pattern, you can add an interactive worktree navigator using <Link to="/blog/linux-fzf-introduction">fzf</Link>:
 
-```bash
-# ~/.zsh/fns/gwt
-# git worktree navigator — select a worktree with fzf and cd into it
-
-gwt() {
-  local worktrees selected dir
-
-  worktrees=$(git worktree list 2>/dev/null) || {
-    echo "Not inside a git repository."
-    return 1
-  }
-
-  if [[ -z "$1" ]]; then
-    # Interactive: pick a worktree with fzf
-    selected=$(echo "$worktrees" \
-      | fzf --prompt="Worktree > " \
-            --preview="ls -la {1}" \
-            --height=40%)
-    [[ -z "$selected" ]] && return 0
-    dir=$(echo "$selected" | awk '{print $1}')
-  else
-    # Direct: create a new worktree for the given branch
-    local branch="$1"
-    dir="${$(git rev-parse --show-toplevel)}-${branch//\//-}"
-    git worktree add -b "$branch" "$dir" main || return 1
-    echo "Created worktree at $dir"
-  fi
-
-  cd "$dir"
-}
-```
+<Snippet filename="gwt.zsh" source="./files/gwt.zsh" defaultOpen={false} />
 
 Usage:
 
@@ -281,9 +256,9 @@ git worktree add ../my-blog-feat-auth      feature/auth
 
 Open a worktree folder in a new VS Code window:
 
-```bash
-code ../my-blog-hotfix
-```
+<Terminal typewriter>
+$ code ../my-blog-hotfix
+</Terminal>
 
 Each window operates independently, with its own open files and terminal sessions.
 
@@ -291,9 +266,9 @@ Each window operates independently, with its own open files and terminal session
 
 If you manually delete a worktree folder (instead of using `git worktree remove`), git may still think it exists. Clean up the stale references:
 
-```bash
+<Terminal typewriter>
 git worktree prune
-```
+</Terminal>
 
 ## Summary: stash vs worktree
 
