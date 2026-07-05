@@ -62,9 +62,12 @@ tmpfile=$(mktemp /tmp/rgf.XXXXXX)
 
 rg --color=always --line-number --no-heading --smart-case "${@:-}" \
   | fzf --ansi \
+        --layout=reverse \
+        --exact \
         --delimiter=':' \
-        --preview="${bat_bin} --color=always --highlight-line {2} -- {1}" \
-        --preview-window='right:60%:+{2}+3/3:~3' > "$tmpfile"
+        --nth=3.. \
+        --preview="${bat_bin} --color=always --pager=never --highlight-line {2} -- {1}" \
+        --preview-window='right:60%:+{2}+3/3:wrap' > "$tmpfile"
 
 local fzf_exit=$?
 local selected

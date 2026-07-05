@@ -1,0 +1,15 @@
+--colors=match:fg:red
+--colors=match:style:bold
+--colors=path:fg:blue
+--follow
+--glob=!.cache/*
+--glob=!.git/*
+--glob=!.output/*
+--glob=!.yarn/*
+--glob=!build/*
+--glob=!dist/*
+--glob=!node_modules/*
+--glob=!vendor/*
+--hidden
+--max-filesize=10M
+--smart-case

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-05T17:15:33.224Z",
+  "source": "rgenv.zsh",
+  "lang": "bash",
+  "explanations": {
+    "3": "The 'local' keyword makes this variable only exist inside this function, so it won't affect the shell environment outside.",
+    "5": "The '-z' flag checks if the string is empty (has zero length); this validates that the user actually provided a variable name.",
+    "11": "This tells ripgrep (rg) to treat files matching the pattern as 'config' type, even though ripgrep doesn't normally know about .env or .cfg files."
+  }
+}

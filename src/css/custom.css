@@ -335,6 +335,32 @@ kbd {
   box-shadow: inset 0 -1px 0 var(--ifm-color-emphasis-500);
 }
 
+/* --- ARTICLE HEADING STYLES --- */
+
+article h2 {
+  border-left: 4px solid var(--ifm-color-primary);
+  padding-left: 0.75rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+article h3 {
+  color: var(--ifm-color-primary-dark);
+  margin-top: 1.75rem;
+}
+
+[data-theme="dark"] article h3 {
+  color: var(--ifm-color-primary-light);
+}
+
+article h4 {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-top: 1.25rem;
+}
+
 /* --- CODE BLOCKS — word wrap --- */
 
 .prism-code {

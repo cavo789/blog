@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-05T17:14:54.581Z",
+  "source": "makefile.part41",
+  "lang": "part41",
+  "explanations": {
+    "1": "These lines define ANSI color codes that will be used later to colorize terminal output—34 is blue, 36 is cyan, and 33 is yellow.",
+    "8": "This sets PHP_VERSION to 8.1 if it hasn't already been defined elsewhere (like in a .env file), using the $(or ...) function to provide a fallback.",
+    "10": "This constructs the full Docker image name by inserting the PHP version number into the template string.",
+    "13": "These are the standard Docker flags: -it keeps it interactive, --rm cleans up after, -v mounts folders so the container can access your code and write temporary files.",
+    "16": "This captures your current user and group IDs so files created inside Docker won't be owned by root, preventing permission headaches later.",
+    "25": "The $(eval ...) syntax creates a local variable called COMMAND that holds the phan command string; it's a Makefile-specific way to define variables inside a target.",
+    "26": "The \\e[1;${COLOR_YELLOW}m...\\e[0m is ANSI escape code syntax that colors the output yellow; \\e[0m at the end resets the color back to normal.",
+    "37": "Similar to line 25, this creates a local COMMAND variable with the php-cs-fixer command, but it will be appended with --dry-run later to preview changes without applying them."
+  }
+}

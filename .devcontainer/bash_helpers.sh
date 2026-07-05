@@ -22,6 +22,7 @@ alias lint='docker run --rm -it --user \$(id -u):\$(id -g) -v \${BLOG_HOST_DIR}:
 alias spellcheck='docker run --rm -it --user \$(id -u):\$(id -g) -v \${BLOG_HOST_DIR}:/src -w /src ghcr.io/streetsidesoftware/cspell:latest lint . --unique --gitignore --quiet --no-progress --config .vscode/cspell.json'
 alias tags='python3 .scripts/tags-manager.py'
 alias check='pre-commit run --all-files --config .config/.pre-commit-config.yaml'
+alias eli5='node scripts/bulk-eli5.mjs'
 
 printf "\n🚀 Welcome to your Docusaurus Dev Container!\n\n"
 printf "📚 Quick Commands Reference:\n\n"
@@ -37,6 +38,9 @@ printf "  🧹 \033[1;33mlint\033[0m         Lint Markdown files with markdownli
 printf "  ✍️  \033[1;33mspellcheck\033[0m   Spell check content with cspell.\n"
 printf "  🔍 \033[1;33mcheck\033[0m        Run all pre-commit hooks on every file.\n"
 printf "\n"
+printf "  💡 \033[1;33meli5\033[0m         Generate ELI5 tips for blog posts (e.g.: eli5 --dir blog/2026/07).\n"
+printf "\n"
+
 
 EOF
 fi

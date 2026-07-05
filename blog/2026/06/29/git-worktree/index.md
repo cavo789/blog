@@ -2,6 +2,7 @@
 slug: git-worktree
 title: "git worktree: Work on Two Branches at the Same Time"
 authors: [christophe]
+description: "git worktree lets you check out multiple branches as real directories simultaneously — no stashing, no context loss. Keep your Docker stack running while handling hotfixes in parallel."
 image: /img/v2/git_worktree.webp
 mainTag: git
 tags: [git, linux, bash, zsh]

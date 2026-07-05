@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-05T17:15:19.998Z",
+  "source": "icon.svg",
+  "lang": "svg",
+  "explanations": {
+    "1": "The viewBox attribute defines the coordinate system for drawing (0 0 64 64 means a 64x64 square), and role/aria-label make this SVG accessible to screen readers by describing what it represents.",
+    "2": "rx and ry create rounded corners on the rectangle—rx is horizontal rounding and ry is vertical rounding, both set to 8 pixels here.",
+    "3": "text-anchor='middle' centers the text horizontally at x=32, and dominant-baseline='middle' centers it vertically at y=40."
+  }
+}

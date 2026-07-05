@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-05T17:15:25.040Z",
+  "source": "gwt.zsh",
+  "lang": "bash",
+  "explanations": {
+    "7": "The command runs git worktree list, and if it fails (because we're not in a git repo), the || operator triggers the error handler in curly braces instead of crashing.",
+    "16": "The {1} is a placeholder that fzf replaces with the first field (the path) from each line, so the preview shows what files are in each worktree directory.",
+    "19": "We use awk to extract just the first column (the directory path) from the selected line, since fzf returns the whole line but we only need the path part.",
+    "23": "This creates a new directory path by taking the git repo root and appending the branch name (with slashes converted to dashes) so worktrees don't conflict with each other."
+  }
+}

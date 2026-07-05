@@ -1,0 +1,8 @@
+$ rg "DB_HOST" -C 3 --type php
+
+src/Config/Database.php
+15-  'driver'   => 'mysql',
+16:  'host'     => env('DB_HOST', '127.0.0.1'),
+17-  'database' => env('DB_DATABASE', 'forge'),
+18-  'username' => env('DB_USERNAME', 'forge'),
+19-  'password' => env('DB_PASSWORD', ''),

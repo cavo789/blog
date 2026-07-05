@@ -1,0 +1,13 @@
+$ rg "console\.log" -C 2 --type js
+
+src/auth/login.js
+40-  const authToken = generateToken(user)
+41-  const refreshToken = generateRefresh(user)
+42:  console.log("token:", authToken)
+43-  return { authToken, refreshToken }
+
+src/payment/checkout.js
+85-  for (const item of cartItems) {
+86-    const price = calculatePrice(item)
+87:    console.log("debug")
+88-    total += price

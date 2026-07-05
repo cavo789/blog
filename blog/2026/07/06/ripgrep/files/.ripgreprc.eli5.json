@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-05T17:15:27.563Z",
+  "source": ".ripgreprc",
+  "lang": "plaintext",
+  "explanations": {
+    "1": "This sets the color of matching search results to red in the output.",
+    "2": "This makes the matching text appear bold, layering the style on top of the red color from line 1.",
+    "4": "This tells the search tool to follow symbolic links (shortcuts) when scanning directories.",
+    "5": "The exclamation mark means 'ignore this pattern', so .cache folders won't be searched.",
+    "13": "This includes hidden files and folders (those starting with a dot) in the search, which are normally skipped.",
+    "14": "This skips files larger than 10 megabytes to keep the search fast and avoid huge files."
+  }
+}

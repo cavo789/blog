@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-05T17:14:49.896Z",
+  "source": "stateful.py",
+  "lang": "python",
+  "explanations": {
+    "6": "The `show=False` parameter tells the diagram library not to automatically open the generated image file when done.",
+    "15": "The minus operator (`-`) here creates a visual connection line between these three components in the diagram.",
+    "16": "The `>>` operator creates a directional arrow from left to right, showing data or traffic flow between components.",
+    "18": "The `<<` operator creates a directional arrow pointing backward (right to left), showing that the storage class and persistent volume connect back to support all the apps we created in the loop."
+  }
+}

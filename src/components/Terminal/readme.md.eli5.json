@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-05T17:15:22.518Z",
+  "source": "readme.md",
+  "lang": "markdown",
+  "explanations": {
+    "48": "The asterisk means children is only required if you don't use the source prop—if source is provided, children becomes optional.",
+    "53": "This prop controls how fast each character appears when typewriter mode is on; if you leave it blank, the component automatically picks a speed based on how many lines are in the terminal.",
+    "54": "This is the delay (in milliseconds) before output lines show up during typewriter animation; if omitted, it scales automatically depending on line count.",
+    "120": "Inside JSX template literals (the backticks), dollar signs need a backslash in front of them to be treated as regular text instead of JavaScript variable placeholders."
+  }
+}

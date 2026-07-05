@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-05T17:15:31.245Z",
+  "source": "rgtodo.zsh",
+  "lang": "bash",
+  "explanations": {
+    "3": "The syntax ${1:-.} means use the first argument if provided, otherwise default to a dot (current directory).",
+    "9": "This is a regex pattern that matches TODO, FIXME, HACK, or NOTE followed by an optional colon and whitespace—the pipe | means OR, and \\s matches any whitespace character."
+  }
+}

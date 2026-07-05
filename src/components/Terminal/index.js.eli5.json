@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-05T17:15:18.433Z",
+  "source": "index.js",
+  "lang": "javascript",
+  "explanations": {
+    "9": "This checks if children is an array; if it is, we loop through each item and recursively extract text from it.",
+    "12": "We add a newline between array items, but not after the last one, so the output doesn't end with an extra blank line.",
+    "18": "This checks if children is a React component object (which has a props property); if so, we dig into its props to find the actual text content.",
+    "19": "The `?.` operator safely accesses children.props.children without crashing if props doesn't exist.",
+    "29": "These lines return different animation speeds depending on how many lines are in the terminal—more lines get faster animation so it doesn't feel too slow.",
+    "67": "We extract and split the terminal text into lines only once using useMemo, and only recompute when the typewriter flag changes, not when children changes.",
+    "74": "We pick either the explicit speed prop the user passed in, or fall back to the auto-calculated speed based on line count.",
+    "93": "IntersectionObserver is a browser API that tells us when an element scrolls into view; we check if it exists because some environments like server-side rendering don't have it.",
+    "100": "The threshold of 0.1 means the animation starts when at least 10% of the terminal is visible on screen.",
+    "121": "This regex checks if the line starts with a `$` or `#` symbol (with optional whitespace), which indicates it's a shell command that should be typed out character-by-character.",
+    "129": "If a line is empty or just whitespace, we pause briefly (80ms); otherwise we pause for the full effectiveDelay, which creates a more natural rhythm.",
+    "164": "We take the current line being typed and slice it to show only the characters typed so far (up to charIdx), using an empty string as fallback if that line doesn't exist yet.",
+    "165": "We concatenate all fully-revealed lines with the partially-typed current line, joining them with newlines to build the text display.",
+    "226": "We stop the click event from bubbling up to the parent container, so clicking the copy button doesn't also trigger the skip-animation handler."
+  }
+}

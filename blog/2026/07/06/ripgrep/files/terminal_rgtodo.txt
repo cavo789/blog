@@ -1,0 +1,5 @@
+$ rgtodo src/
+
+src/Api/UserController.php:47:    // TODO: replace with a proper permission check
+src/Api/UserController.php:112:   // FIXME: this bypasses rate limiting on retry
+src/Services/MailService.php:23:  // HACK: temporary workaround for #4521
