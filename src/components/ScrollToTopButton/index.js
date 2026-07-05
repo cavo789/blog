@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import Translate, { translate } from "@docusaurus/Translate";
 import styles from "./styles.module.css";
-import buttontop from '@site/static/img/up.webp'
+import buttontop from '@site/static/img/meerkat/suricate_no_background.webp'
 
 export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);

@@ -11,6 +11,7 @@ tags:
   - markdown
   - quarto
 language: en
+tried_it: false
 blueskyRecordKey: 3lun2yevo622r
 updates:
   - date: 2026-01-26

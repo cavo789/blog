@@ -43,6 +43,7 @@ date: 2026-01-15                 # required — YYYY-MM-DD
 series: "Creating Docusaurus components"  # groups posts into a series
 blueskyRecordKey: abc123xyz              # enables Bluesky comments widget
 ai_assisted: true                        # shows AI badge + AI co-author
+tried_it: false                          # opt-OUT — TriedIt widget shows by default on every post; set false to hide it on non-tutorial content
 language: en                             # language code
 updates:                                 # update history
   - date: 2026-02-01

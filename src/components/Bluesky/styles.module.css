@@ -10,7 +10,7 @@
 }
 
 .blueskyCommentsContainer {
-  border: solid 10px #f5f5f5;
+  border: 1px solid var(--ifm-color-emphasis-200);
   margin-top: 1rem;
   padding: 0.4rem 0.9rem;
   margin-bottom: 1.25rem;
@@ -18,11 +18,11 @@
 
 .blueskyCommentContainer {
   margin-bottom: 1rem;
-  background-color: #f9f9f9;
+  background-color: var(--ifm-color-emphasis-100);
   padding: 0.8rem;
   border-radius: 6px;
-  border-left: 2px solid #e0e0e0;
-  color: #333;
+  border-left: 2px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-font-color-base);
 }
 
 .blueskyCommentHeader {
@@ -52,14 +52,14 @@
   margin: 0;
   font-size: smaller;
   font-weight: normal;
-  color: #555;
+  color: var(--ifm-color-emphasis-600);
   display: block;
 }
 
 .blueskyCommentDate {
   margin-left: auto;
   font-size: smaller;
-  color: gray;
+  color: var(--ifm-color-emphasis-600);
 }
 
 .blueskyCommentText {
@@ -98,7 +98,7 @@
   margin-right: 0.25rem;
   display: inline-flex;
   align-items: center;
-  color: #666;
+  color: var(--ifm-color-emphasis-600);
   text-decoration: none;
   margin-top: 0.25rem;
 }
@@ -118,36 +118,40 @@ img.blueskyCommentEmbedThumb {
   max-width: 100%;
   height: auto;
   border-radius: 0.25rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--ifm-color-emphasis-300);
 }
 
 
 .blueskyNoCommentYet {
-  color: #555;
+  color: var(--ifm-color-emphasis-600);
   font-size: 1rem;
   line-height: 1.5;
   text-align: center;
   padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  background-color: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 8px;
   margin: 20px 0;
 }
 
 .blueskyNoCommentYetCTA {
   font-weight: bold;
-  color: #007bff;
+  color: var(--ifm-color-primary-dark);
   cursor: pointer;
   text-decoration: underline;
 }
 
+[data-theme="dark"] .blueskyNoCommentYetCTA {
+  color: var(--ifm-color-primary-light);
+}
+
 .blueskyButton {
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: var(--ifm-color-emphasis-200);
   border-radius: 6px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--ifm-color-emphasis-300);
   box-shadow: none;
-  color: #333333;
+  color: var(--ifm-font-color-base);
   display: inline-flex;
   font-size: 0.9rem;
   font-weight: 400;
@@ -160,62 +164,7 @@ img.blueskyCommentEmbedThumb {
 }
 
 .blueskyButton:hover {
-  background-color: #0062cc;
+  background-color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
   color: white;
-}
-
-
-/* --- Surcharges pour le mode sombre (Dark Mode) --- */
-@media (prefers-color-scheme: dark) {
-  /* Conteneur principal */
-  .blueskyCommentsContainer {
-    border-color: #363636;
-  }
-
-  /* Un seul commentaire */
-  .blueskyCommentContainer {
-    background-color: #2e2e2e;
-    border-left-color: #555;
-    color: #e0e0e0;
-  }
-
-  .blueskyCommentAuthorHandle {
-    color: #a0a0a0;
-  }
-
-  .blueskyCommentDate {
-    color: #999;
-  }
-
-  .blueskyCommentLink {
-    color: #a0a0a0;
-  }
-
-  /* Images incorporées */
-  .blueskyCommentImage {
-    border-color: #444;
-  }
-
-  /* Message d'absence de commentaire */
-  .blueskyNoCommentYet {
-    color: #a0a0a0;
-    background-color: #2c2c2c;
-    border-color: #444;
-  }
-
-  .blueskyNoCommentYetCTA {
-    color: #79b8f2;
-  }
-
-  /* Bouton */
-  .blueskyButton {
-    background-color: #383838;
-    border-color: #555;
-    color: #e0e0e0;
-  }
-
-  .blueskyButton:hover {
-    background-color: #007bff;
-    color: white;
-  }
 }

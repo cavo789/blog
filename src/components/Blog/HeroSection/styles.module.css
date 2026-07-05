@@ -131,3 +131,13 @@
     justify-content: center;
   }
 }
+
+/* Très petit écran : masquer la vidéo pour un hero compact */
+@media (max-width: 600px) {
+  .videoWrapper {
+    display: none;
+  }
+  .heroGrid {
+    gap: 1rem;
+  }
+}

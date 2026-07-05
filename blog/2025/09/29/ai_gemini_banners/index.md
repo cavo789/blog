@@ -4,6 +4,7 @@ title: How I used Google Gemini Nano Banana on my blog
 date: 2025-09-29
 description: See how Google Gemini Nano was used to generate all the custom images for this blog, including a meerkat mascot.
 authors: [christophe]
+tried_it: false
 image: /img/v2/gemini.webp
 mainTag: ai
 tags:

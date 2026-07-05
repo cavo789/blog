@@ -10,6 +10,7 @@ tags:
   - linux
   - wsl
 language: en
+tried_it: false
 blueskyRecordKey: 3m6w2zwj7u22n
 ---
 ![Discovering Zorin](/img/v2/zorin_os.webp)

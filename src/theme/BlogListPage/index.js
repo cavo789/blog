@@ -28,14 +28,43 @@ function BlogCard({ post }) {
           />
         )}
         <div className={styles.cardBody}>
+          {post.mainTag && (
+            <span
+              className={styles.cardTagBadge}
+              role="link"
+              tabIndex={0}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.location.href = `/tags/${post.mainTag}`;
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.stopPropagation();
+                  window.location.href = `/tags/${post.mainTag}`;
+                }
+              }}
+            >
+              {post.mainTag}
+            </span>
+          )}
           <h2 className={styles.cardTitle}>{post.title}</h2>
           {post.description && (
             <p className={styles.cardDescription}>{post.description}</p>
           )}
-          {dateStr && (
-            <time dateTime={post.date} className={styles.cardDate}>
-              {dateStr}
-            </time>
+          {(dateStr || post.readingTime) && (
+            <div className={styles.cardMeta}>
+              {dateStr && (
+                <time dateTime={post.date} className={styles.cardDate}>
+                  {dateStr}
+                </time>
+              )}
+              {post.readingTime && (
+                <span className={styles.cardReadingTime}>
+                  · {Math.ceil(post.readingTime)} min read
+                </span>
+              )}
+            </div>
           )}
         </div>
       </div>
@@ -61,6 +90,8 @@ function BlogListPageContent({ metadata, items }) {
     description: m.description,
     date: m.date,
     image: resolveImageUrl(m.frontMatter?.image, m.permalink),
+    mainTag: m.frontMatter?.mainTag,
+    readingTime: m.readingTime,
   }));
 
   return (

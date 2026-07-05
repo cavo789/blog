@@ -1,5 +1,7 @@
 .cardsSection {
-  margin-bottom: 40px;
+  margin: 0 calc(-50vw + 50%) 40px;
+  padding: 3rem calc(50vw - 50%);
+  background: var(--ifm-color-emphasis-100);
 }
 
 .cardsSection h2 {
@@ -34,6 +36,33 @@
 .cardLink {
   text-decoration: none;
   color: inherit;
+}
+
+.cardTagBadge {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: 2rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: var(--ifm-color-primary);
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.cardTagBadge:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+[data-theme='dark'] .cardTagBadge {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+[data-theme='dark'] .cardTagBadge:hover {
+  background-color: var(--ifm-color-primary-darker);
 }
 
 .seeMoreContainer {

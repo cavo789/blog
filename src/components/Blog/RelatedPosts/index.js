@@ -28,6 +28,7 @@ import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import Translate from "@docusaurus/Translate";
 import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import PostCard from "@site/src/components/Blog/PostCard";
+import styles from "./styles.module.css";
 
 export default function RelatedPosts({ count = 3, description = false }) {
   const { metadata } = useBlogPost();
@@ -79,7 +80,7 @@ export default function RelatedPosts({ count = 3, description = false }) {
   }
 
   return (
-    <>
+    <div className={styles.relatedPosts}>
       <h3>
         <Translate id="blog.relatedPosts.title">Related posts</Translate>
       </h3>
@@ -92,7 +93,7 @@ export default function RelatedPosts({ count = 3, description = false }) {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

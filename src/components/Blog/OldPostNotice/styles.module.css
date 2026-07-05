@@ -14,3 +14,9 @@
 .oldPostNotice strong {
   margin-right: 0.25rem;
 }
+
+[data-theme="dark"] .oldPostNotice {
+  background-color: rgba(133, 100, 4, 0.15);
+  color: #f0c040;
+  border-color: rgba(133, 100, 4, 0.4);
+}

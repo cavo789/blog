@@ -6,6 +6,7 @@ import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
 import BlogPostItemHeader from "@theme/BlogPostItem/Header";
 import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
 import Reaction from "@site/src/components/Reaction";
+import TriedIt from "@site/src/components/TriedIt";
 import TypoReport from "@site/src/components/TypoReport";
 import clsx from "clsx";
 
@@ -39,6 +40,7 @@ export default function BlogPostItem({ children, className }) {
           <>
             <TypoReport metadata={metadata} />
             <Reaction metadata={metadata} />
+            {frontMatter.tried_it !== false && <TriedIt metadata={metadata} />}
             <Bluesky metadata={metadata} />
             <RelatedPosts count="6" description="false" />
           </>

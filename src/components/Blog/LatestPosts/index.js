@@ -62,6 +62,26 @@ export default function LatestPosts({
                 className="padding-vert--md text--center"
                 textAlign="center"
               >
+                {post.mainTag && (
+                  <span
+                    className={styles.cardTagBadge}
+                    role="link"
+                    tabIndex={0}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      window.location.href = `/tags/${post.mainTag}`;
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.stopPropagation();
+                        window.location.href = `/tags/${post.mainTag}`;
+                      }
+                    }}
+                  >
+                    {post.mainTag}
+                  </span>
+                )}
                 <h3>{post.title}</h3>
                 {description && <p>{post.description || ""} →</p>}
                 <span>{formatPostDate(post.date, i18n.currentLocale)}</span>

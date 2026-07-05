@@ -3,6 +3,7 @@ import { translate } from "@docusaurus/Translate";
 import { PageMetadata } from "@docusaurus/theme-common";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
+import styles from "./styles.module.css";
 
 export default function NotFound() {
   const title = translate({
@@ -22,11 +23,7 @@ export default function NotFound() {
                   id: "theme.NotFound.imageAlt",
                   message: "A group of meerkats looking confused.",
                 })}
-                style={{
-                  maxWidth: "400px",
-                  width: "100%",
-                  marginBottom: "2rem",
-                }}
+                className={styles.notFoundImg}
               />
               <h1 className="hero__title">
                 {translate({

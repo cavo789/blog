@@ -2,7 +2,6 @@
   --card-radius: 14px;
   --card-transition: 0.2s ease-in-out;
   --card-hover-transform: translateY(-4px);
-  --card-img-height: 180px;
 }
 
 .counter {
@@ -60,8 +59,9 @@
   line-height: 1.4;
   margin: 0;
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .cardEnhanced:hover {
@@ -75,7 +75,7 @@
 
 .cardImageEnhanced {
   width: 100%;
-  height: var(--card-img-height);
+  aspect-ratio: 2 / 1;
   object-fit: cover;
   background: var(--ifm-color-emphasis-100);
   transition: transform var(--card-transition);
@@ -126,7 +126,7 @@
 
 .cardSmallImage {
   width: 100%;
-  height: 180px;
+  aspect-ratio: 2 / 1;
   object-fit: cover;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;

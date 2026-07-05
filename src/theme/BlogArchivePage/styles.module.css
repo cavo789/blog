@@ -258,3 +258,32 @@
     margin-bottom: 1rem;
   }
 }
+
+/* --------- Dark Mode Overrides --------- */
+
+[data-theme="dark"] .filterGroupSidebar select {
+  background-color: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+[data-theme="dark"] .filterGroupSidebar select:hover,
+[data-theme="dark"] .filterGroupSidebar select:focus {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px rgba(37, 194, 160, 0.2);
+}
+
+[data-theme="dark"] .timelineMonthLink {
+  color: var(--ifm-color-emphasis-700);
+}
+
+[data-theme="dark"] .timelineMonthLink:hover {
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+}
+
+[data-theme="dark"] .timelineMonthLink.activeMonth,
+[data-theme="dark"] .activeMonth {
+  background-color: rgba(37, 194, 160, 0.15);
+  color: var(--ifm-color-primary-lighter);
+}

@@ -72,7 +72,7 @@
 
 .cardImage {
   width: 100%;
-  height: 180px;
+  aspect-ratio: 2 / 1;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -83,6 +83,36 @@
   flex-direction: column;
   padding: 1rem;
   gap: 0.4rem;
+}
+
+.cardTagBadge {
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 0.2rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: 2rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: var(--ifm-color-primary);
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.cardTagBadge:hover {
+  background-color: var(--ifm-color-primary-dark);
+  color: #fff;
+  text-decoration: none;
+}
+
+[data-theme='dark'] .cardTagBadge {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+[data-theme='dark'] .cardTagBadge:hover {
+  background-color: var(--ifm-color-primary-darker);
 }
 
 .cardTitle {
@@ -104,14 +134,30 @@
   flex: 1;
 }
 
-.cardDate {
-  font-size: 0.8rem;
-  color: var(--ifm-color-secondary-dark);
-  font-style: italic;
+.cardMeta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
   margin-top: auto;
   padding-top: 0.5rem;
 }
 
+.cardDate {
+  font-size: 0.8rem;
+  color: var(--ifm-color-secondary-dark);
+  font-style: italic;
+}
+
 [data-theme='dark'] .cardDate {
+  color: var(--ifm-color-secondary-light);
+}
+
+.cardReadingTime {
+  font-size: 0.8rem;
+  color: var(--ifm-color-secondary-dark);
+  font-style: italic;
+}
+
+[data-theme='dark'] .cardReadingTime {
   color: var(--ifm-color-secondary-light);
 }

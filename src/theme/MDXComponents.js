@@ -79,12 +79,7 @@ export default {
         loading={loading || "lazy"}
         decoding={decoding || "async"}
         className={`${className || ""}`}
-        // Example of how adding extra CSS
-        style={{
-          border: "6px solid #c0e967",
-          borderRadius: "6px",
-          ...style,
-        }}
+        style={{ ...style }}
       />
     );
   },
