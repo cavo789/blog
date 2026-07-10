@@ -127,7 +127,7 @@ Remember the files we've created in the previous chapter. One file was called `m
 
 You simply need to run the `python` binary followed by the script name to start.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 So, you're actually inside a running container (see the blue whale). You should type `exit` to quit the container (the container will still keep running) and returns to your MS-DOS console.
 
 </AlertBox>
@@ -146,7 +146,7 @@ So, here, if you want to run the `main.py` script, just type `python src/main.py
 
 ![Running the main.py script from the terminal](./images/vscode_terminal_running.webp)
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 For Windows users, please note that the container (and thus VSCode) is running in Linux. There are a lot of differences for sure. What you should know is that Linux use `/` as directory separator and not `\` like DOS/Windows. This is why we've typed `src/main.py` and not `src\main.py`.
 
 </AlertBox>

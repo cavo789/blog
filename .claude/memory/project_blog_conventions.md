@@ -45,11 +45,13 @@ blueskyRecordKey: abc123xyz              # enables Bluesky comments widget
 ai_assisted: true                        # shows AI badge + AI co-author
 tried_it: false                          # opt-OUT — TriedIt widget shows by default on every post; set false to hide it on non-tutorial content
 language: en                             # language code
-updates:                                 # update history
+updates:                                 # update/revision history — see below
   - date: 2026-02-01
     note: "What changed"
 ---
 ```
+
+**`updates:` field details** — rendered as a timeline by `Updated` component (`src/components/Blog/Updated/index.js`), auto-included in every post via `src/theme/BlogPostItem/Content/index.js` (no manual import needed). The most recent entry also drives: `dateModified` in the SEO JSON-LD (`src/components/StructuredData/index.jsx`) and the threshold for the "this article may be outdated" warning (`src/components/Blog/OldPostNotice/index.js`, >1 year since most recent update). There is no separate `lastUpdated` field — `updates` is the single source of truth for "last modified".
 
 ## Content Structure (inside index.md)
 

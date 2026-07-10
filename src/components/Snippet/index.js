@@ -272,9 +272,12 @@ const variantIcons = {
 function Eli5CodeBlock({ code, lang, eli5 }) {
   const [activeLine, setActiveLine] = useState(null);
   const [tooltipStyle, setTooltipStyle] = useState(null);
+  // false until mounted client-side — gates the tooltip's document.body Portal,
+  // which doesn't exist during SSR.
   const [mounted, setMounted] = useState(false);
   const badgeRefs = useRef({});
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional mount flag, see comment on `mounted` above
   useEffect(() => { setMounted(true); }, []);
 
   const { lines, highlightedLines } = useMemo(() => {
@@ -328,7 +331,6 @@ function Eli5CodeBlock({ code, lang, eli5 }) {
                 <span
                   className={styles.eli5_code}
                   // Prism returns safe HTML (only wraps tokens in <span>)
-                  // eslint-disable-next-line react/no-danger
                   dangerouslySetInnerHTML={{
                     __html: highlightedLines[i] ?? "",
                   }}
@@ -372,6 +374,12 @@ function Eli5CodeBlock({ code, lang, eli5 }) {
     </>
   );
 }
+
+Eli5CodeBlock.propTypes = {
+  code: PropTypes.string.isRequired,
+  lang: PropTypes.string,
+  eli5: PropTypes.object.isRequired,
+};
 
 export default function Snippet({
   filename,

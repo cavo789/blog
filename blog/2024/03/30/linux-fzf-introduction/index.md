@@ -87,6 +87,10 @@ Now, instead of killing files, I'll just display the first five lines of each se
 
 ## Keybindings
 
-* <kbd>CTRL</kbd>+<kbd>R</kbd>: show the list of commands you've previously typed (your history thus), allow you to select a command by pressing <kbd>ENTER</kbd>,
-* <kbd>CTRL</kbd>+<kbd>T</kbd>: display the list of files in the current directory and sub-folders, allow you to select one or more files (just press <kbd>TAB</kbd> for a multiple selection) then press <kbd>ENTER</kbd> to return the list to the console and
-* <kbd>ALT</kbd>+<kbd>C</kbd>: get the list of folders recursively of the current directory, allow you to select one and by pressing <kbd>ENTER</kbd>, fzf will jump in that folder.
+<ShortcutList
+  items={[
+    { keys: ["Ctrl", "R"], desc: <>Show the list of commands you've previously typed (your history thus), allow you to select a command by pressing <kbd>ENTER</kbd>.</> },
+    { keys: ["Ctrl", "T"], desc: <>Display the list of files in the current directory and sub-folders, allow you to select one or more files (just press <kbd>TAB</kbd> for a multiple selection) then press <kbd>ENTER</kbd> to return the list to the console.</> },
+    { keys: ["Alt", "C"], desc: <>Get the list of folders recursively of the current directory, allow you to select one and by pressing <kbd>ENTER</kbd>, fzf will jump in that folder.</> },
+  ]}
+/>

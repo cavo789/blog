@@ -6,14 +6,16 @@ import PropTypes from "prop-types";
 import Translate from "@docusaurus/Translate";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { formatPostDate } from "@site/src/components/Blog/utils/date";
+import { createSlug } from "@site/src/components/Blog/utils/slug";
 import styles from "./styles.module.css";
 
 export default function PostCard({
   post,
   layout = "big",
   defaultImage = "/img/default.jpg",
+  lazyImage = true,
 }) {
-  const { permalink, image, title, description, date, counter } = post;
+  const { permalink, image, title, description, date, counter, mainTag, readingTime } = post;
   const { i18n } = useDocusaurusContext();
   const formattedDate = formatPostDate(date, i18n.currentLocale);
 
@@ -54,9 +56,18 @@ export default function PostCard({
           cardImageUrl={image || defaultImage}
           alt={title}
           title={title}
+          lazy={lazyImage}
           className={styles.cardImageEnhanced}
         />
         <CardBody className={styles.cardBodyEnhanced}>
+          {mainTag && (
+            <Link
+              to={`/blog/tags/${createSlug(mainTag)}`}
+              className={styles.cardTagBadge}
+            >
+              {mainTag}
+            </Link>
+          )}
           <h3 className={styles.cardTitle}>
             <Link
               to={permalink}
@@ -68,7 +79,17 @@ export default function PostCard({
           </h3>
           {description && <p className={styles.description}>{description}</p>}
           {counter && <p className={styles.counter}>{counter}</p>}
-          {formattedDate && <p className={styles.date}><span>{formattedDate}</span></p>}
+          {(formattedDate || readingTime) && (
+            <p className={styles.date}>
+              {formattedDate && <span>{formattedDate}</span>}
+              {readingTime && (
+                <span className={styles.readingTime}>
+                  {" "}
+                  · {Math.ceil(readingTime)} min read
+                </span>
+              )}
+            </p>
+          )}
         </CardBody>
       </Card>
     </div>
@@ -83,7 +104,10 @@ PostCard.propTypes = {
     description: PropTypes.string,
     date: PropTypes.string,
     counter: PropTypes.string,
+    mainTag: PropTypes.string,
+    readingTime: PropTypes.number,
   }).isRequired,
   layout: PropTypes.oneOf(["big", "small"]),
   defaultImage: PropTypes.string,
+  lazyImage: PropTypes.bool,
 };

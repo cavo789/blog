@@ -1,0 +1,37 @@
+{
+  "extends": "stylelint-config-standard",
+  "ignoreFiles": ["build/**", ".docusaurus/**", "node_modules/**"],
+  "defaultSeverity": "warning",
+  "rules": {
+    "color-no-hex": [
+      true,
+      {
+        "message": "Prefer Infima CSS variables over hardcoded hex colors (see AGENTS.md and .todos/039-hardcoded-hex-colors-no-token-system.md)."
+      }
+    ],
+    "selector-class-pattern": null,
+    "custom-property-pattern": null,
+    "keyframes-name-pattern": null,
+    "comment-empty-line-before": null,
+    "declaration-empty-line-before": null,
+    "custom-property-empty-line-before": null,
+    "rule-empty-line-before": null,
+    "property-no-vendor-prefix": null,
+    "value-no-vendor-prefix": null,
+    "declaration-block-single-line-max-declarations": null,
+    "color-hex-length": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      { "ignorePseudoClasses": ["global", "local"] }
+    ],
+    "media-feature-range-notation": "prefix",
+    "color-function-notation": "legacy",
+    "alpha-value-notation": "number",
+    "declaration-block-no-shorthand-property-overrides": [
+      true,
+      {
+        "message": "A later shorthand (e.g. border) silently resets an earlier longhand (e.g. border-left-color) — see .todos/039-hardcoded-hex-colors-no-token-system.md."
+      }
+    ]
+  }
+}

@@ -41,7 +41,22 @@ repos:
     rev: v0.17.2
     hooks:
       - id: markdownlint-cli2
-        args: [--config, .config/.markdownlint.json]
+        args: [--config, .config/.markdownlint-cli2.jsonc]
         types: [markdown]
+        # Run once with all files instead of being split into one process per
+        # CPU core (pre-commit's default) — avoids the banner/summary being
+        # repeated once per batch, which is what made the output so verbose.
+        require_serial: true
         # Internal files: memory, readmes, script docs, GitHub config, root README
         exclude: '^(\.claude/|\.github/|\.todos/|\.unpublished/|api|src/components/.+/readme\.md|plugins/.+/readme\.md|\.scripts/|README\.md$|\.unpublished/.+/files/)'
+
+  # ── ELI5 annotation freshness (report-only for now, see TODO 045/036) ────
+  - repo: local
+    hooks:
+      - id: eli5-freshness
+        name: eli5 annotation freshness
+        entry: node scripts/check-eli5-freshness.mjs
+        language: system
+        pass_filenames: false
+        always_run: true
+        verbose: true

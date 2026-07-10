@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Volume2, VolumeX, ArrowRight } from "lucide-react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Link from "@docusaurus/Link";
@@ -75,6 +76,10 @@ const HeroSection = ({ videoFileName }) => {
       </div>
     </header>
   );
+};
+
+HeroSection.propTypes = {
+  videoFileName: PropTypes.string.isRequired,
 };
 
 export default HeroSection;

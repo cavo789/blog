@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import clsx from "clsx";
 import Translate from "@docusaurus/Translate";
 import Tag from "@theme/Tag";
@@ -37,3 +38,11 @@ export default function TagsListInline({ tags }) {
     </>
   );
 }
+TagsListInline.propTypes = {
+  tags: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      permalink: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};

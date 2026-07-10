@@ -1,0 +1,13 @@
+.wrapper {
+  margin: 1.5rem 0;
+}
+
+.name {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.verify {
+  margin: 0.75rem 0 0.5rem;
+  color: var(--ifm-color-emphasis-700);
+}

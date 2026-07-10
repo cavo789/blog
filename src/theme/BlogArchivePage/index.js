@@ -4,7 +4,7 @@ import { translate } from "@docusaurus/Translate";
 import BlogPostCount from "@site/src/components/Blog/PostCount";
 import Layout from "@theme/Layout";
 import PostCard from "@site/src/components/Blog/PostCard";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
 import styles from "./styles.module.css";
 
@@ -13,8 +13,6 @@ const allPosts = getBlogMetadata();
 function Archives() {
   const [selectedYear, setSelectedYear] = useState("all");
   const [selectedTag, setSelectedTag] = useState("all");
-  const [displayedPosts, setDisplayedPosts] = useState([]);
-  const [isTimelineVisible, setIsTimelineVisible] = useState(true);
   const [activeYearMonth, setActiveYearMonth] = useState(null);
 
   const uniqueTags = [...new Set(allPosts.flatMap((post) => post.tags))].sort();
@@ -27,7 +25,7 @@ function Archives() {
       return acc;
     }, {});
 
-  useEffect(() => {
+  const displayedPosts = useMemo(() => {
     let filteredPosts = allPosts
       .filter((post) => !post.draft && !post.unlisted)
       .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -43,7 +41,7 @@ function Archives() {
         post.tags.includes(selectedTag)
       );
     }
-    setDisplayedPosts(filteredPosts);
+    return filteredPosts;
   }, [selectedYear, selectedTag]);
 
   const postsByYearAndMonth = displayedPosts.reduce((acc, post) => {
@@ -159,12 +157,11 @@ function Archives() {
           {/* -------- Layout: Sidebar Left + Posts Right -------- */}
           <div className={styles.contentWrapper}>
             {/* Left Sidebar: Filters + Timeline */}
-            {isTimelineVisible && (
-              <aside
-                id="timeline-container"
-                className={styles.sidebar}
-                aria-label="Blog Archive Filters and Timeline"
-              >
+            <aside
+              id="timeline-container"
+              className={styles.sidebar}
+              aria-label="Blog Archive Filters and Timeline"
+            >
                 {/* Filters */}
                 <div className={styles.filterContainerSidebar}>
                   <div className={styles.filterGroupSidebar}>
@@ -243,8 +240,7 @@ function Archives() {
                     ))}
                   </ul>
                 </nav>
-              </aside>
-            )}
+            </aside>
 
             {/* Posts Content */}
             <main className={styles.postsContainer}>

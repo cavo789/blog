@@ -307,7 +307,7 @@ Go to [https://mg.n0c.com/files/ftp-accounts](https://mg.n0c.com/files/ftp-accou
 
 Restrict the path for that user to, exactly, where the sieve file is located on your FTP. As said in <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link>, for me, it's `/mail/avonture.be/christophe/mail/avonture.be/christophe/sieve`. Make sure to find the path for you.
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 In case the `sieve` folder didn't exists yet, the best way to create it, I think, is to manually create a filter in Roundcube. Here is the [official PlanetHoster documentation](https://kb.n0c.com/en/knowledge-base/redirecting-emails-with-a-filter-in-roundcube-2/).
 
 </AlertBox>

@@ -66,16 +66,25 @@ Now that Zorin has been installed, you can reformat your USB drive to be able to
 
 If you already have formatted your stick using Zorin, you'll have to start the `diskpart` utility in a DOS console.
 
-* Plug in your USB drive.
-* Press <kbd>Win</kbd>+<kbd>R</kbd>, type `diskpart`, and hit <kbd>Enter</kbd>.
-* In the Diskpart window, execute these commands:
-  * `list disk` to show the list of disk you've,
-  * `select disk X` (replace `X` with your USB’s number). Don't select disk `0`, it's your hard drive. Most probably your USB stick will be disk `1` but check more than once! before pressing <kbd>Enter</kbd>,
-  * `clean` to remove everything on the stick,
-  * `create partition primary` to create a primary partition,
-  * `format fs=ntfs quick` to format the stick using NTFS file system,
-  * `assign` to assign a drive letter to the stick
-  * finally run `exit` to quit the diskpart utility.
+<StepsCard
+  variant="steps"
+  steps={[
+    "Plug in your USB drive",
+    "Press Win+R, type `diskpart`, and hit Enter",
+    {
+      content: "In the Diskpart window, execute these commands",
+      substeps: [
+        "`list disk` to show the list of disk you've",
+        "`select disk X` (replace `X` with your USB’s number). Don't select disk `0`, it's your hard drive. Most probably your USB stick will be disk `1` but check more than once! before pressing Enter",
+        "`clean` to remove everything on the stick",
+        "`create partition primary` to create a primary partition",
+        "`format fs=ntfs quick` to format the stick using NTFS file system",
+        "`assign` to assign a drive letter to the stick",
+        "finally run `exit` to quit the diskpart utility"
+      ]
+    }
+  ]}
+/>
 
 Now, the stick will be recognize again by Windows.
 </AlertBox>

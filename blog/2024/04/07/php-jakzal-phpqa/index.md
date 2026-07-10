@@ -56,7 +56,7 @@ Ok, so, to normalize your `composer.json` file, you can install the tool or, and
 
 The result will be a rewritten `composer.json` file where properties are put in standard order.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Add `--dry-run` if you just want to see what the changes will be; but do not modify any files.
 
 </AlertBox>
@@ -71,7 +71,7 @@ By running `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa co
 
 So, the tool detects that I'm referencing `spatie/laravel-db-snapshots` in my `composer.json` file but, in my codebase, the tool (in fact, the namespace added by the tool) isn't used at all so, yes, probably, I can remove that dependency.
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 Such a tool can produce false positive; just make some checks before removing the dependency. The best solution here is, of course, to have plenty of unit tests so you can run them before and after the change and see if your code still works as expected.
 
 </AlertBox>

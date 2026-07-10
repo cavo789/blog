@@ -48,23 +48,14 @@ That last output behavior is underrated. Readable, grouped, colorized results â€
 
 ripgrep ships in Ubuntu's default package repositories, so getting it is a one-liner:
 
-<Terminal typewriter>
-$ sudo apt update && sudo apt install ripgrep -y
-
-Reading package lists... Done
-Building dependency tree... Done
-0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
-</Terminal>
-
-Verify it installed correctly:
-
-<Terminal typewriter>
-$ rg --version
-
-ripgrep 14.1.0
--rev 0 (rev 4649aa9700 2024-03-30)
-features: +SIMD +AVX (compiled), +SIMD +AVX (runtime)
-</Terminal>
+<Prerequisite
+  name="ripgrep"
+  install="sudo apt update && sudo apt install ripgrep -y"
+  installOutput={`\nReading package lists... Done\nBuilding dependency tree... Done\n0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.`}
+  check="rg --version"
+  checkOutput={`\nripgrep 14.1.0\n-rev 0 (rev 4649aa9700 2024-03-30)\nfeatures: +SIMD +AVX (compiled), +SIMD +AVX (runtime)`}
+  typewriter
+/>
 
 <AlertBox variant="tip" title="Want the latest version?">
   The Ubuntu repositories sometimes lag a few releases behind upstream ripgrep. For the most recent version, grab the latest `.deb` package directly from the [GitHub releases page](https://github.com/BurntSushi/ripgrep/releases) and install it with `sudo dpkg -i ripgrep_*.deb`. From version 14 onwards you also benefit from improved PCRE2 support and faster directory traversal.
@@ -77,7 +68,7 @@ Let me show you why ripgrep clicks so immediately. Here are the same searches ex
 <Columns>
 <Column>
 
-**With grep**
+**With grep:**
 
 ```bash
 grep -rn --include="*.php" "getUser" . \
@@ -87,7 +78,7 @@ grep -rn --include="*.php" "getUser" . \
 </Column>
 <Column>
 
-**With ripgrep**
+**With ripgrep:**
 
 ```bash
 rg "getUser" --type php
@@ -100,7 +91,7 @@ rg "getUser" --type php
 <Columns>
 <Column>
 
-**With grep**
+**With grep:**
 
 ```bash
 grep -rn -i "TODO" . \
@@ -113,7 +104,7 @@ grep -rn -i "TODO" . \
 </Column>
 <Column>
 
-**With ripgrep**
+**With ripgrep:**
 
 ```bash
 rg -i "TODO" --type py
@@ -126,7 +117,7 @@ rg -i "TODO" --type py
 <Columns>
 <Column>
 
-**With grep**
+**With grep:**
 
 
 ```bash
@@ -139,7 +130,7 @@ grep -rn "DB_PASSWORD" . \
 </Column>
 <Column>
 
-**With ripgrep**
+**With ripgrep:**
 
 ```bash
 rg "DB_PASSWORD" -t yaml -t sh

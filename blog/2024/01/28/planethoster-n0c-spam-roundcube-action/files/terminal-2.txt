@@ -10,4 +10,3 @@ $ git branch -M main
 $ git remote add origin XXXXXXXXXXXX     '\<-- put here your own path
 
 $ git push -u origin main
-

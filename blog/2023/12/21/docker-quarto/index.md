@@ -154,7 +154,7 @@ So, if you want to create documents, presentations, or even books, Quarto and Ma
 
 Rerun `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to revealjs --log-level warning` to generate the slideshow as a `test.html` file.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Just run `docker run -d --name static-site -p 8080:80 -v .:/usr/local/apache2/htdocs/ httpd:alpine` then surf to `http://127.0.0.1:8080/test.html` to see your slideshow.
 
 </AlertBox>

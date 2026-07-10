@@ -13,6 +13,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { createRequire } from "module";
+import { hashSource } from "./lib/eli5-hash.mjs";
 
 const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -144,7 +145,7 @@ async function generateEli5(sourceFile, { force = false, outputPath = null } = {
     });
     raw = message.content[0].text.trim();
   } catch (err) {
-    throw new Error(`Claude API error: ${err.message}`);
+    throw new Error(`Claude API error: ${err.message}`, { cause: err });
   }
 
   // Parse JSON — strip markdown fences if Claude wrapped it anyway
@@ -180,6 +181,7 @@ async function generateEli5(sourceFile, { force = false, outputPath = null } = {
     model: "claude-haiku-4-5-20251001",
     generated: new Date().toISOString(),
     source: path.basename(absSource),
+    sourceHash: hashSource(code),
     lang,
     explanations: cleaned,
   };

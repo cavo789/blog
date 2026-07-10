@@ -76,9 +76,15 @@ It processes cleanup in granular steps, allowing you to skip specific categories
 
 `dnuke` supports CLI flags to customize its behavior:
 
-* **Deep Clean**: Use `dnuke -a` (or `--all`) to remove **all** unused images, not just dangling ones (similar to `docker image prune -a`).
-* **Non-Interactive**: Use `dnuke -y` (or `--force`) to bypass the wizard and automatically confirm all steps.
-* **Help**: Run `dnuke --help` to see the full list of options and usage examples.
+<StepsCard
+  variant="remember"
+  title="dnuke flags"
+  steps={[
+    { content: "**Deep Clean** — `dnuke -a` (or `--all`) removes **all** unused images, not just dangling ones (similar to `docker image prune -a`)." },
+    { content: "**Non-Interactive** — `dnuke -y` (or `--force`) bypasses the wizard and automatically confirms all steps." },
+    { content: "**Help** — `dnuke --help` shows the full list of options and usage examples." }
+  ]}
+/>
 
 If the environment is already clean, the wizard detects it immediately and exits without asking unnecessary questions.
 

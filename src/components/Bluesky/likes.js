@@ -16,6 +16,7 @@ export default function BlueskyLikes({ metadata }) {
 
   useEffect(() => {
     if (!blueskyRecordKey || !blueSkyConfig?.handle) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- resets stats when the post/config identity changes; the effect also fetches below, it's not derivable at render time
       setPostStats({ likes: null, reposts: null, loading: false });
       return;
     }

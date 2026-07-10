@@ -341,7 +341,7 @@ End Sub
 
 Option Explicit force the VB Engine to check that variables exists before starting to run the code and not every time a variable is accessed. This give a (small) little speed improvement.
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 Option Explicit is more an excellent way of coding: variables should be declared before using them
 
 </AlertBox>

@@ -16,6 +16,7 @@ export default function TriedIt({ metadata }) {
   useEffect(() => {
     try {
       const stored = localStorage.getItem(storageKey);
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional SSR/hydration-safe read, see comment on `voted` above
       if (stored) setVoted(stored);
     } catch {}
   }, [storageKey]);
@@ -63,7 +64,7 @@ export default function TriedIt({ metadata }) {
               onClick={() => handleVote("didnt_work")}
               aria-label="No, it didn't work for me"
             >
-              ❌ Didn't work for me
+              ❌ Didn&apos;t work for me
             </button>
           </div>
         </>

@@ -3,13 +3,22 @@
    =========================== */
 
 .profileHero {
-  background: linear-gradient(135deg, #205d3b 0%, #2e8555 55%, #3cad6e 100%);
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary) 55%,
+    var(--ifm-color-primary-lightest) 100%
+  );
   padding: 3.5rem 2rem 3rem;
   margin: -2rem -2rem 2.5rem;
   border-radius: 0 0 28px 28px;
 }
 
 [data-theme="dark"] .profileHero {
+  /* Bespoke darker stops (not the dark-theme primary tokens) for a richer,
+     lower-key hero gradient in dark mode. Legitimate color-no-hex exception,
+     see AGENTS.md and .todos/039-hardcoded-hex-colors-no-token-system.md. */
+  /* stylelint-disable-next-line color-no-hex */
   background: linear-gradient(135deg, #0f2d1e 0%, #1a5c44 55%, #1fa588 100%);
 }
 
@@ -35,8 +44,8 @@
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  border: 4px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  border: 4px solid rgb(255, 255, 255, 0.85);
+  box-shadow: 0 8px 32px rgb(0, 0, 0, 0.35);
   flex-shrink: 0;
   object-fit: cover;
 }
@@ -83,9 +92,9 @@
 }
 
 .badge {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgb(255, 255, 255, 0.15);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid rgb(255, 255, 255, 0.28);
   padding: 0.22rem 0.7rem;
   border-radius: 999px;
   font-size: 0.76rem;
@@ -156,12 +165,12 @@
 
 .achievementCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 28px rgb(0, 0, 0, 0.1);
   border-color: var(--ifm-color-primary);
 }
 
 [data-theme="dark"] .achievementCard:hover {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 28px rgb(0, 0, 0, 0.4);
 }
 
 .achievementEmoji {
@@ -191,8 +200,7 @@
 
 .socialGrid {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: center;
   gap: 1.5rem;
   padding: 1.5rem 0;
@@ -215,7 +223,7 @@
 
 .socialCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 28px rgb(0, 0, 0, 0.12);
   border-color: var(--ifm-color-primary);
 }
 
@@ -224,7 +232,7 @@
 }
 
 [data-theme="dark"] .socialCard:hover {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 28px rgb(0, 0, 0, 0.4);
 }
 
 .socialLabel {

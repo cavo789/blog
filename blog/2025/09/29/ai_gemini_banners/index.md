@@ -40,9 +40,14 @@ There was an example: uploading a image (my meerkat character) and use this prom
 
 i.e. :
 
-1. I click on the "Image" button (see the banana icon) to tell Gemini I want to create an image,
-2. I've clicked on the "+" button to upload my meerkat character (as a `.png` image) and
-3. I type my prompt
+<StepsCard
+  variant="steps"
+  steps={[
+    "I click on the \"Image\" button (see the banana icon) to tell Gemini I want to create an image",
+    "I've clicked on the \"+\" button to upload my meerkat character (as a `.png` image)",
+    "I type my prompt"
+  ]}
+/>
 
 And after just a few seconds, the unimaginable happened: I received a flood of offers, each one more impressive than the last.
 

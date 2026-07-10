@@ -41,7 +41,7 @@ Just click on the <Link to="/series">Series</Link> link to see how cool the **Se
 
 <!-- truncate -->
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Have you seen this article before? Look at the top. You will see a banner that says, 'This article is part of the **Creating Docusaurus components** series.' This is exactly what we will learn how to do right now.
 
 </AlertBox>
@@ -112,7 +112,7 @@ Now for the easy part: edit a few of your existing blog posts and add the `serie
 
 Do this for a few posts so that you have a few articles in that series.
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 If you visit your blog right now and browse to your article, you will not see any difference at all. This is completely normal because we have just created a component; we still need to tell Docusaurus to use it.
 
 </AlertBox>
@@ -156,7 +156,7 @@ We can create our series. In this example, I have edited three articles about Jo
 
 You can navigate from one article to another.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 We could stop here, but that would be like completing only half the journey. We still need to implement a page that will display the list of series and, when a series is clicked, the list of articles in it.
 
 </AlertBox>
@@ -185,7 +185,7 @@ First, please create the `src/pages/series.mdx` file with this content:
 
 <Snippet filename="src/pages/series.mdx" source="src/pages/series.mdx" />
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 As you can see, that page contains Markdown content with one special feature: it contains JavaScript code. This is why it is very important that the file extension is `.mdx`.
 
 </AlertBox>
@@ -266,7 +266,7 @@ And we need to load this plugin, so we will need to update the `docusaurus.confi
 
 <Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.part2.js" />
 
-<AlertBox variant="danger" title="">
+<AlertBox variant="danger">
 The `onBrokenLinks` property has to be set to `ignore` because Docusaurus does not load router plugins while it is rendering the static version of the site. Therefore, it will not understand any `/series/xxx` URLs and will think they are broken.
 
 </AlertBox>

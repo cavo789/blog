@@ -66,9 +66,6 @@
   margin: 0.3rem 0 0;
 }
 
-.blueskyCommentFooter {
-}
-
 .blueskyCommentLikes::before {
   content: "♡\a0";
   color: red;

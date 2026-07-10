@@ -16,6 +16,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { createRequire } from "module";
+import { hashSource } from "./lib/eli5-hash.mjs";
 
 const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -117,6 +118,7 @@ async function generateForFile(absSource, { force = false } = {}) {
     model: "claude-haiku-4-5-20251001",
     generated: new Date().toISOString(),
     source: path.basename(absSource),
+    sourceHash: hashSource(code),
     lang,
     explanations: cleaned,
   };
@@ -228,7 +230,7 @@ if (dryRun) {
 
 let generated = 0, skipped = 0, errors = 0;
 
-for (const [src, refs] of sourceMap) {
+for (const [src] of sourceMap) {
   const relSrc = path.relative(projectRoot, src);
 
   if (!fs.existsSync(src)) {

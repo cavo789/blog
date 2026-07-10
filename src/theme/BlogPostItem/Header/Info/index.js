@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import { translate } from "@docusaurus/Translate";
@@ -29,9 +30,16 @@ function ReadingTime({ readingTime }) {
   const readingTimePlural = useReadingTimePlural();
   return <>{readingTimePlural(readingTime)}</>;
 }
+ReadingTime.propTypes = {
+  readingTime: PropTypes.number.isRequired,
+};
 function DateTime({ date, formattedDate }) {
   return <time dateTime={date}>{formattedDate}</time>;
 }
+DateTime.propTypes = {
+  date: PropTypes.string.isRequired,
+  formattedDate: PropTypes.string.isRequired,
+};
 function Spacer() {
   return <>{" · "}</>;
 }
@@ -46,6 +54,15 @@ function MainTagBadge({ mainTag, tags }) {
     </Link>
   );
 }
+MainTagBadge.propTypes = {
+  mainTag: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      permalink: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
 
 export default function BlogPostItemHeaderInfo({ className, aiIcon }) {
   const { metadata, isBlogPostPage } = useBlogPost();
@@ -78,3 +95,7 @@ export default function BlogPostItemHeaderInfo({ className, aiIcon }) {
     </div>
   );
 }
+BlogPostItemHeaderInfo.propTypes = {
+  className: PropTypes.string,
+  aiIcon: PropTypes.node,
+};

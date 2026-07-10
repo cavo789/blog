@@ -77,7 +77,7 @@ To create the Docker image, please run `make build`:
 $ make build
 </Terminal>
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 If you don't have `make` yet on your host, please run `sudo apt-get update && sudo apt-get -y install make`.
 
 <Terminal typewriter>
@@ -111,7 +111,7 @@ I've **intentionally** created an error to illustrate some nice feature:
 
 As we can see, the test `it can search for a post` has failed while the previous ones have succeeded.
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 Did you've notice that others tests were well fired? Pest won't stop on failure.
 
 </AlertBox>

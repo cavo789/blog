@@ -33,8 +33,8 @@ export function generateSeriesList(
 ) {
   const seriesMap = {};
 
-  // Array of blog post objects
-  const posts = getBlogMetadata();
+  // Array of blog post objects; drafts are needed here to compute the "in progress" counter
+  const posts = getBlogMetadata({ includeDrafts: true });
 
   // Loop all posts, process the ones that are part of a serie and push the post entry in his own series
   posts.forEach((post) => {

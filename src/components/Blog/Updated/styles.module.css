@@ -1,34 +1,39 @@
 .revisionHistoryContainer {
-  /* On imite le background plat de Series */
-  background-color: var(--ifm-color-emphasis-100) !important;
-  border-left: 4px solid var(--ifm-color-primary);
-  border-radius: 4px;
-  padding: 1.25rem;
-  box-shadow: none !important;
+  background-color: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--card-radius, 14px);
+  padding: 1.5rem 1.5rem 1.25rem;
+  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .revisionHistoryContainer {
+  background-color: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-300);
+  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.25);
 }
 
 .revisionHistoryTitle {
   margin-top: 0;
   margin-bottom: 1.5rem;
-  font-size: 1.25rem; /* Réduit pour matcher la discrétion de Series */
+  font-size: 1.1rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--ifm-color-primary);
+  color: var(--ifm-font-color-base);
 }
 
 .timeline {
   position: relative;
 }
 
-/* Ligne verticale grise */
+/* Ligne verticale reliant les entrées */
 .timeline::before {
   content: "";
   position: absolute;
-  top: 5px;
-  left: 17px; /* Milieu de l'icône de 34px */
-  height: calc(100% - 10px);
+  top: 4px;
+  left: 15px; /* milieu de l'icône de 30px */
+  height: calc(100% - 8px);
   width: 2px;
   background: var(--ifm-color-emphasis-300);
 }
@@ -36,8 +41,8 @@
 .timelineItem {
   display: flex;
   position: relative;
-  margin-bottom: 1.5rem;
-  min-height: 34px;
+  margin-bottom: 1.25rem;
+  min-height: 30px;
 }
 
 .timelineItem:last-child {
@@ -48,33 +53,58 @@
   position: absolute;
   left: 0;
   top: 0;
-  /* On utilise le fond du container pour l'icône */
   background: var(--ifm-color-emphasis-100);
-  border: 2px solid var(--ifm-color-success);
+  border: 2px solid var(--ifm-color-emphasis-400);
   border-radius: 50%;
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
+  font-size: 0.85rem;
+}
+
+.timelineItemLatest .timelineIcon {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ifm-color-primary) 15%, transparent);
 }
 
 .timelineContent {
-  /* On décale tout le texte après l'icône */
-  padding-left: 45px;
+  padding-left: 44px;
   flex: 1;
+  padding-top: 0.15rem;
 }
 
 .timelineDate {
-  font-weight: bold;
-  font-size: 1rem;
-  color: var(--ifm-color-success);
-  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 0.3rem;
+}
+
+.timelineItemLatest .timelineDate {
+  color: var(--ifm-color-primary);
+}
+
+.latestBadge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ifm-color-white);
+  background: var(--ifm-color-primary);
 }
 
 .timelineDescription {
-  line-height: 1.5;
-  color: var(--ifm-color-content);
+  line-height: 1.55;
+  color: var(--ifm-font-color-base);
   font-size: 0.95rem;
 }

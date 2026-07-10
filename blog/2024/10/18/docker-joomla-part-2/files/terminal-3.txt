@@ -9,4 +9,3 @@ UID=$(id -u) GID=$(id -g) docker compose up --detach
 ✔ Network runningjoomlaindocker_default Created 0.0s
 ✔ Container joomla-db Healthy 31.7s
 ✔ Container joomla-app Started 31.1s
-

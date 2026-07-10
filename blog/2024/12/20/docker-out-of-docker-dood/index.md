@@ -134,7 +134,7 @@ As said, to be able to run DooD as an unprivileged user, you should be a member 
 
 One way to retrieve that ID is to run `getent group docker | cut -d: -f3`.  You'll most probably see `1001` since it's the standard ID for that group.
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 As you've seen, I've not hardcoded the ID in the proposed yaml file but I've defined an operating system variable called `DOCKER_GROUPID` and, if that variable didn't exist, I'm using value `1001`.
 
 </AlertBox>
@@ -151,7 +151,7 @@ Running Docker-out-of-Docker is a container running as root is quite easy, you j
 
 It's not so easy if you're using an unprivileged user but, well easy, as soon as you've found the right way: using the `group_add` property and retrieve the ID of the local `docker` group.
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 Don't try `group_add` with `docker` (the group name) instead the ID; it won't work.
 
 </AlertBox>

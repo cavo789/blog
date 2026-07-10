@@ -36,7 +36,7 @@ By default, your history is stored in a file called `.bash_history` in your home
 The easiest way to determine where is stored your history is to show the content of the `$HISTFILE` variable like this: `echo $HISTFILE`.
 </AlertBox>
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Very recently, I had to take over a script developed by a colleague (let's call him JohnDoe) and I didn't know how to call it from the command line or what parameters to pass to it.
 
 As I'm a *root user* on the server, I simply consulted his history.  All I had to do was display its `/home/john_doe/.bash_history` file.
@@ -67,7 +67,7 @@ $ curl --user name:password http://www.example.com
 $  curl --user name:password http://www.example.com
 ```
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 The space character is triggered by the `hist_ignore_space` option, defined in `.oh-my-zsh/lib/history.zsh`.
 </AlertBox>
 
@@ -105,12 +105,12 @@ So if the output of `history` is the one below, I can remove the `vi` line by ru
 
 <Terminal typewriter source="./files/terminal-1.txt" />
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 But, then the command `history -d 2130` will appears in the history, of course. So editing the file using a text editor is perhaps more ... discreet.
 
 </AlertBox>
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 You can specify a range like `history -d 2100-2130` (Bash 5.1+).
 
 </AlertBox>

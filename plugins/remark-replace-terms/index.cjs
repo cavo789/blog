@@ -27,7 +27,7 @@ const replacements = [
 ];
 
 function remarkReplaceWords() {
-  return (tree, file) => {
+  return (tree) => {
     visit(tree, "text", (node, index, parent) => {
       if (typeof node.value !== "string") return;
 
@@ -36,8 +36,6 @@ function remarkReplaceWords() {
       if (parent && forbiddenParents.includes(parent.type)) {
         return;
       }
-
-      let original = node.value;
 
       for (const [regex, replacement] of replacements) {
         node.value = node.value.replace(regex, (match, offset, fullString) => {
@@ -52,9 +50,6 @@ function remarkReplaceWords() {
             return match;
           }
 
-          // console.log(
-          //   `🔎 Replacing '${match}' with '${replacement}' in file: ${file.path}\nSentence: ${fullString}`
-          // );
           return replacement;
         });
       }

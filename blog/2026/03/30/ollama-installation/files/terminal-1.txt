@@ -7,4 +7,3 @@ Example: ./calculate.sh 5 3 +
 
 ❯ ./calculate.sh 5 3 -
 5 - 3 = 2
-

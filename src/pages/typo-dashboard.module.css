@@ -55,7 +55,7 @@
 .authBtn {
   padding: 6px 18px;
   background: var(--ifm-color-primary);
-  color: #fff;
+  color: white;
   border: none;
   border-radius: 5px;
   font-size: 0.9rem;
@@ -150,7 +150,7 @@
   border-radius: 4px;
   padding: 4px 8px;
   white-space: pre-wrap;
-  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .reportComment {
@@ -172,6 +172,14 @@
   color: var(--ifm-color-emphasis-800);
 }
 
+/*
+ * ── Report-type status colors ──
+ * Hand-tuned palette (blue/red/amber/green) for report categories, kept
+ * distinct from Infima's own info/danger/warning/success shades. Legitimate
+ * color-no-hex exception, see AGENTS.md and
+ * .todos/039-hardcoded-hex-colors-no-token-system.md.
+ */
+/* stylelint-disable color-no-hex */
 .type_typo       { background: #e8f4ff; color: #0066cc; }
 .type_incorrect  { background: #fde8e8; color: #c0392b; }
 .type_outdated   { background: #fff8e1; color: #b56a00; }
@@ -209,6 +217,7 @@
 .btnResolve   { background: #e8f5e9; color: #1a7f37; }
 .btnUnresolve { background: var(--ifm-color-emphasis-200); color: var(--ifm-color-emphasis-700); }
 .btnDelete    { background: #fde8e8; color: #c0392b; }
+/* stylelint-enable color-no-hex */
 
 /* ── Filter toggle ── */
 .filterToggle {
@@ -230,12 +239,14 @@
 
 /* ── States ── */
 .dim { color: var(--ifm-color-emphasis-500); }
-.err { color: var(--ifm-color-danger-dark, #c0392b); font-weight: 600; }
+.err { color: var(--ifm-color-danger-dark); font-weight: 600; }
 
 /* ── Dark mode ── */
+/* stylelint-disable color-no-hex -- report-type status palette, see note above */
 [data-theme="dark"] .type_typo       { background: #0a2540; color: #60b0ff; }
 [data-theme="dark"] .type_incorrect  { background: #3d1a1a; color: #eb5757; }
 [data-theme="dark"] .type_outdated   { background: #3d2e00; color: #f0b429; }
 [data-theme="dark"] .type_suggestion { background: #1a3d2a; color: #6fcf97; }
 [data-theme="dark"] .btnResolve      { background: #1a3d2a; color: #6fcf97; }
 [data-theme="dark"] .btnDelete       { background: #3d1a1a; color: #eb5757; }
+/* stylelint-enable color-no-hex */

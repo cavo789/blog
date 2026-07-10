@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -24,6 +25,10 @@ function TypeBadge({ type }) {
   );
 }
 
+TypeBadge.propTypes = {
+  type: PropTypes.string,
+};
+
 function ReportCard({ report, slug, siteUrl, onResolve, onDelete }) {
   const date = new Date(report.ts * 1000).toLocaleDateString("en-GB", {
     day: "2-digit", month: "short", year: "numeric",
@@ -43,7 +48,7 @@ function ReportCard({ report, slug, siteUrl, onResolve, onDelete }) {
           {slug} ↗
         </a>
       </div>
-      <blockquote className={styles.reportText}>"{report.text}"</blockquote>
+      <blockquote className={styles.reportText}>&quot;{report.text}&quot;</blockquote>
       {report.context && (
         <p className={styles.reportContext}>
           …{report.context}…
@@ -72,6 +77,22 @@ function ReportCard({ report, slug, siteUrl, onResolve, onDelete }) {
   );
 }
 
+ReportCard.propTypes = {
+  report: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    ts: PropTypes.number.isRequired,
+    type: PropTypes.string,
+    text: PropTypes.string.isRequired,
+    context: PropTypes.string,
+    comment: PropTypes.string,
+    resolved: PropTypes.bool,
+  }).isRequired,
+  slug: PropTypes.string.isRequired,
+  siteUrl: PropTypes.string.isRequired,
+  onResolve: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
+
 function AuthForm({ onSubmit }) {
   const [token, setToken] = useState("");
 
@@ -96,6 +117,10 @@ function AuthForm({ onSubmit }) {
   );
 }
 
+AuthForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+
 // ── Page ─────────────────────────────────────────────────────────────────────
 
 export default function TypoDashboard() {
@@ -108,11 +133,15 @@ export default function TypoDashboard() {
   const [loading,      setLoading]      = useState(false);
   const [hideResolved, setHideResolved] = useState(false);
 
+  // Priority: URL hash → localStorage → empty (show form).
+  // Must run in useEffect — localStorage is unavailable during SSR,
+  // and React does not re-run useState initializers on client hydration.
   useEffect(() => {
     const initial =
       window.location.hash.slice(1) ||
       localStorage.getItem(STORAGE_KEY) ||
       "";
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional SSR/hydration-safe read, see comment above
     if (initial) setToken(initial);
   }, []);
 
@@ -134,7 +163,9 @@ export default function TypoDashboard() {
     }
   }, [apiUrl]);
 
+  // Reactive sync: refetch whenever the token changes (login, restore from storage, hash link).
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- fetchData sets state, but this is a legitimate reaction to `token` changing, not derivable at render time
     if (token) fetchData(token);
   }, [token, fetchData]);
 

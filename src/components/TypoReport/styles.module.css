@@ -11,7 +11,7 @@
   background: var(--ifm-background-surface-color);
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgb(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -49,7 +49,7 @@
 }
 
 .typeBtn:hover {
-  background: var(--ifm-color-primary-lightest, #e8f4ff);
+  background: var(--ifm-color-primary-lightest);
   border-color: var(--ifm-color-primary);
   color: var(--ifm-color-primary-dark);
 }
@@ -80,7 +80,7 @@
   background: var(--ifm-background-surface-color);
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgb(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -94,7 +94,7 @@
   padding-left: 8px;
   background: var(--ifm-color-emphasis-100);
   border-radius: 0 4px 4px 0;
-  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .typeBadge {
@@ -104,7 +104,7 @@
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--ifm-color-primary-dark);
-  background: var(--ifm-color-primary-lightest, #e8f4ff);
+  background: var(--ifm-color-primary-lightest);
   border: 1px solid var(--ifm-color-primary-light);
   border-radius: 4px;
   padding: 3px 8px;
@@ -150,7 +150,6 @@
   left: -9999px;
   opacity: 0;
   pointer-events: none;
-  tab-index: -1;
 }
 
 .actions {
@@ -162,7 +161,7 @@
 .btnPrimary {
   padding: 5px 14px;
   background: var(--ifm-color-primary);
-  color: #fff;
+  color: white;
   border: none;
   border-radius: 5px;
   font-size: 0.82rem;
@@ -207,17 +206,17 @@
   border-radius: 6px;
   font-size: 0.82rem;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.15);
 }
 
 .status {
-  background: var(--ifm-color-success-contrast-background, #e6f4ea);
-  color: var(--ifm-color-success-dark, #1a7f37);
+  background: var(--ifm-color-success-contrast-background);
+  color: var(--ifm-color-success-dark);
 }
 
 .statusError {
-  background: var(--ifm-color-danger-contrast-background, #fde8e8);
-  color: var(--ifm-color-danger-dark, #c0392b);
+  background: var(--ifm-color-danger-contrast-background);
+  color: var(--ifm-color-danger-dark);
 }
 
 .dismissBtn {
@@ -239,7 +238,7 @@
 /* ── Dark mode overrides ──────────────────────────────────────────────── */
 [data-theme="dark"] .typeCard,
 [data-theme="dark"] .form {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px rgb(0, 0, 0, 0.4);
 }
 
 [data-theme="dark"] .typeBtn {
@@ -257,9 +256,16 @@
 }
 
 [data-theme="dark"] .typeBadge {
-  background: rgba(var(--ifm-color-primary-rgb, 0 100 200) / 0.15);
+  background: rgb(var(--ifm-color-primary-rgb, 0 100 200) / 0.15);
 }
 
+/*
+ * Custom dark-mode-only shades, tuned for contrast that the plain Infima
+ * success/danger tokens above don't quite give at this size/weight. Legitimate
+ * color-no-hex exception, see AGENTS.md and
+ * .todos/039-hardcoded-hex-colors-no-token-system.md.
+ */
+/* stylelint-disable color-no-hex */
 [data-theme="dark"] .status {
   background: #1a3d2a;
   color: #6fcf97;
@@ -269,3 +275,4 @@
   background: #3d1a1a;
   color: #eb5757;
 }
+/* stylelint-enable color-no-hex */

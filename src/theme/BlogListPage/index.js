@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { HtmlClassNameProvider, ThemeClassNames, PageMetadata } from '@docusaurus/theme-common';
 import BlogListPaginator from '@theme/BlogListPaginator';
 import SearchMetadata from '@theme/SearchMetadata';
 import Layout from '@theme/Layout';
-import { formatPostDate } from '@site/src/components/Blog/utils/date';
+import PostCard from '@site/src/components/Blog/PostCard';
 import styles from './styles.module.css';
 
 function resolveImageUrl(frontMatterImage, permalink) {
@@ -14,63 +15,11 @@ function resolveImageUrl(frontMatterImage, permalink) {
   return `/blog/${slug}/${frontMatterImage.replace('./', '')}`;
 }
 
-function BlogCard({ post }) {
-  const dateStr = formatPostDate(post.date, 'en');
-  return (
-    <a href={post.permalink} className={styles.cardLink}>
-      <div className={styles.card}>
-        {post.image && (
-          <img
-            src={post.image}
-            alt={post.title}
-            loading="lazy"
-            className={styles.cardImage}
-          />
-        )}
-        <div className={styles.cardBody}>
-          {post.mainTag && (
-            <span
-              className={styles.cardTagBadge}
-              role="link"
-              tabIndex={0}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                window.location.href = `/tags/${post.mainTag}`;
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  e.stopPropagation();
-                  window.location.href = `/tags/${post.mainTag}`;
-                }
-              }}
-            >
-              {post.mainTag}
-            </span>
-          )}
-          <h2 className={styles.cardTitle}>{post.title}</h2>
-          {post.description && (
-            <p className={styles.cardDescription}>{post.description}</p>
-          )}
-          {(dateStr || post.readingTime) && (
-            <div className={styles.cardMeta}>
-              {dateStr && (
-                <time dateTime={post.date} className={styles.cardDate}>
-                  {dateStr}
-                </time>
-              )}
-              {post.readingTime && (
-                <span className={styles.cardReadingTime}>
-                  · {Math.ceil(post.readingTime)} min read
-                </span>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-    </a>
-  );
-}
+const metadataPropTypes = PropTypes.shape({
+  blogDescription: PropTypes.string,
+  blogTitle: PropTypes.string,
+  totalCount: PropTypes.number,
+});
 
 function BlogListPageMetadata({ metadata }) {
   const { blogDescription, blogTitle } = metadata;
@@ -81,6 +30,9 @@ function BlogListPageMetadata({ metadata }) {
     </>
   );
 }
+BlogListPageMetadata.propTypes = {
+  metadata: metadataPropTypes.isRequired,
+};
 
 function BlogListPageContent({ metadata, items }) {
   const posts = items.map(({ content: { metadata: m } }) => ({
@@ -103,7 +55,7 @@ function BlogListPageContent({ metadata, items }) {
         </h1>
         <div className={styles.cardsGrid}>
           {posts.map((post) => (
-            <BlogCard key={post.id} post={post} />
+            <PostCard key={post.id} post={post} layout="big" />
           ))}
         </div>
         <BlogListPaginator metadata={metadata} />
@@ -111,6 +63,23 @@ function BlogListPageContent({ metadata, items }) {
     </Layout>
   );
 }
+BlogListPageContent.propTypes = {
+  metadata: metadataPropTypes.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      content: PropTypes.shape({
+        metadata: PropTypes.shape({
+          permalink: PropTypes.string,
+          title: PropTypes.string,
+          description: PropTypes.string,
+          date: PropTypes.string,
+          readingTime: PropTypes.number,
+          frontMatter: PropTypes.object,
+        }),
+      }),
+    }),
+  ).isRequired,
+};
 
 export default function BlogListPage(props) {
   return (

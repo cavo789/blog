@@ -19,7 +19,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
  */
 export default function BlogPostCount({ className }) {
   const { i18n } = useDocusaurusContext();
-  const count = getBlogMetadata().filter((post) => !post.draft).length;
+  const count = getBlogMetadata().length;
 
   return (
     <span className={className}>

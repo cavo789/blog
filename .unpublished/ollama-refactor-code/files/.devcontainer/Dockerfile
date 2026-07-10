@@ -18,9 +18,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     # Ensure local bin is in path
     PATH="/home/vscode/.local/bin:$PATH"
 
-ENV UV_CACHE_DIR=/home/vscode/.cache/uv \
-    PYTHONPYCACHEPREFIX=/home/vscode/.cache/pycache \
-    UV_LINK_MODE=copy
+WORKDIR /app
 
 # 2. Install Development Tools with BuildKit cache
 # shadow: needed for usermod/groupmod

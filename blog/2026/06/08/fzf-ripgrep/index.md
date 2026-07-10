@@ -36,33 +36,25 @@ This article builds on top of <Link to="/blog/linux-fzf-introduction">fzf</Link>
 
 > [ripgrep](https://github.com/BurntSushi/ripgrep) is a fast command-line search tool that recursively searches files for text patterns using Rust-powered performance, while automatically respecting `.gitignore` and similar ignore rules.
 
-Check if ripgrep is already available:
-
-<Terminal typewriter>
-$ rg --version
-ripgrep 14.1.0
-</Terminal>
-
-If not, install it:
-
-<Terminal typewriter>
-$ sudo apt install ripgrep
-</Terminal>
+<Prerequisite
+  name="ripgrep"
+  install="sudo apt install ripgrep"
+  check="rg --version"
+  checkOutput="ripgrep 14.1.0"
+  typewriter
+/>
 
 ### bat
 
 [bat](https://github.com/sharkdp/bat) (batcat on Debian/Ubuntu) is a modern replacement for cat that displays files with syntax highlighting, Git integration, paging, and other developer-friendly features. It is used here to power the preview panel.
 
-<Terminal typewriter>
-$ bat --version
-bat 0.24.0
-</Terminal>
-
-If not installed:
-
-<Terminal typewriter>
-$ sudo apt install bat
-</Terminal>
+<Prerequisite
+  name="bat"
+  install="sudo apt install bat"
+  check="bat --version"
+  checkOutput="bat 0.24.0"
+  typewriter
+/>
 
 <AlertBox variant="note" title="batcat on Ubuntu/Debian">
 On some Ubuntu/Debian systems, the binary is named `batcat` instead of `bat`. If it's your case, simply replace *bat* with *batcat* in the rest of this article.

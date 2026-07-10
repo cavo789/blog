@@ -20,7 +20,7 @@ But what a happy and strange coincidence. In its new version (4.26) released yes
 
 > The official blog post: [https://www.docker.com/blog/docker-desktop-4-26/]
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 We'll give it a try but spoiler, it's still in a very early stage.
 
 </AlertBox>

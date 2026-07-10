@@ -32,7 +32,7 @@ To do this:
 
 You will need to do this for every distribution you have installed that you want to move.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 If you have Docker, you can do the same and move the Docker partition to your second disk.
 
 <Terminal typewriter title="Powershell" source="./files/terminal-1.txt" />

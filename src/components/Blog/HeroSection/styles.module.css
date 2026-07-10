@@ -71,7 +71,7 @@
   overflow: hidden;
 
   /* Keep shadow for depth */
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 40px -10px rgb(0, 0, 0, 0.2);
 
   /* Transparent background to blend perfectly with the container */
   background-color: transparent;
@@ -97,7 +97,7 @@
   bottom: 1rem;
   right: 1rem;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgb(0, 0, 0, 0.6);
   color: white;
   border: none;
   border-radius: 50%;

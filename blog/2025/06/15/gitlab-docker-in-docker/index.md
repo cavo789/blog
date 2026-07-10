@@ -70,7 +70,7 @@ Now, to allow this, we'll need to update our GitLab Runner server configuration 
 
 <Snippet filename="/etc/gitlab-runner/config.toml" source="./files/config.part3.toml" />
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 The syntax `volumes = [ ..., "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]` used above is to inform you to append the two values to the list you already have. So, if, right now, you've `volumes = ["/cache", "/certs/client"]` then append values to get `volumes = ["/cache", "/certs/client", "/var/run/docker.sock:/var/run/docker.sock","/builds:/builds"]`
 
 </AlertBox>
@@ -83,7 +83,7 @@ Let's say `$CI_PROJECT_DIR` is initialized to `/builds/your-group/your-project`.
 
 Refers to the update we've already made in the `config.toml` file here above. We've shared `"/var/run/docker.sock:/var/run/docker.sock"` to allow to share the Docker socket but, too, we've shared `"/builds:/builds"` and here, it's to share the `builds` folder.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 This technique is called **Docker Socket Passthrough**.
 
 </AlertBox>

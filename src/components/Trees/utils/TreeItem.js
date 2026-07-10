@@ -1,4 +1,5 @@
 import React, { useState, Children, isValidElement } from "react";
+import PropTypes from "prop-types";
 import styles from "../styles.module.css";
 import LogoIcon from '@site/src/components/Blog/LogoIcon';
 
@@ -68,3 +69,14 @@ export default function TreeItem({ icon, iconSize = 24, badge, label, expanded =
     </div>
   );
 }
+
+TreeItem.propTypes = {
+  icon: PropTypes.string,
+  iconSize: PropTypes.number,
+  badge: PropTypes.node,
+  label: PropTypes.node,
+  expanded: PropTypes.bool,
+  children: PropTypes.node,
+  level: PropTypes.number,
+  defaultEmoji: PropTypes.string,
+};

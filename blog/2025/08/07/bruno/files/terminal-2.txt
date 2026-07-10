@@ -11,4 +11,3 @@ $ echo "deb [signed-by=/etc/apt/keyrings/bruno.gpg] http://debian.usebruno.com/ 
 $ sudo apt update
 
 $ sudo apt install bruno
-

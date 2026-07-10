@@ -2,7 +2,7 @@
   max-width: 400px;
   width: 100%;
   margin-bottom: 2rem;
-  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 8px 24px rgb(0, 0, 0, 0.2));
   animation: floatMeerkat 4s ease-in-out infinite;
 }
 
@@ -12,5 +12,5 @@
 }
 
 [data-theme="dark"] .notFoundImg {
-  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 8px 24px rgb(0, 0, 0, 0.5));
 }

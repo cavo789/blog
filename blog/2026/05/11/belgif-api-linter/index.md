@@ -124,7 +124,7 @@ It'll produce something like this:
 From now on, please refer to [https://www.belgif.be/specification/rest/api-guide](https://www.belgif.be/specification/rest/api-guide) to learn how to manage errors reported by the tool.
 </AlertBox>
 
-## Bonus - Get rid of Belgif intern warnings
+<Details label="Bonus - Get rid of Belgif intern warnings">
 
 While running the Belgif linter, you may encounter a lot of warnings like below:
 
@@ -138,7 +138,9 @@ Look at the new file below:
 
 In short, we'll run a custom command where we'll collect both STDERR and STDOUT in just one output stream then we'll run a few `grep` commands to purge specific messages from the output (the ones we can't solve).
 
-## Bonus - FastAPI tips
+</Details>
+
+## FastAPI tips
 
 <AlertBox variant="important" title="My own experience">
 When integrating belgif into a FastAPI project, I encountered several linting errors that required manual troubleshooting. The guide below outlines the solution I developed to resolve these issues. **Please note that this approach is based on my personal findings and may differ from standard best practices.**

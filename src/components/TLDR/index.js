@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import PropTypes from "prop-types";
 import Head from "@docusaurus/Head";
 import styles from "./styles.module.css";
 
@@ -49,3 +50,7 @@ export default function TLDR({ children }) {
     </>
   );
 }
+
+TLDR.propTypes = {
+  children: PropTypes.node.isRequired,
+};

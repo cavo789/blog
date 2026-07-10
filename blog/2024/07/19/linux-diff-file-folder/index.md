@@ -25,7 +25,7 @@ Compares two files and displays only the differences. Just copy/paste the code b
 
 The example below will check a given file (`string.sh`) located in both folder `src` and `./../another_project/src`.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 You can reuse this snippet for any file you want (the language doesn't matter).
 
 </AlertBox>

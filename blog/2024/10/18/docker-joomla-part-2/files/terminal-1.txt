@@ -21,4 +21,3 @@ $ make up
 ✔ Network joomla_3_network Created 0.0s
 ✔ Container joomla_3-db Healthy 62.7s
 ✔ Container joomla_3-app Started 61.5s
-

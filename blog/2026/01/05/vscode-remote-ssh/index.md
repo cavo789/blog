@@ -164,7 +164,7 @@ You are now connected to your production server using VS Code and the Remote - S
 Editing files directly on a production server is risky—mistakes can cause downtime or data loss. Prefer SSH key authentication, test changes in a staging environment, keep backups, and perform risky operations during maintenance windows.
 </AlertBox>
 
-## Bonus - A word about SSH key pair
+<Details label="Bonus - A word about SSH key pair">
 
 Think of it like passwords. You could use one password for multiple services, but if that password is compromised, all your services are at risk. Everyone knows this, right?
 
@@ -175,6 +175,8 @@ When you use an instruction like `ssh-keygen -t ed25519 -C "john_doe" -f ~/.ssh/
 You can certainly use `ssh-keygen -t ed25519 -C "this is my super SSH key for all servers" -f ~/.ssh/id_ed25519` then use that same key for multiple servers. However, if that key is compromised, all of those servers are at risk.
 
 For this reason, I insisted on creating a dedicated SSH key pair for each server you connect to. This way, if one key is compromised, only that specific server is at risk.
+
+</Details>
 
 ## Conclusion
 

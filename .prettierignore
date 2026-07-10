@@ -1,0 +1,6 @@
+build/
+.docusaurus/
+node_modules/
+*.eli5.json
+blog/
+.unpublished/

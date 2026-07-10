@@ -84,14 +84,19 @@ The provided file is an example you can reuse. During this article, as an exampl
 
 Look at the provided script:
 
-1. We'll define the version to use for Python,
-2. We'll configure some environment variables like the time zone, ...,
-3. We'll install Linux dependencies we need for the production (**but make sure to not add here dependencies we just need for the local development**),
-4. Because it's a Python example, we'll copy the `requirements.txt` file in the Docker image and install packages,
-5. We'll copy all our files inside the Docker image (make sure to correctly configure your `.dockerignore` file),
-6. And, finally, for the production image, we'll initialize the entry point and the command to keep.
+<StepsCard
+  variant="steps"
+  steps={[
+    "We'll define the version to use for Python",
+    "We'll configure some environment variables like the time zone, ...",
+    "We'll install Linux dependencies we need for the production (**but make sure to not add here dependencies we just need for the local development**)",
+    "Because it's a Python example, we'll copy the `requirements.txt` file in the Docker image and install packages",
+    "We'll copy all our files inside the Docker image (make sure to correctly configure your `.dockerignore` file)",
+    "And, finally, for the production image, we'll initialize the entry point and the command to keep"
+  ]}
+/>
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 As you can see, we've not created here, in the Docker image, an unprivileged user. Our production image is thus violating a rule we all have read: **Your Docker image should be rootless**.
 
 This is a key concept here:
@@ -113,7 +118,7 @@ We'll also tell to Docker which port of the running container has to be shared w
 
 <Snippet filename="/tmp/docker-prod-devcontainer/compose.yaml" source="./files/compose.yaml" />
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 Pay attention to the `user:` and `security_opt:` parts.
 
 It tells to Docker to use a user having UID/GID `1001` when creating a container based on our image. This user ... didn't exist in the image so why?
@@ -132,7 +137,7 @@ We've seen a mention to this file in our `Dockerfile`: because we're using Pytho
 
 <Snippet filename="/tmp/docker-prod-devcontainer/requirements.txt" source="./files/requirements.txt" />
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Look at this file once more: we only have, strictly speaking, the dependencies we need for production.
 
 </AlertBox>
@@ -241,12 +246,17 @@ One of the most important file is the `.devcontainer/Dockerfile` where we'll add
 
 Look at the provided script once again:
 
-1. We are reusing our previously created Docker image (see the `FROM my_sample_prod:latest` line),
-2. We well install some dev Linux tools like `bash`, `curl`, `git`, ... we don't need in prod,
-3. Now, we'll create a non-root user by using a few parameters like `OS_USERID`, `OS_GROUPID` and `OS_USERNAME`. We'll create some custom folders too for that user,
-4. We'll configure our Shell for things like the history file, to have a customized prompt, ...
-5. We'll make sure the different folder we need to manipulate are owned by our user and
-6. We'll install some specific Python Dev dependencies (this is needed for our sample here).
+<StepsCard
+  variant="steps"
+  steps={[
+    "We are reusing our previously created Docker image (see the `FROM my_sample_prod:latest` line)",
+    "We well install some dev Linux tools like `bash`, `curl`, `git`, ... we don't need in prod",
+    "Now, we'll create a non-root user by using a few parameters like `OS_USERID`, `OS_GROUPID` and `OS_USERNAME`. We'll create some custom folders too for that user",
+    "We'll configure our Shell for things like the history file, to have a customized prompt, ...",
+    "We'll make sure the different folder we need to manipulate are owned by our user",
+    "We'll install some specific Python Dev dependencies (this is needed for our sample here)"
+  ]}
+/>
 
 This last step is thus only needed for illustration of this blog post. Please use your own.
 
@@ -305,12 +315,17 @@ In VSCode, to be able to run a `Devcontainer:` command (from the **Command Palet
 
 <Snippet filename="/tmp/docker-prod-devcontainer/.devcontainer/devcontainer.json" source="./files/.devcontainer/devcontainer.json" />
 
-1. We've to use the `dockerComposeFile` item to load our two `compose.yaml` files i.e. the one of the root (the prod one) and the one from the `.devcontainer` folder. This is needed because we just need to extend the production `compose.yaml` file. We'll reuse all services and keys defined in `../compose.yaml` and just add (extend) or update (override) some.
-2. We need to tell to VSCode which folder should be open in our VSCode Devcontainer session, it has to be `/app` (has to match the `APP_HOME` variable from `.devcontainer/compose.yaml`)),
-3. We'll define our remoteUser name, it'll be `vscode` (has to match the `OS_USERNAME` variable from `.devcontainer/compose.yaml`),
-4. We'll also add a `GIT_SSH_COMMAND` environment variable. This is optional but it'll allow us to run a `git` command (like `git pull`) from inside our devcontainer,
-5. The `initializeCommand` key will create the `.devcontainer/history` folder on our host (with us as owner) just before creating the container. Like this, we'll be able to store our bash history file there (see the `volumes` entry in `.devcontainer/compose.yaml`),
-6. And, finally, in the `customizations` part, we can add vscode settings and extensions we want to configure and install inside our Devcontainer. You can add a lot of settings / extensions here if you want, depending of your project's type.
+<StepsCard
+  variant="steps"
+  steps={[
+    "We've to use the `dockerComposeFile` item to load our two `compose.yaml` files i.e. the one of the root (the prod one) and the one from the `.devcontainer` folder. This is needed because we just need to extend the production `compose.yaml` file. We'll reuse all services and keys defined in `../compose.yaml` and just add (extend) or update (override) some",
+    "We need to tell to VSCode which folder should be open in our VSCode Devcontainer session, it has to be `/app` (has to match the `APP_HOME` variable from `.devcontainer/compose.yaml`)",
+    "We'll define our remoteUser name, it'll be `vscode` (has to match the `OS_USERNAME` variable from `.devcontainer/compose.yaml`)",
+    "We'll also add a `GIT_SSH_COMMAND` environment variable. This is optional but it'll allow us to run a `git` command (like `git pull`) from inside our devcontainer",
+    "The `initializeCommand` key will create the `.devcontainer/history` folder on our host (with us as owner) just before creating the container. Like this, we'll be able to store our bash history file there (see the `volumes` entry in `.devcontainer/compose.yaml`)",
+    "And, finally, in the `customizations` part, we can add vscode settings and extensions we want to configure and install inside our Devcontainer. You can add a lot of settings / extensions here if you want, depending of your project's type"
+  ]}
+/>
 
 #### Our project's structure right now
 

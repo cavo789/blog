@@ -12,4 +12,3 @@ $ docker compose up --detach
 ⠋ 65cebbf4d847 Downloading [==============> ] 68.41MB/104.4MB 16.1s
 ✔ 34045bc93960 Download complete 1.0s
 [...]
-

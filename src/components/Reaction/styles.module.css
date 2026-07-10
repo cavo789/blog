@@ -39,13 +39,13 @@
 .btn:hover {
   background-color: var(--ifm-color-primary);
   border-color: var(--ifm-color-primary);
-  color: #fff;
+  color: white;
 }
 
 .btnNeutral:hover {
   background-color: var(--ifm-color-emphasis-400);
   border-color: var(--ifm-color-emphasis-400);
-  color: #fff;
+  color: white;
 }
 
 .thanks {

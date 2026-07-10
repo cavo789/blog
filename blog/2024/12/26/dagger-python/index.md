@@ -166,7 +166,7 @@ Running `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/
 
 Edit the `src/main.py` file again, f.i. make a typo by updating the line `else:` and remove the final `:` and the linter won't be happy anymore.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 We've successfully created our first task and we've successfully fired it on our machine.
 
 </AlertBox>
@@ -261,7 +261,7 @@ Do a SSH connection to your GitLab runner server and edit the `/etc/gitlab-runne
 
 Also, make sure the Linux user used by your GitLab runner (default username is `gitlab-runner`) is part of the `docker` group. This is done by running `sudo usermod -aG docker gitlab-runner` in the CLI (see [https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-the-shell-executor](https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-the-shell-executor)).
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Official Gitlab documentation about [volumes](https://docs.gitlab.com/runner/configuration/advanced-configuration.html#volumes-in-the-runnersdocker-section).
 
 </AlertBox>

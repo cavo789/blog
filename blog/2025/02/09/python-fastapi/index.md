@@ -36,7 +36,11 @@ Impossible to not try immediately and ... wow ... that's TRUE!
 
 Like always, we'll build a fully working example. It couldn't be simpler; you'll see.
 
-Please create a dummy folder and jump in it: `mkdir /tmp/fastapi && cd $_`.
+Please create a dummy folder and jump in it:
+
+<Terminal>
+$ mkdir /tmp/fastapi && cd $_
+</Terminal>
 
 In that folder, please create a new file called `Dockerfile` with the following content:
 
@@ -68,7 +72,13 @@ $ docker build -t python-fastapi . && docker run -p 82:82 python-fastapi
 
 Once done, just surf to `http://127.0.0.1:82` and you'll obtain your first JSON answer; crazy no?
 
-![Hello World](./images/hello_world.webp)
+<BrowserWindow url="http://127.0.0.1:82">
+  <img
+    alt="Hello World"
+    src={require("./images/hello_world.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ## Automated documentation of your API
 
@@ -76,11 +86,23 @@ And it's just the beginning: FastAPI comes with a self-documented API based on t
 
 Please jump to `http://127.0.0.1:82/docs` and you'll see it in action:
 
-![Automated documentation - Swagger UI](./images/doc.webp)
+<BrowserWindow url="http://127.0.0.1:82/docs">
+  <img
+    alt="Automated documentation - Swagger UI"
+    src={require("./images/doc.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 There is a second, alternative template called ReDoc. You can access it using the `redoc` endpoint i.e. `http://127.0.0.1:82/redoc`:
 
-![Automated documentation - Redoc](./images/redoc.webp)
+<BrowserWindow url="http://127.0.0.1:82/redoc">
+  <img
+    alt="Automated documentation - Redoc"
+    src={require("./images/redoc.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ## Let's play - Creating a joke generator
 
@@ -103,7 +125,7 @@ We should start Uvicorn with a "hot reload" mechanism.
 
 First stop the running container: go back to your console and press <kbd>CTRL</kbd>+<kbd>C</kbd> to stop the running container. We'll also remove the container. You can do this by going to `Docker Desktop`; click on the `Containers` menu and kill your *Python - Fastapi* container. Remove also the image called `python-fastapi`.
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 `python-fastapi` is the name of the Docker image we've built earlier.
 
 </AlertBox>
@@ -156,15 +178,27 @@ As an exercise; just remove the initialisation part of the  `jokes` array and, i
 
 Go back to your browser and surf to the `jokes` endpoint (`http://127.0.0.1:82/jokes`) and, hop, you've a random joke.
 
-![Getting a random joke](./images/random_joke.webp)
+<BrowserWindow url="http://127.0.0.1:82/jokes">
+  <img
+    alt="Getting a random joke"
+    src={require("./images/random_joke.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Just refresh the page; again and again. Every time you'll get a random joke (from a list of 5).
 
 If you want a specific one, just put an ID after like `http://127.0.0.1:82/jokes/1`
 
-![A specific joke](./images/specific_joke.webp)
+<BrowserWindow url="http://127.0.0.1:82/jokes/1">
+  <img
+    alt="A specific joke"
+    src={require("./images/specific_joke.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 Please note that the array start at position 0 so the first joke is this one: `http://127.0.0.1:82/jokes/0`.
 
 </AlertBox>
@@ -173,7 +207,13 @@ Please note that the array start at position 0 so the first joke is this one: `h
 
 And looking back to the documentation (`http://127.0.0.1:82/docs`); we've now three routes and, take a look, the Python docstring is used to describe the route.
 
-![Swagger UI - With new routes](./images/doc_with_jokes.webp)
+<BrowserWindow url="http://127.0.0.1:82/docs">
+  <img
+    alt="Swagger UI - With new routes"
+    src={require("./images/doc_with_jokes.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Really, really impressive!
 

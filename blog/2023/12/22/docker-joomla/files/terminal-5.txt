@@ -4,4 +4,3 @@ $ UID=$(id -u) GID=$(id -g) docker compose up --detach
 ✔ Network kingsbridge_default Created 0.3s
 ✔ Container kingsbridge-db Started 3.3s
 ✔ Container kingsbridge-app Started
-

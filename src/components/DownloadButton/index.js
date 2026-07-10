@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
@@ -42,3 +43,14 @@ export default function DownloadButton({ file, label = "Download", title }) {
     </a>
   );
 }
+
+DownloadButton.propTypes = {
+  // Either a plain URL string, or a webpack `require('./file.zip')` result
+  // (an object exposing the URL via `.default`).
+  file: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({ default: PropTypes.string }),
+  ]),
+  label: PropTypes.string,
+  title: PropTypes.string,
+};

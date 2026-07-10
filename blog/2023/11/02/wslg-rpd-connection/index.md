@@ -42,7 +42,7 @@ Go back to your Windows environment and start `mstsc.exe` and set the computer n
 
 ![Start the RDP connection](./images/rdp_localhost.webp)
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 The connection is only possible when `xrdp` is started. So, if it does not work, you know what to do (you can also run `sudo service xrdp status` to get detailed information).
 
 </AlertBox>
@@ -89,7 +89,7 @@ Finally enable `dbus`:
 
 Run `sudo service xrdp restart` to restart the Remote Desktop Protocol Server and start `mstsc.exe` again. Now, you should have the full desktop.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 When you don't need RDP anymore, free up some resources by running `sudo service xrdp stop` in your Linux console.
 
 </AlertBox>

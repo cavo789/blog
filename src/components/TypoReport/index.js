@@ -218,7 +218,7 @@ export default function TypoReport({ metadata }) {
       {phase === "confirming" && (
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.selectedPreview}>
-            "{selectedText.length > 80 ? selectedText.slice(0, 80) + "…" : selectedText}"
+            &quot;{selectedText.length > 80 ? selectedText.slice(0, 80) + "…" : selectedText}&quot;
           </div>
           {typeInfo && (
             <div className={styles.typeBadge}>

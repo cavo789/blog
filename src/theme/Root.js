@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useLocation } from '@docusaurus/router';
 
 /**
@@ -82,3 +83,6 @@ export default function Root({ children }) {
 
   return <>{children}</>;
 }
+Root.propTypes = {
+  children: PropTypes.node,
+};

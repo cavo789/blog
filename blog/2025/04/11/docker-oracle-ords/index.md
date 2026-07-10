@@ -79,7 +79,7 @@ $ chmod 777 ords_secrets
 $ echo 'CONN_STRING=SYS/admin@oracle-db:1521/ORCLPDB1' > ords_secrets/conn_string.txt
 </Terminal>
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 If you've a doubt about which value has to be used as `service_name`; start a sqlplus console (`docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba`) and run `SELECT global_name FROM global_name;` in SQL*Plus.
 
 ![Getting service name](./images/getting_service_name.webp)
@@ -146,7 +146,7 @@ Once back in the sqlplus console (logged in as user `hr`), please run : `EXECUTE
 
 *(read [ORDS 101: Enabling Oracle Schemas for HTTPS/REST](https://www.thatjeffsmith.com/archive/2023/09/ords-101-enabling-oracle-schemas-for-https-rest/) if you want deeper info)*
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 If you get an error at this level, it means ORDS wasn't installed in your database. Please read again the **Installing ORDS on your DB** chapter.
 
 </AlertBox>
@@ -155,16 +155,28 @@ If you get an error at this level, it means ORDS wasn't installed in your databa
 
 At this stage, we've installed ORDS, configured our database to use it and we've created a user called `hr`. We can surf to `http://localhost:8181/ords` and connect to the ORDS dashboard:
 
-![ORDS Welcome page](./images/ords_welcome_page.webp)
+<BrowserWindow url="http://localhost:8181/ords/_/landing">
+  <img
+    alt="ORDS Welcome page"
+    src={require("./images/ords_welcome_page.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 APEX wasn't installed and thus disabled
 
 </AlertBox>
 
 Use `hr` and `admin`, our custom user, for the login page:
 
-![ORDS login page](./images/ords_login.webp)
+<BrowserWindow url="http://localhost:8181/ords/_/landing">
+  <img
+    alt="ORDS login page"
+    src={require("./images/ords_login.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Right now, we can ask ORDS to see the list of objects already accessible; simply surf to `http://localhost:8181/ords/hr/open-api-catalog/` to get ... an empty list.
 
@@ -246,15 +258,33 @@ You'll get the DDL to run in a console if you want to REST enable the table by c
 
 The last part is to jump now in the ORDS website (`http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop`). Please refresh the page and you'll now see you've one object in the `AUTOREST` area:
 
-![There is one object in the AUTOREST area](./images/ords_autorest_1.webp).
+<BrowserWindow url="http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop">
+  <img
+    alt="There is one object in the AUTOREST area"
+    src={require("./images/ords_autorest_1.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Click on that area and you'll see the object (which is a view) we'll REST enabled previously:
 
-![Employees is AUTOREST enabled](./images/ords_employees_is_enabled.webp)
+<BrowserWindow url="http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop">
+  <img
+    alt="Employees is AUTOREST enabled"
+    src={require("./images/ords_employees_is_enabled.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Look at the *Open in a new tab* icon on the image above. Click on that button and you'll get your records as a JSON response:
 
-![Getting the list of employees as JSON REST answer](./images/getting_employees_as_json_browser.webp)
+<BrowserWindow url="http://localhost:8181/ords/hr/employees/">
+  <img
+    alt="Getting the list of employees as JSON REST answer"
+    src={require("./images/getting_employees_as_json_browser.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 The `http://localhost:8181/ords/hr/employees/` is called the **Object Data** ([documentation](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/developing-REST-applications.html#GUID-0B17836D-E5B5-4B45-A9DA-0ABF62426EDF))
 
@@ -281,13 +311,25 @@ Let's create a new view for the fun:
 
 Now, by refreshing `http://localhost:8181/ords/hr/open-api-catalog/` again, you'll see you've now a second item called `DEPARTMENTS`.
 
-![Accessing the metadata-catalog](./images/metadata_catalog.webp)
+<BrowserWindow url="http://localhost:8181/ords/hr/open-api-catalog/">
+  <img
+    alt="Accessing the metadata-catalog"
+    src={require("./images/metadata_catalog.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ##### Working with REST
 
 Go to `http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop` or, from the hamburger menu, click on the `REST` item.
 
-![REST dashboard](./images/rest_dashboard.webp)
+<BrowserWindow url="http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop">
+  <img
+    alt="REST dashboard"
+    src={require("./images/rest_dashboard.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ### Using paging, filtering and ordering options on the querystring
 
@@ -307,7 +349,13 @@ So, if you've more than 25 employees, the endpoint `http://localhost:8181/ords/h
 
 By accessing a "full" page like `http://localhost:8181/ords/hr/employees/`, we'll in fact just receive a specific number of records (as configured in ORDS). At the end of the JSON answer, there will be navigation links:
 
-![Pagination](./images/pagination.webp)
+<BrowserWindow url="http://localhost:8181/ords/hr/employees/">
+  <img
+    alt="Pagination"
+    src={require("./images/pagination.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 As you can see on the image; the JSON answer will provide a list of records (in an `items` so-called array) then a few properties like `hasMore` (true/false), `limit` i.e. the number of rows in each call, `offset` is the "page" (when 0 the first 25 rows are displayed, when 1 then rows 26 till 50, ...), `count` is the number of rows in the answer.
 
@@ -319,7 +367,7 @@ So we can run multiple requests like `http://localhost:8181/ords/hr/employees/?o
 
 We can define the number of records by page using the `limit` querystring parameter: `http://localhost:8181/ords/hr/employees/?limit=100`.
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 The official documentation strongly discourages to remove the limit (and thus ask all records at once). For this reason there is no way to remove the limit. If you really wish to get the full list, try with a very high number like `limit=1000000` (one million).
 
 </AlertBox>
@@ -332,29 +380,59 @@ The general syntax is using `/?q={"column":{"$eq":"value"}}`.
 
 For instance, who earn more than 20,000€ as salary? `http://localhost:8181/ords/hr/employees/?q={"salary":{"$gt":20000}}` will apply a filter on `salary > 20000`.
 
-![Who earns more than 20k](./images/salary_more_20000.webp)
+<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"salary":{"$gt":20000}}'}>
+  <img
+    alt="Who earns more than 20k"
+    src={require("./images/salary_more_20000.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ##### Equal
 
 To find all employees called `Steven`: `http://localhost:8181/ords/hr/employees/?q={"first_name":{"$eq":"Steven"}}`
 
-![Steven](./images/firstname_is_steven.webp)
+<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"first_name":{"$eq":"Steven"}}'}>
+  <img
+    alt="Steven"
+    src={require("./images/firstname_is_steven.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ##### Instring / contains / like
 
 Employees with the pattern `alex` in their first name: `http://localhost:8181/ords/hr/employees/?q={"first_name":{"$instr":"alex"}}` (will match f.i. `Alexander` or `Alexis`).
 
-![Contains Alex](./images/contains_alex.webp)
+<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"first_name":{"$instr":"alex"}}'}>
+  <img
+    alt="Contains Alex"
+    src={require("./images/contains_alex.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Who is working as ICT? Here the like operator will be the one to use: `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"IT_%"}}` (`IT_%` means *starts with*)
 
-![Who works for IT](./images/starting_with_it.webp)
+<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"IT_%"}}'}>
+  <img
+    alt="Who works for IT"
+    src={require("./images/starting_with_it.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ##### Complex filtering
 
 We can also use AND like in this example: `http://localhost:8181/ords/hr/employees/?q={"first_name":{"$instr":"alex"},"salary":{"$gt":5000}}` i.e. retrieve all people having `alex` in their first name and earning more than 5,000€
 
-![Contains Alex and earn more than 5,000](./images/alex_5000.webp)
+<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"first_name":{"$instr":"alex"},"salary":{"$gt":5000}}'}>
+  <img
+    alt="Contains Alex and earn more than 5,000"
+    src={require("./images/alex_5000.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 <AlertBox variant="info" title="Using complex filtering">
 The following URL `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"%CLERK"},"salary":{"$gt":2899},"hire_date":{"$gt":{"$date":"2016-12-31T12:59:59Z"}}}` will return every employee who:
@@ -363,7 +441,13 @@ The following URL `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like"
 * having a salary greater then 2,899€ and
 * hired as from 1st January 2017.
 
-![Using a combination of filters](./images/filtering_complex.webp)
+<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"%CLERK"},"salary":{"$gt":2899},"hire_date":{"$gt":{"$date":"2016-12-31T12:59:59Z"}}}'}>
+  <img
+    alt="Using a combination of filters"
+    src={require("./images/filtering_complex.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 </AlertBox>
 
@@ -373,7 +457,13 @@ The general syntax is using `/?q={"$orderby":{"fieldname1":"asc","fieldname2":"d
 
 To sort on the first name desc and, then based on the salary (the higher first): `http://localhost:8181/ords/hr/employees/?q={"$orderby":{"first_name":"desc","salary":"desc"}}`.
 
-![Ordering on the firstname and salary DESC](./images/ordering.webp)
+<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"$orderby":{"first_name":"desc","salary":"desc"}}'}>
+  <img
+    alt="Ordering on the firstname and salary DESC"
+    src={require("./images/ordering.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ### Swagger
 

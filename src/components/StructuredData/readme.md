@@ -23,19 +23,24 @@ Import and use inside `src/theme/BlogPostPage/index.js`:
 import StructuredData from "@site/src/components/StructuredData";
 
 function BlogPostPage() {
-  const { metadata } = useBlogPost();
+  const { metadata, assets } = useBlogPost();
 
   return (
     <>
       {/* [...] */}
 
-      {metadata && <StructuredData metadata={metadata} />}
+      {metadata && <StructuredData metadata={metadata} assets={assets} />}
 
       {/* other content */}
     </>
   );
 }
 ```
+
+`assets.image` is passed so co-located images (frontmatter `image: ./banner.jpg`) resolve to
+the bundler-generated URL — the same mechanism Docusaurus's own `BlogPostPage/StructuredData`
+uses internally. Falls back to `frontMatter.image` when the post uses a static path
+(e.g. `/img/v2/...`).
 
 ## 🔍 Debugging
 
@@ -56,7 +61,7 @@ Use [Google Rich Results Test](https://search.google.com/test/rich-results) or [
 
 ## 📄 Requirements
 
-* `metadata` must be passed from `useBlogPost()`
+* `metadata` and `assets` must be passed from `useBlogPost()`
 * `siteConfig.url` and `themeConfig.image` should be defined in `docusaurus.config.js`
 
 ## 📚 Schema Reference

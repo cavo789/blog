@@ -23,29 +23,43 @@ export default function Updated({ updates }) {
         <Translate id="blog.updated.changelog">Changelog</Translate>
       </h3>
       <div className={styles.timeline}>
-        {sortedUpdates.map((update, i) => (
-          <div key={`${update.date}-${i}`} className={styles.timelineItem}>
-            <div className={styles.timelineIcon}>
-              <span aria-hidden="true">📅</span>
-            </div>
-            <div className={styles.timelineContent}>
-              <div className={styles.timelineDate}>
-                <time dateTime={update.date}>
-                  {new Date(update.date).toLocaleDateString(
-                    i18n.currentLocale,
-                    { year: "numeric", month: "long", day: "numeric" }
-                  )}
-                </time>
+        {sortedUpdates.map((update, i) => {
+          const isLatest = i === 0;
+          return (
+            <div
+              key={`${update.date}-${i}`}
+              className={clsx(
+                styles.timelineItem,
+                isLatest && styles.timelineItemLatest
+              )}
+            >
+              <div className={styles.timelineIcon}>
+                <span aria-hidden="true">{isLatest ? "✨" : "📅"}</span>
               </div>
-              <div
-                className={styles.timelineDescription}
-                dangerouslySetInnerHTML={{
-                  __html: parseMarkdown(update.note),
-                }}
-              />
+              <div className={styles.timelineContent}>
+                <div className={styles.timelineDate}>
+                  <time dateTime={update.date}>
+                    {new Date(update.date).toLocaleDateString(
+                      i18n.currentLocale,
+                      { year: "numeric", month: "long", day: "numeric" }
+                    )}
+                  </time>
+                  {isLatest && (
+                    <span className={styles.latestBadge}>
+                      <Translate id="blog.updated.latest">Latest</Translate>
+                    </span>
+                  )}
+                </div>
+                <div
+                  className={styles.timelineDescription}
+                  dangerouslySetInnerHTML={{
+                    __html: parseMarkdown(update.note),
+                  }}
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

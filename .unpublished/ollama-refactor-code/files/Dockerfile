@@ -71,6 +71,24 @@ USER architect
 # Verify non-root execution capability
 RUN python -c "import os; print(f'Running as UID {os.getuid()}')"
 
+USER architect
+
+ENTRYPOINT ["python", "src/main.py"]
+
+# --- PRODUCTION TARGET ---
+FROM base AS production
+
+ENV ENV=production
+
+COPY --from=builder --chown=architect:architect /build/.venv /app/.venv
+COPY --chown=architect:architect src/ ./src/
+COPY --chown=architect:architect config/ ./config/
+
+USER architect
+
+# Verify non-root execution capability
+RUN python -c "import os; print(f'Running as UID {os.getuid()}')"
+
 # 7. Entrypoint
 #    Define the default command to run when the container starts.
 ENTRYPOINT ["python", "src/main.py"]

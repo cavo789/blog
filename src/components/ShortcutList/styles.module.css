@@ -1,0 +1,31 @@
+.list {
+  margin: 1.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.keys {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.plus {
+  margin: 0 0.15rem;
+  color: var(--ifm-color-emphasis-500);
+}
+
+.desc {
+  color: var(--ifm-font-color-base);
+}

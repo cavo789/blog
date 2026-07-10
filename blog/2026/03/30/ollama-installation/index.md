@@ -244,7 +244,7 @@ And using autocompletion for the `readme.md`
 
 ![Using autocompletion for the readme.md file](./images/readme_autocompletion.webp)
 
-## Bonus
+<Details label="Bonus">
 
 ### CanIRun.ai
 
@@ -277,3 +277,5 @@ To create this file, simply start a new Powershell terminal, run `cd ~` to go in
 Think to run `wsl --shutdown` in a Powershell console if you've created/updated the `.wslconfig` file.
 
 </AlertBox>
+
+</Details>

@@ -37,21 +37,41 @@ My personal experience: even with a powerful computer with plenty of RAM, Java i
 
 Let's move on and install it under Linux; it's really easy to do.
 
-1. Go to [https://pentaho.com/pentaho-developer-edition/](https://pentaho.com/pentaho-developer-edition/); fill in the form (it's mandatory) before getting the list of files you can download),
-2. Download the `pdi-ce-10.2.0.0-222.zip` file. If like me you're under Windows, the archive will be put on your Windows partition; let's copy it to your Linux one.
-  ![Download Pentaho](./images/download.webp)
-   1. Start your Linux console and create a new folder like f.i. `~/tools/pentaho` (you can decide to use another path but, in this documentation, we'll refer to `~/tools/pentaho`)
-   2. Still in your console, run `explorer.exe .` in the command line to run Windows Explorer and open your Linux folder in it.
-   3. In a new tab (in Windows Explorer thus), go to your download directories to retrieve the downloaded file.
-   4. Copy the file from the Windows folder to your Linux one; using a drag&drop f.i.
-3. Back to your Linux console, go to the folder where you've just copied the file (`~/tools/pentaho`)
-4. Run `rm *Zone.Identifier` to remove unneeded file (create by Windows during the copy action)
-5. Run `unzip pdi-ce-10.2.0.0-222.zip`. That command will create a `data-integration` subfolder.
-6. Run `rm pdi-ce-10.2.0.0-222.zip` since we don't need it anymore and run `cd data-integration` to jump in the new folder.
-7. The next things to do is to prepare your system:
-   1. Please run `sudo apt-get update`,
-   2. Then, please run `sudo apt-get install openjdk-11-jdk` since Pentaho requires Java to run and
-   3. Please run `sudo apt-get install libgtk-3-0` to install GTK 3 (*GTK 2 is obsolete*)
+<StepsCard
+  variant="steps"
+  steps={[
+    { content: "Go to [https://pentaho.com/pentaho-developer-edition/](https://pentaho.com/pentaho-developer-edition/); fill in the form (it's mandatory) before getting the list of files you can download" },
+    {
+      content: "Download the `pdi-ce-10.2.0.0-222.zip` file. If like me you're under Windows, the archive will be put on your Windows partition; let's copy it to your Linux one",
+      substeps: [
+        "Start your Linux console and create a new folder like f.i. `~/tools/pentaho` (you can decide to use another path but, in this documentation, we'll refer to `~/tools/pentaho`)",
+        "Still in your console, run `explorer.exe .` in the command line to run Windows Explorer and open your Linux folder in it",
+        "In a new tab (in Windows Explorer thus), go to your download directories to retrieve the downloaded file",
+        "Copy the file from the Windows folder to your Linux one; using a drag&drop f.i."
+      ]
+    },
+    "Back to your Linux console, go to the folder where you've just copied the file (`~/tools/pentaho`)",
+    "Run `rm *Zone.Identifier` to remove unneeded file (create by Windows during the copy action)",
+    "Run `unzip pdi-ce-10.2.0.0-222.zip`. That command will create a `data-integration` subfolder",
+    "Run `rm pdi-ce-10.2.0.0-222.zip` since we don't need it anymore and run `cd data-integration` to jump in the new folder",
+    {
+      content: "The next things to do is to prepare your system",
+      substeps: [
+        "Please run `sudo apt-get update`",
+        "Then, please run `sudo apt-get install openjdk-11-jdk` since Pentaho requires Java to run",
+        "Please run `sudo apt-get install libgtk-3-0` to install GTK 3 (*GTK 2 is obsolete*)"
+      ]
+    }
+  ]}
+/>
+
+<BrowserWindow url="https://pentaho.com/pentaho-developer-edition/">
+  <img
+    alt="Download Pentaho"
+    src={require("./images/download.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ### Adding Pentaho to the PATH
 
@@ -69,7 +89,11 @@ From now, you'll be able to run Pentaho whatever the current directory.
 
 ## Let's prepare our environment
 
-We'll create a new project; please run `mkdir -p /tmp/pentaho && cd $_` to create a temporary folder and jump in it.
+We'll create a new project; please create a temporary folder and jump in it:
+
+<Terminal>
+$ mkdir -p /tmp/pentaho && cd $_
+</Terminal>
 
 We will create a dummy Excel file then load it in a PostgreSQL database. The target table will be called `people` and we'll create it automatically (but well manually).
 
@@ -110,7 +134,13 @@ Please run `docker compose up --detach` to start the PostgreSQL container and th
 
 As you've seen, we've already foresee a pgAdmin interface; we can open it by going to `http://localhost:8080`.
 
-![pgAdmin login screen](./images/pgadmin_login.webp)
+<BrowserWindow url="http://localhost:8080">
+  <img
+    alt="pgAdmin login screen"
+    src={require("./images/pgadmin_login.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Use `admin@yopmail.com` and `admin` as credentials.
 
@@ -118,13 +148,25 @@ Once in the interface of pgAdmin, we've to create a new server by clicking on th
 
 Give a name to the server then, in the `Connection` tab, fill in as below:
 
-![Creation of a server in pgAdmin](./images/pgadmin_new_server.webp)
+<BrowserWindow url="http://localhost:8080">
+  <img
+    alt="Creation of a server in pgAdmin"
+    src={require("./images/pgadmin_new_server.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 As you can see on the image below, during the creation of our PostgreSQL container, a new database called `people` has been created. That database has a `public` schema and, right now, no tables.
 
-![The database exists but without any table right now](./images/pgadmin_database.webp)
+<BrowserWindow url="http://localhost:8080">
+  <img
+    alt="The database exists but without any table right now"
+    src={require("./images/pgadmin_database.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 This is done thanks our `compose.yaml` file. If you're curious, open the `compose.yaml` file again and pay attention to the `environment` section for the `postgres` service. We've instruct PostgreSQL to create a database called `people`; owned by user called `admin`.
 
 </AlertBox>
@@ -215,7 +257,13 @@ Since our table didn't exists yet, click on the `Execute` button:
 
 Let's verify thanks to pgAdmin:
 
-![The table has been created](./images/pgadmin_table_created.webp)
+<BrowserWindow url="http://localhost:8080">
+  <img
+    alt="The table has been created"
+    src={require("./images/pgadmin_table_created.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Nice. We can now close the two popup window, go back to the configuration of our table. Click on the `OK` button since we've finished this step.
 
@@ -239,7 +287,13 @@ If everything was correctly configured and fired, you'll get this screen:
 
 Back to pgAdmin, get the list of records from the `people` table to verify if the Excel file was well loaded and, yes, it is.
 
-![The records have been successfully loaded in PostgreSQL](./images/successfully_loaded_in_postgres.webp)
+<BrowserWindow url="http://localhost:8080">
+  <img
+    alt="The records have been successfully loaded in PostgreSQL"
+    src={require("./images/successfully_loaded_in_postgres.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ### Download the transformation file
 

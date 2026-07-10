@@ -35,7 +35,11 @@ Let's see how to improve this process and be able to run `git` commands from ins
 
 Like always, we'll build a fully working example.
 
-Please create a dummy folder and jump in it: `mkdir /tmp/git && cd $_`.
+Please create a dummy folder and jump in it:
+
+<Terminal>
+$ mkdir /tmp/git && cd $_
+</Terminal>
 
 We need a `Dockerfile`, let's create it:
 
@@ -70,7 +74,7 @@ We've the following line:
 
 This tells Docker to share (mount) our local `${HOME}/.gitconfig` file (i.e. our configuration file) with the container. Since, in this example, we're running the container as root, we need to put `/root/.gitconfig` as the target.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 If you don't know yet what is this file, just type `cat ${HOME}/.gitconfig` in the console to see its content; it's your git configuration settings.
 
 </AlertBox>
@@ -78,7 +82,7 @@ If you don't know yet what is this file, just type `cat ${HOME}/.gitconfig` in t
 
 Let's check if it works still in the console inside the container, please run `git config --list` in your container's shell. You'll see the same configuration you've on your host machine. The sharing has worked as expected.
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 In case, for instance, your container is running as `john_doe`, the line has to be `- ${HOME}/.gitconfig:/home/john_doe/.gitconfig` in the yaml file.
 
 </AlertBox>
@@ -96,7 +100,7 @@ We've this line:
 
 Think to replace `id_ed25519` by the name of the key you're using like f.i. `id_rsa` if needed.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Same remark as previously, update the target path to match your user's home directory in the container if needed.
 
 </AlertBox>

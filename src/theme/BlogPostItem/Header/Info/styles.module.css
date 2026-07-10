@@ -20,13 +20,13 @@
   text-transform: uppercase;
   text-decoration: none;
   background-color: var(--ifm-color-primary);
-  color: #fff;
+  color: white;
   transition: background-color 0.2s ease;
 }
 
 .mainTagBadge:hover {
   background-color: var(--ifm-color-primary-dark);
-  color: #fff;
+  color: white;
   text-decoration: none;
 }
 

@@ -92,7 +92,7 @@ Create a file at `~/.zsh/fns/repo` (no extension!) and paste the following code.
   <Snippet filename="repo" source="./files/repo.zsh" defaultOpen={true}/>
 </ProjectSetup>
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 Think to update the `search_path` variable to where you're saving your projects and, if you aren't using VSCode, also update the local `visual_editor` variable.
 </AlertBox>
 

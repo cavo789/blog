@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import Twitter from '@theme/Icon/Socials/Twitter';
@@ -43,6 +44,10 @@ function SocialLink({platform, link}) {
     </Link>
   );
 }
+SocialLink.propTypes = {
+  platform: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+};
 export default function BlogAuthorSocials({author}) {
   const entries = Object.entries(author.socials ?? {});
   return (
@@ -53,3 +58,8 @@ export default function BlogAuthorSocials({author}) {
     </div>
   );
 }
+BlogAuthorSocials.propTypes = {
+  author: PropTypes.shape({
+    socials: PropTypes.object,
+  }).isRequired,
+};

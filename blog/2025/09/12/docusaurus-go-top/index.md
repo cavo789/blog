@@ -40,7 +40,7 @@ Please create the two files below in your blog directory structure:
 
 Then, you need to inject `<ScrollToTopButton />` in your pages.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Make sure to create a `/img/up.png` in your `/static` folder with your own icon (on my site, the small meerkat).
 
 </AlertBox>

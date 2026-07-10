@@ -69,7 +69,7 @@ See my article <Link to="/blog/makefile-help">Linux Makefile - Adding a help scr
 
 </AlertBox>
 
-<AlertBox variant="danger" title="">
+<AlertBox variant="danger">
 The indentation in a makefile **SHOULD BE** made using tabs and not spaces, this is crucial. So please make sure, if your file didn't work, you know what to do.
 
 </AlertBox>

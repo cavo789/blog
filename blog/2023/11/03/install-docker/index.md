@@ -38,19 +38,19 @@ In this blog post, we will be using the PHP images available at [https://hub.doc
 
 We will run a simple PHP script to show how not to install PHP and Apache. Not to install sounds crazy but yes, it is the idea. Using the old-fashioned way, without Docker, before running a web page locally, we need to first install a web server (e.g., Apache) and the PHP interpreter. It is boring.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 But since Docker has a public image for running PHP and Apache (a single image for both services), it becomes very simple
 
 </AlertBox>
 
 So, in our discovery step, we will also change the PHP version from `7.4` to `8.1` with just a few keystrokes. Have you ever tried to change your PHP version if you are using EasyPHP, WAMP or another software program: it is a real pain! With Docker, it is so easy.
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 In this chapter, as we discover Docker, we will use different port numbers each time to access our local site. We will see later how to reuse the same port number.
 
 </AlertBox>
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 The commands we will use in this step will be the same whether you are running Linux, Mac or Windows.
 
 </AlertBox>
@@ -63,7 +63,7 @@ Docker will, the first time, download PHP `7.4.29` (including Apache) and, once 
 $ docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache
 </Terminal>
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 On subsequent runs, the PHP image is already present, so it is no longer downloaded.
 
 </AlertBox>
@@ -91,7 +91,7 @@ Let's try to access the local site: `http://127.0.0.1:80`.
 
 It works in the sense that *something is listening and has responded*, but does not display anything, since we haven't set anything up yet.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 The site is functional, Apache is ready, but there's no index.php file; let's add one.
 
 </AlertBox>
@@ -145,7 +145,7 @@ $ exit
 
 ***No headaches and zero conflicts!*** We have installed a new version of PHP in seconds.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 This is just crazy. Think of the benefits: you are developing a PHP script and want to check whether it works with different versions of PHP. It's child's play.
 
 </AlertBox>

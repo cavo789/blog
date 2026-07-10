@@ -176,20 +176,20 @@ function parseTree(treeText) {
 
   for (const line of lines) {
     // Match indentation and node name, ignoring tree characters (│, ├──, └──)
-    const match = line.match(/^(\s*[\│\s]*)?(?:├── |└── )?(.+)$/);
+    const match = line.match(/^(\s*[│\s]*)?(?:├── |└── )?(.+)$/);
     if (!match) continue;
 
     const [, indentChars = "", nameRaw] = match;
 
     // Normalize all tree drawing characters (like │) in the indentation to spaces for consistent depth calculation
     const normalizedIndent = indentChars
-      .replace(/[\│\─\├\└]/g, " ")
+      .replace(/[│─├└]/g, " ")
       .replace(/[^\S\r\n]/g, " ");
 
     // Calculate depth based on 4 spaces per level
     const depth = Math.floor(normalizedIndent.length / 4);
 
-    const name = nameRaw.replace(/[\│\├\└\─]+/g, "").trim();
+    const name = nameRaw.replace(/[│├└─]+/g, "").trim();
 
     /** @type {Node} */
     const node = {

@@ -35,10 +35,15 @@ It's a step-by-step guide to make life easier for anyone who needs to do the sam
 
 So, yes, there is a Docker image called `container-registry.oracle.com/database/enterprise:latest` but before being able to download it, we'll need to do a few things:
 
-1. Create a free account on oracle.com,
-2. Generate a token,
-3. Accept License terms,
-4. Configure your local Docker environment to use that token.
+<StepsCard
+  variant="steps"
+  steps={[
+    "Create a free account on oracle.com",
+    "Generate a token",
+    "Accept License terms",
+    "Configure your local Docker environment to use that token"
+  ]}
+/>
 
 If you miss one step and try to download the image immediately, you'll get this error:
 
@@ -51,15 +56,33 @@ Error response from daemon: Head "https://container-registry.oracle.com/v2/datab
 
 Please surf on [https://container-registry.oracle.com/ords/ocr/ba/database/enterprise](https://container-registry.oracle.com/ords/ocr/ba/database/enterprise) and create a user by clicking on the `Sign In` button / top right link.
 
-![Make sure to be logged in](./images/oracle_signin.webp)
+<BrowserWindow url="https://container-registry.oracle.com/ords/ocr/ba/database/enterprise">
+  <img
+    alt="Make sure to be logged in"
+    src={require("./images/oracle_signin.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
-![Oracle sign in page](./images/oracle_signin_page.webp)
+<BrowserWindow url="https://container-registry.oracle.com/ords/ocr/ba/database/enterprise">
+  <img
+    alt="Oracle sign in page"
+    src={require("./images/oracle_signin_page.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ### Generate a token
 
 Once your user has been validated (after reception of an email); go back to the [https://container-registry.oracle.com/ords/ocr/ba/database/enterprise](https://container-registry.oracle.com/ords/ocr/ba/database/enterprise) website; do a login and click on your profile then choice `Auth Token`.
 
-![Creation of your Auth Token](./images/auth_token.webp)
+<BrowserWindow url="https://container-registry.oracle.com/ords/ocr/ba/database/enterprise">
+  <img
+    alt="Creation of your Auth Token"
+    src={require("./images/auth_token.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Click on the `Generate Secret Key` button and copy your **SSO Username** and your **Secret Key** somewhere (in your password vault application f.i.).
 
@@ -67,17 +90,35 @@ Click on the `Generate Secret Key` button and copy your **SSO Username** and you
 
 Please go to [https://container-registry.oracle.com/ords/ocr/ba/database](https://container-registry.oracle.com/ords/ocr/ba/database) and search for `enterprise` in the `Repository` column.
 
-![Click on enterprise](./images/oracle_enterprise.webp)
+<BrowserWindow url="https://container-registry.oracle.com/ords/ocr/ba/database">
+  <img
+    alt="Click on enterprise"
+    src={require("./images/oracle_enterprise.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Being logged in, please click on the `Continue` button that appears on the right.
 
-![Accepting the license terms](./images/accepting_license.webp)
+<BrowserWindow url="https://container-registry.oracle.com/ords/ocr/ba/database">
+  <img
+    alt="Accepting the license terms"
+    src={require("./images/accepting_license.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 A popup window will be displayed and, at the bottom, you'll need to click on `Accept`.
 
 Optional, by going back to [https://container-registry.oracle.com/ords/ocr/ba/database](https://container-registry.oracle.com/ords/ocr/ba/database) you'll see that Oracle has recorded the fact you've accepted their terms.
 
-![Accepting License Agreement](./images/accepted_license.webp)
+<BrowserWindow url="https://container-registry.oracle.com/ords/ocr/ba/database">
+  <img
+    alt="Accepting License Agreement"
+    src={require("./images/accepted_license.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ### Configure your local Docker environment
 
@@ -140,15 +181,18 @@ In order to be as efficient as possible, we'll first create a set of files on ou
 
 ### Creation of some configuration files
 
-Please create a new folder on your disk and jump in it: `mkdir -p /tmp/oracle && cd $_`.
+Please create a new folder on your disk, jump in it, then create the folder where we'll put our startup files:
 
-Please also run this statement to create the folder where we'll put our startup files: `mkdir -p scripts/startup`.
+<Terminal>
+$ mkdir -p /tmp/oracle && cd $_
+$ mkdir -p scripts/startup
+</Terminal>
 
 #### Let's create a Human Resources sample database
 
 Oracle provides some sample databases on the [Oracle Database Sample Schemas](https://github.com/oracle-samples/db-sample-schemas/releases) page. You can download from there the `db-sample-schemas-23.3.zip` archive, open it and go to the `human_resources` folder. You'll found there a file called `hr_create.sql` which is a sample of an HR database. There is a second file called `hr_populate.sql` to feed the tables with some data.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 For easiness, you can retrieve these files by clicking on these two links: [hr_create.sql](./files/hr_create.sql) and [hr_populate.sql](./files/hr_populate.sql).
 
 </AlertBox>
@@ -176,11 +220,19 @@ Because running the container is a very slow process, we'll create a Docker volu
 
 The volume will keep the database on our disk, in a Docker self-managed volume. Like this, we can stop the Oracle container, start it again and we'll not lose our database. *The DB will be persistent into a self-manager Docker volume.*
 
-Please run `docker volume create OracleDBData` in the console to create a Docker self-managed volume.
+Please run this command in the console to create a Docker self-managed volume:
+
+<Terminal>
+$ docker volume create OracleDBData
+</Terminal>
 
 ### Create the oracle network
 
-And lastly, we'll create a specific network for our Oracle container: `docker network create oracle`.
+And lastly, we'll create a specific network for our Oracle container:
+
+<Terminal>
+$ docker network create oracle
+</Terminal>
 
 ### Ready to create the container
 
@@ -188,7 +240,7 @@ We're ready to create our container by running this command:
 
 <Terminal typewriter source="./files/terminal-1.txt" />
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 This is terribly slow... Oracle will need something like 10 minutes before the container can be used.
 
 </AlertBox>
@@ -294,7 +346,7 @@ This understood, here is how we can see our data:
 
 ![Fake data are well loaded](./images/fake_data.webp)
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 `SET WRAP OFF` will allow to use the screen full width and not a ridiculous width of 80 characters and `SET PAGESIZE 1000` is to not have a paginated list every 10 records.
 
 </AlertBox>
@@ -307,7 +359,13 @@ This is a web application we can reach by surfing to `https://localhost:5500/em/
 
 Connect to it using `system` / `admin` and `orclpdb1` as container name.
 
-![Oracle Enterprise Manager Database Express](./images/oem_express.webp)
+<BrowserWindow url="https://localhost:5500/em/">
+  <img
+    alt="Oracle Enterprise Manager Database Express"
+    src={require("./images/oem_express.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ### Accessing our database using Oracle tools
 

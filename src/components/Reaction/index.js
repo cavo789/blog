@@ -18,6 +18,7 @@ export default function Reaction({ metadata }) {
   useEffect(() => {
     try {
       const stored = localStorage.getItem(storageKey);
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional SSR/hydration-safe read, see comment on `voted` above
       if (stored) setVoted(stored);
     } catch {}
   }, [storageKey]);

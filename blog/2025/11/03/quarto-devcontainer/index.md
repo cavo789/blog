@@ -62,13 +62,13 @@ The `.devcontainer/Dockerfile` file defines our Docker image: the binaries we ne
 
 The `.devcontainer/devcontainer.json` file is used by VSCode to understand and build our working environment.
 
-<Snippet filename=".devcontainer/compose.yaml" source="./files/compose.yaml" />
+<ProjectSetup folderName="/tmp/quarto-examples/brand/brand-simple">
+  <Snippet filename=".devcontainer/compose.yaml" source="./files/compose.yaml" />
+  <Snippet filename=".devcontainer/Dockerfile" source="./files/Dockerfile" />
+  <Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.json" />
+</ProjectSetup>
 
-<Snippet filename=".devcontainer/Dockerfile" source="./files/Dockerfile" />
-
-<Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.json" />
-
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Strictly speaking, we don't need the `.devcontainer/compose.yaml` file but this is the only way to build the Docker image **once** and reuse it across projects.
 
 By opening a Devcontainer, even if the `Dockerfile` is strictly the same across your documentation projects, the context will be different (**project1**, **project2**, ...) and VSCode will rebuild the image for that context. To avoid this, we need to build the image and **give it a name**; this can only be done using a `.devcontainer/compose.yaml` file.

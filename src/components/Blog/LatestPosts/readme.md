@@ -17,7 +17,8 @@ A flexible React component for displaying recent blog posts in a card-based layo
 Ensure your project includes:
 
 * `getBlogMetadata` utility for extracting blog post metadata
-* `PostCard` component for card-based layouts
+* `PostCard` component for card-based layouts (this component renders each post via
+  `<PostCard layout="big" />` — it does not reimplement the card markup)
 * CSS module `styles.module.css` for bullet layout styling
 
 ## Usage
@@ -39,23 +40,24 @@ import LatestPosts from './LatestPosts';
 
 ### 📦 Card Grid
 
-Each post is rendered as a clickable card with:
+Each post is rendered via `PostCard` (`layout="big"`), giving:
 
-* Title
-* Optional description
-* Optional featured image
+* Title (the only clickable link on the card, per `PostCard`'s accessible markup)
+* Optional tag badge, description, and featured image
 * Formatted publication date
+* Eager-loaded images for the first 3 cards (`lazyImage`), lazy-loaded beyond that
 
 ## Styling
 
-Customize the layout via `styles.module.css`. Key classes include:
+Customize the grid layout via `styles.module.css`. Key classes include:
 
 * `cardsSection`
 * `sectionTitle`
 * `cardsGrid`
-* `cardLink`
 * `seeMoreContainer`
 * `seeMoreLink`
+
+Per-card styling (image, title, tag badge, description) lives in `PostCard/styles.module.css`.
 
 ## Development Notes
 

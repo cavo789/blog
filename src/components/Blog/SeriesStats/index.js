@@ -9,9 +9,7 @@ import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
  */
 export default function SeriesStats() {
   const seriesCount = generateSeriesList().length;
-  const articleCount = getBlogMetadata().filter(
-    (post) => post.series && !post.draft
-  ).length;
+  const articleCount = getBlogMetadata().filter((post) => post.series).length;
 
   return (
     <p className="seriesStats">

@@ -66,7 +66,7 @@ Save the file and refresh your blog. You should get something like this picture 
   />
 </BrowserWindow>
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 The component is using the `date` field that you've to mention in your YAML front matter.
 
 So, in each of your `.md` post, you should have a YAML block like this:

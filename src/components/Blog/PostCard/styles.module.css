@@ -29,6 +29,10 @@
   color: var(--ifm-color-secondary-light);
 }
 
+.readingTime {
+  font-style: italic;
+}
+
 .cardEnhanced {
   display: flex;
   flex-direction: column;
@@ -64,19 +68,48 @@
   -webkit-box-orient: vertical;
 }
 
+.cardTagBadge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.1rem 0.55rem;
+  border-radius: 2rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: var(--ifm-color-primary);
+  color: var(--ifm-color-white);
+  transition: background-color 0.2s ease;
+}
+
+.cardTagBadge:hover {
+  background-color: var(--ifm-color-primary-dark);
+  color: var(--ifm-color-white);
+  text-decoration: none;
+}
+
+[data-theme="dark"] .cardTagBadge {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+[data-theme="dark"] .cardTagBadge:hover {
+  background-color: var(--ifm-color-primary-darker);
+}
+
 .cardEnhanced:hover {
   transform: var(--card-hover-transform);
   box-shadow: var(--ifm-global-shadow-md);
 }
 
 [data-theme="dark"] .cardEnhanced:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 20px rgb(0, 0, 0, 0.5);
 }
 
 .cardImageEnhanced {
   width: 100%;
   aspect-ratio: 2 / 1;
-  object-fit: cover;
+  object-fit: contain;
   background: var(--ifm-color-emphasis-100);
   transition: transform var(--card-transition);
   display: block;
@@ -127,9 +160,14 @@
 .cardSmallImage {
   width: 100%;
   aspect-ratio: 2 / 1;
-  object-fit: cover;
+  object-fit: contain;
+  background: var(--ifm-color-emphasis-100);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+}
+
+[data-theme="dark"] .cardSmallImage {
+  background: var(--ifm-color-emphasis-900);
 }
 
 .cardSmallBody {

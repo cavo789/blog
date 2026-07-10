@@ -16,7 +16,7 @@ blueskyRecordKey: 3lvnkbm63nc2v
 ---
 ![MS Excel - Connect to a SQL Server database, run a query and get the results](/img/v2/mssql.webp)
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Please read my new article <Link to="/blog/vba-excel-sql-server-part-2">MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step</Link> which is more complete than this one.
 
 </AlertBox>

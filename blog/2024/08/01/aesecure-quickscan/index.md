@@ -41,7 +41,7 @@ It's simple, no?
 
 So, now, you've copied the scanner engine. Just access the scanner by starting your website like you do every time (let's say by starting  `http://localhost` for a local version of the site) and add the name of the script (so, in short, `http://localhost/scan.php`).
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 It's not recommended to do this directly on your real site on the internet but you can. In that case, start your FTP client, do a FTP connection to your site, create a remote `scan.php` file, start your browser and go to your website.
 
 It's not recommended because the scanner will require some computation time and your hosting company will probably stop the process when the PHP script will take more than xxx seconds (will depend on your configuration).

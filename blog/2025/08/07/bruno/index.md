@@ -30,72 +30,20 @@ A few months ago, I wrote <Link to="/blog/python-fastapi">"Python - Fast API - C
 
 In short, please:
 
-1. Run `mkdir /tmp/fastapi && cd $_` to create a temporary folder and jump in it
-2. Create a `Dockerfile` with the content below
+<StepsCard
+  variant="steps"
+  steps={[
+    "Run `mkdir /tmp/fastapi && cd $_` to create a temporary folder and jump in it",
+    "Create a `Dockerfile` with the content below",
+    "Create a `main.py` with the content below",
+    "Run the `docker build -t python-fastapi . && docker run --detach -v .:/app -p 82:82 python-fastapi` command to run the server",
+    "Start a browser and open the `http://127.0.0.1:82/jokes` site to see a first joke (press F5 to get a new one; random)"
+  ]}
+/>
 
-    <Snippet filename="Dockerfile">
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
-    ```docker
-    # We'll use the latest version of Python and the smaller image in size (i.e. `slim`)
-    FROM python:slim
-
-    # We'll define the default folder in the image to /app
-    WORKDIR /app
-
-    # The only dependency we need is fastapi
-    RUN pip install --no-cache-dir fastapi[standard]
-
-    # We need to copy our Python script in the image
-    COPY main.py main.py
-
-    # Run Uvicorn with hot reload so any changes to our main.py script will force
-    # the server to invalidate the cache and refresh the page.
-    CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "82"]
-    ```
-
-    </Snippet>
-
-3. Create a `main.py` with the content below
-
-    <Snippet filename="main.py">
-
-    ```python
-    from random import choice
-    from fastapi import FastAPI
-
-    app = FastAPI()
-
-    jokes = [
-        "Why do programmers always mix up Halloween and Christmas? Because Oct 31 == Dec 25",
-        "Why don't programmers like nature? Because it's full of bugs!",
-        "How many programmers does it take to change a light bulb? None. That's a hardware problem.",
-        "What do you call 8 hobbits? A hobbyte",
-        "What is this [“hip”, ”hip”]? hip hip array!"
-    ]
-
-    @app.get("/jokes")
-    async def get_jokes():
-        """
-        Returns a random joke from the list.
-        """
-        return {"joke": choice(jokes)}
-
-    @app.get("/jokes/{joke_id}")
-    def read_item(joke_id: int):
-        """
-        Returns a specific joke (between 0 and 4).
-        """
-        try:
-            return {"joke": jokes[joke_id]}
-        except IndexError:
-            return {"error": f"Joke with ID {joke_id} not found."}, 404
-    ```
-
-    </Snippet>
-
-4. Run the `docker build -t python-fastapi . && docker run --detach -v .:/app -p 82:82 python-fastapi` command to run the server.
-
-5. Start a browser and open the `http://127.0.0.1:82/jokes` site to see a first joke (press <kbd>F5</kbd> to get a new one; random)
+<Snippet filename="main.py" source="./files/main.py" />
 
 ## Install Bruno
 
@@ -143,7 +91,7 @@ Very clean structure no?
 
 Bruno comes with a [Docker image](https://hub.docker.com/r/alpine/bruno): it'll help us to automate the execution of our requests from the command line.
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 Mid-july 2025, I wasn't able to make this image working as expected. I was facing *Cannot read properties of undefined (reading 'headers')* errors even when, I think, everything was correctly configured.
 
 For that reason, I've searched for another image and I've found that one [davidkarlsen/bruno-image](https://github.com/davidkarlsen/bruno-image) but, no luck, even the last version at that time (version 2.7.0) was giving a problem.

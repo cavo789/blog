@@ -6,7 +6,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 0;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
   max-height: 4.5em; /* 3 lines × 1.5em line-height */
   line-height: 1.5em;
 }

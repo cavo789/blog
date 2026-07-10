@@ -9,6 +9,7 @@ import {
   FaLightbulb,
   FaExclamationTriangle,
   FaExclamationCircle,
+  FaSkullCrossbones,
 } from 'react-icons/fa';
 
 const variantMap = {
@@ -42,6 +43,10 @@ const variantMap = {
     Icon: FaLightbulb,
     label: <Translate id="blog.alertBox.coreConcept">Core Concept</Translate>,
   },
+  danger: {
+    Icon: FaSkullCrossbones,
+    label: <Translate id="blog.alertBox.danger">Danger</Translate>,
+  },
 };
 
 /**
@@ -55,7 +60,7 @@ const variantMap = {
  * </AlertBox>
  *
  * @param {Object} props
- * @param {'info'|'note'|'tip'|'caution'|'important'} [props.variant='info'] - Type of alert to display.
+ * @param {'info'|'note'|'tip'|'caution'|'important'|'highlyImportant'|'coreConcept'|'danger'} [props.variant='info'] - Type of alert to display.
  * @param {string} [props.title] - Custom title for the alert. Defaults to variant's title.
  * @param {React.ReactNode} props.children - Content to display inside the alert box.
  */

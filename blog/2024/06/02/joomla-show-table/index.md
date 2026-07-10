@@ -77,7 +77,7 @@ And now, just right-click on the table in Excel and click then on `Refresh` to g
 
 You can give that Excel sheet to anyone like your client and tell him *Right click on the sheet to get an update from Joomla site.* Nothing more.
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 Yes! You should provide the password on the query string otherwise Excel won't be able to access the table. It's under your own responsibility to not show confidential data.
 
 </AlertBox>

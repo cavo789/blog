@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import clsx from "clsx";
 import {
   PageMetadata,
@@ -16,6 +17,7 @@ function correctPermalink(permalink) {
   return permalink.replace("/blog/tags/tags/", "/blog/tags/");
 }
 
+// eslint-disable-next-line no-unused-vars -- sidebar is part of Docusaurus's BlogTagsListPage prop contract, unused here
 export default function BlogTagsListPage({ tags, sidebar }) {
   const title = translateTagsPageTitle();
 
@@ -102,3 +104,7 @@ export default function BlogTagsListPage({ tags, sidebar }) {
     </HtmlClassNameProvider>
   );
 }
+BlogTagsListPage.propTypes = {
+  tags: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  sidebar: PropTypes.object,
+};

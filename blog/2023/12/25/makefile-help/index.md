@@ -46,7 +46,7 @@ Please create a new file called `makefile` with this content:
 
 <Snippet filename="makefile" source="./files/makefile" />
 
-<AlertBox variant="danger" title="">
+<AlertBox variant="danger">
 The indentation in a makefile **SHOULD BE** made using tabs and not spaces, this is crucial. So please make sure, if your file didn't work, you know what to do.
 
 </AlertBox>

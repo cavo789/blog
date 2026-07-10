@@ -36,7 +36,7 @@ And below a small Python script to generate fake data in French (just replace `r
 
 ![Faker in Python](./images/python.webp)
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Continue your reading with the official Faker documentation: [https://faker.readthedocs.io/en/master/](https://faker.readthedocs.io/en/master/)
 
 </AlertBox>
@@ -73,7 +73,7 @@ I can then use it in Python like this:
 
 <Snippet filename="schema_test.py" source="./files/schema_test.py" />
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 To make this code working, think to install the requests library: `pip install requests`.
 
 </AlertBox>
@@ -92,7 +92,7 @@ Once you've the schema, you can use it in Python like this:
 
 <Snippet filename="validate.py" source="./files/validate.py" />
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 You'll need to run `pip install jsonschema` first.
 
 </AlertBox>
@@ -101,7 +101,7 @@ Now, I'll test my file. The first time, my JSON file will be correct. I've then 
 
 ![JSON validation](./images/validate.webp)
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 As we can see, quite quickly, we've generated 1,000 records and, too, a validation schema. Then using few lines in Python, we've ensure the file is correct or, if not, we've spotted where the error is located.
 
 </AlertBox>

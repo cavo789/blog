@@ -31,7 +31,7 @@ My need is thus: I should share my SSH key with the GitLab runner.
 
 <!-- truncate -->
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 To illustrate this article, let's assume `christophe` is my user account on my self hosted GitLab server and that server is called `my_self_hosted_gitlab`.
 
 Think, to replace these two constants by yours ;-)
@@ -66,12 +66,12 @@ The variable name should be **SSH_PRIVATE_KEY** and I'll select `Masked` (or `Ma
 
 I'll finalize the creation of the variable by clicking on the `Add variable` button present at the bottom of the pane.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 If I want to use the key for all repositories of a given group, I just need to proceed the same but not at the repository level but at the group level.
 
 </AlertBox>
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 And, if I'm a GitLab admin, I can start the admin interface and from there, go to the **CI/CD Settings** page and proceed the same way.
 
 </AlertBox>
@@ -80,7 +80,7 @@ And, if I'm a GitLab admin, I can start the admin interface and from there, go t
 
 As an example, I'll reuse the example provided by GitLab: [https://gitlab.com/gitlab-examples/ssh-private-key/-/blob/main/.gitlab-ci.yml](https://gitlab.com/gitlab-examples/ssh-private-key/-/blob/main/.gitlab-ci.yml)
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 Based on the used image, you'll need to use `apt` or `apk`.
 
 For an ubuntu image like the example below, it'll be `apt`. If, f.i. you're using the `docker` image, then, replace
@@ -90,7 +90,7 @@ For an ubuntu image like the example below, it'll be `apt`. If, f.i. you're usin
 
 <Snippet filename=".gitlab-ci.yml" source="./files/.gitlab-ci.yml" />
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 If the CI fails with an error like *load pubkey "id_ed25519": invalid format* or *error in libcrypto*, one cause can be the key used: the variable `SSH_PRIVATE_KEY` should be initialized with the private key; not the public one.
 
 The base64 string should be created like this: `cat ~/.ssh/id_ed25519_my_self_hosted_gitlab | base64 -w 0` (and, thus, not using the `.pub` file).

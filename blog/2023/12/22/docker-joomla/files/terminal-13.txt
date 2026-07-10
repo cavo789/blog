@@ -15,4 +15,3 @@ $ docker compose up --detach
 ✔ Network joomla_default Created 0.3s
 ✔ Container joomla-joomladb-1 Started 52.9s
 ✔ Container joomla-joomla-1 Started 38.8s
-

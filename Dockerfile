@@ -179,6 +179,14 @@ RUN --mount=type=cache,target=/home/${OS_USERNAME}/.cache/pip,uid=${OS_USERID},g
         python-frontmatter \
         requests
 
+# Pre-install Playwright's Chromium browser + OS-level deps, so the "run" skill /
+# verification scripts can render pages in a headless browser without a slow,
+# repeated first-use download inside the running devcontainer.
+RUN --mount=type=cache,target=/var/lib/apt/lists \
+    --mount=type=cache,target=/var/cache/apt \
+    --mount=type=cache,target=/home/${OS_USERNAME}/.cache/ms-playwright,uid=${OS_USERID},gid=${OS_GROUPID} \
+    npx playwright install --with-deps chromium
+
 # ─────────────────────────────────────────────────────────────
 # 🏗️ Stage 4: Static Site Build
 #

@@ -31,6 +31,12 @@ This document outlines the governance guidelines to be followed for maintaining 
 ## Tooling & Quality Control
 
 * **Linters:** Code and Markdown must be compatible with strict linting (ESLint, Prettier, Dockerlint, Markdownlint).
+  * JS/JSX: `eslint.config.js` (functional-components + Hooks rules, PropTypes). Run via `yarn lint:js`, or `codelint` from the devcontainer terminal (`yarn lint` also runs stylelint).
+  * CSS: `.stylelintrc.json` (`stylelint-config-standard` + a `color-no-hex` warning pointing at `.todos/039-hardcoded-hex-colors-no-token-system.md`). Run via `yarn lint:css`.
+  * Formatting: `.prettierrc.json` is configured but the existing codebase hasn't been reformatted yet (`yarn format:check` currently fails on ~166 pre-existing files) — not yet wired into CI, run manually.
+  * CI: `.github/workflows/quality.yml` runs `yarn lint` on every push/PR, separate from `deploy.yml` so a lint failure never blocks publishing the live site.
+  * Pre-existing violations are tracked as warnings (JS: `react/prop-types` — see `.todos/040-inconsistent-proptypes-coverage.md`) rather than fixed en masse, to avoid unrelated churn in this change.
+  * `color-no-hex` exceptions: a hex value is legitimate (not "hardcoded instead of a token") when it **defines** a token's source-of-truth value (e.g. the `--ifm-color-primary*` palette in `src/css/custom.css`, or a component's own `--*` custom-property palette like `AlertBox`), or when a color is deliberately theme-independent (external brand identity — `Snippet`'s per-language border colors; a UI element that intentionally always looks the same regardless of site theme — `Terminal`, the ELI5 code block). These are marked with `/* stylelint-disable color-no-hex */` / `stylelint-enable`, each with a one-line comment explaining why. Everywhere else, prefer an existing Infima variable (check `node_modules/infima/dist/css/default/default.css` for semantic tokens like `--ifm-color-{info,success,warning,danger}[-contrast-background|-contrast-foreground|-dark]` before inventing a new hardcoded value — see `.todos/039-hardcoded-hex-colors-no-token-system.md` for the reasoning and worked examples).
 * **Docker:**
   * Always use `compose.yaml` (no version key; no obsolete fields/syntax).
   * Optimize layers and use host volume caching.
@@ -59,6 +65,7 @@ A **Docker-first** methodology is mandatory. All development, testing, and deplo
 * **Unpublished Posts:** These are posts that are not yet ready for publication and should be excluded from the main blog feed. They are stored in the `.unpublished/` directory. Ensure that these posts are properly marked (i.e. with `Draft: true` in their frontmatter) and not linked from published content.
 * **Homepage:** The homepage is located in `src/pages/index.mdx`. Any changes to the homepage layout or content should be made here.
 * **Syntax:** Prefer Markdown to HTML for blog content. Use MDX only when necessary for embedding React components.
+* **Update history:** To log a post's revision history, add an `updates:` array to the frontmatter, e.g. `updates: [{date: "2026-01-03", note: "Review and update YAML files to Joomla 6"}]`. It is rendered as a timeline by the `Updated` component (`src/components/Blog/Updated/index.js`) and also drives `dateModified` in the SEO structured data (`src/components/StructuredData/index.jsx`) and the "old post" warning threshold (`src/components/Blog/OldPostNotice/index.js`).
 
 ## Project Structure & Infrastructure
 

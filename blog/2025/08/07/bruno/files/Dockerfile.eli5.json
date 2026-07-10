@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-09T20:30:55.276Z",
+  "source": "Dockerfile",
+  "sourceHash": "e57a86d84cec3f92a463d810d198fccaf31ae9de",
+  "lang": "docker",
+  "explanations": {
+    "8": "The --no-cache-dir flag tells pip not to store downloaded packages on disk after installation, which saves space in the Docker image.",
+    "15": "The --host 0.0.0.0 makes the server listen on all network interfaces (not just localhost), and --port 82 runs it on port 82 instead of the default 8000."
+  }
+}

@@ -42,13 +42,17 @@ But it does give you a much nicer way of accessing your site than the outdated b
 
 ## Creating your dashboard
 
-Please create a dummy folder and jump in it: `mkdir ~/tools/dashboard && cd $_`.
+Please create a dummy folder and jump in it:
+
+<Terminal>
+$ mkdir ~/tools/dashboard && cd $_
+</Terminal>
 
 In that folder, please create a file called `compose.yaml` with the following content (refers to [official Docker Hub page](https://hub.docker.com/r/linuxserver/heimdall/) for the latest version):
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 In the code here above, I've preferred the syntax `PUID=${USER_ID:-1000}` and `PGID=${GROUP_ID:-1000}` instead of just hardcoding `1000`: on my computer, my Linux user id is `1002`; not `1000` so I prefer to use a variable and, if the variable isn't defined, then use `1000` as default. Same for the group id.
 </AlertBox>
 
@@ -58,7 +62,7 @@ Once the `compose.yaml` file has been created, just run this command: `USER_ID=$
 
 This command will define our two `USER_ID` and `GROUP_ID` variables, initialise them to your own values then run the container.
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 If you've hardcoded IDs in the `compose.yaml` file to, f.i. `1000` (because you know it's your IDs); then the command becomes shorter: `docker compose up --build --detach`
 
 </AlertBox>
@@ -67,11 +71,23 @@ If you've hardcoded IDs in the `compose.yaml` file to, f.i. `1000` (because you 
 
 Once you've fired the `docker compose up --build --detach` command, you've already created the container i.e. you can already surf to `http://localhost` to see it in action.
 
-![The default welcome page](./images/welcome.webp)
+<BrowserWindow url="http://localhost">
+  <img
+    alt="The default welcome page"
+    src={require("./images/welcome.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Let's play, click on the last button bottom right (the settings icon) and under `Appearance`, let's upload a new background image.
 
-![My own background](./images/welcome_2.webp)
+<BrowserWindow url="http://localhost">
+  <img
+    alt="My own background"
+    src={require("./images/welcome_2.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 It's a lot more fun, isn't it?
 
@@ -97,7 +113,13 @@ And, thus, everything I'll do in Heimdall will be saved on my computer. So, it m
 
 I suggest that, before adding new links, first click on the Tags icon (the fifth icons bottom right) because you'll organize your links using tags and you have to create tags before.
 
-![Adding tags](./images/tags.webp)
+<BrowserWindow url="http://localhost">
+  <img
+    alt="Adding tags"
+    src={require("./images/tags.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Add so many tags you want. For this tutorial, I'll just create one.
 
@@ -107,15 +129,33 @@ Create a new application. You can choose between an `Application type` or a `Web
 
 Heimdall will extract the favicon in different sizes. I click on the one I wish.
 
-![Adding Docker](./images/adding_docker.webp)
+<BrowserWindow url="http://localhost">
+  <img
+    alt="Adding Docker"
+    src={require("./images/adding_docker.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Automatically, Heimdall has filled in some properties in the bottom part of the screen. I'll remove `Home dashboard` from the `Tags` area and, instead, type `Docker` i.e. the tag I've previously created.
 
-![Adding Docker](./images/application_docker.webp)
+<BrowserWindow url="http://localhost">
+  <img
+    alt="Adding Docker"
+    src={require("./images/application_docker.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Once saved, I'll get my new homepage:
 
-![Homepage with Docker](./images/homepage_docker.webp)
+<BrowserWindow url="http://localhost">
+  <img
+    alt="Homepage with Docker"
+    src={require("./images/homepage_docker.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 We can see that tags are represented as a folder. If I click on it, I'll *enter* in the *folder* and see all applications having this tag.
 
@@ -123,17 +163,35 @@ I can, too, add applications that will appear immediately on the homepage (like 
 
 Let's explore that `Application Type` feature:
 
-![Application type](./images/application_type.webp)
+<BrowserWindow url="http://localhost">
+  <img
+    alt="Application type"
+    src={require("./images/application_type.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 It's just something like a snippet. If I select `Bitwarden` from there, Heimdall will do basic initializations; he'll fill in the `Application name` textbox and the icon. Ok, why not.
 
 I'll point the URL to `https://vault.bitwarden.com/#/login` and I'll keep `Home dashboard` as tag.
 
-![With Bitwarden](./images/bitwarden.webp)
+<BrowserWindow url="http://localhost">
+  <img
+    alt="With Bitwarden"
+    src={require("./images/bitwarden.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 Here is the dashboard I'm using at work. Since it's so easy to add new items; I'm doing changes to it as soon as I'm working on a new project.
 
-![Final Heimdall dashboard](./images/final.webp)
+<BrowserWindow url="http://localhost">
+  <img
+    alt="Final Heimdall dashboard"
+    src={require("./images/final.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ### More customizations
 

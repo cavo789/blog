@@ -301,12 +301,12 @@ Once Joomla will be ready, you will get the installation wizard of Joomla... jus
 
 <Terminal typewriter>$ docker compose down</Terminal>
 
-<AlertBox variant="danger" title="">
+<AlertBox variant="danger">
 As mentioned earlier, everything is done in RAM. By stopping a Docker container, you will lose everything not saved on your computer. It's great for playing/learning but not what you expect when you're developing a real site.
 
 </AlertBox>
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Remember the change we made earlier. We had added the name `kingsbridge` as the project name in your `compose.yaml` file, and we've named the two containers. You can see that after relaunching `docker compose up`, this time it's no longer `joomla-joomlaxxxx` but `kingsbridge-app` and `kingsbridge-db`. This because changes made to the yaml file are processed only after a `down / up` command. If you modify the yaml file, you should restart Docker containers.
 
 </AlertBox>
@@ -441,7 +441,7 @@ Save the file. Now you can surf to `http://kingsbridge:8080`
 
 ![Using the Kingsbridge alias](./images/using_alias.webp)
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
   When creating an alias in the host file, some people prefer to use the
   `.local` suffix like in `127.0.0.1 kingsbridge.local` to make clear it's a
   localhost site. If you prefer this, so the URL will be
@@ -464,14 +464,14 @@ So, now and at the same time, we can access to `http://kingsbridge:8080` and to 
 
 Kingsbridge can be a Joomla 4.4 / PHP 7.4 website while Shiring is on Joomla 5.0 / PHP 8.2 without any conflict. **And that's just astonishingly simple, if you think back to the way you worked before Docker.**
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Using another port isn't mandatory. You can have several websites on the same port as `8080`. But, in that case, we won't be able to use these websites at the same time. You can start the first one and when trying to start the second one, Docker will say *port already in use*. This isn't a problem; you can just run `docker compose stop` for the first one so free the port then start the second one.
 
 <Terminal typewriter>$ docker compose stop</Terminal>
 
 </AlertBox>
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
   In this article, I'm using port `8080` because Joomla has used it in his
   default `compose.yaml` file. You're not forced to use that one, you can
   perfectly use `80` and not `8080`. In my daily work, I'm using ports `80`,
@@ -496,7 +496,7 @@ We also need to change a few variables:
 - We should define too the name of the database in both services; we'll name our db `joomla_db` and
 - We need to inform Joomla that we'll use PostgreSQL so we need to set `JOOMLA_DB_TYPE` to `pgsql` (can be either `mysql` or `pgsql`).
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
   This information has been retrieved from this Pull requests:
   [https://github.com/joomla-docker/docker-joomla/pull/156](https://github.com/joomla-docker/docker-joomla/pull/156).
 </AlertBox>
@@ -561,7 +561,7 @@ And here is the promise. Just clic on the `Generate install script` below, copy/
 
 <!-- markdownlint-disable MD029 -->
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 Make sure, for each project, to update the `name:` line and if you plan to be able to run your Joomla sites concurrently, make sure to update the port number for Joomla and chose a new one every time (can be `80`, `81`, `82` and so on).
 
 </AlertBox>

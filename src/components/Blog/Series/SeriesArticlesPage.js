@@ -73,7 +73,7 @@ export default function SeriesArticlesPage() {
             </h2>
             <p>
               <Translate id="blog.seriesPage.notFound.message">
-                Oops, it looks like that series doesn't exist. Please check the name in the URL to make sure it's correct.
+                Oops, it looks like that series doesn&apos;t exist. Please check the name in the URL to make sure it&apos;s correct.
               </Translate>
             </p>
             <Link to="/series">

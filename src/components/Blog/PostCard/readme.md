@@ -15,10 +15,12 @@ src/components/Blog/PostCard/styles.module.css
 
 * Displays:
   * Featured image (with fallback)
+  * Optional tag badge (real link, not a nested fake link) when `post.mainTag` is set
   * Title (linked to the post)
   * Short description
 * Accessible markup with semantic link and alt text
 * Customizable fallback image via `defaultImage` prop
+* Optional eager-loading of the image via `lazyImage` (useful for above-the-fold cards)
 * Uses Infima utility classes and optional CSS module styling
 
 ## 🚀 Usage
@@ -34,7 +36,9 @@ import PostCard from '@site/src/components/Blog/PostCard';
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | `post` | object | ✅ | — | Blog post metadata (see structure below) |
-| `defaultImage` | string | ❌ | `/img/default.webp` | Fallback image path if `post.image` is missing |
+| `layout` | `"big"` \| `"small"` | ❌ | `"big"` | Card variant to render |
+| `defaultImage` | string | ❌ | `/img/default.jpg` | Fallback image path if `post.image` is missing |
+| `lazyImage` | boolean | ❌ | `true` | Set to `false` for above-the-fold cards to avoid hurting LCP |
 
 ### post object structure
 
@@ -43,13 +47,16 @@ import PostCard from '@site/src/components/Blog/PostCard';
   permalink: "/blog/my-post",
   image: "/img/my-post.webp",
   title: "My Blog Post",
-  description: "A short summary of the post."
+  description: "A short summary of the post.",
+  mainTag: "docker" // optional, renders a tag badge on the "big" layout
 }
 ```
 
 ## 🧠 Accessibility Notes
 
 * The title is wrapped in a `<Link>` with an aria-label for screen reader clarity.
+* The tag badge is a real `<Link>` (not a nested fake link), and sits as a sibling of the
+  title link rather than inside it — no interactive element is ever nested inside another.
 * The image includes alt and title attributes for better context.
 
 ## 🎨 Styling

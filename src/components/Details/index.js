@@ -20,7 +20,7 @@ export default function Details({ label, children }) {
   return (
     <details className={`alert alert--info`}>
         <summary>{ label }</summary>
-        <div class="content">
+        <div className="content">
           {children}
         </div>
     </details>

@@ -1,4 +1,5 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -51,6 +52,14 @@ function ToolCard({ icon, title, description, href, accent }) {
   );
 }
 
+ToolCard.propTypes = {
+  icon: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+  accent: PropTypes.string,
+};
+
 function ApiStatus({ apiUrl }) {
   const [status, setStatus] = useState("checking"); // checking | ok | error
 
@@ -77,6 +86,10 @@ function ApiStatus({ apiUrl }) {
   );
 }
 
+ApiStatus.propTypes = {
+  apiUrl: PropTypes.string.isRequired,
+};
+
 function ResourceLinks({ items }) {
   return (
     <ul className={styles.linkList}>
@@ -93,7 +106,17 @@ function ResourceLinks({ items }) {
   );
 }
 
-function DraftsList({ siteUrl }) {
+ResourceLinks.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      icon: PropTypes.node,
+      label: PropTypes.string.isRequired,
+      href: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
+
+function DraftsList() {
   const [drafts,  setDrafts]  = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -143,9 +166,12 @@ function DraftsList({ siteUrl }) {
 export default function AdminPage() {
   const { siteConfig } = useDocusaurusContext();
   const apiUrl     = `${siteConfig.url}/api/reactions.php`;
+  // false until the client-side effect runs — avoids SSR/hydration mismatch
+  // (localStorage isn't available during server rendering).
   const [savedToken, setSavedToken] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional SSR/hydration-safe read, see comment on `savedToken` above
     setSavedToken(!!localStorage.getItem(STORAGE_KEY));
   }, []);
 
@@ -205,7 +231,7 @@ export default function AdminPage() {
 
         {/* Drafts */}
         <p className={styles.sectionLabel}>Pending drafts</p>
-        <DraftsList siteUrl={siteConfig.url} />
+        <DraftsList />
 
         <p className={styles.hint}>
           This page is not linked from the navigation. Bookmark it for quick access.

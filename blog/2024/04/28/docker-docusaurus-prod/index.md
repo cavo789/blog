@@ -158,7 +158,7 @@ $ docker build --tag johndoe/blog --target production .
 
 The final `.` in the instruction above means *current folder*; `/tmp/docusaurus` in my case.
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 Since our `Dockerfile` is a multi-stages one, we need to specify which stage we wish. This is done by using the `--target` CLI flag.
 
 If you look at our `Dockerfile` file we've created earlier, our three stages are called `base`, `building_production` and `production`. To build the image with the web server, you need to specify `production` for the target but if you're interested in the generated files, not the web server, you can run `docker build --tag johndoe/blog --target building_production .`.
@@ -167,7 +167,7 @@ If you look at our `Dockerfile` file we've created earlier, our three stages are
 
 The `docker build` command will take one or two minutes depending on the speed of your network connection and computer. Once successfully fired, you'll then have a new Docker image on your computer. You can retrieve it by running `docker image list` to get the list of local images.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 By running `docker image list | grep -i blog`, you can retrieve the image and his size. It's 87MB for me on this moment for the dummy blog created in this blog post.
 
 By running `docker build --tag johndoe/blog --target building_production .` (without `nginx` thus but with `Node`) the size will be 740MB. As you can see, we've divided the size by, almost, 9.

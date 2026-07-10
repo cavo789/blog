@@ -1,4 +1,5 @@
 import React, { useState, Children, isValidElement, useMemo, useCallback, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import CodeBlock from "@theme/CodeBlock";
 import Snippet from "@site/src/components/Snippet";
 import Translate from "@docusaurus/Translate";
@@ -281,7 +282,7 @@ export default function ProjectSetup({
               <small>
                 <span aria-hidden="true">💡</span>{" "}
                 <Translate id="theme.projectSetup.tip">
-                  Need help here? Click the "Help" button above for setup
+                  Need help here? Click the &quot;Help&quot; button above for setup
                   instructions.
                 </Translate>
               </small>
@@ -308,3 +309,11 @@ export default function ProjectSetup({
     </div>
   );
 }
+
+ProjectSetup.propTypes = {
+  folderName: PropTypes.string,
+  createFolder: PropTypes.bool,
+  // Alternative to `children`: a flat map of fileName -> file content.
+  files: PropTypes.object,
+  children: PropTypes.node,
+};

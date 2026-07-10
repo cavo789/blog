@@ -71,7 +71,7 @@ You'll get an error message and it's perfectly normal: we still need to add some
 
 ![Error](./images/missing_code.webp)
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 In our ribbon, we wrote, among other things, the following: `getItemCount="modToolbar_cbxPeriod.getItemCount"`. So, Excel is trying to run a function called `getItemCount` from a module called `modToolbar_cbxPeriod` and ... we don't have it yet.
 
 </AlertBox>

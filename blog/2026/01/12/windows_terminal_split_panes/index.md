@@ -225,7 +225,7 @@ By clicking on it, you will now have a new terminal with 6 different panes, each
 
 ![Having up to six profiles](./images/windows_terminal_six_profiles.webp)
 
-## Bonus
+<Details label="Bonus">
 
 ### Toggle zoom for a pane
 
@@ -239,11 +239,16 @@ Here is a list of useful keyboard shortcuts to manage panes in Windows Terminal:
 
 <AlertBox variant="note" title="`+` and `-` refer to the keys on the main keyboard, not the numeric keypad." />
 
-* <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>+</kbd> : Split the current pane vertically.
-* <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> : Split the current pane horizontally.
-* <kbd>Alt</kbd> + <kbd>Shift</kbd> and use the arrow keys : Increase or decrease the size of the current pane in the direction of the arrow key.
-
-Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> to close the current pane.
+<StepsCard
+  variant="remember"
+  title="Pane shortcuts"
+  steps={[
+    { content: <><kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>+</kbd> — Split the current pane vertically.</> },
+    { content: <><kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> — Split the current pane horizontally.</> },
+    { content: <><kbd>Alt</kbd> + <kbd>Shift</kbd> + arrow keys — Increase or decrease the size of the current pane in the direction of the arrow key.</> },
+    { content: <><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> — Close the current pane.</> }
+  ]}
+/>
 
 ### Control panel actions
 
@@ -256,3 +261,5 @@ So, toggle this option, and you will see the cursor change to indicate that broa
 Toggle the option again to disable broadcasting.
 
 For example, you can clear the screen in all panes at once by typing `clear`, or you could push your changes to Git in all repositories by typing `git add . && git commit -m 'wip' && git push` just once.
+
+</Details>

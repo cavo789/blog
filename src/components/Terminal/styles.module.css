@@ -1,3 +1,12 @@
+/*
+ * This component simulates a real terminal window (dark background, macOS
+ * traffic-light controls, classic green prompt/cursor) — it's intentionally
+ * theme-independent, same rationale as the ELI5 code block in Snippet. Legitimate
+ * color-no-hex exception, see AGENTS.md and
+ * .todos/039-hardcoded-hex-colors-no-token-system.md.
+ */
+/* stylelint-disable color-no-hex */
+
 /* Terminal container */
 .terminal {
   background: #1e1e1e; /* terminal background */
@@ -123,20 +132,20 @@
   color: var(--docusaurus-color-primary-contrast-background);
 }
 
-/* Show the button only on hover of the terminal container */
-.terminal:hover .copyButton {
-  opacity: 1;
-}
-
 /* Add a background hover effect using Docusaurus variables */
 .copyButton:hover {
   background-color: var(--ifm-hover-overlay-bg);
 }
 
+/* Show the button only on hover of the terminal container */
+.terminal:hover .copyButton {
+  opacity: 1;
+}
+
 .copyButtonSvg {
   width: 1rem;
   height: 1rem;
-  fill: currentColor;
+  fill: currentcolor;
 }
 
 .terminal a {
@@ -175,3 +184,5 @@
   animation: blink 1s step-end infinite;
   font-family: "Fira Code", monospace;
 }
+
+/* stylelint-enable color-no-hex */

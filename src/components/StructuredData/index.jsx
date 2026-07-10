@@ -3,15 +3,27 @@ import { useMemo } from "react";
 import PropTypes from "prop-types";
 import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
 
-function StructuredData({ metadata }) {
+function StructuredData({ metadata, assets }) {
   const { siteConfig } = useDocusaurusContext();
+  const { withBaseUrl } = useBaseUrlUtils();
 
   const jsonLd = useMemo(() => {
     if (!metadata) return null;
 
     const { title, frontMatter, permalink, date, authors, tags } = metadata;
     const siteUrl = siteConfig.url;
+    // Co-located images (e.g. `./banner.jpg`) are bundler-resolved into
+    // assets.image; frontMatter.image is only safe to use as-is when the
+    // post points at a static path (e.g. /img/v2/...).
+    const resolvedImage = assets?.image ?? frontMatter?.image;
+
+    const mostRecentUpdate = frontMatter?.updates?.length
+      ? [...frontMatter.updates].sort(
+          (a, b) => new Date(b.date) - new Date(a.date)
+        )[0]
+      : null;
 
     return {
       "@context": "https://schema.org",
@@ -20,7 +32,7 @@ function StructuredData({ metadata }) {
       description: frontMatter?.description || "",
       url: `${siteUrl}${permalink}`,
       datePublished: date,
-      dateModified: frontMatter?.lastUpdated || date,
+      dateModified: mostRecentUpdate?.date || date,
       keywords: tags?.length ? tags.map((t) => t.label).join(", ") : undefined,
       author: authors?.[0]?.name
         ? {
@@ -41,14 +53,14 @@ function StructuredData({ metadata }) {
         "@type": "WebPage",
         "@id": `${siteUrl}${permalink}`,
       },
-      image: frontMatter?.image
+      image: resolvedImage
         ? {
             "@type": "ImageObject",
-            url: `${siteUrl}${frontMatter.image}`,
+            url: withBaseUrl(resolvedImage, { absolute: true }),
           }
         : undefined,
     };
-  }, [metadata, siteConfig]);
+  }, [metadata, assets, siteConfig, withBaseUrl]);
 
   if (!jsonLd) return null;
 
@@ -69,7 +81,12 @@ StructuredData.propTypes = {
     title: PropTypes.string,
     frontMatter: PropTypes.shape({
       description: PropTypes.string,
-      lastUpdated: PropTypes.string,
+      updates: PropTypes.arrayOf(
+        PropTypes.shape({
+          date: PropTypes.string,
+          note: PropTypes.string,
+        })
+      ),
       image: PropTypes.string,
     }),
     permalink: PropTypes.string,
@@ -87,6 +104,9 @@ StructuredData.propTypes = {
       })
     ),
   }).isRequired,
+  assets: PropTypes.shape({
+    image: PropTypes.string,
+  }),
 };
 
 export default StructuredData;

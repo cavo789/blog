@@ -243,7 +243,7 @@ Using `POST` **you'll create a new resource**. Calling `POST` five times for the
   {`curl -X POST -d '\{"firstname":"Christophe",...}' https://xxx/api/v1/employees`}
 </Terminal>
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 When calling `POST` you should provide all the fields required to create the resource. So, for a new employee, his firstname, lastname, birthdate, national register number, his hiring date, the department where he'll work and so on.
 
 </AlertBox>
@@ -307,7 +307,7 @@ Consider using `PUT` only when **you'll update every information's** of the reso
 | `403` | `Access denied` | You're not allowed to call this method                                                                              |
 | `404` | `Not found`     | The requested resource didn't exist (f.i. you tried to access `/api/v1/employees/1` and that one didn't exist).     |
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 When getting `PUT -d '{"firstname":"Christophe"}' https://xxx/api/v1/employees/123456` the API developer can decide on his own to **CREATE** the resource 123456 if it didn't exist and if all required fields have been provided in the payload.
 
 So, when the resource didn't exist, the developer can return a `404 - Not found` error or, if he decides to create the new resource, then the API could return `201 - Created` (just like a `POST`) ([reference](https://www.belgif.be/specification/rest/api-guide/#put)).

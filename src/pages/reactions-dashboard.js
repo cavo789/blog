@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./reactions-dashboard.module.css";
@@ -52,6 +53,13 @@ function SummaryCards({ totalHelpful, totalNot, grandTotal, approval }) {
   );
 }
 
+SummaryCards.propTypes = {
+  totalHelpful: PropTypes.number.isRequired,
+  totalNot: PropTypes.number.isRequired,
+  grandTotal: PropTypes.number.isRequired,
+  approval: PropTypes.number.isRequired,
+};
+
 function ApprovalBar({ ratio }) {
   return (
     <div className={styles.barWrap}>
@@ -62,6 +70,10 @@ function ApprovalBar({ ratio }) {
     </div>
   );
 }
+
+ApprovalBar.propTypes = {
+  ratio: PropTypes.number.isRequired,
+};
 
 function ReactionsTable({ rows, siteUrl }) {
   if (rows.length === 0) {
@@ -103,6 +115,19 @@ function ReactionsTable({ rows, siteUrl }) {
   );
 }
 
+ReactionsTable.propTypes = {
+  rows: PropTypes.arrayOf(
+    PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+      helpful: PropTypes.number.isRequired,
+      notHelpful: PropTypes.number.isRequired,
+      total: PropTypes.number.isRequired,
+      ratio: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  siteUrl: PropTypes.string.isRequired,
+};
+
 function AuthForm({ onSubmit }) {
   const [token, setToken] = useState("");
 
@@ -127,6 +152,10 @@ function AuthForm({ onSubmit }) {
   );
 }
 
+AuthForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+
 const STORAGE_KEY = "reactions_admin_token";
 
 // ── Page ─────────────────────────────────────────────────────────────────────
@@ -148,6 +177,7 @@ export default function ReactionsDashboard() {
       window.location.hash.slice(1) ||
       localStorage.getItem(STORAGE_KEY) ||
       "";
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional SSR/hydration-safe read, see comment above
     if (initial) setToken(initial);
   }, []);
 
@@ -174,6 +204,8 @@ export default function ReactionsDashboard() {
     }
   }, [apiUrl]);
 
+  // Reactive sync: refetch whenever the token changes (login, restore from storage, hash link).
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- fetchData sets state, but this is a legitimate reaction to `token` changing, not derivable at render time
   useEffect(() => { if (token) fetchData(token); }, [token, fetchData]);
 
   const handleTokenSubmit = (t) => { setToken(t); fetchData(t); };

@@ -35,6 +35,12 @@
 }
 
 [data-theme="light"] {
+  /* Infima's own default is "transparent" (relies on the page behind it), which
+     doesn't work as a background for this component's own chrome — pin an
+     explicit white, matching Docusaurus's official BrowserWindow snippet.
+     Legitimate color-no-hex exception, see AGENTS.md and
+     .todos/039-hardcoded-hex-colors-no-token-system.md. */
+  /* stylelint-disable-next-line color-no-hex */
   --ifm-background-color: #fff;
 }
 
@@ -60,7 +66,7 @@
   margin-top: 4px;
   height: 12px;
   width: 12px;
-  background-color: #bbb;
+  background-color: var(--ifm-color-emphasis-400);
   border-radius: 50%;
   display: inline-block;
 }
@@ -72,7 +78,7 @@
 .bar {
   width: 17px;
   height: 3px;
-  background-color: #aaa;
+  background-color: var(--ifm-color-emphasis-400);
   margin: 3px 0;
   display: block;
 }

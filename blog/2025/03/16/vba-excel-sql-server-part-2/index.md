@@ -176,7 +176,7 @@ If the parameter bPersist is set to True, the connection string will be in plain
 * `rngTarget` : Destination of the returned recordset (f.i. `Sheet1!$A$1`)
 * `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query
 
-<AlertBox variant="danger" title="">
+<AlertBox variant="danger">
 IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN CLEAR IN THE CONNECTION STRING !
 
 </AlertBox>
@@ -199,7 +199,7 @@ The obtained workbook will be ready to be sent to someone.
 * `sReportTitle` : Title for the sheet
 * `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query
 
-<AlertBox variant="danger" title="">
+<AlertBox variant="danger">
 IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN CLEAR IN THE CONNECTION STRING !
 
 </AlertBox>

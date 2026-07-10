@@ -3,4 +3,3 @@ $ {`docker container list --all --format "table {{.Image}}\\t{{.Names}}\\t{{.Sta
 IMAGE NAMES STATUS PORTS
 joomla:5.2.0-php8.3-apache joomla-app Up 6 minutes 0.0.0.0:8080->80/tcp
 mysql:8.4.2 joomla-db Up 7 minutes (healthy) 3306/tcp, 33060/tcp
-

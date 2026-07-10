@@ -10,4 +10,3 @@ drwxrwxrwt - root root 2024-10-18 13:30 ..
 .rw-r--r-- 11k christophe christophe 2024-10-18 13:30 en-GB.kickstart.ini
 .rw-r--r-- 390k christophe christophe 2024-10-18 13:30 kickstart.php
 .rw-r--r-- 2.9k christophe christophe 2024-10-18 13:30 makefile
-

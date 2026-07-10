@@ -77,7 +77,7 @@ As introduced above; we don't need Joomla anymore but just PHP and Apache. We'll
 
 <Snippet filename=".env" source="./files/.env" />
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 Since we need to restore an existing site, make sure to use the same PHP version than the one used by your site.
 
 </AlertBox>
@@ -88,7 +88,7 @@ We'll need a new action called `import`:
 
 <Snippet filename="makefile" source="./files/makefile" />
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
 
 <Terminal typewriter>$ which make</Terminal>
@@ -136,7 +136,7 @@ If you've skipped file's creation earlier by downloading files from my repo; you
 
 </AlertBox>
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 Remember, for Linux users, we need `GNU make` to be able to run commands like `make import` or `make up`. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
 
 </AlertBox>
@@ -171,7 +171,7 @@ Continue restoration as you always have; close the window once Akeeba Kickstart 
 
 ![Site is restored](./images/site_is_restored.webp)
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 If you've used the provided demo site, the admin account is **joomla** and his password is **joomla@secured**.
 
 </AlertBox>

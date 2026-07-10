@@ -100,6 +100,14 @@ All variants support custom titles and children.
 </AlertBox>
 ```
 
+### ☠️ `danger`
+
+```jsx
+<AlertBox variant="danger" title="This will erase all your data">
+  This action is destructive and cannot be undone.
+</AlertBox>
+```
+
 ## 🛠️ Props
 
 | Prop | Type | Required | Default | Description|
@@ -117,6 +125,7 @@ All variants support custom titles and children.
 * `important`
 * `highlyImportant`
 * `coreConcept`
+* `danger`
 
 ---
 

@@ -32,7 +32,7 @@ export default function NotFound() {
                 })}
               </h1>
               <p>
-                Don't worry, your meerkat companions are pointing the way back
+                Don&apos;t worry, your meerkat companions are pointing the way back
                 to the main burrow.
               </p>
               <Link to="/" className="button button--primary button--lg">

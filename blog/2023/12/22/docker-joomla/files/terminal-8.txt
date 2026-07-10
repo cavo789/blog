@@ -4,4 +4,3 @@ $ docker compose down
 ✔ Container joomla-joomla-1 Removed 2.6s
 ✔ Container joomla-joomladb-1 Removed 4.2s
 ✔ Network joomla Removed
-

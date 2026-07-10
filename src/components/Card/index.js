@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react"; // CSSProperties allows inline styling with better type checking.
+import PropTypes from "prop-types";
 import clsx from "clsx"; // clsx helps manage conditional className names in a clean and concise manner.
 const Card = ({
   className, // Custom classes for the container card
@@ -13,4 +13,12 @@ const Card = ({
     </div>
   );
 };
+
+Card.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object,
+  children: PropTypes.node,
+  shadow: PropTypes.oneOf(["lw", "md", "tl"]),
+};
+
 export default Card;

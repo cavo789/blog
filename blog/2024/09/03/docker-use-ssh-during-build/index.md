@@ -36,14 +36,14 @@ You can provide your own credentials or using a token or copying your SSH key in
 
 Also, there are existing tools like [SecretScanner](https://github.com/deepfence/SecretScanner) allowing to deeply scan layers (a Docker image is composed in multiple layers) and even if the secret is stored in a file that no longer exists in the final image, if it has been saved in a layer, then this type of tool will be able to retrieve it.
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 So, in conclusion: there is only one way to use secrets using Docker and you'll learn how in this article.
 
 </AlertBox>
 
 ## Which key to use
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 This part is one of the most important ones. First, of course, you should already have created a SSH key (see my <Link to="/blog/github-connect-using-ssh">Github - Connect your account using SSH and start to work with git@ protocol</Link> if needed).
 
 Then you should know which protocol you've used and that's really important. Is your key stored in a file called `id_ed25519` or `id_rsa` or something else. Only you know.

@@ -113,6 +113,7 @@ export default function Terminal({
     if (!typewriter || !hasBeenVisible || animDone) return;
 
     if (lineIdx >= animLines.length) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- terminal step of a setTimeout-driven typewriter animation, not derivable at render time
       setAnimDone(true);
       return;
     }

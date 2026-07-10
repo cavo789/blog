@@ -95,7 +95,7 @@ Years ago, I have written an example in pure PHP (not Laravel) and using the `Le
 
 The repository and sample code are on GitHub: [https://github.com/cavo789/event_thephpleague_learning](https://github.com/cavo789/event_thephpleague_learning).
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 This is, partially, a copy of an article I have previously posted on [https://dev.to/cavo789/working-with-laravel-events-2i6m](https://dev.to/cavo789/working-with-laravel-events-2i6m)
 
 </AlertBox>

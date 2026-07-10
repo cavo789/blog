@@ -99,7 +99,7 @@ Now, if you're curious, you'll see you've a new file called `composer.json` and 
 
 As stated in the [How to install?](https://docs.behat.org/en/latest/quick_start.html#installation) documentation, you just need to execute `composer require --dev behat/behat:^3` to install Behat as a dev dependency.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Make sure you're still in an interactive Bash session in the Docker container before running `composer require --dev behat/behat:^3`.  An interactive Bash session is started by running `docker compose exec -u $(id -u):$(id -g) app /bin/bash`.
 
 </AlertBox>

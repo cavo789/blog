@@ -11,4 +11,3 @@
 ✔ Network running-joomla-in-docker_joomla_network Created 0.0s
 ✔ Container joomla-db Healthy 31.0s
 ✔ Container joomla-app Started 31.3s
-

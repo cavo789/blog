@@ -10,4 +10,3 @@ Ping statistics for 192.168.0.218:
 
 Approximate round trip times in milliseconds:
     Minimum = 0ms, Maximum = 1ms, Average = 0ms
-

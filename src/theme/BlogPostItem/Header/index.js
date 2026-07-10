@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import BlogPostItemHeaderTitle from '@theme/BlogPostItem/Header/Title';
 import BlogPostItemHeaderInfo from '@theme/BlogPostItem/Header/Info';
 import BlogPostItemHeaderAuthors from '@theme/BlogPostItem/Header/Authors';
@@ -18,3 +19,6 @@ export default function BlogPostItemHeader({aiIcon}) {
     </header>
   );
 }
+BlogPostItemHeader.propTypes = {
+  aiIcon: PropTypes.node,
+};

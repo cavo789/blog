@@ -30,11 +30,17 @@ Let's discover it.
 
 A picture is worth a thousand words...
 
-![Demo](./images/demo.gif)
+<BrowserWindow url="https://excel-formatter.avonture.be/">
+  <img
+    alt="Demo"
+    src={require("./images/demo.gif").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 So simply copy/paste your long formula in the first text area and click on the Beautify button.
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 The script will try to find if the used separator is `,` or `;` and, in case of trouble, just specify the good one.
 
 </AlertBox>

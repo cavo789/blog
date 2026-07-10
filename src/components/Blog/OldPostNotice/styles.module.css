@@ -1,9 +1,9 @@
 .oldPostNotice {
-  background-color: #fff3cd;
-  color: #856404;
+  background-color: var(--ifm-color-warning-contrast-background);
+  color: var(--ifm-color-warning-contrast-foreground);
   padding: 1rem;
   border-radius: 6px;
-  border: 1px solid #ffeeba;
+  border: 1px solid var(--ifm-color-warning-dark);
   margin-bottom: 1.5rem;
 }
 
@@ -13,10 +13,4 @@
 
 .oldPostNotice strong {
   margin-right: 0.25rem;
-}
-
-[data-theme="dark"] .oldPostNotice {
-  background-color: rgba(133, 100, 4, 0.15);
-  color: #f0c040;
-  border-color: rgba(133, 100, 4, 0.4);
 }

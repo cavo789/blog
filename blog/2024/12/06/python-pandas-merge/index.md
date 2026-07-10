@@ -46,7 +46,7 @@ Using Pandas will make this piece of cake...
 
 <!-- truncate -->
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 It is not certain that an employee is in each of the files. He could be present in 2020 and 2021 and then leave the company; he could be hired in 2022 and resign in 2023; he could arrive just in 2024.
 
 The merge must therefore take this into account.
@@ -61,7 +61,7 @@ We'll create a set of 10 employees who will stay with us all the time and, in ea
 
 The script below will create two files, one called `employees_2023.csv` and one for `employees_2024.csv` so we can have fake files.
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 In order to be able to run this script, you should first run `pip install pandas faker` to install the two packages.
 
 </AlertBox>

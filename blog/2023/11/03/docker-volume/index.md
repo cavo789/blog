@@ -19,7 +19,7 @@ When running Docker without specifying a volume, everything that is done during 
 
 <!-- truncate -->
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 Imagine you wish to play with a malicious PHP script. Running the script *on* your computer is really dangerous since you do not know what the virus will do; where it will create files. But, if you are running the virus script in a Docker container with **no attached volume** (which is the default) nothing on your computer will be modified. Everything stays in memory (RAM). By removing the Docker container, everything will be removed. This is a great security feature.
 
 </AlertBox>
@@ -32,7 +32,7 @@ Let's run the command below to start the PHP 8.1.5 + Apache image:
 $ docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html php:8.1.5-apache
 </Terminal>
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 If you're using Windows (MS DOS), replace `$(pwd)` with `%CD%` in the instruction above.
 
 </AlertBox>
@@ -67,7 +67,7 @@ Using the `-v` command line argument, you have synchronized a local folder with 
 
 If the running PHP script creates a new file in the `/var/www/html` folder, that file will be immediately created / updated on your disk.
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 Files or folders created in the Docker container will be owned by the current user used in the container; which is most often the `root` user. These files/folders will, then, be created / updated by the `root` user on your disk as well.
 
 </AlertBox>

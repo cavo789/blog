@@ -1,5 +1,6 @@
-import React, { CSSProperties } from "react";
+import PropTypes from "prop-types";
 import styles from "../styles.module.css";
+import { buildTextClasses } from "../utils";
 
 import clsx from "clsx";
 const CardFooter = ({
@@ -14,13 +15,18 @@ const CardFooter = ({
   truncate = false,
   weight,
 }) => {
-  const text = textAlign ? `text--${textAlign}` : "";
-  const textColor = variant ? `text--${variant}` : "";
-  const textItalic = italic ? "text--italic" : "";
-  const textDecoration = noDecoration ? "text-no-decoration" : "";
-  const textType = transform ? `text--${transform}` : "";
-  const textTruncate = truncate ? styles.truncate : "";
-  const textWeight = weight ? `text--${weight}` : "";
+  const {
+    text,
+    textColor,
+    textItalic,
+    textDecoration,
+    textType,
+    textTruncate,
+    textWeight,
+  } = buildTextClasses(
+    { textAlign, variant, italic, noDecoration, transform, truncate, weight },
+    styles.truncate
+  );
   return (
     <div
       className={clsx(
@@ -40,4 +46,18 @@ const CardFooter = ({
     </div>
   );
 };
+
+CardFooter.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object,
+  children: PropTypes.node,
+  textAlign: PropTypes.oneOf(["left", "center", "right", "justify"]),
+  variant: PropTypes.string,
+  italic: PropTypes.bool,
+  noDecoration: PropTypes.bool,
+  transform: PropTypes.string,
+  truncate: PropTypes.bool,
+  weight: PropTypes.string,
+};
+
 export default CardFooter;

@@ -109,9 +109,13 @@ At work, I've taken this well beyond simply displaying a list of hosts. FZF supp
 
 This is where it gets truly powerful!
 
-* For <kbd>CTRL</kbd>+<kbd>A</kbd>, I’ve set up a secondary screen that displays a list of actions to execute on the selected host.
-* For <kbd>CTRL</kbd>+<kbd>I</kbd>, I run an inventory management script that scans all my hosts (or just the filtered ones) and generates a web page with an up-to-date inventory of installed software (such as PHP, Python, PostgreSQL versions).
-* For <kbd>E</kbd>, you could, for example, open an editor to directly modify the configuration file of the selected host.
+<ShortcutList
+  items={[
+    { keys: ["Ctrl", "A"], desc: "I’ve set up a secondary screen that displays a list of actions to execute on the selected host." },
+    { keys: ["Ctrl", "I"], desc: "I run an inventory management script that scans all my hosts (or just the filtered ones) and generates a web page with an up-to-date inventory of installed software (such as PHP, Python, PostgreSQL versions)." },
+    { keys: ["E"], desc: "You could, for example, open an editor to directly modify the configuration file of the selected host." },
+  ]}
+/>
 
 <Snippet source="./files/sshf_actions.zsh" defaultOpen={false} />
 

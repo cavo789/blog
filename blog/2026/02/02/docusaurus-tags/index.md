@@ -94,7 +94,7 @@ I can also find that a specific tag didn't have any added-value so, to remove it
 $ make tags-manager ARGS="delete draft"
 </Terminal>
 
-## Bonus
+<Details label="Bonus - The tags.yml file">
 
 Natively, Docusaurus allows you to create a special file called `blog/tags.yml`.
 
@@ -105,6 +105,8 @@ Here is the one I'm using:
 With such file, you can then configure your `docusaurus.config.js` file and set the `onInlineTags` attribute to `warn` or `throw`.
 
 Need more info, read the [Tags File](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#tags-file) official documentation.
+
+</Details>
 
 ## Conclusion
 

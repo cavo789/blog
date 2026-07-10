@@ -14,6 +14,8 @@ import Highlight from "@site/src/components/Highlight";
 import Link from "@docusaurus/Link";
 import LogoIcon from "@site/src/components/Blog/LogoIcon";
 import MDXComponents from "@theme-original/MDXComponents";
+import Prerequisite from "@site/src/components/Prerequisite";
+import ShortcutList from "@site/src/components/ShortcutList";
 import Snippet from "@site/src/components/Snippet";
 import StepsCard from "@site/src/components/StepsCard";
 import TabItem from "@theme/TabItem";
@@ -52,7 +54,9 @@ export default {
   Highlight,
   Link,
   LogoIcon,
+  Prerequisite,
   ProjectSetup,
+  ShortcutList,
   Snippet,
   StepsCard,
   TabItem,
@@ -66,8 +70,7 @@ export default {
   //   <img {...props} data-title="Christophe" loading="lazy" decoding="async" />
   // ),
   img: (props) => {
-    const { loading, decoding, className, style, height, width, ...rest } =
-      props;
+    const { loading, decoding, className, style, height, width, ...rest } = props;
 
     return (
       <img

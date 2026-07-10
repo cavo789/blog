@@ -54,7 +54,12 @@ In this article, we'll discover [pre-commit](https://github.com/pre-commit/pre-c
 
 We'll create a new temporary folder, run `git init` to initialise a project and create a Docker image and run a container for our demo.
 
-First, run `mkdir /tmp/hooks && cd $_` then run `git init` to initialise our folder as a repository (we'll work offline but, yes, to use git pre-commit hooks, we need a git project).
+First, create a temporary folder and jump into it, then initialise it as a git repository (we'll work offline but, yes, to use git pre-commit hooks, we need a git project).
+
+<Terminal>
+$ mkdir /tmp/hooks && cd $_
+$ git init
+</Terminal>
 
 We'll need three files, a `Dockerfile` to create our Python Docker image, a `compose.yaml` to set some settings and `main.py` as a Python example script.
 
@@ -94,7 +99,13 @@ Simple too, please create a file called `.pre-commit-config.yaml` with this cont
 
 `pre-commit` can be manually fired but you should have some files in your git local stage. In this article, we've created a few files, please run `git add .` just to put them in the git local stage.
 
-Now, to manually start all controls defined in the yaml file simply run `pre-commit run --all-files`. The first time, it'll be slower since a few things have to be downloaded / configured.
+Now, to manually start all controls defined in the yaml file simply run:
+
+<Terminal>
+$ pre-commit run --all-files
+</Terminal>
+
+The first time, it'll be slower since a few things have to be downloaded / configured.
 
 You'll see something like this on your console:
 
@@ -120,7 +131,7 @@ Now, reopen the `main.py` script:
 
 Ok, the idea wasn't to fire pre-commit hooks manually, right? Just run `pre-commit install` and, from now, every single time you'll run `git commit`, first, `pre-commit` controls will be made and only when all controls are successful (i.e. all will return an exit code of `0`), then your commit will be allowed.
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 If you're curious about how it works, simply show the `.git/hooks/pre-commit` file. The previous instruction has configured git to execute a small Bash script called `.git/hooks/pre-commit`.
 
 </AlertBox>

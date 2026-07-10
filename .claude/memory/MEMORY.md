@@ -11,3 +11,4 @@
 - [Blog Coverage Map](project_blog_coverage.md) — Gaps et opportunités par tech (WSL2/ZSH/Git/Docker/FZF/SSH/Bash)
 - [Article Proposals](project_article_proposals.md) — Pending article ideas for WSL2/ZSH/Git/Docker/FZF workflow series
 - [Post Creation Feedback](feedback_post_creation.md) — draft:true for .unpublished, image selection, frontmatter ordering
+- [TODO Triage Feedback](feedback_todo_triage.md) — rejects reader-engagement TODOs (polls/Q&A/share/bookmarks/counters) as WONT_DO, low traffic

@@ -22,7 +22,7 @@
  * <GithubProjects username="cavo789" />
  */
 
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
 import Card from "@site/src/components/Card";
 import CardHeader from "@site/src/components/Card/CardHeader";
@@ -74,7 +74,7 @@ export default function GithubProjects({ username }) {
 
   const cacheKey = `githubRepos_${username}`;
 
-  const loadCachedRepos = () => {
+  const loadCachedRepos = useCallback(() => {
     const cachedData = localStorage.getItem(cacheKey);
     const now = new Date().getTime();
     if (cachedData) {
@@ -84,9 +84,9 @@ export default function GithubProjects({ username }) {
       }
     }
     return null;
-  };
+  }, [cacheKey]);
 
-  const fetchAllRepos = async () => {
+  const fetchAllRepos = useCallback(async () => {
     const allRepos = [];
     let page = 1;
     const perPage = 100;
@@ -121,20 +121,21 @@ export default function GithubProjects({ username }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [username, cacheKey]);
 
   useEffect(() => {
     const cached = loadCachedRepos();
     if (cached) {
       const archived = cached.filter((repo) => repo.archived);
       const nonArchived = cached.filter((repo) => !repo.archived);
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage read (client-only) with an async-fetch fallback path, not derivable at render time
       setRepos(sortRepos(nonArchived, false));
       setArchivedRepos(sortRepos(archived, true));
       setLoading(false);
     } else {
       fetchAllRepos();
     }
-  }, [username]);
+  }, [loadCachedRepos, fetchAllRepos]);
 
   const allRepos = useMemo(
     () => [...repos, ...archivedRepos],

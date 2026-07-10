@@ -92,8 +92,13 @@ Please create the `plugins/blog-feed-plugin/index.js` with the code below
 
 Please update your `docusaurus.config.js` and do two things.
 
-1. We need to disable the RSS generation of the feed by Docusaurus then
-2. We need to implement our own plugin
+<StepsCard
+  variant="steps"
+  steps={[
+    "We need to disable the RSS generation of the feed by Docusaurus",
+    "We need to implement our own plugin"
+  ]}
+/>
 
 See below how to do:
 

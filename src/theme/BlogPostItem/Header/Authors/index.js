@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import clsx from "clsx";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import BlogAuthor from "@theme/Blog/Components/Author";
@@ -42,7 +43,6 @@ export default function BlogPostItemHeaderAuthors({ className }) {
     return null;
   }
   const imageOnly = allAuthors.every(({ name }) => !name);
-  const singleAuthor = allAuthors.length === 1;
   return (
     <div
       className={clsx(
@@ -70,3 +70,6 @@ export default function BlogPostItemHeaderAuthors({ className }) {
     </div>
   );
 }
+BlogPostItemHeaderAuthors.propTypes = {
+  className: PropTypes.string,
+};

@@ -37,8 +37,8 @@ export default function MyRepositories({ username }) {
         </h1>
         <p>
           <Translate id="myRepositories.description.intro">
-            Below you'll find a list of my public repositories stored on
-            GitHub.com. They're divided in two parts; the active and the
+            Below you&apos;ll find a list of my public repositories stored on
+            GitHub.com. They&apos;re divided in two parts; the active and the
             inactive ones.
           </Translate>
           <br />

@@ -16,4 +16,3 @@ docker exec -it demo_pest sh -c "WEBSITE=https://www.avonture.be vendor/bin/pest
 
   Tests:    10 passed (12 assertions)
   Duration: 25.56s
-

@@ -34,7 +34,7 @@ To do this, in fact, we don't need to create a component! We just need to add so
 
 If you don't have that file yet, just create it.
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 The `// [...]` notation is there as a placeholder to show you that perhaps you'll have already some lines of code there. Don't delete it; just append the highlighted lines as shown below.
 
 </AlertBox>

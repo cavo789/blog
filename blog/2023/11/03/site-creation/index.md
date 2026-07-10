@@ -109,7 +109,7 @@ With my preferred editor ([vscode](https://code.visualstudio.com/)) I open my bl
 
 Now, in the `/blog` directory, I create a new folder called `2023-11-02-site-creation` and there I create the `index.md` file.
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 When my blog post contains only text and no images or linked files, I can just create a `.md` file like `/blog/2023-11-02-this-is-a-test.md`. The creation of a folder is therefore not mandatory at all.
 
 </AlertBox>
@@ -128,7 +128,7 @@ Some **content** with _Markdown_ `syntax`.
 :::
 ```
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 Some **content** with *Markdown* `syntax`.
 
 </AlertBox>

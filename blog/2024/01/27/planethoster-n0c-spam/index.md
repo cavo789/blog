@@ -111,7 +111,7 @@ Give me some time to do this and as soon as it's done, I'll publish my solution.
 
 <Snippet filename="script.sh" source="./files/script.sh" />
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 The article <Link to="/blog/planethoster-n0c-spam-roundcube-action">Exterminate them all, kill spam using GitHub Actions</Link> is now written; don't hesitate to read it.
 
 </AlertBox>

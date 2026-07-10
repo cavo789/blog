@@ -58,7 +58,7 @@ The third file to create will be called `.docker.env` where we'll initialise som
 
 <Snippet filename=".docker.env" source="./files/.docker.env" />
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 All you have to do is duplicate the other files we've created for each of your projects and the settings for your project will be made here, in the `.docker.env` file.
 
 </AlertBox>
@@ -69,7 +69,7 @@ To make life easier, we're going to group together a set of commands in a file c
 
 <Snippet filename="makefile" source="./files/makefile" />
 
-<AlertBox variant="caution" title="">
+<AlertBox variant="caution">
 If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
 
 </AlertBox>
@@ -94,7 +94,7 @@ This time we can, if you need to, enter in our container by running `make bash` 
 
 ![Inside the container](./images/container-python.webp)
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 As you see, Python 3.13 is used. Why that specific version? Just go back to your `.docker.env` file and take a look to the `DOCKER_PYTHON_VERSION` variable. If you need another just update the `.docker.env` file and run `make up` again.
 
 </AlertBox>
@@ -117,7 +117,7 @@ To be able to run the code, start `make bash` again (to jump in the container) a
 
 ![Run hello](./images/run-hello.webp)
 
-<AlertBox variant="info" title="">
+<AlertBox variant="info">
 It will works because, in the container, the working directory is `/app/src`. If this had not been the case, we would have had to write, for example, `python /app/src/hello.py` i.e. the absolute path to the script.
 
 </AlertBox>

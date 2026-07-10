@@ -37,7 +37,11 @@ And, because I'm using Quarto for my documentation, I need an extension for usin
 
 Like always, let's create some files.
 
-Please run `mkdir /tmp/partials && cd $_` to create a temporary folder and jump in it.
+Please create a temporary folder and jump in it:
+
+<Terminal>
+$ mkdir /tmp/partials && cd $_
+</Terminal>
 
 Create a file called `_quarto.yml` with this content:
 
@@ -81,7 +85,13 @@ Finally, surf to `http://localhost:8080/documentation/canvas.html` and we'll see
 
 And now, we're ready to copy/paste the file `documentation/canvas.md` to `documentation/feature_2.md` and just update the command variable. And do this again and again until we've documented all features.
 
-![Our Canvas feature](./images/html_canvas.webp)
+<BrowserWindow url="http://localhost:8080/documentation/canvas.html">
+  <img
+    alt="Our Canvas feature"
+    src={require("./images/html_canvas.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ### What have we just done
 
@@ -104,7 +114,13 @@ Let's prove it. We'll create a new feature:
 
 and render our site again by running again `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render`.
 
-![Our second feature](./images/html_builder.webp)
+<BrowserWindow url="http://localhost:8080/documentation/feature_2.html">
+  <img
+    alt="Our second feature"
+    src={require("./images/html_builder.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ## My use case
 

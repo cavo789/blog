@@ -27,7 +27,12 @@
  * ```js
  * import { getBlogMetadata } from './getBlogMetadata';
  * const posts = getBlogMetadata();
+ * const withDrafts = getBlogMetadata({ includeDrafts: true });
  * ```
+ *
+ * By default, posts flagged `draft` or `unlisted` are excluded so consumers don't have to
+ * remember to filter them out themselves. Pass `includeDrafts`/`includeUnlisted` to opt back in
+ * (e.g. author-facing counters that need to show "in progress" articles).
  *
  * ⚠️ Note:
  * This function is intended for use in static site generation or client-side rendering
@@ -36,7 +41,10 @@
 
 const posts = require.context("../../../../blog", true, /\.mdx?$/);
 
-export function getBlogMetadata() {
+export function getBlogMetadata({
+  includeDrafts = false,
+  includeUnlisted = false,
+} = {}) {
   return posts
     .keys()
     .map((key) => {
@@ -73,5 +81,9 @@ export function getBlogMetadata() {
         unlisted: post.frontMatter.unlisted || false,
       };
     })
-    .filter(Boolean);
+    .filter(Boolean)
+    .filter(
+      (post) =>
+        (includeDrafts || !post.draft) && (includeUnlisted || !post.unlisted)
+    );
 }

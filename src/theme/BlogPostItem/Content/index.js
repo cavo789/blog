@@ -19,6 +19,7 @@
 
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import React, { useEffect, useRef, useState } from "react";
+import PropTypes from "prop-types";
 import MDXContent from "@theme/MDXContent";
 import SeriesPosts from "@site/src/components/Blog/SeriesPosts/index.js";
 import OldPostNotice from "@site/src/components/Blog/OldPostNotice/index.js";
@@ -81,3 +82,6 @@ export default function BlogPostContent({ children }) {
     </div>
   );
 }
+BlogPostContent.propTypes = {
+  children: PropTypes.node,
+};

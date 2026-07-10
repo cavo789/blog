@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 // Import clsx library for conditional classes.
 import clsx from 'clsx';
 // Define the Columns component as a function
@@ -15,3 +16,9 @@ export default function Columns({ children , className , style }) {
     </div>
   );
 }
+
+Columns.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  style: PropTypes.object,
+};

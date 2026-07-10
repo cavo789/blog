@@ -71,11 +71,15 @@ This article collects practical tips to help you get the most out of your token 
 
 The choice of model directly impacts token consumption — the more capable the model, the more it costs:
 
-| Model | Token Cost | Best for |
-|---|---|---|
-| Claude Opus | Highest | Complex reasoning, architectural decisions |
-| Claude Sonnet | Medium | Day-to-day development tasks |
-| Claude Haiku | Lowest | Speed, simple queries, quick edits |
+<StepsCard
+  variant="remember"
+  title="Model cost vs use case"
+  steps={[
+    { content: "**Claude Opus** — Highest token cost. Best for complex reasoning, architectural decisions." },
+    { content: "**Claude Sonnet** — Medium token cost. Best for day-to-day development tasks." },
+    { content: "**Claude Haiku** — Lowest token cost. Best for speed, simple queries, quick edits." }
+  ]}
+/>
 
 ## CLAUDE.md File
 

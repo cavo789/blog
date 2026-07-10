@@ -1,4 +1,5 @@
 import AIIcon from "@site/src/components/Blog/AIIcon";
+import PropTypes from "prop-types";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import BlogPostItemContainer from "@theme/BlogPostItem/Container";
 import BlogPostItemContent from "@theme/BlogPostItem/Content";
@@ -50,3 +51,7 @@ export default function BlogPostItem({ children, className }) {
     </>
   );
 }
+BlogPostItem.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+};

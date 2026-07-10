@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { generateSeriesList } from "@site/src/components/Blog/utils/series";
 import Translate from "@docusaurus/Translate";
 import PostCard from "@site/src/components/Blog/PostCard";
+import SERIES_DATA from "@site/src/data/series.js";
 import styles from "./styles.module.css";
 
 /**
@@ -23,22 +24,6 @@ import styles from "./styles.module.css";
  */
 
 const DEFAULT_IMAGE = "/img/default.webp";
-
-/**
- * Safely imports the series data and returns it, or an empty array if the import fails.
- * This prevents the application from crashing if the data file is missing.
- * @returns {Array} The series data or an empty array.
- */
-function getSeriesData() {
-  try {
-    const data = require("@site/src/data/series.js");
-    return data?.default ?? data;
-  } catch (error) {
-    return [];
-  }
-}
-
-const SERIES_DATA = getSeriesData();
 
 export default function SeriesCards() {
   const seriesList = generateSeriesList();

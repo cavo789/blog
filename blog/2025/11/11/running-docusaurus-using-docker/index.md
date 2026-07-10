@@ -77,17 +77,14 @@ You should now see the project structure in your editor.
 
 In the root of the project, create the following files:
 
-<Snippet filename="compose.yaml" source="./files/compose.yaml" />
-
-<Snippet filename="Dockerfile" source="./files/Dockerfile" />
-
-<Snippet filename="localhost-key.pem" source="./files/localhost-key.pem" />
-
-<Snippet filename="localhost.pem" source="./files/localhost.pem" />
-
-<Snippet filename="makefile" source="./files/makefile" />
-
-<Snippet filename="nginx.conf" source="./files/nginx.conf" />
+<ProjectSetup folderName="/tmp/docux-blog">
+  <Snippet filename="compose.yaml" source="./files/compose.yaml" />
+  <Snippet filename="Dockerfile" source="./files/Dockerfile" />
+  <Snippet filename="localhost-key.pem" source="./files/localhost-key.pem" />
+  <Snippet filename="localhost.pem" source="./files/localhost.pem" />
+  <Snippet filename="makefile" source="./files/makefile" />
+  <Snippet filename="nginx.conf" source="./files/nginx.conf" />
+</ProjectSetup>
 
 ### Build and run the production image
 
@@ -147,21 +144,18 @@ Under Linux, you can run `make build && make devcontainer` to run both in just o
 
 We'll need to create a new `.devcontainer` folder with a few files:
 
-<Snippet filename=".devcontainer/.env" source="./files/.devcontainer/.env" />
+<ProjectSetup folderName="/tmp/docux-blog">
+  <Snippet filename=".devcontainer/.env" source="./files/.devcontainer/.env" />
+  <Snippet filename=".devcontainer/bootstrap.sh" source="./files/.devcontainer/bootstrap.sh" />
+  <Snippet filename=".devcontainer/bash_helpers.sh" source="./files/.devcontainer/bash_helpers.sh" />
+  <Snippet filename=".devcontainer/compose.yaml" source="./files/.devcontainer/compose.yaml" />
+  <Snippet filename=".devcontainer/devcontainer.json" source="./files/.devcontainer/devcontainer.json" />
+  <Snippet filename=".devcontainer/Dockerfile" source="./files/.devcontainer/Dockerfile" />
+</ProjectSetup>
 
 <AlertBox variant="danger" title="Make sure to use your own UID/GID">
 Please edit the `.devcontainer/.env` file and make sure these values are the ones you're using: please run `id -u` in your console and check if you get `1000`. If not, please report the obtained figure (f.i. `1002`) as `OS_USERID` and do the same with  the command `id -g`, here, it's for the `OS_GROUPID` variable.
 </AlertBox>
-
-<Snippet filename=".devcontainer/bootstrap.sh" source="./files/.devcontainer/bootstrap.sh" />
-
-<Snippet filename=".devcontainer/bash_helpers.sh" source="./files/.devcontainer/bash_helpers.sh" />
-
-<Snippet filename=".devcontainer/compose.yaml" source="./files/.devcontainer/compose.yaml" />
-
-<Snippet filename=".devcontainer/devcontainer.json" source="./files/.devcontainer/devcontainer.json" />
-
-<Snippet filename=".devcontainer/Dockerfile" source="./files/.devcontainer/Dockerfile" />
 
 Since we've two bash scripts, we need to make them executable. Please run this command in a terminal:
 

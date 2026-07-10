@@ -39,16 +39,12 @@ The key point: **you don't change a single git command**. You still type `git di
 
 ## Install
 
-<Terminal>
-$ sudo apt install git-delta
-</Terminal>
-
-Verify:
-
-<Terminal>
-$ delta --version
-delta 0.18.2
-</Terminal>
+<Prerequisite
+  name="git-delta"
+  install="sudo apt install git-delta"
+  check="delta --version"
+  checkOutput="delta 0.18.2"
+/>
 
 <AlertBox variant="note" title="On older Ubuntu/Debian releases">
 The package might be named `delta` rather than `git-delta`. If `apt install git-delta` fails, try `sudo apt install delta` — or install the latest binary from the [GitHub releases page](https://github.com/dandavison/delta/releases).
@@ -174,21 +170,29 @@ $ git diff | delta --syntax-theme=gruvbox-dark
 
 Good starting points:
 
-| Terminal background | Theme |
-|---|---|
-| Dark | `Dracula`, `gruvbox-dark`, `TwoDark`, `Nord` |
-| Light | `GitHub`, `Monokai Extended Light`, `OneHalfLight` |
+<StepsCard
+  variant="remember"
+  title="Theme picks by terminal background"
+  steps={[
+    { content: "**Dark background** — `Dracula`, `gruvbox-dark`, `TwoDark`, `Nord`" },
+    { content: "**Light background** — `GitHub`, `Monokai Extended Light`, `OneHalfLight`" }
+  ]}
+/>
 
 ## Navigation between hunks
 
 With `navigate = true`, delta adds keyboard navigation inside the pager:
 
-| Key | Action |
-|---|---|
-| `n` | Jump to the next changed file |
-| `N` | Jump to the previous changed file |
-| `q` | Quit |
-| `Space` | Page down |
+<StepsCard
+  variant="remember"
+  title="Navigation keys"
+  steps={[
+    { content: "**n** — Jump to the next changed file" },
+    { content: "**N** — Jump to the previous changed file" },
+    { content: "**q** — Quit" },
+    { content: "**Space** — Page down" }
+  ]}
+/>
 
 This is most useful with `git log -p` or `git diff HEAD~10` where the diff spans many files.
 

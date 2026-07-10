@@ -73,7 +73,13 @@ It's too simple, isn't it? Let's try the suggested commands and see if the site 
 
 First, create the container by running the `docker compose up --build` command then, once finished, just open your browser and surf to your local site (in my case `http://localhost:8080`) and ...
 
-![The application is running](./images/localhost.webp)
+<BrowserWindow url="http://localhost:8080">
+  <img
+    alt="The application is running"
+    src={require("./images/localhost.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ## Let's take a look on created files
 
@@ -89,7 +95,7 @@ Refer to [https://docs.docker.com/go/build-context-dockerignore/](https://docs.d
 
 ### compose.yaml
 
-<AlertBox variant="note" title="">
+<AlertBox variant="note">
 Previously, the file was named `docker-compose.yaml` (or `docker-compose.yml`).
 
 </AlertBox>

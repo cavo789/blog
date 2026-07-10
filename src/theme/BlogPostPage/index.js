@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import clsx from "clsx";
 import {
   HtmlClassNameProvider,
@@ -86,6 +87,10 @@ function BlogPostPageContent({ sidebar, children }) {
     </BlogLayout>
   );
 }
+BlogPostPageContent.propTypes = {
+  sidebar: PropTypes.object,
+  children: PropTypes.node,
+};
 
 export default function BlogPostPage(props) {
   const BlogPostContent = props.content;
@@ -96,9 +101,12 @@ export default function BlogPostPage(props) {
     </BlogPostProvider>
   );
 }
+BlogPostPage.propTypes = {
+  content: PropTypes.elementType.isRequired,
+};
 
 function InnerBlogPostPage({ sidebar, BlogPostContent }) {
-  const { metadata } = useBlogPost();
+  const { metadata, assets } = useBlogPost();
 
   return (
     <HtmlClassNameProvider
@@ -110,10 +118,14 @@ function InnerBlogPostPage({ sidebar, BlogPostContent }) {
       <BlogPostPageMetadata />
       <BlogPostPageStructuredData />
       <OpenGraphArticle />
-      {metadata && <StructuredData metadata={metadata} />}
+      {metadata && <StructuredData metadata={metadata} assets={assets} />}
       <BlogPostPageContent sidebar={sidebar}>
         <BlogPostContent />
       </BlogPostPageContent>
     </HtmlClassNameProvider>
   );
 }
+InnerBlogPostPage.propTypes = {
+  sidebar: PropTypes.object,
+  BlogPostContent: PropTypes.elementType.isRequired,
+};

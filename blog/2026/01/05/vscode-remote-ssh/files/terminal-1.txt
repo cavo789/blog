@@ -6,4 +6,3 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added '[localhost]:2222' (ECDSA) to the list of known hosts.
 
 christophe@localhost's password:
-

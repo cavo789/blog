@@ -64,9 +64,7 @@
   },
   "docusaurus.snippet": {
     "prefix": "Snippet",
-    "body": [
-      "<Snippet filename=\"$1\" source=\"./files/$1\" defaultOpen={false} />",
-    ],
+    "body": ["<Snippet filename=\"$1\" source=\"./files/$1\" defaultOpen={false} />"],
     "description": "Docusaurus - Snippet",
   },
   "docusaurus.steps": {
@@ -118,17 +116,36 @@
   },
   "docusaurus.tree": {
     "prefix": "Tree",
-    "body": [
-      "```tree expanded=true showJSX=false debug=false title=\"$1\"",
-      "",
-      "```",
-    ],
+    "body": ["```tree expanded=true showJSX=false debug=false title=\"$1\"", "", "```"],
     "description": "Docusaurus - Treeview component",
   },
   "docusaurus.blueskyRecordKey": {
     "prefix": "blueskyRecordKey",
     "body": ["blueskyRecordKey: "],
     "description": "Docusaurus - blueskyRecordKey YAML entry",
+  },
+  "docusaurus.shortcutList": {
+    "prefix": "ShortcutList",
+    "body": [
+      "<ShortcutList",
+      "  items={[",
+      "    { keys: [\"$1\"], desc: \"$2\" },",
+      "  ]}",
+      "/>",
+    ],
+    "description": "Docusaurus - ShortcutList component",
+  },
+  "docusaurus.prerequisite": {
+    "prefix": "Prerequisite",
+    "body": [
+      "<Prerequisite",
+      "  name=\"$1\"",
+      "  install=\"$2\"",
+      "  check=\"$3\"",
+      "  checkOutput=\"$4\"",
+      "/>",
+    ],
+    "description": "Docusaurus - Prerequisite component (install + verify a CLI tool)",
   },
   "docusaurus.projectSetup": {
     "prefix": "ProjectSetup",

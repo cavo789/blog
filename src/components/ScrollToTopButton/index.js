@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
-import Translate, { translate } from "@docusaurus/Translate";
+import { translate } from "@docusaurus/Translate";
 import styles from "./styles.module.css";
 import buttontop from '@site/static/img/meerkat/suricate_no_background.webp'
 
