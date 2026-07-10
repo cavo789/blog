@@ -161,6 +161,7 @@ const config = {
       "./plugins/ascii-injector/index.mjs",
       { bannerPath: "src/data/banner.txt" },
     ],
+    "./plugins/sitemap-easter-egg/index.mjs",
     require.resolve("docusaurus-plugin-image-zoom"),
   ],
   headTags: [

@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from '@docusaurus/router';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import KonamiEasterEgg from '@site/src/components/KonamiEasterEgg';
 
 /**
  * This Root component allows injecting code globally into the application.
@@ -11,6 +13,42 @@ import { useLocation } from '@docusaurus/router';
  */
 export default function Root({ children }) {
   const location = useLocation();
+  const sleepingFaviconUrl = useBaseUrl('/img/favicon-sleeping.png');
+
+  // Console easter egg: a little wink for visitors who open DevTools.
+  // Runs once per full page load, not on every client-side route change.
+  useEffect(() => {
+    console.log(
+      '%c \u{1F9AB} Curious, aren\'t you?',
+      'font-size:18px;font-weight:bold;color:#e8871e;',
+    );
+    console.log(
+      '%cThe meerkat sentry is watching this site too. If you enjoy digging around in the source, try the Konami code somewhere on this page...',
+      'font-size:12px;color:#888;',
+    );
+  }, []);
+
+  // Title bar easter egg: greet visitors who leave the tab and come back,
+  // swapping the favicon for a dozing meerkat while they're away.
+  useEffect(() => {
+    const originalTitle = document.title;
+    const faviconLink = document.querySelector('link[rel="icon"]');
+    const originalFavicon = faviconLink?.href;
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.title = 'Come back, the meerkat is on watch! \u{1F440}';
+        if (faviconLink) faviconLink.href = sleepingFaviconUrl;
+      } else {
+        document.title = originalTitle;
+        if (faviconLink && originalFavicon) faviconLink.href = originalFavicon;
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () =>
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [location, sleepingFaviconUrl]);
 
   useEffect(() => {
     // Variable to store the initial text of the button (e.g., "On this page")
@@ -81,7 +119,12 @@ export default function Root({ children }) {
     return () => window.removeEventListener('scroll', updateTocOnScroll);
   }, [location]);
 
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <KonamiEasterEgg />
+    </>
+  );
 }
 Root.propTypes = {
   children: PropTypes.node,

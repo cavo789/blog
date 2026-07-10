@@ -23,8 +23,8 @@ blog/
     index.md          ← MUST have draft: true in frontmatter
 ```
 
-**Unpublished behavior**: `.unpublished/` is excluded from production build only. Posts there ARE visible during `yarn start`.  
-**`draft: true` is required** in the frontmatter of every post in `.unpublished/` — both the folder exclusion AND the flag are needed.
+**Unpublished behavior (corrected 2026-07-10)**: `.unpublished/` sits at the repo root, outside the blog plugin's content path (`blog/`, the default), so it is **never scanned by the blog plugin at all — not in dev, not in prod**. The `exclude: isProd ? ["**/.unpublished/**"] : []` glob in `docusaurus.config.js` is a no-op safety net in this repo (verified: no `blog/.unpublished` symlink or second blog plugin instance exists). To actually preview a `.unpublished/` draft locally, temporarily copy its folder into `blog/YYYY/MM/DD/slug/` (any future placeholder date works, e.g. `2026-12-31`, matching existing drafts), let the dev server hot-reload, then delete the temp copy — never leave it there.  
+**`draft: true` is still required** in the frontmatter of every post in `.unpublished/` — it's the safety net for the day it *does* end up inside `blog/` (temporarily, for preview, or by accident).
 
 ## Frontmatter — All Recognized Fields
 

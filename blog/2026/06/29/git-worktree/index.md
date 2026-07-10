@@ -271,7 +271,7 @@ If you manually delete a worktree folder (instead of using `git worktree remove`
 git worktree prune
 </Terminal>
 
-## Summary: stash vs worktree
+## Conclusion
 
 | | `git stash` | `git worktree` |
 |---|---|---|

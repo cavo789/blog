@@ -1,0 +1,17 @@
+/* Excerpt from src/css/custom.css */
+
+/* --- PRINT EASTER EGG --- */
+/* A small nod to the meerkat mascot for anyone who prints an article. */
+
+@media print {
+  body::after {
+    content: "\1F9AB Printed from avonture.be \2014 mascot-approved reading material.";
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 9px;
+    color: #999;
+  }
+}

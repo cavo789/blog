@@ -1,0 +1,26 @@
+.runner {
+  position: fixed;
+  bottom: 24px;
+  left: -160px;
+  width: 140px;
+  height: auto;
+  z-index: 9999;
+  pointer-events: none;
+  animation: run-across 3s linear forwards;
+}
+
+@keyframes run-across {
+  from {
+    left: -160px;
+  }
+  to {
+    left: 100vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .runner {
+    animation: none;
+    left: 50vw;
+  }
+}
