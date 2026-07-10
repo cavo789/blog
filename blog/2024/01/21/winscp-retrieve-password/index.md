@@ -13,9 +13,13 @@ language: en
 ---
 ![WinSCP - Retrieve a stored password](/img/v2/winscp.webp)
 
+<TLDR>
+This article shows how to recover a forgotten WinSCP password by temporarily enabling "Log passwords and other sensitive information" in the Logging preferences, reconnecting to the site so it's written to the session log in `%TEMP%`, then reading the plain-text password from that log — with a reminder to disable logging and delete the log file afterward.
+</TLDR>
+
 More than once I've found myself in the situation where I've got a site saved in the [WinSCP](https://winscp.net/) configuration where I've saved the password and, um, gosh, what was it?
 
-Did you know WinSCP provide an option to show you, in plain text, a stored password?
+Did you know WinSCP provides an option to show you, in plain text, a stored password?
 
 <!-- truncate -->
 

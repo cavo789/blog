@@ -14,11 +14,15 @@ language: en
 <!-- cspell:ignore dbmdl -->
 ![Docker init now supports PHP](/img/v2/docker_init.webp)
 
+<TLDR>
+This article tries Docker Desktop 4.26's new `docker init` PHP+Apache template, which scaffolds a `Dockerfile`, `compose.yaml`, and `.dockerignore` through an interactive wizard. It walks through a bug in that first release (the `COPY` instruction was missing its source path) and explains why `.dockerignore` keeps most local files out of the built image.
+</TLDR>
+
 But what a happy and strange coincidence. In its new version (4.26) released yesterday *(on my birthday)*, Docker adds support for **PHP with Apache** to its `docker init` instruction. Let's see how this translates into a practical case.
 
 <!-- truncate -->
 
-> The official blog post: [https://www.docker.com/blog/docker-desktop-4-26/]
+> The official blog post: [https://www.docker.com/blog/docker-desktop-4-26/](https://www.docker.com/blog/docker-desktop-4-26/)
 
 <AlertBox variant="caution">
 We'll give it a try but spoiler, it's still in a very early stage.

@@ -13,6 +13,10 @@ language: en
 ---
 ![WinSCP - Visual Basic for Application use](/img/v2/winscp.webp)
 
+<TLDR>
+This article shows how to call WinSCP's .NET/COM library from VBA (e.g. in Excel) to automate secure file transfers: a `Session` object connects over SFTP with host, credentials, and SSH host key fingerprint, then `PutFiles` uploads files, with error handling via `On Error Resume Next` and a results loop confirming each transfer.
+</TLDR>
+
 [WinSCP](https://winscp.net/) is a free, open-source file manager for securely transferring files between your computer and remote servers using protocols like SFTP, FTP, SCP, and WebDAV.
 
 Did you know that you can call WinSCP from ... VBA code?

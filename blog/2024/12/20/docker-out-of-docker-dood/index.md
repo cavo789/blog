@@ -18,13 +18,17 @@ updates:
 
 ![Docker-out-of-Docker aka DooD](/img/v2/docker_tips.webp)
 
+<TLDR>
+This article shows the Docker-out-of-Docker (DooD) technique — running Docker commands from inside a container by mounting the host's `/var/run/docker.sock` — first as root (straightforward) and then as an unprivileged user, which additionally requires adding the container user to a `docker` group matching the host's `docker` group ID via `group_add` in `compose.yaml`.
+</TLDR>
+
 In very exceptional situations, you may need to be able to run Docker commands from a Docker container. Wait? What?
 
-Imagine this situation: you're running a PHP container, everything is fine and, you wish to run a code quality tool like, let's start easy, `phplint` (<Link to="/blog/php-jakzal-phpqa/#php-parallel-lint">see this article for deeper info</Link>). You don't want to install phplint because you know a very cool Docker image who already contains it (think to **[jakzal/phpqa](https://hub.docker.com/r/jakzal/phpqa)**)
+Imagine this situation: you're running a PHP container, everything is fine and, you wish to run a code quality tool like, let's start easy, `phplint` (<Link to="/blog/php-jakzal-phpqa/#php-parallel-lint">see this article for deeper info</Link>). You don't want to install phplint because you know a very cool Docker image that already contains it (think of **[jakzal/phpqa](https://hub.docker.com/r/jakzal/phpqa)**)
 
 So, you're inside a container and you wish to run another container.
 
-Another example: you're still inside a container and, you wish to access to the list of running containers, already installed Docker images, volumes, ... (think to [portainer](https://www.portainer.io/))
+Another example: you're still inside a container and you wish to access the list of running containers, already installed Docker images, volumes, ... (think of [portainer](https://www.portainer.io/))
 
 Let's see in this article how to create your own Docker image, running as root or not, and configure it to allow docker requests.
 
@@ -56,7 +60,7 @@ By running `docker version` in the container, you can verify that Docker is well
 
 ![Docker version](./images/version.webp)
 
-Now to check if you can access to the list of images installed on your host (which is in theory impossible), please run `docker image list` and ... it works.
+Now to check if you can access the list of images installed on your host (which is in theory impossible), please run `docker image list` and ... it works.
 
 ### Docker-out-of-Docker (DooD) is enabled; cool but why?
 
@@ -74,7 +78,7 @@ Once in the container's console, type `docker version` again and boum.
 
 It didn't work anymore.
 
-<AlertBox variant="highlyImportant" title="DooD should be able to access to the Docker daemon">
+<AlertBox variant="highlyImportant" title="DooD should be able to access the Docker daemon">
 As you can see, you should share your Docker socket (i.e. the file called `/var/run/docker.sock` on your host) with the container.
 </AlertBox>
 
@@ -122,7 +126,7 @@ And try `docker ps` again; it works. You can now have access to all Docker comma
 <AlertBox variant="caution" title="Still didn't work?">
 It should work. If not, please make sure you've the latest Docker version (the one I've used for this tutorial is Docker Desktop v4.42.1).
 
-Inside your container, please run `ls -alh /var/run/docker.sock` to look at the permissions of the Docker socket inside the container. You'll see the file is owned by the `root` user **BUT SHOULDN'T BE** owned by `root`. If you see `root` for both the user and the group, you've found why it didn't work. Your unprivileged used isn't member of the `root` group, but he's well member of the `docker` group (the one having group ID `1001`).
+Inside your container, please run `ls -alh /var/run/docker.sock` to look at the permissions of the Docker socket inside the container. You'll see the file is owned by the `root` user **BUT SHOULDN'T BE** owned by `root`. If you see `root` for both the user and the group, you've found why it didn't work. Your unprivileged user isn't a member of the `root` group, but is indeed a member of the `docker` group (the one having group ID `1001`).
 
 By running `ls -alh /var/run/docker.sock`, you should see `1001` (or `docker`) for the group.
 
@@ -139,7 +143,7 @@ As you've seen, I've not hardcoded the ID in the proposed yaml file but I've def
 
 </AlertBox>
 
-So, to make the script robust, we just need to initialise the `DOCKER_GROUPID`variable before building the image:
+So, to make the script robust, we just need to initialize the `DOCKER_GROUPID` variable before building the image:
 
 <Terminal typewriter>
 $ DOCKER_GROUPID="$(getent group docker | cut -d: -f3)" docker compose up --detach --build && docker compose exec dood /bin/sh
@@ -147,12 +151,12 @@ $ DOCKER_GROUPID="$(getent group docker | cut -d: -f3)" docker compose up --deta
 
 ## Conclusion
 
-Running Docker-out-of-Docker is a container running as root is quite easy, you just need to install `docker` while building the image and mounting your docker socket.
+Running Docker-out-of-Docker in a container running as root is quite easy — you just need to install `docker` while building the image and mount your Docker socket.
 
-It's not so easy if you're using an unprivileged user but, well easy, as soon as you've found the right way: using the `group_add` property and retrieve the ID of the local `docker` group.
+It's not so easy if you're using an unprivileged user, but it becomes easy once you've found the right way: using the `group_add` property and retrieving the ID of the local `docker` group.
 
 <AlertBox variant="note">
-Don't try `group_add` with `docker` (the group name) instead the ID; it won't work.
+Don't try `group_add` with `docker` (the group name) instead of the ID; it won't work.
 
 </AlertBox>
 

@@ -24,15 +24,15 @@ It might be entirely useless, and only the most dedicated tech-heads will spot i
 
 In this article, we'll create a plugin that will be fired by Docusaurus when rendering HTML pages i.e. once `yarn docusaurus build` is finished.
 
-Docusaurus will run our plugin (during the so-called `postBuild` event), and we'll scan every generated files and inject some special content (as HTML comment) just after the `<!doctype html>` opening tag.
+Docusaurus will run our plugin (during the so-called `postBuild` event), and we'll scan every generated file and inject some special content (as HTML comment) just after the `<!doctype html>` opening tag.
 
-Right now, just press <kbd>CTRL</kbd>+<kbd>U</kbd> (it's the same as `View page source`) to see what'll do in this article.
+Right now, just press <kbd>CTRL</kbd>+<kbd>U</kbd> (it's the same as `View page source`) to see what we'll do in this article.
 
 <!-- truncate -->
 
 ## Create your personalized logo
 
-First we've to get some ASCII art. If you don't have one yet, you can use this online tool: [Image to ASCII Art Converter](https://folge.me/tools/image-to-ascii). Just upload a small character on it and convert it.
+First, we have to get some ASCII art. If you don't have one yet, you can use this online tool: [Image to ASCII Art Converter](https://folge.me/tools/image-to-ascii). Just upload a small character on it and convert it.
 
 In your Docusaurus site, please create the `src/data/banner.txt` file and paste your ASCII art in it. Here is mine:
 
@@ -48,7 +48,7 @@ Almost done. Now, finalize the installation by editing your `docusaurus.config.j
 
 <Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.js" />
 
-The very last thing to do is to restart your docusaurus website to load the updated configuration file.
+The very last thing to do is to restart your Docusaurus website to load the updated configuration file.
 
 ## Time to test
 
@@ -60,7 +60,7 @@ $ yarn docusaurus build
 $ yarn docusaurus serve
 </Terminal>
 
-Once your website is generated, just open any pages and press <kbd>CTRL</kbd>+<kbd>U</kbd> and tadaaa, your ASCII art is there.
+Once your website is generated, just open any page and press <kbd>CTRL</kbd>+<kbd>U</kbd> and tadaaa, your ASCII art is there.
 
 ![HTML meerkat](./images/html_meerkat.webp)
 
@@ -68,5 +68,5 @@ Once your website is generated, just open any pages and press <kbd>CTRL</kbd>+<k
 </AlertBox>
 
 <AlertBox variant="caution" title="Not during preview mode">
-This plugin is only fired during the `postBuild` event i.e. only after your blog has been rendered as HTML page. So if you're running Docusaurus in preview mode; you'll not see the ASCII art.
+This plugin is only fired during the `postBuild` event i.e. only after your blog has been rendered as an HTML page. So if you're running Docusaurus in preview mode; you'll not see the ASCII art.
 </AlertBox>

@@ -12,6 +12,10 @@ language: en
 <!-- cspell:ignore erminate,esident,esolang,nasm -->
 ![Play with Docker and Assembly programming language](/img/v2/experiments.webp)
 
+<TLDR>
+This article revives 1990s x86 Assembly nostalgia by assembling and running a "Hello, World!" `.asm` file with zero local install, using the `esolang/x86asm-nasm` Docker image from both a DOS/PowerShell console (`%CD%`) and Linux (`${PWD}`).
+</TLDR>
+
 When I was younger than today, during my studies, I was playing with the x86 Assembly language on my `386DX40` computer; this was in the years 1993-1995. The beginning of Windows 3.1 that I did not like. *If someone had asked me if graphical interfaces would be successful, I would have said no, of course not.*
 
 I remember that I wrote a resident program (TSR which stands for **T**erminate and **S**tay **R**esident) which, once loaded into memory, monitored the keyboard and recorded the keys that had been pressed in a file on the hard disk. Yes, it was a password stealer. Just for fun and, above all, for the challenge of it.
@@ -41,3 +45,5 @@ Hello, World! This message comes from Docker.
 Just replace `%CD%` by `${PWD}` and the instruction will be recognized by Linux: `docker run --rm -v ${PWD}:/code -w /code esolang/x86asm-nasm x86asm-nasm hello.asm`
 
 </AlertBox>
+
+Same idea, different language: I've also played with <Link to="/blog/docker-pascal">Pascal</Link>, <Link to="/blog/docker-python">Python</Link>, and <Link to="/blog/docker-java">Java</Link> using this same "zero local install" Docker approach.

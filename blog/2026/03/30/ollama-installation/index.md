@@ -31,7 +31,7 @@ You can also think about automation: you'll be able to run automation scripts wi
 
 ## Installing and running Ollama
 
-You know, as a Docker lover, I'll not install Ollama by hand.
+You know, as a Docker lover, I won't install Ollama by hand.
 
 Let's create the `compose.yaml` file on your disk. I use a few Docker containers every day, and I save their configuration files in a `~/tools` folder; let’s do the same here.
 
@@ -43,9 +43,9 @@ Still in the `~/tools/ollama` folder, simply run `docker compose up --detach` to
 
 ## Download an LLM model
 
-First, you need to think about your use case. Most probably you'll expect speed and accuracy.
+First, you need to think about your use case. Most likely, you'll want speed and accuracy.
 
-For speed, you should use a "small" LLM like `llama3.1:8b`. Let's take an example: you plan to use a VSCode extension and, you need speed for autocompletion.
+For speed, you should use a "small" LLM like `llama3.1:8b`. Let's take an example: you plan to use a VSCode extension, and you need speed for autocompletion.
 
 For accuracy, you might be okay with waiting a bit longer to get better results.
 
@@ -58,7 +58,7 @@ Mem:            15Gi       5.4Gi       2.4Gi       9.7Mi       7.8Gi       9.9Gi
 Swap:          4.0Gi        11Mi       4.0Gi
 ```
 
-Look at the last column **available**.  I've actually ~10GB free so I can easily choose for a model ~4.7GB like `llama3.1:8b`.
+Look at the last column **available**. I actually have ~10GB free, so I can easily choose a model of ~4.7GB, like `llama3.1:8b`.
 
 Start a new terminal and run this command:
 
@@ -70,7 +70,7 @@ $ docker exec -it ollama ollama pull llama3.1:8b
 
 Since we've installed ollama as a Docker container, we've to use the `docker exec -it ollama` syntax then the ollama CLI.
 
-This is why, f.i. we're running `docker exec -it ollama ollama pull llama3.1:8b`.
+This is why, for instance, we're running `docker exec -it ollama ollama pull llama3.1:8b`.
 
 </AlertBox>
 
@@ -86,13 +86,13 @@ Like any other volume, nothing will pollute our disk. If one day we wish to remo
 
 ### More power needed?
 
-There are a lot of models available, look at the suffix at the end of `llama3.1:8b` f.i. `8b` means 8 billion of parameters. The more you can have the more knowledge you'll get but, it has a price: the size.
+There are a lot of models available, look at the suffix at the end of `llama3.1:8b`; for instance, `8b` means 8 billion parameters. The more you can have, the more knowledge you'll get, but it has a price: the size.
 
-If you've more than 32GB of RAM you can certainly also use `gemma2:27b` (27 billion of parameters, around ~17G), `mixtral:8x7b` (around ~26G) or `llama3:70b` (70 billion of parameters, ~45GB).
+If you've more than 32GB of RAM, you can certainly also use `gemma2:27b` (27 billion parameters, around ~17G), `mixtral:8x7b` (around ~26G) or `llama3:70b` (70 billion parameters, ~45GB).
 
-The higher, the better result but, too, the higher, the slower. You've to determine for your own use case (your hardware, your GPU, your need, ...) one or two LLM you'll use.
+The higher the parameter count, the better the results — but also the slower the response. You have to determine, for your own use case (your hardware, your GPU, your needs, ...), one or two LLMs you'll use.
 
-For instance, a very fast one (so small one) for interactions: you don't want to wait 30 seconds before getting an answer and a more powerful one for heavy tasks like code refactoring, generating some codebase, ...
+For instance, a very fast (so, small) model for quick interactions — you don't want to wait 30 seconds for an answer — and a more powerful one for heavy tasks like code refactoring or generating a codebase.
 
 #### What Does 8x7b Mean?
 
@@ -112,7 +112,7 @@ If you want to retrieve models you've already installed:
 $ docker exec -it ollama ollama list
 </Terminal>
 
-The entire list of existing models in online: [https://ollama.com/library](https://ollama.com/library)
+The entire list of existing models is online: [https://ollama.com/library](https://ollama.com/library)
 
 ## Try it in your terminal
 
@@ -136,13 +136,13 @@ Type `/bye` to exit.
 
 You've experienced some delay right before getting the prompt? Run the exact same command again; you'll see, it's now immediate since the model is already loaded in RAM.
 
-And, if you don't use the model anymore the next five minutes, ollama will unload it so you'll retrieve your RAM.
+And, if you don't use the model for the next five minutes, Ollama will unload it, freeing up your RAM.
 
 </AlertBox>
 
 ### Should I speak English with the model?
 
-In fact, no. Just like using a webpage; you can speak your own language. In the example below you can also see another way to ask a question: instead of asking jumping in a terminal, you can also type your question directly in the command line.
+In fact, no — just like a webpage, you can use your own language. In the example below, you can also see another way to ask a question: instead of jumping into a terminal, you can type your question directly on the command line.
 
 ![Asking in French](./images/test_asking_in_french.webp)
 
@@ -170,7 +170,7 @@ If you want to add AI in VSCode, you can install [Continue - open-source AI agen
 
 ![Installing Continue extension in VSCode](./images/install_continue_extension.webp)
 
-Continue requires a `config.json` file **in your Windows home folder**; not WSL side.
+Continue requires a `config.json` file **in your Windows home folder** — not on the WSL side.
 
 Start a Powershell terminal, run `cd ~/.continue ; del config.yaml ; notepad config.json` and paste the content of this file:
 
@@ -180,7 +180,7 @@ Start a Powershell terminal, run `cd ~/.continue ; del config.yaml ; notepad con
 
 Restart VSCode again or, in the Continue panel, find the `Local config` option and select `Refresh`.
 
-When you'll see your model name in the list of loaded models, Continue is ready to manage your first question.
+When you see your model name in the list of loaded models, Continue is ready to manage your first question.
 
 ![Selecting a model in Continue extension](./images/continue_select_model.webp)
 
@@ -192,7 +192,7 @@ The speed will depend on the model you've selected and your hardware for sure.
 
 When you're typing some text in VSCode, you wish immediate autocompletion and not to wait one second or more.
 
-For this, you'll need to use a faster model; let's use `qwen2.5-coder:1.5b`  (1.5 billion of parameters, around ~1G).
+For this, you'll need to use a faster model; let's use `qwen2.5-coder:1.5b` (1.5 billion parameters, around ~1G).
 
 <Terminal typewriter wrap={true}>
 $ docker exec -it ollama ollama pull qwen2.5-coder:1.5b
@@ -208,13 +208,13 @@ Now that I've added the `qwen2.5-coder:1.5b` model in my config file, let's crea
 
 ... and nothing more.
 
-After just one second, VSCode will suggest me to complete the function with the right code:
+After just one second, VSCode will suggest completing the function with the right code:
 
 ![Continue autocompletion in action](./images/continue_autocompletion.webp)
 
-I've accepted the suggestion and, I've typed `function main` and again, after one second, the rest of the code is autocompleted.
+I accepted the suggestion and typed `function main`; again, after one second, the rest of the code was autocompleted.
 
-Then I've typed `function help`, accept the proposal and the last thing was to accept the last lines of the script.
+Then I typed `function help`, accepted the proposal, and finally accepted the last lines of the script.
 
 So, in less than 5 seconds, I've got a complete script with the right code and the right comments. All this without writing a single line of code, just by accepting suggestions from the LLM.
 
@@ -226,7 +226,7 @@ And it works out-of-the-box!
 
 ### Using more powerful LLM depending on your expectations
 
-If you've a powerful CPU and/or GPU with 32GB or more, you can also add a better model `gemma2:27b` (27 billion of parameters, around ~17G):
+If you've a powerful CPU and/or GPU with 32GB or more, you can also add a better model `gemma2:27b` (27 billion parameters, around ~17G):
 
 <Snippet filename=".continue/config.json" source="./files/continue/config_with_expert.json" defaultOpen={false} />
 
@@ -264,17 +264,17 @@ Simply run `docker exec -it ollama ollama rm <model_name>`.
 
 ### .wslconfig file
 
-If you're a WSL2 user, it's a good idea to create a `.wslconfig` file in your Windows partition in order to specify a few default settings for WSL like how many (max) RAM he can eat.
+If you're a WSL2 user, it's a good idea to create a `.wslconfig` file in your Windows partition in order to specify a few default settings for WSL, such as the maximum amount of RAM it can use.
 
 On my host, I use these settings:
 
 <Snippet filename=".wslconfig" source="./files/.wslconfig" defaultOpen={true} />
 
-To create this file, simply start a new Powershell terminal, run `cd ~` to go in your home directory (at Windows level) and run `notepad .wslconfig` to open that file (and create it if needed).
+To create this file, simply start a new Powershell terminal, run `cd ~` to go to your home directory (at Windows level) and run `notepad .wslconfig` to open that file (and create it if needed).
 
 <AlertBox variant="tip">
 
-Think to run `wsl --shutdown` in a Powershell console if you've created/updated the `.wslconfig` file.
+Remember to run `wsl --shutdown` in a Powershell console if you've created/updated the `.wslconfig` file.
 
 </AlertBox>
 

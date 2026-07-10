@@ -13,9 +13,13 @@ language: en
 ---
 ![Update all out-of-date Windows programs in batch](/img/v2/windows_tips.webp)
 
+<TLDR>
+This article covers `winget`, Windows' built-in package manager: batch-upgrading every installed program with `winget upgrade --all --silent` (optionally with `--include-unknown` to catch more), listing installed software and available updates with `winget list --upgrade-available`, and upgrading a single application by name.
+</TLDR>
+
 > [Use the winget tool to install and manage applications](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
 
-If you're working under Linux or WSL, you know very well the `sudo apt-get update && sudo apt-get upgrade` instruction to ask the operating system to upgrade programs present on your disk with newer version.
+If you're working under Linux or WSL, you know very well the `sudo apt-get update && sudo apt-get upgrade` instruction to ask the operating system to upgrade programs present on your disk with a newer version.
 
 Under Windows, since a few years (starting with Windows 10), there is such command too: it's `winget`.
 
@@ -25,11 +29,11 @@ By running `winget upgrade --all --silent` in **a DOS (or Powershell) console** 
 
 ![Starting winget](./images/start-winget.webp)
 
-Then, because we've added the `--all --silent` flags, we just allow winget to process to the updates without asking confirmation. Let the computer do his work during a few minutes and... tadaaa... you've fresh and updated versions of your software *(the ones supported by winget)*.
+Then, because we've added the `--all --silent` flags, we just allow winget to process to the updates without asking confirmation. Let the computer do its work for a few minutes and... tadaaa... you've fresh and updated versions of your software *(the ones supported by winget)*.
 
 ![Running winget](./images/running-winget.webp)
 
-Winget has detected that 17 software should be upgraded and, one by one, will download and install newer versions.
+Winget has detected that 17 programs should be upgraded and, one by one, will download and install newer versions.
 
 Easy no?
 

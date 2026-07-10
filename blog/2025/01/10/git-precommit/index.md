@@ -21,7 +21,7 @@ Avoid failing CI/CD pipelines by catching errors before you commit. This article
 
 You like clean code, don't you? And you hate getting an email from your versioning tool (e.g. Github or GitLab) telling you that your last commit didn't go through, that the formatting of your code is bad; this is because you've left one space too many at the end of a line or you've used single quote instead of double (or the opposite), for example.
 
-You've pushed your changes, already start to work on another activity, perhaps another project and boum, two hours after your last commit (*because the CI server was working on a lot of pipelines before yours*), boum, you get a *Your last commit has failed, #gnagnagna*. I hate it as much as I love clean code.
+You've pushed your changes, already started to work on another activity, perhaps another project and boom, two hours after your last commit (*because the CI server was working on a lot of pipelines before yours*), boom, you get a *Your last commit has failed, #gnagnagna*. I hate it as much as I love clean code.
 
 So, what should we do to avoid this?
 
@@ -156,7 +156,7 @@ For a Python 3.13 project, here is my `.pre-commit-config.yaml` file:
 
 <Snippet filename=".pre-commit-config.yaml" source="./files/.pre-commit-config.yaml.part4" />
 
-#### A few more  hooks
+#### A few more hooks
 
 * [Code spell](https://github.com/codespell-project/codespell/blob/main/.pre-commit-config.yaml#L70), *Check code for common misspellings*
 * [Git leaks](https://github.com/gitleaks/gitleaks/blob/master/.pre-commit-hooks.yaml), *Find secrets with Gitleaks*

@@ -14,6 +14,10 @@ language: en
 ---
 ![WinSCP - Synchronize host and remote](/img/v2/winscp.webp)
 
+<TLDR>
+This article shares a WinSCP script that synchronizes a local folder with a remote FTP/SFTP server (or vice versa) via the `synchronize` command, run with `winscp.com /script=...`. It explains the `local`/`remote`/`both` direction options, useful for automated backups like syncing a folder to a Synology NAS.
+</TLDR>
+
 By the use of a script, it's possible to ask [WinSCP](https://winscp.net/) to synchronize your host and remote machine i.e. if a file is newer on the host, copy it to your remote server and the opposite.
 
 If a file has been added to your host, copy it to your remote server and vice versa.
@@ -33,8 +37,8 @@ I'm using such script for making a full backup of some of my folders to my Synol
    1. in case of need, replace `ftp` by `sftp`
    2. `USERNAME`: the FTP username
    3. `PASSWORD`: the password associated to this account
-   4. `HOST_OR_IP`: the FTP host name or his IP
-   5. `PORT`: the port to use (21 for a FTP connection f.i.)
+   4. `HOST_OR_IP`: the FTP host name or its IP
+   5. `PORT`: the port to use (21 for an FTP connection f.i.)
    6. The local folder where your files are stored (line `lcd "C:\Christophe"`)
    7. The remote folder from where the files should be copied (line `cd /Christophe`), can be the ftp root or any subfolder
 3. Start a DOS session

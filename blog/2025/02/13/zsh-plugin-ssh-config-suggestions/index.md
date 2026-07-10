@@ -26,7 +26,7 @@ Stop memorizing server IPs and SSH commands. This article shows you how to strea
 
 A few weeks ago, I've posted a <Link to="/blog/linux-ssh-scp#using-the-config-file">SSH - Launch a terminal on your session without having to authenticate yourself</Link> article about the `ssh` command in Linux.
 
-I'm pretty sure, like me, you are tired to use command line like `ssh christophe@1.2.3.4` to start a ssh connection because ... you know, you don't need to connect on a server; no, you need to connect to the server where the application is running; you know the name of the *MyAmazingApp* application but certainly not the name of the server or its IP.
+I'm pretty sure, like me, you are tired of typing command lines like `ssh christophe@1.2.3.4` to start an SSH connection because ... you know, you don't need to connect on a server; no, you need to connect to the server where the application is running; you know the name of the *MyAmazingApp* application but certainly not the name of the server or its IP.
 
 That's the case for me anyway.
 
@@ -36,13 +36,13 @@ It would be pretty cool to run `ssh MyAmazingApp` no?
 
 <!-- truncate -->
 
-It should be really nice to be able to run `ssh AmazingApp` and hop, I'm connected on the server.
+It should be really nice to be able to run `ssh MyAmazingApp` and hop, I'm connected on the server.
 
 This is where the `~/.ssh/config` is so helpful (please refer to this <Link to="/blog/linux-ssh-scp#using-the-config-file">article</Link>) but we can go one step further: it would be so great to type `ssh` and by some magic, Linux will show you the list of aliases defined in the `~/.ssh/config` file.
 
 ## Installation of the zsh-ssh-config-suggestions plugin
 
-Just clone the official repository by running this command: `git clone https://github.com/yngc0der/zsh-ssh-config-suggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-ssh-config-suggestions`. You'll get a local copy of the plugin in your `Oh-my-zsh` plugin folder.
+This assumes Oh-My-Zsh is already installed (see <Link to="/blog/zsh-install">How to install Oh-My-ZSH</Link> if not). Just clone the official repository by running this command: `git clone https://github.com/yngc0der/zsh-ssh-config-suggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-ssh-config-suggestions`. You'll get a local copy of the plugin in your `Oh-my-zsh` plugin folder.
 
 Then edit the `~/.zshrc` file, search for `plugins=(` and add `zsh-ssh-config-suggestions` to the list. You'll have f.i. something like:
 
@@ -66,4 +66,6 @@ I just need to type (it's important): <kbd>ssh </kbd> followed by <kbd>TAB</kbd>
 To make it working, please note: you should add a space character after having typed `ssh` and before pressing <kbd>tab</kbd>.
 </AlertBox>
 
-As you can see, the system will display the list of hosts defined in my configuration file! I can then edit the file, add a new application and hop, next time, I'll get his name in the list. I don't need anymore to connect to my vault. Nice no?
+As you can see, the system will display the list of hosts defined in my configuration file! I can then edit the file, add a new application and hop, next time, I'll get its name in the list. I don't need to connect to my vault anymore. Nice no?
+
+This is just one plugin among many; if your `~/.zshrc` is starting to grow with this kind of customization, have a look at <Link to="/blog/modular-zsh-workflow">Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro</Link> to keep it maintainable.

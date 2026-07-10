@@ -13,6 +13,10 @@ language: en
 ---
 ![Docker - Diagrams as code](/img/v2/diagrams.webp)
 
+<TLDR>
+This article shows how to render diagrams-as-code with the Python `diagrams` library via a ready-to-use Docker image (`gtramontina/diagrams`), piping a `.py` file into `docker run` to produce architecture diagrams (e.g. AWS/Azure/GCP icons) with zero local install. It closes with a broad roundup of other diagram-as-code tools: Mermaid, PlantUML, Graphviz, Kroki, DBML-renderer, Structurizr, and more.
+</TLDR>
+
 But what a joy it is to be able to draw diagrams by just writing text. Some tools are better known than others, e.g. [Mermaid](https://mermaid-js.github.io/mermaid/).
 
 Did you know [https://diagrams.mingrammer.com/](https://diagrams.mingrammer.com/)? Let's explore it using, of course, a Docker ready-to-use image.
@@ -74,7 +78,7 @@ A tremendous list of icons/nodes is available on multiple pages at [https://diag
 * [Graphviz](https://www.graphviz.org/), Graphviz is open source graph visualization software
 * [JSON Crack](https://jsoncrack.com/), seamlessly visualize your JSON data instantly into graphs
 * [Kroki](https://kroki.io/), creates diagrams from textual descriptions
-* [Mermaid](https://mermaid-js.github.io/mermaid/), his [live editor](https://mermaid.live/), the [preview addon for vscode](https://marketplace.visualstudio.com/items?itemName=vstirbu.vscode-mermaid-preview) and the [convert tool as a CLI tool](https://github.com/mermaid-js/mermaid-cli)
+* [Mermaid](https://mermaid-js.github.io/mermaid/), its [live editor](https://mermaid.live/), the [preview addon for vscode](https://marketplace.visualstudio.com/items?itemName=vstirbu.vscode-mermaid-preview) and the [convert tool as a CLI tool](https://github.com/mermaid-js/mermaid-cli)
 * [Nomnoml](https://www.nomnoml.com/), tool for drawing UML diagrams based on a simple syntax
 * [Pikchr](https://pikchr.org/), Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in technical documentation
 * [Plantuml](https://github.com/plantuml/plantuml), generate diagrams from textual description
@@ -82,4 +86,4 @@ A tremendous list of icons/nodes is available on multiple pages at [https://diag
 * [Structurizr](https://github.com/structurizr/dsl), a way to create Structurizr software architecture models based upon the C4 model using a textual domain specific language
 * [svgbob](https://github.com/ivanceras/svgbob), convert your ascii diagram scribbles into happy little SVG
 * [Vega](https://vega.github.io/vega/), A Visualization Grammar
-* [yEd Graph Editor](https://www.yworks.com/products/yed), Graphical interface, you will need to drag & drop objects, resize. It does not support text files like the other tools already mentioned here.
+* [yEd Graph Editor](https://www.yworks.com/products/yed), a graphical interface: you will need to drag & drop objects and resize them. It does not support text files like the other tools already mentioned here.

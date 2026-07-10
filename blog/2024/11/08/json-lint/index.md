@@ -16,9 +16,13 @@ language: en
 
 <!-- cspell:ignore favourites, analyse -->
 
-Exactly like my <Link to="/blog/sql-formatter">SQL - Formatting tool</Link>, it's always useful to have a tool in your favourites that lets you copy/paste a JSON character string and display it as a tree-view with or without code folding feature.
+<TLDR>
+This article introduces the author's free JSON Linter tool (source on GitHub, hosted at jsonlint.avonture.be) for pasting a JSON string and viewing it as a foldable, readable tree — useful for both syntax-checking JSON you're writing and inspecting API responses. It also mentions the Chrome "JSON Formatter" extension for auto-formatting JSON pages in the browser.
+</TLDR>
 
-I use it quite regularly when I'm writing a JSON string and I want to check that there are no syntax errors (lint) or, on the other hand, and for example, when I call an API that returns JSON and I want to analyse the code received.  In these cases, the collapse functionality comes in very handy.
+Exactly like my <Link to="/blog/sql-formatter">SQL - Formatting tool</Link>, it's always useful to have a tool in your favorites that lets you copy/paste a JSON character string and display it as a tree-view with or without a code folding feature.
+
+I use it quite regularly when I'm writing a JSON string and I want to check that there are no syntax errors (lint) or, on the other hand, and for example, when I call an API that returns JSON and I want to analyze the code received. In these cases, the collapse functionality comes in very handy.
 
 <!-- truncate -->
 
@@ -39,3 +43,5 @@ For instance, instead of getting this page:
 Chrome will show this:
 
 ![Chrome addon](./images/chrome_addon.webp)
+
+Other JSON tools worth knowing about: <Link to="/blog/json-crack">rendering a JSON file as a mind map</Link> and <Link to="/blog/json-faker">generating fake JSON data</Link>.

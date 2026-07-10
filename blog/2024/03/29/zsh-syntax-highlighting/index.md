@@ -18,7 +18,11 @@ updates:
 ---
 ![Syntax highlighting in the console using ZSH](/img/v2/zsh.webp)
 
-[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/) is another gem for ZSH.
+<TLDR>
+This article introduces `zsh-syntax-highlighting`, a Zsh plugin that colors commands in your terminal as you type: green for valid, executable commands and red for typos or unknown ones. It walks through cloning the plugin into your Oh My Zsh custom plugins folder and adding it to the `plugins=(...)` list in `~/.zshrc`, with no further configuration needed to start using it.
+</TLDR>
+
+[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/) is another gem for ZSH — assuming you've already installed Oh-My-Zsh (see <Link to="/blog/zsh-install">How to install Oh-My-ZSH</Link> if not).
 
 As you type, you'll be able to tell from the colors that, for example, something isn't quite right.
 
@@ -46,10 +50,10 @@ Close your console, open a new one (or run `source ~/.zshrc` to load your change
 
 In fact, nothing has to be done.
 
-From now, when you'll type a command like f.i. `cat` or `head`, the command will appears in green meaning this is a valid one, correctly typed and executable.
+From now, when you type a command like f.i. `cat` or `head`, the command will appear in green meaning this is a valid one, correctly typed and executable.
 
 ![Highlight in green](./images/head.webp)
 
-As the opposite, it'll appears in red when the command contains a typo i.e. isn't an executable one:
+Conversely, it will appear in red when the command contains a typo i.e. isn't an executable one:
 
 ![Highlight in red](./images/docker_compose.webp)

@@ -74,7 +74,7 @@ Please surf on [https://container-registry.oracle.com/ords/ocr/ba/database/enter
 
 ### Generate a token
 
-Once your user has been validated (after reception of an email); go back to the [https://container-registry.oracle.com/ords/ocr/ba/database/enterprise](https://container-registry.oracle.com/ords/ocr/ba/database/enterprise) website; do a login and click on your profile then choice `Auth Token`.
+Once your user has been validated (after reception of an email); go back to the [https://container-registry.oracle.com/ords/ocr/ba/database/enterprise](https://container-registry.oracle.com/ords/ocr/ba/database/enterprise) website; log in and click on your profile then choose `Auth Token`.
 
 <BrowserWindow url="https://container-registry.oracle.com/ords/ocr/ba/database/enterprise">
   <img
@@ -162,7 +162,7 @@ In comparison with other database engines, a `PDB` is a database while the `CDB`
 
 <AlertBox variant="highlyImportant" title="For this article, we don't work at the CDB level at all">
 
-In this article, we're only interested to create tables in a database (PDB) **we always need to make sure to connect to a PDB like when creating tables.** We want that our tables are in a single database; not "shared" at CBD root level.
+In this article, we're only interested in creating tables in a database (PDB) — **we always need to make sure to connect to a PDB when creating tables.** We want our tables to be in a single database; not "shared" at CDB root level.
 
 So, every time we'll need to work on tables; make sure to connect to the `PDB`.
 </AlertBox>
@@ -197,7 +197,7 @@ For easiness, you can retrieve these files by clicking on these two links: [hr_c
 
 </AlertBox>
 
-Please download and copy these two files in the  `scripts/startup/sql/` folder you've previously created.
+Please download and copy these two files in the `scripts/startup/sql/` folder you've previously created.
 
 The second thing to do is to create the file `scripts/startup/populate_db.sh` with the content below so we'll automate the creation of our tables and put some records in our database. As said in a previous chapter, it's important to make sure to connect to the `PDB` so tables are created in a database; not in the container.
 
@@ -254,8 +254,8 @@ The `docker run` was terribly complex; here is a breakdown:
 * `-e ORACLE_SID=ORCLCDB`: The Oracle Database SID (SID stands for *System identifier*) is a very important setting. We'll keep the default value which is `ORCLCDB` (remember; `CDB` stands for `Container database`)
 * `-e ORACLE_PDB=ORCLPDB1`: The Oracle Database PDB name. Here too, we'll keep the default value which is `ORCLPDB1`. (remember; `PDB` stands for `pluggable database`).
 * `-e ORACLE_PWD=admin`: The Oracle database SYS, SYSTEM and PDBADMIN password. There is no default value since the password is auto generated and should be retrieved from the logs (`docker log`). This parameter modifies the password for the SYS, SYSTEM and PDBADMIN users.
-* `-v OracleDBData:/opt/oracle/oradata`: We'll persist the database on our disk but we don't care *where*, we'll let Docker to manage it. We've previously created a Docker volume named `OracleDBData`.
-* `-v ./scripts/startup/:/docker-entrypoint-initdb.d/startup`: This will allow to create files locally in the `./scripts/startup` folder (like our SQL files) and run them inside the container once the main Oracle database is ready. And, indeed, we've created previously the script `populate_db.sh`, `sql/hr_create.sql` and `sql/hr_populate.sql` files in our `scripts/startup` folder.
+* `-v OracleDBData:/opt/oracle/oradata`: We'll persist the database on our disk but we don't care *where*, we'll let Docker manage it. We've previously created a Docker volume named `OracleDBData`.
+* `-v ./scripts/startup/:/docker-entrypoint-initdb.d/startup`: This will allow us to create files locally in the `./scripts/startup` folder (like our SQL files) and run them inside the container once the main Oracle database is ready. And, indeed, we've previously created the script `populate_db.sh`, `sql/hr_create.sql` and `sql/hr_populate.sql` files in our `scripts/startup` folder.
 
 ## Important constants to remember
 
@@ -327,9 +327,9 @@ If we run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` and t
 
 ![The system schema](./images/system_schema.webp)
 
-This is because the `sys` user use the `sys` schema by default (we can see this by running `SELECT SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') FROM dual;`).
+This is because the `sys` user uses the `sys` schema by default (we can see this by running `SELECT SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') FROM dual;`).
 
-This is why, because our tables are in the `system` schema; we can access to them by running `SELECT * FROM SYSTEM.COUNTRIES;`.
+This is why, because our tables are in the `system` schema; we can access them by running `SELECT * FROM SYSTEM.COUNTRIES;`.
 
 But, we can also change our user, no more using `sys` but `system` by running `CONNECT system/admin@orclpdb1`.
 
@@ -342,16 +342,16 @@ This understood, here is how we can see our data:
 * Run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba`,
 * Then, in SQL*Plus, run `CONNECT system/admin@orclpdb1`,
 * For esthetic purposes, we'll run `SET WRAP OFF` and `SET PAGESIZE 1000` and
-* we can access to our tables like this: `SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL FROM EMPLOYEES;`
+* we can access our tables like this: `SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL FROM EMPLOYEES;`
 
 ![Fake data are well loaded](./images/fake_data.webp)
 
 <AlertBox variant="info">
-`SET WRAP OFF` will allow to use the screen full width and not a ridiculous width of 80 characters and `SET PAGESIZE 1000` is to not have a paginated list every 10 records.
+`SET WRAP OFF` will allow us to use the screen's full width instead of a ridiculous width of 80 characters and `SET PAGESIZE 1000` is to avoid a paginated list every 10 records.
 
 </AlertBox>
 
-### Accessing to the Oracle Enterprise Manager Database Express
+### Accessing the Oracle Enterprise Manager Database Express
 
 Earlier, when running our `docker run` command, we've mapped the port `5500` from the container on our host. That port is the one used by Oracle Enterprise Manager Database Express (aka `OEM Express`).
 
@@ -384,7 +384,7 @@ Once installed, run it and create a new connection to:
 
 ![Creating a connection in Oracle SQL Developer as sys](./images/oracle_sql_dev_as_sys.webp)
 
-<AlertBox variant="note" title="Remember; use should connect to our PDB; not to the CDB">
+<AlertBox variant="note" title="Remember; you should connect to our PDB; not to the CDB">
 Tables are located in the *pluggable database* (`PDB`); not in the *container database* (`CDB`)
 
 </AlertBox>
@@ -424,6 +424,6 @@ Once connected, for instance, we can get the list of countries like this:
 <AlertBox variant="note" title="Intern versus extern">
 For this article, it was not really needed to use that image. Until now, we've more than once used SQL*Plus like when we've fired `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` to connect to the database.
 
-The difference is: `docker exec -it oracle-db [...]` jump in our database container and run sqlplus *internally* (from within the container where the database is stored) while `docker run [...] oracle oracletools/sqlplus:v19.18_lin [...]` run sqlplus *outside* as a separate container.
+The difference is: `docker exec -it oracle-db [...]` jumps into our database container and runs sqlplus *internally* (from within the container where the database is stored) while `docker run [...] oracle oracletools/sqlplus:v19.18_lin [...]` runs sqlplus *outside* as a separate container.
 
 </AlertBox>

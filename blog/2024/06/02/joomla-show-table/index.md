@@ -15,6 +15,10 @@ language: en
 <!-- cspell:ignore showtable,sortering,qrjlq -->
 ![Joomla - Run a SQL statement outside Joomla and display a nice HTML table](/img/v2/joomla.webp)
 
+<TLDR>
+This article shares a `showtable.php` script that runs a custom SQL query against the Joomla database and renders the result as a password-protected HTML table, which Excel can then link to via "Get Data From Web" (with `&format=raw`) for one-click refreshable exports — useful for mail-merge or reporting workflows built on live Joomla data.
+</TLDR>
+
 A long time ago, years from now, I needed to expose data from my Joomla site in a simple web page *outside* Joomla, as an HTML table. This was so that I could link a Microsoft Excel spreadsheet to this table and therefore, in Excel, simply do a *Refresh* to obtain the most recent data from my Joomla site.
 
 The aim was to find the list of people who had bought software or services from me. Among other things, I needed their first name, family name, billing address, etc. so that I could create an invoice in Microsoft Word using the mail merge functionality (data source=Excel).
@@ -65,13 +69,13 @@ If you want to export that list to Excel, see the `Excel` button top left and cl
 Start Excel and click on the `Data` menu then in `Get & Transform Data`, click on the `From Web` button and paste the URL to your `showtable.php` script like this in my case: `http://localhost:8080/showtable.php?password=Joomla&format=raw`.
 
 <AlertBox variant="caution" title="The format should be raw">
-Make sure to add `&format=raw` for the URL. This is important so `showtable.php` knows he shouldn't add extra features like filtering or sortering options. Using RAW output, the script will only create a simple `<table></table>` HTML object and this will make life easier for Excel.
+Make sure to add `&format=raw` for the URL. This is important so `showtable.php` knows it shouldn't add extra features like filtering or sorting options. Using RAW output, the script will only create a simple `<table></table>` HTML object and this will make life easier for Excel.
 
 </AlertBox>
 
 ![Accessing the table from within Excel](./images/excel_webdata.webp)
 
-And now, just right-click on the table in Excel and click then on `Refresh` to get an update of your Joomla content's at any time.
+And now, just right-click on the table in Excel and click then on `Refresh` to get an update of your Joomla content at any time.
 
 ![Refreshing from Excel](./images/excel_refresh.webp)
 
@@ -92,7 +96,7 @@ Go to your website back, refresh the page and you'll see the `password=Joomla` U
 
 ## Creating your own SQL
 
-To create your own SQL statement, you'll need to get access to your database. You can use any tool you want for this like `Adminer`, `phpMyAdmin`, `pgAdmin`, ... i.e. the one who had your preference.
+To create your own SQL statement, you'll need to get access to your database. You can use any tool you want for this like `Adminer`, `phpMyAdmin`, `pgAdmin`, ... i.e. whichever one you prefer.
 
 I'll not explain each tool right now (read my <Link to="/blog/docker-adminer-pgadmin-phpmyadmin#run-adminer">Using Adminer, pgadmin or phpmyadmin to access your Docker database container</Link> blog post to get some info) but the objective is to be able to create a query in such interface and make sure the query is working.
 

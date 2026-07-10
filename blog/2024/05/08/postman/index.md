@@ -16,17 +16,21 @@ language: en
 <!-- cSpell:ignore ELECTRABEL,taxud -->
 ![Using Postman to play with API](/img/v2/api.webp)
 
+<TLDR>
+This article shows how to use Postman as a unit-test tool for APIs: setting up environments and collections with shared assertions, and writing `pm.test()` checks for status codes, response time, content-type headers, and — using a SOAP VAT-validation service as a running example — deep XML/JSON structure assertions on nodes, collections, and specific values.
+</TLDR>
+
 If you are developing your own API (whatever the language) or if you need to consume some, [Postman](https://www.postman.com/) can be really handy.
 
 Calling an API and getting the response is one thing, quite simple in fact, but a nice feature of Postman is the ability to validate the response like making sure the returned type is, f.i. `application/json`, the HTTP status code is 200, the response body is a JSON object (or an XML string), that the body contains some required information and so on.
 
 You can also validate the response against a given schema to make sure the structure is well the one expected.
 
-In this article, we'll use Postman like a unit test tool i.e. run checks on our own API and make a lot of assertions. This is improving the quality of your code by highlighting potential errors and, for any refactoring you'll do in the future, by running the tests again, you'll make sure you've not broken something; that you don't have any regression. Make sure you've not broken an API when you upgrade some code is gold.
+In this article, we'll use Postman like a unit test tool i.e. run checks on our own API and make a lot of assertions. This improves the quality of your code by highlighting potential errors and, for any refactoring you'll do in the future, running the tests again will make sure you haven't broken something; that you don't have any regression. Making sure you haven't broken an API when you upgrade some code is gold.
 
 <!-- truncate -->
 
-You can download Postman for free here: [https://www.postman.com/](https://www.postman.com/). You've to create an account before being able to download the program. A documentation is located at [https://learning.postman.com/docs/introduction/overview/](https://learning.postman.com/docs/introduction/overview/) so this post won't explain in detail how to use the program but will just give some tips.
+You can download Postman for free here: [https://www.postman.com/](https://www.postman.com/). You'll need to create an account before being able to download the program. Documentation is located at [https://learning.postman.com/docs/introduction/overview/](https://learning.postman.com/docs/introduction/overview/) so this post won't explain in detail how to use the program but will just give some tips.
 
 ## Creating an environment
 
@@ -71,11 +75,11 @@ pm.test("Don't contain any error", function ()
 
 ## Creating a request
 
-By creating a new request, to pass information in the header, I just need to click on the `Headers` tab then fill in the key I need to send. In the example of a SOAP request (i.e. called with a *XML envelope*), I'll need to send a `SOAPAction` key with the name of the action to start (`testFlag` here) and I'll specify that the body I'll send is `application/xml`.
+By creating a new request, to pass information in the header, I just need to click on the `Headers` tab then fill in the key I need to send. In the example of a SOAP request (i.e. called with an *XML envelope*), I'll need to send a `SOAPAction` key with the name of the action to start (`testFlag` here) and I'll specify that the body I'll send is `application/xml`.
 
 ![The request headers](./images/request_headers.webp)
 
-Then, since this example is for a SOAP request, I need to send a XML body, as expected by the action:
+Then, since this example is for a SOAP request, I need to send an XML body, as expected by the action:
 
 ![The request body](./images/request_body.webp)
 

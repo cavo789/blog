@@ -14,21 +14,25 @@ language: en
 ---
 ![VBS - Auto update script](/img/v2/vbs.webp)
 
+<TLDR>
+This article shows how to give a VBScript (VBS) file a self-update capability: on each run, the script downloads its own source from a public GitHub URL, compares it to the local copy, and overwrites itself if a newer version is found — letting distributed `.vbs` utilities stay current without manual redistribution.
+</TLDR>
+
 Before switching to <Link to="/blog/tags/wsl">WSL2</Link> and the Linux console, I wrote VBS scripts from time to time. It looks like VBA but for the DOS console.
 
 A VBS script for DOS is a text file written in the Visual Basic Scripting Edition (VBScript) programming language that can be executed directly from the DOS command prompt. It allows you to automate tasks and perform repetitive operations on your computer.
 
-It's just like <Link to="/blog/tags/bash">Linux Bash</Link> scripts but for the DOS.
+It's just like <Link to="/blog/tags/bash">Linux Bash</Link> scripts but for DOS.
 
 Do you think it would be possible to offer an auto-update function in such scripts? The answer is yes.
 
 <!-- truncate -->
 
-Imagine a script called `get_folder_size.vbs` you've publicly saved on Github (source [https://github.com/cavo789/vbs_utilities/blob/master/src/folders/get_folder_size/get_folder_size.vbs](https://github.com/cavo789/vbs_utilities/blob/master/src/folders/get_folder_size/get_folder_size.vbs)).
+Imagine a script called `get_folder_size.vbs` you've publicly saved on GitHub (source [https://github.com/cavo789/vbs_utilities/blob/master/src/folders/get_folder_size/get_folder_size.vbs](https://github.com/cavo789/vbs_utilities/blob/master/src/folders/get_folder_size/get_folder_size.vbs)).
 
 Someone downloads it to their computer and enjoys using it.
 
-By adding to it a new *auto-update* function, each time the script will be started, first, a connection to Github will be made, download the script from there and a check will be made if the downloaded version is different and, if so, the script will be overridden.
+By adding a new *auto-update* function to it, each time the script starts, a connection to GitHub is made first, the script is downloaded from there, and a check is made to see if the downloaded version is different; if so, the script overwrites itself.
 
 Here is the content of such function:
 

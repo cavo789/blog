@@ -37,13 +37,13 @@ First, create an empty workbook. Create then a new sheet called f.i. `Params` wi
 
 ![The range](./images/range.webp)
 
-Nothing difficult right now. To be flexible, please select the range and name it: `_rngParamsPeriod`. This is much better to hardcode a range like `$A$2:$A$14` isn't it?
+Nothing difficult right now. To be flexible, please select the range and name it: `_rngParamsPeriod`. This is much better than hardcoding a range like `$A$2:$A$14`, isn't it?
 
-Second things to do is to foresee a cell in your sheet where the selected value will be written i.e. when the user will select a value from the list, we'll ask Excel to put the selected value there. To do this, just click on the cell where you wish to see the selected period and name that cell `_Period`. On the image below, I'll select cell `$C$2` on the same sheet but it can be else where.
+The second thing to do is to foresee a cell in your sheet where the selected value will be written i.e. when the user selects a value from the list, we'll ask Excel to put the selected value there. To do this, just click on the cell where you wish to see the selected period and name that cell `_Period`. On the image below, I'll select cell `$C$2` on the same sheet but it can be elsewhere.
 
 ![The period range](./images/selected_period.webp)
 
-Time to save for the first time your Excel file let's say in `c:\temp\ribbon.xlsx`, then close the workbook.
+Time to save your Excel file for the first time, let's say in `c:\temp\ribbon.xlsx`, then close the workbook.
 
 ## Adding a ribbon
 
@@ -101,4 +101,4 @@ Time to test our feature: close the workbook and re-open it again and, this time
 
 ![Demo](./images/demo.webp)
 
-<Link to="/blog/tags/ribbon">Want to keep playing with ribbons? Check out my other articles on the subject.</Link>
+<Link to="/blog/vba-excel-ribbon">Want to keep playing with ribbons? Check out my other articles on the subject.</Link>

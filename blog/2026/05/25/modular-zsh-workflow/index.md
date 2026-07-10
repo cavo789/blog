@@ -18,7 +18,7 @@ blueskyRecordKey: 3mmnv4igbvk2f
 A bloated `~/.zshrc` slows down your terminal and makes debugging a nightmare. By using ZSH's `fpath` and modularizing your functions into `~/.zsh/fns`, you gain instant shell startup and cleaner code. This article explains the "why" and provides a "Super Function" to navigate your projects instantly.
 </TLDR>
 
-We’ve all been there: your `~/.zshrc` starts as a 10-line file and ends up as a 1,500-line monster. It contains everything from theme settings to complex Docker scripts and random aliases you forgot you wrote. This is the **Monolithic Shell Anti-pattern**.
+We’ve all been there: your `~/.zshrc` starts as a 10-line file and ends up as a 1,500-line monster. It contains everything from theme settings to complex Docker scripts and random aliases you forgot you wrote. This is the **Monolithic Shell Anti-pattern** (if you're starting from scratch, see <Link to="/blog/zsh-install">my ZSH installation guide</Link> first).
 
 In this article, I’ll show you why you should move your logic into standalone files within `~/.zsh/fns` and how ZSH's `autoload` mechanism can make your terminal feel snappier than ever. To top it off, I’ll share `repo`, a function that will change how you navigate your workspace.
 
@@ -31,7 +31,7 @@ When you put a function directly into your `.zshrc`, ZSH has to parse and load t
 By moving functions to a dedicated folder (like `~/.zsh/fns`), you unlock three major benefits:
 
 1.  **Lazy Loading:** Using `autoload`, ZSH only reads the file when you actually type the command. Your shell starts instantly.
-2.  **Maintainability:** If one of your custom function breaks, you go to the `fns` folder and fix it. You don't have to scroll through a sea of code.
+2.  **Maintainability:** If one of your custom functions breaks, you go to the `fns` folder and fix it. You don't have to scroll through a sea of code.
 3.  **Portability:** You can version-control your functions folder separately and share it across different machines without carrying over your entire OS-specific config.
 
 ## The Secret Sauce: `fpath` and `autoload`
@@ -42,7 +42,7 @@ When you call a function, ZSH looks into these folders. If it finds a file match
 
 ## 💎 The Super Function: `repo` (Universal Project Navigator)
 
-As developers, we switch contexts constantly. We jump between a PHP backend, an API project, a Vue.js frontend, a Python application, ... and between multiple documentation folders; all day. Doing `cd ~/repositories/project-xyz` hundreds of times a day is a waste of life.
+As developers, we switch contexts constantly. We jump between a PHP backend, an API project, a Vue.js frontend, a Python application ... and between multiple documentation folders — all day long. Doing `cd ~/repositories/project-xyz` hundreds of times a day is a waste of life.
 
 The `repo` function uses `fd` (or `find`) and `fzf` to let you search all your git repositories and:
 
@@ -54,7 +54,7 @@ The `repo` function uses `fd` (or `find`) and `fzf` to let you search all your g
 This function contains logic to handle directory depth and editor launching. In your `.zshrc`, it's clutter. In `~/.zsh/fns/repo`, it's a dedicated tool.
 
 <AlertBox variant="tip" title="Installation Requirement">
-This function requires `fzf` and `fd` (or `find`). For the best experience, install `fd-find`.
+This function requires `fzf` (see <Link to="/blog/linux-fzf-introduction">Introduction to fzf</Link> if you're not familiar with it yet) and `fd` (or `find`). For the best experience, install `fd-find`.
 </AlertBox>
 
 ## How to Set It Up
@@ -93,7 +93,7 @@ Create a file at `~/.zsh/fns/repo` (no extension!) and paste the following code.
 </ProjectSetup>
 
 <AlertBox variant="note">
-Think to update the `search_path` variable to where you're saving your projects and, if you aren't using VSCode, also update the local `visual_editor` variable.
+Remember to update the `search_path` variable to where you're saving your projects and, if you aren't using VSCode, also update the local `visual_editor` variable.
 </AlertBox>
 
 ### 4. Use it
@@ -127,4 +127,4 @@ This is perfect for projects you visit often. If your pattern is unique enough, 
 
 The difference between a "junior" and "senior" developer environment often lies in **tooling friction**. By moving your functions into autonomous files, you reduce the friction of maintaining your environment.
 
-With `repo` living in your new modular setup, you can now teleport across your workspace in seconds. Next time you write a useful snippet, don't paste it in your `.zshrc`. Give it its own home in `~/.zsh/fns/`.
+With `repo` living in your new modular setup, you can now teleport across your workspace in seconds. Next time you write a useful snippet, don't paste it in your `.zshrc`. Give it its own home in `~/.zsh/fns/` — see <Link to="/blog/zsh-docker-functions">ZSH Functions - Customizing Your Shell for Docker Management</Link> for another set of functions organized this same way.

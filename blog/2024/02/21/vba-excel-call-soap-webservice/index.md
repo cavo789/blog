@@ -14,6 +14,10 @@ language: en
 ---
 ![MS Excel - How to call a SOAP web service](/img/v2/excel.webp)
 
+<TLDR>
+This article shows a VBA skeleton for calling a SOAP web service from Excel, using the EU's VIES VAT number validation service as a concrete example: building an XML request file with placeholders, sending it via `MSXML2.ServerXMLHTTP60`, and opening the XML response as a new workbook. A Linux `curl`-based equivalent is also included for comparison.
+</TLDR>
+
 Imagine you had to make a call to a SOAP web service in Excel? For example, to validate the VAT number you have been given before carrying out some processing.
 
 You will call the URL that corresponds to the web service you want, but you will also need to pass a number of parameters in XML format so that the service knows what you want to do.
@@ -207,7 +211,7 @@ End Function
 
 ### About placeholders
 
-In our `C:\temp\checkVat.xml`, we've thus foresee two placeholders.
+In our `C:\temp\checkVat.xml`, we've thus foreseen two placeholders.
 
 You can see in the `openCheckVatXml` VBA subroutine how we'll replace them by some, example, values. Just adjust them to yours.
 
@@ -258,3 +262,5 @@ The answer will be:
 ```
 
 Now, it's up to you to modify the VBA code and tailor it to your needs.
+
+If you're designing the API side of things rather than just consuming it, see <Link to="/blog/php-api-tips">API REST - How to write good APIs</Link> for general API design context.

@@ -14,6 +14,10 @@ language: en
 ---
 ![Quarto includes short code](/img/v2/quarto.webp)
 
+<TLDR>
+This article shows Quarto's `{{< include >}}` short code, which lets you split a long document into several smaller Markdown files and merge them at render time by referencing their relative paths from a main `.qmd` file.
+</TLDR>
+
 Using the Quarto `includes` short code, writing a long document can easily be broken down into several smaller ones.
 
 Imagine the following `main.qmd` file:
@@ -31,7 +35,7 @@ If you don't have yet a Docker image with Quarto, read this article <Link to="/b
 
 ## Includes tag
 
-The tag is simple, you just need to specify the relative path to the file to include. Get in-depth syntax on the [official documentation](https://quarto.org/docs/authoring/includes.html)
+The tag is simple, you just need to specify the relative path to the file to include. Get in-depth syntax on the [official documentation](https://quarto.org/docs/authoring/includes.html).
 
 Here is some dummy content for `chapter1.md`:
 
@@ -72,7 +76,7 @@ Now, by running, f.i., `quarto render main.qmd --to html`, Quarto will merge fil
 
 ![Quarto includes](./images/includes.webp)
 
-<AlertBox variant="info" title="What is a `.qmd` files?">
+<AlertBox variant="info" title="What is a `.qmd` file?">
 For Quarto, the extension isn't very important: whether it's `.qmd` or `.md`, there's no difference in treatment.
 
 On the other hand, it's probably more interesting for us to use the `.qmd` extension when using a Quarto-specific syntax, as is the case here.

@@ -13,9 +13,13 @@ language: en
 ---
 ![Using the JetBrains Mono font in vscode](/img/v2/vscode_tips.webp)
 
-As you know, VSCode is highly customizable; you can install plethora of addons, change the default theme and use your preferred font.
+<TLDR>
+This article shows how to install the free JetBrains Mono font (which clearly distinguishes O/0 and I/l, and supports code ligatures) and configure VSCode to use it via the `editor.fontFamily` and `editor.fontLigatures` settings in `settings.json`.
+</TLDR>
 
-Just take a look on the **JetBrains Mono font**. This is a free of charge font, for both commercial and non-commercial purposes.
+As you know, VSCode is highly customizable; you can install a plethora of addons, change the default theme, and use your preferred font.
+
+Just take a look at the **JetBrains Mono font**. This is a free-of-charge font, for both commercial and non-commercial purposes.
 
 In addition to the fact that it is particularly legible, making it much clearer to distinguish between an O (the letter) and a 0 (the number), between an I (upper-case I) and an l (lower-case l); **JetBrains Mono font** comes with nice ligature elements.
 
@@ -27,7 +31,7 @@ Visit [https://www.jetbrains.com/lp/mono/](https://www.jetbrains.com/lp/mono/) t
 
 It's easy: go to [https://www.jetbrains.com/lp/mono/#how-to-install](https://www.jetbrains.com/lp/mono/#how-to-install) and click on the `Download font` button.
 
-Once downloaded, go to your downloads folder and unzip the file then jump in the `JetBrainsMono` newly created folder and go in the `fonts/ttf`. You'll find there several subfolders. Under Windows, just open the first folder, select all files and do a right-click. From the contextual menu, select `Install` as you can see below:
+Once downloaded, go to your downloads folder and unzip the file then jump into the newly created `JetBrainsMono` folder and go into `fonts/ttf`. You'll find there several subfolders. Under Windows, just open the first folder, select all files and do a right-click. From the contextual menu, select `Install` as you can see below:
 
 ![Install JetBrains Mono font](./images/install_font.webp)
 

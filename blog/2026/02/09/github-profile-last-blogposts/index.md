@@ -20,9 +20,9 @@ This article explains how to use the `gautamkrishnar/blog-post-workflow` GitHub 
 
 I recently found the GitHub Action `gautamkrishnar/blog-post-workflow` and thought: *this could keep my profile README up to date automatically*.
 
-Since I already refactored my Docusaurus [RSS feed](https://www.avonture.be/blog/rss.xml), it's a great fit for automating the latest ten posts on my GitHub profile
+Since I already refactored my Docusaurus [RSS feed](https://www.avonture.be/blog/rss.xml), it's a great fit for automating the latest ten posts on my GitHub profile.
 
-Let's add a scheduled GitHub Action (for example, every Sunday) to update my [cavo789](https://github.com/cavo789/cavo789) repo automatically
+Let's add a scheduled GitHub Action (for example, every Monday) to update my [cavo789](https://github.com/cavo789/cavo789) repo automatically.
 
 <!-- truncate -->
 
@@ -37,7 +37,7 @@ So, in my case, I'll clone my [cavo789](https://github.com/cavo789/cavo789) repo
 
 ## Create the workflow YAML file
 
-I've to create a GitHub action (so I should create the `.github/workflows` folder if not yet present).
+I have to create a GitHub action (so I should create the `.github/workflows` folder if not yet present).
 
 And in that folder, I'll create a new YAML file, let's call it `blog-post-workflow.yml`:
 
@@ -63,7 +63,7 @@ on:
   workflow_dispatch:     # This will allow to run the workflow manually too
 ```
 
-but, too, we want to be able to start the workflow manually. To do this, just open your repo using a browser, click on the `Actions` button and, in the left sidebar, you'll see the action (`Latest blog post workflow` in our example) and find the `Run workflow` button somewhere at the right part of the screen.
+but we also want to be able to start the workflow manually. To do this, just open your repo using a browser, click on the `Actions` button and, in the left sidebar, you'll see the action (`Latest blog post workflow` in our example) and find the `Run workflow` button somewhere at the right part of the screen.
 
 We also need to allow the action to write files back (since we'll update the `README.md` file).
 
@@ -78,7 +78,7 @@ We need to foresee two steps; the first one to clone the repo and the second one
 
 The first step is like on your computer: you need to `git clone` the repo before being able to update it.
 
-The second step is taking in charge by the `gautamkrishnar/blog-post-workflow@v1` action.
+The second step is handled by the `gautamkrishnar/blog-post-workflow@v1` action.
 
 ```yaml
 jobs:
@@ -106,7 +106,7 @@ You can find detailed documentation on its official site: [https://github.com/ma
 * `comment_tag_name` is the commented block to replace (we'll see this below)
 * `date_format` to make sure, if you show dates in your content, it's based on your desired format
 * `template` is a ... template (HTML in my case) that will be used for any entries in your result (so if you're retrieving 10 articles, you'll obtain a string with ten times your template) and
-* ` commit_message` will be used by the `gautamkrishnar/blog-post-workflow` action to push changes to your repo back.
+* `commit_message` will be used by the `gautamkrishnar/blog-post-workflow` action to push changes to your repo back.
 
 ## Updating the README.md file
 
@@ -118,8 +118,8 @@ Let's now see how it can be used:
 
 As you can see, there is a `<!-- BLOG-POST-LIST:START -->`  and `<!-- BLOG-POST-LIST:END -->` block in my file.
 
-And now, not really a secret : the GitHub action will thus generate an HTML string with my 10 articles then inject it in my file by removing the two comment tags and push the change to GitHub.
+And now, not really a secret: the GitHub action will thus generate an HTML string with my 10 articles then inject it in my file by removing the two comment tags and push the change to GitHub.
 
-From now on, every Sunday, my repo will be automatically updated.
+From now on, every Monday, my repo will be automatically updated.
 
 Easy no?

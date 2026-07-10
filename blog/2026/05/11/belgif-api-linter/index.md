@@ -22,7 +22,7 @@ Building APIs is relatively easy, but building *compliant* and *interoperable* A
 
 While modern frameworks like **FastAPI** are fantastic for rapidly building APIs and automatically generating OpenAPI documentation, their default schema generation doesn't always align perfectly with Belgif's strict linting rules.
 
-In this article, we'll explore how to use the official Belgif OpenAPI linter via Docker and how to validate your FastAPI application against some potentials errors. More importantly, we'll walk through practical, step-by-step solutions to resolve the most common linting errors caused by FastAPI's default behaviors, ensuring your API gets a clean bill of health.
+In this article, we'll explore how to use the official Belgif OpenAPI linter via Docker and how to validate your FastAPI application against some potential errors. More importantly, we'll walk through practical, step-by-step solutions to resolve the most common linting errors caused by FastAPI's default behaviors, ensuring your API gets a clean bill of health.
 
 *Before we dive in, if you are looking for general advice on designing robust APIs, check out my previous article:* <Link to="/blog/php-api-tips">API REST - How to write good APIs</Link>.
 
@@ -130,7 +130,7 @@ While running the Belgif linter, you may encounter a lot of warnings like below:
 
 <Snippet filename="warnings.txt" source="./files/warnings.txt" />
 
-The warnings are about the linter itself (in fact, comes from a tool called `Drools`) and thus **they have nothing to do with your code**.  It's just visual pollution for us; the only thing we can do is to hide them.
+The warnings are about the linter itself (in fact, comes from a tool called `Drools`) and thus **they have nothing to do with your code**. It's just visual pollution for us; the only thing we can do is to hide them.
 
 Look at the new file below:
 
@@ -183,7 +183,7 @@ See the helper provided later on in the post.
 
 ### oas-comp - Component names SHOULD use UpperCamelCase notation
 
-If you get the `[MANDATORY]    [oas-comp]   Component names SHOULD use UpperCamelCase notation. For abbreviations as well, all letters except the first one should be lowercased.` error, you'll need to foresee a rename function to update e.g. `HTTPValidationError` to `HttpValidationError`.
+If you get the `[MANDATORY]    [oas-comp]   Component names SHOULD use UpperCamelCase notation. For abbreviations as well, all letters except the first one should be lowercased.` error, you'll need to add a rename function to update e.g. `HTTPValidationError` to `HttpValidationError`.
 
 It can be done f.i. like this (partial code):
 
@@ -213,7 +213,7 @@ See the helper provided later on in the post.
 
 ### openapi-opid - lowerCamelCase for operationId
 
-The message `[MANDATORY]    [openapi-opid] A unique operationId MUST be specified on each operation. It SHOULD have a lowerCamelCase value following common programming naming conventions for method (function) names.` notify you about the use of a wrong syntax.
+The message `[MANDATORY]    [openapi-opid] A unique operationId MUST be specified on each operation. It SHOULD have a lowerCamelCase value following common programming naming conventions for method (function) names.` notifies you about the use of a wrong syntax.
 
 Partial code:
 
@@ -235,7 +235,7 @@ def _fix_operation_ids(openapi_schema: dict[str, Any]) -> None:
 
 The helper provided below can help you to solve `oas-descr` and `oas-comp` errors.
 
-The `main.py` file illustrate how to call it the helper.
+The `main.py` file illustrates how to call the helper.
 
 <Snippet filename="main.py" source="./files/main_configure.py" />
 

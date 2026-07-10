@@ -15,7 +15,11 @@ tags:
 language: en
 ---
 <!-- cspell:ignore corepack,docusaurus,johndoe -->
-![Encapsulate an entire Docusaurus site in a Docker image](/img/v2/docusaurus_tips.webp)
+![Encapsulate an entire Docusaurus site in a Docker image](/img/v2/docusaurus_using_docker.webp)
+
+<TLDR>
+This article (now deprecated in favor of a newer one) shows how to package an entire Docusaurus site into a single, self-contained Docker image using a three-stage `Dockerfile`: a Node base stage, a build stage that runs `yarn build`, and a final `nginx` stage that only ships the static output — shrinking the image from ~740MB down to ~87MB. It covers building, running, entering an interactive shell, and pushing the image to Docker Hub.
+</TLDR>
 
 <AlertBox variant="important" title="This article is deprecated">
 This article has been recently reviewed, please read [Running Docusaurus using Docker](/blog/running-docusaurus-with-docker) instead.
@@ -39,7 +43,7 @@ Now, we'll learn to do the same for your own Docusaurus instance. Ladies and gen
 
 *If you already have a Docusaurus installation on your computer, just skip this chapter.*
 
-In this part, I'll suppose you don't have a Docusaurus installation yet, so we'll create a dummy site with a very few, basics, blog posts.
+In this part, I'll suppose you don't have a Docusaurus installation yet, so we'll create a dummy site with a very few, basic, blog posts.
 
 Jump in a console and run the following commands: `mkdir /tmp/docusaurus && cd $_`.
 
@@ -67,7 +71,7 @@ Please create a file called `Dockerfile` with this content:
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
-This file is a **multi-stages** Dockerfile. The main objectives are to have an improved cache layer system and a smaller, in size, final image. A multi-stages file is also really useful to be able to build more than one image like a development or a production one.
+This file is a **multi-stage** Dockerfile. The main objectives are to have an improved cache layer system and a smaller, in size, final image. A multi-stage file is also really useful to be able to build more than one image like a development or a production one.
 
 As you can see, we are using three stages (a stage starts with the `FROM` clause).
 
@@ -87,7 +91,7 @@ This is our three stages.
 
 **In stage 2, called `building_production`**, we're extending the `base` stage.
 
-As you can see below, we'll install Docusaurus and his dependencies.
+As you can see below, we'll install Docusaurus and its dependencies.
 
 Then we'll copy files from our current folder into the image in the process of being created and, finally, we'll generate (build) static web pages (HTML, CSS, JavaScript and images).
 
@@ -103,10 +107,10 @@ At the end of this stage, we've our static website but not yet a web server.
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile.part4" />
 
-As you can see, this stage is very basic. We just use nginx, copy in his default web folder the static website created earlier and it's done.
+As you can see, this stage is very basic. We just use nginx, copy the static website created earlier into its default web folder and it's done.
 
-<AlertBox variant="info" title="Why a multi-stages image is better than a `monolithic` stage?">
-Take a look on the last stage, our web server. We're just using the `nginx` web server and to make it working, we need to copy our `build` folder where Docusaurus has put his static files (html, css, js and images).
+<AlertBox variant="info" title="Why a multi-stage image is better than a `monolithic` stage?">
+Take a look at the last stage, our web server. We're just using the `nginx` web server and to make it working, we need to copy our `build` folder where Docusaurus has put its static files (html, css, js and images).
 
 Since we're only recovering the `build` folder from the previous stage, the final image will no longer contain `NodeJs`, `Yarn`, `Docusaurus` or anything else previously installed. Nor will we have any temporary files that may have been installed; we don't need the original version of our blog, i.e. our original markdown files.
 
@@ -116,7 +120,7 @@ The image size of the `building_production` stage was 740MB and the one of the `
 </AlertBox>
 
 <AlertBox variant="info" title="See my own Dockerfile">
-I'm using, for my own blog, a development stage. Take a look on my [Dockerfile](https://github.com/cavo789/blog/blob/main/Dockerfile) to see how I do. Make also sure to take a look on my [makefile](https://github.com/cavo789/blog/blob/main/makefile) and the different `docker-compose-xxx.yml` files in my project.
+I'm using, for my own blog, a development stage. Take a look at my [Dockerfile](https://github.com/cavo789/blog/blob/main/Dockerfile) to see how I do. Make sure to also take a look at my [makefile](https://github.com/cavo789/blog/blob/main/makefile) and the different `docker-compose-xxx.yml` files in my project.
 </AlertBox>
 
 ### Create a .dockerignore file
@@ -144,7 +148,7 @@ Our objective was to create a Docker image containing our Docusaurus site.
 When creating a Docker image, we should give it a name.
 
 <AlertBox variant="caution" title="The name of the image should respect the `owner/name` pattern.">
-`owner` has to be your pseudo on Docker Hub. In my case, my pseudo there is `[cavo789](https://hub.docker.com/u/cavo789)` so if I wish to publish an image, I should use `cavo789` for the first part. Then, I need to specify an unique name not yet present in my profile.
+`owner` has to be your username on Docker Hub. In my case, my username there is `[cavo789](https://hub.docker.com/u/cavo789)` so if I wish to publish an image, I should use `cavo789` for the first part. Then, I need to specify a unique name not yet present in my profile.
 
 In my case `cavo789/blog` is then a good choice. For this article, I'll use `johndoe/blog` since I'll not publish that image on the Internet.
 
@@ -159,7 +163,7 @@ $ docker build --tag johndoe/blog --target production .
 The final `.` in the instruction above means *current folder*; `/tmp/docusaurus` in my case.
 
 <AlertBox variant="caution">
-Since our `Dockerfile` is a multi-stages one, we need to specify which stage we wish. This is done by using the `--target` CLI flag.
+Since our `Dockerfile` is a multi-stage one, we need to specify which stage we wish. This is done by using the `--target` CLI flag.
 
 If you look at our `Dockerfile` file we've created earlier, our three stages are called `base`, `building_production` and `production`. To build the image with the web server, you need to specify `production` for the target but if you're interested in the generated files, not the web server, you can run `docker build --tag johndoe/blog --target building_production .`.
 
@@ -168,7 +172,7 @@ If you look at our `Dockerfile` file we've created earlier, our three stages are
 The `docker build` command will take one or two minutes depending on the speed of your network connection and computer. Once successfully fired, you'll then have a new Docker image on your computer. You can retrieve it by running `docker image list` to get the list of local images.
 
 <AlertBox variant="info">
-By running `docker image list | grep -i blog`, you can retrieve the image and his size. It's 87MB for me on this moment for the dummy blog created in this blog post.
+By running `docker image list | grep -i blog`, you can retrieve the image and its size. It's 87MB for me on this moment for the dummy blog created in this blog post.
 
 By running `docker build --tag johndoe/blog --target building_production .` (without `nginx` thus but with `Node`) the size will be 740MB. As you can see, we've divided the size by, almost, 9.
 

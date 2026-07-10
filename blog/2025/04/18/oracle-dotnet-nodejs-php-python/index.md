@@ -31,7 +31,7 @@ The idea is then to provide a very quick skeleton for starting a project in thos
 
 In the <Link to="/blog/docker-oracle-database-server">Running Oracle Database Server as a Docker container</Link> article, we've created a Docker container called `oracle-db` where a Human Resources database is running.
 
-Please read that article and follow steps so, before continuing here, you've a running Docker container like describe below.
+Please read that article and follow steps so, before continuing here, you've a running Docker container as described below.
 
 ## Some prerequisites
 
@@ -50,9 +50,9 @@ Please read that article and follow steps so, before continuing here, you've a r
 
 ## The code samples were largely created using AI
 
-Because it's fast to do and also because I don't know .Net and very few NodeJs, I've used Google Gemini for building my samples below. Sometimes like for .Net, it was almost ready-to-use. Sometimes for PHP, it was more difficult and it took a lot on fiddling on my part to find the right configuration.
+Because it's fast to do and also because I don't know .Net and very little NodeJS, I've used Google Gemini for building my samples below. Sometimes, like for .Net, it was almost ready-to-use. Sometimes for PHP, it was more difficult and it took a lot of fiddling on my part to find the right configuration.
 
-Nevertheless the objective of this article was to provide the minimum set of files in order to connect to an Oracle DB, run a SELECT query and display results; not to have best-in-class codebase.
+Nevertheless the objective of this article was to provide the minimum set of files in order to connect to an Oracle DB, run a SELECT query and display results; not to have a best-in-class codebase.
 
 ## Access our Oracle DB container using .Net
 
@@ -78,15 +78,15 @@ Now, the DotNet part. We need two files: `OracleConnector/OracleConnector.csproj
 
 <Snippet filename="OracleConnector/main.cs" source="./files/main.cs" />
 
-This is how your project looks like in VSCode:
+This is what your project looks like in VSCode:
 
 ![.Net project in VSCode](./images/vscode_dotnet.webp)
 
 Still in the console, located in folder `/tmp/oracle/dotnet`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-dotnet . && docker run --rm -it --network oracle oracle-dotnet`.
 
-![Using .Net to access to the list of employees](./images/using_dotnet.webp)
+![Using .Net to access the list of employees](./images/using_dotnet.webp)
 
-Job done, our .Net code has accessed to the list.
+Job done, our .Net code has accessed the list.
 
 ## Access our Oracle DB container using NodeJS
 
@@ -173,9 +173,9 @@ run();
 
 Still in the console, located in folder `/tmp/oracle/nodejs`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-nodejs . && docker run --rm -it --network oracle oracle-nodejs`.
 
-![Using NodeJS to access to the list of employees](./images/using_nodejs.webp)
+![Using NodeJS to access the list of employees](./images/using_nodejs.webp)
 
-Nice! As you can see, we can quite easily access to our Oracle database using NodeJS.
+Nice! As you can see, we can quite easily access our Oracle database using NodeJS.
 
 ## Access our Oracle DB container using PHP
 
@@ -197,7 +197,7 @@ Then let's create a PHP script (*generated using AI*)
 
 Still in the console, located in folder `/tmp/oracle/php`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-php . && docker run --rm -it --network oracle oracle-php`.
 
-![Using PHP to access to the list of employees](./images/using_php.webp)
+![Using PHP to access the list of employees](./images/using_php.webp)
 
 ## Access our Oracle DB container using Python
 
@@ -207,7 +207,7 @@ Let's create a Python script now:
 $ mkdir -p /tmp/oracle/python && cd $_
 </Terminal>
 
-And his Dockerfile; the only thing we need (except Python) is to install the `oracledb` dependency. Quite straightforward.
+And its Dockerfile; the only thing we need (except Python) is to install the `oracledb` dependency. Quite straightforward.
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile.part4" />
 
@@ -219,12 +219,12 @@ Then let's create a Python script (*generated using AI*)
 
 Still in the console, located in folder `/tmp/oracle/python`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-python . && docker run --rm -it --network oracle oracle-python`.
 
-![Using Python to access to the list of employees](./images/using_python.webp)
+![Using Python to access the list of employees](./images/using_python.webp)
 
-Nice! As you can see, we can quite easily access to our Oracle database using Python.
+Nice! As you can see, we can quite easily access our Oracle database using Python.
 
 ## Conclusion
 
-You know what? I've more than 15 years of experience with PHP and just 6 months using Python and, if we look at the Dockerfile of both languages, there is no doubt at all; the one for Python is so much easier to read and to configure. I had pain to make the one of PHP to works and just none for Python since it's just one dependency to install and that's all.
+You know what? I've more than 15 years of experience with PHP and just 6 months using Python and, if we look at the Dockerfile of both languages, there is no doubt at all; the one for Python is so much easier to read and to configure. I had a hard time getting the PHP one to work, and none at all for Python since it's just one dependency to install and that's all.
 
 And if we look at PHP versus Python code, they are quite similar but, I should admit, the one for Python has my preference because we don't need to check for errors in multiple places, we can more easily define the data types of variables, the echo statement is more readable, ...

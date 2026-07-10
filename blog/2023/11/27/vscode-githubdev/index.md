@@ -13,6 +13,10 @@ language: en
 ---
 ![Start vscode from github.com](/img/v2/vscode_tips.webp)
 
+<TLDR>
+This article shares a quick trick: pressing the <kbd>.</kbd> key on any GitHub repository page (or swapping `.com` for `.dev` in the URL) opens that repository in VSCode online (vscode.dev/github.dev) — handy for making a quick edit or fixing a typo from a phone or a machine without a local clone.
+</TLDR>
+
 It's not something new, but it's probably not known well enough: by browsing **any** GitHub repository like e.g. [https://github.com/cavo789/blog](https://github.com/cavo789/blog), you can just press <kbd>.</kbd> (the dot key) on your keyboard to start VS Code online to see the current repository in vscode.dev.
 
 <!-- truncate -->
@@ -30,7 +34,7 @@ Imagine you are not at home, on your own computer, and you want to change your r
 
 But also that you are on a bus/train/plane and want to correct a typo you've just seen.
 
-You may also want to make a very small update like changing your readme.md file. It is really faster to do online than having to clone/update the project on your computer, make the change, add/commit/push it.
+You may also want to make a very small update like changing your readme.md file. It is really faster to do it online than having to clone/update the project on your computer, make the change, add/commit/push it.
 
 ![Using a smartphone](./images/smartphone_view.webp)
 

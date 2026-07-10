@@ -14,7 +14,11 @@ language: en
 ---
 ![Search and replace (or add) using sed](/img/v2/bash.webp)
 
-Today, I was facing (once more) with the following need: I need to update a setting in a text file but if the variable is not yet present, I need to add it.
+<TLDR>
+This article explains how to use `sed` to update a variable in a config/`.env` file when it already exists, and combine it with `grep -q` to append the variable instead when it's missing — giving a single reliable "search and replace, or insert" pattern for scripted file edits.
+</TLDR>
+
+Today, I was facing (once more) the following need: I need to update a setting in a text file but if the variable is not yet present, I need to add it.
 
 So, in short, I need to make a *search and replace or insert new line*.
 
@@ -22,7 +26,7 @@ Using `sed` it's quite easy to automate the search & replace but how to append?
 
 <!-- truncate -->
 
-This article will explains one-way to achieve this. You'll find a lot of other possibilities on Internet and some only using the `sed` instruction but ... can you read them?
+This article will explain one way to achieve this. You'll find a lot of other possibilities on the Internet, some using only the `sed` instruction, but ... can you read them?
 
 I prefer to use a different approach, perhaps not the *native one* but, yeah, I can read it.
 
@@ -46,7 +50,7 @@ Easy no? The `s` in the command is for `substitute` (replace) and the used delim
 
 But what if `APP_ENV` is not present at all in the file?
 
-Of course, by running `sed -i "s/APP_ENV =.*/APP_ENV = production/" .env` nothing will happens (you can verify with `cat .env`).
+Of course, by running `sed -i "s/APP_ENV =.*/APP_ENV = production/" .env` nothing will happen (you can verify with `cat .env`).
 
 Before seeing how to do, run the following block and you'll get a `NOT FOUND` message.
 
@@ -86,7 +90,7 @@ $ grep -q "^APP_ENV =" .env \
     || echo "NOT FOUND"
 </Terminal>
 
-The *insert a new line* command is this one: `sed -i -e '$aAPP_ENV = production' .env`. The `-e` argument allow to execute a script and it's quite strange but the script is `$a`. That command is for *append line*. And now you've understood that sed will here add a new line in the file.
+The *insert a new line* command is this one: `sed -i -e '$aAPP_ENV = production' .env`. The `-e` argument allows you to execute a script and it's quite strange but the script is `$a`. That command is for *append line*. And now you've understood that sed will here add a new line in the file.
 
 ## The final instruction
 

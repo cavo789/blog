@@ -17,17 +17,21 @@ blueskyRecordKey: 3m2sz4hqz322z
 
 ![Linux - Using a progression bar in your script](/img/v2/linux_progress_bar.webp)
 
+<TLDR>
+This follow-up article adds a visual progress bar to Bash scripts (building on the earlier parallel-jobs post) using a reusable `progress_bar.sh` helper: source it, pipe your loop's output through `progress_bar::process "Doing some stuff" 50`, and echo `Progress=N` from inside the loop to drive the bar — useful for long-running batch jobs like CSV-driven API uploads.
+</TLDR>
+
 In my previous article; <Link to="/blog/bash-parallel-task">Linux - Take advantage of the number of CPUs you have; start concurrent jobs</Link>, we've seen how to start jobs in parallel.
 
 The next cool thing is to show a progression bar in your console. This has a number of advantages, including a clear view of what's been done and what's still to be done, as well as an attractive interface.
 
-Months ago, I've found this french blog post in my RSS feeds: [https://xieme-art.org/post/bash-avance-barre-de-progression/](https://xieme-art.org/post/bash-avance-barre-de-progression/) and, just, **wow!!!**
+Months ago, I've found this French blog post in my RSS feeds: [https://xieme-art.org/post/bash-avance-barre-de-progression/](https://xieme-art.org/post/bash-avance-barre-de-progression/) and, just, **wow!!!**
 
 Let's play with it.
 
 <!-- truncate -->
 
-First, please create a new folder on your disk and jump it that folder: `mkdir /tmp/progress && cd $_`.
+First, please create a new folder on your disk and jump into that folder: `mkdir /tmp/progress && cd $_`.
 
 Then, create a `demo.sh` file in the folder and copy/paste the bash script below:
 
@@ -45,9 +49,9 @@ Not so difficult, right?
 
 ## Let's create the progress_bar.sh script
 
-Please click on the accordion below to reveal the content you'll need to copy/paste in a file called `progress_bar.sh` that you need to create in the same folder than the `demo.sh` one.
+Here is the content you'll need to copy/paste into a file called `progress_bar.sh`, created in the same folder as the `demo.sh` one.
 
-Please create a new file on your hard disk; name it `progress_bar.sh` and copy/paste the content below in it.
+Please create a new file on your hard disk; name it `progress_bar.sh` and copy/paste the content below into it.
 
 <Snippet filename="progress_bar.sh" source="./files/progress_bar.sh" />
 

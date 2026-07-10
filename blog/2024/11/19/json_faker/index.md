@@ -16,6 +16,10 @@ language: en
 
 <!-- cspell:ignore birthdate,homme,femme,binaire,Mockaroo -->
 
+<TLDR>
+This article covers generating and validating fake JSON test data: using Python's `Faker` library to script custom fake records, using Mockaroo.com (schema builder + free API) to generate large datasets like 1,000+ rows, and using an online JSON-to-schema converter with Python's `jsonschema` library to validate that received files match the expected structure.
+</TLDR>
+
 I recently worked on an ETL project in Python. Among other things, the script had to process JSON files that users dropped into a specific folder.
 
 As this was a sensitive application, it was important to validate the script by submitting fake JSON files, but also to ensure the quality of the files received.
@@ -30,7 +34,7 @@ So the idea is to generate a dictionary (a json file) with fake data. Using the 
 
 First install the library using `pip install faker`.
 
-And below a small Python script to generate fake data in French (just replace `range(1)` by f.i. `range(100)` to get 100 records):
+Below is a small Python script to generate fake data in French (just replace `range(1)` with `range(100)`, for example, to get 100 records):
 
 <Snippet filename="fake.py" source="./files/fake.py" />
 
@@ -49,11 +53,11 @@ The [https://www.mockaroo.com/](https://www.mockaroo.com/) website allows you to
 
 ### Creating a fake data using a schema
 
-By creating a free account on Mockaroo, click on the `Schemas` button, then select `Create a schema`. In the next screen, click on `Generate fields using AI...` and paste a JSON existing string:
+By creating a free account on Mockaroo, click on the `Schemas` button, then select `Create a schema`. In the next screen, click on `Generate fields using AI...` and paste an existing JSON string:
 
 ![Creating a schema](./images/creating_schema.webp)
 
-This done, you'll be able to generate a big number of rows like f.i. creating a file with more than 1,000 records.
+This done, you'll be able to generate a large number of rows — for instance, a file with more than 1,000 records.
 
 By saving examples to a real JSON file on disk, you can then use that file to test your application.
 
@@ -74,7 +78,7 @@ I can then use it in Python like this:
 <Snippet filename="schema_test.py" source="./files/schema_test.py" />
 
 <AlertBox variant="info">
-To make this code working, think to install the requests library: `pip install requests`.
+To make this code work, remember to install the requests library: `pip install requests`.
 
 </AlertBox>
 
@@ -97,11 +101,13 @@ You'll need to run `pip install jsonschema` first.
 
 </AlertBox>
 
-Now, I'll test my file. The first time, my JSON file will be correct. I've then removed the `city` record in my JSON and rerunning the script will indeed fails as expected:
+Now, I'll test my file. The first time, my JSON file will be correct. I've then removed the `city` record from my JSON, and rerunning the script will indeed fail, as expected:
 
 ![JSON validation](./images/validate.webp)
 
 <AlertBox variant="info">
-As we can see, quite quickly, we've generated 1,000 records and, too, a validation schema. Then using few lines in Python, we've ensure the file is correct or, if not, we've spotted where the error is located.
+As we can see, quite quickly, we've generated 1,000 records and, also, a validation schema. Then, using a few lines of Python, we've ensured the file is correct or, if not, we've spotted where the error is located.
 
 </AlertBox>
+
+Other JSON tools worth knowing about: <Link to="/blog/json-crack">rendering a JSON file as a mind map</Link> and <Link to="/blog/json-lint">linting/validating your JSON files</Link>.

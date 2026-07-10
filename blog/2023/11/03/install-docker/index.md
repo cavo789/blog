@@ -14,6 +14,10 @@ language: en
 <!-- cspell:ignore wamp -->
 ![Install Docker and play with PHP](/img/v2/docker_tips.webp)
 
+<TLDR>
+This getting-started article installs Docker Desktop and runs a PHP+Apache site with zero local PHP/Apache install: `docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache`, then creating an `index.php` inside the container via `docker exec`. It shows how trivially you can switch PHP versions (e.g. to `php:8.1.5-apache` on a different port) compared to juggling versions with EasyPHP or WAMP.
+</TLDR>
+
 Docker can be installed free of charge for personal or small-scale usage: [https://www.docker.com/products/personal/](https://www.docker.com/products/docker-desktop/).
 
 You can install it on Linux, Mac or Windows.
@@ -28,7 +32,7 @@ Thanks to Docker, you do not need to install PHP or Apache to run a website. You
 
 Images are most of the time just plug-and-play: once downloaded, they are ready to use. You will probably add some configuration items but, most of the time, it is not even needed.
 
-On [Docker Hub](https://hub.docker.com) you'll find a huge number of images that can be used to run software such as PHP, PHP+Apache, MySQL and many, many more.
+On [Docker Hub](https://hub.docker.com) you'll find a huge number of images that can be used to run software such as PHP, PHP+Apache, MySQL and many, many more. If the very concept of Docker is still fuzzy to you, <Link to="/blog/docker-definition-like-im-five">Docker - Explain me like I'm five</Link> is a good, gentle primer.
 
 All these images are completely free; they can be public or private. You can create your own images and store them on [Docker Hub](https://hub.docker.com) for free.
 
@@ -162,3 +166,5 @@ This is just crazy. Think of the benefits: you are developing a PHP script and w
 />
 
 Now let's take it to the next level and synchronize the files on our hard disk with the container.
+
+This same "zero local install" approach works for pretty much any language — I've since applied it to <Link to="/blog/docker-python">Python</Link>, <Link to="/blog/docker-pascal">Pascal</Link>, <Link to="/blog/docker-assembly">Assembly</Link>, and <Link to="/blog/docker-java">Java</Link>.

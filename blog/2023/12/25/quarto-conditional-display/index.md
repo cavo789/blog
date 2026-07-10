@@ -14,11 +14,15 @@ language: en
 ---
 ![Quarto conditional display](/img/v2/quarto.webp)
 
-Like me, you've definitely abandoned Microsoft Word, PowerPoint and friends and do everything in Markdown. Like me, you use the same markdown file to generate your documentation in `html`, `pdf`, `docx`, `pptx`, `revealjs`, ... as required situation by situation.
+<TLDR>
+This article shows Quarto's `content-visible`/`content-hidden` conditional blocks (`::: {.content-visible when-format="html"}`), which let a single Markdown source render different content depending on the output format — useful for hiding wide tables from PDF, dropping lengthy code listings from slideshows, or adding a "Thank you / Questions?" closing slide only to the reveal.js output.
+</TLDR>
+
+Like me, you've definitely abandoned Microsoft Word, PowerPoint and friends and do everything in Markdown. Like me, you use the same markdown file to generate your documentation in `html`, `pdf`, `docx`, `pptx`, `revealjs`, ... as required, situation by situation.
 
 My personal use case is the following one: I've a single, sometimes big, `readme.md` file for the documentation of a tool I've created. In this document, I could display f.i. tables containing several columns that could be wide. This won't be a problem if I display the documentation as an HTML document, since we have a horizontal scrollbar in the browser to navigate from left to right. But when I generate a PDF, the table will *explode* the width of my PDF page and the result will be awful.
 
-Same idea when, if my output is an HTML page, I can easily display a listing of a few dozen lines of my source code, for example, to illustrate a feature. On the other hand, if I display it as a slideshow, this will be counterproductive, since the slide will be huge and not very effective.
+Same idea: if my output is an HTML page, I can easily display a listing of a few dozen lines of my source code, for example, to illustrate a feature. On the other hand, if I display it as a slideshow, this will be counterproductive, since the slide will be huge and not very effective.
 
 And, if my goal is to generate a slideshow, the last part of my documentation will be a *Thank you for listening! Do you have any questions?* chapter. And that one should certainly not be part of the `docx` / `pdf` / `html` output. Just for the `revealjs` display.
 

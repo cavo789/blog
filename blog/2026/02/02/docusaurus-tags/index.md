@@ -46,7 +46,8 @@ It looks for:
 * **Case variations**: `GitHub` vs `github`.
 * **Plurals**: `snippet` vs `snippets`.
 * **Substrings**: `visual studio code` vs `vscode`.
-* This helps me spot the mess I didn't even know I had.
+
+This helps me spot the mess I didn't even know I had.
 
 ### The Script
 
@@ -64,7 +65,7 @@ I have a `Makefile` target set up, but essentially, it runs a command like this:
 $ docker run -it --rm -v .:/app -w /app --entrypoint /bin/sh python:3.14-slim -c "pip install --root-user-action=ignore oyaml python-frontmatter >/dev/null && python .scripts/tags-manager.py list"
 </Terminal>
 
-But, for sure, that command is quite complex to remember so I'm using a Makefile target:
+But, for sure, that command is quite complex to remember, so I use a Makefile target instead:
 
 <Snippet filename="makefile" source="./files/makefile" defaultOpen={false} />
 
@@ -80,7 +81,7 @@ $ make tags-manager ARGS="list"
 
 **2. Renaming a tag:**
 
-If, by looking at the list of tags, I see I've a `snippets` tag and a `snippet` one, I'll merge them like this:
+If, by looking at the list of tags, I see I have a `snippets` tag and a `snippet` one, I'll merge them like this:
 
 <Terminal typewriter wrap={true}>
 $ make tags-manager ARGS="rename snippets,snippet"
@@ -88,7 +89,7 @@ $ make tags-manager ARGS="rename snippets,snippet"
 
 **3. Deleting a tag:**
 
-I can also find that a specific tag didn't have any added-value so, to remove it, I'll run something like this:
+I can also find that a specific tag doesn't add any value so, to remove it, I'll run something like this:
 
 <Terminal typewriter wrap={true}>
 $ make tags-manager ARGS="delete draft"

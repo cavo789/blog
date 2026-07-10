@@ -16,6 +16,10 @@ language: en
 ---
 ![Docker image that provides static analysis tools for PHP](/img/v2/clean_code.webp)
 
+<TLDR>
+This article shows how to run a whole suite of PHP static analysis tools with zero installation via the `jakzal/phpqa` Docker image: `composer normalize` to reorder `composer.json`, `composer-unused` to spot unused dependencies, `parallel-lint` for syntax errors, `php-cs-fixer` and `phpcbf` for auto-formatting — plus how to pin a specific PHP version tag when scanning legacy codebases.
+</TLDR>
+
 For years now, I'm using [https://github.com/jakzal/phpqa](https://github.com/jakzal/phpqa) to run a lot of static analysis tools on my PHP codebase.
 
 The list of available tools is huge; see by yourself: [Available tools](https://github.com/jakzal/phpqa?tab=readme-ov-file#available-tools).
@@ -24,7 +28,7 @@ In this blog post, we will see how we can take advantage of all these tools and 
 
 <!-- truncate -->
 
-First, as always when we need to learn new software, we must speak about how to install it. The answer is easy here: there is nothing to do. Oh? Really? For sure! `jakzal/phpqa` is a Docker image so we don't need to install it, just to run it once. During the first call, Docker will download it so, yeah, no installation at all. Thank you Docker!
+First, as always when we need to learn new software, we must talk about how to install it. The answer is easy here: there is nothing to do. Oh? Really? For sure! `jakzal/phpqa` is a Docker image so we don't need to install it, just to run it once. During the first call, Docker will download it so, yeah, no installation at all. Thank you Docker!
 
 <AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run command will always look like:
@@ -84,7 +88,7 @@ This tool will scan all `.php` files present in your codebase and ensure there i
 
 The command to run here is `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa parallel-lint . --exclude vendor`.
 
-Think about adding exclusions like `--exclude vendor` not to scan the code that is not yours.
+Think about adding exclusions like `--exclude vendor` so you don't scan code that isn't yours.
 
 As you can see below, in less than two seconds, the tool has checked 823 files of my codebase. Pretty fast.
 
@@ -112,7 +116,7 @@ Let's imagine your codebase is a legacy one (not written for PHP 8.3 but f.i. PH
 
 An instruction like `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa parallel-lint . --exclude vendor` (as we have seen above) will scan the code with PHP 8.3 (situation end March 2024) and you can have plenty of errors since you're using a PHP 8.3x tool on a PHP 7.4x codebase.
 
-How to solve this? Really easy in fact. As you know, by using `docker run [...] jakzal/phpqa [...]` you're asking Docker to use the `latest` version of the image and that version will change. Every time the owner of the image publish a newer version, that `latest` image is updated and perhaps, in a few months, it'll be PHP 8.4 by default.
+How to solve this? Really easy in fact. As you know, by using `docker run [...] jakzal/phpqa [...]` you're asking Docker to use the `latest` version of the image and that version will change. Every time the owner of the image publishes a newer version, that `latest` image is updated and perhaps, in a few months, it'll be PHP 8.4 by default.
 
 So, to solve our issue: we need to use a specific tag for PHP 7.4. Simply jump on [https://hub.docker.com/r/jakzal/phpqa/tags](https://hub.docker.com/r/jakzal/phpqa/tags) and type `7.4` in the `Filter Tags` area.
 

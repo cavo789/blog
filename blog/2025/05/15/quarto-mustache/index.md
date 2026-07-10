@@ -27,7 +27,7 @@ Recently, I needed to generate a static website (HTML) that would allow my colle
 
 And immediately, when you put it like that, you think of a CMS (content management system) such as Joomla for example, i.e. being able to define a standard page (a template) that will include the chapters and in each chapter, you could imagine injecting content that would be variables. Wouldn't it be silly to write each page by hand?
 
-And this is where [Mustache](https://mustache.github.io/)'s idea comes in. Mustache defines himself as a *Logic-less templates* framework.
+And this is where [Mustache](https://mustache.github.io/)'s idea comes in. Mustache defines itself as a *Logic-less templates* framework.
 
 And, because I'm using Quarto for my documentation, I need an extension for using Mustache and, it's [Quarto-partials](https://github.com/gadenbuie/quarto-partials/tree/main) from Garrick Aden-Buie.
 
@@ -47,7 +47,7 @@ Create a file called `_quarto.yml` with this content:
 
 <Snippet filename="_quarto.yml" source="./files/_quarto.yml" />
 
-This file tells to Quarto that we're about to create a website i.e. by running `quarto render` later on, we'll convert our pages written in Markdown as HTML pages.
+This file tells Quarto that we're about to create a website i.e. by running `quarto render` later on, we'll convert our pages written in Markdown as HTML pages.
 
 The two last lines should be present to load an external extension called `partials`; let's install it.
 
@@ -57,7 +57,7 @@ This will create a new folder called `_extensions` with partials in it.
 
 ## Let's discover the basics
 
-The idea behind Quarto-partials is to allow to write a page like below i.e. I'll describe my first fictive functionality and, in the `How to run` chapter, I'll inject the content of another page:
+The idea behind Quarto-partials is to allow writing a page like the one below i.e. I'll describe my first fictive functionality and, in the `How to run` chapter, I'll inject the content of another page:
 
 <Snippet filename="documentation/canvas.md" source="./files/canvas.txt" />
 
@@ -130,17 +130,17 @@ In my own case, my documentation looks like this:
 
 ## Testing if a variable is defined or not
 
-Let's take a look to the `is_for.md` file.
+Let's take a look at the `is_for.md` file.
 
 <Snippet filename="/_partials/project_type.md" source="./files/project_type.txt" />
 
-There is two syntax used here: `{{#` and `{{^`.
+There are two syntaxes used here: `{{#` and `{{^`.
 
 The first one will check the presence of a variable called `type` and if that one is defined, the block will be processed.
 
 The second one is called *Inverted section* and will check the absence of the variable so if `type` is not defined, that block will be parsed.
 
-If you look at my `php_lint.md` file, I've well a variable `type` defined in my `partial-data` section (the one used by Quarto-partials).
+If you look at my `php_lint.md` file, I do have a variable `type` defined in my `partial-data` section (the one used by Quarto-partials).
 
 <Snippet filename="/documentation/php_lint.md" source="./files/php_lint_2.txt" />
 
@@ -148,7 +148,7 @@ If I render my file using the command line `quarto render`, I'll then see `This 
 
 In case my feature was for all project types, I can just remove the `type: "PHP"` line from my frontmatter. In that case, I'll see `This stage is for **all** type of projects.`.
 
-Let's take a look to the next included file:
+Let's take a look at the next included file:
 
 <Snippet filename="../_partials/configure/file.md" source="./files/file.txt" />
 
@@ -156,7 +156,7 @@ Same idea. If a `config_file` key is defined in the documentation frontmatter, w
 
 ## Raw contents
 
-When displaying a variable, sometimes we need to disable the normal echo mode and use what Mustache call `raw content`.
+When displaying a variable, sometimes we need to disable the normal echo mode and use what Mustache calls `raw content`.
 
 In the example below, I've used a character `/` that will be escaped by Mustache.
 
@@ -173,7 +173,7 @@ The report will be created into your project's directory in a folder called `{{ 
 {{/output}}
 ```
 
-The HTML rendering here will return `.output&#x2F;coverage` and not `.output/coverage` as expected. As we can see, Mustache has escape our slash. So, we've to use the raw content mode and use the `{{& output }}` syntax instead.
+The HTML rendering here will return `.output&#x2F;coverage` and not `.output/coverage` as expected. As we can see, Mustache has escaped our slash. So, we have to use the raw content mode and use the `{{& output }}` syntax instead.
 
 ```markdown
 {{#output}}

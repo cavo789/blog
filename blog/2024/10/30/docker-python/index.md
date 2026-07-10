@@ -18,6 +18,10 @@ language: en
 <!-- cspell:ignore bashhistory,groupid,commandhistory,pylint,synchronised -->
 ![Docker - Python devcontainer](/img/v2/devcontainer.webp)
 
+<TLDR>
+This article builds a reusable Python devcontainer for VSCode: a `Dockerfile`, `compose.yaml`, `.docker.env` (for per-project settings like the Python version), and a `makefile` wrapping common commands (`make up`, `make bash`), then a `.devcontainer/devcontainer.json` preconfigured with the Python extension and settings so `make devcontainer` opens VSCode running fully inside the container with files synced to the host.
+</TLDR>
+
 As you know, VSCode is a superb editor that lets you program in probably any programming language.  An editor, not an IDE, because VSCode is basically a Notepad in its ultimate version.
 
 If you want to program in Python, you'll need to install a few extensions in VSCode to be really comfortable, i.e. syntax highlighting, code navigation, code refactoring (like renaming a variable or a class), etc.
@@ -30,7 +34,7 @@ In this new article, we'll look at how to get a VSCode environment ready to use 
 
 In this article, we'll create a **devcontainer** i.e. a development environment based on Docker. The creation of the devcontainer will take a few minutes but it's just a question of copy/paste from this article to your system.
 
-Once files will be created, you can then reuse the devcontainer for all your Python projects.
+Once the files have been created, you can reuse the devcontainer for all your Python projects.
 
 ## Let's create the files for our Docker environment
 
@@ -53,7 +57,7 @@ Next to the `Dockerfile`, we'll create our `compose.yaml` one. Please create tha
 
 ### .docker.env
 
-The third file to create will be called `.docker.env` where we'll initialise some values. Please create that file with the content below:
+The third file to create will be called `.docker.env` where we'll initialize some values. Please create that file with the content below:
 
 
 <Snippet filename=".docker.env" source="./files/.docker.env" />
@@ -70,7 +74,7 @@ To make life easier, we're going to group together a set of commands in a file c
 <Snippet filename="makefile" source="./files/makefile" />
 
 <AlertBox variant="caution">
-If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
+If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed with the installation.
 
 </AlertBox>
 
@@ -78,7 +82,7 @@ Right now, we can run `make up` in our console and we'll get this screen:
 
 ![Makefile](./images/make.webp)
 
-As you can see, we've a lot of commands like `make up` to start our Docker container. Let's try and, ouch, we miss a file called `/src/requirements.txt`.
+As you can see, we've a lot of commands like `make up` to start our Docker container. Let's try, and ouch, we're missing a file called `/src/requirements.txt`.
 
 ![requirements.txt is missing](./images/requirements_txt.webp)
 
@@ -90,18 +94,18 @@ By running `make up` again, yes!, this time we can build our images and create o
 
 ![Docker up](./images/docker-up.webp)
 
-This time we can, if you need to, enter in our container by running `make bash` and f.i. what is inside our current folder and which version of Python has been installed:
+This time we can, if you need to, enter our container by running `make bash` and, for instance, check what's inside our current folder and which version of Python has been installed:
 
 ![Inside the container](./images/container-python.webp)
 
 <AlertBox variant="note">
-As you see, Python 3.13 is used. Why that specific version? Just go back to your `.docker.env` file and take a look to the `DOCKER_PYTHON_VERSION` variable. If you need another just update the `.docker.env` file and run `make up` again.
+As you see, Python 3.13 is used. Why that specific version? Just go back to your `.docker.env` file and take a look at the `DOCKER_PYTHON_VERSION` variable. If you need another one, just update the `.docker.env` file and run `make up` again.
 
 </AlertBox>
 
 ## Let's start creating our first script
 
-If you're still inside your container, please type `exit` so your prompt will be the one of your machine (your *host*); no more the one of your running container.
+If you're still inside your container, please type `exit` so your prompt will be the one of your machine (your *host*), no longer the one of your running container.
 
 Please create your first script: create a new file in the `src` folder and call that file `hello.py`.
 
@@ -118,17 +122,17 @@ To be able to run the code, start `make bash` again (to jump in the container) a
 ![Run hello](./images/run-hello.webp)
 
 <AlertBox variant="info">
-It will works because, in the container, the working directory is `/app/src`. If this had not been the case, we would have had to write, for example, `python /app/src/hello.py` i.e. the absolute path to the script.
+It will work because, in the container, the working directory is `/app/src`. If this had not been the case, we would have had to write, for example, `python /app/src/hello.py` i.e. the absolute path to the script.
 
 </AlertBox>
 
-As you can see, files on your machine are synchronised with your host. If VSCode is still open, you can change your script to f.i.
+As you can see, files on your machine are synchronized with your host. If VSCode is still open, you can change your script to f.i.
 
 ```python
-print("Hey! It's synchronised; cool!")
+print("Hey! It's synchronized; cool!")
 ```
 
-![It's synchronised](./images/it-is-synchronized.webp)
+![It's synchronized](./images/it-is-synchronized.webp)
 
 ## What have we done so far?
 
@@ -140,11 +144,11 @@ All these files can be used across all your Python projects.
 
 ## Now, let's create our devcontainer environment
 
-We've to create an additional file. Please create a new folder called `.devcontainer` and, there, a file called `devcontainer.json`. Copy/paste the content below:
+We have to create an additional file. Please create a new folder called `.devcontainer` and, there, a file called `devcontainer.json`. Copy/paste the content below:
 
 <Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.json" />
 
-This file is very long; can be shorter but ... the idea is to configure VSCode so we've specified all extensions we want in our coding environment and a bunch of settings.
+This file is very long; it can be shorter, but the idea is to configure VSCode, so we've specified all the extensions we want in our coding environment, along with a bunch of settings.
 
 We've finished our set-up. Here is our final project's structure:
 
@@ -154,7 +158,7 @@ We've finished our set-up. Here is our final project's structure:
 
 If VSCode is still open, please close it. If you're still in the container's console, please type `exit` to go back to your host console.
 
-Now, please run `make devcontainer` (on your host machine thus) which is one of the command we've already in our `makefile`.
+Now, please run `make devcontainer` (on your host machine thus), which is one of the commands we already have in our `makefile`.
 
 VSCode will start and open the project directly *inside* the container:
 
@@ -168,4 +172,4 @@ VSCode will also ask if you want to install recommended extensions; please do it
 
 ## Conclusion
 
-You've now a fully coding environment to work with Python. Thanks to our Docker image, Python has been installed and configured to run in a Docker container (understand: nothing was installed on your machine) and thanks to the Devcontainer, you're sure that VSCode is properly configured with all required extensions to work with ease.
+You now have a fully working coding environment for Python. Thanks to our Docker image, Python has been installed and configured to run in a Docker container (understand: nothing was installed on your machine) and thanks to the Devcontainer, you're sure that VSCode is properly configured with all required extensions to work with ease.

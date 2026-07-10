@@ -17,6 +17,10 @@ updates:
 <!-- cspell:ignore cbfsconnect -->
 ![Open your Linux folder in Windows Explorer](/img/v2/wsl.webp)
 
+<TLDR>
+This article shows how to open your current WSL folder in Windows Explorer by running `explorer.exe .` from your Linux console, which maps to a UNC path (`\\wsl.localhost\...` on Windows 11, `\\wsl$\...` on Windows 10). It also covers the fix for the "wsl.localhost is not accessible" error: adding the `P9NP` provider to two Windows registry keys and rebooting.
+</TLDR>
+
 Did you know it is possible to use the Windows Explorer program and navigate in your Linux filesystem?
 
 An easy way to open your current folder in Windows Explorer is to call the `explorer.exe` binary.

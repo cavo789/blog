@@ -16,6 +16,10 @@ updates:
 ---
 ![Install LimeSurvey using Docker](/img/v2/limesurvey.webp)
 
+<TLDR>
+This article shows how to spin up LimeSurvey, an open-source survey tool, using Docker Compose with the `martialblog/docker-limesurvey` image. It covers a minimal setup to get the site running at `http://localhost:8080`, adding volumes so your surveys and configuration survive container restarts, and pinning both LimeSurvey and MySQL to specific versions when you need to reproduce an older production environment locally.
+</TLDR>
+
 LimeSurvey is an open-source survey tool that allows users to create and conduct surveys online. It is a powerful and intuitive tool that can be used by everyone.
 
 Once again, it's easy to play with it and create a sandbox site to take a look at all its features; thanks to Docker.

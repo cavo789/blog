@@ -19,9 +19,9 @@ Did you know you can make a folder on Windows case-sensitive, just like on Linux
 
 This is just ... for fun.
 
-As you know, MS DOS didn't make any differences between `MyFile.txt`, `myfile.txt`, `MYFILE.txt` since DOS isn't case sensitive.
+As you know, MS DOS didn't make any difference between `MyFile.txt`, `myfile.txt`, `MYFILE.txt` since DOS isn't case sensitive.
 
-If you don't believe me, just start notepad, type a few characters and save your work once as `MyFile.txt` then as `myfile.txt` then as `MYFILE.txt`. Then look to your folder, how many documents did you have ? Just one.
+If you don't believe me, just start notepad, type a few characters and save your work once as `MyFile.txt` then as `myfile.txt` then as `MYFILE.txt`. Then look at your folder, how many documents do you have? Just one.
 
 Under Linux, you would have had three files; not under DOS.
 
@@ -43,4 +43,4 @@ If you don't believe me:
 
 ![Case sensitivity has been enabled](./images/case_sensitivity_enabled.webp)
 
-To revert your change, run `fsutil.exe file setCaseSensitiveInfo . disable` but, first, you'll have to remove at least two files because DOS will prevent to disable the feature if this will give conflicts.
+To revert your change, run `fsutil.exe file setCaseSensitiveInfo . disable` but, first, you'll have to remove at least two files because DOS will prevent you from disabling the feature if this would create conflicts.

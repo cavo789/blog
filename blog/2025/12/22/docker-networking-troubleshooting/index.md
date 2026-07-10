@@ -1,5 +1,5 @@
 ---
-slug: github-networking-troubleshooting
+slug: docker-networking-troubleshooting
 title: Troubleshooting for Docker containers - Accessing the other one
 date: 2025-12-22
 description: Troubleshoot Docker container networking - test ports, DNS, and fix proxy issues so one container can reliably call another API on the same network.
@@ -19,7 +19,7 @@ This article details troubleshooting steps for Docker containers unable to commu
 </TLDR>
 
 
-The situation: I've two containers; one called `provider` and the other one called `consumer`. The `consumer` should be able to run an API on the `provider`.
+The situation: I have two containers; one called `provider` and the other one called `consumer`. The `consumer` should be able to run an API on the `provider`.
 
 And ... it didn't work: something in my configuration is not correct because I get connection errors when trying to call the `provider`, let's start the investigation and understand the solution.
 
@@ -29,7 +29,7 @@ In the rest of this article, let's call them like that: `provider` for the first
 
 ## First, they should be on the same network
 
-First, the should be on the same Docker network otherwise, no chance to make it working.
+First, they should be on the same Docker network; otherwise, there's no chance of making it work.
 
 By running `docker ps` you'll get the `container_id` and the `name` of your two containers.
 
@@ -39,7 +39,7 @@ You'll get something like that:
 
 <Snippet source="./files/network.json" />
 
-In this example, the network is called `your_network`. Just make sure you've the same for both containers. Also, make sure you've the same `Gateway` too (`192.168.0.1` in this example).
+In this example, the network is called `your_network`. Just make sure you have the same for both containers. Also, make sure you have the same `Gateway` too (`192.168.0.1` in this example).
 
 <AlertBox variant="tip" title="Ok, they're running on the same network." />
 
@@ -57,7 +57,7 @@ a95b6174beb9   provider     0.0.0.0:8888->8000/tcp, [::]:8888->8000/tcp
 
 So they both are running port `8000` internally but the `consumer` is exposed on the host using port `8001` and `provider` on port `8888`.
 
-In the previous chapter, we just have seen the network is called `your_network`.
+In the previous chapter, we just saw that the network is called `your_network`.
 
 We can ensure the process running on port `8000` in both containers is running by executing `docker inspect -f '{{.NetworkSettings.Networks.your_network.IPAddress}}' consumer` in the console to get the IP of that container. In my case, I get `192.168.0.4` as response.
 
@@ -75,7 +75,7 @@ We've seen containers are running on port `8000` internally but one is mapping t
 
 We can run `telnet 127.0.0.1 8001` and `telnet 127.0.0.1 8888` to test that port. **See, here, since we're accessing exposed ports, we're using our local host IP address.**
 
-If you know that the service is a web service, you can run `curl -vvv 127.0.0.1:8001` to make sure the service is working fine and the delivered answer meet your expectations:
+If you know that the service is a web service, you can run `curl -vvv 127.0.0.1:8001` to make sure the service is working fine and the delivered answer meets your expectations:
 
 <Snippet source="./files/curl.txt" />
 
@@ -83,7 +83,7 @@ If you know that the service is a web service, you can run `curl -vvv 127.0.0.1:
 
 ## Fourthly, testing connectivity between the two containers
 
-Run `docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}"` again the get the container name and his associated container ID back.
+Run `docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}"` again to get the container name and its associated container ID back.
 
 In our preamble, we've said: the `consumer` should be able to run an API from the `provider` so let's jump in the `consumer` by creating a console. We'll use the CONTAINER_ID of the consumer and we'll connect as `root`:
 
@@ -105,7 +105,7 @@ Once done, try `ping` followed by the container name (we've already identified `
 
 Press <kbd>CTRL</kbd>+<kbd>C</kbd> to stop.
 
-<AlertBox variant="tip" title="Ok, our consumer can reach the provider both containers are correctly exposed on their external port.">
+<AlertBox variant="tip" title="Ok, our consumer can reach the provider by name (ping works).">
 
 This means that the DNS resolution is working fine.
 </AlertBox>
@@ -120,7 +120,7 @@ $ apt-get update
 $ apt-get install -y telnet
 </Terminal>
 
-Then run `telnet provider 8000` i.e. the name of the container and his internal port (not the exposed one)
+Then run `telnet provider 8000` i.e. the name of the container and its internal port (not the exposed one)
 
 <Terminal typewriter wrap={true} source="./files/terminal-1.txt" />
 
@@ -130,7 +130,7 @@ Just rerun the last `telnet` command but using port `8888` this time: it'll not 
 By using the container name with telnet, we should use the internal port; not the exposed one.
 </AlertBox>
 
-<AlertBox variant="tip" title="Ok, our consumer can reach the provider both containers are correctly exposed on their external port.">
+<AlertBox variant="tip" title="Ok, the transport layer (telnet) is working too.">
 
 `telnet` is used to test the **transport layer** (layer #4 in the [OSI model](https://en.wikipedia.org/wiki/OSI_model)) and our test here is showing it's working.
 </AlertBox>
@@ -165,7 +165,7 @@ In my situation, this is where I got an error and the dump is showing something 
 
 The request was intercepted by a proxy and that one is denying the request.
 
-We should tell him to ignore request made to our container.
+We should tell it to ignore requests made to our container.
 
 ```bash
 export no_proxy="provider,192.168.0.0/24,127.0.0.1,localhost"
@@ -180,9 +180,9 @@ export NO_PROXY="provider,192.168.0.0/24,127.0.0.1,localhost"
 To make sure all tools (`curl`, `wget`, `apt-get`, ...) are well using the `no_proxy` variable, it's recommended to use both notation: lower and upper case.
 </AlertBox>
 
-Now, finally, the command I get consume my API using a command like `curl -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' http://provider:8000/api/v1/fetch`.
+Now, finally, the command I use to consume my API looks like `curl -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' http://provider:8000/api/v1/fetch`.
 
-## Fifthly and finding the solution
+## Fifthly, finding the solution
 
 If you came across this article because you had the same problem as me, the solution is now simple: make sure your Docker image is configured to have a `no_proxy` variable with the correct values.
 

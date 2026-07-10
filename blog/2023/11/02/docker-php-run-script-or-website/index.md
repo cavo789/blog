@@ -14,6 +14,10 @@ language: en
 ---
 ![The easiest way to run a PHP script / website](/img/v2/php_tips.webp)
 
+<TLDR>
+This article shows the fastest way to run a standard PHP script or site locally: drop the code into a folder and run `docker run -d -p 8080:80 -u ${UID}:${GID} -v "$PWD":/var/www/html php:7.4-apache`, then browse to `http://127.0.0.1:8080` — no local PHP or Apache install needed, and swapping the image tag switches PHP versions instantly.
+</TLDR>
+
 Imagine this situation: you wish to run a piece of standard PHP code (no dependency) like the one below:
 
 <Snippet filename="index.php" source="./files/index.php" />
@@ -25,7 +29,7 @@ The easiest way is to:
 * Create a temporary directory with `mkdir /tmp/snippet && cd $_`,
 * Create an `index.php` file there (with your snippet like above),
 * Run this command in the console: `docker run -d -p 8080:80 -u ${UID}:${GID} -v "$PWD":/var/www/html php:7.4-apache` and,
-* browse to `http://127.0.0.1:8080`.
+* Browse to `http://127.0.0.1:8080`.
 
 It's done.
 

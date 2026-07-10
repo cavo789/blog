@@ -25,7 +25,7 @@ This article demonstrates creating a Docusaurus component to alert readers when 
 </TLDR>
 
 
-In this article let's see how we can display a small frame "Warning: This article is at least a year old, which in tech years is basically prehistoric.".
+In this article, let's see how we can display a small frame "Warning: This article is at least a year old, which in tech years is basically prehistoric."
 
 We'll create a React component for Docusaurus, and we'll inject it in our blog post page so, once in place, everything will work automagically.
 
@@ -33,7 +33,7 @@ We'll create a React component for Docusaurus, and we'll inject it in our blog p
 
 ## Create the component
 
-You'll need to create two new files to your own Docusaurus site:
+You'll need to create two new files in your own Docusaurus site:
 
 <ProjectSetup folderName="/your_docusaurus_site" createFolder={false}>
   <Snippet filename="src/components/Blog/OldPostNotice/index.js" source="src/components/Blog/OldPostNotice/index.js" />
@@ -42,7 +42,7 @@ You'll need to create two new files to your own Docusaurus site:
 
 ## Override BlogPostPage template
 
-In terms of Docusaurus, we'll need to **swizzle** the page that is responsible to render a post. That page is called `BlogPostPage`.
+In terms of Docusaurus, we'll need to **swizzle** the page that is responsible for rendering a post. That page is called `BlogPostPage`.
 
 To do this, please start a console and run `yarn swizzle @docusaurus/theme-classic BlogPostItem/Content`.
 
@@ -67,7 +67,7 @@ Save the file and refresh your blog. You should get something like this picture 
 </BrowserWindow>
 
 <AlertBox variant="info">
-The component is using the `date` field that you've to mention in your YAML front matter.
+The component is using the `date` field that you have to mention in your YAML front matter.
 
 So, in each of your `.md` post, you should have a YAML block like this:
 
@@ -84,7 +84,7 @@ date: 2025-09-30
 
 ## Position of the warning
 
-The notice will be placed before the post content. On my blog, I've manipulated the code below to extract the very first image (i.e. the banner) so I can display it first, then the notice information then the rest of the article. But that probably too complex right now. We'll see this in a future article.
+The notice will be placed before the post content. On my blog, I've manipulated the code below to extract the very first image (i.e. the banner) so I can display it first, then the notice information, then the rest of the article. But that's probably too complex right now. We'll see this in a future article.
 
 ```jsx
 <div

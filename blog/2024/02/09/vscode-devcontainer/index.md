@@ -23,6 +23,10 @@ blueskyRecordKey: 3lymrewibzk2l
 ---
 ![PHP development in a devcontainer with preinstalled code quality tools](/img/v2/devcontainer.webp)
 
+<TLDR>
+This long, step-by-step article builds a VSCode devcontainer for PHP with a full set of preinstalled code-quality tools: PHP-CS-Fixer and PHPCBF/PHPCS for auto-formatting on save, SonarLint and Intelephense for real-time bug detection, and Rector for automated codebase upgrades and refactoring suggestions — all configured once in `devcontainer.json` and `Dockerfile` so any team member gets the identical environment.
+</TLDR>
+
 <AlertBox variant="info" title="Don't want to read this long article">
 So jump to <Link to="/blog/php-devcontainer">Install a PHP Docker environment in a matter of seconds</Link>
 
@@ -30,7 +34,7 @@ So jump to <Link to="/blog/php-devcontainer">Install a PHP Docker environment in
 
 Let's imagine one of the following situations:
 
-1. You are working with several people on the same PHP project and you notice that one or other person does not comply with your quality criteria when it comes to the layout of the code. You like to use four spaces for indentation, you want the brace that marks the start of a function to be on the line, you don't want to see any more useless spaces at the end of the line, ... and damned! you notice that some people don't care about this.
+1. You are working with several people on the same PHP project and you notice that one person or another does not comply with your quality criteria when it comes to the layout of the code. You like to use four spaces for indentation, you want the brace that marks the start of a function to be on the line, you don't want to see any more useless spaces at the end of the line, ... and damned! you notice that some people don't care about this.
 
 2. You are working alone on a project and don't want to lose time to configure your VSCode experience. You wish to start very quickly with a lot of tools already installed in VSCode so you can put your focus to the code, not the editor.
 
@@ -47,7 +51,7 @@ This article is written in the form of a step-by-step tutorial. If you don't wan
 <Terminal typewriter source="./files/terminal-4.txt" />
 
 <AlertBox variant="note" title="Download the very latest version">
-The php_devcontainer repository will evolve over time. If you wish to download the latest version and not the use frozen for this article, please use the following commands and not the ones of here above:
+The php_devcontainer repository will evolve over time. If you wish to download the latest version and not the one frozen for this article, please use the following commands and not the ones above:
 
 <Terminal typewriter source="./files/terminal-3.txt" />
 
@@ -84,7 +88,7 @@ As you can expect, the script is running fine:
 
 </AlertBox>
 
-In this article we'll learn how to configure Visual Studio Code to comes with preinstalled extensions and configured for your targeting version of PHP (would be 8.2 but you can change this very easily).
+In this article we'll learn how to configure Visual Studio Code to come with preinstalled extensions and configured for your targeting version of PHP (would be 8.2 but you can change this very easily).
 
 <AlertBox variant="caution" title="The technique we'll use is called devcontainer.">
 **A devcontainer is a pre-configured, isolated development environment running in a Docker container, offering consistent tools and settings across different machines.**
@@ -134,7 +138,7 @@ Now the magic happens: please reopen the so badly formatted `index.php` file and
 ![Your script has been correctly formatted this time](./images/index_php_correctly_formatted.webp)
 
 <AlertBox variant="info" title="How is this possible?">
-This because we taught VSCode to use a specific formatter for our PHP file and we told him to format the file each time it's saved. And do you know where we did it? In our `.devcontainer/devcontainer.json` and `.devcontainer/Dockerfile` files, of course!
+This is because we taught VSCode to use a specific formatter for our PHP file and we told him to format the file each time it's saved. And do you know where we did it? In our `.devcontainer/devcontainer.json` and `.devcontainer/Dockerfile` files, of course!
 
 **This is why we're working in a Devcontainer!** We've done the configuration once and for all, so all we have to do is reuse it, whatever the PHP project.
 
@@ -152,7 +156,7 @@ Please reopen your `.devcontainer/devcontainer.json` file and look at the highli
 
 So, we're asking VSCode to, for PHP files, run a `formatter` when the file is saved and the tool to use for the formatting is `junstyle.php-cs-fixer`. Look directly at the end, in the `extensions` section, we instruct VSCode to install that extension.
 
-We also instruct VSCode to automatically saved the file as soon as the focus changes i.e. for instance, if we select another file, if we click elsewhere (no more in the editor), ...
+We also instruct VSCode to automatically save the file as soon as the focus changes i.e. for instance, if we select another file, if we click elsewhere (no more in the editor), ...
 
 Finally, `junstyle.php-cs-fixer` requires some settings that we need to initialize like f.i. `php-cs-fixer.executablePath`.
 
@@ -160,7 +164,7 @@ Right now, you can think: *Wait a minute, I don't have the `/usr/local/bin/php-c
 
 By running VSCode in a container, you're *no more* on your machine.
 
-And now, you need to take a look on the third file we've created: `Dockerfile`.
+And now, you need to take a look at the third file we've created: `Dockerfile`.
 
 Please reopen the `.devcontainer/Dockerfile` file and look at the highlighted lines below:
 
@@ -171,7 +175,7 @@ That file will instruct VSCode to download a `php:8.2-fpm` Docker image and to i
 The version `3.46.0` of the `PHP-CS-Fixer` executable will be downloaded and stored, in the Docker image, as `usr/local/bin/php-cs-fixer.phar`. This is why, in our `devcontainer.json` we can write `"php-cs-fixer.executablePath": "/usr/local/bin/php-cs-fixer.phar",`, because we've already downloaded and installed the executable.
 
 <AlertBox variant="info" title="Need to check?">
-Still in VSCode, open a terminal by pressing <kbd>CTRL</kbd>+<kbd>´</kbd> and, in the prompt, type `ls -l /usr/local/bin`. As you can see, `php-cs-fixer.phar` is well there. *It was installed downloaded and installed by VSCode when you've jump in the container.*
+Still in VSCode, open a terminal by pressing <kbd>CTRL</kbd>+<kbd>´</kbd> and, in the prompt, type `ls -l /usr/local/bin`. As you can see, `php-cs-fixer.phar` is well there. *It was downloaded and installed by VSCode when you jumped into the container.*
 
 ![The php-cs-fixer.phar binary is well there](./images/php-cs-fixer-phar.webp)
 
@@ -259,7 +263,7 @@ And you'll get this output:
 
 <Terminal source="./files/terminal-2.txt" />
 
-There is one warning and one error concerning *coding convention violation* and the nice thing is **phpcbf can fix some.**.
+There is one warning and one error concerning *coding convention violation* and the nice thing is **phpcbf can fix some**.
 
 Now, run almost the same command but no more `phpcs` (to detect violations) but `phpcbf` (to fix them -the ones that can be fixed automatically-).
 
@@ -287,11 +291,11 @@ Here too, SonarLint was already installed in our Docker container thanks our `.d
 <Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.part4.json" />
 
 <AlertBox variant="note" title="It's only a VSCode extension">
-SonarLint don't need external tool; it's a stand-alone VSCode extension so no need to foresee something in our `Dockerfile`.
+SonarLint doesn't need an external tool; it's a stand-alone VSCode extension so no need to foresee something in our `Dockerfile`.
 
 </AlertBox>
 
-So, please reopen the `index.php` file you've and now pay attention to the `echo sayHello()` line:
+So, please reopen the `index.php` file you have, and now pay attention to the `echo sayHello()` line:
 
 <Snippet filename="index.php" source="./files/index.part3.php" />
 
@@ -338,7 +342,7 @@ I really LOVE Rector since he'll help me to learn new features of PHP. When I ru
 
 This time, we'll need to install Rector for our project and for this, we'll follow the official documentation: [https://github.com/rectorphp/rector?tab=readme-ov-file#install](https://github.com/rectorphp/rector?tab=readme-ov-file#install) but ... it's already done in our `.devcontainer/devcontainer.json` file.
 
-If you reopen it, take a look on the `postCreateCommand` node:
+If you reopen it, take a look at the `postCreateCommand` node:
 
 <Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.part5.json" />
 
@@ -364,7 +368,7 @@ Finally, open the `rector.php` configuration file and update it like this:
 <Snippet filename="rector.php" source="./files/rector.php" />
 
 <AlertBox variant="caution" title="Tell to Rector which PHP version you use">
-Rector will suggest you changes but to do this, he needs to know which version of PHP you're running. Indeed, Rector won't suggest you a PHP 8.2 syntax f.i. if you're still running on an older version (see [PHP Version Features](https://getrector.com/documentation/php-version-features)).
+Rector will suggest you changes but to do this, he needs to know which version of PHP you're running. Indeed, Rector won't suggest PHP 8.2 syntax f.i. if you're still running on an older version (see [PHP Version Features](https://getrector.com/documentation/php-version-features)).
 
 </AlertBox>
 
@@ -383,7 +387,7 @@ In a terminal, run `vendor/bin/rector process index.php --dry-run --config .conf
 
 ![Rector is simplifying our sayHello function](./images/rector_say_hello.webp)
 
-Take a look on the image here above. In red, your current code and, yes, we knew that, didn't we, the code quality is poor.
+Take a look at the image above. In red, your current code and, yes, we knew that, didn't we, the code quality is poor.
 
 Indeed, one concept in clean code approach is to avoid using the `if ... else ...` conditional statement. Most probably, we don't need `else` (see [https://phpmd.org/rules/cleancode.html#elseexpression](https://phpmd.org/rules/cleancode.html#elseexpression)).
 
@@ -391,7 +395,7 @@ Rector suggests removing completely the `if .. else ...` expression and to use a
 
 And that's correct, we can write `return $firstname == "" ? "Hello World!" : "Hello " . $firstname;` to get the exact same thing.
 
-And if you think it's over, you're wrong. Rector now look at our function parameter and understand it's a string so he'll suggest to [add a type hint](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#strictstringparamconcatrector) and, too, to [add a return type](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#returntypefromstrictscalarreturnexprrector) for the same reason.
+And if you think it's over, you're wrong. Rector now looks at our function parameter and understands it's a string so he'll suggest [adding a type hint](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#strictstringparamconcatrector) and, too, to [add a return type](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#returntypefromstrictscalarreturnexprrector) for the same reason.
 
 Since we've analyzed the suggestions of Rector and we agree with, please rerun the same command but, this time, without, the `--dry-run` flag.
 
@@ -408,7 +412,7 @@ Our new, improved, code is now:
 Rector is **absolutely brilliantly powerful**. Learn more about it by reading carefully his documentation site: [https://getrector.com/documentation/](https://getrector.com/documentation/).
 
 <AlertBox variant="info" title="The programmer has the last word, but for how much longer?">
-We can do one more improvement by extracting the `Hello` prefix. Rector has not yet see this but until when?
+We can do one more improvement by extracting the `Hello` prefix. Rector has not yet seen this, but for how long?
 
 <Snippet filename="index.php" source="./files/index.part7.php" />
 
@@ -430,7 +434,7 @@ When running Rector using `vendor/bin/rector process . --dry-run --config .confi
 If you allow Rector to make changes to your files, run `vendor/bin/rector process . --config .config/rector.php` instead but, here, you need to be sure it's OK.
 
 <AlertBox variant="info" title="Code versioning using f.i. GitHub">
-If you're using a code versioning system, you can push your actual codebase to Github, create a new branch like for instance `refactoring` then run Rector safely on your disk. If something should be broken, you can always retrieve your source before any changes.
+If you're using a code versioning system, you can push your actual codebase to GitHub, create a new branch like for instance `refactoring` then run Rector safely on your disk. If something should be broken, you can always retrieve your source before any changes.
 
 </AlertBox>
 

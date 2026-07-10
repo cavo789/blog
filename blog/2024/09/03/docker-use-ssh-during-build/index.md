@@ -18,23 +18,27 @@ blueskyRecordKey: null
 
 <!-- cspell:ignore keyscan -->
 
-There are plenty articles on the Internet but I didn't find the one that allowed me, without an impressive amount of trial and error, to find the solution.
+<TLDR>
+This article shows how to `git clone` a private repository during a Docker build without ever baking the SSH key into the final image, using Docker's `RUN --mount=type=secret` BuildKit feature declared in `compose.yaml` and referenced in the `Dockerfile`. It also covers the separate case of sharing your SSH key with the running *container* (not the image) via a bind-mounted volume, for ongoing `git pull`/`push` work inside it.
+</TLDR>
 
-So here's another article to add to the long list: how to access a private project stored at Github when creating a Docker image. In other words, the SSH key is not stored in the image. Docker will just use your key when executing the project recovery *layer* (the one containing the `git clone` instruction) and will not keep track of the key afterwards.
+There are plenty of articles on the Internet but I didn't find the one that allowed me, without an impressive amount of trial and error, to find the solution.
+
+So here's another article to add to the long list: how to access a private project stored on Github when creating a Docker image. In other words, the SSH key is not stored in the image. Docker will just use your key when executing the project recovery *layer* (the one containing the `git clone` instruction) and will not keep track of the key afterwards.
 
 <!-- truncate -->
 
 My use case: I wish to build a Docker image and during the build phase, I need to grab a copy of a private repository I've put on github.com.
 
-When I'll access to the container, the project will then be available but I don't have, anywhere in my image, a copy of my SSH key so I won't be able to run a `git pull` f.i. since no more authentication are possible.
+When I access the container, the project will then be available but I don't have, anywhere in my image, a copy of my SSH key so I won't be able to run a `git pull` f.i. since no further authentication is possible.
 
 ## But, why is it important?
 
-As soon as you need to access to something private like a private repository (on Github, Gitlab or anywhere else; it doesn't matter) during the build stage, Docker has to be able to connect as yourself.
+As soon as you need to access something private like a private repository (on Github, Gitlab or anywhere else; it doesn't matter) during the build stage, Docker has to be able to connect as yourself.
 
-You can provide your own credentials or using a token or copying your SSH key in the image or ... You can do this but **you'll be making a serious design error**: by reading your Dockerfile anyone will be able to see your private information(in case of hardcoding) or by starting an interactive bash session, it'll be able to f.i. display the list of environment variables (like using `printenv`) or trying to access to display files (like trying to access to `.git` folders, ssh folders, ...) and **it'll work!**.
+You can provide your own credentials, use a token, or copy your SSH key into the image, or ... You can do this but **you'll be making a serious design error**: by reading your Dockerfile anyone will be able to see your private information (in case of hardcoding) or, by starting an interactive bash session, will be able to, e.g., display the list of environment variables (like using `printenv`) or try to display files (like accessing `.git` folders, ssh folders, ...) and **it'll work!**.
 
-Also, there are existing tools like [SecretScanner](https://github.com/deepfence/SecretScanner) allowing to deeply scan layers (a Docker image is composed in multiple layers) and even if the secret is stored in a file that no longer exists in the final image, if it has been saved in a layer, then this type of tool will be able to retrieve it.
+Also, there are existing tools like [SecretScanner](https://github.com/deepfence/SecretScanner) that allow deep scanning of layers (a Docker image is composed of multiple layers) and even if the secret is stored in a file that no longer exists in the final image, if it has been saved in a layer, then this type of tool will be able to retrieve it.
 
 <AlertBox variant="caution">
 So, in conclusion: there is only one way to use secrets using Docker and you'll learn how in this article.
@@ -44,9 +48,9 @@ So, in conclusion: there is only one way to use secrets using Docker and you'll 
 ## Which key to use
 
 <AlertBox variant="caution">
-This part is one of the most important ones. First, of course, you should already have created a SSH key (see my <Link to="/blog/github-connect-using-ssh">Github - Connect your account using SSH and start to work with git@ protocol</Link> if needed).
+This part is one of the most important ones. First, of course, you should already have created an SSH key (see my <Link to="/blog/github-connect-using-ssh">Github - Connect your account using SSH and start to work with git@ protocol</Link> if needed).
 
-Then you should know which protocol you've used and that's really important. Is your key stored in a file called `id_ed25519` or `id_rsa` or something else. Only you know.
+Then you should know which protocol you've used and that's really important. Is your key stored in a file called `id_ed25519` or `id_rsa` or something else? Only you know.
 
 Just run `ls -alh ~/.ssh` to get the list of your keys:
 
@@ -97,11 +101,11 @@ Time to create our second file, `Dockerfile`:
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
-<AlertBox variant="caution" title="Think to replace cavo789/my_private_repo.git and refers one of your repositories" />
+<AlertBox variant="caution" title="Remember to replace cavo789/my_private_repo.git with one of your own repositories" />
 
 As you can see, we are setting `KEY_NAME="id_rsa"` as the default value (but will be overwritten by our declaration in the yaml file) then later on, we need to create the `/root/.ssh` folder and we are adding `github.com` in the list of known hosts.
 
-The most important thing comes then. We should use the `RUN --mount=type=secret` syntax so inform Docker that this layer will use a Docker secret. We need to provide the name of our secret (which was set in our yaml file and it's `my_ssh_key` here) then we need to define where that secret has to be stored **during this layer**. Our variable `KEY_NAME` finds its use here: our SSH key was `id_ed25519` and this is the value of the `KEY_NAME` variable.
+The most important thing comes then. We should use the `RUN --mount=type=secret` syntax to inform Docker that this layer will use a Docker secret. We need to provide the name of our secret (which was set in our yaml file and it's `my_ssh_key` here) then we need to define where that secret has to be stored **during this layer**. Our variable `KEY_NAME` finds its use here: our SSH key was `id_ed25519` and this is the value of the `KEY_NAME` variable.
 
 So, in short `--mount=type=secret,id=my_ssh_key,dst=/root/.ssh/${KEY_NAME}` will be translated to `--mount=type=secret,id=my_ssh_key,dst=/root/.ssh/id_ed25519`.
 

@@ -14,6 +14,10 @@ language: en
 ---
 ![Don't query your PostgreSQL db anymore, prefer PostgREST](/img/v2/postgrest.webp)
 
+<TLDR>
+This article introduces PostgREST, a tool that turns a PostgreSQL database directly into a RESTful API, removing the need to write models and queries in your application code. It walks through creating a sample database in Docker, running PostgREST against it, and querying the resulting API with `curl`, including filtering, full-text search, joins, pagination, casting, and output formats (JSON/CSV/text).
+</TLDR>
+
 Last year I had a large application developed in Laravel that required a MySQL database. When I was migrating to PostgreSQL I discovered PostgREST, which allowed me to completely remove queries from my code.
 
 Don't get me wrong: my Laravel/PHP code was launching dozens of queries to the database and, after migration, none at all.
@@ -105,7 +109,7 @@ $ ./postgrest tutorial.conf
 
 ### Step 3 - Play with PostgREST
 
-So, in step 1, we've created and populate our PostgreSQL database and, in step 2, we've installed and configured PostgREST to use that database.
+So, in step 1, we've created and populated our PostgreSQL database and, in step 2, we've installed and configured PostgREST to use that database.
 
 So, from now, we can directly use it like any API.
 
@@ -113,9 +117,9 @@ How do you usually run an API? Most probably by starting your web browser and by
 
 The query below is made by a fix part (the URL for our postgREST server) which is `http://localhost:3000` and, after it, our query.
 
-To get the content of a table, just mention his name so `http://localhost:3000/todos` will return all the records of the `todos` table.
+To get the content of a table, just mention its name so `http://localhost:3000/todos` will return all the records of the `todos` table.
 
-For esthetic reason here, I'm using `| jq` (you can remove that part if you want). See my <Link to="/blog/linux-jq">The jq utility for Linux</Link> article to learn more about `jq`.
+For aesthetic reasons here, I'm using `| jq` (you can remove that part if you want). See my <Link to="/blog/linux-jq">The jq utility for Linux</Link> article to learn more about `jq`.
 
 <Terminal typewriter>
 $ curl http://localhost:3000/todos | jq
@@ -178,7 +182,7 @@ If you've started PostgreSQL here above, you can stop and kill it using `docker 
 
 ## Permissions required
 
-By using PostgREST you expose your tables and records through a RESTfull API. Naturally, there is a system of permission so that you can define what can be accessed (e.g. a `users` table will remain secret) and what can be done (e.g. one user will only have read access but another will have read-write access).
+By using PostgREST you expose your tables and records through a RESTful API. Naturally, there is a system of permission so that you can define what can be accessed (e.g. a `users` table will remain secret) and what can be done (e.g. one user will only have read access but another will have read-write access).
 
 ## Get more examples
 
@@ -186,7 +190,7 @@ Consult my [PostgREST](https://github.com/cavo789/postgrest) repository on GitHu
 
 ## OpenAPI
 
-PostgREST is compliant with [OpenAPI](https://swagger.io/specification/). It's then possible to auto-document his routes using the [Swagger UI](https://hub.docker.com/r/swaggerapi/swagger-ui) Docker image.
+PostgREST is compliant with [OpenAPI](https://swagger.io/specification/). It's then possible to auto-document its routes using the [Swagger UI](https://hub.docker.com/r/swaggerapi/swagger-ui) Docker image.
 
 This means that running `curl http://localhost:3000` (the PostgREST URL), you'll get the list of all tables accessible to you (using your access key). This makes your database open to the world (once again, only what you've allowed using correct permission).
 
@@ -205,7 +209,7 @@ This means that running `curl http://localhost:3000` (the PostgREST URL), you'll
 * Get the list of all workers, the next five: `clear ; curl http://127.0.0.1:3000/workers\?select\=id,email\&limit=5\&offset=5 | jq` / [URL](http://127.0.0.1:3000/workers?select=id,email&limit=5&offset=5)
 * Reverse order, get the last 10: `clear ; curl http://127.0.0.1:3000/workers\?select\=id,email\&limit\=10\&offset\=0\&order\=id.desc | jq` / [URL](http://127.0.0.1:3000/workers\?select=id,email&limit=10&offset=0&order=id.desc)
 
-* Get worker id 15: `clear ; curl http://127.0.0.1:3000/workers\?id\=eq.15  | jq`  AS WE CAN SEE, the output is an array with only one record / [URL](http://127.0.0.1:3000/workers?id=eq.15)
+* Get worker id 15: `clear ; curl http://127.0.0.1:3000/workers\?id\=eq.15  | jq` — as we can see, the output is an array with only one record / [URL](http://127.0.0.1:3000/workers?id=eq.15)
 * Get worker id 15 - no more array: `clear ; curl http://127.0.0.1:3000/workers\?id\=eq.15 -H "Accept: application/vnd.pgrst.object+json" | jq` (here it's easier and more logic for the frontend)
 
 ### Using inner join

@@ -23,13 +23,13 @@ This detailed, step-by-step tutorial teaches you how to connect Microsoft Excel 
 
 In April 2024, I wrote a small <Link to="/blog/vba-excel-sql-server">blog post</Link> about a VBA script that will connect to a MS SQL database, run a SELECT query to retrieve data and put them in an Excel worksheet.
 
-Let's rewrite this article in a full tutorial. We'll install run a SQL Server database using Docker, download MS SQL Server Management Studio, connect to our SQL Server, create a new database with dummy data and, finally, in Excel, retrieve the list of our customers.
+Let's rewrite this article in a full tutorial. We'll install and run a SQL Server database using Docker, download MS SQL Server Management Studio, connect to our SQL Server, create a new database with dummy data and, finally, in Excel, retrieve the list of our customers.
 
 <!-- truncate -->
 
 ## Download SQL Server and create a dummy database
 
-You can skip this step if you already have a SQL Server instance where you can connect to.
+You can skip this step if you already have a SQL Server instance you can connect to.
 
 Read the full blog post <Link to="/blog/docker-mssql-server">Play with Microsoft SQL Server 2022 using Docker</Link> for more information about how to run your own SQL Server instance.
 
@@ -40,11 +40,12 @@ In short:
 * Download [SQL Server Management Studio](https://learn.microsoft.com/en-us/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16#download-ssms) if you don't have it yet. It's free.
 * Once installed, start SQL Server Management Studio.
 
-Use the value below for the authentication:
-    * Server name: `localhost,1433`
-    * Authentication: `SQL Server Authentication`
-    * Login: `SA`
-    * Password: `2Secure*Password2`
+Use the values below for the authentication:
+
+* Server name: `localhost,1433`
+* Authentication: `SQL Server Authentication`
+* Login: `SA`
+* Password: `2Secure*Password2`
 
 You're now in SSMS. We'll create a dummy database. Using some AI, I've asked for a script, here it is:
 
@@ -60,7 +61,7 @@ Now, right-click on the `Databases` node (in the top left tree-view) and you'll 
 
 ## The Excel part
 
-Surf to [https://github.com/cavo789/vba_excel_sql](https://github.com/cavo789/vba_excel_sql) to retrieve my VBA code. That code is a VBA Class for Excel that makes really easy to access records stored in SQL server and output these data in an Excel sheet, keeping or not the connection alive (so you can do a Refresh at any time).
+Surf to [https://github.com/cavo789/vba_excel_sql](https://github.com/cavo789/vba_excel_sql) to retrieve my VBA code. That code is a VBA Class for Excel that makes it really easy to access records stored in SQL server and output these data in an Excel sheet, keeping or not the connection alive (so you can do a Refresh at any time).
 
 Please start Excel and create a new workbook.
 

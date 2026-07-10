@@ -13,6 +13,10 @@ language: en
 ---
 ![Linux Makefile - Adding a help screen](/img/v2/makefile.webp)
 
+<TLDR>
+This article shows how to add a self-documenting help screen to a Makefile: add a `default: help` target so running bare `make` shows it, define a `help:` target that parses `##`-prefixed comments after each target name to print a description, and group related targets under `##@ Section Name` headers for a clean, categorized command list.
+</TLDR>
+
 By using a makefile, as you already know, you can gather in one place a lot of *actions* like `make bash`, `make build`, `make deploy`, ... just like I do when working on this blog (see my makefile on https://github.com/cavo789/blog/blob/main/makefile).
 
 What's really nice is being able to type `make` at the command line without any other options and then get a screen with lists of existing commands and a short one-line explanation.
@@ -69,7 +73,7 @@ We have to do three things for this:
 
 In the absence of a `default:` action defined in the file, as in your example, the first action will be executed.
 
-So, right now, if you run `make` (without any other arguments), you'll get the *Start an interactive shell...* message, that's the result of the `bash:` target; the first one in the file
+So, right now, if you run `make` (without any other arguments), you'll get the *Start an interactive shell...* message — that's the result of the `bash:` target, the first one in the file.
 
 <Terminal typewriter>
 $ make
@@ -113,7 +117,7 @@ As you can see, the order of targets respects the order in your file. `help` is 
 
 ## Step 4 - Add a subtitle between each "main section"
 
-Imagine you have dozens of shares... It would be nice to group them into sections: everything concerning your application, everything relating to your database, actions of the Code Analysis type, and so on.
+Imagine you have dozens of targets... It would be nice to group them into sections: everything concerning your application, everything relating to your database, actions of the Code Analysis type, and so on.
 
 To do this, simply add a line with this syntax: `##@ My project` as illustrated below:
 

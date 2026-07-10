@@ -213,3 +213,5 @@ export default function BlogPostItemHeaderAuthors({ className }) {
 ## Conclusion
 
 That's it! With a few component customizations, you now have a robust system for transparently indicating AI assistance in your blog. This approach keeps your Markdown files clean (just one flag to add) and centralizes the logic within your Docusaurus theme, making it easy to manage and update. By being open about your process, you can build greater trust with your audience.
+
+This `ai_assisted` flag is what you'll see on other posts where AI played a real role, like <Link to="/blog/gemini-meerkat">How I used Google Gemini Nano Banana on my blog</Link> (generating all my banner images) or <Link to="/blog/lovable-dev-ai">Lovable.dev</Link> (an AI-driven app builder).

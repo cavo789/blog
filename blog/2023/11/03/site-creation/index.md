@@ -17,13 +17,17 @@ language: en
 
 ![Creation of this blog](/img/v2/site_creation.webp)
 
+<TLDR>
+This article documents how this blog was built: bootstrapping Docusaurus in blog-only mode entirely through the official Docker `node` image (no local Node.js install), configuring `docusaurus.config.js`, and adding plugins for local search, sitemap, image zoom, and Giscus comments. It ends with building the static site via `yarn build` and deploying it over FTP with WinSCP, plus injecting a GDPR-compliant analytics script from withcabin.com.
+</TLDR>
+
 Here are the steps I followed to create this blog.
 
 <!-- truncate -->
 
 ## Using Docusaurus
 
-Since I really like the simplicity of Docker, I will not install Node.js on my machine but use the official Docker image
+Since I really like the simplicity of Docker, I will not install Node.js on my machine but use the official Docker image.
 
 <Terminal typewriter>
 $ {`docker run --rm --name blog --user \$UID:\$GID -it -v \${PWD}/:/project -w /project node /bin/bash`}
@@ -52,7 +56,7 @@ After a long time, the blog folder is created and I can take a look at its conte
 └── static
 ```
 
-The installation step is now finished, I will exit the container and return to my computer, and to do this, from the Docker console, I just type `exit`.
+The installation step is now finished; I will exit the container and return to my computer, and to do this, from the Docker console, I just type `exit`.
 
 ## Run the website
 
@@ -157,7 +161,7 @@ Added by running `yarn swizzle @docusaurus/theme-classic prism-include-languages
 
 Added by running `yarn add @docusaurus/plugin-sitemap` in the Docker container (opened using `make bash`).
 
-When added, I have also manually created the `static/robots.txt` file to with this content:
+When added, I have also manually created the `static/robots.txt` file with this content:
 
 <Snippet filename="static/robots.txt" source="./files/robots.txt" />
 

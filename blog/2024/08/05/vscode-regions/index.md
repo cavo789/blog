@@ -15,9 +15,13 @@ language: en
 
 <!-- cspell:ignore hadolint,skel,maptz,regionfolder,specialised -->
 
-VSCode supports `region` and `endregion` tags but not everywhere. These two special tags can be written differently depending on the language you're using but have, always, the same objective: allow you to fold part of the code.
+<TLDR>
+This article shows how to use `region`/`endregion` folding tags in VSCode (e.g. in PHP) to collapse logical blocks of code, and how to add that same folding support to files VSCode doesn't handle natively, like a Dockerfile, using the `maptz.regionfolder` extension plus a `.vscode/settings.json` entry. It also mentions the `Auto Fold` extension for automatically collapsing regions when a file is opened.
+</TLDR>
 
-Not everywhere means, for instance, VSCode didn't support code folding by default in Dockerfile. Let's see how to solve this.
+VSCode supports `region` and `endregion` tags but not everywhere. These two special tags can be written differently depending on the language you're using but always have the same objective: to allow you to fold part of the code.
+
+Not everywhere means, for instance, that VSCode doesn't support code folding by default in a Dockerfile. Let's see how to solve this.
 
 <!-- truncate -->
 
@@ -46,7 +50,7 @@ Let's take a look and the following Dockerfile:
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
-By opening such a file in VSCode doesn't provide any collapse/expand features and we will need to scroll a lot. And we don't have a global overview of the structure.
+Opening such a file in VSCode doesn't provide any collapse/expand features and we will need to scroll a lot. And we don't have a global overview of the structure.
 
 ![No region support in VSCode for Dockerfile](./images/dockerfile-before.webp)
 
@@ -71,12 +75,12 @@ Not only does this make it easier to read, it also facilitates the succession of
 
 There are some extensions like [Auto Fold](https://marketplace.visualstudio.com/items?itemName=bobmagicii.autofoldyeah) that can automatically fold regions when opening a file.
 
-The idea is: when you open a file with a lot of methods, all functions are first *folded* (we just see the function name, not his content). That way you can directly see the structure of the file, the list of functions and so on without to scroll much.
+The idea is: when you open a file with a lot of methods, all functions are first *folded* (we just see the function name, not its content). That way you can directly see the structure of the file, the list of functions and so on without having to scroll much.
 
 If you install [Auto Fold](https://marketplace.visualstudio.com/items?itemName=bobmagicii.autofoldyeah), you also need to add the `"autofold.default": 1,` setting in your `settings.json` file.
 
-If you don't know how to do, just press <kbd>CTRL</kbd>+<kbd>,</kbd> (the comma) to display the `Settings` page then start to type `autofold` to get access to the setting.
+If you don't know how, just press <kbd>CTRL</kbd>+<kbd>,</kbd> (the comma) to display the `Settings` page then start to type `autofold` to get access to the setting.
 
-Now, if you open a file, his content will be automatically folded.
+Now, if you open a file, its content will be automatically folded.
 
 ![Autofold](./images/autofold.webp)

@@ -12,9 +12,13 @@ tags:
   - python
 language: en
 ---
-<!-- cspell:ignore Wépion,telework,virtualise -->
+<!-- cspell:ignore Wépion,telework -->
 
 ![Docker - Explain me like I'm five: what's Docker for?](/img/v2/docker_tips.webp)
+
+<TLDR>
+This article explains Docker to a non-technical audience using a cooking-recipe analogy: instead of handing someone a fragile list of ingredients and instructions (technical specs and dependencies) that rarely reproduces the same result, a Docker image is the finished, ready-to-use cake itself — `docker pull` fetches it, `docker run` serves it, and everyone who runs it gets exactly the same result, isolated from whatever else is installed on their machine.
+</TLDR>
 
 But what is Docker anyway? In the simplest possible terms, how can we explain what Docker is used for?
 
@@ -36,11 +40,11 @@ That's it; it's up to you.
 
 ![Culinary recipe](./images/culinary_recipe.webp)
 
-Of course, 95% of you will fail (**I'll too**).  Because you don't have the time to go and buy everything; because you don't have the right quantities or qualities (Belgian strawberries, aren't they?); because you don't have the time to run around to different shops.
+Of course, 95% of you will fail (**me too**). Because you don't have the time to go and buy everything; because you don't have the right quantities or qualities (Belgian strawberries, aren't they?); because you don't have the time to run around to different shops.
 
 ## Let's go back to the IT world
 
-My list of ingredients becomes a list of technical specifications (you need such-and-such a version of the operating system), you need to have such-and-such versions of (an insane list of dependencies); you need such-and-such software to be configured in such-and-such a way so that communication can take place with such-and-such other software (e.g. Joomla needs to communicate with MySQL on such-and-such a port); you obviously need to have the correct file access rights, you need ...
+My list of ingredients becomes a list of technical specifications (you need such-and-such a version of the operating system), you need to have such-and-such versions of an insane list of dependencies; you need such-and-such software to be configured in such-and-such a way so that communication can take place with such-and-such other software (e.g. Joomla needs to communicate with MySQL on such-and-such a port); you obviously need to have the correct file access rights, you need ...
 
 Here again, despite a perfectly written list of specifications, over 95% of you won't be able to make my cake (**me too**). And yet I've taken a lot of time to give you an exhaustive recipe.
 
@@ -48,7 +52,7 @@ In the software world, you might say *OK, no worries, just all the things on a U
 
 ![USB stick](./images/usb.webp)
 
-Well no, apart from the fact that it's going to cost me a lot of money and that it's really not practical, how can you run Linux, Joomla, MySQL and lots of other things on a single USB stick? To have a button somewhere that says ‘Start the programme’ and the magic of that button means that, for example, Joomla is up and running and I can access my local website.
+Well no, apart from the fact that it's going to cost me a lot of money and that it's really not practical, how can you run Linux, Joomla, MySQL and lots of other things on a single USB stick? To have a button somewhere that says 'Start the program' and the magic of that button means that, for example, Joomla is up and running and I can access my local website.
 
 ## ... and Docker
 
@@ -60,7 +64,7 @@ You could try to say that Docker is a bit like *I telework, I'm at home and I co
 
 It's almost the same thing, but it's so different. On your home computer, you don't have the professional software you use, you don't have your professional e-mail, etc. The comparison (finding software and applications that you use at home) is very different. But the comparison (finding software and configurations that you don't have on your PC) stops there.
 
-Docker will *virtualise* a new operating system on your computer (whether it's Linux, macOS or Windows): thanks to Docker, you'll be able to run a Linux (Debian, Ubuntu 24.04, etc.) on your Windows computer: if you need to access files from Linux, they'll be those on your computer (unlike the example above with your professional PC). If you need to use a webcam, it will be that of your PC, your webcam, your sound card, your printer, etc.
+Docker will *virtualize* a new operating system on your computer (whether it's Linux, macOS or Windows): thanks to Docker, you'll be able to run a Linux (Debian, Ubuntu 24.04, etc.) on your Windows computer: if you need to access files from Linux, they'll be those on your computer (unlike the example above with your professional PC). If you need to use a webcam, it will be that of your PC, your webcam, your sound card, your printer, etc.
 
 ![Virtualization concept](./images/virtualization.webp)
 
@@ -80,21 +84,21 @@ What's in it for us? Everyone has exactly the same environment; if it works for 
 
 You've got it: if someone (me or anything) creates a Docker image to run Joomla; you just have to get the image; wait a few seconds and you're ready to use it. All you have to do is run a few commands (`docker run` or `docker compose` according to the image's official documentation) and it's ready to go.
 
-For Joomla, the official image is here: [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla). The instructions are explained in the ‘How to use this image’ chapter.
+For Joomla, the official image is here: [https://hub.docker.com/_/joomla](https://hub.docker.com/_/joomla). The instructions are explained in the 'How to use this image' chapter.
 
 ![Running Joomla](./images/running_joomla.webp)
 
 ## Some more information
 
-A Docker image runs in RAM memory, so if I shut down the computer, I lose everything. This isn't quite true because Docker has a mechanism for storing information in ‘volumes’. If I turn my computer on again, I'll find everything (=according to the programmed configuration).
+A Docker image runs in RAM memory, so if I shut down the computer, I lose everything. This isn't quite true because Docker has a mechanism for storing information in 'volumes'. If I turn my computer on again, I'll find everything (=according to the programmed configuration).
 
-With Docker, everything is isolated: I can install a MySQL 5.x and an old PHP 7.x as well as a Joomla 3.x and, why not, have a second Joomla site that would be on MySQL 5.4, PHP 8.1 and Joomla 4.4.8 and ... a third site that would be a WordPress and so on. There will be no conflict between versions because everyone will be in ‘their own space’. Just think of the misery of having to install different versions of PHP on your computer... That's no longer the case with Docker, which makes it super-easy.
+With Docker, everything is isolated: I can install a MySQL 5.x and an old PHP 7.x as well as a Joomla 3.x and, why not, have a second Joomla site that would be on MySQL 5.4, PHP 8.1 and Joomla 4.4.8 and ... a third site that would be a WordPress and so on. There will be no conflict between versions because everyone will be in 'their own space'. Just think of the misery of having to install different versions of PHP on your computer... That's no longer the case with Docker, which makes it super-easy.
 
 Today, at the end of 2024, it's almost possible to run everything in Docker; Linux of course, but also [Windows](https://hub.docker.com/r/dockurr/windows) or [macOS](https://hub.docker.com/r/dockurr/macos).
 
 You can also play [Doom](https://github.com/CallumHoughton18/Doom-In-Docker), work with [Gimp](https://hub.docker.com/r/gimp/gimp/), use [Firefox](https://hub.docker.com/r/linuxserver/firefox) without having to install it...
 
-Personally, I use Docker every day to develop ([Linux bash](https://hub.docker.com/_/alpine), [Python](https://hub.docker.com/_/python), [PHP](https://hub.docker.com/_/php), [Node](https://hub.docker.com/search?q=node), ...), for my databases ([postgres](https://hub.docker.com/_/postgres), [MySQL](https://hub.docker.com/_/mysql) and even for fun [Microsoft SQL Server](https://localhost:3000/blog/docker-mssql-server)), to keep my blog ([Docusaurus](https://localhost:3000/blog/docusaurus-docker-own-blog)), ...
+Personally, I use Docker every day to develop ([Linux bash](https://hub.docker.com/_/alpine), [Python](https://hub.docker.com/_/python), [PHP](https://hub.docker.com/_/php), [Node](https://hub.docker.com/search?q=node), ...), for my databases ([postgres](https://hub.docker.com/_/postgres), [MySQL](https://hub.docker.com/_/mysql) and even for fun [Microsoft SQL Server](/blog/docker-mssql-server)), to keep my blog ([Docusaurus](/blog/docusaurus-docker-own-blog)), ...
 
 I no longer install anything on my machines apart from Docker.
 

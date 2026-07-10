@@ -76,7 +76,7 @@ $ curl -X POST http://192.168.0.218:11434/api/generate \
 ```
 
 <AlertBox variant="note" title="Check your model name">
-Make sure the LLM `qwen2.5-coder:1.5b-base` model is well present; use another one based on your own list.
+Make sure the LLM `qwen2.5-coder:1.5b-base` model is indeed present; use another one based on your own list.
 </AlertBox>
 
 ## Configure your Code Editor (VSCode)
@@ -101,16 +101,16 @@ To ensure it installs smoothly within the Linux environment (WSL), I carefully f
   ]}
 />
 
-Once installed, the Continue icon appears in the left bar in VSCode. Click on it and, you'll see a list of available features.
+Once installed, the Continue icon appears in the left bar in VSCode. Click on it and you'll see a list of available features.
 
 ![Showing the list of Continue's features](./images/continue_features.webp)
 
-Click on the `Configs` entry then click on the gear icon to get access to the configuration file. As illustrated on the image below, the path is well on WSL so, my configuration is fine.
+Click on the `Configs` entry then click on the gear icon to get access to the configuration file. As illustrated on the image below, the path is indeed on WSL, so my configuration is fine.
 
 ![Getting access to the configuration of Continue](./images/continue_settings.webp)
 
 <AlertBox variant="info" title="This screenshot has been taken in a Devcontainer">
-This is why you see a full path like `/home/node/.continue/config.yaml`.  On your WSL, it should be like `/home/you/.continue/config.yaml`.
+This is why you see a full path like `/home/node/.continue/config.yaml`. On your WSL, it should be like `/home/you/.continue/config.yaml`.
 </AlertBox>
 
 If you want a ready-to-use configuration file, you can use this one:
@@ -129,7 +129,7 @@ The config references `qwen2.5-coder:14b-instruct` — replace it with a model y
 Replace every occurrence of `192.168.0.218` in this guide with your server's actual IP address.
 </AlertBox>
 
-If everything has been correctly configured, you now have AI auto-completion. Also, make sure autocomplete is enabled; look at the status bar of VSCode; you'll see an icon having the text `✓ Continue (NE)`.
+If everything has been correctly configured, you now have AI auto-completion. Also, make sure autocomplete is enabled; look at the status bar of VSCode; you'll see an icon with the text `✓ Continue (NE)`.
 
 #### Using chat with Continue
 

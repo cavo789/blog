@@ -13,11 +13,15 @@ language: en
 ---
 ![Exterminate them all, fight spam directly at your host company](/img/v2/fighting_against_spam.webp)
 
-If your web host company offers you a cpanel access, you will find there access to a tool called *SpamAssassin*.
+<TLDR>
+This article shows how to fight spam at the source using cPanel's SpamAssassin: defining blacklist and whitelist domain patterns through the web interface, or editing the `.spamassassin/user_prefs` file directly over FTP to manage `blacklist_from`/`whitelist_from` rules in bulk, sorted and deduplicated.
+</TLDR>
 
-There, you've two main options: the *Spam filter* and a *White list*.
+If your web host company offers you cPanel access, you will find a tool called *SpamAssassin* there.
 
-Using the first one, you can define email patterns like `*@hair.com` which mean: immediately kill those emails on the server. The second one is just the opposite f.i. `*@my-own-company.com` saying that you trust that domain.
+There, you have two main options: the *Spam filter* and a *White list*.
+
+Using the first one, you can define email patterns like `*@hair.com` which means: immediately kill those emails on the server. The second one is just the opposite, f.i. `*@my-own-company.com` saying that you trust that domain.
 
 <AlertBox variant="info" title="PlanetHoster - N0C">
 If you're hosted by PlanetHoster on the N0C infrastructure, please read <Link to="/blog/planethoster-n0c-spam">Exterminate them all, fight spam directly at PlanetHoster - N0C</Link> instead.
@@ -26,7 +30,7 @@ If you're hosted by PlanetHoster on the N0C infrastructure, please read <Link to
 
 <!-- truncate -->
 
-My personal use case is even if I don't like shortcuts on my desktop, I've well one for `https://(my_host_company)/xxxxx/mail/spam/index.html#/blacklist` i.e. a direct access to the page where I can add my spam filters. And it works quite well.
+My personal use case: even if I don't like shortcuts on my desktop, I do have one for `https://(my_host_company)/xxxxx/mail/spam/index.html#/blacklist` i.e. direct access to the page where I can add my spam filters. And it works quite well.
 
 ![Spam filters](./images/spam_filters.webp)
 
@@ -45,6 +49,8 @@ You can manipulate entries one by one using the web interface too. Go to your cP
 
 </AlertBox>
 
-You can now manipulate the list with f.i. vscode and sort it alphabetically, simplify rules, remove duplicated entries (after refactoring), ...
+You can now manipulate the list with f.i. VSCode and sort it alphabetically, simplify rules, remove duplicated entries (after refactoring), ...
 
-I really like fighting against spam directly at my host company because, otherwise, I get spams on all my machines (my different computers and my smartphone) and, on my smartphone I click on *This is a spam* I only ever teach my smartphone to delete this email, not my other machines... And I only identify that sender (like `<buy-it@hair.com>`); I'll continue to get from any other emails account like `really-but-it@hair.com`.
+I really like fighting against spam directly at my host company because, otherwise, I get spam on all my machines (my different computers and my smartphone) and, on my smartphone, when I click on *This is spam*, I only ever teach my smartphone to delete this email, not my other machines... And I only identify that sender (like `<buy-it@hair.com>`); I'll continue to get spam from any other email account like `really-but-it@hair.com`.
+
+The fight doesn't stop there — next up, <Link to="/blog/planethoster-n0c-spam">fighting spam directly at PlanetHoster - N0C</Link>.

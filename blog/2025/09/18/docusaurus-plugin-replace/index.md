@@ -22,11 +22,11 @@ blueskyRecordKey: 3lz3pbmvd722f
 This article demonstrates how to create a custom Docusaurus remark plugin for automatically finding and replacing specific terms across your entire site. The goal is to ensure consistent terminology (e.g., changing 'vscode' to 'VSCode') without modifying the original Markdown files. You'll learn how to write a plugin that traverses the content's abstract syntax tree (AST) to safely apply replacements only to plain text, avoiding code blocks and URLs. The guide also shows how to configure the plugin in your `docusaurus.config.js`.
 </TLDR>
 
-For fun (because that solution is perhaps not bullet proof), I've asked to an AI to generate a plugin to scan my 200 articles and to replace patterns like `docusaurus` by `Docusaurus`, `github` by `GitHub`, `vscode` by `VSCode` so to normalize them across all my content.
+For fun (because that solution is perhaps not bullet proof), I asked an AI to generate a plugin to scan my 200 articles and replace patterns like `docusaurus` by `Docusaurus`, `github` by `GitHub`, `vscode` by `VSCode`, to normalize them across all my content.
 
 It can be risky because if the word `vscode` appears in:
 
-* an URL (like `https://github.com/microsoft/vscode/`),
+* a URL (like `https://github.com/microsoft/vscode/`),
 * a name (like `vstirbu.vscode-mermaid-preview`),
 * as a file name (like `vscode.png`),
 * a code snippet (inside a <code>\```...\```</code> or <code>\`.\`</code> block),
@@ -34,7 +34,7 @@ It can be risky because if the word `vscode` appears in:
 
 we certainly do not want to make the replacement.
 
-But well if the word is inside a simple paragraph.
+But, if the word is inside a simple paragraph, that's a different story — we do want the replacement there.
 
 So, after a few prompts with the AI, a plugin has been generated and it works so far.
 

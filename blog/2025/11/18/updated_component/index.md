@@ -22,7 +22,7 @@ This article demonstrates how to implement a detailed changelog for Docusaurus b
 
 As a blog author, no doubt, it happens that you'll edit previous posts to add / clarify some part. Or just remove obsolete information.
 
-Docusaurus support the `last_update` ([source](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#last_update)) entry like illustrated below, but you just can foresee one date and no description.
+Docusaurus supports the `last_update` ([source](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#last_update)) entry like illustrated below, but you can only specify one date and no description.
 
 ```yaml
 last_update:
@@ -44,11 +44,11 @@ Please create a new folder called `src/components/Blog/Updated` where you'll cre
 
 <Snippet filename="src/components/Blog/Updated/styles.module.css" source="src/components/Blog/Updated/styles.module.css" />
 
-Shortly, the component will check if the YAML frontmatter of your blog post contain a `updates` entry. If this is the case, will parse it. It has to be an array with two information: a `date` and a `note`.
+Shortly, the component will check if the YAML frontmatter of your blog post contains an `updates` entry. If this is the case, it will parse it. It has to be an array with two pieces of information: a `date` and a `note`.
 
 ## Override the BlogPostPage template
 
-Please first check if you don't have the `src/theme/BlogPostItem/Content/index.js` file yet. If you're a reader of this blog and already have customized Docusaurus, perhaps you've it already.
+Please first check if you don't have the `src/theme/BlogPostItem/Content/index.js` file yet. If you're a reader of this blog and already have customized Docusaurus, perhaps you have it already.
 
 If not, please start a console and run `yarn swizzle @docusaurus/theme-classic BlogPostItem/Content`.
 
@@ -56,13 +56,13 @@ From now, you'll have a new file on your disk: `src/theme/BlogPostItem/Content/i
 
 We'll have to inject our new `Updated` component, please edit the `index.js` file to inject the required code.
 
-Below the minimum sentences to add at the right place in your own file.
+Below are the minimum lines to add at the right place in your own file.
 
 <Snippet filename="src/theme/BlogPostItem/Content/index.js" source="./files/index.js" />
 
 ## Use the component
 
-Now, just edit any of your existing post and add a `updates` entry in your YAML front matter like for instance
+Now, just edit any of your existing posts and add an `updates` entry in your YAML front matter like for instance
 
 ```yaml
 updates:

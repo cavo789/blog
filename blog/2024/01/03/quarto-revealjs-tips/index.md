@@ -14,6 +14,10 @@ language: en
 ---
 ![Some tips and tricks for Quarto when rendering as a reveal.js slideshow](/img/v2/quarto.webp)
 
+<TLDR>
+This article is a grab bag of Quarto reveal.js tips: title slides, custom logo positioning with CSS/JS, background images and their `background-size` behavior, `slide-level` control, emoji, `r-fit-text` and `r-stretch` classes, fragment-based reveals, multi-column and quadrant layouts, custom short codes, inline and external CSS, hiding image captions, styling callouts, vertical/grid navigation, custom slide slugs, slide numbers, and speaker notes.
+</TLDR>
+
 The [Quarto reveal.js documentation](https://quarto.org/docs/reference/formats/presentations/revealjs.html) is the best place to find instructions for creating impeccable reveal.js presentations.
 
 In this article, we'll take a quick look at a few tips and tricks to make your reveal.js presentations even better.
@@ -53,13 +57,10 @@ To do this, we'll need to add a custom JavaScript and custom CSS.
 
 Create a new folder called `assets` and, in that folder, a file called `style.css` and a second called `custom.js`.
 
-In `assets/style.css`, copy/paste the following code:
-
-<Snippet filename="assets/style.css" source="./files/style.css" />
-
-In `assets/custom.js`, copy/paste the following code:
-
-<Snippet filename="assets/custom.js" source="./files/custom.js" />
+<ProjectSetup folderName="assets">
+  <Snippet filename="style.css" source="./files/style.css" />
+  <Snippet filename="custom.js" source="./files/custom.js" />
+</ProjectSetup>
 
 Now, use them in your `slides.md` like this:
 
@@ -396,13 +397,13 @@ You can retrieve more information in the [Quarto slide numbers documentation](ht
 
 You can write messages in your presentation that will not be displayed when the slideshow is played, but only as a second screen when the presenter wishes.
 
-The example below illustrate this. The way to insert such presenter's notes is by using the `::: notes` block.
+The example below illustrates this. The way to insert such presenter's notes is by using the `::: notes` block.
 
 <Snippet filename="slides.md" source="./files/slides_21.txt" />
 
 *To run this example, run `quarto render slides.md --to revealjs`.*
 
-So, in the example above, we'll have two slides. By pressing the <kbd>s</kbd> touch on the keyboard (<span style={{color: 'blue'}}>s for speakers</span>) a new window will be displayed.
+So, in the example above, we'll have two slides. By pressing the <kbd>s</kbd> key on the keyboard (<span style={{color: 'blue'}}>s for speakers</span>) a new window will be displayed.
 
 When you have two screens, on the first you'll display your presentation without the notes (left screen below) and on the second you'll display the notes (right screen below).
 

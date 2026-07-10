@@ -13,6 +13,10 @@ language: en
 ---
 ![Clean code - Linux Bash - Keep the number of function parameters as small as possible](/img/v2/bash.webp)
 
+<TLDR>
+This article applies the clean-code principle of limiting function parameters to Bash, where passing an object isn't possible: instead, pass a single associative array (`declare -A arr=()`) to the function so callers don't have to track positional argument order, and new fields can be added later without breaking existing call sites.
+</TLDR>
+
 A concept of the clean code approach is to avoid too many function parameters (I would say that four parameters is already too many).
 
 When you're programming in a language more advanced than Linux Bash, it's easy to get round the problem. For example, in PHP, if I need to call a function and pass it several parameters, I'll create an object that will be my only parameter and that object will then have several properties.

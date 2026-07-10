@@ -27,7 +27,7 @@ At work, I'm part of a team of PHP developers where we work together to create a
 
 This application is developed using the Laravel framework and we use [PHPUnit](https://phpunit.de/index.html) and [Pest](https://pestphp.com/) to run our unit tests.
 
-However, in addition to the unit tests, we are also putting in place a tool that will simulate actions on our interface, such as accessing the login page, entering a login and password, simulating the click on the 'login' button, wait our main screen is displayed then, on the new page, assert a lot of things / do a lot of tasks.
+However, in addition to the unit tests, we are also putting in place a tool that will simulate actions on our interface, such as accessing the login page, entering a login and password, simulating the click on the 'login' button, waiting until our main screen is displayed then, on the new page, asserting a lot of things / doing a lot of tasks.
 
 It's a bit like asking a human to play out scenarios over and over again, every day, to make sure we haven't introduced any regressions in our latest developments, like a cool new feature whose code changes have broken a previous feature.
 
@@ -37,7 +37,7 @@ In this article, we'll learn more about Behat and how to use it for a first test
 
 <!-- truncate -->
 
-As you can read on the [Behat](https://docs.behat.org/en/latest/) site, *Behat is an open source Behavior-Driven Development framework for PHP. It is a tool to support you in delivering software that matters through continuous communication, deliberate discovery and test-automation.*  This means that, in fact, you can start to write your scenarios even before coding. You can ask to your client to write assertions in common English. Once done, the developer will start to code and once done, he just needs to run the written scenarios to make sure the software answers to the client requirements.
+As you can read on the [Behat](https://docs.behat.org/en/latest/) site, *Behat is an open source Behavior-Driven Development framework for PHP. It is a tool to support you in delivering software that matters through continuous communication, deliberate discovery and test-automation.*  This means that, in fact, you can start to write your scenarios even before coding. You can ask your client to write assertions in common English. Once done, the developer will start to code and, once done, they just need to run the written scenarios to make sure the software meets the client's requirements.
 
 ## Introduction to BDD - Behavior-Driven Development
 
@@ -46,7 +46,7 @@ Imagine you're a customer and you ask a developer to create a new website. In yo
 * As a visitor, I'd like a menu entry that, once clicked, will (do this);
 * As a visitor, I want to be able to access a search engine that will allow me to make a selection from a category of articles and then, within this category, launch a search for the word (a word). A list of articles on this theme will then be displayed;
 * As site manager, I want to be able to connect to a management interface and, after a successful login, I need to see the options (list of features);
-* As site manager, I should be able to add a new article where I've to specify a title, a category, a main image and a text. Once I save it, I should see the new article in the list of articles and, by ordering the list on the creation date/time, it has to be the first in the list;
+* As site manager, I should be able to add a new article where I have to specify a title, a category, a main image and a text. Once I save it, I should see the new article in the list of articles and, by ordering the list on the creation date/time, it has to be the first in the list;
 * (and much more)
 
 In terms of Behat, these sentences are called scenarios. You can write them even before the website is created. And during the coding steps, the developer will run your scenarios from time to time. On the first run, all the scenarios are bound to fail (the site doesn't exist; the requested functions have not yet been developed). The developer will work on one or other of the functionalities; he will restart the BDD tests and, as the project progresses, the scenarios will succeed until the end of the project, when all the scenarios will have been successfully completed and the project can be sent to you for acceptance.
@@ -171,13 +171,13 @@ Please open the file `features/bootstrap/FeatureContext.php` once more in your p
 
 ![Now we have our steps](./images/vscode_edit_1_FeatureContext.webp)
 
-Nice isn't? Behat has looked at our `Blog.feature` file and created as many methods in our PHP code as we had sentences in our scenario and, each method is assigned to the sentence (take a look to the php comment before each method).
+Nice, isn't it? Behat has looked at our `Blog.feature` file and created as many methods in our PHP code as we had sentences in our scenario and each method is assigned to the sentence (take a look at the PHP comment before each method).
 
 And, now, before even starting to code, let's ask Behat to run our scenario; please run `vendor/bin/behat` in the console:
 
 ![First run](./images/first_run.webp)
 
-Wow! So far, perfect! We've thus asked Behat to run our scenario and he knows that we've three steps and we still need to write the associated code in PHP (therefore the **TODO: write pending definition** message in yellow).
+Wow! So far, perfect! We've thus asked Behat to run our scenario and it knows that we have three steps and we still need to write the associated code in PHP (therefore the **TODO: write pending definition** message in yellow).
 
 Let's give ourselves the means to do the best we can as quickly as possible, without reinventing the wheel if someone else has already done it. Let's install two new dependencies. In your console, please run `composer require --dev friends-of-behat/mink` and `composer require --dev dmore/behat-chrome-extension`.
 
@@ -221,7 +221,7 @@ Please create the file called `behat.yml` in your project's root directory; with
 
 Also, please edit the file `features/bootstrap/FeatureContext.php`, remove everything and replace the existing content below.
 
-We've changes a few `use` to add Mink libraries (and remove unneeded ones). We've also added a `$mink` private property and put some lines in the `__constructor`.
+We've changed a few `use` statements to add Mink libraries (and remove unneeded ones). We've also added a `$mink` private property and put some lines in the `__constructor`.
 
 <AlertBox variant="caution" title="Please update the url `https://www.avonture.be` to match your site" />
 

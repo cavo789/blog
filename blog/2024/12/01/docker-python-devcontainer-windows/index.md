@@ -19,15 +19,19 @@ language: en
 <!-- cspell:ignore mypy,pylance -->
 ![Docker - Easy setup of Python under Windows](/img/v2/devcontainer.webp)
 
+<TLDR>
+This article ports the earlier Linux Python devcontainer setup to Windows: the same `Dockerfile`, `compose.yaml`, `.docker.env` and `.devcontainer/devcontainer.json` files are reused unchanged, but GNU Make is replaced with a `make.bat` DOS batch script so commands like `make build`, `make up`, `make bash`, and `make devcontainer` work identically from an MS-DOS prompt — giving a Python coding environment with no local Python install.
+</TLDR>
+
 In a <Link to="/blog/docker-python-devcontainer">previous article</Link>, I've provided some files to be able to quickly create a Python environment under Linux. Today, let's play and use the exact same files but this time under Windows.
 
-The today challenge is easy: create a Python environment on my Windows machine without to have install Python of course and without to have to configure VSCode. Just run some magic and, voilà, as a Python newcomer, I can start to code without first losing time to configure my computer.
+Today's challenge is easy: create a Python environment on my Windows machine without having to install Python, of course, and without having to configure VSCode. Just run some magic and, voilà, as a Python newcomer, I can start coding without first losing time configuring my computer.
 
 <!-- truncate -->
 
 So, in the <Link to="/blog/docker-python-devcontainer">Docker - Python devcontainer</Link> blog post, I've provided a few files and we'll reuse them in this article.
 
-I'm speaking about magic but, let's go in details in the article below. I could provide you with a ZIP archive, for example, with all the files already created and the structure, but that would be less ... fun, wouldn't it?
+I'm speaking about magic, but let's go into detail in the article below. I could provide you with a ZIP archive, for example, with all the files already created and the structure, but that would be less ... fun, wouldn't it?
 
 ## Create a file/folder structure
 
@@ -37,7 +41,7 @@ Of course, you can start Windows Explorer, go to your *Documents* folder and cre
 
 ![Windows Explorer](./images/explorer.webp)
 
-Please create all required files (the one from the previous blog post). We've NOT modified these files: we can thus use the exact same files whatever if we're running under Linux or Windows.
+Please create all required files (the ones from the previous blog post). We have NOT modified these files: we can thus use the exact same files whether we're running under Linux or Windows.
 
 Just add a new file on your Windows folder and copy/paste the content from here below.
 
@@ -77,7 +81,7 @@ Please create this additional file:
 
 ## Our configuration right now
 
-At this stage, here is our project is VSCode:
+At this stage, here is our project in VSCode:
 
 ![The project in VSCode](./images/vscode_setup.webp)
 
@@ -91,7 +95,7 @@ Start a MS-DOS console (i.e. press the <kbd>Windows</kbd> key on your keyboard o
 
 Open the console and go to your project's folder i.e. run `cd %USERPROFILE%\Documents\Python`.
 
-Below how the project looks like right now:
+Below is how the project looks right now:
 
 ![How the project looks like in DOS](./images/msdos.webp)
 
@@ -107,19 +111,19 @@ The first thing to do, only once, is to create the Docker image. This is done by
 
 ### Create a Docker container
 
-Then, once a day, you've to run `make up`:
+Then, once a day, you have to run `make up`:
 
 ![Create a Docker container](./images/make_up.webp)
 
-You've to do this just once a day i.e. most probably the container will be terminated when you'll shut down your computer. Just run `make up` the next morning to *awake* it back.
+You have to do this just once a day, i.e. most probably the container will be terminated when you shut down your computer. Just run `make up` the next morning to *wake* it back up.
 
-### Entering in the container
+### Entering the container
 
-If you need to enter in your Docker container (started by `make up`), just run `make bash`.
+If you need to enter your Docker container (started by `make up`), just run `make bash`.
 
-You'll get a different console like below illustrated (see the blue whale f.i.). The screenshot below illustrate displaying the Python's version number:
+You'll get a different console like the one illustrated below (see the blue whale f.i.). The screenshot below illustrates displaying Python's version number:
 
-![Entering in the container](./images/make_bash.webp)
+![Entering the container](./images/make_bash.webp)
 
 Remember the files we've created in the previous chapter. One file was called `main.py` with a straightforward Python script; let's run it:
 
@@ -128,7 +132,7 @@ Remember the files we've created in the previous chapter. One file was called `m
 You simply need to run the `python` binary followed by the script name to start.
 
 <AlertBox variant="info">
-So, you're actually inside a running container (see the blue whale). You should type `exit` to quit the container (the container will still keep running) and returns to your MS-DOS console.
+So, you're actually inside a running container (see the blue whale). You should type `exit` to quit the container (the container will still keep running) and return to your MS-DOS console.
 
 </AlertBox>
 
@@ -138,7 +142,7 @@ Just run `make devcontainer` (in your MS-DOS console; not in a container), you'l
 
 ![Running VSCode - Devcontainer](./images/make_devcontainer.webp)
 
-In VSCode, you can, if you like this way of working, press <kbd>CTRL</kbd>+<kbd>´</kbd> to start a terminal (you can also click on the `View` menu then click on `Terminal` menu entry; same thing).
+In VSCode, you can, if you like this way of working, press <kbd>CTRL</kbd>+<kbd>\`</kbd> to start a terminal (you can also click on the `View` menu then click on `Terminal` menu entry; same thing).
 
 ![Using the VSCode Terminal](./images/vscode_terminal.webp)
 

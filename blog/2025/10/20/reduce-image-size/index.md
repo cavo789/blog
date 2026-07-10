@@ -25,7 +25,7 @@ This article introduces CaesiumCLT, a command-line tool for efficiently compress
 
 Korben, a well-known French blogger, has recently posted this article: [https://korben.info/caesium-compression-images-ecologie-numerique.html](https://korben.info/caesium-compression-images-ecologie-numerique.html) and, damned, just a few days too late for me.
 
-I just recreate all images on my blog and I've manually converted all images ... one by one ... using [Squoosh](https://squoosh.app/).
+I just recreated all images on my blog and manually converted all of them ... one by one ... using [Squoosh](https://squoosh.app/).
 
 Let's see in this article how to do the conversion using a single command line.
 
@@ -39,7 +39,7 @@ If, like me, you don't have `brew` yet, just run this command to install it glob
 
 This done, just run `brew install caesiumclt`.
 
-Make sure to read the information's displayed on the console because you'll need to finalize the installation by editing your `.bashrc` file and install `caesiumclt` in your `PATH`.
+Make sure to read the information displayed on the console because you'll need to finalize the installation by editing your `.bashrc` file and install `caesiumclt` in your `PATH`.
 
 ## Run the optimization tool
 
@@ -49,7 +49,7 @@ On my own, I just go in the folder where I've my images and run this command:
 
 As we can see here above, I've converted seven PNG to WEBP, the new files are stored in the same folder.
 
-Now, I just need to manually edit my blog post (using these images)
+Now, I just need to manually edit my blog post (using these images).
 
 <AlertBox variant="tip" title="Do it recursively">
 Add the `--recursive` flag like in `caesiumclt -q 85 --recursive --format webp --same-folder-as-input *.png` to process all files from your current folder.
@@ -57,9 +57,9 @@ Add the `--recursive` flag like in `caesiumclt -q 85 --recursive --format webp -
 
 ## How to determine the biggest folders on your disk
 
-On my blog, I'm writing blog posts in folders like `blog/2025/10/02/` i.e. I create a folder based on the publication date. Then I'm putting images for that article in a `images` subfolder.
+On my blog, I'm writing blog posts in folders like `blog/2025/10/02/` i.e. I create a folder based on the publication date. Then I'm putting images for that article in an `images` subfolder.
 
-This said, to retrieve the biggest folder on my disk, I'm running the command below. It will retrieve all `.png` files them sum their size by directories and list the directories by size.
+This said, to retrieve the biggest folder on my disk, I'm running the command below. It will retrieve all `.png` files, then sum their size by directory and list the directories by size.
 
 <Terminal typewriter source="./files/terminal-2.txt" />
 

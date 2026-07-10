@@ -8,11 +8,14 @@ image: /img/v2/bash.webp
 mainTag: bash
 tags:
   - bash
-  - database
   - linux
 language: en
 ---
 ![Linux - Sort functions in a Bash script](/img/v2/bash.webp)
+
+<TLDR>
+This article checks whether functions in a Bash script are declared in alphabetical order, by extracting function names with `grep`/`awk` and diffing the as-is list against a sorted copy using `diff --side-by-side`. It's then turned into an `order.sh` script that scans every `.sh` file in a folder and silently reports nothing for correctly sorted files, making misordered scripts easy to spot.
+</TLDR>
 
 In a previous <Link to="/blog/linux-compare-two-versions-of-the-same-script">article</Link>, we've seen a simple CLI command to display the list of functions present in a script but what about a Bash script that will scan an entire folder; retrieve any `.sh` scripts and check if functions are sorted in the files?
 
@@ -100,9 +103,9 @@ And now, start the script like this: `./order.sh  ~/helpers`. The expected param
 
 ![Running the batch script](./images/batch_script.webp)
 
-What does that means?  My `~/helpers/api.sh` script is actually (left side) really poorly sorted since there are a lot of differences with the right column (perfect ordering).
+What does that mean?  My `~/helpers/api.sh` script is actually (left side) really poorly sorted since there are a lot of differences with the right column (perfect ordering).
 
-The first function in my file is `api::__injectLogsToApplicationLog` while there is a `api::__assertHttpMethod` function later in the code.
+The first function in my file is `api::__injectLogsToApplicationLog` while there is an `api::__assertHttpMethod` function later in the code.
 
 By editing my file and moving `api::__assertHttpMethod` at the top of my script, now, by rerunning the script:
 

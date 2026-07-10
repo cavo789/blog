@@ -13,18 +13,23 @@ language: en
 ---
 ![Understanding the depends_on condition in Docker compose files](/img/v2/docker_tips.webp)
 
+<TLDR>
+This article explains how to prevent an application container from starting before its database is ready, using Docker Compose's `healthcheck` property (to define when a service is considered ready) combined with `depends_on: condition: service_healthy` on the dependent service — replacing fragile manual retry-loop scripts.
+</TLDR>
+
 It's only been ten days or so since I learned the trick, even though it was well documented: managing service startups and, above all, blocking one if the other isn't ready ([official documentation](https://docs.docker.com/compose/startup-order/#control-startup)).
 
-Imagine a two services applications like Joomla (see my <Link to="/blog/docker-joomla/">Create your Joomla website using Docker</Link>), WordPress, LimeSurvey, Laravel and many, many more use cases: you've an application and that application requires a database.
+Imagine a two-service application like Joomla (see my <Link to="/blog/docker-joomla/">Create your Joomla website using Docker</Link>), WordPress, LimeSurvey, Laravel and many, many more use cases: you've an application and that application requires a database.
 
 <!-- truncate -->
+
 You've, roughly speaking, a `compose.yaml` file like this:
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
-And, yeah, it works. You can execute `docker compose up --detach` and wait until the two services are up and soon or later, you'll got your application ready.
+And, yeah, it works. You can execute `docker compose up --detach` and wait until the two services are up and, sooner or later, you'll get your application ready.
 
-But you have the intuition that something isn't quite right here... What happens if the database service is slow to load? You'd have the application (Joomla here, but it doesn't really matter) which, in its initialization process, is going to want to connect to the database, and wham! This will not work and you will receive *Error when connecting to the database* errors. With a bit of luck, the application will try several times before stopping in error. Without chance, the application will just crash.
+But you have the intuition that something isn't quite right here... What happens if the database service is slow to load? You'd have the application (Joomla here, but it doesn't really matter) which, in its initialization process, is going to want to connect to the database, and wham! This will not work and you will receive *Error when connecting to the database* errors. With a bit of luck, the application will try several times before stopping in error. Without luck, the application will just crash.
 
 How to solve this? The answer is in two parts.
 
@@ -33,7 +38,7 @@ How to solve this? The answer is in two parts.
 
 ## The healthcheck property
 
-The idea is to ask Docker to run a given command each xxx seconds until he got a `Success` status (in term of Linux, it's a command that return an exitcode equal to `0`).
+The idea is to ask Docker to run a given command each xxx seconds until he gets a `Success` status (in terms of Linux, it's a command that returns an exit code equal to `0`).
 
 By searching on the Internet using `docker healthcheck` followed by the name of a service (MySQL, PostgreSQL, Apache, Redis, ...), you'll find a lot of possibilities.
 
@@ -41,7 +46,7 @@ For MySQL, we'll use the next one:
 
 <Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 
-The four lines here above informs Docker to check each 20 seconds and max 10 times the command defined by the `test` property. While that command didn't return `0`, the container will be considered as `unhealthy`. Then, hopefully, the command will return `0` and Docker will consider the service as `healthy`.
+The four lines above instruct Docker to check the command defined by the `test` property every 20 seconds, up to 10 times. While that command doesn't return `0`, the container is considered `unhealthy`. Then, hopefully, the command will return `0` and Docker will consider the service as `healthy`.
 
 ## The depends_on property
 
@@ -61,6 +66,5 @@ while [[ ! "$exitCode"  = "0" ]]; do
   exitCode="$(nc joomladb 3306)"
 done
 ```
-
 
 </AlertBox>

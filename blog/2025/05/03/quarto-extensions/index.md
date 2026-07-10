@@ -25,7 +25,7 @@ updates:
 This article shares a curated list of the author's favorite Quarto extensions to enhance your documentation workflow. Discover useful filters for templating content with `quarto-partials`, embedding icons with `fontawesome`, including external code snippets, creating simple text-replacement macros with `search-replace`, and improving code block visibility in reveal.js presentations with `code-fullscreen`.
 </TLDR>
 
-I'm using Quarto now since 18 months to generate my documentation: I'm writing Markdown files (`.md`) and convert them as a Word document, PDF, static HTML site or as a revealjs slideshow.
+I've been using Quarto for 18 months now to generate my documentation: I'm writing Markdown files (`.md`) and converting them to a Word document, PDF, static HTML site or a revealjs slideshow.
 
 Quarto is supporting external extensions (also called `plugins` elsewhere).
 
@@ -86,7 +86,7 @@ See [https://github.com/quarto-ext/fontawesome](https://github.com/quarto-ext/fo
 
 Use Font Awesome icons in HTML and PDF documents.
 
-For instance, if you want to Github icon, you just need to put the `{{< fa brands github size=5x >}}` code in your file. Quite easy.
+For instance, if you want a GitHub icon, you just need to put the `{{< fa brands github size=5x >}}` code in your file. Quite easy.
 
 Make sure to add lines below in your YAML front matter:
 
@@ -147,7 +147,7 @@ See [https://github.com/ute/search-replace](https://github.com/ute/search-replac
 
 Quarto filter extension for simple search-replace macros.
 
-This extension allows to search and replace when rendering documents. For instance, by putting the `+quarto` code in the frontmatter of the article or, better, in the `_quarto.yaml` global file, we can just write `+quarto` (a constant) in our document and let the replace action be done during the rendering of the documentation.
+This extension allows you to search and replace when rendering documents. For instance, by putting the `+quarto` code in the frontmatter of the article or, better, in the `_quarto.yaml` global file, we can just write `+quarto` (a constant) in our document and let the replace action be done during the rendering of the documentation.
 
 <Snippet filename="_quarto.yaml" source="./files/_quarto.yaml" />
 

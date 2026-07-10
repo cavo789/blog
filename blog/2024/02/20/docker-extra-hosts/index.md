@@ -14,18 +14,22 @@ language: en
 <!-- cspell:ignore allnodes,allrouters,localnet,mcastprefix -->
 ![Using Docker network and the extra_hosts property](/img/v2/docker_tips.webp)
 
+<TLDR>
+This article explains why one Docker container can't reach another unless both run on the same Docker network, walking through creating a shared network, finding its gateway IP with `docker network inspect`, and connecting a second container to it via `compose.yaml`. It also shows how to reuse a host-side hosts-file alias inside a container with the `extra_hosts` property.
+</TLDR>
+
 When you're running a Docker container on a different network than the standard one (called `bridge`) and **you wish to run a second container that needs to access the first container, you need to run the second container on the same network.**
 
 Let's say, you're running a MySQL database on a network called `my_network` and you wish to be able start a second container like [phpMyAdmin](https://hub.docker.com/_/phpmyadmin) and get access to the database, then you need to use the `--network` CLI option when running the second container using `docker run`.
 
-Now, imagine the first container is a web application and the second container should be able to access his web page and, too, reusing the same alias?
+Now, imagine the first container is a web application and the second container should be able to access its web page and, too, reuse the same alias?
 
 <!-- truncate -->
 
 ## Some preparation work
 
-<AlertBox variant="note" title="Skip this step if you already have a dedicated network and his running container">
-If you don't already have a running web application on his own network, please follow this step.
+<AlertBox variant="note" title="Skip this step if you already have a dedicated network and its running container">
+If you don't already have a running web application on its own network, please follow this step.
 
 </AlertBox>
 
@@ -48,7 +52,7 @@ $ docker network create my_network
 
 And run the script using `docker run -d -p 8080:80 -u $(id -u):$(id -g) -v "$PWD":/var/www/html --network my_network php:8.2-apache`.
 
-That command will run a Apache container and we can surf to our local website using `http://127.0.0.1:8080`
+That command will run an Apache container and we can surf to our local website using `http://127.0.0.1:8080`
 
 ![Our local site](./images/localsite.webp)
 
@@ -70,7 +74,7 @@ To make things clear, here is the content of our current directory:
 
 We need to create our image. To do this, simply run `docker compose build`.
 
-Then we'll start an interactive bash shell in our second container and we'll try to access to our local website:
+Then we'll start an interactive bash shell in our second container and we'll try to access our local website:
 
 <Terminal typewriter>
 $ docker compose run -it --rm --entrypoint /bin/sh my_second_container
@@ -80,7 +84,7 @@ curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect 
 </Terminal>
 
 <AlertBox variant="danger" title="It's not working... **as expected**">
-We can confirm our container is not able to access to our local site `http://127.0.0.1:8080` while, that website is well configured. If you exit the container and try to refresh the website, it's working well.
+We can confirm our container is not able to access our local site `http://127.0.0.1:8080` while that website is well configured. If you exit the container and try to refresh the website, it's working well.
 
 </AlertBox>
 
@@ -95,8 +99,8 @@ Please edit your `compose.yaml` file like this:
 
 <Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 
-<AlertBox variant="info" title="To be able to access to a dockerized application, containers should be fired on the same network">
-It is impossible for a container running on, f.i., the `bridge` (default) network to access to a container running on another network. This is a protection against unwanted access. *Replace `my_network` by yours if you've a different one.*
+<AlertBox variant="info" title="To be able to access a dockerized application, containers should be running on the same network">
+It is impossible for a container running on, f.i., the `bridge` (default) network to access a container running on another network. This is a protection against unwanted access. *Replace `my_network` by yours if you've a different one.*
 
 </AlertBox>
 
@@ -135,7 +139,7 @@ And now, since we've started the second container on the same network, it works.
 
 And now the final part, imagine you've defined an alias in the hosts file (for Windows, in file `C:\Windows\System32\drivers\etc\hosts`).
 
-Imagine you've create an alias like:
+Imagine you've created an alias like:
 
 <Snippet filename="C:\Windows\System32\Drivers\etc\hosts" source="./files/C:\Windows\System32\Drivers\etc\hosts" />
 
@@ -143,7 +147,7 @@ and thus, on your host, you're not using `http://127.0.0.1:8080` but `http://mys
 
 ![My site](./images/mysite.webp)
 
-If we try to access it from inside the second container, it didn't work:
+If we try to access it from inside the second container, it doesn't work:
 
 <Terminal typewriter>
 $ docker compose run -it --rm --entrypoint /bin/sh my_second_container
@@ -175,5 +179,5 @@ pre {margin: 0; font-family: monospace;}
 
 ## Conclusion
 
-1. To be able to access to a dockerized application from inside a second Docker container, both should be fired on the same network and
+1. To be able to access a dockerized application from inside a second Docker container, both should be running on the same network and
 2. To be able to reuse the same alias on the host and inside a Docker container, we need to use the `extra_hosts` property to ask Docker to create these aliases automatically for us in the `/etc/hosts` file.

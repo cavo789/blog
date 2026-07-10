@@ -1,6 +1,6 @@
 ---
 slug: pentaho-discovery
-title: Discovering Pentaho, a ETL program
+title: Discovering Pentaho, an ETL program
 date: 2025-06-20
 description: Discover Pentaho Data Integration (ETL). Follow this step-by-step guide to install Pentaho (PDI/Kettle) on Linux and load data from an Excel file into a PostgreSQL database using Docker.
 authors: [christophe]
@@ -8,12 +8,13 @@ image: /img/v2/etl.webp
 mainTag: database
 tags:
   - database
-  - msaccess
-  - vba
+  - docker
+  - excel
+  - linux
 language: en
 blueskyRecordKey: 3lumzwwoqsc2r
 ---
-![Discovering Pentaho, a ETL program](/img/v2/etl.webp)
+![Discovering Pentaho, an ETL program](/img/v2/etl.webp)
 
 <TLDR>
 This guide provides a step-by-step introduction to Pentaho Data Integration (PDI/Kettle) on Linux. It walks through the entire process of setting up your environment, from installing Pentaho and its Java dependencies to creating a sample ETL job. You will learn how to use Docker to quickly spin up a PostgreSQL database and then use Pentaho's Spoon graphical interface to build a transformation that extracts data from an Excel file, and loads it into a PostgreSQL table.
@@ -23,7 +24,7 @@ This guide provides a step-by-step introduction to Pentaho Data Integration (PDI
 
 Pentaho Data Integration is an ETL tool (**E**xtract, **T**ransform and **L**oad) used for data integration. Let's imagine you've an Excel file and you want to extract records (only those matching a specific rule), then apply a transformation (like adding some new columns based on current data) and load them in a PostgreSQL database.
 
-Pentaho (also called **PDI** or **Kettle**) will allow you to *draw* a data flow (load files, do some merge, apply transformation, run some piece of code (Shell or Javascript), ... and store the result somewhere (a database or a file) or, even, send information by email in case of failure).
+Pentaho (also called **PDI** or **Kettle**) will allow you to *draw* a data flow (load files, do some merge, apply transformation, run some piece of code (Shell or JavaScript), ... and store the result somewhere (a database or a file) or, even, send information by email in case of failure).
 
 Let's quickly discover Pentaho and, as a first example, load an Excel file into a PostgreSQL database.
 
@@ -95,7 +96,7 @@ We'll create a new project; please create a temporary folder and jump in it:
 $ mkdir -p /tmp/pentaho && cd $_
 </Terminal>
 
-We will create a dummy Excel file then load it in a PostgreSQL database. The target table will be called `people` and we'll create it automatically (but well manually).
+We will create a dummy Excel file then load it in a PostgreSQL database. The target table will be called `people` and we'll create it manually (not automatically).
 
 ### First, we need an Excel file to load
 
@@ -132,7 +133,7 @@ For this, we'll use Docker. Please create a file called `compose.yaml` in your `
 
 Please run `docker compose up --detach` to start the PostgreSQL container and the pgAdmin one.
 
-As you've seen, we've already foresee a pgAdmin interface; we can open it by going to `http://localhost:8080`.
+As you've seen, we've already set up a pgAdmin interface; we can open it by going to `http://localhost:8080`.
 
 <BrowserWindow url="http://localhost:8080">
   <img
@@ -144,7 +145,7 @@ As you've seen, we've already foresee a pgAdmin interface; we can open it by goi
 
 Use `admin@yopmail.com` and `admin` as credentials.
 
-Once in the interface of pgAdmin, we've to create a new server by clicking on the `Add new server` button.
+Once in the interface of pgAdmin, we have to create a new server by clicking on the `Add new server` button.
 
 Give a name to the server then, in the `Connection` tab, fill in as below:
 
@@ -167,7 +168,7 @@ As you can see on the image below, during the creation of our PostgreSQL contain
 </BrowserWindow>
 
 <AlertBox variant="info">
-This is done thanks our `compose.yaml` file. If you're curious, open the `compose.yaml` file again and pay attention to the `environment` section for the `postgres` service. We've instruct PostgreSQL to create a database called `people`; owned by user called `admin`.
+This is done thanks to our `compose.yaml` file. If you're curious, open the `compose.yaml` file again and pay attention to the `environment` section for the `postgres` service. We've instructed PostgreSQL to create a database called `people`; owned by user called `admin`.
 
 </AlertBox>
 
@@ -238,7 +239,7 @@ Click on the button with the *output connector* (the one with the right arrow) a
 
 ![Output connector](./images/output_connector.webp)
 
-It tells to Pentaho that, once the **Load people from Excel** step is successfully done to continue with **Table output**.
+It tells Pentaho that, once the **Load people from Excel** step is successfully done, to continue with **Table output**.
 
 Now double-click on **Table output** and let's do some configuration:
 
@@ -251,7 +252,7 @@ Now, click on the `SQL` button to see that Pentaho will provide a popup (think t
 
 ![Creating the table](./images/create_table.webp)
 
-Since our table didn't exists yet, click on the `Execute` button:
+Since our table didn't exist yet, click on the `Execute` button:
 
 ![The table has been created](./images/create_table_done.webp)
 
@@ -303,6 +304,6 @@ If you want the Excel file used in this article, here is the [link](./files/peop
 
 ## Conclusion
 
-Aside Docker, PostgreSQL and pgAdmin, we've seen how to load a Excel file on a Linux environment and store records in a PostgreSQL table.
+Aside Docker, PostgreSQL and pgAdmin, we've seen how to load an Excel file on a Linux environment and store records in a PostgreSQL table.
 
 The possibilities offered by Pentaho are just monstrous.

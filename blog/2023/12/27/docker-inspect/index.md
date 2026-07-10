@@ -13,6 +13,10 @@ language: en
 ---
 ![Docker inspect - Retrieve network's information](/img/v2/docker_tips.webp)
 
+<TLDR>
+This article shows how to use `docker inspect <container>` to get a container's full JSON configuration, and how to pull out just the network name/IP from the `NetworkSettings.Networks` property using `docker inspect <container> | jq -r '.[0].NetworkSettings.Networks'`.
+</TLDR>
+
 The `docker inspect` command is used to retrieve detailed information about various Docker objects, including images, containers, volumes, networks, and nodes. It provides a comprehensive overview of the object's configuration, state, and other relevant details.
 
 The returned information is a JSON representation of the object.

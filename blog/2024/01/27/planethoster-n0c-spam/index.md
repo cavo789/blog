@@ -14,9 +14,13 @@ language: en
 <!-- cspell:ignore allof,fileinto -->
 ![Exterminate them all, fight spam directly at PlanetHoster - N0C](/img/v2/fighting_against_spam.webp)
 
+<TLDR>
+This article explains how to fight spam on PlanetHoster's N0C hosting, where SpamAssassin isn't customer-accessible: rules must instead be created in RoundCube's Filters interface, which generates a `Sieve`-syntax `roundcube.sieve` file. It shows the Sieve rule format and where that file lives on the FTP server, as a stepping stone toward automating rule generation.
+</TLDR>
+
 A few days ago, I've published a post about how to <Link to="/blog/cpanel-spam">fight against spam if you've a cpanel</Link>. If you're hosted on the N0C infrastructure of PlanetHoster; it will not work.
 
-After having some discussion with us, they've said that SpamAssassin is managed by them (PH) and no more accessible to us (clients). We can't anymore create our own rules like explained on the post I've mentioned above.
+After having a discussion with them, they told us that SpamAssassin is managed by them (PH) and is no longer accessible to us (clients). We can no longer create our own rules like explained in the post I've mentioned above.
 
 Ok, so, here is how to deal with spam at PlanetHoster - N0C platform.
 
@@ -41,7 +45,9 @@ Fill in the screen with your own rule; like for identifying all emails coming fr
 
 ![Identify as spam emails from Soviet Union](./images/rule_su.webp)
 
-<AlertBox variant="note" title="In my case, all the emails coming from `.su` can only be unsolicited emails." />
+<AlertBox variant="note" title="Unsolicited emails">
+  In my case, all the emails coming from `.su` can only be unsolicited emails.
+</AlertBox>
 
 Once saved, you can create other rules.
 

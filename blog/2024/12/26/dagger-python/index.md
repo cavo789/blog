@@ -18,11 +18,15 @@ language: en
 
 ![Dagger.io - Using dagger to automate your CI workflows](/img/v2/dagger.webp)
 
-**Be careful, it's a bomb.**  Docker has revolutionized the world; let's not be afraid to say it loud and clear, and most probably [Dagger.io](https://dagger.io/), created by the same people as Docker, will follow in its footsteps.
+<TLDR>
+This article walks through "daggerizing" a Python project with Dagger.io so CI steps (Pylint, Black, mypy, Ruff) can be defined once in Python functions and run identically both locally (via a Dockerized `dagger` CLI, wrapped in `make lint`/`make format` targets) and in a remote CI like GitLab — eliminating the slow push-and-pray loop of debugging a `.gitlab-ci.yml` only on the server. It covers `dagger init`, writing pipeline functions, running them concurrently with `run-all`, and configuring the GitLab runner to share the Docker socket.
+</TLDR>
+
+**Be careful, it's a bomb.** Docker has revolutionized the world; let's not be afraid to say it loud and clear, and most probably [Dagger.io](https://dagger.io/), created by the same people as Docker, will follow in its footsteps.
 
 Dagger.io aims to be a tool that lets you execute steps of a workflow in exactly the same way as a **CI/CD** (**Continuous Integration / Continuous Delivery**) system like the ones of GitHub, GitLab, Jenkins, ... does.
 
-But what is a CI? It's a step carried out by your server once you've pushed a new version of your project.  During a CI, you can validate the syntax of your code, make sure it conforms (e.g. to formatting rules), run code quality analysis tools such as checking that you don't have any undeclared or untyped variables or dead code (e.g. a function you no longer use).
+But what is a CI? It's a step carried out by your server once you've pushed a new version of your project. During a CI, you can validate the syntax of your code, make sure it conforms (e.g. to formatting rules), run code quality analysis tools such as checking that you don't have any undeclared or untyped variables or dead code (e.g. a function you no longer use).
 
 During a CI, you can also launch your unit tests and run them each time you push out a new version of your project.
 
@@ -30,7 +34,7 @@ The aim of the CI is to ... **crash as soon as something isn't in the expected s
 
 <!-- truncate -->
 
-In concrete terms: at the office, we're using GitLab and then, in each project, we've a file called `.gitlab-ci.yml` in any projects. In that file, we've foresee a few actions like running code quality tools so every time someone pushes a project, GitLab will execute these tools f.i. check that my code didn't contain no syntax errors (linting), that there is no formatting violations, no unused/untyped variables/functions/... and to execute the unit tests for my project.
+In concrete terms: at the office, we're using GitLab, and in each project we have a file called `.gitlab-ci.yml`. In that file, we've set up a few actions, like running code quality tools, so every time someone pushes changes, GitLab will execute these tools — for instance, checking that my code doesn't contain any syntax errors (linting), that there are no formatting violations, no unused/untyped variables/functions, and running the unit tests for my project.
 
 This is called a `Continuous Integration` process (a `CI` in short).
 
@@ -38,9 +42,9 @@ That's cool but it's a pain too... Let's see why and how Dagger.io will improve 
 
 ## Why using Dagger?
 
-Anyone who has to set up a CI that runs on a remote server knows this: it's the exact opposite of *It's piece of cake*. The CI has to be programmed in a text file in YAML format and it's impossible to test the CI locally because it's only run when there's a push on the server (and thus only on the server).
+Anyone who has to set up a CI that runs on a remote server knows this: it's the exact opposite of *It's a piece of cake*. The CI has to be programmed in a text file in YAML format and it's impossible to test the CI locally because it's only run when there's a push on the server (and thus only on the server).
 
-It's extremely complicated to manage the reproducibility of the scripts because, when a CI error occurs on the server, you have to read the error log and try to understand why it occurs before trying to try to patch it (perhaps you'll need to update your yaml file), push the changes, wait, hope that it was the right correction, oh no, not the good one and you need to restart the loop and, oh no, ... and push again and ... It's a real pain and can take hours!
+It's extremely complicated to manage the reproducibility of the scripts because, when a CI error occurs on the server, you have to read the error log and try to understand why it occurs before trying to patch it (perhaps you'll need to update your yaml file), push the changes, wait, hope that it was the right correction, oh no, not the right one, and you need to restart the loop and, oh no, ... and push again and ... It's a real pain and can take hours!
 
 ![Pushing and wait](./images/push_and_wait_angry.webp)
 
@@ -48,9 +52,9 @@ And, finally, you've solved the issue after having pushed for the 46th time.
 
 ## Let's build a real example
 
-During this tutorial, we'll **daggerized** a repository i.e. we'll start from zero, create a small Python script, create a Dagger Docker image then initialize our project to use Dagger.
+During this tutorial, we'll **daggerize** a repository, i.e. we'll start from zero, create a small Python script, create a Dagger Docker image, then initialize our project to use Dagger.
 
-Let's create a temporary folder for Dagger and jump in it: `mkdir /tmp/dagger && cd $_`,
+Let's create a temporary folder for Dagger and jump in it: `mkdir /tmp/dagger && cd $_`.
 
 Please create there a Python script in a subfolder `src` and let's call it `src/main.py`:
 
@@ -67,7 +71,7 @@ Every time we will push our codebase to our versioning application (like GitLab)
 * Run [Mypy](https://github.com/python/mypy/), *Mypy is a program that will type check your Python code* and
 * Run [Ruff](https://github.com/astral-sh/ruff), *an extremely fast Python linter and code formatter*
 
-These steps are fired in our CI (GitLab, Github, ...) every time we'll push our code and, to do the same actions locally, we need to create f.i. some make actions (`make lint`, `make format`, ...)
+These steps are fired in our CI (GitLab, GitHub, ...) every time we push our code and, to do the same actions locally, we need to create f.i. some make actions (`make lint`, `make format`, ...).
 
 ## We want Dagger
 
@@ -96,11 +100,11 @@ To do this, we have to run the `dagger init` command and since we're using a Doc
 
 </AlertBox>
 
-It'll take around two minutes to download and initialise Dagger (for the first time). By looking at your file system, you'll see, oh, the owner is `root` and not you.
+It'll take around two minutes to download and initialize Dagger (for the first time). By looking at your file system, you'll see, oh, the owner is `root` and not you.
 
 <Terminal typewriter source="./files/terminal-4.txt" />
 
-Please run `sudo chown -R christophe:christophe .` (and replace my firstname by your Linux username).
+Please run `sudo chown -R christophe:christophe .` (and replace my first name with your Linux username).
 
 Let's look at the tree structure:
 
@@ -156,7 +160,7 @@ Since it's the first time, Dagger will need to make some initializations (like i
 
 ![Partial output - Pylint](./images/pylint.webp)
 
-Yes!, PyLint has worked and alert us about missing module docstring.
+Yes! PyLint worked and alerted us about a missing module docstring.
 
 Edit `src/main.py` and add some valid module docstring (or just ignore that warning):
 
@@ -175,9 +179,9 @@ We've successfully created our first task and we've successfully fired it on our
 
 It becomes quite difficult to remember all these `docker xxx` commands, no? Let's simplify this by creating a `makefile`.
 
-Thanks the following `makefile`, we'll be able to just run `make build` to create our Dagger Docker image and `make lint` to run the lint function.
+Thanks to the following `makefile`, we'll be able to just run `make build` to create our Dagger Docker image and `make lint` to run the lint function.
 
-You'll also have a `make bash` action to jump in an interactive shell (type `exit` to quit the shell and comes back to your host console). Easy no?
+You'll also have a `make bash` action to jump into an interactive shell (type `exit` to quit the shell and come back to your host console). Easy, no?
 
 And `make help` will show the Dagger help screen.
 
@@ -211,11 +215,11 @@ Now, we'll update the `.pipeline/src/src/main.py` file and add some more new fun
 
 This new file comes with a lot of changes:
 
-We've defined two global variables called `source` and `config`. So, now, we don't pass the `source` folder to the lint function anymore (local parameter) but just need to set it once (global parameter). We've also add a `config` folder to be able to tell Dagger where our configuration files are stored.
+We've defined two global variables called `source` and `config`. So, now, we don't pass the `source` folder to the lint function anymore (local parameter) but just need to set it once (global parameter). We've also added a `config` folder to be able to tell Dagger where our configuration files are stored.
 
 <Snippet filename=".pipeline/src/src/main.py" source="./files/main.part7.py" />
 
-We've a two new functions called `mypy` and `ruff` and a last one called `run_all`:
+We have two new functions called `mypy` and `ruff` and a last one called `run_all`:
 
 <Snippet filename=".pipeline/src/src/main.py" source="./files/main.part8.py" />
 
@@ -251,11 +255,11 @@ We've just done the local part, let's tackle the remote CI.
 
 For the next chapters, I'll suppose you're using a self-hosted GitLab server.
 
-### Allowing the Gitlab runner to access to Docker
+### Allowing the GitLab runner to access Docker
 
-I'm not expert in GitLab runner configuration but the following configuration is working for me.
+I'm not an expert in GitLab runner configuration but the following configuration is working for me.
 
-Do a SSH connection to your GitLab runner server and edit the `/etc/gitlab-runner/config.toml` file (you should be root). Just add `/var/run/docker.sock:/var/run/docker.sock` for the `volumes` property:
+Do an SSH connection to your GitLab runner server and edit the `/etc/gitlab-runner/config.toml` file (you should be root). Just add `/var/run/docker.sock:/var/run/docker.sock` for the `volumes` property:
 
 <Snippet filename="/etc/gitlab-runner/config.toml" source="./files/config.toml" />
 
@@ -266,7 +270,7 @@ Official Gitlab documentation about [volumes](https://docs.gitlab.com/runner/con
 
 </AlertBox>
 
-To check if it's working, run `sudo su gitlab-runner` to switch to that user and run `docker info` and `docker image list` and check if it's works. If yes, then your user is part of the Docker group.
+To check if it's working, run `sudo su gitlab-runner` to switch to that user and run `docker info` and `docker image list` and check if it works. If yes, then your user is part of the Docker group.
 
 ### Configure your CI
 
@@ -276,12 +280,12 @@ Now, please create a file called `.gitlab-ci.yml` with this content:
 
 <Snippet filename=".gitlab-ci.yml" source="./files/.gitlab-ci.yml" />
 
-And push the changes to GitLab. The presence of the `.gitlab-ci.yml` file will tells to GitLab to instantiate a pipeline after each commit and, here in our example, to start the four jobs.
+And push the changes to GitLab. The presence of the `.gitlab-ci.yml` file will tell GitLab to instantiate a pipeline after each commit and, here in our example, to start the four jobs.
 
 <AlertBox variant="info" title="Docker Socket Binding">
 The provided example is using the technique called **Docker Socket Binding**: we don't need to define the `DOCKER_HOST` variable for instance as we can see in [the official Dagger documentation](https://docs.dagger.io/integrations/gitlab/#docker-executor). Indeed, if not specified, `DOCKER_HOST` is set to `unix:///var/run/docker.sock` ([doc](https://docs.gitlab.com/runner/configuration/advanced-configuration.html#the-runnersdocker-section)).
 
-Since we've shared the Docker daemon (`/var/run/docker.sock`) in our GitLab `/etc/gitlab-runner/config.toml` configuration file, we've allowed the CI to access to the socket.
+Since we've shared the Docker daemon (`/var/run/docker.sock`) in our GitLab `/etc/gitlab-runner/config.toml` configuration file, we've allowed the CI to access the socket.
 
 </AlertBox>
 

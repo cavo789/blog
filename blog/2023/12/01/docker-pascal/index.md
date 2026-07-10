@@ -12,7 +12,11 @@ language: en
 <!-- cspell:ignore ource,rchive,roupn,chiffre,downto -->
 ![Play with Docker and Pascal](/img/v2/experiments.webp)
 
-Good old memories... During my studies (in 1991-1993), I was a huge fan of Turbo Pascal 7.0. It was the first language that I really learned and loves it so much. I used to spend dozens of hours behind my computer writing anything and everything.
+<TLDR>
+This article revives 30-year-old Turbo Pascal source code (pulled from the old SWAG archive) using the `signumtemporis/fpc` Docker image to compile `.pas` files into Windows executables with zero local install, running both a "Hello World" and an old school byte-to-binary conversion function written back in 1992.
+</TLDR>
+
+Good old memories... During my studies (in 1991-1993), I was a huge fan of Turbo Pascal 7.0. It was the first language that I really learned, and I loved it so much. I used to spend dozens of hours behind my computer writing anything and everything.
 
 If you still remember that time, Turbo Pascal 7.0 was used to create executables for MS-DOS.
 
@@ -24,7 +28,7 @@ The idea for this article came after the one written on <Link to="/blog/docker-a
 
 The first thing to do was to find some old source code and to do that, I went back to the **S**ource**w**are **A**rchive **G**roup; known as **SWAG**.
 
-The following parametrized query will retrieve some code I've published 30 years ago: [https://www.google.com/search?q=avonture+site%3Ahttp%3A%2F%2Fwww.retroarchive.org](https://www.google.com/search?q=avonture+site%3Ahttp%3A%2F%2Fwww.retroarchive.org). Out of nostalgia, I've also copied these sources here:[https://github.com/cavo789/swag](https://github.com/cavo789/swag).
+The following parametrized query will retrieve some code I've published 30 years ago: [https://www.google.com/search?q=avonture+site%3Ahttp%3A%2F%2Fwww.retroarchive.org](https://www.google.com/search?q=avonture+site%3Ahttp%3A%2F%2Fwww.retroarchive.org). Out of nostalgia, I've also copied these sources here: [https://github.com/cavo789/swag](https://github.com/cavo789/swag).
 
 ## Hello world
 
@@ -49,7 +53,7 @@ Hello world! I'm a Turbo Pascal source code
 Voilà, we've successfully created our first Pascal code in 2023.
 
 <AlertBox variant="info" title="Docker CLI reminder">
-As a reminder, the used Docker run command are (almost always the same):
+As a reminder, the used Docker run commands are (almost always the same):
 
 * `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
 * `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
@@ -87,3 +91,5 @@ $ Byte2Bin.exe
 </Terminal>
 
 OK, so the point of running TP7 code in 2023 is minimal and useless, but it is well fun to see it still works.
+
+Same idea, different language: I've also played with <Link to="/blog/docker-python">Python</Link> and <Link to="/blog/docker-java">Java</Link> using the exact same "zero local install" Docker approach.

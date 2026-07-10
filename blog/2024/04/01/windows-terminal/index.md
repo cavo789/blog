@@ -18,9 +18,13 @@ language: en
 
 ![Windows Terminal](/img/v2/windows_terminal_tips.webp)
 
+<TLDR>
+This article covers customizing Windows Terminal through its `settings.json`: setting a background image per profile, adding a new profile to open a shell inside a specific WSL distribution or Docker container, setting the default profile and starting directory, and using `startupActions` to automatically open multiple tabs (e.g. Ubuntu plus a DOS prompt) on launch.
+</TLDR>
+
 For people who like working in a console, Windows Terminal can be seen as a successor of the old DOS console; you know the _black screen_ where you can type commands like `dir` or `mkdir`.
 
-Windows Terminal is a multi-tab software so instead of having multiple windows, you just have multiple tabs but the most killing features for me is the possibility to have a DOS console in one tab, a Powershell one in a second tab, having one or more tabs for Linux and, why not, a tab for an SSH connection.
+Windows Terminal is a multi-tab software so instead of having multiple windows, you just have multiple tabs but the killer feature for me is the possibility to have a DOS console in one tab, a Powershell one in a second tab, one or more tabs for Linux and, why not, a tab for an SSH connection.
 
 And that feature is really comfortable! Using the same window, you can have multiple active consoles and f.i. share your Linux history between tabs. Pretty cool!
 
@@ -40,10 +44,17 @@ But to make the interface geekier, I'm using a wallpaper instead of, just, a bla
 
 If you want to, proceed like this:
 
-* Click on the `+` button and choose `settings`
-* Click on the gear wheel, bottom left to open settings as a JSON file (in my case VSCode will be open)
-  ![The gear wheel](./images/gear.webp)
-* In the opened editor, unfold the `list` of `profiles` and retrieve the one you wish to customize (in my case `Ubuntu`)
+<StepsCard
+  variant="steps"
+  steps={[
+    "Click on the `+` button and choose `settings`",
+    {
+      content: <>Click on the gear wheel, bottom left to open settings as a JSON file (in my case VSCode will be open)<br />
+      <img className="screenshot" src={require("./images/gear.webp").default} alt="The gear wheel" /></>,
+    },
+    "In the opened editor, unfold the `list` of `profiles` and retrieve the one you wish to customize (in my case `Ubuntu`)",
+  ]}
+/>
 
 In my case, my profile has these settings:
 
@@ -75,7 +86,7 @@ For example, I'll create a new profile so I can immediately open my blog in a Do
 
 ## Set the default profile
 
-Take a look the list of profiles defined in your `settings.json` file, each profile has his own `guid`. Just copy/paste the guid of the profile of your choice to the `defaultProfile` root node.
+Take a look at the list of profiles defined in your `settings.json` file, each profile has its own `guid`. Just copy/paste the guid of the profile of your choice to the `defaultProfile` root node.
 
 ## Set the default folder for Ubuntu
 
@@ -93,7 +104,7 @@ Let's imagine I wish to launch two tabs; the default one (nothing to foresee) an
 
 <Snippet filename="settings.json" source="./files/settings.part4.json" />
 
-So now I need to create a profile called `DOS Command Prompt` :
+So now I need to create a profile called `DOS Command Prompt`:
 
 <Snippet filename="settings.json" source="./files/settings.part5.json" />
 

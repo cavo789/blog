@@ -42,7 +42,7 @@ In your project directory (so `/tmp/docusaurus`), create a file called `Dockerfi
 
 #### Dockerfile - explanations line by line
 
-* Line 1: we'll use Node.js v21 in his alpine version,
+* Line 1: we'll use Node.js v21 in its alpine version,
 * Line 2: the `RUN npx create-docusaurus@latest /app classic && chown -R node:node /app` command will install the latest version of Docusaurus (in the `/app` folder) and make sure the folder is owned by our `node` user,
 * Line 3: from now, we'll do everything using the `node` user,
 * Line 4: `/app` will be the default working directory in the image,
@@ -127,11 +127,11 @@ As you can see, the default ordering follows chronological order: the last blog 
 
 </AlertBox>
 
-For this tutorial, images comes from `unsplash.com` but with a theme: dinosaurs. *If you refresh the page, you'll get new images.*
+For this tutorial, images come from `unsplash.com` but with a theme: dinosaurs. *If you refresh the page, you'll get new images.*
 
-### Improved look&feel
+### Improved look & feel
 
-We'll create on our computer a file in our `blog` folder. I'm using vscode so I jump in my editor, go to the `blog` folder and create a new file, let's say: `2024-02-07-really-better.md`
+We'll create a file on our computer, in our `blog` folder. I'm using VS Code so I jump into my editor, go to the `blog` folder and create a new file, let's say: `2024-02-07-really-better.md`
 
 ![Really better one](./images/vscode.webp)
 

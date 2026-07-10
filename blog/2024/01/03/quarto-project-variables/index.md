@@ -14,11 +14,15 @@ language: en
 ---
 ![Using variables from external file in your Quarto project](/img/v2/quarto.webp)
 
-My use case is: I need to write some technical, long, documentation where I need to provide some information like IP addresses of used servers, some paths to the application, configuration folders, ...
+<TLDR>
+This article shows how to avoid hardcoding recurring values (IPs, paths, emails) in Quarto documentation by storing them in a `_variables.yml` file and referencing them with `{{< var xxx >}}` short codes, or via `{{< meta xxx >}}` for document metadata. It also covers reading values from an `.env` file with `{{< env xxx >}}`, loaded through `--env-file` when rendering Quarto in Docker.
+</TLDR>
+
+My use case is: I need to write some long, technical documentation where I need to provide some information like IP addresses of used servers, some paths to the application, configuration folders, ...
 
 The *normal way to do this* is to just put information directly in the documentation and to make sure to update every occurrence in case of changes during the lifecycle of the application.
 
-The best way is probably to use an external file where information are stored in a key-value form and, during the rendering process of Quarto, replace short codes by values.
+The best way is probably to use an external file where information is stored in a key-value form and, during the rendering process of Quarto, replace short codes by values.
 
 <!-- truncate -->
 
@@ -33,11 +37,16 @@ You can find the official documentation on [https://quarto.org/docs/authoring/va
 
 Here is how to proceed:
 
-1. First, it's mandatory, you should have a file called `_quarto.yml` in the same directory as the file (let's say `documentation.md`) you will convert using Quarto. *Note: that file can be empty (see [https://github.com/quarto-dev/quarto-cli/issues/2918](https://github.com/quarto-dev/quarto-cli/issues/2918) for more information on this).*
-2. Then you should create a file called `_variables.yml` with your key-values and, finally,
-3. You need to have your markdown file.
+<StepsCard
+  variant="steps"
+  steps={[
+    "First, it's mandatory, you should have a file called `_quarto.yml` in the same directory as the file (let's say `documentation.md`) you will convert using Quarto. *Note: that file can be empty (see [https://github.com/quarto-dev/quarto-cli/issues/2918](https://github.com/quarto-dev/quarto-cli/issues/2918) for more information on this).*",
+    "Then you should create a file called `_variables.yml` with your key-values and, finally,",
+    "You need to have your markdown file.",
+  ]}
+/>
 
-So, `_quarto.yml` can stay empty. His presence is just to tell to Quarto the markdown file is part of a project.
+So, `_quarto.yml` can stay empty. Its presence is just to tell Quarto the markdown file is part of a project.
 
 Here is an example of what can be a `_variables.yml` content:
 
@@ -66,7 +75,7 @@ Quarto includes {{< var engine.jupyter >}} and
 
 As you can see, the short code is something like `{{< meta xxx >}}` or `{{< var xxx >}}`.
 
-`meta` is for metadata of the document like his title and `var` to retrieve information's from `_variables.yml`.
+`meta` is for metadata of the document like its title and `var` to retrieve information from `_variables.yml`.
 
 By running `quarto preview documentation.md --to html`, you'll get this:
 
@@ -76,7 +85,7 @@ This solution is perfect when you want to isolate the "static" content of your d
 
 ## Environment variables
 
-You can too retrieve environment variables using `{{< env xxx >}}` but, there, you should first load these variables in case of need.
+You can also retrieve environment variables using `{{< env xxx >}}` but, there, you should first load these variables in case of need.
 
 For instance, you can have a `.env` file like this:
 

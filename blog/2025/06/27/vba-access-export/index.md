@@ -33,13 +33,13 @@ My [https://github.com/cavo789/vbs_access_export](https://github.com/cavo789/vbs
 
 This way, you'll get a quick backup of your code and you'll be able to synchronize your code on a versioning platform like GitHub.
 
-The script will start MS Access (hidden way), open the specified database, process every code object and export them, one by one, in a `\src\your_database.mdb` folder.
+The script will start MS Access (in hidden mode), open the specified database, process every code object and export them, one by one, in a `\src\your_database.mdb` folder.
 
-The `src` folder will be automatically created if needed and you'll find a subfolder having the same name of your file (so you can have more than one exported file in the same `src` folder).
+The `src` folder will be automatically created if needed and you'll find a subfolder having the same name as your file (so you can have more than one exported file in the same `src` folder).
 
 ## Install
 
-Just get a copy of the [https://github.com/cavo789/vbs_access_export](https://github.com/cavo789/vbs_access_export) VBS script, perhaps the `.cmd` too (for your easiness) and save them in the same folder of your database.
+Just get a copy of the [https://github.com/cavo789/vbs_access_export](https://github.com/cavo789/vbs_access_export) VBS script, perhaps the `.cmd` too (for your easiness) and save them in the same folder as your database.
 
 ## Usage
 

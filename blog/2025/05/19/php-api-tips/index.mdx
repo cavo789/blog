@@ -85,7 +85,7 @@ But use the adequate HTTP verb:
 
 #### Send the HTTP Accept header
 
-It's **really recommended** to inform the server about what you expect for: `json`, `csv`, `plain-text`, `xml`, ... To do this, use the `Accept` header like in the example here above. This is safer because the server can change his default format from JSON to CSV f.i. and if you expect JSON, your code will be broken.
+It's **really recommended** to inform the server about what you expect for: `json`, `csv`, `plain-text`, `xml`, ... To do this, use the `Accept` header like in the example here above. This is safer because the server can change its default format from JSON to CSV f.i. and if you expect JSON, your code will be broken.
 
 Don't do this:
 
@@ -244,7 +244,7 @@ Using `POST` **you'll create a new resource**. Calling `POST` five times for the
 </Terminal>
 
 <AlertBox variant="note">
-When calling `POST` you should provide all the fields required to create the resource. So, for a new employee, his firstname, lastname, birthdate, national register number, his hiring date, the department where he'll work and so on.
+When calling `POST` you should provide all the fields required to create the resource. So, for a new employee, their firstname, lastname, birthdate, national register number, their hiring date, the department where they'll work and so on.
 
 </AlertBox>
 
@@ -254,7 +254,7 @@ The example here above will create a new employee, the server will return the HT
 
 | Code  | Status          | Reason                                                                                                            |
 | ----- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `200` | `Created`       | The resource has been successfully created.                                                                       |
+| `201` | `Created`       | The resource has been successfully created.                                                                       |
 | `303` | `See Other`     | The resource already exists, and a link is provided to the resource. `303` is used to denote it's a normal check. |
 | `401` | `Unauthorized`  | The endpoint is secured, and the request didn't pass a valid access token.                                        |
 | `403` | `Access denied` | You're not allowed to call this method.                                                                           |
@@ -266,8 +266,8 @@ The `200 - OK` code should not be used with `POST`.
 
 `POST` can also be used when calling a controller like in `curl -X POST -d '{"action":"sendBirthdayMail",...}' https://xxx/api/v1/employees/123/actions` or `curl -X POST https://xxx/api/v1/employees/123/sendBirthdayMail`.
 
-<AlertBox variant="caution" title="The RESTful API standards recommends to use `POST` for actions.">
-So, we shouldn't do `GET https://xxx/api/v1/employees/actions` because `actions` it's not a resource but an action.
+<AlertBox variant="caution" title="The RESTful API standards recommend using `POST` for actions.">
+So, we shouldn't do `GET https://xxx/api/v1/employees/actions` because `actions` is not a resource but an action.
 
 </AlertBox>
 
@@ -277,8 +277,8 @@ So, we shouldn't do `GET https://xxx/api/v1/employees/actions` because `actions`
   variant="info"
   title="You can translate `PUT` as `UPDATE` in `CRUD`, when you'll update every field"
 >
-  Using `PUT` implies you're intended to update each field of the record. If you
-  plan to update just a few of them, take a look to the `PATCH` verb.
+  Using `PUT` implies you intend to update each field of the record. If you
+  plan to update just a few of them, take a look at the `PATCH` verb.
 </AlertBox>
 
 Using `PUT` you'll update an existing resource. Let's imagine we have just three fields in our employees table:
@@ -288,7 +288,7 @@ Using `PUT` you'll update an existing resource. Let's imagine we have just three
   {`curl -X PUT -d '\{"firstname":"Christophe", "lastname":"AVONTURE", "national_number": 123456789}' https://xxx/api/v1/employees/999`}
 </Terminal>
 
-Consider using `PUT` only when **you'll update every information's** of the resource (except calculated fields like f.i. `employee_id`). If you wish to update just a few ones (partial content), Consider using `PATCH`.
+Consider using `PUT` only when **you'll update every piece of information** of the resource (except calculated fields like f.i. `employee_id`). If you wish to update just a few ones (partial content), consider using `PATCH`.
 
 <span style={{ color: "green" }}>
   `PUT` is idempotent since running the same update won't have other effects on
@@ -302,15 +302,15 @@ Consider using `PUT` only when **you'll update every information's** of the reso
 | ----- | --------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `200` | `OK`            | The record was successfully updated and the updated version of the resource is returned.                            |
 | `204` | `No Content`    | The record was successfully updated and nothing is returned as HTTP response.                                       |
-| `400` | `Bad request`   | The request is incorrect (f.i. you're trying to update a field `first_name` while his correct name is `firstname`). |
+| `400` | `Bad request`   | The request is incorrect (f.i. you're trying to update a field `first_name` while its correct name is `firstname`). |
 | `401` | `Unauthorized`  | The endpoint is secured, and the request didn't pass a valid access token.                                          |
 | `403` | `Access denied` | You're not allowed to call this method                                                                              |
 | `404` | `Not found`     | The requested resource didn't exist (f.i. you tried to access `/api/v1/employees/1` and that one didn't exist).     |
 
 <AlertBox variant="caution">
-When getting `PUT -d '{"firstname":"Christophe"}' https://xxx/api/v1/employees/123456` the API developer can decide on his own to **CREATE** the resource 123456 if it didn't exist and if all required fields have been provided in the payload.
+When getting `PUT -d '{"firstname":"Christophe"}' https://xxx/api/v1/employees/123456` the API developer can decide on their own to **CREATE** the resource 123456 if it didn't exist and if all required fields have been provided in the payload.
 
-So, when the resource didn't exist, the developer can return a `404 - Not found` error or, if he decides to create the new resource, then the API could return `201 - Created` (just like a `POST`) ([reference](https://www.belgif.be/specification/rest/api-guide/#put)).
+So, when the resource didn't exist, the developer can return a `404 - Not found` error or, if they decide to create the new resource, then the API could return `201 - Created` (just like a `POST`) ([reference](https://www.belgif.be/specification/rest/api-guide/#put)).
 
 </AlertBox>
 
@@ -318,16 +318,16 @@ So, when the resource didn't exist, the developer can return a `404 - Not found`
 
 <AlertBox
   variant="info"
-  title="You can translate `PATCH` as `UPDATE` in `CRUD`, when you'll DON'T update every fields"
+  title="You can translate `PATCH` as `UPDATE` in `CRUD`, when you DON'T update every field"
 >
   If you plan to update all fields, you need to use `PUT`, not `PATCH`.
 </AlertBox>
 
 `PATCH` is to be used when the update is partial like updating one field: `curl -X PATCH -d '{"firstname": "John"} https://xxx/api/v1/employees/999'` will, only, update first name.
 
-`PATCH` on an in-existing resource will return an error while, perhaps, `PUT` will create the resource. If's then safer to use `PATCH` and not `PUT` when updating partial content.
+`PATCH` on an in-existing resource will return an error while, perhaps, `PUT` will create the resource. It's then safer to use `PATCH` and not `PUT` when updating partial content.
 
-It's indeed impossible to create a new record with `PATCH` since the request just mention little information, not all.
+It's indeed impossible to create a new record with `PATCH` since the request just mentions little information, not all.
 
 ##### PATCH - Returned code
 
@@ -335,7 +335,7 @@ It's indeed impossible to create a new record with `PATCH` since the request jus
 | ----- | --------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `200` | `OK`            | The record was successfully updated and the updated version of the resource is returned.                            |
 | `204` | `No Content`    | The record was successfully updated and nothing is returned as HTTP response.                                       |
-| `400` | `Bad request`   | The request is incorrect (f.i. you're trying to update a field `first_name` while his correct name is `firstname`). |
+| `400` | `Bad request`   | The request is incorrect (f.i. you're trying to update a field `first_name` while its correct name is `firstname`). |
 | `401` | `Unauthorized`  | The endpoint is secured, and the request didn't pass a valid access token.                                          |
 | `403` | `Access denied` | You're not allowed to call this method                                                                              |
 | `404` | `Not found`     | The requested resource didn't exist (f.i. you tried to access `/api/v1/employees/1` and that one didn't exist).     |
@@ -363,7 +363,7 @@ To remove employee #59:
 | `401` | `Unauthorized`  | The endpoint is secured, and the request didn't pass a valid access token.                                       |
 | `403` | `Access denied` | You're not allowed to call this method.                                                                          |
 | `404` | `Not found`     | The requested resource didn't exist (f.i. you tried to access `/api/v1/employees/1` and that one didn't exist).  |
-| `409` | `Conflict`      | The resource can't be deleted (f.i. you can't dismiss an employee while there are still payments to be mode).    |
+| `409` | `Conflict`      | The resource can't be deleted (f.i. you can't dismiss an employee while there are still payments to be made).    |
 
 #### OPTIONS
 
@@ -395,7 +395,7 @@ If the deletion was done successfully, `204 No Content` can be used too.
 
 For an update, it's the same: we can send code `200 OK` with the updated resource in the body or, code `204 No Content` without body; just headers.
 
-##### 400 Not Found
+##### 400 Bad Request
 
 You should return a `400 Bad Request` response when the call was incorrect like an unknown value is used for a parameter (like `&lang=it` when Italian isn't supported).
 
@@ -407,7 +407,7 @@ The requested API is a secured one and a call to it has been made without a vali
 
 A server MUST return `403 Forbidden` in response to an unsupported request to, for instance, create a resource (with `POST` verb with a client-generated `ID` since the `ID` has to be generated by the server, not the client).
 
-The error `403 Forbidden` has to be used too when a valid token is used but when the called resources require a specific scope (like `canManageCustomers`) and the used token don't have that one.
+The error `403 Forbidden` has to be used too when a valid token is used but when the called resources require a specific scope (like `canManageCustomers`) and the used token doesn't have that one.
 
 ##### 404 Not Found
 
@@ -417,7 +417,7 @@ A server MUST respond with `404 Not Found` when processing a request to fetch a 
 
 The request is asking for f.i. `application/xml` but the API didn't support it. In this case, the code `406 - Not Acceptable` has to be returned ([reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/406)).
 
-The request is well valid (the structure is correct) but the asked return type is not supported. For instance, by updating `application/xml` to `application/json` then the request can be processed.
+The request is indeed valid (the structure is correct) but the asked return type is not supported. For instance, by updating `application/xml` to `application/json` then the request can be processed.
 
 The error is about the response's format; not about the request.
 
@@ -441,7 +441,7 @@ The response would contain the supported type so, f.i.,
   Accept-Post: application/json; charset=UTF-8 Content-Length: 0
 </Terminal>
 
-In this example, the server didn't support `application/x-www-form-urlencoded` for that route but will `application/json`.
+In this example, the server didn't support `application/x-www-form-urlencoded` for that route but will accept `application/json`.
 
 #### Media Types
 
@@ -449,7 +449,7 @@ The requestor application should specify the media type(s) that is (are) accepta
 
 A REST response or request with payload must include the `Content-Type` HTTP header to indicate the media type of the HTTP payload.
 
-For example, the request has to define `-H "Accept: application/json"` in his header to let the server know which media type is needed and the server (the response) should provide the `Content-Type` too.
+For example, the request has to define `-H "Accept: application/json"` in its header to let the server know which media type is needed and the server (the response) should provide the `Content-Type` too.
 
 <Terminal typewriter>
   $ curl -X -H "Accept: application/json" GET https://xxx/api/v1/employees
@@ -491,7 +491,7 @@ In this case, the `employerId` key can be omitted.
 
 See also the next chapter.
 
-In order to make the API flexible, make sure the answer is a JSON object `{ ... }` and not an array `[ ... ]` because that last one won't allow to add extra properties in the future ([reference](https://www.belgif.be/specification/rest/api-guide/#rule-evo-object)).
+In order to make the API flexible, make sure the answer is a JSON object `{ ... }` and not an array `[ ... ]` because that last one won't allow adding extra properties in the future ([reference](https://www.belgif.be/specification/rest/api-guide/#rule-evo-object)).
 
 ##### Top-Level
 
@@ -514,16 +514,16 @@ The document's _primary data_ is a representation of the resource or collection 
 
 ```json
 {
-  "data": {
-    [
-        "key1": "value1",
-        "key2": "value2",
-        // ...
-    ],
-    [
-        // ...
-    ]
-  }
+  "data": [
+    {
+      "key1": "value1",
+      "key2": "value2"
+    },
+    {
+      "key1": "value1",
+      "key2": "value2"
+    }
+  ]
 }
 ```
 
@@ -587,12 +587,12 @@ Prefer to use HTTP status code `400 Bad Request` when the call was incorrect lik
 
 ```json
 "errors": [
-    [
-        "status": 400,
+    {
+        "status": "400",
         "code": "ERR_INVALID_VIEW",
         "title": "Language code 'it' is not supported",
         "parameter": "lang"
-    ],
+    },
     [...]
 ]
 ```

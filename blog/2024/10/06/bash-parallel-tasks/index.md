@@ -16,13 +16,17 @@ blueskyRecordKey: 3m2szdit6sc2y
 
 ![Linux - Take advantage of the number of CPUs you have; start concurrent jobs](/img/v2/linux_parallel.webp)
 
+<TLDR>
+This article shows how to run Bash function calls concurrently instead of sequentially, using `&` to background each call, `nproc` to size a thread pool matching available CPU cores, and tracking process IDs with `jobs | wc -l` to throttle how many run at once — turning a 10-call, 30-second sequential loop into a ~3-second parallel one (with a note to also respect any rate limits imposed by a target API).
+</TLDR>
+
 In my professional activity, I've been faced with the following requirement: process each line of a CSV file and make a POST API call to upload a document.
 
 One line of the CSV contained information that needed to be communicated to an API service, and each line corresponded to a PDF file. So if there are 1000 lines in the CSV file, I have to make 1000 API calls to upload 1000 PDFs.
 
-I wrote my script in Linux Bash and then it was time to optimise: not just one API call at a time, but as many as possible.
+I wrote my script in Linux Bash and then it was time to optimize: not just one API call at a time, but as many as possible.
 
-Let's how we can start more than one task at a time using Linux Bash.
+Let's see how we can start more than one task at a time using Linux Bash.
 
 <!-- truncate -->
 
@@ -34,7 +38,7 @@ Before calling the `main` function, I remember the actual start time, call `main
 
 The `main` function is quite basic here, I'll do a loop from 1 till 10 and, each time, call the `demo` function. That function will sleep for 3 seconds.
 
-So, by running the script, since we're calling ten times our demo function and the function is waiting for three seconds, then, we'll not be surprised by the total duration time:
+So, by running the script, since we're calling our demo function ten times and the function is waiting for three seconds, we won't be surprised by the total duration:
 
 <Terminal typewriter source="./files/terminal-2.txt" />
 
@@ -43,7 +47,7 @@ But, that's code is so old fashion now? How many CPU did I have? Just one? Oh th
 
 </AlertBox>
 
-## Now, the optimised version
+## Now, the optimized version
 
 Ok, now, we'll not start our function in a sequential order but we'll call it once and **don't wait until the function is finished**, we'll continue our loop and call the same function a second time, a third time, ...
 
@@ -62,7 +66,7 @@ We'll adapt our sample like this:
 
 ### In depth
 
-By adding the `&` character, I'm asking Bash to not wait that the function finish his job before returning. So, the code below will run `demo` 10 times even before the first `demo` call is finished.
+By adding the `&` character, I'm asking Bash to not wait for the function to finish its job before returning. So, the code below will run `demo` 10 times even before the first `demo` call is finished.
 
 ```bash
 for i in {1..10}; do
@@ -78,8 +82,8 @@ I know I've a specific number of cores (see the `nproc` command) and I know I ca
 
 So before running the next call of `demo`, I need to do two things:
 
-1. I'll keep the process id (`pid`) of the just fired `demo` function (each call has his own `pid`) and store that value in an array,
-2. I'll need to check how many jobs are running and not yet finished (retrieved using `$( jobs | wc -l )`) and compare that number with the number of threads we can start (*64* for me). As soon as the number of running jobs is equal to my max, Ok, I should wait.  I shouldn't start a 65th job but I'll wait that all the previous 64 ones are finished.
+1. I'll keep the process id (`pid`) of the just fired `demo` function (each call has its own `pid`) and store that value in an array,
+2. I'll need to check how many jobs are running and not yet finished (retrieved using `$( jobs | wc -l )`) and compare that number with the number of threads we can start (*64* for me). As soon as the number of running jobs is equal to my max, ok, I should wait. I shouldn't start a 65th job but wait until all the previous 64 are finished.
 
 And, when it's done, I can continue for the next wave and so on.
 
@@ -89,11 +93,11 @@ Finally, after the loop, I do the same i.e. make sure that all jobs defined in o
 
 Did you know how many times I need to wait? Remember, in the first version of the script, I've waited 30 seconds.
 
-With the optimised version here above and to do **exactly the same thing**, I waited ... just three seconds:
+With the optimized version here above and to do **exactly the same thing**, I waited ... just three seconds:
 
 <Terminal typewriter source="./files/terminal-1.txt" />
 
 <AlertBox variant="info" title="Running 50 times the function">
-In the first version of the script, by changing the line `for i in {1..10}; do` to `for i in {1..50}; do`, I'll wait 150 seconds; right? With the optimised version, just 4 seconds. Why 4 and not 3? Probably some delay introduced by the processor (who should handle 50 concurrent threads).
+In the first version of the script, by changing the line `for i in {1..10}; do` to `for i in {1..50}; do`, I'll wait 150 seconds; right? With the optimized version, just 4 seconds. Why 4 and not 3? Probably some delay introduced by the processor (who should handle 50 concurrent threads).
 
 </AlertBox>

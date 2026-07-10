@@ -15,6 +15,10 @@ language: en
 
 ![Ubuntu - Install from scratch](/img/v2/linux_tips.webp)
 
+<TLDR>
+This article walks through a clean Ubuntu Desktop 24.04 install replacing Windows: disabling Bitlocker first, creating a bootable USB with balenaEtcher, booting from it, erasing the disk with LVM encryption, and a warning to skip the "install recommended proprietary software" option on NVIDIA cards to avoid a Secure Boot key bug. It ends with a list of essential post-install snap packages (Firefox, Thunderbird, LibreOffice, VSCode, Docker, GIMP).
+</TLDR>
+
 Today is a public holiday in Belgium, so I'm finally taking the time to install Ubuntu on my old PC.
 
 The idea is to remove Windows and install Ubuntu Desktop 24.04 on the computer.
@@ -25,7 +29,7 @@ Let's go, you'll see, it's easy.
 
 ## Turn off Bitlocker first
 
-If you're using Bitlocker on your computer, first, you must first deactivate it; if not just skip this chapter.
+If you're using Bitlocker on your computer, you must first deactivate it; if not, just skip this chapter.
 
 You can follow the official documentation here: [Turn Bitlocker off](https://ubuntu.com/tutorials/install-ubuntu-desktop#13-additional-installing-ubuntu-alongside-windows-with-bitlocker).
 
@@ -56,7 +60,7 @@ Turn on your old computer and make sure to boot on the USB stick. For this, duri
 
 There, make sure to select the option allowing you to boot on a USB stick; save your changes if any and quit.
 
-Your computer you'll now boot on the USB stick and start the installation process of Ubuntu.
+Your computer will now boot on the USB stick and start the installation process of Ubuntu.
 
 ![Booting on the USB stick](./images/boot_usb.webp)
 
@@ -65,7 +69,7 @@ Everything is nicely covered by the [official tutorial](https://ubuntu.com/tutor
 A few notes:
 
 * Select the *interactive mode* so you can select the options that suit you best in more detail;
-* When asked, select *Extended selection* to be able to install additional software during the installation process (like desktop tools, utilities and web browser);
+* When asked, select *Extended selection* to be able to install additional software during the installation process (like desktop tools, utilities and a web browser);
 * When asked *Install recommended proprietary software?*, make sure checkboxes are **unchecked** (see below);
 * The wizard will ask *how to install Ubuntu*; alongside Windows (so with a dual boot) or alone. I'm going to opt for the latter.
 Personally, that's my goal and I'm going to ask to delete my entire current disk (Windows) and to do that, I'm going to click on *Erase disk and install Ubuntu* and click on the *Advanced features* button. I'm going to opt for *Use LVM and encryption* which will allow me to have encryption like I had with Bitlocker: someone who came to steal my hard disk wouldn't have access to my files without the decryption key.
@@ -73,14 +77,14 @@ Personally, that's my goal and I'm going to ask to delete my entire current disk
 <AlertBox variant="highlyImportant" title="IMPORTANT - DON'T INSTALL ADDITIONAL DRIVERS IF YOU'VE A NVIDIA GRAPHIC CARD">
 The wizard will ask if you want to **Install recommended proprietary software**. The first time, I have answered Yes on both options. The installation had been running for nearly twenty minutes and then I got an error message *The Secure Boot key is not valid*.
 
-While looking on the **askubuntu.com** website, someone has told this was a bug and that we shouldn't install drivers during the installation of Ubuntu but we can do this easily later one and refers to this bug: [https://bugs.launchpad.net/subiquity/+bug/2060353](https://bugs.launchpad.net/subiquity/+bug/2060353).
+While looking on the **askubuntu.com** website, someone mentioned this was a bug and that we shouldn't install drivers during the installation of Ubuntu but can do this easily later on, referring to this bug: [https://bugs.launchpad.net/subiquity/+bug/2060353](https://bugs.launchpad.net/subiquity/+bug/2060353).
 
 So, I've abandoned the installation and start a new one.
 </AlertBox>
 
 You'll be asked to create your administrative account and to select your time zone.
 
-Then, once you've confirmed your choices, the wizard will start to prepare your machine then copy files on your computer. This process is, of course, the slowest one. It can takes 10 minutes or more.
+Then, once you've confirmed your choices, the wizard will start to prepare your machine then copy files on your computer. This process is, of course, the slowest one. It can take 10 minutes or more.
 
 <AlertBox variant="note" title="The installation seems frozen">
 For a few minutes, the screen seemed to be stuck on *Setting up the system...*. However, I could move the mouse pointer and, for example, view the menu (on the left). I kept waiting and everything *unblocked*. So be patient if you need to.
@@ -104,7 +108,7 @@ The post-installation wizard will welcome you and ask if you wish to enable the 
 
 [Ubuntu Pro](https://ubuntu.com/pro) is a free (for personal use) service proposed by Canonical and will keep your computer up-to-date.
 
-As very last step, run the **Software Updater** application to check if there is no additional software to install. If you're a pro of the console, it's the same as running `sudo apt update`.
+As a very last step, run the **Software Updater** application to check for any additional software to install. If you're a pro of the console, it's the same as running `sudo apt update`.
 
 ## Time to add software
 

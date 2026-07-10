@@ -14,6 +14,10 @@ language: en
 ---
 ![Tabnine - AI Autocomplete & Chat for Javascript, Python, Typescript, PHP, Go, Java & more](/img/v2/vscode_tips.webp)
 
+<TLDR>
+This article introduces Tabnine, an AI autocomplete VSCode extension that predicts entire method calls and setters based on context (e.g. suggesting `setFirstName(string $firstname)` from a `firstName` property). It highlights that Tabnine works offline by default and, per its privacy policy, never stores or shares your code unless explicitly opted in.
+</TLDR>
+
 Tabnine is a **MUST HAVE** extension. He will predict your next keystroke and sometimes it's just **WOW; HOW IS IT POSSIBLE?**.
 
 Imagine you've a `private string $firstName` property in PHP. By starting to type `private function set`, Tabnine will understand you're *probably* creating a setter and will then suggest `setFirstName(string $firstname)`.
@@ -26,21 +30,21 @@ Imagine you've a `private string $firstName` property in PHP. By starting to typ
 
 Another example...
 
-Imagine the code below and take a look on the `__construct` method. We need to handle the `$price` parameter. We need to call the setter for it.
+Imagine the code below and take a look at the `__construct` method. We need to handle the `$price` parameter. We need to call the setter for it.
 
 <Snippet filename="product.php" source="./files/product.php" />
 
-And here is how VSCode will predict my keystrokes when Tabnine is enabled. As you can see, Tabnine will predict that, after I've typed `$this-` that I'll use my `setProductPrice` method. And he knows that this function requires a parameter so he suggests that I use my `$price` one.
+And here is how VSCode will predict my keystrokes when Tabnine is enabled. As you can see, Tabnine will predict that, after I've typed `$this-`, I'll use my `setProductPrice` method. And he knows that this function requires a parameter so he suggests that I use my `$price` one.
 
 ![Tabnine is so wow!](./images/tabnine.gif)
 
 It's really amazing.
 
-By default, Tabnine works offline i.e. don't use any cloud data provider like what GitHub Copilot does.
+By default, Tabnine works offline i.e. it doesn't use any cloud data provider like what GitHub Copilot does.
 
 <AlertBox variant="info" title="Complete code privacy">
 
-The information below comes from [https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode#complete-code-privacy](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode#complete-code-privacy.)
+The information below comes from [https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode#complete-code-privacy](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode#complete-code-privacy)
 
 > Your code always remains private.
 >
@@ -48,4 +52,4 @@ The information below comes from [https://marketplace.visualstudio.com/items?ite
 
 </AlertBox>
 
-Tabnine support a lot of languages, for instance, he's also working with pure text file (like this blog post).
+Tabnine supports a lot of languages, for instance, he's also working with plain text files (like this blog post).

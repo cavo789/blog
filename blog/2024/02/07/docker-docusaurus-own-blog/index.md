@@ -17,7 +17,11 @@ language: en
 ---
 ![Running your own blog with Docusaurus and Docker](/img/v2/docusaurus_docker.webp)
 
-This article continues where <Link to="/blog/docusaurus-docker/">Running Docusaurus with Docker</Link> left off. Make sure to read it first and to create required files first.
+<TLDR>
+This follow-up article shows how to customize a Dockerized Docusaurus blog by copying key files (`docusaurus.config.js`, `src`, `static`) out of the running container with `docker compose cp` and mounting them as volumes in `compose.yaml`, so edits on the host are reflected live — covering site title, favicon, navbar branding, custom pages, and static assets.
+</TLDR>
+
+This article continues where <Link to="/blog/docusaurus-docker/">Running Docusaurus with Docker</Link> left off. Make sure to read it first and create the required files.
 
 So you've created your own blog using Docker and Docusaurus. By following steps explained in the <Link to="/blog/docusaurus-docker/">Running Docusaurus with Docker</Link> article, now, you've a blog with the list of articles stored on your machine; in a `blog` folder.
 
@@ -138,9 +142,9 @@ You can do a lot more when updating the `docusaurus.config.js` file; please refe
 
 ## The src/pages folder
 
-The `src/pages` folder contain files like `index.md` that will be translated to `index.html` (your homepage thus). You can also create a file called `tutorial.md` (which will be `tutorial.html`) and create a menu entry in your navigation bar with `/tutorial.html` for the target.
+The `src/pages` folder contains files like `index.md` that will be translated to `index.html` (your homepage thus). You can also create a file called `tutorial.md` (which will be `tutorial.html`) and create a menu entry in your navigation bar with `/tutorial.html` for the target.
 
-You have to copy the folder from the container to your host and, as you've already seen it. Please run the command below to copy the folder on your host:
+You have to copy the folder from the container to your host, as you've already seen. Please run the command below to copy the folder on your host:
 
 <Terminal typewriter>
 $ docker compose cp blog:/app/src src

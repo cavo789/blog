@@ -13,9 +13,13 @@ language: en
 ---
 ![Starting the default associated Windows program on WSL](/img/v2/wsl.webp)
 
+<TLDR>
+This article shares a quick WSL trick: running `powershell.exe <filename>` (e.g. `powershell.exe guide.pdf`) from the Linux console opens that file with its default Windows application, without needing to browse to it in Windows Explorer first. `xdg-open` is mentioned as an alternative for opening the default browser.
+</TLDR>
+
 Very often, I'm in my Linux console and I'd like to open a pdf file that I've just generated or, more simply, to open an html file. But how can I do this?
 
-Without knowing the tip that is the subject of this article, at the moment I launch <Link to="/blog/wsl-windows-explorer">Windows Explorer</Link> from my console, I get then the well-known file explorer interface and there I double-click on the file I want to open and leave it to Windows, which knows which program to launch to open this or that extension.
+Without knowing the tip that is the subject of this article, at the moment I launch <Link to="/blog/wsl-windows-explorer">Windows Explorer</Link> from my console, I then get the well-known file explorer interface and there I double-click on the file I want to open and leave it to Windows, which knows which program to launch to open this or that extension.
 
 In fact, it's much simpler...
 

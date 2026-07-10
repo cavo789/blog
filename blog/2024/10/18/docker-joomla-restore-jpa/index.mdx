@@ -45,7 +45,7 @@ At the end, we'll have a `make import` command that will start **[Akeeba Kicksta
 ## Creating required files
 
 <AlertBox variant="info" title="Skipping the files creation process">
-In the next chapters, you'll need to create several files using copy/paste. If you wish go faster, just run the following commands to retrieve files from my [Github repo](https://github.com/cavo789/docker_joomla_restore) so you don't need to create them.
+In the next chapters, you'll need to create several files using copy/paste. If you wish to go faster, just run the following commands to retrieve files from my [Github repo](https://github.com/cavo789/docker_joomla_restore) so you don't need to create them.
 
 <Terminal typewriter source="./files/terminal-3.txt" />
 
@@ -53,7 +53,7 @@ By following the instructions below, you'll create a xxx folder where you can co
 
 </AlertBox>
 
-_If you prefer to understand what you do and create files manually, please continue your lecture here below._
+_If you prefer to understand what you do and create files manually, please continue reading below._
 
 Please create a new folder on your computer like f.i. `mkdir /tmp/joomla_restore && cd $_`.
 
@@ -65,20 +65,20 @@ In that folder, you'll need to create several files (please refer to [Part 2](/b
 
 Below, highlighted, small differences from the `compose.yaml` file we saw in [Part 2](/blog/docker-joomla-part-2#updated-composeyaml).
 
-Here is why: this time we don't need to download a fresh copy of Joomla since **we already have a Joomla site** (our backup). What we need is **PHP** and **Apache**. We don't need Joomla so, this time, we'll use a custom Docker image; not a already existing one.
+Here is why: this time we don't need to download a fresh copy of Joomla since **we already have a Joomla site** (our backup). What we need is **PHP** and **Apache**. We don't need Joomla, so this time we'll use a custom Docker image, not an already existing one.
 
-Except highlighted lines, all the rest is the same that in [Part 2](/blog/docker-joomla-part-2).
+Except for the highlighted lines, everything else is the same as in [Part 2](/blog/docker-joomla-part-2).
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 ### The .env file
 
-As introduced above; we don't need Joomla anymore but just PHP and Apache. We'll then define a `PHP_VERSION` variable and initialise it to the desired version.
+As introduced above, we don't need Joomla anymore, just PHP and Apache. We'll then define a `PHP_VERSION` variable and initialize it to the desired version.
 
 <Snippet filename=".env" source="./files/.env" />
 
 <AlertBox variant="caution">
-Since we need to restore an existing site, make sure to use the same PHP version than the one used by your site.
+Since we need to restore an existing site, make sure to use the same PHP version as the one used by your site.
 
 </AlertBox>
 
@@ -89,7 +89,7 @@ We'll need a new action called `import`:
 <Snippet filename="makefile" source="./files/makefile" />
 
 <AlertBox variant="caution">
-If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
+If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed with the installation.
 
 <Terminal typewriter>$ which make</Terminal>
 
@@ -109,11 +109,11 @@ Please create a new file called `Dockerfile` in your folder with this content:
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
-That file is quite simple right now: it tells we need a PHP Docker image, and we also need to install the `mysqli` drivers.
+That file is quite simple right now: it tells us we need a PHP Docker image, and we also need to install the `mysqli` drivers.
 
 ### We need a backup for sure
 
-Please also put a backup of your existing site and save it in the same folder. For standardisation needs, please call that file `backup.jpa`.
+Please also put a backup of your existing site and save it in the same folder. For standardization needs, please call that file `backup.jpa`.
 
 To make this step more explicit: jump to your existing Joomla website and, using Akeeba Backup, create a backup (file format: `.jpa`) and download the backup. Please rename the backup file like this: `backup.jpa`.
 
@@ -132,12 +132,12 @@ We're ready. Just before you begin, please check that you have all the required 
 <Terminal typewriter source="./files/terminal-2.txt" />
 
 <AlertBox variant="info" title="Skipping the files creation process">
-If you've skipped file's creation earlier by downloading files from my repo; you'll have all the files listed here above.
+If you've skipped the file creation step earlier by downloading files from my repo, you'll have all the files listed above.
 
 </AlertBox>
 
 <AlertBox variant="caution">
-Remember, for Linux users, we need `GNU make` to be able to run commands like `make import` or `make up`. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
+Remember, for Linux users, we need `GNU make` to be able to run commands like `make import` or `make up`. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed with the installation.
 
 </AlertBox>
 
@@ -155,7 +155,7 @@ For Windows (Powershell or DOS), please run these commands:
   --detach
 </Terminal>
 
-For both users (Linux and Windows), you'll something like this output in the console:
+For both users (Linux and Windows), you'll get something like this output in the console:
 
 <Terminal typewriter source="./files/terminal-1.txt" />
 
@@ -163,16 +163,16 @@ When finished, just start your browser and surf to `http://127.0.0.1:8080/kickst
 
 ![Akeeba Kickstart](./images/kickstart.webp)
 
-Once you'll need to fill in the database information's, please refer to what was displayed in your console:
+Once you need to fill in the database information, please refer to what was displayed in your console:
 
 ![Restoring the database](./images/database.webp)
 
-Continue restoration as you always have; close the window once Akeeba Kickstart ask for, then click on the _Clean Up_ button; then on _Visit your site's frontend_ and enjoy:
+Continue the restoration as you always have; close the window once Akeeba Kickstart asks for it, then click on the _Clean Up_ button; then on _Visit your site's frontend_ and enjoy:
 
 ![Site is restored](./images/site_is_restored.webp)
 
 <AlertBox variant="info">
-If you've used the provided demo site, the admin account is **joomla** and his password is **joomla@secured**.
+If you've used the provided demo site, the admin account is **joomla** and its password is **joomla@secured**.
 
 </AlertBox>
 

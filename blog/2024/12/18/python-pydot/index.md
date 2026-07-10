@@ -16,11 +16,15 @@ language: en
 
 ![Python - Generate flows using Pydot](/img/v2/diagrams.webp)
 
-[Pydot](https://github.com/pydot/pydot) is a **diagram as code** generator i.e. you write lines of code and thanks to a magic process, you can render the code as an image.
+<TLDR>
+This article introduces Pydot, a Python diagram-as-code library that renders diagrams (ETL flows, class diagrams, data flows, decision trees) from Python code into images. Using a small Docker image, a `.py` script describing the diagram is run with `docker run ... python etl.py` to produce a PNG, with further examples sourced from the Graphviz documentation.
+</TLDR>
+
+[Pydot](https://github.com/pydot/pydot) is a **diagram-as-code** generator, i.e. you write lines of code and, thanks to a magic process, you can render the code as an image.
 
 For guys just like me who are terrible at visuals, this is gold.
 
-Let's say you have to describe an IT process such as ETL (data is loaded, one or other transformation rule is applied and the result is loaded into a database, for example), you can easily imagine to draw some rectangles using a tool like [https://app.diagrams.net/](https://app.diagrams.net/) (formerly known as draw.io) or use a smarter way to do it.
+Let's say you have to describe an IT process such as ETL (data is loaded, one or other transformation rule is applied and the result is loaded into a database, for example); you can easily imagine drawing some rectangles using a tool like [https://app.diagrams.net/](https://app.diagrams.net/) (formerly known as draw.io), or use a smarter way to do it.
 
 Let's see how in this article.
 

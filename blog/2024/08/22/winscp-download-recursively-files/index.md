@@ -13,7 +13,11 @@ language: en
 ---
 ![WinSCP - Download files with specific extension recursively](/img/v2/winscp.webp)
 
-The [WinSCP](https://winscp.net/) FTP client support scripting as we can read on [https://winscp.net/eng/docs/guide_automation](https://winscp.net/eng/docs/guide_automation).
+<TLDR>
+This article shares a WinSCP automation script that recursively downloads all files matching a given extension (e.g. `.php`) from a remote FTP/SFTP server to a local folder, run via `winscp.com /script=...` — handy for pulling down a specific file type from an entire site for local analysis.
+</TLDR>
+
+The [WinSCP](https://winscp.net/) FTP client supports scripting as we can read on [https://winscp.net/eng/docs/guide_automation](https://winscp.net/eng/docs/guide_automation).
 
 In a previous life, I was often faced with the need to download a certain type of file, e.g. connect to an FTP server and retrieve PHP files locally for analysis.
 
@@ -37,7 +41,7 @@ The script is pretty straightforward, if you can believe it:
    2. In case of need, replace `ftp` by `sftp`
    3. `USERNAME`: the FTP username
    4. `PASSWORD`: the password associated to this account
-   5. `HOST_OR_IP`: the FTP host name or his IP
+   5. `HOST_OR_IP`: the FTP host name or its IP
    6. The remote folder from where the files should be downloaded (line `cd /public_html`)
    7. The file extension to download (if not `.php`) (line `get -filemask:*.php *`)
    8. Save the script
@@ -45,4 +49,4 @@ The script is pretty straightforward, if you can believe it:
 4. Run `cd c:\temp`
 5. Run `winscp.com` from there: type `"C:\Program Files (x86)\WinSCP\WinSCP.com" /script="c:\temp\download.txt"`
 
-If everything is correctly set up, WinSCP will start a session terminal and will start to download each `.php` files found under your remote folder (sub-folders included).
+If everything is correctly set up, WinSCP will start a session terminal and will start to download each `.php` file found under your remote folder (sub-folders included).

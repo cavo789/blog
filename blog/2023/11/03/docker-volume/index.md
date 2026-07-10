@@ -13,6 +13,10 @@ language: en
 ---
 ![Share data between your running Docker container and your computer](/img/v2/docker_tips.webp)
 
+<TLDR>
+This article explains Docker volumes: without `-v`, everything a container writes stays only in its own memory and disappears when the container is removed (useful for safely running untrusted scripts); adding `-v $(pwd):/var/www/html` bi-directionally syncs a host folder with a container folder, and adding `-u ${UID}:${GID}` ensures files created inside the container are owned by you instead of `root`.
+</TLDR>
+
 > If you don't have Docker yet, please consult my <Link to="/blog/install-docker">Install Docker and play with PHP</Link> post first.
 
 When running Docker without specifying a volume, everything that is done during the execution of Docker is done in memory. In other words: if the PHP script you run from Docker creates folders or files, they will not be created on your disk. They will be created exclusively in memory.
@@ -51,7 +55,7 @@ Explanation of the new arguments used in our `docker run --detach --name step_1_
 * `-p 81:80` : this time, we'll use port `81` on our computer and map it to port `80` on the container,
 * `-v $(pwd):/var/www/html`: the `-v` instruction is used to define a volume. Here, we'll synchronize the container's `/var/www/html` folder with `$(pwd)`, which corresponds to the current folder on our computer.
 
-Now, just create an `index.php` in your, local, `/tmp/docker-volume` folder. Yes, on your disk, not in the container.
+Now, just create an `index.php` in your local `/tmp/docker-volume` folder. Yes, on your disk, not in the container.
 
 So, if you have Visual Studio Code on your machine, in the Linux console, run this: `cd /tmp/docker-volume && code index.php`. This will start vscode and you will be able to create the script.
 

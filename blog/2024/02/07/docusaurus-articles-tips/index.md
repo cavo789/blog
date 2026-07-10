@@ -18,6 +18,10 @@ blueskyRecordKey: 3lyqe2y7uvc2a
 ---
 ![Some tips and tricks when written articles for Docusaurus](/img/v2/docusaurus_tips.webp)
 
+<TLDR>
+This article is a reminder of essential Docusaurus authoring features: the `truncate` marker for blog post previews, admonitions for callout boxes, inline styling with `<span>`, a custom `Highlight` component for colored text, and `// highlight-next-line` to draw attention to changed lines in code blocks.
+</TLDR>
+
 If you're writing for Docusaurus, there are a few tips to know.
 
 This article is by no means exhaustive, but for me, it's a reminder of the features that are really essential and must not be forgotten.
@@ -32,7 +36,7 @@ In blog mode, your article is divided into two parts: the introduction with a *R
 
 To activate this feature, simply add the line `<!-- truncate -->` (preceded and followed by an empty line) where you wish to distinguish between the introduction and the main part.
 
-If you go to my [blog](/blog) page, each article have an introduction followed by a `<!-- truncate -->` line in my Markdown source.
+If you go to my [blog](/blog) page, each article has an introduction followed by a `<!-- truncate -->` line in my Markdown source.
 
 ## Admonitions
 

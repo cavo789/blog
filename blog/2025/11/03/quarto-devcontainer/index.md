@@ -79,7 +79,7 @@ By opening a Devcontainer, even if the `Dockerfile` is strictly the same across 
 
 ### Installation of sudo
 
-During the creation of the Docker image, we also install the `sudo` command and allow our `vscode` user to run `sudo su root` in the devcontainer without to have to fill in a password. The reason here is, sometimes, Quarto will complaints about a missing dependency (like when we are exporting to PDF and there is a missing library). To allow the developer to quickly add the dependency and do some tests without to rebuild the container again and again, `sudo` is installed.
+During the creation of the Docker image, we also install the `sudo` command and allow our `vscode` user to run `sudo su root` in the devcontainer without having to fill in a password. The reason here is that, sometimes, Quarto will complain about a missing dependency (like when we are exporting to PDF and there is a missing library). To allow the developer to quickly add the dependency and do some tests without having to rebuild the container again and again, `sudo` is installed.
 
 ## Build arguments
 
@@ -87,24 +87,24 @@ During the creation of the Docker image, we also install the `sudo` command and 
 
 If you pay attention to `.devcontainer/compose.yaml` file, you'll see an argument called `INSTALL_CHROMIUM`. Depending on your project, you'll need it or not.
 
-Indeed, under certain circumstances, when rendering your documentation to Word (i.e. by running f.i. `quarto render . --profile docx --to docx`), Quarto can ask you to install Chromium. To avoid to do this every-time, simply open the `.devcontainer/devcontainer.json` file, search for `INSTALL_CHROMIUM` and initialize it to `true`.
+Indeed, under certain circumstances, when rendering your documentation to Word (i.e. by running f.i. `quarto render . --profile docx --to docx`), Quarto can ask you to install Chromium. To avoid doing this every time, simply open the `.devcontainer/devcontainer.json` file, search for `INSTALL_CHROMIUM` and initialize it to `true`.
 
 Note: if you change the `.devcontainer/Dockerfile` code or the `.devcontainer/devcontainer.json` file, you'll need to rebuild the container as explained here below.
 
 <AlertBox variant="info" title="Make sure you need it">
-Before installing Chromium, make sure you need it i.e. first render your documentation without and see if Quarto complaints about Chromium. This because Chromium requires a lot of dependencies and it will make your Docker image size much bigger.
+Before installing Chromium, make sure you need it i.e. first render your documentation without it and see if Quarto complains about Chromium. This is because Chromium requires a lot of dependencies and it will make your Docker image size much bigger.
 
 </AlertBox>
 
 ### Installation of Code Spell Checker
 
-The same way, you've a variable called `INSTALL_CSPELL`. Initialize it to `true` if you want to install the Code-spell check tool (requires Node.js).
+The same way, you have a variable called `INSTALL_CSPELL`. Initialize it to `true` if you want to install the Code-spell check tool (requires Node.js).
 
 ### Installation of GraphViz
 
-The same way, you've a variable called `INSTALL_GRAPHVIZ`. Initialize it to `true` if you want to install the GraphViz converter.
+The same way, you have a variable called `INSTALL_GRAPHVIZ`. Initialize it to `true` if you want to install the GraphViz converter.
 
-This is needed when, in your `.qmd` file you've a graph like this one:
+This is needed when, in your `.qmd` file, you have a graph like this one:
 
 ```markdown
 digraph flow {
@@ -120,12 +120,12 @@ digraph flow {
 ```
 
 <AlertBox variant="note" title="GraphViz">
-If you've a graphviz graph and didn't install GraphViz, you'll get an error like this: `ERROR: AssertionError: Error occurred during cleanup: TypeError: Child process has already terminated`.
+If you have a Graphviz graph and didn't install GraphViz, you'll get an error like this: `ERROR: AssertionError: Error occurred during cleanup: TypeError: Child process has already terminated`.
 </AlertBox>
 
 ### Installation of pre-commit-hooks
 
-The third variable is `INSTALL_PRECOMMIT_HOOKS` and, if your documentation has his own `.git` folder, it'll be a good idea to initialize the variable to `true` so, when committing your changes, a few data quality controls / formatting tools will be applied.
+The third variable is `INSTALL_PRECOMMIT_HOOKS` and, if your documentation has its own `.git` folder, it'll be a good idea to initialize the variable to `true` so, when committing your changes, a few data quality controls / formatting tools will be applied.
 
 ## Opening our project as a Devcontainer
 
@@ -141,7 +141,7 @@ After a few seconds, you'll get a screen like this:
 
 ![The Devcontainer has been opened](./images/devcontainer.webp)
 
-1. See bottom left, you've in the status bar the text "Dev Container: xxx" (followed by the name of our container as configured in the `devcontainer.json` file).
+1. See bottom left, you have, in the status bar, the text "Dev Container: xxx" (followed by the name of our container as configured in the `devcontainer.json` file).
 2. In the **Terminal window** (if you don't see it press <kbd>CTRL</kbd>+<kbd>ù</kbd>), you'll see a cheatsheet with main commands like `quarto preview .` to run the site with hot reload.
 
 So, still in the Terminal, please type `quarto preview .` then press <kbd>Enter</kbd> as illustrated below:
@@ -162,11 +162,11 @@ Let's see the `_quarto.yml` file of the project we've just cloned (you'll find m
 
 <Snippet filename="_quarto.yml" source="./files/_quarto.yml" />
 
-We've added three files to the project in a special folder called `.devcontainer`. That folder will tell to VSCode that we would like to use a Docker container when working on that project. The container will be based on a custom Docker image (as coded in `.devcontainer/Dockerfile`). The image will reuse the official Quarto image.
+We've added three files to the project in a special folder called `.devcontainer`. That folder will tell VSCode that we would like to use a Docker container when working on that project. The container will be based on a custom Docker image (as coded in `.devcontainer/Dockerfile`). The image will reuse the official Quarto image.
 
 So, without having to install Quarto on our computer, we'll be able to use all features of Quarto.
 
-Finally, we've to *switch to the devcontainer* i.e. just after we've opened VSCode, we've to run a special command to reopen the project as a devcontainer.
+Finally, we have to *switch to the devcontainer* i.e. just after we've opened VSCode, we have to run a special command to reopen the project as a devcontainer.
 
 That command is, the first time, **Dev Containers: Rebuild and Reopen in Container** but as soon as the custom image has been created once, we can simply use **Dev Containers: Reopen in Container**.
 
@@ -192,23 +192,23 @@ As you can see, you'll see a few *instructions*. These instructions were coded i
 
 So, if your objective is to render the final documentation, you can always see *Oh yes, I simply need to run `quarto render .`*
 
-## What's is pre-commit?
+## What is pre-commit?
 
-In this project, I've planned the installation of [pre-commit](https://pre-commit.com/). This is an optional tool that will run some validation controls to your project before you'll push it to your versioning system (like Github or GitLab).
+In this project, I've planned the installation of [pre-commit](https://pre-commit.com/). This is an optional tool that will run some validation controls on your project before you push it to your versioning system (like GitHub or GitLab).
 
 By adding `pre-commit` in the devcontainer, you'll get the privilege to never again commit files with some fault like f.i. formatting issues in your Markdown content.
 
-If you like this idea, please create the `.pre-commit-config.yaml` file in your project's root folder (so no in the `.devcontainer` folder but his parent folder).
+If you like this idea, please create the `.pre-commit-config.yaml` file in your project's root folder (so not in the `.devcontainer` folder but its parent folder).
 
 Just copy/paste the content below:
 
 <Snippet filename=".pre-commit-config.yaml" source="./files/.pre-commit-config.yaml" />
 
-Once this file is in place, when you'll fire the `git commit` command from the terminal (<kbd>CTRL</kbd>+<kbd>ù</kbd>), `git` will first run `pre-commit` to run *hooks*. In the `.pre-commit-config.yaml` file above, we've defined two hooks; the first one to make generic checks on files then the ensure there is no linting errors with .md files (just check the official repo for more info).
+Once this file is in place, when you fire the `git commit` command from the terminal (<kbd>CTRL</kbd>+<kbd>ù</kbd>), `git` will first run `pre-commit` to run *hooks*. In the `.pre-commit-config.yaml` file above, we've defined two hooks: the first one to make generic checks on files, then a second one to ensure there are no linting errors with `.md` files (just check the official repo for more info).
 
-These hooks are fired every time you'll commit files (and just on the committed files; not the entire project).
+These hooks are fired every time you commit files (and just on the committed files; not the entire project).
 
-You can, too, force to run hooks without committing by running `pre-commit run --all-files` in the console.
+You can also force hooks to run without committing by running `pre-commit run --all-files` in the console.
 
 This command will check all files.
 

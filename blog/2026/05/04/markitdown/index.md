@@ -25,7 +25,7 @@ In this article, we'll create a Docker image and a small conversion script calle
 
 <!-- truncate -->
 
-Like always, I'll first create a Docker image so I don't need to install Python on my machine nor manage the utility and all its dependencies.
+As always, I'll first create a Docker image so I don't need to install Python on my machine nor manage the utility and all its dependencies.
 
 <AlertBox variant="info" title="I love Docker also for this">
 This is exactly why Docker is indispensable: complete isolation. Everything runs within the container. Once I am done experimenting, I can delete the image, leaving nothing on my disk except the Dockerfile needed to recreate it on demand.

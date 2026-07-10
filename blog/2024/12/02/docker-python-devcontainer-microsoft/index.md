@@ -17,9 +17,13 @@ language: en
 
 <!-- cspell:ignore substeps -->
 
+<TLDR>
+This article shows the fastest way yet to get a Python devcontainer: with Docker and the VSCode Docker extension installed, use the Command Palette's built-in "Dev Containers: Add Dev Container Configuration files..." wizard to auto-generate `.devcontainer/devcontainer.json` for Python, then click "Reopen in Container" — no manual file creation needed at all.
+</TLDR>
+
 Nothing to install, nothing to configure, nothing to create first.
 
-Here is how to use VSCode and Docker to create a ready-to-use Python environment, whatever if you're under Windows, Linux or Mac.
+Here is how to use VSCode and Docker to create a ready-to-use Python environment, whether you're under Windows, Linux, or Mac.
 
 <StepsCard
   title="The only prerequisites are:"
@@ -34,7 +38,7 @@ Here is how to use VSCode and Docker to create a ready-to-use Python environment
 <!-- truncate -->
 
 <StepsCard
-  title="If you've these three things, just do this:"
+  title="If you have these three things, just do this:"
   variant="steps"
   steps={[
     'Start Visual Studio Code',
@@ -52,7 +56,7 @@ Here is how to use VSCode and Docker to create a ready-to-use Python environment
   ]}
 />
 
-This done, VSCode will create a file called `.devcontainer/devcontainer.json`
+This done, VSCode will create a file called `.devcontainer/devcontainer.json`.
 
 ![VSCode has created the .devcontainer/devcontainer.json file](./images/devcontainer_created.webp)
 
@@ -60,7 +64,7 @@ See bottom right, please click on the `Reopen in Container` button.
 
 Depending on the speed of your computer and if things were already downloaded, you'll get this screen:
 
-![VSCode and his terminal](./images/terminal.webp)
+![VSCode and its terminal](./images/terminal.webp)
 
 See the bottom part, a terminal window has been displayed and you've a prompt showing `vscode -> /workspaces/python $`.
 

@@ -13,7 +13,11 @@ language: en
 ---
 ![Quickly install WordPress in just three commands](/img/v2/wordpress.webp)
 
-Do you think it's possible to run a new WordPress site in just three commands?  Impossible, isn't it. Well, in fact, yes, it's possible.
+<TLDR>
+This article spins up a full WordPress site using plain `docker run` commands instead of `compose.yaml`: create a shared network, start a MySQL/MariaDB container with the WordPress database and user pre-configured via environment variables, then start the WordPress container itself pointing at that database — three commands to a working site at `http://127.0.0.1:8080`, plus an optional phpMyAdmin container for database access.
+</TLDR>
+
+Do you think it's possible to run a new WordPress site in just three commands? Impossible, isn't it? Well, in fact, yes, it's possible.
 
 Let's take a look...
 
@@ -32,7 +36,7 @@ As soon as you've two or more containers, you need a network.
 
 </AlertBox>
 
-We'll create our. Please copy/paste the command below in a terminal (DOS or Linux) and run it.
+We'll create our network. Please copy/paste the command below in a terminal (DOS or Linux) and run it.
 
 <Terminal typewriter>
 $ docker network create wordpress
@@ -58,13 +62,13 @@ Once started by Docker, the MySQL / MariaDB container will create an empty datab
 
 ## Third step, we need WordPress
 
-And now, we need a second container for WordPress itself. I propose to use the latest version on that time:
+And now, we need a second container for WordPress itself. I propose to use the latest version available at that time:
 
 <Terminal typewriter>
 $ docker run -d --name app_wordpress --hostname app_wordpress --network wordpress -p 8080:80 -e WORDPRESS_DB_HOST=db_wordpress -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=example wordpress:6.4.2-php8.2-apache
 </Terminal>
 
-The following command will run WordPress in an Apache container and making the site available on `http://127.0.0.1:8080`.
+The following command will run WordPress in an Apache container and make the site available at `http://127.0.0.1:8080`.
 
 As you can see, we don't need to pay attention to the `wp-config.php` file since we are setting environment variables in our `docker run` command.
 
@@ -79,7 +83,7 @@ If you get `Error establishing a database connection`, please wait a little befo
 
 ## Optional, start phpmyadmin
 
-As we've seen in the <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Using Adminer, pgadmin or phpmyadmin to access your Docker database container</Link> article, we can access to a database container using f.i. phpmyadmin. To do this, just run the following command in a terminal:
+As we've seen in the <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Using Adminer, pgadmin or phpmyadmin to access your Docker database container</Link> article, we can access a database container using f.i. phpMyAdmin. To do this, just run the following command in a terminal:
 
 <Terminal typewriter>
 $ docker run -d --rm --network wordpress --name phpmyadmin -e PMA_HOST=db_wordpress -p 8089:80 phpmyadmin
@@ -99,6 +103,6 @@ Or, by hand, go to your `Docker Desktop` interface, click on the `containers` ta
 
 ## Conclusion
 
-As introduced, we just need three commands to create, from nihil, a new wordpress site on our disk. This just in seconds (depends on the speed of your computer). Easy no?
+As introduced, we just need three commands to create, from scratch, a new WordPress site on our disk. This takes just seconds (depending on the speed of your computer). Easy, no?
 
 <Terminal typewriter source="./files/terminal-1.txt" />

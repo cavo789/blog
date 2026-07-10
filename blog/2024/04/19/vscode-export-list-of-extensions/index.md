@@ -13,9 +13,13 @@ language: en
 ---
 ![Export the list of extensions you've installed in VSCode](/img/v2/vscode_tips.webp)
 
+<TLDR>
+This article shows how to export the list of installed VSCode extensions with `code --list-extensions`, and turn that list into ready-to-run install commands using a PowerShell one-liner (`% { "code --install-extension $_" }`) or a Linux equivalent (`xargs -L 1 echo code --install-extension`) — handy for sharing your setup or provisioning a new machine.
+</TLDR>
+
 A small tip: by running `code --list-extensions` in a console (Linux or DOS), you'll get the list of all extensions you've installed in VSCode.
 
-Now, just copy/paste that list and you can send it to a friend *Hey, here are the extensions I use. Maybe one or the other will be useful to you.*.
+Now, just copy/paste that list and you can send it to a friend: *Hey, here are the extensions I use. Maybe one or the other will be useful to you.*
 
 <!-- truncate -->
 
@@ -25,7 +29,7 @@ The output of `code --list-extensions` will be something like this:
 <Terminal typewriter source="./files/terminal-2.txt" />
 <!-- cspell:enable -->
 
-If you've a PowerShell user, you can also run `code --list-extensions | % { "code --install-extension $_" }` and now the output will look like this:
+If you're a PowerShell user, you can also run `code --list-extensions | % { "code --install-extension $_" }` and now the output will look like this:
 
 <!-- cspell:disable -->
 <Terminal typewriter source="./files/terminal-1.txt" />

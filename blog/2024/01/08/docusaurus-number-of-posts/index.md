@@ -15,7 +15,11 @@ language: en
 <!-- cspell:ignore autoriser,collage -->
 ![Getting the number of published posts](/img/v2/docusaurus_tips.webp)
 
-Docusaurus didn't provide an easy way to retrieve the number of blog posts but there is well a trick.
+<TLDR>
+This article shows a quick trick to count published Docusaurus blog posts: open the auto-generated `/blog/archive/` page, open the browser's developer console, and run a `document.querySelectorAll` instruction against the list of post entries to get the total count.
+</TLDR>
+
+Docusaurus didn't provide an easy way to retrieve the number of blog posts but there is a trick.
 
 There is an automatic page called `archive` like <Link to="/blog/archive/">/blog/archive/</Link>.
 

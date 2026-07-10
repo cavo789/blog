@@ -13,7 +13,11 @@ language: en
 ---
 ![Get health information from your running containers](/img/v2/docker_tips.webp)
 
-When you've a few runnings containers on your machine, you can quickly retrieve the health information using `docker ps` and his `State.Health` response.
+<TLDR>
+This article shares a Bash script that loops over all Docker containers (`docker container list --all`) and reports each one's health status via `docker inspect`'s `State.Health` field, giving a quick overview of which containers are healthy, unhealthy, or have no healthcheck configured (`null`).
+</TLDR>
+
+When you've a few runnings containers on your machine, you can quickly retrieve the health information using `docker ps` and its `State.Health` response.
 
 In this article, we'll look at how to create a bash script that can be used as a basis for other needs.
 

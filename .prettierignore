@@ -2,5 +2,6 @@ build/
 .docusaurus/
 node_modules/
 *.eli5.json
+iconBundle.generated.js
 blog/
 .unpublished/

@@ -14,6 +14,10 @@ language: en
 ---
 ![SQL - Formatting tool](/img/v2/sql_format.webp)
 
+<TLDR>
+This article introduces the author's free, self-hosted SQL Formatter tool (source on GitHub, hosted demo at sql-formatter.avonture.be), which turns unreadable single-line legacy SQL queries into properly indented, readable statements — a useful first step before reviewing old database code.
+</TLDR>
+
 When faced with legacy code, it is often useful to reformat it to make it readable.  And from there, the study of the code can begin.
 
 There are plenty of reformatting tools for json, php, javascript and other languages, but far fewer for a query written in SQL.

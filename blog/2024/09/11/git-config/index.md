@@ -18,6 +18,10 @@ updates:
 
 <!-- cspell:ignore autocrlf,committerdate,customising,gitdir,sooooooo -->
 
+<TLDR>
+This article shares a set of practical `~/.gitconfig` customizations: a `git undo` alias to abandon the last local commit, automatic creation of remote branches on push, automatic pruning of dead remote-tracking branches, and sorting `git branch` output by last commit date. It also covers sharing Windows Credential Manager with WSL2, using different credentials per folder for work versus personal projects, forcing SSH instead of HTTPS globally, and preventing Git from converting LF line endings to CRLF on Windows.
+</TLDR>
+
 In this article, we're going to explore some tips for using Git more easily by customising the `~/.gitconfig` file.
 
 We'll create a new `git undo` command to abandon the last local commit.
@@ -108,7 +112,7 @@ Instead of updating the file manually, you can obtain the exact same results by 
 
 ### Sharing Windows credentials manager with Linux
 
-If you're on WSL2, you can reuse credentials you already have filled in in Windows. Indeed, you can use `git` both in a DOS environment or in a Linux console.
+If you're on WSL2, you can reuse credentials you already have filled in on Windows. Indeed, you can use `git` both in a DOS environment and in a Linux console.
 
 To share credentials between the two environments, just add the two lines below in your `~/.gitconfig` file:
 
@@ -116,7 +120,7 @@ To share credentials between the two environments, just add the two lines below 
 
 ### Using multiple credentials on the same computer
 
-As you know, during the installation of Git, you need to provide your name and your email. These two information are given on the console using command like below:
+As you know, during the installation of Git, you need to provide your name and your email. These two pieces of information are provided on the console using a command like the one below:
 
 <Terminal typewriter>
 $ git config --global user.email "me@work.be"
@@ -125,7 +129,7 @@ $ git config --global user.name "Christophe Avonture"
 
 But this isn't very practical when you're working on several types of projects, e.g. for work and for your third-party projects. Let's say you're putting professional work in a given parent folder like `~/work_repositories` while your side projects are in `~/private_repositories`.
 
-When your `~/.gitconfig` looks like below, every time you'll push to Git, the published commit will comes from `me@work.be`.
+When your `~/.gitconfig` looks like below, every time you'll push to Git, the published commit will come from `me@work.be`.
 
 <Snippet filename="~/.gitconfig" source="./files/.gitconfig.part6" />
 

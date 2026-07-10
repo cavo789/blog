@@ -42,14 +42,14 @@ Here is what we need:
 
 <Snippet filename="manifest.yaml" source="./files/manifest.yaml" defaultOpen={true} />
 
-We've two parts, one for CSS and one for JS and, we'll tell two things
+We've two parts, one for CSS and one for JS, and we'll define two things
 
 1. The name of our target file (f.i. we are saying the minified CSS file will be `dist/assets/app.min.css`)
 2. A list of input files
 
 ### 2. The Orchestrator Script (`build.sh`)
 
-This Bash script uses `yq` (a lightweight YAML processor) to parse our manifest. It concatenates the files and then calls the Docker image `[tdewolff/minify](https://hub.docker.com/r/tdewolff/minify)` to handle the heavy lifting. So, we'll not pollute our system with additional dependencies; just one, small, Docker image.
+This Bash script uses `yq` (a lightweight YAML processor) to parse our manifest. It concatenates the files and then calls the Docker image `[tdewolff/minify](https://hub.docker.com/r/tdewolff/minify)` to handle the heavy lifting. So, we won't pollute our system with additional dependencies — just one small Docker image.
 
 ### 3. How to Run It
 
@@ -64,7 +64,7 @@ For this tutorial, let's create a few example files. To do this, please start a 
 
 <Snippet source="./files/cli.txt" defaultOpen={false} />
 
-This instruction will create a new `/tmp/minification` folder and automate the create of a few files:
+This instruction will create a new `/tmp/minification` folder and automate the creation of a few files:
 
 ```tree
 ├── dist
@@ -100,7 +100,7 @@ You're now ready. Simply run `./build.sh` to start the concatenation and the min
 
 ![Running the minification](./images/running.png)
 
-Yeah, it just took just five seconds (downloading the Docker image included).
+Yeah, it just took five seconds (downloading the Docker image included).
 
 ##### Look at the Docker image flags
 
@@ -113,6 +113,6 @@ Surf to [tdewolff/minify](https://hub.docker.com/r/tdewolff/minify) and look for
 3. **Declarative**: Adding a new file to your CSS bundle is as simple as adding one line to your `manifest.yaml`.
 4. **Consistency**: Because we use Docker, the minification result will be exactly the same on your local machine, your colleague's laptop, and your production CI server.
 
-### Conclusion
+## Conclusion
 
 By combining the scripting power of Bash with the isolation of Docker, we've created a robust asset pipeline. This setup is perfect for static sites, legacy PHP projects, or any environment where you want to keep your development tooling as lightweight as possible.

@@ -24,7 +24,7 @@ This article provides a simple solution for enabling lazy loading for images in 
 
 While searching for good tips & tricks about Docusaurus when the number of articles become important, I read that we need to pay attention to lazy load images and, indeed, by default all images are loaded when a blog post is first accessed.
 
-In this article, we'll see how to, so easily, we can intercept the creation of the `<img>` tag when the Markdown content is converted to HTML.
+In this article, we'll see how easily we can intercept the creation of the `<img>` tag when the Markdown content is converted to HTML.
 
 This conversion occurs at two places: when you're surfing on your website or when you're generating a static version of it.
 

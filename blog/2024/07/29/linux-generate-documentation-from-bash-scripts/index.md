@@ -8,13 +8,16 @@ image: /img/v2/bash.webp
 mainTag: bash
 tags:
   - bash
-  - database
   - linux
 language: en
 ---
 ![Linux - Generate documentation from Bash scripts](/img/v2/bash.webp)
 
 <!-- cspell:ignore HEllow -->
+
+<TLDR>
+This article shares a custom `generate_doc.sh` Bash script that scans a folder of `.sh` files, extracts PHP-Docblock-style comment blocks above each function, and generates one Markdown file per script (plus a summary `readme.md`) — filling the gap left by the lack of a Bash equivalent to tools like phpDocumentor.
+</TLDR>
 
 When writing Bash scripts, I'm always putting some description block in front of any functions like I do in any language (think to [PHP Docblock](https://docs.phpdoc.org/guide/getting-started/what-is-a-docblock.html)).
 

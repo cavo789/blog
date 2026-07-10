@@ -63,10 +63,12 @@ My disk is full of projects and a huge list of repositories. Now, whenever I `cd
 
 It is important to note that this script exclusively queries your local Git repository. It deliberately avoids executing a `git fetch` command to check the remote server for updates.
 
-Triggering a network request every time you change directories would introduce unacceptable latency and severely slow down your terminal workflow. Because it reads strictly from your local Git references —which is distinct from the Git staging area that tracks your uncommitted file modifications— the script executes instantly.
+Triggering a network request every time you change directories would introduce unacceptable latency and severely slow down your terminal workflow. Because it reads strictly from your local Git references—which is distinct from the Git staging area that tracks your uncommitted file modifications—the script executes instantly.
 
-If a teammate pushes a new branch to the remote repository, it will not appear in your recent branches list automatically. You maintain full control over network operations; whenever you want to update your local repository with the latest remote activity, you simply run git fetch manually.
+If a teammate pushes a new branch to the remote repository, it will not appear in your recent branches list automatically. You maintain full control over network operations; whenever you want to update your local repository with the latest remote activity, you simply run `git fetch` manually.
 
 ## Conclusion
 
-Now, every single time I do a `cd` command and jump in a Git project, I don't have to run additional command, I immediately get the required info; the name of the last active branches.
+Now, every time I run a `cd` command and jump into a Git project, I don't have to run any additional commands — I immediately get the information I need: the names of the most recently active branches.
+
+This snippet is small enough to live directly in `~/.zshrc`, but if you're accumulating several hooks and functions like this one, see <Link to="/blog/modular-zsh-workflow">Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro</Link> for a cleaner way to organize them.

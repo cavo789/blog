@@ -53,13 +53,13 @@ And ... it works.
 
 We've created a very basic example with two checks.
 
-The first one is called *Asserting it's hello* and we've fired `echo "hello"` just like we can make in a Shell script. Then running `assert_output "hello"` we are checking the output of the fired command is `hello` and it's a success (so it's `hello` and nothing else)
+The first one is called *Asserting it's hello* and we've fired `echo "hello"` just like we can make in a Shell script. Then running `assert_output "hello"` we are checking the output of the fired command is `hello` and it's a success (so it's `hello` and nothing else).
 
 This is done using this script:
 
 <Snippet filename="tests/simple.bats" source="./files/simple.part2.bats" />
 
-And the second check is called *Simple.bats exists* and we're just doing a `ls simple.bats` and check if, for the illustration, `Simple.bats` or `simple.bats` is returned in the list of file (this, to illustrate the use of a regular expression).
+And the second check is called *Simple.bats exists* and we're just doing a `ls simple.bats` and check if, for the illustration, `Simple.bats` or `simple.bats` is returned in the list of files (this, to illustrate the use of a regular expression).
 
 <Snippet filename="tests/simple.bats" source="./files/simple.part3.bats" />
 
@@ -85,7 +85,7 @@ Imagine the following, simplified, tree structure:
     ├── assert.bats
 ```
 
-The file `src/assert.sh` contains your Linux shell code you want to test. Your test scenario should be stored in the `tests` folder. Since we'll write tests for the `src/assert.sh` file, let's create the  `tests/assert.bats`.
+The file `src/assert.sh` contains your Linux shell code you want to test. Your test scenario should be stored in the `tests` folder. Since we'll write tests for the `src/assert.sh` file, let's create the `tests/assert.bats`.
 
 Below the content of the `src/assert.sh`. Let's start with a simple function: checking if a given binary is installed on the system or not. The name of the binary has to be passed as a parameter to the function.
 
@@ -121,7 +121,7 @@ Simply verify that both values are equals. Here, we'll call a function that will
 
 ### assert_failure
 
-`assert::binaryExists` will exit 1 if the binary can't be retrieved. An error message like *The binary can't be found will be echoed on the console*.
+`assert::binaryExists` will exit 1 if the binary can't be retrieved. An error message like *The binary can't be found* will be echoed on the console.
 
 <Snippet filename="tests/simple.bats" source="./files/simple.part6.bats" />
 
@@ -192,7 +192,7 @@ Now, bingo, since we've a variable with only one line (in our example: `$#$#$#$#
 
 A second scenario can be: you have a write function (think to a logfile) and you want to check the presence of a given line in the file.
 
-The example below relies on `bats-file` and his `assert_file_contains` method. That method asks for a filename and a regex pattern.
+The example below relies on `bats-file` and its `assert_file_contains` method. That method asks for a filename and a regex pattern.
 
 <Snippet filename="tests/simple.bats" source="./files/simple.part13.bats" />
 

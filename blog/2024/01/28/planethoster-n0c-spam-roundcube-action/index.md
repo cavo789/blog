@@ -15,11 +15,15 @@ language: en
 <!-- cSpell:ignore allof,fileinto -->
 ![Exterminate them all, kill spam using GitHub Actions](/img/v2/fighting_against_spam.webp)
 
+<TLDR>
+This article automates the RoundCube Sieve spam-filter workflow from the previous PlanetHoster N0C post: a Bash script generates a `roundcube.sieve` file from a `patterns.json` domain list and a template, and a GitHub Actions workflow rebuilds and FTP-deploys that file automatically whenever `patterns.json` is pushed, removing the need to manually click through RoundCube's filter UI.
+</TLDR>
+
 In previous articles, I explained how to fight against spam if you've a <Link to="/blog/cpanel-spam">cpanel</Link> or <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link>.
 
 What if we automated as many things as possible?
 
-In the <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link> article , I showed that you need to write rules for RoundCube to identify sources of spam and remove them. These rules have to be created from the RoundCube interface and, well, ok, that's not optimized at all.
+In the <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link> article, I showed that you need to write rules for RoundCube to identify sources of spam and remove them. These rules have to be created from the RoundCube interface and, well, ok, that's not optimized at all.
 
 Let's look at how to do as little as possible and still be a hardcore spam fighter.
 
@@ -44,12 +48,17 @@ And, therefore, the objective is simple and obvious: we're going to create a lit
 
 ## Our action plan
 
-1. We'll create a directory and jump in it: `mkdir ~/sieve-generator && cd $_`,
-2. We'll create our JSON file,
-3. We'll create our sieve template,
-4. We'll create our script, in Bash (but you can do this in any language)
-5. We'll create a repository on GitHub and push our code there
-6. And we'll finally set up GitHub Actions to automate the build and deploy process.
+<StepsCard
+  variant="steps"
+  steps={[
+    "We'll create a directory and jump in it: `mkdir ~/sieve-generator && cd $_`,",
+    "We'll create our JSON file,",
+    "We'll create our sieve template,",
+    "We'll create our script, in Bash (but you can do this in any language)",
+    "We'll create a repository on GitHub and push our code there",
+    "And we'll finally set up GitHub Actions to automate the build and deploy process.",
+  ]}
+/>
 
 ### Create
 
@@ -164,7 +173,7 @@ In your console, run `./generate.sh` and if everything is running fine, you'll g
 
 If you get an error about `jq` please install it by running: `sudo apt-get update && sudo apt-get install jq` then start `./generate.sh` again.
 
-So now, you should have a new folder called `build` where the file `roundcube.sieve` has been created. Open the file and check his content. It'll start with:
+So now, you should have a new folder called `build` where the file `roundcube.sieve` has been created. Open the file and check its content. It'll start with:
 
 ```none
 # rule:[Identify as spam: *.buzz]
@@ -201,17 +210,19 @@ If you don't have the same list of filters; it's absolutely normal.
 
 </AlertBox>
 
-### Create your own Github repository
+### Create your own GitHub repository
 
-<AlertBox variant="info" title="Skip this chapter if you don't want full automation" />
+<AlertBox variant="info" title="Optional chapter">
+  Skip this chapter if you don't want full automation.
+</AlertBox>
 
-In order to be able to create automation using Github Actions, first, we need to create a Github repository.
+In order to be able to create automation using GitHub Actions, first, we need to create a GitHub repository.
 
-I'll suppose you already have a Github account and you know how to use Github.
+I'll suppose you already have a GitHub account and you know how to use GitHub.
 
 Go to [https://github.com/new](https://github.com/new) and create a new **private** repository (it's free).
 
-Then just copy/paste the example given by Github; something like:
+Then just copy/paste the example given by GitHub; something like:
 
 <Terminal typewriter source="./files/terminal-2.txt" />
 
@@ -221,15 +232,17 @@ Now push the other files:
 
 Back to github, you'll obtain a repo like this one:
 
-![Github repo](./images/github_repo.webp)
+![GitHub repo](./images/github_repo.webp)
 
-So, now, each time you'll update the list of domains (in the `patterns.json` file), our objective is to ask Github to run itself the `./generate.sh` script to generate the `build/roundcube.sieve` file.
+So, now, each time you'll update the list of domains (in the `patterns.json` file), our objective is to ask GitHub to run itself the `./generate.sh` script to generate the `build/roundcube.sieve` file.
 
 And, too, to publish the new file to your FTP account so, to put it simply: you modify the JSON file on your computer and RoundCube receives the new rules automatically, just a few seconds later.
 
-### Adding Github Actions
+### Adding GitHub Actions
 
-<AlertBox variant="info" title="Skip this chapter if you don't want full automation" />
+<AlertBox variant="info" title="Optional chapter">
+  Skip this chapter if you don't want full automation.
+</AlertBox>
 
 Go back to your computer, jump back in the `~/sieve-generator` folder and create a new file called `.github/workflows/build_and_deploy.yaml`.
 
@@ -285,19 +298,19 @@ jobs:
           local-dir: ./build/
 ```
 
-I won't go into detail about this file, but this ask Github to:
+I won't go into detail about this file, but it asks GitHub to:
 
-1. Install JQ on his server,
+1. Install JQ on its server,
 2. Run the `generate.sh` script and thus build the `build/roundcube.sieve` file
 3. Use FTP-Deploy-Action to push the file on your server.
 
 As you can see, there are three `secrets`.
 
-Back to your browser, go to your Github repository you've created in the previous chapter.
+Back to your browser, go to your GitHub repository you've created in the previous chapter.
 
 Click on `Settings` then `Secrets and variables` and finally, click on `Actions`
 
-![Github secrets](./images/settings_actions_secrets.webp)
+![GitHub secrets](./images/settings_actions_secrets.webp)
 
 Click on the green button `New repository secret` and create the first one called `FTP_SERVER` (seems to be in uppercase). Put there the name of your FTP server like `node99-xx.N0c.com` (get the name from your *My planethoster* page).
 
@@ -312,9 +325,9 @@ In case the `sieve` folder didn't exists yet, the best way to create it, I think
 
 </AlertBox>
 
-Ok, so, now, you've a new FTP login, his very secure password and being able to, only, connect to your sieve folder.
+Ok, so, now, you've a new FTP login, its very secure password, and access restricted to only your sieve folder.
 
-Copy the login and the password in the Github secrets page.
+Copy the login and the password in the GitHub secrets page.
 
 You'll then have this:
 
@@ -322,13 +335,13 @@ You'll then have this:
 
 ## Everything is now in place for automation
 
-If you've followed the Github chapters, now, everything is set up.
+If you've followed the GitHub chapters, now, everything is set up.
 
 Back to your computer and edit the `patterns.json` file and add a new pattern, f.i. `newsletters@*`.
 
-Push the change to Github (`git add . ; git commit -m "chore: new pattern" ; git push`).
+Push the change to GitHub (`git add . ; git commit -m "chore: new pattern" ; git push`).
 
-Just for the curiosity, go to Github - Actions tabs:
+Just for the curiosity, go to GitHub - Actions tabs:
 
 ![Build and deploy](./images/build_and_deploy.webp)
 
@@ -338,6 +351,6 @@ If you've configured everything correctly, you should get this:
 
 ## Conclusion
 
-From now on, all you have to do is copy/paste the email addresses you receive spam from, see if you can standardize them as much as possible (by using the asterisk like in `newsletter@*`) and then copy/paste them into the JSON file that you just have to upload to Github.
+From now on, all you have to do is copy/paste the email addresses you receive spam from, see if you can standardize them as much as possible (by using the asterisk like in `newsletter@*`) and then copy/paste them into the JSON file that you just have to upload to GitHub.
 
 Et voilà!

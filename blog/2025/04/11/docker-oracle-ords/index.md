@@ -24,7 +24,7 @@ This tutorial demonstrates how to transform your Oracle Database into a powerful
 
 In a previous article (<Link to="/blog/docker-oracle-database-server">Running Oracle Database Server as a Docker container</Link>), we've created a Docker container called `oracle-db` where a Human Resources database is running.
 
-In this article we'll partially expose the database on the web using OpenAPI so, in short, we'll allow allowed people to access to, f.i., `http://oursite/api/employees` to get the list of all employees.
+In this article we'll partially expose the database on the web using OpenAPI so, in short, we'll allow authorized people to access, f.i., `http://oursite/api/employees` to get the list of all employees.
 
 Exactly the same way we've done with PostgREST (see my <Link to="/blog/docker-postgrest">Don't query your PostgreSQL db anymore, prefer PostgREST</Link>) but, this time, with an Oracle database.
 
@@ -34,7 +34,7 @@ And the magic will happen thanks **[Oracle REST Data Services](https://www.oracl
 
 In the previous article (<Link to="/blog/docker-oracle-database-server">Running Oracle Database Server as a Docker container</Link>), we've created a Docker container called `oracle-db` where a Human Resources database is running.
 
-Please read that article and follow steps so, before continuing here, you've a running Docker container like describe below.
+Please read that article and follow steps so, before continuing here, you've a running Docker container as described below.
 
 ## Some prerequisites
 
@@ -67,7 +67,7 @@ We'll need to proceed step-by-step.
 
 ### Create a volume for the ORDS configuration
 
-ORDS requires two folders, one for what he called **his secrets** and one for **his configuration files**. Let's use a Docker self managed volume for the configuration files so please run `docker volume create ords_config` in your console.
+ORDS requires two folders, one for what it calls **its secrets** and one for **its configuration files**. Let's use a Docker self managed volume for the configuration files so please run `docker volume create ords_config` in your console.
 
 ### Configure the connection string
 
@@ -126,7 +126,7 @@ If you need to run the container once more; here is the command line:
 
 ### We need to create our user in our database
 
-Before being able to use ORDS and access to objects using an HTTP request, we should create a new user in our database and give him some rights.
+Before being able to use ORDS and access objects using an HTTP request, we should create a new user in our database and give it some rights.
 
 Run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` to start a SQL*Plus console and connect to the PDB database.
 
@@ -147,7 +147,7 @@ Once back in the sqlplus console (logged in as user `hr`), please run : `EXECUTE
 *(read [ORDS 101: Enabling Oracle Schemas for HTTPS/REST](https://www.thatjeffsmith.com/archive/2023/09/ords-101-enabling-oracle-schemas-for-https-rest/) if you want deeper info)*
 
 <AlertBox variant="caution">
-If you get an error at this level, it means ORDS wasn't installed in your database. Please read again the **Installing ORDS on your DB** chapter.
+If you get an error at this level, it means ORDS wasn't installed in your database. Please read again the **Create the container** chapter.
 
 </AlertBox>
 
@@ -236,7 +236,7 @@ It's a very bad practice to use `SELECT * FROM ...`, always make sure to select 
 
 </AlertBox>
 
-Go back to the Oracle SQL Developer interface, right-click on the `Views` node and choice `Refresh`.
+Go back to the Oracle SQL Developer interface, right-click on the `Views` node and choose `Refresh`.
 
 You'll see the added view:
 
@@ -343,9 +343,9 @@ See the official documentation: [https://docs.oracle.com/en/database/oracle/simp
 
 > [Doc](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/developing-REST-applications.html#GUID-6B5B51E6-0F35-4FB6-B271-FCC31E835347)
 
-Unless specific configuration, ORDS will use pagination i.e will limit the list of records to 25 rows.
+Unless specifically configured, ORDS will use pagination, i.e. it will limit the list of records to 25 rows.
 
-So, if you've more than 25 employees, the endpoint `http://localhost:8181/ords/hr/employees/`
+So, if you've more than 25 employees, the endpoint `http://localhost:8181/ords/hr/employees/` will only return the first 25 of them.
 
 By accessing a "full" page like `http://localhost:8181/ords/hr/employees/`, we'll in fact just receive a specific number of records (as configured in ORDS). At the end of the JSON answer, there will be navigation links:
 
@@ -368,7 +368,7 @@ So we can run multiple requests like `http://localhost:8181/ords/hr/employees/?o
 We can define the number of records by page using the `limit` querystring parameter: `http://localhost:8181/ords/hr/employees/?limit=100`.
 
 <AlertBox variant="note">
-The official documentation strongly discourages to remove the limit (and thus ask all records at once). For this reason there is no way to remove the limit. If you really wish to get the full list, try with a very high number like `limit=1000000` (one million).
+The official documentation strongly discourages removing the limit (and thus asking for all records at once). For this reason there is no way to remove the limit. If you really wish to get the full list, try with a very high number like `limit=1000000` (one million).
 
 </AlertBox>
 
@@ -438,7 +438,7 @@ We can also use AND like in this example: `http://localhost:8181/ords/hr/employe
 The following URL `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"%CLERK"},"salary":{"$gt":2899},"hire_date":{"$gt":{"$date":"2016-12-31T12:59:59Z"}}}` will return every employee who:
 
 * working as clerk (`job_id` ending by the `CLERK` word),
-* having a salary greater then 2,899€ and
+* having a salary greater than 2,899€ and
 * hired as from 1st January 2017.
 
 <BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"%CLERK"},"salary":{"$gt":2899},"hire_date":{"$gt":{"$date":"2016-12-31T12:59:59Z"}}}'}>
@@ -469,7 +469,7 @@ To sort on the first name desc and, then based on the salary (the higher first):
 
 ORDS can generate an `openapi.json` file to use with Swagger. Read more [Manage & Monitor Oracle Database with REST APIs](https://www.thatjeffsmith.com/archive/2022/08/manage-monitor-your-oracle-database-with-rest-apis/)
 
-## More lectures
+## Further reading
 
 * [ORDS best practices topics (www.oracle.com)](https://www.oracle.com/database/technologies/appdev/rest/best-practices/)
 * [Installation, Configuration, and Development Guide (docs.oracle.com)](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/toc.htm#GUID-A1CD111F-724B-4E91-8202-FA899EE521F1)

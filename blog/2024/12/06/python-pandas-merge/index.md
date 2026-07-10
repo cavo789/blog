@@ -16,6 +16,10 @@ language: en
 
 ![Pandas - Merge two or more files and create a merged one](/img/v2/pandas.webp)
 
+<TLDR>
+This article shows how to use Python's Pandas library to merge multiple yearly CSV files (e.g. employee salaries from 2020–2024) into a single consolidated file, correctly handling records that don't appear in every file (new hires, departures) — a task that becomes unwieldy in Excel with VLOOKUP once files grow beyond a handful of rows.
+</TLDR>
+
 You've two or more files and you wish to merge them. For instance, a list of employees and their salary for 2020 up to 2024. Or a list of cost centers and their budget/expenses. Or a list of students and their evaluation score. Or ...
 
 Let's look at an example: a list of employees and their salaries.
@@ -103,9 +107,9 @@ At the end, the script will save the file on disk as `employees_merged.csv`.
 
 ![Merged](./images/merged.webp)
 
-As we can see on the image, we've well a merge i.e. our 10 employees (from 0 till 9) then if an employee was present in a file (like employee 2023 called `John John`). We can see their salary in our result.
+As we can see in the image, we do have a merge, i.e., our 10 employees (from 0 to 9), and if an employee was present in a file (like the one added in 2023, called `John John`), we can see their salary in our result.
 
-And, opened using Excel, here our final result:
+And, opened using Excel, here is our final result:
 
 ![Merged employees; in Excel](./images/excel.webp)
 
@@ -113,10 +117,10 @@ Next year, we'll have a file called `employees_2025.csv` and we just need to run
 
 ## Conclusion
 
-Without using Pandas, the common approach is to load the files one by one into Excel. To create formulas such as `vlookup` between each `sheet` and to create a new `sheet` which will include the values found, but this only works when the same record is found in several files.
+Without using Pandas, the common approach is to load the files one by one into Excel, create formulas such as `vlookup` between each `sheet`, and create a new `sheet` which will include the values found — but this only works when the same record is found in several files.
 
-How do you deal with cases where a record has been added? You'd have to make an `append` in the `sheet` that merges everything together and ... One way would be to append all records in one global sheet (and add a column year) then use a pivot feature to ... ouch, that complicates things, doesn't it?
+How do you deal with cases where a record has been added? You'd have to make an `append` in the `sheet` that merges everything together and ... One way would be to append all records in one global sheet (and add a year column) then use a pivot feature to ... ouch, that complicates things, doesn't it?
 
-Now let's imagine CSV files that aren't 10 rows long but are each over a million rows long.  Loading 5 files (2020 to 2024) means loading more than 5 million rows and having an `sheet` which will contain the merge and which will also contain at least 1 million rows.
+Now let's imagine CSV files that aren't 10 rows long but are each over a million rows long. Loading 5 files (2020 to 2024) means loading more than 5 million rows and having a `sheet` which will contain the merge and which will also contain at least 1 million rows.
 
 Imagine the effort involved in opening the files and waiting for Excel to recalculate its formulas. The horror!

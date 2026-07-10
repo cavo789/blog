@@ -20,7 +20,7 @@ blueskyRecordKey: 3lv3hzdh4mk2v
 This article introduces 'memos', a lightweight and simple self-hosted note-taking application perfect for developers' daily reminders and tasks. The guide provides a complete walkthrough of installing memos using a custom Docker Compose setup, emphasizing how to configure it for data persistence and correct file permissions. You'll learn how to get started, create notes using Markdown and checklists, organize them with tags, and use advanced filters called 'shortcuts'. The post also highlights practical features like the ability to paste images directly into your notes.
 </TLDR>
 
-As a developer, I'm working all day on a computer and sometimes (too often in fact), at the end of the day, I send myself an email for tomorrow's me *Don't forget to ...*, *you have to continue [a task]*, *I stopped at [a file], I've to continue the others*, in short, I use my inbox like a to-dos/to-remember manager.
+As a developer, I'm working all day on a computer and sometimes (too often in fact), at the end of the day, I send myself an email for tomorrow's me *Don't forget to ...*, *you have to continue [a task]*, *I stopped at [a file], I have to continue the others*, in short, I use my inbox like a to-dos/to-remember manager.
 
 Can we do better? Of course, but which tool should I choose?
 
@@ -49,7 +49,7 @@ Then, please create a file called `compose.yaml` with this content:
 <AlertBox variant="note">
 The line `user: ${UID:-1000}:${GID:-1000}` will ask Docker to use a specific user (not the `root` one) while creating files on your disk.
 
-The user `1000:1000` is, in the most cases, you i.e. it's your current Linux user (type `id -u` and, then, `id -g` to retrieve your user ID and your group ID and you'll see it'll be `1000` for both).
+The user `1000:1000` is, in most cases, you i.e. it's your current Linux user (type `id -u` and, then, `id -g` to retrieve your user ID and your group ID and you'll see it'll be `1000` for both).
 
 If your IDs are not `1000`, please edit the yaml file and put your IDs instead.
 
@@ -148,7 +148,7 @@ Just like you do in any modern application, copy the image in the clipboard and 
 
 By clicking on the bottom left profile icon, you can update the application's settings like setting `Monday` as the first day of the week (for the top left calendar).
 
-You can also inject some CSS / Javascript to customize the look&feel of memos.
+You can also inject some CSS / JavaScript to customize the look&feel of memos.
 
 ## Conclusions
 

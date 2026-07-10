@@ -16,6 +16,10 @@ updates:
 ---
 ![Let's revisit the ls command thanks to eza](/img/v2/linux_tips.webp)
 
+<TLDR>
+This article introduces `eza`, a modern replacement for the `ls` command (formerly known as `exa`), offering better defaults, icons, and formatting. It shows how to install it with `apt-get` and set up an alias with a useful combination of flags (`--all --long --group --group-directories-first --icons --header --time-style long-iso`) so `ls` automatically uses `eza` with a richer file listing.
+</TLDR>
+
 Which CLI command would you say you use most on Linux? Most definitely `ls` to display the list of files in the current directory.
 
 <AlertBox variant="note" title="I don't know about you, but I rarely use `ls` without any parameters. Almost without thinking, I add `-alh` every time. It's become mechanical." />

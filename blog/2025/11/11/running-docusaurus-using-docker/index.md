@@ -26,7 +26,7 @@ This guide details how to streamline Docusaurus blog development using Docker. I
 
 Streamline your Docusaurus workflow with a clean, reproducible setup. In this updated guide, you'll learn how to maintain a Docusaurus blog using a single Docker image, VSCode DevContainers, and a workflow that makes both production builds and day-to-day writing fast and reliable.
 
-Eighteen months ago, I've published [Encapsulate an entire Docusaurus site in a Docker image](/blog/docker-docusaurus-prod) but, since then, I've refined the approach, especially around separating **production** and **development** environments cleanly (see [One Docker Image for Production and Devcontainers - The Clean Way](/blog/docker-prod-devcontainer)).
+Eighteen months ago, I published [Encapsulate an entire Docusaurus site in a Docker image](/blog/docker-docusaurus-prod) but, since then, I've refined the approach, especially around separating **production** and **development** environments cleanly (see [One Docker Image for Production and Devcontainers - The Clean Way](/blog/docker-prod-devcontainer)).
 
 With this setup:
 
@@ -98,7 +98,7 @@ If `make` isn't yet installed on your machine, you'll get an error so please mak
 $ sudo apt-get update && sudo apt-get install make
 </Terminal>
 
-Now we've to run two commands, the first one will create a Docker image for production i.e. where everything is included in the image.
+Now we have to run two commands, the first one will create a Docker image for production i.e. where everything is included in the image.
 
 <Terminal typewriter wrap={true}>
 $ TARGET=production make build
@@ -125,7 +125,7 @@ By running `TARGET=production make build` we've created a standalone version of 
 
 We've created the final image by using nginx and by copying static files created earlier in the image.
 
-By running `TARGET=production make up` we've created a running instance (called `container`) of that image and we've ask our operating system to access the container on port `443` (the one of the `https` protocol). That's why, if we access to `https://localhost` we've running the website.
+By running `TARGET=production make up` we've created a running instance (called `container`) of that image and we've asked our operating system to access the container on port `443` (the one of the `https` protocol). That's why, if we access `https://localhost` we get the website.
 </AlertBox>
 
 ## Using DevContainers for Development
@@ -157,13 +157,13 @@ We'll need to create a new `.devcontainer` folder with a few files:
 Please edit the `.devcontainer/.env` file and make sure these values are the ones you're using: please run `id -u` in your console and check if you get `1000`. If not, please report the obtained figure (f.i. `1002`) as `OS_USERID` and do the same with  the command `id -g`, here, it's for the `OS_GROUPID` variable.
 </AlertBox>
 
-Since we've two bash scripts, we need to make them executable. Please run this command in a terminal:
+Since we have two bash scripts, we need to make them executable. Please run this command in a terminal:
 
 <Terminal typewriter wrap={true}>
 $ chmod +x .devcontainer/bootstrap.sh .devcontainer/bash_helpers.sh
 </Terminal>
 
-Now we've to open the devcontainer so please run:
+Now we have to open the devcontainer so please run:
 
 <Terminal typewriter wrap={true}>
 $ make build && make devcontainer
@@ -228,15 +228,15 @@ Using a Devcontainer like illustrated in this article, you can also fine-tune yo
 
 Since everything is isolated, you can *drop* the container and recreate it without pain.
 
-Someone has to work with you? Devcontainer is then the way-to-go since everyone will have the exact same environment.
+Working with a team? Devcontainer is then the way-to-go since everyone will have the exact same environment.
 
 ## Using LanguageTool in VSCode
 
 Let's see one of the many advantages: instead of *just using VSCode to write our posts*, let's use LanguageTool which provides basic grammar and spellchecking for your posts.
 
-And you know what? You already have it. See your `.devcontainer/compose.yaml` file. You'll see a service called `languagetool` based on a Docker image called **erikvl87/languagetool**. And now, see your `.devcontainer/devcontainer.json` file. Search for **languageToolLinter** and you'll see a local URL (based on an IP); this is the one exposed by the service. And look further for the **davidlday.languagetool-linter** extension, this is the one who'll make the magic happens.
+And you know what? You already have it. See your `.devcontainer/compose.yaml` file. You'll see a service called `languagetool` based on a Docker image called **erikvl87/languagetool**. And now, see your `.devcontainer/devcontainer.json` file. Search for **languageToolLinter** and you'll see a local URL (based on an IP); this is the one exposed by the service. And look further for the **davidlday.languagetool-linter** extension, this is the one that'll make the magic happen.
 
-Here an example of how LanguageTool will works:
+Here's an example of how LanguageTool works:
 
 ![LanguageTool in action](./images/language_tool_in_action.webp)
 
@@ -244,7 +244,7 @@ For sure, the correct sentence should be *This example illustrates LanguageTool 
 
 ## Code Spell Checker
 
-Here is another example, a mistake a French-speaking person can do by inadvertence:
+Here is another example, a mistake a French-speaking person can make inadvertently:
 
 ![The word example is misspelled](./images/example_is_misspelled.webp)
 
@@ -252,6 +252,6 @@ Here, the extension used is *Code Spell Checker* from **streetsidesoftware**.
 
 ## Markdown lint
 
-And perhaps, while you'll write your Markdown content, VSCode will show you errors displayed in orange like `MD047/single-training-newline` to tells you you've forgot to add an empty line at the very bottom of the file.
+And perhaps, while you write your Markdown content, VSCode will show you errors displayed in orange like `MD047/single-training-newline` to tell you that you forgot to add an empty line at the very bottom of the file.
 
-These warnings comes from Markdownlint which is another extension already installed in the devcontainer.
+These warnings come from Markdownlint which is another extension already installed in the devcontainer.

@@ -13,6 +13,10 @@ language: en
 ---
 ![Play with Microsoft SQL Server 2022 using Docker](/img/v2/mssql.webp)
 
+<TLDR>
+This article shows how to run Microsoft SQL Server 2022 in Docker, connect to it with SQL Server Management Studio (SSMS), and create a sample database and table. It finishes with a small PowerShell script example that connects to the database and runs a query, giving a full local round trip from container to query results.
+</TLDR>
+
 And yes, nothing less. We're going to install a **Microsoft SQL Server 2022** on our machine, install **SQL Server Management Studio** too and we'll have fun with a small PowerShell script; all with Docker, of course.
 
 <!-- truncate -->

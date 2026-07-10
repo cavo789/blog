@@ -21,7 +21,7 @@ blueskyRecordKey: 3mcr66gr7zk2k
 This guide demonstrates how to streamline server connections by creating a dedicated SSH profile directly within the Windows Terminal settings. Users simply need to add a new empty profile, configure the command line with their specific SSH instruction, and optionally customize the appearance with icons or background images. This setup enables immediate access to remote servers through the Terminal dropdown menu, eliminating the need to manually type connection commands.
 </TLDR>
 
-In this article, we'll see how to create a new SSH profile in Windows Terminal so we even don't need anymore to remember how to connect to the server; we just need to open the profile and that's all.
+In this article, we'll see how to create a new SSH profile in Windows Terminal so we no longer even need to remember how to connect to the server; we just need to open the profile and that's all.
 
 For illustration purposes, I'll use my hosting server at PlanetHoster, but you can use the same technique for any SSH server you want to connect to.
 
@@ -31,10 +31,15 @@ For illustration purposes, I'll use my hosting server at PlanetHoster, but you c
 
 To open the Windows Terminal settings, you can use the following methods:
 
-1. Click on the `+` button to open a new tab, then select "Settings" from the dropdown menu or,
-2. Press `Ctrl + ,` while in Windows Terminal or,
-3. Right-click on the title bar and select "Settings" or
-4. Use the command `wt -p` in PowerShell or CMD.
+<StepsCard
+  variant="steps"
+  steps={[
+    'Click on the `+` button to open a new tab, then select "Settings" from the dropdown menu.',
+    'Press `Ctrl + ,` while in Windows Terminal.',
+    'Right-click on the title bar and select "Settings".',
+    'Use the command `wt -p` in PowerShell or CMD.',
+  ]}
+/>
 
 ![Getting access to Windows Terminal Settings](./images/windows_terminal_access_to_settings.webp)
 
@@ -46,13 +51,18 @@ So, right now, to connect to your hosting server, you only need to run `ssh plan
 
 Let's see how to create a Windows Terminal profile that will directly open a console connected to your hosting server:
 
-1. Open the Settings of Windows Terminal,
-2. In the left menu, select "Add a new profile",
-3. Click on "New empty profile",
-4. In the "Name" field, type "SSH - PlanetHoster" (or anything else you want),
-5. In the "Command line" field, type `ssh planethoster` (or the alias you defined in your `~/.ssh/config` file),
-6. Optionally, choose an icon for your profile by clicking on the "Browse" button or paste here an emoji like "⚡",
-7. Finally, click on the "Save" button at the bottom right.
+<StepsCard
+  variant="steps"
+  steps={[
+    'Open the Settings of Windows Terminal,',
+    'In the left menu, select "Add a new profile",',
+    'Click on "New empty profile",',
+    'In the "Name" field, type "SSH - PlanetHoster" (or anything else you want),',
+    'In the "Command line" field, type `ssh planethoster` (or the alias you defined in your `~/.ssh/config` file),',
+    'Optionally, choose an icon for your profile by clicking on the "Browse" button or paste here an emoji like "⚡",',
+    'Finally, click on the "Save" button at the bottom right.',
+  ]}
+/>
 
 The change is immediate: by clicking on the down arrow next to the `+` button, you'll see your new profile.
 
@@ -76,4 +86,4 @@ From now on, whenever you want to connect to your hosting server, just open Wind
 
 Close the console to end the session when you're done.
 
-Additionally, pay attention to any other settings you can customize in the profile, such as font size, color scheme, and more, to enhance your experience. You can, too, define the home directory to open when the profile starts.
+Additionally, pay attention to any other settings you can customize in the profile, such as font size, color scheme, and more, to enhance your experience. You can also define the home directory to open when the profile starts.

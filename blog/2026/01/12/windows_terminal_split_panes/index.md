@@ -35,7 +35,7 @@ We'll use Windows Terminal. It ships with Windows 10 and later and is the defaul
 There are two approaches:
 
 1.  We can "hardcode" the command line.
-2.  We can reuse existing profiles
+2.  We can reuse existing profiles.
 
 Let's see both.
 
@@ -43,10 +43,15 @@ Let's see both.
 
 The first step is to open the Windows Terminal settings. You can use one of these methods:
 
-1.  Click the `+` button to open a new tab, then select **Settings** from the dropdown menu.
-2.  Press `Ctrl + ,` in Windows Terminal.
-3.  Right-click the title bar and select **Settings**.
-4.  Run `wt -p` from PowerShell or CMD.
+<StepsCard
+  variant="steps"
+  steps={[
+    "Click the `+` button to open a new tab, then select **Settings** from the dropdown menu.",
+    "Press `Ctrl + ,` in Windows Terminal.",
+    "Right-click the title bar and select **Settings**.",
+    "Run `wt -p` from PowerShell or CMD.",
+  ]}
+/>
 
 ![Getting access to Windows Terminal Settings](./images/windows_terminal_access_to_settings.webp)
 

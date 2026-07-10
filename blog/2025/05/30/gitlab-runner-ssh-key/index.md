@@ -1,6 +1,6 @@
 ---
 slug: gitlab-runner-ssh-key
-title: GitLab - Using a SSH key to connect to private repo
+title: GitLab - Using an SSH key to connect to private repo
 date: 2025-05-30
 description: Step-by-step guide on configuring a GitLab CI/CD runner to securely use a private SSH key for accessing and cloning private repositories.
 authors: [christophe]
@@ -15,7 +15,7 @@ blueskyRecordKey: 3lun2oxe3zs2r
 ---
 <!-- cspell:ignore libcrypto -->
 
-![GitLab - Using a SSH key to connect to private repo](/img/v2/gitlab.webp)
+![GitLab - Using an SSH key to connect to private repo](/img/v2/gitlab.webp)
 
 <TLDR>
 This guide provides a step-by-step tutorial on how to use a private SSH key within a GitLab CI/CD pipeline to access private repositories. You will learn how to generate an SSH key, securely store the base64-encoded private key as a masked CI/CD variable, and configure your `.gitlab-ci.yml` to use this key for authenticating and cloning private repos during your CI jobs.
@@ -23,7 +23,7 @@ This guide provides a step-by-step tutorial on how to use a private SSH key with
 
 In this article, we'll see how to use a private SSH key using a GitLab CI.
 
-The need: when running my CI, the GitLab runner has to be able to connect to my self-hosted (and private) GitLab environment. This because he'll need to pull from there private projects. Think to a PHP project f.i. : in my `composer.json`, I'm referring to dependencies hosted on my GitLab server. Or, same for a Javascript project and his `package.json` file.
+The need: when running my CI, the GitLab runner has to be able to connect to my self-hosted (and private) GitLab environment. This is because it'll need to pull private projects from there. Think of a PHP project f.i.: in my `composer.json`, I'm referring to dependencies hosted on my GitLab server. Or, same for a JavaScript project and its `package.json` file.
 
 Another example: my CI will produce some files (like a `.pdf` one) by converting some Markdown documents to a real documentation. At the end of this conversion, the PDF has to be pushed to the repository.
 
@@ -34,11 +34,11 @@ My need is thus: I should share my SSH key with the GitLab runner.
 <AlertBox variant="info">
 To illustrate this article, let's assume `christophe` is my user account on my self hosted GitLab server and that server is called `my_self_hosted_gitlab`.
 
-Think, to replace these two constants by yours ;-)
+Remember to replace these two constants with yours ;-)
 
 </AlertBox>
 
-## First, I need to have a SSH key
+## First, I need to have an SSH key
 
 > For the long story, read my <Link to="/blog/linux-ssh-scp">SSH - Launch a terminal on your session without having to authenticate yourself</Link> article.
 
@@ -50,7 +50,7 @@ That command will create the `~/.ssh/id_ed25519_my_self_hosted_gitlab` file. It'
 
 By running `cat ~/.ssh/id_ed25519_my_self_hosted_gitlab | base64 -w 0`, I'll *base64 encode* my private key as a very long string with alphanumeric characters.
 
-I've to copy that long string in the clipboard.
+I have to copy that long string in the clipboard.
 
 ## Third, I have to create a SSH_PRIVATE_KEY CI variable
 
@@ -60,14 +60,14 @@ Here I've a lot of possibilities:
 * I'll use the variable for all repositories of a given group (a GitLab group is like a folder containing multiple repo);
 * I'll use the variable for all repositories stored on my GitLab instance.
 
-By going to my repository, I've to click on **CI/CD Settings**, expand the **Variables** area so I can add a new variable.
+By going to my repository, I have to click on **CI/CD Settings**, expand the **Variables** area so I can add a new variable.
 
 The variable name should be **SSH_PRIVATE_KEY** and I'll select `Masked` (or `Masked and hidden`) for the visibility. For the value, I'll paste the base64 encoded string I've just copied in the clipboard.
 
 I'll finalize the creation of the variable by clicking on the `Add variable` button present at the bottom of the pane.
 
 <AlertBox variant="info">
-If I want to use the key for all repositories of a given group, I just need to proceed the same but not at the repository level but at the group level.
+If I want to use the key for all repositories of a given group, I just need to proceed the same way but not at the repository level, rather at the group level.
 
 </AlertBox>
 

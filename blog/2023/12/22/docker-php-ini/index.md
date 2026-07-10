@@ -14,9 +14,13 @@ language: en
 ---
 ![Update php.ini when using a Docker image](/img/v2/docker_tips.webp)
 
+<TLDR>
+This article shows how to override `php.ini` settings (e.g. the max upload file size) in a Dockerized PHP site: create a local `php.ini` file, mount it over the container's config file via a `volumes` entry in `compose.yaml`, then `docker compose down && docker compose up --detach` to apply the change.
+</TLDR>
+
 This article aims to answer the following situation: *I'm using a Docker image to run my website and I should modify the php.ini file; how do I do this?*
 
-A real-world example is: you've followed my article <Link to="/blog/docker-joomla">Create your Joomla website using Docker</Link> and everything is working fine. The website is running and you wish, using the Joomla administration web interface, upload a big file to your site. But, then, you get an error *The selected file cannot be transferred because it is larger than the maximum upload size allowed*.
+A real-world example is: you've followed my article <Link to="/blog/docker-joomla">Create your Joomla website using Docker</Link> and everything is working fine. The website is running, and you wish to upload a big file to your site using the Joomla administration web interface. But, then, you get an error *The selected file cannot be transferred because it is larger than the maximum upload size allowed*.
 
 <!-- truncate -->
 
@@ -38,7 +42,7 @@ The solution is to add the `volumes` line if not yet present in your file and, t
 
 ## Step two - Create your own php.ini file
 
-The second thing to do is to create a file called `php.ini` in the same folder of your `compose.yaml` where you'll define your variables; f.i.
+The second thing to do is to create a file called `php.ini` in the same folder as your `compose.yaml` where you'll define your variables; f.i.
 
 <Snippet filename="php.ini" source="./files/php.ini" />
 

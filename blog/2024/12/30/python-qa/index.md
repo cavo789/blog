@@ -21,7 +21,11 @@ blueskyRecordKey: 3lymragaqr22l
 
 ![Python - Code Quality tools](/img/v2/clean_code.webp)
 
-If you're a self-respecting programmer, you can't develop without code analysis tools.  For PHP programmers, you already know a lot of them (`rector`, `phpstan`, `phan`, `phpcs`, ...). See my previous articles <Link to="/blog/php-rector">Rector 1.0.0, my friend, my coach</Link> and <Link to="/blog/php-jakzal-phpqa">Docker image that provides static analysis tools for PHP</Link> e.g.
+<TLDR>
+This article catalogs the author's Python code-quality toolchain — Pylint, Autoflake, isort, Vulture, pydocstyle, mypy, Pyright, Black, and Prospector, plus Ruff as an emerging fast all-in-one alternative — with the exact CLI command and config file for each. They're chained together, fastest/most fundamental first, in a `make qa` target that stops at the first failure and only prints "CONGRATULATIONS" when every check passes.
+</TLDR>
+
+If you're a self-respecting programmer, you can't develop without code analysis tools. For PHP programmers, you already know a lot of them (`rector`, `phpstan`, `phan`, `phpcs`, ...). See my previous articles <Link to="/blog/php-rector">Rector 1.0.0, my friend, my coach</Link> and <Link to="/blog/php-jakzal-phpqa">Docker image that provides static analysis tools for PHP</Link>.
 
 What about Python?
 
@@ -39,7 +43,7 @@ I'm a big fan of static code quality tools and here is my short list:
 >
 > Pylint analyzes your code without actually running it. It checks for errors, enforces a coding standard, looks for code-smells, and can make suggestions about how the code could be refactored.
 
-First things first: make sure your Python code has no syntax error like a bad indentation, you didn't forget a `:` at the end of a control (like an `if` or `for` statement).
+First things first: make sure your Python code has no syntax errors — no bad indentation, no forgotten `:` at the end of a control statement (like an `if` or `for`).
 
 I'm running it like this: `pylint . --rcfile .config/.pylintrc`.
 
@@ -92,11 +96,11 @@ Note: I've also configured my VSCode with the settings below so, while I'm codin
 
 ## 5. pydocstyle
 
-> [https://www.pydocstyle.org/en/stable/](https://www.pydocstyle.org/en/stable/))
+> [https://www.pydocstyle.org/en/stable/](https://www.pydocstyle.org/en/stable/)
 >
 > `pydocstyle` is a static analysis tool for checking compliance with Python docstring conventions.
 
-This tool will check the quality of your comments like the one of your function descriptions and e.g. make sure if you've a function with two arguments that your description explains these two arguments (there is a control about the name and the type).
+This tool checks the quality of your comments, such as your function descriptions, and, for example, makes sure that if you have a function with two arguments, your description explains both arguments (there's a check on the name and the type).
 
 I'm running it like this: `pydocstyle --config=.config/.pydocstyle`
 
@@ -170,7 +174,7 @@ I'm using it like this: `ruff format --cache-dir /tmp/ruff --config .config/pypr
 
 ## Running them all at once
 
-But why have I numbered the tools from 1 to 9 and why this order? That's because I'm running them one after the other and I'm running first the fastest tool but also the more logical one.
+But why have I numbered the tools from 1 to 9, and why this order? That's because I run them one after another, starting with the fastest tool, which is also the most logical one.
 
 The first tool is `Pylint` and that makes sense: there is no need to go further if the syntax is incorrect. The second tool is `Autoflake` and it makes sense too to remove unused variables and imports before.
 

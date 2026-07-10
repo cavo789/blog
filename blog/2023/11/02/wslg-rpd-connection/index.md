@@ -1,6 +1,6 @@
 ---
 slug: wslg-rpd-connection
-title: Opening a RDP connection to the Linux local instance
+title: Opening an RDP connection to the Linux local instance
 date: 2023-11-02
 description: Learn how to open an RDP connection to your WSLg Linux instance (Ubuntu) for a full graphical desktop environment. Follow this step-by-step guide to installing and configuring xrdp.
 authors: [christophe]
@@ -12,10 +12,14 @@ tags:
   - wsl
 language: en
 ---
-![Opening a RDP connection to the Linux local instance](/img/v2/wsl.webp)
+![Opening an RDP connection to the Linux local instance](/img/v2/wsl.webp)
 
 > [https://www.nextofwindows.com/how-to-enable-wsl2-ubuntu-gui-and-use-rdp-to-remote](https://www.nextofwindows.com/how-to-enable-wsl2-ubuntu-gui-and-use-rdp-to-remote)
 > [https://medium.com/@riley.kao/wsl2-ubuntu20-04-gui-remote-desktop-connection-rdp-2bbd21d2fa71](https://medium.com/@riley.kao/wsl2-ubuntu20-04-gui-remote-desktop-connection-rdp-2bbd21d2fa71)
+
+<TLDR>
+This article shows how to RDP into a WSL2 Ubuntu instance: installing and starting `xrdp` (on a non-default port like 3390 to avoid conflicts), connecting from Windows via `mstsc.exe`, and installing a full Xfce desktop environment (`xubuntu-desktop`) with `startwm.sh` reconfigured to launch it, so the RDP session shows a full graphical desktop instead of just a console.
+</TLDR>
 
 When WSLg is enabled, it's possible to access the graphical user interface of your Linux distribution (in my case, it's Ubuntu).
 
@@ -30,7 +34,7 @@ $ sudo apt-get install -y xrdp
 
 <!-- truncate -->
 
-Also consider changing the port number to `3390` by running the command below and some minor changes. *It seems to be required since using the default 3389 port number, you will get the 'already in use' error with mstsc.*:
+Also consider changing the port number to `3390` by running the command below and making a few minor changes. *This seems to be required because, when using the default 3389 port number, you get the 'already in use' error with mstsc.*
 
 <Terminal typewriter source="./files/terminal-2.txt" />
 
@@ -61,7 +65,7 @@ If you wish the desktop and all its features, please run `sudo apt-get install -
 
 Also run `sudo nano /etc/xrdp/startwm.sh` to edit the file.
 
-1. Comment the two last lines:
+1. Comment out the last two lines:
 
     <Snippet filename="/etc/xrdp/startwm.sh">
 
@@ -72,7 +76,7 @@ Also run `sudo nano /etc/xrdp/startwm.sh` to edit the file.
 
     </Snippet>
 
-2. Add these two last lines:
+2. Add these last two lines:
 
     <Snippet filename="/etc/xrdp/startwm.sh">
 

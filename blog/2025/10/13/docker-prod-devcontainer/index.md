@@ -54,7 +54,7 @@ One for the deploy and a second one to extend the first with additional tools an
 
 ![Core concept - Two images](./images/production_devcontainer.webp)
 
-## Step 1 - We've to create the production docker image
+## Step 1 - We have to create the production docker image
 
 Please create a new folder in your temporary folder for our example.
 
@@ -72,7 +72,7 @@ For this article, we'll create a Python script so we'll have to specify the vers
 
 This is just for the example but, in your case, this `.env` will be used to put there all the settings you want for your own production image.
 
-So, even if you don't see yet why you've to use this file in your own use case, just keep it even if you've no variables to put inside.
+So, even if you don't see yet why you have to use this file in your own use case, just keep it even if you have no variables to put inside.
 
 <Snippet filename="/tmp/docker-prod-devcontainer/.env" source="./files/.env" />
 
@@ -114,18 +114,18 @@ The `compose.yaml` file is used by Docker compose (which is a part of Docker) to
 
 This is a very important file since we'll define here all the required configurations, we'll specify our `.env` file so Docker can translate variables to their values, ...
 
-We'll also tell to Docker which port of the running container has to be shared with our host, ...
+We'll also tell Docker which port of the running container has to be shared with our host, ...
 
 <Snippet filename="/tmp/docker-prod-devcontainer/compose.yaml" source="./files/compose.yaml" />
 
 <AlertBox variant="caution">
 Pay attention to the `user:` and `security_opt:` parts.
 
-It tells to Docker to use a user having UID/GID `1001` when creating a container based on our image. This user ... didn't exist in the image so why?
+It tells Docker to use a user having UID/GID `1001` when creating a container based on our image. This user ... didn't exist in the image so why?
 
 This is a trick to make sure the container is running rootless i.e. the user in the container is an unprivileged one.
 
-As extra security measure, we've the `security_opt: - no-new-privileges:true` line to prevent the container to gain any additional privileges.
+As extra security measure, we have the `security_opt: - no-new-privileges:true` line to prevent the container from gaining any additional privileges.
 
 In short: when a container will be created based on our image, the user will be able to just run what we've decided for him, nothing more.
 
@@ -152,7 +152,7 @@ And finally, we'll create, for the demo, a FastAPI Python script that will retur
 
 #### Summary for the production files
 
-So at this point, our project looks like this i.e. we've five files.
+So at this point, our project looks like this i.e. we have five files.
 
 ```tree expanded=true showJSX=false debug=false title="docker-prod-devcontainer"
 ├─ .env
@@ -176,7 +176,7 @@ You'll get something like this:
 <Snippet filename="console output" source="./logs/prod.log" />
 
 <AlertBox variant="info" title="Remember our user 1001">
-Look here above on the `user: 1001:1001` line. We've seen this in a previous chapter: when the container will be created, the active user will be `1001:1001` and that one didn't exist (we've not create it in our `Dockerfile`): our container will be rootless; just what we want.
+Look here above on the `user: 1001:1001` line. We've seen this in a previous chapter: when the container will be created, the active user will be `1001:1001` and that one didn't exist (we haven't created it in our `Dockerfile`): our container will be rootless; just what we want.
 </AlertBox>
 
 Now, we'll build and create the container by running the command below.
@@ -250,7 +250,7 @@ Look at the provided script once again:
   variant="steps"
   steps={[
     "We are reusing our previously created Docker image (see the `FROM my_sample_prod:latest` line)",
-    "We well install some dev Linux tools like `bash`, `curl`, `git`, ... we don't need in prod",
+    "We'll install some dev Linux tools like `bash`, `curl`, `git`, ... we don't need in prod",
     "Now, we'll create a non-root user by using a few parameters like `OS_USERID`, `OS_GROUPID` and `OS_USERNAME`. We'll create some custom folders too for that user",
     "We'll configure our Shell for things like the history file, to have a customized prompt, ...",
     "We'll make sure the different folder we need to manipulate are owned by our user",
@@ -263,9 +263,9 @@ This last step is thus only needed for illustration of this blog post. Please us
 <AlertBox variant="coreConcept" title="Paying attention to the FROM statement">
 Let me insist one more time on this point. Right now, our `Dockerfile` is extending an existing image called `my_sample_prod:latest`.
 
-Did you have that image right now on your host? If you don't have it, VSCode, when you'll use the *Open in Devcontainer* feature, will first try to download the image from Docker Hub.
+Do you have that image right now on your host? If you don't have it, VSCode, when you'll use the *Open in Devcontainer* feature, will first try to download the image from Docker Hub.
 
-Ok, perhaps the image is hosted there and in that case, Docker will download it from the Hub. Perhaps that image didn't exists elsewhere than on your host.  Perhaps the image exists on both the Hub and your computer.
+Ok, perhaps the image is hosted there and in that case, Docker will download it from the Hub. Perhaps that image doesn't exist elsewhere than on your host.  Perhaps the image exists on both the Hub and your computer.
 
 So many questions, right? Just be very aware of this!
 
@@ -280,46 +280,46 @@ So, if not yet done, please run `docker compose build`! Make sure running `docke
 
 #### The .devcontainer/requirements.txt file
 
-This small file is there just for illustration purposes. In this blog post, we're creating a small FastAPI python application and, in the `.devcontainer/requirements.txt` we'll ask some extra dev dependencies for Python like installing the `Debugpy` tool i.e. the Microsoft Python Debugger.
+This small file is there just for illustration purposes. In this blog post, we're creating a small FastAPI python application and, in the `.devcontainer/requirements.txt` we'll add some extra dev dependencies for Python, like installing the `Debugpy` tool i.e. the Microsoft Python Debugger.
 
 <Snippet filename="/tmp/docker-prod-devcontainer/.devcontainer/requirements.txt" source="./files/.devcontainer/requirements.txt" />
 
-Of course, if your project isn't a Python one, this file can be removed and, in that case, also remove the associate lines from the `.devcontainer/Dockerfile`.
+Of course, if your project isn't a Python one, this file can be removed and, in that case, also remove the associated lines from the `.devcontainer/Dockerfile`.
 
 #### The .devcontainer/compose.yaml file
 
-As for the production image, here, we need to inform Docker how to image has to be built and how the container (the dev one) has to be created.
+As for the production image, here, we need to tell Docker how the image has to be built and how the container (the dev one) has to be created.
 
 <Snippet filename="/tmp/docker-prod-devcontainer/.devcontainer/compose.yaml" source="./files/.devcontainer/compose.yaml" />
 
 If you look at this `.devcontainer/compose.yaml` file, we're configuring a few things:
 
-* The list of build arguments (`args`) should mention the user id, group id and name of our user. This is important: when we'll work inside the devcontainer, any files created in the container will be owned by this specific user. If we are using `johndoe` with `1001` for both user id and group id; then files will be synchronized on your host like that; owned by `johndoe` not you. If you are the user `1000:1000` locally, you understand that files won't be yours and you'll get permission’s problems. It's something we've to avoid. For this, we've to correctly configure the `.devcontainer/compose.yaml` file.
+* The list of build arguments (`args`) should mention the user id, group id and name of our user. This is important: when we'll work inside the devcontainer, any files created in the container will be owned by this specific user. If we are using `johndoe` with `1001` for both user id and group id; then files will be synchronized on your host like that; owned by `johndoe` not you. If you are the user `1000:1000` locally, you understand that files won't be yours and you'll get permissions problems. It's something we have to avoid. For this, we have to correctly configure the `.devcontainer/compose.yaml` file.
 
 See the syntax: `${LOCAL_UID:-1000}`. By default, the file will assign `1000` (which is often the correct ID). But first, Docker will check if a variable called `LOCAL_UID` exists on the host. If this is the case, that value will be used. So, if running `id -u` (or `id -g` for the group id) doesn't give `1000` on your host; make sure to create the `LOCAL_UID` or `LOCAL_GID` variable in your `.bashrc` file and assign them to the correct value.
 
-* Because our current sample if about Python, we'll also expose the DebugPy standard port thanks the line `5679:5679` so, when starting a debug session in the container will work.
+* Because our current sample is about Python, we'll also expose the DebugPy standard port thanks to the line `5679:5679` so, when starting a debug session, the container will work.
 
-* We're also referring two `.env` files, the one from the root folder (used for the Docker PROD image) and the one from the `.devcontainer` folder
+* We're also referring to two `.env` files, the one from the root folder (used for the Docker PROD image) and the one from the `.devcontainer` folder
 
 * We'll add some volumes:
-  * `.:${APP_HOME:-/app}` will mount (=share) files from our project (inside VSCode) with the `${APP_HOME:-/app}` folder i.e. where the files are stored inside the Docker PROD image. Like this, files that we already copied in the PROD Docker image will just be overridden by the ones of our dev session (=> this is were the magic happens)
-  * We'll also ask Docker to create a self-managed volume for the `vscode-extensions`. Thank this line, the first time we'll create the devcontainer, VSCode will install extensions but next time, thanks to this line, VSCode won't install extensions again, they're already present.  This `vscode-extensions` is used for data persistence.
+  * `.:${APP_HOME:-/app}` will mount (=share) files from our project (inside VSCode) with the `${APP_HOME:-/app}` folder i.e. where the files are stored inside the Docker PROD image. Like this, files that we already copied in the PROD Docker image will just be overridden by the ones of our dev session (=> this is where the magic happens)
+  * We'll also ask Docker to create a self-managed volume for the `vscode-extensions`. Thanks to this line, the first time we'll create the devcontainer, VSCode will install extensions but next time, thanks to this line, VSCode won't install extensions again, they're already present.  This `vscode-extensions` is used for data persistence.
   * And the line for `./.devcontainer/history/.bash_history` will persist the history of your command lines (in the console) in your project. So, next time you'll work inside the devcontainer, the CLI history will be already populated with what you did in the past.
 
 #### The .devcontainer/devcontainer.json file
 
 And, finally, the configuration file for VSCode.
 
-In VSCode, to be able to run a `Devcontainer:` command (from the **Command Palette** (<kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd>)), the `.devcontainer/devcontainer.json` file should be present and tells to VSCode what to do.
+In VSCode, to be able to run a `Devcontainer:` command (from the **Command Palette** (<kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd>)), the `.devcontainer/devcontainer.json` file should be present and tells VSCode what to do.
 
 <Snippet filename="/tmp/docker-prod-devcontainer/.devcontainer/devcontainer.json" source="./files/.devcontainer/devcontainer.json" />
 
 <StepsCard
   variant="steps"
   steps={[
-    "We've to use the `dockerComposeFile` item to load our two `compose.yaml` files i.e. the one of the root (the prod one) and the one from the `.devcontainer` folder. This is needed because we just need to extend the production `compose.yaml` file. We'll reuse all services and keys defined in `../compose.yaml` and just add (extend) or update (override) some",
-    "We need to tell to VSCode which folder should be open in our VSCode Devcontainer session, it has to be `/app` (has to match the `APP_HOME` variable from `.devcontainer/compose.yaml`)",
+    "We have to use the `dockerComposeFile` item to load our two `compose.yaml` files i.e. the one of the root (the prod one) and the one from the `.devcontainer` folder. This is needed because we just need to extend the production `compose.yaml` file. We'll reuse all services and keys defined in `../compose.yaml` and just add (extend) or update (override) some",
+    "We need to tell VSCode which folder should be open in our VSCode Devcontainer session, it has to be `/app` (has to match the `APP_HOME` variable from `.devcontainer/compose.yaml`)",
     "We'll define our remoteUser name, it'll be `vscode` (has to match the `OS_USERNAME` variable from `.devcontainer/compose.yaml`)",
     "We'll also add a `GIT_SSH_COMMAND` environment variable. This is optional but it'll allow us to run a `git` command (like `git pull`) from inside our devcontainer",
     "The `initializeCommand` key will create the `.devcontainer/history` folder on our host (with us as owner) just before creating the container. Like this, we'll be able to store our bash history file there (see the `volumes` entry in `.devcontainer/compose.yaml`)",
@@ -329,7 +329,7 @@ In VSCode, to be able to run a `Devcontainer:` command (from the **Command Palet
 
 #### Our project's structure right now
 
-So at this point, our project looks like this i.e. we've ten files.
+So at this point, our project looks like this i.e. we have ten files.
 
 ```tree expanded=true showJSX=false debug=false title="docker-prod-devcontainer/"
 ├── .devcontainer
@@ -384,7 +384,7 @@ If you look at the bottom right of your screen, you'll probably see this popup:
 
 Simply click on the `Reopen in Container` button or, second way, press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> to open the **Command palette** and select the "Dev Containers: Rebuild Without Cache and Reopen in Container" option.
 
-VSCode will close the project and reopen it. It'll take more time (the first time) because he needs to create the Docker container first.
+VSCode will close the project and reopen it. It'll take more time (the first time) because it needs to create the Docker container first.
 
 ![The DevContainer is ready](./images/devcontainer.webp)
 

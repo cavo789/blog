@@ -13,6 +13,10 @@ language: en
 ---
 ![Linux - Comparing two folders/files in the console](/img/v2/bash.webp)
 
+<TLDR>
+This article shares reusable `diff`-based snippets for comparing two files or two entire folders from the console, going beyond the plain `diff file1 file2` / `diff folder1 folder2` to support repeated, scripted comparisons — including a variant that hides "only in source" noise when comparing folder trees.
+</TLDR>
+
 Natively, Linux has a command-line tool called `diff` for comparing two folders or files. Comparing two folders is quite simple: `diff folder_1 folder2`. And it's no more complicated for two files: `diff file_1 file2`.
 
 However, when you want to do this in a slightly more industrialized way (launch a very large number of comparisons to compare two versions of the same project, for example), the use of a few flags and snippets comes in handy.
@@ -38,6 +42,6 @@ Compares two folders and displays a list of files that are only in one of the tw
 
 <Snippet filename="script.sh" source="./files/script.part2.sh" />
 
-This variation allows to hide the message `Only in .` i.e. when a file is present in the first folder (the `SOURCE` one) and not in the second one (the `COMPARE_WITH` one).
+This variation allows you to hide the message `Only in .` i.e. when a file is present in the first folder (the `SOURCE` one) and not in the second one (the `COMPARE_WITH` one).
 
 <Snippet filename="script.sh" source="./files/script.part3.sh" />

@@ -16,6 +16,10 @@ language: en
 
 ![Keep running and count the number of files in a folder using inotifywait](/img/v2/linux_tips.webp)
 
+<TLDR>
+This article shows how to get a live, continuously updating count of files being created in a folder using `inotifywait` (unlike the one-shot `ls folder | wc -l`), wrapped in a small `monitor.sh` script — used here in a second terminal to watch progress while a Python script (running in a Docker container) generates tens of thousands of PDF files.
+</TLDR>
+
 Over the last few weeks, I've been working on a Python script that generates PDFs. My script had to generate 70,000 of them and that obviously takes a while.
 
 My idea was to have my script run in a Linux console and, in a second console, with a counter that increases with the number of files that have been created on the hard disk.
@@ -51,12 +55,11 @@ We need a very small Python script to generate our files:
 
 <Snippet filename="src/script.py" source="./files/script.py" />
 
-## Creating the monitory.sh script
+## Creating the monitor.sh script
 
 Please create a script called `monitor.sh` with this content:
 
-
-<Snippet filename="monitory.sh" source="./files/monitory.sh" />
+<Snippet filename="monitor.sh" source="./files/monitor.sh" />
 
 Make the script executable: `chmod +x ./monitor.sh` and make sure to install **inotify** by running `sudo apt-get update && sudo apt-get install -y --no-install-recommends inotify-tools`.
 
@@ -73,10 +76,10 @@ First, in a separate console, we'll start our monitoring script: `./monitor.sh o
 
 In a second window, start the Python script: `docker exec -it demo python script.py`.
 
-![Running a monitory using inotifywait](./images/inotifywait.gif)
+![Running a monitor using inotifywait](./images/inotifywait.gif)
 
 ## Conclusion
 
-Now, I can minimized the main screen and just keep the counter displayed.
+Now, I can minimize the main screen and just keep the counter displayed.
 
-I'm also sure that the script is well creating file since I've used two different technologies; Python and Bash.
+I'm also confident that the script is correctly creating files, since I've used two different technologies: Python and Bash.

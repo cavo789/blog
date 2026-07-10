@@ -13,7 +13,11 @@ language: en
 ---
 ![Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/img/v2/database_admin.webp)
 
-You've a dockerized application and one of its container is a MariaDB, MySQL or PostgreSQL service.
+<TLDR>
+This article shows how to attach a database web UI to an existing Dockerized MySQL/MariaDB/PostgreSQL container in one command, using `docker inspect` (piped through `jq`) to find the container's network name, then `docker run --network <net> --link <container>:db -p <port>:<port> adminer` (or `phpmyadmin`) to browse tables and records without adding anything to the original `compose.yaml`.
+</TLDR>
+
+You've a dockerized application and one of its containers is a MariaDB, MySQL or PostgreSQL service.
 
 Your need is to start a web database management interface like [Adminer](https://hub.docker.com/_/adminer/), [pgadmin](https://hub.docker.com/r/dpage/pgadmin4/) or [phpmyadmin](https://hub.docker.com/_/phpmyadmin) and be able to access your tables and your records.
 
@@ -23,12 +27,12 @@ This can be done in just one command line instruction.
 
 Before being able to start the command, you should provide some information:
 
-* you should know the **name of the docker container** to connect and
+* you should know the **name of the Docker container** you want to connect to and
 * you should know the **name of the used network**.
 
 ## Retrieve the list of our containers
 
-We'll use `docker container list` to get the list of containers, we just want to get the image name and the container name.
+We'll use `docker container list` to get the list of containers; we just want the image name and the container name.
 
 **For illustration purpose**, here is the output on my machine right now:
 

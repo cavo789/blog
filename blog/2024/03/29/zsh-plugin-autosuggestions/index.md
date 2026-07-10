@@ -18,11 +18,15 @@ updates:
 ---
 ![Autosuggestions in the console using ZSH](/img/v2/zsh.webp)
 
-ZSH supports plugin and one of the wonders is the [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) one.
+<TLDR>
+This article covers `zsh-autosuggestions`, a Zsh plugin that suggests commands from your shell history as you type, shown in gray text you can accept with <kbd>TAB</kbd>. It explains how to install the plugin by cloning it into your Oh My Zsh custom plugins folder and enabling it in `~/.zshrc`, then shows how to accept, cycle through, or ignore suggestions using <kbd>TAB</kbd> and the arrow keys.
+</TLDR>
 
-That one will suggests commands as you type based on your previous history and completions.
+ZSH supports plugins, and one of the wonders is the [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) one — assuming you've already installed Oh-My-Zsh (see <Link to="/blog/zsh-install">How to install Oh-My-ZSH</Link> if not).
 
-The more you use your Linux console, the more valuable this plugin will prove to be, as it will learn from you; it will know which commands you have already executed and will suggest them as soon as you start typing the first characters. Finish thinking "Gee, what were the parameters I used for ...".
+That one will suggest commands as you type based on your previous history and completions.
+
+The more you use your Linux console, the more valuable this plugin will prove to be, as it will learn from you; it will know which commands you have already executed and will suggest them as soon as you start typing the first characters. No more wondering, "Gee, what were the parameters I used for ...".
 
 <!-- truncate -->
 
@@ -46,6 +50,6 @@ Auto-suggestions will retrieve from the HISTORY the commands you've already used
 
 Imagine you've already type, today, yesterday or weeks ago the `docker compose up --detach` command. Today, just by typing `doc` you'll get, in gray, the suggestion. Press <kbd>TAB</kbd> if it's fine for you and it's done.
 
-You can also play with <kbd>UP</kbd> and <kbd>DOWN</kbd> to switch and use another commands that match with the keys (*doc* in my example). Auto-suggestions is using the HISTORY of Linux.
+You can also play with <kbd>UP</kbd> and <kbd>DOWN</kbd> to switch and use other commands that match the keys (*doc* in my example). Auto-suggestions is using the HISTORY of Linux.
 
 ![Autosuggestions plugin for ZSH](./images/autosuggestions.webp)

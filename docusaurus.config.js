@@ -61,17 +61,18 @@ const config = {
       removeLegacyPostBuildHeadAttribute: true,
       useCssCascadeLayers: true,
     },
-    experimental_faster: {
+    faster: {
       swcJsLoader: true,
       swcJsMinimizer: true,
       swcHtmlMinimizer: true,
       lightningCssMinimizer: true,
       mdxCrossCompilerCache: true,
     },
-    experimental_storage: {
-      type: "localStorage",
-      namespace: true,
-    },
+  },
+
+  storage: {
+    type: "localStorage",
+    namespace: true,
   },
 
   // Even if you don't use internationalization, you can use this field to set
@@ -106,10 +107,14 @@ const config = {
           feedOptions: {
             type: ["atom", "json"],
           },
+          blogTitle: "Blog — Christophe Avonture",
+          blogDescription:
+            "Personal blog about Docker, Linux, Python, PHP, Quarto, Docusaurus and more",
           blogSidebarTitle: "All posts",
           blogSidebarCount: "ALL",
           postsPerPage: 12,
-          // showLastUpdateTime: true,
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
           // Useful options to enforce blogging best practices
           onInlineTags: "throw",
           onInlineAuthors: "warn",

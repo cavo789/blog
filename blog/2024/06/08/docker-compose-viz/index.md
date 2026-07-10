@@ -16,6 +16,10 @@ updates:
 ---
 ![How to generate a graph from compose.yaml](/img/v2/docker_tips.webp)
 
+<TLDR>
+This article shows how to visualize a `compose.yaml` file as a dependency graph using the `compose-viz` Docker image, producing an image (PNG, SVG, and other formats via `--format`) that shows services, their dependencies, and exposed ports at a glance — useful for understanding large multi-service Docker architectures. It also mentions `docker compose config` to resolve and merge multiple `.yml` files/variables before visualizing.
+</TLDR>
+
 Imagine you have a very big `compose.yaml` file with a lot of services and dependencies.
 
 You also have multiple exposed ports.
@@ -43,12 +47,12 @@ We can see that the port `8080` is exposed to the computer. That port is, in fac
 
 <!-- cspell:disable -->
 <AlertBox variant="info" title="See the --format flag">
-By adding `--format svg`, you'll get a SVG instead of a PNG. The list of supported output formats is huge: `png|dot|jpeg|json|svg|bmp|canon|cmap|cmapx|cmapx_np|dot_json|emf|emfplus|eps|fig|gif|gv|imap|imap_np|ismap|jpe|jpg|json0|metafile|mp|pdf|pic|plain|plain-ext|pov|ps|ps2|tif|tiff|tk|vml|xdot|xdot1.2|xdot1.4|xdot_json`.
+By adding `--format svg`, you'll get an SVG instead of a PNG. The list of supported output formats is huge: `png|dot|jpeg|json|svg|bmp|canon|cmap|cmapx|cmapx_np|dot_json|emf|emfplus|eps|fig|gif|gv|imap|imap_np|ismap|jpe|jpg|json0|metafile|mp|pdf|pic|plain|plain-ext|pov|ps|ps2|tif|tiff|tk|vml|xdot|xdot1.2|xdot1.4|xdot_json`.
 
 </AlertBox>
 <!-- cspell:enable -->
 
-## Much complex example
+## A more complex example
 
 Replace the content of the `compose.yaml` with this one:
 
@@ -71,6 +75,6 @@ Such a visualization tool greatly simplifies the understanding of a Docker archi
 
 ## Docker config
 
-If like me you're using a lot of `.yml` files by running Docker and/or using environment variables in it; just run `docker compose config` to ask Docker to *render* (on the screen only) what he called *Parse, resolve and render compose file in canonical format* i.e. will merge all your `.yml` in one string and resolve variables.
+If like me you're using a lot of `.yml` files by running Docker and/or using environment variables in it; just run `docker compose config` to ask Docker to *render* (on the screen only) what it calls *Parse, resolve and render compose file in canonical format* i.e. it will merge all your `.yml` in one string and resolve variables.
 
 Copy/paste the screen output in a temporary file and use this tool on that file.

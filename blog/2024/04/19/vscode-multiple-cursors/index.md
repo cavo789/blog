@@ -13,9 +13,13 @@ language: en
 ---
 ![Multiple cursors in vscode](/img/v2/vscode_tips.webp)
 
+<TLDR>
+This article shows VSCode's Multiple Cursors feature for bulk-editing many lines at once (e.g. turning a block of lines into a bullet list) when search-and-replace can't do the job: select the lines, press <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd> to place a cursor on each, then edit them all simultaneously with <kbd>Home</kbd>/<kbd>End</kbd>/<kbd>Ctrl</kbd>+<kbd>Right</kbd> navigation.
+</TLDR>
+
 One of the best features in vscode is the *Multiple cursors* one.
 
-Imagine you've a bunch of lines where you need for instance remove the first two characters. Each line starts with '//' and you wish to remove them but only there (a search & replace can't be used).
+Imagine you have a bunch of lines where you need, for instance, to remove the first two characters. Each line starts with `//` and you want to remove just that prefix, not any `//` that might appear elsewhere in the line (a search & replace can't be used for that).
 
 Or, for another example, you must enclose each line in double brackets.
 
@@ -36,7 +40,7 @@ Donec blandit erat non placerat cursus.
 ```
 <!-- cspell:enable -->
 
-Here is how to do:
+Here is how to do it:
 
 * Select all the lines you need to update,
 * Press <kbd>SHIFT</kbd>-<kbd>ALT</kbd>-<kbd>I</kbd> to enable multiple cursors,

@@ -14,6 +14,10 @@ language: en
 <!-- cspell:ignore drawdb,xinsodev -->
 ![Drawdb-app - Render your database model](/img/v2/diagrams.webp)
 
+<TLDR>
+This article introduces drawdb-app, a free tool that renders a visual ER diagram from an imported `.sql` file (or built from scratch) and exports it as PNG, JSON, Mermaid, or auto-generated Markdown documentation (tables, columns, relationships) — also self-hostable via Docker (`xinsodev/drawdb`).
+</TLDR>
+
 In my RSS feed recently, I came across another great application that lets you create a database model from scratch, i.e. create tables one by one and create the links between them.
 
 However, there's another option that I find really nice: you can get a visual of the tables and relationships of any existing application in a few seconds from an .sql file that you import into drawdb-app.
@@ -28,19 +32,19 @@ I think the most common use I could personally make of it is to load an SQL file
 
 ## Create and import a dummy sql file
 
-If you don't have such file, I suggest to copy one from [https://www.sqltutorial.org/sql-sample-database/](https://www.sqltutorial.org/sql-sample-database/). I put here below a PostgreSQL content found on that site ([direct link](https://www.sqltutorial.org/wp-content/uploads/2020/04/postgresql.txt)) or to take any valid `.sql` file you can found on the Internet.
+If you don't have such a file, I suggest copying one from [https://www.sqltutorial.org/sql-sample-database/](https://www.sqltutorial.org/sql-sample-database/). Below, you'll find PostgreSQL content taken from that site ([direct link](https://www.sqltutorial.org/wp-content/uploads/2020/04/postgresql.txt)) — or you can grab any valid `.sql` file you find on the Internet.
 
 <Snippet filename="create_db.sql" source="./files/create_db.sql" />
 
 So just copy/paste this SQL in Notepad; save it on your disk and go back to [https://www.drawdb.app/editor](https://www.drawdb.app/editor); `File` -> `Import from SQL`.
 
-And let's the magic happens:
+And let the magic happen:
 
 ![The model](./images/model.webp)
 
-<AlertBox variant="info" title="The image here above as been done using the `File` -> `Export as` feature." />
+<AlertBox variant="info" title="The image here above has been done using the `File` -> `Export as` feature." />
 
-### You can self host the application thanks to Docker if you want
+### You can self-host the application thanks to Docker if you want
 
 By visiting [https://hub.docker.com/search?q=drawdb-io](https://hub.docker.com/search?q=drawdb-io), you'll find a few Docker images for drawdb-app. For instance [https://hub.docker.com/r/xinsodev/drawdb](https://hub.docker.com/r/xinsodev/drawdb).
 

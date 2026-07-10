@@ -15,9 +15,9 @@ language mistakes, bugs, and missed SEO/Docusaurus opportunities.
 
 `$ARGUMENTS` is an **optional** scope.
 
-- **Empty** → review all of `blog/` (full mode, all years).
-- **A year** (e.g. `2023`) → restrict to `blog/2023/`.
-- **A path** (e.g. `blog/2024/some-post`) → restrict to that post only.
+* **Empty** → review all of `blog/` (full mode, all years).
+* **A year** (e.g. `2023`) → restrict to `blog/2023/`.
+* **A path** (e.g. `blog/2024/some-post`) → restrict to that post only.
 
 If `$ARGUMENTS` does not resolve to an existing path under `blog/`, stop and respond:
 
@@ -32,9 +32,9 @@ State the resolved scope explicitly at the top of the report.
 
 ## Project context
 
-- Blog content is written in **American English** (never French), Markdown/MDX, one folder per
+* Blog content is written in **American English** (never French), Markdown/MDX, one folder per
   post under `blog/YYYY/`, co-located assets.
-- Globally registered MDX components (usable without import, defined in
+* Globally registered MDX components (usable without import, defined in
   `src/theme/MDXComponents.js`): `AlertBox, BrowserWindow, Card, CardBody, CardFooter, CardHeader,
   CardImage, Column, Columns, Details, DownloadButton, Folder, File, Guideline, Hero, Highlight,
   Link, LogoIcon, ProjectSetup, Snippet, StepsCard, TabItem, Tabs, Terminal, TLDR, TOCInline,
@@ -42,12 +42,12 @@ State the resolved scope explicitly at the top of the report.
   SeriesStats, HeroSection, OldPostNotice, SeriesPosts, PostCard, PostCount, RelatedPosts, Tags,
   SeriesCards, AuthorCard, Series, etc.) and other custom components in `src/components/*`
   (Prerequisite, ShortcutList, InteractiveCode, TriedIt, TypoReport, Reaction, ...).
-- Conventions: articles open with a personal anecdote/frustration (never "In this article we
+* Conventions: articles open with a personal anecdote/frustration (never "In this article we
   will…"), a `<TLDR>` right after the banner image, `AlertBox` variants in urgency order (`info` <
   `note` < `tip` < `caution` < `important` < `highlyImportant` < `coreConcept`), and always end with
   `## Conclusion`.
-- Tags must exist in `blog/tags.yml`; authors must exist in `blog/authors.yml`.
-- `draft:true` in frontmatter is used for unpublished posts (do not "fix" that, it's intentional).
+* Tags must exist in `blog/tags.yml`; authors must exist in `blog/authors.yml`.
+* `draft:true` in frontmatter is used for unpublished posts (do not "fix" that, it's intentional).
 
 ## Review objectives
 
@@ -102,8 +102,40 @@ inconsistencies. Report — don't silently guess a fix if the correct value is a
 
 Missing or weak `<TLDR>`, missing/duplicate meta description, heading hierarchy issues (skipped
 levels, multiple `# H1`), missing/incorrect `StructuredData`, banner image inconsistent with
-`/img/v2/` conventions, thin content, missing internal links to related posts/series that obviously
-apply.
+`/img/v2/` conventions, thin content.
+
+#### 6a. Missing internal links (maillage interne)
+
+Two mechanisms already inject "related content" automatically and must **not** be reported as
+gaps:
+
+* `RelatedPosts` (`src/components/Blog/RelatedPosts`) — auto-injected on every post, shows up to 3
+  cards filtered by `mainTag` (fallback: shared `tags`).
+* `Series` (`src/components/Blog/Series` + `SeriesPosts`/`SeriesCards`) — auto-injected on every
+  post that has a `series:` frontmatter value.
+
+So a pair of posts sharing the same `mainTag`, or already in the same `series`, is **already**
+cross-linked — do not flag it. This step only targets thematic clusters that fall outside both
+safety nets: same underlying tool/technology/topic, but a **different `mainTag`** and **no shared
+`series`**, so a reader following one post would otherwise never discover the other.
+
+Method:
+
+1. Run a full-corpus check for posts with no manual in-body link to another post at all
+   (`grep -rL '](/blog/' blog/`, or equivalent) to find candidates.
+2. Group posts into thematic clusters by subject-matter proximity (same tool, same narrative
+   thread "part 1 → part 2", companion/opposite operations like "X to Y" vs "Y to X", same
+   mini-series spirit even without a `series:` field) — read titles/tags/`mainTag`, not just
+   filenames.
+3. For each cluster, check whether `mainTag` differs and no `series` is shared. If either safety
+   net already applies, skip it.
+4. For genuine gaps, propose the specific forward/backward link(s) and where in the post body they
+   would read naturally (not a forced link dump at the bottom).
+
+Consult `.todos/DONE/DONE_069-internal-linking-opportunities.md` first — it already resolved a full
+pass over the corpus with this exact methodology. Only report clusters/pairs that are new since
+then (new posts published after it closed, or a genuinely missed cluster), never restate its
+already-checked items.
 
 ### 7. Native Docusaurus features not yet used
 
@@ -153,7 +185,8 @@ Each TODO file must contain:
 # NNN — Title
 
 **Priority:** Critical | High | Medium | Low
-**Category:** component-reuse | component-extension | new-component | bug | seo | docusaurus-feature
+**Category:** component-reuse | component-extension | new-component | bug | seo | internal-linking |
+docusaurus-feature
 
 ## Problem
 

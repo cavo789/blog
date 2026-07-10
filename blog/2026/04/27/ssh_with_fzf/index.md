@@ -83,6 +83,8 @@ When the `MyAmazingApp_PROD` host is selected in the TUI, its associated doc-blo
 
 ## Add the sshf function
 
+For a quick test, you can just paste this in your `~/.bashrc` (or `~/.zshrc`); but if you're already splitting your shell config into pieces (see <Link to="/blog/modular-zsh-workflow">Beyond the Monolith</Link>), this is a perfect candidate for its own autoloaded function file.
+
 Edit your `~/.bashrc` (or `~/.zshrc`) file and append this function:
 
 <Snippet source="./files/sshf.zsh" defaultOpen={false} />

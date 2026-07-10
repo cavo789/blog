@@ -11,10 +11,14 @@ language: en
 ---
 ![Play with Docker and Java](/img/v2/experiments.webp)
 
+<TLDR>
+This article shows how to compile and run Java with zero local install, using the official `openjdk` Docker image: `docker run ... openjdk:11 javac Main.java` to compile, then `docker run ... openjdk:11 java Main` to execute, including a second example that calls a REST API from Java and prints the JSON response.
+</TLDR>
+
 In this post, we'll play with Docker and Java. Since there are ready-to-use Java images for Docker you do not need to install or configure anything other than Docker.
 
 <AlertBox variant="note" title="I don't know Java at all">
-You just need to know, I have absolutely no skills in Java. Which software should be installed, how to run a script and so on? I will just rely on a few Docker commands and, about the installation, yes, using Docker, it is easy: nothing to install, nothing to configure.
+You just need to know that I have absolutely no skills in Java. Which software should be installed, how to run a script and so on? I will just rely on a few Docker commands and, about the installation, yes, using Docker, it is easy: nothing to install, nothing to configure.
 
 </AlertBox>
 
@@ -85,3 +89,5 @@ $ docker run --rm -v $PWD:/app -w /app openjdk:11 java API
 *This example will use the sample `https://jsonplaceholder.typicode.com/todos/1` to generate a fake TODO. The JSON will be displayed on the command line.*
 
 You are ready to start your Java coding journey. Have fun.
+
+Same idea, different language: I've also played with <Link to="/blog/docker-pascal">Pascal</Link>, <Link to="/blog/docker-assembly">Assembly</Link>, and <Link to="/blog/docker-python">Python</Link> using this same "zero local install" Docker approach.

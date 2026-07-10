@@ -2,7 +2,7 @@
 slug: bash-load-env
 title: Bash - Loading environment variables from a file
 date: 2023-12-19
-description: Get health information from your running Docker containers instantly. This article shows a bash script using docker ps and docker inspect for quick checks.
+description: Learn how to load environment variables from a .env file into a Bash script, so you can externalize configuration and reuse variables across other applications like Laravel.
 authors: [christophe]
 image: /img/v2/bash.webp
 mainTag: bash
@@ -13,7 +13,11 @@ language: en
 ---
 ![Bash - Loading environment variables from a file](/img/v2/bash.webp)
 
-Imagine you've a `.env` file like and you wish to process that file in a Bash script.
+<TLDR>
+This article shows the correct way to load a `.env` file's variables into a Bash script's environment: `set -o allexport; source .env; set +o allexport`, which handles values containing spaces correctly — unlike the common but unreliable `export $(... | xargs)` pattern.
+</TLDR>
+
+Imagine you have a `.env` file like this one and you wish to process that file in a Bash script.
 
 <Snippet filename=".env" source="./files/.env" />
 
@@ -29,11 +33,11 @@ You can load that file easily in your environment using the following instructio
 
 ```bash
 set -o allexport
-source .env set
+source .env
 set +o allexport
 ```
 
-This done, variables will be accessible like any environment variables in your bash script. When the script exit, the added variables are removed (just like in a sub-shell).
+This done, variables will be accessible like any environment variables in your bash script. When the script exits, the added variables are removed (just like in a sub-shell).
 
 Using source is the best solution to avoid problems with f.i. spaces like in *Me and myself* i.e. using other solutions like `export $(... | xargs)` will always give unpredictable results.
 

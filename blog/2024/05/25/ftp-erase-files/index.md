@@ -14,11 +14,15 @@ language: en
 <!-- cspell:ignore subfolders -->
 ![FTP - Remove files and folders at light speed](/img/v2/winscp.webp)
 
+<TLDR>
+This article shares a small `erase.php` script you can upload via FTP and run once from the browser to instantly wipe an entire website folder server-side, avoiding the painfully slow file-by-file deletion through an FTP client — with a strong warning that it deletes everything immediately, with no confirmation or backup.
+</TLDR>
+
 Have you ever deleted a website from your FTP client? It's easy, just select the folder containing the website and press the <kbd>delete</kbd> key.
 
-Easy, simple and ... so slow. It takes ages to suppress files / folders. Several dozen minutes! Ouch.
+Easy, simple and ... so slow. It takes ages to delete files and folders. Several dozen minutes! Ouch.
 
-If you've a SSH connection to your web server and if you're comfortable with it; you can `rm -rf` the folder and it'll be done in seconds.
+If you've an SSH connection to your web server and if you're comfortable with it; you can `rm -rf` the folder and it'll be done in seconds.
 
 But what if you don't have SSH or fear to make errors?
 

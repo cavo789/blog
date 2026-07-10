@@ -36,7 +36,7 @@ So, make sure you've VSCode and Docker on your machine.
 
 ## We need a Quarto project
 
-For this blog post, the idea is to use Quarto and not to create a reveal.js project directly *by hand*. This because Quarto will allow us to make a lot more things like exporting our slideshow as a Word document or a pdf or anything else supported by Quarto as targets.
+For this blog post, the idea is to use Quarto and not to create a reveal.js project directly *by hand*. This is because Quarto will allow us to do a lot more things, like exporting our slideshow as a Word document or a PDF or anything else supported by Quarto as targets.
 
 We'll use Quarto to, also, be able to render the project as a slideshow.
 
@@ -46,7 +46,7 @@ As illustration for this post, please download the [demo.zip](./files/demo.zip) 
 
 Save the file in a new folder on your disk like `/tmp/revealjs` and unzip it (`unzip demo.zip`). Once done, jump in the newly created folder (`cd /tmp/revealjs/demo`) and start `code .` to open the project in VSCode.
 
-In this demo project, you'll already find a `.devcontainer` folder with the needed files I'm describing the next chapter.
+In this demo project, you'll already find a `.devcontainer` folder with the needed files I'm describing in the next chapter.
 
 ### You have one
 
@@ -69,7 +69,7 @@ Then, add the following files to your project root:
 
 In VSCode, please press <kbd>F1</kbd> to open the **Command Palette** then select **Dev containers: Rebuild and Reopen in Devcontainer**. *If you don't have this command, please make sure to install the VSCode [Dev Container from Microsoft](https://marketplace.visualstudio.com/publishers/Microsoft).*
 
-VSCode will thus *rebuild and reopen the project as a Devcontainer*: in other words, VSCode will first build a special Docker image (as described in the `.devcontainer/Dockerfile` file.) and probably first download the Quarto Docker image the, once the image has been created, VSCode will create a container based on that image and finally, will reopen the project in a special environment called *a Devcontainer*.
+VSCode will thus *rebuild and reopen the project as a Devcontainer*: in other words, VSCode will first build a special Docker image (as described in the `.devcontainer/Dockerfile` file) and probably first download the Quarto Docker image, then, once the image has been created, VSCode will create a container based on that image and finally, will reopen the project in a special environment called *a Devcontainer*.
 
 The container will build (this takes 1–2 minutes the first time).
 
@@ -77,9 +77,9 @@ After the build completes, VS Code displays a welcome screen like this:
 
 ![Building the Devcontainer](./images/building_devcontainer.webp)
 
-By clicking on the `Connecting to Dev Container (show log)` link, you'll get more and be able to follow what is done.
+By clicking on the `Connecting to Dev Container (show log)` link, you'll get more details and be able to follow what is being done.
 
-After one or two minutes (this only the first time), you'll obtain a screen like this:
+After one or two minutes (this happens only the first time), you'll obtain a screen like this:
 
 ![List of commands](./images/cheatsheet.webp)
 
@@ -129,7 +129,7 @@ This will generate a nice PDF file (better than when using the PDF export featur
 
 ## Export as static HTML site
 
-By running `quarto render . --output-dir build` you'll create a folder called ` build` with your slideshow there:
+By running `quarto render . --output-dir build` you'll create a folder called `build` with your slideshow there:
 
 <Terminal typewriter wrap={true}>
 $ quarto render . --output-dir build

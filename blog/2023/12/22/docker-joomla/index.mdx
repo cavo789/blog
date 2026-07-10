@@ -42,9 +42,9 @@ blueskyRecordKey: 3lx57pqunek23
 
 <!-- cspell:ignore apac, ibdata, ibtmp -->
 
-In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** _(don't want to wait? Jump to the <a href="#bonus---install-joomla-with-a-cli-one-liner">Bonus - Install Joomla with a CLI one-liner</a>" chapter)_.
+In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** _(don't want to wait? Jump to the <a href="#bonus---install-joomla-with-a-cli-one-liner">Bonus - Install Joomla with a CLI one-liner</a> chapter)_.
 
-I will use a Linux console _(I'm running WSL on my Windows computer and I have chosen Ubuntu for my distribution)_ but since Docker can also be used on Windows, you can perfectly run, exactly, the same commands in an MS-DOS / Powershell console.
+I will use a Linux console _(I'm running WSL on my Windows computer and I have chosen Ubuntu for my distribution)_ but since Docker can also be used on Windows, you can run exactly the same commands in an MS-DOS / PowerShell console.
 
 <!-- truncate -->
 
@@ -146,7 +146,7 @@ At this stage, your site is already being installed. Go to the URL `http://127.0
 </AlertBox>
 
 <AlertBox variant="info" title="Solve it by adding a depends_on condition">
-So Joomla can be ready before the database and that's not fun. Indeed, Joomla should be able to create his database, add tables and records but if MySQL is not yet ready, we'll have a problem.
+So Joomla could become ready before the database, and that's not good. Indeed, Joomla should be able to create its database, add tables and records but if MySQL is not yet ready, we'll have a problem.
 
 The solution provided by Docker is the notion of `healthcheck`. We have to define how Docker can _know_ that MySQL is _healthy_. Then we'll ask Joomla to wait until the database layer is _healthy_.
 
@@ -160,9 +160,9 @@ The solution provided by Docker is the notion of `healthcheck`. We have to defin
 
 ### Why joomla-joomlaxxx names
 
-We didn't give your project a name, we just created a `compose.yaml` file in your `/tmp/joomla` folder. So, Docker has named your project using the folder name (`joomla`) concatenated to service name (refers to the `compose.yaml` file, we have two services, one called `joomladb` and one called `joomla`). That is why...
+We didn't give your project a name, we just created a `compose.yaml` file in your `/tmp/joomla` folder. So, Docker has named your project using the folder name (`joomla`) concatenated to the service name (refer to the `compose.yaml` file: we have two services, one called `joomladb` and one called `joomla`). That is why...
 
-Let us introduce a minor, optional, change, we will give a name to your Docker project and containers: edit the `compose.yaml` file and add a line with `name: xxxx` where `xxxx` is the name of your choice. Do the same but using `container_name` this time for the two services; for instance:
+Let us introduce a minor, optional change: we will give a name to your Docker project and containers. edit the `compose.yaml` file and add a line with `name: xxxx` where `xxxx` is the name of your choice. Do the same but using `container_name` this time for the two services; for instance:
 
 <Snippet
   filename="compose.yaml"
@@ -289,15 +289,15 @@ Run `docker compose up --detach` again.
 
 <Terminal typewriter>$ docker compose up --detach</Terminal>
 
-Surf to the site again, refresh the page and the site are, oh? not yet responding. Wait a few... a few more... and after a certain period, the site will be there. Why?
+Surf to the site again, refresh the page and the site is, oh, not yet responding. Wait a few... a few more... and after a certain period, the site will be there. Why?
 
 Docker must (re)start two services, the Joomla one and the database server. Initialization of both services may take a few seconds, and the database service must be up so that Joomla can continue its initialization.
 
 You can see this by running `docker compose logs --follow` (press <kbd>CTRL</kbd>+<kbd>C</kbd> to quit).
 
-<Terminal typewriter>$ docker compose logs --follow the_output</Terminal>
+<Terminal typewriter>$ docker compose logs --follow</Terminal>
 
-Once Joomla will be ready, you will get the installation wizard of Joomla... just like the first time. So, by running `docker compose down` you have lost your work.
+Once Joomla is ready, you will get the installation wizard of Joomla... just like the first time. So, by running `docker compose down` you have lost your work.
 
 <Terminal typewriter>$ docker compose down</Terminal>
 
@@ -390,7 +390,7 @@ When using one or more volumes, Docker must constantly check whether the files/f
 
 When working with a Joomla website, sometimes you need to run some PHP command like `php joomla.php`.
 
-To be able to do this, you will need to start a _interactive shell session_ in the Joomla container.
+To be able to do this, you will need to start an _interactive shell session_ in the Joomla container.
 
 Did you remember the name of your Joomla service? If no, just open the `compose.yaml` file again.
 
@@ -422,7 +422,7 @@ Something else to try:
 
 So, on my computer (and probably on yours), by typing `php --version`, I got an error. That is correct. I don't have PHP on my computer. _I work daily with PHP for years and I don't have it on my machine._ 😄
 
-Then I jump in the Joomla container and type the same command again and, yes, inside the Docker container of Joomla, yes, PHP is installed and here, It's the version 8.3.29.
+Then I jump in the Joomla container and type the same command again and, yes, inside the Docker container of Joomla, yes, PHP is installed and here, it's the version 8.3.29.
 
 ## Using alias
 
@@ -450,7 +450,7 @@ Save the file. Now you can surf to `http://kingsbridge:8080`
 
 ## Using another port
 
-Imagine you have another project, no more the `Kingsbridge` one. Can you have many Docker projects running at the same time? Yes! of course.
+Imagine you have another project, not the `Kingsbridge` one this time. Can you have many Docker projects running at the same time? Yes, of course!
 
 You just need to make sure to use another, unused, port.
 
@@ -508,7 +508,7 @@ Our `compose.yaml` will become:
 Now, during the configuration of Joomla, make sure to choose `PostgreSQL (PDO)` for the database type and fill in the database wizard with the correct values.
 
 <AlertBox variant="info" title="Use alpine images wherever possible">
-For the first time during this tutorial, we're using an `alpine` image (`postgres:16.0-alpine` here). These images are lighter than the *not* alpine image. They contain the bare essentials for running the service, whereas a *traditional* image contains additional tools, binaries, ... that you may need but are not certain to use.
+For the first time during this tutorial, we're using an `alpine` image (`postgres:16.0-alpine` here). These images are lighter than a non-alpine image. They contain the bare essentials for running the service, whereas a *traditional* image contains additional tools, binaries, ... that you may need but are not certain to use.
 
 </AlertBox>
 
@@ -542,9 +542,9 @@ Another use case, you wish to start the Windows Explorer program and navigate in
 
 ## Bonus - Install Joomla with a CLI one-liner
 
-In the introduction of this article, I have said \*we will learn how to use Docker to install Joomla and start a new website **in seconds**\*.
+In the introduction of this article, I have said _we will learn how to use Docker to install Joomla and start a new website **in seconds**_.
 
-And here is the promise. Just clic on the `Generate install script` below, copy/paste the script in your console, run it and follow the instruction. After a few seconds, you'll have a running Joomla website.
+And here is the promise. Just click on the `Generate install script` below, copy/paste the script in your console, run it and follow the instruction. After a few seconds, you'll have a running Joomla website.
 
 <ProjectSetup folderName="/tmp/joomla">
   <Guideline>

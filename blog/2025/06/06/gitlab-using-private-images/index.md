@@ -29,11 +29,11 @@ This article is a how-to and explains how to do it.
 
 ## Create a token
 
-You'll need to create a token first. Please visit this page: [https://app.docker.com/settings/personal-access-tokens](https://app.docker.com/settings/personal-access-tokens). You'll need to do a sign in of course.
+You'll need to create a token first. Please visit this page: [https://app.docker.com/settings/personal-access-tokens](https://app.docker.com/settings/personal-access-tokens). You'll need to sign in, of course.
 
-Click on the `Generate new token` button and create a new one. Make sure to correctly specify the scope. To be able to access to private images; you should select `Read-Only` and not `Public Repo Read-Only` (because the last one didn't give access to private images).
+Click on the `Generate new token` button and create a new one. Make sure to correctly specify the scope. To be able to access private images, you should select `Read-Only` and not `Public Repo Read-Only` (because the last one didn't give access to private images).
 
-Once created, Docker will provide you a small help screen where you'll read that you can connect to Docker by using the token just like if it's your password.
+Once created, Docker will provide you a small help screen where you'll read that you can connect to Docker by using the token just as if it were your password.
 
 ## Create two CI/CD variables in your repository page
 
@@ -42,7 +42,7 @@ In your GitLab CI/CD settings page, add two new variables:
 * The first one will be called `DOCKER_HUB_USERNAME`. The value to enter here is your Docker account name (like `christophe` or `my_company` if the image is stored in a business account) and
 * the second one will be called `DOCKER_HUB_TOKEN_RO`. The value to enter here is the token you've received.
 
-Make sure variables are hidden and protected. This will prevent GitLab to echoed the value in any output like when you initialize `CI_DEBUG_TRACE=true` ([doc](https://docs.gitlab.com/ci/variables/variables_troubleshooting/#enable-debug-logging)) for full debug.
+Make sure variables are hidden and protected. This will prevent GitLab from echoing the value in any output like when you initialize `CI_DEBUG_TRACE=true` ([doc](https://docs.gitlab.com/ci/variables/variables_troubleshooting/#enable-debug-logging)) for full debug.
 
 ![The two variables have been created](./images/variables.webp)
 

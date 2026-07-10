@@ -1,6 +1,6 @@
 ---
 slug: docker-html-site
-title: Running a HTML site in seconds using Docker
+title: Running an HTML site in seconds using Docker
 date: 2024-08-09
 description: Run any static HTML website in seconds with just ONE Docker command. Skip the headache of installing and configuring Apache or Nginx for a quick local setup.
 authors: [christophe]
@@ -14,11 +14,15 @@ blueskyRecordKey: 3lzxdp44mw223
 ---
 <!-- cspell:ignore easyphp,wamp,pffffiou,htdocs,lzxdp -->
 
-![Running a HTML site in seconds using Docker](/img/v2/docker_tips.webp)
+![Running an HTML site in seconds using Docker](/img/v2/docker_tips.webp)
 
-Imagine the following situation: you've a HTML website on your computer and you would like to run it. But how? Should you install Apache or Nginx? Yes, you should ... or just run exactly **ONE COMMAND** to start Docker.
+<TLDR>
+This article shows the fastest way to serve a static HTML site locally: no Apache/Nginx install needed, just one command — `docker run -d --name static-site -p 8080:80 -v .:/usr/local/apache2/htdocs/ httpd:alpine` — run from the site's folder, then browse to `http://localhost:8080`.
+</TLDR>
 
-Years ago, to open a local website, it was needed to install f.i. EasyPhp or Wamp, install and configure a lot of things, restart the computer, make sure EasyPhp or Wamp are running in background and ... pffffiou.
+Imagine the following situation: you've an HTML website on your computer and you would like to run it. But how? Should you install Apache or Nginx? Yes, you should ... or just run exactly **ONE COMMAND** to start Docker.
+
+Years ago, to open a local website, you needed to install f.i. EasyPhp or Wamp, configure a lot of things, restart the computer, make sure EasyPhp or Wamp was running in the background and ... pffffiou.
 
 Those times are thankfully, definitively over.
 
@@ -41,10 +45,10 @@ Just one command to run in your `C:\temp\demo` folder: `docker run -d --name sta
 
 </AlertBox>
 
-Docker will download Apache if not yet on your machine, then will start a Apache container, mount our site in it.
+Docker will download Apache if it's not yet on your machine, then start an Apache container and mount our site in it.
 
 Once done, just start your preferred browser and surf to `http://localhost:8080`. Bingo!
 
 ![Your local website](./images/localhost.webp)
 
-You've a fully, working, site. Crazy no?
+You've a fully working site. Crazy no?

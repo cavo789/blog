@@ -29,7 +29,7 @@ A typewriter animation restores that sequence. The command appears letter by let
 
 <!-- truncate -->
 
-If you're a regular reader of my blog, you know that I've developed a component called `Terminal` that lets me list a series of commands I've run in a Linux-style console—and it looks pretty similar.  Here's an example:
+If you're a regular reader of my blog, you know that I've developed a component called `Terminal` that lets me list a series of commands I've run in a Linux-style console—and it looks pretty realistic. Here's an example:
 
 <Terminal title="user@machine: ~/project">
 $ docker compose up -d
@@ -41,7 +41,7 @@ $ docker compose up -d
 
 </Terminal>
 
-However, it's a little lacking in “life”; let's see how we can make it look pretty cool with a typewriter-style animation.
+However, it's a little lacking in "life"; let's see how we can make it look pretty cool with a typewriter-style animation.
 
 The Terminal output here above has been obtained using this block in my Markdown content:
 
@@ -98,7 +98,7 @@ $ docker compose up -d
 
 </Terminal>
 
-Another examples:
+Another example:
 
 <Terminal typewriter>
 $ npm install

@@ -14,6 +14,10 @@ language: en
 <!-- cspell:ignore webm -->
 ![Apache .htaccess file](/img/v2/htaccess.webp)
 
+<TLDR>
+This is a large reference of ready-to-use `.htaccess` snippets: Content Security Policy headers, blocking files by name/extension/hidden-dot-prefix, forcing inline display or forced download, forcing HTTPS+www with HSTS preload, maintenance mode, gzip compression and expires headers, IP-based access control, clickjacking/MIME-sniffing protection, disabling script execution or directory listing, password-protecting files/folders, various redirect patterns, and blocking search-engine indexing of a folder.
+</TLDR>
+
 Some tips and tricks for your .htaccess file (Apache)
 
 <!-- truncate -->

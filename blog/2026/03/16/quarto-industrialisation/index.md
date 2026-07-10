@@ -21,9 +21,9 @@ blueskyRecordKey: 3mh5um7gpgs2x
 This blog post explores how I built a self-documenting ecosystem for over 50 projects using Quarto and Docker, automating the documentation process and ensuring it stays up-to-date with the codebase.
 </TLDR>
 
-As a developer, I like writing code and documentation but, I need to be honest: it's difficult to keep documentation up-to-date. The moment you write it, it becomes outdated. This is a problem I've faced repeatedly throughout my career. I wanted to find a way to automate the documentation process, ensuring that it always reflects the current state of the codebase.
+As a developer, I like writing code and documentation, but I need to be honest: it's difficult to keep documentation up-to-date. The moment you write it, it becomes outdated. This is a problem I've faced repeatedly throughout my career. I wanted to find a way to automate the documentation process, ensuring that it always reflects the current state of the codebase.
 
-You build a beautiful API, you write a manual, and then… you change your code. The structure of your answer is quite different, the error message is no more the same, you've published a v1.1 while your documentation was about v1.0 and many things like that.
+You build a beautiful API, you write a manual, and then… you change your code. The structure of your answer is quite different, the error message is no longer the same, you've published a v1.1 while your documentation was still about v1.0, and many things like that.
 
 What can I do to try to solve this problem? Can we automate the documentation process? Can we make it self-updating? Can we make it so that when I change my code, my documentation changes too? The short answer is: yes, we can. And that's what I did with [Quarto](https://quarto.org/).
 
@@ -59,7 +59,7 @@ This is where the magic happens. We tell VS Code which extensions to install and
 
 ### 4. Our Python scripts
 
-We'll use a few, simple, Python scripts to generate content for our documentation. For example, `my_feature.py` contains a simple function that generates a Mermaid diagram based on a list of items. While `file_stats.py` could be a script that analyzes the project files and generates a report.And `project_viz.py` could be a script that creates a visual representation of the project structure.
+We'll use a few, simple, Python scripts to generate content for our documentation. For example, `my_feature.py` contains a simple function that generates a Mermaid diagram based on a list of items, `file_stats.py` analyzes the project files and generates a report, and `project_viz.py` creates a visual representation of the project structure.
 
 <Snippet filename="scripts/call_api.py" source="./files/scripts/call_api.py" defaultOpen={false} />
 <Snippet filename="scripts/file_stats.py" source="./files/scripts/file_stats.py" defaultOpen={false} />
@@ -74,7 +74,7 @@ This is where we write our Quarto document. Instead of static Markdown, we can e
 
 See the three `{python}` blocks in the document? This is where the magic happens. That’s where we execute our Python code. The output of that code is directly rendered in the document.
 
-When Quarto will see the block below, we'll execute the `render_project_arch()` function from our `project_viz.py` script (that feature has to be present in the `PYTHONPATH`). This function will generate a Mermaid diagram based on the current state of our project, and Quarto will render it directly in the document.
+When Quarto sees the block below, it will execute the `render_project_arch()` function from our `project_viz.py` script (that feature has to be present in the `PYTHONPATH`). This function will generate a Mermaid diagram based on the current state of our project, and Quarto will render it directly in the document.
 
 ````markdown
 ```{python}
@@ -93,7 +93,7 @@ Here is the full project structure. You can copy this setup and run it on your m
 
 <ProjectSetup folderName="/tmp/quarto_industrialisation" createFolder={true} >
   <Guideline>
-    Now, start vscode by running `code .`and select **Reopen in Container** when asked. In the terminal, run `./scripts/preview.sh` and open the link in your browser. Change the list in `my_feature.py` and see the diagram update in real-time.
+    Now, start vscode by running `code .` and select **Reopen in Container** when asked. In the terminal, run `./scripts/preview.sh` and open the link in your browser. Change the list in `my_feature.py` and see the diagram update in real-time.
   </Guideline>
   <Snippet filename=".devcontainer/devcontainer.json" source="./files/.devcontainer/devcontainer.json" />
   <Snippet filename="scripts/call_api.py" source="./files/scripts/call_api.py" defaultOpen={false} />
@@ -139,7 +139,7 @@ And last but not least, the `call_api.py` script can be used to call a live API 
 
 In my 50-project ecosystem, I took this "Lab" concept and turned it into an industrial-strength **WritingDoc Base Image**.
 
-Most documentation setups start with a "minimal" image. That’s a mistake. "Minimal" means "slow startup." I went the opposite way. My image is a 2.5.GB beast, but it follows a **"Zero-Wait" philosophy**.
+Most documentation setups start with a "minimal" image. That’s a mistake. "Minimal" means "slow startup." I went the opposite way. My image is a 2.5GB beast, but it follows a **"Zero-Wait" philosophy**.
 
 I baked everything in: Quarto, Python, Node.js, Mermaid-CLI, and every linter known to man. When a writer opens a project in a VS Code DevContainer, they don't wait for `apt-get` or `pip install`. The environment is alive and ready the moment the window opens.
 
@@ -147,7 +147,7 @@ I baked everything in: Quarto, Python, Node.js, Mermaid-CLI, and every linter kn
 
 The real "Wow" factor started when I stopped copy-pasting code into Markdown. I wrote a suite of Python "Features" that use **AST (Abstract Syntax Tree)** analysis to read my source code.
 
-Actually I've more than 40 different "Features" that can analyze my codebase, extract information, and generate documentation automatically.
+Actually, I've more than 40 different "Features" that can analyze my codebase, extract information, and generate documentation automatically.
 
 ![Having more than 40 different "Features" that can analyze my codebase, extract information, and generate documentation automatically.](./images/having_more_than_40_features.webp)
 
@@ -214,7 +214,7 @@ A few examples of these features:
 
 ### Visualizing the Invisible: Mermaid & Caching
 
-Quarto is able to render Mermaid.js while rendering a documentation as a website but, it will not work for offline outputs like Word or PDF.
+Quarto is able to render Mermaid.js while rendering a documentation as a website, but it will not work for offline outputs like Word or PDF.
 
 I solved this by building an **Advanced Mermaid Renderer**. In my setup, the renderer is format-aware. If you're viewing the HTML preview, it serves sharp SVGs. If you're building a `.docx` for a business stakeholder, it automatically spins up a headless Chromium instance (via Puppeteer), renders the diagram at 300 DPI, and embeds a high-res PNG.
 

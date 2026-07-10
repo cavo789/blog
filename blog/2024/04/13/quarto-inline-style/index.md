@@ -14,6 +14,10 @@ language: en
 ---
 ![Quarto Inline style](/img/v2/quarto.webp)
 
+<TLDR>
+This article shows Quarto's inline CSS span syntax `[text]{style="..."}` for quickly styling a bit of text (color, background, etc.) without defining a CSS class — noting it only renders in HTML output, and is silently ignored in Word or PDF.
+</TLDR>
+
 Don't want to take the time to create a CSS class and figure out how to integrate it into Quarto to quickly highlight part of your paragraph?
 
 Quarto supports an *inline css style* syntax for producing **HTML documents** (not working for, f.i., pdf or docx).

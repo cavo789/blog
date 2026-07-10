@@ -19,13 +19,17 @@ updates:
 <!-- cspell:ignore rsvg,ggplot2,gdebi,renv,tlmgr,fvextra,footnotebackref,pagecolor,sourcesanspro,sourcecodepro,Aoption -->
 ![Running Quarto Markdown in Docker](/img/v2/quarto.webp)
 
+<TLDR>
+This article shows how to run Quarto (a Pandoc-based tool for converting Markdown into PDF, HTML, Word, ePub, or reveal.js slideshows) via Docker, either building a custom image from a `Dockerfile` or using a prebuilt `ghcr.io/quarto-dev/quarto` one. It walks through rendering the same Markdown file to PDF, HTML, and a multi-slide reveal.js presentation with `quarto render test.md --to <format>`.
+</TLDR>
+
 [Quarto](https://quarto.org/) is a tool for producing PDF, Word document, HTML web pages, ePub files, slideshows and many, many more outputs based on a Markdown file.
 
 Using Quarto, you can render any markdown content to a new PDF f.i.
 
 Quarto supports a very large number of features, to which are added extensions from its community, making it a really practical tool for anyone wishing to produce documentation.
 
-Personally, I haven't used a Word-type word processor for several years; nor have I used PowerPoint since, I don't even know when the last time was.
+Personally, I haven't used a Word-type word processor for several years; nor have I used PowerPoint — I don't even know when the last time was.
 
 And yet, I produce a great deal of documentation and slideshows. I write everything in Markdown and generate PDF or slideshows from the same content.
 
@@ -33,7 +37,7 @@ Until recently, I'd been using [pandoc](https://pandoc.org/) but, having taken t
 
 <!-- truncate -->
 
-Like always on this blog, you will not install Quarto the old-fashioned way. Instead, you'll create our own Docker image.
+Like always on this blog, you will not install Quarto the old-fashioned way. Instead, you'll create your own Docker image.
 
 ## Let's play
 
@@ -90,7 +94,7 @@ So, if you want to create documents, presentations, or even books, Quarto and Ma
 
 </Snippet>
 
-Now, back to your Linux console and you'll convert that file to a pdf. **Please refers to the official documentation of [Quarto](https://quarto.org/) to get in-depth information about it.**
+Now, back to your Linux console and you'll convert that file to a pdf. **Please refer to the official documentation of [Quarto](https://quarto.org/) to get in-depth information about it.**
 
 To convert to a PDF, the instruction to fire is `quarto render test.md --to pdf`. But since you're using Quarto from a Docker image, the instruction becomes `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf`.
 
@@ -101,7 +105,7 @@ As a reminder, the used Docker run command are (almost always the same):
 * `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
 * `-v .:/input` to share your current folder with a folder called `/input` in the Docker container,
 * `-w /input` to tell Docker that the current directory, in the container, will be the `/input` folder,
-* `-u $(id -u):$(id -g)` ask Docker to reuse our local credentials so when a file is updated/created in the container, the file will be owned by you,
+* `-u $(id -u):$(id -g)` asks Docker to reuse your local credentials so when a file is updated/created in the container, the file will be owned by you,
 * then `cavo789/quarto` which is the name of your Quarto Docker image, and, finally,
 * `quarto render test.md --to pdf` i.e. the command line to start within the container.
 
@@ -114,7 +118,7 @@ So, let's convert to PDF and run `docker run -it --rm -v .:/input -w /input -u $
 ![Your PDF file](./images/pdf_version.webp)
 
 <AlertBox variant="info" title="Hide non-essential information">
-Add the `--log-level warning` CLI argument to Quarto to ask him to show only warning (and error) messages. Non-essential output will be hidden and you'll keep a clean console. The new command to use is thus `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf --log-level warning`
+Add the `--log-level warning` CLI argument to Quarto to ask it to show only warning (and error) messages. Non-essential output will be hidden and you'll keep a clean console. The new command to use is thus `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf --log-level warning`
 
 </AlertBox>
 

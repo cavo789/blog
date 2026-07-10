@@ -20,7 +20,7 @@ blueskyRecordKey: 3mjwbgrn2os2o
 
 I like documentation, and what is more inefficient than writing docs for things that can be self-documented?
 
-As you might know, I love Docker and I do almost everything in a dockerized way. So, in every one of my projects, there is a `compose.yaml` file. If I want to document it for my colleagues, I could start writing: *There are three services, one is for PHP, one for Nginx, one for PostgreSQL. That one is using a volume to make data persistent on disk and blah blah blah. The Nginx service is publishing on port xxx and the database is accessible using port yyy.* I can do that, for sure, but are there no better ways to do this? What if I add a new service or update a port number? My documentation would already be outdated, unless...
+As you might know, I love Docker and I do almost everything in a dockerized way. So, in every one of my projects, there is a `compose.yaml` file. If I want to document it for my colleagues, I could start writing: *There are three services, one is for PHP, one for Nginx, one for PostgreSQL. That one is using a volume to make data persistent on disk and blah blah blah. The Nginx service is publishing on port xxx and the database is accessible using port yyy.* I can do that, for sure, but isn't there a better way to do this? What if I add a new service or update a port number? My documentation would already be outdated, unless...
 
 Let's see how to automate the documentation using Docker, Python and Mermaid.
 
@@ -30,7 +30,7 @@ In modern DevOps, documentation often lags behind code. How many times has your 
 
 Thanks to AI, Docker, Python, [Mermaid](https://mermaid.js.org/) and [mermaid-cli](https://github.com/mermaid-js/mermaid-cli), we can automate such things.
 
-We can write a Python script that will analyze a file, a codebase, ... anything in reality ("Your imagination is your own limit"). Python will analyze and will create a Mermaid diagram. It's a *pseudocode* that can be rendered as an image.
+We can write a Python script that will analyze a file, a codebase, ... anything, really ("Your imagination is the only limit"). Python will analyze and will create a Mermaid diagram. It's a *pseudocode* that can be rendered as an image.
 
 Look at this [example](https://mermaid.live/edit#pako:eNpFjctqwzAQRX9FzNoNtmzJtrYtfUALhWbT4o1ijR0RWRMUmTYN-fcqCU3uauZw7swBejIICqKd0FmPnWcp0UaH7NnuIoU9o4F9UG-1Y29orGbvTseBwnRxeZ5zptir9Rs0L_4KqwQfdY8ros0FnqPYE9Ho8OqJhD5pXs6rG5OJLb9tjBgggzFYAyqGGTOYMEz6tMLhZHcQ1zhhByqNBgc9u9hB54-pttX-i2j6bwaaxzWoQbtd2uat0REfrB6DvinoDYZ7mn0EVYi6Ph8BdYAfUHdFVS7aVuZlK9uiraumzGAPipcLIaXkKTWvmrqRxwx-z4-LBW8L0XDR5GVTiroSxz-rtW0b):
 
@@ -44,7 +44,7 @@ In this article, we'll create a Docker image ready-to-use to render such *pseudo
 
 ## First things first, let's create the Docker image
 
-The Dockerfile we'll use is this one.  It's quite simple.
+The Dockerfile we'll use is this one. It's quite simple.
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile" defaultOpen={false} />
 
@@ -129,7 +129,7 @@ This time a Pie chart:
 <ProjectSetup folderName="/tmp/mermaid" createFolder={true} >
   <Guideline>
     Now, please run 'docker build -t yourself/docker-python-mermaid .' to
-    create the Docker image..
+    create the Docker image.
   </Guideline>
 <Snippet filename="Dockerfile" source="./files/Dockerfile" defaultOpen={false} />
 <Snippet filename="puppeteer-config.json" source="./files/puppeteer-config.json" defaultOpen={false} />

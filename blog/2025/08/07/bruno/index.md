@@ -20,7 +20,7 @@ blueskyRecordKey: 3lvs336stus2j
 This article introduces Bruno, a free, open-source alternative to Postman for API testing. It guides you through setting up a sample Python FastAPI, and then using both the Bruno GUI and CLI to test it. You'll learn how to create requests, manage environments, and run tests from the command line using Docker, including how to handle common networking challenges. The post also covers adding assertions to your tests for validation.
 </TLDR>
 
-<Link to="/blog/tags/postman">Bruno](https://www.usebruno.com/) is a tool like [Postman</Link> you can use for free. Everything is stored on your computer so you can store files within your codebase and submit it to your code versioning tool f.i.
+[Bruno](https://www.usebruno.com/) is a tool like <Link to="/blog/tags/postman">Postman</Link> you can use for free. Everything is stored on your computer so you can store files within your codebase and submit it to your code versioning tool f.i.
 
 <!-- truncate -->
 
@@ -51,7 +51,7 @@ To install Bruno GUI on my Ubuntu distribution, I'm running these commands:
 
 <Terminal typewriter source="./files/terminal-2.txt" />
 
-Please refers to the [Download & Install](https://docs.usebruno.com/get-started/bruno-basics/download) official documentation for more info.
+Please refer to the [Download & Install](https://docs.usebruno.com/get-started/bruno-basics/download) official documentation for more info.
 
 ## Run Bruno
 
@@ -81,7 +81,7 @@ Once the request has been created, press <kbd>CTRL</kbd>+<kbd>ENTER</kbd> or cli
 
 ## Opening the project with VSCode
 
-By opening the project in VSCode, we can see there is a new folder called `Jokes` (our collection) with a very few files like `environments/dev.bru` where we can find our environment's variables, a `bruno.json` generic file then our request in `Get a random joke.bru`.
+By opening the project in VSCode, we can see there is a new folder called `Jokes` (our collection) with very few files like `environments/dev.bru` where we can find our environment's variables, a `bruno.json` generic file then our request in `Get a random joke.bru`.
 
 Very clean structure no?
 
@@ -92,7 +92,7 @@ Very clean structure no?
 Bruno comes with a [Docker image](https://hub.docker.com/r/alpine/bruno): it'll help us to automate the execution of our requests from the command line.
 
 <AlertBox variant="caution">
-Mid-july 2025, I wasn't able to make this image working as expected. I was facing *Cannot read properties of undefined (reading 'headers')* errors even when, I think, everything was correctly configured.
+Mid-July 2025, I wasn't able to make this image working as expected. I was facing *Cannot read properties of undefined (reading 'headers')* errors even when, I think, everything was correctly configured.
 
 For that reason, I've searched for another image and I've found that one [davidkarlsen/bruno-image](https://github.com/davidkarlsen/bruno-image) but, no luck, even the last version at that time (version 2.7.0) was giving a problem.
 
@@ -123,7 +123,7 @@ Ok, something goes wrong. We've fired one request and it has failed. But when ru
 
 ### Understanding why the Bruno CLI Docker container didn't work
 
-Look at the `connect ECONNREFUSED 127.0.0.1:82` error message: the Bruno CLI container is trying to access to the 127.0.0.1 webserver but, no, the webserver is running on our host. We've to find a proper way to tell Bruno to reuse our host.
+Look at the `connect ECONNREFUSED 127.0.0.1:82` error message: the Bruno CLI container is trying to access the 127.0.0.1 webserver but, no, the webserver is running on our host. We have to find a proper way to tell Bruno to reuse our host.
 
 Let's look back at the `environments/dev.bru`:
 

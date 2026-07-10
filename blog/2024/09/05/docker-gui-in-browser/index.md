@@ -14,6 +14,10 @@ language: en
 <!-- cspell:ignore seccomp,pgid,puid -->
 ![Docker - Running some GUI interfaces in the browser](/img/v2/docker_gui.webp)
 
+<TLDR>
+This article shows how to run graphical Linux applications like Firefox and GIMP inside Docker containers and access their interface directly through a web browser (via `http://localhost:3000`), using the `linuxserver/firefox` and `linuxserver/gimp` images — handy for testing a site in a specific browser version without installing it.
+</TLDR>
+
 In a future article, I'll be covering a subject I've just discovered: the possibility of running graphical interfaces in Docker and, therefore, having a Linux application running in Windows.
 
 But first, let's take a look at a few graphical interfaces, such as Firefox or GIMP (image processing software), which can be run as if they were web applications.
@@ -34,7 +38,7 @@ Then open your browser and surf to `http://localhost:3000` to start Firefox. You
 
  <AlertBox variant="info" title="On my screenshot above, you'll see I'm using the port 5000 instead (this because my blog is running on port 3000)" />
 
-And, for the fun, here is the same but I've started Firefox in Docker in an MS-DOS environment and, then, I've used Edge instead of Chrome:
+And, for fun, here is the same but I've started Firefox in Docker in an MS-DOS environment and, then, I've used Edge instead of Chrome:
 
 ![Start Firefox inside Docker in Edge](./images/firefox_in_edge.webp)
 
@@ -42,7 +46,7 @@ The command I've used in DOS is: `docker run -d --name=firefox --security-opt se
 
 ## Start GIMP in your browser
 
-Another example is running GIMP in the browser. Take a look on [https://github.com/linuxserver/docker-gimp?tab=readme-ov-file#docker-cli-click-here-for-more-info](https://github.com/linuxserver/docker-gimp?tab=readme-ov-file#docker-cli-click-here-for-more-info). You'll get there a command to start in your console.
+Another example is running GIMP in the browser. Take a look at [https://github.com/linuxserver/docker-gimp?tab=readme-ov-file#docker-cli-click-here-for-more-info](https://github.com/linuxserver/docker-gimp?tab=readme-ov-file#docker-cli-click-here-for-more-info). You'll find there a command to run in your console.
 
 First, make sure to create a subfolder called `config` and, in my example below, I'll also create a subfolder `images` where I've copied an avatar of a meerkat.
 

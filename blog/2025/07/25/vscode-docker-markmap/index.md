@@ -28,7 +28,7 @@ This time, I would like to go one step further and make it more attractive.
 
 Let's start by the beginning: please start VSCode, create a new file. Because we'll do a little more than this, let's create a new folder: `mkdir -p /tmp/markmap && cd $_`.
 
-Please create a Markdown file there f.i. `overview.qmd`.  The `.qmd` extension is just to tell *This is a Markdown file and we foresee to use it with Quarto*; nothing really special here.
+Please create a Markdown file there f.i. `overview.qmd`.  The `.qmd` extension is just to tell *This is a Markdown file and we plan to use it with Quarto*; nothing really special here.
 
 <Snippet filename="overview.qmd" source="./files/overview.qmd" />
 
@@ -51,11 +51,11 @@ Ok, it works but not really impressive.
 
 ## Installing the VSCode extension
 
-There is a Markmap extension on the marketplace; jump to [https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode](https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode) to Install it.
+There is a Markmap extension on the marketplace; jump to [https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode](https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode) to install it.
 
 Once installed in VSCode, press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> to open the *Command Palette* and then search for `Markmap`, please select `Markmap: open as markmap` and press <kbd>Enter</kbd>.
 
-You'll get almost the same output than the online version:
+You'll get almost the same output as the online version:
 
 ![Rendering the Markmap in VSCode - Basic](./images/extension_rendering_basic.webp)
 
@@ -74,11 +74,11 @@ The preview will be better:
 ![Better rendering in VSCode](./images/extension_rendering_advanced.webp)
 
 <AlertBox variant="info" title="Read the doc">
-The list of existing options are documented on the official site: [https://markmap.js.org/docs/json-options](https://markmap.js.org/docs/json-options)
+The list of existing options is documented on the official site: [https://markmap.js.org/docs/json-options](https://markmap.js.org/docs/json-options)
 
 </AlertBox>
 
-## Rendering as a HTML page using Quarto
+## Rendering as an HTML page using Quarto
 
 The last step for this article, let's render our Markdown content as a nice HTML page; this by using Quarto.
 

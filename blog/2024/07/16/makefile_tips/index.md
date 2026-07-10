@@ -16,6 +16,10 @@ language: en
 
 ![Makefile - Tutorial and Tips & Tricks](/img/v2/makefile.webp)
 
+<TLDR>
+This is a large personal reference of Makefile tips accumulated over time: checking file/folder existence, chaining dependent targets, silencing echoed commands, conditional logic, ignoring errors, forcing Bash instead of `/bin/sh`, variable substitution, tabs-vs-spaces gotchas, named parameters, extending targets with `::`, reading values from `.env` files, verbose-mode toggles, git helper targets, a `vendor`-freshness check for Composer projects, and a self-documenting `make help` target.
+</TLDR>
+
 When I'm learning, I usually take notes.  I find that it's one of the best ways of remembering what I've seen and being able to come back to it at any time.
 
 Below is a note that I took and revised several times when I took the time to create my first `.make` files.
@@ -195,9 +199,9 @@ Imagine we want to run `make runsql SQL='SELECT * FROM users LIMIT 10'` i.e. the
 
 ## Working with Docker
 
-In a makefile we can exit the command if we need a given Docker container running.
+In a makefile, we can bail out early if we need a given Docker container to be running.
 
-The `if` statement below will make sure the `sonarqube` container is running; if not because not yet created or in a exit mode f.i., an error statement will be executed and the script will be stopped.
+The `if` statement below will make sure the `sonarqube` container is running; if not, because it wasn't created yet or is stopped f.i., an error statement will be executed and the script will be stopped.
 
 <Snippet filename="makefile" source="./files/makefile.part22" />
 
@@ -247,7 +251,7 @@ If we run that file, here is the output.
 $ make hello
 Hello world
 Nice to meet you
-Did you any plans for this weekend?
+Do you have any plans for this weekend?
 </Terminal>
 
 Recipes are just extended, the second one is appended to the first and so on so the order is important.
@@ -284,7 +288,7 @@ Getting a value from a `.env` file is easy, just include it then use variables:
 
 <Snippet filename="makefile" source="./files/makefile.part29" />
 
-This `include` tip will work with any file defining a variable and his value
+This `include` tip will work with any file defining a variable and its value
 
 We can perfectly have a file called `Make.config`, not `.env`
 

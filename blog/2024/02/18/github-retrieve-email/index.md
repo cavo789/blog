@@ -1,6 +1,6 @@
 ---
 slug: github-retrieve-email
-title: Github - How to find email addresses for most users
+title: GitHub - How to find email addresses for most users
 date: 2024-02-18
 description: Quickly find a GitHub user's email address. Learn three effective methods using a web tool, the public API, or by inspecting a commit with the .patch trick.
 authors: [christophe]
@@ -11,35 +11,40 @@ tags:
   - linux
 language: en
 ---
-![Github - How to find email addresses for most users](/img/v2/github_tips.webp)
+![GitHub - How to find email addresses for most users](/img/v2/github_tips.webp)
+
+<TLDR>
+This article shows three ways to find a GitHub user's email address when it isn't public on their profile: using the [emailaddress.github.io](https://emailaddress.github.io/) web tool, querying the public events API at `api.github.com/users/xxxxxx/events/public`, or appending `.patch` to a commit URL to reveal the committer's email — noting this only works if the user hasn't set their email to private.
+</TLDR>
 
 You'd like to get in touch with a GitHub user but, e.g., you don't want to post your question as an issue because, e.g., it's not about a specific repository but more generic.
 
-As a result, the problem can be translated in *How to find the email address linked to a GitHub account*.
+As a result, the problem can be translated into *How to find the email address linked to a GitHub account*.
 
-Recently, I had this need in order to contact someone with a [Docusaurus](https://docusaurus.io/) blog offering a feature that I couldn't find documented on the web. His blog was not on GitHub but other repos well.
+Recently, I had this need in order to contact someone with a [Docusaurus](https://docusaurus.io/) blog offering a feature that I couldn't find documented on the web. Their blog wasn't on GitHub, but their other repos were.
 
 <AlertBox variant="note" title="It isn't always possible to retrieve the associated email.">
-Indeed, GitHub provides a.o.t. an option to make the email private in his user settings page.
+Indeed, GitHub provides, among other things, an option to make the email private on the user settings page.
 
 </AlertBox>
 
 <!-- truncate -->
+
 ## Using web interface
 
-Such tool exists on the web like [https://emailaddress.github.io/](https://emailaddress.github.io/). Just copy/paste there and, perhaps, the system will return any used emails associated to this account.
+Such a tool exists on the web, like [https://emailaddress.github.io/](https://emailaddress.github.io/). Just copy/paste there and, perhaps, the system will return any used emails associated with this account.
 
 ## Using parametrized URL
 
-GitHub provides, in his public API, the list of public events of a given user.
+GitHub provides, in its public API, the list of public events for a given user.
 
-You can retrieve the email using the following URL: `https://api.github.com/users/xxxxxx/events/public`. Just replace `xxxxxx` by the Github user you wish to retrieve the email.
+You can retrieve the email using the following URL: `https://api.github.com/users/xxxxxx/events/public`. Just replace `xxxxxx` with the GitHub username whose email you wish to retrieve.
 
 ## Based on a last commit
 
-The first thing is, for sure, to go to a public repository maintained by this person and to find a commit, any commit in fact, that he's made.
+The first thing is, for sure, to go to a public repository maintained by this person and to find a commit, any commit in fact, that they've made.
 
-On the main page of the repo, locate f.i. the last commit ID he's made:
+On the main page of the repo, locate f.i. the last commit ID they've made:
 
 ![Last commit ID](./images/find_any_commit.webp)
 
@@ -53,4 +58,4 @@ And once added:
 
 ![Once the .patch suffix has been added](./images/after.webp)
 
-As you can see, the email address associated with the Github account used to send the commit is now displayed.
+As you can see, the email address associated with the GitHub account used to send the commit is now displayed.

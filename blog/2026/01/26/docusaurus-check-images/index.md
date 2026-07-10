@@ -21,9 +21,9 @@ blueskyRecordKey: 3mdcpoxnzjc2h
 This article explains how to enforce lazy loading on a Docusaurus blog by overriding the default MDX image component to automatically inject the loading attribute. It further details how to validate this behavior using a containerized Python and Playwright script that simulates user scrolling to check image attributes and file sizes. This workflow ensures that performance best practices are consistently applied and verified across all blog content.
 </TLDR>
 
-Like you know me well enough now, you know I care a lot about performance. For a lot of good reasons but mainly because it's fun to optimize things and see the results immediately. And it's a good challenge too!
+Like you know me well enough by now, I care a lot about performance. For a lot of good reasons, but mainly because it's fun to optimize things and see the results immediately. And it's a good challenge too!
 
-My blog is now quite big (more than 200 articles) and I wanted to make sure that all images are lazy-loaded properly f.i. but how can I be sure of that?
+My blog is now quite big (more than 200 articles), and I wanted to make sure that all images are properly lazy-loaded — but how can I be sure of that?
 
 Lazy load? What is it? When you lazy load an image, you tell the browser to only load it when it's about to enter the viewport (i.e., when the user scrolls near it). So instead of loading all images at once when the page loads, only the images that are immediately visible are loaded first. This reduces the initial load time and saves bandwidth, especially for pages with many images.
 
@@ -73,7 +73,7 @@ The script performs the following actions:
 
 You know me very well now; I like to containerize things. So, I'm not using Python or Playwright directly on my host machine but rather inside a Docker container.
 
-To run the script, I first start a Linux console, then go to my blog folder and finally I run:
+To run the script, I first start a Linux console, then go to my blog folder, and finally I run:
 
 <Terminal typewriter wrap={true}>
 $ docker run -it --rm -v .:/app -w /app --entrypoint /bin/sh mcr.microsoft.com/playwright/python:v1.57.0-jammy -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python .scripts/check-images.py"

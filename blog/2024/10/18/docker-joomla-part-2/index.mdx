@@ -55,7 +55,7 @@ We're also going to take automation a step further, making much greater use of t
 
 ## Prerequisites
 
-In contrast to article [Create your Joomla website using Docker - Part 1](/blog/docker-joomla), where I began by explaining down a few concepts before moving on to discuss the subject, let's do the opposite here: let's start with the three files we are going to use, and then see how they work. Please don't try too hard to understand the contents of the files; we'll come back to that later.
+In contrast to article [Create your Joomla website using Docker - Part 1](/blog/docker-joomla), where I began by explaining a few concepts before moving on to discuss the subject, let's do the opposite here: let's start with the three files we are going to use, and then see how they work. Please don't try too hard to understand the contents of the files; we'll come back to that later.
 
 Create the three files in a folder on your hard disk for the time being (f.i. in `/tmp/joomla`), so that we can quickly get to the heart of the matter: creating a Joomla site with just one line of commands to run on your computer.
 
@@ -77,7 +77,7 @@ We're also going to define a dependency (based on `depends_on` and `healthcheck`
 As you can see, our `compose.yaml` file is of tremendous importance for the proper definition of our project.
 
 <AlertBox variant="note">
-In recent months, the name of the file to be used has changed from `compose.yaml` to `compose.yaml`; still supported for now, but might as well use the new name. See [docs.docker.com](https://docs.docker.com/compose/intro/compose-application-model/#the-compose-file) if you want more info about this change.
+In recent months, the name of the file to be used has changed from `docker-compose.yaml` to `compose.yaml`; the old name is still supported for now, but might as well use the new one. See [docs.docker.com](https://docs.docker.com/compose/intro/compose-application-model/#the-compose-file) if you want more info about this change.
 
 </AlertBox>
 
@@ -95,7 +95,7 @@ Please create a second file called `.env` with this content:
 
 <Snippet filename=".env" source="./files/.env" />
 
-Using a `.env` file is really useful to no more do changes to the `compose.yaml` file which can be standard in all your projects.
+Using a `.env` file is really useful so you no longer need to make changes to the `compose.yaml` file, which can stay standard across all your projects.
 
 If you need two or more Joomla websites (you're a web agency starting to use Docker for your development), you'll be able to only do changes to the `.env` file by updating the `WEB_PORT` (each project should have his unique port) and, you'll probably update the `PROJECT_NAME` too to f.i. your customer name.
 
@@ -115,7 +115,7 @@ The third and last file we'll use is being called `makefile` and that file will 
 To be able to use a `makefile`, you should have `GNU Make` binary installed on your machine.
 
 <AlertBox variant="caution">
-If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed the installation.
+If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to complete the installation.
 
 <Terminal typewriter>$ which make</Terminal>
 
@@ -332,8 +332,8 @@ You'll need to configure your new fresh site. In the **Database Configuration** 
   variant="remember"
   steps={[
     "Without having anything other than Docker you can install Joomla and MySQL from the command line, in the version you want;",
-    "That with an `.env` file we can vary certain values ​​to allow us to have several projects on our hard drive (several Joomla sites);",
-    "That with the `compose.yaml` file we tell Docker what to do to make Joomla and MySQL talk each other, and",
+    "That with an `.env` file we can vary certain values to allow us to have several projects on our hard drive (several Joomla sites);",
+    "That with the `compose.yaml` file we tell Docker what to do to make Joomla and MySQL talk to each other, and",
     "The `compose.yaml` file is valuable since it allows you to define a number of configuration variables.",
   ]}
 />
@@ -439,7 +439,7 @@ DATABASE
   * Port                      3306
 ```
 
-Now, by going to `http://127.0.0.1:8080/administrator`, you'll no more see the installation screens but, immediately, the login screen. The username to use is `joomla` and his password is `joomla@secured` (as you can see on the console).
+Now, by going to `http://127.0.0.1:8080/administrator`, you'll no longer see the installation screens but, immediately, the login screen. The username to use is `joomla` and its password is `joomla@secured` (as you can see on the console).
 
 Your Joomla site is already configured; nice no?
 
@@ -520,12 +520,12 @@ So, to access to the first project, our URL is well `http://127.0.0.1:8081`.
 
 ### Project 2 - Joomla 4.0
 
-<AlertBox variant="info" title="Project 1 will be a Joomla 4.0">
+<AlertBox variant="info" title="Project 2 will be a Joomla 4.0">
 In a very few words: we'll install Joomla 4.0 and MySQL 5.7.37.
 
 </AlertBox>
 
-Please configure the `project_2/.env` with the following content. As you can see (highlighted lines), that file is the same that the latest `.env` we've used earlier but, just, we'll adjust the name of the project and the web port (so our site will be available on `http://127.0.0.1:8082`).
+Please configure the `project_2/.env` with the following content. As you can see (highlighted lines), that file is the same as the latest `.env` we've used earlier but, just, we'll adjust the name of the project and the web port (so our site will be available on `http://127.0.0.1:8082`).
 
 Do the same changes as for project 1 but just replace `1` by `2`:
 
@@ -546,7 +546,7 @@ If you're still awake after this long blog post, to get access to our second web
 
 ### Project 3 - Joomla 3.5
 
-<AlertBox variant="info" title="Project 1 will be a Joomla 3.5">
+<AlertBox variant="info" title="Project 3 will be a Joomla 3.5">
 And now, you need to do some maintenance on an old J3.5 website. Let's create one on our computer.
 
 </AlertBox>
@@ -557,7 +557,7 @@ This time, we'll use `3` as suffixes:
 
 <Snippet filename="project_3/.env" source="./files/.env_project3" />
 
-Save the file and run `make up && make start` to start the second website. Go to `http://127.0.0.1:8082/administrator` and yes, we've our second site running on our machine.
+Save the file and run `make up && make start` to start the third website. Go to `http://127.0.0.1:8083/administrator` and yes, we've our third site running on our machine.
 
 <Terminal typewriter>$ make up && make start</Terminal>
 
@@ -593,13 +593,13 @@ For information, here's what I'm seeing right now on my Windows computer (I'm us
 
 ![Docker desktop](./images/docker_desktop.webp)
 
-As you can see, I've actually four projects: my current blog (running on Docker too) and the three Joomla projects.
+As you can see, I actually have four projects: my current blog (running on Docker too) and the three Joomla projects.
 
-If you look at the **CPU (%)** column, you can see that the projects are almost asleep. And this is normal: once the web page has been displayed, Joomla and MySQL don't requires CPU anymore. The page is displayed so they are sleeping.
+If you look at the **CPU (%)** column, you can see that the projects are almost asleep. And this is normal: once the web page has been displayed, Joomla and MySQL don't require CPU anymore. The page is displayed so they are sleeping.
 
-For the memory, I've allocated max. 20GB to WSL/Docker and right now, my fourth project (my blog too) are eating 3.3 GB. I can thus start a lot more projects.
+For the memory, I've allocated max. 20GB to WSL/Docker and right now, my four projects (including my blog) are eating 3.3 GB combined. I can thus start a lot more projects.
 
-But? Did I need to be able to work on the three projects at the same time??? Probably not. So why not stopping f.i. the first and the third project?
+But do I need to be able to work on all three projects at the same time? Probably not. So why not stop, f.i., the first and the third project?
 
 In the console, just run `make stop` in folder project 1 and 3 by, running `( cd project_1 ; make stop ; cd ../project_3 ; make stop)`. We'll thus stop (not remove; just freeze and release memory) our first and third project.
 

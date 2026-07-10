@@ -15,6 +15,10 @@ language: en
 ---
 ![Quarto Callout Blocks](/img/v2/quarto.webp)
 
+<TLDR>
+This article shows Quarto's callout-block syntax (`:::{.callout-caution}`, `:::{.callout-tip}`, etc.) for highlighted admonitions in PDF, HTML, and revealJS output — Quarto's equivalent of Docusaurus's `<AlertBox>` — and provides a VSCode snippet that interactively prompts for the callout type, title, and body so you never need to remember the exact syntax.
+</TLDR>
+
 A callout (called *admonition* by [Docusaurus](https://docusaurus.io/docs/markdown-features/admonitions)) is a special syntax used to highlight a paragraph, f.i. a *Pay attention to...* or *Tip: Did you know that...* box.
 
 On this blog powered by Docusaurus, the syntax for *admonition* is
@@ -51,7 +55,7 @@ If you don't have yet a Docker image with Quarto, read this article <Link to="/b
 
 ## Syntax
 
-Unfortunately, the syntax is not part of the standard Markdown language so every tool has his own actually.
+Unfortunately, the syntax is not part of the standard Markdown language, so every tool actually has its own.
 
 For Quarto, the syntax is:
 
@@ -79,7 +83,7 @@ By going to bed earlier, you'll get better quality sleep.
 
 Callouts are supported in PDF, HTML, revealJS and other formats.
 
-Get in-depth syntax on the [official documentation](https://quarto.org/docs/authoring/callouts.html)
+Get in-depth syntax on the [official documentation](https://quarto.org/docs/authoring/callouts.html).
 
 ## VSCode snippet
 

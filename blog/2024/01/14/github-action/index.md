@@ -13,13 +13,17 @@ language: en
 ---
 ![GitHub - Use Actions to deploy this blog](/img/v2/github_tips.webp)
 
-The last two months, I was using a FTP automation script to deploy the blog on my FTP server.
+<TLDR>
+This article explains how to replace manual FTP deployment scripts with a GitHub Actions workflow that automatically deploys the blog on every push. It covers creating the `.github/workflows/deploy.yml` file, storing FTP credentials as repository secrets, and using a restricted FTP user scoped only to the deployment output folder.
+</TLDR>
+
+For the last two months, I was using an FTP automation script to deploy the blog on my FTP server.
 
 This way of doing things worked fine but had several inherent problems, the most important of which was that I had to run the script manually (from my computer).
 
-If I modified an article directly from the Github interface or from another computer (where WinSCP was not installed, for example), there was no deployment.
+If I modified an article directly from the GitHub interface or from another computer (where WinSCP was not installed, for example), there was no deployment.
 
-By using Github actions, this problem no longer exists. With each push, the blog will be updated.
+By using GitHub Actions, this problem no longer exists. With each push, the blog will be updated.
 
 <!-- truncate -->
 
@@ -30,7 +34,7 @@ To enable `GitHub actions`, we first need to create a file in the folder `.githu
 As you can see, I need three secrets, `${{ secrets.ftp_server }}`, `${{ secrets.ftp_login }}` and `${{ secrets.ftp_password }}`.
 
 <AlertBox variant="info" title="Make sure to use a restricted FTP user">
-Don't use a too privileged user. Create a new one, just for your blog and having access to only the output folder (like `/var/www/html/public`) where your blog should be deployed.
+Don't use an overly privileged user. Create a new one, just for your blog, with access to only the output folder (like `/var/www/html/public`) where your blog should be deployed.
 
 </AlertBox>
 
@@ -38,13 +42,13 @@ I need to create them in my Settings page for my repository: `https://github.com
 
 In the `Repository secrets` area, I have clicked on the `New repository secret` button and create the first one: `FTP_LOGIN` and provide the login. Same thing with the two other secrets.
 
-This done, I can push my local changes (the `.github/workflows/deploy.yml`) to github using `git add .github/workflows/deploy.yml && git commit -m "chore: add deploy github action" && git push`.
+This done, I can push my local changes (the `.github/workflows/deploy.yml`) to GitHub using `git add .github/workflows/deploy.yml && git commit -m "chore: add deploy github action" && git push`.
 
-Once pushed to github, the page `https://github.com/cavo789/blog/actions` will show my action and I can see it's now running.
+Once pushed to GitHub, the page `https://github.com/cavo789/blog/actions` will show my action and I can see it's now running.
 
 ![My action is running](./images/action_is_running.webp)
 
-By clicking on the running action, details of each steps is displayed and I can easily follow:
+By clicking on the running action, the details of each step are displayed and I can easily follow along:
 
 ![Pushing files](./images/pushing.webp)
 

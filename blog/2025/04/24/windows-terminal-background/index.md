@@ -21,7 +21,7 @@ blueskyRecordKey: 3lvnjj5g4ic2v
 Tired of the boring black console? This quick guide shows you how to easily customize your Windows Terminal by setting a background image. Follow a few simple steps to navigate the settings, choose your favorite image, and adjust its appearance to give your terminal a fresh, personalized look.
 </TLDR>
 
-If we're talking about the MS DOS console, everyone has in mind a very austere black screen with a fixed-width font. The display was monochrome, white on black. Not very sexy neither exciting, isn't it.
+If we're talking about the MS DOS console, everyone has in mind a very austere black screen with a fixed-width font. The display was monochrome, white on black. Not very sexy nor exciting, is it.
 
 Fortunately, we're no longer in the 1980s and 2000s, and since then, even under Windows, we've been able to do so much more cooooool!
 
@@ -35,13 +35,13 @@ I'm using [Windows Terminal](https://apps.microsoft.com/detail/9n0dx20hk701); a 
 
 I really like it because just like a web browser, I can work with tabs. One of the most powerful things is we can use it for the old Windows Command prompt (MS Dos), for Powershell, for Linux (Ubuntu, Debian, ...), for SSH terminal and much more.
 
-But, for this article, let's concentrate to the appearance of the terminal.
+But, for this article, let's concentrate on the appearance of the terminal.
 
 First, let's generate (using [Recraft.ai](https://www.recraft.ai/) f.i.) a nice image or go to [unsplash.com](https://unsplash.com/) if you want to reuse an existing one. Click on this link to download the [JackJack background image](./images/wallpaper.webp), the meerkat.
 
 Start an instance of Windows Terminal and, as illustrated on the image below, click on the down arrow and select `Settings`.
 
-![Accessing to the settings page](./images/settings.webp)
+![Accessing the settings page](./images/settings.webp)
 
 On the left side, select your desired profile then on the right side, scroll down until you see the `Appearance` accordion and click on it.
 

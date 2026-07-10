@@ -57,7 +57,7 @@ This article builds on top of <Link to="/blog/linux-fzf-introduction">fzf</Link>
 />
 
 <AlertBox variant="note" title="batcat on Ubuntu/Debian">
-On some Ubuntu/Debian systems, the binary is named `batcat` instead of `bat`. If it's your case, simply replace *bat* with *batcat* in the rest of this article.
+On some Ubuntu/Debian systems, the binary is named `batcat` instead of `bat`. If that's the case for you, simply replace *bat* with *batcat* in the rest of this article.
 </AlertBox>
 
 ## Why ripgrep instead of grep?

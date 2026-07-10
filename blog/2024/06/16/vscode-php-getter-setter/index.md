@@ -14,11 +14,15 @@ language: en
 <!-- cspell:ignore strtolower -->
 ![PHP Getter and Setter in VSCode](/img/v2/vscode_tips.webp)
 
+<TLDR>
+This article makes the case for private PHP class properties accessed only through getters/setters (so values can be validated, e.g. rejecting a negative price), and shows the `PHP Getters & Setters` VSCode extension that generates them automatically via a right-click on the property — removing the excuse that writing them is tedious.
+</TLDR>
+
 Because you're an excellent developer, you deny anyone access to the properties of your class directly, but only via a getter or setter.
 
-In other words, in your PHP class, you don't have `public` properties (they're devil) but exclusively `protected` ones or better `private`.
+In other words, in your PHP class, you don't have `public` properties (they're the devil) but exclusively `protected` ones or better `private`.
 
-And using getter and setters you allow other objects to interact with your private properties by reading them (getters) or updating their values (setters).
+And using getters and setters you allow other objects to interact with your private properties by reading them (getters) or updating their values (setters).
 
 Some people will say "Yes, but it's tedious to write these functions", but not at all.
 
@@ -36,7 +40,7 @@ $product->name='coMPuteR';
 $product->price=-10;
 ```
 
-By OK I mean, ok, I've used a mix of lower and upper case for the name and ok, I've say that I'm selling computers at the cost of -10€.  It's OK because I don't do any controls of the values and, that, that is very bad.
+By OK I mean, well, I've used a mix of lower and upper case for the name and, well, I've said I'm selling computers at the cost of -10€. It's OK because I don't do any validation on the values, and that is very bad.
 
 By using a setter (a function called when the property is initialized) I can verify the value and correct the case f.i. or deny negative price.
 

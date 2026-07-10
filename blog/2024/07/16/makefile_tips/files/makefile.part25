@@ -5,4 +5,4 @@ hello::
 	@echo "Nice to meet you"
 
 hello::
-	@echo "Did you any plans for this weekend?"
+	@echo "Do you have any plans for this weekend?"

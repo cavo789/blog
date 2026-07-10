@@ -55,7 +55,7 @@ If you don't want the long story; don't read that chapter and just create this f
 
 <Snippet filename="src/theme/BlogPostItem/index.js" source="./files/index.js" />
 
-Once you've it, please edit it since we need to inject the `<ScrollToTopButton />` code.
+Once you have it, please edit it since we need to inject the `<ScrollToTopButton />` code.
 
 Below, see the two highlighted lines you should add:
 
@@ -76,4 +76,4 @@ If like me you're running Docusaurus thanks to Docker, just kill the container a
 
 On my site, I have an `archive` page. You want to use the `<ScrollToTopButton />` button there too? Just swizzle the page by running `yarn docusaurus swizzle @docusaurus/theme-classic BlogArchivePage` in a console then update the `index.js` file as illustrated above.
 
-If you've any other pages in your `src/pages/` folder (like `about.mdx`, `index.mdx`, ...), no need to swizzle first but directly add the two lines in these files too.
+If you have any other pages in your `src/pages/` folder (like `about.mdx`, `index.mdx`, ...), no need to swizzle first, just directly add the two lines in these files too.

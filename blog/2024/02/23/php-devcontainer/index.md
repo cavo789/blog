@@ -17,10 +17,14 @@ language: en
 ---
 ![Install a PHP Docker environment in a matter of seconds](/img/v2/devcontainer.webp)
 
+<TLDR>
+This is the short, quick-start version of the full devcontainer article: download the `php_devcontainer` skeleton with `curl`, open the folder in VSCode, and click "Reopen in Container" to get a ready-to-use PHP environment with Composer, PHP-CS-Fixer, PHPCS/PHPCBF, SonarLint and Rector preinstalled — for both brand-new projects and existing codebases.
+</TLDR>
+
 This article is the very short and straightforward version of <Link to="/blog/vscode-devcontainer">PHP development in a devcontainer with preinstalled code quality tools</Link>. If you just want to follow a very few steps and get your PHP environment, this article is for you.
 
 <StepsCard
-  title="By following steps describe in this article, you'll obtain"
+  title="By following the steps described in this article, you'll obtain"
   variant="steps"
   steps={[
     'A Docker PHP environment so you can code using vscode,',
@@ -56,7 +60,7 @@ If you don't want to download the latest version but a given one, specify the ta
 
 </AlertBox>
 
-You've thus download code from my [https://github.com/cavo789/php_devcontainer](https://github.com/cavo789/php_devcontainer) repo in your folder.
+You've thus downloaded code from my [https://github.com/cavo789/php_devcontainer](https://github.com/cavo789/php_devcontainer) repo into your folder.
 
 ### 2. Open VSCode
 
@@ -71,7 +75,7 @@ $ code .
 
 VSCode will automatically suggest opening a Dev Container. Click on the `Reopen in Container` button.
 
-![VSCode automatically suggest opening a Dev Container](./images/vscode_starting.webp).
+![VSCode automatically suggests opening a Dev Container](./images/vscode_starting.webp)
 
 If you don't have this popup, just press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> to open the **Command Palette** and search for `Dev Containers: Rebuild and Reopen in Dev Container` and click on it.
 
@@ -114,7 +118,7 @@ $ tar -xzvf php_devcontainer-1.0.0.tar.gz --strip-components 1 && rm -f php_devc
 
 This will download the PHP devcontainer files in my project.
 
-I will run `code .` to open VSCode and like before, VSCode will suggests opening the folder in a Dev Container. Let's do this.
+I will run `code .` to open VSCode and, like before, VSCode will suggest opening the folder in a Dev Container. Let's do this.
 
 And voilà, I've Dockerized my PHP coding environment. In my case, I've made `Laravel Todos` in 2018, using PHP 7.1.3 and Laravel 5.x; an eternity then.
 

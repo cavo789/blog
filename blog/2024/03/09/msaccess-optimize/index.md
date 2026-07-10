@@ -15,6 +15,10 @@ language: en
 ---
 ![How to optimize an existing MS Access database](/img/v2/msaccess.webp)
 
+<TLDR>
+This is a comprehensive checklist for speeding up an existing MS Access database without re-engineering it: adding primary keys and indexes, using appropriate field types/sizes, preferring native SQL (`Is Null`, `Iif()`, `BETWEEN`) over VBA functions (`IsNull()`, `NZ()`, `Year()`) which bypass indexes, filtering with `WHERE` before `HAVING`, converting macros to VBA modules, compiling code, and compacting the database.
+</TLDR>
+
 Several years ago, I had to intervene on an MS Access database that had been created by a person of good will but with little affinity for computers and optimization.
 
 The result: a cumbersome and exasperatingly slow database.
@@ -24,13 +28,13 @@ In this article, resurrected from my personal archive, I'm going to present the 
 <!-- truncate -->
 
 <AlertBox variant="note" title="Disclaimer">
-This guide deliberately concerns **existing databases**, for this reason, I will not speak for example about how to correctly design tables, not having more than 100 fields, not about drawing a relational schema, ... The objective is therefore to improve performance without deep programming (no re-engineering) and without migration to f.i. SQL Server.
+This guide deliberately concerns **existing databases**; for that reason, I won't talk about how to correctly design tables, keep the number of fields reasonable, or draw a relational schema, ... The objective is therefore to improve performance without deep programming (no re-engineering) and without migrating to, for instance, SQL Server.
 
 </AlertBox>
 
 ## MS Access - Analyze Performance
 
-MS Access 2016 provide a tool for analyzing the current database.
+MS Access 2016 provides a tool for analyzing the current database.
 
 ![MS Access - Analyze Performance](./images/access_analyze_performance.webp)
 
@@ -44,7 +48,7 @@ You can run the tool only for a selection like, f.i., only for queries.
 
 Depending on your data model, try to add a Primary key in each table.
 
-For instance, if you've a Customer table, you'll probably have one field that one field that will define, without any doubt, a given customer; a field like `CustomerID` (whatever his name).
+For instance, if you've a Customer table, you'll probably have one field that will define, without any doubt, a given customer; a field like `CustomerID` (whatever its name).
 
 Examine all your tables and if you've such unique field, define that field as the Primary key.
 
@@ -52,7 +56,7 @@ If possible, a primary key should be
 
 * only one field (you can indeed define several fields to be the key),
 * a number, not a text field,
-* smaller as possible (if you really need to use a text field, prefer a field with 5 characters f.i. and not 255)
+* as small as possible (if you really need to use a text field, prefer a field with 5 characters f.i. and not 255)
 
 Right-click on the table name and select `Design`.
 
@@ -62,11 +66,11 @@ Select the field then click on the `Primary key` button.
 
 ![Add a primary key](./images/primarykey_add.webp)
 
-Be careful: be sure to correctly identify the unique field; don't add a primary key to f.i. a customer name (since more than one customer can have such name). A primary key will increase speed and data coherence in your table but will also prevent to have a second record with the same key (so, if you choose the wrong field, we can have side effect).
+Be careful: be sure to correctly identify the unique field; don't add a primary key to f.i. a customer name (since more than one customer can have such a name). A primary key will increase speed and data coherence in your table but will also prevent having a second record with the same key (so, if you choose the wrong field, you can have side effects).
 
 #### Use indexes
 
-Take a look to your queries: do you often make a filter on a specific field? You could have a very strong performance improvement by just adding an index for that field.
+Take a look at your queries: do you often make a filter on a specific field? You could have a very strong performance improvement by just adding an index for that field.
 
 To do it, open your table in design mode by just right-clicking on the name of the table
 
@@ -76,11 +80,11 @@ Then click on the `Indexes` button to show a small window and, there, add indexe
 
 ![Add indexes](./images/index_add.webp)
 
-Note: don't abuse, don't *over index*. Add indexes only on fields often used in query's criteria since maintaining indexes ask CPU and thus has a cost on insert/update/delete statements.
+Note: don't abuse it, don't *over-index*. Add indexes only on fields often used in query criteria since maintaining indexes requires CPU and thus has a cost on insert/update/delete statements.
 
 #### Create relationships between tables if possible
 
-When you're using, in a query, two tables or more having a link between them, MS Access optimization technique suggest creating this link, also, in the relationships window i.e. at a global level.
+When you're using, in a query, two tables or more having a link between them, MS Access optimization techniques suggest creating this link, also, in the relationships window i.e. at a global level.
 
 To do this, once your database is opened, click on the `Database Tools` menu and choose `Relationships`.
 
@@ -88,7 +92,7 @@ Draw your relation, select carefully the join type (which can be also adjusted i
 
 ![Create relationships between tables](./images/relationships.webp)
 
-Example: link between two tables on the `ID` from a first table and the associated field, `tblOneID` in the second table. The arrow is draw from `table1` to `table2` (it's the `join type`) and this means: "take all records of `table1` and, if the value is also known in `table2` then return values.
+Example: link between two tables on the `ID` from a first table and the associated field, `tblOneID` in the second table. The arrow is drawn from `table1` to `table2` (it's the `join type`) and this means: "take all records of `table1` and, if the value is also known in `table2`, then return values."
 
 Tip: always try to use an index for the relation and not "any field".
 
@@ -102,7 +106,7 @@ In your tables, try to correctly choose the data type:
 * if you need to store a small number (f.i. `Number of children`), don't choose Number - Long Integer when Number - Byte is enough,
 * ...
 
-And the right size: specially for text fields, don't use a 255 length (it's almost never needed) but try to think about the longest value (do you really have a customer with a family name of 255 characters? probably 50 will be enough).
+And the right size: especially for text fields, don't use a 255 length (it's almost never needed) but try to think about the longest value (do you really have a customer with a family name of 255 characters? probably 50 will be enough).
 
 ### Queries
 
@@ -131,7 +135,7 @@ If you're using a query in another query like illustrated below, if you just nee
 
 ![Query using another query](./images/query_on_query.webp)
 
-If, in this example, the query called `qryFirst` is only used by this second query, then you can modify the first query to only returned three columns.
+If, in this example, the query called `qryFirst` is only used by this second query, then you can modify the first query to only return three columns.
 
 The less data returned, the faster the query will be processed.
 
@@ -139,7 +143,7 @@ The less data returned, the faster the query will be processed.
 
 In a query, use `Is Null` which is native in the SQL standard while `IsNull()` is, in fact, a VBA feature.
 
-Using `IsNull()` is therefore slower than `Is Null`
+Using `IsNull()` is therefore slower than `Is Null`.
 
 So, avoid,
 
@@ -155,11 +159,11 @@ SELECT ... FROM ... WHERE (fld Is Null)
 
 #### Use Iif() and not NZ()
 
-NZ() is a VBA feature: if a field is equal to the Null value, NZ() allow to return something else.
+NZ() is a VBA feature: if a field is equal to the Null value, NZ() lets you return something else.
 
 Iif() is native SQL.
 
-Simplified illustration: if the hiring date is null, assumes that it was the 1st January 2000.
+Simplified illustration: if the hiring date is null, assume it was January 1st, 2000.
 
 ```SQL
 SELECT NZ([dteHiring], #2000-01-01#) As dteEntry
@@ -171,7 +175,7 @@ The same can be also written like:
 SELECT Iif([dteHiring] Is Null, #2000-01-01#, [dteHiring]) As dteEntry
 ```
 
-Why it's bad? **NZ() will return a variant object which is less performant because the .JET engine of MS Access treats Variants as Text**. In the first example `NZ([dteHiring], #2000-01-01#) As dteEntry`, the data type of dteEntry is therefore a text field, not a date.
+Why is it bad? **NZ() will return a variant object which is less performant because the .JET engine of MS Access treats Variants as Text**. In the first example `NZ([dteHiring], #2000-01-01#) As dteEntry`, the data type of dteEntry is therefore a text field, not a date.
 
 So, in the example below, we're not comparing a date versus another date but a date `dteEntry` with a text (the result of the `NZ()` formula). So .JET engine will convert `dteEntry` to a text too. The conversion is therefore done twice and this is inefficient.
 
@@ -181,15 +185,15 @@ With `Iif([dteHiring] Is Null, #2000-01-01#, [dteHiring]) As dteEntry` the type 
 
 ![Using Iif() as a criteria](./images/iif_date.webp)
 
-Here, .JET won't complain anymore and will immediately compare a date with an another date; faster.
+Here, .JET won't complain anymore and will immediately compare a date with another date; faster.
 
 #### Avoid VBA functions
 
-We've already see this. Use `Is Null` and not `IsNull()`, use `Iif` and not `NZ()` and this apply to a lot of others formulas.
+We've already seen this. Use `Is Null` and not `IsNull()`, use `Iif` and not `NZ()`, and this applies to a lot of other formulas.
 
 ##### Year()
 
-Year() is a VBA function. The query below requires that every single date are processed by Year() to determine the year before evaluating the criteria.
+Year() is a VBA function. The query below requires every single date to be processed by Year() to determine the year before evaluating the criteria.
 
 If there is an index on `dteHiring`, the index is ignored due to the VBA call.
 
@@ -203,7 +207,7 @@ Prefer the native SQL `BETWEEN` verb:
 SELECT ... FROM ... WHERE ([dteHiring] between '1/1/2018 00:00:00' and '12/31/2018 23:59:59')
 ```
 
-Here the index is well used, .JET also don't need to make VBA call record by record but can work on a set of records in one time.
+Here the index is well used, .JET also doesn't need to make a VBA call record by record but can work on a set of records at once.
 
 ##### DCount(), DSum()
 
@@ -213,7 +217,7 @@ Prefer to rewrite the query and use, f.i., sub-queries with a GROUP BY and the d
 
 If possible, it's better to use a sort feature on columns (so probably use indexes).
 
-In the following example, ORDER BY is done on a formula (a string concatenation), no indexes can be used here, the time needed to sort records is slower.
+In the following example, ORDER BY is done on a formula (a string concatenation); no indexes can be used here, so the time needed to sort records is longer.
 
 ```SQL
 SELECT ClientID, Name + " " + FirstName As FullName
@@ -245,7 +249,7 @@ Consider the following example:
 
 ![Orders](./images/sametype_orders.webp)
 
-MS Access will be able to make the join and will make things working but, implicitly, will convert any fields so they have the same data type and this will cost CPU.
+MS Access will be able to make the join and will make things work but, implicitly, will convert any fields so they have the same data type and this will cost CPU.
 
 In this example, if possible, change the data type of  `CustomerNumber` in `tblOrder` to a `Long integer` so the fields will be compatible.
 
@@ -256,7 +260,7 @@ Totals queries (those with a `GROUP BY` clause) can have both a `WHERE` clause a
 * `WHERE` is executed first **before aggregation**
 * `HAVING` is executed afterwards **when the totals have been calculated**
 
-Below, there is no `WHERE` clause: the calculation "How many invoices by customer" is made for all customers (several thousand maybe) and, once all this calculation is done, you just ask for figure for the customer 99. Rather very deficient.
+Below, there is no `WHERE` clause: the calculation "How many invoices by customer" is made for all customers (several thousand maybe) and, once all this calculation is done, you just ask for the figure for customer 99. Rather inefficient.
 
 ```SQL
 SELECT ClientID, Count(InvoiceID) AS HowMany
@@ -274,7 +278,7 @@ WHERE ClientID = 99
 GROUP BY ClientID;
 ```
 
-Here, .JET only take records for that customer before starting to count.
+Here, .JET only takes records for that customer before starting to count.
 
 #### If you're group on the primary key
 
@@ -288,7 +292,7 @@ FROM Employees
 GROUP BY EmployeeID, LastName
 ```
 
-But, here, GROUP on the LastName is unnecessary because EmployeeID is already unique: when using the primary key in the GROUP BY, any other fields are needless and due to their presence, .JET will make grouping for nothing. Unneeded actions...
+But, here, grouping on LastName is unnecessary because EmployeeID is already unique: when using the primary key in the GROUP BY, any other fields are needless and, due to their presence, .JET will make grouping for nothing. Unneeded actions...
 
 Because the primary key is in the GROUP BY clause, we can use such SQL:
 
@@ -312,7 +316,7 @@ Converting a macro to Visual Basic for Applications (VBA) code can enable certai
 
 To convert a macro to VBA, select the macro (don't open it, just select it) and, in the `Database Tools` tab click on `Convert Macros to Visual Basic`.
 
-Then, once done, you'll probably need to update your interface: if you've forms, you'll need to update f.i. buttons to fire the VBA module and no more the macros.
+Then, once done, you'll probably need to update your interface: if you've forms, you'll need to update f.i. buttons to fire the VBA module instead of the macros.
 
 If everything goes fine, just delete the converted macros.
 
@@ -339,10 +343,10 @@ Sub DoSomething()
 End Sub
 ```
 
-Option Explicit force the VB Engine to check that variables exists before starting to run the code and not every time a variable is accessed. This give a (small) little speed improvement.
+Option Explicit forces the VB Engine to check that variables exist before starting to run the code, and not every time a variable is accessed. This gives a small speed improvement.
 
 <AlertBox variant="caution">
-Option Explicit is more an excellent way of coding: variables should be declared before using them
+Option Explicit is above all an excellent coding practice: variables should be declared before being used.
 
 </AlertBox>
 
@@ -352,7 +356,7 @@ Take a look, in your code, if you're referencing too much external dependencies.
 
 From within the VB Editor, click on the `Tools` menu then select `References` and pay attention to the first items in the list, the checked one. Do you really need them?
 
-An easy way to answer to this question is: uncheck them and click on the `OK` button.
+An easy way to answer this question is to uncheck them and click on the `OK` button.
 
 Click on the `Debug` menu and choose `Compile`. If you get compilation errors (and no errors before), go back in the `References` window and check the library back.
 
@@ -369,17 +373,17 @@ Most of time, only two references are needed:
 
 #### Compact the database
 
-If you've temporary tables, remove them before.
+If you've temporary tables, remove them beforehand.
 
-Compacting the database will free up spaces, remove unneeded objects and records, updates internal statistics and this will have a positive impact on performance.
+Compacting the database will free up space, remove unneeded objects and records, and update internal statistics; this will have a positive impact on performance.
 
 #### Save the database as a .mde file
 
 **!!! Be careful !!!**
 
-A .mde file is smaller and faster than a normal MS Access (.accdb file) but you can't modify anymore the structure of such file.
+A .mde file is smaller and faster than a normal MS Access (.accdb file) but you can no longer modify the structure of such a file.
 
-With a .mde, you'll no more be able to change the design of a table, add a field, modify your forms, ... but just use them.
+With a .mde, you'll no longer be able to change the design of a table, add a field, modify your forms, ... but just use them.
 
 ![Save as - MDE](./images/save_as_mde.webp)
 

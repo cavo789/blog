@@ -13,6 +13,10 @@ language: en
 ---
 ![Working with Laravel events](/img/v2/laravel.webp)
 
+<TLDR>
+This article shows how to use Laravel's event/listener system to keep code decoupled: a `SampleEvent` carries an `Employee` object, a `SampleListener` (registered in `EventServiceProvider`) reacts to it and updates the employee's name, and removing the listener still leaves the base flow working — illustrating how events let future functionality hook into existing code without modifying it. A non-Laravel PHP example using `League\Event` is also referenced.
+</TLDR>
+
 When I started developing for the Joomla CMS (which was 15 years ago, in 2009), one of the things I liked most was the notion of events.
 
 For example *An article is about to be posted*, *An article has been posted*, *A user has registered*, these are actions that are announced by the CMS and to which you can react.
@@ -23,10 +27,10 @@ When *An article is about to be displayed* is generated, you can have one (or mo
 
 When *A user has registered* is thrown, you can do a lot of things like welcoming this person, adding them to a distribution list, sending them an email, but above all, and this is the most important for me, leave the door open to other actions that you don't yet know about.
 
-For a web developer, the best approach, I think is to generate events even if it's your own code and you know what to do.
+For a web developer, the best approach, I think, is to generate events even if it's your own code and you know what to do.
 
 <AlertBox variant="info" title="In fact, you never know">
-You never know because your software will have a life of its own, because over the years other features will be added and other developers will modify it. If you're working with events, it will be very easy for anyone to add a code "OK, when a new user registers, I need to"; something you didn't know then. Events are ideal for simplifying the addition of new functionality.
+You never know because your software will have a life of its own, because over the years other features will be added and other developers will modify it. If you're working with events, it will be very easy for anyone to add code like "OK, when a new user registers, I need to..."; something you didn't know then. Events are ideal for simplifying the addition of new functionality.
 
 </AlertBox>
 

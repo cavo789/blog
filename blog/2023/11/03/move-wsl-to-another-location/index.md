@@ -15,6 +15,10 @@ language: en
 
 > [https://dev.to/mefaba/installing-wsl-on-another-drive-in-windows-5c4a](https://dev.to/mefaba/installing-wsl-on-another-drive-in-windows-5c4a)
 
+<TLDR>
+This article shows how to move a WSL2 distribution off the C: drive to free up space, using `wsl --shutdown`, `wsl --export` to a `.tar` file, `wsl --unregister` to remove the original, and `wsl --import` to recreate it on another drive — the same export/unregister/import pattern also works to relocate the Docker Desktop WSL partition.
+</TLDR>
+
 By default, the Linux distribution is installed on your C: drive. If, like me, you have a D: drive with almost nothing on it, it can be really interesting to move Linux to that second drive.
 
 <!-- truncate -->
@@ -22,7 +26,7 @@ By default, the Linux distribution is installed on your C: drive. If, like me, y
 To do this:
 
 * Run `wsl --list --verbose` from a **PowerShell** console; you will get the name of your distribution (`Ubuntu` in my case),
-* From a **administrator PowerShell** console,
+* From an **administrator PowerShell** console,
   * Run `wsl --shutdown` to shutdown WSL,
   * On your second drive, create a temporary folder like `d:\wsl`,
   * Run `wsl --export Ubuntu d:\wsl\ubuntu.tar`,

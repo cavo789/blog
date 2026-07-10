@@ -18,13 +18,17 @@ language: en
 
 ![Write PHP unit tests using Pest](/img/v2/unit_tests.webp)
 
+<TLDR>
+This is a broad reference for Pest, the expressive PHPUnit wrapper for PHP: installation, the `it()`/`test()`/`expect()` syntax, assertions vs expectations, inline and shared datasets, reusing existing PHPUnit test cases, architectural tests (enforcing rules like "no validation in controllers"), snapshot testing, custom global functions in `tests/Pest.php`, converting from PHPUnit, and VSCode tooling (Better Pest, Pest Snippets) including Docker-container setup.
+</TLDR>
+
 If you think writing unit tests in PHP is fun, stay in the room; the rest of you please leave. And then everyone leaves, including the person who asked the question.
 
-Writing “old-fashioned” unit tests with PHPUnit is so boring that almost nobody does it.
+Writing *old-fashioned* unit tests with PHPUnit is so boring that almost nobody does it.
 
 And for some time now, [https://pestphp.com/](https://pestphp.com/) has come along and totally changed the way things are done.
 
-Pest is a wrapper around PhpUnit so, for instance, every command line arguments supported by PhpUnit can be used for Pest.
+Pest is a wrapper around PhpUnit so, for instance, every command-line argument supported by PhpUnit can be used for Pest.
 
 <!-- truncate -->
 
@@ -46,7 +50,7 @@ From now, we can run `./vendor/bin/pest` to run our Pest tests.
 
 Just like PHPUnit, Pest will process every files in folders `tests/Feature` and `tests/Unit` having the `Test` suffix like f.i. `ShoppingBasketTest.php`.
 
-#### What means $this in a test?
+#### What does $this mean in a test?
 
 In our `tests/Pest.php` file, we've this line:
 
@@ -124,7 +128,7 @@ There is also a way to create a shared dataset which is probably better when the
 
 ### Reuse PHPUnit tests cases without changes
 
-This is damned simply, we just need to add `/** @test */` as the doc block before the test scenario.
+This is damned simple: we just need to add `/** @test */` as the doc block before the test scenario.
 
 For instance
 
@@ -136,7 +140,7 @@ And from now that test can be fired using `./vendor/bin/pest`.
 
 > [https://pestphp.com/docs/arch-testing](https://pestphp.com/docs/arch-testing)
 
-Using Pest (as from v2), we can ensure some architectural consistencies like not using validations in a controller (using `$request->validate(...)`) but forcing to use the Form request control classes.
+Using Pest (as from v2), we can ensure some architectural consistencies, like not using validations in a controller (using `$request->validate(...)`) but forcing the use of Form request control classes instead.
 
 The architectural plugin will not help to fire unit tests but will scan the project and will ensure some rules are followed.
 

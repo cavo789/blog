@@ -18,11 +18,15 @@ updates:
 ---
 ![How to install Oh-My-ZSH](/img/v2/zsh.webp)
 
+<TLDR>
+This article walks through installing Zsh and Oh My Zsh on Linux, then upgrading the prompt with the Powerlevel10k theme and trimming its default username/hostname display. It also highlights a handful of daily-use features worth knowing: the `take` function to create and enter a folder in one step, `cd ...` chains to jump up multiple parent directories, <kbd>TAB</kbd>-driven autocompletion, and Git aliases like `gst` and `gwip`.
+</TLDR>
+
 ZSH is a powerful alternative to Linux Bash offering a lot of features like auto-completion (I like this so much), plugins and even themes.
 
-The idea here is to empower your Linux console, both the command line like, f.i. new aliases out-of-the-box and make the look and feel even better.
+The idea here is to empower your Linux console: improve the command line (f.i. new aliases out-of-the-box) and make the look and feel even better.
 
-I've chosen [Oh My ZSH](https://ohmyz.sh/) since years, let's see how to install it followed by a discovering some features.
+I've been using [Oh My ZSH](https://ohmyz.sh/) for years; let's see how to install it, followed by discovering some features.
 
 <!-- truncate -->
 
@@ -42,11 +46,11 @@ And very quickly you can see a change in your console:
 
 ![ZSH has been installed](./images/zsh_install.webp)
 
-One first change concern the prompt. Right now, I'm in my blog folder and it's a git repository. So, Oh-My-ZSH is showing me that info and, on top, the current branch I'm working on (branch `master` here).
+The first change concerns the prompt. Right now, I'm in my blog folder and it's a git repository. So, Oh-My-ZSH is showing me that info and, on top, the current branch I'm working on (branch `master` here).
 
 Nice but, we can do much better.
 
-Time to install a template engine called <Link to="/blog/powerlevel10k_sandbox">Powerlevel10k</Link> ([https://github.com/romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k))? You can read my previous article <Link to="/blog/powerlevel10k_sandbox">Customize your Linux prompt with Powerlevel 10k</Link> if you wish to just test it. In the next paragraph, I'll well install PowerLevel10 on my computer so let's go ahead.
+Time to install a template engine called <Link to="/blog/powerlevel10k_sandbox">Powerlevel10k</Link> ([https://github.com/romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k)). You can read my previous article <Link to="/blog/powerlevel10k_sandbox">Customize your Linux prompt with Powerlevel 10k</Link> if you wish to just test it. In the next paragraph, I'll install Powerlevel10k on my computer, so let's go ahead.
 
 ### Powerlevel10k
 
@@ -62,25 +66,25 @@ The last thing is to close your current Linux console and start a new one. The f
 
 ![ZSH configuration](./images/zsh_configuration.webp)
 
-Just answer to all questions and when it's time to define your preference, just select the option you like the most.
+Just answer all the questions and when it's time to define your preference, just select the option you like the most.
 
 ![ZSH - Set your preferences](./images/zsh_preferences.webp)
 
-When done, here is my prompt will look like:
+When done, here is what my prompt will look like:
 
 ![Powerlevel10k - New prompt](./images/powerlevel10k_prompt.webp)
 
-And this is so much better (and much prettier). Quickly, I know I'm in my `blog` folder, that it's a Git repository, that I'm on branch `main` and `?1` means I've one *untracked* or *modified* file on my computer and not yet pushed to the central repo (Github here).
+And this is so much better (and much prettier). Quickly, I know I'm in my `blog` folder, that it's a Git repository, that I'm on branch `main` and `?1` means I've one *untracked* or *modified* file on my computer and not yet pushed to the central repo (GitHub here).
 
-At the right, we can see I'm connected as `root` on my computer machine. It is red just to notify I've root access.
+At the right, we can see I'm connected as `root` on my machine. It's shown in red just to indicate I have root access.
 
 #### Customizing the prompt
 
 Ok, let's remove that part since, yeah, it's my home computer, it's normal here I'm root since I've just one local account and that information is then meaningless to me.
 
-Powerlevel10k has a great documentation and by reading [How do I add username and/or hostname to prompt?](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#how-do-i-add-username-andor-hostname-to-prompt), we just learn how to remove it by the same way.
+Powerlevel10k has great documentation, and by reading [How do I add username and/or hostname to prompt?](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#how-do-i-add-username-andor-hostname-to-prompt), we learn how to remove it the same way.
 
-Just edit the `~/.p10k.zsh` file, search for `POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS` and then retrieve his `context` entry and comment the line. Save the file, open a new console and bingo, the right side of the prompt don't contain anymore the username.
+Just edit the `~/.p10k.zsh` file, search for `POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS` and then find its `context` entry and comment out the line. Save the file, open a new console and bingo, the right side of the prompt no longer contains the username.
 
 ![Powerlevel10k - Prompt without username](./images/powerlevel10k_prompt_no_user.webp)
 
@@ -99,9 +103,9 @@ Be honest, `take /tmp/new_folder` is easier and faster than `mkdir -p /tmp/new_f
 
 A second, so stupid but so valuable feature is `cd ..` followed by two or three or ... dots.
 
-Imagine you're in the folder `/tmp/new_folder/a/b/c/d/e/f` and you want to use `cd ..` to jump back to parent `a`. Using ZSH, I can just type `cd ......` and that's cool. `cd ..` jump to the first parent, `cd ...` to the grand parent and so on.
+Imagine you're in the folder `/tmp/new_folder/a/b/c/d/e/f` and you want to use `cd ..` to jump back to parent `a`. Using ZSH, I can just type `cd ......` and that's cool. `cd ..` jumps to the first parent, `cd ...` to the grandparent and so on.
 
-There is also one king key with ZSH and it's <kbd>TAB</kbd>. Imagine you're in a folder having multiple sub-folders. Just type `cd` (the space is really important) and press <kbd>TAB</kbd>. You'll then get the list of sub-folders. Navigate between suggestions by using <kbd>TAB</kbd> and press <kbd>ENTER</kbd> to select one.
+There is also one key feature with ZSH and it's <kbd>TAB</kbd>. Imagine you're in a folder having multiple sub-folders. Just type `cd` (the space is really important) and press <kbd>TAB</kbd>. You'll then get the list of sub-folders. Navigate between suggestions by using <kbd>TAB</kbd> and press <kbd>ENTER</kbd> to select one.
 
 ![ZSH - CD with tab](./images/zsh_cd.webp)
 
@@ -113,8 +117,8 @@ Then, continue, press <kbd>TAB</kbd> again and you'll be able to select a sub-fo
 
 ![ZSH - head command auto-completion](./images/zsh_head_autocompletion.webp)
 
-In term of aliases, one I use several times a day is `gst` for `git status`. You can retrieve the list of all aliases for Git in your `/root/.oh-my-zsh/plugins/git/git.plugin.zsh` file. A nice one is `gwip` to commit all your changes as `work in progress` allowing you to store your current work, checkout another branch (f.i. to work on an issue) and when done, checkout back your feature branch and retrieve your work. Easy.
+In terms of aliases, one I use several times a day is `gst` for `git status`. You can retrieve the list of all aliases for Git in your `/root/.oh-my-zsh/plugins/git/git.plugin.zsh` file. A nice one is `gwip` to commit all your changes as `work in progress` allowing you to store your current work, checkout another branch (f.i. to work on an issue) and when done, checkout back your feature branch and retrieve your work. Easy.
 
-And for sure, that are more, I just probably don't know they're part of ZSH anymore.
+And for sure, there are more — I probably don't even know they're part of ZSH anymore.
 
-There are much, much more like <Link to="/blog/tags/zsh">plugins</Link>. I'll write other posts for them.
+There is much, much more, like <Link to="/blog/tags/zsh">plugins</Link>. I'll write other posts about them — next up, <Link to="/blog/zsh-plugin-autosuggestions">zsh-autosuggestions</Link> and <Link to="/blog/zsh-syntax-highlighting">zsh-syntax-highlighting</Link>, two must-haves once Oh-My-Zsh is in place.

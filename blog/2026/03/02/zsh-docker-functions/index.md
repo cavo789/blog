@@ -29,7 +29,7 @@ In this article, I'll share some of the ZSH functions I use for Docker managemen
 
 <!-- truncate -->
 
-Because these functions rely on `fzf`, if you don't have `fzf` installed, you can install it using your package manager (e.g., `sudo apt-get install fzf` on Debian-based systems).
+Because these functions rely on `fzf`, if you don't have `fzf` installed, you can install it using your package manager (e.g., `sudo apt-get install fzf` on Debian-based systems). New to it? Check out <Link to="/blog/linux-fzf-introduction">Introduction to fzf - Fuzzy Finder</Link> first.
 
 ## Start a new terminal session in a running Docker container
 
@@ -39,7 +39,8 @@ So, by simply running `dex` in your terminal, you can easily access any of your 
 
 ![Using dex to start a new terminal session in a running Docker container](./images/dex.webp)
 
-<AlertBox variant="tip" title="Press Enter to select the container and start the session or press Ctrl+E to get the command in your prompt for editing (useful if you want to modify the command before running it like disabling the entrypoint, mounting a volume, ...).">
+<AlertBox variant="tip" title="Editing the command before running it">
+Press Enter to select the container and start the session, or press Ctrl+E to get the command in your prompt for editing — useful if you want to modify it before running it, for example to disable the entrypoint or mount a volume.
 </AlertBox>
 
 <AlertBox variant="tip" title="Root access">
@@ -56,11 +57,11 @@ Run `dex any_pattern` to filter the list of containers to the ones with that pat
 
 Press <kbd>CTRL</kbd>+<kbd>A</kbd> to select all containers at once.
 
-In the right pane, you can see information about the selected container(s) such as the container name, image, status, and ports. This can help you make informed decisions about which containers to stop. You can too see the live resource usage of the selected container(s) (CPU, memory, network I/O, block I/O) to identify which containers are consuming the most resources before deciding to stop them.
+In the right pane, you can see information about the selected container(s) such as the container name, image, status, and ports. This can help you make informed decisions about which containers to stop. You can also see the live resource usage of the selected container(s) (CPU, memory, network I/O, block I/O) to identify which containers are consuming the most resources before deciding to stop them.
 
 ![Using dstop to stop one or more running Docker containers](./images/dstop.webp)
 
-## Access to logs of a running Docker container
+## Access logs of a running Docker container
 
 The `dlogs` function allows you to access the logs of a running Docker container. It also uses `fzf` to provide an interactive interface for selecting the container whose logs you want to view.
 
@@ -68,7 +69,7 @@ In the right pane, you can see the logs of the selected container in real-time. 
 
 ![dlogs function to access logs of a running Docker container](./images/dlogs.webp)
 
-## Make some cleaning, remove unused Docker containers, images, volumes and networks
+## Clean up unused Docker containers, images, volumes, and networks
 
 The dnuke function acts as an intelligent, interactive **Docker Cleanup Wizard** designed to reclaim disk space without the risk of blindly deleting resources. Unlike a standard `docker system prune`, `dnuke` first scans your environment and presents a dynamic **Execution Plan**, showing you exactly what can be cleaned up (stopped containers, dangling images, unused volumes, and build cache).
 
@@ -130,11 +131,11 @@ if [[ -o interactive ]]; then
 fi
 ```
 
-Now, create the `~/.zsh/docker-fns` directory and move the individual function files (`dex`, `dlogs`, `dnuke`, `dops`, `drun`, `dstop`) into that directory. This way, you can keep your functions organized and easily maintainable.
+Now, create the `~/.zsh/docker-fns` directory and move the individual function files (`dex`, `dlogs`, `dnuke`, `dops`, `drun`, `dstop`) into that directory. This way, you can keep your functions organized and easily maintainable — the same `fpath`/`autoload` pattern is explained in more detail in <Link to="/blog/modular-zsh-workflow">Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro</Link>.
 
 <ProjectSetup folderName="~/.zsh/docker-fns" createFolder={true} >
   <Guideline>
-    Now, edit your `~/.zshrc` file and add the lines mentioned above, in the blog post, to source the `docker.zsh` file and make the functions available in your terminal. This will allow you to use the `dex`, `dlogs`, `dnuke`, `dops`, and `dstop` functions for managing your Docker containers directly from your terminal.
+    Now, edit your `~/.zshrc` file and add the lines mentioned above, in the blog post, to source the `docker.zsh` file and make the functions available in your terminal. This will allow you to use the `dex`, `dlogs`, `dnuke`, `dops`, `drun`, and `dstop` functions for managing your Docker containers directly from your terminal.
   </Guideline>
   <Snippet filename="_d_check_env" source="./files/_d_check_env" />
   <Snippet filename="_d_print_cmd" source="./files/_d_print_cmd" />

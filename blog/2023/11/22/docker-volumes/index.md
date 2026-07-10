@@ -13,11 +13,15 @@ language: en
 ---
 ![Using volumes with Docker, use cases](/img/v2/docker_concepts.webp)
 
+<TLDR>
+This article demonstrates Docker data persistence using a simple execution-counter container: no volume means data resets on every restart; a Docker-managed volume (declared in `compose.yaml`) persists data across restarts but stores files outside your project (accessible via Docker Desktop or the VSCode Docker extension); and a mounted/bind volume (`./data:/data`) syncs data straight into your project folder on disk — with a note on using `user: 1000:1000` to avoid `root`-owned files.
+</TLDR>
+
 When working with a Docker container, data can be persistent or not. Imagine you're creating a localhost website with Joomla, WordPress or any other tool (Laravel, Symfony, etc.).
 
 You've perfectly created the various Docker files needed to run the local site, you've run the command `docker compose up --detach` to start the containers and now you're busy installing the site.  After a few moments, your local site is up and you can start developing its functionalities.
 
-By default, if you haven't taken any precautions, the moment you stop the container (`docker compose down`), you'll kill your site, i.e. by default, having not taken care to save your data (your site, your database), everything will be lost and reset the next time you run `docker compose up --detach`. Well... Maybe that was your wish (something totally ephemeral); maybe not;
+By default, if you haven't taken any precautions, the moment you stop the container (`docker compose down`), you'll kill your site, i.e., having not taken care to save your data (your site, your database), everything will be lost and reset the next time you run `docker compose up --detach`. Well... Maybe that was your wish (something totally ephemeral); maybe not.
 
 <!-- truncate -->
 
@@ -129,7 +133,7 @@ $ docker volume rm demo_counter_data
 Error response from daemon: remove demo_counter_data: volume is in use - [b976c92eed6ed4e54f6ec75d652b8977bbbd86392e604216dd61d0c446e1fc0c]
 </Terminal>
 
-Indeed, you can't remove a volume if there is still, at least, one container who use it so, you should run `docker compose down && docker volume rm demo_counter_data` or, simpler, `docker compose down --volumes`. The `--volumes` flag says to remove any volume declared in the `compose.yaml` file.
+Indeed, you can't remove a volume if there is still at least one container using it, so you should run `docker compose down && docker volume rm demo_counter_data` or, simpler, `docker compose down --volumes`. The `--volumes` flag says to remove any volume declared in the `compose.yaml` file.
 
 #### Location of the volumes
 
@@ -163,7 +167,7 @@ One of the easiest ways to access the files contained in a volume is to use the 
 
 ![Docker Desktop - List of volumes](./images/docker_desktop_volumes.webp)
 
-By clicking on the volume name (`demo_counter_data` here)
+By clicking on the volume name (`demo_counter_data` here), you'll see the list of files it contains.
 
 ![Docker Desktop - Show the data folder](./images/showing_data.webp)
 
@@ -192,9 +196,9 @@ Now, in the left pane, you'll see a new button for Docker. Click on it.
 
 In the new window, you'll get the list of containers, the list of images and other things.
 
-Deploy the list of containers, click on `demo/counter` (our container) and display the list of files.
+Expand the list of containers, click on `demo/counter` (our container) and display the list of files.
 
-Open the `data` root folder and right-click on `counter.txt`, our counter file and select `Open`.
+Open the `data` root folder and right-click on `counter.txt`, our counter file, and select `Open`.
 
 Now, you can edit that file from vscode, make changes and save them.
 
@@ -211,13 +215,13 @@ Yes, accessing files using vscode works too.
 
 A mounted volume is synchronized with your hard disk. Instead of letting Docker manage everything for you, you'll decide where files should be stored.
 
-Let's make a few cleaning right now, please run `docker compose down --volumes` to kill the volume used in the previous chapter and kill the docker container.
+Let's do some cleanup right now; please run `docker compose down --volumes` to kill the volume used in the previous chapter and kill the docker container.
 
 Update the `compose.yaml` file like this:
 
 <Snippet filename="compose.yaml" source="./files/compose.mounted_volumes.yaml" />
 
-The syntax now is, just a few, different: we don't have a `volumes` entry at the bottom of the file but we've used a relative notation like `./data:/data`.  So, the `./data` local folder (on your hard disk) has to be synchronized with the `/data` folder of the container.
+The syntax now is just slightly different: we don't have a `volumes` entry at the bottom of the file but we've used a relative notation like `./data:/data`.  So, the `./data` local folder (on your hard disk) has to be synchronized with the `/data` folder of the container.
 
 By running `docker compose up --detach && docker compose exec counter /counter.sh` we'll run our counter and expect to see `You have executed this script 1 times.` but you'll probably get an error:
 

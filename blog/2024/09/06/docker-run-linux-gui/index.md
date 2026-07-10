@@ -11,8 +11,12 @@ tags:
   - linux
 language: en
 ---
-<!-- cspell:ignore xeyes,xhost,dearmor,dpkg,favourite -->
+<!-- cspell:ignore xeyes,xhost,dearmor,dpkg -->
 ![Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP](/img/v2/docker_gui.webp)
+
+<TLDR>
+This follow-up article shows how to build custom Docker images (starting with a minimal `xeyes` example) that run Linux GUI apps — Firefox, Chrome, GIMP — as native windows on the host, by sharing the `DISPLAY` environment variable and the `/tmp/.X11-unix` socket with the container and granting X server access via `xhost +local:docker`.
+</TLDR>
 
 In my <Link to="/blog/docker-gui-in-browser">previous post</Link>, I've illustrated how to start Firefox or GIMP in a browser. This was the first part of this series about graphical user interfaces because, until very recently, I didn't know it was possible to run GUIs with Docker and that's just amazing.
 
@@ -46,21 +50,21 @@ Yes, it's true, it's useless, but wow! it's possible to run a GUI from a contain
 
 ## Creating our own Firefox Docker image
 
-So, once you've understood the very basic example of xeyes, you can think out-of-the-box: which GUI can I install using Docker.
+So, once you've understood the very basic example of xeyes, you can think out-of-the-box: which GUI can I install using Docker?
 
-Let's try Firefox... By using my favourite search engine, I've found this post: [Install Official Firefox .deb in Dockerfile](https://jetthoughts.com/blog/install-official-firefox-deb-in-dockerfile-docker-devops/).
+Let's try Firefox... By using my favorite search engine, I've found this post: [Install Official Firefox .deb in Dockerfile](https://jetthoughts.com/blog/install-official-firefox-deb-in-dockerfile-docker-devops/).
 
-In a Dockerfile and with small changes, this give this:
+In a Dockerfile and with small changes, this gives us this:
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile.part2" />
 
-To build the image, please run the next command (and think to change `cavo789` by your pseudo): `docker build --tag cavo789/firefox .`.
+To build the image, please run the next command (and remember to replace `cavo789` with your username): `docker build --tag cavo789/firefox .`.
 
 And to start Firefox, just run `docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY cavo789/firefox`.
 
 ![Running Firefox in a window](./images/firefox.webp)
 
-As you know, my OS is Windows 11 and I'm running Linux thanks the amazing WSL2 technology. So, in short, here above, you can see I've started Firefox for Debian as a windowed application in my Windows.
+As you know, my OS is Windows 11 and I'm running Linux thanks to the amazing WSL2 technology. So, in short, here above, you can see I've started Firefox for Debian as a windowed application in my Windows.
 
 The old MS-DOS developer in me continues to be amazed by this possibility.
 

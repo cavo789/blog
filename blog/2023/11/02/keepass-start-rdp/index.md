@@ -13,6 +13,10 @@ language: en
 ---
 ![KeePass - Overriding the URL field](/img/v2/keepass.webp)
 
+<TLDR>
+This article shows how to repurpose the KeePass `URL` field to launch external programs instead of a web browser, using the `cmd://` prefix and entry placeholders: starting PuTTY with saved credentials, opening WinSCP directly to an SFTP path, or launching a Windows Remote Desktop (`mstsc.exe`) connection to a saved host.
+</TLDR>
+
 The `url` field can also be used to start a program and, thus, not only to contain a valid URL.
 
 The official documentation is located here: [https://keepass.info/help/base/autourl.html](https://keepass.info/help/base/autourl.html).
@@ -25,7 +29,7 @@ If you don't have PuTTY installed on your machine, download it from [https://www
 
 Download it and save `putty.exe` in a directory present in your PATH.
 
-To do this, even if you're not an administrator of your machine, just start a MS-DOS console and run `echo %PATH%`. You'll then see the list of directories already present and choose the one where you can copy a new file. Then copy `putty.exe` in that folder. So, from now, you can just run `putty.exe` from anywhere.
+To do this, even if you're not an administrator of your machine, just start a MS-DOS console and run `echo %PATH%`. You'll then see the list of directories already present and choose the one where you can copy a new file. Then copy `putty.exe` in that folder. So, from now on, you can just run `putty.exe` from anywhere.
 
 Update your KeePass entry and set the `URL` property to the following instruction: `cmd://putty.exe  -load "Default Settings" {S:host} -l {USERNAME} -pw {PASSWORD}`
 
@@ -45,7 +49,7 @@ Make sure you have filled in the `ip` advanced property. You can also set the `p
 
 </AlertBox>
 
-## Start a RDP/TS connection from KeePass
+## Start an RDP/TS connection from KeePass
 
 > [https://keepass.info/help/base/autourl.html](https://keepass.info/help/base/autourl.html)
 

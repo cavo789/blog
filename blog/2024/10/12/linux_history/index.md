@@ -14,6 +14,10 @@ language: en
 <!-- cspell:ignore DOSKEY,HISTIGNORE,HISTFILE,gacom -->
 ![Linux - Working with the history of your last fired actions](/img/v2/linux_tips.webp)
 
+<TLDR>
+This article covers working with shell history in Bash/ZSH: locating the history file via `$HISTFILE`, excluding sensitive commands with `HISTIGNORE`/`HISTORY_IGNORE` or a leading space (`hist_ignore_space`), filtering with `history | grep`, fuzzy-searching via <kbd>CTRL</kbd>+<kbd>R</kbd>, using zsh-autosuggestions to sidestep manual history search entirely, and deleting specific entries with `history -d`.
+</TLDR>
+
 For me, one of the undeniable strengths of the command line under Linux is the management of the history of previously executed commands.
 
 To be able to press the <kbd>Up</kbd> or <kbd>Down</kbd> keys on the keyboard to return to previously run commands, wow.
@@ -33,7 +37,7 @@ First things first, to display the list of commands you've entered in the past, 
 By default, your history is stored in a file called `.bash_history` in your home directory. You can display the last five commands f.i. by running `tail -n5 ~/.bash_history`.
 
 <AlertBox variant="info" title="On my own, since I'm using ZSH, my history is in `~/.zsh_history`.">
-The easiest way to determine where is stored your history is to show the content of the `$HISTFILE` variable like this: `echo $HISTFILE`.
+The easiest way to determine where your history is stored is to show the content of the `$HISTFILE` variable like this: `echo $HISTFILE`.
 </AlertBox>
 
 <AlertBox variant="info">
@@ -47,9 +51,9 @@ As I'm a *root user* on the server, I simply consulted his history.  All I had t
 
 The `HISTIGNORE` (for Bash) or the `HISTORY_IGNORE` (ZSH) variable can be used to specify some patterns you don't want to be saved in your history file.
 
-Let's take an example: `HISTIGNORE="sudo *"` will prevent all commands starting with `sudo` to be written in the history file.
+Let's take an example: `HISTIGNORE="sudo *"` will prevent all commands starting with `sudo` from being written to the history file.
 
-You can also use a pattern like `HISTIGNORE="*password*"` to prevent commands having the word *password* to be written.
+You can also use a pattern like `HISTIGNORE="*password*"` to prevent commands containing the word *password* from being written.
 
 To be able to specify more than one rule, just use the colon `:` character like in `HISTIGNORE="sudo *:*password*"`.
 
@@ -79,9 +83,9 @@ On my own, I don't need this because I'm using <kbd>CTRL</kbd>+<kbd>R</kbd> unde
 
 ## CTRL-R is your friend
 
-The <kbd>CTRL</kbd>+<kbd>R</kbd> keystrokes will display a small popup window (both in Bash or ZSH) and you'll be able to quickly search in your command’s history.
+The <kbd>CTRL</kbd>+<kbd>R</kbd> keystrokes will display a small popup window (both in Bash or ZSH) and you'll be able to quickly search in your command's history.
 
-Below the look&feel for ZSH; much better and easier than under Bash.
+Below is the look and feel for ZSH; much better and easier than under Bash.
 
 ![CTRL-R in ZSH](./images/ctrl_r.webp)
 
@@ -89,7 +93,7 @@ So press <kbd>CTRL</kbd>+<kbd>R</kbd> then start to type some letters like *gaco
 
 ## Autosuggestions in the console using ZSH
 
-By using ZSH and zsh-autosuggestion (see <Link to="/blog/zsh-plugin-autosuggestions">my previous post</Link>) you even don't need anymore to care about the history.
+By using ZSH and zsh-autosuggestion (see <Link to="/blog/zsh-plugin-autosuggestions">my previous post</Link>) you don't even need to worry about the history anymore.
 
 Just start to type the first letters of a command like **doc** and all your previous **docker** fired statements will be accessible (just use navigation keys to select a previous command or type some more letters to be more restrictive).
 
@@ -106,7 +110,7 @@ So if the output of `history` is the one below, I can remove the `vi` line by ru
 <Terminal typewriter source="./files/terminal-1.txt" />
 
 <AlertBox variant="info">
-But, then the command `history -d 2130` will appears in the history, of course. So editing the file using a text editor is perhaps more ... discreet.
+But, then the command `history -d 2130` will appear in the history, of course. So editing the file using a text editor is perhaps more ... discreet.
 
 </AlertBox>
 

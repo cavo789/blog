@@ -13,13 +13,17 @@ language: en
 ---
 ![Markdown - Convert Excel ranges to Markdown tables](/img/v2/markdown.webp)
 
+<TLDR>
+This article introduces XLS2MD (xls2md.avonture.be, source on GitHub), a free online tool that converts a copied Excel range directly into a Markdown table: select cells in Excel, copy, paste into the site, and get instant Markdown output.
+</TLDR>
+
 See also <Link to="/blog/markdown-csv2md">Markdown - Convert CSV to Markdown tables</Link>.
 
 I'm a big fan of Markdown for my documentation, and from time to time I have to convert a range in Excel into a table to copy and paste into my documentation.
 
-Years ago, I've found this repo [https://github.com/jonmagic/copy-excel-paste-markdown](https://github.com/jonmagic/copy-excel-paste-markdown) and it's was the trigger for creating an online application in VueJS to make the magic happens.
+Years ago, I found this repo [https://github.com/jonmagic/copy-excel-paste-markdown](https://github.com/jonmagic/copy-excel-paste-markdown) and it was the trigger for creating an online application in VueJS to make the magic happen.
 
-In practical terms, I open my Excel file, select a range (a series of columns and rows) f.i. `$A$1:$J:$50`, press <kbd>CTRL</kbd>+<kbd>C</kbd> on the keyboard, switch to my [Markdown - Convert Excel ranges to Markdown tables](https://xls2md.avonture.be/) website, press <kbd>CTRL</kbd>+<kbd>V</kbd> and the table is converted.
+In practical terms, I open my Excel file, select a range (a series of columns and rows) f.i. `$A$1:$J$50`, press <kbd>CTRL</kbd>+<kbd>C</kbd> on the keyboard, switch to my [Markdown - Convert Excel ranges to Markdown tables](https://xls2md.avonture.be/) website, press <kbd>CTRL</kbd>+<kbd>V</kbd> and the table is converted.
 
 <!-- truncate -->
 

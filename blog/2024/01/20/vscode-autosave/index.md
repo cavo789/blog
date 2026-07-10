@@ -13,11 +13,15 @@ language: en
 ---
 ![Autosave feature in VSCode](/img/v2/vscode_tips.webp)
 
-How many times have you modified a file in vscode (and forgotten to save the modification) in order to refresh it from your web page, run the script from your console, etc., and then thought *Oh no, damn, it still doesn't work*?
+<TLDR>
+This article shows how to enable VSCode's Autosave feature, either through the Settings UI (`Files: Auto save` set to `onFocusChange`) or by adding the corresponding line to `settings.json`, so changes are saved automatically whenever the editor loses focus instead of relying on manual `Ctrl+S`.
+</TLDR>
 
-And it can take several minutes and back and forth before, damned, silly me, I didn't save my modification.
+How many times have you modified a file in VSCode (and forgotten to save the modification) in order to refresh it from your web page, run the script from your console, etc., and then thought *Oh no, damn, it still doesn't work*?
 
-And even more so when you've done a Search&Replace in several files; some having been saved and others not.
+And it can take several minutes of back and forth before — damn it, silly me — you realize you didn't save your changes.
+
+And even more so when you've done a Search & Replace in several files; some having been saved and others not.
 
 Let's see how to avoid this.
 

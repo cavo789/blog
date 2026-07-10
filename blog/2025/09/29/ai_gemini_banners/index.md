@@ -34,7 +34,7 @@ First, and somewhat by chance, I asked Gemini to generate a clipart-style image 
 
 A few days later, I discovered this GitHub repository: [Awesome-Nano-Banana-images](https://github.com/PicoTrex/Awesome-Nano-Banana-images/blob/main/README_en.md) and just had one desire, to try.
 
-There was an example: uploading a image (my meerkat character) and use this prompt: _Please create a pose sheet for this illustration, making various poses!_
+There was an example: uploading an image (my meerkat character) and using this prompt: _Please create a pose sheet for this illustration, making various poses!_
 
 ![Various poses](./images/different_positions.webp)
 
@@ -53,7 +53,7 @@ And after just a few seconds, the unimaginable happened: I received a flood of o
 
 ![Various poses - Result](./images/different_positions_result.webp)
 
-Repeating the same prompt again and again and got others ones:
+Repeating the same prompt again and again, I got other ones:
 
 ![Different poses - 1](/img/meerkat/suricate_positions_1.webp)
 
@@ -84,3 +84,5 @@ Often, the image was impressive from the very first result, but sometimes I woul
 My next article banner:
 
 ![Old blog post banner](./images/old_blog_post_notice.webp)
+
+Images aren't the only place Gemini pulls its weight on this blog: I also use it to draft <Link to="/blog/gemini-tldr">automated TL;DR summaries</Link>, and I flag every AI-assisted post the same way — see <Link to="/blog/docusaurus-ai-gemini">how I indicate AI-assisted content</Link> in Docusaurus.

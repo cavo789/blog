@@ -14,6 +14,10 @@ language: en
 ---
 ![Batch edit of environment file](/img/v2/bash.webp)
 
+<TLDR>
+This article provides a reusable `updateEnv` Bash function that safely batch-updates `.env` files: it takes a variable name, value, and file, using `grep`/`sed` to update the variable if present or append it if not, with an optional flag to skip adding variables that don't already exist — useful for consistent multi-server deployments.
+</TLDR>
+
 When deploying a project on servers, we need to pay particular attention to the `.env` file. This file is crucial and will determine whether our application works properly (or crashes).
 
 The normal way of doing things is to run a `git clone` command to get the latest version of the application from a repository (branch `test` for a test server, `dev` for an acceptance server, `main` for a production server).
@@ -24,7 +28,7 @@ And that's where the obligation to be meticulous begins.
 
 <!-- truncate -->
 
-Depending on the server (is this a test server or UAt or PROD?), settings won't be the same. We'll for sure not enable debugging on a production one while we'll for a test / uat server. Credentials for the database f.i. will differ for each server. And so on.
+Depending on the server (is this a test server or UAT or PROD?), settings won't be the same. We'll definitely not enable debugging on a production server, while we will on a test/UAT one. Credentials for the database f.i. will differ for each server. And so on.
 
 So, each time the `.env` file is created, the normal way of doing things is to open it in an editor and start to make changes.
 
@@ -35,7 +39,7 @@ Below a Linux function that can help. You can just copy/paste it in your console
 The `updateEnv` function will receive three arguments.
 
 * A variable name like `APP_DEBUG`,
-* The value was wish to set in the file f.i. `false`
+* The value we wish to set in the file, f.i. `false`
 * And the name of the `.env` file to update (probably `.env`)
 
 The function will use `grep` and `sed` (see my <Link to="/blog/linux-sed-tips">Search and replace (or add) using sed</Link> article to learn more) to update the variable or add it to the file.
@@ -57,7 +61,7 @@ Now, we can run in our console:
     newValue="$2"
     file="${3:-.env}"
 
-    # search the variable in the file. If found, update. It not, add the entry
+    # search the variable in the file. If found, update. If not, add the entry
     grepStatus="$(grep -E -q "^${variable}\s?=" "${file}" \
       && (sed -i -r "s~${variable}(\s?)=(\s?).*~${variable}\1=\2${newValue}~" "${file}" && echo "UPDATED") \
       || (sed -i -e "\$a${variable}=${newValue}" "${file}" && echo "ADDED"))"
@@ -89,9 +93,9 @@ We can see four variables have been updated and one has been added (`CAN_REGISTE
 
 ## Adding a skip boolean
 
-This version introduce a *Should we add the variable?* flag i.e. should we absolutely set a variable in the environment file if not yet there?
+This version introduces a *Should we add the variable?* flag, i.e. should we absolutely set a variable in the environment file if it's not yet there?
 
-In the example here above, we've seen `updateEnv "APP_DEBUG" "false" "${dotEnv}"`. In case of `APP_DEBUG` is not yet present, the `updateEnv` function will add the variable.
+In the example here above, we've seen `updateEnv "APP_DEBUG" "false" "${dotEnv}"`. If `APP_DEBUG` is not yet present, the `updateEnv` function will add the variable.
 
 And now, if we call `updateEnv "FORCE_HTTPS" "false" "${dotEnv}"`, same thing, we'll add `FORCE_HTTPS` in the file but, what if we just skip it?
 
@@ -103,7 +107,7 @@ And now, if we call `updateEnv "FORCE_HTTPS" "false" "${dotEnv}"`, same thing, w
     file="$3"
     add=${4:-true}
 
-    # search the variable in the file. If found, update. It not, add the entry
+    # search the variable in the file. If found, update. If not, add the entry
     grepStatus="$(grep -E -q "^${variable}\s?=" "${file}" \
       && (sed -i -r "s~${variable}(\s?)=(\s?).*~${variable}\1=\2${newValue}~" "${file}" && echo "UPDATED") \
       || (if [ "$add" = "true" ]; then \

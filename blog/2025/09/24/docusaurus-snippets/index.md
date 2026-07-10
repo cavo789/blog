@@ -88,7 +88,7 @@ Please also edit the `src/theme/MDXComponents.js` file (and if not present, plea
 
 You'll also need the [LogoIcon](https://docuxlab.com/blog/logoicon-component-docusaurus/) created by <img alt="Docux" src="/img/docux.webp" style={{border: "none", borderRadius: 0, height: "1.2em", verticalAlign: "middle", margin: "0 0.2em"}} /> <Link to="https://github.com/Juniors017">Docux</Link>.
 
-This component will make easy to retrieve an SVG icon for a language (let's say Python) and display it. Under the scenes, LogoIcon is using [Iconify](https://icon-sets.iconify.design/).
+This component makes it easy to retrieve an SVG icon for a language (let's say Python) and display it. Behind the scenes, LogoIcon is using [Iconify](https://icon-sets.iconify.design/).
 
 In very short:
 
@@ -131,7 +131,7 @@ Let's imagine this:
   * When building the static version (prod mode), the Docusaurus build engine will also read the content of the file from the disk and inject it in your article.
 
 <AlertBox variant="caution">
-You've two types of paths: from your root folder or relative to the blog post.
+You have two types of paths: from your root folder or relative to the blog post.
 
 If you use the `source="./files/example.js"` syntax (the path is starting with a dot), the file will be relative to your blog post.
 
@@ -139,11 +139,11 @@ The second possible syntax is without the dot like `source="src/components/Blog/
 
 </AlertBox>
 
-### To make this working, a need a plugin
+### To make this work, we need a plugin
 
 In Docusaurus vocabulary, we need a plugin to do this i.e. read the file's content from the disk and "inject" it in the article.
 
-So the plugin will parse the blog post, search for any `<Snippet>` call and check if there is a `src=` attribute. If so, the plugin will open the file and read its content. The plugin will also extract the file's extension (like `.js`). With these two information (content and extension), the plugin will inject the content into the `<Snippet>` tag, just like if you, the blog post author, has make a copy/paste.
+So the plugin will parse the blog post, search for any `<Snippet>` call and check if there is a `src=` attribute. If so, the plugin will open the file and read its content. The plugin will also extract the file's extension (like `.js`). With these two pieces of information (content and extension), the plugin will inject the content into the `<Snippet>` tag, just as if you, the blog post author, had made a copy/paste.
 
 The ultimate advantage here: your blog post will always be up-to-date; if you change the file on the disk, your post will automatically get the last version.
 

@@ -13,6 +13,10 @@ language: en
 ---
 ![Rector 1.0.0 🎉🎉🎉, my friend, my coach](/img/v2/rector.webp)
 
+<TLDR>
+This article introduces Rector, a free tool that scans PHP code and suggests (or automatically applies) modernization and refactoring improvements. Using a simple `sayHello` function as an example, it shows Rector simplifying an `if/else` into a ternary expression, removing a useless variable, and adding proper type hints and a return type — all via `vendor/bin/rector process --dry-run --config rector.php`.
+</TLDR>
+
 If there was only one, it would be [Rector](https://github.com/rectorphp/rector). **Rector is extremely powerful and brilliant and, you know what, it's free!**
 
 Rector is a tremendous application to scan and automatically upgrade your codebase to a given version of PHP and this means, too, to inspect how you're coding.
@@ -38,7 +42,7 @@ Let's take a look at a very simple example (`sayHello.php`):
 
 <Snippet filename="sayHello.php" source="./files/sayHello.php" />
 
-Simple and effective, isn't it?  And, above all, the code is perfectly functional and well written, respecting all the layout conventions.
+Simple and effective, isn't it? And, above all, the code is perfectly functional and well written, respecting all the layout conventions.
 
 <AlertBox variant="info" title="I'm an excellent developer. Thank you and goodbye.">
 Well, in fact, **I was an excellent developer** but I stopped being one ten years ago.
@@ -72,7 +76,7 @@ Call your friend, your coach, by just running `vendor/bin/rector process sayHell
 
 ![Rector is simplifying our sayHello function](./images/rector_say_hello.webp)
 
-Let's take a look on the command:
+Let's take a look at the command:
 
 * `vendor/bin/rector`: this is the executable to start,
 * `process`: the action to run, it's always `process`,
@@ -86,7 +90,7 @@ He'll show you the changes **he could make**, automatically, and explain why he 
 
 ## Applied rules
 
-Take a look on the `Applied rules:` section at the end of the screen capture; here are the rules with a link to their explanations:
+Take a look at the `Applied rules:` section at the end of the screen capture; here are the rules with a link to their explanations:
 
 * [SimplifyIfElseToTernaryRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyifelsetoternaryrector)
 * [SimplifyUselessVariableRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyuselessvariablerector)
@@ -184,3 +188,5 @@ Imagine what it could do for my entire project if I run `vendor/bin/rector proce
 Please visit [https://getrector.com/](https://getrector.com/) and learn more about rules and how to configure the `rector.php` for your project.
 
 There are more than 400 rules right now; see all of them here: [https://getrector.com/documentation/rules-overview](https://getrector.com/documentation/rules-overview)
+
+Rector is just one piece of my PHP code-quality toolbox; see also <Link to="/blog/php-jakzal-phpqa">the Docker image bundling static analysis tools</Link> and <Link to="/blog/online-php-linter">formatting poorly formatted PHP code</Link>.

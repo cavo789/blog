@@ -15,6 +15,8 @@ export default [
       "**/.docusaurus/**",
       "**/node_modules/**",
       "**/*.eli5.json",
+      // Generated data blob (yarn icons:bundle) — not hand-written source.
+      "**/iconBundle.generated.js",
       // Blog post snippets are illustrative code samples embedded via <Snippet>,
       // not application source — they aren't held to the site's own lint rules.
       "**/blog/**",
@@ -54,10 +56,7 @@ export default [
       // specifically, and .todos/040-inconsistent-proptypes-coverage.md closed
       // that gap.
       "react/prop-types": "warn",
-      "no-unused-vars": [
-        "warn",
-        { argsIgnorePattern: "^_", ignoreRestSiblings: true },
-      ],
+      "no-unused-vars": ["warn", { argsIgnorePattern: "^_", ignoreRestSiblings: true }],
       "no-empty": ["error", { allowEmptyCatch: true }],
       // New/opinionated rule in eslint-plugin-react-hooks v7, prone to false
       // positives on intentional SSR-hydration patterns already documented in

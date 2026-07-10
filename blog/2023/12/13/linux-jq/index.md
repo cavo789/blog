@@ -14,7 +14,11 @@ language: en
 <!-- cspell:ignore Salomé -->
 ![The jq utility for Linux](/img/v2/json.webp)
 
-`jq` is a powerful utility for Linux allowing manipulating JSON data from the command line and can be integrated into shell scripts.
+<TLDR>
+This article introduces `jq`, a command-line JSON processor: piping raw API output (using the random-user API as an example) through `jq` alone pretty-prints it, and adding a filter expression like `jq '.results[0].name'` extracts just a specific node from the JSON structure.
+</TLDR>
+
+`jq` is a powerful utility for Linux that lets you manipulate JSON data from the command line and can be integrated into shell scripts.
 
 Using `jq` you can beautify JSON output but also filter it like f.i. showing only a given node.
 

@@ -13,6 +13,10 @@ language: en
 ---
 ![Play with Docker and Python](/img/v2/python.webp)
 
+<TLDR>
+This article runs Python scripts with zero local install using the official `python` Docker image (`docker run ... python python Hello.py`), going from a "Hello World" script to running a console Hangman game — showing how quickly you can start experimenting with a new language thanks to Docker.
+</TLDR>
+
 Do you remember when you wanted to learn a new programming language such as Python?  What did you need before you could even program your first *Hello World*? You had to install the language on your computer; maybe you also had to install a lot of libraries/dependencies; you had to spend time configuring your machine before you could even start writing your first script.
 
 That's all over with the advent of Docker and the concept of containers.
@@ -138,3 +142,5 @@ Do you want to play again? y = yes, n = no
 Darn, I lost.
 
 It is up to you to find out... You will find a script that will [test the strength of a password](https://hackr.io/blog/python-projects#toc-6-password-strength-checker); it is up to you to create the `check_password.py` script and run it on your machine.
+
+If you're new to Docker itself, start with <Link to="/blog/docker-definition-like-im-five">Docker - Explain me like I'm five</Link>. And since the whole point is that this approach works for any language, I've done the same experiment with <Link to="/blog/docker-pascal">Pascal</Link>, <Link to="/blog/docker-assembly">Assembly</Link>, and <Link to="/blog/docker-java">Java</Link>.

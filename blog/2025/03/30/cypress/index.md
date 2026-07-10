@@ -22,7 +22,7 @@ blueskyRecordKey: 3lvnkku4dik2v
 This guide provides a step-by-step introduction to Cypress for automated front-end functional testing. Learn how to set up a new Cypress project, write your first tests, and run them within a Docker container. The tutorial covers essential development workflows, including how to synchronize your local test files with the container for rapid feedback and how to configure Docker to automatically save error screenshots from the container back to your host machine for easy debugging.
 </TLDR>
 
-You've created a website for yourself or for a client, and how can you be sure that it will works?  OK, at the time you were working on it, of course it was working; the search form, the contact form, the various links were all functional, but how can you be sure of this over time? Wouldn't it be useful to have a procedure that would allow you to run several so-called ‘functional’ tests to check that everything is still working?  This could be part of the maintenance contract you offer your customer.
+You've created a website for yourself or for a client, and how can you be sure that it will work?  OK, at the time you were working on it, of course it was working; the search form, the contact form, the various links were all functional, but how can you be sure of this over time? Wouldn't it be useful to have a procedure that would allow you to run several so-called ‘functional’ tests to check that everything is still working?  This could be part of the maintenance contract you offer your customer.
 
 What tool should you use for this type of requirement?
 
@@ -51,7 +51,7 @@ Create the `package.json` file with the following content. The objective is to m
 
 We also need a configuration file and that one has to be called `cypress.config.js`. Create that file with the content below.
 
-In short, we'll define the URL to our local cypress engine to `http://localhost:3100`, we'll inform override the default port `3000` to `3100` and we'll specify we don't use a cypress support configuration file.
+In short, we'll define the URL to our local cypress engine to `http://localhost:3100`, we'll override the default port `3000` with `3100` and we'll specify we don't use a cypress support configuration file.
 
 <Snippet filename="cypress.config.js" source="./files/cypress.config.js" />
 
@@ -88,7 +88,7 @@ If we take a few seconds to think about it, we've already created a first functi
 
 Nice, let's add a new test but, first, a question: *did we need to build our Docker image again and again?* For sure, no! If we don't have to update the `Dockerfile` or any settings, it's not needed.
 
-But, so far, in our `Dockerfile`, we've used `COPY` statements to put our tests directly in the Docker image. That's not a problem at all; we simply need to tell Docker to ignore the files and used the ones on our host.
+But, so far, in our `Dockerfile`, we've used `COPY` statements to put our tests directly in the Docker image. That's not a problem at all; we simply need to tell Docker to ignore the files and use the ones on our host.
 
 It's simple.
 
@@ -145,11 +145,11 @@ The commands `id -u` and `id -g` will return the ID of our user (most probably `
 
 </AlertBox>
 
-It tells Docker to use our own user id and group id (the one we're using on our host) when building the image. So, in short, `johndoe` will be us i.e. if Docker create a file on our disk, the file will be owned by the user having the same UID / GID and thus, we.
+It tells Docker to use our own user id and group id (the one we're using on our host) when building the image. So, in short, `johndoe` will be us i.e. if Docker creates a file on our disk, the file will be owned by the user having the same UID / GID and thus, us.
 
 Now, this thing explained, we can run the full command like this: `clear ; docker build --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) -t cypress-test . && docker run --rm -v ./cypress:/app/cypress cypress-test`.
 
-We're still mounting our current `cypress` folder with the container thanks the `-v ./cypress:/app/cypress` flag but it's **a two-way direction**. Now, files created by Cypress in the container (in folder `/app/cypress`) will be copied on our disk too. And because we've taken time to create a specific user in the Docker image, it means files created by Docker will be owned by us.
+We're still mounting our current `cypress` folder with the container thanks to the `-v ./cypress:/app/cypress` flag but it's **a two-way direction**. Now, files created by Cypress in the container (in folder `/app/cypress`) will be copied on our disk too. And because we've taken time to create a specific user in the Docker image, it means files created by Docker will be owned by us.
 
 Our current workspace looks like this in VSCode:
 
@@ -159,7 +159,7 @@ By running `docker run --rm -v ./cypress:/app/cypress cypress-test` once more, n
 
 ![Tag Joomla](./images/tag_joomla.webp)
 
-Cypress has taken a screenshot and save it on our disk. Now, it's really clear, by looking at the image, that the error concern the check `-contains a, jomla` on the Tags page. Uh oh, there is a typo.
+Cypress has taken a screenshot and saved it on our disk. Now, it's really clear, by looking at the image, that the error concerns the check `-contains a, jomla` on the Tags page. Uh oh, there is a typo.
 
 Edit the file `cypress/e2e/joomla.cy.js` and solve the typo by typing `cy.contains('a', 'joomla').click();`. Run Cypress once more, the error is now solved and the screenshot has disappeared.
 

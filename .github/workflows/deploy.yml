@@ -30,6 +30,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          # Full git history is required so the blog plugin's showLastUpdateTime /
+          # showLastUpdateAuthor can read each post's real last-commit date/author
+          # instead of the single shallow-clone commit.
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

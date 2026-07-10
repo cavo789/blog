@@ -13,6 +13,10 @@ language: en
 ---
 ![Build a mind map using Docker and Markdown](/img/v2/mindmaps.webp)
 
+<TLDR>
+This article shows how to turn a plain Markdown outline (headings and bullet lists) into an interactive, zoomable SVG mind map using Markmap, either via its online editor or with zero install through the `leopoul/markmap` Docker image (`docker run ... mindmap.md --output mindmap.html`).
+</TLDR>
+
 As a markdown lover, I always enjoy finding a little tool that lets me write a text and have it converted into another format.
 
 For this article, we're going to write, in plain text, a mind map, which means that our text will be converted into a mind map image.
@@ -21,7 +25,7 @@ For this article, we're going to write, in plain text, a mind map, which means t
 
 The tool we'll use is called `Markmap` and can be used online: see the demo and the editor on [https://markmap.js.org/repl](https://markmap.js.org/repl)
 
-Below an example, just copy/paste it into the [editor](https://markmap.js.org/repl) to see it in action.
+Below is an example; just copy/paste it into the [editor](https://markmap.js.org/repl) to see it in action.
 
 <Snippet filename="sample.md">
 
@@ -74,4 +78,4 @@ The generated HTML will display your mind map using the full-screen width and yo
 
 ## Go further
 
-You can add some configuration item in your markdown document, see [https://markmap.js.org/docs/json-options](https://markmap.js.org/docs/json-options) to get a list of all supported JSON options.
+You can add some configuration items in your markdown document, see [https://markmap.js.org/docs/json-options](https://markmap.js.org/docs/json-options) to get a list of all supported JSON options.

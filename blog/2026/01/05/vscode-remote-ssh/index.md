@@ -42,7 +42,7 @@ Create a `Dockerfile` with the content below.
 
 <ProjectSetup folderName="/tmp/remote-ssh" createFolder={true} >
   <Guideline>
-    Now, please run 'docker build -t ssh-server' to build the Docker image then 'docker run -d -p 2222:22 --name remote-dev ssh-server' to create the container.
+    Now, please run 'docker build -t ssh-server .' to build the Docker image then 'docker run -d -p 2222:22 --name remote-dev ssh-server' to create the container.
   </Guideline>
   <Snippet filename="Dockerfile" source="./files/Dockerfile" />
 </ProjectSetup>
@@ -160,7 +160,7 @@ In VS Code, open the **Remote Explorer** pane and choose `Remotes (Tunnels/SSH)`
 
 You are now connected to your production server using VS Code and the Remote - SSH extension. If you change any files, you are directly modifying those on the server. There is no longer a need to upload anything.
 
-<AlertBox variant="warning" title="Work carefully on production">
+<AlertBox variant="caution" title="Work carefully on production">
 Editing files directly on a production server is risky—mistakes can cause downtime or data loss. Prefer SSH key authentication, test changes in a staging environment, keep backups, and perform risky operations during maintenance windows.
 </AlertBox>
 
@@ -174,7 +174,7 @@ When you use an instruction like `ssh-keygen -t ed25519 -C "john_doe" -f ~/.ssh/
 
 You can certainly use `ssh-keygen -t ed25519 -C "this is my super SSH key for all servers" -f ~/.ssh/id_ed25519` then use that same key for multiple servers. However, if that key is compromised, all of those servers are at risk.
 
-For this reason, I insisted on creating a dedicated SSH key pair for each server you connect to. This way, if one key is compromised, only that specific server is at risk.
+For this reason, I recommend creating a dedicated SSH key pair for each server you connect to. This way, if one key is compromised, only that specific server is at risk.
 
 </Details>
 

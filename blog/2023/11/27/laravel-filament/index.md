@@ -14,6 +14,10 @@ language: en
 <!-- cspell:ignore ailwind,lpine,aravel,ivewire -->
 ![Laravel Filament](/img/v2/laravel.webp)
 
+<TLDR>
+This article introduces Laravel Filament, a free, TALL-stack (Tailwind, Alpine, Laravel, Livewire) set of full-stack components for quickly building admin interfaces — positioned as a free alternative to the paid Laravel Nova, with a link to the official online demo.
+</TLDR>
+
 Filament is a *collection of beautiful full-stack components. The perfect starting point for your next app.* It is a set of **free-to-use** components and promises that we'll be able to quickly build nice administration interfaces.
 
 The competitor to Filament is the official [Laravel Nova](https://nova.laravel.com/) which is a paid software.

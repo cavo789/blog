@@ -16,6 +16,10 @@ language: en
 ---
 ![Markdown linter - solve formatting issue in md files](/img/v2/clean_code.webp)
 
+<TLDR>
+This article shows how to lint and auto-fix Markdown files using the `peterdavehello/markdownlint` Docker image: scanning a project, ignoring folders like `vendor` or `node_modules` via `.markdownlint_ignore`, disabling specific rules via `.markdownlint.json`, and applying automatic fixes with the `--fix` flag, wired up as a `make lint` target.
+</TLDR>
+
 You are writing Markdown `.md` files (and you're so right) and you just wish to check (and autofix) some issues like having multiple blank lines, mixing bullet types (`-` and `*` in the same document), using a `#` title followed by `###` (i.e. you forget the level `##`) and many more.
 
 There is a tool for this: Markdown lint and, a Docker image `peterdavehello/markdownlint`.
@@ -26,7 +30,7 @@ Let's learn how to use it.
 
 By running `docker run --rm -v .:/md peterdavehello/markdownlint markdownlint .` you'll scan your current folder (recursively), search for any Markdown files and get the list of errors if any.
 
-And the list can be huge if you're using dependencies like, for PHP, the `vendor` folder or `node_modules` for npm/yarn. Just ignore them
+And the list can be huge if you're using dependencies like, for PHP, the `vendor` folder or `node_modules` for npm/yarn. Just ignore them.
 
 ## Ignore some files/folders
 
@@ -52,7 +56,7 @@ The flag here is `--fix` but, pay attention, since fixes will update files you s
 
 ## Put all together
 
-The final instruction becomes : `docker run --rm --user $(id -u):$(id -g) -v .:/md peterdavehello/markdownlint markdownlint --fix --config .markdownlint.json --ignore-path .markdownlint_ignore .` and that's the one I'm running every time when I publish this blog.
+The final instruction becomes: `docker run --rm --user $(id -u):$(id -g) -v .:/md peterdavehello/markdownlint markdownlint --fix --config .markdownlint.json --ignore-path .markdownlint_ignore .` and that's the one I'm running every time when I publish this blog.
 
 ## Make it easy
 

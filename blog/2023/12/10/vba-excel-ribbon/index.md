@@ -14,6 +14,10 @@ language: en
 ---
 ![MS Office - How to create a ribbon in Excel](/img/v2/ribbon.webp)
 
+<TLDR>
+This article walks through building a custom Excel ribbon using the free `CustomOfficeUIEditor` tool and hand-written XML (the `customUI14.xml` manifest): defining tabs, groups, and controls like buttons and edit boxes, wiring their `onAction`/`onChange` events to VBA callback subroutines, and finding standard `imageMso` icon IDs to use on buttons.
+</TLDR>
+
 In this post, we'll learn how to create a ribbon (i.e. a toolbar) in Microsoft Excel.
 
 We'll create our custom ribbon for an Excel file, save the ribbon in the file so our users will have a nice and intuitive interface to work with our worksheet.
@@ -26,7 +30,7 @@ To be able to "easily" *(in a not WYSIWYG interface)* create a ribbon in MS Offi
 
 The tool can be downloaded from [https://bettersolutions.com/vba/ribbon/custom-ui-editor-download.htm](https://bettersolutions.com/vba/ribbon/custom-ui-editor-download.htm).
 
-`CustomOfficeUIEditor` is an external tool (outside MS Office) who can open an Office file and add the needed files to create a ribbon. It's possible to do this without an editor, for instance by using a software like 7-Zip since a `.xlsx` / `.xlsm` file is an archive with files and folders.
+`CustomOfficeUIEditor` is an external tool (outside MS Office) which can open an Office file and add the needed files to create a ribbon. It's possible to do this without an editor, for instance by using a software like 7-Zip since a `.xlsx` / `.xlsm` file is an archive with files and folders.
 
 For this exercise; please extract all files and folders to your `C:\tmp\ribbon` folder (create it).
 
@@ -37,7 +41,7 @@ As a support for this blog post, please create a new, empty, file in Excel calle
 ![Excel Ribbon.xlsm](./images/Excel_empty_file.webp)
 
 <AlertBox variant="info" title="Just creates an empty file">
-Right now, we don't need to do something else than Create New - File Save as - FileType - Excel Macro-Enabled Workbook..
+Right now, we don't need to do anything other than File - New - Save as - FileType - Excel Macro-Enabled Workbook.
 
 </AlertBox>
 
@@ -93,15 +97,15 @@ Time to understand what has happened...
 
 <Snippet filename="customUI14.xml" source="./files/customUI14.part2.xml" />
 
-The manifest is a XML content and should be valid. You'll need to define your content into a `<customUI>` node (mandatory) and you'll need to specify the `xmlns` (for `namespace`) attribute (mandatory).
+The manifest is an XML content and should be valid. You'll need to define your content into a `<customUI>` node (mandatory) and you'll need to specify the `xmlns` (for `namespace`) attribute (mandatory).
 
-The `namespace` file will define what attributes exists, are mandatory or not, for each node type. The referred URL is the `Document Type Definition` (aka *DTD*).
+The `namespace` file will define what attributes exist, are mandatory or not, for each node type. The referred URL is the `Document Type Definition` (aka *DTD*).
 
-For instance, when the user will click on the button of your ribbon, you'll wish to be able to capture the click and start a subroutine that you've code in VBA. The "on click event" should be defined in the `onAction` attribute as defined in the DTD. *Microsoft maintains the documentation here: [https://msdn.microsoft.com/en-us/library/dd909370(v=office.12).aspx](https://msdn.microsoft.com/en-us/library/dd909370(v=office.12).aspx).*
+For instance, when the user will click on the button of your ribbon, you'll wish to be able to capture the click and start a subroutine that you've coded in VBA. The "on click event" should be defined in the `onAction` attribute as defined in the DTD. *Microsoft maintains the documentation here: [https://msdn.microsoft.com/en-us/library/dd909370(v=office.12).aspx](https://msdn.microsoft.com/en-us/library/dd909370(v=office.12).aspx).*
 
 So, if you know that the attribute is `onAction` you can then add your own subroutine by typing something like `onAction="OnButtonClicked"`.
 
-The job of the DTD is to make sure that the syntax of your manifest is correct; therefore, the attribute `xmlns="http://schemas.microsoft.com/office/2009/07/customui"` is well mandatory.
+The job of the DTD is to make sure that the syntax of your manifest is correct; therefore, the attribute `xmlns="http://schemas.microsoft.com/office/2009/07/customui"` is indeed mandatory.
 
 ##### Define the ribbon
 
@@ -117,7 +121,7 @@ Each tab comes with features (buttons, checkboxes, ...). For the `Insert` tab, w
 
 So, a ribbon should be:
 
-1. Defined in a tab (his own tab or an existing one)
+1. Define it in a tab (its own tab or an existing one)
 2. Add features in one or more groups (own groups or existing ones)
 
 Below, our manifest now, with the definition of the ribbon.
@@ -147,7 +151,7 @@ The XML below will, in one line,
 
 1. Create a new tab since the id `customTab` is not an existing id,
 2. Put the new tab after the existing `View` tab (use `insertBeforeMso` to add the tab before),
-3. And give him `Tab` as caption.
+3. And give it `Tab` as caption.
 
 <Snippet filename="customUI14.xml" source="./files/customUI14.part5.xml" />
 
@@ -162,11 +166,11 @@ Inside the `<tab>` declaration, you need to define at least one `<group>`. And h
 The XML below will:
 
 1. Create a new group since the id is a new one (`customGroup`),
-2. And give him `Group` as name.
+2. And give it `Group` as name.
 
 <Snippet filename="customUI14.xml" source="./files/customUI14.part6.xml" />
 
-Our tab with his group:
+Our tab with its group:
 
 ![Just a group defined](./images/Group_is_required.webp)
 
@@ -181,14 +185,14 @@ The XML here below will add two things: a button and an edit box.
 The XML below will create a button
 
 1. With an `id` initialized to `customButton`,
-2. His label (the text that is displayed under the button) set to `Button`,
-3. Use the `HappyFace` standard image (`imageMso` is, indeed, the way to reuse a standard image while `image` allows you to define yours owns),
+2. Its label (the text that is displayed under the button) set to `Button`,
+3. Use the `HappyFace` standard image (`imageMso` is, indeed, the way to reuse a standard image while `image` allows you to define your own),
 4. The size of the button will be `large` (a big button),
 5. The action assigned will be the VBA function called `OnButtonClicked`.
 
 <Snippet filename="customUI14.xml" source="./files/customUI14.part8.xml" />
 
-This will result into this:
+This will result in this:
 
 ![Smiley](./images/Smiley.webp)
 
@@ -218,7 +222,7 @@ And we can add other features, like an edit box:
 
 ![Smiley_and_edit](./images/Smiley_and_edit.webp)
 
-As you can see here above, the list of properties depends on the type: for a button, we've a `onAction` attribute while it's an `onChange` for an editBox.
+As you can see here above, the list of properties depends on the type: for a button, we have an `onAction` attribute while it's an `onChange` for an editBox.
 
 ## List of objects
 
@@ -241,7 +245,7 @@ As exhaustively defined in the `ribbon's namespace`, here is the list of valid o
 
 **Be careful**: XML is case sensitive, `editBox` is the only valid syntax, `editbox` or `EditBox` aren't.
 
-Each object comes with his own attributes, some are mandatory while the others are optional.
+Each object comes with its own attributes, some are mandatory while the others are optional.
 
 ## Find images
 
@@ -257,7 +261,7 @@ The manifest is this one:
 
 But ... **how to retrieve the list of images?**
 
-Microsoft maintains Excel files with the list of existing IDs that can be used as icons in our ribbon. The "Office 2010 Help Files: Office Fluent User Interface Control Identifiers" can be downloaded [here](https://www.microsoft.com/en-us/download/confirmation.aspx?id=6627). You'll get a lot of Excel files, on file by application (Access, Excel, Outlook, ...).
+Microsoft maintains Excel files with the list of existing IDs that can be used as icons in our ribbon. The "Office 2010 Help Files: Office Fluent User Interface Control Identifiers" can be downloaded [here](https://www.microsoft.com/en-us/download/confirmation.aspx?id=6627). You'll get a lot of Excel files, one file per application (Access, Excel, Outlook, ...).
 
 This will give the list of existing IDs in plain text but you'll not see the associated images.
 
@@ -269,7 +273,7 @@ This term means: which code (VBA in this case) should be fired when an event is 
 
 When the user clicks on a button of the ribbon which subroutine should be called?
 
-The XML code below assign the `OnButtonClicked` subroutine to the `onAction` event of the button.
+The XML code below assigns the `OnButtonClicked` subroutine to the `onAction` event of the button.
 
 <Snippet filename="customUI14.xml" source="./files/customUI14.part11.xml" />
 
@@ -295,6 +299,6 @@ Public Sub OnEditBoxTextChanged(control As IRibbonControl, sText As String)
 End Sub
 ```
 
-The declaration of callbacks can be found on the official site :
+The declaration of callbacks can be found on the official site:
 [How can I determine the correct signatures for each callback procedure?](
 https://docs.microsoft.com/en-us/previous-versions/office/developer/office-2007/aa722523(v=office.12)#how-can-i-determine-the-correct-signatures-for-each-callback-procedure). Pay attention to the `Signatures` columns; you need to look for `VBA`.

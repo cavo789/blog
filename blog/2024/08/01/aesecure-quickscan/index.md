@@ -15,6 +15,10 @@ language: en
 
 <!-- cspell:ignore aesecure,quickscan -->
 
+<TLDR>
+This article introduces aeSecure QuickScan, the author's free PHP virus/malware scanner optimized for Joomla (versions 1.0.13 to 5.1.0), detecting over 45,000 signatures. It's used by dropping a single `scan.php` file onto the site and running it through the browser: it whitelists unmodified core Joomla files by hash, scans only the remaining unknown files for suspicious signatures, and should be deleted from the server once the scan is done.
+</TLDR>
+
 In 2018, I published the first version of my free tool, aeSecure QuickScan.
 
 Still up to date, my scanner detects over 45,000 virus signatures and is optimised for Joomla sites.
@@ -29,7 +33,7 @@ Simply download the scanner onto your site, run it from a URL and it will scan t
 
 Want to see a demo; just click here: [https://quickscan.avonture.be/](https://quickscan.avonture.be/).
 
-The scanner is running on demo website so you can see how it looks like.
+The scanner is running on a demo website so you can see what it looks like.
 
 ## Download
 
@@ -39,7 +43,7 @@ Go to the folder containing your website (preferably on your local computer), cr
 
 It's simple, no?
 
-So, now, you've copied the scanner engine. Just access the scanner by starting your website like you do every time (let's say by starting  `http://localhost` for a local version of the site) and add the name of the script (so, in short, `http://localhost/scan.php`).
+So, now, you've copied the scanner engine. Just access the scanner by starting your website like you do every time (let's say by starting `http://localhost` for a local version of the site) and add the name of the script (so, in short, `http://localhost/scan.php`).
 
 <AlertBox variant="info">
 It's not recommended to do this directly on your real site on the internet but you can. In that case, start your FTP client, do a FTP connection to your site, create a remote `scan.php` file, start your browser and go to your website.
@@ -56,14 +60,14 @@ Just start your browser and go to the URL where your site is accessible. At the 
 
 ![The welcome page of aeSecure QuickScan](./images/aesecure_quickscan_welcome.webp)
 
-The first button *1. Clean the cache and temp folders* will allow you to remove any temporary files so to improve the speed of the scanner by not scanning unneeded files.
+The first button *1. Clean the cache and temp folders* will allow you to remove any temporary files to improve the speed of the scanner by not scanning unneeded files.
 
 Once you've clicked on the first button and action is done, the second button *2. Getting the file list* will browse your website and check if files should be scanned or not.
 
 A file won't be scanned if its signature (its hash) is strictly the same as a "whitelisted" one.
 
 <AlertBox variant="info" title="White list concept">
-Think to original files of Joomla. When you do a new installation of Joomla let's say 5.2.0; files contained in the ZIP of Joomla are considered as safe. You trust these files to not contains any viruses. So, original files; coming from Joomla installation if they're **unmodified** are safe. If their signature are strictly the same then files coming from Joomla, aeSecure QuickScan knows that the file is safe. These file's signatures are white listed.
+Think about the original files of Joomla. When you do a new installation of Joomla, let's say 5.2.0, files contained in the ZIP of Joomla are considered safe. You trust these files to not contain any viruses. So, original files coming from a Joomla installation, if they're **unmodified**, are safe. If a file's signature strictly matches one coming from Joomla, aeSecure QuickScan knows that the file is safe. These file signatures are white listed.
 </AlertBox>
 
 So, step 2 will detect which files are not in a white list and should be scanned.
@@ -84,7 +88,7 @@ The scanner will start to get the list of all files of your website and calculat
 
 At the end of action 2, we've then the list of unknown files, the ones the scanner should scan for viruses.
 
-Scanning the site (action 3) means then scan only unknown files; those not on the whitelist. By default, maximum 500 files will be scanned at a time. If your web server returns a timeout (meaning the scan has taken too many times and the server has stopped the action), you can try to reduce the number by clicking on the top left accordion to get the menu and select a lower value:
+Scanning the site (action 3) then means scanning only unknown files; those not on the whitelist. By default, maximum 500 files will be scanned at a time. If your web server returns a timeout (meaning the scan has taken too many times and the server has stopped the action), you can try to reduce the number by clicking on the top left accordion to get the menu and select a lower value:
 
 ![aeSecure Quick-Scan - Accordion](./images/aesecure_quickscan_accordion.webp)
 

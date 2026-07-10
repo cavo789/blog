@@ -212,6 +212,6 @@ No extra flags. No wrapper functions. It just works.
 
 ## Going further
 
-If you also use <Link to="/blog/gitconfig-tips-and-tricks">`git diff` aliases in your `.gitconfig`</Link>, those aliases automatically benefit from delta since the pager is applied at the output stage, not the command stage.
+If you also use <Link to="/blog/git-config">`git diff` aliases in your `.gitconfig`</Link>, those aliases automatically benefit from delta since the pager is applied at the output stage, not the command stage.
 
 For an even richer TUI git experience, delta works as the diff renderer inside [lazygit](https://github.com/jesseduffield/lazygit) and [tig](https://github.com/jonas/tig) — both TUI git clients that respect `core.pager`.

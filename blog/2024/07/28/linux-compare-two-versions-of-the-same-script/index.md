@@ -8,11 +8,14 @@ image: /img/v2/bash.webp
 mainTag: linux
 tags:
   - bash
-  - database
   - linux
 language: en
 ---
 ![Linux - Compare two versions of the same script](/img/v2/bash.webp)
+
+<TLDR>
+This article shows how to compare two versions of the same Bash script by extracting each file's function names with `grep`/`awk`, sorting them, and diffing the two sorted lists with `diff --side-by-side` — revealing which functions were added, removed, or renamed regardless of their order in the file. It's then extended into a `compare.sh` script that runs the same comparison across every script in two folders.
+</TLDR>
 
 Still faced with the problem of having to compare two versions of the same script (see the article <Link to="/blog/linux-diff-file-folder">Linux - Comparing two folders/files in the console</Link>), this time we're going to consider that the file we need to compare is a Bash script and that we have two versions of it.
 
@@ -99,7 +102,7 @@ To do this, create the `compare.sh` script on your hard drive with this content:
 
 <Snippet filename="compare.sh" source="./files/compare.sh" />
 
-Now, to run it, just start `./compare.sh foldername1 foldername2`. You'll get something like below i.e. for each scripts in both folders (script in just one folder are ignored), you'll get the name of the script (like `array.sh`) followed by the text `The two files are identical` if both files are identical or, if not, a list of function names and the indicator already seen i.e. `<`, `>` or `|`.
+Now, to run it, just start `./compare.sh foldername1 foldername2`. You'll get something like below i.e. for each script in both folders (scripts present in just one folder are ignored), you'll get the name of the script (like `array.sh`) followed by the text `The two files are identical` if both files are identical or, if not, a list of function names and the indicator already seen i.e. `<`, `>` or `|`.
 
 ![Compare Bash scripts in two folders](./images/compare_folders.webp)
 
@@ -111,7 +114,7 @@ By adding `| grep -E -v "<$"` to our `grep` statement, we can improve the script
 
 <Snippet filename="compare.sh" source="./files/compare.part2.sh" />
 
-If we run this newer script on the exact same files, now, lines ending with `<` are hidden (only in the left-hand folder) and we just obtains cases when a function is present in the right-hand folder:
+If we run this newer script on the exact same files, now, lines ending with `<` are hidden (only in the left-hand folder) and we just obtain cases when a function is present in the right-hand folder:
 
 ![Hide when functions are just in the left-hand folder](./images/no_more_left.webp)
 

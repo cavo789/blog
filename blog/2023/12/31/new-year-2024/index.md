@@ -11,6 +11,10 @@ language: en
 ---
 ![Happy New Year 2024](/img/v2/happy_new_year.webp)
 
+<TLDR>
+This is a short New Year's greeting post wishing readers curiosity, growth, and new skills in Docker, Linux, Markdown, and PHP for 2024 — no technical content.
+</TLDR>
+
 I wish you all a very happy festive season, and may you continue to be curious about everything.
 
 May this new year bring you new knowledge and skills, including Docker, Linux, Markdown and PHP.

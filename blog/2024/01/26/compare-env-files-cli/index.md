@@ -14,12 +14,16 @@ language: en
 ---
 ![Compare environment files in the Linux console](/img/v2/bash.webp)
 
-This is a very common source of problems using .env files: you've two or more different `.env` file like `.env` and `.env.example`.
+<TLDR>
+This article shows a Linux one-liner to reliably compare two `.env` files (e.g. `.env` vs `.env.example`) using `diff -y --suppress-common-lines` combined with `grep` and `sort`, so comments, blank lines, and line order are ignored and specific variables (like `APP_KEY`) can be excluded from the comparison.
+</TLDR>
+
+This is a very common source of problems using .env files: you have two or more different `.env` files like `.env` and `.env.example`.
 
 You're a programmer and coding a new amazing feature. You're adding one or more new environment variables to your local `.env` file and everything is working fine **on your computer**.
 
 <AlertBox variant="danger" title="Boum! Your feature is buggy.">
-A colleague copy the source code from a versioning system like Github/GitLab or, second scenario, someone will deploy the feature on a server and your feature is broken.
+A colleague copies the source code from a version-control system like GitHub/GitLab, or, second scenario, someone deploys the feature to a server — and your feature breaks.
 
 </AlertBox>
 
@@ -33,7 +37,7 @@ There are some tools that allow comparing two files like `diff` but not really t
 
 1. We don't care about comments and empty lines. If a variable has been commented, we just need to ignore it.
 2. We don't care about the position in the file where the variable is declared. If `APP_ENV = local` is on the first line, in the middle of the file or just before the last line, we don't care about it.
-3. We can also ignore some variables that we know they should be different like `APP_KEY` f.i.
+3. We can also ignore some variables that we know should be different, like `APP_KEY` f.i.
 
 Let's try... Below we'll create the file `.env.example` with two lines then copy it to `.env` and just add a new line in `.env.example`. Finally, we'll sort `.env.example` so the order will differ with `.env`.
 
@@ -54,7 +58,7 @@ Now that we have our two files with some differences, we can run this command:
 )
 ```
 
-`diff` will compare the two files but not directly the file itself but the content of the file where we're first removed empty and commented lines and with lines sorted.
+`diff` will compare the two files, but not directly the files themselves — rather their content, after we've first removed empty and commented lines and sorted the lines.
 
 The flag `--suppress-common-lines -y` will display the result in two columns (`-y`) and only differences (`--suppress-common-lines`).
 

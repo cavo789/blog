@@ -14,7 +14,11 @@ language: en
 ---
 ![PHP code refactoring in VSCode](/img/v2/vscode_tips.webp)
 
-Currently, end of February 2024, there aren't many free refactoring extensions for PHP under VSCode. We'll take a look to [PHP Refactor Tool](https://marketplace.visualstudio.com/items?itemName=st-pham.php-refactor-tool) and [PHP Refactoring](https://marketplace.visualstudio.com/items?itemName=marsl.vscode-php-refactoring).
+<TLDR>
+This article covers PHP refactoring in VSCode using the free `PHP Refactor Tool` and `PHP Refactoring` extensions: renaming a symbol or a class with <kbd>F2</kbd> (which updates every usage across files automatically) and extracting a block of code into a new method, including automatic detection of the local variables that need to become parameters.
+</TLDR>
+
+Currently, end of February 2024, there aren't many free refactoring extensions for PHP under VSCode. We'll take a look at [PHP Refactor Tool](https://marketplace.visualstudio.com/items?itemName=st-pham.php-refactor-tool) and [PHP Refactoring](https://marketplace.visualstudio.com/items?itemName=marsl.vscode-php-refactoring).
 
 We'll learn how to rename a symbol, a class and, even better, how to extract a portion of a long method into a new one.
 
@@ -51,7 +55,7 @@ Make sure `PHP Refactor Tool` is installed. Go to the list of extensions in VSCo
 
 The illustration below is showing a sample `index.php` script using a class defined in `Product.php`.
 
-Everything is working fine but, yeah, functions are called `getProductName` and `getProductPrice` and it's quite overqualified: our object is `$product` so, yes, `$product->getProductName()` and `$product->getProductPrice()` can be rewritten to `$product->getName()` and `$product->getPrice()`. The smaller the best.
+Everything is working fine but, yeah, functions are called `getProductName` and `getProductPrice` and it's quite redundant: our object is `$product` so, yes, `$product->getProductName()` and `$product->getProductPrice()` can be rewritten to `$product->getName()` and `$product->getPrice()`. The smaller, the better.
 
 So, we need to rename our functions.
 
@@ -76,7 +80,7 @@ But the very cool thing is that `index.php` has been automatically updated. Open
 
 By running `docker run -it --rm -v "${PWD}":/project -w /project php:8.2 php index.php`, it's still working.
 
-<AlertBox variant="info" title="success You've refactored our code without breaking it. Congratulations!" />
+<AlertBox variant="info" title="You've refactored our code without breaking it. Congratulations!" />
 
 The same thing in pictures:
 
@@ -91,7 +95,7 @@ As we can expect, the class name has been updated but the filename too. And, onc
 ![Renaming a class](./images/rename-a-class.webp)
 
 <AlertBox variant="info" title="You can also rename from index.php">
-Locate the `$product = new Product();` line in your `index.php` file. Put the cursor on the `Product` word, press <kbd>F2</kbd> and rename it. This work too i.e. the class will be updated too in `Products.php` (since the file has been renamed too). Nice!
+Locate the `$product = new Product();` line in your `index.php` file. Put the cursor on the `Product` word, press <kbd>F2</kbd> and rename it. This works too, i.e. the class will also be updated in `Products.php` (since the file has been renamed too). Nice!
 
 </AlertBox>
 
@@ -116,7 +120,7 @@ See the animation below:
 
 ![Extract to a new method](./images/extract-new-method.gif)
 
-<AlertBox variant="info" title="Did you have noticed the use of input parameters?">
+<AlertBox variant="info" title="Did you notice the use of input parameters?">
 In the lines we're moving, there are variables like `contentType` and `filename` that are not part of the new method. These variables are still local in our first, `download` method.
 
 And, as you can see, during the creation of the new method, these two local variables have been added to the definition of the new function. Nice feature.
@@ -125,5 +129,7 @@ And, as you can see, during the creation of the new method, these two local vari
 
 ## Other extensions
 
-* 💀 😒 [PHP Refactor](https://marketplace.visualstudio.com/items?itemName=tintrinh.php-refactor) also exists but the last time it was updated by the author was in 2019, four years ago, and the extract feature isn't working fine; just move along.
+* 💀 😒 [PHP Refactor](https://marketplace.visualstudio.com/items?itemName=tintrinh.php-refactor) also exists but the last time it was updated by the author was in 2019, five years ago, and the extract feature isn't working fine; just move along.
 * 💲😒 [PHP Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=DEVSENSE.phptools-vscode) from **DEVSENSE** is a freemium addon (refactoring features are only in the paid version). The rename symbol feature is a paid one while it's free with [PHP Refactor Tool](https://marketplace.visualstudio.com/items?itemName=st-pham.php-refactor-tool). **Don't install `PHP Tools for Visual Studio Code` since, then, it'll override `PHP Refactor Tool` <kbd>F2</kbd> function and will break it.** (see my issue [Devsense - All-In-One conflicts](https://github.com/st-pham/php-refactor-tool/issues/16))
+
+Renaming and extracting methods is one part of keeping PHP code healthy; for automated static analysis and formatting, see <Link to="/blog/php-jakzal-phpqa">the Docker image bundling static analysis tools</Link> and <Link to="/blog/online-php-linter">formatting poorly formatted PHP code</Link>.

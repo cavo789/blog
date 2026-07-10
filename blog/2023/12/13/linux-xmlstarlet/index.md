@@ -13,7 +13,11 @@ language: en
 ---
 ![The xmlstarlet utility for Linux](/img/v2/bash.webp)
 
-`xmlstarlet` is a powerful utility for Linux allowing manipulating XML data from the command line and can be integrated into shell scripts.
+<TLDR>
+This article introduces `xmlstarlet`, the XML equivalent of `jq`: pretty-printing minified XML with `xmlstarlet format --indent-spaces 4`, and extracting or filtering nodes with XPath expressions via `xmlstarlet sel -t -v`, including attribute-based filters like `//book[@category='children']/title`.
+</TLDR>
+
+`xmlstarlet` is a powerful utility for Linux that lets you manipulate XML data from the command line and can be integrated into shell scripts.
 
 Using `xmlstarlet` you can beautify XML output but also filter it like f.i. showing only a given node.
 
@@ -43,7 +47,7 @@ We can also use `Xpath` to specify our desired output:
 
 <Terminal typewriter source="./files/terminal-1.txt" />
 
-If you don't known XPath yet, we've used `"/bookstore/book/title"` because our XML is constructed like that. As you can see below, our root node is called `bookstore`, then we have one or more `book` and each book has a `title`.
+If you don't know XPath yet, we've used `"/bookstore/book/title"` because our XML is constructed like that. As you can see below, our root node is called `bookstore`, then we have one or more `book` and each book has a `title`.
 
 <Snippet filename="data.xml" source="./files/data.part3.xml" />
 
@@ -55,7 +59,7 @@ $ cat "data.xml" | xmlstarlet sel -t -v "//book[@category='children']/title"
 Harry Potter
 </Terminal>
 
-And here, the XPath expression `//book[@category='children']/title` means: give me each `book`; it doesn't matter where the book node is located; but only if it has an attribute named `category` and whose value is `children`. Then, if found, display his `title`.
+And here, the XPath expression `//book[@category='children']/title` means: give me each `book`; it doesn't matter where the book node is located; but only if it has an attribute named `category` and whose value is `children`. Then, if found, display its `title`.
 
 <Snippet filename="data.xml" source="./files/data.part4.xml" />
 

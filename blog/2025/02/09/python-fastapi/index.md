@@ -106,7 +106,7 @@ There is a second, alternative template called ReDoc. You can access it using th
 
 ## Let's play - Creating a joke generator
 
-We'll update build a joke generator script. Our objective will be to get a random joke or a specific one (like *Give me the third joke you know*).
+We'll build a joke generator script. Our objective will be to get a random joke or a specific one (like *Give me the third joke you know*).
 
 For this, we'll update our `main.py` script and because we'll probably make more than one change, we'll mount our host folder to the container.
 
@@ -143,15 +143,13 @@ Now, please copy/paste the following content to your existing `Dockerfile`:
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile.part2" />
 
-Rebuild the image and run a new container by running these commands:
-
-OK, we'll run the container again but, now, with a volume:
+Rebuild the image and run a new container, now with a volume, by running these commands:
 
 <Terminal typewriter>
 $ docker build -t python-fastapi . && docker run -v .:/app -p 82:82 python-fastapi
 </Terminal>
 
-Now with a Docker image with hot reload and we've mounted our folder in the container.
+Now we have a Docker image with hot reload and we've mounted our folder in the container.
 
 Please edit your `main.py` script like this:
 

@@ -16,6 +16,10 @@ blueskyRecordKey: 3lvnkbm63nc2v
 ---
 ![MS Excel - Connect to a SQL Server database, run a query and get the results](/img/v2/mssql.webp)
 
+<TLDR>
+This article points to the author's `vba_excel_sql` GitHub project, which provides VBA code to run a SQL query against a SQL Server database directly from Excel and inject the results into a sheet while preserving its formatting. Two injection methods are offered: `AddQueryTable` (keeps the connection live for one-click refresh) and `CopyToSheet` (drops the connection/credentials, safer for sharing).
+</TLDR>
+
 <AlertBox variant="info">
 Please read my new article <Link to="/blog/vba-excel-sql-server-part-2">MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step</Link> which is more complete than this one.
 
@@ -29,7 +33,7 @@ Stop imagining, it's just so easy!
 
 <!-- truncate -->
 
-Years ago, I've published [https://github.com/cavo789/vba_excel_sql](https://github.com/cavo789/vba_excel_sql) for this.
+Years ago, I published [https://github.com/cavo789/vba_excel_sql](https://github.com/cavo789/vba_excel_sql) for this.
 
 You'll retrieve in my GitHub repository all the explanations to do this i.e. a VBA code to add in your Excel file ([quick access](https://github.com/cavo789/vba_excel_sql/blob/master/src/SQL2Excel.xlsm/clsData.cls)) and a [demo](https://github.com/cavo789/vba_excel_sql/blob/master/src/SQL2Excel.xlsm/test.bas).
 

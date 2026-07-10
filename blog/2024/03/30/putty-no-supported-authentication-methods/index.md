@@ -13,14 +13,18 @@ language: en
 ---
 ![Fatal error was starting Putty after having saved settings](/img/v2/putty.webp)
 
-A few days ago, I've updated my Putty configuration to set the default font-size to 12; no more 10.
+<TLDR>
+This article fixes PuTTY's "No supported authentication methods available" fatal error that can appear after saving default settings: delete the `Default%20Settings` entry under `HKEY_CURRENT_USER\SOFTWARE\SimonTatham\PuTTY\Sessions` in the Windows registry to reset PuTTY's defaults.
+</TLDR>
 
-Today, by starting Putty, whatever on which server I wish to join, I got the *No supported authentication methods available* followed by, in my case *(server sent: publickey, gssapi-keyex, gssapi-with-mic, keyboard-interactive)* fatal error.
+A few days ago, I updated my Putty configuration to set the default font-size to 12; no more 10.
 
-I've only understand the origin of the problem by looking at the window caption: Putty tries to connect to a server other than the one I want. Why? And, ah, ok, last time I've modified my settings I was working on that server so, the solution should come from: *how can I reset my Putty settings?*
+Today, when starting Putty — whichever server I wanted to connect to — I got the *No supported authentication methods available* error, followed, in my case, by *(server sent: publickey, gssapi-keyex, gssapi-with-mic, keyboard-interactive)*.
+
+I only understood the origin of the problem by looking at the window caption: Putty was trying to connect to a server other than the one I wanted. Why? And, ah, ok, the last time I modified my settings I was working on that server so, the solution should come from: *how can I reset my Putty settings?*
 
 <!-- truncate -->
 
 The solution has been provided by @makurison on [https://stackoverflow.com/questions/57072011/delete-putty-default-settings-modification-to-original](https://stackoverflow.com/questions/57072011/delete-putty-default-settings-modification-to-original).
 
-Simply start `regedit.exe`, search for the key `Computer\HKEY_CURRENT_USER\SOFTWARE\SimonTatham\PuTTY\Sessions` and, there, remove the entry called `default/20session`.
+Simply start `regedit.exe`, search for the key `Computer\HKEY_CURRENT_USER\SOFTWARE\SimonTatham\PuTTY\Sessions` and, there, remove the entry called `Default%20Settings`.

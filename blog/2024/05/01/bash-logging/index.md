@@ -14,9 +14,13 @@ language: en
 <!-- cspell:ignore uplzaefi -->
 ![Bash - Script to add logging features to your script](/img/v2/bash.webp)
 
+<TLDR>
+This article shares a reusable `log.sh` Bash library that adds logging to any script: source it, call `log::write "message"` wherever needed, and get timestamped log entries automatically written to a logfile — each entry includes a full call trace (which function, on which line, called from where) to make debugging non-interactive/cron scripts easier.
+</TLDR>
+
 > Also read <Link to="/blog/bash-console-log-together">Bash - Echo on the console and in a logfile in the same time</Link>
 
-When you write Bash scripts and certainly when you foresee running them in a cron, you should implement a logfile. Every action fired by your script should be logging somewhere so you can start the script in a non-interactive mode and in case of need, consult the last logfile.
+When you write Bash scripts and certainly when you foresee running them in a cron, you should implement a logfile. Every action fired by your script should be logged somewhere so you can start the script in a non-interactive mode and in case of need, consult the last logfile.
 
 Below is a script I've developed in the form of a library, which means you can easily include it in your existing code without having to change anything.
 
@@ -42,11 +46,11 @@ Please create a file called `log.sh`, in the exact same folder of your script, a
 
 ## The result
 
-By running the script, we can see our different `echo` but, too, the content of the generated log.
+By running the script, we can see our different `echo` statements, but also the content of the generated log.
 
-![USing log](./images/logging.webp)
+![Using log](./images/logging.webp)
 
-You can for sure not display the log automatically, just comment the line `log::__displayLog`.
+You can, of course, choose not to display the log automatically — just comment out the line `log::__displayLog`.
 
 ### Trace
 
@@ -61,6 +65,6 @@ Each statement logged will have a trace as you can see. For instance, the block 
 [2024-03-25T12:29:08+0100] Duration: 0 second(s)
 ```
 
-When there are multiple parents, you'll get the entire trace, f.i. `[Function test5 line 4;Function test4 line 10;Function test3 line 16;Function test2 line 24;Function test1 line 30;Function __main line 48]`: the function `__main` on line 48 has called `test1` who has called then `test2` and so on.
+When there are multiple parents, you'll get the entire trace, f.i. `[Function test5 line 4;Function test4 line 10;Function test3 line 16;Function test2 line 24;Function test1 line 30;Function __main line 48]`: the function `__main` on line 48 called `test1`, which then called `test2`, and so on.
 
 Each statement in the log will then contain the entire trace, making debugging easier.

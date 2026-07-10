@@ -36,13 +36,13 @@ In this article, we'll look at how to authenticate once and for all on the serve
 <AlertBox variant="info">
 To illustrate this article, let's assume `christophe` is the remote username (this is the username for the server, distinct from your local username) and `my_blog.be` is the remote server address.
 
-Think, to replace these two constants by yours ;-)
+Remember to replace these two constants with yours ;-)
 
 </AlertBox>
 
 ## TLDR
 
-Create a SSH key, copy it to the remote server and run a SSH connection. Steps 1 and 2 have to be done just once.
+Create an SSH key, copy it to the remote server and run an SSH connection. Steps 1 and 2 have to be done just once.
 
 <StepsCard
   title="Steps to fire in your console:"
@@ -58,11 +58,11 @@ Create a SSH key, copy it to the remote server and run a SSH connection. Steps 1
 
 ### 1. Creating the SSH key
 
-The first thing to do, only once, is to generate a SSH key on your host for the remote server.
+The first thing to do, only once, is to generate an SSH key on your host for the remote server.
 
 By running `ssh-keygen -t ed25519 -C "christophe@my_blog.be" -f ~/.ssh/id_ed25519_my_blog` (or `ssh-keygen -t rsa -C "christophe@my_blog.be" -b 4096 -f ~/.ssh/id_rsa_my_blog` for the RSA algorithm):
 
-1. You'll create a SSH key for the remote user `christophe` on server `my_blog.be`. You'll get a private key and a public one,
+1. You'll create an SSH key for the remote user `christophe` on server `my_blog.be`. You'll get a private key and a public one,
 2. The key will be saved on your machine and the filename will be `~/.ssh/id_ed25519_my_blog` for the private key (and will have the `~/.ssh/id_ed25519_my_blog.pub` for the public one),
 3. The key will be based on the ed25519 algorithm.
 
@@ -90,7 +90,7 @@ You can display or edit the content of the `~/.ssh/authorized_keys` file by runn
 
 ## Copying files from your host to the server
 
-Now that we can connect the server so easily, we can f.i. copy files from our host like this:
+Now that we can connect to the server so easily, we can f.i. copy files from our host like this:
 
 <Terminal typewriter>
 $ scp -i ~/.ssh/id_ed25519_my_blog local_file christophe@my_blog.be:/remote_file
@@ -110,11 +110,11 @@ $ scp -i ~/.ssh/id_ed25519_my_blog christophe@my_blog.be:/remote_file local_file
 
 If you need to copy a folder, just add the recursive flag i.e. `-r`.
 
-For instance, `scp -r christophe@my_blog.be:~/backup/ .` will copy the entire `~/backup` folder from the server in my current, local, folder. Really handy.
+For instance, `scp -r christophe@my_blog.be:~/backup/ .` will copy the entire `~/backup` folder from the server into my current, local, folder. Really handy.
 
 ## Tips
 
-## Running ssh from Microsoft Terminal
+### Running ssh from Microsoft Terminal
 
 The SSH experience is much, much better using Microsoft Terminal than the old Putty application.
 
@@ -132,7 +132,7 @@ It would be nice to be able to ssh my_application and that's it. No? This is the
 
 To connect on that server, my ssh command looks like this: `ssh christophe@my_blog.be -i ~/.ssh/id_ed25519_my_blog`. Not easy to remember!
 
-Let's create a `~/.ssh/config` file. If the file already exists, just edit it: `code  ~/.ssh/config`.
+Let's create a `~/.ssh/config` file. If the file already exists, just edit it: `code ~/.ssh/config`.
 
 Add these lines in the file:
 

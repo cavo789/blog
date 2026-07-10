@@ -111,7 +111,7 @@ And, thus, everything I'll do in Heimdall will be saved on my computer. So, it m
 
 ### Adding some links
 
-I suggest that, before adding new links, first click on the Tags icon (the fifth icons bottom right) because you'll organize your links using tags and you have to create tags before.
+I suggest that, before adding new links, you first click on the Tags icon (the fifth icon bottom right) because you'll organize your links using tags and you have to create tags first.
 
 <BrowserWindow url="http://localhost">
   <img
@@ -121,7 +121,7 @@ I suggest that, before adding new links, first click on the Tags icon (the fifth
   />
 </BrowserWindow>
 
-Add so many tags you want. For this tutorial, I'll just create one.
+Add as many tags as you want. For this tutorial, I'll just create one.
 
 When finished, click on the `Cancel` button top right or click on the fourth button bottom right (called `Application list`)
 
@@ -171,7 +171,7 @@ Let's explore that `Application Type` feature:
   />
 </BrowserWindow>
 
-It's just something like a snippet. If I select `Bitwarden` from there, Heimdall will do basic initializations; he'll fill in the `Application name` textbox and the icon. Ok, why not.
+It's just something like a snippet. If I select `Bitwarden` from there, Heimdall will do basic initializations; it'll fill in the `Application name` textbox and the icon. Ok, why not.
 
 I'll point the URL to `https://vault.bitwarden.com/#/login` and I'll keep `Home dashboard` as tag.
 
@@ -195,7 +195,7 @@ Here is the dashboard I'm using at work. Since it's so easy to add new items; I'
 
 ### More customizations
 
-By clicking on the last icon bottom right, you can customize a few Heimdall. You can display f.i. a search engine which is nice.
+By clicking on the last icon bottom right, you can customize a few more things in Heimdall. You can display f.i. a search engine which is nice.
 
 You can customize the CSS and add some JS too.
 

@@ -20,11 +20,11 @@ blueskyRecordKey: 3lujtc27n7s23
 This article introduces karakeep, a self-hosted, all-in-one application for managing bookmarks, notes, and images, highlighting its powerful search capabilities. The guide provides a step-by-step tutorial on how to install karakeep using a custom Docker Compose setup. It explains how to configure the `compose.yaml` file to persist data on the host system for easy access and to set the correct user permissions. After installation, the post walks through the initial user setup and demonstrates key features like adding new items and organizing them into hierarchical lists.
 </TLDR>
 
-Since a few months, I'm using <Link to="/blog/heimdall-dashboard">Heimdall</Link> but it has one major weakness: its hyper-basic search engine (which is even non-existent, since it's not possible to search for a link globally).
+For a few months now, I've been using <Link to="/blog/heimdall-dashboard">Heimdall</Link> but it has one major weakness: its hyper-basic search engine (which is even non-existent, since it's not possible to search for a link globally).
 
 So I was rather dissatisfied and waiting to find something better: karakeep.
 
-It's a tool that you can self-host and which is a bookmarks, note-taking and even image manager that works very simply.
+It's a tool that you can self-host and which is a bookmark, note-taking and even image manager that works very simply.
 
 And the search engine is quite powerful. Overall, karakeep is a pleasure to use.
 
@@ -41,7 +41,7 @@ Please create a folder like `mkdir ~/tools/karakeep && cd $_`. In that folder, p
 <AlertBox variant="note">
 The line `user: ${UID:-1000}:${GID:-1000}` will ask Docker to use a specific user (not the `root` one) while creating files on your disk.
 
-The user `1000:1000` is, in the most cases, you i.e. it's your current Linux user (type `id -u` and, then, `id -g` to retrieve your user ID and your group ID and you'll see it'll be `1000` for both).
+The user `1000:1000` is, in most cases, you i.e. it's your current Linux user (type `id -u` and, then, `id -g` to retrieve your user ID and your group ID and you'll see it'll be `1000` for both).
 
 If your IDs are not `1000`, please edit the yaml file and put your IDs instead.
 
@@ -58,7 +58,7 @@ To avoid this situation, I might as well keep the files immediately on my hard d
 
 Once the `compose.yaml` file has been created, in your console, now, just run `docker compose up --build --detach`.
 
-You've now karakeep running. Surf to `http://localhost:2000/` and you'll get this screen:
+You now have karakeep running. Surf to `http://localhost:2000/` and you'll get this screen:
 
 ![karakeep - Logon screen](./images/logon.webp)
 
@@ -76,7 +76,7 @@ I'll type `https://awesome-docker-compose.com/apps` and save it and immediately,
 
 ![Awesome Docker](./images/awesome_docker.webp)
 
-As you can see, karakeep has grab a picture of the web page.
+As you can see, karakeep has grabbed a picture of the web page.
 
 ## Adding to a list
 
@@ -100,7 +100,7 @@ By first selecting a list, new items will be added directly to that list.
 
 ### Import / Export
 
-By clicking on your profile avatar (top right) then on `User Settings` you will be able to a.o.t. access to an `Import / Export` feature. It's good to know; you can import from a lot of sources and, too, export as a JSON or a HTML page.
+By clicking on your profile avatar (top right) then on `User Settings` you will be able, among other things, to access an `Import / Export` feature. It's good to know; you can import from a lot of sources and also export as a JSON or an HTML page.
 
 ## More info
 
