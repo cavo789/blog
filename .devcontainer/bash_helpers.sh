@@ -61,6 +61,44 @@ start() {
     HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem yarn docusaurus start --host 0.0.0.0 --port "\$port"
 }
 
+static() {
+    local port=3000
+
+    printf "🔄 Stopping any running Docusaurus dev server...\n"
+    pkill -f "docusaurus start" 2>/dev/null
+    pkill -f "docusaurus serve" 2>/dev/null
+
+    local pids
+    pids=\$(lsof -ti tcp:\${port} 2>/dev/null)
+    if [ -n "\$pids" ]; then
+        kill -9 \$pids 2>/dev/null
+    fi
+
+    local tries=0
+    while lsof -i tcp:\${port} >/dev/null 2>&1; do
+        tries=\$((tries + 1))
+        if [ "\$tries" -gt 10 ]; then
+            printf "❌ Port %s is still in use after 10s, aborting.\n" "\$port" >&2
+            printf "   See what's holding it with: lsof -i tcp:%s\n" "\$port" >&2
+            return 1
+        fi
+        sleep 1
+    done
+
+    printf "🏗️  Building Docusaurus...\n"
+    if ! yarn docusaurus clear; then
+        printf "❌ 'docusaurus clear' failed, see errors above.\n" >&2
+        return 1
+    fi
+    if ! yarn docusaurus build; then
+        printf "❌ 'docusaurus build' failed, see errors above.\n" >&2
+        return 1
+    fi
+
+    printf "🌐 Serving built site on https://localhost:%s ...\n" "\$port"
+    yarn docusaurus serve --host 0.0.0.0 --port "\$port"
+}
+
 eli5() {
     local dir="blog"
     local extra=()
@@ -78,7 +116,8 @@ printf "📚 Quick Commands Reference:\n\n"
 printf "  ▶️  \033[1;33mbuild\033[0m        Build as a static website (to check if everything is OK)\n"
 printf "  ⬆️  \033[1;33mupgrade\033[0m      Upgrade Docusaurus core and plugins to the latest version.\n"
 printf "  📦 \033[1;33mversion\033[0m      Show current Docusaurus version.\n"
-printf "  🚀 \033[1;33mserve\033[0m        Serve as a static website (don't forget to run 'build' first)\n"
+printf "  🌐 \033[1;33mstatic\033[0m       Build + serve on port 3000 (stops dev server first, HTTPS via VS Code).\n"
+printf "  🚀 \033[1;33mserve\033[0m        Serve built site on port 3001 (run 'build' first).\n"
 printf "  🟢 \033[1;33mstart\033[0m        Start / Restart Docusaurus (kills any stuck instance first).\n"
 printf "  🔁 \033[1;33mreset\033[0m        Alias for 'start' — use it if the site seems stuck.\n"
 printf "\n"

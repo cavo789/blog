@@ -41,6 +41,9 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgb(0, 0, 0, 0.3);
+  /* Pagefind search highlight — derived from dark --ifm-color-primary #25c2a0 */
+  --pagefind-mark-bg: rgb(37, 194, 160, 0.12);
+  --pagefind-section-icon-bg: rgb(37, 194, 160, 0.12);
 }
 /* stylelint-enable color-no-hex */
 
@@ -277,37 +280,6 @@ article .markdown img:hover {
   height: auto;
 }
 
-/* DocSearch styling */
-[data-theme="light"] .DocSearch {
-  --docsearch-muted-color: var(--ifm-color-secondary-darkest);
-  --docsearch-container-background: rgb(94, 100, 112, 0.7);
-  --docsearch-modal-background: var(--ifm-color-secondary-lighter);
-  --docsearch-searchbox-background: var(--ifm-color-secondary);
-  --docsearch-searchbox-focus-background: var(--ifm-color-white);
-  --docsearch-hit-color: var(--ifm-font-color-base);
-  --docsearch-hit-active-color: var(--ifm-color-white);
-  --docsearch-hit-background: var(--ifm-color-white);
-  --docsearch-footer-background: var(--ifm-color-white);
-}
-
-[data-theme="dark"] .DocSearch {
-  --docsearch-text-color: var(--ifm-font-color-base);
-  --docsearch-muted-color: var(--ifm-color-secondary-darkest);
-  --docsearch-container-background: rgb(47, 55, 69, 0.7);
-  --docsearch-modal-background: var(--ifm-background-color);
-  --docsearch-searchbox-background: var(--ifm-background-color);
-  --docsearch-searchbox-focus-background: var(--ifm-color-black);
-  --docsearch-hit-color: var(--ifm-font-color-base);
-  --docsearch-hit-active-color: var(--ifm-color-white);
-  --docsearch-hit-background: var(--ifm-color-emphasis-100);
-  --docsearch-footer-background: var(--ifm-background-surface-color);
-  --docsearch-key-gradient: linear-gradient(
-    -26.5deg,
-    var(--ifm-color-emphasis-200) 0%,
-    var(--ifm-color-emphasis-100) 100%
-  );
-}
-
 .main-wrapper > .container > .row > .col.col--9,
 .main-wrapper > .container > .row > .col.col--6,
 .main-wrapper > .container > .row > .col.col--7 {
@@ -476,6 +448,60 @@ article h4 {
 
 [data-theme="dark"] .markdown tr:hover td {
   background: rgb(255, 255, 255, 0.05);
+}
+
+/* --- SEARCH VISUAL IMPROVEMENTS (Pagefind / DocSearch) --- */
+
+/* 1. Keyboard shortcut key badges (Ctrl + K) inside the navbar search button.
+ *    The @docsearch/css base renders them with a near-invisible light gradient;
+ *    override to match the existing <kbd> style defined above.
+ */
+.DocSearch-Button-Key {
+  width: auto !important;
+  height: auto !important;
+  padding: 1px 5px !important;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.72em !important;
+  color: var(--ifm-font-color-base) !important;
+  background: var(--ifm-background-surface-color) !important;
+  border: 1px solid var(--ifm-color-emphasis-300) !important;
+  border-bottom-width: 2px !important;
+  border-radius: 4px !important;
+  box-shadow: inset 0 -1px 0 var(--ifm-color-emphasis-300) !important;
+  top: 0 !important;
+}
+
+[data-theme="dark"] .DocSearch-Button-Key {
+  border-color: var(--ifm-color-emphasis-500) !important;
+  box-shadow: inset 0 -1px 0 var(--ifm-color-emphasis-500) !important;
+}
+
+/* 2. Subtle tinted background on matched terms in results.
+ *    The plugin forces background: transparent !important — we must
+ *    also use !important. rgba values derived from --ifm-color-primary
+ *    (#2e8555 light / #25c2a0 dark). Dark values are in the main [data-theme="dark"]
+ *    block above; light defaults are set here.
+ */
+[data-theme="light"] {
+  --pagefind-mark-bg: rgb(46, 133, 85, 0.15);
+  --pagefind-section-icon-bg: rgb(46, 133, 85, 0.12);
+}
+
+.pagefindHit-title mark,
+.pagefindHit-excerpt mark,
+.pagefindHit-breadcrumb mark {
+  background: var(--pagefind-mark-bg) !important;
+  border-radius: 2px;
+  padding: 0 2px !important;
+}
+
+/* 3. Distinct icon color for section-heading (#) vs full-page (document) results.
+ *    Section hits always have a .pagefindHit-breadcrumb; page hits do not.
+ *    Uses :has() (supported in all evergreen browsers since 2023).
+ */
+a.pagefindHit:has(.pagefindHit-breadcrumb) .pagefindHit-icon {
+  color: var(--ifm-color-primary);
+  background: var(--pagefind-section-icon-bg);
 }
 
 /* --- PRINT EASTER EGG --- */

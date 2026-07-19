@@ -209,12 +209,24 @@
   color: #6a9955;
 }
 
-.terminal_body h1::before { content: "# "; }
-.terminal_body h2::before { content: "## "; }
-.terminal_body h3::before { content: "### "; }
-.terminal_body h4::before { content: "#### "; }
-.terminal_body h5::before { content: "##### "; }
-.terminal_body h6::before { content: "###### "; }
+.terminal_body h1::before {
+  content: "# ";
+}
+.terminal_body h2::before {
+  content: "## ";
+}
+.terminal_body h3::before {
+  content: "### ";
+}
+.terminal_body h4::before {
+  content: "#### ";
+}
+.terminal_body h5::before {
+  content: "##### ";
+}
+.terminal_body h6::before {
+  content: "###### ";
+}
 
 /* Paragraphs from MDX blank-line splitting must not add extra spacing */
 .terminal_body p {

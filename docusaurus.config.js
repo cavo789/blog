@@ -160,6 +160,7 @@ const config = {
     ["./plugins/ascii-injector/index.mjs", { bannerPath: "src/data/banner.txt" }],
     "./plugins/sitemap-easter-egg/index.mjs",
     require.resolve("docusaurus-plugin-image-zoom"),
+    ["docusaurus-plugin-pagefind", {}],
   ],
   headTags: [
     {
@@ -305,30 +306,6 @@ const config = {
           light: "rgb(255, 255, 255)",
           dark: "rgb(50, 50, 50)",
         },
-      },
-      algolia: {
-        // @see https://docusaurus.io/docs/search for documentation
-        // @see https://dashboard.algolia.com/ for appId, apiKey and indexName
-
-        // The application ID provided by Algolia
-        appId: "SIOYZRXPKJ",
-
-        // Public API key: it is safe to commit it
-        apiKey: "3e2bd9067f4916ba2d338c5b57631b92",
-
-        indexName: "avonture",
-
-        // Optional: see doc section below
-        contextualSearch: true,
-
-        // Optional: Algolia search parameters
-        searchParameters: {},
-
-        // Optional: path for search page that enabled by default (`false` to disable it)
-        searchPagePath: "search",
-
-        // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
-        insights: false,
       },
     }),
 };
