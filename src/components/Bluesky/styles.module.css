@@ -118,7 +118,6 @@ img.blueskyCommentEmbedThumb {
   border: 1px solid var(--ifm-color-emphasis-300);
 }
 
-
 .blueskyNoCommentYet {
   color: var(--ifm-color-emphasis-600);
   font-size: 1rem;
@@ -157,7 +156,9 @@ img.blueskyCommentEmbedThumb {
   margin-right: 0.4rem;
   padding: 0.4rem 0.9rem;
   text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .blueskyButton:hover {

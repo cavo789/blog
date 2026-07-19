@@ -38,9 +38,9 @@ Below a Linux function that can help. You can just copy/paste it in your console
 
 The `updateEnv` function will receive three arguments.
 
-* A variable name like `APP_DEBUG`,
-* The value we wish to set in the file, f.i. `false`
-* And the name of the `.env` file to update (probably `.env`)
+- A variable name like `APP_DEBUG`,
+- The value we wish to set in the file, f.i. `false`
+- And the name of the `.env` file to update (probably `.env`)
 
 The function will use `grep` and `sed` (see my <Link to="/blog/linux-sed-tips">Search and replace (or add) using sed</Link> article to learn more) to update the variable or add it to the file.
 

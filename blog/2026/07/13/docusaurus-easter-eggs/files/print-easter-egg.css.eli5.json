@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:32.241Z",
+  "source": "print-easter-egg.css",
+  "sourceHash": "14e2f1a535abbc21117cac26483da8ba861eaa58",
+  "lang": "css",
+  "explanations": {
+    "6": "@media print means these styles only apply when someone prints the page, not when viewing it normally in a browser.",
+    "8": "The content property with those backslash codes (\\1F9AB and \\2014) are Unicode characters — the meerkat emoji and an em dash — that will appear at the bottom of printed pages.",
+    "9": "position: fixed here doesn't work the same way it does on screen; in print, it anchors the text to that spot on every printed page."
+  }
+}

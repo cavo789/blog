@@ -12,6 +12,7 @@ En bas de chaque article (ou via un bouton flottant), un petit formulaire discre
 > [ Votre question... ] [Envoyer]
 
 La question est liée au slug de l'article, stockée sur le serveur, et envoyée par email. L'auteur peut ensuite décider de :
+
 - Répondre directement si un email de contact est fourni
 - Enrichir l'article pour clarifier ce point
 - Ajouter une FAQ en bas de l'article
@@ -21,6 +22,7 @@ La question est liée au slug de l'article, stockée sur le serveur, et envoyée
 ### Frontend — `src/components/ReaderQuestion/index.js`
 
 États :
+
 1. **Initial** : bouton "💬 Ask a question about this article"
 2. **Open** : textarea + champ email optionnel + bouton Submit
 3. **Sent** : "Thanks! I'll look into it."

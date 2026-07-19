@@ -13,7 +13,7 @@ tags:
   - zsh
 language: en
 ai_assisted: true
-blueskyRecordKey:
+blueskyRecordKey: 3mnrw7ah2kc2o
 ---
 
 ![FZF + ripgrep: Interactive Code Search with Live Preview](/img/v2/fzf_ripgrep.webp)
@@ -64,9 +64,9 @@ On some Ubuntu/Debian systems, the binary is named `batcat` instead of `bat`. If
 
 `grep -r` is fine for small codebases. `ripgrep` is built for the real world:
 
-* It **ignores `.gitignore`** entries automatically — no more results from `node_modules`, `vendor`, or build folders.
-* It is **significantly faster** on large projects, thanks to parallel processing and smarter file traversal.
-* Its output format (`file:line:content`) is designed for tooling integration.
+- It **ignores `.gitignore`** entries automatically — no more results from `node_modules`, `vendor`, or build folders.
+- It is **significantly faster** on large projects, thanks to parallel processing and smarter file traversal.
+- Its output format (`file:line:content`) is designed for tooling integration.
 
 A quick comparison — searching for `TODO` in a Node.js project with `node_modules` present:
 

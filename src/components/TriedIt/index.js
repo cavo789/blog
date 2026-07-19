@@ -25,24 +25,31 @@ export default function TriedIt({ metadata }) {
     if (!slug) return;
     fetch(`${apiUrl}?slug=${encodeURIComponent(slug)}`)
       .then((r) => (r.ok ? r.json() : null))
-      .then((data) => { if (data) setCounts(data); })
+      .then((data) => {
+        if (data) setCounts(data);
+      })
       .catch(() => {});
   }, [slug, apiUrl]);
 
-  const handleVote = useCallback(async (vote) => {
-    try {
-      const res = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug, vote }),
-      });
-      if (!res.ok) return;
-      const data = await res.json();
-      setCounts(data);
-      setVoted(vote);
-      try { localStorage.setItem(storageKey, vote); } catch {}
-    } catch {}
-  }, [slug, apiUrl, storageKey]);
+  const handleVote = useCallback(
+    async (vote) => {
+      try {
+        const res = await fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ slug, vote }),
+        });
+        if (!res.ok) return;
+        const data = await res.json();
+        setCounts(data);
+        setVoted(vote);
+        try {
+          localStorage.setItem(storageKey, vote);
+        } catch {}
+      } catch {}
+    },
+    [slug, apiUrl, storageKey],
+  );
 
   if (!slug) return null;
 
@@ -71,7 +78,9 @@ export default function TriedIt({ metadata }) {
       ) : (
         <div className={styles.thanks}>
           <span className={styles.thanksMsg}>
-            {voted === "worked" ? "Awesome, glad it worked! 🎉" : "Thanks for letting us know!"}
+            {voted === "worked"
+              ? "Awesome, glad it worked! 🎉"
+              : "Thanks for letting us know!"}
           </span>
           {counts && (
             <span className={styles.counts}>

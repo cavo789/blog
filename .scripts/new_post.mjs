@@ -91,11 +91,9 @@ console.log("New blog post created:", filePath);
 import { spawnSync } from "node:child_process";
 
 // Once the .md file is created, open it in the current VS Code window
-const result = spawnSync(
-  "code",
-  ["--reuse-window", "--goto", `${filePath}:1:1`],
-  { stdio: "ignore" }
-);
+const result = spawnSync("code", ["--reuse-window", "--goto", `${filePath}:1:1`], {
+  stdio: "ignore",
+});
 
 if (result.error) {
   console.warn("Post created, but could not open it automatically.");

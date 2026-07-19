@@ -4,9 +4,9 @@ A reusable Docusaurus component that displays a warning message when a blog post
 
 ## 🚀 Features
 
-* Automatically detects if a blog post is older than one year.
-* Displays a styled warning box using Docusaurus's built-in alert system.
-* Easy to integrate into your blog layout via swizzled components.
+- Automatically detects if a blog post is older than one year.
+- Displays a styled warning box using Docusaurus's built-in alert system.
+- Easy to integrate into your blog layout via swizzled components.
 
 ## 📦 Location
 
@@ -42,8 +42,8 @@ The component compares the blog post's date to the current date. It first checks
 
 ## 🧑‍🎓 Authoring Tips
 
-* Consider placing this notice near the top of your blog post layout.
-* You can customize the message or add links to updated resources if needed.
+- Consider placing this notice near the top of your blog post layout.
+- You can customize the message or add links to updated resources if needed.
 
 ## 📄 License
 

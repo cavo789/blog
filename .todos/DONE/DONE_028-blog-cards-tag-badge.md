@@ -35,15 +35,17 @@ APRÈS — card avec badge tag
 Dans le JSX du `BlogCard`, après l'image et avant le titre, ajouter :
 
 ```jsx
-{metadata.frontMatter?.mainTag && (
-  <a
-    href={`/tags/${metadata.frontMatter.mainTag}`}
-    className={styles.cardTagBadge}
-    onClick={(e) => e.stopPropagation()}
-  >
-    {metadata.frontMatter.mainTag}
-  </a>
-)}
+{
+  metadata.frontMatter?.mainTag && (
+    <a
+      href={`/tags/${metadata.frontMatter.mainTag}`}
+      className={styles.cardTagBadge}
+      onClick={(e) => e.stopPropagation()}
+    >
+      {metadata.frontMatter.mainTag}
+    </a>
+  );
+}
 ```
 
 **Fichier :** `src/theme/BlogListPage/styles.module.css` — ajouter :

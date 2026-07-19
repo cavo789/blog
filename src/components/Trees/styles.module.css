@@ -110,16 +110,16 @@
 }
 
 /* Dark mode styles */
-[data-theme='dark'] .treeContainer {
+[data-theme="dark"] .treeContainer {
   border-color: var(--ifm-color-emphasis-300);
   background-color: var(--ifm-background-surface-color);
 }
 
-[data-theme='dark'] .nodeContent:hover {
+[data-theme="dark"] .nodeContent:hover {
   background-color: var(--ifm-color-emphasis-200);
 }
 
-[data-theme='dark'] .nodeLabel {
+[data-theme="dark"] .nodeLabel {
   color: var(--ifm-color-content);
 }
 

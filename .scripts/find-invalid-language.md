@@ -4,22 +4,22 @@ This Bash script scans markdown files in your blog directory to identify all cod
 
 ## 📦 Purpose
 
-* ✅ Ensure all code blocks use languages supported by PrismJS.
-* 🖼️ Verify that each language has an associated logo SVG file.
-* ⚠️ Suggest valid PrismJS alternatives for unsupported or aliased languages.
+- ✅ Ensure all code blocks use languages supported by PrismJS.
+- 🖼️ Verify that each language has an associated logo SVG file.
+- ⚠️ Suggest valid PrismJS alternatives for unsupported or aliased languages.
 
 ## 📁 Directory Structure
 
-* Markdown files are located in: `./blog`
-* SVG logos are expected in: `./src/components/Snippet`
+- Markdown files are located in: `./blog`
+- SVG logos are expected in: `./src/components/Snippet`
 
 ## 🔍 What It Does
 
-* Recursively scans `.md` and `.mdx` files for code blocks (e.g., ````python`).
-* Extracts and normalizes language identifiers.
-* Checks each language against a list of PrismJS-supported languages.
-* Verifies if a corresponding logo file exists: `<language>-logo.svg`.
-* Provides suggestions for common aliases (e.g., `c++` → `cpp`, `py` → `python`).
+- Recursively scans `.md` and `.mdx` files for code blocks (e.g., ````python`).
+- Extracts and normalizes language identifiers.
+- Checks each language against a list of PrismJS-supported languages.
+- Verifies if a corresponding logo file exists: `<language>-logo.svg`.
+- Provides suggestions for common aliases (e.g., `c++` → `cpp`, `py` → `python`).
 
 ## 🧠 How It Works
 
@@ -50,8 +50,8 @@ or just, `make invalid-language`.
 
 ## 🛠️ Requirements
 
-* Bash shell
-* `grep`, `sed`, `tr` and standard Unix utilities
+- Bash shell
+- `grep`, `sed`, `tr` and standard Unix utilities
 
 ## 🌐 Reference
 

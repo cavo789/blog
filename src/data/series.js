@@ -1,20 +1,17 @@
 const SERIES_DATA = [
   {
     name: "Bluesky Docusaurus component",
-    description:
-      "Build and integrate Bluesky-powered components inside Docusaurus.",
+    description: "Build and integrate Bluesky-powered components inside Docusaurus.",
     image: "/img/series/bluesky.webp",
   },
   {
     name: "Coding using a devcontainer",
-    description:
-      "Develop consistently across machines using VS Code Dev Containers.",
+    description: "Develop consistently across machines using VS Code Dev Containers.",
     image: "/img/series/devcontainer.webp",
   },
   {
     name: "Create your joomla website using Docker",
-    description:
-      "Run Joomla locally using Docker and streamline your web development.",
+    description: "Run Joomla locally using Docker and streamline your web development.",
     image: "/img/series/joomla.webp",
   },
   {
@@ -43,8 +40,7 @@ const SERIES_DATA = [
   },
   {
     name: "Functional testing",
-    description:
-      "Master functional testing concepts and automate UI flows effectively.",
+    description: "Master functional testing concepts and automate UI flows effectively.",
     image: "/img/series/functional-testing.webp",
   },
   {
@@ -61,8 +57,7 @@ const SERIES_DATA = [
   },
   {
     name: "Running Oracle Database Server as a Docker container",
-    description:
-      "Run Oracle Database locally using Docker for testing and development.",
+    description: "Run Oracle Database locally using Docker for testing and development.",
     image: "/img/series/oracle-docker.webp",
   },
   {

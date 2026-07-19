@@ -4,15 +4,15 @@
 
 ## Problème
 
-`AGENTS.md` ("Tooling & Quality Control") exige : *"Code and Markdown must be compatible with
-strict linting (ESLint, Prettier, Dockerlint, Markdownlint)"*. En réalité :
+`AGENTS.md` ("Tooling & Quality Control") exige : _"Code and Markdown must be compatible with
+strict linting (ESLint, Prettier, Dockerlint, Markdownlint)"_. En réalité :
 
-* Aucun `.eslintrc*` / `eslint.config.*` dans le repo.
-* Aucun `.prettierrc*`.
-* Aucun `.stylelintrc*`.
-* `package.json` ne liste ni `eslint`, ni `prettier`, ni `stylelint` en devDependency.
-* `package.json` n'a **aucun script `lint` ou `test`**.
-* Les deux workflows GitHub Actions (`deploy.yml`, `blog-post-workflow.yml`) ne font que builder et
+- Aucun `.eslintrc*` / `eslint.config.*` dans le repo.
+- Aucun `.prettierrc*`.
+- Aucun `.stylelintrc*`.
+- `package.json` ne liste ni `eslint`, ni `prettier`, ni `stylelint` en devDependency.
+- `package.json` n'a **aucun script `lint` ou `test`**.
+- Les deux workflows GitHub Actions (`deploy.yml`, `blog-post-workflow.yml`) ne font que builder et
   déployer — aucune étape de lint/format/test n'est exécutée en CI.
 
 C'est la cause racine de plusieurs constats de cette review (import mort `CSSProperties` dans
@@ -40,7 +40,7 @@ fou automatique), et la review manuelle devient le seul filet de sécurité — 
 
 Ajoute une entrée dans la console (cheatsheet) que tu trouveras dans le fichier .devcontainer/bash_helpers.sh.
 
-AInsi, depuis le terminal de mon devcontainer, je peux lancer une commande pour valider la qualité du projet.  Je songeais à priori à "lint" mais cela existe déjà pour les fichiers markdown.
+AInsi, depuis le terminal de mon devcontainer, je peux lancer une commande pour valider la qualité du projet. Je songeais à priori à "lint" mais cela existe déjà pour les fichiers markdown.
 
 ## Lien avec l'existant
 

@@ -62,11 +62,13 @@ Peut être intégré dans le composant `DocMetadata` swizzled ou en tant que foo
 Option : si un article reçoit 3+ signalements "outdated", afficher automatiquement une bannière jaune :
 
 ```jsx
-{signalCount >= 3 && (
-  <div className="admonition admonition-caution">
-    <p>Readers have flagged this article as potentially outdated. Use with caution.</p>
-  </div>
-)}
+{
+  signalCount >= 3 && (
+    <div className="admonition admonition-caution">
+      <p>Readers have flagged this article as potentially outdated. Use with caution.</p>
+    </div>
+  );
+}
 ```
 
 (Nécessite que le count soit exposé via l'API GET public)

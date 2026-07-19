@@ -56,9 +56,9 @@ I have to copy that long string in the clipboard.
 
 Here I've a lot of possibilities:
 
-* I'll use the variable just for one repo;
-* I'll use the variable for all repositories of a given group (a GitLab group is like a folder containing multiple repo);
-* I'll use the variable for all repositories stored on my GitLab instance.
+- I'll use the variable just for one repo;
+- I'll use the variable for all repositories of a given group (a GitLab group is like a folder containing multiple repo);
+- I'll use the variable for all repositories stored on my GitLab instance.
 
 By going to my repository, I have to click on **CI/CD Settings**, expand the **Variables** area so I can add a new variable.
 

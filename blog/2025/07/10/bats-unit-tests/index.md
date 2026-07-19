@@ -181,8 +181,8 @@ For the test, we'll create a file with three empty lines, then a HTML comment bl
 
 The tip used is:
 
-* `cat --show-ends --show-tabs "$tempfile"` i.e. get the content of the file but with `$` where we've a line feed and, here, also `^I` for tabs.
-* then we'll pipe the result with `tr "\n" "#"` so, instead of getting six lines, we'll get only one by replacing line feed by `#`.
+- `cat --show-ends --show-tabs "$tempfile"` i.e. get the content of the file but with `$` where we've a line feed and, here, also `^I` for tabs.
+- then we'll pipe the result with `tr "\n" "#"` so, instead of getting six lines, we'll get only one by replacing line feed by `#`.
 
 Now, bingo, since we've a variable with only one line (in our example: `$#$#$#$#$#<html><body/></html>$#`), we can compare with our expectation:
 

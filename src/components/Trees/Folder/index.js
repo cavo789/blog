@@ -5,7 +5,15 @@ import TreeItem from "../utils/TreeItem";
 /**
  * Folder Component - Represents a folder in the tree structure
  */
-export default function Folder({ icon, iconSize = 24, badge, label, expanded = false, children, level = 0 }) {
+export default function Folder({
+  icon,
+  iconSize = 24,
+  badge,
+  label,
+  expanded = false,
+  children,
+  level = 0,
+}) {
   return (
     <TreeItem
       icon={icon}

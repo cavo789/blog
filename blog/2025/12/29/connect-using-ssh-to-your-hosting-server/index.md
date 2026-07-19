@@ -46,9 +46,9 @@ You'll land on the dashboard page. In the left sidebar, navigate to **Web Hostin
 
 At the top of [the page](https://mg.n0c.com/), you'll find the three required pieces of information:
 
-* The *Current user*: the username to use for SSH.
-* Your server name (and its IP address).
-* The SSH port to use (likely `5022`).
+- The *Current user*: the username to use for SSH.
+- Your server name (and its IP address).
+- The SSH port to use (likely `5022`).
 
 ![Your Planethoster Dashboard page](./images/planethoster_dashboard.webp)
 
@@ -161,9 +161,9 @@ From now on, to start an SSH connection to your host, open a terminal and run `s
 
 ## Troubleshooting & tips
 
-* If a connection fails, run the SSH client in verbose mode to see debug output: `ssh -vvv -p 5022 john_doe@node30-eu.n0c.com` (i.e. add `-vvv` as an extra CLI flag).
-* If you see a `WARNING: UNPROTECTED PRIVATE KEY FILE!` error, check local permissions on your private key and use `chmod 600` as shown earlier.
-* If you need to, connect to the server, verify that your key exists in `~/.ssh/authorized_keys` and that `~/.ssh` and `authorized_keys` have correct permissions (just run `vi ~/.ssh/authorized_keys` to open the file so you can edit it / remove unwanted keys).
+- If a connection fails, run the SSH client in verbose mode to see debug output: `ssh -vvv -p 5022 john_doe@node30-eu.n0c.com` (i.e. add `-vvv` as an extra CLI flag).
+- If you see a `WARNING: UNPROTECTED PRIVATE KEY FILE!` error, check local permissions on your private key and use `chmod 600` as shown earlier.
+- If you need to, connect to the server, verify that your key exists in `~/.ssh/authorized_keys` and that `~/.ssh` and `authorized_keys` have correct permissions (just run `vi ~/.ssh/authorized_keys` to open the file so you can edit it / remove unwanted keys).
 
 ## Conclusion
 

@@ -1,6 +1,5 @@
 DONE
 
-
 # C5 — AI-powered "Explain Like I'm Five" tooltips in Snippet
 
 **Status:** Plan approved, not yet implemented
@@ -33,10 +32,10 @@ A `?` badge appears at the right edge of selected code lines inside `<Snippet>` 
 
 **Design principles:**
 
-* Explanations are generated **at build time** by a Node script calling the Claude API. No API key ever reaches the browser, and hover latency is zero.
-* Claude decides which lines are non-trivial — blank lines, closing braces, and obvious assignments are skipped.
-* The feature is **opt-in per snippet**: the author imports the `.eli5.json` file and passes it as a prop.
-* Works on Dockerfile, `docker-compose.yaml`, `devcontainer.json`, `.env`, shell scripts, YAML, TOML — any file type the Snippet component already handles.
+- Explanations are generated **at build time** by a Node script calling the Claude API. No API key ever reaches the browser, and hover latency is zero.
+- Claude decides which lines are non-trivial — blank lines, closing braces, and obvious assignments are skipped.
+- The feature is **opt-in per snippet**: the author imports the `.eli5.json` file and passes it as a prop.
+- Works on Dockerfile, `docker-compose.yaml`, `devcontainer.json`, `.env`, shell scripts, YAML, TOML — any file type the Snippet component already handles.
 
 ---
 
@@ -136,12 +135,12 @@ Language: {lang}
 
 **Implementation notes:**
 
-* Use `@anthropic-ai/sdk` (already a project dependency or add as devDependency)
-* Model: `claude-haiku-4-5-20251001` (fast, cheap, sufficient for code annotation)
-* Temperature: 0.2 (consistent, factual explanations)
-* Max tokens: 1024 for small files, 2048 for files > 50 lines
-* Detect `lang` from file extension using the same `mapLangToVariant` table as the Snippet component (copy/import the mapping)
-* If Claude returns invalid JSON, retry once; if still invalid, exit with error code 1
+- Use `@anthropic-ai/sdk` (already a project dependency or add as devDependency)
+- Model: `claude-haiku-4-5-20251001` (fast, cheap, sufficient for code annotation)
+- Temperature: 0.2 (consistent, factual explanations)
+- Max tokens: 1024 for small files, 2048 for files > 50 lines
+- Detect `lang` from file extension using the same `mapLangToVariant` table as the Snippet component (copy/import the mapping)
+- If Claude returns invalid JSON, retry once; if still invalid, exit with error code 1
 
 ---
 
@@ -183,8 +182,8 @@ node scripts/bulk-eli5.mjs [--force] [--dir blog/]
 
 ```jsx
 // In MDX:
-import eli5Data from './Dockerfile.eli5.json';
-<Snippet filename="Dockerfile" code={rawDockerfile} eli5={eli5Data.explanations} />
+import eli5Data from "./Dockerfile.eli5.json";
+<Snippet filename="Dockerfile" code={rawDockerfile} eli5={eli5Data.explanations} />;
 ```
 
 **New state:**
@@ -199,14 +198,14 @@ Replace the `codeBlock` constant with a custom renderer that calls `renderEli5Bl
 
 ```jsx
 function renderEli5Block(code, lang, eli5, activeEli5Line, setActiveEli5Line) {
-  const lines = code.split('\n');
+  const lines = code.split("\n");
   // Use Prism to highlight the full block, then split by newline to get per-line HTML
   const grammar = Prism.languages[lang] || Prism.languages.plaintext;
   const highlighted = Prism.highlight(code, grammar, lang);
-  const highlightedLines = highlighted.split('\n');
+  const highlightedLines = highlighted.split("\n");
 
   return (
-    <pre className={clsx('prism-code', `language-${lang}`, styles.eli5_pre)}>
+    <pre className={clsx("prism-code", `language-${lang}`, styles.eli5_pre)}>
       <code>
         {lines.map((_, i) => {
           const lineNum = String(i + 1);
@@ -217,12 +216,15 @@ function renderEli5Block(code, lang, eli5, activeEli5Line, setActiveEli5Line) {
             <div key={i} className={styles.eli5_line}>
               <span
                 className={styles.eli5_code}
-                dangerouslySetInnerHTML={{ __html: highlightedLines[i] || ' ' }}
+                dangerouslySetInnerHTML={{ __html: highlightedLines[i] || " " }}
               />
               {hasExplanation && (
                 <span className={styles.eli5_badge_wrapper}>
                   <button
-                    className={clsx(styles.eli5_badge, isActive && styles.eli5_badge_active)}
+                    className={clsx(
+                      styles.eli5_badge,
+                      isActive && styles.eli5_badge_active,
+                    )}
                     aria-label={`Explain line ${lineNum}`}
                     aria-expanded={isActive}
                     onClick={() => setActiveEli5Line(isActive ? null : lineNum)}
@@ -250,7 +252,7 @@ function renderEli5Block(code, lang, eli5, activeEli5Line, setActiveEli5Line) {
 **Import Prism:**
 
 ```js
-import Prism from 'prismjs';
+import Prism from "prismjs";
 ```
 
 Prism is already bundled by Docusaurus; this import is safe.
@@ -316,7 +318,9 @@ New classes to add:
   font-size: 0.6rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
   line-height: 1;
   padding: 0;
 }
@@ -348,7 +352,7 @@ New classes to add:
   pointer-events: none;
 }
 
-[data-theme='dark'] .eli5_tooltip {
+[data-theme="dark"] .eli5_tooltip {
   background: #1e2030;
   border-color: rgba(255, 255, 255, 0.12);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -360,14 +364,10 @@ New classes to add:
 ## Usage example (MDX)
 
 ```mdx
-import DockerfileRaw from '!!raw-loader!./Dockerfile';
-import eli5Data from './Dockerfile.eli5.json';
+import DockerfileRaw from "!!raw-loader!./Dockerfile";
+import eli5Data from "./Dockerfile.eli5.json";
 
-<Snippet
-  filename="Dockerfile"
-  code={DockerfileRaw}
-  eli5={eli5Data.explanations}
-/>
+<Snippet filename="Dockerfile" code={DockerfileRaw} eli5={eli5Data.explanations} />
 ```
 
 `raw-loader` is already configured in the project for importing file contents as strings.
@@ -395,11 +395,11 @@ Add to `package.json` devDependencies if not already present:
 
 ## Known limitations (accepted)
 
-* **Requires `code` prop** — the ELI5 renderer needs the source as a plain string. Snippets using only `children` (rendered MDX code fences) are not supported without refactoring the child extraction logic.
-* **Prism language coverage** — languages not registered in the Docusaurus Prism bundle will fall back to plain text highlighting. Acceptable for the target file types (Dockerfile, YAML, Bash are all in the default bundle).
-* **Tooltip position near bottom of viewport** — tooltip appears below the `?` badge. No viewport-aware repositioning in V1 (add as polish follow-up using `getBoundingClientRect`).
-* **Line wrapping** — if a very long line wraps visually, the `?` badge still appears at the end of the first visual row. The tooltip is still correct. Acceptable.
-* **Stale JSON** — if the source file changes after `.eli5.json` is generated, the explanations may be stale. Run `yarn eli5 <file> --force` to regenerate. No automatic staleness detection in V1.
+- **Requires `code` prop** — the ELI5 renderer needs the source as a plain string. Snippets using only `children` (rendered MDX code fences) are not supported without refactoring the child extraction logic.
+- **Prism language coverage** — languages not registered in the Docusaurus Prism bundle will fall back to plain text highlighting. Acceptable for the target file types (Dockerfile, YAML, Bash are all in the default bundle).
+- **Tooltip position near bottom of viewport** — tooltip appears below the `?` badge. No viewport-aware repositioning in V1 (add as polish follow-up using `getBoundingClientRect`).
+- **Line wrapping** — if a very long line wraps visually, the `?` badge still appears at the end of the first visual row. The tooltip is still correct. Acceptable.
+- **Stale JSON** — if the source file changes after `.eli5.json` is generated, the explanations may be stale. Run `yarn eli5 <file> --force` to regenerate. No automatic staleness detection in V1.
 
 ---
 

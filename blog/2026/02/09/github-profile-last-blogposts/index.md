@@ -28,8 +28,8 @@ Let's add a scheduled GitHub Action (for example, every Monday) to update my [ca
 
 So, just to make things clear:
 
-* Once a week, I want the `README.md` file in my [cavo789](https://github.com/cavo789/cavo789) repo to be updated automatically.
-* The content of the `My last published articles on my blog` chapter will be rewritten and the list of articles will come from my [blog/rss.xml](https://www.avonture.be/blog/rss.xml) file.
+- Once a week, I want the `README.md` file in my [cavo789](https://github.com/cavo789/cavo789) repo to be updated automatically.
+- The content of the `My last published articles on my blog` chapter will be rewritten and the list of articles will come from my [blog/rss.xml](https://www.avonture.be/blog/rss.xml) file.
 
 Let's start by cloning the repository.
 
@@ -101,12 +101,12 @@ jobs:
 
 You can find detailed documentation on its official site: [https://github.com/marketplace/actions/blog-post-workflow](https://github.com/marketplace/actions/blog-post-workflow) but, in short:
 
-* `feed_list` is the source RSS to query for articles
-* `max_post_count` is the maximum number of blog posts to retrieve and to inject in your `README.md` file
-* `comment_tag_name` is the commented block to replace (we'll see this below)
-* `date_format` to make sure, if you show dates in your content, it's based on your desired format
-* `template` is a ... template (HTML in my case) that will be used for any entries in your result (so if you're retrieving 10 articles, you'll obtain a string with ten times your template) and
-* `commit_message` will be used by the `gautamkrishnar/blog-post-workflow` action to push changes to your repo back.
+- `feed_list` is the source RSS to query for articles
+- `max_post_count` is the maximum number of blog posts to retrieve and to inject in your `README.md` file
+- `comment_tag_name` is the commented block to replace (we'll see this below)
+- `date_format` to make sure, if you show dates in your content, it's based on your desired format
+- `template` is a ... template (HTML in my case) that will be used for any entries in your result (so if you're retrieving 10 articles, you'll obtain a string with ten times your template) and
+- `commit_message` will be used by the `gautamkrishnar/blog-post-workflow` action to push changes to your repo back.
 
 ## Updating the README.md file
 

@@ -4,9 +4,9 @@ A simple, reusable layout component for creating visually prominent sections in 
 
 ## 🚀 Features
 
-* 📦 Wraps content in a styled hero layout
-* 🎨 Combines custom CSS with Docusaurus utility classes
-* 🧩 Accepts any children elements for flexible content
+- 📦 Wraps content in a styled hero layout
+- 🎨 Combines custom CSS with Docusaurus utility classes
+- 🧩 Accepts any children elements for flexible content
 
 ## Example
 
@@ -22,25 +22,25 @@ import Hero from "@site/src/components/Hero";
 <Hero>
   <h1>Welcome to My Site</h1>
   <p>This is the place where ideas come to life.</p>
-</Hero>
+</Hero>;
 ```
 
 ## 🧾 Props
 
-| Prop | Type | Required | Default | Description |
-| --- | --- | --- | --- | --- |
-| `children` | ReactNode | ✅ | — | Content to display inside the hero section |
-| `className` | string | ❌ | — | Additional class names for custom styling |
+| Prop        | Type      | Required | Default | Description                                |
+| ----------- | --------- | -------- | ------- | ------------------------------------------ |
+| `children`  | ReactNode | ✅       | —       | Content to display inside the hero section |
+| `className` | string    | ❌       | —       | Additional class names for custom styling  |
 
 ## 🎨 Styling
 
 The component uses:
 
-* `styles.hero` from `styles.module.css`
-* Docusaurus utility classes:
-  * `hero--primary` for background color
-  * `margin-bottom--lg` for spacing
-  * `container` for layout width
+- `styles.hero` from `styles.module.css`
+- Docusaurus utility classes:
+  - `hero--primary` for background color
+  - `margin-bottom--lg` for spacing
+  - `container` for layout width
 
 ## 📄 License
 

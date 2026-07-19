@@ -50,18 +50,14 @@ export default function MainTags() {
   return (
     <section className={styles.cardsSection}>
       <h2>
-        <Translate id="homepage.mainTags.title">
-          Explore the main topics
-        </Translate>
+        <Translate id="homepage.mainTags.title">Explore the main topics</Translate>
       </h2>
       <div className={styles.cardsGrid}>
         {MAIN_CARDS?.length > 0 ? (
           MAIN_CARDS.map((card) => <Card key={card.title} {...card} />)
         ) : (
           <p>
-            <Translate id="homepage.mainTags.noTags">
-              No tags to display.
-            </Translate>
+            <Translate id="homepage.mainTags.noTags">No tags to display.</Translate>
           </p>
         )}
       </div>

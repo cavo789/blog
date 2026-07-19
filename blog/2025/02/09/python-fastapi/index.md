@@ -165,9 +165,9 @@ We'll update our `main.py` script like this:
 
 You immediately see it I think:
 
-* I've defined an array with five, hardcoded, jokes;
-* I've defined a new route called `/jokes` and that one will display a random joke
-* And finally I've defined a `jokes/{joke_id}` to be able to target a specific joke (like "Give me the second joke you know").
+- I've defined an array with five, hardcoded, jokes;
+- I've defined a new route called `/jokes` and that one will display a random joke
+- And finally I've defined a `jokes/{joke_id}` to be able to target a specific joke (like "Give me the second joke you know").
 
 <AlertBox variant="info" title="Use an external file instead of hardcoding jokes">
 As an exercise; just remove the initialisation part of the  `jokes` array and, instead, read jokes from a text file. It would be really easy to do.

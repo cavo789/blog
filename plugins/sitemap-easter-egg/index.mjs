@@ -51,7 +51,9 @@ export default function sitemapEasterEggPlugin() {
       try {
         xml = await readWhenReady(sitemapPath);
       } catch (err) {
-        console.warn(`[sitemap-easter-egg] sitemap.xml not found, skipping: ${err.message}`);
+        console.warn(
+          `[sitemap-easter-egg] sitemap.xml not found, skipping: ${err.message}`,
+        );
         return;
       }
 

@@ -1,18 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { HtmlClassNameProvider, ThemeClassNames, PageMetadata } from '@docusaurus/theme-common';
-import BlogListPaginator from '@theme/BlogListPaginator';
-import SearchMetadata from '@theme/SearchMetadata';
-import Layout from '@theme/Layout';
-import PostCard from '@site/src/components/Blog/PostCard';
-import styles from './styles.module.css';
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
+import {
+  HtmlClassNameProvider,
+  ThemeClassNames,
+  PageMetadata,
+} from "@docusaurus/theme-common";
+import BlogListPaginator from "@theme/BlogListPaginator";
+import SearchMetadata from "@theme/SearchMetadata";
+import Layout from "@theme/Layout";
+import PostCard from "@site/src/components/Blog/PostCard";
+import styles from "./styles.module.css";
 
 function resolveImageUrl(frontMatterImage, permalink) {
   if (!frontMatterImage) return null;
-  if (!frontMatterImage.startsWith('./')) return frontMatterImage;
-  const slug = permalink.replace(/^\/blog\//, '').replace(/\/$/, '');
-  return `/blog/${slug}/${frontMatterImage.replace('./', '')}`;
+  if (!frontMatterImage.startsWith("./")) return frontMatterImage;
+  const slug = permalink.replace(/^\/blog\//, "").replace(/\/$/, "");
+  return `/blog/${slug}/${frontMatterImage.replace("./", "")}`;
 }
 
 const metadataPropTypes = PropTypes.shape({
@@ -48,7 +52,7 @@ function BlogListPageContent({ metadata, items }) {
 
   return (
     <Layout>
-      <main className={clsx('container', styles.blogListPage)}>
+      <main className={clsx("container", styles.blogListPage)}>
         <h1 className={styles.pageTitle}>
           All posts
           <span className={styles.postCount}>{metadata.totalCount}</span>
@@ -86,7 +90,7 @@ export default function BlogListPage(props) {
     <HtmlClassNameProvider
       className={clsx(
         ThemeClassNames.wrapper.blogPages,
-        ThemeClassNames.page.blogListPage
+        ThemeClassNames.page.blogListPage,
       )}
     >
       <BlogListPageMetadata {...props} />

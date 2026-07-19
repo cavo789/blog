@@ -29,7 +29,7 @@ export default function BlogTagsListPage({ tags, sidebar }) {
   // Build featured cards by matching MAIN_CARDS labels against actual tag data.
   const featuredCards = MAIN_CARDS.flatMap((card) => {
     const tagData = tagsArray.find(
-      (t) => t.label.toLowerCase() === card.title.toLowerCase()
+      (t) => t.label.toLowerCase() === card.title.toLowerCase(),
     );
     if (!tagData) return [];
     return [{ ...card, count: tagData.count, permalink: tagData.permalink }];
@@ -41,7 +41,7 @@ export default function BlogTagsListPage({ tags, sidebar }) {
     <HtmlClassNameProvider
       className={clsx(
         ThemeClassNames.wrapper.blogPages,
-        ThemeClassNames.page.blogTagsListPage
+        ThemeClassNames.page.blogTagsListPage,
       )}
     >
       <PageMetadata title={title} />
@@ -49,9 +49,7 @@ export default function BlogTagsListPage({ tags, sidebar }) {
       <BlogLayout>
         <div className={styles.pageHeader}>
           <h1 className={styles.pageTitle}>{title}</h1>
-          <p className={styles.pageSubtitle}>
-            {tagsArray.length} topics to explore
-          </p>
+          <p className={styles.pageSubtitle}>{tagsArray.length} topics to explore</p>
         </div>
 
         {featuredCards.length > 0 && (
@@ -68,9 +66,7 @@ export default function BlogTagsListPage({ tags, sidebar }) {
                     {card.icon}
                   </span>
                   <span className={styles.featuredTitle}>{card.title}</span>
-                  <span className={styles.featuredDescription}>
-                    {card.description}
-                  </span>
+                  <span className={styles.featuredDescription}>{card.description}</span>
                   <span className={styles.featuredCount}>
                     {card.count} {card.count === 1 ? "article" : "articles"}
                   </span>
@@ -89,8 +85,7 @@ export default function BlogTagsListPage({ tags, sidebar }) {
                 to={tag.permalink}
                 className={clsx(
                   styles.tagPill,
-                  featuredLabels.has(tag.label.toLowerCase()) &&
-                    styles.tagPillFeatured
+                  featuredLabels.has(tag.label.toLowerCase()) && styles.tagPillFeatured,
                 )}
               >
                 <span>{tag.label}</span>

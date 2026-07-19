@@ -4,12 +4,12 @@ A React component for displaying and filtering GitHub repositories for a given u
 
 ## 🚀 Features
 
-* 🔍 **Search** by repository name or description
-* 🎛️ **Filter** by language, archived status, and minimum stars
-* 🎨 **Dynamic styling** based on language color
-* ⚡ **Fade-in animation** for smooth visual entry
-* 🧠 **Local caching** to reduce API calls
-* 📊 **Sorts** by popularity (stars) or alphabetically
+- 🔍 **Search** by repository name or description
+- 🎛️ **Filter** by language, archived status, and minimum stars
+- 🎨 **Dynamic styling** based on language color
+- ⚡ **Fade-in animation** for smooth visual entry
+- 🧠 **Local caching** to reduce API calls
+- 📊 **Sorts** by popularity (stars) or alphabetically
 
 ## Example
 
@@ -31,37 +31,37 @@ src/components/GithubProjects/styles.module.css
 ```jsx
 import GithubProjects from "@site/src/components/GithubProjects";
 
-<GithubProjects username="your-github-username" />
+<GithubProjects username="your-github-username" />;
 ```
 
 ## 🧾 Props
 
-| Prop | Type | Required | Default | Description |
-| --- |  --- | --- | --- | --- |
-| `username` | string | ✅ | — | GitHub username to fetch repositories |
+| Prop       | Type   | Required | Default | Description                           |
+| ---------- | ------ | -------- | ------- | ------------------------------------- |
+| `username` | string | ✅       | —       | GitHub username to fetch repositories |
 
 ## 🧠 Filtering Options
 
-* Search: Type keywords to match repo name or description
-* Language: Dynamically generated from fetched data
-* Archived: Show active, archived, or all repos
-* Min Stars: Filter by minimum star count
+- Search: Type keywords to match repo name or description
+- Language: Dynamically generated from fetched data
+- Archived: Show active, archived, or all repos
+- Min Stars: Filter by minimum star count
 
 ## 🎨 Styling
 
 The component uses `styles.module.css` for scoped styling. You can customize:
 
-* Background image
-* Card hover effects
-* Fade-in animation
-* Filter panel layout
+- Background image
+- Card hover effects
+- Fade-in animation
+- Filter panel layout
 
 ## 🛠️ Development Notes
 
-* Uses GitHub REST API: `https://api.github.com/users/{username}/repos`
-* Caches repo data in localStorage for 24 hours
-* Handles pagination (up to 100 repos per page)
-* Responsive layout using Docusaurus grid classes
+- Uses GitHub REST API: `https://api.github.com/users/{username}/repos`
+- Caches repo data in localStorage for 24 hours
+- Handles pagination (up to 100 repos per page)
+- Responsive layout using Docusaurus grid classes
 
 ## 📄 License
 

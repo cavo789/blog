@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:59.539Z",
+  "source": "styles.module.css",
+  "sourceHash": "6a12a96cd179a715465523f829d3fcaf16c3de5d",
+  "lang": "css",
+  "explanations": {
+    "4": "overflow-x: auto means if the code is wider than its container, a horizontal scrollbar appears instead of wrapping or being cut off.",
+    "14": "align-items: flex-start aligns items to the top of the flex container, useful when items inside have different heights.",
+    "25": "white-space: pre preserves all spaces and line breaks exactly as written, so the code formatting doesn't get collapsed.",
+    "32": "flex-shrink: 0 prevents this element from shrinking smaller than its natural size when the flex container runs out of space.",
+    "50": "border-radius: 50% makes any element into a perfect circle (assuming equal width and height).",
+    "59": "transition smoothly animates changes to background color, text color, and border color over 0.15 seconds when the element state changes.",
+    "75": "calc(100% + 5px) means position the tooltip 5 pixels below the bottom edge of its parent element.",
+    "89": "pointer-events: none makes the tooltip ignore mouse clicks and hovers, so clicks pass through to elements underneath.",
+    "102": "transform: rotate(45deg) tilts the small square 45 degrees to create a diamond-shaped arrow pointing up.",
+    "105": "This selector applies different tooltip styles when the page is in dark mode (data-theme=\"dark\" attribute is set)."
+  }
+}

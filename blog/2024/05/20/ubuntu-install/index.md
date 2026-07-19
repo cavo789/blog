@@ -68,10 +68,10 @@ Everything is nicely covered by the [official tutorial](https://ubuntu.com/tutor
 
 A few notes:
 
-* Select the *interactive mode* so you can select the options that suit you best in more detail;
-* When asked, select *Extended selection* to be able to install additional software during the installation process (like desktop tools, utilities and a web browser);
-* When asked *Install recommended proprietary software?*, make sure checkboxes are **unchecked** (see below);
-* The wizard will ask *how to install Ubuntu*; alongside Windows (so with a dual boot) or alone. I'm going to opt for the latter.
+- Select the *interactive mode* so you can select the options that suit you best in more detail;
+- When asked, select *Extended selection* to be able to install additional software during the installation process (like desktop tools, utilities and a web browser);
+- When asked *Install recommended proprietary software?*, make sure checkboxes are **unchecked** (see below);
+- The wizard will ask *how to install Ubuntu*; alongside Windows (so with a dual boot) or alone. I'm going to opt for the latter.
 Personally, that's my goal and I'm going to ask to delete my entire current disk (Windows) and to do that, I'm going to click on *Erase disk and install Ubuntu* and click on the *Advanced features* button. I'm going to opt for *Use LVM and encryption* which will allow me to have encryption like I had with Bitlocker: someone who came to steal my hard disk wouldn't have access to my files without the decryption key.
 
 <AlertBox variant="highlyImportant" title="IMPORTANT - DON'T INSTALL ADDITIONAL DRIVERS IF YOU'VE A NVIDIA GRAPHIC CARD">
@@ -112,9 +112,9 @@ As a very last step, run the **Software Updater** application to check for any a
 
 ## Time to add software
 
-* [Firefox](https://snapcraft.io/firefox) as browser (`sudo snap install firefox`),
-* [Thunderbird](https://snapcraft.io/thunderbird) for your email client (`sudo snap install thunderbird`),
-* [LibreOffice](https://snapcraft.io/libreoffice) to create documents, spreadsheets or slideshows (`sudo snap install libreoffice`),
-* [Visual Studio Code](https://snapcraft.io/code) to start coding (`sudo snap install code --classic`),
-* [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository) to work with containers,
-* [Gimp](https://snapcraft.io/gimp) to edit images (`sudo snap install gimp`),
+- [Firefox](https://snapcraft.io/firefox) as browser (`sudo snap install firefox`),
+- [Thunderbird](https://snapcraft.io/thunderbird) for your email client (`sudo snap install thunderbird`),
+- [LibreOffice](https://snapcraft.io/libreoffice) to create documents, spreadsheets or slideshows (`sudo snap install libreoffice`),
+- [Visual Studio Code](https://snapcraft.io/code) to start coding (`sudo snap install code --classic`),
+- [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository) to work with containers,
+- [Gimp](https://snapcraft.io/gimp) to edit images (`sudo snap install gimp`),

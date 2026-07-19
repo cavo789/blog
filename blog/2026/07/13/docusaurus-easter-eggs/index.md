@@ -9,7 +9,7 @@ date: 2026-07-13
 description: "A tour of eight small, discoverable easter eggs added to this Docusaurus blog — a hidden ASCII-art meerkat in the page source, a Konami-code sprite run, a console.log wink, a tab-away favicon swap, rotating 404 messages, a hidden sitemap comment and more — plus the real bugs (key-repeat, an AZERTY keyboard mismatch, a wrong emoji, a postBuild race condition, a blurry favicon) caught along the way."
 ai_assisted: true
 language: en
-blueskyRecordKey:
+blueskyRecordKey: 3mqj3hvs7cc2z
 ---
 
 ![Meerkat Mischief: Sprinkling Easter Eggs Across my Blog](/img/v2/easter_eggs.webp)

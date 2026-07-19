@@ -44,11 +44,11 @@ Aucun TODO existant. Trouvé lors du même audit `blog/2025` que [[049]] et [[05
 
 ### Done
 
-* `blog/2025/11/03/quarto-devcontainer/index.md` (lignes ~65-69) — les 3 `Snippet` consécutifs
+- `blog/2025/11/03/quarto-devcontainer/index.md` (lignes ~65-69) — les 3 `Snippet` consécutifs
   (`compose.yaml`, `Dockerfile`, `devcontainer.json`) enveloppés dans un seul
   `<ProjectSetup folderName="/tmp/quarto-examples/brand/brand-simple">`. Aucun contenu interstitiel
   entre les `Snippet`, retrofit sûr et identique au pattern de référence.
-* `blog/2025/11/11/running-docusaurus-using-docker/index.md` — deux lots enveloppés dans
+- `blog/2025/11/11/running-docusaurus-using-docker/index.md` — deux lots enveloppés dans
   `<ProjectSetup folderName="/tmp/docux-blog">` : (1) les 6 fichiers racine
   (`compose.yaml`, `Dockerfile`, `localhost-key.pem`, `localhost.pem`, `makefile`, `nginx.conf`) ;
   (2) les 6 fichiers `.devcontainer/` (`.env`, `bootstrap.sh`, `bash_helpers.sh`, `compose.yaml`,
@@ -56,13 +56,13 @@ Aucun TODO existant. Trouvé lors du même audit `blog/2025` que [[049]] et [[05
   ("Make sure to use your own UID/GID") intercalé juste après `.env` — déplacé **après** le
   `</ProjectSetup>` plutôt que supprimé, pour rester visible au lecteur (voir "Not done" ci-dessous
   pour l'explication de pourquoi il ne pouvait pas rester à l'intérieur).
-* Vérifié : `markdownlint-cli2` passe sur les deux fichiers et `yarn build` compile sans erreur
+- Vérifié : `markdownlint-cli2` passe sur les deux fichiers et `yarn build` compile sans erreur
   MDX ; le HTML généré contient bien 1 boîte "Project setup:" sur `quarto-devcontainer` et 2 sur
   `running-docusaurus-with-docker`.
 
 ### Not done
 
-* `blog/2025/10/13/docker-prod-devcontainer/index.md` (les deux lots, fichiers racine et
+- `blog/2025/10/13/docker-prod-devcontainer/index.md` (les deux lots, fichiers racine et
   `.devcontainer/`) — **non enveloppé**.
   **Reason:** contrairement aux deux autres articles, chaque `Snippet` y est entrecoupé de
   paragraphes explicatifs uniques, de `<StepsCard>` et de plusieurs `<AlertBox>` propres à ce

@@ -4,13 +4,13 @@ An automated, local code review system that leverages **Ollama** and high-perfor
 
 ## Features
 
-* **Local & Private:** Your code never leaves your machine.
-* **Strict Standards:** Enforces SOLID principles, DRY (Don't Repeat Yourself), and maintainability.
-* **Strict Typing:** Validates type hinting for **Python** and **PHP** (compatible with MyPy, PHPStan, Phan).
-* **Bash Support:** Analyzes **Shell scripts** for best practices and security.
-* **English Only:** Automatically flags non-English comments and documentation (comments should be written in English).
-* **Work/Home Awareness:** If the Ollama service is unreachable (e.g., at the office without your local GPU), the hook gracefully skips the review without blocking your workflow.
-* **Commit Guard:** Blocks the commit if the AI suggests improvements.
+- **Local & Private:** Your code never leaves your machine.
+- **Strict Standards:** Enforces SOLID principles, DRY (Don't Repeat Yourself), and maintainability.
+- **Strict Typing:** Validates type hinting for **Python** and **PHP** (compatible with MyPy, PHPStan, Phan).
+- **Bash Support:** Analyzes **Shell scripts** for best practices and security.
+- **English Only:** Automatically flags non-English comments and documentation (comments should be written in English).
+- **Work/Home Awareness:** If the Ollama service is unreachable (e.g., at the office without your local GPU), the hook gracefully skips the review without blocking your workflow.
+- **Commit Guard:** Blocks the commit if the AI suggests improvements.
 
 ### Debugging
 
@@ -28,18 +28,18 @@ docker run --rm \
 
 This will display:
 
-* The full system prompt (including the specific rules merged for the file type).
-* The raw request payload sent to the Ollama API.
-* The unprocessed response from the LLM before parsing.
+- The full system prompt (including the specific rules merged for the file type).
+- The raw request payload sent to the Ollama API.
+- The unprocessed response from the LLM before parsing.
 
 
 ## Prerequisites
 
-* **Python 3.11+**
-* **Ollama** installed and running.
-* **High-performance model:** Recommended models for 24GB VRAM:
-  * `ollama pull codestral` (Best for Python/PHP)
-  * `ollama pull deepseek-coder-v2`
+- **Python 3.11+**
+- **Ollama** installed and running.
+- **High-performance model:** Recommended models for 24GB VRAM:
+  - `ollama pull codestral` (Best for Python/PHP)
+  - `ollama pull deepseek-coder-v2`
 
 ## Setup
 
@@ -69,6 +69,7 @@ This will display:
       -w /app \
       python:3.14-alpine \
       sh -c "pip install --no-cache-dir uv && uv lock && chown $(id -u):$(id -g) uv.lock"
+
   ```
 
   Then we can build the image:
@@ -215,15 +216,15 @@ If you are in a hurry, have a false positive from the AI, or are working offline
 
 ## Configuration
 
-* **`config/settings.yaml`**: Define the model name (`codestral`, `llama3`, etc.) and the connection URL.
-* **`config/rules/`**: This directory contains the "brain" of the reviewer. It is split into `common.txt` (global rules) and language-specific files (e.g., `python.txt`, `php.txt`). You can update these to refine your standards without touching the Python code.
+- **`config/settings.yaml`**: Define the model name (`codestral`, `llama3`, etc.) and the connection URL.
+- **`config/rules/`**: This directory contains the "brain" of the reviewer. It is split into `common.txt` (global rules) and language-specific files (e.g., `python.txt`, `php.txt`). You can update these to refine your standards without touching the Python code.
 
 ## Architecture
 
-* `src/git_utils.py`: Extracts only the staged content (using `git show :file`).
-* `src/ollama_client.py`: Handles API communication and health checks.
-* `src/analyzer.py`: Logic for filtering file extensions and processing reviews.
-* `src/main.py`: Main entry point orchestrating the workflow.
+- `src/git_utils.py`: Extracts only the staged content (using `git show :file`).
+- `src/ollama_client.py`: Handles API communication and health checks.
+- `src/analyzer.py`: Logic for filtering file extensions and processing reviews.
+- `src/main.py`: Main entry point orchestrating the workflow.
 
 ## Coding tips
 

@@ -91,9 +91,9 @@ You will be prompted to enter the SSH connection string.
 
 In our example, it will be `ssh christophe@localhost -p 2222` because:
 
-*   The user defined in our `Dockerfile` is `christophe`,
-*   Our server is `localhost` (since it's a Docker container running on our machine), and
-*   The port number to use is `2222` (the one we specified in the `docker run` command).
+-   The user defined in our `Dockerfile` is `christophe`,
+-   Our server is `localhost` (since it's a Docker container running on our machine), and
+-   The port number to use is `2222` (the one we specified in the `docker run` command).
 
 VS Code will then ask which SSH configuration file you want to update.
 

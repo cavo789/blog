@@ -4,12 +4,12 @@ A command-line tool for managing YAML front matter tags in Markdown files across
 
 ## Features
 
-* **Tag Listing & Analysis:** Scans files, extracts tags, and provides flexible sorting options (by frequency or name).
-* **Tag Optimization Suggestions:** Automatically flags potential duplicate tags, including **case variations** (`GitHub` vs `github`) and **sub-string/singular-plural matches** (`tip` vs `tips`), to help maintain tag hygiene.
-* **Configurable Exceptions:** Allows defining a list of **merge exceptions** in the script to eliminate false-positive suggestions (e.g., intentionally separate tags like `php` and `phpcbf`).
-* **Tag Renaming:** Replaces an old tag with a new tag across all files.
-* **Tag Deletion:** Removes a specified tag from all files.
-* **YAML Formatting Preservation:** Uses `oyaml` with custom dumpers to ensure tags lists are kept in inline format (`[tag1, tag2]`) and prevents PyYAML from folding long strings (like descriptions).
+- **Tag Listing & Analysis:** Scans files, extracts tags, and provides flexible sorting options (by frequency or name).
+- **Tag Optimization Suggestions:** Automatically flags potential duplicate tags, including **case variations** (`GitHub` vs `github`) and **sub-string/singular-plural matches** (`tip` vs `tips`), to help maintain tag hygiene.
+- **Configurable Exceptions:** Allows defining a list of **merge exceptions** in the script to eliminate false-positive suggestions (e.g., intentionally separate tags like `php` and `phpcbf`).
+- **Tag Renaming:** Replaces an old tag with a new tag across all files.
+- **Tag Deletion:** Removes a specified tag from all files.
+- **YAML Formatting Preservation:** Uses `oyaml` with custom dumpers to ensure tags lists are kept in inline format (`[tag1, tag2]`) and prevents PyYAML from folding long strings (like descriptions).
 
 ## Prerequisites
 
@@ -84,8 +84,8 @@ make tags-manager ARGS="delete obsolete-tag"
 
 The script currently targets Markdown files within a fixed directory structure.
 
-* **Target Directory**: `blog`
-* **File Pattern**: `blog/**/{*.md,*.mdx}` (searches recursively for all `.md` and `.mdx` files)
+- **Target Directory**: `blog`
+- **File Pattern**: `blog/**/{*.md,*.mdx}` (searches recursively for all `.md` and `.mdx` files)
 
 If your project directory differs, you must update the `DOCS_DIR` variable at the top of the `tag_manager.py` script.
 

@@ -26,11 +26,11 @@ For fun (because that solution is perhaps not bullet proof), I asked an AI to ge
 
 It can be risky because if the word `vscode` appears in:
 
-* a URL (like `https://github.com/microsoft/vscode/`),
-* a name (like `vstirbu.vscode-mermaid-preview`),
-* as a file name (like `vscode.png`),
-* a code snippet (inside a <code>\```...\```</code> or <code>\`.\`</code> block),
-* ...
+- a URL (like `https://github.com/microsoft/vscode/`),
+- a name (like `vstirbu.vscode-mermaid-preview`),
+- as a file name (like `vscode.png`),
+- a code snippet (inside a <code>\```...\```</code> or <code>\`.\`</code> block),
+- ...
 
 we certainly do not want to make the replacement.
 

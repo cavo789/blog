@@ -39,7 +39,6 @@ const config = {
 };
 
 export default config;
-
 ```
 
 ## 🧩 Required Snippet Component
@@ -58,9 +57,9 @@ Use the `<Snippet>` component in any `.mdx` file:
 <Snippet filename=".devcontainer/compose.yaml" source="./static/compose.yaml" />
 ```
 
-| Attribute | Description |
-| --- | --- |
-| `source` | Required. The path to the file you want to embed. |
+| Attribute  | Description                                              |
+| ---------- | -------------------------------------------------------- |
+| `source`   | Required. The path to the file you want to embed.        |
 | `filename` | Optional. The file name to display above the code block. |
 
 ## 📁 Path Resolution Logic
@@ -71,21 +70,21 @@ The plugin is designed to support two primary path resolution modes based on the
 
 If the source path starts with `./` or `../`, the path is resolved relative to the directory of the `.mdx` file you are currently editing.
 
-* **Syntax Example**:
+- **Syntax Example**:
 
-    `<Snippet filename="config.json" source="./assets/config.json" />`
+  `<Snippet filename="config.json" source="./assets/config.json" />`
 
-* **Use Case**: Ideal for loading files that are local to a specific documentation article, such as example data or images placed next to the doc file.
+- **Use Case**: Ideal for loading files that are local to a specific documentation article, such as example data or images placed next to the doc file.
 
 ### **2. Relative to the Docusaurus Root Folder**
 
 If the `source` path does not start with a dot (`.` or `..`), the path is resolved relative to the Docusaurus project root (`process.cwd()`, where `docusaurus.config.js` is located).
 
-* **Syntax Example:**
+- **Syntax Example:**
 
-    `<Snippet sourcefilename="share.js" ="src/components/Bluesky/share.js" />`
+  `<Snippet sourcefilename="share.js" ="src/components/Bluesky/share.js" />`
 
-* **Use Case**: Essential for embedding core files that reside outside the documentation directory, such as source code components, public assets, or top-level configuration files (`package.json`, etc.).
+- **Use Case**: Essential for embedding core files that reside outside the documentation directory, such as source code components, public assets, or top-level configuration files (`package.json`, etc.).
 
 ## 📄 License
 

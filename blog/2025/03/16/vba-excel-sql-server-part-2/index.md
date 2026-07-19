@@ -35,17 +35,17 @@ Read the full blog post <Link to="/blog/docker-mssql-server">Play with Microsoft
 
 In short:
 
-* Start a console (can be DOS, PowerShell or Linux),
-* Run `docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=2Secure*Password2" -p 1433:1433 --name sqlserverdb -h mysqlserver -d mcr.microsoft.com/mssql/server:2022-latest` to download SQL server and run an instance of it in a Docker container,
-* Download [SQL Server Management Studio](https://learn.microsoft.com/en-us/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16#download-ssms) if you don't have it yet. It's free.
-* Once installed, start SQL Server Management Studio.
+- Start a console (can be DOS, PowerShell or Linux),
+- Run `docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=2Secure*Password2" -p 1433:1433 --name sqlserverdb -h mysqlserver -d mcr.microsoft.com/mssql/server:2022-latest` to download SQL server and run an instance of it in a Docker container,
+- Download [SQL Server Management Studio](https://learn.microsoft.com/en-us/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16#download-ssms) if you don't have it yet. It's free.
+- Once installed, start SQL Server Management Studio.
 
 Use the values below for the authentication:
 
-* Server name: `localhost,1433`
-* Authentication: `SQL Server Authentication`
-* Login: `SA`
-* Password: `2Secure*Password2`
+- Server name: `localhost,1433`
+- Authentication: `SQL Server Authentication`
+- Login: `SA`
+- Password: `2Secure*Password2`
 
 You're now in SSMS. We'll create a dummy database. Using some AI, I've asked for a script, here it is:
 
@@ -172,10 +172,10 @@ If the parameter bPersist is set to True, the connection string will be in plain
 
 #### Parameters
 
-* `sSQL` : Instruction to use (a valid SQL statement like `SELECT ... FROM ...` or `EXEC usp_xxxx`)
-* `sQueryName` : Internal name that will be given to the querytable
-* `rngTarget` : Destination of the returned recordset (f.i. `Sheet1!$A$1`)
-* `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query
+- `sSQL` : Instruction to use (a valid SQL statement like `SELECT ... FROM ...` or `EXEC usp_xxxx`)
+- `sQueryName` : Internal name that will be given to the querytable
+- `rngTarget` : Destination of the returned recordset (f.i. `Sheet1!$A$1`)
+- `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query
 
 <AlertBox variant="danger">
 IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN CLEAR IN THE CONNECTION STRING !
@@ -196,9 +196,9 @@ The obtained workbook will be ready to be sent to someone.
 
 #### Parameters
 
-* `sSQL` : Instruction to use (a valid SQL statement like `SELECT ... FROM ...` or `EXEC usp_xxxx`)
-* `sReportTitle` : Title for the sheet
-* `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query
+- `sSQL` : Instruction to use (a valid SQL statement like `SELECT ... FROM ...` or `EXEC usp_xxxx`)
+- `sReportTitle` : Title for the sheet
+- `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query
 
 <AlertBox variant="danger">
 IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN CLEAR IN THE CONNECTION STRING !

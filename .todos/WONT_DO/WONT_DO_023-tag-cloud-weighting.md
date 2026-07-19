@@ -30,26 +30,38 @@ APRÈS — pondéré par nombre d'articles
 
 Le composant `BlogTagsListPage` est swizzlé dans `src/theme/BlogTagsListPage/`. La pondération peut être calculée côté JSX à partir du nombre d'articles par tag, puis appliquée via un style inline ou des classes utilitaires.
 
-### Seuils suggérés (basés sur votre corpus) :
+### Seuils suggérés (basés sur votre corpus)
 
-| Count | Font-size | Padding horizontal | Classe CSS |
-|-------|-----------|-------------------|------------|
-| ≥ 30 | 1.05rem | 1rem | `tagPillXL` |
-| 15–29 | 0.95rem | 0.875rem | `tagPillL` |
-| 7–14 | 0.875rem | 0.75rem | (défaut) |
-| 3–6 | 0.8rem | 0.65rem | `tagPillS` |
-| 1–2 | 0.75rem | 0.6rem | `tagPillXS` |
+| Count | Font-size | Padding horizontal | Classe CSS  |
+| ----- | --------- | ------------------ | ----------- |
+| ≥ 30  | 1.05rem   | 1rem               | `tagPillXL` |
+| 15–29 | 0.95rem   | 0.875rem           | `tagPillL`  |
+| 7–14  | 0.875rem  | 0.75rem            | (défaut)    |
+| 3–6   | 0.8rem    | 0.65rem            | `tagPillS`  |
+| 1–2   | 0.75rem   | 0.6rem             | `tagPillXS` |
 
-### CSS à ajouter dans `styles.module.css` :
+### CSS à ajouter dans `styles.module.css`
 
 ```css
-.tagPillXL { font-size: 1.05rem; padding: 0.4rem 1rem; }
-.tagPillL  { font-size: 0.95rem; padding: 0.38rem 0.875rem; }
-.tagPillS  { font-size: 0.8rem;  padding: 0.3rem 0.65rem; }
-.tagPillXS { font-size: 0.75rem; padding: 0.28rem 0.6rem; }
+.tagPillXL {
+  font-size: 1.05rem;
+  padding: 0.4rem 1rem;
+}
+.tagPillL {
+  font-size: 0.95rem;
+  padding: 0.38rem 0.875rem;
+}
+.tagPillS {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.65rem;
+}
+.tagPillXS {
+  font-size: 0.75rem;
+  padding: 0.28rem 0.6rem;
+}
 ```
 
-### JSX dans le composant `index.js` :
+### JSX dans le composant `index.js`
 
 ```js
 function getTagSizeClass(count) {

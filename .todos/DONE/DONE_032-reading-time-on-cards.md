@@ -33,21 +33,26 @@ APRÈS — avec lecture estimée
 **Fichier :** `src/theme/BlogListPage/index.js`
 
 Étape 1 — extraire `readingTime` dans la liste des données :
+
 ```js
 // Ajouter dans le .map() qui construit les posts :
 readingTime: m.readingTime,
 ```
 
 Étape 2 — dans le JSX de `BlogCard`, après la date :
+
 ```jsx
-{post.readingTime && (
-  <span className={styles.cardReadingTime}>
-    · {Math.ceil(post.readingTime)} min read
-  </span>
-)}
+{
+  post.readingTime && (
+    <span className={styles.cardReadingTime}>
+      · {Math.ceil(post.readingTime)} min read
+    </span>
+  );
+}
 ```
 
 **Fichier :** `src/theme/BlogListPage/styles.module.css` — ajouter :
+
 ```css
 .cardReadingTime {
   font-size: 0.8rem;
@@ -55,7 +60,7 @@ readingTime: m.readingTime,
   font-style: italic;
 }
 
-[data-theme='dark'] .cardReadingTime {
+[data-theme="dark"] .cardReadingTime {
   color: var(--ifm-color-secondary-light);
 }
 ```

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:14.632Z",
+  "source": "index.js",
+  "sourceHash": "602e403e122cf640f9fda163b508e4db792a9fa0",
+  "lang": "javascript",
+  "explanations": {
+    "24": "This function converts single characters to lowercase (like 'A' to 'a') but leaves multi-character key names like 'ArrowUp' unchanged, because arrow keys shouldn't be lowercased.",
+    "30": "progressRef stores a number that persists across re-renders without causing the component to re-render; it tracks how many keys in the Konami sequence the user has correctly typed so far.",
+    "46": "event.repeat is true when the user holds down a key and the OS fires repeated 'keydown' events; we skip those to avoid breaking sequences where the same key appears twice in a row.",
+    "61": "If the user pressed the wrong key, we either reset to 1 (if they happened to press the first key of the sequence) or reset to 0 (starting fresh), so they can retry the whole sequence."
+  }
+}

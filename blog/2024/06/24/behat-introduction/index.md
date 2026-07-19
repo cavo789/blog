@@ -43,11 +43,11 @@ As you can read on the [Behat](https://docs.behat.org/en/latest/) site, *Behat i
 
 Imagine you're a customer and you ask a developer to create a new website. In your specifications, you tell him things like:
 
-* As a visitor, I'd like a menu entry that, once clicked, will (do this);
-* As a visitor, I want to be able to access a search engine that will allow me to make a selection from a category of articles and then, within this category, launch a search for the word (a word). A list of articles on this theme will then be displayed;
-* As site manager, I want to be able to connect to a management interface and, after a successful login, I need to see the options (list of features);
-* As site manager, I should be able to add a new article where I have to specify a title, a category, a main image and a text. Once I save it, I should see the new article in the list of articles and, by ordering the list on the creation date/time, it has to be the first in the list;
-* (and much more)
+- As a visitor, I'd like a menu entry that, once clicked, will (do this);
+- As a visitor, I want to be able to access a search engine that will allow me to make a selection from a category of articles and then, within this category, launch a search for the word (a word). A list of articles on this theme will then be displayed;
+- As site manager, I want to be able to connect to a management interface and, after a successful login, I need to see the options (list of features);
+- As site manager, I should be able to add a new article where I have to specify a title, a category, a main image and a text. Once I save it, I should see the new article in the list of articles and, by ordering the list on the creation date/time, it has to be the first in the list;
+- (and much more)
 
 In terms of Behat, these sentences are called scenarios. You can write them even before the website is created. And during the coding steps, the developer will run your scenarios from time to time. On the first run, all the scenarios are bound to fail (the site doesn't exist; the requested functions have not yet been developed). The developer will work on one or other of the functionalities; he will restart the BDD tests and, as the project progresses, the scenarios will succeed until the end of the project, when all the scenarios will have been successfully completed and the project can be sent to you for acceptance.
 
@@ -61,16 +61,16 @@ So, for our new challenge (that I gladly accept) above, I'm going to create a li
 
 Let's start...
 
-* First, let's create a new directory: `mkdir /tmp/behat && cd $_`.
-* There, let's create a file called `Dockerfile` with the content below. That script is already big but; like this, we'll have everything we need right now.
+- First, let's create a new directory: `mkdir /tmp/behat && cd $_`.
+- There, let's create a file called `Dockerfile` with the content below. That script is already big but; like this, we'll have everything we need right now.
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
-* Create a file called `compose.yaml` with this content:
+- Create a file called `compose.yaml` with this content:
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
-* Run `docker compose up --detach` to create your Docker container
+- Run `docker compose up --detach` to create your Docker container
 
 We'll check if the Chrome driver is correctly installed by running `docker compose exec -u $(id -u):$(id -g) app /usr/local/bin/chrome/chromedriver --version`. Same for the Chrome browser `docker compose exec -u $(id -u):$(id -g) app /usr/local/bin/chrome/chrome --version`. Nice! Seeing these values means Chrome is ready to be used.
 
@@ -78,18 +78,18 @@ We'll check if the Chrome driver is correctly installed by running `docker compo
 
 Ok, let's do one more thing; we need to create our `composer.json` file since we need to include the PHP `Behat` dependency.
 
-* Run `docker compose exec -u $(id -u):$(id -g) app /bin/bash` to start an interactive shell in your Docker container and be yourself (i.e. by using `-u $(id -u):$(id -g)` files and folders created in Docker will be owned by you),
+- Run `docker compose exec -u $(id -u):$(id -g) app /bin/bash` to start an interactive shell in your Docker container and be yourself (i.e. by using `-u $(id -u):$(id -g)` files and folders created in Docker will be owned by you),
 
-* Run `composer init` to start the composer wizard; type any value you want f.i.
-  * Package name: `johndoe/behat`,
-  * Description: `Introduction to Behat`,
-  * Author: `John Doe`,
-  * Minimum Stability: *Just press enter*,
-  * Package Type: `project`,
-  * License: *Just press enter*,
-  * Composer will ask if you want to define dependencies and dev dependencies; answer `no` twice right now,
-  * The next question will be about PSR-4, *just press enter*,
-  * Finally answer `yes` to the confirmation message.
+- Run `composer init` to start the composer wizard; type any value you want f.i.
+  - Package name: `johndoe/behat`,
+  - Description: `Introduction to Behat`,
+  - Author: `John Doe`,
+  - Minimum Stability: *Just press enter*,
+  - Package Type: `project`,
+  - License: *Just press enter*,
+  - Composer will ask if you want to define dependencies and dev dependencies; answer `no` twice right now,
+  - The next question will be about PSR-4, *just press enter*,
+  - Finally answer `yes` to the confirmation message.
 
 Now, if you're curious, you'll see you've a new file called `composer.json` and two folders called `src` and `vendor`.
 
@@ -291,13 +291,13 @@ We can do this before the application exists (concept of BDD), during the coding
 
 Continue your journey thanks to these websites:
 
-* [Automate testing with Behat](https://docs.pantheon.io/behat),
-* [Behat-chrome-extension repository](https://gitlab.com/behat-chrome/behat-chrome-extension),
-* [Behat: The Easy and Effective Way to Write Acceptance Tests](https://dev.to/jszutkowski/behat-the-easy-and-effective-way-to-write-acceptance-tests-cm4),
-* [Behat - Official website](https://docs.behat.org/en/latest/),
-* [Cucumber - Gherkin Tutorial](https://cucumber.io/),
-* [DMore - Chrome Mink Driver](https://packagist.org/packages/dmore/chrome-mink-driver) and
-* [Mink at a Glance](https://mink.behat.org/en/latest/at-a-glance.html)
+- [Automate testing with Behat](https://docs.pantheon.io/behat),
+- [Behat-chrome-extension repository](https://gitlab.com/behat-chrome/behat-chrome-extension),
+- [Behat: The Easy and Effective Way to Write Acceptance Tests](https://dev.to/jszutkowski/behat-the-easy-and-effective-way-to-write-acceptance-tests-cm4),
+- [Behat - Official website](https://docs.behat.org/en/latest/),
+- [Cucumber - Gherkin Tutorial](https://cucumber.io/),
+- [DMore - Chrome Mink Driver](https://packagist.org/packages/dmore/chrome-mink-driver) and
+- [Mink at a Glance](https://mink.behat.org/en/latest/at-a-glance.html)
 
 ## Appendix - List of files and their contents and how to run them
 

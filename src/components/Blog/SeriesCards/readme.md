@@ -14,13 +14,13 @@ src/components/Blog/SeriesCards/index.js
 
 ## ✨ Features
 
-* Automatically groups blog posts by their `series` field
-* Shows:
-  * Series title
-  * Featured image (with fallback)
-  * Summary of published and draft articles
-* Responsive layout using Docusaurus Infima grid
-* Graceful fallback when no series are found
+- Automatically groups blog posts by their `series` field
+- Shows:
+  - Series title
+  - Featured image (with fallback)
+  - Summary of published and draft articles
+- Responsive layout using Docusaurus Infima grid
+- Graceful fallback when no series are found
 
 ## 🚀 Usage
 
@@ -36,8 +36,8 @@ Each series offers you a progressive learning path to master a specific area of 
 
 ## 🧩 Dependencies
 
-* `generateSeriesList` from `src/components/Blog/utils/series.js`
-* `PostCard` component for rendering individual cards (`src/components/Blog/PostCard/index.js`)
+- `generateSeriesList` from `src/components/Blog/utils/series.js`
+- `PostCard` component for rendering individual cards (`src/components/Blog/PostCard/index.js`)
 
 ## 🛠️ Customization
 
@@ -49,18 +49,18 @@ const seriesList = generateSeriesList(posts, '/series/articles', '/img/default.w
 
 ## 🧠 Notes
 
-* Series are sorted alphabetically
-* The first post in each series (chronologically) is used to represent the series visually
-* Drafts are counted but not linked
+- Series are sorted alphabetically
+- The first post in each series (chronologically) is used to represent the series visually
+- Drafts are counted but not linked
 
 ## 🧪 Example Output
 
 Each card includes:
 
-* Title: `Introduction to Docusaurus`
-* Image: `/img/docusaurus-intro.png`
-* Description: `5 published article(s) • 2 in progress`
-* Link: `/series/introduction-to-docusaurus`
+- Title: `Introduction to Docusaurus`
+- Image: `/img/docusaurus-intro.png`
+- Description: `5 published article(s) • 2 in progress`
+- Link: `/series/introduction-to-docusaurus`
 
 ## 📄 License
 

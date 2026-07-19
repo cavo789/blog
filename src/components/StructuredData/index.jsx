@@ -20,9 +20,7 @@ function StructuredData({ metadata, assets }) {
     const resolvedImage = assets?.image ?? frontMatter?.image;
 
     const mostRecentUpdate = frontMatter?.updates?.length
-      ? [...frontMatter.updates].sort(
-          (a, b) => new Date(b.date) - new Date(a.date)
-        )[0]
+      ? [...frontMatter.updates].sort((a, b) => new Date(b.date) - new Date(a.date))[0]
       : null;
 
     return {
@@ -85,7 +83,7 @@ StructuredData.propTypes = {
         PropTypes.shape({
           date: PropTypes.string,
           note: PropTypes.string,
-        })
+        }),
       ),
       image: PropTypes.string,
     }),
@@ -95,13 +93,13 @@ StructuredData.propTypes = {
       PropTypes.shape({
         name: PropTypes.string,
         url: PropTypes.string,
-      })
+      }),
     ),
     tags: PropTypes.arrayOf(
       PropTypes.shape({
         label: PropTypes.string,
         permalink: PropTypes.string,
-      })
+      }),
     ),
   }).isRequired,
   assets: PropTypes.shape({

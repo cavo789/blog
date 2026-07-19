@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import { translate } from "@docusaurus/Translate";
 import styles from "./styles.module.css";
-import buttontop from '@site/static/img/meerkat/suricate_no_background.webp'
+import buttontop from "@site/static/img/meerkat/suricate_no_background.webp";
 
 export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,11 +24,7 @@ export default function ScrollToTopButton() {
   return (
     <button
       type="button"
-      className={clsx(
-        styles.scrollBtn,
-        isVisible && styles.show,
-        fly && styles.fly
-      )}
+      className={clsx(styles.scrollBtn, isVisible && styles.show, fly && styles.fly)}
       onClick={scrollToTop}
       aria-label={translate({
         id: "theme.common.scrollToTop",

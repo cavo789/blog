@@ -12,17 +12,18 @@
  * <Highlight color="#ff4081">Important note</Highlight>
  */
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-export default function Highlight({children, color}) {
+export default function Highlight({ children, color }) {
   return (
     <span
       style={{
         backgroundColor: color,
-        borderRadius: '2px',
-        color: '#fff',
-        padding: '0.2rem',
-      }}>
+        borderRadius: "2px",
+        color: "#fff",
+        padding: "0.2rem",
+      }}
+    >
       {children}
     </span>
   );

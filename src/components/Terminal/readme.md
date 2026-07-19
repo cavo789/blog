@@ -4,11 +4,11 @@ A stylized terminal emulator UI for Docusaurus pages. Ideal for showcasing CLI c
 
 ## ✨ Features
 
-* 🧑‍💻 Linux-style header with icon and control dots
-* 📝 Customizable terminal title
-* 💻 Styled code block for terminal content
-* 🎨 Theme-friendly layout using scoped CSS
-* ⌨️ Optional typewriter animation — command lines typed char-by-char, output appears whole
+- 🧑‍💻 Linux-style header with icon and control dots
+- 📝 Customizable terminal title
+- 💻 Styled code block for terminal content
+- 🎨 Theme-friendly layout using scoped CSS
+- ⌨️ Optional typewriter animation — command lines typed char-by-char, output appears whole
 
 ## Example
 
@@ -23,12 +23,9 @@ This component lives at `src/components/Terminal/index.js`.
 ## 🚀 Usage
 
 ```jsx
-import Terminal from '@site/src/components/Terminal';
+import Terminal from "@site/src/components/Terminal";
 
-<Terminal title="user@machine: ~/project">
-  npm install
-  npm run build
-</Terminal>
+<Terminal title="user@machine: ~/project">npm install npm run build</Terminal>;
 ```
 
 If no title is provided, the default is: `christophe@home: ~`
@@ -43,15 +40,15 @@ If no title is provided, the default is: `christophe@home: ~`
 
 ## 🛠 Props
 
-| Prop | Type | Required | Default | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `React.ReactNode` | ✅* | — | Terminal content to display. Not needed when `source` is used (plugin injects it automatically). |
-| `source` | string | ❌ | — | Path to an external `.txt` file relative to the article (e.g. `./files/terminal-1.txt`). The `remark-snippet-loader` plugin reads the file at build time and injects its content as children. Use this to keep long terminal outputs out of the MDX file. |
-| `title` | string | ❌ | `user@machine: ~/yourproject` | Optional terminal title shown in the header |
-| `wrap` | boolean | ❌ | `true` | Enables word wrapping in the terminal body. Set to `false` to disable it. |
-| `typewriter` | boolean | ❌ | `false` | Enables typewriter animation. Lines starting with `$` or `#` are typed char-by-char; output lines appear whole. Click the terminal to skip. Animation starts only when the terminal scrolls into view. |
-| `typewriterSpeed` | number | ❌ | auto | ms per character on command lines. Omit to auto-scale: ≤5 lines→40, ≤10→25, ≤20→20, >20→12. |
-| `typewriterLineDelay` | number | ❌ | auto | ms before each output line appears. Omit to auto-scale: ≤5 lines→400, ≤10→200, ≤20→150, >20→100. |
+| Prop                  | Type              | Required | Default                       | Description                                                                                                                                                                                                                                               |
+| --------------------- | ----------------- | -------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`            | `React.ReactNode` | ✅*      | —                             | Terminal content to display. Not needed when `source` is used (plugin injects it automatically).                                                                                                                                                          |
+| `source`              | string            | ❌       | —                             | Path to an external `.txt` file relative to the article (e.g. `./files/terminal-1.txt`). The `remark-snippet-loader` plugin reads the file at build time and injects its content as children. Use this to keep long terminal outputs out of the MDX file. |
+| `title`               | string            | ❌       | `user@machine: ~/yourproject` | Optional terminal title shown in the header                                                                                                                                                                                                               |
+| `wrap`                | boolean           | ❌       | `true`                        | Enables word wrapping in the terminal body. Set to `false` to disable it.                                                                                                                                                                                 |
+| `typewriter`          | boolean           | ❌       | `false`                       | Enables typewriter animation. Lines starting with `$` or `#` are typed char-by-char; output lines appear whole. Click the terminal to skip. Animation starts only when the terminal scrolls into view.                                                    |
+| `typewriterSpeed`     | number            | ❌       | auto                          | ms per character on command lines. Omit to auto-scale: ≤5 lines→40, ≤10→25, ≤20→20, >20→12.                                                                                                                                                               |
+| `typewriterLineDelay` | number            | ❌       | auto                          | ms before each output line appears. Omit to auto-scale: ≤5 lines→400, ≤10→200, ≤20→150, >20→100.                                                                                                                                                          |
 
 \* `children` is required when `source` is not provided.
 
@@ -103,15 +100,15 @@ Lines starting with `$` or `>` are treated as commands and rendered with a promp
 
 This component uses scoped CSS via `styles.module.css`. Key classes include:
 
-* `.terminal` — outer container
-* `.terminal_header` — header bar
-* `.terminal_left` — icon + title
-* `.terminal_controls` — control dots
-* `.terminal_body` — code block area
-* `.terminal_line` — individual line
-* `.prompt` — command prompt symbol
-* `.no_wrap` — disables word wrapping
-* `.dot.red`, `.dot.yellow`, `.dot.green` — control dot colors
+- `.terminal` — outer container
+- `.terminal_header` — header bar
+- `.terminal_left` — icon + title
+- `.terminal_controls` — control dots
+- `.terminal_body` — code block area
+- `.terminal_line` — individual line
+- `.prompt` — command prompt symbol
+- `.no_wrap` — disables word wrapping
+- `.dot.red`, `.dot.yellow`, `.dot.green` — control dot colors
 
 Customize these styles to match your site's design system.
 

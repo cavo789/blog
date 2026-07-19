@@ -4,11 +4,11 @@ A React component for Docusaurus that displays a list of blog posts belonging to
 
 ## 🚀 Features
 
-* 🔗 Links related blog posts in a series
-* 🗂️ Filters posts by series name
-* 📅 Sorts posts chronologically
-* 🎯 Highlights the current post
-* 🎨 Custom styling via CSS modules
+- 🔗 Links related blog posts in a series
+- 🗂️ Filters posts by series name
+- 📅 Sorts posts chronologically
+- 🎯 Highlights the current post
+- 🎨 Custom styling via CSS modules
 
 ## Example
 
@@ -49,17 +49,17 @@ import SeriesPosts from "@site/src/components/SeriesPosts";
 
 ## 🛠️ Requirements
 
-* Docusaurus v3+
-* Blog metadata utility: `getBlogMetadata()`
-* Blog posts must include `series`, `title`, `date` and `permalink` fields
+- Docusaurus v3+
+- Blog metadata utility: `getBlogMetadata()`
+- Blog posts must include `series`, `title`, `date` and `permalink` fields
 
 ## 🎨 Styling
 
 Customize the layout and appearance via `styles.module.css`. You can style:
 
-* Series container
-* List items
-* Highlighted post title
+- Series container
+- List items
+- Highlighted post title
 
 ## 📄 License
 

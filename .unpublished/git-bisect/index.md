@@ -53,8 +53,8 @@ Seven tests instead of 150. That's the difference between five hours and fifteen
 
 Let's make this concrete. Your Docusaurus blog was working fine three weeks ago. Now the build fails with a cryptic TypeScript error that you can't trace to any recent change. You know:
 
-* **Bad**: the current state (`HEAD`) — the build fails
-* **Good**: three weeks ago — the build worked
+- **Bad**: the current state (`HEAD`) — the build fails
+- **Good**: three weeks ago — the build worked
 
 You have 80 commits between those two points.
 
@@ -179,9 +179,9 @@ Git runs the script at each candidate commit. It marks each commit good or bad b
 
 This is particularly powerful for:
 
-* Test suites: `git bisect run npm test`
-* API endpoint checks: `git bisect run curl -sf http://localhost:3000/api/health`
-* File presence: `git bisect run test -f dist/bundle.js`
+- Test suites: `git bisect run npm test`
+- API endpoint checks: `git bisect run curl -sf http://localhost:3000/api/health`
+- File presence: `git bisect run test -f dist/bundle.js`
 
 The only requirement is a deterministic exit code: `0` = good, non-zero = bad.
 

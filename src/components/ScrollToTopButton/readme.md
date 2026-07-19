@@ -5,6 +5,7 @@ Un composant React élégant pour Docusaurus qui permet aux utilisateurs de remo
 ## 📋 Aperçu
 
 Ce composant affiche un bouton flottant en bas à droite de l'écran qui :
+
 - Apparaît automatiquement après 300px de défilement
 - Permet de remonter en haut de page avec un clic
 - Inclut une animation de "vol vers le haut" lors du clic
@@ -39,7 +40,7 @@ src/components/ScrollToTopButton/
 ### Dans un layout Docusaurus
 
 ```jsx
-import ScrollToTopButton from '../../components/ScrollToTopButton';
+import ScrollToTopButton from "../../components/ScrollToTopButton";
 
 export default function Layout(props) {
   return (
@@ -57,7 +58,8 @@ export default function Layout(props) {
 Vous pouvez modifier le seuil d'apparition en changeant la valeur dans `index.js` :
 
 ```javascript
-if (window.scrollY > 300) {  // Changez 300 pour ajuster le seuil
+if (window.scrollY > 300) {
+  // Changez 300 pour ajuster le seuil
   setIsVisible(true);
 }
 ```
@@ -70,18 +72,13 @@ if (window.scrollY > 300) {  // Changez 300 pour ajuster le seuil
 2. Modifiez l'import dans `index.js` :
 
 ```jsx
-import buttontop from '@site/static/img/votre-image.png'  // Remplacez par votre image
+import buttontop from "@site/static/img/votre-image.png"; // Remplacez par votre image
 ```
 
-3. L'image sera utilisée dans le composant :
+1. L'image sera utilisée dans le composant :
 
 ```jsx
-<img
-  src={buttontop}
-  alt="Retour en haut"
-  width="30"
-  height="30"
-/>
+<img src={buttontop} alt="Retour en haut" width="30" height="30" />
 ```
 
 ### Modifier les styles
@@ -104,11 +101,15 @@ Le composant gère trois états principaux :
 ## 🎭 Animations
 
 ### Apparition/Disparition
+
 ```css
-transition: opacity 0.4s, visibility 0.4s;
+transition:
+  opacity 0.4s,
+  visibility 0.4s;
 ```
 
 ### Animation de clic (flyUp)
+
 ```css
 @keyframes flyUp {
   0% {
@@ -133,15 +134,18 @@ transition: opacity 0.4s, visibility 0.4s;
 ## 🐛 Dépannage
 
 ### Le bouton n'apparaît pas
+
 - Vérifiez que le composant est bien importé dans le layout
 - Assurez-vous que les styles CSS sont correctement liés
 - Testez en scrollant plus de 300px
 
 ### L'image ne s'affiche pas
+
 - Vérifiez le chemin de l'image dans `/static/img/`
 - Assurez-vous que l'image existe et est accessible
 
 ### Les styles ne s'appliquent pas
+
 - Vérifiez l'import CSS : `import styles from "./styles.module.css"`
 - Assurez-vous d'utiliser `styles.nomClasse` et non `"nom-classe"`
 
@@ -157,9 +161,9 @@ transition: opacity 0.4s, visibility 0.4s;
 Voici un exemple d'utilisation complète dans un layout Docusaurus :
 
 ```jsx
-import React from 'react';
-import Layout from '@theme-original/Layout';
-import ScrollToTopButton from '@site/src/components/ScrollToTopButton';
+import React from "react";
+import Layout from "@theme-original/Layout";
+import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
 
 export default function LayoutWrapper(props) {
   return (

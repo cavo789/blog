@@ -49,10 +49,10 @@ Windows users will appreciate that Zorin OS's graphical interface is very simila
 
 ## What can make the differences
 
-* The installer is well done, click, click, click and reboot.
-* Zorin includes built-in Microsoft OneDrive integration.
-* You'll also be able to install some Windows applications directly on Zorin thanks to `WINE` (*open-source compatibility layer that allows Windows applications and games to run on Linux.*).
-* If you're a gamer, [almost 90% of Windows games are now running on Linux](https://www.techpowerup.com/342337/almost-90-of-windows-games-run-on-linux-notes-report).
+- The installer is well done, click, click, click and reboot.
+- Zorin includes built-in Microsoft OneDrive integration.
+- You'll also be able to install some Windows applications directly on Zorin thanks to `WINE` (*open-source compatibility layer that allows Windows applications and games to run on Linux.*).
+- If you're a gamer, [almost 90% of Windows games are now running on Linux](https://www.techpowerup.com/342337/almost-90-of-windows-games-run-on-linux-notes-report).
 
 The system was immediately operational i.e. no problem at all with my graphic card and my internet connection was operational.
 

@@ -73,17 +73,17 @@ A tremendous list of icons/nodes is available on multiple pages at [https://diag
 
 ## Other tools
 
-* [DB Diagram](https://dbdiagram.io/home)
-* [DBML-renderer](https://github.com/softwaretechnik-berlin/dbml-renderer), dbml-renderer renders DBML files to SVG images
-* [Graphviz](https://www.graphviz.org/), Graphviz is open source graph visualization software
-* [JSON Crack](https://jsoncrack.com/), seamlessly visualize your JSON data instantly into graphs
-* [Kroki](https://kroki.io/), creates diagrams from textual descriptions
-* [Mermaid](https://mermaid-js.github.io/mermaid/), its [live editor](https://mermaid.live/), the [preview addon for vscode](https://marketplace.visualstudio.com/items?itemName=vstirbu.vscode-mermaid-preview) and the [convert tool as a CLI tool](https://github.com/mermaid-js/mermaid-cli)
-* [Nomnoml](https://www.nomnoml.com/), tool for drawing UML diagrams based on a simple syntax
-* [Pikchr](https://pikchr.org/), Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in technical documentation
-* [Plantuml](https://github.com/plantuml/plantuml), generate diagrams from textual description
-* [Sequence diagram](https://sequencediagram.org/) *(seems based on Mermaid)*
-* [Structurizr](https://github.com/structurizr/dsl), a way to create Structurizr software architecture models based upon the C4 model using a textual domain specific language
-* [svgbob](https://github.com/ivanceras/svgbob), convert your ascii diagram scribbles into happy little SVG
-* [Vega](https://vega.github.io/vega/), A Visualization Grammar
-* [yEd Graph Editor](https://www.yworks.com/products/yed), a graphical interface: you will need to drag & drop objects and resize them. It does not support text files like the other tools already mentioned here.
+- [DB Diagram](https://dbdiagram.io/home)
+- [DBML-renderer](https://github.com/softwaretechnik-berlin/dbml-renderer), dbml-renderer renders DBML files to SVG images
+- [Graphviz](https://www.graphviz.org/), Graphviz is open source graph visualization software
+- [JSON Crack](https://jsoncrack.com/), seamlessly visualize your JSON data instantly into graphs
+- [Kroki](https://kroki.io/), creates diagrams from textual descriptions
+- [Mermaid](https://mermaid-js.github.io/mermaid/), its [live editor](https://mermaid.live/), the [preview addon for vscode](https://marketplace.visualstudio.com/items?itemName=vstirbu.vscode-mermaid-preview) and the [convert tool as a CLI tool](https://github.com/mermaid-js/mermaid-cli)
+- [Nomnoml](https://www.nomnoml.com/), tool for drawing UML diagrams based on a simple syntax
+- [Pikchr](https://pikchr.org/), Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in technical documentation
+- [Plantuml](https://github.com/plantuml/plantuml), generate diagrams from textual description
+- [Sequence diagram](https://sequencediagram.org/) *(seems based on Mermaid)*
+- [Structurizr](https://github.com/structurizr/dsl), a way to create Structurizr software architecture models based upon the C4 model using a textual domain specific language
+- [svgbob](https://github.com/ivanceras/svgbob), convert your ascii diagram scribbles into happy little SVG
+- [Vega](https://vega.github.io/vega/), A Visualization Grammar
+- [yEd Graph Editor](https://www.yworks.com/products/yed), a graphical interface: you will need to drag & drop objects and resize them. It does not support text files like the other tools already mentioned here.

@@ -43,10 +43,10 @@ In other words, if the code formatting of our last changes violates some standar
 
 There are a few tools we can use like:
 
-* [husky](https://github.com/typicode/husky); *Git hooks made easy* 🐶 *woof!*
-* [pre-commit](https://github.com/pre-commit/pre-commit); *A framework for managing and maintaining multi-language pre-commit hooks*
-* [grumphp](https://github.com/phpro/grumphp); *A PHP code-quality tool*
-* [CaptainHook](https://github.com/captainhookphp/captainhook); *CaptainHook is a very flexible git hook manager for software developers that makes sharing git hooks with your team a breeze.*
+- [husky](https://github.com/typicode/husky); *Git hooks made easy* 🐶 *woof!*
+- [pre-commit](https://github.com/pre-commit/pre-commit); *A framework for managing and maintaining multi-language pre-commit hooks*
+- [grumphp](https://github.com/phpro/grumphp); *A PHP code-quality tool*
+- [CaptainHook](https://github.com/captainhookphp/captainhook); *CaptainHook is a very flexible git hook manager for software developers that makes sharing git hooks with your team a breeze.*
 
 In this article, we'll discover [pre-commit](https://github.com/pre-commit/pre-commit) because it's multi-language and really simple to install / use / configure.
 
@@ -158,14 +158,14 @@ For a Python 3.13 project, here is my `.pre-commit-config.yaml` file:
 
 #### A few more hooks
 
-* [Code spell](https://github.com/codespell-project/codespell/blob/main/.pre-commit-config.yaml#L70), *Check code for common misspellings*
-* [Git leaks](https://github.com/gitleaks/gitleaks/blob/master/.pre-commit-hooks.yaml), *Find secrets with Gitleaks*
-* [Git lint](https://github.com/jorisroovers/gitlint), *Linting for your git commit messages*
-* [Markdown format](https://github.com/hukkin/mdformat/blob/master/.pre-commit-config.yaml), *CommonMark compliant Markdown formatter*
-* [Markdownlint](https://github.com/markdownlint/markdownlint/blob/main/.pre-commit-hooks.yaml), *Markdown lint tool*
-* [Ruff](https://github.com/astral-sh/ruff-pre-commit/blob/main/.pre-commit-hooks.yaml), *A pre-commit hook for Ruff.*
-* [Shell check](https://github.com/shellcheck-py/shellcheck-py?tab=readme-ov-file#as-a-pre-commit-hook), *python3/pip3 wrapper for installing shellcheck*
-* [Trufflehog](https://github.com/trufflesecurity/trufflehog/blob/main/.pre-commit-config.yaml), *Find, verify, and analyze leaked credentials*
+- [Code spell](https://github.com/codespell-project/codespell/blob/main/.pre-commit-config.yaml#L70), *Check code for common misspellings*
+- [Git leaks](https://github.com/gitleaks/gitleaks/blob/master/.pre-commit-hooks.yaml), *Find secrets with Gitleaks*
+- [Git lint](https://github.com/jorisroovers/gitlint), *Linting for your git commit messages*
+- [Markdown format](https://github.com/hukkin/mdformat/blob/master/.pre-commit-config.yaml), *CommonMark compliant Markdown formatter*
+- [Markdownlint](https://github.com/markdownlint/markdownlint/blob/main/.pre-commit-hooks.yaml), *Markdown lint tool*
+- [Ruff](https://github.com/astral-sh/ruff-pre-commit/blob/main/.pre-commit-hooks.yaml), *A pre-commit hook for Ruff.*
+- [Shell check](https://github.com/shellcheck-py/shellcheck-py?tab=readme-ov-file#as-a-pre-commit-hook), *python3/pip3 wrapper for installing shellcheck*
+- [Trufflehog](https://github.com/trufflesecurity/trufflehog/blob/main/.pre-commit-config.yaml), *Find, verify, and analyze leaked credentials*
 
 and even more, search on [https://sourcegraph.com/search](https://sourcegraph.com/search) with queries like `context:global file:^\.pre-commit-hooks\.yaml$ "types: [python]"` f.i. ([direct link](https://sourcegraph.com/search?q=context:global+file:%5E%5C.pre-commit-hooks%5C.yaml%24+%22types:+%5Bpython%5D%22&patternType=keyword&sm=0))
 

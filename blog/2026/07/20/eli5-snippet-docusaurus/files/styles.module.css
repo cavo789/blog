@@ -1,0 +1,114 @@
+.eli5_pre {
+  margin: 0;
+  padding: 0.75rem 0;
+  overflow-x: auto;
+  background: var(--prism-background-color, #282c34);
+  border-radius: 0 0 4px 4px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: var(--ifm-code-font-size, 0.875rem);
+  line-height: 1.5;
+}
+
+.eli5_line {
+  display: flex;
+  align-items: flex-start;
+  min-height: 1.5em;
+  padding: 0 1rem;
+}
+
+.eli5_line:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.eli5_code {
+  flex: 1;
+  white-space: pre;
+  overflow: hidden;
+}
+
+.eli5_badge_placeholder {
+  display: inline-block;
+  width: 1.2rem;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.eli5_badge_wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.eli5_badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  border: 1px solid rgba(150, 150, 200, 0.35);
+  background: rgba(100, 100, 180, 0.12);
+  color: rgba(180, 180, 230, 0.6);
+  font-size: 0.6rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.eli5_badge:hover,
+.eli5_badge:focus-visible,
+.eli5_badge_active {
+  background: rgba(80, 130, 230, 0.35);
+  color: #e8eaf6;
+  border-color: rgba(120, 170, 255, 0.65);
+  outline: none;
+}
+
+.eli5_tooltip {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 5px);
+  z-index: 200;
+  width: 270px;
+  max-width: 90vw;
+  padding: 0.5rem 0.75rem;
+  background: var(--ifm-background-surface-color, #fff);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--ifm-font-color-base);
+  white-space: normal;
+  pointer-events: none;
+}
+
+.eli5_tooltip::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  background: var(--ifm-background-surface-color, #fff);
+  border-left: 1px solid var(--ifm-color-emphasis-300);
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+  transform: rotate(45deg);
+}
+
+[data-theme="dark"] .eli5_tooltip {
+  background: #1e2030;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .eli5_tooltip::before {
+  background: #1e2030;
+  border-color: rgba(255, 255, 255, 0.1);
+}

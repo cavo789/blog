@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:43.772Z",
+  "source": "generate-eli5.mjs",
+  "sourceHash": "013c06cd1628ff27eeffade88800710da0b1e8e2",
+  "lang": "javascript",
+  "explanations": {
+    "18": "This creates a `require` function for use in ES modules, which normally don't have it — we need it to load dotenv.",
+    "19": "These two lines recreate `__dirname` (the folder this script is in) since it doesn't exist in ES modules the way it does in CommonJS.",
+    "24": "We're loading dotenv as a CommonJS module even though this file is ES module syntax — that's why we needed the `require` function from line 18.",
+    "73": "The `.slice(1)` removes the leading dot from file extensions like `.js`, so `path.extname()` returns `.js` and we extract just `js`.",
+    "117": "We're rebuilding the code with line numbers prepended (like `1: line content`) so Claude knows which lines we're asking about.",
+    "129": "We use more tokens (2048) for longer files because Claude might need more space to explain more complex code.",
+    "148": "Claude returns an object with a `content` array; we take the first element's `text` property — that's where the actual response lives.",
+    "158": "Claude sometimes wraps JSON in markdown code fences anyway; this regex hunts for any JSON object structure inside the response to extract it.",
+    "173": "The regex `/^\\d+$/` checks that the key is only digits (a valid line number), and we validate it's within the actual file's line count.",
+    "202": "We're importing the same function again with an underscore prefix to avoid shadowing the one already in scope from line 14.",
+    "203": "This checks if this file is the main entry point (run directly) versus imported as a module — if it's imported, we skip the CLI logic below.",
+    "231": "We find the first argument that doesn't start with `--` and isn't the value after `--output`; that's our source file path."
+  }
+}

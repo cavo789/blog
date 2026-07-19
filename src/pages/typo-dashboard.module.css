@@ -180,10 +180,22 @@
  * .todos/039-hardcoded-hex-colors-no-token-system.md.
  */
 /* stylelint-disable color-no-hex */
-.type_typo       { background: #e8f4ff; color: #0066cc; }
-.type_incorrect  { background: #fde8e8; color: #c0392b; }
-.type_outdated   { background: #fff8e1; color: #b56a00; }
-.type_suggestion { background: #e8f5e9; color: #1a7f37; }
+.type_typo {
+  background: #e8f4ff;
+  color: #0066cc;
+}
+.type_incorrect {
+  background: #fde8e8;
+  color: #c0392b;
+}
+.type_outdated {
+  background: #fff8e1;
+  color: #b56a00;
+}
+.type_suggestion {
+  background: #e8f5e9;
+  color: #1a7f37;
+}
 
 /* ── Resolved state ── */
 .resolved {
@@ -212,11 +224,22 @@
   transition: opacity 0.15s;
 }
 
-.actionBtn:hover { opacity: 0.75; }
+.actionBtn:hover {
+  opacity: 0.75;
+}
 
-.btnResolve   { background: #e8f5e9; color: #1a7f37; }
-.btnUnresolve { background: var(--ifm-color-emphasis-200); color: var(--ifm-color-emphasis-700); }
-.btnDelete    { background: #fde8e8; color: #c0392b; }
+.btnResolve {
+  background: #e8f5e9;
+  color: #1a7f37;
+}
+.btnUnresolve {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+}
+.btnDelete {
+  background: #fde8e8;
+  color: #c0392b;
+}
 /* stylelint-enable color-no-hex */
 
 /* ── Filter toggle ── */
@@ -238,15 +261,38 @@
 }
 
 /* ── States ── */
-.dim { color: var(--ifm-color-emphasis-500); }
-.err { color: var(--ifm-color-danger-dark); font-weight: 600; }
+.dim {
+  color: var(--ifm-color-emphasis-500);
+}
+.err {
+  color: var(--ifm-color-danger-dark);
+  font-weight: 600;
+}
 
 /* ── Dark mode ── */
 /* stylelint-disable color-no-hex -- report-type status palette, see note above */
-[data-theme="dark"] .type_typo       { background: #0a2540; color: #60b0ff; }
-[data-theme="dark"] .type_incorrect  { background: #3d1a1a; color: #eb5757; }
-[data-theme="dark"] .type_outdated   { background: #3d2e00; color: #f0b429; }
-[data-theme="dark"] .type_suggestion { background: #1a3d2a; color: #6fcf97; }
-[data-theme="dark"] .btnResolve      { background: #1a3d2a; color: #6fcf97; }
-[data-theme="dark"] .btnDelete       { background: #3d1a1a; color: #eb5757; }
+[data-theme="dark"] .type_typo {
+  background: #0a2540;
+  color: #60b0ff;
+}
+[data-theme="dark"] .type_incorrect {
+  background: #3d1a1a;
+  color: #eb5757;
+}
+[data-theme="dark"] .type_outdated {
+  background: #3d2e00;
+  color: #f0b429;
+}
+[data-theme="dark"] .type_suggestion {
+  background: #1a3d2a;
+  color: #6fcf97;
+}
+[data-theme="dark"] .btnResolve {
+  background: #1a3d2a;
+  color: #6fcf97;
+}
+[data-theme="dark"] .btnDelete {
+  background: #3d1a1a;
+  color: #eb5757;
+}
 /* stylelint-enable color-no-hex */

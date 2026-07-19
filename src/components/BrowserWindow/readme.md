@@ -4,10 +4,10 @@ A lightweight React component that visually simulates a browser window. Ideal fo
 
 ## 📦 Features
 
-* Mimics a browser window with address bar and control buttons
-* Customizable `url`, `minHeight`, and inline styles
-* Accepts any JSX content as its body
-* Styled using CSS Modules for easy theming
+- Mimics a browser window with address bar and control buttons
+- Customizable `url`, `minHeight`, and inline styles
+- Accepts any JSX content as its body
+- Styled using CSS Modules for easy theming
 
 ## 📦 Installation
 
@@ -36,26 +36,26 @@ import BrowserWindow from './BrowserWindow';
 
 ## 🧾 Props
 
-| Prop | Type | Required | Default | Description |
-| --- |  --- | --- | --- | --- |
-| `children` | JSX.Element | ✅ | — | Content to render inside the simulated browser window |
-| `url` | string | ✅ | —  | URL to display in the address bar (visual only) |
-| `minHeight` | number | ❌ | — | Minimum height of the window body |
-| `style` | CSSProperties | ❌ | — | Inline styles for the outer container |
-| `bodyStyle` | CSSProperties | ❌ | — | Inline styles for the body content area |
+| Prop        | Type          | Required | Default | Description                                           |
+| ----------- | ------------- | -------- | ------- | ----------------------------------------------------- |
+| `children`  | JSX.Element   | ✅       | —       | Content to render inside the simulated browser window |
+| `url`       | string        | ✅       | —       | URL to display in the address bar (visual only)       |
+| `minHeight` | number        | ❌       | —       | Minimum height of the window body                     |
+| `style`     | CSSProperties | ❌       | —       | Inline styles for the outer container                 |
+| `bodyStyle` | CSSProperties | ❌       | —       | Inline styles for the body content area               |
 
 ## 🎨 Styling
 
 This component uses CSS Modules (`styles.module.css`) for scoped styling. You can customize:
 
-* `.browserWindow`: outer container
-* `.browserWindowHeader`: header bar with buttons and address
-* `.browserWindowBody`: content area
-* `.dot`: colored control buttons
-* `.bar`: menu icon lines
+- `.browserWindow`: outer container
+- `.browserWindowHeader`: header bar with buttons and address
+- `.browserWindowBody`: content area
+- `.dot`: colored control buttons
+- `.bar`: menu icon lines
 
 ## 🧠 Notes
 
-* The `url` prop is purely decorative—it does not affect navigation or iframe behavior.
-* This component is great for documentation, demos, or design previews.
-* Inspired by Docusaurus’s internal theme components.
+- The `url` prop is purely decorative—it does not affect navigation or iframe behavior.
+- This component is great for documentation, demos, or design previews.
+- Inspired by Docusaurus’s internal theme components.

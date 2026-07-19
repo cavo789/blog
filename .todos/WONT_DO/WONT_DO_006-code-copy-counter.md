@@ -9,7 +9,7 @@
 Chaque code block affiche discrètement combien de fois il a été copié :
 
 ```
-$ docker compose up -d          [Copy]  · copied 47×
+docker compose up -d          [Copy]  · copied 47×
 ```
 
 Ce chiffre donne de la crédibilité aux snippets les plus utilisés et aide à identifier les commandes "hot" dans les articles.
@@ -21,8 +21,9 @@ Ce chiffre donne de la crédibilité aux snippets les plus utilisés et aide à 
 Docusaurus swizzle du composant `CodeBlock` (ou hook sur le bouton "Copy" existant via `onCopy`).
 
 Chaque code block a besoin d'un identifiant stable. Options :
+
 1. Hash MD5/SHA du contenu du bloc → stable tant que le code ne change pas
-2. `id` explicite dans la fence : `````bash id="compose-up"`````
+2. `id` explicite dans la fence : `bash id="compose-up"`
 
 Option 1 plus pratique (aucun changement dans les articles).
 

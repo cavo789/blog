@@ -6,11 +6,11 @@ player with the site's meerkat mascot sprinting across the screen.
 
 ## 🚀 Features
 
-* 🎮 Listens globally for the Konami key sequence, no matter which page is focused
-* 🏃 Plays a 3-second run animation using the existing meerkat "running" sprite
-* 🔁 Resets progress automatically on any wrong key, so mistakes don't lock the player out
-* ♿ Respects `prefers-reduced-motion` (the meerkat appears statically instead of animating)
-* 🪶 No props, no configuration — mount once and forget
+- 🎮 Listens globally for the Konami key sequence, no matter which page is focused
+- 🏃 Plays a 3-second run animation using the existing meerkat "running" sprite
+- 🔁 Resets progress automatically on any wrong key, so mistakes don't lock the player out
+- ♿ Respects `prefers-reduced-motion` (the meerkat appears statically instead of animating)
+- 🪶 No props, no configuration — mount once and forget
 
 ## 📦 Installation
 
@@ -19,7 +19,7 @@ This component is already wired into the site globally via
 without further setup:
 
 ```jsx
-import KonamiEasterEgg from '@site/src/components/KonamiEasterEgg';
+import KonamiEasterEgg from "@site/src/components/KonamiEasterEgg";
 
 export default function Root({ children }) {
   return (
@@ -42,10 +42,10 @@ src/components/KonamiEasterEgg/
 
 ## 🧠 How it works
 
-* `index.js` keeps a ref-based cursor into the `KONAMI_CODE` array of
+- `index.js` keeps a ref-based cursor into the `KONAMI_CODE` array of
   `KeyboardEvent.code` values. Each keydown either advances the cursor,
   resets it, or — on a full match — triggers the run animation.
-* When triggered, an `<img>` using
+- When triggered, an `<img>` using
   [`suricate_running.webp`](../../../static/img/meerkat/suricate_running.webp)
   is mounted with the `styles.runner` class, which animates it via CSS
   `@keyframes` from off-screen left to off-screen right, then the component
@@ -53,12 +53,12 @@ src/components/KonamiEasterEgg/
 
 ## 🎨 Customization
 
-* **Sequence**: edit the `KONAMI_CODE` array in `index.js` to change the
+- **Sequence**: edit the `KONAMI_CODE` array in `index.js` to change the
   required key combo.
-* **Duration / speed**: change `RUN_DURATION_MS` in `index.js` and the
+- **Duration / speed**: change `RUN_DURATION_MS` in `index.js` and the
   matching `animation` duration in `styles.module.css` (`run-across 3s`) —
   keep both in sync.
-* **Sprite**: swap the `runningImg` import for any other transparent-background
+- **Sprite**: swap the `runningImg` import for any other transparent-background
   meerkat pose from `static/img/meerkat/`.
 
 ## 📄 License

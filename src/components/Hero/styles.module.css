@@ -1,5 +1,9 @@
 .hero {
-  background: linear-gradient(to right, var(--ifm-color-primary-darkest), var(--ifm-color-primary-lighter));
+  background: linear-gradient(
+    to right,
+    var(--ifm-color-primary-darkest),
+    var(--ifm-color-primary-lighter)
+  );
   color: white;
   padding: 20px;
 }

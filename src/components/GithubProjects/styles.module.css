@@ -43,7 +43,9 @@
   background-color: rgb(255, 255, 255, 0.82);
   border: 1px solid var(--ifm-color-emphasis-200);
   box-shadow: 0 8px 16px rgb(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 [data-theme="dark"] .github_projects_card {

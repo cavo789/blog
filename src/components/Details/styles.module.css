@@ -10,7 +10,7 @@ summary {
   font-weight: bold;
   cursor: pointer;
   padding: 5px;
-  list-style: none;;
+  list-style: none;
 }
 
 summary::-webkit-details-marker {
@@ -23,7 +23,6 @@ summary::before {
   margin-right: 8px;
   transition: transform 0.3s ease;
 }
-
 
 details[open] summary::before {
   transform: rotate(90deg);

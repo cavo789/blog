@@ -35,10 +35,10 @@ Au clic :                              Au clic :
 
 ```js
 // Remplacer :
-import buttontop from '@site/static/img/up.webp'
+import buttontop from "@site/static/img/up.webp";
 
 // Par :
-import buttontop from '@site/static/img/meerkat/suricate_no_background.webp'
+import buttontop from "@site/static/img/meerkat/suricate_no_background.webp";
 ```
 
 C'est tout. L'image est déjà ronde (CSS `border-radius: 50%`), le drop-shadow existe (`box-shadow`), et l'animation `flyUp` fait déjà partir l'image vers le haut.

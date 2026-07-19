@@ -44,8 +44,11 @@ function Spacer() {
   return <>{" · "}</>;
 }
 function MainTagBadge({ mainTag, tags }) {
-  const tagObj = tags.find((t) => t.label.toLowerCase() === mainTag.toLowerCase()
-    || t.permalink.endsWith(`/${mainTag}`));
+  const tagObj = tags.find(
+    (t) =>
+      t.label.toLowerCase() === mainTag.toLowerCase() ||
+      t.permalink.endsWith(`/${mainTag}`),
+  );
   if (!tagObj) return null;
   const permalink = tagObj.permalink.replace("/blog/tags/tags/", "/blog/tags/");
   return (

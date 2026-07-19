@@ -55,8 +55,8 @@ Browser                          Your Server
 
 Two JSON files are created at runtime by the backend:
 
-* `api/tried-it-data.json` — the vote store, one entry per article slug
-* `api/tried-it-notifications.json` — alert throttle timestamps, kept in its **own** file so `TriedIt` never touches `Reaction`'s `notifications.json`
+- `api/tried-it-data.json` — the vote store, one entry per article slug
+- `api/tried-it-notifications.json` — alert throttle timestamps, kept in its **own** file so `TriedIt` never touches `Reaction`'s `notifications.json`
 
 ## Why Not Just Reuse `<Reaction>`?
 
@@ -88,8 +88,8 @@ define('SITE_URL',                'https://www.avonture.be');
 
 Two new constants show up that `reactions.php` doesn't have:
 
-* **`ALERT_MIN_VOTES`** — below this many total votes, a failure ratio is just noise. Three failures out of four votes is 75%, but it's also nothing to act on yet.
-* **`ALERT_FAILURE_RATIO`** — the share of `didnt_work` votes that has to be exceeded before an alert is worth sending. I picked 30% as a starting point: enough to filter out the occasional "I fat-fingered a command" vote, low enough to catch a genuinely broken tutorial early.
+- **`ALERT_MIN_VOTES`** — below this many total votes, a failure ratio is just noise. Three failures out of four votes is 75%, but it's also nothing to act on yet.
+- **`ALERT_FAILURE_RATIO`** — the share of `didnt_work` votes that has to be exceeded before an alert is worth sending. I picked 30% as a starting point: enough to filter out the occasional "I fat-fingered a command" vote, low enough to catch a genuinely broken tutorial early.
 
 `NOTIFY_COOLDOWN_SECONDS` is also six times longer than `reactions.php`'s (6 hours instead of 1). `Reaction` notifies on every vote, so a short cooldown just avoids spam during a traffic spike. `TriedIt` only notifies when something is *already* wrong — there's no reason to re-notify every few minutes while the ratio stays bad.
 
@@ -361,8 +361,8 @@ Getting the widget to *render* locally is easy. Getting it to actually *talk to 
 
 **3. The API URL is always the production one.** The component builds its endpoint from `siteConfig.url`, which is `https://www.avonture.be` in `docusaurus.config.js` — not `localhost`, regardless of how you're serving the site locally. That means:
 
-* Clicking a vote button locally sends a real request to the production `tried-it.php` — which will silently fail (swallowed by `catch(() => {})`) until that file is actually deployed there.
-* Once deployed, local testing genuinely exercises the real backend — useful, but worth knowing before you wonder why nothing happens on click.
+- Clicking a vote button locally sends a real request to the production `tried-it.php` — which will silently fail (swallowed by `catch(() => {})`) until that file is actually deployed there.
+- Once deployed, local testing genuinely exercises the real backend — useful, but worth knowing before you wonder why nothing happens on click.
 
 To exercise the PHP logic in isolation, without touching production and without deploying first:
 

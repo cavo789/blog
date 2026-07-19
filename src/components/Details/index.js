@@ -13,16 +13,14 @@
  * </Details>
  */
 
-import PropTypes from "prop-types"
-import './styles.module.css';
+import PropTypes from "prop-types";
+import "./styles.module.css";
 
 export default function Details({ label, children }) {
   return (
     <details className={`alert alert--info`}>
-        <summary>{ label }</summary>
-        <div className="content">
-          {children}
-        </div>
+      <summary>{label}</summary>
+      <div className="content">{children}</div>
     </details>
   );
 }

@@ -13,28 +13,30 @@ const TOOLS = [
   {
     icon: "📊",
     title: "Reactions Dashboard",
-    description: "Per-article reader feedback — helpful vs. not helpful votes and approval rates.",
+    description:
+      "Per-article reader feedback — helpful vs. not helpful votes and approval rates.",
     href: "/reactions-dashboard",
     accent: "#3cad6e",
   },
   {
     icon: "🔤",
     title: "Feedback Reports",
-    description: "Reader-flagged issues — typos, incorrect info, outdated content, suggestions.",
+    description:
+      "Reader-flagged issues — typos, incorrect info, outdated content, suggestions.",
     href: "/typo-dashboard",
     accent: "#e07b00",
   },
 ];
 
 const SITE_RESOURCES = [
-  { label: "sitemap.xml",   href: "/sitemap.xml",   icon: "🗺️" },
-  { label: "rss.xml",       href: "/blog/rss.xml",  icon: "📡" },
-  { label: "robots.txt",    href: "/robots.txt",    icon: "🤖" },
+  { label: "sitemap.xml", href: "/sitemap.xml", icon: "🗺️" },
+  { label: "rss.xml", href: "/blog/rss.xml", icon: "📡" },
+  { label: "robots.txt", href: "/robots.txt", icon: "🤖" },
 ];
 
 const GITHUB_LINKS = [
-  { label: "Repository",    href: "https://github.com/cavo789/blog",         icon: "📦" },
-  { label: "Actions (CI)",  href: "https://github.com/cavo789/blog/actions", icon: "⚙️" },
+  { label: "Repository", href: "https://github.com/cavo789/blog", icon: "📦" },
+  { label: "Actions (CI)", href: "https://github.com/cavo789/blog/actions", icon: "⚙️" },
 ];
 
 // ── Sub-components ────────────────────────────────────────────────────────────
@@ -66,15 +68,21 @@ function ApiStatus({ apiUrl }) {
   useEffect(() => {
     let cancelled = false;
     fetch(`${apiUrl}?slug=admin-healthcheck`)
-      .then((r) => { if (!cancelled) setStatus(r.ok ? "ok" : "error"); })
-      .catch(() => { if (!cancelled) setStatus("error"); });
-    return () => { cancelled = true; };
+      .then((r) => {
+        if (!cancelled) setStatus(r.ok ? "ok" : "error");
+      })
+      .catch(() => {
+        if (!cancelled) setStatus("error");
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [apiUrl]);
 
   const map = {
     checking: { dot: styles.dotChecking, label: "Checking…" },
-    ok:       { dot: styles.dotOk,       label: "API reachable" },
-    error:    { dot: styles.dotError,    label: "API unreachable" },
+    ok: { dot: styles.dotOk, label: "API reachable" },
+    error: { dot: styles.dotError, label: "API unreachable" },
   };
   const { dot, label } = map[status];
 
@@ -95,7 +103,12 @@ function ResourceLinks({ items }) {
     <ul className={styles.linkList}>
       {items.map(({ icon, label, href }) => (
         <li key={href}>
-          <a href={href} target="_blank" rel="noopener noreferrer" className={styles.resourceLink}>
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.resourceLink}
+          >
             <span className={styles.resourceIcon}>{icon}</span>
             {label}
             <span className={styles.externalArrow}>↗</span>
@@ -112,12 +125,12 @@ ResourceLinks.propTypes = {
       icon: PropTypes.node,
       label: PropTypes.string.isRequired,
       href: PropTypes.string.isRequired,
-    })
+    }),
   ).isRequired,
 };
 
 function DraftsList() {
-  const [drafts,  setDrafts]  = useState(null);
+  const [drafts, setDrafts] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -144,7 +157,9 @@ function DraftsList() {
       {drafts.map((d) => (
         <li key={d.slug} className={styles.draftItem}>
           <div className={styles.draftMeta}>
-            <span className={`${styles.statusBadge} ${d.status === "draft" ? styles.badgeDraft : styles.badgeUnlisted}`}>
+            <span
+              className={`${styles.statusBadge} ${d.status === "draft" ? styles.badgeDraft : styles.badgeUnlisted}`}
+            >
               {d.status}
             </span>
             {d.date && <span className={styles.draftDate}>{d.date}</span>}
@@ -152,7 +167,11 @@ function DraftsList() {
           <span className={styles.draftTitle}>{d.title}</span>
           {d.tags.length > 0 && (
             <div className={styles.draftTags}>
-              {d.tags.map((t) => <span key={t} className={styles.draftTag}>{t}</span>)}
+              {d.tags.map((t) => (
+                <span key={t} className={styles.draftTag}>
+                  {t}
+                </span>
+              ))}
             </div>
           )}
         </li>
@@ -165,7 +184,7 @@ function DraftsList() {
 
 export default function AdminPage() {
   const { siteConfig } = useDocusaurusContext();
-  const apiUrl     = `${siteConfig.url}/api/reactions.php`;
+  const apiUrl = `${siteConfig.url}/api/reactions.php`;
   // false until the client-side effect runs — avoids SSR/hydration mismatch
   // (localStorage isn't available during server rendering).
   const [savedToken, setSavedToken] = useState(false);
@@ -210,11 +229,12 @@ export default function AdminPage() {
 
       {/* ── Body ── */}
       <div className={styles.content}>
-
         {/* Admin tools */}
         <p className={styles.sectionLabel}>Admin tools</p>
         <div className={styles.toolGrid}>
-          {TOOLS.map((t) => <ToolCard key={t.href} {...t} />)}
+          {TOOLS.map((t) => (
+            <ToolCard key={t.href} {...t} />
+          ))}
         </div>
 
         {/* Two-column row: site resources + GitHub */}

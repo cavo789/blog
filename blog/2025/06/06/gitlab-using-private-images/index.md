@@ -39,8 +39,8 @@ Once created, Docker will provide you a small help screen where you'll read that
 
 In your GitLab CI/CD settings page, add two new variables:
 
-* The first one will be called `DOCKER_HUB_USERNAME`. The value to enter here is your Docker account name (like `christophe` or `my_company` if the image is stored in a business account) and
-* the second one will be called `DOCKER_HUB_TOKEN_RO`. The value to enter here is the token you've received.
+- The first one will be called `DOCKER_HUB_USERNAME`. The value to enter here is your Docker account name (like `christophe` or `my_company` if the image is stored in a business account) and
+- the second one will be called `DOCKER_HUB_TOKEN_RO`. The value to enter here is the token you've received.
 
 Make sure variables are hidden and protected. This will prevent GitLab from echoing the value in any output like when you initialize `CI_DEBUG_TRACE=true` ([doc](https://docs.gitlab.com/ci/variables/variables_troubleshooting/#enable-debug-logging)) for full debug.
 

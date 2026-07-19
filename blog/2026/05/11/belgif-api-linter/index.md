@@ -47,9 +47,9 @@ If you don't have one yet, just click on the `Generate install script` below and
 
 The `main.py` code defines:
 
-* A root endpoint `/` that returns a simple JSON.
-* An endpoint `/items/{item_id}` that accepts an integer `item_id` as a path parameter and an optional string query parameter `q`.
-* An endpoint `/items/` that accepts `skip` and `limit` query parameters for pagination.
+- A root endpoint `/` that returns a simple JSON.
+- An endpoint `/items/{item_id}` that accepts an integer `item_id` as a path parameter and an optional string query parameter `q`.
+- An endpoint `/items/` that accepts `skip` and `limit` query parameters for pagination.
 
 To run it, simply start `docker compose up --build -d` in your terminal:
 

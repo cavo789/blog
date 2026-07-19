@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:19.293Z",
+  "source": "root-titlebar-egg.js",
+  "sourceHash": "a206b6919bb751c6df526c56bfd5944e9adb2ee8",
+  "lang": "javascript",
+  "explanations": {
+    "10": "The question mark before .href (called optional chaining) safely accesses href even if faviconLink is null, preventing an error.",
+    "14": "The \\u{1F440} is Unicode escape syntax that renders as an emoji (the eyes emoji) in the page title.",
+    "22": "The 'visibilitychange' event fires whenever the browser tab becomes hidden or visible, letting us detect when the user switches away.",
+    "23": "The return statement here creates a cleanup function that removes the event listener when the component unmounts, preventing memory leaks."
+  }
+}

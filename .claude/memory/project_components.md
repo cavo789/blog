@@ -20,9 +20,11 @@ Plus all default Docusaurus MDXComponents and a custom lazy-loading `img` handle
 ## Component Reference
 
 ### `<TLDR>`
+
 ```jsx
 <TLDR>Summary of the article in 2–4 sentences.</TLDR>
 ```
+
 - Placed immediately after the banner image, before any prose
 - Injects JSON-LD Schema.org `abstract` for SEO
 - No props beyond `children`
@@ -30,11 +32,13 @@ Plus all default Docusaurus MDXComponents and a custom lazy-loading `img` handle
 ---
 
 ### `<AlertBox>`
+
 ```jsx
 <AlertBox variant="tip" title="Short title">
   Content here. 2–4 sentences max.
 </AlertBox>
 ```
+
 **Valid `variant` values** (urgency order):
 `info` | `note` | `tip` | `caution` | `important` | `highlyImportant` | `coreConcept`
 
@@ -45,6 +49,7 @@ Plus all default Docusaurus MDXComponents and a custom lazy-loading `img` handle
 ---
 
 ### `<Terminal>`
+
 ```jsx
 <Terminal title="user@machine: ~/project" wrap={true}>
 $ docker compose up -d
@@ -53,6 +58,7 @@ $ docker compose up -d
  ✔ Container app   Started
 </Terminal>
 ```
+
 - `title`: optional string; default `"user@machine: ~/yourproject"`
 - `wrap`: boolean, default `true` — enable word wrap for long lines
 - Always include `$` prefix on commands; show real output below
@@ -61,6 +67,7 @@ $ docker compose up -d
 ---
 
 ### `<Snippet>`
+
 ```jsx
 <Snippet
   filename="api/reactions.php"
@@ -68,6 +75,7 @@ $ docker compose up -d
   defaultOpen={false}
 />
 ```
+
 - `filename`: displayed label (path as shown to reader)
 - `source`: actual file path relative to repo root (or `./files/filename`)
 - `defaultOpen`: boolean, default `false`; set `true` for the most important example in a post
@@ -76,6 +84,7 @@ $ docker compose up -d
 ---
 
 ### `<ProjectSetup>`
+
 ```jsx
 <ProjectSetup folderName="src/components/MyComponent" createFolder={true}>
   <Guideline>Run `npm install prop-types` first.</Guideline>
@@ -83,6 +92,7 @@ $ docker compose up -d
   <Snippet filename="src/components/MyComponent/styles.module.css" source="..." defaultOpen={false} />
 </ProjectSetup>
 ```
+
 - Renders a collapsible project structure box
 - Generates a one-click "install script" button and a ZIP download
 - `folderName`: displayed as the project root label
@@ -91,6 +101,7 @@ $ docker compose up -d
 ---
 
 ### `<StepsCard>`
+
 ```jsx
 <StepsCard
   variant="remember"
@@ -102,6 +113,7 @@ $ docker compose up -d
   ]}
 />
 ```
+
 - `variant`: `"steps"` (numbered) | `"prerequisites"` | `"remember"` (💡 bullets)
 - `title`: optional header
 - `steps`: array of objects `{ content, substeps? }` or plain strings
@@ -110,6 +122,7 @@ $ docker compose up -d
 ---
 
 ### `<Columns>` / `<Column>`
+
 ```jsx
 <Columns>
   <Column>Left content</Column>
@@ -120,6 +133,7 @@ $ docker compose up -d
 ---
 
 ### `<Details>`
+
 ```jsx
 <Details summary="Click to expand">
   Hidden content here.
@@ -129,6 +143,7 @@ $ docker compose up -d
 ---
 
 ### `<BrowserWindow>`
+
 ```jsx
 <BrowserWindow url="https://example.com">
   Screenshot or content here.
@@ -138,11 +153,13 @@ $ docker compose up -d
 ---
 
 ### `<Highlight>`
+
 Inline text highlight: `<Highlight>key term</Highlight>`
 
 ---
 
 ### `<Link>`
+
 Used instead of raw `<a>` for internal/external links with proper Docusaurus routing.
 
 ---

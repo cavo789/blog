@@ -96,8 +96,8 @@ async function generateEli5(sourceFile, { force = false, outputPath = null } = {
   if (fs.statSync(absSource).isDirectory()) {
     throw new Error(
       `"${sourceFile}" is a directory.\n` +
-      `  To process an entire directory, use the bulk script instead:\n` +
-      `    yarn eli5:bulk --dir ${sourceFile}`
+        `  To process an entire directory, use the bulk script instead:\n` +
+        `    yarn eli5:bulk --dir ${sourceFile}`,
     );
   }
 
@@ -119,7 +119,7 @@ async function generateEli5(sourceFile, { force = false, outputPath = null } = {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     throw new Error(
-      "ANTHROPIC_API_KEY is not set. Add it to your .env file or export it before running this script."
+      "ANTHROPIC_API_KEY is not set. Add it to your .env file or export it before running this script.",
     );
   }
 
@@ -128,7 +128,9 @@ async function generateEli5(sourceFile, { force = false, outputPath = null } = {
 
   const maxTokens = lines.length > 50 ? 2048 : 1024;
 
-  console.log(`🤖 Calling Claude for ${path.basename(absSource)} (${lines.length} lines, lang: ${lang})...`);
+  console.log(
+    `🤖 Calling Claude for ${path.basename(absSource)} (${lines.length} lines, lang: ${lang})...`,
+  );
 
   let raw;
   try {
@@ -188,7 +190,7 @@ async function generateEli5(sourceFile, { force = false, outputPath = null } = {
 
   fs.writeFileSync(destPath, JSON.stringify(result, null, 2) + "\n");
   console.log(
-    `✅ Written: ${destPath}\n   ${Object.keys(cleaned).length} annotations on ${lines.length} lines.`
+    `✅ Written: ${destPath}\n   ${Object.keys(cleaned).length} annotations on ${lines.length} lines.`,
   );
 
   return { skipped: false, destPath, count: Object.keys(cleaned).length };
@@ -199,13 +201,13 @@ async function generateEli5(sourceFile, { force = false, outputPath = null } = {
 // Guard: only run CLI logic when this file is the entry point, not when imported.
 const { fileURLToPath: _fileURLToPath } = await import("url");
 const _isMain = process.argv[1] === _fileURLToPath(import.meta.url);
-if (!_isMain) { /* exported as module — skip CLI */ }
-else {
+if (!_isMain) {
+  /* exported as module — skip CLI */
+} else {
+  const args = process.argv.slice(2);
 
-const args = process.argv.slice(2);
-
-if (args.length === 0 || args.includes("--help") || args.includes("-h")) {
-  console.log(`
+  if (args.length === 0 || args.includes("--help") || args.includes("-h")) {
+    console.log(`
 Usage: node scripts/generate-eli5.mjs <source-file> [options]
 
 Options:
@@ -220,25 +222,24 @@ Examples:
 
 Requires ANTHROPIC_API_KEY in your environment or in a .env file at the project root.
 `);
-  process.exit(0);
-}
+    process.exit(0);
+  }
 
-const force = args.includes("--force");
-const outputIdx = args.indexOf("--output");
-const outputPath = outputIdx !== -1 ? args[outputIdx + 1] : null;
-const sourceFile = args.find(
-  (a, i) => !a.startsWith("--") && !(outputIdx !== -1 && i === outputIdx + 1)
-);
+  const force = args.includes("--force");
+  const outputIdx = args.indexOf("--output");
+  const outputPath = outputIdx !== -1 ? args[outputIdx + 1] : null;
+  const sourceFile = args.find(
+    (a, i) => !a.startsWith("--") && !(outputIdx !== -1 && i === outputIdx + 1),
+  );
 
-if (!sourceFile) {
-  console.error("Error: no source file specified.");
-  console.error("Run with --help for usage.");
-  process.exit(1);
-}
+  if (!sourceFile) {
+    console.error("Error: no source file specified.");
+    console.error("Run with --help for usage.");
+    process.exit(1);
+  }
 
-generateEli5(sourceFile, { force, outputPath }).catch((err) => {
-  console.error("❌ Error:", err.message);
-  process.exit(1);
-});
-
+  generateEli5(sourceFile, { force, outputPath }).catch((err) => {
+    console.error("❌ Error:", err.message);
+    process.exit(1);
+  });
 } // end isMain guard

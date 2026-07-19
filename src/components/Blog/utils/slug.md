@@ -13,12 +13,12 @@ const slug = createSlug(title); // Output: "cafe-au-lait-croissants"
 
 ## Features
 
-* Converts to lowercase
-* Removes accents and diacritics
-* Strips special characters
-* Replaces spaces with hyphens
-* Collapses multiple hyphens
-* Trims leading/trailing hyphens
+- Converts to lowercase
+- Removes accents and diacritics
+- Strips special characters
+- Replaces spaces with hyphens
+- Collapses multiple hyphens
+- Trims leading/trailing hyphens
 
 ## Location
 

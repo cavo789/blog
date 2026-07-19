@@ -25,14 +25,14 @@ By default, the Linux distribution is installed on your C: drive. If, like me, y
 
 To do this:
 
-* Run `wsl --list --verbose` from a **PowerShell** console; you will get the name of your distribution (`Ubuntu` in my case),
-* From an **administrator PowerShell** console,
-  * Run `wsl --shutdown` to shutdown WSL,
-  * On your second drive, create a temporary folder like `d:\wsl`,
-  * Run `wsl --export Ubuntu d:\wsl\ubuntu.tar`,
-  * When finished, run `wsl --unregister Ubuntu` and then,
-  * Run `wsl --import Ubuntu d:\wsl\ubuntu d:\wsl\ubuntu.tar --version 2`
-  * Run `del d:\wsl\ubuntu.tar`
+- Run `wsl --list --verbose` from a **PowerShell** console; you will get the name of your distribution (`Ubuntu` in my case),
+- From an **administrator PowerShell** console,
+  - Run `wsl --shutdown` to shutdown WSL,
+  - On your second drive, create a temporary folder like `d:\wsl`,
+  - Run `wsl --export Ubuntu d:\wsl\ubuntu.tar`,
+  - When finished, run `wsl --unregister Ubuntu` and then,
+  - Run `wsl --import Ubuntu d:\wsl\ubuntu d:\wsl\ubuntu.tar --version 2`
+  - Run `del d:\wsl\ubuntu.tar`
 
 You will need to do this for every distribution you have installed that you want to move.
 

@@ -190,15 +190,15 @@ In our scenario, we want to load an Excel file so click on the `Input` category 
 
 Double-click on the just added step so you can configure it:
 
-* Give it a clear name (like *Load people from Excel*),
-* Click on the Browse... button to retrieve your file (f.i. `/tmp/pentaho/people.xlsx`) then click on the `Add` button to add that file to the list of *Selected files*
+- Give it a clear name (like *Load people from Excel*),
+- Click on the Browse... button to retrieve your file (f.i. `/tmp/pentaho/people.xlsx`) then click on the `Add` button to add that file to the list of *Selected files*
   ![Add files](./images/input_excel_add_file.webp)
-* In the `Sheets` tab, click on the `Get sheetname(s)...` button, retrieve the name of the sheet and add it.
+- In the `Sheets` tab, click on the `Get sheetname(s)...` button, retrieve the name of the sheet and add it.
   ![Add the sheet](./images/input_excel_add_sheet.webp)
-* In the `Content` tab, there is nothing to change (since our Excel file has a header row then the data without empty rows between)
-* In the `Fields` tab, click on `Get fields from header row...` to load names then adjust some properties like below illustrated:
+- In the `Content` tab, there is nothing to change (since our Excel file has a header row then the data without empty rows between)
+- In the `Fields` tab, click on `Get fields from header row...` to load names then adjust some properties like below illustrated:
   ![Loading fields](./images/input_excel_add_fields.webp)
-* Click on the `Preview rows` button if you want to check if everything is OK
+- Click on the `Preview rows` button if you want to check if everything is OK
   ![Previewing rows](./images/input_excel_preview.webp)
 
 We're done; click on the `OK` button.
@@ -211,11 +211,11 @@ Now, click on `View` tab as illustrated below and double-click on the `Database 
 
 Remember our `compose.yaml` file and fill in the screen like this:
 
-* Host Name: `localhost`
-* Database Name: `people`
-* Port Number: `5432`
-* Username: `admin`
-* Password: `admin`
+- Host Name: `localhost`
+- Database Name: `people`
+- Port Number: `5432`
+- Username: `admin`
+- Password: `admin`
 
 ![Define our People connection](./images/database_people.webp)
 
@@ -243,10 +243,10 @@ It tells Pentaho that, once the **Load people from Excel** step is successfully 
 
 Now double-click on **Table output** and let's do some configuration:
 
-* Give it a clear step name (like *Load to PostgreSQL*),
-* The name of the Connection to use should be `People` (the one we've just created),
-* The Target schema has to be `public` (the one from our People database),
-* The Target table is `people`.
+- Give it a clear step name (like *Load to PostgreSQL*),
+- The name of the Connection to use should be `People` (the one we've just created),
+- The Target schema has to be `public` (the one from our People database),
+- The Target table is `people`.
 
 Now, click on the `SQL` button to see that Pentaho will provide a popup (think to resize the window) with a `CREATE TABLE` instruction:
 

@@ -51,9 +51,9 @@ As you probably know, Apache displays by default the content of the `/var/www/ht
 
 Explanation of the new arguments used in our `docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html php:8.1.5-apache` command
 
-* `--name step_1_2` : for clarity, we use another name,
-* `-p 81:80` : this time, we'll use port `81` on our computer and map it to port `80` on the container,
-* `-v $(pwd):/var/www/html`: the `-v` instruction is used to define a volume. Here, we'll synchronize the container's `/var/www/html` folder with `$(pwd)`, which corresponds to the current folder on our computer.
+- `--name step_1_2` : for clarity, we use another name,
+- `-p 81:80` : this time, we'll use port `81` on our computer and map it to port `80` on the container,
+- `-v $(pwd):/var/www/html`: the `-v` instruction is used to define a volume. Here, we'll synchronize the container's `/var/www/html` folder with `$(pwd)`, which corresponds to the current folder on our computer.
 
 Now, just create an `index.php` in your local `/tmp/docker-volume` folder. Yes, on your disk, not in the container.
 

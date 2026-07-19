@@ -42,15 +42,17 @@ APRÈS
 **Fichier :** `src/series.md` (ou la page MDX équivalente qui render `/series`)
 
 Option A — ajouter directement dans le MDX :
+
 ```mdx
 # All Series
 
-import SeriesStats from '@site/src/components/Blog/SeriesStats';
+import SeriesStats from "@site/src/components/Blog/SeriesStats";
 
-<SeriesStats />  {/* Nouveau composant optionnel */}
+<SeriesStats /> {/* Nouveau composant optionnel */}
 ```
 
 Option B (sans nouveau composant) — modifier simplement le fichier MDX :
+
 ```mdx
 ---
 title: All Series
@@ -59,14 +61,15 @@ title: All Series
 # All Series
 
 <div className="seriesIntro">
-  A curated collection of in-depth series — each one is a coherent set of articles
-  around a single topic, meant to be read in order.
+  A curated collection of in-depth series — each one is a coherent set of articles around
+  a single topic, meant to be read in order.
 </div>
 
 <SeriesCards />
 ```
 
 **Fichier CSS :** `src/css/series.css` — améliorer `.seriesIntro` :
+
 ```css
 .seriesIntro {
   text-align: center;

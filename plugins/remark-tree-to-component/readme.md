@@ -6,14 +6,14 @@ This plugin is designed to take the raw output of the Linux `tree` command and t
 
 ## ✨ Features
 
-* Converts tree-style code blocks into `<Trees>`, `<Folder>` and `<File>` MDX components.
-* Supports **[icons of Iconify](https://icon-sets.iconify.design/)** for many file types (JS, JSON, Docker, Markdown, etc.).
-* Configurable attributes:
-  * `expanded` → expand all folders by default
-  * `showJSX` → display the generated JSX code alongside the rendered tree
-  * `debug` → show parsed settings as JSON
-  * `title` → add a title above the tree
-* Works seamlessly with Docusaurus MDX pages.
+- Converts tree-style code blocks into `<Trees>`, `<Folder>` and `<File>` MDX components.
+- Supports **[icons of Iconify](https://icon-sets.iconify.design/)** for many file types (JS, JSON, Docker, Markdown, etc.).
+- Configurable attributes:
+  - `expanded` → expand all folders by default
+  - `showJSX` → display the generated JSX code alongside the rendered tree
+  - `debug` → show parsed settings as JSON
+  - `title` → add a title above the tree
+- Works seamlessly with Docusaurus MDX pages.
 
 ## ⚙️ Installation and Setup
 
@@ -162,9 +162,9 @@ You can combine multiple attributes:
 
 This will:
 
-* Expand all folders
-* Show the JSX code
-* Add a title above the tree
+- Expand all folders
+- Show the JSX code
+- Add a title above the tree
 
 ## 📚 Advanced Example with Docker & Config Files
 
@@ -188,9 +188,9 @@ Output will include proper **icons** for Docker, JSON, Markdown, and Docusaurus 
 
 1. The plugin scans all fenced code blocks in your MDX files.
 2. If the block starts with tree, it:
-    * Parses the ASCII tree structure.
-    * Converts it into a hierarchy of `<Trees>`, `<Folder>` and `<File>` components.
-    * Adds icons based on file extensions or special filenames.
+   - Parses the ASCII tree structure.
+   - Converts it into a hierarchy of `<Trees>`, `<Folder>` and `<File>` components.
+   - Adds icons based on file extensions or special filenames.
 3. Optionally, it inserts debug info or JSX code blocks.
 
 ## 🙏 Credits

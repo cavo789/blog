@@ -24,7 +24,7 @@ const CardBody = ({
     textWeight,
   } = buildTextClasses(
     { textAlign, variant, italic, noDecoration, transform, truncate, weight },
-    styles.truncate
+    styles.truncate,
   );
   return (
     <div
@@ -37,7 +37,7 @@ const CardBody = ({
         textItalic,
         textDecoration,
         textTruncate,
-        textWeight
+        textWeight,
       )}
       style={style}
     >

@@ -17,11 +17,17 @@ export default function BlueskyShare({ metadata }) {
   const shareLink =
     `https://bsky.app/intent/compose?text=` +
     `${encodeURIComponent(metadata.title)}%20${siteConfig.url}${encodeURIComponent(
-      metadata.permalink
+      metadata.permalink,
     )}`;
 
   return (
-    <a href={shareLink} target="_blank" rel="noopener noreferrer" className={styles.blueskyButton} aria-label="Share this post on Bluesky">
+    <a
+      href={shareLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.blueskyButton}
+      aria-label="Share this post on Bluesky"
+    >
       <Icon alt="Bluesky Icon" className={styles.blueskyLogo} />
       Share on Bluesky
     </a>

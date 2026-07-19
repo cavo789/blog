@@ -54,9 +54,9 @@ Examine all your tables and if you've such unique field, define that field as th
 
 If possible, a primary key should be
 
-* only one field (you can indeed define several fields to be the key),
-* a number, not a text field,
-* as small as possible (if you really need to use a text field, prefer a field with 5 characters f.i. and not 255)
+- only one field (you can indeed define several fields to be the key),
+- a number, not a text field,
+- as small as possible (if you really need to use a text field, prefer a field with 5 characters f.i. and not 255)
 
 Right-click on the table name and select `Design`.
 
@@ -102,9 +102,9 @@ Tip: always try to use an index for the relation and not "any field".
 
 In your tables, try to correctly choose the data type:
 
-* if you should store a True/False (or 1/0) information, choose a `Yes/No`
-* if you need to store a small number (f.i. `Number of children`), don't choose Number - Long Integer when Number - Byte is enough,
-* ...
+- if you should store a True/False (or 1/0) information, choose a `Yes/No`
+- if you need to store a small number (f.i. `Number of children`), don't choose Number - Long Integer when Number - Byte is enough,
+- ...
 
 And the right size: especially for text fields, don't use a 255 length (it's almost never needed) but try to think about the longest value (do you really have a customer with a family name of 255 characters? probably 50 will be enough).
 
@@ -116,8 +116,8 @@ When you need to write a `between` criteria, f.i. ID between 5 and 9, you can do
 
 ![Prefer BETWEEN](./images/query_between.webp)
 
-* Twice the same column, one with `>= 5` and the second with `< 10`
-* Or in the same column using a `Between 5 and 9`
+- Twice the same column, one with `>= 5` and the second with `< 10`
+- Or in the same column using a `Between 5 and 9`
 
 The best way is the yellow one: only one field and thus only one criteria to evaluate.
 
@@ -257,8 +257,8 @@ In this example, if possible, change the data type of  `CustomerNumber` in `tblO
 
 Totals queries (those with a `GROUP BY` clause) can have both a `WHERE` clause and a `HAVING` clause.
 
-* `WHERE` is executed first **before aggregation**
-* `HAVING` is executed afterwards **when the totals have been calculated**
+- `WHERE` is executed first **before aggregation**
+- `HAVING` is executed afterwards **when the totals have been calculated**
 
 Below, there is no `WHERE` clause: the calculation "How many invoices by customer" is made for all customers (several thousand maybe) and, once all this calculation is done, you just ask for the figure for customer 99. Rather inefficient.
 

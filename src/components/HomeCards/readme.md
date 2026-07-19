@@ -4,27 +4,27 @@ A reusable React component for displaying homepage navigation cards in a grid la
 
 ## Features
 
-* 🖼️ Displays image, title, and description for each card
-* 🔗 Links to internal pages using Docusaurus `<Link />`
-* 📦 Uses modular `Card`, `CardBody`, and `CardImage` components
-* 🎨 Styled with scoped CSS via `styles.module.css`
-* 📄 Data-driven via external `HOME_CARDS` array
+- 🖼️ Displays image, title, and description for each card
+- 🔗 Links to internal pages using Docusaurus `<Link />`
+- 📦 Uses modular `Card`, `CardBody`, and `CardImage` components
+- 🎨 Styled with scoped CSS via `styles.module.css`
+- 📄 Data-driven via external `HOME_CARDS` array
 
 ## Installation
 
 Ensure your project includes:
 
-* `HOME_CARDS` array in `data/home_cards.js`
-* Image assets in `/static/img/homepage/`
-* Card components: `Card`, `CardBody`, `CardImage`
-* CSS module: `styles.module.css`
+- `HOME_CARDS` array in `data/home_cards.js`
+- Image assets in `/static/img/homepage/`
+- Card components: `Card`, `CardBody`, `CardImage`
+- CSS module: `styles.module.css`
 
 ## Usage
 
 ```jsx
-import HomeCards from './HomeCards';
+import HomeCards from "./HomeCards";
 
-<HomeCards />
+<HomeCards />;
 ```
 
 ## 🧾 Card Data Format
@@ -45,16 +45,16 @@ Each item in `HOME_CARDS` should follow this structure:
 
 Customize layout via `styles.module.css`. Key classes:
 
-* `cardsSection`: Section wrapper
-* `sectionTitl`e: Heading style
-* `cardsGrid`: Grid layout
-* `cardLink`: Link styling
+- `cardsSection`: Section wrapper
+- `sectionTitl`e: Heading style
+- `cardsGrid`: Grid layout
+- `cardLink`: Link styling
 
 ## Development Notes
 
-* Images are loaded from `/img/homepage/` using relative paths.
-* The alt tag falls back to title or description if not provided.
-* Keys are derived from `card.title` — ensure uniqueness.
+- Images are loaded from `/img/homepage/` using relative paths.
+- The alt tag falls back to title or description if not provided.
+- Keys are derived from `card.title` — ensure uniqueness.
 
 ## 📄 License
 

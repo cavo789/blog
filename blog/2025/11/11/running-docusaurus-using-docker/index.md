@@ -30,9 +30,9 @@ Eighteen months ago, I published [Encapsulate an entire Docusaurus site in a Doc
 
 With this setup:
 
-* You run `make build` once to create a base Docker image.
-* You launch your editing environment with `make devcontainer`.
-* VSCode automatically builds and opens an isolated container with everything configured.
+- You run `make build` once to create a base Docker image.
+- You launch your editing environment with `make devcontainer`.
+- VSCode automatically builds and opens an isolated container with everything configured.
 
 Let’s walk through the complete workflow.
 

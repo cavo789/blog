@@ -16,7 +16,7 @@ réexpliquer).
 - `blog/2025/10/13/docker-prod-devcontainer/index.md` (lignes ~287-289)
 - `blog/2025/11/11/running-docusaurus-using-docker/index.md` (AlertBox danger, lignes ~152-154)
 
-**Boilerplate "swizzle / redémarrer Docusaurus"** dans la série *Creating Docusaurus components* —
+**Boilerplate "swizzle / redémarrer Docusaurus"** dans la série _Creating Docusaurus components_ —
 réexpliqué dans 2 articles, correctement lié dans un 3e :
 
 - `blog/2025/09/03/docusaurus-relatedposts/index.md` — explique en entier les étapes de swizzle

@@ -25,7 +25,7 @@ const CardFooter = ({
     textWeight,
   } = buildTextClasses(
     { textAlign, variant, italic, noDecoration, transform, truncate, weight },
-    styles.truncate
+    styles.truncate,
   );
   return (
     <div
@@ -38,7 +38,7 @@ const CardFooter = ({
         textItalic,
         textDecoration,
         textTruncate,
-        textWeight
+        textWeight,
       )}
       style={style}
     >

@@ -8,23 +8,27 @@ metadata:
 ---
 
 ## Identity
+
 - **Site:** https://www.avonture.be
 - **Repo:** https://github.com/cavo789/blog
 - **Local dev:** https://localhost:3000 (HTTPS with Let's Encrypt cert — use `ignoreHTTPSErrors: true` in Playwright; actual bind IP in WSL2: `172.20.0.3:3000`)
 - **Working dir:** /opt/docusaurus
 
 ## Stack
+
 - Docusaurus 3.9.x (always keep latest stable)
 - React functional components + Hooks — **no TypeScript, no class components**
 - JavaScript ES6+, no inline styles, CSS Modules / Infima CSS variables
 - Node ≥ 18, Yarn 1.22
 
 ## Key Commands (via makefile or yarn)
+
 - `yarn start` — dev server
 - `yarn build` — production build
 - `make up` / `make build` / `make devcontainer`
 
 ## Infrastructure
+
 - Docker-first: multi-stage Dockerfile (base → deps → dev → build → prod)
 - `compose.yaml` (no version key, read-only containers where possible, tmpfs)
 - VSCode DevContainers (`.devcontainer/devcontainer.json`)

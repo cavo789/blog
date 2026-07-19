@@ -33,12 +33,12 @@ First, as always when we need to learn new software, we must talk about how to i
 <AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run command will always look like:
 
-* `docker run` to run a Docker image (*Oh? Really?*),
-* `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
-* `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
-* `-v "${PWD}":/project` to share your current folder with a folder called `/project` in the Docker container (use `${PWD}` if you are on Linux, use `%CD%` if you are on DOS),
-* `-w /project` to tell Docker that the current directory, in the container, will be the `/project` folder
-* then `jakzal/phpqa` which is the name of the Docker image to use (you can also specify a version like `python:3.9.18` if needed; see [https://hub.docker.com/_/python/tags](https://hub.docker.com/_/python/tags))
+- `docker run` to run a Docker image (*Oh? Really?*),
+- `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
+- `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
+- `-v "${PWD}":/project` to share your current folder with a folder called `/project` in the Docker container (use `${PWD}` if you are on Linux, use `%CD%` if you are on DOS),
+- `-w /project` to tell Docker that the current directory, in the container, will be the `/project` folder
+- then `jakzal/phpqa` which is the name of the Docker image to use (you can also specify a version like `python:3.9.18` if needed; see [https://hub.docker.com/_/python/tags](https://hub.docker.com/_/python/tags))
 
 </AlertBox>
 

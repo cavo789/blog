@@ -6,8 +6,8 @@
 
 ```css
 .cardTitle {
-  white-space: nowrap;        /* ← force une seule ligne */
-  text-overflow: ellipsis;    /* ← coupe avec "..." */
+  white-space: nowrap; /* ← force une seule ligne */
+  text-overflow: ellipsis; /* ← coupe avec "..." */
   overflow: hidden;
 }
 ```

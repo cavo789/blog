@@ -42,10 +42,10 @@ When you exit the Docker container, everything will be lost but, now, you know i
 
 What I particularly like:
 
-* You can always see the name of the git branch you're working on,
-* The connected user name (like `root` f.i.),
-* When an instruction is finished, the new prompt displays the time taken by the instruction, useful when you're trying to optimize a command,
-* On the right, you can see immediately if the instruction has failed, with a red display and the error code (`exitcode`),
-* And, of course, the visual aspect, which is pretty cool.
+- You can always see the name of the git branch you're working on,
+- The connected user name (like `root` f.i.),
+- When an instruction is finished, the new prompt displays the time taken by the instruction, useful when you're trying to optimize a command,
+- On the right, you can see immediately if the instruction has failed, with a red display and the error code (`exitcode`),
+- And, of course, the visual aspect, which is pretty cool.
 
 And also, because I work in Docker containers on a daily basis, using Powerlevel10k locally gives me a strong visual indication to remind me at all times whether I'm local or in a container.

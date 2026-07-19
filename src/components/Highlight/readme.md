@@ -22,24 +22,24 @@ This is an <Highlight color="#ff4081">important note</Highlight> you shouldn't m
 
 ## 🧩 Props
 
-| Prop | Type | Required | Default | Description |
-| --- | --- | --- | --- | --- |
-| `children` | node | ✅ | — | The content to be highlighted |
-| `color` | string | ✅ | — | Background color for the highlight |
+| Prop       | Type   | Required | Default | Description                        |
+| ---------- | ------ | -------- | ------- | ---------------------------------- |
+| `children` | node   | ✅       | —       | The content to be highlighted      |
+| `color`    | string | ✅       | —       | Background color for the highlight |
 
 ## 🎨 Styling
 
 The component applies the following default styles:
 
-* White text (`#fff`)
-* Rounded corners (`2px`)
-* Padding (`0.2rem`)
-* Custom background color via color prop
+- White text (`#fff`)
+- Rounded corners (`2px`)
+- Padding (`0.2rem`)
+- Custom background color via color prop
 
 ## 🛠️ Development Notes
 
-* This component is intended for inline use only.
-* Avoid nesting block-level elements inside Highlight.
+- This component is intended for inline use only.
+- Avoid nesting block-level elements inside Highlight.
 
 ## 📄 License
 

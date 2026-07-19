@@ -59,7 +59,9 @@ DARK MODE — cassé (le plus fréquent chez les devs)
 
 /* Handles et dates */
 .blueskyCommentAuthorHandle,
-.blueskyCommentDate { color: var(--ifm-font-color-secondary); }
+.blueskyCommentDate {
+  color: var(--ifm-font-color-secondary);
+}
 
 /* Bouton */
 .blueskyButton {

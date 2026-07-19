@@ -52,17 +52,17 @@ Once the process is finished, Excel will automatically open with something like 
 
 ![MS Access Get fields list](./images/get_fields_list.webp)
 
-* Filename: The MS Access filename (absolute)
-* TableName: The name of the table
-* FieldName: The name of the field found in that table
-* FieldType: The data type (integer, string, date, ...)
-* FieldSize: The maximum size defined in the table (f.i. 255 means that this field can contain up to 255 characters)
-* ShortestSize: When the table contains records, the ShortestSize info is "what is the smaller information stored in that field?" (example: if the field is a firstname, size 255 but the shortest firstname is `Paul`, then `ShortestSize` will be set to 4)
-* LongestSize: When the table contains records, the `LongestSize` info is "what is the biggest information stored in that field?" (example: if the field is a firstname, size 255 but the longest firstname is `Christophe`, then `LongestSize` will be set to 10)
-* Position: The position of that field in the structure of the table (is the first defined field, the second, ...)
-* Occurrences: How many times that specific `FieldName` is found in the entire database. If you've a lot of tables, perhaps the field called `CustomerID` is used in the `Customers` table and in the `Orders` table too so `Occurrences` will be set to 2 in this case.
+- Filename: The MS Access filename (absolute)
+- TableName: The name of the table
+- FieldName: The name of the field found in that table
+- FieldType: The data type (integer, string, date, ...)
+- FieldSize: The maximum size defined in the table (f.i. 255 means that this field can contain up to 255 characters)
+- ShortestSize: When the table contains records, the ShortestSize info is "what is the smaller information stored in that field?" (example: if the field is a firstname, size 255 but the shortest firstname is `Paul`, then `ShortestSize` will be set to 4)
+- LongestSize: When the table contains records, the `LongestSize` info is "what is the biggest information stored in that field?" (example: if the field is a firstname, size 255 but the longest firstname is `Christophe`, then `LongestSize` will be set to 10)
+- Position: The position of that field in the structure of the table (is the first defined field, the second, ...)
+- Occurrences: How many times that specific `FieldName` is found in the entire database. If you've a lot of tables, perhaps the field called `CustomerID` is used in the `Customers` table and in the `Orders` table too so `Occurrences` will be set to 2 in this case.
 
 In a context of optimization:
 
-* Be sure not to use too large a field size. By default, MS Access suggests a size of 255 for text fields, but for a name or first name field, a size of 40 characters is enough.
-* Check the `LongestSize` property: if you see f.i. a size of 4 this means that you're probably storing a code (a ZipCode f.i. is max 4 digits in Belgium). If the `FieldSize` is set to 50, you know you can reduce that size to 4.
+- Be sure not to use too large a field size. By default, MS Access suggests a size of 255 for text fields, but for a name or first name field, a size of 40 characters is enough.
+- Check the `LongestSize` property: if you see f.i. a size of 4 this means that you're probably storing a code (a ZipCode f.i. is max 4 digits in Belgium). If the `FieldSize` is set to 50, you know you can reduce that size to 4.

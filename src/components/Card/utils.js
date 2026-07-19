@@ -1,15 +1,18 @@
 /**
  * Builds the clsx-ready text utility classes shared by CardHeader, CardBody and CardFooter.
  */
-export function buildTextClasses({
-  textAlign,
-  variant,
-  italic = false,
-  noDecoration = false,
-  transform,
-  truncate = false,
-  weight,
-}, truncateClass) {
+export function buildTextClasses(
+  {
+    textAlign,
+    variant,
+    italic = false,
+    noDecoration = false,
+    transform,
+    truncate = false,
+    weight,
+  },
+  truncateClass,
+) {
   return {
     text: textAlign ? `text--${textAlign}` : "",
     textColor: variant ? `text--${variant}` : "",

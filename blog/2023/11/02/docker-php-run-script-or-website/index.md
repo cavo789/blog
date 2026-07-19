@@ -26,15 +26,15 @@ Imagine this situation: you wish to run a piece of standard PHP code (no depende
 
 The easiest way is to:
 
-* Create a temporary directory with `mkdir /tmp/snippet && cd $_`,
-* Create an `index.php` file there (with your snippet like above),
-* Run this command in the console: `docker run -d -p 8080:80 -u ${UID}:${GID} -v "$PWD":/var/www/html php:7.4-apache` and,
-* Browse to `http://127.0.0.1:8080`.
+- Create a temporary directory with `mkdir /tmp/snippet && cd $_`,
+- Create an `index.php` file there (with your snippet like above),
+- Run this command in the console: `docker run -d -p 8080:80 -u ${UID}:${GID} -v "$PWD":/var/www/html php:7.4-apache` and,
+- Browse to `http://127.0.0.1:8080`.
 
 It's done.
 
 Explanations for the `docker run -d -p 8080:80 -u ${UID}:${GID} -v "$PWD":/var/www/html php:7.4-apache` command:
 
-* We wish to make the local website accessible on port 8080 (so `http://127.0.0.1:8080`),
-* We wish to synchronize the current folder (i.e. `/tmp/snippet`) with the Docker container so changes in any file in `/tmp/snippet` will be immediately reflected in Docker and thus in your browser,
-* And we wish to use `php:7.4-apache`. Just replace with e.g. `php:8.2-apache` to switch to a newer version.
+- We wish to make the local website accessible on port 8080 (so `http://127.0.0.1:8080`),
+- We wish to synchronize the current folder (i.e. `/tmp/snippet`) with the Docker container so changes in any file in `/tmp/snippet` will be immediately reflected in Docker and thus in your browser,
+- And we wish to use `php:7.4-apache`. Just replace with e.g. `php:8.2-apache` to switch to a newer version.

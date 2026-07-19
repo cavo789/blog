@@ -15,9 +15,9 @@ language mistakes, bugs, and missed SEO/Docusaurus opportunities.
 
 `$ARGUMENTS` is an **optional** scope.
 
-* **Empty** → review all of `blog/` (full mode, all years).
-* **A year** (e.g. `2023`) → restrict to `blog/2023/`.
-* **A path** (e.g. `blog/2024/some-post`) → restrict to that post only.
+- **Empty** → review all of `blog/` (full mode, all years).
+- **A year** (e.g. `2023`) → restrict to `blog/2023/`.
+- **A path** (e.g. `blog/2024/some-post`) → restrict to that post only.
 
 If `$ARGUMENTS` does not resolve to an existing path under `blog/`, stop and respond:
 
@@ -32,9 +32,9 @@ State the resolved scope explicitly at the top of the report.
 
 ## Project context
 
-* Blog content is written in **American English** (never French), Markdown/MDX, one folder per
+- Blog content is written in **American English** (never French), Markdown/MDX, one folder per
   post under `blog/YYYY/`, co-located assets.
-* Globally registered MDX components (usable without import, defined in
+- Globally registered MDX components (usable without import, defined in
   `src/theme/MDXComponents.js`): `AlertBox, BrowserWindow, Card, CardBody, CardFooter, CardHeader,
   CardImage, Column, Columns, Details, DownloadButton, Folder, File, Guideline, Hero, Highlight,
   Link, LogoIcon, ProjectSetup, Snippet, StepsCard, TabItem, Tabs, Terminal, TLDR, TOCInline,
@@ -42,12 +42,12 @@ State the resolved scope explicitly at the top of the report.
   SeriesStats, HeroSection, OldPostNotice, SeriesPosts, PostCard, PostCount, RelatedPosts, Tags,
   SeriesCards, AuthorCard, Series, etc.) and other custom components in `src/components/*`
   (Prerequisite, ShortcutList, InteractiveCode, TriedIt, TypoReport, Reaction, ...).
-* Conventions: articles open with a personal anecdote/frustration (never "In this article we
+- Conventions: articles open with a personal anecdote/frustration (never "In this article we
   will…"), a `<TLDR>` right after the banner image, `AlertBox` variants in urgency order (`info` <
   `note` < `tip` < `caution` < `important` < `highlyImportant` < `coreConcept`), and always end with
   `## Conclusion`.
-* Tags must exist in `blog/tags.yml`; authors must exist in `blog/authors.yml`.
-* `draft:true` in frontmatter is used for unpublished posts (do not "fix" that, it's intentional).
+- Tags must exist in `blog/tags.yml`; authors must exist in `blog/authors.yml`.
+- `draft:true` in frontmatter is used for unpublished posts (do not "fix" that, it's intentional).
 
 ## Review objectives
 
@@ -109,9 +109,9 @@ levels, multiple `# H1`), missing/incorrect `StructuredData`, banner image incon
 Two mechanisms already inject "related content" automatically and must **not** be reported as
 gaps:
 
-* `RelatedPosts` (`src/components/Blog/RelatedPosts`) — auto-injected on every post, shows up to 3
+- `RelatedPosts` (`src/components/Blog/RelatedPosts`) — auto-injected on every post, shows up to 3
   cards filtered by `mainTag` (fallback: shared `tags`).
-* `Series` (`src/components/Blog/Series` + `SeriesPosts`/`SeriesCards`) — auto-injected on every
+- `Series` (`src/components/Blog/Series` + `SeriesPosts`/`SeriesCards`) — auto-injected on every
   post that has a `series:` frontmatter value.
 
 So a pair of posts sharing the same `mainTag`, or already in the same `series`, is **already**

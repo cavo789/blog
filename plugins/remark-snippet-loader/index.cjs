@@ -58,7 +58,7 @@ function snippetLoader() {
         } catch (err) {
           console.error(
             `Terminal plugin: error reading ${absolutePath} for blog post ${blogPostPath}`,
-            err
+            err,
           );
           rawContent = `Error loading source file: ${sourcePath}`;
         }
@@ -68,9 +68,7 @@ function snippetLoader() {
       }
 
       // Snippet: existing logic — language detection, code injection, eli5.
-      const filenameAttr = node.attributes.find(
-        (attr) => attr.name === "filename"
-      );
+      const filenameAttr = node.attributes.find((attr) => attr.name === "filename");
 
       try {
         const code = fs.readFileSync(absolutePath, "utf-8");
@@ -91,10 +89,7 @@ function snippetLoader() {
           const baseName = path.basename(pathForLang).toLowerCase();
           if (baseName === "dockerfile") {
             lang = "docker";
-          } else if (
-            baseName.includes("compose.yaml") ||
-            baseName.includes(".yml")
-          ) {
+          } else if (baseName.includes("compose.yaml") || baseName.includes(".yml")) {
             lang = "yaml";
           } else {
             lang = ext; // Use the extension or base name as fallback
@@ -127,13 +122,16 @@ function snippetLoader() {
               });
             }
           } catch (e) {
-            console.warn(`Snippet plugin: could not parse ELI5 file ${eli5Path}:`, e.message);
+            console.warn(
+              `Snippet plugin: could not parse ELI5 file ${eli5Path}:`,
+              e.message,
+            );
           }
         }
       } catch (err) {
         console.error(
           `Snippet plugin: error reading ${absolutePath} for blog post ${blogPostPath}`,
-          err
+          err,
         );
         node.attributes.push({
           type: "mdxJsxAttribute",

@@ -39,18 +39,27 @@ MOBILE < 600px — inchangé (texte seul, vidéo masquée)
 ```css
 /* Masquer la vidéo sur tablette, montrer le suricate */
 @media (max-width: 996px) and (min-width: 601px) {
-  .videoWrapper { display: none; }
-  .mascotWrapper { display: flex; justify-content: center; }
+  .videoWrapper {
+    display: none;
+  }
+  .mascotWrapper {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 /* Sur desktop : masquer le suricate (la vidéo suffit) */
 @media (min-width: 997px) {
-  .mascotWrapper { display: none; }
+  .mascotWrapper {
+    display: none;
+  }
 }
 
 /* Sur mobile : le suricate reste masqué aussi */
 @media (max-width: 600px) {
-  .mascotWrapper { display: none; }
+  .mascotWrapper {
+    display: none;
+  }
 }
 
 /* Animation float identique à l'admin page */
@@ -62,22 +71,29 @@ MOBILE < 600px — inchangé (texte seul, vidéo masquée)
 }
 
 @keyframes floatMascot {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 ```
 
 **Fichier :** `src/components/Blog/HeroSection/index.js`
 
 ```jsx
-{/* Ajouter juste après videoWrapper : */}
+{
+  /* Ajouter juste après videoWrapper : */
+}
 <div className={styles.mascotWrapper}>
   <img
     src="/img/meerkat/suricate_no_background.webp"
     alt="Christophe's meerkat mascot"
     className={styles.mascotImg}
   />
-</div>
+</div>;
 ```
 
 ## Impact

@@ -1,4 +1,12 @@
-import React, { useState, Children, isValidElement, useMemo, useCallback, useRef, useEffect } from "react";
+import React, {
+  useState,
+  Children,
+  isValidElement,
+  useMemo,
+  useCallback,
+  useRef,
+  useEffect,
+} from "react";
 import PropTypes from "prop-types";
 import CodeBlock from "@theme/CodeBlock";
 import Snippet from "@site/src/components/Snippet";
@@ -211,11 +219,7 @@ export default function ProjectSetup({
               onClick={handleCopyScript}
               aria-live="polite"
             >
-              {copied ? (
-                <Translate>Copied!</Translate>
-              ) : (
-                <Translate>Copy</Translate>
-              )}
+              {copied ? <Translate>Copied!</Translate> : <Translate>Copy</Translate>}
             </button>
           ) : (
             <button
@@ -260,14 +264,11 @@ export default function ProjectSetup({
           <div>
             <p>
               <small>
-                <Translate>
-                  Copy this block to your terminal (Linux/WSL2).
-                </Translate>
+                <Translate>Copy this block to your terminal (Linux/WSL2).</Translate>
                 {!createFolder && (
                   <mark>
                     {" "}
-                    Make sure you are located in the{" "}
-                    <strong>{folderName}</strong> folder.
+                    Make sure you are located in the <strong>{folderName}</strong> folder.
                   </mark>
                 )}
               </small>
@@ -301,7 +302,7 @@ export default function ProjectSetup({
                   code={content}
                   defaultOpen={expandAll}
                 />
-              )
+              ),
             )}
           </div>
         )}

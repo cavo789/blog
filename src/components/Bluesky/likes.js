@@ -25,7 +25,7 @@ export default function BlueskyLikes({ metadata }) {
       try {
         const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${blueskyRecordKey}`;
         const url = `https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=${encodeURIComponent(
-          postUri
+          postUri,
         )}&depth=0`;
 
         const res = await fetch(url);

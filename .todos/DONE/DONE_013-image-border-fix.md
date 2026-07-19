@@ -38,6 +38,7 @@ Dark  : border: 2px solid #25c2a0  (teal primaire)
 **Fichier :** `src/theme/MDXComponents.js`
 
 **Option A — supprimer la bordure (recommandée) :**
+
 ```js
 img: (props) => {
   const { loading, decoding, className, style, height, width, ...rest } = props;
@@ -56,6 +57,7 @@ img: (props) => {
 ```
 
 **Option B — bordure theme-aware :**
+
 ```js
 style={{
   border: "2px solid var(--ifm-color-primary)",

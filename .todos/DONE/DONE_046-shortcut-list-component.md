@@ -15,17 +15,17 @@ Ce n'est **pas** un remplacement de `StepsCard` (qui reste le bon choix pour des
 Trouvé dans `blog/2026/04/27/ssh_with_fzf/index.md:111-113` :
 
 ```md
-* For <kbd>CTRL</kbd>+<kbd>A</kbd>, I've set up a secondary screen that displays a list of actions to execute on the selected host.
-* For <kbd>CTRL</kbd>+<kbd>I</kbd>, I run an inventory management script that scans all my hosts (or just the filtered ones) and generates a web page with an up-to-date inventory of installed software (such as PHP, Python, PostgreSQL versions).
-* For <kbd>E</kbd>, you could, for example, open an editor to directly modify the configuration file of the selected host.
+- For <kbd>CTRL</kbd>+<kbd>A</kbd>, I've set up a secondary screen that displays a list of actions to execute on the selected host.
+- For <kbd>CTRL</kbd>+<kbd>I</kbd>, I run an inventory management script that scans all my hosts (or just the filtered ones) and generates a web page with an up-to-date inventory of installed software (such as PHP, Python, PostgreSQL versions).
+- For <kbd>E</kbd>, you could, for example, open an editor to directly modify the configuration file of the selected host.
 ```
 
 Autre exemple, celui qui existait dans `blog/2026/01/12/windows_terminal_split_panes/index.md` avant sa correction manuelle du 2026-07-09 (remplacé entre-temps par un `StepsCard`, mais illustre bien le pattern répété) :
 
 ```md
-* <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>+</kbd> : Split the current pane vertically.
-* <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> : Split the current pane horizontally.
-* <kbd>Alt</kbd> + <kbd>Shift</kbd> and use the arrow keys : Increase or decrease the size of the current pane in the direction of the arrow key.
+- <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>+</kbd> : Split the current pane vertically.
+- <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> : Split the current pane horizontally.
+- <kbd>Alt</kbd> + <kbd>Shift</kbd> and use the arrow keys : Increase or decrease the size of the current pane in the direction of the arrow key.
 ```
 
 Problèmes : séparateur incohérent (`+` tapé en dur vs `and`), pas de style visuel dédié au-delà du `<kbd>` natif, aucune réutilisabilité (copier-coller à chaque article).
@@ -39,9 +39,18 @@ Une recherche sur l'ensemble de blog/2026 ne montre que 2 vraies listes à puces
 ```mdx
 <ShortcutList
   items={[
-    { keys: ["Ctrl", "A"], desc: "Open a secondary screen listing actions available for the selected host." },
-    { keys: ["Ctrl", "I"], desc: "Run an inventory script that scans hosts and generates an up-to-date software inventory page." },
-    { keys: ["E"], desc: "Open an editor to directly modify the configuration file of the selected host." },
+    {
+      keys: ["Ctrl", "A"],
+      desc: "Open a secondary screen listing actions available for the selected host.",
+    },
+    {
+      keys: ["Ctrl", "I"],
+      desc: "Run an inventory script that scans hosts and generates an up-to-date software inventory page.",
+    },
+    {
+      keys: ["E"],
+      desc: "Open an editor to directly modify the configuration file of the selected host.",
+    },
   ]}
 />
 ```
@@ -76,7 +85,7 @@ export default function ShortcutList({ items = [] }) {
 
 Props :
 
-* `items`: `Array<{ keys: string[], desc: string }>` (requis)
+- `items`: `Array<{ keys: string[], desc: string }>` (requis)
 
 Style : réutiliser la CSS `kbd` déjà définie dans `src/css/custom.css:318` (et sa variante `[data-theme="dark"] kbd` ligne 333) pour la cohérence visuelle avec le reste du site.
 
@@ -86,9 +95,9 @@ Ajouter dans `src/components/index.js` (ou l'équivalent qui enregistre les comp
 
 ## TODO steps
 
-* [ ] Créer `src/components/ShortcutList/index.js` + `styles.module.css`
-* [ ] Réutiliser le style `kbd` existant de `src/css/custom.css`
-* [ ] Enregistrer le composant dans les MDX globaux
-* [ ] Migrer `blog/2026/04/27/ssh_with_fzf/index.md:111-113` comme premier cas d'usage réel
-* [ ] Parcourir le folder blog/ et chercher chaque occurences à adapter
-* [ ] Ajouter un snippet VS Code `ShortcutList` dans `.vscode/markdown.code-snippets`
+- [ ] Créer `src/components/ShortcutList/index.js` + `styles.module.css`
+- [ ] Réutiliser le style `kbd` existant de `src/css/custom.css`
+- [ ] Enregistrer le composant dans les MDX globaux
+- [ ] Migrer `blog/2026/04/27/ssh_with_fzf/index.md:111-113` comme premier cas d'usage réel
+- [ ] Parcourir le folder blog/ et chercher chaque occurences à adapter
+- [ ] Ajouter un snippet VS Code `ShortcutList` dans `.vscode/markdown.code-snippets`

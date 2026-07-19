@@ -4,11 +4,11 @@ A utility function for extracting structured metadata from MDX blog posts in a D
 
 ## 🚀 Features
 
-* 📂 Loads all `.mdx` and `.md` files from `/blog`
-* 🧾 Parses frontmatter for key metadata fields
-* 🔗 Resolves permalinks and image paths
-* 🧹 Filters out invalid entries
-* 🧩 Supports tags, authors, series, and visibility flags
+- 📂 Loads all `.mdx` and `.md` files from `/blog`
+- 🧾 Parses frontmatter for key metadata fields
+- 🔗 Resolves permalinks and image paths
+- 🧹 Filters out invalid entries
+- 🧩 Supports tags, authors, series, and visibility flags
 
 ## Location
 
@@ -58,9 +58,9 @@ console.log(posts);
 
 ## ⚠️ Notes
 
-* Image paths starting with `./` are automatically resolved relative to the post directory.
-* Posts without valid frontmatter are skipped.
-* This function relies on Webpack’s `require.context` and is not compatible with environments that don’t support it (e.g. Node.js without bundling).
+- Image paths starting with `./` are automatically resolved relative to the post directory.
+- Posts without valid frontmatter are skipped.
+- This function relies on Webpack’s `require.context` and is not compatible with environments that don’t support it (e.g. Node.js without bundling).
 
 ## 📄 License
 

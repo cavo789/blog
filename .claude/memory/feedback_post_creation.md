@@ -24,6 +24,7 @@ When picking a banner image, prefer a slug that closely matches the post topic r
 ---
 
 Frontmatter key ordering observed in posts (follow this order for consistency):
+
 ```yaml
 slug:
 title:

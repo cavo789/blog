@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-06-13T10:00:00.000Z",
+  "source": "Dockerfile",
+  "lang": "docker",
+  "explanations": {
+    "1": "FROM picks the base image — the pre-built foundation your image starts from. node:20-alpine is Node 20 on the tiny Alpine Linux OS.",
+    "4": "COPY package*.json ./ copies only the dependency manifest first so Docker can cache the npm install step separately from your application code.",
+    "5": "npm ci is like npm install but strictly follows package-lock.json. --omit=dev leaves out development-only tools, shrinking the final image.",
+    "8": "EXPOSE documents which port the container listens on. It is a label, not a firewall rule — docker run -p actually opens the port.",
+    "9": "CMD is the default command when the container starts. Square-bracket form (exec form) runs node directly without a shell in between."
+  }
+}

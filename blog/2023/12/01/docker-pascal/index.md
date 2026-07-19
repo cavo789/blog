@@ -55,12 +55,12 @@ Voilà, we've successfully created our first Pascal code in 2023.
 <AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run commands are (almost always the same):
 
-* `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
-* `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
-* `-v %CD%:/app` to share your current folder with a folder called `/app` in the Docker container,
-* `-w /app` to tell Docker that the current directory, in the container, will be the `/app` folder
-* then `signumtemporis/fpc:cross.x86_64-win64.slim` which is the name of the Docker image to use and, finally,
-* `Hello.pas` i.e. our source file (the fpc image seems to not request to specify the `fpc` executable; just the source file).
+- `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
+- `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
+- `-v %CD%:/app` to share your current folder with a folder called `/app` in the Docker container,
+- `-w /app` to tell Docker that the current directory, in the container, will be the `/app` folder
+- then `signumtemporis/fpc:cross.x86_64-win64.slim` which is the name of the Docker image to use and, finally,
+- `Hello.pas` i.e. our source file (the fpc image seems to not request to specify the `fpc` executable; just the source file).
 
 </AlertBox>
 

@@ -16,12 +16,12 @@ signe probable d'un copier-coller depuis l'article précédent/voisin non corrig
   `blog/2024/07/29/linux-generate-documentation-from-bash-scripts/index.md` — les 3 ont le tag
   `database` alors qu'aucun des 3 articles (purs outils Bash) ne parle de base de données.
 - `blog/2025/06/20/pentaho-discovery/index.md` — `mainTag: database`, `tags: [database, msaccess,
-  vba]`, strictement identiques aux tags de l'article suivant `vba-access-export`, alors que
+vba]`, strictement identiques aux tags de l'article suivant `vba-access-export`, alors que
   Pentaho/PostgreSQL/Excel n'ont aucun rapport avec MS Access/VBA.
 - `blog/2025/08/30/pest-functional/index.md` — `mainTag: component` sur un article de tests
   Laravel/Pest ; comparer avec `bats-unit-tests` qui utilise correctement `mainTag: tests`.
 - `blog/2025/12/22/docker-networking-troubleshooting/index.md` — `slug:
-  github-networking-troubleshooting` sur un article 100% Docker, aucune mention de GitHub.
+github-networking-troubleshooting` sur un article 100% Docker, aucune mention de GitHub.
 - `blog/2025/12/01/zorin/index.md` — tags `[linux, wsl]` sur un article d'installation de Zorin OS
   sur un PC physique en remplacement de Windows ; aucune mention de WSL.
 - `blog/2025/12/07/blog-post-feed/index.md` — tags `[docusaurus, github]` sur un article de plugin

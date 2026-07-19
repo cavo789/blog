@@ -13,35 +13,35 @@ src/components/Details/styles.module.css
 
 ## 🚀 Features
 
-* ✅ Native HTML semantics for accessibility
-* 🎨 Styled with CSS Modules and Docusaurus alert classes
-* 🧩 Accepts custom label and children content
-* 🛠️ PropTypes for type safety
+- ✅ Native HTML semantics for accessibility
+- 🎨 Styled with CSS Modules and Docusaurus alert classes
+- 🧩 Accepts custom label and children content
+- 🛠️ PropTypes for type safety
 
 ## 🧪 Usage
 
 ```jsx
-import Details from '@site/src/components/Details';
+import Details from "@site/src/components/Details";
 
 <Details label="What is this component?">
   <p>This is a collapsible section using native HTML elements.</p>
-</Details>
+</Details>;
 ```
 
 ## 🧾 Props
 
-| Prop | Type | Required | Default | Description |
-| --- |  --- | --- | --- | --- |
-| `label` | string | ✅ | — | Text shown in the summary heading |
-| `children` | node | ✅ | — | Content to render inside the collapsible area |
+| Prop       | Type   | Required | Default | Description                                   |
+| ---------- | ------ | -------- | ------- | --------------------------------------------- |
+| `label`    | string | ✅       | —       | Text shown in the summary heading             |
+| `children` | node   | ✅       | —       | Content to render inside the collapsible area |
 
 ## 🎨 Styling
 
 This component uses:
 
-* CSS Modules (`styles.module.css`)
-* Docusaurus alert classes (alert alert--info) for consistent theming
-* You can customize the appearance by editing `styles.module.css` or overriding styles in your global CSS.
+- CSS Modules (`styles.module.css`)
+- Docusaurus alert classes (alert alert--info) for consistent theming
+- You can customize the appearance by editing `styles.module.css` or overriding styles in your global CSS.
 
 ## 🧠 Notes
 

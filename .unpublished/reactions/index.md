@@ -59,8 +59,8 @@ Browser                          Your Server
 
 Two JSON files are created at runtime by the backend:
 
-* `api/reactions-data.json` — the vote store, one entry per article slug
-* `api/notifications.json` — throttle timestamps, one entry per article slug
+- `api/reactions-data.json` — the vote store, one entry per article slug
+- `api/notifications.json` — throttle timestamps, one entry per article slug
 
 Let's build them one by one.
 
@@ -84,10 +84,10 @@ define('SITE_URL',               'https://www.your-site.com');
 
 Four constants, four decisions to make:
 
-* **`ADMIN_EMAIL`** — where email notifications go. Use your own address.
-* **`ADMIN_TOKEN`** — a long random string (32+ characters). This protects the admin endpoint that returns all votes. Generate one with `openssl rand -base64 24` in your terminal and never commit it to a public repository.
-* **`NOTIFY_COOLDOWN_SECONDS`** — the minimum number of seconds between two notification emails *for the same article*. The default is 3 600 (one hour). This prevents your inbox from being flooded when an article goes viral.
-* **`SITE_URL`** — your public domain, used to build clickable links in the notification email and to validate CORS origins.
+- **`ADMIN_EMAIL`** — where email notifications go. Use your own address.
+- **`ADMIN_TOKEN`** — a long random string (32+ characters). This protects the admin endpoint that returns all votes. Generate one with `openssl rand -base64 24` in your terminal and never commit it to a public repository.
+- **`NOTIFY_COOLDOWN_SECONDS`** — the minimum number of seconds between two notification emails *for the same article*. The default is 3 600 (one hour). This prevents your inbox from being flooded when an article goes viral.
+- **`SITE_URL`** — your public domain, used to build clickable links in the notification email and to validate CORS origins.
 
 ### 1.2 — CORS
 

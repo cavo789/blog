@@ -134,14 +134,14 @@ You'll need to give an identifier to the tab (in the attribute called `id`): you
 
 The standard names are:
 
-* `TabHome`
-* `TabInsert`
-* `TabPageLayoutExcel`
-* `TabFormulas`
-* `TabData`
-* `TabReview`
-* `TabView`
-* `TabDeveloper`
+- `TabHome`
+- `TabInsert`
+- `TabPageLayoutExcel`
+- `TabFormulas`
+- `TabData`
+- `TabReview`
+- `TabView`
+- `TabDeveloper`
 
 So, if you want to add a button to the Home tab, just use `TabHome` as value for the `id`, f.i.,
 
@@ -228,20 +228,20 @@ As you can see here above, the list of properties depends on the type: for a but
 
 As exhaustively defined in the `ribbon's namespace`, here is the list of valid objects:
 
-* `box`,
-* `button`,
-* `buttonGroup`,
-* `checkBox`,
-* `control`,
-* `comboBox`,
-* `dropDown`,
-* `dynamicMenu`,
-* `editBox`,
-* `gallery`,
-* `labelControl`,
-* `menu`,
-* `splitButton` and
-* `toggleButton`
+- `box`,
+- `button`,
+- `buttonGroup`,
+- `checkBox`,
+- `control`,
+- `comboBox`,
+- `dropDown`,
+- `dynamicMenu`,
+- `editBox`,
+- `gallery`,
+- `labelControl`,
+- `menu`,
+- `splitButton` and
+- `toggleButton`
 
 **Be careful**: XML is case sensitive, `editBox` is the only valid syntax, `editbox` or `EditBox` aren't.
 

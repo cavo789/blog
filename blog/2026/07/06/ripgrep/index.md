@@ -9,6 +9,7 @@ tags: [zsh, wsl, bash, linux, fzf]
 date: 2026-07-06
 ai_assisted: true
 language: en
+blueskyRecordKey: 3mpxent26jc2f
 ---
 
 ![ripgrep — The Search Tool That Changed My WSL2 Workflow](/img/v2/ripgrep.webp)
@@ -35,12 +36,12 @@ ripgrep (`rg` on the command line) is a line-oriented search tool built in Rust 
 
 What makes ripgrep genuinely better for day-to-day use is its **smart defaults**:
 
-* It automatically respects `.gitignore`, `.ignore`, and `.rgignore` files — so `vendor/`, `node_modules/`, `dist/`, and `.git/` are skipped without any `--exclude-dir` gymnastics.
-* It skips binary files by default.
-* It colors and groups output by filename out of the box.
-* It uses Unicode by default — no more garbled output on accented filenames or content.
-* It supports modern regex syntax, including PCRE2 with the `-P` flag.
-* It searches hidden files only when you explicitly ask for it (`--hidden`).
+- It automatically respects `.gitignore`, `.ignore`, and `.rgignore` files — so `vendor/`, `node_modules/`, `dist/`, and `.git/` are skipped without any `--exclude-dir` gymnastics.
+- It skips binary files by default.
+- It colors and groups output by filename out of the box.
+- It uses Unicode by default — no more garbled output on accented filenames or content.
+- It supports modern regex syntax, including PCRE2 with the `-P` flag.
+- It searches hidden files only when you explicitly ask for it (`--hidden`).
 
 That last output behavior is underrated. Readable, grouped, colorized results — right away, no configuration required. So cool, no?
 
@@ -152,9 +153,9 @@ Like most Unix tools, ripgrep can be configured via a dedicated file. You point 
 
 Each line is a default flag applied to every `rg` invocation. A few highlights worth explaining:
 
-* `--hidden` makes ripgrep search inside hidden files and folders (anything prefixed with a dot). Combined with the `--glob=!.git/*` exclusion, this means you can search `.env` files, `.zshrc`, `.gitignore`, and similar without opening the entire `.git/` internals.
-* `--max-filesize=10M` silently skips very large files (log dumps, generated assets) that would otherwise flood your results.
-* `--smart-case` is probably the most impactful setting: searches are case-insensitive by default, but the moment your pattern contains an uppercase letter ripgrep switches to exact case matching — exactly the behavior I want 95% of the time.
+- `--hidden` makes ripgrep search inside hidden files and folders (anything prefixed with a dot). Combined with the `--glob=!.git/*` exclusion, this means you can search `.env` files, `.zshrc`, `.gitignore`, and similar without opening the entire `.git/` internals.
+- `--max-filesize=10M` silently skips very large files (log dumps, generated assets) that would otherwise flood your results.
+- `--smart-case` is probably the most impactful setting: searches are case-insensitive by default, but the moment your pattern contains an uppercase letter ripgrep switches to exact case matching — exactly the behavior I want 95% of the time.
 
 ## ZSH Setup — ~/.zshrc
 

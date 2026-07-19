@@ -42,13 +42,13 @@ In your project directory (so `/tmp/docusaurus`), create a file called `Dockerfi
 
 #### Dockerfile - explanations line by line
 
-* Line 1: we'll use Node.js v21 in its alpine version,
-* Line 2: the `RUN npx create-docusaurus@latest /app classic && chown -R node:node /app` command will install the latest version of Docusaurus (in the `/app` folder) and make sure the folder is owned by our `node` user,
-* Line 3: from now, we'll do everything using the `node` user,
-* Line 4: `/app` will be the default working directory in the image,
-* Line 5: the `cd /app && yarn install` command will jump in the folder and will install node dependencies,
-* Line 6: `COPY . .` will copy everything from your project's directory (on your host) into the Docker image (in folder `/app` since that one is the default working directory) and
-* Line 7: the command `CMD ["yarn", "start", "--host", "0.0.0.0"]` will run `yarn start --host 0.0.0.0` which is the instruction to run Docusaurus, make the *transparent* conversion from Markdown pages to HTML and will render the website on the default port (which is port `3000`).
+- Line 1: we'll use Node.js v21 in its alpine version,
+- Line 2: the `RUN npx create-docusaurus@latest /app classic && chown -R node:node /app` command will install the latest version of Docusaurus (in the `/app` folder) and make sure the folder is owned by our `node` user,
+- Line 3: from now, we'll do everything using the `node` user,
+- Line 4: `/app` will be the default working directory in the image,
+- Line 5: the `cd /app && yarn install` command will jump in the folder and will install node dependencies,
+- Line 6: `COPY . .` will copy everything from your project's directory (on your host) into the Docker image (in folder `/app` since that one is the default working directory) and
+- Line 7: the command `CMD ["yarn", "start", "--host", "0.0.0.0"]` will run `yarn start --host 0.0.0.0` which is the instruction to run Docusaurus, make the *transparent* conversion from Markdown pages to HTML and will render the website on the default port (which is port `3000`).
 
 ### Create a .dockerignore file
 

@@ -10,7 +10,7 @@ occurrences dans le blog utilisent la balise en auto-fermante avec tout le texte
 `title`, ce qui produit un corps de composant vide et un warning PropTypes en console :
 
 - `blog/2024/01/27/planethoster-n0c-spam/index.md:44` — `<AlertBox variant="note" title="In my
-  case, all the emails coming from .su can only be unsolicited emails." />`
+case, all the emails coming from .su can only be unsolicited emails." />`
 - `blog/2024/01/28/planethoster-n0c-spam-roundcube-action/index.md:206` et `:232` —
   `<AlertBox variant="info" title="Skip this chapter if you don't want full automation" />`
 

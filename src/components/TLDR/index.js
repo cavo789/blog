@@ -22,15 +22,13 @@ export default function TLDR({ children }) {
       "@type": "BlogPosting",
       abstract: extractText(children),
     }),
-    [children]
+    [children],
   );
 
   return (
     <>
       <Head>
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       </Head>
 
       <div

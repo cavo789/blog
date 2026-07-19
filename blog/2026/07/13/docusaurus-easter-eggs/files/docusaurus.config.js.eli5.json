@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:36.966Z",
+  "source": "docusaurus.config.js",
+  "sourceHash": "8731fc15b1a70304a33638f99bb5ae92ca0098ae",
+  "lang": "javascript",
+  "explanations": {
+    "4": "This is an array element that contains both a string (the plugin path) and an object (the configuration for that plugin).",
+    "6": "The bannerPath tells this plugin where to find the text file it should use, rather than having the path hardcoded inside the plugin itself."
+  }
+}

@@ -4,11 +4,11 @@ A powerful Docusaurus component that allows readers to view, copy, or download a
 
 ## Features
 
-* 📂 **File Visualization**: Renders files using the `Snippet` component with syntax highlighting.
-* 🚀 **One-Liner Script**: Generates a Bash script to create the folder structure and files instantly.
-* 💾 **ZIP Download**: Allows users to download the entire project as a `.zip` archive.
-* 📝 **Guidelines**: Supports post-install instructions (e.g., "Run docker compose up").
-* 🌍 **i18n Ready**: Fully translatable using Docusaurus `<Translate>`.
+- 📂 **File Visualization**: Renders files using the `Snippet` component with syntax highlighting.
+- 🚀 **One-Liner Script**: Generates a Bash script to create the folder structure and files instantly.
+- 💾 **ZIP Download**: Allows users to download the entire project as a `.zip` archive.
+- 📝 **Guidelines**: Supports post-install instructions (e.g., "Run docker compose up").
+- 🌍 **i18n Ready**: Fully translatable using Docusaurus `<Translate>`.
 
 ## Usage
 
@@ -20,7 +20,9 @@ import Snippet from "@site/src/components/Snippet";
 
 <ProjectSetup folderName="my-awesome-project">
   <Guideline>
-    Now, please run 'UID=1002 GID=1002 docker compose up --detach' to create your Joomla site. The database type should be MySQLi, the name of the host should be joomladb, the username should be root and the password for that user should be example.
+    Now, please run 'UID=1002 GID=1002 docker compose up --detach' to create your Joomla
+    site. The database type should be MySQLi, the name of the host should be joomladb, the
+    username should be root and the password for that user should be example.
   </Guideline>
 
   <EmptyFolder name="site_joomla" />
@@ -29,7 +31,7 @@ import Snippet from "@site/src/components/Snippet";
   <Snippet filename="compose.yaml" source="./files/compose.yaml" />
   <Snippet filename="Dockerfile" source="./files/Dockerfile" />
   <Snippet filename="index.php" source="./files/index.php" />
-</ProjectSetup>
+</ProjectSetup>;
 ```
 
 You can too use the `code` prop directly for small snippets:
@@ -44,11 +46,11 @@ You can too use the `code` prop directly for small snippets:
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `folderName` | `string` | `"my-project"` | The name of the root directory to be created. |
-| `createFolder` | `boolean` | `true` | If set to `false`, the generated script will not create the root folder. This should be the case when f.i. files should be created inside an existing folder|
-| `children` | `node` | - | Should contain `<Snippet>` and `<Guideline>` components. |
+| Prop           | Type      | Default        | Description                                                                                                                                                  |
+| -------------- | --------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `folderName`   | `string`  | `"my-project"` | The name of the root directory to be created.                                                                                                                |
+| `createFolder` | `boolean` | `true`         | If set to `false`, the generated script will not create the root folder. This should be the case when f.i. files should be created inside an existing folder |
+| `children`     | `node`    | -              | Should contain `<Snippet>` and `<Guideline>` components.                                                                                                     |
 
 ## Components
 
@@ -72,10 +74,10 @@ Used to define a file. It must have a `filename` prop. The content is sourced fr
 
 The component uses CSS Modules. Customize the appearance in `styles.module.css`.
 
-* `projectSetupContainer`: Main wrapper.
-* `header`: Top bar containing the title and buttons.
-* `buttonGroup`: Container for the ZIP and Script buttons.
-* `scriptContainer`: Scrollable area for the generated Bash script.
+- `projectSetupContainer`: Main wrapper.
+- `header`: Top bar containing the title and buttons.
+- `buttonGroup`: Container for the ZIP and Script buttons.
+- `scriptContainer`: Scrollable area for the generated Bash script.
 
 ## Advanced Usage
 
@@ -85,8 +87,14 @@ In some cases, you may want to provide files that should be created inside an ex
 
 ```jsx
 <ProjectSetup folderName="/your_docusaurus_site" createFolder={false}>
-  <Snippet filename="src/components/MyNewComponent/index.js" code={`// Your component code`} />
-  <Snippet filename="src/components/MyNewComponent/styles.css" code={`.my-class { color: hotpink; }`} />
+  <Snippet
+    filename="src/components/MyNewComponent/index.js"
+    code={`// Your component code`}
+  />
+  <Snippet
+    filename="src/components/MyNewComponent/styles.css"
+    code={`.my-class { color: hotpink; }`}
+  />
 </ProjectSetup>
 ```
 

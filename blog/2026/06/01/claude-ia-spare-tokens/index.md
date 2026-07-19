@@ -10,7 +10,7 @@ description: A practical guide to reducing token consumption in Claude Code; CLI
 language: en
 ai_assisted: true
 date: 2026-06-01
-blueskyRecordKey:
+blueskyRecordKey: 3mn7fa4zqp22w
 ---
 
 ![Claude Code - Optimizing Token Usage](/img/v2/claude-code-tokens.webp)

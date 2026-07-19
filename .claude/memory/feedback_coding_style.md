@@ -10,6 +10,7 @@ metadata:
 Respect the rules defined in `/opt/docusaurus/AGENTS.md` (Gemini governance doc used for all AI assistants).
 
 **Key rules:**
+
 - React: functional components + Hooks only — **no TypeScript, no class components**
 - CSS: Infima CSS variables for dark/light mode — **no hardcoded hex colors**
 - Docker: `compose.yaml` without `version:` key; read-only containers; `tmpfs` for writable tmp

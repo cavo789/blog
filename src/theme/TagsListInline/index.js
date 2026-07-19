@@ -26,7 +26,7 @@ export default function TagsListInline({ tags }) {
         {tags.map(({ label, permalink: tagPermalink }) => {
           const correctedPermalink = tagPermalink.replace(
             "/blog/tags/tags/",
-            "/blog/tags/"
+            "/blog/tags/",
           );
           return (
             <li key={correctedPermalink} className={styles.tag}>

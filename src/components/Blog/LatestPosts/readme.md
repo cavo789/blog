@@ -4,22 +4,22 @@ A flexible React component for displaying recent blog posts in a card-based layo
 
 ## Features
 
-* ✅ Sorts posts by date (newest first)
-* 🎯 Customizable number of posts
-* 📝 Optional display of descriptions
-* 🖼️ Displays featured images if available
-* 🗓️ Shows formatted publication dates
-* 🔗 Includes link to full blog archive
-* 📊 Displays total blog post count via `<BlogPostCount />`
+- ✅ Sorts posts by date (newest first)
+- 🎯 Customizable number of posts
+- 📝 Optional display of descriptions
+- 🖼️ Displays featured images if available
+- 🗓️ Shows formatted publication dates
+- 🔗 Includes link to full blog archive
+- 📊 Displays total blog post count via `<BlogPostCount />`
 
 ## Installation
 
 Ensure your project includes:
 
-* `getBlogMetadata` utility for extracting blog post metadata
-* `PostCard` component for card-based layouts (this component renders each post via
+- `getBlogMetadata` utility for extracting blog post metadata
+- `PostCard` component for card-based layouts (this component renders each post via
   `<PostCard layout="big" />` — it does not reimplement the card markup)
-* CSS module `styles.module.css` for bullet layout styling
+- CSS module `styles.module.css` for bullet layout styling
 
 ## Usage
 
@@ -42,27 +42,27 @@ import LatestPosts from './LatestPosts';
 
 Each post is rendered via `PostCard` (`layout="big"`), giving:
 
-* Title (the only clickable link on the card, per `PostCard`'s accessible markup)
-* Optional tag badge, description, and featured image
-* Formatted publication date
-* Eager-loaded images for the first 3 cards (`lazyImage`), lazy-loaded beyond that
+- Title (the only clickable link on the card, per `PostCard`'s accessible markup)
+- Optional tag badge, description, and featured image
+- Formatted publication date
+- Eager-loaded images for the first 3 cards (`lazyImage`), lazy-loaded beyond that
 
 ## Styling
 
 Customize the grid layout via `styles.module.css`. Key classes include:
 
-* `cardsSection`
-* `sectionTitle`
-* `cardsGrid`
-* `seeMoreContainer`
-* `seeMoreLink`
+- `cardsSection`
+- `sectionTitle`
+- `cardsGrid`
+- `seeMoreContainer`
+- `seeMoreLink`
 
 Per-card styling (image, title, tag badge, description) lives in `PostCard/styles.module.css`.
 
 ## Development Notes
 
-* Posts without a date field are assigned a default timestamp of null.
-* You can uncomment the logging block to debug posts missing a date.
+- Posts without a date field are assigned a default timestamp of null.
+- You can uncomment the logging block to debug posts missing a date.
 
 ```js
 // posts.forEach(post => {

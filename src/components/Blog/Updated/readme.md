@@ -32,5 +32,5 @@ Entries are sorted newest first regardless of the order they're written in. The 
 
 The `updates` array is also read by:
 
-* `src/components/StructuredData/index.jsx` — uses the most recent `date` as `dateModified` in the SEO JSON-LD.
-* `src/components/Blog/OldPostNotice/index.js` — uses the most recent `date` instead of the publish date when deciding whether to show the "this article may be outdated" warning.
+- `src/components/StructuredData/index.jsx` — uses the most recent `date` as `dateModified` in the SEO JSON-LD.
+- `src/components/Blog/OldPostNotice/index.js` — uses the most recent `date` instead of the publish date when deciding whether to show the "this article may be outdated" warning.

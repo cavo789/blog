@@ -3,6 +3,9 @@
 # Run all files:  pre-commit run --all-files --config .config/.pre-commit-config.yaml
 # Update versions: pre-commit autoupdate --config .config/.pre-commit-config.yaml
 
+# Certificate key file is read-only (chmod 400) — exclude it from all file-content hooks.
+exclude: '^\.devcontainer/mkcert-ca/'
+
 repos:
   # ── Standard hygiene checks ──────────────────────────────────────────────
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -49,6 +52,23 @@ repos:
         require_serial: true
         # Internal files: memory, readmes, script docs, GitHub config, root README
         exclude: '^(\.claude/|\.github/|\.todos/|\.unpublished/|api|src/components/.+/readme\.md|plugins/.+/readme\.md|\.scripts/|README\.md$|\.unpublished/.+/files/)'
+
+  # ── JS/JSX linting and formatting ────────────────────────────────────────
+  - repo: local
+    hooks:
+      - id: eslint
+        name: ESLint (JS/JSX/MJS)
+        entry: yarn lint:js
+        language: system
+        pass_filenames: false
+        files: '\.(js|jsx|mjs|cjs)$'
+
+      - id: prettier
+        name: Prettier (format check)
+        entry: yarn format:check
+        language: system
+        pass_filenames: false
+        files: '\.(js|jsx|mjs|cjs|css|json)$'
 
   # ── ELI5 annotation freshness (report-only for now, see TODO 045/036) ────
   - repo: local

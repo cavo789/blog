@@ -1,11 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  useMemo,
-  useId,
-} from "react";
+import React, { useState, useRef, useEffect, useCallback, useMemo, useId } from "react";
 import { createPortal } from "react-dom";
 import Prism from "prismjs";
 
@@ -277,8 +270,10 @@ function Eli5CodeBlock({ code, lang, eli5 }) {
   const [mounted, setMounted] = useState(false);
   const badgeRefs = useRef({});
 
-  // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional mount flag, see comment on `mounted` above
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional mount flag, see comment on `mounted` above
+    setMounted(true);
+  }, []);
 
   const { lines, highlightedLines } = useMemo(() => {
     const rawLines = code.split("\n");
@@ -287,12 +282,8 @@ function Eli5CodeBlock({ code, lang, eli5 }) {
       rawLines.pop();
     }
     const grammar =
-      Prism.languages[lang] ||
-      Prism.languages.plaintext ||
-      Prism.languages.clike;
-    const fullHighlighted = grammar
-      ? Prism.highlight(code, grammar, lang)
-      : code;
+      Prism.languages[lang] || Prism.languages.plaintext || Prism.languages.clike;
+    const fullHighlighted = grammar ? Prism.highlight(code, grammar, lang) : code;
     const hl = fullHighlighted.split("\n");
     // Align with trimmed rawLines
     while (hl.length > rawLines.length) hl.pop();
@@ -305,14 +296,14 @@ function Eli5CodeBlock({ code, lang, eli5 }) {
     if (!el) return;
     const rect = el.getBoundingClientRect();
     setTooltipStyle({
-      top: rect.top,                            // translateY(-100%-gap) shifts it above
-      right: window.innerWidth - rect.right,    // right-align with the badge
+      top: rect.top, // translateY(-100%-gap) shifts it above
+      right: window.innerWidth - rect.right, // right-align with the badge
     });
   }, []);
 
   const handleBadgeClick = useCallback(
     (lineNum) => setActiveLine((prev) => (prev === lineNum ? null : lineNum)),
-    []
+    [],
   );
 
   const activeExplanation = activeLine ? eli5[activeLine] : null;
@@ -339,17 +330,25 @@ function Eli5CodeBlock({ code, lang, eli5 }) {
                   <span className={styles.eli5_badge_wrapper}>
                     <button
                       type="button"
-                      ref={(el) => { badgeRefs.current[lineNum] = el; }}
+                      ref={(el) => {
+                        badgeRefs.current[lineNum] = el;
+                      }}
                       className={clsx(
                         styles.eli5_badge,
-                        isActive && styles.eli5_badge_active
+                        isActive && styles.eli5_badge_active,
                       )}
                       aria-label={`Explain line ${lineNum}`}
                       aria-expanded={isActive}
                       onClick={() => handleBadgeClick(lineNum)}
-                      onMouseEnter={() => { positionTooltip(lineNum); setActiveLine(lineNum); }}
+                      onMouseEnter={() => {
+                        positionTooltip(lineNum);
+                        setActiveLine(lineNum);
+                      }}
                       onMouseLeave={() => setActiveLine(null)}
-                      onFocus={() => { positionTooltip(lineNum); setActiveLine(lineNum); }}
+                      onFocus={() => {
+                        positionTooltip(lineNum);
+                        setActiveLine(lineNum);
+                      }}
                       onBlur={() => setActiveLine(null)}
                     >
                       ?
@@ -363,14 +362,15 @@ function Eli5CodeBlock({ code, lang, eli5 }) {
           })}
         </code>
       </pre>
-      {mounted && activeExplanation && tooltipStyle &&
+      {mounted &&
+        activeExplanation &&
+        tooltipStyle &&
         createPortal(
           <span role="tooltip" className={styles.eli5_tooltip} style={tooltipStyle}>
             {activeExplanation}
           </span>,
-          document.body
-        )
-      }
+          document.body,
+        )}
     </>
   );
 }
@@ -445,7 +445,7 @@ export default function Snippet({
 
   const baseName = useMemo(
     () => (typeof filename === "string" ? filename.split("/").pop().toLowerCase() : null),
-    [filename]
+    [filename],
   );
 
   const isDockerFile = useMemo(() => {
@@ -462,21 +462,14 @@ export default function Snippet({
     );
   }, [baseName]);
 
-  const isDocusaurus = useMemo(
-    () => baseName === "docusaurus.config.js",
-    [baseName]
-  );
+  const isDocusaurus = useMemo(() => baseName === "docusaurus.config.js", [baseName]);
 
   const variantKey = useMemo(
     () =>
       variant ||
-      (isDockerFile
-        ? "docker"
-        : isDocusaurus
-        ? "docusaurus"
-        : mapLangToVariant[lang]) ||
+      (isDockerFile ? "docker" : isDocusaurus ? "docusaurus" : mapLangToVariant[lang]) ||
       "none",
-    [variant, isDockerFile, isDocusaurus, lang]
+    [variant, isDockerFile, isDocusaurus, lang],
   );
 
   const variantClass = styles[`variant_${variantKey}`] || "";
@@ -486,13 +479,10 @@ export default function Snippet({
 
   const { iconClassName, iconify, ariaLabel } = IconInfo;
 
-  const displayTitle =
-    title || filename || (lang ? lang.toUpperCase() : "Snippet");
+  const displayTitle = title || filename || (lang ? lang.toUpperCase() : "Snippet");
 
   return (
-    <div
-      className={clsx(styles.snippet_block, variantClass, "alert alert--info")}
-    >
+    <div className={clsx(styles.snippet_block, variantClass, "alert alert--info")}>
       <button
         className={styles.snippet_summary}
         onClick={handleToggle}
@@ -510,9 +500,7 @@ export default function Snippet({
           )}{" "}
           {displayTitle}
         </span>
-        <span className={`${styles.chevron} ${open ? styles.rotate : ""}`}>
-          &#9662;
-        </span>
+        <span className={`${styles.chevron} ${open ? styles.rotate : ""}`}>&#9662;</span>
       </button>
 
       <div

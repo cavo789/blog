@@ -32,6 +32,7 @@ L'`id` est un slug unique par sondage (indépendant du slug de l'article, ce qui
 ### Backend — `api/polls.php`
 
 Même pattern que `reactions.php` :
+
 - GET `?id=...` → counts pour ce poll
 - GET `?admin=TOKEN` → tous les polls
 - POST `{ id, option }` → incrémente le compteur

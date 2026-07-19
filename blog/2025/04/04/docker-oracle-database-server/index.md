@@ -247,15 +247,15 @@ This is terribly slow... Oracle will need something like 10 minutes before the c
 
 The `docker run` was terribly complex; here is a breakdown:
 
-* `--name oracle-db`: Our running container will be named `oracle_db` (so we can access to it later on by running `docker exec -it oracle-db [...]`),
-* `--network oracle`: We will create our container on the `oracle` network,
-* `-p 1521:1521`: Oracle use a port number 1521 (Oracle Listener) and we'll expose that port on our machine,
-* `-p 5500:5500`: Optional. Oracle use a second port number 5500 (OEM Express) and we'll expose that port too so we'll be able to access to `http://localhost:5500`,
-* `-e ORACLE_SID=ORCLCDB`: The Oracle Database SID (SID stands for *System identifier*) is a very important setting. We'll keep the default value which is `ORCLCDB` (remember; `CDB` stands for `Container database`)
-* `-e ORACLE_PDB=ORCLPDB1`: The Oracle Database PDB name. Here too, we'll keep the default value which is `ORCLPDB1`. (remember; `PDB` stands for `pluggable database`).
-* `-e ORACLE_PWD=admin`: The Oracle database SYS, SYSTEM and PDBADMIN password. There is no default value since the password is auto generated and should be retrieved from the logs (`docker log`). This parameter modifies the password for the SYS, SYSTEM and PDBADMIN users.
-* `-v OracleDBData:/opt/oracle/oradata`: We'll persist the database on our disk but we don't care *where*, we'll let Docker manage it. We've previously created a Docker volume named `OracleDBData`.
-* `-v ./scripts/startup/:/docker-entrypoint-initdb.d/startup`: This will allow us to create files locally in the `./scripts/startup` folder (like our SQL files) and run them inside the container once the main Oracle database is ready. And, indeed, we've previously created the script `populate_db.sh`, `sql/hr_create.sql` and `sql/hr_populate.sql` files in our `scripts/startup` folder.
+- `--name oracle-db`: Our running container will be named `oracle_db` (so we can access to it later on by running `docker exec -it oracle-db [...]`),
+- `--network oracle`: We will create our container on the `oracle` network,
+- `-p 1521:1521`: Oracle use a port number 1521 (Oracle Listener) and we'll expose that port on our machine,
+- `-p 5500:5500`: Optional. Oracle use a second port number 5500 (OEM Express) and we'll expose that port too so we'll be able to access to `http://localhost:5500`,
+- `-e ORACLE_SID=ORCLCDB`: The Oracle Database SID (SID stands for *System identifier*) is a very important setting. We'll keep the default value which is `ORCLCDB` (remember; `CDB` stands for `Container database`)
+- `-e ORACLE_PDB=ORCLPDB1`: The Oracle Database PDB name. Here too, we'll keep the default value which is `ORCLPDB1`. (remember; `PDB` stands for `pluggable database`).
+- `-e ORACLE_PWD=admin`: The Oracle database SYS, SYSTEM and PDBADMIN password. There is no default value since the password is auto generated and should be retrieved from the logs (`docker log`). This parameter modifies the password for the SYS, SYSTEM and PDBADMIN users.
+- `-v OracleDBData:/opt/oracle/oradata`: We'll persist the database on our disk but we don't care *where*, we'll let Docker manage it. We've previously created a Docker volume named `OracleDBData`.
+- `-v ./scripts/startup/:/docker-entrypoint-initdb.d/startup`: This will allow us to create files locally in the `./scripts/startup` folder (like our SQL files) and run them inside the container once the main Oracle database is ready. And, indeed, we've previously created the script `populate_db.sh`, `sql/hr_create.sql` and `sql/hr_populate.sql` files in our `scripts/startup` folder.
 
 ## Important constants to remember
 
@@ -263,12 +263,12 @@ From now on, our Oracle database server is running as a Docker container. We'll 
 
 Here are the constants to remember:
 
-* `1521` is the port number to use when connecting to the Oracle DB service,
-* `oracle-db` is the name of our container,
-* `ORCLCDB` is the name of our CDB,
-* `ORCLPDB1` is the name of our pluggable database,
-* `admin` is the password to use and
-* `system` is the user used when we've created the database
+- `1521` is the port number to use when connecting to the Oracle DB service,
+- `oracle-db` is the name of our container,
+- `ORCLCDB` is the name of our CDB,
+- `ORCLPDB1` is the name of our pluggable database,
+- `admin` is the password to use and
+- `system` is the user used when we've created the database
 
 If you look back at the `populate_db.sh` script, we had:
 
@@ -276,9 +276,9 @@ If you look back at the `populate_db.sh` script, we had:
 
 And now, you understand why connection strings were:
 
-* `sys/admin@localhost:1521/ORCLCDB`: `sys` is a system user in Oracle, `admin` the associated password, `1521` our exposed port and `ORCLCDB` is the name of our container database,
-* `ALTER SESSION SET CONTAINER = ORCLPDB1;`: we need to create our tables and our records in our database (`ORCLPDB1`) and
-* `CONNECT system/admin@orclpdb1`: `system` is also a system user in Oracle, it'll be the owner of our tables, `admin` is the same, associated password and `orclpdb1` is the name of what Oracle call the `service`.
+- `sys/admin@localhost:1521/ORCLCDB`: `sys` is a system user in Oracle, `admin` the associated password, `1521` our exposed port and `ORCLCDB` is the name of our container database,
+- `ALTER SESSION SET CONTAINER = ORCLPDB1;`: we need to create our tables and our records in our database (`ORCLPDB1`) and
+- `CONNECT system/admin@orclpdb1`: `system` is also a system user in Oracle, it'll be the owner of our tables, `admin` is the same, associated password and `orclpdb1` is the name of what Oracle call the `service`.
 
 ## Running an interactive console in the DB container
 
@@ -339,10 +339,10 @@ But, we can also change our user, no more using `sys` but `system` by running `C
 
 This understood, here is how we can see our data:
 
-* Run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba`,
-* Then, in SQL*Plus, run `CONNECT system/admin@orclpdb1`,
-* For esthetic purposes, we'll run `SET WRAP OFF` and `SET PAGESIZE 1000` and
-* we can access our tables like this: `SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL FROM EMPLOYEES;`
+- Run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba`,
+- Then, in SQL*Plus, run `CONNECT system/admin@orclpdb1`,
+- For esthetic purposes, we'll run `SET WRAP OFF` and `SET PAGESIZE 1000` and
+- we can access our tables like this: `SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL FROM EMPLOYEES;`
 
 ![Fake data are well loaded](./images/fake_data.webp)
 
@@ -375,12 +375,12 @@ You can download [Oracle SQL Developer](https://www.oracle.com/be/database/sqlde
 
 Once installed, run it and create a new connection to:
 
-* Username: `SYS`,
-* Role: `SYSDBA`,
-* Password: `admin`
-* Hostname: `127.0.0.1`,
-* Port: `1521` and
-* Service name: `orclpdb1`
+- Username: `SYS`,
+- Role: `SYSDBA`,
+- Password: `admin`
+- Hostname: `127.0.0.1`,
+- Port: `1521` and
+- Service name: `orclpdb1`
 
 ![Creating a connection in Oracle SQL Developer as sys](./images/oracle_sql_dev_as_sys.webp)
 

@@ -13,6 +13,7 @@ All social card images live in `/opt/docusaurus/static/img/v2/` as `.webp` files
 Use in frontmatter as `image: /img/v2/<slug>.webp`.
 
 Available slugs (119 images):
+
 ```
 adding_ssh_profile_to_windows_terminal, ai, api, ascii_art, ascii_art_html,
 autopsy_binary_crime, bash, belgif, changelog, check_images,

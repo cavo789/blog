@@ -23,7 +23,7 @@ export default function OpenGraphArticle() {
             property="article:author"
             content={author.url ?? author.name}
           />
-        ) : null
+        ) : null,
       )}
       {tags?.map((tag) => (
         <meta key={tag.label} property="article:tag" content={tag.label} />

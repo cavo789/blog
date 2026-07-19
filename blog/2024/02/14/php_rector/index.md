@@ -51,10 +51,10 @@ Well, in fact, **I was an excellent developer** but I stopped being one ten year
 
 What's wrong with my code?
 
-* `$firstname` is a string no? So why not write `string $firstname`?,
-* since PHP 7.x, there is a thing called `ternary operator`; you didn't know that?,
-* Using the `ternary operator`; the `$text` variable becomes useless and
-* the function is returning a string (the `$text` variable) but the prototype of the function didn't mention this. So why not write `function sayHello($firstname = ''): string`
+- `$firstname` is a string no? So why not write `string $firstname`?,
+- since PHP 7.x, there is a thing called `ternary operator`; you didn't know that?,
+- Using the `ternary operator`; the `$text` variable becomes useless and
+- the function is returning a string (the `$text` variable) but the prototype of the function didn't mention this. So why not write `function sayHello($firstname = ''): string`
 
 <AlertBox variant="info" title="I'll lend you my friend, my coach, Rector" />
 
@@ -78,11 +78,11 @@ Call your friend, your coach, by just running `vendor/bin/rector process sayHell
 
 Let's take a look at the command:
 
-* `vendor/bin/rector`: this is the executable to start,
-* `process`: the action to run, it's always `process`,
-* `sayHello.php`: the file to scan. You can type `.` for your entire project or f.i. `app` when `app` is a folder,
-* `--dry-run`: ask Rector to, only, show suggestions and not to update the file and
-* `--config rector.php`: this is the name of our configuration file.
+- `vendor/bin/rector`: this is the executable to start,
+- `process`: the action to run, it's always `process`,
+- `sayHello.php`: the file to scan. You can type `.` for your entire project or f.i. `app` when `app` is a folder,
+- `--dry-run`: ask Rector to, only, show suggestions and not to update the file and
+- `--config rector.php`: this is the name of our configuration file.
 
 So running `vendor/bin/rector process sayHello.php --dry-run --config rector.php` is just like to ask **Hey my friend and coach, please take a look to my sayHello.php script and show me how I can improve my syntax and be a better programmer.**  And Rector does it; quickly and without judgment.
 
@@ -92,10 +92,10 @@ He'll show you the changes **he could make**, automatically, and explain why he 
 
 Take a look at the `Applied rules:` section at the end of the screen capture; here are the rules with a link to their explanations:
 
-* [SimplifyIfElseToTernaryRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyifelsetoternaryrector)
-* [SimplifyUselessVariableRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyuselessvariablerector)
-* [ReturnTypeFromStrictScalarReturnExprRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#returntypefromstrictscalarreturnexprrector)
-* [StrictStringParamConcatRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#strictstringparamconcatrector)
+- [SimplifyIfElseToTernaryRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyifelsetoternaryrector)
+- [SimplifyUselessVariableRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#simplifyuselessvariablerector)
+- [ReturnTypeFromStrictScalarReturnExprRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#returntypefromstrictscalarreturnexprrector)
+- [StrictStringParamConcatRector](https://github.com/rectorphp/rector/blob/main/docs/rector_rules_overview.md#strictstringparamconcatrector)
 
 ### SimplifyIfElseToTernaryRector
 

@@ -54,14 +54,17 @@ APRÈS
 ```jsx
 return (
   <>
-    <div style={{ borderTop: '1px solid var(--ifm-color-emphasis-200)', margin: '2.5rem 0 1.5rem' }}>
-      <h3 style={{ marginTop: '1.5rem', marginBottom: '1rem' }}>
+    <div
+      style={{
+        borderTop: "1px solid var(--ifm-color-emphasis-200)",
+        margin: "2.5rem 0 1.5rem",
+      }}
+    >
+      <h3 style={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
         <Translate id="blog.relatedPosts.title">Related posts</Translate>
       </h3>
     </div>
-    <div className="row">
-      ...
-    </div>
+    <div className="row">...</div>
   </>
 );
 ```

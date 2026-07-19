@@ -10,12 +10,10 @@ export default function DownloadButton({ file, label = "Download", title }) {
 
   // Handle the case where the user passes `require('./file.zip')`
   // directly without appending `.default`
-  const fileUrl =
-    typeof file === "object" && file.default ? file.default : file;
+  const fileUrl = typeof file === "object" && file.default ? file.default : file;
 
   // Try to extract the file name to set the default download attribute
-  const fileName =
-    typeof fileUrl === "string" ? fileUrl.split("/").pop() : "download";
+  const fileName = typeof fileUrl === "string" ? fileUrl.split("/").pop() : "download";
 
   return (
     <a

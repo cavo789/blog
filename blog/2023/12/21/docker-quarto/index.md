@@ -101,13 +101,13 @@ To convert to a PDF, the instruction to fire is `quarto render test.md --to pdf`
 <AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run command are (almost always the same):
 
-* `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
-* `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
-* `-v .:/input` to share your current folder with a folder called `/input` in the Docker container,
-* `-w /input` to tell Docker that the current directory, in the container, will be the `/input` folder,
-* `-u $(id -u):$(id -g)` asks Docker to reuse your local credentials so when a file is updated/created in the container, the file will be owned by you,
-* then `cavo789/quarto` which is the name of your Quarto Docker image, and, finally,
-* `quarto render test.md --to pdf` i.e. the command line to start within the container.
+- `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
+- `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
+- `-v .:/input` to share your current folder with a folder called `/input` in the Docker container,
+- `-w /input` to tell Docker that the current directory, in the container, will be the `/input` folder,
+- `-u $(id -u):$(id -g)` asks Docker to reuse your local credentials so when a file is updated/created in the container, the file will be owned by you,
+- then `cavo789/quarto` which is the name of your Quarto Docker image, and, finally,
+- `quarto render test.md --to pdf` i.e. the command line to start within the container.
 
 </AlertBox>
 

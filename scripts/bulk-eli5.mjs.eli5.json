@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:52.780Z",
+  "source": "bulk-eli5.mjs",
+  "sourceHash": "849633e4983793f81ee92ee297c1f02a5f457136",
+  "lang": "javascript",
+  "explanations": {
+    "21": "This creates a 'require' function that works in ES modules (the modern import style), since older CommonJS code sometimes uses 'require' to load packages.",
+    "22": "This gets the directory path of the current script file, which is needed because ES modules don't automatically provide '__dirname' like older Node.js code does.",
+    "27": "The code tries to load dotenv (a package that reads .env files), but wraps it in try-catch because dotenv might not be installed—and that's okay, we can just use environment variables instead.",
+    "76": "The 'slice(1)' removes the leading dot from the file extension (so '.js' becomes 'js'), then looks it up in the language map to get the full language name.",
+    "102": "This creates a string where each line of code is prefixed with its line number (starting from 1 instead of 0) so the AI model can reference specific lines in its explanations.",
+    "112": "The code adjusts how much text Claude can generate based on file size—longer files get more tokens so the AI has room to write more explanations.",
+    "117": "This pulls the text response out of Claude's response object, which is wrapped in a nested structure, and removes extra whitespace from both ends.",
+    "123": "If the JSON parsing fails, the code tries to find JSON-like content (anything between curly braces) within the response in case Claude added extra text around it.",
+    "131": "This checks three things: the key is a number as a string, the value is actual text, and the text isn't just whitespace.",
+    "173": "The 'exec' method is being called repeatedly in a while loop to find all matches of the regex pattern in the content—each call advances to the next match.",
+    "211": "This finds the position of '--dir' in the arguments array, or returns -1 if it's not there; the position is then used to grab the directory name that comes after it.",
+    "225": "A Map is used here to group source files by their path, storing which MDX files reference each source—useful for later showing users where each file is used."
+  }
+}

@@ -226,9 +226,9 @@ Then some new artisan commands will be available:
 
 ### Visual Studio Code Add-on
 
-* If not yet installed, [PHP Intelephense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client) will allow you to press <kbd>F12</kbd> on a method name (like `toBeTrue`) and jump where the method is implemented,
-* [Better Pest](https://marketplace.visualstudio.com/items?itemName=m1guelpf.better-pest) and
-* [Pest Snippets](https://marketplace.visualstudio.com/items?itemName=dansysanalyst.pest-snippets)
+- If not yet installed, [PHP Intelephense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client) will allow you to press <kbd>F12</kbd> on a method name (like `toBeTrue`) and jump where the method is implemented,
+- [Better Pest](https://marketplace.visualstudio.com/items?itemName=m1guelpf.better-pest) and
+- [Pest Snippets](https://marketplace.visualstudio.com/items?itemName=dansysanalyst.pest-snippets)
 
 #### Better Pest with Docker
 
@@ -238,8 +238,8 @@ If you're using Docker, think to add the next lines in your `.vscode/settings.js
 
 Think to adjust the name of your container (`app` here) and paths:
 
-* `/your/local/path` is where your repository is stored, on your host machine,
-* `/your/remote/path` is the path in your container, probably `/var/www/html`.
+- `/your/local/path` is where your repository is stored, on your host machine,
+- `/your/remote/path` is the path in your container, probably `/var/www/html`.
 
 Now, just open any Pest file and press <kbd>CTRL</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> to open the Command Palette. Start to type `Better Pest` and select the desired option (like `Better Pest: run` for running the file).
 
@@ -251,6 +251,6 @@ The repository [https://github.com/mandisma/pest-converter](https://github.com/m
 
 ### Videos
 
-* [Laracast - Pest](https://laracasts.com/series/jeffreys-larabits/episodes/30)
-* [Laracast - Pest from Scratch](https://laracasts.com/series/pest-from-scratch)
-* [Laracon IN 2023: the future of PEST](https://youtu.be/9EGPo_enEc8)
+- [Laracast - Pest](https://laracasts.com/series/jeffreys-larabits/episodes/30)
+- [Laracast - Pest from Scratch](https://laracasts.com/series/pest-from-scratch)
+- [Laracon IN 2023: the future of PEST](https://youtu.be/9EGPo_enEc8)

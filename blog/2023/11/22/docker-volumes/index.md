@@ -188,9 +188,9 @@ But you can, too, use Visual Studio Code to access files.
 
 First, if needed, install the Docker extension:
 
-* Press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>X</kbd> to display the `Extensions` window of vscode,
-* Search for the `Docker` extension of Microsoft (make sure to search for `ms-azuretools.vscode-docker`),
-* and Install the extension
+- Press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>X</kbd> to display the `Extensions` window of vscode,
+- Search for the `Docker` extension of Microsoft (make sure to search for `ms-azuretools.vscode-docker`),
+- and Install the extension
 
 Now, in the left pane, you'll see a new button for Docker. Click on it.
 

@@ -27,8 +27,8 @@ This can be done in just one command line instruction.
 
 Before being able to start the command, you should provide some information:
 
-* you should know the **name of the Docker container** you want to connect to and
-* you should know the **name of the used network**.
+- you should know the **name of the Docker container** you want to connect to and
+- you should know the **name of the used network**.
 
 ## Retrieve the list of our containers
 
@@ -87,11 +87,11 @@ In the example, we'll make adminer available on port `8088`. Don't hesitate to u
 
 Since we've defined port `8088` in our command above, just go to `http://127.0.0.1:8088` to get access to the Adminer web interface.
 
-* `System`: select the used database service,
-* `Server`: should be set to the name of the database service inside your Docker container,
-* `Username`: has to be initialized to the name of the database user,
-* `Password`: associated password,
-* `Database`: can stay empty to get all, initialize it to the name of the database to open otherwise.
+- `System`: select the used database service,
+- `Server`: should be set to the name of the database service inside your Docker container,
+- `Username`: has to be initialized to the name of the database user,
+- `Password`: associated password,
+- `Database`: can stay empty to get all, initialize it to the name of the database to open otherwise.
 
 To retrieve the name of the server, it's the name of the service as defined in your `compose.yaml` file but you can retrieve it also using this command: `docker inspect joomla-joomladb-1 | grep com.docker.compose.service`. Just replace `joomla-joomladb-1` by the name of your container.
 

@@ -27,7 +27,7 @@ async function collectHtmlFiles(dir) {
       if (entry.isDirectory()) return collectHtmlFiles(fullPath);
       if (entry.isFile() && entry.name.endsWith(".html")) return [fullPath];
       return [];
-    })
+    }),
   );
   return files.flat();
 }
@@ -41,9 +41,7 @@ async function collectHtmlFiles(dir) {
  */
 export default function asciiInjectorPlugin(context, options) {
   if (!options || typeof options.bannerPath !== "string") {
-    throw new Error(
-      "[ascii-injector] Missing required option: bannerPath (string)"
-    );
+    throw new Error("[ascii-injector] Missing required option: bannerPath (string)");
   }
 
   return {
@@ -64,7 +62,7 @@ export default function asciiInjectorPlugin(context, options) {
 
       const htmlFiles = await collectHtmlFiles(outDir);
       console.log(
-        `[ascii-injector] Preparing to inject banner into ${htmlFiles.length} HTML files...`
+        `[ascii-injector] Preparing to inject banner into ${htmlFiles.length} HTML files...`,
       );
 
       const results = await Promise.allSettled(
@@ -94,24 +92,22 @@ export default function asciiInjectorPlugin(context, options) {
           } catch (err) {
             return { status: "error", filePath, error: err };
           }
-        })
+        }),
       );
 
       const ok = results.filter(
-        (r) => r.status === "fulfilled" && r.value && r.value.status === "ok"
+        (r) => r.status === "fulfilled" && r.value && r.value.status === "ok",
       ).length;
       const skipped = results.filter(
-        (r) =>
-          r.status === "fulfilled" && r.value && r.value.status === "skipped"
+        (r) => r.status === "fulfilled" && r.value && r.value.status === "skipped",
       ).length;
       const failed =
         results.filter(
-          (r) =>
-            r.status === "fulfilled" && r.value && r.value.status === "error"
+          (r) => r.status === "fulfilled" && r.value && r.value.status === "error",
         ).length + results.filter((r) => r.status === "rejected").length;
 
       console.log(
-        `[ascii-injector] Injection complete — ok: ${ok}, skipped: ${skipped}, failed: ${failed}`
+        `[ascii-injector] Injection complete — ok: ${ok}, skipped: ${skipped}, failed: ${failed}`,
       );
     },
   };

@@ -1,26 +1,21 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
-import runningImg from '@site/static/img/meerkat/suricate_running.webp';
-import styles from './styles.module.css';
+import React, { useEffect, useState, useRef, useCallback } from "react";
+import runningImg from "@site/static/img/meerkat/suricate_running.webp";
+import styles from "./styles.module.css";
 
 const KONAMI_CODE = [
-  'ArrowUp',
-  'ArrowUp',
-  'ArrowDown',
-  'ArrowDown',
-  'ArrowLeft',
-  'ArrowRight',
-  'ArrowLeft',
-  'ArrowRight',
-  'b',
-  'a',
+  "ArrowUp",
+  "ArrowUp",
+  "ArrowDown",
+  "ArrowDown",
+  "ArrowLeft",
+  "ArrowRight",
+  "ArrowLeft",
+  "ArrowRight",
+  "b",
+  "a",
 ];
 
-const ARROW_KEYS = new Set([
-  'ArrowUp',
-  'ArrowDown',
-  'ArrowLeft',
-  'ArrowRight',
-]);
+const ARROW_KEYS = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]);
 
 // event.code reflects the physical key position on a QWERTY reference
 // layout, so on an AZERTY keyboard the key printed "A" reports 'KeyQ'.
@@ -37,8 +32,8 @@ export default function KonamiEasterEgg() {
   const triggerRun = useCallback(() => {
     setIsRunning(true);
     console.log(
-      '%c\u{1F9AB} Konami code accepted! Run, meerkat, run!',
-      'font-size:14px;font-weight:bold;color:#e8871e;',
+      "%c\u{1F9AB} Konami code accepted! Run, meerkat, run!",
+      "font-size:14px;font-weight:bold;color:#e8871e;",
     );
     window.setTimeout(() => setIsRunning(false), RUN_DURATION_MS);
   }, []);
@@ -67,8 +62,8 @@ export default function KonamiEasterEgg() {
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [triggerRun]);
 
   if (!isRunning) {

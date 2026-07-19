@@ -31,14 +31,23 @@ const strict = process.argv.includes("--strict");
 // under the project root, and a plain glob would recurse into their full
 // copies too. `git ls-files` only ever sees this worktree's own tree.
 const gitListArgs = [
-  "ls-files", "--cached", "--others", "--exclude-standard", "-z", "--", "*.eli5.json",
+  "ls-files",
+  "--cached",
+  "--others",
+  "--exclude-standard",
+  "-z",
+  "--",
+  "*.eli5.json",
 ];
 const relFiles = execFileSync("git", gitListArgs, { cwd: projectRoot, encoding: "utf-8" })
   .split("\0")
   .filter(Boolean);
 const files = relFiles.map((f) => path.resolve(projectRoot, f));
 
-let fresh = 0, stale = 0, orphaned = 0, legacy = 0;
+let fresh = 0,
+  stale = 0,
+  orphaned = 0,
+  legacy = 0;
 
 for (const jsonPath of files) {
   const relJson = path.relative(projectRoot, jsonPath);
@@ -75,10 +84,12 @@ for (const jsonPath of files) {
 }
 
 console.log(
-  `\neli5 freshness: ${fresh} fresh, ${stale} stale, ${orphaned} orphaned, ${legacy} legacy (no hash on record).`
+  `\neli5 freshness: ${fresh} fresh, ${stale} stale, ${orphaned} orphaned, ${legacy} legacy (no hash on record).`,
 );
 if (legacy > 0) {
-  console.log(`   Legacy files predate freshness tracking — regenerate with --force to enable it.`);
+  console.log(
+    `   Legacy files predate freshness tracking — regenerate with --force to enable it.`,
+  );
 }
 
 if (strict && (stale > 0 || orphaned > 0)) {

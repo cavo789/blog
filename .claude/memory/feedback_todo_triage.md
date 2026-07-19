@@ -12,6 +12,7 @@ Christophe systematically marks reader-engagement TODO proposals as WONT_DO (mov
 **Why:** He has too few visitors to justify the effort/maintenance cost of these features (his own words: "j'ai trop peu de visiteurs pour perdre du temps à cette feature" / "trop peu d'intérêt"). For live-reply features specifically, he also can't commit to answering visitors in real time.
 
 Confirmed WONT_DO so far:
+
 - 002 — Interactive polls (`<Poll />` component)
 - 004 — Reader question widget (live Q&A form) — redundant with the existing typo/suggestion popup, and he can't answer visitors live
 - 006 — Code block copy counter

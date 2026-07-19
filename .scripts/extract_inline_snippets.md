@@ -25,36 +25,36 @@ services:
 1. A directory named `files/` is created (relative to the Markdown file).
 2. A new file `files/compose.yaml` is created with the content:
 
-    ```yaml
-    services:
-      web:
-        image: nginx
-    ```
+   ```yaml
+   services:
+     web:
+       image: nginx
+   ```
 
 3. The original Markdown block is replaced with:
 
-    ```markdown
-    <Snippet filename="compose.yaml" source="./files/compose.yaml" />
-    ```
+   ```markdown
+   <Snippet filename="compose.yaml" source="./files/compose.yaml" />
+   ```
 
 So, in short, the script will externalize the content of a `<Snippet>` tag by putting the content in an external file.
 
 Among other advantages:
 
-* The `.md` file size is smaller,
-* You can focus on the content of the article
-* If you modify the external file (from the `files/` folder), the article is automatically updated
-* It is easier to format both the Markdown file and external files with the appropriate tools,
-* ...
+- The `.md` file size is smaller,
+- You can focus on the content of the article
+- If you modify the external file (from the `files/` folder), the article is automatically updated
+- It is easier to format both the Markdown file and external files with the appropriate tools,
+- ...
 
 ### Key Features
 
-| Feature | Description |
-| --- | --- |
-| **Path Handling** | Automatically strips directory paths from the `filename` attribute (e.g., `/etc/nginx/conf.d/default.conf` becomes `default.conf`). |
-| **Conflict Resolution** | If an external file already exists, the script appends a suffix (e.g., `default.conf.part2`). |
-| **Conditional Folder** | The `files/` subdirectory is only created if there is content to externalize. |
-| **Markdown Exclusion**| Snippets targeting files ending in `.md` are ignored and left in place. |
+| Feature                 | Description                                                                                                                         |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **Path Handling**       | Automatically strips directory paths from the `filename` attribute (e.g., `/etc/nginx/conf.d/default.conf` becomes `default.conf`). |
+| **Conflict Resolution** | If an external file already exists, the script appends a suffix (e.g., `default.conf.part2`).                                       |
+| **Conditional Folder**  | The `files/` subdirectory is only created if there is content to externalize.                                                       |
+| **Markdown Exclusion**  | Snippets targeting files ending in `.md` are ignored and left in place.                                                             |
 
 ## ⚙️ Setup and Usage
 

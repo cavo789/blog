@@ -165,9 +165,9 @@ Also run `chmod +x generate.sh` to make it executable.
 
 At this stage, you've thus three files in your folder:
 
-* `generate.sh`,
-* `patterns.json` and
-* `spam.template`
+- `generate.sh`,
+- `patterns.json` and
+- `spam.template`
 
 In your console, run `./generate.sh` and if everything is running fine, you'll get a message like `File /home/xxx/sieve-generator/build/roundcube.sieve has been created.`.
 

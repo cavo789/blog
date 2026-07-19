@@ -7,7 +7,7 @@ Dans `src/theme/BlogListPage/styles.module.css` (ligne 76), les images des cards
 ```css
 .cardImage {
   width: 100%;
-  height: 180px;      /* ← fixe, crée des recadrages arbitraires */
+  height: 180px; /* ← fixe, crée des recadrages arbitraires */
   object-fit: cover;
   flex-shrink: 0;
 }

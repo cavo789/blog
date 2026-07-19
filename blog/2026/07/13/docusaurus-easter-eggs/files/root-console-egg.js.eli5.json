@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:09.961Z",
+  "source": "root-console-egg.js",
+  "sourceHash": "2f5ab05de764d40cc3e0b248791745d70438ee17",
+  "lang": "javascript",
+  "explanations": {
+    "6": "The '%c' in the string is a special placeholder that tells console.log to apply the CSS styling in the second argument to the text that follows.",
+    "7": "The \\u{1F9AB} is Unicode escape syntax that renders as an emoji character (a meerkat icon in this case).",
+    "14": "The empty array [] as the second argument to useEffect means this console message runs only once when the component first mounts, not on every render."
+  }
+}

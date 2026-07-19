@@ -103,5 +103,5 @@ Check a box once the link has been added (and reads naturally in context — don
 
 ## Relationship to existing TODOs
 
-None. Complements the already-closed link-hygiene passes (`DONE_064` fixed *broken* links; this
-one adds *missing* ones) and is independent of `068` (native Docusaurus features).
+None. Complements the already-closed link-hygiene passes (`DONE_064` fixed _broken_ links; this
+one adds _missing_ ones) and is independent of `068` (native Docusaurus features).

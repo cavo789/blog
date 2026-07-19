@@ -32,13 +32,34 @@ try {
 
 // --- Language detection (same as generate-eli5.mjs) ---
 const EXT_TO_LANG = {
-  js: "javascript", mjs: "javascript", cjs: "javascript",
-  jsx: "jsx", ts: "typescript", tsx: "typescript",
-  py: "python", php: "php", sh: "bash", bash: "bash", zsh: "bash",
-  css: "css", html: "html", json: "json", yml: "yaml", yaml: "yaml",
-  md: "markdown", mdx: "markdown", dockerfile: "docker",
-  ini: "ini", sql: "sql", xml: "xml", toml: "toml",
-  env: "bash", txt: "plaintext", ps1: "powershell", bat: "batch", cmd: "batch",
+  js: "javascript",
+  mjs: "javascript",
+  cjs: "javascript",
+  jsx: "jsx",
+  ts: "typescript",
+  tsx: "typescript",
+  py: "python",
+  php: "php",
+  sh: "bash",
+  bash: "bash",
+  zsh: "bash",
+  css: "css",
+  html: "html",
+  json: "json",
+  yml: "yaml",
+  yaml: "yaml",
+  md: "markdown",
+  mdx: "markdown",
+  dockerfile: "docker",
+  ini: "ini",
+  sql: "sql",
+  xml: "xml",
+  toml: "toml",
+  env: "bash",
+  txt: "plaintext",
+  ps1: "powershell",
+  bat: "batch",
+  cmd: "batch",
 };
 
 const BASE_NAME_TO_LANG = {
@@ -188,9 +209,10 @@ Requires ANTHROPIC_API_KEY in your environment or in a .env file at the project 
 const force = args.includes("--force");
 const dryRun = args.includes("--dry-run");
 const dirIdx = args.indexOf("--dir");
-const scanDir = dirIdx !== -1
-  ? path.resolve(projectRoot, args[dirIdx + 1])
-  : path.resolve(projectRoot, "blog");
+const scanDir =
+  dirIdx !== -1
+    ? path.resolve(projectRoot, args[dirIdx + 1])
+    : path.resolve(projectRoot, "blog");
 
 if (!fs.existsSync(scanDir)) {
   console.error(`Error: directory not found: ${scanDir}`);
@@ -210,11 +232,13 @@ for (const mdxFile of mdxFiles) {
 }
 
 if (sourceMap.size === 0) {
-  console.log("No <Snippet source=\"...\"> usages found.");
+  console.log('No <Snippet source="..."> usages found.');
   process.exit(0);
 }
 
-console.log(`Found ${sourceMap.size} unique source file(s) across ${mdxFiles.length} posts.\n`);
+console.log(
+  `Found ${sourceMap.size} unique source file(s) across ${mdxFiles.length} posts.\n`,
+);
 
 if (dryRun) {
   for (const [src, refs] of sourceMap) {
@@ -228,7 +252,9 @@ if (dryRun) {
   process.exit(0);
 }
 
-let generated = 0, skipped = 0, errors = 0;
+let generated = 0,
+  skipped = 0,
+  errors = 0;
 
 for (const [src] of sourceMap) {
   const relSrc = path.relative(projectRoot, src);

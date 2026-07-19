@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:07.726Z",
+  "source": "styles.module.css",
+  "sourceHash": "79ff104723330e6a019d5635c468924a427c3d6e",
+  "lang": "css",
+  "explanations": {
+    "18": "position: relative here makes the terminal container a reference point so child elements can use absolute positioning (like the copy button) relative to it instead of the whole page.",
+    "44": "flex-shrink: 0 prevents the icon from getting squished when there's not much horizontal space — it forces the icon to keep its full 16px width.",
+    "82": "white-space: pre-wrap means line breaks and spaces in the code are preserved, and long lines wrap to the next line instead of disappearing off the screen.",
+    "83": "word-break: break-all will split long words or file paths mid-word if needed to fit them on the screen, rather than letting them overflow horizontally.",
+    "111": "min-width: 0 is a trick that lets flex containers shrink their children below the content's natural width; without it, the content width acts as a minimum.",
+    "154": "fill: currentcolor makes the SVG icon inherit the text color from its parent, so it changes color automatically if the parent's color property changes.",
+    "169": "The animation overlay uses inset: 0 to stretch itself to fill its parent's entire content area (top, right, bottom, left all 0).",
+    "174": "padding: inherit copies the padding from the parent element, so the overlay's text lines up pixel-perfectly with the ghost content beneath it.",
+    "195": "step-end makes the cursor change instantly at each frame of the blink animation rather than smoothly fading, creating a classic typewriter effect.",
+    "201": ":is(h1, h2, h3, h4, h5, h6) is a CSS selector that matches any of those heading elements; this rule resets all heading styles to normal text size so they don't look like chapter titles."
+  }
+}

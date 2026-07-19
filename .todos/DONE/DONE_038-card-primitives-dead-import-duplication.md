@@ -36,7 +36,7 @@ Toute évolution de la logique de classes texte doit être répercutée à deux 
 2. Ajouter `propTypes` sur `Card`, `CardBody`, `CardHeader`, `CardFooter` (shape déjà visible dans
    les autres composants du repo comme modèle).
 3. Extraire un helper partagé `buildTextClasses({ textAlign, variant, italic, noDecoration,
-   transform, truncate, weight }, truncateClass)` dans `Card/utils.js`, utilisé par `CardBody` et
+transform, truncate, weight }, truncateClass)` dans `Card/utils.js`, utilisé par `CardBody` et
    `CardFooter`.
 
 ## Lien avec l'existant

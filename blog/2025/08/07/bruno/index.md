@@ -112,8 +112,8 @@ We'll create our image like this: `docker build --file bruno.Dockerfile  -t brun
 
 As we've just seen:
 
-* Our collection is stored in the `Jokes` folder and
-* our environment is stored in the `environments/dev.bru`.
+- Our collection is stored in the `Jokes` folder and
+- our environment is stored in the `environments/dev.bru`.
 
 With this in mind, just run `docker run -it --rm -v "./Jokes":/apps -w /apps alpine/bruno run --env=dev`
 

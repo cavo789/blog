@@ -100,13 +100,13 @@ To create our ORDS (without APEX) container; please run:
 
 <AlertBox variant="info" title="The `docker run` explained">
 
-* `-d`: the ORDS will run as a daemon service,
-* `--rm`: once the service is terminated, the Docker container will be removed,
-* `--network`: we should run ORDS on the same network than our database; i.e. `oracle`
-* `-p 8181:8181`: we've to map the intern port 8181 used by ORDS on our host and, for simplicity, we'll expose the port 8181 also,
-* `-e IGNORE_APEX=TRUE`: as mentioned, we want ORDS; not APEX so tells Docker to not install APEX,
-* `-v ./ords_secrets/:/opt/oracle/variables`: as stated in the documentation, we need to provide a file called `conn_string.txt` and to map that file in the `/opt/oracle/variables` inside the container and, finally,
-* `-v ords_config:/etc/ords/config/`: we'll use a self-managed Docker volume to keep the configuration files of ORDS.
+- `-d`: the ORDS will run as a daemon service,
+- `--rm`: once the service is terminated, the Docker container will be removed,
+- `--network`: we should run ORDS on the same network than our database; i.e. `oracle`
+- `-p 8181:8181`: we've to map the intern port 8181 used by ORDS on our host and, for simplicity, we'll expose the port 8181 also,
+- `-e IGNORE_APEX=TRUE`: as mentioned, we want ORDS; not APEX so tells Docker to not install APEX,
+- `-v ./ords_secrets/:/opt/oracle/variables`: as stated in the documentation, we need to provide a file called `conn_string.txt` and to map that file in the `/opt/oracle/variables` inside the container and, finally,
+- `-v ords_config:/etc/ords/config/`: we'll use a self-managed Docker volume to keep the configuration files of ORDS.
 
 </AlertBox>
 
@@ -192,13 +192,13 @@ So, we need to enable each object one by one. The easier way is to use [Oracle S
 
 Create a new connection with these settings:
 
-* `Name`: `Human Resources - ORDS` (or anything else)
-* `Username`: `hr`,
-* `Role`: `default`,
-* `Password`: `admin`,
-* `Hostname`: `127.0.0.1`,
-* `Port`: `1521` and
-* `Service name`: `orclpdb1`
+- `Name`: `Human Resources - ORDS` (or anything else)
+- `Username`: `hr`,
+- `Role`: `default`,
+- `Password`: `admin`,
+- `Hostname`: `127.0.0.1`,
+- `Port`: `1521` and
+- `Service name`: `orclpdb1`
 
 ![SQL Developer - Database connection](./images/sql_dev_login_page.webp)
 
@@ -218,14 +218,14 @@ Let's connect to our database and display the list of employees: please run `doc
 
 Now, we're sure we've access to the table, let's create a view in our `hr` schema to display the table content:
 
-* run `GRANT SELECT ON SYSTEM.EMPLOYEES TO hr;` and
-* create the view by running `CREATE VIEW HR.EMPLOYEES AS SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE, JOB_ID, SALARY, COMMISSION_PCT, MANAGER_ID, DEPARTMENT_ID FROM SYSTEM.EMPLOYEES;`.
+- run `GRANT SELECT ON SYSTEM.EMPLOYEES TO hr;` and
+- create the view by running `CREATE VIEW HR.EMPLOYEES AS SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE, JOB_ID, SALARY, COMMISSION_PCT, MANAGER_ID, DEPARTMENT_ID FROM SYSTEM.EMPLOYEES;`.
 
 If we wish to check our view:
 
-* Type `exit` in the sqlplus console since you're connected as `sys`,
-* In the Linux console, run `docker exec -it oracle-db sqlplus hr/admin@ORCLPDB1` to connect as `hr` then
-* run `SELECT * FROM HR.EMPLOYEES;`.
+- Type `exit` in the sqlplus console since you're connected as `sys`,
+- In the Linux console, run `docker exec -it oracle-db sqlplus hr/admin@ORCLPDB1` to connect as `hr` then
+- run `SELECT * FROM HR.EMPLOYEES;`.
 
 As you can see, you'll obtain the list of employees.
 
@@ -304,10 +304,10 @@ That page is called the **Object Metadata** ([documentation](https://docs.oracle
 
 Let's create a new view for the fun:
 
-* Run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` then
-* In the SQL console, please run `GRANT SELECT ON SYSTEM.DEPARTMENTS TO HR;` followed by
-* `CREATE VIEW HR.DEPARTMENTS AS SELECT DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID FROM SYSTEM.DEPARTMENTS;` and
-* Jump in the Oracle SQL Developer interface, refresh the list of view, right-click on the new `departments` view
+- Run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` then
+- In the SQL console, please run `GRANT SELECT ON SYSTEM.DEPARTMENTS TO HR;` followed by
+- `CREATE VIEW HR.DEPARTMENTS AS SELECT DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID FROM SYSTEM.DEPARTMENTS;` and
+- Jump in the Oracle SQL Developer interface, refresh the list of view, right-click on the new `departments` view
 
 Now, by refreshing `http://localhost:8181/ords/hr/open-api-catalog/` again, you'll see you've now a second item called `DEPARTMENTS`.
 
@@ -437,9 +437,9 @@ We can also use AND like in this example: `http://localhost:8181/ords/hr/employe
 <AlertBox variant="info" title="Using complex filtering">
 The following URL `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"%CLERK"},"salary":{"$gt":2899},"hire_date":{"$gt":{"$date":"2016-12-31T12:59:59Z"}}}` will return every employee who:
 
-* working as clerk (`job_id` ending by the `CLERK` word),
-* having a salary greater than 2,899€ and
-* hired as from 1st January 2017.
+- working as clerk (`job_id` ending by the `CLERK` word),
+- having a salary greater than 2,899€ and
+- hired as from 1st January 2017.
 
 <BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"%CLERK"},"salary":{"$gt":2899},"hire_date":{"$gt":{"$date":"2016-12-31T12:59:59Z"}}}'}>
   <img
@@ -471,7 +471,7 @@ ORDS can generate an `openapi.json` file to use with Swagger. Read more [Manage 
 
 ## Further reading
 
-* [ORDS best practices topics (www.oracle.com)](https://www.oracle.com/database/technologies/appdev/rest/best-practices/)
-* [Installation, Configuration, and Development Guide (docs.oracle.com)](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/toc.htm#GUID-A1CD111F-724B-4E91-8202-FA899EE521F1)
-* [Jeff Smith blog - Articles about ORDS](https://www.thatjeffsmith.com/archive/tag/ords/)
-  * [Adding HTTP(S) Access Logs for ORDS Standalone](https://www.thatjeffsmith.com/archive/2022/09/adding-https-access-logs-to-ords-standalone/)
+- [ORDS best practices topics (www.oracle.com)](https://www.oracle.com/database/technologies/appdev/rest/best-practices/)
+- [Installation, Configuration, and Development Guide (docs.oracle.com)](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/toc.htm#GUID-A1CD111F-724B-4E91-8202-FA899EE521F1)
+- [Jeff Smith blog - Articles about ORDS](https://www.thatjeffsmith.com/archive/tag/ords/)
+  - [Adding HTTP(S) Access Logs for ORDS Standalone](https://www.thatjeffsmith.com/archive/2022/09/adding-https-access-logs-to-ords-standalone/)

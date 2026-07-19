@@ -113,11 +113,11 @@ The honeypot is a hidden `<input name="website">` that is invisible to humans bu
 
 Real input is then validated:
 
-* `slug` — alphanumeric, hyphens, slashes, max 200 chars
-* `text` — 3 to 150 chars, printable Unicode only (`\P{C}` — no control characters)
-* `type` — must be one of `typo`, `incorrect`, `outdated`, `suggestion` (any other value → 400)
-* `comment` — optional, max 300 chars, same character filter
-* `context` — optional, max 300 chars, trimmed
+- `slug` — alphanumeric, hyphens, slashes, max 200 chars
+- `text` — 3 to 150 chars, printable Unicode only (`\P{C}` — no control characters)
+- `type` — must be one of `typo`, `incorrect`, `outdated`, `suggestion` (any other value → 400)
+- `comment` — optional, max 300 chars, same character filter
+- `context` — optional, max 300 chars, trimmed
 
 **Layer 5 — Global rate limit**
 
@@ -127,8 +127,8 @@ A sliding 60-second window with a max of 20 requests across all IPs. This protec
 
 Two limits tracked independently:
 
-* Max 10 reports per IP per rolling hour
-* Max 3 reports per IP per article per 24 hours
+- Max 10 reports per IP per rolling hour
+- Max 3 reports per IP per article per 24 hours
 
 IP addresses are never stored raw. They are hashed with a secret salt: `hash('sha256', IP_HASH_SALT . $ip)`. One-way — you cannot recover the original IP — but consistent enough to aggregate.
 
@@ -760,9 +760,9 @@ TypoReport.propTypes = {
 
 Three things worth noting:
 
-* `touchend` is registered alongside `mouseup` so the widget works on touch devices.
-* `handleTypeSelect` runs the rate-limit and dedup checks when the type is chosen, not on selection — this avoids burning a rate-limit slot when the user just selects text to copy.
-* The `disclaimer` paragraph ("One-way signal — no reply will be sent") is intentional: readers should not expect a response, and making that explicit prevents frustration.
+- `touchend` is registered alongside `mouseup` so the widget works on touch devices.
+- `handleTypeSelect` runs the rate-limit and dedup checks when the type is chosen, not on selection — this avoids burning a rate-limit slot when the user just selects text to copy.
+- The `disclaimer` paragraph ("One-way signal — no reply will be sent") is intentional: readers should not expect a response, and making that explicit prevents frustration.
 
 ---
 
@@ -1049,8 +1049,8 @@ Create `src/pages/typo-dashboard.js` — the structure follows the same pattern 
 
 The API uses:
 
-* `declare(strict_types=1)` — PHP 7.0+
-* `never` return type on `jsonError()` — **PHP 8.1+**
+- `declare(strict_types=1)` — PHP 7.0+
+- `never` return type on `jsonError()` — **PHP 8.1+**
 
 Make sure your server runs PHP 8.1 or newer:
 
@@ -1127,14 +1127,14 @@ Users behind the same NAT (e.g. office WiFi) share the same `REMOTE_ADDR`. If th
 
 In about 350 lines of PHP and 200 lines of React (plus CSS), you have a complete reader-feedback system:
 
-* **Zero new dependencies** — PHP's standard library, React hooks you already use
-* **No database** — file-locked JSON writes, safe under concurrent load
-* **Defense in depth** — CORS, HMAC nonce, type whitelist, honeypot, global rate limit, per-IP rate limit, deduplication, all independently effective
-* **Four feedback types** — typo, incorrect info, outdated content, suggestion — covering the realistic space of issues a reader can spot
-* **One-way by design** — the disclaimer is part of the UI; no reader expects a reply
-* **Mobile-ready** — `touchend` alongside `mouseup`
-* **SSR-safe** — returns `null` until the browser loads, no hydration mismatch
-* **Dark mode ready** — Docusaurus CSS variables do the work
-* **Admin dashboard** — `/typo-dashboard` shows all reports sorted newest-first with type badges
+- **Zero new dependencies** — PHP's standard library, React hooks you already use
+- **No database** — file-locked JSON writes, safe under concurrent load
+- **Defense in depth** — CORS, HMAC nonce, type whitelist, honeypot, global rate limit, per-IP rate limit, deduplication, all independently effective
+- **Four feedback types** — typo, incorrect info, outdated content, suggestion — covering the realistic space of issues a reader can spot
+- **One-way by design** — the disclaimer is part of the UI; no reader expects a reply
+- **Mobile-ready** — `touchend` alongside `mouseup`
+- **SSR-safe** — returns `null` until the browser loads, no hydration mismatch
+- **Dark mode ready** — Docusaurus CSS variables do the work
+- **Admin dashboard** — `/typo-dashboard` shows all reports sorted newest-first with type badges
 
 The architecture is deliberately simple. Every piece can be understood, debugged, and modified by reading the file.

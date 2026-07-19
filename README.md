@@ -14,13 +14,13 @@ Start a console and run `cd ~ && git clone https://github.com/cavo789/blog.git &
 
 Then run `make install` to install dependencies.
 
-*If you don't have `make` on your computer, please run `sudo apt-get update && sudo apt-get -y install make`.*
+_If you don't have `make` on your computer, please run `sudo apt-get update && sudo apt-get -y install make`._
 
 ## Build, run and start the blog in production mode
 
 Just run `TARGET=production make build` to create the Docker image then `TARGET=production make up` to run a container based on that image.
 
-This done, the site is now running, and you can access to it using `https://localhost`. *If you don't have the site running, please wait a little and refresh the page. Sometimes it helps to create a new browser tab and surf to `https://localhost` again.*
+This done, the site is now running, and you can access to it using `https://localhost`. _If you don't have the site running, please wait a little and refresh the page. Sometimes it helps to create a new browser tab and surf to `https://localhost` again._
 
 If you want to remove the image later on, just run `TARGET=production make remove` and that's all.
 
@@ -28,12 +28,12 @@ If you want to remove the image later on, just run `TARGET=production make remov
 
 If you want to push your blog as a Docker image on Docker Hub:
 
-* Do a login using `docker login` (you'll see `Authenticating with existing credentials...`),
-* run `make push`
+- Do a login using `docker login` (you'll see `Authenticating with existing credentials...`),
+- run `make push`
 
 ## Build, run and open the blog as a developer
 
-This time, please run `make build && make devcontainer`. Once in VSCode, press <kbd>F1</kbd> and select the option **Dev Containers: Rebuild without cache and Reopen in Container**.  *If you don't have this command, please make sure to install the VSCode [Dev Container from Microsoft](https://marketplace.visualstudio.com/publishers/Microsoft).*
+This time, please run `make build && make devcontainer`. Once in VSCode, press <kbd>F1</kbd> and select the option **Dev Containers: Rebuild without cache and Reopen in Container**. _If you don't have this command, please make sure to install the VSCode [Dev Container from Microsoft](https://marketplace.visualstudio.com/publishers/Microsoft)._
 
 Wait until the devcontainer is fully created then so to `https://localhost:3000` to surf on the site.
 

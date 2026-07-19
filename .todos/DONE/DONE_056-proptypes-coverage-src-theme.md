@@ -55,6 +55,7 @@ bougé si d'autres changements sont intervenus entre-temps). État au moment de 
 ## Méthode (celle utilisée dans cette session, à reproduire)
 
 Pour chaque fichier :
+
 1. Lire le fichier en entier pour comprendre la forme réelle des props utilisées (pas juste le nom
    — regarder comment chaque prop est consommée pour choisir le bon type `PropTypes.*`).
 2. Ajouter `import PropTypes from "prop-types";` si absent.

@@ -247,9 +247,9 @@ $ fzf --version
 
 The animation distinguishes two types of lines by looking at the first non-whitespace characters:
 
-* **Command lines** — start with `$` or `#`. Typed character-by-character at `typewriterSpeed` ms/char.
-* **Output lines** — everything else. Revealed as a complete line after `typewriterLineDelay` ms.
-* **Blank lines** — appear after an 80 ms pause, preserving the visual breathing room of the original content.
+- **Command lines** — start with `$` or `#`. Typed character-by-character at `typewriterSpeed` ms/char.
+- **Output lines** — everything else. Revealed as a complete line after `typewriterLineDelay` ms.
+- **Blank lines** — appear after an 80 ms pause, preserving the visual breathing room of the original content.
 
 This means you don't need to annotate your content in any special way. Write the terminal session naturally; the component infers the structure.
 
@@ -275,8 +275,8 @@ charIdx        — how many characters of that line are visible (number)
 
 A single `useEffect` drives the animation tick. On each render it decides which timeout to schedule next:
 
-* If the current line is a command and `charIdx < line.length` → schedule `setCharIdx(c => c + 1)` after `typewriterSpeed` ms
-* Otherwise (output line, or command fully typed) → schedule the move to the next line after `typewriterLineDelay` ms
+- If the current line is a command and `charIdx < line.length` → schedule `setCharIdx(c => c + 1)` after `typewriterSpeed` ms
+- Otherwise (output line, or command fully typed) → schedule the move to the next line after `typewriterLineDelay` ms
 
 When `lineIdx` reaches the end of the lines array, `animDone` is set to `true` and the component switches back to rendering the original `{children}` React node — so any syntax highlighting or rich markup in the children is preserved after the animation completes.
 

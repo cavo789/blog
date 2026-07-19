@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:16.813Z",
+  "source": "styles.module.css",
+  "sourceHash": "2e90567e57b7b11beee9dbb1ee2795232cb805ae",
+  "lang": "css",
+  "explanations": {
+    "8": "pointer-events: none means clicks and touches pass right through this element to whatever is behind it, as if it's invisible to user interaction.",
+    "17": "100vw means the full width of the viewport (the browser window), so the animation moves the element all the way across the screen.",
+    "21": "prefers-reduced-motion is a user's accessibility setting that tells websites to avoid animations for people who get dizzy or distracted by motion."
+  }
+}

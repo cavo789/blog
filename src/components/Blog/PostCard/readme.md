@@ -13,15 +13,15 @@ src/components/Blog/PostCard/styles.module.css
 
 ## ✨ Features
 
-* Displays:
-  * Featured image (with fallback)
-  * Optional tag badge (real link, not a nested fake link) when `post.mainTag` is set
-  * Title (linked to the post)
-  * Short description
-* Accessible markup with semantic link and alt text
-* Customizable fallback image via `defaultImage` prop
-* Optional eager-loading of the image via `lazyImage` (useful for above-the-fold cards)
-* Uses Infima utility classes and optional CSS module styling
+- Displays:
+  - Featured image (with fallback)
+  - Optional tag badge (real link, not a nested fake link) when `post.mainTag` is set
+  - Title (linked to the post)
+  - Short description
+- Accessible markup with semantic link and alt text
+- Customizable fallback image via `defaultImage` prop
+- Optional eager-loading of the image via `lazyImage` (useful for above-the-fold cards)
+- Uses Infima utility classes and optional CSS module styling
 
 ## 🚀 Usage
 
@@ -54,10 +54,10 @@ import PostCard from '@site/src/components/Blog/PostCard';
 
 ## 🧠 Accessibility Notes
 
-* The title is wrapped in a `<Link>` with an aria-label for screen reader clarity.
-* The tag badge is a real `<Link>` (not a nested fake link), and sits as a sibling of the
+- The title is wrapped in a `<Link>` with an aria-label for screen reader clarity.
+- The tag badge is a real `<Link>` (not a nested fake link), and sits as a sibling of the
   title link rather than inside it — no interactive element is ever nested inside another.
-* The image includes alt and title attributes for better context.
+- The image includes alt and title attributes for better context.
 
 ## 🎨 Styling
 
@@ -67,9 +67,9 @@ Example: `.description` class for paragraph styling.
 
 ## 🧩 Related Components
 
-* `Card`
-* `CardBody`
-* `CardImage`
+- `Card`
+- `CardBody`
+- `CardImage`
 
 ## 📄 License
 

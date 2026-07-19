@@ -8,11 +8,11 @@ Please save the script here: `src/components/StructuredData/index.jsx`
 
 ## 🚀 Features
 
-* Injects structured data via `<Head>` using Docusaurus's script prop
-* Dynamically builds metadata from blog post `frontMatter` and site config
-* Uses `siteConfig.url` and `themeConfig.image` for absolute URLs
-* Supports author, publisher, image, and canonical page ID
-* Optional debug block for visual inspection
+- Injects structured data via `<Head>` using Docusaurus's script prop
+- Dynamically builds metadata from blog post `frontMatter` and site config
+- Uses `siteConfig.url` and `themeConfig.image` for absolute URLs
+- Supports author, publisher, image, and canonical page ID
+- Optional debug block for visual inspection
 
 ## 🛠 Usage
 
@@ -47,12 +47,14 @@ uses internally. Falls back to `frontMatter.image` when the post uses a static p
 To visually inspect the JSON-LD output, uncomment the debug block inside the component:
 
 ```jsx
-{/*
+{
+  /*
 <div style={{ background: '#f0f0f0', padding: '1rem', marginTop: '2rem' }}>
     <h4>🧪 Structured Data Debug</h4>
     <pre>{JSON.stringify(jsonLd, null, 2)}</pre>
 </div>
-*/}
+*/
+}
 ```
 
 ## ✅ SEO Validation
@@ -61,13 +63,13 @@ Use [Google Rich Results Test](https://search.google.com/test/rich-results) or [
 
 ## 📄 Requirements
 
-* `metadata` and `assets` must be passed from `useBlogPost()`
-* `siteConfig.url` and `themeConfig.image` should be defined in `docusaurus.config.js`
+- `metadata` and `assets` must be passed from `useBlogPost()`
+- `siteConfig.url` and `themeConfig.image` should be defined in `docusaurus.config.js`
 
 ## 📚 Schema Reference
 
-* [BlogPosting](https://schema.org/BlogPosting)
-* [JSON-LD](https://json-ld.org/)
+- [BlogPosting](https://schema.org/BlogPosting)
+- [JSON-LD](https://json-ld.org/)
 
 ## 📄 License
 

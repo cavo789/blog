@@ -13,11 +13,11 @@ The `check-spelling.sh` script is a localized quality assurance tool designed fo
 
 ## Prerequisites
 
-| Requirement | Description |
-| :--- | :--- |
-| **Docker** | The `languagetool` service must be active in `compose.yaml`. |
+| Requirement      | Description                                                           |
+| :--------------- | :-------------------------------------------------------------------- |
+| **Docker**       | The `languagetool` service must be active in `compose.yaml`.          |
 | **Connectivity** | Accessible at `http://languagetool:8010/v2/check` (internal network). |
-| **CLI Tools** | `curl` for requests and `jq` for JSON manipulation. |
+| **CLI Tools**    | `curl` for requests and `jq` for JSON manipulation.                   |
 
 ## How to Use
 

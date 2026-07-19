@@ -85,18 +85,18 @@ Thanks to Markitdown and the `md-convert` wrapper script we just built, converti
 
 Check the [official repository](https://github.com/microsoft/markitdown/) for the complete list of supported file formats:
 
-* PDF
-* PowerPoint
-* Word
-* Excel
-* Images (EXIF metadata and OCR)
-* Audio (EXIF metadata and speech transcription)
-* HTML
-* Text-based formats (CSV, JSON, XML)
-* ZIP archives (iterates recursively over contents)
-* YouTube URLs
-* EPUBs
-* ... and more!
+- PDF
+- PowerPoint
+- Word
+- Excel
+- Images (EXIF metadata and OCR)
+- Audio (EXIF metadata and speech transcription)
+- HTML
+- Text-based formats (CSV, JSON, XML)
+- ZIP archives (iterates recursively over contents)
+- YouTube URLs
+- EPUBs
+- ... and more!
 
 In this guide, we deliberately focused on compiling only the extensions for Word, Excel, and PDF (`[docx,xlsx,pdf]`) to keep our Docker image lightweight and strictly scoped. However, you can easily expand the tool's capabilities to suit your needs. Simply adjust the `pip install` extras in the `Dockerfile` and rebuild your image.
 

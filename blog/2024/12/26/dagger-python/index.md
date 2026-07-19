@@ -66,10 +66,10 @@ Amazing application to tell us, random, *Hello world* or *Bonjour le monde!*
 
 Every time we will push our codebase to our versioning application (like GitLab), we want to:
 
-* Run [Pylint](https://pypi.org/project/pylint/), *Lint python scripts using Pylint - Run analyses your code without actually running it*,
-* Run [Black](https://black.readthedocs.io/en/stable/), *Format the script using Black*,
-* Run [Mypy](https://github.com/python/mypy/), *Mypy is a program that will type check your Python code* and
-* Run [Ruff](https://github.com/astral-sh/ruff), *an extremely fast Python linter and code formatter*
+- Run [Pylint](https://pypi.org/project/pylint/), *Lint python scripts using Pylint - Run analyses your code without actually running it*,
+- Run [Black](https://black.readthedocs.io/en/stable/), *Format the script using Black*,
+- Run [Mypy](https://github.com/python/mypy/), *Mypy is a program that will type check your Python code* and
+- Run [Ruff](https://github.com/astral-sh/ruff), *an extremely fast Python linter and code formatter*
 
 These steps are fired in our CI (GitLab, GitHub, ...) every time we push our code and, to do the same actions locally, we need to create f.i. some make actions (`make lint`, `make format`, ...).
 

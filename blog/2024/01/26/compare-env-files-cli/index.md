@@ -103,7 +103,7 @@ DATABASE_TYPE = pgsql           | CACHE_DRIVER = redis
 
 How to read:
 
-* `ALLOW_FEATURE_DO_THIS` is only present in `.env`,
-* `DATABASE_TYPE` is initialized to `pgsql` in `.env` and to `mysql` in `.env.example`,
-* `CACHE_DRIVER` is only present in `.env.example` and
-* all other lines are strictly identical (remember we've ignored commented and empty lines)
+- `ALLOW_FEATURE_DO_THIS` is only present in `.env`,
+- `DATABASE_TYPE` is initialized to `pgsql` in `.env` and to `mysql` in `.env.example`,
+- `CACHE_DRIVER` is only present in `.env.example` and
+- all other lines are strictly identical (remember we've ignored commented and empty lines)

@@ -4,8 +4,8 @@ A small Docusaurus plugin that injects an ASCII-art banner into generated HTML p
 
 ## Features
 
-* Injects an ASCII banner as an HTML comment immediately after the `<!doctype ...>` line (default).
-* Safe fallback behavior when files do not contain a DOCTYPE or `<body>` tag.
+- Injects an ASCII banner as an HTML comment immediately after the `<!doctype ...>` line (default).
+- Safe fallback behavior when files do not contain a DOCTYPE or `<body>` tag.
 
 ## Usage
 
@@ -24,11 +24,11 @@ A small Docusaurus plugin that injects an ASCII-art banner into generated HTML p
 
 ## Options
 
-* `bannerPath` (string, required): path relative to your site root (`siteDir`) to the ASCII text file.
+- `bannerPath` (string, required): path relative to your site root (`siteDir`) to the ASCII text file.
 
 ## Behavior details
 
-* Files are processed during `postBuild` on the generated `outDir` HTML files; because builds freshly generate the HTML, duplicated insertion is not a concern.
+- Files are processed during `postBuild` on the generated `outDir` HTML files; because builds freshly generate the HTML, duplicated insertion is not a concern.
 
 ## Testing
 
@@ -42,8 +42,8 @@ yarn docusaurus serve
 
 ## Notes
 
-* The plugin reads the banner file as UTF-8. Use a plain text ASCII file for best results.
-* The plugin performs per-file updates on the generated HTML — keep backups if you have post-processing tooling that relies on a specific order.
+- The plugin reads the banner file as UTF-8. Use a plain text ASCII file for best results.
+- The plugin performs per-file updates on the generated HTML — keep backups if you have post-processing tooling that relies on a specific order.
 
 ## 📄 License
 

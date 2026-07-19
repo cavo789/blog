@@ -5,11 +5,14 @@
 `src/components/Blog/PostCard/styles.module.css` définit deux hauteurs fixes à 180px :
 
 ```css
---card-img-height: 180px;          /* variable CSS utilisée par .cardImageEnhanced */
-.cardSmallImage { height: 180px; } /* hardcodé pour le layout "small" */
+--card-img-height: 180px; /* variable CSS utilisée par .cardImageEnhanced */
+.cardSmallImage {
+  height: 180px;
+} /* hardcodé pour le layout "small" */
 ```
 
 Ces deux règles affectent :
+
 - **SeriesCards** (layout `enhanced`) → page `/series`
 - **RelatedPosts** (layout `small`) → bas de chaque article
 

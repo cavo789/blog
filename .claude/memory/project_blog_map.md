@@ -68,10 +68,12 @@ MD link : [Title](/blog/<slug>)
 ## Active Series (12)
 
 ### Bluesky Docusaurus component (2 posts)
+
 - [Create our own Docusaurus React component and provide a "Share on Bluesky" button](/blog/docusaurus-bluesky-share) — 2025-08-13
 - [Show Bluesky comments on Docusaurus and, too, number of likes/reposts](/blog/docusaurus-bluesky-comments) — 2025-08-18
 
 ### Coding using a devcontainer (6 posts)
+
 - [PHP development in a devcontainer with preinstalled code quality tools](/blog/vscode-devcontainer) — 2024-02-09
 - [Install a PHP Docker environment in a matter of seconds](/blog/php-devcontainer) — 2024-02-23
 - [Docker - Python devcontainer](/blog/docker-python-devcontainer) — 2024-10-30
@@ -80,11 +82,13 @@ MD link : [Title](/blog/<slug>)
 - [Level Up Your Presentations with Quarto, reveal.js, Decktape, Docker and DevContainers](/blog/running-revealjs-with-docker) — 2025-12-15
 
 ### Create your joomla website using Docker (3 posts)
+
 - [Create your Joomla website using Docker - Part 1](/blog/docker-joomla) — 2023-12-22
 - [Create your Joomla website using Docker - Part 2](/blog/docker-joomla-part-2) — 2024-10-18
 - [Restore a Joomla backup using Docker](/blog/docker-joomla-restore-jpa) — 2024-10-18
 
 ### Creating Docusaurus components (14 posts)
+
 - [Change how Docusaurus will create img tags](/blog/docusaurus-override-img) — 2025-08-21
 - [Overrides the generation of img tags with Docusaurus](/blog/docusaurus-lazy-loading) — 2025-08-27
 - [Organize Your Docusaurus Content with a Custom Series Component](/blog/docusaurus-series) — 2025-09-09
@@ -101,11 +105,13 @@ MD link : [Title](/blog/<slug>)
 - [How to indicate AI-assisted content in a Docusaurus blog](/blog/docusaurus-ai-gemini) — 2026-03-09 ★AI
 
 ### Discovering Docusaurus (3 posts)
+
 - [Getting the number of published posts](/blog/docusaurus-number-of-posts) — 2024-01-08
 - [Running your own blog with Docusaurus and Docker](/blog/docusaurus-docker-own-blog) — 2024-02-07
 - [Some tips and tricks when written articles for Docusaurus](/blog/docusaurus-articles-tips) — 2024-02-07
 
 ### Discovering Quarto (9 posts)
+
 - [Quarto conditional display](/blog/quarto-conditional-display) — 2023-12-25
 - [Use Quarto and create a PowerPoint slideshow](/blog/quarto-powerpoint) — 2023-12-25
 - [Using variables from external file in your Quarto project](/blog/quarto-project-variables) — 2024-01-03
@@ -117,28 +123,34 @@ MD link : [Title](/blog/<slug>)
 - [Quarto - How I Built a Self-Documenting Ecosystem for 50+ Projects](/blog/quarto-industrialisation) — 2026-03-16 ★AI
 
 ### Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide (2 posts)
+
 - [Displaying related posts below our Docusaurus article](/blog/docusaurus-relatedposts) — 2025-09-03
 - [Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide](/blog/docusaurus-cards) — 2025-09-08
 
 ### Functional testing (3 posts)
+
 - [Introduction to Behat](/blog/behat-introduction) — 2024-06-24
 - [Introduction to Cypress](/blog/cypress) — 2025-03-30
 - [Writing functional tests with Pest](/blog/pest-functional-testing) — 2025-08-30
 
 ### MS Excel - Connect to a SQL Server database (2 posts)
+
 - [MS Excel - Connect to a SQL Server database, run a query and get the results](/blog/vba-excel-sql-server) — 2024-04-05
 - [MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step](/blog/vba-excel-sql-server-part-2) — 2025-03-16
 
 ### Running Docusaurus using Docker (2 posts)
+
 - [Encapsulate an entire Docusaurus site in a Docker image](/blog/docker-docusaurus-prod) — 2024-04-28
 - [Running Docusaurus using Docker](/blog/running-docusaurus-with-docker) — 2025-11-11
 
 ### Running Oracle Database Server as a Docker container (3 posts)
+
 - [Running Oracle Database Server as a Docker container](/blog/docker-oracle-database-server) — 2025-04-04
 - [Transform an Oracle DB as OpenData using Oracle REST Data Services](/blog/docker-oracle-ords) — 2025-04-11
 - [Accessing an Oracle database using .Net, NodeJS, PHP and Python](/blog/oracle-dotnet-nodejs-php-python) — 2025-04-18
 
 ### code quality (5 posts)
+
 - [Markdown linter - solve formatting issue in md files](/blog/markdown-lint) — 2024-02-03
 - [Docker image that provides static analysis tools for PHP](/blog/php-jakzal-phpqa) — 2024-04-07
 - [Format poorly formatted PHP code](/blog/online-php-linter) — 2024-12-01

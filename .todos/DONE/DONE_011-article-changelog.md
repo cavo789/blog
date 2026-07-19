@@ -51,9 +51,11 @@ export default function ArticleChangelog({ changelog }) {
 Dans le swizzle `BlogPostPage`, lire `metadata.frontMatter.changelog` :
 
 ```jsx
-{metadata.frontMatter.changelog && (
-  <ArticleChangelog changelog={metadata.frontMatter.changelog} />
-)}
+{
+  metadata.frontMatter.changelog && (
+    <ArticleChangelog changelog={metadata.frontMatter.changelog} />
+  );
+}
 ```
 
 ## Valeur ajoutée

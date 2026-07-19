@@ -29,11 +29,11 @@ You've been staring at `git diff` output for thirty seconds trying to figure out
 
 [delta](https://github.com/dandavison/delta) is a syntax-highlighting pager that sits between git and your terminal. It intercepts raw diff output and renders it with:
 
-* Syntax highlighting per language — a TypeScript change looks like TypeScript, a YAML change looks like YAML
-* Side-by-side view — old version on the left, new version on the right, aligned line by line
-* Word-level diff — highlights the exact characters that changed within a line, not the entire line
-* Line numbers — always visible, consistently aligned
-* Navigation — jump between diff hunks with `n` and `N`
+- Syntax highlighting per language — a TypeScript change looks like TypeScript, a YAML change looks like YAML
+- Side-by-side view — old version on the left, new version on the right, aligned line by line
+- Word-level diff — highlights the exact characters that changed within a line, not the entire line
+- Line numbers — always visible, consistently aligned
+- Navigation — jump between diff hunks with `n` and `N`
 
 The key point: **you don't change a single git command**. You still type `git diff`, `git show`, `git log -p`. Delta intercepts the output automatically.
 
@@ -123,9 +123,9 @@ Delta highlights `+ TOKEN_GRACE_MS` at the character level — the rest of the l
 
 This word-level diff is especially valuable when:
 
-* A variable was renamed (`getUserById` → `findUserById`)
-* A string had a typo fixed
-* A flag was added or removed from a long function call
+- A variable was renamed (`getUserById` → `findUserById`)
+- A string had a typo fixed
+- A flag was added or removed from a long function call
 
 Without word-level diff, each of those scenarios produces a fully-red removed line and a fully-green added line. With delta, only the changed word is highlighted.
 
@@ -133,9 +133,9 @@ Without word-level diff, each of those scenarios produces a fully-red removed li
 
 With `side-by-side = true`, delta splits each changed file into two columns:
 
-* **Left** — the old version, with removed lines in red
-* **Right** — the new version, with added lines in green
-* **Both** — unchanged context lines are shown on both sides, aligned
+- **Left** — the old version, with removed lines in red
+- **Right** — the new version, with added lines in green
+- **Both** — unchanged context lines are shown on both sides, aligned
 
 For a renamed function called in ten places, you no longer read two interleaved streams of red and green. You read the before on the left and the after on the right, like a code review tool.
 

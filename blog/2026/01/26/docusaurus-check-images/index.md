@@ -81,11 +81,11 @@ $ docker run -it --rm -v .:/app -w /app --entrypoint /bin/sh mcr.microsoft.com/p
 
 This command does the following:
 
-* Mounts the current directory into the container.
-* Uses the official Playwright Python Docker image.
-* Installs the required Python packages.
-* Runs the `.scripts/check-images.py` script (make sure you've saved it on your disk with that name).
-* Cleans up the container after execution.
+- Mounts the current directory into the container.
+- Uses the official Playwright Python Docker image.
+- Installs the required Python packages.
+- Runs the `.scripts/check-images.py` script (make sure you've saved it on your disk with that name).
+- Cleans up the container after execution.
 
 I'll get a report in the console indicating any images that are missing the `loading="lazy"` attribute, especially if they are large.
 
@@ -99,9 +99,9 @@ Up to you, now, to act on the results! On my own blog, I've added some missing a
 
 The script also does these checks:
 
-* Check to see if the image format is WebP; if not, it issues a warning.
-* Check if the image size exceeds a certain threshold (200 KB); if so, it issues a warning.
-* Check if the image height and width attributes are set; if not, it issues a warning.
+- Check to see if the image format is WebP; if not, it issues a warning.
+- Check if the image size exceeds a certain threshold (200 KB); if so, it issues a warning.
+- Check if the image height and width attributes are set; if not, it issues a warning.
 
 You can easily modify these checks in the script to fit your own needs. And add yours too!
 

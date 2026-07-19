@@ -10,10 +10,10 @@ This plugin programmatically registers a route matching `/series/:slug` and load
 
 ## How it works
 
-* The plugin uses Docusaurus's `contentLoaded` lifecycle to add a custom route.
-* The route matches `/series/:slug`.
-* When a user visits a URL like `/series/my-series-name`, the plugin loads the React component located at `src/components/Blog/Series/SeriesArticlesPage.js`.
-* This component receives the `slug` parameter and renders the articles that belong to that series.
+- The plugin uses Docusaurus's `contentLoaded` lifecycle to add a custom route.
+- The route matches `/series/:slug`.
+- When a user visits a URL like `/series/my-series-name`, the plugin loads the React component located at `src/components/Blog/Series/SeriesArticlesPage.js`.
+- This component receives the `slug` parameter and renders the articles that belong to that series.
 
 ## Setup
 
@@ -33,9 +33,9 @@ This plugin programmatically registers a route matching `/series/:slug` and load
 
 ## Benefits
 
-* Clean, dynamic URLs for series pages (e.g. `/series/coding-using-a-devcontainer`).
-* Easy to manage and extend series-related functionality.
-* Keeps series routing logic separated from other app routes.
+- Clean, dynamic URLs for series pages (e.g. `/series/coding-using-a-devcontainer`).
+- Easy to manage and extend series-related functionality.
+- Keeps series routing logic separated from other app routes.
 
 ## 📄 License
 

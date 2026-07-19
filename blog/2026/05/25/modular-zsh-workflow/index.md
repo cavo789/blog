@@ -110,8 +110,8 @@ If you've already used the alias and, for some reason, you've updated the code, 
 
 You can speed up your navigation by passing a search pattern directly to the command: `repo <pattern>`.
 
-* If multiple projects match your query, `fzf` will open pre-filtered with those results.
-* If **only one** project matches, the script will skip the interface entirely and `cd` into the directory immediately.
+- If multiple projects match your query, `fzf` will open pre-filtered with those results.
+- If **only one** project matches, the script will skip the interface entirely and `cd` into the directory immediately.
 
 Example:
 

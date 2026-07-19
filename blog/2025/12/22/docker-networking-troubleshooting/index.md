@@ -172,9 +172,9 @@ export no_proxy="provider,192.168.0.0/24,127.0.0.1,localhost"
 export NO_PROXY="provider,192.168.0.0/24,127.0.0.1,localhost"
 ```
 
-* `provider` is the name of our container,
-* `192.168.0.0/24` is the IP range for the Docker subnet (you can retrieve it by running `docker network inspect your_network | jq -r '.[].IPAM.Config[0].Subnet'`)
-* the well-known `127.0.0.1,localhost` is our localhost
+- `provider` is the name of our container,
+- `192.168.0.0/24` is the IP range for the Docker subnet (you can retrieve it by running `docker network inspect your_network | jq -r '.[].IPAM.Config[0].Subnet'`)
+- the well-known `127.0.0.1,localhost` is our localhost
 
 <AlertBox variant="tip" title="The no_proxy variable">
 To make sure all tools (`curl`, `wget`, `apt-get`, ...) are well using the `no_proxy` variable, it's recommended to use both notation: lower and upper case.

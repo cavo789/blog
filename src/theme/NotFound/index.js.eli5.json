@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:11.442Z",
+  "source": "index.js",
+  "sourceHash": "4a224d8cea7fe1cdda812ed495daeea3d91d534a",
+  "lang": "javascript",
+  "explanations": {
+    "21": "useState with an arrow function as the initial value means the random message is only picked once when the component first loads, not on every render.",
+    "22": "Math.floor(Math.random() * array.length) picks a random whole number between 0 and the last index of the array, which selects a random message."
+  }
+}

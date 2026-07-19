@@ -133,11 +133,7 @@ const DEFAULT_STRIP_SELECTORS = [
 ];
 
 function getStripSelectors(userSelectors = []) {
-  return [
-    ...CRITICAL_STRIP_SELECTORS,
-    ...DEFAULT_STRIP_SELECTORS,
-    ...userSelectors,
-  ];
+  return [...CRITICAL_STRIP_SELECTORS, ...DEFAULT_STRIP_SELECTORS, ...userSelectors];
 }
 
 // --- Article extraction ------------------------------------------------------
@@ -160,9 +156,7 @@ async function getArticleHtml(permalink, outDir, stripSelectors = []) {
     articleContainer = $(".theme-doc-content, .theme-doc-markdown").first();
   }
   if (!articleContainer.length) {
-    console.warn(
-      `[BlogFeedPlugin] Could not find article container for ${permalink}.`,
-    );
+    console.warn(`[BlogFeedPlugin] Could not find article container for ${permalink}.`);
     return null;
   }
 
@@ -245,9 +239,7 @@ module.exports = function blogFeedPlugin(context, options = {}) {
         }
 
         if (!fs.existsSync(blogDir)) {
-          console.error(
-            `[BlogFeedPlugin] Blog source directory not found: ${blogDir}`,
-          );
+          console.error(`[BlogFeedPlugin] Blog source directory not found: ${blogDir}`);
           return;
         }
 
@@ -310,17 +302,11 @@ module.exports = function blogFeedPlugin(context, options = {}) {
 
         // Filter out drafts (published: false) and articles with no content body
         const publishedFeedItems = feedItemsWithContent
-          .filter(
-            (item) =>
-              item.frontMatter.published !== false && item.fullContentBody,
-          )
+          .filter((item) => item.frontMatter.published !== false && item.fullContentBody)
           .sort((a, b) => new Date(b.date) - new Date(a.date));
 
         // Apply maxItems limit
-        const finalFeedItems = publishedFeedItems.slice(
-          0,
-          Math.max(1, Number(maxItems)),
-        );
+        const finalFeedItems = publishedFeedItems.slice(0, Math.max(1, Number(maxItems)));
 
         const feed = new Feed({
           title: siteConfig.title,
@@ -348,10 +334,7 @@ module.exports = function blogFeedPlugin(context, options = {}) {
           // Create the custom dc:creator XML string for later injection
           const creatorCDataString = rssAuthors
             .map(
-              (a) =>
-                `<dc:creator><![CDATA[${cleanProblemChars(
-                  a.name,
-                )}]]></dc:creator>`,
+              (a) => `<dc:creator><![CDATA[${cleanProblemChars(a.name)}]]></dc:creator>`,
             )
             .join("");
 
@@ -369,9 +352,7 @@ module.exports = function blogFeedPlugin(context, options = {}) {
           const absoluteImageUrl = postImageUrl
             ? absoluteUrl(siteUrl, baseUrl, postImageUrl)
             : null;
-          const mimeType = absoluteImageUrl
-            ? getMimeTypeFromUrl(absoluteImageUrl)
-            : null;
+          const mimeType = absoluteImageUrl ? getMimeTypeFromUrl(absoluteImageUrl) : null;
 
           let descriptionWithImage = cleanProblemChars(item.description || "");
           if (includeImages && absoluteImageUrl) {

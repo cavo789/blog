@@ -42,11 +42,11 @@ Donec blandit erat non placerat cursus.
 
 Here is how to do it:
 
-* Select all the lines you need to update,
-* Press <kbd>SHIFT</kbd>-<kbd>ALT</kbd>-<kbd>I</kbd> to enable multiple cursors,
-* Press <kbd>Home</kbd> to put cursors at the beginning of each line,
-* Press `*` followed by a space to transform the list of lines to a bullet list.
-* Press <kbd>ESC</kbd> to quit the multiple cursors mode.
+- Select all the lines you need to update,
+- Press <kbd>SHIFT</kbd>-<kbd>ALT</kbd>-<kbd>I</kbd> to enable multiple cursors,
+- Press <kbd>Home</kbd> to put cursors at the beginning of each line,
+- Press `*` followed by a space to transform the list of lines to a bullet list.
+- Press <kbd>ESC</kbd> to quit the multiple cursors mode.
 
 ![Multiple cursors](./images/make_bullet_list.gif)
 

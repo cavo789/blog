@@ -6,9 +6,9 @@
 
 ```css
 .oldPostNotice {
-  background-color: #fff3cd;   /* ← jaune clair toujours */
-  color: #856404;               /* ← texte brun toujours */
-  border: 1px solid #ffeeba;   /* ← bordure jaune toujours */
+  background-color: #fff3cd; /* ← jaune clair toujours */
+  color: #856404; /* ← texte brun toujours */
+  border: 1px solid #ffeeba; /* ← bordure jaune toujours */
 }
 ```
 

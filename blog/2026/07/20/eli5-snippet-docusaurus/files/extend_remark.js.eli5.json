@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:54.899Z",
+  "source": "extend_remark.js",
+  "sourceHash": "fab47cd787fd51cf144ba3d3810bd725094ee44f",
+  "lang": "javascript",
+  "explanations": {
+    "2": "This creates a file path by taking the original file path and adding '.eli5.json' to the end, so if the file was 'example.js', this would be 'example.js.eli5.json'.",
+    "6": "JSON.parse converts a string of JSON text into a JavaScript object so we can actually use the data inside it.",
+    "7": "This checks two things: that eli5Data has a property called 'explanations', AND that explanations is an object (not null or an array).",
+    "11": "JSON.stringify does the opposite of parse — it converts our JavaScript object back into a string of JSON so it can be stored as an attribute value."
+  }
+}

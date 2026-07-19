@@ -34,11 +34,7 @@ import CardImage from "@site/src/components/Card/CardImage";
 const HomeCardItem = ({ title, description, url, image, alt }) => (
   <Link to={url} className={styles.cardLink}>
     <Card>
-      <CardImage
-        cardImageUrl={`/img/homepage/${image}`}
-        alt={alt || title}
-        lazy={true}
-      />
+      <CardImage cardImageUrl={`/img/homepage/${image}`} alt={alt || title} lazy={true} />
       <CardBody
         className="padding-vert--md text--center"
         textAlign="center"

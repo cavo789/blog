@@ -4,8 +4,8 @@
 
 ## Problème
 
-`AGENTS.md` est explicite à deux reprises : *"No Typescript at all"* et *"Strict Typing... Add
-prop-types"* (implicitement : le typage se fait via PropTypes, pas TypeScript). Or :
+`AGENTS.md` est explicite à deux reprises : _"No Typescript at all"_ et _"Strict Typing... Add
+prop-types"_ (implicitement : le typage se fait via PropTypes, pas TypeScript). Or :
 
 - `src/components/BrowserWindow/index.tsx`
 - `src/components/BrowserWindow/IframeWindow.tsx`

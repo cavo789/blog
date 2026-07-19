@@ -4,11 +4,11 @@ A flexible and theme-aware React component for Docusaurus that displays a list o
 
 ## ✨ Features
 
-* 🌗 Dark/light mode support via Docusaurus theme config
-* 🎨 Theme-aware styling using CSS variables
-* 📝 Markdown support for bold, inline code, and links
-* 🔢 Numbered layout with visual variants
-* 🧩 Optional title displayed above the list
+- 🌗 Dark/light mode support via Docusaurus theme config
+- 🎨 Theme-aware styling using CSS variables
+- 📝 Markdown support for bold, inline code, and links
+- 🔢 Numbered layout with visual variants
+- 🧩 Optional title displayed above the list
 
 ## Example
 
@@ -32,12 +32,12 @@ This component lives at `src/components/StepsCard/index.js`.
 <StepsCard
   title="Publishing Workflow"
   steps={[
-    'Write your article',
-    'Share it on Bluesky',
-    'Retrieve the **Bluesky Record key** from the post URL',
-    'Add `blueskyRecordKey: xxxx` to your article front matter',
-    'Republish your article',
-    'Here’s the diagram: ![Diagram](./images/diagram.png)'
+    "Write your article",
+    "Share it on Bluesky",
+    "Retrieve the **Bluesky Record key** from the post URL",
+    "Add `blueskyRecordKey: xxxx` to your article front matter",
+    "Republish your article",
+    "Here’s the diagram: ![Diagram](./images/diagram.png)",
   ]}
 />
 ```
@@ -52,7 +52,7 @@ This component lives at `src/components/StepsCard/index.js`.
     "**Node.js** installed",
     "`admin` access to your dashboard",
     "A GitHub account",
-    "Install the [CLI tool](https://example.com/cli)"
+    "Install the [CLI tool](https://example.com/cli)",
   ]}
 />
 ```
@@ -67,26 +67,26 @@ This component lives at `src/components/StepsCard/index.js`.
     "Always commit your work before running migrations",
     "Use **feature branches** instead of committing to `main`",
     "Run `npm test` before pushing to CI",
-    "Check `.env.example` is updated if new env vars are added"
+    "Check `.env.example` is updated if new env vars are added",
   ]}
 />
 ```
 
 ## 🛠 Props
 
-| Prop | Type | Required | Default | Description |
-| --- | --- | --- | --- | --- |
-| `steps` | `Array<string React.ReactNode>` | ✅ | — | List of items to display. Markdown is supported. |
-| `title` | string | ❌ | `Steps to follow` | title displayed above the list. |
-| `variant` | `prerequisites`, `remember` or `steps` | ❌ | `steps` | Visual style: `prerequisites` uses neutral tone, `remember` use a bulb icon on yellow background and `steps` uses primary color . |
+| Prop      | Type                                   | Required | Default           | Description                                                                                                                       |
+| --------- | -------------------------------------- | -------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `steps`   | `Array<string React.ReactNode>`        | ✅       | —                 | List of items to display. Markdown is supported.                                                                                  |
+| `title`   | string                                 | ❌       | `Steps to follow` | title displayed above the list.                                                                                                   |
+| `variant` | `prerequisites`, `remember` or `steps` | ❌       | `steps`           | Visual style: `prerequisites` uses neutral tone, `remember` use a bulb icon on yellow background and `steps` uses primary color . |
 
 ## 🧪 Markdown Support
 
 Supports basic Markdown formatting in strings:
 
-* `**bold**` → `<strong>`
-* `inline code` → `<code>`
-* `[link text](https://...)` → `<a href="..." target="_blank">`
+- `**bold**` → `<strong>`
+- `inline code` → `<code>`
+- `[link text](https://...)` → `<a href="..." target="_blank">`
 
 Note: Markdown images (`![alt](url)`) are supported if rendered manually via React nodes.
 
@@ -94,11 +94,11 @@ Note: Markdown images (`![alt](url)`) are supported if rendered manually via Rea
 
 The component uses scoped CSS via `styles.module.css`. Key classes include:
 
-* `.steps_container` — wrapper
-* `.steps_title` — section title
-* `.step_card` — individual card
-* `.step_number` — numbered circle
-* `.step_content` — content block
+- `.steps_container` — wrapper
+- `.steps_title` — section title
+- `.step_card` — individual card
+- `.step_number` — numbered circle
+- `.step_content` — content block
 
 Customize these styles to match your site's design system.
 

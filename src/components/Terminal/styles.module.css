@@ -10,10 +10,10 @@
 /* Terminal container */
 .terminal {
   background: #1e1e1e; /* terminal background */
-  color: #d4d4d4;      /* default text color */
+  color: #d4d4d4; /* default text color */
   border-radius: 6px;
   font-family: "Fira Code", monospace;
-  overflow-x: auto;    /* fallback for extremely long lines */
+  overflow-x: auto; /* fallback for extremely long lines */
   margin-bottom: 1rem;
   position: relative; /* Essential for absolute positioning of the button */
 }
@@ -35,7 +35,7 @@
   align-items: center;
   gap: 0.5rem;
   white-space: nowrap; /* keep icon + title on same line */
-  overflow: hidden;    /* truncate if too long */
+  overflow: hidden; /* truncate if too long */
 }
 
 .terminal_icon {
@@ -65,19 +65,25 @@
   display: inline-block;
 }
 
-.red { background: #ff5f56; }
-.yellow { background: #ffbd2e; }
-.green { background: #27c93f; }
+.red {
+  background: #ff5f56;
+}
+.yellow {
+  background: #ffbd2e;
+}
+.green {
+  background: #27c93f;
+}
 
 /* Terminal body */
 .terminal_body {
   margin: 0;
   padding: 0.75rem 1rem;
-  white-space: pre-wrap;  /* wrap long lines */
-  word-break: break-all;  /* wrap long words or paths */
+  white-space: pre-wrap; /* wrap long lines */
+  word-break: break-all; /* wrap long words or paths */
   font-family: "Fira Code", monospace;
   background-color: #1e1e1e;
-  position: relative;     /* contains the absolute animation overlay */
+  position: relative; /* contains the absolute animation overlay */
 }
 
 /* Each line inside terminal */
@@ -93,9 +99,9 @@
 
 /* Prompt for command line */
 .prompt {
-  user-select: none;      /* not copyable */
-  pointer-events: none;  /* cannot click */
-  color: #00ff00;        /* green prompt */
+  user-select: none; /* not copyable */
+  pointer-events: none; /* cannot click */
+  color: #00ff00; /* green prompt */
   flex-shrink: 0;
 }
 
@@ -107,9 +113,9 @@
 
 /* Optional no-wrap mode */
 .no_wrap {
-  white-space: pre;      /* don't wrap lines */
-  overflow-x: auto;      /* show horizontal scrollbar if too long */
-  word-break: normal;    /* no forced breaks */
+  white-space: pre; /* don't wrap lines */
+  overflow-x: auto; /* show horizontal scrollbar if too long */
+  word-break: normal; /* no forced breaks */
 }
 
 /* ------------------ */
@@ -174,8 +180,13 @@
 
 /* Typewriter blinking cursor */
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .cursor {
@@ -183,6 +194,32 @@
   color: #00ff00;
   animation: blink 1s step-end infinite;
   font-family: "Fira Code", monospace;
+}
+
+/* MDX converts "# foo" inside Terminal to <h1>foo</h1>; reset heading styles
+ * so they render as Bash comment lines instead of chapter headings. */
+.terminal_body :is(h1, h2, h3, h4, h5, h6) {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: #6a9955;
+}
+
+.terminal_body h1::before { content: "# "; }
+.terminal_body h2::before { content: "## "; }
+.terminal_body h3::before { content: "### "; }
+.terminal_body h4::before { content: "#### "; }
+.terminal_body h5::before { content: "##### "; }
+.terminal_body h6::before { content: "###### "; }
+
+/* Paragraphs from MDX blank-line splitting must not add extra spacing */
+.terminal_body p {
+  margin: 0;
+  padding: 0;
 }
 
 /* stylelint-enable color-no-hex */

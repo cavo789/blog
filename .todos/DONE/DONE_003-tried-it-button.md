@@ -14,11 +14,11 @@ Plus précis que "helpful/not helpful" pour du contenu technique procédural. Un
 
 ## Différence avec `Reaction`
 
-| Reaction | TriedIt |
-|---|---|
+| Reaction                    | TriedIt                                   |
+| --------------------------- | ----------------------------------------- |
 | Article globalement utile ? | Les commandes/étapes fonctionnent-elles ? |
-| Qualitatif | Fonctionnel / reproductible |
-| Tous types d'articles | Articles tutoriels uniquement |
+| Qualitatif                  | Fonctionnel / reproductible               |
+| Tous types d'articles       | Articles tutoriels uniquement             |
 
 ## Activation via frontmatter
 
@@ -26,7 +26,7 @@ Plus précis que "helpful/not helpful" pour du contenu technique procédural. Un
 ---
 title: Install Docker on Ubuntu 24.04
 tags: [docker, linux]
-tried_it: true   # active le composant TriedIt
+tried_it: true # active le composant TriedIt
 ---
 ```
 
@@ -41,6 +41,7 @@ tried_it: true   # active le composant TriedIt
 ### Backend — `api/tried-it.php`
 
 Stockage dans `tried-it-data.json` :
+
 ```json
 {
   "blog/install-docker-ubuntu": {
@@ -64,8 +65,11 @@ Consider reviewing the steps.
 ## Intégration dans le layout
 
 Dans le swizzle `BlogPostPage`, lire `frontMatter.tried_it` :
+
 ```jsx
-{metadata.frontMatter.tried_it && <TriedIt metadata={metadata} />}
+{
+  metadata.frontMatter.tried_it && <TriedIt metadata={metadata} />;
+}
 ```
 
 ## TODO steps

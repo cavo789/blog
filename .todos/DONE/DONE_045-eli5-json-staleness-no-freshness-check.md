@@ -10,6 +10,7 @@ pédagogiques à des **numéros de ligne exacts** du fichier source (ex.
 par `npm run eli5` (`scripts/generate-eli5.mjs`, appel à l'API Anthropic).
 
 Rien ne vérifie que ces numéros de ligne correspondent encore au fichier source actuel :
+
 - Le JSON contient un `"generated"` (timestamp) et une `"version": 1`, mais aucun hash de contenu
   du fichier source.
 - Aucun script CI, hook pre-commit, ou test ne compare la date de modification ou le hash du

@@ -18,7 +18,7 @@ Aucun backend requis. Purement CSS + JS côté client.
 
 ```jsx
 // src/theme/BlogPostPage/index.js (swizzle wrap)
-import ReadingProgress from '@site/src/components/ReadingProgress';
+import ReadingProgress from "@site/src/components/ReadingProgress";
 
 export default function BlogPostPageWrapper(props) {
   return (
@@ -33,8 +33,8 @@ export default function BlogPostPageWrapper(props) {
 ### `src/components/ReadingProgress/index.js`
 
 ```js
-import { useState, useEffect } from 'react';
-import styles from './styles.module.css';
+import { useState, useEffect } from "react";
+import styles from "./styles.module.css";
 
 export default function ReadingProgress() {
   const [progress, setProgress] = useState(0);
@@ -46,8 +46,8 @@ export default function ReadingProgress() {
       const total = el.scrollHeight - el.clientHeight;
       setProgress(total > 0 ? (scrolled / total) * 100 : 0);
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (

@@ -25,7 +25,7 @@ function renderPostText(record) {
     if (before) parts.push(before);
 
     const linkFeature = facet.features.find(
-      (f) => f.$type === "app.bsky.richtext.facet#link"
+      (f) => f.$type === "app.bsky.richtext.facet#link",
     );
     if (linkFeature) {
       parts.push(
@@ -36,7 +36,7 @@ function renderPostText(record) {
           rel="noopener noreferrer"
         >
           {decoder.decode(bytes.slice(start, end))}
-        </a>
+        </a>,
       );
     } else {
       parts.push(decoder.decode(bytes.slice(start, end)));
@@ -65,9 +65,7 @@ function renderEmbed(embed) {
         rel="noopener noreferrer"
         className={styles.blueskyCommentEmbed}
       >
-        {thumb && (
-          <img src={thumb} alt="" className={styles.blueskyCommentEmbedThumb} />
-        )}
+        {thumb && <img src={thumb} alt="" className={styles.blueskyCommentEmbedThumb} />}
         <div className={styles.blueskyCommentEmbedContent}>
           <strong>{title}</strong>
         </div>
@@ -135,16 +133,12 @@ function BlueskyComment({ reply }) {
 
       <span className={styles.blueskyCommentDate}>{date}</span>
 
-      <p className={styles.blueskyCommentText}>
-        {renderPostText(reply.post.record)}
-      </p>
+      <p className={styles.blueskyCommentText}>{renderPostText(reply.post.record)}</p>
 
       {renderEmbed(reply.post.embed)}
 
       <div className={styles.blueskyCommentFooter}>
-        <span className={styles.blueskyCommentLikes}>
-          {reply.post.likeCount}
-        </span>
+        <span className={styles.blueskyCommentLikes}>{reply.post.likeCount}</span>
         <span className={styles.blueskyCommentReposts}>
           {reply.post.repostCount || 0}
         </span>

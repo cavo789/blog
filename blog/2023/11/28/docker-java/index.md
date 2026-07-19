@@ -35,13 +35,13 @@ Now, you will need to compile your source. For this, just run `docker run -it --
 <AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run commands are (almost always the same):
 
-* `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts for example,
-* `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you will have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
-* `-v ${PWD}:/app` to share your current folder with a folder called `/app` in the Docker container,
-* `-w /app` to tell Docker that the current directory, in the container, will be the `/app` folder,
-* `-u 1000:1000` ask Docker to reuse our local credentials so when a file is updated/created in the container, the file will be owned by our user,
-* then `openjdk:11` which is the name and the version of the Docker image to use, and, finally,
-* `javac Main.java` i.e. the command line to start within the container.
+- `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts for example,
+- `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you will have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
+- `-v ${PWD}:/app` to share your current folder with a folder called `/app` in the Docker container,
+- `-w /app` to tell Docker that the current directory, in the container, will be the `/app` folder,
+- `-u 1000:1000` ask Docker to reuse our local credentials so when a file is updated/created in the container, the file will be owned by our user,
+- then `openjdk:11` which is the name and the version of the Docker image to use, and, finally,
+- `javac Main.java` i.e. the command line to start within the container.
 
 </AlertBox>
 

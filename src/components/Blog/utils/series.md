@@ -4,11 +4,11 @@ Generates structured metadata for blog article series in Docusaurus.
 
 ## ✨ Features
 
-* Groups blog posts by their `series` field
-* Sorts posts chronologically (oldest to newest)
-* Counts published and draft articles
-* Builds a clean permalink using a customizable function
-* Returns a list of series objects with title, image, description, and link
+- Groups blog posts by their `series` field
+- Sorts posts chronologically (oldest to newest)
+- Counts published and draft articles
+- Builds a clean permalink using a customizable function
+- Returns a list of series objects with title, image, description, and link
 
 ## Location
 
@@ -24,8 +24,8 @@ const seriesList = generateSeriesList(posts, '/series/', '/img/default.webp);
 
 ## Default behavior
 
-* Uses `/img/default.webp` as fallback image
-* Generates permalink like: `/series/${slug}`
+- Uses `/img/default.webp` as fallback image
+- Generates permalink like: `/series/${slug}`
 
 ## 🧩 Returned Object Structure
 
@@ -55,9 +55,9 @@ The `permalink` URL can be parametrized; see below.
 
 ## 🧠 Notes
 
-* Posts must include a series field to be grouped.
-* Drafts are counted separately in the description.
-* The first post (chronologically) is used to represent the series visually.
+- Posts must include a series field to be grouped.
+- Drafts are counted separately in the description.
+- The first post (chronologically) is used to represent the series visually.
 
 ## 🧪 Example Integration
 

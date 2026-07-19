@@ -68,7 +68,9 @@
 
 /* Smooth slide animation for hideOnScroll + subtle shadow */
 .navbar {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   box-shadow: 0 2px 12px rgb(0, 0, 0, 0.07);
 }
 
@@ -118,7 +120,9 @@
     backdrop-filter: blur(8px);
     background: rgb(255, 255, 255, 0.85);
 
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
   }
 
   .blog-toc-mobile--hidden {
@@ -209,7 +213,9 @@
 /* --- MISC STYLES --- */
 
 .card {
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
   text-decoration: none !important;
   color: var(--ifm-color-emphasis-800);
 }
@@ -235,8 +241,10 @@
 
 article .markdown img {
   border-radius: 10px;
-  box-shadow: 0 4px 24px rgb(0, 0, 0, 0.10);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 24px rgb(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   max-width: 100%;
   display: block;
   margin-left: auto;

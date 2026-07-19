@@ -37,14 +37,12 @@ export default function MyRepositories({ username }) {
         </h1>
         <p>
           <Translate id="myRepositories.description.intro">
-            Below you&apos;ll find a list of my public repositories stored on
-            GitHub.com. They&apos;re divided in two parts; the active and the
-            inactive ones.
+            Below you&apos;ll find a list of my public repositories stored on GitHub.com.
+            They&apos;re divided in two parts; the active and the inactive ones.
           </Translate>
           <br />
           <Translate id="myRepositories.description.usage">
-            Feel free to grab the code and reuse it in your project if it can
-            help.
+            Feel free to grab the code and reuse it in your project if it can help.
           </Translate>
         </p>
       </Hero>

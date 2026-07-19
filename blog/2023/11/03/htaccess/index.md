@@ -144,7 +144,7 @@ Don't allow the web server to provide the list of files / folders as a `dir` com
 
 ### htpasswd
 
-* `.htpasswd` generator : [http://aspirine.org/htpasswd.html](http://aspirine.org/htpasswd.html)
+- `.htpasswd` generator : [http://aspirine.org/htpasswd.html](http://aspirine.org/htpasswd.html)
 
 #### File password
 

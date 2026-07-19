@@ -5,3 +5,4 @@ node_modules/
 iconBundle.generated.js
 blog/
 .unpublished/
+.claude/

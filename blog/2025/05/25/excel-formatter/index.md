@@ -75,9 +75,9 @@ Which makes things clearer, no? If not, here this the transcript:
 
 If:
 
-* `A1` is less than `100`,
-* `B1` is not empty and
-* `C1` contains `abc`,
+- `A1` is less than `100`,
+- `B1` is not empty and
+- `C1` contains `abc`,
 
 Then:
 

@@ -171,15 +171,15 @@ const config = {
 export default config;
 ```
 
-* **maxItems** (number, default: `20`): Limit the number of items in the feed. By default, Docusaurus is only showing 20. The higher this number is, the larger the rss.xml file will be.  You might be tempted to want all of the articles (in my case, nearly 215 at present), but that is not the primary purpose of an RSS file. This file is there to list the **latest articles** and allow you to see the most recent posts on your blog.  So be... reasonable.
+- **maxItems** (number, default: `20`): Limit the number of items in the feed. By default, Docusaurus is only showing 20. The higher this number is, the larger the rss.xml file will be.  You might be tempted to want all of the articles (in my case, nearly 215 at present), but that is not the primary purpose of an RSS file. This file is there to list the **latest articles** and allow you to see the most recent posts on your blog.  So be... reasonable.
 
-* **includeContent** (boolean, default: `true`): Include the cleaned HTML body of each post in the `<content>` field. If you want to force people to visit your website to get the full content, just initialize this option to `false`.
+- **includeContent** (boolean, default: `true`): Include the cleaned HTML body of each post in the `<content>` field. If you want to force people to visit your website to get the full content, just initialize this option to `false`.
 
-* **includeImages** (boolean, default: `true`): Add the post image at the top of the description and include an `<enclosure>` tag with proper MIME type.
+- **includeImages** (boolean, default: `true`): Add the post image at the top of the description and include an `<enclosure>` tag with proper MIME type.
 
-* **stripSelectors** (string[], default: merged with defaults): Additional CSS selectors to remove from the article HTML. Critical selectors (`header`, `svg`) are always removed.
+- **stripSelectors** (string[], default: merged with defaults): Additional CSS selectors to remove from the article HTML. Critical selectors (`header`, `svg`) are always removed.
 
-* **ignorePatterns** (string[], default: [`"**/_archived/**"`]): Glob patterns for excluding certain blog files.
+- **ignorePatterns** (string[], default: [`"**/_archived/**"`]): Glob patterns for excluding certain blog files.
 
 ## Some tools
 
@@ -187,14 +187,14 @@ export default config;
 
 While you're coding the plugin, just use some of these visualization tools to make sure the content is correctly displayed.
 
-* [https://rss.app/rss-feed/](https://rss.app/rss-feed/)
-* [https://codebeautify.org/rssviewer/](https://codebeautify.org/rssviewer/)
-* [https://rssgizmos.com/rssviewer.html](https://rssgizmos.com/rssviewer.html)
+- [https://rss.app/rss-feed/](https://rss.app/rss-feed/)
+- [https://codebeautify.org/rssviewer/](https://codebeautify.org/rssviewer/)
+- [https://rssgizmos.com/rssviewer.html](https://rssgizmos.com/rssviewer.html)
 
 ### Validation tools
 
 If you want to make sure your `rss.xml` is valid:
 
-* [https://validator.w3.org/feed/](https://validator.w3.org/feed/)
-* [https://www.rssboard.org/rss-validator/](https://www.rssboard.org/rss-validator/)
-* [https://ralfvanveen.com/en/tools/rss-feed-checker/](https://ralfvanveen.com/en/tools/rss-feed-checker/)
+- [https://validator.w3.org/feed/](https://validator.w3.org/feed/)
+- [https://www.rssboard.org/rss-validator/](https://www.rssboard.org/rss-validator/)
+- [https://ralfvanveen.com/en/tools/rss-feed-checker/](https://ralfvanveen.com/en/tools/rss-feed-checker/)

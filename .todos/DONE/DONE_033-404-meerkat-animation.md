@@ -37,17 +37,19 @@ APRÈS — image flottante animée
 **Fichier :** `src/theme/NotFound/index.js`
 
 Remplacer le style inline par une className :
+
 ```jsx
-import styles from './styles.module.css';  // à créer
+import styles from "./styles.module.css"; // à créer
 
 <img
   src="/img/404.webp"
   alt="A group of meerkats looking confused."
   className={styles.notFoundImg}
-/>
+/>;
 ```
 
 **Créer** `src/theme/NotFound/styles.module.css` :
+
 ```css
 .notFoundImg {
   max-width: 400px;
@@ -58,8 +60,13 @@ import styles from './styles.module.css';  // à créer
 }
 
 @keyframes floatMeerkat {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-12px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 [data-theme="dark"] .notFoundImg {

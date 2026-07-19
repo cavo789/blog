@@ -6,20 +6,20 @@ This is a replacement of the native **admonitions** Docusaurus component.
 
 Perfect for surfacing:
 
-* 💡 Tips
-* 📘 Notes
-* ⚠️ Warnings
-* ❗ Critical messages
-* 📌 Core concepts
-* ...and more
+- 💡 Tips
+- 📘 Notes
+- ⚠️ Warnings
+- ❗ Critical messages
+- 📌 Core concepts
+- ...and more
 
 ## 🚀 Features
 
-* 🧩 **Single component**, multiple visual styles
-* 🎨 **Light/Dark mode support** (via `data-theme`)
-* ⚡ **CSS Modules** for encapsulated styling
-* 💡 Icons powered by [`react-icons`](https://react-icons.github.io/react-icons/)
-* ✏️ Custom title and message support
+- 🧩 **Single component**, multiple visual styles
+- 🎨 **Light/Dark mode support** (via `data-theme`)
+- ⚡ **CSS Modules** for encapsulated styling
+- 💡 Icons powered by [`react-icons`](https://react-icons.github.io/react-icons/)
+- ✏️ Custom title and message support
 
 ## 📦 Location
 
@@ -118,14 +118,14 @@ All variants support custom titles and children.
 
 ### ✅ Supported Variants
 
-* `info`
-* `note`
-* `tip`
-* `caution`
-* `important`
-* `highlyImportant`
-* `coreConcept`
-* `danger`
+- `info`
+- `note`
+- `tip`
+- `caution`
+- `important`
+- `highlyImportant`
+- `coreConcept`
+- `danger`
 
 ---
 
@@ -137,16 +137,16 @@ You can customize styles for each variant by editing: `src/components/Blog/Alert
 
 Each variant has:
 
-* Unique background, border, and text color
-* Custom icon color
-* Responsive spacing and layout
-* Dark theme support via `data-theme="dark"`
+- Unique background, border, and text color
+- Custom icon color
+- Responsive spacing and layout
+- Dark theme support via `data-theme="dark"`
 
 ## ✏️ Customization Tips
 
-* Swap icons using `react-icons` (defined in `variantMap`)
-* Add new variants easily by extending `variantMap` and updating styles
-* Use custom JSX inside `children` for more flexibility (e.g., code blocks, lists)
+- Swap icons using `react-icons` (defined in `variantMap`)
+- Add new variants easily by extending `variantMap` and updating styles
+- Use custom JSX inside `children` for more flexibility (e.g., code blocks, lists)
 
 ## 📄 License
 

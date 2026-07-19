@@ -8,16 +8,16 @@ Providing a TL;DR section at the beginning of a long blog post or documentation 
 
 ## 🛠️ Features
 
-*   Recursively finds all `.md` files in a given directory.
-*   Uses Google's Gemini API to generate a concise TL;DR summary.
-*   Injects the generated TL;DR into the Markdown file.
-*   Skips files that already contain a TL;DR summary.
-*   Can process a single file, a directory, or the entire blog.
+- Recursively finds all `.md` files in a given directory.
+- Uses Google's Gemini API to generate a concise TL;DR summary.
+- Injects the generated TL;DR into the Markdown file.
+- Skips files that already contain a TL;DR summary.
+- Can process a single file, a directory, or the entire blog.
 
 ## 📦 Requirements
 
-*   **Docker:** The script is designed to run in a Docker container to ensure a consistent environment.
-*   **Gemini API Key:** You need a Gemini API key to use the AI-powered summary generation.
+- **Docker:** The script is designed to run in a Docker container to ensure a consistent environment.
+- **Gemini API Key:** You need a Gemini API key to use the AI-powered summary generation.
 
 ## 🐳 Docker Usage
 
@@ -43,37 +43,37 @@ Providing a TL;DR section at the beginning of a long blog post or documentation 
 
     **Examples:**
 
-    *   **Process the entire blog directory:**
+    - **Process the entire blog directory:**
 
-        ```bash
-        python .scripts/python_tldr/main.py blog/
-        ```
+      ```bash
+      python .scripts/python_tldr/main.py blog/
+      ```
 
-    *   **Process all posts from a specific year (e.g., 2026):**
+    - **Process all posts from a specific year (e.g., 2026):**
 
-        ```bash
-        python .scripts/python_tldr/main.py blog/2026/
-        ```
+      ```bash
+      python .scripts/python_tldr/main.py blog/2026/
+      ```
 
-    *   **Process all posts from a specific month (e.g., January 2026):**
+    - **Process all posts from a specific month (e.g., January 2026):**
 
-        ```bash
-        python .scripts/python_tldr/main.py blog/2026/01/
-        ```
+      ```bash
+      python .scripts/python_tldr/main.py blog/2026/01/
+      ```
 
-    *   **Process a single blog post:**
+    - **Process a single blog post:**
 
-        ```bash
-        python .scripts/python_tldr/main.py blog/2026/01/some-post.md
-        ```
+      ```bash
+      python .scripts/python_tldr/main.py blog/2026/01/some-post.md
+      ```
 
 ## 🧪 Output
 
 The script will provide real-time feedback in the console, indicating the status of each file:
 
-*   `✅ [File Name]: Injected successfully.` - The TL;DR was successfully generated and injected.
-*   `⚠️  [File Name]: SKIPPED (Exists)` - The file already has a TL;DR section.
-*   `❌ [File Name]: ERROR: [Error Message]` - An error occurred during the process.
+- `✅ [File Name]: Injected successfully.` - The TL;DR was successfully generated and injected.
+- `⚠️  [File Name]: SKIPPED (Exists)` - The file already has a TL;DR section.
+- `❌ [File Name]: ERROR: [Error Message]` - An error occurred during the process.
 
 At the end of the execution, a summary of the batch process is displayed.
 

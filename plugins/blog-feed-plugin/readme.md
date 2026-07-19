@@ -8,11 +8,11 @@ By default, Docusaurus’s built-in blog feed may include UI artifacts or miss c
 
 ## How it works
 
-* **postBuild**: After your site is built, the plugin scans the `blog` directory for `md/mdx` posts.
-* **Slug resolution**: It uses the `slug` from front matter if present; otherwise it infers a hyphenated slug from the file path.
-* **HTML extraction**: It reads the final HTML page for each post in the build output and extracts the main article container with safe defaults.
-* **Cleaning**: It removes critical UI elements (`header`, `svg`), plus default optional selectors. You can add your own selectors via configuration.
-* **Feed generation**: It builds an RSS 2.0 feed using `feed`, setting absolute URLs, optional images, and sanitized content.
+- **postBuild**: After your site is built, the plugin scans the `blog` directory for `md/mdx` posts.
+- **Slug resolution**: It uses the `slug` from front matter if present; otherwise it infers a hyphenated slug from the file path.
+- **HTML extraction**: It reads the final HTML page for each post in the build output and extracts the main article container with safe defaults.
+- **Cleaning**: It removes critical UI elements (`header`, `svg`), plus default optional selectors. You can add your own selectors via configuration.
+- **Feed generation**: It builds an RSS 2.0 feed using `feed`, setting absolute URLs, optional images, and sanitized content.
 
 ## Setup
 
@@ -44,32 +44,32 @@ By default, Docusaurus’s built-in blog feed may include UI artifacts or miss c
 3. Ensure `siteConfig.url` is set to your site origin (e.g., `https://www.example.com`). Without this, absolute URLs cannot be generated.
 
 4. Build your site with npm run build or yarn build. The feed is written to:
-   * File: `<build>/blog/rss.xml`
-   * Route: `/blog/rss.xml`
+   - File: `<build>/blog/rss.xml`
+   - Route: `/blog/rss.xml`
 
 ## Options
 
-* **maxItems** (number, default: `20`): Limit the number of items in the feed.
+- **maxItems** (number, default: `20`): Limit the number of items in the feed.
 
-* **includeContent** (boolean, default: `true`): Include the cleaned HTML body of each post in the `<content>` field.
+- **includeContent** (boolean, default: `true`): Include the cleaned HTML body of each post in the `<content>` field.
 
-* **includeImages** (boolean, default: `true`): Add the post image at the top of the description and include an `<enclosure>` tag with proper MIME type.
+- **includeImages** (boolean, default: `true`): Add the post image at the top of the description and include an `<enclosure>` tag with proper MIME type.
 
-* **stripSelectors** (string[], default: merged with defaults): Additional CSS selectors to remove from the article HTML. Critical selectors (`header`, `svg`) are always removed.
+- **stripSelectors** (string[], default: merged with defaults): Additional CSS selectors to remove from the article HTML. Critical selectors (`header`, `svg`) are always removed.
 
-* **ignorePatterns** (string[], default: [`"**/_archived/**"`]): Glob patterns for excluding certain blog files.
+- **ignorePatterns** (string[], default: [`"**/_archived/**"`]): Glob patterns for excluding certain blog files.
 
 ## Benefits
 
-* Clean, reader-friendly RSS output free from UI noise.
-* Absolute URLs for feed items and images (reliable across clients).
-* Configurable cleaning tailored to your site’s components.
-* Handles inferred and explicit slugs robustly.
+- Clean, reader-friendly RSS output free from UI noise.
+- Absolute URLs for feed items and images (reliable across clients).
+- Configurable cleaning tailored to your site’s components.
+- Handles inferred and explicit slugs robustly.
 
 ## Tips
 
-* If your blog layout differs, add your specific selectors to `stripSelectors` to remove any extra wrappers or widgets.
-* Keep `siteConfig.url` and `baseUrl` consistent to avoid malformed links.
+- If your blog layout differs, add your specific selectors to `stripSelectors` to remove any extra wrappers or widgets.
+- Keep `siteConfig.url` and `baseUrl` consistent to avoid malformed links.
 
 ## 📄 License
 

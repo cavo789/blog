@@ -35,15 +35,15 @@ In the <Link to="/blog/docker-joomla">Create your Joomla website using Docker</L
 
 By alphabetical order:
 
-* `docker compose down`,
-* `docker compose exec joomla /bin/sh`,
-* `docker compose kill`,
-* `docker compose logs --follow`,
-* `docker compose up --detach`,
-* `docker container list`,
-* `docker image list`,
-* `docker network list`,
-* and many more
+- `docker compose down`,
+- `docker compose exec joomla /bin/sh`,
+- `docker compose kill`,
+- `docker compose logs --follow`,
+- `docker compose up --detach`,
+- `docker container list`,
+- `docker image list`,
+- `docker network list`,
+- and many more
 
 It's certainly not easy to remember them all, so why not simplify things by putting them in a `makefile`?
 

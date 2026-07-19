@@ -14,11 +14,11 @@ Le lecteur sélectionne du texte → apparaît un mini-popover avec :
 
 ## Différence avec 001 (Text Annotation)
 
-| Share Highlight (012) | Text Annotation (001) |
-|---|---|
+| Share Highlight (012)    | Text Annotation (001)     |
+| ------------------------ | ------------------------- |
 | Action de partage public | Feedback privé à l'auteur |
-| Vers Twitter, clipboard | Vers le backend PHP |
-| Pas de backend | Backend + email |
+| Vers Twitter, clipboard  | Vers le backend PHP       |
+| Pas de backend           | Backend + email           |
 
 Les deux peuvent coexister dans le même popover avec des sections distinctes.
 
@@ -28,7 +28,7 @@ Les navigateurs modernes supportent `#:~:text=texte%20sélectionné` dans les UR
 
 ```js
 const encoded = encodeURIComponent(selectedText.trim().slice(0, 100));
-const fragmentUrl = `${window.location.href.split('#')[0]}#:~:text=${encoded}`;
+const fragmentUrl = `${window.location.href.split("#")[0]}#:~:text=${encoded}`;
 ```
 
 ## Implémentation
@@ -49,8 +49,8 @@ useEffect(() => {
     showPopover({ text, rect });
   };
 
-  document.addEventListener('mouseup', onMouseUp);
-  return () => document.removeEventListener('mouseup', onMouseUp);
+  document.addEventListener("mouseup", onMouseUp);
+  return () => document.removeEventListener("mouseup", onMouseUp);
 }, []);
 ```
 

@@ -35,10 +35,10 @@ This post illustrates how to use the `ProjectSetup` component to share project s
 
 ## Core Features
 
-* **Interactive File Viewing**: It displays files in collapsible snippets, with syntax highlighting.
-* **Shell Script Generation**: It automatically generates a bash script to create the entire folder and file structure.
-* **ZIP Download**: It allows users to download the complete project as a ZIP archive.
-* **Post-installation Guidelines**: You can add instructions to be displayed after the setup.
+- **Interactive File Viewing**: It displays files in collapsible snippets, with syntax highlighting.
+- **Shell Script Generation**: It automatically generates a bash script to create the entire folder and file structure.
+- **ZIP Download**: It allows users to download the complete project as a ZIP archive.
+- **Post-installation Guidelines**: You can add instructions to be displayed after the setup.
 
 ## Dependencies
 

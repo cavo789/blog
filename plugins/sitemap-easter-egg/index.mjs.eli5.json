@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:35.172Z",
+  "source": "index.mjs",
+  "sourceHash": "ef12e4581b0e97e52f0d50f18be79e11090ac938",
+  "lang": "javascript",
+  "explanations": {
+    "31": "The code only re-throws the error if it's NOT a 'file not found' error OR if we've exhausted all retry attempts; otherwise it silently waits and tries again.",
+    "34": "This creates a promise that intentionally delays for a set number of milliseconds before resolving, which pauses the loop between file read attempts.",
+    "47": "This digs through nested config objects with optional chaining (?.) to find a custom sitemap filename, or falls back to the default 'sitemap.xml' if any level doesn't exist.",
+    "67": "This creates a regular expression that matches the opening <urlset> tag with optional attributes, using the 'i' flag to ignore uppercase/lowercase differences.",
+    "73": "The replace method here uses a function callback that receives the matched tag and returns it with the comment appended, so it inserts the comment right after the tag."
+  }
+}

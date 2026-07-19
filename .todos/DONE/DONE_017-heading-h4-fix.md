@@ -6,10 +6,10 @@ Dans `custom.css` (lignes 358-362), les `h4` d'article sont définis avec :
 
 ```css
 article h4 {
-  text-transform: uppercase;   /* ← brutal, réduit la lisibilité */
+  text-transform: uppercase; /* ← brutal, réduit la lisibilité */
   letter-spacing: 0.05em;
-  font-size: 0.9rem;           /* ← très petit */
-  color: var(--ifm-color-emphasis-600);  /* ← gris moyen */
+  font-size: 0.9rem; /* ← très petit */
+  color: var(--ifm-color-emphasis-600); /* ← gris moyen */
   margin-top: 1.25rem;
 }
 ```

@@ -1,4 +1,3 @@
-
 const MAIN_CARDS = [
   {
     title: "Docker",

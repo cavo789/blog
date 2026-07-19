@@ -13,6 +13,7 @@ Coverage map built from full `/blog` analysis (2026-06-08). Before suggesting ar
 **How to apply:** Cross-check any new article idea against these lists; if substantially covered, propose a different angle.
 
 ## WSL2
+
 - Move WSL to another location (`wsl --export/import`)
 - Open Linux folder in Windows Explorer
 - Start Windows programs from WSL (`powershell.exe`, `xdg-open`)
@@ -20,6 +21,7 @@ Coverage map built from full `/blog` analysis (2026-06-08). Before suggesting ar
 - WSLg / RDP connection to local Linux instance
 
 ## ZSH / Oh-My-ZSH
+
 - Install Oh-My-ZSH
 - Powerlevel10k prompt customization
 - Plugins: autosuggestions, syntax-highlighting, ssh-config-suggestions
@@ -29,12 +31,14 @@ Coverage map built from full `/blog` analysis (2026-06-08). Before suggesting ar
 - ZSH functions for Docker management (dex, dstop, dnuke)
 
 ## Git
+
 - `.gitconfig` tips and aliases
 - Connect GitHub via SSH
 - pre-commit hooks (multi-language: phpcbf, black, ruff, shellcheck)
 - Git in Docker containers (`.gitconfig` sharing, SSH key mounting)
 
 ## Docker
+
 - Docker fundamentals (ELI5)
 - Install Docker + PHP container
 - Docker Compose + Docusaurus / RevealJS
@@ -43,12 +47,14 @@ Coverage map built from full `/blog` analysis (2026-06-08). Before suggesting ar
 - Language-specific Docker setups (Python, PHP, Java)
 
 ## FZF
+
 - Introduction to fzf (CTRL+R, CTRL+T)
 - SSH host selector with fzf (`ssh_with_fzf`)
 - FZF inside ZSH Docker functions (container selection)
 - FZF project navigator in modular ZSH workflow
 
 ## SSH
+
 - Key-based auth, `ssh-copy-id`, `~/.ssh/config`
 - SSH + ZSH autosuggestions
 - SSH profile in Windows Terminal
@@ -56,6 +62,7 @@ Coverage map built from full `/blog` analysis (2026-06-08). Before suggesting ar
 - `~/.ssh/conf.d` modularization
 
 ## Bash / Scripting
+
 - Load `.env` variables in Bash
 - Logging library (timestamps, function trace)
 - Parallel tasks (`&` + PID management)
@@ -64,15 +71,18 @@ Coverage map built from full `/blog` analysis (2026-06-08). Before suggesting ar
 - `inotifywait` file monitoring
 
 ## Makefile
+
 - Makefile basics and when to use it
 - Auto-documented `help` target
 - Tips & tricks (conditionals, dependencies, error handling)
 
 ## Other tools covered
+
 - `eza` (modern `ls` replacement)
 - `bat` (mentioned as dependency in some articles)
 
 ## Notable gaps (not yet covered as of 2026-06-09)
+
 - `direnv` (auto-load `.env` per project on `cd`)
 - ZSH startup profiling & optimization (`zprof`, lazy-load)
 - SSH `ProxyJump` / bastion hosts / port forwarding tunnels
@@ -81,6 +91,7 @@ Coverage map built from full `/blog` analysis (2026-06-08). Before suggesting ar
 - Git interactive rebase workflows
 
 ## Drafts in progress (`.unpublished/`)
+
 - `git-delta` — syntax-highlighted pager for git diff
 - `git-bisect` — binary search through history to find broken commit
 - `git-worktree` — work on two branches simultaneously, Docker angle

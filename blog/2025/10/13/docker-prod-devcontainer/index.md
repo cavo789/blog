@@ -40,9 +40,9 @@ Our first instinct should always be: do we need this (utility, configuration, us
 
 Some examples:
 
-* Development tools such as a linter, formatter, code quality tool, debugger, etc. have no place in the image that will be deployed.
-* Creating a user that will allow file synchronization with the host has no place in the image that will be deployed.
-* ...
+- Development tools such as a linter, formatter, code quality tool, debugger, etc. have no place in the image that will be deployed.
+- Creating a user that will allow file synchronization with the host has no place in the image that will be deployed.
+- ...
 
 Our image must be clean, as efficient and lightweight as possible... We must minimize what is known as "attack surface" i.e. to reduce the number of tools we'll install in order to reduce security risks.
 
@@ -101,9 +101,9 @@ As you can see, we've not created here, in the Docker image, an unprivileged use
 
 This is a key concept here:
 
-* The user will be configured while deploying the image using tools like Kubernetes f.i.,
-* When we'll use the Docker image for local development, the user UID/GID has to match the one of the developers (and we don't know right now if it's `1000:1000` or something else),
-* The user can be easily specified in the `compose.yaml` file.
+- The user will be configured while deploying the image using tools like Kubernetes f.i.,
+- When we'll use the Docker image for local development, the user UID/GID has to match the one of the developers (and we don't know right now if it's `1000:1000` or something else),
+- The user can be easily specified in the `compose.yaml` file.
 
 
 </AlertBox>
@@ -294,18 +294,18 @@ As for the production image, here, we need to tell Docker how the image has to b
 
 If you look at this `.devcontainer/compose.yaml` file, we're configuring a few things:
 
-* The list of build arguments (`args`) should mention the user id, group id and name of our user. This is important: when we'll work inside the devcontainer, any files created in the container will be owned by this specific user. If we are using `johndoe` with `1001` for both user id and group id; then files will be synchronized on your host like that; owned by `johndoe` not you. If you are the user `1000:1000` locally, you understand that files won't be yours and you'll get permissions problems. It's something we have to avoid. For this, we have to correctly configure the `.devcontainer/compose.yaml` file.
+- The list of build arguments (`args`) should mention the user id, group id and name of our user. This is important: when we'll work inside the devcontainer, any files created in the container will be owned by this specific user. If we are using `johndoe` with `1001` for both user id and group id; then files will be synchronized on your host like that; owned by `johndoe` not you. If you are the user `1000:1000` locally, you understand that files won't be yours and you'll get permissions problems. It's something we have to avoid. For this, we have to correctly configure the `.devcontainer/compose.yaml` file.
 
 See the syntax: `${LOCAL_UID:-1000}`. By default, the file will assign `1000` (which is often the correct ID). But first, Docker will check if a variable called `LOCAL_UID` exists on the host. If this is the case, that value will be used. So, if running `id -u` (or `id -g` for the group id) doesn't give `1000` on your host; make sure to create the `LOCAL_UID` or `LOCAL_GID` variable in your `.bashrc` file and assign them to the correct value.
 
-* Because our current sample is about Python, we'll also expose the DebugPy standard port thanks to the line `5679:5679` so, when starting a debug session, the container will work.
+- Because our current sample is about Python, we'll also expose the DebugPy standard port thanks to the line `5679:5679` so, when starting a debug session, the container will work.
 
-* We're also referring to two `.env` files, the one from the root folder (used for the Docker PROD image) and the one from the `.devcontainer` folder
+- We're also referring to two `.env` files, the one from the root folder (used for the Docker PROD image) and the one from the `.devcontainer` folder
 
-* We'll add some volumes:
-  * `.:${APP_HOME:-/app}` will mount (=share) files from our project (inside VSCode) with the `${APP_HOME:-/app}` folder i.e. where the files are stored inside the Docker PROD image. Like this, files that we already copied in the PROD Docker image will just be overridden by the ones of our dev session (=> this is where the magic happens)
-  * We'll also ask Docker to create a self-managed volume for the `vscode-extensions`. Thanks to this line, the first time we'll create the devcontainer, VSCode will install extensions but next time, thanks to this line, VSCode won't install extensions again, they're already present.  This `vscode-extensions` is used for data persistence.
-  * And the line for `./.devcontainer/history/.bash_history` will persist the history of your command lines (in the console) in your project. So, next time you'll work inside the devcontainer, the CLI history will be already populated with what you did in the past.
+- We'll add some volumes:
+  - `.:${APP_HOME:-/app}` will mount (=share) files from our project (inside VSCode) with the `${APP_HOME:-/app}` folder i.e. where the files are stored inside the Docker PROD image. Like this, files that we already copied in the PROD Docker image will just be overridden by the ones of our dev session (=> this is where the magic happens)
+  - We'll also ask Docker to create a self-managed volume for the `vscode-extensions`. Thanks to this line, the first time we'll create the devcontainer, VSCode will install extensions but next time, thanks to this line, VSCode won't install extensions again, they're already present.  This `vscode-extensions` is used for data persistence.
+  - And the line for `./.devcontainer/history/.bash_history` will persist the history of your command lines (in the console) in your project. So, next time you'll work inside the devcontainer, the CLI history will be already populated with what you did in the past.
 
 #### The .devcontainer/devcontainer.json file
 

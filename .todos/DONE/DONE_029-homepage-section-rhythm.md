@@ -80,14 +80,10 @@ APRÈS — sections alternées avec rythme
 ```css
 /* Fond du hero avec transition douce vers le blanc */
 .heroHeader::after {
-  content: '';
+  content: "";
   display: block;
   height: 40px;
-  background: linear-gradient(
-    to bottom,
-    var(--hero-background-light),
-    transparent
-  );
+  background: linear-gradient(to bottom, var(--hero-background-light), transparent);
   margin-top: -40px;
   position: relative;
   z-index: 1;

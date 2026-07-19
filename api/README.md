@@ -14,12 +14,12 @@ The counter is **per article** and fully independent — voting on one post has 
 
 ## Files
 
-| File | Description |
-| ---- | ----------- |
-| `reactions.php` | The API script |
-| `.htaccess` | Blocks direct HTTP access to internal files |
-| `reactions-data.json` | Reaction counts (auto-created) |
-| `notifications.json` | Throttle timestamps for email notifications (auto-created) |
+| File                  | Description                                                |
+| --------------------- | ---------------------------------------------------------- |
+| `reactions.php`       | The API script                                             |
+| `.htaccess`           | Blocks direct HTTP access to internal files                |
+| `reactions-data.json` | Reaction counts (auto-created)                             |
+| `notifications.json`  | Throttle timestamps for email notifications (auto-created) |
 
 ## Configuration
 
@@ -32,12 +32,12 @@ define('NOTIFY_COOLDOWN_SECONDS',  3600);
 define('SITE_URL',                'https://www.your-site.com');
 ```
 
-| Constant | Description |
-| -------- | ----------- |
-| `ADMIN_EMAIL` | Address that receives vote notification emails |
-| `ADMIN_TOKEN` | Secret token for the admin endpoint and the dashboard |
+| Constant                  | Description                                                                   |
+| ------------------------- | ----------------------------------------------------------------------------- |
+| `ADMIN_EMAIL`             | Address that receives vote notification emails                                |
+| `ADMIN_TOKEN`             | Secret token for the admin endpoint and the dashboard                         |
 | `NOTIFY_COOLDOWN_SECONDS` | Minimum gap (in seconds) between two notification emails for the same article |
-| `SITE_URL` | Production URL of the site (used in CORS and email links) |
+| `SITE_URL`                | Production URL of the site (used in CORS and email links)                     |
 
 ## API reference
 
@@ -47,8 +47,8 @@ Returns the current reaction counts for a given article.
 
 **Query parameter**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name   | Type   | Description                                   |
+| ------ | ------ | --------------------------------------------- |
 | `slug` | string | Permalink of the article, without leading `/` |
 
 **Response** `200 OK`
@@ -69,9 +69,9 @@ Records a vote for a given article.
 { "slug": "blog/modular-zsh-workflow", "vote": "helpful" }
 ```
 
-| Field | Type | Values |
-| ----- | ---- | ------ |
-| `slug` | string | Permalink without leading `/` |
+| Field  | Type   | Values                         |
+| ------ | ------ | ------------------------------ |
+| `slug` | string | Permalink without leading `/`  |
 | `vote` | string | `"helpful"` or `"not_helpful"` |
 
 **Response** `200 OK` — updated counts (same shape as GET)
@@ -86,8 +86,8 @@ Returns the full reaction dataset for **all articles** (admin use only).
 
 **Query parameter**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type   | Description              |
+| ------- | ------ | ------------------------ |
 | `admin` | string | Must match `ADMIN_TOKEN` |
 
 **Response** `200 OK`
@@ -95,7 +95,7 @@ Returns the full reaction dataset for **all articles** (admin use only).
 ```json
 {
   "blog/modular-zsh-workflow": { "helpful": 42, "not_helpful": 3 },
-  "blog/docker-networking":    { "helpful": 17, "not_helpful": 1 }
+  "blog/docker-networking": { "helpful": 17, "not_helpful": 1 }
 }
 ```
 
@@ -105,11 +105,11 @@ Returns `403 Forbidden` if the token is wrong or missing.
 
 ### Error responses
 
-| Code | Reason |
-| ---- | ------ |
-| 400 | Missing or empty `slug`, invalid `vote` |
-| 403 | Wrong or missing admin token / request origin not allowed |
-| 405 | HTTP method other than GET / POST / OPTIONS |
+| Code | Reason                                                    |
+| ---- | --------------------------------------------------------- |
+| 400  | Missing or empty `slug`, invalid `vote`                   |
+| 403  | Wrong or missing admin token / request origin not allowed |
+| 405  | HTTP method other than GET / POST / OPTIONS               |
 
 ## Email notifications
 
@@ -149,7 +149,7 @@ Example `reactions-data.json`:
 ```json
 {
   "blog/modular-zsh-workflow": { "helpful": 42, "not_helpful": 3 },
-  "blog/docker-networking":    { "helpful": 17, "not_helpful": 1 }
+  "blog/docker-networking": { "helpful": 17, "not_helpful": 1 }
 }
 ```
 
@@ -157,13 +157,13 @@ Direct HTTP access to both JSON files and this README is blocked by `.htaccess`.
 
 ## Security
 
-| Measure | Details |
-| ------- | ------- |
-| CORS origin check | Only `SITE_URL` and `http://localhost:3000` are accepted |
-| Admin token | Full dataset endpoint requires a secret token |
-| Input sanitisation | Slug is stripped to `[a-z0-9\-\/]`, max 200 chars |
-| File locking | `flock(LOCK_EX)` prevents data corruption under concurrent writes |
-| `.htaccess` | Blocks public access to all JSON files and this README |
+| Measure            | Details                                                           |
+| ------------------ | ----------------------------------------------------------------- |
+| CORS origin check  | Only `SITE_URL` and `http://localhost:3000` are accepted          |
+| Admin token        | Full dataset endpoint requires a secret token                     |
+| Input sanitisation | Slug is stripped to `[a-z0-9\-\/]`, max 200 chars                 |
+| File locking       | `flock(LOCK_EX)` prevents data corruption under concurrent writes |
+| `.htaccess`        | Blocks public access to all JSON files and this README            |
 
 > **Note:** vote counts can be incremented by anyone who calls the API directly from an allowed origin. For a personal blog this is an acceptable trade-off. The `localStorage` guard handles accidental double-voting from legitimate readers.
 

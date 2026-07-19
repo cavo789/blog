@@ -44,7 +44,9 @@
   font-weight: 500;
   cursor: pointer;
   color: var(--ifm-font-color-base);
-  transition: background 0.12s, border-color 0.12s;
+  transition:
+    background 0.12s,
+    border-color 0.12s;
   text-align: left;
 }
 

@@ -84,10 +84,10 @@ The command line to run is: `docker container list`
 
 Explanation of the arguments used in our `docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache` command
 
-* `--detach`: by default, `docker run` executes the container and closes it as soon as the job is finished. If the image were a virus scanner, `docker run` would run a scan and close the container when the scan is complete. Here, we want to keep our site "listening",
-* `--name step_1_1a`: just for simplicity's sake, let's give our container a name. This is a recommended practice for clearly identifying containers,
-* `-p 80:80`: our PHP+Apache image runs on port `80`, so we want to map this "internal" port to port `80` on our computer. This allows us to access the web site.
-* `php:7.4.29-apache`: the name of the used image. We ask php+apache, version 7.4.29.
+- `--detach`: by default, `docker run` executes the container and closes it as soon as the job is finished. If the image were a virus scanner, `docker run` would run a scan and close the container when the scan is complete. Here, we want to keep our site "listening",
+- `--name step_1_1a`: just for simplicity's sake, let's give our container a name. This is a recommended practice for clearly identifying containers,
+- `-p 80:80`: our PHP+Apache image runs on port `80`, so we want to map this "internal" port to port `80` on our computer. This allows us to access the web site.
+- `php:7.4.29-apache`: the name of the used image. We ask php+apache, version 7.4.29.
 
 Let's try to access the local site: `http://127.0.0.1:80`.
 

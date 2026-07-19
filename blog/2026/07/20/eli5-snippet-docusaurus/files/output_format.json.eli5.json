@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-19T07:28:45.680Z",
+  "source": "output_format.json",
+  "sourceHash": "32e9985835678424493fe80c73a5ec4a2ae740b9",
+  "lang": "json",
+  "explanations": {
+    "3": "This specifies which Claude model to use for generating explanations—think of it as picking which version of the AI assistant handles the task.",
+    "4": "The ISO 8601 timestamp format with Z means this was generated at that exact moment in UTC (Coordinated Universal Time).",
+    "9": "The asterisk in package*.json is a wildcard that matches both package.json and package-lock.json, copying whichever files exist."
+  }
+}

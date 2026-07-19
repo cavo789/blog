@@ -20,10 +20,10 @@ From this structure, the script derives the date `2025-08-30` and adds it to the
 
 ## ⚙️ How It Works
 
-* Traverses all `.md` and `.mdx` files under the `./blog` directory.
-* Extracts the date from the folder path.
-* Checks if the file already contains a date: field.
-* If not, it inserts the date into the front matter (between `---` markers).
+- Traverses all `.md` and `.mdx` files under the `./blog` directory.
+- Extracts the date from the folder path.
+- Checks if the file already contains a date: field.
+- If not, it inserts the date into the front matter (between `---` markers).
 
 ## 🚀 Usage
 
@@ -38,9 +38,9 @@ or just, `make add-date`.
 
 ## 🧠 Notes
 
-* The script assumes that the front matter starts and ends with `---`.
-* Files with an existing `date:` field will be skipped.
-* Invalid folder structures (missing year/month/day) will be ignored with a warning.
+- The script assumes that the front matter starts and ends with `---`.
+- Files with an existing `date:` field will be skipped.
+- Invalid folder structures (missing year/month/day) will be ignored with a warning.
 
 ## 📌 Example Output
 
@@ -57,8 +57,8 @@ Content goes here...
 
 ## 🛠️ Requirements
 
-* Bash shell
-* `grep`, `sed` and `find` utilities (standard on most Unix-like systems)
+- Bash shell
+- `grep`, `sed` and `find` utilities (standard on most Unix-like systems)
 
 ## 📄 License
 

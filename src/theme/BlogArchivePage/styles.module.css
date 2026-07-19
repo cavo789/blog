@@ -90,7 +90,9 @@
   background-color: var(--ifm-color-gray-100);
   font-size: 0.9rem;
   cursor: pointer;
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition:
+    border-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
 }
 
 .filterGroupSidebar select:hover {
@@ -153,7 +155,7 @@
 }
 
 .timelineYear::before {
-  content: '';
+  content: "";
   position: absolute;
   left: -1.4rem;
   top: 0.3rem;
@@ -182,7 +184,9 @@
   padding: 4px 8px;
   display: inline-block;
   border-radius: var(--ifm-button-border-radius);
-  transition: background-color 0.2s, transform 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
 }
 
 .timelineMonthLink:hover {

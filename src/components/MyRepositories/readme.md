@@ -4,10 +4,10 @@ A React layout component for Docusaurus that displays a user's public GitHub rep
 
 ## 🚀 Features
 
-* 🧑‍💻 Displays public GitHub repositories for a given user
-* 🧭 Separates active and archived repositories
-* 🖼️ Includes a customizable hero section
-* 🎨 Styled layout using CSS modules
+- 🧑‍💻 Displays public GitHub repositories for a given user
+- 🧭 Separates active and archived repositories
+- 🖼️ Includes a customizable hero section
+- 🎨 Styled layout using CSS modules
 
 ## 📦 Installation
 
@@ -25,28 +25,28 @@ Ensure the `GithubProjects` and `Hero` components are available and properly con
 ```jsx
 import MyRepositories from "@site/src/components/MyRepositories";
 
-<MyRepositories username="your-github-username" />
+<MyRepositories username="your-github-username" />;
 ```
 
 ## 🧾 Props
 
-| Prop | Type | Required | Default | Description |
-| --- | --- | --- | --- | --- |
-| `username` | string | ✅ | — | GitHub username to fetch repositories |
+| Prop       | Type   | Required | Default | Description                           |
+| ---------- | ------ | -------- | ------- | ------------------------------------- |
+| `username` | string | ✅       | —       | GitHub username to fetch repositories |
 
 ## 🛠️ Requirements
 
-* Docusaurus v3+
-* `GithubProjects` component for rendering repositories
-* `Hero` component for introductory content
+- Docusaurus v3+
+- `GithubProjects` component for rendering repositories
+- `Hero` component for introductory content
 
 ## 🎨 Styling
 
 Customize layout and spacing via `styles.module.css`. You can style:
 
-* Main container
-* Hero section
-* Typography and spacing
+- Main container
+- Hero section
+- Typography and spacing
 
 ## 📄 License
 

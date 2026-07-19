@@ -48,11 +48,11 @@ Here above, we're creating a temporary OS variable called `SSHPASS` with our pas
 
 Using a proxy is not so intuitive. The flag to use is `-o ProxyCommand=''` and a specific command. The command is `/usr/bin/nc --proxy-type http --proxy PROXY:PORT %h %p` where:
 
-* `proxy-type` should be initialized to `http` or `https` depending on your proxy.
-* `--proxy` should be set to the proxy domain name (f.i. `my.proxy.be`) and perhaps followed by `:8080` i.e. the port to use
-* then `%h %p` should be part of the command
-  * `%h` is a placeholder that will be replaced by the hostname of the SFTP server you're trying to connect to.
-  * `%p` is another placeholder that will be replaced by the port number of the SFTP server.
+- `proxy-type` should be initialized to `http` or `https` depending on your proxy.
+- `--proxy` should be set to the proxy domain name (f.i. `my.proxy.be`) and perhaps followed by `:8080` i.e. the port to use
+- then `%h %p` should be part of the command
+  - `%h` is a placeholder that will be replaced by the hostname of the SFTP server you're trying to connect to.
+  - `%p` is another placeholder that will be replaced by the port number of the SFTP server.
 
 The final command will look something like:
 

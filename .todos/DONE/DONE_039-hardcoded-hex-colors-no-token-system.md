@@ -4,7 +4,7 @@
 
 ## Problème
 
-`AGENTS.md` : *"Avoid hardcoded hex colors"* — utiliser les variables Infima. Pourtant, un grep sur
+`AGENTS.md` : _"Avoid hardcoded hex colors"_ — utiliser les variables Infima. Pourtant, un grep sur
 `src/components/**/*.css` remonte des dizaines de couleurs hex en dur, notamment :
 
 - `Blog/AlertBox/styles.module.css` : ~90 valeurs hex différentes pour gérer 7 variantes ×

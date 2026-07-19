@@ -51,9 +51,9 @@ If everything is correctly set up, WinSCP will start a session terminal and will
 
 More info about the Synchronize verb of WinSCP: [https://winscp.net/eng/docs/scriptcommand_synchronize](https://winscp.net/eng/docs/scriptcommand_synchronize).
 
-* If files/folders are already there, don't do anything.
-* If there are new files/folders, copy them.
-* If files/folders are no more on the local drive, remove them from the remote server.
+- If files/folders are already there, don't do anything.
+- If there are new files/folders, copy them.
+- If files/folders are no more on the local drive, remove them from the remote server.
 
 So local is the master.
 
@@ -63,6 +63,6 @@ See the line `synchronize remote`.
 
 Choose `remote`, `local` or `both`:
 
-* When the first parameter is `local`, changes from remote directories are applied to local directories.
-* When the first parameter is `remote`, changes from the local directories are applied to the remote directories.
-* When the first parameter is `both`, both local and remote directories can be modified ([source](https://winscp.net/eng/docs/scriptcommand_synchronize#remarks)).
+- When the first parameter is `local`, changes from remote directories are applied to local directories.
+- When the first parameter is `remote`, changes from the local directories are applied to the remote directories.
+- When the first parameter is `both`, both local and remote directories can be modified ([source](https://winscp.net/eng/docs/scriptcommand_synchronize#remarks)).

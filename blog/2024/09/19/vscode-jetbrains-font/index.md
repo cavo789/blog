@@ -37,17 +37,17 @@ Once downloaded, go to your downloads folder and unzip the file then jump into t
 
 ## Configure VSCode to use JetBrains Mono font
 
-* Press <kbd>CTRL</kbd>+<kbd>,</kbd> to open your settings page
-* Under the `Text Editor --> Font` section, type `JetBrains Mono` for the font family.
+- Press <kbd>CTRL</kbd>+<kbd>,</kbd> to open your settings page
+- Under the `Text Editor --> Font` section, type `JetBrains Mono` for the font family.
 
 But the easier way is:
 
-* Press <kbd>CTRL</kbd>+<kbd>,</kbd> to open your settings page
-* In the top right part of the screen, retrieve the `Open Settings (JSON)` button and click on it
+- Press <kbd>CTRL</kbd>+<kbd>,</kbd> to open your settings page
+- In the top right part of the screen, retrieve the `Open Settings (JSON)` button and click on it
 
 ![Open settings.json](./images/open_settings_json.webp)
 
-* Then copy paste these entries:
+- Then copy paste these entries:
 
 <Snippet filename=".vscode/settings.json" source="./files/settings.json" />
 

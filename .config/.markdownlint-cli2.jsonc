@@ -3,8 +3,8 @@
   // Linting rules live in .markdownlint.json and are reused via "extends"
   // so there is a single source of truth for the rules.
   "config": {
-    "extends": "./.markdownlint.json"
+    "extends": "./.markdownlint.json",
   },
   "noBanner": true,
-  "noProgress": true
+  "noProgress": true,
 }

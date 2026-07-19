@@ -7,6 +7,7 @@
 ## Concept
 
 L'auteur peut indiquer le niveau prévu d'un article en frontmatter. Le lecteur peut voter pour dire si ce niveau correspond à son ressenti. Cela crée un signal utile pour :
+
 - Calibrer l'écriture future
 - Aider les lecteurs à choisir leurs articles
 - Détecter les articles "mal étiquetés"
@@ -16,7 +17,7 @@ L'auteur peut indiquer le niveau prévu d'un article en frontmatter. Le lecteur 
 ```yaml
 ---
 title: Advanced Docker Networking
-difficulty: intermediate   # beginner | intermediate | advanced
+difficulty: intermediate # beginner | intermediate | advanced
 ---
 ```
 
@@ -30,6 +31,7 @@ Après la lecture, un widget s'affiche :
 > [Too easy] [Just right] [Too hard]
 
 Résultats agrégés (après vote) :
+
 > 12 readers: 8% too easy · 67% just right · 25% too hard
 
 ## Architecture

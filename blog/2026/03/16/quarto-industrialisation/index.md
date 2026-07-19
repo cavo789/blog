@@ -234,9 +234,9 @@ I realized that even with all this automation, writers still had to remember var
 
 It watches my `_variables.yml` and my `features/` directory. The second I save a change, the daemon wakes up and generates **VS Code IntelliSense Snippets** on the fly.
 
-* I type `v-` and I get a list of every variable in the project with its current value.
-* I type `feature-` and I get a list of every automation script with its full documentation.
-* I type `r-` and it has already scanned all my files to offer me cross-references to every heading and figure in the project.
+- I type `v-` and I get a list of every variable in the project with its current value.
+- I type `feature-` and I get a list of every automation script with its full documentation.
+- I type `r-` and it has already scanned all my files to offer me cross-references to every heading and figure in the project.
 
 It’s like having a dedicated librarian living inside my editor, watching my every move to make my life easier.
 
@@ -246,10 +246,10 @@ The daemon is started in my Devcontainer using the `nohup` command, ensuring it 
 
 Scaling to 50 projects meant I couldn't have 50 different configurations. I centralized everything:
 
-* **`_variables.yml`**: The "Brain" of the project. Every name, every link, and every setting is here. It’s the single source of truth.
-* **`update_chapters.py`**: A script I wrote that maintains the Quarto sidebar. It respects folder numbering and ignores "draft" folders, ensuring a perfect table of contents every time.
-* **The Glossary**: A single YAML file that generates an alphabetical, anchor-linked glossary across the entire site.
-* **Global References**: A central file for all external URLs, so I never have to hunt for a link twice.
+- **`_variables.yml`**: The "Brain" of the project. Every name, every link, and every setting is here. It’s the single source of truth.
+- **`update_chapters.py`**: A script I wrote that maintains the Quarto sidebar. It respects folder numbering and ignores "draft" folders, ensuring a perfect table of contents every time.
+- **The Glossary**: A single YAML file that generates an alphabetical, anchor-linked glossary across the entire site.
+- **Global References**: A central file for all external URLs, so I never have to hunt for a link twice.
 
 ### The Result
 

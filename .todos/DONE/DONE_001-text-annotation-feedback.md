@@ -31,6 +31,7 @@ L'annotation est envoyée au backend PHP, stockée dans `annotations.json`, et u
 ### Backend — `api/annotations.php`
 
 Même squelette que `reactions.php` :
+
 - GET `?admin=TOKEN` → retourne toutes les annotations
 - POST `{ slug, selectedText, context, type, note? }` → stocke + notifie
 

@@ -8,6 +8,7 @@ mainTag: git
 tags: [git, linux, bash, zsh]
 date: 2026-06-29
 ai_assisted: true
+blueskyRecordKey: 3mpfvg4xwkk2d
 ---
 
 ![git worktree: Work on Two Branches at the Same Time](/img/v2/git_worktree.webp)
@@ -43,10 +44,10 @@ $ git stash pop
 
 It works. Most of the time. But:
 
-* Your Docker containers are now pointing at the wrong codebase — you need to restart them
-* Your editor has lost context — all those open files are gone or pointing at main's versions
-* If `git stash pop` has a conflict, you now have a three-way mess to resolve while still stressed from the hotfix
-* You can only have one active branch at a time
+- Your Docker containers are now pointing at the wrong codebase — you need to restart them
+- Your editor has lost context — all those open files are gone or pointing at main's versions
+- If `git stash pop` has a conflict, you now have a three-way mess to resolve while still stressed from the hotfix
+- You can only have one active branch at a time
 
 The deeper issue: a git stash is fragile state. It's not a branch. It has no history. It can conflict. And it disappears once you pop it.
 

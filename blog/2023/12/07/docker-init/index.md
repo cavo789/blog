@@ -39,9 +39,9 @@ Make sure to select `PHP with Apache - suitable for a PHP web application`.
 
 For the next questions:
 
-* `What version of PHP do you want to use?`, please enter f.i. `8.2`,
-* `What's the relative directory for your app?`, just press enter to select the current directory,
-* `What local port do you want to use to access your server?`, just press enter to use the proposed port number or f.i. enter `8080`.
+- `What version of PHP do you want to use?`, please enter f.i. `8.2`,
+- `What's the relative directory for your app?`, just press enter to select the current directory,
+- `What local port do you want to use to access your server?`, just press enter to use the proposed port number or f.i. enter `8080`.
 
 <Terminal typewriter source="./files/terminal-3.txt" />
 

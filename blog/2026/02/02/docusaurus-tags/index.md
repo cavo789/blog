@@ -43,9 +43,9 @@ The coolest part of the script is the "Optimization Suggestions". It compares ev
 
 It looks for:
 
-* **Case variations**: `GitHub` vs `github`.
-* **Plurals**: `snippet` vs `snippets`.
-* **Substrings**: `visual studio code` vs `vscode`.
+- **Case variations**: `GitHub` vs `github`.
+- **Plurals**: `snippet` vs `snippets`.
+- **Substrings**: `visual studio code` vs `vscode`.
 
 This helps me spot the mess I didn't even know I had.
 

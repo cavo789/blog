@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import {
-  HtmlClassNameProvider,
-  ThemeClassNames,
-} from "@docusaurus/theme-common";
-import {
-  BlogPostProvider,
-  useBlogPost,
-} from "@docusaurus/plugin-content-blog/client";
+import { HtmlClassNameProvider, ThemeClassNames } from "@docusaurus/theme-common";
+import { BlogPostProvider, useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import BlogLayout from "@theme/BlogLayout";
 import BlogPostItem from "@theme/BlogPostItem";
 import ReadingProgress from "@site/src/components/ReadingProgress";
@@ -75,7 +69,11 @@ function BlogPostPageContent({ sidebar, children }) {
           toc={toc}
           minHeadingLevel={tocMinHeadingLevel}
           maxHeadingLevel={tocMaxHeadingLevel}
-          className={clsx(ThemeClassNames.docs.docTocMobile, "blog-toc-mobile", tocHidden && "blog-toc-mobile--hidden")}
+          className={clsx(
+            ThemeClassNames.docs.docTocMobile,
+            "blog-toc-mobile",
+            tocHidden && "blog-toc-mobile--hidden",
+          )}
         />
       )}
 
@@ -112,7 +110,7 @@ function InnerBlogPostPage({ sidebar, BlogPostContent }) {
     <HtmlClassNameProvider
       className={clsx(
         ThemeClassNames.wrapper.blogPages,
-        ThemeClassNames.page.blogPostPage
+        ThemeClassNames.page.blogPostPage,
       )}
     >
       <BlogPostPageMetadata />

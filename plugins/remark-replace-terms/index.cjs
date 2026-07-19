@@ -43,10 +43,7 @@ function remarkReplaceWords() {
           const after = fullString[offset + match.length] || "";
 
           // Skip compound words like "vscode-docker", "foo.markdown"
-          if (
-            ["-", ".", "/"].includes(before) ||
-            ["-", ".", "/"].includes(after)
-          ) {
+          if (["-", ".", "/"].includes(before) || ["-", ".", "/"].includes(after)) {
             return match;
           }
 

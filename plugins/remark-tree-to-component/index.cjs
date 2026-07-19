@@ -344,9 +344,7 @@ function remarkTreeToComponent() {
       let match;
 
       // Start parsing after the "tree" keyword
-      const attributeString = fullHeader
-        .substring(fullHeader.indexOf("tree") + 4)
-        .trim();
+      const attributeString = fullHeader.substring(fullHeader.indexOf("tree") + 4).trim();
 
       while ((match = attributeRegex.exec(attributeString)) !== null) {
         const key = match[1];
@@ -366,9 +364,7 @@ function remarkTreeToComponent() {
       const parsed = parseTree(node.value);
 
       // Convert parsed structure into an MDX AST structure
-      const childrenMdx = parsed.map((child) =>
-        nodeToMdxElement(child, settings)
-      );
+      const childrenMdx = parsed.map((child) => nodeToMdxElement(child, settings));
 
       // Prepare attributes for the root <Trees> component
       /** @type {MdxJsxAttribute[]} */
@@ -403,9 +399,7 @@ function remarkTreeToComponent() {
           .join("\n");
 
         // Build the root tag string with the quoted title attribute
-        const treesTitleAttr = settings.title
-          ? ` title="${settings.title}"`
-          : "";
+        const treesTitleAttr = settings.title ? ` title="${settings.title}"` : "";
         const finalJsxString = `<Trees${treesTitleAttr}>\n${rawJsxChildren}\n</Trees>`;
 
         // Create an MDX code block node for the generated JSX

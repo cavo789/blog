@@ -137,11 +137,11 @@ Congratulations, we've just tested 10 features in less than 26 seconds.
 
 ## In-depth
 
-* Pest is using [playwright](https://pestphp.com/docs/browser-testing#content-getting-started); this is why our Dockerfile is more complex because we should also install NodeJS,
-* Something really cooooool: we don't need to `wait_for` something change on the page, Pest will do it for us. For instance, with Cypress and Behat, when we click on a button, we have to wait until, for instance, the Ajax script on that page has fired and the `DOM element` has been loaded. With Pest, we shouldn't care about this and that's an amazing feature!
-* We also have to create a specific user in the Docker image to match our local one. This is because when a test fails, Pest (running in Docker) will create an image and that one should be created on our host machine with our UID/GID,
-* The `make up` action defined in the `makefile` is mounting our local `tests` folder in the container. It means that if we create new tests files or update existing ones, they will be immediately synchronized with the running container; nothing special to do here,
-* To reduce the need for configuration files, a `WEBSITE` operating system variable has been defined (see the `makefile`). That variable will be created in the container. A PHP script will then refer to the variable like this `getenv('WEBSITE')`.
-* There is a `--parallel` flag for Pest. If you want to run your different tests files in parallel, edit the `makefile`, search for `docker exec -it demo_pest sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest"` and replace with `docker exec -it demo_pest sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest --parallel"`
+- Pest is using [playwright](https://pestphp.com/docs/browser-testing#content-getting-started); this is why our Dockerfile is more complex because we should also install NodeJS,
+- Something really cooooool: we don't need to `wait_for` something change on the page, Pest will do it for us. For instance, with Cypress and Behat, when we click on a button, we have to wait until, for instance, the Ajax script on that page has fired and the `DOM element` has been loaded. With Pest, we shouldn't care about this and that's an amazing feature!
+- We also have to create a specific user in the Docker image to match our local one. This is because when a test fails, Pest (running in Docker) will create an image and that one should be created on our host machine with our UID/GID,
+- The `make up` action defined in the `makefile` is mounting our local `tests` folder in the container. It means that if we create new tests files or update existing ones, they will be immediately synchronized with the running container; nothing special to do here,
+- To reduce the need for configuration files, a `WEBSITE` operating system variable has been defined (see the `makefile`). That variable will be created in the container. A PHP script will then refer to the variable like this `getenv('WEBSITE')`.
+- There is a `--parallel` flag for Pest. If you want to run your different tests files in parallel, edit the `makefile`, search for `docker exec -it demo_pest sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest"` and replace with `docker exec -it demo_pest sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest --parallel"`
 
 <Snippet filename="makefile.diff" source="./files/makefile.diff" />

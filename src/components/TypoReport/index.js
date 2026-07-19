@@ -9,9 +9,9 @@ const STORAGE_KEY = "typo_reports"; // [{ts, hash}]
 const MAX_PER_HOUR = 5;
 
 const FEEDBACK_TYPES = [
-  { id: "typo",       icon: "🔤", label: "Typo" },
-  { id: "incorrect",  icon: "❌", label: "Incorrect" },
-  { id: "outdated",   icon: "⏰", label: "Outdated" },
+  { id: "typo", icon: "🔤", label: "Typo" },
+  { id: "incorrect", icon: "❌", label: "Incorrect" },
+  { id: "outdated", icon: "⏰", label: "Outdated" },
   { id: "suggestion", icon: "💡", label: "Suggestion" },
 ];
 
@@ -66,7 +66,7 @@ export default function TypoReport({ metadata }) {
   const [feedbackType, setFeedbackType] = useState("");
   const [comment, setComment] = useState("");
 
-  const nonceRef   = useRef(null);
+  const nonceRef = useRef(null);
   const articleRef = useRef(null);
   const wrapperRef = useRef(null);
   const contextRef = useRef(""); // ±100 chars around selection
@@ -76,11 +76,14 @@ export default function TypoReport({ metadata }) {
     if (!slug) return;
 
     fetch(`${apiUrl}?nonce`)
-      .then((r) => r.ok ? r.json() : null)
-      .then((data) => { if (data?.nonce) nonceRef.current = data.nonce; })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data?.nonce) nonceRef.current = data.nonce;
+      })
       .catch(() => {});
 
-    const article = document.querySelector("article") || document.querySelector(".theme-doc-markdown");
+    const article =
+      document.querySelector("article") || document.querySelector(".theme-doc-markdown");
     if (!article) return;
     articleRef.current = article;
 
@@ -92,17 +95,16 @@ export default function TypoReport({ metadata }) {
       if (text.length < 3) return;
 
       const range = sel.getRangeAt(0);
-      const rect  = range.getBoundingClientRect();
+      const rect = range.getBoundingClientRect();
 
       if (!article.contains(range.commonAncestorContainer)) return;
 
       const fullText = article.innerText || "";
       const idx = fullText.indexOf(text);
-      contextRef.current = idx !== -1
-        ? fullText.slice(Math.max(0, idx - 100), idx + text.length + 100)
-        : "";
+      contextRef.current =
+        idx !== -1 ? fullText.slice(Math.max(0, idx - 100), idx + text.length + 100) : "";
 
-      const top  = window.scrollY + rect.bottom + 8;
+      const top = window.scrollY + rect.bottom + 8;
       const left = Math.min(window.scrollX + rect.left, window.innerWidth - 296);
 
       setSelectedText(text);
@@ -126,63 +128,69 @@ export default function TypoReport({ metadata }) {
     };
   }, [slug, apiUrl]);
 
-  const handleTypeSelect = useCallback((type) => {
-    if (isLocalRateLimited()) {
-      setPhase("error");
-      return;
-    }
-    if (isLocalDuplicate(slug, selectedText)) {
-      setPhase("done");
-      return;
-    }
-    setFeedbackType(type);
-    setComment("");
-    setPhase("confirming");
-  }, [slug, selectedText]);
-
-  const handleSubmit = useCallback(async (e) => {
-    e.preventDefault();
-    setPhase("submitting");
-
-    let nonce = nonceRef.current;
-    if (!nonce) {
-      try {
-        const r = await fetch(`${apiUrl}?nonce`);
-        const d = r.ok ? await r.json() : null;
-        nonce = d?.nonce ?? null;
-        nonceRef.current = nonce;
-      } catch {}
-    }
-
-    const honeypot = e.target.elements["website"]?.value ?? "";
-
-    try {
-      const res = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          slug,
-          text:    selectedText,
-          type:    feedbackType,
-          comment,
-          context: contextRef.current,
-          website: honeypot,
-          nonce:   nonce ?? "",
-        }),
-      });
-      if (!res.ok) {
+  const handleTypeSelect = useCallback(
+    (type) => {
+      if (isLocalRateLimited()) {
         setPhase("error");
         return;
       }
-      recordLocalSubmission(slug, selectedText);
-      setPhase("done");
-    } catch {
-      setPhase("error");
-    }
-  }, [slug, selectedText, feedbackType, comment, apiUrl]);
+      if (isLocalDuplicate(slug, selectedText)) {
+        setPhase("done");
+        return;
+      }
+      setFeedbackType(type);
+      setComment("");
+      setPhase("confirming");
+    },
+    [slug, selectedText],
+  );
 
-  const handleBack    = useCallback(() => setPhase("selecting"), []);
-  const handleCancel  = useCallback(() => setPhase("idle"), []);
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      setPhase("submitting");
+
+      let nonce = nonceRef.current;
+      if (!nonce) {
+        try {
+          const r = await fetch(`${apiUrl}?nonce`);
+          const d = r.ok ? await r.json() : null;
+          nonce = d?.nonce ?? null;
+          nonceRef.current = nonce;
+        } catch {}
+      }
+
+      const honeypot = e.target.elements["website"]?.value ?? "";
+
+      try {
+        const res = await fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            slug,
+            text: selectedText,
+            type: feedbackType,
+            comment,
+            context: contextRef.current,
+            website: honeypot,
+            nonce: nonce ?? "",
+          }),
+        });
+        if (!res.ok) {
+          setPhase("error");
+          return;
+        }
+        recordLocalSubmission(slug, selectedText);
+        setPhase("done");
+      } catch {
+        setPhase("error");
+      }
+    },
+    [slug, selectedText, feedbackType, comment, apiUrl],
+  );
+
+  const handleBack = useCallback(() => setPhase("selecting"), []);
+  const handleCancel = useCallback(() => setPhase("idle"), []);
   const handleDismiss = useCallback(() => setPhase("idle"), []);
 
   // SSR-safe: render nothing when idle.
@@ -211,19 +219,25 @@ export default function TypoReport({ metadata }) {
               </button>
             ))}
           </div>
-          <button className={styles.cancelSmall} onClick={handleCancel}>Cancel</button>
+          <button className={styles.cancelSmall} onClick={handleCancel}>
+            Cancel
+          </button>
         </div>
       )}
 
       {phase === "confirming" && (
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.selectedPreview}>
-            &quot;{selectedText.length > 80 ? selectedText.slice(0, 80) + "…" : selectedText}&quot;
+            &quot;
+            {selectedText.length > 80 ? selectedText.slice(0, 80) + "…" : selectedText}
+            &quot;
           </div>
           {typeInfo && (
             <div className={styles.typeBadge}>
               {typeInfo.icon} {typeInfo.label}
-              <button type="button" className={styles.changeTypeBtn} onClick={handleBack}>change</button>
+              <button type="button" className={styles.changeTypeBtn} onClick={handleBack}>
+                change
+              </button>
             </div>
           )}
           <textarea
@@ -234,30 +248,50 @@ export default function TypoReport({ metadata }) {
             onChange={(e) => setComment(e.target.value)}
           />
           {/* Honeypot — bots fill this, humans don't see it */}
-          <input name="website" className={styles.honeypot} tabIndex={-1} autoComplete="off" defaultValue="" />
+          <input
+            name="website"
+            className={styles.honeypot}
+            tabIndex={-1}
+            autoComplete="off"
+            defaultValue=""
+          />
           <div className={styles.actions}>
-            <button type="submit" className={styles.btnPrimary}>Send</button>
-            <button type="button" className={styles.btnSecondary} onClick={handleCancel}>Cancel</button>
+            <button type="submit" className={styles.btnPrimary}>
+              Send
+            </button>
+            <button type="button" className={styles.btnSecondary} onClick={handleCancel}>
+              Cancel
+            </button>
           </div>
           <p className={styles.disclaimer}>One-way signal — no reply will be sent.</p>
         </form>
       )}
 
-      {phase === "submitting" && (
-        <div className={styles.status}>Sending…</div>
-      )}
+      {phase === "submitting" && <div className={styles.status}>Sending…</div>}
 
       {phase === "done" && (
         <div className={styles.status}>
           Thanks for the feedback! ✓
-          <button className={styles.dismissBtn} onClick={handleDismiss} aria-label="Dismiss">✕</button>
+          <button
+            className={styles.dismissBtn}
+            onClick={handleDismiss}
+            aria-label="Dismiss"
+          >
+            ✕
+          </button>
         </div>
       )}
 
       {phase === "error" && (
         <div className={styles.statusError}>
           Could not send.
-          <button className={styles.dismissBtn} onClick={handleDismiss} aria-label="Dismiss">✕</button>
+          <button
+            className={styles.dismissBtn}
+            onClick={handleDismiss}
+            aria-label="Dismiss"
+          >
+            ✕
+          </button>
         </div>
       )}
     </div>

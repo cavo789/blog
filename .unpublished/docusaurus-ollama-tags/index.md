@@ -91,8 +91,8 @@ The second script, `scripts/02_analyze_and_link.py`, will read the generated tag
 
 Two JSON files will be created in the `output` directory:
 
-* `suggested_interlinks.json` with the related articles for each article i.e. which articles should be interlinked together based on their tags, and
-* `tag_analysis.json` which lists all the tags and their occurrences across the articles.
+- `suggested_interlinks.json` with the related articles for each article i.e. which articles should be interlinked together based on their tags, and
+- `tag_analysis.json` which lists all the tags and their occurrences across the articles.
 
 ![Running the analyze and link script](./images/running_02_analyze_and_link.png)
 
@@ -121,9 +121,9 @@ In this article, I used `llama3:8b` as a starting point. However, the true beaut
 
 ### Which one should you pick?
 
-* **Go for `llama3:8b`** if you are just getting started or have limited RAM. It is perfect for rapid prototyping and simple automation tasks that don't require deep logical reasoning.
-* **Try `mistral`** if you find Llama 3's responses a bit too rigid. Many developers prefer Mistral for its creative flair and efficiency. It’s an excellent "daily driver" for general coding support.
-* **Scale up to `llama3:70b`** if you are performing tasks that demand high precision—such as refactoring complex codebases, deep logical debugging, or processing large datasets where accuracy is critical. Because this model is massive, it significantly reduces "hallucinations," making it the most reliable choice for professional work.
+- **Go for `llama3:8b`** if you are just getting started or have limited RAM. It is perfect for rapid prototyping and simple automation tasks that don't require deep logical reasoning.
+- **Try `mistral`** if you find Llama 3's responses a bit too rigid. Many developers prefer Mistral for its creative flair and efficiency. It’s an excellent "daily driver" for general coding support.
+- **Scale up to `llama3:70b`** if you are performing tasks that demand high precision—such as refactoring complex codebases, deep logical debugging, or processing large datasets where accuracy is critical. Because this model is massive, it significantly reduces "hallucinations," making it the most reliable choice for professional work.
 
 ### Downloading your models
 

@@ -4,26 +4,26 @@ A lightweight React component for displaying a grid of main blog tags or topics.
 
 ## Features
 
-* 🧭 Displays key topics with title, description, and icon
-* 🔗 Uses Docusaurus `<Link />` for internal navigation
-* 🎨 Styled with scoped CSS via `styles.module.css`
-* 📄 Data-driven via external `MAIN_CARDS` array
-* 🧱 Responsive grid layout
+- 🧭 Displays key topics with title, description, and icon
+- 🔗 Uses Docusaurus `<Link />` for internal navigation
+- 🎨 Styled with scoped CSS via `styles.module.css`
+- 📄 Data-driven via external `MAIN_CARDS` array
+- 🧱 Responsive grid layout
 
 ## Installation
 
 Ensure your project includes:
 
-* `MAIN_CARDS` array in `data/main_tags.js`
-* CSS module `styles.module.css` for styling
-* Docusaurus `<Link />` component
+- `MAIN_CARDS` array in `data/main_tags.js`
+- CSS module `styles.module.css` for styling
+- Docusaurus `<Link />` component
 
 ## Usage
 
 ```jsx
-import MainTags from './MainTags';
+import MainTags from "./MainTags";
 
-<MainTags />
+<MainTags />;
 ```
 
 ## 🧾 Card Data Format
@@ -43,20 +43,20 @@ Each item in `MAIN_CARDS` should follow this structure:
 
 Customize layout via `styles.module.css`. Key classes:
 
-* `cardsSection`: Section wrapper
-* `cardsGrid`: Grid layout
-* `cardItem`: Individual card styling
-* `cardIcon`: Icon container
-* `cardTitle`: Title styling
-* `cardDescription`: Description styling
-* `seeMoreContainer`: Footer link wrapper
-* `seeMoreLink`: Link to full tag archive
+- `cardsSection`: Section wrapper
+- `cardsGrid`: Grid layout
+- `cardItem`: Individual card styling
+- `cardIcon`: Icon container
+- `cardTitle`: Title styling
+- `cardDescription`: Description styling
+- `seeMoreContainer`: Footer link wrapper
+- `seeMoreLink`: Link to full tag archive
 
 ## Development Notes
 
-* Icons are rendered as inline elements via the `icon` string (e.g. emoji or SVG).
-* Keys are derived from `card.title` — ensure uniqueness.
-* Fallback message is shown if `MAIN_CARDS` is empty or undefined.
+- Icons are rendered as inline elements via the `icon` string (e.g. emoji or SVG).
+- Keys are derived from `card.title` — ensure uniqueness.
+- Fallback message is shown if `MAIN_CARDS` is empty or undefined.
 
 ## 📄 License
 

@@ -1,14 +1,17 @@
 import PropTypes from "prop-types";
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { useMDXComponents } from "@mdx-js/react";
 import clsx from "clsx";
 import Icon from "./icon.svg";
 import styles from "./styles.module.css";
 
-function getCopyText(children) {
+// headingPrefixMap is built inside the component (via useMDXComponents) and
+// passed here so both copy and animation recover the "# " prefix that MDX strips.
+function getCopyText(children, headingPrefixMap) {
   let text = "";
   if (Array.isArray(children)) {
     children.forEach((child, index) => {
-      text += getCopyText(child);
+      text += getCopyText(child, headingPrefixMap);
       if (index < children.length - 1) {
         text += "\n";
       }
@@ -16,8 +19,9 @@ function getCopyText(children) {
   } else if (typeof children === "string") {
     text += children;
   } else if (typeof children === "object" && children !== null) {
+    const prefix = headingPrefixMap?.get(children.type) ?? "";
     if (children.props?.children) {
-      text += getCopyText(children.props.children);
+      text += prefix + getCopyText(children.props.children, headingPrefixMap);
     }
   }
   return text;
@@ -26,10 +30,10 @@ function getCopyText(children) {
 // Auto-scales speed based on line count so long terminals don't drag on.
 // Explicit props always take priority over these defaults.
 function autoSpeed(lineCount) {
-  if (lineCount <= 5)  return { speed: 40, delay: 400 };
+  if (lineCount <= 5) return { speed: 40, delay: 400 };
   if (lineCount <= 10) return { speed: 25, delay: 200 };
   if (lineCount <= 20) return { speed: 20, delay: 150 };
-  return                      { speed: 12, delay: 100 };
+  return { speed: 12, delay: 100 };
 }
 
 const CopyIcon = (props) => (
@@ -62,12 +66,26 @@ export default function Terminal({
   const containerRef = useRef(null);
   const [copied, setCopied] = useState(false);
 
+  // Docusaurus registers h1–h6 as anonymous arrow functions in the MDX components
+  // map, so children.type is a function reference, not the string "h1". Build a
+  // Map keyed by those exact references so getCopyText can recover the "# " prefix.
+  const mdxComponents = useMDXComponents();
+  const headingPrefixMap = useMemo(() => {
+    const map = new Map();
+    ["h1", "h2", "h3", "h4", "h5", "h6"].forEach((tag, i) => {
+      const prefix = "#".repeat(i + 1) + " ";
+      if (mdxComponents[tag]) map.set(mdxComponents[tag], prefix);
+      map.set(tag, prefix); // fallback for native HTML headings
+    });
+    return map;
+  }, [mdxComponents]);
+
   // Extract lines once from children text content
   const animLines = useMemo(
-    () => (typewriter ? getCopyText(children).split("\n") : []),
-    // children is static MDX content — recompute only if typewriter flag changes
+    () => (typewriter ? getCopyText(children, headingPrefixMap).split("\n") : []),
+    // children and headingPrefixMap are both stable for the page lifetime
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [typewriter]
+    [typewriter],
   );
 
   // Effective speed: explicit prop wins; otherwise auto-scale to line count
@@ -97,7 +115,7 @@ export default function Terminal({
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -134,7 +152,16 @@ export default function Terminal({
       setCharIdx(0);
     }, pause);
     return () => clearTimeout(t);
-  }, [typewriter, hasBeenVisible, animDone, lineIdx, charIdx, animLines, effectiveSpeed, effectiveDelay]);
+  }, [
+    typewriter,
+    hasBeenVisible,
+    animDone,
+    lineIdx,
+    charIdx,
+    animLines,
+    effectiveSpeed,
+    effectiveDelay,
+  ]);
 
   const skipAnimation = useCallback(() => {
     if (!typewriter || animDone) return;
@@ -144,7 +171,7 @@ export default function Terminal({
   }, [typewriter, animDone, animLines]);
 
   const handleCopy = useCallback(async () => {
-    const textToCopy = getCopyText(children);
+    const textToCopy = getCopyText(children, headingPrefixMap);
     try {
       await navigator.clipboard.writeText(textToCopy);
       setCopied(true);
@@ -205,7 +232,9 @@ export default function Terminal({
             {/* Animated text overlaid on the ghost */}
             <span className={styles.terminal_overlay}>
               {animDisplay}
-              <span className={styles.cursor} aria-hidden="true">▋</span>
+              <span className={styles.cursor} aria-hidden="true">
+                ▋
+              </span>
             </span>
           </>
         ) : (
@@ -221,7 +250,7 @@ export default function Terminal({
           "button--sm",
           "button--secondary",
           styles.copyButton,
-          { [styles.copied]: copied }
+          { [styles.copied]: copied },
         )}
         onClick={(e) => {
           e.stopPropagation();

@@ -157,10 +157,7 @@ const config = {
     [pluginTagRoute, {}],
     ["./plugins/blog-feed-plugin/index.js", { maxItems: 20 }],
     ["./plugins/admin-data-plugin/index.cjs", {}],
-    [
-      "./plugins/ascii-injector/index.mjs",
-      { bannerPath: "src/data/banner.txt" },
-    ],
+    ["./plugins/ascii-injector/index.mjs", { bannerPath: "src/data/banner.txt" }],
     "./plugins/sitemap-easter-egg/index.mjs",
     require.resolve("docusaurus-plugin-image-zoom"),
   ],
@@ -231,10 +228,7 @@ const config = {
         name: "Christophe Avonture",
         url: "https://www.avonture.be/",
         logo: "https://www.avonture.be/img/avatar.webp",
-        sameAs: [
-          "https://bsky.app/profile/avonture.be",
-          "https://github.com/cavo789",
-        ],
+        sameAs: ["https://bsky.app/profile/avonture.be", "https://github.com/cavo789"],
       }),
     },
   ],

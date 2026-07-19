@@ -1,10 +1,10 @@
 // Scans blog posts for draft/unlisted articles and writes
 // admin-data/drafts.json to the build output for the admin page to fetch.
 
-const fs   = require("fs-extra");
+const fs = require("fs-extra");
 const path = require("path");
 const glob = require("glob");
-const fm   = require("front-matter");
+const fm = require("front-matter");
 
 module.exports = function adminDataPlugin(context) {
   return {
@@ -12,22 +12,22 @@ module.exports = function adminDataPlugin(context) {
 
     async postBuild({ outDir }) {
       const blogDir = path.join(context.siteDir, "blog");
-      const files   = glob.sync("**/*.{md,mdx}", { cwd: blogDir });
-      const drafts  = [];
+      const files = glob.sync("**/*.{md,mdx}", { cwd: blogDir });
+      const drafts = [];
 
       for (const file of files) {
-        const raw        = fs.readFileSync(path.join(blogDir, file), "utf8");
+        const raw = fs.readFileSync(path.join(blogDir, file), "utf8");
         const { attributes: a } = fm(raw);
 
         if (a.draft !== true && a.unlisted !== true) continue;
 
         drafts.push({
-          slug:        a.slug  || path.dirname(file).replace(/\\/g, "/"),
-          title:       a.title || "(untitled)",
-          date:        a.date  ? String(a.date).slice(0, 10) : null,
+          slug: a.slug || path.dirname(file).replace(/\\/g, "/"),
+          title: a.title || "(untitled)",
+          date: a.date ? String(a.date).slice(0, 10) : null,
           description: a.description || null,
-          tags:        Array.isArray(a.tags) ? a.tags : [],
-          status:      a.draft === true ? "draft" : "unlisted",
+          tags: Array.isArray(a.tags) ? a.tags : [],
+          status: a.draft === true ? "draft" : "unlisted",
         });
       }
 

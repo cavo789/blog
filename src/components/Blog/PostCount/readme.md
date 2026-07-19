@@ -4,10 +4,10 @@ A React component for Docusaurus that displays the total number of published blo
 
 ## 🚀 Features
 
-* 📊 Counts only published (non-draft) blog posts
-* 🧼 Filters out drafts automatically
-* 🧩 Easy to integrate into any Docusaurus page
-* 🗣️ Friendly and customizable message
+- 📊 Counts only published (non-draft) blog posts
+- 🧼 Filters out drafts automatically
+- 🧩 Easy to integrate into any Docusaurus page
+- 🗣️ Friendly and customizable message
 
 ## Example
 
@@ -37,9 +37,9 @@ import BlogPostCount from "@site/src/components/Blog/PostCount";
 
 ## 🛠️ Requirements
 
-* Docusaurus v3+
-* Blog metadata utility: getBlogMetadata()
-* Blog posts must include a draft field (boolean)
+- Docusaurus v3+
+- Blog metadata utility: getBlogMetadata()
+- Blog posts must include a draft field (boolean)
 
 ## 🎨 Styling
 

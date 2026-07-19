@@ -95,7 +95,7 @@ export default function GithubProjects({ username }) {
       let hasMoreRepos = true;
       while (hasMoreRepos) {
         const response = await fetch(
-          `https://api.github.com/users/${username}/repos?per_page=${perPage}&page=${page}`
+          `https://api.github.com/users/${username}/repos?per_page=${perPage}&page=${page}`,
         );
         const data = await response.json();
         if (data.length > 0) {
@@ -114,7 +114,7 @@ export default function GithubProjects({ username }) {
       const expirationTime = new Date().getTime() + 24 * 60 * 60 * 1000;
       localStorage.setItem(
         cacheKey,
-        JSON.stringify({ repos: allRepos, expiration: expirationTime })
+        JSON.stringify({ repos: allRepos, expiration: expirationTime }),
       );
     } catch (error) {
       console.error("Error fetching GitHub repositories:", error);
@@ -137,10 +137,7 @@ export default function GithubProjects({ username }) {
     }
   }, [loadCachedRepos, fetchAllRepos]);
 
-  const allRepos = useMemo(
-    () => [...repos, ...archivedRepos],
-    [repos, archivedRepos]
-  );
+  const allRepos = useMemo(() => [...repos, ...archivedRepos], [repos, archivedRepos]);
 
   const languageOptions = useMemo(() => {
     const langs = new Set();
@@ -155,29 +152,22 @@ export default function GithubProjects({ username }) {
       const matchesLanguage =
         filters.language === "All" || repo.language === filters.language;
       const matchesArchived =
-        filters.archived === "All" ||
-        String(repo.archived) === filters.archived;
+        filters.archived === "All" || String(repo.archived) === filters.archived;
       const matchesStars = repo.stargazers_count >= filters.minStars;
       const matchesSearch =
         searchTerm.trim() === "" ||
         repo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         (repo.description &&
           repo.description.toLowerCase().includes(searchTerm.toLowerCase()));
-      return (
-        matchesLanguage && matchesArchived && matchesStars && matchesSearch
-      );
+      return matchesLanguage && matchesArchived && matchesStars && matchesSearch;
     });
   }, [allRepos, filters, searchTerm]);
 
   const renderRepoCard = (repo, isArchived = false) => {
-    const languageColor =
-      languageColors[repo.language] || languageColors.default;
+    const languageColor = languageColors[repo.language] || languageColors.default;
 
     return (
-      <div
-        key={repo.id}
-        className={clsx("col col--4 margin-bottom--lg", styles.fadeIn)}
-      >
+      <div key={repo.id} className={clsx("col col--4 margin-bottom--lg", styles.fadeIn)}>
         <Card
           shadow="md"
           className={styles.github_projects_card}
@@ -222,15 +212,12 @@ export default function GithubProjects({ username }) {
           </CardBody>
 
           <CardFooter>
-            <FaStar /> {repo.stargazers_count} <FaCodeBranch />{" "}
-            {repo.forks_count}{" "}
+            <FaStar /> {repo.stargazers_count} <FaCodeBranch /> {repo.forks_count}{" "}
             <span
               className={styles.language_dot}
               style={{ backgroundColor: languageColor }}
             ></span>
-            {repo.language || (
-              <Translate id="githubProjects.unknown">Unknown</Translate>
-            )}
+            {repo.language || <Translate id="githubProjects.unknown">Unknown</Translate>}
           </CardFooter>
         </Card>
       </div>
@@ -240,9 +227,7 @@ export default function GithubProjects({ username }) {
   if (loading) {
     return (
       <p>
-        <Translate id="githubProjects.loading">
-          Loading repositories...
-        </Translate>
+        <Translate id="githubProjects.loading">Loading repositories...</Translate>
       </p>
     );
   }

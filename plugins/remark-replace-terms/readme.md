@@ -6,18 +6,18 @@ A Docusaurus-friendly [remark](https://github.com/remarkjs/remark) plugin that a
 
 This plugin scans Markdown content and replaces lowercase variants of specific keywords with their correctly capitalized forms:
 
-| Incorrect | Correct |
-| --- | --- |
-| github | GitHub |
-| markdown | Markdown |
+| Incorrect  | Correct    |
+| ---------- | ---------- |
+| github     | GitHub     |
+| markdown   | Markdown   |
 | docusaurus | Docusaurus |
-| vscode | VSCode |
+| vscode     | VSCode     |
 
 It avoids replacements in:
 
-* Code blocks and inline code
-* Links and image alt text
-* Compound words like `github.io` or `markdown-parser`
+- Code blocks and inline code
+- Links and image alt text
+- Compound words like `github.io` or `markdown-parser`
 
 ## 🧩 Installation
 
@@ -30,20 +30,19 @@ const config = {
   // [ ... ]
   presets: [
     [
-      'classic',
-      ({
+      "classic",
+      {
         blog: {
           // highlight-next-line
-          beforeDefaultRemarkPlugins: [require('./plugins/remark-replace-terms')],
+          beforeDefaultRemarkPlugins: [require("./plugins/remark-replace-terms")],
         },
         // [ ... ]
-      }),
+      },
     ],
   ],
 };
 
 export default config;
-
 ```
 
 ## 🛠️ Customization

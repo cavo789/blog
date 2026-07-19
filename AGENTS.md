@@ -4,45 +4,45 @@ This document outlines the governance guidelines to be followed for maintaining 
 
 ## Project Overview
 
-* **Name:** cavo789/blog
-* **Stack:** Docusaurus (Latest version), React, JavaScript (ES6+).
-* **Goal:** Personal technical blog focused on high-quality, clean, and modular code.
-* **Production URL:** https://www.avonture.be
-* **Repository:** https://github.com/cavo789/blog
-* **Development URL:** http://localhost:3000
+- **Name:** cavo789/blog
+- **Stack:** Docusaurus (Latest version), React, JavaScript (ES6+).
+- **Goal:** Personal technical blog focused on high-quality, clean, and modular code.
+- **Production URL:** https://www.avonture.be
+- **Repository:** https://github.com/cavo789/blog
+- **Development URL:** http://localhost:3000
 
 ## Coding Standards & Philosophy
 
-* **Modular Design:** Follow the Single Responsibility Principle (SRP). Keep components and functions short and focused.
-* **Strict Typing:** Always use ReactJS for React components. As much as possible prefer self-describing code. Add proper type annotations. Add prop-types.
-* **Language:**
-  * **Code & Comments:** Strictly **American English**. No French comments or documentation allowed within the codebase.
-  * **Content:** The blog posts are written in **American English**. Always suggest correction if you see typos or better way to write things.
-* **Styling:** Support both Dark and Light modes using Docusaurus/Infima CSS variables. Avoid hardcoded hex colors. Use CSS files instead of inline styles.
+- **Modular Design:** Follow the Single Responsibility Principle (SRP). Keep components and functions short and focused.
+- **Strict Typing:** Always use ReactJS for React components. As much as possible prefer self-describing code. Add proper type annotations. Add prop-types.
+- **Language:**
+  - **Code & Comments:** Strictly **American English**. No French comments or documentation allowed within the codebase.
+  - **Content:** The blog posts are written in **American English**. Always suggest correction if you see typos or better way to write things.
+- **Styling:** Support both Dark and Light modes using Docusaurus/Infima CSS variables. Avoid hardcoded hex colors. Use CSS files instead of inline styles.
 
 ## React & Docusaurus Best Practices
 
-* **Functional Components:** Use React functional components with Hooks. No Typescript at all.
-* **Modular CSS:** Prefer CSS Modules or Docusaurus-native styling approaches.
-* **Component Structure:** Store reusable components in `@site/src/components`.
-* **Performance:** Optimize builds using multi-stage Docker builds (BuildKit).
-* **Docusaurus version:** Always use the latest stable version of Docusaurus.
+- **Functional Components:** Use React functional components with Hooks. No Typescript at all.
+- **Modular CSS:** Prefer CSS Modules or Docusaurus-native styling approaches.
+- **Component Structure:** Store reusable components in `@site/src/components`.
+- **Performance:** Optimize builds using multi-stage Docker builds (BuildKit).
+- **Docusaurus version:** Always use the latest stable version of Docusaurus.
 
 ## Tooling & Quality Control
 
-* **Linters:** Code and Markdown must be compatible with strict linting (ESLint, Prettier, Dockerlint, Markdownlint).
-  * JS/JSX: `eslint.config.js` (functional-components + Hooks rules, PropTypes). Run via `yarn lint:js`, or `codelint` from the devcontainer terminal (`yarn lint` also runs stylelint).
-  * CSS: `.stylelintrc.json` (`stylelint-config-standard` + a `color-no-hex` warning pointing at `.todos/039-hardcoded-hex-colors-no-token-system.md`). Run via `yarn lint:css`.
-  * Formatting: `.prettierrc.json` is configured but the existing codebase hasn't been reformatted yet (`yarn format:check` currently fails on ~166 pre-existing files) — not yet wired into CI, run manually.
-  * CI: `.github/workflows/quality.yml` runs `yarn lint` on every push/PR, separate from `deploy.yml` so a lint failure never blocks publishing the live site.
-  * Pre-existing violations are tracked as warnings (JS: `react/prop-types` — see `.todos/040-inconsistent-proptypes-coverage.md`) rather than fixed en masse, to avoid unrelated churn in this change.
-  * `color-no-hex` exceptions: a hex value is legitimate (not "hardcoded instead of a token") when it **defines** a token's source-of-truth value (e.g. the `--ifm-color-primary*` palette in `src/css/custom.css`, or a component's own `--*` custom-property palette like `AlertBox`), or when a color is deliberately theme-independent (external brand identity — `Snippet`'s per-language border colors; a UI element that intentionally always looks the same regardless of site theme — `Terminal`, the ELI5 code block). These are marked with `/* stylelint-disable color-no-hex */` / `stylelint-enable`, each with a one-line comment explaining why. Everywhere else, prefer an existing Infima variable (check `node_modules/infima/dist/css/default/default.css` for semantic tokens like `--ifm-color-{info,success,warning,danger}[-contrast-background|-contrast-foreground|-dark]` before inventing a new hardcoded value — see `.todos/039-hardcoded-hex-colors-no-token-system.md` for the reasoning and worked examples).
-* **Docker:**
-  * Always use `compose.yaml` (no version key; no obsolete fields/syntax).
-  * Optimize layers and use host volume caching.
-  * Containers must be read-only where possible with `tmpfs`.
-  * Use `id_ed25519.pub` for SSH-related configurations.
-* **DevContainer:** Use the provided `.devcontainer/devcontainer.json`. Ensure UID/GID are detected dynamically (don't use hardcoded UID/GID).
+- **Linters:** Code and Markdown must be compatible with strict linting (ESLint, Prettier, Dockerlint, Markdownlint).
+  - JS/JSX: `eslint.config.js` (functional-components + Hooks rules, PropTypes). Run via `yarn lint:js`, or `codelint` from the devcontainer terminal (`yarn lint` also runs stylelint).
+  - CSS: `.stylelintrc.json` (`stylelint-config-standard` + a `color-no-hex` warning pointing at `.todos/039-hardcoded-hex-colors-no-token-system.md`). Run via `yarn lint:css`.
+  - Formatting: `.prettierrc.json` is configured but the existing codebase hasn't been reformatted yet (`yarn format:check` currently fails on ~166 pre-existing files) — not yet wired into CI, run manually.
+  - CI: `.github/workflows/quality.yml` runs `yarn lint` on every push/PR, separate from `deploy.yml` so a lint failure never blocks publishing the live site.
+  - Pre-existing violations are tracked as warnings (JS: `react/prop-types` — see `.todos/040-inconsistent-proptypes-coverage.md`) rather than fixed en masse, to avoid unrelated churn in this change.
+  - `color-no-hex` exceptions: a hex value is legitimate (not "hardcoded instead of a token") when it **defines** a token's source-of-truth value (e.g. the `--ifm-color-primary*` palette in `src/css/custom.css`, or a component's own `--*` custom-property palette like `AlertBox`), or when a color is deliberately theme-independent (external brand identity — `Snippet`'s per-language border colors; a UI element that intentionally always looks the same regardless of site theme — `Terminal`, the ELI5 code block). These are marked with `/* stylelint-disable color-no-hex */` / `stylelint-enable`, each with a one-line comment explaining why. Everywhere else, prefer an existing Infima variable (check `node_modules/infima/dist/css/default/default.css` for semantic tokens like `--ifm-color-{info,success,warning,danger}[-contrast-background|-contrast-foreground|-dark]` before inventing a new hardcoded value — see `.todos/039-hardcoded-hex-colors-no-token-system.md` for the reasoning and worked examples).
+- **Docker:**
+  - Always use `compose.yaml` (no version key; no obsolete fields/syntax).
+  - Optimize layers and use host volume caching.
+  - Containers must be read-only where possible with `tmpfs`.
+  - Use `id_ed25519.pub` for SSH-related configurations.
+- **DevContainer:** Use the provided `.devcontainer/devcontainer.json`. Ensure UID/GID are detected dynamically (don't use hardcoded UID/GID).
 
 ## AI Interaction Instructions
 
@@ -57,51 +57,51 @@ A **Docker-first** methodology is mandatory. All development, testing, and deplo
 
 ## Blog Content Guidelines
 
-* **Language:** All blog posts must be written in clear, concise American English.
-* **Structure:** Follow the established format for blog posts: `YYYY/MM/DD/slug/index.md'.
-* **Relative Resources:** Use relative paths like `./files/` or `./images/` for files to include or images (Co-location pattern).
-* **Import code snippets:** Use the `Snippet` component to import code snippets from external files for better maintainability. Don't use inline code blocks but create separate files in the `files/` sub-folder. For instance, instead of writing code directly in the blog post, create a file like `files/example.js` and import it using the `Snippet` component like this: <Snippet filename="example.js" source="./files/example.js" defaultOpen={false} />.
-* **ProjectSetup:** Use the `ProjectSetup` component for setup instructions.
-* **Unpublished Posts:** These are posts that are not yet ready for publication and should be excluded from the main blog feed. They are stored in the `.unpublished/` directory. Ensure that these posts are properly marked (i.e. with `Draft: true` in their frontmatter) and not linked from published content.
-* **Homepage:** The homepage is located in `src/pages/index.mdx`. Any changes to the homepage layout or content should be made here.
-* **Syntax:** Prefer Markdown to HTML for blog content. Use MDX only when necessary for embedding React components.
-* **Update history:** To log a post's revision history, add an `updates:` array to the frontmatter, e.g. `updates: [{date: "2026-01-03", note: "Review and update YAML files to Joomla 6"}]`. It is rendered as a timeline by the `Updated` component (`src/components/Blog/Updated/index.js`) and also drives `dateModified` in the SEO structured data (`src/components/StructuredData/index.jsx`) and the "old post" warning threshold (`src/components/Blog/OldPostNotice/index.js`).
+- **Language:** All blog posts must be written in clear, concise American English.
+- **Structure:** Follow the established format for blog posts: `YYYY/MM/DD/slug/index.md'.
+- **Relative Resources:** Use relative paths like `./files/` or `./images/` for files to include or images (Co-location pattern).
+- **Import code snippets:** Use the `Snippet` component to import code snippets from external files for better maintainability. Don't use inline code blocks but create separate files in the `files/` sub-folder. For instance, instead of writing code directly in the blog post, create a file like `files/example.js` and import it using the `Snippet` component like this: <Snippet filename="example.js" source="./files/example.js" defaultOpen={false} />.
+- **ProjectSetup:** Use the `ProjectSetup` component for setup instructions.
+- **Unpublished Posts:** These are posts that are not yet ready for publication and should be excluded from the main blog feed. They are stored in the `.unpublished/` directory. Ensure that these posts are properly marked (i.e. with `Draft: true` in their frontmatter) and not linked from published content.
+- **Homepage:** The homepage is located in `src/pages/index.mdx`. Any changes to the homepage layout or content should be made here.
+- **Syntax:** Prefer Markdown to HTML for blog content. Use MDX only when necessary for embedding React components.
+- **Update history:** To log a post's revision history, add an `updates:` array to the frontmatter, e.g. `updates: [{date: "2026-01-03", note: "Review and update YAML files to Joomla 6"}]`. It is rendered as a timeline by the `Updated` component (`src/components/Blog/Updated/index.js`) and also drives `dateModified` in the SEO structured data (`src/components/StructuredData/index.jsx`) and the "old post" warning threshold (`src/components/Blog/OldPostNotice/index.js`).
 
 ## Project Structure & Infrastructure
 
 ### Infrastructure
 
-* **Docker:** The project uses a multi-stage `Dockerfile` (base, dependencies, development, build, production) and `compose.yaml` for orchestration.
-* **Automation:** A `makefile` is used to simplify common commands (`make build`, `make up`, `make devcontainer`).
-* **Development Environment:** VSCode DevContainers are supported for a consistent development experience.
-* **Deployment:** GitHub Actions are used for CI/CD, deployment is coded in file .github/workflows/deploy.yml.
+- **Docker:** The project uses a multi-stage `Dockerfile` (base, dependencies, development, build, production) and `compose.yaml` for orchestration.
+- **Automation:** A `makefile` is used to simplify common commands (`make build`, `make up`, `make devcontainer`).
+- **Development Environment:** VSCode DevContainers are supported for a consistent development experience.
+- **Deployment:** GitHub Actions are used for CI/CD, deployment is coded in file .github/workflows/deploy.yml.
 
 ### Directory Structure
 
-* **Blog Posts:** Located in `blog/`. Format: `YYYY/MM/DD/slug/index.md`.
-* **Components:** Custom React components are located in `src/components/`.
-* **Data:** Static data files (e.g., series definitions) are located in `src/data/`.
-* **Plugins:** Custom local plugins are located in `plugins/`.
-* **Static Assets:** Global images and static files are in `static/`. Blog-specific images are co-located in the blog post folder (e.g., `blog/YYYY/MM/DD/slug/images/`).
+- **Blog Posts:** Located in `blog/`. Format: `YYYY/MM/DD/slug/index.md`.
+- **Components:** Custom React components are located in `src/components/`.
+- **Data:** Static data files (e.g., series definitions) are located in `src/data/`.
+- **Plugins:** Custom local plugins are located in `plugins/`.
+- **Static Assets:** Global images and static files are in `static/`. Blog-specific images are co-located in the blog post folder (e.g., `blog/YYYY/MM/DD/slug/images/`).
 
 ### Key Custom Components
 
-* **Blog Enhancements:** `RelatedPosts`, `SeriesPosts`, `SeriesCards`, `PostCard`, `Updated`, `OldPostNotice`.
-* **UI Elements:** `Card` (reusable), `Snippet` (code blocks), `LogoIcon`, `ScrollToTopButton`, `Image` (custom rendering), `Bluesky` (share/comments).
+- **Blog Enhancements:** `RelatedPosts`, `SeriesPosts`, `SeriesCards`, `PostCard`, `Updated`, `OldPostNotice`.
+- **UI Elements:** `Card` (reusable), `Snippet` (code blocks), `LogoIcon`, `ScrollToTopButton`, `Image` (custom rendering), `Bluesky` (share/comments).
 
 ### Customization & Overrides
 
-* **Swizzling:** The project overrides standard Docusaurus theme components, notably `BlogPostItem` and `BlogPostItem/Content`.
-* **MDX Components:** Custom mappings are defined in `src/theme/MDXComponents.js` (e.g., for `Snippet`, `Image`, `Highlight`).
-* **Plugins:** Several custom plugins are used for features like RSS feed customization, ASCII art injection, snippet loading, and term replacement.
+- **Swizzling:** The project overrides standard Docusaurus theme components, notably `BlogPostItem` and `BlogPostItem/Content`.
+- **MDX Components:** Custom mappings are defined in `src/theme/MDXComponents.js` (e.g., for `Snippet`, `Image`, `Highlight`).
+- **Plugins:** Several custom plugins are used for features like RSS feed customization, ASCII art injection, snippet loading, and term replacement.
 
 ## VSCode
 
-* **Snippets:** Custom VSCode snippets are provided in `.vscode/markdown.code-snippets` for common patterns and components.
-* **Settings:** Recommended settings are in `.vscode/settings.json` to ensure consistent formatting and linting.
+- **Snippets:** Custom VSCode snippets are provided in `.vscode/markdown.code-snippets` for common patterns and components.
+- **Settings:** Recommended settings are in `.vscode/settings.json` to ensure consistent formatting and linting.
 
 ## Instructions for Gemini/Jules
 
-* Minimize confirmation prompts for routine code generation.
-* When generating new React components for Docusaurus, apply changes directly.
-* I prefer to review changes via Git diff rather than manual 'Accept' buttons.
+- Minimize confirmation prompts for routine code generation.
+- When generating new React components for Docusaurus, apply changes directly.
+- I prefer to review changes via Git diff rather than manual 'Accept' buttons.

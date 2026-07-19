@@ -50,12 +50,12 @@ And voilà, my first Python script has been written. Remember the old days, befo
 <AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run commands are (almost always the same):
 
-* `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts for example,
-* `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you will have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
-* `-v ${PWD}:/app` to share your current folder with a folder called `/app` in the Docker container,
-* `-w /app` to tell Docker that the current directory, in the container, will be the `/app` folder
-* then `python` which is the name of the Docker image to use (you can also specify a version like `python:3.9.18` if needed; see [https://hub.docker.com/_/python/tags](https://hub.docker.com/_/python/tags)) and, finally,
-* `python Hello.py` i.e. the command line to start within the container.
+- `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts for example,
+- `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you will have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
+- `-v ${PWD}:/app` to share your current folder with a folder called `/app` in the Docker container,
+- `-w /app` to tell Docker that the current directory, in the container, will be the `/app` folder
+- then `python` which is the name of the Docker image to use (you can also specify a version like `python:3.9.18` if needed; see [https://hub.docker.com/_/python/tags](https://hub.docker.com/_/python/tags)) and, finally,
+- `python Hello.py` i.e. the command line to start within the container.
 
 </AlertBox>
 
