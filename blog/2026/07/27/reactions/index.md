@@ -10,7 +10,7 @@ date: 2026-07-27
 description: Build a fully working "Was this article helpful?" widget for your Docusaurus blog. Step-by-step guide covering the PHP backend, React component, CSS module, Docusaurus swizzle, and an admin dashboard — everything you need to reproduce it from scratch.
 language: en
 ai_assisted: true
-blueskyRecordKey:
+blueskyRecordKey: 3mrjtvlhauk2g
 ---
 
 ![Adding Reader Reactions to Your Docusaurus Blog](/img/v2/docusaurus_like_button.webp)
