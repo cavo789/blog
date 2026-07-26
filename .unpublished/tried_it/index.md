@@ -3,7 +3,8 @@ slug: docusaurus-tried-it-widget
 title: Adding a "Did It Work?" Button to Your Docusaurus Tutorials
 authors: [christophe, claude]
 image: /img/v2/docusaurus_like_button.webp
-mainTag: docusaurus
+series: Creating Docusaurus components
+mainTag: component
 tags: [docusaurus, php, react]
 date: 2026-12-31
 description: Build a "Did you try the steps in this article?" widget for tutorial posts — separate from a generic helpfulness vote, it tracks whether the actual commands still work, and emails you only when a tutorial's failure rate crosses a threshold. PHP backend, React component, an opt-out frontmatter switch, and the reasoning behind every one of those choices.

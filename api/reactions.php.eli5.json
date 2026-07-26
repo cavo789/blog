@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-26T07:12:45.644Z",
+  "source": "reactions.php",
+  "sourceHash": "12e96c025305a94579930d31877da6f4b5b12f8c",
+  "lang": "php",
+  "explanations": {
+    "2": "This tells PHP to enforce strict type checking, so if you pass the wrong type to a function, it will error instead of trying to convert it.",
+    "7": "The `?:` operator means 'use the left side if it's truthy, otherwise use the right side' — here it returns an empty array if parse_ini_file returns false.",
+    "24": "This reads the Origin header from the incoming request, which tells us what website is making the cross-origin request; if there's no header, it defaults to an empty string.",
+    "25": "This checks if there IS an origin header AND it's not in our allowlist — if both are true, we reject the request with a 403 Forbidden response.",
+    "31": "We only send CORS headers back if the request had an Origin header, since same-origin requests don't need them.",
+    "38": "This handles preflight requests — the browser sends an OPTIONS request before certain cross-origin requests to check if the server allows them.",
+    "50": "If json_decode returns false (invalid JSON), the `?:` operator falls back to an empty array instead.",
+    "55": "The 'c+' mode opens the file for reading and writing, and creates it if it doesn't exist.",
+    "59": "flock with LOCK_EX acquires an exclusive lock so no other process can read or write the file while we're updating it.",
+    "62": "JSON_PRETTY_PRINT makes the JSON human-readable with indentation; JSON_UNESCAPED_SLASHES keeps forward slashes as-is instead of escaping them.",
+    "70": "This removes any character that's not a lowercase letter, number, dash, or forward slash, then limits the result to 200 characters.",
+    "74": "The `never` return type means this function will never return normally — it always exits, so the program stops here.",
+    "87": "This calculates whether enough time has passed since we last notified the admin about this article — if not enough time has passed, we skip sending.",
+    "94": "This calculates the approval percentage, but if there are zero votes, it defaults to 0 to avoid a division-by-zero error.",
+    "114": "The `@` symbol suppresses error messages if the mail function fails — it doesn't prevent the error, just hides it.",
+    "128": "array_key_exists checks if the 'admin' key exists in the GET parameters, regardless of its value.",
+    "137": "This reads the raw JSON data from the request body and converts it to a PHP array; if it's invalid, it defaults to an empty array.",
+    "153": "This checks if an entry for this slug doesn't exist yet, and if so, initializes it with zero votes."
+  }
+}

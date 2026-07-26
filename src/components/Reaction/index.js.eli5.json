@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-26T07:12:51.608Z",
+  "source": "index.js",
+  "sourceHash": "c2b7bc1fd1d0dc6f032bfe163b086aeb97df0281",
+  "lang": "javascript",
+  "explanations": {
+    "8": "The ?. operator safely accesses nested properties (won't crash if metadata is missing), and ?? provides a fallback value of empty string if the result is null or undefined; the regex removes leading and trailing slashes from the URL path.",
+    "13": "This comment explains why `voted` starts as null instead of reading from localStorage immediately — it prevents a mismatch between the server (which has no localStorage) and the browser (which does).",
+    "23": "The empty catch block silently ignores any errors (like when localStorage isn't available), which is intentional to handle cases where the browser restricts local storage access.",
+    "29": "This checks if the response status was successful (r.ok), and if so parses the JSON; otherwise it returns null to avoid crashing on bad responses.",
+    "39": "The body is being serialized to JSON as a string because the fetch API requires the body to be a string, not a JavaScript object."
+  }
+}

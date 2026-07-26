@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-26T07:12:38.117Z",
+  "source": "index.cjs",
+  "sourceHash": "4f3e67b111378c5c98cf3010dec7916356c380b7",
+  "lang": "javascript",
+  "explanations": {
+    "16": "This imports the `visit` function from a library that walks through AST nodes (think of it like a tree where each node represents a piece of markdown); we use it to find all image nodes in the document.",
+    "26": "The `acorn` library parses a JavaScript expression string into an abstract syntax tree; `.body[0].expression` digs into that tree to pull out just the expression part we need.",
+    "47": "This `estree` field is metadata that tells MDX how to evaluate the expression at runtime; it's required by MDX even though it might look redundant.",
+    "75": "This line skips processing if it's the first image AND skipFirst is enabled; by default, the first image is left as a regular markdown image instead of being converted.",
+    "88": "This regex checks if the URL starts with one or more dots followed by a slash (like `./` or `../../`), which means it's a relative path that needs to be resolved with `require()`.",
+    "90": "We call `.default` on the require result because webpack/bundlers wrap images in an object with a `default` export, and we need the actual image path.",
+    "115": "This line removes the original image node (at position `index`) and replaces it in place with the new `Image` component node in the parent's children array."
+  }
+}

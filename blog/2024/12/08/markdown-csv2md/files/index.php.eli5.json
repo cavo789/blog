@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-26T07:12:34.161Z",
+  "source": "index.php",
+  "sourceHash": "36a3f2ef7f5e49d5c4ccd9e883f1d5d84de860e2",
+  "lang": "php",
+  "explanations": {
+    "3": "This strict declaration means PHP will enforce type hints strictly and throw errors if types don't match exactly.",
+    "26": "This reads raw JSON data sent from the browser as a POST request and converts it into a PHP array.",
+    "29": "The ?? operator provides a default empty string if the 'task' key doesn't exist in the array, preventing errors.",
+    "33": "The CSV content is decoded from base64 (a text encoding format) so it can be used as readable text.",
+    "36": "This decodes the delimiter from base64, then checks if it's empty after trimming whitespace.",
+    "43": "The enclosure variable handles CSV fields wrapped in quotes, like \"field1\",\"field2\".",
+    "56": "This converts the 'transpose' value to a boolean (true or false), validating it against boolean rules.",
+    "76": "This checks if a template file exists and assigns its path to $cat in one operation.",
+    "112": "The @paste event handler intercepts when a user pastes content, allowing custom processing of that pasted data.",
+    "188": "window.btoa() converts text to base64 encoding before sending it to the server.",
+    "195": "window.atob() decodes the base64 response from the server back into readable markdown text.",
+    "204": "This regular expression /\t/g finds all tab characters and replaces them with commas for easier CSV parsing."
+  }
+}

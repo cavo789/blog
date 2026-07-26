@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-07-26T07:12:57.423Z",
+  "source": "index.js",
+  "sourceHash": "b6380162f82a10f8c0988e2a988c76f70b00562d",
+  "lang": "javascript",
+  "explanations": {
+    "21": "This helper function checks if we're viewing a single blog post versus a list of posts, then decides whether to add spacing below the post.",
+    "23": "The question mark and colon here is a ternary operator—it's shorthand for 'if A is true, return B, otherwise return C'.",
+    "28": "We're unpacking a property called frontMatter from the metadata object, which is like pulling out a specific drawer from a filing cabinet.",
+    "30": "This shows the AIIcon only if the post was ai_assisted AND we're on the actual post page (not just viewing it in a list).",
+    "44": "The !== false check means the TriedIt component will show unless someone explicitly set tried_it to false in the post's frontMatter."
+  }
+}
