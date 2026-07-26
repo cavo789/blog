@@ -27,7 +27,6 @@ services:
 
   languagetool:
     image: erikvl87/languagetool
-    restart: unless-stopped
     environment:
       - langtool_languageModel=/ngrams
       - Java_Xms=512m

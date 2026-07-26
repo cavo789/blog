@@ -5,12 +5,12 @@ authors: [christophe, claude]
 image: /img/v2/docusaurus_like_button.webp
 mainTag: docusaurus
 tags: [docusaurus, php, react]
-date: 2026-07-05
+date: 2026-12-31
 description: Build a "Did you try the steps in this article?" widget for tutorial posts — separate from a generic helpfulness vote, it tracks whether the actual commands still work, and emails you only when a tutorial's failure rate crosses a threshold. PHP backend, React component, an opt-out frontmatter switch, and the reasoning behind every one of those choices.
 language: en
 ai_assisted: true
-blueskyRecordKey:
 draft: true
+blueskyRecordKey:
 ---
 
 <!-- cspell:ignore TriedIt didnt tried_it -->
@@ -18,7 +18,7 @@ draft: true
 ![Adding a "Did It Work?" Button to Your Docusaurus Tutorials](/img/v2/docusaurus_like_button.webp)
 
 <TLDR>
-This article documents the `TriedIt` widget I added to this blog: a "Did you try the steps in this article? ✅ It worked! / ❌ Didn't work for me" button shown at the bottom of tutorial posts. It reuses the same JSON-on-a-server philosophy as my existing `Reaction` widget, but asks a narrower, more useful question — and instead of emailing me on every vote, it stays silent until a tutorial's failure rate crosses 30% with at least 10 votes, at which point it sends a single "this tutorial may be broken" alert. I also cover a decision I got wrong on the first pass: making the widget opt-in through frontmatter would have meant editing close to 300 existing posts, so I flipped it to opt-out instead.
+This article documents the `TriedIt` widget I added to this blog: a "Did you try the steps in this article? ✅ It worked! / ❌ Didn't work for me" button shown **at the bottom** of tutorial posts. It reuses the same JSON-on-a-server philosophy as my existing `Reaction` widget, but asks a narrower, more useful question — and instead of emailing me on every vote, it stays silent until a tutorial's failure rate crosses 30% with at least 10 votes, at which point it sends a single "this tutorial may be broken" alert. I also cover a decision I got wrong on the first pass: making the widget opt-in through frontmatter would have meant editing close to 300 existing posts, so I flipped it to opt-out instead.
 </TLDR>
 
 Like you know me well enough by now, I already have a `<Reaction>` widget asking "Was this article helpful?" at the bottom of every post. It works well for opinion pieces, retrospectives, and anything qualitative. But for tutorials — the Docker setups, the WSL configs, the copy-this-command-and-run-it posts — "helpful" isn't really the question that matters.

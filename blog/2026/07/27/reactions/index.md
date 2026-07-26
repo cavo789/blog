@@ -5,13 +5,9 @@ authors: [christophe]
 image: /img/v2/docusaurus_like_button.webp
 mainTag: docusaurus
 tags: [docusaurus, php, react]
-date: 2026-12-31
+date: 2026-07-27
 description: Build a fully working "Was this article helpful?" widget for your Docusaurus blog. Step-by-step guide covering the PHP backend, React component, CSS module, Docusaurus swizzle, and an admin dashboard — everything you need to reproduce it from scratch.
-draft: true
 language: en
-title: Adding Reader Reactions to Your Docusaurus Blog
-slug: reactions
-authors: [christophe]
 ai_assisted: true
 blueskyRecordKey:
 ---
@@ -19,7 +15,7 @@ blueskyRecordKey:
 ![Adding Reader Reactions to Your Docusaurus Blog](/img/v2/docusaurus_like_button.webp)
 
 <TLDR>
-This guide walks through building a "Was this article helpful?" widget for a Docusaurus blog — from scratch, end to end. You will create a lightweight PHP script that stores votes in a JSON file and sends throttled email notifications, a React component that reads and writes those votes, a CSS module that blends seamlessly with any Docusaurus theme, and a swizzle of `BlogPostItem` to inject the widget at the bottom of every post. A bonus admin dashboard page lets you monitor approval rates across all articles at a glance.
+This guide walks through building a "Was this article helpful?" widget for a Docusaurus blog — from scratch, end to end. You will create a lightweight PHP script that stores votes in a JSON file and sends throttled email notifications, a React component that reads and writes those votes, a CSS module that blends seamlessly with any Docusaurus theme, and a swizzle of `BlogPostItem` to inject the widget **at the bottom** of every post. A bonus admin dashboard page lets you monitor approval rates across all articles at a glance.
 </TLDR>
 
 Reader feedback is one of those things that looks simple from the outside but hides a surprising amount of moving parts once you start building it. I wanted something unobtrusive — no third-party services, no cookies, no sign-up required. Just a small "Was this article helpful?" widget at the bottom of every post, a JSON file on the server, and an email in my inbox when a reader votes.
@@ -30,11 +26,15 @@ In this article I'll walk you through every file, every decision, and every line
 
 <!-- truncate -->
 
+<BrowserWindow url="https://www.avonture.be/blog/docusaurus-easter-eggs">
+  ![Reactions](./images/reactions.webp)
+</BrowserWindow>
+
 ## The Big Picture
 
 Before diving in, here is what we are going to build and how the pieces fit together:
 
-```
+```plaintext
 Browser                          Your Server
   │                                   │
   ├─ GET /api/reactions.php?slug=...  ─▶  reactions-data.json (read)
@@ -72,30 +72,32 @@ Create the file `api/reactions.php` at the root of your web server (next to, or 
 
 ### 1.1 — Configuration
 
-```php title="api/reactions.php"
-<?php
-declare(strict_types=1);
-
-define('ADMIN_EMAIL',            'you@example.com');
-define('ADMIN_TOKEN',            'replace-with-a-long-random-string');
-define('NOTIFY_COOLDOWN_SECONDS', 3600);
-define('SITE_URL',               'https://www.your-site.com');
-```
+<Snippet filename="api/reactions.php" source="api/reactions.php" />
 
 Four constants, four decisions to make:
 
 - **`ADMIN_EMAIL`** — where email notifications go. Use your own address.
 - **`ADMIN_TOKEN`** — a long random string (32+ characters). This protects the admin endpoint that returns all votes. Generate one with `openssl rand -base64 24` in your terminal and never commit it to a public repository.
+- **`NOREPLY`** — your noreply email address.
 - **`NOTIFY_COOLDOWN_SECONDS`** — the minimum number of seconds between two notification emails *for the same article*. The default is 3 600 (one hour). This prevents your inbox from being flooded when an article goes viral.
-- **`SITE_URL`** — your public domain, used to build clickable links in the notification email and to validate CORS origins.
+- **`SITE_URL`** — your public domain, used to build clickable links in the notification email and to validate CORS origins. **Think to change this value to yours.**
+
+<AlertBox variant="tip" title="Using a .env file">
+  Don't hardcode your email, token, ... in the PHP file. Add the `api/.env` file next to the `reactions.php` file and replace placeholders by your own values.
+
+  <Snippet filename="api/.env" source="api/.env.example" />
+</AlertBox>
 
 ### 1.2 — CORS
+
+A word about CORS: in this `api/reactions.php` file, you'll find this snippet:
 
 ```php title="api/reactions.php"
 $allowedOrigins = [
     SITE_URL,
-    'http://localhost:3000',
+    'https://localhost:3000',
 ];
+
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 if (!in_array($origin, $allowedOrigins, true)) {
     http_response_code(403);
@@ -116,65 +118,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 The CORS block does two things.
 
-First, it rejects any request that does not originate from your site or from `localhost:3000` (the Docusaurus dev server). Without this check, anyone could POST fake votes from any origin. The check is strict (`in_array` with the third argument `true`): no substring matching, no wildcards.
+First, it rejects any request that does not originate from your site or from `localhost:3000` (your local Docusaurus dev server). Without this check, anyone could POST fake votes from any origin. The check is strict (`in_array` with the third argument `true`): no substring matching, no wildcards.
 
 Second, it echoes the validated origin back in the `Access-Control-Allow-Origin` header. This is more correct than the wildcard `*` approach because it works with credentials and explicitly tells browsers which origin is allowed — and the `Vary: Origin` header ensures that caches respect per-origin responses.
 
 The `OPTIONS` branch handles the browser preflight that precedes any cross-origin POST with a `Content-Type: application/json` header.
 
 <AlertBox variant="info" title="Why localhost:3000?">
-During development, `yarn start` serves Docusaurus on `http://localhost:3000`. Without adding it to the allowed origins list, every vote from your dev environment would be silently rejected by the browser before even reaching the server.
+During development, `yarn start` serves Docusaurus on `https://localhost:3000`. Without adding it to the allowed origins list, every vote from your dev environment would be silently rejected by the browser before even reaching the server.
 </AlertBox>
 
-### 1.3 — Helper functions
+### 1.3 — Email notification with per-article throttling
 
-```php title="api/reactions.php"
-function loadData(string $file): array
-{
-    if (!file_exists($file)) {
-        return [];
-    }
-    return json_decode(file_get_contents($file), true) ?: [];
-}
-
-function saveData(string $file, array $data): void
-{
-    $fp = fopen($file, 'c+');
-    if (!$fp) {
-        return;
-    }
-    if (flock($fp, LOCK_EX)) {
-        ftruncate($fp, 0);
-        rewind($fp);
-        fwrite($fp, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
-        flock($fp, LOCK_UN);
-    }
-    fclose($fp);
-}
-
-function sanitizeSlug(string $raw): string
-{
-    $slug = preg_replace('/[^a-z0-9\-\/]/', '', strtolower(trim($raw)));
-    return substr($slug, 0, 200);
-}
-
-function jsonError(int $code, string $message): never
-{
-    http_response_code($code);
-    echo json_encode(['error' => $message]);
-    exit;
-}
-```
-
-**`loadData`** simply reads the JSON file and decodes it. If the file does not exist yet (first ever vote), it returns an empty array. The `?: []` fallback also covers a corrupted or empty file.
-
-**`saveData`** uses PHP's advisory file locking (`flock`) to prevent race conditions. Without locking, two simultaneous votes on the same article could read the same count, each increment it independently, and write it back — resulting in one lost vote. The `LOCK_EX` flag blocks until the lock is acquired, so saves are serialized safely.
-
-**`sanitizeSlug`** strips everything that is not a lowercase letter, digit, hyphen, or forward slash. This turns whatever the browser sends into something safe to use as a JSON key. The 200-character limit caps the key size regardless of what someone sends.
-
-**`jsonError`** is a tiny helper that sets the HTTP status code, writes a JSON error body, and terminates the script. Returning `never` (PHP 8.1+) tells static analyzers that no code after a call to this function can be reached.
-
-### 1.4 — Email notification with per-article throttling
+A word about email notification: in this `api/reactions.php` file, you'll find this snippet:
 
 ```php title="api/reactions.php"
 function maybeNotify(string $slug, string $vote, array $counts): void
@@ -203,9 +159,10 @@ function maybeNotify(string $slug, string $vote, array $counts): void
         "",
         "View full dashboard: $dashboardUrl",
     ]);
+
     $headers = implode("\r\n", [
-        "From: noreply@your-site.com",
-        "Reply-To: noreply@your-site.com",
+        "From: " . NO_REPLY,
+        "Reply-To: " . NO_REPLY,
         "Content-Type: text/plain; charset=utf-8",
     ]);
 
@@ -224,7 +181,7 @@ The notification email includes the vote type, the running totals, and the appro
 On a low-traffic blog, a one-hour cooldown is reasonable. If you ever end up on a high-traffic aggregator, consider bumping `NOTIFY_COOLDOWN_SECONDS` to `86400` (24 hours) temporarily. The votes are never lost, you just receive fewer emails about them.
 </AlertBox>
 
-### 1.5 — Routing: GET and POST
+### 1.4 — Routing: GET and POST
 
 ```php title="api/reactions.php"
 $method = $_SERVER['REQUEST_METHOD'];
@@ -287,15 +244,13 @@ echo json_encode($data[$slug]);
 
 On first access, the slug entry is created with zeroed counters. The POST branch increments the right counter, saves the file, and triggers the throttled notification. Any `vote` value other than `helpful` or `not_helpful` is rejected immediately. The final line echoes the (updated or unchanged) counts for this slug, whatever the method.
 
-### 1.6 — The complete file
-
-<Snippet filename="api/reactions.php" source="api/reactions.php" defaultOpen={false} />
-
 ---
 
 ## Step 2 — The React component
 
 Create the folder `src/components/Reaction/` and the file `index.js` inside it.
+
+<Snippet filename="src/components/Reaction/index.js" source="src/components/Reaction/index.js" defaultOpen={false} />
 
 ### 2.1 — Imports and setup
 
@@ -312,9 +267,9 @@ export default function Reaction({ metadata }) {
   const storageKey = `reaction_${slug}`;
 ```
 
-`metadata` is the object that Docusaurus passes to every blog post component. We use `metadata.permalink` — the URL path of the article — as the slug. The two `replace` calls strip the leading and trailing slashes so the slug matches what `sanitizeSlug` on the PHP side produces: `blog/my-article`, not `/blog/my-article/`.
+`metadata` is the object that Docusaurus passes to every blog post component. We use `metadata.permalink` — the URL path of the article — as the slug. The two `replace` calls strip the leading and trailing slashes so, the slug matches what `sanitizeSlug` on the PHP side produces: `blog/my-article`, not `/blog/my-article/`.
 
-`siteConfig.url` is your production URL from `docusaurus.config.js`. The component builds the API URL from it dynamically, which means it also works correctly in development (where `url` will point to `http://localhost:3000` if you configure it that way, but in practice the component is only mounted after Docusaurus resolves the site config).
+`siteConfig.url` is your production URL from `docusaurus.config.js`. The component builds the API URL from it dynamically, which means it also works correctly in development (where `url` will point to `https://localhost:3000` if you configure it that way, but in practice the component is only mounted after Docusaurus resolves the site config).
 
 `storageKey` gives every article its own entry in `localStorage` (`reaction_blog-my-article`), preventing a vote on one article from affecting another.
 
@@ -433,63 +388,17 @@ The `aria-label` attributes make the buttons accessible to screen readers: emoji
 
 The `PropTypes` definition at the bottom documents the expected shape of the `metadata` prop and produces a console warning in development if something is wrong.
 
-### 2.6 — The complete file
-
-<Snippet filename="src/components/Reaction/index.js" source="src/components/Reaction/index.js" defaultOpen={false} />
-
 ---
 
 ## Step 3 — The CSS module
 
-```css title="src/components/Reaction/styles.module.css"
-.container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  padding: 0.9rem 1.25rem;
-  margin: 1.5rem 0 0.5rem;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 8px;
-  background: var(--ifm-background-surface-color);
-}
-```
+Create file `styles.module.css` in `src/components/Reaction/`.
+
+<Snippet filename="src/components/Reaction/styles.module.css" source="src/components/Reaction/styles.module.css" defaultOpen={false} />
 
 The outer `container` is a flex row with wrapping, so it collapses gracefully on narrow screens. The colors use Docusaurus CSS custom properties (`--ifm-*`), which means the widget automatically adapts to light mode, dark mode, and any custom Docusaurus theme without writing a single media query or duplicate rule.
 
-```css title="src/components/Reaction/styles.module.css"
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.85rem;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 6px;
-  background: transparent;
-  color: var(--ifm-color-content);
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-}
-
-.btn:hover {
-  background-color: var(--ifm-color-primary);
-  border-color: var(--ifm-color-primary);
-  color: #fff;
-}
-
-.btnNeutral:hover {
-  background-color: var(--ifm-color-emphasis-400);
-  border-color: var(--ifm-color-emphasis-400);
-  color: #fff;
-}
-```
-
 The "Helpful" button turns the primary theme color on hover; the "Not really" button turns a neutral grey. The 0.15 s transition makes the hover feel responsive without being flashy.
-
-### The complete file
-
-<Snippet filename="src/components/Reaction/styles.module.css" source="src/components/Reaction/styles.module.css" defaultOpen={false} />
 
 ---
 
@@ -557,7 +466,11 @@ Without the guard, a reaction widget would appear under every article card on th
 If you have other custom components (a Bluesky share button, related posts, etc.), the order here defines the visual order at the bottom of every post. Adjust to your preference.
 </AlertBox>
 
-### 4.3 — The complete swizzled file
+### 4.3 — The complete swizzled file ON MY SITE
+
+<AlertBox variant="important" title="">
+Below is the contents of the index.js file on my blog. I'm sharing it as an example and for comparison, since I use many more React components than just the one we just covered in this post.
+</AlertBox>
 
 <Snippet filename="src/theme/BlogPostItem/index.js" source="src/theme/BlogPostItem/index.js" defaultOpen={false} />
 
@@ -567,7 +480,9 @@ If you have other custom components (a Bluesky share button, related posts, etc.
 
 The dashboard is a standard Docusaurus page (not a blog post) that calls the admin endpoint of `reactions.php` and presents the data in a table with per-article approval bars.
 
-Create `src/pages/reactions-dashboard.js`:
+Create `src/pages/reactions-dashboard.js` with this content:
+
+<Snippet filename="src/pages/reactions-dashboard.js" source="src/pages/reactions-dashboard.js" defaultOpen={false} />
 
 ### 5.1 — Authentication
 
@@ -581,6 +496,16 @@ const [token, setToken] = useState(() => {
 ```
 
 Passing the token in the hash is a practical choice: the hash is never sent to the server in the HTTP request, so it does not appear in server logs, and you can bookmark the URL.
+
+Fill your `ADMIN_TOKEN` to connect:
+
+<BrowserWindow url="https://www.avonture.be/reactions-dashboard/">
+  <img
+    alt="The reaction dashboard login page"
+    src={require("./images/add_token.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ### 5.2 — Data loading
 
@@ -633,9 +558,15 @@ function computeTotals(data) {
 
 `computeTotals` iterates over every article in `reactions-data.json`, computes a per-article approval ratio, and sorts by helpful count descending (ties broken by total votes). The grand totals at the end power the summary cards at the top of the page.
 
-### 5.4 — The complete file
+And here is what you can get:
 
-<Snippet filename="src/pages/reactions-dashboard.js" source="src/pages/reactions-dashboard.js" defaultOpen={false} />
+<BrowserWindow url="https://www.avonture.be/reactions-dashboard/">
+  <img
+    alt="The reaction dashboard"
+    src={require("./images/reaction_dashboard.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
 ---
 
@@ -643,11 +574,15 @@ function computeTotals(data) {
 
 Here is the full set of files involved, grouped for easy installation.
 
+<AlertBox variant="note" title="... excluding src/theme/BlogPostItem/index.js">
+In the list below, I've not included `src/theme/BlogPostItem/index.js` because, as said, that file will vary between my blog and yours. Please refer to **Step 4** and create the file manually.
+</AlertBox>
+
 <ProjectSetup folderName="Reaction widget">
+  <Snippet filename="api/.env" source="api/.env.example" defaultOpen={false} />
   <Snippet filename="api/reactions.php" source="api/reactions.php" defaultOpen={false} />
   <Snippet filename="src/components/Reaction/index.js" source="src/components/Reaction/index.js" defaultOpen={false} />
   <Snippet filename="src/components/Reaction/styles.module.css" source="src/components/Reaction/styles.module.css" defaultOpen={false} />
-  <Snippet filename="src/theme/BlogPostItem/index.js" source="src/theme/BlogPostItem/index.js" defaultOpen={false} />
   <Snippet filename="src/pages/reactions-dashboard.js" source="src/pages/reactions-dashboard.js" defaultOpen={false} />
 </ProjectSetup>
 

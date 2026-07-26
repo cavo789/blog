@@ -2637,13 +2637,6 @@
   dependencies:
     "@iconify/types" "*"
 
-"@iconify/react@^4.0.0":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-4.1.1.tgz#da1bf03cdca9427f07cf22cf5b63fa8f02db4722"
-  integrity sha512-jed14EjvKjee8mc0eoscGxlg7mSQRkwQG3iX3cPBCO7UlOjz0DtlvTqxqEcHUJGh+z1VJ31Yhu5B9PxfO0zbdg==
-  dependencies:
-    "@iconify/types" "^2.0.0"
-
 "@iconify/react@^6.0.2":
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/@iconify/react/-/react-6.0.2.tgz#b6d9bd0e13f9cb85b3a7fddbc70bbf71f5da1d33"
@@ -5758,14 +5751,13 @@ docusaurus-plugin-image-zoom@^3.0.1:
     medium-zoom "^1.1.0"
     validate-peer-dependencies "^2.2.0"
 
-docusaurus-plugin-pagefind@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/docusaurus-plugin-pagefind/-/docusaurus-plugin-pagefind-0.1.1.tgz#27283f102c6348fbcb1842ca373169a1c305ba9c"
-  integrity sha512-Tw/hK/pMYHd7vkJWlzLcrtEeW8/yqC5zj96SjhpbK+3ZgL3dpaE63dIt6ThH6UVgqPj4HGPA2568G2UGcaF1ug==
+docusaurus-plugin-pagefind@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-pagefind/-/docusaurus-plugin-pagefind-0.2.2.tgz#1c276de1cafc83d93ea064cc7bc66f7d4a1c42b4"
+  integrity sha512-1SWqybq7yiPX/Tir/S/dO65p+rqKcd5urSQTGPqeHENIeroVt2rBZiZWrHDEFbarbjEprL4+NuaABumWZ2Tu1w==
   dependencies:
     "@docsearch/css" "^3.0.0"
     "@docsearch/react" "^3.0.0"
-    "@iconify/react" "^4.0.0"
     fast-glob "^3.3.0"
 
 dom-converter@^0.2.0:

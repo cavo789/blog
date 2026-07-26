@@ -9,13 +9,14 @@ $_envVars = file_exists(__DIR__ . '/.env')
 
 define('ADMIN_EMAIL',            $_envVars['ADMIN_EMAIL'] ?? '');
 define('ADMIN_TOKEN',            $_envVars['ADMIN_TOKEN'] ?? '');
+define('NO_REPLY',               $_envVars['NO_REPLY'] ?? '');
 define('NOTIFY_COOLDOWN_SECONDS', 3600);   // minimum gap between emails per article
 define('SITE_URL',               'https://www.avonture.be');
 
 // ── CORS ──────────────────────────────────────────────────────────────────────
 $allowedOrigins = [
     SITE_URL,
-    'http://localhost:3000',
+    'https://localhost:3000',
 ];
 
 // Same-origin requests carry no Origin header — allow them unconditionally.
@@ -105,8 +106,8 @@ function maybeNotify(string $slug, string $vote, array $counts): void
         "View full dashboard: $dashboardUrl",
     ]);
     $headers = implode("\r\n", [
-        "From: noreply@avonture.be",
-        "Reply-To: noreply@avonture.be",
+        "From: " . NO_REPLY,
+        "Reply-To: " . NO_REPLY,
         "Content-Type: text/plain; charset=utf-8",
     ]);
 

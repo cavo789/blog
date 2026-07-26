@@ -17,6 +17,15 @@
     ],
     "description": "Docusaurus - AlertBox",
   },
+  "docusaurus.browserwindow": {
+    "prefix": "BrowserWindow",
+    "body": [
+      "<BrowserWindow url=\"https://www.avonture.be/blog/${1:any-url}\">",
+      "    ![${2:caption}](./images/${3:image-name}.webp)",
+      "</BrowserWindow>",
+    ],
+    "description": "Docusaurus - BrowserWindow",
+  },
   "docusaurus.coreconcept": {
     "prefix": "CoreConcept",
     "body": ["<CoreConcept title=\"$1\">", "$2", "</CoreConcept>"],
