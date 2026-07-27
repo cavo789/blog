@@ -1,0 +1,20 @@
+$ ai-data users.json
+
+→ Analyzing users.json (json)...
+
+jq '.[] | select(.active) | {name, birth_date}' users.json ||| List active users with their birth date
+jq 'group_by(.active) | map({active: .[0].active, count: length})' users.json ||| Count active vs inactive users
+jq '[.[].birth_date] | sort' users.json ||| Sorted list of all birth dates
+jq '.[] | select(.birth_date < "1990-01-01")' users.json ||| Users born before 1990
+jq 'map(.name)' users.json ||| Just the list of names
+
+$ jq '.[] | select(.active) | {name, birth_date}' users.json
+
+{
+  "name": "Alice Martin",
+  "birth_date": "1990-04-12"
+}
+{
+  "name": "Chloé Bernard",
+  "birth_date": "1998-07-23"
+}

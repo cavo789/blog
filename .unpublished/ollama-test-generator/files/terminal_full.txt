@@ -1,0 +1,48 @@
+$ ai-test backup.sh
+
+→ No test file found for 'backup' — generating a full Bats suite.
+
+#!/usr/bin/env bats
+
+setup() {
+  source "$BATS_TEST_DIRNAME/../backup.sh"
+  TMP_SRC="$(mktemp -d)"
+  TMP_DEST="$(mktemp -d)"
+  touch "$TMP_SRC/file.txt"
+}
+
+teardown() {
+  rm -rf "$TMP_SRC" "$TMP_DEST"
+}
+
+@test "backup_dir fails with no arguments" {
+  run backup_dir
+  [ "$status" -eq 1 ]
+  [[ "$output" == *"Usage: backup_dir"* ]]
+}
+
+@test "backup_dir fails when source is not a directory" {
+  run backup_dir "/path/does/not/exist"
+  [ "$status" -eq 1 ]
+  [[ "$output" == *"is not a directory"* ]]
+}
+
+@test "backup_dir creates a timestamped archive" {
+  run backup_dir "$TMP_SRC" "$TMP_DEST"
+  [ "$status" -eq 0 ]
+  [ -f "$output" ]
+}
+
+@test "backup_dir defaults dest_dir to the current directory" {
+  cd "$TMP_DEST"
+  run backup_dir "$TMP_SRC"
+  [ "$status" -eq 0 ]
+  [[ "$output" == *.tar.gz ]]
+}
+
+@test "backup_dir creates dest_dir when it does not exist yet" {
+  local missing_dest="$TMP_DEST/nested/missing"
+  run backup_dir "$TMP_SRC" "$missing_dest"
+  [ "$status" -eq 0 ]
+  [ -d "$missing_dest" ]
+}

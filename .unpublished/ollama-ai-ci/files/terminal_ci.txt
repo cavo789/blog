@@ -1,0 +1,9 @@
+$ ai-ci main
+
+→ Analyzing failed job: phpstan (#4821893)
+=== phpstan ===
+The `phpstan` job failed because src/Services/InvoiceCalculator.php:42 passes a
+string where the method signature expects an int for $quantity, which PHPStan
+flags at level 8. Cast the value explicitly with (int) $quantity before calling
+calculateTotal(), or better, validate and convert the input earlier in the
+request handler.

@@ -1,0 +1,23 @@
+$ ai-translate contract.docx French
+
+→ Converting 'contract.docx' with docling-convert...
+
+# Accord de Prestation de Services
+
+Cet accord est conclu entre **Acme Consulting SRL** (« le Prestataire ») et **Nordwind Logistics NV** (« le Client »).
+
+## Objet de la Mission
+
+Le Prestataire fournira des services de conseil en logiciels pendant une période de 6 mois, à compter du 15 janvier 2027.
+
+## Honoraires
+
+Le taux journalier convenu est de **650 EUR**, facturé mensuellement à terme échu.
+
+## Confidentialité
+
+Les deux parties s'engagent à conserver la confidentialité de toutes les informations échangées pendant une période de 3 ans après la résiliation du présent accord.
+
+## Résiliation
+
+Chaque partie peut résilier cet accord moyennant un préavis écrit de 30 jours calendrier.

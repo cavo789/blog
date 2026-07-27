@@ -1,15 +1,18 @@
 ---
 name: project-blog-map
-description: "Exhaustive catalog of 238 published posts + drafts: slug, title, date, mainTag, tags, series — source of truth for inter-article linking"
-metadata:
+description: "Exhaustive catalog of 245 published posts + drafts: slug, title, date, mainTag, tags, series — source of truth for inter-article linking"
+metadata: 
+  node_type: memory
   type: project
+  originSessionId: 137dd1fa-bddd-4742-a98b-57d539016a7c
+  modified: 2026-07-27T16:55:45.360Z
 ---
 
 # Blog Map — Source of Truth
 
-> **238 published posts** · **6 drafts** · Period: 2023-11-02 → 2026-06-08
+> **245 published posts** · **19 drafts** (+1 code-only staging folder, no post written yet) · Period: 2023-11-02 → 2026-07-27
 > Primary author: christophe · Language: en
-> AI-assisted posts: 10
+> AI-assisted posts: 18
 
 ## Post URL Pattern
 
@@ -30,16 +33,16 @@ MD link : [Title](/blog/<slug>)
 | bash | 11 |
 | bluesky | 2 |
 | code-quality | 7 |
-| component | 12 |
+| component | 14 |
 | customization | 2 |
 | database | 4 |
 | devcontainer | 1 |
 | doc-as-code | 7 |
 | docker | 21 |
-| docusaurus | 13 |
+| docusaurus | 15 |
 | excel | 8 |
 | fzf | 2 |
-| git | 2 |
+| git | 4 |
 | github | 5 |
 | gitlab | 3 |
 | joomla | 7 |
@@ -56,14 +59,14 @@ MD link : [Title](/blog/<slug>)
 | self-hosted | 9 |
 | ssh | 6 |
 | ssl | 2 |
-| tests | 4 |
+| tests | 5 |
 | vba | 1 |
 | vscode | 13 |
 | windows | 3 |
 | windows-terminal | 4 |
 | winscp | 7 |
 | wsl | 4 |
-| zsh | 4 |
+| zsh | 5 |
 
 ## Active Series (12)
 
@@ -87,7 +90,7 @@ MD link : [Title](/blog/<slug>)
 - [Create your Joomla website using Docker - Part 2](/blog/docker-joomla-part-2) — 2024-10-18
 - [Restore a Joomla backup using Docker](/blog/docker-joomla-restore-jpa) — 2024-10-18
 
-### Creating Docusaurus components (14 posts)
+### Creating Docusaurus components (17 posts)
 
 - [Change how Docusaurus will create img tags](/blog/docusaurus-override-img) — 2025-08-21
 - [Overrides the generation of img tags with Docusaurus](/blog/docusaurus-lazy-loading) — 2025-08-27
@@ -103,6 +106,9 @@ MD link : [Title](/blog/<slug>)
 - [Automating TL;DR Summaries with Gemini AI](/blog/gemini-tldr) — 2026-02-16
 - [Introducing the ProjectSetup Component - A Standardized Way to Share Project Structures](/blog/docusaurus-project-setup) — 2026-02-23 ★AI
 - [How to indicate AI-assisted content in a Docusaurus blog](/blog/docusaurus-ai-gemini) — 2026-03-09 ★AI
+- [Bring Your CLI Tutorials to Life with a Typewriter Terminal](/blog/docusaurus-terminal-typewriter) — 2026-06-22 ★AI
+- [AI-Powered Code Tooltips in Docusaurus — Explain Like I'm Five](/blog/docusaurus-eli5-snippet-tooltips) — 2026-07-20 ★AI
+- [Adding Reader Reactions to Your Docusaurus Blog](/blog/docusaurus-reactions) — 2026-07-27 ★AI
 
 ### Discovering Docusaurus (3 posts)
 
@@ -232,10 +238,13 @@ MD link : [Title](/blog/<slug>)
 | 2024-04-07 | [Docker image that provides static analysis tools for PHP](/blog/php-jakzal-phpqa) | code-quality, docker, laravel, php | code quality |
 | 2024-02-03 | [Markdown linter - solve formatting issue in md files](/blog/markdown-lint) | code-quality, makefile, markdown, vscode | code quality |
 
-### component (12 posts)
+### component (14 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
+| 2026-07-27 | [Adding Reader Reactions to Your Docusaurus Blog](/blog/docusaurus-reactions) ★ | docusaurus, php, react | Creating Docusaurus components |
+| 2026-07-20 | [AI-Powered Code Tooltips in Docusaurus — Explain Like I'm Five](/blog/docusaurus-eli5-snippet-tooltips) ★ | docusaurus, component, react, ai | Creating Docusaurus components |
+| 2026-06-22 | [Bring Your CLI Tutorials to Life with a Typewriter Terminal](/blog/docusaurus-terminal-typewriter) ★ | component, docusaurus, react | Creating Docusaurus components |
 | 2026-02-23 | [Introducing the ProjectSetup Component - A Standardized Way to Share Project Structures](/blog/docusaurus-project-setup) ★ | component, docusaurus | Creating Docusaurus components |
 | 2026-02-16 | [Automating TL;DR Summaries with Gemini AI](/blog/gemini-tldr) | ai, component, docker, docusaurus, python | Creating Docusaurus components |
 | 2025-10-03 | [A Docusaurus component that alerts readers the article is over a year old](/blog/docusaurus-old-notice) | component, docusaurus | Creating Docusaurus components |
@@ -245,7 +254,6 @@ MD link : [Title](/blog/<slug>)
 | 2025-09-09 | [Organize Your Docusaurus Content with a Custom Series Component](/blog/docusaurus-series) | component, docusaurus, markdown, react | Creating Docusaurus components |
 | 2025-09-08 | [Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide](/blog/docusaurus-cards) | component, docusaurus, markdown, react | Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide |
 | 2025-09-03 | [Displaying related posts below our Docusaurus article](/blog/docusaurus-relatedposts) | component, docusaurus, markdown, react | Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide |
-| 2025-08-30 | [Writing functional tests with Pest](/blog/pest-functional-testing) | component, laravel, php, tests | Functional testing |
 | 2025-08-27 | [Overrides the generation of img tags with Docusaurus](/blog/docusaurus-lazy-loading) | component, docusaurus, react | Creating Docusaurus components |
 | 2025-08-21 | [Change how Docusaurus will create img tags](/blog/docusaurus-override-img) | component, docusaurus, markdown, react | Creating Docusaurus components |
 
@@ -309,10 +317,11 @@ MD link : [Title](/blog/<slug>)
 | 2023-11-22 | [Using volumes with Docker, use cases](/blog/docker-volumes) | docker, wsl |  |
 | 2023-11-03 | [Share data between your running Docker container and your computer](/blog/docker-volume) | docker, linux |  |
 
-### docusaurus (13 posts)
+### docusaurus (15 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
+| 2026-07-13 | [Meerkat Mischief: Sprinkling Easter Eggs Across my Blog](/blog/docusaurus-easter-eggs) ★ | docusaurus, react, component |  |
 | 2026-03-09 | [How to indicate AI-assisted content in a Docusaurus blog](/blog/docusaurus-ai-gemini) ★ | ai, docusaurus | Creating Docusaurus components |
 | 2026-02-02 | [Tags management in Docusaurus](/blog/docusaurus-tags) | docker, docusaurus, python | Creating Docusaurus components |
 | 2026-01-26 | [Running some checks on your Docusaurus images](/blog/docusaurus-check-images) | docker, docusaurus, python | Creating Docusaurus components |
@@ -347,10 +356,12 @@ MD link : [Title](/blog/<slug>)
 | 2026-06-08 | [FZF + ripgrep: Interactive Code Search with Live Preview](/blog/fzf-ripgrep) ★ | bash, fzf, linux, zsh |  |
 | 2026-05-25 | [Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro](/blog/modular-zsh-workflow) ★ | fzf, zsh |  |
 
-### git (2 posts)
+### git (4 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
+| 2026-06-29 | [git worktree: Work on Two Branches at the Same Time](/blog/git-worktree) ★ | git, linux, bash, zsh |  |
+| 2026-06-15 | [delta: a Syntax-Highlighted Pager for git diff](/blog/git-delta) ★ | git, linux, bash |  |
 | 2026-04-06 | [Showing the last 3 updated branches when you jump in a git repo](/blog/git-branches-gst) | git, zsh |  |
 | 2024-09-11 | [Git - Some tips for your .gitconfig file](/blog/git-config) | git, wsl |  |
 
@@ -524,10 +535,11 @@ MD link : [Title](/blog/<slug>)
 | 2024-08-17 | [Docker - Configure your localhost to use SSL](/blog/docker-localhost-ssl) | apache, docker, php, ssh, ssl |  |
 | 2023-12-04 | [Encrypt sensitive data using SSL and Docker](/blog/docker_ssl_encrypt) | docker, ssl |  |
 
-### tests (4 posts)
+### tests (5 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
+| 2025-08-30 | [Writing functional tests with Pest](/blog/pest-functional-testing) | component, laravel, php, tests | Functional testing |
 | 2025-07-10 | [Linux - Bash scripts - Running unit tests with bats/bats](/blog/bats-unit-tests) | bash, linux, tests |  |
 | 2025-03-30 | [Introduction to Cypress](/blog/cypress) | docker, nodejs, react, tests | Functional testing |
 | 2024-09-27 | [Write PHP unit tests using Pest](/blog/pest_tips) | code-quality, laravel, php, tests, vscode |  |
@@ -595,10 +607,11 @@ MD link : [Title](/blog/<slug>)
 | 2023-11-03 | [Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer) | windows, wsl |  |
 | 2023-11-02 | [Opening a RDP connection to the Linux local instance](/blog/wslg-rpd-connection) | docker, windows, wsl |  |
 
-### zsh (4 posts)
+### zsh (5 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
+| 2026-07-06 | [ripgrep — The Search Tool That Changed My WSL2 Workflow](/blog/ripgrep) ★ | zsh, wsl, bash, linux, fzf |  |
 | 2026-03-02 | [ZSH Functions - Customizing Your Shell for Docker Management](/blog/zsh-docker-functions) | customization, docker, fzf, linux, zsh |  |
 | 2024-03-29 | [Autosuggestions in the console using ZSH](/blog/zsh-plugin-autosuggestions) | customization, linux, wsl, zsh |  |
 | 2024-03-29 | [Syntax highlighting in the console using ZSH](/blog/zsh-syntax-highlighting) | customization, linux, wsl, zsh |  |
@@ -606,13 +619,50 @@ MD link : [Title](/blog/<slug>)
 
 ## Drafts — Unpublished
 
-> 6 articles in progress in `/opt/docusaurus/.unpublished/`
+> 19 articles (with frontmatter + `draft: true`) in `/opt/docusaurus/.unpublished/`, plus 1 folder with
+> source files staged but no post written yet. `git-delta` and `git-worktree` (previously drafts) were
+> published 2026-06-15 and 2026-06-29 — see git/component sections above. Publish order for the
+> "Ollama daily-use functions" series + companions is tracked in `/opt/docusaurus/.unpublished/plan.md`
+> (French, internal-only, kept in sync per [[feedback-unpublished-plan]] — don't duplicate its content
+> here, just cross-check slugs against it).
 
 | Folder | Slug | Title | mainTag | Tags | Series |
 |--------|------|-------|---------|------|--------|
+| anythingllm-chat-with-your-docs | anythingllm-chat-with-your-docs | AnythingLLM: Chat With All Your Scattered Documentation ★AI | ai | ai, ollama, docker, self-hosted |  |
 | docusaurus-ollama-tags | docusaurus-ollama-tags | Playing with Ollama - Create a blog post analyzer with a local LLM | ai | ai, ollama |  |
 | git-bisect | git-bisect | git bisect: Find the Commit That Broke Everything ★AI | git | git, linux, bash, tips |  |
-| git-delta | git-delta | delta: a Syntax-Highlighted Pager for git diff ★AI | git | git, linux, bash, tool |  |
-| git-worktree | git-worktree | git worktree: Work on Two Branches at the Same Time ★AI | git | git, linux, bash, workflow, zsh |  |
-| python-ai-helper | python-ai-helper | Auto-documenting and testing python scripts | python | ai, python |  |
+| ollama-test-generator | ollama-test-generator | ai-test: Generate Missing Unit Tests From Your Terminal With a Local LLM ★AI | ai | ai, ollama, zsh, tests | Ollama daily-use functions |
+| ollama-ai-commit | ollama-ai-commit | ai-commit: Let a Local LLM Draft Your Commit Messages ★AI | git | git, ollama, zsh, ai | Ollama daily-use functions |
+| ollama-ai-standup | ollama-ai-standup | ai-standup: Turn Yesterday's Commits Into a Daily Standup Update ★AI | git | git, zsh, ai, ollama | Ollama daily-use functions |
+| ollama-ai-fix | ollama-ai-fix | ai-fix: A Local thefuck — Explain and Fix Your Last Failed Command ★AI | zsh | zsh, ai, ollama, linux | Ollama daily-use functions |
+| ollama-ai-ci | ollama-ai-ci | ai-ci: Ask a Local LLM Why Your GitLab Pipeline Failed ★AI | gitlab | gitlab, git, ai, ollama, zsh | Ollama daily-use functions |
+| ollama-ai-ask | ollama-ai-ask | ai-ask: Ask For a Shell Command in Plain English, Get It Back Instantly ★AI | ai | ai, ollama, zsh, linux | Ollama daily-use functions |
+| ollama-ai-docs | ollama-ai-docs | ai-translate & ai-summarize: Confidential Documents, Handled 100% Locally ★AI | ai | ai, ollama, zsh, docker | Ollama daily-use functions |
+| ollama-ai-review | ollama-ai-review | ai-review: A SOLID, Magic-Constants, Naming Code Review Before You Even Commit ★AI | code-quality | code-quality, ai, ollama, git | Ollama daily-use functions |
+| ollama-ai-data | ollama-ai-data | ai-data: Let a Local LLM Write Your jq and awk One-Liners ★AI | ai | ai, ollama, zsh, fzf | Ollama daily-use functions |
+| ollama-ai-diff | ollama-ai-diff | ai-diff: What Actually Changed, Not a Wall of Plus and Minus Signs ★AI | ai | ai, ollama, zsh, git | Ollama daily-use functions |
+| docling | docling | Docling - Convert PDF, Word, PowerPoint, Excel and HTML to Markdown, GPU-Accelerated ★AI | markdown | docker, markdown, python | (none — companion to markitdown, not the Ollama series) |
+| python-ai-helper | python-ai-helper | Auto-documenting and testing python scripts | Python | ai, python |  |
+| removing-algolia-for-pagefind | removing-algolia-for-pagefind | Dropping Algolia Search for Pagefind on My Docusaurus Blog ★AI | docusaurus | docusaurus |  |
+| tried_it | docusaurus-tried-it-widget | Adding a "Did It Work?" Button to Your Docusaurus Tutorials ★AI | component | docusaurus, php, react | Creating Docusaurus components |
+| typo-report-docusaurus | docusaurus-typo-report-component | Let Readers Flag Issues — A Multi-Type Feedback Widget for Docusaurus ★AI | docusaurus | docusaurus, component, php, react, security |  |
 | winscp-putty | winscp-putty | WinSCP - Start PuTTY without typing a password | winscp | putty, ssh, tips, winscp |  |
+
+**"Ollama daily-use functions" series so far (all drafts, 10 posts):** ollama-test-generator (ai-test),
+ollama-ai-commit (ai-commit), ollama-ai-standup (ai-standup), ollama-ai-fix (ai-fix), ollama-ai-ci
+(ai-ci), ollama-ai-ask (ai-ask), ollama-ai-data (ai-data), ollama-ai-docs (ai-translate +
+ai-summarize), ollama-ai-review (ai-review), ollama-ai-diff (ai-diff). All share
+`~/.zsh/fns/_ollama.zsh` (leading underscore = loads first alphabetically): `_ollama_query` helper,
+`AI_COMMANDS` registry, `ai` dispatcher — every function self-registers with one
+`AI_COMMANDS[name]=...` line. `ai-diff` additionally reuses `_ai_extract_text` from `_ai-docs.zsh`
+(first defined for ai-docs) — a second, deeper cross-article dependency, tracked in `plan.md`. Series
+entry added to `src/data/series.js` — see [[project-blog-conventions]]. Image
+`/img/series/ollama.webp` still does not exist, needed before publishing any of these.
+`anythingllm-chat-with-your-docs` is Ollama-flavored but explicitly **not** part of this series (no
+`series:` field, doesn't call Ollama directly, it's a self-hosted RAG app that talks to any LLM
+provider including Ollama).
+
+**Staged only (no `index.md` yet):** `ollama-refactor-code/files/` — a full Python project (uv, Ollama
+client, rule-based code analyzer/refactorer, devcontainer) co-located as source for a future post
+(referenced in `ollama-ai-review` as "a fully automated git-hook reviewer, more in a future article" —
+no repo/URL exists for it, don't invent one).

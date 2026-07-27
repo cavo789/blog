@@ -1,0 +1,6 @@
+$ ai-diff massupload.sh
+
+- Uploads now run in parallel (backgrounded with & and wait) instead of one file at a time, which should meaningfully speed up large batches.
+- Added automatic retry: each upload gets up to 3 attempts before being reported as failed, instead of failing silently on the first network hiccup.
+- .tmp files are now skipped entirely — previously every file in the source folder was uploaded, including temporary ones.
+- Failures are now reported explicitly per file (FAILED: <file>) instead of scp's raw error output scrolling past unnoticed.

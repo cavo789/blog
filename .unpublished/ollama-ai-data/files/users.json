@@ -1,0 +1,5 @@
+[
+  { "name": "Alice Martin", "birth_date": "1990-04-12", "active": true },
+  { "name": "Bruno Dupont", "birth_date": "1985-11-02", "active": false },
+  { "name": "Chloé Bernard", "birth_date": "1998-07-23", "active": true }
+]

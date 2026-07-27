@@ -1,0 +1,32 @@
+services:
+  docling:
+    image: docling
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    volumes:
+      - .:/workspace:cached
+      - docling-models:/home/developer/.cache/huggingface
+    tmpfs:
+      - /tmp:size=512m,noexec,nosuid
+      - /run:size=16m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: /workspace
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+volumes:
+  docling-models:

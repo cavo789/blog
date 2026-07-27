@@ -1,0 +1,14 @@
+diff --git a/api/reactions.php b/api/reactions.php
+index 1234567..89abcde 100644
+--- a/api/reactions.php
++++ b/api/reactions.php
+@@ -12,6 +12,10 @@ header('Content-Type: application/json');
+
+ $slug = $_POST['slug'] ?? '';
+
++if ($slug === '') {
++    http_response_code(400);
++    exit(json_encode(['error' => 'Missing slug parameter']));
++}
++
+ $reaction = $_POST['reaction'] ?? '';

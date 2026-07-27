@@ -1,0 +1,9 @@
+$ ai-diff project_v1.docx project_v2.docx
+
+→ Converting 'project_v1.docx' with docling-convert...
+→ Converting 'project_v2.docx' with docling-convert...
+
+- Scope expanded: the billing system migration was added alongside the customer database migration — this is a materially bigger project than v1 described.
+- Timeline extended from 4 to 6 months, with a new mid-project review checkpoint after month 3.
+- Budget increased by roughly 53% (EUR 85,000 → EUR 130,000), and now explicitly includes a 15% contingency reserve that v1 didn't mention.
+- A new Risks section was added, flagging the billing system migration as dependent on a third-party vendor API — a dependency v1 never called out.

@@ -1,0 +1,17 @@
+$ git diff --staged --stat
+
+ api/reactions.php | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+$ ai-commit
+
+--------------------------------------------------
+fix(api): reject empty slug parameter in reactions endpoint
+
+Return a 400 response with a clear error message when the
+`slug` POST parameter is missing or empty, instead of silently
+processing an invalid reaction.
+--------------------------------------------------
+Use this message? [y]es / [e]dit / [N]o: y
+[main a1b2c3d] fix(api): reject empty slug parameter in reactions endpoint
+ 1 file changed, 4 insertions(+)

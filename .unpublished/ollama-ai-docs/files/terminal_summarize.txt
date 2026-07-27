@@ -1,0 +1,8 @@
+$ ai-summarize contract.docx 4
+
+→ Converting 'contract.docx' with docling-convert...
+
+- The contract binds Acme Consulting SRL and Nordwind Logistics NV for a 6-month engagement starting January 15, 2027.
+- The agreed daily rate is EUR 650, invoiced monthly in arrears.
+- The confidentiality obligation survives 3 years after contract termination.
+- Either party can terminate the agreement with 30 calendar days' written notice.

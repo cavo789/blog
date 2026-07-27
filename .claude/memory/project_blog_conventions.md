@@ -5,6 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 771ca3a9-f666-4860-bab3-6091afb7179a
+  modified: 2026-07-27T16:03:05.390Z
 ---
 
 ## Directory Structure
@@ -86,10 +87,20 @@ Opening paragraph — relatable hook, problem or anecdote.
 - Always use `<Terminal>` for shell commands (never bare code blocks for CLI interactions)
 - Use Markdown headings `##` / `###`, not HTML headings
 
+## Series Registry — `src/data/series.js`
+
+A post's `series:` frontmatter value is free text, but for the series to get a description/card
+image on the `/series` page, it **must also** have a matching entry in `src/data/series.js`
+(`{ name, description, image }`, `image` under `/static/img/series/*.webp`, ~1000-1500px wide).
+Adding a new series to a post's frontmatter without adding it here leaves it undescribed on that
+page — always update both together.
+
 ## Series Currently in Use (2026)
 
 - `Creating Docusaurus components`
 - `Discovering Quarto`
+- `Ollama daily-use functions` (added 2026-07-27, drafts only so far — `image: /img/series/ollama.webp`
+  does not exist yet, needs to be created before publishing either draft post)
 
 ## Authors Available
 

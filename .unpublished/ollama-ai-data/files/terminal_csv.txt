@@ -1,0 +1,15 @@
+$ ai-data orders.csv
+
+→ Analyzing orders.csv (csv)...
+
+awk -F',' 'NR>1 {sum[$2]+=$3; count[$2]++} END {for (r in sum) printf "%-6s count=%d total=%.2f\n", r, count[r], sum[r]}' orders.csv ||| Total amount and order count per region
+awk -F',' 'NR>1 && $3+0 > 100 {print}' orders.csv ||| Orders over 100
+awk -F',' 'NR>1 {print $2}' orders.csv | sort -u ||| List of distinct regions
+awk -F',' 'NR>1 {sum+=$3} END {printf "%.2f\n", sum/(NR-1)}' orders.csv ||| Average order amount
+awk -F',' 'NR>1 {print $1","$3}' orders.csv | sort -t',' -k2 -rn ||| Orders sorted by amount, highest first
+
+$ awk -F',' 'NR>1 {sum[$2]+=$3; count[$2]++} END {for (r in sum) printf "%-6s count=%d total=%.2f\n", r, count[r], sum[r]}' orders.csv
+
+EMEA   count=2 total=165.70
+APAC   count=2 total=149.75
+AMER   count=1 total=300.00

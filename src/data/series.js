@@ -50,6 +50,12 @@ const SERIES_DATA = [
     image: "/img/series/excel-sqlserver.webp",
   },
   {
+    name: "Ollama daily-use functions",
+    description:
+      "Turn a local Ollama LLM into everyday zsh functions for testing, git and beyond.",
+    image: "/img/series/ollama.webp",
+  },
+  {
     name: "Running Docusaurus using Docker",
     description:
       "Containerize your Docusaurus environment for reproducible local development.",

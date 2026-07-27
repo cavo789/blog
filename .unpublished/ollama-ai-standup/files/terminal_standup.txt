@@ -1,0 +1,7 @@
+$ ai-standup
+
+Yesterday, I:
+- Added the ai-test and ai-commit zsh functions to query a local Ollama model from the terminal
+- Fixed the reactions API to reject an empty slug parameter with a proper 400 response
+- Refactored the api-tools GitLab CI pipeline to cache Composer dependencies between jobs
+- Reviewed and merged the auth-token-refresh branch after fixing a race condition in the retry logic

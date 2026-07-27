@@ -1,0 +1,11 @@
+$ cd ~/documents/
+
+$ docling-convert report.pdf
+$ docling-convert contract.docx
+$ docling-convert slides.pptx
+$ docling-convert budget.xlsx
+$ docling-convert page.html
+
+$ ls *.md
+
+budget.md  contract.md  page.md  report.md  slides.md

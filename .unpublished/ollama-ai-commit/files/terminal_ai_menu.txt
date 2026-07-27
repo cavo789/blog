@@ -1,0 +1,12 @@
+$ ai
+
+Available ai commands:
+  ai commit    — draft a Conventional Commits message from staged changes
+  ai test      — generate or complete a unit test suite
+
+$ ai commit
+
+--------------------------------------------------
+fix(api): reject empty slug parameter in reactions endpoint
+--------------------------------------------------
+Use this message? [y]es / [e]dit / [N]o:

@@ -1,0 +1,29 @@
+name: tools
+
+services:
+  anythingllm:
+    image: mintplexlabs/anythingllm
+    container_name: anythingllm
+    cap_add:
+      - SYS_ADMIN
+    ports:
+      - "3001:3001"
+    env_file:
+      - .env
+    environment:
+      - STORAGE_DIR=/app/server/storage
+      - LLM_PROVIDER=ollama
+      - OLLAMA_BASE_PATH=http://192.168.0.218:11434
+      - OLLAMA_MODEL_PREF=qwen2.5:14b-instruct
+      - OLLAMA_MODEL_TOKEN_LIMIT=8192
+      - EMBEDDING_ENGINE=ollama
+      - EMBEDDING_BASE_PATH=http://192.168.0.218:11434
+      - EMBEDDING_MODEL_PREF=nomic-embed-text:latest
+      - EMBEDDING_MODEL_MAX_CHUNK_LENGTH=8192
+      - VECTOR_DB=lancedb
+    volumes:
+      - anythingllm_storage:/app/server/storage
+    restart: always
+
+volumes:
+  anythingllm_storage:

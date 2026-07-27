@@ -1,0 +1,18 @@
+$ git diff --staged --stat
+
+ src/Invoice/InvoiceProcessor.php | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+$ ai-review
+
+## SOLID violations
+- src/Invoice/InvoiceProcessor.php:11 — process() validates input, calculates tax, persists to the database, and sends an email: four responsibilities in one method, violating Single Responsibility. Split into validateInvoiceData(), calculateTax(), saveInvoice() and sendInvoiceEmail().
+
+## Magic constants
+- src/Invoice/InvoiceProcessor.php:20 — 0.21 is a hardcoded VAT rate with no named meaning. Extract it to a class constant such as VAT_RATE_STANDARD = 0.21, or load it from configuration.
+
+## Naming
+- src/Invoice/InvoiceProcessor.php:11 — the parameter $d gives no indication of its shape or purpose. Rename to $invoiceData, and consider a typed value object instead of a raw array.
+
+## Overall quality
+- src/Invoice/InvoiceProcessor.php:23 — database credentials ('root', 'root') are hardcoded directly in the method body. Move them to environment variables or a configuration service; this connection also should not be constructed inside a method that also handles business logic.

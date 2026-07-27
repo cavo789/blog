@@ -1,0 +1,30 @@
+diff --git a/src/Invoice/InvoiceProcessor.php b/src/Invoice/InvoiceProcessor.php
+index 1234567..89abcde 100644
+--- a/src/Invoice/InvoiceProcessor.php
++++ b/src/Invoice/InvoiceProcessor.php
+@@ -10,6 +10,32 @@ class InvoiceProcessor
+ {
++    public function process($d)
++    {
++        if (!isset($d['amount']) || !isset($d['email'])) {
++            return false;
++        }
++
++        if ($d['amount'] <= 0) {
++            return false;
++        }
++
++        $tax = $d['amount'] * 0.21;
++        $total = $d['amount'] + $tax;
++
++        $conn = new PDO('mysql:host=localhost;dbname=billing', 'root', 'root');
++        $stmt = $conn->prepare('INSERT INTO invoices (amount, tax, total) VALUES (?, ?, ?)');
++        $stmt->execute([$d['amount'], $tax, $total]);
++
++        $subject = 'Your invoice';
++        $body = 'Total due: ' . $total;
++        mail($d['email'], $subject, $body);
++
++        return true;
++    }
+ }

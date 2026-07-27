@@ -1,0 +1,9 @@
+$ ai-ask "what command do I use to find all files containing the pattern 'xyz' in the current folder and subfolders, excluding files ignored by .gitignore"
+
+rg -l 'xyz'
+# rg (ripgrep) respects .gitignore automatically — no --exclude flags needed
+
+$ ai-ask "how do I list docker containers using more than 500MB of memory"
+
+docker stats --no-stream --format '{{.Name}}\t{{.MemUsage}}' | awk -F'\t' '$2+0 > 500'
+# --no-stream takes a single snapshot instead of continuously refreshing

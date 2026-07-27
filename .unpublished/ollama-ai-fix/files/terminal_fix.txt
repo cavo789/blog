@@ -1,0 +1,12 @@
+$ git psuh origin main
+
+git: 'psuh' is not a git command. See 'git --help'.
+
+The most similar command is
+	push
+
+$ ai-fix
+
+→ Re-running to capture the error: git psuh origin main
+The command 'psuh' is not a valid git subcommand — it's a typo for 'push'.
+Fix: git push origin main
