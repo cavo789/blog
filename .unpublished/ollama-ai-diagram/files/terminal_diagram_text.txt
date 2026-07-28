@@ -1,0 +1,9 @@
+$ ai-diagram "a user submits a contact form, the API validates the payload, saves it to Postgres, then sends a confirmation email via SMTP"
+
+```mermaid
+flowchart LR
+    A[User submits contact form] --> B[API validates payload]
+    B -->|valid| C[(Postgres)]
+    B -->|invalid| E[Return 400 error]
+    C --> D[Send confirmation email via SMTP]
+```

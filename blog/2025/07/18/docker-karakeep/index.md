@@ -26,6 +26,8 @@ So I was rather dissatisfied and waiting to find something better: karakeep.
 
 It's a tool that you can self-host and which is a bookmark, note-taking and even image manager that works very simply.
 
+*It joins the small set of self-hosted tools I run daily, next to <Link to="/blog/docker-memos">Memos</Link> and <Link to="/blog/docker_uptime_kuma">Uptime Kuma</Link> — all grouped in Docker Desktop thanks to the trick in <Link to="/blog/docker-name-property">Docker - How to group containers together</Link>.*
+
 And the search engine is quite powerful. Overall, karakeep is a pleasure to use.
 
 Let's look at how to install it.

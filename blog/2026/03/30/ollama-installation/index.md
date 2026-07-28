@@ -11,6 +11,9 @@ tags:
 date: 2026-03-30
 ai_assisted: true
 blueskyRecordKey: 3miaxwivces2d
+updates:
+  - date: 2026-07-27
+    note: "Updated the Continue section: config.json is deprecated in favor of config.yaml, noted Continue's acquisition by Cursor, and swapped the heavier-task model recommendation to qwen3-coder:30b."
 ---
 
 ![Installing Ollama and get local AI](/img/v2/playing_with_ollama.webp)
@@ -25,7 +28,7 @@ What if we can solve this for free? How? Simply by installing a LLM locally, on 
 
 ## Do you need a local LLM?
 
-Probably the most important reason is privacy: having it locally, on your host, means that your documents stay on your computer. You won't share your codebase, for example, with AI companies.
+Probably the most important reason is privacy: having it locally, on your host, means that your documents stay on your computer. You won't share your codebase, for example, with AI companies. *That same argument is why I liked <Link to="/blog/vscode-tabnine">Tabnine</Link>, which also works offline — Ollama simply takes the idea much further.*
 
 You can also think about automation: you'll be able to run automation scripts without the fear of reaching any quota. Also, you don't have to be afraid of billing; since it runs on your host, it's completely free.
 
@@ -170,11 +173,19 @@ If you want to add AI in VSCode, you can install [Continue - open-source AI agen
 
 ![Installing Continue extension in VSCode](./images/install_continue_extension.webp)
 
-Continue requires a `config.json` file **in your Windows home folder** — not on the WSL side.
+<AlertBox variant="important" title="Continue's status as of July 2026">
+Continue was acqui-hired by Cursor (Anysphere) in June 2026, and the standalone open-source project was wound down: v2.0.0 (June 19, 2026) is the final release, and the GitHub repository is now read-only — no further security patches, model adapters, or editor-compatibility fixes from the original team. The bring-your-own-LLM path with Ollama, which is all this section uses, still works fine in that final release. Worth knowing before investing time in it, but not a reason to skip local autocompletion entirely.
+</AlertBox>
 
-Start a Powershell terminal, run `cd ~/.continue ; del config.yaml ; notepad config.json` and paste the content of this file:
+Continue requires a config file **in your Windows home folder** — not on the WSL side, at least in my original testing; worth reconfirming on current versions if this doesn't match what you see.
 
-<Snippet filename=".continue/config.json" source="./files/continue/config.json" defaultOpen={false} />
+<AlertBox variant="note" title="config.yaml, not config.json">
+Older Continue versions (pre-1.0) used `config.json`. That format is now deprecated — current versions use `~/.continue/config.yaml` instead, with models listed under explicit `roles` (`chat`, `edit`, `autocomplete`). The snippets below use this current format.
+</AlertBox>
+
+Start a Powershell terminal, run `cd ~/.continue ; notepad config.yaml` and paste the content of this file:
+
+<Snippet filename=".continue/config.yaml" source="./files/continue/config.yaml" defaultOpen={false} />
 
 ![Configure Continue extension](./images/configure_continue_extension.webp)
 
@@ -198,9 +209,9 @@ For this, you'll need to use a faster model; let's use `qwen2.5-coder:1.5b` (1.5
 $ docker exec -it ollama ollama pull qwen2.5-coder:1.5b
 </Terminal>
 
-Update your `.continue/config.json` file (on Windows side) with this new content:
+Update your `.continue/config.yaml` file (on Windows side) with this new content:
 
-<Snippet filename=".continue/config.json" source="./files/continue/config_with_autocompletion.json" defaultOpen={false} />
+<Snippet filename=".continue/config.yaml" source="./files/continue/config_with_autocompletion.yaml" defaultOpen={false} />
 
 Now that I've added the `qwen2.5-coder:1.5b` model in my config file, let's create a `calculate.sh` file with this content:
 
@@ -226,17 +237,21 @@ And it works out-of-the-box!
 
 ### Using more powerful LLM depending on your expectations
 
-If you've a powerful CPU and/or GPU with 32GB or more, you can also add a better model `gemma2:27b` (27 billion parameters, around ~17G):
+<AlertBox variant="note" title="Updated 2026-07-27">
+This section originally recommended `gemma2:27b`, a dense 27-billion-parameter model. I've since moved to `qwen3-coder:30b` for this role — same Mixture-of-Experts trick explained earlier for Mixtral: 30 billion parameters total, but only ~3.3 billion active per token, so it's noticeably faster than a dense model of similar size while fitting comfortably in 24GB of VRAM (around 19GB on disk with the default quantization). The screenshot further down still shows the original `gemma2:27b` test — the config and pull command below reflect the current recommendation.
+</AlertBox>
 
-<Snippet filename=".continue/config.json" source="./files/continue/config_with_expert.json" defaultOpen={false} />
+If you've a powerful CPU and/or GPU with 24GB or more, you can add a stronger model like `qwen3-coder:30b`:
+
+<Snippet filename=".continue/config.yaml" source="./files/continue/config_with_expert.yaml" defaultOpen={false} />
 
 <Terminal typewriter wrap={true}>
-$ docker exec -it ollama ollama pull gemma2:27b
+$ docker exec -it ollama ollama pull qwen3-coder:30b
 </Terminal>
 
-This model will be much more accurate, but also slower. Save it for intensive code analysis tasks such as code refactoring, generating complex unit tests, and so on.
+This model is noticeably more accurate than the fast assistant, and — thanks to the Mixture-of-Experts architecture — still reasonably quick despite its size. Save it for intensive code analysis tasks such as code refactoring, generating complex unit tests, and so on.
 
-I've selected `gemma2:27b` and asked for a refactoring. It was really slow even on my machine (i9 - 64GB).
+Here's the original test, asking `gemma2:27b` for a refactoring — it was really slow even on my machine (i9 - 64GB):
 
 ![Refactory my current file using Continue](./images/continue_refactor_current_file.webp)
 

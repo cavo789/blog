@@ -60,3 +60,5 @@ Take a look at what appeared on screen previously when running the `ssh-keygen` 
 So, just run `cat ~/.ssh/id_ed25519.pub` in your Linux console and you'll get the key value. Copy/paste that line into the GitHub settings page and, then, click on the `Add SSH key` button.
 
 Finally, if you want to test if the connection is successfully created, just run `ssh -T git@github.com`. You should get `Hi cavo789! You've successfully authenticated, but GitHub does not provide shell access.` (with your own pseudo of course).
+
+Two follow-ups: if you have repositories already cloned over HTTPS, <Link to="/blog/git-config">Git - Some tips for your .gitconfig file</Link> shows a one-line setting to force SSH globally without re-cloning anything; and the same key mechanism works for your hosting server, see <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link>.

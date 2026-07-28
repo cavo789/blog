@@ -24,6 +24,8 @@ It would be much more convenient to view the full list of hosts through a TUI (*
 
 Additionally, creating one `.conf` file per project would eliminate the need to maintain a massive, monolithic configuration file containing all 50 servers. Let's explore how to achieve this setup in this post.
 
+*This builds on <Link to="/blog/linux-fzf-introduction">Introduction to fzf - Fuzzy Finder</Link> and on the aliases created in <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link>. It applies to `~/.ssh/config` the same "one file per concern" philosophy as <Link to="/blog/modular-zsh-workflow">Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro</Link>.*
+
 <!-- truncate -->
 
 Before diving into the technical details, here is a preview of the final result:

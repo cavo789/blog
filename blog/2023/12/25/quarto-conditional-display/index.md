@@ -24,7 +24,7 @@ My personal use case is the following one: I've a single, sometimes big, `readme
 
 Same idea: if my output is an HTML page, I can easily display a listing of a few dozen lines of my source code, for example, to illustrate a feature. On the other hand, if I display it as a slideshow, this will be counterproductive, since the slide will be huge and not very effective.
 
-And, if my goal is to generate a slideshow, the last part of my documentation will be a *Thank you for listening! Do you have any questions?* chapter. And that one should certainly not be part of the `docx` / `pdf` / `html` output. Just for the `revealjs` display.
+And, if my goal is to generate a slideshow, the last part of my documentation will be a *Thank you for listening! Do you have any questions?* chapter. And that one should certainly not be part of the `docx` / `pdf` / `html` output. Just for the <Link to="/blog/quarto-revealjs-tips">`revealjs`</Link> display (or <Link to="/blog/quarto-powerpoint">PowerPoint</Link>, if your audience insists).
 
 <!-- truncate -->
 

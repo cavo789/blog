@@ -17,7 +17,7 @@ language: en
 This article shows how to run Microsoft SQL Server 2022 in Docker, connect to it with SQL Server Management Studio (SSMS), and create a sample database and table. It finishes with a small PowerShell script example that connects to the database and runs a query, giving a full local round trip from container to query results.
 </TLDR>
 
-And yes, nothing less. We're going to install a **Microsoft SQL Server 2022** on our machine, install **SQL Server Management Studio** too and we'll have fun with a small PowerShell script; all with Docker, of course.
+And yes, nothing less. We're going to install a **Microsoft SQL Server 2022** on our machine, install **SQL Server Management Studio** too and we'll have fun with a small PowerShell script; all with Docker, of course. *If it's Oracle you need, I've written <Link to="/blog/docker-oracle-database-server">Running Oracle Database Server as a Docker container</Link> too.*
 
 <!-- truncate -->
 
@@ -73,6 +73,10 @@ Use the value below for the authentication:
 
 Click on the `Connect` button and then, SSMS will be connected to your Docker instance. Now it's time to create our database.
 
+<AlertBox variant="tip" title="No Windows client?">
+SSMS is Windows-only. For a browser-based alternative that works with almost any engine, see <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Using Adminer, pgadmin or phpmyadmin to access your Docker database container</Link>.
+</AlertBox>
+
 ## Create the database, the table and add some records
 
 Once connected on SSMS, run the following query for creating a sample `MyDB` database, create a table called `dbo.Person` and add some records.
@@ -94,7 +98,7 @@ If, after having fired the query, you don't see yet your database in the `Object
 
 ## Write a PowerShell script and connect to the database
 
-*Probably not the best way to query a SQL Server database, based on an example found on Stack Overflow...*
+*Probably not the best way to query a SQL Server database, based on an example found on Stack Overflow... If you're more of an Excel person, see <Link to="/blog/vba-excel-sql-server">MS Excel - Connect to a SQL Server database, run a query and get the results</Link>.*
 
 As an example, we'll create a DOS PowerShell script called `connect.ps1` to illustrate how to query our new database:
 

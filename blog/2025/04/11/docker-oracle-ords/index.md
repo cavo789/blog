@@ -24,7 +24,7 @@ This tutorial demonstrates how to transform your Oracle Database into a powerful
 
 In a previous article (<Link to="/blog/docker-oracle-database-server">Running Oracle Database Server as a Docker container</Link>), we've created a Docker container called `oracle-db` where a Human Resources database is running.
 
-In this article we'll partially expose the database on the web using OpenAPI so, in short, we'll allow authorized people to access, f.i., `http://oursite/api/employees` to get the list of all employees.
+In this article we'll partially expose the database on the web using OpenAPI so, in short, we'll allow authorized people to access, f.i., `http://oursite/api/employees` to get the list of all employees. *That generated OpenAPI schema can be linted, by the way; see <Link to="/blog/belgif-api-linter">Validate your OpenAPI schema against the Belgif REST standards</Link>.*
 
 Exactly the same way we've done with PostgREST (see my <Link to="/blog/docker-postgrest">Don't query your PostgreSQL db anymore, prefer PostgREST</Link>) but, this time, with an Oracle database.
 

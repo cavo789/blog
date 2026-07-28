@@ -38,3 +38,5 @@ One of the big advantages is that you don't have to worry about the position of 
 New parameters can also be created in the future without affecting existing scripts in any way.
 
 Everything is much cleaner using an associative array and more robust too.
+
+Two other habits that keep a Bash codebase clean: <Link to="/blog/linux-sort-functions-in-script">sorting your functions</Link> so they're findable, and <Link to="/blog/bats-unit-tests">covering them with bats unit tests</Link> so a refactoring like this one can be done without holding your breath.

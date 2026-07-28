@@ -30,7 +30,7 @@ Let's see if Lovable.dev can build the same thing in just one hour. **Spoiler: i
 
 ## The objective
 
-I asked it to create a fully dockerized application with a Python/FastAPI backend and a React frontend. The application should render Markdown to HTML once. If the conversion was already done, the HTML should be served from a cache (Redis). The application should be able to browse a folder on my disk recursively and display the list of files and folders. When I click on a file, it should render the Markdown content to HTML and display it.
+I asked it to create a fully dockerized application with a <Link to="/blog/python-fastapi">Python/FastAPI</Link> backend and a React frontend. The application should render Markdown to HTML once. If the conversion was already done, the HTML should be served from a cache (Redis). The application should be able to browse a folder on my disk recursively and display the list of files and folders. When I click on a file, it should render the Markdown content to HTML and display it.
 
 The application should also have a search engine to search for text in the Markdown files (Meilisearch).
 

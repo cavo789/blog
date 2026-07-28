@@ -17,7 +17,7 @@ language: en
 This article shows how to add a self-documenting help screen to a Makefile: add a `default: help` target so running bare `make` shows it, define a `help:` target that parses `##`-prefixed comments after each target name to print a description, and group related targets under `##@ Section Name` headers for a clean, categorized command list.
 </TLDR>
 
-By using a makefile, as you already know, you can gather in one place a lot of *actions* like `make bash`, `make build`, `make deploy`, ... just like I do when working on this blog (see my makefile on https://github.com/cavo789/blog/blob/main/makefile).
+By using a makefile, as you already know, you can gather in one place a lot of *actions* like `make bash`, `make build`, `make deploy`, ... just like I do when working on this blog (see my makefile on https://github.com/cavo789/blog/blob/main/makefile). *Not convinced yet that you need one? Read <Link to="/blog/makefile-using-make">Linux Makefile - When to use a makefile</Link> first.*
 
 What's really nice is being able to type `make` at the command line without any other options and then get a screen with lists of existing commands and a short one-line explanation.
 
@@ -132,3 +132,5 @@ And here is the final result:
 ## Take a look on mine, for this blog
 
 This blog is maintained using such a makefile; you can get a copy here: https://github.com/cavo789/blog/blob/main/makefile
+
+Want to go further with Make? <Link to="/blog/makefile_tips">Makefile - Tutorial and Tips & Tricks</Link> covers variables, `.PHONY`, passing arguments to targets and a few other things I use daily.

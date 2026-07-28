@@ -27,6 +27,8 @@ As a technical blogger, I was searching for a way to enhance my readers' experie
 
 So, I decided to automate the generation of TL;DR summaries using Google's Gemini AI and a simple Python script. In this article, I'll explain how I did it.
 
+*This is not my only use of Gemini on this blog: read <Link to="/blog/gemini-meerkat">How I used Google Gemini Nano Banana on my blog</Link> for the illustrations side of the story.*
+
 <!-- truncate -->
 
 ## The Concept
@@ -102,6 +104,12 @@ $ python .scripts/python_tldr/main.py blog/2026/01/
 </Terminal>
 
 The script is smart enough to skip files that already have a `<TLDR>` tag, so you can run it safely on your entire blog archive.
+
+<AlertBox variant="note" title="Be transparent with your readers">
+A summary written by a machine is still machine-written content. I flag it explicitly on every post concerned; see <Link to="/blog/docusaurus-ai-gemini">How to indicate AI-assisted content in a Docusaurus blog</Link>.
+</AlertBox>
+
+The same *generate once at authoring time, commit the result* pattern is reused in <Link to="/blog/docusaurus-eli5-snippet-tooltips">AI-Powered Code Tooltips in Docusaurus</Link>: readers never wait for an API call and your key never leaves your machine.
 
 ## Error - 429 RESOURCE_EXHAUSTED
 

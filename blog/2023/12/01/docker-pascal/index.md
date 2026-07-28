@@ -52,6 +52,8 @@ Hello world! I'm a Turbo Pascal source code
 
 Voilà, we've successfully created our first Pascal code in 2023.
 
+*This blog has a small collection of such "run language X without installing it" articles: <Link to="/blog/docker-java">Java</Link>, <Link to="/blog/docker-python">Python</Link> and <Link to="/blog/docker-php-run-script-or-website">PHP</Link>.*
+
 <AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run commands are (almost always the same):
 

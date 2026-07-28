@@ -170,3 +170,7 @@ $ curl --silent https://randomuser.me/api/ | jq '.results[0].name'
 ```
 
 Learn more about [jq filtering](https://jqlang.github.io/jq/tutorial/).
+
+`jq` quickly becomes a reflex: I use it in <Link to="/blog/docker-networking-troubleshooting">Troubleshooting for Docker containers</Link> to read `docker inspect` output, for instance.
+
+For the times when the console is not the right tool for JSON, this blog has three more: <Link to="/blog/json-crack">Rendering a JSON file as a mind map</Link>, <Link to="/blog/json-lint">JSON - Online linter</Link> and <Link to="/blog/json-faker">JSON - Faker & Mockup</Link>.

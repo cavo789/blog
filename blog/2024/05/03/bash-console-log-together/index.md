@@ -29,6 +29,8 @@ For example, let's get the list of all files below `/tmp` and this recursively. 
 
 This command will probably take time to run and this is the objective: run a long command and make sure our user will see the output on the screen so they know that the script is doing something, and also redirect the output to a log file for further analysis in case of f.i. problems (or just because the script is fired in a cron).
 
+*If "the script is doing something" is all your user needs to know, a <Link to="/blog/bash-progression-bar">progression bar</Link> is often nicer than a wall of scrolling output.*
+
 <Snippet filename="script.sh" source="./files/script.sh" />
 
 The main part is the `eval` function.

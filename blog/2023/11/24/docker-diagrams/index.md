@@ -17,7 +17,7 @@ language: en
 This article shows how to render diagrams-as-code with the Python `diagrams` library via a ready-to-use Docker image (`gtramontina/diagrams`), piping a `.py` file into `docker run` to produce architecture diagrams (e.g. AWS/Azure/GCP icons) with zero local install. It closes with a broad roundup of other diagram-as-code tools: Mermaid, PlantUML, Graphviz, Kroki, DBML-renderer, Structurizr, and more.
 </TLDR>
 
-But what a joy it is to be able to draw diagrams by just writing text. Some tools are better known than others, e.g. [Mermaid](https://mermaid-js.github.io/mermaid/).
+But what a joy it is to be able to draw diagrams by just writing text. Some tools are better known than others, e.g. [Mermaid](https://mermaid-js.github.io/mermaid/) — which I've since automated in <Link to="/blog/docker-python-mermaid">Documentation as Code - Transform Your Infrastructure into Beautiful Diagrams with Python and Mermaid</Link>, and whose Graphviz cousin is covered in <Link to="/blog/python-pydot">Python - Generate flows using pydot</Link>.
 
 Did you know [https://diagrams.mingrammer.com/](https://diagrams.mingrammer.com/)? Let's explore it using, of course, a Docker ready-to-use image.
 
@@ -73,10 +73,10 @@ A tremendous list of icons/nodes is available on multiple pages at [https://diag
 
 ## Other tools
 
-- [DB Diagram](https://dbdiagram.io/home)
+- [DB Diagram](https://dbdiagram.io/home) *(see also <Link to="/blog/drawdb-app">Drawdb-app - Render your database model as png, markdown, mermaid, ...</Link>)*
 - [DBML-renderer](https://github.com/softwaretechnik-berlin/dbml-renderer), dbml-renderer renders DBML files to SVG images
 - [Graphviz](https://www.graphviz.org/), Graphviz is open source graph visualization software
-- [JSON Crack](https://jsoncrack.com/), seamlessly visualize your JSON data instantly into graphs
+- [JSON Crack](https://jsoncrack.com/), seamlessly visualize your JSON data instantly into graphs *(I've dedicated an article to it: <Link to="/blog/json-crack">Rendering a JSON file as a mind map</Link>)*
 - [Kroki](https://kroki.io/), creates diagrams from textual descriptions
 - [Mermaid](https://mermaid-js.github.io/mermaid/), its [live editor](https://mermaid.live/), the [preview addon for vscode](https://marketplace.visualstudio.com/items?itemName=vstirbu.vscode-mermaid-preview) and the [convert tool as a CLI tool](https://github.com/mermaid-js/mermaid-cli)
 - [Nomnoml](https://www.nomnoml.com/), tool for drawing UML diagrams based on a simple syntax

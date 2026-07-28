@@ -17,7 +17,7 @@ language: en
 This article shows how to use Laravel's event/listener system to keep code decoupled: a `SampleEvent` carries an `Employee` object, a `SampleListener` (registered in `EventServiceProvider`) reacts to it and updates the employee's name, and removing the listener still leaves the base flow working — illustrating how events let future functionality hook into existing code without modifying it. A non-Laravel PHP example using `League\Event` is also referenced.
 </TLDR>
 
-When I started developing for the Joomla CMS (which was 15 years ago, in 2009), one of the things I liked most was the notion of events.
+When I started developing for the <Link to="/blog/docker-joomla-right-to-the-point">Joomla CMS</Link> (which was 15 years ago, in 2009), one of the things I liked most was the notion of events.
 
 For example *An article is about to be posted*, *An article has been posted*, *A user has registered*, these are actions that are announced by the CMS and to which you can react.
 
@@ -98,6 +98,8 @@ If we edit back the `app/Providers/EventServiceProvider.php` file and comment th
 Years ago, I have written an example in pure PHP (not Laravel) and using the `League\Event` library as you can find at [https://event.thephpleague.com/](https://event.thephpleague.com/).
 
 The repository and sample code are on GitHub: [https://github.com/cavo789/event_thephpleague_learning](https://github.com/cavo789/event_thephpleague_learning).
+
+*Events are, by nature, invisible: they fire somewhere and something happens elsewhere. <Link to="/blog/laravel-telescope">Laravel Telescope</Link> makes them visible again, which is a real help when debugging a decoupled application like this one.*
 
 <AlertBox variant="note">
 This is, partially, a copy of an article I have previously posted on [https://dev.to/cavo789/working-with-laravel-events-2i6m](https://dev.to/cavo789/working-with-laravel-events-2i6m)

@@ -1,16 +1,16 @@
 ---
 name: project-blog-map
 description: "Exhaustive catalog of 245 published posts + drafts: slug, title, date, mainTag, tags, series — source of truth for inter-article linking"
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 137dd1fa-bddd-4742-a98b-57d539016a7c
-  modified: 2026-07-27T16:55:45.360Z
+  modified: 2026-07-27T17:38:08.503Z
 ---
 
 # Blog Map — Source of Truth
 
-> **245 published posts** · **19 drafts** (+1 code-only staging folder, no post written yet) · Period: 2023-11-02 → 2026-07-27
+> **245 published posts** · **26 drafts** (+1 code-only staging folder, no post written yet) · Period: 2023-11-02 → 2026-07-27
 > Primary author: christophe · Language: en
 > AI-assisted posts: 18
 
@@ -619,48 +619,67 @@ MD link : [Title](/blog/<slug>)
 
 ## Drafts — Unpublished
 
-> 19 articles (with frontmatter + `draft: true`) in `/opt/docusaurus/.unpublished/`, plus 1 folder with
+> 26 articles (with frontmatter + `draft: true`) in `/opt/docusaurus/.unpublished/`, plus 1 folder with
 > source files staged but no post written yet. `git-delta` and `git-worktree` (previously drafts) were
 > published 2026-06-15 and 2026-06-29 — see git/component sections above. Publish order for the
-> "Ollama daily-use functions" series + companions is tracked in `/opt/docusaurus/.unpublished/plan.md`
-> (French, internal-only, kept in sync per [[feedback-unpublished-plan]] — don't duplicate its content
-> here, just cross-check slugs against it).
+> "Ollama daily-use functions" series + companions, and the separate `lazydocker`→`portainer`→`traefik`
+> chain, is tracked in `/opt/docusaurus/.unpublished/plan.md` (French, internal-only, kept in sync per
+> [[feedback-unpublished-plan]] — don't duplicate its content here, just cross-check slugs against it).
 
 | Folder | Slug | Title | mainTag | Tags | Series |
 |--------|------|-------|---------|------|--------|
 | anythingllm-chat-with-your-docs | anythingllm-chat-with-your-docs | AnythingLLM: Chat With All Your Scattered Documentation ★AI | ai | ai, ollama, docker, self-hosted |  |
 | docusaurus-ollama-tags | docusaurus-ollama-tags | Playing with Ollama - Create a blog post analyzer with a local LLM | ai | ai, ollama |  |
+| duckdb-json-csv | duckdb-json-csv | DuckDB - Query JSON and CSV Files With SQL, No Database Required ★AI | python | python, docker, database | (none — hard-links to docling + ollama-ai-data, see plan.md) |
 | git-bisect | git-bisect | git bisect: Find the Commit That Broke Everything ★AI | git | git, linux, bash, tips |  |
+| lazydocker | lazydocker | lazydocker: A Terminal Dashboard for Docker, Containerized ★AI | docker | docker, linux | (none — first of lazydocker→portainer→traefik chain) |
 | ollama-test-generator | ollama-test-generator | ai-test: Generate Missing Unit Tests From Your Terminal With a Local LLM ★AI | ai | ai, ollama, zsh, tests | Ollama daily-use functions |
 | ollama-ai-commit | ollama-ai-commit | ai-commit: Let a Local LLM Draft Your Commit Messages ★AI | git | git, ollama, zsh, ai | Ollama daily-use functions |
 | ollama-ai-standup | ollama-ai-standup | ai-standup: Turn Yesterday's Commits Into a Daily Standup Update ★AI | git | git, zsh, ai, ollama | Ollama daily-use functions |
 | ollama-ai-fix | ollama-ai-fix | ai-fix: A Local thefuck — Explain and Fix Your Last Failed Command ★AI | zsh | zsh, ai, ollama, linux | Ollama daily-use functions |
 | ollama-ai-ci | ollama-ai-ci | ai-ci: Ask a Local LLM Why Your GitLab Pipeline Failed ★AI | gitlab | gitlab, git, ai, ollama, zsh | Ollama daily-use functions |
 | ollama-ai-ask | ollama-ai-ask | ai-ask: Ask For a Shell Command in Plain English, Get It Back Instantly ★AI | ai | ai, ollama, zsh, linux | Ollama daily-use functions |
+| ollama-ai-diagram | ollama-ai-diagram | ai-diagram: From a Sentence (or a compose.yaml) to a Mermaid Diagram ★AI | doc-as-code | doc-as-code, ai, ollama, zsh | Ollama daily-use functions |
 | ollama-ai-docs | ollama-ai-docs | ai-translate & ai-summarize: Confidential Documents, Handled 100% Locally ★AI | ai | ai, ollama, zsh, docker | Ollama daily-use functions |
 | ollama-ai-review | ollama-ai-review | ai-review: A SOLID, Magic-Constants, Naming Code Review Before You Even Commit ★AI | code-quality | code-quality, ai, ollama, git | Ollama daily-use functions |
+| ollama-ai-secrets | ollama-ai-secrets | ai-secrets: Catch Hardcoded Credentials Before You Commit Them ★AI | security | security, ai, ollama, git | Ollama daily-use functions |
 | ollama-ai-data | ollama-ai-data | ai-data: Let a Local LLM Write Your jq and awk One-Liners ★AI | ai | ai, ollama, zsh, fzf | Ollama daily-use functions |
 | ollama-ai-diff | ollama-ai-diff | ai-diff: What Actually Changed, Not a Wall of Plus and Minus Signs ★AI | ai | ai, ollama, zsh, git | Ollama daily-use functions |
 | docling | docling | Docling - Convert PDF, Word, PowerPoint, Excel and HTML to Markdown, GPU-Accelerated ★AI | markdown | docker, markdown, python | (none — companion to markitdown, not the Ollama series) |
+| portainer | portainer | Portainer: A Web Dashboard for Docker, One Compose File Away ★AI | docker | docker, self-hosted | (none — second of lazydocker→portainer→traefik chain) |
 | python-ai-helper | python-ai-helper | Auto-documenting and testing python scripts | Python | ai, python |  |
+| python-security-bandit-audit | python-security-bandit-audit | Python Security Tooling in Docker: Bandit + pip-audit ★AI | security | security, python, docker, code-quality | (none — hard-links to docling, see plan.md) |
 | removing-algolia-for-pagefind | removing-algolia-for-pagefind | Dropping Algolia Search for Pagefind on My Docusaurus Blog ★AI | docusaurus | docusaurus |  |
+| traefik | traefik | Traefik, Finally Understood: One Name Per Docker Service Instead of One Port ★AI | docker | docker, self-hosted, security | (none — third of lazydocker→portainer→traefik chain) |
 | tried_it | docusaurus-tried-it-widget | Adding a "Did It Work?" Button to Your Docusaurus Tutorials ★AI | component | docusaurus, php, react | Creating Docusaurus components |
 | typo-report-docusaurus | docusaurus-typo-report-component | Let Readers Flag Issues — A Multi-Type Feedback Widget for Docusaurus ★AI | docusaurus | docusaurus, component, php, react, security |  |
 | winscp-putty | winscp-putty | WinSCP - Start PuTTY without typing a password | winscp | putty, ssh, tips, winscp |  |
+| xdebug-docker-vscode | xdebug-docker-vscode | Step-Through PHP Debugging in a Docker Container From VSCode ★AI | php | php, docker, vscode | (none — zero draft dependencies, freely placeable) |
 
-**"Ollama daily-use functions" series so far (all drafts, 10 posts):** ollama-test-generator (ai-test),
-ollama-ai-commit (ai-commit), ollama-ai-standup (ai-standup), ollama-ai-fix (ai-fix), ollama-ai-ci
-(ai-ci), ollama-ai-ask (ai-ask), ollama-ai-data (ai-data), ollama-ai-docs (ai-translate +
-ai-summarize), ollama-ai-review (ai-review), ollama-ai-diff (ai-diff). All share
-`~/.zsh/fns/_ollama.zsh` (leading underscore = loads first alphabetically): `_ollama_query` helper,
-`AI_COMMANDS` registry, `ai` dispatcher — every function self-registers with one
-`AI_COMMANDS[name]=...` line. `ai-diff` additionally reuses `_ai_extract_text` from `_ai-docs.zsh`
-(first defined for ai-docs) — a second, deeper cross-article dependency, tracked in `plan.md`. Series
-entry added to `src/data/series.js` — see [[project-blog-conventions]]. Image
-`/img/series/ollama.webp` still does not exist, needed before publishing any of these.
-`anythingllm-chat-with-your-docs` is Ollama-flavored but explicitly **not** part of this series (no
-`series:` field, doesn't call Ollama directly, it's a self-hosted RAG app that talks to any LLM
-provider including Ollama).
+**"Ollama daily-use functions" series so far (all drafts, 12 posts):** ollama-test-generator (ai-test),
+ollama-ai-commit (ai-commit), ollama-ai-review (ai-review), ollama-ai-secrets (ai-secrets),
+ollama-ai-standup (ai-standup), ollama-ai-fix (ai-fix), ollama-ai-ci (ai-ci), ollama-ai-ask (ai-ask),
+ollama-ai-diagram (ai-diagram), ollama-ai-data (ai-data), ollama-ai-docs (ai-translate +
+ai-summarize), ollama-ai-diff (ai-diff). All share `~/.zsh/fns/_ollama.zsh` (leading underscore =
+loads first alphabetically): `_ollama_query` helper, `AI_COMMANDS` registry, `ai` dispatcher — every
+function self-registers with one `AI_COMMANDS[name]=...` line. `ai-diff` additionally reuses
+`_ai_extract_text` from `_ai-docs.zsh` (first defined for ai-docs). Series entry added to
+`src/data/series.js` — see [[project-blog-conventions]]. Image `/img/series/ollama.webp` still does
+not exist, needed before publishing any of these.
+
+**Cross-cluster "bridge" articles (proposed by Christophe 2026-07-27, "des articles qui feraient le
+pont entre deux thématiques"):** `ollama-ai-diagram` (ai×doc-as-code), `ollama-ai-secrets`
+(security×ai/pre-commit), `duckdb-json-csv` (docker×python×data), `xdebug-docker-vscode`
+(docker×php×vscode), `python-security-bandit-audit` (security×python). The last three are
+deliberately **not** in the Ollama series (no Ollama involved) but two of them still hard-link to
+`docling`/`ollama-ai-data` — see `plan.md` for the exact dependency chain.
+
+**Two threads run in parallel in `.unpublished/` and don't interact:** the Ollama series above, and
+the independent `lazydocker` → `portainer` → `traefik` chain (Docker daily-workflow images: TUI
+dashboard → web dashboard → reverse proxy, hard `<Link>` dependencies in that exact order, `portainer`
+also links to `anythingllm-chat-with-your-docs`). `anythingllm-chat-with-your-docs` itself is
+Ollama-flavored but explicitly **not** part of either — no `series:` field, it's a self-hosted RAG app
+that talks to any LLM provider including Ollama, not a zsh function or a Docker-dashboard tool.
 
 **Staged only (no `index.md` yet):** `ollama-refactor-code/files/` — a full Python project (uv, Ollama
 client, rule-based code analyzer/refactorer, devcontainer) co-located as source for a future post

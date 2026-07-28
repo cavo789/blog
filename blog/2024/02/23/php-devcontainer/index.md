@@ -23,6 +23,8 @@ This is the short, quick-start version of the full devcontainer article: downloa
 
 This article is the very short and straightforward version of <Link to="/blog/vscode-devcontainer">PHP development in a devcontainer with preinstalled code quality tools</Link>. If you just want to follow a very few steps and get your PHP environment, this article is for you.
 
+*Two neighbours: <Link to="/blog/docker-python-devcontainer">Docker - Python devcontainer</Link> for the same thing in Python, and <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers - The Clean Way</Link> to keep all this tooling out of your production image.*
+
 <StepsCard
   title="By following the steps described in this article, you'll obtain"
   variant="steps"

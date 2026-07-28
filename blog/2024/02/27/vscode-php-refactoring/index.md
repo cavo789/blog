@@ -22,6 +22,8 @@ Currently, end of February 2024, there aren't many free refactoring extensions f
 
 We'll learn how to rename a symbol, a class and, even better, how to extract a portion of a long method into a new one.
 
+*These extensions refactor what you point at. For refactorings suggested — and applied — automatically across a whole codebase, see <Link to="/blog/php-rector">Rector 1.0.0, my friend, my coach</Link>.*
+
 <!-- truncate -->
 
 ## Create sample files

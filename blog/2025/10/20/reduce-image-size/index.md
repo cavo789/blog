@@ -25,7 +25,7 @@ This article introduces CaesiumCLT, a command-line tool for efficiently compress
 
 Korben, a well-known French blogger, has recently posted this article: [https://korben.info/caesium-compression-images-ecologie-numerique.html](https://korben.info/caesium-compression-images-ecologie-numerique.html) and, damned, just a few days too late for me.
 
-I just recreated all images on my blog and manually converted all of them ... one by one ... using [Squoosh](https://squoosh.app/).
+I just recreated all images on my blog and manually converted all of them ... one by one ... using [Squoosh](https://squoosh.app/). *And I know exactly which ones were too heavy thanks to the audit script described in <Link to="/blog/docusaurus-check-images">Running some checks on your Docusaurus images</Link>.*
 
 Let's see in this article how to do the conversion using a single command line.
 
@@ -64,5 +64,7 @@ This said, to retrieve the biggest folder on my disk, I'm running the command be
 <Terminal typewriter source="./files/terminal-2.txt" />
 
 So, I can jump in `2025/02/01/heimdall-dashboard/images` and run `caesiumclt -q 85 --format webp --same-folder-as-input *.png` to optimize these images:
+
+*Images are usually the heaviest part of a page, but not the only one; <Link to="/blog/assets-minification">Streamline Your Frontend - Minifying Assets with Docker, Bash, and YAML</Link> applies the same reasoning to your CSS and JavaScript.*
 
 <Terminal typewriter source="./files/terminal-1.txt" />

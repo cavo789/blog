@@ -25,6 +25,8 @@ In my previous article; <Link to="/blog/bash-parallel-task">Linux - Take advanta
 
 The next cool thing is to show a progression bar in your console. This has a number of advantages, including a clear view of what's been done and what's still to be done, as well as an attractive interface.
 
+*When the number of items isn't known in advance, a live counter is the better fit; see <Link to="/blog/linux-inotifywait">Keep running and count the number of files in a folder using inotifywait</Link>. And to keep a trace of what happened once the bar is gone, <Link to="/blog/bash-logging">Bash - Script to add logging features to your script</Link>.*
+
 Months ago, I've found this French blog post in my RSS feeds: [https://xieme-art.org/post/bash-avance-barre-de-progression/](https://xieme-art.org/post/bash-avance-barre-de-progression/) and, just, **wow!!!**
 
 Let's play with it.

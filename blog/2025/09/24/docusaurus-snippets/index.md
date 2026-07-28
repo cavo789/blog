@@ -31,6 +31,8 @@ This article guides you through creating a powerful `<Snippet>` component for Do
 
 If you're a regular reader of this blog, you know I'm sharing a lot of code snippets.
 
+*This component became the foundation of two others: <Link to="/blog/docusaurus-project-setup">ProjectSetup</Link>, which assembles several snippets into a downloadable project tree, and <Link to="/blog/docusaurus-eli5-snippet-tooltips">the ELI5 tooltips</Link>, which annotate the tricky lines of a snippet.*
+
 The HTML native way of doing this is by using the `<summary>` element (see [official documentation](https://www.w3schools.com/tags/tag_summary.asp)).
 
 Can we do something, perhaps not better but more esthetic?

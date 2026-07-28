@@ -28,7 +28,7 @@ So here's another article to add to the long list: how to access a private proje
 
 <!-- truncate -->
 
-My use case: I wish to build a Docker image and during the build phase, I need to grab a copy of a private repository I've put on github.com.
+My use case: I wish to build a Docker image and during the build phase, I need to grab a copy of a private repository I've put on github.com. *The CI equivalent of this problem — pulling a **private Docker image** rather than a private repository — is covered in <Link to="/blog/gitlab-using-private-images">GitLab - Using Docker private images</Link>.*
 
 When I access the container, the project will then be available but I don't have, anywhere in my image, a copy of my SSH key so I won't be able to run a `git pull` f.i. since no further authentication is possible.
 
@@ -38,7 +38,7 @@ As soon as you need to access something private like a private repository (on Gi
 
 You can provide your own credentials, use a token, or copy your SSH key into the image, or ... You can do this but **you'll be making a serious design error**: by reading your Dockerfile anyone will be able to see your private information (in case of hardcoding) or, by starting an interactive bash session, will be able to, e.g., display the list of environment variables (like using `printenv`) or try to display files (like accessing `.git` folders, ssh folders, ...) and **it'll work!**.
 
-Also, there are existing tools like [SecretScanner](https://github.com/deepfence/SecretScanner) that allow deep scanning of layers (a Docker image is composed of multiple layers) and even if the secret is stored in a file that no longer exists in the final image, if it has been saved in a layer, then this type of tool will be able to retrieve it.
+Also, there are existing tools like [SecretScanner](https://github.com/deepfence/SecretScanner) that allow deep scanning of layers (a Docker image is composed of multiple layers) and even if the secret is stored in a file that no longer exists in the final image, if it has been saved in a layer, then this type of tool will be able to retrieve it. *The same reasoning applies to your git history, by the way: <Link to="/blog/git-precommit">Git - pre-commit-hooks</Link> lists hooks that block a commit as soon as a credential is detected.*
 
 <AlertBox variant="caution">
 So, in conclusion: there is only one way to use secrets using Docker and you'll learn how in this article.

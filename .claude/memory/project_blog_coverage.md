@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 708860e8-3efc-4d08-a254-45060a383296
-  modified: 2026-07-27T16:56:14.351Z
+  modified: 2026-07-27T18:03:36.551Z
 ---
 
 Coverage map built from full `/blog` analysis (2026-06-08, refreshed 2026-07-27). Before suggesting article topics, read this to avoid duplicates. Linked to [[project-article-proposals]] and [[project-blog-map]].
@@ -88,6 +88,40 @@ Coverage map built from full `/blog` analysis (2026-06-08, refreshed 2026-07-27)
 - `eza` (modern `ls` replacement)
 - `bat` (mentioned as dependency in some articles)
 
+## VSCode
+
+18 dedicated articles already published — checked 2026-07-27 before suggesting new VSCode topics
+(previous session nearly re-suggested `code-server` as a new Docker-image idea; it's already
+published, 2025-07-06 — always grep `/opt/docusaurus/blog` for "vscode"/the tool name before proposing).
+
+Covered: Error Lens, Todo Tree, multiple cursors, sticky scroll, regions, autosave, JetBrains Mono
+font+ligatures, Tabnine (AI autocomplete/chat), export installed extensions, github.dev shortcut,
+Markdown code folding fix, PHP getter/setter generation, PHP refactoring tool, devcontainer (PHP +
+quality tools), code-server (browser-based VSCode via Docker), Markmap mindmaps, Remote-SSH.
+
+**Now drafted (2026-07-27)**, all in `.unpublished/`: `vscode-gitlens`, `vscode-snippets-for-docusaurus`
+(walks the real `.vscode/markdown.code-snippets` file via a live `Snippet source=` reference, flags two
+stale entries — `CoreConcept`/`HighlyImportant` — that predate the `AlertBox`-variant consolidation),
+`vscode-profiles` (documents Christophe's real dark-daily/light-DevContainer split, Claude Code
+installed only in the DevContainer profile), `vscode-multi-root-git-worktree` (follow-up to the
+published `git-worktree` article), `vscode-extension-bisect` (hard-links to the still-unpublished
+`git-bisect` draft — see `plan.md`). Settings Sync and Tasks (`tasks.json`) were proposed and
+explicitly declined by Christophe (2026-07-27) — don't re-suggest.
+
+**`ollama-installation` (published, `/blog/ollama-installation`, 2026-03-30) — Continue section was
+stale, corrected 2026-07-27:** Continue.dev was acqui-hired by Cursor/Anysphere on 2026-06-18 and wound
+down as a standalone product; final release v2.0.0 shipped 2026-06-19, GitHub repo now **read-only**.
+Fixed: config snippets migrated from deprecated `.continue/config.json` to `~/.continue/config.yaml`
+(schema `v1`, `models:` list with `roles: [chat, edit]` / `roles: [autocomplete]`); old `.json` files
+and their generated `.eli5.json` companions deleted from `files/continue/`; model recommendation
+swapped from `gemma2:27b` to Christophe's actual current model `qwen3-coder:30b` (MoE, ~19GB, fits
+24GB VRAM); `updates:` frontmatter entry added; an AlertBox notes the acquisition/frozen-repo status.
+The existing `gemma2:27b` screenshot was left in place with a note that it predates the update, since
+no new screenshot could be captured. **Not independently re-verified**, left as-is with a caveat added
+to the prose: the article's claim that Continue's config must live in the **Windows** home folder
+rather than the WSL side when using VSCode Remote-WSL — current docs don't mention this either way;
+Christophe hasn't retested it yet.
+
 ## Notable gaps (not yet covered as of 2026-06-09)
 
 - `direnv` (auto-load `.env` per project on `cd`)
@@ -155,6 +189,32 @@ Coverage map built from full `/blog` analysis (2026-06-08, refreshed 2026-07-27)
   a script/error in the terminal) is the one remaining open proposal from the original round — see
   [[project-article-proposals]]. Full proposed publish order (dependency chain + editorial pacing) is
   maintained in `.unpublished/plan.md` (French, internal-only) — see [[feedback-unpublished-plan]]
+- **Cross-cluster "bridge" articles** (Christophe asked 2026-07-27: "identifier des nouveaux articles
+  qui feraient le pont entre deux ou plusieurs thématiques", to create inter-linking between otherwise
+  disconnected clusters):
+  - `ollama-ai-diagram` — `ai-diagram <description>|<file>` zsh function, series member: plain-English
+    description or a config file (e.g. `compose.yaml`) → Mermaid diagram via Ollama. Bridges ai ×
+    doc-as-code — verified `/blog/docker-python-mermaid` uses zero AI (pure Python/rule-based) before
+    proposing this, so it's a genuine gap, not a duplicate
+  - `ollama-ai-secrets` — `ai-secrets` zsh function, series member: regex pre-filter over the staged
+    diff for credential-shaped lines (cheap, no model call if nothing matches), then the model judges
+    genuine leak vs. false positive (safe `getenv()` pattern, placeholder value). Hard-links to
+    `/blog/ollama-ai-review` (must publish after it) — bridges security × ai/pre-commit, doubles the
+    blog's `security` mainTag count (was 1 post total: `aesecure-quickscan`)
+  - `duckdb-json-csv` — **not** in the Ollama series (no Ollama/LLM at all). DuckDB CLI in Docker,
+    queries CSV/JSON files directly with SQL (`SELECT * FROM 'file.csv'`, `read_json_auto()`) — no
+    import step. Bridges docker × python × data. Hard-links to `/blog/docling` AND
+    `/blog/ollama-ai-data` (twice) — must publish after both. CLI download URL/version (`v1.5.5`)
+    verified for real via the GitHub releases API at write time, not guessed
+  - `xdebug-docker-vscode` — **not** in the Ollama series. Adds Xdebug 3.x to the existing
+    `/blog/php-devcontainer` setup + VSCode `launch.json`/`pathMappings`, `host.docker.internal` +
+    `extra_hosts: host-gateway` for Linux/WSL2. Bridges docker × php × vscode — verified via grep that
+    despite the blog's large Docker+PHP+VSCode cluster, no article covered step-debugging before this
+  - `python-security-bandit-audit` — **not** in the Ollama series. Bandit (static security analysis)
+    + pip-audit (dependency vulnerability scan) bundled in one Docker image, `:ro` project mount.
+    Bridges security × python, Python-side sibling of `/blog/php-jakzal-phpqa`. Hard-links to
+    `/blog/docling`. The `pip-audit` demo advisory IDs are explicitly flagged in-article as
+    illustrative formatting, not verified against the exact package versions shown
 - `python-ai-helper` — auto-documenting and testing Python scripts
 - `removing-algolia-for-pagefind` — why/how the blog dropped Algolia DocSearch for Pagefind
 - `tried_it` (slug `docusaurus-tried-it-widget`) — "did the tutorial steps still work?" widget,
@@ -164,3 +224,12 @@ Coverage map built from full `/blog` analysis (2026-06-08, refreshed 2026-07-27)
 - `winscp-putty` — start PuTTY without typing a password
 - `ollama-refactor-code` — **staged only**, a full Python project (source files under `files/`) for a
   future post on a local-LLM code refactoring/analysis tool; no `index.md` written yet
+- `lazydocker` / `portainer` / `traefik` — new 3-part mini-series (created 2026-07-27), proposed after
+  Christophe asked for daily-workflow Docker image ideas. Hard `<Link>` dependency chain in this exact
+  order: lazydocker → portainer → traefik (each later one links to the earlier ones). `lazydocker`
+  containerizes the TUI itself (own Dockerfile + global wrapper script mounting `$PWD`), `portainer`
+  uses the official `portainer-ce` image, `traefik` is the reverse-proxy-by-labels piece routing to
+  Portainer and Open WebUI (from `ollama-installation`). `portainer` also hard-links to
+  `anythingllm-chat-with-your-docs` (still unpublished) — publish order noted in `plan.md`. None of the
+  three has been build-tested yet; see `plan.md` for the pre-publish checklist (version pin check,
+  missing screenshots).

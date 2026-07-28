@@ -38,3 +38,7 @@ Explanations for the `docker run -d -p 8080:80 -u ${UID}:${GID} -v "$PWD":/var/w
 - We wish to make the local website accessible on port 8080 (so `http://127.0.0.1:8080`),
 - We wish to synchronize the current folder (i.e. `/tmp/snippet`) with the Docker container so changes in any file in `/tmp/snippet` will be immediately reflected in Docker and thus in your browser,
 - And we wish to use `php:7.4-apache`. Just replace with e.g. `php:8.2-apache` to switch to a newer version.
+
+Three things you'll want next: <Link to="/blog/docker-php-ini">Update php.ini when using a Docker image</Link> when the default settings are too tight, <Link to="/blog/docker-init">Docker init now supports PHP</Link> to turn this one-liner into a real `Dockerfile` + `compose.yaml`, and <Link to="/blog/php-jakzal-phpqa">jakzal/phpqa</Link> to run every PHP quality tool on that code — still without installing anything.
+
+*For a site with no PHP at all, <Link to="/blog/docker-html-site">Running an HTML site in seconds using Docker</Link> is the even lighter version.*

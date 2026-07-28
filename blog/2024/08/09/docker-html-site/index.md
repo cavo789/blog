@@ -45,7 +45,9 @@ Just one command to run in your `C:\temp\demo` folder: `docker run -d --name sta
 
 </AlertBox>
 
-Docker will download Apache if it's not yet on your machine, then start an Apache container and mount our site in it.
+Docker will download Apache if it's not yet on your machine, then start an Apache container and <Link to="/blog/docker-volume">mount our site in it</Link>.
+
+*Two natural follow-ups: your site is served by a real Apache, so every directive from <Link to="/blog/apache-htaccess">Apache .htaccess file</Link> works here; and if your pages are not plain HTML but PHP, use <Link to="/blog/docker-php-run-script-or-website">The easiest way to run a PHP script / website</Link> instead.*
 
 Once done, just start your preferred browser and surf to `http://localhost:8080`. Bingo!
 

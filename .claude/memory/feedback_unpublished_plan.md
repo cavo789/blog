@@ -1,7 +1,7 @@
 ---
 name: feedback-unpublished-plan
 description: "Always keep .unpublished/plan.md in sync when creating/publishing/deleting draft articles — internal-only file, written in French"
-metadata: 
+metadata:
   node_type: memory
   type: feedback
   originSessionId: 137dd1fa-bddd-4742-a98b-57d539016a7c

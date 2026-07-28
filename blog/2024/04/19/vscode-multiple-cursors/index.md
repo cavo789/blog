@@ -25,6 +25,8 @@ Or, for another example, you must enclose each line in double brackets.
 
 With vscode, it's ultra-simple: multiple cursors.
 
+*Multiple cursors shine for one-off, irregular edits. When the change is a repeatable rule applied to a whole file, <Link to="/blog/linux-sed-tips">Search and replace (or add) using sed</Link> is the better tool.*
+
 <!-- truncate -->
 
 Imagine the lines below and you need to add `*` before each line to make a list of items. In this example, I only have six lines so yeah, it's possible to do it manually, one by one. Imagine you had a hundred or a thousand.
@@ -53,3 +55,5 @@ Here is how to do it:
 While the multiple cursor mode is enabled, you can also press <kbd>END</kbd> to go to the end of lines, add/remove f.i. a character, you can press <kbd>CTRL</kbd>-<kbd>RIGHT</kbd> to move from one word right and so on.
 
 Pretty cool option.
+
+VSCode is full of these built-in features you only discover by accident. Two others I use every day: <Link to="/blog/vscode-sticky-scroll">sticky scroll</Link>, to always know which function or heading you're inside of, and <Link to="/blog/vscode-autosave">autosave</Link>, to stop pressing <kbd>CTRL</kbd>+<kbd>S</kbd> altogether.

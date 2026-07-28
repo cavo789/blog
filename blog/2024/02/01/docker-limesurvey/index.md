@@ -24,6 +24,8 @@ LimeSurvey is an open-source survey tool that allows users to create and conduct
 
 Once again, it's easy to play with it and create a sandbox site to take a look at all its features; thanks to Docker.
 
+*Two things this `compose.yaml` relies on and that are explained elsewhere on this blog: <Link to="/blog/docker-volumes">volumes</Link>, so your surveys survive a container restart, and <Link to="/blog/docker-healthy">healthchecks</Link>, to make LimeSurvey wait until MySQL really accepts connections.*
+
 To do this, we'll use the [https://github.com/martialblog/docker-limesurvey](https://github.com/martialblog/docker-limesurvey) Docker image.
 
 <!-- truncate -->

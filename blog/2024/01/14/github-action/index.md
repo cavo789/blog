@@ -17,7 +17,7 @@ language: en
 This article explains how to replace manual FTP deployment scripts with a GitHub Actions workflow that automatically deploys the blog on every push. It covers creating the `.github/workflows/deploy.yml` file, storing FTP credentials as repository secrets, and using a restricted FTP user scoped only to the deployment output folder.
 </TLDR>
 
-For the last two months, I was using an FTP automation script to deploy the blog on my FTP server.
+For the last two months, I was using an FTP automation script (<Link to="/blog/winscp-synchronize-both">WinSCP in synchronize mode</Link>) to deploy the blog on my FTP server, as described in <Link to="/blog/site-creation">Site creation</Link>.
 
 This way of doing things worked fine but had several inherent problems, the most important of which was that I had to run the script manually (from my computer).
 
@@ -53,3 +53,5 @@ By clicking on the running action, the details of each step are displayed and I 
 ![Pushing files](./images/pushing.webp)
 
 After a given time period (actually four minutes), the action was successfully completed and the blog updated.
+
+Deployment is not the only thing worth automating on GitHub; <Link to="/blog/github-profile-last-blogposts">Automate your GitHub README with your latest blog posts</Link> uses the same mechanism to keep my profile page up to date.

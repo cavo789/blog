@@ -53,3 +53,5 @@ Christophe Avonture (christophe@me.com)
 </Terminal>
 
 This is, I think, the best and, too, the easiest way to use an external file to store configuration items in Bash.
+
+Two more `.env` companions from this blog: <Link to="/blog/compare-env-files-cli">Compare environment files in the Linux console</Link>, to spot the key you forgot to report from `.env.example`, and <Link to="/blog/update-env-files-cli">Batch edit of environment file</Link>, to change the same variable in a dozen projects at once.

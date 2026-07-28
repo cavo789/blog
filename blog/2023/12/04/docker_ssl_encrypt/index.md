@@ -49,6 +49,10 @@ The decryption script, `decrypt.cmd` will ask you for the password and will disp
 
 In addition to simple encryption need, one use case is to store confidential files in online systems, e.g. a versioning system such as Github, or on cloud disks (e.g. Google drive).
 
+<AlertBox variant="caution" title="Encrypting is not enough">
+It only takes one forgotten `git add` for a plain-text secret to end up in your history. Add a safety net: <Link to="/blog/git-precommit">Git - pre-commit-hooks</Link> lists hooks such as *Gitleaks* and *Trufflehog* that refuse the commit when a credential is detected.
+</AlertBox>
+
 ## Command line arguments
 
 The openssl `enc` command accepts those arguments:

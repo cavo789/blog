@@ -23,7 +23,11 @@ This article shows the fastest way yet to get a Python devcontainer: with Docker
 
 Nothing to install, nothing to configure, nothing to create first.
 
+In <Link to="/blog/docker-python-devcontainer">a previous article</Link> (and its <Link to="/blog/docker-python-devcontainer-windows">Windows-specific follow-up</Link>), I built the `Dockerfile`, `compose.yaml` and `devcontainer.json` files by hand. Turns out VSCode can generate all of that for you.
+
 Here is how to use VSCode and Docker to create a ready-to-use Python environment, whether you're under Windows, Linux, or Mac.
+
+*The wizard is the fastest route, but writing the files yourself is what lets you control exactly what goes into the image — and keep development tooling out of production, as explained in <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers - The Clean Way</Link>.*
 
 <StepsCard
   title="The only prerequisites are:"

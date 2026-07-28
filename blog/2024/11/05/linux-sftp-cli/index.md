@@ -25,6 +25,8 @@ In this article, we'll explore how to start an SFTP connection to a remote serve
 
 In the second section, we'll also learn how to configure the sftp connection to use a proxy server.
 
+*For the same operations from a graphical client on Windows, see <Link to="/blog/winscp-synchronize-both">WinSCP - Synchronize host and remote</Link> and <Link to="/blog/winscp-download-recursively-files">WinSCP - Download files with specific extension recursively</Link>.*
+
 <!-- truncate -->
 
 ## How to run an sftp connection

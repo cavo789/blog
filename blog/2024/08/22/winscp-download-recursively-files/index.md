@@ -21,6 +21,8 @@ The [WinSCP](https://winscp.net/) FTP client supports scripting as we can read o
 
 In a previous life, I was often faced with the need to download a certain type of file, e.g. connect to an FTP server and retrieve PHP files locally for analysis.
 
+*Downloading everything just to search inside it is sometimes overkill: <Link to="/blog/php-grep-searching-at-lightning-speed">Search your FTP server at lightning speed</Link> does the search **on** the server. And once the files are local, <Link to="/blog/php-jakzal-phpqa">jakzal/phpqa</Link> gives you every PHP analysis tool without installing a thing.*
+
 Since WinSCP allows automation, it's easy to write a little script to do just that.
 
 As an example, we'll thus download any `.php` files from a host.

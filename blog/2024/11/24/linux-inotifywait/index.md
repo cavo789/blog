@@ -47,7 +47,7 @@ Create the image by running `docker build --tag inotify .`.
 
 We can now create our Docker container: `docker run --detach --name demo -v ./src:/app/src -v ./out:/app/out inotify`.
 
-This will create a Docker container that will remain running. We'll share our script `src/script.py` with the container and, too, the `out/` folder on our host as the `/app/out` folder of the container.
+This will create a Docker container that will remain running. We'll <Link to="/blog/docker-volume">share</Link> our script `src/script.py` with the container and, too, the `out/` folder on our host as the `/app/out` folder of the container.
 
 ## Create a sample Python script
 
@@ -83,3 +83,5 @@ In a second window, start the Python script: `docker exec -it demo python script
 Now, I can minimize the main screen and just keep the counter displayed.
 
 I'm also confident that the script is correctly creating files, since I've used two different technologies: Python and Bash.
+
+*When you know in advance how many files will be produced, a counter can become a real gauge; see <Link to="/blog/bash-progression-bar">Linux - Using a progression bar in your script</Link>.*

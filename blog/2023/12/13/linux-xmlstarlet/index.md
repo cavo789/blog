@@ -17,7 +17,7 @@ language: en
 This article introduces `xmlstarlet`, the XML equivalent of `jq`: pretty-printing minified XML with `xmlstarlet format --indent-spaces 4`, and extracting or filtering nodes with XPath expressions via `xmlstarlet sel -t -v`, including attribute-based filters like `//book[@category='children']/title`.
 </TLDR>
 
-`xmlstarlet` is a powerful utility for Linux that lets you manipulate XML data from the command line and can be integrated into shell scripts.
+`xmlstarlet` is a powerful utility for Linux that lets you manipulate XML data from the command line and can be integrated into shell scripts. *It is to XML what <Link to="/blog/linux-jq">`jq`</Link> is to JSON.*
 
 Using `xmlstarlet` you can beautify XML output but also filter it like f.i. showing only a given node.
 

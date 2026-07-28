@@ -19,7 +19,9 @@ This article explains how to prevent an application container from starting befo
 
 It's only been ten days or so since I learned the trick, even though it was well documented: managing service startups and, above all, blocking one if the other isn't ready ([official documentation](https://docs.docker.com/compose/startup-order/#control-startup)).
 
-Imagine a two-service application like Joomla (see my <Link to="/blog/docker-joomla/">Create your Joomla website using Docker</Link>), WordPress, LimeSurvey, Laravel and many, many more use cases: you've an application and that application requires a database.
+Imagine a two-service application like Joomla (see my <Link to="/blog/docker-joomla/">Create your Joomla website using Docker</Link>), <Link to="/blog/docker-wordpress">WordPress</Link>, <Link to="/blog/docker-limesurvey">LimeSurvey</Link>, Laravel and many, many more use cases: you've an application and that application requires a database.
+
+*This article is about **waiting** for a healthy service; <Link to="/blog/docker-healthy">Get health information from your running containers</Link> is about **reading** that health status from the command line. And <Link to="/blog/frankenphp-docker-joomla">FrankenPHP, a modern application server for PHP</Link> shows exactly the kind of "Connection refused" storm you get without it.*
 
 <!-- truncate -->
 

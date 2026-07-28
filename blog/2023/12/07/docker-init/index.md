@@ -74,7 +74,7 @@ Please update the file `Dockerfile` and change the line `COPY /var/www/html` to 
 
 </AlertBox>
 
-So, we can see we'll use the `php:8.2-apache` image (since we've asked for PHP `8.2`), we'll copy the content of your current folder (`.`) to the `/var/www/html` folder inside the Docker image, we'll also use the `php.ini` file for production and will switch the current Linux user used inside the container to `www-data`.
+So, we can see we'll use the `php:8.2-apache` image (since we've asked for PHP `8.2`), we'll copy the content of your current folder (`.`) to the `/var/www/html` folder inside the Docker image, we'll also use the `php.ini` file for production (see <Link to="/blog/docker-php-ini">Update php.ini when using a Docker image</Link> if you need to tweak it) and will switch the current Linux user used inside the container to `www-data`.
 
 ## Run the container
 
@@ -128,5 +128,7 @@ The reason is: the other files have been ignored because they have been mentione
 <Snippet filename=".dockerignore" source="./files/.dockerignore" />
 
 We have reached the end of this article. We've used the `docker init` instruction to create the bare essentials needed to run a PHP script in an Apache container.
+
+*If all you need is to run a script quickly, without any generated file at all, <Link to="/blog/docker-php-run-script-or-website">The easiest way to run a PHP script / website</Link> is a one-liner.*
 
 In the next months, I'll keep an eye on how `docker init` will evolve concerning PHP.

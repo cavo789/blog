@@ -24,6 +24,8 @@ I recently worked on an ETL project in Python. Among other things, the script ha
 
 As this was a sensitive application, it was important to validate the script by submitting fake JSON files, but also to ensure the quality of the files received.
 
+*Two companions when you work with JSON on the command line: <Link to="/blog/linux-jq">The jq utility for Linux</Link> to inspect and filter a generated file, and <Link to="/blog/json-crack">Rendering a JSON file as a mind map</Link> to grasp the structure of an unfamiliar one at a glance.*
+
 For the fake files, I used a tool like the Faker library for Python.
 
 <!-- truncate -->

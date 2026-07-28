@@ -25,6 +25,8 @@ In April 2024, I wrote a small <Link to="/blog/vba-excel-sql-server">blog post</
 
 Let's rewrite this article in a full tutorial. We'll install and run a SQL Server database using Docker, download MS SQL Server Management Studio, connect to our SQL Server, create a new database with dummy data and, finally, in Excel, retrieve the list of our customers.
 
+*Excel is a comfortable front-end, but a poor place to keep large volumes of data. When the volume grows, <Link to="/blog/python-pandas-merge">Pandas - Merge two or more files and create a merged one</Link> explains why, and what to do instead.*
+
 <!-- truncate -->
 
 ## Download SQL Server and create a dummy database

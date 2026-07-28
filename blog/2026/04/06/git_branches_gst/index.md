@@ -22,6 +22,8 @@ Months later, upon returning to the project, I spent a few days making improveme
 
 How can we avoid such situations?
 
+*Two other angles on the same problem: sorting branches by date globally with <Link to="/blog/git-config">Git - Some tips for your .gitconfig file</Link>, and <Link to="/blog/git-worktree">git worktree</Link>, which lets both branches exist at once as separate folders so you can't confuse them.*
+
 <!-- truncate -->
 
 Since I spend most of my time in the terminal, I need a notification whenever I jump into a project's folder or run a `git status` command.
@@ -30,7 +32,7 @@ Here's the idea: when I run `cd my_project`, I want to **immediately** see the l
 
 And it turns out, it's incredibly simple to do.
 
-Just edit your `~/.zshrc` file and add this block at the end:
+Just edit your `~/.zshrc` file and add this block at the end (or, better, give it its own file as explained in <Link to="/blog/modular-zsh-workflow">Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro</Link>):
 
 <Snippet filename="~/.zshrc" source="./files/zshrc" />
 

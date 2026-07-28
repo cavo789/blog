@@ -82,7 +82,7 @@ Once done, just surf to `http://127.0.0.1:82` and you'll obtain your first JSON 
 
 ## Automated documentation of your API
 
-And it's just the beginning: FastAPI comes with a self-documented API based on the OpenAPI schema.
+And it's just the beginning: FastAPI comes with a self-documented API based on the OpenAPI schema. *That schema is not just documentation: it can be linted too, see <Link to="/blog/belgif-api-linter">Validate your OpenAPI schema against the Belgif REST standards</Link>.*
 
 Please jump to `http://127.0.0.1:82/docs` and you'll see it in action:
 
@@ -110,7 +110,7 @@ We'll build a joke generator script. Our objective will be to get a random joke 
 
 For this, we'll update our `main.py` script and because we'll probably make more than one change, we'll mount our host folder to the container.
 
-Why? Mounting our folder inside the container will allow us to make changes to the script and just refresh the web page to see the change.
+Why? <Link to="/blog/docker-volume">Mounting our folder</Link> inside the container will allow us to make changes to the script and just refresh the web page to see the change.
 
 The only thing we need to do is to run our container like this: `docker run -v .:/app -p 82:82 python-fastapi` ... but it didn't work as expected.
 
@@ -225,5 +225,7 @@ More info [https://fastapi.tiangolo.com/tutorial/first-steps/#interactive-api-do
 ## Discover FastAPI
 
 Don't wait any longer, go to [https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/) to see more examples.
+
+And before publishing your API to the world, take five minutes to read <Link to="/blog/php-api-tips">API REST - How to write good APIs</Link>: naming your endpoints and choosing your HTTP status codes correctly costs nothing on day one and a lot on day one hundred.
 
 Also read the long tutorial on [Real Python - Using FastAPI to Build Python Web APIs](https://realpython.com/fastapi-python-web-apis/).

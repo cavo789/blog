@@ -26,7 +26,7 @@ In this article, I’ll show you why you should move your logic into standalone 
 
 ## The Problem with the Monolith
 
-When you put a function directly into your `.zshrc`, ZSH has to parse and load that code into memory **every single time** you open a new tab. If you have dozens of helper functions for Docker, Kubernetes, or Git, those milliseconds add up.
+When you put a function directly into your `.zshrc`, ZSH has to parse and load that code into memory **every single time** you open a new tab. If you have dozens of helper functions for <Link to="/blog/zsh-docker-functions">Docker</Link>, Kubernetes, or <Link to="/blog/git-branches-gst">Git</Link>, those milliseconds add up.
 
 By moving functions to a dedicated folder (like `~/.zsh/fns`), you unlock three major benefits:
 
@@ -127,4 +127,4 @@ This is perfect for projects you visit often. If your pattern is unique enough, 
 
 The difference between a "junior" and "senior" developer environment often lies in **tooling friction**. By moving your functions into autonomous files, you reduce the friction of maintaining your environment.
 
-With `repo` living in your new modular setup, you can now teleport across your workspace in seconds. Next time you write a useful snippet, don't paste it in your `.zshrc`. Give it its own home in `~/.zsh/fns/` — see <Link to="/blog/zsh-docker-functions">ZSH Functions - Customizing Your Shell for Docker Management</Link> for another set of functions organized this same way.
+With `repo` living in your new modular setup, you can now teleport across your workspace in seconds. Next time you write a useful snippet, don't paste it in your `.zshrc`. Give it its own home in `~/.zsh/fns/` — see <Link to="/blog/zsh-docker-functions">ZSH Functions - Customizing Your Shell for Docker Management</Link> and <Link to="/blog/git-branches-gst">Showing the last 3 updated branches when you jump in a git repo</Link> for other sets of functions and hooks organized this same way.

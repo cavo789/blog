@@ -31,3 +31,5 @@ For several years now, I have relied on Markdown for writing my documentation an
 The idea of being able to continue working in the same way, that is, writing a document in .md, pushing it onto GitHub and, thanks to Docusaurus, publishing it on the Internet instantly, appealed to me.
 
 Without having to change much in the way I work, I was able to create this site, not only for fun, but also to bring together a large number of notes I take during my work as an ICT developer, web programmer and DevOps specialist, that is, managing work environments for myself and my colleagues.
+
+*Curious about how this blog is built? <Link to="/blog/site-creation">Site creation</Link> retraces every step, and <Link to="/blog/docusaurus-docker">Running Docusaurus with Docker</Link> shows how to get your own running without installing Node.js.*

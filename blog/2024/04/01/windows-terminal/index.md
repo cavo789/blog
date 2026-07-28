@@ -24,7 +24,7 @@ This article covers customizing Windows Terminal through its `settings.json`: se
 
 For people who like working in a console, Windows Terminal can be seen as a successor of the old DOS console; you know the _black screen_ where you can type commands like `dir` or `mkdir`.
 
-Windows Terminal is a multi-tab software so instead of having multiple windows, you just have multiple tabs but the killer feature for me is the possibility to have a DOS console in one tab, a Powershell one in a second tab, one or more tabs for Linux and, why not, a tab for an SSH connection.
+Windows Terminal is a multi-tab software so instead of having multiple windows, you just have multiple tabs but the killer feature for me is the possibility to have a DOS console in one tab, a Powershell one in a second tab, one or more tabs for Linux and, why not, <Link to="/blog/windows-terminal-ssh-profile">a tab for an SSH connection</Link>. And instead of tabs, you can also display several consoles side by side; see <Link to="/blog/windows-terminal-split-panes">Windows Terminal - Split Panes</Link>.
 
 And that feature is really comfortable! Using the same window, you can have multiple active consoles and f.i. share your Linux history between tabs. Pretty cool!
 
@@ -109,3 +109,7 @@ So now I need to create a profile called `DOS Command Prompt`:
 <Snippet filename="settings.json" source="./files/settings.part5.json" />
 
 And tadaaa, now by starting Windows Terminal, my default terminal will be open (Ubuntu in my case) and, in a second tab, I'll also open a DOS console.
+
+## Going further
+
+This covers the basics, but Windows Terminal has much more to offer. I've written dedicated, deeper-dive articles on a few of these topics: <Link to="/blog/windows-terminal-background">using a background image</Link>, <Link to="/blog/windows-terminal-split-panes">splitting a window into several panes</Link>, and <Link to="/blog/windows-terminal-ssh-profile">adding a one-click SSH profile</Link>.

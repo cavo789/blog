@@ -25,7 +25,7 @@ This tutorial introduces Behavior-Driven Development (BDD) in PHP using Behat an
 
 At work, I'm part of a team of PHP developers where we work together to create a very large proprietary application with a web interface.
 
-This application is developed using the Laravel framework and we use [PHPUnit](https://phpunit.de/index.html) and [Pest](https://pestphp.com/) to run our unit tests.
+This application is developed using the Laravel framework and we use [PHPUnit](https://phpunit.de/index.html) and [Pest](https://pestphp.com/) to run our unit tests (see <Link to="/blog/pest_tips">Write PHP unit tests using Pest</Link>).
 
 However, in addition to the unit tests, we are also putting in place a tool that will simulate actions on our interface, such as accessing the login page, entering a login and password, simulating the click on the 'login' button, waiting until our main screen is displayed then, on the new page, asserting a lot of things / doing a lot of tasks.
 

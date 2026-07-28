@@ -28,7 +28,9 @@ In this article, resurrected from my personal archive, I'm going to present the 
 <!-- truncate -->
 
 <AlertBox variant="note" title="Disclaimer">
-This guide deliberately concerns **existing databases**; for that reason, I won't talk about how to correctly design tables, keep the number of fields reasonable, or draw a relational schema, ... The objective is therefore to improve performance without deep programming (no re-engineering) and without migrating to, for instance, SQL Server.
+This guide deliberately concerns **existing databases**; for that reason, I won't talk about how to correctly design tables, keep the number of fields reasonable, or draw a relational schema, ... The objective is therefore to improve performance without deep programming (no re-engineering) and without <Link to="/blog/docker-mssql-server">migrating to, for instance, SQL Server</Link>.
+
+*To know **which** fields are oversized before shrinking them, run the audit script from <Link to="/blog/vbs-msaccess-get-fields">VBS - Retrieve the list of fields in a MS Access Database</Link>: it reports, for every field, its declared size next to the longest value actually stored.*
 
 </AlertBox>
 

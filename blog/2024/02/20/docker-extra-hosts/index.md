@@ -20,7 +20,9 @@ This article explains why one Docker container can't reach another unless both r
 
 When you're running a Docker container on a different network than the standard one (called `bridge`) and **you wish to run a second container that needs to access the first container, you need to run the second container on the same network.**
 
-Let's say, you're running a MySQL database on a network called `my_network` and you wish to be able start a second container like [phpMyAdmin](https://hub.docker.com/_/phpmyadmin) and get access to the database, then you need to use the `--network` CLI option when running the second container using `docker run`.
+Let's say, you're running a MySQL database on a network called `my_network` and you wish to be able start a second container like [phpMyAdmin](https://hub.docker.com/_/phpmyadmin) (see <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Using Adminer, pgadmin or phpmyadmin to access your Docker database container</Link>) and get access to the database, then you need to use the `--network` CLI option when running the second container using `docker run`.
+
+*And when everything looks correctly configured but the connection still fails, <Link to="/blog/docker-networking-troubleshooting">Troubleshooting for Docker containers - Accessing the other one</Link> walks through the diagnosis layer by layer.*
 
 Now, imagine the first container is a web application and the second container should be able to access its web page and, too, reuse the same alias?
 

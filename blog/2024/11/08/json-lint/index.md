@@ -24,6 +24,8 @@ Exactly like my <Link to="/blog/sql-formatter">SQL - Formatting tool</Link>, it'
 
 I use it quite regularly when I'm writing a JSON string and I want to check that there are no syntax errors (lint) or, on the other hand, and for example, when I call an API that returns JSON and I want to analyze the code received. In these cases, the collapse functionality comes in very handy.
 
+*Two alternatives depending on the context: <Link to="/blog/linux-jq">`jq`</Link> when you're already in a console, and <Link to="/blog/json-crack">Rendering a JSON file as a mind map</Link> when the structure matters more than the values. To produce test JSON rather than read it, see <Link to="/blog/json-faker">JSON - Faker & Mockup</Link>.*
+
 <!-- truncate -->
 
 Retrieve my **JSON Linter** tool and sources on [https://github.com/cavo789/jsonlint](https://github.com/cavo789/jsonlint).

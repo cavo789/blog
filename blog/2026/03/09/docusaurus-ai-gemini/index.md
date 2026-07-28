@@ -22,6 +22,8 @@ This blog post explains how to indicate AI-assisted content in a Docusaurus blog
 
 In the age of powerful AI assistants like Google Gemini, it's becoming increasingly common to use them for content creation, brainstorming, or even coding. As a content creator, I believe in transparency with my audience. If an AI has significantly contributed to a piece of content, the reader should know.
 
+*Two concrete cases where I lean on an AI and therefore raise this flag: <Link to="/blog/gemini-tldr">Automating TL;DR Summaries with Gemini AI</Link> and <Link to="/blog/docusaurus-eli5-snippet-tooltips">AI-Powered Code Tooltips in Docusaurus</Link>.*
+
 This blog post is a step-by-step guide on how I implemented an "AI Assisted" indicator in my Docusaurus blog. When I add `ai_assisted: true` to my YAML post's front matter, two things happen automatically:
 
 1. A small "AI Assisted" icon appears next to the post's date and reading time.

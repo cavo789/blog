@@ -100,4 +100,6 @@ With the optimized version here above and to do **exactly the same thing**, I wa
 <AlertBox variant="info" title="Running 50 times the function">
 In the first version of the script, by changing the line `for i in {1..10}; do` to `for i in {1..50}; do`, I'll wait 150 seconds; right? With the optimized version, just 4 seconds. Why 4 and not 3? Probably some delay introduced by the processor (who should handle 50 concurrent threads).
 
+Since jobs now finish out of order, two companion articles become handy: <Link to="/blog/bash-progression-bar">Linux - Using a progression bar in your script</Link> to keep an eye on the overall advancement and <Link to="/blog/bash-logging">Bash - Script to add logging features to your script</Link> to know which call failed and when.
+
 </AlertBox>

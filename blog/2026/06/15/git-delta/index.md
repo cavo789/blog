@@ -23,6 +23,8 @@ You've been staring at `git diff` output for thirty seconds trying to figure out
 
 `delta` fixes it in five minutes.
 
+*It joins the same family of modern rewrites as <Link to="/blog/ripgrep">ripgrep</Link> (for `grep`) and <Link to="/blog/linux-eza">eza</Link> (for `ls`). Outside a git repository, plain <Link to="/blog/linux-diff-file-folder">`diff`</Link> remains the tool of choice.*
+
 <!-- truncate -->
 
 ## What is delta?

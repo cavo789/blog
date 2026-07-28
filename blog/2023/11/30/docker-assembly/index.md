@@ -22,6 +22,8 @@ I remember that I wrote a resident program (TSR which stands for **T**erminate a
 
 And now, in 2023, I was wondering if it was still possible to run `.asm` files on my computer.  It was an excellent reason for this article.
 
+*The same nostalgia trip, one language later: <Link to="/blog/docker-pascal">Play with Docker and Pascal</Link>, where I compile Turbo Pascal sources I published thirty years ago.*
+
 <!-- truncate -->
 
 By searching on [Docker Hub](https://hub.docker.com/), I have found this image: [https://hub.docker.com/r/esolang/x86asm-nasm](https://hub.docker.com/r/esolang/x86asm-nasm)

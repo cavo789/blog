@@ -21,6 +21,8 @@ Very recently I discovered [usernamehw.errorlens](https://marketplace.visualstud
 
 **Error Lens** is an addon for VSCode which will show errors, notices, warnings, etc. in the editor, which are generally only accessible in the *Problems* area of VSCode.
 
+*It's installed by default in my <Link to="/blog/vscode-devcontainer">PHP devcontainer</Link>: as soon as the linters of that container report something, Error Lens makes it impossible to miss.*
+
 Did you know where that area is? In the status bar of the main VSCode window. Did you see it? Hardly anyone notices it, and yet it should be seen!
 
 ![Status bar](./images/status_bar.webp)
@@ -42,3 +44,5 @@ The entire line now has a blue-grey background, and I can also see in the minima
 This doesn't seem like much since it only "shows" the problems in the editing area, but at the office it has highlighted a huge number of errors (spelling or grammatical errors for text, typos like `cente` instead of `center` for a CSS class, a typo in the name of a PHP variable, etc.).
 
 This has greatly improved the quality of our code and removed some silent bugs (*But why isn't this area of the screen centered? But I did add the `msg-center` class ... oh no, I forgot the `r`.*)
+
+In the same "stop losing things in a panel nobody opens" family, <Link to="/blog/vscode-todo-tree">Todo Tree in VSCode</Link> does for your `TODO` and `FIXME` comments what Error Lens does for diagnostics.

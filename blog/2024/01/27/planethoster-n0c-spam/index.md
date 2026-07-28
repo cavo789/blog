@@ -24,6 +24,8 @@ After having a discussion with them, they told us that SpamAssassin is managed b
 
 Ok, so, here is how to deal with spam at PlanetHoster - N0C platform.
 
+*Creating those rules one by one in RoundCube gets tedious very quickly; <Link to="/blog/planethoster-n0c-spam-roundcube-action">Exterminate them all, kill spam using GitHub Actions</Link> generates the whole `roundcube.sieve` file from a simple JSON list and uploads it for you.*
+
 <!-- truncate -->
 
 ## You need to use RoundCube for the filtering

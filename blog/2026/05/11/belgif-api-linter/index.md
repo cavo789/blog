@@ -28,7 +28,7 @@ In this article, we'll explore how to use the official Belgif OpenAPI linter via
 
 <!-- truncate -->
 
-For this blog post, we'll suppose you already have an OpenAPI compatible application. Such applications are documented using an Open API json file; often called `opendata.json` or `openapi.json`.
+For this blog post, we'll suppose you already have an OpenAPI compatible application. Such applications are documented using an Open API json file; often called `opendata.json` or `openapi.json`. *<Link to="/blog/python-fastapi">Python - Fast API - Create your JSON API in Python in one minute</Link> gives you one in, well, a minute.*
 
 ## Create a dummy application
 

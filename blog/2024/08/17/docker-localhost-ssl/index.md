@@ -31,6 +31,8 @@ The result was a site running on your computer; using `http`. Let's go one step 
 
 In this article, you'll learn how to use Apache, nginx and PHP on your machine and be able to start `https://localhost`.
 
+*Once HTTPS works locally, the <Link to="/blog/apache-htaccess">Apache .htaccess file</Link> article has the directives to **force** it in production (with HSTS preloading). And for encrypting files rather than traffic, see <Link to="/blog/docker_ssl_encrypt">Encrypt sensitive data using SSL and Docker</Link>.*
+
 <!-- truncate -->
 
 Our main objective is to use a [Docker Apache image](https://hub.docker.com/_/httpd) to enable access to localhost using either http or https. To do this, we need an SSL certificate.

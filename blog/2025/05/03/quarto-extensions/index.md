@@ -25,7 +25,7 @@ updates:
 This article shares a curated list of the author's favorite Quarto extensions to enhance your documentation workflow. Discover useful filters for templating content with `quarto-partials`, embedding icons with `fontawesome`, including external code snippets, creating simple text-replacement macros with `search-replace`, and improving code block visibility in reveal.js presentations with `code-fullscreen`.
 </TLDR>
 
-I've been using Quarto for 18 months now to generate my documentation: I'm writing Markdown files (`.md`) and converting them to a Word document, PDF, static HTML site or a revealjs slideshow.
+I've been using Quarto for 18 months now to generate my documentation: I'm writing Markdown files (`.md`) and converting them to a Word document, PDF, static HTML site or <Link to="/blog/quarto-revealjs-tips">a revealjs slideshow</Link>. *If Quarto is new to you, <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link> gets you a working setup in minutes.*
 
 Quarto is supporting external extensions (also called `plugins` elsewhere).
 
@@ -79,6 +79,8 @@ filters:
 </Snippet>
 
 We can pass variables like here above but, more powerful, we can declare a `partial-data` key in our YAML frontmatter.
+
+If you want to go much further with this extension (conditional blocks, raw content, a real-world documentation use case), I've written a dedicated deep dive: <Link to="/blog/quarto-mustache">Using Mustache templating with Quarto</Link>.
 
 ## quarto-ext/fontawesome
 

@@ -29,6 +29,8 @@ Another example: my CI will produce some files (like a `.pdf` one) by converting
 
 My need is thus: I should share my SSH key with the GitLab runner.
 
+*Two sibling articles about the same CI: <Link to="/blog/gitlab-using-private-images">GitLab - Using Docker private images</Link>, which solves the same authentication problem for a private **image** rather than a private repository, and <Link to="/blog/gitlab-docker-out-of-docker">GitLab - Running Docker-out-of-Docker in your CI</Link>.*
+
 <!-- truncate -->
 
 <AlertBox variant="info">

@@ -32,11 +32,15 @@ This article details how to convert any Quarto project into a portable, VSCode-p
 
 I love using Quarto and I've plenty of *documentation* projects on my disk. I'm writing user documentation, developer ones and, too, installation guide for almost every project I'm coding.
 
+If you've never run Quarto through Docker before, <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link> is a good starting point; this article builds on that idea to give you a full VSCode devcontainer.
+
 I quickly came up with the idea of creating a Docker image so that I could develop my documentation in peace, as well as a devcontainer configuration for VSCode.  Now, when I want to write my documentation, in less than a minute, I can create an environment entirely dedicated to writing documentation.
 
 Among other things, I install Quarto, install and configure a number of extensions for VSCode, and launch Quarto in preview mode: as soon as I save a change, Quarto regenerates the documentation on its own.
 
 Let's see how to do this; you'll see, it's so simple.
+
+*The same devcontainer, specialized for slideshows, is used in <Link to="/blog/running-revealjs-with-docker">Level Up Your Presentations with Quarto, reveal.js, Decktape, Docker and DevContainers</Link>; and taken to industrial scale in <Link to="/blog/quarto-industrialisation">Quarto - How I Built a Self-Documenting Ecosystem for 50+ Projects</Link>.*
 
 <!-- truncate -->
 
@@ -194,7 +198,7 @@ So, if your objective is to render the final documentation, you can always see *
 
 ## What is pre-commit?
 
-In this project, I've planned the installation of [pre-commit](https://pre-commit.com/). This is an optional tool that will run some validation controls on your project before you push it to your versioning system (like GitHub or GitLab).
+In this project, I've planned the installation of [pre-commit](https://pre-commit.com/). This is an optional tool that will run some validation controls on your project before you push it to your versioning system (like GitHub or GitLab). *I've dedicated a full article to it: <Link to="/blog/git-precommit">Git - pre-commit-hooks</Link>.*
 
 By adding `pre-commit` in the devcontainer, you'll get the privilege to never again commit files with some fault like f.i. formatting issues in your Markdown content.
 

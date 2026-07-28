@@ -17,7 +17,9 @@ language: en
 This article shows how to install the free JetBrains Mono font (which clearly distinguishes O/0 and I/l, and supports code ligatures) and configure VSCode to use it via the `editor.fontFamily` and `editor.fontLigatures` settings in `settings.json`.
 </TLDR>
 
-As you know, VSCode is highly customizable; you can install a plethora of addons, change the default theme, and use your preferred font.
+As you know, VSCode is highly customizable; you can install <Link to="/blog/vscode-export-list-of-extensions">a plethora of addons</Link>, change the default theme, and use your preferred font.
+
+*The same font, installed as a Nerd Font variant, is what makes the icons of <Link to="/blog/powerlevel10k_sandbox">Powerlevel10k</Link> and <Link to="/blog/linux-eza">eza</Link> display correctly in your terminal — so it's worth setting it in <Link to="/blog/windows-terminal">Windows Terminal</Link> too.*
 
 Just take a look at the **JetBrains Mono font**. This is a free-of-charge font, for both commercial and non-commercial purposes.
 
@@ -52,3 +54,5 @@ But the easier way is:
 <Snippet filename=".vscode/settings.json" source="./files/settings.json" />
 
 Save, close VSCode and open it again (or simply press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> and run `Developer: Reload Window`)
+
+Now that your editor looks the way you want, <Link to="/blog/vscode-codesnap">CodeSnap</Link> lets you turn any selection into a shareable screenshot that shows off that font.

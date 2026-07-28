@@ -26,7 +26,11 @@ You read that right: there's a Docker image that's nothing other than VSCode in 
 
 It's useless if you're a heavy user of VSCode (=you've installed it on every one of your computers) but there are situations where, for example, you need to work on another computer (while yours is being repaired or you're traveling and don't have yours) and VSCode's Docker image will come in handy.
 
+*A third option, when you do have VSCode locally but the code lives elsewhere: <Link to="/blog/vscode-remote-ssh">SSH Remote development with VSCode</Link>.*
+
 Or ... you're not yet convinced by VSCode and just want to try it out.
+
+If all you need is to edit a file or two in a GitHub repository, there is an even lighter option that doesn't require Docker at all: see <Link to="/blog/vscode-github-dev">Start vscode from github.com</Link>.
 
 <!-- truncate -->
 

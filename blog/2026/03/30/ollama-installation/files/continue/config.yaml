@@ -1,0 +1,11 @@
+name: Local Config
+version: 0.0.1
+schema: v1
+models:
+  - name: Assistant (fast)
+    provider: ollama
+    model: llama3.1:8b
+    apiBase: http://127.0.0.1:11434
+    roles:
+      - chat
+      - edit

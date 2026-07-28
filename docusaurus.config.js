@@ -190,6 +190,11 @@ const config = {
       attributes: { type: "text/javascript" },
       innerHTML: `
       var _paq = window._paq = window._paq || [];
+      // Without a heartbeat, Matomo derives the visit duration from the gap
+      // between recorded actions, so a visit to a single page is stored as
+      // 0 second. Pinging while the tab stays visible measures the time readers
+      // really spend on a page they never navigate away from.
+      _paq.push(['enableHeartBeatTimer', 15]);
       _paq.push(['trackPageView']);
       _paq.push(['enableLinkTracking']);
       (function() {

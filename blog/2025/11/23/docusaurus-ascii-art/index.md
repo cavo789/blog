@@ -22,7 +22,7 @@ This article demonstrates how to inject a custom ASCII art banner into every HTM
 
 It might be entirely useless, and only the most dedicated tech-heads will spot it, but we're going to dive into how to inject a custom ASCII art banner at the very top of every HTML page generated for our blog.
 
-In this article, we'll create a plugin that will be fired by Docusaurus when rendering HTML pages i.e. once `yarn docusaurus build` is finished.
+In this article, we'll create a plugin that will be fired by Docusaurus when rendering HTML pages i.e. once `yarn docusaurus build` is finished. *Unlike the remark plugins I've written before (see <Link to="/blog/docusaurus-plugin-replace">Creating a search&replace plugin for Docusaurus</Link>), this one doesn't touch the Markdown at all: it works on the generated HTML.*
 
 Docusaurus will run our plugin (during the so-called `postBuild` event), and we'll scan every generated file and inject some special content (as HTML comment) just after the `<!doctype html>` opening tag.
 
@@ -32,7 +32,7 @@ Right now, just press <kbd>CTRL</kbd>+<kbd>U</kbd> (it's the same as `View page 
 
 ## Create your personalized logo
 
-First, we have to get some ASCII art. If you don't have one yet, you can use this online tool: [Image to ASCII Art Converter](https://folge.me/tools/image-to-ascii). Just upload a small character on it and convert it.
+First, we have to get some ASCII art. If you don't have one yet, you can use this online tool: [Image to ASCII Art Converter](https://folge.me/tools/image-to-ascii). Just upload a small character on it and convert it. *I've also covered the command-line way of producing such banners in <Link to="/blog/bash-ascii-art">Bash - ASCII art</Link>.*
 
 In your Docusaurus site, please create the `src/data/banner.txt` file and paste your ASCII art in it. Here is mine:
 

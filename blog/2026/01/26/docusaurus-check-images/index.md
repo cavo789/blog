@@ -35,7 +35,7 @@ In this post, I'll share how I enforced lazy loading on this Docusaurus blog and
 
 By default, when you write standard Markdown image syntax `![Alt text](image.webp)`, Docusaurus renders a standard HTML `<img>` tag. While modern browsers support the `loading="lazy"` attribute, it's not always added automatically by the framework.
 
-To ensure **every single image** on my blog is lazy-loaded (and decoded asynchronously), I overrode the default `img` component in Docusaurus.
+To ensure **every single image** on my blog is lazy-loaded (and decoded asynchronously), I overrode the default `img` component in Docusaurus. I've told that story twice already, from the component angle in <Link to="/blog/docusaurus-override-img">Change how Docusaurus will create img tags</Link> and from the plugin angle in <Link to="/blog/docusaurus-lazy-loading">Overrides the generation of img tags with Docusaurus</Link>.
 
 This is done in `src/theme/MDXComponents.js`. By wrapping the default image component, I can inject the attributes I need:
 

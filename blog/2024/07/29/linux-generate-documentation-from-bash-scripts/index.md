@@ -52,3 +52,10 @@ Here the content of the `documentation/string.md` file:
 And, once every .sh files are processed, a final `documentation/readme.md` file will be created:
 
 <Snippet filename="documentation/readme.md" source="./files/readme.txt" />
+
+## Going further
+
+Two companion ideas, once your doc blocks are the single source of truth:
+
+- keep your scripts readable so the generated documentation stays readable too; <Link to="/blog/linux-sort-functions-in-script">Linux - Sort functions in a Bash script</Link> shows a small script that reorders functions alphabetically and
+- turn that folder of Markdown files into a real, published documentation site, as described in <Link to="/blog/quarto-industrialisation">Quarto - How I Built a Self-Documenting Ecosystem for 50+ Projects</Link>.

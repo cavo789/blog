@@ -23,13 +23,13 @@ This tutorial explains how to use Mustache-like templating in Quarto to efficien
 
 I use Quarto to generate documentation; until now I've mainly generated `.docx` and `.pdf` files.
 
-Recently, I needed to generate a static website (HTML) that would allow my colleagues to consult the documentation for the latest software I've written. I had to describe nearly 80 functions: as many web pages to write, each with the same structure (a description chapter, a how to run chapter, a how to configure chapter, etc.).
+Recently, I needed to generate a static website (HTML) that would allow my colleagues to consult the documentation for the latest software I've written. I had to describe nearly 80 functions: as many web pages to write, each with the same structure (a description chapter, a how to run chapter, a how to configure chapter, etc.). *This need eventually grew into the full pipeline described in <Link to="/blog/quarto-industrialisation">Quarto - How I Built a Self-Documenting Ecosystem for 50+ Projects</Link>.*
 
 And immediately, when you put it like that, you think of a CMS (content management system) such as Joomla for example, i.e. being able to define a standard page (a template) that will include the chapters and in each chapter, you could imagine injecting content that would be variables. Wouldn't it be silly to write each page by hand?
 
 And this is where [Mustache](https://mustache.github.io/)'s idea comes in. Mustache defines itself as a *Logic-less templates* framework.
 
-And, because I'm using Quarto for my documentation, I need an extension for using Mustache and, it's [Quarto-partials](https://github.com/gadenbuie/quarto-partials/tree/main) from Garrick Aden-Buie.
+And, because I'm using Quarto for my documentation, I need an extension for using Mustache and, it's [Quarto-partials](https://github.com/gadenbuie/quarto-partials/tree/main) from Garrick Aden-Buie — one of the extensions I mention in <Link to="/blog/quarto-extensions">my favorite Quarto extensions</Link>, but it deserves this much deeper dive.
 
 <!-- truncate -->
 

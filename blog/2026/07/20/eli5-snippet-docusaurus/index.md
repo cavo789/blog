@@ -74,7 +74,7 @@ The system has three moving parts that work independently:
         ↓  overlays ? badges with tooltips
 ```
 
-The key design decision is that **AI calls happen at authoring time, not at read time**. The `.eli5.json` files are committed to git and bundled with the site like any other static asset. Readers never wait for an API call, and your API key never leaves your machine.
+The key design decision is that **AI calls happen at authoring time, not at read time** — the very same pattern I used to <Link to="/blog/gemini-tldr">generate my TL;DR summaries with Gemini</Link>. The `.eli5.json` files are committed to git and bundled with the site like any other static asset. Readers never wait for an API call, and your API key never leaves your machine.
 
 ## Step 1 — The annotation script
 
@@ -317,7 +317,7 @@ git add blog/**/*.eli5.json && git commit -m "feat: ELI5 annotations"
 
 ## Step 3 — Extend the remark plugin
 
-Your `remark-snippet-loader` already reads the source file and injects `code` and `lang` props into the `<Snippet>` node at build time. Add eleven lines to also inject the ELI5 annotations when a `.eli5.json` exists alongside the source file.
+Your `remark-snippet-loader` already reads the source file and injects `code` and `lang` props into the `<Snippet>` node at build time. If you have never written such a plugin, my <Link to="/blog/docusaurus-plugin-replace">search&replace plugin for Docusaurus</Link> article explains the remark plugin anatomy from scratch. Add eleven lines to also inject the ELI5 annotations when a `.eli5.json` exists alongside the source file.
 
 In `plugins/remark-snippet-loader/index.cjs`, after the block that pushes the `lang` attribute:
 
@@ -329,7 +329,7 @@ This approach means **the author does not need to change a single line of MDX**.
 
 ## Step 4 — Update the Snippet component
 
-The Snippet component needs two changes: a new `Eli5CodeBlock` subcomponent that renders code line by line with badges, and a small update to the main `Snippet` function to parse `eli5json` and route to the new renderer.
+The <Link to="/blog/docusaurus-snippets">Snippet component</Link> needs two changes: a new `Eli5CodeBlock` subcomponent that renders code line by line with badges, and a small update to the main `Snippet` function to parse `eli5json` and route to the new renderer.
 
 <Snippet filename="src/components/Snippet/index.js" source="src/components/Snippet/index.js" />
 

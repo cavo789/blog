@@ -1,0 +1,40 @@
+.mobileQuickLinks {
+  border-left: 3px solid var(--ifm-color-emphasis-300);
+  margin: 0 0 1.5rem;
+  padding-left: 0.75rem;
+}
+
+.title {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.list {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+}
+
+.item {
+  font-size: 0.9rem;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
+}
+
+.item:last-child {
+  margin-bottom: 0;
+}
+
+/*
+ * Desktop and tablet readers already have the full post list in the blog sidebar, which
+ * Docusaurus hides below 997px. Above that width this block would only be noise.
+ */
+@media (min-width: 997px) {
+  .mobileQuickLinks {
+    display: none;
+  }
+}

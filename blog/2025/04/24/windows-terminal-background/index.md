@@ -33,11 +33,11 @@ Let's see how to easily do things like this:
 
 I'm using [Windows Terminal](https://apps.microsoft.com/detail/9n0dx20hk701); a free tool coming from Microsoft.
 
-I really like it because just like a web browser, I can work with tabs. One of the most powerful things is we can use it for the old Windows Command prompt (MS Dos), for Powershell, for Linux (Ubuntu, Debian, ...), for SSH terminal and much more.
+I really like it because just like a web browser, I can work with tabs. One of the most powerful things is we can use it for the old Windows Command prompt (MS Dos), for Powershell, for Linux (Ubuntu, Debian, ...), for <Link to="/blog/windows-terminal-ssh-profile">SSH terminal</Link> and much more. *The <Link to="/blog/windows-terminal">Windows Terminal</Link> article covers profiles and `settings.json` in general; here we only look at the appearance.*
 
 But, for this article, let's concentrate on the appearance of the terminal.
 
-First, let's generate (using [Recraft.ai](https://www.recraft.ai/) f.i.) a nice image or go to [unsplash.com](https://unsplash.com/) if you want to reuse an existing one. Click on this link to download the [JackJack background image](./images/wallpaper.webp), the meerkat.
+First, let's generate (using <Link to="/blog/ai-image-generation">Recraft.ai</Link> f.i.) a nice image or go to [unsplash.com](https://unsplash.com/) if you want to reuse an existing one. Click on this link to download the [JackJack background image](./images/wallpaper.webp), the meerkat.
 
 Start an instance of Windows Terminal and, as illustrated on the image below, click on the down arrow and select `Settings`.
 
@@ -54,3 +54,5 @@ You can also, for sure, have two tabs: one with a console and the second one wit
 ![Nice no?](./images/full_image.webp)
 
 That was for the background image. If you wish to learn how I did for the global look&feel, I'm using Powerlevel 10k: read my previous <Link to="/blog/powerlevel10k_sandbox">Customize your Linux prompt with Powerlevel 10k</Link> blog post.
+
+Looking for more Windows Terminal customization? See my articles on <Link to="/blog/windows-terminal-split-panes">splitting the window into several panes</Link> and <Link to="/blog/windows-terminal-ssh-profile">adding a one-click SSH profile</Link>.

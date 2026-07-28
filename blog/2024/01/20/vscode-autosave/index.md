@@ -21,7 +21,7 @@ How many times have you modified a file in VSCode (and forgotten to save the mod
 
 And it can take several minutes of back and forth before — damn it, silly me — you realize you didn't save your changes.
 
-And even more so when you've done a Search & Replace in several files; some having been saved and others not.
+And even more so when you've done a Search & Replace in several files; some having been saved and others not — think of a <Link to="/blog/vscode-multiple-cursors">multiple cursors</Link> session spread across a dozen tabs.
 
 Let's see how to avoid this.
 
@@ -43,3 +43,5 @@ Some people don't like this feature and say *I want to be aware when I save some
 If you're one of these people, try out the autosave function for a few days, and you'll see that it brings undeniable comfort.
 
 </AlertBox>
+
+Another setting in the same spirit, one you enable once and never think about again: <Link to="/blog/vscode-sticky-scroll">Sticky scroll in vscode</Link>.

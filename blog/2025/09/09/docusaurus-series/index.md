@@ -30,7 +30,7 @@ If you have been using Docusaurus for a long time, you may have noticed that it 
 
 It would be nice to write a first article, a second, a third, and so on, and be able to tell Docusaurus that these articles are part of the same series.
 
-This will also positively impact your SEO (by creating better internal linking) and keep your readers engaged for longer.
+This will also positively impact your SEO (by creating better internal linking) and keep your readers engaged for longer. *For articles that are related but don't form an ordered series, <Link to="/blog/docusaurus-relatedposts">Displaying related posts below our Docusaurus article</Link> plays the same role based on shared tags.*
 
 This isn't possible natively, so let's create a component for it.
 
@@ -47,6 +47,8 @@ Have you seen this article before? Look at the top. You will see a banner that s
 </AlertBox>
 
 This long article has two main sections: one on the actual creation of the component and the other on navigating the blog.
+
+*It combines the two techniques used all over this series: swizzling a theme component (as in <Link to="/blog/docusaurus-old-notice">the "over a year old" notice</Link>) and writing a local plugin (as in <Link to="/blog/docusaurus-plugin-replace">the search&replace plugin</Link>).*
 
 ## Part 1 - Creation of the SeriesPosts component
 

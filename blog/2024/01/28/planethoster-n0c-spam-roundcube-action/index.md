@@ -23,6 +23,8 @@ In previous articles, I explained how to fight against spam if you've a <Link to
 
 What if we automated as many things as possible?
 
+*This article uses GitHub Actions to deploy a generated file over FTP — exactly the mechanism described in <Link to="/blog/github-action">GitHub - Use Actions to deploy this blog</Link>.*
+
 In the <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link> article, I showed that you need to write rules for RoundCube to identify sources of spam and remove them. These rules have to be created from the RoundCube interface and, well, ok, that's not optimized at all.
 
 Let's look at how to do as little as possible and still be a hardcore spam fighter.

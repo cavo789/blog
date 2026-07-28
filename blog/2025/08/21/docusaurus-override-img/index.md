@@ -47,7 +47,7 @@ Our `Image` component will ask three parameters but just the `img` one is requir
 
 As you can easily understand, the `<Image>` component will just create a `div` where an `img` tag will be present.
 
-Nothing fancy except we'll use some CSS for the look&feel and the fact we'll force a lazy loading.
+Nothing fancy except we'll use some CSS for the look&feel and the fact we'll force a <Link to="/blog/docusaurus-lazy-loading">lazy loading</Link>.
 
 Please also create the `src/components/Image/styles.module.css` file:
 
@@ -96,7 +96,7 @@ That's pretty cool: our component is working! -->
 <AlertBox variant="caution">
 But, uh oh, on this blog, I've more than 250 articles right now (August 2025), I'm not going to go through all my articles to replace my images, am I?
 
-But also, maybe tomorrow I don't want this tag anymore, so I want to keep my articles in **vanilla Markdown** (standard language); how can I do that? The answer is: just write a plugin.
+But also, maybe tomorrow I don't want this tag anymore, so I want to keep my articles in **vanilla Markdown** (standard language); how can I do that? The answer is: just write a plugin (I've used the very same trick for my <Link to="/blog/docusaurus-plugin-replace">search&replace plugin</Link>).
 
 </AlertBox>
 
@@ -132,3 +132,5 @@ If everything is correctly in place, open any of your previous blog post and you
 ## Conclusion
 
 Now, up to you to edit the `src/components/Image/styles.module.css` file and use your own CSS.
+
+And once every image goes through your own component, it becomes easy to audit them: see <Link to="/blog/docusaurus-check-images">Running some checks on your Docusaurus images</Link>.

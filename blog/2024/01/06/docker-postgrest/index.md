@@ -28,6 +28,8 @@ My tables, my models, my SQL queries, I was able to remove everything from my co
 
 "PostgREST is a standalone web server that turns your PostgreSQL database directly into a RESTful API. The structural constraints and permission in the database determine the API endpoints and operations". You can retrieve the official documentation [https://postgrest.org/en/](https://postgrest.org/en/).
 
+*Oracle has its own equivalent, described in <Link to="/blog/docker-oracle-ords">Transform an Oracle DB as OpenData using Oracle REST Data Services</Link>. And to inspect the database behind the API, <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Adminer, pgadmin or phpmyadmin</Link> remains handy.*
+
 <AlertBox variant="info" title="Will return JSON">
 In short: using an API, PostgREST will retrieve data from your PostgreSQL database and will return a JSON answer to you.
 

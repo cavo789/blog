@@ -26,7 +26,7 @@ A real-world example is: you've followed my article <Link to="/blog/docker-jooml
 
 ![Your PHP settings before changes](./images/before.webp)
 
-One of the easiest ways to do is to create a `.ini` file on your disk and share the file with your container.
+One of the easiest ways to do is to create a `.ini` file on your disk and <Link to="/blog/docker-volume">share the file with your container</Link>.
 
 Most probably, you'll have a `compose.yaml` file, please edit the file.
 

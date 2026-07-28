@@ -22,6 +22,8 @@ The [Quarto reveal.js documentation](https://quarto.org/docs/reference/formats/p
 
 In this article, we'll take a quick look at a few tips and tricks to make your reveal.js presentations even better.
 
+*For the complete workflow — writing, previewing and exporting a reveal.js slideshow as HTML and PDF from a devcontainer — see <Link to="/blog/running-revealjs-with-docker">Level Up Your Presentations with Quarto, reveal.js, Decktape, Docker and DevContainers</Link>.*
+
 <!-- truncate -->
 
 <AlertBox variant="info" title="Docker image with Quarto">

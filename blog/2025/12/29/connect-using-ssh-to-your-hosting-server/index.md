@@ -95,7 +95,7 @@ In the previous step, we've confirmed that we can connect to the server with our
 
 ### Create an SSH key
 
-On your local machine, run a command like `ssh-keygen -t ed25519 -C "john_doe" -f ~/.ssh/id_ed25519_hosting` in your terminal. This will create a private SSH key called `~/.ssh/id_ed25519_hosting` (and the associated public key `~/.ssh/id_ed25519_hosting.pub`).
+On your local machine, run a command like `ssh-keygen -t ed25519 -C "john_doe" -f ~/.ssh/id_ed25519_hosting` in your terminal. *The very same key mechanism is used to talk to GitHub, as described in <Link to="/blog/github-connect-using-ssh">GitHub - Connect your account using SSH and start to work with git@ protocol</Link>.* This will create a private SSH key called `~/.ssh/id_ed25519_hosting` (and the associated public key `~/.ssh/id_ed25519_hosting.pub`).
 
 You'll be prompted to enter a passphrase. You can choose to set one for added security or leave it empty for convenience (in this article, I'm not using a passphrase).
 
@@ -168,3 +168,5 @@ From now on, to start an SSH connection to your host, open a terminal and run `s
 ## Conclusion
 
 This guide showed how to set up key-based SSH access to a hosting server and create a simple `ssh planethoster` shortcut.
+
+Once you've collected a dozen such aliases in `~/.ssh/config`, remembering them becomes the new problem; <Link to="/blog/ssh-with-fuzzy-finder">Master your ssh command and select the host from a list</Link> turns them into an interactive picker.

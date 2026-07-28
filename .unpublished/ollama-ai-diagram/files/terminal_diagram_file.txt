@@ -1,0 +1,8 @@
+$ ai-diagram compose.yaml
+
+```mermaid
+flowchart TD
+    app["app :8080"] --> db[("db — postgres:16")]
+    app --> cache["cache — redis:7"]
+    db --- vol[("db-data volume")]
+```

@@ -46,7 +46,7 @@ Let's move on and install it under Linux; it's really easy to do.
       content: "Download the `pdi-ce-10.2.0.0-222.zip` file. If like me you're under Windows, the archive will be put on your Windows partition; let's copy it to your Linux one",
       substeps: [
         "Start your Linux console and create a new folder like f.i. `~/tools/pentaho` (you can decide to use another path but, in this documentation, we'll refer to `~/tools/pentaho`)",
-        "Still in your console, run `explorer.exe .` in the command line to run Windows Explorer and open your Linux folder in it",
+        "Still in your console, run `explorer.exe .` in the command line to run Windows Explorer and open your Linux folder in it (see [Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer))",
         "In a new tab (in Windows Explorer thus), go to your download directories to retrieve the downloaded file",
         "Copy the file from the Windows folder to your Linux one; using a drag&drop f.i."
       ]
@@ -78,7 +78,7 @@ Let's move on and install it under Linux; it's really easy to do.
 
 To finalize the installation, you also need to update the `PATH` Linux variable.
 
-Please run `code ~/.bashrc` (or `code ~/.zshrc` if you're using Oh-my-ZSH); search in the file if you already have a line with `PATH=`. If yes, please update and add `$HOME/tools/pentaho/data-integration` to it. If not, please go to the end of the file and add this line:
+Please run `code ~/.bashrc` (or `code ~/.zshrc` if you're using <Link to="/blog/zsh-install">Oh-my-ZSH</Link>); search in the file if you already have a line with `PATH=`. If yes, please update and add `$HOME/tools/pentaho/data-integration` to it. If not, please go to the end of the file and add this line:
 
 <Snippet filename="~/.bashrc" source="./files/.bashrc" />
 
@@ -133,7 +133,7 @@ For this, we'll use Docker. Please create a file called `compose.yaml` in your `
 
 Please run `docker compose up --detach` to start the PostgreSQL container and the pgAdmin one.
 
-As you've seen, we've already set up a pgAdmin interface; we can open it by going to `http://localhost:8080`.
+As you've seen, we've already set up a pgAdmin interface; we can open it by going to `http://localhost:8080`. *pgAdmin is not your only option here; see <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Using Adminer, pgadmin or phpmyadmin to access your Docker database container</Link>.*
 
 <BrowserWindow url="http://localhost:8080">
   <img

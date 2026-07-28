@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/html:cached
+    ports:
+      - "8080:80"
+    extra_hosts:
+      # host.docker.internal only resolves automatically on Docker Desktop
+      # (Mac/Windows). On native Linux and inside WSL2, it needs this line.
+      - "host.docker.internal:host-gateway"

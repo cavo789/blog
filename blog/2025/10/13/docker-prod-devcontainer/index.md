@@ -40,13 +40,13 @@ Our first instinct should always be: do we need this (utility, configuration, us
 
 Some examples:
 
-- Development tools such as a linter, formatter, code quality tool, debugger, etc. have no place in the image that will be deployed.
+- Development tools such as a linter, formatter, <Link to="/blog/php-jakzal-phpqa">code quality tool</Link>, debugger, etc. have no place in the image that will be deployed.
 - Creating a user that will allow file synchronization with the host has no place in the image that will be deployed.
 - ...
 
 Our image must be clean, as efficient and lightweight as possible... We must minimize what is known as "attack surface" i.e. to reduce the number of tools we'll install in order to reduce security risks.
 
-Everything we need for our development will then have to be part of a second Docker image, which we will use when we activate the devcontainer feature in VSCode.  This is where we will create our user, add development tools, and activate certain configurations such as debugging, etc.
+Everything we need for our development will then have to be part of a second Docker image, which we will use when we activate the devcontainer feature in VSCode.  This is where we will create our user, add development tools, and activate certain configurations such as debugging, etc. If you have never set one up before, <Link to="/blog/vscode-devcontainer">PHP development in a devcontainer with preinstalled code quality tools</Link> walks through a complete devcontainer from scratch.
 
 <AlertBox variant="coreConcept" title="So, in short, we'll have two Docker images">
 One for the deploy and a second one to extend the first with additional tools and configuration items. That one will never leave our host and we'll never build it ourselves but let VSCode do it for us.
@@ -441,3 +441,7 @@ Press <kbd>F5</kbd> to start the debugger session.
 Go back to the browser, refresh the page and VSCode will break on that specific line.
 
 ![Success](./images/success.webp)
+
+## Going further
+
+The example above uses Python; the exact same two-image approach is used, language by language, in <Link to="/blog/docker-python-devcontainer">Docker - Python devcontainer</Link> and <Link to="/blog/php-devcontainer">PHP development in a devcontainer with preinstalled code quality tools</Link>. And if a devcontainer is still an abstract notion for you, start with <Link to="/blog/docker-definition-like-im-five">Docker - Explain me like I'm five - What's Docker for?</Link>.

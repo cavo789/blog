@@ -36,6 +36,8 @@ This article builds on top of <Link to="/blog/linux-fzf-introduction">fzf</Link>
 
 > [ripgrep](https://github.com/BurntSushi/ripgrep) is a fast command-line search tool that recursively searches files for text patterns using Rust-powered performance, while automatically respecting `.gitignore` and similar ignore rules.
 
+*I've dedicated a full article to it: <Link to="/blog/ripgrep">ripgrep — The Search Tool That Changed My WSL2 Workflow</Link>.*
+
 <Prerequisite
   name="ripgrep"
   install="sudo apt install ripgrep"

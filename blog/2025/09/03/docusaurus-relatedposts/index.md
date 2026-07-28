@@ -23,9 +23,9 @@ blueskyRecordKey: 3lxvwdh3szc22
 This guide explains how to add a 'Related Posts' section to your Docusaurus blog posts. You'll learn how to create a custom `<RelatedPosts>` React component that displays a list of articles sharing the same primary tag (`mainTag`). The process involves building a reusable `<Card>` component, creating a utility script to fetch and parse blog post data, and finally, overriding the Docusaurus `BlogPostItem` theme to inject your new component at the bottom of every article.
 </TLDR>
 
-Docusaurus can display a list of tags, but not related articles.
+Docusaurus can display a list of tags, but not related articles. *That `mainTag` is only useful if your tags are consistent; <Link to="/blog/docusaurus-tags">Tags management in Docusaurus</Link> is the cleanup script I run to keep them so.*
 
-When you browse my blog, you will see a list of **Related Blog Posts** below every article. This is a component I coded using AI.
+When you browse my blog, you will see a list of **Related Blog Posts** below every article. This is a component I coded using AI. *For articles that follow a deliberate reading order rather than a shared tag, see <Link to="/blog/docusaurus-series">Organize Your Docusaurus Content with a Custom Series Component</Link>.*
 
 The objective of our component is to display something like this:
 

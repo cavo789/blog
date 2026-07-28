@@ -33,6 +33,8 @@ Personally, I haven't used a Word-type word processor for several years; nor hav
 
 And yet, I produce a great deal of documentation and slideshows. I write everything in Markdown and generate PDF or slideshows from the same content.
 
+*Two follow-ups once this image runs: <Link to="/blog/quarto-devcontainer">Make your Quarto project Devcontainer-Ready</Link> turns it into a full VSCode environment, and <Link to="/blog/running-revealjs-with-docker">Level Up Your Presentations with Quarto, reveal.js, Decktape, Docker and DevContainers</Link> covers the slideshow side in depth.*
+
 Until recently, I'd been using [pandoc](https://pandoc.org/) but, having taken the time to look around Quarto, it's a hell of a lot more powerful.
 
 <!-- truncate -->
@@ -175,3 +177,7 @@ Now your slideshow will have three slides (press <kbd>space</kbd> or arrow keys 
 The nice thing now is that your slideshow is ready to be deployed on your remote server. Copy the html file and the associated folder (in our use case here, file `test.html` and folder `test_files`) to your FTP server f.i. and your website can be publicly accessed. Nice, isn't it?
 
 </AlertBox>
+
+## Going further
+
+Once you're comfortable running Quarto in a plain Docker container, two natural next steps are turning that setup into a proper VSCode <Link to="/blog/quarto-devcontainer">devcontainer</Link> (open the project, everything is preinstalled and hot-reload works out of the box), and browsing <Link to="/blog/quarto-extensions">my favorite Quarto extensions</Link> to enhance your documentation.

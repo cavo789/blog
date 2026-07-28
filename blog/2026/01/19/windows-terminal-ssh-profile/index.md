@@ -21,7 +21,7 @@ blueskyRecordKey: 3mcr66gr7zk2k
 This guide demonstrates how to streamline server connections by creating a dedicated SSH profile directly within the Windows Terminal settings. Users simply need to add a new empty profile, configure the command line with their specific SSH instruction, and optionally customize the appearance with icons or background images. This setup enables immediate access to remote servers through the Terminal dropdown menu, eliminating the need to manually type connection commands.
 </TLDR>
 
-In this article, we'll see how to create a new SSH profile in Windows Terminal so we no longer even need to remember how to connect to the server; we just need to open the profile and that's all.
+In this article, we'll see how to create a new SSH profile in <Link to="/blog/windows-terminal">Windows Terminal</Link> so we no longer even need to remember how to connect to the server; we just need to open the profile and that's all.
 
 For illustration purposes, I'll use my hosting server at PlanetHoster, but you can use the same technique for any SSH server you want to connect to.
 
@@ -87,3 +87,5 @@ From now on, whenever you want to connect to your hosting server, just open Wind
 Close the console to end the session when you're done.
 
 Additionally, pay attention to any other settings you can customize in the profile, such as font size, color scheme, and more, to enhance your experience. You can also define the home directory to open when the profile starts.
+
+Want to go further? Combine this SSH profile with <Link to="/blog/windows-terminal-split-panes">split panes</Link> to monitor several remote servers side by side in a single window.

@@ -24,6 +24,8 @@ When I'm learning, I usually take notes.  I find that it's one of the best ways 
 
 Below is a note that I took and revised several times when I took the time to create my first `.make` files.
 
+*Two companion articles: <Link to="/blog/makefile-using-make">Linux Makefile - When to use a makefile</Link> for the *why*, and <Link to="/blog/makefile-help">Linux Makefile - Adding a help screen</Link> for the self-documenting `make` target that makes all these tips discoverable by your colleagues.*
+
 <!-- truncate -->
 
 ## Install the make executable

@@ -11,5 +11,7 @@
 - [Blog Coverage Map](project_blog_coverage.md) — Gaps et opportunités par tech (WSL2/ZSH/Git/Docker/FZF/SSH/Bash/Ollama)
 - [Article Proposals](project_article_proposals.md) — Pending article ideas across all series, incl. "Ollama daily-use functions"
 - [Post Creation Feedback](feedback_post_creation.md) — draft:true for .unpublished, image selection, frontmatter ordering
+- [TODO Folder Convention](project_todos_convention.md) — .todos/ est privé : écrire en français, format NNN-slug.md, sections Problème/Risque/Solution
 - [TODO Triage Feedback](feedback_todo_triage.md) — rejects reader-engagement TODOs (polls/Q&A/share/bookmarks/counters) as WONT_DO, low traffic
 - [Unpublished Plan Maintenance](feedback_unpublished_plan.md) — always keep .unpublished/plan.md in sync with drafts, written in French, never published
+- [Internal Links Audit](project_internal_links.md) — run `internal-link-opportunities.mjs --stats`; verified baseline + the 4 traps that break naive greps

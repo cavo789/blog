@@ -183,3 +183,5 @@ I'm using a <Link to="/blog/tags/makefile">makefile</Link> with an action called
 <Snippet filename="makefile" source="./files/makefile" />
 
 I think you have understood. As soon as an error is detected, the script stops. You'll see the **CONGRATULATIONS** message only if all checks are successful.
+
+Running `make qa` by hand still relies on you remembering to do it. Two ways to make it automatic: <Link to="/blog/git-precommit">Git - pre-commit-hooks</Link> refuses the commit when a check fails, and <Link to="/blog/dagger-python">Dagger.io - Using dagger to automate your CI workflows</Link> runs the exact same steps locally and in your CI.

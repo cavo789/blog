@@ -23,6 +23,8 @@ VSCode supports `region` and `endregion` tags but not everywhere. These two spec
 
 Not everywhere means, for instance, that VSCode doesn't support code folding by default in a Dockerfile. Let's see how to solve this.
 
+*A well-folded file is one thing; a well-organized one is another. For Bash, <Link to="/blog/linux-sort-functions-in-script">Linux - Sort functions in a Bash script</Link> checks that your functions are declared in a predictable order.*
+
 <!-- truncate -->
 
 ## Code folding in PHP

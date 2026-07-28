@@ -31,6 +31,8 @@ If your password isn't saved in Putty's configuration, you'll have to launch ano
 
 In this article, we'll look at how to authenticate once and for all on the server using an SSH key.
 
+*Two articles that build on this one: <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link>, applied to a real hosting account, and <Link to="/blog/ssh-with-fuzzy-finder">Master your ssh command and select the host from a list</Link> once your `~/.ssh/config` holds a dozen aliases.*
+
 <!-- truncate -->
 
 <AlertBox variant="info">
@@ -143,3 +145,7 @@ Save the file and go back to the console.
 Now, you can just run `ssh my_app` to make the connection. Pretty easy no?
 
 Want more info? Continue your reading [https://linuxize.com/post/using-the-ssh-config-file/](https://linuxize.com/post/using-the-ssh-config-file/)
+
+## Going further
+
+Once your `~/.ssh/config` file starts to grow with aliases, two companion articles are worth a look: <Link to="/blog/zsh-plugin-ssh-config-suggestions">SSH - Autosuggestions with ZSH</Link>, so you never have to remember an alias again, and <Link to="/blog/linux-sftp-cli">Using sftp on the command line</Link> if you need the sftp counterpart of `scp`.

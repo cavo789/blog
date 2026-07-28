@@ -29,6 +29,8 @@ From time to time, I push my changes to my versioning system (like Gitlab/GitHub
 
 Let's see how to improve this process and be able to run `git` commands from inside our container.
 
+*Sharing your SSH key with a **running container**, as we do here, is not the same problem as using it during the **build** of an image; that second case is covered in <Link to="/blog/docker-use-ssh-during-build">Docker secrets - Using your SSH key during the build process</Link>. And the `.gitconfig` we're about to mount is the one described in <Link to="/blog/git-config">Git - Some tips for your .gitconfig file</Link>.*
+
 <!-- truncate -->
 
 ## Creating a demo container

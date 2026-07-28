@@ -31,3 +31,5 @@ There is also an [online demo](https://demo.filamentphp.com/) to quickly see the
 ![Filament Demo](./images/filament_demo.webp)
 
 Read more: [https://filamentphp.com/](https://filamentphp.com/) and [https://github.com/filamentphp/filament](https://github.com/filamentphp/filament)
+
+*Two other Laravel articles on this blog: <Link to="/blog/laravel_events">Working with Laravel events</Link> and <Link to="/blog/laravel-telescope">Laravel Telescope</Link>, which is invaluable for seeing what a generated admin panel really does to your database.*

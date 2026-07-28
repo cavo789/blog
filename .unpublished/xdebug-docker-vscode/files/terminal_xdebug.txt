@@ -1,0 +1,13 @@
+$ docker compose up -d
+$ curl -s http://localhost:8080/index.php
+
+[VSCode stops on the breakpoint at line 8 — $total is inspectable in the sidebar]
+
+$ cat /tmp/xdebug.log
+
+[9] Log opened at 2026-12-31 10:15:32.123456
+[9] [Step Debug] INFO: Connecting to configured address/port: host.docker.internal:9003.
+[9] [Step Debug] INFO: Connected to debugging client: host.docker.internal:9003 (through xdebug.client_host/xdebug.client_port).
+[9] [Step Debug] INFO: This is Xdebug 3.4.5, running in JIT-less mode.
+[9] [Step Debug] INFO: Communication with debugging client closed.
+[9] Log closed at 2026-12-31 10:15:33.987654

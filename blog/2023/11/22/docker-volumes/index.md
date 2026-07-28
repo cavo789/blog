@@ -17,13 +17,15 @@ language: en
 This article demonstrates Docker data persistence using a simple execution-counter container: no volume means data resets on every restart; a Docker-managed volume (declared in `compose.yaml`) persists data across restarts but stores files outside your project (accessible via Docker Desktop or the VSCode Docker extension); and a mounted/bind volume (`./data:/data`) syncs data straight into your project folder on disk — with a note on using `user: 1000:1000` to avoid `root`-owned files.
 </TLDR>
 
-When working with a Docker container, data can be persistent or not. Imagine you're creating a localhost website with Joomla, WordPress or any other tool (Laravel, Symfony, etc.).
+When working with a Docker container, data can be persistent or not. Imagine you're creating a localhost website with <Link to="/blog/docker-joomla-right-to-the-point">Joomla</Link>, <Link to="/blog/docker-wordpress">WordPress</Link> or any other tool (Laravel, Symfony, etc.).
 
 You've perfectly created the various Docker files needed to run the local site, you've run the command `docker compose up --detach` to start the containers and now you're busy installing the site.  After a few moments, your local site is up and you can start developing its functionalities.
 
 By default, if you haven't taken any precautions, the moment you stop the container (`docker compose down`), you'll kill your site, i.e., having not taken care to save your data (your site, your database), everything will be lost and reset the next time you run `docker compose up --detach`. Well... Maybe that was your wish (something totally ephemeral); maybe not.
 
 <!-- truncate -->
+
+This article focuses on the different kinds of volumes and when to reach for each; if you just want to get files in and out of a running container, <Link to="/blog/docker-volume">Share data between your running Docker container and your computer</Link> covers that narrower case.
 
 To illustrate the notion of persistence, we're going to work with a Docker image that we'll create with our own little hands, and which will never be anything more than an execution counter. Each time the container is executed, you'll see "You have executed this script 1 time", and this number will increase with each execution.
 

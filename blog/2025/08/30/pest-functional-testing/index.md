@@ -48,7 +48,7 @@ Please create a file called `Dockerfile` in your temporary folder with this cont
 
 <Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
-For our easiness, let's also create a `makefile` to be able to run very easy command like `make build`, `make up`, ...
+For our easiness, let's also create a <Link to="/blog/makefile_tips">`makefile`</Link> to be able to run very easy command like `make build`, `make up`, ...
 
 Create a file called `makefile` in your project with this content:
 

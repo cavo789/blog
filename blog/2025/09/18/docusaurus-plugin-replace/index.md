@@ -44,6 +44,8 @@ So, after a few prompts with the AI, a plugin has been generated and it works so
 
 Please create the `plugins/remark-replace-terms/index.cjs` file and look at the `replacements` array. Please add yours.
 
+*This is a **remark** plugin: it walks the Markdown AST before the HTML is produced. I've used the same mechanism to <Link to="/blog/docusaurus-override-img">replace every `<img>` tag with my own component</Link> and to <Link to="/blog/docusaurus-eli5-snippet-tooltips">inject AI-generated tooltips into code snippets</Link>.*
+
 The syntax is `[/\b(1)\b/g, "(2)"],` where `(1)` is the word to search for (exactly written as is (case sensitive)) and `(2)` the replaced by value.
 
 <Snippet filename="plugins/remark-replace-terms/index.cjs" source="plugins/remark-replace-terms/index.cjs" />

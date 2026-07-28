@@ -464,7 +464,7 @@ The key guard is `isBlogPostPage`. Docusaurus renders `BlogPostItem` in two cont
 Without the guard, a reaction widget would appear under every article card on the blog homepage, which is not what we want. `isBlogPostPage` is `true` only when you are reading a single post, so the widget shows up in exactly the right place.
 
 <AlertBox variant="note" title="Placement matters">
-If you have other custom components (a Bluesky share button, related posts, etc.), the order here defines the visual order at the bottom of every post. Adjust to your preference.
+If you have other custom components (a Bluesky share button, <Link to="/blog/docusaurus-relatedposts">related posts</Link>, etc.), the order here defines the visual order at the bottom of every post. Adjust to your preference.
 </AlertBox>
 
 ### 4.3 — The complete swizzled file ON MY SITE
@@ -573,7 +573,7 @@ And here is what you can get:
 
 ## All Files at a Glance
 
-Here is the full set of files involved, grouped for easy installation.
+Here is the full set of files involved, grouped for easy installation (rendered with my <Link to="/blog/docusaurus-snippets">code snippets component</Link>).
 
 <AlertBox variant="note" title="... excluding src/theme/BlogPostItem/index.js">
 In the list below, I've not included `src/theme/BlogPostItem/index.js` because, as said, that file will vary between my blog and yours. Please refer to **Step 4** and create the file manually.
@@ -632,4 +632,4 @@ The entire system is about 250 lines of code across five files, has no external 
 
 What I like most about this approach is that every byte of data lives in your own files, under your own control. Votes are stored in a plain JSON file you can open with any text editor, back up with any tool, and migrate to any other system whenever you want. No SaaS subscription to cancel, no API key to renew, no privacy policy to update because someone else's SDK added a tracker.
 
-If you build on this and add features — per-section reactions, reader questions, outdated flags — the same pattern scales naturally: one PHP file per feature, one React component, one JSON store.
+If you build on this and add features — per-section reactions, reader questions, <Link to="/blog/docusaurus-old-notice">outdated flags</Link> — the same pattern scales naturally: one PHP file per feature, one React component, one JSON store.

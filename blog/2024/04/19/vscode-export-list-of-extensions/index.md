@@ -21,6 +21,8 @@ A small tip: by running `code --list-extensions` in a console (Linux or DOS), yo
 
 Now, just copy/paste that list and you can send it to a friend: *Hey, here are the extensions I use. Maybe one or the other will be useful to you.*
 
+*A better way to share a setup with a whole team: put that list in a `devcontainer.json` so everyone gets the same extensions automatically; see <Link to="/blog/vscode-devcontainer">PHP development in a devcontainer with preinstalled code quality tools</Link>.*
+
 <!-- truncate -->
 
 The output of `code --list-extensions` will be something like this:
@@ -39,3 +41,5 @@ If you're a PowerShell user, you can also run `code --list-extensions | % { "cod
 If you're a Linux user, the same thing can be obtained with `code --list-extensions | xargs -L 1 echo code --install-extension`
 
 And that's nice: now by running these commands you can directly install these extensions.
+
+If you're looking for a few worth adding to that list, I've written about <Link to="/blog/vscode-errorlens">Error Lens</Link>, which shows errors inline instead of hiding them in the Problems panel, and <Link to="/blog/vscode-todo-tree">Todo Tree</Link>, which collects every `TODO` and `FIXME` of your codebase in a single view.

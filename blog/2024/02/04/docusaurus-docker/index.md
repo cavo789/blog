@@ -68,7 +68,7 @@ The third file to create is `compose.yaml` with this content:
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
-As you can see, we need to have a folder called `blog` on our machine and we'll synchronize that folder inside the Docker container. Our `blog` folder will be *mounted* in folder `/app/blog` in the container.
+As you can see, we need to have a folder called `blog` on our machine and we'll synchronize that folder inside the Docker container. Our `blog` folder will be *mounted* in folder `/app/blog` in the container (if the concept of volumes is new to you, read <Link to="/blog/docker-volume">Share data between your running Docker container and your computer</Link>).
 
 ### Create simple blog items
 
@@ -116,11 +116,15 @@ If you wish another port like `3002` f.i., just edit the yaml file and replace `
 
 </AlertBox>
 
-![Docusaurus homepage](./images/homepage.webp)
+<BrowserWindow url="http://localhost:3000">
+  ![Docusaurus homepage](./images/homepage.webp)
+</BrowserWindow>
 
 And if we click on the `Blog` menu, we can see our posts:
 
-![Our posts](./images/posts.webp)
+<BrowserWindow url="http://localhost:3000/blog">
+  ![Our posts](./images/posts.webp)
+</BrowserWindow>
 
 <AlertBox variant="info" title="Chronology of blog posts">
 As you can see, the default ordering follows chronological order: the last blog item we've created (`2024-02-06-my-second-post.md`) is the first one in the list.
@@ -139,14 +143,25 @@ For ease of use, go to this tutorial: [https://docusaurus.io/docs/blog#adding-po
 
 Copy/paste the `2019-09-05-hello-docusaurus.md` example to your `2024-02-07-really-better.md` file.
 
-![Our new article](./images/vscode-article.webp)
+<BrowserWindow url="http://localhost:3000/blog/2019-09-05-hello-docusaurus.md">
+  ![Our new article](./images/vscode-article.webp)
+</BrowserWindow>
 
 Just go back to your browser and refresh the page (press <kbd>F5</kbd>). Your new post is there!
 
-![Your new post is there](./images/with-new-post.webp)
+<BrowserWindow url="http://localhost:3000/blog/2024-02-07-really-better.md">
+  ![Your new post is there](./images/with-new-post.webp)
+</BrowserWindow>
 
 ## Stop and restart
 
 Since the `blog` folder is stored on your computer, we can stop the blog and start it again without losing anything.
 
 To illustrate this, we can run `docker compose stop && docker compose rm --force` to stop and kill the container. Then run `docker compose up --detach --build` to rebuild it. By surfing back to `http://localhost:3000`, as you'll see, you've still your blog with your latest changes. Nothing was lost.
+
+## What's next?
+
+The setup above is a *development* one: your content stays on your host and is mounted in the container. Two follow-up articles go further:
+
+- <Link to="/blog/docusaurus-docker-own-blog">Running your own blog with Docusaurus and Docker</Link> — turning this playground into your real blog and
+- <Link to="/blog/docker-docusaurus-prod">Encapsulate an entire Docusaurus site in a Docker image</Link> — building a self-contained image ready to be deployed.

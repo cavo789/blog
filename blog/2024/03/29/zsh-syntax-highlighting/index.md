@@ -30,6 +30,8 @@ If you type `head` followed by a space, ZSH will display this word in green: thi
 
 It sounds simple, but it's so practical.
 
+*Its natural companion is <Link to="/blog/zsh-plugin-autosuggestions">Autosuggestions in the console using ZSH</Link>: one tells you whether what you're typing is valid, the other saves you from typing it at all.*
+
 <!-- truncate -->
 
 ## Installation

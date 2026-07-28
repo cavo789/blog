@@ -19,7 +19,7 @@ blueskyRecordKey: 3mfj335ykxc2d
 The `ProjectSetup` component is a new tool for Docusaurus that allows you to share project structures in a standardized and interactive way. It displays file structures with collapsible snippets, generates setup scripts, and offers ZIP downloads, making it easier for readers to replicate projects from your blog posts.
 </TLDR>
 
-In my blog, I often share components that I have created for Docusaurus. To enable readers to easily reproduce these projects, I was looking for an interactive and standardized way to share file trees. This led me to create the `ProjectSetup` component.
+In my blog, I often share <Link to="/blog/docusaurus-series">components that I have created for Docusaurus</Link>. To enable readers to easily reproduce these projects, I was looking for an interactive and standardized way to share file trees. This led me to create the `ProjectSetup` component.
 
 It allows you to display the structure of a project in a clear and interactive way, with code snippets for each file. But its real power, its "**killer feature**" is this: with a single click on the **“Generate install script”** button, you get a shell command. Copy it, paste it into your Linux terminal, run it, and... that's it. The entire project tree, including folders and files, is created for you.
 

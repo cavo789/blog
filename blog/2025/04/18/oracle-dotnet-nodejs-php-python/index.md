@@ -27,6 +27,8 @@ For each language, we'll build a Docker image with all the required stuff like O
 
 The idea is then to provide a very quick skeleton for starting a project in those languages and if you need to directly connect to an Oracle database.
 
+*If you'd rather not write a connector at all, <Link to="/blog/docker-oracle-ords">Transform an Oracle DB as OpenData using Oracle REST Data Services</Link> exposes the same tables as a REST API that any language can consume with a plain HTTP call.*
+
 <!-- truncate -->
 
 In the <Link to="/blog/docker-oracle-database-server">Running Oracle Database Server as a Docker container</Link> article, we've created a Docker container called `oracle-db` where a Human Resources database is running.

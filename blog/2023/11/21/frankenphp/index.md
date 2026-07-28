@@ -29,6 +29,8 @@ It is still fairly young for use on production sites, but because it's so promis
 
 [Alexandre Elisé](https://github.com/alexandreelise) has written a script to use FrankenPHP with Joomla. You can find the source here: [https://github.com/alexandreelise/frankenphp-joomla](https://github.com/alexandreelise/frankenphp-joomla).
 
+*For the classic, PHP-FPM based setup, see <Link to="/blog/docker-joomla-right-to-the-point">Start Joomla with Docker in just a few clicks</Link>.*
+
 <!-- truncate -->
 
 I invite you to play with it on your development machine (unless you have your own servers; you certainly won't be able to use FrankenPHP at your hosting company).
@@ -57,6 +59,8 @@ You now have to wait **a few minutes** before the database connection is ready. 
 </AlertBox>
 
 The reason is that Joomla will try to connect to MySQL while the MySQL container is not ready to handle connections. You will then see a lot of `[ERROR] Connection refused`. Stay patient and after a while, you will get this:
+
+*This is exactly the problem healthchecks are made for; <Link to="/blog/docker-healthy">Get health information from your running containers</Link> shows how to know whether a container is really ready, and not just started.*
 
 ![Joomla has been installed](./images/frankenphp_joomla_installed.webp)
 

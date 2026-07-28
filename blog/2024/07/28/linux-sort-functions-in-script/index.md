@@ -91,6 +91,8 @@ We have just seen, on the command line, how to check whether a Bash script decla
 
 Let's move on to the industrialization of this concept: a script that will scan each .sh file in a specific folder and check whether the functions are defined in the file in alphabetical order.
 
+*A sorted script is also a script that documents itself better: <Link to="/blog/linux-generate-documentation-from-bash-scripts">Linux - Generate documentation from Bash scripts</Link> generates one Markdown page per script from the doc block of each function, in declaration order.*
+
 If this is the case, we won't have any display so as not to pollute our console.
 
 If this is not the case, the left-hand side of the screen shows the current order of function declarations and the right-hand side shows the expected order, sorted alphabetically.

@@ -20,7 +20,7 @@ Struggling to read and debug long, complex Excel formulas? This article introduc
 
 Can you read `=IF(AND(A1<100,B1<>"",ISNUMBER(SEARCH("abc",C1))),TEXT(D1,"dd-mm-yyyy")&" - "&ROUND(E1/F1,2),"N/A")` without thinking, ok, let's take a few seconds to analyze the formula and understand what it does? On my own, no, I have to stop for a moment and take the time to read before I understand.
 
-Years ago, for fun, I've created [https://excel-formatter.avonture.be/](https://excel-formatter.avonture.be/).
+Years ago, for fun, I've created [https://excel-formatter.avonture.be/](https://excel-formatter.avonture.be/). It joins the small family of self-hosted formatting tools I've built over time, like my <Link to="/blog/sql-formatter">SQL Formatter</Link>.
 
 Let's discover it.
 

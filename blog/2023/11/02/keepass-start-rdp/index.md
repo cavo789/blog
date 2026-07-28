@@ -25,7 +25,7 @@ The official documentation is located here: [https://keepass.info/help/base/auto
 
 ## Start PuTTY from KeePass
 
-If you don't have PuTTY installed on your machine, download it from [https://www.putty.org/](https://www.putty.org/). You just need the `putty.exe` file.
+If you don't have PuTTY installed on your machine, download it from [https://www.putty.org/](https://www.putty.org/). You just need the `putty.exe` file. *If PuTTY refuses your saved session with an authentication error, see <Link to="/blog/putty-no-supported-authentication-methods">Fatal error was starting Putty after having saved settings</Link>.*
 
 Download it and save `putty.exe` in a directory present in your PATH.
 
@@ -42,7 +42,7 @@ Make sure you have filled in the `host` advanced property.
 
 > [https://winscp.net/eng/docs/integration_keepass](https://winscp.net/eng/docs/integration_keepass)
 
-If you wish to open WinSCP and see files, you can achieve this by updating your KeePass entry and setting the `URL` property to the following instruction: `cmd://"{ENV_PROGRAMFILES_X86}\WinSCP\WinSCP.exe" sftp://{USERNAME}:{PASSWORD}@{S:ip}:{T-REPLACE-RX:/{S:port}/-1//}{S:path}`
+If you wish to open WinSCP (see also <Link to="/blog/winscp-synchronize-both">WinSCP - Synchronize host and remote</Link>) and see files, you can achieve this by updating your KeePass entry and setting the `URL` property to the following instruction: `cmd://"{ENV_PROGRAMFILES_X86}\WinSCP\WinSCP.exe" sftp://{USERNAME}:{PASSWORD}@{S:ip}:{T-REPLACE-RX:/{S:port}/-1//}{S:path}`
 
 <AlertBox variant="caution">
 Make sure you have filled in the `ip` advanced property. You can also set the `port` and `path` properties; they are optional, however.

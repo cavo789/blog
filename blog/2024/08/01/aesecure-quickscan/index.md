@@ -50,7 +50,7 @@ It's not recommended to do this directly on your real site on the internet but y
 
 It's not recommended because the scanner will require some computation time and your hosting company will probably stop the process when the PHP script will take more than xxx seconds (will depend on your configuration).
 
-By running the scanner locally, you'll not have such *timeout* problems.
+By running the scanner locally, you'll not have such *timeout* problems. *Spinning up a local copy of a Joomla site takes two minutes with <Link to="/blog/docker-joomla-right-to-the-point">Start Joomla with Docker in just a few clicks</Link>.*
 
 </AlertBox>
 
@@ -95,3 +95,5 @@ Scanning the site (action 3) then means scanning only unknown files; those not o
 ## Read more
 
 Want to read more? Please go to [https://github.com/cavo789/aesecure_quickscan/blob/master/readme.md](https://github.com/cavo789/aesecure_quickscan/blob/master/readme.md) to continue your discovering.
+
+Cleaning an infected site is one thing; making sure it doesn't happen again is another. My <Link to="/blog/apache-htaccess">Apache .htaccess file</Link> article lists the directives I use to block access to hidden files, disable script execution in upload folders and prevent directory listing.

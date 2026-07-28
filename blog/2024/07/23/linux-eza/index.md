@@ -30,6 +30,8 @@ And then you'll say to me, well, all you have to do is create an alias `alias ls
 
 `eza` is a modern replacement for `ls` as stated on their website: [https://the.eza.website/](https://the.eza.website/).
 
+*It belongs to the same family of "modern rewrites of the classics" as <Link to="/blog/ripgrep">ripgrep</Link> (for `grep`) and <Link to="/blog/git-delta">delta</Link> (for `git diff`). While you're customizing your console, <Link to="/blog/powerlevel10k">Customize your Linux prompt with Powerlevel10k</Link> is worth ten minutes too.*
+
 <AlertBox variant="info" title="eza was first called exa">
 [https://github.com/ogham/exa](https://github.com/ogham/exa) is abandoned; see [this issue](https://github.com/ogham/exa/issues/1243).
 
@@ -43,7 +45,7 @@ The installation is simple, you just need to run `sudo apt-get update && sudo ap
 
 From now, simply run `eza` on the command line and you'll get the list of files with all the defaults presets.
 
-On my computer, I've chosen for this list of parameters: `--all --long --group --group-directories-first --icons --header --time-style long-iso` and, for sure, I've updated my `~/.bashrc` file by adding an alias:
+On my computer, I've chosen for this list of parameters: `--all --long --group --group-directories-first --icons --header --time-style long-iso` and, for sure, I've updated my `~/.bashrc` file by adding an alias (if you're on ZSH, <Link to="/blog/modular-zsh-workflow">give that alias its own file</Link> rather than growing a monolithic `.zshrc`):
 
 <Terminal typewriter>
 $ alias ls='eza --all --long --group --group-directories-first --icons --header --time-style long-iso'

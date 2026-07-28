@@ -21,6 +21,8 @@ This article shows a quick trick to count published Docusaurus blog posts: open 
 
 Docusaurus didn't provide an easy way to retrieve the number of blog posts but there is a trick.
 
+*If you need that count **inside** your site rather than once in a console, the helper built in <Link to="/blog/docusaurus-relatedposts">Displaying related posts below our Docusaurus article</Link> already parses every post's front matter and can be reused for this.*
+
 There is an automatic page called `archive` like <Link to="/blog/archive/">/blog/archive/</Link>.
 
 On that page, all blog posts are displayed by year and months. With a `document.querySelectorAll` console instruction it's possible to make the count as suggested on [https://github.com/facebook/docusaurus/discussions/9712](https://github.com/facebook/docusaurus/discussions/9712)

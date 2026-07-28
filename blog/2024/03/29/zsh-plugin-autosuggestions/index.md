@@ -24,6 +24,8 @@ This article covers `zsh-autosuggestions`, a Zsh plugin that suggests commands f
 
 ZSH supports plugins, and one of the wonders is the [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) one — assuming you've already installed Oh-My-Zsh (see <Link to="/blog/zsh-install">How to install Oh-My-ZSH</Link> if not).
 
+*Suggestions come from your history, so it's worth knowing how that history is stored and filtered: see <Link to="/blog/linux-history">Linux - Working with the history of your last fired actions</Link>. Another plugin in the same spirit: <Link to="/blog/zsh-plugin-ssh-config-suggestions">SSH - Autosuggestions with ZSH</Link>.*
+
 That one will suggest commands as you type based on your previous history and completions.
 
 The more you use your Linux console, the more valuable this plugin will prove to be, as it will learn from you; it will know which commands you have already executed and will suggest them as soon as you start typing the first characters. No more wondering, "Gee, what were the parameters I used for ...".

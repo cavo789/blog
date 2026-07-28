@@ -24,7 +24,9 @@ The article guides users on leveraging VS Code's Remote - SSH extension for dire
 
 In this article, we'll explore how to develop directly on a remote server using VS Code, editing files stored on the server without maintaining a local copy or performing manual uploads.
 
-My use case was simple: I needed to run a Python script on a Linux server that could access an Oracle database. However, my local development environment (my computer or a Windows VM) could not reach the database due to network restrictions.
+My use case was simple: I needed to run a Python script on a Linux server that could access <Link to="/blog/docker-oracle-database-server">an Oracle database</Link>. However, my local development environment (my computer or a Windows VM) could not reach the database due to network restrictions.
+
+*Two related articles: <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link> to set up the key-based, passwordless connection this extension relies on, and <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers</Link> for the opposite approach — bringing the server's environment to your machine instead of the other way round.*
 
 Let's dive into remote development with VS Code and SSH.
 

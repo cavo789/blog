@@ -27,6 +27,8 @@ This is what we're going to do in this article. The idea is to use one computer 
 
 The server should have as much Video RAM (VRAM) and regular memory (RAM) as possible to run the AI smoothly. The client will just send web requests to it over your network, so a regular, less powerful computer is perfectly fine.
 
+*If containers on that server can't reach each other once everything is in place, <Link to="/blog/docker-networking-troubleshooting">Troubleshooting for Docker containers - Accessing the other one</Link> goes through the diagnosis step by step — a proxy is a frequent culprit.*
+
 <!-- truncate -->
 
 In this article, we'll implement this architecture. Please refer to my previous article (<Link to="/blog/ollama-installation">Installing Ollama and get local AI</Link>) for the set-up of the **Local AI Server**.

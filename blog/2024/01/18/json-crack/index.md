@@ -22,7 +22,9 @@ This article presents JSON Crack, a free online tool that renders JSON content a
 
 I really like the idea of not having to draw (actually, that is just because I am really bad at it) a diagram, a flow chart, a graphic representation of something that ... can be written.
 
-[JSON Crack](https://jsoncrack.com/editor) is one of the tools in my toolkit when I want to draw something that can be written in JSON.
+[JSON Crack](https://jsoncrack.com/editor) is one of the tools in my toolkit when I want to draw something that can be written in JSON. *It sits next to <Link to="/blog/docker-mindmap">Markmap</Link> (same idea, but from Markdown) and <Link to="/blog/docker-diagram-as-code">the diagram-as-code tools</Link> in general.*
+
+*When you just need to read the JSON rather than visualize it, <Link to="/blog/json-lint">JSON - Online linter</Link> and <Link to="/blog/linux-jq">`jq`</Link> do the job.*
 
 <!-- truncate -->
 

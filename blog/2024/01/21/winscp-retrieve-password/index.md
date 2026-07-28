@@ -19,6 +19,8 @@ This article shows how to recover a forgotten WinSCP password by temporarily ena
 
 More than once I've found myself in the situation where I've got a site saved in the [WinSCP](https://winscp.net/) configuration where I've saved the password and, um, gosh, what was it?
 
+*The real cure is to stop typing passwords at all: <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link> sets up key-based authentication, and <Link to="/blog/keepass-overriding-url">KeePass - Overriding the URL field</Link> opens WinSCP with the right credentials straight from your vault.*
+
 Did you know WinSCP provides an option to show you, in plain text, a stored password?
 
 <!-- truncate -->
@@ -34,3 +36,5 @@ Start a Windows Explorer and go to your `%TEMP%` directory. Sort on the last-mod
 <AlertBox variant="highlyImportant" title="Don't forget to remove the file and uncheck the box">
 Please return to the `preferences` - `Logging` page and uncheck the box. You don't want this to happen every time.
 </AlertBox>
+
+Fighting with PuTTY instead? See <Link to="/blog/putty-no-supported-authentication-methods">Fatal error was starting Putty after having saved settings</Link>. And if you'd rather stop relying on stored passwords altogether, <Link to="/blog/linux-ssh-scp">SSH - Launch a terminal on your session without having to authenticate yourself</Link> shows how to switch to key-based authentication.

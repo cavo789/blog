@@ -48,7 +48,7 @@ Shortly, the component will check if the YAML frontmatter of your blog post cont
 
 ## Override the BlogPostPage template
 
-Please first check if you don't have the `src/theme/BlogPostItem/Content/index.js` file yet. If you're a reader of this blog and already have customized Docusaurus, perhaps you have it already.
+Please first check if you don't have the `src/theme/BlogPostItem/Content/index.js` file yet. If you're a reader of this blog and already have customized Docusaurus, perhaps you have it already: <Link to="/blog/docusaurus-old-notice">the "this article is over a year old" component</Link> swizzles that very same file.
 
 If not, please start a console and run `yarn swizzle @docusaurus/theme-classic BlogPostItem/Content`.
 
@@ -85,3 +85,5 @@ Below an image of what you'll get.
 ![Demo](./images/sample.webp)
 
 Feel free to update the `src/components/Blog/Updated/styles.module.css` to match your own styling preferences.
+
+A changelog pairs nicely with <Link to="/blog/docusaurus-old-notice">the banner warning readers that an article is over a year old</Link>: the first says *what* changed, the second says *when it last did*.

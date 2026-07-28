@@ -26,6 +26,8 @@ Over the last few days, I've been using [Google Gemini](https://gemini.google.co
 
 In this article, let's take a look at how I went about generating these images.
 
+*Two practical notes: before Gemini, I was using <Link to="/blog/ai-image-generation">recraft.ai</Link>; and whatever the generator, every image gets compressed to WebP with <Link to="/blog/reduce-image-size">CaesiumCLT</Link> before landing on the blog.*
+
 <!-- truncate -->
 
 First, and somewhat by chance, I asked Gemini to generate a clipart-style image of a meerkat. I got this one:

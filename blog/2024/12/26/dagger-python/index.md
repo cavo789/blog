@@ -71,6 +71,8 @@ Every time we will push our codebase to our versioning application (like GitLab)
 - Run [Mypy](https://github.com/python/mypy/), *Mypy is a program that will type check your Python code* and
 - Run [Ruff](https://github.com/astral-sh/ruff), *an extremely fast Python linter and code formatter*
 
+(I've covered these four tools in detail in <Link to="/blog/python-qa">Python - Code Quality tools</Link>.)
+
 These steps are fired in our CI (GitLab, GitHub, ...) every time we push our code and, to do the same actions locally, we need to create f.i. some make actions (`make lint`, `make format`, ...).
 
 ## We want Dagger
@@ -177,7 +179,7 @@ We've successfully created our first task and we've successfully fired it on our
 
 ## Create a makefile
 
-It becomes quite difficult to remember all these `docker xxx` commands, no? Let's simplify this by creating a `makefile`.
+It becomes quite difficult to remember all these `docker xxx` commands, no? Let's simplify this by creating a `makefile` (if you're new to this, read <Link to="/blog/makefile-using-make">Linux Makefile - When to use a makefile</Link> first).
 
 Thanks to the following `makefile`, we'll be able to just run `make build` to create our Dagger Docker image and `make lint` to run the lint function.
 
@@ -257,7 +259,7 @@ For the next chapters, I'll suppose you're using a self-hosted GitLab server.
 
 ### Allowing the GitLab runner to access Docker
 
-I'm not an expert in GitLab runner configuration but the following configuration is working for me.
+I'm not an expert in GitLab runner configuration but the following configuration is working for me. I've detailed that setup, and the folder-sharing pitfall coming with it, in <Link to="/blog/gitlab-docker-out-of-docker">GitLab - Running Docker-out-of-Docker in your CI</Link>.
 
 Do an SSH connection to your GitLab runner server and edit the `/etc/gitlab-runner/config.toml` file (you should be root). Just add `/var/run/docker.sock:/var/run/docker.sock` for the `volumes` property:
 

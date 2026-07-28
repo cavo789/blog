@@ -36,6 +36,8 @@ In this article, we'll create a **devcontainer** i.e. a development environment 
 
 Once the files have been created, you can reuse the devcontainer for all your Python projects.
 
+*Two natural extensions: add the tools from <Link to="/blog/python-qa">Python - Code Quality tools</Link> to the image so every project inherits them, and read <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers - The Clean Way</Link> to keep that tooling out of the image you deploy.*
+
 ## Let's create the files for our Docker environment
 
 Like always, we'll create a new folder and create files there. Please run `mkdir /tmp/python && cd $_` to create that folder and jump in it.
@@ -173,3 +175,5 @@ VSCode will also ask if you want to install recommended extensions; please do it
 ## Conclusion
 
 You now have a fully working coding environment for Python. Thanks to our Docker image, Python has been installed and configured to run in a Docker container (understand: nothing was installed on your machine) and thanks to the Devcontainer, you're sure that VSCode is properly configured with all required extensions to work with ease.
+
+Running Windows and want the exact same files adapted for it? See <Link to="/blog/docker-python-devcontainer-windows">Docker - Easy setup of Python under Windows</Link>. Prefer to skip creating files by hand entirely? <Link to="/blog/docker-python-devcontainer-microsoft">Docker - Even easier setup of Python</Link> uses VSCode's built-in wizard instead.

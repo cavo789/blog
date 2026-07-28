@@ -30,6 +30,12 @@ And for some time now, [https://pestphp.com/](https://pestphp.com/) has come alo
 
 Pest is a wrapper around PhpUnit so, for instance, every command-line argument supported by PhpUnit can be used for Pest.
 
+*Unit tests are one layer of a quality strategy; the others on this blog are <Link to="/blog/php-jakzal-phpqa">static analysis with jakzal/phpqa</Link> and <Link to="/blog/git-precommit">pre-commit hooks</Link>, which run both before a commit can pass.*
+
+<AlertBox variant="note" title="Looking for browser/functional testing instead?">
+This article focuses on classic unit tests. Since then, Pest v4 added built-in browser testing — see <Link to="/blog/pest-functional-testing">Writing functional tests with Pest</Link>. Testing Bash scripts? Check out <Link to="/blog/bats-unit-tests">Running unit tests with bats/bats</Link>.
+</AlertBox>
+
 <!-- truncate -->
 
 ## Installation

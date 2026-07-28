@@ -34,6 +34,8 @@ So, I need to connect to my vault, in which I list all the information about app
 
 It would be pretty cool to run `ssh MyAmazingApp` no?
 
+*Two neighbours: <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link> to fill that `~/.ssh/config` in the first place, and <Link to="/blog/ssh-with-fuzzy-finder">Master your ssh command and select the host from a list</Link> when autocompletion is no longer enough — around fifty hosts, a searchable list beats <kbd>TAB</kbd>.*
+
 <!-- truncate -->
 
 It should be really nice to be able to run `ssh MyAmazingApp` and hop, I'm connected on the server.

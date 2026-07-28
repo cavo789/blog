@@ -21,6 +21,8 @@ As a markdown lover, I always enjoy finding a little tool that lets me write a t
 
 For this article, we're going to write, in plain text, a mind map, which means that our text will be converted into a mind map image.
 
+*Two follow-ups: <Link to="/blog/vscode-docker-markmap">Getting a more attractive mindmap with Markmap and Quarto</Link>, which polishes the rendering, and <Link to="/blog/json-crack">Rendering a JSON file as a mind map</Link> when the source is a JSON file rather than Markdown.*
+
 <!-- truncate -->
 
 The tool we'll use is called `Markmap` and can be used online: see the demo and the editor on [https://markmap.js.org/repl](https://markmap.js.org/repl)

@@ -49,7 +49,7 @@ We've two parts, one for CSS and one for JS, and we'll define two things
 
 ### 2. The Orchestrator Script (`build.sh`)
 
-This Bash script uses `yq` (a lightweight YAML processor) to parse our manifest. It concatenates the files and then calls the Docker image `[tdewolff/minify](https://hub.docker.com/r/tdewolff/minify)` to handle the heavy lifting. So, we won't pollute our system with additional dependencies — just one small Docker image.
+This Bash script uses `yq` (a lightweight YAML processor; think of it as the YAML cousin of <Link to="/blog/linux-jq">`jq`</Link>) to parse our manifest. It concatenates the files and then calls the Docker image `[tdewolff/minify](https://hub.docker.com/r/tdewolff/minify)` to handle the heavy lifting. So, we won't pollute our system with additional dependencies — just one small Docker image.
 
 ### 3. How to Run It
 
@@ -116,3 +116,5 @@ Surf to [tdewolff/minify](https://hub.docker.com/r/tdewolff/minify) and look for
 ## Conclusion
 
 By combining the scripting power of Bash with the isolation of Docker, we've created a robust asset pipeline. This setup is perfect for static sites, legacy PHP projects, or any environment where you want to keep your development tooling as lightweight as possible.
+
+Minified assets are only half of the performance story, though: images are usually the heaviest part of a page. See <Link to="/blog/docusaurus-check-images">Running some checks on your Docusaurus images</Link> for the automated audit I run on mine.

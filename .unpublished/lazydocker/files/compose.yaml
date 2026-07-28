@@ -1,0 +1,15 @@
+services:
+  lazydocker:
+    build: .
+    image: lazydocker
+    container_name: lazydocker
+    stdin_open: true
+    tty: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - lazydocker-config:/root/.config/jesseduffield/lazydocker
+      - .:/workdir
+    working_dir: /workdir
+
+volumes:
+  lazydocker-config:

@@ -25,6 +25,8 @@ Rector will look at every line of code, every loop, every conditional test, ever
 
 In this role, it will not only detect improvements to my code (like a static analysis tool) but, and this is the biggest advantage for me, it will show me how I can become a better developer.
 
+*Rector is one of the tools shipped in the <Link to="/blog/php-jakzal-phpqa">jakzal/phpqa</Link> image and preinstalled in the <Link to="/blog/php-devcontainer">PHP devcontainer</Link>, so you can try it without installing anything.*
+
 I REALLY LOVE RECTOR 💕
 
 <!-- truncate -->

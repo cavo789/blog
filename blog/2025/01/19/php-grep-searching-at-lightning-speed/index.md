@@ -20,6 +20,8 @@ Searching for text on an FTP server can be incredibly slow, especially with tool
 
 Did you know that using [WinSCP](https://winscp.net/), you can run a search on your FTP to find all the documents containing a given string? It's native in WinSCP; nothing more to install but...
 
+*Other WinSCP tricks on this blog: <Link to="/blog/winscp-download-recursively-files">download files with a specific extension recursively</Link> and <Link to="/blog/winscp-synchronize-both">synchronize host and remote</Link>.*
+
 However, it's insanely slow; let's see how we can do it better and almost instantaneous.
 
 <!-- truncate -->
@@ -54,3 +56,5 @@ This done, you'll get an interface where you can type, for sure, the search expr
 ![php_grep in action](./images/php_grep.webp)
 
 More info on [https://github.com/cavo789/php_grep](https://github.com/cavo789/php_grep)
+
+*The trick here is to search **on the server**, so nothing has to travel over the wire. When the files are already on your own disk, the same "lightning speed" feeling is provided by <Link to="/blog/ripgrep">ripgrep</Link>.*

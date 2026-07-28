@@ -22,6 +22,8 @@ This article introduces Bruno, a free, open-source alternative to Postman for AP
 
 [Bruno](https://www.usebruno.com/) is a tool like <Link to="/blog/tags/postman">Postman</Link> you can use for free. Everything is stored on your computer so you can store files within your codebase and submit it to your code versioning tool f.i.
 
+*Because those files live in your repository, the CLI part of Bruno turns naturally into a CI job — see <Link to="/blog/gitlab-docker-out-of-docker">GitLab - Running Docker-out-of-Docker in your CI</Link>. And to check the API's contract rather than its answers, there's <Link to="/blog/belgif-api-linter">Validate your OpenAPI schema against the Belgif REST standards</Link>.*
+
 <!-- truncate -->
 
 ## Let's install our own APIs first

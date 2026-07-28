@@ -1,0 +1,25 @@
+$ py-security-scan
+
+=== Bandit — static security analysis ===
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'hunter2'
+   Severity: Low   Confidence: Medium
+   Location: ./app.py:4:14
+
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   Location: ./app.py:7:4
+
+Code scanned:
+	Total lines of code: 6
+Run metrics:
+	Total issues (by severity):
+		Low: 1
+		High: 1
+
+=== pip-audit — dependency vulnerabilities ===
+Name     Version  ID                    Fix Versions
+-------- -------- --------------------- -------------
+requests 2.6.0    GHSA-x84v-xcm2-53pg   2.31.0
+Jinja2   2.10     GHSA-h5c8-rqwp-cp95   2.11.3
+
+Result: issues found — see above.

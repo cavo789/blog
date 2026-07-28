@@ -5,15 +5,27 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 771ca3a9-f666-4860-bab3-6091afb7179a
+  modified: 2026-07-28T04:42:04.123Z
 ---
 
 ## Globally Registered MDX Components
 
 Defined in `src/theme/MDXComponents.js`. Usable in any `.md`/`.mdx` file **without import**.
 
-`AlertBox, BrowserWindow, Card, CardBody, CardFooter, CardHeader, CardImage, Column, Columns, Details, DownloadButton, EmptyFolder, File, Folder, Guideline, Hero, Highlight, Link, LogoIcon, ProjectSetup, Snippet, StepsCard, TabItem, Tabs, Terminal, TLDR, TOCInline, Trees`
+`AlertBox, BrowserWindow, Card, CardBody, CardFooter, CardHeader, CardImage, Column, Columns, Details, DownloadButton, EmptyFolder, File, Folder, Guideline, Hero, Highlight, Link, LogoIcon, Prerequisite, ProjectSetup, ShortcutList, Snippet, StepsCard, TabItem, Tabs, Terminal, TLDR, TOCInline, Trees`
 
 Plus all default Docusaurus MDXComponents and a custom lazy-loading `img` handler.
+
+Re-verified against the live `src/theme/MDXComponents.js` 2026-07-27 (this list previously omitted
+`Prerequisite` and `ShortcutList`, which are in fact registered). **`CoreConcept` and `HighlyImportant`
+are NOT registered as standalone components** — despite two stale entries for them still existing in
+`.vscode/markdown.code-snippets` — both ideas live as `AlertBox` `variant` values instead
+(`coreConcept`, `highlyImportant`). Using either as a literal JSX tag would break the build.
+
+- **`Prerequisite`** — `<Prerequisite name="$1" install="$2" check="$3" checkOutput="$4" />`, a single
+  CLI-tool install/verify checker (`src/components/Prerequisite`) — distinct from `StepsCard
+  variant="prerequisites"`, which lists several prerequisites as plain text steps.
+- **`ShortcutList`** — `<ShortcutList items={[{ keys: ["..."], desc: "..." }]} />` (`src/components/ShortcutList`), for keyboard-shortcut reference tables.
 
 ---
 
@@ -28,6 +40,8 @@ Plus all default Docusaurus MDXComponents and a custom lazy-loading `img` handle
 - Placed immediately after the banner image, before any prose
 - Injects JSON-LD Schema.org `abstract` for SEO
 - No props beyond `children`
+- Also renders `<MobileQuickLinks />` right after its box (the TL;DR is present in 100% of
+  posts, so it is the anchor chosen for the mobile "read next" hint)
 
 ---
 
@@ -169,6 +183,7 @@ Used instead of raw `<a>` for internal/external links with proper Docusaurus rou
 | Component | Location | Role |
 |---|---|---|
 | `RelatedPosts` | `src/components/Blog/RelatedPosts/` | Auto-shown at bottom of posts |
+| `MobileQuickLinks` | `src/components/Blog/MobileQuickLinks/` | Mobile-only (<997px) 3-link list under the TL;DR; skipped for series posts; rendered by `TLDR` |
 | `Bluesky` | `src/components/Bluesky/` | Comments widget, keyed by `blueskyRecordKey` |
 | `Reaction` | `src/components/Reaction/` | Helpful/not helpful vote widget |
 | `ReadingProgress` | `src/components/ReadingProgress/` | Top progress bar |

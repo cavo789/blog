@@ -32,6 +32,8 @@ Depending on the server (is this a test server or UAT or PROD?), settings won't 
 
 So, each time the `.env` file is created, the normal way of doing things is to open it in an editor and start to make changes.
 
+*Three related articles: <Link to="/blog/linux-sed-tips">Search and replace (or add) using sed</Link> for the `sed` idiom this function is built on, <Link to="/blog/compare-env-files-cli">Compare environment files in the Linux console</Link> to spot what's missing compared to `.env.example`, and <Link to="/blog/bash-load-env">Bash - Loading environment variables from a file</Link> to consume the result.*
+
 And when you have to deploy several servers; you can't be 100% sure you haven't forgotten something important.
 
 Below a Linux function that can help. You can just copy/paste it in your console and run it but first, let's take a look on it.

@@ -21,6 +21,8 @@ Natively, Linux has a command-line tool called `diff` for comparing two folders 
 
 However, when you want to do this in a slightly more industrialized way (launch a very large number of comparisons to compare two versions of the same project, for example), the use of a few flags and snippets comes in handy.
 
+*Two specialized cases are covered elsewhere on this blog: <Link to="/blog/compare-env-files-cli">Compare environment files in the Linux console</Link>, where order and comments must be ignored, and <Link to="/blog/linux-compare-two-versions-of-the-same-script">Linux - Compare two versions of the same script</Link>.*
+
 <!-- truncate -->
 
 ## Compare two files
@@ -43,5 +45,7 @@ Compares two folders and displays a list of files that are only in one of the tw
 <Snippet filename="script.sh" source="./files/script.part2.sh" />
 
 This variation allows you to hide the message `Only in .` i.e. when a file is present in the first folder (the `SOURCE` one) and not in the second one (the `COMPARE_WITH` one).
+
+*The raw output of `diff` is not the most readable thing on earth. If the files you compare live in a git repository, <Link to="/blog/git-delta">delta: a Syntax-Highlighted Pager for git diff</Link> makes the same information far easier to read.*
 
 <Snippet filename="script.sh" source="./files/script.part3.sh" />

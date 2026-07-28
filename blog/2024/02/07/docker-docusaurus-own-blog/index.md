@@ -27,6 +27,8 @@ So you've created your own blog using Docker and Docusaurus. By following steps 
 
 Let's go further.
 
+*And when your blog is ready to leave your machine, <Link to="/blog/docker-docusaurus-prod">Encapsulate an entire Docusaurus site in a Docker image</Link> packages it for production, while <Link to="/blog/github-action">GitHub - Use Actions to deploy this blog</Link> publishes it automatically on every push.*
+
 <!-- truncate -->
 
 In the previous article, we've created a folder on your disk; we'll reuse it.
@@ -39,7 +41,9 @@ In Visual Studio Code, you should see this (if not, read and run commands from t
 
 And by running `docker compose up --detach --build` to start the blog, you'll get this screen:
 
-![Starting point blog](./images/blog_starting_point.webp)
+<BrowserWindow url="http://localhost:3000">
+  ![Starting point blog](./images/blog_starting_point.webp)
+</BrowserWindow>
 
 ## Customize the name, title, icons and URL of your site
 
@@ -105,7 +109,9 @@ navbar: {
 
 Just save and refresh your browser and you'll get:
 
-![My own navbar](./images/navbar_me.webp)
+<BrowserWindow url="http://localhost:3000">
+  ![My own navbar](./images/navbar_me.webp)
+</BrowserWindow>
 
 <AlertBox variant="info" title="You've learned a very important concept!">
 When you wish to be able to update a file present in a container; you need to get the file on your disk (1) and, then, synchronize the file between your computer and the container (2).
@@ -128,7 +134,9 @@ const config = {
 };
 ```
 
-![Favicon](./images/favicon.webp)
+<BrowserWindow url="http://localhost:3002/blog">
+  ![Favicon](./images/favicon.webp)
+</BrowserWindow>
 
 <AlertBox variant="info" title="Just refresh">
 You don't need to restart the `docker up` command this time, just press <kbd>F5</kbd> to see your changes directly in your browser.

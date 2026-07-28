@@ -23,6 +23,8 @@ The returned information is a JSON representation of the object.
 
 One use case is to be able to retrieve the name of the network used by a given container.
 
+*Two concrete applications of exactly that: attaching a database UI to an existing container in <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Using Adminer, pgadmin or phpmyadmin</Link>, and diagnosing why two containers can't talk to each other in <Link to="/blog/docker-networking-troubleshooting">Troubleshooting for Docker containers</Link>. Both rely on <Link to="/blog/linux-jq">`jq`</Link> to read the JSON.*
+
 <!-- truncate -->
 
 ## Some preparation work

@@ -29,7 +29,7 @@ But we can run Docker containers by hand and, in that case, no such file is need
 
 ## First step, we need a network
 
-Using a network will allow containers to communicate with each other.
+Using a network will allow containers to communicate with each other (see <Link to="/blog/docker-network-and-extra-hosts">Using Docker network and the extra_hosts property</Link> for the details).
 
 <AlertBox variant="caution" title="You need a network, don't skip">
 As soon as you've two or more containers, you need a network.
@@ -104,5 +104,7 @@ Or, by hand, go to your `Docker Desktop` interface, click on the `containers` ta
 ## Conclusion
 
 As introduced, we just need three commands to create, from scratch, a new WordPress site on our disk. This takes just seconds (depending on the speed of your computer). Easy, no?
+
+*Two things to add right after: a <Link to="/blog/docker-volume">volume</Link>, so your site survives a `docker rm`, and <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Adminer, pgadmin or phpmyadmin</Link> to browse the database that was just created.*
 
 <Terminal typewriter source="./files/terminal-1.txt" />

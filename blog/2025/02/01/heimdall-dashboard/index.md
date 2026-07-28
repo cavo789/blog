@@ -97,7 +97,7 @@ Did you notice that, in the `compose.yaml` file there is a section called `volum
 
 <Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 
-It means that the `config` folder of Heimdall will be stored on your disk; in a folder called `config` too.
+It means that the `config` folder of Heimdall will be stored on your disk; in a folder called `config` too. *That's the <Link to="/blog/docker-volume">volume mechanism</Link> at work.*
 
 I can check this by running `ls -alh` on my host:
 
@@ -202,5 +202,7 @@ You can customize the CSS and add some JS too.
 ## Continue your journey
 
 Visit the official site [https://heimdall.site/](https://heimdall.site/) to get updates and docs.
+
+Two other self-hosted applications I keep running next to Heimdall: <Link to="/blog/docker_uptime_kuma">Uptime Kuma</Link>, to know when one of those links is down, and <Link to="/blog/docker-memos">Memos</Link> for note-taking.
 
 Get inspirations by searching **dashboard heimdall homepage** on [Google Search images](https://www.google.com/search?sca_esv=e645136bb336bc61&q=dashboard+heimdall+homepage&udm=2).

@@ -31,6 +31,8 @@ Docusaurus uses **RSS 2.0** and exports, by default, up to 20 articles. The file
 
 Let's see how to enhance it.
 
+*This is another local Docusaurus plugin, like the ones built in <Link to="/blog/docusaurus-plugin-replace">Creating a search&replace plugin for Docusaurus</Link> and <Link to="/blog/docusaurus-ascii-art">Inject ASCII Art in any HTML pages rendered by Docusaurus</Link> — this one hooks the `postBuild` event too.*
+
 <!-- truncate -->
 
 ## What is the rss.xml file?

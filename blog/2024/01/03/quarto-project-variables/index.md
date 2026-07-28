@@ -24,6 +24,8 @@ The *normal way to do this* is to just put information directly in the documenta
 
 The best way is probably to use an external file where information is stored in a key-value form and, during the rendering process of Quarto, replace short codes by values.
 
+*When the repetition is not a single value but a whole page structure, variables are no longer enough; <Link to="/blog/quarto-mustache">Using Mustache templating with Quarto</Link> is the next step.*
+
 <!-- truncate -->
 
 <AlertBox variant="info" title="Docker image with Quarto">

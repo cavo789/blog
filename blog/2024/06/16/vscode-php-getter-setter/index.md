@@ -24,6 +24,8 @@ In other words, in your PHP class, you don't have `public` properties (they're t
 
 And using getters and setters you allow other objects to interact with your private properties by reading them (getters) or updating their values (setters).
 
+*<Link to="/blog/php-rector">Rector</Link> can spot the places where a property should have been private in the first place, and <Link to="/blog/vscode-tabnine">Tabnine</Link> will often guess the whole setter as soon as you start typing `private function set`.*
+
 Some people will say "Yes, but it's tedious to write these functions", but not at all.
 
 <!-- truncate -->
@@ -73,3 +75,5 @@ $product->setPrice(-10);
 And the code using the class:
 
 <Snippet filename="product.php" source="./files/product.part3.php" />
+
+Letting the editor generate this boilerplate is one way to keep your PHP clean. Letting it *check* your code is another: <Link to="/blog/vscode-devcontainer">PHP development in a devcontainer with preinstalled code quality tools</Link> sets up a ready-to-use environment with linters and static analysis already in place.

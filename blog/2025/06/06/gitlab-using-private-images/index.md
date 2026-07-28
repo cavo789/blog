@@ -25,6 +25,8 @@ I couldn't simply do a `docker pull my_image` because, first of all, I had to au
 
 This article is a how-to and explains how to do it.
 
+*Two sibling articles about the same CI: <Link to="/blog/gitlab-runner-ssh-key">GitLab - Using an SSH key to connect to private repo</Link> for private **git** repositories, and <Link to="/blog/gitlab-docker-out-of-docker">GitLab - Running Docker-out-of-Docker in your CI</Link> if your job needs to run `docker` commands at all.*
+
 <!-- truncate -->
 
 ## Create a token

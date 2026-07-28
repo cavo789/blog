@@ -19,6 +19,8 @@ This article introduces the CodeSnap VSCode extension, which generates a nicely 
 
 The extension [CodeSnap](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) will **take beautiful screenshots of your code in VS Code** without effort.
 
+*Handy for social media, but not for a blog article: an image of code can't be copied, searched or indexed. For that, use a real code block — see <Link to="/blog/docusaurus-snippets">A component for showing code snippets in a Docusaurus blog</Link>.*
+
 Open your file in VS Code, press <kbd>CTRL</kbd>-<kbd>SHIFT</kbd>-<kbd>P</kbd> and run `CodeSnap`. You just need to select lines now.
 
 ![CodeSnap partial example](./images/partial.webp)
@@ -34,3 +36,5 @@ When you're done, just click on the `Polaroid` button just above the preview, sa
 Below is an example of PHP source code:
 
 ![Sample example for CodeSnap](./images/codesnap.webp)
+
+Since these screenshots are meant to be shared, the font you use shows up in every one of them. If you haven't picked one deliberately yet, see <Link to="/blog/vscode-jetbrains-font">Using the JetBrains Mono font in vscode</Link>.

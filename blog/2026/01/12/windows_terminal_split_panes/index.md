@@ -30,7 +30,9 @@ And when I need to focus on one pane, I can zoom in on it and hide the others te
 
 <!-- truncate -->
 
-We'll use Windows Terminal. It ships with Windows 10 and later and is the default terminal for Windows. If you don't have it, you can download it here: [Windows Terminal on Microsoft Store](https://www.microsoft.com/store/productId/9N0DX20HK701).
+We'll use Windows Terminal. It ships with Windows 10 and later and is the default terminal for Windows. If you don't have it, you can download it here: [Windows Terminal on Microsoft Store](https://www.microsoft.com/store/productId/9N0DX20HK701). If you're not yet familiar with profiles and `settings.json`, my <Link to="/blog/windows-terminal">Windows Terminal</Link> introduction is a good starting point.
+
+*Two other profile tricks worth combining with panes: <Link to="/blog/windows-terminal-ssh-profile">Windows Terminal - Adding a SSH profile</Link>, so one of your panes opens straight on a remote server, and <Link to="/blog/windows-terminal-background">Use a background image in your Windows Terminal console</Link> to tell your panes apart at a glance.*
 
 There are two approaches:
 
@@ -135,7 +137,7 @@ As you can see, using a hard-coded command line quickly becomes complex to maint
 
 We can do better by reusing existing profiles.
 
-In the example below, I'm creating six profiles, one for each subproject. In each profile, I'm setting the working directory (see the `commandline` attribute) and a specific background (image, opacity, and stretch mode). Then, I will set the `hidden` attribute to `true` so the profile will not be displayed in the list of profiles.
+In the example below, I'm creating six profiles, one for each subproject. In each profile, I'm setting the working directory (see the `commandline` attribute) and a specific background (image, opacity, and stretch mode — see <Link to="/blog/windows-terminal-background">Use a background image in your Windows Terminal console</Link> if you want more details on these properties). Then, I will set the `hidden` attribute to `true` so the profile will not be displayed in the list of profiles.
 
 ```json
 {

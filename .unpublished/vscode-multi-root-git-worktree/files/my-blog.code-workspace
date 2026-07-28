@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "name": "main",
+      "path": "../my-blog"
+    },
+    {
+      "name": "feature/dark-mode",
+      "path": "../my-blog-feat-dark-mode"
+    },
+    {
+      "name": "hotfix/invoice",
+      "path": "../my-blog-hotfix-invoice"
+    }
+  ],
+  "settings": {
+    "git.detectSubmodules": false
+  }
+}

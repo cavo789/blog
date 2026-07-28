@@ -20,6 +20,8 @@ This article covers working with shell history in Bash/ZSH: locating the history
 
 For me, one of the undeniable strengths of the command line under Linux is the management of the history of previously executed commands.
 
+*The single biggest upgrade you can make to that history is <Link to="/blog/linux-fzf-introduction">fzf</Link>: it turns <kbd>CTRL</kbd>+<kbd>R</kbd> into a fuzzy, interactive search instead of a linear one.*
+
 To be able to press the <kbd>Up</kbd> or <kbd>Down</kbd> keys on the keyboard to return to previously run commands, wow.
 
 For older users, there was [DOSKEY](https://en.wikipedia.org/wiki/DOSKEY) under MSDos, but Linux goes much further.

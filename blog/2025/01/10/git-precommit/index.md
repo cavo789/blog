@@ -25,7 +25,7 @@ You've pushed your changes, already started to work on another activity, perhaps
 
 So, what should we do to avoid this?
 
-The answer is simple! Before each push, we should run the same code analysis tools that are executed in the CI, i.e. `phplint`, `php-cs-fixer`, `phpcbf`, `phan`, `phpstan`, ... (for PHP) or `pylint`, `mypy`, `prospector`, `black`, `ruff`, ... (for Python) or `shellcheck` and `shellformat` (for Linux Bash) or ...
+The answer is simple! Before each push, we should run the same code analysis tools that are executed in the CI, i.e. `phplint`, `php-cs-fixer`, `phpcbf`, `phan`, `phpstan`, ... (for PHP, all bundled in the <Link to="/blog/php-jakzal-phpqa">jakzal/phpqa Docker image</Link>) or `pylint`, `mypy`, `prospector`, `black`, `ruff`, ... (for Python, see <Link to="/blog/python-qa">Python - Code Quality tools</Link>) or `shellcheck` and `shellformat` (for Linux Bash) or ...
 
 We should, but do we think about it every time? Unfortunately not.
 

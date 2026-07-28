@@ -28,7 +28,7 @@ Imagine you've an existing PHP application and you don't want to create the file
 
 You just want, very quickly and using a wizard, to be able to answer a few questions and hop, it's ready.
 
-The `docker init` command is the one you're looking for.
+The `docker init` command is the one you're looking for. *I had already given it a first try, back when PHP support had just landed, in <Link to="/blog/docker-init">Docker init now supports PHP</Link>; this article revisits it on a real application.*
 
 <!-- truncate -->
 

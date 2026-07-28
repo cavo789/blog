@@ -27,6 +27,8 @@ In fact, it's much simpler...
 
 The tip: start `powershell.exe` followed by the filename to open like `powershell.exe guide.pdf` or `powershell.exe index.html`.
 
+*A typical use case: you've just generated a PDF with <Link to="/blog/docker-quarto">Quarto in Docker</Link> and want to check the result without leaving your console.*
+
 <AlertBox variant="note" title="Not available in Bash">
 `powershell.exe` only works in the console. You can't use it in a Bash script (`.sh`), it won't be recognized there.
 

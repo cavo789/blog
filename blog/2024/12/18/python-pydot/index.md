@@ -22,6 +22,8 @@ This article introduces Pydot, a Python diagram-as-code library that renders dia
 
 [Pydot](https://github.com/pydot/pydot) is a **diagram-as-code** generator, i.e. you write lines of code and, thanks to a magic process, you can render the code as an image.
 
+*This blog has two other articles in the same family: <Link to="/blog/docker-diagram-as-code">Docker - Diagrams as code</Link>, using the `diagrams` library and its cloud-provider icons, and <Link to="/blog/docker-python-mermaid">Documentation as Code - Transform Your Infrastructure into Beautiful Diagrams with Python and Mermaid</Link>, where the diagram is generated **from** your `compose.yaml` instead of hand-written.*
+
 For guys just like me who are terrible at visuals, this is gold.
 
 Let's say you have to describe an IT process such as ETL (data is loaded, one or other transformation rule is applied and the result is loaded into a database, for example); you can easily imagine drawing some rectangles using a tool like [https://app.diagrams.net/](https://app.diagrams.net/) (formerly known as draw.io), or use a smarter way to do it.

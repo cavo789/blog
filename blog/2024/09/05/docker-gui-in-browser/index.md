@@ -18,7 +18,7 @@ language: en
 This article shows how to run graphical Linux applications like Firefox and GIMP inside Docker containers and access their interface directly through a web browser (via `http://localhost:3000`), using the `linuxserver/firefox` and `linuxserver/gimp` images — handy for testing a site in a specific browser version without installing it.
 </TLDR>
 
-In a future article, I'll be covering a subject I've just discovered: the possibility of running graphical interfaces in Docker and, therefore, having a Linux application running in Windows.
+In a future article, I'll be covering a subject I've just discovered: the possibility of running graphical interfaces in Docker and, therefore, having a Linux application running in Windows. *That article is now written: <Link to="/blog/docker-run-linux-gui">Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP</Link>, where the applications are displayed as real windows instead of in a browser tab.*
 
 But first, let's take a look at a few graphical interfaces, such as Firefox or GIMP (image processing software), which can be run as if they were web applications.
 

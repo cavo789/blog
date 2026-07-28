@@ -15,7 +15,9 @@ language: en
 This article shows how to compile and run Java with zero local install, using the official `openjdk` Docker image: `docker run ... openjdk:11 javac Main.java` to compile, then `docker run ... openjdk:11 java Main` to execute, including a second example that calls a REST API from Java and prints the JSON response.
 </TLDR>
 
-In this post, we'll play with Docker and Java. Since there are ready-to-use Java images for Docker you do not need to install or configure anything other than Docker.
+In this post, we'll play with Docker and Java. Since there are ready-to-use Java images for Docker you do not need to <Link to="/blog/install-docker">install or configure anything other than Docker</Link>.
+
+*The same "zero install, just an image" approach is used on this blog for <Link to="/blog/docker-php-run-script-or-website">PHP</Link>, <Link to="/blog/docker-python-devcontainer">Python</Link> and <Link to="/blog/docker-quarto">Quarto</Link>.*
 
 <AlertBox variant="note" title="I don't know Java at all">
 You just need to know that I have absolutely no skills in Java. Which software should be installed, how to run a script and so on? I will just rely on a few Docker commands and, about the installation, yes, using Docker, it is easy: nothing to install, nothing to configure.

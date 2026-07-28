@@ -28,11 +28,13 @@ Using `sed` it's quite easy to automate the search & replace but how to append?
 
 This article will explain one way to achieve this. You'll find a lot of other possibilities on the Internet, some using only the `sed` instruction, but ... can you read them?
 
+*This pattern is the building block of <Link to="/blog/update-env-files-cli">Batch edit of environment file</Link>, where the same `sed` logic is applied to a whole set of projects at once.*
+
 I prefer to use a different approach, perhaps not the *native one* but, yeah, I can read it.
 
 ## Search and replace
 
-Imagine a `.env` file with just one line, like f.i.:
+Imagine a `.env` file with just one line (<Link to="/blog/bash-load-env">which your Bash script can then load as real environment variables</Link>), like f.i.:
 
 <Terminal typewriter>
 $ echo 'APP_ENV = local' > .env

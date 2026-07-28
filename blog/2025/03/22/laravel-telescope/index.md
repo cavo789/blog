@@ -32,10 +32,12 @@ Thanks to Telescope, not only did I have a perfect view of what was being collec
 
 ![Dashboard](./images/telescope-dashboard.webp)
 
-For an eloquent model f.i. we'll retrieve in Telescope (the default URL is `http://your_site/telescope`), we'll get the raw SQL so it's easy to copy/paste and run directly in pgadmin f.i.
+For an eloquent model f.i. we'll retrieve in Telescope (the default URL is `http://your_site/telescope`), we'll get the raw SQL so it's easy to copy/paste and run directly in <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">pgadmin</Link> f.i.
 
 For Redis cache f.i., we'll see keys and if they were retrieved (`hits`) or created (`set`).
 
 Laravel Telescope can also be installed on a test server to see what the user is doing and get the full context on each request so when an exception was fired, we can retrieve it in the log, the exception message, the post data, the used URL and much more.
 
 Telescope is a really big improvement about debugging a Laravel application. Consult the [official documentation](https://laravel.com/docs/master/telescope) to learn how to install and use it.
+
+Two other Laravel articles on this blog: <Link to="/blog/laravel_events">Working with Laravel events</Link> — and Telescope happens to show you every event fired, which makes it a great companion while learning them — and <Link to="/blog/laravel-filament">Laravel Filament</Link>.

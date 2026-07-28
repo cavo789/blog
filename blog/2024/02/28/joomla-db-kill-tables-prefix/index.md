@@ -23,10 +23,12 @@ Indeed, from time to time, it can be useful to take a look at the list of tables
 
 Years ago, I wrote such a PHP utility; let's see how to use it.
 
+*Before deleting anything, you'll probably want to **look** at those tables; <Link to="/blog/joomla-show-table">Joomla - Run a SQL statement outside Joomla and display a nice HTML table</Link> is the read-only companion of this script.*
+
 <!-- truncate -->
 
 1. Click on the link [https://github.com/cavo789/joomla_free/blob/master/src/kill_db_tables/kill_db_tables.php](https://github.com/cavo789/joomla_free/blob/master/src/kill_db_tables/kill_db_tables.php) to get a copy of my PHP utility,
-2. Copy/download the script and using your FTP client, upload the script to your Joomla site, in the same directory as your `configuration.php` file. Name the script like, f.i., `delete_tables.php`,
+2. Copy/download the script and using your FTP client (<Link to="/blog/winscp-synchronize-both">WinSCP</Link> f.i.), upload the script to your Joomla site, in the same directory as your `configuration.php` file. Name the script like, f.i., `delete_tables.php`,
 3. Open your internet browser and go to the URL of your website and access `delete_tables.php`, so f.i. `https://yoursite.com/delete_tables.php`
 4. You'll get a screen like below. In the text field, just start to type your prefix and you'll get a list of tables using that prefix. Once you're sure, just click on the `Kill selected tables` button.
 5. Finally, be sure to click on the `Remove this script` button since the script shouldn't stay there.

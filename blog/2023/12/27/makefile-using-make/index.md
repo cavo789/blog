@@ -22,7 +22,9 @@ Coding your own `makefile` has the enormous, **terribly powerful advantage** of 
 
 The presence of a file called `makefile` sends a clear message to anyone who comes to work on the project: *Hey, have a look here, you'll find all the commands you need*. And it's really easy to list existing commands (see my article <Link to="/blog/makefile-help">Linux Makefile - Adding a help screen</Link>).
 
-So, you can define an `up` command (you choose the name of the command) which will launch all the actions required to start the project; you could have `down` for just the opposite, `check` to check that the project is valid (e.g. launch static checks of the quality of your code), and so on.
+So, you can define an `up` command (you choose the name of the command) which will launch all the actions required to start the project; you could have `down` for just the opposite, `check` to check that the project is valid (e.g. launch static checks of the quality of your code, as in <Link to="/blog/python-qa">Python - Code Quality tools</Link>), and so on.
+
+*Once you're convinced, <Link to="/blog/makefile_tips">Makefile - Tutorial and Tips & Tricks</Link> collects everything I've learned since writing my first one.*
 
 <!-- truncate -->
 

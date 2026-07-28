@@ -36,7 +36,7 @@ As a reminder, the used Docker run command will always look like:
 - `docker run` to run a Docker image (*Oh? Really?*),
 - `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
 - `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
-- `-v "${PWD}":/project` to share your current folder with a folder called `/project` in the Docker container (use `${PWD}` if you are on Linux, use `%CD%` if you are on DOS),
+- `-v "${PWD}":/project` to <Link to="/blog/docker-volume">share your current folder</Link> with a folder called `/project` in the Docker container (use `${PWD}` if you are on Linux, use `%CD%` if you are on DOS),
 - `-w /project` to tell Docker that the current directory, in the container, will be the `/project` folder
 - then `jakzal/phpqa` which is the name of the Docker image to use (you can also specify a version like `python:3.9.18` if needed; see [https://hub.docker.com/_/python/tags](https://hub.docker.com/_/python/tags))
 
@@ -76,7 +76,7 @@ By running `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa co
 So, the tool detects that I'm referencing `spatie/laravel-db-snapshots` in my `composer.json` file but, in my codebase, the tool (in fact, the namespace added by the tool) isn't used at all so, yes, probably, I can remove that dependency.
 
 <AlertBox variant="caution">
-Such a tool can produce false positive; just make some checks before removing the dependency. The best solution here is, of course, to have plenty of unit tests so you can run them before and after the change and see if your code still works as expected.
+Such a tool can produce false positive; just make some checks before removing the dependency. The best solution here is, of course, to have plenty of <Link to="/blog/pest_tips">unit tests</Link> so you can run them before and after the change and see if your code still works as expected.
 
 </AlertBox>
 
@@ -110,6 +110,8 @@ This time, the command will be `docker run -it --rm -v "${PWD}":/project -w /pro
 
 As you can see, we can use a lot of tools using `jakzal/phpqa` in a zero-installation schema. That's really impressive. You can find a lot more tools than described in this article, just go to [Available tools](https://github.com/jakzal/phpqa?tab=readme-ov-file#available-tools) and see which ones can help you.
 
+Two natural next steps once you've picked your tools: run them **before** committing, thanks to <Link to="/blog/git-precommit">Git pre-commit hooks</Link>, and run them again in your CI, as described in <Link to="/blog/gitlab-docker-out-of-docker">GitLab - Running Docker-out-of-Docker in your CI</Link>.
+
 ## Change PHP versions
 
 Let's imagine your codebase is a legacy one (not written for PHP 8.3 but f.i. PHP 7.4).
@@ -118,7 +120,7 @@ An instruction like `docker run -it --rm -v "${PWD}":/project -w /project jakzal
 
 How to solve this? Really easy in fact. As you know, by using `docker run [...] jakzal/phpqa [...]` you're asking Docker to use the `latest` version of the image and that version will change. Every time the owner of the image publishes a newer version, that `latest` image is updated and perhaps, in a few months, it'll be PHP 8.4 by default.
 
-So, to solve our issue: we need to use a specific tag for PHP 7.4. Simply jump on [https://hub.docker.com/r/jakzal/phpqa/tags](https://hub.docker.com/r/jakzal/phpqa/tags) and type `7.4` in the `Filter Tags` area.
+So, to solve our issue: we need to use a specific tag for PHP 7.4. *And if the tools complain about your PHP settings rather than your code, see <Link to="/blog/docker-php-ini">Update php.ini when using a Docker image</Link>.* Simply jump on [https://hub.docker.com/r/jakzal/phpqa/tags](https://hub.docker.com/r/jakzal/phpqa/tags) and type `7.4` in the `Filter Tags` area.
 
 ![Tags](./images/tags.webp)
 

@@ -18,7 +18,7 @@ language: en
 This article shares a VBS script that scans every table in an MS Access database and exports a detailed field report to Excel — name, type, defined size, and the actual shortest/longest value found in the data — making it easy to spot oversized fields (e.g. a 255-char field that never holds more than 10 characters) worth shrinking for optimization.
 </TLDR>
 
-Years ago, I created a .vbs script that scans a MS Access database, loops through each table, and, for each one, gets the list of fields.
+Years ago, I created a .vbs script that scans a MS Access database, loops through each table, and, for each one, gets the list of fields. *In the same "audit an existing database" spirit, see also <Link to="/blog/vba-access-export">Export MS Access objects</Link> to get your forms, queries and modules out as plain text files.*
 
 For each field, a lot of information will be retrieved (non-exhaustive list): its name, size, type, ... and also the shortest and longest value size (for text and memo fields). For instance, if a text field is found, the script will retrieve its size (f.i. 255 chars max) and will examine all records in the table to find, for that field, the smallest size (f.i. 10) and the greatest one (f.i. 50). So, if the max size is 50 and the size has been set to 255, perhaps the MS Access developer can safely modify the max size from 255 to 50.
 
@@ -62,7 +62,7 @@ Once the process is finished, Excel will automatically open with something like 
 - Position: The position of that field in the structure of the table (is the first defined field, the second, ...)
 - Occurrences: How many times that specific `FieldName` is found in the entire database. If you've a lot of tables, perhaps the field called `CustomerID` is used in the `Customers` table and in the `Orders` table too so `Occurrences` will be set to 2 in this case.
 
-In a context of optimization:
+In a context of optimization (see also <Link to="/blog/msaccess-optimize">How to optimize an existing MS Access database</Link>):
 
 - Be sure not to use too large a field size. By default, MS Access suggests a size of 255 for text fields, but for a name or first name field, a size of 40 characters is enough.
 - Check the `LongestSize` property: if you see f.i. a size of 4 this means that you're probably storing a code (a ZipCode f.i. is max 4 digits in Belgium). If the `FieldSize` is set to 50, you know you can reduce that size to 4.

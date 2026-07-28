@@ -24,6 +24,8 @@ This article walks through installing Zsh and Oh My Zsh on Linux, then upgrading
 
 ZSH is a powerful alternative to Linux Bash offering a lot of features like auto-completion (I like this so much), plugins and even themes.
 
+*Once installed, three articles take it further: <Link to="/blog/powerlevel10k_sandbox">Customize your Linux prompt with Powerlevel10k</Link>, <Link to="/blog/modular-zsh-workflow">Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro</Link> to keep your `.zshrc` from becoming a monster, and <Link to="/blog/zsh-docker-functions">ZSH Functions - Customizing Your Shell for Docker Management</Link>.*
+
 The idea here is to empower your Linux console: improve the command line (f.i. new aliases out-of-the-box) and make the look and feel even better.
 
 I've been using [Oh My ZSH](https://ohmyz.sh/) for years; let's see how to install it, followed by discovering some features.

@@ -73,6 +73,8 @@ Here, we can see:
 
 Such a visualization tool greatly simplifies the understanding of a Docker architecture.
 
+*`compose-viz` gives you one fixed rendering. If you want to control exactly what the diagram shows, <Link to="/blog/docker-python-mermaid">Documentation as Code - Transform Your Infrastructure into Beautiful Diagrams with Python and Mermaid</Link> parses the same `compose.yaml` with a Python script you own, and <Link to="/blog/docker-diagram-as-code">Docker - Diagrams as code</Link> lists a dozen other diagram-as-code tools.*
+
 ## Docker config
 
 If like me you're using a lot of `.yml` files by running Docker and/or using environment variables in it; just run `docker compose config` to ask Docker to *render* (on the screen only) what it calls *Parse, resolve and render compose file in canonical format* i.e. it will merge all your `.yml` in one string and resolve variables.

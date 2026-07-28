@@ -22,6 +22,8 @@ When you're working on a large codebase, sooner or later you'll find some annota
 
 Personally, I sometimes work on code and comment on the call to a particular method or block.  Often during a debugging session (for example on Linux Bash scripts) but, danger, don't forget to remove the comments and return the code to its original state. In that situation, I add a comment like `// TEMPORARY` just before the first commented line.
 
+*A dashboard helps you remember; a hook stops you. <Link to="/blog/git-precommit">Git - pre-commit-hooks</Link> can refuse a commit that still contains a `TEMPORARY` marker.*
+
 The idea behind the `Todo Tree` vscode addon (you can find the download page [https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)) is to summarize such annotations and display a dashboard with all `TODOS`, `TOFIX`, ... and your own too.
 
 <!-- truncate -->
@@ -35,3 +37,5 @@ Thanks to this summary, you'll never forget your todos, temporary hacks, things 
 I recommend reading the [https://dev.to/koustav/how-a-vs-code-extension-todo-tree-can-make-your-coding-easier-todo-tree-configuration-and-use-cases-11kc](https://dev.to/koustav/how-a-vs-code-extension-todo-tree-can-make-your-coding-easier-todo-tree-configuration-and-use-cases-11kc) article to learn more about it.
 
 Really nice addon to never forget your TODOs, TOFIX, TEMPORARY, ... annotations.
+
+If you like the idea of surfacing what your editor normally keeps out of sight, have a look at <Link to="/blog/vscode-errorlens">Error Lens</Link> too: it does the same for errors and warnings, straight in the editing area. And once you've collected a few must-have addons, <Link to="/blog/vscode-export-list-of-extensions">exporting your list of extensions</Link> makes them easy to reinstall on your next machine.

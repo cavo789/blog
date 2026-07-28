@@ -64,7 +64,7 @@ Instead of updating the file manually, you can obtain the exact same results by 
 
 ### Create the new branch on the remote automatically
 
-When working on a new feature, most probably you'll first do `git checkout -b myNewFeature` to create the `myNewFeature` branch on your computer.
+When working on a new feature, most probably you'll first do `git checkout -b myNewFeature` to create the `myNewFeature` branch on your computer. *If you often need two branches checked out at the same time, have a look at <Link to="/blog/git-worktree">git worktree</Link>.*
 
 Then you'll do some coding works and the time will come to push towards git using f.i. `git add . ; git commit -m "wip" ; git push` but it'll not directly work.
 
@@ -97,7 +97,7 @@ At work, we're using Git on a very large codebase and thus, we're creating branc
 
 By running `git branch --list --all` (or, shortly, `git branch -a`), git returns the list of branches in an alphabetical order which really isn't very useful.
 
-It would be better to sort the list on the last commit made in the branch so, at the top of the list, we've the last used branches and, at the bottom, inactive ones.
+It would be better to sort the list on the last commit made in the branch so, at the top of the list, we've the last used branches and, at the bottom, inactive ones. *I've pushed that idea further with a shell hook displaying them automatically: <Link to="/blog/git-branches-gst">Showing the last 3 updated branches when you jump in a git repo</Link>.*
 
 To do this, just add the block below to your `~/.gitconfig` file:
 
@@ -143,7 +143,7 @@ Even if you've cloned a repository using `git clone https://...` you can force, 
 
 So, for instance, if you've cloned your project using `git clone https://github.com/you/your_repo.git` (`https` thus), every time you'll push to it, you'll perhaps be prompted to provide your login and password. Really painful.
 
-But, if you already have created a SSH key for your Github profile, then, you can stop to use https and force SSH by adding the two lines below in your `~/.gitconfig`:
+But, if you already have <Link to="/blog/github-connect-using-ssh">created a SSH key for your Github profile</Link>, then, you can stop to use https and force SSH by adding the two lines below in your `~/.gitconfig`:
 
 <Snippet filename="~/.gitconfig" source="./files/.gitconfig.part8" />
 

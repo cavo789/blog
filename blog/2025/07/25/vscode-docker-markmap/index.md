@@ -24,6 +24,8 @@ In 2023, I wrote this <Link to="/blog/docker-mindmap">Build a mind map using Doc
 
 This time, I would like to go one step further and make it more attractive.
 
+*Two other ways to turn text into a diagram on this blog: <Link to="/blog/docker-python-mermaid">generating Mermaid from a Python script</Link> and <Link to="/blog/json-crack">rendering a JSON file as a mind map</Link>.*
+
 <!-- truncate -->
 
 Let's start by the beginning: please start VSCode, create a new file. Because we'll do a little more than this, let's create a new folder: `mkdir -p /tmp/markmap && cd $_`.

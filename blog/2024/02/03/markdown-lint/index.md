@@ -26,6 +26,8 @@ There is a tool for this: Markdown lint and, a Docker image `peterdavehello/mark
 
 Let's learn how to use it.
 
+*Like every linter, it's most useful when you don't have to think about it: <Link to="/blog/git-precommit">Git - pre-commit-hooks</Link> lists a `markdownlint` hook that runs on every commit.*
+
 <!-- truncate -->
 
 By running `docker run --rm -v .:/md peterdavehello/markdownlint markdownlint .` you'll scan your current folder (recursively), search for any Markdown files and get the list of errors if any.

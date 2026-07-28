@@ -20,6 +20,8 @@ This article shows Quarto's `{{< include >}}` short code, which lets you split a
 
 Using the Quarto `includes` short code, writing a long document can easily be broken down into several smaller ones.
 
+*`includes` splits a document into fixed chunks. When the repeated part is the same *structure* filled with different values, <Link to="/blog/quarto-mustache">Using Mustache templating with Quarto</Link> and <Link to="/blog/quarto-project-variables">Using variables from external file in your Quarto project</Link> are the right tools.*
+
 Imagine the following `main.qmd` file:
 
 <Snippet filename="main.qmd" source="./files/main.qmd" />

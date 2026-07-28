@@ -39,7 +39,7 @@ This blog post is a deep dive into the architecture, the technical choices, and 
 
 Before I dive into the architectural depths, I want to show you exactly how simple it is to turn a static document into an engineered one. Most people think Doc-as-Code is just "saving Markdown in Git." It’s not. It’s about **runtime execution.**
 
-Here is a concrete, ready-to-use setup. This Dockerfile creates an environment where Quarto can "talk" to custom Python scripts to generate Mermaid diagrams on the fly.
+Here is a concrete, ready-to-use setup. This Dockerfile creates an environment where Quarto can "talk" to custom Python scripts to generate Mermaid diagrams on the fly. *The Python-to-Mermaid part alone is detailed in <Link to="/blog/docker-python-mermaid">Documentation as Code - Transform Your Infrastructure into Beautiful Diagrams with Python and Mermaid</Link>; here we plug it into Quarto.*
 
 ### 1. The Orchestrator (compose.yaml)
 
@@ -53,7 +53,7 @@ We install Quarto and configure the `PYTHONPATH` so our document can import our 
 
 ### 3. The Experience (.devcontainer/devcontainer.json)
 
-This is where the magic happens. We tell VS Code which extensions to install and how to behave.
+This is where the magic happens. We tell VS Code which extensions to install and how to behave. *<Link to="/blog/quarto-devcontainer">Make your Quarto project Devcontainer-Ready — No More Setup Headaches</Link> goes through that file line by line.*
 
 <Snippet filename=".devcontainer/devcontainer.json" source="./files/.devcontainer/devcontainer.json" defaultOpen={false} />
 
@@ -141,7 +141,7 @@ In my 50-project ecosystem, I took this "Lab" concept and turned it into an indu
 
 Most documentation setups start with a "minimal" image. That’s a mistake. "Minimal" means "slow startup." I went the opposite way. My image is a 2.5GB beast, but it follows a **"Zero-Wait" philosophy**.
 
-I baked everything in: Quarto, Python, Node.js, Mermaid-CLI, and every linter known to man. When a writer opens a project in a VS Code DevContainer, they don't wait for `apt-get` or `pip install`. The environment is alive and ready the moment the window opens.
+I baked everything in: Quarto, Python, Node.js, Mermaid-CLI, and every linter known to man. When a writer opens a project in a VS Code DevContainer, they don't wait for `apt-get` or `pip install`. The environment is alive and ready the moment the window opens. If you want the beginner-friendly version of this idea, see <Link to="/blog/quarto-devcontainer">Make your Quarto project Devcontainer-Ready</Link> — this ecosystem is that same principle taken to 50 projects.
 
 ### Doc-as-Code: The Python AST Magic
 

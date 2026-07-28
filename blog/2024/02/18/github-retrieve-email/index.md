@@ -59,3 +59,7 @@ And once added:
 ![Once the .patch suffix has been added](./images/after.webp)
 
 As you can see, the email address associated with the GitHub account used to send the commit is now displayed.
+
+<AlertBox variant="tip" title="The other side of the coin">
+This works because your own commits carry your email too. If you'd rather not publish your professional address on your side projects, <Link to="/blog/git-config">Git - Some tips for your .gitconfig file</Link> shows how to use a different identity per folder.
+</AlertBox>

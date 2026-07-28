@@ -41,3 +41,5 @@ Here is the output of the script when launched:
 I've a few containers running on my machine, a lot are `healthy` meaning that they're running and without any issue, I've two containers in a `null` state i.e. they are sleeping and none are stopped due to an error.
 
 Don't hesitate to fine-tune the script to fit your needs.
+
+This script gives you a snapshot, on demand. If you'd rather be **notified** when a service goes down, have a look at <Link to="/blog/docker_uptime_kuma">Self-hosted monitoring tool</Link>. And when a container is up but still unreachable from another one, <Link to="/blog/docker-networking-troubleshooting">Troubleshooting for Docker containers - Accessing the other one</Link> walks through the diagnosis, layer by layer.

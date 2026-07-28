@@ -22,6 +22,8 @@ You've got a PHP codebase and you wish — hop, hop, two shakes of a lamb's tail
 
 Simple! [phpDocumentor](https://docs.phpdoc.org/) does it for you, and since a Docker image exists, you can do almost all of this by running just one command.
 
+*Bash has no phpDocumentor equivalent, which is why I wrote my own; see <Link to="/blog/linux-generate-documentation-from-bash-scripts">Linux - Generate documentation from Bash scripts</Link>. And for documentation that isn't extracted from code at all, there's <Link to="/blog/quarto-industrialisation">Quarto - How I Built a Self-Documenting Ecosystem for 50+ Projects</Link>.*
+
 <!-- truncate -->
 
 ## Some preparation work

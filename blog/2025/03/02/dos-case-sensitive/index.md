@@ -44,3 +44,5 @@ If you don't believe me:
 ![Case sensitivity has been enabled](./images/case_sensitivity_enabled.webp)
 
 To revert your change, run `fsutil.exe file setCaseSensitiveInfo . disable` but, first, you'll have to remove at least two files because DOS will prevent you from disabling the feature if this would create conflicts.
+
+*Case sensitivity is not the only Windows/Linux mismatch that will bite you when the same repository is used on both systems; line endings are another one, and <Link to="/blog/git-config">Git - Some tips for your .gitconfig file</Link> shows the setting that prevents git from silently rewriting them.*

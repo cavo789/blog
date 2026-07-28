@@ -41,7 +41,7 @@ Now, we'll learn to do the same for your own Docusaurus instance. Ladies and gen
 
 ## Create a dummy blog if needed
 
-*If you already have a Docusaurus installation on your computer, just skip this chapter.*
+*If you already have a Docusaurus installation on your computer, just skip this chapter. If you don't, <Link to="/blog/docusaurus-docker">Running Docusaurus with Docker</Link> covers the development setup that comes before this one.*
 
 In this part, I'll suppose you don't have a Docusaurus installation yet, so we'll create a dummy site with a very few, basic, blog posts.
 

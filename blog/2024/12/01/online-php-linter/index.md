@@ -44,6 +44,8 @@ Much better.
 
 Note: there are other tools like for instance [https://codebeautify.org/php-beautifier](https://codebeautify.org/php-beautifier).
 
+An online tool is perfect for a one-off paste. For your own projects, wire the formatter into your workflow instead: <Link to="/blog/php-jakzal-phpqa">jakzal/phpqa</Link> gives you `php-cs-fixer` and `phpcbf` without installing anything, and <Link to="/blog/git-precommit">Git - pre-commit-hooks</Link> runs them before each commit.
+
 ## If you're a PHP developer
 
 ... then make sure to use tools like [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer) or [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) or many others. See also my <Link to="/blog/php-jakzal-phpqa">Docker image that provides static analysis tools for PHP</Link>.

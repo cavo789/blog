@@ -29,7 +29,7 @@ So, for example, in your Linux console, open any existing folder like `cd ~/repo
 
 <!-- truncate -->
 
-So, yes, it's possible to call any Windows program (like the calculator (`calc.exe`)) by typing its name followed by `.exe`. If the program is in the `PATH` it will start.
+So, yes, it's possible to call any Windows program (like the calculator (`calc.exe`)) by typing its name followed by `.exe`. If the program is in the `PATH` it will start. *You can go one step further and let Windows pick the right program for a given file type; see <Link to="/blog/wsl-powershell">Starting the default associated Windows program on WSL</Link>.*
 
 The final `.` means *current folder* so `explorer.exe .` will open the current folder in Windows Explorer.
 

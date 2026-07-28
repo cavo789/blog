@@ -27,6 +27,8 @@ In a <Link to="/blog/docker-python-devcontainer">previous article</Link>, I've p
 
 Today's challenge is easy: create a Python environment on my Windows machine without having to install Python, of course, and without having to configure VSCode. Just run some magic and, voilà, as a Python newcomer, I can start coding without first losing time configuring my computer.
 
+*As soon as you write real code in it, add the tools from <Link to="/blog/python-qa">Python - Code Quality tools</Link>: they run inside the container too, so your Windows machine stays untouched.*
+
 <!-- truncate -->
 
 So, in the <Link to="/blog/docker-python-devcontainer">Docker - Python devcontainer</Link> blog post, I've provided a few files and we'll reuse them in this article.

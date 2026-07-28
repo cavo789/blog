@@ -18,7 +18,7 @@ language: en
 This article shows how to convert a Markdown file into a PowerPoint `.pptx` deck with `quarto render slides.md --to pptx`, where level-2 headings become slide titles and a `---` line starts a new section — noting the same source can instead be rendered to an online reveal.js slideshow with `--to revealjs`.
 </TLDR>
 
-Quarto can convert a markdown file to a revealjs HTML slideshow but can also create a `pptx` file that you can open and play in Microsoft PowerPoint.
+Quarto can convert a markdown file to <Link to="/blog/quarto-revealjs-tips">a revealjs HTML slideshow</Link> but can also create a `pptx` file that you can open and play in Microsoft PowerPoint.
 
 In this article, we'll create a `pptx` file from our markdown documentation.
 

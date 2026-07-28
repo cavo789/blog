@@ -109,7 +109,7 @@ At the end, the script will save the file on disk as `employees_merged.csv`.
 
 As we can see in the image, we do have a merge, i.e., our 10 employees (from 0 to 9), and if an employee was present in a file (like the one added in 2023, called `John John`), we can see their salary in our result.
 
-And, opened using Excel, here is our final result:
+And, opened using Excel, here is our final result (and if you need to paste that result in a Markdown document, my <Link to="/blog/markdown-csv2md">CSV to Markdown table</Link> converter does it in one click):
 
 ![Merged employees; in Excel](./images/excel.webp)
 
@@ -124,3 +124,5 @@ How do you deal with cases where a record has been added? You'd have to make an 
 Now let's imagine CSV files that aren't 10 rows long but are each over a million rows long. Loading 5 files (2020 to 2024) means loading more than 5 million rows and having a `sheet` which will contain the merge and which will also contain at least 1 million rows.
 
 Imagine the effort involved in opening the files and waiting for Excel to recalculate its formulas. The horror!
+
+At that scale, the real answer is usually to stop juggling files altogether and put the data in a database, then let Excel query it; see <Link to="/blog/vba-excel-sql-server">MS Excel - Connect to a SQL Server database, run a query and get the results</Link>.

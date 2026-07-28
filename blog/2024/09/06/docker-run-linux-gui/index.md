@@ -22,7 +22,7 @@ In my <Link to="/blog/docker-gui-in-browser">previous post</Link>, I've illustra
 
 <AlertBox variant="info" title="`GUI` stands for `Graphical User Interface`" />
 
-So, using Docker, we can start Firefox or GIMP or even ... [Doom 2](https://hub.docker.com/r/classiccontainers/doom2).
+So, using Docker, we can start Firefox or GIMP or even ... [Doom 2](https://hub.docker.com/r/classiccontainers/doom2). And if a single application isn't enough, <Link to="/blog/docker-lubuntu">Start lubuntu Desktop in Docker</Link> gives you an entire desktop.
 
 In this blog post, we'll create our own xeyes Docker image, then play with Firefox and Gimp.
 

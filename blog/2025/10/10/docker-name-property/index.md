@@ -42,6 +42,8 @@ For instance:
 
 And that's all.
 
+*Another way to keep a long list of containers manageable, this time from the terminal rather than from Docker Desktop: the interactive `fzf`-based functions of <Link to="/blog/zsh-docker-functions">ZSH Functions - Customizing Your Shell for Docker Management</Link>.*
+
 Now, by running `docker compose up --build --detach`, you'll see your containers will be grouped in `tools` (only visible in the Docker Desktop Windows software; not using the `docker ps` command).
 
 Do the same for every tool you want, if there is a `compose.yaml` file, just add the `name: tools` top-level entry.

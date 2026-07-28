@@ -18,7 +18,9 @@ language: en
 This is a large reference of ready-to-use `.htaccess` snippets: Content Security Policy headers, blocking files by name/extension/hidden-dot-prefix, forcing inline display or forced download, forcing HTTPS+www with HSTS preload, maintenance mode, gzip compression and expires headers, IP-based access control, clickjacking/MIME-sniffing protection, disabling script execution or directory listing, password-protecting files/folders, various redirect patterns, and blocking search-engine indexing of a folder.
 </TLDR>
 
-Some tips and tricks for your .htaccess file (Apache)
+Some tips and tricks for your .htaccess file (Apache).
+
+*These directives work on any Apache server, including the throw-away one you can start locally in seconds with <Link to="/blog/docker-html-site">Running an HTML site in seconds using Docker</Link> — a convenient way to test a redirect rule before pushing it to production.*
 
 <!-- truncate -->
 
@@ -111,6 +113,8 @@ Enable ETAGs
 <Snippet filename=".htaccess" source="./files/.part13.htaccess" />
 
 ## Protection
+
+*Hardening `.htaccess` protects you going forward; if you suspect the site has **already** been compromised, start with <Link to="/blog/aesecure-quickscan">aeSecure - QuickScan - Free viruses scanner</Link>.*
 
 ### Deny All Access
 

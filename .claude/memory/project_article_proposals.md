@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 708860e8-3efc-4d08-a254-45060a383296
-  modified: 2026-07-27T16:56:26.406Z
+  modified: 2026-07-27T18:04:15.921Z
 ---
 
 Proposals generated 2026-06-08 after full blog analysis, statuses refreshed 2026-07-27. See [[project-blog-coverage]] for what's already written.
@@ -133,6 +133,136 @@ reviewer) — this series is lighter-weight, multi-language, on-demand.
 
 - Terminal-only companion to the already-published `docusaurus-eli5-snippet-tooltips` component
 - **Priority: medium** — still open as of 2026-07-27, only one not yet drafted from this round
+
+## Cross-cluster "bridge" articles (proposed + drafted 2026-07-27)
+
+Christophe asked to analyze the whole blog and identify new articles that would bridge two or more
+currently-disconnected topic clusters, specifically to create inter-linking opportunities. First round
+verified via grep (no false gaps): AI×VBA/Access/Excel, AI×doc-as-code, AI×GitHub Actions,
+security×pre-commit, Oracle×doc-as-code. Christophe picked ai-diagram + ai-secrets from that round,
+then asked for a second round along different axes: Docker+Python+Data, Docker+PHP ("an amazing image
+I haven't covered"), Security+Python — all three also verified via grep before proposing, all picked.
+
+### [x] ai-diagram <description>|<file>: plain-English or config file → Mermaid diagram
+
+- Series member (Ollama daily-use functions). Bridges ai × doc-as-code
+- Verified `/blog/docker-python-mermaid` is pure Python/rule-based, zero AI, before proposing — genuine
+  gap, not overlap
+- Draft written: `/opt/docusaurus/.unpublished/ollama-ai-diagram/index.md`
+
+### [x] ai-secrets: hardcoded credential/API key detection in staged changes
+
+- Series member. Regex pre-filter + LLM contextual judgment (real leak vs. safe `getenv()` pattern).
+  Bridges security × ai/pre-commit; doubles the blog's `security` mainTag (was 1 post total)
+- Hard-links to `/blog/ollama-ai-review` — must publish after it
+- Draft written: `/opt/docusaurus/.unpublished/ollama-ai-secrets/index.md`
+
+### [x] DuckDB: query JSON/CSV files with SQL, no database required
+
+- **Not** in the Ollama series — no LLM involved. Bridges docker × python × data
+- Hard-links to `/blog/docling` and `/blog/ollama-ai-data` (twice) — must publish after both
+- CLI binary download URL/version verified for real via the GitHub releases API, not guessed
+- Draft written: `/opt/docusaurus/.unpublished/duckdb-json-csv/index.md`
+
+### [x] Xdebug in Docker + VSCode: step-through PHP debugging
+
+- **Not** in the Ollama series. Bridges docker × php × vscode — the surprise gap: despite a large
+  existing Docker+PHP+VSCode cluster (`php-devcontainer`, `vscode-devcontainer`, `frankenphp-...`),
+  verified via grep that no article covered interactive step-debugging before this
+- Zero draft dependencies — freely placeable in the publish order
+- Draft written: `/opt/docusaurus/.unpublished/xdebug-docker-vscode/index.md`
+
+### [x] Bandit + pip-audit: Python security tooling in Docker
+
+- **Not** in the Ollama series. Bridges security × python, Python-side sibling of
+  `/blog/php-jakzal-phpqa`. Verified via grep that neither Bandit nor pip-audit/safety were mentioned
+  anywhere on the blog before proposing
+- Hard-links to `/blog/docling`
+- Draft written: `/opt/docusaurus/.unpublished/python-security-bandit-audit/index.md`
+
+## "Daily-workflow Docker images" mini-series (proposed + drafted 2026-07-27)
+
+Christophe asked for Docker images beyond what's already covered that fit his daily Docker-heavy
+workflow. Shortlisted lazydocker, Portainer and Traefik as the strongest fits (also considered and
+rejected for now: dive, Trivy, Vaultwarden, SearXNG, code-server — no drafts started for those).
+
+### [x] lazydocker: containerized TUI dashboard for Docker
+
+- Complements the fzf-based `dex`/`dstop`/`dlogs` functions from `zsh-docker-functions` — "look at
+  everything" vs. "act on one thing I already picked"
+- Own Dockerfile (alpine + docker-cli + pinned-version binary download) + global wrapper script
+  mounting `$PWD` so project detection works from any folder
+- Draft written: `/opt/docusaurus/.unpublished/lazydocker/index.md` — first of the 3-part chain, others
+  link back to it
+
+### [x] portainer: official web dashboard, browser instead of terminal
+
+- Same Docker-socket data as lazydocker, but reachable from any device on the LAN (or a teammate)
+- Official `portainer/portainer-ce:lts` image, no custom build needed
+- Draft written: `/opt/docusaurus/.unpublished/portainer/index.md` — hard-links to `lazydocker` and to
+  the still-unpublished `anythingllm-chat-with-your-docs`
+
+### [x] traefik: reverse proxy by Docker labels, demystified
+
+- Christophe's own framing: never really grasped Traefik before this. Built around 4 core concepts
+  (entrypoints, providers, routers, services) rather than a copy-paste recipe
+- Routes to Portainer and Open WebUI (from `ollama-installation`) using real hostnames + mkcert-issued
+  local TLS instead of raw ports
+- Draft written: `/opt/docusaurus/.unpublished/traefik/index.md` — last of the 3-part chain, hard-links
+  to both `lazydocker` and `portainer`
+
+## VSCode workflow optimization (proposed 2026-07-27, refined and drafted same day)
+
+Christophe uses VSCode 7 days a week, all day — asked what's missing given 18 already-published VSCode
+articles ([[project-blog-coverage]] now has the full list). All five surviving ideas are now written as
+drafts in `.unpublished/`; two ideas he explicitly rejected are recorded so they don't get re-proposed.
+
+### [x] GitLens: inline blame, file history, branch comparison
+
+- Confirmed biggest gap — no Git-in-editor article despite strong existing Git content (`git-worktree`,
+  `git-delta`, `git-bisect` draft)
+- Draft written: `/opt/docusaurus/.unpublished/vscode-gitlens/index.md`
+
+### [x] User Snippets — documents the real file, not a hypothetical
+
+- Walks through Christophe's actual `.vscode/markdown.code-snippets` (referenced live via
+  `<Snippet source=".vscode/markdown.code-snippets">`, not copied) — flags two stale entries,
+  `CoreConcept`/`HighlyImportant`, that predate the `AlertBox`-variant consolidation ([[project-components]])
+- Draft written: `/opt/docusaurus/.unpublished/vscode-snippets-for-docusaurus/index.md`
+
+### [x] VSCode Profiles — documents Christophe's real dual-profile setup
+
+- His actual daily setup: default profile forces a **dark** theme; a second profile named
+  **"DevContainer"** forces **light**, and has **Claude Code installed only in that profile**
+- Draft written: `/opt/docusaurus/.unpublished/vscode-profiles/index.md`
+
+### [x] Multi-root workspaces (`.code-workspace`) + git worktree
+
+- Follow-up to the published `git-worktree` article's "open a new window per worktree" ending
+- Draft written: `/opt/docusaurus/.unpublished/vscode-multi-root-git-worktree/index.md`
+
+### [x] Extension Bisect
+
+- Built-in `Help: Start Extension Bisect`; deliberate callback to the still-unpublished `git-bisect`
+  draft (same binary-search idea, different target) — hard `<Link>` dependency, `git-bisect` must
+  publish first, see `plan.md`
+- Draft written: `/opt/docusaurus/.unpublished/vscode-extension-bisect/index.md`
+
+### [~] Settings Sync — discarded
+
+- Christophe: "pas besoin" (2026-07-27)
+
+### [~] Tasks (`tasks.json`) — discarded
+
+- Christophe: "pas besoin" (2026-07-27)
+
+### Correction applied to a published article: `ollama-installation`'s Continue section (2026-07-27)
+
+- Not a new proposal — the **published** `/blog/ollama-installation` covers Continue+Ollama, Christophe
+  asked to verify and then fix it. Applied: config migrated from deprecated `.continue/config.json` to
+  `~/.continue/config.yaml`, an `AlertBox` added noting Continue's acquisition by Cursor and frozen
+  repo status, model recommendation swapped from `gemma2:27b` to his actual current `qwen3-coder:30b`,
+  `updates:` frontmatter entry added. Full details in [[project-blog-coverage]].
 
 ### [ ] SSH ProxyJump and tunnels: reach internal services via bastion
 

@@ -22,7 +22,7 @@ Have you ever deleted a website from your FTP client? It's easy, just select the
 
 Easy, simple and ... so slow. It takes ages to delete files and folders. Several dozen minutes! Ouch.
 
-If you've an SSH connection to your web server and if you're comfortable with it; you can `rm -rf` the folder and it'll be done in seconds.
+If you've <Link to="/blog/connect-using-ssh-to-your-hosting-server">an SSH connection to your web server</Link> and if you're comfortable with it; you can `rm -rf` the folder and it'll be done in seconds.
 
 But what if you don't have SSH or fear to make errors?
 
@@ -44,4 +44,6 @@ Be really sure this is what you want
 The script will then start immediately and will remove everything without asking confirmation nor backup. Just killing files and folders.
 
 At the end of the process (i.e. in just a few seconds), the folder will be completely empty.
+
+*And, exactly like <Link to="/blog/aesecure-quickscan">the QuickScan scanner</Link>, remember to delete `erase.php` from your server as soon as you're done: a script able to wipe a folder has no business staying reachable from the Internet.*
 </AlertBox>

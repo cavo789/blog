@@ -28,3 +28,9 @@ I only understood the origin of the problem by looking at the window caption: Pu
 The solution has been provided by @makurison on [https://stackoverflow.com/questions/57072011/delete-putty-default-settings-modification-to-original](https://stackoverflow.com/questions/57072011/delete-putty-default-settings-modification-to-original).
 
 Simply start `regedit.exe`, search for the key `Computer\HKEY_CURRENT_USER\SOFTWARE\SimonTatham\PuTTY\Sessions` and, there, remove the entry called `Default%20Settings`.
+
+*While you're at it: <Link to="/blog/keepass-overriding-url">KeePass - Overriding the URL field</Link> shows how to launch a PuTTY session straight from a KeePass entry, credentials included — and <Link to="/blog/windows-terminal-ssh-profile">Windows Terminal - Adding a SSH profile</Link> does the same without PuTTY at all.*
+
+<AlertBox variant="tip" title="Tired of session/password hassles with Putty?">
+If you're also fighting with a forgotten stored password, see <Link to="/blog/winscp-retrieve-password">WinSCP - Retrieve a stored password</Link>. Or better, switch to key-based authentication once and for all: <Link to="/blog/linux-ssh-scp">SSH - Launch a terminal on your session without having to authenticate yourself</Link>.
+</AlertBox>

@@ -23,6 +23,8 @@ This article shows how to RDP into a WSL2 Ubuntu instance: installing and starti
 
 When WSLg is enabled, it's possible to access the graphical user interface of your Linux distribution (in my case, it's Ubuntu).
 
+*This gives you the **whole desktop** of your WSL instance. Two other approaches exist for graphical Linux on Windows: <Link to="/blog/docker-run-linux-gui">running a single application from a container</Link> and <Link to="/blog/docker-lubuntu">starting a full lubuntu desktop in Docker</Link>. And for files only, <Link to="/blog/wsl-windows-explorer">Open your Linux folder in Windows Explorer</Link> is far lighter than an RDP session.*
+
 If you don't have `xrdp` yet, you can install it by running:
 
 <Terminal typewriter>

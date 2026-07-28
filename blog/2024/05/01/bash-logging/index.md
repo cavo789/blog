@@ -22,6 +22,8 @@ This article shares a reusable `log.sh` Bash library that adds logging to any sc
 
 When you write Bash scripts and certainly when you foresee running them in a cron, you should implement a logfile. Every action fired by your script should be logged somewhere so you can start the script in a non-interactive mode and in case of need, consult the last logfile.
 
+*Logging becomes indispensable as soon as your script runs <Link to="/blog/bash-parallel-task">several jobs in parallel</Link>: the console output of ten concurrent tasks is unreadable, a timestamped logfile is not.*
+
 Below is a script I've developed in the form of a library, which means you can easily include it in your existing code without having to change anything.
 
 You just need to include the file in your script (i.e. add a `source log.sh` line) then here and there foresee a `log::write "Something to log"`. Easy no?

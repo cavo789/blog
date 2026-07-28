@@ -1,0 +1,6 @@
+{
+  "gitlens.currentLine.enabled": true,
+  "gitlens.codeLens.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.views.commits.files.layout": "tree"
+}

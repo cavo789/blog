@@ -23,9 +23,9 @@ This article provides a comprehensive introduction to unit testing Bash scripts 
 
 Like all command-line developers, I write Linux Bash scripts.  Like any programmer, I'm supposed to write unit tests. Well, I have to admit that I rarely write them.
 
-Some time ago, I wrote a set of Bash scripts that make up a library of functions (just like a framework) and here, the interest in having unit tests is even greater since these functions are supposed to be stable and can be used as foundations for more advanced scripts.
+Some time ago, I wrote a set of Bash scripts that make up a library of functions (just like a framework) and here, the interest in having unit tests is even greater since these functions are supposed to be stable and can be used as foundations for more advanced scripts. *Two habits that make such a library testable in the first place: <Link to="/blog/linux-bash-too-many-function-parameters">keeping the number of function parameters small</Link> and <Link to="/blog/linux-generate-documentation-from-bash-scripts">documenting each function with a doc block</Link>.*
 
-In this article, we look at how to write unit tests for Bash scripts.
+In this article, we look at how to write unit tests for Bash scripts. If you're after the PHP equivalent, see <Link to="/blog/pest_tips">Write PHP unit tests using Pest</Link>; for functional/end-to-end testing rather than unit tests, I've also covered <Link to="/blog/tags/behat">Behat</Link>, <Link to="/blog/cypress">Cypress</Link> and <Link to="/blog/pest-functional-testing">Pest v4's browser testing</Link>.
 
 <!-- truncate -->
 

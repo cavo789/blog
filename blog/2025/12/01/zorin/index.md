@@ -23,6 +23,8 @@ Like everyone else, I have an old computer and with Windows 10 support coming to
 
 Zorin OS is a Linux distribution based on Ubuntu that targets users switching from Windows or macOS, with a desktop environment very similar to Windows.
 
+*Not ready to repurpose a whole machine? You can get a feel for a Linux desktop from inside Windows: <Link to="/blog/docker-lubuntu">Start lubuntu Desktop in Docker</Link>. And if you just want the command line, <Link to="/blog/ubuntu-install">Ubuntu - Install from scratch</Link> covers the WSL route.*
+
 <!-- truncate -->
 
 Zorin can be [downloaded](https://zorin.com/os/download/) for free (i.e. the Core edition or the `Education` one). If you want to support developers or need additional features, you can download the Pro edition (less than 50€ incl. sales tax end of 2025).

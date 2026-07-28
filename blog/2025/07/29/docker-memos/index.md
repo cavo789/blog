@@ -38,7 +38,7 @@ There are a lot of applications but, because I really need one simple and fast (
 
 ## Let's install memos
 
-This time, I will not suggest to use the temporary folder since we'll need to keep track of our notes, pasted images, ... on our disk during the next couple of days, weeks or months.
+This time, I will not suggest to use the temporary folder since we'll need to keep track of our notes, pasted images, ... on our disk during the next couple of days, weeks or months. *This is done with a <Link to="/blog/docker-volume">Docker volume</Link>: the container can be destroyed and recreated, your notes stay on your disk.*
 
 So, please run `mkdir -p  ~/tools/memos && cd $_` to create a folder in your home directory and jump in it.
 
@@ -161,3 +161,5 @@ And it's all 100% free!
 ## More info
 
 Please refer to the official [https://www.usememos.com](https://www.usememos.com) site to get more info.
+
+*Two other self-hosted tools running next to memos on my machine: <Link to="/blog/heimdall-dashboard">Heimdall</Link>, the dashboard from which I open all of them, and <Link to="/blog/docker_uptime_kuma">Uptime Kuma</Link> for monitoring.*

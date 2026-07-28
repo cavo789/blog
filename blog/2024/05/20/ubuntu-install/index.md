@@ -116,5 +116,9 @@ As a very last step, run the **Software Updater** application to check for any a
 - [Thunderbird](https://snapcraft.io/thunderbird) for your email client (`sudo snap install thunderbird`),
 - [LibreOffice](https://snapcraft.io/libreoffice) to create documents, spreadsheets or slideshows (`sudo snap install libreoffice`),
 - [Visual Studio Code](https://snapcraft.io/code) to start coding (`sudo snap install code --classic`),
-- [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository) to work with containers,
+- [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository) to work with containers (see <Link to="/blog/install-docker">Install Docker and play with PHP</Link>),
 - [Gimp](https://snapcraft.io/gimp) to edit images (`sudo snap install gimp`),
+
+And the very first thing I install on any fresh Linux, before anything else: <Link to="/blog/zsh-install">Oh-My-ZSH</Link>. Working in `bash` after having tasted ZSH autocompletion is painful.
+
+*Ubuntu isn't the only candidate for an old PC; I've also had a look at <Link to="/blog/zorin">Zorin</Link>, which is Ubuntu-based but ships a Windows-like desktop.*

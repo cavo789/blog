@@ -80,7 +80,7 @@ Let's try two things:
 
 ### We'll read a Docker compose.yaml and create a mindmap
 
-The script below will read a `compose.yaml` file and generate a visual mindmap.
+The script below will read a `compose.yaml` file and generate a visual mindmap. *There is also a ready-made tool for this, see <Link to="/blog/docker-compose-viz">How to generate a graph from compose.yaml</Link>, but writing the script ourselves gives us total freedom on the output.*
 
 <Snippet filename="mindmap.py" source="./files/scripts/mindmap.py" defaultOpen={false} />
 
@@ -143,3 +143,5 @@ This time a Pie chart:
 ## Conclusion
 
 By combining the parsing power of Python with the rendering elegance of Mermaid, we've turned static documentation into a dynamic asset.
+
+If you like the *Documentation as Code* approach, have a look at two other articles of mine going in the same direction: <Link to="/blog/docker-diagram-as-code">Docker - Diagrams as code</Link> and <Link to="/blog/python-pydot">Python - Generate flows using pydot</Link>.

@@ -47,6 +47,8 @@ Hello World!
 
 And voilà, my first Python script has been written. Remember the old days, before Docker, how many hours and how much reading you needed to be able to run your first script? **Here, it did not take me five minutes to get up and running.**
 
+*Once past "Hello World", two articles take this further: <Link to="/blog/docker-python-devcontainer">Docker - Python devcontainer</Link> for a real VSCode environment, and <Link to="/blog/python-qa">Python - Code Quality tools</Link> to keep your scripts clean from day one.*
+
 <AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run commands are (almost always the same):
 

@@ -19,11 +19,11 @@ This article presents a VBS script that automates the process of retrieving VBA 
 </TLDR>
 
 
-So you're a VBA developer and you've created a lot of Excel `.xlsm` (or `.xlam`) workbooks i.e. files having VBA modules in it.
+So you're a VBA developer and you've created a lot of Excel `.xlsm` (or `.xlam`) workbooks i.e. files having VBA modules in it — think of the ones built in <Link to="/blog/vba-excel-ribbon">MS Office - How to create a ribbon in Excel</Link> or <Link to="/blog/vba-excel-sql-server-part-2">MS Excel - Connect to a SQL Server database</Link>.
 
 How can you retrieve the list of references used by any of your files? For sure you can open the workbook, open the VBE editor, click on the `Tools` menu then `References` to get the dialog window with the list of references. Yes, you can.
 
-Or you can use my [https://github.com/cavo789/vbs_xls_list_references](https://github.com/cavo789/vbs_xls_list_references) script to automate this.
+Or you can use my [https://github.com/cavo789/vbs_xls_list_references](https://github.com/cavo789/vbs_xls_list_references) script to automate this — the same kind of small VBS automation script as <Link to="/blog/vba-access-export">Export MS Access objects</Link>.
 
 <!-- truncate -->
 

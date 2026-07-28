@@ -1,0 +1,33 @@
+$ duckdb-query -c "SELECT region, COUNT(*) AS orders, SUM(amount) AS total FROM 'orders.csv' GROUP BY region ORDER BY total DESC"
+
+┌─────────┬────────┬────────┐
+│ region  │ orders │ total  │
+│ varchar │ int64  │ double │
+├─────────┼────────┼────────┤
+│ AMER    │      1 │  300.0 │
+│ EMEA    │      2 │  165.7 │
+│ APAC    │      2 │ 149.75 │
+└─────────┴────────┴────────┘
+
+$ duckdb-query -c "SELECT name FROM read_json_auto('users.json') WHERE active = true"
+
+┌───────────────┐
+│     name      │
+│    varchar    │
+├───────────────┤
+│ Alice Martin  │
+│ Chloé Bernard │
+└───────────────┘
+
+$ duckdb-query -c "SELECT order_id, region, amount, RANK() OVER (PARTITION BY region ORDER BY amount DESC) AS rank_in_region FROM 'orders.csv'"
+
+┌──────────┬─────────┬────────┬────────────────┐
+│ order_id │ region  │ amount │ rank_in_region  │
+│  int64   │ varchar │ double │      int64      │
+├──────────┼─────────┼────────┼────────────────┤
+│     1002 │ APAC    │   89.0 │              1  │
+│     1005 │ APAC    │  60.75 │              2  │
+│     1004 │ AMER    │  300.0 │              1  │
+│     1001 │ EMEA    │  120.5 │              1  │
+│     1003 │ EMEA    │   45.2 │              2  │
+└──────────┴─────────┴────────┴────────────────┘

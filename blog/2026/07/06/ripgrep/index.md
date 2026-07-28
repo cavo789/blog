@@ -28,6 +28,8 @@ Damn. I have typed that command so many times I could do it in my sleep: `grep -
 
 There is. It is called [ripgrep](https://github.com/BurntSushi/ripgrep), and once you start using it, there is no going back.
 
+*It belongs to the same family of modern rewrites as <Link to="/blog/linux-eza">eza</Link> (for `ls`) and <Link to="/blog/git-delta">delta</Link> (for `git diff`).*
+
 <!-- truncate -->
 
 ## What is ripgrep?

@@ -23,6 +23,8 @@ Yesterday at lunchtime, while chatting with a friend, he challenged me with a si
 
 The aim is to hop, hop, copy/paste a file, hop, Joomla is launched and you can start playing with the site.
 
+*Three things you'll want soon after: a <Link to="/blog/docker-volume">volume</Link> so the site survives a `docker compose down`, <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Adminer or phpmyadmin</Link> to look inside the database, and <Link to="/blog/docker-php-ini">Update php.ini when using a Docker image</Link> the day Joomla refuses your file upload as being too large.*
+
 Let's take a look; not in detail, but right to the point.
 
 <!-- truncate -->

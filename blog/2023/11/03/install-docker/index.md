@@ -49,6 +49,8 @@ But since Docker has a public image for running PHP and Apache (a single image f
 
 So, in our discovery step, we will also change the PHP version from `7.4` to `8.1` with just a few keystrokes. Have you ever tried to change your PHP version if you are using EasyPHP, WAMP or another software program: it is a real pain! With Docker, it is so easy.
 
+*Two things to read right after this one: <Link to="/blog/docker-volume">Share data between your running Docker container and your computer</Link>, so your code stays on your disk instead of inside the container, and <Link to="/blog/docker-php-run-script-or-website">The easiest way to run a PHP script / website</Link>, which combines both in a single command.*
+
 <AlertBox variant="note">
 In this chapter, as we discover Docker, we will use different port numbers each time to access our local site. We will see later how to reuse the same port number.
 

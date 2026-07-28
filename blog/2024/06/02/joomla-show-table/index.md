@@ -30,6 +30,8 @@ Oh, wait, so a web page that would execute a SQL query of the type `SELECT ... F
 
 Of course, just running a query on your database and show the result as a web page can be really useful.
 
+*This script is read-only. Its destructive counterpart — deleting tables matching a prefix — is <Link to="/blog/joomla-db-kill-tables-prefix">Joomla - delete tables from your database according to a certain prefix</Link>. And for browsing the database interactively rather than through a fixed query, <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Adminer, pgadmin or phpmyadmin</Link> is the better tool.*
+
 <!-- truncate -->
 
 You can find all the information on my repo at [https://github.com/cavo789/joomla_show_table](https://github.com/cavo789/joomla_show_table); compatible up to Joomla 5.1.

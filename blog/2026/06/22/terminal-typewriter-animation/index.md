@@ -29,7 +29,7 @@ A typewriter animation restores that sequence. The command appears letter by let
 
 <!-- truncate -->
 
-If you're a regular reader of my blog, you know that I've developed a component called `Terminal` that lets me list a series of commands I've run in a Linux-style console—and it looks pretty realistic. Here's an example:
+If you're a regular reader of my blog, you know that I've developed a component called `Terminal` that lets me list a series of commands I've run in a Linux-style console—and it looks pretty realistic. It's the console counterpart of <Link to="/blog/docusaurus-snippets">the component I use for showing code snippets</Link>. Here's an example:
 
 <Terminal title="user@machine: ~/project">
 $ docker compose up -d
@@ -334,3 +334,5 @@ export default {
 </Snippet>
 
 From now one, you can use the `<Terminal>` component in your posts. Enjoy!
+
+*That `src/theme/MDXComponents.js` file is the central registry of every custom component of your blog; <Link to="/blog/docusaurus-override-img">Change how Docusaurus will create img tags</Link> shows how it can also override the built-in tags, not just add new ones.*

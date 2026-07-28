@@ -23,7 +23,7 @@ blueskyRecordKey: 3mfj335ykxc2d
 Enhance your terminal workflow with custom ZSH functions for interactive Docker management. This article presents tools like `dex`, `dstop`, and `dnuke` that utilize `fzf` to let you quickly access shells, stop containers, view logs, and clean up resources without memorizing commands.
 </TLDR>
 
-On a daily basis, I use a few ZSH functions that I find useful. These functions can be added to your `~/.zshrc` file to enhance your terminal experience while working with Docker. They provide quick and interactive ways to manage your Docker containers **without having to remember specific commands or container IDs** (and let's be honest, it's easy to forget them!).
+On a daily basis, I use a few ZSH functions that I find useful. These functions can be added to your `~/.zshrc` file (or, better, to their own file — see <Link to="/blog/modular-zsh-workflow">Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro</Link>) to enhance your terminal experience while working with Docker. They provide quick and interactive ways to manage your Docker containers **without having to remember specific commands or container IDs** (and let's be honest, it's easy to forget them!).
 
 In this article, I'll share some of the ZSH functions I use for Docker management, including how to start a new terminal session in a running container, stop containers, access logs (even if the container is stopped), and clean up unused resources. These functions leverage `fzf` for an interactive selection process, making it easier to manage your Docker environment directly from your terminal.
 

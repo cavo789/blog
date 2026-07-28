@@ -20,7 +20,7 @@ This article shows Quarto's inline CSS span syntax `[text]{style="..."}` for qui
 
 Don't want to take the time to create a CSS class and figure out how to integrate it into Quarto to quickly highlight part of your paragraph?
 
-Quarto supports an *inline css style* syntax for producing **HTML documents** (not working for, f.i., pdf or docx).
+Quarto supports an *inline css style* syntax for producing **HTML documents** (not working for, f.i., pdf or docx). *If you need the content itself, and not just its styling, to differ between formats, see <Link to="/blog/quarto-conditional-display">Quarto conditional display</Link>.*
 
 <AlertBox variant="info" title="Syntax">
 You can apply styles to inline text by creating spans using `[]` to surround the text you want to style and `{}` to define the style you want to apply.

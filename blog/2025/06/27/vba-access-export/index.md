@@ -23,6 +23,8 @@ A long time ago, in a previous life, I developed a lot of MS Access databases an
 
 These objects are an integral part of the database in the same way as the tables and their data. Everything is stored inside the `.mdb` format (or `.mda` or `.accdb`). If you want to version them, you must first extract them.
 
+*Two other MS Access articles on this blog: <Link to="/blog/vbs-msaccess-get-fields">VBS - Retrieve the list of fields in a MS Access Database</Link> to audit the structure, and <Link to="/blog/msaccess-optimize">How to optimize an existing MS Access database</Link> to act on the results.*
+
 Let's look at how to do this.
 
 <!-- truncate -->
@@ -54,3 +56,5 @@ For instance, by running `cscript vbs_access_export.vbs C:\Christophe\db1.mdb` i
 Once finished, you'll have a subfolder called `src` with one file by object so, indirectly, you've a backup of your code 👌.
 
 You can now commit them to GitHub if it's what you need.
+
+Working with VBA-heavy files in general? See also <Link to="/blog/vba-excel-list-references">MS Excel - Get the list of references used in your modules</Link>, <Link to="/blog/msaccess-optimize">How to optimize an existing MS Access database</Link> and <Link to="/blog/vbs-msaccess-get-fields">VBS - Retrieve the list of fields in a MS Access Database</Link>.

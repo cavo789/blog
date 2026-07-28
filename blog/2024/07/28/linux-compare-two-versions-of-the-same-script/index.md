@@ -90,7 +90,7 @@ and, for `/tmp/bash/console_v2.sh`:
 <Snippet filename="/tmp/bash/console_v2.sh" source="./files/console_v2.part2.sh" />
 
 <AlertBox variant="info" title="The order does not matter">
-Unlike a comparison with `diff`, the order in which the functions appear in the scripts is irrelevant, as we are sorting them.
+Unlike a comparison with `diff`, the order in which the functions appear in the scripts is irrelevant, as we are sorting them. *If you'd rather fix the cause than work around it, <Link to="/blog/linux-sort-functions-in-script">Linux - Sort functions in a Bash script</Link> reorders the functions in the files themselves.*
 
 </AlertBox>
 

@@ -29,11 +29,11 @@ In the rest of this article, let's call them like that: `provider` for the first
 
 ## First, they should be on the same network
 
-First, they should be on the same Docker network; otherwise, there's no chance of making it work.
+First, they should be on the same Docker network; otherwise, there's no chance of making it work. *If you need the opposite — reaching a service running on your host from inside a container — read <Link to="/blog/docker-network-and-extra-hosts">Using Docker network and the extra_hosts property</Link>.*
 
 By running `docker ps` you'll get the `container_id` and the `name` of your two containers.
 
-The command to retrieve the name of the Docker network is `docker inspect --format '{{json .NetworkSettings.Networks}}' CONTAINER_NAME | jq` so, for the first container, please run `docker inspect --format '{{json .NetworkSettings.Networks}}' provider | jq` and `docker inspect --format '{{json .NetworkSettings.Networks}}' consumer | jq` for the second.
+The command to retrieve the name of the Docker network is `docker inspect --format '{{json .NetworkSettings.Networks}}' CONTAINER_NAME | jq` (<Link to="/blog/linux-jq">`jq`</Link> is the Swiss-army knife for JSON on the command line) so, for the first container, please run `docker inspect --format '{{json .NetworkSettings.Networks}}' provider | jq` and `docker inspect --format '{{json .NetworkSettings.Networks}}' consumer | jq` for the second.
 
 You'll get something like that:
 

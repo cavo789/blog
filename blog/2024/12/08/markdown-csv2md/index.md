@@ -17,7 +17,7 @@ language: en
 This article introduces CSV2MD (csv2md.avonture.be, source on GitHub), a free online tool that converts pasted CSV content into a formatted Markdown table instantly.
 </TLDR>
 
-See also <Link to="/blog/markdown-xls2md">Markdown - Convert Excel ranges to Markdown tables</Link>.
+See also <Link to="/blog/markdown-xls2md">Markdown - Convert Excel ranges to Markdown tables</Link>. For a much broader conversion need — full Word, PDF or PowerPoint documents rather than a simple table — see <Link to="/blog/markitdown">Markitdown - Convert files and MS Office documents to Markdown</Link>.
 
 Next to my XLS2MD script, you can also convert a CSV file to Markdown very easily.
 

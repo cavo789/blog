@@ -26,7 +26,7 @@ It's been years, perhaps eight years, since I last used PowerPoint for a present
 
 I use Markdown for all my documentation and exports (PDF, DOCX, etc.), so it made perfect sense to choose [reveal.js](https://revealjs.com/), which allow me to write my slides without touching the mouse, just by writing Markdown code.
 
-reveal.js is beautiful, simple, and practical. It allows you to write HTML slideshows from a single .md file. Since I use [Quarto](https://quarto.org/) for my documentation and Quarto allows me to generate a reveal.js site, what could be more natural than to continue one of my previous articles and set myself this goal: with just VSCode and Docker on my computer, to program a devcontainer that will allow me to write and view my reveal.js presentation, but also to export it as a static HTML site so that I can, e.g., deploy my presentation on an SFTP server, but also generate a PDF version of the presentation where each slide corresponds to a page in landscape mode.
+reveal.js is beautiful, simple, and practical. It allows you to write HTML slideshows from a single .md file. Since I use [Quarto](https://quarto.org/) for my documentation and Quarto allows me to generate a reveal.js site, what could be more natural than to continue <Link to="/blog/quarto-devcontainer">one of my previous articles</Link> and set myself this goal: with just VSCode and Docker on my computer, to program a devcontainer that will allow me to write and view my reveal.js presentation, but also to export it as a static HTML site so that I can, e.g., deploy my presentation on an SFTP server, but also generate a PDF version of the presentation where each slide corresponds to a page in landscape mode.
 
 Let's embark on this adventure.
 
@@ -36,7 +36,7 @@ So, make sure you've VSCode and Docker on your machine.
 
 ## We need a Quarto project
 
-For this blog post, the idea is to use Quarto and not to create a reveal.js project directly *by hand*. This is because Quarto will allow us to do a lot more things, like exporting our slideshow as a Word document or a PDF or anything else supported by Quarto as targets.
+For this blog post, the idea is to use Quarto and not to create a reveal.js project directly *by hand*. This is because Quarto will allow us to do a lot more things, like exporting our slideshow as a Word document, a PDF or even <Link to="/blog/quarto-powerpoint">a PowerPoint slideshow</Link> or anything else supported by Quarto as targets.
 
 We'll use Quarto to, also, be able to render the project as a slideshow.
 
@@ -115,6 +115,10 @@ Use any translation tool you wish, I'll use [DeepL](https://www.deepl.com/). Cop
 
 As we've seen, updates in your content will be automatically reflected in the browser.
 
+<AlertBox variant="tip" title="Going further with reveal.js">
+Once your slideshow runs, have a look at <Link to="/blog/quarto-revealjs-tips">Some tips and tricks for Quarto when rendering as a reveal.js slideshow</Link> to fine-tune the rendering.
+</AlertBox>
+
 ## Export a PDF
 
 Now that your slideshow is running, just go back in your Terminal (press <kbd>CTRL</kbd>+<kbd>ù</kbd> to open it) and create a new Bash session (click on the `+` button).
@@ -136,7 +140,7 @@ $ quarto render . --output-dir build
 </Terminal>
 
 <AlertBox variant="tip" title="Want to try?">
-In your host, just jump in the `build` folder and run `docker run -d --name static-site -p 8080:80 -v .:/usr/local/apache2/htdocs/ httpd:alpine` to run the slideshow outside your Devcontainer.
+In your host, just jump in the `build` folder and run `docker run -d --name static-site -p 8080:80 -v .:/usr/local/apache2/htdocs/ httpd:alpine` to <Link to="/blog/docker-html-site">run the slideshow</Link> outside your Devcontainer.
 
 It's an easy way to validate it's working.
 </AlertBox>

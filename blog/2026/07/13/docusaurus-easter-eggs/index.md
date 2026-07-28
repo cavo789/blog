@@ -40,7 +40,7 @@ This is the easter egg that inspired everything else on this list, so it earns t
 
 It's invisible in the rendered page — an HTML comment never reaches the screen — and it doesn't cost a single byte of layout or a single line of visible markup. It's purely a reward for anyone curious enough to look at the raw response.
 
-Under the hood, a small `postBuild` plugin (`plugins/ascii-injector/index.mjs`) walks every generated HTML file after `yarn docusaurus build` finishes and inserts the contents of `src/data/banner.txt` as a comment right after the `<!doctype html>` tag:
+Under the hood, a small `postBuild` plugin (`plugins/ascii-injector/index.mjs`) walks every generated HTML file after `yarn docusaurus build` finishes and inserts the contents of `src/data/banner.txt` as a comment right after the `<!doctype html>` tag. *The plugin itself is built step by step in <Link to="/blog/docusaurus-ascii-art">Inject ASCII Art in any HTML pages rendered by Docusaurus</Link>, and the banner comes from the same generator as the one in <Link to="/blog/bash-ascii-art">Bash - ASCII art</Link>:*
 
 <Terminal title="user@machine: ~/blog">
 $ yarn docusaurus build

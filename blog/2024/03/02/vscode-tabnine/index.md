@@ -40,7 +40,7 @@ And here is how VSCode will predict my keystrokes when Tabnine is enabled. As yo
 
 It's really amazing.
 
-By default, Tabnine works offline i.e. it doesn't use any cloud data provider like what GitHub Copilot does.
+By default, Tabnine works offline i.e. it doesn't use any cloud data provider like what GitHub Copilot does. *If that offline aspect is what interests you, you can go much further and run a complete AI model on your own machine: see <Link to="/blog/ollama-installation">Installing Ollama and get local AI</Link>.*
 
 <AlertBox variant="info" title="Complete code privacy">
 

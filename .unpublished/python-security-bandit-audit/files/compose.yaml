@@ -1,0 +1,20 @@
+services:
+  py-security-scan:
+    image: py-security-scan
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    volumes:
+      - .:/workspace:cached,ro
+    tmpfs:
+      - /tmp:size=64m,noexec,nosuid
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: /workspace

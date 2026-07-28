@@ -31,9 +31,11 @@ Why? Because the variable(s) you've added have been added in **your local `.env`
 
 As you know, you have to create the variables in the `.env.example` file too but let's be honest, nobody thinks about it.
 
+*Two companion articles: <Link to="/blog/update-env-files-cli">Batch edit of environment file</Link> once you've found the missing keys, and <Link to="/blog/bash-load-env">Bash - Loading environment variables from a file</Link> to consume them in your scripts.*
+
 <!-- truncate -->
 
-There are some tools that allow comparing two files like `diff` but not really the best here since:
+There are some tools that allow comparing two files like `diff` (see <Link to="/blog/linux-diff-file-folder">Linux - Comparing two folders/files in the console</Link> for the general case) but not really the best here since:
 
 1. We don't care about comments and empty lines. If a variable has been commented, we just need to ignore it.
 2. We don't care about the position in the file where the variable is declared. If `APP_ENV = local` is on the first line, in the middle of the file or just before the last line, we don't care about it.

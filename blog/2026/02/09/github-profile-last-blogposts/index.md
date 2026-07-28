@@ -20,7 +20,9 @@ This article explains how to use the `gautamkrishnar/blog-post-workflow` GitHub 
 
 I recently found the GitHub Action `gautamkrishnar/blog-post-workflow` and thought: *this could keep my profile README up to date automatically*.
 
-Since I already refactored my Docusaurus [RSS feed](https://www.avonture.be/blog/rss.xml), it's a great fit for automating the latest ten posts on my GitHub profile.
+Since I already refactored my Docusaurus [RSS feed](https://www.avonture.be/blog/rss.xml) (see <Link to="/blog/blog-post-feed">Best Practice - Customizing the Docusaurus RSS Feed for Full Content & Images</Link>), it's a great fit for automating the latest ten posts on my GitHub profile.
+
+*This is the second GitHub Action running on this blog; the first one, described in <Link to="/blog/github-action">GitHub - Use Actions to deploy this blog</Link>, publishes the site itself.*
 
 Let's add a scheduled GitHub Action (for example, every Monday) to update my [cavo789](https://github.com/cavo789/cavo789) repo automatically.
 

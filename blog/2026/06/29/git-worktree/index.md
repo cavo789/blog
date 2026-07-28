@@ -51,6 +51,8 @@ It works. Most of the time. But:
 
 The deeper issue: a git stash is fragile state. It's not a branch. It has no history. It can conflict. And it disappears once you pop it.
 
+*Since we're talking about juggling branches: <Link to="/blog/git-config">Git - Some tips for your .gitconfig file</Link> shows how to sort `git branch` by last commit date, and <Link to="/blog/git-branches-gst">Showing the last 3 updated branches when you jump in a git repo</Link> displays them automatically as you enter a repository.*
+
 ## What git worktree does
 
 A git worktree is a second (or third, or fourth) working directory linked to the same git repository.

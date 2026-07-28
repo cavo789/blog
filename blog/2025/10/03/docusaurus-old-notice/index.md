@@ -48,6 +48,10 @@ To do this, please start a console and run `yarn swizzle @docusaurus/theme-class
 
 From now, you'll have a new file on your disk: `src/theme/BlogPostItem/Content/index.js`
 
+<AlertBox variant="note" title="You may already have that file">
+<Link to="/blog/docusaurus-changelog">Showing the changelog of your post</Link> swizzles exactly the same file. If you've followed that article, just add the new component next to the existing one instead of swizzling again.
+</AlertBox>
+
 Below, the original content of the file (Docusaurus v3.8.1):
 
 <Snippet filename="src/theme/BlogPostItem/Content/index.js" source="./files/index.js" />
@@ -85,6 +89,8 @@ date: 2025-09-30
 ## Position of the warning
 
 The notice will be placed before the post content. On my blog, I've manipulated the code below to extract the very first image (i.e. the banner) so I can display it first, then the notice information, then the rest of the article. But that's probably too complex right now. We'll see this in a future article.
+
+*The banner image is treated differently from the other ones for exactly the same reason in <Link to="/blog/docusaurus-override-img">Change how Docusaurus will create img tags</Link>: the first image of a post is special and should be left alone.*
 
 ```jsx
 <div

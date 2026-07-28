@@ -34,6 +34,8 @@ With this setup:
 - You launch your editing environment with `make devcontainer`.
 - VSCode automatically builds and opens an isolated container with everything configured.
 
+*If Docusaurus itself is new to you, start with <Link to="/blog/docusaurus-docker">Running Docusaurus with Docker</Link>; and once the site is built, <Link to="/blog/github-action">GitHub - Use Actions to deploy this blog</Link> takes care of publishing it.*
+
 Let’s walk through the complete workflow.
 
 <!-- truncate -->

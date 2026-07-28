@@ -20,7 +20,9 @@ language: en
 This article shows how to use Postman as a unit-test tool for APIs: setting up environments and collections with shared assertions, and writing `pm.test()` checks for status codes, response time, content-type headers, and — using a SOAP VAT-validation service as a running example — deep XML/JSON structure assertions on nodes, collections, and specific values.
 </TLDR>
 
-If you are developing your own API (whatever the language) or if you need to consume some, [Postman](https://www.postman.com/) can be really handy.
+If you are developing your own API (whatever the language — <Link to="/blog/python-fastapi">Python FastAPI</Link> takes about a minute) or if you need to consume some, [Postman](https://www.postman.com/) can be really handy.
+
+*Postman requires an account and stores your collections in its cloud. For a fully local, git-friendly alternative, see <Link to="/blog/bruno">Bruno - A postman-like tool - GUI and CLI</Link>.*
 
 Calling an API and getting the response is one thing, quite simple in fact, but a nice feature of Postman is the ability to validate the response like making sure the returned type is, f.i. `application/json`, the HTTP status code is 200, the response body is a JSON object (or an XML string), that the body contains some required information and so on.
 

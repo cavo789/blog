@@ -26,7 +26,7 @@ At work, I'm running my CI using Docker. Each time I push changes to GitLab, a C
 
 The container started by GitLab can be based on a PHP, Python, or plain Alpine Docker image. GitLab is then pulling my code inside the container and f.i. run a tool like `phplint` and it's all good.
 
-For a few months now, I've been creating a Docker image to run [Dagger](https://dagger.io). So, here, I run into trouble: my GitLab CI Docker container should be able to run `docker run ... my_dagger_image` and by default, it's not possible.
+For a few months now, I've been creating a Docker image to run [Dagger](https://dagger.io) (see <Link to="/blog/dagger-python">Dagger.io - Using dagger to automate your CI workflows</Link>). So, here, I run into trouble: my GitLab CI Docker container should be able to run `docker run ... my_dagger_image` and by default, it's not possible.
 
 But I'm in even more trouble when, in my Dagger container, I have to launch another container (one per tool).
 
@@ -62,7 +62,7 @@ Easy and straight-forward.
 
 ## Running Docker-out-of-Docker
 
-Based on the same example, we can also use an existing Docker image; like [phpqa/jakzal](https://github.com/jakzal/phpqa):
+Based on the same example, we can also use an existing Docker image; like [phpqa/jakzal](https://github.com/jakzal/phpqa) (I've dedicated an article to it: <Link to="/blog/php-jakzal-phpqa">Docker image that provides static analysis tools for PHP</Link>):
 
 <Snippet filename=".gitlab-ci.yml" source="./files/.gitlab-ci.yml.part2" />
 
@@ -77,7 +77,7 @@ The syntax `volumes = [ ..., "/var/run/docker.sock:/var/run/docker.sock","/build
 
 We need to allow the **Docker daemon** which is running on the GitLab runner server to share its socket (the file `/var/run/docker.sock`) so, the GitLab CI Docker container can run `docker run` statements like f.i. `docker run --rm --volume "$CI_PROJECT_DIR:/app" --workdir /app jakzal/phpqa phplint .`
 
-As you can see, there is also a flag `--volume "$CI_PROJECT_DIR:/app"`. This will share the folder referenced by the variable `$CI_PROJECT_DIR` with the container but here, be careful.
+As you can see, there is also a flag `--volume "$CI_PROJECT_DIR:/app"`. This will <Link to="/blog/docker-volume">share the folder</Link> referenced by the variable `$CI_PROJECT_DIR` with the container but here, be careful.
 
 Let's say `$CI_PROJECT_DIR` is initialized to `/builds/your-group/your-project`. The `/builds/your-group/your-project` is the one from your Gitlab runner server (so `/builds/your-group/your-project` is a folder on the server). In your GitLab CI Docker container, the `/builds/your-group/your-project` also exists but when you run `docker run --rm --volume "$CI_PROJECT_DIR:/app" --workdir /app jakzal/phpqa phplint .`, you're thus trying to share the host directory with your new container and it'll not work **unless** you've allowed it.
 
@@ -92,4 +92,4 @@ Now, it'll work: we'll share our Docker daemon and also share the folder on the 
 
 From now, we can not only run `docker run [...]` statements but also share our folder with the newly created container.
 
-Why do I need this? Let's take just one example: documentation generation. I'm pushing my documentation as a set of `.md` files (in a folder called `documentation`) then, during my CI, I'm running [Quarto](https://quarto.org/) to process these Markdown files and based on my configuration (the `_quarto.yml` file), I can generate offline files (like `.docx`, `.pdf`, ...) but also a static HTML site. In this last situation, I'll export the static site somewhere (`./public/documentation`) then publish it using GitLab pages.
+Why do I need this? Let's take just one example: documentation generation. I'm pushing my documentation as a set of `.md` files (in a folder called `documentation`) then, during my CI, I'm running [Quarto](https://quarto.org/) (see <Link to="/blog/quarto-industrialisation">Quarto - How I Built a Self-Documenting Ecosystem for 50+ Projects</Link>) to process these Markdown files and based on my configuration (the `_quarto.yml` file), I can generate offline files (like `.docx`, `.pdf`, ...) but also a static HTML site. In this last situation, I'll export the static site somewhere (`./public/documentation`) then publish it using GitLab pages.

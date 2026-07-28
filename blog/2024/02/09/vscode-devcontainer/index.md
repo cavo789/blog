@@ -42,6 +42,8 @@ The ultimate solution: using a `devcontainer` in VSCode.
 
 By using a **devcontainer**, you (and your team colleague) will use a preinstalled environment and everyone will have exactly the same. You'll save yourself a lot of time by not having to configure your system, and you'll be able to start coding straight away, supported by a range of quality analysis tools.
 
+*Two complements to this article: <Link to="/blog/php-jakzal-phpqa">jakzal/phpqa</Link> if you'd rather run those tools on demand than install them in your image, and <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers - The Clean Way</Link> to make sure none of this development tooling ever ends up in your production image.*
+
 <!-- truncate -->
 
 <AlertBox variant="info" title="Download the project">

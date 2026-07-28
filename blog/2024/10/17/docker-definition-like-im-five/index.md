@@ -72,6 +72,8 @@ It's your computer, but in a slightly special environment: a Docker image runnin
 
 But what is a **Docker image**? It's my cake! Not only have I written the recipe for my cake, but more importantly, I'm giving it to you (in the form of a Docker image).  I've made it available on the internet and all you have to do is grab it (`docker pull`) and use it (`docker run`).
 
+*Ready to taste it for real? <Link to="/blog/install-docker">Install Docker and play with PHP</Link> is the very first step, and <Link to="/blog/docker-volume">Share data between your running Docker container and your computer</Link> is the second one — because a cake you can't take out of the oven isn't much use.*
+
 You can all use my image. Whether you're one, ten, a thousand, a million, everyone will have exactly the same image as me and it will be ready to use. You won't have to do anything, really nothing, other than use it.  I'll update my image (a new, even better recipe); you get it back (docker pull of the new version) and that's it.
 
 What's in it for you? No ingredients to buy, prepare or cook. Just a few seconds to download the image and you're ready to eat.

@@ -38,7 +38,7 @@ Please create the two files below in your blog directory structure:
 
 <Snippet filename="src/components/ScrollToTopButton/styles.module.css" source="src/components/ScrollToTopButton/styles.module.css" />
 
-Then, you need to inject `<ScrollToTopButton />` in your pages.
+Then, you need to inject `<ScrollToTopButton />` in your pages. *This injection is done by swizzling `BlogPostItem`, exactly as in <Link to="/blog/docusaurus-relatedposts">Displaying related posts below our Docusaurus article</Link> and <Link to="/blog/docusaurus-reactions">Adding Reader Reactions to Your Docusaurus Blog</Link>; if you already did one of those, you have the file.*
 
 <AlertBox variant="info">
 Make sure to create a `/img/up.png` in your `/static` folder with your own icon (on my site, the small meerkat).

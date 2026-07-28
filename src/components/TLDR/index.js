@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import PropTypes from "prop-types";
 import Head from "@docusaurus/Head";
+import MobileQuickLinks from "@site/src/components/Blog/MobileQuickLinks";
 import styles from "./styles.module.css";
 
 // Recursively extracts plain text from React nodes for JSON-LD abstract
@@ -45,6 +46,13 @@ export default function TLDR({ children }) {
 
         <div className={styles.tldrContent}>{children}</div>
       </div>
+
+      {/*
+        The TL;DR is the one block every post opens with, which makes it the only reliable
+        anchor for a "read next" hint placed *after* the reader has confirmed the article is
+        the right one. MobileQuickLinks decides on its own whether it has anything to show.
+      */}
+      <MobileQuickLinks />
     </>
   );
 }

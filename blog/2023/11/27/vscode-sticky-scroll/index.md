@@ -23,6 +23,8 @@ VS Code has recently added a really useful new feature: sticky scroll.
 
 This function allows you to scroll through a document such as a Markdown file, source code written in PHP or JavaScript, or any other supported language and, as you scroll, pin contextual information such as the name of the class, the name of the function, the start of the loop, etc. in the upper part of the editor.
 
+*It pairs nicely with code folding: <Link to="/blog/vscode-regions">Working with regions in VSCode</Link> lets you collapse whole blocks, sticky scroll keeps you oriented in the ones you left open.*
+
 <!-- truncate -->
 
 This is really very practical. See the illustration below (*image coming from [https://dev.to/amrsamy/vs-code-sticky-scroll-2jcd](https://dev.to/amrsamy/vs-code-sticky-scroll-2jcd)*)
@@ -38,3 +40,5 @@ As you can see, I have opened a markdown file and I am showing part of the artic
 To enable the feature, edit your `settings.json` file and add this entry:
 
 <Snippet filename="settings.json" source="./files/settings.json" />
+
+Sticky scroll helps you know *where* you are in a long file. The other half of the problem is hiding what you don't need right now, and that's what <Link to="/blog/vscode-regions">Working with regions in VSCode</Link> is about.

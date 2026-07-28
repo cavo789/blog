@@ -18,6 +18,8 @@ This article introduces Recraft.ai, an AI-powered image generation tool. Unlike 
 
 Very small article today, just to introduce [recraft.ai](https://www.recraft.ai/) (thanks Pierre for the tip) which is an image generation tool assisted by AI.
 
+*I've since switched to another generator for the banners of this blog; that story is told in <Link to="/blog/gemini-meerkat">How I used Google Gemini Nano Banana on my blog</Link>.*
+
 Unlike other tools like [Bing image creator](https://www.bing.com/images/create) (the one I used to illustrate my articles), recraft.ai can produce the same image but using some variations (using the fine-tune or the variate feature).
 
 Using the editor, we can do some rotation, add text, resize the image, ...
@@ -33,3 +35,5 @@ And adding words like *Realistic photo* will generate images as if they were pho
 Also, unlike Bing, recraft.ai allows you to specify the size of the image (horizontal, vertical, `2:1`, `4:3`, `1:2` and much more).
 
 During my attempts, I didn't notice typos i.e. when I've asked to see f.i. a banner with some words on it; it was correct. Sometimes, for this blog and using Bing, I need to rework the image to remove/add some letters because the generator has made typos. Here; at first sight, it's OK.
+
+*Whatever the generator, a freshly created image is often far too heavy for a web page. <Link to="/blog/reduce-image-size">CaesiumCLT</Link> converts it to WebP in one command.*

@@ -71,6 +71,8 @@ Using the `-v` command line argument, you have synchronized a local folder with 
 
 If the running PHP script creates a new file in the `/var/www/html` folder, that file will be immediately created / updated on your disk.
 
+*What we've used here is a **bind mount**: a folder of yours, mounted in the container. Docker also offers *managed* volumes, which it stores itself somewhere outside your project; <Link to="/blog/docker-volumes">Using volumes with Docker, use cases</Link> compares both and explains when to prefer one over the other.*
+
 <AlertBox variant="caution">
 Files or folders created in the Docker container will be owned by the current user used in the container; which is most often the `root` user. These files/folders will, then, be created / updated by the `root` user on your disk as well.
 

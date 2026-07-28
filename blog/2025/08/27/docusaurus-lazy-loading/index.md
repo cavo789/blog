@@ -30,7 +30,7 @@ This conversion occurs at two places: when you're surfing on your website or whe
 
 <!-- truncate -->
 
-To do this, in fact, we don't need to create a component! We just need to add some lines of code in the `src/theme/MDXComponents.js` file.
+To do this, in fact, we don't need to create a component! We just need to add some lines of code in the `src/theme/MDXComponents.js` file. *If you need more than a couple of extra attributes — a wrapper `div`, custom CSS, a zoom effect — then a real component is the way to go; that's the subject of <Link to="/blog/docusaurus-override-img">Change how Docusaurus will create img tags</Link>.*
 
 If you don't have that file yet, just create it.
 
@@ -44,3 +44,5 @@ The `// [...]` notation is there as a placeholder to show you that perhaps you'l
 Once added to your `MDXComponents.js` file, just return to the browser; open any post and refresh the page. You'll see that images have now the `loading="lazy"` attribute (you can verify using the dev tools panel of your browser). If like in the example given here above, you've added some CSS style; you'll see it immediately.
 
 Easy no?
+
+Now, how do you make sure it stays true across two hundred articles? By checking it automatically: see <Link to="/blog/docusaurus-check-images">Running some checks on your Docusaurus images</Link>.

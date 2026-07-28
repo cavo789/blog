@@ -1,0 +1,17 @@
+diff --git a/config/database.php b/config/database.php
+index 1234567..89abcde 100644
+--- a/config/database.php
++++ b/config/database.php
+@@ -5,6 +5,14 @@ return [
+
++    'mysql' => [
++        'host' => 'db.internal.example.com',
++        'username' => 'app_user',
++        'password' => 'Sup3rSecret!2027',
++    ],
++
++    'legacy' => [
++        'password' => getenv('LEGACY_DB_PASSWORD'),
++    ],
+
+ ];

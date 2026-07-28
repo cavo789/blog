@@ -1,0 +1,18 @@
+# Added to the open-webui service in ollama-installation's compose_webui.yaml
+# — everything else in that file stays exactly as it was.
+
+  open-webui:
+    # ... image, container_name, environment, volumes unchanged ...
+    networks:
+      - default    # keeps talking to ollama on the existing project network
+      - proxy      # joins Traefik's shared network too
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.openwebui.rule=Host(`ollama.home.arpa`)
+      - traefik.http.routers.openwebui.entrypoints=websecure
+      - traefik.http.routers.openwebui.tls=true
+      - traefik.http.services.openwebui.loadbalancer.server.port=8080
+
+networks:
+  proxy:
+    external: true

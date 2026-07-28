@@ -17,7 +17,7 @@ language: en
 This article shows how to attach a database web UI to an existing Dockerized MySQL/MariaDB/PostgreSQL container in one command, using `docker inspect` (piped through `jq`) to find the container's network name, then `docker run --network <net> --link <container>:db -p <port>:<port> adminer` (or `phpmyadmin`) to browse tables and records without adding anything to the original `compose.yaml`.
 </TLDR>
 
-You've a dockerized application and one of its containers is a MariaDB, MySQL or PostgreSQL service.
+You've a dockerized application and one of its containers is a MariaDB, MySQL or PostgreSQL service — think of the ones started in <Link to="/blog/docker-wordpress">Quickly install WordPress in just three commands</Link> or <Link to="/blog/docker-joomla-right-to-the-point">Start Joomla with Docker in just a few clicks</Link>.
 
 Your need is to start a web database management interface like [Adminer](https://hub.docker.com/_/adminer/), [pgadmin](https://hub.docker.com/r/dpage/pgadmin4/) or [phpmyadmin](https://hub.docker.com/_/phpmyadmin) and be able to access your tables and your records.
 

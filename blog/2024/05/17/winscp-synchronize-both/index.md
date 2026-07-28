@@ -22,7 +22,9 @@ By the use of a script, it's possible to ask [WinSCP](https://winscp.net/) to sy
 
 If a file has been added to your host, copy it to your remote server and vice versa.
 
-I'm using such script for making a full backup of some of my folders to my Synology.
+I'm using such script for making a full backup of some of my folders to my Synology. *I've also used it for years to deploy this very blog, before switching to <Link to="/blog/github-action">GitHub Actions</Link>.*
+
+*Two more WinSCP scripts on this blog: <Link to="/blog/winscp-download-recursively-files">downloading files with a specific extension recursively</Link> and <Link to="/blog/keepass-overriding-url">opening a WinSCP session straight from KeePass</Link>.*
 
 <!-- truncate -->
 

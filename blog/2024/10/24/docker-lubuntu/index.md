@@ -24,6 +24,8 @@ The idea is to start a Lubuntu Desktop distribution as a Docker container. Lubun
 
 Using Docker and [Windows X Server](https://sourceforge.net/projects/vcxsrv/), we'll be able to play with Lubuntu just like any other container, i.e. play and drop without any impact on our host. Ideal for learning purposes then.
 
+*This is the "whole desktop" variant. For a single application, see <Link to="/blog/docker-run-linux-gui">Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP</Link>; and if you'd rather avoid installing an X Server at all, <Link to="/blog/docker-gui-in-browser">Docker - Running some GUI interfaces in the browser</Link> displays them in a browser tab instead.*
+
 <!-- truncate -->
 
 I encourage you to watch the video [Full Ubuntu GUI in a Container Displayed on Windows (XServer)](https://www.youtube.com/watch?v=WutV6n21dys).
@@ -67,4 +69,4 @@ During my tests, the display wasn't up to scratch and I had to remove the cable 
 
 Do you realize that we've installed a Linux distribution and launched its GUI as a container? In fact, it's like installing a new PC.
 
-Of course, we'd have to go further than that, e.g. to keep data persistent (via volumes).
+Of course, we'd have to go further than that, e.g. to keep data persistent (<Link to="/blog/docker-volume">via volumes</Link>).

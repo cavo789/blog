@@ -23,6 +23,8 @@ It's not something new, but it's probably not known well enough: by browsing **a
 
 Here is the blog in vscode.dev: [https://github.dev/cavo789/blog](https://github.dev/cavo789/blog).
 
+*This is the lightest of three ways to code without a local VSCode. The two others: <Link to="/blog/vscode-code-server">a full VSCode in your browser via Docker</Link> and <Link to="/blog/vscode-remote-ssh">SSH Remote development with VSCode</Link>.*
+
 <AlertBox variant="info" title="Change the domain extension to github.dev">
 You can achieve the same result by updating the URL and changing the `.com` extension to `.dev`
 
@@ -35,6 +37,8 @@ Imagine you are not at home, on your own computer, and you want to change your r
 But also that you are on a bus/train/plane and want to correct a typo you've just seen.
 
 You may also want to make a very small update like changing your readme.md file. It is really faster to do it online than having to clone/update the project on your computer, make the change, add/commit/push it.
+
+This trick is limited to GitHub repositories though. If you need a real, full editor on a machine where VSCode isn't installed, run it as a container instead: <Link to="/blog/vscode-code-server">Do I need VSCode on my machine to use it?</Link>.
 
 ![Using a smartphone](./images/smartphone_view.webp)
 

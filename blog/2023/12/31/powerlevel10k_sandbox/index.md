@@ -45,6 +45,7 @@ What I particularly like:
 - You can always see the name of the git branch you're working on,
 - The connected user name (like `root` f.i.),
 - When an instruction is finished, the new prompt displays the time taken by the instruction, useful when you're trying to optimize a command,
+- It integrates nicely with <Link to="/blog/windows-terminal">Windows Terminal</Link> if you're on WSL, and with the modular setup described in <Link to="/blog/modular-zsh-workflow">Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro</Link>,
 - On the right, you can see immediately if the instruction has failed, with a red display and the error code (`exitcode`),
 - And, of course, the visual aspect, which is pretty cool.
 

@@ -21,9 +21,9 @@ This comprehensive guide provides a step-by-step walkthrough for running an Orac
 
 <!-- cspell:ignore ORCLCDB,ORCLPDB,initdb,sqlplus,oradata,PDBADMIN,USERENV,oracletools,sysdba -->
 
-At work, I had to create an Oracle Enterprise database locally so that I could code scripts in different languages to show how to connect to Oracle using, for example .Net, NodeJS, Python or PHP.
+At work, I had to create an Oracle Enterprise database locally so that I could code scripts in different languages to show <Link to="/blog/oracle-dotnet-nodejs-php-python">how to connect to Oracle using, for example .Net, NodeJS, Python or PHP</Link>.
 
-So the idea was immediately to check whether there was an official image for this. And there is one but, damned, it's not as simple as for PostgreSQL, MySQL, MS SQL Server.
+So the idea was immediately to check whether there was an official image for this. And there is one but, damned, it's not as simple as for PostgreSQL, MySQL or <Link to="/blog/docker-mssql-server">MS SQL Server</Link>.
 
 In this article, which is a clean-up of my notes, we're going to install Oracle Enterprise locally in a container, create a database with example data and access the database in several ways.
 
@@ -427,3 +427,7 @@ For this article, it was not really needed to use that image. Until now, we've m
 The difference is: `docker exec -it oracle-db [...]` jumps into our database container and runs sqlplus *internally* (from within the container where the database is stored) while `docker run [...] oracle oracletools/sqlplus:v19.18_lin [...]` runs sqlplus *outside* as a separate container.
 
 </AlertBox>
+
+## Going further
+
+Now that the `oracle-db` container is running, two follow-up articles reuse it directly: <Link to="/blog/docker-oracle-ords">Transform an Oracle DB as OpenData using Oracle REST Data Services</Link> and <Link to="/blog/oracle-dotnet-nodejs-php-python">Accessing an Oracle database using .Net, NodeJS, PHP and Python</Link>.

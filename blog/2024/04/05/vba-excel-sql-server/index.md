@@ -25,7 +25,7 @@ Please read my new article <Link to="/blog/vba-excel-sql-server-part-2">MS Excel
 
 </AlertBox>
 
-Imagine you can execute a query like `SELECT customer_id, first_name, last_name, email FROM customers ORDER BY last_name ASC;` in your Excel sheet and that Excel will connect your Microsoft SQL Server database, run the query there, get the result and put the data directly in your sheet. Would be nice, no?
+Imagine you can execute a query like `SELECT customer_id, first_name, last_name, email FROM customers ORDER BY last_name ASC;` in your Excel sheet and that Excel will connect your <Link to="/blog/docker-mssql-server">Microsoft SQL Server database</Link>, run the query there, get the result and put the data directly in your sheet. Would be nice, no?
 
 Imagine your sheet has already a nice layout with colors, titles having filters enabled and f.i. has a name (like `rngMyCustomers`). It would be nice if the updated data still keep all the layouts and just extends the name; no?
 

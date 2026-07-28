@@ -23,12 +23,16 @@ Recently, a friend told me about a tool from Microsoft called [Markitdown](https
 
 In this article, we'll create a Docker image and a small conversion script called `md-convert` that you'll be able to call from everywhere on your disk to easily convert `docx`, `xlsx` and `pdf` files to Markdown thanks to Markitdown.
 
+<AlertBox variant="note" title="Just need an Excel range or a CSV file as a Markdown table?">
+Markitdown is a general-purpose, heavier tool. If your need is narrower — just turning a copied Excel range or a CSV file into a Markdown table — my <Link to="/blog/markdown-xls2md">XLS2MD</Link> and <Link to="/blog/markdown-csv2md">CSV2MD</Link> online tools are quicker, no Docker required.
+</AlertBox>
+
 <!-- truncate -->
 
 As always, I'll first create a Docker image so I don't need to install Python on my machine nor manage the utility and all its dependencies.
 
 <AlertBox variant="info" title="I love Docker also for this">
-This is exactly why Docker is indispensable: complete isolation. Everything runs within the container. Once I am done experimenting, I can delete the image, leaving nothing on my disk except the Dockerfile needed to recreate it on demand.
+This is exactly why Docker is indispensable: complete isolation. Everything runs within the container. Once I am done experimenting, I can delete the image, leaving nothing on my disk except the Dockerfile needed to recreate it on demand. *If that reasoning is new to you, <Link to="/blog/docker-definition-like-im-five">Docker - Explain me like I'm five - What's Docker for?</Link> makes the case with a cooking analogy.*
 </AlertBox>
 
 ## Create our Docker image

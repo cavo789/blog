@@ -22,6 +22,8 @@ In this post, we'll learn how to create a ribbon (i.e. a toolbar) in Microsoft E
 
 We'll create our custom ribbon for an Excel file, save the ribbon in the file so our users will have a nice and intuitive interface to work with our worksheet.
 
+*A ribbon is only useful if its buttons do something interesting. For a concrete example, <Link to="/blog/vba-excel-sql-server-part-2">MS Excel - Connect to a SQL Server database, run a query and get the results</Link> gives you the VBA behind a "Refresh data" button.*
+
 <!-- truncate -->
 
 ## Download the editor for free
@@ -302,3 +304,7 @@ End Sub
 The declaration of callbacks can be found on the official site:
 [How can I determine the correct signatures for each callback procedure?](
 https://docs.microsoft.com/en-us/previous-versions/office/developer/office-2007/aa722523(v=office.12)#how-can-i-determine-the-correct-signatures-for-each-callback-procedure). Pay attention to the `Signatures` columns; you need to look for `VBA`.
+
+## Going further
+
+Once your ribbon is in place, a common next step is to feed one of its controls (like a dropdown) with data coming straight from your worksheet — see <Link to="/blog/vba-excel-ribbon-load">MS Office - Load dropdown from Excel's range</Link>.

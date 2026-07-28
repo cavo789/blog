@@ -32,6 +32,8 @@ Another example: you're still inside a container and you wish to access the list
 
 Let's see in this article how to create your own Docker image, running as root or not, and configure it to allow docker requests.
 
+*The most common real-world use of this technique is a CI pipeline whose job needs to run `docker run`; that's the subject of <Link to="/blog/gitlab-docker-out-of-docker">GitLab - Running Docker-out-of-Docker in your CI</Link>.*
+
 We'll use the **Docker-out-of-Docker also called `DooD`** technique: mounting the host's Docker socket (`/var/run/docker.sock`) and running the Docker CLI inside the container.
 
 <!-- truncate -->

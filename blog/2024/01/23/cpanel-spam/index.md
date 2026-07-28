@@ -32,6 +32,8 @@ If you're hosted by PlanetHoster on the N0C infrastructure, please read <Link to
 
 My personal use case: even if I don't like shortcuts on my desktop, I do have one for `https://(my_host_company)/xxxxx/mail/spam/index.html#/blacklist` i.e. direct access to the page where I can add my spam filters. And it works quite well.
 
+*Clicking through a web interface doesn't scale, though. <Link to="/blog/planethoster-n0c-spam-roundcube-action">Exterminate them all, kill spam using GitHub Actions</Link> generates the rules from a JSON list and deploys them automatically.*
+
 ![Spam filters](./images/spam_filters.webp)
 
 But, did you know there is another way to do this?

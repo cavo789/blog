@@ -19,7 +19,7 @@ language: en
 This article shows Quarto's callout-block syntax (`:::{.callout-caution}`, `:::{.callout-tip}`, etc.) for highlighted admonitions in PDF, HTML, and revealJS output — Quarto's equivalent of Docusaurus's `<AlertBox>` — and provides a VSCode snippet that interactively prompts for the callout type, title, and body so you never need to remember the exact syntax.
 </TLDR>
 
-A callout (called *admonition* by [Docusaurus](https://docusaurus.io/docs/markdown-features/admonitions)) is a special syntax used to highlight a paragraph, f.i. a *Pay attention to...* or *Tip: Did you know that...* box.
+A callout (called *admonition* by [Docusaurus](https://docusaurus.io/docs/markdown-features/admonitions)) is a special syntax used to highlight a paragraph, f.i. a *Pay attention to...* or *Tip: Did you know that...* box. *On the Docusaurus side, I've covered that syntax in <Link to="/blog/docusaurus-articles-tips">Some tips and tricks when written articles for Docusaurus</Link>.*
 
 On this blog powered by Docusaurus, the syntax for *admonition* is
 

@@ -27,7 +27,7 @@ Here are the steps I followed to create this blog.
 
 ## Using Docusaurus
 
-Since I really like the simplicity of Docker, I will not install Node.js on my machine but use the official Docker image.
+Since I really like the simplicity of Docker, I will not install Node.js on my machine but use the official Docker image. *This article shows the raw `docker run` approach; if you prefer a ready-made `Dockerfile` and a `compose.yaml`, jump to <Link to="/blog/docusaurus-docker">Running Docusaurus with Docker</Link>.*
 
 <Terminal typewriter>
 $ {`docker run --rm --name blog --user \$UID:\$GID -it -v \${PWD}/:/project -w /project node /bin/bash`}
@@ -35,7 +35,7 @@ $ {`docker run --rm --name blog --user \$UID:\$GID -it -v \${PWD}/:/project -w /
 
 The instruction above will download Node.js (the latest version) on my machine if it is not already present and create a running instance (called a *container* of it). The flag `--user $UID:$GID` is used to start the container using the same credentials as my local one (i.e., reuse my local Unix `christophe` user so files/folders created in the container will be owned by my local user).
 
-The `-v ${PWD}/:/project` command line argument will share my current folder on my computer with the container that is, the `/project` folder in the container will be my current folder on my computer.
+The `-v ${PWD}/:/project` command line argument will <Link to="/blog/docker-volume">share my current folder</Link> on my computer with the container that is, the `/project` folder in the container will be my current folder on my computer.
 
 And finally, I run an interactive shell since I have mentioned `/bin/bash` as the entry point.
 
@@ -73,7 +73,9 @@ $ {`docker run --rm -it --name blog --user \$UID:\$GID -v \${PWD}/:/project -w /
 
 After a few seconds, the container is ready to use and I surf to my site by going to `http://localhost:3000`.
 
-![Homepage](./images/homepage.webp)
+<BrowserWindow url="http://localhost:3000">
+  ![Homepage](./images/homepage.webp)
+</BrowserWindow>
 
 <AlertBox variant="highlyImportant" title="The --host 0.0.0.0 flag">
 It is really crucial to use the `--host 0.0.0.0` flag when calling `npx docusaurus start`. This will allow external access to the website. If missing, browsing to `http://localhost:3000` (or running `curl http://127.0.0.1:3000`) will display an error `Empty reply from server`.
@@ -195,7 +197,9 @@ In order to build static pages, I run `docker run --rm -it --user $UID:$GID -v $
 
 This will create/update the `/build` folder with a fresh version of the site.
 
-The next step is to start my FTP client (which is [WinSCP](https://winscp.net/eng/download.php)) and copy my local `/blog/build` folder to my remote website.
+The next step is to start my FTP client (which is [WinSCP](https://winscp.net/eng/download.php)) and copy my local `/blog/build` folder to my remote website. To only send the files that really changed, see <Link to="/blog/winscp-synchronize-both">WinSCP - Synchronize host and remote</Link>.
+
+*Nowadays, I no longer do this by hand: the site is deployed automatically, as explained in <Link to="/blog/github-action">GitHub - Use Actions to deploy this blog</Link>.*
 
 ## Adding withcabin for GDPR compliant stats
 

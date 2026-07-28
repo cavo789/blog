@@ -26,6 +26,8 @@ You've created a website for yourself or for a client, and how can you be sure t
 
 What tool should you use for this type of requirement?
 
+*Functional tests answer "does the site still work?"; unit tests answer "does this function still work?". For the latter, see <Link to="/blog/pest_tips">Write PHP unit tests using Pest</Link> and <Link to="/blog/bats-unit-tests">Linux - Bash scripts - Running unit tests with bats/bats</Link>.*
+
 Cypress is a front-end testing tool that empowers developers to automate functional tests directly within the browser. It enables actions like navigating web pages, interacting with elements, submitting forms, and asserting content or URL changes, streamlining end-to-end and integration testing.
 
 In June 2024, I've written an article about a PHP functional test tool called <Link to="/blog/behat-introduction">Behat</Link>, let's see how to proceed with Cypress which is a JavaScript tool.

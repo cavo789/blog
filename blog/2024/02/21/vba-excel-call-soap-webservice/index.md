@@ -26,6 +26,8 @@ We'll learn, in this blog post, how to validate a European VAT number using the 
 
 The VBA code we will see in this article can be used as a skeleton for your future development.
 
+*That same VIES service is used as the running example in <Link to="/blog/postman">Using Postman to play with API</Link>, where the XML response is asserted node by node — a good way to understand a SOAP answer before writing the VBA that parses it.*
+
 <!-- truncate -->
 
 So, when calling a SOAP service, we must always prepare an XML message first. To do this, we create an .xml file somewhere on our hard drive.

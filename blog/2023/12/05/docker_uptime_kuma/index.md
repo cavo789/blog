@@ -35,7 +35,7 @@ $ {`docker run -d --restart=always -p 3001:3001 -v \${PWD}:/app/data --name upti
 ![Dashboard](./images/dashboard.webp)
 
 <AlertBox variant="info" title="Remember to add a volume">
-The `-v ${PWD}:/app/data` flag is important if you want to keep track of the sites you'll add to the dashboard (i.e. if you restart the tool). If you wish, only, play once with the interface first, you can omit it so nothing will be written on the disk.
+The `-v ${PWD}:/app/data` flag (a <Link to="/blog/docker-volume">volume</Link>) is important if you want to keep track of the sites you'll add to the dashboard (i.e. if you restart the tool). If you wish, only, play once with the interface first, you can omit it so nothing will be written on the disk.
 
 </AlertBox>
 
@@ -47,3 +47,5 @@ In the setting page, site by site, you can define a lot of actions like what the
 On top of configuration items site by site, you'll also find in the *Profile -> Settings* page, a large number of global settings like the choice of the language's interface (French is available).
 
 </AlertBox>
+
+Uptime Kuma watches your sites **from the outside**. For what happens on your own machine, <Link to="/blog/docker-healthy">Get health information from your running containers</Link> does the same job for your containers. And once you self-host a few such tools, <Link to="/blog/heimdall-dashboard">Heimdall</Link> is a nice way to gather them on a single homepage.

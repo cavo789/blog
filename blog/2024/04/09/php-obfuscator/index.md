@@ -38,7 +38,7 @@ Here is the code proposed by [Gemini](https://gemini.google.com/). Save it to yo
 
 <Snippet filename="hangman.php" source="./files/hangman.php" />
 
-To play with this game, just run `docker run -it -v ${PWD}:/src -w /src php:7.4-fpm php hangman.php`.
+To play with this game, just run `docker run -it -v ${PWD}:/src -w /src php:7.4-fpm php hangman.php` (see <Link to="/blog/docker-php-run-script-or-website">The easiest way to run a PHP script / website</Link> if that command looks cryptic).
 
 As you'll see the script works fine without any change!
 

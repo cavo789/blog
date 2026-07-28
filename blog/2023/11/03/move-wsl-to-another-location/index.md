@@ -21,6 +21,8 @@ This article shows how to move a WSL2 distribution off the C: drive to free up s
 
 By default, the Linux distribution is installed on your C: drive. If, like me, you have a D: drive with almost nothing on it, it can be really interesting to move Linux to that second drive.
 
+*Once moved, nothing else changes: your distribution keeps working exactly as before, <Link to="/blog/wsl-windows-explorer">including opening your Linux folders in Windows Explorer</Link>.*
+
 <!-- truncate -->
 
 To do this:

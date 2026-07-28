@@ -57,7 +57,7 @@ Here is the full Python script. It uses `argparse` to handle command-line argume
 
 ## How to Run It (Docker-First)
 
-As always, I don't want to pollute my host machine with Python dependencies. I run this script using Docker.
+As always, I don't want to pollute my host machine with Python dependencies. I run this script using Docker — exactly like the image checker described in <Link to="/blog/docusaurus-check-images">Running some checks on your Docusaurus images</Link>.
 
 I have a `Makefile` target set up, but essentially, it runs a command like this:
 
@@ -65,7 +65,7 @@ I have a `Makefile` target set up, but essentially, it runs a command like this:
 $ docker run -it --rm -v .:/app -w /app --entrypoint /bin/sh python:3.14-slim -c "pip install --root-user-action=ignore oyaml python-frontmatter >/dev/null && python .scripts/tags-manager.py list"
 </Terminal>
 
-But, for sure, that command is quite complex to remember, so I use a Makefile target instead:
+But, for sure, that command is quite complex to remember, so I use a <Link to="/blog/makefile_tips">Makefile</Link> target instead:
 
 <Snippet filename="makefile" source="./files/makefile" defaultOpen={false} />
 

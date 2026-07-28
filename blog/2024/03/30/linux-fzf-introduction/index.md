@@ -28,6 +28,8 @@ And it makes the job but, honestly, this is really basic, no?
 
 The Fuzzy Finder (aka `fzf`) command line utility will explode the possibilities linked to searching in the history but, in reality, this is just one of the consequences of installing fzf, which is so much more powerful.
 
+*Three articles on this blog build directly on `fzf`: <Link to="/blog/fzf-ripgrep">FZF + ripgrep: Interactive Code Search with Live Preview</Link>, <Link to="/blog/ssh-with-fuzzy-finder">Master your ssh command and select the host from a list</Link> and <Link to="/blog/zsh-docker-functions">ZSH Functions - Customizing Your Shell for Docker Management</Link>.*
+
 Let's have a look.
 
 <!-- truncate -->

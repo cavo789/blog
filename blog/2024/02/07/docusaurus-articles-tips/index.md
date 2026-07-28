@@ -24,7 +24,7 @@ This article is a reminder of essential Docusaurus authoring features: the `trun
 
 If you're writing for Docusaurus, there are a few tips to know.
 
-This article is by no means exhaustive, but for me, it's a reminder of the features that are really essential and must not be forgotten.
+This article is by no means exhaustive, but for me, it's a reminder of the features that are really essential and must not be forgotten. *Two more authoring habits worth adopting early: keeping your <Link to="/blog/docusaurus-tags">tags under control</Link> and <Link to="/blog/docusaurus-relatedposts">displaying related posts</Link> below each article.*
 
 <!-- truncate -->
 
@@ -110,7 +110,7 @@ Source: [MDX and React](https://docusaurus.io/docs/markdown-features/react#expor
 
 [Official documentation](https://docusaurus.io/docs/markdown-features/code-blocks#line-highlighting)
 
-The `// highlight-next-line` is **really** useful when you wish to put in evidence changes you've done to a give code block.
+The `// highlight-next-line` is **really** useful when you wish to put in evidence changes you've done to a give code block. *When the code lives in a real file rather than inline, I use my own <Link to="/blog/docusaurus-snippets">code snippets component</Link>, which reads the file at build time so the article can never fall out of sync with it.*
 
 Imagine you've already written something like *Dear reader, please create a file on your disk with this content...* and you provide a code block with that content.
 
