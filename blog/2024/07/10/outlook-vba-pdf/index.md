@@ -17,7 +17,7 @@ language: en
 This article shares a VBA macro for the Outlook desktop client that saves one or more selected emails as PDF files, added to the Ribbon as a custom button via the VBA editor. When run, it prompts for a save folder, whether to delete the emails from Outlook after export, and whether to name each PDF manually or from the email subject.
 </TLDR>
 
-You may also need to select several emails from Microsoft Outlook and save them as PDF files on your hard drive.
+You may also need to select several emails from Microsoft Outlook and save them as <Link to="/blog/markitdown">PDF files</Link> on your hard drive.
 
 In my case, it was when I was complementary self-employed. I had to keep track of the orders I received and the invoices I sent. Saving my orders as PDFs meant that I could keep them as archives, even if my mail server failed.
 
@@ -51,7 +51,7 @@ The macro will not work with Office online.
   ]}
 />
 
-You should see your new group, in my case, I've created the new group in `Home` and at the first position left so I've this:
+You should see <Link to="/blog/vba-excel-ribbon">your new group</Link>, in my case, I've created the new group in `Home` and at the first position left so I've this:
 
 ![The new group](./images/ribbon_macro.webp)
 

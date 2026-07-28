@@ -12,15 +12,15 @@ nommés dans la prose mais jamais liés.
 
 **159 articles traités**, ~230 liens internes ajoutés en trois passes.
 
-| Métrique | Avant | Après |
-|---|---|---|
-| Liens internes `<Link to=...>` | 220 | 697 |
-| Liens internes Markdown | 23 | 24 |
-| **Total interne** | **243** (1,02/article) | **721** (3,03/article) |
-| Liens externes | 669 | 668 |
-| Ratio externe : interne | 2,75 : 1 | 0,93 : 1 |
-| Articles liant vers un autre | 136 / 238 (57 %) | 232 / 238 (97 %) |
-| **Articles orphelins** | **102 (43 %)** | **6 (3 %)** |
+| Métrique                       | Avant                  | Après                  |
+| ------------------------------ | ---------------------- | ---------------------- |
+| Liens internes `<Link to=...>` | 220                    | 697                    |
+| Liens internes Markdown        | 23                     | 24                     |
+| **Total interne**              | **243** (1,02/article) | **721** (3,03/article) |
+| Liens externes                 | 669                    | 668                    |
+| Ratio externe : interne        | 2,75 : 1               | 0,93 : 1               |
+| Articles liant vers un autre   | 136 / 238 (57 %)       | 232 / 238 (97 %)       |
+| **Articles orphelins**         | **102 (43 %)**         | **6 (3 %)**            |
 
 `npx docusaurus build` validé après chaque lot : aucun lien cassé.
 

@@ -41,7 +41,7 @@ années. Une revue qui traiterait les 238 articles uniformément gaspillerait l'
 - **Volume** : 238 articles, dont 170 candidats. Une revue exhaustive en une session est
   impossible et produirait du travail bâclé.
 - **Hallucination** : c'est le risque principal. Affirmer « X a été racheté par Y » sans source
-  vérifiée introduirait une erreur *dans* un article qui était correct — exactement l'inverse du
+  vérifiée introduirait une erreur _dans_ un article qui était correct — exactement l'inverse du
   but. Toute affirmation d'obsolescence doit être sourcée par une recherche web, avec l'URL
   conservée dans le TODO ou la note d'update.
 - **Faux positifs mécaniques** : un lien 404 peut être un site temporairement en panne, un blocage

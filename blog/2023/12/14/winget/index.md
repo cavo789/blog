@@ -19,13 +19,13 @@ This article covers `winget`, Windows' built-in package manager: batch-upgrading
 
 > [Use the winget tool to install and manage applications](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
 
-If you're working under Linux or WSL, you know very well the `sudo apt-get update && sudo apt-get upgrade` instruction to ask the operating system to upgrade programs present on your disk with a newer version.
+If you're working under Linux or <Link to="/blog/wsl-windows-explorer">WSL</Link>, you know very well the `sudo apt-get update && sudo apt-get upgrade` instruction to ask the operating system to upgrade programs present on your disk with a newer version.
 
 Under Windows, since a few years (starting with Windows 10), there is such command too: it's `winget`.
 
 <!-- truncate -->
 
-By running `winget upgrade --all --silent` in **a DOS (or Powershell) console** started with admin rights, you'll start a process that will scan (in a second) your computer, detect which programs are installed on it and check if a newer version exists (and known by winget).
+By running `winget upgrade --all --silent` in **<Link to="/blog/windows-terminal">a DOS (or Powershell) console</Link>** started with admin rights, you'll start a process that will scan (in a second) your computer, detect which programs are installed on it and check if a newer version exists (and known by winget).
 
 ![Starting winget](./images/start-winget.webp)
 

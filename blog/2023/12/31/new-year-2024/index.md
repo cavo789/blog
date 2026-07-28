@@ -17,7 +17,7 @@ This is a short New Year's greeting post wishing readers curiosity, growth, and 
 
 I wish you all a very happy festive season, and may you continue to be curious about everything.
 
-May this new year bring you new knowledge and skills, including Docker, Linux, Markdown and PHP.
+May this new year bring you new knowledge and skills, including <Link to="/blog/docker-definition-like-im-five">Docker</Link>, Linux, <Link to="/blog/markdown-lint">Markdown</Link> and <Link to="/blog/docker-php-run-script-or-website">PHP</Link>.
 
 May you take advantage of these technologies to create new projects and solve complex problems.
 

@@ -5,40 +5,66 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 7a1e2a8d-2968-4e43-bbbf-0058d0b07379
-  modified: 2026-07-27T20:52:25.730Z
+  modified: 2026-07-28T12:36:04.575Z
 ---
 
 **Never audit blog linking with an ad hoc grep.** Run this instead, from the repo root:
 
 ```bash
-node scripts/internal-link-opportunities.mjs --stats     # site-wide audit
+yarn links:audit                                          # site-wide audit (--stats)
+yarn links:check blog/2026/07/27/reactions                # one article (--post), exits 1 if it links nowhere
 node scripts/internal-link-opportunities.mjs --out .todos/internal-link-opportunities.md
 ```
+
+`--post` (added 2026-07-28) accepts the article folder or its `index.md`, works on
+`.unpublished/` drafts too, flags links pointing to no published article, and backs the
+non-blocking `internal-links` job in `.github/workflows/quality.yml`. For the rule it
+enforces on new content, see [[feedback-internal-linking]].
 
 `--stats` prints the audit below; without it, the script reports per-article
 opportunities (articles whose prose names a topic another article covers, without
 linking to it), ranked with orphan articles first.
 
-## Verified baseline (2026-07-27, 238 published posts)
+## Verified baseline
 
-| Metric | First audit | After the full pass (all 159 done) |
-|---|---|---|
-| Internal links via `<Link to="...">` | 220 | 697 |
-| Internal links via Markdown `[x](/blog/y)` | 23 | 24 |
-| **Internal total** | 243 (1.02/article) | **721** (3.03/article) |
-| External links | 669 (2.81/article) | 668 |
-| Localhost links (reader instructions, not outbound) | 18 | 18 |
-| Ratio external : internal | 2.75 : 1 | 0.93 : 1 |
-| Articles linking to another article | 136 / 238 (57 %) | 232 / 238 (97 %) |
-| **Articles linking nowhere** | 102 (43 %) | **6 (3 %)** — closed |
+| Metric | First audit | After the full pass | Current (2026-07-28) |
+|---|---|---|---|
+| Articles scanned | 238 | 238 | **245** (`.mdx` now included) |
+| Internal links via `<Link to="...">` | 220 | 697 | 721 |
+| Internal links via Markdown `[x](/blog/y)` | 23 | 24 | 44 |
+| **Internal total** | 243 (1.02/article) | 721 (3.03/article) | **765** (3.12/article) |
+| External links | 669 (2.81/article) | 668 | 712 (2.91/article) |
+| Localhost links (reader instructions, not outbound) | 18 | 18 | 18 |
+| Ratio external : internal | 2.75 : 1 | 0.93 : 1 | 0.93 : 1 |
+| Articles linking to another article | 136 / 238 (57 %) | 232 / 238 (97 %) | **245 / 245 (100 %)** |
+| **Articles linking nowhere** | 102 (43 %) | 6 (3 %) | **0** |
 
-**The TODO is finished** and archived at `.todos/DONE/DONE-internal-link-opportunities.md`.
-The 6 remaining orphans never appeared in the report (the script found no relevant
-candidate for them); nothing to do there.
+Two corrections landed on 2026-07-28 and explain the third column:
 
-The blog's internal linking is healthy overall. The actionable gap is the orphan
-articles, not the outbound volume: 2.81 external links per article is normal for
-a technical blog.
+1. `findPosts()` only collected `index.md`, so the **7 `index.mdx` posts were never
+   audited at all** (docusaurus-cards, php-api-tips, docusaurus-bluesky-share/-comments,
+   docker-joomla + part-2 + restore-jpa). Two of them were orphans: docusaurus-cards and
+   php-api-tips.
+2. Links to `/blog/tags/...`, `/blog/archive`, `/blog/authors`, `/blog/page/...`
+   (`SECTION_ROUTE`) are internal but are **not** article links: they no longer make a post
+   count as "linked", and `--post` lists them separately instead of flagging them as broken.
+
+The original TODO is finished and archived at
+`.todos/DONE/DONE-internal-link-opportunities.md`.
+
+**2026-07-28 — the last 8 orphans were fixed** (windows-winget, new-year-2024,
+matomo-install, outlook-vba-pdf, vbs-files-csv, php-api-tips, docusaurus-cards,
+claude-ia-spare-tokens), so the blog is at 100 %. Six of them had no incoming link
+either; backlinks were added in vba-excel-ribbon, docker-docusaurus-own-blog,
+vbs-auto-update and docusaurus-easter-eggs. Still with **no incoming link**:
+windows-winget and new-year-2024 — no article's prose names `winget` (checked), and a
+New Year greeting is a poor link destination.
+
+Do not treat `/blog/inexisting_page` in **docusaurus-easter-eggs** as a bug: it is a
+deliberate 404 demo, and `--post` will always flag it with `!!`.
+
+The blog's internal linking is healthy overall. The outbound volume is fine as-is:
+2.9 external links per article is normal for a technical blog.
 
 ## Working through `.todos/internal-link-opportunities.md`
 

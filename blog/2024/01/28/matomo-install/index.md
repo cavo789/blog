@@ -19,7 +19,7 @@ This article walks through self-hosting Matomo, a GDPR-compliant web analytics t
 
 [Matomo](https://matomo.org) is a GDPR-compliant tracking tool for your website. I've finally decided to install it so that I can get the blog's traffic figures; find out which articles are the most widely read, which topics are of most interest, etc., not just out of curiosity but also to get a better idea of the audience.
 
-I've chosen the self-hosted solution (because it's free) so that my traffic figures remain on my own server.
+I've chosen the <Link to="/blog/docker-memos">self-hosted solution</Link> (because it's free) so that my traffic figures remain on my own server.
 
 <!-- truncate -->
 
@@ -45,7 +45,7 @@ On my side, here are the actions I took:
   ]}
 />
 
-Since I know I should have a MySQL database, I went to my dashboard. For PlanetHoster, it's [https://my.planethoster.com](https://my.planethoster.com) and there, I created a new MySQL db and its user.
+Since I know I should have a MySQL database, I went to my dashboard. For <Link to="/blog/planethoster-n0c-spam">PlanetHoster</Link>, it's [https://my.planethoster.com](https://my.planethoster.com) and there, I created a new MySQL db and its user.
 
 Finally, I just need to start the wizard on `https://matomo.avonture.be/index.php` and follow the guide.
 
@@ -55,4 +55,4 @@ When done, I get my dashboard on [https://matomo.avonture.be/index.php](https://
 
 ## Docusaurus
 
-On this blog, I'm using [Docusaurus](https://docusaurus.io/) so I've installed a plugin for this: [https://github.com/karser/docusaurus-plugin-matomo](https://github.com/karser/docusaurus-plugin-matomo).
+On <Link to="/blog/docusaurus-docker-own-blog">this blog</Link>, I'm using [Docusaurus](https://docusaurus.io/) so I've installed a plugin for this: [https://github.com/karser/docusaurus-plugin-matomo](https://github.com/karser/docusaurus-plugin-matomo).

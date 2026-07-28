@@ -27,7 +27,7 @@ So you've created your own blog using Docker and Docusaurus. By following steps 
 
 Let's go further.
 
-*And when your blog is ready to leave your machine, <Link to="/blog/docker-docusaurus-prod">Encapsulate an entire Docusaurus site in a Docker image</Link> packages it for production, while <Link to="/blog/github-action">GitHub - Use Actions to deploy this blog</Link> publishes it automatically on every push.*
+*And when your blog is ready to leave your machine, <Link to="/blog/docker-docusaurus-prod">Encapsulate an entire Docusaurus site in a Docker image</Link> packages it for production, while <Link to="/blog/github-action">GitHub - Use Actions to deploy this blog</Link> publishes it automatically on every push. Once it is online, <Link to="/blog/matomo-install">How to self-host Matomo</Link> tells you who reads it.*
 
 <!-- truncate -->
 

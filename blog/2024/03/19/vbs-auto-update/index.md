@@ -24,7 +24,7 @@ A VBS script for DOS is a text file written in the Visual Basic Scripting Editio
 
 It's just like <Link to="/blog/tags/bash">Linux Bash</Link> scripts but for DOS.
 
-*Two VBS utilities of mine that would benefit from exactly this self-update mechanism: <Link to="/blog/vbs-msaccess-get-fields">VBS - Retrieve the list of fields in a MS Access Database</Link> and <Link to="/blog/vba-access-export">Export MS Access objects</Link>.*
+*Three VBS utilities of mine that would benefit from exactly this self-update mechanism: <Link to="/blog/vbs-msaccess-get-fields">VBS - Retrieve the list of fields in a MS Access Database</Link>, <Link to="/blog/vba-access-export">Export MS Access objects</Link> and <Link to="/blog/vbs-files-csv">VBS - Get list of files and generate a CSV</Link>.*
 
 Do you think it would be possible to offer an auto-update function in such scripts? The answer is yes.
 

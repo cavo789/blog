@@ -20,18 +20,24 @@
  *   node scripts/internal-link-opportunities.mjs
  *   node scripts/internal-link-opportunities.mjs --min-score 6 --top 3
  *   node scripts/internal-link-opportunities.mjs --out .todos/internal-links.md
+ *   node scripts/internal-link-opportunities.mjs --post blog/2026/07/28/my-slug
  *
  * `--stats` prints the site-wide internal/external linking audit. Prefer it over
  * an ad hoc grep: see `collectLinks()` for the four ways a naive one gets the
  * numbers wrong.
+ *
+ * `--post` checks a single article — the one just written — and exits 1 when it
+ * carries fewer than `--min-links` internal links (default 1), so it can run in
+ * CI or in a pre-commit hook. It accepts the article directory or its
+ * `index.md`, inside `blog/` or in `.unpublished/`.
  */
 
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const BLOG_DIR = "blog";
 
-/** Recursively collects every `index.md` under a directory. */
+/** Recursively collects every article file under a directory. */
 function findPosts(directory) {
   const found = [];
 
@@ -40,7 +46,9 @@ function findPosts(directory) {
 
     if (entry.isDirectory()) {
       found.push(...findPosts(target));
-    } else if (entry.name === "index.md") {
+      // A handful of posts embed components heavily and use `index.mdx`; they
+      // are articles like any other and must be part of the corpus.
+    } else if (entry.name === "index.md" || entry.name === "index.mdx") {
       found.push(target);
     }
   }
@@ -50,15 +58,86 @@ function findPosts(directory) {
 
 /** Words too generic to identify an article on their own. */
 const STOP_WORDS = new Set([
-  "the", "and", "for", "with", "your", "you", "from", "into", "how", "what",
-  "why", "when", "where", "this", "that", "these", "those", "using", "use",
-  "used", "make", "made", "get", "getting", "let", "lets", "run", "running",
-  "start", "started", "starting", "new", "own", "one", "two", "more", "most",
-  "some", "any", "all", "not", "but", "can", "will", "have", "has", "our",
-  "out", "off", "その", "part", "introduction", "intro", "tips", "tricks",
-  "guide", "quick", "simple", "easy", "better", "best", "good", "great",
-  "about", "just", "very", "also", "then", "than", "them", "they", "there",
-  "here", "over", "under", "between", "without", "within", "again", "back",
+  "the",
+  "and",
+  "for",
+  "with",
+  "your",
+  "you",
+  "from",
+  "into",
+  "how",
+  "what",
+  "why",
+  "when",
+  "where",
+  "this",
+  "that",
+  "these",
+  "those",
+  "using",
+  "use",
+  "used",
+  "make",
+  "made",
+  "get",
+  "getting",
+  "let",
+  "lets",
+  "run",
+  "running",
+  "start",
+  "started",
+  "starting",
+  "new",
+  "own",
+  "one",
+  "two",
+  "more",
+  "most",
+  "some",
+  "any",
+  "all",
+  "not",
+  "but",
+  "can",
+  "will",
+  "have",
+  "has",
+  "our",
+  "out",
+  "off",
+  "その",
+  "part",
+  "introduction",
+  "intro",
+  "tips",
+  "tricks",
+  "guide",
+  "quick",
+  "simple",
+  "easy",
+  "better",
+  "best",
+  "good",
+  "great",
+  "about",
+  "just",
+  "very",
+  "also",
+  "then",
+  "than",
+  "them",
+  "they",
+  "there",
+  "here",
+  "over",
+  "under",
+  "between",
+  "without",
+  "within",
+  "again",
+  "back",
 ]);
 
 /** Parses the frontmatter block of a Markdown file. Enough YAML for our shape. */
@@ -114,13 +193,15 @@ function parseFrontMatter(raw) {
 
 /** Removes fenced code blocks, inline code, links and JSX tags so only prose remains. */
 function toProse(body) {
-  return body
-    .replace(/^\s*(```|~~~)[\s\S]*?^\s*\1\s*$/gm, " ")
-    .replace(/`[^`\n]*`/g, " ")
-    .replace(/\[[^\]]*\]\([^)]*\)/g, " ")
-    // Tag attributes hold slugs and component names that would otherwise read
-    // as topic mentions.
-    .replace(/<[^>]+>/g, " ");
+  return (
+    body
+      .replace(/^\s*(```|~~~)[\s\S]*?^\s*\1\s*$/gm, " ")
+      .replace(/`[^`\n]*`/g, " ")
+      .replace(/\[[^\]]*\]\([^)]*\)/g, " ")
+      // Tag attributes hold slugs and component names that would otherwise read
+      // as topic mentions.
+      .replace(/<[^>]+>/g, " ")
+  );
 }
 
 /** File extensions that make a link an asset reference rather than a page link. */
@@ -129,6 +210,18 @@ const ASSET_EXTENSION =
 
 /** Localhost URLs are instructions to the reader, not outbound traffic. */
 const LOCALHOST = /\/\/(127\.0\.0\.1|localhost)/;
+
+/** Blog routes that are listing pages rather than articles. */
+const SECTION_ROUTE = /^\/blog\/(tags|archive|authors|page)(\/|$)/;
+
+/**
+ * The articles a post links to. A link to a tag or archive page is internal but
+ * does not send the reader to another article, so it never makes a post
+ * "linked" for the purpose of this report.
+ */
+function articleLinks(post) {
+  return [...post.links].filter((link) => !SECTION_ROUTE.test(link));
+}
 
 /**
  * Collects every link an article makes, split by destination.
@@ -247,35 +340,92 @@ function countMentions(prose, term) {
   return matches ? matches.length : 0;
 }
 
+/**
+ * Reads one article into the shape the rest of the script works with.
+ *
+ * `skipDrafts` is what keeps the corpus limited to published content; the
+ * single-article check (`--post`) turns it off, because a draft that links
+ * nowhere becomes an orphan the day it is published.
+ */
+function readPost(file, { skipDrafts = true } = {}) {
+  const raw = readFileSync(file, "utf8");
+  const { data, body } = parseFrontMatter(raw);
+
+  if (!data.title || (skipDrafts && data.draft === "true")) {
+    return null;
+  }
+
+  const slug = data.slug ?? path.basename(path.dirname(file));
+  const linkCounts = collectLinks(body);
+
+  return {
+    file,
+    title: data.title,
+    slug,
+    permalink: `/blog/${slug.replace(/^\//, "")}`,
+    mainTag: data.mainTag ?? null,
+    tags: Array.isArray(data.tags) ? data.tags : [],
+    date: data.date ?? "",
+    series: data.series ?? null,
+    draft: data.draft === "true",
+    prose: toProse(body).toLowerCase(),
+    links: linkCounts.internal,
+    linkCounts,
+  };
+}
+
 function loadPosts() {
   return findPosts(BLOG_DIR)
-    .map((file) => {
-      const raw = readFileSync(file, "utf8");
-      const { data, body } = parseFrontMatter(raw);
-
-      if (!data.title || data.draft === "true") {
-        return null;
-      }
-
-      const slug =
-        data.slug ?? path.basename(path.dirname(file));
-      const linkCounts = collectLinks(body);
-
-      return {
-        file,
-        title: data.title,
-        slug,
-        permalink: `/blog/${slug.replace(/^\//, "")}`,
-        mainTag: data.mainTag ?? null,
-        tags: Array.isArray(data.tags) ? data.tags : [],
-        date: data.date ?? "",
-        series: data.series ?? null,
-        prose: toProse(body).toLowerCase(),
-        links: linkCounts.internal,
-        linkCounts,
-      };
-    })
+    .map((file) => readPost(file))
     .filter(Boolean);
+}
+
+/** Ranks the articles `source` talks about but never links to. */
+function scoreCandidates(source, targets, termsByPost, { minScore }) {
+  const candidates = [];
+
+  for (const target of targets) {
+    if (target.slug === source.slug) {
+      continue;
+    }
+
+    if (source.links.has(target.permalink)) {
+      continue;
+    }
+
+    let mentions = 0;
+    const matched = [];
+
+    for (const term of termsByPost.get(target.slug)) {
+      const hits = countMentions(source.prose, term);
+
+      if (hits > 0) {
+        mentions += hits * (term.includes(" ") ? 3 : 1);
+        matched.push(term);
+      }
+    }
+
+    if (mentions === 0) {
+      continue;
+    }
+
+    const sharedTags = target.tags.filter((tag) => source.tags.includes(tag));
+    const sameSeries = source.series && target.series && source.series === target.series;
+
+    const score =
+      mentions +
+      sharedTags.length * 2 +
+      (source.mainTag && source.mainTag === target.mainTag ? 4 : 0) +
+      (sameSeries ? 5 : 0);
+
+    if (score >= minScore) {
+      candidates.push({ target, score, matched, sharedTags });
+    }
+  }
+
+  candidates.sort((a, b) => b.score - a.score);
+
+  return candidates;
 }
 
 function buildOpportunities(posts, { minScore, top }) {
@@ -283,53 +433,11 @@ function buildOpportunities(posts, { minScore, top }) {
   const report = [];
 
   for (const source of posts) {
-    const candidates = [];
-
-    for (const target of posts) {
-      if (target.slug === source.slug) {
-        continue;
-      }
-
-      if (source.links.has(target.permalink)) {
-        continue;
-      }
-
-      let mentions = 0;
-      const matched = [];
-
-      for (const term of termsByPost.get(target.slug)) {
-        const hits = countMentions(source.prose, term);
-
-        if (hits > 0) {
-          mentions += hits * (term.includes(" ") ? 3 : 1);
-          matched.push(term);
-        }
-      }
-
-      if (mentions === 0) {
-        continue;
-      }
-
-      const sharedTags = target.tags.filter((tag) => source.tags.includes(tag));
-      const sameSeries =
-        source.series && target.series && source.series === target.series;
-
-      const score =
-        mentions +
-        sharedTags.length * 2 +
-        (source.mainTag && source.mainTag === target.mainTag ? 4 : 0) +
-        (sameSeries ? 5 : 0);
-
-      if (score >= minScore) {
-        candidates.push({ target, score, matched, sharedTags });
-      }
-    }
+    const candidates = scoreCandidates(source, posts, termsByPost, { minScore });
 
     if (candidates.length === 0) {
       continue;
     }
-
-    candidates.sort((a, b) => b.score - a.score);
 
     report.push({
       source,
@@ -340,7 +448,9 @@ function buildOpportunities(posts, { minScore, top }) {
 
   // Articles that currently link nowhere are the ones worth editing first.
   report.sort((a, b) => {
-    const orphanDelta = (a.source.links.size === 0 ? 0 : 1) - (b.source.links.size === 0 ? 0 : 1);
+    const orphanDelta =
+      (articleLinks(a.source).length === 0 ? 0 : 1) -
+      (articleLinks(b.source).length === 0 ? 0 : 1);
 
     if (orphanDelta !== 0) {
       return orphanDelta;
@@ -353,7 +463,7 @@ function buildOpportunities(posts, { minScore, top }) {
 }
 
 function renderMarkdown(report, posts) {
-  const orphans = posts.filter((post) => post.links.size === 0).length;
+  const orphans = posts.filter((post) => articleLinks(post).length === 0).length;
   const lines = [
     "# Internal link opportunities",
     "",
@@ -373,14 +483,12 @@ function renderMarkdown(report, posts) {
     lines.push("");
     lines.push(`\`${source.file}\` — ${source.permalink}`);
     lines.push(
-      `Currently links to ${source.links.size} article(s). ${total} candidate(s) found.`,
+      `Currently links to ${articleLinks(source).length} article(s). ${total} candidate(s) found.`,
     );
     lines.push("");
 
     for (const { target, score, matched, sharedTags } of candidates) {
-      lines.push(
-        `- **[${target.title}](${target.permalink})** _(score ${score})_`,
-      );
+      lines.push(`- **[${target.title}](${target.permalink})** _(score ${score})_`);
       lines.push(`  - mentioned as: ${matched.map((t) => `\`${t}\``).join(", ")}`);
 
       if (sharedTags.length > 0) {
@@ -396,14 +504,13 @@ function renderMarkdown(report, posts) {
 
 /** Prints the site-wide linking audit these suggestions are derived from. */
 function renderStats(posts) {
-  const sum = (key) =>
-    posts.reduce((total, post) => total + post.linkCounts[key], 0);
+  const sum = (key) => posts.reduce((total, post) => total + post.linkCounts[key], 0);
 
   const markdown = sum("markdown");
   const jsx = sum("jsx");
   const internal = markdown + jsx;
   const external = sum("external");
-  const linked = posts.filter((post) => post.links.size > 0).length;
+  const linked = posts.filter((post) => articleLinks(post).length > 0).length;
   const share = (value) => `${((100 * value) / posts.length).toFixed(0)} %`;
   const perPost = (value) => (value / posts.length).toFixed(2);
 
@@ -424,6 +531,105 @@ function renderStats(posts) {
   ].join("\n");
 }
 
+/** Accepts either the article folder or its `index.md` / `index.mdx`. */
+function resolvePostPath(input) {
+  const target = input.replace(/\/+$/, "");
+
+  if (existsSync(target) && statSync(target).isDirectory()) {
+    const mdx = path.join(target, "index.mdx");
+
+    return existsSync(mdx) ? mdx : path.join(target, "index.md");
+  }
+
+  return target;
+}
+
+/**
+ * Checks a single article — the one being written — instead of the whole blog.
+ *
+ * Returns the report and whether the article carries enough internal links, so
+ * the caller can turn it into an exit code for CI or a pre-commit hook.
+ */
+function checkPost(file, posts, { minScore, top, minLinks }) {
+  if (!existsSync(file)) {
+    return { ok: false, text: `${file}: no such article.` };
+  }
+
+  const post = readPost(file, { skipDrafts: false });
+
+  if (!post) {
+    return { ok: false, text: `${file}: no frontmatter title, not an article.` };
+  }
+
+  const corpus = posts.filter((other) => other.slug !== post.slug);
+  const termsByPost = new Map(
+    corpus.map((other) => [other.slug, identifyingTerms(other)]),
+  );
+  const candidates = scoreCandidates(post, corpus, termsByPost, { minScore });
+  const known = new Set(posts.map((other) => other.permalink));
+  // Tag, archive and author pages are internal links, but they are not the
+  // article-to-article links this check is about, and they resolve to no post.
+  const linked = [...post.links].filter((link) => !SECTION_ROUTE.test(link));
+  const sections = [...post.links].filter((link) => SECTION_ROUTE.test(link));
+  const unknown = linked.filter((link) => !known.has(link));
+  const ok = linked.length >= minLinks;
+
+  const lines = [
+    `${post.title}${post.draft ? " (draft)" : ""}`,
+    `${file}`,
+    "",
+    `Links to other articles : ${linked.length}   (minimum expected: ${minLinks})`,
+    `Links to blog sections  : ${sections.length}   (tag/archive pages, not counted)`,
+    `External links          : ${post.linkCounts.external}`,
+  ];
+
+  if (linked.length > 0) {
+    lines.push("");
+
+    for (const link of linked) {
+      lines.push(`  ${known.has(link) ? "->" : "!!"} ${link}`);
+    }
+  }
+
+  if (unknown.length > 0) {
+    lines.push("");
+    lines.push(
+      `!! ${unknown.length} link(s) point to no published article — check the slug.`,
+    );
+  }
+
+  if (!ok) {
+    lines.push("");
+    lines.push(
+      `FAIL: this article links to ${linked.length} other article(s). Add links inline, where the topic is named in the prose.`,
+    );
+  }
+
+  if (candidates.length > 0) {
+    lines.push("");
+    lines.push(
+      `Suggestions — topics named in the prose but not linked (top ${Math.min(top, candidates.length)} of ${candidates.length}):`,
+    );
+
+    for (const { target, score, matched, sharedTags } of candidates.slice(0, top)) {
+      lines.push(`  - ${target.title} — ${target.permalink} (score ${score})`);
+      lines.push(`    mentioned as: ${matched.map((term) => `"${term}"`).join(", ")}`);
+
+      if (sharedTags.length > 0) {
+        lines.push(`    shared tags: ${sharedTags.join(", ")}`);
+      }
+    }
+
+    lines.push("");
+    lines.push("Candidates are hints, not a spec: link what the prose actually names.");
+  } else if (!ok) {
+    lines.push("");
+    lines.push("No candidate found automatically — pick related articles by hand.");
+  }
+
+  return { ok, text: lines.join("\n") };
+}
+
 function main() {
   const args = process.argv.slice(2);
   const readFlag = (name, fallback) => {
@@ -432,14 +638,34 @@ function main() {
     return index === -1 ? fallback : args[index + 1];
   };
 
-  const minScore = Number(readFlag("--min-score", 8));
-  const top = Number(readFlag("--top", 3));
   const out = readFlag("--out", null);
+  const post = readFlag("--post", null);
+  const minLinks = Number(readFlag("--min-links", 1));
+  const minScore = Number(readFlag("--min-score", 8));
+  // A single article gets a couple more suggestions than the site-wide report,
+  // where three per article was already a long file.
+  const top = Number(readFlag("--top", post ? 5 : 3));
 
   const posts = loadPosts();
 
   if (args.includes("--stats")) {
     console.log(renderStats(posts));
+    return;
+  }
+
+  if (post) {
+    const result = checkPost(resolvePostPath(post), posts, {
+      minScore,
+      top,
+      minLinks,
+    });
+
+    console.log(result.text);
+
+    if (!result.ok) {
+      process.exitCode = 1;
+    }
+
     return;
   }
 

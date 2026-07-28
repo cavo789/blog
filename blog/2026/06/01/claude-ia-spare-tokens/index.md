@@ -87,7 +87,7 @@ Loaded at every startup — every byte here costs tokens before your first messa
 
 ### Data Fetching Rules
 
-Instructs Claude to use targeted `grep`/`jq`/`yq` calls instead of loading whole files.
+Instructs Claude to use targeted <Link to="/blog/ripgrep">`grep`</Link>/<Link to="/blog/linux-jq">`jq`</Link>/`yq` calls instead of loading whole files.
 
 **Restrictive** — maximum token savings:
 

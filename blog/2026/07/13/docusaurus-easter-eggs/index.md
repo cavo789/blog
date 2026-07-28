@@ -22,7 +22,7 @@ Beyond the meerkat mascot already visible on this blog, this blog hides eight sm
 
 You already know this site has a mascot: a meerkat that shows up on the 404 page, rides the "scroll to top" button, and hides in an [ASCII-art HTML comment](/blog/docusaurus-ascii-art) on every page. That last one got me thinking: if a comment in the page source is fun, what else could a curious visitor stumble upon?
 
-So, this week-end, I asked myself — and Claude Code — a simple question: how far can we take this without it becoming annoying? The answer turned into eight small easter eggs — the ASCII-art comment revisited in detail, plus seven new additions — each following the same rule: **if you're not looking for it, you'll never see it.** No pop-ups, no confetti on page load, nothing that gets in a reader's way. Just quiet rewards for the curious.
+So, this week-end, I asked myself — and <Link to="/blog/claude-ia-spare-tokens">Claude Code</Link> — a simple question: how far can we take this without it becoming annoying? The answer turned into eight small easter eggs — the ASCII-art comment revisited in detail, plus seven new additions — each following the same rule: **if you're not looking for it, you'll never see it.** No pop-ups, no confetti on page load, nothing that gets in a reader's way. Just quiet rewards for the curious.
 
 <!-- truncate -->
 

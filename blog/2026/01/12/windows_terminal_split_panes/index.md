@@ -207,7 +207,7 @@ In the code above, I've used a legacy one for illustration. I've kept the `guid`
 
 If you have a recent version, you can drop the `guid` line; it is no longer required.
 
-If you need to specify that attribute and are wondering _How can I generate a GUID string?_, there is a Linux command for that. Simply type `uuidgen` in your console. Each time you run it, you will get a new, valid GUID.
+If you need to specify that attribute and are wondering *How can I generate a GUID string?*, there is a Linux command for that. Simply type `uuidgen` in your console. Each time you run it, you will get a new, valid GUID.
 
 </AlertBox>
 

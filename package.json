@@ -16,6 +16,8 @@
     "eli5:bulk": "node scripts/bulk-eli5.mjs",
     "eli5:check": "node scripts/check-eli5-freshness.mjs",
     "icons:bundle": "node scripts/generate-icon-bundle.mjs",
+    "links:audit": "node scripts/internal-link-opportunities.mjs --stats",
+    "links:check": "node scripts/internal-link-opportunities.mjs --post",
     "lint:js": "eslint .",
     "lint:css": "stylelint \"src/**/*.css\" --max-warnings 350",
     "lint": "yarn lint:js && yarn lint:css",

@@ -72,11 +72,11 @@ Hello world! Proud to be here!!!
 
 ## Creation of our Snippets component
 
-Please create the `src/components/Snippet/index.js` file with this content _(look at the icon, we can see it's a Javascript code; the border is also set to a yellow one)_:
+Please create the `src/components/Snippet/index.js` file with this content *(look at the icon, we can see it's a Javascript code; the border is also set to a yellow one)*:
 
 <Snippet filename="src/components/Snippet/index.js" source="src/components/Snippet/index.js" />
 
-Also create the stylesheet _(CSS icon and blue border here)_:
+Also create the stylesheet *(CSS icon and blue border here)*:
 
 <Snippet filename="src/components/Snippet/styles.module.css" source="src/components/Snippet/styles.module.css" />
 

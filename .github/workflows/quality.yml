@@ -25,3 +25,56 @@ jobs:
 
       - name: Run lint (ESLint + stylelint)
         run: yarn lint
+
+  internal-links:
+    name: Internal links on new/changed articles
+    runs-on: ubuntu-latest
+    # Informational on purpose: a missing cross-link is a writing remark, not a
+    # reason to turn the whole run red. Findings show up as annotations.
+    continue-on-error: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the diff needs the history, not just the tip commit
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # The script has no dependency, so no `yarn install` here.
+      - name: Check articles added or modified in this push/PR
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            base="${{ github.event.pull_request.base.sha }}"
+          else
+            base="${{ github.event.before }}"
+          fi
+
+          # A brand new branch reports an all-zero "before" commit.
+          if [ -z "$base" ] || [ "$base" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$base" 2>/dev/null; then
+            base="$(git rev-parse HEAD~1 2>/dev/null || git rev-parse HEAD)"
+          fi
+
+          articles="$(git diff --name-only --diff-filter=ACM "$base" HEAD -- 'blog/**/index.md' 'blog/**/index.mdx' '.unpublished/**/index.md' '.unpublished/**/index.mdx')"
+
+          if [ -z "$articles" ]; then
+            echo "No article added or modified."
+            exit 0
+          fi
+
+          status=0
+
+          for article in $articles; do
+            echo "::group::$article"
+
+            if ! node scripts/internal-link-opportunities.mjs --post "$article"; then
+              status=1
+              echo "::warning file=$article::This article links to no other article. Next step: run 'yarn links:check $article' locally to see candidate targets, then add 2-4 links inline where the topic is named in the prose (or run the /links Claude Code command on this path)."
+            fi
+
+            echo "::endgroup::"
+          done
+
+          exit $status

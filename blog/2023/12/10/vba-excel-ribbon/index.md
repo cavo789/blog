@@ -53,6 +53,8 @@ The `CustomOfficeUIEditor` tool isn't a user-friendly tool: you'll need to type 
 
 By default, a standard MS Office document doesn't contain any ribbon so, when you open such files with the `CustomOfficeUIEditor` tool, you'll get an empty document.
 
+*Outlook is the exception: there, no XML is needed at all since the built-in `Customize the Ribbon` dialog can host a macro button, as done in <Link to="/blog/outlook-vba-pdf">Microsoft Outlook - VBA - Save emails as PDF</Link>.*
+
 Please start `CustomOfficeUIEditor` and open your `Ribbon.xlsm` file:
 
 ![UI - Open Ribbon.xlsm](./images/UI_open.webp)
