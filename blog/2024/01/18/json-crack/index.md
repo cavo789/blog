@@ -11,6 +11,7 @@ tags:
   - linux
   - vscode
 language: en
+review_date: 2026-07-30
 ---
 ![Rendering a JSON file as a mind map](/img/v2/mindmaps.webp)
 

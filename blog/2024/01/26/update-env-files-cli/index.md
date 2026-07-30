@@ -11,6 +11,7 @@ tags:
   - docker
   - linux
 language: en
+review_date: 2026-07-30
 ---
 ![Batch edit of environment file](/img/v2/bash.webp)
 

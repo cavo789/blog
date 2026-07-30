@@ -5,6 +5,7 @@
 # Prints to stdout — nothing is ever written to disk.
 
 AI_COMMANDS[test]="ai-test <file.sh|.php|.py>  — generate or complete a unit test suite"
+AI_PARAMS[test]="file"
 
 ai-test() {
   local file="$1"

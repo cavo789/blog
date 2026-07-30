@@ -5,6 +5,7 @@
 # Enter yourself.
 
 AI_COMMANDS[data]="ai-data <file.json|file.csv>  — suggest jq/awk commands tailored to this file"
+AI_PARAMS[data]="file"
 
 ai-data() {
   local file="$1"

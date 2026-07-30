@@ -10,12 +10,15 @@ tags:
   - docker
   - php
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Updated PHP examples from php:8.3-apache (EOL Dec 2022) to php:8.3-apache and php:8.4-apache (EOL Nov 2024) to php:8.4-apache."
 ---
 <!-- cspell:ignore wamp -->
 ![Install Docker and play with PHP](/img/v2/docker_tips.webp)
 
 <TLDR>
-This getting-started article installs Docker Desktop and runs a PHP+Apache site with zero local PHP/Apache install: `docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache`, then creating an `index.php` inside the container via `docker exec`. It shows how trivially you can switch PHP versions (e.g. to `php:8.1.5-apache` on a different port) compared to juggling versions with EasyPHP or WAMP.
+This getting-started article installs Docker Desktop and runs a PHP+Apache site with zero local PHP/Apache install: `docker run --detach --name step_1_1a -p 80:80 php:8.3-apache`, then creating an `index.php` inside the container via `docker exec`. It shows how trivially you can switch PHP versions (e.g. to `php:8.4-apache` on a different port) compared to juggling versions with EasyPHP or WAMP.
 </TLDR>
 
 Docker can be installed free of charge for personal or small-scale usage: [https://www.docker.com/products/personal/](https://www.docker.com/products/docker-desktop/).
@@ -63,10 +66,10 @@ The commands we will use in this step will be the same whether you are running L
 
 Let's begin. Start a new console (DOS, Powershell or Linux) and run the instruction below.
 
-Docker will, the first time, download PHP `7.4.29` (including Apache) and, once downloaded, start the image:
+Docker will, the first time, download PHP `8.3` (including Apache) and, once downloaded, start the image:
 
 <Terminal typewriter>
-$ docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache
+$ docker run --detach --name step_1_1a -p 80:80 php:8.3-apache
 </Terminal>
 
 <AlertBox variant="info">
@@ -84,12 +87,12 @@ We can also see that an application (a `container` in Docker terms) is also runn
 
 The command line to run is: `docker container list`
 
-Explanation of the arguments used in our `docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache` command
+Explanation of the arguments used in our `docker run --detach --name step_1_1a -p 80:80 php:8.3-apache` command
 
 - `--detach`: by default, `docker run` executes the container and closes it as soon as the job is finished. If the image were a virus scanner, `docker run` would run a scan and close the container when the scan is complete. Here, we want to keep our site "listening",
 - `--name step_1_1a`: just for simplicity's sake, let's give our container a name. This is a recommended practice for clearly identifying containers,
 - `-p 80:80`: our PHP+Apache image runs on port `80`, so we want to map this "internal" port to port `80` on our computer. This allows us to access the web site.
-- `php:7.4.29-apache`: the name of the used image. We ask php+apache, version 7.4.29.
+- `php:8.3-apache`: the name of the used image. We ask php+apache, version 8.3.
 
 Let's try to access the local site: `http://127.0.0.1:80`.
 
@@ -120,21 +123,21 @@ $ exit
 
 Back to our browser and... Bingo! Our first Docker instance running a PHP script!
 
-![phpinfo - PHP 7.4.29](./images/phpinfo_7_4_29.webp)
+![phpinfo - PHP 8.3](./images/phpinfo_7_4_29.webp)
 
 Let's go back to the instruction we used before:
 
 <Terminal typewriter>
-$ docker run --detach --name step_1_1a -p 80:80 php:7.4.29-apache
+$ docker run --detach --name step_1_1a -p 80:80 php:8.3-apache
 </Terminal>
 
 This shows that we are targeting PHP version 7.4.29. By going to the page
-[https://hub.docker.com/_/php?tab=tags](https://hub.docker.com/_/php?tab=tags) and searching for `-apache` images, you'll find versions such as `php:8.1.1-apache` or `php:8.1.5-apache`.
+[https://hub.docker.com/_/php?tab=tags](https://hub.docker.com/_/php?tab=tags) and searching for `-apache` images, you'll find versions such as `php:8.1.1-apache` or `php:8.4-apache`.
 
-Let's change `7.4.29` to `8.1.5` and, for example, use another port (we will use `801` this time).
+Let's change `8.3` to `8.4` and, for example, use another port (we will use `801` this time).
 
 <Terminal typewriter>
-$ docker run --detach --name step_1_1b -p 801:80 php:8.1.5-apache
+$ docker run --detach --name step_1_1b -p 801:80 php:8.4-apache
 </Terminal>
 
 <Terminal typewriter>
@@ -147,7 +150,7 @@ $ echo "phpinfo();" >> index.php
 $ exit
 </Terminal>
 
-![phpinfo - PHP 8.1.5](./images/phpinfo_8_1_5.webp)
+![phpinfo - PHP 8.4](./images/phpinfo_8_1_5.webp)
 
 ***No headaches and zero conflicts!*** We have installed a new version of PHP in seconds.
 

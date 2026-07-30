@@ -13,6 +13,9 @@ tags:
   - php
   - vscode
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Replaced dead pint-express link (benjamincrozat.com/pint-express, 404) with hexmos.com/freedevtools/tldr/common/pint; updated squizlabs→PHPCSStandards; Laravel docs 11.x→13.x."
 ---
 ![Format poorly formatted PHP code](/img/v2/clean_code.webp)
 
@@ -30,13 +33,13 @@ For example, how do you make the code below look cleaner in five seconds?
 
 <!-- truncate -->
 
-There are a huge number of *linters* on the internet, but this is perhaps one of the best:  [https://benjamincrozat.com/pint-express](https://benjamincrozat.com/pint-express). It's based on the [Laravel Pint](https://laravel.com/docs/11.x/pint) tool (but not limited to Laravel code for sure).
+There are a huge number of *linters* on the internet, but this is perhaps one of the best:  [https://hexmos.com/freedevtools/tldr/common/pint](https://hexmos.com/freedevtools/tldr/common/pint). It's based on the [Laravel Pint](https://laravel.com/docs/13.x/pint) tool (but not limited to Laravel code for sure).
 
 So, here's how the code looked before:
 
 ![Correctly formatted PHP code](./images/before.webp)
 
-Jump to [Pint-express](https://benjamincrozat.com/pint-express), copy the code into the **Code** textarea of the script and let the reformatting happen:
+Jump to [Hexmos Pint formatter](https://hexmos.com/freedevtools/tldr/common/pint), copy the code into the **Code** textarea of the script and let the reformatting happen:
 
 ![Correctly formatted PHP code](./images/after.webp)
 
@@ -48,6 +51,6 @@ An online tool is perfect for a one-off paste. For your own projects, wire the f
 
 ## If you're a PHP developer
 
-... then make sure to use tools like [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer) or [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) or many others. See also my <Link to="/blog/php-jakzal-phpqa">Docker image that provides static analysis tools for PHP</Link>.
+... then make sure to use tools like [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer) or [PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer) or many others. See also my <Link to="/blog/php-jakzal-phpqa">Docker image that provides static analysis tools for PHP</Link>.
 
 Remember to add these tools to your editor (there are many VSCode extensions), to your workflow (f.i. by using local `make` actions), or add these steps to a remote pipeline.

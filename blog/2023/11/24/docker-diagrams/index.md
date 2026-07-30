@@ -10,6 +10,7 @@ tags:
   - doc-as-code
   - docker
 language: en
+review_date: 2026-07-30
 ---
 ![Docker - Diagrams as code](/img/v2/diagrams.webp)
 

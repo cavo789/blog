@@ -12,6 +12,7 @@ tags:
   - gitlab
   - quarto
 language: en
+review_date: 2026-07-30
 blueskyRecordKey: 3lun2kg2vmk2r
 ---
 ![GitLab - Running Docker-out-of-Docker in your CI](/img/v2/gitlab.webp)

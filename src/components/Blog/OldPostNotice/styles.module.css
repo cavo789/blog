@@ -14,3 +14,16 @@
 .oldPostNotice strong {
   margin-right: 0.25rem;
 }
+
+.reviewedPostNotice {
+  background-color: var(--ifm-color-success-contrast-background);
+  color: var(--ifm-color-success-contrast-foreground);
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--ifm-color-success-dark);
+  margin-bottom: 1.5rem;
+}
+
+.reviewedPostNotice p {
+  margin: 0;
+}

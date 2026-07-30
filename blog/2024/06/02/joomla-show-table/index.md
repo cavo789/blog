@@ -11,6 +11,9 @@ tags:
   - excel
   - joomla
 language: en
+updates:
+  - date: 2026-07-30
+    note: "The cavo789/joomla_show_table repo has been archived (May 2025); the script remains functional but is no longer maintained. Joomla 6.x compatibility is untested."
 ---
 <!-- cspell:ignore showtable,sortering,qrjlq -->
 ![Joomla - Run a SQL statement outside Joomla and display a nice HTML table](/img/v2/joomla.webp)
@@ -34,7 +37,7 @@ Of course, just running a query on your database and show the result as a web pa
 
 <!-- truncate -->
 
-You can find all the information on my repo at [https://github.com/cavo789/joomla_show_table](https://github.com/cavo789/joomla_show_table); compatible up to Joomla 5.1.
+You can find all the information on my repo at [https://github.com/cavo789/joomla_show_table](https://github.com/cavo789/joomla_show_table); compatible up to Joomla 5.1. The repository has been archived since May 2025 — the script still works but is no longer maintained, and Joomla 6.x compatibility is untested.
 
 ## Let's create an example
 

@@ -10,6 +10,9 @@ tags:
   - excel
   - markdown
 language: en
+updates:
+  - date: 2026-07-30
+    note: "GitHub source repo cavo789/marknotes_xls2md archived Dec 8, 2024 (read-only); the online tool at xls2md.avonture.be remains fully functional."
 ---
 ![Markdown - Convert Excel ranges to Markdown tables](/img/v2/markdown.webp)
 

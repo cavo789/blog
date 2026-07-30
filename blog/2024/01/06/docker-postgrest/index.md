@@ -11,6 +11,9 @@ tags:
   - database
   - docker
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Updated PostgREST download from v10.1.1 to v14.16; archive filename changed from linux-static-x64 to linux-static-x86-64."
 ---
 ![Don't query your PostgreSQL db anymore, prefer PostgREST](/img/v2/postgrest.webp)
 
@@ -81,9 +84,9 @@ Now, to leave the postgres console, just type `\q`.
 PostgREST is a binary, download it by running:
 
 <Terminal typewriter>
-curl -o postgrest-v10.1.1-linux-static-x64.tar.xz -L https://github.com/PostgREST/postgrest/releases/download/v10.1.1/postgrest-v10.1.1-linux-static-x64.tar.xz
+curl -o postgrest-v14.16-linux-static-x86-64.tar.xz -L https://github.com/PostgREST/postgrest/releases/download/v14.16/postgrest-v14.16-linux-static-x86-64.tar.xz
 
-tar xJf postgrest-v10.1.1-linux-static-x64.tar.xz && rm -f postgrest-v10.1.1-linux-static-x64.tar.xz
+tar xJf postgrest-v14.16-linux-static-x86-64.tar.xz && rm -f postgrest-v14.16-linux-static-x86-64.tar.xz
 
 </Terminal>
 

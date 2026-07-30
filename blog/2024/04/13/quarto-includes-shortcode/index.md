@@ -11,6 +11,7 @@ tags:
   - markdown
   - quarto
 language: en
+review_date: 2026-07-30
 ---
 ![Quarto includes short code](/img/v2/quarto.webp)
 

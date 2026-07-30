@@ -6,6 +6,7 @@ A reusable Docusaurus component that displays a warning message when a blog post
 
 - Automatically detects if a blog post is older than one year.
 - Displays a styled warning box using Docusaurus's built-in alert system.
+- Supports a `review_date` front matter field: shows a green "still accurate" banner when the review is recent.
 - Easy to integrate into your blog layout via swizzled components.
 
 ## 📦 Location
@@ -38,7 +39,12 @@ This component does not accept any props. It uses `useBlogPost()` internally to 
 
 ## 📅 Logic
 
-The component compares the blog post's date to the current date. It first checks for an `updates` array in the post's frontmatter. If available, it uses the most recent date from that array. If not, it falls back to the original `metadata.date`. If the effective date is older than one year, it renders a warning message.
+The component compares the blog post's date to the current date. It first checks for an `updates` array in the post's frontmatter. If available, it uses the most recent date from that array. If not, it falls back to the original `metadata.date`. If the effective date is older than one year, it proceeds as follows:
+
+1. **`review_date` present and recent (< 1 year old)** → renders a green success banner: *"This article is over a year old but was reviewed on [date] — the content is still accurate."*
+2. **`review_date` absent or itself over a year old** → renders the standard orange warning: *"This article is over a year old. The information may be outdated."*
+
+This means a stale `review_date` is treated the same as no review at all.
 
 ## 🧑‍🎓 Authoring Tips
 

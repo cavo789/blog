@@ -14,6 +14,7 @@ tags:
   - php
   - vscode
 language: en
+review_date: 2026-07-30
 ---
 ![Install a PHP Docker environment in a matter of seconds](/img/v2/devcontainer.webp)
 

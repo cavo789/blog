@@ -10,6 +10,7 @@ tags:
   - ssh
   - winscp
 language: en
+review_date: 2026-07-30
 ---
 ![WinSCP - Retrieve a stored password](/img/v2/winscp.webp)
 

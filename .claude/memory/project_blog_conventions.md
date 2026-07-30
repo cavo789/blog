@@ -54,6 +54,8 @@ updates:                                 # update/revision history — see below
 
 **`updates:` field details** — rendered as a timeline by `Updated` component (`src/components/Blog/Updated/index.js`), auto-included in every post via `src/theme/BlogPostItem/Content/index.js` (no manual import needed). The most recent entry also drives: `dateModified` in the SEO JSON-LD (`src/components/StructuredData/index.jsx`) and the threshold for the "this article may be outdated" warning (`src/components/Blog/OldPostNotice/index.js`, >1 year since most recent update). There is no separate `lastUpdated` field — `updates` is the single source of truth for "last modified".
 
+**`review_date:` field** — ISO date (`YYYY-MM-DD`). Added by the `/freshness` skill when an article is verified accurate but over a year old (verdict `OK`). When present, `OldPostNotice` replaces the yellow ⚠️ "may be outdated" banner with a green ✅ "reviewed on [date] — content still accurate" banner. Do NOT add this field if the article already has a recent `updates:` entry (the `OldPostNotice` won't show at all in that case). Do NOT set `review_date` for `STALE` or `CRITICAL` articles.
+
 ## Content Structure (inside index.md)
 
 ```

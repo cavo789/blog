@@ -10,6 +10,7 @@ tags:
   - php
   - vscode
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore strtolower -->
 ![PHP Getter and Setter in VSCode](/img/v2/vscode_tips.webp)

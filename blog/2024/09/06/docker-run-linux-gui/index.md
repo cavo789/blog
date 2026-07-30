@@ -10,6 +10,7 @@ tags:
   - docker
   - linux
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore xeyes,xhost,dearmor,dpkg -->
 ![Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP](/img/v2/docker_gui.webp)

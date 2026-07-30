@@ -10,6 +10,9 @@ tags:
   - excel
   - markdown
 language: en
+updates:
+  - date: 2026-07-30
+    note: "GitHub source repo (cavo789/marknotes_csv2md) archived Dec 2024; the live tool at csv2md.avonture.be remains operational."
 ---
 ![Markdown - Convert CSV to Markdown tables](/img/v2/csv.webp)
 

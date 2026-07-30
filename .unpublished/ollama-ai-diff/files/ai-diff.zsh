@@ -7,6 +7,7 @@
 # not just plain text or code.
 
 AI_COMMANDS[diff]="ai-diff <file> [other-file]  — explain what changed, functionally (default: vs last commit)"
+AI_PARAMS[diff]="file"
 
 ai-diff() {
   local file1="$1"

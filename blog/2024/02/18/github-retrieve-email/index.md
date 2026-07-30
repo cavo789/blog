@@ -10,6 +10,7 @@ tags:
   - github
   - linux
 language: en
+review_date: 2026-07-30
 ---
 ![GitHub - How to find email addresses for most users](/img/v2/github_tips.webp)
 
@@ -38,7 +39,7 @@ Such a tool exists on the web, like [https://emailaddress.github.io/](https://em
 
 GitHub provides, in its public API, the list of public events for a given user.
 
-You can retrieve the email using the following URL: `https://api.github.com/users/xxxxxx/events/public`. Just replace `xxxxxx` with the GitHub username whose email you wish to retrieve.
+You can retrieve the email using the following URL: `https://api.github.com/users/xxxxxx/events/public`. Just replace `xxxxxx` with the GitHub username whose email you wish to retrieve. The response is a JSON array — pipe it through <Link to="/blog/linux-jq">jq</Link> to filter the `author.email` fields and keep the output readable.
 
 ## Based on a last commit
 

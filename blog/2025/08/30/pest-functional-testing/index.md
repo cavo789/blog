@@ -13,6 +13,9 @@ tags:
   - tests
 language: en
 blueskyRecordKey: 3lxm2amkjjk2m
+updates:
+  - date: 2026-07-30
+    note: "Pest v5.0.0 released July 24, 2026 (requires PHP 8.4, drops PHPUnit 12). The v4 browser-testing approach in this article remains valid; see pestphp.com for migration notes."
 ---
 <!-- cspell:ignore  -->
 

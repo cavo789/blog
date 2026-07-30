@@ -10,6 +10,7 @@ tags:
   - docker
   - linux
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore lubuntu,initialising,xremote,autologin,realise -->
 ![Start lubuntu Desktop](/img/v2/docker_tips.webp)

@@ -13,6 +13,9 @@ tags:
   - tests
   - vscode
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Pest v5 released at Laracon US 2026 (requires PHP 8.4 + PHPUnit 13); core unit-testing API unchanged."
 ---
 <!-- cspell:ignore Nuno -->
 
@@ -33,7 +36,7 @@ Pest is a wrapper around PhpUnit so, for instance, every command-line argument s
 *Unit tests are one layer of a quality strategy; the others on this blog are <Link to="/blog/php-jakzal-phpqa">static analysis with jakzal/phpqa</Link> and <Link to="/blog/git-precommit">pre-commit hooks</Link>, which run both before a commit can pass.*
 
 <AlertBox variant="note" title="Looking for browser/functional testing instead?">
-This article focuses on classic unit tests. Since then, Pest v4 added built-in browser testing — see <Link to="/blog/pest-functional-testing">Writing functional tests with Pest</Link>. Testing Bash scripts? Check out <Link to="/blog/bats-unit-tests">Running unit tests with bats/bats</Link>.
+This article focuses on classic unit tests. Pest v4 added built-in browser testing; Pest v5 (current, July 2026) adds Test Impact Analysis and requires PHP 8.4 — see <Link to="/blog/pest-functional-testing">Writing functional tests with Pest</Link>. Testing Bash scripts? Check out <Link to="/blog/bats-unit-tests">Running unit tests with bats/bats</Link>.
 </AlertBox>
 
 <!-- truncate -->

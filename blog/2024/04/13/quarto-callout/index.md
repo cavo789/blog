@@ -12,6 +12,7 @@ tags:
   - quarto
   - vscode
 language: en
+review_date: 2026-07-30
 ---
 ![Quarto Callout Blocks](/img/v2/quarto.webp)
 

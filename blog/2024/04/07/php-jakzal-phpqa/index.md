@@ -13,6 +13,9 @@ tags:
   - laravel
   - php
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Updated PHP_CodeSniffer link from abandoned squizlabs/PHP_CodeSniffer to its successor PHPCSStandards/PHP_CodeSniffer."
 ---
 ![Docker image that provides static analysis tools for PHP](/img/v2/clean_code.webp)
 
@@ -102,7 +105,7 @@ Here the command will be `docker run -it --rm -v "${PWD}":/project -w /project j
 
 ## PHP_CodeSniffer
 
-Another tool, [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer). *PHP_CodeSniffer tokenizes PHP files and detects violations of a defined set of coding standards.*
+Another tool, [PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer). *PHP_CodeSniffer tokenizes PHP files and detects violations of a defined set of coding standards.*
 
 This time, the command will be `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa phpcbf .`
 

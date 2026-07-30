@@ -10,6 +10,9 @@ tags:
   - laravel
   - php
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Removed link to cavo789/event_thephpleague_learning (GitHub repository no longer exists)."
 ---
 ![Working with Laravel events](/img/v2/laravel.webp)
 
@@ -96,8 +99,6 @@ If we edit back the `app/Providers/EventServiceProvider.php` file and comment th
 ## PHP example (not Laravel)
 
 Years ago, I have written an example in pure PHP (not Laravel) and using the `League\Event` library as you can find at [https://event.thephpleague.com/](https://event.thephpleague.com/).
-
-The repository and sample code are on GitHub: [https://github.com/cavo789/event_thephpleague_learning](https://github.com/cavo789/event_thephpleague_learning).
 
 *Events are, by nature, invisible: they fire somewhere and something happens elsewhere. <Link to="/blog/laravel-telescope">Laravel Telescope</Link> makes them visible again, which is a real help when debugging a decoupled application like this one.*
 

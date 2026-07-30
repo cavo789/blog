@@ -12,6 +12,7 @@ tags:
   - joomla
   - makefile
 language: en
+review_date: 2026-07-30
 ---
 ![Start Joomla with Docker in just a few clicks](/img/v2/joomla.webp)
 

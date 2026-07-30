@@ -11,6 +11,9 @@ tags:
   - github
   - gitlab
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Fixed dead link: Dagger GitLab docs moved from /integrations/gitlab to /ci/integrations/gitlab."
 ---
 <!-- cspell:ignore pylint,pyproject,stopit,randint,workdir,pylintrc,docparams,mccabe,mypy -->
 <!-- cspell:ignore hadolint,xvfz,aaaaaargh,dind,dood,usermod -->
@@ -285,7 +288,7 @@ Now, please create a file called `.gitlab-ci.yml` with this content:
 And push the changes to GitLab. The presence of the `.gitlab-ci.yml` file will tell GitLab to instantiate a pipeline after each commit and, here in our example, to start the four jobs.
 
 <AlertBox variant="info" title="Docker Socket Binding">
-The provided example is using the technique called **Docker Socket Binding**: we don't need to define the `DOCKER_HOST` variable for instance as we can see in [the official Dagger documentation](https://docs.dagger.io/integrations/gitlab/#docker-executor). Indeed, if not specified, `DOCKER_HOST` is set to `unix:///var/run/docker.sock` ([doc](https://docs.gitlab.com/runner/configuration/advanced-configuration.html#the-runnersdocker-section)).
+The provided example is using the technique called **Docker Socket Binding**: we don't need to define the `DOCKER_HOST` variable for instance as we can see in [the official Dagger documentation](https://docs.dagger.io/ci/integrations/gitlab). Indeed, if not specified, `DOCKER_HOST` is set to `unix:///var/run/docker.sock` ([doc](https://docs.gitlab.com/runner/configuration/advanced-configuration.html#the-runnersdocker-section)).
 
 Since we've shared the Docker daemon (`/var/run/docker.sock`) in our GitLab `/etc/gitlab-runner/config.toml` configuration file, we've allowed the CI to access the socket.
 

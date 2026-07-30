@@ -10,6 +10,7 @@ tags:
   - excel
   - python
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore vlookup,sheet -->
 <!-- markdownlint-disable-file MD010 -->

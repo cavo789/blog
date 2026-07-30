@@ -10,6 +10,7 @@ tags:
   - excel
   - self-hosted
 language: en
+review_date: 2026-07-30
 blueskyRecordKey: 3lun2qjuxc22r
 ---
 ![Excel Formula Beautifier](/img/v2/excel.webp)

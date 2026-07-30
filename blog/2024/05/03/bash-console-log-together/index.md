@@ -10,6 +10,7 @@ tags:
   - bash
   - linux
 language: en
+review_date: 2026-07-30
 ---
 ![Bash - Echo on the console and in a logfile in the same time](/img/v2/bash.webp)
 

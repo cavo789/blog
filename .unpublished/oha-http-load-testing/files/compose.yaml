@@ -1,0 +1,6 @@
+services:
+  oha:
+    image: ghcr.io/hatoo/oha:latest
+    network_mode: host
+    # Remove --no-tui if running interactively (docker compose run --rm oha)
+    command: --no-tui -n 200 -c 10 http://localhost:3000

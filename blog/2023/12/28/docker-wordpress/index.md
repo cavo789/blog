@@ -10,6 +10,9 @@ tags:
   - docker
   - php
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Updated mysql:8.0.13 (EOL Apr 2026)→mysql:8.4 LTS, mariadb:11.2.2 (EOL short-term)→mariadb:11.4 LTS, wordpress:6.4.2-php8.2-apache→wordpress:php8.3-apache"
 ---
 ![Quickly install WordPress in just three commands](/img/v2/wordpress.webp)
 
@@ -49,13 +52,13 @@ For this article, I propose to use MySQL 8.x or, if you prefer it, MariaDB 11.x.
 For MySQL 8.x:
 
 <Terminal typewriter>
-$ docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mysql:8.0.13
+$ docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mysql:8.4
 </Terminal>
 
 For MariaDB:
 
 <Terminal typewriter>
-$ docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mariadb:11.2.2
+$ docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mariadb:11.4
 </Terminal>
 
 Once started by Docker, the MySQL / MariaDB container will create an empty database called `wordpress`, a user called `wpuser` and his password will be `example` (as defined by our variables `MYSQL_DATABASE`, `MYSQL_USER` and `MYSQL_PASSWORD`). The container will be named `db_wordpress` (as defined by `--hostname`).
@@ -65,7 +68,7 @@ Once started by Docker, the MySQL / MariaDB container will create an empty datab
 And now, we need a second container for WordPress itself. I propose to use the latest version available at that time:
 
 <Terminal typewriter>
-$ docker run -d --name app_wordpress --hostname app_wordpress --network wordpress -p 8080:80 -e WORDPRESS_DB_HOST=db_wordpress -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=example wordpress:6.4.2-php8.2-apache
+$ docker run -d --name app_wordpress --hostname app_wordpress --network wordpress -p 8080:80 -e WORDPRESS_DB_HOST=db_wordpress -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=example wordpress:php8.3-apache
 </Terminal>
 
 The following command will run WordPress in an Apache container and make the site available at `http://127.0.0.1:8080`.

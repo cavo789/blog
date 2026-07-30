@@ -12,6 +12,9 @@ tags:
   - docker
   - python
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Updated Python version example from 3.12-bullseye to 3.13-bookworm (current stable; Debian 12 Bookworm is now the default base)."
 ---
 ![Docker - Even easier setup of Python](/img/v2/devcontainer.webp)
 
@@ -52,7 +55,7 @@ Here is how to use VSCode and Docker to create a ready-to-use Python environment
       content: "And follow the wizard:",
       substeps: [
         "Search for **Python**",
-        "Select the most recent version of Python, right now it's `3.12-bullseye`",
+        "Select the most recent version of Python, right now it's `3.13-bookworm`",
         "No need to install additional features, just press <kbd>Enter</kbd>",
         "Same for optional files; not needed, just press <kbd>Enter</kbd>"
       ]

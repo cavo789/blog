@@ -1,0 +1,17 @@
+# syntax=docker/dockerfile:1
+
+FROM golang:1.22-alpine AS builder
+
+WORKDIR /build
+
+COPY main.go .
+
+RUN CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-w -s' -o server .
+
+FROM scratch
+
+COPY --from=builder /build/server /server
+
+EXPOSE 8080
+
+ENTRYPOINT ["/server"]

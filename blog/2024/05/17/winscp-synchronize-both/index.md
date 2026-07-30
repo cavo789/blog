@@ -11,6 +11,7 @@ tags:
   - windows
   - winscp
 language: en
+review_date: 2026-07-30
 ---
 ![WinSCP - Synchronize host and remote](/img/v2/winscp.webp)
 

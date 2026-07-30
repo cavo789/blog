@@ -11,6 +11,9 @@ tags:
   - excel
   - markdown
 language: en
+updates:
+  - date: 2026-07-30
+    note: "markitdown updated from v0.1.5 to v0.1.7; Dockerfile and AlertBox version reference updated."
 blueskyRecordKey: 3mkzumi3cf22g
 ---
 ![Markitdown - Convert files and MS Office documents to Markdown](/img/v2/markdown.webp)
@@ -44,7 +47,7 @@ Then please create a new file called `Dockerfile`:
 <Snippet filename="Dockerfile" source="./files/Dockerfile" />
 
 <AlertBox variant="info" title="Supported extensions">
-See the `pip install --prefix=/python "markitdown[docx,xlsx,pdf]==0.1.5"` line in our `Dockerfile`; we could replace `docx,xlsx,pdf` by `all` to be able to convert from any extensions supported by Markitdown but our final Docker image will be bigger in size.
+See the `pip install --prefix=/python "markitdown[docx,xlsx,pdf]==0.1.7"` line in our `Dockerfile`; we could replace `docx,xlsx,pdf` by `all` to be able to convert from any extensions supported by Markitdown but our final Docker image will be bigger in size.
 
 Or, simply add any additional extensions you need. Refer to the official documentation for this.
 </AlertBox>

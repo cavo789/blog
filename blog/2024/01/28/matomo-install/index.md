@@ -10,6 +10,7 @@ tags:
   - docusaurus
   - self-hosted
 language: en
+review_date: 2026-07-30
 ---
 ![How to self-host Matomo](/img/v2/matomo.webp)
 

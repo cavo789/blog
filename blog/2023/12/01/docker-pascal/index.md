@@ -8,6 +8,7 @@ image: /img/v2/experiments.webp
 mainTag: docker
 tags: [docker]
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore ource,rchive,roupn,chiffre,downto -->
 ![Play with Docker and Pascal](/img/v2/experiments.webp)

@@ -1,0 +1,12 @@
+$ CI=true docker run --rm \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    wagoodman/dive:latest myapp:multistage
+
+  Using default CI config
+Image Source: docker://myapp:multistage
+Fetching image... (this can take a while for large images)
+Analyzing image...
+  efficiency: 0.9971 (99.71%)
+  wastedBytes: 4096 bytes (4.1 kB)
+  userWastedPercent: 0.29%
+Result:PASS [Total:3] [Passed:3] [Failed:0] [Warn:0] [Skipped:0]

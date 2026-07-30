@@ -10,6 +10,7 @@ tags:
   - docker
   - linux
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore seccomp,pgid,puid -->
 ![Docker - Running some GUI interfaces in the browser](/img/v2/docker_gui.webp)

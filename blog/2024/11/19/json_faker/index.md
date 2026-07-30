@@ -11,6 +11,9 @@ tags:
   - python
   - vscode
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Mockaroo was acquired by Tonic.ai (April 2025); service remains operational and free tier (200 API calls/day) is unchanged."
 ---
 ![JSON - Faker & Mockup](/img/v2/json.webp)
 

@@ -10,6 +10,7 @@ tags:
   - docker
   - linux
 language: en
+review_date: 2026-07-30
 ---
 ![Understanding the depends_on condition in Docker compose files](/img/v2/docker_tips.webp)
 

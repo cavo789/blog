@@ -10,6 +10,7 @@ tags:
   - windows
   - wsl
 language: en
+review_date: 2026-07-30
 ---
 ![Starting the default associated Windows program on WSL](/img/v2/wsl.webp)
 

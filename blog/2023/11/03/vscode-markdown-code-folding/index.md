@@ -10,6 +10,7 @@ tags:
   - markdown
   - vscode
 language: en
+review_date: 2026-07-30
 ---
 ![Markdown folding not working](/img/v2/vscode_tips.webp)
 

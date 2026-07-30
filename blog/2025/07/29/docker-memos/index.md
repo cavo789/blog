@@ -11,6 +11,9 @@ tags:
   - self-hosted
 language: en
 blueskyRecordKey: 3lv3hzdh4mk2v
+updates:
+  - date: 2026-07-30
+    note: "Fixed dead link to shortcuts documentation (URL moved from /docs/getting-started/shortcuts to /docs/usage/shortcuts)."
 ---
 <!-- cspell:ignore neosmemo -->
 
@@ -138,7 +141,7 @@ The used filter is `has_task_list && tag in ["python"]`.
 
 Now, just click on the filter to enable it. You'll just see one task (because the other tasks with the `python` tag didn't have a checkbox). Really easy no?
 
-[Learn more about writing filters](https://www.usememos.com/docs/getting-started/shortcuts#how-to-write-a-filter)
+[Learn more about writing filters](https://usememos.com/docs/usage/shortcuts)
 
 ## Pasting images
 

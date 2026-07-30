@@ -11,7 +11,7 @@ WORKDIR /app
 
 # Install required dependencies for docx, xlsx, and pdf parsing to an isolated prefix
 RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install --prefix=/python "markitdown[docx,xlsx,pdf]==0.1.5"
+    pip install --prefix=/python "markitdown[docx,xlsx,pdf]==0.1.7"
 
 FROM python:3.14-slim AS final
 

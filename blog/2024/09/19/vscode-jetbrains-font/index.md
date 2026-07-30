@@ -10,6 +10,7 @@ tags:
   - customization
   - vscode
 language: en
+review_date: 2026-07-30
 ---
 ![Using the JetBrains Mono font in vscode](/img/v2/vscode_tips.webp)
 

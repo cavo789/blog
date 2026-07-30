@@ -10,6 +10,7 @@ tags:
   - code-quality
   - vscode
 language: en
+review_date: 2026-07-30
 ---
 ![Error Lens addon for VSCode](/img/v2/vscode_tips.webp)
 

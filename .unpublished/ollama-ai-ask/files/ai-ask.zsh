@@ -3,6 +3,7 @@
 # command you're looking for, printed to stdout.
 
 AI_COMMANDS[ask]="ai-ask <question>  — get the shell command for a plain-English question"
+AI_PARAMS[ask]="text"
 
 ai-ask() {
   if [[ -z "$1" ]]; then

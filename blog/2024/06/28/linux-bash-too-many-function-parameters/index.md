@@ -10,6 +10,7 @@ tags:
   - code-quality
   - linux
 language: en
+review_date: 2026-07-30
 ---
 ![Clean code - Linux Bash - Keep the number of function parameters as small as possible](/img/v2/bash.webp)
 

@@ -10,6 +10,7 @@ tags:
   - database
   - joomla
 language: en
+review_date: 2026-07-30
 ---
 ![Joomla - delete tables from your database according to a certain prefix](/img/v2/joomla.webp)
 

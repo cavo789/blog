@@ -10,6 +10,9 @@ tags:
   - docker
   - self-hosted
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Demo URL updated (old port-27000 URL is down); Uptime Kuma v2.0 released Oct 2025 — use louislam/uptime-kuma:2 for the new version (MariaDB support, Vue 3, rootless Docker)"
 ---
 <!-- cspell:ignore kuma,louislam -->
 ![Self-hosted monitoring tool](/img/v2/docker_playing_with_app.webp)
@@ -24,7 +27,7 @@ This work is carried out by site monitoring platforms. Could you install one on 
 
 <!-- truncate -->
 
-There are tons of *self-hosted monitoring tools*; one of them is [Uptime Kuma](https://github.com/louislam/uptime-kuma). You can play with the demo website here: [https://demo.uptime.kuma.pet:27000/](https://demo.uptime.kuma.pet:27000/). Just create an admin account (for free) and you're ready to add your first websites.
+There are tons of *self-hosted monitoring tools*; one of them is [Uptime Kuma](https://github.com/louislam/uptime-kuma). You can play with the demo website here: [https://demo.kuma.pet/](https://demo.kuma.pet/). Just create an admin account (for free) and you're ready to add your first websites.
 
 As read in the [official documentation](https://github.com/louislam/uptime-kuma#-docker), you can easily start it using the command below.
 

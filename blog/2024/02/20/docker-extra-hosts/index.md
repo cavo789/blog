@@ -10,6 +10,7 @@ tags:
   - docker
   - linux
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore allnodes,allrouters,localnet,mcastprefix -->
 ![Using Docker network and the extra_hosts property](/img/v2/docker_tips.webp)

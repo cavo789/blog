@@ -13,6 +13,9 @@ tags:
   - npm
   - yarn
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Updated base image from node:21-alpine (EOL Jun 2024) to node:22-alpine LTS in Dockerfile."
 ---
 ![Running Docusaurus with Docker](/img/v2/docusaurus_tips.webp)
 
@@ -42,7 +45,7 @@ In your project directory (so `/tmp/docusaurus`), create a file called `Dockerfi
 
 #### Dockerfile - explanations line by line
 
-- Line 1: we'll use Node.js v21 in its alpine version,
+- Line 1: we'll use Node.js v22 LTS in its alpine version,
 - Line 2: the `RUN npx create-docusaurus@latest /app classic && chown -R node:node /app` command will install the latest version of Docusaurus (in the `/app` folder) and make sure the folder is owned by our `node` user,
 - Line 3: from now, we'll do everything using the `node` user,
 - Line 4: `/app` will be the default working directory in the image,

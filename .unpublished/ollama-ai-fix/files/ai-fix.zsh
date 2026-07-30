@@ -4,6 +4,7 @@
 # like it could have a side effect.
 
 AI_COMMANDS[fix]="ai-fix  — explain and suggest a fix for your last failed command"
+AI_PARAMS[fix]="none"
 
 ai-fix() {
   local last_cmd

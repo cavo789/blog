@@ -12,6 +12,7 @@ tags:
   - github
   - ssh
 language: en
+review_date: 2026-07-30
 blueskyRecordKey: null
 ---
 ![Docker secrets - Using your SSH key during the build process](/img/v2/docker_secrets.webp)

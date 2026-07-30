@@ -8,6 +8,7 @@ image: /img/v2/experiments.webp
 mainTag: docker
 tags: [docker]
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore erminate,esident,esolang,nasm -->
 ![Play with Docker and Assembly programming language](/img/v2/experiments.webp)

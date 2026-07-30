@@ -13,6 +13,9 @@ tags:
   - vba
 language: en
 blueskyRecordKey: 3lvnkbm63nc2v
+updates:
+  - date: 2026-07-30
+    note: "GitHub repo cavo789/vba_excel_sql archived May 2025 (read-only); VBA code remains functional and can still be copied from the repository."
 ---
 ![MS Excel - Connect to a SQL Server database, run a query and get the results](/img/v2/mssql.webp)
 

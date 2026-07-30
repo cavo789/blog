@@ -1,0 +1,3 @@
+% ai-translate "Le déploiement en production a échoué à 14h32. Toutes les instances ont été restaurées automatiquement vers la version précédente. L'équipe SRE analyse les journaux."
+
+The production deployment failed at 14:32. All instances were automatically rolled back to the previous version. The SRE team is now analysing the logs.

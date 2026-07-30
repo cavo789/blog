@@ -11,6 +11,9 @@ tags:
   - msaccess
   - vba
 language: en
+updates:
+  - date: 2026-07-30
+    note: "GitHub repo cavo789/vbs_access_export is archived (read-only); VBS script remains functional and downloadable."
 blueskyRecordKey: 3lumzv3n42c2r
 ---
 ![Export MS Access objects](/img/v2/msaccess.webp)

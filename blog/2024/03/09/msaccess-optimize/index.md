@@ -12,6 +12,7 @@ tags:
   - vba
 blueskyRecordKey: 3m4kn37zsn22k
 language: en
+review_date: 2026-07-30
 ---
 ![How to optimize an existing MS Access database](/img/v2/msaccess.webp)
 

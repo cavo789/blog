@@ -30,7 +30,6 @@ export default function OldPostNotice() {
   let lastUpdated = date;
 
   if (frontMatter.updates && frontMatter.updates.length > 0) {
-    // Sort updates by date in descending order and take the most recent one
     const mostRecentUpdate = [...frontMatter.updates].sort((a, b) => new Date(b.date) - new Date(a.date))[0];
     lastUpdated = mostRecentUpdate.date;
   }
@@ -43,6 +42,30 @@ export default function OldPostNotice() {
 
   if (!isOld) {
     return null;
+  }
+
+  const reviewDate = frontMatter.review_date;
+
+  if (reviewDate) {
+    const reviewDateObj = new Date(reviewDate);
+    const isReviewRecent = reviewDateObj >= oneYearAgo;
+
+    if (isReviewRecent) {
+      const formattedDate = reviewDateObj.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+
+      return (
+        <div className={clsx("alert alert--success", styles.reviewedPostNotice)} role="alert">
+          <p>
+            <span aria-hidden="true">✅</span>{" "}
+            This article is over a year old but was reviewed on <strong>{formattedDate}</strong> — the content is still accurate.
+          </p>
+        </div>
+      );
+    }
   }
 
   return (

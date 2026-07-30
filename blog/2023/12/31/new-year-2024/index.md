@@ -8,6 +8,7 @@ authors: [christophe]
 tried_it: false
 image: /img/v2/happy_new_year.webp
 language: en
+review_date: 2026-07-30
 ---
 ![Happy New Year 2024](/img/v2/happy_new_year.webp)
 

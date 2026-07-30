@@ -4,7 +4,7 @@ ARG USER_ID=1000
 ARG GROUP_ID=1000
 ARG USER_NAME="johndoe"
 
-FROM cypress/included:14.2.0
+FROM cypress/included:15.19.0
 
 # Where we'll put our files in the image
 WORKDIR /app

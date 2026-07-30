@@ -11,6 +11,7 @@ tags:
   - database
   - self-hosted
 language: en
+review_date: 2026-07-30
 ---
 ![SQL - Formatting tool](/img/v2/sql_format.webp)
 

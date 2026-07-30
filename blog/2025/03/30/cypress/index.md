@@ -13,6 +13,9 @@ tags:
   - react
   - tests
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Updated Cypress from 12.17.4→15.19.0 in package.json and cypress/included:14.2.0→15.19.0 in Dockerfiles."
 blueskyRecordKey: 3lvnkku4dik2v
 ---
 <!-- cspell:ignore jomla,johndoe -->

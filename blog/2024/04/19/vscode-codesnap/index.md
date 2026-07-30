@@ -10,6 +10,7 @@ tags:
   - markdown
   - vscode
 language: en
+review_date: 2026-07-30
 ---
 ![CodeSnap addon for VSCode](/img/v2/vscode_tips.webp)
 

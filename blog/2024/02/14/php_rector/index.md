@@ -10,6 +10,9 @@ tags:
   - code-quality
   - php
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Rector has since released v2.x (current: v2.5.8); the article's commands and concepts remain valid but check the migration guide for config changes."
 ---
 ![Rector 1.0.0 🎉🎉🎉, my friend, my coach](/img/v2/rector.webp)
 

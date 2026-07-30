@@ -13,6 +13,8 @@ language: en
 updates:
   - date: 2026-02-04
     note: still accurate, no obsolete info
+  - date: 2026-07-30
+    note: Updated website link from the.eza.website (domain expired) to eza.rocks (current official site).
 ---
 ![Let's revisit the ls command thanks to eza](/img/v2/linux_tips.webp)
 
@@ -28,14 +30,14 @@ And then you'll say to me, well, all you have to do is create an alias `alias ls
 
 <!-- truncate -->
 
-`eza` is a modern replacement for `ls` as stated on their website: [https://the.eza.website/](https://the.eza.website/).
+`eza` is a modern replacement for `ls` as stated on their website: [https://eza.rocks/](https://eza.rocks/).
 
 *It belongs to the same family of "modern rewrites of the classics" as <Link to="/blog/ripgrep">ripgrep</Link> (for `grep`) and <Link to="/blog/git-delta">delta</Link> (for `git diff`). While you're customizing your console, <Link to="/blog/powerlevel10k">Customize your Linux prompt with Powerlevel10k</Link> is worth ten minutes too.*
 
 <AlertBox variant="info" title="eza was first called exa">
 [https://github.com/ogham/exa](https://github.com/ogham/exa) is abandoned; see [this issue](https://github.com/ogham/exa/issues/1243).
 
-**exa is now eza**: [https://the.eza.website/](https://the.eza.website/)
+**exa is now eza**: [https://eza.rocks/](https://eza.rocks/)
 
 </AlertBox>
 

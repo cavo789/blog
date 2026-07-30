@@ -14,6 +14,7 @@ tags:
   - npm
   - yarn
 language: en
+review_date: 2026-07-30
 ---
 ![Running your own blog with Docusaurus and Docker](/img/v2/docusaurus_docker.webp)
 

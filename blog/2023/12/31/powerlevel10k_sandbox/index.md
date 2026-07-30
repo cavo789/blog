@@ -12,6 +12,7 @@ tags:
   - wsl
   - zsh
 language: en
+review_date: 2026-07-30
 ---
 ![Customize your Linux prompt with Powerlevel10k](/img/v2/customization_prompt.webp)
 

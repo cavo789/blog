@@ -11,6 +11,7 @@ tags:
   - gitlab
   - ssh
 language: en
+review_date: 2026-07-30
 blueskyRecordKey: 3lun25dkf322r
 ---
 ![GitLab - Using Docker private images](/img/v2/gitlab.webp)

@@ -1,0 +1,21 @@
+# syntax=docker/dockerfile:1
+
+FROM python:3.12 AS builder
+
+WORKDIR /build
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt --target ./packages
+
+FROM python:3.12-slim AS production
+
+WORKDIR /app
+
+COPY --from=builder /build/packages ./packages
+
+ENV PYTHONPATH=/app/packages
+
+COPY app.py .
+
+CMD ["python3", "app.py"]

@@ -10,6 +10,7 @@ tags:
   - ssh
   - winscp
 language: en
+review_date: 2026-07-30
 ---
 ![Fatal error was starting Putty after having saved settings](/img/v2/putty.webp)
 

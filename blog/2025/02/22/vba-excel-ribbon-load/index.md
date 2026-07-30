@@ -11,6 +11,7 @@ tags:
   - vba
   - vscode
 language: en
+review_date: 2026-07-30
 blueskyRecordKey: 3lwgc3uymnc2i
 ---
 ![MS Office - Load dropdown from Excel's range](/img/v2/ribbon.webp)

@@ -10,6 +10,7 @@ tags:
   - bash
   - linux
 language: en
+review_date: 2026-07-30
 ---
 ![Linux - Comparing two folders/files in the console](/img/v2/bash.webp)
 

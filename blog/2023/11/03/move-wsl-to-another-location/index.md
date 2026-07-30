@@ -10,6 +10,7 @@ tags:
   - docker
   - wsl
 language: en
+review_date: 2026-07-30
 ---
 ![Move WSL to another location](/img/v2/wsl.webp)
 

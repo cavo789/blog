@@ -8,6 +8,7 @@ image: /img/v2/ai.webp
 mainTag: ai
 tags: [ai]
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore recraft -->
 ![AI - Image generation using recraft.ai](/img/v2/ai.webp)

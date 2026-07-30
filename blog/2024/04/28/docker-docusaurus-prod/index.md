@@ -13,6 +13,9 @@ tags:
   - nodejs
   - yarn
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Updated base image from node:21-alpine (EOL Jun 2024) to node:22-alpine LTS in Dockerfile."
 ---
 <!-- cspell:ignore corepack,docusaurus,johndoe -->
 ![Encapsulate an entire Docusaurus site in a Docker image](/img/v2/docusaurus_using_docker.webp)

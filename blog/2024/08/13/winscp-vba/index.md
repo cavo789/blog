@@ -10,6 +10,7 @@ tags:
   - vba
   - winscp
 language: en
+review_date: 2026-07-30
 ---
 ![WinSCP - Visual Basic for Application use](/img/v2/winscp.webp)
 

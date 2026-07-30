@@ -10,6 +10,7 @@ tags:
   - docker
   - python
 language: en
+review_date: 2026-07-30
 ---
 ![Play with Docker and Python](/img/v2/python.webp)
 

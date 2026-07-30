@@ -15,6 +15,8 @@ language: en
 updates:
   - date: 2024-11-19
     note: review Dockerfile, use Quarto 1.6.36.
+  - date: 2026-07-30
+    note: Updated Dockerfile to Quarto 1.10.18 (was 1.6.36).
 ---
 <!-- cspell:ignore rsvg,ggplot2,gdebi,renv,tlmgr,fvextra,footnotebackref,pagecolor,sourcesanspro,sourcecodepro,Aoption -->
 ![Running Quarto Markdown in Docker](/img/v2/quarto.webp)

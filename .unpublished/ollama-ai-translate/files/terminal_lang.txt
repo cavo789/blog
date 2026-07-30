@@ -1,0 +1,7 @@
+% ai-translate "The deployment pipeline has been paused for scheduled maintenance. Expected downtime: 30 minutes." Dutch
+
+De deploymentpijplijn is gepauzeerd voor gepland onderhoud. Verwachte downtime: 30 minuten.
+
+% ai-translate "The deployment pipeline has been paused for scheduled maintenance. Expected downtime: 30 minutes." French
+
+Le pipeline de déploiement a été mis en pause pour une maintenance planifiée. Durée d'interruption prévue : 30 minutes.

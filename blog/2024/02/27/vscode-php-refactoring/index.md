@@ -11,6 +11,7 @@ tags:
   - php
   - vscode
 language: en
+review_date: 2026-07-30
 ---
 ![PHP code refactoring in VSCode](/img/v2/vscode_tips.webp)
 

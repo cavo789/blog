@@ -10,6 +10,7 @@ tags:
   - docker
   - linux
 language: en
+review_date: 2026-07-30
 ---
 ![Docker inspect - Retrieve network's information](/img/v2/docker_tips.webp)
 

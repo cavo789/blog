@@ -121,6 +121,30 @@ This produces the complete static output, runs Pagefind's indexer over it, and s
 
 In practice, I don't run `yarn build` to write articles — I only need working search when I want to verify that a specific term is actually indexed. The production site is always built before deployment, so the index is always complete there.
 
+## Another Caveat: Content Security Policy Blocks WebAssembly
+
+Pagefind runs its search engine via **WebAssembly** — those `wasm.en.pagefind` files you see in the `build/pagefind/` folder. This matters if your production server sends a `Content-Security-Policy` header.
+
+Since Chrome 95 and equivalent Firefox versions, WebAssembly execution is blocked by CSP unless the policy explicitly permits it. The symptom is particularly misleading: the search bar loads, the modal opens, you type a word — even a single letter — and you get zero results every time. No error in the UI, no banner, nothing. It looks exactly like an empty index, but the index is fine.
+
+The fix is to add `'wasm-unsafe-eval'` to the `script-src` directive of your CSP. Without it, the browser silently refuses to compile the WASM and the search engine never initializes.
+
+If you serve your site via an `.htaccess` file, look for the `Content-Security-Policy` header and update the `script-src` value:
+
+```apache title="static/.htaccess"
+# Before
+Header always set Content-Security-Policy "... script-src 'self' 'unsafe-inline' ...; ..."
+
+# After
+Header always set Content-Security-Policy "... script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' ...; ..."
+```
+
+<AlertBox variant="warning" title="This only affects production">
+The dev server (`yarn start` or `yarn serve`) does not send any `Content-Security-Policy` header, so search works fine locally even without `'wasm-unsafe-eval'`. The breakage only appears once the site is deployed behind a server that enforces a CSP — which is exactly when you want search to work.
+</AlertBox>
+
+While you're editing the CSP, this is also a good time to clean up any leftover Algolia domains from the `connect-src` directive. After the migration, entries like `https://*.algolianet.com` and the Algolia DSN URL are dead weight — the browser will never make a request to them. Remove them to keep the policy accurate.
+
 ## Conclusion
 
 The switch from Algolia to Pagefind was the right call for a blog like this one — heavy on CLI tools, Docker commands, configuration snippets, and all the kind of content that lives inside code blocks. Algolia's crawler looks right past all of that; Pagefind indexes every single character of it.

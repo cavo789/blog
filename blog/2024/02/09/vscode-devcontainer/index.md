@@ -19,6 +19,8 @@ updates:
     note: Install Rector automatically
   - date: 2024-02-29
     note: Install [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) and [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+  - date: 2026-07-30
+    note: "PHP_CodeSniffer moved from squizlabs to [PHPCSStandards/PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer) (Dec 2023); PHP-CS-Fixer is now v3.89.2 — Dockerfile example pins v3.46.0, update to current release"
 blueskyRecordKey: 3lymrewibzk2l
 ---
 ![PHP development in a devcontainer with preinstalled code quality tools](/img/v2/devcontainer.webp)
@@ -206,7 +208,7 @@ Now, please reopen your `index.php` file and just press <kbd>CTRL</kbd>+<kbd>S</
 As you can see, when formatting the file, `PHP-CS-Fixer` will also, now, injects our header.
 
 <AlertBox variant="info" title="Lots of options are explained here">
-Please go to [https://mlocati.github.io/php-cs-fixer-configurator](https://mlocati.github.io/php-cs-fixer-configurator) or [https://github.com/FriendsOfPHP/PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) to learn more about the php-cs-fixer configuration file options.
+Please go to [https://mlocati.github.io/php-cs-fixer-configurator](https://mlocati.github.io/php-cs-fixer-configurator) or [https://github.com/PHP-CS-Fixer/PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer) to learn more about the php-cs-fixer configuration file options.
 
 </AlertBox>
 
@@ -224,7 +226,7 @@ This will run `PHP-CS-Fixer` on all your codebase (`.`). If you want to exclude 
 
 ### The second set of tools is PHPCBF and PHPCS
 
-Our `Dockerfile` container was configured to download and install [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) tools called `phpcbf` and `phpcs`.
+Our `Dockerfile` container was configured to download and install [PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer) tools called `phpcbf` and `phpcs`.
 
 `phpcbf` is a `Code beautifier` tool: just like `PHP-CS-Fixer`, `phpcbf` will make some minor changes to your files accordingly to enabled rules.
 

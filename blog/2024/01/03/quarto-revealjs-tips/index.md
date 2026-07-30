@@ -11,6 +11,7 @@ tags:
   - markdown
   - quarto
 language: en
+review_date: 2026-07-30
 ---
 ![Some tips and tricks for Quarto when rendering as a reveal.js slideshow](/img/v2/quarto.webp)
 

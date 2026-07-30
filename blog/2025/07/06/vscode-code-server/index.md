@@ -10,6 +10,7 @@ tags:
   - docker
   - vscode
 language: en
+review_date: 2026-07-30
 blueskyRecordKey: 3lujtglddu223
 ---
 ![Do I need VSCode on my machine to use it?](/img/v2/vscode_tips.webp)

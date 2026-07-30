@@ -11,6 +11,8 @@ tags:
   - component
   - docusaurus
   - react
+language: en
+review_date: 2026-07-30
 blueskyRecordKey: 3m5vewhxkok2k
 ---
 ![Showing the changelog of your post](/img/v2/changelog.webp)

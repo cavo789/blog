@@ -10,6 +10,9 @@ tags:
   - database
   - docker
 language: en
+updates:
+  - date: 2026-07-30
+    note: "SA_PASSWORD deprecated; updated to MSSQL_SA_PASSWORD (required from SQL Server 2022 CU 14+ onwards)."
 ---
 ![Play with Microsoft SQL Server 2022 using Docker](/img/v2/mssql.webp)
 
@@ -26,7 +29,7 @@ The official Microsoft SQL Server Docker repository can be retrieved on [https:/
 First, we'll download and run an instance of SQL Server 2022 by running the following instruction:
 
 <Terminal typewriter>
-$ docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=2Secure*Password2" -p 1433:1433 --name sqlserverdb -h mysqlserver -d mcr.microsoft.com/mssql/server:2022-latest
+$ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=2Secure*Password2" -p 1433:1433 --name sqlserverdb -h mysqlserver -d mcr.microsoft.com/mssql/server:2022-latest
 </Terminal>
 
 With the above command, we'll accept the terms of the *End-User License Agreement* and we're setting the password of the user `SA` to `2Secure*Password2`.
@@ -65,7 +68,7 @@ Use the value below for the authentication:
 - Password: `2Secure*Password2`
 
 <AlertBox variant="info" title="Why these values?">
-`1433` is the port number we've declared in our `docker run` instruction, the default *admin* user is `SA` and the password has been initialized earlier to `2Secure*Password2` (see the `SA_PASSWORD` environment variable in our `docker run` command.)
+`1433` is the port number we've declared in our `docker run` instruction, the default *admin* user is `SA` and the password has been initialized earlier to `2Secure*Password2` (see the `MSSQL_SA_PASSWORD` environment variable in our `docker run` command.)
 
 </AlertBox>
 

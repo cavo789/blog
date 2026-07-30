@@ -10,6 +10,7 @@ tags:
   - php
   - vscode
 language: en
+review_date: 2026-07-30
 ---
 ![Sticky scroll in vscode](/img/v2/vscode_tips.webp)
 
@@ -21,7 +22,7 @@ This article shows VSCode's Sticky Scroll feature, which pins contextual lines (
 
 VS Code has recently added a really useful new feature: sticky scroll.
 
-This function allows you to scroll through a document such as a Markdown file, source code written in PHP or JavaScript, or any other supported language and, as you scroll, pin contextual information such as the name of the class, the name of the function, the start of the loop, etc. in the upper part of the editor.
+This function allows you to scroll through a document such as a <Link to="/blog/vscode-markdown-code-folding">Markdown file</Link>, source code written in PHP or JavaScript, or any other supported language and, as you scroll, pin contextual information such as the name of the class, the name of the function, the start of the loop, etc. in the upper part of the editor.
 
 *It pairs nicely with code folding: <Link to="/blog/vscode-regions">Working with regions in VSCode</Link> lets you collapse whole blocks, sticky scroll keeps you oriented in the ones you left open.*
 

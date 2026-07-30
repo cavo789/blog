@@ -11,6 +11,7 @@ tags:
   - docker
   - oracle
 language: en
+review_date: 2026-07-30
 blueskyRecordKey: 3lvnjmthgj22v
 ---
 ![Running Oracle Database Server as a Docker container](/img/v2/oracle.webp)

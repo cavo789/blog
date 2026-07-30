@@ -10,6 +10,7 @@ tags:
   - vba
   - windows
 language: en
+review_date: 2026-07-30
 ---
 ![VBS - Get list of files and generate a CSV](/img/v2/vbs.webp)
 
@@ -17,7 +18,7 @@ language: en
 This article shares a VBScript (`files2csv.vbs`) that recursively scans a Windows folder and exports file details — path, name, creation/access/modified dates, size, type, and owner — to a CSV file, ready for further analysis in Excel or Python/Pandas.
 </TLDR>
 
-Six years ago, I needed a <Link to="/blog/dos-case-sensitive">DOS script</Link> that would allow me to find the list of every file in a folder on a Windows machine and generate a `.csv` file with that list.
+Six years ago, I needed a DOS script that would allow me to find the list of every file in a folder on a Windows machine and generate a `.csv` file with that list.
 
 Once the `.csv` file had been generated, I could then process it in MS Excel, for example, and sort/filter it or, why not, in Python using the <Link to="/blog/python-pandas-merge">Pandas library</Link>.
 

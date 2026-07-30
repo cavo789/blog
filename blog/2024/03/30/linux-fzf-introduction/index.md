@@ -12,6 +12,7 @@ tags:
   - fzf
   - linux
 language: en
+review_date: 2026-07-30
 updates:
   - date: 2024-03-31
     note: Added a Keybindings section
@@ -103,4 +104,4 @@ Now, instead of killing files, I'll just display the first five lines of each se
   ]}
 />
 
-Once these basics feel natural, fzf really shines when combined with other tools: see [FZF + ripgrep](/blog/fzf-ripgrep) for interactive code search with a live preview, or [Master your ssh command and select the host from a list](/blog/ssh-with-fuzzy-finder) to stop typing hostnames from memory.
+Once these basics feel natural, fzf really shines when combined with other tools: see [FZF + ripgrep](/blog/fzf-ripgrep) for interactive code search with a live preview, or [Master your ssh command and select the host from a list](/blog/ssh-with-fuzzy-finder) to stop typing hostnames from memory. If you specifically want richer history search — timestamps, exit codes, and working directory per command — <Link to="/blog/atuin-bash-history">Atuin</Link> is worth a look: it replaces the flat `~/.bash_history` file with a SQLite database while keeping the same `Ctrl+R` shortcut.

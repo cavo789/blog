@@ -10,7 +10,7 @@ metadata:
 
 # Blog Map — Source of Truth
 
-> **245 published posts** · **26 drafts** (+1 code-only staging folder, no post written yet) · Period: 2023-11-02 → 2026-07-27
+> **245 published posts** · **29 drafts** (+1 code-only staging folder, no post written yet) · Period: 2023-11-02 → 2026-07-30
 > Primary author: christophe · Language: en
 > AI-assisted posts: 18
 
@@ -295,7 +295,7 @@ MD link : [Title](/blog/<slug>)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2025-12-22 | [Troubleshooting for Docker containers - Accessing the other one](/blog/github-networking-troubleshooting) | docker, linux |  |
+| 2025-12-22 | [Troubleshooting for Docker containers - Accessing the other one](/blog/docker-networking-troubleshooting) | docker, linux |  |
 | 2025-10-13 | [One Docker Image for Production and Devcontainers - The Clean Way](/blog/docker-prod-devcontainer) | devcontainer, docker |  |
 | 2025-10-10 | [Docker - How to group containers together](/blog/docker-name-property) | docker |  |
 | 2025-01-25 | [Docker - Install and use Git in a container just like you do on your host](/blog/docker-git) | devcontainer, docker, git, ssh |  |
@@ -640,6 +640,7 @@ MD link : [Title](/blog/<slug>)
 | ollama-ai-ci | ollama-ai-ci | ai-ci: Ask a Local LLM Why Your GitLab Pipeline Failed ★AI | gitlab | gitlab, git, ai, ollama, zsh | Ollama daily-use functions |
 | ollama-ai-ask | ollama-ai-ask | ai-ask: Ask For a Shell Command in Plain English, Get It Back Instantly ★AI | ai | ai, ollama, zsh, linux | Ollama daily-use functions |
 | ollama-ai-diagram | ollama-ai-diagram | ai-diagram: From a Sentence (or a compose.yaml) to a Mermaid Diagram ★AI | doc-as-code | doc-as-code, ai, ollama, zsh | Ollama daily-use functions |
+| ollama-ai-translate | ollama-ai-translate | ai-translate: Translate Any Text Locally — String, Pipe, or File ★AI | ai | ai, ollama, zsh, linux | Ollama daily-use functions |
 | ollama-ai-docs | ollama-ai-docs | ai-translate & ai-summarize: Confidential Documents, Handled 100% Locally ★AI | ai | ai, ollama, zsh, docker | Ollama daily-use functions |
 | ollama-ai-review | ollama-ai-review | ai-review: A SOLID, Magic-Constants, Naming Code Review Before You Even Commit ★AI | code-quality | code-quality, ai, ollama, git | Ollama daily-use functions |
 | ollama-ai-secrets | ollama-ai-secrets | ai-secrets: Catch Hardcoded Credentials Before You Commit Them ★AI | security | security, ai, ollama, git | Ollama daily-use functions |
@@ -653,19 +654,25 @@ MD link : [Title](/blog/<slug>)
 | traefik | traefik | Traefik, Finally Understood: One Name Per Docker Service Instead of One Port ★AI | docker | docker, self-hosted, security | (none — third of lazydocker→portainer→traefik chain) |
 | tried_it | docusaurus-tried-it-widget | Adding a "Did It Work?" Button to Your Docusaurus Tutorials ★AI | component | docusaurus, php, react | Creating Docusaurus components |
 | typo-report-docusaurus | docusaurus-typo-report-component | Let Readers Flag Issues — A Multi-Type Feedback Widget for Docusaurus ★AI | docusaurus | docusaurus, component, php, react, security |  |
+| docker-dive | docker-dive | Docker Dive — X-Ray Your Images and Kill the Waste ★AI | docker | docker, linux, code-quality | (none — standalone; conclusion links lazydocker, replace if not published first) |
+| atuin-bash-history | atuin-bash-history | Atuin — Supercharge Your Shell History With a Searchable, Timestamped Database ★AI | bash | bash, linux, zsh | (none — standalone; reciprocal links in linux-history + linux-fzf-introduction already added) |
+| oha-http-load-testing | oha-http-load-testing | oha — Benchmark Your Blog Before Your Visitors Do ★AI | linux | linux, docker, bash | (none — standalone; reciprocal links needed in running-docusaurus-with-docker + bruno at publish time) |
 | winscp-putty | winscp-putty | WinSCP - Start PuTTY without typing a password | winscp | putty, ssh, tips, winscp |  |
 | xdebug-docker-vscode | xdebug-docker-vscode | Step-Through PHP Debugging in a Docker Container From VSCode ★AI | php | php, docker, vscode | (none — zero draft dependencies, freely placeable) |
 
-**"Ollama daily-use functions" series so far (all drafts, 12 posts):** ollama-test-generator (ai-test),
+**"Ollama daily-use functions" series so far (all drafts, 13 posts):** ollama-test-generator (ai-test),
 ollama-ai-commit (ai-commit), ollama-ai-review (ai-review), ollama-ai-secrets (ai-secrets),
 ollama-ai-standup (ai-standup), ollama-ai-fix (ai-fix), ollama-ai-ci (ai-ci), ollama-ai-ask (ai-ask),
-ollama-ai-diagram (ai-diagram), ollama-ai-data (ai-data), ollama-ai-docs (ai-translate +
-ai-summarize), ollama-ai-diff (ai-diff). All share `~/.zsh/fns/_ollama.zsh` (leading underscore =
-loads first alphabetically): `_ollama_query` helper, `AI_COMMANDS` registry, `ai` dispatcher — every
-function self-registers with one `AI_COMMANDS[name]=...` line. `ai-diff` additionally reuses
-`_ai_extract_text` from `_ai-docs.zsh` (first defined for ai-docs). Series entry added to
-`src/data/series.js` — see [[project-blog-conventions]]. Image `/img/series/ollama.webp` still does
-not exist, needed before publishing any of these.
+ollama-ai-diagram (ai-diagram), ollama-ai-data (ai-data), ollama-ai-translate (ai-translate —
+standalone, English default), ollama-ai-docs (ai-summarize + `_ai_extract_text` — note: ai-translate
+now has its own dedicated article, the ai-docs article title and `_ai-docs.zsh` need updating before
+publication to remove the ai-translate definition), ollama-ai-diff (ai-diff). All share
+`~/.zsh/fns/_ollama.zsh` (leading underscore = loads first alphabetically): `_ollama_query` helper,
+`AI_COMMANDS` registry, `ai` dispatcher — every function self-registers with one
+`AI_COMMANDS[name]=...` line. `ai-diff` additionally reuses `_ai_extract_text` from `_ai-docs.zsh`
+(first defined for ai-docs). Series entry added to `src/data/series.js` — see
+[[project-blog-conventions]]. Image `/img/series/ollama.webp` still does not exist, needed before
+publishing any of these.
 
 **Cross-cluster "bridge" articles (proposed by Christophe 2026-07-27, "des articles qui feraient le
 pont entre deux thématiques"):** `ollama-ai-diagram` (ai×doc-as-code), `ollama-ai-secrets`

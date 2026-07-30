@@ -11,6 +11,7 @@ tags:
   - windows
   - wsl
 language: en
+review_date: 2026-07-30
 ---
 ![Opening an RDP connection to the Linux local instance](/img/v2/wsl.webp)
 

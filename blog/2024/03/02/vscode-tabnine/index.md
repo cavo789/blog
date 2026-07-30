@@ -14,6 +14,11 @@ language: en
 ---
 ![Tabnine - AI Autocomplete & Chat for Javascript, Python, Typescript, PHP, Go, Java & more](/img/v2/vscode_tips.webp)
 
+<AlertBox variant="warning">
+  **Update (2026-07-30):** Tabnine discontinued its free tier on April 2, 2025 and eliminated its individual Dev plan on October 16, 2025. It is now enterprise-only, starting at $39/user/month (annual billing required). The article below was written when Tabnine was freely available.
+  [Source](https://ailimit.watch/tools/tabnine/)
+</AlertBox>
+
 <TLDR>
 This article introduces Tabnine, an AI autocomplete VSCode extension that predicts entire method calls and setters based on context (e.g. suggesting `setFirstName(string $firstname)` from a `firstName` property). It highlights that Tabnine works offline by default and, per its privacy policy, never stores or shares your code unless explicitly opted in.
 </TLDR>

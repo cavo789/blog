@@ -167,4 +167,6 @@ You can edit your global configuration by running `git config --global core.auto
 
 </AlertBox>
 
+Line endings are not the only Windows/Linux mismatch to watch out for: <Link to="/blog/dos-case-sensitive">filename case sensitivity</Link> is another one that can silently cause conflicts when the same folder is shared across both systems.
+
 [source: https://github.com/git-tips/tips](https://github.com/git-tips/tips?tab=readme-ov-file#prevent-auto-replacing-lf-with-crlf)

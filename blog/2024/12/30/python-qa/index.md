@@ -13,6 +13,9 @@ tags:
   - docker
   - python
 language: en
+updates:
+  - date: 2026-07-30
+    note: "pydocstyle GitHub repo was archived November 2023 and is no longer maintained; Ruff (see Extra section) is the recommended replacement for docstring checks."
 blueskyRecordKey: 3lymragaqr22l
 ---
 <!-- markdownlint-disable-file MD010 -->
@@ -105,6 +108,10 @@ This tool checks the quality of your comments, such as your function description
 I'm running it like this: `pydocstyle --config=.config/.pydocstyle`
 
 <Snippet filename=".config/.pydocstyle" source="./files/.pydocstyle" />
+
+<AlertBox variant="caution">
+The pydocstyle GitHub repository was archived in November 2023 and is no longer actively maintained. The community recommends migrating to **Ruff** (see the "Extra — Ruff" section below), which covers equivalent docstring checks via its `pydocstyle`-compatible rule set.
+</AlertBox>
 
 ## 6. mypy
 

@@ -13,6 +13,9 @@ tags:
   - python
 language: en
 blueskyRecordKey: 3mdcpoxnzjc2h
+updates:
+  - date: 2026-07-30
+    note: "Updated Playwright Python image from v1.57.0-jammy to v1.61.0-jammy (latest as of Jul 2026)."
 ---
 
 ![Running some checks on your Docusaurus images](/img/v2/check_images.webp)
@@ -76,7 +79,7 @@ You know me very well now; I like to containerize things. So, I'm not using Pyth
 To run the script, I first start a Linux console, then go to my blog folder, and finally I run:
 
 <Terminal typewriter wrap={true}>
-$ docker run -it --rm -v .:/app -w /app --entrypoint /bin/sh mcr.microsoft.com/playwright/python:v1.57.0-jammy -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python .scripts/check-images.py"
+$ docker run -it --rm -v .:/app -w /app --entrypoint /bin/sh mcr.microsoft.com/playwright/python:v1.61.0-jammy -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python .scripts/check-images.py"
 </Terminal>
 
 This command does the following:

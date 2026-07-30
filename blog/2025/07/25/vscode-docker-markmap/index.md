@@ -12,6 +12,7 @@ tags:
   - quarto
   - vscode
 language: en
+review_date: 2026-07-30
 blueskyRecordKey: 3lurgf4ddp22y
 ---
 ![Getting a more attractive mindmap with Markmap and Quarto](/img/v2/mindmaps.webp)

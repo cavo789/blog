@@ -10,6 +10,7 @@ tags:
   - linux
   - zsh
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore DOSKEY,HISTIGNORE,HISTFILE,gacom -->
 ![Linux - Working with the history of your last fired actions](/img/v2/linux_tips.webp)
@@ -20,7 +21,7 @@ This article covers working with shell history in Bash/ZSH: locating the history
 
 For me, one of the undeniable strengths of the command line under Linux is the management of the history of previously executed commands.
 
-*The single biggest upgrade you can make to that history is <Link to="/blog/linux-fzf-introduction">fzf</Link>: it turns <kbd>CTRL</kbd>+<kbd>R</kbd> into a fuzzy, interactive search instead of a linear one.*
+*The single biggest upgrade you can make to that history is <Link to="/blog/linux-fzf-introduction">fzf</Link>: it turns <kbd>CTRL</kbd>+<kbd>R</kbd> into a fuzzy, interactive search instead of a linear one. If you want something more structured — with timestamps, exit codes, working directory, and optional multi-machine sync — <Link to="/blog/atuin-bash-history">Atuin</Link> replaces the flat history file with a SQLite database entirely.*
 
 To be able to press the <kbd>Up</kbd> or <kbd>Down</kbd> keys on the keyboard to return to previously run commands, wow.
 

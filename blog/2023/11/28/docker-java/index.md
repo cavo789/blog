@@ -8,11 +8,14 @@ image: /img/v2/experiments.webp
 mainTag: docker
 tags: [docker]
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Replaced deprecated openjdk:11 Docker Hub image (deprecated Dec 2022) with eclipse-temurin:21 (official Adoptium LTS successor)"
 ---
 ![Play with Docker and Java](/img/v2/experiments.webp)
 
 <TLDR>
-This article shows how to compile and run Java with zero local install, using the official `openjdk` Docker image: `docker run ... openjdk:11 javac Main.java` to compile, then `docker run ... openjdk:11 java Main` to execute, including a second example that calls a REST API from Java and prints the JSON response.
+This article shows how to compile and run Java with zero local install, using the official `openjdk` Docker image: `docker run ... eclipse-temurin:21 javac Main.java` to compile, then `docker run ... eclipse-temurin:21 java Main` to execute, including a second example that calls a REST API from Java and prints the JSON response.
 </TLDR>
 
 In this post, we'll play with Docker and Java. Since there are ready-to-use Java images for Docker you do not need to <Link to="/blog/install-docker">install or configure anything other than Docker</Link>.
@@ -32,7 +35,7 @@ Please create a new file called `Main.java` with this content:
 
 <Snippet filename="Main.java" source="./files/Main.java" />
 
-Now, you will need to compile your source. For this, just run `docker run -it --rm -v ${PWD}:/app -w /app -u 1000:1000 openjdk:11 javac Main.java`.
+Now, you will need to compile your source. For this, just run `docker run -it --rm -v ${PWD}:/app -w /app -u 1000:1000 eclipse-temurin:21 javac Main.java`.
 
 <AlertBox variant="info" title="Docker CLI reminder">
 As a reminder, the used Docker run commands are (almost always the same):
@@ -42,7 +45,7 @@ As a reminder, the used Docker run commands are (almost always the same):
 - `-v ${PWD}:/app` to share your current folder with a folder called `/app` in the Docker container,
 - `-w /app` to tell Docker that the current directory, in the container, will be the `/app` folder,
 - `-u 1000:1000` ask Docker to reuse our local credentials so when a file is updated/created in the container, the file will be owned by our user,
-- then `openjdk:11` which is the name and the version of the Docker image to use, and, finally,
+- then `eclipse-temurin:21` which is the name and the version of the Docker image to use, and, finally,
 - `javac Main.java` i.e. the command line to start within the container.
 
 </AlertBox>
@@ -58,10 +61,10 @@ Once again, you did not have to install or configure anything; just call the Doc
 
 </AlertBox>
 
-The last thing to do is to execute your Java program. Now, please run `docker run --rm -v $PWD:/app -w /app openjdk:11 java Main` to execute it.
+The last thing to do is to execute your Java program. Now, please run `docker run --rm -v $PWD:/app -w /app eclipse-temurin:21 java Main` to execute it.
 
 <Terminal typewriter>
-$ docker run --rm -v $PWD:/app -w /app openjdk:11 java Main
+$ docker run --rm -v $PWD:/app -w /app eclipse-temurin:21 java Main
 Hello, World
 </Terminal>
 
@@ -71,12 +74,12 @@ Please create a new file called `API.java` with this content:
 
 <Snippet filename="API.java" source="./files/API.java" />
 
-Compile it by running `docker run --rm -v $PWD:/app -w /app -u 1000:1000 openjdk:11 javac API.java`; get the `API.class` file.
+Compile it by running `docker run --rm -v $PWD:/app -w /app -u 1000:1000 eclipse-temurin:21 javac API.java`; get the `API.class` file.
 
-Finally, call `docker run --rm -v $PWD:/app -w /app openjdk:11 java API` to execute the API call and display the result on the screen:
+Finally, call `docker run --rm -v $PWD:/app -w /app eclipse-temurin:21 java API` to execute the API call and display the result on the screen:
 
 <Terminal typewriter>
-$ docker run --rm -v $PWD:/app -w /app openjdk:11 java API
+$ docker run --rm -v $PWD:/app -w /app eclipse-temurin:21 java API
 </Terminal>
 
 ```json

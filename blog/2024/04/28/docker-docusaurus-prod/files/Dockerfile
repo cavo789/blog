@@ -4,7 +4,7 @@
 
 # Stage 1: Base image.
 
-FROM node:21-alpine AS base
+FROM node:22-alpine AS base
 
 # Disable color output from yarn to make logs easier to read.
 ENV FORCE_COLOR=0

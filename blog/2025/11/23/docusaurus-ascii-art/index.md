@@ -11,6 +11,7 @@ tags:
   - docusaurus
   - linux
 language: en
+review_date: 2026-07-30
 blueskyRecordKey: 3m6bvf4ph6224
 ---
 ![Inject ASCII Art in any HTML pages rendered by Docusaurus](/img/v2/ascii_art_html.webp)

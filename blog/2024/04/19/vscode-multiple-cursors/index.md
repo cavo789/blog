@@ -10,6 +10,7 @@ tags:
   - markdown
   - vscode
 language: en
+review_date: 2026-07-30
 ---
 ![Multiple cursors in vscode](/img/v2/vscode_tips.webp)
 

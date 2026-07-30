@@ -10,6 +10,7 @@ tags:
   - github
   - vscode
 language: en
+review_date: 2026-07-30
 ---
 ![Start vscode from github.com](/img/v2/vscode_tips.webp)
 

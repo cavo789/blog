@@ -12,6 +12,7 @@ tags:
   - php
   - security
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore dbmdl -->
 ![Using Docker init to quickly dockerize your PHP application](/img/v2/docker_init.webp)

@@ -11,6 +11,7 @@ tags:
   - vba
   - windows
 language: en
+review_date: 2026-07-30
 ---
 ![VBS - Auto update script](/img/v2/vbs.webp)
 

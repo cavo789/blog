@@ -11,6 +11,9 @@ tags:
   - linux
   - self-hosted
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Updated GitHub Actions to Node 24 runtime: actions/checkout@v3 → @v6, SamKirkland/FTP-Deploy-Action@v4.3.4 → @v4.3.5 (Node 24 required on GitHub runners since June 2026)."
 ---
 <!-- cSpell:ignore allof,fileinto -->
 ![Exterminate them all, kill spam using GitHub Actions](/img/v2/fighting_against_spam.webp)
@@ -279,7 +282,7 @@ jobs:
     name: Create roundcube.sieve and deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
 
       - name: 'Setup jq'
         uses: dcarbone/install-jq-action@v2
@@ -292,7 +295,7 @@ jobs:
           ./generate.sh
 
       - name: Push files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.ftp_server }}
           username: ${{ secrets.ftp_login }}

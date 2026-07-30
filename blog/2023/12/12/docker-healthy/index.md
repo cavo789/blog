@@ -10,6 +10,7 @@ tags:
   - bash
   - docker
 language: en
+review_date: 2026-07-30
 ---
 ![Get health information from your running containers](/img/v2/docker_tips.webp)
 

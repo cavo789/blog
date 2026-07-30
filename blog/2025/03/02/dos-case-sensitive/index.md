@@ -8,6 +8,7 @@ image: /img/v2/msdos_tips.webp
 mainTag: windows
 tags: [windows]
 language: en
+review_date: 2026-07-30
 blueskyRecordKey: 3lvnjvuk5x22v
 ---
 <!-- cspell:ignore fsutil -->
@@ -29,7 +30,7 @@ What if we asked DOS to change its ways?
 
 <!-- truncate -->
 
-To do this, you'll need to start `Windows PowerShell` as an admin.
+To do this, you'll need to start <Link to="/blog/windows-terminal">Windows PowerShell</Link> as an admin.
 
 ![Start PowerShell as an admin](./images/powershell_admin.webp)
 

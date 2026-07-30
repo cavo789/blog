@@ -59,12 +59,6 @@ A few things worth calling out:
 - Building the JSON payload with `jq -n` instead of a hand-rolled string means I never have to worry about escaping quotes, backslashes, or newlines in the source code I'm about to paste into the prompt — `jq` handles all of that for me.
 - `ai()` is the whole point of this section: called with no argument (or `ai help`/`ai list`), it opens an `fzf` picker over everything registered in `AI_COMMANDS`; called as `ai <command> [args]`, it dispatches straight to `ai-<command>`. Every function below only has to add one line to make itself discoverable.
 
-`OLLAMA_MODEL` defaults to `qwen3-coder:30b`, which is what I run locally with 24GB of VRAM. Override it per-call if you want to compare models:
-
-```bash
-OLLAMA_MODEL=qwen2.5-coder:7b ai-test backup.sh
-```
-
 ## The `ai-test` Function
 
 <Snippet filename="~/.zsh/fns/ai-test.zsh" source="./files/ai-test.zsh" defaultOpen={true} />

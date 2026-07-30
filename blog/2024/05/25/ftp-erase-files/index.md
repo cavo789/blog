@@ -10,6 +10,7 @@ tags:
   - linux
   - ssh
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore subfolders -->
 ![FTP - Remove files and folders at light speed](/img/v2/winscp.webp)

@@ -10,6 +10,7 @@ tags:
   - bash
   - linux
 language: en
+review_date: 2026-07-30
 ---
 ![Bash - Loading environment variables from a file](/img/v2/bash.webp)
 

@@ -10,6 +10,7 @@ tags:
   - bash
   - linux
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore uplzaefi -->
 ![Bash - Script to add logging features to your script](/img/v2/bash.webp)

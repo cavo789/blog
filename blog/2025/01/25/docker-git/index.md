@@ -12,6 +12,7 @@ tags:
   - git
   - ssh
 language: en
+review_date: 2026-07-30
 ---
 ![Docker - Install and use Git in a container just like you do on your host](/img/v2/git.webp)
 

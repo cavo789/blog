@@ -10,6 +10,7 @@ tags:
   - laravel
   - php
 language: en
+review_date: 2026-07-30
 blueskyRecordKey: 3lvnkgebz3c2v
 ---
 ![Laravel Telescope](/img/v2/laravel.webp)

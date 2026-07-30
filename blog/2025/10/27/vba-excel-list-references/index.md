@@ -10,6 +10,9 @@ tags:
   - excel
   - vba
 language: en
+updates:
+  - date: 2026-07-30
+    note: "GitHub repo cavo789/vbs_xls_list_references is archived (read-only); VBS script remains functional."
 blueskyRecordKey: 3m45z7onhnc2o
 ---
 ![MS Excel - Get the list of references used in your modules](/img/v2/vba_export_xlsm.webp)

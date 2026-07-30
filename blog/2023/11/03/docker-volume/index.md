@@ -10,6 +10,9 @@ tags:
   - docker
   - linux
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Updated example image from php:8.1.5-apache (EOL Nov 2024) to php:8.3-apache"
 ---
 ![Share data between your running Docker container and your computer](/img/v2/docker_tips.webp)
 
@@ -33,7 +36,7 @@ For this post, let us create a temporary folder in your `/tmp` folder: start a L
 Let's run the command below to start the PHP 8.1.5 + Apache image:
 
 <Terminal typewriter>
-$ docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html php:8.1.5-apache
+$ docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html php:8.3-apache
 </Terminal>
 
 <AlertBox variant="info">
@@ -49,7 +52,7 @@ Go to `http://127.0.0.1:81/` to see if Apache is running and yes, it is.
 
 As you probably know, Apache displays by default the content of the `/var/www/html` folder. And, in our Docker container, we do not have an `index.php` file in our container so we got the **Forbidden** page.
 
-Explanation of the new arguments used in our `docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html php:8.1.5-apache` command
+Explanation of the new arguments used in our `docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html php:8.3-apache` command
 
 - `--name step_1_2` : for clarity, we use another name,
 - `-p 81:80` : this time, we'll use port `81` on our computer and map it to port `80` on the container,
@@ -81,7 +84,7 @@ Files or folders created in the Docker container will be owned by the current us
 To make sure files/folders created in the container will be owned by you and not `root`, change the command line like this:
 
 <Terminal typewriter>
-{`$ docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html -u \${UID}:\${GID} php:8.1.5-apache`}
+{`$ docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html -u \${UID}:\${GID} php:8.3-apache`}
 </Terminal>
 
 The new flag `-u ${UID}:${GID}` will reuse your current user id and your current group id and pass this information to Docker. Now, the current user in the Docker container will not be `root` anymore but a user having your local uid/gid. So, files/folders created in the Docker container will be owned, on your disk, by you.

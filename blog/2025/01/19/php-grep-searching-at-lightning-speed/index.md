@@ -11,6 +11,9 @@ tags:
   - ssh
   - winscp
 language: en
+updates:
+  - date: 2026-07-30
+    note: "GitHub repo (cavo789/php_grep) archived May 2025; the PHP script still works when uploaded to your server."
 ---
 ![Search your FTP server at lightning speed](/img/v2/winscp.webp)
 

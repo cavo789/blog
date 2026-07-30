@@ -11,6 +11,9 @@ tags:
   - vba
   - vscode
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Updated two dead links: imageMso PNG download (hintdesk 404 → GitHub christianarielli/ImageMso) and Office Control Identifiers (MS Download 2010 404 → OfficeDev/office-fluent-ui-command-identifiers)."
 ---
 ![MS Office - How to create a ribbon in Excel](/img/v2/ribbon.webp)
 
@@ -265,11 +268,11 @@ The manifest is this one:
 
 But ... **how to retrieve the list of images?**
 
-Microsoft maintains Excel files with the list of existing IDs that can be used as icons in our ribbon. The "Office 2010 Help Files: Office Fluent User Interface Control Identifiers" can be downloaded [here](https://www.microsoft.com/en-us/download/confirmation.aspx?id=6627). You'll get a lot of Excel files, one file per application (Access, Excel, Outlook, ...).
+Microsoft maintains Excel files with the list of existing IDs that can be used as icons in our ribbon. The Office Fluent User Interface Control Identifiers are maintained on the [OfficeDev GitHub repository](https://github.com/OfficeDev/office-fluent-ui-command-identifiers) (current versions for all Office releases). You'll get Excel files, one file per application (Access, Excel, Outlook, ...).
 
 This will give the list of existing IDs in plain text but you'll not see the associated images.
 
-You can download all images (as PNG) for MS Office 2010 or 2013 [here](http://hintdesk.com/2011/07/22/c-print-all-ms-office-imagemso-to-files) (see links in Chapter 2 Download).
+You can download all images (as PNG) for MS Office from the [ImageMso GitHub repository](https://github.com/christianarielli/ImageMso) (8,899 icons with a built-in Excel Add-In to browse them).
 
 ## Assign callbacks
 

@@ -12,6 +12,7 @@ tags:
   - docker
   - oracle
 language: en
+review_date: 2026-07-30
 blueskyRecordKey: 3lvnjmthgj22v
 ---
 ![Transform an Oracle DB as OpenData using Oracle REST Data Services](/img/v2/oracle.webp)

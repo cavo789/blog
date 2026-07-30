@@ -1,0 +1,14 @@
+% git log --oneline -5
+a4f2b31 (HEAD -> main) fix: ne pas relancer la conversion si .md existe déjà
+7c9e1d8 feat: ajouter la détection de la langue source
+2d8a0f5 chore: mettre à jour les dépendances docling
+b1c3e90 fix: corriger l'encodage UTF-8 dans les titres générés
+f0d2a18 docs: documenter les variables d'env OLLAMA_*
+
+% git log --oneline -5 | ai-translate
+
+a4f2b31 (HEAD -> main) fix: do not re-run conversion if .md file already exists
+7c9e1d8 feat: add source language detection
+2d8a0f5 chore: update docling dependencies
+b1c3e90 fix: correct UTF-8 encoding in generated headings
+f0d2a18 docs: document OLLAMA_* environment variables

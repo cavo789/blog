@@ -10,6 +10,7 @@ tags:
   - customization
   - windows
 language: en
+review_date: 2026-07-30
 ---
 ![Update all out-of-date Windows programs in batch](/img/v2/windows_tips.webp)
 

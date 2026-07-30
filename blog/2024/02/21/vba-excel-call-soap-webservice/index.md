@@ -11,6 +11,7 @@ tags:
   - excel
   - vba
 language: en
+review_date: 2026-07-30
 ---
 ![MS Excel - How to call a SOAP web service](/img/v2/excel.webp)
 

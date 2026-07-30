@@ -15,6 +15,10 @@ blueskyRecordKey: 3mm44p55oik2p
 ---
 ![Accessing Ollama across your local network](/img/v2/using_ollama_local_network.webp)
 
+<AlertBox variant="warning">
+  **Update (2026-07-30):** Continue was acquired by Cursor on June 18, 2026, and the standalone product has been shut down — the July 15, 2026 data-export deadline has passed and the repository is now read-only. The VSCode integration section of this article needs a rewrite. [Source](https://thenewstack.io/cursor-acquires-continue-coding/)
+</AlertBox>
+
 <TLDR>
 This guide shows you how to decouple your heavy AI workloads by setting up a dedicated Ollama server on your local network. You'll learn how to find your server's IP, verify connectivity, and configure the Continue extension in VSCode (including WSL and devcontainers) on your client machine. The result is a fast, free, and completely private AI coding assistant that replaces cloud alternatives like GitHub Copilot.
 </TLDR>

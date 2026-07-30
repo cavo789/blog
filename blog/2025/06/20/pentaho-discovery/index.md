@@ -12,6 +12,7 @@ tags:
   - excel
   - linux
 language: en
+review_date: 2026-07-30
 blueskyRecordKey: 3lumzwwoqsc2r
 ---
 ![Discovering Pentaho, an ETL program](/img/v2/etl.webp)

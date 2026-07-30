@@ -14,6 +14,8 @@ language: en
 updates:
   - date: 2025-01-12
     note: "Docker image available on hub.docker.com"
+  - date: 2026-07-30
+    note: "FrankenPHP has reached stable v1.11+ and is production-ready; the 'fairly young for production' caveat in the body no longer applies."
 ---
 ![FrankenPHP](/img/v2/frankenphp.webp)
 

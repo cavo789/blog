@@ -12,6 +12,7 @@ tags:
   - git
   - python
 language: en
+review_date: 2026-07-30
 ---
 ![Git - pre-commit-hooks](/img/v2/clean_code.webp)
 

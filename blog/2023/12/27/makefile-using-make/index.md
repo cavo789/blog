@@ -11,6 +11,7 @@ tags:
   - linux
   - makefile
 language: en
+review_date: 2026-07-30
 ---
 ![Linux Makefile - When to use a makefile](/img/v2/makefile.webp)
 

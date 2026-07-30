@@ -11,6 +11,7 @@ tags:
   - docusaurus
   - markdown
 language: en
+review_date: 2026-07-30
 ---
 <!-- cspell:ignore autoriser,collage -->
 ![Getting the number of published posts](/img/v2/docusaurus_tips.webp)

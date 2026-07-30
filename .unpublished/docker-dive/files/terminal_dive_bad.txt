@@ -1,0 +1,12 @@
+$ CI=true docker run --rm \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    wagoodman/dive:latest myapp:bad
+
+  Using default CI config
+Image Source: docker://myapp:bad
+Fetching image... (this can take a while for large images)
+Analyzing image...
+  efficiency: 0.6341 (63.41%)
+  wastedBytes: 438071296 bytes (438 MB)
+  userWastedPercent: 36.59%
+Result:FAIL [Total:3] [Passed:0] [Failed:3] [Warn:0] [Skipped:0]

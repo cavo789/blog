@@ -11,6 +11,9 @@ tags:
   - code-quality
   - php
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Updated PHP Docker image from php:7.4-fpm (EOL Nov 2022) to php:8.3-fpm in all examples."
 ---
 <!-- cspell:ignore ctype, fgets, ppmb, ppmc, ppms, ppmu, ppmw, ppmx, ppnc, ppnt, ppnx, ppny, ppnz, strlen, strpos, strtolower -->
 
@@ -38,7 +41,7 @@ Here is the code proposed by [Gemini](https://gemini.google.com/). Save it to yo
 
 <Snippet filename="hangman.php" source="./files/hangman.php" />
 
-To play with this game, just run `docker run -it -v ${PWD}:/src -w /src php:7.4-fpm php hangman.php` (see <Link to="/blog/docker-php-run-script-or-website">The easiest way to run a PHP script / website</Link> if that command looks cryptic).
+To play with this game, just run `docker run -it -v ${PWD}:/src -w /src php:8.3-fpm php hangman.php` (see <Link to="/blog/docker-php-run-script-or-website">The easiest way to run a PHP script / website</Link> if that command looks cryptic).
 
 As you'll see the script works fine without any change!
 
@@ -56,7 +59,7 @@ Right now, in your folder, you've three files:
 
 <Terminal typewriter source="./files/terminal-1.txt" />
 
-Time to make the `hangman.php` file unreadable by running `docker run -it -v ${PWD}:/src -w /src php:7.4-fpm php minify.php input=hangman.php output=hangman_minify.php`.
+Time to make the `hangman.php` file unreadable by running `docker run -it -v ${PWD}:/src -w /src php:8.3-fpm php minify.php input=hangman.php output=hangman_minify.php`.
 
 ![Obfuscating your PHP code](./images/obfuscate.webp)
 
@@ -64,7 +67,7 @@ Now, you've a new file called `hangman_minify.php`:
 
 <Snippet filename="hangman_minify.php" source="./files/hangman_minify.php" />
 
-What you see here above is the newer version of the `hangman.php` file and it's still running. You can check by running `docker run -it -v ${PWD}:/src -w /src php:7.4-fpm php hangman_minify.php`.
+What you see here above is the newer version of the `hangman.php` file and it's still running. You can check by running `docker run -it -v ${PWD}:/src -w /src php:8.3-fpm php hangman_minify.php`.
 
 ## Make the code readable again, ask Copilot
 

@@ -10,6 +10,7 @@ tags:
   - doc-as-code
   - docker
 language: en
+review_date: 2026-07-30
 ---
 ![Build a mind map using Docker and Markdown](/img/v2/mindmaps.webp)
 

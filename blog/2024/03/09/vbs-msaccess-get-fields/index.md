@@ -11,6 +11,9 @@ tags:
   - msaccess
   - vba
 language: en
+updates:
+  - date: 2026-07-30
+    note: "GitHub repo cavo789/vbs_access_get_fields_list archived Mar 2024 (read-only); scripts remain functional and can still be copied from the repository."
 ---
 ![VBS - Retrieve the list of fields in a MS Access Database](/img/v2/msaccess.webp)
 

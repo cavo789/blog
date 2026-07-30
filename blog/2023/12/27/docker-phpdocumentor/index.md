@@ -11,6 +11,7 @@ tags:
   - docker
   - php
 language: en
+review_date: 2026-07-30
 ---
 ![Generating documentation for a PHP codebase](/img/v2/php_tips.webp)
 

@@ -10,6 +10,7 @@ tags:
   - vba
   - windows
 language: en
+review_date: 2026-07-30
 ---
 ![Microsoft Outlook - VBA - Save emails as PDF](/img/v2/outlook_vba.webp)
 

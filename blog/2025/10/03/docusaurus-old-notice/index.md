@@ -15,6 +15,8 @@ blueskyRecordKey: 3m2bjrehbnc2r
 updates:
   - date: 2026-01-04
     note: the component will first check the last update date/time (`last_update` field in the front matter) before the creation date (`date` field)
+  - date: 2026-07-30
+    note: added `review_date` front matter support — a recent review date swaps the warning for a green "still accurate" banner; if the review date is itself over a year old, the standard warning reappears
 ---
 <!-- cspell:ignore  -->
 
@@ -85,6 +87,23 @@ date: 2025-09-30
 
 
 </AlertBox>
+
+## Marking a reviewed post
+
+If you revisit an old article and confirm the content is still accurate, you can add a `review_date` field to the front matter:
+
+```yaml
+---
+date: 2023-05-10
+review_date: 2026-07-30
+---
+```
+
+When `review_date` is present **and less than a year old**, the component swaps the orange warning for a green confirmation banner:
+
+> ✅ This article is over a year old but was reviewed on July 30, 2026 — the content is still accurate.
+
+If `review_date` itself is over a year old, the standard warning reappears — because a stale review is no better than no review at all.
 
 ## Position of the warning
 

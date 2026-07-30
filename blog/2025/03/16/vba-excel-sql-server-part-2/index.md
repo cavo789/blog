@@ -13,6 +13,9 @@ tags:
   - excel
   - vba
 language: en
+updates:
+  - date: 2026-07-30
+    note: "SA_PASSWORD env var deprecated since SQL Server 2022 CU14+; use MSSQL_SA_PASSWORD. GitHub repo cavo789/vba_excel_sql archived (Nov 2021) — code still functional."
 blueskyRecordKey: 3lvnkdmwmwk2v
 ---
 ![MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step](/img/v2/mssql.webp)
@@ -38,7 +41,7 @@ Read the full blog post <Link to="/blog/docker-mssql-server">Play with Microsoft
 In short:
 
 - Start a console (can be DOS, PowerShell or Linux),
-- Run `docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=2Secure*Password2" -p 1433:1433 --name sqlserverdb -h mysqlserver -d mcr.microsoft.com/mssql/server:2022-latest` to download SQL server and run an instance of it in a Docker container,
+- Run `docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=2Secure*Password2" -p 1433:1433 --name sqlserverdb -h mysqlserver -d mcr.microsoft.com/mssql/server:2022-latest` to download SQL server and run an instance of it in a Docker container,
 - Download [SQL Server Management Studio](https://learn.microsoft.com/en-us/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16#download-ssms) if you don't have it yet. It's free.
 - Once installed, start SQL Server Management Studio.
 
@@ -64,6 +67,10 @@ Now, right-click on the `Databases` node (in the top left tree-view) and you'll 
 ## The Excel part
 
 Surf to [https://github.com/cavo789/vba_excel_sql](https://github.com/cavo789/vba_excel_sql) to retrieve my VBA code. That code is a VBA Class for Excel that makes it really easy to access records stored in SQL server and output these data in an Excel sheet, keeping or not the connection alive (so you can do a Refresh at any time).
+
+<AlertBox variant="info">
+The GitHub repository is archived (read-only since Nov 2021). The VBA code remains fully functional; no further updates are planned.
+</AlertBox>
 
 Please start Excel and create a new workbook.
 

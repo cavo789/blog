@@ -11,6 +11,9 @@ tags:
   - docker
   - tests
 language: en
+updates:
+  - date: 2026-07-30
+    note: "Bruno v3 released January 2026; official Docker image is now usebruno/cli (the AlertBox custom-image workaround may no longer be needed)."
 blueskyRecordKey: 3lvs336stus2j
 ---
 <!-- cspell:ignore fastapi,uvicorn,hobbyte,keyserver,usebruno,ECONNREFUSED,davidkarlsen -->
