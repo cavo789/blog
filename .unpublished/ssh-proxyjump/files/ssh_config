@@ -1,0 +1,46 @@
+# ~/.ssh/config
+
+# ─── Bastion host ────────────────────────────────────────────────────────────
+Host bastion
+    HostName bastion.example.com
+    User christophe
+    IdentityFile ~/.ssh/id_ed25519
+    ServerAliveInterval 60
+
+# ─── Internal servers (via ProxyJump) ────────────────────────────────────────
+Host dev-server
+    HostName 10.0.1.50
+    User christophe
+    ProxyJump bastion
+
+Host db-server
+    HostName 10.0.1.100
+    User admin
+    ProxyJump bastion
+
+# ─── Port forwarding tunnels ──────────────────────────────────────────────────
+# Local :5433 → remote db.internal:5432  (staging database)
+Host tunnel-db-staging
+    HostName bastion.example.com
+    User christophe
+    LocalForward 5433 db-staging.internal:5432
+    ExitOnForwardFailure yes
+    ServerAliveInterval 30
+    ServerAliveCountMax 3
+
+# Local :5434 → remote db.internal:5432  (production database — read-only)
+Host tunnel-db-prod
+    HostName bastion.example.com
+    User christophe
+    LocalForward 5434 db-prod.internal:5432
+    ExitOnForwardFailure yes
+    ServerAliveInterval 30
+    ServerAliveCountMax 3
+
+# Local :8081 → internal web UI
+Host tunnel-webapp
+    HostName bastion.example.com
+    User christophe
+    LocalForward 8081 webapp.internal:80
+    ExitOnForwardFailure yes
+    ServerAliveInterval 30

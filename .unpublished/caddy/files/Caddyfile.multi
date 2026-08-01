@@ -1,0 +1,18 @@
+# Route traffic to different backends based on hostname
+# All HTTPS, all automatic certificates
+
+api.example.com {
+    reverse_proxy api:8000
+}
+
+app.example.com {
+    reverse_proxy frontend:3000
+}
+
+# Basic auth on a private service
+admin.example.com {
+    basicauth {
+        christophe $2a$14$Zkx19XLiW6VYouLHR5NmfOFU0z2GTNmpkT/5qqR7hx4IjWJPDhjvG
+    }
+    reverse_proxy internal-dashboard:9090
+}

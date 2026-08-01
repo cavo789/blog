@@ -193,13 +193,17 @@ So, we need to enable each object one by one. The easier way is to use [Oracle S
 
 Create a new connection with these settings:
 
-- `Name`: `Human Resources - ORDS` (or anything else)
-- `Username`: `hr`,
-- `Role`: `default`,
-- `Password`: `admin`,
-- `Hostname`: `127.0.0.1`,
-- `Port`: `1521` and
-- `Service name`: `orclpdb1`
+<ConnectionInfo
+  items={[
+    { label: "Name", value: "Human Resources - ORDS" },
+    { label: "Username", value: "hr" },
+    { label: "Role", value: "default" },
+    { label: "Password", value: "admin" },
+    { label: "Hostname", value: "127.0.0.1" },
+    { label: "Port", value: "1521" },
+    { label: "Service name", value: "orclpdb1" },
+  ]}
+/>
 
 ![SQL Developer - Database connection](./images/sql_dev_login_page.webp)
 

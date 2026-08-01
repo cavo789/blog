@@ -245,6 +245,30 @@ paragraphe qui les mentionne pour ajuster le texte en conséquence.
 - Vérifier la version dans `checkOutput` du composant `<Prerequisite>` (`oha 0.6.4`) — ajuster à la dernière stable depuis [github.com/hatoo/oha/releases](https://github.com/hatoo/oha/releases).
 - Liens réciproques à ajouter au moment de la publication : dans `/blog/running-docusaurus-with-docker` (mentionner oha comme outil pour tester les performances) et dans `/blog/bruno` (mentionner oha comme complément load-test vs. Bruno pour tests fonctionnels).
 
+## 10 nouveaux articles (confirmés 2026-07-31)
+
+Christophe a sélectionné 10 sujets lors d'une session de brainstorming. Deux phases :
+
+### Phase 1 — à rédiger en priorité (drafts créés 2026-07-31)
+
+| Slug | Titre | Dépendances |
+| --- | --- | --- |
+| `linux-yq` | yq — YAML processor (jq pour les fichiers YAML) | Aucune. Lien réciproque vers `/blog/linux-jq` à ajouter à la publication. |
+| `direnv` | direnv — auto-load .env au cd | Aucune. Lien réciproque vers `/blog/bash-load-env` à ajouter. |
+| `navi` | navi — cheatsheets interactives avec fzf | Aucune. Liens réciproques vers `/blog/linux-fzf-introduction` et `/blog/fzf-ripgrep`. |
+| `hyperfine` | hyperfine — benchmarking CLI | Aucune. Liens réciproques vers `/blog/ripgrep` et `/blog/linux-eza`. |
+| `git-interactive-rebase` | git rebase -i — nettoyer l'historique | Aucune. Liens réciproques vers `/blog/git-delta` et `/blog/git-worktree`. |
+
+### Phase 2 — à rédiger ensuite (pas encore écrits)
+
+| Slug (prévu) | Titre | Notes |
+| --- | --- | --- |
+| `ssh-proxyjump` | SSH ProxyJump + tunnels | Bastion host, LocalForward, fonction ZSH `stun` avec fzf. **Draft créé 2026-07-31.** |
+| `caddy` | Caddy — HTTPS automatique | Serveur web + reverse proxy, Caddyfile, `tls internal` pour dev local. **Draft créé 2026-07-31.** |
+| `open-webui-advanced` | Open WebUI — au-delà du chat | RAG local, presets modèles, Tools/Functions. `tried_it: false` positionné — vérifier l'interface avant publication. **Draft créé 2026-07-31.** |
+| `mcp-python-server` | MCP — serveur Python pour Claude Code | Python `mcp` SDK (FastMCP), `docker-inspector` avec 6 tools. Le code n'a pas été testé contre un vrai Claude Code — vérifier les chemins dans `settings.json` avant publication. **Draft créé 2026-07-31.** |
+| `ai-explain` | ai-explain — ELI5 terminal (série Ollama) | Dernier article de la série — publier APRÈS les 11 articles de la série. **Draft créé 2026-07-31.** |
+
 ## Correction apportée à un article déjà publié (2026-07-27)
 
 `/blog/ollama-installation` (publié 2026-03-30) a été corrigé suite à une vérification demandée par

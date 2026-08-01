@@ -376,12 +376,16 @@ You can download [Oracle SQL Developer](https://www.oracle.com/be/database/sqlde
 
 Once installed, run it and create a new connection to:
 
-- Username: `SYS`,
-- Role: `SYSDBA`,
-- Password: `admin`
-- Hostname: `127.0.0.1`,
-- Port: `1521` and
-- Service name: `orclpdb1`
+<ConnectionInfo
+  items={[
+    { label: "Username", value: "SYS" },
+    { label: "Role", value: "SYSDBA" },
+    { label: "Password", value: "admin" },
+    { label: "Hostname", value: "127.0.0.1" },
+    { label: "Port", value: "1521" },
+    { label: "Service name", value: "orclpdb1" },
+  ]}
+/>
 
 ![Creating a connection in Oracle SQL Developer as sys](./images/oracle_sql_dev_as_sys.webp)
 

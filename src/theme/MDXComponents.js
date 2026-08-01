@@ -7,6 +7,7 @@ import CardHeader from "@site/src/components/Card/CardHeader";
 import CardImage from "@site/src/components/Card/CardImage";
 import Column from "@site/src/components/Column";
 import Columns from "@site/src/components/Columns";
+import ConnectionInfo from "@site/src/components/ConnectionInfo";
 import Details from "@site/src/components/Details";
 import DownloadButton from "@site/src/components/DownloadButton";
 import Hero from "@site/src/components/Hero";
@@ -44,6 +45,7 @@ export default {
   CardImage,
   Column,
   Columns,
+  ConnectionInfo,
   Details,
   DownloadButton,
   EmptyFolder,

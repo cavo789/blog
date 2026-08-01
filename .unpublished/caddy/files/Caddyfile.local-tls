@@ -1,0 +1,4 @@
+localhost, myapp.localhost {
+    tls internal
+    reverse_proxy app:3000
+}

@@ -1,8 +1,9 @@
 # Freshness: vscode-tabnine
 
 **Detected:** 2026-07-30
+**Closed:** 2026-07-31
 **Article:** blog/2024/03/02/vscode-tabnine/index.md
-**Verdict:** CRITICAL
+**Verdict:** DONE
 
 ## Finding
 
@@ -29,3 +30,15 @@ Rewrite the article to either:
 
 The existing TLDR and animated gif remain valid technically but the "MUST HAVE" framing and the
 offline/privacy pitch now apply only to teams that can afford enterprise pricing.
+
+## Done (2026-07-31)
+
+Direction chosen by user: no alternatives — just "Bye bye Tabnine".
+
+- `description` updated to reflect enterprise-only status
+- `updates:` entry added (2026-07-31)
+- `<AlertBox variant="warning">` (from freshness pass) replaced by stronger `<AlertBox variant="caution" title="Tabnine is no longer free — avoid it">` with dates and "$39/user/month" facts
+- TLDR rewritten in past tense, flagging enterprise-only status
+- Opening "is a MUST HAVE" → "was a MUST HAVE", body put into past tense
+- Old download blockquote and privacy AlertBox removed (no longer relevant)
+- New section "## Bye bye, Tabnine" added as a conclusive farewell — no alternatives suggested

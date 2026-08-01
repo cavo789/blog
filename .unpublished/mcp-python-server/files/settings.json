@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "docker-inspector": {
+      "command": "python3",
+      "args": ["/home/christophe/.mcp/docker-inspector/server.py"]
+    }
+  }
+}

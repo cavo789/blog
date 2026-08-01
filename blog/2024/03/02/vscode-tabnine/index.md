@@ -2,7 +2,7 @@
 slug: vscode-tabnine
 title: Tabnine - AI Autocomplete & Chat for Javascript, Python, Typescript, PHP, Go, Java & more
 date: 2024-03-02
-description: Discover Tabnine, the must-have AI Autocomplete & Chat for VS Code. Get 'WOW' code prediction speed for PHP, Python, JS, and more, while ensuring complete code privacy.
+description: Tabnine was once a must-have free AI autocomplete extension for VS Code. As of 2025 it is enterprise-only ($39/user/month). This article is kept as a historical reference.
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
 mainTag: ai
@@ -11,27 +11,27 @@ tags:
   - php
   - vscode
 language: en
+updates:
+  - date: 2026-07-31
+    note: "Tabnine went fully enterprise-only in 2025 (free tier dropped April 2025, individual Dev plan dropped October 2025). Starts at $39/user/month. No longer relevant for free users. Article kept as historical reference."
 ---
 ![Tabnine - AI Autocomplete & Chat for Javascript, Python, Typescript, PHP, Go, Java & more](/img/v2/vscode_tips.webp)
 
-<AlertBox variant="warning">
-  **Update (2026-07-30):** Tabnine discontinued its free tier on April 2, 2025 and eliminated its individual Dev plan on October 16, 2025. It is now enterprise-only, starting at $39/user/month (annual billing required). The article below was written when Tabnine was freely available.
-  [Source](https://ailimit.watch/tools/tabnine/)
+<AlertBox variant="caution" title="Tabnine is no longer free — avoid it">
+Tabnine discontinued its free tier on **April 2, 2025** and eliminated its individual Dev plan on **October 16, 2025**. It is now **enterprise-only**, starting at $39/user/month (annual billing required). If you are an individual developer or looking for a free tool, Tabnine is simply not an option anymore. This article is kept as a historical record of what was once an excellent extension.
 </AlertBox>
 
 <TLDR>
-This article introduces Tabnine, an AI autocomplete VSCode extension that predicts entire method calls and setters based on context (e.g. suggesting `setFirstName(string $firstname)` from a `firstName` property). It highlights that Tabnine works offline by default and, per its privacy policy, never stores or shares your code unless explicitly opted in.
+This article is a historical record of Tabnine, an AI autocomplete VSCode extension that used to predict entire method calls and setters based on context (e.g. suggesting `setFirstName(string $firstname)` from a `firstName` property). It worked offline by default and never stored your code. **As of 2025, Tabnine is enterprise-only and no longer available for free.**
 </TLDR>
 
-Tabnine is a **MUST HAVE** extension. He will predict your next keystroke and sometimes it's just **WOW; HOW IS IT POSSIBLE?**.
+Tabnine **was** a **MUST HAVE** extension. It would predict your next keystroke and sometimes it was just **WOW; HOW IS IT POSSIBLE?**.
 
-Imagine you've a `private string $firstName` property in PHP. By starting to type `private function set`, Tabnine will understand you're *probably* creating a setter and will then suggest `setFirstName(string $firstname)`.
+Imagine you have a `private string $firstName` property in PHP. By starting to type `private function set`, Tabnine would understand you are *probably* creating a setter and would then suggest `setFirstName(string $firstname)`.
 
 <Snippet filename="customer.php" source="./files/customer.php" />
 
 <!-- truncate -->
-
-> Download page [Tabnine: AI Autocomplete & Chat for JavaScript, Python, Typescript, PHP, Go, Java & more](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode)
 
 Another example...
 
@@ -39,22 +39,18 @@ Imagine the code below and take a look at the `__construct` method. We need to h
 
 <Snippet filename="product.php" source="./files/product.php" />
 
-And here is how VSCode will predict my keystrokes when Tabnine is enabled. As you can see, Tabnine will predict that, after I've typed `$this-`, I'll use my `setProductPrice` method. And he knows that this function requires a parameter so he suggests that I use my `$price` one.
+And here is how VSCode predicted keystrokes when Tabnine was enabled. As you can see, Tabnine predicted that, after typing `$this-`, the `setProductPrice` method would follow — and it even knew the function required a parameter, suggesting the `$price` one.
 
 ![Tabnine is so wow!](./images/tabnine.gif)
 
-It's really amazing.
+It was really amazing.
 
-By default, Tabnine works offline i.e. it doesn't use any cloud data provider like what GitHub Copilot does. *If that offline aspect is what interests you, you can go much further and run a complete AI model on your own machine: see <Link to="/blog/ollama-installation">Installing Ollama and get local AI</Link>.*
+By default, Tabnine worked offline and did not use any cloud data provider. It also had a strong privacy pitch: it never stored or shared your code without explicit opt-in.
 
-<AlertBox variant="info" title="Complete code privacy">
+## Bye bye, Tabnine
 
-The information below comes from [https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode#complete-code-privacy](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode#complete-code-privacy)
+What made Tabnine stand out — offline-first, strong privacy guarantees, genuinely impressive code prediction — was real. It was one of the best free AI coding tools available in its time.
 
-> Your code always remains private.
->
-> Tabnine NEVER stores or shares any of your code. Any action that shares your code with the Tabnine servers for the purpose of private code models (part of enterprise) requires explicit opt-in. Tabnine does not retain any user code beyond the immediate time frame required for training models. Private code models created by Tabnine Enterprise are only accessible by your team members.
+Then came the pricing changes. The free tier disappeared in April 2025. The individual Dev plan followed in October 2025. Today, Tabnine is an enterprise product starting at $39/user/month. For individual developers, it simply does not exist anymore.
 
-</AlertBox>
-
-Tabnine supports a lot of languages, for instance, he's also working with plain text files (like this blog post).
+There is nothing left to install, nothing left to try. Tabnine as we knew it is gone. Goodbye.

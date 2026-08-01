@@ -1,0 +1,47 @@
+% docker, containers
+
+# List all running containers (with names)
+docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
+
+# Enter a running container as root
+docker exec -it -u root <container> bash
+
+$ container: docker ps --format "{{.Names}}"
+
+# Remove all stopped containers
+docker container prune -f
+
+# Follow logs of a container (last 50 lines)
+docker logs -f --tail 50 <container>
+
+# Inspect environment variables of a container
+docker inspect <container> --format '{{range .Config.Env}}{{println .}}{{end}}'
+
+% docker, images
+
+# List images sorted by size (largest first)
+docker images --format "{{.Size}}\t{{.Repository}}:{{.Tag}}" | sort -rh
+
+# Remove all dangling images
+docker image prune -f
+
+# Pull and immediately run an image interactively
+docker run --rm -it <image> sh
+
+$ image: docker images --format "{{.Repository}}:{{.Tag}}"
+
+% docker, compose
+
+# Start services in detached mode
+docker compose up -d
+
+# Rebuild and restart a specific service
+docker compose up -d --build <service>
+
+# Tail logs from all services
+docker compose logs -f
+
+# Stop and remove all containers + volumes
+docker compose down -v
+
+$ service: docker compose config --services

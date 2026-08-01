@@ -1,8 +1,9 @@
 # Freshness: aesecure-quickscan
 
 **Detected:** 2026-07-30
+**Closed:** 2026-07-31
 **Article:** blog/2024/08/01/aesecure-quickscan/index.md
-**Verdict:** STALE
+**Verdict:** DONE
 
 ## Finding
 
@@ -16,3 +17,15 @@ aeSecure QuickScan is the author's own free Joomla virus scanner. As of March 20
 ## Suggested action
 
 Update the article prose: replace "Still up to date" with a note that the project is seeking a new maintainer and that support tops out at Joomla 5.2.x (not 6.x). Fix the claimed max version from "J5.1.0" to "J5.2.2". Investigate the demo site (500 error) — either fix it or remove the demo link. Add an `updates:` entry and possibly an `<AlertBox variant="note">` informing readers the tool has limited future support.
+
+## Done (2026-07-31)
+
+- Added `updates:` entry in frontmatter (date 2026-07-31, describes AFUJ transfer + offline demo)
+- Updated `description` to mention AFUJ takeover
+- Updated TLDR to name AFUJ and link to new repo
+- Replaced "Still up to date" opening with an `<AlertBox variant="note">` announcing the AFUJ transfer, linking to the forum post and new repo
+- Updated version range from "J5.1.0" to "Joomla 5.x"
+- Removed broken demo link; replaced with note that demo is offline and pointer to AFUJ repo
+- Updated Download section to point to AFUJ/quickscan (no raw file URL since exact filename unverified)
+- Updated hashes folder URL (cavo789 → AFUJ/quickscan)
+- Updated "Read more" README link to AFUJ/quickscan

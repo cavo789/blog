@@ -12,7 +12,7 @@ metadata:
 
 Defined in `src/theme/MDXComponents.js`. Usable in any `.md`/`.mdx` file **without import**.
 
-`AlertBox, BrowserWindow, Card, CardBody, CardFooter, CardHeader, CardImage, Column, Columns, Details, DownloadButton, EmptyFolder, File, Folder, Guideline, Hero, Highlight, Link, LogoIcon, Prerequisite, ProjectSetup, ShortcutList, Snippet, StepsCard, TabItem, Tabs, Terminal, TLDR, TOCInline, Trees`
+`AlertBox, BrowserWindow, Card, CardBody, CardFooter, CardHeader, CardImage, Column, Columns, ConnectionInfo, Details, DownloadButton, EmptyFolder, File, Folder, Guideline, Hero, Highlight, Link, LogoIcon, Prerequisite, ProjectSetup, ShortcutList, Snippet, StepsCard, TabItem, Tabs, Terminal, TLDR, TOCInline, Trees`
 
 Plus all default Docusaurus MDXComponents and a custom lazy-loading `img` handler.
 
@@ -26,6 +26,7 @@ are NOT registered as standalone components** — despite two stale entries for 
   CLI-tool install/verify checker (`src/components/Prerequisite`) — distinct from `StepsCard
   variant="prerequisites"`, which lists several prerequisites as plain text steps.
 - **`ShortcutList`** — `<ShortcutList items={[{ keys: ["..."], desc: "..." }]} />` (`src/components/ShortcutList`), for keyboard-shortcut reference tables.
+- **`ConnectionInfo`** — `<ConnectionInfo items={[{ label: "Username", value: "admin" }]} title="optional" />` (`src/components/ConnectionInfo`), a 2-column label/value grid for connection credentials. Added 2026-07-31; retrofitted in 4 articles.
 
 ---
 

@@ -212,11 +212,15 @@ Now, click on `View` tab as illustrated below and double-click on the `Database 
 
 Remember our `compose.yaml` file and fill in the screen like this:
 
-- Host Name: `localhost`
-- Database Name: `people`
-- Port Number: `5432`
-- Username: `admin`
-- Password: `admin`
+<ConnectionInfo
+  items={[
+    { label: "Host Name", value: "localhost" },
+    { label: "Database Name", value: "people" },
+    { label: "Port Number", value: "5432" },
+    { label: "Username", value: "admin" },
+    { label: "Password", value: "admin" },
+  ]}
+/>
 
 ![Define our People connection](./images/database_people.webp)
 

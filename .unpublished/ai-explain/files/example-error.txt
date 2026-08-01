@@ -1,0 +1,9 @@
+Fatal error: Uncaught TypeError: Cannot read properties of undefined (reading 'map')
+    at ProductList (/app/src/components/ProductList.jsx:42:32)
+    at renderWithHooks (/app/node_modules/react-dom/cjs/react-dom.development.js:14985:18)
+    at mountIndeterminateComponent (/app/node_modules/react-dom/cjs/react-dom.development.js:17811:13)
+    at beginWork (/app/node_modules/react-dom/cjs/react-dom.development.js:19049:16)
+    at HTMLUnknownElement.callCallback (/app/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+    at Object.invokeGuardedCallbackDev (/app/node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+The above error occurred in the <ProductList> component.
+Consider adding an error boundary to your tree to customize error handling behavior.

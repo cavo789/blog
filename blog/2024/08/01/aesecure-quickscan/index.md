@@ -2,7 +2,7 @@
 slug: aesecure-quickscan
 title: aeSecure - QuickScan - Free viruses scanner
 date: 2024-08-01
-description: Quickly scan your Joomla website for viruses and suspicious files using the free aeSecure QuickScan tool. Supports Joomla 1.0.13 up to J5.1.0 and features a file whitelist.
+description: Quickly scan your Joomla website for viruses and suspicious files using the free aeSecure QuickScan tool. Originally created by Christophe Avonture, the project is now maintained by AFUJ (Association Francophone des Utilisateurs de Joomla).
 authors: [christophe]
 image: /img/v2/viruses.webp
 mainTag: security
@@ -10,20 +10,27 @@ tags:
   - docker
   - security
 language: en
+updates:
+  - date: 2026-07-31
+    note: "Project transferred to AFUJ (Association Francophone des Utilisateurs de Joomla). New repository: https://github.com/AFUJ/quickscan. Demo site (quickscan.avonture.be) is offline."
 ---
 ![aeSecure - QuickScan - Free viruses scanner](/img/v2/viruses.webp)
 
 <!-- cspell:ignore aesecure,quickscan -->
 
 <TLDR>
-This article introduces aeSecure QuickScan, the author's free PHP virus/malware scanner optimized for Joomla (versions 1.0.13 to 5.1.0), detecting over 45,000 signatures. It's used by dropping a single `scan.php` file onto the site and running it through the browser: it whitelists unmodified core Joomla files by hash, scans only the remaining unknown files for suspicious signatures, and should be deleted from the server once the scan is done.
+This article introduces aeSecure QuickScan, a free PHP virus/malware scanner optimized for Joomla (versions 1.0.13 to 5.x), detecting over 45,000 signatures. Originally created by Christophe Avonture, the project is now maintained by AFUJ (Association Francophone des Utilisateurs de Joomla) at [github.com/AFUJ/quickscan](https://github.com/AFUJ/quickscan). It works by dropping a single `scan.php` file onto the site and running it through the browser: it whitelists unmodified core Joomla files by hash, scans only the remaining unknown files for suspicious signatures, and should be deleted from the server once the scan is done.
 </TLDR>
 
 In 2018, I published the first version of my free tool, aeSecure QuickScan.
 
-Still up to date, my scanner detects over 45,000 virus signatures and is optimised for Joomla sites.
+<AlertBox variant="note">
+As of 2025, the project has been taken over by the **AFUJ** (Association Francophone des Utilisateurs de Joomla). The new official repository is [github.com/AFUJ/quickscan](https://github.com/AFUJ/quickscan). I stepped back from the project after [announcing the search for a new maintainer](https://forum.joomla.fr/forum/d%C3%A9veloppeurs/projets-open-sources/2068020-aesecure-quickscan-projet-opensource-en-recherche-d-un-repreneur) on the Joomla France forum. All credit and future developments belong to the AFUJ team.
+</AlertBox>
 
-aeSecure QuickScan recognises native Joomla files from version 1.0.13 up to version J5.1.0.
+The scanner detects over 45,000 virus signatures and is optimised for Joomla sites.
+
+aeSecure QuickScan recognises native Joomla files from version 1.0.13 up to Joomla 6.x.
 
 Simply download the scanner onto your site, run it from a URL and it will scan the site to quickly identify certain viruses or suspicious signatures.
 
@@ -31,13 +38,11 @@ Simply download the scanner onto your site, run it from a URL and it will scan t
 
 ## Demo
 
-Want to see a demo; just click here: [https://quickscan.avonture.be/](https://quickscan.avonture.be/).
-
-The scanner is running on a demo website so you can see what it looks like.
+The original demo site (`quickscan.avonture.be`) is no longer available. Check the [AFUJ repository](https://github.com/AFUJ/quickscan) for any updated demo or screenshots provided by the new maintainers.
 
 ## Download
 
-Please follow this URL: [https://raw.githubusercontent.com/cavo789/aesecure_quickscan/master/aesecure_quickscan.php](https://raw.githubusercontent.com/cavo789/aesecure_quickscan/master/aesecure_quickscan.php), press <kbd>CTRL</kbd>+<kbd>A</kbd> to select the entire content and press <kbd>CTRL</kbd>+<kbd>C</kbd> to copy it in memory.
+Head to the [AFUJ/quickscan repository](https://github.com/AFUJ/quickscan) and download the scanner file from there. Once you have the file content, press <kbd>CTRL</kbd>+<kbd>A</kbd> to select the entire content and press <kbd>CTRL</kbd>+<kbd>C</kbd> to copy it in memory.
 
 Go to the folder containing your website (preferably on your local computer), create a new file called f.i. `scan.php` and paste there the content by using <kbd>CTRL</kbd>+<kbd>V</kbd>.
 
@@ -82,7 +87,7 @@ The last button *4. Remove this script from the server* will make sure to not ke
 
 During the discovering of your website (*2. Getting the file list*), the scanner will first try to determine if your site is running Joomla and if so, will retrieve the installed version. This step is very fast and will help for getting a boost on performance.
 
-As soon as the scanner has, f.i., detected you're running Joomla 5.2.0, the scanner engine will go to [https://github.com/cavo789/aesecure_quickscan/tree/master/hashes/joomla](https://github.com/cavo789/aesecure_quickscan/tree/master/hashes/joomla) and try to find a file for that version (i.e. `J!5.2.0.json`). If found that version is supported by the scanner and a JSON file will be downloaded. That one contains the file's signatures as we've introduced in the previous chapter.
+As soon as the scanner has, f.i., detected you're running Joomla 5.2.0, the scanner engine will go to [https://github.com/AFUJ/quickscan/tree/master/hashes/joomla](https://github.com/AFUJ/quickscan/tree/master/hashes/joomla) and try to find a file for that version (i.e. `J!5.2.0.json`). If found that version is supported by the scanner and a JSON file will be downloaded. That one contains the file's signatures as we've introduced in the previous chapter.
 
 The scanner will start to get the list of all files of your website and calculate their signature (hash). If the signature is retrieved in the signature file (the JSON), the file will be known as safe.
 
@@ -94,6 +99,6 @@ Scanning the site (action 3) then means scanning only unknown files; those not o
 
 ## Read more
 
-Want to read more? Please go to [https://github.com/cavo789/aesecure_quickscan/blob/master/readme.md](https://github.com/cavo789/aesecure_quickscan/blob/master/readme.md) to continue your discovering.
+Want to read more? Please go to [https://github.com/AFUJ/quickscan/blob/master/readme.md](https://github.com/AFUJ/quickscan/blob/master/readme.md) to continue your discovering.
 
 Cleaning an infected site is one thing; making sure it doesn't happen again is another. My <Link to="/blog/apache-htaccess">Apache .htaccess file</Link> article lists the directives I use to block access to hidden files, disable script execution in upload folders and prevent directory listing.

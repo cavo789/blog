@@ -62,10 +62,14 @@ Start now SSMS (you'll find it in your `Start` Windows menu):
 
 Use the value below for the authentication:
 
-- Server name: `localhost,1433`
-- Authentication: `SQL Server Authentication`
-- Login: `SA`
-- Password: `2Secure*Password2`
+<ConnectionInfo
+  items={[
+    { label: "Server name", value: "localhost,1433" },
+    { label: "Authentication", value: "SQL Server Authentication" },
+    { label: "Login", value: "SA" },
+    { label: "Password", value: "2Secure*Password2" },
+  ]}
+/>
 
 <AlertBox variant="info" title="Why these values?">
 `1433` is the port number we've declared in our `docker run` instruction, the default *admin* user is `SA` and the password has been initialized earlier to `2Secure*Password2` (see the `MSSQL_SA_PASSWORD` environment variable in our `docker run` command.)

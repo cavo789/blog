@@ -69,3 +69,9 @@
   font-size: 0.875rem;
   color: var(--ifm-color-content-secondary);
 }
+
+.submitError {
+  font-size: 0.8rem;
+  color: var(--ifm-color-danger);
+  width: 100%;
+}

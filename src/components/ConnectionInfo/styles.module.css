@@ -1,0 +1,36 @@
+.wrapper {
+  margin: 1.5rem 0;
+  background-color: var(--ifm-background-surface-color) !important;
+  border-left: 3px solid var(--ifm-color-primary) !important;
+  border-radius: var(--ifm-card-border-radius, 12px);
+}
+
+.title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1.25rem;
+  align-items: baseline;
+  margin: 0;
+}
+
+.label {
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-700);
+  white-space: nowrap;
+}
+
+.label::after {
+  content: ":";
+}
+
+.value {
+  margin: 0;
+  word-break: break-all;
+}

@@ -129,10 +129,11 @@ reviewer) — this series is lighter-weight, multi-language, on-demand.
 - Depends on `_ai_extract_text` from ollama-ai-docs — see `plan.md` for the dependency chain
 - Draft written: `/opt/docusaurus/.unpublished/ollama-ai-diff/index.md`
 
-### [ ] ai-explain <file|text>: ELI5 explanation of a script or stack trace in the terminal
+### [x] ai-explain <file|text>: ELI5 explanation of a script or stack trace in the terminal
 
 - Terminal-only companion to the already-published `docusaurus-eli5-snippet-tooltips` component
-- **Priority: medium** — still open as of 2026-07-27, only one not yet drafted from this round
+- **Draft written: `/opt/docusaurus/.unpublished/ai-explain/index.md`**
+- Publish AFTER the rest of the Ollama series (11 articles) — it's the series finale
 
 ## Cross-cluster "bridge" articles (proposed + drafted 2026-07-27)
 
@@ -269,4 +270,66 @@ drafts in `.unpublished/`; two ideas he explicitly rejected are recorded so they
 - `ProxyJump` in `~/.ssh/config`, `LocalForward` for DB/port tunneling
 - FZF interactive tunnel launcher (ZSH function `stun`)
 - Complements existing SSH series (`ssh_with_fzf`, `zsh-plugin-ssh-config-suggestions`)
-- **Priority: medium**
+- **Confirmed by Christophe 2026-07-31 — priority: high**
+
+## New proposals confirmed by Christophe 2026-07-31
+
+### [x] direnv: auto-load .env per project on cd
+
+- `eval "$(direnv hook zsh)"`, `.envrc` with `dotenv`
+- Complements `bash-load-env` (manual) with an automatic approach
+- Use case: different Docker Compose vars per project without `source .env`
+- **Draft written: `/opt/docusaurus/.unpublished/direnv/index.md`**
+
+### [ ] ai-explain <file|text>: ELI5 of a script or stack trace in the terminal
+
+- Terminal companion to the already-published `docusaurus-eli5-snippet-tooltips` component
+- Last unwritten function of the "Ollama daily-use functions" series
+- **Confirmed: to write, fits naturally at the end of the Ollama series**
+
+### [x] git interactive rebase: clean up history before pushing
+
+- `git rebase -i`, squash/fixup/reword/drop, `autosquash` with `--fixup` commits
+- Bridges `git-delta` (published) and the still-unpublished `git-bisect` draft
+- **Draft written: `/opt/docusaurus/.unpublished/git-interactive-rebase/index.md`**
+
+### [x] yq: YAML processor — the jq you need for Docker Compose files
+
+- Same mental model as the existing `/blog/linux-jq` article, but for YAML
+- Practical use cases: read/edit `compose.yaml`, transform CI config, merge YAML files
+- Natural bridge: linux × docker
+- **Draft written: `/opt/docusaurus/.unpublished/linux-yq/index.md`**
+
+### [x] hyperfine: CLI benchmarking — is my optimization actually faster?
+
+- Warm-up runs, export to CSV/Markdown, comparison between commands
+- Docker use case: compare image build strategies
+- **Draft written: `/opt/docusaurus/.unpublished/hyperfine/index.md`**
+
+### [x] navi: interactive cheatsheet tool with fzf
+
+- `.cheat` files, fzf picker, community repo (tldr-like but executable)
+- Bridges fzf × zsh × bash — natural companion to `fzf-ripgrep` and `modular-zsh-workflow`
+- **Draft written: `/opt/docusaurus/.unpublished/navi/index.md`**
+
+### [x] Caddy: zero-config HTTPS web server as Docker container
+
+- Auto-HTTPS via ACME, `tls internal` for dev, reverse proxy, multi-domain Caddyfile
+- **Draft written: `/opt/docusaurus/.unpublished/caddy/index.md`**
+
+### [x] MCP (Model Context Protocol): practical Python server for Claude Code
+
+- FastMCP, `docker-inspector` server with 6 tools (list containers, logs, inspect, images, compose services, exec)
+- `settings.json` integration — server code NOT tested against real Claude Code — verify paths before publish
+- **Draft written: `/opt/docusaurus/.unpublished/mcp-python-server/index.md`**
+
+### [x] Open WebUI: beyond the basics — RAG, model presets, Functions
+
+- Model presets, Knowledge RAG, web search, Python Functions plugin system
+- `tried_it: false` — UI-heavy article, verify against actual instance before publishing
+- **Draft written: `/opt/docusaurus/.unpublished/open-webui-advanced/index.md`**
+
+### [x] SSH ProxyJump + tunnels: reach internal services via bastion
+
+- `ProxyJump` in `~/.ssh/config`, `LocalForward`, ZSH function `stun` with fzf
+- **Draft written: `/opt/docusaurus/.unpublished/ssh-proxyjump/index.md`**

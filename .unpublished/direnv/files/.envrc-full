@@ -1,0 +1,8 @@
+# Load all variables from .env
+dotenv
+
+# Add project scripts to PATH
+PATH_add ./scripts
+
+# Set a project-specific variable directly
+export APP_NAME="my-api"

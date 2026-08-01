@@ -4,7 +4,7 @@ title: Accessing Ollama across your local network
 authors: [christophe]
 date: 2026-05-18
 image: /img/v2/using_ollama_local_network.webp
-description: Learn how to set up a dedicated Ollama server on your local network and configure VSCode with the Continue extension for a private, free AI coding assistant.
+description: Learn how to set up a dedicated Ollama server on your local network and connect your code editor to it for a private, free AI coding assistant.
 mainTag: ai
 tags:
   - ai
@@ -12,15 +12,18 @@ tags:
 language: en
 ai_assisted: true
 blueskyRecordKey: 3mm44p55oik2p
+updates:
+  - date: 2026-07-31
+    note: "The Continue VSCode extension was acquired by Cursor on June 18, 2026 and has been shut down. The VSCode integration section has been rewritten to reflect the current landscape."
 ---
 ![Accessing Ollama across your local network](/img/v2/using_ollama_local_network.webp)
 
-<AlertBox variant="warning">
-  **Update (2026-07-30):** Continue was acquired by Cursor on June 18, 2026, and the standalone product has been shut down — the July 15, 2026 data-export deadline has passed and the repository is now read-only. The VSCode integration section of this article needs a rewrite. [Source](https://thenewstack.io/cursor-acquires-continue-coding/)
+<AlertBox variant="caution" title="The Continue extension is shut down">
+The [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) VSCode extension featured in this article was acquired by Cursor on June 18, 2026 and the standalone product has been shut down — the user-data export deadline (July 15, 2026) has passed and the repository is now read-only. The VSCode integration section below has been rewritten accordingly.
 </AlertBox>
 
 <TLDR>
-This guide shows you how to decouple your heavy AI workloads by setting up a dedicated Ollama server on your local network. You'll learn how to find your server's IP, verify connectivity, and configure the Continue extension in VSCode (including WSL and devcontainers) on your client machine. The result is a fast, free, and completely private AI coding assistant that replaces cloud alternatives like GitHub Copilot.
+This guide shows you how to decouple your heavy AI workloads by setting up a dedicated Ollama server on your local network. You'll learn how to find your server's IP, verify connectivity with `curl`, and connect a VSCode extension that supports Ollama as a backend. The result is a fast, free, and completely private AI coding assistant that replaces cloud alternatives like GitHub Copilot.
 </TLDR>
 
 In a previous article, we installed Ollama, one or more AI models (LLMs), and a web interface called **Open WebUI**.
@@ -87,76 +90,25 @@ Make sure the LLM `qwen2.5-coder:1.5b-base` model is indeed present; use another
 
 ## Configure your Code Editor (VSCode)
 
-As a developer, you can turn your editor into a smart assistant using just one extension. It provides:
+The original article used **Continue**, which has since been shut down (see the notice at the top of this page). The good news: the principle is the same regardless of which extension you use.
 
-1. **Inline Autocomplete**: Get real-time code suggestions as you type, powered by **FIM** (Fill-In-the-Middle) inference.
-2. **Chat Interface**: Talk directly with your AI assistant to help you find bugs, rewrite code, or answer questions.
+Any VSCode extension that supports Ollama as a backend gives you the same two capabilities:
 
-### Install the Continue extension on WSL
+1. **Inline Autocomplete**: Real-time code suggestions as you type, powered by **FIM** (Fill-In-the-Middle) inference.
+2. **Chat Interface**: Talk directly with your AI assistant to find bugs, rewrite code, or answer questions.
 
-If you are using Windows with a Linux subsystem (WSL2) for your development, **the installation requires a bit of care to make sure the extension runs in the right place**. The [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) extension sometimes gets confused in this scenario.
+At the time of writing, the most active open-source alternatives that natively support an Ollama endpoint are **Cline** and **RooCode** (an actively maintained fork of Cline). Both are available in the VSCode Marketplace.
 
-To ensure it installs smoothly within the Linux environment (WSL), I carefully followed these steps:
+Regardless of the extension you choose, the configuration principle is always the same: point the extension at your Ollama server's address (`http://192.168.0.218:11434`, replacing the IP with your own), select `Ollama` as the provider, and pick a model from your installed list (`ollama list` on the server to see what is available).
 
-<StepsCard
-  title="Installing Continue on WSL"
-  steps={[
-    "Open your WSL terminal and start an Ubuntu session.",
-    "In the terminal, run `code .` to open VSCode connected to your WSL session.",
-    "Inside VSCode's terminal, run `code --install-extension continue.continue --force` to make 100% sure the extension is installed on the **Linux** side, not on Windows — this distinction is critical."
-  ]}
-/>
-
-Once installed, the Continue icon appears in the left bar in VSCode. Click on it and you'll see a list of available features.
-
-![Showing the list of Continue's features](./images/continue_features.webp)
-
-Click on the `Configs` entry then click on the gear icon to get access to the configuration file. As illustrated on the image below, the path is indeed on WSL, so my configuration is fine.
-
-![Getting access to the configuration of Continue](./images/continue_settings.webp)
-
-<AlertBox variant="info" title="This screenshot has been taken in a Devcontainer">
-This is why you see a full path like `/home/node/.continue/config.yaml`. On your WSL, it should be like `/home/you/.continue/config.yaml`.
+<AlertBox variant="info" title="WSL users: install the extension on the Linux side">
+If you are using WSL2, make sure the extension is installed on the **Linux** side and not on Windows. Open VSCode connected to your WSL session and install the extension from the terminal with `code --install-extension <extension-id> --force`.
 </AlertBox>
-
-If you want a ready-to-use configuration file, you can use this one:
-
-<Snippet filename="config.yaml" source="./files/config.yaml" defaultOpen={false} />
-
-<AlertBox variant="info" title="config.json is deprecated" >
-In some tutorials on the web (and even in AI's answers), you'll still see `config.json` instead of `config.yaml`. JSON is deprecated; use the YAML format. Read the official [config.yaml reference guide](https://docs.continue.dev/reference).
-</AlertBox>
-
-<AlertBox variant="important" title="Replace the model name">
-The config references `qwen2.5-coder:14b-instruct` — replace it with a model you actually have installed. Run `ollama list` on your server to see what is available.
-</AlertBox>
-
-<AlertBox variant="important" title="Use your own server IP">
-Replace every occurrence of `192.168.0.218` in this guide with your server's actual IP address.
-</AlertBox>
-
-If everything has been correctly configured, you now have AI auto-completion. Also, make sure autocomplete is enabled; look at the status bar of VSCode; you'll see an icon with the text `✓ Continue (NE)`.
-
-#### Using chat with Continue
-
-Actually, the provided `config.yaml` for Continue already includes two models for chat sessions. You can use them by clicking on the `Chat` entry in the left bar and then select one of the available models.
-
-If you look at the configuration, we've defined a model called `Qwen 14B (Fast Chat)` (for fast reaction) and a larger, stronger one called `Qwen 32B (Architect)` and that works fine.
-
-Depending on your server's hardware (how much memory it has), feel free to experiment with different AI models.
-
-#### You'll have to install Continue in any of your devcontainers
-
-If, like me, you're using Devcontainers (isolated, specialized development environments), you'll need to add and configure Continue inside each of them.
-
-The reason is that VSCode doesn't currently provide a way to say, *"Hey, please add this extension globally across all my containers."*
-
-Because a devcontainer is designed to be completely standalone, any tool you need must be installed directly inside it. Unfortunately, this means a little extra setup!
 
 ## Conclusion
 
 By following this guide, we've successfully decoupled our heavy AI workloads from our daily development environment. Setting up a dedicated "AI Server" on your local network allows you to leverage powerful LLMs without draining your primary computer's battery or monopolizing its RAM and CPU.
 
-Furthermore, by integrating the Continue extension into VSCode, we've effectively built a private, self-hosted, and completely free alternative to cloud-based AI assistants like GitHub Copilot. Because everything runs over your LAN, your code and prompts never leave your local network, ensuring complete privacy and zero subscription fees.
+By connecting a VSCode extension that supports Ollama to this server, you get a private, self-hosted, and completely free alternative to cloud-based AI assistants like GitHub Copilot. Because everything runs over your LAN, your code and prompts never leave your local network, ensuring complete privacy and zero subscription fees.
 
 Whether you are generating code, getting autocomplete suggestions, or asking questions about your codebase, your own local AI assistant is now just a quick network request away!

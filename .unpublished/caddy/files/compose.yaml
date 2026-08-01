@@ -1,0 +1,26 @@
+services:
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"   # HTTP/3
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data       # TLS certificates (persisted across restarts)
+      - caddy_config:/config   # Caddy internal config cache
+    depends_on:
+      - app
+
+  app:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: node server.js
+    # No ports: section — Caddy handles all ingress
+
+volumes:
+  caddy_data:
+  caddy_config:

@@ -14,6 +14,7 @@ export default function Reaction({ metadata }) {
   // If voted were read in useState(), SSR would produce null (no localStorage)
   // while the client would produce "helpful", causing a React tree mismatch.
   const [voted, setVoted] = useState(null);
+  const [submitError, setSubmitError] = useState(false);
 
   useEffect(() => {
     try {
@@ -35,20 +36,26 @@ export default function Reaction({ metadata }) {
 
   const handleVote = useCallback(
     async (vote) => {
+      setSubmitError(false);
       try {
         const res = await fetch(apiUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ slug, vote }),
         });
-        if (!res.ok) return;
+        if (!res.ok) {
+          setSubmitError(true);
+          return;
+        }
         const data = await res.json();
         setCounts(data);
         setVoted(vote);
         try {
           localStorage.setItem(storageKey, vote);
         } catch {}
-      } catch {}
+      } catch {
+        setSubmitError(true);
+      }
     },
     [slug, apiUrl, storageKey],
   );
@@ -76,6 +83,11 @@ export default function Reaction({ metadata }) {
               👎 Not really
             </button>
           </div>
+          {submitError && (
+            <span className={styles.submitError}>
+              Could not save your vote — please try again.
+            </span>
+          )}
         </>
       ) : (
         <div className={styles.thanks}>

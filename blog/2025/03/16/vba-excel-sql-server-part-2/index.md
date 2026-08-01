@@ -47,10 +47,14 @@ In short:
 
 Use the values below for the authentication:
 
-- Server name: `localhost,1433`
-- Authentication: `SQL Server Authentication`
-- Login: `SA`
-- Password: `2Secure*Password2`
+<ConnectionInfo
+  items={[
+    { label: "Server name", value: "localhost,1433" },
+    { label: "Authentication", value: "SQL Server Authentication" },
+    { label: "Login", value: "SA" },
+    { label: "Password", value: "2Secure*Password2" },
+  ]}
+/>
 
 You're now in SSMS. We'll create a dummy database. Using some AI, I've asked for a script, here it is:
 
