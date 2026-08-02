@@ -5,6 +5,7 @@ date: 2024-11-08
 description: Find a quick and easy online JSON linter tool. Paste your JSON string to display it as a clear, readable tree-view with code folding features.
 authors: [christophe]
 image: /img/v2/json.webp
+series: code quality
 mainTag: linux
 tags:
   - code-quality

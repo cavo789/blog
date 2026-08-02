@@ -5,6 +5,7 @@ date: 2025-05-03
 description: My favorite Quarto extensions - Learn about essential Quarto filters for partial content templating, Font Awesome icons, including external code files, and simple search-replace macros to enhance your documentation workflow.
 authors: [christophe]
 image: /img/v2/quarto.webp
+series: Discovering Quarto
 mainTag: quarto
 tags:
   - doc-as-code

@@ -5,6 +5,7 @@ authors: [christophe]
 date: 2026-05-18
 image: /img/v2/using_ollama_local_network.webp
 description: Learn how to set up a dedicated Ollama server on your local network and connect your code editor to it for a private, free AI coding assistant.
+series: Ollama daily-use functions
 mainTag: ai
 tags:
   - ai

@@ -5,6 +5,7 @@ date: 2025-05-15
 description: Master Mustache templating in Quarto! Discover how to use the quarto-partials extension to create structured, repetitive documentation pages for your static website project.
 authors: [christophe]
 image: /img/v2/mustache.webp
+series: Discovering Quarto
 mainTag: quarto
 tags:
   - markdown

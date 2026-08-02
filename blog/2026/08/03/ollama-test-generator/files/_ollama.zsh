@@ -6,6 +6,9 @@
 # Provides:
 #   - _ollama_check       reachability guard for Ollama
 #   - _ollama_query       shared HTTP client (curl + jq)
+#   - _ai_strip_fences    removes the Markdown fences models add anyway
+#   - _ai_bat             resolves "bat" vs Debian's "batcat"
+#   - _ai_confirm         yes/no prompt
 #   - _git_staged_diff    validated staged-diff fetcher (shared by pre-commit functions)
 #   - AI_COMMANDS         registry each ai-* function adds itself to
 #   - AI_PARAMS           registry of interactive parameter types (file/language/number/text/none)
@@ -45,6 +48,61 @@ _ollama_query() {
 }
 
 # ---------------------------------------------------------------------------
+# Output helpers
+# ---------------------------------------------------------------------------
+
+# _ai_strip_fences <text> — return only the code, without the Markdown fences.
+#
+# Every prompt in this series ends with "no markdown fences" and models still
+# wrap their answer in ```language … ``` often enough that the output can't be
+# piped or pasted as-is. When at least one fence is present, only the fenced
+# regions are kept (which also drops the "Here is your test suite:" preamble);
+# when there is none, the text is returned untouched.
+_ai_strip_fences() {
+  local text="$1"
+
+  if [[ "$text" != *'```'* ]]; then
+    print -r -- "$text"
+    return 0
+  fi
+
+  print -r -- "$text" | awk '
+    /^[[:space:]]*```/ { inside = !inside; next }
+    inside             { print }
+  '
+}
+
+# _ai_bat — print the name of the "bat" binary installed on this machine, if any.
+# Debian and Ubuntu ship the package as "batcat" because the "bat" name was
+# already taken by bacula-console-qt, so both spellings have to be probed.
+_ai_bat() {
+  local candidate
+  for candidate in bat batcat; do
+    if command -v "$candidate" >/dev/null 2>&1; then
+      print -- "$candidate"
+      return 0
+    fi
+  done
+  return 1
+}
+
+# _ai_relpath <path> — print <path> relative to the current folder when it sits
+# below it. Purely cosmetic: it keeps prompts readable instead of asking
+# "Save as /home/christophe/projects/…/tests/backup.bats?".
+_ai_relpath() {
+  local path="${1:A}"
+  print -- "${path#${PWD}/}"
+}
+
+# _ai_confirm <question> — ask a yes/no question; return 0 only on an explicit yes.
+_ai_confirm() {
+  local answer
+  print -n "${1} [y/N] "
+  read -r answer
+  [[ "$answer" == [yY]* ]]
+}
+
+# ---------------------------------------------------------------------------
 # Git helpers
 # ---------------------------------------------------------------------------
 
@@ -81,11 +139,13 @@ _git_staged_diff() {
 # _ai_prompt_file [label] — open an fzf file picker; print the chosen path.
 _ai_prompt_file() {
   local label="${1:-Select a file:}"
+  local bat_bin preview='cat {}'
+  bat_bin=$(_ai_bat) && preview="${bat_bin} --color=always {} 2>/dev/null || cat {}"
+
   if command -v fd >/dev/null 2>&1; then
-    fd --type f | fzf --prompt="${label} " --height=50% --reverse \
-      --preview='bat --color=always {} 2>/dev/null || cat {}'
+    fd --type f | fzf --prompt="${label} " --height=50% --reverse --preview="$preview"
   else
-    find . -type f | fzf --prompt="${label} " --height=50% --reverse
+    find . -type f | fzf --prompt="${label} " --height=50% --reverse --preview="$preview"
   fi
 }
 

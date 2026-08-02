@@ -1,0 +1,1 @@
+$ docker run --rm --user "$(id -u):$(id -g)" --volume "${root}:/code" --workdir /tmp bats/bats:latest /code/tests/backup.bats

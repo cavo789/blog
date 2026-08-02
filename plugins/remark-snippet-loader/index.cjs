@@ -11,6 +11,11 @@ const extensionToLang = {
   php: "php",
   sh: "bash",
   bash: "bash",
+  // Prism has no "zsh" grammar: without these, a .zsh/.zshrc/.bashrc snippet
+  // gets language-zsh / language-.zshrc and renders with zero highlighting.
+  zsh: "bash",
+  ".zshrc": "bash",
+  ".bashrc": "bash",
   css: "css",
   html: "html",
   json: "json",
@@ -62,8 +67,31 @@ function snippetLoader() {
           );
           rawContent = `Error loading source file: ${sourcePath}`;
         }
-        // Replace self-closing node with one that has a text child.
-        node.children = [{ type: "text", value: rawContent }];
+        // Replace self-closing node with one that has a single child holding the
+        // file content. It must be an *expression* child, not a text child: MDX
+        // applies JSX whitespace rules to text children, which trims the leading
+        // spaces of every line and destroys the indentation of the terminal
+        // output. An expression carrying a plain string literal is emitted
+        // verbatim, so indentation survives.
+        node.children = [
+          {
+            type: "mdxFlowExpression",
+            value: JSON.stringify(rawContent),
+            data: {
+              estree: {
+                type: "Program",
+                sourceType: "module",
+                comments: [],
+                body: [
+                  {
+                    type: "ExpressionStatement",
+                    expression: { type: "Literal", value: rawContent },
+                  },
+                ],
+              },
+            },
+          },
+        ];
         return;
       }
 

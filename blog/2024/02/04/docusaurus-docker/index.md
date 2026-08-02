@@ -5,6 +5,7 @@ date: 2024-02-04
 description: Run Docusaurus with Docker! Follow this easy tutorial to create your Docusaurus Docker image, use docker compose, and get your documentation or blog running fast.
 authors: [christophe]
 image: /img/v2/docusaurus_tips.webp
+series: Running Docusaurus using Docker
 mainTag: docusaurus
 tags:
   - docker

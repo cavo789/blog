@@ -5,6 +5,7 @@ date: 2024-10-03
 description: Start your Joomla website with Docker in just a few clicks! Follow this quick, right-to-the-point guide to launch your Joomla project instantly using a simple Docker Compose setup.
 authors: [christophe]
 image: /img/v2/joomla.webp
+series: Create your joomla website using Docker
 mainTag: joomla
 tags:
   - database

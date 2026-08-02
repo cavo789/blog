@@ -5,6 +5,7 @@ date: 2023-12-22
 description: A step-by-step guide on how to update your php.ini file inside a Docker container using a compose.yaml volume mount. Solve common issues like maximum file upload size.
 authors: [christophe]
 image: /img/v2/docker_tips.webp
+series: Create your joomla website using Docker
 mainTag: docker
 tags:
   - apache

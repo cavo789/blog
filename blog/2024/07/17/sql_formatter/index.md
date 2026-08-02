@@ -5,6 +5,7 @@ date: 2024-07-17
 description: Easily clean up unreadable, legacy SQL code with a simple formatting tool. Make your SQL queries instantly readable and kickstart your code review process.
 authors: [christophe]
 image: /img/v2/sql_format.webp
+series: code quality
 mainTag: self-hosted
 tags:
   - code-quality

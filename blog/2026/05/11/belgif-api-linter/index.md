@@ -2,6 +2,7 @@
 slug: belgif-api-linter
 title: Validate your OpenAPI schema against the Belgif REST standards
 authors: [christophe]
+series: code quality
 mainTag: api
 tags:
   - api

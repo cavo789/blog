@@ -39,6 +39,13 @@ const config = {
 
   noIndex: false, // Make sure our HTML pages will contains the <meta name="robots" content="index, follow"> tag
 
+  // Mermaid diagrams, rendered natively from ```mermaid fenced blocks. Reach for it only
+  // when a flow is genuinely non-linear (branches, loops, several actors): a real terminal
+  // output or a plaintext arrow diagram is usually clearer — see
+  // .claude/skills/blog-post-structure/SKILL.md
+  markdown: { mermaid: true },
+  themes: ["@docusaurus/theme-mermaid"],
+
   onBrokenAnchors: "throw",
   // WE SHOULD IGNORE BROKEN LINKS because Docusaurus’s link checker doesn't
   // recognize dynamic routes created via plugins; and we're using at least one
@@ -243,6 +250,9 @@ const config = {
     ({
       // Replace with your project's social card
       image: "img/social-card.jpg",
+      mermaid: {
+        theme: { light: "neutral", dark: "dark" },
+      },
       navbar: {
         // auto-hide the navbar when the user will scroll down, show again when scroll up
         hideOnScroll: true,

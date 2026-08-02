@@ -5,6 +5,7 @@ date: 2025-10-13
 description: Learn how to design a Docker setup that delivers a secure, minimal production image while enabling effortless local development through VS Code Devcontainers with clean overrides and environment isolation
 authors: [christophe]
 image: /img/v2/docker_workflow_prod_devcontainer.webp
+series: Coding using a devcontainer
 mainTag: docker
 tags:
   - devcontainer

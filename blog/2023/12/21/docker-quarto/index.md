@@ -5,6 +5,7 @@ date: 2023-12-21
 description: Run Quarto Markdown in Docker for easy documentation and slideshow generation. Learn to build your own Docker image and render Markdown to PDF, HTML, and Reveal.js.
 authors: [christophe]
 image: /img/v2/quarto.webp
+series: Discovering Quarto
 mainTag: quarto
 tags:
   - doc-as-code

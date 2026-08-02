@@ -4,6 +4,7 @@ title: Installing Ollama and get local AI
 description: Learn how to deploy Ollama locally via Docker to run private, free LLMs and enable AI-powered code autocompletion in VSCode.
 authors: [christophe]
 image: /img/v2/playing_with_ollama.webp
+series: Ollama daily-use functions
 mainTag: ai
 tags:
   - ai

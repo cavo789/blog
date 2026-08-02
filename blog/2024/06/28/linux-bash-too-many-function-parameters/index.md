@@ -5,6 +5,7 @@ date: 2024-06-28
 description: Apply Clean Code to your Linux Bash scripts. Discover how to avoid too many function parameters by using a simple, robust associative array solution.
 authors: [christophe]
 image: /img/v2/bash.webp
+series: code quality
 mainTag: code-quality
 tags:
   - code-quality

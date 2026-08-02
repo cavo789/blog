@@ -5,6 +5,7 @@ date: 2025-09-12
 description: Learn how to easily add a "go to the top" button, often with a fun animated icon, to your Docusaurus blog posts using a custom React component and theme override.
 authors: [christophe]
 image: /img/v2/go_top_banner.webp
+series: Creating Docusaurus components
 mainTag: component
 tags:
   - component

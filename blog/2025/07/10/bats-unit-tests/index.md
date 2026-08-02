@@ -26,7 +26,7 @@ Like all command-line developers, I write Linux Bash scripts.  Like any programm
 
 Some time ago, I wrote a set of Bash scripts that make up a library of functions (just like a framework) and here, the interest in having unit tests is even greater since these functions are supposed to be stable and can be used as foundations for more advanced scripts. *Two habits that make such a library testable in the first place: <Link to="/blog/linux-bash-too-many-function-parameters">keeping the number of function parameters small</Link> and <Link to="/blog/linux-generate-documentation-from-bash-scripts">documenting each function with a doc block</Link>.*
 
-In this article, we look at how to write unit tests for Bash scripts. If you're after the PHP equivalent, see <Link to="/blog/pest_tips">Write PHP unit tests using Pest</Link>; for functional/end-to-end testing rather than unit tests, I've also covered <Link to="/blog/tags/behat">Behat</Link>, <Link to="/blog/cypress">Cypress</Link> and <Link to="/blog/pest-functional-testing">Pest v4's browser testing</Link>.
+In this article, we look at how to write unit tests for Bash scripts. If you're after the PHP equivalent, see <Link to="/blog/pest_tips">Write PHP unit tests using Pest</Link>; for functional/end-to-end testing rather than unit tests, I've also covered <Link to="/blog/tags/behat">Behat</Link>, <Link to="/blog/cypress">Cypress</Link> and <Link to="/blog/pest-functional-testing">Pest v4's browser testing</Link>; and if you'd rather have a first draft of the suite written for you, <Link to="/blog/ollama-test-generator">a local LLM can generate the missing cases</Link>.
 
 <!-- truncate -->
 
@@ -243,3 +243,9 @@ So, we need to override the docker answer. When the image is supposed to be ther
 And return an empty string to simulate an inexistent image.
 
 <Snippet filename="tests/simple.bats" source="./files/simple.part16.bats" />
+
+## Conclusion
+
+Bats gives Bash the thing it always lacked: a way to prove a script still does what it did last month. The setup cost is close to zero — a `.bats` file, the `bats/bats` image, and no runner to install — and the payoff shows up the first time a refactor breaks a function you had forgotten about.
+
+Start small. Take the script you're most afraid to touch, write three tests for its happy path, and add one every time you fix a bug in it. That's usually enough to turn a Bash file you no longer dare modify into one you can.

@@ -5,6 +5,7 @@ date: 2023-11-21
 description: Learn how to set up a Joomla website using Docker and FrankenPHP, a modern PHP server that's up to 3.5x faster than PHP-FPM. Includes a simple compose.yaml setup.
 authors: [christophe]
 image: /img/v2/frankenphp.webp
+series: Create your joomla website using Docker
 mainTag: joomla
 tags:
   - docker

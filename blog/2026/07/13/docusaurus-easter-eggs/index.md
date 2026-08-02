@@ -3,6 +3,7 @@ slug: docusaurus-easter-eggs
 title: "Meerkat Mischief: Sprinkling Easter Eggs Across my Blog"
 authors: [christophe, claude]
 image: /img/v2/easter_eggs.webp
+series: Creating Docusaurus components
 mainTag: docusaurus
 tags: [docusaurus, react, component]
 date: 2026-07-13

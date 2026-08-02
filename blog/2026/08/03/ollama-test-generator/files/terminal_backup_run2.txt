@@ -1,0 +1,13 @@
+$ ai-test backup.sh
+
+→ Found existing tests: tests/backup.bats — asking only for the coverage gaps.
+
+@test "error condition: tar fails when source directory is empty" {
+  local test_dir="$BATS_TEST_DIRNAME/empty_dir"
+  local archive_name
+  mkdir -p "$test_dir"
+
+  archive_name=$(backup_dir "$test_dir" 2>&1)
+  [ -n "$archive_name" ]
+  [[ "$archive_name" == *"Error: tar failed"* ]]
+}
