@@ -18,3 +18,5 @@
 - [Unpublished Plan Maintenance](feedback_unpublished_plan.md) — always keep .unpublished/plan.md in sync with drafts, written in French, never published
 - [Internal Linking Rule (new posts)](feedback_internal_linking.md) — tout nouveau post embarque 2-4 `<Link>` inline + lien réciproque ; jamais d'orphelin
 - [Internal Links Audit](project_internal_links.md) — run `internal-link-opportunities.mjs --stats`; verified baseline + the 4 traps that break naive greps
+- [Devcontainer Structure](project_devcontainer_structure.md) — scripts/, COPY paths, bind-mounts, wiring points — tout ce qui doit rester synchronisé
+- [File Rename Completeness](feedback_file_rename_completeness.md) — grep exhaustif avant tout rename ; "terminé" = docker build passe, pas juste le fichier déplacé

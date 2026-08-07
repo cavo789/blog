@@ -2,8 +2,8 @@
 set -e
 
 # Load helper functions from the Docker image (so if you change
-# the bash_helpers.sh, you'll need to rebuild the Docker image)
-source "/usr/local/bin/bash_helpers.sh"
+# the interactive.sh, you'll need to rebuild the Docker image)
+source "/usr/local/bin/interactive.sh"
 
 # Use the project-committed mkcert CA so certs survive container rebuilds.
 # The CA lives in .devcontainer/mkcert-ca/ and is mounted from the host.

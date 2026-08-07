@@ -1,20 +1,51 @@
-# .config/
-# .devcontainer/
 /.docusaurus
-# .git/
-# .github/
-# .vscode/
+/build
 /node_modules
 
-# .dockerignore
-# .editorconfig
-# .env
-# .env.example
-# .gitignore
+.git/
+.env
+.env*
+.ssh/
+id_rsa*
+id_ed25519*
+id_ecdsa*
+.aws/
+.netrc
+.npmrc
+.pypirc
+*.p12
+*.pfx
+localhost.pem
+localhost-key.pem
 
-# compose*
-# Dockerfile*
+.config/
+.devcontainer/
+!.devcontainer/docker-entrypoint.sh
+!.devcontainer/scripts/interactive.sh
+.vscode/
+.editorconfig
+.github/
+.claude/
+.todos/
+.scripts/
+.tools/
+.unpublished/
+.aiexclude
+.prettierignore
+.prettierrc.json
+.stylelintrc.json
+eslint.config.js
 
-# makefile
-# LICENSE
-# README.md
+.gitignore
+.dockerignore
+CLAUDE.md
+AGENTS.md
+README.md
+LICENSE
+makefile
+compose.yaml
+compose*.yaml
+Dockerfile
+Dockerfile*
+
+nginx.conf.eli5.json

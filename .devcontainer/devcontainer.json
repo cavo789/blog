@@ -1,5 +1,12 @@
 {
   "name": "MyBlog",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "version": "latest",
+      "enableNonRootDocker": "true",
+      "installDockerBuildx": "true"
+    }
+  },
   "service": "docusaurus",
   "dockerComposeFile": ["compose.yaml"],
   "workspaceFolder": "/opt/docusaurus",
@@ -27,7 +34,7 @@
     "HOST_PROJECT_DIR": "${localWorkspaceFolder}"
   },
   "initializeCommand": "mkdir -p .docusaurus .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
-  "postCreateCommand": "mkdir -p /home/node/.claude/projects/-opt-docusaurus && ln -sfn /opt/docusaurus/.claude/memory /home/node/.claude/projects/-opt-docusaurus/memory && pre-commit install --config .config/.pre-commit-config.yaml",
+  "postCreateCommand": "yarn install && mkdir -p /home/node/.claude/projects/-opt-docusaurus && ln -sfn /opt/docusaurus/.claude/memory /home/node/.claude/projects/-opt-docusaurus/memory && pre-commit install --config .config/.pre-commit-config.yaml && echo 'source /opt/docusaurus/.devcontainer/scripts/interactive.sh' >> /home/node/.bashrc",
   "remoteUser": "node",
   "updateRemoteUserUID": true,
   "overrideCommand": false,
@@ -94,7 +101,6 @@
         "esbenp.prettier-vscode",
         "GitHub.copilot",
         "GitHub.vscode-github-actions",
-        "Google.geminicodeassist",
         "anthropic.claude-code",
         "ms-vscode.makefile-tools",
         "shd101wyy.markdown-preview-enhanced",

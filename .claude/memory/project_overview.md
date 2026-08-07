@@ -16,7 +16,7 @@ metadata:
 
 ## Stack
 
-- Docusaurus 3.9.x (always keep latest stable)
+- Docusaurus 3.10.2 (always keep latest stable)
 - React functional components + Hooks — **no TypeScript, no class components**
 - JavaScript ES6+, no inline styles, CSS Modules / Infima CSS variables
 - Node ≥ 18, Yarn 1.22

@@ -8,7 +8,7 @@ metadata:
   modified: 2026-07-27T18:03:36.551Z
 ---
 
-Coverage map built from full `/blog` analysis (2026-06-08, refreshed 2026-07-27). Before suggesting article topics, read this to avoid duplicates. Linked to [[project-article-proposals]] and [[project-blog-map]].
+Coverage map built from full `/blog` analysis (2026-06-08, refreshed 2026-08-07). Before suggesting article topics, read this to avoid duplicates. Linked to [[project-article-proposals]] and [[project-blog-map]].
 
 **Why:** Re-analyzing the entire /blog folder costs many tokens. This map captures what's already covered.
 **How to apply:** Cross-check any new article idea against these lists; if substantially covered, propose a different angle.
@@ -122,28 +122,25 @@ to the prose: the article's claim that Continue's config must live in the **Wind
 rather than the WSL side when using VSCode Remote-WSL — current docs don't mention this either way;
 Christophe hasn't retested it yet.
 
-## Notable gaps (not yet covered as of 2026-06-09)
+## Notable gaps (updated 2026-08-07)
 
-- `direnv` (auto-load `.env` per project on `cd`)
-- ZSH startup profiling & optimization (`zprof`, lazy-load)
-- SSH `ProxyJump` / bastion hosts / port forwarding tunnels
-- `tmux` (session persistence, different from Windows Terminal split panes)
-- `asdf` / `mise` for version management
-- Git interactive rebase workflows
+- `direnv` (auto-load `.env` per project on `cd`) — **draft written**: `.unpublished/direnv/`
+- ZSH startup profiling & optimization (`zprof`, lazy-load) — still not covered
+- SSH `ProxyJump` / bastion hosts / port forwarding tunnels — **draft written**: `.unpublished/ssh-proxyjump/`
+- `tmux` (session persistence, different from Windows Terminal split panes) — still not covered
+- `asdf` / `mise` for version management — still not covered
+- Git interactive rebase workflows — **draft written**: `.unpublished/git-interactive-rebase/`
 
 ## Drafts in progress (`.unpublished/`)
 
 - `git-bisect` — binary search through history to find broken commit
 - `docusaurus-ollama-tags` — blog post analyzer using a local LLM (Ollama)
-- `ollama-test-generator` — `ai-test` zsh function: local-LLM-generated Bats/Pest/Pytest suites,
-  with coverage-gap-only mode when a test file already exists. First post of the new "Ollama
-  daily-use functions" series ([[project-blog-conventions]] series list + `src/data/series.js`,
-  both updated). Introduces the shared foundation `~/.zsh/fns/_ollama.zsh` (leading underscore =
-  loads first alphabetically): `_ollama_query` helper, `AI_COMMANDS` registry, `ai` dispatcher/menu
-  (fzf if available, plain list fallback)
-- `ollama-ai-commit` — `ai-commit` zsh function: local-LLM-drafted Conventional Commits messages
-  from `git diff --staged`, accept/edit/discard flow. Second post of the same series, registers
-  itself into `AI_COMMANDS` and is reachable as `ai commit` or via the bare `ai` menu
+- ~~`ollama-test-generator`~~ — **PUBLISHED 2026-08-03**: `/blog/ollama-test-generator`. First post of the
+  "Ollama daily-use functions" series. Introduces `_ollama.zsh` foundation, `AI_COMMANDS` registry,
+  `ai` dispatcher. Generates Bats/Pest/Pytest suites, gap-fill mode when tests already exist.
+- `ollama-git-precommit` — **REPLACES** the 3 separate drafts `ollama-ai-commit`, `ollama-ai-review`,
+  `ollama-ai-secrets` (all deleted from `.unpublished/`, merged into one article 2026-08-07).
+  Title: "ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit". Same series.
 - `ollama-ai-standup` — `ai-standup [days]` zsh function: summarizes `git log` across
   `$AI_STANDUP_REPOS` into a spoken-friendly recap. Day count is configurable via `$AI_STANDUP_DAYS`
   (Christophe's own cadence is weekly → 7), overridable per-call with a numeric argument
@@ -221,7 +218,21 @@ Christophe hasn't retested it yet.
   companion to the already-published Reactions widget
 - `typo-report-docusaurus` (slug `docusaurus-typo-report-component`) — reader feedback/typo-flagging
   widget, PHP + HMAC nonce + rate limiting
-- `winscp-putty` — start PuTTY without typing a password
+- `winscp-putty` — start PuTTY without typing a password (NOT AI-assisted)
+- `ai-agent-in-devcontainer` — Symfony Docker dropped then reinstated Claude Code; how to configure
+  OpenCode with Ollama in a DevContainer. mainTag: ai. Date: 2026-07-30.
+- `ai-explain` — `ai-explain` zsh function: ELI5 for any script/error in the terminal, series
+  finale of "Ollama daily-use functions". Slug: `ollama-ai-explain`. Date: 2026-10-06.
+- `caddy` — Caddy reverse proxy with auto-TLS, as a Docker container. mainTag: docker. Date: 2026-09-15.
+- `direnv` — auto-load `.env` per project on `cd`. mainTag: linux. Date: 2026-08-11.
+- `git-interactive-rebase` — `git rebase -i` to clean commit history before push. mainTag: git. Date: 2026-09-01.
+- `hyperfine` — command-line benchmarking tool. mainTag: linux. Date: 2026-08-25.
+- `linux-yq` — yq (jq for YAML), Docker-based. mainTag: linux. Date: 2026-08-04.
+- `mcp-python-server` — build a Python MCP server giving Claude Code Docker superpowers. mainTag: ai. Date: 2026-09-29.
+- `navi` — interactive cheatsheet tool + fzf. mainTag: linux. Date: 2026-08-18.
+- `open-webui-advanced` — Open WebUI beyond chat: RAG, model presets, Python Functions. mainTag: ai. Date: 2026-09-22.
+- `ssh-proxyjump` — SSH ProxyJump bastion + LocalForward + ZSH/fzf function. mainTag: ssh. Date: 2026-09-08.
+- `xdebug-docker-vscode` — Xdebug 3.x step-debugging in Docker from VSCode. mainTag: php. Date: 2026-12-31.
 - `ollama-refactor-code` — **staged only**, a full Python project (source files under `files/`) for a
   future post on a local-LLM code refactoring/analysis tool; no `index.md` written yet
 - `lazydocker` / `portainer` / `traefik` — new 3-part mini-series (created 2026-07-27), proposed after

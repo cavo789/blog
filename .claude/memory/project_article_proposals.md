@@ -32,12 +32,12 @@ Proposals generated 2026-06-08 after full blog analysis, statuses refreshed 2026
 - Docker angle: each worktree can have its own container
 - Published 2026-06-29: `/blog/git-worktree`
 
-### [ ] direnv: auto-load environment variables per project
+### [x] direnv: auto-load environment variables per project
 
 - `eval "$(direnv hook zsh)"`, `.envrc` with `dotenv`
 - Complements existing `bash-load-env` article (manual) with automatic approach
 - Use case: different Docker Compose vars per project
-- **Priority: high** (fills the .env automation gap naturally)
+- **Draft written: `/opt/docusaurus/.unpublished/direnv/index.md`** (2026-08-11)
 
 ### [ ] ZSH startup optimization: profile and speed up your shell
 
@@ -68,12 +68,15 @@ reviewer) — this series is lighter-weight, multi-language, on-demand.
 
 - Detects Bash/PHP/Python → Bats/Pest/Pytest, finds an existing test file by naming convention, asks
   the model for a full suite or only the missing coverage
-- Draft written: `/opt/docusaurus/.unpublished/ollama-test-generator/index.md`
+- **PUBLISHED 2026-08-03**: `/blog/ollama-test-generator`
 
-### [x] ai-commit: draft a Conventional Commits message from the staged diff
+### [x] ai-commit + ai-review + ai-secrets: merged into one article
 
-- Reads `git diff --staged`, accept/edit/discard flow, reuses the `_ollama_query` helper from ai-test
-- Draft written: `/opt/docusaurus/.unpublished/ollama-ai-commit/index.md`
+- Originally 3 separate drafts. **Merged 2026-08-07** into `.unpublished/ollama-git-precommit/`.
+  Title: "ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit"
+- `ai-commit`: Reads `git diff --staged`, accept/edit/discard flow
+- `ai-review`: SOLID/magic-constants/naming code review, fixed headings
+- `ai-secrets`: regex pre-filter for credentials, model judges genuine leak vs. false positive
 
 ### [x] ai-fix: re-run and explain the last failed command
 
@@ -102,11 +105,9 @@ reviewer) — this series is lighter-weight, multi-language, on-demand.
   direct read for md/txt
 - Draft written: `/opt/docusaurus/.unpublished/ollama-ai-docs/index.md`
 
-### [x] ai-review: SOLID/magic-constants/naming code review of staged changes
+### [~] ai-review: SOLID/magic-constants/naming code review of staged changes
 
-- Same skeleton as ai-commit, fixed headings (SOLID, magic constants, long functions, naming, overall
-  quality), explicitly told to leave a heading empty rather than invent issues
-- Draft written: `/opt/docusaurus/.unpublished/ollama-ai-review/index.md`
+- Merged into `ollama-git-precommit` — see above. Draft deleted from `.unpublished/`.
 
 ### [x] docling: Docker batteries-included setup, companion to the markitdown article
 
@@ -151,12 +152,9 @@ I haven't covered"), Security+Python — all three also verified via grep before
   gap, not overlap
 - Draft written: `/opt/docusaurus/.unpublished/ollama-ai-diagram/index.md`
 
-### [x] ai-secrets: hardcoded credential/API key detection in staged changes
+### [~] ai-secrets: hardcoded credential/API key detection in staged changes
 
-- Series member. Regex pre-filter + LLM contextual judgment (real leak vs. safe `getenv()` pattern).
-  Bridges security × ai/pre-commit; doubles the blog's `security` mainTag (was 1 post total)
-- Hard-links to `/blog/ollama-ai-review` — must publish after it
-- Draft written: `/opt/docusaurus/.unpublished/ollama-ai-secrets/index.md`
+- Merged into `ollama-git-precommit` — see above. Draft deleted from `.unpublished/`.
 
 ### [x] DuckDB: query JSON/CSV files with SQL, no database required
 

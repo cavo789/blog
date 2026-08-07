@@ -120,13 +120,24 @@ _up-development:
 	@printf $(_WHITE) "Use 'TARGET=production make up' to start the PRODUCTION environment."
 	@echo ""
 
+# Path to the directory containing fullchain.pem and privkey.pem on the host.
+# Override at call time: CERTS_DIR=/etc/letsencrypt/live/example.com make up
+CERTS_DIR ?= $(HOME)/certs
+
 .PHONY: _up-production
 _up-production:
 	@printf $(_YELLOW) "-> Create the PRODUCTION stand alone image..."
 	@echo ""
 	@-docker stop blog > /dev/null 2>&1 || true
 	@-docker rm blog > /dev/null 2>&1 || true
-	docker run -d --publish 443:443 --name blog cavo789/blog:latest
+	docker run -d \
+		--publish 80:80 --publish 443:443 \
+		--name blog \
+		--read-only \
+		--tmpfs /var/cache/nginx \
+		--tmpfs /var/run \
+		-v "$(CERTS_DIR)":/etc/nginx/certs:ro \
+		cavo789/blog:latest
 	@echo ""
 	@printf $(_YELLOW) "Open the PROD blog (https://localhost)"
 

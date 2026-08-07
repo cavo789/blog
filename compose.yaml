@@ -4,7 +4,7 @@ services:
   docusaurus:
     build:
       context: .
-      target: ${TARGET:-development}
+      target: ${TARGET:-devcontainer}
       dockerfile: Dockerfile
       args:
         - APP_HOME=${APP_HOME:-/opt/docusaurus}
@@ -13,9 +13,14 @@ services:
     user: ${OS_USERID:-1000}:${OS_GROUPID:-1000}
     env_file:
       - ../.env
-    image: blog-docusaurus:${TARGET:-development}
+    image: blog-docusaurus:${TARGET:-devcontainer}
     container_name: docusaurus
     ports:
       - "80:80"
       - "443:443"
     command: sleep infinity
+    volumes:
+      - node_modules:/opt/docusaurus/node_modules
+
+volumes:
+  node_modules:

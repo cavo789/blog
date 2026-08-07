@@ -1,6 +1,7 @@
 {
   "permissions": {
     "allow": [
+      "Bash(chmod *)",
       "Bash(convert *)",
       "Bash(curl *)",
       "Bash(echo \"Started PID $!\")",
@@ -13,10 +14,10 @@
       "Bash(npm root *)",
       "Bash(npm run *)",
       "Bash(npx --yes playwright *)",
-      "Bash(timeout 60 bash -c 'until curl -s http://localhost:3000 -o /dev/null -w \"%{http_code}\" 2>/dev/null | grep -q \"200\"; do sleep 2; done && echo \"Server ready\"')",
-      "Read(//home/**)",
-      "Read(//root/**)",
-      "Read(//usr/**)"
+      "Bash(sha256sum *)",
+      "Bash(tar *)",
+      "Bash(/tmp/dive-scratch/dive *)",
+      "Bash(timeout 60 bash -c 'until curl -s http://localhost:3000 -o /dev/null -w \"%{http_code}\" 2>/dev/null | grep -q \"200\"; do sleep 2; done && echo \"Server ready\"')"
     ],
     "additionalDirectories": ["/tmp"]
   }

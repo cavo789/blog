@@ -40,7 +40,7 @@
     "statusBar.background": "#6ce32c",
     "statusBar.foreground": "#15202b",
     "statusBarItem.hoverBackground": "#55c21a",
-    "statusBarItem.remoteBackground": "#5689e9",
+    "statusBarItem.remoteBackground": "#6ce32c",
     "statusBarItem.remoteForeground": "#15202b",
     "titleBar.activeBackground": "#6ce32c",
     "titleBar.activeForeground": "#15202b",
@@ -50,12 +50,10 @@
     "activityBarTop.background": "#8be959",
     "activityBarTop.foreground": "#15202b",
     "activityBarTop.inactiveForeground": "#15202b99",
-    "commandCenter.foreground": "#15202b",
-    "statusBar.debuggingBackground": "#6ce32c",
-    "statusBar.debuggingForeground": "#15202b"
+    "commandCenter.foreground": "#15202b"
   },
   "peacock.remoteColor": "#6ce32c",
-  "markdownlint.ignore": ["**/.htaccess"],
+  "markdownlint.ignore": ["**/.htaccess", "**/.dockerignore"],
   "markdownlint.config": {
     "MD010": false,
     "MD033": false,

@@ -1,6 +1,6 @@
 ---
 name: project-blog-map
-description: "Exhaustive catalog of 245 published posts + drafts: slug, title, date, mainTag, tags, series — source of truth for inter-article linking"
+description: "Exhaustive catalog of 246 published posts + 44 drafts: slug, title, date, mainTag, tags, series — source of truth for inter-article linking"
 metadata:
   node_type: memory
   type: project
@@ -10,7 +10,7 @@ metadata:
 
 # Blog Map — Source of Truth
 
-> **245 published posts** · **29 drafts** (+1 code-only staging folder, no post written yet) · Period: 2023-11-02 → 2026-07-30
+> **246 published posts** · **44 drafts** (+1 code-only staging folder: `ollama-refactor-code`) · Period: 2023-11-02 → 2026-08-03
 > Primary author: christophe · Language: en
 > AI-assisted posts: 18
 
@@ -27,7 +27,7 @@ MD link : [Title](/blog/<slug>)
 | mainTag | Posts |
 |---------|-------|
 | (none) | 2 |
-| ai | 7 |
+| ai | 8 |
 | apache | 1 |
 | api | 6 |
 | bash | 11 |
@@ -68,7 +68,11 @@ MD link : [Title](/blog/<slug>)
 | wsl | 4 |
 | zsh | 5 |
 
-## Active Series (12)
+## Active Series (13)
+
+### Ollama daily-use functions (1 post)
+
+- [ai-test: Generate Missing Unit Tests From Your Terminal With a Local LLM](/blog/ollama-test-generator) — 2026-08-03
 
 ### Bluesky Docusaurus component (2 posts)
 
@@ -178,6 +182,7 @@ MD link : [Title](/blog/<slug>)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
+| 2026-08-03 | [ai-test: Generate Missing Unit Tests From Your Terminal With a Local LLM](/blog/ollama-test-generator) ★ | ai, ollama, zsh, tests, php, python | Ollama daily-use functions |
 | 2026-06-01 | [Claude Code - Optimizing Token Usage](/blog/claude-ia-spare-tokens) ★ | ai |  |
 | 2026-05-18 | [Accessing Ollama across your local network](/blog/accessing-ollama-across-your-local-network) ★ | ai, ollama |  |
 | 2026-03-30 | [Installing Ollama and get local AI](/blog/ollama-installation) ★ | ai, ollama |  |
@@ -619,12 +624,14 @@ MD link : [Title](/blog/<slug>)
 
 ## Drafts — Unpublished
 
-> 26 articles (with frontmatter + `draft: true`) in `/opt/docusaurus/.unpublished/`, plus 1 folder with
-> source files staged but no post written yet. `git-delta` and `git-worktree` (previously drafts) were
-> published 2026-06-15 and 2026-06-29 — see git/component sections above. Publish order for the
-> "Ollama daily-use functions" series + companions, and the separate `lazydocker`→`portainer`→`traefik`
-> chain, is tracked in `/opt/docusaurus/.unpublished/plan.md` (French, internal-only, kept in sync per
-> [[feedback-unpublished-plan]] — don't duplicate its content here, just cross-check slugs against it).
+> 44 articles (with frontmatter + `draft: true`) in `/opt/docusaurus/.unpublished/`, plus 1 code-only staging
+> folder without post written yet (`ollama-refactor-code`). `ollama-test-generator` was published 2026-08-03.
+> `ollama-ai-commit`, `ollama-ai-review`, `ollama-ai-secrets` (3 separate drafts) were **merged** into a
+> single new draft `ollama-git-precommit` ("ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit").
+> Publish order for the "Ollama daily-use functions" series + companions, and the separate
+> `lazydocker`→`portainer`→`traefik` chain, is tracked in `/opt/docusaurus/.unpublished/plan.md`
+> (French, internal-only, kept in sync per [[feedback-unpublished-plan]] — don't duplicate its content here,
+> just cross-check slugs against it).
 
 | Folder | Slug | Title | mainTag | Tags | Series |
 |--------|------|-------|---------|------|--------|
@@ -633,8 +640,6 @@ MD link : [Title](/blog/<slug>)
 | duckdb-json-csv | duckdb-json-csv | DuckDB - Query JSON and CSV Files With SQL, No Database Required ★AI | python | python, docker, database | (none — hard-links to docling + ollama-ai-data, see plan.md) |
 | git-bisect | git-bisect | git bisect: Find the Commit That Broke Everything ★AI | git | git, linux, bash, tips |  |
 | lazydocker | lazydocker | lazydocker: A Terminal Dashboard for Docker, Containerized ★AI | docker | docker, linux | (none — first of lazydocker→portainer→traefik chain) |
-| ollama-test-generator | ollama-test-generator | ai-test: Generate Missing Unit Tests From Your Terminal With a Local LLM ★AI | ai | ai, ollama, zsh, tests | Ollama daily-use functions |
-| ollama-ai-commit | ollama-ai-commit | ai-commit: Let a Local LLM Draft Your Commit Messages ★AI | git | git, ollama, zsh, ai | Ollama daily-use functions |
 | ollama-ai-standup | ollama-ai-standup | ai-standup: Turn Yesterday's Commits Into a Daily Standup Update ★AI | git | git, zsh, ai, ollama | Ollama daily-use functions |
 | ollama-ai-fix | ollama-ai-fix | ai-fix: A Local thefuck — Explain and Fix Your Last Failed Command ★AI | zsh | zsh, ai, ollama, linux | Ollama daily-use functions |
 | ollama-ai-ci | ollama-ai-ci | ai-ci: Ask a Local LLM Why Your GitLab Pipeline Failed ★AI | gitlab | gitlab, git, ai, ollama, zsh | Ollama daily-use functions |
@@ -642,10 +647,9 @@ MD link : [Title](/blog/<slug>)
 | ollama-ai-diagram | ollama-ai-diagram | ai-diagram: From a Sentence (or a compose.yaml) to a Mermaid Diagram ★AI | doc-as-code | doc-as-code, ai, ollama, zsh | Ollama daily-use functions |
 | ollama-ai-translate | ollama-ai-translate | ai-translate: Translate Any Text Locally — String, Pipe, or File ★AI | ai | ai, ollama, zsh, linux | Ollama daily-use functions |
 | ollama-ai-docs | ollama-ai-docs | ai-translate & ai-summarize: Confidential Documents, Handled 100% Locally ★AI | ai | ai, ollama, zsh, docker | Ollama daily-use functions |
-| ollama-ai-review | ollama-ai-review | ai-review: A SOLID, Magic-Constants, Naming Code Review Before You Even Commit ★AI | code-quality | code-quality, ai, ollama, git | Ollama daily-use functions |
-| ollama-ai-secrets | ollama-ai-secrets | ai-secrets: Catch Hardcoded Credentials Before You Commit Them ★AI | security | security, ai, ollama, git | Ollama daily-use functions |
 | ollama-ai-data | ollama-ai-data | ai-data: Let a Local LLM Write Your jq and awk One-Liners ★AI | ai | ai, ollama, zsh, fzf | Ollama daily-use functions |
 | ollama-ai-diff | ollama-ai-diff | ai-diff: What Actually Changed, Not a Wall of Plus and Minus Signs ★AI | ai | ai, ollama, zsh, git | Ollama daily-use functions |
+| ollama-git-precommit | ollama-git-precommit | ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit ★AI | git | git, ollama, zsh, ai, security, code-quality | Ollama daily-use functions |
 | docling | docling | Docling - Convert PDF, Word, PowerPoint, Excel and HTML to Markdown, GPU-Accelerated ★AI | markdown | docker, markdown, python | (none — companion to markitdown, not the Ollama series) |
 | portainer | portainer | Portainer: A Web Dashboard for Docker, One Compose File Away ★AI | docker | docker, self-hosted | (none — second of lazydocker→portainer→traefik chain) |
 | python-ai-helper | python-ai-helper | Auto-documenting and testing python scripts | Python | ai, python |  |
@@ -657,6 +661,24 @@ MD link : [Title](/blog/<slug>)
 | docker-dive | docker-dive | Docker Dive — X-Ray Your Images and Kill the Waste ★AI | docker | docker, linux, code-quality | (none — standalone; conclusion links lazydocker, replace if not published first) |
 | atuin-bash-history | atuin-bash-history | Atuin — Supercharge Your Shell History With a Searchable, Timestamped Database ★AI | bash | bash, linux, zsh | (none — standalone; reciprocal links in linux-history + linux-fzf-introduction already added) |
 | oha-http-load-testing | oha-http-load-testing | oha — Benchmark Your Blog Before Your Visitors Do ★AI | linux | linux, docker, bash | (none — standalone; reciprocal links needed in running-docusaurus-with-docker + bruno at publish time) |
+| ai-agent-in-devcontainer | ai-agent-in-devcontainer | Choose Your Own AI Agent — What Symfony Docker Got Right ★AI | ai | ai, docker, devcontainer, ollama, vscode | |
+| ai-explain | ollama-ai-explain | ai-explain — ELI5 for Scripts and Errors, Right in Your Terminal ★AI | ai | ai, linux, ollama, zsh | Ollama daily-use functions |
+| caddy | caddy | Caddy — Zero-Config HTTPS as a Docker Container ★AI | docker | docker, linux, ssl | |
+| direnv | direnv | direnv — Stop Typing `source .env`, Let Your Shell Do It ★AI | linux | bash, docker, linux, zsh | |
+| git-interactive-rebase | git-interactive-rebase | git rebase -i — Fix Your Commit History Before Anyone Sees It ★AI | git | git, linux | |
+| hyperfine | hyperfine | hyperfine — Stop Guessing Which Command Is Faster, Measure It ★AI | linux | bash, docker, linux | |
+| linux-yq | linux-yq | yq — The YAML Processor You Already Know How to Use ★AI | linux | bash, docker, linux | |
+| mcp-python-server | mcp-python-server | MCP in Practice — Build a Python Server That Gives Claude Code Docker Superpowers ★AI | ai | ai, docker, python | |
+| navi | navi | navi — Your Command-Line Memory, Searchable with fzf ★AI | linux | bash, fzf, linux, zsh | |
+| open-webui-advanced | open-webui-advanced | Open WebUI — Beyond the Chat: Models, RAG, and Functions ★AI | ai | ai, docker, ollama, self-hosted | |
+| ssh-proxyjump | ssh-proxyjump | SSH ProxyJump — Reach Servers Behind a Bastion, Tunnel Any Port ★AI | ssh | fzf, linux, ssh, zsh | |
+| vscode-extension-bisect | vscode-extension-bisect | Extension Bisect: Binary Search for a Misbehaving VSCode Extension ★AI | vscode | vscode | |
+| vscode-gitlens | vscode-gitlens | GitLens: Git Blame and History Without Leaving the Editor ★AI | git | git, vscode | |
+| vscode-multi-root-git-worktree | vscode-multi-root-git-worktree | One VSCode Window, Every Worktree: Multi-Root Workspaces ★AI | git | git, vscode | |
+| vscode-profiles | vscode-profiles | VSCode Profiles: One Window, Two Completely Different Setups ★AI | vscode | vscode, customization | |
+| vscode-snippets-for-docusaurus | vscode-snippets-for-docusaurus | My VSCode Snippets File for Writing This Blog ★AI | vscode | vscode, docusaurus, markdown | |
+| winscp-putty | winscp-putty | WinSCP - Start PuTTY without typing a password | winscp | putty, ssh, tips, winscp | |
+| xdebug-docker-vscode | xdebug-docker-vscode | Step-Through PHP Debugging in a Docker Container From VSCode ★AI | php | php, docker, vscode | |
 | winscp-putty | winscp-putty | WinSCP - Start PuTTY without typing a password | winscp | putty, ssh, tips, winscp |  |
 | xdebug-docker-vscode | xdebug-docker-vscode | Step-Through PHP Debugging in a Docker Container From VSCode ★AI | php | php, docker, vscode | (none — zero draft dependencies, freely placeable) |
 

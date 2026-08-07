@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.6
+# syntax=docker/dockerfile:1.9
 
 # By default, 1000:1000 but can be different like 1002:1002.
 # There parameters are initialized using the "make build" command.
@@ -19,17 +19,27 @@ ARG APP_HOME="/opt/docusaurus"
 # ─────────────────────────────────────────────────────────────
 # 🧱 Base Image: Devcontainer Node.js environment
 # ─────────────────────────────────────────────────────────────
-FROM mcr.microsoft.com/devcontainers/javascript-node:20-bookworm AS base
+FROM node:20-bookworm-slim AS base
 
 # Install bash and bash-completion (required for Devcontainer shell features)
 ENV DEBIAN_FRONTEND=noninteractive
+# Avoid .pyc cache files from build-time pip/pre-commit invocations, and unbuffered stdout for
+# any Python process run interactively in this container.
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 RUN --mount=type=cache,target=/var/cache/apt \
     --mount=type=cache,target=/var/lib/apt/lists \
     set -eux; \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         bash \
-        bash-completion
+        bash-completion \
+        curl \
+        git \
+        openssl
+
+# Pin yarn to the version declared in package.json#packageManager (overrides corepack's symlink)
+RUN npm install -g yarn@1.22.22 --force --quiet
 
 # If the host userid/groupid is different from 1000:1000 then update the
 # existing node user to these IDs. This is not needed here for the production
@@ -95,10 +105,10 @@ COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" package.json package-*.* yarn*.* 
 
 USER "${OS_USERNAME}"
 
-# Install dependencies using Yarn with cache mount and install sharp for Linux x64
+# Install dependencies using Yarn with cache mount
+# sharp is already in package.json; @img/sharp-linux-x64 is in yarn.lock — no yarn add needed
 RUN --mount=type=cache,target=${YARN_CACHE_FOLDER},uid=${OS_USERID},gid=${OS_GROUPID} \
-    yarn install --immutable --frozen-lockfile --prefer-offline && \
-    yarn add --platform=linux --arch=x64 sharp
+    yarn install --immutable --frozen-lockfile --prefer-offline
 
 # ─────────────────────────────────────────────────────────────
 # 🧪 Stage 2: Development Environment Setup
@@ -122,19 +132,15 @@ RUN set -eux && \
     mkdir -p "${HOME_FOLDER}" \
         "${HOME_FOLDER}/.vscode-server/extensions" \
         "${HOME_FOLDER}/.vscode-server/data/Machine" \
-        "${HOME_FOLDER}/.cache/yarn/v6" && \
-    chown -R "${OS_USERNAME}":"${OS_USERNAME}" "${HOME_FOLDER}"
+        "${HOME_FOLDER}/.cache/yarn/v6"
 
-# Copy full project source code and installed node_modules from dependencies stage
-
-COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"/node_modules ./node_modules
+# Copy package manifests from dependencies stage (node_modules are supplied at runtime via named volume)
 COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"/package.json "${APP_HOME}"/package-*.* "${APP_HOME}"/yarn*.* ./
 
 # Switch to root to install global scripts
 USER root
-COPY .devcontainer/bash_helpers.sh /usr/local/bin/
-COPY .devcontainer/docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/bash_helpers.sh /usr/local/bin/docker-entrypoint.sh
+COPY --chmod=755 .devcontainer/scripts/interactive.sh /usr/local/bin/
+COPY --chmod=755 .devcontainer/docker-entrypoint.sh /usr/local/bin/
 USER "${OS_USERNAME}"
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
@@ -151,22 +157,33 @@ ARG OS_USERNAME="node"
 ARG OS_USERID=1000
 ARG OS_GROUPID=1000
 
+# mkcert v1.4.4 — update both ARGs together when bumping the version
+ARG MKCERT_SHA256_AMD64="6d31c65b03972c6dc4a14ab429f2928300518b26503f58723e532d1b0a3bbb52"
+ARG MKCERT_SHA256_ARM64="b98f2cc69fd9147fe4d405d859c57504571adec0d3611c3eefd04107c7ac00d0"
+
 USER root
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PIP_BREAK_SYSTEM_PACKAGES=1 \
-    PYTHONDONTWRITEBYTECODE=1
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
 RUN --mount=type=cache,target=/var/lib/apt/lists \
     --mount=type=cache,target=/var/cache/apt \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         python3 \
-        python3-pip && \
+        python3-pip \
+        sudo && \
     echo "${OS_USERNAME} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/"${OS_USERNAME}" && \
     chmod 0440 /etc/sudoers.d/"${OS_USERNAME}" && \
     ARCH=$(dpkg --print-architecture) && \
     curl -sSL "https://dl.filippo.io/mkcert/latest?for=linux/${ARCH}" -o /usr/local/bin/mkcert && \
+    case "${ARCH}" in \
+      amd64) echo "${MKCERT_SHA256_AMD64}  /usr/local/bin/mkcert" | sha256sum -c ;; \
+      arm64) echo "${MKCERT_SHA256_ARM64}  /usr/local/bin/mkcert" | sha256sum -c ;; \
+      *) echo "Unknown arch ${ARCH}, skipping checksum" ;; \
+    esac && \
     chmod +x /usr/local/bin/mkcert
 
 USER "${OS_USERNAME}"
@@ -197,8 +214,16 @@ FROM development AS build
 
 ARG OS_USERNAME
 
-# Copy full project source code
-COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" . .
+# node_modules are not baked into development (served via named volume for devcontainer);
+# restore them here explicitly so yarn build has its full dependency tree.
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"/node_modules ./node_modules
+
+# Copy only what yarn build needs — not api/, scripts/, nginx.conf, certs, .unpublished/, etc.
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" blog/              ./blog/
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" src/               ./src/
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" static/            ./static/
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" plugins/           ./plugins/
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" docusaurus.config.js sidebars.js ./
 
 # Build the Docusaurus site into static HTML/CSS/JS
 RUN yarn build
@@ -208,7 +233,14 @@ RUN yarn build
 #
 # Minimal Nginx image for serving static files)
 # ─────────────────────────────────────────────────────────────
-FROM nginx:stable-alpine AS production
+FROM nginx:stable-alpine@sha256:97d490c12ba55b4946b01546d1c3ed324e8d41ab1c9fcb2a616aa470620e5b46 AS production
+
+LABEL org.opencontainers.image.title="blog-docusaurus" \
+      org.opencontainers.image.version="0.1.0" \
+      org.opencontainers.image.description="Personal technical blog powered by Docusaurus 3.x" \
+      org.opencontainers.image.vendor="cavo789" \
+      org.opencontainers.image.licenses="MIT" \
+      org.opencontainers.image.authors="cavo789@gmail.com"
 
 # Clean default Nginx content
 RUN rm -rf /usr/share/nginx/html/*
@@ -218,16 +250,18 @@ ARG APP_HOME
 # Copy built static site from build stage into Nginx's web root
 COPY --from=build "${APP_HOME}"/build /usr/share/nginx/html
 
-# Add TLS certificates (for HTTPS support)
+# Create cert dir; mount real certs at runtime via -v /path/to/certs:/etc/nginx/certs:ro
 RUN mkdir -p /etc/nginx/certs
-COPY localhost.pem /etc/nginx/certs/
-COPY localhost-key.pem /etc/nginx/certs/
 
 # Replace default Nginx config with custom one
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose HTTP and HTTPS ports
 EXPOSE 80 443
+
+# HTTPS healthcheck — certs must be mounted at runtime; --no-check-certificate handles self-signed
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+    CMD wget -qO /dev/null --no-check-certificate https://localhost/ || exit 1
 
 # Start Nginx in foreground
 CMD ["nginx", "-g", "daemon off;"]

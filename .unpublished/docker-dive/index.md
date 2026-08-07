@@ -292,6 +292,41 @@ If the image efficiency drops below 95% or wasted bytes exceed 20 MB, the step f
 `lowestEfficiency: 0.95` and `highestWastedBytes: "20mb"` are sensible defaults for a first pass. Adjust `highestWastedBytes` upward if your image legitimately includes large static assets (fonts, models, datasets) that can't be cleanly separated.
 </AlertBox>
 
+## Claude Code — Automate the Entire Loop
+
+Everything we've done manually — run dive, read the JSON, spot the wasted layers, decide what to fix, edit the Dockerfile, rebuild, re-run — is a repeatable loop. If you use <Link to="https://claude.ai/code">Claude Code</Link>, you can drive the whole thing with a single slash command:
+
+```text
+/docker-dive-optimization
+```
+
+It auto-discovers the project's main Dockerfile (or accepts a path or image tag as argument), builds the image, runs dive in JSON mode, and classifies every finding into three buckets — mapping directly to the patterns we've been applying by hand in this article.
+
+**Bucket A — fix now**: Mechanical waste that's unambiguously wrong. `apt-get clean` sitting in a separate `RUN` from the install, `--no-cache` missing from an `apk add`, a cache directory not cleaned in the same layer that created it. Claude applies the Dockerfile edit, rebuilds, and re-runs dive to verify the gain before reporting success.
+
+**Bucket B — propose and wait**: Findings where the right answer requires a judgment call. Switching from `python:3.12` to `python:3.12-slim` in a production stage. Introducing a multi-stage build where there isn't one. Replacing a 300 MB runtime that's only there for a single CLI call with a standalone binary. Claude presents the layer evidence and the trade-off, then waits for your decision before touching anything.
+
+**Bucket C — TODOs**: Everything that needs research before it can be touched. Filed as numbered items in `.todos/` so they don't get lost between sessions.
+
+<AlertBox variant="tip" title="Target any image or Dockerfile">
+The command defaults to the project's own Dockerfile, but it accepts a path or an image tag directly:
+
+```text
+/docker-dive-optimization myapp:latest
+/docker-dive-optimization ./services/api/Dockerfile
+```
+
+You can copy the command file into any project's `.claude/commands/` directory — it auto-discovers whether to use `docker compose build` or a plain `docker build`, so no project-specific wiring is needed.
+</AlertBox>
+
+The three-bucket split mirrors the judgment calls in this article. Cleaning apt cache in the same layer is Bucket A — no discussion needed, just merge and verify. Switching to a multi-stage build is Bucket B — real trade-offs to review first. Replacing a niche binary you've never audited is Bucket C — research before touching. Same analysis we did manually, automated.
+
+To prove the point: I ran `/docker-dive-optimization` on the very blog you're reading right now. The devcontainer image had ballooned to **2.5 GB**, scored 89.95% efficiency, and carried 433 MB of wasted bytes — mostly inherited from a heavy `mcr.microsoft.com/devcontainers/javascript-node:20-bookworm` base that silently baked in oh-my-zsh, subversion, and a full C/C++ build toolchain nobody had asked for. Bucket A caught a redundant `chown -R` that forced Docker's overlay FS to copy 1 410 files into a useless 21 MB layer. Bucket B flagged the base image and 996 MB of `node_modules` baked into every build.
+
+![dive result before and after optimization on this blog](./images/final_result.png)
+
+**From 2.5 GB down to 735 MB — a 70% reduction, efficiency up from 89.95% to 98.75%.** The base image swap from the devcontainer-specific image to `node:20-bookworm-slim` alone saved over a gigabyte. Moving `node_modules` to a named Docker volume at runtime recovered another 996 MB. The whole session — including the rebuild and the dive re-run to verify — took under fifteen minutes.
+
 ## Putting It All Together
 
 Here's the progression we went through:
