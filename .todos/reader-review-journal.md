@@ -100,3 +100,13 @@ Target structure: `.claude/skills/blog-post-structure/SKILL.md`
 | 2026-08-08 | gemini-meerkat | published | 7% | OK | — |
 | 2026-08-08 | docusaurus-snippets | published | 13% | OK | — |
 | 2026-08-08 | docusaurus-plugin-replace | published | 63% | RESTRUCTURE | reader-docusaurus-plugin-replace.md |
+| 2026-08-08 | docusaurus-go-top | published | 100% | RESTRUCTURE | reader-docusaurus-go-top.md |
+| 2026-08-08 | docusaurus-series | published | 42% | RESTRUCTURE | reader-docusaurus-series.md |
+| 2026-08-08 | docusaurus-cards | published | 1% | MINOR | — |
+| 2026-08-08 | pest-functional-testing | published | 67% | RESTRUCTURE | reader-pest-functional-testing.md |
+| 2026-08-08 | docusaurus-lazy-loading | published | 100% | RESTRUCTURE | reader-docusaurus-lazy-loading.md |
+| 2026-08-08 | docusaurus-override-img | published | 100% (preuve prévue mais commentée) | RESTRUCTURE | reader-docusaurus-override-img.md |
+| 2026-08-08 | docusaurus-bluesky-comments | published | 100% | RESTRUCTURE | reader-docusaurus-bluesky-comments.md |
+| 2026-08-08 | docusaurus-bluesky-share | published | 33% (91% pour la preuve réelle) | RESTRUCTURE | reader-docusaurus-bluesky-share.md |
+| 2026-08-08 | docker-memos | published | 3% | OK | — |
+| 2026-08-08 | vscode-docker-markmap | published | 26% | RESTRUCTURE | reader-vscode-docker-markmap.md |
