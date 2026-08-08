@@ -12,7 +12,13 @@ effort?
 
 **This command never edits an article.** It measures, it reports, it writes a TODO. `Edit` is
 deliberately absent from `allowed-tools` — restructuring moves whole sections and rewrites
-transitions, which is a job for `/todo`, not for an audit.
+transitions, which is a separate implementation step, not something an audit should do inline.
+
+That TODO is **not** actioned via `/todo` — `.todos/reader-<slug>.md` is deliberately
+non-numbered (see step 4) and `/todo` only resolves `.todos/NNN-*.md` by numeric ID, so it
+will report the file as not found. To implement a `RESTRUCTURE` finding, ask directly:
+"read and apply `.todos/reader-<slug>.md`" (or point at the article). Say this plainly in the
+session report (step 6) so it isn't left for the user to discover.
 
 **Load both skills before evaluating anything:**
 
@@ -166,7 +172,10 @@ Then the summary table:
 | Slug | Publié/Draft | TTV | Verdict | Note |
 | --- | --- | --- | --- | --- |
 
-List the TODO files created. Then, in batch mode only, print this block verbatim:
+List the TODO files created. For each one, add one line: "Pour l'implémenter : demande-moi de
+lire et d'appliquer `<path>` (pas `/todo` — ce fichier n'est pas numéroté)."
+
+Then, in batch mode only, print this block verbatim:
 
 ```text
 ---

@@ -24,6 +24,18 @@ I've set Traefik up three separate times over the years. Each time, I copied a w
 
 <!-- truncate -->
 
+## Seeing It Route
+
+A container with two labels (`Host()` rule, target port) and nothing else — no config file, no restart — and Traefik already routes to it by name:
+
+<Terminal source="./files/terminal_routing_proof.txt" typewriter />
+
+The request went in with `Host: whoami.home.arpa`, came back with `X-Forwarded-Host`/`X-Forwarded-Server` headers proving it was actually proxied, not served directly — and the router list from Traefik's own API shows exactly one router, discovered from the container's labels, nothing hand-configured.
+
+<AlertBox variant="note" title="API output shown here, not a browser screenshot">
+This is `curl` against Traefik's own API rather than a screenshot of the dashboard — the dashboard at `https://traefik.home.arpa` (covered further down) shows the identical router, service and rule, rendered as a table instead of JSON.
+</AlertBox>
+
 ## The Problem It Actually Solves
 
 Right now, on my LAN, every Docker service I run lives at its own IP:port combination: Ollama's API on `11434`, Open WebUI on `4000`, <Link to="/blog/portainer">Portainer</Link> on `9443`, this Docusaurus dev server on `3000`. Each one is a fact I have to remember, or look up, or bookmark. Add a new service, and it's one more port competing for a number I haven't used yet.
@@ -131,11 +143,13 @@ None of this works until something resolves `ollama.home.arpa` and `portainer.ho
 
 That's the whole trick — one IP, several names, and Traefik itself sorts out which container each name actually belongs to based on the `Host()` rule in its labels. A router-per-device solution like Pi-hole's local DNS would do this automatically for every device on the network instead of one `/etc/hosts` file at a time, but that's a separate rabbit hole for a separate article.
 
-## The Dashboard, as the Debugging Tool
+## Under the Hood (skip this if you just want to use it)
+
+### The Dashboard, as the Debugging Tool
 
 Browse to `https://traefik.home.arpa` (basic-auth prompt, then the dashboard) to see exactly what Traefik discovered: every router, which rule it matched, which service it points to, and whether that service is currently reporting healthy. When a label typo means a route silently doesn't work, this page — not guessing, not re-reading YAML — is where the answer actually is.
 
-## Three Tools, One Socket
+### Three Tools, One Socket
 
 <AlertBox variant="info" title="lazydocker, Portainer, Traefik — same socket, three jobs">
 All three tools in this mini-series read from the same Docker socket, and none of them replace another. <Link to="/blog/lazydocker">lazydocker</Link> answers "what's happening right now, from my terminal." <Link to="/blog/portainer">Portainer</Link> answers the same question from a browser, for anyone. Traefik doesn't answer that question at all — it answers "how does a request even find the right container," so the other two (and everything else) get one clean hostname instead of one more port to remember.

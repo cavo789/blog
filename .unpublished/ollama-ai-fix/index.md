@@ -25,6 +25,12 @@ You know that moment: you fire a command, the terminal spits out three lines of 
 
 <!-- truncate -->
 
+## Demo
+
+<Terminal source="./files/terminal_fix.txt" typewriter />
+
+A classic typo, but the same flow handles a wrong flag, a missing `--`, a path that needs quoting, or a forgotten `sudo` just as well — anything where the fix is genuinely inferable from the error text.
+
 ## Why Re-Run Instead of "Just Reading" the Error
 
 Here's the inconvenient truth: your shell doesn't keep the previous command's `stderr` anywhere. Once it's scrolled past, it's gone — unless you piped it to a file, which you didn't, because you didn't know it was going to fail. So `ai-fix`, like `thefuck` before it, does the only thing that actually works: it re-runs the command, this time capturing both `stdout` and `stderr` into a variable instead of letting them print straight to your terminal.
@@ -44,12 +50,6 @@ Step by step:
 3. The command is checked against a short list of risky substrings (`rm `, `git push`, `docker rm`, `kubectl delete`, `DROP `, and a few others). If it matches, you get a `[y/N]` prompt before anything re-runs.
 4. `eval "$last_cmd"` runs it, capturing combined output. If it now succeeds (flaky network, a file that appeared in the meantime), `ai-fix` says so and stops — no point asking the model to explain a non-error.
 5. On a real failure, the command, its exit code, and its output all go to `_ollama_query` with a prompt asking for one sentence of explanation and a `Fix:` line with the corrected command.
-
-## Demo
-
-<Terminal source="./files/terminal_fix.txt" typewriter />
-
-A classic typo, but the same flow handles a wrong flag, a missing `--`, a path that needs quoting, or a forgotten `sudo` just as well — anything where the fix is genuinely inferable from the error text.
 
 ## Registered in the `ai` Menu
 

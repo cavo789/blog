@@ -5,6 +5,7 @@ date: 2024-03-29
 description: Boost your ZSH console efficiency. Install the zsh-autosuggestions plugin easily and get intelligent command suggestions from your history as you type.
 authors: [christophe]
 image: /img/v2/zsh.webp
+series: Customize your shell with ZSH
 mainTag: zsh
 tags:
   - customization

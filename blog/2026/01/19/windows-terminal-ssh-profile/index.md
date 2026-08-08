@@ -5,6 +5,7 @@ date: 2026-01-19
 description: Adding a SSH profile to Windows Terminal to quickly connect to your servers without typing the full SSH command each time.
 authors: [christophe]
 image: /img/v2/adding_ssh_profile_to_windows_terminal.webp
+series: Windows Terminal
 mainTag: windows-terminal
 tags:
   - customization
@@ -27,7 +28,23 @@ For illustration purposes, I'll use my hosting server at PlanetHoster, but you c
 
 <!-- truncate -->
 
-## Open Windows Terminal Settings
+## The Result
+
+Once the profile is created (covered below), connecting to the server is one click from the dropdown menu next to the `+` button:
+
+![The new SSH profile in Windows Terminal](./images/windows_terminal_ssh_profile.webp)
+
+Select it, and a new console opens, already connected via SSH.
+
+## Why It Works
+
+- No more retyping the `ssh planethoster` command — the profile carries it for you.
+- The server is reachable straight from the Terminal dropdown menu, alongside your other profiles.
+- Fully customizable — an icon, a background image, its own color scheme, whatever helps you spot it at a glance.
+
+## Installation
+
+### Open Windows Terminal Settings
 
 To open the Windows Terminal settings, you can use the following methods:
 
@@ -43,7 +60,7 @@ To open the Windows Terminal settings, you can use the following methods:
 
 ![Getting access to Windows Terminal Settings](./images/windows_terminal_access_to_settings.webp)
 
-## Add a profile for any SSH connection
+### Add a profile for any SSH connection
 
 In a recent article, we've seen how to create an SSH profile and be able to run a command like `ssh planethoster` (or anything else). If you missed it, please read <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link>.
 
@@ -64,11 +81,11 @@ Let's see how to create a Windows Terminal profile that will directly open a con
   ]}
 />
 
-The change is immediate: by clicking on the down arrow next to the `+` button, you'll see your new profile.
+The change is immediate: by clicking on the down arrow next to the `+` button, you'll see your new profile — exactly the result shown at the top of this article.
 
-![The new SSH profile in Windows Terminal](./images/windows_terminal_ssh_profile.webp)
+## More Demos
 
-## Adding a background image (optional)
+### Adding a background image (optional)
 
 Go back to the Settings, select your newly created profile (`SSH - PlanetHoster` in our example) and scroll down to the "Appearance" section and click on it to expand it.
 

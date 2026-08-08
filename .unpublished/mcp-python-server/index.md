@@ -29,6 +29,34 @@ An MCP server fixes this. You write a Python file that exposes Docker queries as
 
 The key property: MCP servers run locally on your machine, not in the cloud. Your Docker socket, your files, your database — the server has the same access you do. The LLM sees only what the server chooses to expose.
 
+## Using It in Claude Code
+
+Restart Claude Code (or reload the window) after adding the `mcpServers` block (covered below). Then simply ask questions about your Docker environment — Claude Code will call the tools when relevant:
+
+> *"Which containers are currently running and what images are they using?"*
+
+Claude Code calls `list_containers`, receives the output, and answers directly:
+
+```
+I can see 4 running containers:
+- my_api (image: node:22-alpine, up 2 days)
+- postgres_dev (image: postgres:16, up 2 days)
+- redis_cache (image: redis:7-alpine, up 5 hours)
+- caddy (image: caddy:2-alpine, up 2 days)
+```
+
+Or:
+
+> *"The api container seems slow. Can you check the last 100 log lines and tell me if there's anything suspicious?"*
+
+Claude Code calls `get_logs("my_api", 100)`, reads the output, and identifies patterns — slow queries, connection timeouts, repeated errors.
+
+Or:
+
+> *"What environment variables is the postgres_dev container running with?"*
+
+Claude Code calls `inspect_container("postgres_dev")` and extracts the `env` field from the JSON.
+
 ## Install
 
 Create a directory for the server:
@@ -118,34 +146,6 @@ It blocks on stdin (waiting for MCP protocol messages). Press `Ctrl+C` — if it
 The `mcp` package includes a development inspector: `mcp dev server.py`. It opens a local web UI where you can call each tool manually and inspect the JSON responses — useful for testing before Claude Code is involved.
 </AlertBox>
 
-## Using it in Claude Code
-
-Restart Claude Code (or reload the window) after adding the `mcpServers` block. Then simply ask questions about your Docker environment — Claude Code will call the tools when relevant:
-
-> *"Which containers are currently running and what images are they using?"*
-
-Claude Code calls `list_containers`, receives the output, and answers directly:
-
-```
-I can see 4 running containers:
-- my_api (image: node:22-alpine, up 2 days)
-- postgres_dev (image: postgres:16, up 2 days)
-- redis_cache (image: redis:7-alpine, up 5 hours)
-- caddy (image: caddy:2-alpine, up 2 days)
-```
-
-Or:
-
-> *"The api container seems slow. Can you check the last 100 log lines and tell me if there's anything suspicious?"*
-
-Claude Code calls `get_logs("my_api", 100)`, reads the output, and identifies patterns — slow queries, connection timeouts, repeated errors.
-
-Or:
-
-> *"What environment variables is the postgres_dev container running with?"*
-
-Claude Code calls `inspect_container("postgres_dev")` and extracts the `env` field from the JSON.
-
 ## Ideas for extending the server
 
 The `docker-inspector` server is a starting point. The same `@mcp.tool()` pattern works for anything you want to expose:
@@ -171,7 +171,9 @@ def read_env_file(path: str = ".env") -> str:
 
 Each new `@mcp.tool()` function appears automatically in Claude Code's tool list after a restart. No schema to update, no JSON to write.
 
-## Security considerations
+## Under the Hood (skip this if you just want to use it)
+
+### Security considerations
 
 An MCP server runs with your credentials and file system access. A few principles:
 
@@ -180,7 +182,7 @@ An MCP server runs with your credentials and file system access. A few principle
 - **Absolute paths in settings.json**: prevents path traversal surprises
 - **No network exposure**: MCP servers communicate over stdin/stdout, not a network port — they're not accessible from outside your machine
 
-## Where MCP fits in your workflow
+### Where MCP fits in your workflow
 
 MCP tools complement rather than replace the ZSH functions in the <Link to="/blog/zsh-docker-functions">ZSH Docker functions</Link> article. The ZSH functions (`dex`, `dstop`, `dlogs`) are for direct interaction — you're at the terminal, you know what you want. MCP tools are for when Claude Code is reasoning about your environment as part of a larger task: debugging a problem, reviewing a `compose.yaml`, or answering a question about what's running.
 

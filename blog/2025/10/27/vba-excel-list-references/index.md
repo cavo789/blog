@@ -5,6 +5,7 @@ date: 2025-10-27
 description: VBA developer? Stop manually checking references! Use this VBS script to automatically retrieve a list of all VBA references in multiple Excel .xlsm or .xlam files.
 authors: [christophe]
 image: /img/v2/excel.webp
+series: VBA & MS Office automation
 mainTag: excel
 tags:
   - excel

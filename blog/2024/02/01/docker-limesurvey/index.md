@@ -5,6 +5,7 @@ date: 2024-02-01
 description: Learn to install LimeSurvey quickly and easily using Docker Compose. A complete guide on setup, data persistence with volumes, and running specific versions.
 authors: [christophe]
 image: /img/v2/limesurvey.webp
+series: Self-host your own services
 mainTag: self-hosted
 tags:
   - docker

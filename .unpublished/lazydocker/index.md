@@ -26,11 +26,17 @@ But sometimes that's not the situation. Sometimes I've just started five contain
 
 <!-- truncate -->
 
+## The Dashboard, Running
+
+Five panes, updating live, on this exact machine's real containers:
+
+![lazydocker's dashboard: Containers, Images, Volumes and Networks panes on the left, live logs streaming on the right](./images/lazydocker-dashboard.png)
+
+The right-hand pane is streaming this Docusaurus dev server's actual webpack output as it recompiles — no `docker logs -f` typed anywhere, just the container selected on the left.
+
 ## What lazydocker Actually Shows
 
-lazydocker is a single Go binary — no dependencies beyond a working Docker socket — that opens a full-screen terminal dashboard with a handful of panes: containers, images, volumes, networks, and (if it detects a `compose.yaml` in the current directory) a project view grouping containers by their compose service name instead of listing them flat.
-
-Move the selection with arrow keys or the `hjkl` vim-style keys; each pane updates live. Select a container and the right-hand panel shows its logs, streaming, without you having to type `docker logs -f <name>` first. Press <kbd>Enter</kbd> on a container to open a menu of actions — restart, stop, remove, attach a shell — instead of remembering the exact flag for each.
+Move the selection with arrow keys or the `hjkl` vim-style keys; each pane updates live. Select a container and the right-hand panel shows its logs, streaming, without you having to type `docker logs -f <name>` first. Press <kbd>Enter</kbd> on a container to open a menu of actions — restart, stop, remove, attach a shell — instead of remembering the exact flag for each. If lazydocker detects a `compose.yaml` in the current directory, the **Containers** pane groups them by their compose service name instead of listing everything flat.
 
 <AlertBox variant="tip" title="Full keybinding list, in-app">
 Press <kbd>?</kbd> inside lazydocker for the complete, version-accurate keybinding list rather than trusting a snapshot in an article — the exact keys have shifted slightly between releases.

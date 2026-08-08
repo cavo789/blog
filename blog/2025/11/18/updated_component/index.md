@@ -36,9 +36,23 @@ Let's create a very small component to enhance this.
 
 <!-- truncate -->
 
+## The Result
+
+Once the component is wired in (covered below), adding an `updates` entry to a post's frontmatter renders this, automatically:
+
+![Demo](./images/sample.webp)
+
+## Why It Works
+
+- The component reads an `updates` array straight from the post's YAML frontmatter — no separate changelog file to maintain.
+- Unlike Docusaurus's native `last_update`, it accepts multiple entries, each with its own `date` and `note`.
+- Once swizzled in, it displays automatically on every post that has an `updates` entry — nothing to call manually per-article.
+
+## Installation
+
 We'll have to create a new component, and to swizzle the BlogPostPage, so the component will be executed automatically.
 
-## Create the Updated component
+### Create the Updated component
 
 Please create a new folder called `src/components/Blog/Updated` where you'll create two files: `index.js` and `styles.module.css`.
 
@@ -48,7 +62,7 @@ Please create a new folder called `src/components/Blog/Updated` where you'll cre
 
 Shortly, the component will check if the YAML frontmatter of your blog post contains an `updates` entry. If this is the case, it will parse it. It has to be an array with two pieces of information: a `date` and a `note`.
 
-## Override the BlogPostPage template
+### Override the BlogPostPage template
 
 Please first check if you don't have the `src/theme/BlogPostItem/Content/index.js` file yet. If you're a reader of this blog and already have customized Docusaurus, perhaps you have it already: <Link to="/blog/docusaurus-old-notice">the "this article is over a year old" component</Link> swizzles that very same file.
 
@@ -62,7 +76,9 @@ Below are the minimum lines to add at the right place in your own file.
 
 <Snippet filename="src/theme/BlogPostItem/Content/index.js" source="./files/index.js" />
 
-## Use the component
+## More Demos
+
+### Use the component
 
 Now, just edit any of your existing posts and add an `updates` entry in your YAML front matter like for instance
 
@@ -80,12 +96,12 @@ updates:
     note: Optimized build process for faster deployment times.
 ```
 
-Just save the post and refresh your web page. If you've done everything correctly, you'll see the information in your browser.
-
-Below an image of what you'll get.
-
-![Demo](./images/sample.webp)
+Just save the post and refresh your web page. If you've done everything correctly, you'll see the information in your browser — the same rendering shown at the top of this article.
 
 Feel free to update the `src/components/Blog/Updated/styles.module.css` to match your own styling preferences.
 
-A changelog pairs nicely with <Link to="/blog/docusaurus-old-notice">the banner warning readers that an article is over a year old</Link>: the first says *what* changed, the second says *when it last did*.
+## Conclusion
+
+A small parsed frontmatter array and one swizzled theme file replace `last_update`'s single date with a real, multi-entry changelog — readers see exactly what changed and when, without you maintaining a separate file.
+
+It pairs nicely with <Link to="/blog/docusaurus-old-notice">the banner warning readers that an article is over a year old</Link>: the first says *what* changed, the second says *when it last did*.

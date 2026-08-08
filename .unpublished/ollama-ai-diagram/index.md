@@ -25,23 +25,6 @@ I've written more "turn X into a diagram" articles than I first realized: [Diagr
 
 <!-- truncate -->
 
-## Where This Actually Sits Next to `docker-python-mermaid`
-
-<AlertBox variant="info" title="Not a replacement — a different input shape">
-[`docker-python-mermaid`](/blog/docker-python-mermaid) is the right tool when the source is genuinely structured (a directory tree, a real schema) and you want a diagram that's guaranteed to match it exactly, every time, deterministically. `ai-diagram` is for the other half of the job: a Slack message's worth of description, or a file you have but no parser for. Less precision, way less setup — I use both, depending on which one I actually have in hand.
-</AlertBox>
-
-## The `ai-diagram` Function
-
-<Snippet filename="~/.zsh/fns/ai-diagram.zsh" source="./files/ai-diagram.zsh" defaultOpen={true} />
-
-Two input modes, detected the same way `ai-summarize` and `ai-translate` already do it:
-
-1. **A file** — read as-is, and the prompt is told to infer the diagram type from context (a `compose.yaml` implies a service graph, a folder listing implies a tree, an OpenAPI spec implies a sequence diagram).
-2. **Free text** — everything after the command is treated as the description, and the model picks whichever Mermaid diagram type fits best on its own.
-
-Either way, the instruction is strict: output *only* the fenced `` ```mermaid `` block, nothing before or after — this blog renders Mermaid natively, so the output is meant to be pasted directly into a post, not read as prose first.
-
 ## Demo — Plain-English Description
 
 <Terminal source="./files/terminal_diagram_text.txt" typewriter />
@@ -59,6 +42,23 @@ Three services, their dependency edges, and the named volume — read straight o
 <AlertBox variant="caution" title="Read the Mermaid before you trust it">
 For anything going into actual documentation — an onboarding doc, an architecture decision record — treat this the same way as `docker-compose-viz`'s output: a strong first draft. The model can miss an edge case (a `depends_on: condition: service_healthy`, a less obvious network alias) that a real parser like `docker-python-mermaid`'s wouldn't.
 </AlertBox>
+
+## Where This Actually Sits Next to `docker-python-mermaid`
+
+<AlertBox variant="info" title="Not a replacement — a different input shape">
+[`docker-python-mermaid`](/blog/docker-python-mermaid) is the right tool when the source is genuinely structured (a directory tree, a real schema) and you want a diagram that's guaranteed to match it exactly, every time, deterministically. `ai-diagram` is for the other half of the job: a Slack message's worth of description, or a file you have but no parser for. Less precision, way less setup — I use both, depending on which one I actually have in hand.
+</AlertBox>
+
+## The `ai-diagram` Function
+
+<Snippet filename="~/.zsh/fns/ai-diagram.zsh" source="./files/ai-diagram.zsh" defaultOpen={true} />
+
+Two input modes, detected the same way `ai-summarize` and `ai-translate` already do it:
+
+1. **A file** — read as-is, and the prompt is told to infer the diagram type from context (a `compose.yaml` implies a service graph, a folder listing implies a tree, an OpenAPI spec implies a sequence diagram).
+2. **Free text** — everything after the command is treated as the description, and the model picks whichever Mermaid diagram type fits best on its own.
+
+Either way, the instruction is strict: output *only* the fenced `` ```mermaid `` block, nothing before or after — this blog renders Mermaid natively, so the output is meant to be pasted directly into a post, not read as prose first.
 
 ## Registered in the `ai` Menu
 

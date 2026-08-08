@@ -5,6 +5,7 @@ date: 2024-03-28
 description: Install Zsh and Oh-My-ZSH easily! Learn to power up your Linux terminal with the Powerlevel10k theme, custom functions like take, and essential daily-use features.
 authors: [christophe]
 image: /img/v2/zsh.webp
+series: Customize your shell with ZSH
 mainTag: zsh
 tags:
   - customization

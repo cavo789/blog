@@ -5,6 +5,7 @@ date: 2024-07-28
 description: Learn how to use diff and sort in Bash to check if functions in your shell scripts are defined in alphabetical order. Includes a script to scan an entire directory.
 authors: [christophe]
 image: /img/v2/bash.webp
+series: Writing better Bash scripts
 mainTag: bash
 tags:
   - bash

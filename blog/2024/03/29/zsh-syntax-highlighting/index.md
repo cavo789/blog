@@ -5,6 +5,7 @@ date: 2024-03-29
 description: Enhance your Zsh console with syntax highlighting! See commands turn green (valid) or red (invalid) as you type. Quick installation guide for zsh-syntax-highlighting.
 authors: [christophe]
 image: /img/v2/zsh.webp
+series: Customize your shell with ZSH
 mainTag: zsh
 tags:
   - customization

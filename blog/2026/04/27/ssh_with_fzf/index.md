@@ -4,6 +4,7 @@ title: Master your ssh command and select the host from a list
 date: 2026-04-27
 authors: [christophe]
 image: /img/v2/sshf.webp
+series: Modern CLI tools for your terminal
 description: Build an interactive, searchable SSH host selector using FZF. Learn to modularize your SSH configurations, add rich documentation, and trigger advanced custom actions via a fast Terminal User Interface.
 mainTag: linux
 tags:

@@ -32,43 +32,11 @@ Markitdown is a general-purpose, heavier tool. If your need is narrower — just
 
 <!-- truncate -->
 
-As always, I'll first create a Docker image so I don't need to install Python on my machine nor manage the utility and all its dependencies.
+## First Conversion
 
-<AlertBox variant="info" title="I love Docker also for this">
-This is exactly why Docker is indispensable: complete isolation. Everything runs within the container. Once I am done experimenting, I can delete the image, leaving nothing on my disk except the Dockerfile needed to recreate it on demand. *If that reasoning is new to you, <Link to="/blog/docker-definition-like-im-five">Docker - Explain me like I'm five - What's Docker for?</Link> makes the case with a cooking analogy.*
-</AlertBox>
+Once the image and the `md-convert` wrapper are built (covered under Installation below), converting a document is one command from any folder:
 
-## Create our Docker image
-
-Let's create a new folder and jump into it: `mkdir -p /tmp/markitdown && cd $_`
-
-Then please create a new file called `Dockerfile`:
-
-<Snippet filename="Dockerfile" source="./files/Dockerfile" />
-
-<AlertBox variant="info" title="Supported extensions">
-See the `pip install --prefix=/python "markitdown[docx,xlsx,pdf]==0.1.7"` line in our `Dockerfile`; we could replace `docx,xlsx,pdf` by `all` to be able to convert from any extensions supported by Markitdown but our final Docker image will be bigger in size.
-
-Or, simply add any additional extensions you need. Refer to the official documentation for this.
-</AlertBox>
-
-## Create an orchestration file
-
-This step is not mandatory, but creating a `compose.yaml` file will allow us to simplify the final command and bake in strict security options.
-
-Please create the `compose.yaml` file with this content:
-
-<Snippet filename="compose.yaml" source="./files/compose.yaml" />
-
-## Build the image
-
-Once the two files have been created, simply run `docker compose build` to build the Docker image. The final image will be called `markitdown`.
-
-You can then test it by running this command: `docker compose run --rm markitdown --help`.
-
-## Start a first conversion
-
-Now, copy any `.docx` file into the same folder containing your `Dockerfile` and `compose.yaml`. Let's say in the folder `/tmp/markitdown`.
+Copy any `.docx` file into the same folder containing your `Dockerfile` and `compose.yaml`. Let's say in the folder `/tmp/markitdown`.
 
 You can then run the conversion by running this command: `docker compose run --rm markitdown sample.docx > sample.md`.
 
@@ -85,6 +53,44 @@ And make sure to make this file executable: `sudo chmod +x /usr/local/bin/md-con
 From now on, simply navigate to any folder containing a document you want to convert. For example:
 
 <Terminal typewriter source="./files/terminal-1.txt" />
+
+## Why This Approach
+
+As always, I'll first create a Docker image so I don't need to install Python on my machine nor manage the utility and all its dependencies.
+
+<AlertBox variant="info" title="I love Docker also for this">
+This is exactly why Docker is indispensable: complete isolation. Everything runs within the container. Once I am done experimenting, I can delete the image, leaving nothing on my disk except the Dockerfile needed to recreate it on demand. *If that reasoning is new to you, <Link to="/blog/docker-definition-like-im-five">Docker - Explain me like I'm five - What's Docker for?</Link> makes the case with a cooking analogy.*
+</AlertBox>
+
+## Installation
+
+### Create our Docker image
+
+Let's create a new folder and jump into it: `mkdir -p /tmp/markitdown && cd $_`
+
+Then please create a new file called `Dockerfile`:
+
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
+
+<AlertBox variant="info" title="Supported extensions">
+See the `pip install --prefix=/python "markitdown[docx,xlsx,pdf]==0.1.7"` line in our `Dockerfile`; we could replace `docx,xlsx,pdf` by `all` to be able to convert from any extensions supported by Markitdown but our final Docker image will be bigger in size.
+
+Or, simply add any additional extensions you need. Refer to the official documentation for this.
+</AlertBox>
+
+### Create an orchestration file
+
+This step is not mandatory, but creating a `compose.yaml` file will allow us to simplify the final command and bake in strict security options.
+
+Please create the `compose.yaml` file with this content:
+
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
+
+### Build the image
+
+Once the two files have been created, simply run `docker compose build` to build the Docker image. The final image will be called `markitdown`.
+
+You can then test it by running this command: `docker compose run --rm markitdown --help`.
 
 ## Conclusion
 

@@ -23,13 +23,15 @@ In this short article, we'll learn a tip: start an SSH connection without having
 
 <!-- truncate -->
 
-First, make sure you've PuTTY installed. Visit the [official](https://www.putty.org/) site and just download the Windows executable. Save the **putty.exe** executable to, f.i., **C:\Program Files (x86)\PuTTY\putty.exe** (you'll need to create the folder yourself).
-
-Now, back to WinSCP, go to the `Options` menu then `Preferences`. In the left menu, click on `Applications` under `Integrations`. Be sure to check _Remember session password and pass it to PuTTY_.
+Check _Remember session password and pass it to PuTTY_:
 
 ![Settings](./images/settings.webp)
 
 Now by starting PuTTY, you won't be any-more prompted for credentials. Easy!
+
+Reach that setting from WinSCP's `Options` menu then `Preferences`. In the left menu, click on `Applications` under `Integrations`.
+
+Make sure you've PuTTY installed first. Visit the [official](https://www.putty.org/) site and just download the Windows executable. Save the **putty.exe** executable to, f.i., **C:\Program Files (x86)\PuTTY\putty.exe** (you'll need to create the folder yourself).
 
 ## Tip
 

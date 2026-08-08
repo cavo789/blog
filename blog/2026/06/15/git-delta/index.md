@@ -3,6 +3,7 @@ slug: git-delta
 title: "delta: a Syntax-Highlighted Pager for git diff"
 authors: [christophe]
 image: /img/v2/git-delta.webp
+series: Modern CLI tools for your terminal
 mainTag: git
 tags: [git, linux, bash]
 ai_assisted: true
@@ -11,7 +12,6 @@ description: Stop squinting at raw git diff outputs. Learn how to install and co
 language: en
 blueskyRecordKey: 3mnrw7ah2kc2o
 ---
-
 
 ![delta: a Syntax-Highlighted Pager for git diff](/img/v2/git-delta.webp)
 
@@ -26,6 +26,29 @@ You've been staring at `git diff` output for thirty seconds trying to figure out
 *It joins the same family of modern rewrites as <Link to="/blog/ripgrep">ripgrep</Link> (for `grep`) and <Link to="/blog/linux-eza">eza</Link> (for `ls`). Outside a git repository, plain <Link to="/blog/linux-diff-file-folder">`diff`</Link> remains the tool of choice.*
 
 <!-- truncate -->
+
+## Before and after
+
+### A changed line without delta
+
+```diff
+-  const expiry = token.exp * 1000;
++  const expiry = token.exp * 1000 + TOKEN_GRACE_MS;
+```
+
+Everything is the same weight. You scan the entire line looking for the difference.
+
+### The same line with delta
+
+Delta highlights `+ TOKEN_GRACE_MS` at the character level — the rest of the line stays dim. Your eye goes straight to the change, not to the unchanged context around it.
+
+This word-level diff is especially valuable when:
+
+- A variable was renamed (`getUserById` → `findUserById`)
+- A string had a typo fixed
+- A flag was added or removed from a long function call
+
+Without word-level diff, each of those scenarios produces a fully-red removed line and a fully-green added line. With delta, only the changed word is highlighted.
 
 ## What is delta?
 
@@ -107,29 +130,6 @@ Let's look at what each option does.
     }
   ]}
 />
-
-## Before and after
-
-### A changed line without delta
-
-```diff
--  const expiry = token.exp * 1000;
-+  const expiry = token.exp * 1000 + TOKEN_GRACE_MS;
-```
-
-Everything is the same weight. You scan the entire line looking for the difference.
-
-### The same line with delta
-
-Delta highlights `+ TOKEN_GRACE_MS` at the character level — the rest of the line stays dim. Your eye goes straight to the change, not to the unchanged context around it.
-
-This word-level diff is especially valuable when:
-
-- A variable was renamed (`getUserById` → `findUserById`)
-- A string had a typo fixed
-- A flag was added or removed from a long function call
-
-Without word-level diff, each of those scenarios produces a fully-red removed line and a fully-green added line. With delta, only the changed word is highlighted.
 
 ## Side-by-side mode
 
@@ -217,3 +217,9 @@ No extra flags. No wrapper functions. It just works.
 If you also use <Link to="/blog/git-config">`git diff` aliases in your `.gitconfig`</Link>, those aliases automatically benefit from delta since the pager is applied at the output stage, not the command stage.
 
 For an even richer TUI git experience, delta works as the diff renderer inside [lazygit](https://github.com/jesseduffield/lazygit) and [tig](https://github.com/jonas/tig) — both TUI git clients that respect `core.pager`.
+
+## Conclusion
+
+Thirty seconds of squinting at a raw `git diff` was the whole problem — no syntax highlighting, no side-by-side, line numbers buried in `@@` noise. `delta` fixes all three with an `apt install` and a handful of `.gitconfig` lines, and every git command you already know keeps working exactly as typed.
+
+If you also work through history with aliases, <Link to="/blog/git-config">configuring `git diff` aliases in `.gitconfig`</Link> is the natural next step — they inherit delta's rendering for free.

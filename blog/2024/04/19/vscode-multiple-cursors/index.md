@@ -5,6 +5,7 @@ date: 2024-04-19
 description: Need to edit multiple lines in VSCode where search/replace fails? Learn the powerful Multiple Cursors feature and the quick keyboard shortcut to make bulk edits instantly.
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
+series: VSCode - Tips, extensions and shortcuts
 mainTag: vscode
 tags:
   - markdown

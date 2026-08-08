@@ -26,11 +26,26 @@ How can we avoid such situations?
 
 <!-- truncate -->
 
+## A Real-World Example
+
+My disk is full of projects and a huge list of repositories. Once the block below is in place (covered next), whenever I `cd` into one of them, I automatically get the last three branches. No extra effort required:
+
+```bash
+❯ cd project/subproject
+
+=== Recent Local Branches ===
+  feature_logging - 1 month ago
+* main - 3 months ago
+  wip - 2 months ago
+```
+
+*(`*` indicates the active branch)*
+
+I instantly realize, *"Oh yes, I was working on `wip`"*, and can switch to the correct branch. The exact same information shows up with `gst`, the alias I use for `git status`.
+
+## Installation
+
 Since I spend most of my time in the terminal, I need a notification whenever I jump into a project's folder or run a `git status` command.
-
-Here's the idea: when I run `cd my_project`, I want to **immediately** see the list of the 3 most recently active branches along with their last update date and time. This way, when returning to an old project, I instantly realize, *"Oh yes, I was working on `wip`"*, and can switch to the correct branch. I want the exact same behavior with `gst`, the alias I use for `git status`.
-
-And it turns out, it's incredibly simple to do.
 
 Just edit your `~/.zshrc` file and add this block at the end (or, better, give it its own file as explained in <Link to="/blog/modular-zsh-workflow">Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro</Link>):
 
@@ -45,21 +60,6 @@ If the repository isn't empty, the function retrieves the active branch name, th
 The script also defines (or overrides) a `gst` ZSH alias. The new `gst` command calls our custom function before executing the native `git status` command.
 
 Finally, since we're using ZSH, we can leverage a standard hook called `chpwd` (which triggers when *changing the current working directory*). This hook is called automatically by OS commands like `cd` or `pushd`.
-
-## A real-world example
-
-My disk is full of projects and a huge list of repositories. Now, whenever I `cd` into one of them, I automatically get the last three branches. No extra effort required:
-
-```bash
-❯ cd project/subproject
-
-=== Recent Local Branches ===
-  feature_logging - 1 month ago
-* main - 3 months ago
-  wip - 2 months ago
-```
-
-*(`*` indicates the active branch)*
 
 ## Local Branches Only
 

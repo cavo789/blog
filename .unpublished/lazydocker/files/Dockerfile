@@ -4,7 +4,7 @@ FROM alpine:3.20
 
 # Check https://github.com/jesseduffield/lazydocker/releases for the current
 # tag before building; this ARG makes bumping it a one-line change.
-ARG LAZYDOCKER_VERSION=0.23.3
+ARG LAZYDOCKER_VERSION=0.25.2
 
 # The Docker CLI (and the compose plugin) are what lazydocker actually shells
 # out to behind the scenes — the binary below is only the TUI on top of them.

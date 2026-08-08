@@ -5,6 +5,7 @@ date: 2024-05-03
 description: Tired of silent Bash scripts? Learn the simple, effective method to simultaneously echo command output to the console and write it to a log file line-by-line.
 authors: [christophe]
 image: /img/v2/bash.webp
+series: Writing better Bash scripts
 mainTag: bash
 tags:
   - bash

@@ -22,6 +22,8 @@ Across the [18-plus VSCode articles](/tags/vscode) on this blog, that's a lot of
 
 <!-- truncate -->
 
+<!-- TODO(author): capture a real screenshot of the Good/Bad Extension Bisect prompt here before publishing — not reproducible in this session (requires a live VSCode GUI). -->
+
 ## Starting a Bisect
 
 Open the Command Palette and run **Help: Start Extension Bisect**. VSCode disables roughly half of your installed extensions and asks a single question: is the problem still happening?

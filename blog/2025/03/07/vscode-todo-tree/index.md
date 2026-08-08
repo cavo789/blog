@@ -5,6 +5,7 @@ date: 2025-03-07
 description: Stop forgetting your TODOs and FIXMEs! Use the VSCode Todo Tree extension to summarize all code annotations like TODO, FIXME, and TEMPORARY into one easy-to-track dashboard.
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
+series: VSCode - Tips, extensions and shortcuts
 mainTag: vscode
 tags:
   - code-quality

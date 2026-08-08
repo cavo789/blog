@@ -31,6 +31,24 @@ So, I decided to automate the generation of TL;DR summaries using Google's Gemin
 
 <!-- truncate -->
 
+## Before and After
+
+The script takes an entire article — every paragraph, every heading — and reduces it to a few sentences. Here's a real example, taken straight from <Link to="/blog/lovable-dev-ai">the Lovable.dev article</Link> on this blog.
+
+**Before** — the opening paragraphs the script actually reads:
+
+> This week, a colleague told me about Lovable.dev, saying: "*In a prompt, you just have to describe the program you want to generate, and the tool will build it and even deploy it for you*". Wow, I definitely needed to try it.
+>
+> But what should I ask for? What if I asked it to create a clone of Marknotes? Those who have been following me for years know that I created Marknotes, a note-taking application, 10 years ago. I worked on it for five years before moving on.
+>
+> Let's see if Lovable.dev can build the same thing in just one hour. **Spoiler: it didn't, but it wasn't too bad.**
+
+**After** — the `<TLDR>` the script generated and injected at the top of that same article:
+
+![The generated TLDR, rendered on the actual published article](./images/example_tldr_output.png)
+
+Same information density readers actually need, in a fraction of the reading time.
+
 ## The Concept
 
 The idea is simple: I need some script that will scan my blog post (one or more) and generate a short summary using Gemini AI. Then, it should insert that summary into the blog post, wrapped in a custom `<TLDR>` component for easy styling and visibility.

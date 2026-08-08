@@ -23,6 +23,14 @@ Caddy does all of this automatically, triggered by the fact that you put a domai
 
 <!-- truncate -->
 
+## Seeing the HTTPS
+
+`tls internal` in the Caddyfile is all it takes — no separate `mkcert` step, no manually trusting a certificate:
+
+<Terminal source="./files/terminal_https_proof.txt" typewriter />
+
+`HTTP/2 200`, a `server: Caddy` header, and the request succeeded over TLS without `curl -k` — the certificate is genuinely trusted, not just accepted despite a warning. That's what "zero-config HTTPS" actually buys you.
+
 ## What makes Caddy different
 
 Three things distinguish Caddy from nginx or Apache as a reverse proxy:
@@ -33,7 +41,9 @@ Three things distinguish Caddy from nginx or Apache as a reverse proxy:
 
 3. **Local HTTPS for development**: The `tls internal` directive uses Caddy's built-in CA to issue a locally-trusted certificate for `localhost` or any `.localhost` domain — no `mkcert` required, no browser warning to bypass.
 
-## Static file server
+## Installation
+
+### Static file server
 
 The simplest use case: serve a folder of files over HTTP.
 
@@ -51,7 +61,9 @@ docker compose up -d
 
 Your app is now reachable on port 8080. Caddy also automatically enables gzip compression (`encode gzip`) and sets appropriate `Content-Type` headers for static files.
 
-## Reverse proxy — the most common use case
+## More Demos
+
+### Reverse proxy — the most common use case
 
 Point Caddy at another container:
 
@@ -61,7 +73,7 @@ Point Caddy at another container:
 
 The `app` service has no `ports:` mapping in `compose.yaml`. It's invisible from outside the Docker network. Caddy is the only entry point.
 
-## Automatic HTTPS for public domains
+### Automatic HTTPS for public domains
 
 Replace `:80` with your actual domain name, and Caddy obtains a certificate automatically:
 
@@ -83,25 +95,17 @@ That's it. When Caddy starts:
 Automatic HTTPS only works if Let's Encrypt can reach your server on port 80 to complete the domain challenge. Behind a NAT or firewall, Caddy will fall back to self-signed certificates and log an error. Use `tls internal` for local development instead.
 </AlertBox>
 
-## Local HTTPS for development
+### Local HTTPS for development
 
-For local development, use Caddy's built-in CA with `tls internal`:
+For local development, use Caddy's built-in CA with `tls internal` — the same directive behind the proof shown at the top of this article:
 
 <Snippet source="./files/Caddyfile.local-tls" language="caddy" />
 
-Caddy generates a certificate for `localhost` and `myapp.localhost` signed by a local CA it creates on first run. On subsequent runs, the CA and certificates are loaded from the `caddy_data` volume.
-
-To trust the local CA in your browser, run:
-
-<Terminal>
-docker compose exec caddy caddy trust
-</Terminal>
-
-This installs Caddy's local CA certificate into the system trust store. After this, `https://localhost` shows a green padlock in Chrome, Firefox, and Safari — and your local development environment behaves identically to production.
+Caddy generates a certificate for `localhost` and `myapp.localhost` signed by a local CA it creates on first run. On subsequent runs, the CA and certificates are loaded from the `caddy_data` volume. `docker compose exec caddy caddy trust` installs that CA into the system trust store — after that, `https://localhost` shows a green padlock in Chrome, Firefox, and Safari, and your local development environment behaves identically to production.
 
 This is the same outcome as using `mkcert` (covered in the <Link to="/blog/docker-localhost-ssl">Docker localhost SSL</Link> article), but without a separate tool — Caddy manages both the CA and the certificate issuance.
 
-## Multiple domains in one Caddyfile
+### Multiple domains in one Caddyfile
 
 <Snippet source="./files/Caddyfile.multi" language="caddy" />
 
@@ -109,7 +113,9 @@ Each block is an independent virtual host. Caddy obtains a separate certificate 
 
 The `basicauth` block shows password protection: the hashed password is generated with `caddy hash-password --plaintext mypassword`.
 
-## Logging
+## Under the Hood (skip this if you just want to use it)
+
+### Logging
 
 Add structured JSON access logs to any block:
 
@@ -125,7 +131,7 @@ app.example.com {
 
 Mount `/var/log/caddy` as a volume if you need to read the logs from the host.
 
-## Caddy vs nginx as a Docker reverse proxy
+### Caddy vs nginx as a Docker reverse proxy
 
 | | nginx | Caddy |
 |--|-------|-------|
@@ -138,12 +144,10 @@ Mount `/var/log/caddy` as a volume if you need to read the logs from the host.
 
 Nginx is more flexible for edge cases and has a larger ecosystem of tutorials. Caddy wins for the 95% case: a reverse proxy for a Docker-based app where you want HTTPS without ceremony.
 
-## Where this fits
-
-Caddy is a natural evolution from the <Link to="/blog/docker-html-site">static HTML site in Docker</Link> (basic nginx approach) and the <Link to="/blog/docker-localhost-ssl">Docker localhost SSL</Link> setup (manual Certbot + Apache). It also connects to the upcoming Traefik article — Traefik is the heavier-weight alternative for Kubernetes or complex multi-service routing; Caddy is the right tool when you want HTTPS with minimal config and no label-based routing system to learn.
-
 ## Conclusion
 
-Caddy earns its reputation for simplicity. A five-line Caddyfile does what takes thirty nginx directives and a Certbot installation. The `tls internal` directive makes local HTTPS genuinely pleasant. And as a Docker container with two volumes for state, it drops into any `compose.yaml` without friction.
+Caddy earns its reputation for simplicity. A five-line Caddyfile does what takes thirty nginx directives and a Certbot installation. The `tls internal` directive makes local HTTPS genuinely pleasant, as the trusted `HTTP/2 200` shown above proves. And as a Docker container with two volumes for state, it drops into any `compose.yaml` without friction.
+
+Caddy is a natural evolution from the <Link to="/blog/docker-html-site">static HTML site in Docker</Link> (basic nginx approach) and the <Link to="/blog/docker-localhost-ssl">Docker localhost SSL</Link> setup (manual Certbot + Apache). It also connects to the upcoming Traefik article — Traefik is the heavier-weight alternative for Kubernetes or complex multi-service routing; Caddy is the right tool when you want HTTPS with minimal config and no label-based routing system to learn.
 
 If you reach for nginx whenever you need a reverse proxy, try Caddy once. The config alone will change your default choice.

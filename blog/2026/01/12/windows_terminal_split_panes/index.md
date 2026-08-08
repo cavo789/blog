@@ -5,6 +5,7 @@ date: 2026-01-12
 description: Learn how to split panes in Windows Terminal for efficient multitasking; shortcuts, configuration tips, and workflow examples.
 authors: [christophe]
 image: /img/v2/windows_terminal_splitted_panes.webp
+series: Windows Terminal
 mainTag: windows-terminal
 tags:
   - customization

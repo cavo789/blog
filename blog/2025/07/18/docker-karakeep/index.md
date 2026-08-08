@@ -5,6 +5,7 @@ date: 2025-07-18
 description: Discover karakeep, the self-hosted bookmark, note-taking, and image manager. Follow this easy guide to install the "Bookmark Everything App" using Docker Compose.
 authors: [christophe]
 image: /img/v2/docker_playing_with_app.webp
+series: Self-host your own services
 mainTag: self-hosted
 tags:
   - docker

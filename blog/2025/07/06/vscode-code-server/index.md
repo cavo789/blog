@@ -5,6 +5,7 @@ date: 2025-07-06
 description: Learn how to run VSCode in your browser using Docker and the `code-server` image. Edit code remotely without installing VSCode on your local machine.
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
+series: VSCode - Tips, extensions and shortcuts
 mainTag: vscode
 tags:
   - docker

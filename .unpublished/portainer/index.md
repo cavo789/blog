@@ -24,6 +24,18 @@ draft: true
 
 <!-- truncate -->
 
+## Seeing What Portainer Sees
+
+The **Containers** page in the browser is a rendered view of the exact same data Portainer's API returns — this is that API, queried directly, right after pointing Portainer at the local Docker socket:
+
+<Terminal source="./files/terminal_containers.txt" typewriter />
+
+The real containers on this machine — `ollama`, `open-webui`, Portainer itself — all discovered automatically, with no configuration beyond mounting the socket.
+
+<AlertBox variant="note" title="API output shown here, not a browser screenshot">
+This is the same data the Containers page renders in the browser — captured via Portainer's own REST API rather than a screenshot, since that's what could be verified end to end here. Log into the actual web UI at `https://<host>:9443` and the Containers table shows exactly this list, with status icons and a click-through to live logs.
+</AlertBox>
+
 ## What Portainer Actually Is
 
 Portainer CE is the same category of tool as lazydocker — a dashboard over containers, images, volumes and networks, with live logs and stats — built as a web application instead of a terminal UI. It auto-detects the "local" Docker environment through the same socket lazydocker uses, and adds one thing lazydocker doesn't attempt: **Stacks**, a page where you paste a `compose.yaml` and Portainer deploys it for you, no `docker compose up` on a keyboard required.
@@ -68,7 +80,9 @@ Deploying via pasted YAML is convenient for spinning something up fast, but the 
 Reach for <Link to="/blog/lazydocker">lazydocker</Link> when you're already at a terminal and want the fastest possible glance — no browser tab, no login screen. Reach for Portainer when the person who needs to see this isn't you, isn't at your machine, or isn't comfortable in a terminal at all. Both read from the exact same Docker socket; neither is more "correct" than the other.
 </AlertBox>
 
-## A Word on Exposure
+## Under the Hood (skip this if you just want to use it)
+
+### A Word on Exposure
 
 Portainer's own login screen is real authentication — unlike Ollama's bare API, which <Link to="/blog/anythingllm-chat-with-your-docs">I flagged before</Link> as having none at all. Still, `9443` reachable only from your LAN is a very different exposure than `9443` reachable from the internet. If you ever want to check on containers from outside the house, put it behind the same mesh VPN (Tailscale, WireGuard) rather than forwarding the port on your router.
 

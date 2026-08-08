@@ -24,13 +24,9 @@ Not every VSCode window I open is doing the same job. Some are "write a blog pos
 
 <!-- truncate -->
 
-## What a Profile Actually Isolates
-
-A VSCode Profile bundles: installed extensions (and whether each is enabled), the color theme, `settings.json`, keybindings, and optionally UI layout and snippets. Switch profiles, and VSCode swaps all of it at once — not just a theme toggle, a genuinely different environment.
-
-Open the **Profiles** menu from the gear icon (bottom-left) or the Command Palette (`Profiles: Switch Profile`) to see the list, or `Profiles: Create Profile` to start a new one — either empty, or cloned from your current setup.
-
 ## My Actual Split: Daily vs. DevContainer
+
+<!-- TODO(author): capture a real side-by-side screenshot of the dark Default profile and the light DevContainer profile here before publishing — not reproducible in this session (requires a live VSCode GUI). -->
 
 <AlertBox variant="info" title="Two profiles, two jobs">
 **Default profile** — dark theme, the full extension set, used for everything day-to-day: writing this blog, general browsing of code, quick edits.
@@ -46,6 +42,12 @@ The more deliberate part of the split: the **Claude Code** extension is installe
 <AlertBox variant="tip" title="Extensions don't leak between profiles">
 Installing an extension while a given profile is active only installs it *for that profile*. Switch to another profile and it's simply not there — not disabled, not hidden, genuinely absent from that profile's extension list. That's what makes the boundary reliable instead of just a convention you have to remember to respect.
 </AlertBox>
+
+## What a Profile Actually Isolates
+
+A VSCode Profile bundles: installed extensions (and whether each is enabled), the color theme, `settings.json`, keybindings, and optionally UI layout and snippets. Switch profiles, and VSCode swaps all of it at once — not just a theme toggle, a genuinely different environment.
+
+Open the **Profiles** menu from the gear icon (bottom-left) or the Command Palette (`Profiles: Switch Profile`) to see the list, or `Profiles: Create Profile` to start a new one — either empty, or cloned from your current setup.
 
 ## Switching, and Knowing Which One You're In
 

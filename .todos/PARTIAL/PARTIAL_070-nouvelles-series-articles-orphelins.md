@@ -255,3 +255,53 @@ La grappe tombe donc à 7 articles.
   existantes) : **72 en série (29,3 %), 174 orphelins**.
 - Si les grappes A→L sont toutes créées : ~95 articles supplémentaires rattachés, soit
   environ 68 % du blog en série.
+
+## Status — PARTIAL (2026-08-08)
+
+### Done
+
+- Arbitrage des grappes A→L (priorité haute + moyenne) : décision utilisateur de créer les
+  12 nouvelles séries (grappes de « priorité basse » — mini-séries — explicitement hors
+  scope de ce passage).
+- Résolution des 4 conflits réels entre grappes (article revendiqué par deux tables) par le
+  `mainTag` existant de chaque article, vérifié en frontmatter :
+  - `zsh-plugin-ssh-config-suggestions` (mainTag `ssh`) → F (SSH), pas B (ZSH).
+  - `linux-sftp-cli` (mainTag `ssh`) → F (SSH), pas G (WinSCP).
+  - `winscp-vba` (mainTag `winscp`) → G (WinSCP), pas E (VBA).
+  - `windows-terminal-ssh-profile` (mainTag `windows-terminal`) → H (Windows Terminal), pas F.
+  - Les 3 « à arbitrer » de la grappe A (`vscode-tabnine` mainTag `ai`, `vscode-remote-ssh`
+    mainTag `ssh`, `vscode-php-refactoring` mainTag `php`) ont été exclus de la série VSCode
+    et laissés orphelins (ou déjà couverts ailleurs, cf. `vscode-remote-ssh` → F).
+- Les 12 séries ajoutées dans `src/data/series.js` (name + description), triées comme le
+  reste du fichier.
+- `series: <nom exact>` ajouté dans le frontmatter de **93 articles** publiés (juste après
+  `image:`, convention vérifiée sur les 78 articles déjà en série).
+- `yarn build` : succès, aucun lien cassé, aucune erreur MDX.
+- `yarn lint` : aucune nouvelle erreur (warnings pré-existants, non liés).
+- `yarn format:check` : `src/data/series.js` reformaté par Prettier, tout le reste
+  pré-existant et non touché par ce TODO.
+- Mémoire `.claude/memory/project_blog_map.md` et `MEMORY.md` rafraîchies : 25 séries
+  actives, 165/247 posts en série (66,8 %), 82 orphelins restants.
+- Suivi de TODO déposé pour la partie non réalisable en autonome : voir ci-dessous.
+
+### Not done
+
+- **Les 12 images de bannière `static/img/series/<slug>.webp`** (étape 3 de la solution
+  proposée). **Raison :** aucune capacité de génération d'image disponible dans cette
+  session ; `SeriesCards` retombe proprement sur `/img/default.webp` quand `image` n'est
+  pas défini (vérifié dans le code), donc pas de carte cassée sur `/series`, juste 12
+  cartes avec l'image générique en attendant. → suivi dans
+  `.todos/0080-series-banner-images-for-new-clusters.md`.
+- **Liens `<Link>` inline réciproques manquants entre articles d'une même série** (étape 5).
+  **Raison :** hors scope pour 93 articles en un seul passage — et le composant
+  `SeriesPosts` (déjà branché sur `BlogPostItem/Content`) affiche automatiquement la liste
+  complète des articles de la série, en haut et en bas de chaque post, dès que le
+  frontmatter `series:` est renseigné. Le problème de découvrabilité posé en intro de ce
+  TODO est donc déjà résolu sans lien inline manuel ; l'enrichissement inline reste une
+  amélioration optionnelle, pas un blocage. Pas de TODO de suivi déposé (juger au cas par
+  cas si un article profite particulièrement d'un lien contextuel).
+- **Les grappes de « priorité basse » (mini-séries)** listées en fin de TODO original
+  (spam, Makefile, Play with Docker, Docker networking, Convert to Markdown, Docker GUI,
+  Joomla maintenance scripts) : explicitement exclues du scope choisi par l'utilisateur
+  pour ce passage. Pas de TODO de suivi déposé — à revisiter si l'appétit pour de nouvelles
+  séries reste après le passage des 12 ci-dessus.

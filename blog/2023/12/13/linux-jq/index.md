@@ -5,6 +5,7 @@ date: 2023-12-13
 description: Use the powerful Linux jq utility to manipulate JSON data, prettify output, and filter nodes directly from your command line and shell scripts.
 authors: [christophe]
 image: /img/v2/json.webp
+series: Modern CLI tools for your terminal
 mainTag: linux
 tags:
   - bash

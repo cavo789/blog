@@ -5,6 +5,7 @@ date: 2023-12-31
 description: Test and customize the Powerlevel10k Zsh theme for your Linux or WSL prompt in a safe Docker sandbox environment before committing to a full installation.
 authors: [christophe]
 image: /img/v2/customization_prompt.webp
+series: Customize your shell with ZSH
 mainTag: customization
 tags:
   - customization

@@ -26,25 +26,7 @@ Same story for stack traces. A React error in production with six frames of mini
 
 <!-- truncate -->
 
-## Prerequisites
-
-This function is part of the "Ollama daily-use functions" series. It relies on the shared `_ollama.zsh` foundation introduced in the first article of the series (`ai-test`): the `_ollama_check` reachability guard, the `_ollama_query` HTTP client, and the `AI_COMMANDS` registry.
-
-If you've been following the series and have `~/.zsh/fns/_ollama.zsh` already in place, you can install this function immediately. If not, start with the first article to get the foundation set up.
-
-## The function
-
-<Snippet source="./files/ai-explain.zsh" language="zsh" />
-
-Save it to `~/.zsh/fns/ai-explain.zsh`. It loads automatically on the next shell startup if your `~/.zshrc` sources everything in `~/.zsh/fns/`.
-
-The function handles three input modes in priority order:
-
-1. **Piped input** (`! -t 0`) — checked first, so `cat file | ai-explain` works even if you also accidentally pass a filename argument
-2. **File argument** — reads the file and passes its content to the model
-3. **Inline text** — `ai-explain 'some error message'` for quick one-liners
-
-## Explain a script you didn't write
+## Explain a Script You Didn't Write
 
 <Terminal>
 ai-explain deploy.sh
@@ -75,7 +57,25 @@ Side effect: the old image is not removed — run `docker image prune` manually
 to reclaim disk space after a few deployments.
 ```
 
-## Explain a stack trace
+That's the entire interaction: a file path in, a plain-English breakdown out.
+
+## Why It Works
+
+`ai-explain` handles three input modes, checked in this order: piped input (so `cat file | ai-explain` always wins even if a filename is also passed), a file argument, or inline text for a quick one-liner — one function covers "explain this file" and "explain this error" without separate commands to remember.
+
+## Installation
+
+This function is part of the "Ollama daily-use functions" series. It relies on the shared `_ollama.zsh` foundation introduced in the first article of the series (`ai-test`): the `_ollama_check` reachability guard, the `_ollama_query` HTTP client, and the `AI_COMMANDS` registry.
+
+If you've been following the series and have `~/.zsh/fns/_ollama.zsh` already in place, you can install this function immediately. If not, start with the first article to get the foundation set up.
+
+<Snippet source="./files/ai-explain.zsh" language="zsh" />
+
+Save it to `~/.zsh/fns/ai-explain.zsh`. It loads automatically on the next shell startup if your `~/.zshrc` sources everything in `~/.zsh/fns/`.
+
+## More Demos
+
+### Explain a stack trace
 
 <Snippet source="./files/example-error.txt" language="text" />
 
@@ -111,7 +111,7 @@ mentions is a separate concern — it catches errors after they happen; these op
 prevent the error from occurring.
 ```
 
-## Pipe any command output
+### Pipe any command output
 
 The most useful pattern: run a command that fails and pipe its output directly:
 
@@ -131,7 +131,7 @@ The `2>&1` redirects stderr to stdout so both streams reach the pipe. Without it
 
 For commands that produce a lot of output, pipe through `tail` first to keep only the relevant end of the output (where errors usually land).
 
-## Use from the `ai` dispatcher
+### Use from the `ai` dispatcher
 
 Like every function in this series, `ai-explain` registers itself with the `AI_COMMANDS` registry. The `ai` dispatcher (from `_ollama.zsh`) lists all registered functions:
 
@@ -149,7 +149,9 @@ ai
 
 Select `explain` and the dispatcher prompts you for a file path (via fzf or `read`). The parameter type `AI_PARAMS[explain]="file"` tells the dispatcher to use the file picker instead of a text prompt.
 
-## When ai-explain is most useful
+## Under the Hood (skip this if you just want to use it)
+
+### When ai-explain is most useful
 
 - **Inherited scripts**: understanding what a CI/CD script does before modifying it
 - **Unfamiliar errors**: a stack trace from a language or framework you don't know well
@@ -159,7 +161,7 @@ Select `explain` and the dispatcher prompts you for a file path (via fzf or `rea
 
 It's also useful as a learning tool: pipe a script you wrote yourself and see if the explanation matches your intent. If it doesn't, either the explanation is wrong (it happens) or the script has a subtle bug.
 
-## Closing the series
+## Conclusion
 
 `ai-explain` is the fourteenth and final function in the "Ollama daily-use functions" series.
 

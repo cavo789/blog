@@ -5,6 +5,7 @@ date: 2024-02-21
 description: Master calling SOAP web services from MS Excel using VBA. Get the code and a step-by-step tutorial to validate VAT numbers with the VIES service.
 authors: [christophe]
 image: /img/v2/excel.webp
+series: VBA & MS Office automation
 mainTag: excel
 tags:
   - api

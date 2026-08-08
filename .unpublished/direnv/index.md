@@ -23,29 +23,7 @@ Every Docker project has a `.env` file. And every time you open a new terminal a
 
 <!-- truncate -->
 
-## Install
-
-On Ubuntu / Debian / WSL:
-
-<Terminal>
-sudo apt install direnv
-</Terminal>
-
-Then hook it into your shell. This is a one-time setup:
-
-<Terminal>
-# For ZSH (add to ~/.zshrc)
-echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
-source ~/.zshrc
-
-# For Bash (add to ~/.bashrc)
-echo 'eval "$(direnv hook bash)"' >> ~/.bashrc
-source ~/.bashrc
-</Terminal>
-
-That's the entire installation. `direnv` is now watching every directory change.
-
-## Your first .envrc
+## Seeing direnv in Action
 
 Create a project directory and add an `.envrc` file:
 
@@ -92,19 +70,49 @@ direnv: unloading
 direnv requires explicit approval (`direnv allow`) each time `.envrc` changes. This prevents a cloned repository from automatically running arbitrary code in your shell without your knowledge.
 </AlertBox>
 
+That's the entire effect — the install behind it is two commands, covered next.
+
+## Why It Works
+
+- direnv hooks your shell so every `cd` re-checks the current and parent directories for an `.envrc` file and re-evaluates it — no polling, no background daemon.
+- The minimal `.envrc` is a single word, `dotenv` — there's nothing to write from scratch for the common case.
+- `PATH_add` is a direnv built-in that prepends a path to `$PATH` and removes it again on exit. It's safer than `export PATH="./scripts:$PATH"` because direnv tracks exactly what it added, and can undo it cleanly.
+
+## Install
+
+On Ubuntu / Debian / WSL:
+
+<Terminal>
+sudo apt install direnv
+</Terminal>
+
+Then hook it into your shell. This is a one-time setup:
+
+<Terminal>
+# For ZSH (add to ~/.zshrc)
+echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
+source ~/.zshrc
+
+# For Bash (add to ~/.bashrc)
+echo 'eval "$(direnv hook bash)"' >> ~/.bashrc
+source ~/.bashrc
+</Terminal>
+
+That's the entire installation. `direnv` is now watching every directory change.
+
 ## What goes in .envrc
 
 The minimal `.envrc` is just `dotenv`:
 
 <Snippet source="./files/.envrc" language="bash" />
 
-But `.envrc` is a shell script. You can do more:
+But `.envrc` is a shell script. You can do more, including `PATH_add`:
 
 <Snippet source="./files/.envrc-full" language="bash" />
 
-`PATH_add` is a direnv built-in that prepends a path to `$PATH` and removes it on exit. It's safer than `export PATH="./scripts:$PATH"` because direnv tracks exactly what it added.
+## More Demos
 
-## The Docker Compose use case
+### The Docker Compose use case
 
 A typical project structure:
 
@@ -131,7 +139,7 @@ services:
 
 When you `cd` into the project, `docker compose up` just works. When you switch projects, the old variables are gone and the new project's variables take their place.
 
-## Multiple environments
+### Multiple environments
 
 Direnv works perfectly with multiple `.env` files. A common pattern:
 
@@ -154,7 +162,9 @@ Or simpler — adjust `.envrc` directly and re-allow:
 dotenv .env.staging
 ```
 
-## What to commit
+## Under the Hood (skip this if you just want to use it)
+
+### What to commit
 
 The safe pattern:
 
@@ -173,13 +183,13 @@ Committed:
 `.envrc` itself is safe to commit if it only contains `dotenv` or `PATH_add` calls. But `.env` with actual passwords or API keys must stay in `.gitignore`. Always.
 </AlertBox>
 
-## direnv and VSCode
+### direnv and VSCode
 
 VSCode's integrated terminal inherits the shell environment. If you open VSCode from a terminal where direnv has already loaded the variables for a project, they're available in the integrated terminal automatically.
 
 If you launch VSCode directly (from the Dock, Spotlight, or a desktop shortcut), the integrated terminal starts fresh without your shell hooks. The fix: always open projects with `code .` from a terminal where direnv is active.
 
-## Comparison with the manual approach
+### Comparison with the manual approach
 
 You may already use a pattern like the one described in <Link to="/blog/bash-load-env">Bash — Loading environment variables from a file</Link>. The difference:
 

@@ -24,6 +24,15 @@ I wrote [Pandas — merge two or more files](/blog/python-pandas-merge) a while 
 
 <!-- truncate -->
 
+## Demo
+
+<Snippet filename="orders.csv" source="./files/orders.csv" defaultOpen={false} />
+<Snippet filename="users.json" source="./files/users.json" defaultOpen={false} />
+
+<Terminal source="./files/terminal_duckdb.txt" typewriter />
+
+Three genuinely different query shapes on two different file formats, none of which required writing a script: a `GROUP BY`/`SUM` on the CSV, a `WHERE` filter through `read_json_auto` on the JSON, and a `RANK() OVER (PARTITION BY ...)` window function — the kind of query `awk` simply doesn't have a clean answer for.
+
 ## What Makes DuckDB Different
 
 DuckDB is a real SQL engine — the syntax, the query planner, the works — except it runs in-process, needs no server, and reads CSV/JSON/Parquet files directly as if they were tables:
@@ -35,7 +44,9 @@ SELECT * FROM read_json_auto('users.json');
 
 No `CREATE TABLE`, no import step, no schema to define — it infers column types by sampling the file, the same idea as `jq`'s automatic parsing but with full SQL on top instead of a filter language.
 
-## Building the Docker Image
+## Installation
+
+### Building the Docker Image
 
 There's no apt or pip package for the interactive shell itself — only for the Python bindings — so the Dockerfile pulls the official CLI release directly:
 
@@ -51,20 +62,13 @@ There's no apt or pip package for the interactive shell itself — only for the 
 
 Build it with `docker compose build`.
 
-## The Global Wrapper
+### The Global Wrapper
 
 <Snippet filename="/usr/local/bin/duckdb-query" source="./files/duckdb-query.sh" />
 
 Make it executable: `sudo chmod +x /usr/local/bin/duckdb-query`. Called with `-c "SQL"`, it runs one query and exits; called with no arguments, it drops into the interactive shell, tables and all.
 
-## Demo
-
-<Snippet filename="orders.csv" source="./files/orders.csv" defaultOpen={false} />
-<Snippet filename="users.json" source="./files/users.json" defaultOpen={false} />
-
-<Terminal source="./files/terminal_duckdb.txt" typewriter />
-
-Three genuinely different query shapes on two different file formats, none of which required writing a script: a `GROUP BY`/`SUM` on the CSV, a `WHERE` filter through `read_json_auto` on the JSON, and a `RANK() OVER (PARTITION BY ...)` window function — the kind of query `awk` simply doesn't have a clean answer for.
+## More Demos
 
 <AlertBox variant="tip" title="Same spirit as ai-data, one level up">
 If you've read [`ai-data`](/blog/ollama-ai-data) from the Ollama series: think of DuckDB as what you reach for once the question stops being a one-liner. `jq`/`awk` still win for quick filters and simple counts; the moment it's a join, a window function, or "group by this, order by that, limit 10", DuckDB answers it in one query instead of a script.

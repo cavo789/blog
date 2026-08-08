@@ -5,6 +5,7 @@ date: 2024-04-19
 description: Easily take beautiful, shareable screenshots of your code snippets right inside VS Code with the CodeSnap extension. A simple, step-by-step guide.
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
+series: VSCode - Tips, extensions and shortcuts
 mainTag: vscode
 tags:
   - markdown

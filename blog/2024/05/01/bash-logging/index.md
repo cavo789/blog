@@ -5,6 +5,7 @@ date: 2024-05-01
 description: Add robust logging features to your Bash scripts with this simple, reusable library. Get automatic log files, timestamps, and full function call traces for easy debugging.
 authors: [christophe]
 image: /img/v2/bash.webp
+series: Writing better Bash scripts
 mainTag: bash
 tags:
   - bash

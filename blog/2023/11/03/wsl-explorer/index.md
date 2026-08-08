@@ -5,6 +5,7 @@ date: 2023-11-03
 description: Access your Linux files in Windows Explorer! Learn the simple command to open your current WSL folder and how to quickly fix the "wsl.localhost is not accessible" error.
 authors: [christophe]
 image: /img/v2/wsl.webp
+series: WSL2 - Install, move and use it
 mainTag: wsl
 tags:
   - windows

@@ -28,6 +28,18 @@ I have [an entire article on setting up a PHP devcontainer](/blog/php-devcontain
 
 Getting step debugging working in a container reliably comes down to three things lining up: the extension has to be installed and enabled, it has to know where to *send* the debug session, and your IDE has to be listening on the port it sends to. Get one wrong and nothing happens — no error, just silence, which is exactly what makes this fiddly the first time.
 
+## Demo
+
+A small script with a breakpoint on the accumulation line:
+
+<Snippet filename="index.php" source="./files/index.php" defaultOpen={false} />
+
+In VSCode: click the "Run and Debug" icon, select **Listen for Xdebug**, press F5 — the status bar turns orange, listening. Set a breakpoint on the `$total += ...` line, then trigger the script:
+
+<Terminal source="./files/terminal_xdebug.txt" typewriter />
+
+VSCode stops on the breakpoint, `$total`, `$item`, and the full call stack become inspectable in the sidebar exactly like debugging a script running locally — except it's genuinely executing inside the container. The `xdebug.log` output (temporarily uncommented from the ini file below) is the fastest way to confirm the connection actually happened when something isn't stopping as expected.
+
 ## 1. Installing Xdebug
 
 Add this to [the Dockerfile from my devcontainer article](/blog/php-devcontainer), before the final `USER` switch:
@@ -61,18 +73,6 @@ Install the [PHP Debug](https://marketplace.visualstudio.com/items?itemName=xdeb
 <AlertBox variant="caution" title="pathMappings is where most setups actually break">
 The container sees `/var/www/html`; VSCode, running on your host, sees `${workspaceFolder}`. Without `pathMappings` telling VSCode these are the same file, breakpoints show as set but are never hit — the debugger connects fine, it just can't match the file paths. If step debugging connects but nothing ever stops, this mapping is the first thing to check.
 </AlertBox>
-
-## Demo
-
-A small script with a breakpoint on the accumulation line:
-
-<Snippet filename="index.php" source="./files/index.php" defaultOpen={false} />
-
-In VSCode: click the "Run and Debug" icon, select **Listen for Xdebug**, press F5 — the status bar turns orange, listening. Set a breakpoint on the `$total += ...` line, then trigger the script:
-
-<Terminal source="./files/terminal_xdebug.txt" typewriter />
-
-VSCode stops on the breakpoint, `$total`, `$item`, and the full call stack become inspectable in the sidebar exactly like debugging a script running locally — except it's genuinely executing inside the container. The `xdebug.log` output (temporarily uncommented from the ini file above) is the fastest way to confirm the connection actually happened when something isn't stopping as expected.
 
 ## Key Takeaways
 

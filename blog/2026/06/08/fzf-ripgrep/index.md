@@ -4,6 +4,7 @@ title: "FZF + ripgrep: Interactive Code Search with Live Preview"
 date: 2026-06-08
 authors: [christophe]
 image: /img/v2/fzf_ripgrep.webp
+series: Modern CLI tools for your terminal
 description: Combine ripgrep and fzf with a bat syntax-highlighted preview panel to build an interactive code search — then open the result directly in VSCode at the exact matching line.
 mainTag: fzf
 tags:
@@ -27,6 +28,28 @@ You're hunting for where a particular environment variable is read, or which fil
 There is a better way.
 
 <!-- truncate -->
+
+## Seeing the Preview Panel
+
+Pipe `ripgrep` into `fzf` with a `bat` preview attached, and this is the result — a live, syntax-highlighted panel that updates as you move the selection:
+
+![Searching for DB_PASSWORD with preview](./images/rg_fzf_bat.webp)
+
+As you move the cursor up and down the result list, the right panel updates live — showing the file with syntax highlighting, the matching line highlighted in yellow, and a few lines of surrounding context.
+
+## Why ripgrep instead of grep?
+
+`grep -r` is fine for small codebases. `ripgrep` is built for the real world:
+
+- It **ignores `.gitignore`** entries automatically — no more results from `node_modules`, `vendor`, or build folders.
+- It is **significantly faster** on large projects, thanks to parallel processing and smarter file traversal.
+- Its output format (`file:line:content`) is designed for tooling integration.
+
+A quick comparison — searching for `TODO` in a Node.js project with `node_modules` present:
+
+<Terminal typewriter source="./files/terminal-1.txt" />
+
+The speed and noise-reduction alone make it worth switching.
 
 ## Prerequisites
 
@@ -62,20 +85,6 @@ This article builds on top of <Link to="/blog/linux-fzf-introduction">fzf</Link>
 On some Ubuntu/Debian systems, the binary is named `batcat` instead of `bat`. If that's the case for you, simply replace *bat* with *batcat* in the rest of this article.
 </AlertBox>
 
-## Why ripgrep instead of grep?
-
-`grep -r` is fine for small codebases. `ripgrep` is built for the real world:
-
-- It **ignores `.gitignore`** entries automatically — no more results from `node_modules`, `vendor`, or build folders.
-- It is **significantly faster** on large projects, thanks to parallel processing and smarter file traversal.
-- Its output format (`file:line:content`) is designed for tooling integration.
-
-A quick comparison — searching for `TODO` in a Node.js project with `node_modules` present:
-
-<Terminal typewriter source="./files/terminal-1.txt" />
-
-The speed and noise-reduction alone make it worth switching.
-
 ## Step 1 — Connect ripgrep to fzf
 
 The simplest possible combination already beats plain `grep`:
@@ -102,11 +111,7 @@ rg --color=always --line-number --no-heading --smart-case "DB_PASSWORD" \
         --preview-window='right:60%:+{2}+3/3:~3'
 ```
 
-![Searching for DB_PASSWORD with preview](./images/rg_fzf_bat.webp)
-
-As you move the cursor up and down the result list, the right panel updates live — showing the file with syntax highlighting, the matching line highlighted in yellow, and a few lines of surrounding context.
-
-Let's break down what each flag does:
+That's the command behind the screenshot at the top of this article. Let's break down what each flag does:
 
 <StepsCard
   variant="remember"

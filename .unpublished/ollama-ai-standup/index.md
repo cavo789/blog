@@ -25,6 +25,16 @@ I work across several repositories on a given day — this blog, a couple of cli
 
 <!-- truncate -->
 
+## Demo
+
+<Terminal source="./files/terminal_standup.txt" typewriter />
+
+That's the four repos I actually touched, condensed from what was probably fifteen or twenty raw commit messages (including a couple of "wip" and "fix typo" ones the model correctly left out) down to four lines I can read almost verbatim in the standup call.
+
+<AlertBox variant="tip" title="Override the window for one run">
+`ai-standup 3` covers a long weekend or a day you missed standup, regardless of what `$AI_STANDUP_DAYS` is set to — the argument always wins over the default.
+</AlertBox>
+
 ## The Idea
 
 `git log` already has everything: `--since`, `--author`, and `--all` to catch commits on any branch, not just the one currently checked out. The only manual part is deciding *which* repos to look at — so that becomes a one-time setting, not something the function has to guess.
@@ -67,16 +77,6 @@ For each repo in the list:
 4. Group the commit messages under a `### <repo-name>` heading.
 
 Once every repo has been scanned, the combined list goes to `_ollama_query` with a prompt that explicitly asks for 3-6 bullet points, past tense, first person, related commits grouped together, trivial ones (typo fixes, merge commits) dropped.
-
-## Demo
-
-<Terminal source="./files/terminal_standup.txt" typewriter />
-
-That's the four repos I actually touched, condensed from what was probably fifteen or twenty raw commit messages (including a couple of "wip" and "fix typo" ones the model correctly left out) down to four lines I can read almost verbatim in the standup call.
-
-<AlertBox variant="tip" title="Override the window for one run">
-`ai-standup 3` covers a long weekend or a day you missed standup, regardless of what `$AI_STANDUP_DAYS` is set to — the argument always wins over the default.
-</AlertBox>
 
 ## Registered in the `ai` Menu
 

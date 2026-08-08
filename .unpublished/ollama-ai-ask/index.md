@@ -25,17 +25,6 @@ While writing this very series, I caught myself doing the thing I do a dozen tim
 
 <!-- truncate -->
 
-## The Simplest Function in the Series
-
-No file to read, no git repository to inspect, no API to authenticate against — `ai-ask` is close to the smallest possible wrapper around `_ollama_query`:
-
-<Snippet filename="~/.zsh/fns/ai-ask.zsh" source="./files/ai-ask.zsh" defaultOpen={true} />
-
-The only two things worth explaining:
-
-- `"$*"` (not `"$1"`) joins every argument into one string, so you don't have to remember to quote the whole question — `ai-ask how do I find large files` works exactly like `ai-ask "how do I find large files"`.
-- `uname -a` goes into the prompt so the model knows it's answering for Linux/WSL2, not macOS or a bare POSIX shell — small detail, but it keeps flag suggestions (`stat`, `date`, `sed -i`) actually correct for the platform they'll run on.
-
 ## Demo
 
 <Terminal source="./files/terminal_ask.txt" typewriter />
@@ -49,6 +38,17 @@ You don't need precise terminology. "how do I find large files", "command to see
 <AlertBox variant="caution" title="Read before you run">
 This is the function in the series most tempting to blindly copy-paste — resist that, especially for anything involving `rm`, permissions, or network configuration. Treat the output as a strong first draft of the command, not a command you run without reading.
 </AlertBox>
+
+## The Simplest Function in the Series
+
+No file to read, no git repository to inspect, no API to authenticate against — `ai-ask` is close to the smallest possible wrapper around `_ollama_query`:
+
+<Snippet filename="~/.zsh/fns/ai-ask.zsh" source="./files/ai-ask.zsh" defaultOpen={true} />
+
+The only two things worth explaining:
+
+- `"$*"` (not `"$1"`) joins every argument into one string, so you don't have to remember to quote the whole question — `ai-ask how do I find large files` works exactly like `ai-ask "how do I find large files"`.
+- `uname -a` goes into the prompt so the model knows it's answering for Linux/WSL2, not macOS or a bare POSIX shell — small detail, but it keeps flag suggestions (`stat`, `date`, `sed -i`) actually correct for the platform they'll run on.
 
 ## Registered in the `ai` Menu
 

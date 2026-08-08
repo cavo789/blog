@@ -5,6 +5,7 @@ date: 2024-10-07
 description: Add a visual progression bar to your Bash scripts on Linux. This guide shows you how to easily implement a progress bar to track concurrent jobs, visualize progress, and improve your terminal user interface.
 authors: [christophe]
 image: /img/v2/linux_progress_bar.webp
+series: Writing better Bash scripts
 mainTag: bash
 tags:
   - bash

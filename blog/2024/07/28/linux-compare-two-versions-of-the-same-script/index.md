@@ -5,6 +5,7 @@ date: 2024-07-28
 description: Use a simple Linux command-line trick with diff, grep, and awk to compare two versions of the same Bash script. Quickly identify missing or new functions across file versions or entire folders.
 authors: [christophe]
 image: /img/v2/bash.webp
+series: Writing better Bash scripts
 mainTag: linux
 tags:
   - bash

@@ -5,6 +5,7 @@ date: 2024-06-16
 description: Implement secure PHP Getters and Setters in VSCode effortlessly. Learn the best practices for private class properties and use the recommended extension to generate them instantly.
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
+series: VSCode - Tips, extensions and shortcuts
 mainTag: vscode
 tags:
   - php

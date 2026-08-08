@@ -5,6 +5,7 @@ date: 2023-11-02
 description: Learn how to override the KeePass URL field to launch programs like PuTTY, WinSCP, or a Remote Desktop connection (RDP) directly from your entries.
 authors: [christophe]
 image: /img/v2/keepass.webp
+series: WinSCP & remote file transfer
 mainTag: winscp
 tags:
   - windows

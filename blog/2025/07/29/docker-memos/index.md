@@ -5,6 +5,7 @@ date: 2025-07-29
 description: Deploy the memos self-hosted note-taking application quickly using Docker. Learn how to use its simple features - Markdown, checklists, tags, and image pasting.
 authors: [christophe]
 image: /img/v2/docker_playing_with_app.webp
+series: Self-host your own services
 mainTag: self-hosted
 tags:
   - docker

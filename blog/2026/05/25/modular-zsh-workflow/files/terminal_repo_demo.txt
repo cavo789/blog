@@ -1,0 +1,7 @@
+$ repo blg
+
+Switched to: ~/repositories/blog
+
+$ pwd
+
+~/repositories/blog

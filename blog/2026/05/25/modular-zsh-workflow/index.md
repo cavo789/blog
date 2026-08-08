@@ -4,6 +4,7 @@ title: Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro
 description: Stop bloating your shell configuration. Learn why moving ZSH functions to standalone files improves performance and maintainability, featuring a universal project navigator.
 authors: [christophe]
 image: /img/v2/repo_with_fzf.webp
+series: Customize your shell with ZSH
 mainTag: fzf
 ai_assisted: true
 tags:
@@ -18,11 +19,19 @@ blueskyRecordKey: 3mmnv4igbvk2f
 A bloated `~/.zshrc` slows down your terminal and makes debugging a nightmare. By using ZSH's `fpath` and modularizing your functions into `~/.zsh/fns`, you gain instant shell startup and cleaner code. This article explains the "why" and provides a "Super Function" to navigate your projects instantly.
 </TLDR>
 
-We’ve all been there: your `~/.zshrc` starts as a 10-line file and ends up as a 1,500-line monster. It contains everything from theme settings to complex Docker scripts and random aliases you forgot you wrote. This is the **Monolithic Shell Anti-pattern** (if you're starting from scratch, see <Link to="/blog/zsh-install">my ZSH installation guide</Link> first).
+We've all been there: your `~/.zshrc` starts as a 10-line file and ends up as a 1,500-line monster. It contains everything from theme settings to complex Docker scripts and random aliases you forgot you wrote. This is the **Monolithic Shell Anti-pattern** (if you're starting from scratch, see <Link to="/blog/zsh-install">my ZSH installation guide</Link> first).
 
-In this article, I’ll show you why you should move your logic into standalone files within `~/.zsh/fns` and how ZSH's `autoload` mechanism can make your terminal feel snappier than ever. To top it off, I’ll share `repo`, a function that will change how you navigate your workspace.
+In this article, I'll show you why you should move your logic into standalone files within `~/.zsh/fns` and how ZSH's `autoload` mechanism can make your terminal feel snappier than ever. To top it off, I'll share `repo`, a function that will change how you navigate your workspace.
 
 <!-- truncate -->
+
+## Teleporting to a Project
+
+Once `repo` is set up (covered below), typing a fragment of a project name jumps straight into it — no `cd`, no typing the full path:
+
+<Terminal source="./files/terminal_repo_demo.txt" typewriter />
+
+Only one project matched `blg` among everything under `~/repositories`, so `repo` skipped the picker entirely and `cd`'d straight in. If more than one project had matched, the same command would have opened an `fzf` picker pre-filtered with those results instead.
 
 ## The Problem with the Monolith
 
@@ -106,18 +115,14 @@ If you've already used the alias and, for some reason, you've updated the code, 
 
 </AlertBox>
 
-### 5. Fast Search (Fuzzy Find)
+## More Demos
 
-You can speed up your navigation by passing a search pattern directly to the command: `repo <pattern>`.
+### Fast Search (Fuzzy Find)
+
+You can speed up your navigation by passing a search pattern directly to the command: `repo <pattern>` — exactly the `repo blg` example demonstrated at the top of this article.
 
 - If multiple projects match your query, `fzf` will open pre-filtered with those results.
 - If **only one** project matches, the script will skip the interface entirely and `cd` into the directory immediately.
-
-Example:
-
-```bash
-repo blg   # will find f.i. "blog"
-```
 
 <AlertBox variant="info" title="Pro Tip">
 This is perfect for projects you visit often. If your pattern is unique enough, it becomes a lightning-fast shortcut!

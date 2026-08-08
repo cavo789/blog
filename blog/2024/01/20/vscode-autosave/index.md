@@ -5,6 +5,7 @@ date: 2024-01-20
 description: Tired of forgetting to save files in VS Code? Learn how to easily enable the Autosave feature, set it to onFocusChange, and never lose unsaved changes again!
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
+series: VSCode - Tips, extensions and shortcuts
 mainTag: vscode
 tags:
   - markdown

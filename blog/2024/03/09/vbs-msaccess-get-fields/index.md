@@ -5,6 +5,7 @@ date: 2024-03-09
 description: Use a VBScript to easily retrieve a detailed list of fields from your MS Access database. Analyze field size, type, and actual value length to optimize your database structure.
 authors: [christophe]
 image: /img/v2/msaccess.webp
+series: VBA & MS Office automation
 mainTag: msaccess
 tags:
   - database

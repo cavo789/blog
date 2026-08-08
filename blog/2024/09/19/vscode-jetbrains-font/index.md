@@ -5,6 +5,7 @@ date: 2024-09-19
 description: Improve your coding experience! Learn how to install the free and highly legible JetBrains Mono font and enable beautiful font ligatures in VSCode with this quick configuration guide.
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
+series: VSCode - Tips, extensions and shortcuts
 mainTag: vscode
 tags:
   - customization

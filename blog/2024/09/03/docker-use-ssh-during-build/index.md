@@ -5,6 +5,7 @@ date: 2024-09-03
 description: Securely access private Git repositories during your Docker build using SSH keys and Docker secrets. Includes complete Dockerfile and compose.yaml examples to prevent secrets from being stored in your final image.
 authors: [christophe]
 image: /img/v2/docker_secrets.webp
+series: SSH - From your first key to remote development
 mainTag: ssh
 tags:
   - docker

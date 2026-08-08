@@ -5,6 +5,7 @@ date: 2024-04-01
 description: A complete guide to Windows Terminal. Discover how to install, customize profiles, use backgrounds, and configure settings for WSL, Docker, and multi-tab startup actions.
 authors: [christophe]
 image: /img/v2/windows_terminal_tips.webp
+series: Windows Terminal
 mainTag: windows-terminal
 tags:
   - customization

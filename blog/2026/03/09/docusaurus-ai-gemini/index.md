@@ -33,14 +33,17 @@ Here's how you can do the same for your own blog.
 
 <!-- truncate -->
 
-## The Goal
+## The Result
 
-Here's a preview of what we're building:
+Here's what a single `ai_assisted: true` flag produces, rendered on an actual post of this blog:
 
-1. **The "AI Assisted" Icon**: A clear, unintrusive indicator in the post header.
-2. **The "Google Gemini" Author**: Gemini appears alongside the human author.
+![The "AI Assisted" badge and the Google Gemini co-author, rendered on a real post header](./images/ai_assisted_badge.png)
 
-This ensures that the AI's contribution is acknowledged right from the start.
+The icon sits right next to the date and reading time, and the AI shows up as a real co-author alongside the human one — nothing hidden, nothing to click to reveal.
+
+## Why Do This
+
+As a content creator, I believe in transparency with my audience. If an AI has significantly contributed to a piece of content, the reader should know — not buried in a footer, not omitted, right there in the header where the date and reading time already are. A single front-matter flag drives both the icon and the co-author, so there's no separate step to forget.
 
 ## Step 1: The `ai_assisted` Front Matter
 
@@ -216,4 +219,4 @@ export default function BlogPostItemHeaderAuthors({ className }) {
 
 That's it! With a few component customizations, you now have a robust system for transparently indicating AI assistance in your blog. This approach keeps your Markdown files clean (just one flag to add) and centralizes the logic within your Docusaurus theme, making it easy to manage and update. By being open about your process, you can build greater trust with your audience.
 
-This `ai_assisted` flag is what you'll see on other posts where AI played a real role, like <Link to="/blog/gemini-meerkat">How I used Google Gemini Nano Banana on my blog</Link> (generating all my banner images) or <Link to="/blog/lovable-dev-ai">Lovable.dev</Link> (an AI-driven app builder).
+This `ai_assisted` flag is what you'll see on other posts where AI played a real role, like <Link to="/blog/gemini-meerkat">How I used Google Gemini Nano Banana on my blog</Link> (generating all my banner images) or <Link to="/blog/lovable-dev-ai">Lovable.dev</Link> (an AI-driven app builder) — the very post the screenshot above was taken from.

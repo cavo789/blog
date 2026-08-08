@@ -1,3 +1,131 @@
+/*
+ * Themed hero wrapper for a series page: a colorful radial glow of the series' accent color
+ * (picked to match its banner, see src/data/series.js) blooming out from behind the banner, so
+ * the page picks up the banner's mood instead of every series page looking identical. Kept to
+ * decorative background/shadow only — never applied to text — so it can be this bold without
+ * any contrast risk. --series-accent-* are set inline per series (see SeriesArticlesPage.js);
+ * when a series has no color yet, everything falls back to transparent (identical to the plain
+ * page from before this feature existed).
+ */
+.seriesHero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 2rem 1.5rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+}
+
+.seriesHero::before,
+.seriesHero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 55%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  filter: blur(70px);
+  background: var(--series-accent-glow-light, transparent);
+  animation: seriesGlowPulse 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.seriesHero::before {
+  top: -25%;
+  left: -10%;
+}
+
+.seriesHero::after {
+  right: -10%;
+  bottom: -30%;
+  animation-delay: -3.5s;
+}
+
+[data-theme="dark"] .seriesHero::before,
+[data-theme="dark"] .seriesHero::after {
+  background: var(--series-accent-glow-dark, transparent);
+}
+
+@keyframes seriesGlowPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seriesHero::before,
+  .seriesHero::after {
+    animation: none;
+  }
+}
+
+.seriesBanner {
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: contain;
+  background: var(--ifm-color-emphasis-100);
+  border: 2px solid var(--series-accent-solid, transparent);
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 25px 60px -10px var(--series-accent-glow-light, transparent);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+[data-theme="dark"] .seriesBanner {
+  background: var(--ifm-color-emphasis-900);
+  box-shadow: 0 25px 60px -10px var(--series-accent-glow-dark, transparent);
+}
+
+.seriesBanner:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 35px 70px -10px var(--series-accent-glow-light, transparent);
+}
+
+[data-theme="dark"] .seriesBanner:hover {
+  box-shadow: 0 35px 70px -10px var(--series-accent-glow-dark, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seriesBanner {
+    transition: none;
+  }
+
+  .seriesBanner:hover {
+    transform: none;
+  }
+}
+
+.seriesTitleAccent {
+  display: block;
+  width: 80px;
+  height: 6px;
+  border-radius: 999px;
+  margin: 0.75rem 0 1.25rem;
+  background: var(--series-accent-solid, var(--ifm-color-primary));
+  box-shadow: 0 4px 14px -2px var(--series-accent-glow-light, transparent);
+}
+
+[data-theme="dark"] .seriesTitleAccent {
+  box-shadow: 0 4px 14px -2px var(--series-accent-glow-dark, transparent);
+}
+
+.seriesDescription {
+  color: var(--ifm-font-color-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
 .seriesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

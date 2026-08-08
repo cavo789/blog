@@ -5,6 +5,7 @@ date: 2024-04-19
 description: Export and share your list of installed VS Code extensions using the `code --list-extensions` command. Learn how to generate direct installation commands for easy setup on a new machine using PowerShell or Linux.
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
+series: VSCode - Tips, extensions and shortcuts
 mainTag: vscode
 tags:
   - linux

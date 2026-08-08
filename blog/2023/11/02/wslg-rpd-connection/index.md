@@ -5,6 +5,7 @@ date: 2023-11-02
 description: Learn how to open an RDP connection to your WSLg Linux instance (Ubuntu) for a full graphical desktop environment. Follow this step-by-step guide to installing and configuring xrdp.
 authors: [christophe]
 image: /img/v2/wsl.webp
+series: WSL2 - Install, move and use it
 mainTag: wsl
 tags:
   - docker

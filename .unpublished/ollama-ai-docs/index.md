@@ -25,6 +25,18 @@ I work in an office where a `.docx` lands in my inbox in French, English, or wha
 
 <!-- truncate -->
 
+## Demo — ai-translate
+
+<Terminal source="./files/terminal_translate.txt" typewriter />
+
+That's a fictional service agreement, converted from `.docx` and translated into French, with every heading and every bold term intact — the kind of document I would genuinely not paste into a browser-based translator.
+
+## Demo — ai-summarize
+
+<Terminal source="./files/terminal_summarize.txt" typewriter />
+
+Four bullet points out of a five-section contract — the daily rate, the duration, the confidentiality window, and the notice period. Exactly the four numbers I'd actually go looking for if someone asked me "so what does this contract say."
+
 ## Reusing Docling for Extraction
 
 Both functions below share one job before they ever talk to Ollama: turning a document into plain text. I already built that piece in [my Docling article](/blog/docling) — `docling-convert file.docx` produces `file.md` locally, GPU-accelerated if you set it up that way. Rather than duplicate that logic twice, it lives in one small helper:
@@ -45,23 +57,11 @@ If you already have a `.md` or `.txt` file, `_ai_extract_text` just `cat`s it �
 
 Extract, then ask the model to translate into whatever language you pass as the second argument (French by default — the language I need most often), with an explicit instruction to preserve the Markdown structure so headings, lists, and tables survive the round trip instead of collapsing into a wall of text.
 
-### Demo
-
-<Terminal source="./files/terminal_translate.txt" typewriter />
-
-That's a fictional service agreement, converted from `.docx` and translated into French, with every heading and every bold term intact — the kind of document I would genuinely not paste into a browser-based translator.
-
 ## `ai-summarize`
 
 <Snippet filename="~/.zsh/fns/ai-summarize.zsh" source="./files/ai-summarize.zsh" defaultOpen={true} />
 
 Same extraction step, different prompt: a fixed number of bullet points (5 by default), explicitly told to prioritize decisions, numbers, deadlines and action items over generic description — and to answer in whatever language the source document is already in, rather than silently switching to English.
-
-### Demo
-
-<Terminal source="./files/terminal_summarize.txt" typewriter />
-
-Four bullet points out of a five-section contract — the daily rate, the duration, the confidentiality window, and the notice period. Exactly the four numbers I'd actually go looking for if someone asked me "so what does this contract say."
 
 ## Registered in the `ai` Menu
 

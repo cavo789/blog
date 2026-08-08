@@ -5,6 +5,7 @@ date: 2025-02-01
 description: Tired of old browser bookmarks? Learn how to self-host and set up Heimdall, a beautiful web dashboard that gives you immediate, personalized access to all your favorite applications and links via Docker.
 authors: [christophe]
 image: /img/v2/docker_playing_with_app.webp
+series: Self-host your own services
 mainTag: self-hosted
 tags:
   - docker

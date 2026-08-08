@@ -5,6 +5,7 @@ date: 2024-07-29
 description: Learn to auto-generate documentation for your Bash scripts on Linux. This guide provides a custom script to parse function doc blocks and create structured Markdown files automatically.
 authors: [christophe]
 image: /img/v2/bash.webp
+series: Writing better Bash scripts
 mainTag: bash
 tags:
   - bash

@@ -5,6 +5,7 @@ date: 2024-03-09
 description: Secure your GitHub connection! Follow this easy, step-by-step guide to set up SSH keys and use the git@ protocol for safer and quicker Git operations.
 authors: [christophe]
 image: /img/v2/github_tips.webp
+series: SSH - From your first key to remote development
 mainTag: github
 tags:
   - github

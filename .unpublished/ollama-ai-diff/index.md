@@ -25,6 +25,21 @@ This article adds `ai-diff` to the "Ollama daily-use functions" series: point it
 
 <!-- truncate -->
 
+## Demo — A Script Against Its Last Commit
+
+<Snippet filename="massupload.sh — before (HEAD)" source="./files/massupload_old.sh" defaultOpen={false} />
+<Snippet filename="massupload.sh — after (working copy, staged)" source="./files/massupload_new.sh" defaultOpen={false} />
+
+<Terminal source="./files/terminal_diff_git.txt" typewriter />
+
+Four bullet points, and notice what's *not* there: no mention of the new `upload_one()` function existing, no mention of the loop restructuring — those are implementation details in service of the actual changes (parallelism, retry, filtering, error visibility), which is exactly the altitude I wanted.
+
+## Demo — Two Document Versions
+
+<Terminal source="./files/terminal_diff_docs.txt" typewriter />
+
+This is the case that started the idea: two versions of a project charter, and instead of a paragraph-by-paragraph reading of both, four bullet points that would let me answer "what changed in the new scope" in a meeting without having opened either file beforehand — including the budget percentage, computed by the model from the two raw numbers.
+
 ## Two Ways to Compare
 
 `ai-diff` accepts either one argument or two, and picks its mode based on that:
@@ -45,21 +60,6 @@ The prompt is where the actual point of this function lives: explicitly told to 
 <AlertBox variant="note" title="Identical versions short-circuit immediately">
 If the two texts come out byte-identical, `ai-diff` says so and returns without ever calling the model — no point spending a request explaining that nothing changed.
 </AlertBox>
-
-## Demo — A Script Against Its Last Commit
-
-<Snippet filename="massupload.sh — before (HEAD)" source="./files/massupload_old.sh" defaultOpen={false} />
-<Snippet filename="massupload.sh — after (working copy, staged)" source="./files/massupload_new.sh" defaultOpen={false} />
-
-<Terminal source="./files/terminal_diff_git.txt" typewriter />
-
-Four bullet points, and notice what's *not* there: no mention of the new `upload_one()` function existing, no mention of the loop restructuring — those are implementation details in service of the actual changes (parallelism, retry, filtering, error visibility), which is exactly the altitude I wanted.
-
-## Demo — Two Document Versions
-
-<Terminal source="./files/terminal_diff_docs.txt" typewriter />
-
-This is the case that started the idea: two versions of a project charter, and instead of a paragraph-by-paragraph reading of both, four bullet points that would let me answer "what changed in the new scope" in a meeting without having opened either file beforehand — including the budget percentage, computed by the model from the two raw numbers.
 
 ## Registered in the `ai` Menu
 

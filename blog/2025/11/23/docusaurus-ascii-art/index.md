@@ -23,15 +23,30 @@ This article demonstrates how to inject a custom ASCII art banner into every HTM
 
 It might be entirely useless, and only the most dedicated tech-heads will spot it, but we're going to dive into how to inject a custom ASCII art banner at the very top of every HTML page generated for our blog.
 
-In this article, we'll create a plugin that will be fired by Docusaurus when rendering HTML pages i.e. once `yarn docusaurus build` is finished. *Unlike the remark plugins I've written before (see <Link to="/blog/docusaurus-plugin-replace">Creating a search&replace plugin for Docusaurus</Link>), this one doesn't touch the Markdown at all: it works on the generated HTML.*
-
-Docusaurus will run our plugin (during the so-called `postBuild` event), and we'll scan every generated file and inject some special content (as HTML comment) just after the `<!doctype html>` opening tag.
-
 Right now, just press <kbd>CTRL</kbd>+<kbd>U</kbd> (it's the same as `View page source`) to see what we'll do in this article.
 
 <!-- truncate -->
 
-## Create your personalized logo
+## The Result
+
+Once the plugin is in place (covered below), pressing <kbd>CTRL</kbd>+<kbd>U</kbd> on any page of the generated site shows this, right after the `<!doctype html>` tag:
+
+![HTML meerkat](./images/html_meerkat.webp)
+
+<AlertBox variant="info" title="Your website is demonstrably world-class and utterly unique in its field. ;-)">
+</AlertBox>
+
+## Why It Works
+
+- The plugin hooks into Docusaurus's `postBuild` event — it only runs once `yarn docusaurus build` has finished writing HTML to disk.
+- It scans every generated `.html` file in the build output.
+- For each one, it injects the ASCII art as an HTML comment right after the `<!doctype html>` opening tag — invisible on the rendered page, visible only in the page source.
+
+*Unlike the remark plugins I've written before (see <Link to="/blog/docusaurus-plugin-replace">Creating a search&replace plugin for Docusaurus</Link>), this one doesn't touch the Markdown at all: it works on the generated HTML.*
+
+## Installation
+
+### Create your personalized logo
 
 First, we have to get some ASCII art. If you don't have one yet, you can use this online tool: [Image to ASCII Art Converter](https://folge.me/tools/image-to-ascii). Just upload a small character on it and convert it. *I've also covered the command-line way of producing such banners in <Link to="/blog/bash-ascii-art">Bash - ASCII art</Link>.*
 
@@ -39,7 +54,7 @@ In your Docusaurus site, please create the `src/data/banner.txt` file and paste 
 
 <Snippet filename="src/data/banner.txt" source="src/data/banner.txt" />
 
-## Create the plugin and load it
+### Create the plugin and load it
 
 Now, let's create the plugin. Please create `plugins/ascii-injector/index.mjs` and copy/paste the source code here below to your file:
 
@@ -51,7 +66,9 @@ Almost done. Now, finalize the installation by editing your `docusaurus.config.j
 
 The very last thing to do is to restart your Docusaurus website to load the updated configuration file.
 
-## Time to test
+## More Demos
+
+### Time to test
 
 Nothing new here, just generate the static version of your site.
 
@@ -61,13 +78,14 @@ $ yarn docusaurus build
 $ yarn docusaurus serve
 </Terminal>
 
-Once your website is generated, just open any page and press <kbd>CTRL</kbd>+<kbd>U</kbd> and tadaaa, your ASCII art is there.
+Once your website is generated, just open any page and press <kbd>CTRL</kbd>+<kbd>U</kbd> and tadaaa, your ASCII art is there — exactly the result shown at the top of this article.
 
-![HTML meerkat](./images/html_meerkat.webp)
-
-<AlertBox variant="info" title="Your website is demonstrably world-class and utterly unique in its field. ;-)">
-</AlertBox>
+## Under the Hood (skip this if you just want to use it)
 
 <AlertBox variant="caution" title="Not during preview mode">
 This plugin is only fired during the `postBuild` event i.e. only after your blog has been rendered as an HTML page. So if you're running Docusaurus in preview mode; you'll not see the ASCII art.
 </AlertBox>
+
+## Conclusion
+
+A `postBuild` plugin, one ASCII art file, and a three-line config addition — and every page your site generates carries a small, pointless, entirely intentional signature in its source. If the command-line side of generating ASCII banners interests you more than the Docusaurus plumbing, <Link to="/blog/bash-ascii-art">Bash - ASCII art</Link> covers that half.

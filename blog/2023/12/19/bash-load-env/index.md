@@ -5,6 +5,7 @@ date: 2023-12-19
 description: Learn how to load environment variables from a .env file into a Bash script, so you can externalize configuration and reuse variables across other applications like Laravel.
 authors: [christophe]
 image: /img/v2/bash.webp
+series: Writing better Bash scripts
 mainTag: bash
 tags:
   - bash

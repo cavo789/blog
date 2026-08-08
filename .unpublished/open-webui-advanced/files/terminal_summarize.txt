@@ -1,0 +1,19 @@
+$ curl -X POST http://localhost:4000/api/chat/completions \
+    -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+    -d '{
+      "model": "llama3:latest",
+      "messages": [
+        {"role": "system", "content": "You summarize text in exactly 3 bullet points, focusing on decisions, numbers and deadlines."},
+        {"role": "user", "content": "<pasted meeting notes>"}
+      ]
+    }'
+
+Here are three bullet points summarizing the meeting notes:
+
+• Decisions:
+  + Migrate staging database to Postgres 16 by October 15th
+  + Increase backup cadence from weekly to daily, starting immediately
+• Numbers:
+  + Budget approved: 4,200 EUR for migration contractor
+• Deadlines:
+  + Review rollback plan with Sarah before October 1st

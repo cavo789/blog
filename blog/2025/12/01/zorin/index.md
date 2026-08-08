@@ -5,6 +5,7 @@ date: 2025-12-01
 description: Trying a new OS? Zorin OS 18 is a Linux distribution based on Ubuntu, perfect for switching from Windows. Easy install, familiar interface, and great compatibility!
 authors: [christophe]
 image: /img/v2/zorin_os.webp
+series: WSL2 - Install, move and use it
 mainTag: linux
 tags:
   - linux

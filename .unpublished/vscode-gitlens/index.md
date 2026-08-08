@@ -24,17 +24,19 @@ My terminal-side Git workflow is in good shape by now: <Link to="/blog/git-workt
 
 <!-- truncate -->
 
-## Installing It
-
-Search for **GitLens** in the Extensions view (`eamodio.gitlens`) and install it — no separate binary, no Docker container, it's a pure VSCode extension.
-
 ## Inline Blame, Where You're Actually Looking
+
+<!-- TODO(author): capture a real screenshot of the current-line blame annotation (+ hover) here before publishing — not reproducible in this session (requires a live VSCode GUI). -->
 
 The single feature that earns GitLens a permanent spot: **current line blame**. Move your cursor onto any line, and a faded annotation appears at the end of it — author, relative date, and the start of the commit message. Hover over that annotation for the full message, the commit hash, and a diff of what that commit actually changed.
 
 <AlertBox variant="tip" title="No more manual git blame">
 This is the exact question "who wrote this and why" answered without leaving the file, without knowing the path by heart, and without a terminal window at all.
 </AlertBox>
+
+## Installing It
+
+Search for **GitLens** in the Extensions view (`eamodio.gitlens`) and install it — no separate binary, no Docker container, it's a pure VSCode extension.
 
 ## The One Feature Worth Turning Off
 

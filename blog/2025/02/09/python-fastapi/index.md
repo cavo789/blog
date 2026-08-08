@@ -5,6 +5,7 @@ date: 2025-02-09
 description: Build your first Python JSON API with FastAPI in under a minute! This tutorial covers Docker setup, automated API documentation (Swagger/ReDoc), and hot-reload for rapid development.
 authors: [christophe]
 image: /img/v2/api.webp
+series: Building and testing REST APIs
 mainTag: api
 tags:
   - api

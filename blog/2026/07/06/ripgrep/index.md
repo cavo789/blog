@@ -4,6 +4,7 @@ title: "ripgrep — The Search Tool That Changed My WSL2 Workflow"
 description: "Discover ripgrep, the blazingly fast grep alternative written in Rust. Installation on Ubuntu/WSL2, ZSH configuration, practical shell functions, and real-world use cases that will transform how you search code every day."
 authors: [christophe, claude]
 image: /img/v2/ripgrep.webp
+series: Modern CLI tools for your terminal
 mainTag: zsh
 tags: [zsh, wsl, bash, linux, fzf]
 date: 2026-07-06
@@ -31,38 +32,6 @@ There is. It is called [ripgrep](https://github.com/BurntSushi/ripgrep), and onc
 *It belongs to the same family of modern rewrites as <Link to="/blog/linux-eza">eza</Link> (for `ls`) and <Link to="/blog/git-delta">delta</Link> (for `git diff`).*
 
 <!-- truncate -->
-
-## What is ripgrep?
-
-ripgrep (`rg` on the command line) is a line-oriented search tool built in Rust by Andrew Gallant (BurntSushi). Speed is its headline feature — benchmarks consistently show it outperforming grep, ag (the Silver Searcher), and ack by a wide margin on large codebases. But raw speed is only part of the story.
-
-What makes ripgrep genuinely better for day-to-day use is its **smart defaults**:
-
-- It automatically respects `.gitignore`, `.ignore`, and `.rgignore` files — so `vendor/`, `node_modules/`, `dist/`, and `.git/` are skipped without any `--exclude-dir` gymnastics.
-- It skips binary files by default.
-- It colors and groups output by filename out of the box.
-- It uses Unicode by default — no more garbled output on accented filenames or content.
-- It supports modern regex syntax, including PCRE2 with the `-P` flag.
-- It searches hidden files only when you explicitly ask for it (`--hidden`).
-
-That last output behavior is underrated. Readable, grouped, colorized results — right away, no configuration required. So cool, no?
-
-## Installation on Ubuntu / WSL2
-
-ripgrep ships in Ubuntu's default package repositories, so getting it is a one-liner:
-
-<Prerequisite
-  name="ripgrep"
-  install="sudo apt update && sudo apt install ripgrep -y"
-  installOutput={`\nReading package lists... Done\nBuilding dependency tree... Done\n0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.`}
-  check="rg --version"
-  checkOutput={`\nripgrep 14.1.0\n-rev 0 (rev 4649aa9700 2024-03-30)\nfeatures: +SIMD +AVX (compiled), +SIMD +AVX (runtime)`}
-  typewriter
-/>
-
-<AlertBox variant="tip" title="Want the latest version?">
-  The Ubuntu repositories sometimes lag a few releases behind upstream ripgrep. For the most recent version, grab the latest `.deb` package directly from the [GitHub releases page](https://github.com/BurntSushi/ripgrep/releases) and install it with `sudo dpkg -i ripgrep_*.deb`. From version 14 onwards you also benefit from improved PCRE2 support and faster directory traversal.
-</AlertBox>
 
 ## ripgrep vs grep — A Side-by-Side Look
 
@@ -142,6 +111,38 @@ rg "DB_PASSWORD" -t yaml -t sh
 </Column>
 </Columns>
 For sure, grep's flags are powerful once you know them by heart. But ripgrep's syntax is just cleaner — and by default it already ignores `vendor/`, `node_modules/`, and everything in your `.gitignore`, without any extra flags.
+
+## What is ripgrep?
+
+ripgrep (`rg` on the command line) is a line-oriented search tool built in Rust by Andrew Gallant (BurntSushi). Speed is its headline feature — benchmarks consistently show it outperforming grep, ag (the Silver Searcher), and ack by a wide margin on large codebases. But raw speed is only part of the story.
+
+What makes ripgrep genuinely better for day-to-day use is its **smart defaults**:
+
+- It automatically respects `.gitignore`, `.ignore`, and `.rgignore` files — so `vendor/`, `node_modules/`, `dist/`, and `.git/` are skipped without any `--exclude-dir` gymnastics.
+- It skips binary files by default.
+- It colors and groups output by filename out of the box.
+- It uses Unicode by default — no more garbled output on accented filenames or content.
+- It supports modern regex syntax, including PCRE2 with the `-P` flag.
+- It searches hidden files only when you explicitly ask for it (`--hidden`).
+
+That last output behavior is underrated. Readable, grouped, colorized results — right away, no configuration required. So cool, no?
+
+## Installation on Ubuntu / WSL2
+
+ripgrep ships in Ubuntu's default package repositories, so getting it is a one-liner:
+
+<Prerequisite
+  name="ripgrep"
+  install="sudo apt update && sudo apt install ripgrep -y"
+  installOutput={`\nReading package lists... Done\nBuilding dependency tree... Done\n0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.`}
+  check="rg --version"
+  checkOutput={`\nripgrep 14.1.0\n-rev 0 (rev 4649aa9700 2024-03-30)\nfeatures: +SIMD +AVX (compiled), +SIMD +AVX (runtime)`}
+  typewriter
+/>
+
+<AlertBox variant="tip" title="Want the latest version?">
+  The Ubuntu repositories sometimes lag a few releases behind upstream ripgrep. For the most recent version, grab the latest `.deb` package directly from the [GitHub releases page](https://github.com/BurntSushi/ripgrep/releases) and install it with `sudo dpkg -i ripgrep_*.deb`. From version 14 onwards you also benefit from improved PCRE2 support and faster directory traversal.
+</AlertBox>
 
 ## Configuration — ~/.ripgreprc
 

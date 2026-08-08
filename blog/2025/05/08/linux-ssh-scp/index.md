@@ -5,6 +5,7 @@ date: 2025-05-08
 description: Stop typing your SSH password! Learn how to use SSH keys and `ssh-copy-id` to launch a Linux terminal session instantly without having to authenticate yourself every time.
 authors: [christophe]
 image: /img/v2/ssh.webp
+series: SSH - From your first key to remote development
 mainTag: ssh
 tags:
   - linux

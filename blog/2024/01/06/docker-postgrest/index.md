@@ -5,6 +5,7 @@ date: 2024-01-06
 description: Use Docker and PostgREST to instantly turn your PostgreSQL database into a powerful RESTful API. Eliminate SQL queries and complex database models from your application code with this simple setup tutorial.
 authors: [christophe]
 image: /img/v2/postgrest.webp
+series: Building and testing REST APIs
 mainTag: api
 tags:
   - api

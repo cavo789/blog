@@ -5,6 +5,7 @@ date: 2024-07-10
 description: Learn how to implement a VBA macro in Microsoft Outlook to easily save selected emails as PDF files to your hard drive, complete with step-by-step installation and usage instructions.
 authors: [christophe]
 image: /img/v2/outlook_vba.webp
+series: VBA & MS Office automation
 mainTag: windows
 tags:
   - vba

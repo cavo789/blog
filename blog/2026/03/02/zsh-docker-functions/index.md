@@ -4,6 +4,7 @@ title: ZSH Functions - Customizing Your Shell for Docker Management
 description: A collection of ZSH functions to enhance your terminal experience, including interactive Docker container management with fzf. Start new sessions, stop containers, and more with ease.
 authors: [christophe]
 image: /img/v2/zsh.webp
+series: Customize your shell with ZSH
 mainTag: zsh
 tags:
   - customization

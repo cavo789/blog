@@ -34,6 +34,22 @@ In this post, I'll share how I enforced lazy loading on this Docusaurus blog and
 
 <!-- truncate -->
 
+## Running the Check
+
+Once the script and its container are in place (covered below), auditing every image on the site is one command:
+
+<Terminal typewriter wrap={true}>
+$ docker run -it --rm -v .:/app -w /app --entrypoint /bin/sh mcr.microsoft.com/playwright/python:v1.61.0-jammy -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python .scripts/check-images.py"
+</Terminal>
+
+I'll get a report in the console indicating any images that are missing the `loading="lazy"` attribute, especially if they are large.
+
+For instance:
+
+![Example output](./images/output.webp)
+
+Up to you, now, to act on the results! On my own blog, I've added some missing attributes and optimized some images that were too large. I've reviewed my React components too to ensure they also include lazy loading where appropriate.
+
 ## Step 1: Enforcing Lazy Loading in Docusaurus
 
 By default, when you write standard Markdown image syntax `![Alt text](image.webp)`, Docusaurus renders a standard HTML `<img>` tag. While modern browsers support the `loading="lazy"` attribute, it's not always added automatically by the framework.
@@ -74,29 +90,7 @@ The script performs the following actions:
 
 <Snippet filename=".scripts/check-images.py" source=".scripts/check-images.py" defaultOpen={false} />
 
-You know me very well now; I like to containerize things. So, I'm not using Python or Playwright directly on my host machine but rather inside a Docker container.
-
-To run the script, I first start a Linux console, then go to my blog folder, and finally I run:
-
-<Terminal typewriter wrap={true}>
-$ docker run -it --rm -v .:/app -w /app --entrypoint /bin/sh mcr.microsoft.com/playwright/python:v1.61.0-jammy -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python .scripts/check-images.py"
-</Terminal>
-
-This command does the following:
-
-- Mounts the current directory into the container.
-- Uses the official Playwright Python Docker image.
-- Installs the required Python packages.
-- Runs the `.scripts/check-images.py` script (make sure you've saved it on your disk with that name).
-- Cleans up the container after execution.
-
-I'll get a report in the console indicating any images that are missing the `loading="lazy"` attribute, especially if they are large.
-
-For instance:
-
-![Example output](./images/output.webp)
-
-Up to you, now, to act on the results! On my own blog, I've added some missing attributes and optimized some images that were too large. I've reviewed my React components too to ensure they also include lazy loading where appropriate.
+You know me very well now; I like to containerize things. So, I'm not using Python or Playwright directly on my host machine but rather inside a Docker container. That container mounts the current directory, installs the required packages, and runs `.scripts/check-images.py` — the exact command shown at the top of this article.
 
 ### Additional Checks
 

@@ -8,6 +8,7 @@ tags:
   - ssh
   - vscode
 image: /img/v2/vscode_ssh_dev.webp
+series: SSH - From your first key to remote development
 description: "Use VS Code Remote - SSH: connect to production servers, and edit/execute remotely while avoiding common pitfalls."
 date: 2026-01-05
 blueskyRecordKey: 3mbnw2vy6as2l
@@ -21,20 +22,31 @@ updates:
 The article guides users on leveraging VS Code's Remote - SSH extension for direct development on remote servers. It details setting up connections, from a local Docker simulation to a production environment, to overcome network restrictions and avoid manual file transfers. This enables seamless editing and command execution directly on the remote host, integrating the full power of VS Code.
 </TLDR>
 
-
 In this article, we'll explore how to develop directly on a remote server using VS Code, editing files stored on the server without maintaining a local copy or performing manual uploads.
 
 My use case was simple: I needed to run a Python script on a Linux server that could access <Link to="/blog/docker-oracle-database-server">an Oracle database</Link>. However, my local development environment (my computer or a Windows VM) could not reach the database due to network restrictions.
 
 *Two related articles: <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link> to set up the key-based, passwordless connection this extension relies on, and <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers</Link> for the opposite approach — bringing the server's environment to your machine instead of the other way round.*
 
-Let's dive into remote development with VS Code and SSH.
-
 <!-- truncate -->
 
-First, we'll simulate a server locally with Docker so you can learn the workflow safely. Then, we'll repeat the same steps on a real production server.
+## The Result
 
-## Simulate a server locally with Docker
+Once the Remote - SSH extension is connected (covered below), VS Code edits and runs commands directly on the remote host — no upload, no local copy:
+
+![Working on the production server](./images/vscode_ssh_planethoster.webp)
+
+## Why It Works
+
+- No manual file transfer — the editor reads and writes directly on the remote filesystem.
+- The integrated terminal runs on the remote host itself, exactly as if you were logged in via SSH.
+- One tool for both editing and execution — no separate SSH session alongside a separate SFTP client.
+
+Let's dive into remote development with VS Code and SSH.
+
+## Installation — Simulate a Server Locally with Docker
+
+First, we'll simulate a server locally with Docker so you can learn the workflow safely. Then, we'll repeat the same steps on a real production server.
 
 Create a Docker container to act as a Linux SSH server so you can practice connecting from VS Code.
 
@@ -72,6 +84,8 @@ Once connected, run commands like `ls -alh`, `hostname`, or `whoami`.
 <AlertBox variant="info" title="Type `exit` to quit the terminal and return to your host." />
 
 This quick test shows that the container is working and that we can connect to it using SSH.
+
+## More Demos
 
 ### The Remote - SSH extension
 
@@ -129,7 +143,7 @@ We used a local Docker container as an SSH server to simulate remote development
 
 </AlertBox>
 
-## Repeat on a Real Production Server
+### Repeat on a Real Production Server
 
 First, make sure your SSH configuration and keys are in place to connect to the production server.
 
@@ -158,13 +172,13 @@ In VS Code, open the **Remote Explorer** pane and choose `Remotes (Tunnels/SSH)`
 
 ![Connecting to Planethoster](./images/vscode_connecting_planethoster.webp)
 
-![Working on the production server](./images/vscode_ssh_planethoster.webp)
-
-You are now connected to your production server using VS Code and the Remote - SSH extension. If you change any files, you are directly modifying those on the server. There is no longer a need to upload anything.
+You are now connected to your production server using VS Code and the Remote - SSH extension — the exact result shown at the top of this article. If you change any files, you are directly modifying those on the server. There is no longer a need to upload anything.
 
 <AlertBox variant="caution" title="Work carefully on production">
 Editing files directly on a production server is risky—mistakes can cause downtime or data loss. Prefer SSH key authentication, test changes in a staging environment, keep backups, and perform risky operations during maintenance windows.
 </AlertBox>
+
+## Under the Hood (skip this if you just want to use it)
 
 <Details label="Bonus - A word about SSH key pair">
 

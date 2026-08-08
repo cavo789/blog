@@ -28,6 +28,18 @@ Let's add a scheduled GitHub Action (for example, every Monday) to update my [ca
 
 <!-- truncate -->
 
+## The Result
+
+This is not a mockup — it's the actual, live output of the workflow, fetched straight from my [cavo789/cavo789](https://github.com/cavo789/cavo789) README as it stands today:
+
+```html
+<!-- BLOG-POST-LIST:START --><tr><td>Adding Reader Reactions to Your Docusaurus Blog</td><td>https://www.avonture.be/blog/docusaurus-reactions</td></tr><tr><td>AI-Powered Code Tooltips in Docusaurus — Explain Like I'm Five</td><td>https://www.avonture.be/blog/docusaurus-eli5-snippet-tooltips</td></tr><tr><td>Meerkat Mischief: Sprinkling Easter Eggs Across my Blog</td><td>https://www.avonture.be/blog/docusaurus-easter-eggs</td></tr><tr><td>ripgrep — The Search Tool That Changed My WSL2 Workflow</td><td>https://www.avonture.be/blog/ripgrep</td></tr><tr><td>git worktree: Work on Two Branches at the Same Time</td><td>https://www.avonture.be/blog/git-worktree</td></tr><!-- ... 5 more rows ... --><!-- BLOG-POST-LIST:END -->
+```
+
+Nine real articles, injected automatically between the two comment tags — exactly the `<tr><td>$title</td><td>$url</td></tr>` template from the workflow below, populated from the live RSS feed with no manual edit.
+
+## Create the workflow YAML file
+
 So, just to make things clear:
 
 - Once a week, I want the `README.md` file in my [cavo789](https://github.com/cavo789/cavo789) repo to be updated automatically.
@@ -36,8 +48,6 @@ So, just to make things clear:
 Let's start by cloning the repository.
 
 So, in my case, I'll clone my [cavo789](https://github.com/cavo789/cavo789) repo on my disk then start VSCode to edit it.
-
-## Create the workflow YAML file
 
 I have to create a GitHub action (so I should create the `.github/workflows` folder if not yet present).
 
@@ -118,7 +128,7 @@ Let's now see how it can be used:
 
 <Snippet filename="README.md" source="./files/readme.txt" />
 
-As you can see, there is a `<!-- BLOG-POST-LIST:START -->`  and `<!-- BLOG-POST-LIST:END -->` block in my file.
+As you can see, there is a `<!-- BLOG-POST-LIST:START -->`  and `<!-- BLOG-POST-LIST:END -->` block in my file — the same two tags the live output at the top of this article was injected between.
 
 And now, not really a secret: the GitHub action will thus generate an HTML string with my 10 articles then inject it in my file by removing the two comment tags and push the change to GitHub.
 

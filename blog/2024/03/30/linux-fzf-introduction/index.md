@@ -5,6 +5,7 @@ date: 2024-03-30
 description: Master the Linux command line with fzf (Fuzzy Finder). Discover its powerful fuzzy search for history (CTRL+R) and file selection (CTRL+T) to boost your productivity.
 authors: [christophe]
 image: /img/v2/linux_tips.webp
+series: Modern CLI tools for your terminal
 mainTag: linux
 tags:
   - bash

@@ -5,6 +5,7 @@ date: 2024-11-11
 description: Easily visualize and document your database model with DrawDB-app. Import SQL files, generate diagrams, and export to PNG, Markdown, Mermaid, and more.
 authors: [christophe]
 image: /img/v2/diagrams.webp
+series: Diagrams as code
 mainTag: database
 tags:
   - database

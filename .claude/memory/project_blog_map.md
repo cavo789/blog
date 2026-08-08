@@ -1,18 +1,22 @@
 ---
 name: project-blog-map
-description: "Exhaustive catalog of 246 published posts + 44 drafts: slug, title, date, mainTag, tags, series — source of truth for inter-article linking"
+description: "Exhaustive catalog of 247 published posts + 43 drafts: slug, title, date, mainTag, tags, series — source of truth for inter-article linking"
 metadata:
   node_type: memory
   type: project
   originSessionId: 137dd1fa-bddd-4742-a98b-57d539016a7c
-  modified: 2026-07-27T17:38:08.503Z
+  modified: 2026-08-08T09:59:17.790Z
 ---
 
 # Blog Map — Source of Truth
 
-> **246 published posts** · **44 drafts** (+1 code-only staging folder: `ollama-refactor-code`) · Period: 2023-11-02 → 2026-08-03
+> **247 published posts** · **43 drafts** (+1 code-only staging folder: `ollama-refactor-code`) · Period: 2023-11-02 → 2026-08-10
 > Primary author: christophe · Language: en
-> AI-assisted posts: 18
+> AI-assisted posts: 19
+> Series coverage: 165/247 posts in a series (66.8%), 25 active series — 12 new series added
+> 2026-08-08 from `.todos/DONE/DONE_070-nouvelles-series-articles-orphelins.md`'s orphan-cluster
+> analysis. Those 12 still need a banner image at `static/img/series/<slug>.webp` (they fall back to
+> `/img/default.webp` until then — tracked in a follow-up TODO).
 
 ## Post URL Pattern
 
@@ -42,7 +46,7 @@ MD link : [Title](/blog/<slug>)
 | docusaurus | 15 |
 | excel | 8 |
 | fzf | 2 |
-| git | 4 |
+| git | 5 |
 | github | 5 |
 | gitlab | 3 |
 | joomla | 7 |
@@ -68,16 +72,25 @@ MD link : [Title](/blog/<slug>)
 | wsl | 4 |
 | zsh | 5 |
 
-## Active Series (13)
+## Active Series (25)
 
-### Ollama daily-use functions (1 post)
+### Ollama daily-use functions (2 posts)
 
 - [ai-test: Generate Missing Unit Tests From Your Terminal With a Local LLM](/blog/ollama-test-generator) — 2026-08-03
+- [ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit](/blog/ollama-git-precommit) — 2026-08-10 ★AI
 
 ### Bluesky Docusaurus component (2 posts)
 
 - [Create our own Docusaurus React component and provide a "Share on Bluesky" button](/blog/docusaurus-bluesky-share) — 2025-08-13
 - [Show Bluesky comments on Docusaurus and, too, number of likes/reposts](/blog/docusaurus-bluesky-comments) — 2025-08-18
+
+### Building and testing REST APIs (5 posts)
+
+- [Don't query your PostgreSQL db anymore, prefer PostgREST](/blog/docker-postgrest) — 2024-01-06
+- [Using Postman to play with API](/blog/postman) — 2024-05-08
+- [Python - Fast API - Create your JSON API in Python in one minute](/blog/python-fastapi) — 2025-02-09
+- [API REST - How to write good APIs](/blog/php-api-tips) — 2025-05-19
+- [Bruno - A postman-like tool - GUI and CLI](/blog/bruno) — 2025-08-07
 
 ### Coding using a devcontainer (6 posts)
 
@@ -114,6 +127,27 @@ MD link : [Title](/blog/<slug>)
 - [AI-Powered Code Tooltips in Docusaurus — Explain Like I'm Five](/blog/docusaurus-eli5-snippet-tooltips) — 2026-07-20 ★AI
 - [Adding Reader Reactions to Your Docusaurus Blog](/blog/docusaurus-reactions) — 2026-07-27 ★AI
 
+### Customize your shell with ZSH (7 posts)
+
+- [Customize your Linux prompt with Powerlevel10k](/blog/powerlevel10k_sandbox) — 2023-12-31
+- [How to install Oh-My-ZSH](/blog/zsh-install) — 2024-03-28
+- [Autosuggestions in the console using ZSH](/blog/zsh-plugin-autosuggestions) — 2024-03-29
+- [Syntax highlighting in the console using ZSH](/blog/zsh-syntax-highlighting) — 2024-03-29
+- [Linux - Working with the history of your last fired actions](/blog/linux-history) — 2024-10-12
+- [ZSH Functions - Customizing Your Shell for Docker Management](/blog/zsh-docker-functions) — 2026-03-02
+- [Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro](/blog/modular-zsh-workflow) — 2026-05-25 ★AI
+
+### Diagrams as code (8 posts)
+
+- [Docker - Diagrams as code](/blog/docker-diagram-as-code) — 2023-11-24
+- [Build a mind map using Docker and Markdown](/blog/docker-mindmap) — 2023-12-16
+- [Rendering a JSON file as a mind map](/blog/json-crack) — 2024-01-18
+- [How to generate a graph from compose.yaml](/blog/docker-compose-viz) — 2024-06-08
+- [Drawdb-app - Render your database model as png, markdown, mermaid, ...](/blog/drawdb-app) — 2024-11-11
+- [Python - Generate flows using pydot](/blog/python-pydot) — 2024-12-18
+- [Getting a more attractive mindmap with Markmap and Quarto](/blog/vscode-docker-markmap) — 2025-07-25
+- [Documentation as Code - Transform Your Infrastructure into Beautiful Diagrams with Python and Mermaid](/blog/docker-python-mermaid) — 2026-04-20 ★AI
+
 ### Discovering Docusaurus (3 posts)
 
 - [Getting the number of published posts](/blog/docusaurus-number-of-posts) — 2024-01-08
@@ -148,6 +182,17 @@ MD link : [Title](/blog/<slug>)
 - [MS Excel - Connect to a SQL Server database, run a query and get the results](/blog/vba-excel-sql-server) — 2024-04-05
 - [MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step](/blog/vba-excel-sql-server-part-2) — 2025-03-16
 
+### Modern CLI tools for your terminal (8 posts)
+
+- [The jq utility for Linux](/blog/linux-jq) — 2023-12-13
+- [The xmlstarlet utility for Linux](/blog/linux-xmlstarlet) — 2023-12-13
+- [Introduction to fzf - Fuzzy Finder](/blog/linux-fzf-introduction) — 2024-03-30
+- [Let's revisit the ls command thanks to eza](/blog/linux-eza) — 2024-07-23
+- [Master your ssh command and select the host from a list](/blog/ssh-with-fuzzy-finder) — 2026-04-27
+- [FZF + ripgrep: Interactive Code Search with Live Preview](/blog/fzf-ripgrep) — 2026-06-08 ★AI
+- [delta: a Syntax-Highlighted Pager for git diff](/blog/git-delta) — 2026-06-15 ★AI
+- [ripgrep — The Search Tool That Changed My WSL2 Workflow](/blog/ripgrep) — 2026-07-06 ★AI
+
 ### Running Docusaurus using Docker (2 posts)
 
 - [Encapsulate an entire Docusaurus site in a Docker image](/blog/docker-docusaurus-prod) — 2024-04-28
@@ -158,6 +203,95 @@ MD link : [Title](/blog/<slug>)
 - [Running Oracle Database Server as a Docker container](/blog/docker-oracle-database-server) — 2025-04-04
 - [Transform an Oracle DB as OpenData using Oracle REST Data Services](/blog/docker-oracle-ords) — 2025-04-11
 - [Accessing an Oracle database using .Net, NodeJS, PHP and Python](/blog/oracle-dotnet-nodejs-php-python) — 2025-04-18
+
+### Self-host your own services (7 posts)
+
+- [Self-hosted monitoring tool](/blog/docker_uptime_kuma) — 2023-12-05
+- [How to self-host Matomo](/blog/matomo-install) — 2024-01-28
+- [Install LimeSurvey using Docker](/blog/docker-limesurvey) — 2024-02-01
+- [Heimdall - Web dashboard](/blog/heimdall-dashboard) — 2025-02-01
+- [Excel Formula Beautifier](/blog/excel-formatter) — 2025-05-25
+- [karakeep - The Bookmark Everything App](/blog/docker-karakeep) — 2025-07-18
+- [Self-hosted note-taking application](/blog/docker-memos) — 2025-07-29
+
+### SSH - From your first key to remote development (7 posts)
+
+- [GitHub - Connect your account using SSH and start to work with git@ protocol](/blog/github-connect-using-ssh) — 2024-03-09
+- [Docker secrets - Using your SSH key during the build process](/blog/docker-use-ssh-during-build) — 2024-09-03
+- [Using sftp on the command line, with or without a proxy](/blog/linux-sftp-cli) — 2024-11-05
+- [SSH - Autosuggestions with ZSH](/blog/zsh-plugin-ssh-config-suggestions) — 2025-02-13
+- [SSH - Launch a terminal on your session without having to authenticate yourself](/blog/linux-ssh-scp) — 2025-05-08
+- [How to connect to your hosting server using SSH](/blog/connect-using-ssh-to-your-hosting-server) — 2025-12-29
+- [SSH Remote development with VSCode](/blog/vscode-remote-ssh) — 2026-01-05
+
+### VBA & MS Office automation (10 posts)
+
+- [MS Office - How to create a ribbon in Excel](/blog/vba-excel-ribbon) — 2023-12-10
+- [MS Excel - How to call a SOAP web service](/blog/vba-excel-call-soap-webservice) — 2024-02-21
+- [How to optimize an existing MS Access database](/blog/msaccess-optimize) — 2024-03-09
+- [VBS - Retrieve the list of fields in a MS Access Database](/blog/vbs-msaccess-get-fields) — 2024-03-09
+- [VBS - Auto update script](/blog/vbs-auto-update) — 2024-03-19
+- [Microsoft Outlook - VBA - Save emails as PDF](/blog/outlook-vba-pdf) — 2024-07-10
+- [VBS - Get list of files and generate a CSV](/blog/vbs-files-csv) — 2024-11-28
+- [MS Office - Load dropdown from Excel's range](/blog/vba-excel-ribbon-load) — 2025-02-22
+- [Export MS Access objects](/blog/vba-access-export) — 2025-06-27
+- [MS Excel - Get the list of references used in your modules](/blog/vba-excel-list-references) — 2025-10-27
+
+### VSCode - Tips, extensions and shortcuts (13 posts)
+
+- [Markdown folding not working](/blog/vscode-markdown-code-folding) — 2023-11-03
+- [Start vscode from github.com](/blog/vscode-github-dev) — 2023-11-27
+- [Sticky scroll in vscode](/blog/vscode-sticky-scroll) — 2023-11-27
+- [Autosave feature in VSCode](/blog/vscode-autosave) — 2024-01-20
+- [Error Lens addon for VSCode](/blog/vscode-errorlens) — 2024-03-03
+- [CodeSnap addon for VSCode](/blog/vscode-codesnap) — 2024-04-19
+- [Export the list of extensions you've installed in VSCode](/blog/vscode-export-list-of-extensions) — 2024-04-19
+- [Multiple cursors in vscode](/blog/vscode-multiple-cursors) — 2024-04-19
+- [PHP Getter and Setter in VSCode](/blog/vscode-php-getter-setter) — 2024-06-16
+- [Working with regions in VSCode](/blog/vscode-regions) — 2024-08-05
+- [Using the JetBrains Mono font in vscode](/blog/vscode-jetbrains-font) — 2024-09-19
+- [Todo Tree in VSCode](/blog/vscode-todo-tree) — 2025-03-07
+- [Do I need VSCode on my machine to use it?](/blog/vscode-code-server) — 2025-07-06
+
+### WSL2 - Install, move and use it (6 posts)
+
+- [Opening an RDP connection to the Linux local instance](/blog/wslg-rpd-connection) — 2023-11-02
+- [Move WSL to another location](/blog/move-wsl-to-another-location) — 2023-11-03
+- [Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer) — 2023-11-03
+- [Starting the default associated Windows program on WSL](/blog/wsl-powershell) — 2023-12-27
+- [Ubuntu - Install from scratch](/blog/ubuntu-install) — 2024-05-20
+- [Discovering Zorin](/blog/zorin) — 2025-12-01
+
+### WinSCP & remote file transfer (8 posts)
+
+- [KeePass - Overriding the URL field](/blog/keepass-overriding-url) — 2023-11-02
+- [WinSCP - Retrieve a stored password](/blog/winscp-retrieve-password) — 2024-01-21
+- [Fatal error was starting Putty after having saved settings](/blog/putty-no-supported-authentication-methods) — 2024-03-30
+- [WinSCP - Synchronize host and remote](/blog/winscp-synchronize-both) — 2024-05-17
+- [FTP - Remove files and folders at light speed](/blog/ftp-erase-files) — 2024-05-25
+- [WinSCP - Visual Basic for Application use](/blog/winscp-vba) — 2024-08-13
+- [WinSCP - Download files with specific extension recursively](/blog/winscp-download-recursively-files) — 2024-08-22
+- [Search your FTP server at lightning speed](/blog/php-grep-searching-at-lightning-speed) — 2025-01-19
+
+### Windows Terminal (4 posts)
+
+- [Windows Terminal](/blog/windows-terminal) — 2024-04-01
+- [Use a background image in your Windows Terminal console](/blog/windows-terminal-background) — 2025-04-24
+- [Windows Terminal - Split Panes](/blog/windows-terminal-split-panes) — 2026-01-12
+- [Windows Terminal - Adding a SSH profile](/blog/windows-terminal-ssh-profile) — 2026-01-19
+
+### Writing better Bash scripts (10 posts)
+
+- [Bash - ASCII art](/blog/bash-ascii-art) — 2023-12-19
+- [Bash - Loading environment variables from a file](/blog/bash-load-env) — 2023-12-19
+- [Bash - Script to add logging features to your script](/blog/bash-logging) — 2024-05-01
+- [Bash - Echo on the console and in a logfile in the same time](/blog/bash-console-log-together) — 2024-05-03
+- [Linux - Sort functions in a Bash script](/blog/linux-sort-functions-in-script) — 2024-07-28
+- [Linux - Compare two versions of the same script](/blog/linux-compare-two-versions-of-the-same-script) — 2024-07-28
+- [Linux - Generate documentation from Bash scripts](/blog/linux-generate-documentation-from-bash-scripts) — 2024-07-29
+- [Linux - Take advantage of the number of CPUs you have; start concurrent jobs](/blog/bash-parallel-task) — 2024-10-06
+- [Linux - Using a progression bar in your script](/blog/bash-progression-bar) — 2024-10-07
+- [Linux - Bash scripts - Running unit tests with bats/bats](/blog/bats-unit-tests) — 2025-07-10
 
 ### code quality (5 posts)
 
@@ -202,11 +336,11 @@ MD link : [Title](/blog/<slug>)
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
 | 2026-05-11 | [Validate your OpenAPI schema against the Belgif REST standards](/blog/belgif-api-linter) | api, code-quality, docker, python |  |
-| 2025-08-07 | [Bruno - A postman-like tool - GUI and CLI](/blog/bruno) | api, docker, tests |  |
-| 2025-05-19 | [API REST - How to write good APIs](/blog/php-api-tips) | api, docker, php |  |
-| 2025-02-09 | [Python - Fast API - Create your JSON API in Python in one minute](/blog/python-fastapi) | api, docker, python |  |
-| 2024-05-08 | [Using Postman to play with API](/blog/postman) | api, code-quality, php, tests |  |
-| 2024-01-06 | [Don't query your PostgreSQL db anymore, prefer PostgREST](/blog/docker-postgrest) | api, database, docker |  |
+| 2025-08-07 | [Bruno - A postman-like tool - GUI and CLI](/blog/bruno) | api, docker, tests | Building and testing REST APIs |
+| 2025-05-19 | [API REST - How to write good APIs](/blog/php-api-tips) | api, docker, php | Building and testing REST APIs |
+| 2025-02-09 | [Python - Fast API - Create your JSON API in Python in one minute](/blog/python-fastapi) | api, docker, python | Building and testing REST APIs |
+| 2024-05-08 | [Using Postman to play with API](/blog/postman) | api, code-quality, php, tests | Building and testing REST APIs |
+| 2024-01-06 | [Don't query your PostgreSQL db anymore, prefer PostgREST](/blog/docker-postgrest) | api, database, docker | Building and testing REST APIs |
 
 ### bash (11 posts)
 
@@ -214,14 +348,14 @@ MD link : [Title](/blog/<slug>)
 |------|-------|------|--------|
 | 2026-04-13 | [Streamline Your Frontend - Minifying Assets with Docker, Bash, and YAML](/blog/assets-minification) | bash, docker |  |
 | 2024-11-24 | [Keep running and count the number of files in a folder using inotifywait](/blog/linux-inotifywait) | bash, linux, python |  |
-| 2024-10-07 | [Linux - Using a progression bar in your script](/blog/bash-progression-bar) | bash, linux |  |
-| 2024-10-06 | [Linux - Take advantage of the number of CPUs you have; start concurrent jobs](/blog/bash-parallel-task) | bash, linux |  |
-| 2024-07-29 | [Linux - Generate documentation from Bash scripts](/blog/linux-generate-documentation-from-bash-scripts) | bash, database, linux |  |
-| 2024-07-28 | [Linux - Sort functions in a Bash script](/blog/linux-sort-functions-in-script) | bash, database, linux |  |
-| 2024-05-03 | [Bash - Echo on the console and in a logfile in the same time](/blog/bash-console-log-together) | bash, linux |  |
-| 2024-05-01 | [Bash - Script to add logging features to your script](/blog/bash-logging) | bash, linux |  |
-| 2023-12-19 | [Bash - ASCII art](/blog/bash-ascii-art) | bash, linux |  |
-| 2023-12-19 | [Bash - Loading environment variables from a file](/blog/bash-load-env) | bash, linux |  |
+| 2024-10-07 | [Linux - Using a progression bar in your script](/blog/bash-progression-bar) | bash, linux | Writing better Bash scripts |
+| 2024-10-06 | [Linux - Take advantage of the number of CPUs you have; start concurrent jobs](/blog/bash-parallel-task) | bash, linux | Writing better Bash scripts |
+| 2024-07-29 | [Linux - Generate documentation from Bash scripts](/blog/linux-generate-documentation-from-bash-scripts) | bash, database, linux | Writing better Bash scripts |
+| 2024-07-28 | [Linux - Sort functions in a Bash script](/blog/linux-sort-functions-in-script) | bash, database, linux | Writing better Bash scripts |
+| 2024-05-03 | [Bash - Echo on the console and in a logfile in the same time](/blog/bash-console-log-together) | bash, linux | Writing better Bash scripts |
+| 2024-05-01 | [Bash - Script to add logging features to your script](/blog/bash-logging) | bash, linux | Writing better Bash scripts |
+| 2023-12-19 | [Bash - ASCII art](/blog/bash-ascii-art) | bash, linux | Writing better Bash scripts |
+| 2023-12-19 | [Bash - Loading environment variables from a file](/blog/bash-load-env) | bash, linux | Writing better Bash scripts |
 | 2023-12-12 | [Get health information from your running containers](/blog/docker-healthy) | bash, docker |  |
 
 ### bluesky (2 posts)
@@ -266,15 +400,15 @@ MD link : [Title](/blog/<slug>)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2024-07-23 | [Let's revisit the ls command thanks to eza](/blog/linux-eza) | customization, linux |  |
-| 2023-12-31 | [Customize your Linux prompt with Powerlevel10k](/blog/powerlevel10k_sandbox) | customization, docker, wsl, zsh |  |
+| 2024-07-23 | [Let's revisit the ls command thanks to eza](/blog/linux-eza) | customization, linux | Modern CLI tools for your terminal |
+| 2023-12-31 | [Customize your Linux prompt with Powerlevel10k](/blog/powerlevel10k_sandbox) | customization, docker, wsl, zsh | Customize your shell with ZSH |
 
 ### database (4 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
 | 2025-06-20 | [Discovering Pentaho, a ETL program](/blog/pentaho-discovery) | database, msaccess, vba |  |
-| 2024-11-11 | [Drawdb-app - Render your database model as png, markdown, mermaid, ...](/blog/drawdb-app) | database, doc-as-code |  |
+| 2024-11-11 | [Drawdb-app - Render your database model as png, markdown, mermaid, ...](/blog/drawdb-app) | database, doc-as-code | Diagrams as code |
 | 2024-01-05 | [Play with Microsoft SQL Server 2022 using Docker](/blog/docker-mssql-server) | database, docker |  |
 | 2023-12-27 | [Using Adminer, pgadmin or phpmyadmin to access your Docker database container](/blog/docker-adminer-pgadmin-phpmyadmin) | database, docker |  |
 
@@ -288,13 +422,13 @@ MD link : [Title](/blog/<slug>)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2026-04-20 | [Documentation as Code - Transform Your Infrastructure into Beautiful Diagrams with Python and Mermaid](/blog/docker-python-mermaid) ★ | doc-as-code, docker, python |  |
+| 2026-04-20 | [Documentation as Code - Transform Your Infrastructure into Beautiful Diagrams with Python and Mermaid](/blog/docker-python-mermaid) ★ | doc-as-code, docker, python | Diagrams as code |
 | 2026-03-16 | [Quarto - How I Built a Self-Documenting Ecosystem for 50+ Projects](/blog/quarto-industrialisation) ★ | doc-as-code, quarto | Discovering Quarto |
-| 2025-07-25 | [Getting a more attractive mindmap with Markmap and Quarto](/blog/vscode-docker-markmap) | doc-as-code, docker, quarto, vscode |  |
-| 2024-06-08 | [How to generate a graph from compose.yaml](/blog/docker-compose-viz) | doc-as-code, docker |  |
-| 2024-01-18 | [Rendering a JSON file as a mind map](/blog/json-crack) | doc-as-code, linux, vscode |  |
-| 2023-12-16 | [Build a mind map using Docker and Markdown](/blog/docker-mindmap) | doc-as-code, docker |  |
-| 2023-11-24 | [Docker - Diagrams as code](/blog/docker-diagram-as-code) | doc-as-code, docker |  |
+| 2025-07-25 | [Getting a more attractive mindmap with Markmap and Quarto](/blog/vscode-docker-markmap) | doc-as-code, docker, quarto, vscode | Diagrams as code |
+| 2024-06-08 | [How to generate a graph from compose.yaml](/blog/docker-compose-viz) | doc-as-code, docker | Diagrams as code |
+| 2024-01-18 | [Rendering a JSON file as a mind map](/blog/json-crack) | doc-as-code, linux, vscode | Diagrams as code |
+| 2023-12-16 | [Build a mind map using Docker and Markdown](/blog/docker-mindmap) | doc-as-code, docker | Diagrams as code |
+| 2023-11-24 | [Docker - Diagrams as code](/blog/docker-diagram-as-code) | doc-as-code, docker | Diagrams as code |
 
 ### docker (21 posts)
 
@@ -315,7 +449,7 @@ MD link : [Title](/blog/<slug>)
 | 2023-12-28 | [Quickly install WordPress in just three commands](/blog/docker-wordpress) | docker, php |  |
 | 2023-12-27 | [Docker inspect - Retrieve network's information](/blog/docker-inspect) | docker, linux |  |
 | 2023-12-22 | [Update php.ini when using a Docker image](/blog/docker-php-ini) | apache, docker, joomla |  |
-| 2023-12-05 | [Self-hosted monitoring tool](/blog/docker_uptime_kuma) | docker, self-hosted |  |
+| 2023-12-05 | [Self-hosted monitoring tool](/blog/docker_uptime_kuma) | docker, self-hosted | Self-host your own services |
 | 2023-12-01 | [Play with Docker and Pascal](/blog/docker-pascal) | docker |  |
 | 2023-11-30 | [Play with Docker and Assembly programming language](/blog/docker-assembly) | docker |  |
 | 2023-11-28 | [Play with Docker and Java](/blog/docker-java) | docker |  |
@@ -345,28 +479,29 @@ MD link : [Title](/blog/<slug>)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2025-10-27 | [MS Excel - Get the list of references used in your modules](/blog/vba-excel-list-references) | excel, vba |  |
-| 2025-05-25 | [Excel Formula Beautifier](/blog/excel-formatter) | excel, self-hosted |  |
+| 2025-10-27 | [MS Excel - Get the list of references used in your modules](/blog/vba-excel-list-references) | excel, vba | VBA & MS Office automation |
+| 2025-05-25 | [Excel Formula Beautifier](/blog/excel-formatter) | excel, self-hosted | Self-host your own services |
 | 2025-03-16 | [MS Excel - Connect to a SQL Server database, run a query and get the results - Step by step](/blog/vba-excel-sql-server-part-2) | database, docker, excel, vba | MS Excel - Connect to a SQL Server database |
-| 2025-02-22 | [MS Office - Load dropdown from Excel's range](/blog/vba-excel-ribbon-load) | excel, vba, vscode |  |
+| 2025-02-22 | [MS Office - Load dropdown from Excel's range](/blog/vba-excel-ribbon-load) | excel, vba, vscode | VBA & MS Office automation |
 | 2024-12-08 | [Markdown - Convert Excel ranges to Markdown tables](/blog/markdown-xls2md) | excel, markdown |  |
 | 2024-04-05 | [MS Excel - Connect to a SQL Server database, run a query and get the results](/blog/vba-excel-sql-server) | database, excel, vba | MS Excel - Connect to a SQL Server database |
-| 2024-02-21 | [MS Excel - How to call a SOAP web service](/blog/vba-excel-call-soap-webservice) | api, excel, vba |  |
-| 2023-12-10 | [MS Office - How to create a ribbon in Excel](/blog/vba-excel-ribbon) | excel, vba, vscode |  |
+| 2024-02-21 | [MS Excel - How to call a SOAP web service](/blog/vba-excel-call-soap-webservice) | api, excel, vba | VBA & MS Office automation |
+| 2023-12-10 | [MS Office - How to create a ribbon in Excel](/blog/vba-excel-ribbon) | excel, vba, vscode | VBA & MS Office automation |
 
 ### fzf (2 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2026-06-08 | [FZF + ripgrep: Interactive Code Search with Live Preview](/blog/fzf-ripgrep) ★ | bash, fzf, linux, zsh |  |
-| 2026-05-25 | [Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro](/blog/modular-zsh-workflow) ★ | fzf, zsh |  |
+| 2026-06-08 | [FZF + ripgrep: Interactive Code Search with Live Preview](/blog/fzf-ripgrep) ★ | bash, fzf, linux, zsh | Modern CLI tools for your terminal |
+| 2026-05-25 | [Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro](/blog/modular-zsh-workflow) ★ | fzf, zsh | Customize your shell with ZSH |
 
-### git (4 posts)
+### git (5 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
+| 2026-08-10 | [ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit](/blog/ollama-git-precommit) ★ | git, ollama, zsh, ai, security, code-quality | Ollama daily-use functions |
 | 2026-06-29 | [git worktree: Work on Two Branches at the Same Time](/blog/git-worktree) ★ | git, linux, bash, zsh |  |
-| 2026-06-15 | [delta: a Syntax-Highlighted Pager for git diff](/blog/git-delta) ★ | git, linux, bash |  |
+| 2026-06-15 | [delta: a Syntax-Highlighted Pager for git diff](/blog/git-delta) ★ | git, linux, bash | Modern CLI tools for your terminal |
 | 2026-04-06 | [Showing the last 3 updated branches when you jump in a git repo](/blog/git-branches-gst) | git, zsh |  |
 | 2024-09-11 | [Git - Some tips for your .gitconfig file](/blog/git-config) | git, wsl |  |
 
@@ -375,8 +510,8 @@ MD link : [Title](/blog/<slug>)
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
 | 2026-02-09 | [Automate your GitHub README with your latest blog posts](/blog/github-profile-last-blogposts) | docusaurus, github |  |
-| 2024-03-19 | [VBS - Auto update script](/blog/vbs-auto-update) | github, vba, windows |  |
-| 2024-03-09 | [Github - Connect your account using SSH and start to work with git@ protocol](/blog/github-connect-using-ssh) | github, ssh |  |
+| 2024-03-19 | [VBS - Auto update script](/blog/vbs-auto-update) | github, vba, windows | VBA & MS Office automation |
+| 2024-03-09 | [Github - Connect your account using SSH and start to work with git@ protocol](/blog/github-connect-using-ssh) | github, ssh | SSH - From your first key to remote development |
 | 2024-02-18 | [Github - How to find email addresses for most users](/blog/github-retrieve-email) | github, linux |  |
 | 2024-01-14 | [GitHub - Use Actions to deploy this blog](/blog/github-action) | docusaurus, github |  |
 
@@ -412,23 +547,23 @@ MD link : [Title](/blog/<slug>)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2026-04-27 | [Master your ssh command and select the host from a list](/blog/ssh-with-fuzzy-finder) | bash, customization, fzf, linux |  |
-| 2025-12-01 | [Discovering Zorin](/blog/zorin) | linux, wsl |  |
+| 2026-04-27 | [Master your ssh command and select the host from a list](/blog/ssh-with-fuzzy-finder) | bash, customization, fzf, linux | Modern CLI tools for your terminal |
+| 2025-12-01 | [Discovering Zorin](/blog/zorin) | linux, wsl | WSL2 - Install, move and use it |
 | 2025-10-20 | [CaesiumCLT – Effortlessly compress your images right on your device](/blog/reduce-image-size) | docker, linux |  |
 | 2024-11-19 | [JSON - Faker & Mockup](/blog/json-faker) | linux, python, vscode |  |
 | 2024-11-08 | [JSON - Online linter](/blog/json-lint) | code-quality, linux, vscode |  |
 | 2024-10-24 | [Start lubuntu Desktop in Docker](/blog/docker-lubuntu) | docker, linux |  |
-| 2024-10-12 | [Linux - Working with the history of your last fired actions](/blog/linux-history) | linux, zsh |  |
-| 2024-07-28 | [Linux - Compare two versions of the same script](/blog/linux-compare-two-versions-of-the-same-script) | bash, database, linux |  |
+| 2024-10-12 | [Linux - Working with the history of your last fired actions](/blog/linux-history) | linux, zsh | Customize your shell with ZSH |
+| 2024-07-28 | [Linux - Compare two versions of the same script](/blog/linux-compare-two-versions-of-the-same-script) | bash, database, linux | Writing better Bash scripts |
 | 2024-07-19 | [Linux - Comparing two folders/files in the console](/blog/linux-diff-file-folder) | bash, linux |  |
-| 2024-05-25 | [FTP - Remove files and folders at light speed](/blog/ftp-erase-files) | linux, ssh |  |
-| 2024-05-20 | [Ubuntu - Install from scratch](/blog/ubuntu-install) | linux, wsl |  |
-| 2024-03-30 | [Introduction to fzf - Fuzzy Finder](/blog/linux-fzf-introduction) | bash, customization, fzf, linux |  |
+| 2024-05-25 | [FTP - Remove files and folders at light speed](/blog/ftp-erase-files) | linux, ssh | WinSCP & remote file transfer |
+| 2024-05-20 | [Ubuntu - Install from scratch](/blog/ubuntu-install) | linux, wsl | WSL2 - Install, move and use it |
+| 2024-03-30 | [Introduction to fzf - Fuzzy Finder](/blog/linux-fzf-introduction) | bash, customization, fzf, linux | Modern CLI tools for your terminal |
 | 2024-01-26 | [Compare environment files in the Linux console](/blog/compare-env-files-cli) | bash, docker, linux |  |
 | 2024-01-26 | [Batch edit of environment file](/blog/update-env-files-cli) | bash, docker, linux |  |
 | 2024-01-25 | [Search and replace (or add) using sed](/blog/linux-sed-tips) | bash, docker, linux |  |
-| 2023-12-13 | [The jq utility for Linux](/blog/linux-jq) | bash, linux |  |
-| 2023-12-13 | [The xmlstarlet utility for Linux](/blog/linux-xmlstarlet) | bash, linux |  |
+| 2023-12-13 | [The jq utility for Linux](/blog/linux-jq) | bash, linux | Modern CLI tools for your terminal |
+| 2023-12-13 | [The xmlstarlet utility for Linux](/blog/linux-xmlstarlet) | bash, linux | Modern CLI tools for your terminal |
 
 ### makefile (3 posts)
 
@@ -449,9 +584,9 @@ MD link : [Title](/blog/<slug>)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2025-06-27 | [Export MS Access objects](/blog/vba-access-export) | database, msaccess, vba |  |
-| 2024-03-09 | [How to optimize an existing MS Access database](/blog/msaccess-optimize) | database, msaccess, vba |  |
-| 2024-03-09 | [VBS - Retrieve the list of fields in a MS Access Database](/blog/vbs-msaccess-get-fields) | database, msaccess, vba |  |
+| 2025-06-27 | [Export MS Access objects](/blog/vba-access-export) | database, msaccess, vba | VBA & MS Office automation |
+| 2024-03-09 | [How to optimize an existing MS Access database](/blog/msaccess-optimize) | database, msaccess, vba | VBA & MS Office automation |
+| 2024-03-09 | [VBS - Retrieve the list of fields in a MS Access Database](/blog/vbs-msaccess-get-fields) | database, msaccess, vba | VBA & MS Office automation |
 
 ### oracle (3 posts)
 
@@ -479,7 +614,7 @@ MD link : [Title](/blog/<slug>)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2024-12-18 | [Python - Generate flows using pydot](/blog/python-pydot) | doc-as-code, docker, python |  |
+| 2024-12-18 | [Python - Generate flows using pydot](/blog/python-pydot) | doc-as-code, docker, python | Diagrams as code |
 | 2024-12-06 | [Pandas - Merge two or more files and create a merged one](/blog/python-pandas-merge) | excel, python |  |
 | 2024-12-02 | [Docker - Even easier setup of Python](/blog/docker-python-devcontainer-microsoft) | devcontainer, docker, python | Coding using a devcontainer |
 | 2024-12-01 | [Docker - Easy setup of Python under Windows](/blog/docker-python-devcontainer-windows) | devcontainer, docker, python | Coding using a devcontainer |
@@ -512,12 +647,12 @@ MD link : [Title](/blog/<slug>)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2025-07-29 | [Self-hosted note-taking application](/blog/docker-memos) | docker, self-hosted |  |
-| 2025-07-18 | [karakeep - The Bookmark Everything App](/blog/docker-karakeep) | docker, self-hosted |  |
-| 2025-02-01 | [Heimdall - Web dashboard](/blog/heimdall-dashboard) | docker, self-hosted |  |
+| 2025-07-29 | [Self-hosted note-taking application](/blog/docker-memos) | docker, self-hosted | Self-host your own services |
+| 2025-07-18 | [karakeep - The Bookmark Everything App](/blog/docker-karakeep) | docker, self-hosted | Self-host your own services |
+| 2025-02-01 | [Heimdall - Web dashboard](/blog/heimdall-dashboard) | docker, self-hosted | Self-host your own services |
 | 2024-07-17 | [SQL - Formatting tool](/blog/sql-formatter) | code-quality, database, self-hosted |  |
-| 2024-02-01 | [Install LimeSurvey using Docker](/blog/docker-limesurvey) | docker, self-hosted |  |
-| 2024-01-28 | [How to self-host Matomo](/blog/matomo-install) | docusaurus, self-hosted |  |
+| 2024-02-01 | [Install LimeSurvey using Docker](/blog/docker-limesurvey) | docker, self-hosted | Self-host your own services |
+| 2024-01-28 | [How to self-host Matomo](/blog/matomo-install) | docusaurus, self-hosted | Self-host your own services |
 | 2024-01-28 | [Exterminate them all, kill spam using GitHub Actions](/blog/planethoster-n0c-spam-roundcube-action) | github, linux, self-hosted |  |
 | 2024-01-27 | [Exterminate them all, fight spam directly at PlanetHoster - N0C](/blog/planethoster-n0c-spam) | linux, self-hosted |  |
 | 2024-01-23 | [Exterminate them all, fight spam directly at your host company](/blog/cpanel-spam) | linux, self-hosted |  |
@@ -526,12 +661,12 @@ MD link : [Title](/blog/<slug>)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2026-01-05 | [SSH Remote development with VSCode](/blog/vscode-remote-ssh) | self-hosted, ssh, vscode |  |
-| 2025-12-29 | [How to connect to your hosting  server using SSH](/blog/connect-using-ssh-to-your-hosting-server) | self-hosted, ssh |  |
-| 2025-05-08 | [SSH - Launch a terminal on your session without having to authenticate yourself](/blog/linux-ssh-scp) | linux, ssh, winscp |  |
-| 2025-02-13 | [SSH - Autosuggestions with ZSH](/blog/zsh-plugin-ssh-config-suggestions) | customization, linux, ssh, wsl, zsh |  |
-| 2024-11-05 | [Using sftp on the command line, with or without a proxy](/blog/linux-sftp-cli) | linux, ssh |  |
-| 2024-09-03 | [Docker secrets - Using your SSH key during the build process](/blog/docker-use-ssh-during-build) | docker, git, github, ssh |  |
+| 2026-01-05 | [SSH Remote development with VSCode](/blog/vscode-remote-ssh) | self-hosted, ssh, vscode | SSH - From your first key to remote development |
+| 2025-12-29 | [How to connect to your hosting  server using SSH](/blog/connect-using-ssh-to-your-hosting-server) | self-hosted, ssh | SSH - From your first key to remote development |
+| 2025-05-08 | [SSH - Launch a terminal on your session without having to authenticate yourself](/blog/linux-ssh-scp) | linux, ssh, winscp | SSH - From your first key to remote development |
+| 2025-02-13 | [SSH - Autosuggestions with ZSH](/blog/zsh-plugin-ssh-config-suggestions) | customization, linux, ssh, wsl, zsh | SSH - From your first key to remote development |
+| 2024-11-05 | [Using sftp on the command line, with or without a proxy](/blog/linux-sftp-cli) | linux, ssh | SSH - From your first key to remote development |
+| 2024-09-03 | [Docker secrets - Using your SSH key during the build process](/blog/docker-use-ssh-during-build) | docker, git, github, ssh | SSH - From your first key to remote development |
 
 ### ssl (2 posts)
 
@@ -545,7 +680,7 @@ MD link : [Title](/blog/<slug>)
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
 | 2025-08-30 | [Writing functional tests with Pest](/blog/pest-functional-testing) | component, laravel, php, tests | Functional testing |
-| 2025-07-10 | [Linux - Bash scripts - Running unit tests with bats/bats](/blog/bats-unit-tests) | bash, linux, tests |  |
+| 2025-07-10 | [Linux - Bash scripts - Running unit tests with bats/bats](/blog/bats-unit-tests) | bash, linux, tests | Writing better Bash scripts |
 | 2025-03-30 | [Introduction to Cypress](/blog/cypress) | docker, nodejs, react, tests | Functional testing |
 | 2024-09-27 | [Write PHP unit tests using Pest](/blog/pest_tips) | code-quality, laravel, php, tests, vscode |  |
 | 2024-06-24 | [Introduction to Behat](/blog/behat-introduction) | docker, php, tests | Functional testing |
@@ -554,80 +689,80 @@ MD link : [Title](/blog/<slug>)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2024-11-28 | [VBS - Get list of files and generate a CSV](/blog/vbs-files-csv) | vba, windows |  |
+| 2024-11-28 | [VBS - Get list of files and generate a CSV](/blog/vbs-files-csv) | vba, windows | VBA & MS Office automation |
 
 ### vscode (13 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2025-07-06 | [Do I need VSCode on my machine to use it?](/blog/vscode-code-server) | docker, vscode |  |
-| 2025-03-07 | [Todo Tree in VSCode](/blog/vscode-todo-tree) | code-quality, vscode |  |
-| 2024-09-19 | [Using the JetBrains Mono font in vscode](/blog/vscode-jetbrains-font) | customization, vscode |  |
-| 2024-08-05 | [Working with regions in VSCode](/blog/vscode-regions) | php, vscode |  |
-| 2024-06-16 | [PHP Getter and Setter in VSCode](/blog/vscode-php-getter-setter) | php, vscode |  |
-| 2024-04-19 | [CodeSnap addon for VSCode](/blog/vscode-codesnap) | markdown, vscode |  |
-| 2024-04-19 | [Export the list of extensions you've installed in VSCode](/blog/vscode-export-list-of-extensions) | linux, vscode |  |
-| 2024-04-19 | [Multiple cursors in vscode](/blog/vscode-multiple-cursors) | markdown, vscode |  |
-| 2024-03-03 | [Error Lens addon for VSCode](/blog/vscode-errorlens) | code-quality, vscode |  |
-| 2024-01-20 | [Autosave feature in VSCode](/blog/vscode-autosave) | markdown, vscode |  |
-| 2023-11-27 | [Start vscode from github.com](/blog/vscode-github-dev) | github, vscode |  |
-| 2023-11-27 | [Sticky scroll in vscode](/blog/vscode-sticky-scroll) | php, vscode |  |
-| 2023-11-03 | [Markdown folding not working](/blog/vscode-markdown-code-folding) | markdown, vscode |  |
+| 2025-07-06 | [Do I need VSCode on my machine to use it?](/blog/vscode-code-server) | docker, vscode | VSCode - Tips, extensions and shortcuts |
+| 2025-03-07 | [Todo Tree in VSCode](/blog/vscode-todo-tree) | code-quality, vscode | VSCode - Tips, extensions and shortcuts |
+| 2024-09-19 | [Using the JetBrains Mono font in vscode](/blog/vscode-jetbrains-font) | customization, vscode | VSCode - Tips, extensions and shortcuts |
+| 2024-08-05 | [Working with regions in VSCode](/blog/vscode-regions) | php, vscode | VSCode - Tips, extensions and shortcuts |
+| 2024-06-16 | [PHP Getter and Setter in VSCode](/blog/vscode-php-getter-setter) | php, vscode | VSCode - Tips, extensions and shortcuts |
+| 2024-04-19 | [CodeSnap addon for VSCode](/blog/vscode-codesnap) | markdown, vscode | VSCode - Tips, extensions and shortcuts |
+| 2024-04-19 | [Export the list of extensions you've installed in VSCode](/blog/vscode-export-list-of-extensions) | linux, vscode | VSCode - Tips, extensions and shortcuts |
+| 2024-04-19 | [Multiple cursors in vscode](/blog/vscode-multiple-cursors) | markdown, vscode | VSCode - Tips, extensions and shortcuts |
+| 2024-03-03 | [Error Lens addon for VSCode](/blog/vscode-errorlens) | code-quality, vscode | VSCode - Tips, extensions and shortcuts |
+| 2024-01-20 | [Autosave feature in VSCode](/blog/vscode-autosave) | markdown, vscode | VSCode - Tips, extensions and shortcuts |
+| 2023-11-27 | [Start vscode from github.com](/blog/vscode-github-dev) | github, vscode | VSCode - Tips, extensions and shortcuts |
+| 2023-11-27 | [Sticky scroll in vscode](/blog/vscode-sticky-scroll) | php, vscode | VSCode - Tips, extensions and shortcuts |
+| 2023-11-03 | [Markdown folding not working](/blog/vscode-markdown-code-folding) | markdown, vscode | VSCode - Tips, extensions and shortcuts |
 
 ### windows (3 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
 | 2025-03-02 | [Enable case sensitivity for filenames under DOS](/blog/dos-case-sensitive) | windows |  |
-| 2024-07-10 | [Microsoft Outlook - VBA - Save emails as PDF](/blog/outlook-vba-pdf) | vba, windows |  |
+| 2024-07-10 | [Microsoft Outlook - VBA - Save emails as PDF](/blog/outlook-vba-pdf) | vba, windows | VBA & MS Office automation |
 | 2023-12-14 | [Update all out-of-date Windows programs in batch](/blog/windows-winget) | customization, windows |  |
 
 ### windows-terminal (4 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2026-01-19 | [Windows Terminal - Adding a SSH profile](/blog/windows-terminal-ssh-profile) | customization, windows, windows-terminal, wsl |  |
-| 2026-01-12 | [Windows Terminal - Split Panes](/blog/windows-terminal-split-panes) | customization, windows-terminal, wsl |  |
-| 2025-04-24 | [Use a background image in your Windows Terminal console](/blog/windows-terminal-background) | customization, windows, windows-terminal, wsl |  |
-| 2024-04-01 | [Windows Terminal](/blog/windows-terminal) | customization, windows, windows-terminal, wsl |  |
+| 2026-01-19 | [Windows Terminal - Adding a SSH profile](/blog/windows-terminal-ssh-profile) | customization, windows, windows-terminal, wsl | Windows Terminal |
+| 2026-01-12 | [Windows Terminal - Split Panes](/blog/windows-terminal-split-panes) | customization, windows-terminal, wsl | Windows Terminal |
+| 2025-04-24 | [Use a background image in your Windows Terminal console](/blog/windows-terminal-background) | customization, windows, windows-terminal, wsl | Windows Terminal |
+| 2024-04-01 | [Windows Terminal](/blog/windows-terminal) | customization, windows, windows-terminal, wsl | Windows Terminal |
 
 ### winscp (7 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2025-01-19 | [Search your FTP server at lightning speed](/blog/php-grep-searching-at-lightning-speed) | code-quality, ssh, winscp |  |
-| 2024-08-22 | [WinSCP - Download files with specific extension recursively](/blog/winscp-download-recursively-files) | ssh, winscp |  |
-| 2024-08-13 | [WinSCP - Visual Basic for Application use](/blog/winscp-vba) | vba, winscp |  |
-| 2024-05-17 | [WinSCP - Synchronize host and remote](/blog/winscp-synchronize-both) | self-hosted, windows, winscp |  |
-| 2024-03-30 | [Fatal error was starting Putty after having saved settings](/blog/putty-no-supported-authentication-methods) | ssh, winscp |  |
-| 2024-01-21 | [WinSCP - Retrieve a stored password](/blog/winscp-retrieve-password) | ssh, winscp |  |
-| 2023-11-02 | [KeePass - Overriding the URL field](/blog/keepass-overriding-url) | windows, winscp |  |
+| 2025-01-19 | [Search your FTP server at lightning speed](/blog/php-grep-searching-at-lightning-speed) | code-quality, ssh, winscp | WinSCP & remote file transfer |
+| 2024-08-22 | [WinSCP - Download files with specific extension recursively](/blog/winscp-download-recursively-files) | ssh, winscp | WinSCP & remote file transfer |
+| 2024-08-13 | [WinSCP - Visual Basic for Application use](/blog/winscp-vba) | vba, winscp | WinSCP & remote file transfer |
+| 2024-05-17 | [WinSCP - Synchronize host and remote](/blog/winscp-synchronize-both) | self-hosted, windows, winscp | WinSCP & remote file transfer |
+| 2024-03-30 | [Fatal error was starting Putty after having saved settings](/blog/putty-no-supported-authentication-methods) | ssh, winscp | WinSCP & remote file transfer |
+| 2024-01-21 | [WinSCP - Retrieve a stored password](/blog/winscp-retrieve-password) | ssh, winscp | WinSCP & remote file transfer |
+| 2023-11-02 | [KeePass - Overriding the URL field](/blog/keepass-overriding-url) | windows, winscp | WinSCP & remote file transfer |
 
 ### wsl (4 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2023-12-27 | [Starting the default associated Windows program on WSL](/blog/wsl-powershell) | windows, wsl |  |
-| 2023-11-03 | [Move WSL to another location](/blog/move-wsl-to-another-location) | docker, wsl |  |
-| 2023-11-03 | [Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer) | windows, wsl |  |
-| 2023-11-02 | [Opening a RDP connection to the Linux local instance](/blog/wslg-rpd-connection) | docker, windows, wsl |  |
+| 2023-12-27 | [Starting the default associated Windows program on WSL](/blog/wsl-powershell) | windows, wsl | WSL2 - Install, move and use it |
+| 2023-11-03 | [Move WSL to another location](/blog/move-wsl-to-another-location) | docker, wsl | WSL2 - Install, move and use it |
+| 2023-11-03 | [Open your Linux folder in Windows Explorer](/blog/wsl-windows-explorer) | windows, wsl | WSL2 - Install, move and use it |
+| 2023-11-02 | [Opening a RDP connection to the Linux local instance](/blog/wslg-rpd-connection) | docker, windows, wsl | WSL2 - Install, move and use it |
 
 ### zsh (5 posts)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2026-07-06 | [ripgrep — The Search Tool That Changed My WSL2 Workflow](/blog/ripgrep) ★ | zsh, wsl, bash, linux, fzf |  |
-| 2026-03-02 | [ZSH Functions - Customizing Your Shell for Docker Management](/blog/zsh-docker-functions) | customization, docker, fzf, linux, zsh |  |
-| 2024-03-29 | [Autosuggestions in the console using ZSH](/blog/zsh-plugin-autosuggestions) | customization, linux, wsl, zsh |  |
-| 2024-03-29 | [Syntax highlighting in the console using ZSH](/blog/zsh-syntax-highlighting) | customization, linux, wsl, zsh |  |
-| 2024-03-28 | [How to install Oh-My-ZSH](/blog/zsh-install) | customization, linux, wsl, zsh |  |
+| 2026-07-06 | [ripgrep — The Search Tool That Changed My WSL2 Workflow](/blog/ripgrep) ★ | zsh, wsl, bash, linux, fzf | Modern CLI tools for your terminal |
+| 2026-03-02 | [ZSH Functions - Customizing Your Shell for Docker Management](/blog/zsh-docker-functions) | customization, docker, fzf, linux, zsh | Customize your shell with ZSH |
+| 2024-03-29 | [Autosuggestions in the console using ZSH](/blog/zsh-plugin-autosuggestions) | customization, linux, wsl, zsh | Customize your shell with ZSH |
+| 2024-03-29 | [Syntax highlighting in the console using ZSH](/blog/zsh-syntax-highlighting) | customization, linux, wsl, zsh | Customize your shell with ZSH |
+| 2024-03-28 | [How to install Oh-My-ZSH](/blog/zsh-install) | customization, linux, wsl, zsh | Customize your shell with ZSH |
 
 ## Drafts — Unpublished
 
-> 44 articles (with frontmatter + `draft: true`) in `/opt/docusaurus/.unpublished/`, plus 1 code-only staging
+> 43 articles (with frontmatter + `draft: true`) in `/opt/docusaurus/.unpublished/`, plus 1 code-only staging
 > folder without post written yet (`ollama-refactor-code`). `ollama-test-generator` was published 2026-08-03.
-> `ollama-ai-commit`, `ollama-ai-review`, `ollama-ai-secrets` (3 separate drafts) were **merged** into a
-> single new draft `ollama-git-precommit` ("ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit").
+> `ollama-ai-commit`, `ollama-ai-review`, `ollama-ai-secrets` (3 separate drafts) were **merged** into
+> `ollama-git-precommit`, which was itself published 2026-08-10 as `/blog/ollama-git-precommit`.
 > Publish order for the "Ollama daily-use functions" series + companions, and the separate
 > `lazydocker`→`portainer`→`traefik` chain, is tracked in `/opt/docusaurus/.unpublished/plan.md`
 > (French, internal-only, kept in sync per [[feedback-unpublished-plan]] — don't duplicate its content here,
@@ -649,7 +784,6 @@ MD link : [Title](/blog/<slug>)
 | ollama-ai-docs | ollama-ai-docs | ai-translate & ai-summarize: Confidential Documents, Handled 100% Locally ★AI | ai | ai, ollama, zsh, docker | Ollama daily-use functions |
 | ollama-ai-data | ollama-ai-data | ai-data: Let a Local LLM Write Your jq and awk One-Liners ★AI | ai | ai, ollama, zsh, fzf | Ollama daily-use functions |
 | ollama-ai-diff | ollama-ai-diff | ai-diff: What Actually Changed, Not a Wall of Plus and Minus Signs ★AI | ai | ai, ollama, zsh, git | Ollama daily-use functions |
-| ollama-git-precommit | ollama-git-precommit | ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit ★AI | git | git, ollama, zsh, ai, security, code-quality | Ollama daily-use functions |
 | docling | docling | Docling - Convert PDF, Word, PowerPoint, Excel and HTML to Markdown, GPU-Accelerated ★AI | markdown | docker, markdown, python | (none — companion to markitdown, not the Ollama series) |
 | portainer | portainer | Portainer: A Web Dashboard for Docker, One Compose File Away ★AI | docker | docker, self-hosted | (none — second of lazydocker→portainer→traefik chain) |
 | python-ai-helper | python-ai-helper | Auto-documenting and testing python scripts | Python | ai, python |  |
@@ -678,8 +812,6 @@ MD link : [Title](/blog/<slug>)
 | vscode-profiles | vscode-profiles | VSCode Profiles: One Window, Two Completely Different Setups ★AI | vscode | vscode, customization | |
 | vscode-snippets-for-docusaurus | vscode-snippets-for-docusaurus | My VSCode Snippets File for Writing This Blog ★AI | vscode | vscode, docusaurus, markdown | |
 | winscp-putty | winscp-putty | WinSCP - Start PuTTY without typing a password | winscp | putty, ssh, tips, winscp | |
-| xdebug-docker-vscode | xdebug-docker-vscode | Step-Through PHP Debugging in a Docker Container From VSCode ★AI | php | php, docker, vscode | |
-| winscp-putty | winscp-putty | WinSCP - Start PuTTY without typing a password | winscp | putty, ssh, tips, winscp |  |
 | xdebug-docker-vscode | xdebug-docker-vscode | Step-Through PHP Debugging in a Docker Container From VSCode ★AI | php | php, docker, vscode | (none — zero draft dependencies, freely placeable) |
 
 **"Ollama daily-use functions" series so far (all drafts, 13 posts):** ollama-test-generator (ai-test),

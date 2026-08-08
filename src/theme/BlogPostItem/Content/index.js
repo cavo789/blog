@@ -7,6 +7,10 @@
  * Key features:
  * - Extracts and displays the first image in the blog post as a header image.
  *   The original image is hidden from the main content to avoid duplication.
+ * - Wraps that header image in a hero block themed with the banner's own auto-extracted
+ *   accent color (src/data/postColors.generated.js), mirroring the treatment on series pages
+ *   (src/components/Blog/Series) so each post's own page has a bit of its banner's character
+ *   instead of every post page looking identical.
  * - Call the SeriesPosts component so, if the blog post is part of a series, we'll inject
  *   "This article is part of the xxxx series:" section
  * - Renders the rest of the blog content using MDX.
@@ -24,6 +28,9 @@ import MDXContent from "@theme/MDXContent";
 import SeriesPosts from "@site/src/components/Blog/SeriesPosts/index.js";
 import OldPostNotice from "@site/src/components/Blog/OldPostNotice/index.js";
 import Updated from "@site/src/components/Blog/Updated/index.js";
+import { hexToRgba } from "@site/src/components/Blog/utils/color";
+import POST_COLORS from "@site/src/data/postColors.generated.js";
+import styles from "./styles.module.css";
 
 export default function BlogPostContent({ children }) {
   const contentRef = useRef(null);
@@ -41,15 +48,26 @@ export default function BlogPostContent({ children }) {
     }
   }, []);
 
+  const accentColor = POST_COLORS[metadata.frontMatter.image];
+  const heroStyle = accentColor
+    ? {
+        "--post-accent-solid": hexToRgba(accentColor, 1),
+        "--post-accent-glow-light": hexToRgba(accentColor, 0.35),
+        "--post-accent-glow-dark": hexToRgba(accentColor, 0.55),
+      }
+    : undefined;
+
   return (
     <div>
       {firstImageSrc && (
-        <img
-          src={firstImageSrc}
-          alt={metadata.title}
-          loading="lazy"
-          style={{ width: "100%", marginBottom: "1rem" }}
-        />
+        <div className={styles.postHero} style={heroStyle}>
+          <img
+            src={firstImageSrc}
+            alt={metadata.title}
+            loading="lazy"
+            className={styles.postBanner}
+          />
+        </div>
       )}
       {/* Only display our SeriesPosts component on the post page; not the blog view */}
       {isBlogPostPage && (

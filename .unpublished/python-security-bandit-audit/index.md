@@ -24,6 +24,21 @@ This article bundles [Bandit](https://bandit.readthedocs.io/) (static analysis f
 
 <!-- truncate -->
 
+## Demo
+
+A small script with two real issues, and a `requirements.txt` pinned to old versions:
+
+<Snippet filename="app.py" source="./files/app.py" defaultOpen={false} />
+<Snippet filename="requirements.txt" source="./files/requirements.txt" defaultOpen={false} />
+
+<Terminal source="./files/terminal_scan.txt" typewriter />
+
+<AlertBox variant="caution" title="The advisory IDs above are illustrative">
+I picked genuinely old package versions to guarantee findings for this demo, but I didn't hand-verify the exact advisory ID against the exact version shown — `pip-audit` will report whatever's actually current against the live database when you run it. Treat the format as accurate, the specific IDs as illustrative.
+</AlertBox>
+
+Bandit catches both real issues in six lines of code: a hardcoded password (`B105`) and a `subprocess` call built with an f-string and `shell=True` (`B602`) — the second one is a genuine command-injection risk if `filename` ever comes from user input. pip-audit separately flags both pinned dependencies as outdated enough to have known advisories, with the version that fixes each one.
+
 ## Two Tools, Two Different Questions
 
 - **[Bandit](https://bandit.readthedocs.io/)** reads your actual code (AST-based, like `ruff`) and flags security-relevant patterns: hardcoded credentials, `shell=True` in `subprocess` calls, weak hashing (`md5`/`sha1` for anything sensitive), unsafe deserialization (`pickle`, `yaml.load` without `Loader=SafeLoader`), and dozens more.
@@ -50,21 +65,6 @@ The project volume is mounted `:ro` this time — unlike [Markitdown](/blog/mark
 <Snippet filename="/usr/local/bin/py-security-scan" source="./files/py-security-scan.sh" />
 
 Make it executable: `sudo chmod +x /usr/local/bin/py-security-scan`. Run it from the root of any Python project.
-
-## Demo
-
-A small script with two real issues, and a `requirements.txt` pinned to old versions:
-
-<Snippet filename="app.py" source="./files/app.py" defaultOpen={false} />
-<Snippet filename="requirements.txt" source="./files/requirements.txt" defaultOpen={false} />
-
-<Terminal source="./files/terminal_scan.txt" typewriter />
-
-<AlertBox variant="caution" title="The advisory IDs above are illustrative">
-I picked genuinely old package versions to guarantee findings for this demo, but I didn't hand-verify the exact advisory ID against the exact version shown — `pip-audit` will report whatever's actually current against the live database when you run it. Treat the format as accurate, the specific IDs as illustrative.
-</AlertBox>
-
-Bandit catches both real issues in six lines of code: a hardcoded password (`B105`) and a `subprocess` call built with an f-string and `shell=True` (`B602`) — the second one is a genuine command-injection risk if `filename` ever comes from user input. pip-audit separately flags both pinned dependencies as outdated enough to have known advisories, with the version that fixes each one.
 
 ## Key Takeaways
 

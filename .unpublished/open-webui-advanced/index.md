@@ -24,6 +24,23 @@ This article picks up where <Link to="/blog/ollama-installation">the Ollama inst
 
 <!-- truncate -->
 
+## Seeing a Function Work
+
+A Function is a Python-defined tool that wraps a prompt and shows up in the chat toolbar. Here's the "Summarize" one from further down this article, called with real meeting notes:
+
+<Terminal source="./files/terminal_summarize.txt" typewriter />
+
+Three bullet points, grounded in the actual numbers and dates from the text — not a generic restatement. That's the same request the chat window sends when you click the Function's icon and paste text in.
+
+## Why It Works
+
+- **Model presets** are a saved combination of base model, system prompt and temperature — switching between "Code Reviewer" and "Brainstorm Partner" is a dropdown, not retyping context every time.
+- **Knowledge (RAG)** indexes your own documents and grounds answers in them, citing the source passage — the model answers from what you gave it, not from training data.
+- **Web search** hands the model current information beyond its training cutoff, toggled per-message or on by default for a preset.
+- **Functions** are Python code running inside the container — Tools the model can call, Filters that pre/post-process messages, or Pipes that replace the model call entirely — each one showing up in the same chat toolbar once installed.
+
+These four are genuinely independent capabilities that happen to share one chat window, not four views onto the same feature.
+
 ## Setup reminder
 
 If you don't have Open WebUI running yet, the minimal `compose.yaml`:
@@ -109,7 +126,7 @@ Functions are Python classes that run inside Open WebUI. They can add tools, mod
 - **Filters**: modify messages in or out — pre-process your prompt, post-process the response
 - **Pipes**: replace the model entirely with a custom flow (call an external API, chain models, etc.)
 
-The simplest Function is a Tool. Here's one that wraps a summarization prompt:
+The simplest Function is a Tool. Here's one that wraps a summarization prompt — the exact one behind the demo at the top of this article:
 
 <Snippet source="./files/summarize-function.py" language="python" />
 
@@ -123,7 +140,9 @@ Functions can do much more — query a database, call a REST API, read files fro
 The Open WebUI [community hub](https://openwebui.com/functions) has ready-to-install Functions for common tasks: web scraping, code execution, image generation, translation, and more. Install them with one click from within Open WebUI (Settings → Get Community Functions).
 </AlertBox>
 
-## Conversation management
+## Under the Hood (skip this if you just want to use it)
+
+### Conversation management
 
 A few features that make daily use more comfortable:
 
@@ -135,7 +154,7 @@ A few features that make daily use more comfortable:
 
 **Regenerate**: hover over any model response and click the regenerate button (circular arrows) to get a different answer with the same prompt and settings. The model is stochastic — temperature means the same prompt produces different outputs.
 
-## Accessing Open WebUI from other devices
+### Accessing Open WebUI from other devices
 
 If Ollama is running on your main workstation and Open WebUI is on port 4000, other devices on your LAN can reach it at `http://your-ip:4000`. The <Link to="/blog/accessing-ollama-across-your-local-network">Accessing Ollama across your local network</Link> article covers the network setup — Open WebUI sits in front of Ollama, so the same approach applies.
 
@@ -143,6 +162,6 @@ For HTTPS on the local network (useful if you want to use the camera or micropho
 
 ## Conclusion
 
-Open WebUI's value compounds as you layer these features. A model preset with the right system prompt and temperature removes the friction of re-explaining your context on every chat. A RAG knowledge base anchors answers in your actual documents. Web search adds current information. Functions add capabilities the base model doesn't have.
+Open WebUI's value compounds as you layer these features. A model preset with the right system prompt and temperature removes the friction of re-explaining your context on every chat. A RAG knowledge base anchors answers in your actual documents. Web search adds current information. Functions add capabilities the base model doesn't have — the summarize call at the top of this article is one, but the same mechanism runs anything Python can do.
 
 The chat window is just the beginning — spend an afternoon in Workspace and Settings, and you'll find a genuinely configurable local AI environment that's worth the time to set up properly.

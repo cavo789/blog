@@ -5,6 +5,7 @@ date: 2025-02-13
 description: Get instant SSH autosuggestions in ZSH. Learn to install the zsh-ssh-config-suggestions plugin and display all your ~/.ssh/config aliases with a simple TAB press.
 authors: [christophe]
 image: /img/v2/ssh.webp
+series: SSH - From your first key to remote development
 mainTag: ssh
 tags:
   - customization

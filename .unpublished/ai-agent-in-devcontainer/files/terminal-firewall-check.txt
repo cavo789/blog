@@ -1,0 +1,7 @@
+$ curl -sS --max-time 3 -o /dev/null -w '%{http_code}\n' https://example.com
+
+curl: (28) Connection timed out after 3000 milliseconds
+
+$ curl -sS --max-time 3 -o /dev/null -w '%{http_code}\n' https://api.github.com
+
+200

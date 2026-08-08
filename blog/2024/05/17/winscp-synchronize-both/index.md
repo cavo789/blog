@@ -5,6 +5,7 @@ date: 2024-05-17
 description: Use a script with WinSCP to easily synchronize files between your local host and a remote FTP/SFTP server. Learn the commands for local, remote, or bi-directional synchronization.
 authors: [christophe]
 image: /img/v2/winscp.webp
+series: WinSCP & remote file transfer
 mainTag: winscp
 tags:
   - self-hosted

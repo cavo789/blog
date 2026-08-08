@@ -5,6 +5,7 @@ date: 2025-08-07
 description: Explore Bruno, a powerful Postman-like API testing tool with both GUI and CLI support.
 authors: [christophe]
 image: /img/v2/api.webp
+series: Building and testing REST APIs
 mainTag: api
 tags:
   - api

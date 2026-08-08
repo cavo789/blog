@@ -1,17 +1,51 @@
 ---
 slug: docusaurus-ollama-tags
 title: Playing with Ollama - Create a blog post analyzer with a local LLM
-authors: [christophe]
+description: "A Dockerized devcontainer with two Python scripts: the first sends each Markdown blog post to a local Ollama model to generate tags, the second compares those tags across posts to suggest which articles should link to each other. No cloud API, no manual tagging."
+authors: [christophe, claude]
 image: /img/v2/ollama_docusaurus_tags.webp
 mainTag: ai
 draft: true
 tags: [ai, ollama]
 date: 2026-12-31
+ai_assisted: true
 ---
 
 ![Playing with Ollama - Create a blog post analyzer with a local LLM](/img/v2/ollama_docusaurus_tags.webp)
 
-## Copy the directory structure and files
+<TLDR>
+A devcontainer running Ollama alongside two Python scripts: `01_generate_tags.py` reads every Markdown post in `data/posts`, sends its content to a local model, and saves the generated tags to a JSON file. `02_analyze_and_link.py` then compares tags across posts to suggest which articles should be interlinked, and how often each tag occurs across the corpus. Everything runs locally — no cloud API, no manual tagging.
+</TLDR>
+
+Tagging blog posts by hand does not scale — and neither does spotting, across a few hundred posts, which ones actually belong together. I wanted to see whether a local model, given nothing but the raw Markdown, could generate reasonable tags and then use those tags to suggest interlinks on its own.
+
+<!-- truncate -->
+
+## The Result
+
+Once both scripts have run, `output/all_articles_with_tags.json` holds the generated tags for every post:
+
+![The generated tags](./images/the_generated_tags.png)
+
+The second script then compares those tags across posts. `suggested_interlinks.json` is the first output worth looking at:
+
+<Snippet source="./files/output/suggested_interlinks.json" defaultOpen={true} />
+
+Articles 002 and 004 are correctly identified as related — they both talk about local LLMs. Articles 001 and 003 are left alone, since they cover unrelated topics. Sounds good!
+
+The second output file, `tag_analysis.json`, shows the tags and their occurrences across the articles. In this small sample, "local LLMs" appears in two articles (002 and 004) while every other tag appears in only one:
+
+<Snippet source="./files/output/tag_analysis.json" defaultOpen={true} />
+
+## Why It Works
+
+- One script per responsibility: the first script only talks to the LLM and produces tags; the second only reads those tags and computes relationships — no single script does both.
+- Tags are the only signal used for linking. Two posts sharing a tag are considered related; the more tags they share, the stronger the suggestion.
+- Nothing here is Docusaurus-specific — swap `data/posts` for any folder of Markdown files and the same two scripts produce the same kind of analysis.
+
+## Installation
+
+### Copy the directory structure and files
 
 Please run the following command in your terminal to copy the directory structure and files for this tutorial:
 
@@ -37,7 +71,7 @@ It will take a few minutes to build the container and install the dependencies. 
 
 ![The containers are running](./images/containers_are_running.png)
 
-## Download the LLM model
+### Download the LLM model
 
 Then, return to your terminal (on your host) and run the following command to download the LLM model:
 
@@ -47,7 +81,7 @@ $ docker exec -it blog_analyzer-ollama-1 ollama pull llama3:8b
 
 ![Download the LLM model](./images/download_the_llm_model.png)
 
-## Test Ollama service
+### Test the Ollama service
 
 So we've just downloaded the LLM model, now let's test that the Ollama service is working correctly. Run the following command in your terminal (on your host):
 
@@ -60,7 +94,6 @@ $ curl --silent http://localhost:11434/api/tags | jq
 <AlertBox variant="note" title="If you don't have jq">
 The `jq` command is used to format the JSON output for better readability. If you don't have `jq` installed, you can simply run the `curl` command without it to see the raw JSON response.
 </AlertBox>
-
 
 ```bash
 curl --silent http://localhost:11434/api/generate \
@@ -75,43 +108,29 @@ curl --silent http://localhost:11434/api/generate \
 
 Ok, the service is working, and we can see that the `tags` endpoint is available. This endpoint will be used by our Python scripts to send the content of the blog posts and receive the generated tags.
 
-## Run the tag generation script
+## More Demos
+
+### Run the tag generation script
 
 Go back to Visual Studio Code, jump in the terminal (in VSCode) and run the `scripts/01_generate_tags.py` file. This script will read all the markdown files in the `data/posts` directory, send their content to the LLM model running in the container, and save the generated tags in a JSON file.
 
 ![Running the tag generation script](./images/running_01_generate_tags.png)
 
-And, indeed, you can see that the `output/all_articles_with_tags.json` file has been created with the generated tags:
+And, indeed, you can see that the `output/all_articles_with_tags.json` file has been created — the tags shown earlier under "The Result" are exactly what this run produced.
 
-![The generated tags](./images/the_generated_tags.png)
+### Run the analyze and link script
 
-## Run the analyze and link script
-
-The second script, `scripts/02_analyze_and_link.py`, will read the generated tags from the JSON file, analyze the relationships between the articles based on their tags, and create a list of related articles for each article.
-
-Two JSON files will be created in the `output` directory:
-
-- `suggested_interlinks.json` with the related articles for each article i.e. which articles should be interlinked together based on their tags, and
-- `tag_analysis.json` which lists all the tags and their occurrences across the articles.
+The second script, `scripts/02_analyze_and_link.py`, reads the generated tags from that JSON file and produces the `suggested_interlinks.json` and `tag_analysis.json` files shown above.
 
 ![Running the analyze and link script](./images/running_02_analyze_and_link.png)
 
-So lets look at the first output:
+## Under the Hood (skip this if you just want to use it)
 
-<Snippet source="./files/output/suggested_interlinks.json" defaultOpen={true} />
+### Choosing the Right Model
 
-Indeed, articles 002 and 004 are related as they both talk about local LLMs. Articles 001 and 003 are not related to any other article as they talk about different topics. Sounds good!
+In this article, I used `llama3:8b` as a starting point. However, the true beauty of Ollama lies in the flexibility to swap "brains" depending on the task at hand. The Ollama registry offers a vast library of models, but choosing the right one depends on your available hardware — specifically your RAM and GPU.
 
-The second output file, `tag_analysis.json`, shows us the tags and their occurrences across the articles. So, in our example, the tag "local LLMs" appears in two articles (002 and 004) while the other tags appear only in one article:
-
-<Snippet source="./files/output/tag_analysis.json" defaultOpen={true} />
-This is a great addition to your post. To make it more reader-friendly, I have restructured your content into a more professional format. I've focused on clarity, providing a clear "why" for each model so your readers can choose based on their specific hardware and needs.
-
-## Choosing the Right Model
-
-In this article, I used `llama3:8b` as a starting point. However, the true beauty of Ollama lies in the flexibility to swap "brains" depending on the task at hand. The Ollama registry offers a vast library of models, but choosing the right one depends on your available hardware—specifically your RAM and GPU.
-
-### Model Comparison at a Glance
+#### Model Comparison at a Glance
 
 | Model | Ideal Use Case | Pros | Cons | Hardware Requirement |
 | :--- | :--- | :--- | :--- | :--- |
@@ -119,13 +138,13 @@ In this article, I used `llama3:8b` as a starting point. However, the true beaut
 | **Mistral (7B)** | Coding, creative writing, general reasoning. | Often more "human-sounding" and concise. | Can be less rigorous than Llama 3 for structured data. | ~8GB RAM |
 | **Llama 3 (70B)** | Deep analysis, complex coding, heavy reasoning. | Near-human intelligence, very low hallucination rate. | Resource-intensive; slower generation. | ~48GB+ RAM |
 
-### Which one should you pick?
+#### Which one should you pick?
 
 - **Go for `llama3:8b`** if you are just getting started or have limited RAM. It is perfect for rapid prototyping and simple automation tasks that don't require deep logical reasoning.
-- **Try `mistral`** if you find Llama 3's responses a bit too rigid. Many developers prefer Mistral for its creative flair and efficiency. It’s an excellent "daily driver" for general coding support.
-- **Scale up to `llama3:70b`** if you are performing tasks that demand high precision—such as refactoring complex codebases, deep logical debugging, or processing large datasets where accuracy is critical. Because this model is massive, it significantly reduces "hallucinations," making it the most reliable choice for professional work.
+- **Try `mistral`** if you find Llama 3's responses a bit too rigid. Many developers prefer Mistral for its creative flair and efficiency. It's an excellent "daily driver" for general coding support.
+- **Scale up to `llama3:70b`** if you are performing tasks that demand high precision — such as refactoring complex codebases, deep logical debugging, or processing large datasets where accuracy is critical. Because this model is massive, it significantly reduces "hallucinations," making it the most reliable choice for professional work.
 
-### Downloading your models
+#### Downloading your models
 
 You can add any of these models to your local environment instantly. Simply run the following commands in your terminal:
 
@@ -150,5 +169,11 @@ $ docker exec -it blog_analyzer-ollama-1 ollama pull mistral
 > **Note:** The `70b` model is significantly larger (~40GB). Ensure you have enough disk space and, more importantly, at least 48GB of RAM available to ensure the model runs smoothly without slowing down your system.
 
 <AlertBox variant="tip" title="Not enough RAM?">
-
 On my machine with 64GB of RAM, I can run the `70b` model, but it does consume a lot of resources. If you have less RAM, you might want to stick with the `8b` or `mistral` models for a smoother experience.
+</AlertBox>
+
+## Conclusion
+
+Two small Python scripts and a local model turned a folder of Markdown posts into a tag index and a set of interlink suggestions — no cloud API, no manual tagging, and nothing about the pipeline is specific to Docusaurus. Point `data/posts` at any folder of Markdown files and the same two scripts do the same job.
+
+Turning a suggestion like "articles 002 and 004 are related" into an actual `<Link>` in the prose is still a manual step here — the natural next iteration is having the second script propose the exact sentence and anchor text, not just the pair of files.

@@ -22,6 +22,16 @@ draft: true
 
 <!-- truncate -->
 
+## One Window, Three Independent Contexts
+
+<!-- TODO(author): capture a real screenshot of the sidebar with 3 labeled worktree folders here before publishing — not reproducible in this session (requires a live VSCode GUI). -->
+
+Each folder in the sidebar behaves as its own root: its own file tree, its own Source Control panel entry (so the Git panel shows *three* separate repositories — well, three worktrees of the same repository — each with its own branch and changes), and its own integrated terminal working directory when you open one scoped to that folder.
+
+<AlertBox variant="tip" title="Per-folder settings still work">
+The `"settings"` block in a `.code-workspace` file applies workspace-wide, but each individual folder can still carry its own `.vscode/settings.json` for folder-specific overrides — exactly as if it were opened standalone.
+</AlertBox>
+
 ## What a Multi-Root Workspace Actually Is
 
 A `.code-workspace` file is a small JSON file listing multiple folders — each with its own display `name` — that VSCode opens together, in one window, as one workspace. The sidebar shows each folder as its own labeled root instead of a single flat file tree, so "which worktree is this file even in" stops being a question you have to answer by reading a full path.
@@ -35,14 +45,6 @@ Open it with:
 <Terminal typewriter>
 $ code my-blog.code-workspace
 </Terminal>
-
-## One Window, Three Independent Contexts
-
-Each folder in the sidebar behaves as its own root: its own file tree, its own Source Control panel entry (so the Git panel shows *three* separate repositories — well, three worktrees of the same repository — each with its own branch and changes), and its own integrated terminal working directory when you open one scoped to that folder.
-
-<AlertBox variant="tip" title="Per-folder settings still work">
-The `"settings"` block in a `.code-workspace` file applies workspace-wide, but each individual folder can still carry its own `.vscode/settings.json` for folder-specific overrides — exactly as if it were opened standalone.
-</AlertBox>
 
 ## Keeping the Workspace File in Sync with `gwt`
 

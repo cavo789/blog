@@ -5,6 +5,7 @@ date: 2023-12-16
 description: Learn how to easily create a dynamic mind map using Markmap, Docker, and Markdown. Convert plain text into a beautiful, interactive HTML mind map.
 authors: [christophe]
 image: /img/v2/mindmaps.webp
+series: Diagrams as code
 mainTag: doc-as-code
 tags:
   - doc-as-code

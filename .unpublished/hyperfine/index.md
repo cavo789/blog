@@ -25,6 +25,30 @@ You optimized a Docker build step. You think it improved. But you only timed it 
 
 <!-- truncate -->
 
+## A first benchmark
+
+Compare `find` and `fd` for locating all `.md` files in the current directory tree:
+
+<Terminal>
+hyperfine 'find . -name "*.md"' 'fd -e md'
+</Terminal>
+
+```
+Benchmark 1: find . -name "*.md"
+  Time (mean ± σ):      45.3 ms ±   3.1 ms    [User: 12.4 ms, System: 30.2 ms]
+  Range (min … max):    41.8 ms …  52.7 ms    10 runs
+
+Benchmark 2: fd -e md
+  Time (mean ± σ):       8.2 ms ±   0.6 ms    [User: 5.1 ms, System: 10.3 ms]
+  Range (min … max):     7.5 ms …   9.4 ms    10 runs
+
+Summary
+  fd -e md ran
+    5.52 ± 0.51 times faster than find . -name "*.md"
+```
+
+Ten runs. Mean, standard deviation, min, max. A clear winner.
+
 ## Install
 
 **With cargo (Rust toolchain):**
@@ -60,30 +84,6 @@ hyperfine --version
 ```
 hyperfine 1.18.0
 ```
-
-## A first benchmark
-
-Compare `find` and `fd` for locating all `.md` files in the current directory tree:
-
-<Terminal>
-hyperfine 'find . -name "*.md"' 'fd -e md'
-</Terminal>
-
-```
-Benchmark 1: find . -name "*.md"
-  Time (mean ± σ):      45.3 ms ±   3.1 ms    [User: 12.4 ms, System: 30.2 ms]
-  Range (min … max):    41.8 ms …  52.7 ms    10 runs
-
-Benchmark 2: fd -e md
-  Time (mean ± σ):       8.2 ms ±   0.6 ms    [User: 5.1 ms, System: 10.3 ms]
-  Range (min … max):     7.5 ms …   9.4 ms    10 runs
-
-Summary
-  fd -e md ran
-    5.52 ± 0.51 times faster than find . -name "*.md"
-```
-
-Ten runs. Mean, standard deviation, min, max. A clear winner.
 
 ## Warmup runs
 
@@ -223,7 +223,9 @@ The key numbers:
 Some benchmarking tools report only the minimum time (the argument being that the minimum is the "true" speed and everything slower is noise). `hyperfine` reports the mean because in practice, commands run in real conditions — not in ideal isolation. The mean is what your users experience.
 </AlertBox>
 
-## hyperfine vs time
+## Under the Hood (skip this if you just want to use it)
+
+### hyperfine vs time
 
 The built-in `time` command gives you one measurement. It's fine for one-off curiosity. `hyperfine` is for when the result matters:
 

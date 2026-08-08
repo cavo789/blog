@@ -26,6 +26,21 @@ Today, we will build a custom build pipeline using:
 
 <!-- truncate -->
 
+## Running It
+
+Once the manifest and script are in place (covered below), the whole pipeline is one command:
+
+![Running the minification](./images/running.png)
+
+Yeah, it just took five seconds (downloading the Docker image included).
+
+## Why This Approach?
+
+1. **No Node Dependencies**: You don't need a `package.json` or a `node_modules` folder. The minification engine lives inside a Docker container.
+2. **Blazing Fast**: `tdewolff/minify` is written in Go. It is significantly faster than many JavaScript-based minifiers.
+3. **Declarative**: Adding a new file to your CSS bundle is as simple as adding one line to your `manifest.yaml`.
+4. **Consistency**: Because we use Docker, the minification result will be exactly the same on your local machine, your colleague's laptop, and your production CI server.
+
 ## The Architecture
 
 Our workflow is really (really!) simple:
@@ -68,14 +83,14 @@ This instruction will create a new `/tmp/minification` folder and automate the c
 
 ```tree
 ├── dist
-│   └── assets
+│   └── assets
 └── public
     └── assets
         ├── css
-        │   ├── components.css
-        │   ├── layout.css
-        │   ├── reset.css
-        │   └── variables.css
+        │   ├── components.css
+        │   ├── layout.css
+        │   ├── reset.css
+        │   └── variables.css
         └── js
             ├── api.js
             ├── main.js
@@ -96,22 +111,11 @@ Last thing is to make it executable (`chmod +x /tmp/minification/build.sh`).
 
 #### Execution
 
-You're now ready. Simply run `./build.sh` to start the concatenation and the minification:
-
-![Running the minification](./images/running.png)
-
-Yeah, it just took five seconds (downloading the Docker image included).
+You're now ready. Simply run `./build.sh` to start the concatenation and the minification — the exact command behind the screenshot at the top of this article.
 
 ##### Look at the Docker image flags
 
 Surf to [tdewolff/minify](https://hub.docker.com/r/tdewolff/minify) and look for the [demo site](https://go.tacodewolff.nl/minify), the [CLI options](https://github.com/tdewolff/minify/tree/master/cmd/minify) and docs.
-
-### Why This Approach?
-
-1. **No Node Dependencies**: You don't need a `package.json` or a `node_modules` folder. The minification engine lives inside a Docker container.
-2. **Blazing Fast**: `tdewolff/minify` is written in Go. It is significantly faster than many JavaScript-based minifiers.
-3. **Declarative**: Adding a new file to your CSS bundle is as simple as adding one line to your `manifest.yaml`.
-4. **Consistency**: Because we use Docker, the minification result will be exactly the same on your local machine, your colleague's laptop, and your production CI server.
 
 ## Conclusion
 

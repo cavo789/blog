@@ -1,0 +1,7 @@
+$ curl -s https://localhost:9443/api/endpoints/1/docker/containers/json?all=true \
+    -H "Authorization: Bearer $JWT" | jq -r '.[] | "\(.Names[0])\t\(.Image)\t\(.State)"'
+
+/portainer              portainer/portainer-ce:lts          running
+/ollama                 ollama/ollama:latest                running
+/open-webui             ghcr.io/open-webui/open-webui:main  running
+/blog_devcontainer-...  vsc-blog-...                         running

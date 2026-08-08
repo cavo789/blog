@@ -27,6 +27,38 @@ What if we can solve this for free? How? Simply by installing a LLM locally, on 
 
 <!-- truncate -->
 
+## Try It in Your Terminal
+
+Once Ollama is running and a model is pulled (covered under Installation below), the command is `ollama run <model_name>`:
+
+<Terminal typewriter wrap={true}>
+$ docker exec -it ollama ollama run llama3.1:8b
+</Terminal>
+
+You can now start to ask anything like a comparison between Quarto and Docusaurus:
+
+![Asking to compare Quarto and Docusaurus](./images/test_quarto_docusaurus_comparaison.webp)
+
+Or getting a joke :
+
+![Getting a joke](./images/test_joke.webp)
+
+Type `/bye` to exit.
+
+<AlertBox variant="info" title="Faster the second time">
+
+You've experienced some delay right before getting the prompt? Run the exact same command again; you'll see, it's now immediate since the model is already loaded in RAM.
+
+And, if you don't use the model for the next five minutes, Ollama will unload it, freeing up your RAM.
+
+</AlertBox>
+
+### Should I speak English with the model?
+
+In fact, no — just like a webpage, you can use your own language. In the example below, you can also see another way to ask a question: instead of jumping into a terminal, you can type your question directly on the command line.
+
+![Asking in French](./images/test_asking_in_french.webp)
+
 ## Do you need a local LLM?
 
 Probably the most important reason is privacy: having it locally, on your host, means that your documents stay on your computer. You won't share your codebase, for example, with AI companies. *That same argument is why I liked <Link to="/blog/vscode-tabnine">Tabnine</Link>, which also works offline — Ollama simply takes the idea much further.*
@@ -37,7 +69,7 @@ You can also think about automation: you'll be able to run automation scripts wi
 
 You know, as a Docker lover, I won't install Ollama by hand.
 
-Let's create the `compose.yaml` file on your disk. I use a few Docker containers every day, and I save their configuration files in a `~/tools` folder; let’s do the same here.
+Let's create the `compose.yaml` file on your disk. I use a few Docker containers every day, and I save their configuration files in a `~/tools` folder; let's do the same here.
 
 Run `mkdir ~/tools/ollama && cd $_` then create a `compose.yaml` with this content:
 
@@ -117,38 +149,6 @@ $ docker exec -it ollama ollama list
 </Terminal>
 
 The entire list of existing models is online: [https://ollama.com/library](https://ollama.com/library)
-
-## Try it in your terminal
-
-The command to run is `ollama run <model_name>` so, if you've followed this tutorial, our command would be `docker exec -it ollama ollama run llama3.1:8b`.
-
-<Terminal typewriter wrap={true}>
-$ docker exec -it ollama ollama run llama3.1:8b
-</Terminal>
-
-You can now start to ask anything like a comparison between Quarto and Docusaurus:
-
-![Asking to compare Quarto and Docusaurus](./images/test_quarto_docusaurus_comparaison.webp)
-
-Or getting a joke :
-
-![Getting a joke](./images/test_joke.webp)
-
-Type `/bye` to exit.
-
-<AlertBox variant="info" title="Faster the second time">
-
-You've experienced some delay right before getting the prompt? Run the exact same command again; you'll see, it's now immediate since the model is already loaded in RAM.
-
-And, if you don't use the model for the next five minutes, Ollama will unload it, freeing up your RAM.
-
-</AlertBox>
-
-### Should I speak English with the model?
-
-In fact, no — just like a webpage, you can use your own language. In the example below, you can also see another way to ask a question: instead of jumping into a terminal, you can type your question directly on the command line.
-
-![Asking in French](./images/test_asking_in_french.webp)
 
 ## Using a web interface
 

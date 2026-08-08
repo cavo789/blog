@@ -5,6 +5,7 @@ date: 2023-12-19
 description: Learn how to add eye-catching ASCII art banners to your Bash scripts for a bigger visual impact. Includes a full sample code implementation.
 authors: [christophe]
 image: /img/v2/ascii_art.webp
+series: Writing better Bash scripts
 mainTag: bash
 tags:
   - bash

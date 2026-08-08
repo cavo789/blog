@@ -5,6 +5,7 @@ date: 2024-11-28
 description: Need a file list in CSV format? Use this VBScript to scan a folder, including sub-folders, and output file details like size, date, and owner for easy analysis.
 authors: [christophe]
 image: /img/v2/vbs.webp
+series: VBA & MS Office automation
 mainTag: vba
 tags:
   - vba

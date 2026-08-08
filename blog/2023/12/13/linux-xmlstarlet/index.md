@@ -5,6 +5,7 @@ date: 2023-12-13
 description: Master XML data manipulation on the Linux command line with xmlstarlet. This guide shows you how to beautify XML output and filter nodes using XPath expressions
 authors: [christophe]
 image: /img/v2/bash.webp
+series: Modern CLI tools for your terminal
 mainTag: linux
 tags:
   - bash

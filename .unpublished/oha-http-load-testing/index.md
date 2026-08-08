@@ -28,46 +28,6 @@ That tool is `oha`.
 
 <!-- truncate -->
 
-## What is oha?
-
-[oha](https://github.com/hatoo/oha) is a small HTTP load generator written in Rust, inspired by [`hey`](https://github.com/rakyll/hey) (itself inspired by Apache Bench). It sends a configurable number of HTTP requests with a configurable number of concurrent workers, displays a live TUI progress bar while running, then prints a full summary: total time, request throughput, a latency histogram, and percentile distribution.
-
-The thing that sets oha apart is that live TUI — you watch the requests fly in real time, see errors appear as they happen, and get the full picture the moment the test finishes. No log parsing, no secondary tool, no post-processing.
-
-It joins the same family as <Link to="/blog/ripgrep">ripgrep</Link> (for `grep`) and <Link to="/blog/linux-eza">eza</Link> (for `ls`) — modern Rust rewrites of older Unix tools that earn their place by being genuinely better to use.
-
-## Install
-
-### Via Cargo
-
-<Prerequisite
-  name="oha"
-  install="cargo install oha"
-  check="oha --version"
-  checkOutput="oha 0.6.4"
-/>
-
-### Via a pre-built binary
-
-No Rust toolchain? Download the binary directly from the [GitHub releases page](https://github.com/hatoo/oha/releases):
-
-<Terminal>
-$ curl -L https://github.com/hatoo/oha/releases/latest/download/oha-linux-amd64 -o oha
-$ chmod +x oha && sudo mv oha /usr/local/bin/
-$ oha --version
-oha 0.6.4
-</Terminal>
-
-### With Docker — zero installation required
-
-The cleanest approach on a machine where you already have Docker: run oha straight from its image.
-
-<Terminal>
-$ docker run --rm --network=host ghcr.io/hatoo/oha:latest http://localhost:3000
-</Terminal>
-
-`--network=host` gives the container direct access to your machine's `localhost`. On Linux and WSL2 this works immediately — which is exactly the setup used in this article.
-
 ## First run: testing the blog homepage
 
 The <Link to="/blog/running-docusaurus-with-docker">Docusaurus dev server</Link> runs at `http://localhost:3000`. A first test is a single command:
@@ -131,6 +91,46 @@ Status code distribution:
 <AlertBox variant="note" title="--no-tui in the Terminal blocks above">
 The `--no-tui` flag disables the live progress bar so the output fits cleanly in a static code block. In practice, skip it — the live TUI is one of the best parts of oha.
 </AlertBox>
+
+## What is oha?
+
+[oha](https://github.com/hatoo/oha) is a small HTTP load generator written in Rust, inspired by [`hey`](https://github.com/rakyll/hey) (itself inspired by Apache Bench). It sends a configurable number of HTTP requests with a configurable number of concurrent workers, displays a live TUI progress bar while running, then prints a full summary: total time, request throughput, a latency histogram, and percentile distribution.
+
+The thing that sets oha apart is that live TUI — you watch the requests fly in real time, see errors appear as they happen, and get the full picture the moment the test finishes. No log parsing, no secondary tool, no post-processing.
+
+It joins the same family as <Link to="/blog/ripgrep">ripgrep</Link> (for `grep`) and <Link to="/blog/linux-eza">eza</Link> (for `ls`) — modern Rust rewrites of older Unix tools that earn their place by being genuinely better to use.
+
+## Install
+
+### Via Cargo
+
+<Prerequisite
+  name="oha"
+  install="cargo install oha"
+  check="oha --version"
+  checkOutput="oha 0.6.4"
+/>
+
+### Via a pre-built binary
+
+No Rust toolchain? Download the binary directly from the [GitHub releases page](https://github.com/hatoo/oha/releases):
+
+<Terminal>
+$ curl -L https://github.com/hatoo/oha/releases/latest/download/oha-linux-amd64 -o oha
+$ chmod +x oha && sudo mv oha /usr/local/bin/
+$ oha --version
+oha 0.6.4
+</Terminal>
+
+### With Docker — zero installation required
+
+The cleanest approach on a machine where you already have Docker: run oha straight from its image.
+
+<Terminal>
+$ docker run --rm --network=host ghcr.io/hatoo/oha:latest http://localhost:3000
+</Terminal>
+
+`--network=host` gives the container direct access to your machine's `localhost`. On Linux and WSL2 this works immediately — which is exactly the setup used in this article.
 
 ## Reading the output
 

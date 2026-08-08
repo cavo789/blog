@@ -5,6 +5,7 @@ date: 2023-12-27
 description: Learn the simple command to open files like PDFs and HTML from your WSL Linux console using their default Windows application - powershell.exe.
 authors: [christophe]
 image: /img/v2/wsl.webp
+series: WSL2 - Install, move and use it
 mainTag: wsl
 tags:
   - windows

@@ -15,7 +15,7 @@ language: en
 
 ![Choose Your Own AI Agent — What Symfony Docker Got Right](/img/v2/devcontainer.webp)
 
-<!-- cspell:ignore opencode OpenCode dnsmasq ipset iptables postCreateCommand postStartCommand devcontainer FrankenPHP Dunglas -->
+<!-- cspell:ignore opencode OpenCode dnsmasq ipset iptables postCreateCommand postStartCommand devcontainer FrankenPHP Dunglas allowlist -->
 
 <TLDR>
 Kévin Dunglas recently reverted Claude Code as Symfony Docker's default AI agent and shipped a guide instead — recommending OpenCode because it is open source and works equally well with local and remote models. This article walks through why that decision matters ("a default is never neutral"), how to wire OpenCode into your Dev Container from scratch, how to point it at a local Ollama instance so no data leaves your machine, and how to lock down an autonomous agent with an iptables/dnsmasq network sandbox.
@@ -26,6 +26,20 @@ Something unusual caught my attention this week: a popular open-source project *
 That subtle distinction stuck with me. And the more I thought about it, the more I realized it was the right call.
 
 <!-- truncate -->
+
+## The Network Sandbox, Proven
+
+The part of this setup I find most compelling is the network sandbox: once an agent runs autonomously — editing files and executing commands without asking permission at every step — it has full network access unless something explicitly takes it away. The Symfony Docker guide locks this down with `iptables`/`ipset`: an allowlist of approved domains, everything else dropped.
+
+Here's the same allow/deny mechanism, reduced to its core and run directly — an `iptables` `OUTPUT` policy of `DROP`, with only the resolved IPs of `api.github.com` added to the allowed set:
+
+<Terminal source="./files/terminal-firewall-check.txt" typewriter />
+
+`example.com` times out, `api.github.com` answers `200`. That is the entire guarantee: the agent can reach what you explicitly allowed, and nothing else.
+
+<AlertBox variant="note" title="A minimal reproduction, not the production script">
+This is a stripped-down version of the check, built to demonstrate the mechanism directly — not a copy of Symfony Docker's actual `init-firewall.sh`, which also handles DNS interception via `dnsmasq` and CDN IP rotation. The full script lives in the [Symfony Docker repository](https://github.com/dunglas/symfony-docker/blob/main/docs/agents.md).
+</AlertBox>
 
 ## What Changed in Symfony Docker
 
@@ -43,11 +57,11 @@ Kévin Dunglas's reversal is a small but deliberate act in the opposite directio
 
 There is also a political dimension worth naming. The current uncertainty around US data sovereignty is pushing a lot of European developers to reconsider which cloud providers they trust for what. Defaulting to an open-source agent that runs entirely on your own hardware is one answer to that question.
 
-## OpenCode in Practice
-
-OpenCode is a terminal-first AI coding agent, open source, built around a model-agnostic provider system. Think of it as Claude Code's younger, more flexible sibling — without the vendor lock-in.
+## Installation
 
 ### Installing OpenCode in Your Dev Container
+
+OpenCode is a terminal-first AI coding agent, open source, built around a model-agnostic provider system. Think of it as Claude Code's younger, more flexible sibling — without the vendor lock-in.
 
 The official guide recommends installing the CLI via `postCreateCommand` and adding the VS Code extension. Edit your `.devcontainer/devcontainer.json`:
 
@@ -109,15 +123,11 @@ Replace `qwen3:8b` with whatever model you have pulled locally. You can stack mu
 
 For remote providers (Anthropic, OpenAI, OpenRouter…), you set the API key as documented by OpenCode and add the provider's domain to the firewall allowlist if you are running the network sandbox. The configuration is provider-specific; see the OpenCode providers documentation for the exact keys.
 
-## The Network Sandbox
+## More Demos
 
-Here is the part I find most compelling — and the part that most developers skip until something goes wrong.
+### Setting Up the Full Network Sandbox
 
-Running an AI agent in *autonomous mode* (letting it edit files and execute commands without asking for confirmation at every step) is incredibly productive. It is also completely unguarded. The agent has full network access. If it decides to `curl` something unexpected, you have no visibility into it.
-
-The Symfony Docker guide ships an optional `init-firewall.sh` script that addresses this properly. It uses `iptables` and `ipset` to drop all outbound traffic except a short allowlist of explicitly permitted domains, with `dnsmasq` intercepting DNS queries to update the IP set dynamically as CDN addresses rotate.
-
-Setting it up takes four steps:
+The demo above proved the mechanism. Wiring the real Symfony Docker version into your Dev Container takes four steps:
 
 **1. Add the required tools to the dev image.** Edit the `frankenphp_dev` stage in your `Dockerfile` to install `iptables`, `ipset`, `dnsmasq`, `iproute2`, `aggregate`, `dnsutils`, and `jq`, plus a `nonroot` user with sudo rights limited to the firewall script alone.
 
@@ -141,7 +151,7 @@ services:
 ```
 
 <AlertBox variant="warning" title="Autonomous mode only makes sense with the sandbox on">
-Without the network sandbox, letting an agent run autonomously is a leap of faith. With it, you have a hard boundary: the agent can reach your approved domains and nothing else. The script even verifies itself at the end — it confirms that `example.com` is blocked and `api.github.com` is reachable before handing control back.
+Without the network sandbox, letting an agent run autonomously is a leap of faith. With it, you have a hard boundary: the agent can reach your approved domains and nothing else, exactly as demonstrated above.
 </AlertBox>
 
 Once the sandbox is running, you can enable autonomous mode for Claude Code via `devcontainer.json` settings:
@@ -155,7 +165,9 @@ Once the sandbox is running, you can enable autonomous mode for Claude Code via 
 
 Or from the terminal for a single session: `claude --dangerously-skip-permissions`. The same principle applies to OpenCode's autonomous mode.
 
-## Without VS Code
+## Under the Hood (skip this if you just want to use it)
+
+### Without VS Code
 
 The Dev Container specification is not exclusive to VS Code. The same `devcontainer.json` works with JetBrains IDEs (via the Dev Containers plugin), GitHub Codespaces, and the `devcontainer` CLI. The `customizations.vscode.extensions` entries are simply ignored by non-VS Code tools, while the `postCreateCommand` agent install still runs. This is worth remembering if your team is split across editors — you write the config once, and everyone benefits from the same sandbox regardless of their IDE.
 

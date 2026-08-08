@@ -25,6 +25,12 @@ I've covered [GitLab Docker-out-of-Docker](/blog/gitlab-docker-out-of-docker), [
 
 <!-- truncate -->
 
+## Demo
+
+<Terminal source="./files/terminal_ci.txt" typewriter />
+
+That's a `phpstan` job on the `main` branch, its actual error (a type mismatch on line 42) surfaced directly in the terminal — no browser, no clicking through three levels of GitLab's job UI to find where the log actually stopped scrolling.
+
 ## What It Needs
 
 <Prerequisite
@@ -61,12 +67,6 @@ Step by step:
 <AlertBox variant="note" title="Why truncate the trace?">
 Sending an entire multi-megabyte log to the model wastes context window on Composer/npm installation noise and slows down the response for no benefit — the actual failure is reliably in the last few thousand characters, right where the job stopped.
 </AlertBox>
-
-## Demo
-
-<Terminal source="./files/terminal_ci.txt" typewriter />
-
-That's a `phpstan` job on the `main` branch, its actual error (a type mismatch on line 42) surfaced directly in the terminal — no browser, no clicking through three levels of GitLab's job UI to find where the log actually stopped scrolling.
 
 ## Registered in the `ai` Menu
 

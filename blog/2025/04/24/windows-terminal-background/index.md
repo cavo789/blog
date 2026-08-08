@@ -5,6 +5,7 @@ date: 2025-04-24
 description: Customize your Windows Terminal! Follow this simple, step-by-step guide to set a cool background image in your console and ditch the old, boring black screen.
 authors: [christophe]
 image: /img/v2/windows_terminal_customization.webp
+series: Windows Terminal
 mainTag: windows-terminal
 tags:
   - customization

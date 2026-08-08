@@ -5,6 +5,7 @@ date: 2024-03-30
 description: Fix the frustrating PuTTY 'No supported authentication methods available' fatal error after saving settings. Learn the quick solution by deleting a specific PuTTY registry entry.
 authors: [christophe]
 image: /img/v2/putty.webp
+series: WinSCP & remote file transfer
 mainTag: winscp
 tags:
   - ssh

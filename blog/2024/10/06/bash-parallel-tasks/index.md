@@ -5,6 +5,7 @@ date: 2024-10-06
 description: Optimize your Bash scripts! Learn how to run concurrent jobs and leverage all your CPU cores using process IDs (pids), wait, and nproc to dramatically reduce execution time.
 authors: [christophe]
 image: /img/v2/linux_parallel.webp
+series: Writing better Bash scripts
 mainTag: bash
 tags:
   - bash

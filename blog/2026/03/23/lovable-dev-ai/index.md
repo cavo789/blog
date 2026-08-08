@@ -28,31 +28,9 @@ Let's see if Lovable.dev can build the same thing in just one hour. **Spoiler: i
 
 <!-- truncate -->
 
-## The objective
+## The Result, After One Hour and a Half
 
-I asked it to create a fully dockerized application with a <Link to="/blog/python-fastapi">Python/FastAPI</Link> backend and a React frontend. The application should render Markdown to HTML once. If the conversion was already done, the HTML should be served from a cache (Redis). The application should be able to browse a folder on my disk recursively and display the list of files and folders. When I click on a file, it should render the Markdown content to HTML and display it.
-
-The application should also have a search engine to search for text in the Markdown files (Meilisearch).
-
-Here is the prompt I used:
-
-<Snippet filename="prompt.md" source="./files/prompt.txt" />
-
-## The different versions
-
-After one minute, I got a first version of the application. Since I wanted to exclusively use Docker, the command I had to run was `docker compose up --build`.
-
-![The list of containers](./images/containers.webp)
-
-It wasn't working due to an error in the frontend Dockerfile. I copy/pasted the error back into the prompt and got a second version. Then a third, fourth, and finally a fifth version.
-
-The last one built successfully. I got the web interface with two sample Markdown files, but neither displayed due to a Python error.
-
-I copy/pasted the error back into the prompt and received an answer like: "Ok, the error is located in file ... and you should do this update and that one."
-
-## The result after one hour and a half
-
-After applying the update, the application worked! I was able to browse my disk and display the content of my Markdown files.
+After applying a few fixes (the actual path there, below), the application worked! I was able to browse my disk and display the content of my Markdown files.
 
 ![Rendering my blog post](./images/rendering.webp)
 
@@ -69,6 +47,28 @@ In the top right corner, there is a search engine. By typing `vscode`, I get a v
 Another great thing: the API works out of the box. I can get the list of files by calling `http://localhost:8000/api/file-tree` and the content of a file by calling `http://localhost:8000/api/render?path=path/to/file.md`.
 
 ![Getting the list of files](./images/api.webp)
+
+## The Objective
+
+I asked it to create a fully dockerized application with a <Link to="/blog/python-fastapi">Python/FastAPI</Link> backend and a React frontend. The application should render Markdown to HTML once. If the conversion was already done, the HTML should be served from a cache (Redis). The application should be able to browse a folder on my disk recursively and display the list of files and folders. When I click on a file, it should render the Markdown content to HTML and display it.
+
+The application should also have a search engine to search for text in the Markdown files (Meilisearch).
+
+Here is the prompt I used:
+
+<Snippet filename="prompt.md" source="./files/prompt.txt" />
+
+## The Actual Path There: Successive Versions and Errors
+
+After one minute, I got a first version of the application. Since I wanted to exclusively use Docker, the command I had to run was `docker compose up --build`.
+
+![The list of containers](./images/containers.webp)
+
+It wasn't working due to an error in the frontend Dockerfile. I copy/pasted the error back into the prompt and got a second version. Then a third, fourth, and finally a fifth version.
+
+The last one built successfully. I got the web interface with two sample Markdown files, but neither displayed due to a Python error.
+
+I copy/pasted the error back into the prompt and received an answer like: "Ok, the error is located in file ... and you should do this update and that one."
 
 ## Conclusion
 

@@ -5,6 +5,7 @@ date: 2025-02-22
 description: Load an Excel range into your custom VBA Ribbon dropdown control. This step-by-step tutorial covers the VBA code, Custom UI XML, and named ranges needed for a dynamic solution.
 authors: [christophe]
 image: /img/v2/ribbon.webp
+series: VBA & MS Office automation
 mainTag: excel
 tags:
   - excel

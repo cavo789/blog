@@ -5,6 +5,7 @@ date: 2024-05-25
 description: Stop the slow process of deleting files via FTP! Learn how to remove entire websites and folders at lightning speed using a simple, self-deleting PHP script—even without SSH access.
 authors: [christophe]
 image: /img/v2/winscp.webp
+series: WinSCP & remote file transfer
 mainTag: linux
 tags:
   - linux

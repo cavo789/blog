@@ -5,6 +5,7 @@ date: 2025-01-19
 description: Tired of painfully slow FTP search functions? Discover php_grep, the ultra-fast PHP script that uses regular expressions to find content on your FTP server at lightning speed.
 authors: [christophe]
 image: /img/v2/winscp.webp
+series: WinSCP & remote file transfer
 mainTag: winscp
 tags:
   - code-quality

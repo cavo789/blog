@@ -24,6 +24,14 @@ Someone reading [my Markitdown article](/blog/markitdown) suggested I try [Docli
 
 <!-- truncate -->
 
+## Converting Five Formats
+
+Once the image and the global wrapper are in place (covered below), converting a document is one command:
+
+<Terminal source="./files/terminal-1.txt" typewriter />
+
+PDF, DOCX, PPTX, XLSX and HTML, five separate `docling-convert` calls, five clean `.md` files sitting right next to their originals — no manual export-to-Markdown step in Word or PowerPoint, no online converter to trust with the content.
+
 ## Docling vs Markitdown — Why Bother With a Second Tool
 
 <AlertBox variant="info" title="Same output, different engine">
@@ -32,7 +40,9 @@ Both tools produce Markdown from office documents. Markitdown is lightweight —
 
 As always, I'll build a Docker image first — no Python, no `pip`, nothing installed globally on my machine.
 
-## Prerequisite — GPU Passthrough
+## Installation
+
+### Prerequisite — GPU Passthrough
 
 <AlertBox variant="important" title="Only needed for GPU acceleration">
 Docling works fine CPU-only (`--device cpu`, or just leave `--device auto` and let it fall back). This step is only required if, like me, you want to actually use your VRAM.
@@ -44,7 +54,7 @@ Install the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-
 
 If that table doesn't show up, fix GPU passthrough before going further — the Dockerfile below will still build without it, but every conversion will silently fall back to CPU.
 
-## Create our Docker image
+### Create our Docker image
 
 Let's create a new folder and jump into it: `mkdir -p /tmp/docling && cd $_`
 
@@ -60,7 +70,7 @@ The [Markitdown Dockerfile](/blog/markitdown) uses a two-stage build to keep the
 Unlike Markitdown's `markitdown[docx,xlsx,pdf]` extras syntax, a plain `pip install docling` already covers PDF, DOCX, PPTX, XLSX and HTML — Docling doesn't split format support into opt-in extras.
 </AlertBox>
 
-## Create an orchestration file
+### Create an orchestration file
 
 Same reasoning as the Markitdown setup: a `compose.yaml` bakes in the security hardening and, here, the GPU reservation too, so the final command stays short.
 
@@ -68,13 +78,13 @@ Same reasoning as the Markitdown setup: a `compose.yaml` bakes in the security h
 
 The one addition worth calling out: `docling-models`, a named volume mounted at `$HF_HOME`. Docling downloads its layout/table/OCR models from Hugging Face the first time it needs them — without a persistent volume, a `--rm` container would silently re-download several hundred megabytes on every single run.
 
-## Build the image
+### Build the image
 
 Run `docker compose build` to build the image — expect this one to take noticeably longer than Markitdown's, since it's pulling a CUDA base image plus PyTorch.
 
 Test it with `docker compose run --rm docling --help`.
 
-## Create the global wrapper
+### Create the global wrapper
 
 Same pattern as `md-convert`, adapted for Docling's actual CLI shape:
 
@@ -86,11 +96,7 @@ Make it executable: `sudo chmod +x /usr/local/bin/docling-convert`.
 Markitdown prints Markdown to stdout, so `md-convert file.docx > file.md` is how you capture it. Docling's CLI writes `<basename>.md` straight into the output directory instead — there's no stdout mode. `docling-convert file.docx` produces `file.md` next to it directly; no `>` redirection needed, and none will work.
 </AlertBox>
 
-## Converting Five Formats
-
-<Terminal source="./files/terminal-1.txt" typewriter />
-
-PDF, DOCX, PPTX, XLSX and HTML, five separate `docling-convert` calls, five clean `.md` files sitting right next to their originals — no manual export-to-Markdown step in Word or PowerPoint, no online converter to trust with the content.
+## More Demos
 
 <AlertBox variant="tip" title="Table quality is where this actually shows">
 Run the same spreadsheet or a table-heavy PDF through both tools and compare the two `.md` files. This is the case where the extra weight of Docling's dedicated table-structure model earns its keep — Markitdown's output is readable, but Docling's tends to keep merged cells and multi-row headers intact where Markitdown flattens them.

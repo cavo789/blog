@@ -25,6 +25,18 @@ I know `jq` well enough to be dangerous, and not well enough to write a `group_b
 
 <!-- truncate -->
 
+## Demo — JSON
+
+<Terminal source="./files/terminal_json.txt" typewriter />
+
+Five suggestions, all referencing the real field names (`active`, `birth_date`, `name`) it saw in the sample — not placeholder examples from a `jq` tutorial. After picking the first one through `fzf`, that exact `jq` command was sitting at my prompt; I read it, it looked right, I pressed Enter.
+
+## Demo — CSV
+
+<Terminal source="./files/terminal_csv.txt" typewriter />
+
+This is the group-by-and-count case from the start of this idea: total amount and order count per region, in one `awk` line I did not have memorized and now, having read it once at my own prompt, understand better than if I'd just seen the output.
+
 ## The Idea — Suggestions, Not Answers
 
 Most functions in this series ask the model a question and print the answer. `ai-data` is different on purpose: it asks the model for **candidate commands**, shows them through `fzf`, and when you pick one, it doesn't run it — it drops it onto your prompt, editable, via zsh's `print -z`. You read the exact `jq` filter or `awk` script before it touches your data, and because you're the one hitting Enter, you actually absorb the syntax instead of just consuming the output.
@@ -49,18 +61,6 @@ Step by step:
 <AlertBox variant="note" title="No fzf? Still works">
 Without `fzf` installed, `ai-data` just prints the five suggestions as plain text — you copy the one you want manually. Same information, one less convenience.
 </AlertBox>
-
-## Demo — JSON
-
-<Terminal source="./files/terminal_json.txt" typewriter />
-
-Five suggestions, all referencing the real field names (`active`, `birth_date`, `name`) it saw in the sample — not placeholder examples from a `jq` tutorial. After picking the first one through `fzf`, that exact `jq` command was sitting at my prompt; I read it, it looked right, I pressed Enter.
-
-## Demo — CSV
-
-<Terminal source="./files/terminal_csv.txt" typewriter />
-
-This is the group-by-and-count case from the start of this idea: total amount and order count per region, in one `awk` line I did not have memorized and now, having read it once at my own prompt, understand better than if I'd just seen the output.
 
 ## Registered in the `ai` Menu
 

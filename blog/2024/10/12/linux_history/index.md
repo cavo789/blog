@@ -5,6 +5,7 @@ date: 2024-10-12
 description: Master your Linux command line history. Learn how to view, locate (.bash_history, .zsh_history), and manage your previously executed commands with essential tips.
 authors: [christophe]
 image: /img/v2/linux_tips.webp
+series: Customize your shell with ZSH
 mainTag: linux
 tags:
   - linux

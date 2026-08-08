@@ -5,10 +5,10 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 708860e8-3efc-4d08-a254-45060a383296
-  modified: 2026-07-27T18:03:36.551Z
+  modified: 2026-08-08T09:54:12.778Z
 ---
 
-Coverage map built from full `/blog` analysis (2026-06-08, refreshed 2026-08-07). Before suggesting article topics, read this to avoid duplicates. Linked to [[project-article-proposals]] and [[project-blog-map]].
+Coverage map built from full `/blog` analysis (2026-06-08, refreshed 2026-08-10). Before suggesting article topics, read this to avoid duplicates. Linked to [[project-article-proposals]] and [[project-blog-map]].
 
 **Why:** Re-analyzing the entire /blog folder costs many tokens. This map captures what's already covered.
 **How to apply:** Cross-check any new article idea against these lists; if substantially covered, propose a different angle.
@@ -138,8 +138,8 @@ Christophe hasn't retested it yet.
 - ~~`ollama-test-generator`~~ — **PUBLISHED 2026-08-03**: `/blog/ollama-test-generator`. First post of the
   "Ollama daily-use functions" series. Introduces `_ollama.zsh` foundation, `AI_COMMANDS` registry,
   `ai` dispatcher. Generates Bats/Pest/Pytest suites, gap-fill mode when tests already exist.
-- `ollama-git-precommit` — **REPLACES** the 3 separate drafts `ollama-ai-commit`, `ollama-ai-review`,
-  `ollama-ai-secrets` (all deleted from `.unpublished/`, merged into one article 2026-08-07).
+- ~~`ollama-git-precommit`~~ — **PUBLISHED 2026-08-10**: `/blog/ollama-git-precommit`. Replaced the 3
+  separate drafts `ollama-ai-commit`, `ollama-ai-review`, `ollama-ai-secrets` (merged 2026-08-07).
   Title: "ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit". Same series.
 - `ollama-ai-standup` — `ai-standup [days]` zsh function: summarizes `git log` across
   `$AI_STANDUP_REPOS` into a spoken-friendly recap. Day count is configurable via `$AI_STANDUP_DAYS`

@@ -5,6 +5,7 @@ date: 2025-05-25
 description: Make your complex Excel formulas easy to read! Use the Excel Formula Beautifier to instantly format and clarify your spreadsheet formulas for better understanding.
 authors: [christophe]
 image: /img/v2/excel.webp
+series: Self-host your own services
 mainTag: excel
 tags:
   - excel

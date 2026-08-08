@@ -29,6 +29,16 @@ It's quite impossible to do by hand when you have hundreds of Markdown files. Pl
 
 <!-- truncate -->
 
+## Seeing the Suggestions
+
+One command lists every tag and flags the likely duplicates:
+
+<Terminal typewriter wrap={true}>
+$ make tags-manager ARGS="list"
+</Terminal>
+
+![List of tags](./images/list.webp)
+
 ## The Solution: A Smart Tag Manager
 
 I wanted a tool that could do three things:
@@ -49,12 +59,6 @@ It looks for:
 
 This helps me spot the mess I didn't even know I had.
 
-### The Script
-
-Here is the full Python script. It uses `argparse` to handle command-line arguments and `python-frontmatter` to parse the files.
-
-<Snippet filename=".scripts/tags-manager.py" source=".scripts/tags-manager.py" defaultOpen={false} />
-
 ## How to Run It (Docker-First)
 
 As always, I don't want to pollute my host machine with Python dependencies. I run this script using Docker — exactly like the image checker described in <Link to="/blog/docusaurus-check-images">Running some checks on your Docusaurus images</Link>.
@@ -69,17 +73,15 @@ But, for sure, that command is quite complex to remember, so I use a <Link to="/
 
 <Snippet filename="makefile" source="./files/makefile" defaultOpen={false} />
 
-### Examples
+## The Script
 
-**1. Listing tags and getting suggestions:**
+Here is the full Python script. It uses `argparse` to handle command-line arguments and `python-frontmatter` to parse the files.
 
-<Terminal typewriter wrap={true}>
-$ make tags-manager ARGS="list"
-</Terminal>
+<Snippet filename=".scripts/tags-manager.py" source=".scripts/tags-manager.py" defaultOpen={false} />
 
-![List of tags](./images/list.webp)
+## More Examples
 
-**2. Renaming a tag:**
+**Renaming a tag:**
 
 If, by looking at the list of tags, I see I have a `snippets` tag and a `snippet` one, I'll merge them like this:
 
@@ -87,7 +89,7 @@ If, by looking at the list of tags, I see I have a `snippets` tag and a `snippet
 $ make tags-manager ARGS="rename snippets,snippet"
 </Terminal>
 
-**3. Deleting a tag:**
+**Deleting a tag:**
 
 I can also find that a specific tag doesn't add any value so, to remove it, I'll run something like this:
 

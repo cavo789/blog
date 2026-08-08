@@ -5,6 +5,7 @@ date: 2024-08-05
 description: Master code folding in VSCode with regions. Learn how to use them in PHP and how to enable region support for unsupported files like Dockerfile with a simple extension.
 authors: [christophe]
 image: /img/v2/vscode_tips.webp
+series: VSCode - Tips, extensions and shortcuts
 mainTag: vscode
 tags:
   - php

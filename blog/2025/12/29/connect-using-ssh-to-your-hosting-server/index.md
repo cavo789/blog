@@ -8,6 +8,7 @@ tags:
   - self-hosted
   - ssh
 image: /img/v2/planethoster-using-ssh.webp
+series: SSH - From your first key to remote development
 date: 2025-12-29
 blueskyRecordKey: 3mb4feo4u7c2t
 ---
@@ -25,6 +26,20 @@ You'll learn how to gather the required information, generate an SSH key pair, c
 For this article, let's assume you have a PlanetHoster hosting account so, at the end of this guide, you'll be able to connect to your PlanetHoster server using a simple command like `ssh planethoster`.
 
 <!-- truncate -->
+
+## The Result
+
+Once the key and the `~/.ssh/config` alias are in place (covered below), starting a session is one command — immediate, no password prompt:
+
+![Success](./images/success.webp)
+
+## Why It Works
+
+- Your **public** key gets copied to the server's `~/.ssh/authorized_keys` — the server can verify your identity without ever seeing a password.
+- A short block in `~/.ssh/config` bundles the host, port, user and key into one alias — `ssh planethoster` instead of a four-flag command to remember.
+- Once the key is in place, there's nothing left to type or retype — the "password each time" annoyance this article opened with is gone for good.
+
+## Installation
 
 <StepsCard
   title="You'll need to obtain the following pieces of information:"
@@ -67,7 +82,7 @@ The fourth piece of information to gather is the password associated with your u
   ]}
 />
 
-## First, just try with a manual SSH connection
+### First, just try with a manual SSH connection
 
 In a Linux (or Windows Powershell) console, run the following command:
 
@@ -89,11 +104,11 @@ If the `ssh` command takes a long time and then ends with a timeout, it likely m
 In this case, you'll have to wait a certain amount of time (depends on the hosting company). Best, if you're blocked, would be to create a support ticket and ask for your IP to be unblocked.
 </AlertBox>
 
-## Create an SSH Key to Connect to PlanetHoster
+### Create an SSH Key to Connect to PlanetHoster
 
 In the previous step, we've confirmed that we can connect to the server with our credentials so let's improve the connection by setting up SSH key-based authentication. This will allow passwordless authentication for future connections.
 
-### Create an SSH key
+#### Create an SSH key
 
 On your local machine, run a command like `ssh-keygen -t ed25519 -C "john_doe" -f ~/.ssh/id_ed25519_hosting` in your terminal. *The very same key mechanism is used to talk to GitHub, as described in <Link to="/blog/github-connect-using-ssh">GitHub - Connect your account using SSH and start to work with git@ protocol</Link>.* This will create a private SSH key called `~/.ssh/id_ed25519_hosting` (and the associated public key `~/.ssh/id_ed25519_hosting.pub`).
 
@@ -103,7 +118,7 @@ You'll be prompted to enter a passphrase. You can choose to set one for added se
 Are you curious? Run `cat ~/.ssh/id_ed25519_hosting.pub` to view the content of your public key. The key will look something like `ssh-ed25519 BASE64_STRING john_doe`.
 </AlertBox>
 
-### Copy your key to the server
+#### Copy your key to the server
 
 To be able to connect without a password, you need to copy your public key to the server.
 
@@ -125,7 +140,7 @@ $ ssh -i ~/.ssh/id_ed25519_hosting -p 5022 john_doe@node30-eu.n0c.com
 
 As expected, you'll be immediately connected without a password prompt thanks to our SSH key.
 
-### Simplify the Command with an SSH Config File
+#### Simplify the Command with an SSH Config File
 
 The previous command is quite complex, isn't it? Are we able to simplify it? Yes!
 
@@ -153,13 +168,13 @@ Permissions 0644 for '/home/john_doe/.ssh/id_ed25519_hosting' are too open.
 
 </AlertBox>
 
-### Establish an Easy SSH Connection
+#### Establish an Easy SSH Connection
 
-From now on, to start an SSH connection to your host, open a terminal and run `ssh planethoster` (or the alias you defined). If everything is configured correctly, you will be connected **immediately** and **without a password prompt**.
+From now on, to start an SSH connection to your host, open a terminal and run `ssh planethoster` (or the alias you defined). If everything is configured correctly, you will be connected **immediately** and **without a password prompt** — exactly the result shown at the top of this article.
 
-![Success](./images/success.webp)
+## More Demos
 
-## Troubleshooting & tips
+### Troubleshooting & tips
 
 - If a connection fails, run the SSH client in verbose mode to see debug output: `ssh -vvv -p 5022 john_doe@node30-eu.n0c.com` (i.e. add `-vvv` as an extra CLI flag).
 - If you see a `WARNING: UNPROTECTED PRIVATE KEY FILE!` error, check local permissions on your private key and use `chmod 600` as shown earlier.

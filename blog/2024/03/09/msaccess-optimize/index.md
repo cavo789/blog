@@ -5,6 +5,7 @@ date: 2024-03-09
 description: Speed up your slow Microsoft Access database with this step-by-step optimization guide. Learn to improve table structure, use indexes, optimize queries, and compact your database for better performance.
 authors: [christophe]
 image: /img/v2/msaccess.webp
+series: VBA & MS Office automation
 mainTag: msaccess
 tags:
   - database

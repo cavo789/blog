@@ -5,6 +5,7 @@ date: 2023-11-03
 description: Running low on C drive space? Follow this step-by-step guide to safely move your WSL (Windows Subsystem for Linux) distribution and Docker data to a new drive location using the wsl --export and wsl --import commands.
 authors: [christophe]
 image: /img/v2/wsl.webp
+series: WSL2 - Install, move and use it
 mainTag: wsl
 tags:
   - docker

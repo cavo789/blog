@@ -25,23 +25,6 @@ Three colleagues, three languages — by the end of any given week, my terminal 
 
 <!-- truncate -->
 
-## Three Modes, One Function
-
-`ai-translate` detects how it was called and picks the right source automatically:
-
-<Snippet filename="~/.zsh/fns/ai-translate.zsh" source="./files/ai-translate.zsh" defaultOpen={true} />
-
-The three cases — piped stdin, file path, inline string — cover every real entry point I could think of for a translation task in the terminal. The `OLLAMA_TRANSLATE_LANG` env var lets you change the default permanently if English isn't your most common target:
-
-```bash
-# In ~/.zshrc, if French is your everyday default:
-export OLLAMA_TRANSLATE_LANG=French
-```
-
-<AlertBox variant="note" title="This supersedes the ai-translate from ai-docs">
-`ai-translate` was first introduced in [ai-translate & ai-summarize: Confidential Documents, Handled 100% Locally](/blog/ollama-ai-docs), as a document-only function that defaulted to French. This standalone version supersedes it: it handles plain text and piped input as well as files, and defaults to English. If you already have the older version installed, sourcing this file after it will replace the function — or remove the `ai-translate` definition from `_ai-docs.zsh` and keep only `_ai_extract_text` and `ai-summarize`.
-</AlertBox>
-
 ## Demo — Inline String
 
 <Terminal source="./files/terminal_text.txt" typewriter />
@@ -60,6 +43,23 @@ The pipe case is the one I reach for most often: `git log --oneline | ai-transla
 
 <AlertBox variant="tip" title="Use full language names, not ISO codes">
 Pass `French` rather than `fr`, `Dutch` rather than `nl`. LLMs respond more reliably to full language names than to ISO codes — the codes are lookup keys; the names carry semantic weight the model can act on directly.
+</AlertBox>
+
+## Three Modes, One Function
+
+`ai-translate` detects how it was called and picks the right source automatically:
+
+<Snippet filename="~/.zsh/fns/ai-translate.zsh" source="./files/ai-translate.zsh" defaultOpen={true} />
+
+The three cases — piped stdin, file path, inline string — cover every real entry point I could think of for a translation task in the terminal. The `OLLAMA_TRANSLATE_LANG` env var lets you change the default permanently if English isn't your most common target:
+
+```bash
+# In ~/.zshrc, if French is your everyday default:
+export OLLAMA_TRANSLATE_LANG=French
+```
+
+<AlertBox variant="note" title="This supersedes the ai-translate from ai-docs">
+`ai-translate` was first introduced in [ai-translate & ai-summarize: Confidential Documents, Handled 100% Locally](/blog/ollama-ai-docs), as a document-only function that defaulted to French. This standalone version supersedes it: it handles plain text and piped input as well as files, and defaults to English. If you already have the older version installed, sourcing this file after it will replace the function — or remove the `ai-translate` definition from `_ai-docs.zsh` and keep only `_ai_extract_text` and `ai-summarize`.
 </AlertBox>
 
 ## File Mode

@@ -1,0 +1,12 @@
+$ docker compose exec caddy caddy trust
+
+root certificate is already trusted by system
+
+$ curl -I https://myapp.localhost
+
+HTTP/2 200
+alt-svc: h3=":443"; ma=2592000
+content-type: text/plain; charset=utf-8
+server: Caddy
+content-length: 29
+date: Sat, 08 Aug 2026 10:08:52 GMT

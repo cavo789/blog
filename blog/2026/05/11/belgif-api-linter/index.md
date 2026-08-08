@@ -29,9 +29,49 @@ In this article, we'll explore how to use the official Belgif OpenAPI linter via
 
 <!-- truncate -->
 
-For this blog post, we'll suppose you already have an OpenAPI compatible application. Such applications are documented using an Open API json file; often called `opendata.json` or `openapi.json`. *<Link to="/blog/python-fastapi">Python - Fast API - Create your JSON API in Python in one minute</Link> gives you one in, well, a minute.*
+## Seeing the Linter Run
 
-## Create a dummy application
+Once the `belgif-lint` container is in place (covered under Installation below), checking an `openapi.json` file is two commands:
+
+<Terminal typewriter wrap={true}>
+$ curl -s http://localhost:8000/openapi.json > openapi.json
+</Terminal>
+
+<Terminal typewriter wrap={true}>
+$ docker compose run --rm belgif-lint
+</Terminal>
+
+It'll produce something like this:
+
+<Snippet source="./files/result.txt" />
+
+<AlertBox variant="note" title="Please refer to the official site">
+From now on, please refer to [https://www.belgif.be/specification/rest/api-guide](https://www.belgif.be/specification/rest/api-guide) to learn how to manage errors reported by the tool.
+</AlertBox>
+
+<Details label="Bonus - Get rid of Belgif intern warnings">
+
+While running the Belgif linter, you may encounter a lot of warnings like below:
+
+<Snippet filename="warnings.txt" source="./files/warnings.txt" />
+
+The warnings are about the linter itself (in fact, comes from a tool called `Drools`) and thus **they have nothing to do with your code**. It's just visual pollution for us; the only thing we can do is to hide them.
+
+Look at the new file below:
+
+<Snippet filename="compose.yaml" source="./files/compose_belgif_no_warnings.yaml" />
+
+In short, we'll run a custom command where we'll collect both STDERR and STDOUT in just one output stream then we'll run a few `grep` commands to purge specific messages from the output (the ones we can't solve).
+
+</Details>
+
+## Belgif standards
+
+[Belgif REST standards](https://github.com/belgif/rest-guide-validator) are defined in [https://www.belgif.be/specification/rest/api-guide/](https://www.belgif.be/specification/rest/api-guide/) and *is a collaborative effort by several Belgian government institutions, originally under the G-Cloud umbrella, before moving to Belgif, the Belgian Interoperability Framework. Its goal is to improve compatibility between RESTful services offered by government institutions or any other organization adopting these guidelines.*
+
+If you want to check if your API is compliant, you can use the [belgif-rest-guide-validator](https://github.com/belgif/rest-guide-validator) as documented in the [Tools](https://www.belgif.be/specification/rest/api-guide/#openapi-tools) section.
+
+## Installation — Create a dummy application
 
 If you don't have one yet, just click on the `Generate install script` below and paste the CLI into a terminal then press the <kbd>Enter</kbd> key to create the project structure in a `/tmp/fastapi` folder on your disk.
 
@@ -86,11 +126,7 @@ You can test it using `curl` or your browser:
 
     You should see: `{"skip":0,"limit":20}`
 
-## Belgif standards
-
-[Belgif REST standards](https://github.com/belgif/rest-guide-validator) are defined in [https://www.belgif.be/specification/rest/api-guide/](https://www.belgif.be/specification/rest/api-guide/) and *is a collaborative effort by several Belgian government institutions, originally under the G-Cloud umbrella, before moving to Belgif, the Belgian Interoperability Framework. Its goal is to improve compatibility between RESTful services offered by government institutions or any other organization adopting these guidelines.*
-
-If you want to check if your API is compliant, you can use the [belgif-rest-guide-validator](https://github.com/belgif/rest-guide-validator) as documented in the [Tools](https://www.belgif.be/specification/rest/api-guide/#openapi-tools) section.
+## Adding the Belgif Linter
 
 An easy way to do this is by using a Docker container. In the code sample below, take a look at the newer version of `compose.yaml`, we've added a new service called `belgif-lint` based on `maven`.
 
@@ -105,41 +141,7 @@ An easy way to do this is by using a Docker container. In the code sample below,
   <Snippet filename="Dockerfile" source="./files/Dockerfile" />
 </ProjectSetup>
 
-Once you've fired `docker compose up --build -d` again to create the `belgif-lint` container, you're almost ready to use it but first, you need to make sure you have an `openapi.json` file on your disk. So let's create it by running the following command:
-
-<Terminal typewriter wrap={true}>
-$ curl -s http://localhost:8000/openapi.json > openapi.json
-</Terminal>
-
-We've now everything to run the check:
-
-<Terminal typewriter wrap={true}>
-$ docker compose run --rm belgif-lint
-</Terminal>
-
-It'll produce something like this:
-
-<Snippet source="./files/result.txt" />
-
-<AlertBox variant="note" title="Please refer to the official site">
-From now on, please refer to [https://www.belgif.be/specification/rest/api-guide](https://www.belgif.be/specification/rest/api-guide) to learn how to manage errors reported by the tool.
-</AlertBox>
-
-<Details label="Bonus - Get rid of Belgif intern warnings">
-
-While running the Belgif linter, you may encounter a lot of warnings like below:
-
-<Snippet filename="warnings.txt" source="./files/warnings.txt" />
-
-The warnings are about the linter itself (in fact, comes from a tool called `Drools`) and thus **they have nothing to do with your code**. It's just visual pollution for us; the only thing we can do is to hide them.
-
-Look at the new file below:
-
-<Snippet filename="compose.yaml" source="./files/compose_belgif_no_warnings.yaml" />
-
-In short, we'll run a custom command where we'll collect both STDERR and STDOUT in just one output stream then we'll run a few `grep` commands to purge specific messages from the output (the ones we can't solve).
-
-</Details>
+Once you've fired `docker compose up --build -d` again to create the `belgif-lint` container, you're ready to run the check shown at the top of this article — you just need an `openapi.json` file on disk first, which is exactly what the first command up there produces.
 
 ## FastAPI tips
 
@@ -241,3 +243,9 @@ The `main.py` file illustrates how to call the helper.
 <Snippet filename="main.py" source="./files/main_configure.py" />
 
 <Snippet filename="helpers/openapi.py" source="./files/main_helper.py" />
+
+## Conclusion
+
+FastAPI gets you a working OpenAPI schema for free, but "working" and "Belgif-compliant" are two different bars — the linter above is what closes that gap, and the fixes in this article cover the specific violations FastAPI's defaults trigger most often (tags, the OpenAPI version, `title` properties, naming conventions). Run `belgif-lint` before you ship, not after a reviewer flags it.
+
+If you're still shaping the API itself rather than validating it, <Link to="/blog/php-api-tips">API REST - How to write good APIs</Link> is the article to read first.

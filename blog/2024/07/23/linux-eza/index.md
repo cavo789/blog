@@ -5,6 +5,7 @@ date: 2024-07-23
 description: Tired of typing ls -alh? Discover eza, the modern, feature-rich replacement for the basic Linux ls command. Learn how to install it and set up a powerful new alias for a better command-line experience.
 authors: [christophe]
 image: /img/v2/linux_tips.webp
+series: Modern CLI tools for your terminal
 mainTag: customization
 tags:
   - customization

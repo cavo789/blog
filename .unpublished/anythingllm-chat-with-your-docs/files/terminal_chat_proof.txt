@@ -1,0 +1,15 @@
+$ curl -X POST -H "Authorization: Bearer $API_KEY" -H "Content-Type: application/json" \
+    -d '{"message":"How did I configure the VPN to reach my home PC from the work laptop?"}' \
+    http://localhost:3001/api/v1/workspace/home-notes/chat
+
+According to your notes, you configured the VPN using Tailscale. The steps you took were:
+
+1. Installed the Tailscale client on both the home PC and the work laptop.
+2. Ran `tailscale up` on each machine and authenticated with the shared Tailscale account.
+3. Noted the Tailscale IP assigned to the home PC, usually in the `100.x.y.z` range.
+
+When you're off the home LAN, you need to replace any references to `192.168.0.218` (the
+original home LAN address) with the Tailscale IP whenever using local tooling on your work
+laptop.
+
+Source: vpn-notes.md

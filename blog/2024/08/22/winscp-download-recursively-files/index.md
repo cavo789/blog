@@ -5,6 +5,7 @@ date: 2024-08-22
 description: Learn how to use WinSCP's scripting feature to download files with a specific extension (like .php) recursively from your FTP/SFTP server. Includes a simple script example.
 authors: [christophe]
 image: /img/v2/winscp.webp
+series: WinSCP & remote file transfer
 mainTag: winscp
 tags:
   - ssh

@@ -27,9 +27,37 @@ So you open a browser, search, find a Stack Overflow answer, copy the command, a
 
 ## What navi is
 
-[`navi`](https://github.com/denisidoro/navi) is a command-line cheatsheet tool that uses fzf for searching. You write `.cheat` files with named commands, descriptions, and variable placeholders. `navi` presents them in a searchable list; when you select one, it prompts for any variable values and loads the completed command onto your shell prompt — ready to edit or run.
+[`navi`](https://github.com/denisidoro/navi) is a command-line cheatsheet tool that uses fzf for searching. You write `.cheat` files with named commands, descriptions, and variable placeholders. Selecting one prompts for any variable values and loads the completed command onto your shell prompt — ready to edit or run.
 
-The key difference from a simple alias: navi handles variables interactively. A command like `docker exec -it <container> bash` prompts you to pick a running container from a live list (`docker ps` output), then pastes the full command with the real container name filled in.
+## First run — browse community cheatsheets
+
+Launch navi without arguments:
+
+<Terminal>
+navi
+</Terminal>
+
+On the first run, navi offers to download community cheatsheets from the [cheatsheets repository](https://github.com/denisidoro/cheats). Accept. This gives you hundreds of ready-to-use commands for `git`, `docker`, `kubectl`, `curl`, `ssh`, and more.
+
+The fzf interface opens. Type to filter — navi searches both command descriptions and the commands themselves:
+
+```
+> docker logs
+  docker, containers
+  Follow logs of a container (last 50 lines)
+  docker logs -f --tail 50 <container>
+──────────────────────────────────────────
+```
+
+Press `Enter` on a command that has variables — navi prompts for each one. For `<container>`, it runs `docker ps` and presents the results in a second fzf picker. Select the container, press `Enter`, and the completed command lands on your prompt:
+
+```
+$ docker logs -f --tail 50 my_api_container█
+```
+
+You can edit it before running, or just press `Enter`.
+
+The key difference from a simple alias: navi handles variables interactively, pulling live data (a running container, in this example) into the picker instead of making you type it from memory.
 
 ## Install
 
@@ -62,34 +90,6 @@ navi --version
 ```
 navi 2.23.0
 ```
-
-## First run — browse community cheatsheets
-
-Launch navi without arguments:
-
-<Terminal>
-navi
-</Terminal>
-
-On the first run, navi offers to download community cheatsheets from the [cheatsheets repository](https://github.com/denisidoro/cheats). Accept. This gives you hundreds of ready-to-use commands for `git`, `docker`, `kubectl`, `curl`, `ssh`, and more.
-
-The fzf interface opens. Type to filter — navi searches both command descriptions and the commands themselves:
-
-```
-> docker logs
-  docker, containers
-  Follow logs of a container (last 50 lines)
-  docker logs -f --tail 50 <container>
-──────────────────────────────────────────
-```
-
-Press `Enter` on a command that has variables — navi prompts for each one. For `<container>`, it runs `docker ps` and presents the results in a second fzf picker. Select the container, press `Enter`, and the completed command lands on your prompt:
-
-```
-$ docker logs -f --tail 50 my_api_container█
-```
-
-You can edit it before running, or just press `Enter`.
 
 ## The .cheat file format
 

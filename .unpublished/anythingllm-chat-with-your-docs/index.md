@@ -26,36 +26,26 @@ If you've ever opened a terminal, typed `grep -r "some term" ~/repositories`, go
 
 <!-- truncate -->
 
-## The Problem: Documentation Everywhere, Findable Nowhere
+## Seeing It Work
 
-Text search tools like `rg` are great when you remember the exact word you're looking for. They're useless when you remember the *idea* but not the vocabulary — "that thing where I had to fix the CORS issue on the API" won't match a file that talks about "cross-origin" without ever using the word "CORS". Multiply that by dozens of repositories, several file formats that don't even open the same way (try grepping inside a `.xlsx`), and you get exactly the kind of mess that makes you close the terminal and just try to remember harder.
+Once a workspace has a document embedded, asking it a question is one API call — the same request the chat panel sends when you type into it:
 
-This is the specific itch AnythingLLM scratches: ask a question in plain English, across every document you've fed it, and get an answer built from whatever chunk of whatever file actually contains the relevant information — with a pointer back to that file.
+<Terminal source="./files/terminal_chat_proof.txt" typewriter wrap={true} />
 
-## What AnythingLLM Actually Does
+That's the whole pitch in one exchange: a plain-English question, an answer built from the actual file content, and the source named at the bottom instead of a hallucinated guess.
 
-[AnythingLLM](https://anythingllm.com/) is an open-source, self-hosted application (Docker image or desktop app) built around one idea: Retrieval-Augmented Generation (RAG) over your own files, organized into **workspaces**.
+## Why It Works
 
-A few concepts worth knowing before touching Docker:
-
-- **Workspaces** are isolated containers of documents, vectors and settings. One workspace per project, per client, per topic — whatever separation makes sense for you. Nothing leaks between them.
-- **Documents in, answers out.** You feed a workspace files — Markdown, Quarto `.qmd`, PDF, DOCX, XLSX, PPTX, CSV, HTML, 50+ source-code extensions, even YouTube transcripts and scraped web pages — and it chunks and embeds them into a vector database sitting right next to your documents.
-- **Citations, not guesses.** Every answer comes back with a reference to the source file and the chunk it was pulled from, so you can go verify it instead of trusting a hallucination on faith.
-- **It's a client, not an LLM.** AnythingLLM doesn't ship a model of its own — it calls out to an **LLM Provider** you configure: OpenAI, Anthropic, or, the interesting part for us, **Ollama**.
-
-That last point is the one that makes this whole article possible: if you already run Ollama somewhere, AnythingLLM is just another thing that talks to it.
-
-## Is It Actually Useful, or Just Another AI Toy?
-
-Genuinely useful — for this specific job. It is not a replacement for `rg`; it's the tool you reach for once `rg` has failed you, because you know the idea but not the exact words, or because the answer is buried inside a PDF or a spreadsheet that grep can't even read. It's also not a replacement for Open WebUI: Open WebUI is your general-purpose chat client for Ollama, AnythingLLM is specifically the document-RAG layer on top of a model — the two coexist without stepping on each other's toes, both perfectly happy to talk to the same Ollama instance.
-
-Where it stops being useful is if you expect it to behave like a live filesystem index. It doesn't watch folders and auto-update as you edit files — you (or a script) have to feed it documents, and the GUI currently uploads file by file (you can multi-select several at once from the OS file picker, but not an entire folder tree with subfolders). In practice, that pushes you toward exactly the workspace-per-project structure that makes sense anyway: one workspace per repository under `~/repositories`, its documents uploaded in one multi-select pass.
+- [AnythingLLM](https://anythingllm.com/) is an open-source, self-hosted app built around Retrieval-Augmented Generation (RAG) over your own files, organized into **workspaces** — one per project, per client, or per topic, with nothing leaking between them.
+- **It's a client, not an LLM.** AnythingLLM doesn't ship a model of its own — it calls out to an **LLM Provider** you configure: OpenAI, Anthropic, or, the interesting part for us, **Ollama**. If you already run Ollama somewhere, AnythingLLM is just another thing that talks to it.
+- Every answer comes back with a reference to the source file and the chunk it was pulled from — a citation, not a guess you have to trust on faith.
+- It complements `rg`/grep rather than replacing it: useful once you remember the *idea* but not the exact words, or when the answer is buried inside a PDF or spreadsheet grep can't even read. It also coexists with Open WebUI — Open WebUI is a general-purpose chat client for Ollama, AnythingLLM is specifically the document-RAG layer, and both are happy to talk to the same Ollama instance.
 
 <AlertBox variant="tip" title="What you get for the setup effort">
 A natural-language question over everything in a workspace, with the source file named in the answer. That single feature is worth the twenty minutes of Docker setup below — it turns "I know I wrote this down somewhere" into an actual answer.
 </AlertBox>
 
-## Part 1 — Running AnythingLLM on the Home PC
+## Installation — Part 1: Running AnythingLLM on the Home PC
 
 This is the simple case: AnythingLLM and Ollama live on the same machine, my home PC with 24GB of VRAM to spare.
 
@@ -79,7 +69,7 @@ $ echo "JWT_SECRET=$(openssl rand -hex 32)" > .env
 AnythingLLM uses a headless Chromium under the hood for some document and web-scraping features, and Chromium wants this capability to run its sandbox inside a container. It's a broader grant of privilege than I'd like to hand out by default — the project has an open discussion about replacing it with a narrower seccomp profile instead, but as of now, `SYS_ADMIN` is what the official image expects. Worth knowing, not worth losing sleep over on a home LAN.
 </AlertBox>
 
-`OLLAMA_BASE_PATH` and `EMBEDDING_BASE_PATH` both point at `192.168.0.218` — the same home-server IP address I used in <Link to="/blog/accessing-ollama-across-your-local-network">Accessing Ollama across your local network</Link>. Replace it with your own server's IP. Notice that even though Ollama and AnythingLLM run on the very same machine here, I'm still using the LAN IP rather than `localhost` — that detail matters in Part 2, where it stops being a detail and becomes the whole point.
+`OLLAMA_BASE_PATH` and `EMBEDDING_BASE_PATH` both point at `192.168.0.218` — the same home-server IP address I used in <Link to="/blog/accessing-ollama-across-your-local-network">Accessing Ollama across your local network</Link>. Replace it with your own server's IP. Notice that even though Ollama and AnythingLLM run on the very same machine here, I'm still using the LAN IP rather than `localhost` — that detail matters later, where it stops being a detail and becomes the whole point.
 
 Pull the embedding model on the Ollama side before starting AnythingLLM — it's small (a few hundred MB) and required for anything to get embedded at all:
 
@@ -95,6 +85,8 @@ $ docker compose up --detach
 [+] Running 1/1
  ✔ Container anythingllm  Started
 </Terminal>
+
+## More Demos
 
 ### First-run setup
 
@@ -115,7 +107,7 @@ Browse to `http://localhost:3001` (or `http://192.168.0.218:3001` from another m
 
 Inside the workspace, the upload dialog accepts exactly the mix I described earlier: drop in a `README.md`, a Quarto `.qmd` report, a PDF, a DOCX, an Excel sheet, a PowerPoint deck — multi-select as many as the OS file picker lets you grab at once. AnythingLLM parses each format on its own; you don't need to convert anything first.
 
-Once the documents show a green "embedded" status, ask a real question in the chat panel — something you'd normally have gone digging for. The answer comes back with the source document named next to it, so you can go double-check it instead of taking the model's word for it.
+Once the documents show a green "embedded" status, ask a real question in the chat panel — something you'd normally have gone digging for, the same way the terminal proof above got its answer. The answer comes back with the source document named next to it, so you can go double-check it instead of taking the model's word for it.
 
 <AlertBox variant="important" title="One workspace per project">
 Because bulk-uploading a folder tree isn't supported through the GUI, organize workspaces to mirror your `~/repositories` structure: one workspace per project, documents uploaded in a single multi-select pass. It also keeps the vector space focused — a question about project A won't get diluted by irrelevant chunks from project B.
@@ -123,7 +115,9 @@ Because bulk-uploading a folder tree isn't supported through the GUI, organize w
 
 At this point, everything — the documents themselves, their embeddings, the LanceDB files — lives inside the `anythingllm_storage` volume, on the home PC. Fine for this machine. Not fine for what comes next.
 
-## Part 2 — Keeping Documents on the Work PC, Borrowing the Home PC's GPU
+## Under the Hood (skip this if you just want to use it)
+
+### Part 2: Keeping Documents on the Work PC, Borrowing the Home PC's GPU
 
 Here's the constraint that changes everything: my actual documentation — the stuff under `~/repositories` — lives on my **work** PC, and it's staying there. Not synced, not copied, not uploaded anywhere for convenience.
 
@@ -143,7 +137,7 @@ Work PC (Docker)                          Home PC
 
 Only prompts and the retrieved text chunks needed to answer them cross the network for that single request — nothing gets stored on the other end.
 
-### What actually changes in the compose file
+#### What actually changes in the compose file
 
 Nothing structural — it's the exact same `compose.yaml` from Part 1, running through Docker Desktop on the work PC instead. The only thing that changes is which address `OLLAMA_BASE_PATH` and `EMBEDDING_BASE_PATH` point to, and that address depends on where the work PC physically is:
 
@@ -154,7 +148,7 @@ Nothing structural — it's the exact same `compose.yaml` from Part 1, running t
 
 When the work PC is sitting on the same home network, that's it — `192.168.0.218` is reachable exactly as it was in <Link to="/blog/accessing-ollama-across-your-local-network">the earlier article</Link>, and the rest of this setup is a copy-paste of Part 1.
 
-### And when it isn't home
+#### And when it isn't home
 
 Five days a week, that work PC isn't on the home LAN at all. A plain IP address on a private `192.168.x.x` range simply isn't reachable from the office — that's the whole point of a private network.
 
@@ -166,7 +160,7 @@ Tools like Tailscale or WireGuard give every device — home PC included — a s
 Exposing `192.168.0.218:11434` inside a private LAN is one thing; making it reachable from anywhere via a VPN is another step up in exposure. Ollama's API doesn't ask for a password — anyone who can reach that port can query your models. A mesh VPN like Tailscale keeps that surface limited to devices you've explicitly authorized, which is precisely why it's the recommended answer here rather than a router port-forward.
 </AlertBox>
 
-### Recreate the workspaces, this time for real
+#### Recreate the workspaces, this time for real
 
 With the container now running on the work PC, redo the onboarding from Part 1 — same LLM provider, same embedding model, pointing at whichever address currently reaches the home PC. Then start creating one workspace per repository under `~/repositories`, feeding each one its own documentation.
 

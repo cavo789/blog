@@ -27,33 +27,9 @@ For those who prefer, the component also offers the option to download the proje
 
 <!-- truncate -->
 
-## What is ProjectSetup?
+## Seeing It Work
 
-`ProjectSetup` is a React component that allows you to display a project's file structure in a clean, interactive, and standardized way. It not only shows the files and their content but also provides tools to scaffold the project with a single command or download it as a ZIP file.
-
-This post illustrates how to use the `ProjectSetup` component to share project structures in your Docusaurus blog posts, making it easier for your readers to replicate and learn from your projects.
-
-## Core Features
-
-- **Interactive File Viewing**: It displays files in collapsible snippets, with syntax highlighting.
-- **Shell Script Generation**: It automatically generates a bash script to create the entire folder and file structure.
-- **ZIP Download**: It allows users to download the complete project as a ZIP archive.
-- **Post-installation Guidelines**: You can add instructions to be displayed after the setup.
-
-## Dependencies
-
-The `ProjectSetup` component relies on two other components:
-
-1.  **`LogoIcon`**: A simple component that renders an icon based on the file type, making the UI more intuitive. It uses the popular `@iconify/react` library. Logo Icon has been created by <img alt="Docux" src="/img/docux.webp" style={{border: "none", borderRadius: 0, height: "1.2em", verticalAlign: "middle", margin: "0 0.2em"}} /> <Link to="https://github.com/Juniors017">Docux</Link>, please check out his work: <Link to="https://docuxlab.com/blog/logoicon-component-docusaurus/">Component LogoIcon</Link>.
-2.  **`Snippet`**: This component is responsible for displaying individual files. It's a collapsible container that shows the filename, a relevant icon, and the code within. Read my previous article on this subject: <Link to="/blog/docusaurus-snippets">A component for showing code snippets in a Docusaurus blog</Link>
-
-## How to Use It
-
-The best way to show you how to use `ProjectSetup` is to use the component itself. Here is how you can install the `LogoIcon`, `Snippet`, and `ProjectSetup` components in your own Docusaurus project.
-
-### 1. Installing `LogoIcon`
-
-First, you need to install `@iconify/react`. Then, create the `LogoIcon` component.
+The best way to show you how to use `ProjectSetup` is to use the component itself. Here is how you can install the `LogoIcon` component in your own Docusaurus project.
 
 <ProjectSetup folderName="src/components/Blog/LogoIcon">
   <Guideline>
@@ -77,7 +53,31 @@ At this stage, you can think, oh damned, it can be tedious to write the HTML cod
 And you know what? The `Snippet` component used here is smart enough to read the file structure and content of the `src/components/Blog/LogoIcon/index.js` file, and to render it in this nice interactive way. You just have to write the Markdown code above, and the component does the rest. Your documentation is always up-to-date with the actual file content, and you don't have to worry about formatting or styling. You just write the Markdown code, and the component takes care of the rest.
 </AlertBox>
 
-### 2. Installing `Snippet`
+## What is ProjectSetup?
+
+`ProjectSetup` is a React component that allows you to display a project's file structure in a clean, interactive, and standardized way. It not only shows the files and their content but also provides tools to scaffold the project with a single command or download it as a ZIP file.
+
+This post illustrates how to use the `ProjectSetup` component to share project structures in your Docusaurus blog posts, making it easier for your readers to replicate and learn from your projects.
+
+## Core Features
+
+- **Interactive File Viewing**: It displays files in collapsible snippets, with syntax highlighting.
+- **Shell Script Generation**: It automatically generates a bash script to create the entire folder and file structure.
+- **ZIP Download**: It allows users to download the complete project as a ZIP archive.
+- **Post-installation Guidelines**: You can add instructions to be displayed after the setup.
+
+## Dependencies
+
+The `ProjectSetup` component relies on two other components:
+
+1.  **`LogoIcon`**: A simple component that renders an icon based on the file type, making the UI more intuitive. It uses the popular `@iconify/react` library. Logo Icon has been created by <img alt="Docux" src="/img/docux.webp" style={{border: "none", borderRadius: 0, height: "1.2em", verticalAlign: "middle", margin: "0 0.2em"}} /> <Link to="https://github.com/Juniors017">Docux</Link>, please check out his work: <Link to="https://docuxlab.com/blog/logoicon-component-docusaurus/">Component LogoIcon</Link>.
+2.  **`Snippet`**: This component is responsible for displaying individual files. It's a collapsible container that shows the filename, a relevant icon, and the code within. Read my previous article on this subject: <Link to="/blog/docusaurus-snippets">A component for showing code snippets in a Docusaurus blog</Link>
+
+## Installing the Rest
+
+Here is how to install the remaining `Snippet` and `ProjectSetup` components in your own Docusaurus project.
+
+### 1. Installing `Snippet`
 
 Now, let's set up the `Snippet` component. It has more dependencies.
 
@@ -89,7 +89,7 @@ Now, let's set up the `Snippet` component. It has more dependencies.
   <Snippet filename="src/components/Snippet/styles.module.css" source="src/components/Snippet/styles.module.css" defaultOpen={false} />
 </ProjectSetup>
 
-### 3. Installing `ProjectSetup`
+### 2. Installing `ProjectSetup`
 
 Finally, here's how to install the `ProjectSetup` component itself.
 
@@ -102,7 +102,7 @@ Finally, here's how to install the `ProjectSetup` component itself.
   <Snippet filename="src/components/ProjectSetup/styles.module.css" source="src/components/ProjectSetup/styles.module.css" defaultOpen={false} />
 </ProjectSetup>
 
-### 4. The project_setup help page
+### 3. The project_setup help page
 
 In the ProjectSetup component, there is a help page that provides instructions on how to use the component. You can customize this page by editing the `src/pages/project_setup.mdx` file. Here is mine:
 

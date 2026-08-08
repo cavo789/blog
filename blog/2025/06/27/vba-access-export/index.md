@@ -5,6 +5,7 @@ date: 2025-06-27
 description: Easily version control your MS Access database! Export all VBA code, forms, modules, queries, and reports to flat files using a simple VBS script for GitHub integration.
 authors: [christophe]
 image: /img/v2/msaccess.webp
+series: VBA & MS Office automation
 mainTag: msaccess
 tags:
   - database

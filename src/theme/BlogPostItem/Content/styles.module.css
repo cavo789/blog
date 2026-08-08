@@ -1,0 +1,104 @@
+/*
+ * Themed hero wrapper for a post's banner image: a colorful radial glow of the banner's own
+ * dominant accent color (auto-extracted, see src/data/postColors.generated.js and
+ * scripts/generate-post-colors.mjs), blooming out from behind the image — the same treatment
+ * as the series pages (src/components/Blog/Series/styles.module.css), applied per post instead
+ * of per series. Kept to decorative background/border/shadow only — never applied to text —
+ * so it can be this bold without any contrast risk. --post-accent-* are set inline per post
+ * (see index.js); when a post's banner has no extracted color, everything falls back to
+ * transparent (identical to the plain banner from before this feature existed).
+ */
+.postHero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 1.5rem 1rem 0;
+  margin-bottom: 1rem;
+}
+
+.postHero::before,
+.postHero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 55%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  filter: blur(70px);
+  background: var(--post-accent-glow-light, transparent);
+  animation: postGlowPulse 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.postHero::before {
+  top: -25%;
+  left: -10%;
+}
+
+.postHero::after {
+  right: -10%;
+  bottom: -30%;
+  animation-delay: -3.5s;
+}
+
+[data-theme="dark"] .postHero::before,
+[data-theme="dark"] .postHero::after {
+  background: var(--post-accent-glow-dark, transparent);
+}
+
+@keyframes postGlowPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .postHero::before,
+  .postHero::after {
+    animation: none;
+  }
+}
+
+.postBanner {
+  box-sizing: border-box;
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+  border: 2px solid var(--post-accent-solid, transparent);
+  border-radius: 8px;
+  box-shadow: 0 25px 60px -10px var(--post-accent-glow-light, transparent);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+[data-theme="dark"] .postBanner {
+  box-shadow: 0 25px 60px -10px var(--post-accent-glow-dark, transparent);
+}
+
+.postBanner:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 35px 70px -10px var(--post-accent-glow-light, transparent);
+}
+
+[data-theme="dark"] .postBanner:hover {
+  box-shadow: 0 35px 70px -10px var(--post-accent-glow-dark, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .postBanner {
+    transition: none;
+  }
+
+  .postBanner:hover {
+    transform: none;
+  }
+}

@@ -5,6 +5,7 @@ date: 2025-07-10
 description: Learn how to effectively unit test your Bash scripts on Linux using the powerful bats (Bash Automated Testing System) framework. See practical examples for assertions, output checks, and failures.
 authors: [christophe]
 image: /img/v2/bash.webp
+series: Writing better Bash scripts
 mainTag: tests
 tags:
   - bash

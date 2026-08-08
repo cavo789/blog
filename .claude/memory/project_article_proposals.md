@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 708860e8-3efc-4d08-a254-45060a383296
-  modified: 2026-07-27T18:04:15.921Z
+  modified: 2026-08-08T09:53:56.303Z
 ---
 
 Proposals generated 2026-06-08 after full blog analysis, statuses refreshed 2026-07-27. See [[project-blog-coverage]] for what's already written.
@@ -72,8 +72,9 @@ reviewer) — this series is lighter-weight, multi-language, on-demand.
 
 ### [x] ai-commit + ai-review + ai-secrets: merged into one article
 
-- Originally 3 separate drafts. **Merged 2026-08-07** into `.unpublished/ollama-git-precommit/`.
-  Title: "ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit"
+- Originally 3 separate drafts. **Merged 2026-08-07**, then **PUBLISHED 2026-08-10**:
+  `/blog/ollama-git-precommit`. Title: "ai-review, ai-secrets, ai-commit: Three zsh Checks Before
+  Every git Commit"
 - `ai-commit`: Reads `git diff --staged`, accept/edit/discard flow
 - `ai-review`: SOLID/magic-constants/naming code review, fixed headings
 - `ai-secrets`: regex pre-filter for credentials, model judges genuine leak vs. false positive
@@ -105,9 +106,9 @@ reviewer) — this series is lighter-weight, multi-language, on-demand.
   direct read for md/txt
 - Draft written: `/opt/docusaurus/.unpublished/ollama-ai-docs/index.md`
 
-### [~] ai-review: SOLID/magic-constants/naming code review of staged changes
+### [x] ai-review: SOLID/magic-constants/naming code review of staged changes
 
-- Merged into `ollama-git-precommit` — see above. Draft deleted from `.unpublished/`.
+- Merged into `ollama-git-precommit` — see above. **PUBLISHED 2026-08-10**: `/blog/ollama-git-precommit`.
 
 ### [x] docling: Docker batteries-included setup, companion to the markitdown article
 
@@ -152,9 +153,9 @@ I haven't covered"), Security+Python — all three also verified via grep before
   gap, not overlap
 - Draft written: `/opt/docusaurus/.unpublished/ollama-ai-diagram/index.md`
 
-### [~] ai-secrets: hardcoded credential/API key detection in staged changes
+### [x] ai-secrets: hardcoded credential/API key detection in staged changes
 
-- Merged into `ollama-git-precommit` — see above. Draft deleted from `.unpublished/`.
+- Merged into `ollama-git-precommit` — see above. **PUBLISHED 2026-08-10**: `/blog/ollama-git-precommit`.
 
 ### [x] DuckDB: query JSON/CSV files with SQL, no database required
 

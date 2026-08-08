@@ -5,6 +5,7 @@ date: 2024-01-28
 description: Self-host Matomo for free and gain GDPR-compliant website analytics. This simple guide covers installation, database setup, and Docusaurus integration.
 authors: [christophe]
 image: /img/v2/matomo.webp
+series: Self-host your own services
 mainTag: self-hosted
 tags:
   - docusaurus
