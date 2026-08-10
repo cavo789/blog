@@ -74,7 +74,7 @@ MD link : [Title](/blog/<slug>)
 
 ## Active Series (25)
 
-### Ollama daily-use functions (2 posts)
+### Ollama daily use (2 posts)
 
 - [ai-test: Generate Missing Unit Tests From Your Terminal With a Local LLM](/blog/ollama-test-generator) — 2026-08-03
 - [ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit](/blog/ollama-git-precommit) — 2026-08-10 ★AI
@@ -316,7 +316,7 @@ MD link : [Title](/blog/<slug>)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2026-08-03 | [ai-test: Generate Missing Unit Tests From Your Terminal With a Local LLM](/blog/ollama-test-generator) ★ | ai, ollama, zsh, tests, php, python | Ollama daily-use functions |
+| 2026-08-03 | [ai-test: Generate Missing Unit Tests From Your Terminal With a Local LLM](/blog/ollama-test-generator) ★ | ai, ollama, zsh, tests, php, python | Ollama daily use |
 | 2026-06-01 | [Claude Code - Optimizing Token Usage](/blog/claude-ia-spare-tokens) ★ | ai |  |
 | 2026-05-18 | [Accessing Ollama across your local network](/blog/accessing-ollama-across-your-local-network) ★ | ai, ollama |  |
 | 2026-03-30 | [Installing Ollama and get local AI](/blog/ollama-installation) ★ | ai, ollama |  |
@@ -499,7 +499,7 @@ MD link : [Title](/blog/<slug>)
 
 | Date | Title | Tags | Series |
 |------|-------|------|--------|
-| 2026-08-10 | [ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit](/blog/ollama-git-precommit) ★ | git, ollama, zsh, ai, security, code-quality | Ollama daily-use functions |
+| 2026-08-10 | [ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit](/blog/ollama-git-precommit) ★ | git, ollama, zsh, ai, security, code-quality | Ollama daily use |
 | 2026-06-29 | [git worktree: Work on Two Branches at the Same Time](/blog/git-worktree) ★ | git, linux, bash, zsh |  |
 | 2026-06-15 | [delta: a Syntax-Highlighted Pager for git diff](/blog/git-delta) ★ | git, linux, bash | Modern CLI tools for your terminal |
 | 2026-04-06 | [Showing the last 3 updated branches when you jump in a git repo](/blog/git-branches-gst) | git, zsh |  |
@@ -763,7 +763,7 @@ MD link : [Title](/blog/<slug>)
 > folder without post written yet (`ollama-refactor-code`). `ollama-test-generator` was published 2026-08-03.
 > `ollama-ai-commit`, `ollama-ai-review`, `ollama-ai-secrets` (3 separate drafts) were **merged** into
 > `ollama-git-precommit`, which was itself published 2026-08-10 as `/blog/ollama-git-precommit`.
-> Publish order for the "Ollama daily-use functions" series + companions, and the separate
+> Publish order for the "Ollama daily use" series + companions, and the separate
 > `lazydocker`→`portainer`→`traefik` chain, is tracked in `/opt/docusaurus/.unpublished/plan.md`
 > (French, internal-only, kept in sync per [[feedback-unpublished-plan]] — don't duplicate its content here,
 > just cross-check slugs against it).
@@ -775,15 +775,15 @@ MD link : [Title](/blog/<slug>)
 | duckdb-json-csv | duckdb-json-csv | DuckDB - Query JSON and CSV Files With SQL, No Database Required ★AI | python | python, docker, database | (none — hard-links to docling + ollama-ai-data, see plan.md) |
 | git-bisect | git-bisect | git bisect: Find the Commit That Broke Everything ★AI | git | git, linux, bash, tips |  |
 | lazydocker | lazydocker | lazydocker: A Terminal Dashboard for Docker, Containerized ★AI | docker | docker, linux | (none — first of lazydocker→portainer→traefik chain) |
-| ollama-ai-standup | ollama-ai-standup | ai-standup: Turn Yesterday's Commits Into a Daily Standup Update ★AI | git | git, zsh, ai, ollama | Ollama daily-use functions |
-| ollama-ai-fix | ollama-ai-fix | ai-fix: A Local thefuck — Explain and Fix Your Last Failed Command ★AI | zsh | zsh, ai, ollama, linux | Ollama daily-use functions |
-| ollama-ai-ci | ollama-ai-ci | ai-ci: Ask a Local LLM Why Your GitLab Pipeline Failed ★AI | gitlab | gitlab, git, ai, ollama, zsh | Ollama daily-use functions |
-| ollama-ai-ask | ollama-ai-ask | ai-ask: Ask For a Shell Command in Plain English, Get It Back Instantly ★AI | ai | ai, ollama, zsh, linux | Ollama daily-use functions |
-| ollama-ai-diagram | ollama-ai-diagram | ai-diagram: From a Sentence (or a compose.yaml) to a Mermaid Diagram ★AI | doc-as-code | doc-as-code, ai, ollama, zsh | Ollama daily-use functions |
-| ollama-ai-translate | ollama-ai-translate | ai-translate: Translate Any Text Locally — String, Pipe, or File ★AI | ai | ai, ollama, zsh, linux | Ollama daily-use functions |
-| ollama-ai-docs | ollama-ai-docs | ai-translate & ai-summarize: Confidential Documents, Handled 100% Locally ★AI | ai | ai, ollama, zsh, docker | Ollama daily-use functions |
-| ollama-ai-data | ollama-ai-data | ai-data: Let a Local LLM Write Your jq and awk One-Liners ★AI | ai | ai, ollama, zsh, fzf | Ollama daily-use functions |
-| ollama-ai-diff | ollama-ai-diff | ai-diff: What Actually Changed, Not a Wall of Plus and Minus Signs ★AI | ai | ai, ollama, zsh, git | Ollama daily-use functions |
+| ollama-ai-standup | ollama-ai-standup | ai-standup: Turn Yesterday's Commits Into a Daily Standup Update ★AI | git | git, zsh, ai, ollama | Ollama daily use |
+| ollama-ai-fix | ollama-ai-fix | ai-fix: A Local thefuck — Explain and Fix Your Last Failed Command ★AI | zsh | zsh, ai, ollama, linux | Ollama daily use |
+| ollama-ai-ci | ollama-ai-ci | ai-ci: Ask a Local LLM Why Your GitLab Pipeline Failed ★AI | gitlab | gitlab, git, ai, ollama, zsh | Ollama daily use |
+| ollama-ai-ask | ollama-ai-ask | ai-ask: Ask For a Shell Command in Plain English, Get It Back Instantly ★AI | ai | ai, ollama, zsh, linux | Ollama daily use |
+| ollama-ai-diagram | ollama-ai-diagram | ai-diagram: From a Sentence (or a compose.yaml) to a Mermaid Diagram ★AI | doc-as-code | doc-as-code, ai, ollama, zsh | Ollama daily use |
+| ollama-ai-translate | ollama-ai-translate | ai-translate: Translate Any Text Locally — String, Pipe, or File ★AI | ai | ai, ollama, zsh, linux | Ollama daily use |
+| ollama-ai-docs | ollama-ai-docs | ai-translate & ai-summarize: Confidential Documents, Handled 100% Locally ★AI | ai | ai, ollama, zsh, docker | Ollama daily use |
+| ollama-ai-data | ollama-ai-data | ai-data: Let a Local LLM Write Your jq and awk One-Liners ★AI | ai | ai, ollama, zsh, fzf | Ollama daily use |
+| ollama-ai-diff | ollama-ai-diff | ai-diff: What Actually Changed, Not a Wall of Plus and Minus Signs ★AI | ai | ai, ollama, zsh, git | Ollama daily use |
 | docling | docling | Docling - Convert PDF, Word, PowerPoint, Excel and HTML to Markdown, GPU-Accelerated ★AI | markdown | docker, markdown, python | (none — companion to markitdown, not the Ollama series) |
 | portainer | portainer | Portainer: A Web Dashboard for Docker, One Compose File Away ★AI | docker | docker, self-hosted | (none — second of lazydocker→portainer→traefik chain) |
 | python-ai-helper | python-ai-helper | Auto-documenting and testing python scripts | Python | ai, python |  |
@@ -796,7 +796,7 @@ MD link : [Title](/blog/<slug>)
 | atuin-bash-history | atuin-bash-history | Atuin — Supercharge Your Shell History With a Searchable, Timestamped Database ★AI | bash | bash, linux, zsh | (none — standalone; reciprocal links in linux-history + linux-fzf-introduction already added) |
 | oha-http-load-testing | oha-http-load-testing | oha — Benchmark Your Blog Before Your Visitors Do ★AI | linux | linux, docker, bash | (none — standalone; reciprocal links needed in running-docusaurus-with-docker + bruno at publish time) |
 | ai-agent-in-devcontainer | ai-agent-in-devcontainer | Choose Your Own AI Agent — What Symfony Docker Got Right ★AI | ai | ai, docker, devcontainer, ollama, vscode | |
-| ai-explain | ollama-ai-explain | ai-explain — ELI5 for Scripts and Errors, Right in Your Terminal ★AI | ai | ai, linux, ollama, zsh | Ollama daily-use functions |
+| ai-explain | ollama-ai-explain | ai-explain — ELI5 for Scripts and Errors, Right in Your Terminal ★AI | ai | ai, linux, ollama, zsh | Ollama daily use |
 | caddy | caddy | Caddy — Zero-Config HTTPS as a Docker Container ★AI | docker | docker, linux, ssl | |
 | direnv | direnv | direnv — Stop Typing `source .env`, Let Your Shell Do It ★AI | linux | bash, docker, linux, zsh | |
 | git-interactive-rebase | git-interactive-rebase | git rebase -i — Fix Your Commit History Before Anyone Sees It ★AI | git | git, linux | |
@@ -814,7 +814,7 @@ MD link : [Title](/blog/<slug>)
 | winscp-putty | winscp-putty | WinSCP - Start PuTTY without typing a password | winscp | putty, ssh, tips, winscp | |
 | xdebug-docker-vscode | xdebug-docker-vscode | Step-Through PHP Debugging in a Docker Container From VSCode ★AI | php | php, docker, vscode | (none — zero draft dependencies, freely placeable) |
 
-**"Ollama daily-use functions" series so far (all drafts, 13 posts):** ollama-test-generator (ai-test),
+**"Ollama daily use" series so far (all drafts, 13 posts):** ollama-test-generator (ai-test),
 ollama-ai-commit (ai-commit), ollama-ai-review (ai-review), ollama-ai-secrets (ai-secrets),
 ollama-ai-standup (ai-standup), ollama-ai-fix (ai-fix), ollama-ai-ci (ai-ci), ollama-ai-ask (ai-ask),
 ollama-ai-diagram (ai-diagram), ollama-ai-data (ai-data), ollama-ai-translate (ai-translate —

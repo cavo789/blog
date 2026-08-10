@@ -18,8 +18,11 @@ services:
       - OLLAMA_MODEL_TOKEN_LIMIT=8192
       - EMBEDDING_ENGINE=ollama
       - EMBEDDING_BASE_PATH=http://192.168.0.218:11434
-      - EMBEDDING_MODEL_PREF=nomic-embed-text:latest
-      - EMBEDDING_MODEL_MAX_CHUNK_LENGTH=8192
+      - EMBEDDING_MODEL_PREF=mxbai-embed-large
+      # mxbai-embed-large has a 512-token context — a larger chunk size makes
+      # every single embedding call fail. Keep this comfortably under it.
+      - EMBEDDING_MODEL_MAX_CHUNK_LENGTH=400
+      - OLLAMA_EMBEDDING_BATCH_SIZE=16
       - VECTOR_DB=lancedb
     volumes:
       - anythingllm_storage:/app/server/storage

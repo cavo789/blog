@@ -1,0 +1,30 @@
+$ export ANYTHINGLLM_API_KEY=your-key-here
+
+$ curl -s -X POST http://localhost:3001/api/v1/workspace/blog/chat \
+    -H "Authorization: Bearer $ANYTHINGLLM_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{"message":"Which articles cover devcontainers?","mode":"query"}' \
+  | jq -r '.textResponse'
+
+Here are the articles that cover devcontainers:
+
+1. **[PHP development in a devcontainer with preinstalled code quality tools](https://www.avonture.be/blog/vscode-devcontainer)** (published 09/02/2024)
+   - This article explains how to set up a PHP development environment using a devcontainer with preinstalled code quality tools.
+
+2. **[Docker - Python devcontainer](https://www.avonture.be/blog/docker-python-devcontainer)** (published 30/10/2024)
+   - This article guides you through setting up a VSCode devcontainer for Python development using Docker.
+
+3. **[One Docker Image for Production and Devcontainers - The Clean Way](https://www.avonture.be/blog/docker-prod-devcontainer)** (published 13/10/2025)
+   - This article discusses how to use a single Docker image for both production deployments and VS Code Devcontainers, emphasizing clean overrides and environment isolation.
+
+4. **[Make your Quarto project Devcontainer-Ready — No More Setup Headaches](https://www.avonture.be/blog/quarto-devcontainer)** (published 03/11/2025)
+   - This article explains how to make Quarto projects devcontainer-ready, using the `.devcontainer/devcontainer.json` file for configuration.
+
+5. **[Level Up Your Presentations with Quarto, reveal.js, Decktape, Docker and DevContainers](https://www.avonture.be/blog/running-revealjs-with-docker)** (published 15/12/2025)
+   - This article mentions using devcontainers for presentations with Quarto and reveal.js.
+
+6. **[Running Docusaurus using Docker](https://www.avonture.be/blog/running-docusaurus-with-docker)** (published 11/11/2025)
+   - This article discusses how devcontainers can be used to fine-tune environments, including VSCode extensions and editor settings.
+
+7. **[Install a PHP Docker environment in a matter of seconds](https://www.avonture.be/blog/php-devcontainer)** (published 23/02/2024)
+   - This article aims to create a development environment (devcontainer) for PHP.

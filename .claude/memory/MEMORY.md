@@ -9,7 +9,7 @@
 - [Coding Style](feedback_coding_style.md) — React/CSS/Docker rules from AGENTS.md, American English everywhere
 - [Blog Map](project_blog_map.md) — Catalogue exhaustif des 247 posts + 43 drafts : slug, titre, date, mainTag, tags, séries (25 séries actives, 165 posts en série) — source de vérité
 - [Blog Coverage Map](project_blog_coverage.md) — Gaps et opportunités par tech (WSL2/ZSH/Git/Docker/FZF/SSH/Bash/Ollama)
-- [Article Proposals](project_article_proposals.md) — Pending article ideas across all series, incl. "Ollama daily-use functions"
+- [Article Proposals](project_article_proposals.md) — Pending article ideas across all series, incl. "Ollama daily use"
 - [Post Creation Feedback](feedback_post_creation.md) — draft:true for .unpublished, image selection, frontmatter ordering
 - [Article Weight](feedback_article_weight.md) — pas d'empilement de post-mortems ni de setup non-standard ; un article doit donner envie de tester
 - [YAML Date Parsing](feedback_yaml_date_parsing.md) — frontmatter dates arrive as ISO strings after SSR; always use new Date(value), never concatenate
@@ -20,3 +20,4 @@
 - [Internal Links Audit](project_internal_links.md) — run `internal-link-opportunities.mjs --stats`; verified baseline + the 4 traps that break naive greps
 - [Devcontainer Structure](project_devcontainer_structure.md) — scripts/, COPY paths, bind-mounts, wiring points — tout ce qui doit rester synchronisé
 - [File Rename Completeness](feedback_file_rename_completeness.md) — grep exhaustif avant tout rename ; "terminé" = docker build passe, pas juste le fichier déplacé
+- [AnythingLLM Instance](project_anythingllm_instance.md) — 172.17.0.1:3001 depuis le devcontainer, compose sur l'hôte, workspace `blog` (248 posts)

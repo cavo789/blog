@@ -10,7 +10,7 @@ description: "A zsh function that re-runs your last failed command to capture it
 language: en
 ai_assisted: true
 draft: true
-series: "Ollama daily-use functions"
+series: "Ollama daily use"
 ---
 
 ![ai-fix: A Local thefuck — Explain and Fix Your Last Failed Command](/img/v2/zsh.webp)
@@ -18,7 +18,7 @@ series: "Ollama daily-use functions"
 <!-- cspell:ignoreCase ai-test ai-commit ai-fix qwen ollama zshrc psuh thefuck -->
 
 <TLDR>
-This article adds `ai-fix` to the "Ollama daily-use functions" series: a zsh function that re-runs your last failed command to capture its actual error output, then asks a local Ollama model to explain what broke and propose the corrected command. It's the same trick tools like [`thefuck`](https://github.com/nvbn/thefuck) use — with one addition: before re-running anything that looks destructive (`rm`, `git push`, `docker rm`, `kubectl delete`...), it asks for confirmation first.
+This article adds `ai-fix` to the "Ollama daily use" series: a zsh function that re-runs your last failed command to capture its actual error output, then asks a local Ollama model to explain what broke and propose the corrected command. It's the same trick tools like [`thefuck`](https://github.com/nvbn/thefuck) use — with one addition: before re-running anything that looks destructive (`rm`, `git push`, `docker rm`, `kubectl delete`...), it asks for confirmation first.
 </TLDR>
 
 You know that moment: you fire a command, the terminal spits out three lines of red, and half the time you know exactly what broke before you've even finished reading the error — a typo, a missing flag, a path that doesn't exist yet. The other half of the time, you don't, and copy-pasting the error into a browser tab breaks your flow more than the error itself did.

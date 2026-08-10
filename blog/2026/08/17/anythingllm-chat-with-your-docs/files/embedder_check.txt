@@ -1,0 +1,4 @@
+$ python3 embedder-sanity-check.py mxbai-embed-large nomic-embed-text
+
+mxbai-embed-large    dims=1024  related=0.9536  unrelated=0.4591  separation=+0.4945
+nomic-embed-text     dims=768   related=0.5910  unrelated=0.5377  separation=+0.0532

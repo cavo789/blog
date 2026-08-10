@@ -225,3 +225,4 @@ Target structure: `.claude/skills/blog-post-structure/SKILL.md`
 | 2026-08-09 | msaccess-optimize | published | 3.5% (listicle, pas de Conclusion) | MINOR | — |
 | 2026-08-09 | vscode-php-refactoring | published | 18% (pas de Conclusion) | MINOR | — |
 | 2026-08-09 | php-devcontainer | published | 46% | RESTRUCTURE | reader-php-devcontainer.md |
+| 2026-08-10 | anythingllm-chat-with-your-docs | published | 1.8% (réécrit ; 40% au 2026-08-08) | OK | — (faiblesses MINOR corrigées le 2026-08-10) |

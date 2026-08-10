@@ -39,7 +39,18 @@
  * where Webpack's `require.context` is available.
  */
 
-const posts = require.context("../../../../blog", true, /\.mdx?$/);
+// The `!!…!` prefix is load-bearing, do not simplify it away: it bypasses the
+// rules configured by @docusaurus/plugin-content-blog and reads the files with
+// plugins/frontmatter-loader instead. Without it, Webpack MDX-compiles every
+// file under `blog/`, and any article flagged `draft: true` crashes the
+// production build with "Blog post not found for filePath=…" — because the blog
+// plugin drops drafts from its post list while this context still pulls them in.
+// See plugins/frontmatter-loader/index.cjs for the full story.
+const posts = require.context(
+  "!!../../../../plugins/frontmatter-loader/index.cjs!../../../../blog",
+  true,
+  /\.mdx?$/
+);
 
 export function getBlogMetadata({
   includeDrafts = false,
@@ -49,6 +60,12 @@ export function getBlogMetadata({
     .keys()
     .map((key) => {
       const post = posts(key);
+
+      // A Markdown file under `blog/` without a title is not an article
+      // (a fragment, a note, a readme…); the blog plugin ignores it, so do we.
+      if (!post.frontMatter?.title) {
+        return null;
+      }
 
       const dir = key.replace(/\/index\.mdx?$/, "").replace(/^\.\//, "");
 

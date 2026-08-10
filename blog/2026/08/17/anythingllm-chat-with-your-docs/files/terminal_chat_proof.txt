@@ -1,0 +1,20 @@
+$ curl -s -X POST http://localhost:3001/api/v1/workspace/blog/chat \
+    -H "Authorization: Bearer $ANYTHINGLLM_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{"message":"There was a trick I documented to see, the moment I enter a repository, which branches I had touched most recently. How did I do it?","mode":"query"}'
+
+You documented a trick to automatically display the three most recently updated local Git branches whenever you enter a Git repository. This was achieved by adding a custom function to your Zsh configuration that hooks into the `chpwd` hook (which triggers when changing directories) and uses the `git for-each-ref` command to list local branches sorted by the date of their last commit.
+
+Here's how you did it:
+
+1. **Zsh Integration**: You leveraged the `chpwd` hook in Zsh, which is called automatically when you use commands like `cd` or `pushd`.
+
+2. **Function Logic**: The function `_display_recent_git_context` checks if you're inside a Git repository and then retrieves the active branch. It uses `git for-each-ref` to list local branches, sorting them by the date of their last commit in descending order (`--sort=-committerdate`).
+
+3. **Display**: The output shows the last three updated branches, with an asterisk (*) indicating the active branch.
+
+4. **Alias Integration**: You also defined a `gst` alias in Zsh that calls this function before running `git status`.
+
+This setup ensures that every time you `cd` into a Git project, you immediately see the most recently active branches, helping avoid accidentally working on the wrong branch.
+
+The full implementation details can be found in the article [Showing the last 3 updated branches when you jump in a git repo](https://www.avonture.be/blog/git-branches-gst).

@@ -1,0 +1,15 @@
+$ export ANYTHINGLLM_API_KEY=your-key-here
+$ ./anythingllm-index.sh
+
+added   docker-php-run-script-or-website
+added   keepass-overriding-url
+added   welcome
+added   wslg-rpd-connection
+added   docker-volume
+added   apache-htaccess
+...
+added   ollama-test-generator
+added   ollama-git-precommit
+added   anythingllm-chat-with-your-docs
+
+248 added, 0 updated, 0 unchanged, 0 failed

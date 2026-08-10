@@ -10,7 +10,7 @@ description: "Two zsh functions that translate or summarize a Word, PDF, PowerPo
 language: en
 ai_assisted: true
 draft: true
-series: "Ollama daily-use functions"
+series: "Ollama daily use"
 ---
 
 ![ai-translate & ai-summarize: Confidential Documents, Handled 100% Locally](/img/v2/secrets.webp)
@@ -18,7 +18,7 @@ series: "Ollama daily-use functions"
 <!-- cspell:ignoreCase ai-test ai-commit ai-translate ai-summarize qwen ollama docling zshrc -->
 
 <TLDR>
-This article adds `ai-translate` and `ai-summarize` to the "Ollama daily-use functions" series. Both accept a `.pdf`, `.docx`, `.pptx`, `.xlsx` or `.html` file — extracted to Markdown by [Docling](/blog/docling) — or a plain `.md`/`.txt` file directly, then hand the text to the local Ollama model to translate or condense into bullet points. The entire round trip stays on your machine: no cloud translation API, no document upload anywhere, which is precisely the point for a contract, an HR document, or anything else you'd think twice about pasting into Google Translate.
+This article adds `ai-translate` and `ai-summarize` to the "Ollama daily use" series. Both accept a `.pdf`, `.docx`, `.pptx`, `.xlsx` or `.html` file — extracted to Markdown by [Docling](/blog/docling) — or a plain `.md`/`.txt` file directly, then hand the text to the local Ollama model to translate or condense into bullet points. The entire round trip stays on your machine: no cloud translation API, no document upload anywhere, which is precisely the point for a contract, an HR document, or anything else you'd think twice about pasting into Google Translate.
 </TLDR>
 
 I work in an office where a `.docx` lands in my inbox in French, English, or whatever language the client happens to use, and half the time I just need the gist — or I need to hand a clean English version to someone who doesn't read French. My reflex used to be the same as everyone else's: open the browser, paste into a translation tool, hope nobody minds that a client contract just passed through a third party's servers. Nobody ever explicitly told me not to. That's exactly the kind of thing you should not need permission to avoid.

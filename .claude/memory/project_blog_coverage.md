@@ -136,7 +136,7 @@ Christophe hasn't retested it yet.
 - `git-bisect` — binary search through history to find broken commit
 - `docusaurus-ollama-tags` — blog post analyzer using a local LLM (Ollama)
 - ~~`ollama-test-generator`~~ — **PUBLISHED 2026-08-03**: `/blog/ollama-test-generator`. First post of the
-  "Ollama daily-use functions" series. Introduces `_ollama.zsh` foundation, `AI_COMMANDS` registry,
+  "Ollama daily use" series. Introduces `_ollama.zsh` foundation, `AI_COMMANDS` registry,
   `ai` dispatcher. Generates Bats/Pest/Pytest suites, gap-fill mode when tests already exist.
 - ~~`ollama-git-precommit`~~ — **PUBLISHED 2026-08-10**: `/blog/ollama-git-precommit`. Replaced the 3
   separate drafts `ollama-ai-commit`, `ollama-ai-review`, `ollama-ai-secrets` (merged 2026-08-07).
@@ -180,7 +180,7 @@ Christophe hasn't retested it yet.
   `.unpublished/` before being noticed/logged here 2026-07-27 — self-hosted RAG app (Docker), chat
   over Markdown/Quarto/PDF/DOCX/XLSX/PPTX via any configured LLM provider incl. Ollama. Two parts:
   single-machine setup, and a split setup (docs on work PC, GPU inference borrowed from home PC)
-- Design pattern established for the whole "Ollama daily-use functions" series: every new `ai-*`
+- Design pattern established for the whole "Ollama daily use" series: every new `ai-*`
   function only needs (1) its own file in `~/.zsh/fns/` and (2) one `AI_COMMANDS[name]="..."`
   registration line to become discoverable through `ai` — no menu to hand-edit. `ai-explain` (ELI5 for
   a script/error in the terminal) is the one remaining open proposal from the original round — see
@@ -222,7 +222,7 @@ Christophe hasn't retested it yet.
 - `ai-agent-in-devcontainer` — Symfony Docker dropped then reinstated Claude Code; how to configure
   OpenCode with Ollama in a DevContainer. mainTag: ai. Date: 2026-07-30.
 - `ai-explain` — `ai-explain` zsh function: ELI5 for any script/error in the terminal, series
-  finale of "Ollama daily-use functions". Slug: `ollama-ai-explain`. Date: 2026-10-06.
+  finale of "Ollama daily use". Slug: `ollama-ai-explain`. Date: 2026-10-06.
 - `caddy` — Caddy reverse proxy with auto-TLS, as a Docker container. mainTag: docker. Date: 2026-09-15.
 - `direnv` — auto-load `.env` per project on `cd`. mainTag: linux. Date: 2026-08-11.
 - `git-interactive-rebase` — `git rebase -i` to clean commit history before push. mainTag: git. Date: 2026-09-01.

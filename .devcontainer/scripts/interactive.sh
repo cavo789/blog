@@ -213,6 +213,20 @@ function eli5() {
     node scripts/bulk-eli5.mjs --dir "${dir}" "${extra[@]+"${extra[@]}"}"
 }
 
+# @cat Content
+# @cmd ai-index
+# @desc Push new/modified posts to the AnythingLLM 'blog' workspace
+function ai-index() {
+    .scripts/anythingllm-index.sh "$@"
+}
+
+# @cat Content
+# @cmd ai-search
+# @desc Ask the blog a question (ai-search which articles cover docker?)
+function ai-search() {
+    .scripts/anythingllm-search.sh "$@"
+}
+
 # @cat Workspace
 # @cmd welcome
 # @desc Show this dynamic cheatsheet
@@ -262,6 +276,8 @@ export -f codelint
 export -f spellcheck
 export -f tags
 export -f eli5
+export -f ai-index
+export -f ai-search
 export -f welcome
 
 # Display on startup

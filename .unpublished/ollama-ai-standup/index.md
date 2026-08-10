@@ -10,7 +10,7 @@ description: "A zsh function that scans yesterday's commits across every repo yo
 language: en
 ai_assisted: true
 draft: true
-series: "Ollama daily-use functions"
+series: "Ollama daily use"
 ---
 
 ![ai-standup: Turn Yesterday's Commits Into a Daily Standup Update](/img/v2/git_branches_status.webp)
@@ -18,7 +18,7 @@ series: "Ollama daily-use functions"
 <!-- cspell:ignoreCase ai-test ai-commit ai-standup qwen ollama zshrc standup -->
 
 <TLDR>
-This article adds `ai-standup` to the "Ollama daily-use functions" series: it scans `git log` across every repository you list in `$AI_STANDUP_REPOS`, keeps only your own commits over a configurable number of days (`$AI_STANDUP_DAYS` — 1 for a daily standup, 7 for a weekly one), and asks the local model to turn them into a short, spoken-friendly update — the kind you actually say out loud, not a changelog dump.
+This article adds `ai-standup` to the "Ollama daily use" series: it scans `git log` across every repository you list in `$AI_STANDUP_REPOS`, keeps only your own commits over a configurable number of days (`$AI_STANDUP_DAYS` — 1 for a daily standup, 7 for a weekly one), and asks the local model to turn them into a short, spoken-friendly update — the kind you actually say out loud, not a changelog dump.
 </TLDR>
 
 I work across several repositories on a given day — this blog, a couple of client projects, an internal tool or two — and by the time the daily standup rolls around the next morning, I've genuinely forgotten what I touched in the smaller one. Scrolling through `git log` across three or four repos to reconstruct "what did I do yesterday" is exactly the kind of five-minute tax I'd rather not pay every single morning.

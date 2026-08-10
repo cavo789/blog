@@ -6,6 +6,17 @@ const path = require("path");
 const glob = require("glob");
 const fm = require("front-matter");
 
+/**
+ * Normalizes a front matter date to a `YYYY-MM-DD` string.
+ *
+ * @param {Date|string} value Whatever the YAML parser produced.
+ * @returns {string|null} The day part, or null when unparsable.
+ */
+function toIsoDay(value) {
+  const date = value instanceof Date ? value : new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date.toISOString().slice(0, 10);
+}
+
 module.exports = function adminDataPlugin(context) {
   return {
     name: "admin-data-plugin",
@@ -24,7 +35,9 @@ module.exports = function adminDataPlugin(context) {
         drafts.push({
           slug: a.slug || path.dirname(file).replace(/\\/g, "/"),
           title: a.title || "(untitled)",
-          date: a.date ? String(a.date).slice(0, 10) : null,
+          // YAML turns `date: 2026-08-17` into a Date; String() would then give
+          // "Mon Aug 17 2026 …" and slicing it yields "Mon Aug 17".
+          date: a.date ? toIsoDay(a.date) : null,
           description: a.description || null,
           tags: Array.isArray(a.tags) ? a.tags : [],
           status: a.draft === true ? "draft" : "unlisted",

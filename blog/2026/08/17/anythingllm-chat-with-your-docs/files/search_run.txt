@@ -1,0 +1,46 @@
+$ ai-blog-search Do I already have content about Joomla?
+
+❓ Do I already have content about Joomla?
+
+Yes, you have content about Joomla. Here are the articles related to Joomla:
+
+1. **Create your Joomla website using Docker - Part 1** (published 2023-12-22)
+   - URL: [https://www.avonture.be/blog/docker-joomla](https://www.avonture.be/blog/docker-joomla)
+
+2. **Create your Joomla website using Docker - Part 2** (published 2024-10-18)
+   - URL: [https://www.avonture.be/blog/docker-joomla-part-2](https://www.avonture.be/blog/docker-joomla-part-2)
+
+3. **Joomla - Run a SQL statement outside Joomla and display a nice HTML table** (published 2024-06-02)
+   - URL: [https://www.avonture.be/blog/joomla-show-table](https://www.avonture.be/blog/joomla-show-table)
+
+These articles cover topics such as setting up a Joomla website using Docker and running SQL statements in Joomla.
+
+📚 Sources the answer was built from
+  • Create your Joomla website using Docker - Part 1 (published 2023-12-22)
+    https://www.avonture.be/blog/docker-joomla
+  • Create your Joomla website using Docker - Part 2 (published 2024-10-18)
+    https://www.avonture.be/blog/docker-joomla-part-2
+  • Organize Your Docusaurus Content with a Custom Series Component (published 2025-09-09)
+    https://www.avonture.be/blog/docusaurus-series
+  • Joomla - Run a SQL statement outside Joomla and display a nice HTML table (published 2024-06-02)
+    https://www.avonture.be/blog/joomla-show-table
+
+🔎 Exact frontmatter matches (joomla)
+  • FrankenPHP, a modern application server for PHP
+    https://www.avonture.be/blog/frankenphp-docker-joomla
+  • Create your Joomla website using Docker - Part 1
+    https://www.avonture.be/blog/docker-joomla
+  • Update php.ini when using a Docker image
+    https://www.avonture.be/blog/docker-php-ini
+  • Joomla - delete tables from your database according to a certain prefix
+    https://www.avonture.be/blog/joomla-db-kill-tables-prefix
+  • Joomla - Run a SQL statement outside Joomla and display a nice HTML table
+    https://www.avonture.be/blog/joomla-show-table
+  • aeSecure - QuickScan - Free viruses scanner
+    https://www.avonture.be/blog/aesecure-quickscan
+  • Start Joomla with Docker in just a few clicks
+    https://www.avonture.be/blog/docker-joomla-right-to-the-point
+  • Create your Joomla website using Docker - Part 2
+    https://www.avonture.be/blog/docker-joomla-part-2
+  • Restore a Joomla backup using Docker
+    https://www.avonture.be/blog/docker-joomla-restore-jpa

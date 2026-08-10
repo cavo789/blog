@@ -6,7 +6,7 @@ authors: [christophe, claude]
 image: /img/v2/playing_with_ollama.webp
 mainTag: ai
 draft: true
-series: "Ollama daily-use functions"
+series: "Ollama daily use"
 tags: [ai, linux, ollama, zsh]
 date: 2026-10-06
 ai_assisted: true
@@ -65,7 +65,7 @@ That's the entire interaction: a file path in, a plain-English breakdown out.
 
 ## Installation
 
-This function is part of the "Ollama daily-use functions" series. It relies on the shared `_ollama.zsh` foundation introduced in the first article of the series (`ai-test`): the `_ollama_check` reachability guard, the `_ollama_query` HTTP client, and the `AI_COMMANDS` registry.
+This function is part of the "Ollama daily use" series. It relies on the shared `_ollama.zsh` foundation introduced in the first article of the series (`ai-test`): the `_ollama_check` reachability guard, the `_ollama_query` HTTP client, and the `AI_COMMANDS` registry.
 
 If you've been following the series and have `~/.zsh/fns/_ollama.zsh` already in place, you can install this function immediately. If not, start with the first article to get the foundation set up.
 
@@ -163,7 +163,7 @@ It's also useful as a learning tool: pipe a script you wrote yourself and see if
 
 ## Conclusion
 
-`ai-explain` is the fourteenth and final function in the "Ollama daily-use functions" series.
+`ai-explain` is the fourteenth and final function in the "Ollama daily use" series.
 
 The series started with `ai-test` (the foundation: `_ollama.zsh`, the dispatcher, the `AI_COMMANDS` registry) and added functions one by one — each solving a specific terminal workflow problem with a local LLM:
 

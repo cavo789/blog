@@ -10,7 +10,7 @@ description: "A zsh function that translates text, piped output, or a document i
 language: en
 ai_assisted: true
 draft: true
-series: "Ollama daily-use functions"
+series: "Ollama daily use"
 ---
 
 ![ai-translate: Translate Any Text Locally — String, Pipe, or File](/img/v2/typewriter_terminal.webp)
@@ -18,7 +18,7 @@ series: "Ollama daily-use functions"
 <!-- cspell:ignoreCase ai-translate ai-summarize ai-docs ollama zshrc qwen docling deploymentpijplijn gepland onderhoud OLLAMA_TRANSLATE_LANG -->
 
 <TLDR>
-This article adds a standalone `ai-translate` to the "Ollama daily-use functions" series: a three-mode function that accepts an inline string, piped terminal output, or a file path, and translates the text into any language — English by default. No cloud API, no browser tab: the model runs locally, the text never leaves the machine. File mode reuses `_ai_extract_text` from [ai-translate & ai-summarize](/blog/ollama-ai-docs) when available, so `.pdf`/`.docx`/`.pptx` files work too — but the function degrades gracefully to `cat` for plain text if that helper isn't installed yet.
+This article adds a standalone `ai-translate` to the "Ollama daily use" series: a three-mode function that accepts an inline string, piped terminal output, or a file path, and translates the text into any language — English by default. No cloud API, no browser tab: the model runs locally, the text never leaves the machine. File mode reuses `_ai_extract_text` from [ai-translate & ai-summarize](/blog/ollama-ai-docs) when available, so `.pdf`/`.docx`/`.pptx` files work too — but the function degrades gracefully to `cat` for plain text if that helper isn't installed yet.
 </TLDR>
 
 Three colleagues, three languages — by the end of any given week, my terminal has seen error messages in French, commit summaries in Dutch, and CI logs in English that somebody needs handed back in French. Not because the tools care which language they write in, but because the people configuring them do. Opening a browser tab for two lines of text is the kind of friction that accumulates quietly: small enough that you stop noticing, large enough that by Thursday you've probably broken focus a dozen times for no good reason.

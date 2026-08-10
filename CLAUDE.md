@@ -45,6 +45,14 @@ blog/YYYY/MM/DD/<slug>/
 Frontmatter key fields: `slug`, `title`, `description`, `date`, `authors`, `tags`, `mainTag`,
 `image`, `draft`, `series`, `seriesOrder`, `ai_assisted`, `updates`, `review_date`.
 
+`draft: true` works in **both** locations. Under `blog/` it means "ready, awaiting the go":
+visible in `yarn start`, absent from the production build, listings, RSS and sitemap — so the
+article can be committed and pushed, then published later by deleting the single line.
+`.unpublished/` is for drafts not yet worth committing to the blog tree at all.
+The two plumbing pieces that make this work are `plugins/frontmatter-loader/` and the
+`require.context` call in `src/components/Blog/utils/posts.js` — read their comments before
+touching either.
+
 Tags must exist in `blog/tags.yml`; authors must exist in `blog/authors.yml`.
 
 ### Components

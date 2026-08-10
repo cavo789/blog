@@ -10,7 +10,7 @@ description: "A zsh function that reads a JSON or CSV file, understands its actu
 language: en
 ai_assisted: true
 draft: true
-series: "Ollama daily-use functions"
+series: "Ollama daily use"
 ---
 
 ![ai-data: Let a Local LLM Write Your jq and awk One-Liners](/img/v2/json.webp)
@@ -18,7 +18,7 @@ series: "Ollama daily-use functions"
 <!-- cspell:ignoreCase ai-test ai-commit ai-data qwen ollama zshrc mlr -->
 
 <TLDR>
-This article adds `ai-data` to the "Ollama daily-use functions" series: point it at a `.json` or `.csv` file, and it asks the local model for 5 practical `jq`/`awk` commands tailored to that file's actual field names — not generic examples. Pick one with `fzf`, and instead of running it for you, `ai-data` loads it onto your zsh command line with `print -z`, ready to read, edit, and only then execute. The goal isn't just an answer — it's leaving with a command you understand.
+This article adds `ai-data` to the "Ollama daily use" series: point it at a `.json` or `.csv` file, and it asks the local model for 5 practical `jq`/`awk` commands tailored to that file's actual field names — not generic examples. Pick one with `fzf`, and instead of running it for you, `ai-data` loads it onto your zsh command line with `print -z`, ready to read, edit, and only then execute. The goal isn't just an answer — it's leaving with a command you understand.
 </TLDR>
 
 I know `jq` well enough to be dangerous, and not well enough to write a `group_by` one-liner from memory on the first try. Every time, it's the same ritual: open the [jq manual](https://jqlang.org/manual/), squint at three examples that are almost what I need, adapt, get a syntax error, adjust the brackets, try again. `awk` is worse — I remember it exists, I remember it's powerful, and I remember approximately none of the syntax between uses.

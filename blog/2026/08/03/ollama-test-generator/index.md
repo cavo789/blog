@@ -9,7 +9,7 @@ date: 2026-08-03
 description: "Turn your local Ollama model into an on-demand unit test generator. A zsh function that reads a Bash, PHP or Python file, detects whether you already have tests for it, prints only the missing Bats/Pest/Pytest cases needed for full coverage, offers to save them where the framework expects them, and runs the suite in a throw-away Docker container."
 language: en
 ai_assisted: true
-series: "Ollama daily-use functions"
+series: "Ollama daily use"
 blueskyRecordKey: 3ms5sdpk6kk2a
 ---
 
@@ -20,7 +20,7 @@ blueskyRecordKey: 3ms5sdpk6kk2a
 <TLDR>
 `ai-test` turns your local Ollama model into an on-demand unit test generator. Point it at a Bash, PHP or Python file, review the generated tests, save them if you like, then run them immediately in Docker — all without leaving your terminal. It supports Bats (Bash), Pest (PHP) and Pytest (Python).
 
-This article opens the **<Link to="/series/ollama-daily-use-functions">Ollama daily-use</Link>**: small zsh functions that turn a local LLM into a practical terminal tool instead of another browser tab.
+This article opens the **<Link to="/series/ollama-daily-use">Ollama daily use</Link>** series: small tools that turn a local LLM into a practical terminal companion instead of another browser tab.
 </TLDR>
 
 Let's stop pretending: we all know unit tests are necessary, and almost nobody enjoys writing them. There's always an excuse — a tight deadline, a Bash script that was only supposed to be temporary, the sheer tedium of mocking dependencies. We promise ourselves we'll add them later, and *later* is the moment the technical debt explodes in production.

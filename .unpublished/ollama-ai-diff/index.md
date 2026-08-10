@@ -10,7 +10,7 @@ description: "A zsh function that compares two versions of a file — code again
 language: en
 ai_assisted: true
 draft: true
-series: "Ollama daily-use functions"
+series: "Ollama daily use"
 ---
 
 ![ai-diff: What Actually Changed, Not a Wall of Plus and Minus Signs](/img/v2/git-delta.webp)
@@ -18,7 +18,7 @@ series: "Ollama daily-use functions"
 <!-- cspell:ignoreCase ai-test ai-commit ai-diff qwen ollama zshrc massupload docling -->
 
 <TLDR>
-This article adds `ai-diff` to the "Ollama daily-use functions" series: point it at one file and it compares the working copy against the last git commit; point it at two files and it compares them directly, `.docx`/`.pdf` included via the same [Docling extraction](/blog/docling) used by `ai-translate`. Either way, the output isn't a line-by-line transcript — it's a plain-language explanation of what the change actually *does*, grouped by intent, most significant first.
+This article adds `ai-diff` to the "Ollama daily use" series: point it at one file and it compares the working copy against the last git commit; point it at two files and it compares them directly, `.docx`/`.pdf` included via the same [Docling extraction](/blog/docling) used by `ai-translate`. Either way, the output isn't a line-by-line transcript — it's a plain-language explanation of what the change actually *does*, grouped by intent, most significant first.
 </TLDR>
 
 `git diff` and [`delta`](/blog/git-delta) are great at showing you *exactly* what changed, character by character — that's precisely their job, and I use both daily. But "exactly what changed" and "what this change means" are two different questions. Reviewing a 40-line diff of `massupload.sh` after not touching it for two months, I don't want to re-derive the intent from `+`/`-` signs — I want the two-sentence version a colleague would give me if I asked "what did you change here?"

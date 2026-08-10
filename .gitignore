@@ -21,3 +21,6 @@
 
 # Claude Code TODO session locks (ephemeral, never commit)
 .todos/.locks/
+
+# AnythingLLM indexing state (local to each machine, holds no secret)
+.anythingllm-indexed

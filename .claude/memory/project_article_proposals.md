@@ -56,7 +56,7 @@ Proposals generated 2026-06-08 after full blog analysis, statuses refreshed 2026
 - Step-by-step + automated `git bisect run <script>`, Docker scenario
 - Draft written: `/opt/docusaurus/.unpublished/git-bisect/index.md`
 
-## "Ollama daily-use functions" series (proposed 2026-07-27)
+## "Ollama daily use" series (proposed 2026-07-27)
 
 Christophe runs Ollama locally (qwen3-coder:30b, 24GB VRAM, Dockerized, Open WebUI on :4000) and asked
 for terminal-first "daily use case" ways to actually use it, beyond chat — plain zsh functions in
@@ -148,7 +148,7 @@ I haven't covered"), Security+Python — all three also verified via grep before
 
 ### [x] ai-diagram <description>|<file>: plain-English or config file → Mermaid diagram
 
-- Series member (Ollama daily-use functions). Bridges ai × doc-as-code
+- Series member (Ollama daily use). Bridges ai × doc-as-code
 - Verified `/blog/docker-python-mermaid` is pure Python/rule-based, zero AI, before proposing — genuine
   gap, not overlap
 - Draft written: `/opt/docusaurus/.unpublished/ollama-ai-diagram/index.md`
@@ -283,7 +283,7 @@ drafts in `.unpublished/`; two ideas he explicitly rejected are recorded so they
 ### [ ] ai-explain <file|text>: ELI5 of a script or stack trace in the terminal
 
 - Terminal companion to the already-published `docusaurus-eli5-snippet-tooltips` component
-- Last unwritten function of the "Ollama daily-use functions" series
+- Last unwritten function of the "Ollama daily use" series
 - **Confirmed: to write, fits naturally at the end of the Ollama series**
 
 ### [x] git interactive rebase: clean up history before pushing

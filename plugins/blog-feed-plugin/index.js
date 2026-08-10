@@ -264,6 +264,13 @@ module.exports = function blogFeedPlugin(context, options = {}) {
             const contentData = frontMatter(fileContent);
             const { attributes } = contentData;
 
+            // Drafts and unlisted posts get no HTML page in the build, so they
+            // can never feed the RSS body — skip them before we go looking for
+            // a file that is not there.
+            if (attributes.draft === true || attributes.unlisted === true) {
+              return null;
+            }
+
             const date = attributes.date || fs.statSync(fullPath).birthtime;
             const finalSlug = computeSlug(attributes, relativeFilePath);
             // Ignore files that map to "index" or have no slug

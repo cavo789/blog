@@ -10,7 +10,7 @@ description: "A zsh function that answers a plain-English question with the exac
 language: en
 ai_assisted: true
 draft: true
-series: "Ollama daily-use functions"
+series: "Ollama daily use"
 ---
 
 ![ai-ask: Ask For a Shell Command in Plain English, Get It Back Instantly](/img/v2/linux_tips.webp)
@@ -18,7 +18,7 @@ series: "Ollama daily-use functions"
 <!-- cspell:ignoreCase ai-test ai-commit ai-ask qwen ollama zshrc ripgrep -->
 
 <TLDR>
-This article adds `ai-ask` to the "Ollama daily-use functions" series: the simplest function so far. Type a question in plain English, get the exact shell command back, printed to your terminal by a local Ollama model — no man page diving, no "linux find files containing text excluding gitignore" Google search, no context switch.
+This article adds `ai-ask` to the "Ollama daily use" series: the simplest function so far. Type a question in plain English, get the exact shell command back, printed to your terminal by a local Ollama model — no man page diving, no "linux find files containing text excluding gitignore" Google search, no context switch.
 </TLDR>
 
 While writing this very series, I caught myself doing the thing I do a dozen times a day without noticing: I wanted the command to search for a pattern across a folder tree while respecting `.gitignore`, and instead of just typing it, I opened a browser tab. I *know* the answer involves `rg` — I wrote [an entire article about it](/blog/ripgrep) — but recalling the exact flag combination from memory, at speed, isn't always instant. That's a silly reason to break flow.

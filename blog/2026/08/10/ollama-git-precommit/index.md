@@ -9,7 +9,7 @@ date: 2026-08-10
 description: "Three zsh functions that together form a local, offline pre-commit quality gate: ai-review catches SOLID violations and naming issues, ai-secrets separates real hardcoded credentials from false positives, and ai-commit drafts the Conventional Commits message once the diff is actually clean."
 language: en
 ai_assisted: true
-series: "Ollama daily-use functions"
+series: "Ollama daily use"
 blueskyRecordKey: 3ms5sdpk6kk2a
 ---
 
@@ -18,7 +18,7 @@ blueskyRecordKey: 3ms5sdpk6kk2a
 <!-- cspell:ignoreCase ai-test ai-commit ai-review ai-secrets qwen ollama zshrc SOLID getenv phpstan -->
 
 <TLDR>
-This article adds three functions to the "Ollama daily-use functions" series — `ai-review`, `ai-secrets`, and `ai-commit` — that together cover the moment right before a `git commit`. All three read the same `git diff --staged`, so they share a single extracted helper (`_git_staged_diff`) instead of repeating the same guard clauses three times. The workflow is intentional: review first, catch any secrets second, write the commit message last — once the diff is actually what you want it to be.
+This article adds three functions to the "Ollama daily use" series — `ai-review`, `ai-secrets`, and `ai-commit` — that together cover the moment right before a `git commit`. All three read the same `git diff --staged`, so they share a single extracted helper (`_git_staged_diff`) instead of repeating the same guard clauses three times. The workflow is intentional: review first, catch any secrets second, write the commit message last — once the diff is actually what you want it to be.
 </TLDR>
 
 The moment right before a `git commit` is probably the most valuable one in the whole development cycle to pause and look at what you've actually written. Not because something is necessarily wrong — usually it isn't — but because that's when the diff is small and bounded. One more minute of review when you can still see every changed line clearly is worth more than an hour of archaeology later.
@@ -163,6 +163,8 @@ ai-commit
 ```
 
 Each function is also reachable directly (`ai-review`, `ai-secrets`, `ai-commit`) or via the `ai` dispatcher — type bare `ai`, pick a function from the fzf menu, and if the function needs a parameter the menu collects it interactively before running. All three register themselves with one line each — `AI_COMMANDS[review]=...`, `AI_COMMANDS[secrets]=...`, `AI_COMMANDS[commit]=...` — and declare `AI_PARAMS[...]=none`, since they read the staged diff themselves and need no argument.
+
+That registry is what makes the family extensible. <Link to="/blog/anythingllm-chat-with-your-docs">`ai-blog-search`</Link> joined it later with the same two lines — except it declares `AI_PARAMS[blog-search]="text"`, so the menu prompts for a question first, and it queries an AnythingLLM workspace rather than Ollama directly.
 
 ## Conclusion
 

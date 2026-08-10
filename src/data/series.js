@@ -85,9 +85,9 @@ const SERIES_DATA = [
     color: "#8b5cf6",
   },
   {
-    name: "Ollama daily-use functions",
+    name: "Ollama daily use",
     description:
-      "Turn a local Ollama LLM into everyday zsh functions for testing, git and beyond.",
+      "Turn a local Ollama LLM into everyday tools: zsh functions for testing and git, and a RAG search over your own documents.",
     image: "/img/series/ollama_daily_use.webp",
     color: "#6366f1",
   },

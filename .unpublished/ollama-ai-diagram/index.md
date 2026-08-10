@@ -10,7 +10,7 @@ description: "A zsh function that turns a plain-English description, or an exist
 language: en
 ai_assisted: true
 draft: true
-series: "Ollama daily-use functions"
+series: "Ollama daily use"
 ---
 
 ![ai-diagram: From a Sentence (or a compose.yaml) to a Mermaid Diagram](/img/v2/diagrams.webp)
@@ -18,7 +18,7 @@ series: "Ollama daily-use functions"
 <!-- cspell:ignoreCase ai-test ai-commit ai-diagram qwen ollama zshrc mermaid -->
 
 <TLDR>
-This article adds `ai-diagram` to the "Ollama daily-use functions" series: give it a plain-English description of a process, or point it at a file like a `docker-compose.yaml`, and it returns a Mermaid diagram — a fenced code block, ready to paste straight into a Markdown file. It's a deliberate bridge between this series and my doc-as-code articles: `docker-compose-viz` and `docker-python-mermaid` both turn *structured* data into diagrams with real parsers; `ai-diagram` handles the case those can't — a description with no schema at all, or a config file you don't want to write a parser for just to sketch one diagram.
+This article adds `ai-diagram` to the "Ollama daily use" series: give it a plain-English description of a process, or point it at a file like a `docker-compose.yaml`, and it returns a Mermaid diagram — a fenced code block, ready to paste straight into a Markdown file. It's a deliberate bridge between this series and my doc-as-code articles: `docker-compose-viz` and `docker-python-mermaid` both turn *structured* data into diagrams with real parsers; `ai-diagram` handles the case those can't — a description with no schema at all, or a config file you don't want to write a parser for just to sketch one diagram.
 </TLDR>
 
 I've written more "turn X into a diagram" articles than I first realized: [Diagrams as code](/blog/docker-diagram-as-code), [a graph from compose.yaml](/blog/docker-compose-viz), [documentation as code with Python and Mermaid](/blog/docker-python-mermaid). Every one of them shares the same shape: a real parser reads a structured input and a library draws the picture. That works great — right up until what I want to diagram is a paragraph I just typed, or a one-off config file that isn't worth writing a parser for.

@@ -10,7 +10,7 @@ Christophe. Jamais publié, donc écrit en français.
 ## Pourquoi l'ordre compte ici
 
 La plupart des brouillons sont indépendants et peuvent sortir n'importe quand. La série "Ollama
-daily-use functions" ne l'est pas : plusieurs articles font un lien vers un article précédent, ou
+daily use" ne l'est pas : plusieurs articles font un lien vers un article précédent, ou
 supposent dans leur texte qu'un article précédent est déjà publié.
 
 **Contraintes dures (lien cassé ou chronologie incohérente sinon) :**
@@ -49,7 +49,7 @@ thématiques demandés par Christophe) :
 - `xdebug-docker-vscode` n'a aucune dépendance (ne lie que `php-devcontainer` et `vscode-devcontainer`,
   déjà publiés) — libre.
 
-## Ordre proposé — "Ollama daily-use functions" + docling
+## Ordre proposé — "Ollama daily use" + docling
 
 | # | Slug | Fonction(s) | Pourquoi ici |
 | --- | --- | --- | --- |
@@ -102,7 +102,7 @@ s'il n'est pas encore publié.
 
 ## Avant de publier #1 (bloquant dans tous les cas)
 
-- `src/data/series.js` contient déjà l'entrée "Ollama daily-use functions", mais `/img/series/ollama.webp`
+- `src/data/series.js` contient déjà l'entrée "Ollama daily use", mais `/img/series/ollama.webp`
   n'existe pas encore sur disque — la page `/series` affichera une image cassée tant qu'elle n'est pas
   créée (~1000-1500px, WebP, dans le style des autres bannières de série).
 - Aucun des scripts zsh de cette série n'a été exécuté contre une vraie instance Ollama — la logique a

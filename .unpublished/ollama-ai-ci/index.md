@@ -10,7 +10,7 @@ description: "A zsh function that finds the last GitLab pipeline for the current
 language: en
 ai_assisted: true
 draft: true
-series: "Ollama daily-use functions"
+series: "Ollama daily use"
 ---
 
 ![ai-ci: Ask a Local LLM Why Your GitLab Pipeline Failed](/img/v2/gitlab.webp)
@@ -18,7 +18,7 @@ series: "Ollama daily-use functions"
 <!-- cspell:ignoreCase ai-test ai-commit ai-ci qwen ollama zshrc phpstan gitlab -->
 
 <TLDR>
-This article adds `ai-ci` to the "Ollama daily-use functions" series: it detects the current repository's GitLab project from the `origin` remote, finds the most recent pipeline for a given branch, pulls the log of every failed job through the GitLab API, and asks a local Ollama model to explain what broke and suggest a fix — all without opening a browser tab.
+This article adds `ai-ci` to the "Ollama daily use" series: it detects the current repository's GitLab project from the `origin` remote, finds the most recent pipeline for a given branch, pulls the log of every failed job through the GitLab API, and asks a local Ollama model to explain what broke and suggest a fix — all without opening a browser tab.
 </TLDR>
 
 I've covered [GitLab Docker-out-of-Docker](/blog/gitlab-docker-out-of-docker), [private image access](/blog/gitlab-using-private-images), and [SSH keys for runners](/blog/gitlab-runner-ssh-key) in previous articles — pipelines are a daily part of my work. And a daily part of *that* is the little ritual after a red pipeline notification: open the browser, find the project, find the pipeline, find the failed job, scroll to the actual error buried under forty lines of Composer/npm noise. Ninety seconds, every time, for something that's usually a one-line explanation once you find it.

@@ -101,7 +101,7 @@ page — always update both together.
 
 - `Creating Docusaurus components`
 - `Discovering Quarto`
-- `Ollama daily-use functions` (added 2026-07-27, drafts only so far — `image: /img/series/ollama.webp`
+- `Ollama daily use` (added 2026-07-27, drafts only so far — `image: /img/series/ollama.webp`
   does not exist yet, needs to be created before publishing either draft post)
 
 ## Authors Available
