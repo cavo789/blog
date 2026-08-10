@@ -32,11 +32,28 @@ It's a tool that you can self-host and which is a bookmark, note-taking and even
 
 And the search engine is quite powerful. Overall, karakeep is a pleasure to use.
 
-Let's look at how to install it.
+Let's see it in action.
 
 <!-- truncate -->
 
-## Let's install karakeep
+## Add a Bookmark
+
+Once karakeep is running, adding something is really piece of cake: just click in the **New Item** text area and start to type something (it can be pure text like a reminder note or a website URL).
+
+I'll type `https://awesome-docker-compose.com/apps`, save it and immediately, I'll get this:
+
+![Awesome Docker](./images/awesome_docker.webp)
+
+As you can see, karakeep has grabbed a picture of the web page — no manual thumbnail, no extra step.
+
+## Why It Works
+
+- One search box covers bookmarks, notes and images at once — the gap that sent me looking for a replacement in the first place.
+- Saving a link automatically captures a preview of the page, so a list of bookmarks stays visual, not a wall of bare URLs.
+- Notes, images and links live in the same hierarchical lists, so you're not juggling three separate self-hosted apps for three related jobs.
+- It's self-hosted, so your bookmarks and notes stay on your own disk, next to the other tools in <Link to="/blog/heimdall-dashboard">Heimdall</Link>.
+
+## Let's Install karakeep
 
 Please create a folder like `mkdir ~/tools/karakeep && cd $_`. In that folder, please create a `compose.yaml` file with the content below:
 
@@ -72,16 +89,6 @@ You'll get the dashboard:
 
 ![karakeep - Dashboard](./images/dashboard.webp)
 
-## Add a bookmark
-
-And now, it's really piece of cake; just click in the **New Item** text area and start to type something (it can be pure text like a reminder note or a website URL).
-
-I'll type `https://awesome-docker-compose.com/apps` and save it and immediately, I'll get this:
-
-![Awesome Docker](./images/awesome_docker.webp)
-
-As you can see, karakeep has grabbed a picture of the web page.
-
 ## Adding to a list
 
 First, create a list and fill in the different options (name, icon, ...):
@@ -100,12 +107,14 @@ It's also possible to create a list as a child of an existing one and thus, you 
 
 By first selecting a list, new items will be added directly to that list.
 
-## Extra features
+## Extra Features
 
 ### Import / Export
 
 By clicking on your profile avatar (top right) then on `User Settings` you will be able, among other things, to access an `Import / Export` feature. It's good to know; you can import from a lot of sources and also export as a JSON or an HTML page.
 
-## More info
+## Conclusion
 
-Please refer to the official [https://karakeep.app/](https://karakeep.app/) site to get more info.
+karakeep replaced Heimdall's non-existent search with one box that covers bookmarks, notes and images, and it does the one thing a plain bookmark manager doesn't: it grabs a visual preview of every link you save. A `compose.yaml`, a couple of UID/GID lines, and it runs next to <Link to="/blog/docker-memos">Memos</Link> and <Link to="/blog/docker_uptime_kuma">Uptime Kuma</Link> in the same self-hosted stack.
+
+Refer to the official [https://karakeep.app/](https://karakeep.app/) site for more info, and to <Link to="/blog/docker-name-property">Docker - How to group containers together</Link> to keep it tidy alongside your other self-hosted tools.

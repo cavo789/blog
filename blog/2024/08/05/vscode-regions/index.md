@@ -29,19 +29,22 @@ Not everywhere means, for instance, that VSCode doesn't support code folding by 
 
 <!-- truncate -->
 
+## Regions in action
+
+![VSCode - Regions folding](./images/regions.gif)
+
+That's what `region`/`endregion` tags buy you: entire logical blocks collapse to a single line,
+so you see the structure of a file instead of scrolling through it.
+
 ## Code folding in PHP
 
 Consider the following, very basic, example (*very brief example for illustrative purposes*):
 
 <Snippet filename="my_class.php" source="./files/my_class.php" />
 
-We can clearly identify three blocks: preparation of the query, run it and return the data. Using regions, we can do this:
+We can clearly identify three blocks: preparation of the query, run it and return the data. Using regions, we can do this — the two lines shown above (`// #region`, `// #endregion`) are what produce the fold/unfold behavior in the gif:
 
 <Snippet filename="my_class.php" source="./files/my_class.part2.php" />
-
-And now, why folding can be really useful: we can fold / unfold them:
-
-![VSCode - Regions folding](./images/regions.gif)
 
 <AlertBox variant="info" title="You should avoid having functions having more than 60 lines">
 Regions are supported by a very large number of languages, but don't make the mistake of assuming that this allows you to have functions of several dozen lines. That's not the point!  If you have long functions, you need to split them up. You need to create smaller, more specialised functions. We've already touched on this point in a <Link to="/blog/vscode-php-refactoring">previous post</Link>.
@@ -88,3 +91,9 @@ If you don't know how, just press <kbd>CTRL</kbd>+<kbd>,</kbd> (the comma) to di
 Now, if you open a file, its content will be automatically folded.
 
 ![Autofold](./images/autofold.webp)
+
+## Conclusion
+
+Two tags, `// #region` and `// #endregion` (adapted to your language's comment syntax), are all
+it takes to fold any block of code — native in most languages, and easy to bolt onto the ones
+VSCode doesn't support out of the box, like a Dockerfile.

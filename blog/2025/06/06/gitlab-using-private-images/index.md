@@ -30,6 +30,15 @@ This article is a how-to and explains how to do it.
 
 <!-- truncate -->
 
+<!-- TODO(author): capture a real GitLab CI job log excerpt showing `docker login` followed by a successful `docker pull` of the private image — not reproducible in this session (requires a live GitLab instance and Docker Hub account). -->
+
+Here's the payoff once the token and variables are in place: the job authenticates and pulls the private image instead of failing with `denied: requested access to the resource is denied`.
+
+## Why It Works
+
+- The Docker Hub token is scoped `Read-Only`, so even if it leaked, it could only pull images — never push or modify anything on your account.
+- The username and token live as hidden, protected CI/CD variables, never in `.gitlab-ci.yml` itself — GitLab won't even echo them if you turn on full debug tracing.
+
 ## Create a token
 
 You'll need to create a token first. Please visit this page: [https://app.docker.com/settings/personal-access-tokens](https://app.docker.com/settings/personal-access-tokens). You'll need to sign in, of course.
@@ -59,3 +68,7 @@ You can add the variables in your repository's CI/CD settings page or at a highe
 Once done, here is how to connect to Docker in your `.gitlab-ci.yml` file:
 
 <Snippet filename=".gitlab-ci.yml" source="./files/.gitlab-ci.yml" />
+
+## Conclusion
+
+A read-only token and two protected, masked CI/CD variables are all it takes to pull a private Docker Hub image in your pipeline, without ever committing a credential to your repo. See <Link to="/blog/gitlab-runner-ssh-key">GitLab - Using an SSH key to connect to private repo</Link> for the same problem applied to a private **git** repository instead of a private image.

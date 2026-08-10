@@ -29,13 +29,15 @@ Below is a note that I took and revised several times when I took the time to cr
 
 <!-- truncate -->
 
-## Install the make executable
+<Details summary="Don't have `make` installed yet? Click to expand.">
 
 Just run the following commands to install the `Make` executable on your host machine:
 
 <Terminal typewriter>
 $ sudo apt-get update && sudo apt-get -y install make
 </Terminal>
+
+</Details>
 
 ## How to check if a file exists or not
 

@@ -1,0 +1,31 @@
+$ make qa
+
+ Step  Tool                          Run?      Techno    Description
+--------------------------------------------------------------------------------------------------------------
+ 1/9  RUNNING make Pylint            Lint python scripts using Pylint (https://pypi.org/project/pylint/)
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+ 2/9  RUNNING make Autoflake         Detect unused variables and unused imports (https://pypi.org/project/autoflake/)
+
+ 3/9  RUNNING make isort             Sort import statement using isort (https://pycqa.github.io/isort/)
+
+ 4/9  RUNNING make Vulture           Find dead Python code (https://github.com/jendrikseipp/vulture)
+
+ 5/9  RUNNING make Pydocstyle        pydocstyle is a static analysis tool for checking compliance with Python docstring conventions (https://www.pydocstyle.org/en/stable/)
+
+ 6/9  RUNNING make Mypy              Mypy is a program that will type check your Python code (https://github.com/python/mypy/)
+Success: no issues found in 12 source files
+
+ 7/9  RUNNING make Pyright           Pyright is a full-featured, standards-based static type checker for Python (https://github.com/microsoft/pyright)
+0 errors, 0 warnings, 0 informations
+
+ 8/9  RUNNING make Black             Format the script using Black (https://black.readthedocs.io/en/stable/)
+All done! ✨ 🍰 ✨
+12 files left unchanged.
+
+ 9/9  RUNNING make Prospector        Inspects Python source files and provides information about type and location of classes, methods, ... (https://github.com/prospector-dev/prospector/)
+Messages Found: 0
+
+CONGRATULATIONS!!!
+Not the slightest error or notice detected, that's .. amazing!
+🥳 🎉 🎊 🤩 🕺 💃 👏

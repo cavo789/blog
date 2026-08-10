@@ -37,6 +37,16 @@ Let's see how to solve this problem.
 
 <!-- truncate -->
 
+<!-- TODO(author): capture a real GitLab CI job log excerpt showing `docker run --rm --volume "$CI_PROJECT_DIR:/app" --workdir /app jakzal/phpqa phplint .` executing successfully from inside the CI container, once Docker Socket Passthrough is configured — not reproducible in this session (requires a live GitLab Runner). -->
+
+Here's the payoff once the runner is configured: a CI job that runs `docker run` — a container starting another container — without the "Cannot connect to the Docker daemon" error you'd otherwise get.
+
+## Why It Works
+
+- The GitLab Runner shares its own Docker socket (`/var/run/docker.sock`) with the CI container, so `docker run` inside the job talks to the *host's* Docker daemon instead of needing its own — no nested Docker-in-Docker engine to install or maintain.
+- Sharing the `builds` folder too means a container started from inside the CI job can mount the same project files the job itself was checked out into — without it, paths like `$CI_PROJECT_DIR` would point to a folder invisible to the new container.
+- It's two lines added to `config.toml`, not a different CI image or a privileged Docker-in-Docker service — the technique is called **Docker Socket Passthrough**.
+
 As prerequisites, you should have access to the server where your GitLab instance is running (aka the *GitLab Runner*) since you'll need to make changes to the configuration of the runner.
 
 ## The runner configuration file
@@ -94,3 +104,7 @@ Now, it'll work: we'll share our Docker daemon and also share the folder on the 
 From now, we can not only run `docker run [...]` statements but also share our folder with the newly created container.
 
 Why do I need this? Let's take just one example: documentation generation. I'm pushing my documentation as a set of `.md` files (in a folder called `documentation`) then, during my CI, I'm running [Quarto](https://quarto.org/) (see <Link to="/blog/quarto-industrialisation">Quarto - How I Built a Self-Documenting Ecosystem for 50+ Projects</Link>) to process these Markdown files and based on my configuration (the `_quarto.yml` file), I can generate offline files (like `.docx`, `.pdf`, ...) but also a static HTML site. In this last situation, I'll export the static site somewhere (`./public/documentation`) then publish it using GitLab pages.
+
+## Conclusion
+
+Two lines in `config.toml` — the Docker socket and the `builds` folder — are enough to turn a GitLab CI job into one that can start its own containers, without a nested Docker-in-Docker engine to install or maintain. It's the same trick that makes a <Link to="/blog/bruno">Bruno CLI Docker image</Link> or a Dagger pipeline runnable straight from your CI, and it's what I now rely on to run Quarto's documentation build as a container from inside a container.

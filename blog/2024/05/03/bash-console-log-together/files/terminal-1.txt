@@ -1,0 +1,17 @@
+$ ./script.sh
+
+total 8.0K
+drwxr-xr-x 2 node node 4.0K Aug  9 18:04 .
+drwxr-xr-x 3 node node 4.0K Aug  9 18:04 ..
+-rw-r--r-- 1 node node    0 Aug  9 18:04 archive.zip
+-rw-r--r-- 1 node node    0 Aug  9 18:04 notes.txt
+-rw-r--r-- 1 node node    0 Aug  9 18:04 report.csv
+
+$ cat /tmp/test.log
+
+[2026-08-09T18:04:09+0000] total 8.0K
+[2026-08-09T18:04:09+0000] drwxr-xr-x 2 node node 4.0K Aug  9 18:04 .
+[2026-08-09T18:04:09+0000] drwxr-xr-x 3 node node 4.0K Aug  9 18:04 ..
+[2026-08-09T18:04:09+0000] -rw-r--r-- 1 node node    0 Aug  9 18:04 archive.zip
+[2026-08-09T18:04:09+0000] -rw-r--r-- 1 node node    0 Aug  9 18:04 notes.txt
+[2026-08-09T18:04:09+0000] -rw-r--r-- 1 node node    0 Aug  9 18:04 report.csv

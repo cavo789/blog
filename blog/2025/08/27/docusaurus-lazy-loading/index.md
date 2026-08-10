@@ -31,6 +31,8 @@ This conversion occurs at two places: when you're surfing on your website or whe
 
 <!-- truncate -->
 
+<!-- TODO(author): capture a real DevTools screenshot showing an <img> tag with the loading="lazy" attribute applied, before/after the MDXComponents.js change below — not reproducible in this session (requires a live browser). -->
+
 To do this, in fact, we don't need to create a component! We just need to add some lines of code in the `src/theme/MDXComponents.js` file. *If you need more than a couple of extra attributes — a wrapper `div`, custom CSS, a zoom effect — then a real component is the way to go; that's the subject of <Link to="/blog/docusaurus-override-img">Change how Docusaurus will create img tags</Link>.*
 
 If you don't have that file yet, just create it.

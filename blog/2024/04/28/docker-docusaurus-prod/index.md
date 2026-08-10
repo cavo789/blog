@@ -42,6 +42,17 @@ Now, we'll learn to do the same for your own Docusaurus instance. Ladies and gen
 
 <!-- truncate -->
 
+## Result
+
+That single `docker run` command from the AlertBox above gets you this, running entirely offline:
+
+![Homepage of your running Docusaurus instance](./images/homepage.webp)
+
+![Our blog](./images/blog.webp)
+
+The rest of this article builds the image that produces this — a multi-stage `Dockerfile` that
+turns any Docusaurus site into a single, self-contained ~87MB image.
+
 ## Create a dummy blog if needed
 
 *If you already have a Docusaurus installation on your computer, just skip this chapter. If you don't, <Link to="/blog/docusaurus-docker">Running Docusaurus with Docker</Link> covers the development setup that comes before this one.*
@@ -195,15 +206,7 @@ $ docker run -d --publish 80:80 --name blog johndoe/blog
 
 Very quickly, you'll get a very long ID as result like f.i. `cae6989bee2a2339a4c0116be2b86ee3dae0b46d47a6c53dcb6e50098726c0b1`. Just ignore this at this moment, it just means your container has been created successfully.
 
-Now, start your browser and surf to `http://localhost`.
-
-![Homepage of your running Docusaurus instance](./images/homepage.webp)
-
-As you can see, the Docusaurus website is now running on your machine.
-
-Click on the **Blog** menu item; top left and enjoy your reading:
-
-![Our blog](./images/blog.webp)
+Now, start your browser and surf to `http://localhost` — that's the homepage and blog shown at the top of this article.
 
 As mentioned, the site will be running on your computer i.e. offline. You can disconnect from the Internet, everything is running in RAM; on your machine.
 

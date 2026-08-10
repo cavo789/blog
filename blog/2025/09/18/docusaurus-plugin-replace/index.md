@@ -41,6 +41,18 @@ So, after a few prompts with the AI, a plugin has been generated and it works so
 
 <!-- truncate -->
 
+Restart your Docusaurus server once the plugin is in place and, on the next start, if some changes have to be made, you'll see them in your console:
+
+```bash
+🔎 Replacing 'vscode' with 'VSCode' in file: /opt/[...]/index.md
+Sentence: One of the best features in vscode is the
+
+🔎 Replacing 'vscode' with 'VSCode' in file: /opt/[...]/index.md
+Sentence: With vscode, it's ultra-simple: multiple cursors.
+```
+
+Silent, safe, and it never touches your original Markdown files — only the rendered HTML. Let's build it.
+
 ## The plugin
 
 Please create the `plugins/remark-replace-terms/index.cjs` file and look at the `replacements` array. Please add yours.
@@ -57,15 +69,7 @@ The next thing to do is to register your plugin into your Docusaurus configurati
 
 <Snippet filename="docusaurus.config.js" source="./files/docusaurus.config.js" />
 
-This done, please restart your Docusaurus server and on the next start, if some changes have to be made, you can see them in your console:
-
-```bash
-🔎 Replacing 'vscode' with 'VSCode' in file: /opt/[...]/index.md
-Sentence: One of the best features in vscode is the
-
-🔎 Replacing 'vscode' with 'VSCode' in file: /opt/[...]/index.md
-Sentence: With vscode, it's ultra-simple: multiple cursors.
-```
+This done, restart your Docusaurus server and you'll get the same console output already shown at the top of this article.
 
 <AlertBox variant="caution">
 The search&replace action won't be done on your original Markdown files but only during the HTML rendering. It's thus safe to run this plugin; your files won't be impacted at all.

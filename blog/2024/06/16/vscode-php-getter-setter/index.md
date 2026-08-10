@@ -32,6 +32,16 @@ Some people will say "Yes, but it's tedious to write these functions", but not a
 
 <!-- truncate -->
 
+## See the extension in action
+
+Right-click a property, pick an action, and the getter/setter boilerplate is generated for you:
+
+![PHP Getters & Setters](./images/phproberto.webp)
+
+![PHP Getter and Setter in VSCode](./images/php-getter-setter.gif)
+
+No excuse for skipping them now — the [PHP Getters & Setters](https://marketplace.visualstudio.com/items?itemName=phproberto.vscode-php-getters-setters) extension does the typing for you.
+
 ## The bad scenario
 
 <Snippet filename="product.php" source="./files/product.php" />
@@ -54,17 +64,7 @@ Let's create our class with private properties:
 
 <Snippet filename="product.php" source="./files/product.part2.php" />
 
-So, for each property, you need to write a function called `Getter` to read its contents and another function called `Setter` to modify it. It could be a hassle, but it's not, thanks to addon [PHP Getters & Setters](https://marketplace.visualstudio.com/items?itemName=phproberto.vscode-php-getters-setters).
-
-Once enabled, we just need to right-click on a property, select what we wish as action and run it.
-
-![PHP Getters & Setters](./images/phproberto.webp)
-
-Here is in action:
-
-![PHP Getter and Setter in VSCode](./images/php-getter-setter.gif)
-
-Easy no?
+So, for each property, you need to write a function called `Getter` to read its contents and another function called `Setter` to modify it. It could be a hassle, but it's not, thanks to the extension shown at the top of this article: just right-click on a property, select what you wish as action and run it.
 
 Now, I can write:
 

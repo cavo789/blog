@@ -14,6 +14,8 @@ tags:
   - python
 language: en
 updates:
+  - date: 2026-08-09
+    note: "Restructured for time-to-value: the make qa run now opens the article, before the tool-by-tool catalog."
   - date: 2026-07-30
     note: "pydocstyle GitHub repo was archived November 2023 and is no longer maintained; Ruff (see Extra section) is the recommended replacement for docstring checks."
 blueskyRecordKey: 3lymragaqr22l
@@ -34,9 +36,31 @@ What about Python?
 
 <!-- truncate -->
 
-I'm a big fan of static code quality tools and here is my short list:
+## The Result: One Command, Nine Checks, One Clear Failure Point
 
-## 1. Pylint
+`make qa` chains Pylint, Autoflake, isort, Vulture, pydocstyle, mypy, Pyright, Black and Prospector — fastest tool first — and stops at the very first failure. Here's what a clean run looks like:
+
+<Terminal typewriter source="./files/terminal-qa.txt" />
+
+Nothing green to look for: silence (or a rating like Pylint's `10.00/10`) means the check passed. Miss a single one and the chain stops right there — no **CONGRATULATIONS**, and only one thing to fix before re-running.
+
+## Why It Works
+
+- Tools run fastest/most fundamental first: no point running a slow type-checker if the code doesn't even parse — that's why Pylint is 1/9 and Autoflake, cleaning up imports, is 2/9.
+- The chain stops at the first failure: one `make qa` run, one clear thing to fix, not nine reports to reconcile.
+- `make qa` is a single entry point: the same target is what you run by hand, what a pre-commit hook runs, and what CI runs — more on that in the conclusion.
+
+## Installation
+
+I'm a big fan of static code quality tools and here is my short list, wired together with a <Link to="/blog/tags/makefile">makefile</Link> action called `qa`:
+
+<Snippet filename="makefile" source="./files/makefile" />
+
+As soon as an error is detected, the script stops. You'll see the **CONGRATULATIONS** message, exactly as shown above, only if all nine checks are successful.
+
+## More Demos: The Nine Tools, One by One
+
+### 1. Pylint
 
 >[https://pypi.org/project/pylint/](https://pypi.org/project/pylint/)
 >
@@ -52,7 +76,7 @@ I'm running it like this: `pylint . --rcfile .config/.pylintrc`.
 
 <Snippet filename=".config/.pylintrc" source="./files/.pylintrc" />
 
-## 2. Autoflake
+### 2. Autoflake
 
 > [https://pypi.org/project/autoflake/](https://pypi.org/project/autoflake/)
 >
@@ -64,7 +88,7 @@ I'm running it like this: `pylint . --rcfile .config/.pylintrc`.
 
 I'm running it like this: `autoflake --remove-unused-variables --remove-all-unused-import --recursive .`
 
-## 3. isort
+### 3. isort
 
 > [https://pycqa.github.io/isort/](https://pycqa.github.io/isort/)
 >
@@ -78,7 +102,7 @@ I'm running it like this: `isort .`
 
 Note: I've also configured my VSCode with this setting `"python.sortImports.args": ["--profile", "black"]` so import statements are automatically sorted while I'm coding.
 
-## 4. vulture
+### 4. vulture
 
 > [https://github.com/jendrikseipp/vulture](https://github.com/jendrikseipp/vulture)
 >
@@ -97,7 +121,7 @@ Note: I've also configured my VSCode with the settings below so, while I'm codin
 
 <Snippet filename=".vscode/settings.json" source="./files/settings.json" />
 
-## 5. pydocstyle
+### 5. pydocstyle
 
 > [https://www.pydocstyle.org/en/stable/](https://www.pydocstyle.org/en/stable/)
 >
@@ -110,10 +134,10 @@ I'm running it like this: `pydocstyle --config=.config/.pydocstyle`
 <Snippet filename=".config/.pydocstyle" source="./files/.pydocstyle" />
 
 <AlertBox variant="caution">
-The pydocstyle GitHub repository was archived in November 2023 and is no longer actively maintained. The community recommends migrating to **Ruff** (see the "Extra — Ruff" section below), which covers equivalent docstring checks via its `pydocstyle`-compatible rule set.
+The pydocstyle GitHub repository was archived in November 2023 and is no longer actively maintained. The community recommends migrating to **Ruff** (see the "Under the Hood" section below), which covers equivalent docstring checks via its `pydocstyle`-compatible rule set.
 </AlertBox>
 
-## 6. mypy
+### 6. mypy
 
 > [https://github.com/python/mypy/](https://github.com/python/mypy/)
 >
@@ -127,7 +151,7 @@ I'm running it like this: `mypy --config-file .config/.mypy.ini .`
 
 <Snippet filename=".config/.mypy.ini" source="./files/.mypy.ini" />
 
-## 7. Pyright
+### 7. Pyright
 
 > [https://github.com/microsoft/pyright](https://github.com/microsoft/pyright)
 >
@@ -137,7 +161,7 @@ I'm using it like this: `pyright --project .config/pyright.json`
 
 <Snippet filename=".config/pyright.json" source="./files/pyright.json" />
 
-## 8. Black
+### 8. Black
 
 > [https://black.readthedocs.io/en/stable/](https://black.readthedocs.io/en/stable/)
 >
@@ -151,7 +175,7 @@ I'm using it like this: `black --config .config/black.toml .`
 
 <Snippet filename=".config/black.toml" source="./files/black.toml" />
 
-## 9. prospector
+### 9. prospector
 
 > [https://github.com/prospector-dev/prospector/](https://github.com/prospector-dev/prospector/)
 >
@@ -161,7 +185,9 @@ I'm using it like this: `prospector . --profile .config/prospector.yaml --pylint
 
 <Snippet filename=".config/prospector.yaml" source="./files/prospector.yaml" />
 
-## Extra - Ruff
+## Under the Hood (skip this if you just want to use it)
+
+### Extra - Ruff, a potential replacement for several tools
 
 > [https://github.com/astral-sh/ruff](https://github.com/astral-sh/ruff)
 >
@@ -179,16 +205,8 @@ I'm using it like this: `ruff format --cache-dir /tmp/ruff --config .config/pypr
 
 <Snippet filename=".config/pyproject.toml" source="./files/pyproject.toml" />
 
-## Running them all at once
+## Conclusion
 
-But why have I numbered the tools from 1 to 9, and why this order? That's because I run them one after another, starting with the fastest tool, which is also the most logical one.
+Nine tools, one command, one clear failure point — `make qa` turns "did I remember to check everything" into a single deterministic run, fastest/most fundamental check first, stopping the instant something's wrong.
 
-The first tool is `Pylint` and that makes sense: there is no need to go further if the syntax is incorrect. The second tool is `Autoflake` and it makes sense too to remove unused variables and imports before.
-
-I'm using a <Link to="/blog/tags/makefile">makefile</Link> with an action called `qa` like this:
-
-<Snippet filename="makefile" source="./files/makefile" />
-
-I think you have understood. As soon as an error is detected, the script stops. You'll see the **CONGRATULATIONS** message only if all checks are successful.
-
-Running `make qa` by hand still relies on you remembering to do it. Two ways to make it automatic: <Link to="/blog/git-precommit">Git - pre-commit-hooks</Link> refuses the commit when a check fails, and <Link to="/blog/dagger-python">Dagger.io - Using dagger to automate your CI workflows</Link> runs the exact same steps locally and in your CI.
+Running it by hand still relies on you remembering to do it, though. Two ways to make it automatic: <Link to="/blog/git-precommit">Git - pre-commit-hooks</Link> refuses the commit when a check fails, and <Link to="/blog/dagger-python">Dagger.io - Using dagger to automate your CI workflows</Link> runs the exact same steps locally and in your CI.

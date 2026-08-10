@@ -56,6 +56,14 @@ Run `code .` to open the project in VSCode and you'll get this:
 
 ![Opening the brand-simple project in VSCode](./images/opening-in-vscode.webp)
 
+Here's where we're headed: open this same project as a devcontainer, run `quarto preview .`, and the site is already live — no Quarto install on your host required.
+
+![Running quarto preview](./images/running_in_preview_mode.webp)
+
+![The site is already running](./images/preview.webp)
+
+Crazy easy no? Let's build it, starting with three files.
+
 ## We'll need to create three files
 
 To get the best performance in terms of Docker image build speed and use of the Docker cache mechanism, we will need to create three files:
@@ -79,13 +87,13 @@ By opening a Devcontainer, even if the `Dockerfile` is strictly the same across 
 
 </AlertBox>
 
-## Extra information
+## Extra Information (optional — skip if the defaults work for you)
 
 ### Installation of sudo
 
 During the creation of the Docker image, we also install the `sudo` command and allow our `vscode` user to run `sudo su root` in the devcontainer without having to fill in a password. The reason here is that, sometimes, Quarto will complain about a missing dependency (like when we are exporting to PDF and there is a missing library). To allow the developer to quickly add the dependency and do some tests without having to rebuild the container again and again, `sudo` is installed.
 
-## Build arguments
+## Build Arguments (optional — read only the ones you need)
 
 ### Installation of Chromium
 
@@ -148,13 +156,9 @@ After a few seconds, you'll get a screen like this:
 1. See bottom left, you have, in the status bar, the text "Dev Container: xxx" (followed by the name of our container as configured in the `devcontainer.json` file).
 2. In the **Terminal window** (if you don't see it press <kbd>CTRL</kbd>+<kbd>ù</kbd>), you'll see a cheatsheet with main commands like `quarto preview .` to run the site with hot reload.
 
-So, still in the Terminal, please type `quarto preview .` then press <kbd>Enter</kbd> as illustrated below:
+So, still in the Terminal, please type `quarto preview .` then press <kbd>Enter</kbd> — you'll get the same output already teased at the top of this article.
 
-![Running quarto preview](./images/running_in_preview_mode.webp)
-
-In theory, your browser will be automatically fired and the site opened. If not, just follow the link by pressing <kbd>ALT</kbd> and clicking on the link.
-
-![The site is already running](./images/preview.webp)
+In theory, your browser will be automatically fired and the site opened, showing the same result already shown earlier. If not, just follow the link by pressing <kbd>ALT</kbd> and clicking on the link.
 
 Crazy easy no?
 

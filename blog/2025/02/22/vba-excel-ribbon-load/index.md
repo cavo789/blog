@@ -33,6 +33,15 @@ In this way, we could offer a nicer user experience by proposing a list and exec
 
 <!-- truncate -->
 
+Here's the result: the dropdown loaded straight from the worksheet range, and the selected value written back into a cell.
+
+![Demo](./images/demo.webp)
+
+## Why It Works
+
+- The dropdown's items come from a **named range** (`_rngParamsPeriod`), not hardcoded values in the XML — update the range in the sheet and the ribbon list updates with it.
+- A VBA callback (`getItemCount`, wired in the ribbon's XML) does the reading; selecting a value in the ribbon writes it straight into a named cell (`_Period`) elsewhere in the workbook.
+
 ## Let's play
 
 First, create an empty workbook. Create then a new sheet called f.i. `Params` with a list of values. For this article, let's create a list of periods:
@@ -99,8 +108,8 @@ Save the Excel workbook but, this time, with the `.xlsm` extension since the wor
 
 </AlertBox>
 
-Time to test our feature: close the workbook and re-open it again and, this time, your list has been populated and by selecting a value from the list, the value will be injected in your worksheet; ready to be used.
+Time to test our feature: close the workbook and re-open it again and, this time, your list has been populated and by selecting a value from the list, the value will be injected in your worksheet; ready to be used — the same result already shown at the top of this article.
 
-![Demo](./images/demo.webp)
+## Conclusion
 
-<Link to="/blog/vba-excel-ribbon">Want to keep playing with ribbons? Check out my other articles on the subject.</Link>
+A named range, a bit of Custom UI XML and one VBA callback module: that's the whole recipe for a ribbon dropdown that never needs its values hardcoded again — update the range, and every workbook using this ribbon follows. <Link to="/blog/vba-excel-ribbon">Want to keep playing with ribbons? Check out my other articles on the subject.</Link>

@@ -33,55 +33,9 @@ In this new article, we'll look at how to get a VSCode environment ready to use 
 
 <!-- truncate -->
 
-In this article, we'll create a **devcontainer** i.e. a development environment based on Docker. The creation of the devcontainer will take a few minutes but it's just a question of copy/paste from this article to your system.
+## Let's see it running
 
-Once the files have been created, you can reuse the devcontainer for all your Python projects.
-
-*Two natural extensions: add the tools from <Link to="/blog/python-qa">Python - Code Quality tools</Link> to the image so every project inherits them, and read <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers - The Clean Way</Link> to keep that tooling out of the image you deploy.*
-
-## Let's create the files for our Docker environment
-
-Like always, we'll create a new folder and create files there. Please run `mkdir /tmp/python && cd $_` to create that folder and jump in it.
-
-Start VSCode from there i.e. run `code .` in the console when you're located in the folder. This will open VSCode and you'll be able to create as many files you want.
-
-### Dockerfile
-
-The first file to create will be used to build our Docker image. Please create a file called `Dockerfile` with the following content:
-
-<Snippet filename="Dockerfile" source="./files/Dockerfile" />
-
-### compose.yaml
-
-Next to the `Dockerfile`, we'll create our `compose.yaml` one. Please create that file with the following content:
-
-
-<Snippet filename="compose.yaml" source="./files/compose.yaml" />
-
-### .docker.env
-
-The third file to create will be called `.docker.env` where we'll initialize some values. Please create that file with the content below:
-
-
-<Snippet filename=".docker.env" source="./files/.docker.env" />
-
-<AlertBox variant="info">
-All you have to do is duplicate the other files we've created for each of your projects and the settings for your project will be made here, in the `.docker.env` file.
-
-</AlertBox>
-
-### makefile
-
-To make life easier, we're going to group together a set of commands in a file called `makefile`. Please create a `makefile` file with the contents below:
-
-<Snippet filename="makefile" source="./files/makefile" />
-
-<AlertBox variant="caution">
-If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed with the installation.
-
-</AlertBox>
-
-Right now, we can run `make up` in our console and we'll get this screen:
+Here's what you get, before you create a single file: run `make up` in your console and you'll get this screen:
 
 ![Makefile](./images/make.webp)
 
@@ -136,6 +90,56 @@ print("Hey! It's synchronized; cool!")
 ```
 
 ![It's synchronized](./images/it-is-synchronized.webp)
+
+The files behind all this — `Dockerfile`, `compose.yaml`, `.docker.env` and the `makefile` — are shown next.
+
+## Let's create the files for our Docker environment
+
+In this article, we'll create the devcontainer i.e. the development environment based on Docker that you just saw running. The creation of the devcontainer will take a few minutes but it's just a question of copy/paste from this article to your system.
+
+Once the files have been created, you can reuse the devcontainer for all your Python projects.
+
+*Two natural extensions: add the tools from <Link to="/blog/python-qa">Python - Code Quality tools</Link> to the image so every project inherits them, and read <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers - The Clean Way</Link> to keep that tooling out of the image you deploy.*
+
+Like always, we'll create a new folder and create files there. Please run `mkdir /tmp/python && cd $_` to create that folder and jump in it.
+
+Start VSCode from there i.e. run `code .` in the console when you're located in the folder. This will open VSCode and you'll be able to create as many files you want.
+
+### Dockerfile
+
+The first file to create will be used to build our Docker image. Please create a file called `Dockerfile` with the following content:
+
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
+
+### compose.yaml
+
+Next to the `Dockerfile`, we'll create our `compose.yaml` one. Please create that file with the following content:
+
+
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
+
+### .docker.env
+
+The third file to create will be called `.docker.env` where we'll initialize some values. Please create that file with the content below:
+
+
+<Snippet filename=".docker.env" source="./files/.docker.env" />
+
+<AlertBox variant="info">
+All you have to do is duplicate the other files we've created for each of your projects and the settings for your project will be made here, in the `.docker.env` file.
+
+</AlertBox>
+
+### makefile
+
+To make life easier, we're going to group together a set of commands in a file called `makefile`. Please create a `makefile` file with the contents below:
+
+<Snippet filename="makefile" source="./files/makefile" />
+
+<AlertBox variant="caution">
+If you don't know if you already have `GNU make`, just run `which make` in the console. If you see `make not found` then please run `sudo apt-get update && sudo apt-get install make` to proceed with the installation.
+
+</AlertBox>
 
 ## What have we done so far?
 

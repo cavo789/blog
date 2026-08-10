@@ -33,6 +33,10 @@ And the magic will happen thanks **[Oracle REST Data Services](https://www.oracl
 
 <!-- truncate -->
 
+Here's where we're headed: the same Oracle table, now reachable as plain JSON over HTTP.
+
+![Getting the list of employees as JSON using curl](./images/getting_employees_as_json_curl.webp)
+
 In the previous article (<Link to="/blog/docker-oracle-database-server">Running Oracle Database Server as a Docker container</Link>), we've created a Docker container called `oracle-db` where a Human Resources database is running.
 
 Please read that article and follow steps so, before continuing here, you've a running Docker container as described below.
@@ -293,9 +297,7 @@ Look at the *Open in a new tab* icon on the image above. Click on that button an
 
 The `http://localhost:8181/ords/hr/employees/` is called the **Object Data** ([documentation](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/developing-REST-applications.html#GUID-0B17836D-E5B5-4B45-A9DA-0ABF62426EDF))
 
-Since it's nothing more than a URL, you can use it with any tools you want, f.i. using `curl`. The command to run is `curl http://localhost:8181/ords/hr/employees/ | jq`.
-
-![Getting the list of employees as JSON using curl](./images/getting_employees_as_json_curl.webp)
+Since it's nothing more than a URL, you can use it with any tools you want, f.i. using `curl`. The command to run is `curl http://localhost:8181/ords/hr/employees/ | jq` — the same output already teased at the top of this article.
 
 ###### And what about the OpenAPI catalog
 
@@ -336,7 +338,7 @@ Go to `http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop` or, from the hambu
   />
 </BrowserWindow>
 
-### Using paging, filtering and ordering options on the querystring
+### Using Paging, Filtering and Ordering Options on the Querystring (optional — skip if the default endpoint is enough)
 
 When accessing to an endpoint (like `http://localhost:8181/ords/hr/employees/`), we can manipulate the URL to add parameters like paging, filtering or ordering options.
 

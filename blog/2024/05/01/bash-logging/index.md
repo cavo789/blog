@@ -34,20 +34,6 @@ You just need to include the file in your script (i.e. add a `source log.sh` lin
 
 To illustrate how the log feature works, we will create two files. Your script (here, I'll call it `run.sh`) and the one containing the log implementation (`log.sh`).
 
-## Your script
-
-If you already have a script, please open it. Otherwise, just create a new one and copy/paste the code below.
-
-Name the file just as you want (I will name it `run.sh` for example) and make sure the script can be executed by running `chmod +x run.sh` in your console.
-
-<Snippet filename="run.sh" source="./files/run.sh" />
-
-## The log helper
-
-Please create a file called `log.sh`, in the exact same folder of your script, and copy/paste this content:
-
-<Snippet filename="log.sh" source="./files/log.sh" />
-
 ## The result
 
 By running the script, we can see our different `echo` statements, but also the content of the generated log.
@@ -72,3 +58,17 @@ Each statement logged will have a trace as you can see. For instance, the block 
 When there are multiple parents, you'll get the entire trace, f.i. `[Function test5 line 4;Function test4 line 10;Function test3 line 16;Function test2 line 24;Function test1 line 30;Function __main line 48]`: the function `__main` on line 48 called `test1`, which then called `test2`, and so on.
 
 Each statement in the log will then contain the entire trace, making debugging easier.
+
+## Your script
+
+If you already have a script, please open it. Otherwise, just create a new one and copy/paste the code below.
+
+Name the file just as you want (I will name it `run.sh` for example) and make sure the script can be executed by running `chmod +x run.sh` in your console.
+
+<Snippet filename="run.sh" source="./files/run.sh" />
+
+## The log helper
+
+Please create a file called `log.sh`, in the exact same folder of your script, and copy/paste this content — that's what produces the trace and log file shown above.
+
+<Snippet filename="log.sh" source="./files/log.sh" />

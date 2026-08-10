@@ -10,8 +10,13 @@ import styles from "./styles.module.css";
  *
  * This file is needed to fix a bug where tag permalinks are generated with an incorrect
  * double path segment (e.g., '/blog/tags/tags/'). It normalizes these URLs to '/blog/tags/'.
+ *
+ * It also sorts the tags alphabetically (by label), regardless of the order in which
+ * they were listed in the post's frontmatter.
  */
 export default function TagsListInline({ tags }) {
+  const sortedTags = [...tags].sort((a, b) => a.label.localeCompare(b.label));
+
   return (
     <>
       <b>
@@ -23,7 +28,7 @@ export default function TagsListInline({ tags }) {
         </Translate>
       </b>
       <ul className={clsx(styles.tags, "padding--none", "margin-left--sm")}>
-        {tags.map(({ label, permalink: tagPermalink }) => {
+        {sortedTags.map(({ label, permalink: tagPermalink }) => {
           const correctedPermalink = tagPermalink.replace(
             "/blog/tags/tags/",
             "/blog/tags/",

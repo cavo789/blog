@@ -11,6 +11,9 @@ tags:
   - python
 language: en
 review_date: 2026-07-30
+updates:
+  - date: 2026-08-09
+    note: "Restructured for time-to-value: the merged result now comes right after the hook, before the data-generation script."
 ---
 <!-- cspell:ignore vlookup,sheet -->
 <!-- markdownlint-disable-file MD010 -->
@@ -51,6 +54,22 @@ Using Pandas will make this piece of cake...
 
 <!-- truncate -->
 
+## The Result: Five Years of Salaries, One File
+
+Running the merge script (shown in full further down) over five yearly CSV files produces one consolidated file, including employees who joined or left partway through:
+
+![Merged](./images/merged.webp)
+
+As we can see in the image, we do have a merge, i.e., our 10 employees (from 0 to 9), and if an employee was present in a file (like the one added in 2023, called `John John`), we can see their salary in our result.
+
+And, opened using Excel, here is our final result (and if you need to paste that result in a Markdown document, my <Link to="/blog/markdown-csv2md">CSV to Markdown table</Link> converter does it in one click):
+
+![Merged employees; in Excel](./images/excel.webp)
+
+Next year, we'll have a file called `employees_2025.csv` and we just need to run the merge again.
+
+## Why It Works
+
 <AlertBox variant="note">
 It is not certain that an employee is in each of the files. He could be present in 2020 and 2021 and then leave the company; he could be hired in 2022 and resign in 2023; he could arrive just in 2024.
 
@@ -58,7 +77,11 @@ The merge must therefore take this into account.
 
 </AlertBox>
 
-## Generate fake data script
+- The merge uses an **outer join** on `id`, so nobody is silently dropped, whether they joined mid-range or left before the last file.
+- Each yearly `salary` column is renamed `salary_2020`, `salary_2021`, ... *before* merging, so the columns never collide.
+- No `VLOOKUP` formulas to maintain across sheets, and no hand-added helper rows when someone is missing from one year.
+
+## Installation
 
 To illustrate this article, let's create some CSV files. We'll create files for 2020 till 2024. Just skip this chapter if you already have CSV files for your needs.
 
@@ -90,7 +113,7 @@ id;first_name;last_name;salary
 
 ![Generating fake data](./images/generate_fake_data.webp)
 
-## Do the merge
+## More Demos: The Merge Script, Line by Line
 
 Using Pandas, it's quite simple to loop over files and do a merge.
 
@@ -106,15 +129,19 @@ Then process remaining files (2022 till 2024).
 
 At the end, the script will save the file on disk as `employees_merged.csv`.
 
-![Merged](./images/merged.webp)
+## Under the Hood (skip this if you just want to use it)
 
-As we can see in the image, we do have a merge, i.e., our 10 employees (from 0 to 9), and if an employee was present in a file (like the one added in 2023, called `John John`), we can see their salary in our result.
+### Why `outer` and not `inner` or `left`
 
-And, opened using Excel, here is our final result (and if you need to paste that result in a Markdown document, my <Link to="/blog/markdown-csv2md">CSV to Markdown table</Link> converter does it in one click):
+`merged_df.merge(df_year, on=['id', 'first_name', 'last_name'], how='outer')` is doing the heavy lifting. The `how` argument decides who survives the merge:
 
-![Merged employees; in Excel](./images/excel.webp)
+- `inner` would only keep rows whose `id` exists in **every** file merged so far — anyone who joined after 2020 or left before 2024 disappears.
+- `left` would keep every row from the *first* file only — new hires in later years would never show up.
+- `outer` (used here) keeps the union: every `id` seen in any file, with `NaN` in the years where that person had no row.
 
-Next year, we'll have a file called `employees_2025.csv` and we just need to run the merge again.
+### Why the columns don't collide
+
+Pandas' default behaviour, when a merge finds the same column name (`salary`) on both sides, is to suffix them `salary_x` / `salary_y` — fine for two files, unreadable for five. That's why the script renames `salary` to `salary_{year}` *before* each merge: by the time `merge()` runs, the column names are already unique, so the result reads `salary_2020`, `salary_2021`, ... instead of an accumulating pile of `_x`/`_y`/`_x_x`.
 
 ## Conclusion
 

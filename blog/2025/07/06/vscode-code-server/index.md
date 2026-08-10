@@ -36,6 +36,18 @@ If all you need is to edit a file or two in a GitHub repository, there is an eve
 
 <!-- truncate -->
 
+One `docker run codercom/code-server` command, and here's the result: a full VS Code, running in your browser.
+
+![VScode in the browser](./images/code_server.webp)
+
+## Why It Works
+
+- No local VS Code install needed — the editor itself runs inside the container, your browser is just the display.
+- Configuration is stored on your host (`~/.config/`), not inside the project, so it persists across containers and is shared if you start code-server for several projects.
+- The container user is mapped to yours (`-u "$(id -u):$(id -g)"`), so files created or edited from the browser keep your normal file permissions — no `root`-owned files to clean up afterward.
+
+## Installation
+
 By running the instruction below, you'll download (once) the `codercom/code-server` Docker image then run a container as a daemon.
 
 <Terminal typewriter source="./files/terminal-2.txt" />
@@ -55,6 +67,8 @@ Once triggered successfully, just open your browser and visit `http://127.0.0.1:
 
 The code-server configuration is thus stored in your home directory, in the folder `~/.config/`. Like this, config files will not be part of your current project and the configuration will be the same if you start code-server at several places, for different projects.
 
+## Getting the Password
+
 By opening `http://127.0.0.1:8080` you'll get this screen:
 
 ![Asking for a password](./images/prompt_for_password.webp)
@@ -63,8 +77,8 @@ Back to your console, run `cat ${HOME}/.config/code-server/config.yaml` to disco
 
 <Terminal typewriter source="./files/terminal-1.txt" />
 
-Copy/paste the password in the form and submit it and tadaaa:
+Copy/paste the password in the form and submit it and tadaaa — the same VS Code in the browser already shown at the top of this article.
 
-![VScode in the browser](./images/code_server.webp)
+## Conclusion
 
-Continue your journey with the official documentation: [https://github.com/coder/code-server](https://github.com/coder/code-server) or [https://coder.com/docs/code-server/guide](https://coder.com/docs/code-server/guide) to get more info.
+One Docker image, one `docker run` command, and a full VS Code is available from any browser — no local install, no lost configuration, no permission headaches on the files you edit. Continue your journey with the official documentation: [https://github.com/coder/code-server](https://github.com/coder/code-server) or [https://coder.com/docs/code-server/guide](https://coder.com/docs/code-server/guide) to get more info.

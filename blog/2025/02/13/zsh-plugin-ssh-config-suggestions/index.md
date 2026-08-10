@@ -39,9 +39,21 @@ It would be pretty cool to run `ssh MyAmazingApp` no?
 
 <!-- truncate -->
 
+Here's the result: type `ssh ` (with the trailing space) and press <kbd>TAB</kbd> to get every alias from your `~/.ssh/config` file, autosuggested.
+
+![Using ssh-config-suggestions](./images/zsh-plugin-ssh-config-suggestions.gif)
+
+<AlertBox variant="highlyImportant" title="You should add a space character after `ssh`">
+To make it working, please note: you should add a space character after having typed `ssh` and before pressing <kbd>tab</kbd>.
+</AlertBox>
+
+## Why It Works
+
+The plugin reads the `Host` aliases already declared in your `~/.ssh/config` file and wires them into ZSH's completion system — no separate list to maintain, no vault to open, just the config file you already have.
+
 It should be really nice to be able to run `ssh MyAmazingApp` and hop, I'm connected on the server.
 
-This is where the `~/.ssh/config` is so helpful (please refer to this <Link to="/blog/linux-ssh-scp#using-the-config-file">article</Link>) but we can go one step further: it would be so great to type `ssh` and by some magic, Linux will show you the list of aliases defined in the `~/.ssh/config` file.
+This is where the `~/.ssh/config` is so helpful (please refer to this <Link to="/blog/linux-ssh-scp#using-the-config-file">article</Link>) but we can go one step further: it would be so great to type `ssh` and by some magic, Linux will show you the list of aliases defined in the `~/.ssh/config` file. Let's install it.
 
 ## Installation of the zsh-ssh-config-suggestions plugin
 
@@ -61,13 +73,7 @@ Imagine I've this content in my `~/.ssh/config`:
 
 Now, I really don't need to remember anything and I don't even need to know the names of the aliases any more!
 
-I just need to type (it's important): <kbd>ssh </kbd> followed by <kbd>TAB</kbd>
-
-![Using ssh-config-suggestions](./images/zsh-plugin-ssh-config-suggestions.gif)
-
-<AlertBox variant="highlyImportant" title="You should add a space character after `ssh`">
-To make it working, please note: you should add a space character after having typed `ssh` and before pressing <kbd>tab</kbd>.
-</AlertBox>
+I just need to type (it's important): <kbd>ssh </kbd> followed by <kbd>TAB</kbd> and I get the same suggestions already shown at the top of this article.
 
 As you can see, the system will display the list of hosts defined in my configuration file! I can then edit the file, add a new application and hop, next time, I'll get its name in the list. I don't need to connect to my vault anymore. Nice no?
 

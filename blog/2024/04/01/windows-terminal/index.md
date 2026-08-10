@@ -32,10 +32,6 @@ And that feature is really comfortable! Using the same window, you can have mult
 
 <!-- truncate -->
 
-## Installation
-
-Windows Terminal is part of Windows 11, so you already have it if you're running that OS. If you're running an older version of Windows, you can install Windows Terminal using the Windows Store, or, a third possibility, if you can't, you can download [the latest release from GitHub](https://github.com/microsoft/terminal/releases).
-
 ## Customize your profile
 
 On my computer this is how my Ubuntu console looks like. I'm using Windows Terminal and <Link to="/blog/powerlevel10k_sandbox">PowerLevel10k</Link>:
@@ -63,6 +59,10 @@ In my case, my profile has these settings:
 <Snippet filename="settings.json" source="./files/settings.json" />
 
 As you can see, I've downloaded some nice background picture and saved it in my `Backgrounds` folder then I use Linux notation to refer it.
+
+## Installation
+
+Windows Terminal is part of Windows 11, so you already have it if you're running that OS. If you're running an older version of Windows, you can install Windows Terminal using the Windows Store, or, a third possibility, if you can't, you can download [the latest release from GitHub](https://github.com/microsoft/terminal/releases).
 
 ## Add a new profile
 

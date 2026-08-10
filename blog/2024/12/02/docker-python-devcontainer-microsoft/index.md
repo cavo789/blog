@@ -44,6 +44,16 @@ Here is how to use VSCode and Docker to create a ready-to-use Python environment
 
 <!-- truncate -->
 
+Here's the payoff. Once the devcontainer is up, create a new file called `main.py` with this line `print("Hello from your Python Devcontainer!")`.
+
+Save the file.
+
+Click in the terminal and type `python main.py` to execute the script and tadaaa:
+
+![Running the script](./images/running_the_script.webp)
+
+A working Python environment, terminal and interpreter ready, and not a single file created by hand. Here's how VSCode builds it for you.
+
 <StepsCard
   title="If you have these three things, just do this:"
   variant="steps"
@@ -78,11 +88,3 @@ See the bottom part, a terminal window has been displayed and you've a prompt sh
 Click in the terminal and type `python --version`:
 
 ![Version](./images/version.webp)
-
-Now, for the demo, create a new file called `main.py` with this line `print("Hello from your Python Devcontainer!")`.
-
-Save the file.
-
-Click in the terminal and type `python main.py` to execute the script and tadaaa:
-
-![Running the script](./images/running_the_script.webp)

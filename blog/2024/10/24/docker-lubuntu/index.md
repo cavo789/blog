@@ -29,6 +29,17 @@ Using Docker and [Windows X Server](https://sourceforge.net/projects/vcxsrv/), w
 
 <!-- truncate -->
 
+## Result
+
+![Lubuntu desktop](./images/lubuntu-desktop.webp)
+
+A full Lubuntu desktop, running inside a Docker container, displayed on the Windows host — no VM, no dual-boot, no trace left once you throw the container away.
+
+## Why it works
+
+- Docker gives us a disposable environment: the whole desktop lives in a container, so nothing touches the host — drop the container and it's gone as if it never existed.
+- [Windows X Server](https://sourceforge.net/projects/vcxsrv/) is what actually renders the display: the container sends its GUI output to the X server running on Windows, which draws it on screen.
+
 I encourage you to watch the video [Full Ubuntu GUI in a Container Displayed on Windows (XServer)](https://www.youtube.com/watch?v=WutV6n21dys).
 
 ## Step 1 - Create the Dockerfile
@@ -57,16 +68,14 @@ By clicking on `Finish` you'll get a black screen. **It's normal.**
 
 Run your container by starting `docker run -t cavo789/lubuntu` and **wait, wait and wait again. If you got warnings on the console, don't worry and still wait**.
 
-You may have to wait a minute before you start to see the Linux Lubuntu desktop, and then you'll still need to wait because the operating system is loading and initializing (since it's the first time you start it).
-
-![Lubuntu desktop](./images/lubuntu-desktop.webp)
+You may have to wait a minute before you start to see the Linux Lubuntu desktop, and then you'll still need to wait because the operating system is loading and initializing (since it's the first time you start it) — you'll get the desktop shown at the top of this article.
 
 <AlertBox variant="note" title="Multi-screen support does not seem to work with X Server">
 During my tests, the display wasn't up to scratch and I had to remove the cable from my second screen to get a correct display.
 
 </AlertBox>
 
-## Impressive
+## Conclusion
 
 Do you realize that we've installed a Linux distribution and launched its GUI as a container? In fact, it's like installing a new PC.
 

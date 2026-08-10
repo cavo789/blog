@@ -27,6 +27,15 @@ The aim is therefore to compare the versions and highlight the differences.
 
 <!-- truncate -->
 
+## Result
+
+<Terminal typewriter source="./files/terminal-1.txt" />
+
+![Compare the two versions of the same Bash script and shows which functions are in one and not the other](./images/compare_functions.webp)
+
+Two sorted function lists, side by side: whatever's only on one side is a function the other
+version doesn't have — regardless of where in the file it was declared.
+
 ## Create some files for this blog post
 
 To be able to reproduce examples used in this blog post, if you need it, please create two files.
@@ -53,13 +62,7 @@ This function will retrieve any functions in the file i.e. lines starting with t
 
 ## Compare the two versions of the same Bash script and shows which functions are in one and not the other
 
-Regardless of the order in which the functions are declared, the script below, which you can copy and paste into the console, will find the list of functions in the two files, sort the list and compare which functions are in one version and which are not in the other:
-
-<Terminal typewriter source="./files/terminal-1.txt" />
-
-As you can see, we immediately see that the second file has two additions.
-
-![Compare the two versions of the same Bash script and shows which functions are in one and not the other](./images/compare_functions.webp)
+Regardless of the order in which the functions are declared, the script below, which you can copy and paste into the console, will find the list of functions in the two files, sort the list and compare which functions are in one version and which are not in the other — that's the command and result shown at the top of this article, where we immediately see that the second file has two additions.
 
 Of course, if we add a new function in `console.sh` and f.i. remove an existing one, we can see it too:
 

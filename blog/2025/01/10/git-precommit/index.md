@@ -13,6 +13,9 @@ tags:
   - python
 language: en
 review_date: 2026-07-30
+updates:
+  - date: 2026-08-09
+    note: "Restructured for time-to-value: the reformatting proof now comes before the setup steps; added a Conclusion."
 ---
 ![Git - pre-commit-hooks](/img/v2/clean_code.webp)
 
@@ -34,24 +37,33 @@ Let's see how to correct this.
 
 <!-- truncate -->
 
-Git is supporting a feature called **[Hooks](https://git-scm.com/book/ms/v2/Customizing-Git-Git-Hooks)**. There are `pre-` and `post-` hooks. A `pre-` hook like `pre-commit` is running before a commit is done while a `post-` hook is fired once the action has been successfully fired.
+## The Result: A Commit, Reformatted Before It Even Happens
 
-So, in this article, we'll discuss about `pre-commit` hooks: we want to start some code quality tools before committing our changes to our code versioning software and, in fact, we want to abandon the commit if something is wrong.
+Here is `pre-commit` catching (and fixing) a formatting violation, on a demo project you'll build below:
 
-In other words, if the code formatting of our last changes violates some standards (trailing spaces f.i.), we wish to be notified of the problem immediately; we want to be able to solve issues before pushing our changes and, this is the objective, to make sure we'll not push wrong code (badly formatted, badly written) to our versioning system.
+<Terminal>
+$ pre-commit run --all-files
+</Terminal>
 
-## Which pre-commit hooks tools exists?
+<Terminal typewriter wrap={false} source="./files/terminal-1.txt" />
 
-There are a few tools we can use like:
+Did you see the **reformatted main.py** line? A quoting inconsistency (`"double"` vs `'single'` quotes) got silently fixed by `black`, right there in the local stage:
 
-- [husky](https://github.com/typicode/husky); *Git hooks made easy* 🐶 *woof!*
-- [pre-commit](https://github.com/pre-commit/pre-commit); *A framework for managing and maintaining multi-language pre-commit hooks*
-- [grumphp](https://github.com/phpro/grumphp); *A PHP code-quality tool*
-- [CaptainHook](https://github.com/captainhookphp/captainhook); *CaptainHook is a very flexible git hook manager for software developers that makes sharing git hooks with your team a breeze.*
+![Black has reformatted our script](./images/black.webp)
 
-In this article, we'll discover [pre-commit](https://github.com/pre-commit/pre-commit) because it's multi-language and really simple to install / use / configure.
+No CI run, no email two hours later — the violation never leaves your machine.
 
-## Let's play by creating a demo
+## Why It Works
+
+Git ships two hook stages, `pre-` and `post-`; a `pre-commit` hook runs *before* the commit is created and can abandon it entirely if something fails.
+
+Among the tools that build on this ([husky](https://github.com/typicode/husky), [pre-commit](https://github.com/pre-commit/pre-commit), [grumphp](https://github.com/phpro/grumphp), [CaptainHook](https://github.com/captainhookphp/captainhook)), this article uses **pre-commit**:
+
+- It's multi-language — PHP, Python, Bash, whatever the project needs — one config file.
+- It runs the same tools your CI already runs (`black`, `pylint`, `phpstan`, ...), just earlier and for free, with no runner to wait for.
+- Once installed, it re-checks automatically on every `git commit` — nothing to remember, it's enforced.
+
+## Installation
 
 We'll create a new temporary folder, run `git init` to initialise a project and create a Docker image and run a container for our demo.
 
@@ -93,26 +105,13 @@ For a Python project, it's really easy, you just need to run `pip install pre-co
 
 Simple too, please create a file called `.pre-commit-config.yaml` with this content:
 
-
 <Snippet filename=".pre-commit-config.yaml" source="./files/.pre-commit-config.yaml" />
 
 ### Manually fire the hook
 
 `pre-commit` can be manually fired but you should have some files in your git local stage. In this article, we've created a few files, please run `git add .` just to put them in the git local stage.
 
-Now, to manually start all controls defined in the yaml file simply run:
-
-<Terminal>
-$ pre-commit run --all-files
-</Terminal>
-
-The first time, it'll be slower since a few things have to be downloaded / configured.
-
-You'll see something like this on your console:
-
-<Terminal typewriter wrap={false} source="./files/terminal-1.txt" />
-
-Oh? Did you see the **reformatted main.py** line? Something was wrong with that file.
+Now, to manually start all controls defined in the yaml file simply run `pre-commit run --all-files` — that's the exact command and output shown at the top of this article.
 
 Did you notice my typo?
 
@@ -122,26 +121,43 @@ print("I'm your Python code")
 print('Who you, who are you?')
 ```
 
-The first time I've used double quotes (in the first `print` statement) while I've used single ones in the second. So, I've (voluntary) created a code violation and the `black` tool has see it.
+The first time I've used double quotes (in the first `print` statement) while I've used single ones in the second. So, I've (voluntary) created a code violation and the `black` tool has see it and reformatted `main.py`, exactly as shown above.
 
-Now, reopen the `main.py` script:
-
-![Black has reformatted our script](./images/black.webp)
+## More Demos
 
 ### Install hooks
 
 Ok, the idea wasn't to fire pre-commit hooks manually, right? Just run `pre-commit install` and, from now, every single time you'll run `git commit`, first, `pre-commit` controls will be made and only when all controls are successful (i.e. all will return an exit code of `0`), then your commit will be allowed.
 
+### A few more hooks
+
+There are a lot of existing hooks and you can even create yours:
+
+- [Code spell](https://github.com/codespell-project/codespell/blob/main/.pre-commit-config.yaml#L70), *Check code for common misspellings*
+- [Git leaks](https://github.com/gitleaks/gitleaks/blob/master/.pre-commit-hooks.yaml), *Find secrets with Gitleaks*
+- [Git lint](https://github.com/jorisroovers/gitlint), *Linting for your git commit messages*
+- [Markdown format](https://github.com/hukkin/mdformat/blob/master/.pre-commit-config.yaml), *CommonMark compliant Markdown formatter*
+- [Markdownlint](https://github.com/markdownlint/markdownlint/blob/main/.pre-commit-hooks.yaml), *Markdown lint tool*
+- [Ruff](https://github.com/astral-sh/ruff-pre-commit/blob/main/.pre-commit-hooks.yaml), *A pre-commit hook for Ruff.*
+- [Shell check](https://github.com/shellcheck-py/shellcheck-py?tab=readme-ov-file#as-a-pre-commit-hook), *python3/pip3 wrapper for installing shellcheck*
+- [Trufflehog](https://github.com/trufflesecurity/trufflehog/blob/main/.pre-commit-config.yaml), *Find, verify, and analyze leaked credentials*
+
+### A ready-made Python 3.13 config
+
+For a Python 3.13 project, here is my `.pre-commit-config.yaml` file:
+
+<Snippet filename=".pre-commit-config.yaml" source="./files/.pre-commit-config.yaml.part4" />
+
+## Under the Hood (skip this if you just want to use it)
+
 <AlertBox variant="note">
-If you're curious about how it works, simply show the `.git/hooks/pre-commit` file. The previous instruction has configured git to execute a small Bash script called `.git/hooks/pre-commit`.
+If you're curious about how it works, simply show the `.git/hooks/pre-commit` file. The `pre-commit install` instruction has configured git to execute a small Bash script called `.git/hooks/pre-commit`.
 
 </AlertBox>
 
-### Search for hooks
+### Search for hooks and write your own
 
-There are a lot of existing hooks and you can even create yours.
-
-Take time to surf on [https://github.com/pre-commit/pre-commit-hooks](https://github.com/pre-commit/pre-commit-hooks) to see a few of them.
+Take time to surf on [https://github.com/pre-commit/pre-commit-hooks](https://github.com/pre-commit/pre-commit-hooks) to see a few of them, or search on [https://sourcegraph.com/search](https://sourcegraph.com/search) with queries like `context:global file:^\.pre-commit-hooks\.yaml$ "types: [python]"` f.i. ([direct link](https://sourcegraph.com/search?q=context:global+file:%5E%5C.pre-commit-hooks%5C.yaml%24+%22types:+%5Bpython%5D%22&patternType=keyword&sm=0)).
 
 As illustrated on [https://pre-commit.com/#repository-local-hooks](https://pre-commit.com/#repository-local-hooks), you can add local hooks.
 
@@ -153,23 +169,6 @@ You can also pass arguments:
 
 <Snippet filename=".pre-commit-config.yaml" source="./files/.pre-commit-config.yaml.part3" />
 
-For a Python 3.13 project, here is my `.pre-commit-config.yaml` file:
-
-<Snippet filename=".pre-commit-config.yaml" source="./files/.pre-commit-config.yaml.part4" />
-
-#### A few more hooks
-
-- [Code spell](https://github.com/codespell-project/codespell/blob/main/.pre-commit-config.yaml#L70), *Check code for common misspellings*
-- [Git leaks](https://github.com/gitleaks/gitleaks/blob/master/.pre-commit-hooks.yaml), *Find secrets with Gitleaks*
-- [Git lint](https://github.com/jorisroovers/gitlint), *Linting for your git commit messages*
-- [Markdown format](https://github.com/hukkin/mdformat/blob/master/.pre-commit-config.yaml), *CommonMark compliant Markdown formatter*
-- [Markdownlint](https://github.com/markdownlint/markdownlint/blob/main/.pre-commit-hooks.yaml), *Markdown lint tool*
-- [Ruff](https://github.com/astral-sh/ruff-pre-commit/blob/main/.pre-commit-hooks.yaml), *A pre-commit hook for Ruff.*
-- [Shell check](https://github.com/shellcheck-py/shellcheck-py?tab=readme-ov-file#as-a-pre-commit-hook), *python3/pip3 wrapper for installing shellcheck*
-- [Trufflehog](https://github.com/trufflesecurity/trufflehog/blob/main/.pre-commit-config.yaml), *Find, verify, and analyze leaked credentials*
-
-and even more, search on [https://sourcegraph.com/search](https://sourcegraph.com/search) with queries like `context:global file:^\.pre-commit-hooks\.yaml$ "types: [python]"` f.i. ([direct link](https://sourcegraph.com/search?q=context:global+file:%5E%5C.pre-commit-hooks%5C.yaml%24+%22types:+%5Bpython%5D%22&patternType=keyword&sm=0))
-
 ## Tip: --no-verify
 
 In some situation, you've to push your changes even if there are some code violation. Let's say, it's your last hour before three weeks holiday and you're working alone on a branch like `feat-user-profile`. You wish to push your changes and enjoy a break.
@@ -179,3 +178,9 @@ In that situation, you can add the `--no-verify` flag f.i. `git commit -m "wip: 
 <AlertBox variant="highlyImportant" title="The --no-verify flag">
 Only use this flag if you know exactly what you're doing. It would be a very bad idea to do this f.i. to the `dev` branch if you're working in a team.
 </AlertBox>
+
+## Conclusion
+
+Those failed-CI emails from the introduction stop happening once the same checks run locally, before the commit exists — `pre-commit` turns "wait for the server to tell you" into "know immediately." Install it once (`pre-commit install`) and every future commit is covered, in any language your project mixes.
+
+Keep `--no-verify` in your back pocket for the rare deliberate exception, and see <Link to="/blog/python-qa">Python - Code Quality tools</Link> for the tools this article's demo hooks are built on.

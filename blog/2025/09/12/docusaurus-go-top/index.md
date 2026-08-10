@@ -30,6 +30,8 @@ Just scroll down any page of this blog to see a little meerkat appear in the bot
 
 <!-- truncate -->
 
+<!-- TODO(author): capture a real screenshot (or short GIF) of the meerkat "back to top" icon appearing bottom-right while scrolled down on this blog, plus the click-to-top behavior — not reproducible in this session (requires a live browser). -->
+
 ## How it works
 
 Docux has created a [ScrollToTopButton Docusaurus component](https://github.com/Juniors017/docux-blog/tree/main/src/components/ScrollToTopButton) i.e. a piece of Javascript with css; nothing more.

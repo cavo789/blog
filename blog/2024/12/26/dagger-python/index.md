@@ -12,6 +12,8 @@ tags:
   - gitlab
 language: en
 updates:
+  - date: 2026-08-09
+    note: "Restructured for time-to-value: the local pipeline proof now comes before the setup steps."
   - date: 2026-07-30
     note: "Fixed dead link: Dagger GitLab docs moved from /integrations/gitlab to /ci/integrations/gitlab."
 ---
@@ -37,23 +39,27 @@ The aim of the CI is to ... **crash as soon as something isn't in the expected s
 
 <!-- truncate -->
 
-In concrete terms: at the office, we're using GitLab, and in each project we have a file called `.gitlab-ci.yml`. In that file, we've set up a few actions, like running code quality tools, so every time someone pushes changes, GitLab will execute these tools — for instance, checking that my code doesn't contain any syntax errors (linting), that there are no formatting violations, no unused/untyped variables/functions, and running the unit tests for my project.
+## The Result: A Working Pipeline, No YAML, No Push
 
-This is called a `Continuous Integration` process (a `CI` in short).
+Once Dagger is wired into a small Python project, `dagger init` scaffolds a working pipeline in about two minutes — no CI server involved, no `.gitlab-ci.yml` to push and wait on:
 
-That's cool but it's a pain too... Let's see why and how Dagger.io will improve all this stuff.
+<Terminal typewriter source="./files/terminal-4.txt" />
 
-## Why using Dagger?
+And the pipeline is immediately callable, right there on your machine:
 
-Anyone who has to set up a CI that runs on a remote server knows this: it's the exact opposite of *It's a piece of cake*. The CI has to be programmed in a text file in YAML format and it's impossible to test the CI locally because it's only run when there's a push on the server (and thus only on the server).
+<Terminal typewriter source="./files/terminal-3.txt" />
 
-It's extremely complicated to manage the reproducibility of the scripts because, when a CI error occurs on the server, you have to read the error log and try to understand why it occurs before trying to patch it (perhaps you'll need to update your yaml file), push the changes, wait, hope that it was the right correction, oh no, not the right one, and you need to restart the loop and, oh no, ... and push again and ... It's a real pain and can take hours!
+Two sample functions (`container-echo`, `grep-dir`) already exist out of the box — proof that a Dagger pipeline is just Python functions you can run locally. The rest of this article turns those samples into real Pylint/Black/mypy/Ruff steps, then wires the exact same pipeline into a GitLab CI.
 
-![Pushing and wait](./images/push_and_wait_angry.webp)
+## Why It Works
 
-And, finally, you've solved the issue after having pushed for the 46th time.
+- CI steps are plain Python functions — no YAML DSL to learn, no syntax that only exists on the server.
+- The exact same function runs on your laptop and inside GitLab/GitHub: same container, same output, no more surprises after a push.
+- Dagger runs everything inside a container it controls, so the tools your pipeline needs (Pylint, Black, mypy, Ruff, ...) are pinned and reproducible, not "whatever happens to be on the runner."
+- Functions compose: call one to lint, or call a `run-all` function to fire lint/format/type-check/ruff concurrently and stop at the first failure.
+- The old push → wait → read the log → guess → push again loop can be exercised entirely offline, before anything ever reaches the server.
 
-## Let's build a real example
+## Installation
 
 During this tutorial, we'll **daggerize** a repository, i.e. we'll start from zero, create a small Python script, create a Dagger Docker image, then initialize our project to use Dagger.
 
@@ -78,7 +84,7 @@ Every time we will push our codebase to our versioning application (like GitLab)
 
 These steps are fired in our CI (GitLab, GitHub, ...) every time we push our code and, to do the same actions locally, we need to create f.i. some make actions (`make lint`, `make format`, ...).
 
-## We want Dagger
+### We want Dagger
 
 ![Dagger](./images/dagger.webp)
 
@@ -90,7 +96,7 @@ Please create a new subfolder called `.docker` and in that folder, a file called
 
 We need to build our image so let's run `docker build -t dagger_daemon -f .docker/Dockerfile .`
 
-## Daggerize our application
+### Daggerize our application
 
 As said above, we need to create some stuff to *daggerize* our application.
 
@@ -105,9 +111,7 @@ To do this, we have to run the `dagger init` command and since we're using a Doc
 
 </AlertBox>
 
-It'll take around two minutes to download and initialize Dagger (for the first time). By looking at your file system, you'll see, oh, the owner is `root` and not you.
-
-<Terminal typewriter source="./files/terminal-4.txt" />
+It'll take around two minutes to download and initialize Dagger (for the first time). By looking at your file system, you'll see, oh, the owner is `root` and not you — that's the file listing shown above.
 
 Please run `sudo chown -R christophe:christophe .` (and replace my first name with your Linux username).
 
@@ -121,23 +125,17 @@ Let's look at the tree structure:
     ├── pyproject.toml
     ├── sdk
     ├── src
-    │   └── src
-    │       ├── __init__.py
-    │       └── main.py
+    │   └── src
+    │       ├── __init__.py
+    │       └── main.py
 
 ```
 
-## Calling functions
+Remember, `dagger` has been defined as our entrypoint (see our `Dockerfile`) so, to get the help screen of Dagger, simply run `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call --help` — you'll get the same function list shown at the top of this article (this first time it'll take more time since Dagger needs to build the pipeline).
 
-Remember, `dagger` has been defined as our entrypoint (see our `Dockerfile`) so, to get the help scree of Dagger, simply run `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call --help`.
+## More Demos
 
-You'll get the list of functions available (this first time it'll take more time since Dagger needs to build the pipeline):
-
-<Terminal typewriter source="./files/terminal-3.txt" />
-
-You'll see two functions: `container-echo` and `grep-dir`.
-
-## Create our linting function
+### Create our linting function
 
 Functions are defined in the `.pipeline/src/src/main.py` file.
 
@@ -180,7 +178,7 @@ We've successfully created our first task and we've successfully fired it on our
 
 </AlertBox>
 
-## Create a makefile
+### Create a makefile
 
 It becomes quite difficult to remember all these `docker xxx` commands, no? Let's simplify this by creating a `makefile` (if you're new to this, read <Link to="/blog/makefile-using-make">Linux Makefile - When to use a makefile</Link> first).
 
@@ -192,7 +190,7 @@ And `make help` will show the Dagger help screen.
 
 <Snippet filename="makefile" source="./files/makefile" />
 
-## Formatting the code using Black
+### Formatting the code using Black
 
 Edit the `.pipeline/src/src/main.py` file and add this new function:
 
@@ -200,7 +198,7 @@ Edit the `.pipeline/src/src/main.py` file and add this new function:
 
 So, from now, you can run `dagger call format` (from inside the container i.e. run `make bash` first) or `docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v .:/app/src dagger_daemon call format` (from your host).
 
-## Towards the universe and infinity
+### Towards the universe and infinity
 
 Ok, we've now two tasks and we've to implement a lot more. We can do a lot of copy/paste or take time to start thinking:
 
@@ -230,7 +228,11 @@ We have two new functions called `mypy` and `ruff` and a last one called `run_al
 
 That one will start all the four functions concurrently and will wait until one fails or the four succeed.
 
-Now, before running these functions, we need to create some configurations files.
+## Under the Hood (skip this if you just want to use it)
+
+### Configuration files
+
+Before running these new functions, we need to create some configuration files.
 
 <Snippet filename=".config/.pylintrc" source="./files/.pylintrc" />
 
@@ -240,19 +242,9 @@ Now, before running these functions, we need to create some configurations files
 
 <Snippet filename=".config/pyproject.toml" source="./files/pyproject.toml" />
 
-<Snippet filename="makefile" source="./files/makefile.part2" />
+<Snippet filename="makefile" source="./files/makefile.part2" defaultOpen={false} />
 
-## Our CI is ready on our dev machine
-
-Right now, we've built a local pipeline: we've created a custom Dagger Docker image and we've daggerized an existing project.
-
-We've defined a few functions (`lint`, `format`, `mypy` and `ruff`) and a last one `run-all` to start all functions at the same time.
-
-We've simplified our work with `make` actions to not remember these long Docker CLI commands.
-
-Our pipeline is working fine locally; time to implement the remote CI.
-
-## Implementing a GitLab CI using Dagger
+### Implementing a GitLab CI using Dagger
 
 Let's go back to our objective: to simplify the pipeline process both at CI level (GitLab, GitHub, etc.) and locally.
 
@@ -260,7 +252,7 @@ We've just done the local part, let's tackle the remote CI.
 
 For the next chapters, I'll suppose you're using a self-hosted GitLab server.
 
-### Allowing the GitLab runner to access Docker
+#### Allowing the GitLab runner to access Docker
 
 I'm not an expert in GitLab runner configuration but the following configuration is working for me. I've detailed that setup, and the folder-sharing pitfall coming with it, in <Link to="/blog/gitlab-docker-out-of-docker">GitLab - Running Docker-out-of-Docker in your CI</Link>.
 
@@ -277,7 +269,7 @@ Official Gitlab documentation about [volumes](https://docs.gitlab.com/runner/con
 
 To check if it's working, run `sudo su gitlab-runner` to switch to that user and run `docker info` and `docker image list` and check if it works. If yes, then your user is part of the Docker group.
 
-### Configure your CI
+#### Configure your CI
 
 Please create a GitLab repository, push your existing project there.
 
@@ -297,3 +289,11 @@ Since we've shared the Docker daemon (`/var/run/docker.sock`) in our GitLab `/et
 But, you can also use the asynchronous mode since we've implemented a `run-all` feature:
 
 <Snippet filename=".gitlab-ci.yml" source="./files/.gitlab-ci.yml.part2" />
+
+## Conclusion
+
+We've built a custom Dagger Docker image, daggerized an existing project, and defined four functions (`lint`, `format`, `mypy` and `ruff`) plus a `run-all` one to start them all concurrently. `make` actions spare us from remembering the long Docker CLI commands, and the exact same functions now also run inside a GitLab CI, sharing the Docker socket with the runner.
+
+The push → wait → read the log → guess → push again loop from the introduction is gone: everything that fires in CI can be exercised and debugged locally first, in seconds, not minutes on a remote server.
+
+If you haven't already, read <Link to="/blog/python-qa">Python - Code Quality tools</Link> for more detail on Pylint, Black, mypy and Ruff themselves.

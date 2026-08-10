@@ -3,13 +3,14 @@ slug: ollama-git-precommit
 title: "ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit"
 authors: [christophe, claude]
 image: /img/v2/ai_review.webp
-mainTag: git
+mainTag: ai
 tags: [git, ollama, zsh, ai, security, code-quality]
 date: 2026-08-10
 description: "Three zsh functions that together form a local, offline pre-commit quality gate: ai-review catches SOLID violations and naming issues, ai-secrets separates real hardcoded credentials from false positives, and ai-commit drafts the Conventional Commits message once the diff is actually clean."
 language: en
 ai_assisted: true
 series: "Ollama daily-use functions"
+blueskyRecordKey: 3ms5sdpk6kk2a
 ---
 
 ![ai-review, ai-secrets, ai-commit: Three zsh Checks Before Every git Commit](/img/v2/ai_review.webp)
@@ -22,7 +23,7 @@ This article adds three functions to the "Ollama daily-use functions" series —
 
 The moment right before a `git commit` is probably the most valuable one in the whole development cycle to pause and look at what you've actually written. Not because something is necessarily wrong — usually it isn't — but because that's when the diff is small and bounded. One more minute of review when you can still see every changed line clearly is worth more than an hour of archaeology later.
 
-I already have [pre-commit hooks](/blog/git-precommit) running phpcbf, PHPStan and friends. Those catch *rules*. What they don't catch is judgment: a method that quietly grew three responsibilities, `0.21` on line 20 that should have a name, `$d` that was a lazy parameter name three months ago and is unreadable today — or, more critically, a real database password that slipped into a config diff.
+I already have [pre-commit hooks](/blog/git-precommit) running phpcbf, PHPStan and friends. Those catch *rules*. What they don't catch is judgment: a method that quietly grew three responsibilities, `0.21` on line 20 that should have a name (like `discount_rate`), `$d` that was a lazy parameter name three months ago and is unreadable today — or, more critically, a real database password that slipped into a config diff.
 
 These three functions fill that gap, locally, without a cloud subscription.
 
@@ -57,11 +58,11 @@ All three build on a shared `_ollama.zsh` foundation (introduced in [ai-test](/b
 
 Add the three functions on top of it:
 
-<Snippet filename="~/.zsh/fns/ai-review.zsh" source="./files/ai-review.zsh" defaultOpen={true} />
+<Snippet filename="~/.zsh/fns/ai-review.zsh" source="./files/ai-review.zsh" defaultOpen={false} />
 
-<Snippet filename="~/.zsh/fns/ai-secrets.zsh" source="./files/ai-secrets.zsh" defaultOpen={true} />
+<Snippet filename="~/.zsh/fns/ai-secrets.zsh" source="./files/ai-secrets.zsh" defaultOpen={false} />
 
-<Snippet filename="~/.zsh/fns/ai-commit.zsh" source="./files/ai-commit.zsh" defaultOpen={true} />
+<Snippet filename="~/.zsh/fns/ai-commit.zsh" source="./files/ai-commit.zsh" defaultOpen={false} />
 
 ## `ai-secrets`: Catching Real Credentials
 
@@ -93,11 +94,12 @@ A properly scoped `fix(api):` message with a short explanatory body, generated i
 
 ## Under the Hood: `_git_staged_diff` (skip this if you just want to use it)
 
-The guard clauses shared by all three functions — repo check, empty-diff check, size warning — live in one place:
+The guard clauses shared by all three functions — repo check, empty-diff check, size ceiling — live in one place:
 
 ```zsh title="~/.zsh/fns/_ollama.zsh (extract)"
 _git_staged_diff() {
   local caller="${1:-ai}"
+  local max="${AI_DIFF_MAX_CHARS:-12000}"
 
   if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     echo "${caller}: not inside a git repository" >&2
@@ -112,15 +114,35 @@ _git_staged_diff() {
     return 1
   fi
 
-  if (( ${#diff} > 12000 )); then
-    echo "${caller}: staged diff is large (${#diff} chars) — output may be less precise." >&2
+  if (( ${#diff} <= max )); then
+    print -r -- "$diff"
+    return 0
   fi
 
-  print -- "$diff"
+  echo "${caller}: staged diff is large (${#diff} chars) — sending a structural summary instead of the full diff." >&2
+
+  local summary
+  summary="$(git diff --staged --stat)
+
+--- FILE AND HUNK HEADERS ONLY (full diff omitted, ${#diff} chars) ---
+$(print -r -- "$diff" | grep -E '^(diff --git|new file|deleted file|rename (from|to)|@@)')"
+
+  if (( ${#summary} > max )); then
+    summary="${summary[1,$max]}
+[…summary truncated…]"
+  fi
+
+  print -r -- "$summary"
 }
 ```
 
-Every function above calls `_git_staged_diff` and gets back the diff — or exits cleanly with a clear message. In the original versions of these functions, those fifteen lines were copy-pasted into each one — a classic SRP violation hiding in plain sight. One responsibility, one place, now.
+Every function above calls `_git_staged_diff` and gets back the diff — or exits cleanly with a clear message. In the original versions of these functions, those guard clauses were copy-pasted into each one — a classic SRP violation hiding in plain sight. One responsibility, one place, now.
+
+The size ceiling deserves a word, because I learned it the hard way: staging a few hundred files and running `ai-commit` on a 490 KB diff gives you a *worse* commit message, not a longer one — the model's context window overflows and what comes back is vague or empty. So past `AI_DIFF_MAX_CHARS` (12 000 by default, override it in your shell if your model has room), the helper stops sending the content and sends the *shape* instead: the per-file `--stat`, plus every file and hunk header. Those `@@` lines carry the enclosing function name git puts after them, so the model still knows which files changed, how much, and where — enough for a decent `feat(scope):` line, without drowning.
+
+<AlertBox variant="tip" title="Why the prompt is piped into jq, not passed as an argument">
+In `_ollama_query` you'll see `print -r -- "$prompt" | jq -Rs …` rather than the more obvious `jq -n --arg prompt "$prompt"`. That's deliberate: Linux caps a **single** command-line argument at 128 KB (`MAX_ARG_STRLEN`), regardless of the much larger total `ARG_MAX`. Pass a big diff or a long source file as `--arg` and `jq` dies before it starts, with `argument list too long`. A pipe has no such limit, and `jq -R -s` slurps stdin as one raw string — escaping quotes, backslashes and newlines exactly like `--arg` would.
+</AlertBox>
 
 ## Running Them Together
 

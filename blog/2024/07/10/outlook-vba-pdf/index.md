@@ -27,6 +27,18 @@ This post will explain to you how to create such a macro for Outlook.
 
 <!-- truncate -->
 
+## Result
+
+Select one or more emails, click the button, and the macro walks you through three prompts:
+
+![Five emails selected](./images/five_emails_selected.webp)
+
+1. A confirmation to proceed with the selected emails.
+2. A folder picker — where the PDFs should be saved.
+3. Whether to remove the emails from Outlook afterward, and whether to name each PDF manually or reuse the email's subject line.
+
+At the end, every selected email is saved on your hard disk as a PDF.
+
 ## Prerequisites
 
 You should have Microsoft Office on your hard disk and you need to have Outlook and Word installed.
@@ -57,22 +69,8 @@ You should see <Link to="/blog/vba-excel-ribbon">your new group</Link>, in my ca
 
 ![The new group](./images/ribbon_macro.webp)
 
-## How to use
+## The folder and naming dialogs
 
-Select one or more emails then click on your new button.
-
-The macro will ask a first confirmation:
-
-![Five emails selected](./images/five_emails_selected.webp)
-
-Press `Yes` to continue.
-
-Then, you'll be prompted to select a folder on your disk where to save emails as PDF.
+The confirmation, folder picker and naming prompts are described at the top of this article. The folder picker looks like this:
 
 ![Where emails should be saved?](./images/where_to_save.webp)
-
-The first dialog will ask if, once exported as PDF, you wish to keep emails in Outlook and remove them.
-
-And the last dialog will ask if you wish to give a name manually to each file (if you've selected five emails, you'll be prompted five times for a filename) or if you wish to use the subject of the email as filename.
-
-At the end, emails have been saved on your hard disk.

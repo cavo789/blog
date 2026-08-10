@@ -29,6 +29,21 @@ Let's go, you'll see, it's easy.
 
 <!-- truncate -->
 
+## Result
+
+![Installation is completed](./images/installation_done.webp)
+
+That's a working Ubuntu 24.04 install, ready to reboot into. Before you get there, one trap to
+avoid — it's the one that actually cost time during this install:
+
+<AlertBox variant="highlyImportant" title="IMPORTANT - DON'T INSTALL ADDITIONAL DRIVERS IF YOU'VE A NVIDIA GRAPHIC CARD">
+The wizard will ask if you want to **Install recommended proprietary software**. The first time, I have answered Yes on both options. The installation had been running for nearly twenty minutes and then I got an error message *The Secure Boot key is not valid*.
+
+While looking on the **askubuntu.com** website, someone mentioned this was a bug and that we shouldn't install drivers during the installation of Ubuntu but can do this easily later on, referring to this bug: [https://bugs.launchpad.net/subiquity/+bug/2060353](https://bugs.launchpad.net/subiquity/+bug/2060353).
+
+So, I've abandoned the installation and start a new one.
+</AlertBox>
+
 ## Turn off Bitlocker first
 
 If you're using Bitlocker on your computer, you must first deactivate it; if not, just skip this chapter.
@@ -76,13 +91,7 @@ A few notes:
 - The wizard will ask *how to install Ubuntu*; alongside Windows (so with a dual boot) or alone. I'm going to opt for the latter.
 Personally, that's my goal and I'm going to ask to delete my entire current disk (Windows) and to do that, I'm going to click on *Erase disk and install Ubuntu* and click on the *Advanced features* button. I'm going to opt for *Use LVM and encryption* which will allow me to have encryption like I had with Bitlocker: someone who came to steal my hard disk wouldn't have access to my files without the decryption key.
 
-<AlertBox variant="highlyImportant" title="IMPORTANT - DON'T INSTALL ADDITIONAL DRIVERS IF YOU'VE A NVIDIA GRAPHIC CARD">
-The wizard will ask if you want to **Install recommended proprietary software**. The first time, I have answered Yes on both options. The installation had been running for nearly twenty minutes and then I got an error message *The Secure Boot key is not valid*.
-
-While looking on the **askubuntu.com** website, someone mentioned this was a bug and that we shouldn't install drivers during the installation of Ubuntu but can do this easily later on, referring to this bug: [https://bugs.launchpad.net/subiquity/+bug/2060353](https://bugs.launchpad.net/subiquity/+bug/2060353).
-
-So, I've abandoned the installation and start a new one.
-</AlertBox>
+*Remember the NVIDIA/Secure Boot warning from the top of this article when the wizard asks about proprietary drivers.*
 
 You'll be asked to create your administrative account and to select your time zone.
 
@@ -100,7 +109,7 @@ In the bottom right of the installation screen, you'll find a small button. Clic
 
 </AlertBox>
 
-![Installation is completed](./images/installation_done.webp)
+That's the completed installation shown at the top of this article.
 
 ## Reboot and enable Ubuntu Pro
 

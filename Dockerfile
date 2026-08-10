@@ -36,7 +36,9 @@ RUN --mount=type=cache,target=/var/cache/apt \
         bash-completion \
         curl \
         git \
-        openssl
+        lsof \
+        openssl \
+        procps
 
 # Pin yarn to the version declared in package.json#packageManager (overrides corepack's symlink)
 RUN npm install -g yarn@1.22.22 --force --quiet

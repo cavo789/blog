@@ -33,6 +33,10 @@ Let's see how to easily do things like this:
 
 <!-- truncate -->
 
+Here's the result:
+
+![Nice no?](./images/full_image.webp)
+
 I'm using [Windows Terminal](https://apps.microsoft.com/detail/9n0dx20hk701); a free tool coming from Microsoft.
 
 I really like it because just like a web browser, I can work with tabs. One of the most powerful things is we can use it for the old Windows Command prompt (MS Dos), for Powershell, for Linux (Ubuntu, Debian, ...), for <Link to="/blog/windows-terminal-ssh-profile">SSH terminal</Link> and much more. *The <Link to="/blog/windows-terminal">Windows Terminal</Link> article covers profiles and `settings.json` in general; here we only look at the appearance.*
@@ -51,9 +55,7 @@ Scroll down until the background image area then click on `Background image path
 
 Click on the `Save` button and voilà!
 
-You can also, for sure, have two tabs: one with a console and the second one with the Settings page opened so, from now, by updating a setting like the `Background image -> Background image opacity` or the `Transparency -> Background opacity` you can see the changes immediately on your first tab.
-
-![Nice no?](./images/full_image.webp)
+You can also, for sure, have two tabs: one with a console and the second one with the Settings page opened so, from now, by updating a setting like the `Background image -> Background image opacity` or the `Transparency -> Background opacity` you can see the changes immediately on your first tab — the same result already shown at the top of this article.
 
 That was for the background image. If you wish to learn how I did for the global look&feel, I'm using Powerlevel 10k: read my previous <Link to="/blog/powerlevel10k_sandbox">Customize your Linux prompt with Powerlevel 10k</Link> blog post.
 

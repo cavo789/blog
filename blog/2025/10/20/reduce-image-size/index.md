@@ -31,19 +31,9 @@ Let's see in this article how to do the conversion using a single command line.
 
 <!-- truncate -->
 
-## Installation
+## Run the Optimization Tool
 
-The installation guide is available here: [https://saerasoft.com/caesiumclt/](https://saerasoft.com/caesiumclt/).
-
-If, like me, you don't have `brew` yet, just run this command to install it globally: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`.
-
-This done, just run `brew install caesiumclt`.
-
-Make sure to read the information displayed on the console because you'll need to finalize the installation by editing your `.bashrc` file and install `caesiumclt` in your `PATH`.
-
-## Run the optimization tool
-
-On my own, I just go in the folder where I've my images and run this command:
+Once `caesiumclt` is installed — see below — here's what it does: go in the folder where I've my images and run this command:
 
 <Terminal typewriter source="./files/terminal-3.txt" />
 
@@ -54,6 +44,16 @@ Now, I just need to manually edit my blog post (using these images).
 <AlertBox variant="tip" title="Do it recursively">
 Add the `--recursive` flag like in `caesiumclt -q 85 --recursive --format webp --same-folder-as-input *.png` to process all files from your current folder.
 </AlertBox>
+
+## Installation
+
+The installation guide is available here: [https://saerasoft.com/caesiumclt/](https://saerasoft.com/caesiumclt/).
+
+If, like me, you don't have `brew` yet, just run this command to install it globally: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`.
+
+This done, just run `brew install caesiumclt`.
+
+Make sure to read the information displayed on the console because you'll need to finalize the installation by editing your `.bashrc` file and install `caesiumclt` in your `PATH`.
 
 ## How to determine the biggest folders on your disk
 

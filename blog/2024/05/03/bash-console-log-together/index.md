@@ -27,6 +27,23 @@ How can we display the output of a command like `ls` f.i. both on the console an
 
 <!-- truncate -->
 
+## Result
+
+<Terminal typewriter source="./files/terminal-1.txt" />
+
+Same lines, twice: once printed live on the console, once appended to `/tmp/test.log` — proof
+the two outputs really happen at the same time, not one after the other.
+
+For the illustration above, the script listed a small demo folder instead of `/tmp` for
+readability; in practice you'd point it at whatever long-running command you need to trace.
+
+## Why it works
+
+The command runs through `eval`, and its output is piped into a `while read` loop. For every
+single line that comes out, the loop does two things immediately, before reading the next line:
+`echo` it to the console, then append it to the logfile. Nothing is buffered and dumped at the
+end — that's what keeps the two outputs in lockstep.
+
 For example, let's get the list of all files below `/tmp` and this recursively. For this, our command will be `ls -alhR /tmp`.
 
 This command will probably take time to run and this is the objective: run a long command and make sure our user will see the output on the screen so they know that the script is doing something, and also redirect the output to a log file for further analysis in case of f.i. problems (or just because the script is fired in a cron).

@@ -53,7 +53,32 @@ We're also going to take automation a step further, making much greater use of t
 
 <!-- truncate -->
 
-## Prerequisites
+## Result
+
+<Terminal typewriter source="./files/terminal-3.txt" />
+
+That's the whole deployment: Docker pulls Joomla, PHP, Apache and MySQL, wires them together, and
+a minute later the site is reachable in the browser — no manual database setup, no editing PHP
+files by hand.
+
+![Joomla installer](./images/joomla_installer.webp)
+
+<AlertBox variant="info" title="Hey! did you notice?">
+We've created our Joomla website by **just running one command**. Don't trust? Open your browser and surf to `http://127.0.0.1:8080`.
+</AlertBox>
+
+## Why it works
+
+- `compose.yaml`, `.env` and `makefile` together become a single point of configuration: one
+  file to change the Joomla or PHP version, one for the port number and project name, and
+  `make` targets so nobody has to remember the raw `docker compose` incantations.
+- `depends_on` + `healthcheck` in `compose.yaml` make Joomla wait for the database to actually be
+  ready before starting its own installation — no crash-on-boot race condition.
+- Because the whole setup lives in three small files, the same recipe scales to several isolated
+  projects (different Joomla/PHP/MySQL versions) on the same machine, as the *Advanced
+  configuration* and *Starting three different projects* sections below show.
+
+## Create the three configuration files
 
 In contrast to article [Create your Joomla website using Docker - Part 1](/blog/docker-joomla), where I began by explaining a few concepts before moving on to discuss the subject, let's do the opposite here: let's start with the three files we are going to use, and then see how they work. Please don't try too hard to understand the contents of the files; we'll come back to that later.
 
@@ -189,9 +214,7 @@ Here we are at the heart of the subject: we would like to see a beautiful, fresh
 
 The answer is "Yes" and `make up` will do the magic.
 
-In your console, just run `make up`, and please wait one minute. The very first time, you'll get something like this in your console:
-
-<Terminal typewriter source="./files/terminal-3.txt" />
+In your console, just run `make up`, and please wait one minute. The very first time, you'll get the console output shown at the top of this article.
 
 What does that mean? Docker has retrieved (_pulled_) from the Internet our `joomla` and `joomladb` services (in other terms, has downloaded the Joomla CMS (including PHP and Apache) and MySQL).
 
@@ -205,11 +228,6 @@ As we can see, yay!, we have our two services (named containers) which are Jooml
 The port `8080` is the one we've specified in our `.env` (variable `WEB_PORT`) and, the same for MySQL, it uses port `3006` because that's the one we defined (`MYSQL_PORT`).
 
 Note that `3306` is the standard port for MySQL.
-
-</AlertBox>
-
-<AlertBox variant="info" title="Hey! did you notice?">
-We've created our Joomla website by **just running one command**. Don't trust? Open your browser and surf to `http://127.0.0.1:8080`.
 
 </AlertBox>
 
@@ -235,52 +253,6 @@ The `make reset` command will stop containers but, too, remove files on the disk
 By running `make reset`, you'll lose everything and be ready to create a new fresh website.
 
 </AlertBox>
-
-## Getting access to Docker logs
-
-Sometimes, if something goes wrong, it's nice to have access to the Docker logs. Simply run `make log` to achieve this.
-
-<Terminal typewriter>$ make log</Terminal>
-
-Logs will look like this:
-
-<!-- cspell:disable -->
-
-```log
-joomla-db  | 2024-10-13 13:30:25+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.2-1.el9 started.
-joomla-db  | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-joomla-db  | 2024-10-13T13:30:26.058140Z 0 [System] [MY-015015] [Server] MySQL Server - start.
-joomla-db  | 2024-10-13T13:30:26.238267Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.2) starting as process 1
-joomla-db  | 2024-10-13T13:30:26.239450Z 0 [Warning] [MY-010122] [Server] One can only use the --user switch if running as root
-joomla-db  | 2024-10-13T13:30:26.246482Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-joomla-db  | 2024-10-13T13:30:26.568703Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-joomla-db  | 2024-10-13T13:30:26.852192Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-
-[...]
-
-joomla-db  | 2024-10-13T13:30:26.852232Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now
-joomla-app  | ========================================================================
-joomla-app  |
-joomla-app  |
-joomla-app  | Ensuring Joomla database is present
-joomla-app  |
-joomla-app  | MySQL Database Created
-joomla-app  |  This server is now configured to run Joomla!
-joomla-app  |
-joomla-app  |   NOTE: You will need your database server address, database name,
-joomla-app  |         and database user credentials to install Joomla.
-joomla-app  |
-joomla-app  | ========================================================================
-joomla-app  | AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
-
-[...]
-
-joomla-app  | [Fri Oct 04 13:31:46.880743 2024] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.3.12 configured -- resuming normal operations
-joomla-app  | [Fri Oct 04 13:31:46.880782 2024] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
-joomla-app  | 172.19.0.1 - - [04/Oct/2024:06:57:36 +0000] "POST /installation/index.php HTTP/1.1" 200 6497 "http://127.0.0.1:8080/installation/index.php" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
-```
-
-<!-- cspell:enable -->
 
 ## Time to starting the website
 
@@ -317,9 +289,7 @@ DATABASE
   * Port                      3306
 ```
 
-As you can see, the port number is `8080`; the one we've specified in our `.env` file. Simply CTRL click on the URL if your terminal support this option (otherwise, manually start your preferred web browser and navigate to the specified URL).
-
-![Joomla installer](./images/joomla_installer.webp)
+As you can see, the port number is `8080`; the one we've specified in our `.env` file. Simply CTRL click on the URL if your terminal support this option (otherwise, manually start your preferred web browser and navigate to the specified URL) — you'll land on the installer screen shown at the top of this article.
 
 **Congratulations, you have successfully installed a fresh Joomla website using Docker!**
 
@@ -622,7 +592,60 @@ Just run `make up` again in f.i. folder `project_1` to make the site back to lif
 
 </AlertBox>
 
-## Restoring a JPA backup using Docker
+## Under the hood: Docker logs
+
+*Optional — skip this section if everything is working and you don't need to debug.*
+
+Sometimes, if something goes wrong, it's nice to have access to the Docker logs. Simply run `make log` to achieve this.
+
+<Terminal typewriter>$ make log</Terminal>
+
+Logs will look like this:
+
+<!-- cspell:disable -->
+
+```log
+joomla-db  | 2024-10-13 13:30:25+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.2-1.el9 started.
+joomla-db  | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+joomla-db  | 2024-10-13T13:30:26.058140Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+joomla-db  | 2024-10-13T13:30:26.238267Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.2) starting as process 1
+joomla-db  | 2024-10-13T13:30:26.239450Z 0 [Warning] [MY-010122] [Server] One can only use the --user switch if running as root
+joomla-db  | 2024-10-13T13:30:26.246482Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+joomla-db  | 2024-10-13T13:30:26.568703Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+joomla-db  | 2024-10-13T13:30:26.852192Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+
+[...]
+
+joomla-db  | 2024-10-13T13:30:26.852232Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now
+joomla-app  | ========================================================================
+joomla-app  |
+joomla-app  |
+joomla-app  | Ensuring Joomla database is present
+joomla-app  |
+joomla-app  | MySQL Database Created
+joomla-app  |  This server is now configured to run Joomla!
+joomla-app  |
+joomla-app  |   NOTE: You will need your database server address, database name,
+joomla-app  |         and database user credentials to install Joomla.
+joomla-app  |
+joomla-app  | ========================================================================
+joomla-app  | AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+
+[...]
+
+joomla-app  | [Fri Oct 04 13:31:46.880743 2024] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.3.12 configured -- resuming normal operations
+joomla-app  | [Fri Oct 04 13:31:46.880782 2024] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+joomla-app  | 172.19.0.1 - - [04/Oct/2024:06:57:36 +0000] "POST /installation/index.php HTTP/1.1" 200 6497 "http://127.0.0.1:8080/installation/index.php" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+```
+
+<!-- cspell:enable -->
+
+## Conclusion
+
+Three small files — `compose.yaml`, `.env`, `makefile` — and `make up` turns into your entire
+Joomla deployment story: fresh installs, pre-configured sites that skip the installer wizard, and
+as many isolated projects (different Joomla/PHP/MySQL versions) as your machine can carry, each
+one started, stopped or torn down with a single command.
 
 At this point, you might be wondering: this is all great, but I already have a Joomla site and I'd like to take a backup of my site and restore it locally using Docker; how can I do this?
 

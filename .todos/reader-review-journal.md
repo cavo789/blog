@@ -90,23 +90,138 @@ Target structure: `.claude/skills/blog-post-structure/SKILL.md`
 | 2026-08-08 | zorin | published | 27% | MINOR | — |
 | 2026-08-08 | docusaurus-ascii-art | published | 83% (restructured 2026-08-08) | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-ascii-art.md |
 | 2026-08-08 | docusaurus-changelog | published | 93% (restructured 2026-08-08) | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-changelog.md |
-| 2026-08-08 | running-docusaurus-with-docker | published | 38% | RESTRUCTURE | reader-running-docusaurus-with-docker.md |
-| 2026-08-08 | quarto-devcontainer | published | 60% | RESTRUCTURE | reader-quarto-devcontainer.md |
-| 2026-08-08 | vba-excel-list-references | published | 93% | RESTRUCTURE | reader-vba-excel-list-references.md |
-| 2026-08-08 | reduce-image-size | published | 41% | RESTRUCTURE | reader-reduce-image-size.md |
-| 2026-08-08 | docker-prod-devcontainer | published | 42% | RESTRUCTURE | reader-docker-prod-devcontainer.md |
+| 2026-08-08 | running-docusaurus-with-docker | published | 38% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-running-docusaurus-with-docker.md |
+| 2026-08-08 | quarto-devcontainer | published | 60% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-quarto-devcontainer.md |
+| 2026-08-08 | vba-excel-list-references | published | 93% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-vba-excel-list-references.md |
+| 2026-08-08 | reduce-image-size | published | 41% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-reduce-image-size.md |
+| 2026-08-08 | docker-prod-devcontainer | published | 42% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-prod-devcontainer.md |
 | 2026-08-08 | docker-name-property | published | 11% | OK | — |
-| 2026-08-08 | docusaurus-old-notice | published | 38% | RESTRUCTURE | reader-docusaurus-old-notice.md |
+| 2026-08-08 | docusaurus-old-notice | published | 38% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-old-notice.md |
 | 2026-08-08 | gemini-meerkat | published | 7% | OK | — |
 | 2026-08-08 | docusaurus-snippets | published | 13% | OK | — |
-| 2026-08-08 | docusaurus-plugin-replace | published | 63% | RESTRUCTURE | reader-docusaurus-plugin-replace.md |
-| 2026-08-08 | docusaurus-go-top | published | 100% | RESTRUCTURE | reader-docusaurus-go-top.md |
-| 2026-08-08 | docusaurus-series | published | 42% | RESTRUCTURE | reader-docusaurus-series.md |
+| 2026-08-08 | docusaurus-plugin-replace | published | 63% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-plugin-replace.md |
+| 2026-08-08 | docusaurus-go-top | published | 100% (restructured 2026-08-09, screenshot still needed) | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-go-top.md |
+| 2026-08-08 | docusaurus-series | published | 42% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-series.md |
 | 2026-08-08 | docusaurus-cards | published | 1% | MINOR | — |
-| 2026-08-08 | pest-functional-testing | published | 67% | RESTRUCTURE | reader-pest-functional-testing.md |
-| 2026-08-08 | docusaurus-lazy-loading | published | 100% | RESTRUCTURE | reader-docusaurus-lazy-loading.md |
-| 2026-08-08 | docusaurus-override-img | published | 100% (preuve prévue mais commentée) | RESTRUCTURE | reader-docusaurus-override-img.md |
-| 2026-08-08 | docusaurus-bluesky-comments | published | 100% | RESTRUCTURE | reader-docusaurus-bluesky-comments.md |
-| 2026-08-08 | docusaurus-bluesky-share | published | 33% (91% pour la preuve réelle) | RESTRUCTURE | reader-docusaurus-bluesky-share.md |
+| 2026-08-08 | pest-functional-testing | published | 67% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-pest-functional-testing.md |
+| 2026-08-08 | docusaurus-lazy-loading | published | 100% (restructured 2026-08-09, screenshot still needed) | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-lazy-loading.md |
+| 2026-08-08 | docusaurus-override-img | published | 100% (restructured 2026-08-09, Image component fixed and wired live) | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-override-img.md |
+| 2026-08-08 | docusaurus-bluesky-comments | published | 100% (restructured 2026-08-09, screenshot still needed) | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-bluesky-comments.md |
+| 2026-08-08 | docusaurus-bluesky-share | published | 33% (91% pour la preuve réelle, restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-bluesky-share.md |
 | 2026-08-08 | docker-memos | published | 3% | OK | — |
-| 2026-08-08 | vscode-docker-markmap | published | 26% | RESTRUCTURE | reader-vscode-docker-markmap.md |
+| 2026-08-08 | vscode-docker-markmap | published | 26% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-vscode-docker-markmap.md |
+| 2026-08-08 | docusaurus-relatedposts | published | 100% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-relatedposts.md |
+| 2026-08-08 | bruno | published | 33% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-bruno.md |
+| 2026-08-08 | docker-karakeep | published | 41% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-karakeep.md |
+| 2026-08-08 | bats-unit-tests | published | 9% | MINOR | — |
+| 2026-08-08 | vscode-code-server | published | 94% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-vscode-code-server.md |
+| 2026-08-08 | vba-access-export | published | 80% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-vba-access-export.md |
+| 2026-08-08 | pentaho-discovery | published | 92% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-pentaho-discovery.md |
+| 2026-08-08 | gitlab-docker-out-of-docker | published | 100% (restructured 2026-08-09, CI log excerpt still needed) | RESTRUCTURE → done | DONE/DONE_reader-gitlab-docker-out-of-docker.md |
+| 2026-08-08 | gitlab-using-private-images | published | 100% (restructured 2026-08-09, CI log excerpt still needed) | RESTRUCTURE → done | DONE/DONE_reader-gitlab-using-private-images.md |
+| 2026-08-08 | gitlab-runner-ssh-key | published | 100% (restructured 2026-08-09, CI log excerpt still needed) | RESTRUCTURE → done | DONE/DONE_reader-gitlab-runner-ssh-key.md |
+| 2026-08-09 | excel-formatter | published | 13% | MINOR | — |
+| 2026-08-09 | php-api-tips | published | 2% | MINOR | — |
+| 2026-08-09 | quarto-mustache | published | 29% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-quarto-mustache.md |
+| 2026-08-09 | linux-ssh-scp | published | 100% (StepsCard delivers recipe immediately, no literal output shown) | MINOR | — |
+| 2026-08-09 | quarto-extensions | published | 100% (listicle, pas de démo) | MINOR | — |
+| 2026-08-09 | windows-terminal-background | published | 81% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-windows-terminal-background.md |
+| 2026-08-09 | oracle-dotnet-nodejs-php-python | published | 28% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-oracle-dotnet-nodejs-php-python.md |
+| 2026-08-09 | docker-oracle-ords | published | 18% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-oracle-ords.md |
+| 2026-08-09 | docker-oracle-database-server | published | 66% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-oracle-database-server.md |
+| 2026-08-09 | cypress | published | 33% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-cypress.md |
+| 2026-08-09 | laravel-telescope | published | 17% | MINOR | — |
+| 2026-08-09 | vba-excel-sql-server-part-2 | published | 61% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-vba-excel-sql-server-part-2.md |
+| 2026-08-09 | vscode-todo-tree | published | 33% (proof 2 lignes après le truncate, corps de 12 lignes) | MINOR | — |
+| 2026-08-09 | dos-case-sensitive | published | 78% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-dos-case-sensitive.md |
+| 2026-08-09 | vba-excel-ribbon-load | published | 96% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-vba-excel-ribbon-load.md |
+| 2026-08-09 | zsh-plugin-ssh-config-suggestions | published | 74% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-zsh-plugin-ssh-config-suggestions.md |
+| 2026-08-09 | python-fastapi | published | 21% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-python-fastapi.md |
+| 2026-08-09 | heimdall-dashboard | published | 3% | OK | — |
+| 2026-08-09 | docker-git | published | 100% (restructured 2026-08-09, terminal transcript still needed) | RESTRUCTURE → done | DONE/DONE_reader-docker-git.md |
+| 2026-08-09 | php-grep-searching-at-lightning-speed | published | 23% (avant/après) | MINOR | — |
+| 2026-08-09 | git-precommit | published | 53% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-git-precommit.md |
+| 2026-08-09 | docker-init-php-apache | published | 21% | MINOR | — |
+| 2026-08-09 | ai-image-generation | published | 20% (article très court, preuve immédiate) | MINOR | — |
+| 2026-08-09 | python-qa | published | 100% (restructured 2026-08-09, synthetic make qa transcript added) | RESTRUCTURE → done | DONE/DONE_reader-python-qa.md |
+| 2026-08-09 | dagger-python | published | 28% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-dagger-python.md |
+| 2026-08-09 | docker-out-of-docker-dood | published | 19% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-out-of-docker-dood.md |
+| 2026-08-09 | python-pydot | published | 8% | MINOR | — |
+| 2026-08-09 | markdown-xls2md | published | 50% (article très court, preuve à 6 lignes du truncate) | MINOR | — |
+| 2026-08-09 | markdown-csv2md | published | 40% (article très court, preuve à 4 lignes du truncate) | MINOR | — |
+| 2026-08-09 | python-pandas-merge | published | 74% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-python-pandas-merge.md |
+| 2026-08-09 | docker-python-devcontainer-microsoft | published | 53% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-python-devcontainer-microsoft.md |
+| 2026-08-09 | online-php-linter | published | 27% | MINOR | — |
+| 2026-08-09 | docker-python-devcontainer-windows | published | 59% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-python-devcontainer-windows.md |
+| 2026-08-09 | vbs-files-csv | published | 47% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-vbs-files-csv.md |
+| 2026-08-09 | linux-inotifywait | published | 86% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-linux-inotifywait.md |
+| 2026-08-09 | json-faker | published | 14% (Snippet à 2 lignes de la capture, couplage serré) | MINOR | — |
+| 2026-08-09 | drawdb-app | published | 11% (restructured 2026-08-09 — Conclusion added, auto-gen dump trimmed) | RESTRUCTURE → done | DONE/DONE_reader-drawdb-app.md |
+| 2026-08-09 | json-lint | published | 30% (à la limite, corps de 20 lignes, aucun effort demandé avant) | MINOR | — |
+| 2026-08-09 | linux-sftp-cli | published | 100% (article recette, commandes montrées mais aucune sortie littérale) | MINOR | — |
+| 2026-08-09 | docker-python-devcontainer | published | 36% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-python-devcontainer.md |
+| 2026-08-09 | docker-lubuntu | published | 74% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-lubuntu.md |
+| 2026-08-09 | docker-joomla-restore-jpa | published | 79% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-joomla-restore-jpa.md |
+| 2026-08-09 | docker-joomla-part-2 | published | 24% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-joomla-part-2.md |
+| 2026-08-09 | docker-definition-like-im-five | published | 100% (ELI5 par analogie, pas de démo) | MINOR | — |
+| 2026-08-09 | linux-history | published | 67% (listicle d'astuces indépendantes, chacune actionnable) | MINOR | — |
+| 2026-08-09 | bash-progression-bar | published | 83% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-bash-progression-bar.md |
+| 2026-08-09 | bash-parallel-task | published | 16% (couplage serré script/sortie) | MINOR | — |
+| 2026-08-09 | docker-joomla-right-to-the-point | published | 64% (StepsCard délivre la recette immédiatement) | MINOR | — |
+| 2026-08-09 | pest_tips | published | 21% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-pest_tips.md |
+| 2026-08-09 | vscode-jetbrains-font | published | 100% (restructured 2026-08-09, screenshot with ligatures still needed) | RESTRUCTURE → partial | PARTIAL/PARTIAL_reader-vscode-jetbrains-font.md |
+| 2026-08-09 | git-config | published | 66% (listicle de recettes gitconfig, chaque snippet immédiatement copiable, mais pas de Conclusion) | MINOR | — |
+| 2026-08-09 | docker-run-linux-gui | published | 29% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-run-linux-gui.md |
+| 2026-08-09 | docker-gui-in-browser | published | 35% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-gui-in-browser.md |
+| 2026-08-09 | docker-use-ssh-during-build | published | 62% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-use-ssh-during-build.md |
+| 2026-08-09 | winscp-download-recursively-files | published | 100% (recette : le script est la preuve, actionnable 6 lignes après le truncate) | MINOR | — |
+| 2026-08-09 | docker-localhost-ssl | published | 9% (pas de Conclusion, finit sur une commande apt-get) | MINOR | — |
+| 2026-08-09 | winscp-vba | published | 100% (recette : bloc de code VBA la preuve, mais pas de retombée après) | MINOR | — |
+| 2026-08-09 | docker-html-site | published | 93% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-html-site.md |
+| 2026-08-09 | vscode-regions | published | 23% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-vscode-regions.md |
+| 2026-08-09 | aesecure-quickscan | published | 43% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-aesecure-quickscan.md |
+| 2026-08-09 | linux-generate-documentation-from-bash-scripts | published | 42% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-linux-generate-documentation-from-bash-scripts.md |
+| 2026-08-09 | linux-sort-functions-in-script | published | 18% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-linux-sort-functions-in-script.md |
+| 2026-08-09 | linux-compare-two-versions-of-the-same-script | published | 25% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-linux-compare-two-versions-of-the-same-script.md |
+| 2026-08-09 | linux-eza | published | 100% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-linux-eza.md |
+| 2026-08-09 | linux-diff-file-folder | published | 100% (aucune preuve, mais recette : le Snippet est actionnable dès la ligne 40) | MINOR | — |
+| 2026-08-09 | sql-formatter | published | 67% (article très court, preuve à 6 lignes du truncate) | MINOR | — |
+| 2026-08-09 | makefile_tips | published | 11% (restructured 2026-08-09, install collapsed into Details) | RESTRUCTURE → done | DONE/DONE_reader-makefile_tips.md |
+| 2026-08-09 | outlook-vba-pdf | published | 100% (restructured 2026-08-09, final-PDF-folder screenshot still needed) | RESTRUCTURE → partial | PARTIAL/PARTIAL_reader-outlook-vba-pdf.md |
+| 2026-08-09 | linux-bash-too-many-function-parameters | published | 100% (article court, technique illustrée par un Snippet dès la ligne 36, pas de démo car concept) | MINOR | — |
+| 2026-08-09 | behat-introduction | published | 46% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-behat-introduction.md |
+| 2026-08-09 | vscode-php-getter-setter | published | 67% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-vscode-php-getter-setter.md |
+| 2026-08-09 | docker-compose-viz | published | 23% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-compose-viz.md |
+| 2026-08-09 | joomla-show-table | published | 20% (pas de Conclusion, finit sur un détail technique) | MINOR | — |
+| 2026-08-09 | ftp-erase-files | published | 100% (recette : le Snippet erase.php est la preuve, actionnable 4 lignes après le truncate) | MINOR | — |
+| 2026-08-09 | ubuntu-install | published | 76% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-ubuntu-install.md |
+| 2026-08-09 | winscp-synchronize-both | published | 100% (recette : le Snippet du script WinSCP est la preuve, mais pas de retombée après) | MINOR | — |
+| 2026-08-09 | postman | published | 2% (TTV excellent mais finit abruptement sur du code de test, pas de Conclusion) | MINOR | — |
+| 2026-08-09 | bash-console-log-together | published | 100% (restructured 2026-08-09, new terminal-1.txt genuinely executed) | RESTRUCTURE → done | DONE/DONE_reader-bash-console-log-together.md |
+| 2026-08-09 | bash-logging | published | 54% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-bash-logging.md |
+| 2026-08-09 | docker-docusaurus-prod | published | 78% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-docker-docusaurus-prod.md |
+| 2026-08-09 | vscode-multiple-cursors | published | 79% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-vscode-multiple-cursors.md |
+| 2026-08-09 | vscode-export-list-of-extensions | published | 26% | MINOR | — |
+| 2026-08-09 | vscode-codesnap | published | 83% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-vscode-codesnap.md |
+| 2026-08-09 | quarto-inline-style | published | 76% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-quarto-inline-style.md |
+| 2026-08-09 | quarto-includes-shortcode | published | 87% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-quarto-includes-shortcode.md |
+| 2026-08-09 | quarto-callout-blocks | published | 30% (bloc de code caution dupliqué en toute fin d'article, pas de landing) | MINOR | — |
+| 2026-08-09 | php-obfuscator | published | 11% | OK | — |
+| 2026-08-09 | php-jakzal-phpqa | published | 46% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-php-jakzal-phpqa.md |
+| 2026-08-09 | vba-excel-sql-server | published | 100% (stub redirigeant vers vba-excel-sql-server-part-2, aucune preuve locale) | MINOR | — |
+| 2026-08-09 | windows-terminal | published | 12% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-windows-terminal.md |
+| 2026-08-09 | putty-no-supported-authentication-methods | published | 100% (réponse textuelle immédiate, pas de bloc "preuve" formel) | MINOR | — |
+| 2026-08-09 | linux-fzf-introduction | published | 6% | OK | — |
+| 2026-08-09 | zsh-syntax-highlighting | published | 85% | RESTRUCTURE | reader-zsh-syntax-highlighting.md |
+| 2026-08-09 | zsh-plugin-autosuggestions | published | 100% | RESTRUCTURE | reader-zsh-plugin-autosuggestions.md |
+| 2026-08-09 | zsh-install | published | 17% en surface / 62% pour la vraie preuve (prompt final), install-avant-preuve | RESTRUCTURE | reader-zsh-install.md |
+| 2026-08-09 | docker-health-condition | published | 100% (conceptuel, pas de démo formelle, pas de Conclusion) | MINOR | — |
+| 2026-08-09 | vbs-auto-update | published | 100% (recette courte, le Snippet est la preuve, pas de landing) | MINOR | — |
+| 2026-08-09 | vbs-msaccess-get-fields | published | 65% | RESTRUCTURE | reader-vbs-msaccess-get-fields.md |
+| 2026-08-09 | github-connect-using-ssh | published | 38% mécanique mais test des 30s positif (action concrète dès l.35) | MINOR | — |
+| 2026-08-09 | vscode-errorlens | published | 24% (avant/après) | MINOR | — |
+| 2026-08-09 | vscode-tabnine | published | 43% (article historique, produit obsolète, écart minime) | MINOR | — |
+| 2026-08-09 | joomla-db-kill-tables-prefix | published | 61% | RESTRUCTURE | reader-joomla-db-kill-tables-prefix.md |
+| 2026-08-09 | msaccess-optimize | published | 3.5% (listicle, pas de Conclusion) | MINOR | — |
+| 2026-08-09 | vscode-php-refactoring | published | 18% (pas de Conclusion) | MINOR | — |
+| 2026-08-09 | php-devcontainer | published | 46% | RESTRUCTURE | reader-php-devcontainer.md |

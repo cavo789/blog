@@ -7,6 +7,7 @@ import Translate from "@docusaurus/Translate";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { formatPostDate } from "@site/src/components/Blog/utils/date";
 import { createSlug } from "@site/src/components/Blog/utils/slug";
+import { getTagLabel } from "@site/src/data/tags";
 import styles from "./styles.module.css";
 
 export default function PostCard({
@@ -65,7 +66,7 @@ export default function PostCard({
               to={`/blog/tags/${createSlug(mainTag)}`}
               className={styles.cardTagBadge}
             >
-              {mainTag}
+              {getTagLabel(mainTag)}
             </Link>
           )}
           <h3 className={styles.cardTitle}>

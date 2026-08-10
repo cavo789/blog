@@ -36,11 +36,24 @@ Simply download the scanner onto your site, run it from a URL and it will scan t
 
 <!-- truncate -->
 
-## Demo
+## Result
 
-The original demo site (`quickscan.avonture.be`) is no longer available. Check the [AFUJ repository](https://github.com/AFUJ/quickscan) for any updated demo or screenshots provided by the new maintainers.
+![The welcome page of aeSecure QuickScan](./images/aesecure_quickscan_welcome.webp)
 
-## Download
+This is aeSecure QuickScan running against a live Joomla site: drop one PHP file onto the
+server, open it in a browser, and four buttons take you from "nothing scanned yet" to a full
+report of suspicious files — no local install needed.
+
+## Why it works
+
+- Native Joomla files (from 1.0.13 up to 6.x) are whitelisted by hash: if a file's signature
+  strictly matches an unmodified, original Joomla file, it's trusted and skipped.
+- Only the files that don't match — the unknown, possibly modified ones — get scanned for virus
+  signatures.
+- The scanner detects your Joomla version first, so it downloads the matching whitelist
+  automatically instead of guessing.
+
+## Download the scanner
 
 Head to the [AFUJ/quickscan repository](https://github.com/AFUJ/quickscan) and download the scanner file from there. Once you have the file content, press <kbd>CTRL</kbd>+<kbd>A</kbd> to select the entire content and press <kbd>CTRL</kbd>+<kbd>C</kbd> to copy it in memory.
 
@@ -61,9 +74,7 @@ By running the scanner locally, you'll not have such *timeout* problems. *Spinni
 
 ## Run the scanner
 
-Just start your browser and go to the URL where your site is accessible. At the end of the URL, just add `/scan.php` i.e. the name of the file you just created.
-
-![The welcome page of aeSecure QuickScan](./images/aesecure_quickscan_welcome.webp)
+Just start your browser and go to the URL where your site is accessible. At the end of the URL, just add `/scan.php` i.e. the name of the file you just created — you'll land on the welcome page shown above.
 
 The first button *1. Clean the cache and temp folders* will allow you to remove any temporary files to improve the speed of the scanner by not scanning unneeded files.
 
@@ -83,7 +94,9 @@ The scan is done using Ajax calls.
 
 The last button *4. Remove this script from the server* will make sure to not keep the scanner (the `scan.php` file) onto your website. The script should be removed and not stay there.
 
-## In-depth
+## Under the hood
+
+*Optional — skip this section if you just want to run a scan.*
 
 During the discovering of your website (*2. Getting the file list*), the scanner will first try to determine if your site is running Joomla and if so, will retrieve the installed version. This step is very fast and will help for getting a boost on performance.
 
@@ -97,7 +110,14 @@ Scanning the site (action 3) then means scanning only unknown files; those not o
 
 ![aeSecure Quick-Scan - Accordion](./images/aesecure_quickscan_accordion.webp)
 
-## Read more
+## Conclusion
+
+aeSecure QuickScan whitelists by hash, scans only what's left, and gets out of the way once it's
+done — one file, one scan, no residue.
+
+<AlertBox variant="note">
+The original demo site (`quickscan.avonture.be`) is no longer available. Check the [AFUJ repository](https://github.com/AFUJ/quickscan) for any updated demo or screenshots provided by the new maintainers.
+</AlertBox>
 
 Want to read more? Please go to [https://github.com/AFUJ/quickscan/blob/master/readme.md](https://github.com/AFUJ/quickscan/blob/master/readme.md) to continue your discovering.
 

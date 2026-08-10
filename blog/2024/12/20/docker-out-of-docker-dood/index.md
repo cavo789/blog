@@ -11,6 +11,8 @@ tags:
   - linux
 language: en
 updates:
+  - date: 2026-08-09
+    note: "Restructured for time-to-value: the proof that DooD works now comes before the setup steps."
   - date: 2025-08-03
     note: Corrections based on Metin Y.
 ---
@@ -38,7 +40,21 @@ We'll use the **Docker-out-of-Docker also called `DooD`** technique: mounting th
 
 <!-- truncate -->
 
-## Creating a demo container
+## The Result: Docker Commands, Run From Inside a Container
+
+Once the host's Docker socket is mounted into a container, `docker` commands run from inside it reach the host's daemon directly — no Docker-in-Docker install needed:
+
+![Docker version](./images/version.webp)
+
+`docker image list` works too, from inside the container, listing every image already present on the host. The rest of this article builds the `Dockerfile` and `compose.yaml` behind this, then shows the same trick with a non-root user.
+
+## Why It Works
+
+- The container never runs its own Docker daemon — it only talks to the one already running on the host, over the shared `/var/run/docker.sock`.
+- That socket is just a Unix file: mounting it into the container is enough, no privileged mode, no full Docker-in-Docker setup.
+- Any Docker CLI installed in the container becomes a client of the host's daemon — `docker version`, `docker ps`, `docker image list` all "just work" once the socket is there.
+
+## Installation
 
 Like always, we'll build a fully working example.
 
@@ -52,21 +68,15 @@ We'll also use a `compose.yaml` one, please create this file too:
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
-## Running it as root
-
 We'll create our Docker image and create a container with this single command: `docker compose up --detach --build`.
 
 And, now, we'll jump in the container by running: `docker compose exec dood /bin/sh`.
 
-By running `docker version` in the container, you can verify that Docker is well present.
-
-![Docker version](./images/version.webp)
-
-Now to check if you can access the list of images installed on your host (which is in theory impossible), please run `docker image list` and ... it works.
+By running `docker version` in the container, you get the output shown above. Now to check if you can access the list of images installed on your host (which is in theory impossible), please run `docker image list` and ... it works.
 
 ### Docker-out-of-Docker (DooD) is enabled; cool but why?
 
-To check, reopen your `compose.yaml` file and put the `volumes` entry in comment as illustrated below:
+To check *why*, reopen your `compose.yaml` file and put the `volumes` entry in comment as illustrated below:
 
 <Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 
@@ -88,7 +98,7 @@ Type `exit` again, quit the container, update the `compose.yaml` file again like
 
 Back to the console's container, you can thus run commands like `docker ps` to get the list of running containers on the host and f.i. stop some (f.i. `docker container stop 68e41eee2efd`; only possible if Dood is correctly configured).
 
-## Running the container as unprivileged user
+## More Demos: Running the Container as an Unprivileged User
 
 It was working without too many difficulties because we were root. We've started the container as root. Just type `whoami` in the container to validate this. You can also type `id -u` to see that your user ID is `0` (root).
 
@@ -125,6 +135,8 @@ Jump in the container once more: `docker compose up --detach --build && docker c
 
 And try `docker ps` again; it works. You can now have access to all Docker commands again like `docker image list`.
 
+## Under the Hood (skip this if you just want to use it)
+
 <AlertBox variant="caution" title="Still didn't work?">
 It should work. If not, please make sure you've the latest Docker version (the one I've used for this tutorial is Docker Desktop v4.42.1).
 
@@ -151,6 +163,10 @@ So, to make the script robust, we just need to initialize the `DOCKER_GROUPID` v
 $ DOCKER_GROUPID="$(getent group docker | cut -d: -f3)" docker compose up --detach --build && docker compose exec dood /bin/sh
 </Terminal>
 
+### DooD's security limits
+
+Mounting `/var/run/docker.sock` is convenient, but be honest with yourself about what it grants: any process able to reach that socket can ask the host's daemon to start a new container with almost any mount or privilege it wants — including one that mounts the host's root filesystem. In practice, DooD access is root-equivalent access to the host, group membership or not. Reserve it for trusted contexts (your own dev machine, a CI runner you control) — never expose it to a container running third-party or untrusted code.
+
 ## Conclusion
 
 Running Docker-out-of-Docker in a container running as root is quite easy — you just need to install `docker` while building the image and mount your Docker socket.
@@ -161,6 +177,8 @@ It's not so easy if you're using an unprivileged user, but it becomes easy once 
 Don't try `group_add` with `docker` (the group name) instead of the ID; it won't work.
 
 </AlertBox>
+
+The most common place this technique earns its keep is a CI runner: see <Link to="/blog/gitlab-docker-out-of-docker">GitLab - Running Docker-out-of-Docker in your CI</Link> for the GitLab-specific setup.
 
 ## Special thanks 🙏
 

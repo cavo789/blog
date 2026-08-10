@@ -23,6 +23,18 @@ In a previous <Link to="/blog/linux-compare-two-versions-of-the-same-script">art
 
 <!-- truncate -->
 
+## Result
+
+`diff --side-by-side` between the as-declared function order and the sorted order tells you
+instantly whether a script's functions are alphabetized — mismatched rows point straight at
+what to move:
+
+![Bad sorter](./images/bad_sorter.webp)
+
+Fix the order and rerun until every function lines up and you get a friendly confirmation:
+
+![Congratulations](./images/congratulations.webp)
+
 ## Create a simple Bash script to play with this blog post
 
 Please create the `/tmp/bash/console.sh` file on your disk with this content:
@@ -43,7 +55,7 @@ $ {`grep -P "^(function\s+.*)\(\)" "/tmp/bash/console.sh" | awk '{print \$2}' | 
 
 Ok, now, we know how to sort the list of functions in the console.
 
-Let's use `diff` to compare our existing file (left-hand side) and the sorted list of functions (right-hand side):
+Let's use `diff` to compare our existing file (left-hand side) and the sorted list of functions (right-hand side) — this is what produced the comparison shown at the top of this article:
 
 ```bash
 (
@@ -55,11 +67,9 @@ Let's use `diff` to compare our existing file (left-hand side) and the sorted li
 )
 ```
 
-As we can see on the image below, the column at the left show that the first-defined function in the `/tmp/bash/console.sh` script is `console::printCyan` followed by `console::askYesNo` and `console::printRed` for the third function declared (in that order) in the Bash script.
+As we can see on the image shown above, the column at the left show that the first-defined function in the `/tmp/bash/console.sh` script is `console::printCyan` followed by `console::askYesNo` and `console::printRed` for the third function declared (in that order) in the Bash script.
 
 In the right column, we can see that the first, sorted, function is `console::askYesNo`, the second is `console::banner` and so on.
-
-![Bad sorter](./images/bad_sorter.webp)
 
 Back to the left column: the name displayed in white are already in the correct order!
 
@@ -83,9 +93,7 @@ We just need to put `console::printRed()` at the end and we'll be fine and, to g
 )
 ```
 
-![Congratulations](./images/congratulations.webp)
-
-If you see this, perfect, functions are correctly ordered in your script.
+If you see the confirmation message shown at the top of this article, perfect, functions are correctly ordered in your script.
 
 ## Process all scripts from a specific folder
 

@@ -30,19 +30,17 @@ What if we asked DOS to change its ways?
 
 <!-- truncate -->
 
+Here's the result: three files, same name, different case, living side by side in the same Windows folder.
+
+![Case sensitivity has been enabled](./images/case_sensitivity_enabled.webp)
+
 To do this, you'll need to start <Link to="/blog/windows-terminal">Windows PowerShell</Link> as an admin.
 
 ![Start PowerShell as an admin](./images/powershell_admin.webp)
 
 Then jump in the folder where you want to enable case sensitivity. Let's say in C:\Temp.
 
-In your PowerShell console, now start `fsutil.exe file setCaseSensitiveInfo . enable` and press <kbd>Enter</kbd>. After a few seconds, the change will be made.
-
-You can now use `MyFile.txt`, `myfile.txt` or `MYFILE.txt` as filenames; you'll have three files now; just like under Linux.
-
-If you don't believe me:
-
-![Case sensitivity has been enabled](./images/case_sensitivity_enabled.webp)
+In your PowerShell console, now start `fsutil.exe file setCaseSensitiveInfo . enable` and press <kbd>Enter</kbd>. After a few seconds, the change will be made — the same result already shown at the top of this article.
 
 To revert your change, run `fsutil.exe file setCaseSensitiveInfo . disable` but, first, you'll have to remove at least two files because DOS will prevent you from disabling the feature if this would create conflicts.
 

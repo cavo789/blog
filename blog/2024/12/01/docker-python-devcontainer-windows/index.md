@@ -32,9 +32,71 @@ Today's challenge is easy: create a Python environment on my Windows machine wit
 
 <!-- truncate -->
 
-So, in the <Link to="/blog/docker-python-devcontainer">Docker - Python devcontainer</Link> blog post, I've provided a few files and we'll reuse them in this article.
+So, in the <Link to="/blog/docker-python-devcontainer">Docker - Python devcontainer</Link> blog post, I've provided a few files and we'll reuse them, unchanged, in this article. Assume they're already sitting in a project folder on your machine and you've opened an MS-DOS console positioned there — here's what happens when you run the same commands as under Linux, straight from DOS.
 
-I'm speaking about magic, but let's go into detail in the article below. I could provide you with a ZIP archive, for example, with all the files already created and the structure, but that would be less ... fun, wouldn't it?
+## Time to start
+
+All the commands below should be started from a MS-DOS command prompt and you should be located in your project's folder (`cd %USERPROFILE%\Documents\Python`).
+
+### Build the Python Docker image
+
+The first thing to do, only once, is to create the Docker image. This is done by running `make build`:
+
+![Building the Docker image](./images/make_build.webp)
+
+### Create a Docker container
+
+Then, once a day, you have to run `make up`:
+
+![Create a Docker container](./images/make_up.webp)
+
+You have to do this just once a day, i.e. most probably the container will be terminated when you shut down your computer. Just run `make up` the next morning to *wake* it back up.
+
+### Entering the container
+
+If you need to enter your Docker container (started by `make up`), just run `make bash`.
+
+You'll get a different console like the one illustrated below (see the blue whale f.i.). The screenshot below illustrates displaying Python's version number:
+
+![Entering the container](./images/make_bash.webp)
+
+Remember the files we've created in the previous chapter. One file was called `main.py` with a straightforward Python script; let's run it:
+
+![Running main.py](./images/make_bash_main.webp)
+
+You simply need to run the `python` binary followed by the script name to start.
+
+<AlertBox variant="info">
+So, you're actually inside a running container (see the blue whale). You should type `exit` to quit the container (the container will still keep running) and return to your MS-DOS console.
+
+</AlertBox>
+
+## Starting VSCode and start your developer journey
+
+Just run `make devcontainer` (in your MS-DOS console; not in a container), you'll start Visual Studio Code inside your Docker container. That feature is called *devcontainer*.
+
+![Running VSCode - Devcontainer](./images/make_devcontainer.webp)
+
+In VSCode, you can, if you like this way of working, press <kbd>CTRL</kbd>+<kbd>\`</kbd> to start a terminal (you can also click on the `View` menu then click on `Terminal` menu entry; same thing).
+
+![Using the VSCode Terminal](./images/vscode_terminal.webp)
+
+So, here, if you want to run the `main.py` script, just type `python src/main.py` and press <kbd>Enter</kbd>.
+
+![Running the main.py script from the terminal](./images/vscode_terminal_running.webp)
+
+<AlertBox variant="info">
+For Windows users, please note that the container (and thus VSCode) is running in Linux. There are a lot of differences for sure. What you should know is that Linux use `/` as directory separator and not `\` like DOS/Windows. This is why we've typed `src/main.py` and not `src\main.py`.
+
+</AlertBox>
+
+### Can I add Python's addons in VSCode?
+
+For sure, just go to the list of addons (press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>X</kbd>) and ... as you can see, some are already installed. This is one of the advantages of using a Devcontainer like you do right now (see the `.devcontainer/devcontainer.json` file you've created earlier).
+
+![VScode Addons](./images/vscode_addons.webp)
+
+I'm speaking about magic, but let's go into detail now and see how that file/folder structure is actually created. I could provide you with a ZIP archive, for example, with all the files already created and the structure, but that would be less ... fun, wouldn't it?
 
 ## Create a file/folder structure
 
@@ -102,68 +164,6 @@ Below is how the project looks right now:
 
 ![How the project looks like in DOS](./images/msdos.webp)
 
-## Time to start
-
-All the commands below should be started from a MS-DOS command prompt and you should be located in your project's folder (`cd %USERPROFILE%\Documents\Python`).
-
-### Build the Python Docker image
-
-The first thing to do, only once, is to create the Docker image. This is done by running `make build`:
-
-![Building the Docker image](./images/make_build.webp)
-
-### Create a Docker container
-
-Then, once a day, you have to run `make up`:
-
-![Create a Docker container](./images/make_up.webp)
-
-You have to do this just once a day, i.e. most probably the container will be terminated when you shut down your computer. Just run `make up` the next morning to *wake* it back up.
-
-### Entering the container
-
-If you need to enter your Docker container (started by `make up`), just run `make bash`.
-
-You'll get a different console like the one illustrated below (see the blue whale f.i.). The screenshot below illustrates displaying Python's version number:
-
-![Entering the container](./images/make_bash.webp)
-
-Remember the files we've created in the previous chapter. One file was called `main.py` with a straightforward Python script; let's run it:
-
-![Running main.py](./images/make_bash_main.webp)
-
-You simply need to run the `python` binary followed by the script name to start.
-
-<AlertBox variant="info">
-So, you're actually inside a running container (see the blue whale). You should type `exit` to quit the container (the container will still keep running) and return to your MS-DOS console.
-
-</AlertBox>
-
-### Starting VSCode and start your developer journey
-
-Just run `make devcontainer` (in your MS-DOS console; not in a container), you'll start Visual Studio Code inside your Docker container. That feature is called *devcontainer*.
-
-![Running VSCode - Devcontainer](./images/make_devcontainer.webp)
-
-In VSCode, you can, if you like this way of working, press <kbd>CTRL</kbd>+<kbd>\`</kbd> to start a terminal (you can also click on the `View` menu then click on `Terminal` menu entry; same thing).
-
-![Using the VSCode Terminal](./images/vscode_terminal.webp)
-
-So, here, if you want to run the `main.py` script, just type `python src/main.py` and press <kbd>Enter</kbd>.
-
-![Running the main.py script from the terminal](./images/vscode_terminal_running.webp)
-
-<AlertBox variant="info">
-For Windows users, please note that the container (and thus VSCode) is running in Linux. There are a lot of differences for sure. What you should know is that Linux use `/` as directory separator and not `\` like DOS/Windows. This is why we've typed `src/main.py` and not `src\main.py`.
-
-</AlertBox>
-
-#### Can I add Python's addons in VSCode?
-
-For sure, just go to the list of addons (press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>X</kbd>) and ... as you can see, some are already installed. This is one of the advantages of using a Devcontainer like you do right now (see the `.devcontainer/devcontainer.json` file you've created earlier).
-
-![VScode Addons](./images/vscode_addons.webp)
-
-#### Can I use another version of Python?
+## Can I use another version of Python?
 
 For sure, just edit the file called `.docker.env` and you'll find this line: `DOCKER_PYTHON_VERSION=3.13-slim`. Just change the version number, save the file and run `make build` then `make up` and, finally, `make devcontainer` to rebuild everything and use the newer version.

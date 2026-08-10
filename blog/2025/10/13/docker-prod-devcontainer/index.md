@@ -55,6 +55,22 @@ One for the deploy and a second one to extend the first with additional tools an
 
 ![Core concept - Two images](./images/production_devcontainer.webp)
 
+## The Result
+
+One Dockerfile, no copy-paste, and both images build from the exact same instructions: a minimal, rootless production container, and a devcontainer that extends it with the tools you need to develop.
+
+Here's the production container answering on `http://localhost:8000`:
+
+<BrowserWindow url="http://localhost:8000" minHeight={300}>
+  <div style={{ padding: '1rem' }}>
+    <p>\{"message":"Hello, FastAPI - PRODUCTION!"\}</p>
+  </div>
+</BrowserWindow>
+
+![The production image has been created](./images/prod_image_created.webp)
+
+The steps below build exactly this, from an empty folder, then extend it into a devcontainer.
+
 ## Step 1 - We have to create the production docker image
 
 Please create a new folder in your temporary folder for our example.

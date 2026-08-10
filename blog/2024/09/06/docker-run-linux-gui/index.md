@@ -29,6 +29,18 @@ In this blog post, we'll create our own xeyes Docker image, then play with Firef
 
 <!-- truncate -->
 
+## A first look
+
+![xeyes under Docker](./images/xeyes_in_docker.webp)
+
+Yes, it's true, it's useless, but wow! it's possible to run a GUI from a container and replicate the image in real time on our host machine. That's `xeyes` — a pair of eyes following your mouse cursor — running entirely inside a container, displayed as a native window.
+
+## Why it works
+
+- The container shares the host's `DISPLAY` environment variable, so it knows which X display to draw on.
+- The host's `/tmp/.X11-unix` socket is mounted into the container, which is the actual channel X11 applications use to talk to the display server.
+- `xhost +local:docker` grants the Docker socket permission to connect to the host's X server in the first place — without it, the connection is refused.
+
 ## Creating our own xeyes Docker image
 
 Let's start with something really geeky.
@@ -43,11 +55,7 @@ Make sure you've a variable called `DISPLAY`. You can check this by running `pri
 
 Now, run `xhost +local:docker` in your console. That command grants permission to connect to an X server using the Docker socket. This means that applications running within Docker containers can display their graphical user interface (GUI) on the host system. The expected result is this text: `non-network local connections being added to access control list`
 
-Now, simply run a container and make sure to share the `DISPLAY` variable: `docker run --rm --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix cavo789/xeyes`.
-
-![xeyes under Docker](./images/xeyes_in_docker.webp)
-
-Yes, it's true, it's useless, but wow! it's possible to run a GUI from a container and replicate the image in real time on our host machine.
+Now, simply run a container and make sure to share the `DISPLAY` variable: `docker run --rm --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix cavo789/xeyes` — you'll get the window shown above.
 
 ## Creating our own Firefox Docker image
 
@@ -90,3 +98,11 @@ Create the image by running `docker build --tag cavo789/gimp .`.
 And to start GIMP, just run `docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY cavo789/gimp`.
 
 ![Running GIMP for Linux in a Docker container](./images/gimp.webp)
+
+## Conclusion
+
+Same recipe every time — share `DISPLAY`, mount `/tmp/.X11-unix`, `docker run` — and any Linux GUI
+app shows up as a native window on the host, whether it's a silly `xeyes` demo or a full browser
+or image editor. If a single application isn't enough and you'd rather have a whole desktop to
+play with, <Link to="/blog/docker-lubuntu">Start lubuntu Desktop in Docker</Link> is the next
+step.

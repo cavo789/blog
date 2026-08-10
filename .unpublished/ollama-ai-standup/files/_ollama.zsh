@@ -6,6 +6,9 @@
 # Provides:
 #   - _ollama_check       reachability guard for Ollama
 #   - _ollama_query       shared HTTP client (curl + jq)
+#   - _ai_strip_fences    removes the Markdown fences models add anyway
+#   - _ai_bat             resolves "bat" vs Debian's "batcat"
+#   - _ai_confirm         yes/no prompt
 #   - _git_staged_diff    validated staged-diff fetcher (shared by pre-commit functions)
 #   - AI_COMMANDS         registry each ai-* function adds itself to
 #   - AI_PARAMS           registry of interactive parameter types (file/language/number/text/none)
@@ -38,10 +41,70 @@ _ollama_query() {
 
   _ollama_check || return 1
 
-  jq -n --arg model "$model" --arg prompt "$prompt" \
-    '{model: $model, prompt: $prompt, stream: false}' \
+  # The prompt is piped into jq rather than passed with "--arg": Linux caps a
+  # single argv entry at 128 KB (MAX_ARG_STRLEN), and a large staged diff or a
+  # long source file sails straight through that ceiling — jq then dies with
+  # "argument list too long". "-R -s" slurps stdin as one raw string, which jq
+  # escapes exactly like --arg would.
+  print -r -- "$prompt" \
+    | jq -Rs --arg model "$model" '{model: $model, prompt: ., stream: false}' \
     | curl --silent "${host}/api/generate" --data-binary @- \
     | jq -r '.response // empty'
+}
+
+# ---------------------------------------------------------------------------
+# Output helpers
+# ---------------------------------------------------------------------------
+
+# _ai_strip_fences <text> — return only the code, without the Markdown fences.
+#
+# Every prompt in this series ends with "no markdown fences" and models still
+# wrap their answer in ```language … ``` often enough that the output can't be
+# piped or pasted as-is. When at least one fence is present, only the fenced
+# regions are kept (which also drops the "Here is your test suite:" preamble);
+# when there is none, the text is returned untouched.
+_ai_strip_fences() {
+  local text="$1"
+
+  if [[ "$text" != *'```'* ]]; then
+    print -r -- "$text"
+    return 0
+  fi
+
+  print -r -- "$text" | awk '
+    /^[[:space:]]*```/ { inside = !inside; next }
+    inside             { print }
+  '
+}
+
+# _ai_bat — print the name of the "bat" binary installed on this machine, if any.
+# Debian and Ubuntu ship the package as "batcat" because the "bat" name was
+# already taken by bacula-console-qt, so both spellings have to be probed.
+_ai_bat() {
+  local candidate
+  for candidate in bat batcat; do
+    if command -v "$candidate" >/dev/null 2>&1; then
+      print -- "$candidate"
+      return 0
+    fi
+  done
+  return 1
+}
+
+# _ai_relpath <path> — print <path> relative to the current folder when it sits
+# below it. Purely cosmetic: it keeps prompts readable instead of asking
+# "Save as /home/christophe/projects/…/tests/backup.bats?".
+_ai_relpath() {
+  local path="${1:A}"
+  print -- "${path#${PWD}/}"
+}
+
+# _ai_confirm <question> — ask a yes/no question; return 0 only on an explicit yes.
+_ai_confirm() {
+  local answer
+  print -n "${1} [y/N] "
+  read -r answer
+  [[ "$answer" == [yY]* ]]
 }
 
 # ---------------------------------------------------------------------------
@@ -51,8 +114,16 @@ _ollama_query() {
 # _git_staged_diff <caller> — validate the git context and return the staged diff.
 # Handles three early-exit cases (not a repo, nothing staged, oversized diff)
 # so every pre-commit function gets them for free without repeating the guards.
+#
+# Past AI_DIFF_MAX_CHARS the full diff is *not* returned: a diff of several
+# hundred kilobytes overflows the model's context window, and the answer that
+# comes back is worse than the one you get from a summary. The fallback keeps
+# the shape of the change — per-file stat, plus the file and hunk headers,
+# which carry the enclosing function names git puts after each "@@" — and
+# drops the line-by-line content.
 _git_staged_diff() {
   local caller="${1:-ai}"
+  local max="${AI_DIFF_MAX_CHARS:-12000}"
 
   if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     echo "${caller}: not inside a git repository" >&2
@@ -67,11 +138,28 @@ _git_staged_diff() {
     return 1
   fi
 
-  if (( ${#diff} > 12000 )); then
-    echo "${caller}: staged diff is large (${#diff} chars) — output may be less precise. Consider committing in smaller chunks." >&2
+  # "print -r" everywhere below: without it, print expands escape sequences and
+  # a literal \n or \t inside the diff would come back mangled.
+  if (( ${#diff} <= max )); then
+    print -r -- "$diff"
+    return 0
   fi
 
-  print -- "$diff"
+  echo "${caller}: staged diff is large (${#diff} chars) — sending a structural summary instead of the full diff. Commit in smaller chunks for a more precise answer." >&2
+
+  local summary
+  summary="$(git diff --staged --stat)
+
+--- FILE AND HUNK HEADERS ONLY (full diff omitted, ${#diff} chars) ---
+$(print -r -- "$diff" | grep -E '^(diff --git|new file|deleted file|rename (from|to)|@@)')"
+
+  # Even the summary can exceed the ceiling on a very wide change.
+  if (( ${#summary} > max )); then
+    summary="${summary[1,$max]}
+[…summary truncated…]"
+  fi
+
+  print -r -- "$summary"
 }
 
 # ---------------------------------------------------------------------------
@@ -81,11 +169,13 @@ _git_staged_diff() {
 # _ai_prompt_file [label] — open an fzf file picker; print the chosen path.
 _ai_prompt_file() {
   local label="${1:-Select a file:}"
+  local bat_bin preview='cat {}'
+  bat_bin=$(_ai_bat) && preview="${bat_bin} --color=always {} 2>/dev/null || cat {}"
+
   if command -v fd >/dev/null 2>&1; then
-    fd --type f | fzf --prompt="${label} " --height=50% --reverse \
-      --preview='bat --color=always {} 2>/dev/null || cat {}'
+    fd --type f | fzf --prompt="${label} " --height=50% --reverse --preview="$preview"
   else
-    find . -type f | fzf --prompt="${label} " --height=50% --reverse
+    find . -type f | fzf --prompt="${label} " --height=50% --reverse --preview="$preview"
   fi
 }
 

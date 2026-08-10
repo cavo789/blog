@@ -4,12 +4,13 @@ title: "ai-test: Generate Missing Unit Tests From Your Terminal With a Local LLM
 authors: [christophe, claude]
 image: /img/v2/ai_test.webp
 mainTag: ai
-tags: [ai, ollama, zsh, tests, php, python]
+tags: [ai, ollama, zsh, tests, bash, php, python]
 date: 2026-08-03
 description: "Turn your local Ollama model into an on-demand unit test generator. A zsh function that reads a Bash, PHP or Python file, detects whether you already have tests for it, prints only the missing Bats/Pest/Pytest cases needed for full coverage, offers to save them where the framework expects them, and runs the suite in a throw-away Docker container."
 language: en
 ai_assisted: true
 series: "Ollama daily-use functions"
+blueskyRecordKey: 3ms5sdpk6kk2a
 ---
 
 ![ai-test: Generate Missing Unit Tests From Your Terminal With a Local LLM](/img/v2/ai_test.webp)
@@ -161,7 +162,7 @@ Run `ai-test src/Slug.php` and `ai-test src/prices.py`, and everything behaves t
 Three things worth calling out in `_ollama.zsh` itself:
 
 - The leading underscore is deliberate: the loader (`for fn_file in ~/.zsh/fns/*.zsh`) sources files alphabetically and `_` sorts before any letter, so `AI_COMMANDS` and `ai()` always exist before an `ai-*.zsh` file tries to register itself into them.
-- `_ollama_query` pings `${host}/api/tags` first, with a two-second timeout, and fails loudly if Ollama isn't reachable — better an immediate error than a `curl` hanging for thirty seconds against a stopped container. It also builds its JSON payload with `jq -n`, so quotes, backslashes and newlines in the source code I'm about to paste into the prompt are escaped for me.
+- `_ollama_query` pings `${host}/api/tags` first, with a two-second timeout, and fails loudly if Ollama isn't reachable — better an immediate error than a `curl` hanging for thirty seconds against a stopped container. It also builds its JSON payload with `jq`, so quotes, backslashes and newlines in the source code I'm about to paste into the prompt are escaped for me. Note that the prompt is *piped* into `jq` rather than passed as a `--arg` value: Linux caps a single command-line argument at 128 KB, and a big file or a long diff would otherwise blow up with `argument list too long`.
 - `AI_COMMANDS` is a plain associative array, and that is why one line of registration is enough to make a new function show up in the `ai` menu — no central list to maintain, no file to edit when the series grows.
 
 ### The One Instruction That Makes the Difference

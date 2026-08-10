@@ -33,6 +33,18 @@ We'll create a React component for Docusaurus, and we'll inject it in our blog p
 
 <!-- truncate -->
 
+Here it is in action, on an old post of this very blog:
+
+<BrowserWindow url="https://www.avonture.be/blog/joomla-show-table">
+  <img
+    alt="Old post notice in action"
+    src={require("./images/old_notice.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
+
+Let's build it.
+
 ## Create the component
 
 You'll need to create two new files in your own Docusaurus site:
@@ -62,15 +74,7 @@ To inject our new `OldPostNotice` component, please edit the file like this (see
 
 <Snippet filename="src/theme/BlogPostItem/Content/index.js" source="./files/index.part2.js" />
 
-Save the file and refresh your blog. You should get something like this picture below:
-
-<BrowserWindow url="https://www.avonture.be/blog/joomla-show-table">
-  <img
-    alt="Old post notice in action"
-    src={require("./images/old_notice.webp").default}
-    className="screenshot"
-  />
-</BrowserWindow>
+Save the file and refresh your blog. You should get the same banner already teased at the top of this article.
 
 <AlertBox variant="info">
 The component is using the `date` field that you have to mention in your YAML front matter.

@@ -46,3 +46,21 @@ Cible : time to value < 15 %. Structure de référence :
 
 **Note :** la ligne 89-95 doit d'abord être décommentée et vérifiée (l'image `happy.jpg` existe-t-
 elle bien dans `./images/` ou faut-il l'ajouter ?) avant de la faire remonter en haut de l'article.
+
+## Résumé de l'implémentation (2026-08-09)
+
+Restructuré selon la table. La preuve `<Image>` était commentée pour une bonne raison non
+détectée par l'audit initial : le composant `Image` n'était en réalité jamais enregistré
+globalement (`src/theme/MDXComponents.js`) — le décommenter tel quel cassait `yarn build`
+(`Expected component 'Image' to be defined`). Corrections apportées :
+
+- Créé `src/components/Image/` (repris du `<Snippet>` de l'article) et enregistré `Image` dans
+  `src/theme/MDXComponents.js`, au même titre que `AlertBox`, `Snippet`, etc.
+- Corrigé un vrai bug dans le composant : `useBaseUrl()` était appelé conditionnellement
+  (violation de `react-hooks/rules-of-hooks`, bloquant `yarn lint`) — désormais appelé
+  inconditionnellement.
+- Nettoyé le CSS du composant (propriétés dupliquées `border`/`backdrop-filter`, `rgba()` →
+  `rgb()`) pour passer `stylelint` sans avertissement.
+- Le fichier image utilisé est `happy.webp` (pas `happy.jpg` comme écrit dans le texte
+  original) — corrigé dans la preuve et dans l'exemple de code de la section 3.
+- `yarn build` (site complet) et `yarn lint` sur les fichiers touchés : verts.

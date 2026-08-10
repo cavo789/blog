@@ -42,6 +42,22 @@ At the end, we'll have a `make import` command that will start **[Akeeba Kicksta
 
 <!-- truncate -->
 
+## Result
+
+Fill in the database info shown in your console, and Akeeba Kickstart takes care of the rest —
+from a raw `.jpa` backup to a browsable site:
+
+![Akeeba Kickstart](./images/kickstart.webp)
+
+![Restoring the database](./images/database.webp)
+
+![Site is restored](./images/site_is_restored.webp)
+
+## Why it works
+
+- We reuse the same `compose.yaml`/`.env`/`makefile` trio from [Part 2](/blog/docker-joomla-part-2), so nothing new to learn there.
+- The only real change: since the backup already **is** a full Joomla site, the containers only need PHP and Apache, not a fresh Joomla image — the database itself gets rebuilt from the backup by Akeeba Kickstart, not by Joomla's installer.
+
 ## Creating required files
 
 <AlertBox variant="info" title="Skipping the files creation process">
@@ -159,17 +175,11 @@ For both users (Linux and Windows), you'll get something like this output in the
 
 <Terminal typewriter source="./files/terminal-1.txt" />
 
-When finished, just start your browser and surf to `http://127.0.0.1:8080/kickstart.php` to start the restoration of your website using the **Akeeba Kickstart** wizard.
+When finished, just start your browser and surf to `http://127.0.0.1:8080/kickstart.php` to start the restoration of your website using the **Akeeba Kickstart** wizard — the screens shown at the top of this article.
 
-![Akeeba Kickstart](./images/kickstart.webp)
+Once you need to fill in the database information, please refer to what was displayed in your console.
 
-Once you need to fill in the database information, please refer to what was displayed in your console:
-
-![Restoring the database](./images/database.webp)
-
-Continue the restoration as you always have; close the window once Akeeba Kickstart asks for it, then click on the _Clean Up_ button; then on _Visit your site's frontend_ and enjoy:
-
-![Site is restored](./images/site_is_restored.webp)
+Continue the restoration as you always have; close the window once Akeeba Kickstart asks for it, then click on the _Clean Up_ button; then on _Visit your site's frontend_ and enjoy.
 
 <AlertBox variant="info">
 If you've used the provided demo site, the admin account is **joomla** and its password is **joomla@secured**.

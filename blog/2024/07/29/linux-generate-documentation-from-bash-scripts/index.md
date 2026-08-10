@@ -29,6 +29,22 @@ So I've written a small Bash script to accomplish this i.e. parse any `.sh` file
 
 <!-- truncate -->
 
+## Result
+
+Running the script against a folder of `.sh` files:
+
+![Generate the documentation](./images/generate_doc.webp)
+
+For one file found in the `helpers` folder, a matching file is created in the `documentation` folder — here, `string.md`, with any function that has a doc-block described:
+
+<Snippet filename="documentation/string.md" source="./files/string.txt" />
+
+And once every `.sh` file is processed, a final `documentation/readme.md` file is created:
+
+<Snippet filename="documentation/readme.md" source="./files/readme.txt" />
+
+## How to reproduce it
+
 Let's consider this `/tmp/bash/helpers/string.sh` file:
 
 <Snippet filename="/tmp/bash/helpers/string.sh" source="./files/string.sh" />
@@ -39,21 +55,7 @@ Please create the file `/tmp/bash/generate_doc.sh` with this content:
 
 <Snippet filename="/tmp/bash/generate_doc.sh" source="./files/generate_doc.sh" />
 
-Once you've created the `/tmp/bash/generate_doc.sh` file and make it executable (`chmod +x ./generate_doc.sh`), just run `./generate_doc.sh` in the console.
-
-![Generate the documentation](./images/generate_doc.webp)
-
-The script will process any `.sh` file located in the `helpers` sub-folder (we've created the `string.sh` earlier).
-
-For one file found in the `helpers` folder, the same file will be created in the `documentation` folder so a file called `string.md` will be created. In that markdown file, any functions having a doc-block will be described.
-
-Here the content of the `documentation/string.md` file:
-
-<Snippet filename="documentation/string.md" source="./files/string.txt" />
-
-And, once every .sh files are processed, a final `documentation/readme.md` file will be created:
-
-<Snippet filename="documentation/readme.md" source="./files/readme.txt" />
+Once you've created the `/tmp/bash/generate_doc.sh` file and make it executable (`chmod +x ./generate_doc.sh`), just run `./generate_doc.sh` in the console — you'll get the output and generated files shown above.
 
 ## Going further
 

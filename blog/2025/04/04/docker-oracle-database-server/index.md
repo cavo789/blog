@@ -32,6 +32,14 @@ It's a step-by-step guide to make life easier for anyone who needs to do the sam
 
 <!-- truncate -->
 
+It takes a while (Oracle is slow to initialize), but here's where we're headed: a running Oracle container, ready to query.
+
+![Database is ready to use](./images/container_db_is_ready.webp)
+
+![Oracle getting the list of employees](./images/oracle_getting_employees.webp)
+
+Let's build it, starting with the image itself.
+
 ## Download a Docker image for OracleDB
 
 So, yes, there is a Docker image called `container-registry.oracle.com/database/enterprise:latest` but before being able to download it, we'll need to do a few things:
@@ -153,7 +161,7 @@ There is a slim image around 1.5GB (`docker pull container-registry.oracle.com/d
 
 </AlertBox>
 
-## Important concepts to consider when working with Oracle v12 and after
+## Important Concepts to Consider When Working With Oracle v12 and After (skip this if you just want to run it)
 
 ### Container database (CDB) versus Pluggable database (PDB)
 
@@ -299,7 +307,7 @@ So the `docker run` command will take something like 10 minutes to run.
 
 If you've Docker Desktop, switch to its interface, click on the `Containers` link and click on your `oracle-db` container to see the log.  Wait until you see:
 
-![Database is ready to use](./images/container_db_is_ready.webp)
+You'll get the same "ready to use" screen already teased at the top of this article.
 
 You can also use the command line: `docker logs oracle-db --follow` and wait until we see the `DATABASE IS READY TO USE!` message. Press <kbd>CTRL</kbd>+<kbd>C</kbd> to quit the log.
 
@@ -400,9 +408,7 @@ Start to type `SELECT * FROM system.` and press <kbd>CTRL</kbd>+<kbd>SPACE</kbd>
 
 ![Oracle get employees](./images/oracle_get_employees.webp)
 
-Validate or simply type the full SQL `SELECT * FROM system.employees`. In the example below, I'll ask the list of regions and the list of employees. I will run the query by simply pressing <kbd>F5</kbd>:
-
-![Oracle getting the list of employees](./images/oracle_getting_employees.webp)
+Validate or simply type the full SQL `SELECT * FROM system.employees`. In the example below, I'll ask the list of regions and the list of employees. I will run the query by simply pressing <kbd>F5</kbd> — the same result already shown at the top of this article.
 
 ##### Connect to Oracle SQL Developer using the correct user
 

@@ -34,6 +34,15 @@ My need is thus: I should share my SSH key with the GitLab runner.
 
 <!-- truncate -->
 
+<!-- TODO(author): capture a real GitLab CI job log excerpt showing the private repo clone succeeding (`git clone` / `Cloning into ...` over SSH) once SSH_PRIVATE_KEY is configured — not reproducible in this session (requires a live GitLab instance and runner). -->
+
+Here's the payoff once the CI variable is in place: the job clones the private repo over SSH instead of failing with a permission error.
+
+## Why It Works
+
+- The private key never touches your `.gitlab-ci.yml` or your repo — it lives as a base64-encoded, masked CI/CD variable, decoded back into a file only inside the running job.
+- One variable can be scoped to a single repo, a whole GitLab group, or the entire instance, so you set it up once and reuse it everywhere you need the same private access.
+
 <AlertBox variant="info">
 To illustrate this article, let's assume `christophe` is my user account on my self hosted GitLab server and that server is called `my_self_hosted_gitlab`.
 
@@ -99,3 +108,7 @@ If the CI fails with an error like *load pubkey "id_ed25519": invalid format* or
 The base64 string should be created like this: `cat ~/.ssh/id_ed25519_my_self_hosted_gitlab | base64 -w 0` (and, thus, not using the `.pub` file).
 
 </AlertBox>
+
+## Conclusion
+
+A key pair, a base64-encoded, masked CI/CD variable, and a few lines in `.gitlab-ci.yml` are all it takes to let your CI clone a private repository over SSH — no secret ever committed to your codebase. See <Link to="/blog/gitlab-using-private-images">GitLab - Using Docker private images</Link> for the same authentication problem applied to a private Docker image instead of a private repository.

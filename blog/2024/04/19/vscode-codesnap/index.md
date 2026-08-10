@@ -29,14 +29,16 @@ Open your file in VS Code, press <kbd>CTRL</kbd>-<kbd>SHIFT</kbd>-<kbd>P</kbd> a
 
 <!-- truncate -->
 
+## Result
+
+That's what CodeSnap produces from a selection of PHP source code — a styled, shareable image:
+
+![Sample example for CodeSnap](./images/codesnap.webp)
+
 As soon as you've called `CodeSnap`, a vertical preview window will appear.
 
 In your source code, select one or more lines and CodeSnap will update the preview.
 
-When you're done, just click on the `Polaroid` button just above the preview, save the image and it's done.
-
-Below is an example of PHP source code:
-
-![Sample example for CodeSnap](./images/codesnap.webp)
+When you're done, just click on the `Polaroid` button just above the preview, save the image and it's done — that's the PHP example shown above.
 
 Since these screenshots are meant to be shared, the font you use shows up in every one of them. If you haven't picked one deliberately yet, see <Link to="/blog/vscode-jetbrains-font">Using the JetBrains Mono font in vscode</Link>.

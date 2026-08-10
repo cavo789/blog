@@ -34,6 +34,21 @@ Impossible to not try immediately and ... wow ... that's TRUE!
 
 <!-- truncate -->
 
+Here's the result: surf to `http://127.0.0.1:82` and get your first JSON answer.
+
+<BrowserWindow url="http://127.0.0.1:82">
+  <img
+    alt="Hello World"
+    src={require("./images/hello_world.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
+
+## Why It Works
+
+- `main.py` defines one route (`/`) with a couple of lines of Python — FastAPI turns that function into a working HTTP endpoint, no boilerplate server setup.
+- The `Dockerfile` bundles Python, FastAPI and your code into one ~184MB image, so there's nothing to install on your host besides Docker itself.
+
 ## Creating our first API
 
 Like always, we'll build a fully working example. It couldn't be simpler; you'll see.
@@ -72,15 +87,7 @@ We need to build our Docker image and run it:
 $ docker build -t python-fastapi . && docker run -p 82:82 python-fastapi
 </Terminal>
 
-Once done, just surf to `http://127.0.0.1:82` and you'll obtain your first JSON answer; crazy no?
-
-<BrowserWindow url="http://127.0.0.1:82">
-  <img
-    alt="Hello World"
-    src={require("./images/hello_world.webp").default}
-    className="screenshot"
-  />
-</BrowserWindow>
+Once done, just surf to `http://127.0.0.1:82` and you'll obtain the same JSON answer already shown at the top of this article; crazy no?
 
 ## Automated documentation of your API
 
@@ -123,7 +130,7 @@ We should start Uvicorn with a "hot reload" mechanism.
 
 </AlertBox>
 
-### Recreating the Docker image for hot reload
+### Recreating the Docker Image for Hot Reload (skip this if `docker run -v .:/app` already refreshed for you)
 
 First stop the running container: go back to your console and press <kbd>CTRL</kbd>+<kbd>C</kbd> to stop the running container. We'll also remove the container. You can do this by going to `Docker Desktop`; click on the `Containers` menu and kill your *Python - Fastapi* container. Remove also the image called `python-fastapi`.
 

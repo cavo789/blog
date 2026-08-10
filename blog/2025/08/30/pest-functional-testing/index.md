@@ -37,6 +37,16 @@ I've already written an article about [Behat](/blog/tags/behat), another one abo
 
 My idea, like always, is to use (or create) a Docker image so we can immediately start without the pain of installing and configuring everything.
 
+Here is the payoff: 10 functional tests running in a real browser, in less than 26 seconds.
+
+![Success](./images/success.webp)
+
+And when a test fails — here, intentionally — Pest automatically takes a screenshot of what the browser actually saw:
+
+![The test has failed](./images/it_can_search_for_a_post.webp)
+
+No manual screenshot, no separate debugging step: the failure and the evidence arrive together. Let's build this.
+
 ## Let's create a temporary project
 
 First, let's create a temporary folder and jump in it:
@@ -79,14 +89,15 @@ To create the Docker image, please run `make build`:
 $ make build
 </Terminal>
 
-<AlertBox variant="info">
-If you don't have `make` yet on your host, please run `sudo apt-get update && sudo apt-get -y install make`.
+<Details label="Don't have make yet? (click for the details)">
+
+Please run `sudo apt-get update && sudo apt-get -y install make`.
 
 <Terminal typewriter>
 $ sudo apt-get update && sudo apt-get -y install make
 </Terminal>
 
-</AlertBox>
+</Details>
 
 The build phase can be slow because a lot of things should be downloaded. The final image will be around 2 GB.
 
@@ -122,11 +133,7 @@ The nice thing is: Pest has automatically taken a snapshot. See the error messag
 
 ![Running tests; one has failed](./images/running_tests.webp)
 
-Pest has taken a screenshot; we were searching for `Create our own Docusaurus React component` (as coded in our `tests/Browser/HomepageTest.php` scenario) and indeed, we don't see that title at all:
-
-![The test has failed](./images/it_can_search_for_a_post.webp)
-
-But we see `React component and provide a "Share on Bluesky" button` so let's update the script:
+Pest has taken a screenshot — the same one already shown at the top of this article; we were searching for `Create our own Docusaurus React component` (as coded in our `tests/Browser/HomepageTest.php` scenario) and indeed, we don't see that title at all. But we see `React component and provide a "Share on Bluesky" button` so let's update the script:
 
 <Snippet filename="HomepageTest.php" source="./files/HomepageTest.part2.php" />
 
@@ -134,11 +141,9 @@ We don't need to build the image again neither to recreate the container; just r
 
 <Terminal typewriter source="./files/terminal-1.txt" />
 
-Congratulations, we've just tested 10 features in less than 26 seconds.
+Congratulations, we've just tested 10 features in less than 26 seconds — the same result already shown at the top of this article.
 
-![Success](./images/success.webp)
-
-## In-depth
+## In-Depth (skip this if you just want to use it)
 
 - Pest is using [playwright](https://pestphp.com/docs/browser-testing#content-getting-started); this is why our Dockerfile is more complex because we should also install NodeJS,
 - Something really cooooool: we don't need to `wait_for` something change on the page, Pest will do it for us. For instance, with Cypress and Behat, when we click on a button, we have to wait until, for instance, the Ajax script on that page has fired and the `DOM element` has been loaded. With Pest, we shouldn't care about this and that's an amazing feature!

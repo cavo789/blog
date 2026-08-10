@@ -34,18 +34,18 @@ My use case: I wish to build a Docker image and during the build phase, I need t
 
 When I access the container, the project will then be available but I don't have, anywhere in my image, a copy of my SSH key so I won't be able to run a `git pull` f.i. since no further authentication is possible.
 
-## But, why is it important?
+## Preview
 
-As soon as you need to access something private like a private repository (on Github, Gitlab or anywhere else; it doesn't matter) during the build stage, Docker has to be able to connect as yourself.
+![You're authenticated](./images/authenticated.webp)
 
-You can provide your own credentials, use a token, or copy your SSH key into the image, or ... You can do this but **you'll be making a serious design error**: by reading your Dockerfile anyone will be able to see your private information (in case of hardcoding) or, by starting an interactive bash session, will be able to, e.g., display the list of environment variables (like using `printenv`) or try to display files (like accessing `.git` folders, ssh folders, ...) and **it'll work!**.
+That's the proof the technique works: the SSH key was used to authenticate against GitHub during
+the build — without ever being baked into the final image.
 
-Also, there are existing tools like [SecretScanner](https://github.com/deepfence/SecretScanner) that allow deep scanning of layers (a Docker image is composed of multiple layers) and even if the secret is stored in a file that no longer exists in the final image, if it has been saved in a layer, then this type of tool will be able to retrieve it. *The same reasoning applies to your git history, by the way: <Link to="/blog/git-precommit">Git - pre-commit-hooks</Link> lists hooks that block a commit as soon as a credential is detected.*
+## Why it works
 
-<AlertBox variant="caution">
-So, in conclusion: there is only one way to use secrets using Docker and you'll learn how in this article.
-
-</AlertBox>
+- Docker's `RUN --mount=type=secret` mounts the secret only for the duration of that one build layer — it never gets written to a layer that ends up in the final image.
+- Copying your SSH key into the image instead (or hardcoding a token) is a serious design error: anyone reading the Dockerfile, or starting an interactive bash session and running `printenv` or browsing `.ssh`/`.git` folders, will find it.
+- Even a secret deleted in a later layer can survive: tools like [SecretScanner](https://github.com/deepfence/SecretScanner) do deep layer-by-layer scanning and will still find it if it was ever written to disk in an earlier layer. *The same reasoning applies to your git history: <Link to="/blog/git-precommit">Git - pre-commit-hooks</Link> lists hooks that block a commit as soon as a credential is detected.*
 
 ## Which key to use
 
@@ -119,9 +119,7 @@ Ok, so you've the created the two files on your hard disk.
 
 Run `docker compose --progress plain build --no-cache` in your console to build the image and enable the verbose mode.
 
-As you can see below, we can confirm that our SSH key was shared during the build process.
-
-![You're authenticated](./images/authenticated.webp)
+As you can see, we can confirm that our SSH key was shared during the build process — that's the "You're authenticated" output shown at the top of this article.
 
 You'll now create the container; by running `docker compose up --detach`.
 
@@ -179,3 +177,11 @@ Imagine the current user was `christophe`. In that case the mount should be done
 
 
 </AlertBox>
+
+## Conclusion
+
+Two different needs, two different mechanisms: a **build-time secret** (`--mount=type=secret`)
+that never touches the final image, for one-off operations like cloning a private repo during
+`docker build`; and a **bind-mounted volume**, for when the running container itself needs your
+key on an ongoing basis to `git pull`/`push`. Pick the first by default, and only add the second
+when you actually need to work from inside the container.

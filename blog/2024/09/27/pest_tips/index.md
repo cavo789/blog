@@ -41,6 +41,24 @@ This article focuses on classic unit tests. Pest v4 added built-in browser testi
 
 <!-- truncate -->
 
+## Result
+
+A test file, and the bootstrap line that wires it to PHPUnit's `TestCase`:
+
+<Snippet filename="tests/Pest.php" source="./files/Pest.php" />
+
+<Snippet filename="tests/Feature/MyFirstTest.php" source="./files/MyFirstTest.php" />
+
+Running it with `./vendor/bin/pest tests/Feature/MyFirstTest.php` gives:
+
+<Terminal typewriter source="./files/terminal-2.txt" />
+
+## Why Pest
+
+- Tests read like natural sentences: `expect($value)->toBeTrue()` instead of PHPUnit's `$this->assertTrue($value)` — methods can be negated with `not->`.
+- `it()` and `test()` are interchangeable; use whichever fits your naming convention, both share the same behavior and syntax.
+- Pest is a wrapper around PHPUnit, not a replacement: every PHPUnit command-line argument still works, and existing PHPUnit test cases can be reused as-is (just add `/** @test */`).
+
 ## Installation
 
 > [https://pestphp.com/docs/installation#installation](https://pestphp.com/docs/installation#installation)
@@ -61,9 +79,7 @@ Just like PHPUnit, Pest will process every files in folders `tests/Feature` and 
 
 #### What does $this mean in a test?
 
-In our `tests/Pest.php` file, we've this line:
-
-<Snippet filename="tests/Pest.php" source="./files/Pest.php" />
+In our `tests/Pest.php` file, we've the bootstrap line shown at the top of this article.
 
 In a Pest test, `$this` refers to the PHPUnit `Tests\TestCase` class.
 
@@ -77,15 +93,7 @@ The result is the same, just how the output is done on the console.
 
 ### Our first tests
 
-Create a file like `tests/Feature/MyFirstTest.php` with this content:
-
-<Snippet filename="tests/Feature/MyFirstTest.php" source="./files/MyFirstTest.php" />
-
-This illustrates that Pest starts with an `expect` verb and some method like `toBeTrue()`.  Methods can be negated using `not->` ([https://pestphp.com/docs/expectations#expect-not](https://pestphp.com/docs/expectations#expect-not)).
-
-Running our test can be simply done using `./vendor/bin/pest tests/Feature/MyFirstTest.php` and here is the result:
-
-<Terminal typewriter source="./files/terminal-2.txt" />
+That's the `MyFirstTest.php` test and its `PASS` output shown at the top of this article. It illustrates that Pest starts with an `expect` verb and some method like `toBeTrue()`. Methods can be negated using `not->` ([https://pestphp.com/docs/expectations#expect-not](https://pestphp.com/docs/expectations#expect-not)).
 
 #### Autocomplete
 
@@ -197,6 +205,8 @@ And also in the `tests/Unit` folder:
 
 ## Tips and tricks
 
+*Optional.*
+
 ### Dump and die
 
 We can use the `dd` method to dump the current expectation value and end the test suite like this:
@@ -204,6 +214,8 @@ We can use the `dd` method to dump the current expectation value and end the tes
 <Snippet filename="tests/Feature/AnyTest.php" source="./files/AnyTest.part12.php" />
 
 ## Convert from PHPUnit
+
+*Optional — only relevant if you have an existing PHPUnit suite to migrate.*
 
 > [Migrate from PHPUnit to Pest - Online migration tool](https://benjamincrozat.com/phpunit-to-pest)
 
@@ -255,6 +267,13 @@ Now, just open any Pest file and press <kbd>CTRL</kbd>+<kbd>Shift</kbd>+<kbd>P</
 ### Convert from PHPUnit to Pest
 
 The repository [https://github.com/mandisma/pest-converter](https://github.com/mandisma/pest-converter) proposes a **PHPUnit to Pest Converter**: PestConverter is a PHP library for converting PHPUnit tests to Pest tests.
+
+## Conclusion
+
+Pest doesn't replace PHPUnit, it just replaces the *ceremony* — `expect()->toBeTrue()` instead of
+boilerplate assertions, datasets and architectural tests for free, and every existing PHPUnit
+test case still works unchanged. Install it once, write the next test in the expressive syntax,
+and migrate the rest only when it's convenient.
 
 ## Links
 

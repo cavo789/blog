@@ -40,6 +40,15 @@ If you don't have yet a Docker image with Quarto, read this article <Link to="/b
 
 The tag is simple, you just need to specify the relative path to the file to include. Get in-depth syntax on the [official documentation](https://quarto.org/docs/authoring/includes.html).
 
+## Result
+
+Running `quarto render main.qmd --to html` on the `main.qmd` file shown above merges the
+included files into one document:
+
+![Quarto includes](./images/includes.webp)
+
+Here's what's actually inside each included file.
+
 Here is some dummy content for `chapter1.md`:
 
 <Snippet filename="chapter1.md">
@@ -75,9 +84,7 @@ Consequatur debitis et sunt eos quod qui unde aut.
 
 <!-- cspell:enable -->
 
-Now, by running, f.i., `quarto render main.qmd --to html`, Quarto will merge files and you'll get:
-
-![Quarto includes](./images/includes.webp)
+Now, by running, f.i., `quarto render main.qmd --to html`, Quarto will merge these two files (and `main.qmd`) into the rendered page shown above.
 
 <AlertBox variant="info" title="What is a `.qmd` file?">
 For Quarto, the extension isn't very important: whether it's `.qmd` or `.md`, there's no difference in treatment.

@@ -40,6 +40,12 @@ Let’s walk through the complete workflow.
 
 <!-- truncate -->
 
+Here's where we're headed: `make build` once, `make up`, and the blog is already running.
+
+![The blog is running](./images/running_prod.webp)
+
+A few commands below and you'll be there too.
+
 <StepsCard
   title="What we'll learn here:"
   variant="steps"
@@ -118,9 +124,7 @@ $ TARGET=production make up
 
 This will be very fast and you'll see on the console a message telling `Open the PROD blog (https://localhost)`.
 
-And you know what? It's already done: just surf to `https://localhost` and be surprised, the blog is running.
-
-![The blog is running](./images/running_prod.webp)
+And you know what? It's already done: just surf to `https://localhost` and be surprised — the blog is running, the same result already teased at the top of this article.
 
 <AlertBox variant="note" title="What have we done?">
 By running `TARGET=production make build` we've created a standalone version of the blog running on nginx. We've encapsulated all articles from the blog (as Markdown files) and we've fired all the required commands to generate the static version of the blog. We've *parked* these files in a temporary location.

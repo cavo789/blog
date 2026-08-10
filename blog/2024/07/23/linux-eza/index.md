@@ -42,6 +42,12 @@ And then you'll say to me, well, all you have to do is create an alias `alias ls
 
 </AlertBox>
 
+## Result
+
+Once `ls` is aliased to `eza` with a few flags, this is what a plain `ls` looks like:
+
+![eza](./images/eza.webp)
+
 ## Install eza
 
 The installation is simple, you just need to run `sudo apt-get update && sudo apt-get install eza`; nothing more.
@@ -54,6 +60,4 @@ On my computer, I've chosen for this list of parameters: `--all --long --group -
 $ alias ls='eza --all --long --group --group-directories-first --icons --header --time-style long-iso'
 </Terminal>
 
-And, now, by just typing `ls`, I'll get this:
-
-![eza](./images/eza.webp)
+And, now, by just typing `ls`, you'll get the listing shown above.

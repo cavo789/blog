@@ -44,6 +44,10 @@ Donec blandit erat non placerat cursus.
 ```
 <!-- cspell:enable -->
 
+That's the result — every line turned into a bullet point in one shot:
+
+![Multiple cursors](./images/make_bullet_list.gif)
+
 Here is how to do it:
 
 - Select all the lines you need to update,
@@ -51,8 +55,6 @@ Here is how to do it:
 - Press <kbd>Home</kbd> to put cursors at the beginning of each line,
 - Press `*` followed by a space to transform the list of lines to a bullet list.
 - Press <kbd>ESC</kbd> to quit the multiple cursors mode.
-
-![Multiple cursors](./images/make_bullet_list.gif)
 
 While the multiple cursor mode is enabled, you can also press <kbd>END</kbd> to go to the end of lines, add/remove f.i. a character, you can press <kbd>CTRL</kbd>-<kbd>RIGHT</kbd> to move from one word right and so on.
 

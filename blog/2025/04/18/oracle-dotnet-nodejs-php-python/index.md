@@ -32,6 +32,10 @@ The idea is then to provide a very quick skeleton for starting a project in thos
 
 <!-- truncate -->
 
+Here's the result, whichever language you pick below: a small Docker container that connects and prints the employees table.
+
+![Using .Net to access the list of employees](./images/using_dotnet.webp)
+
 In the <Link to="/blog/docker-oracle-database-server">Running Oracle Database Server as a Docker container</Link> article, we've created a Docker container called `oracle-db` where a Human Resources database is running.
 
 Please read that article and follow steps so, before continuing here, you've a running Docker container as described below.
@@ -87,9 +91,7 @@ This is what your project looks like in VSCode:
 
 Still in the console, located in folder `/tmp/oracle/dotnet`, create the Docker image and run the container (and thus the script): `clear ; docker build -t oracle-dotnet . && docker run --rm -it --network oracle oracle-dotnet`.
 
-![Using .Net to access the list of employees](./images/using_dotnet.webp)
-
-Job done, our .Net code has accessed the list.
+Job done — the same result already shown at the top of this article, our .Net code has accessed the list.
 
 ## Access our Oracle DB container using NodeJS
 

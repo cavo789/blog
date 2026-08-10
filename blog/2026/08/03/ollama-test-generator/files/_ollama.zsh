@@ -41,8 +41,13 @@ _ollama_query() {
 
   _ollama_check || return 1
 
-  jq -n --arg model "$model" --arg prompt "$prompt" \
-    '{model: $model, prompt: $prompt, stream: false}' \
+  # The prompt is piped into jq rather than passed with "--arg": Linux caps a
+  # single argv entry at 128 KB (MAX_ARG_STRLEN), and a large staged diff or a
+  # long source file sails straight through that ceiling — jq then dies with
+  # "argument list too long". "-R -s" slurps stdin as one raw string, which jq
+  # escapes exactly like --arg would.
+  print -r -- "$prompt" \
+    | jq -Rs --arg model "$model" '{model: $model, prompt: ., stream: false}' \
     | curl --silent "${host}/api/generate" --data-binary @- \
     | jq -r '.response // empty'
 }
@@ -109,8 +114,16 @@ _ai_confirm() {
 # _git_staged_diff <caller> — validate the git context and return the staged diff.
 # Handles three early-exit cases (not a repo, nothing staged, oversized diff)
 # so every pre-commit function gets them for free without repeating the guards.
+#
+# Past AI_DIFF_MAX_CHARS the full diff is *not* returned: a diff of several
+# hundred kilobytes overflows the model's context window, and the answer that
+# comes back is worse than the one you get from a summary. The fallback keeps
+# the shape of the change — per-file stat, plus the file and hunk headers,
+# which carry the enclosing function names git puts after each "@@" — and
+# drops the line-by-line content.
 _git_staged_diff() {
   local caller="${1:-ai}"
+  local max="${AI_DIFF_MAX_CHARS:-12000}"
 
   if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     echo "${caller}: not inside a git repository" >&2
@@ -125,11 +138,28 @@ _git_staged_diff() {
     return 1
   fi
 
-  if (( ${#diff} > 12000 )); then
-    echo "${caller}: staged diff is large (${#diff} chars) — output may be less precise. Consider committing in smaller chunks." >&2
+  # "print -r" everywhere below: without it, print expands escape sequences and
+  # a literal \n or \t inside the diff would come back mangled.
+  if (( ${#diff} <= max )); then
+    print -r -- "$diff"
+    return 0
   fi
 
-  print -- "$diff"
+  echo "${caller}: staged diff is large (${#diff} chars) — sending a structural summary instead of the full diff. Commit in smaller chunks for a more precise answer." >&2
+
+  local summary
+  summary="$(git diff --staged --stat)
+
+--- FILE AND HUNK HEADERS ONLY (full diff omitted, ${#diff} chars) ---
+$(print -r -- "$diff" | grep -E '^(diff --git|new file|deleted file|rename (from|to)|@@)')"
+
+  # Even the summary can exceed the ceiling on a very wide change.
+  if (( ${#summary} > max )); then
+    summary="${summary[1,$max]}
+[…summary truncated…]"
+  fi
+
+  print -r -- "$summary"
 }
 
 # ---------------------------------------------------------------------------

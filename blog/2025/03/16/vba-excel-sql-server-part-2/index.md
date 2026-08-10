@@ -32,6 +32,16 @@ Let's rewrite this article in a full tutorial. We'll install and run a SQL Serve
 
 <!-- truncate -->
 
+Here's the result: a live query against SQL Server, its rows landing straight in an Excel sheet.
+
+![You got the list of customers](./images/worksheet.webp)
+
+## Why It Works
+
+- A single VBA class (`clsData`) wraps ADO, so every subroutine just asks it for a recordset instead of hand-rolling a connection string each time.
+- `CopyToSheet` copies data once — fast, but no live link with the database.
+- `AddQueryTable` keeps the connection alive instead, so the end user can hit *Data → Refresh* in Excel at any time to get fresh data.
+
 ## Download SQL Server and create a dummy database
 
 You can skip this step if you already have a SQL Server instance you can connect to.
@@ -144,11 +154,14 @@ We're ready. Put your cursor in the `CopyToSheet` function, anywhere and press <
 
 Nothing has happened? Are you sure?
 
-Please switch from the VBE interface to your Excel worksheet and tadaaa
+Please switch from the VBE interface to your Excel worksheet and tadaaa — the same result already shown at the top of this article.
 
-![You got the list of customers](./images/worksheet.webp)
+## The List of Features (optional deep dive — full code for each subroutine)
 
-## The list of features
+<AlertBox variant="danger">
+IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN CLEAR IN THE CONNECTION STRING! This applies to both `AddQueryTable` and `RunSQLAndExportNewWorkbook` below, whenever `bPersist` is `True`.
+
+</AlertBox>
 
 ### CopyToSheet subroutine
 
@@ -190,11 +203,6 @@ If the parameter bPersist is set to True, the connection string will be in plain
 - `rngTarget` : Destination of the returned recordset (f.i. `Sheet1!$A$1`)
 - `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query
 
-<AlertBox variant="danger">
-IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN CLEAR IN THE CONNECTION STRING !
-
-</AlertBox>
-
 Sample code
 
 <Snippet filename="module.bas" source="./files/module.part3.bas" />
@@ -213,11 +221,10 @@ The obtained workbook will be ready to be sent to someone.
 - `sReportTitle` : Title for the sheet
 - `bPersist` : If true, the connection string will be stored and, then, the user will be able to make a refresh of the query
 
-<AlertBox variant="danger">
-IF USERNAME AND PASSWORD HAVE BEEN SUPPLIED, THIS INFORMATION WILL BE SAVED IN CLEAR IN THE CONNECTION STRING !
-
-</AlertBox>
-
 Sample code
 
 <Snippet filename="module.bas" source="./files/module.part4.bas" />
+
+## Conclusion
+
+One VBA class, one SQL Server container, and Excel goes from a static spreadsheet to a live query surface — copy the data once with `CopyToSheet`, or keep it refreshable with `AddQueryTable`. See the <Link to="/blog/vba-excel-sql-server">first, shorter version of this article</Link> if you just want the minimal snippet without the full Docker + SSMS setup.

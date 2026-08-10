@@ -207,6 +207,19 @@
   .theme-doc-toc-desktop {
     display: none !important;
   }
+
+  /*
+   * Blog posts render their desktop ToC in a plain ".col--2" div (Docusaurus's
+   * unswizzled BlogLayout), not ".theme-doc-toc-desktop" (docs only). Without
+   * this it keeps its ~16.6% flex-basis while the sidebar/article above are
+   * forced to 100%, so it wraps onto its own row at the bottom-left of the
+   * page instead of being hidden in favor of the sticky ".blog-toc-mobile".
+   * Scoped to blog post pages so standalone MDX pages (no mobile ToC
+   * fallback) are unaffected.
+   */
+  html.blog-post-page .col.col--2 {
+    display: none !important;
+  }
   /* Prevent oversized article titles on small screens */
   article h1 {
     font-size: clamp(1.4rem, 5vw, 2.2rem);

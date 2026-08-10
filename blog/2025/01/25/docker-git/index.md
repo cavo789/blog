@@ -34,6 +34,13 @@ Let's see how to improve this process and be able to run `git` commands from ins
 
 <!-- truncate -->
 
+<!-- TODO(author): capture a real terminal transcript showing `git --version` then `git config --list` run from inside the container, with the host's `.gitconfig` values visible — not reproducible in this session (requires a live Docker daemon and the reader's own SSH key/.gitconfig). -->
+
+## Why It Works
+
+- Your `.gitconfig` and SSH key are **mounted**, not copied, into the container — read-only for the key — so there's nothing to keep in sync and nothing extra baked into the image.
+- `git` runs *inside* the container but authenticates and identifies commits exactly as it would on your host, because it's reading the same files.
+
 ## Creating a demo container
 
 Like always, we'll build a fully working example.

@@ -13,6 +13,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 import pluginSeriesRoute from "./plugins/docusaurus-plugin-series-route/index.cjs";
 import pluginTagRoute from "./plugins/docusaurus-plugin-tag-route/index.cjs";
+import pluginYamlWebpack from "./plugins/yaml-webpack-plugin/index.cjs";
 import remarkReplaceWords from "./plugins/remark-replace-terms/index.cjs";
 import remarkTreeToComponent from "./plugins/remark-tree-to-component/index.cjs";
 import remarkSnippetLoader from "./plugins/remark-snippet-loader/index.cjs";
@@ -162,6 +163,7 @@ const config = {
     ],
     [pluginSeriesRoute, {}],
     [pluginTagRoute, {}],
+    [pluginYamlWebpack, {}],
     ["./plugins/blog-feed-plugin/index.js", { maxItems: 20 }],
     ["./plugins/admin-data-plugin/index.cjs", {}],
     ["./plugins/ascii-injector/index.mjs", { bannerPath: "src/data/banner.txt" }],

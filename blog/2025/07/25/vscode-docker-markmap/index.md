@@ -30,6 +30,10 @@ This time, I would like to go one step further and make it more attractive.
 
 <!-- truncate -->
 
+Here's where we're headed — the same plain Markdown list, rendered as a polished, standalone HTML mindmap with Quarto:
+
+![The final result with Quarto](./images/final_result_quarto.webp)
+
 Let's start by the beginning: please start VSCode, create a new file. Because we'll do a little more than this, let's create a new folder: `mkdir -p /tmp/markmap && cd $_`.
 
 Please create a Markdown file there f.i. `overview.qmd`.  The `.qmd` extension is just to tell *This is a Markdown file and we plan to use it with Quarto*; nothing really special here.
@@ -102,9 +106,7 @@ So, after you have fired the script, you'll then have this structure in your pro
 
 ![Project structure after the script has been executed](./images/project_structure.webp)
 
-The nice thing is: Quarto has rendered your Markdown content as a beautiful page; which was the objective of this blog post:
-
-![The final result with Quarto](./images/final_result_quarto.webp)
+The nice thing is: Quarto has rendered your Markdown content as a beautiful page — the same result already shown at the top of this article, which was the objective of this blog post.
 
 ## Conclusion
 

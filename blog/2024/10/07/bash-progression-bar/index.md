@@ -35,6 +35,24 @@ Let's play with it.
 
 <!-- truncate -->
 
+## Result
+
+![Progression bar](./images/progression_bar.gif)
+
+That's a plain Bash loop, no external tool, driving a live progress bar in the console.
+
+## Why it works
+
+There are three things a script needs to do to get this bar:
+
+1. Source the `progress_bar.sh` script ([credits to ephase](https://xieme-art.org/post/bash-avance-barre-de-progression/));
+2. Run the function that does the actual work in a specific way; not just `main` but `main > >(progress_bar::process "Doing some stuff" 50)`. The figure `50` should be set to the number of occurrences the loop will run;
+3. From inside that function, `echo` one thing to the console: `Progress=` followed by a number (from 1 till 50) — that's the signal the bar reads to advance.
+
+Not so difficult, right?
+
+## Create demo.sh
+
 First, please create a new folder on your disk and jump into that folder: `mkdir /tmp/progress && cd $_`.
 
 Then, create a `demo.sh` file in the folder and copy/paste the bash script below:
@@ -43,15 +61,7 @@ Then, create a `demo.sh` file in the folder and copy/paste the bash script below
 
 Make the script executable by running `chmod +x ./demo.sh`.
 
-As you can see, we'll run a function 50 times. There are three things we need to do:
-
-1. We need to source the `progress_bar.sh` script ([credits to ephase](https://xieme-art.org/post/bash-avance-barre-de-progression/));
-2. We need to run our `main` function in a specific way; not just `main` but `main > >(progress_bar::process "Doing some stuff" 50)`. The figure `50` should be set to our number of occurrences; in our example, we'll run our function 50 times so...
-3. and finally, we should just output one thing to the console using `echo` and that thing should be `Progress=` followed by a number (from 1 till 50). In our example, we'll simply pass our `i` variable as a function parameter to achieve this need.
-
-Not so difficult, right?
-
-## Let's create the progress_bar.sh script
+## Create progress_bar.sh
 
 Here is the content you'll need to copy/paste into a file called `progress_bar.sh`, created in the same folder as the `demo.sh` one.
 
@@ -61,9 +71,7 @@ Please create a new file on your hard disk; name it `progress_bar.sh` and copy/p
 
 ## Time to run the code
 
-Simply return to the console and run `./demo.sh` and... wow; that's pretty cool.
-
-![Progression bar](./images/progression_bar.gif)
+Simply return to the console and run `./demo.sh` and... wow; that's pretty cool — you'll get the bar shown above.
 
 In a real-life example, I've implemented this feature in a Bash script where I need to read a CSV file and for each record retrieved in the file, I need to run a `curl` statement for calling a RESTful POST API and upload a PDF.
 

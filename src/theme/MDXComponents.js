@@ -12,6 +12,7 @@ import Details from "@site/src/components/Details";
 import DownloadButton from "@site/src/components/DownloadButton";
 import Hero from "@site/src/components/Hero";
 import Highlight from "@site/src/components/Highlight";
+import Image from "@site/src/components/Image";
 import Link from "@docusaurus/Link";
 import LogoIcon from "@site/src/components/Blog/LogoIcon";
 import MDXComponents from "@theme-original/MDXComponents";
@@ -54,6 +55,7 @@ export default {
   Guideline,
   Hero,
   Highlight,
+  Image,
   Link,
   LogoIcon,
   Prerequisite,

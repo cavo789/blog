@@ -45,6 +45,21 @@ As a reminder, the used Docker run command will always look like:
 
 </AlertBox>
 
+## Composer unused
+
+[Composer unused](https://github.com/composer-unused/composer-unused) will **try** to understand which packages are mentioned in your `composer.json` file and, perhaps, not used anymore.
+
+By running `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa composer-unused` in your project, you'll get something like this:
+
+![composer unused](./images/composer_unused.webp)
+
+So, the tool detects that I'm referencing `spatie/laravel-db-snapshots` in my `composer.json` file but, in my codebase, the tool (in fact, the namespace added by the tool) isn't used at all so, yes, probably, I can remove that dependency.
+
+<AlertBox variant="caution">
+Such a tool can produce false positive; just make some checks before removing the dependency. The best solution here is, of course, to have plenty of <Link to="/blog/pest_tips">unit tests</Link> so you can run them before and after the change and see if your code still works as expected.
+
+</AlertBox>
+
 ## Composer normalize
 
 [Composer normalize](https://github.com/ergebnis/composer-normalize) will reorder your `composer.json` file to match best practices.
@@ -65,21 +80,6 @@ The result will be a rewritten `composer.json` file where properties are put in 
 
 <AlertBox variant="info">
 Add `--dry-run` if you just want to see what the changes will be; but do not modify any files.
-
-</AlertBox>
-
-## Composer unused
-
-[Composer unused](https://github.com/composer-unused/composer-unused) will **try** to understand which packages are mentioned in your `composer.json` file and, perhaps, not used anymore.
-
-By running `docker run -it --rm -v "${PWD}":/project -w /project jakzal/phpqa composer-unused` in your project, you'll get something like this:
-
-![composer unused](./images/composer_unused.webp)
-
-So, the tool detects that I'm referencing `spatie/laravel-db-snapshots` in my `composer.json` file but, in my codebase, the tool (in fact, the namespace added by the tool) isn't used at all so, yes, probably, I can remove that dependency.
-
-<AlertBox variant="caution">
-Such a tool can produce false positive; just make some checks before removing the dependency. The best solution here is, of course, to have plenty of <Link to="/blog/pest_tips">unit tests</Link> so you can run them before and after the change and see if your code still works as expected.
 
 </AlertBox>
 

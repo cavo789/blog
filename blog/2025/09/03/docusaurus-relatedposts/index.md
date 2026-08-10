@@ -34,6 +34,16 @@ The objective of our component is to display something like this:
 
 <!-- truncate -->
 
+Here is the final result once wired up: up to six cards, picked from posts sharing the same `mainTag`.
+
+![The final result](./images/final.webp)
+
+## Why It Works
+
+- Matching runs on `mainTag`, a single custom front matter field — no manual curation, no keyword weighting, just "same primary topic."
+- The `<RelatedPosts>` component reuses the same `<Card>` you'd build for any post listing, so there's only one card layout to maintain across the site.
+- It's a theme override, not a fork: `BlogPostItem` still renders everything Docusaurus normally does, we just inject one extra component at the bottom.
+
 ## We need a Card component
 
 Please follow the instructions in the [Using the Reusable Card component of Docux](/blog/docusaurus-cards#using-the-reusable-card-component-of-docux) chapter.
@@ -114,6 +124,8 @@ The blog post should have a `mainTag` item, and it should be associated with the
 
 Then, all posts in your blog should have the standard `tags` array, where you can list more than one tag.
 
-The `RelatedPosts` component will then search for `docusaurus` across your posts and display up to six cards.
+The `RelatedPosts` component will then search for `docusaurus` across your posts and display up to six cards — the same result already shown at the top of this article.
 
-![The final result](./images/final.webp)
+## Conclusion
+
+A `mainTag` field, a `posts.js` helper, a `<Card>` you likely already have, and one theme override: that's the whole recipe for a "Related Posts" block that needs no manual curation. See <Link to="/blog/docusaurus-series">Organize Your Docusaurus Content with a Custom Series Component</Link> for articles that follow a deliberate reading order instead of a shared tag, and <Link to="/blog/docusaurus-tags">Tags management in Docusaurus</Link> to keep your `mainTag`/`tags` consistent across the whole blog.

@@ -16,7 +16,7 @@ language: en
 review_date: 2026-07-30
 blueskyRecordKey: 3lww5fbh2y22q
 ---
-<!-- cspell:ignore rgba,toggleable,unshift -->
+<!-- cspell:ignore toggleable,unshift -->
 
 ![Change how Docusaurus will create img tags](/img/v2/docusaurus_component.webp)
 
@@ -33,6 +33,14 @@ We'll customize our `<Image>` tag to first inject a `<div>` parent, we'll force 
 Indeed, the blog post introduction image should remains unchanged; we'll start to update the other images.
 
 <!-- truncate -->
+
+And here is the result of our own, self-made, `<Image>` component:
+
+<Image src={require("./images/happy.webp").default} title="A happy meerkat" />
+
+As you can see, the image is centered, has a hover effect, rounded corners, ... If you look at the HTML code, you'll see the `loading="lazy"` attribute.
+
+That's pretty cool: our component is working! Let's build it.
 
 We need to do several things so let's start with the first one: we need to create our `<Image>` component.
 
@@ -75,24 +83,16 @@ From now, in a blog post, instead of writing
 we can write
 
 ```html
-<Image src={require("./images/happy.jpg").default} title="A happy meerkat" />
+<Image src={require("./images/happy.webp").default} title="A happy meerkat" />
 ```
 
-The `require` part is needed because the image is located in a subfolder of the blog post.
+The `require` part is needed because the image is located in a subfolder of the blog post. That's exactly the tag rendered at the top of this article.
 
 If the source was something like `/img/happy.jpg` then the code is easier:
 
 ```html
 <Image src="/img/happy.jpg" title="A happy meerkat" />
 ```
-
-<!-- And here is the result of our own, self-made, Image component:
-
-<Image src={require("./images/happy.jpg").default} title="A happy meerkat" />
-
-As you can see, the image is centered, has a hover effect, rounded corners, ... If you look at the HTML code, you'll see the `lazy="loading"` attribute.
-
-That's pretty cool: our component is working! -->
 
 <AlertBox variant="caution">
 But, uh oh, on this blog, I've more than 250 articles right now (August 2025), I'm not going to go through all my articles to replace my images, am I?
@@ -105,9 +105,9 @@ The plugin will be able to intercept the Markdown code of the article and manipu
 
 We'll intercept the conversion of images from Markdown to HTML and tell Docusaurus to use our Image tag instead of img.
 
-## 4. Writing and registering a plugin
+## 4. Writing and registering a plugin (optional — only if you have hundreds of articles like me)
 
-So we need a plugin to intercept the conversion from `![Alt text](./img/example.webp)` to a HTML image tag; automatically.
+If you only have a handful of posts, it's simpler to just edit them by hand and skip this section. So we need a plugin to intercept the conversion from `![Alt text](./img/example.webp)` to a HTML image tag; automatically.
 
 <AlertBox variant="caution">
 But let's add a complexity: we don't want to change the first article i.e. the blog post introduction image. For that first image, let Docusaurus do its job (it's doing this really fine). We'll intercept as from the second image of the blog post.

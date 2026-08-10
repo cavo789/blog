@@ -31,16 +31,14 @@ Or you can use my [https://github.com/cavo789/vbs_xls_list_references](https://g
 
 <!-- truncate -->
 
+Here's what you get, for every `.xlam` or `.xlsm` file in a folder:
+
+<Terminal typewriter source="./files/terminal-1.txt" />
+
 Locate a folder on your hard disk where you've one or more `.xlam` or `.xlsm` files.
 
 Simply create there a file called `run.vbs` on your hard disk and copy/paste the source below in it:
 
 <Snippet filename="run.vbs" source="./files/run.vbs" />
 
-Now, start a DOS or Powershell console, go to that folder and run `cscript run.vbs`.
-
-That's all. The script will retrieve any `.xlam` or `.xlsm` files and do automation to open Excel, open the file (by disabling the execution of macros) and retrieve the list of references.
-
-The output you'll get will be something like this:
-
-<Terminal typewriter source="./files/terminal-1.txt" />
+Now, start a DOS or Powershell console, go to that folder and run `cscript run.vbs`. That's all. The script will retrieve any `.xlam` or `.xlsm` files and do automation to open Excel, open the file (by disabling the execution of macros) and retrieve the list of references — the same output already shown at the top of this article.

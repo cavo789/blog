@@ -31,6 +31,26 @@ Let's quickly discover Pentaho and, as a first example, load an Excel file into 
 
 <!-- truncate -->
 
+Here is exactly what we're building: a flow that reads an Excel file, then loads its rows into a PostgreSQL table.
+
+![We are ready to run the transformation](./images/ready_to_run.webp)
+
+![Successfully executed](./images/run_with_success.webp)
+
+<BrowserWindow url="http://localhost:8080">
+  <img
+    alt="The records have been successfully loaded in PostgreSQL"
+    src={require("./images/successfully_loaded_in_postgres.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
+
+## Why It Works
+
+- Spoon, Pentaho's graphical interface, is a drag-and-drop canvas: no code to write, just steps (Excel input, database output, ...) connected by arrows.
+- Each step can be tested in isolation — preview the Excel rows, test the database connection — before you ever run the whole flow.
+- Pentaho generates the `CREATE TABLE` SQL for you from the flow itself, so the database schema and the flow never drift apart.
+
 ## Installation on Linux
 
 Pentaho can be installed on both Windows and Linux since it's a Java application.
@@ -281,25 +301,11 @@ Save the file to `/tmp/pentaho` with the `load_people_from_excel.ktr` name.
 
 #### Run it
 
-See the `Run` icon:
+See the `Run` icon (the same one already shown at the top of this article). Click on it. You'll get a new window with bottom right a `Run` button; click on it.
 
-![We are ready to run the transformation](./images/ready_to_run.webp)
+If everything was correctly configured and fired, you'll get the same "Successfully executed" screen already teased earlier.
 
-Click on it. You'll get a new window with bottom right a `Run` button; click on it.
-
-If everything was correctly configured and fired, you'll get this screen:
-
-![Successfully executed](./images/run_with_success.webp)
-
-Back to pgAdmin, get the list of records from the `people` table to verify if the Excel file was well loaded and, yes, it is.
-
-<BrowserWindow url="http://localhost:8080">
-  <img
-    alt="The records have been successfully loaded in PostgreSQL"
-    src={require("./images/successfully_loaded_in_postgres.webp").default}
-    className="screenshot"
-  />
-</BrowserWindow>
+Back to pgAdmin, get the list of records from the `people` table to verify if the Excel file was well loaded — the same result already shown at the top of this article.
 
 ### Download the transformation file
 

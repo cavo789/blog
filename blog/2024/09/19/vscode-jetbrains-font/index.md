@@ -25,9 +25,13 @@ As you know, VSCode is highly customizable; you can install <Link to="/blog/vsco
 
 Just take a look at the **JetBrains Mono font**. This is a free-of-charge font, for both commercial and non-commercial purposes.
 
-In addition to the fact that it is particularly legible, making it much clearer to distinguish between an O (the letter) and a 0 (the number), between an I (upper-case I) and an l (lower-case l); **JetBrains Mono font** comes with nice ligature elements.
-
 <!-- truncate -->
+
+## Why this font
+
+- It's free, for both commercial and non-commercial use.
+- It's particularly legible: an O (the letter) and a 0 (the number), an I (upper-case i) and an l (lower-case L), are clearly distinct — no more guessing in a terminal or a diff.
+- It comes with nice ligature elements: sequences like `!=`, `=>` or `->` are rendered as a single, cleaner glyph instead of separate characters.
 
 Visit [https://www.jetbrains.com/lp/mono/](https://www.jetbrains.com/lp/mono/) to see the potential of the font.
 
@@ -57,4 +61,9 @@ But the easier way is:
 
 Save, close VSCode and open it again (or simply press <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>P</kbd> and run `Developer: Reload Window`)
 
-Now that your editor looks the way you want, <Link to="/blog/vscode-codesnap">CodeSnap</Link> lets you turn any selection into a shareable screenshot that shows off that font.
+## Conclusion
+
+Install the font once at the OS level, add two lines to `settings.json`, and every editor tab
+benefits from clearer character shapes and ligatures from then on. Now that your editor looks the
+way you want, <Link to="/blog/vscode-codesnap">CodeSnap</Link> lets you turn any selection into a
+shareable screenshot that shows off that font.

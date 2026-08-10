@@ -31,12 +31,19 @@ The command `ls folder_name | wc -l` works but didn't stay running. Let's see ho
 
 <!-- truncate -->
 
-## Let's create our Python environment
+## Running the scripts
 
-<AlertBox variant="caution">
-You can skip this part if you already have Python installed on your computer.
+Here's the payoff, before anything else: two terminals side by side, one generating files, the other showing a live, continuously updating count of them.
 
-</AlertBox>
+First, in a separate console, we'll start our monitoring script: `./monitor.sh out`.
+
+In a second window, start the Python script: `docker exec -it demo python script.py`.
+
+![Running a monitor using inotifywait](./images/inotifywait.gif)
+
+That's the live counter I was after. Let's see how each piece — the Python demo environment, the file-generator script and `monitor.sh` itself — is built.
+
+## Setting Up the Demo Environment (optional — skip if you already have Python and a folder to watch)
 
 I need a Python environment so let's quickly create it thanks to Docker.
 
@@ -69,15 +76,7 @@ You can quickly check if `inotifywait` is already installed by running `which in
 
 </AlertBox>
 
-We're finally ready.
-
-## Running the scripts
-
-First, in a separate console, we'll start our monitoring script: `./monitor.sh out`.
-
-In a second window, start the Python script: `docker exec -it demo python script.py`.
-
-![Running a monitor using inotifywait](./images/inotifywait.gif)
+That's everything needed to reproduce the counter shown at the top of this article.
 
 ## Conclusion
 

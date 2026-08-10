@@ -52,7 +52,31 @@ Imagine you're a customer and you ask a developer to create a new website. In yo
 
 In terms of Behat, these sentences are called scenarios. You can write them even before the website is created. And during the coding steps, the developer will run your scenarios from time to time. On the first run, all the scenarios are bound to fail (the site doesn't exist; the requested functions have not yet been developed). The developer will work on one or other of the functionalities; he will restart the BDD tests and, as the project progresses, the scenarios will succeed until the end of the project, when all the scenarios will have been successfully completed and the project can be sent to you for acceptance.
 
-## Create a new project
+## Result
+
+A scenario is just a `.feature` file written in plain English, one line per step:
+
+<Snippet filename="Blog.feature" source="./files/Blog.feature" />
+
+<StepsCard
+  title="This scenario is using three steps:"
+  variant="steps"
+  steps={[
+    '`Given I am on "https://www.avonture.be"`',
+    '`Then I click on the "Blog" menu item` and',
+    '`Then I should be on "/blog"`.'
+  ]}
+/>
+
+Before writing a single line of PHP, just ask Behat to run it — it already understands the
+scenario and tells us exactly what's still missing:
+
+![First run](./images/first_run.webp)
+
+That's the whole pitch: plain-English steps, parsed and tracked by Behat, PHP only needed to
+make each step actually *do* something. The rest of this article builds up to that PHP.
+
+## Set up the project
 
 For this article, we'll create a new Behat project and we'll validate this scenario: **"As a visitor, I want to be able to visit the site XYZ; click on a navigation item called 'Blog'. The site will then show me the list of blog posts."**
 
@@ -119,13 +143,9 @@ Now, if you look at your folder, you can see you've now a new folder called `fea
 
 ![FeatureContext in vscode](./images/vscode_FeatureContext.webp)
 
-## Time to learn more about features
+## Writing your steps in PHP
 
-The image here above is displaying a major concept of Behat: it's a feature. This is something you need to write and this will guide our automation. For instance:
-
-<Snippet filename="Blog.feature" source="./files/Blog.feature" />
-
-This has to be put in a file having the `.feature` extension in the  `features` folder; let's create the `Blog.feature` file with this content:
+This has to be put in a file having the `.feature` extension in the `features` folder; let's create the `Blog.feature` file (shown at the top of this article) with that content:
 
 ![The Blog.feature file](./images/blog_feature.webp)
 
@@ -134,21 +154,7 @@ If you're using Visual Studio Code, you can install [Cucumber (Gerkin) Full Supp
 
 </AlertBox>
 
-<StepsCard
-  title="Your scenario here above is using three steps:"
-  variant="steps"
-  steps={[
-    '`Given I am on "https://www.avonture.be"`',
-    '`Then I click on the "Blog" menu item` and',
-    '`Then I should be on "/blog"`.'
-  ]}
-/>
-
-
-
 Now we've our scenario, we need to teach Behat how to *translate* these sentences (it's the [Gherkin language](https://cucumber.io/docs/gherkin/)) in our PHP code.
-
-## Writing your steps in PHP
 
 Now, please open the file `features/bootstrap/FeatureContext.php` in your preferred editor:
 
@@ -174,9 +180,7 @@ Please open the file `features/bootstrap/FeatureContext.php` once more in your p
 
 Nice, isn't it? Behat has looked at our `Blog.feature` file and created as many methods in our PHP code as we had sentences in our scenario and each method is assigned to the sentence (take a look at the PHP comment before each method).
 
-And, now, before even starting to code, let's ask Behat to run our scenario; please run `vendor/bin/behat` in the console:
-
-![First run](./images/first_run.webp)
+And, now, before even starting to code, let's ask Behat to run our scenario; please run `vendor/bin/behat` in the console — that's the "First run" output shown at the top of this article.
 
 Wow! So far, perfect! We've thus asked Behat to run our scenario and it knows that we have three steps and we still need to write the associated code in PHP (therefore the **TODO: write pending definition** message in yellow).
 

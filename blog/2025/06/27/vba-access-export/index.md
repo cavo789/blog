@@ -33,6 +33,14 @@ Let's look at how to do this.
 
 <!-- truncate -->
 
+## Sample
+
+By running `cscript vbs_access_export.vbs C:\Christophe\db1.mdb` in a DOS console, you'll get this:
+
+<Terminal typewriter title="Powershell" source="./files/terminal-1.txt" />
+
+Once finished, you'll have a subfolder called `src` with one file by object so, indirectly, you've a backup of your code 👌.
+
 ## Description
 
 My [https://github.com/cavo789/vbs_access_export](https://github.com/cavo789/vbs_access_export) VBS script will export all code objects (forms, macros, modules, queries and reports) from a MS Access database / application to flat files on your disk.
@@ -49,16 +57,8 @@ Just get a copy of the [https://github.com/cavo789/vbs_access_export](https://gi
 
 ## Usage
 
-Just edit the `.cmd` file and you'll see how it works: you just need to run the `.vbs` with one parameter, the name of your database.
+Just edit the `.cmd` file and you'll see how it works: you just need to run the `.vbs` with one parameter, the name of your database — the same command already shown at the top of this article.
 
-## Sample
+## Conclusion
 
-For instance, by running `cscript vbs_access_export.vbs C:\Christophe\db1.mdb` in a DOS console, you'll get this:
-
-<Terminal typewriter title="Powershell" source="./files/terminal-1.txt" />
-
-Once finished, you'll have a subfolder called `src` with one file by object so, indirectly, you've a backup of your code 👌.
-
-You can now commit them to GitHub if it's what you need.
-
-Working with VBA-heavy files in general? See also <Link to="/blog/vba-excel-list-references">MS Excel - Get the list of references used in your modules</Link>, <Link to="/blog/msaccess-optimize">How to optimize an existing MS Access database</Link> and <Link to="/blog/vbs-msaccess-get-fields">VBS - Retrieve the list of fields in a MS Access Database</Link>.
+A single VBS script turns forms, modules, queries, reports and macros — everything that used to live only inside the `.mdb`/`.accdb` file — into flat files you can commit to GitHub, diff, and track like any other codebase. Working with VBA-heavy files in general? See also <Link to="/blog/vba-excel-list-references">MS Excel - Get the list of references used in your modules</Link>, <Link to="/blog/msaccess-optimize">How to optimize an existing MS Access database</Link> and <Link to="/blog/vbs-msaccess-get-fields">VBS - Retrieve the list of fields in a MS Access Database</Link>.

@@ -95,8 +95,32 @@ function serve() {
 
 # @cat Server
 # @cmd reset
-# @desc Alias for 'start' — use if the dev server seems stuck
+# @desc Kill whatever is running on port 3000, then restart the blog there
 function reset() {
+    local port=3000
+
+    printf "🔎 Checking for a process on port %s...\n" "${port}"
+    local pids
+    pids=$(lsof -ti "tcp:${port}" 2>/dev/null) || true
+    if [[ -n "${pids}" ]]; then
+        printf "🔪 Killing process(es) on port %s: %s\n" "${port}" "${pids}"
+        kill -9 ${pids} 2>/dev/null || true
+    else
+        printf "✅ Nothing is running on port %s.\n" "${port}"
+    fi
+
+    local tries=0
+    while lsof -i "tcp:${port}" >/dev/null 2>&1; do
+        tries=$((tries + 1))
+        if [[ "${tries}" -gt 10 ]]; then
+            printf "❌ Port %s is still in use after 10s, aborting.\n" "${port}" >&2
+            printf "   See what's holding it with: lsof -i tcp:%s\n" "${port}" >&2
+            return 1
+        fi
+        sleep 1
+    done
+
+    printf "🚀 Restarting the blog on port %s...\n" "${port}"
     start
 }
 

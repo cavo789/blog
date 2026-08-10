@@ -35,6 +35,12 @@ And, because I'm using Quarto for my documentation, I need an extension for usin
 
 <!-- truncate -->
 
+Here's the idea in one picture: a Markdown page whose "How to run" chapter is injected from a shared template, with a variable filled in from the page's own frontmatter.
+
+![Rendering the Contextual Canvas feature](./images/render_canvas.webp)
+
+The "Contextual Canvas" heading and description are typed directly in the page; the "How to run" paragraph below it comes from a template shared by every feature page, with `{{ command }}` replaced by the value declared in that page's frontmatter. Let's build it.
+
 ## Create some files
 
 Like always, let's create some files.
@@ -75,9 +81,7 @@ Here comes Mustache in action: as you can see on the first line, the syntax `{{ 
 
 <Snippet filename="documentation/canvas.md" source="./files/canvas_2.txt" />
 
-Time to create our website. Please run `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render`.
-
-![Rendering the Contextual Canvas feature](./images/render_canvas.webp)
+Time to create our website. Please run `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render` — the same rendering already teased at the top of this article.
 
 This will call the `render` command of Quarto. Quarto will then process the `_quarto.yml` file, see we want to produce a website and start HTML rendering. It'll take just one or two seconds.
 
@@ -95,7 +99,21 @@ And now, we're ready to copy/paste the file `documentation/canvas.md` to `docume
   />
 </BrowserWindow>
 
-### What have we just done
+Let's prove the template is reusable. We'll create a new feature:
+
+<Snippet filename="documentation/builder.md" source="./files/builder.txt" />
+
+and render our site again by running again `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render`.
+
+<BrowserWindow url="http://localhost:8080/documentation/feature_2.html">
+  <img
+    alt="Our second feature"
+    src={require("./images/html_builder.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
+
+### What Have We Just Done
 
 We've created a reusable template. Our document has two parts; a YAML section (the frontmatter) where we'll provide some variables. The second part, the Markdown one, is our basic template. We can copy that one for all our features f.i.
 
@@ -110,27 +128,13 @@ partial-data:
 {{< partial ../_partials/run.md >}}
 ```
 
-Let's prove it. We'll create a new feature:
-
-<Snippet filename="documentation/builder.md" source="./files/builder.txt" />
-
-and render our site again by running again `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render`.
-
-<BrowserWindow url="http://localhost:8080/documentation/feature_2.html">
-  <img
-    alt="Our second feature"
-    src={require("./images/html_builder.webp").default}
-    className="screenshot"
-  />
-</BrowserWindow>
-
 ## My use case
 
 In my own case, my documentation looks like this:
 
 <Snippet filename="/documentation/php_lint.md" source="./files/php_lint.txt" />
 
-## Testing if a variable is defined or not
+## Testing if a Variable Is Defined or Not (optional — skip if your templates don't need conditionals)
 
 Let's take a look at the `is_for.md` file.
 
@@ -156,7 +160,7 @@ Let's take a look at the next included file:
 
 Same idea. If a `config_file` key is defined in the documentation frontmatter, we'll obtain `PHP Linter uses a settings file named .config/.phplint.yml ([Learn more](https://github.com/tengattack/phplint/blob/master/.phplint.yml)).`. If we remove the `config_file` line, we'll then get `There is no configuration file.`.
 
-## Raw contents
+## Raw Contents (optional — skip unless a rendered value looks wrongly escaped)
 
 When displaying a variable, sometimes we need to disable the normal echo mode and use what Mustache calls `raw content`.
 
@@ -184,3 +188,7 @@ The report will be created into your project's directory in a folder called `{{&
 
 {{/output}}
 ```
+
+## Conclusion
+
+One `_quarto.yml` extension line, a couple of partial templates, and nearly 80 near-identical documentation pages stop being 80 copy-pasted Markdown files — they become one template plus one small frontmatter block per page. See <Link to="/blog/quarto-industrialisation">Quarto - How I Built a Self-Documenting Ecosystem for 50+ Projects</Link> for how this grew into a full pipeline, and <Link to="/blog/quarto-extensions">my favorite Quarto extensions</Link> for more building blocks like this one.

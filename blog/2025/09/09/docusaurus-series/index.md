@@ -41,6 +41,16 @@ Just click on the <Link to="/series">Series</Link> link to see how cool the **Se
 
 <!-- truncate -->
 
+Here is the component in action, once wired up — a banner announcing the series, right on the article:
+
+![Our component is now running](./images/our-component-is-running.webp)
+
+Part 2 below goes further and adds a full `/series` page listing every series as cards:
+
+![A page will all series](./images/series-page.webp)
+
+Let's build both, starting with the banner.
+
 <AlertBox variant="info">
 Have you seen this article before? Look at the top. You will see a banner that says, 'This article is part of the **Creating Docusaurus components** series.' This is exactly what we will learn how to do right now.
 
@@ -148,9 +158,7 @@ If, like me, you are running Docusaurus using Docker, just stop the container an
 
 ### Let's see if it's working
 
-Return to your blog and refresh the page. You should see something like this (with your own content, of course):
-
-![Our component is now running](./images/our-component-is-running.webp)
+Return to your blog and refresh the page. You should see the same banner already teased at the top of this article (with your own content, of course).
 
 Great! The component is now running.
 
@@ -230,11 +238,7 @@ The `PostCard` component is using the [Reusable Card component of Docux](/blog/d
 
 Everything is now in place for our `/series` web page. We have created `src/pages/series.mdx` and all its dependencies.
 
-Now, simply access the `/series` URL. On my localhost, it's `http://127.0.0.1:3000/series`.
-
-Here is what you might get without any styling:
-
-![A page will all series](./images/series-page.webp)
+Now, simply access the `/series` URL. On my localhost, it's `http://127.0.0.1:3000/series`. You should get the same page already teased at the top of this article, without any styling yet.
 
 Great, right?
 
