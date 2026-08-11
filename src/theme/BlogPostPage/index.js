@@ -10,6 +10,7 @@ import BlogPostPaginator from "@theme/BlogPostPaginator";
 import BlogPostPageMetadata from "@theme/BlogPostPage/Metadata";
 import StructuredData from "@site/src/components/StructuredData";
 import OpenGraphArticle from "@site/src/components/OpenGraphArticle";
+import MarkdownAlternate from "@site/src/components/MarkdownAlternate";
 import BlogPostPageStructuredData from "@theme/BlogPostPage/StructuredData";
 import TOC from "@theme/TOC";
 import TOCCollapsible from "@theme/TOCCollapsible";
@@ -116,6 +117,7 @@ function InnerBlogPostPage({ sidebar, BlogPostContent }) {
       <BlogPostPageMetadata />
       <BlogPostPageStructuredData />
       <OpenGraphArticle />
+      <MarkdownAlternate />
       {metadata && <StructuredData metadata={metadata} assets={assets} />}
       <BlogPostPageContent sidebar={sidebar}>
         <BlogPostContent />

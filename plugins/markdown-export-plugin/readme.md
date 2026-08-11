@@ -93,3 +93,37 @@ also converts Docusaurus's `:::tip Free text title` shorthand into
   `src/theme/BlogPostItem/Header` and `src/theme/BlogPostItem/index.js`
   (mirroring the existing `aiIcon` prop-passing pattern). Only rendered on
   the post page itself, never on a list-view card.
+
+## Discoverability — none of this is found unless something points to it
+
+Generating `llms.txt`, the per-series bundles and the `.md` mirrors is not the
+same as making them *public*. Nothing crawls a domain looking for these paths
+by default — the llms.txt convention (llmstxt.org) has no equivalent of
+`robots.txt`'s de-facto crawler support. Four deliberate pointers make the
+files reachable:
+
+- **`docusaurus.config.js`'s `headTags`** — a site-wide
+  `<link rel="alternate" type="text/markdown" href="/llms.txt">`, present on
+  every page. Same pattern as RSS's
+  `<link rel="alternate" type="application/rss+xml">`.
+- **`src/components/MarkdownAlternate`** — the per-article equivalent, wired
+  into `src/theme/BlogPostPage/index.js` next to `OpenGraphArticle`. Points at
+  *this* page's own `.md` mirror, so a tool that only ever looks at one
+  article's `<head>` doesn't need to know `/llms.txt` exists at all.
+- **`writeLlmsTxt()`'s "Series" section** — `llms.txt` is the only place the
+  per-series bundles are linked from site-wide. Without this section they're
+  written to disk under `/llms/` but unreachable from anything an LLM would
+  actually fetch; this is what makes `llms.txt` a real index instead of just
+  the site-wide article list.
+- **`SeriesArticlesPage.js`'s "View this series as plain Markdown" link** —
+  the human-facing counterpart of the point above: a reader already on
+  `/series/<slug>` shouldn't have to go through `/llms.txt` to find the one
+  bundle they're looking at. `slug` is already `createSlug(series name)` from
+  the route match, the same algorithm `writeSeriesFull()` uses to name the
+  file, so the link needs no extra lookup.
+
+`static/robots.txt` also carries a comment pointing at `/llms.txt` — not a
+real directive (no such directive exists), just a cheap breadcrumb for
+whatever already parses that file. None of this guarantees a crawler will
+follow it; as of 2026 no major LLM crawler is known to fetch `/llms.txt`
+automatically.

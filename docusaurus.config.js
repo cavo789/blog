@@ -174,6 +174,20 @@ const config = {
   ],
   headTags: [
     {
+      // Site-wide discovery hook for the llms.txt convention (llmstxt.org) —
+      // mirrors how <link rel="alternate" type="application/rss+xml"> lets a
+      // reader/tool find the RSS feed without knowing the URL in advance.
+      // Present on every page since it lives in the global headTags, not a
+      // per-post component. See plugins/markdown-export-plugin.
+      tagName: "link",
+      attributes: {
+        rel: "alternate",
+        type: "text/markdown",
+        href: "https://www.avonture.be/llms.txt",
+        title: "llms.txt — full site index in Markdown, for LLMs and readers",
+      },
+    },
+    {
       tagName: "link",
       attributes: {
         rel: "preconnect",

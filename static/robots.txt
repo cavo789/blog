@@ -1,3 +1,9 @@
+# Not a standard robots.txt directive — llms.txt (llmstxt.org) has no
+# official discovery mechanism yet, so this is just a low-cost breadcrumb for
+# any tool that already parses robots.txt looking for one.
+# Machine-readable, plain-Markdown index of this whole site:
+# https://www.avonture.be/llms.txt
+
 User-Agent: *
 Sitemap: https://www.avonture.be/sitemap.xml
 Disallow: /*index.xml$

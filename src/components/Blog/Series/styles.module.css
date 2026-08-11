@@ -126,6 +126,24 @@
   margin-bottom: 0.5rem;
 }
 
+/* Mirrors CopyAsMarkdown's .copyBtn (src/components/CopyAsMarkdown/styles.module.css)
+   so the two "get this as plain Markdown" affordances look like one family. */
+.markdownLink {
+  display: inline-block;
+  padding: 5px 12px;
+  background: transparent;
+  color: var(--ifm-color-emphasis-700);
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 5px;
+  font-size: 0.82rem;
+}
+
+.markdownLink:hover {
+  border-color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
 .seriesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

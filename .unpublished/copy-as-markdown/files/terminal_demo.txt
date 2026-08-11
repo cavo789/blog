@@ -1,0 +1,10 @@
+$ yarn build
+[SUCCESS] Generated static files in "build".
+[INFO] markdown-mirror-plugin: wrote 247 .md mirrors
+
+$ curl -s https://your-domain.tld/blog/docusaurus-go-top.md | head -n 8
+<TLDR>
+This article is a quick tutorial on how to add a 'scroll to top' button to your Docusaurus blog. It walks you through implementing a custom `<ScrollToTopButton>` React component, including its CSS for styling. You'll learn how to override the default `BlogPostItem` theme component to automatically inject the button at the bottom of every blog post. The guide also provides tips on adding the button to other parts of your site, such as the blog archive or custom pages.
+</TLDR>
+
+More on smartphones than on computers; it's pretty nice to have a *Back to top of page* button to avoid dislocating your thumb.

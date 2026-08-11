@@ -109,7 +109,7 @@ function buildHeader(post, siteConfig) {
   return lines.join("\n");
 }
 
-function writeLlmsTxt(outDir, siteConfig, posts) {
+function writeLlmsTxt(outDir, siteConfig, posts, seriesFiles) {
   const byTag = new Map();
   for (const post of posts) {
     const tag = post.mainTag || "uncategorized";
@@ -125,6 +125,24 @@ function writeLlmsTxt(outDir, siteConfig, posts) {
     "",
   );
 
+  // This is the only place the per-series bundles are ever linked from — without
+  // it they exist on disk but are unreachable from anything an LLM would fetch.
+  if (seriesFiles.length > 0) {
+    lines.push(
+      "## Series (full-text bundles)",
+      "",
+      "Each link is every article in that series, concatenated in reading order — " +
+        "one request instead of many.",
+      "",
+    );
+    for (const s of seriesFiles) {
+      lines.push(
+        `- [${s.name}](${siteConfig.url}/llms/${s.slug}.txt) — ${s.count} article(s)`,
+      );
+    }
+    lines.push("");
+  }
+
   for (const tag of [...byTag.keys()].sort()) {
     lines.push(`## ${tag}`, "");
     const sorted = [...byTag.get(tag)].sort((a, b) => a.title.localeCompare(b.title));
@@ -138,6 +156,8 @@ function writeLlmsTxt(outDir, siteConfig, posts) {
   fs.writeFileSync(path.join(outDir, "llms.txt"), lines.join("\n"), "utf-8");
 }
 
+// Returns the series that were actually written, sorted by name — this list is
+// what lets writeLlmsTxt() link to them; without it they'd be orphaned on disk.
 function writeSeriesFull(outDir, posts) {
   const bySeries = new Map();
   for (const post of posts) {
@@ -145,11 +165,12 @@ function writeSeriesFull(outDir, posts) {
     if (!bySeries.has(post.series)) bySeries.set(post.series, []);
     bySeries.get(post.series).push(post);
   }
-  if (bySeries.size === 0) return;
+  if (bySeries.size === 0) return [];
 
   const seriesDir = path.join(outDir, "llms");
   fs.mkdirSync(seriesDir, { recursive: true });
 
+  const written = [];
   for (const [seriesName, seriesPosts] of bySeries) {
     const sorted = [...seriesPosts].sort((a, b) => new Date(a.date) - new Date(b.date));
     const chunks = [
@@ -161,12 +182,11 @@ function writeSeriesFull(outDir, posts) {
     for (const post of sorted) {
       chunks.push(post.markdown, "", "---", "");
     }
-    fs.writeFileSync(
-      path.join(seriesDir, `${createSlug(seriesName)}.txt`),
-      chunks.join("\n"),
-      "utf-8",
-    );
+    const slug = createSlug(seriesName);
+    fs.writeFileSync(path.join(seriesDir, `${slug}.txt`), chunks.join("\n"), "utf-8");
+    written.push({ name: seriesName, slug, count: sorted.length });
   }
+  return written.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 module.exports = function markdownExportPlugin() {
@@ -222,8 +242,8 @@ module.exports = function markdownExportPlugin() {
         }
       }
 
-      writeLlmsTxt(outDir, siteConfig, indexable);
-      writeSeriesFull(outDir, indexable);
+      const seriesFiles = writeSeriesFull(outDir, indexable);
+      writeLlmsTxt(outDir, siteConfig, indexable, seriesFiles);
 
       if (unknownAll.size > 0) {
         console.warn(

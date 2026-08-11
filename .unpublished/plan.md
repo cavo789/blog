@@ -269,6 +269,19 @@ Christophe a sélectionné 10 sujets lors d'une session de brainstorming. Deux p
 | `mcp-python-server` | MCP — serveur Python pour Claude Code | Python `mcp` SDK (FastMCP), `docker-inspector` avec 6 tools. Le code n'a pas été testé contre un vrai Claude Code — vérifier les chemins dans `settings.json` avant publication. **Draft créé 2026-07-31.** |
 | `ai-explain` | ai-explain — ELI5 terminal (série Ollama) | Dernier article de la série — publier APRÈS les 11 articles de la série. **Draft créé 2026-07-31.** |
 
+## Nouveau brouillon standalone (créé 2026-08-11) — Copy as Markdown
+
+| Slug | Angle | Dépendance |
+| --- | --- | --- |
+| `docusaurus-copy-as-markdown` | Reproduire le composant `src/components/CopyAsMarkdown` (bouton « Copy as Markdown » / « View raw » dans l'en-tête d'article) sur son propre blog Docusaurus. Couvre un plugin `postBuild` simplifié (mirroir `.md` par article) puis le composant React réel de ce repo (`<Snippet source="src/components/CopyAsMarkdown/index.js">`, source réelle, pas une copie). Volontairement plus simple que `plugins/markdown-export-plugin` (qui dégrade les composants MDX custom) — signalé en « Under the Hood » sans en détailler le code. | Aucune dépendance sur des brouillons non publiés. Liens internes vers `/blog/docusaurus-reactions`, `/blog/docusaurus-go-top` et `/blog/docusaurus-snippets` (tous déjà publiés). |
+
+**Avant de publier `docusaurus-copy-as-markdown` :**
+
+- `readme.md` du composant a été créé en même temps (`src/components/CopyAsMarkdown/readme.md`) — il pointe déjà vers cet article via son slug ; vérifier que le lien reste correct si le slug change.
+- Le plugin `plugins/markdown-mirror-plugin/index.cjs` montré dans l'article est un fichier pédagogique simplifié (`.unpublished/copy-as-markdown/files/`), testé localement (247 mirroirs générés sans erreur) mais jamais ajouté à `docusaurus.config.js` de ce repo — ce blog utilise déjà le vrai `plugins/markdown-export-plugin`, plus complet.
+- Article validé par un `yarn build` complet (copie temporaire dans `blog/`, supprimée après) : compile sans erreur MDX, aucun lien interne cassé.
+- Lien réciproque à ajouter au moment de la publication : aucun strictement nécessaire (l'article ne dépend d'aucun autre brouillon), mais envisager une mention dans `/blog/docusaurus-reactions` ou `/blog/docusaurus-snippets` (« autres composants de cette série ») si Christophe le souhaite.
+
 ## Correction apportée à un article déjà publié (2026-07-27)
 
 `/blog/ollama-installation` (publié 2026-03-30) a été corrigé suite à une vérification demandée par

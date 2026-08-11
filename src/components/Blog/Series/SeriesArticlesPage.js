@@ -89,6 +89,22 @@ export default function SeriesArticlesPage() {
           {seriesData?.description && (
             <p className={styles.seriesDescription}>{seriesData.description}</p>
           )}
+          {sortedPosts.length > 0 && (
+            // Plain <a>, not Docusaurus's <Link>: this file is a static asset
+            // written by plugins/markdown-export-plugin's postBuild step, not
+            // a registered route, so <Link> would have nothing to resolve
+            // against. Same reasoning as CopyAsMarkdown's "View raw" link.
+            <a
+              href={`/llms/${slug}.txt`}
+              className={styles.markdownLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Translate id="blog.seriesPage.markdownLink">
+                📄 View this series as plain Markdown
+              </Translate>
+            </a>
+          )}
         </div>
         {sortedPosts.length > 0 ? (
           <div className={styles.seriesGrid}>
