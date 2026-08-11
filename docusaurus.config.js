@@ -166,6 +166,7 @@ const config = {
     [pluginYamlWebpack, {}],
     ["./plugins/blog-feed-plugin/index.js", { maxItems: 20 }],
     ["./plugins/admin-data-plugin/index.cjs", {}],
+    "./plugins/blog-graph-plugin/index.mjs",
     ["./plugins/ascii-injector/index.mjs", { bannerPath: "src/data/banner.txt" }],
     "./plugins/sitemap-easter-egg/index.mjs",
     "./plugins/markdown-export-plugin/index.cjs",
@@ -292,6 +293,10 @@ const config = {
           {
             href: "/blog/tags",
             label: "Tags",
+          },
+          {
+            href: "/map",
+            label: "Map",
           },
           {
             href: "/repositories",

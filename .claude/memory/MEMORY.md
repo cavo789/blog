@@ -21,3 +21,4 @@
 - [Devcontainer Structure](project_devcontainer_structure.md) — scripts/, COPY paths, bind-mounts, wiring points — tout ce qui doit rester synchronisé
 - [File Rename Completeness](feedback_file_rename_completeness.md) — grep exhaustif avant tout rename ; "terminé" = docker build passe, pas juste le fichier déplacé
 - [AnythingLLM Instance](project_anythingllm_instance.md) — 172.17.0.1:3001 depuis le devcontainer, compose sur l'hôte, workspace `blog` (248 posts)
+- [llms.txt Discoverability](project_llms_txt_discoverability.md) — head links + series-bundle link built 2026-08-11 ; directory submissions: llmstxt.site ✅, directory.llmstxt.cloud ✅, llmstxthub.com ❌ retry

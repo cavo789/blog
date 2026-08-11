@@ -1,0 +1,33 @@
+---
+title: "Blog Map"
+description: "An interactive map of the whole blog — every article plotted by how it links to, shares a series with, or shares tags with the rest of the corpus."
+hide_table_of_contents: true
+image: "/img/meerkat/suricate.webp"
+authors: [christophe]
+---
+
+import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
+import BlogGraph from "@site/src/components/BlogGraph";
+
+<!-- markdownlint-disable MD041 -->
+
+<h1 className="text--center">Blog Map</h1>
+
+<div className="text--center">
+  <img
+    src="/img/meerkat/suricate_no_background.webp"
+    alt="A meerkat standing up, pointing toward the map."
+    width="140"
+    loading="lazy"
+  />
+</div>
+
+<div className="text--center">
+  Every published article, plotted by how it links to, shares a series with, or shares
+  tags with the rest of the corpus. Hover a dot to see its neighbors, click to open the
+  article.
+</div>
+
+<BlogGraph />
+
+<ScrollToTopButton />

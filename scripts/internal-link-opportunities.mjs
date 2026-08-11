@@ -23,8 +23,8 @@
  *   node scripts/internal-link-opportunities.mjs --post blog/2026/07/28/my-slug
  *
  * `--stats` prints the site-wide internal/external linking audit. Prefer it over
- * an ad hoc grep: see `collectLinks()` for the four ways a naive one gets the
- * numbers wrong.
+ * an ad hoc grep: see `collectLinks()` in `scripts/lib/blog-corpus.mjs` for the
+ * four ways a naive one gets the numbers wrong.
  *
  * `--post` checks a single article — the one just written — and exits 1 when it
  * carries fewer than `--min-links` internal links (default 1), so it can run in
@@ -32,29 +32,9 @@
  * `index.md`, inside `blog/` or in `.unpublished/`.
  */
 
-import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
-
-const BLOG_DIR = "blog";
-
-/** Recursively collects every article file under a directory. */
-function findPosts(directory) {
-  const found = [];
-
-  for (const entry of readdirSync(directory, { withFileTypes: true })) {
-    const target = path.join(directory, entry.name);
-
-    if (entry.isDirectory()) {
-      found.push(...findPosts(target));
-      // A handful of posts embed components heavily and use `index.mdx`; they
-      // are articles like any other and must be part of the corpus.
-    } else if (entry.name === "index.md" || entry.name === "index.mdx") {
-      found.push(target);
-    }
-  }
-
-  return found;
-}
+import { SECTION_ROUTE, articleLinks, loadPosts, readPost } from "./lib/blog-corpus.mjs";
 
 /** Words too generic to identify an article on their own. */
 const STOP_WORDS = new Set([
@@ -140,172 +120,6 @@ const STOP_WORDS = new Set([
   "back",
 ]);
 
-/** Parses the frontmatter block of a Markdown file. Enough YAML for our shape. */
-function parseFrontMatter(raw) {
-  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
-
-  if (!match) {
-    return { data: {}, body: raw };
-  }
-
-  const data = {};
-  let currentListKey = null;
-
-  for (const line of match[1].split(/\r?\n/)) {
-    const listItem = line.match(/^\s*-\s+(.*)$/);
-
-    if (listItem && currentListKey) {
-      data[currentListKey].push(listItem[1].trim().replace(/^["']|["']$/g, ""));
-      continue;
-    }
-
-    const pair = line.match(/^([A-Za-z_][\w-]*):\s*(.*)$/);
-
-    if (!pair) {
-      continue;
-    }
-
-    const [, key, rawValue] = pair;
-    const value = rawValue.trim();
-
-    if (value === "") {
-      currentListKey = key;
-      data[key] = [];
-      continue;
-    }
-
-    currentListKey = null;
-
-    if (value.startsWith("[") && value.endsWith("]")) {
-      data[key] = value
-        .slice(1, -1)
-        .split(",")
-        .map((item) => item.trim().replace(/^["']|["']$/g, ""))
-        .filter(Boolean);
-      continue;
-    }
-
-    data[key] = value.replace(/^["']|["']$/g, "");
-  }
-
-  return { data, body: raw.slice(match[0].length) };
-}
-
-/** Removes fenced code blocks, inline code, links and JSX tags so only prose remains. */
-function toProse(body) {
-  return (
-    body
-      .replace(/^\s*(```|~~~)[\s\S]*?^\s*\1\s*$/gm, " ")
-      .replace(/`[^`\n]*`/g, " ")
-      .replace(/\[[^\]]*\]\([^)]*\)/g, " ")
-      // Tag attributes hold slugs and component names that would otherwise read
-      // as topic mentions.
-      .replace(/<[^>]+>/g, " ")
-  );
-}
-
-/** File extensions that make a link an asset reference rather than a page link. */
-const ASSET_EXTENSION =
-  /\.(png|jpe?g|webp|gif|svg|pdf|zip|tar|gz|mp4|txt|ya?ml|sh|json|csv|xlsx?)$/i;
-
-/** Localhost URLs are instructions to the reader, not outbound traffic. */
-const LOCALHOST = /\/\/(127\.0\.0\.1|localhost)/;
-
-/** Blog routes that are listing pages rather than articles. */
-const SECTION_ROUTE = /^\/blog\/(tags|archive|authors|page)(\/|$)/;
-
-/**
- * The articles a post links to. A link to a tag or archive page is internal but
- * does not send the reader to another article, so it never makes a post
- * "linked" for the purpose of this report.
- */
-function articleLinks(post) {
-  return [...post.links].filter((link) => !SECTION_ROUTE.test(link));
-}
-
-/**
- * Collects every link an article makes, split by destination.
- *
- * Four traps make a naive audit wrong, each in the direction of undercounting
- * internal links:
- *
- * 1. Posts cross-link mostly with the `<Link to="/blog/x">` component, not with
- *    the Markdown `[label](/blog/x)` syntax. Matching only Markdown misses the
- *    large majority of them and makes well linked articles look orphaned.
- * 2. `\[[^\]]*\]\(` also matches the image syntax `![alt](./images/x.webp)`, so
- *    images get counted as links. The `(?<!!)` lookbehind rejects them.
- * 3. Links inside fenced code blocks are sample output, not navigation.
- * 4. Absolute `https://www.avonture.be/blog/...` URLs are internal links too.
- */
-function collectLinks(body) {
-  const internal = new Set();
-  let markdown = 0;
-  let jsx = 0;
-  let external = 0;
-  let localhost = 0;
-
-  const sources = [
-    { pattern: /(?<!!)\[[^\]]*\]\(([^)\s]+)/g, form: "markdown" },
-    { pattern: /<(?:Link|a)\s[^>]*?(?:to|href)=["']([^"']+)["']/gi, form: "jsx" },
-  ];
-
-  for (const line of stripCodeFences(body)) {
-    for (const { pattern, form } of sources) {
-      pattern.lastIndex = 0;
-
-      let match;
-
-      while ((match = pattern.exec(line)) !== null) {
-        const raw = match[1].trim();
-        const url = raw.replace(/^https?:\/\/(www\.)?avonture\.be/, "");
-
-        if (url.startsWith("/blog/") && !ASSET_EXTENSION.test(url)) {
-          internal.add(url.replace(/\/$/, ""));
-
-          if (form === "markdown") {
-            markdown += 1;
-          } else {
-            jsx += 1;
-          }
-
-          continue;
-        }
-
-        if (!/^https?:\/\//.test(raw) || raw.includes("avonture.be")) {
-          continue;
-        }
-
-        if (LOCALHOST.test(raw)) {
-          localhost += 1;
-        } else {
-          external += 1;
-        }
-      }
-    }
-  }
-
-  return { internal, markdown, jsx, external, localhost };
-}
-
-/** Yields the lines of a body with fenced code blocks removed. */
-function stripCodeFences(body) {
-  const lines = [];
-  let inFence = false;
-
-  for (const line of body.split(/\r?\n/)) {
-    if (/^\s*(```|~~~)/.test(line)) {
-      inFence = !inFence;
-      continue;
-    }
-
-    if (!inFence) {
-      lines.push(line);
-    }
-  }
-
-  return lines;
-}
-
 /** Distinctive terms that identify an article inside someone else's prose. */
 function identifyingTerms(post) {
   const terms = new Set();
@@ -338,46 +152,6 @@ function countMentions(prose, term) {
   const matches = prose.match(new RegExp(`\\b${escaped}\\b`, "gi"));
 
   return matches ? matches.length : 0;
-}
-
-/**
- * Reads one article into the shape the rest of the script works with.
- *
- * `skipDrafts` is what keeps the corpus limited to published content; the
- * single-article check (`--post`) turns it off, because a draft that links
- * nowhere becomes an orphan the day it is published.
- */
-function readPost(file, { skipDrafts = true } = {}) {
-  const raw = readFileSync(file, "utf8");
-  const { data, body } = parseFrontMatter(raw);
-
-  if (!data.title || (skipDrafts && data.draft === "true")) {
-    return null;
-  }
-
-  const slug = data.slug ?? path.basename(path.dirname(file));
-  const linkCounts = collectLinks(body);
-
-  return {
-    file,
-    title: data.title,
-    slug,
-    permalink: `/blog/${slug.replace(/^\//, "")}`,
-    mainTag: data.mainTag ?? null,
-    tags: Array.isArray(data.tags) ? data.tags : [],
-    date: data.date ?? "",
-    series: data.series ?? null,
-    draft: data.draft === "true",
-    prose: toProse(body).toLowerCase(),
-    links: linkCounts.internal,
-    linkCounts,
-  };
-}
-
-function loadPosts() {
-  return findPosts(BLOG_DIR)
-    .map((file) => readPost(file))
-    .filter(Boolean);
 }
 
 /** Ranks the articles `source` talks about but never links to. */

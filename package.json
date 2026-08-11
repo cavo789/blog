@@ -51,6 +51,7 @@
     "@mdx-js/react": "^3.0.0",
     "cheerio": "^1.1.2",
     "clsx": "^2.0.0",
+    "d3-force": "^3.0.0",
     "docusaurus-plugin-image-zoom": "^3.0.1",
     "docusaurus-plugin-pagefind": "^0.2.2",
     "feed": "^5.1.0",
