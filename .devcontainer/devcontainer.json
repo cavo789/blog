@@ -95,17 +95,18 @@
         "workbench.startupEditor": "terminal"
       },
       "extensions": [
+        "anthropic.claude-code",
         "DavidAnson.vscode-markdownlint",
         "davidlday.languagetool-linter",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "GitHub.copilot",
         "GitHub.vscode-github-actions",
-        "anthropic.claude-code",
         "ms-vscode.makefile-tools",
         "shd101wyy.markdown-preview-enhanced",
         "streetsidesoftware.code-spell-checker",
         "TomasDahlqvist.markdown-admonitions",
+        "Tyriar.luna-paint",
         "usernamehw.errorlens",
         "yzhang.markdown-all-in-one"
       ]

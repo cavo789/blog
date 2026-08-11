@@ -42,7 +42,9 @@ Once karakeep is running, adding something is really piece of cake: just click i
 
 I'll type `https://awesome-docker-compose.com/apps`, save it and immediately, I'll get this:
 
-![Awesome Docker](./images/awesome_docker.webp)
+<BrowserWindow url="http://localhost:2000/dashboard/bookmarks">
+  ![Awesome Docker](./images/awesome_docker.webp)
+</BrowserWindow>
 
 As you can see, karakeep has grabbed a picture of the web page — no manual thumbnail, no extra step.
 
@@ -81,13 +83,17 @@ Once the `compose.yaml` file has been created, in your console, now, just run `d
 
 You now have karakeep running. Surf to `http://localhost:2000/` and you'll get this screen:
 
-![karakeep - Logon screen](./images/logon.webp)
+<BrowserWindow url="http://localhost:2000/">
+  ![karakeep - Logon screen](./images/logon.webp)
+</BrowserWindow>
 
 Because it's your first time, click on `Sign Up` and let's create a new user. karakeep will force the password to respect some rules so, once defined, don't forget to add it in your password safe program (Bitwarden for my own).
 
 You'll get the dashboard:
 
-![karakeep - Dashboard](./images/dashboard.webp)
+<BrowserWindow url="http://localhost:2000/dashboard/bookmarks">
+  ![karakeep - Dashboard](./images/dashboard.webp)
+</BrowserWindow>
 
 ## Adding to a list
 

@@ -71,11 +71,15 @@ Click on the `Generate install script` below and copy/paste the script in a term
 
 Run `docker compose up --detach`, wait for the images to download, then open `http://localhost:8080`:
 
-![Joomla installer](./images/joomla_installation_screen.webp)
+<BrowserWindow url="http://localhost:8080">
+  ![Joomla installer](./images/joomla_installation_screen.webp)
+</BrowserWindow>
 
 Answer the installer's questions and, a few seconds later, you're here:
 
+<BrowserWindow url="http://localhost:8080/aministrator/index.php">
 ![Joomla administration dashboard](./images/admin_dashboard.webp)
+</BrowserWindow>
 
 A complete Joomla website, on your machine, with a database — and not a single file of Joomla or MySQL installed on your disk.
 
@@ -225,11 +229,15 @@ Back to `http://localhost:8080` and we will continue the installation.
 
 On the first screen, just select your preferred language then enter a name for your Joomla site:
 
-![Name your site](./images/admin_step_1.webp)
+<BrowserWindow url="http://localhost:8080">
+  ![Name your site](./images/admin_step_1.webp)
+</BrowserWindow>
 
 When Joomla will ask for your admin credentials, just fill in the value of your choice:
 
-![Login data](./images/joomla_admin_login_data.webp)
+<BrowserWindow url="http://localhost:8080">
+  ![Login data](./images/joomla_admin_login_data.webp)
+</BrowserWindow>
 
 <StepsCard
   title="But, for the database configuration, here you need to be strict:"
@@ -253,15 +261,21 @@ These values can be retrieved inside the `compose.yaml` file. If you have named 
   defaultOpen={true}
 />
 
-![Joomla Database configuration](./images/joomla_admin_database_configuration.webp)
+<BrowserWindow url="http://localhost:8080">
+  ![Joomla Database configuration](./images/joomla_admin_database_configuration.webp)
+</BrowserWindow>
 
 And, after a few seconds, tadaaa...
 
-![Joomla installation is done](./images/joomla_admin_ready.webp)
+<BrowserWindow url="http://localhost:8080">
+  ![Joomla installation is done](./images/joomla_admin_ready.webp)
+</BrowserWindow>
 
 The administrator page:
 
-![Joomla installation is done](./images/joomla_start_administrator.webp)
+<BrowserWindow url="http://localhost:8080/administrator">
+  ![Joomla installation is done](./images/joomla_start_administrator.webp)
+</BrowserWindow>
 
 And behind it, the administrator dashboard shown at the beginning of this article.
 
@@ -451,7 +465,9 @@ For this, on Windows, edit the file `C:\Windows\System32\Drivers\etc\hosts` and 
 
 Save the file. Now you can surf to `http://kingsbridge:8080`
 
-![Using the Kingsbridge alias](./images/using_alias.webp)
+<BrowserWindow url="http://kingsbridge:8080">
+  ![Using the Kingsbridge alias](./images/using_alias.webp)
+</BrowserWindow>
 
 <AlertBox variant="note">
   When creating an alias in the host file, some people prefer to use the

@@ -49,7 +49,9 @@ You can find all the information on my repo at [https://github.com/cavo789/jooml
 
 4. By default, you'll get the list of users of your Joomla site:
 
-    ![The list of your users](./images/list_of_users.webp)
+    <BrowserWindow url="http://localhost:8080/showtable.php">
+      ![The list of your users](./images/list_of_users.webp)
+    </BrowserWindow>
 
 So you can see how easy it is to use the script: there's nothing to configure for it to work.
 
@@ -63,11 +65,15 @@ Let's show the list of articles: open your preferred editor and open the `showta
 
 We'll then use another predefined example... Save and refresh your web page. You'll get a new result:
 
-![The list of articles](./images/list_of_articles.webp)
+<BrowserWindow url="http://localhost:8080/showtable.php?password=Joomla&submit=Submit">
+  ![The list of articles](./images/list_of_articles.webp)
+</BrowserWindow>
 
 If you want to export that list to Excel, see the `Excel` button top left and click on it :
 
-![Export to Excel](./images/export_to_excel.webp)
+<BrowserWindow url="http://localhost:8080/showtable.php?password=Joomla&submit=Submit">
+  ![Export to Excel](./images/export_to_excel.webp)
+</BrowserWindow>
 
 ## From within Excel, retrieve our Joomla data
 

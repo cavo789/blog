@@ -10,15 +10,17 @@ import BlogPostItemHeaderTitle from "@theme/BlogPostItem/Header/Title";
 import BlogPostItemHeaderInfo from "@theme/BlogPostItem/Header/Info";
 import BlogPostItemHeaderAuthors from "@theme/BlogPostItem/Header/Authors";
 
-export default function BlogPostItemHeader({ aiIcon }) {
+export default function BlogPostItemHeader({ aiIcon, copyAsMarkdown }) {
   return (
     <header>
       <BlogPostItemHeaderTitle />
       <BlogPostItemHeaderInfo aiIcon={aiIcon} />
+      {copyAsMarkdown}
       <BlogPostItemHeaderAuthors />
     </header>
   );
 }
 BlogPostItemHeader.propTypes = {
   aiIcon: PropTypes.node,
+  copyAsMarkdown: PropTypes.node,
 };

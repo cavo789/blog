@@ -36,7 +36,6 @@ A picture is worth a thousand words...
   <img
     alt="Demo"
     src={require("./images/demo.gif").default}
-    className="screenshot"
   />
 </BrowserWindow>
 

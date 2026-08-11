@@ -39,7 +39,6 @@ Here it is in action, on an old post of this very blog:
   <img
     alt="Old post notice in action"
     src={require("./images/old_notice.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 

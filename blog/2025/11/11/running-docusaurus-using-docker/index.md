@@ -42,7 +42,9 @@ Let’s walk through the complete workflow.
 
 Here's where we're headed: `make build` once, `make up`, and the blog is already running.
 
-![The blog is running](./images/running_prod.webp)
+<BrowserWindow url="https://localhost/blog">
+  ![The blog is running](./images/running_prod.webp)
+</BrowserWindow>
 
 A few commands below and you'll be there too.
 
@@ -196,7 +198,9 @@ It means that Docusaurus is ready to serve your content.
 
 Please surf to `https://localhost:3000` and tadaaa.
 
-![The site is running](./images/site_is_running.webp)
+<BrowserWindow url="https://localhost:3000">
+  ![The site is running](./images/site_is_running.webp)
+</BrowserWindow>
 
 Let's play. Open the `blog` folder and create a new file called `index.md`:
 
@@ -204,7 +208,9 @@ Let's play. Open the `blog` folder and create a new file called `index.md`:
 
 Save it and, oh?, your browser will immediately reflect the change (hot reload is indeed enabled):
 
-![The new blog post is already running](./images/new_blog_post_running.webp)
+<BrowserWindow url="https://localhost/blog/index/">
+  ![The new blog post is already running](./images/new_blog_post_running.webp)
+</BrowserWindow>
 
 ### Running the terminal from the devcontainer
 

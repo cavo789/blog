@@ -43,7 +43,6 @@ Drop an `index.php` file calling `phpinfo()` in it (we'll see how, below), surf 
   <img
     alt="phpinfo - PHP 8.3"
     src={require("./images/phpinfo_8_3.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -119,7 +118,6 @@ $ exit
   <img
     alt="phpinfo - PHP 8.4"
     src={require("./images/phpinfo_8_4.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 

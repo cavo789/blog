@@ -35,7 +35,9 @@ To do this, we'll use the [https://github.com/martialblog/docker-limesurvey](htt
 
 One `compose.yaml` file, one `docker compose up --detach`, and here is what waits for you on `http://localhost:8080/admin`:
 
-![LimeSurvey dashboard](./images/dashboard.webp)
+<BrowserWindow url="http://localhost:8080/admin">
+  ![LimeSurvey dashboard](./images/dashboard.webp)
+</BrowserWindow>
 
 A full LimeSurvey installation — survey list, participants, statistics — running on your machine, with nothing installed except Docker. Let's build it.
 
@@ -76,11 +78,15 @@ Press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop following the logs.
 
 When LimeSurvey is ready, you'll see the following page on `http://localhost:8080`:
 
-![LimeSurvey welcome page](./images/homepage.webp)
+<BrowserWindow url="http://localhost:8080">
+  ![LimeSurvey welcome page](./images/homepage.webp)
+</BrowserWindow>
 
 Go to `http://localhost:8080/admin` to start the administration interface. The credentials to use are `admin` / `admin` (as defined in the `compose.yaml` file, see variables `ADMIN_USER` and `ADMIN_PASSWORD`).
 
-![LimeSurvey administration page](./images/admin.webp)
+<BrowserWindow url="http://localhost:8080/admin">
+  ![LimeSurvey administration page](./images/admin.webp)
+</BrowserWindow>
 
 Once logged in, you land on the dashboard shown at the beginning of this article, and you're ready to play with LimeSurvey on your machine.
 

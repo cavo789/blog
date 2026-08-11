@@ -71,7 +71,9 @@ The code-server configuration is thus stored in your home directory, in the fold
 
 By opening `http://127.0.0.1:8080` you'll get this screen:
 
-![Asking for a password](./images/prompt_for_password.webp)
+<BrowserWindow url="http://127.0.0.1:8080">
+  ![Asking for a password](./images/prompt_for_password.webp)
+</BrowserWindow>
 
 Back to your console, run `cat ${HOME}/.config/code-server/config.yaml` to discover the configuration for code-server. You'll see something like this:
 

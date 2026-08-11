@@ -40,7 +40,9 @@ Now create an `index.php` file in that folder. On your disk, in your editor, not
 
 Surf to `http://127.0.0.1:81/` and the container is already serving it:
 
-![Hello world!](./images/hello_world.webp)
+<BrowserWindow url="http://127.0.0.1:81/">
+  ![Hello world!](./images/hello_world.webp)
+</BrowserWindow>
 
 No copy, no rebuild, no `docker cp`. You saved a file and the container saw it.
 
@@ -71,7 +73,9 @@ To create the `index.php` file, if you have Visual Studio Code on your machine, 
 
 If you surf to `http://127.0.0.1:81/` *before* creating `index.php`, you get this instead:
 
-![Localhost is forbidden](./images/localhost_is_forbidden.webp)
+<BrowserWindow url="http://127.0.0.1:81/">
+  ![Localhost is forbidden](./images/localhost_is_forbidden.webp)
+</BrowserWindow>
 
 As you probably know, Apache displays by default the content of the `/var/www/html` folder. And, at that point, we do not have an `index.php` file in our container so we got the **Forbidden** page. Same container, same command; the only thing that changed between this screenshot and the previous one is a file you saved on your own disk.
 

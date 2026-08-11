@@ -47,7 +47,9 @@ From now, Docker will download (just the first time) the Joomla CMS, PHP, Apache
 
 Surf to `http://127.0.0.1:8080/administrator` and enjoy!
 
-![Joomla administrator](./images/administrator.webp)
+<BrowserWindow url="http://127.0.0.1:8080/administrator">
+  ![Joomla administrator](./images/administrator.webp)
+</BrowserWindow>
 
 <AlertBox variant="caution">
 The admin account to use is `joomla` and its password is `joomla@secured` (as defined in the yaml file you've just copied earlier).

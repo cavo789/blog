@@ -1,0 +1,35 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.copyBtn {
+  padding: 5px 12px;
+  background: transparent;
+  color: var(--ifm-color-emphasis-700);
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 5px;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.copyBtn:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.copyBtn:hover:not(:disabled) {
+  border-color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-color-emphasis-900);
+}
+
+.rawLink {
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.rawLink:hover {
+  color: var(--ifm-color-primary);
+}

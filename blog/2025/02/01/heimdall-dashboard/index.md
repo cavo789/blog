@@ -77,7 +77,6 @@ Once you've fired the `docker compose up --build --detach` command, you've alrea
   <img
     alt="The default welcome page"
     src={require("./images/welcome.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -87,7 +86,6 @@ Let's play, click on the last button bottom right (the settings icon) and under 
   <img
     alt="My own background"
     src={require("./images/welcome_2.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -119,7 +117,6 @@ I suggest that, before adding new links, you first click on the Tags icon (the f
   <img
     alt="Adding tags"
     src={require("./images/tags.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -135,7 +132,6 @@ Heimdall will extract the favicon in different sizes. I click on the one I wish.
   <img
     alt="Adding Docker"
     src={require("./images/adding_docker.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -145,7 +141,6 @@ Automatically, Heimdall has filled in some properties in the bottom part of the 
   <img
     alt="Adding Docker"
     src={require("./images/application_docker.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -155,7 +150,6 @@ Once saved, I'll get my new homepage:
   <img
     alt="Homepage with Docker"
     src={require("./images/homepage_docker.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -169,7 +163,6 @@ Let's explore that `Application Type` feature:
   <img
     alt="Application type"
     src={require("./images/application_type.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -181,7 +174,6 @@ I'll point the URL to `https://vault.bitwarden.com/#/login` and I'll keep `Home 
   <img
     alt="With Bitwarden"
     src={require("./images/bitwarden.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -191,7 +183,6 @@ Here is the dashboard I'm using at work. Since it's so easy to add new items; I'
   <img
     alt="Final Heimdall dashboard"
     src={require("./images/final.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 

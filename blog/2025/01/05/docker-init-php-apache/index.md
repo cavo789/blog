@@ -78,7 +78,6 @@ First, create the container by running the `docker compose up --build` command t
   <img
     alt="The application is running"
     src={require("./images/localhost.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 

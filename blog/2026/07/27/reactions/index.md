@@ -504,7 +504,6 @@ Fill your `ADMIN_TOKEN` to connect:
   <img
     alt="The reaction dashboard login page"
     src={require("./images/add_token.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -565,7 +564,6 @@ And here is what you can get:
   <img
     alt="The reaction dashboard"
     src={require("./images/reaction_dashboard.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 

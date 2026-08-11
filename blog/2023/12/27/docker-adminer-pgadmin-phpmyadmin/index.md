@@ -34,7 +34,9 @@ $ docker run -d --rm --name adminer --network joomla_default --link joomla-jooml
 
 Surf to `http://127.0.0.1:8088` and your database is right there:
 
-![adminer](./images/adminer.webp)
+<BrowserWindow url="http://127.0.0.1:8088">
+  ![adminer](./images/adminer.webp)
+</BrowserWindow>
 
 Tables, records, structure, SQL console — and nothing was added to your `compose.yaml`, nothing was installed on your machine. When you're done, the container removes itself thanks to `--rm`.
 
@@ -124,9 +126,13 @@ $ docker run -d --rm --name phpmyadmin --network joomla_default  --link joomla-j
 
 To open phpmyadmin, start your browser and navigate to `http://127.0.0.1:8089` since we have defined port `8089` here.
 
-![phpmyadmin](./images/phpmyadmin.webp)
+<BrowserWindow url="http://127.0.0.1:8089">
+  ![phpmyadmin](./images/phpmyadmin.webp)
+</BrowserWindow>
 
-![List of databases](./images/phpmyadmin_databases.webp)
+<BrowserWindow url="http://127.0.0.1:8089">
+  ![List of databases](./images/phpmyadmin_databases.webp)
+</BrowserWindow>
 
 ## Conclusion
 

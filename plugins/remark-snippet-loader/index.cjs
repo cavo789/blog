@@ -29,6 +29,18 @@ const extensionToLang = {
   // Add more as needed
 };
 
+// Resolves a `source="…"` attribute the same way for every consumer: a
+// `./`/`../`-prefixed path is relative to the file that carries the
+// attribute, anything else is relative to the project root. Exported so the
+// Markdown-export plugin (plugins/markdown-export-plugin/degrade.cjs) can
+// inline the very same files without re-deriving this rule.
+function resolveSourcePath(sourcePath, currentFileDir, projectRoot = process.cwd()) {
+  if (sourcePath.startsWith("./") || sourcePath.startsWith("../")) {
+    return path.resolve(currentFileDir, sourcePath);
+  }
+  return path.resolve(projectRoot, sourcePath);
+}
+
 function snippetLoader() {
   return (tree, vfile) => {
     // The absolute path of the currently processed .mdx/blog/doc file
@@ -45,13 +57,7 @@ function snippetLoader() {
       if (!sourceAttr || typeof sourceAttr.value !== "string") return;
 
       const sourcePath = sourceAttr.value;
-      let absolutePath;
-
-      if (sourcePath.startsWith("./") || sourcePath.startsWith("../")) {
-        absolutePath = path.resolve(currentFileDir, sourcePath);
-      } else {
-        absolutePath = path.resolve(projectRoot, sourcePath);
-      }
+      const absolutePath = resolveSourcePath(sourcePath, currentFileDir, projectRoot);
 
       // Terminal: inject the file content as a text child of the node.
       // This reproduces exactly what <Terminal>...inline content...</Terminal> does,
@@ -170,5 +176,10 @@ function snippetLoader() {
     });
   };
 }
+
+// Attached (not a named export) so the default-import used by
+// docusaurus.config.js (`beforeDefaultRemarkPlugins: [remarkSnippetLoader, …]`)
+// keeps seeing a plain callable plugin factory.
+snippetLoader.resolveSourcePath = resolveSourcePath;
 
 module.exports = snippetLoader;

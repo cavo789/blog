@@ -83,7 +83,9 @@ Ok, nothing really difficult until now. We'll create the image by running `docke
 
 Once built, we can surf to `http://localhost:8080` and ... ouch.
 
-![Forbidden](./images/forbidden.webp)
+<BrowserWindow url="http://localhost:8080">
+  ![Forbidden](./images/forbidden.webp)
+</BrowserWindow>
 
 **And this is totally normal.** Remember, your current folder only contains actually the four files created by `docker init`.
 

@@ -34,9 +34,13 @@ Here they are, in full:
 
 Surf to `http://127.0.0.1:8080` and WordPress greets you with its installation wizard:
 
-![Running WordPress](./images/run_wp.webp)
+<BrowserWindow url="http://127.0.0.1:8080">
+  ![Running WordPress](./images/run_wp.webp)
+</BrowserWindow>
 
-![Installing WordPress](./images/installing_wordpress.webp)
+<BrowserWindow url="http://127.0.0.1:8080">
+  ![Installing WordPress](./images/installing_wordpress.webp)
+</BrowserWindow>
 
 <AlertBox variant="info" title="Error establishing a database connection">
 If you get `Error establishing a database connection`, please wait a little before refreshing the web page. It means MySQL / Maria wasn't yet ready to handle the connection.
@@ -102,7 +106,9 @@ $ docker run -d --rm --network wordpress --name phpmyadmin -e PMA_HOST=db_wordpr
 
 By surfing to `http://127.0.0.1:8089`, you can connect to the database. Credentials to use for the connection are `wpuser` / `example`.
 
-![phpmyadmin](./images/phpmyadmin.webp)
+<BrowserWindow url="http://127.0.0.1:8089">
+  ![phpmyadmin](./images/phpmyadmin.webp)
+</BrowserWindow>
 
 ## Remove containers
 

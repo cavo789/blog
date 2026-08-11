@@ -162,7 +162,9 @@ Run `docker compose up --detach` to download the `open-webui` image (~1.7G) and 
 
 Now, simply surf to `http://localhost:4000` and you'll have your interface and, you can start to interact with your local LLM.
 
-![Asking for suggestions for a gift for my wife](./images/open_webui.webp)
+<BrowserWindow url="http://localhost:4000">
+  ![Asking for suggestions for a gift for my wife](./images/open_webui.webp)
+</BrowserWindow>
 
 Pay attention top left: you can see there the list of installed models.
 

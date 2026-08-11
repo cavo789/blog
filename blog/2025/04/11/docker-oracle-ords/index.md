@@ -164,7 +164,6 @@ At this stage, we've installed ORDS, configured our database to use it and we've
   <img
     alt="ORDS Welcome page"
     src={require("./images/ords_welcome_page.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -179,7 +178,6 @@ Use `hr` and `admin`, our custom user, for the login page:
   <img
     alt="ORDS login page"
     src={require("./images/ords_login.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -271,7 +269,6 @@ The last part is to jump now in the ORDS website (`http://localhost:8181/ords/hr
   <img
     alt="There is one object in the AUTOREST area"
     src={require("./images/ords_autorest_1.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -281,7 +278,6 @@ Click on that area and you'll see the object (which is a view) we'll REST enable
   <img
     alt="Employees is AUTOREST enabled"
     src={require("./images/ords_employees_is_enabled.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -291,7 +287,6 @@ Look at the *Open in a new tab* icon on the image above. Click on that button an
   <img
     alt="Getting the list of employees as JSON REST answer"
     src={require("./images/getting_employees_as_json_browser.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -322,7 +317,6 @@ Now, by refreshing `http://localhost:8181/ords/hr/open-api-catalog/` again, you'
   <img
     alt="Accessing the metadata-catalog"
     src={require("./images/metadata_catalog.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -334,7 +328,6 @@ Go to `http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop` or, from the hambu
   <img
     alt="REST dashboard"
     src={require("./images/rest_dashboard.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -360,7 +353,6 @@ By accessing a "full" page like `http://localhost:8181/ords/hr/employees/`, we'l
   <img
     alt="Pagination"
     src={require("./images/pagination.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -391,7 +383,6 @@ For instance, who earn more than 20,000€ as salary? `http://localhost:8181/ord
   <img
     alt="Who earns more than 20k"
     src={require("./images/salary_more_20000.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -403,7 +394,6 @@ To find all employees called `Steven`: `http://localhost:8181/ords/hr/employees/
   <img
     alt="Steven"
     src={require("./images/firstname_is_steven.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -415,7 +405,6 @@ Employees with the pattern `alex` in their first name: `http://localhost:8181/or
   <img
     alt="Contains Alex"
     src={require("./images/contains_alex.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -425,7 +414,6 @@ Who is working as ICT? Here the like operator will be the one to use: `http://lo
   <img
     alt="Who works for IT"
     src={require("./images/starting_with_it.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -437,7 +425,6 @@ We can also use AND like in this example: `http://localhost:8181/ords/hr/employe
   <img
     alt="Contains Alex and earn more than 5,000"
     src={require("./images/alex_5000.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -452,7 +439,6 @@ The following URL `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like"
   <img
     alt="Using a combination of filters"
     src={require("./images/filtering_complex.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -468,7 +454,6 @@ To sort on the first name desc and, then based on the salary (the higher first):
   <img
     alt="Ordering on the firstname and salary DESC"
     src={require("./images/ordering.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 

@@ -37,7 +37,9 @@ Just one command, run from the folder containing your static site: `docker run -
 
 Once done, just start your preferred browser and surf to `http://localhost:8080`. Bingo!
 
-![Your local website](./images/localhost.webp)
+<BrowserWindow url="http://localhost:8080">
+  ![Your local website](./images/localhost.webp)
+</BrowserWindow>
 
 You've a fully working site. Crazy no?
 

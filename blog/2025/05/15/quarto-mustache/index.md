@@ -95,7 +95,6 @@ And now, we're ready to copy/paste the file `documentation/canvas.md` to `docume
   <img
     alt="Our Canvas feature"
     src={require("./images/html_canvas.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -109,7 +108,6 @@ and render our site again by running again `docker run -it --rm -v .:/public -w 
   <img
     alt="Our second feature"
     src={require("./images/html_builder.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 

@@ -40,7 +40,6 @@ Here's the result: surf to `http://127.0.0.1:82` and get your first JSON answer.
   <img
     alt="Hello World"
     src={require("./images/hello_world.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -99,7 +98,6 @@ Please jump to `http://127.0.0.1:82/docs` and you'll see it in action:
   <img
     alt="Automated documentation - Swagger UI"
     src={require("./images/doc.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -109,7 +107,6 @@ There is a second, alternative template called ReDoc. You can access it using th
   <img
     alt="Automated documentation - Redoc"
     src={require("./images/redoc.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -189,7 +186,6 @@ Go back to your browser and surf to the `jokes` endpoint (`http://127.0.0.1:82/j
   <img
     alt="Getting a random joke"
     src={require("./images/random_joke.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -201,7 +197,6 @@ If you want a specific one, just put an ID after like `http://127.0.0.1:82/jokes
   <img
     alt="A specific joke"
     src={require("./images/specific_joke.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -218,7 +213,6 @@ And looking back to the documentation (`http://127.0.0.1:82/docs`); we've now th
   <img
     alt="Swagger UI - With new routes"
     src={require("./images/doc_with_jokes.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 

@@ -67,7 +67,9 @@ In just six seconds, memos has been installed on my machine and a container has 
 
 Go to `http://localhost:5230` and you'll see the website is already running:
 
-![First run](./images/first_run.webp)
+<BrowserWindow url="http://localhost:5230">
+  ![First run](./images/first_run.webp)
+</BrowserWindow>
 
 <AlertBox variant="info">
 See on the bottom left; it's possible to select another language; French is supported f.i.
@@ -76,7 +78,9 @@ See on the bottom left; it's possible to select another language; French is supp
 
 I'll create my account (`admin/admin` since I'm working on my localhost) and I'm ready to create my first note. It took me less than one minute until now.
 
-![The memos homepage](./images/homepage.webp)
+<BrowserWindow url="http://localhost:5230">
+  ![The memos homepage](./images/homepage.webp)
+</BrowserWindow>
 
 Click in the `Any thoughts...` edit box and start to type your thought... For instance:
 
@@ -88,13 +92,17 @@ Click in the `Any thoughts...` edit box and start to type your thought... For in
 - [ ] Develop user login endpoint (`/login`) with JWT token generation.
 ```
 
-![My first note](./images/first_note.webp)
+<BrowserWindow url="http://localhost:5230">
+  ![My first note](./images/first_note.webp)
+</BrowserWindow>
 
 By pressing the `Save` button, the note is created. It's clean and, tomorrow, oh nice, oh yes, that's true, I need to do these three things.
 
 Imagine it's tomorrow and I've achieved the first one, I just need to check the box and it's automatically saved:
 
-![The first task is done](./images/first_task_is_done.webp)
+<BrowserWindow url="http://localhost:5230">
+  ![The first task is done](./images/first_task_is_done.webp)
+</BrowserWindow>
 
 I can still edit, pin, delete, archive, ... the task using the three-dots button:
 
@@ -124,13 +132,17 @@ Write the missing documentation for the new user authentication module, covering
 Review the Dockerfile for the user authentication service to ensure optimal image size and security practices. #docker #python
 ```
 
-![A few more tasks](./images/few_tasks.webp)
+<BrowserWindow url="http://localhost:5230">
+  ![A few more tasks](./images/few_tasks.webp)
+</BrowserWindow>
 
 ## Filtering using tags
 
 When you've used tags, you'll see them immediately bottom left under `Tags`. Simply click on a tag to filter on it. You can click on more than one if you want. In the example below, I've three notes for `Python` and just one with the Docker tag:
 
-![Filtering using tags](./images/filtering_using_tags.webp)
+<BrowserWindow url="http://localhost:5230/?filter=tagSearch%3Apython%2CtagSearch%3Adocker">
+  ![Filtering using tags](./images/filtering_using_tags.webp)
+</BrowserWindow>
 
 ## Creating shortcuts
 

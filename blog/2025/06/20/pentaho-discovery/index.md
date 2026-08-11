@@ -41,7 +41,6 @@ Here is exactly what we're building: a flow that reads an Excel file, then loads
   <img
     alt="The records have been successfully loaded in PostgreSQL"
     src={require("./images/successfully_loaded_in_postgres.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -91,7 +90,6 @@ Let's move on and install it under Linux; it's really easy to do.
   <img
     alt="Download Pentaho"
     src={require("./images/download.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -160,7 +158,6 @@ As you've seen, we've already set up a pgAdmin interface; we can open it by goin
   <img
     alt="pgAdmin login screen"
     src={require("./images/pgadmin_login.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -174,7 +171,6 @@ Give a name to the server then, in the `Connection` tab, fill in as below:
   <img
     alt="Creation of a server in pgAdmin"
     src={require("./images/pgadmin_new_server.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -184,7 +180,6 @@ As you can see on the image below, during the creation of our PostgreSQL contain
   <img
     alt="The database exists but without any table right now"
     src={require("./images/pgadmin_database.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -287,7 +282,6 @@ Let's verify thanks to pgAdmin:
   <img
     alt="The table has been created"
     src={require("./images/pgadmin_table_created.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 

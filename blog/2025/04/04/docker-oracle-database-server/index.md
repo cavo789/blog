@@ -69,7 +69,6 @@ Please surf on [https://container-registry.oracle.com/ords/ocr/ba/database/enter
   <img
     alt="Make sure to be logged in"
     src={require("./images/oracle_signin.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -77,7 +76,6 @@ Please surf on [https://container-registry.oracle.com/ords/ocr/ba/database/enter
   <img
     alt="Oracle sign in page"
     src={require("./images/oracle_signin_page.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -89,7 +87,6 @@ Once your user has been validated (after reception of an email); go back to the 
   <img
     alt="Creation of your Auth Token"
     src={require("./images/auth_token.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -103,7 +100,6 @@ Please go to [https://container-registry.oracle.com/ords/ocr/ba/database](https:
   <img
     alt="Click on enterprise"
     src={require("./images/oracle_enterprise.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -113,7 +109,6 @@ Being logged in, please click on the `Continue` button that appears on the right
   <img
     alt="Accepting the license terms"
     src={require("./images/accepting_license.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -125,7 +120,6 @@ Optional, by going back to [https://container-registry.oracle.com/ords/ocr/ba/da
   <img
     alt="Accepting License Agreement"
     src={require("./images/accepted_license.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 
@@ -372,7 +366,6 @@ Connect to it using `system` / `admin` and `orclpdb1` as container name.
   <img
     alt="Oracle Enterprise Manager Database Express"
     src={require("./images/oem_express.webp").default}
-    className="screenshot"
   />
 </BrowserWindow>
 

@@ -168,6 +168,7 @@ const config = {
     ["./plugins/admin-data-plugin/index.cjs", {}],
     ["./plugins/ascii-injector/index.mjs", { bannerPath: "src/data/banner.txt" }],
     "./plugins/sitemap-easter-egg/index.mjs",
+    "./plugins/markdown-export-plugin/index.cjs",
     require.resolve("docusaurus-plugin-image-zoom"),
     ["docusaurus-plugin-pagefind", {}],
   ],

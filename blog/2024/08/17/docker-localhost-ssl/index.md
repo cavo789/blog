@@ -60,7 +60,9 @@ $ docker run -d --name static-site -p 80:80 -v ./src:/usr/local/apache2/htdocs h
 
 Once these commands have been fired, please jump to `http://localhost` and you'll get this:
 
-![Website running as http](./images/running_http.webp)
+<BrowserWindow url="http://localhost">
+  ![Website running as http](./images/running_http.webp)
+</BrowserWindow>
 
 <AlertBox variant="info" title="Crazy easy, no?" />
 
@@ -108,7 +110,9 @@ If we take a look on Docker Desktop, list of containers, we'll see our project (
 
 By accessing `http://localhost` with the browser, we'll get our site, up and running:
 
-![Website running as http](./images/running_http.webp)
+<BrowserWindow url="http://localhost">
+  ![Website running as http](./images/running_http.webp)
+</BrowserWindow>
 
 Okay, so now we have confirmation that the three files we created above work and allow us http access. Let's go further with https.
 
@@ -212,7 +216,9 @@ We've enabled our site to be able to run on port 80 (http) and 443 (https).
 
 Now that everything is in place, just go to `https://localhost/` and you'll get the website:
 
-![Website running as https](./images/running_https.webp)
+<BrowserWindow url="https://localhost/">
+  ![Website running as https](./images/running_https.webp)
+</BrowserWindow>
 
 Because we used `mkcert -install` earlier, the browser already trusts the local CA that signed our certificate — so the padlock is green and there's no security warning.
 

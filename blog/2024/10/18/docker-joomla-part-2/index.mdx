@@ -61,7 +61,9 @@ That's the whole deployment: Docker pulls Joomla, PHP, Apache and MySQL, wires t
 a minute later the site is reachable in the browser — no manual database setup, no editing PHP
 files by hand.
 
-![Joomla installer](./images/joomla_installer.webp)
+<BrowserWindow url="http://127.0.0.1:8080/installation/index.php">
+  ![Joomla installer](./images/joomla_installer.webp)
+</BrowserWindow>
 
 <AlertBox variant="info" title="Hey! did you notice?">
 We've created our Joomla website by **just running one command**. Don't trust? Open your browser and surf to `http://127.0.0.1:8080`.
@@ -479,7 +481,9 @@ Go to your console and run `cd project_1` to jump in the first project's folder 
 
 By going to `http://127.0.0.1:8081/administrator/` we've our first admin page (as you can see, the site is well called **Joomla_5** as expected).
 
-![Our first site is running under Joomla 5.2](./images/project_1.webp)
+<BrowserWindow url="http://127.0.0.1:8081/administrator/">
+  ![Our first site is running under Joomla 5.2](./images/project_1.webp)
+</BrowserWindow>
 
 <AlertBox variant="caution">
 Please really be careful to specify the port number of our project. For project 1, the port number is `8081`. As, in fact, we wished by setting the variable `WEB_PORT`.
@@ -505,7 +509,9 @@ Save the file and run `make up` to start the second website. Go to `http://127.0
 
 <Terminal typewriter>$ make up</Terminal>
 
-![Our two Joomla projects are running](./images/project_1_2.webp)
+<BrowserWindow url="http://127.0.0.1:8082/administrator">
+  ![Our two Joomla projects are running](./images/project_1_2.webp)
+</BrowserWindow>
 
 <AlertBox variant="info" title="Two Joomla sites having two different PHP and MySQL versions and ... no conflict!">
 Did you see? We've two websites running on our computer. The first one is a Joomla 5.2 and the second one is Joomla 4.0.
@@ -531,7 +537,9 @@ Save the file and run `make up && make start` to start the third website. Go to 
 
 <Terminal typewriter>$ make up && make start</Terminal>
 
-![Our three Joomla projects are active at the same time on our development machine](./images/project_1_2_3.webp)
+<BrowserWindow url="http://127.0.0.1:8083/administrator">
+  ![Our three Joomla projects are active at the same time on our development machine](./images/project_1_2_3.webp)
+</BrowserWindow>
 
 <AlertBox variant="info" title="Just wow no?">
 Three different Joomla versions, MySQL and too PHP and no conflict at all!
