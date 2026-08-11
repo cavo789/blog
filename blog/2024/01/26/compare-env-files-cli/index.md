@@ -32,21 +32,11 @@ Why? Because the variable(s) you've added have been added in **your local `.env`
 
 As you know, you have to create the variables in the `.env.example` file too but let's be honest, nobody thinks about it.
 
-*Two companion articles: <Link to="/blog/update-env-files-cli">Batch edit of environment file</Link> once you've found the missing keys, and <Link to="/blog/bash-load-env">Bash - Loading environment variables from a file</Link> to consume them in your scripts.*
-
 <!-- truncate -->
 
-There are some tools that allow comparing two files like `diff` (see <Link to="/blog/linux-diff-file-folder">Linux - Comparing two folders/files in the console</Link> for the general case) but not really the best here since:
+## The one-liner and its output
 
-1. We don't care about comments and empty lines. If a variable has been commented, we just need to ignore it.
-2. We don't care about the position in the file where the variable is declared. If `APP_ENV = local` is on the first line, in the middle of the file or just before the last line, we don't care about it.
-3. We can also ignore some variables that we know should be different, like `APP_KEY` f.i.
-
-Let's try... Below we'll create the file `.env.example` with two lines then copy it to `.env` and just add a new line in `.env.example`. Finally, we'll sort `.env.example` so the order will differ with `.env`.
-
-<Terminal typewriter source="./files/terminal-1.txt" />
-
-Now that we have our two files with some differences, we can run this command:
+Copy this in your console, in the folder holding the two files:
 
 ```bash
 (
@@ -61,16 +51,50 @@ Now that we have our two files with some differences, we can run this command:
 )
 ```
 
-`diff` will compare the two files, but not directly the files themselves — rather their content, after we've first removed empty and commented lines and sorted the lines.
+On two `.env` files that have drifted apart, here is what comes back:
 
-The flag `--suppress-common-lines -y` will display the result in two columns (`-y`) and only differences (`--suppress-common-lines`).
+```diff
+Left side: .env                   Right side: .env.example
+ALLOW_FEATURE_DO_THIS = true    <
+DATABASE_TYPE = pgsql           | CACHE_DRIVER = redis
+                                > DATABASE_TYPE = mysql
+```
 
-Once the `diff` is made, the command ignores the `APP_KEY` variable (in our example); so, yes, the expected result is:
+How to read:
+
+- `ALLOW_FEATURE_DO_THIS` is only present in `.env`,
+- `DATABASE_TYPE` is initialized to `pgsql` in `.env` and to `mysql` in `.env.example`,
+- `CACHE_DRIVER` is only present in `.env.example` and
+- all other lines are strictly identical (remember we've ignored commented and empty lines)
+
+Three lines of output, and the answer to "what did I forget to report in `.env.example`?" is right there.
+
+## Why plain `diff` isn't enough
+
+`diff` alone (see <Link to="/blog/linux-diff-file-folder">Linux - Comparing two folders/files in the console</Link> for the general case) would drown you in noise, because:
+
+1. We don't care about comments and empty lines. If a variable has been commented, we just need to ignore it.
+2. We don't care about the position in the file where the variable is declared. If `APP_ENV = local` is on the first line, in the middle of the file or just before the last line, we don't care about it.
+3. We can also ignore some variables that we know should be different, like `APP_KEY` f.i.
+
+That's exactly what the three helpers around `diff` are doing: `grep -v -E '^#|^$'` drops comments and blank lines, `sort` neutralizes the order, and the final `grep -v 'APP_KEY'` removes the variables you already know will differ.
+
+The flag `--suppress-common-lines -y` does the rest: display the result in two columns (`-y`) and only the differences (`--suppress-common-lines`).
+
+## Reproduce it
+
+Let's try... Below we'll create the file `.env.example` with two lines then copy it to `.env` and just add a new line in `.env.example`. Finally, we'll sort `.env.example` so the order will differ with `.env`.
+
+<Terminal typewriter source="./files/terminal-1.txt" />
+
+Now that we have our two files with one single difference, running the command above gives:
 
 ```diff
 Left side: .env                   Right side: .env.example
                                 > CACHE_DRIVER = redis
 ```
+
+The column on the left represents the first file (in our example `.env`) while the column on the right is for the second file (`.env.example`). So: `CACHE_DRIVER` exists only in `.env.example`.
 
 For the illustration, we can now add a new key but just in `.env` (real world situation: I'm coding a new feature and I add a variable like a switch on/off)
 
@@ -86,27 +110,17 @@ ALLOW_FEATURE_DO_THIS = true    <
                                 > CACHE_DRIVER = redis
 ```
 
-The column on the left represents the first file (in our example `.env`) while the column on the right is for the second file (`.env.example`).
-
-Last sample:
+Last sample, the same key with two different values on each side:
 
 <Terminal typewriter>
 $ echo 'DATABASE_TYPE = pgsql' >> .env
 $ echo 'DATABASE_TYPE = mysql' >> .env.example
 </Terminal>
 
-And the result of the `diff` command:
+And you're back to the three-line output shown at the top of this article, where the `|` marker appears: same key, different values.
 
-```diff
-Left side: .env                   Right side: .env.example
-ALLOW_FEATURE_DO_THIS = true    <
-DATABASE_TYPE = pgsql           | CACHE_DRIVER = redis
-                                > DATABASE_TYPE = mysql
-```
+## Conclusion
 
-How to read:
+Nobody thinks about updating `.env.example` — that's the whole problem, and no amount of good intentions fixes it. A one-liner you can paste before every commit does, because it takes two seconds and answers with three lines or nothing at all.
 
-- `ALLOW_FEATURE_DO_THIS` is only present in `.env`,
-- `DATABASE_TYPE` is initialized to `pgsql` in `.env` and to `mysql` in `.env.example`,
-- `CACHE_DRIVER` is only present in `.env.example` and
-- all other lines are strictly identical (remember we've ignored commented and empty lines)
+Once you know which keys are missing, the next step is to add them everywhere without editing each file by hand: <Link to="/blog/update-env-files-cli">Batch edit of environment file</Link>. And to consume those variables from your scripts, see <Link to="/blog/bash-load-env">Bash - Loading environment variables from a file</Link>.

@@ -24,27 +24,48 @@ The returned information is a JSON representation of the object.
 
 One use case is to be able to retrieve the name of the network used by a given container.
 
-*Two concrete applications of exactly that: attaching a database UI to an existing container in <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Using Adminer, pgadmin or phpmyadmin</Link>, and diagnosing why two containers can't talk to each other in <Link to="/blog/docker-networking-troubleshooting">Troubleshooting for Docker containers</Link>. Both rely on <Link to="/blog/linux-jq">`jq`</Link> to read the JSON.*
-
 <!-- truncate -->
 
-## Some preparation work
+## Get the network name in one line
 
-<AlertBox variant="note" title="Skip this step if you already have a running container" />
+You have a container running and you want to know which network it is attached to. One command:
 
-For the illustration, please start a Linux shell and run `mkdir -p /tmp/inspect && cd $_`.
+<Terminal typewriter>
+$ docker inspect phpinfo | jq -r '.[0].NetworkSettings.Networks'
+</Terminal>
 
-Create a new `index.php` file with this content:
+You'll get something like this:
 
-<Snippet filename="index.php" source="./files/index.php" />
+```json
+{
+  "bridge": {
+    "IPAMConfig": null,
+    "Links": null,
+    "Aliases": null,
+    "NetworkID": "efd8b4ee99a7d4283cdfecd122a9357ea8415d3f7cb60b53bda36f1f08d76847",
+    "EndpointID": "58ff9063ffdb295ed5b9935a036c2f32225312a3290fdcd90eda96e5f5b6c12b",
+    "Gateway": "172.17.0.1",
+    "IPAddress": "172.17.0.3",
+    "IPPrefixLen": 16,
+    "IPv6Gateway": "",
+    "GlobalIPv6Address": "",
+    "GlobalIPv6PrefixLen": 0,
+    "MacAddress": "02:42:ac:11:00:03",
+    "DriverOpts": null
+  }
+}
+```
 
-Then run `docker run --name phpinfo -d -p 8080:80 -u ${UID}:${GID} -v "$PWD":/var/www/html php:8.2-apache` to create a new Docker container (you can surf to `http://localhost:8080` to see it in action).
+There it is: the network name is the key (`bridge` here), and right below it the `Gateway` and `IPAddress` you usually need in the same breath. Replace `phpinfo` with your own container name and you're done.
 
-When running `docker container list` we can retrieve our container named `phpinfo`.
+<AlertBox variant="info" title="jq">
+If you don't have the `jq` binary yet, please read the <Link to="/blog/linux-jq">The jq utility for Linux</Link> article.
 
-## Run docker inspect on our container
+</AlertBox>
 
-Now by running `docker inspect <container_name>` (in our case, `docker inspect phpinfo`), we'll get a very detailed JSON representation:
+## The full inspect output
+
+That one-liner is just a filter on a much bigger answer. Running `docker inspect <container_name>` (in our case, `docker inspect phpinfo`) without `jq` gives a very detailed JSON representation:
 
 ```json
 [
@@ -81,37 +102,24 @@ Now by running `docker inspect <container_name>` (in our case, `docker inspect p
 ]
 ```
 
-The name of the used network can be retrieved in the `NetworkSettings.Networks` property.
+The highlighted lines are the ones the `jq` filter above walks through: `NetworkSettings`, then `Networks`. Everything else in that dump — mounts, environment, entrypoint, state, health — is available the same way, by pointing `jq` at another property.
 
-You can retrieve it more easily using this command:
+<Details label="No container running? Create one to play with.">
 
-<Terminal typewriter>
-$ docker inspect phpinfo | jq -r '.[0].NetworkSettings.Networks'
-</Terminal>
+For the illustration, please start a Linux shell and run `mkdir -p /tmp/inspect && cd $_`.
 
-You'll get something like this:
+Create a new `index.php` file with this content:
 
-```json
-{
-  "bridge": {
-    "IPAMConfig": null,
-    "Links": null,
-    "Aliases": null,
-    "NetworkID": "efd8b4ee99a7d4283cdfecd122a9357ea8415d3f7cb60b53bda36f1f08d76847",
-    "EndpointID": "58ff9063ffdb295ed5b9935a036c2f32225312a3290fdcd90eda96e5f5b6c12b",
-    "Gateway": "172.17.0.1",
-    "IPAddress": "172.17.0.3",
-    "IPPrefixLen": 16,
-    "IPv6Gateway": "",
-    "GlobalIPv6Address": "",
-    "GlobalIPv6PrefixLen": 0,
-    "MacAddress": "02:42:ac:11:00:03",
-    "DriverOpts": null
-  }
-}
-```
+<Snippet filename="index.php" source="./files/index.php" />
 
-<AlertBox variant="info" title="jq">
-If you don't have the `jq` binary yet, please read the <Link to="/blog/linux-jq">The jq utility for Linux</Link> article.
+Then run `docker run --name phpinfo -d -p 8080:80 -u ${UID}:${GID} -v "$PWD":/var/www/html php:8.2-apache` to create a new Docker container (you can surf to `http://localhost:8080` to see it in action).
 
-</AlertBox>
+When running `docker container list` we can retrieve our container named `phpinfo`.
+
+</Details>
+
+## Conclusion
+
+`docker inspect` answers with everything, which is exactly why it feels useless the first time you run it. Paired with `jq` and a property path, it becomes the fastest way to get one precise fact about a running container — and the network name is the one you'll need most often.
+
+Two concrete applications of exactly that: attaching a database UI to an existing container in <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Using Adminer, pgadmin or phpmyadmin</Link>, and diagnosing why two containers can't talk to each other in <Link to="/blog/docker-networking-troubleshooting">Troubleshooting for Docker containers</Link>.

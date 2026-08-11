@@ -25,35 +25,13 @@ Using `xmlstarlet` you can beautify XML output but also filter it like f.i. show
 
 <!-- truncate -->
 
-To verify if `xmlstarlet` is already installed on your system, simply run `which xmlstarlet`. If you get `xmlstarlet not found` as an answer, please install it: `sudo apt-get update && sudo apt-get -y install xmlstarlet`
+## A wall of XML in, one word out
 
-## Let's play
-
-For the illustration, please start a Linux shell and run `mkdir -p /tmp/xmlstarlet && cd $_`.
-
-Create a new file called `data.xml` with this content:
+Here is the file we'll play with, `data.xml`, exactly as a machine would have written it; everything on the same line, no format at all:
 
 <Snippet filename="data.xml" source="./files/data.xml" />
 
-As you can see, our XML has no format, everything on the same line.
-
-We can beautify it using the `format` action:
-
-<Terminal typewriter>
-$ cat "data.xml" | xmlstarlet format --indent-spaces 4
-</Terminal>
-
-<Snippet filename="data.xml" source="./files/data.part2.xml" />
-
-We can also use `Xpath` to specify our desired output:
-
-<Terminal typewriter source="./files/terminal-1.txt" />
-
-If you don't know XPath yet, we've used `"/bookstore/book/title"` because our XML is constructed like that. As you can see below, our root node is called `bookstore`, then we have one or more `book` and each book has a `title`.
-
-<Snippet filename="data.xml" source="./files/data.part3.xml" />
-
-We can also make some filtering like getting books for children:
+Now let's ask it a question: *give me the title of the book filed under the `children` category*.
 
 <Terminal typewriter>
 $ cat "data.xml" | xmlstarlet sel -t -v "//book[@category='children']/title"
@@ -61,8 +39,48 @@ $ cat "data.xml" | xmlstarlet sel -t -v "//book[@category='children']/title"
 Harry Potter
 </Terminal>
 
-And here, the XPath expression `//book[@category='children']/title` means: give me each `book`; it doesn't matter where the book node is located; but only if it has an attribute named `category` and whose value is `children`. Then, if found, display its `title`.
+One command, one answer, and not a single line of parsing code.
 
-<Snippet filename="data.xml" source="./files/data.part4.xml" />
+## Beautifying the file
 
-Read the [official documentation](https://xmlstar.sourceforge.net/docs.php) to learn more about xmlstarlet.
+The second thing you'll use every day: making that wall readable, using the `format` action.
+
+<Terminal typewriter>
+$ cat "data.xml" | xmlstarlet format --indent-spaces 4
+</Terminal>
+
+<Snippet title="The output of the format action" source="./files/data.part2.xml" />
+
+## Installing xmlstarlet
+
+To verify if `xmlstarlet` is already installed on your system, simply run `which xmlstarlet`. If you get `xmlstarlet not found` as an answer:
+
+<Prerequisite
+  name="xmlstarlet"
+  install="sudo apt-get update && sudo apt-get -y install xmlstarlet"
+  check="xmlstarlet --version"
+  checkOutput={`\n1.6.1`}
+  typewriter
+/>
+
+## Let's play
+
+To reproduce the two commands above on your machine, please start a Linux shell and run `mkdir -p /tmp/xmlstarlet && cd $_`, then create a new file called `data.xml` with the content displayed at the top of this article.
+
+## Understanding the XPath expression
+
+An XPath expression is just a path in the tree. Our root node is called `bookstore`, then we have one or more `book` and each book has a `title`:
+
+<Snippet title="How our XML is constructed" source="./files/data.part3.xml" />
+
+Walk that path from the root and you get every title of the file:
+
+<Terminal typewriter source="./files/terminal-1.txt" />
+
+The expression used at the beginning of this article, `//book[@category='children']/title`, is the filtering version: give me each `book`; it doesn't matter where the book node is located (that's the `//` prefix); but only if it has an attribute named `category` and whose value is `children`. Then, if found, display its `title`.
+
+## Conclusion
+
+Two actions cover most of the day-to-day needs: `format` to make an XML file human-readable, and `sel -t -v` with an XPath expression to pull exactly the node you need out of it; both usable in a pipe, so both usable in a shell script.
+
+Read the [official documentation](https://xmlstar.sourceforge.net/docs.php) to learn more about xmlstarlet, and if your next file is a `.json` one, <Link to="/blog/linux-jq">the jq utility for Linux</Link> is the very same story with a different syntax.

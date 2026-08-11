@@ -23,11 +23,38 @@ When you're running a Docker container on a different network than the standard 
 
 Let's say, you're running a MySQL database on a network called `my_network` and you wish to be able start a second container like [phpMyAdmin](https://hub.docker.com/_/phpmyadmin) (see <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Using Adminer, pgadmin or phpmyadmin to access your Docker database container</Link>) and get access to the database, then you need to use the `--network` CLI option when running the second container using `docker run`.
 
-*And when everything looks correctly configured but the connection still fails, <Link to="/blog/docker-networking-troubleshooting">Troubleshooting for Docker containers - Accessing the other one</Link> walks through the diagnosis layer by layer.*
-
 Now, imagine the first container is a web application and the second container should be able to access its web page and, too, reuse the same alias?
 
 <!-- truncate -->
+
+## The two-line fix
+
+Here is the whole answer, at the top of the article rather than at the end. Add `extra_hosts` to the service that needs to reach your host alias:
+
+<Snippet filename="compose.yaml" source="./files/compose.part3.yaml" />
+
+Jump into the container and look at what Docker did with it:
+
+<Terminal typewriter source="./files/terminal-1.txt" />
+
+```html
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<style type="text/css">
+body {background-color: #fff; color: #222; font-family: sans-serif;}
+pre {margin: 0; font-family: monospace;}
+[...]
+```
+
+The alias `my_site.local` is now a real line in the container's `/etc/hosts`, and `curl http://my_site.local:8080` returns the page served by the *other* container.
+
+## Why it works
+
+- **Both containers must share a network.** A container on the default `bridge` network simply cannot reach a container running on another one — that's a protection, not a bug.
+- **`172.20.0.1` is the gateway of that network**, i.e. the address from which containers see your host machine. It's the value we'll retrieve with `docker network inspect` further down.
+- **Your host's hosts file is invisible from inside a container.** `extra_hosts` is the way to re-declare the alias where the container can see it: Docker writes the line into `/etc/hosts` at startup.
+
+The rest of this article builds the whole scenario from scratch, including the two failures you'd hit on the way.
 
 ## Some preparation work
 
@@ -86,6 +113,8 @@ $ curl http://127.0.0.1:8080
 curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Couldn't connect to server
 </Terminal>
 
+## When it doesn't work (and why)
+
 <AlertBox variant="danger" title="It's not working... **as expected**">
 We can confirm our container is not able to access our local site `http://127.0.0.1:8080` while that website is well configured. If you exit the container and try to refresh the website, it's working well.
 
@@ -102,10 +131,7 @@ Please edit your `compose.yaml` file like this:
 
 <Snippet filename="compose.yaml" source="./files/compose.part2.yaml" />
 
-<AlertBox variant="info" title="To be able to access a dockerized application, containers should be running on the same network">
-It is impossible for a container running on, f.i., the `bridge` (default) network to access a container running on another network. This is a protection against unwanted access. *Replace `my_network` by yours if you've a different one.*
-
-</AlertBox>
+*Replace `my_network` by yours if you've a different one.*
 
 ### We need to find the IP of the network
 
@@ -134,11 +160,7 @@ body {background-color: #fff; color: #222; font-family: sans-serif;}
 pre {margin: 0; font-family: monospace;}
 ```
 
-<AlertBox variant="info" title="Now it's working">
-And now, since we've started the second container on the same network, it works.
-</AlertBox>
-
-### Extra use case - aliases
+## Extra use case - aliases
 
 And now the final part, imagine you've defined an alias in the hosts file (for Windows, in file `C:\Windows\System32\drivers\etc\hosts`).
 
@@ -163,24 +185,10 @@ And **this is normal** since `my_site.local` is an alias defined on your host ma
 
 <Terminal typewriter source="./files/terminal-2.txt" />
 
-The last thing we need to do in this case is to edit our `compose.yaml` file and add the `extra_hosts` property:
-
-<Snippet filename="compose.yaml" source="./files/compose.part3.yaml" />
-
-Now, we can jump in the container for the last time, check the `/etc/hosts` file, we can now see our alias and thus, by running `curl http://mysite.local:8080` it will work.
-
-<Terminal typewriter source="./files/terminal-1.txt" />
-
-```html
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-<style type="text/css">
-body {background-color: #fff; color: #222; font-family: sans-serif;}
-pre {margin: 0; font-family: monospace;}
-[...]
-```
+The last thing we need to do in this case is to edit our `compose.yaml` file and add the `extra_hosts` property — the two lines shown at the very beginning of this article, now with the gateway IP we retrieved above. Jump in the container one last time, `cat /etc/hosts`, and the alias is there: `curl http://my_site.local:8080` works.
 
 ## Conclusion
 
-1. To be able to access a dockerized application from inside a second Docker container, both should be running on the same network and
-2. To be able to reuse the same alias on the host and inside a Docker container, we need to use the `extra_hosts` property to ask Docker to create these aliases automatically for us in the `/etc/hosts` file.
+The alias you've been typing for months in your browser is a host-machine thing. Nothing carries it into a container, and nothing tells you that's the problem — you just get `Could not resolve host` and start doubting your network. Two lines of `extra_hosts` pointing at the network gateway close the gap, and your `compose.yaml` now documents that dependency for whoever clones the project next.
+
+When everything looks correctly configured and the connection still fails, <Link to="/blog/docker-networking-troubleshooting">Troubleshooting for Docker containers - Accessing the other one</Link> walks through the diagnosis layer by layer.

@@ -26,9 +26,26 @@ Let's take a look...
 
 <!-- truncate -->
 
-In the <Link to="/blog/docker-joomla">Create your Joomla website using Docker</Link> article, we learned that if we need more than one Docker service (php/apache as well as mysql), we need to have a `compose.yaml` file. It's true and it's the easiest way to manage the application.
+## Three commands, one WordPress site
 
-But we can run Docker containers by hand and, in that case, no such file is needed. We'll learn this technique in this article.
+Here they are, in full:
+
+<Terminal typewriter source="./files/terminal-1.txt" />
+
+Surf to `http://127.0.0.1:8080` and WordPress greets you with its installation wizard:
+
+![Running WordPress](./images/run_wp.webp)
+
+![Installing WordPress](./images/installing_wordpress.webp)
+
+<AlertBox variant="info" title="Error establishing a database connection">
+If you get `Error establishing a database connection`, please wait a little before refreshing the web page. It means MySQL / Maria wasn't yet ready to handle the connection.
+
+</AlertBox>
+
+No `compose.yaml`, no `wp-config.php` to edit: a shared network lets the two containers talk to each other, and every setting WordPress needs is passed as an environment variable on the command line.
+
+In the <Link to="/blog/docker-joomla">Create your Joomla website using Docker</Link> article, we learned that as soon as we need more than one Docker service (php/apache as well as mysql), we need a `compose.yaml` file. It's true and it's the easiest way to manage the application in the long run — but for a throwaway site, running the containers by hand works just as well. Let's look at those three commands one by one.
 
 ## First step, we need a network
 
@@ -71,18 +88,9 @@ And now, we need a second container for WordPress itself. I propose to use the l
 $ docker run -d --name app_wordpress --hostname app_wordpress --network wordpress -p 8080:80 -e WORDPRESS_DB_HOST=db_wordpress -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=example wordpress:php8.3-apache
 </Terminal>
 
-The following command will run WordPress in an Apache container and make the site available at `http://127.0.0.1:8080`.
+That command runs WordPress in an Apache container and makes the site available at `http://127.0.0.1:8080` — the screen shown at the beginning of this article.
 
-As you can see, we don't need to pay attention to the `wp-config.php` file since we are setting environment variables in our `docker run` command.
-
-![Running WordPress](./images/run_wp.webp)
-
-![Installing WordPress](./images/installing_wordpress.webp)
-
-<AlertBox variant="info" title="Error establishing a database connection">
-If you get `Error establishing a database connection`, please wait a little before refreshing the web page. It means MySQL / Maria wasn't yet ready to handle the connection.
-
-</AlertBox>
+The `-p 8080:80` flag is the only one about your host machine: change `8080` if that port is already taken. All the others describe how WordPress reaches the database container, by its `--hostname`, over the `wordpress` network.
 
 ## Optional, start phpmyadmin
 
@@ -108,6 +116,4 @@ Or, by hand, go to your `Docker Desktop` interface, click on the `containers` ta
 
 As introduced, we just need three commands to create, from scratch, a new WordPress site on our disk. This takes just seconds (depending on the speed of your computer). Easy, no?
 
-*Two things to add right after: a <Link to="/blog/docker-volume">volume</Link>, so your site survives a `docker rm`, and <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Adminer, pgadmin or phpmyadmin</Link> to browse the database that was just created.*
-
-<Terminal typewriter source="./files/terminal-1.txt" />
+Keep in mind that everything here lives inside the containers: the day you run the removal commands above, the site is gone. If you want it to survive, the next thing to add is a <Link to="/blog/docker-volume">volume</Link>.

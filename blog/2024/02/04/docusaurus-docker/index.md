@@ -32,6 +32,34 @@ In this first article, we're going to learn how to install Docusaurus... ouch, s
 
 <!-- truncate -->
 
+## Three files, one command
+
+Three files in an empty folder — a `Dockerfile`, a `.dockerignore` and a `compose.yaml` — then:
+
+<Terminal typewriter>
+$ docker compose up --detach --build
+</Terminal>
+
+A few minutes later (only the first time), `http://localhost:3000` answers:
+
+<BrowserWindow url="http://localhost:3000">
+  ![Docusaurus homepage](./images/homepage.webp)
+</BrowserWindow>
+
+And the `Blog` menu lists the Markdown files sitting in the `blog` folder of your own machine:
+
+<BrowserWindow url="http://localhost:3000/blog">
+  ![Our posts](./images/posts.webp)
+</BrowserWindow>
+
+No Node.js installed, no `npm`, no `yarn`, no version conflict with whatever else you're working on.
+
+## Why it works
+
+- **The image builds the Docusaurus skeleton at build time**, so the site engine lives inside the container and never touches your machine.
+- **Your `blog` folder is mounted from the host**, not copied: the container reads the very files you edit in your editor.
+- **Hot reload follows your files**, so saving a Markdown file in VS Code refreshes the page in your browser — the container is running `yarn start`, not a static build.
+
 ## Create your own Docusaurus image
 
 Create a temporary directory by running `mkdir /tmp/docusaurus && cd $_`.
@@ -44,15 +72,7 @@ In your project directory (so `/tmp/docusaurus`), create a file called `Dockerfi
 
 <Snippet filename="/tmp/docusaurus/Dockerfile" source="./files/Dockerfile" />
 
-#### Dockerfile - explanations line by line
-
-- Line 1: we'll use Node.js v22 LTS in its alpine version,
-- Line 2: the `RUN npx create-docusaurus@latest /app classic && chown -R node:node /app` command will install the latest version of Docusaurus (in the `/app` folder) and make sure the folder is owned by our `node` user,
-- Line 3: from now, we'll do everything using the `node` user,
-- Line 4: `/app` will be the default working directory in the image,
-- Line 5: the `cd /app && yarn install` command will jump in the folder and will install node dependencies,
-- Line 6: `COPY . .` will copy everything from your project's directory (on your host) into the Docker image (in folder `/app` since that one is the default working directory) and
-- Line 7: the command `CMD ["yarn", "start", "--host", "0.0.0.0"]` will run `yarn start --host 0.0.0.0` which is the instruction to run Docusaurus, make the *transparent* conversion from Markdown pages to HTML and will render the website on the default port (which is port `3000`).
+Seven lines, and each one earns its place — if you want them explained one by one, there's a dedicated section at the end of this article.
 
 ### Create a .dockerignore file
 
@@ -103,15 +123,7 @@ Just in case you're interested by the `tree` utility and don't have yet, simply 
 
 ### Run Docusaurus
 
-At this stage of the tutorial, you've all required files and a few blog posts so, let's start everything:
-
-<Terminal typewriter>
-$ docker compose up --detach --build
-</Terminal>
-
-After a few minutes (only the first time), your Docusaurus Docker image will be created and a container will be started.
-
-Your blog is now accessible on your computer here: `http://localhost:3000`.
+At this stage of the tutorial, you've all required files and a few blog posts so, let's start everything with the `docker compose up --detach --build` command shown at the beginning of this article. Your blog is then accessible on your computer here: `http://localhost:3000`.
 
 <AlertBox variant="info" title="Which port number to use?">
 The port number is the one you've mentioned in the `compose.yaml` file in line `3000:3000`.
@@ -120,18 +132,8 @@ If you wish another port like `3002` f.i., just edit the yaml file and replace `
 
 </AlertBox>
 
-<BrowserWindow url="http://localhost:3000">
-  ![Docusaurus homepage](./images/homepage.webp)
-</BrowserWindow>
-
-And if we click on the `Blog` menu, we can see our posts:
-
-<BrowserWindow url="http://localhost:3000/blog">
-  ![Our posts](./images/posts.webp)
-</BrowserWindow>
-
 <AlertBox variant="info" title="Chronology of blog posts">
-As you can see, the default ordering follows chronological order: the last blog item we've created (`2024-02-06-my-second-post.md`) is the first one in the list.
+Clicking on the `Blog` menu, you'll notice the default ordering follows chronological order: the last blog item we've created (`2024-02-06-my-second-post.md`) is the first one in the list.
 
 </AlertBox>
 
@@ -156,6 +158,16 @@ Just go back to your browser and refresh the page (press <kbd>F5</kbd>). Your ne
 <BrowserWindow url="http://localhost:3000/blog/2024-02-07-really-better.md">
   ![Your new post is there](./images/with-new-post.webp)
 </BrowserWindow>
+
+## Under the hood — the Dockerfile, line by line (skip this if you just want it running)
+
+- Line 1: we'll use Node.js v22 LTS in its alpine version,
+- Line 2: the `RUN npx create-docusaurus@latest /app classic && chown -R node:node /app` command will install the latest version of Docusaurus (in the `/app` folder) and make sure the folder is owned by our `node` user,
+- Line 3: from now, we'll do everything using the `node` user,
+- Line 4: `/app` will be the default working directory in the image,
+- Line 5: the `cd /app && yarn install` command will jump in the folder and will install node dependencies,
+- Line 6: `COPY . .` will copy everything from your project's directory (on your host) into the Docker image (in folder `/app` since that one is the default working directory) and
+- Line 7: the command `CMD ["yarn", "start", "--host", "0.0.0.0"]` will run `yarn start --host 0.0.0.0` which is the instruction to run Docusaurus, make the *transparent* conversion from Markdown pages to HTML and will render the website on the default port (which is port `3000`).
 
 ## Stop and restart
 

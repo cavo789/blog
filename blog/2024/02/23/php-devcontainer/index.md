@@ -24,8 +24,6 @@ This is the short, quick-start version of the full devcontainer article: downloa
 
 This article is the very short and straightforward version of <Link to="/blog/vscode-devcontainer">PHP development in a devcontainer with preinstalled code quality tools</Link>. If you just want to follow a very few steps and get your PHP environment, this article is for you.
 
-*Two neighbours: <Link to="/blog/docker-python-devcontainer">Docker - Python devcontainer</Link> for the same thing in Python, and <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers - The Clean Way</Link> to keep all this tooling out of your production image.*
-
 <StepsCard
   title="By following the steps described in this article, you'll obtain"
   variant="steps"
@@ -45,6 +43,16 @@ Please refers to my other articles about <Link to="/blog/tags/docker">Docker</Li
 </AlertBox>
 
 <!-- truncate -->
+
+## What the environment gives you
+
+Here is PHP-CS-Fixer reformatting a file, inside the container, a couple of minutes after the download — nothing installed on my host machine, no PHP, no Composer, no extension to configure:
+
+![PHP-CS-Fixer](./images/php-cs-fixer.webp)
+
+The same is true for [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) (`phpcbf.phar`), [Rector](https://github.com/rectorphp/rector) and SonarLint: they're already in the image, already configured through the `.config` folder shipped with the skeleton. You'll find the exact commands in the *You are ready to use tools* section below.
+
+Two ways to get there, depending on whether you're starting from scratch or adding this to an existing codebase.
 
 ## You have nothing and wish to create a fully new project
 
@@ -86,13 +94,11 @@ VSCode will now take a while to build the Docker image then start a Docker conta
 
 ### You are ready to use tools
 
-For instance, press <kbd>CTRL</kbd>+<kbd>ù</kbd> to open the **Terminal** pane and type there `/usr/local/bin/php-cs-fixer.phar fix --config /var/www/html/.config/.php-cs-fixer.php index.php` to run [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer).
+Press <kbd>CTRL</kbd>+<kbd>ù</kbd> to open the **Terminal** pane and type there `/usr/local/bin/php-cs-fixer.phar fix --config /var/www/html/.config/.php-cs-fixer.php index.php` to run [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer) — that's the command that produced the screenshot at the top of this article.
 
-![PHP-CS-Fixer](./images/php-cs-fixer.webp)
+You can also run `/usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml /var/www/html/index.php` for reformatting your code using PHP_CodeSniffer.
 
-You can also run `/usr/local/bin/phpcbf.phar --standard=/var/www/html/.config/phpcs.xml /var/www/html/index.php` for reformatting your code using [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
-
-You can run [Rector](https://github.com/rectorphp/rector) too by running `vendor/bin/rector process index.php --config .config/rector.php`.
+You can run Rector too by running `vendor/bin/rector process index.php --config .config/rector.php`.
 
 As you can see, in just three actions you've downloaded and installed a functional PHP environment using Docker and VSCode.
 
@@ -140,3 +146,9 @@ $ vendor/bin/rector process . --config .config/rector.php
 </Terminal>
 
 but in my case, I can't right now because my Laravel Todos is an old one and I need first to make some changes to my `composer.json` file (upgrading PHP and Laravel versions first).
+
+## Conclusion
+
+A `curl`, a `tar` and a click on `Reopen in Container`: that's the whole distance between an empty folder and a PHP environment where the quality tools are already there, at the same version for everyone who clones the repository. Nothing has been installed on your machine, and deleting the folder deletes the environment.
+
+Same recipe, other stacks: <Link to="/blog/docker-python-devcontainer">Docker - Python devcontainer</Link>. And when the time comes to ship, <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers - The Clean Way</Link> shows how to keep all this tooling out of your production image.

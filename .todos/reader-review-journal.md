@@ -212,17 +212,107 @@ Target structure: `.claude/skills/blog-post-structure/SKILL.md`
 | 2026-08-09 | windows-terminal | published | 12% (restructured 2026-08-09) | RESTRUCTURE → done | DONE/DONE_reader-windows-terminal.md |
 | 2026-08-09 | putty-no-supported-authentication-methods | published | 100% (réponse textuelle immédiate, pas de bloc "preuve" formel) | MINOR | — |
 | 2026-08-09 | linux-fzf-introduction | published | 6% | OK | — |
-| 2026-08-09 | zsh-syntax-highlighting | published | 85% | RESTRUCTURE | reader-zsh-syntax-highlighting.md |
-| 2026-08-09 | zsh-plugin-autosuggestions | published | 100% | RESTRUCTURE | reader-zsh-plugin-autosuggestions.md |
-| 2026-08-09 | zsh-install | published | 17% en surface / 62% pour la vraie preuve (prompt final), install-avant-preuve | RESTRUCTURE | reader-zsh-install.md |
+| 2026-08-09 | zsh-syntax-highlighting | published | 85% (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-zsh-syntax-highlighting.md |
+| 2026-08-09 | zsh-plugin-autosuggestions | published | 100% (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-zsh-plugin-autosuggestions.md |
+| 2026-08-09 | zsh-install | published | 17% en surface / 62% pour la vraie preuve (prompt final), install-avant-preuve (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-zsh-install.md |
 | 2026-08-09 | docker-health-condition | published | 100% (conceptuel, pas de démo formelle, pas de Conclusion) | MINOR | — |
 | 2026-08-09 | vbs-auto-update | published | 100% (recette courte, le Snippet est la preuve, pas de landing) | MINOR | — |
-| 2026-08-09 | vbs-msaccess-get-fields | published | 65% | RESTRUCTURE | reader-vbs-msaccess-get-fields.md |
+| 2026-08-09 | vbs-msaccess-get-fields | published | 65% (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-vbs-msaccess-get-fields.md |
 | 2026-08-09 | github-connect-using-ssh | published | 38% mécanique mais test des 30s positif (action concrète dès l.35) | MINOR | — |
 | 2026-08-09 | vscode-errorlens | published | 24% (avant/après) | MINOR | — |
 | 2026-08-09 | vscode-tabnine | published | 43% (article historique, produit obsolète, écart minime) | MINOR | — |
-| 2026-08-09 | joomla-db-kill-tables-prefix | published | 61% | RESTRUCTURE | reader-joomla-db-kill-tables-prefix.md |
+| 2026-08-09 | joomla-db-kill-tables-prefix | published | 61% (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-joomla-db-kill-tables-prefix.md |
 | 2026-08-09 | msaccess-optimize | published | 3.5% (listicle, pas de Conclusion) | MINOR | — |
 | 2026-08-09 | vscode-php-refactoring | published | 18% (pas de Conclusion) | MINOR | — |
-| 2026-08-09 | php-devcontainer | published | 46% | RESTRUCTURE | reader-php-devcontainer.md |
+| 2026-08-09 | php-devcontainer | published | 46% (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-php-devcontainer.md |
 | 2026-08-10 | anythingllm-chat-with-your-docs | published | 1.8% (réécrit ; 40% au 2026-08-08) | OK | — (faiblesses MINOR corrigées le 2026-08-10) |
+| 2026-08-11 | vba-excel-call-soap-webservice | published | 11% (capture SOAP answer dans la liste d'étapes, pas de Conclusion) | MINOR | — |
+| 2026-08-11 | docker-network-and-extra-hosts | published | 91% pour la vraie preuve (11% mécanique sur un `ls`), abstraction-avant-preuve (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-network-and-extra-hosts.md |
+| 2026-08-11 | github-retrieve-email | published | 53% mécanique mais corps de 34 lignes, 2 méthodes actionnables dès la l. 36 | MINOR | — |
+| 2026-08-11 | php-rector | published | 29% + install-avant-preuve, « my friend my coach » x5 (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-php-rector.md |
+| 2026-08-11 | vscode-devcontainer | published | 22% + install-avant-preuve, 5 deep-dives non signalés, pas de landing (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-vscode-devcontainer.md |
+| 2026-08-11 | docusaurus-articles-tips | published | 29% (listicle de tips Docusaurus, rendu live comme preuve, pas de Conclusion) | MINOR | — |
+| 2026-08-11 | docusaurus-docker-own-blog | published | 7% (BrowserWindow dès la l. 46 ; landing pointe ailleurs mais ne récapitule pas) | MINOR | — |
+| 2026-08-11 | docusaurus-docker | published | 65% + abstraction-avant-preuve (Dockerfile expliqué ligne par ligne avant toute capture) (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-docker.md |
+| 2026-08-11 | markdown-lint | published | 100% (recette : `docker run` copiable 2 lignes après le truncate, aucune sortie littérale, pas de Conclusion) | MINOR | — |
+| 2026-08-11 | docker-limesurvey | published | 43% + finit sur MySQL 5.7 end-of-life, pas de Conclusion (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-limesurvey.md |
+| 2026-08-11 | planethoster-n0c-spam-roundcube-action | published | 45% + install-avant-preuve (`apt-get install jq` l. 179) + generate.sh avant toute sortie (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-planethoster-n0c-spam-roundcube-action.md |
+| 2026-08-11 | matomo-install | published | 100% (note courte « voici ce que j'ai fait », StepsCard actionnable 8 lignes après le truncate, aucune capture Matomo, pas de Conclusion) | MINOR | — |
+| 2026-08-11 | planethoster-n0c-spam | published | 19% (capture de la règle RoundCube, mais finit sur « Special thanks », pas de landing) | MINOR | — |
+| 2026-08-11 | update-env-files-cli | published | 54% + abstraction-avant-preuve (fonction `updateEnv` de 31 lignes avant toute sortie) (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-update-env-files-cli.md |
+| 2026-08-11 | compare-env-files-cli | published | 44% (le `<Terminal>` l. 47 n'est que le jeu d'essai ; sortie `diff` en l. 70), pas de Conclusion (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-compare-env-files-cli.md |
+| 2026-08-11 | linux-sed-tips | published | 94% (le one-liner et sa vérification sont la dernière section), redondance 🟠, pas de Conclusion (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-linux-sed-tips.md |
+| 2026-08-11 | cpanel-spam | published | 22% (capture SpamAssassin, article très court, pas de Conclusion mais lien de sortie) | MINOR | — |
+| 2026-08-11 | winscp-retrieve-password | published | 29% (capture de la case à cocher, jamais du mot de passe récupéré ; corps de 14 lignes) | MINOR | — |
+| 2026-08-11 | vscode-autosave | published | 32% mécanique (capture 6 lignes après le truncate, corps de 19 lignes), pas de récapitulatif final | MINOR | — |
+| 2026-08-11 | json-crack | published | 35% mécanique mais preuve 8 lignes après le truncate (mind map rendue), landing correcte | OK | — |
+| 2026-08-11 | github-action | published | 72% + abstraction-avant-preuve (workflow YAML l. 33 avant toute capture), pas de Conclusion (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-github-action.md |
+| 2026-08-11 | docusaurus-number-of-posts | published | 11% mécanique (capture archive) / 100% pour la vraie preuve (le compte en console, dernière ligne) ; corps de 18 lignes, pas de Conclusion | MINOR | — |
+| 2026-08-11 | docker-postgrest | published | 48% + install-avant-preuve (docker run + binaire téléchargé) ; section « Illustration of some calls » interroge des tables absentes de la base du tutoriel (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-postgrest.md |
+| 2026-08-11 | docker-mssql-server | published | 17% mécanique (`docker container list`) mais vrai payoff à 98% (résultats de requête) ; recette actionnable dès la l. 31, pas de Conclusion | MINOR | — |
+| 2026-08-11 | quarto-revealjs-tips | published | 4% (capture title-slide dès la l. 45) ; listicle de 21 tips, chacun snippet + capture, mais pas de landing | MINOR | — |
+| 2026-08-11 | quarto-project-variables | published | 52% + abstraction-avant-preuve (StepsCard + 2 snippets avant la capture) ; deux `## Environment variables` homonymes (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-quarto-project-variables.md |
+| 2026-08-11 | powerlevel10k_sandbox | published | 100% — article sur l'apparence d'un prompt qui ne montre jamais le prompt (asset manquant) (restructured 2026-08-11, asset réutilisé) | RESTRUCTURE → partial | PARTIAL/PARTIAL_reader-powerlevel10k_sandbox.md |
+| 2026-08-11 | new-year-2024 | published | n/a (post de vœux, pas de truncate, aucun contenu technique — hors périmètre TTV) | OK | — |
+| 2026-08-11 | docker-wordpress | published | 59% + install-avant-preuve ; le bloc « trois commandes » (terminal-1.txt) est rendu APRÈS la Conclusion et épingle des versions périmées (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-wordpress.md |
+| 2026-08-11 | wsl-powershell | published | 100% mécanique (le seul Terminal est un message d'erreur) mais recette délivrée 2 lignes après le truncate ; finit sur l'erreur, pas de landing | MINOR | — |
+| 2026-08-11 | docker-adminer-pgadmin-phpmyadmin | published | 13% mécanique (`docker container list`) / 76% pour la vraie preuve (capture Adminer), effort-avant-preuve, pas de Conclusion (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-adminer-pgadmin-phpmyadmin.md |
+| 2026-08-11 | docker-inspect | published | 23% (67% pour le one-liner `jq`) + install-avant-preuve (`## Some preparation work`) + Snippet index.php avant preuve (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-inspect.md |
+| 2026-08-11 | docker-phpdocumentor | published | 100% (la capture est la dernière ligne) + install-avant-preuve (téléchargement de WordPress), pas de landing (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-phpdocumentor.md |
+| 2026-08-11 | makefile-using-make | published | 89% + install-avant-preuve (`## Install make`) ; l'avant/après `make phpmyadmin` est à 89% (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-makefile-using-make.md |
+| 2026-08-11 | makefile-help | published | 63% (93% pour l'écran d'aide final) + install-avant-preuve + StepsCard de prérequis redondant (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-makefile-help.md |
+| 2026-08-11 | quarto-conditional-display | published | 65% mécanique mais la syntaxe (le vrai contenu) est à 12 lignes du truncate, corps de 52 lignes, aucun effort demandé ; pas de Conclusion | MINOR | — |
+| 2026-08-11 | quarto-powerpoint | published | 79% — 33 lignes de lorem ipsum entre le lecteur et les captures de diapositives, pas de Conclusion (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-quarto-powerpoint.md |
+| 2026-08-11 | docker-joomla | published | 30% (les 3 Terminal antérieurs sont un `ls` et des logs de pull) + prérequis-avant-preuve, pas de Conclusion (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-joomla.md |
+| 2026-08-11 | docker-php-ini | published | 6% (paire avant/après, capture « before » 2 lignes après le truncate) ; le « after » est la dernière ligne, pas de Conclusion | MINOR | — |
+| 2026-08-11 | docker-quarto | published | 56% + abstraction-avant-preuve (Dockerfile l. 60) + build de 3 min imposé alors que l'image officielle suffit (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-quarto.md |
+| 2026-08-11 | bash-ascii-art | published | 100% mécanique (corps de 8 lignes, Snippet l. 32 puis capture l. 36) mais l'ASCII art est déjà montré dans l'excerpt ; pas de Conclusion | MINOR | — |
+| 2026-08-11 | bash-load-env | published | 76% mécanique pour le `<Terminal>` mais la recette `set -o allexport` est délivrée 6 lignes après le truncate | MINOR | — |
+| 2026-08-11 | docker-mindmap | published | 100% — article « build a mind map » qui ne montre jamais de mind map (les 2 Terminal sont des `ls -alh`), abstraction-avant-preuve (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-mindmap.md |
+| 2026-08-11 | windows-winget | published | 15% (capture 4 lignes après le truncate), aucun drapeau, mais finit sur `winget upgrade Docker` sans récapitulatif | MINOR | — |
+| 2026-08-11 | linux-jq | published | 24% + install-avant-preuve (`apt-get install jq` l. 29, 1re ligne du corps) + dump JSON de 68 lignes, redondance 🟠 (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-linux-jq.md |
+| 2026-08-11 | linux-xmlstarlet | published | 48% + install-avant-preuve (l. 28) ; 4 rappels du même XML sous le nom trompeur `data.xml` (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-linux-xmlstarlet.md |
+| 2026-08-11 | docker-healthy | published | 71% + abstraction-avant-preuve (health.sh l. 29 avant la capture l. 40 sur un corps de 21 lignes) (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-healthy.md |
+| 2026-08-11 | vba-excel-ribbon | published | 22% + install-avant-preuve (`## Download the editor for free`) + deep-dive de 133 lignes non signalé (`### Manifest analysis`) (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-vba-excel-ribbon.md |
+| 2026-08-11 | docker-init | published | 12% (le wizard `docker init` en sortie réelle l. 37), landing complète | OK | — |
+| 2026-08-11 | docker_uptime_kuma | published | 38% mécanique mais corps de 26 lignes, capture du dashboard 10 lignes après le truncate, landing correcte | MINOR | — |
+| 2026-08-11 | docker_ssl_encrypt | published | 85% + abstraction-avant-preuve (4 scripts à créer avant le moindre octet chiffré), pas de Conclusion (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker_ssl_encrypt.md |
+| 2026-08-11 | docker-pascal | published | 25% mécanique (sortie du compilateur FPC 18 lignes après le truncate) ; le seul Snippet antérieur est un Hello.pas de 4 lignes, pas de Conclusion formelle | MINOR | — |
+| 2026-08-11 | docker-assembly | published | 58% mécanique mais corps de 24 lignes : source, commande et sortie tiennent dans le premier écran ; pas de Conclusion | MINOR | — |
+| 2026-08-11 | docker-python | published | 14% (Hello World 17 lignes après le truncate) ; dump hangman de 68 lignes (56% du corps), pas de Conclusion | MINOR | — |
+| 2026-08-11 | docker-java | published | 40% mécanique (`ls -alh`) / 53% pour la vraie preuve (`Hello, World`) + abstraction-avant-preuve, « rien à installer » x5, AlertBox de 12 lignes entre la commande et son résultat (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-java.md |
+| 2026-08-11 | vscode-sticky-scroll | published | 25% mécanique mais GIF de la fonctionnalité 4 lignes après le truncate, aucun drapeau | OK | — |
+| 2026-08-11 | vscode-github-dev | published | 84% mécanique (photo de smartphone) mais l'astuce entière est livrée dans l'excerpt ; aucune capture de github.dev ouvert, pas de landing | MINOR | — |
+| 2026-08-11 | laravel-filament | published | 50% mécanique sur un corps de 8 lignes (capture officielle 4 lignes après le truncate) ; note de découverte, aucune démo propre, pas de Conclusion | MINOR | — |
+| 2026-08-11 | docker-diagram-as-code | published | 35% + abstraction-avant-preuve (team.py avant le moindre diagramme) ; finit sur une liste de 14 outils, pas de landing (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-diagram-as-code.md |
+| 2026-08-11 | laravel_events | published | 78% + abstraction-avant-preuve (5 Snippets PHP avant toute sortie), redondance 🟠 (5x), section « PHP example » vidée de son exemple (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-laravel_events.md |
+| 2026-08-11 | docker-volumes | published | 8% en surface (`docker image list`) / 38% pour la vraie preuve (compteur persistant) + abstraction-avant-preuve (Dockerfile + counter.sh l. 39-43) (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-volumes.md |
+| 2026-08-11 | frankenphp-docker-joomla | published | 41% (logs de démarrage) / 88% pour la vraie preuve (Joomla servi par FrankenPHP) + délégation à un README tiers avant toute preuve, finit sur « it's terribly slow » (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-frankenphp-docker-joomla.md |
+| 2026-08-11 | apache-htaccess | published | 100% (référence de 26 snippets .htaccess, premier snippet copiable 6 lignes après le truncate, pas de Conclusion) | MINOR | — |
+| 2026-08-11 | docker-volume | published | 38% (page Forbidden) / 70% pour la vraie preuve (hello_world via le bind mount) ; aucun titre `##`, pas de Conclusion (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-docker-volume.md |
+| 2026-08-11 | install-docker | published | 34% (capture Docker Desktop) / 66% pour la vraie preuve (phpinfo) + 41 lignes de théorie et 4 AlertBox avant la 1re commande, redondance 🟠 (4x « rien à installer ») (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-install-docker.md |
+| 2026-08-11 | move-wsl-to-another-location | published | 100% (le `<Terminal>` n'est qu'une suite de commandes) mais recette complète en liste à puces 3 lignes après le truncate ; corps de 23 lignes, pas de landing | MINOR | — |
+| 2026-08-11 | site-creation | published | 27% (BrowserWindow de la homepage l. 77) ; récit « comment j'ai fait ce blog », finit sur une note technique withcabin, pas de Conclusion | MINOR | — |
+| 2026-08-11 | vscode-markdown-code-folding | published | 33% mécanique mais corps de 6 lignes : le GIF de la fonctionnalité est 2 lignes après le truncate et le correctif est déjà dans l'excerpt ; lien de sortie présent | OK | — |
+| 2026-08-11 | wsl-windows-explorer | published | 17% (capture Explorer sur le filesystem Linux) ; finit sur une AlertBox « Still not working? », pas de récapitulatif | MINOR | — |
+| 2026-08-11 | docker-php-run-script-or-website | published | 100% (aucune sortie littérale) mais recette : one-liner `docker run` copiable 2 lignes après le truncate, corps de 19 lignes ; landing = 5 liens internes, pas de récapitulatif | MINOR | — |
+| 2026-08-11 | keepass-overriding-url | published | 100% (aucune capture de KeePass) mais 1re chaîne `cmd://` copiable 10 lignes après le truncate ; la section PuTTY impose 5 lignes de « télécharge putty.exe et mets-le dans le PATH » avant elle, pas de Conclusion | MINOR | — |
+| 2026-08-11 | welcome | published | n/a (post de lancement du blog, aucun contenu technique — hors périmètre TTV) | OK | — |
+| 2026-08-11 | wslg-rpd-connection | published | 31% (`desktop.webp` l. 62 sur un corps de 74) + install-avant-preuve DANS l'excerpt (`apt-get install -y xrdp` l. 35) ; finit sur une capture de clavier belge (restructured 2026-08-11) | RESTRUCTURE → done | DONE/DONE_reader-wslg-rpd-connection.md |
+| 2026-08-11 | anythingllm-chat-with-your-docs | published | 2% (réponse RAG réelle 6 lignes après le truncate), deep-dive signalé, StepsCard « remember » = vraie fiche de référence (env vars, topN, mode query), Conclusion qui reboucle | OK | — |
+| 2026-08-11 | ollama-git-precommit | published | 6% (le Snippet antérieur est le diff de démo, pas l'implémentation), deep-dive signalé, Conclusion complète | OK | — |
+| 2026-08-11 | ollama-test-generator | published | 3% (suite Bats générée 6 lignes après le truncate), `<Prerequisite>` après la preuve, deep-dive signalé, Conclusion + appel à l'action | OK | — |
+| 2026-08-11 | accessing-ollama-across-your-local-network | published | 29% (sortie de `ping`) ; le vrai payoff — Open WebUI et l'API Ollama servis depuis la 2e machine — n'est jamais montré (prose et curl sans réponse), 6 lignes de théorie LAN (switch D-Link) avant la 1re commande | MINOR | — |
+| 2026-08-11 | ollama-installation | published | 4% (capture d'une réponse Ollama réelle), install après la preuve, extras dans `<Details label="Bonus">` ; mais l'article se termine à l'intérieur de ce bloc replié, sans Conclusion | MINOR | — |
+| 2026-08-11 | running-docusaurus-with-docker | published | 2% (`running_prod.webp` 4 lignes après le truncate) mais StepsCard « What we'll learn here » = table des matières des 4 sections suivantes, et fin sur un détail Markdownlint sans Conclusion | MINOR | — |
+| 2026-08-11 | quarto-devcontainer | published | 9% (`preview.webp` « the site is already running »), deux deep-dives explicitement marqués « optional », Conclusion présente | OK | — |
+| 2026-08-11 | vba-excel-list-references | published | 33% mécanique mais corps de 12 lignes : la sortie réelle du script est 4 lignes après le truncate (contre-audit post-restructuration) ; pas de Conclusion | MINOR | — |
+| 2026-08-11 | reduce-image-size | published | 16% (sortie `caesiumclt`, -93%), Installation déplacée APRÈS la preuve ✅ ; mais l'article se termine sur un `<Terminal>`, sans récapitulatif ni sortie | MINOR | — |
+| 2026-08-11 | docker-prod-devcontainer | published | 7,6% ✅ (BrowserWindow l. 64) mais 27 lignes de théorie et 2 AlertBox avant « The Result » ; « deux images » énoncé 5x en 30 lignes (🟠), « Going further » sans récapitulatif | MINOR | — |
+| 2026-08-11 | docusaurus-old-notice | published | 4% ✅ (BrowserWindow l. 38) ; finit sur un bloc `jsx` dans « Position of the warning », pas de Conclusion | MINOR | — |
+| 2026-08-11 | docusaurus-plugin-replace | published | 11% ✅ (sortie console du plugin l. 46) ; finit sur une AlertBox caution, pas de Conclusion | MINOR | — |
+| 2026-08-11 | docusaurus-go-top | published | 100% → **8,8%** — captures produites pour de vrai via Playwright/Chromium (déjà installés) : `go_top_button.webp` + zoom ; section `## What it looks like` en mouvement 2, `## Conclusion` ajoutée, AlertBox `/img/up.png` corrigée vers l'import réel | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-go-top.md |
+| 2026-08-11 | docusaurus-series | published | 1,5% ✅ (2 captures l. 46 et 50), Conclusion présente ; mais l'AlertBox l. 54 et la phrase l. 60 redisent la même chose que les 2 captures (🟠), Conclusion sans lien de sortie | MINOR | — |
+| 2026-08-11 | docusaurus-relatedposts | published | 4% ✅, « Why It Works » sans code = mouvement 3 exemplaire, Conclusion + 2 liens ; seule note : `related.webp` (l. 33) et `final.webp` (l. 39) montrent la même chose à 6 lignes d'écart | OK | — |
+| 2026-08-11 | pest-functional-testing | published | 5% ✅ (succès + échec avec screenshot auto, l. 42 et 46), deep-dive marqué « skip this if you just want to use it » ✅ ; mais l'article s'arrête dans ce deep-dive, sans Conclusion | MINOR | — |
+| 2026-08-11 | docusaurus-lazy-loading | published | 100% mécanique et `<!-- TODO(author) -->` non résolu, mais corps de 19 lignes : la recette (`MDXComponents.js`) est délivrée 3 lignes après le truncate et la prose énonce littéralement le résultat (`loading="lazy"`) ; lien de sortie présent | MINOR | — |

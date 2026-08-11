@@ -28,6 +28,24 @@ By using GitHub Actions, this problem no longer exists. With each push, the blog
 
 <!-- truncate -->
 
+## What a deployment looks like now
+
+I push a commit — from my laptop, from another machine, or straight from the GitHub web editor — and the page `https://github.com/cavo789/blog/actions` shows this on its own:
+
+![My action is running](./images/action_is_running.webp)
+
+By clicking on the running action, the details of each step are displayed and I can easily follow along:
+
+![Pushing files](./images/pushing.webp)
+
+Four minutes later, the action is green and the blog is up to date online. I haven't opened an FTP client, and I haven't been anywhere near the machine where WinSCP is installed.
+
+## Three ingredients
+
+A workflow file committed in the repository, three repository secrets holding the FTP credentials, and an FTP user restricted to the deployment folder. That's the entire setup — no runner to host, no service to subscribe to.
+
+## Setting it up
+
 To enable `GitHub actions`, we first need to create a file in the folder `.github/workflows`. Mine will be named `deploy.yml` with this content:
 
 <Snippet filename=".github/workflows/deploy.yml" source=".github/workflows/deploy.yml" />
@@ -45,14 +63,8 @@ In the `Repository secrets` area, I have clicked on the `New repository secret` 
 
 This done, I can push my local changes (the `.github/workflows/deploy.yml`) to GitHub using `git add .github/workflows/deploy.yml && git commit -m "chore: add deploy github action" && git push`.
 
-Once pushed to GitHub, the page `https://github.com/cavo789/blog/actions` will show my action and I can see it's now running.
+## Conclusion
 
-![My action is running](./images/action_is_running.webp)
-
-By clicking on the running action, the details of each step are displayed and I can easily follow along:
-
-![Pushing files](./images/pushing.webp)
-
-After a given time period (actually four minutes), the action was successfully completed and the blog updated.
+What disappeared here isn't a technology, it's a habit: the little WinSCP script I had to remember to run, from the one computer where it was installed. Publishing is now a side effect of pushing, which is something I do anyway.
 
 Deployment is not the only thing worth automating on GitHub; <Link to="/blog/github-profile-last-blogposts">Automate your GitHub README with your latest blog posts</Link> uses the same mechanism to keep my profile page up to date.

@@ -31,9 +31,23 @@ If you type `head` followed by a space, ZSH will display this word in green: thi
 
 It sounds simple, but it's so practical.
 
-*Its natural companion is <Link to="/blog/zsh-plugin-autosuggestions">Autosuggestions in the console using ZSH</Link>: one tells you whether what you're typing is valid, the other saves you from typing it at all.*
-
 <!-- truncate -->
+
+## What Syntax Highlighting Looks Like
+
+Type a command like `cat` or `head` and it turns green: the command exists, it's correctly typed and it's executable.
+
+![Highlight in green](./images/head.webp)
+
+Make a typo and the very same word turns red before you even press <kbd>ENTER</kbd>:
+
+![Highlight in red](./images/docker_compose.webp)
+
+That color appears **while you type**, not after the command has failed. You know you've mistyped `docekr` before losing a second to a `command not found`.
+
+## How to use it
+
+In fact, nothing has to be done: there is no configuration file, no option to set, no alias to define. Install the plugin, reload your shell, and the coloring is simply there from the next character you type.
 
 ## Installation
 
@@ -49,14 +63,8 @@ Then edit the `~/.zshrc` file, search for `plugins=(` and add `zsh-syntax-highli
 
 Close your console, open a new one (or run `source ~/.zshrc` to load your change) and it's done.
 
-## How to use it
+## Conclusion
 
-In fact, nothing has to be done.
+Two lines of setup and your terminal starts proofreading you: green means "this will run", red means "fix me first". It's the kind of tiny feedback loop you stop noticing after a week — until you sit at a machine without it and start typing blind again.
 
-From now, when you type a command like f.i. `cat` or `head`, the command will appear in green meaning this is a valid one, correctly typed and executable.
-
-![Highlight in green](./images/head.webp)
-
-Conversely, it will appear in red when the command contains a typo i.e. isn't an executable one:
-
-![Highlight in red](./images/docker_compose.webp)
+Its natural companion is <Link to="/blog/zsh-plugin-autosuggestions">Autosuggestions in the console using ZSH</Link>: this one tells you whether what you're typing is valid, the other saves you from typing it at all.

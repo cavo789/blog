@@ -36,54 +36,49 @@ Personally, I haven't used a Word-type word processor for several years; nor hav
 
 And yet, I produce a great deal of documentation and slideshows. I write everything in Markdown and generate PDF or slideshows from the same content.
 
-*Two follow-ups once this image runs: <Link to="/blog/quarto-devcontainer">Make your Quarto project Devcontainer-Ready</Link> turns it into a full VSCode environment, and <Link to="/blog/running-revealjs-with-docker">Level Up Your Presentations with Quarto, reveal.js, Decktape, Docker and DevContainers</Link> covers the slideshow side in depth.*
-
 Until recently, I'd been using [pandoc](https://pandoc.org/) but, having taken the time to look around Quarto, it's a hell of a lot more powerful.
 
 <!-- truncate -->
 
-Like always on this blog, you will not install Quarto the old-fashioned way. Instead, you'll create your own Docker image.
+Like always on this blog, you will not install Quarto the old-fashioned way. You'll run it from a Docker image — and you don't even have to build that image yourself.
 
-## Let's play
+## Render your first PDF, without installing anything
 
-As usual, you will now create a temporary folder for your experiments. Please start a Linux shell and run `mkdir -p /tmp/docker-quarto && cd $_`.
-
-### Create your own Docker image
-
-<AlertBox variant="info" title="Optional step">
-If you prefer to use an existing prebuilt image; jump to the next chapter.
-
-</AlertBox>
-
-Create a new file called `Dockerfile` (there is no extension) with this content:
-
-<Snippet filename="Dockerfile" source="./files/Dockerfile" />
-
-This done, please run `docker build -t cavo789/quarto .` and after something like three minutes the first time, you'll get your own Docker image:
-
-<Terminal typewriter wrap={false}  source="./files/terminal-2.txt" />
-
-<AlertBox variant="info" title="Choose your own name">
-The previous instruction `docker build -t cavo789/quarto .` has created an image called `cavo789/quarto`. You can for sure choose a different name without any impact on the image.
-
-</AlertBox>
-
-You can quickly check the size of your image; quite huge but except you're very low in memory / disk space; this is really not a big deal.
+Create a temporary folder (`mkdir -p /tmp/docker-quarto && cd $_`), drop a Markdown file called `test.md` in it, and run:
 
 <Terminal typewriter>
-$ docker image list | grep quarto
-cavo789/quarto  latest  fe1d20bd71a6  1 minute ago  1.55GB
+$ docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render test.md --to pdf
 </Terminal>
 
-### Use an existing image
+<Terminal typewriter source="./files/terminal-1.txt" />
 
-There are a number of images on the Internet to suit your needs. You'll find them at [https://gitlab.com/quarto-forge/docker](https://gitlab.com/quarto-forge/docker). The so-called `Tier 0` image is suitable for generating html / revealjs output.
+A `test.pdf` file is now sitting next to your Markdown, owned by you, and it looks like this:
 
-If you use the `Tier 0` image, here is the command to use: `docker run -it --rm -v .:/public -w /public -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render xxx`
+![Your PDF file](./images/pdf_version.webp)
 
-### Using Quarto and generate a PDF file
+That image is the official Quarto one — nothing to build, nothing installed on your machine, and the container removes itself when the render is done.
 
-Create a new `test.md` file in your `/tmp/docker-quarto` folder with this content:
+<AlertBox variant="info" title="Docker CLI reminder">
+As a reminder, the used Docker run command are (almost always the same):
+
+- `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
+- `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
+- `-v .:/input` to share your current folder with a folder called `/input` in the Docker container,
+- `-w /input` to tell Docker that the current directory, in the container, will be the `/input` folder,
+- `-u $(id -u):$(id -g)` asks Docker to reuse your local credentials so when a file is updated/created in the container, the file will be owned by you,
+- then the name of the Quarto Docker image, and, finally,
+- `quarto render test.md --to pdf` i.e. the command line to start within the container.
+
+</AlertBox>
+
+<AlertBox variant="info" title="Hide non-essential information">
+Add the `--log-level warning` CLI argument to Quarto to ask it to show only warning (and error) messages. Non-essential output will be hidden and you'll keep a clean console.
+
+</AlertBox>
+
+## The source file
+
+Here is the `test.md` used above:
 
 <Snippet filename="/tmp/docker-quarto/test.md">
 
@@ -99,43 +94,17 @@ So, if you want to create documents, presentations, or even books, Quarto and Ma
 
 </Snippet>
 
-Now, back to your Linux console and you'll convert that file to a pdf. **Please refer to the official documentation of [Quarto](https://quarto.org/) to get in-depth information about it.**
+**Please refer to the official documentation of [Quarto](https://quarto.org/) to get in-depth information about the Markdown it accepts.**
 
-To convert to a PDF, the instruction to fire is `quarto render test.md --to pdf`. But since you're using Quarto from a Docker image, the instruction becomes `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf`.
+The only thing that changes from one output format to the next is the `--to` argument.
 
-<AlertBox variant="info" title="Docker CLI reminder">
-As a reminder, the used Docker run command are (almost always the same):
+## The same file, as HTML and as a slideshow
 
-- `-it` to start Docker interactively, this will allow the script running in the container to ask you for some prompts f.i.,
-- `--rm` to ask Docker to kill and remove the container as soon as the script has been executed (otherwise you'll have a lot of exited but not removed Docker containers; you can check this by not using the `--rm` flag then running `docker container list` on the console),
-- `-v .:/input` to share your current folder with a folder called `/input` in the Docker container,
-- `-w /input` to tell Docker that the current directory, in the container, will be the `/input` folder,
-- `-u $(id -u):$(id -g)` asks Docker to reuse your local credentials so when a file is updated/created in the container, the file will be owned by you,
-- then `cavo789/quarto` which is the name of your Quarto Docker image, and, finally,
-- `quarto render test.md --to pdf` i.e. the command line to start within the container.
-
-</AlertBox>
-
-So, let's convert to PDF and run `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf` in your console.
-
-<Terminal typewriter source="./files/terminal-1.txt" />
-
-![Your PDF file](./images/pdf_version.webp)
-
-<AlertBox variant="info" title="Hide non-essential information">
-Add the `--log-level warning` CLI argument to Quarto to ask it to show only warning (and error) messages. Non-essential output will be hidden and you'll keep a clean console. The new command to use is thus `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to pdf --log-level warning`
-
-</AlertBox>
-
-### Using Quarto and generate a HTML file
-
-Simply modify the `--to` argument and replace `pdf` by `html` and run the command: `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to html --log-level warning`
+Simply modify the `--to` argument and replace `pdf` by `html`: `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render test.md --to html --log-level warning`
 
 Now, you've a `test.html` file in your directory.
 
-### Using Quarto and generate a revealjs slideshow
-
-This time, the `--to` argument should be set to `revealjs`: `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to revealjs --log-level warning`
+For a slideshow, the `--to` argument should be set to `revealjs`: `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) ghcr.io/quarto-dev/quarto:latest quarto render test.md --to revealjs --log-level warning`
 
 Open the `test.html` file and you'll get this:
 
@@ -161,7 +130,7 @@ So, if you want to create documents, presentations, or even books, Quarto and Ma
 
 </Snippet>
 
-Rerun `docker run -it --rm -v .:/input -w /input -u $(id -u):$(id -g) cavo789/quarto quarto render test.md --to revealjs --log-level warning` to generate the slideshow as a `test.html` file.
+Rerun the `--to revealjs` command to regenerate the slideshow as a `test.html` file.
 
 <AlertBox variant="info">
 Just run `docker run -d --name static-site -p 8080:80 -v .:/usr/local/apache2/htdocs/ httpd:alpine` then surf to `http://127.0.0.1:8080/test.html` to see your slideshow.
@@ -181,6 +150,36 @@ The nice thing now is that your slideshow is ready to be deployed on your remote
 
 </AlertBox>
 
+## Build your own image (optional — skip it if the official one is enough)
+
+There are a number of prebuilt images on the Internet to suit your needs. You'll find them at [https://gitlab.com/quarto-forge/docker](https://gitlab.com/quarto-forge/docker). The so-called `Tier 0` image — the `ghcr.io/quarto-dev/quarto:latest` one used above — is suitable for generating html / revealjs output.
+
+You'll want your own image the day you need something it doesn't ship: a LaTeX package for a specific PDF layout, R or Python for executable code cells, a font, a Quarto extension baked in.
+
+Create a new file called `Dockerfile` (there is no extension) with this content:
+
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
+
+This done, please run `docker build -t cavo789/quarto .` and after something like three minutes the first time, you'll get your own Docker image:
+
+<Terminal typewriter wrap={false}  source="./files/terminal-2.txt" />
+
+<AlertBox variant="info" title="Choose your own name">
+The previous instruction `docker build -t cavo789/quarto .` has created an image called `cavo789/quarto`. You can for sure choose a different name without any impact on the image.
+
+</AlertBox>
+
+From then on, every command of this article works the same: just replace `ghcr.io/quarto-dev/quarto:latest` by `cavo789/quarto`.
+
+You can quickly check the size of your image; quite huge but except you're very low in memory / disk space; this is really not a big deal.
+
+<Terminal typewriter>
+$ docker image list | grep quarto
+cavo789/quarto  latest  fe1d20bd71a6  1 minute ago  1.55GB
+</Terminal>
+
 ## Going further
 
-Once you're comfortable running Quarto in a plain Docker container, two natural next steps are turning that setup into a proper VSCode <Link to="/blog/quarto-devcontainer">devcontainer</Link> (open the project, everything is preinstalled and hot-reload works out of the box), and browsing <Link to="/blog/quarto-extensions">my favorite Quarto extensions</Link> to enhance your documentation.
+One Markdown file, three `--to` values, three completely different deliverables — and not a single application installed on your machine. That's the part I still find remarkable: the source of my PDF, my web page and my slideshow is the same text file, so they can never drift apart.
+
+Once you're comfortable running Quarto in a plain Docker container, two natural next steps are turning that setup into a proper VSCode <Link to="/blog/quarto-devcontainer">devcontainer</Link> (open the project, everything is preinstalled and hot-reload works out of the box), and browsing <Link to="/blog/quarto-extensions">my favorite Quarto extensions</Link> to enhance your documentation. For the slideshow side in depth, see <Link to="/blog/running-revealjs-with-docker">Level Up Your Presentations with Quarto, reveal.js, Decktape, Docker and DevContainers</Link>.

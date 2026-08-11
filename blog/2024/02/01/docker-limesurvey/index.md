@@ -31,6 +31,14 @@ To do this, we'll use the [https://github.com/martialblog/docker-limesurvey](htt
 
 <!-- truncate -->
 
+## LimeSurvey, running in two minutes
+
+One `compose.yaml` file, one `docker compose up --detach`, and here is what waits for you on `http://localhost:8080/admin`:
+
+![LimeSurvey dashboard](./images/dashboard.webp)
+
+A full LimeSurvey installation — survey list, participants, statistics — running on your machine, with nothing installed except Docker. Let's build it.
+
 ## Let's play
 
 Please start a Linux shell and run `mkdir -p /tmp/limesurvey && cd $_` to create a folder called `limesurvey` in your Linux temporary folder and jump in it.
@@ -64,6 +72,8 @@ If you have been waiting a long time and something seems wrong, run `docker comp
 Press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop following the logs.
 </AlertBox>
 
+## First login
+
 When LimeSurvey is ready, you'll see the following page on `http://localhost:8080`:
 
 ![LimeSurvey welcome page](./images/homepage.webp)
@@ -72,9 +82,7 @@ Go to `http://localhost:8080/admin` to start the administration interface. The c
 
 ![LimeSurvey administration page](./images/admin.webp)
 
-You're now ready to start and play with LimeSurvey on your machine.
-
-![LimeSurvey dashboard](./images/dashboard.webp)
+Once logged in, you land on the dashboard shown at the beginning of this article, and you're ready to play with LimeSurvey on your machine.
 
 ## Using volumes
 
@@ -91,6 +99,10 @@ In that case, please read this blog post: <Link to="/blog/docker-volumes">Using 
 </AlertBox>
 
 ## Download an old version
+
+<AlertBox variant="danger" title="This section pins MySQL 5.7, which is end-of-life">
+MySQL 5.7 reached end of life in October 2023 and no longer receives security patches. Pinning it is intentional below, because the whole point is to mirror an old production environment on your machine. **Never use `mysql:5.7` for anything other than local reproduction of a legacy setup.**
+</AlertBox>
 
 You know what? It's really easy to download an old version.
 
@@ -112,8 +124,10 @@ Our `compose.yaml` will then become:
 
 <Snippet filename="compose.yaml" source="./files/compose.part3.yaml" />
 
-<AlertBox variant="danger" title="MySQL 5.7 is end-of-life">
-MySQL 5.7 reached end of life in October 2023 and no longer receives security patches. This configuration is intentional here because it mirrors an old production environment. **Never use `mysql:5.7` for anything other than local reproduction of a legacy setup.**
-</AlertBox>
-
 Just run `docker compose up --detach` and surf to `http://localhost:8080` and, congratulations, you have a local LimeSurvey v3.22.6 website.
+
+## Conclusion
+
+Two services in a `compose.yaml`, a `service_healthy` condition so LimeSurvey waits for its database, and a couple of named volumes when you want your surveys to survive: that's all it takes to get a disposable — or a persistent — LimeSurvey on your own machine. And because the version is just a Docker tag, reproducing the exact release running in production is a one-line change.
+
+Same recipe, other tools: browse the <Link to="/blog/tags/self-hosted">self-hosted</Link> articles of this blog.

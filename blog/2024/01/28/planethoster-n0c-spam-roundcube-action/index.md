@@ -34,6 +34,39 @@ Let's look at how to do as little as possible and still be a hardcore spam fight
 
 <!-- truncate -->
 
+## What you get
+
+At the end of this article, a script turns a plain list of domains into a complete RoundCube filter file:
+
+```none
+# rule:[Identify as spam: *.buzz]
+if allof (header :matches "from" "*.buzz")
+{
+  fileinto "spam";
+}
+# rule:[Identify as spam: *.cf]
+if allof (header :matches "from" "*.cf")
+{
+  fileinto "spam";
+}
+# rule:[Identify as spam: *.cn]
+if allof (header :matches "from" "*.cn")
+{
+  fileinto "spam";
+}
+```
+
+That file lands on your hosting account and RoundCube reads it as its filter list:
+
+![RoundCube filters](./images/filters.webp)
+
+<AlertBox variant="note" title="I've already added more spams domain for my own account">
+If you don't have the same list of filters; it's absolutely normal.
+
+</AlertBox>
+
+To put it simply: **you add one line to a JSON file on your computer, you push it, and RoundCube receives the new rules automatically a few seconds later.** No more clicking through the filter interface, one rule at a time.
+
 ## The idea
 
 As already explained, RoundCube is using a sieve file to store your rules. Such file can look like this:
@@ -64,6 +97,8 @@ And, therefore, the objective is simple and obvious: we're going to create a lit
     "And we'll finally set up GitHub Actions to automate the build and deploy process.",
   ]}
 />
+
+## Building the generator
 
 ### Create
 
@@ -176,44 +211,23 @@ At this stage, you've thus three files in your folder:
 
 In your console, run `./generate.sh` and if everything is running fine, you'll get a message like `File /home/xxx/sieve-generator/build/roundcube.sieve has been created.`.
 
-If you get an error about `jq` please install it by running: `sudo apt-get update && sudo apt-get install jq` then start `./generate.sh` again.
+<AlertBox variant="tip" title="`jq` is required">
+The script reads the JSON list with `jq`. If you get an error about it, install it by running `sudo apt-get update && sudo apt-get install jq` then start `./generate.sh` again.
+</AlertBox>
 
-So now, you should have a new folder called `build` where the file `roundcube.sieve` has been created. Open the file and check its content. It'll start with:
-
-```none
-# rule:[Identify as spam: *.buzz]
-if allof (header :matches "from" "*.buzz")
-{
-  fileinto "spam";
-}
-# rule:[Identify as spam: *.cf]
-if allof (header :matches "from" "*.cf")
-{
-  fileinto "spam";
-}
-# rule:[Identify as spam: *.cn]
-if allof (header :matches "from" "*.cn")
-{
-  fileinto "spam";
-}
-```
+So now, you should have a new folder called `build` where the file `roundcube.sieve` has been created. Open it: its content is the rule list shown at the beginning of this article, one block per pattern, sorted alphabetically.
 
 Congratulations: you've successfully created your anti-spam generator.
 
-#### At this stage, you can deploy the file to your FTP
+## Deploying the file by FTP
 
-If you wish to validate the `roundcube.save` file, you can start your FTP client, go to your N0C server (hosted by PlanetHoster), go to the folder `/mail/DOMAIN.TLD/ACCOUNT/sieve` (refers to the article <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link> if needed).
+To validate the `roundcube.sieve` file, you can start your FTP client, go to your N0C server (hosted by PlanetHoster), go to the folder `/mail/DOMAIN.TLD/ACCOUNT/sieve` (refers to the article <Link to="/blog/planethoster-n0c-spam">PlanetHoster's N0C infrastructure</Link> if needed).
 
 Push the file there, on your host.
 
-Now, go to your web email account (direct link: [https://mg.n0c.com/email/accounts](https://mg.n0c.com/email/accounts)) and start RoundCube. Open your account, click on `Settings` then `Filters` and tadaaa...
+Now, go to your web email account (direct link: [https://mg.n0c.com/email/accounts](https://mg.n0c.com/email/accounts)) and start RoundCube. Open your account, click on `Settings` then `Filters` and tadaaa — the filter list shown at the beginning of this article is now yours, without a single click in the filter editor.
 
-![RoundCube filters](./images/filters.webp)
-
-<AlertBox variant="note" title="I've already added more spams domain for my own account">
-If you don't have the same list of filters; it's absolutely normal.
-
-</AlertBox>
+## Automating it with GitHub Actions (optional)
 
 ### Create your own GitHub repository
 
@@ -239,9 +253,7 @@ Back to github, you'll obtain a repo like this one:
 
 ![GitHub repo](./images/github_repo.webp)
 
-So, now, each time you'll update the list of domains (in the `patterns.json` file), our objective is to ask GitHub to run itself the `./generate.sh` script to generate the `build/roundcube.sieve` file.
-
-And, too, to publish the new file to your FTP account so, to put it simply: you modify the JSON file on your computer and RoundCube receives the new rules automatically, just a few seconds later.
+So, now, each time you'll update the list of domains (in the `patterns.json` file), our objective is to ask GitHub to run the `./generate.sh` script itself, generate the `build/roundcube.sieve` file, and publish it to your FTP account.
 
 ### Adding GitHub Actions
 
@@ -357,5 +369,7 @@ If you've configured everything correctly, you should get this:
 ## Conclusion
 
 From now on, all you have to do is copy/paste the email addresses you receive spam from, see if you can standardize them as much as possible (by using the asterisk like in `newsletter@*`) and then copy/paste them into the JSON file that you just have to upload to GitHub.
+
+Fighting spam has become a one-line commit, and the blocklist is versioned: you can see when a domain was added, and remove it just as easily.
 
 Et voilà!

@@ -25,13 +25,27 @@ This article walks through installing Zsh and Oh My Zsh on Linux, then upgrading
 
 ZSH is a powerful alternative to Linux Bash offering a lot of features like auto-completion (I like this so much), plugins and even themes.
 
-*Once installed, three articles take it further: <Link to="/blog/powerlevel10k_sandbox">Customize your Linux prompt with Powerlevel10k</Link>, <Link to="/blog/modular-zsh-workflow">Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro</Link> to keep your `.zshrc` from becoming a monster, and <Link to="/blog/zsh-docker-functions">ZSH Functions - Customizing Your Shell for Docker Management</Link>.*
+*Once installed, two articles take it further: <Link to="/blog/modular-zsh-workflow">Beyond the Monolith - Organizing Your ZSH Workflow Like a Pro</Link> to keep your `.zshrc` from becoming a monster, and <Link to="/blog/zsh-docker-functions">ZSH Functions - Customizing Your Shell for Docker Management</Link>.*
 
 The idea here is to empower your Linux console: improve the command line (f.i. new aliases out-of-the-box) and make the look and feel even better.
 
 I've been using [Oh My ZSH](https://ohmyz.sh/) for years; let's see how to install it, followed by discovering some features.
 
 <!-- truncate -->
+
+## Where We're Going
+
+This is my prompt once Zsh, Oh-My-Zsh and the Powerlevel10k theme are in place:
+
+![Powerlevel10k - Prompt without username](./images/powerlevel10k_prompt_no_user.webp)
+
+At a glance I know I'm in my `blog` folder, that it's a Git repository, that I'm on branch `main` and that `?1` means one *untracked* or *modified* file is waiting on my computer, not yet pushed to GitHub. No command typed, no `git status` run: the information is simply there, refreshed at every prompt.
+
+## Why it's worth the ten minutes
+
+- **Oh-My-Zsh is a framework, not a theme.** It ships hundreds of aliases and functions out of the box, so you get value before configuring anything.
+- **The prompt becomes a dashboard.** Folder, repository, branch and pending-changes count are permanently displayed, which is exactly the state you keep checking manually.
+- **Autocompletion is on another level.** <kbd>TAB</kbd> lists sub-folders, command flags and Git branches, instead of just completing a file name.
 
 ## Installation
 
@@ -53,7 +67,7 @@ The first change concerns the prompt. Right now, I'm in my blog folder and it's 
 
 Nice but, we can do much better.
 
-Time to install a template engine called <Link to="/blog/powerlevel10k_sandbox">Powerlevel10k</Link> ([https://github.com/romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k)). You can read my previous article <Link to="/blog/powerlevel10k_sandbox">Customize your Linux prompt with Powerlevel 10k</Link> if you wish to just test it. In the next paragraph, I'll install Powerlevel10k on my computer, so let's go ahead.
+Time to install a template engine called Powerlevel10k ([https://github.com/romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k)). If you'd rather try it in a throwaway container before touching your machine, read <Link to="/blog/powerlevel10k_sandbox">Customize your Linux prompt with Powerlevel 10k</Link>. In the next paragraph, I'll install Powerlevel10k on my computer, so let's go ahead.
 
 ### Powerlevel10k
 
@@ -87,9 +101,7 @@ Ok, let's remove that part since, yeah, it's my home computer, it's normal here 
 
 Powerlevel10k has great documentation, and by reading [How do I add username and/or hostname to prompt?](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#how-do-i-add-username-andor-hostname-to-prompt), we learn how to remove it the same way.
 
-Just edit the `~/.p10k.zsh` file, search for `POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS` and then find its `context` entry and comment out the line. Save the file, open a new console and bingo, the right side of the prompt no longer contains the username.
-
-![Powerlevel10k - Prompt without username](./images/powerlevel10k_prompt_no_user.webp)
+Just edit the `~/.p10k.zsh` file, search for `POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS` and then find its `context` entry and comment out the line. Save the file, open a new console and bingo, the right side of the prompt no longer contains the username — you're now looking at the prompt shown at the top of this article.
 
 ## Some features I use daily
 
@@ -124,4 +136,8 @@ In terms of aliases, one I use several times a day is `gst` for `git status`. Yo
 
 And for sure, there are more — I probably don't even know they're part of ZSH anymore.
 
-There is much, much more, like <Link to="/blog/tags/zsh">plugins</Link>. I'll write other posts about them — next up, <Link to="/blog/zsh-plugin-autosuggestions">zsh-autosuggestions</Link> and <Link to="/blog/zsh-syntax-highlighting">zsh-syntax-highlighting</Link>, two must-haves once Oh-My-Zsh is in place.
+## Conclusion
+
+Three commands install Zsh and Oh-My-Zsh, a `git clone` and one `ZSH_THEME` line bring the Powerlevel10k prompt, and a single commented-out entry in `~/.p10k.zsh` removes the noise you don't need. From there the gains are permanent: `take`, `cd ...`, <kbd>TAB</kbd> completion and `gst` are typed dozens of times a day without you thinking about them.
+
+There is much, much more, like <Link to="/blog/tags/zsh">plugins</Link>. Next up, <Link to="/blog/zsh-plugin-autosuggestions">zsh-autosuggestions</Link> and <Link to="/blog/zsh-syntax-highlighting">zsh-syntax-highlighting</Link>, two must-haves once Oh-My-Zsh is in place.

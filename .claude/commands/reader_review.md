@@ -175,14 +175,68 @@ Then the summary table:
 List the TODO files created. For each one, add one line: "Pour l'implémenter : demande-moi de
 lire et d'appliquer `<path>` (pas `/todo` — ce fichier n'est pas numéroté)."
 
-Then, in batch mode only, print this block verbatim:
+## 7. Backlog state — always close on it
+
+Never end a batch on "j'ai fini ce lot" alone. The user cannot tell, from a batch report,
+whether the corpus is exhausted or whether eighty articles are still queued. **Measure it and
+say it**, every run, batch mode or single-article mode.
+
+Recompute the two counters from the journal you just updated:
+
+```bash
+# reviewed set: last review date per slug
+awk -F'|' '/^\| 20/ {d=$2; s=$3; gsub(/ /,"",d); gsub(/ /,"",s); print s"\t"d}' \
+  .todos/reader-review-journal.md | sort |
+  awk -F'\t' '{if($2>m[$1]) m[$1]=$2} END {for(s in m) print s"\t"m[s]}' | sort > /tmp/maxrev.txt
+
+# walk the corpus
+find blog .unpublished \( -name index.md -o -name index.mdx \) | sort | while read -r f; do
+  slug=$(grep -m1 '^slug:' "$f" | sed 's/^slug:[[:space:]]*//;s/^["'"'"']//;s/["'"'"']$//')
+  rd=$(awk -F'\t' -v s="$slug" '$1==s{print $2}' /tmp/maxrev.txt)
+  gd=$(git log -1 --format=%ad --date=short -- "$f")
+  if   [ -z "$rd" ];                            then echo "NEVER|$slug|$f"
+  elif [ -n "$gd" ] && [[ "$gd" > "$rd" ]];     then echo "STALE|$slug|$f"
+  fi
+done
+```
+
+- `NEVER` — never audited. Priority 1 of step 2.
+- `STALE` — audited, then rewritten. Priority 3 of step 2: the rewrite is exactly what a
+  re-audit is meant to verify, so these are **not** "already done".
+
+Close the report with the matching block. **Both counters at zero:**
 
 ```text
 ---
-Le journal a enregistré la progression : /reader_review reprendra au lot suivant.
+✅ Corpus entièrement traité — il ne reste plus rien à auditer.
+
+  Articles (blog/ + .unpublished/) : N
+  Jamais audités                   : 0
+  Modifiés depuis leur audit       : 0
+
+/reader_review ne sélectionnera plus rien tant qu'un article n'aura pas été écrit ou
+réécrit. Relance-le après ta prochaine session d'écriture, ou vise un article précis :
+/reader_review <slug>
+---
+```
+
+**Anything remaining** — give the split, never a bare total, and name the next batch:
+
+```text
+---
+Reste à traiter : X article(s).
+
+  Jamais audités             : A
+  Modifiés depuis leur audit : B   (repassent en file pour vérification)
+
+Prochain lot : <les 3 premiers slugs de la sélection à venir>, …
+Le journal a enregistré la progression : /reader_review reprendra là.
 Lance /clear avant le prochain lot pour repartir sur un contexte propre.
 ---
 ```
+
+In single-article mode, keep only the first two lines of the counters block — no "prochain
+lot", no `/clear` instruction.
 
 ---
 

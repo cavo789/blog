@@ -30,29 +30,38 @@ My tables, my models, my SQL queries, I was able to remove everything from my co
 
 <!-- truncate -->
 
-"PostgREST is a standalone web server that turns your PostgreSQL database directly into a RESTful API. The structural constraints and permission in the database determine the API endpoints and operations". You can retrieve the official documentation [https://postgrest.org/en/](https://postgrest.org/en/).
+## What PostgREST does for you
 
-*Oracle has its own equivalent, described in <Link to="/blog/docker-oracle-ords">Transform an Oracle DB as OpenData using Oracle REST Data Services</Link>. And to inspect the database behind the API, <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Adminer, pgadmin or phpmyadmin</Link> remains handy.*
+There is a `todos` table in a PostgreSQL database. No controller, no route file, no model — nothing has been written. And yet:
 
-<AlertBox variant="info" title="Will return JSON">
-In short: using an API, PostgREST will retrieve data from your PostgreSQL database and will return a JSON answer to you.
+<Terminal typewriter>
+$ curl http://localhost:3000/todos | jq
+</Terminal>
 
-</AlertBox>
-
-<AlertBox variant="info" title="PostgREST is magic: it takes all the complexity out of accessing your data">
-Back to my experience: after the migration from MySQL to PostgreSQL, I deleted 100% of my code that had to declare my tables and their fields (the models), I deleted the declaration of my relationships between tables, I deleted my queries, ... After my migration to PostgREST, I no longer had any PHP code of the "database" type. Everything was replaced by web calls to APIs. On top, in Javascript and using axios, I can directly access to my database using f.i.
-
-```js
-const todos = axios.create({
-    baseURL: 'http://localhost:3000/todos',
-    headers: {
-      'Accept': 'application/json'
-    }
-})
+```json
+[
+  {
+    "id": 1,
+    "done": false,
+    "task": "finish tutorial 0",
+    "due": null
+  },
+  {
+    "id": 2,
+    "done": false,
+    "task": "pat self on back",
+    "due": null
+  }
+]
 ```
 
+Ready-to-consume JSON, straight from the table, without a single line of backend code. It's awfully easy, isn't it?
 
-</AlertBox>
+## Why it works
+
+- **The database schema *is* the API.** "PostgREST is a standalone web server that turns your PostgreSQL database directly into a RESTful API. The structural constraints and permission in the database determine the API endpoints and operations" (the [official documentation](https://postgrest.org/en/)). A table becomes an endpoint, a column becomes a field.
+- **Permissions are the security layer**, and they live where they belong: in PostgreSQL. A `users` table you never grant to the anonymous role simply doesn't exist as far as the API is concerned.
+- **There's nothing left to keep in sync.** After my own migration, I deleted 100% of the code declaring tables and fields, the relationship declarations, and the queries. What used to be a model layer became URLs.
 
 ## Let's play
 
@@ -113,46 +122,15 @@ Now, we'll run a Docker container for PostgREST:
 $ ./postgrest tutorial.conf
 </Terminal>
 
-### Step 3 - Play with PostgREST
+## More queries
 
-So, in step 1, we've created and populated our PostgreSQL database and, in step 2, we've installed and configured PostgREST to use that database.
+So, in step 1, we've created and populated our PostgreSQL database and, in step 2, we've installed and configured PostgREST to use that database. From now, we can directly use it like any API.
 
-So, from now, we can directly use it like any API.
-
-How do you usually run an API? Most probably by starting your web browser and by accessing a specific URL. Let's try but in this article, I'll use `curl`.
-
-The query below is made by a fix part (the URL for our postgREST server) which is `http://localhost:3000` and, after it, our query.
-
-To get the content of a table, just mention its name so `http://localhost:3000/todos` will return all the records of the `todos` table.
+Every query is made of a fixed part (the URL of our PostgREST server), which is `http://localhost:3000`, followed by the query itself. To get the content of a table, just mention its name — that's the `http://localhost:3000/todos` call shown at the top of this article.
 
 For aesthetic reasons here, I'm using `| jq` (you can remove that part if you want). See my <Link to="/blog/linux-jq">The jq utility for Linux</Link> article to learn more about `jq`.
 
-<Terminal typewriter>
-$ curl http://localhost:3000/todos | jq
-</Terminal>
-
-And the result:
-
-```json
-[
-  {
-    "id": 1,
-    "done": false,
-    "task": "finish tutorial 0",
-    "due": null
-  },
-  {
-    "id": 2,
-    "done": false,
-    "task": "pat self on back",
-    "due": null
-  }
-]
-```
-
-It's awfully easy, isn't it?
-
-#### Using a filter
+### Using a filter
 
 You can use filters by typing f.i. `?` followed by a field name and a criteria. To get only the record having the `id` 2, here is how to do:
 
@@ -180,27 +158,42 @@ Below, we are asking for getting only fields `id` and `task`:
 $ curl http://localhost:3000/todos?select=id,task | jq
 </Terminal>
 
+### From the frontend
+
+Since these are plain HTTP endpoints, your frontend consumes them directly. In JavaScript, using axios:
+
+```js
+const todos = axios.create({
+    baseURL: 'http://localhost:3000/todos',
+    headers: {
+      'Accept': 'application/json'
+    }
+})
+```
+
+## Under the hood (skip this if you just want to use it)
+
+### Permissions required
+
+By using PostgREST you expose your tables and records through a RESTful API. Naturally, there is a system of permission so that you can define what can be accessed (e.g. a `users` table will remain secret) and what can be done (e.g. one user will only have read access but another will have read-write access).
+
+### OpenAPI
+
+PostgREST is compliant with [OpenAPI](https://swagger.io/specification/). It's then possible to auto-document its routes using the [Swagger UI](https://hub.docker.com/r/swaggerapi/swagger-ui) Docker image.
+
+This means that running `curl http://localhost:3000` (the PostgREST URL), you'll get the list of all tables accessible to you (using your access key). This makes your database open to the world (once again, only what you've allowed using correct permission).
+
 ### Close PostgREST
 
 Return to the console in which you've started PostgREST and press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop PostgREST from running.
 
 If you've started PostgreSQL here above, you can stop and kill it using `docker container stop tutorial ; docker container rm tutorial`.
 
-## Permissions required
-
-By using PostgREST you expose your tables and records through a RESTful API. Naturally, there is a system of permission so that you can define what can be accessed (e.g. a `users` table will remain secret) and what can be done (e.g. one user will only have read access but another will have read-write access).
-
-## Get more examples
-
-Consult my [PostgREST](https://github.com/cavo789/postgrest) repository on GitHub to get more examples.
-
-## OpenAPI
-
-PostgREST is compliant with [OpenAPI](https://swagger.io/specification/). It's then possible to auto-document its routes using the [Swagger UI](https://hub.docker.com/r/swaggerapi/swagger-ui) Docker image.
-
-This means that running `curl http://localhost:3000` (the PostgREST URL), you'll get the list of all tables accessible to you (using your access key). This makes your database open to the world (once again, only what you've allowed using correct permission).
-
 ## Illustration of some calls
+
+<AlertBox variant="caution" title="These queries target another database">
+The examples below come from my [PostgREST](https://github.com/cavo789/postgrest) demo repository, whose database holds `citizens`, `workers`, `levels`, `translations` and `generic_profiles` tables. They will **not** run against the `todos` database built earlier in this article — read them as a syntax catalogue, not as commands to copy right now.
+</AlertBox>
 
 ### Citizens
 
@@ -248,3 +241,9 @@ This means that running `curl http://localhost:3000` (the PostgREST URL), you'll
 
 - Get the ID and email of worker `15`: `clear ; curl http://127.0.0.1:3000/workers\?select\=id,email\&id=eq.75 | jq` / [URL](http://127.0.0.1:3000/workers?select=id,email&id=eq.75)
 - Cast the ID as string: `clear ; curl http://127.0.0.1:3000/workers\?select\=id::text,email\&id=eq.75 | jq` / [URL](http://127.0.0.1:3000/workers?select=id::text,email&id=eq.75)
+
+## Conclusion
+
+A container, a binary and a `.conf` file, and your database answers HTTP. What I find remarkable isn't the speed of the setup, it's what disappears afterwards: the models, the relationship declarations, the query builder calls — an entire layer whose only job was to describe, in your language, something PostgreSQL already knew.
+
+Oracle has its own equivalent, described in <Link to="/blog/docker-oracle-ords">Transform an Oracle DB as OpenData using Oracle REST Data Services</Link>. And to look at the database behind the API, <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Adminer, pgadmin or phpmyadmin</Link> remains handy.

@@ -29,16 +29,9 @@ Rector will look at every line of code, every loop, every conditional test, ever
 
 In this role, it will not only detect improvements to my code (like a static analysis tool) but, and this is the biggest advantage for me, it will show me how I can become a better developer.
 
-*Rector is one of the tools shipped in the <Link to="/blog/php-jakzal-phpqa">jakzal/phpqa</Link> image and preinstalled in the <Link to="/blog/php-devcontainer">PHP devcontainer</Link>, so you can try it without installing anything.*
-
 I REALLY LOVE RECTOR 💕
 
 <!-- truncate -->
-
-<AlertBox variant="info" title="Rector can be downloaded on GitHub">
-Don't wait and install [Rector](https://github.com/rectorphp/rector)
-
-</AlertBox>
 
 Like a lot of people, I learned PHP on my own and that was at the time of PHP 5. Like a lot of people, I certainly picked up some bad habits and because it's impossible to keep up with every evolution of the language, my skills don't increase at the same time as the language.
 
@@ -62,9 +55,25 @@ What's wrong with my code?
 - Using the `ternary operator`; the `$text` variable becomes useless and
 - the function is returning a string (the `$text` variable) but the prototype of the function didn't mention this. So why not write `function sayHello($firstname = ''): string`
 
-<AlertBox variant="info" title="I'll lend you my friend, my coach, Rector" />
+## Here is what Rector says about it
+
+Before you install anything, here is the answer Rector gives on that exact file:
+
+![Rector is simplifying our sayHello function](./images/rector_say_hello.webp)
+
+A colored diff — the code as it is, the code as it could be — and, at the bottom of the screen, an `Applied rules:` section.
+
+## Why it works
+
+- **Rector reasons in named rules, not in patterns.** Every change comes with the name of the rule that produced it, and that name is a link to a documented explanation.
+- **It parses your code, it doesn't grep it.** Rector builds the syntax tree of the file, which is why it can tell that a variable is only there to be returned, or that a return value can only ever be a string.
+- **Nothing moves until you say so.** With `--dry-run` you get the diff and your files stay exactly as they were, so reading the suggestions costs nothing.
 
 ## Install Rector
+
+<AlertBox variant="tip" title="You can try Rector without installing it">
+Rector is one of the tools shipped in the <Link to="/blog/php-jakzal-phpqa">jakzal/phpqa</Link> Docker image and it comes preinstalled in the <Link to="/blog/php-devcontainer">PHP devcontainer</Link>. If you just want to see what it says about your code, start there.
+</AlertBox>
 
 When you use composer to manage dependencies in your project, just run `composer require rector/rector --dev` in a console. This will install Rector as a dev-dependency (which is pretty good).
 
@@ -78,11 +87,9 @@ For simplicity, create the `rector.php` file in your project's root directory.
 
 ## Run Rector
 
-Call your friend, your coach, by just running `vendor/bin/rector process sayHello.php --dry-run --config rector.php`.
+The command that produced the screenshot above is `vendor/bin/rector process sayHello.php --dry-run --config rector.php`.
 
-![Rector is simplifying our sayHello function](./images/rector_say_hello.webp)
-
-Let's take a look at the command:
+Let's take a look at it:
 
 - `vendor/bin/rector`: this is the executable to start,
 - `process`: the action to run, it's always `process`,
@@ -90,9 +97,7 @@ Let's take a look at the command:
 - `--dry-run`: ask Rector to, only, show suggestions and not to update the file and
 - `--config rector.php`: this is the name of our configuration file.
 
-So running `vendor/bin/rector process sayHello.php --dry-run --config rector.php` is just like to ask **Hey my friend and coach, please take a look to my sayHello.php script and show me how I can improve my syntax and be a better programmer.**  And Rector does it; quickly and without judgment.
-
-He'll show you the changes **he could make**, automatically, and explain why he thinks it's better.
+So running that command is just like asking: **please take a look at my sayHello.php script and show me how I can improve my syntax.** And Rector does it; quickly and without judgment, showing the changes it **could** make and explaining why it thinks they're better.
 
 ## Applied rules
 
@@ -185,14 +190,12 @@ Yes, I'm very grateful to Rector for teaching me these new approaches and making
 
 Now that we've taken the time to analyze the rules that could be applied and that we think are perfectly adequate, it's time to start refactoring for real: simply remove the `--dry-run` flag and, thus, the final command to run is: `vendor/bin/rector process sayHello.php --config rector.php`.
 
-You know what? **I LOVE RECTOR 💕**
-
 Imagine what it could do for my entire project if I run `vendor/bin/rector process . --dry-run --config rector.php`.
 
-## Learn more
+## Conclusion
 
-Please visit [https://getrector.com/](https://getrector.com/) and learn more about rules and how to configure the `rector.php` for your project.
+A linter tells you that a line is wrong. Rector tells you what it would write instead, and names the rule so you can go read why. That's the difference between a tool that grades you and a coach that teaches you — and after a few sessions, you stop writing the useless temporary variable in the first place.
 
-There are more than 400 rules right now; see all of them here: [https://getrector.com/documentation/rules-overview](https://getrector.com/documentation/rules-overview)
+There are more than 400 rules right now; see all of them at [https://getrector.com/documentation/rules-overview](https://getrector.com/documentation/rules-overview), and visit [https://getrector.com/](https://getrector.com/) to learn how to configure `rector.php` for your own project.
 
-Rector is just one piece of my PHP code-quality toolbox; see also <Link to="/blog/php-jakzal-phpqa">the Docker image bundling static analysis tools</Link> and <Link to="/blog/online-php-linter">formatting poorly formatted PHP code</Link>.
+Rector is just one piece of my PHP code-quality toolbox; see also <Link to="/blog/online-php-linter">formatting poorly formatted PHP code</Link>.

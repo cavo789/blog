@@ -24,18 +24,30 @@ Indeed, from time to time, it can be useful to take a look at the list of tables
 
 Years ago, I wrote such a PHP utility; let's see how to use it.
 
-*Before deleting anything, you'll probably want to **look** at those tables; <Link to="/blog/joomla-show-table">Joomla - Run a SQL statement outside Joomla and display a nice HTML table</Link> is the read-only companion of this script.*
-
 <!-- truncate -->
+
+## What the utility looks like
+
+![Kill tables](./images/kill_tables.webp)
+
+Type a prefix in the text field and the utility immediately lists every table of your Joomla database matching it. Tick the ones you want gone, click `Kill selected tables`, and they're dropped. The `Remove this script` button on the right deletes the utility from your server once you're done.
+
+That's the whole tool: one screen, one text field, no configuration file.
+
+## How to use it
 
 1. Click on the link [https://github.com/cavo789/joomla_free/blob/master/src/kill_db_tables/kill_db_tables.php](https://github.com/cavo789/joomla_free/blob/master/src/kill_db_tables/kill_db_tables.php) to get a copy of my PHP utility,
 2. Copy/download the script and using your FTP client (<Link to="/blog/winscp-synchronize-both">WinSCP</Link> f.i.), upload the script to your Joomla site, in the same directory as your `configuration.php` file. Name the script like, f.i., `delete_tables.php`,
 3. Open your internet browser and go to the URL of your website and access `delete_tables.php`, so f.i. `https://yoursite.com/delete_tables.php`
-4. You'll get a screen like below. In the text field, just start to type your prefix and you'll get a list of tables using that prefix. Once you're sure, just click on the `Kill selected tables` button.
+4. In the text field, just start to type your prefix and you'll get the list of tables using that prefix. Once you're sure, just click on the `Kill selected tables` button.
 5. Finally, be sure to click on the `Remove this script` button since the script shouldn't stay there.
-
-![Kill tables](./images/kill_tables.webp)
 
 <AlertBox variant="highlyImportant" title="Make sure to click on `Remove this script`." />
 
 <AlertBox variant="highlyImportant" title="Make sure you know what you're doing and to have a database backup, just in case." />
+
+## Conclusion
+
+A leftover `old_` or `joomla_oldcomp` prefix is the kind of clutter you notice once a year and never take the time to clean, because doing it by hand in phpMyAdmin means ticking thirty checkboxes without being sure. This script does the selection for you, in one screen, and then removes itself.
+
+Before dropping anything, take the time to **look** at what those tables contain: <Link to="/blog/joomla-show-table">Joomla - Run a SQL statement outside Joomla and display a nice HTML table</Link> is the read-only companion of this utility.

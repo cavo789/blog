@@ -26,12 +26,21 @@ This can be done in just one command line instruction.
 
 <!-- truncate -->
 
-Before being able to start the command, you should provide some information:
+## One command, your database in a browser
 
-- you should know the **name of the Docker container** you want to connect to and
-- you should know the **name of the used network**.
+<Terminal typewriter>
+$ docker run -d --rm --name adminer --network joomla_default --link joomla-joomladb-1:db -p 8088:8080 adminer
+</Terminal>
 
-## Retrieve the list of our containers
+Surf to `http://127.0.0.1:8088` and your database is right there:
+
+![adminer](./images/adminer.webp)
+
+Tables, records, structure, SQL console — and nothing was added to your `compose.yaml`, nothing was installed on your machine. When you're done, the container removes itself thanks to `--rm`.
+
+Only two values in that command are yours: the **name of the container** holding the database, and the **name of the network** it runs on. Both are one command away.
+
+## Find your container and its network
 
 We'll use `docker container list` to get the list of containers; we just want the image name and the container name.
 
@@ -67,16 +76,10 @@ The name of the network used by `joomla-joomladb-1` is thus `joomla_default` as 
 
 ## Run Adminer
 
-The command line to start is something like
+Written as a template, the Adminer command is:
 
 <Terminal typewriter>
 $ {`docker run -d --rm --name adminer --network <network_name> --link <container-name>:db -p 8088:8080 adminer`}
-</Terminal>
-
-and thus, with values from our example,
-
-<Terminal typewriter>
-$ docker run -d --rm --name adminer --network joomla_default --link joomla-joomladb-1:db -p 8088:8080 adminer
 </Terminal>
 
 The flag `--network` should thus be set to the name of the used network and `--link` is a two part value, the name of the container to connect followed by `:db`.
@@ -86,7 +89,7 @@ In the example, we'll make adminer available on port `8088`. Don't hesitate to u
 
 </AlertBox>
 
-Since we've defined port `8088` in our command above, just go to `http://127.0.0.1:8088` to get access to the Adminer web interface.
+On the Adminer login screen:
 
 - `System`: select the used database service,
 - `Server`: should be set to the name of the database service inside your Docker container,
@@ -100,8 +103,6 @@ To retrieve the name of the server, it's the name of the service as defined in y
 If you already know some of these values, you can provide them in a link, like `http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db`.
 
 </AlertBox>
-
-![adminer](./images/adminer.webp)
 
 ## Run pgadmin
 
@@ -126,3 +127,9 @@ To open phpmyadmin, start your browser and navigate to `http://127.0.0.1:8089` s
 ![phpmyadmin](./images/phpmyadmin.webp)
 
 ![List of databases](./images/phpmyadmin_databases.webp)
+
+## Conclusion
+
+The thing worth remembering is that you don't have to plan for this. Your `compose.yaml` doesn't need an `adminer` service "just in case": the day you need to look at the data, you attach a UI to the network with one `docker run`, and it disappears when you stop it.
+
+The only prerequisite is knowing the network name, and <Link to="/blog/docker-inspect">Docker inspect - Retrieve network's information</Link> covers that command in more depth. For a full application to try this on, see <Link to="/blog/docker-joomla">Create your Joomla website using Docker</Link>.

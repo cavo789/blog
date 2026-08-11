@@ -44,7 +44,7 @@ blueskyRecordKey: 3lx57pqunek23
 
 <!-- cspell:ignore apac, ibdata, ibtmp -->
 
-In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds** _(don't want to wait? Jump to the <a href="#bonus---install-joomla-with-a-cli-one-liner">Bonus - Install Joomla with a CLI one-liner</a> chapter)_.
+In this article, we will learn how to use Docker to install Joomla on your localhost and start a new website **in seconds**.
 
 I will use a Linux console _(I'm running WSL on my Windows computer and I have chosen Ubuntu for my distribution)_ but since Docker can also be used on Windows, you can run exactly the same commands in an MS-DOS / PowerShell console.
 
@@ -53,6 +53,41 @@ I will use a Linux console _(I'm running WSL on my Windows computer and I have c
 If you don't have Docker yet, please consult my "[Install Docker and play with PHP](/blog/install-docker)" article to get more information about Docker and an easy introduction guide.
 
 **We will assume in this article that you have Docker, and you're working under Linux or using WSL.**
+
+## Two minutes, one file, your Joomla is running
+
+Click on the `Generate install script` below and copy/paste the script in a terminal:
+
+<ProjectSetup folderName="/tmp/joomla" createFolder={true}>
+  <Snippet
+    filename="compose.yaml"
+    source="./files/compose_joomla_latest.yaml"
+  />
+  <Guideline>
+    Now, simply run 'docker compose up -d' to start the project then open your
+    browser and surf to http://localhost:8080
+  </Guideline>
+</ProjectSetup>
+
+Run `docker compose up --detach`, wait for the images to download, then open `http://localhost:8080`:
+
+![Joomla installer](./images/joomla_installation_screen.webp)
+
+Answer the installer's questions and, a few seconds later, you're here:
+
+![Joomla administration dashboard](./images/admin_dashboard.webp)
+
+A complete Joomla website, on your machine, with a database — and not a single file of Joomla or MySQL installed on your disk.
+
+## What just happened
+
+That one command asked Docker to read the `compose.yaml` file and, from it:
+
+1. a `joomla_default` network is created,
+2. the `joomla-joomladb-1` container is created (this is your database server) and
+3. the `joomla-joomla-1` container is created too (this is your Joomla service).
+
+The two containers share the network, which is how Joomla can reach the database by its service name. The rest of this article explains that file line by line, then goes much further: persisting your site on disk, running CLI commands, changing ports, switching to PostgreSQL or MariaDB.
 
 ## Before starting
 
@@ -88,32 +123,15 @@ You will find an example of the `compose.yaml` file on the Joomla image descript
 
 ## Download images
 
-Click on the `Generate install script` below and copy/paste the script in a terminal.
-
-<ProjectSetup folderName="/tmp/joomla" createFolder={true}>
-  <Snippet
-    filename="compose.yaml"
-    source="./files/compose_joomla_latest.yaml"
-  />
-  <Guideline>
-    Now, simply run 'docker compose up -d' to start the project then open your
-    browser and surf to http://localhost:8080
-  </Guideline>
-</ProjectSetup>
-
-To make things as clear as possible, here is my temporary folder content once I've run the generation script:
+Let's go back to the generation script from the beginning of this article and look at what it actually did. To make things as clear as possible, here is my temporary folder content once I've run it:
 
 <Terminal typewriter source="./files/terminal-15.txt" />
 
 So, I just have one file, and this is the newly, created, `compose.yaml` file.
 
-In your terminal, please run the following command:
-
-<Terminal typewriter>$ docker compose up --detach</Terminal>
-
 <AlertBox
   variant="info"
-  title="That command is one of the most important to know. It asks Docker to proceed the `compose.yaml` file and run services. In short: run your website."
+  title="`docker compose up --detach` is one of the most important commands to know. It asks Docker to proceed the `compose.yaml` file and run services. In short: run your website."
 />
 
 Docker will start downloading `joomla` and `joomladb`, the two services mentioned in the `compose.yaml` file.
@@ -132,11 +150,7 @@ At the end, once images have been downloaded, the console will show something li
 
 <Terminal typewriter source="./files/terminal-13.txt" />
 
-So, the two images have been downloaded then,
-
-1. a `joomla_default` network is created,
-2. the `joomla-joomladb-1` container is created (this is your database server) and
-3. the `joomla-joomla-1` container is created too (this is your Joomla service).
+The two images have been downloaded, and the network plus the two containers listed earlier have been created.
 
 At this stage, your site is already being installed. Go to the URL `http://127.0.0.1:8080` to view it (make sure to use the `http` protocol and not `https`).
 
@@ -203,9 +217,7 @@ We have two running containers (your two services). Pay attention to the `PORTS`
 
 Hey, port `8080`, does that mean anything to you? That is a port for a web page, isn't it?
 
-Let us try by starting your favorite browser and navigating to `http://localhost:8080` (_or `http://127.0.0.1:8080`, it's strictly the same_) and... Wow!
-
-![Joomla installer](./images/joomla_installation_screen.webp)
+Let us try by starting your favorite browser and navigating to `http://localhost:8080` (_or `http://127.0.0.1:8080`, it's strictly the same_) and... Wow! The Joomla installer shown at the beginning of this article is waiting for you.
 
 ## Install Joomla
 
@@ -251,9 +263,7 @@ The administrator page:
 
 ![Joomla installation is done](./images/joomla_start_administrator.webp)
 
-And the administrator dashboard:
-
-![Joomla administration dashboard](./images/admin_dashboard.webp)
+And behind it, the administrator dashboard shown at the beginning of this article.
 
 **Congratulations, you have successfully installed a fresh Joomla website using Docker!**
 
@@ -544,9 +554,9 @@ Another use case, you wish to start the Windows Explorer program and navigate in
 
 ## Bonus - Install Joomla with a CLI one-liner
 
-In the introduction of this article, I have said _we will learn how to use Docker to install Joomla and start a new website **in seconds**_.
+The `compose.yaml` used at the beginning of this article was the minimal one. Here is the **final** version, carrying everything we've added since: a project name, explicit container names, and the two volumes so your site and your database survive a `docker compose down`.
 
-And here is the promise. Just click on the `Generate install script` below, copy/paste the script in your console, run it and follow the instruction. After a few seconds, you'll have a running Joomla website.
+Just click on the `Generate install script` below, copy/paste the script in your console, run it and follow the instruction. After a few seconds, you'll have a running Joomla website — one you can actually keep.
 
 <ProjectSetup folderName="/tmp/joomla">
   <Guideline>
@@ -567,3 +577,9 @@ And here is the promise. Just click on the `Generate install script` below, copy
 Make sure, for each project, to update the `name:` line and if you plan to be able to run your Joomla sites concurrently, make sure to update the port number for Joomla and chose a new one every time (can be `80`, `81`, `82` and so on).
 
 </AlertBox>
+
+## Conclusion
+
+What I like most about this setup isn't the speed — it's that a Joomla site becomes a *folder*. One `compose.yaml`, two sub-folders, and you can have five of them side by side, each on its own port, each with its own database, none of them able to break the others. Deleting a site is deleting a folder.
+
+From here, two natural next steps: <Link to="/blog/docker-joomla-part-2">Create your Joomla website using Docker - Part 2</Link> goes further with the day-to-day workflow, and <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Using Adminer, pgadmin or phpmyadmin</Link> shows how to browse the database that was just created for you.

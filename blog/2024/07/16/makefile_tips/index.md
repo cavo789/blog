@@ -29,7 +29,7 @@ Below is a note that I took and revised several times when I took the time to cr
 
 <!-- truncate -->
 
-<Details summary="Don't have `make` installed yet? Click to expand.">
+<Details label="Don't have `make` installed yet? Click to expand.">
 
 Just run the following commands to install the `Make` executable on your host machine:
 

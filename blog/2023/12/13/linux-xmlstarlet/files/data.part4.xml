@@ -1,8 +1,0 @@
-<bookstore>
-    <!-- highlight-next-line -->
-    <book category="children">
-        <!-- highlight-next-line -->
-        <title lang="en">Harry Potter</title>
-        [...]
-    </book>
-</bookstore>

@@ -29,11 +29,6 @@ blueskyRecordKey: 3lymrewibzk2l
 This long, step-by-step article builds a VSCode devcontainer for PHP with a full set of preinstalled code-quality tools: PHP-CS-Fixer and PHPCBF/PHPCS for auto-formatting on save, SonarLint and Intelephense for real-time bug detection, and Rector for automated codebase upgrades and refactoring suggestions — all configured once in `devcontainer.json` and `Dockerfile` so any team member gets the identical environment.
 </TLDR>
 
-<AlertBox variant="info" title="Don't want to read this long article">
-So jump to <Link to="/blog/php-devcontainer">Install a PHP Docker environment in a matter of seconds</Link>
-
-</AlertBox>
-
 Let's imagine one of the following situations:
 
 1. You are working with several people on the same PHP project and you notice that one person or another does not comply with your quality criteria when it comes to the layout of the code. You like to use four spaces for indentation, you want the brace that marks the start of a function to be on the line, you don't want to see any more useless spaces at the end of the line, ... and damned! you notice that some people don't care about this.
@@ -44,13 +39,34 @@ The ultimate solution: using a `devcontainer` in VSCode.
 
 By using a **devcontainer**, you (and your team colleague) will use a preinstalled environment and everyone will have exactly the same. You'll save yourself a lot of time by not having to configure your system, and you'll be able to start coding straight away, supported by a range of quality analysis tools.
 
-*Two complements to this article: <Link to="/blog/php-jakzal-phpqa">jakzal/phpqa</Link> if you'd rather run those tools on demand than install them in your image, and <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers - The Clean Way</Link> to make sure none of this development tooling ever ends up in your production image.*
-
 <!-- truncate -->
 
-<AlertBox variant="info" title="Download the project">
-This article is written in the form of a step-by-step tutorial. If you don't want to take the time to create the configuration files yourself and download them directly, please run the commands below in a Linux console. You'll then get all the files and every time the tutorial below tells you to create a file, you'll already have it.
+## What a devcontainer does for you
+
+Here is a PHP file as I saved it, with my worst habits on display — random indentation, trailing spaces (shown as dots), braces wherever they landed:
+
+![Index php with poor written code](./images/index_php_bad_formatting.webp)
+
+Now the same file, after a single <kbd>CTRL</kbd>+<kbd>S</kbd> inside the devcontainer. I changed nothing; I only saved:
+
+![Your script has been correctly formatted this time](./images/index_php_correctly_formatted.webp)
+
+Nothing was installed on my machine to make that happen — no PHP, no Composer, no formatter binary. And the colleague who clones the repository gets the exact same behavior, without being asked to configure anything.
+
+## Why it works
+
+- **The Docker image carries the tools.** PHP-CS-Fixer, PHPCS/PHPCBF and Composer are downloaded when the image is built, so they exist inside the container and nowhere else.
+- **`devcontainer.json` carries the editor.** It lists the VSCode extensions to install and the settings to apply — including "format this file on save, with that binary, using that config file".
+- **VSCode attaches itself to the container.** Your editor keeps running on your machine, but everything it executes happens inside the container. That's why a path like `/usr/local/bin/php-cs-fixer.phar` is perfectly valid even though it doesn't exist on your disk.
+
+<AlertBox variant="info" title="You just want the ready-made environment?">
+Then skip this whole tutorial and go to <Link to="/blog/php-devcontainer">Install a PHP Docker environment in a matter of seconds</Link>: same result, three commands, no explanations.
+
 </AlertBox>
+
+## Get the files
+
+This article is written in the form of a step-by-step tutorial. If you don't want to take the time to create the configuration files yourself and download them directly, please run the commands below in a Linux console. You'll then get all the files and every time the tutorial below tells you to create a file, you'll already have it.
 
 <Terminal typewriter source="./files/terminal-4.txt" />
 
@@ -72,14 +88,7 @@ Create a new file called `index.php` with the PHP code below:
 
 <Snippet filename="index.php" source="./files/index.php" />
 
-![Index php with poor written code](./images/index_php_bad_formatting.webp)
-
-<AlertBox variant="note" title="Pay attention to extra whitespace">
-On the screen capture here above, you can see *dots* to illustrate spaces and you can see there are a lot of spaces here and there and there are just unneeded.
-
-</AlertBox>
-
-As you have noticed, VSCode saved our file as it was: **with a layout that was just disgusting**. Remember that, and we'll see that VSCode can do much better than that.
+That's the file shown at the beginning of this article, in its *before* state: VSCode saved it exactly as it was, **with a layout that was just disgusting**, extra whitespace included.
 
 We can run that script in a browser by running `docker run -d -p 80:80 -u $(id -u):$(id -g) -v .:/var/www/html php:8.2-apache` (read <Link to="/blog/docker-php-run-script-or-website">The easiest way to run a PHP script / website</Link> post if a refresh is needed).
 
@@ -137,9 +146,7 @@ Visual Studio Code will do a lot of stuff and, the first time, it can take a few
 
 ## 6. Working in the container
 
-Now the magic happens: please reopen the so badly formatted `index.php` file and save the file **without any changes**. Just press <kbd>CTRL</kbd>+<kbd>S</kbd> and tadaaa 🎉🎉🎉
-
-![Your script has been correctly formatted this time](./images/index_php_correctly_formatted.webp)
+Now the magic happens: please reopen the so badly formatted `index.php` file and save the file **without any changes**. Just press <kbd>CTRL</kbd>+<kbd>S</kbd> and tadaaa 🎉🎉🎉 — you get the reformatted file shown at the beginning of this article.
 
 <AlertBox variant="info" title="How is this possible?">
 This is because we taught VSCode to use a specific formatter for our PHP file and we told him to format the file each time it's saved. And do you know where we did it? In our `.devcontainer/devcontainer.json` and `.devcontainer/Dockerfile` files, of course!
@@ -147,6 +154,10 @@ This is because we taught VSCode to use a specific formatter for our PHP file an
 **This is why we're working in a Devcontainer!** We've done the configuration once and for all, so all we have to do is reuse it, whatever the PHP project.
 
 </AlertBox>
+
+## The tools (pick the ones you need)
+
+The five sections below are independent from each other: each one covers a tool that is already installed in the container, what it catches, and where it was declared. Read the ones that matter to you and skip the rest — the environment works with all of them enabled anyway.
 
 ### The first tool we've used here is PHP-CS-Fixer
 
@@ -466,3 +477,11 @@ Some extensions will be automatically installed:
 - [usernamehw.errorlens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) - Improve highlighting of errors, warnings and other language diagnostics,
 - [ValeryanM.vscode-phpsab](https://marketplace.visualstudio.com/items?itemName=ValeryanM.vscode-phpsab) - PHP Sniffer & Beautifier for Visual Studio Code and
 - [zobo.php-intellisense](https://marketplace.visualstudio.com/items?itemName=zobo.php-intellisense) - Advanced Autocompletion and Refactoring support for PHP
+
+## Conclusion
+
+Remember the colleague from the beginning of this article, the one who doesn't indent the way you do? There's nothing left to ask them. The rules aren't in a wiki page or in a code-review comment anymore, they're in two versioned files — `devcontainer.json` and `Dockerfile` — and they apply the moment the project is opened, on every machine, identically.
+
+That's really the shift: the environment stops being something each developer builds, and becomes something the repository provides.
+
+If you'd rather run these tools on demand instead of baking them into an image, see <Link to="/blog/php-jakzal-phpqa">jakzal/phpqa</Link>. And to make sure none of this development tooling ever ends up in your production image, read <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers - The Clean Way</Link>.

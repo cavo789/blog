@@ -30,6 +30,24 @@ We'll create our custom ribbon for an Excel file, save the ribbon in the file so
 
 <!-- truncate -->
 
+## What we're going to build
+
+Here is the end result: our own tab, in Excel, with a button and an input field.
+
+![Smiley_and_edit](./images/Smiley_and_edit.webp)
+
+The button is wired to a VBA subroutine, so clicking it runs your code:
+
+![Button clicked](./images/Button_clicked.webp)
+
+The whole thing is about fifteen lines of XML stored inside the workbook. Anyone opening your `.xlsm` file gets the ribbon; there's nothing to install on their machine.
+
+## Why it works
+
+- An `.xlsx` / `.xlsm` file is not a binary blob: it's a ZIP archive with files and folders inside. You can open one with 7-Zip and look around.
+- Adding a ribbon means adding one file to that archive: a manifest called `customUI14.xml`, which describes the tabs, groups and controls in XML.
+- When MS Office opens the workbook, it reads that manifest, draws the ribbon and, on each click, calls the VBA subroutine named in the control's `onAction` attribute. Your macro and your interface are thus stored in the same single file.
+
 ## Download the editor for free
 
 To be able to "easily" *(in a not WYSIWYG interface)* create a ribbon in MS Office, I'm using a very old tool called `CustomOfficeUIEditor`. *Until now, I've not found any other free tool for doing this.*
@@ -97,11 +115,11 @@ Congratulations, you've added a ribbon to your workbook. It was not too hard I t
 
 </AlertBox>
 
-### Manifest analysis
+## Under the Hood — the manifest, tag by tag (skip this if you just want a ribbon)
 
 Time to understand what has happened...
 
-#### The root customUI node and the namespace
+### The root customUI node and the namespace
 
 <Snippet filename="customUI14.xml" source="./files/customUI14.part2.xml" />
 
@@ -115,7 +133,7 @@ So, if you know that the attribute is `onAction` you can then add your own subro
 
 The job of the DTD is to make sure that the syntax of your manifest is correct; therefore, the attribute `xmlns="http://schemas.microsoft.com/office/2009/07/customui"` is indeed mandatory.
 
-##### Define the ribbon
+### Define the ribbon
 
 The ribbon should be defined inside the `<ribbon>` node but not immediately since a ribbon is, in fact, always defined in a tab.
 
@@ -136,7 +154,7 @@ Below, our manifest now, with the definition of the ribbon.
 
 <Snippet filename="customUI14.xml" source="./files/customUI14.part3.xml" />
 
-#### Define the tab
+### Define the tab
 
 You'll need to give an identifier to the tab (in the attribute called `id`): your own code for a new tab or the id of an existing tab.
 
@@ -167,7 +185,7 @@ Here is our added tab:
 
 ![Add_new_tab](./images/Add_new_tab.webp)
 
-##### Implement our ribbon
+### Implement our ribbon
 
 Inside the `<tab>` declaration, you need to define at least one `<group>`. And here too, you'll to define the identifier: an existing one for, f.i., adding a button in an existing group or a new one to create a new group.
 
@@ -184,7 +202,7 @@ Our tab with its group:
 
 As you can see here above, just adding a group isn't enough, you'll need to define which features (buttons, checkboxes, ...) should be added in the group.
 
-#### Add features
+### Add features
 
 The XML here below will add two things: a button and an edit box.
 
@@ -220,17 +238,15 @@ A `Module1` will be added and, in the right pane, please copy/paste the code giv
 
 ![Add code](./images/VBE_add_code.webp)
 
-Now, you can close the *Microsoft Visual Basic for Application* window, go back to the well-known Excel window and, now, you click on the smiley button:
-
-![Button clicked](./images/Button_clicked.webp)
+Now, you can close the *Microsoft Visual Basic for Application* window, go back to the well-known Excel window and click on the smiley button: you'll get the message box shown in the second screenshot at the top of this article.
 
 And we can add other features, like an edit box:
 
 <Snippet filename="customUI14.xml" source="./files/customUI14.part9.xml" />
 
-![Smiley_and_edit](./images/Smiley_and_edit.webp)
+Save, reopen the file, and your tab now looks like the very first screenshot of this article.
 
-As you can see here above, the list of properties depends on the type: for a button, we have an `onAction` attribute while it's an `onChange` for an editBox.
+The list of properties depends on the type: for a button, we have an `onAction` attribute while it's an `onChange` for an editBox.
 
 ## List of objects
 
@@ -311,6 +327,8 @@ The declaration of callbacks can be found on the official site:
 [How can I determine the correct signatures for each callback procedure?](
 https://docs.microsoft.com/en-us/previous-versions/office/developer/office-2007/aa722523(v=office.12)#how-can-i-determine-the-correct-signatures-for-each-callback-procedure). Pay attention to the `Signatures` columns; you need to look for `VBA`.
 
-## Going further
+## Conclusion
 
-Once your ribbon is in place, a common next step is to feed one of its controls (like a dropdown) with data coming straight from your worksheet — see <Link to="/blog/vba-excel-ribbon-load">MS Office - Load dropdown from Excel's range</Link>.
+A workbook that used to be *"open the VBA editor, find the macro, run it"* now has a tab of its own with real buttons; and it's all stored in the `.xlsm` file, so it follows the workbook wherever it goes. The two things to remember: the manifest is `customUI14.xml` inside the archive, and each control points to a public VBA subroutine through `onAction` (or `onChange`).
+
+Once your ribbon is in place, a common next step is to feed one of its controls (like a dropdown) with data coming straight from your worksheet — see <Link to="/blog/vba-excel-ribbon-load">MS Office - Load dropdown from Excel's range</Link>. And to give your buttons something worth clicking, <Link to="/blog/vba-excel-sql-server-part-2">MS Excel - Connect to a SQL Server database</Link> is a good place to continue.

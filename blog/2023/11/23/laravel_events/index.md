@@ -28,77 +28,70 @@ When *An article is about to be displayed* is generated, you can have one (or mo
 
 <!-- truncate -->
 
-When *A user has registered* is thrown, you can do a lot of things like welcoming this person, adding them to a distribution list, sending them an email, but above all, and this is the most important for me, leave the door open to other actions that you don't yet know about.
+## What an event actually buys you
 
-For a web developer, the best approach, I think, is to generate events even if it's your own code and you know what to do.
+Here is a Laravel route that creates an employee and displays their name. A listener is plugged on the event it fires:
+
+<Terminal typewriter source="./files/terminal-2.txt" />
+
+Now the very same route, with that listener commented out. Same URL, same calling code, not a line changed in the controller:
+
+<Terminal typewriter source="./files/terminal-1.txt" />
+
+The employee is back to their default name, and nothing crashed. That's the entire promise of events: a feature can be added or removed without the code that fires the event knowing about it.
+
+## Why it works
+
+1. The route creates a new `employee` based on the `Employee` class, then fires a `SampleEvent` carrying that object.
+2. Any registered listener receives the event, and through it, the very same employee object; it can modify it.
+3. The route then displays the employee's first and last name, without ever knowing whether a listener did something or not.
 
 <AlertBox variant="info" title="In fact, you never know">
 You never know because your software will have a life of its own, because over the years other features will be added and other developers will modify it. If you're working with events, it will be very easy for anyone to add code like "OK, when a new user registers, I need to..."; something you didn't know then. Events are ideal for simplifying the addition of new functionality.
 
 </AlertBox>
 
-## Laravel example
+## Building it
 
-The example below is for the Laravel framework.
-
-You need to run an event having one or more listeners and, in your main code, you want to retrieve some values once listeners have done their job.
-
-In our example below, we will fire a `SampleEvent` class and its `SampleListener`. The idea is to initialize an `employee`.
-
-File `app/Providers/EventServiceProvider.php`
-
-<Snippet filename="app/Providers/EventServiceProvider.php" source="./files/EventServiceProvider.php" />
+Four small files and one line of wiring. Let's follow the flow, starting with the entry point.
 
 For our example, your `routes/web.php` can look like this:
 
-<Snippet filename="routes/web.php" source="./files/web.php" />
+<Snippet filename="routes/web.php" source="./files/web.php" defaultOpen={false} />
 
-What we do is:
+This class will initialize our employee and provide a setter and a getter. By default, our employee will be called `John Doe (cavo789)`.
 
-1. Create a new `employee` based on the `Employee` class,
-2. Call our `SampleEvent` event and pass in our new `employee` object,
-3. Let the magic happen,
-4. Display the employee's first and last name.
+<Snippet filename="app/Employee.php" source="./files/Employee.php" defaultOpen={false} />
 
-Here is our default employee.
+Our event will receive an employee and store it as a private property:
 
-### File app/Employee.php
+<Snippet filename="app/Events/SampleEvent.php" source="./files/SampleEvent.php" defaultOpen={false} />
 
-This class will initialize our employee and provide a setter and a getter.
+Our listener logic. `SampleListener` will receive the `SampleEvent` as a parameter and, thus, has access to all its public methods. We will here update the first and the last name, we will not update the pseudo:
 
-By default, our employee will be called `John Doe (cavo789)`.
+<Snippet filename="app/Listeners/SampleListener.php" source="./files/SampleListener.php" defaultOpen={true} />
 
-<Snippet filename="app/Employee.php" source="./files/Employee.php" />
+And finally the wiring, i.e. the file that tells Laravel which listener answers which event:
 
-### File app/Events/SampleEvent.php
+<Snippet filename="app/Providers/EventServiceProvider.php" source="./files/EventServiceProvider.php" defaultOpen={false} />
 
-Our event will receive an employee and store it as a private property.
+To reproduce the second terminal shown at the top of this article, comment the listener in that file:
 
-Make the three setters public to allow listeners to update the first and the last name. Also, allow initializing the pseudo.
+<Snippet filename="app/Providers/EventServiceProvider.php" source="./files/EventServiceProvider.part2.php" defaultOpen={false} />
 
-<Snippet filename="app/Events/SampleEvent.php" source="./files/SampleEvent.php" />
+## Under the Hood (skip this if you just want to use it)
 
-### File app/Listeners/SampleListener.php
+The three setters of the event are public on purpose: that's the only reason a listener, which lives in a totally different file, is allowed to update the first and the last name.
 
-Our listener logic. `SampleListener` will receive the `SampleEvent` as a parameter and, thus, has access to all its public methods. We will here update the first and the last name, we will not update the pseudo.
+The pseudo, on the other hand, is only initialized and never updated by the listener; it's the part of the object that stays under the control of the code that fired the event. Deciding what a listener may and may not touch is exactly the design work an event class asks from you.
 
-<Snippet filename="app/Listeners/SampleListener.php" source="./files/SampleListener.php" />
+## The same idea outside Laravel
 
-### The result
+Events are not a Laravel invention. In plain PHP, the `League\Event` library ([https://event.thephpleague.com/](https://event.thephpleague.com/)) gives you the same dispatcher/listener pair, with no framework attached.
 
-If we run `curl localhost` in the console, we'll get the output below showing us it has worked perfectly as expected.
+## Conclusion
 
-<Terminal typewriter source="./files/terminal-2.txt" />
-
-If we edit back the `app/Providers/EventServiceProvider.php` file and comment the listener as illustrated below, our code will still work.
-
-<Snippet filename="app/Providers/EventServiceProvider.php" source="./files/EventServiceProvider.part2.php" />
-
-<Terminal typewriter source="./files/terminal-1.txt" />
-
-## PHP example (not Laravel)
-
-Years ago, I have written an example in pure PHP (not Laravel) and using the `League\Event` library as you can find at [https://event.thephpleague.com/](https://event.thephpleague.com/).
+The whole point is in the two terminal outputs at the top: a feature was removed and the calling code didn't notice. Write events even in your own code, even when you're sure you know what to do with them, because in two years, someone (probably you) will want to hook something in.
 
 *Events are, by nature, invisible: they fire somewhere and something happens elsewhere. <Link to="/blog/laravel-telescope">Laravel Telescope</Link> makes them visible again, which is a real help when debugging a decoupled application like this one.*
 

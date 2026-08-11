@@ -26,55 +26,65 @@ When running Docker without specifying a volume, everything that is done during 
 
 <!-- truncate -->
 
-<AlertBox variant="note">
-Imagine you wish to play with a malicious PHP script. Running the script *on* your computer is really dangerous since you do not know what the virus will do; where it will create files. But, if you are running the virus script in a Docker container with **no attached volume** (which is the default) nothing on your computer will be modified. Everything stays in memory (RAM). By removing the Docker container, everything will be removed. This is a great security feature.
+## What `-v` does for you
 
-</AlertBox>
-
-For this post, let us create a temporary folder in your `/tmp` folder: start a Linux console and run `mkdir /tmp/docker-volume && cd /tmp/docker-volume`.
-
-Let's run the command below to start the PHP 8.1.5 + Apache image:
+Start a PHP + Apache container, sharing your current folder with the folder Apache serves:
 
 <Terminal typewriter>
 $ docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html php:8.3-apache
 </Terminal>
+
+Now create an `index.php` file in that folder. On your disk, in your editor, not in the container:
+
+<Snippet filename="index.php" source="./files/index.php" />
+
+Surf to `http://127.0.0.1:81/` and the container is already serving it:
+
+![Hello world!](./images/hello_world.webp)
+
+No copy, no rebuild, no `docker cp`. You saved a file and the container saw it.
+
+## Why it works
+
+- Without `-v`, everything a container writes lives in memory only: remove the container and it's gone. That's the default, and it's a feature (see *Under the hood* below).
+- With `-v`, the sharing is **bi-directional**: your editor writes a file, the container sees it; the PHP script writes a file in `/var/www/html`, it appears on your disk.
+- The `-u` flag decides *who owns* the files the container creates on your disk. Forget it and you'll get files owned by `root` in your own project.
+
+## Doing it yourself
+
+For this post, let us create a temporary folder in your `/tmp` folder: start a Linux console and run `mkdir /tmp/docker-volume && cd /tmp/docker-volume`, then run the `docker run` command shown above.
 
 <AlertBox variant="info">
 If you're using Windows (MS DOS), replace `$(pwd)` with `%CD%` in the instruction above.
 
 </AlertBox>
 
-The important part here is: `-v $(pwd):/var/www/html`. We are telling Docker that the current folder (`$(pwd)` or `${PWD}` in Linux notation) will be shared with the `/var/www/html` folder of the running Docker container.
-
-Go to `http://127.0.0.1:81/` to see if Apache is running and yes, it is.
-
-![Localhost is forbidden](./images/localhost_is_forbidden.webp)
-
-As you probably know, Apache displays by default the content of the `/var/www/html` folder. And, in our Docker container, we do not have an `index.php` file in our container so we got the **Forbidden** page.
-
-Explanation of the new arguments used in our `docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html php:8.3-apache` command
+Explanation of the arguments used in that command:
 
 - `--name step_1_2` : for clarity, we use another name,
 - `-p 81:80` : this time, we'll use port `81` on our computer and map it to port `80` on the container,
-- `-v $(pwd):/var/www/html`: the `-v` instruction is used to define a volume. Here, we'll synchronize the container's `/var/www/html` folder with `$(pwd)`, which corresponds to the current folder on our computer.
+- `-v $(pwd):/var/www/html`: the `-v` instruction is used to define a volume. Here, we'll synchronize the container's `/var/www/html` folder with `$(pwd)` (or `${PWD}` in Linux notation), which corresponds to the current folder on our computer.
 
-Now, just create an `index.php` in your local `/tmp/docker-volume` folder. Yes, on your disk, not in the container.
+To create the `index.php` file, if you have Visual Studio Code on your machine, in the Linux console, run this: `cd /tmp/docker-volume && code index.php`. This will start vscode and you will be able to create the script.
 
-So, if you have Visual Studio Code on your machine, in the Linux console, run this: `cd /tmp/docker-volume && code index.php`. This will start vscode and you will be able to create the script.
+## The same container, before the file existed
 
-Write anything valid like for example:
+If you surf to `http://127.0.0.1:81/` *before* creating `index.php`, you get this instead:
 
-<Snippet filename="index.php" source="./files/index.php" />
+![Localhost is forbidden](./images/localhost_is_forbidden.webp)
 
-Save the file and just return to your browser. Refresh the page `http://127.0.0.1:81/`
-
-![Hello world!](./images/hello_world.webp)
-
-Using the `-v` command line argument, you have synchronized a local folder with a folder inside the running Docker container. Any changes made in the local folder but also in the Docker container (**bi-directional**) will be reflected immediately.
-
-If the running PHP script creates a new file in the `/var/www/html` folder, that file will be immediately created / updated on your disk.
+As you probably know, Apache displays by default the content of the `/var/www/html` folder. And, at that point, we do not have an `index.php` file in our container so we got the **Forbidden** page. Same container, same command; the only thing that changed between this screenshot and the previous one is a file you saved on your own disk.
 
 *What we've used here is a **bind mount**: a folder of yours, mounted in the container. Docker also offers *managed* volumes, which it stores itself somewhere outside your project; <Link to="/blog/docker-volumes">Using volumes with Docker, use cases</Link> compares both and explains when to prefer one over the other.*
+
+## Under the hood (skip this if you just want to use it)
+
+<AlertBox variant="note">
+Imagine you wish to play with a malicious PHP script. Running the script *on* your computer is really dangerous since you do not know what the virus will do; where it will create files. But, if you are running the virus script in a Docker container with **no attached volume** (which is the default) nothing on your computer will be modified. Everything stays in memory (RAM). By removing the Docker container, everything will be removed. This is a great security feature.
+
+</AlertBox>
+
+Now, the ownership question:
 
 <AlertBox variant="caution">
 Files or folders created in the Docker container will be owned by the current user used in the container; which is most often the `root` user. These files/folders will, then, be created / updated by the `root` user on your disk as well.
@@ -88,3 +98,9 @@ To make sure files/folders created in the container will be owned by you and not
 </Terminal>
 
 The new flag `-u ${UID}:${GID}` will reuse your current user id and your current group id and pass this information to Docker. Now, the current user in the Docker container will not be `root` anymore but a user having your local uid/gid. So, files/folders created in the Docker container will be owned, on your disk, by you.
+
+## Conclusion
+
+One flag, `-v host_folder:container_folder`, and your editor becomes the container's editor. The two things worth remembering three months from now: the sync goes both ways, and `-u ${UID}:${GID}` is what keeps `root` from taking ownership of your files.
+
+A bind mount is only one of the two kinds of volume Docker offers. When the data belongs to the container rather than to you (a database, a cache), a managed volume is the right tool: <Link to="/blog/docker-volumes">Using volumes with Docker, use cases</Link> walks through the three strategies.

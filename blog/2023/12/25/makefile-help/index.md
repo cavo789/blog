@@ -26,24 +26,17 @@ That's what we'll be looking at in this article.
 
 <!-- truncate -->
 
-<StepsCard
-  title="Before you begin make sure..."
-  variant="prerequisites"
-  steps={[
-    "You have GNU Make installed",
-    "You have an existing makefile",
-  ]}
-/>
+## What you will get
 
-## Install GNU Make if needed
+Type `make`, alone, and this is the screen your project answers with by the end of this article:
 
-We will use `GNU make` so you need to have it.
+<Terminal typewriter wrap={false} source="./files/terminal-1.txt" />
 
-Please run `which make` in your Linux console to check if `make` is already installed. If so, you will get, for example, `/usr/bin/make` as a result.
+Every target, its one-line description, grouped under section headers — and all of it read from the makefile itself, so it can never fall out of date with the commands it documents.
 
-If you got `make not found`, please run `sudo apt-get update && sudo apt-get -y install make` to install it.
+Three ingredients get you there: a `default:` target, a `help:` target that parses the file, and a `##` comment after each target name.
 
-## Create a sample file
+## The starting point
 
 For the demo, please start a Linux shell and run `mkdir -p /tmp/makefile && cd $_` to create a folder called `makefile` in your Linux temporary folder and jump in it.
 
@@ -58,7 +51,15 @@ The indentation in a makefile **SHOULD BE** made using tabs and not spaces, this
 
 That file contains a few *targets* (=actions) and a simple `printf` statement to display a text. Except for echoing something into the console, that `makefile` does nothing.
 
-<Terminal typewriter source="./files/terminal-3.txt" />
+<Details label="`make` is not installed yet?">
+
+We will use `GNU make` so you need to have it.
+
+Please run `which make` in your Linux console to check if `make` is already installed. If so, you will get, for example, `/usr/bin/make` as a result.
+
+If you got `make not found`, please run `sudo apt-get update && sudo apt-get -y install make` to install it.
+
+</Details>
 
 ## Adding the default action
 
@@ -124,14 +125,14 @@ To do this, simply add a line with this syntax: `##@ My project` as illustrated 
 
 <Snippet filename="makefile" source="./files/makefile.part6" />
 
-And here is the final result:
-
-<Terminal typewriter wrap={false} source="./files/terminal-1.txt" />
-
-<AlertBox variant="info" title="Now we have a clear grouping of actions. Much better." />
+And here is the final result — the grouped help screen shown at the beginning of this article.
 
 ## Take a look on mine, for this blog
 
 This blog is maintained using such a makefile; you can get a copy here: https://github.com/cavo789/blog/blob/main/makefile
+
+## Conclusion
+
+The help screen isn't a nicety, it's what makes the makefile trustworthy: a target with no `##` description simply doesn't appear, so documenting a command becomes part of writing it. Nobody has to maintain a separate README section that slowly stops matching reality.
 
 Want to go further with Make? <Link to="/blog/makefile_tips">Makefile - Tutorial and Tips & Tricks</Link> covers variables, `.PHONY`, passing arguments to targets and a few other things I use daily.

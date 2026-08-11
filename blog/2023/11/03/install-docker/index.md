@@ -29,63 +29,42 @@ The easiest way, on Windows, is to use [Docker Desktop](https://www.docker.com/p
 
 <!-- truncate -->
 
-## Why Docker images
+## One command, a working PHP server
 
-Thanks to Docker, you do not need to install PHP or Apache to run a website. You just need to use one, two, or more existing images.
-
-Images are most of the time just plug-and-play: once downloaded, they are ready to use. You will probably add some configuration items but, most of the time, it is not even needed.
-
-On [Docker Hub](https://hub.docker.com) you'll find a huge number of images that can be used to run software such as PHP, PHP+Apache, MySQL and many, many more. If the very concept of Docker is still fuzzy to you, <Link to="/blog/docker-definition-like-im-five">Docker - Explain me like I'm five</Link> is a good, gentle primer.
-
-All these images are completely free; they can be public or private. You can create your own images and store them on [Docker Hub](https://hub.docker.com) for free.
-
-In this blog post, we will be using the PHP images available at [https://hub.docker.com/_/php](https://hub.docker.com/_/php)
-
-## Real use case: PHP and Apache
-
-We will run a simple PHP script to show how not to install PHP and Apache. Not to install sounds crazy but yes, it is the idea. Using the old-fashioned way, without Docker, before running a web page locally, we need to first install a web server (e.g., Apache) and the PHP interpreter. It is boring.
-
-<AlertBox variant="info">
-But since Docker has a public image for running PHP and Apache (a single image for both services), it becomes very simple
-
-</AlertBox>
-
-So, in our discovery step, we will also change the PHP version from `7.4` to `8.1` with just a few keystrokes. Have you ever tried to change your PHP version if you are using EasyPHP, WAMP or another software program: it is a real pain! With Docker, it is so easy.
-
-*Two things to read right after this one: <Link to="/blog/docker-volume">Share data between your running Docker container and your computer</Link>, so your code stays on your disk instead of inside the container, and <Link to="/blog/docker-php-run-script-or-website">The easiest way to run a PHP script / website</Link>, which combines both in a single command.*
-
-<AlertBox variant="note">
-In this chapter, as we discover Docker, we will use different port numbers each time to access our local site. We will see later how to reuse the same port number.
-
-</AlertBox>
-
-<AlertBox variant="info">
-The commands we will use in this step will be the same whether you are running Linux, Mac or Windows.
-
-</AlertBox>
-
-Let's begin. Start a new console (DOS, Powershell or Linux) and run the instruction below.
-
-Docker will, the first time, download PHP `8.3` (including Apache) and, once downloaded, start the image:
+Start a new console (DOS, Powershell or Linux) and run this:
 
 <Terminal typewriter>
 $ docker run --detach --name step_1_1a -p 80:80 php:8.3-apache
 </Terminal>
 
+Drop an `index.php` file calling `phpinfo()` in it (we'll see how, below), surf to `http://127.0.0.1:80`, and here is a PHP 8.3 server answering on your machine:
+
+<BrowserWindow url="http://127.0.0.1/">
+  <img
+    alt="phpinfo - PHP 8.3"
+    src={require("./images/phpinfo_8_3.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
+
+Apache is running, PHP is running, and neither of them has been installed on your computer.
+
+## Why Docker images
+
+- Images are most of the time just plug-and-play: once downloaded, they are ready to use. You will probably add some configuration items but, most of the time, it is not even needed.
+- On [Docker Hub](https://hub.docker.com) you'll find a huge number of images for running PHP, PHP+Apache, MySQL and many, many more; all of them completely free, public or private, and you can publish your own. If the very concept of Docker is still fuzzy to you, <Link to="/blog/docker-definition-like-im-five">Docker - Explain me like I'm five</Link> is a good, gentle primer.
+- The old-fashioned way, before running a web page locally, you first install a web server (e.g., Apache) and the PHP interpreter, then fight to change their versions. Here, the version is a word in a command line.
+
+In this blog post, we will be using the PHP images available at [https://hub.docker.com/_/php](https://hub.docker.com/_/php)
+
+## Setting it up
+
+The easiest way, on Windows, is to use [Docker Desktop](https://www.docker.com/products/docker-desktop/). Once installed, the command shown above is all you need; Docker will, the first time, download PHP `8.3` (including Apache) and, once downloaded, start the image.
+
 <AlertBox variant="info">
-On subsequent runs, the PHP image is already present, so it is no longer downloaded.
+On subsequent runs, the PHP image is already present, so it is no longer downloaded. And the commands we will use in this step will be the same whether you are running Linux, Mac or Windows.
 
 </AlertBox>
-
-![The PHP container is running](./images/php_container_is_running.webp)
-
-We can see that the PHP image is now present in Docker Desktop.
-
-We also get the information on the command line: `docker image list`.
-
-We can also see that an application (a `container` in Docker terms) is also running.
-
-The command line to run is: `docker container list`
 
 Explanation of the arguments used in our `docker run --detach --name step_1_1a -p 80:80 php:8.3-apache` command
 
@@ -94,16 +73,9 @@ Explanation of the arguments used in our `docker run --detach --name step_1_1a -
 - `-p 80:80`: our PHP+Apache image runs on port `80`, so we want to map this "internal" port to port `80` on our computer. This allows us to access the web site.
 - `php:8.3-apache`: the name of the used image. We ask php+apache, version 8.3.
 
-Let's try to access the local site: `http://127.0.0.1:80`.
+![The PHP container is running](./images/php_container_is_running.webp)
 
-![localhost-is-forbidden](./images/localhost_is_forbidden.webp)
-
-It works in the sense that *something is listening and has responded*, but does not display anything, since we haven't set anything up yet.
-
-<AlertBox variant="info">
-The site is functional, Apache is ready, but there's no index.php file; let's add one.
-
-</AlertBox>
+We can see that the PHP image is now present in Docker Desktop, and that an application (a `container` in Docker terms) is running. We also get both information on the command line, with `docker image list` and `docker container list`.
 
 ### Creating our PHP script
 
@@ -121,20 +93,13 @@ $ echo "phpinfo();" >> index.php
 $ exit
 </Terminal>
 
-Back to our browser and... Bingo! Our first Docker instance running a PHP script!
+Back to our browser and... Bingo! Our first Docker instance running a PHP script, i.e. the screenshot shown at the beginning of this article.
 
-![phpinfo - PHP 8.3](./images/phpinfo_7_4_29.webp)
+## Changing the PHP version in one word
 
-Let's go back to the instruction we used before:
+Have you ever tried to change your PHP version if you are using EasyPHP, WAMP or another software program: it is a real pain! With Docker, you change one word.
 
-<Terminal typewriter>
-$ docker run --detach --name step_1_1a -p 80:80 php:8.3-apache
-</Terminal>
-
-This shows that we are targeting PHP version 7.4.29. By going to the page
-[https://hub.docker.com/_/php?tab=tags](https://hub.docker.com/_/php?tab=tags) and searching for `-apache` images, you'll find versions such as `php:8.1.1-apache` or `php:8.4-apache`.
-
-Let's change `8.3` to `8.4` and, for example, use another port (we will use `801` this time).
+By going to the page [https://hub.docker.com/_/php?tab=tags](https://hub.docker.com/_/php?tab=tags) and searching for `-apache` images, you'll find every published version. Let's change `8.3` to `8.4` and, for example, use another port (we will use `801` this time).
 
 <Terminal typewriter>
 $ docker run --detach --name step_1_1b -p 801:80 php:8.4-apache
@@ -150,14 +115,37 @@ $ echo "phpinfo();" >> index.php
 $ exit
 </Terminal>
 
-![phpinfo - PHP 8.4](./images/phpinfo_8_1_5.webp)
+<BrowserWindow url="http://127.0.0.1:801/">
+  <img
+    alt="phpinfo - PHP 8.4"
+    src={require("./images/phpinfo_8_4.webp").default}
+    className="screenshot"
+  />
+</BrowserWindow>
 
-***No headaches and zero conflicts!*** We have installed a new version of PHP in seconds.
+***No headaches and zero conflicts!*** We have installed a new version of PHP in seconds, and the two versions are running side by side, each on its own port.
 
 <AlertBox variant="info">
 This is just crazy. Think of the benefits: you are developing a PHP script and want to check whether it works with different versions of PHP. It's child's play.
 
 </AlertBox>
+
+## Under the Hood (skip this if you just want to use it)
+
+Before creating the `index.php` file, the site answers, but with a *Forbidden* page:
+
+![localhost-is-forbidden](./images/localhost_is_forbidden.webp)
+
+It works in the sense that *something is listening and has responded*, but does not display anything, since we haven't set anything up yet: Apache is ready, there's simply no `index.php` file yet. That's the difference between "the container runs" and "the site works".
+
+<AlertBox variant="note">
+In this chapter, as we discover Docker, we've used different port numbers each time to access our local site (`80` then `801`). This is only to keep both containers alive at the same time; two containers can't publish the same port on your machine.
+
+</AlertBox>
+
+Note also that the `index.php` we created lives **inside** the container: remove the container and the file goes with it. That's the next step.
+
+## Conclusion
 
 <StepsCard
   title="At the end of this chapter, we've just learned:"
@@ -170,6 +158,6 @@ This is just crazy. Think of the benefits: you are developing a PHP script and w
   ]}
 />
 
-Now let's take it to the next level and synchronize the files on our hard disk with the container.
+Now let's take it to the next level and synchronize the files on our hard disk with the container: <Link to="/blog/docker-volume">Share data between your running Docker container and your computer</Link>, so your code stays on your disk instead of inside the container, then <Link to="/blog/docker-php-run-script-or-website">The easiest way to run a PHP script / website</Link>, which combines both in a single command.
 
 This same "zero local install" approach works for pretty much any language — I've since applied it to <Link to="/blog/docker-python">Python</Link>, <Link to="/blog/docker-pascal">Pascal</Link>, <Link to="/blog/docker-assembly">Assembly</Link>, and <Link to="/blog/docker-java">Java</Link>.

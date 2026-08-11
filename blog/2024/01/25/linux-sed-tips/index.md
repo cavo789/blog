@@ -27,11 +27,37 @@ Using `sed` it's quite easy to automate the search & replace but how to append?
 
 <!-- truncate -->
 
-This article will explain one way to achieve this. You'll find a lot of other possibilities on the Internet, some using only the `sed` instruction, but ... can you read them?
+## The one-liner
 
-*This pattern is the building block of <Link to="/blog/update-env-files-cli">Batch edit of environment file</Link>, where the same `sed` logic is applied to a whole set of projects at once.*
+Here it is — update `APP_ENV` if the key is there, append it if it isn't:
 
-I prefer to use a different approach, perhaps not the *native one* but, yeah, I can read it.
+<Terminal typewriter>
+$ echo 'APP_NAME = My application' > .env
+$ grep -q "^APP_ENV =" .env \
+    && sed -i "s/APP_ENV =.*/APP_ENV = production/" .env \
+    || sed -i -e '$aAPP_ENV = production' .env
+</Terminal>
+
+The `.env` file only contained `APP_NAME`, so the key has been appended. Let's read the file back:
+
+<Terminal typewriter>
+$ cat .env
+
+APP_NAME = My application
+APP_ENV = production
+</Terminal>
+
+Run the very same block again — or against a file where `APP_ENV` already exists — and the line is substituted instead of duplicated. That's the whole idea: the command is idempotent, you can run it in a deployment script without checking anything first.
+
+## Why it works
+
+- **`grep -q` tests without printing.** `-q` means quiet: it produces no output, only an exit code, which is exactly what a conditional needs.
+- **`&&` is the "found" branch.** The key exists → substitute the value in place.
+- **`||` is the "missing" branch.** The key doesn't exist → append a new line at the end of the file.
+
+You'll find a lot of other possibilities on the Internet, some using only the `sed` instruction, but ... can you read them? I prefer this approach, perhaps not the *native one* but, yeah, I can read it.
+
+The rest of this article builds the command piece by piece, if you want to understand each half before using it.
 
 ## Search and replace
 
@@ -76,15 +102,17 @@ $ echo 'APP_ENV = local' >> .env
 $ grep -q "^APP_ENV =" .env && echo "FOUND" || echo "NOT FOUND"
 </Terminal>
 
+The *insert a new line* command is this one: `sed -i -e '$aAPP_ENV = production' .env`. The `-e` argument allows you to execute a script and it's quite strange but the script is `$a`. That command is for *append line*. And now you've understood that sed will here add a new line in the file.
+
 ## Combine both
 
-Ok, first we can make our replace statement:
+Ok, first we can plug the replace statement into the `&&` branch:
 
 <Terminal typewriter source="./files/terminal-1.txt" />
 
-By running `cat .env`, you will get, as expected, `APP_ENV = production`.
+`APP_ENV` was there, so it has been substituted: running `cat .env` gives, as expected, `APP_ENV = production`.
 
-And the next block will still display `NOT FOUND`:
+And the next block will still display `NOT FOUND`, because this time the key is missing:
 
 <Terminal typewriter>
 $ echo 'APP_NAME = My application' > .env
@@ -93,24 +121,10 @@ $ grep -q "^APP_ENV =" .env \
     || echo "NOT FOUND"
 </Terminal>
 
-The *insert a new line* command is this one: `sed -i -e '$aAPP_ENV = production' .env`. The `-e` argument allows you to execute a script and it's quite strange but the script is `$a`. That command is for *append line*. And now you've understood that sed will here add a new line in the file.
+Replace that `echo "NOT FOUND"` with the *append* command seen above and you get the one-liner shown at the top of this article. Both halves are now in place.
 
-## The final instruction
+## Conclusion
 
-Here it's:
+`grep -q` for the test, `&&` for substitute, `||` for append: three pieces you can read out loud, in a single command that behaves the same whether the key is already there or not. It's the kind of line you end up pasting into every deployment script.
 
-<Terminal typewriter>
-$ echo 'APP_NAME = My application' > .env
-$ grep -q "^APP_ENV =" .env \
-    && sed -i "s/APP_ENV =.*/APP_ENV = production/" .env \
-    || sed -i -e '$aAPP_ENV = production' .env
-</Terminal>
-
-Finally, by running `cat .env` we can see the result:
-
-<Terminal typewriter>
-$ cat .env
-
-APP_NAME = My application
-APP_ENV = production
-</Terminal>
+This pattern is the building block of <Link to="/blog/update-env-files-cli">Batch edit of environment file</Link>, where the same logic becomes a reusable function that reports `UPDATED` or `ADDED` for every key it touches.

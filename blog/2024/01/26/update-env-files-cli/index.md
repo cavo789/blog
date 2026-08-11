@@ -31,31 +31,41 @@ And that's where the obligation to be meticulous begins.
 
 Depending on the server (is this a test server or UAT or PROD?), settings won't be the same. We'll definitely not enable debugging on a production server, while we will on a test/UAT one. Credentials for the database f.i. will differ for each server. And so on.
 
-So, each time the `.env` file is created, the normal way of doing things is to open it in an editor and start to make changes.
+So, each time the `.env` file is created, the normal way of doing things is to open it in an editor and start to make changes. And when you have to deploy several servers; you can't be 100% sure you haven't forgotten something important.
 
-*Three related articles: <Link to="/blog/linux-sed-tips">Search and replace (or add) using sed</Link> for the `sed` idiom this function is built on, <Link to="/blog/compare-env-files-cli">Compare environment files in the Linux console</Link> to spot what's missing compared to `.env.example`, and <Link to="/blog/bash-load-env">Bash - Loading environment variables from a file</Link> to consume the result.*
+## What `updateEnv` does for you
 
-And when you have to deploy several servers; you can't be 100% sure you haven't forgotten something important.
+Instead of opening an editor, you describe the target state of the file as a list of calls:
 
-Below a Linux function that can help. You can just copy/paste it in your console and run it but first, let's take a look on it.
+```bash
+dotEnv=".env"
 
-The `updateEnv` function will receive three arguments.
+updateEnv "APP_DEBUG" "false" "${dotEnv}"
+updateEnv "APP_ENV" "production" "${dotEnv}"
+updateEnv "APP_NAME" "My application is running on production" "${dotEnv}"
+updateEnv "CAN_REGISTER" "false" "${dotEnv}"
+updateEnv "FORCE_HTTPS" "true" "${dotEnv}"
+```
 
-- A variable name like `APP_DEBUG`,
-- The value we wish to set in the file, f.i. `false`
-- And the name of the `.env` file to update (probably `.env`)
+And here is what your console answers:
 
-The function will use `grep` and `sed` (see my <Link to="/blog/linux-sed-tips">Search and replace (or add) using sed</Link> article to learn more) to update the variable or add it to the file.
+<Terminal typewriter source="./files/terminal-1.txt" />
 
-Then `printf` will echo the new value on the screen, just for debugging / control process.
+Four variables have been updated and one has been added (`CAN_REGISTER`). That status column is the whole point: after a deployment you don't wonder whether a setting was applied, you read it.
 
-Finally, the function is called like this: `updateEnv "APP_DEBUG" "false" ".env"`.
+## Why it works
+
+- **`grep` decides**: the variable is searched at the start of a line, so `APP_ENV` never matches `APP_ENV_LABEL`.
+- **`sed` does one of two things**: substitute the value in place when the key exists, append the line at the end of the file when it doesn't.
+- **`printf` reports**: `UPDATED` or `ADDED` for each key, followed by the line as it now stands in the file — read back from the file, not from what we intended to write.
+
+## The function
 
 Before seeing the function, like always, just create a sample file:
 
 <Terminal typewriter source="./files/terminal-2.txt" />
 
-Now, we can run in our console:
+The `updateEnv` function receives three arguments: a variable name like `APP_DEBUG`, the value we wish to set (f.i. `false`), and the name of the `.env` file to update (probably `.env`). It relies on the `grep`/`sed` idiom described in <Link to="/blog/linux-sed-tips">Search and replace (or add) using sed</Link>:
 
 ```bash
 (
@@ -88,11 +98,7 @@ Now, we can run in our console:
 )
 ```
 
-The output will be, for this example:
-
-<Terminal typewriter source="./files/terminal-1.txt" />
-
-We can see four variables have been updated and one has been added (`CAN_REGISTER`).
+Notice the surrounding `( … )`: everything runs in a subshell, so the function and the `dotEnv` variable disappear once the block has finished. Copy/paste it in your console and it just runs.
 
 ## Adding a skip boolean
 
@@ -144,3 +150,9 @@ The output of the previous command will be the one below. If not present, variab
 .env SKIP    DEFAULT_CACHE
 .env SKIP    REDIS_HOST
 </Terminal>
+
+## Conclusion
+
+Deploying to a new server stops being a careful reading exercise: you keep one list of `updateEnv` calls per environment, run it right after `cp .env.example .env`, and the console tells you, key by key, what was updated, added or deliberately skipped.
+
+The natural companion is <Link to="/blog/compare-env-files-cli">Compare environment files in the Linux console</Link>: it tells you which keys are missing, this one sets them. And to consume the result from your scripts, see <Link to="/blog/bash-load-env">Bash - Loading environment variables from a file</Link>.

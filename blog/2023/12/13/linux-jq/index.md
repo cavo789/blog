@@ -22,22 +22,9 @@ This article introduces `jq`, a command-line JSON processor: piping raw API outp
 
 `jq` is a powerful utility for Linux that lets you manipulate JSON data from the command line and can be integrated into shell scripts.
 
-Using `jq` you can beautify JSON output but also filter it like f.i. showing only a given node.
-
 <!-- truncate -->
 
-To verify if `jq` is already installed on your system, simply run `which jq`. If you get `jq not found` as an answer, please install it: `sudo apt-get update && sudo apt-get install jq`
-
-## Let's play
-
-`jq` can be used without any arguments and in that case, the JSON output will be prettified.
-
-To illustrate this, we'll use a simple JSON free API like `https://randomuser.me/api/`. If you wish to use another API tool, take a look on [https://github.com/public-apis/public-apis#test-data](https://github.com/public-apis/public-apis#test-data); free ones are those having `No` in the `Auth` columns.
-
-<AlertBox variant="info" title="randomuser API return every time a new user">
-On each request, the `randomuser` API is returning a new object.
-
-</AlertBox>
+## The same answer, twice
 
 By running `curl https://randomuser.me/api/` you'll get something like
 
@@ -58,6 +45,111 @@ But, as soon as we are redirecting to `jq`, it'll be better:
 <Terminal typewriter>
 $ curl --silent https://randomuser.me/api/ | jq
 </Terminal>
+
+<!-- cspell:disable -->
+```json
+{
+  "results": [
+    {
+      "gender": "female",
+      "name": {
+        "title": "Mademoiselle",
+        "first": "Salomé",
+        "last": "Roy"
+      },
+      "location": {
+        "street": {
+          "number": 2361,
+          "name": "Rue Dumenge"
+        },
+        "city": "Dierikon",
+        [...]
+      },
+      "email": "salome.roy@example.com",
+      [...]
+    }
+  ],
+  "info": {
+    "seed": "b7ef95d3b252edca",
+    "results": 1,
+    "page": 1,
+    "version": "1.4"
+  }
+}
+```
+<!-- cspell:enable -->
+
+Same bytes, same API, one extra word on the command line. That already earns `jq` its place in a pipe, but the reason I really use it is below.
+
+## Filtering the output
+
+Imagine we just need to retrieve the name. To do this, we need to better understand the JSON object.
+
+```json
+{
+  //highlight-next-line
+  "results": [
+    {
+      "gender": "female",
+      //highlight-next-line
+      "name": {
+        "title": "Mademoiselle",
+        "first": "Salomé",
+        "last": "Roy"
+      },
+      "location": {
+        [...]
+      },
+      [...]
+  ],
+  [...]
+}
+```
+
+The output is a JSON representation having a root property called `results`. That property is an array. Each element in that array has a `name` node with a few properties like `title`, `first` and `last`.
+
+If we just want to retrieve the `name` node, the filter to use with `jq` is `.results[0].name`.
+
+<Terminal typewriter>
+$ curl --silent https://randomuser.me/api/ | jq '.results[0].name'
+</Terminal>
+
+```json
+{
+  "title": "Ms",
+  "first": "Brooke",
+  "last": "Morgan"
+}
+```
+
+Learn more about [jq filtering](https://jqlang.github.io/jq/tutorial/).
+
+## Installing jq
+
+To verify if `jq` is already installed on your system, simply run `which jq`. If you get `jq not found` as an answer:
+
+<Prerequisite
+  name="jq"
+  install="sudo apt-get update && sudo apt-get install jq"
+  check="jq --version"
+  checkOutput={`\njq-1.7.1`}
+  typewriter
+/>
+
+## Let's play
+
+`jq` can be used without any arguments and in that case, the JSON output will be prettified.
+
+To reproduce the examples above, we'll use a simple JSON free API like `https://randomuser.me/api/`. If you wish to use another API tool, take a look on [https://github.com/public-apis/public-apis#test-data](https://github.com/public-apis/public-apis#test-data); free ones are those having `No` in the `Auth` columns.
+
+<AlertBox variant="info" title="randomuser API return every time a new user">
+On each request, the `randomuser` API is returning a new object. Don't be surprised if your names differ from mine.
+
+</AlertBox>
+
+<Details label="The full prettified answer (click for the details)">
+
+Here is the complete object returned by the API, as `jq` renders it:
 
 <!-- cspell:disable -->
 ```json
@@ -130,48 +222,11 @@ $ curl --silent https://randomuser.me/api/ | jq
 ```
 <!-- cspell:enable -->
 
-## Filtering the output
+</Details>
 
-Imagine we just need to retrieve the name. To do this, we need to better understand the JSON object.
+## Conclusion
 
-```json
-{
-  //highlight-next-line
-  "results": [
-    {
-      "gender": "female",
-      //highlight-next-line
-      "name": {
-        "title": "Mademoiselle",
-        "first": "Salomé",
-        "last": "Roy"
-      },
-      "location": {
-        [...]
-      },
-      [...]
-  ],
-  [...]
-}
-```
-
-The output is a JSON representation having a root property called `results`. That property is an array. Each element in that array has a `name` node with a few properties like `title`, `first` and `last`.
-
-If we just want to retrieve the `name` node, the filter to use with `jq` is `.results[0].name`.
-
-<Terminal typewriter>
-$ curl --silent https://randomuser.me/api/ | jq '.results[0].name'
-</Terminal>
-
-```json
-{
-  "title": "Ms",
-  "first": "Brooke",
-  "last": "Morgan"
-}
-```
-
-Learn more about [jq filtering](https://jqlang.github.io/jq/tutorial/).
+Two things to remember: `jq` alone makes any JSON readable, and `jq '.some.path'` extracts exactly the node you need — which is what turns an API answer into something a shell script can consume.
 
 `jq` quickly becomes a reflex: I use it in <Link to="/blog/docker-networking-troubleshooting">Troubleshooting for Docker containers</Link> to read `docker inspect` output, for instance.
 

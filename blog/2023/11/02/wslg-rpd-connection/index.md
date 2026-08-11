@@ -25,7 +25,19 @@ This article shows how to RDP into a WSL2 Ubuntu instance: installing and starti
 
 When WSLg is enabled, it's possible to access the graphical user interface of your Linux distribution (in my case, it's Ubuntu).
 
-*This gives you the **whole desktop** of your WSL instance. Two other approaches exist for graphical Linux on Windows: <Link to="/blog/docker-run-linux-gui">running a single application from a container</Link> and <Link to="/blog/docker-lubuntu">starting a full lubuntu desktop in Docker</Link>. And for files only, <Link to="/blog/wsl-windows-explorer">Open your Linux folder in Windows Explorer</Link> is far lighter than an RDP session.*
+*This gives you the **whole desktop** of your WSL instance, and not just a window here and there. The Docker equivalent, if you'd rather not touch your WSL instance, is <Link to="/blog/docker-lubuntu">starting a full lubuntu desktop in Docker</Link>.*
+
+<!-- truncate -->
+
+## What an RDP session into WSL actually looks like
+
+By default, a WSL instance gives you a bash console. Here is the same instance, in a Windows RDP window, with a complete Xfce desktop:
+
+![Desktop screen](./images/desktop.webp)
+
+Four commands and one configuration file below, and this is what you get.
+
+## Get xrdp running
 
 If you don't have `xrdp` yet, you can install it by running:
 
@@ -36,8 +48,6 @@ $ sudo apt-get install -y xrdp
 ...
 </Terminal>
 
-<!-- truncate -->
-
 Also consider changing the port number to `3390` by running the command below and making a few minor changes. *This seems to be required because, when using the default 3389 port number, you get the 'already in use' error with mstsc.*
 
 <Terminal typewriter source="./files/terminal-2.txt" />
@@ -45,6 +55,8 @@ Also consider changing the port number to `3390` by running the command below an
 (see [https://www.nextofwindows.com/how-to-enable-wsl2-ubuntu-gui-and-use-rdp-to-remote](https://www.nextofwindows.com/how-to-enable-wsl2-ubuntu-gui-and-use-rdp-to-remote) for more in-depth information)
 
 Once done, run `sudo service xrdp start` to start the service. You will see the `* Starting Remote Desktop Protocol server` notification in the console.
+
+## Connect from Windows
 
 Go back to your Windows environment and start `mstsc.exe` and set the computer name to `localhost:3390` (or the port number you are using).
 
@@ -59,11 +71,9 @@ The connection is only possible when `xrdp` is started. So, if it does not work,
 
 Use your local Linux user and connect.
 
-![Desktop screen](./images/desktop.webp)
-
 ## Get the desktop environment
 
-By default, you will just get a bash console and not the desktop as illustrated on the image above.
+At this point, you're connected, but you will just get a bash console and not the desktop illustrated at the top of this article.
 
 If you wish the desktop and all its features, please run `sudo apt-get install -y xubuntu-desktop xfce4 xfce4-goodies`. You will be prompted to make a choice between `gdm3` or `lightdm`; select the first one to get all features.
 
@@ -111,3 +121,9 @@ By default, the keyboard is set to `QWERTY` so go to `Applications` → `Setting
 In the third tab, find your own keyboard setting. If you are using the `Français - Belgique` on Windows, you should set your keyboard to `Belgian (alt.)` on Ubuntu.
 
 ![Set your keyboard to Belgian](./images/settings_keyboard_belgian.webp)
+
+## Conclusion
+
+WSLg alone gives you isolated Linux windows floating on your Windows desktop; with `xrdp` and Xfce you get the entire desktop instead, taskbar and settings panel included, in a single RDP window you can minimize like any other.
+
+If a whole desktop is more than you need: <Link to="/blog/docker-run-linux-gui">running a single graphical application from a container</Link> is lighter, and if you only want to reach your Linux files, <Link to="/blog/wsl-windows-explorer">Open your Linux folder in Windows Explorer</Link> is all it takes.

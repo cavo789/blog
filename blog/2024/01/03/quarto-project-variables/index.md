@@ -25,9 +25,27 @@ The *normal way to do this* is to just put information directly in the documenta
 
 The best way is probably to use an external file where information is stored in a key-value form and, during the rendering process of Quarto, replace short codes by values.
 
-*When the repetition is not a single value but a whole page structure, variables are no longer enough; <Link to="/blog/quarto-mustache">Using Mustache templating with Quarto</Link> is the next step.*
-
 <!-- truncate -->
+
+## What Quarto variables do for you
+
+You write this in your Markdown source:
+
+```markdown
+Version {{< var version >}} is a minor upgrade.
+
+Please contact us at {{< var email.info >}}.
+```
+
+And this is what Quarto renders:
+
+![Using variables with Quarto](./images/variables.webp)
+
+The version number and the email address now live in one single file. Change them there, re-render, and every page of the documentation is up to date — including the twenty places you'd have forgotten.
+
+All it takes: a `_variables.yml` holding your key-values, a `_quarto.yml` (which may be empty), and the `{{< var >}}` / `{{< meta >}}` short codes in your text.
+
+## Setting it up
 
 <AlertBox variant="info" title="Docker image with Quarto">
 If you don't have yet a Docker image with Quarto, read this article <Link to="/blog/docker-quarto">Running Quarto Markdown in Docker</Link>.
@@ -35,8 +53,6 @@ If you don't have yet a Docker image with Quarto, read this article <Link to="/b
 </AlertBox>
 
 You can find the official documentation on [https://quarto.org/docs/authoring/variables.html](https://quarto.org/docs/authoring/variables.html).
-
-## Variables
 
 Here is how to proceed:
 
@@ -80,11 +96,7 @@ As you can see, the short code is something like `{{< meta xxx >}}` or `{{< var 
 
 `meta` is for metadata of the document like its title and `var` to retrieve information from `_variables.yml`.
 
-By running `quarto preview documentation.md --to html`, you'll get this:
-
-![Using variables with Quarto](./images/variables.webp)
-
-This solution is perfect when you want to isolate the "static" content of your documentation from variables, i.e. anything that is subject to regular change or would be repeated in several places in your document.
+Render it with `quarto preview documentation.md --to html` and you get the page shown at the beginning of this article.
 
 ## Environment variables
 
@@ -133,3 +145,9 @@ I'm thus using `--env-file .env` in the `docker run` instruction so Docker will 
 ![Using environment variables](./images/environment.webp)
 
 This solution is even better if you have an application such as Laravel, and therefore already have such an .env file. As a result, you reuse the same values for both the application and the documentation.
+
+## Conclusion
+
+Variables are the right tool when what repeats itself is a *value*: a version number, an IP, a support address, a path. They cost two files and pay for themselves the first time a server is renamed.
+
+When what repeats itself is a whole page structure rather than a value, variables are no longer enough — that's where <Link to="/blog/quarto-mustache">Using Mustache templating with Quarto</Link> takes over.

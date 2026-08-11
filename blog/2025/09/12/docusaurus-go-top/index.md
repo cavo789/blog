@@ -30,7 +30,19 @@ Just scroll down any page of this blog to see a little meerkat appear in the bot
 
 <!-- truncate -->
 
-<!-- TODO(author): capture a real screenshot (or short GIF) of the meerkat "back to top" icon appearing bottom-right while scrolled down on this blog, plus the click-to-top behavior — not reproducible in this session (requires a live browser). -->
+## What it looks like
+
+Here is this very page, scrolled down. The meerkat sits in the bottom right corner, floating above your own content:
+
+<BrowserWindow url="https://www.avonture.be/blog/docusaurus-go-top">
+![The meerkat scroll-to-top button, bottom right, on a scrolled blog post](./images/go_top_button.webp)
+</BrowserWindow>
+
+Up close, it's a round button holding whatever icon you hand it:
+
+![Close-up of the round scroll-to-top button showing the meerkat icon](./images/go_top_button_zoom.webp)
+
+The button stays hidden until you've scrolled past 300 pixels, so a short page never shows it. Two files and one override, below.
 
 ## How it works
 
@@ -45,7 +57,7 @@ Please create the two files below in your blog directory structure:
 Then, you need to inject `<ScrollToTopButton />` in your pages. *This injection is done by swizzling `BlogPostItem`, exactly as in <Link to="/blog/docusaurus-relatedposts">Displaying related posts below our Docusaurus article</Link> and <Link to="/blog/docusaurus-reactions">Adding Reader Reactions to Your Docusaurus Blog</Link>; if you already did one of those, you have the file.*
 
 <AlertBox variant="info">
-Make sure to create a `/img/up.png` in your `/static` folder with your own icon (on my site, the small meerkat).
+The component imports its icon on the very first lines: `import buttontop from "@site/static/img/meerkat/suricate_no_background.webp"`. Point that import at your own square image in `/static` and you're done.
 
 </AlertBox>
 
@@ -81,3 +93,9 @@ If like me you're running Docusaurus thanks to Docker, just kill the container a
 On my site, I have an `archive` page. You want to use the `<ScrollToTopButton />` button there too? Just swizzle the page by running `yarn docusaurus swizzle @docusaurus/theme-classic BlogArchivePage` in a console then update the `index.js` file as illustrated above.
 
 If you have any other pages in your `src/pages/` folder (like `about.mdx`, `index.mdx`, ...), no need to swizzle first, just directly add the two lines in these files too.
+
+## Conclusion
+
+No more dislocated thumbs: one small component, one swizzled `BlogPostItem`, and every long article on your site gets a way back to the top. The fun part is that the icon is yours; mine waves at readers who scroll too far.
+
+If you're building up your set of Docusaurus components, the next one worth adding is <Link to="/blog/docusaurus-relatedposts">related posts below each article</Link>, which reuses the exact same override file.
