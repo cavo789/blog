@@ -15,10 +15,14 @@ const B = 0.75;
  * "php-cs-fixer" split into individual words, which still matches a query typed either way.
  * CamelCase/compound product names (e.g. "CaesiumCLT") get a boundary inserted before
  * lowercasing, so a query for just "caesium" still matches the "caesium" part of the token —
- * without this, "caesiumclt" is one indivisible token that a partial name never matches. */
+ * without this, "caesiumclt" is one indivisible token that a partial name never matches.
+ * The *unsplit* form is kept too (union, not replace): "WordPress" would otherwise only
+ * yield "word" + "press", and a reader typing "wordpress" as one word would match neither. */
 export function tokenize(text) {
   const withBoundaries = text.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
-  return (withBoundaries.toLowerCase().match(/[a-z0-9]+/g) || []).filter(Boolean);
+  const split = withBoundaries.toLowerCase().match(/[a-z0-9]+/g) || [];
+  const whole = text.toLowerCase().match(/[a-z0-9]+/g) || [];
+  return [...new Set([...split, ...whole])];
 }
 
 /**
@@ -47,12 +51,31 @@ function idf(docFrequency, docCount, term) {
   return Math.log((docCount - n + 0.5) / (n + 0.5) + 1);
 }
 
+/** Expands one query token to the indexed terms it should match: itself, if it's already an
+ * indexed term, or — for a still-being-typed prefix like "docus" — every indexed term it's a
+ * prefix of (e.g. "docusaurus"). Below 3 characters a prefix matches too much of the vocabulary
+ * to be useful, so short unindexed tokens are dropped instead of expanded. */
+function expandTerm(docFrequency, term) {
+  if (docFrequency.has(term)) return [term];
+  if (term.length < 3) return [];
+  const matches = [];
+  for (const key of docFrequency.keys()) {
+    if (key.startsWith(term)) matches.push(key);
+  }
+  return matches;
+}
+
 /** Scores and ranks `index` against `query`, returning the top `limit` matches with score > 0. */
 export function search(index, query, limit = 8) {
   const queryTerms = tokenize(query);
   if (queryTerms.length === 0) return [];
 
   const { questions, docs, docFrequency, avgDocLength, docCount } = index;
+  // Expand once per query, not per document — the doc loop below only ever scores against
+  // real indexed terms.
+  const expandedTerms = queryTerms.flatMap((term) => expandTerm(docFrequency, term));
+  if (expandedTerms.length === 0) return [];
+
   const scored = [];
 
   for (let i = 0; i < docs.length; i += 1) {
@@ -60,7 +83,7 @@ export function search(index, query, limit = 8) {
     if (tokens.length === 0) continue;
 
     let score = 0;
-    for (const term of queryTerms) {
+    for (const term of expandedTerms) {
       const freq = tokens.filter((t) => t === term).length;
       if (freq === 0) continue;
 

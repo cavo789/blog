@@ -1,36 +1,40 @@
-.page {
-  position: relative;
-  max-width: 860px;
+/*
+ * Image + content are one flex row, centered as a unit — instead of centering .page alone and
+ * absolutely positioning the image in the leftover gutter. The old approach needed the gutter
+ * on BOTH sides of the centered .page to be wide enough for the image (viewport >= content +
+ * 2 * (image + gap)), which for a 550px image meant a ~2056px viewport: readers only ever saw
+ * it by zooming out. Centering the row instead only needs viewport >= image + gap + content,
+ * roughly half that, so the image shows up at ordinary desktop widths at 100% zoom.
+ *
+ * min viewport = image (550) + gap (32, from `gap: 2rem`) + content (860)
+ *              = 1442px, +~30px buffer for the scrollbar → 1472px.
+ * If you resize .marginImage or the wrapper's gap, recompute this breakpoint the same way.
+ */
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
-/*
- * Sits in the gutter the centered .page already leaves empty, without taking part in its
- * layout — an in-flow sibling (flex/grid column) would either shrink the content width or
- * force the whole block off-center. Because .page is centered, the left gutter always
- * equals the right one, even though only the left is used — so the breakpoint below must
- * guarantee a gutter at least as wide as (image width + gap) on BOTH sides, or the image
- * clips off-screen and forces a page-wide horizontal scrollbar.
- *
- * min viewport = content (860) + 2 * (image width + gap)
- *              = 860 + 2 * (550 + 32) = 2024px, +~30px buffer for the scrollbar → 2056px.
- * If you resize .marginImage again, recompute this breakpoint the same way.
- */
 .marginImage {
-  position: absolute;
-  top: 0;
-  right: 100%;
-  margin-right: 2rem;
   width: 550px;
+  flex-shrink: 0;
   border-radius: 8px;
   display: none;
 }
 
-@media (min-width: 2056px) {
+@media (min-width: 1472px) {
   .marginImage {
     display: block;
   }
+}
+
+.page {
+  max-width: 860px;
+  width: 100%;
 }
 
 .header {

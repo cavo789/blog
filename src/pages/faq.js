@@ -35,45 +35,46 @@ export default function FaqPage() {
         <meta property="og:image" content={ogImage} />
         <meta name="twitter:image" content={ogImage} />
       </Head>
-      <main className={styles.page}>
+      <div className={styles.pageWrapper}>
         <img
           className={styles.marginImage}
           src={withBaseUrl("/img/faqs.webp")}
           alt="A meerkat surveying the blog's topics."
           loading="lazy"
         />
+        <main className={styles.page}>
+          <header className={styles.header}>
+            <h1>Ask My Blog</h1>
+            <p className={styles.subtitle}>
+              {meta.questionCount} question{meta.questionCount === 1 ? "" : "s"},
+              generated from {meta.articleCount} article
+              {meta.articleCount === 1 ? "" : "s"} — phrased the way a developer would
+              actually search, not just the article&apos;s own title.
+            </p>
+          </header>
 
-        <header className={styles.header}>
-          <h1>Ask My Blog</h1>
-          <p className={styles.subtitle}>
-            {meta.questionCount} question{meta.questionCount === 1 ? "" : "s"}, generated
-            from {meta.articleCount} article{meta.articleCount === 1 ? "" : "s"} — phrased
-            the way a developer would actually search, not just the article&apos;s own
-            title.
-          </p>
-        </header>
+          <AskMyBlog />
 
-        <AskMyBlog />
-
-        {themes.length === 0 ? (
-          <p className={styles.empty}>
-            No questions indexed yet — generate some with <code>yarn questions:bulk</code>
-            .
-          </p>
-        ) : (
-          <nav aria-label="Browse by topic">
-            <h2 className={styles.tocTitle}>Browse by topic</h2>
-            <ul className={styles.toc}>
-              {themes.map((theme) => (
-                <li key={theme.key}>
-                  <Link to={theme.permalink}>{theme.label}</Link>
-                  <span className={styles.tocCount}>{theme.count}</span>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
-      </main>
+          {themes.length === 0 ? (
+            <p className={styles.empty}>
+              No questions indexed yet — generate some with{" "}
+              <code>yarn questions:bulk</code>.
+            </p>
+          ) : (
+            <nav aria-label="Browse by topic">
+              <h2 className={styles.tocTitle}>Browse by topic</h2>
+              <ul className={styles.toc}>
+                {themes.map((theme) => (
+                  <li key={theme.key}>
+                    <Link to={theme.permalink}>{theme.label}</Link>
+                    <span className={styles.tocCount}>{theme.count}</span>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+        </main>
+      </div>
     </Layout>
   );
 }
