@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:02:07.388Z",
+  "source": "index.md",
+  "sourceHash": "52e18b67677aa914be6b2e75f06f37b6f66e316e",
+  "questions": [
+    {
+      "question": "How do I start a new terminal session in a running Docker container?",
+      "anchor": "start-a-new-terminal-session-in-a-running-docker-container"
+    },
+    {
+      "question": "What is the purpose of the dnuke function and how does it work?",
+      "anchor": "how-to-install"
+    },
+    {
+      "question": "How can I stop one or more running Docker containers using the provided functions?",
+      "anchor": "stop-one-or-more-running-docker-containers"
+    },
+    {
+      "question": "What are some interactive tools available for managing Docker containers in ZSH?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I view logs of a running Docker container using the provided functions?",
+      "anchor": "access-logs-of-a-running-docker-container"
+    },
+    {
+      "question": "What are some interactive features available for managing Docker containers in ZSH?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I clean up unused Docker resources (containers, images, volumes, networks) using the provided functions?",
+      "anchor": "clean-up-unused-docker-containers-images-volumes-and-networks"
+    },
+    {
+      "question": "What are some useful ZSH functions for managing Docker containers that don't require remembering container names or IDs?",
+      "anchor": ""
+    }
+  ]
+}

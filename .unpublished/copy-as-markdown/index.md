@@ -33,7 +33,7 @@ Here's the file the button actually fetches, produced by a `postBuild` step you'
 
 <Terminal source="./files/terminal_demo.txt" typewriter />
 
-Even the `<TLDR>` tag survives untouched — good enough for a human to skim or an LLM to parse, and exactly what we're about to build.
+Even the `<TLDR>` tag survives untouched — good enough for a human to skim or an LLM to parse. Notice the HTML comment at the very top, too: it's how the mirror points back to the real, fully rendered page.
 
 ## Why It's Just Two Moving Parts
 
@@ -50,13 +50,29 @@ Create `plugins/markdown-mirror-plugin/index.cjs`:
 
 <Snippet filename="plugins/markdown-mirror-plugin/index.cjs" source="./files/markdown-mirror-plugin.cjs" defaultOpen={false} />
 
-Three things worth calling out:
+Four things worth calling out:
 
 ```javascript title="plugins/markdown-mirror-plugin/index.cjs"
-async postBuild({ siteDir, outDir, routesPaths }) {
+function buildMetadataComment(url, buildDate) {
+  return [
+    "<!--",
+    `  canonical-url: ${url}`,
+    `  generated-at:  ${buildDate}`,
+    "  This is a static plain-Markdown mirror generated at build time.",
+    "  Visit the canonical URL above for the fully rendered page, with images and interactive components.",
+    "-->",
+    "",
+  ].join("\n");
+}
 ```
 
-`postBuild` is a Docusaurus [lifecycle hook](https://docusaurus.io/docs/api/plugin-methods/lifecycle-apis#postBuild) — it fires once, after `yarn build` finishes writing the HTML, and never during `yarn start`. That's exactly the timing you want: the mirror only needs to exist in production.
+This is the piece that answers a question every plain-text mirror eventually raises: *where did this come from?* An HTML comment is the right container for it — hidden the moment the file is pasted into anything that actually renders Markdown (Notion, Obsidian, a GitHub comment box), yet still plain text in a raw view or in whatever an LLM is handed, so the URL survives exactly where a reader who lost track of the original page needs it. `generated-at` uses one timestamp shared by every mirror in the run (computed once in `postBuild`, not per file), so it reflects "this build," not "this millisecond."
+
+```javascript title="plugins/markdown-mirror-plugin/index.cjs"
+async postBuild({ siteDir, outDir, siteConfig, routesPaths }) {
+```
+
+`postBuild` is a Docusaurus [lifecycle hook](https://docusaurus.io/docs/api/plugin-methods/lifecycle-apis#postBuild) — it fires once, after `yarn build` finishes writing the HTML, and never during `yarn start`. That's exactly the timing you want: the mirror only needs to exist in production. `siteConfig.url` is what turns a bare permalink into the absolute URL the comment above needs.
 
 ```javascript title="plugins/markdown-mirror-plugin/index.cjs"
 if (!knownRoutes.has(permalink)) continue;
@@ -65,10 +81,11 @@ if (!knownRoutes.has(permalink)) continue;
 `routesPaths` is the list of URLs Docusaurus itself decided to actually publish. Cross-checking against it — instead of re-implementing "is this post a draft?" logic by hand — is what makes `draft: true` posts fall out of the mirror for free.
 
 ```javascript title="plugins/markdown-mirror-plugin/index.cjs"
-const markdown = body.replace("<!-- truncate -->\n", "").trim() + "\n";
+const content = body.replace("<!-- truncate -->\n", "").trim() + "\n";
+const markdown = buildMetadataComment(url, buildDate) + content;
 ```
 
-The frontmatter block is stripped by the `front-matter` package before this line even runs; this just removes the `<!-- truncate -->` marker, which has no meaning outside Docusaurus's own summary-splitting logic.
+The frontmatter block is stripped by the `front-matter` package before this line even runs; the `replace` here only removes the `<!-- truncate -->` marker, which has no meaning outside Docusaurus's own summary-splitting logic. The metadata comment from earlier gets prepended last, right before the file is written.
 
 Wire it into your config:
 
@@ -239,6 +256,8 @@ export default function BlogPostItem({ children, className }) {
 **Why `postBuild`, not a webpack loader or a dev-time route.** A loader would need to re-run the same MDX-to-text logic on every hot reload for no benefit — nobody is copying a post from a blog they're actively editing. Restricting the mirror to production keeps the dev server fast and the logic in exactly one place.
 
 **Where the simple version stops being enough.** The plugin in Step 1 passes every custom component through as literal JSX text. That's fine for the odd `<TLDR>` block, but it stops looking like Markdown fast once a post leans on dozens of components — code snippets, alert boxes, step-by-step cards, and so on. Doing that properly means parsing the MDX into an actual syntax tree and replacing each component node with a plain-Markdown equivalent, component by component. It's a legitimately bigger project than a button and a copy loop — the kind of thing this blog's own, much larger, degradation pipeline exists for — and a good candidate for a follow-up article on its own.
+
+**A frontmatter date isn't a string.** If you extend the metadata comment to also print the post's own `date:` field, don't string-concatenate it directly. YAML auto-types an unquoted `date: 2024-02-23` as a JS `Date` object, and `` `${date}` `` calls its verbose default `toString()` (`Mon Jul 27 2026 00:00:00 GMT+0000 (Coordinated Universal Time)`). Normalize it first: `date instanceof Date ? date.toISOString().slice(0, 10) : String(date)`.
 
 ## Conclusion
 

@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:47:30.520Z",
+  "source": "index.md",
+  "sourceHash": "4f7898bfceb67b4b6fe9284665ab28328d329f29",
+  "questions": [
+    {
+      "question": "How do I install PostgREST?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the purpose of PostgREST?",
+      "anchor": ""
+    },
+    {
+      "question": "Why use PostgREST instead of writing queries in my application code?",
+      "anchor": "what-postgrest-does-for-you"
+    },
+    {
+      "question": "How do I create a PostgreSQL database and populate it with data for testing?",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "What are the benefits of using PostgREST over writing queries in my application code?",
+      "anchor": "what-postgrest-does-for-you"
+    },
+    {
+      "question": "How do I configure PostgREST to use a different port than the default?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What are some examples of queries that can be made using PostgREST?",
+      "anchor": "step-1---create-and-populate-our-postgresql-database"
+    },
+    {
+      "question": "How do I filter data in a PostgREST query?",
+      "anchor": "step-2---install-and-execute-postgrest"
+    },
+    {
+      "question": "What are some common use cases for PostgREST?",
+      "anchor": "what-postgrest-does-for-you"
+    },
+    {
+      "question": "How do I handle joins in a PostgREST query?",
+      "anchor": "more-queries"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:49:10.700Z",
+  "source": "index.md",
+  "sourceHash": "8af7672c222f877ee61cab8e02e91a39b67351b0",
+  "questions": [
+    {
+      "question": "What are the benefits of using Rector?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Rector work with PHP codebases?",
+      "anchor": "here-is-what-rector-says-about-it"
+    },
+    {
+      "question": "Why is Rector considered a powerful tool for developers?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What are the key features of Rector that make it unique?",
+      "anchor": "install-rector"
+    },
+    {
+      "question": "How does Rector help improve code quality in PHP projects?",
+      "anchor": "run-rector"
+    },
+    {
+      "question": "Can you explain how Rector detects and suggests improvements to my code?",
+      "anchor": "applied-rules"
+    },
+    {
+      "question": "What are some examples of the rules Rector can apply to improve my PHP code?",
+      "anchor": "simplifyifelsetoternaryrector"
+    },
+    {
+      "question": "How does Rector handle different versions of PHP when upgrading my codebase?",
+      "anchor": "simplifyuselessvariablerector"
+    },
+    {
+      "question": "What are the steps to install and configure Rector for my project?",
+      "anchor": "returntypefromstrictscalarreturnexprrector"
+    },
+    {
+      "question": "How do I run Rector on a specific file or directory in my PHP project?",
+      "anchor": "strictstringparamconcatrector"
+    },
+    {
+      "question": "What are some common issues that Rector can help me resolve in my codebase?",
+      "anchor": "final-code"
+    },
+    {
+      "question": "How does Rector provide detailed explanations for the changes it suggests?",
+      "anchor": "last-thing-make-the-change"
+    }
+  ]
+}

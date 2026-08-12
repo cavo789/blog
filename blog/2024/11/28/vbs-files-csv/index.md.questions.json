@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:55:23.670Z",
+  "source": "index.md",
+  "sourceHash": "841d3e2b93c23303a1f22429111020fb31c5fe41",
+  "questions": [
+    {
+      "question": "How do I use VBScript to generate a CSV file of files in a folder?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of this VBScript script for generating a CSV file of files in a folder?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I modify the VBScript to include additional file details like owner and type?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the key outputs of this VBScript script when generating a CSV file of files in a folder?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use this VBScript to generate a CSV file of files in a sub-folder as well?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the differences between this VBScript script and a DOS script for generating a file list?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I modify the VBScript to exclude certain file types or extensions when generating the CSV file?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some potential applications for this VBScript script in analyzing files and folders?",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:56:16.849Z",
+  "source": "index.md",
+  "sourceHash": "9a3128f66aed6e95ceefe6892b8ad192607344bb",
+  "questions": [
+    {
+      "question": "How does Recraft.ai differ from other AI image generation tools?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some advanced features of Recraft.ai's image generation tool?",
+      "anchor": ""
+    },
+    {
+      "question": "Can Recraft.ai produce multiple variations of an image from a single prompt?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I specify custom image dimensions using Recraft.ai?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the process for adding text to images in Recraft.ai?",
+      "anchor": ""
+    },
+    {
+      "question": "Can Recraft.ai generate realistic-looking images?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Recraft.ai compare to Bing in terms of image generation capabilities?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some common issues I might encounter when using Recraft.ai's image generation tool?",
+      "anchor": ""
+    }
+  ]
+}

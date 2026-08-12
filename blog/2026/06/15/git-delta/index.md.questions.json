@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:03:23.304Z",
+  "source": "index.md",
+  "sourceHash": "d97c1f5d349e6d872992e52759c3c71dbf5a31fb",
+  "questions": [
+    {
+      "question": "What is Delta?",
+      "anchor": "what-is-delta"
+    },
+    {
+      "question": "How does Delta work?",
+      "anchor": "what-is-delta"
+    },
+    {
+      "question": "What are the benefits of using Delta for git diff?",
+      "anchor": "what-is-delta"
+    },
+    {
+      "question": "How do I install Delta?",
+      "anchor": "install"
+    },
+    {
+      "question": "How do I configure Git to use Delta?",
+      "anchor": "configure-git-to-use-delta"
+    },
+    {
+      "question": "What are the different modes available in Delta for viewing diffs?",
+      "anchor": "side-by-side-mode"
+    },
+    {
+      "question": "What themes are available for Delta?",
+      "anchor": "themes"
+    },
+    {
+      "question": "How do I navigate between hunks in Delta?",
+      "anchor": "navigation-between-hunks"
+    },
+    {
+      "question": "Can Delta be used with other TUI git clients like GitKraken or SourceTree?",
+      "anchor": "delta-works-everywhere-git-does"
+    }
+  ]
+}

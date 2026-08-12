@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:51:01.696Z",
+  "source": "index.md",
+  "sourceHash": "d269d4536c61453d5e57987447cb6412152645fa",
+  "questions": [
+    {
+      "question": "What is a Quarto Callout Block?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I add a tip in a Quarto document?",
+      "anchor": "syntax"
+    },
+    {
+      "question": "Where can I find the syntax for Quarto callouts?",
+      "anchor": "syntax"
+    },
+    {
+      "question": "What are some examples of Quarto callout types?",
+      "anchor": "syntax"
+    },
+    {
+      "question": "How do I use a VSCode snippet to create a Quarto callout?",
+      "anchor": "vscode-snippet"
+    },
+    {
+      "question": "What is the difference between Docusaurus and Quarto callouts?",
+      "anchor": ""
+    },
+    {
+      "question": "Where can I find more information about Quarto's syntax for callouts?",
+      "anchor": "syntax"
+    },
+    {
+      "question": "How do I create a warning in a Quarto document?",
+      "anchor": "syntax"
+    }
+  ]
+}

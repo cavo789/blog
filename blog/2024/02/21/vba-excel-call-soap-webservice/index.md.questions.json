@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:49:27.228Z",
+  "source": "index.md",
+  "sourceHash": "3c004700fd17b7dc47c93d41d69d30cf15e92441",
+  "questions": [
+    {
+      "question": "How do I call a SOAP web service in Excel using VBA?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the EU's VIES VAT number validation service and how does it work?",
+      "anchor": "a-linux-command-line-version"
+    },
+    {
+      "question": "How can I validate a European VAT number using the SOAP web service in Excel?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of placeholders in VBA when calling a SOAP web service?",
+      "anchor": "create-the-excel-workbook"
+    },
+    {
+      "question": "How do I use Postman to play with API and understand SOAP answers before writing VBA code?",
+      "anchor": "a-linux-command-line-version"
+    },
+    {
+      "question": "What is the difference between calling a SOAP web service in Excel using VBA and a Linux command-line version?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create an XML message for calling a SOAP web service in Excel?",
+      "anchor": "create-the-xml-message"
+    },
+    {
+      "question": "What is the purpose of creating an empty Excel workbook when calling a SOAP web service in Excel?",
+      "anchor": "create-the-excel-workbook"
+    }
+  ]
+}

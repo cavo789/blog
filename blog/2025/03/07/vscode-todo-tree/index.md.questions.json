@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:57:07.244Z",
+  "source": "index.md",
+  "sourceHash": "fb17c9416b3dccd67dc89e8ab885e44d0efb6a87",
+  "questions": [
+    {
+      "question": "What is Todo Tree and how does it work?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use the Todo Tree extension in Visual Studio Code?",
+      "anchor": ""
+    },
+    {
+      "question": "Why should I use the Todo Tree extension?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some common annotations like TODO, FIXME, and TEMPORARY in code?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Git pre-commit-hooks prevent commits with todo markers?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the Todo Tree extension for Visual Studio Code?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I install and use the Todo Tree extension in Visual Studio Code?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some additional benefits of using the Todo Tree extension?",
+      "anchor": ""
+    }
+  ]
+}

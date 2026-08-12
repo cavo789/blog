@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:58:50.286Z",
+  "source": "index.md",
+  "sourceHash": "d41d864f58e6b2c85140daf5548e69466ac5912e",
+  "questions": [
+    {
+      "question": "How do I install karakeep using Docker Compose?",
+      "anchor": "lets-install-karakeep"
+    },
+    {
+      "question": "What are some of the key features of karakeep?",
+      "anchor": "tips---select-a-list-before-adding-an-item"
+    },
+    {
+      "question": "How does karakeep handle images and links in its lists?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "Can I search for bookmarks, notes, and images together using karakeep?",
+      "anchor": "add-a-bookmark"
+    },
+    {
+      "question": "What is the difference between karakeep and Heimdall in terms of their search capabilities?",
+      "anchor": "adding-to-a-list"
+    },
+    {
+      "question": "How do I configure the user ID and group ID in the Docker Compose file for karakeep?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the purpose of the Docker volume used by karakeep?",
+      "anchor": "adding-to-a-list"
+    },
+    {
+      "question": "How do I create a new list in karakeep and add items to it?",
+      "anchor": "extra-features"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:55:13.040Z",
+  "source": "index.md",
+  "sourceHash": "bf1f29e89c28f0f0445e5ed55e144b05f2de25f8",
+  "questions": [
+    {
+      "question": "What are some alternatives to Faker for generating fake data in Python?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I validate a JSON file against a schema using Python?",
+      "anchor": "creating-a-fake-data-using-a-schema"
+    },
+    {
+      "question": "Can you explain the difference between Mockaroo and Faker libraries for generating fake data in Python?",
+      "anchor": "generate-faker-json-file"
+    },
+    {
+      "question": "What are some best practices for handling JSON files in a sensitive application like mine?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I generate large datasets using Mockaroo.com and what is the maximum number of records it allows?",
+      "anchor": "using-mockaroocom"
+    },
+    {
+      "question": "What are some tools that can help me render a JSON file as a mind map for better understanding its structure?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use the requests library to interact with Mockaroo's API and generate fake data?",
+      "anchor": "creating-a-fake-data-using-a-schema"
+    },
+    {
+      "question": "What are some common JSON validation tools that I can use in Python?",
+      "anchor": ""
+    }
+  ]
+}

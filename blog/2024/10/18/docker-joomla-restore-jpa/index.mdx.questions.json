@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:54:42.667Z",
+  "source": "index.mdx",
+  "sourceHash": "1602c76a88e3a678348f4f5946cfd5ab97c7ccb2",
+  "questions": [
+    {
+      "question": "How do I restore a Joomla site using Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to restore a Joomla site locally using Docker and Akeeba Kickstart?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How can I configure my environment for restoring a Joomla site locally using Docker and Akeeba Kickstart?",
+      "anchor": "creating-required-files"
+    },
+    {
+      "question": "What is the purpose of the .env file in the context of restoring a Joomla site locally using Docker and Akeeba Kickstart?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I create the orchestration file (compose.yaml) for restoring a Joomla site locally using Docker and Akeeba Kickstart?",
+      "anchor": "the-orchestration-file-composeyaml"
+    },
+    {
+      "question": "What is the purpose of the makefile in the context of restoring a Joomla site locally using Docker and Akeeba Kickstart?",
+      "anchor": "our-makefile"
+    },
+    {
+      "question": "How do I create a Dockerfile for restoring a Joomla site locally using Docker and Akeeba Kickstart?",
+      "anchor": "we-also-need-a-file-called-dockerfile"
+    },
+    {
+      "question": "What is the purpose of the backup file in the context of restoring a Joomla site locally using Docker and Akeeba Kickstart?",
+      "anchor": "we-need-a-backup-for-sure"
+    }
+  ]
+}

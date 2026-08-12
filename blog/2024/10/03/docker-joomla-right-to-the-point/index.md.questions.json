@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:54:12.142Z",
+  "source": "index.md",
+  "sourceHash": "3f76e0f68fa418211cdbb2dc0df802c53578a47c",
+  "questions": [
+    {
+      "question": "How do I start a Joomla project with Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the easiest way to start a Joomla project with Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I quickly launch my Joomla website using Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to set up a Joomla project with Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I use Docker to start a Joomla site?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the Docker Compose setup for Joomla?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I launch a Joomla project with Docker in just a few clicks?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the essential steps to start a Joomla project using Docker?",
+      "anchor": ""
+    }
+  ]
+}

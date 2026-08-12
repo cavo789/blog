@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:53:08.703Z",
+  "source": "index.md",
+  "sourceHash": "eda0da6564636fa5c408ab29bb42aed0b4e012bd",
+  "questions": [
+    {
+      "question": "how to generate doc blocks",
+      "anchor": "result"
+    },
+    {
+      "question": "generate documentation from bash scripts",
+      "anchor": "result"
+    },
+    {
+      "question": "bash script auto-generate documentation",
+      "anchor": "result"
+    },
+    {
+      "question": "how to create markdown files",
+      "anchor": "how-to-reproduce-it"
+    },
+    {
+      "question": "create markdown file from bash script",
+      "anchor": "how-to-reproduce-it"
+    },
+    {
+      "question": "generate documentation for bash scripts linux",
+      "anchor": "result"
+    },
+    {
+      "question": "bash script generate doc blocks",
+      "anchor": "result"
+    },
+    {
+      "question": "how to parse function docblocks",
+      "anchor": "how-to-reproduce-it"
+    }
+  ]
+}

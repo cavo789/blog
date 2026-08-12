@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T10:18:33.363Z",
+  "source": "index.md",
+  "sourceHash": "d35ecf53e5a11fe8061518d9c545981251068b19",
+  "questions": [
+    {
+      "question": "How do I build a self-documenting ecosystem for multiple projects using Quarto and Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "What is Doc-as-Code and how does it work in the context of this blog post?",
+      "anchor": "visualizing-the-invisible-mermaid--caching"
+    },
+    {
+      "question": "How can I generate a Mermaid diagram from Python scripts within a Quarto document?",
+      "anchor": "the-living-documentation-authenticated-api-calls"
+    },
+    {
+      "question": "What is the purpose of the Secrets Resolver in this documentation process?",
+      "anchor": "the-invisible-assistant-background-daemons--snippets"
+    },
+    {
+      "question": "How does the Orchestrator (compose.yaml) contribute to the setup of the self-documenting ecosystem?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the role of the Engine (Dockerfile) in this project?",
+      "anchor": "installation--the-wow-lab-build-your-first-doc-engine-in-5-minutes"
+    },
+    {
+      "question": "How can I integrate custom Python scripts into a Quarto document for dynamic content generation?",
+      "anchor": "visualizing-the-invisible-mermaid--caching"
+    },
+    {
+      "question": "What are the benefits of using runtime execution with Quarto documents?",
+      "anchor": "1-the-orchestrator-composeyaml"
+    }
+  ]
+}

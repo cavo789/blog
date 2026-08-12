@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T06:47:12.398Z",
+  "source": "index.md",
+  "sourceHash": "ca8c4436948bb05ea44857f0efb81093279e7ea5",
+  "questions": [
+    {
+      "question": "How do I run a standard PHP script or website locally?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the easiest way to run a PHP script using Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I quickly test my PHP code without installing local PHP or Apache?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to create and run a PHP script using Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I access my local PHP website on port 8080?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the command to synchronize the current folder with the Docker container?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I switch between PHP versions using a Docker image?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some useful extensions and tools to enhance my PHP development with Docker?",
+      "anchor": ""
+    }
+  ]
+}

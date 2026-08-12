@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:48:36.523Z",
+  "source": "index.md",
+  "sourceHash": "d57ebf81de398945462e8147e35a8c9604285cfa",
+  "questions": [
+    {
+      "question": "How do I set up LimeSurvey using Docker Compose?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to create a sandbox site for LimeSurvey?",
+      "anchor": "limesurvey-running-in-two-minutes"
+    },
+    {
+      "question": "How can I use volumes with Docker to persist data in LimeSurvey?",
+      "anchor": "first-login"
+    },
+    {
+      "question": "Why is it important to pin MySQL versions when using Docker Compose for LimeSurvey?",
+      "anchor": "using-volumes"
+    },
+    {
+      "question": "How can I download an old version of LimeSurvey for testing purposes?",
+      "anchor": "download-an-old-version"
+    },
+    {
+      "question": "What are the health checks used to ensure LimeSurvey is ready after startup?",
+      "anchor": "limesurvey-running-in-two-minutes"
+    },
+    {
+      "question": "How do I log in to the administration interface of LimeSurvey?",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "What are the steps to create a survey list, participants, and statistics on my machine using Docker Compose?",
+      "anchor": ""
+    }
+  ]
+}

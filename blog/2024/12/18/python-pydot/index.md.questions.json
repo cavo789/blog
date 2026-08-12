@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:55:55.268Z",
+  "source": "index.md",
+  "sourceHash": "998ac7266923336535bd0cb86b68e708e0154446",
+  "questions": [
+    {
+      "question": "How do I generate ETL flowcharts using Python and pydot?",
+      "anchor": ""
+    },
+    {
+      "question": "What is a diagram-as-code generator in Python?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I create an image of an ETL flowchart using Pydot and Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you provide examples of how to use Pydot for generating class diagrams in Python?",
+      "anchor": "some-other-examples"
+    },
+    {
+      "question": "What is the purpose of the `f.i.` file mentioned in the article?",
+      "anchor": "oop-classes"
+    },
+    {
+      "question": "How can I generate a decision flowchart using Pydot and Docker?",
+      "anchor": "data-flow"
+    },
+    {
+      "question": "Can you explain how to create a decision tree diagram using Pydot in Python?",
+      "anchor": "decision-flow"
+    },
+    {
+      "question": "What is the difference between `doc-as-code` and `diagram-as-code` generators?",
+      "anchor": ""
+    }
+  ]
+}

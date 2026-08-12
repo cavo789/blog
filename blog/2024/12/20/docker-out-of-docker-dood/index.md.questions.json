@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:56:00.263Z",
+  "source": "index.md",
+  "sourceHash": "33275b1f077b88e0e42af5fc086435069e86d507",
+  "questions": [
+    {
+      "question": "How can I run Docker commands from inside a container using DooD?",
+      "anchor": "the-result-docker-commands-run-from-inside-a-container"
+    },
+    {
+      "question": "What are some practical use cases for Docker-out-of-Docker (DooD)?",
+      "anchor": "docker-out-of-docker-dood-is-enabled-cool-but-why"
+    },
+    {
+      "question": "How do I set up Docker-out-of-Docker to run as an unprivileged user?",
+      "anchor": "more-demos-running-the-container-as-an-unprivileged-user"
+    },
+    {
+      "question": "What are the security implications of using Docker-out-of-Docker (DooD)?",
+      "anchor": "doods-security-limits"
+    },
+    {
+      "question": "How can I create my own Docker image that uses DooD?",
+      "anchor": "what-is-this-group-1001"
+    },
+    {
+      "question": "What are the benefits of using Docker-out-of-Docker (DooD) in a CI pipeline?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How can I access Docker commands from inside a container without running Docker-in-Docker?",
+      "anchor": "the-result-docker-commands-run-from-inside-a-container"
+    },
+    {
+      "question": "What are the steps to set up DooD on my host machine?",
+      "anchor": "installation"
+    }
+  ]
+}

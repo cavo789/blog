@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:53:23.120Z",
+  "source": "index.md",
+  "sourceHash": "42372e27fc6895cdc5a7e83618bb7210a4ee53ab",
+  "questions": [
+    {
+      "question": "How do I run a static HTML site locally using Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of running a static HTML site with Docker in seconds?",
+      "anchor": "result"
+    },
+    {
+      "question": "How does Docker help me serve a static HTML website quickly without installing Apache or Nginx?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the command to run a static HTML site locally using Docker?",
+      "anchor": "dont-have-a-site-to-try-this-on-yet"
+    },
+    {
+      "question": "How can I install and configure Docker on my Windows machine?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "Can I serve PHP sites with Docker and what is the easiest way to do it?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What are some free static websites available for demonstration using Docker?",
+      "anchor": "dont-have-a-site-to-try-this-on-yet"
+    },
+    {
+      "question": "How can I download a static website from the internet and run it locally using Docker?",
+      "anchor": "conclusion"
+    }
+  ]
+}

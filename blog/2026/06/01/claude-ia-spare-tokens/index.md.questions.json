@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:03:12.499Z",
+  "source": "index.md",
+  "sourceHash": "4be34ed91a112dc0d1f20590d512c3d05ec1b792",
+  "questions": [
+    {
+      "question": "How do I reduce token consumption in Claude Code?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the practical techniques to optimize token usage in Claude Code?",
+      "anchor": ""
+    },
+    {
+      "question": "Which model choice impacts token consumption in Claude Code?",
+      "anchor": "reducing-context"
+    },
+    {
+      "question": "How does CLAUDE.md file affect token consumption in Claude Code?",
+      "anchor": "model-choice"
+    },
+    {
+      "question": "What are the data fetching rules to reduce token usage in Claude Code?",
+      "anchor": "claudemd-file"
+    },
+    {
+      "question": "What is the output mode and how does it impact token consumption in Claude Code?",
+      "anchor": "data-fetching-rules"
+    },
+    {
+      "question": "How can I generate code using Claude Code with minimal token usage?",
+      "anchor": "output-mode"
+    },
+    {
+      "question": "What are the off-peak and peak hours for Claude Code and how do they affect token consumption?",
+      "anchor": "code-generation"
+    },
+    {
+      "question": "How can I save tokens by working during off-peak hours in Claude Code?",
+      "anchor": "off-peak-and-peak-hours"
+    },
+    {
+      "question": "What are the extra tips to reduce token usage in Claude Code?",
+      "anchor": "extra"
+    }
+  ]
+}

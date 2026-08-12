@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:54:07.838Z",
+  "source": "index.md",
+  "sourceHash": "1b8f43eaf36302edd09da3307659d326dc22337f",
+  "questions": [
+    {
+      "question": "What are some of the key features of Pest?",
+      "anchor": "result"
+    },
+    {
+      "question": "How do I install Pest in my PHP project?",
+      "anchor": "why-pest"
+    },
+    {
+      "question": "What is the expect syntax in Pest and how can it be used?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What are datasets and how do I use them with Pest?",
+      "anchor": "writing-tests"
+    },
+    {
+      "question": "How can I reuse PHPUnit test cases in Pest without changes?",
+      "anchor": "introduction-about-pest"
+    },
+    {
+      "question": "What are some architectural testing features that Pest supports?",
+      "anchor": "our-first-tests"
+    },
+    {
+      "question": "What is snapshot testing and how can I use it with Pest?",
+      "anchor": "assertions"
+    },
+    {
+      "question": "How can I write global functions in a Pest test file?",
+      "anchor": "expectations"
+    },
+    {
+      "question": "What are some tips and tricks for using Pest effectively?",
+      "anchor": "using-datasets"
+    }
+  ]
+}

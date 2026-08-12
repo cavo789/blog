@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:50:46.974Z",
+  "source": "index.md",
+  "sourceHash": "aaef8b49789e5c81cb2467b86f9a27bdcd3012d0",
+  "questions": [
+    {
+      "question": "How can I customize my Windows Terminal profile?",
+      "anchor": "customize-your-profile"
+    },
+    {
+      "question": "What is required to install Windows Terminal on older versions of Windows?",
+      "anchor": "installation"
+    },
+    {
+      "question": "How do I add a new profile in Windows Terminal for opening a shell inside a Docker container?",
+      "anchor": "add-a-new-profile"
+    },
+    {
+      "question": "What is the purpose of setting the default profile in Windows Terminal?",
+      "anchor": "set-the-default-profile"
+    },
+    {
+      "question": "How do I set the default folder for Ubuntu in Windows Terminal?",
+      "anchor": "set-the-default-folder-for-ubuntu"
+    },
+    {
+      "question": "How can I open multiple tabs during the startup process in Windows Terminal?",
+      "anchor": "open-multiple-tabs-during-the-startup-process"
+    },
+    {
+      "question": "What are some additional features of Windows Terminal besides multi-tabbing and background customization?",
+      "anchor": "going-further"
+    },
+    {
+      "question": "How can I use PowerLevel10k with Windows Terminal for a geekier interface?",
+      "anchor": "customize-your-profile"
+    },
+    {
+      "question": "What are some popular WSL distributions that can be used in Windows Terminal?",
+      "anchor": "add-a-new-profile"
+    },
+    {
+      "question": "How can I share my Linux history between tabs in Windows Terminal?",
+      "anchor": "customize-your-profile"
+    },
+    {
+      "question": "What is the purpose of the GUID in a profile for background images in Windows Terminal?",
+      "anchor": "add-a-new-profile"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:51:48.272Z",
+  "source": "index.md",
+  "sourceHash": "044df3b3663ab782ea985f959f4b37ef2eb7edb0",
+  "questions": [
+    {
+      "question": "How do I set up an environment in Postman?",
+      "anchor": ""
+    },
+    {
+      "question": "What is a collection in Postman, and how can I use it?",
+      "anchor": "creating-a-collection"
+    },
+    {
+      "question": "How do I create a request in Postman with headers?",
+      "anchor": "creating-a-request"
+    },
+    {
+      "question": "How can I export and import collections in Postman?",
+      "anchor": "exporting--importing-a-collection"
+    },
+    {
+      "question": "What is an example of using Postman to call a SOAP web service?",
+      "anchor": "real-world-example"
+    },
+    {
+      "question": "How do I perform checks on the response time and HTTP status code in Postman?",
+      "anchor": "some-checks"
+    },
+    {
+      "question": "What is an example of validating the presence or absence of specific words in the response body?",
+      "anchor": "check-some-metrics-like-the-responsetime"
+    },
+    {
+      "question": "How can I make assertions on the absence of nodes in the response body using Postman?",
+      "anchor": "controls-the-http-status-code"
+    },
+    {
+      "question": "How do I make assertions on the presence of specific nodes in the response body using Postman?",
+      "anchor": "ensure-the-response-returns-a-content-type"
+    },
+    {
+      "question": "What is an example of checking the value of a given node in XML using Postman?",
+      "anchor": "assert-the-response-is-a-valid-xml-string"
+    }
+  ]
+}

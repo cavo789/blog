@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:44:07.586Z",
+  "source": "index.md",
+  "sourceHash": "969d3d97fc4a288e4476fb9373fe5ec1c3cc59ef",
+  "questions": [
+    {
+      "question": "What does FrankenPHP give you?",
+      "anchor": "what-frankenphp-gives-you"
+    },
+    {
+      "question": "Why is FrankenPHP faster than PHP-FPM?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I set up a Joomla website using Docker and FrankenPHP?",
+      "anchor": "getting-it-running"
+    },
+    {
+      "question": "What happens during the long minutes of setup?",
+      "anchor": "what-happens-during-those-long-minutes"
+    },
+    {
+      "question": "What is under the hood of FrankenPHP?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "How do I run a Joomla installation with FrankenPHP?",
+      "anchor": "getting-it-running"
+    },
+    {
+      "question": "What are the commands to start the containers for FrankenPHP and Joomla?",
+      "anchor": "getting-it-running"
+    },
+    {
+      "question": "What is the command to get the list of running containers?",
+      "anchor": "what-happens-during-those-long-minutes"
+    }
+  ]
+}

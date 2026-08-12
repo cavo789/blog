@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:50:57.429Z",
+  "source": "index.md",
+  "sourceHash": "767f5a3cc4edd1c136a409176600c9c22f4fa0b1",
+  "questions": [
+    {
+      "question": "How can I protect my proprietary PHP code using obfuscation?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the potential drawbacks of using AI tools to de-obfuscate obfuscated PHP code?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you explain why obfuscating PHP code might still be necessary in today's AI era?",
+      "anchor": ""
+    },
+    {
+      "question": "How does the php_obfuscator script work and what are its features?",
+      "anchor": "obtaining-a-previously-non-existent-code-ask-gemini"
+    },
+    {
+      "question": "Can you provide an example of a hangman game written in PHP that is obfuscated and still runs correctly?",
+      "anchor": "obtaining-a-previously-non-existent-code-ask-gemini"
+    },
+    {
+      "question": "What changes does the php_obfuscator script make to the original code?",
+      "anchor": "obfuscate"
+    },
+    {
+      "question": "How can I use the php_obfuscator script to obfuscate my PHP code?",
+      "anchor": "obfuscate"
+    },
+    {
+      "question": "What are some alternative tools for obfuscating PHP code besides the php_obfuscator script?",
+      "anchor": "make-the-code-readable-again-ask-copilot"
+    }
+  ]
+}

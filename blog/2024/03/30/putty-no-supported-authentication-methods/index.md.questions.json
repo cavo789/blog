@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:50:40.327Z",
+  "source": "index.md",
+  "sourceHash": "7d64f257a4f1f3040ea36aec87ac5113453bd9bb",
+  "questions": [
+    {
+      "question": "How do I reset PuTTY settings after saving them?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the entry in the Windows registry to delete for resetting PuTTY defaults?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I connect to a different server than the one I intended after modifying Putty settings?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the solution for fixing the 'No supported authentication methods available' error in PuTTY?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I override the URL field in KeePass to launch a PuTTY session?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the solution for retrieving a stored password using WinSCP?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I switch to key-based authentication in SSH sessions without having to authenticate yourself?",
+      "anchor": ""
+    }
+  ]
+}

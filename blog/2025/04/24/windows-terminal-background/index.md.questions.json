@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:57:43.991Z",
+  "source": "index.md",
+  "sourceHash": "71885ae5bdfe2970ac35a9fa3e516af90232a6b6",
+  "questions": [
+    {
+      "question": "How do I set a background image in Windows Terminal?",
+      "anchor": ""
+    },
+    {
+      "question": "What is Recraft.ai and how can I use it to create images for my Windows Terminal background?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I customize the appearance of the Windows Terminal using Powerlevel 10k?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some other ways to customize my Windows Terminal besides setting a background image?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I split the window into several panes in Windows Terminal?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I add a one-click SSH profile to my Windows Terminal?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some tips for using the Windows Terminal effectively?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use the Recraft.ai image generator to create a custom background image for my Windows Terminal?",
+      "anchor": ""
+    }
+  ]
+}

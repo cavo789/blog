@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:45:24.319Z",
+  "source": "index.md",
+  "sourceHash": "3cdd562eff7b2e9c63b534e4cb06fc3b8d8ce265",
+  "questions": [
+    {
+      "question": "What is a Bash script that uses docker ps and docker inspect to get health information from running Docker containers?",
+      "anchor": "the-one-glance-overview"
+    },
+    {
+      "question": "How can I quickly retrieve the health information of all running Docker containers using a bash script?",
+      "anchor": "the-script-that-produces-it"
+    },
+    {
+      "question": "What does the 'healthcheck' field in Docker containers represent?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I create a Bash script to check the health status of all running Docker containers?",
+      "anchor": "the-script-that-produces-it"
+    },
+    {
+      "question": "What are some common states of Docker containers and how do they affect their health status?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I make a Bash script executable and run it to get the list of all running Docker containers with their health information?",
+      "anchor": "the-script-that-produces-it"
+    },
+    {
+      "question": "What is the purpose of the 'docker ps' command in this context?",
+      "anchor": "the-one-glance-overview"
+    },
+    {
+      "question": "How can I use the 'docker inspect' command to get detailed information about a Docker container's health status?",
+      "anchor": "the-script-that-produces-it"
+    }
+  ]
+}

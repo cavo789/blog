@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:49:32.613Z",
+  "source": "index.md",
+  "sourceHash": "9870a69d07970f15fce9fd93ed8dc1fded224ec5",
+  "questions": [
+    {
+      "question": "How do I install a PHP Docker environment quickly?",
+      "anchor": ""
+    },
+    {
+      "question": "What is included in the php_devcontainer skeleton for VSCode?",
+      "anchor": "what-the-environment-gives-you"
+    },
+    {
+      "question": "How can I create a new project using the php_devcontainer skeleton?",
+      "anchor": "you-have-nothing-and-wish-to-create-a-fully-new-project"
+    },
+    {
+      "question": "What are the benefits of using Docker for PHP development?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I install the php_devcontainer skeleton in a new folder?",
+      "anchor": "1-install-the-php_devcontainer-skeleton"
+    },
+    {
+      "question": "What are the tools included in the php_devcontainer environment?",
+      "anchor": "what-the-environment-gives-you"
+    },
+    {
+      "question": "How can I use PHP-CS-Fixer to format my code inside the container?",
+      "anchor": "3-switch-to-the-dev-container"
+    },
+    {
+      "question": "How do I run Rector to fix coding style issues in my project?",
+      "anchor": "you-are-ready-to-use-tools"
+    },
+    {
+      "question": "What is the difference between starting a new project and adding this environment to an existing codebase?",
+      "anchor": "you-have-nothing-and-wish-to-create-a-fully-new-project"
+    },
+    {
+      "question": "How can I download and install PHP devcontainer files in my existing project?",
+      "anchor": "conclusion"
+    }
+  ]
+}

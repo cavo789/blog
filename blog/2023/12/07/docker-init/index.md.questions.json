@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:45:12.286Z",
+  "source": "index.md",
+  "sourceHash": "b14f957122b2a29ba8bfcbd13012bfdc78c57c9e",
+  "questions": [
+    {
+      "question": "What are the new features in Docker Desktop 4.26?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use the PHP+Apache template with Docker Desktop 4.26?",
+      "anchor": "composeyaml"
+    },
+    {
+      "question": "What is the bug in Docker Desktop 4.26's PHP+Apache template and how do I fix it?",
+      "anchor": "composeyaml"
+    },
+    {
+      "question": "How can I run a PHP script inside an Apache container using Docker?",
+      "anchor": "run-the-container"
+    },
+    {
+      "question": "What are the steps to create a Dockerfile for running PHP with Apache?",
+      "anchor": "dockerfile"
+    },
+    {
+      "question": "What is the purpose of the .dockerignore file in Docker?",
+      "anchor": "dockerignore"
+    },
+    {
+      "question": "How can I copy files from my machine to a Docker container using Docker Compose?",
+      "anchor": "run-the-container"
+    },
+    {
+      "question": "What are some best practices for running PHP scripts inside Docker containers?",
+      "anchor": ""
+    }
+  ]
+}

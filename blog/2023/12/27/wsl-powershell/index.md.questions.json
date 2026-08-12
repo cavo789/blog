@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:46:54.729Z",
+  "source": "index.md",
+  "sourceHash": "bc883af8ff8d51b8a3b5e8ae530335b9d4bc004d",
+  "questions": [
+    {
+      "question": "How do I open files like PDFs and HTML from my WSL Linux console using their default Windows application?",
+      "anchor": ""
+    },
+    {
+      "question": "What command can I use to open files like PDFs and HTML from my WSL Linux console with their default Windows application?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I open a file in its default Windows application from the WSL Linux console?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the command to open files like PDFs and HTML with their default Windows application from the WSL Linux console?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I open a file in its default Windows application using the WSL Linux console?",
+      "anchor": ""
+    },
+    {
+      "question": "What command can I use to open files like PDFs and HTML with their default Windows application from my WSL Linux console?",
+      "anchor": ""
+    }
+  ]
+}

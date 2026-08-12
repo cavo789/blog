@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:50:00.031Z",
+  "source": "index.md",
+  "sourceHash": "d9c00485ef581547c27978c7300d10427450cabb",
+  "questions": [
+    {
+      "question": "How do I add a primary key to each table in MS Access?",
+      "anchor": "ms-access---analyze-performance"
+    },
+    {
+      "question": "What are some common performance issues with MS Access databases and how can they be addressed?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create indexes on important fields to improve query performance in MS Access?",
+      "anchor": "ms-access---analyze-performance"
+    },
+    {
+      "question": "What are some best practices for designing tables and relationships in MS Access databases?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I optimize the size of fields in an MS Access database to improve performance?",
+      "anchor": "ms-access---analyze-performance"
+    },
+    {
+      "question": "What are some common pitfalls when adding primary keys to tables in MS Access and how can they be avoided?",
+      "anchor": "ms-access---analyze-performance"
+    },
+    {
+      "question": "How do I use the relationships window in MS Access to create links between tables?",
+      "anchor": "ms-access---analyze-performance"
+    },
+    {
+      "question": "What are some best practices for using data types and indexes in MS Access databases to improve performance?",
+      "anchor": ""
+    }
+  ]
+}

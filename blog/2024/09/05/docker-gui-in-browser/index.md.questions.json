@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:53:47.731Z",
+  "source": "index.md",
+  "sourceHash": "6504cc080ce554a199097fdf803d04d5ce00eaff",
+  "questions": [
+    {
+      "question": "How do I run Firefox in my browser using Docker?",
+      "anchor": "start-firefox-in-your-browser"
+    },
+    {
+      "question": "What is Docker used for running graphical Linux applications like Firefox and GIMP?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you explain how to start GIMP in your browser with Docker?",
+      "anchor": "start-gimp-in-your-browser"
+    },
+    {
+      "question": "How do I run Firefox in a DOS environment using Docker?",
+      "anchor": "start-firefox-in-your-browser"
+    },
+    {
+      "question": "What is the difference between running GUI applications in Docker and having them open as real windows on your desktop?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How do I run GIMP in a DOS environment using Docker?",
+      "anchor": "start-gimp-in-your-browser"
+    },
+    {
+      "question": "What is the command to start Firefox in your browser using Docker?",
+      "anchor": "start-firefox-in-your-browser"
+    },
+    {
+      "question": "What are some graphical interfaces that can be run as if they were web applications using Docker?",
+      "anchor": ""
+    }
+  ]
+}

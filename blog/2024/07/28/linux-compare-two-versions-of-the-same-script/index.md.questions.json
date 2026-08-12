@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:53:00.537Z",
+  "source": "index.md",
+  "sourceHash": "5d39182866c54fe363278526c487f10923ea2d19",
+  "questions": [
+    {
+      "question": "What is a simple Linux command-line trick to compare two versions of the same Bash script?",
+      "anchor": "result"
+    },
+    {
+      "question": "How can I identify missing or new functions across file versions or entire folders using a Bash script?",
+      "anchor": "create-some-files-for-this-blog-post"
+    },
+    {
+      "question": "What is the command to retrieve all functions in a Bash script and sort them?",
+      "anchor": "get-the-list-of-functions-in-a-bash-script"
+    },
+    {
+      "question": "How can I compare two versions of the same Bash script and highlight which functions are in one and not the other?",
+      "anchor": "compare-the-two-versions-of-the-same-bash-script-and-shows-which-functions-are-in-one-and-not-the-other"
+    },
+    {
+      "question": "What is the command to find the list of functions in both files, sort them, and compare which functions are in one version and which are not in the other?",
+      "anchor": "compare-bash-scripts-in-two-folders"
+    },
+    {
+      "question": "How can I add new functions to a Bash script and remove existing ones to see changes in function differences?",
+      "anchor": "compare-the-two-versions-of-the-same-bash-script-and-shows-which-functions-are-in-one-and-not-the-other"
+    },
+    {
+      "question": "What is the command to compare two folders of Bash scripts and list which scripts are present only in one folder?",
+      "anchor": "compare-bash-scripts-in-two-folders"
+    },
+    {
+      "question": "How can I create a script to compare two versions of the same Bash script and highlight differences between them?",
+      "anchor": "create-some-files-for-this-blog-post"
+    }
+  ]
+}

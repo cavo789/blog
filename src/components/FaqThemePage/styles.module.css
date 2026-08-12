@@ -1,0 +1,37 @@
+.page {
+  max-width: 860px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.breadcrumb {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.9rem;
+}
+
+.list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.source {
+  display: block;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.8rem;
+}

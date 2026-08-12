@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:57:18.945Z",
+  "source": "index.md",
+  "sourceHash": "1747cd9d8f2f999a94c32a18df477fb5f7598e5f",
+  "questions": [
+    {
+      "question": "What is Laravel Telescope?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Laravel Telescope help with debugging?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the key features of Laravel Telescope?",
+      "anchor": ""
+    },
+    {
+      "question": "Where can I find more information about installing and using Laravel Telescope?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Laravel Telescope provide real-time insights into my application's queries, exceptions, cache, and logs?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the default URL for retrieving data from Laravel Telescope?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I retrieve raw SQL from an eloquent model in Laravel Telescope?",
+      "anchor": ""
+    },
+    {
+      "question": "What does Redis cache look like in Laravel Telescope?",
+      "anchor": ""
+    },
+    {
+      "question": "Can I use Laravel Telescope on a test server to monitor user activity and get full context?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I retrieve exceptions from the log in Laravel Telescope?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some other Laravel articles on this blog that mention Laravel Telescope?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Laravel Filament complement Laravel Telescope?",
+      "anchor": ""
+    }
+  ]
+}

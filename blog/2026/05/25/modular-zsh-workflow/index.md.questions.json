@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T10:18:04.712Z",
+  "source": "index.md",
+  "sourceHash": "f9a9bc71d3237ce8e8b89356834ce6184b3d4e04",
+  "questions": [
+    {
+      "question": "What are the benefits of modularizing ZSH functions into standalone files?",
+      "anchor": ""
+    },
+    {
+      "question": "How does lazy loading improve shell startup time with ZSH's autoload mechanism?",
+      "anchor": "the-problem-with-the-monolith"
+    },
+    {
+      "question": "What are the three main benefits of moving functions to a dedicated folder in ZSH?",
+      "anchor": "the-secret-sauce-fpath-and-autoload"
+    },
+    {
+      "question": "How does fpath and autoload work in ZSH for loading function definitions?",
+      "anchor": "the-secret-sauce-fpath-and-autoload"
+    },
+    {
+      "question": "What is the purpose of the repo function in this article?",
+      "anchor": "-the-super-function-repo-universal-project-navigator"
+    },
+    {
+      "question": "Why should I version-control my functions folder separately and share it across different machines?",
+      "anchor": "why-this-is-better-in-a-standalone-file"
+    },
+    {
+      "question": "What are the benefits of using fzf for searching git repositories in the repo function?",
+      "anchor": "-the-super-function-repo-universal-project-navigator"
+    },
+    {
+      "question": "How do I set up the repo function to use fzf and other tools like VSCode or Neovim?",
+      "anchor": "why-this-is-better-in-a-standalone-file"
+    }
+  ]
+}

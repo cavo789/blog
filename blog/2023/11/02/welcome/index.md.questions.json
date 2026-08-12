@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T06:48:43.245Z",
+  "source": "index.md",
+  "sourceHash": "7f4f8ec0308cf0ab95918d7b07bf477ef0c7b63c",
+  "questions": [
+    {
+      "question": "What are some of Christophe Avonture's blog topics?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Docusaurus work for Christophe Avonture's blog?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of Christophe Avonture's blog?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some of Christophe Avonture's personal notes on Markdown, Docker, PHP development, and DevOps?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the workflow for Christophe Avonture's blog posts?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I create a Docusaurus site without installing Node.js?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some of Christophe Avonture's skills as an ICT developer, web programmer, and DevOps specialist?",
+      "anchor": ""
+    }
+  ]
+}

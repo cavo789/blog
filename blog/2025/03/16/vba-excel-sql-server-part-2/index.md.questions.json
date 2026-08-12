@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:57:12.785Z",
+  "source": "index.md",
+  "sourceHash": "9acfcf1247e2c6d6020428b80e3c169450d76f96",
+  "questions": [
+    {
+      "question": "How do I connect to a SQL Server database using VBA in Excel?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What are the steps to create a dummy database and run queries in SQL Server using Docker?",
+      "anchor": "download-sql-server-and-create-a-dummy-database"
+    },
+    {
+      "question": "How do I retrieve data from a SQL Server database into an Excel worksheet using VBA?",
+      "anchor": "lets-play-with-copytosheet"
+    },
+    {
+      "question": "What are the benefits of using a VBA class to handle data retrieval and output in Excel?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I create a new database in SQL Server using Docker and manage it with SSMS?",
+      "anchor": "download-sql-server-and-create-a-dummy-database"
+    },
+    {
+      "question": "What are the steps to install and run Microsoft Excel VBA for accessing SQL Server databases?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I use a custom VBA class to access records stored in SQL server and output these data in an Excel sheet?",
+      "anchor": "lets-play-with-copytosheet"
+    },
+    {
+      "question": "What are the steps to modify the connection string for accessing a SQL Server database using VBA in Excel?",
+      "anchor": "why-it-works"
+    }
+  ]
+}

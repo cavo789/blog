@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:49:03.904Z",
+  "source": "index.md",
+  "sourceHash": "6811b6074752797e6054cc6224f65da06542c3d5",
+  "questions": [
+    {
+      "question": "How do I use a devcontainer for PHP development with preinstalled code quality tools?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some of the pre-installed quality and analysis tools in a devcontainer for PHP development?",
+      "anchor": "the-tools-pick-the-ones-you-need"
+    },
+    {
+      "question": "How does a devcontainer ensure that everyone on a team has the same consistent PHP development environment?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the purpose of using a Docker image to carry tools in a devcontainer for PHP development?",
+      "anchor": "what-a-devcontainer-does-for-you"
+    },
+    {
+      "question": "How does VSCode attach itself to the container in a devcontainer for PHP development?",
+      "anchor": "get-the-files"
+    },
+    {
+      "question": "What is the benefit of using a devcontainer for PHP development with preinstalled code quality tools?",
+      "anchor": ""
+    },
+    {
+      "question": "How does a devcontainer help in managing code quality issues in a team environment?",
+      "anchor": "what-a-devcontainer-does-for-you"
+    },
+    {
+      "question": "What are the steps to create a new project using a devcontainer for PHP development with preinstalled code quality tools?",
+      "anchor": "1-create-the-project"
+    }
+  ]
+}

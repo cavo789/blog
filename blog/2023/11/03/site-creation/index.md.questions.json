@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T06:47:50.582Z",
+  "source": "index.md",
+  "sourceHash": "a067871b18b8c0c3389cccfcb282c01ada36b50f",
+  "questions": [
+    {
+      "question": "How do I create a Docusaurus blog using Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some essential plugins for a Docusaurus blog?",
+      "anchor": "adding-plugins"
+    },
+    {
+      "question": "How do I configure my Docusaurus blog to use local search and sitemap?",
+      "anchor": "adding-plugins"
+    },
+    {
+      "question": "What is the purpose of the Giscus comment system in a Docusaurus blog?",
+      "anchor": "adding-plugins"
+    },
+    {
+      "question": "How do I add image zoom functionality to my Docusaurus blog?",
+      "anchor": "adding-plugins"
+    },
+    {
+      "question": "What is the difference between using Docker and running Docusaurus with Node.js on a local machine?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I configure my Docusaurus blog to use the classic theme?",
+      "anchor": "using-docusaurus"
+    },
+    {
+      "question": "What are some common settings for a Docusaurus blog?",
+      "anchor": "some-settings"
+    },
+    {
+      "question": "How do I create and edit articles in my Docusaurus blog using Markdown?",
+      "anchor": "make-my-first-article"
+    },
+    {
+      "question": "What are some best practices for maintaining a Docusaurus blog?",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:53:58.947Z",
+  "source": "index.md",
+  "sourceHash": "bf0d646716bdd5a7db8704e74396eb05f2a6cae5",
+  "questions": [
+    {
+      "question": "What are some Git aliases for common tasks?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I create a new branch on the remote automatically when pushing?",
+      "anchor": "aliases"
+    },
+    {
+      "question": "What is the command to delete all dead branches in my Git repository?",
+      "anchor": "branches"
+    },
+    {
+      "question": "How do I sort my Git branches by the last commit date?",
+      "anchor": "create-the-new-branch-on-the-remote-automatically"
+    },
+    {
+      "question": "How can I share Windows credentials with Linux for Git operations?",
+      "anchor": "cleaning-dead-branches"
+    },
+    {
+      "question": "What is the command to force SSH instead of HTTPS globally in Git?",
+      "anchor": "sorting-branches-on-the-last-commit-date"
+    },
+    {
+      "question": "How do I prevent LF line endings from being converted to CRLF on Windows when using Git?",
+      "anchor": "credentials"
+    },
+    {
+      "question": "What are some tips for customizing the Git workflow with a .gitconfig file?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I create an alias to abandon the last local commit in Git?",
+      "anchor": "aliases"
+    },
+    {
+      "question": "What is the command to automatically prune dead remote-tracking branches?",
+      "anchor": "branches"
+    },
+    {
+      "question": "How do I sort my Git branches by their last commit date?",
+      "anchor": "create-the-new-branch-on-the-remote-automatically"
+    }
+  ]
+}

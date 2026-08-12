@@ -33,6 +33,12 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
+  // `static/` (the Docusaurus default) plus questions-index-plugin's generated static asset
+  // dir — see that plugin's header comment for why the full "Ask my blog" question corpus is
+  // served as a plain fetchable JSON file (regenerated on every build/reload) instead of
+  // being bundled as plugin data.
+  staticDirectories: ["static", ".docusaurus/questions-index-plugin/static"],
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "cavo789", // Usually your GitHub org/user name.
@@ -167,6 +173,8 @@ const config = {
     ["./plugins/blog-feed-plugin/index.js", { maxItems: 20 }],
     ["./plugins/admin-data-plugin/index.cjs", {}],
     "./plugins/blog-graph-plugin/index.mjs",
+    "./plugins/questions-index-plugin/index.cjs",
+    "./plugins/command-palette-plugin/index.mjs",
     ["./plugins/ascii-injector/index.mjs", { bannerPath: "src/data/banner.txt" }],
     "./plugins/sitemap-easter-egg/index.mjs",
     "./plugins/markdown-export-plugin/index.cjs",
@@ -299,6 +307,10 @@ const config = {
             label: "Map",
           },
           {
+            href: "/faq",
+            label: "FAQ",
+          },
+          {
             href: "/repositories",
             label: "Repositories",
           },
@@ -321,7 +333,7 @@ const config = {
       },
       footer: {
         style: "light",
-        copyright: `Copyright © ${new Date().getFullYear()} Christophe Avonture. Powered by Docusaurus.`,
+        copyright: `<span class="footer-cmdk-hint">Press ⌘K to search · ? for shortcuts</span><br />Copyright © ${new Date().getFullYear()} Christophe Avonture. Powered by Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

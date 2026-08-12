@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:55:32.894Z",
+  "source": "index.md",
+  "sourceHash": "1682e45b4688c9c0a35e2867f9e862872df72366",
+  "questions": [
+    {
+      "question": "How do I format poorly formatted PHP code quickly?",
+      "anchor": ""
+    },
+    {
+      "question": "What is Pint-express and how does it help with PHP code formatting?",
+      "anchor": "if-youre-a-php-developer"
+    },
+    {
+      "question": "Can you recommend a tool for automatically fixing PHP code syntax errors?",
+      "anchor": "if-youre-a-php-developer"
+    },
+    {
+      "question": "How can I integrate Pint-express into my project workflow?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some alternative tools to Pint-express for formatting PHP code?",
+      "anchor": ""
+    },
+    {
+      "question": "Is there a Docker image that provides static analysis tools for PHP?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I add PHP linting tools to my VSCode editor?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some best practices for maintaining clean and well-formatted PHP code?",
+      "anchor": ""
+    }
+  ]
+}

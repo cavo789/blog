@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:00:52.070Z",
+  "source": "index.md",
+  "sourceHash": "0da5309635cb8e0b6648f6eee1a854c27cf7b724",
+  "questions": [
+    {
+      "question": "How do I add a changelog to my Docusaurus blog posts?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the component in this article?",
+      "anchor": "the-result"
+    },
+    {
+      "question": "Why does the component use an array instead of a separate changelog file?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I create the updated component for Docusaurus blog posts?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What is the purpose of swizzling the BlogPostPage in this article?",
+      "anchor": "create-the-updated-component"
+    },
+    {
+      "question": "How do I add an entry to a post's frontmatter to display the changelog?",
+      "anchor": "override-the-blogpostpage-template"
+    },
+    {
+      "question": "What is the minimum code needed to inject the new component into the BlogPostPage template?",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "How does the component parse the YAML frontmatter of a blog post?",
+      "anchor": "use-the-component"
+    }
+  ]
+}

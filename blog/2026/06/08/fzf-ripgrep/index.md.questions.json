@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T10:18:40.996Z",
+  "source": "index.md",
+  "sourceHash": "83bf5f7bb4557f79cd240e3394e706211b3e10aa",
+  "questions": [
+    {
+      "question": "How do I use ripgrep and fzf together for interactive code search?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of using ripgrep over grep for code searching?",
+      "anchor": "why-ripgrep-instead-of-grep"
+    },
+    {
+      "question": "What are the prerequisites for setting up this code search tool?",
+      "anchor": "prerequisites"
+    },
+    {
+      "question": "How do I install and configure ripgrep and bat on my system?",
+      "anchor": "ripgrep"
+    },
+    {
+      "question": "How do I connect ripgrep to fzf for code search?",
+      "anchor": "bat"
+    },
+    {
+      "question": "What is the purpose of the bat preview panel in this code search tool?",
+      "anchor": "step-1--connect-ripgrep-to-fzf"
+    },
+    {
+      "question": "How do I add a bat preview panel to my ripgrep and fzf setup?",
+      "anchor": "step-2--add-a-bat-preview-panel"
+    },
+    {
+      "question": "What is the rgf function and how does it work?",
+      "anchor": "step-3--the-rgf-function"
+    },
+    {
+      "question": "How can I use this code search tool in a real-world scenario to find all TODOs in my project?",
+      "anchor": "real-world-scenarios"
+    },
+    {
+      "question": "How can I use this code search tool in a real-world scenario to track down where a function is called?",
+      "anchor": "find-all-todos-in-the-project"
+    },
+    {
+      "question": "How can I use this code search tool in a real-world scenario to locate a hardcoded value?",
+      "anchor": "track-down-where-a-function-is-called"
+    },
+    {
+      "question": "How can I use this code search tool in a real-world scenario to search within a specific folder?",
+      "anchor": "locate-a-hardcoded-value"
+    }
+  ]
+}

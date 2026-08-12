@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:48:41.530Z",
+  "source": "index.md",
+  "sourceHash": "6fea303677f69ba3541a82944eb1cf474afbf5a0",
+  "questions": [
+    {
+      "question": "How do I use Markdown lint with Docker to fix formatting issues?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the --fix flag in markdownlint for fixing Markdown files?",
+      "anchor": "some-errors-can-be-fixed-automagically"
+    },
+    {
+      "question": "How do I ignore specific folders and files when using markdownlint with Docker?",
+      "anchor": "ignore-some-filesfolders"
+    },
+    {
+      "question": "Can you provide an example of a configuration file for ignoring errors in markdownlint?",
+      "anchor": "ignore-some-errors"
+    },
+    {
+      "question": "What are some common issues that can be fixed automatically with markdownlint?",
+      "anchor": "some-errors-can-be-fixed-automagically"
+    },
+    {
+      "question": "How do I integrate markdownlint into my Git pre-commit hooks to ensure consistent formatting?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the command to run markdownlint on a project and what flags can be used?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create a Makefile in my project to automate running markdownlint with Docker?",
+      "anchor": "put-all-together"
+    }
+  ]
+}

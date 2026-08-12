@@ -23,12 +23,29 @@ function findPosts(dir) {
   return found;
 }
 
+// An HTML comment, not visible prose: hidden by any Markdown renderer, but
+// still plain text in a raw view or in whatever an LLM is handed — exactly
+// where a reader who lost track of the original page needs it.
+function buildMetadataComment(url, buildDate) {
+  return [
+    "<!--",
+    `  canonical-url: ${url}`,
+    `  generated-at:  ${buildDate}`,
+    "  This is a static plain-Markdown mirror generated at build time.",
+    "  Visit the canonical URL above for the fully rendered page, with images and interactive components.",
+    "-->",
+    "",
+  ].join("\n");
+}
+
 module.exports = function markdownMirrorPlugin() {
   return {
     name: "markdown-mirror-plugin",
-    async postBuild({ siteDir, outDir, routesPaths }) {
+    async postBuild({ siteDir, outDir, siteConfig, routesPaths }) {
       const blogDir = path.join(siteDir, BLOG_DIR);
       const knownRoutes = new Set(routesPaths);
+      // One timestamp for the whole run, shared by every mirror it writes.
+      const buildDate = new Date().toISOString();
       let written = 0;
 
       for (const file of findPosts(blogDir)) {
@@ -43,7 +60,9 @@ module.exports = function markdownMirrorPlugin() {
         // logic here.
         if (!knownRoutes.has(permalink)) continue;
 
-        const markdown = body.replace("<!-- truncate -->\n", "").trim() + "\n";
+        const url = `${siteConfig.url}${permalink}`;
+        const content = body.replace("<!-- truncate -->\n", "").trim() + "\n";
+        const markdown = buildMetadataComment(url, buildDate) + content;
         const outFile = path.join(outDir, "blog", `${attributes.slug}.md`);
         fs.mkdirSync(path.dirname(outFile), { recursive: true });
         fs.writeFileSync(outFile, markdown);

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:54:53.952Z",
+  "source": "index.md",
+  "sourceHash": "bf87fac1982439d4f506664617d09bcbc51b522c",
+  "questions": [
+    {
+      "question": "How do I start my Docker container for Python development?",
+      "anchor": "lets-see-it-running"
+    },
+    {
+      "question": "What is a devcontainer and why should I use it?",
+      "anchor": "what-have-we-done-so-far"
+    },
+    {
+      "question": "How can I install the required extensions in VSCode for Python development?",
+      "anchor": "srcrequirementstxt"
+    },
+    {
+      "question": "Where do I create my first script in the devcontainer environment?",
+      "anchor": "lets-create-the-files-for-our-docker-environment"
+    },
+    {
+      "question": "What is the purpose of the src/requirements.txt file?",
+      "anchor": "lets-start-creating-our-first-script"
+    },
+    {
+      "question": "How can I run commands inside the Docker container from my host machine?",
+      "anchor": "dockerfile"
+    },
+    {
+      "question": "What are some tools that can be added to the devcontainer image for Python development?",
+      "anchor": "now-lets-create-our-devcontainer-environment"
+    },
+    {
+      "question": "How do I create a new folder and jump into it in the devcontainer environment?",
+      "anchor": "makefile"
+    }
+  ]
+}

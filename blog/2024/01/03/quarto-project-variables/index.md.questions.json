@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:47:16.175Z",
+  "source": "index.md",
+  "sourceHash": "0cba5eb406d5651c081ce39da4037d0d84b2fad5",
+  "questions": [
+    {
+      "question": "What are Quarto variables and how do they work?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I set up external YAML files for managing variables in my Quarto project?",
+      "anchor": "what-quarto-variables-do-for-you"
+    },
+    {
+      "question": "What is the purpose of using environment variables with Quarto?",
+      "anchor": "setting-it-up"
+    },
+    {
+      "question": "How do I load environment variables into a Docker container for use with Quarto?",
+      "anchor": "environment-variables"
+    },
+    {
+      "question": "What are some best practices for managing variables in Quarto documentation?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I reuse the same values for both my application and documentation using environment variables?",
+      "anchor": "setting-it-up"
+    },
+    {
+      "question": "What is the difference between using variables and Mustache templating in Quarto?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How can I update multiple occurrences of a value in my Quarto documentation without manually editing each page?",
+      "anchor": ""
+    }
+  ]
+}

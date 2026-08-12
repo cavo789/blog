@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T06:47:26.537Z",
+  "source": "index.md",
+  "sourceHash": "8ce2daa1874378783c591f8e9377de24ec043abb",
+  "questions": [
+    {
+      "question": "How do I install xrdp on WSLg Ubuntu?",
+      "anchor": "get-xrdp-running"
+    },
+    {
+      "question": "What are the steps to configure xrdp to use a different port than the default?",
+      "anchor": "get-xrdp-running"
+    },
+    {
+      "question": "How do I connect to my WSLg Ubuntu instance using RDP from Windows?",
+      "anchor": "connect-from-windows"
+    },
+    {
+      "question": "What are the steps to install a full Xfce desktop environment on my WSLg Ubuntu instance?",
+      "anchor": "get-the-desktop-environment"
+    },
+    {
+      "question": "How do I set up the keyboard layout for RDP connections to my WSLg Ubuntu instance?",
+      "anchor": "set-your-keyboard"
+    },
+    {
+      "question": "What are the steps to enable and restart the Remote Desktop Protocol Server on my WSLg Ubuntu instance after installing Xfce?",
+      "anchor": "conclusion"
+    }
+  ]
+}

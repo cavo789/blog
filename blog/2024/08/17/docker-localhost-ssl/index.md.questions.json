@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:53:32.740Z",
+  "source": "index.md",
+  "sourceHash": "9050304262373c2d056cb7f506dc4d9e4feabfe8",
+  "questions": [
+    {
+      "question": "How do I configure my Docker localhost to use SSL (HTTPS)?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to set up SSL on an Apache container using mkcert?",
+      "anchor": "create-the-ssl-certificate"
+    },
+    {
+      "question": "How can I generate a trusted certificate for Apache, Nginx, and PHP containers?",
+      "anchor": "updating-our-apache-configuration-file"
+    },
+    {
+      "question": "What is the purpose of the SSL certificate in this Docker setup?",
+      "anchor": "create-the-ssl-certificate"
+    },
+    {
+      "question": "How do I configure Apache to use an SSL certificate?",
+      "anchor": "updating-our-composeyaml-file"
+    },
+    {
+      "question": "What are the benefits of using mkcert for generating SSL certificates locally?",
+      "anchor": "updating-our-apache-configuration-file"
+    },
+    {
+      "question": "How can I install the mkcert root CA in my browser when running outside WSL2?",
+      "anchor": "bonus---install-the-mkcert-root-ca-in-your-browser"
+    },
+    {
+      "question": "What are some bonus sections covered in this article about configuring SSL for nginx and PHP?",
+      "anchor": "run-the-site"
+    }
+  ]
+}

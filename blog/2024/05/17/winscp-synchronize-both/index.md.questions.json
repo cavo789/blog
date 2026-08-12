@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:51:53.043Z",
+  "source": "index.md",
+  "sourceHash": "3bb8b07a2b71786fa1785623fe0b724e831004ed",
+  "questions": [
+    {
+      "question": "What does WinSCP do?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use a script with WinSCP to synchronize files between my local host and a remote FTP/SFTP server?",
+      "anchor": "the-script"
+    },
+    {
+      "question": "What are the commands for local, remote, or bi-directional synchronization in WinSCP?",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "How can I automate backups using a script with WinSCP?",
+      "anchor": "more-info"
+    },
+    {
+      "question": "What are the options for the Synchronize verb of WinSCP?",
+      "anchor": "local--remote--both"
+    },
+    {
+      "question": "How can I modify changes from remote directories to local directories in WinSCP?",
+      "anchor": "local--remote--both"
+    },
+    {
+      "question": "How can I modify changes from the local directories to remote directories in WinSCP?",
+      "anchor": "local--remote--both"
+    },
+    {
+      "question": "How can I modify both local and remote directories in WinSCP?",
+      "anchor": "local--remote--both"
+    }
+  ]
+}

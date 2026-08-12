@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T10:17:58.585Z",
+  "source": "index.md",
+  "sourceHash": "17804fe16ba619add1cab6a08c81340835519d4d",
+  "questions": [
+    {
+      "question": "How do I create a Python JSON API with FastAPI in under a minute?",
+      "anchor": ""
+    },
+    {
+      "question": "What is Docker setup and how does it work in this article?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How can I automate the documentation of my API using Swagger/ReDoc?",
+      "anchor": "automated-documentation-of-your-api"
+    },
+    {
+      "question": "What is hot-reload and how does it work in this article?",
+      "anchor": "lets-play---creating-a-joke-generator"
+    },
+    {
+      "question": "How can I build a joke generator script with FastAPI?",
+      "anchor": "recreating-the-docker-image-for-hot-reload-skip-this-if-docker-run--v-app-already-refreshed-for-you"
+    },
+    {
+      "question": "What are the benefits of using Docker for developing Python JSON APIs?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the size of the final image created by this article's Docker setup?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How can I access the Swagger documentation for my API?",
+      "anchor": "automated-documentation-of-your-api"
+    }
+  ]
+}

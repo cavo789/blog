@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:01:14.000Z",
+  "source": "index.md",
+  "sourceHash": "df5b4befca04f718a68fbb4ffa2da271bd52e669",
+  "questions": [
+    {
+      "question": "How do I create a reveal.js slideshow with Quarto and DevContainers?",
+      "anchor": "the-result"
+    },
+    {
+      "question": "What are the benefits of using VSCode and Docker for writing and previewing reveal.js presentations?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I export a reveal.js slideshow as a static HTML site?",
+      "anchor": "export-a-pdf"
+    },
+    {
+      "question": "What are the different ways to export a reveal.js presentation using Quarto and Decktape?",
+      "anchor": "preview-the-slideshow"
+    },
+    {
+      "question": "How do I use DevContainers with Quarto for writing and previewing reveal.js presentations?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What is the purpose of the Devcontainer in this article?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What are some other ways to export a reveal.js presentation besides Decktape?",
+      "anchor": "preview-the-slideshow"
+    },
+    {
+      "question": "How do I install Quarto and Docker on my machine for using this article's workflow?",
+      "anchor": "installation"
+    }
+  ]
+}

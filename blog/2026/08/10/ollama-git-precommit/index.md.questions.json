@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T10:18:09.548Z",
+  "source": "index.md",
+  "sourceHash": "90268e991f5b1031f817bc50f43ebc602c51a29f",
+  "questions": [
+    {
+      "question": "What does ai-review catch before you even write a commit message?",
+      "anchor": "what-ai-review-catches-before-you-even-write-a-commit-message"
+    },
+    {
+      "question": "Why is ai-review built this way?",
+      "anchor": "why-its-built-this-way"
+    },
+    {
+      "question": "How do I install the three functions?",
+      "anchor": "installing-the-three-functions"
+    },
+    {
+      "question": "What does ai-secrets catch before you even write a commit message?",
+      "anchor": "ai-secrets-catching-real-credentials"
+    },
+    {
+      "question": "How does ai-commit draft the Conventional Commits message for the diff I've just cleaned up?",
+      "anchor": "ai-commit-writing-the-message-for-the-diff-youve-just-cleaned-up"
+    },
+    {
+      "question": "What is _git_staged_diff and why do I need it under the hood?",
+      "anchor": "under-the-hood-_git_staged_diff-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "How do I run ai-review, ai-secrets, and ai-commit together?",
+      "anchor": "running-them-together"
+    },
+    {
+      "question": "What is the purpose of ai-review, ai-secrets, and ai-commit together?",
+      "anchor": ""
+    }
+  ]
+}

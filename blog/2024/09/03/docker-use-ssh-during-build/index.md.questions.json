@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:53:43.246Z",
+  "source": "index.md",
+  "sourceHash": "d1ac67377ab74bab0575fb98ddc281e67ecf9977",
+  "questions": [
+    {
+      "question": "How do I securely access a private Git repository during Docker build using SSH keys?",
+      "anchor": "preview"
+    },
+    {
+      "question": "What is Docker's BuildKit feature and how does it work with secrets?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "Which key should I use to access a private repository during the Docker build process?",
+      "anchor": "which-key-to-use"
+    },
+    {
+      "question": "How do I create files for configuring Docker secret and compose.yaml?",
+      "anchor": "creating-files"
+    },
+    {
+      "question": "What is the purpose of the `compose.yaml` file in this article?",
+      "anchor": "composeyaml"
+    },
+    {
+      "question": "How do I create a Dockerfile for accessing private repositories during build?",
+      "anchor": "dockerfile"
+    },
+    {
+      "question": "What is the purpose of the `create the image and jump in the container` section in this article?",
+      "anchor": "create-the-image-and-jump-in-the-container"
+    },
+    {
+      "question": "How do I share my SSH key with the running container for ongoing work inside it?",
+      "anchor": "sharing-your-keys-also-with-the-container"
+    }
+  ]
+}

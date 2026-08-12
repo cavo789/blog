@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:55:50.526Z",
+  "source": "index.md",
+  "sourceHash": "58e8ac3cec81760e1fc2cf56f5dd825cfb7dae8a",
+  "questions": [
+    {
+      "question": "How do I convert an Excel range to Markdown using XLS2MD?",
+      "anchor": ""
+    },
+    {
+      "question": "What is XLS2MD and how does it work?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you provide a demo of converting an Excel range to Markdown using XLS2MD?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to convert an Excel range to Markdown using XLS2MD?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use XLS2MD to convert a specific range in my Excel file to Markdown?",
+      "anchor": "source-code"
+    },
+    {
+      "question": "What are the benefits of using XLS2MD for converting Excel ranges to Markdown?",
+      "anchor": ""
+    },
+    {
+      "question": "Are there any limitations or requirements when using XLS2MD to convert Excel ranges to Markdown?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I share the converted Markdown table with others?",
+      "anchor": "source-code"
+    }
+  ]
+}

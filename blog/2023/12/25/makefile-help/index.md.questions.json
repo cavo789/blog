@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:46:15.001Z",
+  "source": "index.md",
+  "sourceHash": "dd660a93e17d14e5d818e1cae234dd1bd7f89054",
+  "questions": [
+    {
+      "question": "What is a help screen in a Linux Makefile?",
+      "anchor": "what-you-will-get"
+    },
+    {
+      "question": "How do you create a self-documenting help screen in a Linux Makefile?",
+      "anchor": "the-starting-point"
+    },
+    {
+      "question": "What are the three ingredients needed to add a help screen in a Makefile?",
+      "anchor": "adding-the-default-action"
+    },
+    {
+      "question": "How do you add a default action to a Makefile?",
+      "anchor": "step-1---adding-the-default-action"
+    },
+    {
+      "question": "How do you add a help target to a Makefile?",
+      "anchor": "step-2---adding-the-help-target"
+    },
+    {
+      "question": "How do you add descriptions for each target in a Makefile?",
+      "anchor": "step-3---add-a-description-for-each-target"
+    },
+    {
+      "question": "How do you group related targets under section headers in a Makefile?",
+      "anchor": "step-4---add-a-subtitle-between-each-main-section"
+    },
+    {
+      "question": "What is the purpose of the double space before descriptions in a Makefile target?",
+      "anchor": "take-a-look-on-mine-for-this-blog"
+    },
+    {
+      "question": "How do you check if a command is installed on your Linux system?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How do you install a command on your Linux system?",
+      "anchor": "conclusion"
+    }
+  ]
+}

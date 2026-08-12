@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:45:18.940Z",
+  "source": "index.md",
+  "sourceHash": "5f0dd7ba3fe7a93b659d945366c4cab4ccff1219",
+  "questions": [
+    {
+      "question": "How do I create a custom VBA Excel Ribbon using XML and VBA?",
+      "anchor": "what-were-going-to-build"
+    },
+    {
+      "question": "What is the purpose of adding a ribbon to an Excel workbook?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "Where can I download the free tool for creating a custom Excel Ribbon?",
+      "anchor": "download-the-editor-for-free"
+    },
+    {
+      "question": "How do I create a new, empty Excel Macro-Enabled Workbook file?",
+      "anchor": "create-an-empty-file"
+    },
+    {
+      "question": "What is the XML file that describes the tabs, groups and controls in an Excel ribbon?",
+      "anchor": "add-a-ribbon-in-ms-office"
+    },
+    {
+      "question": "How do I add a new ribbon to an Excel workbook using the free tool?",
+      "anchor": "under-the-hood--the-manifest-tag-by-tag-skip-this-if-you-just-want-a-ribbon"
+    },
+    {
+      "question": "What is the XML code that defines the tabs, groups and controls in an Excel ribbon?",
+      "anchor": "the-root-customui-node-and-the-namespace"
+    },
+    {
+      "question": "How do I define a tab in an Excel ribbon using XML?",
+      "anchor": "define-the-ribbon"
+    },
+    {
+      "question": "What is the XML code that defines a button in an Excel ribbon?",
+      "anchor": "define-the-tab"
+    },
+    {
+      "question": "How do I assign a callback subroutine to a button in an Excel ribbon?",
+      "anchor": "implement-our-ribbon"
+    },
+    {
+      "question": "What is the purpose of the manifest file in an Excel workbook?",
+      "anchor": "add-features"
+    }
+  ]
+}

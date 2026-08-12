@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:47:24.922Z",
+  "source": "index.md",
+  "sourceHash": "1b917e0ae71da0804e7091e1bb46edd287c4e59b",
+  "questions": [
+    {
+      "question": "How do I install Microsoft SQL Server 2022 using Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to connect to a MSSQL Server 2022 container with SSMS?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create a sample database and table in SQL Server 2022 using Docker and SSMS?",
+      "anchor": "create-the-database-the-table-and-add-some-records"
+    },
+    {
+      "question": "What is the default authentication method for connecting to a MSSQL Server 2022 container with SSMS?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create a PowerShell script to connect to and query a SQL Server database in a Docker container?",
+      "anchor": "write-a-powershell-script-and-connect-to-the-database"
+    },
+    {
+      "question": "What is the URL for downloading the official Microsoft SQL Server Docker repository?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I check the list of running containers using Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some alternatives to SSMS for accessing a Docker database container?",
+      "anchor": "write-a-powershell-script-and-connect-to-the-database"
+    }
+  ]
+}

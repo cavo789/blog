@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T10:18:17.601Z",
+  "source": "index.md",
+  "sourceHash": "6e671c24fe5562068633fc65f33107d589e23ed8",
+  "questions": [
+    {
+      "question": "How does ai-test generate unit tests from Bash files?",
+      "anchor": "what-ai-test-does-for-you"
+    },
+    {
+      "question": "What are the benefits of using ai-test to generate unit tests?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "Can ai-test generate unit tests for PHP and Python files?",
+      "anchor": "installing-it"
+    },
+    {
+      "question": "How does ai-test read the existing tests in a file?",
+      "anchor": "one-entry-point-ai"
+    },
+    {
+      "question": "What is the purpose of the throw-away Docker container used by ai-test?",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "How does ai-test decide on the framework, naming convention, and destination for a test suite?",
+      "anchor": "a-real-script-and-the-gaps-it-fills"
+    },
+    {
+      "question": "What are the steps involved in using ai-test to generate unit tests from a Bash script?",
+      "anchor": "the-same-command-in-php-and-in-python"
+    },
+    {
+      "question": "How does ai-test validate the generated test suite before running it?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "What are the prerequisites for using ai-test to generate unit tests?",
+      "anchor": "the-logic-step-by-step"
+    },
+    {
+      "question": "How does ai-test help developers avoid writing unit tests?",
+      "anchor": "the-one-instruction-that-makes-the-difference"
+    },
+    {
+      "question": "Can ai-test generate test suites for different programming languages besides Bash, PHP, and Python?",
+      "anchor": "where-the-file-gets-saved"
+    }
+  ]
+}

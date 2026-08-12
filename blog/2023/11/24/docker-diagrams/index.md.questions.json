@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:44:21.851Z",
+  "source": "index.md",
+  "sourceHash": "88a8107049c0735d971015d8ebef117e34de73d2",
+  "questions": [
+    {
+      "question": "What is Docker for diagrams-as-code?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Docker help generate infrastructure and application diagrams directly from Python code?",
+      "anchor": ""
+    },
+    {
+      "question": "Why use Docker to render diagrams-as-code with the diagrams library?",
+      "anchor": "what-comes-out"
+    },
+    {
+      "question": "What is the source of the diagrams-as-code solution using Docker?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How can I create a real architecture diagram using Python and Docker?",
+      "anchor": "the-source"
+    },
+    {
+      "question": "What are some other diagram-as-code tools besides the diagrams library mentioned in this article?",
+      "anchor": "a-real-architecture"
+    },
+    {
+      "question": "What is the latest version of the Docker image used for rendering diagrams-as-code?",
+      "anchor": "icons-and-other-tools-reference-skip-this-for-now"
+    },
+    {
+      "question": "How can I generate a team chart using Python and Docker?",
+      "anchor": "conclusion"
+    }
+  ]
+}

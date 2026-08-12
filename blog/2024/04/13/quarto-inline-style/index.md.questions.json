@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:51:11.176Z",
+  "source": "index.md",
+  "sourceHash": "ba03cc684ccfab0cfb33b7eeab6358e7496d3ef6",
+  "questions": [
+    {
+      "question": "How do I apply inline CSS styles in Quarto for HTML documents?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the syntax for applying inline CSS styles in Quarto?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I apply a specific color to text using inline CSS in Quarto?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the syntax for applying background styles in Quarto?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I apply different font sizes to text using inline CSS in Quarto?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the syntax for applying inline styles in Quarto for HTML documents without creating a CSS class?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I apply multiple styles to text using inline CSS in Quarto?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the syntax for applying inline styles in Quarto for HTML documents without affecting Word or PDF output?",
+      "anchor": ""
+    }
+  ]
+}

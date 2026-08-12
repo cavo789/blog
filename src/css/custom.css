@@ -375,6 +375,16 @@ article h3 {
   color: var(--ifm-color-emphasis-600);
 }
 
+/* The command-palette hint line (TODO 0084) needs to read as an invitation, not fine print —
+   the rest of .footer__copyright is deliberately muted, so this overrides just this span. */
+.footer-cmdk-hint {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  color: var(--ifm-color-primary);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
 [data-theme="dark"] .footer {
   background: var(--ifm-background-color);
   color: var(--ifm-font-color-base);

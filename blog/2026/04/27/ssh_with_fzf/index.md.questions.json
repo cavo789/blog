@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:02:48.080Z",
+  "source": "index.md",
+  "sourceHash": "d663c0e5a286b3665af372f99807fb91eb230497",
+  "questions": [
+    {
+      "question": "What are some common problems with managing multiple SSH connections?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I break my SSH configuration into project-specific files?",
+      "anchor": "look-at-the-amazingconf-file"
+    },
+    {
+      "question": "What is the purpose of the amazing.conf file in this article?",
+      "anchor": "add-the-sshf-function"
+    },
+    {
+      "question": "How do I create a custom shell function using FZF for SSH hosts?",
+      "anchor": "using-filtering-options"
+    },
+    {
+      "question": "What are some contextual information that can be displayed about an SSH host in the TUI?",
+      "anchor": "my-real-use-case"
+    },
+    {
+      "question": "How does the sshf function work in this article?",
+      "anchor": "using-filtering-options"
+    },
+    {
+      "question": "What are some advantages of using FZF for managing SSH connections?",
+      "anchor": "install-fzf"
+    },
+    {
+      "question": "What is a doc-block and how is it used in the amazing.conf file?",
+      "anchor": "add-the-sshf-function"
+    }
+  ]
+}

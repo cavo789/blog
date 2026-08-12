@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:51:27.345Z",
+  "source": "index.md",
+  "sourceHash": "bcc50861ba6f3b725d733632fe504193a5747396",
+  "questions": [
+    {
+      "question": "How do I edit multiple lines in VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the Multiple Cursors feature in VSCode and how can it be used for bulk editing?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I use the Multiple Cursors feature to remove a prefix from each line in a file?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I use the Multiple Cursors feature to enclose each line in double brackets?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the difference between using search and replace and the Multiple Cursors feature for bulk editing?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I add a prefix to each line in a file using the Multiple Cursors feature?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some other useful features of VSCode that can be discovered by accident?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I use sticky scroll in VSCode to always know which function or heading I'm inside of?",
+      "anchor": ""
+    }
+  ]
+}

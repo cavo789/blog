@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:54:49.421Z",
+  "source": "index.md",
+  "sourceHash": "5671534b87fef6beaa5d8e87c7d0d8cc4f33004a",
+  "questions": [
+    {
+      "question": "How do I run Lubuntu Desktop in Docker on Windows?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to create a Dockerfile for running Lubuntu Desktop?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I install and configure VcXsrv on my Windows machine?",
+      "anchor": "step-1---create-the-dockerfile"
+    },
+    {
+      "question": "What is the purpose of using Docker to run a Linux desktop in a container?",
+      "anchor": "step-2---install-windows-x-server"
+    },
+    {
+      "question": "How do I start and wait for the Lubuntu Desktop to display in my Docker container on Windows?",
+      "anchor": "step-3---start-the-container"
+    },
+    {
+      "question": "What are some alternative methods to run graphical user interfaces in a Docker container without an X Server?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How can I ensure the display quality when running Lubuntu Desktop in a Docker container on Windows?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some practical applications of running Lubuntu Desktop in a Docker container on Windows?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I troubleshoot issues when running Lubuntu Desktop in a Docker container on Windows?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some best practices for using Docker to run graphical user interfaces on Windows?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use Docker volumes to persist data when running Lubuntu Desktop in a Docker container on Windows?",
+      "anchor": ""
+    }
+  ]
+}

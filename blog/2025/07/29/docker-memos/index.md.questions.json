@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:58:59.648Z",
+  "source": "index.md",
+  "sourceHash": "ed8771457720f0f41c5bd4520bbfee00fb5ddef1",
+  "questions": [
+    {
+      "question": "How can I install memos locally using Docker?",
+      "anchor": "lets-install-memos"
+    },
+    {
+      "question": "What are the key features of memos that make it suitable for developers?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create a new note in memos and what is Markdown used for?",
+      "anchor": "lets-create-a-few-more-tasks"
+    },
+    {
+      "question": "What are the different ways to organize notes with tags in memos?",
+      "anchor": "filtering-using-tags"
+    },
+    {
+      "question": "How can I create shortcuts using memos' advanced filters?",
+      "anchor": "creating-shortcuts"
+    },
+    {
+      "question": "How do I paste images into my memos notes?",
+      "anchor": "pasting-images"
+    },
+    {
+      "question": "What are some customization options available in memos?",
+      "anchor": "customization"
+    },
+    {
+      "question": "How can I use memos to manage tasks efficiently?",
+      "anchor": "lets-create-a-few-more-tasks"
+    }
+  ]
+}

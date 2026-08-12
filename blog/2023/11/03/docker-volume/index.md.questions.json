@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T10:19:08.942Z",
+  "source": "index.md",
+  "sourceHash": "bf7f7c88edd05dec7f9342557f2a05d5be05343b",
+  "questions": [
+    {
+      "question": "How do Docker volumes work?",
+      "anchor": "what--v-does-for-you"
+    },
+    {
+      "question": "What is a bind mount in Docker?",
+      "anchor": "doing-it-yourself"
+    },
+    {
+      "question": "Why use volumes with Docker?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I create a volume in Docker?",
+      "anchor": "the-same-container-before-the-file-existed"
+    },
+    {
+      "question": "What is the difference between bind mounts and managed volumes in Docker?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "When should I use volumes with Docker?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I share files between my host machine and a running container using volumes?",
+      "anchor": "what--v-does-for-you"
+    },
+    {
+      "question": "What are the benefits of using Docker volumes?",
+      "anchor": "why-it-works"
+    }
+  ]
+}

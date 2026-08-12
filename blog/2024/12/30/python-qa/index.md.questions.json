@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:56:12.441Z",
+  "source": "index.md",
+  "sourceHash": "b503437fc614e68db2ef53119faae7f20e4b83f2",
+  "questions": [
+    {
+      "question": "What are the 9 static analysis tools mentioned in this article?",
+      "anchor": ""
+    },
+    {
+      "question": "Why is it important to use code analysis tools like Pylint, Autoflake, and mypy?",
+      "anchor": "the-result-one-command-nine-checks-one-clear-failure-point"
+    },
+    {
+      "question": "How do I install the static code quality tools mentioned in this article?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the fastest/most fundamental tool to run first when using the static code quality tools mentioned in this article?",
+      "anchor": "the-result-one-command-nine-checks-one-clear-failure-point"
+    },
+    {
+      "question": "How do I use Pylint to check for errors and enforce a coding standard in my Python code?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What is the purpose of Autoflake, and how can I remove unused imports from my Python code?",
+      "anchor": "more-demos-the-nine-tools-one-by-one"
+    },
+    {
+      "question": "How do I use isort to sort my Python import statements alphabetically?",
+      "anchor": "1-pylint"
+    },
+    {
+      "question": "What is the purpose of Vulture, and how can I find unused code in my Python project?",
+      "anchor": "2-autoflake"
+    },
+    {
+      "question": "How do I use mypy to check for type errors in my Python code?",
+      "anchor": "3-isort"
+    },
+    {
+      "question": "What is the purpose of Pyright, and how can I use it as an alternative to TypeScript for static analysis?",
+      "anchor": "4-vulture"
+    }
+  ]
+}

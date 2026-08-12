@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:49:50.739Z",
+  "source": "index.md",
+  "sourceHash": "7e912e276841ec58ce0e46f05572fdf9cfa96dce",
+  "questions": [
+    {
+      "question": "What is Error Lens for VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I install and use Error Lens for VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of using Error Lens for VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "Where is the Problems area in VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Error Lens show errors, notices, and warnings directly in the editor?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some examples of silent bugs that have been caught by using Error Lens for VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I install and use Todo Tree in VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of using Todo Tree in VSCode?",
+      "anchor": ""
+    }
+  ]
+}

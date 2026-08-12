@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:00:10.655Z",
+  "source": "index.md",
+  "sourceHash": "fece20467f3d8239c3fb05e07b94ef512fbc80bf",
+  "questions": [
+    {
+      "question": "How does Google Gemini Nano Banana work for generating custom images?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some practical tips for using Google Gemini to create custom images?",
+      "anchor": ""
+    },
+    {
+      "question": "How did I use Google Gemini to generate the meerkat mascot and other custom images for my blog?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some challenges I faced while using Google Gemini to create custom images?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I optimize the use of Google Gemini's free plan for creating custom images on my blog?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some common mistakes to avoid when using Google Gemini to create custom images?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use Google Gemini to generate automated TL;DR summaries for my blog posts?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some ways to indicate AI-assisted content on my Docusaurus blog using Google Gemini?",
+      "anchor": ""
+    }
+  ]
+}

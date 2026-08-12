@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:53:18.363Z",
+  "source": "index.md",
+  "sourceHash": "b12db9d86fb2717f2cfdea390174830619f602e0",
+  "questions": [
+    {
+      "question": "What are VSCode regions?",
+      "anchor": "regions-in-action"
+    },
+    {
+      "question": "How do I use regions in PHP code?",
+      "anchor": "code-folding-in-php"
+    },
+    {
+      "question": "Why can't VSCode fold Dockerfiles by default?",
+      "anchor": "what-to-do-when-vscode-didnt-support-these-tags-by-default"
+    },
+    {
+      "question": "What is the purpose of the Auto Fold extension?",
+      "anchor": "auto-fold-extension"
+    },
+    {
+      "question": "How do I install and configure the Auto Fold extension for Dockerfiles?",
+      "anchor": "auto-fold-extension"
+    },
+    {
+      "question": "When should I use regions in my code?",
+      "anchor": "code-folding-in-php"
+    },
+    {
+      "question": "What are some examples of well-organized Bash scripts?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I fold and unfold code blocks using regions in VSCode?",
+      "anchor": "regions-in-action"
+    }
+  ]
+}

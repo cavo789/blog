@@ -2,7 +2,13 @@ $ yarn build
 [SUCCESS] Generated static files in "build".
 [INFO] markdown-mirror-plugin: wrote 247 .md mirrors
 
-$ curl -s https://your-domain.tld/blog/docusaurus-go-top.md | head -n 8
+$ curl -s https://your-domain.tld/blog/docusaurus-go-top.md | head -n 13
+<!--
+  canonical-url: https://your-domain.tld/blog/docusaurus-go-top
+  generated-at:  2026-08-12T07:56:14.431Z
+  This is a static plain-Markdown mirror generated at build time.
+  Visit the canonical URL above for the fully rendered page, with images and interactive components.
+-->
 <TLDR>
 This article is a quick tutorial on how to add a 'scroll to top' button to your Docusaurus blog. It walks you through implementing a custom `<ScrollToTopButton>` React component, including its CSS for styling. You'll learn how to override the default `BlogPostItem` theme component to automatically inject the button at the bottom of every blog post. The guide also provides tips on adding the button to other parts of your site, such as the blog archive or custom pages.
 </TLDR>

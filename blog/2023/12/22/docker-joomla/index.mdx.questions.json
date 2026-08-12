@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:46:04.014Z",
+  "source": "index.mdx",
+  "sourceHash": "19eb3861928e3c9b60b8a59962a612feabe72d9e",
+  "questions": [
+    {
+      "question": "How do I install Joomla using Docker on Windows?",
+      "anchor": "the-container-will-be-restarted-by-windows"
+    },
+    {
+      "question": "What are the steps to create a Joomla website with Docker on Linux or WSL?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I configure Docker Compose for Joomla development?",
+      "anchor": "what-just-happened"
+    },
+    {
+      "question": "What are the essential components of a Docker Compose file for Joomla?",
+      "anchor": "before-starting"
+    },
+    {
+      "question": "How can I persist data in a Docker container for Joomla?",
+      "anchor": "everything-is-done-in-ram"
+    },
+    {
+      "question": "What are the differences between MySQL and MariaDB when using Joomla with Docker?",
+      "anchor": "did-you-prefer-postgresql-or-mariadb"
+    },
+    {
+      "question": "How can I run CLI commands to manage Joomla services in a Docker container?",
+      "anchor": "start-a-cli-command"
+    },
+    {
+      "question": "What are some tips for working with Docker on Windows when setting up Joomla?",
+      "anchor": "working-with-windows"
+    }
+  ]
+}

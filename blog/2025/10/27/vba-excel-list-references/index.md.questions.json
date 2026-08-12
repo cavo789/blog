@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:00:37.565Z",
+  "source": "index.md",
+  "sourceHash": "cf7c9493a4936f91377a2867ef21f2722cab37ea",
+  "questions": [
+    {
+      "question": "How can I automate the process of retrieving VBA references in multiple Excel files?",
+      "anchor": ""
+    },
+    {
+      "question": "What is a small VBS automation script that can help me retrieve VBA references from multiple Excel files?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I use my script to automate the process of retrieving VBA references in multiple Excel files?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the output of my script when it retrieves VBA references from multiple Excel files?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I locate a folder on my hard disk where I have one or more Excel files with VBA modules?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the name of the file that I need to create in the folder to use my script?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I copy/paste the source code for my script into the created file?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the command that I need to run in a DOS or Powershell console to use my script?",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:52:50.244Z",
+  "source": "index.md",
+  "sourceHash": "7e5591dc2ec0f2dc5420c8eb43b4bb5ba3e64d81",
+  "questions": [
+    {
+      "question": "How do I compare two files in Linux using the diff command?",
+      "anchor": "compare-two-files"
+    },
+    {
+      "question": "What are some advanced bash scripts for comparing files or folders in Linux?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I compare two folders and display only the differences between them?",
+      "anchor": "compare-two-folders"
+    },
+    {
+      "question": "What are some specialized cases covered for comparing environment files in Linux?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I compare two versions of the same script using Linux commands?",
+      "anchor": ""
+    },
+    {
+      "question": "What is delta: a Syntax-Highlighted Pager for git diff and how does it make comparing files easier?",
+      "anchor": "compare-two-folders"
+    },
+    {
+      "question": "How can I compare two folders in Linux using the diff command?",
+      "anchor": "compare-two-folders"
+    }
+  ]
+}

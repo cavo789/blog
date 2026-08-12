@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:48:48.090Z",
+  "source": "index.md",
+  "sourceHash": "63374e735c0e6b7d4affce2bca3de92491d30bf8",
+  "questions": [
+    {
+      "question": "How do I create a Docusaurus Docker image?",
+      "anchor": "create-your-own-docusaurus-image"
+    },
+    {
+      "question": "What are the benefits of using Docker with Docusaurus?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How can I run my blog posts in Markdown files with Docusaurus?",
+      "anchor": "under-the-hood--the-dockerfile-line-by-line-skip-this-if-you-just-want-it-running"
+    },
+    {
+      "question": "How do I set up hot-reloading for my Docusaurus site?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the purpose of the Dockerfile in this tutorial?",
+      "anchor": "create-a-dockerignore-file"
+    },
+    {
+      "question": "How can I manage my blog content within a containerized environment using Docker?",
+      "anchor": "run-docusaurus"
+    },
+    {
+      "question": "What are some best practices for creating a Docusaurus Docker image?",
+      "anchor": "create-your-own-docusaurus-image"
+    },
+    {
+      "question": "How do I create a .dockerignore file to optimize my Docker image?",
+      "anchor": "create-a-composeyaml-file"
+    },
+    {
+      "question": "What is the purpose of the compose.yaml file in this tutorial?",
+      "anchor": "create-simple-blog-items"
+    },
+    {
+      "question": "How can I create simple blog items automatically with Docusaurus?",
+      "anchor": "stop-and-restart"
+    },
+    {
+      "question": "How do I run my Docusaurus site using Docker?",
+      "anchor": "run-docusaurus"
+    },
+    {
+      "question": "What are some tips for optimizing the performance of a Dockerized Docusaurus site?",
+      "anchor": "under-the-hood--the-dockerfile-line-by-line-skip-this-if-you-just-want-it-running"
+    }
+  ]
+}

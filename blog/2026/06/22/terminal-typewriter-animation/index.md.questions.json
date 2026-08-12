@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T10:18:28.202Z",
+  "source": "index.md",
+  "sourceHash": "79ae60acaf1506776c44617709e2ef7aa261585b",
+  "questions": [
+    {
+      "question": "What is a typewriter animation in Docusaurus Terminal?",
+      "anchor": ""
+    },
+    {
+      "question": "How does the new typewriter prop work in the Docusaurus Terminal component?",
+      "anchor": "the-new-typewriter-prop"
+    },
+    {
+      "question": "What is the speed scaling feature of the typewriter animation in the Docusaurus Terminal component?",
+      "anchor": "animation-starts-only-when-visible"
+    },
+    {
+      "question": "How are the lines classified in the typewriter animation in the Docusaurus Terminal component?",
+      "anchor": "speed-scales-automatically-with-line-count"
+    },
+    {
+      "question": "What is the implementation sketch of the typewriter animation in the Docusaurus Terminal component?",
+      "anchor": "implementation-sketch"
+    },
+    {
+      "question": "How can I create a typewriter animation using the Docusaurus Terminal component?",
+      "anchor": "create-the-component"
+    },
+    {
+      "question": "What is the purpose of the click-to-skip escape hatch in the typewriter animation in the Docusaurus Terminal component?",
+      "anchor": "the-new-typewriter-prop"
+    },
+    {
+      "question": "How can I add a typewriter animation to my CLI tutorials using the Docusaurus Terminal component?",
+      "anchor": ""
+    }
+  ]
+}

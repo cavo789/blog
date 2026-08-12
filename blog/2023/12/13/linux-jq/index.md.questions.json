@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:45:29.165Z",
+  "source": "index.md",
+  "sourceHash": "a18fbed99d726bf3789ad4a58bc9cb5add8bbf9f",
+  "questions": [
+    {
+      "question": "What is jq and how can it be used to manipulate JSON data in Linux?",
+      "anchor": ""
+    },
+    {
+      "question": "How does jq work with JSON data in a shell script?",
+      "anchor": "the-same-answer-twice"
+    },
+    {
+      "question": "What is the purpose of the '.results[0].name' filter expression when using jq?",
+      "anchor": "filtering-the-output"
+    },
+    {
+      "question": "How do I install jq on my Linux system?",
+      "anchor": "installing-jq"
+    },
+    {
+      "question": "What is the difference between piping JSON data through jq alone and redirecting it to jq?",
+      "anchor": "the-same-answer-twice"
+    },
+    {
+      "question": "How can I use jq to extract specific nodes from a JSON structure?",
+      "anchor": "filtering-the-output"
+    },
+    {
+      "question": "What are some free JSON APIs that can be used with jq?",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "How can I use jq to read API output in a shell script?",
+      "anchor": "conclusion"
+    }
+  ]
+}

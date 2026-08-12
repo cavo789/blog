@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:49:55.135Z",
+  "source": "index.md",
+  "sourceHash": "fcf2c1f5e5e76e254d646d3545c4feebfa5f67b5",
+  "questions": [
+    {
+      "question": "How do I set up SSH keys for GitHub?",
+      "anchor": ""
+    },
+    {
+      "question": "Why is connecting to GitHub over SSH more secure than HTTPS?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to add an SSH key to my computer and connect to GitHub using SSH?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I verify that my SSH connection is set up correctly with GitHub?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of using SSH instead of HTTPS for connecting to GitHub?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I add an SSH key to my computer and connect to GitHub using SSH?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to set up SSH keys for GitHub?",
+      "anchor": ""
+    }
+  ]
+}

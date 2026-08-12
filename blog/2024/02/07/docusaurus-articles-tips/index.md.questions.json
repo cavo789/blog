@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:48:58.757Z",
+  "source": "index.md",
+  "sourceHash": "b439d02dec76416b77a59aa6245b16d78dc05b66",
+  "questions": [
+    {
+      "question": "How do I add Admonitions to my Docusaurus articles?",
+      "anchor": "admonitions"
+    },
+    {
+      "question": "What is the inline style notation in Docusaurus for changing text color?",
+      "anchor": "inline-style"
+    },
+    {
+      "question": "How do I create and use the Highlight component in Docusaurus articles?",
+      "anchor": "highlight-component"
+    },
+    {
+      "question": "What is the purpose of the Highlight lines feature in Docusaurus articles?",
+      "anchor": "highlight-lines"
+    },
+    {
+      "question": "How do I use Docusaurus to highlight changes in code blocks?",
+      "anchor": "highlight-lines"
+    },
+    {
+      "question": "What are two authoring habits worth adopting early for writing Docusaurus articles?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I add a *Read More* link to my Docusaurus article?",
+      "anchor": "admonitions"
+    },
+    {
+      "question": "What are the essential features of Docusaurus articles that you must not forget?",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:47:01.462Z",
+  "source": "index.md",
+  "sourceHash": "54fd10006b3bb9351cccc1c91b639f3a1635ccd3",
+  "questions": [
+    {
+      "question": "What is Docker used for?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I install WordPress using Docker?",
+      "anchor": "three-commands-one-wordpress-site"
+    },
+    {
+      "question": "How does the shared network work in this setup?",
+      "anchor": "first-step-we-need-a-network"
+    },
+    {
+      "question": "What are the environment variables used for MySQL configuration?",
+      "anchor": "second-step-we-need-a-database-container"
+    },
+    {
+      "question": "What is the purpose of the `--hostname` flag when running Docker containers?",
+      "anchor": "third-step-we-need-wordpress"
+    },
+    {
+      "question": "How do I access phpMyAdmin from my browser?",
+      "anchor": "optional-start-phpmyadmin"
+    },
+    {
+      "question": "What is the command to stop and remove all containers after usage?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "What are some alternative ways to manage Docker applications besides using a `docker-compose.yml` file?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I modify the database credentials for WordPress in this setup?",
+      "anchor": "second-step-we-need-a-database-container"
+    },
+    {
+      "question": "What are some best practices to keep Docker containers secure and isolated?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I troubleshoot issues with MySQL/MariaDB connection in this setup?",
+      "anchor": "second-step-we-need-a-database-container"
+    },
+    {
+      "question": "What is the difference between MySQL 8.x and MariaDB 11.x?",
+      "anchor": ""
+    }
+  ]
+}

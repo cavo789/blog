@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:49:15.684Z",
+  "source": "index.md",
+  "sourceHash": "7ae3fd74b404c3b1a55ff73ed51e03ce9ee06c37",
+  "questions": [
+    {
+      "question": "How do I find an email address linked to a GitHub account?",
+      "anchor": ""
+    },
+    {
+      "question": "What are three ways to find a GitHub user's email address?",
+      "anchor": "using-web-interface"
+    },
+    {
+      "question": "How can I retrieve the email of a GitHub user using the public API?",
+      "anchor": "using-parametrized-url"
+    },
+    {
+      "question": "What is the .patch trick for finding a GitHub user's email address?",
+      "anchor": "based-on-a-last-commit"
+    },
+    {
+      "question": "How do I find an email address linked to a GitHub account using the web interface?",
+      "anchor": "using-web-interface"
+    },
+    {
+      "question": "What is the URL format for retrieving a GitHub user's email using the public API?",
+      "anchor": "using-parametrized-url"
+    },
+    {
+      "question": "How can I find an email address linked to a GitHub account by inspecting a commit URL?",
+      "anchor": "based-on-a-last-commit"
+    },
+    {
+      "question": "What is the difference between using the web interface and querying the public API to find a GitHub user's email address?",
+      "anchor": "using-web-interface"
+    }
+  ]
+}

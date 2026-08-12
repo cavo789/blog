@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:45:49.632Z",
+  "source": "index.md",
+  "sourceHash": "b280b9072a97cb29096d237e557de196f58bf28a",
+  "questions": [
+    {
+      "question": "How do you add ASCII art to Bash scripts?",
+      "anchor": ""
+    },
+    {
+      "question": "What is patorjk.com/software/taag and how does it help create ASCII art banners?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use the patorjk.com software to create ASCII art banners in Bash scripts?",
+      "anchor": ""
+    },
+    {
+      "question": "What is a good old-fashioned ASCII Art banner and why do you use it?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I apply the same approach to creating an ASCII Art banner for a website using Docusaurus?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the syntax for adding an ASCII art banner to a Bash script?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use the patorjk.com software to create ASCII art banners in HTML pages rendered by Docusaurus?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some examples of how to add a banner and logging function to Bash scripts?",
+      "anchor": ""
+    }
+  ]
+}

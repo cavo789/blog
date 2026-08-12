@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:59:48.185Z",
+  "source": "index.md",
+  "sourceHash": "190408b79d231ddbef41b16c5e82ec398c98ad5f",
+  "questions": [
+    {
+      "question": "How do I create a custom SeriesPosts component for Docusaurus?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of creating a custom SeriesPosts component in Docusaurus?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create a helper function to scan Markdown files for blog posts and extract properties like title, slug, image, and series name?",
+      "anchor": "part-1---creation-of-the-seriesposts-component"
+    },
+    {
+      "question": "What is the purpose of creating another helper function in Docusaurus?",
+      "anchor": "part-1---creation-of-the-seriesposts-component"
+    },
+    {
+      "question": "How do I create a component called SeriesPosts in Docusaurus that retrieves and displays blog posts with series information?",
+      "anchor": "11-we-need-some-helpers"
+    },
+    {
+      "question": "What is the purpose of creating a banner on individual articles to display series information in Docusaurus?",
+      "anchor": "12-our-seriesposts-component"
+    },
+    {
+      "question": "How do I create a dedicated page that lists all blog posts as cards to navigate through series in Docusaurus?",
+      "anchor": "13-editing-our-articles"
+    },
+    {
+      "question": "What is the purpose of creating a /src/data/series.js file for customizing series information in Docusaurus?",
+      "anchor": "25-handling-the-seriesslug-url"
+    }
+  ]
+}

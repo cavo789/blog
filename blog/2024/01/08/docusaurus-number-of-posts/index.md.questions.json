@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:47:35.674Z",
+  "source": "index.md",
+  "sourceHash": "c83cfaea1c19e6bb11b62eee37fd7631a0a5e4a3",
+  "questions": [
+    {
+      "question": "How do I count published Docusaurus blog posts?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the method to find the total number of published blog posts on my Docusaurus site?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I count the number of published articles in a Docusaurus site?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the process to find out how many blog posts are currently published on my Docusaurus site?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I count the total number of published articles in a Docusaurus blog?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the method to find out how many posts are currently published on my Docusaurus site?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I count the number of blog posts in a Docusaurus site?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the process to find out how many articles are currently published on my Docusaurus site?",
+      "anchor": ""
+    }
+  ]
+}

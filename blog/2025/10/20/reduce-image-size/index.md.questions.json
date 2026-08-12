@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:00:32.144Z",
+  "source": "index.md",
+  "sourceHash": "49bf922adff00d4d2ce84c8f4d225a26fa2024d7",
+  "questions": [
+    {
+      "question": "How do I compress images using CaesiumCLT?",
+      "anchor": "run-the-optimization-tool"
+    },
+    {
+      "question": "What is the command to install CaesiumCLT globally?",
+      "anchor": "installation"
+    },
+    {
+      "question": "How can I determine which folders on my disk contain the biggest image files?",
+      "anchor": "how-to-determine-the-biggest-folders-on-your-disk"
+    },
+    {
+      "question": "What are some best practices for optimizing images using Docker and Bash?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I convert PNG images to WEBP format using CaesiumCLT?",
+      "anchor": "run-the-optimization-tool"
+    },
+    {
+      "question": "What is the command to process all files from my current folder with CaesiumCLT?",
+      "anchor": "run-the-optimization-tool"
+    },
+    {
+      "question": "How can I optimize images in multiple directories on my disk using CaesiumCLT?",
+      "anchor": "how-to-determine-the-biggest-folders-on-your-disk"
+    },
+    {
+      "question": "What are some additional tips for optimizing images using Docker and Bash?",
+      "anchor": ""
+    }
+  ]
+}

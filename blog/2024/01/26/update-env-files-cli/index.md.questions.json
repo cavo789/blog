@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T10:18:53.604Z",
+  "source": "index.md",
+  "sourceHash": "9ae62c4cb00a77ef51330ee16b25511556cb659a",
+  "questions": [
+    {
+      "question": "What is updateEnv for?",
+      "anchor": "what-updateenv-does-for-you"
+    },
+    {
+      "question": "Why does updateEnv work?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I use the updateEnv function?",
+      "anchor": "the-function"
+    },
+    {
+      "question": "What is a skip boolean in updateEnv?",
+      "anchor": "adding-a-skip-boolean"
+    },
+    {
+      "question": "What does updateEnv report?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How does updateEnv handle variable updates and additions?",
+      "anchor": "the-function"
+    },
+    {
+      "question": "What is the purpose of the skip boolean in updateEnv?",
+      "anchor": "adding-a-skip-boolean"
+    },
+    {
+      "question": "How can I use updateEnv to manage environment variables across multiple servers?",
+      "anchor": "conclusion"
+    }
+  ]
+}

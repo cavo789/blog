@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:52:20.018Z",
+  "source": "index.md",
+  "sourceHash": "0323042879f2f2f69acdf6afa97140a0c5b1a271",
+  "questions": [
+    {
+      "question": "How do I implement secure PHP getters and setters in VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the recommended extension for generating PHP getters and setters in VSCode?",
+      "anchor": "see-the-extension-in-action"
+    },
+    {
+      "question": "Why should I use private class properties accessed only through getters/setters?",
+      "anchor": "the-bad-scenario"
+    },
+    {
+      "question": "What are some best practices for using the recommended extension to generate PHP getters and setters in VSCode?",
+      "anchor": "see-the-extension-in-action"
+    },
+    {
+      "question": "How does Rector help spot properties that should be private in a class?",
+      "anchor": ""
+    },
+    {
+      "question": "What is Tabnine's role in guessing the setter for a property when typing it?",
+      "anchor": ""
+    },
+    {
+      "question": "Why is it not tedious to write getters and setters in PHP?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I generate getter/setter boilerplate for properties using the recommended extension in VSCode?",
+      "anchor": "see-the-extension-in-action"
+    },
+    {
+      "question": "What are some common mistakes when using public class properties instead of private ones with getters and setters?",
+      "anchor": "the-bad-scenario"
+    },
+    {
+      "question": "How can I verify the value and correct the case of a property in a setter function?",
+      "anchor": "the-bad-scenario"
+    },
+    {
+      "question": "What are some benefits of using private class properties accessed only through getters/setters in PHP development?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I set up a ready-to-use environment for PHP development with preinstalled code quality tools?",
+      "anchor": "the-good-way"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:55:38.349Z",
+  "source": "index.md",
+  "sourceHash": "375f7739eb96b0b3095ab4f9c5c4ce202505e4c1",
+  "questions": [
+    {
+      "question": "How do I set up a Python development environment using Docker and VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the fastest way to create a Python devcontainer with Docker and VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I use VSCode and Docker to automate the creation of a Python development environment?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of using Devcontainers for Python development with Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I control exactly what goes into a Python devcontainer image by writing the files myself?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the difference between using the Dev Containers wizard and writing the files yourself for creating a Python devcontainer?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I create a ready-to-use Python environment in VSCode with Docker by following the Dev Containers wizard?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of using the Dev Containers: Add Dev Container Configuration files... wizard for creating a Python devcontainer?",
+      "anchor": ""
+    }
+  ]
+}

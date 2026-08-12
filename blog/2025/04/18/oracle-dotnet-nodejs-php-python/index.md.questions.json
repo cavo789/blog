@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:57:39.010Z",
+  "source": "index.md",
+  "sourceHash": "43e07e322458f85ac322873f4b5520f87bfda6bd",
+  "questions": [
+    {
+      "question": "How do I access an Oracle database with .Net?",
+      "anchor": "access-our-oracle-db-container-using-net"
+    },
+    {
+      "question": "What is the Dockerfile used for accessing an Oracle database in NodeJS?",
+      "anchor": "access-our-oracle-db-container-using-nodejs"
+    },
+    {
+      "question": "Can you provide a Python script to access an Oracle database?",
+      "anchor": "access-our-oracle-db-container-using-python"
+    },
+    {
+      "question": "How do I connect to the Oracle DB using PHP?",
+      "anchor": "access-our-oracle-db-container-using-php"
+    },
+    {
+      "question": "What are the prerequisites for accessing an Oracle database container with .Net, Node.js, PHP, and Python?",
+      "anchor": "some-prerequisites"
+    },
+    {
+      "question": "How can I run a SELECT query on the Oracle DB using .Net?",
+      "anchor": "access-our-oracle-db-container-using-net"
+    },
+    {
+      "question": "What is the Dockerfile used for accessing an Oracle database in PHP?",
+      "anchor": "access-our-oracle-db-container-using-php"
+    },
+    {
+      "question": "How do I access the Oracle DB using NodeJS?",
+      "anchor": "access-our-oracle-db-container-using-nodejs"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:49:42.450Z",
+  "source": "index.md",
+  "sourceHash": "957475c6b0289ac64debd7086cdfc2d2658a5911",
+  "questions": [
+    {
+      "question": "How can I delete tables from my Joomla database using a specific prefix?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the PHP utility script for deleting Joomla database tables by prefix?",
+      "anchor": "what-the-utility-looks-like"
+    },
+    {
+      "question": "How do I use the PHP utility script to delete Joomla database tables with a specific prefix?",
+      "anchor": "how-to-use-it"
+    },
+    {
+      "question": "What are some common prefixes used for old or removed components in Joomla databases?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How can I safely remove the PHP utility script from my Joomla site after use?",
+      "anchor": "how-to-use-it"
+    },
+    {
+      "question": "What are some potential risks of using a PHP utility to delete Joomla database tables by prefix?",
+      "anchor": "what-the-utility-looks-like"
+    },
+    {
+      "question": "How can I verify which tables in my Joomla database match a specific prefix before deleting them?",
+      "anchor": "what-the-utility-looks-like"
+    },
+    {
+      "question": "What are some alternative methods for cleaning up old or removed components from a Joomla database?",
+      "anchor": "conclusion"
+    }
+  ]
+}

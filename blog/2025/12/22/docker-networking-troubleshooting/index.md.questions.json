@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:01:19.162Z",
+  "source": "index.md",
+  "sourceHash": "08653fcebb18064ea2f4683b101b8ba49b8a83ff",
+  "questions": [
+    {
+      "question": "How do I verify that my Docker containers are on the same network?",
+      "anchor": "first-they-should-be-on-the-same-network"
+    },
+    {
+      "question": "What command should I use to list running containers and their ports?",
+      "anchor": "then-testing-the-internal-port-for-both-containers"
+    },
+    {
+      "question": "How can I check if a specific process is running on a container's internal port?",
+      "anchor": "third-testing-the-external-port-for-both-containers"
+    },
+    {
+      "question": "What are the steps to test connectivity between two containers using their exposed ports?",
+      "anchor": "fourthly-testing-connectivity-between-the-two-containers"
+    },
+    {
+      "question": "How do I verify DNS resolution within my Docker network?",
+      "anchor": "testing-the-port"
+    },
+    {
+      "question": "What is the correct command to run telnet in a container to test the transport layer?",
+      "anchor": "testing-the-application"
+    },
+    {
+      "question": "How can I install necessary packages inside a container to perform network tests?",
+      "anchor": "fifthly-finding-the-solution"
+    },
+    {
+      "question": "What steps should I follow to troubleshoot connectivity issues between two Docker containers?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I configure environment variables within a container to bypass proxy issues?",
+      "anchor": ""
+    }
+  ]
+}

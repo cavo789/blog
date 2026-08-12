@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:51:22.459Z",
+  "source": "index.md",
+  "sourceHash": "216a27f4d3f11c78f90ad17c5da3d1d27072c39a",
+  "questions": [
+    {
+      "question": "How do I export my installed VSCode extensions?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the command to list installed VSCode extensions?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I generate direct installation commands for VSCode extensions?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some useful tips for exporting and sharing VSCode extensions?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I share my setup with a friend using the list of installed VSCode extensions?",
+      "anchor": ""
+    },
+    {
+      "question": "What is Todo Tree and how does it help manage code tasks in VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some error management tools recommended for VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I export my installed VSCode extensions to a file?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the command to list all installed extensions in VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I generate direct installation commands for VSCode extensions using PowerShell?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some useful tips for sharing VSCode extensions with others?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I share my setup with a friend using the list of installed VSCode extensions?",
+      "anchor": ""
+    }
+  ]
+}

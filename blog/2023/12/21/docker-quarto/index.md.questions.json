@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:45:59.292Z",
+  "source": "index.md",
+  "sourceHash": "d5904c0b8aa30ca6b657bb27ef1647925a7b429d",
+  "questions": [
+    {
+      "question": "How do I run Quarto Markdown in Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "What is Quarto and how does it work?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I render a PDF from a Markdown file using Docker?",
+      "anchor": "render-your-first-pdf-without-installing-anything"
+    },
+    {
+      "question": "What are the different output formats supported by Quarto?",
+      "anchor": "the-source-file"
+    },
+    {
+      "question": "How do I create a custom Docker image for Quarto?",
+      "anchor": "the-same-file-as-html-and-as-a-slideshow"
+    },
+    {
+      "question": "What is Markdown and how does it relate to Quarto?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I generate a slideshow from a Markdown file using Quarto?",
+      "anchor": "build-your-own-image-optional--skip-it-if-the-official-one-is-enough"
+    },
+    {
+      "question": "What are the steps to deploy a Quarto-generated HTML file on a server?",
+      "anchor": "going-further"
+    }
+  ]
+}

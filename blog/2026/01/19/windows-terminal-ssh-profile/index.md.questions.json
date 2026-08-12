@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:01:38.136Z",
+  "source": "index.md",
+  "sourceHash": "80db19d0ac926d8278dbf0c7d720ba982d91fdaf",
+  "questions": [
+    {
+      "question": "How do I create an SSH profile in Windows Terminal?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What is the process for adding a new SSH profile to Windows Terminal?",
+      "anchor": "add-a-profile-for-any-ssh-connection"
+    },
+    {
+      "question": "Why is it beneficial to add a SSH profile to Windows Terminal?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How can I connect to my hosting server using Windows Terminal after adding an SSH profile?",
+      "anchor": "open-windows-terminal-settings"
+    },
+    {
+      "question": "What are the steps to create a new SSH profile in Windows Terminal?",
+      "anchor": "add-a-profile-for-any-ssh-connection"
+    },
+    {
+      "question": "How can I customize the appearance of my SSH profile in Windows Terminal?",
+      "anchor": "adding-a-background-image-optional"
+    },
+    {
+      "question": "What is the difference between adding a background image and an icon to my SSH profile in Windows Terminal?",
+      "anchor": "adding-a-background-image-optional"
+    },
+    {
+      "question": "How can I create a new SSH profile in Windows Terminal for connecting to any server?",
+      "anchor": "add-a-profile-for-any-ssh-connection"
+    }
+  ]
+}

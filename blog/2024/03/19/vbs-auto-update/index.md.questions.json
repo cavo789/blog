@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:50:10.101Z",
+  "source": "index.md",
+  "sourceHash": "b86f290677b066be269640b3d5fa4ee64fe7f710",
+  "questions": [
+    {
+      "question": "How do I create a self-updating VBS file that connects to GitHub and checks for new versions?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to implement an auto-update function in a VBScript script?",
+      "anchor": ""
+    },
+    {
+      "question": "How does the self-updating VBS file check for new versions and overwrite itself if necessary?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you explain how to modify a VBScript script to include an auto-update function that connects to GitHub?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of using a self-updating VBS file for distributed utilities?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I modify an existing VBScript script to include an auto-update function that connects to GitHub and checks for new versions?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the advantages of using a self-updating VBS file over manual redistribution of scripts?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I modify an existing VBScript script to include an auto-update function that connects to GitHub and checks for new versions, and also overwrite itself if necessary?",
+      "anchor": ""
+    }
+  ]
+}

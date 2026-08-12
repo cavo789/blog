@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:49:22.333Z",
+  "source": "index.md",
+  "sourceHash": "97cb3ea3e4adef35a336ea5793fd6174239451cd",
+  "questions": [
+    {
+      "question": "How do I connect two containers running on different networks?",
+      "anchor": ""
+    },
+    {
+      "question": "What is Docker's default network and how does it affect container communication?",
+      "anchor": ""
+    },
+    {
+      "question": "Why can't a container reach another container when they are not on the same network?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create a shared Docker network and find its gateway IP?",
+      "anchor": "some-preparation-work"
+    },
+    {
+      "question": "What is the extra_hosts property in Docker Compose used for?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use host-side hosts-file aliases inside a container with Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create and run an Apache container on a network using Docker Compose?",
+      "anchor": "some-preparation-work"
+    },
+    {
+      "question": "What is the purpose of the extra_hosts property in Docker Compose?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create and run an interactive bash shell in a container using Docker Compose?",
+      "anchor": "some-preparation-work"
+    },
+    {
+      "question": "What is the difference between the default Docker network and a shared network?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create and run a second container on the same network as the first one?",
+      "anchor": "creating-our-second-container"
+    },
+    {
+      "question": "What is the purpose of the Docker inspect command with the --format option?",
+      "anchor": ""
+    }
+  ]
+}

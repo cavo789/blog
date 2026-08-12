@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:48:23.290Z",
+  "source": "index.md",
+  "sourceHash": "9da3df5dff899bac022819447d122bcdb1cc3dc2",
+  "questions": [
+    {
+      "question": "How can I generate custom Sieve rules using RoundCube on PlanetHoster N0C?",
+      "anchor": "you-need-to-use-roundcube-for-the-filtering"
+    },
+    {
+      "question": "What is the Sieve rule format used by RoundCube for filtering spam on PlanetHoster N0C?",
+      "anchor": "too-many-manual-actions"
+    },
+    {
+      "question": "Where do I upload the generated Sieve file to my FTP server on PlanetHoster N0C?",
+      "anchor": "where-to-put-our-file"
+    },
+    {
+      "question": "How can I create multiple rules in RoundCube for spam filtering on PlanetHoster N0C?",
+      "anchor": "stay-in-touch"
+    },
+    {
+      "question": "What is the process to automate the creation of Sieve files using a script on PlanetHoster N0C?",
+      "anchor": "special-thanks"
+    },
+    {
+      "question": "How can I create custom Sieve rules using RoundCube for spam filtering on PlanetHoster N0C?",
+      "anchor": "you-need-to-use-roundcube-for-the-filtering"
+    }
+  ]
+}

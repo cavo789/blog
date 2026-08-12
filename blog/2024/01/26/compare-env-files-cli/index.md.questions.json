@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T10:18:59.006Z",
+  "source": "index.md",
+  "sourceHash": "09967a726b08995c8b613e50a413760bd41415a1",
+  "questions": [
+    {
+      "question": "How do I compare two .env files in Linux?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of using diff, grep, and sort to compare environment variables?",
+      "anchor": "why-plain-diff-isnt-enough"
+    },
+    {
+      "question": "Why can't plain diff alone be used to compare environment files?",
+      "anchor": "why-plain-diff-isnt-enough"
+    },
+    {
+      "question": "How do I reproduce the one-liner command to compare .env files in Linux?",
+      "anchor": "reproduce-it"
+    },
+    {
+      "question": "What is a good practice for updating environment variables across different environments?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How can I add a new variable to my .env file and compare it with .env.example using the one-liner command?",
+      "anchor": "reproduce-it"
+    },
+    {
+      "question": "What is the difference between 'ALLOW_FEATURE_DO_THIS' and 'DATABASE_TYPE' in the example provided?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How can I batch edit environment variables across multiple files using a one-liner command?",
+      "anchor": "conclusion"
+    }
+  ]
+}

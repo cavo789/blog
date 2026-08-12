@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:55:08.085Z",
+  "source": "index.md",
+  "sourceHash": "76fdaf185a5b778776cb0e4938da0c04153902c2",
+  "questions": [
+    {
+      "question": "How do I create a dummy SQL file for drawdb-app?",
+      "anchor": "create-and-import-a-dummy-sql-file"
+    },
+    {
+      "question": "What is the Docker image for drawdb-app?",
+      "anchor": "you-can-self-host-the-application-thanks-to-docker-if-you-want"
+    },
+    {
+      "question": "How do I export a database model as Markdown in drawdb-app?",
+      "anchor": "playing-with-exportation-feature"
+    },
+    {
+      "question": "What are the steps to import an SQL file into drawdb-app?",
+      "anchor": "create-and-import-a-dummy-sql-file"
+    },
+    {
+      "question": "Can I self-host drawdb-app using Docker?",
+      "anchor": "you-can-self-host-the-application-thanks-to-docker-if-you-want"
+    },
+    {
+      "question": "How do I check export features in drawdb-app?",
+      "anchor": "playing-with-exportation-feature"
+    },
+    {
+      "question": "What are the relationships between tables in a database model?",
+      "anchor": "relationships"
+    },
+    {
+      "question": "What is the structure of the 'employees' table in a database model?",
+      "anchor": "table-structure"
+    }
+  ]
+}

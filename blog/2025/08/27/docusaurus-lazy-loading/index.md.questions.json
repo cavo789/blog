@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:59:25.738Z",
+  "source": "index.md",
+  "sourceHash": "aa00dadc3fac732891f8a52bbac3bb3b044b1eac",
+  "questions": [
+    {
+      "question": "How can I enable lazy loading for images in Docusaurus?",
+      "anchor": ""
+    },
+    {
+      "question": "What is lazy loading and why is it important when working with Docusaurus?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I modify the rendering of <img> tags in Docusaurus to include lazy loading?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some additional attributes that can be applied to images when using lazy loading with Docusaurus?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I check if lazy loading is working correctly on my Docusaurus site?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some best practices for implementing lazy loading in Docusaurus?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I integrate custom styles with lazy loaded images in Docusaurus?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some alternative approaches to implementing lazy loading for images in Docusaurus beyond using the <img> tag?",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:52:24.763Z",
+  "source": "index.md",
+  "sourceHash": "ea21f3267b68428a07dfe2f5ff41b96554f186ee",
+  "questions": [
+    {
+      "question": "What is BDD?",
+      "anchor": "introduction-to-bdd---behavior-driven-development"
+    },
+    {
+      "question": "How does Behat work in PHP?",
+      "anchor": "writing-your-steps-in-php"
+    },
+    {
+      "question": "What are the benefits of using Behavior-Driven Development (BDD) with Behat?",
+      "anchor": "introduction-to-bdd---behavior-driven-development"
+    },
+    {
+      "question": "How do I write scenarios in plain English for BDD with Behat?",
+      "anchor": "result"
+    },
+    {
+      "question": "What are some common assertions used in BDD tests with Behat?",
+      "anchor": "using-mink"
+    },
+    {
+      "question": "How do I set up a testing environment for BDD with Behat and Chrome?",
+      "anchor": "set-up-the-project"
+    },
+    {
+      "question": "What are some best practices for writing high-quality BDD tests with Behat?",
+      "anchor": "behatyaml"
+    },
+    {
+      "question": "How do I run my BDD scenarios using the command line?",
+      "anchor": "writing-your-steps-in-php"
+    }
+  ]
+}

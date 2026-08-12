@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:44:58.625Z",
+  "source": "index.md",
+  "sourceHash": "8598a6ab85ff14eed2cbc5e2a7f4f4016665b4e8",
+  "questions": [
+    {
+      "question": "How do you compile and run old Pascal code today?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the Free Pascal Compiler (FPC) used for in this article?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you explain how to use Docker to compile and execute legacy Turbo Pascal programs?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of running old Turbo Pascal code today?",
+      "anchor": ""
+    },
+    {
+      "question": "How does the Free Pascal Compiler (FPC) differ from other compilers?",
+      "anchor": "hello-world"
+    },
+    {
+      "question": "What are some examples of zero local install Docker approaches for running old code?",
+      "anchor": "convert-a-number-to-a-byte"
+    },
+    {
+      "question": "Can you provide a step-by-step guide on how to compile and run a legacy Turbo Pascal program using Docker and FPC?",
+      "anchor": "hello-world"
+    },
+    {
+      "question": "What are the benefits of running old code today, even if it's minimal and useless?",
+      "anchor": "convert-a-number-to-a-byte"
+    }
+  ]
+}

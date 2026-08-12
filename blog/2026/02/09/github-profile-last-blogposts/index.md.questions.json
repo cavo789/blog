@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:01:53.382Z",
+  "source": "index.md",
+  "sourceHash": "9477824b7abda950037f32528b0cc8a30ddfe539",
+  "questions": [
+    {
+      "question": "How do I automate my GitHub README with blog posts using GitHub Actions?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the workflow YAML file in this article?",
+      "anchor": "the-result"
+    },
+    {
+      "question": "How do I create a scheduled GitHub Action to update my README automatically?",
+      "anchor": "create-the-workflow-yaml-file"
+    },
+    {
+      "question": "What are the steps involved in creating and configuring the workflow YAML file for updating the README?",
+      "anchor": "step-by-step-explanations"
+    },
+    {
+      "question": "How can I manually start a GitHub Action to update my README?",
+      "anchor": "updating-the-readmemd-file"
+    },
+    {
+      "question": "What are the different parts of the workflow YAML file and what do they do?",
+      "anchor": "step-by-step-explanations"
+    },
+    {
+      "question": "How can I customize the HTML template used by the GitHub action to display my blog posts in a specific format?",
+      "anchor": "step-by-step-explanations"
+    },
+    {
+      "question": "What are the comment tags used to inject the dynamic blog list into the README.md file?",
+      "anchor": "updating-the-readmemd-file"
+    }
+  ]
+}

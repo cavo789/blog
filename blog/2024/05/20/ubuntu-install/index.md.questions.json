@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:51:57.987Z",
+  "source": "index.md",
+  "sourceHash": "2f723a1419095c674f8b5601783833fc03e59d34",
+  "questions": [
+    {
+      "question": "How do you turn off Bitlocker before installing Ubuntu?",
+      "anchor": "result"
+    },
+    {
+      "question": "What is the bug related to Secure Boot key and how can I avoid it during installation?",
+      "anchor": "turn-off-bitlocker-first"
+    },
+    {
+      "question": "How do you create a bootable USB stick for Ubuntu using balenaEtcher?",
+      "anchor": "download-ubuntu-and-create-your-bootable-usb-stick"
+    },
+    {
+      "question": "What are the steps to install Ubuntu from scratch on an old PC?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I avoid installing recommended proprietary software during Ubuntu installation?",
+      "anchor": "start-the-installation-wizard"
+    },
+    {
+      "question": "What is the purpose of using LVM and encryption when installing Ubuntu from scratch?",
+      "anchor": "reboot-and-enable-ubuntu-pro"
+    },
+    {
+      "question": "How do I install Ubuntu on an old PC without dual booting with Windows?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to download and create a bootable USB stick for Ubuntu using balenaEtcher?",
+      "anchor": "download-ubuntu-and-create-your-bootable-usb-stick"
+    }
+  ]
+}

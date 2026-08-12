@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T06:47:17.002Z",
+  "source": "index.md",
+  "sourceHash": "1f2c363ebe76c44331c43c1682e2dea97d34acf8",
+  "questions": [
+    {
+      "question": "How do I use the KeePass URL field to launch PuTTY?",
+      "anchor": "start-putty-from-keepass"
+    },
+    {
+      "question": "What is the purpose of the advanced property in a KeePass entry?",
+      "anchor": ""
+    },
+    {
+      "question": "Can I set multiple properties for an entry in KeePass?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I configure WinSCP to open files from a KeePass entry?",
+      "anchor": "start-winscp-from-keepass"
+    },
+    {
+      "question": "What is the correct format for setting the URL field in a KeePass entry for RDP/TS connections?",
+      "anchor": "start-an-rdpts-connection-from-keepass"
+    },
+    {
+      "question": "How do I troubleshoot authentication errors when starting PuTTY from KeePass?",
+      "anchor": "start-putty-from-keepass"
+    },
+    {
+      "question": "What is the official documentation URL for setting up external program launching in KeePass?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I copy a file to my PATH directory using MS-DOS console?",
+      "anchor": "start-putty-from-keepass"
+    }
+  ]
+}

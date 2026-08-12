@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:51:15.843Z",
+  "source": "index.md",
+  "sourceHash": "08babe8659185e46088ebc451cfa2e4aca60cc32",
+  "questions": [
+    {
+      "question": "How do I take screenshots of code snippets in VS Code?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the CodeSnap extension for VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "Can CodeSnap be used for sharing code snippets on social media?",
+      "anchor": "result"
+    },
+    {
+      "question": "How do I use the CodeSnap extension to capture code in VS Code?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the difference between using CodeSnap and a real code block for sharing code snippets on a blog?",
+      "anchor": "result"
+    },
+    {
+      "question": "How do I customize the font used in CodeSnap screenshots?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some tips for using CodeSnap to capture code snippets in VS Code?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I save the screenshot captured by CodeSnap?",
+      "anchor": "result"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:47:54.448Z",
+  "source": "index.md",
+  "sourceHash": "bcea6aa54f35da3e056da3f896ffdf47bb585fa1",
+  "questions": [
+    {
+      "question": "How do I enable logging in WinSCP to retrieve a forgotten password?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the process for retrieving a stored password using plain text from the session log file in WinSCP?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I check if WinSCP provides an option to show stored passwords in plain text?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the correct menu path to enable logging and retrieve a stored password in WinSCP?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I find the session log file containing the plain-text password in WinSCP?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some alternatives to storing passwords in WinSCP, such as using key-based authentication or KeePass?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I retrieve a stored password from the session log file in plain text using WinSCP?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of logging passwords and other sensitive information in WinSCP?",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:57:29.753Z",
+  "source": "index.md",
+  "sourceHash": "181c4f69c3bef3a0cb96fb8750b17dfc7908b755",
+  "questions": [
+    {
+      "question": "How do I download and configure the Oracle Docker image?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to create a free account on oracle.com?",
+      "anchor": "download-a-docker-image-for-oracledb"
+    },
+    {
+      "question": "How do I generate a token for accessing Oracle's registry?",
+      "anchor": "creation-of-a-free-account-on-oraclecom"
+    },
+    {
+      "question": "What are the license terms and how do I accept them?",
+      "anchor": "generate-a-token"
+    },
+    {
+      "question": "How do I configure my local Docker environment to access the Oracle registry?",
+      "anchor": "accept-license-terms"
+    },
+    {
+      "question": "How do I pull the Oracle Enterprise Database image from the Oracle registry?",
+      "anchor": "configure-your-local-docker-environment"
+    },
+    {
+      "question": "What are the key concepts of Container Database (CDB) and Pluggable Database (PDB)?",
+      "anchor": "important-concepts-to-consider-when-working-with-oracle-v12-and-after-skip-this-if-you-just-want-to-run-it"
+    },
+    {
+      "question": "How do I create an Oracle database container using Docker?",
+      "anchor": "container-database-cdb-versus-pluggable-database-pdb"
+    },
+    {
+      "question": "What are the configuration files that need to be created for the Oracle database container?",
+      "anchor": "create-an-oracle-database-container"
+    },
+    {
+      "question": "How do I create a volume and network for the Oracle database container?",
+      "anchor": "creation-of-some-configuration-files"
+    },
+    {
+      "question": "What are some important constants that need to be remembered when working with Oracle databases in Docker?",
+      "anchor": "ready-to-create-the-container"
+    },
+    {
+      "question": "How do I connect to and manage an Oracle database using the Oracle Enterprise Manager Database Express?",
+      "anchor": "check-our-fake-data"
+    }
+  ]
+}

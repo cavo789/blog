@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T10:17:52.213Z",
+  "source": "index.md",
+  "sourceHash": "d4e9b47ec1f5b202dce983c2d86fe325a16f5c51",
+  "questions": [
+    {
+      "question": "What is Docker used for in this asset pipeline?",
+      "anchor": "why-this-approach"
+    },
+    {
+      "question": "How do I install yq on my system?",
+      "anchor": "the-architecture"
+    },
+    {
+      "question": "What are the prerequisites before running the script?",
+      "anchor": "1-the-configuration-manifestyaml"
+    },
+    {
+      "question": "What is a Docker image flag and where can I find more information about it?",
+      "anchor": "2-the-orchestrator-script-buildsh"
+    },
+    {
+      "question": "How do I create example files for testing the pipeline?",
+      "anchor": "3-how-to-run-it"
+    },
+    {
+      "question": "What are the steps to set up the script and manifest file?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "What is a declarative YAML manifest and how does it work in this setup?",
+      "anchor": "running-it"
+    },
+    {
+      "question": "How do I run the script to concatenate and minify files using Docker?",
+      "anchor": "the-architecture"
+    }
+  ]
+}

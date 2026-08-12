@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:52:30.000Z",
+  "source": "index.md",
+  "sourceHash": "1c72ce29eed437dd0eb95bfb35e21751bd425eb1",
+  "questions": [
+    {
+      "question": "How do I avoid too many function parameters in Bash scripts?",
+      "anchor": ""
+    },
+    {
+      "question": "What is a simple, robust associative array solution for Bash functions?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you explain how to pass an object to a Bash function using an associative array instead?",
+      "anchor": ""
+    },
+    {
+      "question": "How does the clean-code principle apply to Bash scripts in terms of limiting function parameters?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of using an associative array over positional arguments for Bash functions?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create and use an associative array in a Bash script to pass multiple parameters to a function?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the advantages of using an associative array over positional arguments for Bash functions, particularly when dealing with complex data structures?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I define and use an associative array in a Bash script to pass multiple parameters to a function while ensuring that new fields can be added later without breaking existing call sites?",
+      "anchor": ""
+    }
+  ]
+}

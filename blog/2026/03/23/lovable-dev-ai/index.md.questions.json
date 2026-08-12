@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:02:22.620Z",
+  "source": "index.md",
+  "sourceHash": "d4993cbc27ea1cd095f6752e02068ba10967b2ff",
+  "questions": [
+    {
+      "question": "How does Lovable.dev help with full-stack app development?",
+      "anchor": ""
+    },
+    {
+      "question": "What is Marknotes, and how did you create it?",
+      "anchor": "the-actual-path-there-successive-versions-and-errors"
+    },
+    {
+      "question": "Can AI code generators rebuild a full-stack note-taking app from a single prompt?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Lovable.dev's Docker-first architecture work for building applications?",
+      "anchor": "the-result-after-one-hour-and-a-half"
+    },
+    {
+      "question": "What are the key components of Lovable.dev's application, and how do they interact?",
+      "anchor": "the-objective"
+    },
+    {
+      "question": "How does Lovable.dev help with application deployment?",
+      "anchor": "the-result-after-one-hour-and-a-half"
+    },
+    {
+      "question": "What are the main features of Lovable.dev's application, and how do they work together?",
+      "anchor": "the-objective"
+    },
+    {
+      "question": "How does Lovable.dev help with app development using AI?",
+      "anchor": ""
+    }
+  ]
+}

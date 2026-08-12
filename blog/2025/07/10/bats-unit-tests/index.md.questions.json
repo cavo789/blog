@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:58:45.582Z",
+  "source": "index.md",
+  "sourceHash": "6db9622071588700883d129168c7724ae7b68d34",
+  "questions": [
+    {
+      "question": "How do I run unit tests for Bash scripts using bats?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of writing unit tests in Bash scripts?",
+      "anchor": "lets-start-with-a-little-hors-doeuvre"
+    },
+    {
+      "question": "How do I create a simple test script using bats?",
+      "anchor": "what-did-we-do"
+    },
+    {
+      "question": "What are some basic assertions available in bats for Bash scripts?",
+      "anchor": "asserting-a-failure"
+    },
+    {
+      "question": "How can I check the output of a command in a test script using bats?",
+      "anchor": "some-real-world-use-cases"
+    },
+    {
+      "question": "What are some real-world use cases for writing unit tests in Bash scripts?",
+      "anchor": "more-examples"
+    },
+    {
+      "question": "How can I check if a specific binary is installed on the system using bats?",
+      "anchor": "assert_equal"
+    },
+    {
+      "question": "How can I check if a specific Docker image exists on the system using bats?",
+      "anchor": "assert_failure"
+    },
+    {
+      "question": "What are some examples of using assert_equal in bats for Bash scripts?",
+      "anchor": "assert_output"
+    },
+    {
+      "question": "How can I check if a command fails using bats?",
+      "anchor": "assert_success"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:52:12.836Z",
+  "source": "index.md",
+  "sourceHash": "b89c6048bc1dd375c883a1773f0f164aaffd8b16",
+  "questions": [
+    {
+      "question": "How do I generate a graph from compose.yaml?",
+      "anchor": ""
+    },
+    {
+      "question": "What is Docker Compose architecture visualization tool?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you explain how to visualize Docker services and dependencies using `compose-viz`?",
+      "anchor": "reproduce-it-yourself"
+    },
+    {
+      "question": "How does `compose-viz` generate a clear graph of Docker Compose architecture?",
+      "anchor": "a-more-complex-example"
+    },
+    {
+      "question": "What are the supported output formats for the generated graph with `compose-viz`?",
+      "anchor": "a-more-complex-example"
+    },
+    {
+      "question": "How can I generate an SVG instead of a PNG using `compose-viz`?",
+      "anchor": "a-more-complex-example"
+    },
+    {
+      "question": "What is the purpose of the `compose-viz` tool?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I visualize a Docker Compose architecture using `compose-viz`?",
+      "anchor": "reproduce-it-yourself"
+    }
+  ]
+}

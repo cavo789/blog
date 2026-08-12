@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:01:33.556Z",
+  "source": "index.md",
+  "sourceHash": "ee3f6f5664b7688f2d1d2f3ae5e8a1553d624111",
+  "questions": [
+    {
+      "question": "How do I configure Windows Terminal for multitasking with split panes?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the two methods to create profiles in Windows Terminal for multitasking?",
+      "anchor": "create-a-new-profile-and-hardcode-the-command-line"
+    },
+    {
+      "question": "How can I hardcode command lines into new profiles in Windows Terminal?",
+      "anchor": "create-a-workspace-profile-and-reuse-existing-profiles"
+    },
+    {
+      "question": "How do I reuse existing profiles in Windows Terminal to create complex workspace layouts?",
+      "anchor": "toggle-zoom-for-a-pane"
+    },
+    {
+      "question": "What are some keyboard shortcuts for managing panes in Windows Terminal?",
+      "anchor": "keyboard-shortcuts-to-manage-panes"
+    },
+    {
+      "question": "How can I toggle zoom in a pane in Windows Terminal?",
+      "anchor": "control-panel-actions"
+    },
+    {
+      "question": "What are some profile tricks that can be combined with panes in Windows Terminal?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the different ways to create layouts for multiple panes in Windows Terminal?",
+      "anchor": ""
+    }
+  ]
+}

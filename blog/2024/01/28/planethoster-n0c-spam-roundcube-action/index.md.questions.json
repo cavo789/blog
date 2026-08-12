@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:48:31.882Z",
+  "source": "index.md",
+  "sourceHash": "dd03dbf40697bbebfbefa231f5b4da94679d4909",
+  "questions": [
+    {
+      "question": "How do I automate RoundCube Sieve filters using GitHub Actions?",
+      "anchor": "adding-github-actions"
+    },
+    {
+      "question": "What are the steps to create a RoundCube Sieve filter generator script?",
+      "anchor": "our-action-plan"
+    },
+    {
+      "question": "How can I deploy the generated RoundCube Sieve filter file using FTP?",
+      "anchor": "deploying-the-file-by-ftp"
+    },
+    {
+      "question": "What is the purpose of the JSON list in the RoundCube Sieve filter generator script?",
+      "anchor": "building-the-generator"
+    },
+    {
+      "question": "How do I create a sieve template for RoundCube filters?",
+      "anchor": "create"
+    },
+    {
+      "question": "What is the objective of creating a RoundCube Sieve filter generator script?",
+      "anchor": "the-idea"
+    },
+    {
+      "question": "How can I automate the process of adding and deploying RoundCube Sieve filters using GitHub Actions?",
+      "anchor": "automating-it-with-github-actions-optional"
+    },
+    {
+      "question": "What is the structure of the generated RoundCube Sieve filter file?",
+      "anchor": "storing-the-list-of-values-in-a-json-file"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:56:57.509Z",
+  "source": "index.md",
+  "sourceHash": "bc4e2d6f9b44cc11dbed2482c3100ac2eb06a082",
+  "questions": [
+    {
+      "question": "How do I load an Excel range into a custom VBA Ribbon dropdown control?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the purpose of using named ranges in this solution?",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "How do I create a new sheet and add a list of values to it?",
+      "anchor": "adding-a-ribbon"
+    },
+    {
+      "question": "What is the purpose of naming cells in this solution?",
+      "anchor": "time-to-add-our-vba-code"
+    },
+    {
+      "question": "How do I create a new Excel file and save it with a specific extension?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "What is the purpose of using XML in this solution for the custom UI?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I add a new module to an Excel workbook using VBA?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of naming sheets in this solution?",
+      "anchor": ""
+    }
+  ]
+}

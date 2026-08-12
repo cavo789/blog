@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:02:58.168Z",
+  "source": "index.md",
+  "sourceHash": "770dfb90421cf9cc2d2bdddf38555ccd907bae95",
+  "questions": [
+    {
+      "question": "What is the Belgif REST standards?",
+      "anchor": "belgif-standards"
+    },
+    {
+      "question": "How do I install and run the Belgif linter in a Docker container?",
+      "anchor": "installation--create-a-dummy-application"
+    },
+    {
+      "question": "What are some common linting errors that FastAPI applications might encounter when validating against the Belgif REST standards?",
+      "anchor": "fastapi-tips"
+    },
+    {
+      "question": "How can I resolve the issue of redundant title properties in my OpenAPI schema using the Belgif linter?",
+      "anchor": "oas-descr---title-property-has-to-be-removed"
+    },
+    {
+      "question": "What is the purpose of the oas-comp helper function and how can it be used to fix camelCase naming conventions in my FastAPI application?",
+      "anchor": "openapi-opid---lowercamelcase-for-operationid"
+    },
+    {
+      "question": "How do I handle warnings reported by the Belgif linter in my OpenAPI schema?",
+      "anchor": "adding-the-belgif-linter"
+    },
+    {
+      "question": "What are some best practices for designing robust APIs that comply with the Belgif REST standards?",
+      "anchor": "seeing-the-linter-run"
+    },
+    {
+      "question": "How can I validate my FastAPI application against the Belgif REST standards using Docker and the official Belgif linter?",
+      "anchor": "oas-contra---dont-use-openapi-31-yet"
+    }
+  ]
+}

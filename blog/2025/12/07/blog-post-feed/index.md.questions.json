@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:01:09.266Z",
+  "source": "index.md",
+  "sourceHash": "6771825ffba05ae9cc9add3e190179d567ce15c3",
+  "questions": [
+    {
+      "question": "What is the rss.xml file used for?",
+      "anchor": "what-is-the-rssxml-file"
+    },
+    {
+      "question": "How do I view the RSS using Inoreader?",
+      "anchor": "viewing-the-rss-using-inoreader"
+    },
+    {
+      "question": "How does Docusaurus manage feeds?",
+      "anchor": "how-docusaurus-is-managing-feeds"
+    },
+    {
+      "question": "What is the purpose of creating a custom plugin to enhance the rss.xml file?",
+      "anchor": "lets-optimize-it"
+    },
+    {
+      "question": "What are the steps to prepare my system for creating the custom plugin?",
+      "anchor": "prepare-your-system"
+    },
+    {
+      "question": "How do I create the custom plugin to enhance the rss.xml file?",
+      "anchor": "create-the-plugin"
+    },
+    {
+      "question": "How do I update my Docusaurus configuration to use the custom plugin for generating the rss.xml file?",
+      "anchor": "update-your-configuration"
+    },
+    {
+      "question": "What are the steps to run the custom plugin and generate the static version of my site?",
+      "anchor": "run-the-plugin"
+    },
+    {
+      "question": "How can I visualize the new look&feel of the rss.xml file using an online tool?",
+      "anchor": "visualize-the-new-lookfeel"
+    },
+    {
+      "question": "What are some reasons why this custom plugin is better than Docusaurus's default RSS feed?",
+      "anchor": "why-is-this-better"
+    },
+    {
+      "question": "How can I update my Docusaurus configuration to use the custom plugin for generating both rss and atom feeds?",
+      "anchor": "some-tools"
+    }
+  ]
+}

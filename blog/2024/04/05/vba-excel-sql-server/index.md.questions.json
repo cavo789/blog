@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:50:52.455Z",
+  "source": "index.md",
+  "sourceHash": "a55c3432dffee09aeb12d5ee1fbb1efd95d08f7d",
+  "questions": [
+    {
+      "question": "How do I connect MS Excel to a SQL Server database using VBA and run queries?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the two methods for injecting query results into an Excel sheet from a SQL Server database?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I preserve formatting when running SQL queries in MS Excel and injecting results?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the advantages of using the 'query table' method for data injection in Excel?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I safely share an Excel sheet that connects to a SQL Server database without exposing credentials?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the difference between the 'query table' method and the 'drop connection/credentials' method for data injection in Excel?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I retrieve all explanations to connect MS Excel to a SQL Server database using VBA from my GitHub repository?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to follow to execute a query in MS Excel and get results directly into a sheet while preserving formatting?",
+      "anchor": ""
+    }
+  ]
+}

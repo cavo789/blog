@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:47:49.464Z",
+  "source": "index.md",
+  "sourceHash": "21feda47eb269aed0f4c548e1ee189ffd398a02b",
+  "questions": [
+    {
+      "question": "How do I enable the Autosave feature in VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the default setting for Autosave in VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you explain why Autosave is useful in VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I set Autosave to onFocusChange in VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some common mistakes people make when working with Autosave in VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "Why is it important to enable Autosave in VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I disable the Autosave feature in VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some alternative ways to manage file changes in VSCode?",
+      "anchor": ""
+    }
+  ]
+}

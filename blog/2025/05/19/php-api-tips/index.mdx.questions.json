@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:58:05.358Z",
+  "source": "index.mdx",
+  "sourceHash": "a1048995997dfe9d18ea3330c40480f0f879f114",
+  "questions": [
+    {
+      "question": "What are best practices for designing REST APIs?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I use plural nouns in URI construction?",
+      "anchor": "uniform-resource-identifier"
+    },
+    {
+      "question": "What HTTP verbs should I use for semantically correct endpoints?",
+      "anchor": "verbs"
+    },
+    {
+      "question": "What are the recommended HTTP headers for API requests?",
+      "anchor": "expected-endpoints"
+    },
+    {
+      "question": "How can I filter data in REST APIs using query parameters?",
+      "anchor": "responses"
+    },
+    {
+      "question": "What is the hierarchy and relationship between collections in URI design?",
+      "anchor": "uniform-resource-identifier"
+    },
+    {
+      "question": "Why should I use the HTTP Accept header to inform the server about expected formats?",
+      "anchor": "expected-endpoints"
+    },
+    {
+      "question": "How can I handle multiple values for the same parameter in query parameters?",
+      "anchor": "responses"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:58:25.786Z",
+  "source": "index.md",
+  "sourceHash": "e8b68ecb11f9dba742098b755c433c334d2c2387",
+  "questions": [
+    {
+      "question": "How do I configure Docker out of Docker in GitLab CI?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is Docker Socket Passthrough and how does it work with GitLab CI?",
+      "anchor": "the-runner-configuration-file"
+    },
+    {
+      "question": "How do I share project files between nested containers in GitLab CI?",
+      "anchor": "understanding-the-process"
+    },
+    {
+      "question": "What is the purpose of Docker Socket Passthrough and how does it improve my CI workflow?",
+      "anchor": "running-docker-out-of-docker"
+    },
+    {
+      "question": "How do I configure the GitLab Runner to share its Docker socket with a CI job?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "What are the prerequisites for using Docker Socket Passthrough in GitLab CI?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I configure the runner to share project files with nested containers in GitLab CI?",
+      "anchor": ""
+    },
+    {
+      "question": "What is Docker Socket Passthrough and how does it improve my CI workflow?",
+      "anchor": ""
+    }
+  ]
+}

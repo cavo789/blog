@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:44:31.084Z",
+  "source": "index.md",
+  "sourceHash": "cb75a9dbbdc7d1f2be67d98c71708e3dc2647f26",
+  "questions": [
+    {
+      "question": "How do I open VSCode for any GitHub repository online?",
+      "anchor": ""
+    },
+    {
+      "question": "What is a secret shortcut to start VSCode from any GitHub repository?",
+      "anchor": ""
+    },
+    {
+      "question": "Why would I need to open VSCode for any GitHub repository online?",
+      "anchor": "but-whats-the-point-why-would-i-need-it"
+    },
+    {
+      "question": "How can I quickly edit or fix a typo in a GitHub repository from anywhere using VSCode online?",
+      "anchor": "but-whats-the-point-why-would-i-need-it"
+    },
+    {
+      "question": "What are the three ways to code without a local VSCode, besides full VSCode in your browser via Docker and SSH Remote development with VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "Is it possible to open any GitHub repository online using VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the dot key shortcut for opening a GitHub repository in VSCode online?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I browse any GitHub repository like e.g. and open it in VSCode online using the dot key shortcut?",
+      "anchor": ""
+    }
+  ]
+}

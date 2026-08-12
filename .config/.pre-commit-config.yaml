@@ -80,3 +80,14 @@ repos:
         pass_filenames: false
         always_run: true
         verbose: true
+
+  # ── "Ask my blog" question index freshness (report-only, see TODO 0083) ──
+  - repo: local
+    hooks:
+      - id: questions-freshness
+        name: ask-my-blog question freshness
+        entry: node scripts/check-questions-freshness.mjs
+        language: system
+        pass_filenames: false
+        always_run: true
+        verbose: true

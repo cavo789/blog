@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:54:21.979Z",
+  "source": "index.md",
+  "sourceHash": "5e6714f51b72ada10c0dd544d31980f506fcc455",
+  "questions": [
+    {
+      "question": "How do I create a progress bar in my Bash script on Linux?",
+      "anchor": "result"
+    },
+    {
+      "question": "What are the three steps required to implement a live progress bar in a Bash script?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How can I source the progress_bar.sh script and use it to create a progress bar in my Bash script?",
+      "anchor": "create-demosh"
+    },
+    {
+      "question": "What is the purpose of the figure variable in the progress bar implementation?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How can I modify the progress bar to show a live counter when the number of items isn't known in advance?",
+      "anchor": "create-demosh"
+    },
+    {
+      "question": "What is an example of how to use the progress bar in a real-life script that reads a CSV file and uploads PDFs?",
+      "anchor": "time-to-run-the-code"
+    },
+    {
+      "question": "How can I log information using a log file when implementing this feature in a Bash script?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some advantages of using a progress bar in a Bash script?",
+      "anchor": "why-it-works"
+    }
+  ]
+}

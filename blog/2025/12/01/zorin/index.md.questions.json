@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:01:02.938Z",
+  "source": "index.md",
+  "sourceHash": "bc878962fdc01776dcf4889cfc968a43ea864d91",
+  "questions": [
+    {
+      "question": "What are some of the key features of Zorin OS 18?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Zorin OS 18 compare to other Linux distributions for Windows users?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some of the benefits of using Zorin OS 18 as an alternative to Windows or macOS?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I install Zorin OS 18 on my old computer?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some of the preinstalled software that come with Zorin OS 18?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I use Zorin OS 18 as a Windows alternative for gaming?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some of the compatibility issues that users may encounter with Zorin OS 18?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I reformat my USB drive to be able to reuse it after installing Zorin OS 18?",
+      "anchor": ""
+    }
+  ]
+}

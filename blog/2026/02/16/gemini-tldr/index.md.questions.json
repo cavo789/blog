@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:01:58.251Z",
+  "source": "index.md",
+  "sourceHash": "37a7b4452d3d7b6df55b3e4921fdb1348f919425",
+  "questions": [
+    {
+      "question": "How do I automate TL;DR summaries using Google's Gemini AI and Python?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to set up Docker for running the script?",
+      "anchor": "running-with-docker"
+    },
+    {
+      "question": "How can I generate summaries for multiple blog posts at once using the script?",
+      "anchor": "generating-summaries"
+    },
+    {
+      "question": "What is the error code '429 RESOURCE_EXHAUSTED' and how do I resolve it?",
+      "anchor": "error---429-resource_exhausted"
+    },
+    {
+      "question": "How can I integrate the generated summaries into my Docusaurus blog posts?",
+      "anchor": "the-react-component"
+    },
+    {
+      "question": "What is the purpose of the custom React component used for displaying summaries in Docusaurus?",
+      "anchor": "the-concept"
+    },
+    {
+      "question": "How can I generate summaries for a specific month's blog posts using the script?",
+      "anchor": "generating-summaries"
+    },
+    {
+      "question": "What is the purpose of the environment file used to store API keys and other sensitive information?",
+      "anchor": "running-with-docker"
+    }
+  ]
+}

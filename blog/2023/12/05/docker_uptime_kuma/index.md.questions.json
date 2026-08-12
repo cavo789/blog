@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:45:07.417Z",
+  "source": "index.md",
+  "sourceHash": "bd2d6d09be4fa08bf5833343604dabfa5030eb31",
+  "questions": [
+    {
+      "question": "What is Uptime Kuma?",
+      "anchor": ""
+    },
+    {
+      "question": "How do you install Uptime Kuma?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the key features of Uptime Kuma?",
+      "anchor": ""
+    },
+    {
+      "question": "Where can I find a demo website for Uptime Kuma?",
+      "anchor": ""
+    },
+    {
+      "question": "How do you configure site checks and notifications in Uptime Kuma?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some global settings available in Uptime Kuma's profile?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Uptime Kuma watch your sites from the outside?",
+      "anchor": ""
+    },
+    {
+      "question": "What is Get health information from your running containers?",
+      "anchor": ""
+    }
+  ]
+}

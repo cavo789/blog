@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:52:45.489Z",
+  "source": "index.md",
+  "sourceHash": "024213a61e1dc711065b9540e5f4cd9f2b2e9506",
+  "questions": [
+    {
+      "question": "How can I format legacy SQL queries?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the SQL Formatter tool?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you explain how to use the SQL Formatter tool?",
+      "anchor": ""
+    },
+    {
+      "question": "Why is it important to format SQL queries before reviewing them?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some other tools available for formatting code in different languages?",
+      "anchor": ""
+    },
+    {
+      "question": "How does the SQL Formatter tool work with legacy SQL queries?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you provide a demo of the SQL Formatter tool?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some other self-hosted tools similar to the SQL Formatter?",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T06:48:47.992Z",
+  "source": "index.md",
+  "sourceHash": "4a385abdfd3c5919be8a98cf260d5853a1b22443",
+  "questions": [
+    {
+      "question": "How do I move WSL2 distribution to another drive?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the process for moving a WSL2 distribution to a new drive?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I relocate my Linux distribution from C: to D: using PowerShell commands?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to move WSL2 distributions to a new drive using PowerShell?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I transfer my Linux distribution from C: to D: using PowerShell commands?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the method for moving WSL2 distributions to a new drive using PowerShell commands?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I move my Linux distribution from C: to D: using PowerShell commands?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to move WSL2 distributions to a new drive using PowerShell commands?",
+      "anchor": ""
+    }
+  ]
+}

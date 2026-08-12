@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:54:26.580Z",
+  "source": "index.md",
+  "sourceHash": "96afcf5697d9d1763200bf4d0ec5607c24dc836f",
+  "questions": [
+    {
+      "question": "How do I view my command history in Linux?",
+      "anchor": ""
+    },
+    {
+      "question": "Where is my command history stored on a Linux system?",
+      "anchor": "getting-your-history"
+    },
+    {
+      "question": "What are the HISTIGNORE and HISTORY_IGNORE variables used for in Bash/ZSH?",
+      "anchor": "location-of-your-history"
+    },
+    {
+      "question": "How do I prevent specific commands from being saved to my history file?",
+      "anchor": "histignore--history_ignore-variables"
+    },
+    {
+      "question": "What is the difference between using grep and CTRL-R to filter your command history in Linux?",
+      "anchor": "dont-put-a-specific-command-in-the-history"
+    },
+    {
+      "question": "How do I use ZSH's autosuggestions feature to avoid manually searching through my command history?",
+      "anchor": "using-grep-to-filter-your-history"
+    },
+    {
+      "question": "What is the purpose of the HISTIGNORE and HISTORY_IGNORE variables in Bash/ZSH?",
+      "anchor": "ctrl-r-is-your-friend"
+    },
+    {
+      "question": "How do I delete a specific instruction from my Linux command history file?",
+      "anchor": "autosuggestions-in-the-console-using-zsh"
+    }
+  ]
+}

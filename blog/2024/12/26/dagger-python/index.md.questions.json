@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:56:06.129Z",
+  "source": "index.md",
+  "sourceHash": "c77003630ee08c64372d4bdaf23111da2a241978",
+  "questions": [
+    {
+      "question": "What is Dagger.io?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Dagger.io automate CI workflows?",
+      "anchor": "the-result-a-working-pipeline-no-yaml-no-push"
+    },
+    {
+      "question": "Why use Dagger.io for CI/CD?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I install Dagger.io?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What are the objectives of Dagger.io?",
+      "anchor": "our-objectives"
+    },
+    {
+      "question": "Why do we want Dagger.io?",
+      "anchor": "we-want-dagger"
+    },
+    {
+      "question": "How do I daggerize my application with Dagger.io?",
+      "anchor": "daggerize-our-application"
+    },
+    {
+      "question": "What are the demos of Dagger.io?",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "How do I create a linting function with Dagger.io?",
+      "anchor": "create-our-linting-function"
+    },
+    {
+      "question": "How do I create a makefile for my pipeline with Dagger.io?",
+      "anchor": "create-a-makefile"
+    },
+    {
+      "question": "How do I format the code using Black with Dagger.io?",
+      "anchor": "formatting-the-code-using-black"
+    },
+    {
+      "question": "What is towards the universe and infinity in this article?",
+      "anchor": "towards-the-universe-and-infinity"
+    }
+  ]
+}

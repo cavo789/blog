@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:47:40.511Z",
+  "source": "index.md",
+  "sourceHash": "0b1e216d4d30c2cfa1ccb0456341ac0cff91227d",
+  "questions": [
+    {
+      "question": "How can I automate my blog's deployment using GitHub Actions?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps involved in setting up a GitHub Actions workflow for deploying a blog?",
+      "anchor": "three-ingredients"
+    },
+    {
+      "question": "How do I create and manage repository secrets for secure FTP credentials in GitHub Actions?",
+      "anchor": "setting-it-up"
+    },
+    {
+      "question": "What is the purpose of restricting an FTP user to only the deployment folder in a GitHub Actions workflow?",
+      "anchor": "three-ingredients"
+    },
+    {
+      "question": "How can I automate the publishing process of my blog posts using GitHub Actions and Docusaurus?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "What are some best practices for securing FTP credentials in a GitHub Actions workflow?",
+      "anchor": "setting-it-up"
+    },
+    {
+      "question": "How can I automate the deployment of my blog on every push using GitHub Actions?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some common problems with manual FTP deployments and how does GitHub Actions address them?",
+      "anchor": "what-a-deployment-looks-like-now"
+    }
+  ]
+}

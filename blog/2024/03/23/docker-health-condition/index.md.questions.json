@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:50:15.184Z",
+  "source": "index.md",
+  "sourceHash": "a4f2efc7c4c7c80d389e8d48568432f6b5564e3f",
+  "questions": [
+    {
+      "question": "What is Docker's healthcheck property used for?",
+      "anchor": "the-healthcheck-property"
+    },
+    {
+      "question": "How does Docker determine if a service is ready based on its healthcheck?",
+      "anchor": "the-healthcheck-property"
+    },
+    {
+      "question": "Why might an application fail to start correctly when using the depends_on property with Docker Compose?",
+      "anchor": "the-depends_on-property"
+    },
+    {
+      "question": "What is the purpose of the depends_on property in Docker Compose?",
+      "anchor": "the-depends_on-property"
+    },
+    {
+      "question": "How can I ensure that my application waits for a database to be fully ready before starting using Docker and Compose?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the difference between the healthcheck property and the depends_on property in Docker Compose?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I configure a healthcheck for a service in a Docker Compose file?",
+      "anchor": "the-healthcheck-property"
+    },
+    {
+      "question": "What are some common commands used in the healthcheck property of a Docker Compose file?",
+      "anchor": "the-healthcheck-property"
+    }
+  ]
+}

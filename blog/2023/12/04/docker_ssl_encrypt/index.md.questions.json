@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:45:03.167Z",
+  "source": "index.md",
+  "sourceHash": "0237b7651d00504aada049c81a4a2d08f17050d7",
+  "questions": [
+    {
+      "question": "How do I encrypt sensitive data using Docker?",
+      "anchor": "what-this-looks-like"
+    },
+    {
+      "question": "Why is it important to use Docker for encryption?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What are the steps to create an encrypted file using Docker and OpenSSL?",
+      "anchor": "the-scripts"
+    },
+    {
+      "question": "How do I decrypt a file that was encrypted using Docker and OpenSSL?",
+      "anchor": "decrypt-on-the-console-dont-write-a-file"
+    },
+    {
+      "question": "Can I use the same password for multiple encryptions with Docker and OpenSSL?",
+      "anchor": "use-case"
+    },
+    {
+      "question": "What is the difference between Base64 and binary encoding when using Docker and OpenSSL?",
+      "anchor": "the-openssl-arguments-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "How can I safely store sensitive files in Git repositories or cloud drives using Docker and OpenSSL?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "What are some use cases for encrypting sensitive data using Docker and OpenSSL?",
+      "anchor": ""
+    }
+  ]
+}

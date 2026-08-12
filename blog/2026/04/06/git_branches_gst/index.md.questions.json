@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:02:32.629Z",
+  "source": "index.md",
+  "sourceHash": "e7b7e8592071b9aaa15b158702e62cbcbce24a62",
+  "questions": [
+    {
+      "question": "How do I configure ZSH to automatically display my most recently modified Git branches when I enter a repository or check its status?",
+      "anchor": "a-real-world-example"
+    },
+    {
+      "question": "What is the purpose of the custom script added to my Zsh configuration for displaying recent Git branches?",
+      "anchor": "how-it-works"
+    },
+    {
+      "question": "How does the function that automatically displays recent Git branches work?",
+      "anchor": "how-it-works"
+    },
+    {
+      "question": "Why is it important to note that this script exclusively queries your local Git repository and avoids executing a remote command?",
+      "anchor": "local-branches-only"
+    },
+    {
+      "question": "What are the potential drawbacks of using this script in a project with multiple collaborators?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How can I modify the script to display recent branches from both local and remote repositories?",
+      "anchor": "local-branches-only"
+    },
+    {
+      "question": "What are some alternative methods for displaying recent Git branches in Zsh, besides using a custom script?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How can I customize the appearance of the displayed branch names in my Zsh configuration?",
+      "anchor": "how-it-works"
+    }
+  ]
+}

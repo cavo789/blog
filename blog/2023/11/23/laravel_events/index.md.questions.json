@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:44:17.331Z",
+  "source": "index.md",
+  "sourceHash": "9fd26e52d4ac9ad0872352e2128a164ab190f4a7",
+  "questions": [
+    {
+      "question": "What is an event in Laravel?",
+      "anchor": ""
+    },
+    {
+      "question": "Why use events in Laravel?",
+      "anchor": "what-an-event-actually-buys-you"
+    },
+    {
+      "question": "How do you create and dispatch an event with a listener in Laravel?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the purpose of events in Laravel?",
+      "anchor": "building-it"
+    },
+    {
+      "question": "How can I add new functionality without modifying existing code using Laravel events?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "Can you explain how to use the event listener system in Laravel with an example?",
+      "anchor": "the-same-idea-outside-laravel"
+    },
+    {
+      "question": "How do events work under the hood in Laravel?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "What are some real-world examples of using events in Laravel?",
+      "anchor": ""
+    }
+  ]
+}

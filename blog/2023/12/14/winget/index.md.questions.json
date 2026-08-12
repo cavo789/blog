@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:45:38.224Z",
+  "source": "index.md",
+  "sourceHash": "a1dc5a08df4f9e50d1baa31e1f0a2076194ed43e",
+  "questions": [
+    {
+      "question": "winget update all outdated windows programs",
+      "anchor": ""
+    },
+    {
+      "question": "how to use winget to update all installed software on windows",
+      "anchor": ""
+    },
+    {
+      "question": "list of out-of-date windows applications using winget",
+      "anchor": ""
+    },
+    {
+      "question": "winget command to check for updates and install them",
+      "anchor": ""
+    },
+    {
+      "question": "how to use winget to update specific windows application",
+      "anchor": "upgrade-just-one-application"
+    },
+    {
+      "question": "winget command to list all installed software on windows",
+      "anchor": "getting-the-list-of-software"
+    },
+    {
+      "question": "how to use winget to upgrade multiple windows applications at once",
+      "anchor": ""
+    },
+    {
+      "question": "winget update command examples for windows",
+      "anchor": ""
+    }
+  ]
+}

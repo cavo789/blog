@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:58:15.287Z",
+  "source": "index.md",
+  "sourceHash": "2dce5aa93011e0575ce5f81a5a94b9310f809e83",
+  "questions": [
+    {
+      "question": "How do I securely connect to a private GitLab repository using an SSH key?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to configure a GitLab CI/CD runner to use a private SSH key for accessing and cloning private repositories?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I securely store my private SSH key as a masked CI/CD variable in GitLab?",
+      "anchor": "then-i-will-encode-it-for-better-security"
+    },
+    {
+      "question": "What is the purpose of using an SSH_PRIVATE_KEY CI variable in GitLab CI/CD?",
+      "anchor": "third-i-have-to-create-a-ssh_private_key-ci-variable"
+    },
+    {
+      "question": "How do I configure my .gitlab-ci.yml file to use a private SSH key for accessing and cloning private repositories?",
+      "anchor": "finally-i-have-to-adjust-my-gitlab-ciyml-file"
+    },
+    {
+      "question": "What are the benefits of using an SSH key with GitLab CI/CD?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I generate a private SSH key and encode it for better security?",
+      "anchor": "first-i-need-to-have-an-ssh-key"
+    },
+    {
+      "question": "What are the different ways to use the SSH_PRIVATE_KEY CI variable in GitLab CI/CD?",
+      "anchor": "then-i-will-encode-it-for-better-security"
+    }
+  ]
+}

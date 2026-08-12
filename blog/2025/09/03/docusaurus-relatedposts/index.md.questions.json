@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:59:36.605Z",
+  "source": "index.md",
+  "sourceHash": "92c99643147535b6fdbfb3f3e45fd7a4f2b61e99",
+  "questions": [
+    {
+      "question": "How do I add related posts to my Docusaurus blog?",
+      "anchor": ""
+    },
+    {
+      "question": "What is a Card component used for in this article?",
+      "anchor": "we-need-a-card-component"
+    },
+    {
+      "question": "How can I extract information from blog posts?",
+      "anchor": "we-need-a-way-to-extract-information-from-blog-posts"
+    },
+    {
+      "question": "What is the purpose of the RelatedPosts component?",
+      "anchor": "our-relatedposts-component"
+    },
+    {
+      "question": "How do I override Docusaurus's BlogPostItem template to display related posts?",
+      "anchor": "overriding-the-blogpostitem-template"
+    },
+    {
+      "question": "What configurations need to be made in my blog posts for the RelatedPosts component to work?",
+      "anchor": "editing-our-blog-posts"
+    },
+    {
+      "question": "Why do I not see related posts on my Docusaurus blog?",
+      "anchor": "conclusion"
+    }
+  ]
+}

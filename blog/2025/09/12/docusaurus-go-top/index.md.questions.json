@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:59:54.112Z",
+  "source": "index.md",
+  "sourceHash": "981d607fb90f06dd35b65cdfa3d549560453a8ea",
+  "questions": [
+    {
+      "question": "How do I add a 'go to the top' button in my Docusaurus blog posts?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to create and inject a custom React component for a 'go to the top' button in Docusaurus blog posts?",
+      "anchor": "how-it-works"
+    },
+    {
+      "question": "How do I override the BlogPostItem page in Docusaurus to add a 'go to the top' button?",
+      "anchor": "overriding-the-blogpostitem-page"
+    },
+    {
+      "question": "Can I use this 'go to the top' button on other pages besides blog posts in my Docusaurus site?",
+      "anchor": "you-can-do-this-for-other-pages-for-sure"
+    },
+    {
+      "question": "What are some tips for adding a 'go to the top' button to my Docusaurus site?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How does Docux's implementation of the 'go to the top' button work in Docusaurus blog posts?",
+      "anchor": "how-it-works"
+    },
+    {
+      "question": "What are the two files I need to create for implementing a 'go to the top' button in Docusaurus blog posts?",
+      "anchor": "what-it-looks-like"
+    },
+    {
+      "question": "How do I inject the custom React component for the 'go to the top' button into my Docusaurus blog posts?",
+      "anchor": "how-it-works"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:57:02.771Z",
+  "source": "index.md",
+  "sourceHash": "2659e639e1995b619b56953fb58f6c0d2ab226d4",
+  "questions": [
+    {
+      "question": "How do I enable case sensitivity for filenames in a specific folder on Windows?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the PowerShell command to enable case sensitivity for filenames in a specific folder on Windows?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I revert the change of enabling case sensitivity for filenames in a specific folder on Windows?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some other Windows/Linux mismatches that can bite you when using the same repository on both systems?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I prevent Git from silently rewriting line endings in a repository used on both Windows and Linux?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the PowerShell command to revert the change of enabling case sensitivity for filenames in a specific folder on Windows?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I enable case sensitivity for filenames in a specific folder on Windows using PowerShell?",
+      "anchor": ""
+    }
+  ]
+}

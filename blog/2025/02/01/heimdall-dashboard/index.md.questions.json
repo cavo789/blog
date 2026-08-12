@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:56:42.110Z",
+  "source": "index.md",
+  "sourceHash": "13714b3526fd20cc8d974f439cd7451f7fe78978",
+  "questions": [
+    {
+      "question": "How do I set up Heimdall on my computer?",
+      "anchor": "creating-your-dashboard"
+    },
+    {
+      "question": "What is Docker used for in setting up Heimdall?",
+      "anchor": "running-the-dashboard"
+    },
+    {
+      "question": "Where does the configuration for Heimdall get saved on disk?",
+      "anchor": "saving-the-configuration-on-disk"
+    },
+    {
+      "question": "How do I add links to my Heimdall dashboard?",
+      "anchor": "adding-some-links"
+    },
+    {
+      "question": "What are tags used for in organizing links in Heimdall?",
+      "anchor": "more-customizations"
+    },
+    {
+      "question": "How do I customize the appearance of my Heimdall dashboard?",
+      "anchor": "creating-your-dashboard"
+    }
+  ]
+}

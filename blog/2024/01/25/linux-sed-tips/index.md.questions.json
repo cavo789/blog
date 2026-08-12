@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:48:06.086Z",
+  "source": "index.md",
+  "sourceHash": "2b89a5c1fcb1d2e6db96bb8dd26903f2f9f4a821",
+  "questions": [
+    {
+      "question": "How do I use sed to update a variable in a config file if it already exists or append it if it doesn't?",
+      "anchor": "the-one-liner"
+    },
+    {
+      "question": "What is the purpose of using the -i flag with sed for updating files in place?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How does the grep command work in conjunction with sed to check if a variable exists in a file before performing an update or append operation?",
+      "anchor": "search-and-replace"
+    },
+    {
+      "question": "What is the difference between using sed -i and sed -i -e '$aAPP_ENV = production' for appending a new line to a file?",
+      "anchor": "dont-replace-but-add-if-not-found"
+    },
+    {
+      "question": "How can I read back the contents of a file after performing an update or append operation using sed?",
+      "anchor": "combine-both"
+    },
+    {
+      "question": "What is the purpose of using the -q flag with grep to check if a variable exists in a file without printing any output?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How can I combine both the search and replace operation and the insert new line operation into a single sed command?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some other ways to automate file edits using sed besides searching and replacing variables?",
+      "anchor": ""
+    }
+  ]
+}

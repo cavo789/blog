@@ -1,0 +1,59 @@
+.button {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 17rem;
+  padding: 0.5rem 0.85rem;
+  color: var(--ifm-color-emphasis-800);
+  cursor: pointer;
+  background: var(--ifm-background-surface-color);
+  border: 2px solid var(--ifm-color-primary);
+  border-radius: 999px;
+  box-shadow: 0 1px 4px rgb(0, 0, 0, 0.08);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.button:hover {
+  border-color: var(--ifm-color-primary-dark);
+  box-shadow: 0 4px 12px rgb(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.icon {
+  font-size: 1rem;
+}
+
+.placeholder {
+  overflow: hidden;
+  flex: 1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shortcut {
+  padding: 0.1rem 0.5rem;
+  color: var(--ifm-color-primary-contrast-foreground);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--ifm-background-surface-color);
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .button {
+    width: 2.6rem;
+    padding: 0.45rem;
+    border-radius: 50%;
+  }
+
+  .placeholder,
+  .shortcut {
+    display: none;
+  }
+}

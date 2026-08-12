@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:44:35.484Z",
+  "source": "index.md",
+  "sourceHash": "a69e889b3952bf87601f23f1e15d68a156e6b3e2",
+  "questions": [
+    {
+      "question": "How do I enable sticky scroll in VS Code?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of Sticky Scroll in VS Code?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Sticky Scroll work with Markdown files?",
+      "anchor": ""
+    },
+    {
+      "question": "Can I use Sticky Scroll with PHP or JavaScript code?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of using Sticky Scroll in VS Code?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Sticky Scroll pair with code folding in VS Code?",
+      "anchor": ""
+    },
+    {
+      "question": "Can I customize which lines are pinned to the top of the editor?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the difference between Sticky Scroll and code folding in VS Code?",
+      "anchor": ""
+    }
+  ]
+}

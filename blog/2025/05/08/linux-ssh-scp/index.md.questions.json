@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:57:56.486Z",
+  "source": "index.md",
+  "sourceHash": "177476ed1e5ecd20dcabac21ee6598eb8940169f",
+  "questions": [
+    {
+      "question": "How do I create an SSH key on my host for the remote server?",
+      "anchor": "tldr"
+    },
+    {
+      "question": "What is the purpose of copying the public SSH key to the remote server?",
+      "anchor": "in-depth"
+    },
+    {
+      "question": "How can I connect to the server without entering a password using SSH keys?",
+      "anchor": "1-creating-the-ssh-key"
+    },
+    {
+      "question": "What are the steps involved in creating an SSH key pair for passwordless login?",
+      "anchor": "2-copying-the-key"
+    },
+    {
+      "question": "How do I copy my local SSH public key to the remote server?",
+      "anchor": "3-connect-to-the-server"
+    },
+    {
+      "question": "What is the command used to append a public key to the authorized_keys file on the remote server?",
+      "anchor": "copying-files-from-your-host-to-the-server"
+    },
+    {
+      "question": "How can I copy files from my host to the server using SSH?",
+      "anchor": "copy-files-from-the-server-to-your-host"
+    },
+    {
+      "question": "What is the command used to copy files from the server to your host using SSH?",
+      "anchor": "copying-folders"
+    },
+    {
+      "question": "How can I copy folders using SSH?",
+      "anchor": "tips"
+    },
+    {
+      "question": "What are some tips for running SSH commands in Microsoft Terminal?",
+      "anchor": "running-ssh-from-microsoft-terminal"
+    },
+    {
+      "question": "What is the purpose of the config file when working with SSH?",
+      "anchor": "using-the-config-file"
+    }
+  ]
+}

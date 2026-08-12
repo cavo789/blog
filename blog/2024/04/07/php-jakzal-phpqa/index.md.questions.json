@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T06:43:33.347Z",
+  "source": "index.md",
+  "sourceHash": "c168fc26decbd7e887b22409ebd8d3bdea95ebe2",
+  "questions": [
+    {
+      "question": "What is Docker image that provides static analysis tools for PHP?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I use the jakzal/phpqa Docker image to run PHP static analysis tools?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some of the tools available in the jakzal/phpqa Docker image for static analysis and code quality?",
+      "anchor": "a-whole-host-of-other-tools-await-you"
+    },
+    {
+      "question": "How can I run Composer unused to identify unused dependencies in my PHP project?",
+      "anchor": "composer-unused"
+    },
+    {
+      "question": "What is the purpose of the composer normalize tool and how do I use it?",
+      "anchor": "composer-normalize"
+    },
+    {
+      "question": "How does the php-parallel-lint tool check for syntax errors in my PHP codebase?",
+      "anchor": "php-parallel-lint"
+    },
+    {
+      "question": "What is PHP-CS-FIXER and how can I use it to reformat my PHP codebase according to specific rulesets?",
+      "anchor": "php-cs-fixer"
+    },
+    {
+      "question": "What is the purpose of the php-codesniffer tool and how do I use it to detect coding standard violations in my PHP project?",
+      "anchor": "php_codesniffer"
+    }
+  ]
+}

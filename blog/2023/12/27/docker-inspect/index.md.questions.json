@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:46:40.630Z",
+  "source": "index.md",
+  "sourceHash": "ad2ea1b93ecd33718e219cdb90e1bc81a732fe52",
+  "questions": [
+    {
+      "question": "How do I use docker inspect to get detailed network information about my containers?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the command used to retrieve detailed configuration and network information for Docker containers in JSON format?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I use jq to extract just the network name/IP from the NetworkSettings.Networks property of a container's inspect output?",
+      "anchor": "get-the-network-name-in-one-line"
+    },
+    {
+      "question": "What is the full inspect output returned by docker inspect and how can it be used to retrieve detailed configuration information about Docker objects?",
+      "anchor": "the-full-inspect-output"
+    },
+    {
+      "question": "How do I use jq to filter out specific properties from the NetworkSettings.Networks property of a container's inspect output?",
+      "anchor": "get-the-network-name-in-one-line"
+    },
+    {
+      "question": "What is the command used to create a new Docker container and what is its purpose?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How do I retrieve detailed information about a running container using docker inspect?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some use cases for retrieving network information about Docker containers?",
+      "anchor": "the-full-inspect-output"
+    }
+  ]
+}

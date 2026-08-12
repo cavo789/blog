@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:46:35.264Z",
+  "source": "index.md",
+  "sourceHash": "9c85f5c0bf4d48a2d765339d6a2b6b07b348771e",
+  "questions": [
+    {
+      "question": "How do I access my Docker database container using Adminer?",
+      "anchor": "one-command-your-database-in-a-browser"
+    },
+    {
+      "question": "What is the command to find the network name of a Docker container?",
+      "anchor": "find-your-container-and-its-network"
+    },
+    {
+      "question": "How do I run Adminer to access my database?",
+      "anchor": "run-adminer"
+    },
+    {
+      "question": "What are the steps to connect pgadmin to a Docker database container?",
+      "anchor": "run-pgadmin"
+    },
+    {
+      "question": "How can I start phpmyadmin and access it through a web browser?",
+      "anchor": "run-phpmyadmin"
+    },
+    {
+      "question": "What is the purpose of using Adminer, pgadmin, or phpmyadmin to access Docker databases?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How do I retrieve the name of the server used by a Docker container?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some prerequisites for accessing Docker database containers using Adminer, pgadmin, or phpmyadmin?",
+      "anchor": "conclusion"
+    }
+  ]
+}

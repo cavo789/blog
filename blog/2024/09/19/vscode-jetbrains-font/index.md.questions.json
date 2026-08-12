@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:54:02.851Z",
+  "source": "index.md",
+  "sourceHash": "d2ef21e181617c8afd648241512c20f36874dc25",
+  "questions": [
+    {
+      "question": "How to install JetBrains Mono font in VSCode?",
+      "anchor": "why-this-font"
+    },
+    {
+      "question": "What are the benefits of using JetBrains Mono font?",
+      "anchor": ""
+    },
+    {
+      "question": "Why is JetBrains Mono font legible?",
+      "anchor": ""
+    },
+    {
+      "question": "How to configure VSCode to use JetBrains Mono font?",
+      "anchor": "install-jetbrains-mono-font"
+    },
+    {
+      "question": "What are some uses of the JetBrains Mono font?",
+      "anchor": "configure-vscode-to-use-jetbrains-mono-font"
+    },
+    {
+      "question": "Is JetBrains Mono font free for commercial use?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I install a Nerd Font variant of JetBrains Mono font?",
+      "anchor": "install-jetbrains-mono-font"
+    },
+    {
+      "question": "What are the advantages of using the JetBrains Mono font in VSCode?",
+      "anchor": "configure-vscode-to-use-jetbrains-mono-font"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:03:41.131Z",
+  "source": "index.md",
+  "sourceHash": "8a399745c677ad0b05c435d23eeb7f65a63da22c",
+  "questions": [
+    {
+      "question": "How do I install ripgrep on Ubuntu/WSL2?",
+      "anchor": "installation-on-ubuntu--wsl2"
+    },
+    {
+      "question": "What are some smart defaults of ripgrep?",
+      "anchor": "configuration--ripgreprc"
+    },
+    {
+      "question": "Why is ripgrep faster than traditional grep tools?",
+      "anchor": ""
+    },
+    {
+      "question": "How does ripgrep handle Unicode natively?",
+      "anchor": "zsh-setup--zshrc"
+    },
+    {
+      "question": "What are some configuration options for ripgrep?",
+      "anchor": "zsh-functions--zshfns"
+    },
+    {
+      "question": "How can I search hidden files in ripgrep?",
+      "anchor": "rgf--interactive-search-with-fzf"
+    },
+    {
+      "question": "What is the difference between grep and ripgrep?",
+      "anchor": "ripgrep-vs-grep--a-side-by-side-look"
+    },
+    {
+      "question": "How does ripgrep handle binary files?",
+      "anchor": "rgtodo--surface-all-technical-debt-at-once"
+    },
+    {
+      "question": "What are some real-world use cases of ripgrep?",
+      "anchor": "rgenv--track-down-environment-variable-usage"
+    },
+    {
+      "question": "How can I search multiple file types at once with ripgrep?",
+      "anchor": "real-world-use-cases"
+    }
+  ]
+}

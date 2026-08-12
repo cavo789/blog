@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:00:42.222Z",
+  "source": "index.md",
+  "sourceHash": "c42cccbd15d1772928d2f7ae9fc203d26c9a10b2",
+  "questions": [
+    {
+      "question": "What is a Quarto project?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I convert any Quarto project into a devcontainer?",
+      "anchor": "well-need-to-create-three-files"
+    },
+    {
+      "question": "What are the three files needed to create a Docker image for a Quarto project?",
+      "anchor": "extra-information-optional--skip-if-the-defaults-work-for-you"
+    },
+    {
+      "question": "Why is it important to install sudo during the creation of the Docker image?",
+      "anchor": "installation-of-sudo"
+    },
+    {
+      "question": "What is the purpose of the build arguments file in a Quarto project?",
+      "anchor": "build-arguments-optional--read-only-the-ones-you-need"
+    },
+    {
+      "question": "How do I install Chromium in a Quarto project's Docker image?",
+      "anchor": "installation-of-chromium"
+    },
+    {
+      "question": "What is pre-commit and how does it work with Quarto projects?",
+      "anchor": "what-is-pre-commit"
+    },
+    {
+      "question": "How can I create a devcontainer for my Quarto project?",
+      "anchor": "installation-of-pre-commit-hooks"
+    }
+  ]
+}

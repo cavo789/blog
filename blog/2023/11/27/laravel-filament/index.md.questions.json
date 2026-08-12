@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:44:25.859Z",
+  "source": "index.md",
+  "sourceHash": "6f41fc96bd4fe0744fce2afbebc8d4b40c98fb70",
+  "questions": [
+    {
+      "question": "What is Laravel Filament?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I use Laravel Filament for building admin interfaces?",
+      "anchor": ""
+    },
+    {
+      "question": "Is Laravel Filament a free alternative to Laravel Nova?",
+      "anchor": ""
+    },
+    {
+      "question": "What technologies does Laravel Filament use?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I see the benefits of using Laravel Filament for development?",
+      "anchor": ""
+    },
+    {
+      "question": "Where can I learn more about Laravel Filament?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some other articles related to Laravel Filament on this blog?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the difference between Laravel Filament and Laravel Nova?",
+      "anchor": ""
+    }
+  ]
+}

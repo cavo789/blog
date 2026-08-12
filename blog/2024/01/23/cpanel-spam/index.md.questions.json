@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:48:00.014Z",
+  "source": "index.md",
+  "sourceHash": "0fbd8d77bc923450b2d3b150fb787c303fe12747",
+  "questions": [
+    {
+      "question": "How do I blacklist and whitelist domains using cPanel's SpamAssassin?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the advanced method for directly editing the user_prefs file via FTP to manage SpamAssassin rules?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use cPanel's Spam filter and white list options to define email patterns for spam management?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the user_prefs file in SpamAssassin, and how do I manipulate its entries?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use FTP to directly edit the SpamAssassin rules on my host company's server?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some tips for fighting spam directly at my host company, and why is this effective?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I automate the generation of SpamAssassin rules using GitHub Actions?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some alternative methods to directly edit the SpamAssassin rules on my host company's server besides FTP?",
+      "anchor": ""
+    }
+  ]
+}

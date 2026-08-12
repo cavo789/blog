@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:58:01.309Z",
+  "source": "index.md",
+  "sourceHash": "fd8a2ba500e0deff71530b730e14e55e73451f94",
+  "questions": [
+    {
+      "question": "How do I use Mustache templating in Quarto?",
+      "anchor": "create-some-files"
+    },
+    {
+      "question": "What is the quarto-partials extension for?",
+      "anchor": "lets-discover-the-basics"
+    },
+    {
+      "question": "How can I create a structured, repetitive documentation page using Mustache templating in Quarto?",
+      "anchor": "what-have-we-just-done"
+    },
+    {
+      "question": "What is the purpose of the quarto-partials extension in Quarto?",
+      "anchor": "my-use-case"
+    },
+    {
+      "question": "How can I use Mustache templating to include content from other pages or templates in my documentation using Quarto?",
+      "anchor": "testing-if-a-variable-is-defined-or-not-optional--skip-if-your-templates-dont-need-conditionals"
+    },
+    {
+      "question": "What is the syntax for including a variable in a Mustache template in Quarto?",
+      "anchor": "raw-contents-optional--skip-unless-a-rendered-value-looks-wrongly-escaped"
+    },
+    {
+      "question": "How can I add frontmatter to my documentation using Quarto?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "What is the purpose of Docker in this article?",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:50:30.026Z",
+  "source": "index.md",
+  "sourceHash": "ba5232d3566bbf76c1675bdd35258db59679989c",
+  "questions": [
+    {
+      "question": "What does syntax highlighting do in a Zsh console?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I install zsh-syntax-highlighting to enhance my Zsh console?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What is the purpose of the zsh-syntax-highlighting plugin in Zsh?",
+      "anchor": "what-syntax-highlighting-looks-like"
+    },
+    {
+      "question": "How does the zsh-syntax-highlighting plugin change the color of commands in my terminal?",
+      "anchor": "how-to-use-it"
+    },
+    {
+      "question": "What are some practical applications of syntax highlighting in a Zsh console?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How can I add zsh-syntax-highlighting to my Oh-My-Zsh setup?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What is the difference between zsh-syntax-highlighting and autosuggestions in Zsh consoles?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How does syntax highlighting help me debug my commands in a Zsh console?",
+      "anchor": "how-to-use-it"
+    }
+  ]
+}

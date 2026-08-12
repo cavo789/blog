@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:46:09.500Z",
+  "source": "index.md",
+  "sourceHash": "1065f22a812fa111c5caa2cc16aa6c8bb46c7a03",
+  "questions": [
+    {
+      "question": "How do I update php.ini inside a Docker container?",
+      "anchor": ""
+    },
+    {
+      "question": "What steps are required to override the maximum file upload size in a Dockerized PHP site?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I modify the php.ini file inside a Docker container using a compose.yaml volume mount?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the process for updating the php.ini file in a Dockerized PHP site and how do I handle common issues like maximum file upload size?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create a custom php.ini file to override settings inside a Docker container?",
+      "anchor": "step-two---create-your-own-phpini-file"
+    },
+    {
+      "question": "What is the purpose of creating a local php.ini file and mounting it over the container's config file in a Dockerized PHP site?",
+      "anchor": "step-one---update-your-yaml-file"
+    },
+    {
+      "question": "How do I restart my Docker container to apply changes made to the php.ini file?",
+      "anchor": "step-three---restart-your-container"
+    },
+    {
+      "question": "What is the difference between creating a local php.ini file and using a compose.yaml volume mount for overriding settings in a Dockerized PHP site?",
+      "anchor": "step-two---create-your-own-phpini-file"
+    }
+  ]
+}

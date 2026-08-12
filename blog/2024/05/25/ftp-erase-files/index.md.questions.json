@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:52:03.102Z",
+  "source": "index.md",
+  "sourceHash": "c84c47a5b4e0509ae7abf0bc79aa689e671f6a93",
+  "questions": [
+    {
+      "question": "How do I remove an entire website folder using FTP?",
+      "anchor": ""
+    },
+    {
+      "question": "What is a self-deleting PHP script for removing files and folders via FTP?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I remove a website from my FTP client without using SSH?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the self-deleting PHP script for removing files and folders via FTP?",
+      "anchor": ""
+    },
+    {
+      "question": "Is it safe to use a self-deleting PHP script to remove files and folders via FTP?",
+      "anchor": ""
+    },
+    {
+      "question": "How long does it take for the self-deleting PHP script to remove files and folders via FTP?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the difference between using a self-deleting PHP script and deleting files and folders via an FTP client?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I delete a website folder using a self-deleting PHP script via FTP?",
+      "anchor": ""
+    }
+  ]
+}

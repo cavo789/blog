@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T10:18:22.587Z",
+  "source": "index.md",
+  "sourceHash": "f37177bebeb09da0a3a72d8af2e62a9c39f51123",
+  "questions": [
+    {
+      "question": "How do I use the ProjectSetup component in my Docusaurus blog posts?",
+      "anchor": "seeing-it-work"
+    },
+    {
+      "question": "What are the core features of the ProjectSetup component?",
+      "anchor": "what-is-projectsetup"
+    },
+    {
+      "question": "How does the ProjectSetup component generate a shell script for setting up the project?",
+      "anchor": "core-features"
+    },
+    {
+      "question": "What is the purpose of the LogoIcon and CodeSnippet components in the ProjectSetup component?",
+      "anchor": "dependencies"
+    },
+    {
+      "question": "How can I download the entire project as a ZIP file using the ProjectSetup component?",
+      "anchor": "installing-the-rest"
+    },
+    {
+      "question": "What are some post-installation guidelines that can be added to the ProjectSetup component?",
+      "anchor": "1-installing-snippet"
+    },
+    {
+      "question": "How does the ProjectSetup component handle file content and rendering in Markdown files?",
+      "anchor": "2-installing-projectsetup"
+    },
+    {
+      "question": "What are some dependencies required for using the ProjectSetup component in a Docusaurus project?",
+      "anchor": "3-the-project_setup-help-page"
+    }
+  ]
+}

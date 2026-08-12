@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:51:36.000Z",
+  "source": "index.md",
+  "sourceHash": "a67b3c98db51a060f3096ec5ed937f6e381b81fc",
+  "questions": [
+    {
+      "question": "What are the benefits of using logging features in Bash scripts?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I add logging to my Bash script?",
+      "anchor": "the-result"
+    },
+    {
+      "question": "What is a full function call trace in Bash logging?",
+      "anchor": "trace"
+    },
+    {
+      "question": "Where should I include the log helper file in my script?",
+      "anchor": "your-script"
+    },
+    {
+      "question": "How can I choose not to display the log automatically?",
+      "anchor": "the-log-helper"
+    },
+    {
+      "question": "What is a reusable Bash library for adding logging features?",
+      "anchor": "the-result"
+    },
+    {
+      "question": "How does the log helper file produce trace and log files?",
+      "anchor": ""
+    },
+    {
+      "question": "When should I implement logging in my Bash script?",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:52:54.861Z",
+  "source": "index.md",
+  "sourceHash": "45bd42d68cd0c6032c2fb4a2b9ae848595b9e940",
+  "questions": [
+    {
+      "question": "What is eza? What does it do?",
+      "anchor": "result"
+    },
+    {
+      "question": "How can I install eza on my Linux system?",
+      "anchor": "install-eza"
+    },
+    {
+      "question": "What are the benefits of using eza over the traditional ls command?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the syntax for setting up an alias for eza on my Linux system?",
+      "anchor": "install-eza"
+    },
+    {
+      "question": "How can I customize the appearance of the file listing with eza?",
+      "anchor": "result"
+    },
+    {
+      "question": "What is the difference between exa and eza?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some common flags used with eza for file listing?",
+      "anchor": "result"
+    },
+    {
+      "question": "How can I set up a default alias for eza on my Linux system?",
+      "anchor": "install-eza"
+    }
+  ]
+}

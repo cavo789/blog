@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:03:35.948Z",
+  "source": "index.md",
+  "sourceHash": "5fc20d2b44bbe75f28062d3ef6f8606e544957ff",
+  "questions": [
+    {
+      "question": "How do I use git worktree to manage multiple branches simultaneously?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of using git worktree over stashing in a hotfix scenario?",
+      "anchor": "the-basic-commands"
+    },
+    {
+      "question": "How can I add a new branch to a worktree and check it out at the same time?",
+      "anchor": "what-git-worktree-does"
+    },
+    {
+      "question": "What happens if there is a conflict when working with multiple branches using git worktree?",
+      "anchor": "the-basic-commands"
+    },
+    {
+      "question": "How can I list all the worktrees currently checked out in my repository?",
+      "anchor": "add-a-worktree"
+    },
+    {
+      "question": "What are some practical tips for managing worktrees effectively?",
+      "anchor": "practical-tips"
+    },
+    {
+      "question": "What is the purpose of a git worktree and how does it differ from a branch?",
+      "anchor": "what-git-worktree-does"
+    },
+    {
+      "question": "How can I remove a worktree from my repository and what happens to the associated branch?",
+      "anchor": "list-all-worktrees"
+    },
+    {
+      "question": "What is the difference between a git stash and a git worktree in terms of their functionality?",
+      "anchor": "the-basic-commands"
+    },
+    {
+      "question": "How can I navigate between different worktrees using a ZSH function?",
+      "anchor": "a-zsh-function-to-navigate-between-worktrees"
+    },
+    {
+      "question": "What is the name convention for worktrees and how should it be used?",
+      "anchor": "name-worktrees-consistently"
+    },
+    {
+      "question": "How can I use git worktree with Visual Studio Code to manage multiple branches effectively?",
+      "anchor": "prune-stale-worktrees"
+    }
+  ]
+}

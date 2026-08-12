@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:46:19.537Z",
+  "source": "index.md",
+  "sourceHash": "23e85d5de3e5f2d985b84cd50ad30912fab64ee7",
+  "questions": [
+    {
+      "question": "How do I use conditional display in Quarto?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the different output formats supported by Quarto's conditional display features?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I control what content appears in different output formats using Quarto's conditional display?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the syntax for creating a conditional block in Quarto?",
+      "anchor": "content-visible-when"
+    },
+    {
+      "question": "How do I use the content-visible filter in Quarto?",
+      "anchor": "content-visible-when"
+    },
+    {
+      "question": "How can I use the content-hidden filter in Quarto?",
+      "anchor": "content-visible-when"
+    },
+    {
+      "question": "What are some examples of how to use conditional display in different output formats?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the Docker image with Quarto mentioned in this article?",
+      "anchor": ""
+    }
+  ]
+}

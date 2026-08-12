@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:01:29.056Z",
+  "source": "index.md",
+  "sourceHash": "14df4ef2b3329fac24c086fd10d6fdf62f50a643",
+  "questions": [
+    {
+      "question": "What is remote development with VSCode?",
+      "anchor": ""
+    },
+    {
+      "question": "How does SSH Remote - SSH extension work in VS Code?",
+      "anchor": "the-result"
+    },
+    {
+      "question": "Why use the Remote - SSH extension for VS Code development?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the installation process for simulating a server locally with Docker in VS Code?",
+      "anchor": "installation--simulate-a-server-locally-with-docker"
+    },
+    {
+      "question": "How do I create a Docker container to act as an SSH server in VS Code?",
+      "anchor": "create-the-docker-container-that-will-act-as-our-ssh-server"
+    },
+    {
+      "question": "What are some common pitfalls when using the Remote - SSH extension for VS Code development?",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "How can I test my Docker container to ensure it's working correctly with the Remote - SSH extension in VS Code?",
+      "anchor": "the-remote---ssh-extension"
+    },
+    {
+      "question": "What are some additional demos or examples of using the Remote - SSH extension in VS Code?",
+      "anchor": "repeat-on-a-real-production-server"
+    }
+  ]
+}

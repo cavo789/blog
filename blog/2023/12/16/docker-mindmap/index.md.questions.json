@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:45:44.397Z",
+  "source": "index.md",
+  "sourceHash": "1cc35680069f45971ed11e279b5796cdeb927e94",
+  "questions": [
+    {
+      "question": "How can I create an interactive SVG mind map using Markmap?",
+      "anchor": ""
+    },
+    {
+      "question": "What is a Markdown outline and how does it relate to creating a mind map?",
+      "anchor": "and-here-is-the-text-that-produced-it"
+    },
+    {
+      "question": "How do I create an SVG mind map using Markmap without installing anything on my machine?",
+      "anchor": "doing-it-on-your-machine"
+    },
+    {
+      "question": "What is the single command to convert a Markdown file into an HTML page with an interactive SVG mind map?",
+      "anchor": "without-docker-in-your-browser"
+    },
+    {
+      "question": "How can I open and view the generated SVG mind map in my browser?",
+      "anchor": "go-further"
+    },
+    {
+      "question": "What are some additional configuration items that can be added to a Markdown document for customizing the appearance of the mind map?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "What are two follow-up articles on creating more attractive and polished mind maps using Markmap and Quarto?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I create an interactive SVG mind map using Markmap without installing anything on my machine?",
+      "anchor": "doing-it-on-your-machine"
+    }
+  ]
+}

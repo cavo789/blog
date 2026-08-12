@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:53:28.048Z",
+  "source": "index.md",
+  "sourceHash": "495313d9b207a81f36bb820dd18ce8f1c23705f4",
+  "questions": [
+    {
+      "question": "How do I connect to an SFTP server using WinSCP from VBA?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to upload files securely using WinSCP in VBA?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I handle errors during file transfers with WinSCP in VBA?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of using WinSCP's .NET/COM library for VBA automation?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I download files from a remote server using WinSCP in VBA?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some alternative methods to automate file transfers with WinSCP besides VBA?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use WinSCP's scripting language for simple file transfers?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some examples of using WinSCP in Excel to automate file transfers?",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:00:27.632Z",
+  "source": "index.md",
+  "sourceHash": "1fd8df2b1a969e08491dab94b1828f5aa4ece685",
+  "questions": [
+    {
+      "question": "How do I set up a clean separation of environments in Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the difference between a production image and a devcontainer image?",
+      "anchor": "what-does-a-perfect-separation-of-environments-mean"
+    },
+    {
+      "question": "What are some best practices for designing a clean Docker image for production?",
+      "anchor": "the-result"
+    },
+    {
+      "question": "How can I create a minimal, secure production image using Docker?",
+      "anchor": "step-1---we-have-to-create-the-production-docker-image"
+    },
+    {
+      "question": "What is the purpose of creating a devcontainer image and how does it relate to the production image?",
+      "anchor": "lets-create-our-production-files"
+    },
+    {
+      "question": "How do I create a user for file synchronization in a Docker container?",
+      "anchor": "creating-the-docker-production-image"
+    },
+    {
+      "question": "What are some examples of development tools that should not be included in the production image?",
+      "anchor": "running-a-production-container"
+    },
+    {
+      "question": "How can I create a lightweight and secure production environment using Docker?",
+      "anchor": "and-just-to-be-sure-checking-who-is-the-current-user-for-prod"
+    },
+    {
+      "question": "What are some best practices for designing a clean devcontainer image?",
+      "anchor": "step-2---override-or-extend-the-production-image-and-get-a-devcontainer-ready-one"
+    },
+    {
+      "question": "How do I extend the production image to create a devcontainer with development tools and configurations?",
+      "anchor": "lets-create-our-devcontainer-files"
+    },
+    {
+      "question": "What are some examples of configuration items that should be added to the devcontainer image?",
+      "anchor": "creating-the-devcontainer-image"
+    },
+    {
+      "question": "How can I create a Dockerfile for both the production and devcontainer images?",
+      "anchor": "opening-the-container-using-vscode"
+    }
+  ]
+}

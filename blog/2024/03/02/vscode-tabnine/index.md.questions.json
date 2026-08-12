@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:49:46.316Z",
+  "source": "index.md",
+  "sourceHash": "b96eb6503c3f3d50342db038638d72289e394643",
+  "questions": [
+    {
+      "question": "What happened to Tabnine's free tier?",
+      "anchor": ""
+    },
+    {
+      "question": "When did Tabnine stop offering its individual Dev plan?",
+      "anchor": ""
+    }
+  ]
+}

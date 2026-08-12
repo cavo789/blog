@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T06:47:55.421Z",
+  "source": "index.md",
+  "sourceHash": "8cf2263378d4a3187a50f7f23499a74e562f5ce5",
+  "questions": [
+    {
+      "question": "How do I enable code folding in VSCode Markdown?",
+      "anchor": ""
+    },
+    {
+      "question": "Why might code folding not be working in VSCode's Markdown editor?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the built-in extension that powers code folding in VSCode Markdown?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I enable code blocks and headings folding in VSCode's Markdown editor?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of using code folding in VSCode's Markdown editor?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I troubleshoot why code folding is not working in VSCode's Markdown editor?",
+      "anchor": ""
+    }
+  ]
+}

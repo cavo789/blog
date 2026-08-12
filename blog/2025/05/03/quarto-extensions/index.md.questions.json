@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:57:50.391Z",
+  "source": "index.md",
+  "sourceHash": "4cecaa170b84877591c1d7e694610aab4bc5c3c8",
+  "questions": [
+    {
+      "question": "What are some essential Quarto filters for partial content templating?",
+      "anchor": "gadenbuiequarto-partials"
+    },
+    {
+      "question": "How can I embed Font Awesome icons in my Quarto documents?",
+      "anchor": "example"
+    },
+    {
+      "question": "What is the purpose of including external code files in Quarto documents?",
+      "anchor": "quarto-extfontawesome"
+    },
+    {
+      "question": "How does the search-replace macro work in Quarto documents?",
+      "anchor": "quarto-extinclude-code-files"
+    },
+    {
+      "question": "What is the revealjs slideshow feature provided by shafayetShafee/code-fullscreen?",
+      "anchor": "quarto-extsearch-replace"
+    },
+    {
+      "question": "What are some common use cases for Quarto extensions in documentation workflows?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I create page templates and inject specific content using gadenbuie/quarto-partials?",
+      "anchor": "gadenbuiequarto-partials"
+    },
+    {
+      "question": "What are some examples of how to use Font Awesome icons in Quarto documents?",
+      "anchor": "example"
+    },
+    {
+      "question": "How can I include external code files in my Quarto documents?",
+      "anchor": "quarto-extfontawesome"
+    },
+    {
+      "question": "What are some common search-replace macros used in Quarto documents?",
+      "anchor": "quarto-extinclude-code-files"
+    }
+  ]
+}

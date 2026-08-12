@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:52:41.181Z",
+  "source": "index.md",
+  "sourceHash": "11427762421c417d63806f237419f5900793f855",
+  "questions": [
+    {
+      "question": "How do I check if a file exists or not using Makefile?",
+      "anchor": "how-to-check-if-a-file-exists-or-not"
+    },
+    {
+      "question": "What is the syntax for checking if a folder exists in a Makefile?",
+      "anchor": "how-to-check-if-a-folder-exists-or-not"
+    },
+    {
+      "question": "How can I run dependent targets in a Makefile?",
+      "anchor": "running-dependent-targets"
+    },
+    {
+      "question": "What is the command to stop the job if a target fails in a Makefile?",
+      "anchor": "stop-the-job-if-a-target-fails"
+    },
+    {
+      "question": "How do I use shell find option to get all dependencies in a Makefile?",
+      "anchor": "using-shell-find-option-to-get-all-dependencies"
+    },
+    {
+      "question": "How can I avoid echoing the command in a Makefile?",
+      "anchor": "dont-echo-the-command"
+    },
+    {
+      "question": "What is the syntax for conditional statements in a Makefile?",
+      "anchor": "using-conditional-statements"
+    },
+    {
+      "question": "How do I ignore errors in a Makefile?",
+      "anchor": "ignore-error"
+    },
+    {
+      "question": "How can I ensure that I'm using Bash in a Makefile?",
+      "anchor": "make-sure-youre-using-bash"
+    },
+    {
+      "question": "What is the default target in a Makefile and how do I set it?",
+      "anchor": "set-the-default-target"
+    },
+    {
+      "question": "How can I perform substitution in a Makefile?",
+      "anchor": "substitution"
+    }
+  ]
+}

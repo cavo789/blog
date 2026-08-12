@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:44:43.935Z",
+  "source": "index.md",
+  "sourceHash": "e54a6f1189f28b09ebd1c4ea74e2c687f8d7d7d1",
+  "questions": [
+    {
+      "question": "How do you compile and run a Java application using Docker?",
+      "anchor": "two-commands-and-java-runs"
+    },
+    {
+      "question": "What are the steps to set up a Java development environment quickly without local installation?",
+      "anchor": ""
+    },
+    {
+      "question": "Why does the Docker image already ship the full JDK, so javac and java are there in the exact version the image tag names?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do you share your current folder with a folder called /app in the Docker container?",
+      "anchor": "the-source"
+    },
+    {
+      "question": "What is the purpose of the -u 1000:1000 flag when running a Docker container?",
+      "anchor": "under-the-hood-the-docker-run-flags-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "How do you use Docker to call a REST API from Java and print the JSON response?",
+      "anchor": "a-slightly-more-difficult-example-calling-a-rest-api"
+    },
+    {
+      "question": "What are some other languages you've played with using the same 'zero local install' Docker approach as this article?",
+      "anchor": "conclusion"
+    }
+  ]
+}

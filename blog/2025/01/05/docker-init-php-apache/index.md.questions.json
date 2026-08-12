@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:56:21.357Z",
+  "source": "index.md",
+  "sourceHash": "c10757aa7401d06bc22bbe97f8ed9dc25ad71199",
+  "questions": [
+    {
+      "question": "How can I quickly dockerize my PHP application using Docker init?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to use Docker init for a PHP application?",
+      "anchor": "get-some-scripts"
+    },
+    {
+      "question": "How does Docker init detect the presence of a PHP file?",
+      "anchor": "docker-init"
+    },
+    {
+      "question": "What is the purpose of the .dockerignore file in Docker?",
+      "anchor": "lets-take-a-look-on-created-files"
+    },
+    {
+      "question": "What are the key features of the compose.yaml file in Docker?",
+      "anchor": "dockerignore"
+    },
+    {
+      "question": "How do I use the Dockerfile to create a PHP application container?",
+      "anchor": "composeyaml"
+    },
+    {
+      "question": "What is the role of PHP with Apache in Docker init?",
+      "anchor": "dockerfile"
+    },
+    {
+      "question": "How can I specify which port to use for my PHP application when using Docker init?",
+      "anchor": "readmedockermd"
+    }
+  ]
+}

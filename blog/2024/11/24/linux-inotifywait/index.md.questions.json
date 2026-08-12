@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:55:18.617Z",
+  "source": "index.md",
+  "sourceHash": "3b0a71aa23154913aebfca066317354f1c85c5a4",
+  "questions": [
+    {
+      "question": "How do I use inotifywait to monitor a directory for newly created files and get a running count?",
+      "anchor": "running-the-scripts"
+    },
+    {
+      "question": "What is the purpose of using inotifywait in this article, and how does it differ from other monitoring tools?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I set up a demo environment for running the file-generator script and monitor.sh script?",
+      "anchor": "setting-up-the-demo-environment-optional--skip-if-you-already-have-python-and-a-folder-to-watch"
+    },
+    {
+      "question": "What is the Python script used in this article, and how does it generate PDF files?",
+      "anchor": "create-a-sample-python-script"
+    },
+    {
+      "question": "How do I create a monitor.sh script that uses inotifywait to count newly created files in a directory?",
+      "anchor": "creating-the-monitorsh-script"
+    },
+    {
+      "question": "What is the difference between using inotifywait and other monitoring tools for tracking file creation?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I install inotify on my system if it's not already installed?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "What are some alternative methods to track file creation besides using inotifywait?",
+      "anchor": ""
+    }
+  ]
+}

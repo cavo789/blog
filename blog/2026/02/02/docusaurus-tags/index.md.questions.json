@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:01:48.428Z",
+  "source": "index.md",
+  "sourceHash": "65503e73ee8b32e370e2adcb0a8a1c87e4eb8689",
+  "questions": [
+    {
+      "question": "How do I automate tag management in Docusaurus using a Python script?",
+      "anchor": "seeing-the-suggestions"
+    },
+    {
+      "question": "What are smart suggestions provided by the tag manager script for cleaning up tags?",
+      "anchor": "the-solution-a-smart-tag-manager"
+    },
+    {
+      "question": "How can I run the tag management script using Docker and what command is used to list all tags?",
+      "anchor": "smart-suggestions"
+    },
+    {
+      "question": "What are the three main functionalities of the tag manager script?",
+      "anchor": "how-to-run-it-docker-first"
+    },
+    {
+      "question": "How can I rename or delete tags safely using the tag management script?",
+      "anchor": "the-script"
+    },
+    {
+      "question": "What is the Docker image used to run the tag management script?",
+      "anchor": "more-examples"
+    },
+    {
+      "question": "How can I configure a special file in Docusaurus to enforce stricter tag usage policies?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "What are the steps involved in running the Docker container for the tag management script?",
+      "anchor": "smart-suggestions"
+    },
+    {
+      "question": "How can I delete a specific tag using the tag management script?",
+      "anchor": "the-script"
+    }
+  ]
+}

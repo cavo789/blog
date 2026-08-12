@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:57:34.317Z",
+  "source": "index.md",
+  "sourceHash": "869c9ac44a56cc5cdd0e216f1213c841883a6a45",
+  "questions": [
+    {
+      "question": "How do I install Oracle REST Data Services (ORDS) in Docker?",
+      "anchor": "some-prerequisites"
+    },
+    {
+      "question": "What is the connection string required to configure ORDS?",
+      "anchor": "configure-the-connection-string"
+    },
+    {
+      "question": "How do I create an Oracle ORDS container without APEX installed?",
+      "anchor": "we-need-to-create-our-user-in-our-database"
+    },
+    {
+      "question": "What are the steps to map ports for ORDS in Docker?",
+      "anchor": "using-paging-filtering-and-ordering-options-on-the-querystring-optional--skip-if-the-default-endpoint-is-enough"
+    },
+    {
+      "question": "How do I create a volume for ORDS configuration files?",
+      "anchor": "create-a-volume-for-the-ords-configuration"
+    },
+    {
+      "question": "What is APEX and why don't we need it in this setup?",
+      "anchor": "create-the-container"
+    },
+    {
+      "question": "How do I configure the connection string for ORDS?",
+      "anchor": "configure-the-connection-string"
+    },
+    {
+      "question": "What are some prerequisites before setting up ORDS?",
+      "anchor": ""
+    }
+  ]
+}

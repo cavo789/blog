@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T06:47:40.031Z",
+  "source": "index.md",
+  "sourceHash": "f6278acf3016c129629984a5e1074daa58bbd3fb",
+  "questions": [
+    {
+      "question": "What is Docker used for?",
+      "anchor": "one-command-a-working-php-server"
+    },
+    {
+      "question": "Why are Docker images useful?",
+      "anchor": "why-docker-images"
+    },
+    {
+      "question": "How do I install Docker on Windows?",
+      "anchor": "setting-it-up"
+    },
+    {
+      "question": "What is the command to run a PHP+Apache server with Docker?",
+      "anchor": "creating-our-php-script"
+    },
+    {
+      "question": "How can I switch between PHP versions using Docker?",
+      "anchor": "changing-the-php-version-in-one-word"
+    },
+    {
+      "question": "What are some popular Docker images for running PHP applications?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "How do I create a PHP script inside a Docker container?",
+      "anchor": "conclusion"
+    }
+  ]
+}

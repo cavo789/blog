@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:46:44.648Z",
+  "source": "index.md",
+  "sourceHash": "f5fe360007d65e54e6ccd6f901df81cc8a1a9541",
+  "questions": [
+    {
+      "question": "How do I generate PHP documentation with Docker?",
+      "anchor": "one-command-a-full-documentation-website"
+    },
+    {
+      "question": "What is phpDocumentor?",
+      "anchor": "the-configuration-file"
+    },
+    {
+      "question": "How can I configure phpDocumentor to scan my codebase?",
+      "anchor": "the-configuration-file"
+    },
+    {
+      "question": "Where do the generated documentation files go?",
+      "anchor": "one-command-a-full-documentation-website"
+    },
+    {
+      "question": "Is there a specific configuration file required for phpDocumentor?",
+      "anchor": "the-configuration-file"
+    },
+    {
+      "question": "What is the purpose of the config file in phpDocumentor?",
+      "anchor": "the-configuration-file"
+    },
+    {
+      "question": "How do I access the generated documentation site on Windows using WSL2?",
+      "anchor": "one-command-a-full-documentation-website"
+    },
+    {
+      "question": "What are some common docblocks used in PHP codebases?",
+      "anchor": "conclusion"
+    }
+  ]
+}

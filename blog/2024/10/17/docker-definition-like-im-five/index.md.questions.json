@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:54:30.998Z",
+  "source": "index.md",
+  "sourceHash": "c81ff579a4f057c9cae93adafbbe9e13c3433423",
+  "questions": [
+    {
+      "question": "What is Docker used for?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I explain Docker to a non-technical audience?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you explain the culinary analogy used in this article about Docker?",
+      "anchor": "culinary-analogy"
+    },
+    {
+      "question": "What is the difference between Docker and virtual machines?",
+      "anchor": "lets-go-back-to-the-it-world"
+    },
+    {
+      "question": "How does Docker simplify the process of setting up a development environment?",
+      "anchor": "-and-docker"
+    },
+    {
+      "question": "Can you explain how Docker works with different operating systems?",
+      "anchor": "-and-to-an-example-such-as-joomla"
+    },
+    {
+      "question": "What are some examples of software that can be run using Docker?",
+      "anchor": "some-more-information"
+    },
+    {
+      "question": "How does Docker ensure that the same result is achieved every time a container is created?",
+      "anchor": "some-more-information"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:56:30.857Z",
+  "source": "index.md",
+  "sourceHash": "432d283fe4766c1d77356dd1d875d193babf5333",
+  "questions": [
+    {
+      "question": "How does php_grep work?",
+      "anchor": "php_grep"
+    },
+    {
+      "question": "What is php_grep and how does it work?",
+      "anchor": "php_grep"
+    },
+    {
+      "question": "Can you explain how to use php_grep for searching files on an FTP server?",
+      "anchor": "php_grep"
+    },
+    {
+      "question": "What are the benefits of using php_grep over WinSCP's built-in search functionality?",
+      "anchor": ""
+    },
+    {
+      "question": "How does php_grep compare to other FTP search tools?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some examples of how to use php_grep for searching specific file types?",
+      "anchor": "php_grep"
+    },
+    {
+      "question": "Can you provide a step-by-step guide on how to install and use php_grep on an FTP server?",
+      "anchor": "php_grep"
+    },
+    {
+      "question": "What are some common use cases for using php_grep in an FTP environment?",
+      "anchor": ""
+    }
+  ]
+}

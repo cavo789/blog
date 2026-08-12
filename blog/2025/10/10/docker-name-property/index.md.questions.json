@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:00:20.841Z",
+  "source": "index.md",
+  "sourceHash": "27f6a68ea5f3b8320a5c6ecb5ea582437e189777",
+  "questions": [
+    {
+      "question": "How do I organize Docker containers into groups using compose.yaml?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the name property in a Docker Compose file?",
+      "anchor": "the-name-property-in-the-composeyaml-file"
+    },
+    {
+      "question": "How can I group multiple tools together in Docker Desktop using compose.yaml?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some benefits of organizing Docker containers into groups using compose.yaml?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I convert Docker commands to a compose file?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the difference between the name property in a Docker Compose file and the -n flag with docker run?",
+      "anchor": "the-name-property-in-the-composeyaml-file"
+    },
+    {
+      "question": "How can I store files and volumes in different folders for better organization?",
+      "anchor": "tools-can-be-located-in-different-folders"
+    },
+    {
+      "question": "What are some tips for managing Docker containers using compose.yaml?",
+      "anchor": ""
+    }
+  ]
+}

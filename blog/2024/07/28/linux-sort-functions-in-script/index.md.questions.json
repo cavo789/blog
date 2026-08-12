@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:53:05.490Z",
+  "source": "index.md",
+  "sourceHash": "e1087aea4c4e5b862b336d917aac9ae88a837868",
+  "questions": [
+    {
+      "question": "How do I check if functions in my shell scripts are declared in alphabetical order?",
+      "anchor": ""
+    },
+    {
+      "question": "What is a Bash script that scans an entire folder and checks if functions are sorted alphabetically?",
+      "anchor": "get-the-list-of-functions-in-a-bash-script"
+    },
+    {
+      "question": "How can I create a simple Bash script to play with this blog post?",
+      "anchor": "result"
+    },
+    {
+      "question": "What is the command to get the list of functions declared in a Bash script?",
+      "anchor": "create-a-simple-bash-script-to-play-with-this-blog-post"
+    },
+    {
+      "question": "How do I sort the list of functions in the console?",
+      "anchor": "process-all-scripts-from-a-specific-folder"
+    },
+    {
+      "question": "How can I check if my Bash script is correctly sorted by its functions?",
+      "anchor": "get-the-list-of-functions-in-a-bash-script"
+    },
+    {
+      "question": "What is a script that scans each .sh file in a specific folder and checks if the functions are defined in alphabetical order?",
+      "anchor": "process-all-scripts-from-a-specific-folder"
+    },
+    {
+      "question": "How do I create a Bash script to scan an entire folder and check if functions are sorted alphabetically?",
+      "anchor": "get-the-list-of-functions-in-a-bash-script"
+    }
+  ]
+}

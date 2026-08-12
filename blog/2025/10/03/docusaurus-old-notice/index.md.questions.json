@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:00:16.155Z",
+  "source": "index.md",
+  "sourceHash": "163e42ef690c88b744fcbdbd57777b54fc2a90ed",
+  "questions": [
+    {
+      "question": "How do I use a Docusaurus component to alert readers about an old blog post?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the 'swizzle' method in Docusaurus and how can it be used?",
+      "anchor": "override-blogpostpage-template"
+    },
+    {
+      "question": "How do I customize the warning banner for older blog posts in Docusaurus?",
+      "anchor": "marking-a-reviewed-post"
+    },
+    {
+      "question": "What is the 'reviewed' field used for in a Docusaurus blog post and how does it affect the warning banner?",
+      "anchor": "marking-a-reviewed-post"
+    },
+    {
+      "question": "How can I position the warning banner before the content of an older blog post in Docusaurus?",
+      "anchor": "position-of-the-warning"
+    },
+    {
+      "question": "What is the 'img' tag behavior in Docusaurus and how does it differ for the first image of a post?",
+      "anchor": "position-of-the-warning"
+    },
+    {
+      "question": "How can I create a custom component in Docusaurus to alert readers about old blog posts?",
+      "anchor": "create-the-component"
+    },
+    {
+      "question": "What is the process for overriding the BlogPostPage template in Docusaurus and how do I inject my custom component?",
+      "anchor": "override-blogpostpage-template"
+    }
+  ]
+}

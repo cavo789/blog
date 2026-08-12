@@ -214,6 +214,20 @@ function eli5() {
 }
 
 # @cat Content
+# @cmd faq
+# @desc Find and prune bad "Ask my blog" questions (f.i. 'faq dinosaur' will retrieve questions and will prompt for deletion)
+function faq() {
+    node scripts/faq-edit.mjs "$@"
+}
+
+# @cat Content
+# @cmd questions
+# @desc Generate "Ask my blog" questions (one article, or --all for the whole corpus; requires Ollama)
+function questions() {
+    node scripts/generate-questions.mjs "$@"
+}
+
+# @cat Content
 # @cmd ai-index
 # @desc Push new/modified posts to the AnythingLLM 'blog' workspace
 function ai-index() {
@@ -276,6 +290,8 @@ export -f codelint
 export -f spellcheck
 export -f tags
 export -f eli5
+export -f faq
+export -f questions
 export -f ai-index
 export -f ai-search
 export -f welcome

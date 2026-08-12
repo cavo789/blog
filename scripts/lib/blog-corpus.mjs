@@ -223,6 +223,7 @@ export function readPost(file, { skipDrafts = true } = {}) {
   return {
     file,
     title: data.title,
+    description: data.description ?? "",
     slug,
     permalink: `/blog/${slug.replace(/^\//, "")}`,
     mainTag: data.mainTag ?? null,

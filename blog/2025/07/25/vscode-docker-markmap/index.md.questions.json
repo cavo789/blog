@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:58:55.342Z",
+  "source": "index.md",
+  "sourceHash": "9c4b91fae3ca9a8f579b005c0cb504454ff7a8c4",
+  "questions": [
+    {
+      "question": "How do I create an attractive mind map using Markmap and Quarto?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some ways to turn text into a diagram on this blog?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I render Markdown content as an HTML page using Quarto?",
+      "anchor": "rendering-as-an-html-page-using-quarto"
+    },
+    {
+      "question": "What are the steps to create an attractive mind map using Markmap and Quarto?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I customize the appearance of a mind map using VS Code?",
+      "anchor": "installing-the-vscode-extension"
+    },
+    {
+      "question": "What are some other ways to turn text into a diagram on this blog besides Markmap and Quarto?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I render Markdown content as an HTML page using Quarto without installing any tools locally?",
+      "anchor": "rendering-as-an-html-page-using-quarto"
+    },
+    {
+      "question": "What are the benefits of rendering Markdown content as a web page using Quarto?",
+      "anchor": "rendering-as-an-html-page-using-quarto"
+    }
+  ]
+}

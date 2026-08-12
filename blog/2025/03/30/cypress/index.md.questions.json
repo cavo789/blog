@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:57:22.979Z",
+  "source": "index.md",
+  "sourceHash": "8d1d4e387f22acc1d70a3bba2afcfb7b3d6626f8",
+  "questions": [
+    {
+      "question": "What tool should I use for functional testing?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Cypress help with front-end functional testing?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the key features of Cypress?",
+      "anchor": "synchronize-files-between-our-host-and-the-container"
+    },
+    {
+      "question": "Can you explain how to set up a new Cypress project?",
+      "anchor": "lets-create-some-files-and-run-a-first-test"
+    },
+    {
+      "question": "How do I write your first tests with Cypress?",
+      "anchor": "lets-create-some-files-and-run-a-first-test"
+    },
+    {
+      "question": "What is the purpose of running Cypress in a Docker container?",
+      "anchor": "synchronize-files-between-our-host-and-the-container"
+    },
+    {
+      "question": "How can I synchronize local test files with the container using Cypress?",
+      "anchor": "synchronize-files-between-our-host-and-the-container"
+    },
+    {
+      "question": "What are some best practices for capturing error screenshots with Cypress?",
+      "anchor": "retrieve-screenshots"
+    }
+  ]
+}

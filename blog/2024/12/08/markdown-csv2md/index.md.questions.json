@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T06:43:17.866Z",
+  "source": "index.md",
+  "sourceHash": "85c4095b55b647f43a6c64ee4dddc9c2e89f6b98",
+  "questions": [
+    {
+      "question": "How do I convert CSV to Markdown tables?",
+      "anchor": ""
+    },
+    {
+      "question": "What is CSV2MD and how does it work?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you explain the different options for converting CSV to Markdown tables with CSV2MD?",
+      "anchor": "source-code"
+    },
+    {
+      "question": "How can I use CSV2MD to convert a CSV file to Markdown format?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of using CSV2MD for converting CSV to Markdown tables?",
+      "anchor": ""
+    },
+    {
+      "question": "Are there any alternatives to CSV2MD for converting CSV to Markdown tables?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I learn more about CSV2MD and its features?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some common use cases for converting CSV to Markdown tables using CSV2MD?",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:56:26.093Z",
+  "source": "index.md",
+  "sourceHash": "72e0f762a0a5f652297f80f2f0de61b527419c8f",
+  "questions": [
+    {
+      "question": "How do Git pre-commit hooks work to enforce code quality standards locally?",
+      "anchor": "the-result-a-commit-reformatted-before-it-even-happens"
+    },
+    {
+      "question": "What are some popular tools that build on top of Git pre-commit hooks for different programming languages?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How can I configure pre-commit hooks to enforce code quality standards in a Python project?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What are some common issues that Git pre-commit hooks can catch before committing?",
+      "anchor": "installing-pre-commit"
+    },
+    {
+      "question": "How do I manually fire a Git pre-commit hook to check for code quality standards?",
+      "anchor": "adding-a-configuration-file"
+    },
+    {
+      "question": "What are some best practices for using Git pre-commit hooks in a Python project?",
+      "anchor": "manually-fire-the-hook"
+    },
+    {
+      "question": "How can I find more pre-commit hooks and write my own if needed?",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "What is the purpose of the --no-verify flag in Git pre-commit hooks?",
+      "anchor": "install-hooks"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:51:06.265Z",
+  "source": "index.md",
+  "sourceHash": "cf516593fe09ff30e7414f979ce0db120e315ca2",
+  "questions": [
+    {
+      "question": "How does Quarto split long documents into smaller files?",
+      "anchor": "includes-tag"
+    },
+    {
+      "question": "What are some tools for using Mustache templating with Quarto?",
+      "anchor": "includes-tag"
+    },
+    {
+      "question": "How can I include multiple Markdown files in a Quarto document?",
+      "anchor": "result"
+    },
+    {
+      "question": "What is the syntax for including a file in a Quarto document?",
+      "anchor": "includes-tag"
+    },
+    {
+      "question": "How can I merge included files into a single document using Quarto?",
+      "anchor": "result"
+    },
+    {
+      "question": "What are some examples of how to use the includes short code in Quarto?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I run a Quarto Markdown document using Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some best practices for using the includes short code in Quarto documents?",
+      "anchor": ""
+    }
+  ]
+}

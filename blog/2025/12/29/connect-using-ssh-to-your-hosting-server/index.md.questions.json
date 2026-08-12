@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:01:24.222Z",
+  "source": "index.md",
+  "sourceHash": "a7ff8fd90e2c5653b9d78f276d2fcc397f67100f",
+  "questions": [
+    {
+      "question": "How do I connect to my hosting server using SSH?",
+      "anchor": ""
+    },
+    {
+      "question": "What is SSH and how does it work for connecting to a hosting server?",
+      "anchor": "the-result"
+    },
+    {
+      "question": "Why use SSH key-based authentication instead of password authentication?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I install and configure SSH on my local machine to connect to a hosting server?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What are the steps to create an SSH key pair and copy it to my hosting server?",
+      "anchor": "first-just-try-with-a-manual-ssh-connection"
+    },
+    {
+      "question": "How do I set up an alias in my local machine's configuration file to connect to my hosting server using SSH?",
+      "anchor": "create-an-ssh-key-to-connect-to-planethoster"
+    },
+    {
+      "question": "What are the benefits of using SSH key-based authentication for connecting to a hosting server?",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "How do I troubleshoot common issues when trying to connect to my hosting server using SSH?",
+      "anchor": "troubleshooting--tips"
+    }
+  ]
+}

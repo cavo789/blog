@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:44:53.763Z",
+  "source": "index.md",
+  "sourceHash": "7f8bdf8fae8a634ccf39b2b5c3e09e3226530c76",
+  "questions": [
+    {
+      "question": "How do I run a 'Hello, World!' program in MS-DOS using Docker?",
+      "anchor": "lets-play-in-ms-dos"
+    },
+    {
+      "question": "What is a TSR (Terminate and Stay Resident) program and how does it work?",
+      "anchor": ""
+    },
+    {
+      "question": "Can I still run legacy programs like TSRs on modern computers using Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the 'zero local install' approach when using Docker with Assembly programming languages?",
+      "anchor": "lets-play-in-ms-dos"
+    },
+    {
+      "question": "How can I compile Turbo Pascal sources from thirty years ago using Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some other programming languages I've played with using this zero local install approach with Docker?",
+      "anchor": "lets-play-in-ms-dos"
+    },
+    {
+      "question": "How do I run a 'Hello, World!' program in Linux using Docker?",
+      "anchor": "lets-play-in-ms-dos"
+    },
+    {
+      "question": "What is the Docker image used for running Assembly programs in MS-DOS and Linux?",
+      "anchor": "lets-play-in-ms-dos"
+    }
+  ]
+}

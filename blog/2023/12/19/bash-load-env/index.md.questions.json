@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:45:55.001Z",
+  "source": "index.md",
+  "sourceHash": "1f060dd284ca5e9aa253e0899b4263176f4de1ca",
+  "questions": [
+    {
+      "question": "How do I load environment variables from a .env file in Bash?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the correct way to load a .env file's variables into a Bash script's environment?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use an external configuration file in my Bash scripts to manage constants and reuse variables across applications like Laravel?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the best solution to avoid problems with spaces when loading environment variables from a .env file into a Bash script?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use source to load an external file's variables into my Bash script's environment?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some best practices for using environment files in Bash scripts?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I compare two .env files to spot the key variables that might have been forgotten?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some tools available for batch editing environment files in Bash scripts?",
+      "anchor": ""
+    }
+  ]
+}

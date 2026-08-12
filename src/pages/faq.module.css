@@ -1,0 +1,82 @@
+.page {
+  position: relative;
+  max-width: 860px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/*
+ * Sits in the gutter the centered .page already leaves empty, without taking part in its
+ * layout — an in-flow sibling (flex/grid column) would either shrink the content width or
+ * force the whole block off-center. Because .page is centered, the left gutter always
+ * equals the right one, even though only the left is used — so the breakpoint below must
+ * guarantee a gutter at least as wide as (image width + gap) on BOTH sides, or the image
+ * clips off-screen and forces a page-wide horizontal scrollbar.
+ *
+ * min viewport = content (860) + 2 * (image width + gap)
+ *              = 860 + 2 * (550 + 32) = 2024px, +~30px buffer for the scrollbar → 2056px.
+ * If you resize .marginImage again, recompute this breakpoint the same way.
+ */
+.marginImage {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  margin-right: 2rem;
+  width: 550px;
+  border-radius: 8px;
+  display: none;
+}
+
+@media (min-width: 2056px) {
+  .marginImage {
+    display: block;
+  }
+}
+
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.9rem;
+}
+
+.tocTitle {
+  margin-top: 2.5rem;
+}
+
+.toc {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.5rem;
+}
+
+.toc li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 6px;
+}
+
+.tocCount {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.empty {
+  margin-top: 2rem;
+  color: var(--ifm-color-emphasis-600);
+  font-style: italic;
+}

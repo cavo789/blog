@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T10:19:04.172Z",
+  "source": "index.md",
+  "sourceHash": "b8044a219e92fd152991299484e14d42b373d234",
+  "questions": [
+    {
+      "question": "How do I merge multiple CSV files into a single one using Pandas?",
+      "anchor": "the-result-five-years-of-salaries-one-file"
+    },
+    {
+      "question": "What is an outer join in the context of merging CSV files with Pandas?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "How can I handle mismatched records when merging multiple CSV files using Pandas?",
+      "anchor": "the-result-five-years-of-salaries-one-file"
+    },
+    {
+      "question": "What is the purpose of renaming columns before merging them in Pandas?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "How can I create a merged file from multiple yearly CSV files using Pandas?",
+      "anchor": "the-result-five-years-of-salaries-one-file"
+    },
+    {
+      "question": "What is the difference between an inner join and an outer join in Pandas when merging CSV files?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "How can I handle employees who joined or left partway through in a merged file using Pandas?",
+      "anchor": "the-result-five-years-of-salaries-one-file"
+    },
+    {
+      "question": "What is the purpose of the `csv to Markdown table converter` mentioned in the article?",
+      "anchor": "more-demos-the-merge-script-line-by-line"
+    }
+  ]
+}

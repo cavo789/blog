@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:59:59.387Z",
+  "source": "index.md",
+  "sourceHash": "6698c5ce0a4675cd5ada8e36af970a9b9deea972",
+  "questions": [
+    {
+      "question": "How do I create a Docusaurus remark plugin for replacing terms in my content?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the plugin and how does it work with Markdown files?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I add a custom Docusaurus remark plugin for replacing terms in my content?",
+      "anchor": "the-plugin"
+    },
+    {
+      "question": "What is the syntax of the search&replace plugin and how do I use it?",
+      "anchor": "adding-the-plugin-in-your-configuration"
+    },
+    {
+      "question": "How can I register the custom Docusaurus remark plugin in my Docusaurus configuration?",
+      "anchor": "adding-the-plugin-in-your-configuration"
+    },
+    {
+      "question": "What are the potential risks of using a search&replace plugin for replacing terms in my content?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I ensure that the search&replace plugin only replaces specific words and not other parts of the text?",
+      "anchor": "adding-the-plugin-in-your-configuration"
+    },
+    {
+      "question": "What is the difference between a remark plugin and a Docusaurus remark plugin?",
+      "anchor": "the-plugin"
+    }
+  ]
+}

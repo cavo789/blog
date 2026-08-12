@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:59:20.660Z",
+  "source": "index.md",
+  "sourceHash": "a120a992334be82d0707f48b65464fc75086a042",
+  "questions": [
+    {
+      "question": "How do I customize Docusaurus's image rendering process?",
+      "anchor": "1-creation-of-our-image-component"
+    },
+    {
+      "question": "What is a custom React component for handling images in Docusaurus?",
+      "anchor": "2-tell-docusaurus-about-our-component"
+    },
+    {
+      "question": "How can I add lazy loading to my Docusaurus image components?",
+      "anchor": "3-using-the-image-component"
+    },
+    {
+      "question": "How do I skip the first image in a blog post when using a custom React component for images?",
+      "anchor": "4-writing-and-registering-a-plugin-optional--only-if-you-have-hundreds-of-articles-like-me"
+    },
+    {
+      "question": "What is a plugin for Docusaurus that can intercept and replace Markdown image tags with custom components?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How do I create a custom React component to handle images in Docusaurus?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the Image plugin in Docusaurus?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I tell Docusaurus about my custom React component for handling images?",
+      "anchor": ""
+    }
+  ]
+}

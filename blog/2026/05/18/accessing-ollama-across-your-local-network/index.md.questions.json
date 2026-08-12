@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:03:02.843Z",
+  "source": "index.md",
+  "sourceHash": "b667323bdcf22a73fb7e6537d7ddadfa09161fa3",
+  "questions": [
+    {
+      "question": "How do I set up a dedicated Ollama server on my local network?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the process for finding your server's IP address?",
+      "anchor": "using-a-local-network"
+    },
+    {
+      "question": "How do I connect to my server from another computer using a local network?",
+      "anchor": "finding-your-servers-ip-address"
+    },
+    {
+      "question": "What are the steps to set up the client computer for accessing Ollama across your network?",
+      "anchor": "setting-up-the-client-computer"
+    },
+    {
+      "question": "How do I run Open WebUI on my server?",
+      "anchor": "running-open-webui"
+    },
+    {
+      "question": "What is the troubleshooting method for Docker containers when they can't access each other?",
+      "anchor": "double-checking-the-connection"
+    },
+    {
+      "question": "How do I verify connectivity between your client and server using a networking command?",
+      "anchor": "configure-your-code-editor-vscode"
+    },
+    {
+      "question": "What are the steps to configure your code editor (VSCode) for accessing Ollama as a backend?",
+      "anchor": "conclusion"
+    }
+  ]
+}

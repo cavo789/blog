@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T09:00:47.474Z",
+  "source": "index.md",
+  "sourceHash": "418f51fe63aff62b499daea50c97f9ded035a5f5",
+  "questions": [
+    {
+      "question": "How do I create a single Docker image for production builds with Docusaurus?",
+      "anchor": "create-the-base-docker-image"
+    },
+    {
+      "question": "What is DevContainers and how does it enhance the development experience with VS Code?",
+      "anchor": "using-devcontainers-for-development"
+    },
+    {
+      "question": "How do I set up a .devcontainer folder to use DevContainers for Docusaurus development?",
+      "anchor": "create-the-devcontainer-folder"
+    },
+    {
+      "question": "What commands are used to build and run the production Docker image for Docusaurus?",
+      "anchor": "build-and-run-the-production-image"
+    },
+    {
+      "question": "What is the purpose of using a base Docker image for Docusaurus development?",
+      "anchor": "create-the-base-docker-image"
+    },
+    {
+      "question": "How do I install LanguageTool in VSCode to improve content quality with Docusaurus?",
+      "anchor": "using-languagetool-in-vscode"
+    },
+    {
+      "question": "What is Code Spell Checker and how can it be integrated into the development environment for Docusaurus?",
+      "anchor": "code-spell-checker"
+    },
+    {
+      "question": "How do I set up Markdown linting in VSCode for Docusaurus projects?",
+      "anchor": "markdown-lint"
+    }
+  ]
+}

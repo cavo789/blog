@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:56:37.514Z",
+  "source": "index.md",
+  "sourceHash": "91d108f11f0f3bc41a3998eafa97254f0984bd72",
+  "questions": [
+    {
+      "question": "How do I install Git in a Docker container?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the purpose of mounting my host's SSH key into a Docker container?",
+      "anchor": "running-it"
+    },
+    {
+      "question": "Can I run Git commands directly inside a Docker container without exiting it?",
+      "anchor": "sharing-your-configuration"
+    },
+    {
+      "question": "How do I share my host's Git configuration with a running Docker container?",
+      "anchor": "share-your-credentials"
+    },
+    {
+      "question": "What is the difference between mounting SSH keys during build and runtime in Docker containers?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How do I configure Git to use my host's SSH key inside a Docker container?",
+      "anchor": ""
+    },
+    {
+      "question": "Can I run Git commands from within a Docker container without exiting it?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of sharing my host's configuration file with a running Docker container?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I share my host's SSH key with a running Docker container?",
+      "anchor": ""
+    }
+  ]
+}

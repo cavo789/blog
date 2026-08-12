@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:44:12.615Z",
+  "source": "index.md",
+  "sourceHash": "8f8dfde29bcbc3dc8570420004f9ec0afc63c28f",
+  "questions": [
+    {
+      "question": "What are Docker volumes and why use them?",
+      "anchor": "what-a-volume-changes"
+    },
+    {
+      "question": "How do I create a Docker volume to persist data?",
+      "anchor": "volumes-managed-by-docker"
+    },
+    {
+      "question": "What is the difference between Docker-managed volumes and mounted volumes?",
+      "anchor": "mounted-volumes"
+    },
+    {
+      "question": "Where are Docker-managed volumes stored by default?",
+      "anchor": "location-of-the-volumes-managed-by-docker"
+    },
+    {
+      "question": "How can I access files in a Docker volume using Docker Desktop or the VSCode Docker extension?",
+      "anchor": "accessing-files-in-the-volume-using-docker-desktop"
+    },
+    {
+      "question": "What are some common use cases for Docker volumes?",
+      "anchor": "getting-your-own-files-back-from-a-mounted-volume"
+    },
+    {
+      "question": "How do I share data between a running Docker container and my computer?",
+      "anchor": "accessing-files-in-the-volume-using-vscode"
+    },
+    {
+      "question": "What is the difference between no volume at all, Docker-managed volumes, and mounted volumes?",
+      "anchor": "why-it-works"
+    }
+  ]
+}

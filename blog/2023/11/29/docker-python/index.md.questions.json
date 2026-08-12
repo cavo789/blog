@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:44:48.607Z",
+  "source": "index.md",
+  "sourceHash": "0b6db78709900fcc40cc8812cc6631773e539500",
+  "questions": [
+    {
+      "question": "How do you run Python scripts using Docker containers?",
+      "anchor": ""
+    },
+    {
+      "question": "What is a container in Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "Why use Docker for running Python scripts?",
+      "anchor": ""
+    },
+    {
+      "question": "How do you create and run a simple 'Hello World' script with Docker?",
+      "anchor": "welcome-to-the-world"
+    },
+    {
+      "question": "What is the difference between `docker run` and `docker exec`?",
+      "anchor": ""
+    },
+    {
+      "question": "How do you share files between your host machine and a Docker container?",
+      "anchor": "welcome-to-the-world"
+    },
+    {
+      "question": "What is the purpose of using a volume in Docker?",
+      "anchor": "welcome-to-the-world"
+    },
+    {
+      "question": "What are some real-world applications of running Python scripts with Docker?",
+      "anchor": ""
+    }
+  ]
+}

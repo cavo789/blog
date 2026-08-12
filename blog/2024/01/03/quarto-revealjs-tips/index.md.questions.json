@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:47:19.963Z",
+  "source": "index.md",
+  "sourceHash": "8d4bca9c952c25df31b09e76e335329d8accac1e",
+  "questions": [
+    {
+      "question": "Quarto reveal.js title slide",
+      "anchor": "working-with-slides"
+    },
+    {
+      "question": "Custom logo positioning with CSS/JS",
+      "anchor": "create-a-title-slide"
+    },
+    {
+      "question": "Adding background image to a slide",
+      "anchor": "display-a-logo-top-left-on-the-first-slide-then-bottom-right"
+    },
+    {
+      "question": "Slide-level configuration",
+      "anchor": "adding-a-background-image-to-a-slide"
+    },
+    {
+      "question": "Using emoji in Quarto reveal.js presentations",
+      "anchor": "slide-level"
+    },
+    {
+      "question": "Big text class in Quarto reveal.js",
+      "anchor": "using-emoji"
+    },
+    {
+      "question": "Stretch class for Quarto reveal.js slides",
+      "anchor": "big-text"
+    },
+    {
+      "question": "Show image on key press in Quarto reveal.js",
+      "anchor": "stretch"
+    }
+  ]
+}

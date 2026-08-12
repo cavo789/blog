@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:58:09.767Z",
+  "source": "index.md",
+  "sourceHash": "136993811fcf984353bf5ba619b70a1defc3aef9",
+  "questions": [
+    {
+      "question": "How does Excel Formula Beautifier work?",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "What is the purpose of Excel Formula Beautifier?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you explain how to use the Excel Formula Beautifier tool?",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "How does Excel Formula Beautifier handle different separators in formulas?",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "What is the output format of the beautified Excel formula?",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "Can you provide an example of how to use the Excel Formula Beautifier tool?",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "What are some real-world applications for using Excel Formula Beautifier?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I install and set up the Excel Formula Beautifier tool on my own?",
+      "anchor": "how-to-use"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:52:08.055Z",
+  "source": "index.md",
+  "sourceHash": "a81a2a3b42d8e6a2381e8479b4546ebc7bd4b503",
+  "questions": [
+    {
+      "question": "How do I connect to a Joomla site's database outside of Joomla?",
+      "anchor": ""
+    },
+    {
+      "question": "What is an example script for running a custom SQL query on a Joomla site and displaying the results as an HTML table?",
+      "anchor": "lets-create-an-example"
+    },
+    {
+      "question": "How do I modify the script to show the list of articles instead of users?",
+      "anchor": "show-the-list-of-articles"
+    },
+    {
+      "question": "What is the URL format for accessing the script from within Excel?",
+      "anchor": "from-within-excel-retrieve-our-joomla-data"
+    },
+    {
+      "question": "How can I export the list of articles to an Excel spreadsheet using the script?",
+      "anchor": "using-another-password"
+    },
+    {
+      "question": "What are some alternative tools for browsing a Joomla database interactively besides Adminer, pgadmin, and phpmyadmin?",
+      "anchor": "creating-your-own-sql"
+    },
+    {
+      "question": "How can I modify the script to use a different password for accessing the table in Excel?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of the script and how does it work?",
+      "anchor": ""
+    }
+  ]
+}

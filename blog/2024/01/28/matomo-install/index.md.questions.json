@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:48:27.222Z",
+  "source": "index.md",
+  "sourceHash": "2592af837940d021126e82d551af453a7e91081c",
+  "questions": [
+    {
+      "question": "How do I self-host Matomo?",
+      "anchor": ""
+    },
+    {
+      "question": "What is GDPR-compliant website analytics?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I install Matomo on a subdomain?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the steps to set up a MySQL database for Matomo?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I run the installation wizard for Matomo?",
+      "anchor": ""
+    },
+    {
+      "question": "What is Docusaurus?",
+      "anchor": "docusaurus"
+    },
+    {
+      "question": "How can I install a plugin for Docusaurus on my blog?",
+      "anchor": "docusaurus"
+    },
+    {
+      "question": "How do I add the tracking script to my pages after installing Matomo?",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:47:45.214Z",
+  "source": "index.md",
+  "sourceHash": "4acd0dea0ab6cf6bb376301c6db0d48c29365c11",
+  "questions": [
+    {
+      "question": "How does JSON Crack render complex JSON data?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the free version of JSON Crack's limitation regarding JSON content lines?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some other tools that can be used to generate fake JSON data?",
+      "anchor": ""
+    },
+    {
+      "question": "How does the free version of JSON Crack compare to Markmap in terms of functionality?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some other diagram-as-code tools available besides JSON Crack and Markmap?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I represent Spider-Man as a JSON object using JSON Crack?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the advantages of using an image representation for JSON data?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I install the VSCode extension alternative for JSON Crack?",
+      "anchor": ""
+    }
+  ]
+}

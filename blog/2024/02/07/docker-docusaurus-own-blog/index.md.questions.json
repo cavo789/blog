@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:48:53.897Z",
+  "source": "index.md",
+  "sourceHash": "9e2a6c2b22b9b8b92c9231ae6973e65778318b54",
+  "questions": [
+    {
+      "question": "How do I customize my Docusaurus site's title, favicon, and URL?",
+      "anchor": "customize-the-name-title-icons-and-url-of-your-site"
+    },
+    {
+      "question": "What files should I copy out of the Docker container to edit them on my host?",
+      "anchor": "the-srcpages-folder"
+    },
+    {
+      "question": "How do I mount a file from the Docker container to my host so that changes are reflected in real-time?",
+      "anchor": "the-static-folder"
+    },
+    {
+      "question": "What values should I set for the `siteMetadata` fields in the `_config.js` file to customize my Docusaurus site?",
+      "anchor": "you-now-have-the-basics"
+    },
+    {
+      "question": "How do I create a custom page in my Docusaurus blog and add it to the navigation bar?",
+      "anchor": "you-now-have-the-basics"
+    },
+    {
+      "question": "What files should I copy out of the Docker container to edit them on my host for site customization?",
+      "anchor": "the-srcpages-folder"
+    }
+  ]
+}

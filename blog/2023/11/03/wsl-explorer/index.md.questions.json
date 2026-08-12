@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:44:03.380Z",
+  "source": "index.md",
+  "sourceHash": "9c9a3b3370e702c76fc9b0ede38e38c759d96607",
+  "questions": [
+    {
+      "question": "How do I open my Linux folder in Windows Explorer?",
+      "anchor": ""
+    },
+    {
+      "question": "What is WSL localhost not accessible error and how to fix it?",
+      "anchor": "wsl-localhost-is-not-accessible"
+    },
+    {
+      "question": "Can I use Windows Explorer to manage files on my Linux filesystem?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I open the current folder in Windows Explorer using WSL?",
+      "anchor": ""
+    },
+    {
+      "question": "What is a UNC path and how does it work with WSL folders?",
+      "anchor": ""
+    },
+    {
+      "question": "Why can't I access \\wsl.localhost folder in Windows Explorer on Windows 11?",
+      "anchor": "wsl-localhost-is-not-accessible"
+    },
+    {
+      "question": "What are the steps to fix the WSL localhost not accessible error on Windows 10?",
+      "anchor": "wsl-localhost-is-not-accessible"
+    },
+    {
+      "question": "How do I modify the Windows registry to allow access to \\wsl.localhost folder in Windows Explorer?",
+      "anchor": "wsl-localhost-is-not-accessible"
+    }
+  ]
+}

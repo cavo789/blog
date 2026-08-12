@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:58:35.382Z",
+  "source": "index.md",
+  "sourceHash": "e4c7117702c4d4918a950c448874dee5708083c8",
+  "questions": [
+    {
+      "question": "Export forms from MS Access",
+      "anchor": "sample"
+    },
+    {
+      "question": "How to export queries from MS Access",
+      "anchor": "description"
+    },
+    {
+      "question": "VBA script for exporting modules in MS Access",
+      "anchor": "install"
+    },
+    {
+      "question": "Export reports from MS Access using VBS script",
+      "anchor": "usage"
+    },
+    {
+      "question": "How to export macros from MS Access with a VBS script",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "Version control MS Access database objects",
+      "anchor": ""
+    },
+    {
+      "question": "Exporting code objects in MS Access using VBS script",
+      "anchor": ""
+    },
+    {
+      "question": "How to export forms, queries, modules, reports, and macros from MS Access",
+      "anchor": ""
+    }
+  ]
+}

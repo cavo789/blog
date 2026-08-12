@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:54:16.946Z",
+  "source": "index.md",
+  "sourceHash": "0986d92b943b95b535a688d28fa7be7d7f6dcd0a",
+  "questions": [
+    {
+      "question": "What is Bash scripting and how can it be used for concurrent tasks?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I optimize Bash scripts to run concurrent jobs using process IDs and wait commands?",
+      "anchor": "now-the-optimized-version"
+    },
+    {
+      "question": "What is the difference between sequential and parallel execution in Bash scripting?",
+      "anchor": "in-depth"
+    },
+    {
+      "question": "How can I use the nproc command to determine the number of CPU cores available on a Linux system?",
+      "anchor": "in-depth"
+    },
+    {
+      "question": "What is the purpose of using process IDs in Bash scripting for concurrent tasks?",
+      "anchor": "how-many-seconds-would-i-have-waited"
+    },
+    {
+      "question": "How can I check how many jobs are currently running and compare it with the number of threads we can start?",
+      "anchor": "how-many-seconds-would-i-have-waited"
+    },
+    {
+      "question": "What is the role of the wait command in Bash scripting for concurrent tasks?",
+      "anchor": "how-many-seconds-would-i-have-waited"
+    },
+    {
+      "question": "How can I use process IDs to manage multiple concurrent jobs in a Bash script?",
+      "anchor": "how-many-seconds-would-i-have-waited"
+    }
+  ]
+}

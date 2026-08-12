@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T08:53:52.517Z",
+  "source": "index.md",
+  "sourceHash": "431baffa04765a49095082b2e46ef4fdd6ca829b",
+  "questions": [
+    {
+      "question": "How do I run Firefox in a Docker container?",
+      "anchor": "creating-our-own-chrome-docker-image"
+    },
+    {
+      "question": "What are the steps to install GIMP using Docker on Linux?",
+      "anchor": "creating-our-own-gimp-docker-image"
+    },
+    {
+      "question": "How can I share environment variables and sockets between Docker containers and the host system?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the purpose of the X server in Docker container applications?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I create a custom Firefox Docker image for Linux GUI applications?",
+      "anchor": "creating-our-own-firefox-docker-image"
+    },
+    {
+      "question": "What are some examples of Linux GUI apps that can be run in Docker containers?",
+      "anchor": "a-first-look"
+    },
+    {
+      "question": "How do I start lubuntu Desktop in a Docker container on Windows 11 using WSL2?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "What are the differences between running GUI applications in Docker containers and traditional desktop environments?",
+      "anchor": ""
+    }
+  ]
+}
