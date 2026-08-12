@@ -92,6 +92,62 @@ export function neighborsOf(permalink, visibleEdges) {
   return neighbors;
 }
 
+// A handful of nodes get a meerkat illustration instead of a flat-colored dot — purely for
+// personality, reusing the site's own mascot (see /404, ScrollToTopButton). Kept small and
+// capped: this is a garnish, not a redesign of how the map reads.
+export const MEERKAT_HUB_COUNT = 3;
+export const MEERKAT_ORPHAN_COUNT = 5;
+// A degree-3 orphan node would otherwise draw at MIN_NODE_RADIUS (a few px) — too small for a
+// meerkat face to read. Only special-illustrated nodes get this floor; everything else keeps
+// its data-driven size.
+export const MEERKAT_MIN_RADIUS = 13;
+
+/** Degree (any edge type) of each node, counted only from the currently visible edges. */
+export function computeVisibleDegree(nodes, edges) {
+  const degree = new Map(nodes.map((node) => [node.permalink, 0]));
+  for (const edge of edges) {
+    if (degree.has(edge.source)) degree.set(edge.source, degree.get(edge.source) + 1);
+    if (degree.has(edge.target)) degree.set(edge.target, degree.get(edge.target) + 1);
+  }
+  return degree;
+}
+
+/**
+ * Which visible nodes get a meerkat instead of a flat color, and which one of several: the
+ * busiest hubs (by in-degree) each get their own "success" pose (running, trophy, superhero —
+ * see MEERKAT_SOURCES in index.js), nodes with no visible connection at all — degree zero in
+ * the *currently drawn* edge set — each get their own "nobody's noticed me yet" pose
+ * (sleeping, peeking from hiding, curled up, wrapped in a towel, meditating). `rank` is the
+ * index into that pose list, so the caller can pick a different image per node instead of
+ * repeating the same one. Returns `Map<permalink, { kind: "hub" | "orphan", rank: number }>`.
+ */
+export function pickMeerkatNodes(nodes, edges) {
+  const spots = new Map();
+  const degree = computeVisibleDegree(nodes, edges);
+
+  const orphans = nodes
+    .filter((node) => (degree.get(node.permalink) ?? 0) === 0)
+    // Stable, deterministic pick among however many orphans there are — not "most recent" or
+    // anything meaningful, just consistent between renders.
+    .sort((a, b) => a.permalink.localeCompare(b.permalink))
+    .slice(0, MEERKAT_ORPHAN_COUNT);
+  orphans.forEach((node, rank) => spots.set(node.permalink, { kind: "orphan", rank }));
+
+  const hubs = [...nodes]
+    .filter((node) => node.inDegree > 0)
+    .sort((a, b) => b.inDegree - a.inDegree)
+    .slice(0, MEERKAT_HUB_COUNT);
+  hubs.forEach((node, rank) => spots.set(node.permalink, { kind: "hub", rank }));
+
+  return spots;
+}
+
+/** The on-canvas radius for a node, boosted when it's meerkat-illustrated (see MEERKAT_MIN_RADIUS). */
+export function displayRadius(node, transform, isSpecial) {
+  const base = node.radius * transform.scale;
+  return isSpecial ? Math.max(base, MEERKAT_MIN_RADIUS) : base;
+}
+
 /** Groups posts by mainTag for the no-JS / mobile fallback list, each group sorted by date desc. */
 export function groupByMainTag(nodes) {
   const groups = new Map();

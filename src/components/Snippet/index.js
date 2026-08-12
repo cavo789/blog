@@ -306,6 +306,21 @@ function Eli5CodeBlock({ code, lang, eli5 }) {
     [],
   );
 
+  // Keep the tooltip glued to its badge: position is computed once on
+  // hover/focus, but `position: fixed` doesn't move with scrolling — without
+  // this, scrolling the page (or the horizontally-scrollable code block)
+  // while a tooltip is open leaves it stranded at its old screen position.
+  useEffect(() => {
+    if (!activeLine) return undefined;
+    const reposition = () => positionTooltip(activeLine);
+    window.addEventListener("scroll", reposition, { capture: true, passive: true });
+    window.addEventListener("resize", reposition, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", reposition, { capture: true });
+      window.removeEventListener("resize", reposition);
+    };
+  }, [activeLine, positionTooltip]);
+
   const activeExplanation = activeLine ? eli5[activeLine] : null;
 
   return (
