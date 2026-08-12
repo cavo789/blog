@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-12T13:24:09.634Z",
+  "source": "index.md",
+  "sourceHash": "981d607fb90f06dd35b65cdfa3d549560453a8ea",
+  "questions": [
+    {
+      "question": "How do I add a 'go to the top' button to my Docusaurus blog posts using a custom React component and theme override?",
+      "anchor": "what-it-looks-like"
+    },
+    {
+      "question": "What are the steps to implement a 'scroll to top' button in Docusaurus blog posts?",
+      "anchor": "how-it-works"
+    },
+    {
+      "question": "How can I add a 'go to the top' button to other pages in my Docusaurus site besides blog posts?",
+      "anchor": "you-can-do-this-for-other-pages-for-sure"
+    },
+    {
+      "question": "What is the purpose of overriding the BlogPostItem page in Docusaurus for adding a 'go to the top' button?",
+      "anchor": "overriding-the-blogpostitem-page"
+    },
+    {
+      "question": "How do I create and use a custom React component for the 'go to the top' button in Docusaurus blog posts?",
+      "anchor": "how-it-works"
+    },
+    {
+      "question": "What is the CSS for styling the 'go to the top' button in Docusaurus blog posts?",
+      "anchor": "how-it-works"
+    },
+    {
+      "question": "How do I inject the custom React component for the 'go to the top' button into my Docusaurus pages?",
+      "anchor": "overriding-the-blogpostitem-page"
+    },
+    {
+      "question": "What is the purpose of swizzling in Docusaurus and how can it be used to add a 'go to the top' button to blog posts?",
+      "anchor": "how-it-works"
+    }
+  ]
+}

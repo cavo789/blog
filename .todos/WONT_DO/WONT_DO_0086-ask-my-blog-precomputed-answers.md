@@ -116,3 +116,25 @@ monolithique, il faudra la recâbler — d'où l'inventaire en tête de ce TODO.
 - [ ] Le poids du payload chargé sur une page d'article **n'augmente pas** (vérifié dans
       l'onglet réseau, pas seulement supposé)
 - [ ] `yarn lint && yarn format:check && yarn build` passent
+
+## Status — WONT_DO (2026-08-12)
+
+Écarté par l'auteur après relecture, avant tout début d'implémentation.
+
+**Raison :** la prémisse du TODO ne tient pas. Il postule qu'une liste de liens est un défaut
+à corriger (« une bulle de conversation qui répond par six liens bleus crée une attente
+qu'elle ne tient pas »). L'auteur ne partage pas ce diagnostic : renvoyer vers la bonne
+section d'un article est un résultat satisfaisant en soi, et c'est même le comportement
+attendu d'un blog — le but est d'amener le lecteur dans l'article, pas de le dispenser de
+l'ouvrir.
+
+Ce qui tombe avec cette décision :
+
+- aucun champ `answer` à générer, donc pas de second passage de relecture sur ~2 500
+  réponses, et pas de risque de sur-confiance du lecteur face à une réponse extraite ;
+- l'index de questions **reste monolithique** — le choix A/B/C sur le shardage devient sans
+  objet, et la chatbox peut se câbler sans contrainte sur `questions-index.json` tel qu'il
+  est aujourd'hui.
+
+À rouvrir seulement si l'usage réel montre que les lecteurs ne cliquent pas les résultats —
+ce que le trafic actuel ne permet pas de mesurer.

@@ -2,7 +2,7 @@
 slug: lazydocker
 title: "lazydocker: A Terminal Dashboard for Docker, Containerized"
 authors: [christophe, claude]
-image: /img/v2/docker_playing_with_app.webp
+image: /img/v2/lazy-docker.webp
 mainTag: docker
 tags: [docker, linux]
 date: 2026-12-31
@@ -12,7 +12,7 @@ ai_assisted: true
 draft: true
 ---
 
-![lazydocker: A Terminal Dashboard for Docker, Containerized](/img/v2/docker_playing_with_app.webp)
+![lazydocker: A Terminal Dashboard for Docker, Containerized](/img/v2/lazy-docker.webp)
 
 <!-- cspell:ignoreCase lazydocker jesseduffield alpine apk hjkl -->
 

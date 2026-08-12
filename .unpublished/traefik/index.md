@@ -2,7 +2,7 @@
 slug: traefik
 title: "Traefik, Finally Understood: One Name Per Docker Service Instead of One Port"
 authors: [christophe, claude]
-image: /img/v2/workflows.webp
+image: /img/v2/traefik.webp
 mainTag: docker
 tags: [docker, self-hosted, security]
 date: 2026-12-31
@@ -12,7 +12,7 @@ ai_assisted: true
 draft: true
 ---
 
-![Traefik, Finally Understood: One Name Per Docker Service Instead of One Port](/img/v2/workflows.webp)
+![Traefik, Finally Understood: One Name Per Docker Service Instead of One Port](/img/v2/traefik.webp)
 
 <!-- cspell:ignoreCase traefik htpasswd mkcert websecure entrypoints middlewares serversTransport loadbalancer arpa openwebui -->
 

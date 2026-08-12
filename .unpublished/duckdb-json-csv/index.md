@@ -2,7 +2,7 @@
 slug: duckdb-json-csv
 title: "DuckDB - Query JSON and CSV Files With SQL, No Database Required"
 authors: [christophe, claude]
-image: /img/v2/database_admin.webp
+image: /img/v2/duckdb-json-csv.webp
 mainTag: python
 tags: [python, docker, database]
 date: 2026-12-31
@@ -12,7 +12,7 @@ ai_assisted: true
 draft: true
 ---
 
-![DuckDB - Query JSON and CSV Files With SQL, No Database Required](/img/v2/database_admin.webp)
+![DuckDB - Query JSON and CSV Files With SQL, No Database Required](/img/v2/duckdb-json-csv.webp)
 
 <!-- cspell:ignoreCase duckdb -->
 

@@ -1,0 +1,36 @@
+<!--
+  canonical-url: https://www.avonture.be/blog/docusaurus-go-top
+  published:     2025-09-12
+  generated-at:  2026-08-12T14:55:47.056Z
+  This is a static plain-Markdown mirror generated at build time.
+  Visit the canonical URL above for the fully rendered page, with images and interactive components.
+-->
+
+# Providing a go to the top button in Docusaurus posts
+
+> Learn how to easily add a "go to the top" button, often with a fun animated icon, to your Docusaurus blog posts using a custom React component and theme override.
+
+---
+![Providing a go to the top button in Docusaurus posts](/img/v2/go_top_banner.webp)
+
+**TL;DR**
+
+This article is a quick tutorial on how to add a 'scroll to top' button to your Docusaurus blog. It walks you through implementing a custom `<ScrollToTopButton>` React component, including its CSS for styling. You'll learn how to override the default `BlogPostItem` theme component to automatically inject the button at the bottom of every blog post. The guide also provides tips on adding the button to other parts of your site, such as the blog archive or custom pages.
+
+More on smartphones than on computers; it's pretty nice to have a *Back to top of page* button to avoid dislocating your thumb.
+
+![Docux](/img/docux.webp) [Docux](https://github.com/Juniors017), a friend, recently developed this feature and I was really happy to add it, especially since it's terribly easy to use and adds a fun element; it's cool.
+
+Just scroll down any page of this blog to see a little meerkat appear in the bottom right corner. Click on it and take the lift back to the top of the page.
+
+## What it looks like
+
+Here is this very page, scrolled down. The meerkat sits in the bottom right corner, floating above your own content:
+
+> Screenshot — https\://www\.avonture.be/blog/docusaurus-go-top
+>
+> ![The meerkat scroll-to-top button, bottom right, on a scrolled blog post](./images/go_top_button.webp)
+
+Up close, it's a round button holding whatever icon you hand it:
+
+…

@@ -46,13 +46,15 @@ Each item in `HOME_CARDS` should follow this structure:
 Customize layout via `styles.module.css`. Key classes:
 
 - `cardsSection`: Section wrapper
-- `sectionTitl`e: Heading style
+- `sectionTitle`: Heading style
 - `cardsGrid`: Grid layout
 - `cardLink`: Link styling
+- `cardImage`: Forces a 1:1 crop so an off-format image can't break the grid
 
 ## Development Notes
 
 - Images are loaded from `/img/homepage/` using relative paths.
+- Source images are square (1024x1024); the `cardImage` class crops anything else to 1:1.
 - The alt tag falls back to title or description if not provided.
 - Keys are derived from `card.title` — ensure uniqueness.
 

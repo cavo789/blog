@@ -1,0 +1,18 @@
+$ node --input-type=module -e "
+import { buildSearchIndex, search } from './src/components/AskMyBlog/utils.js';
+import fs from 'fs';
+const corpus = JSON.parse(fs.readFileSync('.docusaurus/questions-index-plugin/static/questions-index.json', 'utf8'));
+const index = buildSearchIndex(corpus);
+for (const r of search(index, process.argv[1], 4)) {
+  console.log(r.question);
+  console.log('    ' + r.title + '  ->  ' + r.permalink + (r.anchor ? '#' + r.anchor : ''));
+}" "run docusaurus in docker"
+
+How do I run my Docusaurus site using Docker?
+    Running Docusaurus with Docker  ->  /blog/docusaurus-docker#run-docusaurus
+What commands are used to build and run the production Docker image for Docusaurus?
+    Running Docusaurus using Docker  ->  /blog/running-docusaurus-with-docker#build-and-run-the-production-image
+How do I run Quarto Markdown in Docker?
+    Running Quarto Markdown in Docker  ->  /blog/docker-quarto
+How do I run Firefox in a Docker container?
+    Docker - Run Graphical User Interfaces - Firefox, Chrome & GIMP  ->  /blog/docker-run-linux-gui#creating-our-own-chrome-docker-image

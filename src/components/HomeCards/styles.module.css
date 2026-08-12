@@ -31,6 +31,17 @@
   }
 }
 
+/*
+ * All card sources are square, but the grid must not depend on that: an off-format image (a
+ * 16:9 page banner reused as a card, say) would give its card a shorter image than its
+ * neighbours' and break the row's rhythm. Cropping in CSS keeps that a non-issue.
+ */
+.cardImage {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
 .cardLink {
   text-decoration: none;
   color: inherit;

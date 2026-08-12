@@ -1,0 +1,15 @@
+$ node --input-type=module -e "
+import('./plugins/blog-graph-plugin/index.mjs').then(async m => {
+  const graph = await m.default().loadContent();
+  const byType = {};
+  for (const edge of graph.edges) byType[edge.type] = (byType[edge.type] ?? 0) + 1;
+  console.log('nodes  ', graph.nodes.length);
+  console.log('edges  ', graph.edges.length, byType);
+  console.log('meta   ', graph.meta);
+  console.log('payload', JSON.stringify(graph).length, 'bytes');
+});"
+
+nodes   247
+edges   1026 { link: 680, series: 144, tag: 202 }
+meta    { articleCount: 247, seriesCount: 25, linkCount: 680 }
+payload 183292 bytes

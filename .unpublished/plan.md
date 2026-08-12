@@ -282,6 +282,109 @@ Christophe a sélectionné 10 sujets lors d'une session de brainstorming. Deux p
 - Article validé par un `yarn build` complet (copie temporaire dans `blog/`, supprimée après) : compile sans erreur MDX, aucun lien interne cassé.
 - Lien réciproque à ajouter au moment de la publication : aucun strictement nécessaire (l'article ne dépend d'aucun autre brouillon), mais envisager une mention dans `/blog/docusaurus-reactions` ou `/blog/docusaurus-snippets` (« autres composants de cette série ») si Christophe le souhaite.
 
+## Mini-série « navigation du blog » (créée 2026-08-12) — 4 articles, série *Creating Docusaurus components*
+
+Quatre brouillons documentant les fonctionnalités construites les 11 et 12 août 2026 : la carte du
+corpus ([[0081]]), l'index de questions ([[0083]]), la palette de commandes ([[0084]]) et la
+découvrabilité ([[0089]]). **Chaîne de dépendances dure** — les articles se citent mutuellement via
+`<Link>`, dans cet ordre précis :
+
+| # | Slug | Date placeholder | Angle | Dépend de |
+| --- | --- | --- | --- | --- |
+| 1 | `docusaurus-blog-map` | 2026-10-13 | `/map` : graphe force-directed du corpus, layout d3-force calculé **au build** dans Node, canvas + fallback liste. Trois types d'arêtes (link/series/tag) et le double seuil tag (layout vs payload). | Aucune — ne lie que des articles publiés |
+| 2 | `docusaurus-ask-my-blog` | 2026-10-20 | `/faq` : génération Ollama de 8-12 questions par article (sidecars `.questions.json`), plugin d'agrégation à trois formes, recherche BM25 côté client. | Aucune — ne lie que des articles publiés |
+| 3 | `docusaurus-command-palette` | 2026-10-27 | `Ctrl+K` : six modes par préfixe, index de navigation build-time, swizzle `SearchBar` + `Layout`, sonde Pagefind. | **#1 et #2** (`<Link>` durs) |
+| 4 | `docusaurus-ask-my-blog-bubble` | 2026-11-03 | La bulle flottante + les cartes de la home manquantes + le hint première visite ; l'exclusion mutuelle des overlays. | **#1, #2 et #3** (`<Link>` durs) |
+
+`yarn links:check` signale actuellement 2 liens non résolus sur #3 et 3 sur #4 — c'est attendu et
+c'est exactement la chaîne ci-dessus. Publier dans l'ordre 1 → 2 → 3 → 4 les résout tous.
+
+**Ce qui est solide dans ces quatre articles :** tous les `<Snippet source="…">` pointent vers les
+**vrais fichiers du repo** (pas des copies dans `files/`), donc les articles restent
+automatiquement à jour si le code change. Tous les chiffres cités ont été mesurés réellement le
+2026-08-12 (247 nœuds / 1026 arêtes / 680 liens internes / 25 séries / 40 thèmes ; 2050 questions
+retenues sur 2055, 5 doublons supprimés ; index 468 Ko brut / 63 Ko gzip ; 1355 paires de tags dont
+1153 en poids 2). Les sorties `<Terminal>` sont de vraies exécutions (génération Ollama en 11 s,
+recherches BM25 réelles), pas des maquettes.
+
+**Avant de publier (les quatre) :**
+
+- **Captures d'écran manquantes.** Les quatre articles utilisent des maquettes ASCII en bloc
+  `plaintext` pour montrer l'interface (palette, page map, grille de la home, bulle). C'est
+  volontaire — aucun `![](./images/…)` cassé ne peut faire échouer le build — mais une vraie
+  capture dans un `<BrowserWindow>` serait nettement meilleure pour la lecture. À faire au moment
+  de la publication de chaque article.
+- **Liens réciproques non posés.** Rien n'a été ajouté dans les articles déjà publiés, pour ne pas
+  créer de lien cassé en production vers un brouillon. À la publication de #1 et #2, envisager une
+  mention dans `/blog/docusaurus-series` (couleurs de série réutilisées par la map) et
+  `/blog/docusaurus-eli5-snippet-tooltips` (même convention de sidecar généré).
+- **Chiffres à re-vérifier.** Le corpus grossit d'un article par semaine : si la publication a lieu
+  bien après octobre 2026, relancer les mesures (247 articles, 2050 questions, etc.) avant de
+  publier, sinon les compteurs cités dans le texte seront faux.
+- **#4 uniquement :** l'article décrit la bulle comme étant **en bas à droite** — c'est ce que fait
+  `src/components/AskMyBlogWidget/styles.module.css` (`right: 30px; bottom: 100px`, empilée
+  au-dessus du bouton scroll-to-top). Si la bulle est un jour déplacée à gauche, corriger le texte
+  et la maquette ASCII.
+- **#2 uniquement :** l'exemple de session `yarn questions:edit` est une **illustration** (format de
+  sortie réel du script, contenu inventé) — contrairement aux deux autres blocs `<Terminal>` de cet
+  article qui sont de vraies exécutions. Le laisser tel quel ou le remplacer par une vraie session
+  au moment de la publication.
+- ✅ **Déjà validé par un `yarn build` complet** (2026-08-12) : les quatre brouillons ont été copiés
+  temporairement dans `blog/` aux dates ci-dessus, `draft: true` retiré, build réussi en 63 s
+  (415 fichiers HTML, 251 articles mirrorés) — aucune erreur de compilation MDX, tous les
+  `<Snippet source="…">` résolus. Copies supprimées après. À refaire si le texte change beaucoup.
+  Attention : `onBrokenLinks: "ignore"` dans `docusaurus.config.js`, donc ce build **ne valide pas**
+  les liens internes — c'est `yarn links:check` qui joue ce rôle (voir la chaîne de dépendances
+  ci-dessus).
+
+## Deux brouillons complémentaires (créés 2026-08-12) — llms.txt et audit de lisibilité
+
+Issus des chantiers du 10-11 août, indépendants de la mini-série ci-dessus et **sans aucune
+dépendance sur un brouillon non publié**. Publiables quand on veut.
+
+| Slug | Date placeholder | Série | Angle |
+| --- | --- | --- | --- |
+| `docusaurus-llms-txt` | 2026-11-10 | *Creating Docusaurus components* | [[0082]] — `/llms.txt`, miroirs `.md` par article, bundles full-text par série. Le cœur : on dégrade le **MDX source**, jamais le HTML rendu ; règle de repli « composant inconnu → on garde les children » + warning au build. Plus les quatre crochets de découvrabilité et les soumissions aux annuaires. |
+| `blog-time-to-value-audit` | 2026-11-17 | *(aucune — article sur l'écriture, pas sur un composant)* | La campagne `/reader_review` : 318 articles audités, 180 verdicts RESTRUCTURE. Métrique TTV mécanique, les trois passes, l'échelle OK/MINOR/RESTRUCTURE et la règle « MINOR ne produit jamais de TODO ». |
+
+**Chiffres réels mesurés le 2026-08-12** (à re-vérifier si publication tardive) : 247 articles
+mirrorés / 247, 0 échec, 25 bundles de série, `llms.txt` = 73 Ko, bundle *Creating Docusaurus
+components* = 710 Ko ; 917 `<Snippet>` / 779 `<Link>` / 546 `<AlertBox>` / 455 `<Terminal>` /
+107 `defaultOpen={false}`. Audit : 318 lignes de journal, 180 RESTRUCTURE / 109 MINOR / 29 OK,
+médiane TTV 42 %, 60 articles à 100 %, répartition 52 🟢 / 62 🟠 / 191 🔴. Avant/après
+`docker-volumes` : 38 % → 3,2 % (vérifié sur le fichier actuel).
+
+**Avant de publier :**
+
+- ✅ **`yarn build` complet validé** (2026-08-12) : les deux copiés temporairement dans `blog/`,
+  `draft: true` retiré, build réussi en 64 s. Copies supprimées après.
+  ⚠️ **Piège découvert à cette occasion** : un fichier de démo nommé `files/*.md` sous `blog/`
+  est compilé comme MDX par le plugin blog (`include: **/*.{md,mdx}`) et casse le build sur ses
+  propres liens d'images. Le fichier d'exemple a été renommé en `files/mirror_sample.txt`, avec
+  `filename="/blog/docusaurus-go-top.md"` sur le `<Snippet>` pour garder la coloration Markdown
+  (le loader déduit le langage de `filename` avant `source`). **Ne jamais mettre de `.md` dans un
+  `files/`** — utiliser `.txt`, comme le fait déjà `copy-as-markdown`.
+- **`docusaurus-llms-txt` : faux positif connu de `yarn links:check`** — le lien absolu
+  `https://www.avonture.be/blog/docusaurus-go-top.md` (vers le vrai miroir généré) est compté
+  comme lien interne cassé. C'est correct de le garder : le fichier existe réellement après
+  `yarn build`.
+- **Recouvrement avec `copy-as-markdown`** : ce dernier couvre le bouton + un plugin miroir
+  *simplifié*, `docusaurus-llms-txt` couvre `llms.txt`, les bundles, la table de dégradation et
+  la découvrabilité. Aucun conflit, mais ajouter un `<Link>` réciproque entre les deux au moment
+  de publier le second des deux.
+- **Bannières** : `docusaurus-llms-txt` utilise `/img/v2/markdown.webp` (texte incrusté
+  « Clean, Readable Documentation / Simplify Your Technical Writing » — très bon match, mais déjà
+  utilisée par `copy-as-markdown` et `markitdown`). `blog-time-to-value-audit` utilise
+  `/img/v2/clean_code.webp` (« Clean Code wins ») : le visuel loupe/audit colle, le texte parle de
+  *code* alors que l'article parle de *prose* — **une bannière dédiée serait nettement mieux**.
+- **`blog-time-to-value-audit` n'a pas de `series:`** — délibéré, aucune série existante ne
+  couvre l'écriture. À reconsidérer si une série « écrire mieux » est créée un jour.
+- **`blog-time-to-value-audit` expose publiquement que 180 articles du blog étaient mal
+  structurés.** C'est assumé comme étant le hook de l'article (un audit sur son propre corpus est
+  plus crédible qu'un conseil abstrait), mais c'est une décision éditoriale à confirmer.
+- Liens réciproques à poser au moment de la publication : `/blog/docker-volumes` (cité comme cas
+  d'école dans l'audit) et `/blog/docusaurus-snippets` (cité par les deux).
+
 ## Correction apportée à un article déjà publié (2026-07-27)
 
 `/blog/ollama-installation` (publié 2026-03-30) a été corrigé suite à une vérification demandée par

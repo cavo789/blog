@@ -2,7 +2,7 @@
 slug: portainer
 title: "Portainer: A Web Dashboard for Docker, One Compose File Away"
 authors: [christophe, claude]
-image: /img/v2/docker_gui.webp
+image: /img/v2/portainer.webp
 mainTag: docker
 tags: [docker, self-hosted]
 date: 2026-12-31
@@ -12,7 +12,7 @@ ai_assisted: true
 draft: true
 ---
 
-![Portainer: A Web Dashboard for Docker, One Compose File Away](/img/v2/docker_gui.webp)
+![Portainer: A Web Dashboard for Docker, One Compose File Away](/img/v2/portainer.webp)
 
 <!-- cspell:ignoreCase portainer -->
 

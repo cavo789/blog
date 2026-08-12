@@ -1,0 +1,27 @@
+$ f=blog/2023/11/22/docker-volumes/index.md
+
+$ wc -l $f
+277 blog/2023/11/22/docker-volumes/index.md
+
+$ grep -n '<!-- truncate -->\|^## \|<Terminal\|<Snippet\|<Prerequisite\|apt install\|^!\[' $f | head -12
+15:![Using volumes with Docker, use cases](/img/v2/docker_concepts.webp)
+27:<!-- truncate -->
+31:## What a volume changes
+35:<Terminal typewriter source="./files/terminal-8.txt" />
+39:<Terminal typewriter>
+51:<Terminal typewriter source="./files/terminal-7.txt" />
+55:## Why it works
+65:## Setting up the demo
+71:<Snippet filename="Dockerfile" source="./files/Dockerfile" defaultOpen={false} />
+75:<Snippet filename="counter.sh" source="./files/counter.sh" defaultOpen={false} />
+79:<Terminal typewriter>
+92:<Snippet filename="compose.yaml" source="./files/compose.yaml" defaultOpen={false} />
+
+truncate   T = 27
+end        E = 277
+body       BODY = E - T = 250
+proof      first <Terminal> showing OUTPUT after T = line 35
+
+TTV = (35 - 27) / 250 = 3.2%     green (< 15%)
+install-before-proof     no      (no <Prerequisite>, no apt install before line 35)
+abstraction-before-proof no      (first <Snippet> is line 71, after the proof)

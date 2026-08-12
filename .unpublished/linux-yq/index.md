@@ -3,7 +3,7 @@ slug: linux-yq
 title: "yq — The YAML Processor You Already Know How to Use"
 description: "yq is to YAML what jq is to JSON. Query and edit your Docker Compose files, CI configs, and any YAML document from the command line — no installation required beyond Docker."
 authors: [christophe, claude]
-image: /img/v2/linux_tips.webp
+image: /img/v2/linux-yq.webp
 mainTag: linux
 draft: true
 tags: [bash, docker, linux]
@@ -11,7 +11,7 @@ date: 2026-08-04
 ai_assisted: true
 ---
 
-![yq — The YAML Processor You Already Know How to Use](/img/v2/linux_tips.webp)
+![yq — The YAML Processor You Already Know How to Use](/img/v2/linux-yq.webp)
 
 <TLDR>
 `yq` is a command-line YAML processor with the same syntax as `jq`. If you already use `jq` for JSON, you already know how to use `yq`. Run it without installing anything using a one-line Docker alias, then query and edit your `compose.yaml`, CI pipelines, and any YAML file directly from the terminal.
@@ -221,7 +221,7 @@ You can then pipe that output directly to `jq` for further processing.
 If you already use <Link to="/blog/linux-jq">`jq`</Link> for JSON, the `yq` syntax will feel immediately familiar. Most `jq` expressions work as-is:
 
 | Task | jq (JSON) | yq (YAML) |
-|------|-----------|-----------|
+| ------ | ----------- | ----------- |
 | Read key | `jq '.key'` | `yq '.key'` |
 | Filter array | `jq '.[] \| select(.active)'` | `yq '.[] \| select(.active)'` |
 | Get keys | `jq 'keys'` | `yq 'keys'` |

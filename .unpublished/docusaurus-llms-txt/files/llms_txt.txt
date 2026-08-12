@@ -1,0 +1,20 @@
+# Christophe Avonture
+
+> Personal blog about Docker, WSL, Python, Quarto, PHP, Joomla, Docusaurus and even more
+
+247 articles. Each has a plain-Markdown mirror at its own permalink plus `.md` (e.g. `https://www.avonture.be/blog/<slug>.md`).
+
+## Series (full-text bundles)
+
+Each link is every article in that series, concatenated in reading order — one request instead of many.
+
+- [Bluesky Docusaurus component](https://www.avonture.be/llms/bluesky-docusaurus-component.txt) — 2 article(s)
+- [Building and testing REST APIs](https://www.avonture.be/llms/building-and-testing-rest-apis.txt) — 5 article(s)
+- [code quality](https://www.avonture.be/llms/code-quality.txt) — 10 article(s)
+  … 22 more series …
+
+## component
+
+- [A component for showing code snippets in a Docusaurus blog](https://www.avonture.be/blog/docusaurus-snippets) — Learn how to build a custom React component to embed dynamic code snippets in your Docusaurus blog for a more interactive reader experience.
+- [A Docusaurus component that alerts readers the article is over a year old](https://www.avonture.be/blog/docusaurus-old-notice) — Displays a warning banner when the page content is over a year old
+  … 245 more articles, grouped under 40 topic headings …

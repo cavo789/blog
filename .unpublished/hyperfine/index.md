@@ -3,7 +3,7 @@ slug: hyperfine
 title: "hyperfine — Stop Guessing Which Command Is Faster, Measure It"
 description: "hyperfine is a command-line benchmarking tool written in Rust. It runs your commands multiple times, warms up caches, computes statistics, and tells you definitively which one is faster — with confidence intervals and export to Markdown or CSV."
 authors: [christophe, claude]
-image: /img/v2/linux_parallel.webp
+image: /img/v2/hyperfine.webp
 mainTag: linux
 draft: true
 tags: [bash, docker, linux]
@@ -11,7 +11,7 @@ date: 2026-08-25
 ai_assisted: true
 ---
 
-![hyperfine — Stop Guessing Which Command Is Faster, Measure It](/img/v2/linux_parallel.webp)
+![hyperfine — Stop Guessing Which Command Is Faster, Measure It](/img/v2/hyperfine.webp)
 
 <TLDR>
 `hyperfine` is a command-line benchmarking tool that runs commands multiple times, warms up disk caches, removes statistical outliers, and reports mean time, standard deviation, and a relative comparison. One command to tell you definitively: is `ripgrep` faster than `grep` on your machine? Is your optimized Docker build actually quicker? No guessing, no stopwatch — just numbers.
@@ -104,6 +104,7 @@ By default, hyperfine runs each command at least 10 times (more for fast command
 hyperfine --min-runs 20 'my-command'
 
 # Exactly 5 runs (faster, less accurate)
+
 hyperfine --runs 5 'my-command'
 </Terminal>
 
@@ -230,7 +231,7 @@ Some benchmarking tools report only the minimum time (the argument being that th
 The built-in `time` command gives you one measurement. It's fine for one-off curiosity. `hyperfine` is for when the result matters:
 
 | | `time` | `hyperfine` |
-|--|--------|-------------|
+| -- | -------- | ------------- |
 | Runs | 1 | 10+ (configurable) |
 | Warmup | No | Yes (`--warmup`) |
 | Statistics | No | Mean, σ, min, max |

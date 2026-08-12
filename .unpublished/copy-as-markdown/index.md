@@ -2,7 +2,7 @@
 slug: docusaurus-copy-as-markdown
 title: Add a "Copy as Markdown" Button to Your Docusaurus Blog
 authors: [christophe]
-image: /img/v2/markdown.webp
+image: /img/v2/copy-as-markdown.webp
 series: Creating Docusaurus components
 mainTag: component
 tags: [docusaurus, markdown, react]
@@ -13,7 +13,7 @@ ai_assisted: true
 draft: true
 ---
 
-![Add a "Copy as Markdown" Button to Your Docusaurus Blog](/img/v2/markdown.webp)
+![Add a "Copy as Markdown" Button to Your Docusaurus Blog](/img/v2/copy-as-markdown.webp)
 
 <TLDR>
 This guide adds a "Copy as Markdown" button and a "View raw" link to every post on a Docusaurus blog. Two small pieces make it work: a build-time plugin that writes a plain-Markdown mirror next to each article's HTML page (`/blog/my-post` → `/blog/my-post.md`), and a React component that fetches that mirror and copies it to the clipboard. No server, no database, about 90 lines of code in total — and readers, or the LLM they paste the URL into, get the article's full text without React, JSX, or any collapsed accordion the HTML page hides by default.
