@@ -30,6 +30,7 @@ import GroupedList from "./GroupedList";
 import {
   DEFAULT_TOP_N,
   PERMANENT_LABEL_COUNT,
+  computeCanvasHeight,
   displayRadius,
   fitTransform,
   humanizeTag,
@@ -67,7 +68,6 @@ const MEERKAT_SOURCES = {
 const MOBILE_BREAKPOINT = 768;
 const DIMMED_ALPHA = 0.15;
 const HOVER_HIT_PADDING = 3;
-const CANVAS_ASPECT_RATIO = 0.62;
 const LABEL_FONT =
   "12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
 const EDGE_ALPHA = { link: 0.55, series: 0.4, tag: 0.18 };
@@ -146,7 +146,7 @@ export default function BlogGraph() {
   const [isMobile, setIsMobile] = useState(false);
   const [mainTag, setMainTag] = useState("");
   const [hovered, setHovered] = useState(null);
-  const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
+  const [containerWidth, setContainerWidth] = useState(0);
   // Bumped on theme toggle so the draw effect re-reads the (now different) CSS variables —
   // canvas has no way to react to a CSS variable change on its own.
   const [themeVersion, setThemeVersion] = useState(0);
@@ -213,13 +213,9 @@ export default function BlogGraph() {
   useEffect(() => {
     if (!showCanvas || !wrapRef.current) return undefined;
     const el = wrapRef.current;
-    const updateSize = () =>
-      setCanvasSize({
-        width: el.clientWidth,
-        height: Math.round(el.clientWidth * CANVAS_ASPECT_RATIO),
-      });
-    updateSize();
-    const resizeObserver = new ResizeObserver(updateSize);
+    const updateWidth = () => setContainerWidth(el.clientWidth);
+    updateWidth();
+    const resizeObserver = new ResizeObserver(updateWidth);
     resizeObserver.observe(el);
     return () => resizeObserver.disconnect();
   }, [showCanvas]);
@@ -236,6 +232,18 @@ export default function BlogGraph() {
       topN: DEFAULT_TOP_N,
     });
   }, [graph, mainTag]);
+
+  // Height fits the *currently visible* nodes, not a constant tuned for the full 120-node
+  // view — see computeCanvasHeight() for why a two-node mainTag filter needs two independent
+  // signals (shape *and* count) to reliably get a short canvas instead of inheriting the
+  // default view's height with almost everything empty.
+  const canvasSize = useMemo(
+    () => ({
+      width: containerWidth,
+      height: computeCanvasHeight(visibleNodes, containerWidth),
+    }),
+    [containerWidth, visibleNodes],
+  );
 
   const visiblePermalinks = useMemo(
     () => new Set(visibleNodes.map((node) => node.permalink)),
@@ -256,6 +264,15 @@ export default function BlogGraph() {
     () => pickMeerkatNodes(visibleNodes, visibleEdges),
     [visibleNodes, visibleEdges],
   );
+
+  // The list fallback (mobile, no JS, or the "View as list" disclosure) ignores the top-N
+  // cutoff — a plain list has no legibility ceiling the way a canvas does — but must still
+  // respect the mainTag filter: otherwise picking a topic from the <select> does nothing
+  // visible whenever the canvas itself isn't shown (mobile), which reads as a broken control.
+  const listNodes = useMemo(() => {
+    if (!graph) return [];
+    return mainTag ? graph.nodes.filter((node) => node.mainTag === mainTag) : graph.nodes;
+  }, [graph, mainTag]);
 
   const permanentLabelSet = useMemo(
     () =>
@@ -491,10 +508,10 @@ export default function BlogGraph() {
       {showCanvas ? (
         <details className={styles.listFallback}>
           <summary>View as list instead</summary>
-          <GroupedList nodes={graph.nodes} />
+          <GroupedList nodes={listNodes} />
         </details>
       ) : (
-        <GroupedList nodes={graph.nodes} />
+        <GroupedList nodes={listNodes} />
       )}
     </div>
   );

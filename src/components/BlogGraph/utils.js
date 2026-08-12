@@ -74,6 +74,72 @@ export function fitTransform(nodes, canvasWidth, canvasHeight, padding = 40) {
   return { scale, offsetX, offsetY };
 }
 
+/**
+ * The height/width ratio of the visible nodes' own bounding box, in the fixed virtual
+ * coordinate space (so it's independent of the actual canvas pixel size). `null` when there
+ * aren't enough nodes to infer a meaningful shape (0 or 1).
+ */
+function contentAspectRatio(nodes) {
+  if (nodes.length < 2) {
+    return null;
+  }
+
+  let minX = Infinity;
+  let maxX = -Infinity;
+  let minY = Infinity;
+  let maxY = -Infinity;
+
+  for (const node of nodes) {
+    minX = Math.min(minX, node.x - node.radius);
+    maxX = Math.max(maxX, node.x + node.radius);
+    minY = Math.min(minY, node.y - node.radius);
+    maxY = Math.max(maxY, node.y + node.radius);
+  }
+
+  const spanX = Math.max(maxX - minX, 1);
+  const spanY = Math.max(maxY - minY, 1);
+  return spanY / spanX;
+}
+
+/**
+ * The canvas element's own height for the current container width and visible node set.
+ * Blends two independent estimates and keeps whichever is *smaller*, because either one
+ * alone has a blind spot that reproduces the "gigantic canvas for two elements" bug:
+ *
+ * - **aspect-ratio** fits the visible nodes' own bounding-box shape — works well when a
+ *   filtered mainTag's articles happen to cluster together spatially, but a couple of nodes
+ *   that are simply far apart *in the shared, whole-corpus layout* (they don't need to link
+ *   to each other to share a mainTag) produce an extreme ratio that clamps right back up to
+ *   the default max height, i.e. no visible shrink at all.
+ * - **density** scales down purely from how few nodes are visible relative to the default
+ *   top-N view — catches exactly that case, but on its own would happily give a tall, tightly
+ *   clustered pair of nodes a squashed canvas it didn't need.
+ *
+ * Taking the minimum means neither blind spot alone can produce an oversized canvas.
+ */
+export function computeCanvasHeight(
+  nodes,
+  containerWidth,
+  { defaultTopN = DEFAULT_TOP_N, minHeight = 220, maxRatio = 0.62, padding = 80 } = {},
+) {
+  if (containerWidth <= 0) {
+    return 0;
+  }
+
+  const maxHeight = Math.round(containerWidth * maxRatio);
+  const clamp = (height) => Math.min(Math.max(height, minHeight), maxHeight);
+
+  const ratio = contentAspectRatio(nodes) ?? maxRatio;
+  const aspectHeight = clamp(Math.round(containerWidth * ratio) + padding);
+
+  const density = Math.min(nodes.length / defaultTopN, 1);
+  const densityHeight = clamp(
+    Math.round(minHeight + (maxHeight - minHeight) * Math.sqrt(density)),
+  );
+
+  return Math.min(aspectHeight, densityHeight);
+}
+
 /** Applies a fitTransform to a single point. */
 export function toCanvasSpace(node, transform) {
   return {
