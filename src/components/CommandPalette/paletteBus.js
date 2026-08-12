@@ -19,3 +19,20 @@ export function registerPalette(onOpen) {
 export function openPalette(initialQuery = "") {
   listener?.(initialQuery);
 }
+
+// ── Cross-overlay mutual exclusion ────────────────────────────────────────────────────────
+//
+// The command palette and the Ask-my-blog bubble panel (AskMyBlogWidget) are independent
+// floating dialogs, each triggerable from several places, but only one should ever be open at
+// once. Whichever opens second closes whichever was open first — both sides just call
+// `setActiveOverlay(close)` when they open, and the `clear` closure it returns when they
+// close, neither needs to know the other exists.
+let activeCloser = null;
+
+export function setActiveOverlay(closeFn) {
+  if (activeCloser && activeCloser !== closeFn) activeCloser();
+  activeCloser = closeFn;
+  return () => {
+    if (activeCloser === closeFn) activeCloser = null;
+  };
+}

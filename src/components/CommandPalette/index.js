@@ -32,7 +32,7 @@ import {
   search as searchQuestions,
 } from "@site/src/components/AskMyBlog/utils";
 import { loadQuestionsIndex } from "@site/src/components/AskMyBlog/questionsIndex";
-import { registerPalette } from "./paletteBus";
+import { registerPalette, setActiveOverlay } from "./paletteBus";
 import {
   buildEntries,
   getContinueSeries,
@@ -92,6 +92,7 @@ export default function CommandPalette() {
   const dialogRef = useRef(null);
   const inputRef = useRef(null);
   const previouslyFocused = useRef(null);
+  const clearOverlayRef = useRef(null);
 
   const entries = useMemo(() => buildEntries(navIndex), [navIndex]);
   const questionIndex = useMemo(() => buildQuestionIndex(questions ?? []), [questions]);
@@ -117,15 +118,20 @@ export default function CommandPalette() {
     setQuery("");
     setActiveIndex(0);
     setPagefind({ term: null, loading: false, results: null });
+    clearOverlayRef.current?.();
     if (previouslyFocused.current) previouslyFocused.current.focus?.();
   }, []);
 
-  const open = useCallback((initialQuery = "") => {
-    previouslyFocused.current = document.activeElement;
-    setView("palette");
-    setQuery(initialQuery);
-    setActiveIndex(0);
-  }, []);
+  const open = useCallback(
+    (initialQuery = "") => {
+      previouslyFocused.current = document.activeElement;
+      setView("palette");
+      setQuery(initialQuery);
+      setActiveIndex(0);
+      clearOverlayRef.current = setActiveOverlay(close);
+    },
+    [close],
+  );
 
   useEffect(() => registerPalette(open), [open]);
 

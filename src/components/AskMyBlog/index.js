@@ -20,6 +20,7 @@ import styles from "./styles.module.css";
 export default function AskMyBlog({
   placeholder = 'Ask a question, e.g. "how do I reduce my image size?"',
   maxResults = 8,
+  showLabel = true,
 }) {
   const { withBaseUrl } = useBaseUrlUtils();
   // null = not fetched yet, [] = loaded (possibly empty), only ever read after loading.
@@ -59,7 +60,10 @@ export default function AskMyBlog({
 
   return (
     <div className={styles.container}>
-      <label htmlFor="ask-my-blog-input" className={styles.label}>
+      <label
+        htmlFor="ask-my-blog-input"
+        className={showLabel ? styles.label : styles.srOnly}
+      >
         Ask my blog
       </label>
       <input
@@ -108,4 +112,5 @@ export default function AskMyBlog({
 AskMyBlog.propTypes = {
   placeholder: PropTypes.string,
   maxResults: PropTypes.number,
+  showLabel: PropTypes.bool,
 };
