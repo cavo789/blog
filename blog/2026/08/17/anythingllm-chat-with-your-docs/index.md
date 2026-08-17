@@ -6,7 +6,6 @@ image: /img/v2/anythingllm.webp
 mainTag: ai
 tags: [ai, ollama, docker, self-hosted]
 date: 2026-08-17
-draft: true
 description: "AnythingLLM turns a pile of Markdown, Quarto, PDF, DOCX, Excel and PowerPoint files into something you can actually chat with, backed by a local Ollama model. Part 1 sets it up on a single machine; Part 2 keeps the documents on my work PC while borrowing the GPU sitting at home."
 language: en
 ai_assisted: true
