@@ -284,7 +284,20 @@ jobs:
           check() {
             expected="$1"
             url="$2"
-            code="$(curl -sS -o /dev/null -w '%{http_code}' --retry 3 --retry-delay 5 --max-time 30 "$url")"
+            # -L: every page on this site except "/" builds as a directory
+            # (blog/<slug>/index.html), and the live LiteSpeed host 301-redirects
+            # the no-trailing-slash form to add the slash before serving it — this
+            # is the site's normal, long-standing behavior (confirmed against
+            # production and reproduced locally against a real Apache serving the
+            # actual build/ output — not something a bad deploy would introduce),
+            # not a fallback worth failing the deploy over. `trailingSlash: false`
+            # would remove the ambiguity at the source but breaks this repo's own
+            # build-time plugins (blog-feed-plugin and others assume the
+            # directory+index.html layout — verified: it silently zeroes out the
+            # RSS feed), so it isn't a safe fix here. Following the redirect and
+            # asserting on the final status is what actually matches what a
+            # reader's browser experiences.
+            code="$(curl -sSL -o /dev/null -w '%{http_code}' --retry 3 --retry-delay 5 --max-time 30 "$url")"
             echo "$code  (want $expected)  $url"
             if [ "$code" != "$expected" ]; then
               echo "::error::$url answered HTTP $code after the deploy, expected $expected"
