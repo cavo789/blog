@@ -148,3 +148,39 @@ silencieusement Map et Ask My Blog. C'est cette incohérence qui a été corrig�
   THEMATIC ARTICLE SERIES », qui parle plutôt de *séries* que de *questions*. L'image reste
   cohérente avec la page `/faq` (c'est son propre visuel), donc elle a été conservée, mais une
   illustration dédiée à « Ask My Blog » se lirait mieux dans la grille.
+
+## Revert partiel (2026-08-17) — les deux cartes sont retirées de la home
+
+La « piste esthétique laissée ouverte » ci-dessus était en réalité le vrai défaut, et il était
+plus grave qu'annoncé. Constat visuel côte à côte :
+
+- Les six cartes d'origine suivent une grammaire stricte — un seul sujet (le suricate) centré,
+  fond pastel uni, un titre en gros et un sous-titre. Rien d'autre.
+- `map.webp` et `faq.webp` étaient des recadrages de bannières 1584x672 : composition dense et
+  décentrée, texte incrusté tronqué par le recadrage (« Data Automati », « Remote Dev with
+  VSCode »), et pour la FAQ un titre qui décrit littéralement `/series` et non « Ask My Blog ».
+  Dans la grille, elles se lisaient comme deux vignettes étrangères au jeu.
+
+Décision : **retirer les deux cartes**, garder les entrées de navbar `/map` et `/faq` (plus la
+bulle `AskMyBlogWidget`, visible partout, qui pointe déjà sur la FAQ). L'accessibilité depuis la
+page d'accueil est donc conservée — via la navbar, pas via la grille.
+
+Fait :
+
+- `src/data/home_cards.js` : suppression des entrées Map et Ask My Blog → retour à six cartes.
+- Commentaire d'en-tête réécrit. L'ancien posait l'invariant « navbar et cartes doivent couvrir
+  les mêmes destinations, sinon c'est un bug » — invariant qui est précisément ce qui a fait
+  ajouter deux cartes mal illustrées. Le nouveau énonce l'inverse : la grille est un
+  sous-ensemble *curaté*, l'absence de Map et FAQ est intentionnelle, et y rajouter une
+  destination suppose de produire d'abord une illustration dans la même grammaire.
+- `static/img/homepage/map.webp` et `faq.webp` supprimés (plus aucune référence). Les bannières
+  sources `static/img/map.webp` et `static/img/faqs.webp` restent en place : le recadrage est
+  reproductible en une commande `sharp` si une vraie illustration voit le jour.
+- Effet de bord favorable : six cartes donnent 3-3 en trois colonnes, donc plus de cellule vide
+  en fin de grille (le compromis accepté à 8 cartes disparaît).
+
+Ce qui reste vrai du traitement initial : le `Hint` sur `/` (4 s), le garde-fou `.cardImage`
+(`aspect-ratio: 1/1`), l'abandon de la carte « Search everything », le rappel `⌘K` du footer.
+
+Reste ouvert (seul point non tranché) : produire des illustrations « Map » et « Ask My Blog » au
+format des six autres, et alors seulement rouvrir la question de leur présence sur la home.

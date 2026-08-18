@@ -321,7 +321,12 @@ module.exports = function blogFeedPlugin(context, options = {}) {
           id: siteUrl,
           link: absoluteUrl(siteUrl, baseUrl, "blog"),
           language: siteConfig.i18n?.defaultLocale || "en-US",
-          updated: new Date(),
+          // Drives <lastBuildDate>. Deliberately the newest post's date rather
+          // than `new Date()`: a wall-clock value rewrote this 1.3 MB file on
+          // every build, so the deploy re-uploaded it even when no article had
+          // changed. The date of the most recent entry is also the more honest
+          // answer to "when did this feed last actually change?".
+          updated: finalFeedItems.length ? new Date(finalFeedItems[0].date) : new Date(0),
         });
 
         // Loop items to populate feed

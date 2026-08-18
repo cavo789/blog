@@ -182,7 +182,9 @@ function buildIndex(siteDir) {
   const themes = buildThemes(entries, tagLabels);
 
   return {
-    generatedAt: new Date().toISOString(),
+    // No build timestamp: this index ships in the client bundle and in
+    // build/questions-index.json, and a wall-clock value would change
+    // main.js's hash on every build (see plugins/blog-graph-plugin).
     entries,
     themes,
     meta: {

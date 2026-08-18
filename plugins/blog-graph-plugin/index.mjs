@@ -271,7 +271,10 @@ function buildGraph() {
   );
 
   return {
-    generatedAt: new Date().toISOString(),
+    // No build timestamp here on purpose. This object ships inside the client
+    // bundle, so a wall-clock value changes main.js's content hash on every
+    // build, which renames the file, which changes every HTML page that
+    // references it — ~44 MB re-uploaded on each FTP deploy for nothing.
     width: WIDTH,
     height: HEIGHT,
     nodes,

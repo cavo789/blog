@@ -101,7 +101,9 @@ function buildNavIndex() {
   const posts = loadPosts();
 
   return {
-    generatedAt: new Date().toISOString(),
+    // No build timestamp: this index ships in the client bundle, and a
+    // wall-clock value would change main.js's hash on every build (see the
+    // same note in plugins/blog-graph-plugin).
     articles: buildArticles(posts),
     series: buildSeries(posts),
     tags: buildTags(posts),

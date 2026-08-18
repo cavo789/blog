@@ -1,10 +1,13 @@
 /**
  * Cards rendered by `HomeCards` in the homepage's "Explore the site" section.
  *
- * Kept in the same order as the navbar items in `docusaurus.config.js`, and covering the same
- * destinations: this section is the visual restatement of the navbar for a visitor who scrolls
- * rather than reads the top bar, so a destination present in one and absent from the other
- * (Map and Ask My Blog were, until TODO 0089) is a bug.
+ * Kept in the same order as the navbar items in `docusaurus.config.js`, but *not* a mirror of it:
+ * this is a curated subset. `/map` and `/faq` are reachable from the navbar (and `/faq` also from
+ * the always-visible Ask-my-blog bubble) and are deliberately absent here — TODO 0089 added them,
+ * and they were removed again because their only available illustrations are crops of 1584x672
+ * banners, which read as visual noise next to the single-subject meerkat drawings of the six
+ * others. Adding a destination back means producing an illustration in that same grammar first;
+ * a mismatched card costs more than a missing one, since the navbar already covers the link.
  *
  * `image` is a filename resolved against `/static/img/homepage/`. Sources are square (1024x1024);
  * `HomeCards` also enforces a 1:1 ratio in CSS so an off-format image can't break the grid.
@@ -27,20 +30,6 @@ const HOME_CARDS = [
     description: "Quick way to find posts by topic or keyword.",
     url: "/blog/tags",
     image: "tags.webp",
-  },
-  {
-    title: "Map",
-    description: "An interactive map of every article and how they connect.",
-    url: "/map",
-    image: "map.webp",
-    alt: "The meerkat pointing at a map of the blog's articles.",
-  },
-  {
-    title: "Ask My Blog",
-    description: "Every question this blog answers — search it or browse by topic.",
-    url: "/faq",
-    image: "faq.webp",
-    alt: "The meerkat surveying the blog's topics.",
   },
   {
     title: "Repositories",

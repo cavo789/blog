@@ -110,17 +110,22 @@ function formatDate(date) {
 
 // The comment carries the same info a human reader would otherwise lose once
 // this file is copied or pasted elsewhere: where the rendered original lives
-// (images, interactive components, the lot) and when this static snapshot was
-// taken. Kept as an HTML comment — invisible in Markdown, so a reader pasting
-// the file into a renderer isn't shown a stray metadata block, while it still
-// reads as plain text in a raw view or in whatever an LLM is handed.
-function buildMetadataComment(post, siteConfig, buildDate) {
+// (images, interactive components, the lot). Kept as an HTML comment — invisible
+// in Markdown, so a reader pasting the file into a renderer isn't shown a stray
+// metadata block, while it still reads as plain text in a raw view or in
+// whatever an LLM is handed.
+//
+// Deliberately no build timestamp. One wall-clock value rewrote all 247 mirrors
+// plus the 25 llms bundles on every single build (5.2 MB), which the deploy then
+// had to re-upload even when no article had changed. The prose below already
+// says the file is generated at build time, and `published` carries the date a
+// reader actually needs.
+function buildMetadataComment(post, siteConfig) {
   const url = `${siteConfig.url}${post.permalink}`;
   return [
     "<!--",
     `  canonical-url: ${url}`,
     `  published:     ${formatDate(post.date)}`,
-    `  generated-at:  ${buildDate}`,
     "  This is a static plain-Markdown mirror generated at build time.",
     "  Visit the canonical URL above for the fully rendered page, with images and interactive components.",
     "-->",
@@ -128,12 +133,8 @@ function buildMetadataComment(post, siteConfig, buildDate) {
   ].join("\n");
 }
 
-function buildHeader(post, siteConfig, buildDate) {
-  const lines = [
-    buildMetadataComment(post, siteConfig, buildDate),
-    `# ${post.title}`,
-    "",
-  ];
+function buildHeader(post, siteConfig) {
+  const lines = [buildMetadataComment(post, siteConfig), `# ${post.title}`, ""];
   if (post.description) {
     lines.push(`> ${post.description}`, "");
   }
@@ -227,10 +228,6 @@ module.exports = function markdownExportPlugin() {
 
     async postBuild({ outDir, siteDir, siteConfig, routesPaths }) {
       const posts = loadPosts(siteDir);
-      // One timestamp for the whole run — every mirror written by this build
-      // shares it, rather than each carrying the few milliseconds' drift
-      // between one post's write and the next.
-      const buildDate = new Date().toISOString();
 
       // Only mirror posts that actually got a live route — this is what makes
       // "draft" (excluded in prod by Docusaurus's own blog plugin) and
@@ -256,7 +253,7 @@ module.exports = function markdownExportPlugin() {
             currentFileDir: post.currentFileDir,
             projectRoot: siteDir,
           });
-          markdown = buildHeader(post, siteConfig, buildDate) + result.markdown;
+          markdown = buildHeader(post, siteConfig) + result.markdown;
           for (const name of result.unknownComponents) unknownAll.add(name);
         } catch (err) {
           // One broken article must never take the whole `yarn build` down —

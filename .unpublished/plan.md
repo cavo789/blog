@@ -294,7 +294,7 @@ découvrabilité ([[0089]]). **Chaîne de dépendances dure** — les articles s
 | 1 | `docusaurus-blog-map` | 2026-10-13 | `/map` : graphe force-directed du corpus, layout d3-force calculé **au build** dans Node, canvas + fallback liste. Trois types d'arêtes (link/series/tag) et le double seuil tag (layout vs payload). | Aucune — ne lie que des articles publiés |
 | 2 | `docusaurus-ask-my-blog` | 2026-10-20 | `/faq` : génération Ollama de 8-12 questions par article (sidecars `.questions.json`), plugin d'agrégation à trois formes, recherche BM25 côté client. | Aucune — ne lie que des articles publiés |
 | 3 | `docusaurus-command-palette` | 2026-10-27 | `Ctrl+K` : six modes par préfixe, index de navigation build-time, swizzle `SearchBar` + `Layout`, sonde Pagefind. | **#1 et #2** (`<Link>` durs) |
-| 4 | `docusaurus-ask-my-blog-bubble` | 2026-11-03 | La bulle flottante + les cartes de la home manquantes + le hint première visite ; l'exclusion mutuelle des overlays. | **#1, #2 et #3** (`<Link>` durs) |
+| 4 | `docusaurus-ask-my-blog-bubble` | 2026-11-03 | La bulle flottante comme troisième porte vers l'index de questions (la première qui ne suppose aucune connaissance préalable) + le hint première visite ; l'exclusion mutuelle des overlays. | **#1, #2 et #3** (`<Link>` durs) |
 
 `yarn links:check` signale actuellement 2 liens non résolus sur #3 et 3 sur #4 — c'est attendu et
 c'est exactement la chaîne ci-dessus. Publier dans l'ordre 1 → 2 → 3 → 4 les résout tous.
@@ -384,6 +384,39 @@ médiane TTV 42 %, 60 articles à 100 %, répartition 52 🟢 / 62 🟠 / 191 �
   plus crédible qu'un conseil abstrait), mais c'est une décision éditoriale à confirmer.
 - Liens réciproques à poser au moment de la publication : `/blog/docker-volumes` (cité comme cas
   d'école dans l'audit) et `/blog/docusaurus-snippets` (cité par les deux).
+
+## Nouveau brouillon standalone (créé 2026-08-17) — pipeline de déploiement
+
+| Slug | Date placeholder | Série | Angle |
+| --- | --- | --- | --- |
+| `docusaurus-github-actions-ssh-deploy` | 2026-08-24 | *(aucune)* | Comment je publie le blog : `git push` → GitHub Actions build + vérifications → `rsync` sur SSH. Plus le tour de force `draft: true` retiré depuis github.com, donc publication depuis un téléphone. Tutoriel destiné à quiconque a Docusaurus + GitHub + un hébergement SFTP/SSH. |
+
+Aucune dépendance sur un autre brouillon. Publiable dès que les points ci-dessous sont réglés.
+
+**Avant de publier :**
+
+- ⚠️ **Recoupement avec `/blog/github-action`** (« GitHub - Use Actions to deploy this blog »,
+  publié 2026-01-14, 70 lignes, `review_date: 2026-07-30`). L'ancien article décrit la version FTP
+  du même pipeline. Le nouveau ne le remplace pas : il le cite comme point de départ valable pour un
+  hébergement FTP-only. **Décision éditoriale à confirmer** — soit on garde les deux avec le lien
+  croisé actuel, soit on réécrit l'ancien pour qu'il pointe explicitement vers le nouveau.
+- ⚠️ **Chiffres à vérifier après le premier vrai déploiement rsync.** L'article reste volontairement
+  qualitatif (« quelques dizaines de secondes », « une poignée de mégaoctets ») parce qu'au moment de
+  la rédaction le transfert rsync n'avait pas encore tourné une seule fois. Une fois la sortie
+  `--stats` réelle disponible, remplacer ces formulations par les mesures et envisager un
+  `<Terminal>` avec la sortie authentique en mouvement 2 — un vrai output vaut mieux que le schéma
+  actuel.
+- **`files/deploy.yml` est une copie du workflow réel** — à re-synchroniser si `.github/workflows/deploy.yml`
+  évolue d'ici la publication (c'est très probable : `--delete` ciblé, Node 22, `SSH_KNOWN_HOSTS`).
+- **Bannière : `/img/v2/github_profile_automate.webp`**, déjà utilisée une fois
+  (`github-profile-last-blogposts`). C'était la seule image inutilisée qui colle au sujet
+  (`github_tips.webp` est prise par l'ancien article FTP, ce qui aurait été confusant). Une bannière
+  dédiée « pipeline de déploiement » serait mieux.
+- **Liens réciproques à poser au moment de la publication** : `/blog/github-action` (l'ancienne
+  version FTP) et `/blog/connect-using-ssh-to-your-hosting-server`. Impossible avant : un lien depuis
+  un article publié vers une URL qui n'existe pas encore casse le `yarn build`.
+- Le tag `rsync` n'existe pas dans `blog/tags.yml` ; l'article utilise `[github, docusaurus, ssh]`.
+  À créer si on veut le référencer.
 
 ## Correction apportée à un article déjà publié (2026-07-27)
 

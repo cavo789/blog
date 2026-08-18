@@ -1,27 +1,71 @@
 name: Code quality (ESLint + stylelint)
 
-on:
-  push:
-  pull_request:
-
 # Separate from deploy.yml on purpose: a lint failure must never block publishing
 # the live site, but it must be visible on every push/PR.
+on:
+  # `push` is limited to main while `pull_request` covers the branches. Without
+  # that split, a push to a branch that has an open PR triggered this workflow
+  # twice for the same commit.
+  #
+  # `yarn install` here restores a 2.6 GB node_modules, so both events skip
+  # commits that cannot affect lint or the article link check. The list has to be
+  # repeated per event — GitHub only accepts path filters inside an event, and
+  # workflow files do not support YAML anchors. Note that .unpublished/ is
+  # deliberately absent: the internal-links job checks drafts too.
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - ".claude/**"
+      - ".config/**"
+      - ".devcontainer/**"
+      - ".scripts/**"
+      - ".todos/**"
+      - ".tools/**"
+      - ".vscode/**"
+      - "*.md"
+      - "LICENSE"
+  pull_request:
+    paths-ignore:
+      - ".claude/**"
+      - ".config/**"
+      - ".devcontainer/**"
+      - ".scripts/**"
+      - ".todos/**"
+      - ".tools/**"
+      - ".vscode/**"
+      - "*.md"
+      - "LICENSE"
+
+# Only the newest commit of a branch is worth linting; superseded runs are
+# cancelled instead of queueing behind each other (the opposite choice from
+# deploy.yml, where cancelling mid-upload would corrupt the remote state).
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   lint:
     name: Lint JS/JSX and CSS
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
+      # Actions are pinned to a commit SHA: a tag can be moved to point at
+      # different code, a SHA cannot. The comment is the version it resolves to.
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 20
           cache: "yarn"
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile --prefer-offline
 
       - name: Run lint (ESLint + stylelint)
         run: yarn lint
@@ -29,17 +73,22 @@ jobs:
   internal-links:
     name: Internal links on new/changed articles
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     # Informational on purpose: a missing cross-link is a writing remark, not a
     # reason to turn the whole run red. Findings show up as annotations.
     continue-on-error: true
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0 # the diff needs the history, not just the tip commit
+          # Only commit metadata and file *names* are needed below, never the
+          # content of a historical version, so the blobs can be left on the
+          # server instead of downloading a 280 MiB pack.
+          filter: blob:none
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 20
 

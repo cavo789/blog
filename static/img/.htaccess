@@ -1,0 +1,18 @@
+# Overrides the site-wide `immutable` caching from the root .htaccess for this
+# folder only.
+#
+# Everything under /assets/ carries a content hash in its filename (Docusaurus
+# and the ideal-image plugin put it there), so a changed file always means a
+# changed URL and caching it for a year is safe. The 300+ files here are the
+# opposite: they are copied verbatim from static/img/, keeping the name I gave
+# them. Replacing a banner image in place therefore leaves returning visitors
+# looking at last year's copy for up to a year.
+#
+# A week is the compromise: still cached hard enough to cost nothing on repeat
+# visits, short enough that an image swap actually reaches readers. Use a new
+# filename when a change must be visible immediately.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(png|jpg|jpeg|webp|avif|gif|svg|ico)$">
+    Header set Cache-Control "public, max-age=604800, must-revalidate"
+  </FilesMatch>
+</IfModule>

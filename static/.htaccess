@@ -15,6 +15,17 @@
   RedirectPermanent /blog/docker-apache-ssl https://www.avonture.be/blog/docker-localhost-ssl
   RedirectPermanent /resources https://www.avonture.be/repositories
 
+  # Author-only data must never be readable by the public. admin-data/drafts.json
+  # lists every draft and unlisted post — slug, title, date, description — which
+  # is exactly the set of articles not yet meant to be seen. The deploy step also
+  # excludes this folder from the upload; this rule is the second layer, and it
+  # keeps covering any copy already sitting on the server.
+  RewriteRule ^admin-data/ - [F,L]
+
+  # Sync state written by the FTP deploy action: a full inventory of the server
+  # tree. No secret in it, but no reason to publish the map either.
+  RewriteRule ^\.ftp-deploy-sync-state\.json$ - [F,L]
+
   # Docusaurus-specific rules to handle single-page application routing
   # Note: The RewriteBase is important if your site is in a subdirectory
   RewriteBase /
@@ -46,13 +57,23 @@ AddType text/xsl .xsl
 # triggering a download — Apache has no built-in mapping for .md.
 AddType text/markdown .md
 
-<FilesMatch "\.(js|css|png|jpg|webp|svg|woff|woff2|ttf|json|xsl)$">
+# Cache-forever is only ever correct for a file whose *name* changes when its
+# content changes — every one of these carries a content hash, so a new build
+# produces a new URL and no reader can be served a stale copy.
+#
+# `json` deliberately absent: not one of the JSON files this site emits is
+# content-hashed. questions-index.json, blog/feed.json and
+# pagefind/pagefind-entry.json all keep a fixed name while their content changes
+# on every build, so `immutable` told returning visitors to keep last year's copy
+# for a year. For pagefind-entry.json that silently breaks search — the stale
+# entry file points at index chunks whose names no longer exist.
+<FilesMatch "\.(js|css|png|jpg|webp|svg|woff|woff2|ttf|xsl)$">
   Header set Cache-Control "public, max-age=31536000, immutable"
 </FilesMatch>
 
-# HTML files, and their plain-Markdown mirrors, shouldn't be cached so a
-# reader always gets the version from the latest build.
-<FilesMatch "\.(html|md)$">
+# HTML files, their plain-Markdown mirrors, and the non-hashed JSON indexes
+# shouldn't be cached so a reader always gets the version from the latest build.
+<FilesMatch "\.(html|md|json)$">
   Header set Cache-Control "no-cache, no-store, must-revalidate"
 </FilesMatch>
 
