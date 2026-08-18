@@ -395,26 +395,57 @@ Aucune dépendance sur un autre brouillon. Publiable dès que les points ci-dess
 
 **Avant de publier :**
 
+- ✅ **Section « The Catch: Your Build Must Be Reproducible » ajoutée (2026-08-18)** — le manque le
+  plus grave du premier jet : tout le bénéfice (1,76 Mo au lieu de 165) dépend d'un build
+  déterministe, et rien ne prévient quand ça casse. La section donne la recette de diagnostic
+  (deux builds, comparaison md5, à froid) et le motif de correction (dériver la date du contenu,
+  pas de l'horloge). Ajouté aussi : avertissement sur le premier run qui transfère tout,
+  mention de `[skip ci]` natif, et note sur les deux endroits du workflow à adapter (URLs du smoke
+  test, liste `--exclude`).
 - ⚠️ **Recoupement avec `/blog/github-action`** (« GitHub - Use Actions to deploy this blog »,
   publié 2026-01-14, 70 lignes, `review_date: 2026-07-30`). L'ancien article décrit la version FTP
   du même pipeline. Le nouveau ne le remplace pas : il le cite comme point de départ valable pour un
   hébergement FTP-only. **Décision éditoriale à confirmer** — soit on garde les deux avec le lien
   croisé actuel, soit on réécrit l'ancien pour qu'il pointe explicitement vers le nouveau.
-- ⚠️ **Chiffres à vérifier après le premier vrai déploiement rsync.** L'article reste volontairement
-  qualitatif (« quelques dizaines de secondes », « une poignée de mégaoctets ») parce qu'au moment de
-  la rédaction le transfert rsync n'avait pas encore tourné une seule fois. Une fois la sortie
-  `--stats` réelle disponible, remplacer ces formulations par les mesures et envisager un
-  `<Terminal>` avec la sortie authentique en mouvement 2 — un vrai output vaut mieux que le schéma
-  actuel.
-- **`files/deploy.yml` est une copie du workflow réel** — à re-synchroniser si `.github/workflows/deploy.yml`
-  évolue d'ici la publication (c'est très probable : `--delete` ciblé, Node 22, `SSH_KNOWN_HOSTS`).
-- **Bannière : `/img/v2/github_profile_automate.webp`**, déjà utilisée une fois
-  (`github-profile-last-blogposts`). C'était la seule image inutilisée qui colle au sujet
-  (`github_tips.webp` est prise par l'ancien article FTP, ce qui aurait été confusant). Une bannière
-  dédiée « pipeline de déploiement » serait mieux.
-- **Liens réciproques à poser au moment de la publication** : `/blog/github-action` (l'ancienne
-  version FTP) et `/blog/connect-using-ssh-to-your-hosting-server`. Impossible avant : un lien depuis
-  un article publié vers une URL qui n'existe pas encore casse le `yarn build`.
+- ✅ **Chiffres réels intégrés (2026-08-18)** : 61 fichiers sur 3029, 1,76 Mo sur 165,79 Mo,
+  ~4 s pour l'étape de transfert. Mesuré en dry run après le premier vrai déploiement rsync. La
+  sortie `--stats` authentique est dans `files/rsync-stats.txt` et sert de `<Terminal>` en
+  mouvement 2. Pour référence historique : le premier rsync après migration a transféré 758 fichiers
+  et 52,62 Mo — rattrapage unique du build FTP pré-correctifs.
+- ✅ **Erreur factuelle corrigée (2026-08-18)** : l'article affirmait que le build refuse de passer
+  sur un lien interne cassé. **Faux sur ce blog** — `docusaurus.config.js` fixe
+  `onBrokenLinks: "ignore"`, délibérément, parce que les routes dynamiques `/blog/tags/*` et
+  `/series/*` produisent 15 faux positifs. Ce qui arrête réellement le build : erreur MDX, ancre
+  cassée (`onBrokenAnchors: "throw"`), route dupliquée, plus les contrôles du workflow (sitemap/RSS
+  vides ou XML invalide).
+- **`files/deploy.yml` est une copie du workflow réel** — à re-synchroniser si
+  `.github/workflows/deploy.yml` évolue d'ici la publication. Resynchronisé le 2026-08-18 (résumé de
+  transfert, Node 24, variantes `[skip-ci]`, `--delete` ciblé). Reste possiblement à venir :
+  `SSH_KNOWN_HOSTS` pour remplacer le TOFU de `ssh-keyscan`.
+- ✅ **`--delete` ciblé implémenté (2026-08-18)** : transfert en trois passes. Passe 1 = le site
+  sans `--delete` (la racine web contient `api/` avec des données de lecteurs et un `.env`, plus
+  `.well-known/` = `acme-challenge/` pour le SSL et `atproto-did` pour le handle Bluesky — rien de
+  tout ça n'est dans le dépôt). Passes 2 et 3 = `assets/` et `pagefind/` avec `--delete`, périmètre
+  borné par les chemins eux-mêmes. Christophe a confirmé n'avoir rien déposé à la main dans ces
+  deux dossiers. Motif principal : Pagefind redécoupe son index à chaque build et laisse ~59
+  orphelins par déploiement. La section « Under the Hood » de l'article a été réécrite en
+  conséquence.
+- ✅ **Bannière dédiée créée par Christophe (2026-08-18)** : `/img/v2/publishing_blog.webp`,
+  inutilisée ailleurs. Remplace `github_profile_automate.webp` qui n'était qu'un pis-aller.
+- ⚠️ **Lien réciproque depuis `/blog/github-action` : À POSER À LA PUBLICATION.** L'article
+  `github-action` a été mis à jour le 2026-08-18 (AlertBox `important` après `<!-- truncate -->`,
+  nouvelle section « Why I Moved to SSH », entrée `updates:`), mais **sans** le `<Link>` vers ce
+  brouillon. Raison : `onBrokenLinks: "ignore"` fait que rien ne préviendrait, et le lien
+  renverrait un 404 aux lecteurs jusqu'à la publication. La phrase d'accroche est prête, il ne
+  reste qu'à insérer le lien à la fin de la section « Why I Moved to SSH ».
+  ⚠️ **Piège découvert à cette occasion** : une `AlertBox` contenant un lien d'ancre (`#section`)
+  placée **avant** `<!-- truncate -->` casse le build — l'extrait est rendu sur les pages de tags,
+  où l'ancre n'existe pas, et `onBrokenAnchors: "throw"` bloque. Placer ce genre d'encadré après
+  le `truncate`.
+- ✅ **Correction annexe sur `/blog/github-action`** : son `<Snippet>` pointait sur
+  `.github/workflows/deploy.yml`, le fichier vivant du dépôt — il affichait donc notre workflow
+  rsync dans un article qui parle de FTP. La version FTP a été figée dans
+  `blog/2024/01/14/github-action/files/deploy.yml` (extraite de `d17b42b3`).
 - Le tag `rsync` n'existe pas dans `blog/tags.yml` ; l'article utilise `[github, docusaurus, ssh]`.
   À créer si on veut le référencer.
 

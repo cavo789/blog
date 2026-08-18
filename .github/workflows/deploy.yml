@@ -49,7 +49,20 @@ jobs:
     # The build is ~1 min and rsync is seconds; 20 min is generous headroom
     # without letting a hung transfer burn hours of runner time.
     timeout-minutes: 20
-    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.head_commit.message, 'wip') == false
+    # Escape hatch. GitHub natively suppresses a run only for the exact string
+    # `[skip ci]` (and `[ci skip]`, `[no ci]`, `[skip actions]`, `[actions skip]`)
+    # — that list cannot be extended. The other spellings below are honoured here
+    # instead: the run still appears in the Actions tab, but every job is skipped
+    # in ~1s and no minutes are billed. String comparisons in GitHub expressions
+    # are case-insensitive, so `WIP:` and `[SKIP-CI]` match too.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (
+        !startsWith(github.event.head_commit.message, 'wip') &&
+        !contains(github.event.head_commit.message, '[skip ci]') &&
+        !contains(github.event.head_commit.message, '[skip-ci]') &&
+        !contains(github.event.head_commit.message, '[skip_ci]')
+      )
     steps:
       # Third-party and first-party actions alike are pinned to a commit SHA:
       # a tag can be moved to point at different code, a SHA cannot. The
@@ -73,7 +86,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: 20
+          node-version: 24
           # Caches the yarn download cache (~/.cache/yarn), keyed on yarn.lock.
           # Deliberately the only cache in this workflow: node_modules is 2.6 GB
           # here (including a ~1 GB webpack cache under node_modules/.cache) while
@@ -110,7 +123,7 @@ jobs:
 
       # Shows up on the run's summary page. The size and file count are the
       # numbers to watch: a sudden jump means the build stopped being
-      # reproducible again and the FTP sync is about to re-upload the world.
+      # reproducible again and rsync is about to re-upload the whole site.
       - name: Build report
         run: |
           set -euo pipefail
@@ -131,6 +144,7 @@ jobs:
       - name: Deploy to avonture.be over SSH
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
@@ -144,20 +158,24 @@ jobs:
           printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
 
-          # Learns the server's host key on the spot. This is trust-on-first-use:
-          # it stops a passive observer but not someone able to intercept this very
-          # first connection. To close that gap, run
-          # `ssh-keyscan -p <port> <host>` locally, store the output as a
-          # SSH_KNOWN_HOSTS secret, and replace this line with a write of it.
-          ssh-keyscan -p "$SSH_PORT" "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
-
-          # Without this check, an unreachable host yields an empty known_hosts and
-          # then a confusing "Host key verification failed" from rsync instead of
-          # the real cause.
-          if [ ! -s ~/.ssh/known_hosts ]; then
-            echo "::error::Could not read a host key from $SSH_HOST:$SSH_PORT — check the SSH_HOST and SSH_PORT secrets."
+          # The server's host key is pinned, not learned at run time. Running
+          # `ssh-keyscan` here would have meant trusting whatever answered on the
+          # spot — fine against a passive observer, useless against anyone able to
+          # intercept that first connection. The expected key lives in a secret
+          # instead, so a substituted server fails the connection rather than
+          # silently receiving the whole site.
+          #
+          # To (re)generate it, take the entry you already trust from your own
+          # machine — `ssh-keygen -F '[host]:port' | grep -v '^#'` — and store the
+          # output as the SSH_KNOWN_HOSTS secret. It changes only if the host
+          # rebuilds its SSH identity, which is exactly when you want to be told.
+          if [ -z "${SSH_KNOWN_HOSTS:-}" ]; then
+            echo "::error::The SSH_KNOWN_HOSTS secret is empty. Generate it with: ssh-keygen -F '[<host>]:<port>' | grep -v '^#'"
             exit 1
           fi
+
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
 
           # --checksum is the flag that makes this cheap. rsync's default compares
           # size plus modification time, and Docusaurus rewrites every file on every
@@ -187,7 +205,6 @@ jobs:
             --human-readable
             --stats
             --chmod=D755,F644
-            --exclude "admin-data/***"
             -e "ssh -i $HOME/.ssh/deploy_key -p $SSH_PORT -o StrictHostKeyChecking=yes"
           )
 
@@ -196,9 +213,57 @@ jobs:
             rsync_args+=(--dry-run --itemize-changes)
           fi
 
+          remote="$SSH_USER@$SSH_HOST:$REMOTE_PATH"
+
+          # The transfer runs in three passes so that --delete can be used where it
+          # is safe and nowhere else. Splitting it costs nothing: each file is still
+          # checksummed exactly once.
+          #
+          # Pass 1 — the site, WITHOUT --delete. The remote web root also holds
+          # things this build never produces: a PHP API with live reader data and
+          # its .env, and .well-known/ (the ACME challenge folder for SSL renewal
+          # and atproto-did, which backs the Bluesky domain handle). None of it can
+          # be recovered from this repository, so nothing here deletes anything.
           # The trailing slash on build/ matters: it copies the *contents* of
           # build/ into REMOTE_PATH, rather than creating REMOTE_PATH/build/.
-          rsync "${rsync_args[@]}" build/ "$SSH_USER@$SSH_HOST:$REMOTE_PATH/"
+          # `set -o pipefail` above keeps rsync's exit code across the tee.
+          #
+          # admin-data/drafts.json is excluded outright: it lists every draft and
+          # unlisted post. The build still writes it locally, where /admin uses it.
+          rsync "${rsync_args[@]}" \
+            --exclude "admin-data/***" \
+            --exclude "/assets/***" \
+            --exclude "/pagefind/***" \
+            build/ "$remote/" | tee /tmp/rsync-site.log
+
+          # Passes 2 and 3 — assets/ and pagefind/ are 100% generated output with
+          # content-hashed filenames, so anything there that the build no longer
+          # produces is dead weight by definition. Pagefind is the reason this
+          # matters: it re-chunks its search index on every build, leaving ~59
+          # orphan files behind each time. Restricting --delete to these two source
+          # and destination paths bounds the blast radius by construction — it
+          # cannot reach outside them even if this comment is wrong.
+          for generated in assets pagefind; do
+            rsync "${rsync_args[@]}" --delete \
+              "build/$generated/" "$remote/$generated/" | tee "/tmp/rsync-$generated.log"
+          done
+
+          # Surface the numbers on the run summary rather than leaving them buried
+          # in the step log. "Data" is the health check of the whole pipeline: if it
+          # ever jumps back to tens of megabytes, the build has stopped being
+          # reproducible and every page is being re-uploaded.
+          stat_of() { grep -oP "(?<=^$2: ).*" "$1" | tail -1 || true; }
+
+          {
+            echo "### Transfer"
+            echo
+            echo "| Pass | Files | Data | Deleted |"
+            echo "| --- | --- | --- | --- |"
+            for pass in site assets pagefind; do
+              log="/tmp/rsync-$pass.log"
+              echo "| $pass | $(stat_of "$log" 'Number of regular files transferred') | $(stat_of "$log" 'Total transferred file size') | $(stat_of "$log" 'Number of deleted files') |"
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
 
       # A deploy can report success while the live site is broken: a half-written
       # index.html, or a transfer that stopped partway through.

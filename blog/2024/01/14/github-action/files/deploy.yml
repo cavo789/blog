@@ -1,0 +1,74 @@
+name: Deploy blog on avonture.be
+
+on:
+  push:
+    branches:
+      - main
+  # Manual trigger: use clean-slate to recover from a corrupted FTP sync state.
+  # A corrupted state causes error 553 ("replacing … No such file or directory")
+  # because the action skips directory creation for files it thinks already exist.
+  # Fix: run this workflow manually with clean_slate=true once, then go back to normal.
+  workflow_dispatch:
+    inputs:
+      clean_slate:
+        description: "Delete all remote files and re-upload everything (recovers from FTP sync errors)"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    name: Deploy blog on avonture.be
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.head_commit.message, 'wip') == false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # Full git history is required so the blog plugin's showLastUpdateTime /
+          # showLastUpdateAuthor can read each post's real last-commit date/author
+          # instead of the single shallow-clone commit.
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "yarn"
+
+      - name: Cache Node.js modules
+        id: cache-npm
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            ~/.yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
+
+      - name: Build website
+        run: yarn build
+
+      - name: Push files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          # See https://github.com/SamKirkland/FTP-Deploy-Action for allowed settings
+          server: ${{ secrets.ftp_server }}
+          username: ${{ secrets.ftp_login }}
+          password: ${{ secrets.ftp_password }}
+          # We need to deploy the build folder from GitHub to our FTP; not everything (f.i. don't need node_modules)
+          local-dir: ./build/
+          # Deletes all remote files before uploading — use only via manual trigger
+          # to recover from a corrupted .ftp-deploy-sync-state.json (error 553).
+          dangerous-clean-slate: ${{ github.event.inputs.clean_slate == 'true' }}

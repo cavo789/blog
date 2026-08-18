@@ -27,9 +27,10 @@ jobs:
       # One version failing must not hide the result of the others.
       fail-fast: false
       matrix:
-        # 20 is the current deploy version, kept as the control: if it fails too,
-        # the problem is the build, not the Node bump.
-        node: [20, 22, 24]
+        # 24 is what deploy.yml uses, kept as the control: if it fails too, the
+        # problem is the build itself, not the version being evaluated. Add the
+        # candidate version to this list before touching deploy.yml.
+        node: [22, 24]
     steps:
       - name: Checkout code
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4

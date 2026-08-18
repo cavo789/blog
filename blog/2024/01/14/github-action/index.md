@@ -11,6 +11,9 @@ tags:
   - github
 language: en
 review_date: 2026-07-30
+updates:
+  - date: 2026-08-18
+    note: FTP caveats added, and a pointer to the SSH/rsync workflow that replaced it
 ---
 ![GitHub - Use Actions to deploy this blog](/img/v2/github_tips.webp)
 
@@ -27,6 +30,13 @@ If I modified an article directly from the GitHub interface or from another comp
 By using GitHub Actions, this problem no longer exists. With each push, the blog will be updated.
 
 <!-- truncate -->
+
+<AlertBox variant="important" title="FTP works, but it is no longer what I use">
+Everything below still runs, and it is a perfectly reasonable starting point if FTP is all your
+hosting offers. It is not, however, what deploys this blog today: FTP sends your password in clear
+text and moves the site one file at a time. If your host gives you SSH access, jump to
+[the SSH/rsync version](#why-i-moved-to-ssh) at the end of this article.
+</AlertBox>
 
 ## What a deployment looks like now
 
@@ -48,7 +58,7 @@ A workflow file committed in the repository, three repository secrets holding th
 
 To enable `GitHub actions`, we first need to create a file in the folder `.github/workflows`. Mine will be named `deploy.yml` with this content:
 
-<Snippet filename=".github/workflows/deploy.yml" source=".github/workflows/deploy.yml" />
+<Snippet filename=".github/workflows/deploy.yml" source="./files/deploy.yml" />
 
 As you can see, I need three secrets, `${{ secrets.ftp_server }}`, `${{ secrets.ftp_login }}` and `${{ secrets.ftp_password }}`.
 
@@ -62,6 +72,26 @@ I need to create them in my Settings page for my repository: `https://github.com
 In the `Repository secrets` area, I have clicked on the `New repository secret` button and create the first one: `FTP_LOGIN` and provide the login. Same thing with the two other secrets.
 
 This done, I can push my local changes (the `.github/workflows/deploy.yml`) to GitHub using `git add .github/workflows/deploy.yml && git commit -m "chore: add deploy github action" && git push`.
+
+## Why I Moved to SSH
+
+Three things about this setup bothered me enough to eventually replace it, and none of them are
+about GitHub Actions — they are all about FTP as a transport.
+
+**The credentials travel in clear text.** Plain FTP has no encryption. The password, and every byte
+of the site, cross the network readable by anything sitting in between. FTPS (explicit TLS on the
+same port) fixes that and costs one line of configuration, so if you stay on FTP, at least use it.
+
+**One file at a time.** FTP opens a separate data connection per file. On a site of a few thousand
+files, the overhead dominates: the transfer spends its time negotiating rather than sending. That is
+the four minutes you saw earlier — almost none of it is actual data.
+
+**A third party sits between the key and the server.** The action doing the transfer is code I do
+not control, and I hand it my credentials on every run. That is a reasonable trade for the
+convenience, but it is a trade, and it is worth making consciously.
+
+The replacement uses `rsync` over SSH: encrypted by default, one connection for the whole site, and
+only the files whose content actually changed cross the wire.
 
 ## Conclusion
 

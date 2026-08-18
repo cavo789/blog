@@ -51,6 +51,21 @@ jobs:
   lint:
     name: Lint JS/JSX and CSS
     runs-on: ubuntu-latest
+    # Same escape hatch as deploy.yml. GitHub natively suppresses a run only
+    # for the exact string
+    # `[skip ci]` (and `[ci skip]`, `[no ci]`, `[skip actions]`, `[actions skip]`)
+    # — that list cannot be extended. The other spellings below are honoured here
+    # instead: the run still appears in the Actions tab, but every job is skipped
+    # in ~1s and no minutes are billed. String comparisons in GitHub expressions
+    # are case-insensitive, so `WIP:` and `[SKIP-CI]` match too.
+    if: >-
+      github.event_name != 'push' ||
+      (
+        !startsWith(github.event.head_commit.message, 'wip') &&
+        !contains(github.event.head_commit.message, '[skip ci]') &&
+        !contains(github.event.head_commit.message, '[skip-ci]') &&
+        !contains(github.event.head_commit.message, '[skip_ci]')
+      )
     timeout-minutes: 15
     steps:
       # Actions are pinned to a commit SHA: a tag can be moved to point at
@@ -61,7 +76,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: 20
+          node-version: 24
           cache: "yarn"
 
       - name: Install dependencies
@@ -73,6 +88,21 @@ jobs:
   internal-links:
     name: Internal links on new/changed articles
     runs-on: ubuntu-latest
+    # Same escape hatch as deploy.yml. GitHub natively suppresses a run only
+    # for the exact string
+    # `[skip ci]` (and `[ci skip]`, `[no ci]`, `[skip actions]`, `[actions skip]`)
+    # — that list cannot be extended. The other spellings below are honoured here
+    # instead: the run still appears in the Actions tab, but every job is skipped
+    # in ~1s and no minutes are billed. String comparisons in GitHub expressions
+    # are case-insensitive, so `WIP:` and `[SKIP-CI]` match too.
+    if: >-
+      github.event_name != 'push' ||
+      (
+        !startsWith(github.event.head_commit.message, 'wip') &&
+        !contains(github.event.head_commit.message, '[skip ci]') &&
+        !contains(github.event.head_commit.message, '[skip-ci]') &&
+        !contains(github.event.head_commit.message, '[skip_ci]')
+      )
     timeout-minutes: 10
     # Informational on purpose: a missing cross-link is a writing remark, not a
     # reason to turn the whole run red. Findings show up as annotations.
@@ -90,7 +120,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: 20
+          node-version: 24
 
       # The script has no dependency, so no `yarn install` here.
       - name: Check articles added or modified in this push/PR

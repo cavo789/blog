@@ -1,0 +1,32 @@
+# Dependabot keeps the pinned action SHAs current.
+#
+# Every `uses:` in .github/workflows/ is pinned to a commit SHA rather than a
+# tag, because a tag can be repointed at different code by whoever owns the
+# action. That protection has a cost: a pinned SHA never moves on its own, so
+# without this file the workflows would quietly freeze on old code, security
+# fixes included. Dependabot closes that gap — it opens a pull request when a
+# newer release exists, updating both the SHA and the `# v4` comment next to it.
+#
+# Deliberately limited to github-actions. The npm side of this repository is
+# ~100 packages following Docusaurus's release cadence, which would bury the
+# handful of updates that actually matter under a weekly wall of pull requests.
+# To enable it later, add a second entry with package-ecosystem: "npm",
+# directory: "/", and a `groups:` block so related packages arrive as one PR.
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    # One pull request per week at most, carrying every action that moved.
+    # Separate PRs per action would mean re-running CI once for each.
+    groups:
+      actions:
+        patterns:
+          - "*"
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "chore"
