@@ -311,7 +311,7 @@ const config = {
       tagName: "meta",
       attributes: {
         name: "apple-mobile-web-app-title",
-        content: "cavo789",
+        content: "avonture.be",
       },
     },
     {

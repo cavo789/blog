@@ -1,0 +1,67 @@
+/* Same visual language as CommandPalette/Hint.js's pill (see that file's
+   styles.module.css for the shared .hintButton/.hintDismiss look) — this one is
+   independent because it lives in its own component directory, not because the
+   design should ever diverge. Positioned bottom-left, mirrored from that hint's
+   bottom-right placement, so the two (and the bottom-right AskMyBlogWidget bubble)
+   can never occupy the same corner at once. */
+
+@keyframes hintSlideIn {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hintPill {
+  position: fixed;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.6rem 0.65rem 1.1rem;
+  background: var(--ifm-color-primary);
+  border: none;
+  border-radius: 999px;
+  animation: hintSlideIn 0.3s ease-out;
+  box-shadow: 0 8px 24px rgb(0, 0, 0, 0.3);
+}
+
+.hintButton {
+  padding: 0;
+  color: var(--ifm-color-primary-contrast-foreground);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.hintDismiss {
+  padding: 0.2rem 0.5rem;
+  color: var(--ifm-color-primary-contrast-foreground);
+  font-size: 0.8rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: 999px;
+  opacity: 0.8;
+}
+
+.hintDismiss:hover {
+  background: rgb(255, 255, 255, 0.15);
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .hintPill {
+    left: 0.75rem;
+    bottom: 0.75rem;
+  }
+}
