@@ -81,6 +81,11 @@ AddType text/xsl .xsl
 # triggering a download — Apache has no built-in mapping for .md.
 AddType text/markdown .md
 
+# Without this, Apache serves manifest.webmanifest as the generic
+# application/octet-stream, and Chrome silently ignores a manifest whose
+# Content-Type it doesn't recognize — no install prompt, no error either.
+AddType application/manifest+json .webmanifest
+
 # Cache-forever is only ever correct for a file whose *name* changes when its
 # content changes — every one of these carries a content hash, so a new build
 # produces a new URL and no reader can be served a stale copy.
@@ -90,16 +95,28 @@ AddType text/markdown .md
 # pagefind/pagefind-entry.json all keep a fixed name while their content changes
 # on every build, so `immutable` told returning visitors to keep last year's copy
 # for a year. For pagefind-entry.json that silently breaks search — the stale
-# entry file points at index chunks whose names no longer exist.
+# entry file points at index chunks whose names no longer exist. `webmanifest` is
+# absent for the same reason: manifest.webmanifest keeps a fixed name too (TODO 0090).
 <FilesMatch "\.(js|css|png|jpg|webp|svg|woff|woff2|ttf|xsl)$">
   Header set Cache-Control "public, max-age=31536000, immutable"
 </FilesMatch>
 
-# HTML files, their plain-Markdown mirrors, and the non-hashed JSON indexes
-# shouldn't be cached so a reader always gets the version from the latest build.
-<FilesMatch "\.(html|md|json)$">
+# HTML files, their plain-Markdown mirrors, the non-hashed JSON indexes, and the
+# web app manifest shouldn't be cached so a reader always gets the version from
+# the latest build.
+<FilesMatch "\.(html|md|json|webmanifest)$">
   Header set Cache-Control "no-cache, no-store, must-revalidate"
 </FilesMatch>
+
+# sw.js (TODO 0095) keeps a fixed name like the files above, but the generic ".js" rule
+# would otherwise catch it under the *immutable* block instead — a service worker cached
+# for a year is worse than a stale JSON file: it would pin a reader to a year-old asset
+# list with no way for the reload popup to ever offer the update that fixes it. This
+# `<Files>` block is more specific than the `<FilesMatch>` one above and comes after it, so
+# for this one file its Cache-Control overrides the generic ".js" rule.
+<Files "sw.js">
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+</Files>
 
 # Add gzip compression
 AddOutputFilterByType DEFLATE text/html text/plain text/xml text/xsl text/css application/javascript text/markdown

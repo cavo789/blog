@@ -3,7 +3,7 @@ slug: caddy
 title: "Caddy — Zero-Config HTTPS as a Docker Container"
 description: "Caddy is a web server that automatically obtains and renews TLS certificates. As a Docker container, it turns a five-line Caddyfile into a production-ready HTTPS reverse proxy — no Certbot, no cron jobs, no nginx config to untangle."
 authors: [christophe, claude]
-image: /img/v2/encryption.webp
+image: /img/v2/caddy.webp
 mainTag: docker
 draft: true
 tags: [docker, linux, ssl]
@@ -11,7 +11,7 @@ date: 2026-09-15
 ai_assisted: true
 ---
 
-![Caddy — Zero-Config HTTPS as a Docker Container](/img/v2/encryption.webp)
+![Caddy — Zero-Config HTTPS as a Docker Container](/img/v2/caddy.webp)
 
 <TLDR>
 Caddy is a web server that obtains TLS certificates automatically — from Let's Encrypt for public domains, from its own local CA for development. A `Caddyfile` is dramatically simpler than an nginx config: `reverse_proxy app:3000` is a complete, working reverse proxy. As a Docker container with two named volumes for certificate storage, Caddy handles HTTPS with no Certbot, no cron jobs, and no certificate renewal to maintain.
@@ -84,6 +84,7 @@ yourdomain.com {
 ```
 
 That's it. When Caddy starts:
+
 1. It detects that `yourdomain.com` is a public hostname
 2. It uses the ACME HTTP-01 challenge with Let's Encrypt to prove you control the domain
 3. It installs the certificate and redirects HTTP to HTTPS
@@ -134,7 +135,7 @@ Mount `/var/log/caddy` as a volume if you need to read the logs from the host.
 ### Caddy vs nginx as a Docker reverse proxy
 
 | | nginx | Caddy |
-|--|-------|-------|
+| -- | ------- | ------- |
 | HTTPS setup | Manual + Certbot | Automatic |
 | Certificate renewal | Cron job | Built-in |
 | Local dev HTTPS | mkcert (separate tool) | `tls internal` (built-in) |

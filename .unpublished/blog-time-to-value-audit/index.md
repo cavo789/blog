@@ -2,7 +2,7 @@
 slug: blog-time-to-value-audit
 title: I Measured How Long My Own Articles Take to Prove Anything. The Answer Was 50%.
 authors: [christophe, claude]
-image: /img/v2/clean_code.webp
+image: /img/v2/reader_first.webp
 mainTag: doc-as-code
 tags: [doc-as-code, markdown, docusaurus]
 date: 2026-11-17
@@ -14,7 +14,7 @@ draft: true
 
 <!-- cspell:ignore TTV maintag reorder reorders -->
 
-![I Measured How Long My Own Articles Take to Prove Anything. The Answer Was 50%.](/img/v2/clean_code.webp)
+![I Measured How Long My Own Articles Take to Prove Anything. The Answer Was 50%.](/img/v2/reader_first.webp)
 
 <TLDR>
 A reader arrives with one minute and decides to stay or leave before scrolling twice. I built a mechanical metric for that — time-to-value: how far into an article the first actual proof appears, measured from line positions rather than from opinion — and ran it over 318 articles and drafts. The median was 42%, and 60 articles had no proof at all before the very end. 180 came back needing a restructure. Every single fix was a reorder of material that was already written.

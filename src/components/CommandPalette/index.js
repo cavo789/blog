@@ -95,7 +95,12 @@ export default function CommandPalette() {
   const clearOverlayRef = useRef(null);
 
   const entries = useMemo(() => buildEntries(navIndex), [navIndex]);
-  const questionIndex = useMemo(() => buildQuestionIndex(questions ?? []), [questions]);
+  // `questions` is null (not loaded yet), "unavailable" (fetch failed — e.g. offline, see
+  // TODO 0095), or the loaded array.
+  const questionIndex = useMemo(
+    () => buildQuestionIndex(Array.isArray(questions) ? questions : []),
+    [questions],
+  );
   const { mode, term } = useMemo(() => parseModeAndTerm(query), [query]);
 
   // Fetch the full question corpus the first time the reader opens "?" mode — not on mount,
@@ -103,9 +108,17 @@ export default function CommandPalette() {
   useEffect(() => {
     if (mode !== "ask" || questions !== null) return;
     let cancelled = false;
-    loadQuestionsIndex(withBaseUrl("/questions-index.json")).then((data) => {
-      if (!cancelled) setQuestions(data);
-    });
+    loadQuestionsIndex(withBaseUrl("/questions-index.json"))
+      .then((data) => {
+        if (!cancelled) setQuestions(data);
+      })
+      .catch(() => {
+        // Without this, a network failure (e.g. offline reader, no service-worker cache for
+        // this corpus — see TODO 0095) left `questions` stuck at `null` forever, and "?" mode
+        // rendered the generic "No results" copy as if the reader's query just didn't match
+        // anything, instead of saying the index itself never loaded.
+        if (!cancelled) setQuestions("unavailable");
+      });
     return () => {
       cancelled = true;
     };
@@ -366,6 +379,9 @@ export default function CommandPalette() {
           },
         ];
       }
+      if (questions === "unavailable") {
+        return [{ key: "ask", label: "Ask my blog", items: [], unavailable: true }];
+      }
       const results = searchQuestions(questionIndex, term, 8);
       return [
         {
@@ -440,7 +456,7 @@ export default function CommandPalette() {
       });
     }
     return Object.values(bySection).filter((g) => g.items.length > 0);
-  }, [navIndex, query, mode, term, pagefind, questionIndex, actions, entries]);
+  }, [navIndex, query, mode, term, pagefind, questions, questionIndex, actions, entries]);
 
   const flatItems = useMemo(() => groups.flatMap((g) => g.items), [groups]);
 
@@ -597,7 +613,11 @@ function ResultGroups({ groups, flatItems, activeIndex, onHover, onSelect }) {
     return groups[0]?.loading ? (
       <p className={styles.empty}>Searching…</p>
     ) : groups[0]?.unavailable ? (
-      <p className={styles.empty}>Full-text search isn&apos;t available on this build.</p>
+      // Generic across every mode that can fail to load its backing index (fulltext:
+      // Pagefind absent on `yarn start`; ask: the question corpus fetch rejected, e.g. an
+      // offline reader — see TODO 0095). Keyed off the group's own label so the wording
+      // never claims a mode-specific cause it can't actually distinguish.
+      <p className={styles.empty}>{groups[0].label} isn&apos;t available right now.</p>
     ) : groups[0]?.hint ? (
       <p className={styles.empty}>{groups[0].hint}</p>
     ) : (

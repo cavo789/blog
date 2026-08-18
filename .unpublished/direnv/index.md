@@ -3,7 +3,7 @@ slug: direnv
 title: "direnv — Stop Typing `source .env`, Let Your Shell Do It"
 description: "direnv automatically loads and unloads environment variables when you cd into a project. Different database passwords per project, no manual source commands, and nothing ever leaks into your global shell."
 authors: [christophe, claude]
-image: /img/v2/workflows.webp
+image: /img/v2/direnv.webp
 mainTag: linux
 draft: true
 tags: [bash, docker, linux, zsh]
@@ -11,7 +11,7 @@ date: 2026-08-11
 ai_assisted: true
 ---
 
-![direnv — Stop Typing source .env, Let Your Shell Do It](/img/v2/workflows.webp)
+![direnv — Stop Typing source .env, Let Your Shell Do It](/img/v2/direnv.webp)
 
 <TLDR>
 `direnv` hooks into your shell and automatically runs `source .env` (or any command in an `.envrc` file) when you `cd` into a project — and undoes it when you leave. Each project gets its own environment variables with no global pollution, no manual sourcing, and no risk of carrying one project's secrets into another.
@@ -94,6 +94,7 @@ echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
 source ~/.zshrc
 
 # For Bash (add to ~/.bashrc)
+
 echo 'eval "$(direnv hook bash)"' >> ~/.bashrc
 source ~/.bashrc
 </Terminal>
@@ -194,7 +195,7 @@ If you launch VSCode directly (from the Dock, Spotlight, or a desktop shortcut),
 You may already use a pattern like the one described in <Link to="/blog/bash-load-env">Bash — Loading environment variables from a file</Link>. The difference:
 
 | | Manual `source .env` | direnv |
-|--|---------------------|--------|
+| -- | --------------------- | -------- |
 | Loads on `cd` | No | Yes |
 | Unloads on `cd` out | No | Yes |
 | Prevents env leakage | No | Yes |

@@ -3,7 +3,7 @@ slug: atuin-bash-history
 title: "Atuin — Supercharge Your Shell History With a Searchable, Timestamped Database"
 description: "Tired of losing commands in the default Ctrl+R maze? Atuin replaces your shell history with a full-featured TUI backed by SQLite — timestamps, context, multi-machine sync, and a clean comparison with FZF-based history search."
 authors: [christophe, claude]
-image: /img/v2/bash.webp
+image: /img/v2/atuin.webp
 mainTag: bash
 tags: [bash, linux, zsh]
 date: 2026-07-30
@@ -11,7 +11,7 @@ draft: true
 ai_assisted: true
 ---
 
-![Atuin — Supercharge Your Shell History](/img/v2/bash.webp)
+![Atuin — Supercharge Your Shell History](/img/v2/atuin.webp)
 
 <!-- cspell:ignore atuin atuinsh preexec rcaloras -->
 
@@ -195,7 +195,7 @@ Restart your shell after editing to apply changes.
 <Link to="/blog/linux-fzf-introduction">FZF</Link> is the gold standard for fuzzy finding in the terminal — including shell history via `Ctrl+R` when wired up with the `fzf-history-widget`. So how does Atuin compare?
 
 | Feature | Atuin | FZF + history |
-|---------|-------|---------------|
+| --------- | ------- | --------------- |
 | **Backend** | SQLite database | Flat text file |
 | **Timestamps** | Always recorded | Only if `HISTTIMEFORMAT` is set |
 | **Exit code** | Yes | No |

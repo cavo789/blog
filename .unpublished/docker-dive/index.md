@@ -3,7 +3,7 @@ slug: docker-dive
 title: "Docker Dive — X-Ray Your Images and Kill the Waste"
 description: "Use dive to inspect every layer of a Docker image, spot wasted megabytes hidden by deleted files, and walk step by step from a 1 GB bloated image down to a tight, efficient build."
 authors: [christophe]
-image: /img/v2/docker_tips.webp
+image: /img/v2/docker_dive.webp
 mainTag: docker
 tags:
   - docker
@@ -15,7 +15,7 @@ draft: true
 
 <!-- cspell:ignore wagoodman pyc scikit -->
 
-![Docker Dive — X-Ray Your Images and Kill the Waste](/img/v2/docker_tips.webp)
+![Docker Dive — X-Ray Your Images and Kill the Waste](/img/v2/docker_dive.webp)
 
 <TLDR>
 `dive` is an open-source terminal tool that renders every layer of a Docker image as an interactive file tree, highlighting exactly which files are wasted — present in one layer but deleted in a later one, yet still baked into the final image. This article walks through a deliberately broken Dockerfile, shows how dive exposes the waste, then fixes it in three incremental steps: cleaning apt caches in the same layer, collapsing multiple `RUN` statements into one, and switching to a multi-stage build that cuts the image by 80%. As a bonus, we push the idea to its logical extreme with `FROM scratch` — an image containing a single binary and nothing else.
@@ -196,6 +196,7 @@ The core idea of a multi-stage build is simple: use one `FROM` to build, use ano
 />
 
 What's happening here:
+
 1. `FROM python:3.12 AS builder` — full Python image, used only to install packages
 2. `pip install --target ./packages` — installs everything into a local directory (not system-wide)
 3. `FROM python:3.12-slim AS production` — the slim base image, about 130 MB

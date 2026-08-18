@@ -2,7 +2,7 @@
 slug: docusaurus-blog-map
 title: Drawing a Map of My Own Blog
 authors: [christophe, claude]
-image: /img/v2/mindmaps.webp
+image: /img/v2/post_mindmaps.webp
 series: Creating Docusaurus components
 mainTag: component
 tags: [docusaurus, react, component]
@@ -15,7 +15,7 @@ draft: true
 
 <!-- cspell:ignore maintag Bezier viewports -->
 
-![Drawing a Map of My Own Blog](/img/v2/mindmaps.webp)
+![Drawing a Map of My Own Blog](/img/v2/post_mindmaps.webp)
 
 <TLDR>
 After 247 articles I could no longer answer simple questions about my own blog: which posts are hubs that everything links to, and which ones sit alone in a corner. So I built a `/map` page — a force-directed graph of the whole corpus, where each article is a dot sized by its in-degree and connected by three kinds of edge (real inline links, series neighbors, shared tags). The trick that makes it cheap: the layout runs **once, in Node, at build time**, so the browser receives final `(x, y)` coordinates and never loads a physics engine.

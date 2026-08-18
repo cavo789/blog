@@ -2,7 +2,7 @@
 slug: docusaurus-command-palette
 title: "One Input, Six Modes: A Ctrl+K Command Palette for Docusaurus"
 authors: [christophe, claude]
-image: /img/v2/docusaurus_tips.webp
+image: /img/v2/command_palette.webp
 series: Creating Docusaurus components
 mainTag: component
 tags: [docusaurus, react, component]
@@ -15,7 +15,7 @@ draft: true
 
 <!-- cspell:ignore cmdk maintag Pagefind pagefind combobox listbox aria activedescendant -->
 
-![One Input, Six Modes: A Ctrl+K Command Palette for Docusaurus](/img/v2/docusaurus_tips.webp)
+![One Input, Six Modes: A Ctrl+K Command Palette for Docusaurus](/img/v2/command_palette.webp)
 
 <TLDR>
 Every tool I use daily has collapsed its navigation into a single `Ctrl+K` input, and my own blog had eight navbar links and a separate search modal instead. This article builds the palette: one input whose behavior changes with a typed prefix — nothing for a fuzzy jump across every article, series, tag and page, `/` for full-text search, `?` for the question index, `#` for tags, `:` for headings on the current page, `>` for actions. A build-time plugin supplies the navigation index, a swizzled `SearchBar` replaces the old modal, and every source that has nothing to offer degrades to a message instead of a dead entry.

@@ -193,8 +193,127 @@ const config = {
     "./plugins/markdown-export-plugin/index.cjs",
     require.resolve("docusaurus-plugin-image-zoom"),
     ["docusaurus-plugin-pagefind", {}],
+    [
+      "@docusaurus/plugin-pwa",
+      {
+        // No-op on `yarn start` (the plugin only runs when NODE_ENV === "production") and
+        // registers a service worker only in the production build (TODO 0095).
+        debug: false,
+        // `pwaHead` is how the plugin's own docs usually wire the manifest link, icons and
+        // theme-color — deliberately omitted here (its Joi schema rejects an explicit `[]`,
+        // so "not set" is the only way to mean "none"): those tags already exist in the
+        // `headTags` array below (TODO 0090), and duplicating them via `pwaHead` would emit
+        // a second, competing set of the same tags.
+        // Explicit even though it matches the plugin's own default: offline mode — and
+        // therefore the service worker's caching behavior below — only turns on for a
+        // reader who installed the app or is running it standalone (or opted in via
+        // ?offlineMode=true for testing). A visitor just passing through the site should
+        // never pay for a runtime cache they didn't ask for (see TODO 0095's risk section
+        // on conservative activation).
+        offlineModeActivationStrategies: ["appInstalled", "standalone", "queryString"],
+        // The plugin's default precache (globPatterns matching every .js/.json/.css/.html
+        // and every image/font in the whole build/ directory) would ship this blog's 248
+        // articles and 100+ MB of banner images to every installed reader on first launch —
+        // exactly what TODO 0095's risk section rules out ("Se limiter à la coquille + les
+        // pages visitées"). `globPatterns` itself isn't overridable here — plugin-pwa
+        // spreads `injectManifestConfig` and then unconditionally re-sets `globPatterns` to
+        // that broad default, so anything passed here for that key is silently discarded
+        // (see its lib/index.js `postBuild`). `globIgnores` *is* honored, so that's the
+        // lever: cut every page-content and asset directory, leaving only the homepage
+        // document — the one file an offline relaunch of the installed app needs before
+        // React Router can even boot — plus root-level files like the manifest and the
+        // Ask-my-blog question corpus (small enough, and worth having offline).
+        //
+        // What this deliberately does NOT attempt: caching articles as the reader visits
+        // them. The obvious next step — a `swCustom` module registering a runtime
+        // StaleWhileRevalidate route for visited pages — was built and tested (TODO 0095)
+        // and found unreliable: `swCustom` is loaded via `await import(...)` inside the
+        // generated sw.js, and that import is a real network fetch which is NOT guaranteed
+        // available across a service-worker respawn (workers are terminated when idle and
+        // re-evaluate their whole module top level on the next event). Verified with
+        // Playwright/Chromium: after the worker idled out and the page reloaded offline,
+        // that import failed, which threw before the plugin's own fetch listener even got
+        // registered — breaking the homepage-shell fallback that DOES work today. That is
+        // strictly worse than not having per-article caching at all, since it's exactly
+        // the "reopen the installed app while offline" scenario a PWA exists for. Precaching
+        // every article to route around this would mean reintroducing the >100 MB payload
+        // this comment starts with. See TODO 0095's Status section for the full writeup —
+        // a reliable version of this would need a hand-rolled sw.js that doesn't depend on
+        // plugin-pwa's dynamic `swCustom` import, which is a materially bigger undertaking
+        // than "install and configure a plugin".
+        injectManifestConfig: {
+          globIgnores: [
+            "blog/**",
+            "series/**",
+            "tags/**",
+            "faq/**",
+            "about/**",
+            "repositories/**",
+            "admin/**",
+            "admin-data/**",
+            "typo-dashboard/**",
+            "reactions-dashboard/**",
+            "map/**",
+            "project_setup/**",
+            "llms/**",
+            "img/**",
+            "assets/**",
+            "pagefind/**",
+          ],
+        },
+      },
+    ],
   ],
   headTags: [
+    {
+      // Makes the blog installable (TODO 0090): Chrome only offers the "Add to Home
+      // screen" prompt once it finds a manifest with name/short_name/start_url/display
+      // and an icon ≥ 192px. See static/manifest.webmanifest and
+      // scripts/generate-pwa-icons.mjs for where its icons come from.
+      tagName: "link",
+      attributes: {
+        rel: "manifest",
+        href: "/manifest.webmanifest",
+      },
+    },
+    {
+      // Safari never reads the manifest's icons — without this tag, "Add to Home
+      // Screen" falls back to a screenshot thumbnail instead of the mascot.
+      tagName: "link",
+      attributes: {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: "/img/icons/apple-touch-icon.png",
+      },
+    },
+    {
+      // Colors the browser chrome (Android status bar, task switcher) to match the
+      // installed app rather than the browser's default. Kept in sync with the
+      // manifest's own theme_color and the light-mode --ifm-color-primary in
+      // src/css/custom.css.
+      tagName: "meta",
+      attributes: {
+        name: "theme-color",
+        content: "#2e8555",
+      },
+    },
+    {
+      // iOS ignores display: "standalone" from the manifest and needs its own
+      // opt-in to open without Safari's browser chrome when launched from the
+      // home screen.
+      tagName: "meta",
+      attributes: {
+        name: "apple-mobile-web-app-capable",
+        content: "yes",
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        name: "apple-mobile-web-app-title",
+        content: "cavo789",
+      },
+    },
     {
       // Site-wide discovery hook for the llms.txt convention (llmstxt.org) —
       // mirrors how <link rel="alternate" type="application/rss+xml"> lets a

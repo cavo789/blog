@@ -48,3 +48,16 @@ You'll then start an interactive console in the Docker container.
 ## Deployment
 
 For this repository, the deployment is made using GitHub actions. By pushing changes to GitHub, there is a `CI/CD` pipeline who'll be started by GitHub, download Node, run `yarn build` and, once HTML files have been generated in the `build` folder, an FTP copy job will copy every file from GitHub to the host where the blog is running.
+
+## Troubleshooting: purging the service worker
+
+The production build registers a service worker (`@docusaurus/plugin-pwa`, see `docusaurus.config.js`) so the blog can be installed as an app and its homepage stays reachable offline. It only activates for a reader who installed the app or is running it standalone (or added `?offlineMode=true` to a URL) — a normal browser visit never registers it, so this only ever matters when reproducing an issue reported from an installed instance.
+
+If something looks stale or broken only in that installed/standalone context (an old version won't go away, a page that should render doesn't), suspect the service worker first — it's a layer of caching most people forget exists once it's out of sight. To clear it in Chrome/Edge:
+
+- Open DevTools → **Application** tab → **Service Workers** in the sidebar.
+- Click **Unregister** next to this site's worker (or check **Update on reload** while debugging).
+- Still in **Application**, open **Storage** and click **Clear site data** to also drop the cached shell (homepage, manifest, the "Ask my blog" question index) alongside it.
+- Reload the page.
+
+A rebuild alone doesn't force this: existing installs keep running their currently-installed worker until it detects a byte-level change in `sw.js` and a reader accepts the in-app "New version available" reload prompt — the steps above are the manual override when that isn't happening.

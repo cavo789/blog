@@ -101,6 +101,46 @@ comme limite, pas à contourner.
       dans le cache longue durée
 - [ ] L'invite d'installation apparaît réellement sur Chrome Android (testé, pas supposé)
 - [ ] Le raccourci sur l'écran d'accueil affiche le suricate, pas une pastille à lettre
-- [ ] L'icône maskable n'est pas rognée sur la tête du suricate
-- [ ] Le comportement iOS est documenté comme limite connue
-- [ ] `yarn lint && yarn format:check && yarn build` passent
+- [x] L'icône maskable n'est pas rognée sur la tête du suricate
+- [x] Le comportement iOS est documenté comme limite connue
+- [x] `yarn lint && yarn format:check && yarn build` passent
+
+## Status — PARTIAL (2026-08-18)
+
+### Done
+
+- `scripts/generate-pwa-icons.mjs` génère `icon-192.png`, `icon-512.png`,
+  `icon-maskable-512.png` (contenu dans un carré de 80 % du canevas, sans rognage — vérifié
+  visuellement) et `apple-touch-icon.png` (180×180, fond opaque) depuis
+  `static/img/meerkat/suricate_no_background.png`, sans déformation. Script commité, sortie
+  commitée. Alias `yarn pwa:icons`.
+- `static/manifest.webmanifest` créé (`name`, `short_name: "cavo789"`, `start_url: "/"`,
+  `display: "standalone"`, `theme_color` aligné sur `--ifm-color-primary` clair (`#2e8555`,
+  voir `src/css/custom.css`), icônes `any`/`maskable`) et référencé via `rel="manifest"` dans
+  `headTags` (`docusaurus.config.js`).
+- `rel="apple-touch-icon"`, `<meta name="theme-color">` et les deux
+  `apple-mobile-web-app-*` ajoutés dans `headTags`, vérifiés présents dans le HTML généré
+  (`yarn build` → `build/index.html`).
+- `static/.htaccess` : `AddType application/manifest+json .webmanifest` ajouté, et
+  `webmanifest` ajouté à la liste `no-cache` (pas à la liste `immutable`) — même raisonnement
+  que pour `json`, documenté dans le commentaire existant.
+- Limite iOS (pas d'invite d'installation, ajout manuel via « Sur l'écran d'accueil »)
+  documentée dans ce fichier (section Solution, point 5) — reprise ici pour mémoire.
+- `yarn lint && yarn format:check && yarn build` passent tous les trois.
+
+### Not done
+
+- Les deux cases « testé sur un vrai téléphone » (invite d'installation Chrome Android,
+  raccourci avec l'icône du suricate) restent non cochées.
+  **Reason:** nécessitent un test manuel sur un appareil Android physique avec Chrome — hors
+  de portée d'une session Claude Code. Tout ce qui est vérifiable par build/lint/inspection
+  visuelle du HTML et des PNG générés l'a été ; il reste à confirmer le rendu réel sur
+  téléphone après déploiement.
+
+### Deviation from the TODO's stated assumption
+
+- Le TODO affirme que `suricate_no_background.png` a un **fond transparent**. Vérifié avec
+  `sharp().metadata()` : `channels: 3`, `hasAlpha: false` — le fond est en fait blanc opaque
+  malgré le nom du fichier. Ce n'est pas bloquant (le blanc de la source correspond au blanc
+  choisi comme `background_color` du manifeste et au fond des canevas d'icônes), mais la
+  génération traite bien un fond blanc plein, pas une transparence.
