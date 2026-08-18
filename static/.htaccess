@@ -15,31 +15,55 @@
   RedirectPermanent /blog/docker-apache-ssl https://www.avonture.be/blog/docker-localhost-ssl
   RedirectPermanent /resources https://www.avonture.be/repositories
 
-  # Author-only data must never be readable by the public. admin-data/drafts.json
-  # lists every draft and unlisted post — slug, title, date, description — which
-  # is exactly the set of articles not yet meant to be seen. The deploy step also
-  # excludes this folder from the upload; this rule is the second layer, and it
-  # keeps covering any copy already sitting on the server.
-  RewriteRule ^admin-data/ - [F,L]
-
   # Sync state written by the FTP deploy action: a full inventory of the server
   # tree. No secret in it, but no reason to publish the map either.
   RewriteRule ^\.ftp-deploy-sync-state\.json$ - [F,L]
 
-  # Docusaurus-specific rules to handle single-page application routing
-  # Note: The RewriteBase is important if your site is in a subdirectory
+  # Docusaurus pre-renders its routes to files, so the classic "rewrite
+  # everything to index.html" SPA fallback caught almost nothing real — it just
+  # made this site answer 200 to every URL on earth. That is a soft 404: Google
+  # treats it as a quality signal, and no dead-link checker can work against a
+  # server that never says no.
+  #
+  # What survives of it is this narrow safety net for the two route families
+  # that are generated rather than authored — the tag pages and the series
+  # pages, registered by plugins/docusaurus-plugin-tag-route and
+  # plugins/docusaurus-plugin-series-route. Whether those plugins register one
+  # parameterized route or one route per slug is an implementation detail that
+  # has changed before; this rule is written to be correct either way. When a
+  # per-slug file exists in the build, the two conditions below fail and Apache
+  # serves that file directly — the rule never fires. It only takes over when
+  # the file is missing, which is exactly the case where the React router still
+  # knows how to render the page and a 404 would be wrong.
+  #
+  # Deliberately one path segment only. `/blog/tags/tags/<slug>` is the blog
+  # plugin's own listing and a real directory, and `/blog/tags/a/b` is not a
+  # route at all — both must fall through to the 404 below.
   RewriteBase /
 
-  # Prevents rewriting of existing files and directories
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-
-  # Rewrites all requests to index.html, allowing Docusaurus to handle routing
-  RewriteRule . /index.html [L]
+  RewriteRule ^(series|blog/tags)/[^/]+/?$ /index.html [L]
 </IfModule>
+
+# Anything that reached this point is neither a file on disk nor one of the two
+# client-side routes above: it does not exist, and the server must say so with a
+# real 404 status. Docusaurus already builds `404.html` from the theme, so the
+# reader gets the site's own styled error page rather than Apache's grey default.
+ErrorDocument 404 /404.html
 
 # Security headers
 <IfModule mod_headers.c>
+  # admin-data/drafts.json backs the "Pending drafts" panel of /admin, so it has
+  # to be readable — the page cannot report what it is not allowed to fetch. It
+  # lists posts under blog/ carrying `draft: true` or `unlisted: true`: articles
+  # already committed but deliberately held back, so their titles are not secret,
+  # just early. What it must not do is end up in a search index, hence noindex
+  # rather than the blanket 403 that used to sit here.
+  <FilesMatch "^drafts\.json$">
+    Header always set X-Robots-Tag "noindex, nofollow"
+  </FilesMatch>
+
   Header always set X-Frame-Options "DENY"
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"

@@ -14,10 +14,10 @@ draft: true
 
 ![Publish Your Docusaurus Blog With a Single git push](/img/v2/publishing_blog.webp)
 
-<!-- cspell:ignore keyscan itemize chmod rsync christophe -->
+<!-- cspell:ignore keyscan itemize chmod rsync -->
 
 <TLDR>
-I write my blog locally, then `git add`, `git commit`, `git push` — and that is the whole publishing procedure. GitHub Actions checks out the repository, runs `yarn build`, refuses to go any further if the build failed or produced a malformed sitemap, then sends only the changed files to my hosting with `rsync` over SSH. The transfer takes seconds rather than minutes, because it sends the difference rather than the site. As a bonus, an article can sit in the repository fully written with `draft: true` in its front matter; deleting that single line from GitHub's web editor — from a phone, from anywhere — publishes it.
+I write my blog locally, then `git add`, `git commit`, `git push` — and that is the whole publishing procedure. GitHub Actions checks out the repository, runs `yarn build`, refuses to go any further if the build failed or produced a malformed sitemap, then sends only the changed files to my hosting with `rsync` over SSH. The whole thing takes about a minute and a half — ninety seconds of build, twelve of transfer — because it sends the difference rather than the site. As a bonus, an article can sit in the repository fully written with `draft: true` in its front matter; deleting that single line from GitHub's web editor — from a phone, from anywhere — publishes it.
 </TLDR>
 
 For a long time, publishing an article meant opening WinSCP, dragging the contents of my `build` folder onto the remote pane, and watching a progress bar. It worked, in the sense that a bicycle works for a commute. The problems were never dramatic, just constant: I was never quite sure the upload had finished, whether I had dropped the folder at the right level, or whether the file I had renamed still had an orphan twin sitting on the server. And publishing was tied to one machine — the one with the source, the credentials and the build tooling.
@@ -61,7 +61,7 @@ That last arrow is the part worth looking at. Here is what `rsync` reports when 
 
 Read the last three lines together, because they are the whole point. Editing one article changed 413 HTML pages — my site-wide navigation index is bundled into `main.js`, so touching any article changes that bundle's content hash, which every page references. On paper that is 43 MB of updated files. In practice 287 KB crossed the network, because `rsync` recognised 42.64 MB of blocks already sitting on the server and sent only the fragments that genuinely differ.
 
-A deploy that changes no content at all moves about 1.76 MB — the search index, which re-chunks itself on every build. I close the terminal at the `git push`, and the rest is somebody else's problem, a "somebody else" that is free for public repositories.
+A deploy that changes no content at all moves about 1.76 MB — the search index, which re-chunks itself on every build. End to end, the run takes roughly ninety seconds to build and twelve to transfer. I close the terminal at the `git push`, and the rest is somebody else's problem, a "somebody else" that is free for public repositories.
 
 ## Why It Works
 
@@ -89,7 +89,7 @@ Three things are needed on the hosting side. If your host gives you SSH access �
   checkOutput="rsync  version 3.1.3  protocol version 31"
 />
 
-If you have never connected to your host over SSH, I wrote a walkthrough for exactly that in <Link to="/blog/connect-using-ssh-to-your-hosting-server">how to connect to your hosting server using SSH</Link>. The third requirement is the absolute path of your web root — the folder that contains `index.html` — which you get by connecting and running `pwd` in it. Mine is `/home/christophe/www`; note that it is *not* the folder SSH drops you into, and pointing a deployment at the wrong level is the one mistake worth being paranoid about.
+If you have never connected to your host over SSH, I wrote a walkthrough for exactly that in <Link to="/blog/connect-using-ssh-to-your-hosting-server">how to connect to your hosting server using SSH</Link>. The third requirement is the absolute path of your web root — the folder that contains `index.html` — which you get by connecting and running `pwd` in it. Mine is `/home/me/www`; note that it is *not* the folder SSH drops you into, and pointing a deployment at the wrong level is the one mistake worth being paranoid about.
 
 ### A key that only deploys
 
@@ -117,7 +117,7 @@ In your repository, under *Settings* → *Secrets and variables* → *Actions*, 
 | `SSH_HOST` | Your server's hostname |
 | `SSH_USER` | Your SSH username |
 | `SSH_PORT` | The SSH port (often 22) |
-| `REMOTE_PATH` | Absolute path of the web root, e.g. `/home/user/www` |
+| `REMOTE_PATH` | Absolute path of the web root, e.g. `/home/me/www` |
 | `SSH_KEY` | The full contents of `~/.ssh/blog_deploy` |
 
 <AlertBox variant="caution">
@@ -209,6 +209,39 @@ So the transfer runs in three passes instead of one. The first sends the site wi
 Pagefind is the reason this is worth doing at all. It re-chunks its search index on every single build, even when no article changed, so each deploy would otherwise leave around sixty orphan files behind forever.
 
 What this deliberately does *not* clean up is the page of an article I delete or send back to `draft: true`. That lives under `blog/`, outside the two swept folders, and stays online until I remove it by hand. `rsync -rn --delete` lists the candidates without touching anything, which makes it a periodic chore rather than a risk.
+
+**The deploy key cannot do anything but deploy.** A key in `authorized_keys` normally grants a
+shell. If the GitHub secret holding it ever leaked, that would mean an interactive session on my
+hosting account — including the ability to rewrite `authorized_keys` itself and stay. Two options in
+front of the key close that down:
+
+```text title="~/.ssh/authorized_keys"
+restrict,command="/home/me/bin/rrsync -wo /home/me/www" ssh-ed25519 AAAAC3Nza... github-deploy
+```
+
+`restrict` disables port forwarding, agent forwarding, X11 and TTY allocation — none of which
+`rsync` needs. `rrsync` is a script shipped with rsync itself: it refuses any command that is not
+`rsync --server`, confines every path to the directory you name, and with `-wo` allows writing only,
+never reading. Worth testing rather than assuming, which takes three commands:
+
+```bash
+# must be refused: "is not rsync"
+ssh -i ~/.ssh/blog_deploy -p <port> <user>@<host> 'ls -la'
+# must be refused: "reading from write-only server not allowed"
+rsync -n -e "ssh -i ~/.ssh/blog_deploy -p <port>" <user>@<host>:/index.html /tmp/
+# must be refused: "do not use .. in any path!"
+rsync -n /tmp/t.txt -e "ssh -i ~/.ssh/blog_deploy -p <port>" <user>@<host>:/../../etc/
+```
+
+One consequence to know before wiring it: `rrsync` becomes the root, so the paths the client sends
+are relative to it. `REMOTE_PATH` becomes `/`, not the absolute path. And since it refuses any long
+option outside its whitelist, drop `--chmod` from the `rsync` call — new files inherit the server's
+umask, which gives the same result.
+
+**The server's host key is pinned, not learned.** Fetching it with `ssh-keyscan` inside the workflow
+would mean trusting whatever answers, on every single run. Storing the expected key as a
+`SSH_KNOWN_HOSTS` secret turns that into a decision made once: a substituted server now fails the
+connection instead of quietly receiving the site.
 
 **`filter: blob:none` on the checkout.** The blog plugin's `showLastUpdateTime` needs the full commit history to know when each post was last touched, so a shallow clone will not do. But it needs commit *metadata*, not content — and asking for the whole history normally means downloading every past version of every file, which for a blog full of committed screenshots is hundreds of megabytes. A blobless partial clone fetches the history without the old file contents.
 

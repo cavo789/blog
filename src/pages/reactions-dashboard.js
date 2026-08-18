@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import Layout from "@theme/Layout";
+import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./reactions-dashboard.module.css";
 
@@ -234,6 +235,10 @@ export default function ReactionsDashboard() {
 
   return (
     <Layout title="Reactions Dashboard" noFooter>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+
       <div className={styles.page}>
         <div className={styles.header}>
           <h1>Reactions Dashboard</h1>

@@ -1,5 +1,5 @@
 ---
-description: Audit a batch of articles as a first-time reader ("I have one minute — do I keep reading?"). Measures time-to-value, flags install-before-proof, tracks progress in .todos/reader-review-journal.md.
+description: Audit a batch of articles as a first-time reader ("I have one minute — do I keep reading?"). Measures time-to-value, flags install-before-proof, tracks progress in .todos/0000-reader-review-journal.md.
 argument-hint: "[batch-size (default 10)] or [path or slug of one article]"
 allowed-tools: Read, Glob, Grep, Bash, Write
 ---
@@ -69,7 +69,7 @@ Examples: /reader_review                                  (batch of 10)
 
 ## 1. Load the journal
 
-Read `.todos/reader-review-journal.md` (create it if absent — format at the end of this file).
+Read `.todos/0000-reader-review-journal.md` (create it if absent — format at the end of this file).
 
 Build a **reviewed set**: `{ slug → review-date }`.
 
@@ -186,7 +186,7 @@ Recompute the two counters from the journal you just updated:
 ```bash
 # reviewed set: last review date per slug
 awk -F'|' '/^\| 20/ {d=$2; s=$3; gsub(/ /,"",d); gsub(/ /,"",s); print s"\t"d}' \
-  .todos/reader-review-journal.md | sort |
+  .todos/0000-reader-review-journal.md | sort |
   awk -F'\t' '{if($2>m[$1]) m[$1]=$2} END {for(s in m) print s"\t"m[s]}' | sort > /tmp/maxrev.txt
 
 # walk the corpus
@@ -242,7 +242,7 @@ lot", no `/clear` instruction.
 
 ## Journal file format (create if absent)
 
-`.todos/reader-review-journal.md`:
+`.todos/0000-reader-review-journal.md`:
 
 ```markdown
 # Reader Review Journal

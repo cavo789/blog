@@ -1,36 +1,29 @@
-# 0090 — PWA : rendre le blog installable et lisible hors ligne
+# 0095 — PWA : lecture hors ligne et service worker
 
-- **Priority**: Low
+- **Priority**: low
 - **Batch**: blog-pwa
-- **Depends**: —
-- **Files**: `docusaurus.config.js`, `package.json`, `static/manifest.json`, `static/img/`
+- **Depends**: 0090
+- **Files**: `docusaurus.config.js`, `package.json`, `README.md`
 
 ## Problème
 
-Le blog est un site statique, rapide et soigné côté performance — mais il reste un onglet de
-navigateur parmi d'autres. Rien ne permet de l'épingler à un écran d'accueil, et un lecteur
-dans le train perd l'accès à un article qu'il vient pourtant de charger.
+Une fois le blog installable ([[0090]]), il reste un onglet déguisé : un lecteur dans le train
+perd l'accès à un article qu'il vient pourtant de charger. Rien n'est mis en cache, et `⌘K`
+devient une boîte vide dès que le réseau tombe.
 
 `@docusaurus/plugin-pwa` **existe en version 3.10.2**, exactement la version de
 `@docusaurus/core` installée ici (`^3.10.2`) — vérifié sur le registre. Il n'est pas dans
-`package.json`, et `static/` ne contient aucun `manifest.json`.
+`package.json`.
 
-L'enjeu n'est pas la performance (elle est déjà bonne) : c'est **l'identité**. Un blog qui
-s'installe, s'ouvre dans sa propre fenêtre, avec le suricate en icône sur l'écran d'accueil,
-ne se lit plus comme un blog.
+Cette partie a été séparée de [[0090]] parce qu'elle n'a rien à voir en termes de risque :
+0090 ne fait qu'ajouter des fichiers statiques, alors qu'un service worker est du code qui
+s'exécute chez le lecteur et survit au déploiement.
 
 ## Solution
 
-Ajouter `@docusaurus/plugin-pwa` avec un manifeste et un jeu d'icônes, et un service worker
-qui met en cache la coquille du site et les articles déjà visités.
-
-### Ce qui existe déjà et sert de base
-
-- `static/img/favicon.png`, `avatar.png`, `avatar.webp` — mais **il faut des icônes 192×192
-  et 512×512, dont une `maskable`** ; aucune n'est au bon format aujourd'hui.
-- Le suricate (`static/img/meerkat/`) est le candidat évident pour l'icône d'application —
-  c'est la seule image du site qui soit une identité et pas un logo générique.
-- La prod est bien en HTTPS (`https://www.avonture.be`), condition nécessaire à l'installation.
+Ajouter `@docusaurus/plugin-pwa` avec un service worker qui met en cache la coquille du site
+et les articles déjà visités. Le manifeste et les icônes existent déjà (livrés par [[0090]]) —
+vérifier que la config du plugin les réutilise au lieu d'en régénérer un jeu concurrent.
 
 ### Les quatre pièges à traiter explicitement
 
@@ -48,9 +41,10 @@ qui met en cache la coquille du site et les articles déjà visités.
    précache (coût de stockage non négligeable, et l'index de questions va grossir avec
    [[0086]]), soit on assume la dégradation et on affiche un message honnête. **Ne pas
    laisser un champ de recherche muet.**
-4. **iOS.** Pas d'invite d'installation : l'ajout se fait manuellement via « Sur l'écran
-   d'accueil » dans Safari, et il faut `apple-touch-icon` plus les balises
-   `apple-mobile-web-app-*`. À documenter comme une limite, pas à contourner.
+4. **Interaction avec le cache HTTP.** `static/.htaccess` pose déjà des règles de
+   `Cache-Control`, et le commentaire ligne 85 documente pourquoi `json` en est exclu. Deux
+   couches de cache qui s'ignorent, c'est la recette d'un bug non reproductible : vérifier
+   que la stratégie du service worker ne contredit pas celle du serveur.
 
 ## Risque
 
@@ -60,24 +54,24 @@ qui met en cache la coquille du site et les articles déjà visités.
 - **Poids de stockage.** Précacher tout le corpus (248 articles + images) sur le téléphone
   d'un lecteur sans le lui demander serait abusif. Se limiter à la coquille + les pages
   visitées.
-- **Bénéfice réel à mesurer.** Avec le trafic actuel, le nombre d'installations sera
-  probablement proche de zéro. C'est assumé : la valeur est identitaire et technique (et
-  fait un bon article), pas statistique. Ne pas surdimensionner l'effort en conséquence.
 - **Surface de debug.** Un service worker est la première chose à suspecter dès qu'un
   comportement bizarre apparaît en prod, et la dernière à laquelle on pense. Documenter la
   procédure de purge dans `README.md`.
+- **Bénéfice incertain.** Le nombre de lecteurs qui installeront *puis* liront hors ligne est
+  probablement nul. D'où la priorité basse : à ne faire que si [[0090]] a donné envie d'aller
+  plus loin, ou pour en tirer un article.
 
 ## Acceptance
 
-- [ ] `@docusaurus/plugin-pwa` installé et configuré ; `manifest.json` servi
-- [ ] Icônes 192, 512 et maskable générées à partir du suricate ; `apple-touch-icon` présent
-- [ ] L'invite d'installation apparaît réellement sur Chrome desktop et Android (testé, pas
-      supposé) ; le comportement iOS est documenté comme limite connue
+- [ ] `@docusaurus/plugin-pwa` installé et configuré ; il réutilise le manifeste et les icônes
+      de [[0090]] au lieu d'en générer un second jeu
 - [ ] Un article déjà visité reste lisible réseau coupé
 - [ ] `api/*.php` n'est jamais servi depuis le cache (vérifié dans l'onglet réseau)
 - [ ] Le sort de la recherche hors ligne (Pagefind + `questions-index.json`) est tranché, et
       dans tous les cas `⌘K` affiche un message explicite plutôt qu'un résultat vide
 - [ ] Le popup de rechargement fonctionne : publier un article, recharger, constater la
       proposition de mise à jour
+- [ ] La stratégie du service worker ne contredit pas les règles `Cache-Control` de
+      `static/.htaccess`
 - [ ] La procédure de purge du service worker est notée dans `README.md`
 - [ ] `yarn lint && yarn format:check && yarn build` passent

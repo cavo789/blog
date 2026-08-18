@@ -222,9 +222,64 @@ function faq() {
 
 # @cat Content
 # @cmd questions
-# @desc Generate "Ask my blog" questions (one article, or --all for the whole corpus; requires Ollama)
+# @desc "Ask my blog" questions — type 'questions' alone to see the actions (review, list, status)
 function questions() {
-    node scripts/generate-questions.mjs "$@"
+    local action="${1:-}"
+
+    case "${action}" in
+        review)
+            shift
+            # Resumable, post-by-post review. Progress lives in each .questions.json
+            # ("reviewed" / "excluded"), so stopping and coming back another day is the
+            # normal way to use it.
+            node scripts/questions-review.mjs "$@"
+            ;;
+        list | show)
+            shift
+            if [[ $# -eq 0 ]]; then
+                printf "Usage: questions list <post>   (path, folder or slug — f.i. 'new-year-2024')\n" >&2
+                return 1
+            fi
+            node scripts/questions-review.mjs --list "$@"
+            ;;
+        status)
+            shift
+            node scripts/questions-review.mjs --status "$@"
+            ;;
+        "" | help | --help | -h)
+            # A literal format string we own, reused for every row (shellcheck's SC2059
+            # warns about variables here — it is safe precisely because no caller input
+            # ever reaches it).
+            local fmt="  \033[1;32m%-30s\033[0m %s\n"
+            printf "\n\033[1;34m❓  \"Ask my blog\" questions\033[0m — written by Ollama, validated by you.\n"
+
+            printf "\n\033[1;33m── Review ────────────────────────────────\033[0m\n"
+            printf "${fmt}" "questions review" "review post by post, resumes where you stopped"
+            printf "${fmt}" "questions review <post>" "review one precise article"
+            printf "${fmt}" "questions list <post>" "just print one article's questions"
+            printf "${fmt}" "questions status" "how many reviewed, left, excluded, stale"
+            printf "  \033[2m<post> = a path, a folder or just a slug — f.i. 'new-year-2024'\033[0m\n"
+
+            printf "\n\033[1;33m── Review filters ────────────────────────\033[0m\n"
+            printf "${fmt}" "--stale" "only articles edited since generation"
+            printf "${fmt}" "--all" "re-review articles already validated"
+            printf "${fmt}" "--tag <slug>" "only one mainTag"
+            printf "${fmt}" "--limit <n>" "stop the queue after n articles"
+
+            printf "\n\033[1;33m── Generate (needs Ollama) ───────────────\033[0m\n"
+            printf "${fmt}" "questions <article> [--force]" "generate for one article"
+            printf "${fmt}" "questions --all [--force]" "generate for the whole corpus"
+
+            printf "\n\033[1;33m── Inside a review ───────────────────────\033[0m\n"
+            printf "  \033[1;32mEnter\033[0m keep & mark reviewed   \033[1;32m1 3 7\033[0m delete   \033[1;32ma\033[0m add   \033[1;32me N\033[0m edit\n"
+            printf "  \033[1;32mr\033[0m regenerate   \033[1;32mx\033[0m exclude for good   \033[1;32ms\033[0m skip   \033[1;32mq\033[0m quit   \033[1;32m?\033[0m help\n"
+
+            printf "\n💡 \033[1;36mTip:\033[0m ten free minutes? \033[4mquestions review\033[0m picks up where you left off.\n\n"
+            ;;
+        *)
+            node scripts/generate-questions.mjs "$@"
+            ;;
+    esac
 }
 
 # @cat Content

@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:04.785Z",
+  "generated": "2026-08-18T10:28:55.058Z",
   "source": ".part10.htaccess",
+  "sourceHash": "bc8bf15ba7580704a21e9947ac751ae0f0af30ea",
   "lang": "htaccess",
   "explanations": {
-    "1": "This checks if the mod_php5 module is available on the server; if it is, the rules inside this block will apply.",
-    "4": "This tells PHP to keep track of the last error that occurred so you can access it later in your code with the $php_errormsg variable."
+    "1": "This checks if the Apache server has the PHP 5 module installed before trying to use PHP commands; if it doesn't have it, Apache will skip this whole block.",
+    "2": "This tells PHP to show error messages directly in the browser output instead of hiding them.",
+    "4": "This enables PHP to keep track of the last error that occurred so you can access it later in your code.",
+    "5": "This tells PHP to write error messages to a file called error.log instead of (or in addition to) showing them on screen."
   }
 }

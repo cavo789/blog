@@ -4,9 +4,10 @@ set -euo pipefail
 # Parses the flat .todos/ backlog into structured records for /todo-plan.
 #
 # Scans every .todos/*.md file (flat only — DONE/, PARTIAL/, BLOCKED/, UNNEEDED/,
-# POSTPONED/ subfolders, plan.md, and 000_*-prefixed aggregate backlogs are never
-# part of the flat queue) and extracts the header fields /todo-plan Phase 2 would
-# otherwise parse by hand from N separate file reads: ID, title, priority
+# POSTPONED/ subfolders, plan.md, 000_*-prefixed aggregate backlogs, and
+# 0000--prefixed progress journals are never part of the flat queue) and extracts
+# the header fields /todo-plan Phase 2 would otherwise parse by hand from N
+# separate file reads: ID, title, priority
 # (normalized to its first word, lowercased), batch, depends, and the raw Files
 # bullet text (wrapped lines joined). Directory-set normalization and lot-building
 # stay a judgment call for the caller — this script only removes the per-file
@@ -36,6 +37,7 @@ for f in "${todos_dir}"/*.md; do
     base="$(basename "${f}")"
     [[ "${base}" == "plan.md" ]] && continue
     [[ "${base}" =~ ^000_ ]] && continue
+    [[ "${base}" =~ ^0000- ]] && continue
 
     first_line="$(head -1 "${f}")"
     id="$(sed -E 's/^#[[:space:]]+([^[:space:]]+).*/\1/' <<<"${first_line}")"

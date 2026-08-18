@@ -31,7 +31,7 @@ What does that mean? Now, aside unit testing (see my previous article), we can a
 
 An example can be to visit the homepage of your website, click in the search text area, fill some keywords, select the first visible item, click on it and assert the new page will display some text.
 
-I've already written an article about [Behat](/blog/tags/behat), another one about [Cypress](/blog/tags/cypress); it was logical to do the same with Pest v4.
+I've already written an article about Behat, another one about Cypress; it was logical to do the same with Pest v4.
 
 <!-- truncate -->
 

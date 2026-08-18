@@ -1,11 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:25:49.789Z",
+  "generated": "2026-08-18T10:28:40.002Z",
   "source": "block_fileextensions_option1.htaccess",
+  "sourceHash": "fd860218299a77c1d5e5b96526121a4fe83b7a39",
   "lang": "htaccess",
   "explanations": {
-    "1": "This line checks if the requested file does NOT match a list of allowed file types (like images, stylesheets, scripts, etc.); the exclamation mark means 'not', and the vertical bars are 'or' operators separating each file extension.",
-    "2": "If the condition above is true (meaning someone requested a file type we don't allow), the dash tells Apache to skip rewriting and the [F] flag returns a forbidden error to block the request."
+    "1": "This line checks if the requested file does NOT end with any of these extensions (like .css, .js, .png, etc.), and if that's true, the next rule will block the request.",
+    "2": "The dash means 'do nothing' and [F] means 'forbidden' — together this rejects the request with a 403 error if the previous condition matched."
   }
 }

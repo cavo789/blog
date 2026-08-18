@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:52:54.861Z",
+  "generated": "2026-08-18T10:14:48.266Z",
   "source": "index.md",
-  "sourceHash": "45bd42d68cd0c6032c2fb4a2b9ae848595b9e940",
+  "sourceHash": "812445cc04708d31b1cd7b36c8ede3b637eaf55f",
   "questions": [
     {
-      "question": "What is eza? What does it do?",
-      "anchor": "result"
-    },
-    {
-      "question": "How can I install eza on my Linux system?",
-      "anchor": "install-eza"
-    },
-    {
-      "question": "What are the benefits of using eza over the traditional ls command?",
+      "question": "What is eza and how does it improve upon ls?",
       "anchor": ""
     },
     {
-      "question": "What is the syntax for setting up an alias for eza on my Linux system?",
+      "question": "How do I install eza on my Linux system?",
       "anchor": "install-eza"
     },
     {
-      "question": "How can I customize the appearance of the file listing with eza?",
+      "question": "What are some useful flags to use with the eza command for a better file listing experience?",
       "anchor": "result"
     },
     {
-      "question": "What is the difference between exa and eza?",
+      "question": "Can you explain how to set up an alias for eza in my shell configuration file?",
+      "anchor": "install-eza"
+    },
+    {
+      "question": "What is the purpose of the `--icons` flag when using eza?",
+      "anchor": "result"
+    },
+    {
+      "question": "How can I customize the appearance of the eza command output on my Linux system?",
+      "anchor": "install-eza"
+    },
+    {
+      "question": "What is the difference between `exa` and `eza`? Are they related to each other?",
       "anchor": ""
     },
     {
-      "question": "What are some common flags used with eza for file listing?",
+      "question": "How can I use eza to list files with a specific time format?",
       "anchor": "result"
-    },
-    {
-      "question": "How can I set up a default alias for eza on my Linux system?",
-      "anchor": "install-eza"
     }
   ]
 }

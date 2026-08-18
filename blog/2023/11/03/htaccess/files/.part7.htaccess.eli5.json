@@ -1,12 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:25:57.933Z",
+  "generated": "2026-08-18T10:28:48.365Z",
   "source": ".part7.htaccess",
+  "sourceHash": "e75f20d9fa9d7eb6fab1024da1f337624e8a3f68",
   "lang": "htaccess",
   "explanations": {
-    "1": "This rule matches only files ending in .pdf by using a regular expression pattern inside parentheses.",
-    "2": "ForceType tells the server to treat matched files as binary downloads rather than displaying them in the browser.",
-    "3": "This header tells the browser to download the file as an attachment instead of trying to open it."
+    "1": "This pattern matches any file ending with .pdf using a regular expression (the backslash escapes the dot so it matches a literal period, not any character).",
+    "2": "This tells the server to treat PDF files as generic binary downloads rather than trying to display them in the browser.",
+    "3": "This header tells the browser to download the file as an attachment (save it) instead of trying to open it inline."
   }
 }

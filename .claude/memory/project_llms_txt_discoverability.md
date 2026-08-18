@@ -1,7 +1,7 @@
 ---
 name: project_llms_txt_discoverability
 description: "llms.txt/series-bundle discoverability work — what was built, and external directory submission status"
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 6eb8ae47-742c-4932-82bc-41dc6d0b60bd

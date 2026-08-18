@@ -68,7 +68,7 @@ Nothing fancy: a styled `console.log` call (the `%c` directive lets you apply CS
 An empty dependency array means this effect runs once when the component mounts — not on every client-side route change. Since `Root` wraps the whole app and survives navigation between pages, this is the right place for a "once per visit" easter egg.
 </AlertBox>
 
-## 3. A 404 page with a sense of humorba
+## 3. A 404 page with a sense of humor
 
 The 404 page already showed a meerkat illustration and a message. We turned the message into a small pool of five, picked at random on every load:
 
@@ -76,7 +76,12 @@ The 404 page already showed a meerkat illustration and a message. We turned the 
 
 `useState(() => …)` with a function initializer ensures the random pick happens exactly once per mount, not on every re-render — important here since `NotFound` doesn't need to re-roll the message while the user reads it.
 
-Try it: Click on this link [inexisting_page](/blog/inexisting_page) then press <kbd>F5</kbd> to get random message.
+{/* Deliberately a raw <a> and not a Markdown link: this URL has to stay dead for the
+    demo to work, and Docusaurus's broken-link checker (`onBrokenLinks`) only collects
+    <Link> elements — which is what a Markdown link compiles to. Written as `[…](…)`
+    it would fail every build. */}
+
+Try it: Click on this link <a href="/blog/inexisting_page">inexisting_page</a> then press <kbd>F5</kbd> to get random message.
 
 ## 4. The star of the show: a Konami code easter egg
 

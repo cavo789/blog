@@ -1,14 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:25:45.955Z",
+  "generated": "2026-08-18T10:28:36.425Z",
   "source": "csp.htaccess",
+  "sourceHash": "598c50a0ceb2ccb0c9b6c51e0d549460cd97c10e",
   "lang": "htaccess",
   "explanations": {
-    "1": "This checks if Apache has the mod_headers module installed; everything inside only runs if it does.",
-    "4": "This sets a custom header called 'Protected-by' — the comment suggests you can either put a value here or delete this line entirely.",
-    "7": "This line sets permissions for what browser features (like camera or microphone) are allowed; replace XXXXXXXXXXXXXX with your actual domain name.",
-    "21": "The condition at the end (after the quotes) means this header only gets sent when the connection is using HTTPS — it won't apply on regular http.",
-    "40": "This entire line is commented out as a safety measure because Content-Security-Policy can easily break a site if configured wrong; uncomment and test thoroughly before using it."
+    "1": "This checks if Apache has the mod_headers module loaded before trying to use Header commands; if the module isn't available, Apache will ignore everything inside this block.",
+    "7": "The 'always' keyword means this header gets sent even if there's an error, and the condition at the end (the part in quotes after 'always set') means this header only applies when the connection is using HTTPS.",
+    "21": "The 'expr=%{HTTPS} == 'on'' at the end is a condition that tells Apache to only send this security header when the connection is secure (HTTPS); without it, the header wouldn't be sent over regular HTTP.",
+    "40": "This entire line is commented out (starts with #) because it's powerful but risky—if the rules are too strict, your site might break, which is why the comments above warn you to test carefully before uncommenting it."
   }
 }

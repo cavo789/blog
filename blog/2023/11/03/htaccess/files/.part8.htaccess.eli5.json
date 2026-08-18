@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:01.876Z",
+  "generated": "2026-08-18T10:28:50.924Z",
   "source": ".part8.htaccess",
+  "sourceHash": "e8876de72735841885b357712ed155a64620ecac",
   "lang": "htaccess",
   "explanations": {
-    "1": "This checks if Apache's rewrite module is available before running any rewrite rules, so the server won't error if the module isn't installed.",
-    "7": "This condition checks the HTTPS variable; !=on means 'is not equal to on', so it's true when the connection is not secure.",
-    "8": "The [L,R=301] means stop processing rules after this one (L) and send a permanent redirect response (301) to the browser.",
-    "12": "The !^ means 'does not start with', so this condition is true when the domain doesn't start with 'www.'."
+    "1": "IfModule checks if Apache has the mod_rewrite module installed; the code inside only runs if it does.",
+    "7": "This condition checks if HTTPS is not already enabled (!=on means 'not equal to on').",
+    "8": "[L,R=301] means 'L' stops processing further rules, and 'R=301' sends a permanent redirect response to the browser.",
+    "12": "!^www\\. means 'if the domain does NOT start with www.' — the backslash escapes the dot so it matches a literal period.",
+    "13": "This rule redirects to www with https, but only if the previous HTTPS redirect already happened (due to the [L] flag above)."
   }
 }

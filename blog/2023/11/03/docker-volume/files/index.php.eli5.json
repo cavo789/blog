@@ -1,8 +1,9 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:25:42.855Z",
+  "generated": "2026-08-18T10:28:32.820Z",
   "source": "index.php",
+  "sourceHash": "b3187814bbb79b5cbdfd206dd93943752bf21085",
   "lang": "php",
   "explanations": {}
 }

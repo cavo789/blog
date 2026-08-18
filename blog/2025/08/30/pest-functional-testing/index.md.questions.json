@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:59:30.262Z",
+  "generated": "2026-08-18T10:15:11.572Z",
   "source": "index.md",
-  "sourceHash": "492f62fe18574d1ef08d06aee3673a015beade82",
+  "sourceHash": "95f6a47c49eb20622aff57cf70bb064257000dd2",
   "questions": [
     {
-      "question": "How do I create a temporary project for writing functional tests with Pest?",
+      "question": "What are functional tests in Laravel and how do they work with Pest?",
       "anchor": ""
     },
     {
-      "question": "What is a Dockerfile used for in this article's context?",
+      "question": "How can I set up a Docker-based testing environment for Laravel using Pest v4?",
+      "anchor": "lets-create-a-temporary-project"
+    },
+    {
+      "question": "What is built-in browser testing in Pest v4 and how does it work?",
       "anchor": "create-the-image"
     },
     {
-      "question": "How can I run the tests using the Makefile in the article's context?",
-      "anchor": "run-tests"
-    },
-    {
-      "question": "What is Pest v4 and how does it differ from previous versions?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I create a container for running tests with Pest v4?",
+      "question": "How do I create a temporary project for writing functional tests with Pest?",
       "anchor": "create-the-container"
     },
     {
-      "question": "What are some features of Pest that make it suitable for writing functional tests?",
+      "question": "What are the steps to create an image and container for running Pest tests in a Docker environment?",
+      "anchor": "run-tests"
+    },
+    {
+      "question": "How do I run functional tests using Pest v4 with a live website?",
       "anchor": "in-depth-skip-this-if-you-just-want-to-use-it"
     },
     {
-      "question": "How can I run the tests in a real browser using Pest v4?",
-      "anchor": "run-tests"
+      "question": "What is the purpose of the `make build` command in the Dockerfile for Pest v4?",
+      "anchor": ""
     },
     {
-      "question": "What is the purpose of screenshots taken by Pest when a test fails?",
-      "anchor": "run-tests"
+      "question": "How does the `make up` command create a Docker container for running Pest tests?",
+      "anchor": ""
     }
   ]
 }

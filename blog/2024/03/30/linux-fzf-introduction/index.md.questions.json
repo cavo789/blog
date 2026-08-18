@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:50:34.601Z",
+  "generated": "2026-08-18T10:14:43.401Z",
   "source": "index.md",
-  "sourceHash": "5735fec25ef2d9fc68da7948f6b9528385fcceeb",
+  "sourceHash": "8a7e2e8f9c1d3f6d6215a33916bb79280a973691",
   "questions": [
     {
-      "question": "How do I install Fuzzy Finder?",
+      "question": "What is Fuzzy Finder and how does it enhance the Linux command line?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use CTRL+R to search for commands in my history using Fuzzy Finder?",
       "anchor": "installation"
     },
     {
-      "question": "What is the purpose of CTRL+R in the console?",
-      "anchor": ""
-    },
-    {
-      "question": "How does Fuzzy Finder enhance the history search in the console?",
+      "question": "What are the keybindings available with Fuzzy Finder and how do they work?",
       "anchor": "playing-with-the-history"
     },
     {
-      "question": "How can I use CTRL+T to select files interactively?",
+      "question": "How can I search for files using Fuzzy Finder in the current directory and subdirectories?",
       "anchor": "getting-a-list-of-files"
     },
     {
-      "question": "What is the purpose of ALT+C in Fuzzy Finder?",
-      "anchor": ""
+      "question": "What are some common use cases for Fuzzy Finder in the Linux command line?",
+      "anchor": "keybindings"
     },
     {
-      "question": "How does Fuzzy Finder allow for any-order-letter matching in history search?",
-      "anchor": "playing-with-the-history"
+      "question": "What is the purpose of the installation process for Fuzzy Finder and how do I perform it?",
+      "anchor": "installation"
     },
     {
-      "question": "What are some examples of how Fuzzy Finder can be used beyond history search?",
-      "anchor": ""
+      "question": "How can I use CTRL+T to select files interactively in the Linux command line using Fuzzy Finder?",
+      "anchor": "getting-a-list-of-files"
     },
     {
-      "question": "How does Fuzzy Finder help with remembering commands in the console?",
-      "anchor": "playing-with-the-history"
+      "question": "What are some advanced search options available with Fuzzy Finder for searching through my history and file lists?",
+      "anchor": "installation"
     }
   ]
 }

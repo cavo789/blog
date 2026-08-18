@@ -1,16 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-26T07:12:54.400Z",
+  "generated": "2026-08-18T10:33:07.132Z",
   "source": "styles.module.css",
-  "sourceHash": "e59420f5308727e3f59f625ace1270c7893a6020",
+  "sourceHash": "e040d2d2c0e12ab075aab4ea253674628a33b97e",
   "lang": "css",
   "explanations": {
-    "2": "flex makes items line up horizontally and gives us powerful layout tools to control spacing and alignment.",
-    "4": "flex-wrap: wrap means if items don't fit on one line, they'll move to the next line instead of shrinking.",
-    "8": "var(--ifm-color-emphasis-200) is a CSS variable (think of it like a named color) defined elsewhere that this file uses.",
-    "16": "white-space: nowrap prevents the text from breaking into multiple lines; it all stays on one line.",
-    "26": "inline-flex is like flex but the container itself only takes up as much width as it needs, rather than full width.",
-    "36": "transition defines animations that will smoothly change the three properties below over 0.15 seconds when the element changes state."
+    "16": "white-space: nowrap prevents text from wrapping to multiple lines, so the question stays on one line even in tight spaces.",
+    "26": "inline-flex makes the button shrink to fit its content (like text and icons) instead of taking full width.",
+    "36": "transition is a shorthand that smoothly animates changes to background-color, border-color, and text color over 0.15 seconds when you hover."
   }
 }

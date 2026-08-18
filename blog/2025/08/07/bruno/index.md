@@ -24,7 +24,7 @@ blueskyRecordKey: 3lvs336stus2j
 This article introduces Bruno, a free, open-source alternative to Postman for API testing. It guides you through setting up a sample Python FastAPI, and then using both the Bruno GUI and CLI to test it. You'll learn how to create requests, manage environments, and run tests from the command line using Docker, including how to handle common networking challenges. The post also covers adding assertions to your tests for validation.
 </TLDR>
 
-[Bruno](https://www.usebruno.com/) is a tool like <Link to="/blog/tags/postman">Postman</Link> you can use for free. Everything is stored on your computer so you can store files within your codebase and submit it to your code versioning tool f.i.
+[Bruno](https://www.usebruno.com/) is a tool like Postman you can use for free. Everything is stored on your computer so you can store files within your codebase and submit it to your code versioning tool f.i.
 
 *Because those files live in your repository, the CLI part of Bruno turns naturally into a CI job — see <Link to="/blog/gitlab-docker-out-of-docker">GitLab - Running Docker-out-of-Docker in your CI</Link>. And to check the API's contract rather than its answers, there's <Link to="/blog/belgif-api-linter">Validate your OpenAPI schema against the Belgif REST standards</Link>.*
 

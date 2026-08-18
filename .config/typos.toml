@@ -21,9 +21,9 @@ extend-ignore-re = [
   # 3. Ignore Docker IDs (12–64-character hexadecimal strings)
   "\\b[a-f0-9]{12,64}\\b",
 
-  # 4. Enable inline exclusion comments for Markdown
-  "(?s).*?",
-  ".*$"
+  # 4. Inline exclusion for Markdown: any line carrying the marker
+  #    <!-- spellchecker:disable-line --> is skipped entirely.
+  "(?Rm)^.*<!--\\s*spellchecker:disable-line\\s*-->.*$"
 ]
 
 [default.extend-words]

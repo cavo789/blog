@@ -75,7 +75,7 @@ repos:
     hooks:
       - id: eli5-freshness
         name: eli5 annotation freshness
-        entry: node scripts/check-eli5-freshness.mjs
+        entry: node scripts/check-eli5-freshness.mjs --quiet
         language: system
         pass_filenames: false
         always_run: true
@@ -86,7 +86,7 @@ repos:
     hooks:
       - id: questions-freshness
         name: ask-my-blog question freshness
-        entry: node scripts/check-questions-freshness.mjs
+        entry: node scripts/check-questions-freshness.mjs --quiet
         language: system
         pass_filenames: false
         always_run: true

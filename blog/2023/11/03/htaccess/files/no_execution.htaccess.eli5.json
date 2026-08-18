@@ -1,11 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:26.722Z",
+  "generated": "2026-08-18T10:29:15.171Z",
   "source": "no_execution.htaccess",
+  "sourceHash": "d294a8c7dc570982599320cdd0bd4e31cdfb4e0c",
   "lang": "htaccess",
   "explanations": {
-    "2": "This line is telling the server that certain file types (.php, .pl, etc.) should be treated as CGI scripts, which is actually counterintuitive given the comment above wanting to disable execution.",
-    "6": "The pattern `asp?x` matches both .asp and .aspx files — the `?` makes the 'x' optional, so it catches both file extensions with a single pattern."
+    "2": "This line registers several file types as CGI scripts, which tells Apache to treat .php, .pl, .py and other files as programs to execute rather than serve as plain text.",
+    "6": "The regex pattern here matches filenames ending in .asp, .aspx, .cgi, .php, .pl, or .py; the question mark after 'p' makes the 'x' optional so it catches both .asp and .aspx files."
   }
 }

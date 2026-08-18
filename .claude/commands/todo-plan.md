@@ -34,7 +34,9 @@ exception:
 - the status subfolders (`DONE/`, `PARTIAL/`, `BLOCKED/`, `UNNEEDED/`, `POSTPONED/`) — `/todo`
   Phase 3 moves a TODO there precisely to take it out of the queue,
 - `plan.md` itself,
-- `000_*.md` backlog aggregates (e.g. the `/dry` backlog) — they are their own tracking system.
+- `000_*.md` backlog aggregates (e.g. the `/dry` backlog) — they are their own tracking system,
+- `0000-*.md` progress journals (`0000-freshness-journal.md`, `0000-reader-review-journal.md`) —
+  they are session logs maintained by `/freshness` and `/reader_review`, not tasks.
 
 If the flat backlog is empty, write a `plan.md` saying so and stop.
 
@@ -56,8 +58,8 @@ Run the parser script once instead of opening each TODO file:
 .claude/scripts/todo_parse_backlog.sh .todos
 ```
 
-It scans every flat `.todos/*.md` (the same scope as Phase 1 — subfolders, `plan.md`, and `000_*.md`
-aggregate backlogs are already excluded) and prints one record per TODO:
+It scans every flat `.todos/*.md` (the same scope as Phase 1 — subfolders, `plan.md`, `000_*.md`
+aggregate backlogs and `0000-*.md` journals are already excluded) and prints one record per TODO:
 
 | Field | Meaning |
 | --- | --- |

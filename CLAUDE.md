@@ -107,42 +107,42 @@ These files are loaded at conversation start; run `/refresh` to update them afte
 
 ### Command → agent → skill map
 
-| Command | Agent | Skill(s) |
-| --- | --- | --- |
-| `/bash-review` | `bash-best-practices-reviewer` | `bash-best-practices` |
-| `/python-review` | `python-best-practices-reviewer` | `python-best-practices` |
-| `/docker-review` | `dockerfile-best-practices-reviewer` | `dockerfile-best-practices`, `devcontainer-dockerfile-best-practices` |
-| `/docker-dive-optimization` | *(none)* | `docker-image-slimming` |
-| `/deep_review` | *(none)* | *(inline, see command)* |
-| `/review_blog` | *(none)* | *(inline, see command)* |
-| `/reader_review` | *(none)* | `reader-first-docs`, `blog-post-structure` |
-| `/freshness` | *(none)* | *(inline, see command)* |
-| `/links` | *(none)* | *(inline, see command)* |
-| `/refresh` | *(none)* | *(inline, see command)* |
-| `/todo` | *(none)* | `todo-authoring` (via lock scripts) |
-| `/todo-add` | *(none)* | `todo-authoring` |
-| `/todo-plan` | *(none)* | *(inline, via `todo_parse_backlog.sh`)* |
+| Command                     | Agent                                | Skill(s)                                                              |
+| --------------------------- | ------------------------------------ | --------------------------------------------------------------------- |
+| `/bash-review`              | `bash-best-practices-reviewer`       | `bash-best-practices`                                                 |
+| `/python-review`            | `python-best-practices-reviewer`     | `python-best-practices`                                               |
+| `/docker-review`            | `dockerfile-best-practices-reviewer` | `dockerfile-best-practices`, `devcontainer-dockerfile-best-practices` |
+| `/docker-dive-optimization` | _(none)_                             | `docker-image-slimming`                                               |
+| `/deep_review`              | _(none)_                             | _(inline, see command)_                                               |
+| `/review_blog`              | _(none)_                             | _(inline, see command)_                                               |
+| `/reader_review`            | _(none)_                             | `reader-first-docs`, `blog-post-structure`                            |
+| `/freshness`                | _(none)_                             | _(inline, see command)_                                               |
+| `/links`                    | _(none)_                             | _(inline, see command)_                                               |
+| `/refresh`                  | _(none)_                             | _(inline, see command)_                                               |
+| `/todo`                     | _(none)_                             | `todo-authoring` (via lock scripts)                                   |
+| `/todo-add`                 | _(none)_                             | `todo-authoring`                                                      |
+| `/todo-plan`                | _(none)_                             | _(inline, via `todo_parse_backlog.sh`)_                               |
 
 ### Rule → skill map
 
-| Rule | Paths | Skill |
-| --- | --- | --- |
-| `.claude/rules/markdown.md` | `**/*.md`, `**/*.mdx` | `markdown-style` |
-| `.claude/rules/bash.md` | `**/*.sh`, `**/*.bash`, `**/.bash_aliases` | `bash-best-practices` |
-| `.claude/rules/python.md` | `**/*.py` | `python-best-practices` |
+| Rule                        | Paths                                      | Skill                   |
+| --------------------------- | ------------------------------------------ | ----------------------- |
+| `.claude/rules/markdown.md` | `**/*.md`, `**/*.mdx`                      | `markdown-style`        |
+| `.claude/rules/bash.md`     | `**/*.sh`, `**/*.bash`, `**/.bash_aliases` | `bash-best-practices`   |
+| `.claude/rules/python.md`   | `**/*.py`                                  | `python-best-practices` |
 
 ### Known gap
 
 `agents/reader-first-docs-reviewer.md` audits long-form docs (README, CONTRIBUTING) and uses the
 `reader-first-docs` skill, but has no corresponding command — it cannot be triggered via `/`.
-Note: `/reader_review` already handles *blog articles* via the same skill; this agent would
-cover *project docs*, a different scope. To activate it, add a `reader-first-docs-review.md`
+Note: `/reader_review` already handles _blog articles_ via the same skill; this agent would
+cover _project docs_, a different scope. To activate it, add a `reader-first-docs-review.md`
 command.
 
 ## OCI image labels (for `/docker-review`)
 
-| Label | Value |
-| --- | --- |
-| `org.opencontainers.image.vendor` | `cavo789` |
-| `org.opencontainers.image.licenses` | `MIT` |
-| `org.opencontainers.image.authors` | `cavo789@gmail.com` |
+| Label                               | Value               |
+| ----------------------------------- | ------------------- |
+| `org.opencontainers.image.vendor`   | `cavo789`           |
+| `org.opencontainers.image.licenses` | `MIT`               |
+| `org.opencontainers.image.authors`  | `cavo789@gmail.com` |

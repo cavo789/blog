@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:03:45.434Z",
+  "generated": "2026-08-18T10:15:16.227Z",
   "source": "index.md",
-  "sourceHash": "210aae4dc4f8d6755b11470eb1e3745d36dbd306",
+  "sourceHash": "3649ce8dcc760509bdfea51e5e3d16caff6a728e",
   "questions": [
     {
-      "question": "What's an ASCII-art meerkat in the page source?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I view the page source of this blog?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the purpose of the console.log wink for DevTools visitors?",
-      "anchor": ""
-    },
-    {
-      "question": "Where can I find a pool of five random messages on the 404 page?",
+      "question": "What is the ASCII-art meerkat in the page source?",
       "anchor": "1-the-one-that-started-it-all-an-ascii-art-meerkat-in-the-page-source"
     },
     {
-      "question": "What is the Konami code sprite run?",
+      "question": "How do I find the console.log wink for DevTools visitors?",
       "anchor": "2-a-consolelog-wink-for-devtools-visitors"
     },
     {
-      "question": "How do I trigger the tab-away easter egg?",
-      "anchor": "3-a-404-page-with-a-sense-of-humorba"
+      "question": "Can you explain how the 404 page with a sense of humor works?",
+      "anchor": "3-a-404-page-with-a-sense-of-humor"
     },
     {
-      "question": "What are the hidden comments in the response headers?",
+      "question": "What is the Konami code easter egg on this blog?",
       "anchor": "4-the-star-of-the-show-a-konami-code-easter-egg"
     },
     {
-      "question": "What is the purpose of the print stylesheet footer?",
-      "anchor": "the-component"
+      "question": "How does the hidden sitemap comment work?",
+      "anchor": "5-tab-away-easter-egg-title-and-favicon-swap"
+    },
+    {
+      "question": "What are some of the bugs we found and caught along the way?",
+      "anchor": "the-bug-that-nearly-killed-the-fun"
+    },
+    {
+      "question": "Can you explain how the tab-away easter egg works?",
+      "anchor": "6-a-wink-in-the-http-headers"
+    },
+    {
+      "question": "How does the print stylesheet footer work on this blog?",
+      "anchor": "7-print-stylesheet-easter-egg"
     }
   ]
 }

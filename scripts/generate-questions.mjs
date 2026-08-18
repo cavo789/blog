@@ -114,7 +114,7 @@ function cleanHeadingText(text) {
  * Docusaurus would generate for it (github-slugger — same package Docusaurus's own MDX
  * pipeline uses), honoring an explicit `{#custom-id}` override when present.
  */
-function extractHeadings(body) {
+export function extractHeadings(body) {
   const slugger = new GithubSlugger();
   const headings = [];
 
@@ -253,8 +253,22 @@ export async function generateQuestions(
 
   const destPath = outputPath || absSource + ".questions.json";
 
-  if (!force && fs.existsSync(destPath)) {
-    return { status: "skipped", path: destPath };
+  // An article excluded during review (scripts/questions-review.mjs, `x`) must never get
+  // questions again — not even with --force, which is exactly the run that would otherwise
+  // undo the decision. Only `questions review <post>` + `i` lifts it.
+  if (fs.existsSync(destPath)) {
+    let existing;
+    try {
+      existing = JSON.parse(fs.readFileSync(destPath, "utf-8"));
+    } catch {
+      existing = null;
+    }
+    if (existing?.excluded === true) {
+      return { status: "excluded", path: destPath };
+    }
+    if (!force) {
+      return { status: "skipped", path: destPath };
+    }
   }
 
   const raw = fs.readFileSync(absSource, "utf-8");
@@ -317,8 +331,19 @@ async function runBulk({ force, dir, limit, dryRun }) {
   if (dryRun) {
     for (const file of targets) {
       const rel = path.relative(projectRoot, file);
-      const exists = fs.existsSync(file + ".questions.json");
-      console.log(`  [${exists && !force ? "SKIP" : "GENERATE"}] ${rel}`);
+      const sidecarPath = file + ".questions.json";
+      const exists = fs.existsSync(sidecarPath);
+      let label = exists && !force ? "SKIP" : "GENERATE";
+      if (exists) {
+        try {
+          if (JSON.parse(fs.readFileSync(sidecarPath, "utf-8")).excluded === true) {
+            label = "EXCLUDED";
+          }
+        } catch {
+          /* an unreadable sidecar is reported by questions:check, not here */
+        }
+      }
+      console.log(`  [${label}] ${rel}`);
     }
     console.log("\nDry run — nothing written.");
     return;
@@ -326,6 +351,7 @@ async function runBulk({ force, dir, limit, dryRun }) {
 
   let generated = 0,
     skipped = 0,
+    excluded = 0,
     errors = 0;
 
   for (const file of targets) {
@@ -333,7 +359,10 @@ async function runBulk({ force, dir, limit, dryRun }) {
     process.stdout.write(`  📄 ${rel} ... `);
     try {
       const result = await generateQuestions(file, { force });
-      if (result.status === "skipped") {
+      if (result.status === "excluded") {
+        console.log("🚫 excluded");
+        excluded++;
+      } else if (result.status === "skipped") {
         console.log("⏭  skipped");
         skipped++;
       } else {
@@ -347,7 +376,9 @@ async function runBulk({ force, dir, limit, dryRun }) {
   }
 
   console.log(`\n──────────────────────────────────────`);
-  console.log(`Generated: ${generated}  Skipped: ${skipped}  Errors: ${errors}`);
+  console.log(
+    `Generated: ${generated}  Skipped: ${skipped}  Excluded: ${excluded}  Errors: ${errors}`,
+  );
   if (errors > 0) process.exitCode = 1;
 }
 
@@ -415,7 +446,12 @@ Environment:
 
     try {
       const result = await generateQuestions(articleFile, { force, outputPath });
-      if (result.status === "skipped") {
+      if (result.status === "excluded") {
+        console.log(`🚫 Excluded from "Ask my blog": ${path.basename(result.path)}`);
+        console.log(
+          `   Lift it with: node scripts/questions-review.mjs ${articleFile}  (then press i)`,
+        );
+      } else if (result.status === "skipped") {
         console.log(`⏭  Skipped (already exists): ${path.basename(result.path)}`);
         console.log(`   Use --force to regenerate.`);
       } else {

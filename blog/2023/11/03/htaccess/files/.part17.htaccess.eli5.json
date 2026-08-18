@@ -1,13 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:25.018Z",
+  "generated": "2026-08-18T10:29:13.267Z",
   "source": ".part17.htaccess",
+  "sourceHash": "b46b8309b20ffed25317c0cc5e11bbea7af81b12",
   "lang": "htaccess",
   "explanations": {
-    "1": "This matches files ending in .pl, .php, .cgi, or .spl — the dollar sign means 'end of filename' and the pipe | means 'or'.",
-    "2": "This checks if the mod_headers module (which lets Apache add custom HTTP response headers) is installed before trying to use it.",
-    "4": "This tells browsers to never display this page inside a frame on another website, protecting against clickjacking attacks.",
-    "5": "This enables the browser's built-in cross-site scripting (XSS) protection and tells it to block the page if an XSS attack is detected."
+    "1": "This line matches (selects) files that end with .pl, .php, .cgi, or .spl — the dollar sign means 'end of filename' and the pipe | means 'or'.",
+    "2": "This checks if Apache has the mod_headers module installed before trying to use Header commands, so the config won't break if that module isn't available.",
+    "4": "This prevents your site from being embedded inside an iframe on another website, which is a security measure against clickjacking attacks.",
+    "5": "This tells old browsers (Internet Explorer) to block suspected cross-site scripting attacks, though modern browsers ignore this header now."
   }
 }

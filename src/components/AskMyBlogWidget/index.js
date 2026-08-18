@@ -105,7 +105,13 @@ export default function AskMyBlogWidget() {
         >
           <div className={styles.panelHead}>
             <span className={styles.panelHeadTitle}>
-              <img src={mascot} alt="" className={styles.panelHeadMascot} width="40" height="40" />
+              <img
+                src={mascot}
+                alt=""
+                className={styles.panelHeadMascot}
+                width="40"
+                height="40"
+              />
               Ask my blog
             </span>
             <button

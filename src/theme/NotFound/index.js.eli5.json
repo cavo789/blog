@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-19T07:28:11.442Z",
+  "generated": "2026-08-18T10:33:26.850Z",
   "source": "index.js",
-  "sourceHash": "4a224d8cea7fe1cdda812ed495daeea3d91d534a",
+  "sourceHash": "6d933009a4867bfce940067ed1f6624561bd60c1",
   "lang": "javascript",
   "explanations": {
-    "21": "useState with an arrow function as the initial value means the random message is only picked once when the component first loads, not on every render.",
-    "22": "Math.floor(Math.random() * array.length) picks a random whole number between 0 and the last index of the array, which selects a random message."
+    "12": "The split('/') breaks the path into parts, filter(Boolean) removes empty strings (like from double slashes), and pop() grabs the last part — so '/docs/react/' becomes 'react'.",
+    "13": "This replaces sequences of hyphens or underscores with spaces, converting 'docker-cs_fixer' into 'docker cs fixer' so it's more readable for a search query.",
+    "29": "The arrow function passed to useState ensures the random message is chosen only once when the component mounts, not on every render.",
+    "37": "This effect automatically opens the search palette with the guessed search term whenever the query changes, giving users a quick way to search without typing.",
+    "68": "That space after the closing tag is intentional — it adds a small gap between the two buttons in the rendered output."
   }
 }

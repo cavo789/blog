@@ -33,7 +33,7 @@ And then you'll say to me, well, all you have to do is create an alias `alias ls
 
 `eza` is a modern replacement for `ls` as stated on their website: [https://eza.rocks/](https://eza.rocks/).
 
-*It belongs to the same family of "modern rewrites of the classics" as <Link to="/blog/ripgrep">ripgrep</Link> (for `grep`) and <Link to="/blog/git-delta">delta</Link> (for `git diff`). While you're customizing your console, <Link to="/blog/powerlevel10k">Customize your Linux prompt with Powerlevel10k</Link> is worth ten minutes too.*
+*It belongs to the same family of "modern rewrites of the classics" as <Link to="/blog/ripgrep">ripgrep</Link> (for `grep`) and <Link to="/blog/git-delta">delta</Link> (for `git diff`). While you're customizing your console, <Link to="/blog/powerlevel10k_sandbox">Customize your Linux prompt with Powerlevel10k</Link> is worth ten minutes too.*
 
 <AlertBox variant="info" title="eza was first called exa">
 [https://github.com/ogham/exa](https://github.com/ogham/exa) is abandoned; see [this issue](https://github.com/ogham/exa/issues/1243).

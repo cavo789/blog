@@ -11,10 +11,10 @@ Index first with `.scripts/anythingllm-index.sh` — this script only reads.
 
 Each run prints **two** lists, because neither alone is trustworthy:
 
-| Section | Mechanism | Strength | Weakness |
-| :--- | :--- | :--- | :--- |
-| 📚 **Sources the answer was built from** | Vector similarity, capped at the workspace's `topN` | Finds articles that never use your wording | Never exhaustive — a couple of long articles can fill every slot |
-| 🔎 **Exact frontmatter matches** | `grep` over `title` / `slug` / `description` / `mainTag` / tags | Complete and exact | Misses anything phrased differently |
+| Section                                  | Mechanism                                                       | Strength                                   | Weakness                                                         |
+| :--------------------------------------- | :-------------------------------------------------------------- | :----------------------------------------- | :--------------------------------------------------------------- |
+| 📚 **Sources the answer was built from** | Vector similarity, capped at the workspace's `topN`             | Finds articles that never use your wording | Never exhaustive — a couple of long articles can fill every slot |
+| 🔎 **Exact frontmatter matches**         | `grep` over `title` / `slug` / `description` / `mainTag` / tags | Complete and exact                         | Misses anything phrased differently                              |
 
 This matters in practice: asked which articles cover Joomla, vector search names 3 while the blog
 has 9 that mention it in their frontmatter. Raising `topN` from 20 to 60 added exactly one.

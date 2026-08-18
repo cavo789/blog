@@ -43,7 +43,7 @@ Make a typo and the very same word turns red before you even press <kbd>ENTER</k
 
 ![Highlight in red](./images/docker_compose.webp)
 
-That color appears **while you type**, not after the command has failed. You know you've mistyped `docekr` before losing a second to a `command not found`.
+That color appears **while you type**, not after the command has failed. You know you've mistyped `docekr` before losing a second to a `command not found`. <!-- spellchecker:disable-line -->
 
 ## How to use it
 

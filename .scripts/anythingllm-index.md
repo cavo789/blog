@@ -31,24 +31,24 @@ other** — see the header of either file for the exact `diff` command.
 
 ## Prerequisites
 
-| Requirement | Description |
-| :--- | :--- |
-| **AnythingLLM** | Running and reachable on port 3001. The script probes `localhost` then the Docker bridge gateway `172.17.0.1`, so it works from the host and from inside the devcontainer. |
-| **Workspace** | A workspace whose slug matches `ANYTHINGLLM_WORKSPACE` (default: `blog`) must already exist. |
-| **API key** | Generated in *Settings → Tools → Developer API*. Read from `$ANYTHINGLLM_API_KEY`, or from the gitignored `.env` at the blog root. |
-| **Embedding model** | `nomic-embed-text` pulled in Ollama, with `EMBEDDING_MODEL_MAX_CHUNK_LENGTH` ≤ 2048 — above the model's context length every embedding call fails silently. |
-| **CLI tools** | `curl`, `jq`, `sha256sum`. |
+| Requirement         | Description                                                                                                                                                                |
+| :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **AnythingLLM**     | Running and reachable on port 3001. The script probes `localhost` then the Docker bridge gateway `172.17.0.1`, so it works from the host and from inside the devcontainer. |
+| **Workspace**       | A workspace whose slug matches `ANYTHINGLLM_WORKSPACE` (default: `blog`) must already exist.                                                                               |
+| **API key**         | Generated in _Settings → Tools → Developer API_. Read from `$ANYTHINGLLM_API_KEY`, or from the gitignored `.env` at the blog root.                                         |
+| **Embedding model** | `nomic-embed-text` pulled in Ollama, with `EMBEDDING_MODEL_MAX_CHUNK_LENGTH` ≤ 2048 — above the model's context length every embedding call fails silently.                |
+| **CLI tools**       | `curl`, `jq`, `sha256sum`.                                                                                                                                                 |
 
 ## Environment variables
 
-| Variable | Default | Purpose |
-| :--- | :--- | :--- |
-| `ANYTHINGLLM_API_KEY` | *(required)* | Developer API key; falls back to `.env`. |
-| `ANYTHINGLLM_URL` | auto-detected | Override the probe if the instance is elsewhere. |
-| `ANYTHINGLLM_WORKSPACE` | `blog` | Target workspace slug. |
-| `BLOG_DIR` | `blog` | Root of the posts to index. |
-| `STATE_FILE` | `.anythingllm-indexed` | Incremental state. |
-| `SITE_URL` | `https://www.avonture.be` | Base URL used to build each article's public link. |
+| Variable                | Default                   | Purpose                                            |
+| :---------------------- | :------------------------ | :------------------------------------------------- |
+| `ANYTHINGLLM_API_KEY`   | _(required)_              | Developer API key; falls back to `.env`.           |
+| `ANYTHINGLLM_URL`       | auto-detected             | Override the probe if the instance is elsewhere.   |
+| `ANYTHINGLLM_WORKSPACE` | `blog`                    | Target workspace slug.                             |
+| `BLOG_DIR`              | `blog`                    | Root of the posts to index.                        |
+| `STATE_FILE`            | `.anythingllm-indexed`    | Incremental state.                                 |
+| `SITE_URL`              | `https://www.avonture.be` | Base URL used to build each article's public link. |
 
 ## How to Use
 

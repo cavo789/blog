@@ -54,12 +54,14 @@ const config = {
   themes: ["@docusaurus/theme-mermaid"],
 
   onBrokenAnchors: "throw",
-  // WE SHOULD IGNORE BROKEN LINKS because Docusaurus’s link checker doesn't
-  // recognize dynamic routes created via plugins; and we're using at least one
-  // i.e. "plugins/docusaurus-plugin-series-route/index.cjs".
-  // If we don't ignore broken links, Docusaurus will always throw an error during build
-  // time.
-  onBrokenLinks: "ignore",
+  // This was "ignore" for a long time (TODO 0092): our tag and series pages were
+  // registered as *parameterized* routes ("/blog/tags/:tag", "/series/:slug"), and
+  // Docusaurus's link checker resolves links against registered routes — a parameterized
+  // path matches none of them, so every tag/series link was reported as broken and the
+  // check had to be turned off. Both plugins now enumerate the real slugs at build time
+  // (see plugins/lib/blog-taxonomy.cjs), so the check is back on and a genuinely dead
+  // internal link fails the build instead of shipping silently.
+  onBrokenLinks: "throw",
   onDuplicateRoutes: "throw",
 
   customFields: {
@@ -143,7 +145,18 @@ const config = {
         sitemap: {
           changefreq: "weekly",
           priority: 0.5,
-          ignorePatterns: ["/blog/tags/**"],
+          // Author-only pages carry `noindex` but were still being submitted
+          // here — a sitemap entry is an explicit "please index this". They are
+          // deliberately absent from robots.txt: a `Disallow` would stop the
+          // crawl before the `noindex` is ever read, so the URL could linger in
+          // the index with no way out, and would publish the paths in the
+          // bargain.
+          ignorePatterns: [
+            "/blog/tags/**",
+            "/admin",
+            "/typo-dashboard",
+            "/reactions-dashboard",
+          ],
           filename: "sitemap.xml",
         },
         theme: {

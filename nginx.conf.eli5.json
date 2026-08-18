@@ -1,17 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-19T07:28:27.282Z",
+  "generated": "2026-08-18T10:33:01.275Z",
   "source": "nginx.conf",
-  "sourceHash": "dff8672cfde44e49ccd056dcc8432a11d2268468",
+  "sourceHash": "9c4b206eba1cf7cfc6e4e050c0e518176e271c85",
   "lang": "conf",
   "explanations": {
-    "8": "The $host and $request_uri are nginx variables that represent the domain name and the full path with query string, so this line keeps users on the same URL they requested but upgrades it to HTTPS.",
-    "13": "This tells nginx to listen on port 443 (the secure HTTPS port) and support both SSL encryption and the HTTP/2 protocol for faster connections.",
-    "28": "TLSv1.2 and TLSv1.3 are the modern secure protocols for HTTPS; older versions are intentionally excluded for security reasons.",
-    "30": "This is a list of encryption algorithms nginx can use; the weird syntax means 'use the strong ones but exclude the broken ones like MD5 and NULL encryption'.",
-    "43": "This line makes nginx try to serve the requested file, then try a folder, and if neither exists, fall back to index.html so client-side routing in Docusaurus works.",
-    "47": "The ~* pattern matches file extensions for common static files (images, fonts, etc.), and the $ means 'only if the URL ends with these extensions'.",
-    "50": "After setting a long cache time, try_files =404 ensures nginx returns a 404 error if the static file doesn't actually exist instead of falling back to index.html."
+    "8": "The $host and $request_uri are built-in nginx variables that automatically capture the domain name and the full path/query string, so the redirect preserves exactly where the user was trying to go.",
+    "13": "http2 is a faster protocol version; ssl means HTTPS encryption is enabled on port 443 (the standard secure port).",
+    "30": "This tells nginx to use the server's preferred list of encryption methods instead of letting the client choose, which is more secure.",
+    "31": "HIGH picks strong encryption methods, and the !aNULL:!MD5 parts exclude weak or broken ones that hackers could exploit.",
+    "34": "The 'always' keyword ensures this custom header is added to every response, even error pages.",
+    "44": "This rule tries to serve the requested file; if it doesn't exist, it falls back to index.html so client-side routing works for single-page apps like Docusaurus.",
+    "48": "The ~* means case-insensitive pattern matching; this rule catches all static file types (images, fonts, stylesheets, etc.) by their file extension."
   }
 }

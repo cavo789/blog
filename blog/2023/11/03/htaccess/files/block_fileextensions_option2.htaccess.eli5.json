@@ -1,13 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:25:52.949Z",
+  "generated": "2026-08-18T10:28:42.646Z",
   "source": "block_fileextensions_option2.htaccess",
+  "sourceHash": "f0f275eb9cbcd2f3dbcca041f5cc5ae414a56263",
   "lang": "htaccess",
   "explanations": {
-    "1": "This checks that the requested file does NOT end with common image/icon/stylesheet extensions (the ! means 'not'), and [NC] means the check ignores uppercase vs lowercase.",
-    "2": "Similar to line 1, but specifically for .js files; the (\\?.*)?$ part means it also matches .js files that have query parameters like ?v=123.",
-    "3": "This checks that the request is NOT a font file (eot, svg, ttf, woff formats), and like line 2, the (\\?.*)?$ allows for query parameters on font files.",
-    "5": "The RewriteRule . - [F] means 'for any request that passed all the conditions above, deny access with a 403 Forbidden error'; the dash (-) means 'don't rewrite to anything else'."
+    "1": "This checks if the requested file is NOT one of these image or style file types; [NC] means the check ignores uppercase vs lowercase letters.",
+    "2": "This checks if the requested file is NOT a JavaScript file, and the question mark stuff means it also ignores JavaScript files that have query parameters like ?v=123.",
+    "3": "This checks if the requested file is NOT a font file (like .woff or .svg fonts), and similar to line 2, it ignores any query parameters after the filename.",
+    "5": "If we've gotten this far, it means the request doesn't match any of the safe file types above, so the [F] flag rejects the request with a 403 Forbidden error."
   }
 }

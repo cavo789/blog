@@ -1,4 +1,4 @@
-name: Deploy blog on avonture.be
+name: Deploy blog
 
 on:
   push:
@@ -39,12 +39,12 @@ permissions:
 # same remote tree. Queue instead of cancelling — a run killed mid-transfer
 # leaves the site with a half-updated set of files.
 concurrency:
-  group: deploy-avonture
+  group: deploy-blog
   cancel-in-progress: false
 
 jobs:
   deploy:
-    name: Deploy blog on avonture.be
+    name: Deploy blog
     runs-on: ubuntu-latest
     # The build is ~1 min and rsync is seconds; 20 min is generous headroom
     # without letting a hung transfer burn hours of runner time.
@@ -141,7 +141,7 @@ jobs:
 
       # No third-party action for the transfer: rsync over SSH is a one-liner,
       # and it keeps the private key from passing through code we don't control.
-      - name: Deploy to avonture.be over SSH
+      - name: Deploy over SSH
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
           SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
@@ -282,9 +282,9 @@ jobs:
           set -euo pipefail
 
           for url in \
-            "https://www.avonture.be/" \
-            "https://www.avonture.be/sitemap.xml" \
-            "https://www.avonture.be/blog/rss.xml"; do
+            "https://www.example.com/" \
+            "https://www.example.com/sitemap.xml" \
+            "https://www.example.com/blog/rss.xml"; do
             code="$(curl -sS -o /dev/null -w '%{http_code}' --retry 3 --retry-delay 5 --max-time 30 "$url")"
             echo "$code  $url"
             if [ "$code" != "200" ]; then

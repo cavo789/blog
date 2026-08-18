@@ -6,3 +6,4 @@ iconBundle.generated.js
 blog/
 .unpublished/
 .claude/
+.todos/

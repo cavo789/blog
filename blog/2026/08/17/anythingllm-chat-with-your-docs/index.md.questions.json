@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-18T10:17:43.585Z",
+  "source": "index.md",
+  "sourceHash": "f34dc36d2e35354667c4288c917a25a2bbbfc9cb",
+  "questions": [
+    {
+      "question": "How do I set up AnythingLLM on a single machine?",
+      "anchor": "install"
+    },
+    {
+      "question": "What is the purpose of the `compose.yaml` file in AnythingLLM setup?",
+      "anchor": "the-composeyaml-file"
+    },
+    {
+      "question": "How do I check that my embedder actually discriminates documents effectively?",
+      "anchor": "check-that-your-embedder-actually-discriminates"
+    },
+    {
+      "question": "What is the first-run setup process for AnythingLLM?",
+      "anchor": "first-run-setup"
+    },
+    {
+      "question": "How do I get my documents into AnythingLLM?",
+      "anchor": "ingest"
+    },
+    {
+      "question": "Why do you not give it a path when indexing documents in AnythingLLM?",
+      "anchor": "you-dont-give-it-a-path--and-that-surprises-everyone"
+    },
+    {
+      "question": "How can I index a whole folder tree with one command in AnythingLLM?",
+      "anchor": "indexing-a-whole-folder-tree-with-one-command"
+    },
+    {
+      "question": "What is the manual step involved in setting up the workspace system prompt in AnythingLLM?",
+      "anchor": "one-manual-step-the-workspace-system-prompt"
+    },
+    {
+      "question": "How do I keep the index of documents updated in AnythingLLM?",
+      "anchor": "keeping-the-index-up-to-date"
+    },
+    {
+      "question": "How can I search for information within a workspace using AnythingLLM from the terminal?",
+      "anchor": "search"
+    },
+    {
+      "question": "What is ai-blog-search and how does it compare to Other Tools in AnythingLLM?",
+      "anchor": "ai-blog-search-the-portable-script"
+    },
+    {
+      "question": "How do I set up AnythingLLM on a two-machine split setup for documents and GPU inference?",
+      "anchor": "two-machines"
+    }
+  ]
+}

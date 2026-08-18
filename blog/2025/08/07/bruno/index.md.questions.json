@@ -1,41 +1,49 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:59:04.342Z",
+  "generated": "2026-08-18T10:15:06.309Z",
   "source": "index.md",
-  "sourceHash": "46fa92897402cf8db023116e36cfbf64b6e69df9",
+  "sourceHash": "1c3712a664cfb255c921b0ae3c5d55000ae154c5",
   "questions": [
     {
-      "question": "How do I run Bruno from the command line?",
-      "anchor": "run-bruno"
+      "question": "What are some common networking challenges when using Bruno with Docker?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
     },
     {
-      "question": "What are some of the key features of Bruno?",
-      "anchor": "why-it-works"
+      "question": "How do you add assertions to your tests in Bruno?",
+      "anchor": "adding-some-assertions"
     },
     {
-      "question": "Where can I find official documentation for installing Bruno GUI on Ubuntu?",
-      "anchor": "installation"
-    },
-    {
-      "question": "How do I create a collection and an environment in Bruno?",
-      "anchor": "opening-the-project-with-vscode"
-    },
-    {
-      "question": "What is the purpose of the `--env` flag when running the Bruno CLI?",
-      "anchor": "running-requests-from-the-command-line"
-    },
-    {
-      "question": "How do I create a Docker image for Bruno and run it with an environment file?",
+      "question": "What is the purpose of the `run` command in the CLI?",
       "anchor": "create-our-own-bruno-cli-image"
     },
     {
-      "question": "What is the purpose of the `--add-host` flag when running the Bruno CLI container?",
+      "question": "How can I install and run Bruno GUI on my Ubuntu distribution?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the purpose of the `--add-host host.docker.internal:host-gateway` flag when running a Docker container with Bruno?",
+      "anchor": "create-our-own-bruno-cli-image"
+    },
+    {
+      "question": "How can I create my own Docker image for Bruno to use?",
       "anchor": "running-requests-from-the-command-line"
     },
     {
-      "question": "What are some common networking challenges I might face when using Bruno with Docker?",
-      "anchor": "adding-some-assertions"
+      "question": "What is the purpose of the `--env` flag when running a collection in a Docker container with Bruno?",
+      "anchor": "create-our-own-bruno-cli-image"
+    },
+    {
+      "question": "How can I open and manage environments in Bruno using VSCode?",
+      "anchor": "opening-the-project-with-vscode"
+    },
+    {
+      "question": "What are some benefits of storing collection, environments, and requests as plain text files in your repository with Bruno?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How can I automate the execution of my requests from the command line using Bruno's CLI tool?",
+      "anchor": "create-our-own-bruno-cli-image"
     }
   ]
 }

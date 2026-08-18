@@ -1,49 +1,57 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:58:45.582Z",
+  "generated": "2026-08-18T10:14:59.672Z",
   "source": "index.md",
-  "sourceHash": "6db9622071588700883d129168c7724ae7b68d34",
+  "sourceHash": "2fa7b1348970f417955f7f6fb3914203b9698fb7",
   "questions": [
     {
-      "question": "How do I run unit tests for Bash scripts using bats?",
+      "question": "What is bats and how does it work?",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of writing unit tests in Bash scripts?",
+      "question": "How do I install bats on my Linux system?",
       "anchor": "lets-start-with-a-little-hors-doeuvre"
     },
     {
-      "question": "How do I create a simple test script using bats?",
+      "question": "What are the basic assertions provided by bats?",
       "anchor": "what-did-we-do"
     },
     {
-      "question": "What are some basic assertions available in bats for Bash scripts?",
+      "question": "How can I check if a Bash script fails in bats?",
       "anchor": "asserting-a-failure"
     },
     {
-      "question": "How can I check the output of a command in a test script using bats?",
+      "question": "What are some practical examples of using bats for testing Bash scripts?",
       "anchor": "some-real-world-use-cases"
     },
     {
-      "question": "What are some real-world use cases for writing unit tests in Bash scripts?",
+      "question": "How do I run tests within a Docker container using bats?",
       "anchor": "more-examples"
     },
     {
-      "question": "How can I check if a specific binary is installed on the system using bats?",
+      "question": "What is the difference between assert_equal and assert_failure in bats?",
       "anchor": "assert_equal"
     },
     {
-      "question": "How can I check if a specific Docker image exists on the system using bats?",
+      "question": "How can I check for ANSI colors in bats tests?",
       "anchor": "assert_failure"
     },
     {
-      "question": "What are some examples of using assert_equal in bats for Bash scripts?",
+      "question": "How do I check for multi-line output in bats tests?",
       "anchor": "assert_output"
     },
     {
-      "question": "How can I check if a command fails using bats?",
+      "question": "How can I check that a value is NOT in a file using bats tests?",
       "anchor": "assert_success"
+    },
+    {
+      "question": "What are some special functions provided by bats for testing Bash scripts?",
+      "anchor": "check-for-ansi-colors"
+    },
+    {
+      "question": "How do I run the bats tests for my Bash script?",
+      "anchor": "check-for-multi-line-output"
     }
   ]
 }

@@ -398,6 +398,11 @@
   color: var(--ifm-color-content-secondary);
 }
 
+.draftsError {
+  border-color: var(--ifm-color-warning);
+  color: var(--ifm-color-content);
+}
+
 .emptyIcon {
   font-size: 1.25rem;
 }

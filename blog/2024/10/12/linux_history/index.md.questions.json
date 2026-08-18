@@ -1,40 +1,44 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:54:26.580Z",
+  "generated": "2026-08-18T10:14:53.524Z",
   "source": "index.md",
-  "sourceHash": "96afcf5697d9d1763200bf4d0ec5607c24dc836f",
+  "sourceHash": "0a9a5c2253f8e2e6993764ecda781a16fe6fbd36",
   "questions": [
     {
-      "question": "How do I view my command history in Linux?",
+      "question": "How do I view my Bash/ZSH command history?",
       "anchor": ""
     },
     {
-      "question": "Where is my command history stored on a Linux system?",
+      "question": "Where is my Bash/ZSH command history file located?",
       "anchor": "getting-your-history"
     },
     {
-      "question": "What are the HISTIGNORE and HISTORY_IGNORE variables used for in Bash/ZSH?",
+      "question": "What are the HISTIGNORE and HISTORY_IGNORE variables in Bash/ZSH for?",
       "anchor": "location-of-your-history"
     },
     {
-      "question": "How do I prevent specific commands from being saved to my history file?",
+      "question": "How do I prevent specific commands from being saved in my Bash/ZSH history file?",
       "anchor": "histignore--history_ignore-variables"
     },
     {
-      "question": "What is the difference between using grep and CTRL-R to filter your command history in Linux?",
+      "question": "What is the difference between ZSH and Bash history management?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I use grep to filter my Bash/ZSH command history?",
       "anchor": "dont-put-a-specific-command-in-the-history"
     },
     {
-      "question": "How do I use ZSH's autosuggestions feature to avoid manually searching through my command history?",
+      "question": "What are some tips for using CTRL-R in Bash/ZSH for quick searching of history?",
       "anchor": "using-grep-to-filter-your-history"
     },
     {
-      "question": "What is the purpose of the HISTIGNORE and HISTORY_IGNORE variables in Bash/ZSH?",
+      "question": "How can I use zsh-autosuggestions to manage my Bash/ZSH command history without needing to manually search through it?",
       "anchor": "ctrl-r-is-your-friend"
     },
     {
-      "question": "How do I delete a specific instruction from my Linux command history file?",
+      "question": "How do I delete a specific command from my Bash/ZSH history file?",
       "anchor": "autosuggestions-in-the-console-using-zsh"
     }
   ]

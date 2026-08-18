@@ -402,6 +402,14 @@ Aucune dépendance sur un autre brouillon. Publiable dès que les points ci-dess
   pas de l'horloge). Ajouté aussi : avertissement sur le premier run qui transfère tout,
   mention de `[skip ci]` natif, et note sur les deux endroits du workflow à adapter (URLs du smoke
   test, liste `--exclude`).
+- ✅ **Durcissement SSH documenté dans l'article (2026-08-18)** : deux entrées ajoutées dans
+  « Under the Hood » — la clé de déploiement contrainte par `restrict,command="rrsync -wo ..."`
+  (avec les trois commandes de vérification, toutes testées en réel), et l'épinglage de la clé
+  d'hôte via `SSH_KNOWN_HOSTS`. Les deux pièges sont signalés : `REMOTE_PATH` devient `/` sous
+  rrsync, et `--chmod` doit être retiré (hors liste blanche). Vérifié : les `--exclude` ne sont
+  jamais envoyés au serveur, donc leur absence de la liste blanche est sans effet.
+- ✅ **Chronométrage bout-en-bout réel (2026-08-18)** : 89 s de build + 12 s de transfert en
+  production, soit moins de deux minutes entre le `git push` et la mise en ligne.
 - ⚠️ **Recoupement avec `/blog/github-action`** (« GitHub - Use Actions to deploy this blog »,
   publié 2026-01-14, 70 lignes, `review_date: 2026-07-30`). L'ancien article décrit la version FTP
   du même pipeline. Le nouveau ne le remplace pas : il le cite comme point de départ valable pour un
@@ -427,8 +435,14 @@ Aucune dépendance sur un autre brouillon. Publiable dès que les points ci-dess
   `/series/*` produisent 15 faux positifs. Ce qui arrête réellement le build : erreur MDX, ancre
   cassée (`onBrokenAnchors: "throw"`), route dupliquée, plus les contrôles du workflow (sitemap/RSS
   vides ou XML invalide).
-- **`files/deploy.yml` est une copie du workflow réel** — à re-synchroniser si
-  `.github/workflows/deploy.yml` évolue d'ici la publication. Resynchronisé le 2026-08-18 (résumé de
+- ⚠️ **`files/deploy.yml` n'est PLUS une copie brute du workflow réel (2026-08-18)** — il a été
+  **anonymisé** : `avonture.be` → `example.com`, « Deploy blog on avonture.be » → « Deploy blog »,
+  `deploy-avonture` → `deploy-blog`. **Ne jamais faire un `cp` aveugle depuis
+  `.github/workflows/deploy.yml`** : il faut re-appliquer ces substitutions. Idem pour
+  `files/git-push.txt` (`cavo789/blog.git` → `me/blog.git`). Dans `index.md`, tous les chemins
+  serveur utilisent `/home/me/`. Seul `authors: [christophe, claude]` reste — c'est la signature,
+  pas une fuite. Vérification : `grep -rniE "avonbjpf|n0c|5022|avonture|cavo789" .` ne doit
+  remonter que la ligne `authors:`. Reste à re-synchroniser si le workflow évolue. Resynchronisé le 2026-08-18 (résumé de
   transfert, Node 24, variantes `[skip-ci]`, `--delete` ciblé). Reste possiblement à venir :
   `SSH_KNOWN_HOSTS` pour remplacer le TOFU de `ssh-keyscan`.
 - ✅ **`--delete` ciblé implémenté (2026-08-18)** : transfert en trois passes. Passe 1 = le site

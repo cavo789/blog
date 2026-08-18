@@ -131,17 +131,42 @@ ResourceLinks.propTypes = {
 
 function DraftsList() {
   const [drafts, setDrafts] = useState(null);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/admin-data/drafts.json")
-      .then((r) => r.json())
-      .then((d) => setDrafts(d))
-      .catch(() => setDrafts([]))
+      .then((r) => {
+        // fetch() only rejects on a network failure: a 403 or 404 resolves
+        // normally, and its HTML error body then throws inside r.json(). That
+        // landed in the same catch as "no drafts" and rendered "all articles
+        // are published" — a claim the page had no data to make. Anything that
+        // is not a readable list must surface as an error, never as an empty
+        // list.
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((d) => {
+        if (!Array.isArray(d)) throw new Error("unexpected payload");
+        setDrafts(d);
+      })
+      .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }, []);
 
   if (loading) return <p className={styles.dimText}>Loading…</p>;
+
+  if (error) {
+    return (
+      <div className={`${styles.emptyDrafts} ${styles.draftsError}`}>
+        <span className={styles.emptyIcon}>⚠️</span>
+        <span>
+          Draft list unavailable ({error}) — this says nothing about how many drafts are
+          pending.
+        </span>
+      </div>
+    );
+  }
 
   if (!drafts || drafts.length === 0) {
     return (

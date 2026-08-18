@@ -33,7 +33,7 @@ Ordre proposé, section par section :
 | --- | --- | --- |
 | 1 | Hook + promesse (inchangé) | l. 26-30 |
 | 2 | **Résultat d'abord** : réutiliser/dupliquer l'image `full_image.webp` (l. 56) juste après le `<!-- truncate -->`, avec une phrase "Voilà le résultat qu'on obtient." | l. 56 |
-| 3 | Étapes pour y arriver : télécharger/générer une image, ouvrir Settings, Appearance, Browse, Save | l. 36-52 (inchangé, avec la capture `settings.webp` conservée comme illustration d'étape) | 
+| 3 | Étapes pour y arriver : télécharger/générer une image, ouvrir Settings, Appearance, Browse, Save | l. 36-52 (inchangé, avec la capture `settings.webp` conservée comme illustration d'étape) |
 | 4 | Astuce des deux onglets pour prévisualiser en direct | l. 54 |
 | 5 | Liens vers Powerlevel10k et les articles connexes (déjà une forme de landing) | l. 58-60 |
 

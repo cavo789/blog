@@ -1,14 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:07.342Z",
+  "generated": "2026-08-18T10:28:57.662Z",
   "source": ".part11.htaccess",
+  "sourceHash": "2d4b277ff3ff07de17a4a9a67cd3e99807fb0e57",
   "lang": "htaccess",
   "explanations": {
-    "1": "This checks if Apache has the mod_rewrite module available before trying to use rewriting rules.",
-    "3": "The exclamation mark means NOT, so this line says 'if the visitor's IP address is NOT 127.0.0.1 (localhost), then continue'.",
-    "5": "This is a placeholder where you'd add your own IP address so that you can see the real site while others see the maintenance page.",
-    "6": "This exempts the maintenance.php file itself from being redirected, otherwise visitors would get stuck in a loop.",
-    "7": "If all the conditions above are true, send any request to the maintenance.php file instead; [L] stops processing further rules, [QSA] preserves any query parameters."
+    "3": "This line checks if the visitor's IP address is NOT 127.0.0.1 (localhost on their own machine); the ! means 'not' and [NC] means ignore uppercase/lowercase differences.",
+    "5": "This is a placeholder where you'd replace ADD_YOUR_IP_HERE with your actual IP address so you can access the site normally while others see the maintenance page.",
+    "6": "This prevents the maintenance.php file itself from being redirected, so the actual maintenance page can load without causing an infinite loop.",
+    "7": "If all the conditions above are true, any request gets sent to maintenance.php instead; [L] stops processing other rules, and [QSA] preserves any URL parameters."
   }
 }

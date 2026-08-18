@@ -97,7 +97,7 @@ also converts Docusaurus's `:::tip Free text title` shorthand into
 ## Discoverability — none of this is found unless something points to it
 
 Generating `llms.txt`, the per-series bundles and the `.md` mirrors is not the
-same as making them *public*. Nothing crawls a domain looking for these paths
+same as making them _public_. Nothing crawls a domain looking for these paths
 by default — the llms.txt convention (llmstxt.org) has no equivalent of
 `robots.txt`'s de-facto crawler support. Four deliberate pointers make the
 files reachable:
@@ -108,7 +108,7 @@ files reachable:
   `<link rel="alternate" type="application/rss+xml">`.
 - **`src/components/MarkdownAlternate`** — the per-article equivalent, wired
   into `src/theme/BlogPostPage/index.js` next to `OpenGraphArticle`. Points at
-  *this* page's own `.md` mirror, so a tool that only ever looks at one
+  _this_ page's own `.md` mirror, so a tool that only ever looks at one
   article's `<head>` doesn't need to know `/llms.txt` exists at all.
 - **`writeLlmsTxt()`'s "Series" section** — `llms.txt` is the only place the
   per-series bundles are linked from site-wide. Without this section they're

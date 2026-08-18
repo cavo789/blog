@@ -1,5 +1,5 @@
 ---
-description: Review a batch of articles for technical staleness (dead links, tool renames, acquisitions, deprecated options). Tracks progress in .todos/freshness-journal.md so each session continues where the last one stopped.
+description: Review a batch of articles for technical staleness (dead links, tool renames, acquisitions, deprecated options). Tracks progress in .todos/0000-freshness-journal.md so each session continues where the last one stopped.
 argument-hint: "[batch-size (default 10)]"
 allowed-tools: Read, Glob, Grep, Bash, Edit, Write, WebSearch, WebFetch
 ---
@@ -32,7 +32,7 @@ Then: /freshness 10  (for the next batch — the journal remembers your progress
 
 ## 1. Load the journal
 
-Read `.todos/freshness-journal.md` (create it if absent — see format below).
+Read `.todos/0000-freshness-journal.md` (create it if absent — see format below).
 
 The journal records every article already reviewed: its slug and the date of review.
 
@@ -211,7 +211,7 @@ not do it now unless the user explicitly asks; just flag it).
 
 ## 7. Update the journal
 
-Append rows to `.todos/freshness-journal.md` for every article processed (including `OK` ones —
+Append rows to `.todos/0000-freshness-journal.md` for every article processed (including `OK` ones —
 that is the point: we must not re-scan them next time).
 
 Journal row format:
@@ -246,7 +246,7 @@ The journal has saved your progress — /freshness will resume from where it sto
 
 ## Journal file format (create if absent)
 
-`.todos/freshness-journal.md`:
+`.todos/0000-freshness-journal.md`:
 
 ```markdown
 # Freshness Journal

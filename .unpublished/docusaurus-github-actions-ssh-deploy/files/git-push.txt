@@ -9,5 +9,5 @@ Delta compression using up to 16 threads
 Compressing objects: 100% (11/11), done.
 Writing objects: 100% (12/12), 1.21 MiB | 2.4 MiB/s, done.
 Total 12 (delta 6), reused 0 (delta 0)
-To github.com:cavo789/blog.git
+To github.com:me/blog.git
    4d978a8..47c55a6  main -> main
