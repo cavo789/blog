@@ -10,6 +10,7 @@ description: "AnythingLLM turns a pile of Markdown, Quarto, PDF, DOCX, Excel and
 language: en
 ai_assisted: true
 series: "Ollama daily use"
+blueskyRecordKey: 3mtaxwuyz3c2r
 ---
 
 ![AnythingLLM: Chat With All Your Scattered Documentation](/img/v2/anythingllm.webp)
