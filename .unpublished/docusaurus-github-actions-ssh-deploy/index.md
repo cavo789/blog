@@ -17,7 +17,7 @@ draft: true
 <!-- cspell:ignore keyscan itemize chmod rsync christophe -->
 
 <TLDR>
-I write my blog locally, then `git add`, `git commit`, `git push` — and that is the whole publishing procedure. GitHub Actions checks out the repository, runs `yarn build`, refuses to go any further if the build failed or produced a malformed sitemap, then sends only the changed files to my hosting with `rsync` over SSH. The transfer itself takes about four seconds, because out of 3029 files it sends the sixty that actually changed. As a bonus, an article can sit in the repository fully written with `draft: true` in its front matter; deleting that single line from GitHub's web editor — from a phone, from anywhere — publishes it.
+I write my blog locally, then `git add`, `git commit`, `git push` — and that is the whole publishing procedure. GitHub Actions checks out the repository, runs `yarn build`, refuses to go any further if the build failed or produced a malformed sitemap, then sends only the changed files to my hosting with `rsync` over SSH. The transfer takes seconds rather than minutes, because it sends the difference rather than the site. As a bonus, an article can sit in the repository fully written with `draft: true` in its front matter; deleting that single line from GitHub's web editor — from a phone, from anywhere — publishes it.
 </TLDR>
 
 For a long time, publishing an article meant opening WinSCP, dragging the contents of my `build` folder onto the remote pane, and watching a progress bar. It worked, in the sense that a bicycle works for a commute. The problems were never dramatic, just constant: I was never quite sure the upload had finished, whether I had dropped the folder at the right level, or whether the file I had renamed still had an orphan twin sitting on the server. And publishing was tied to one machine — the one with the source, the credentials and the build tooling.
@@ -55,17 +55,19 @@ git push ──────────────▶ checkout (full history)
                          (home page, sitemap, RSS answer 200?)
 ```
 
-That last arrow is the part worth looking at. Here is what `rsync` reports on a run that publishes one new article:
+That last arrow is the part worth looking at. Here is what `rsync` reports when I publish an edit to a single article:
 
 <Terminal source="./files/rsync-stats.txt" />
 
-Sixty-one files out of 3029, 1.76 MB out of 165 MB, roughly four seconds. I close the terminal at the `git push`, and the rest is somebody else's problem — a "somebody else" that is free for public repositories.
+Read the last three lines together, because they are the whole point. Editing one article changed 413 HTML pages — my site-wide navigation index is bundled into `main.js`, so touching any article changes that bundle's content hash, which every page references. On paper that is 43 MB of updated files. In practice 287 KB crossed the network, because `rsync` recognised 42.64 MB of blocks already sitting on the server and sent only the fragments that genuinely differ.
+
+A deploy that changes no content at all moves about 1.76 MB — the search index, which re-chunks itself on every build. I close the terminal at the `git push`, and the rest is somebody else's problem, a "somebody else" that is free for public repositories.
 
 ## Why It Works
 
 - **The build happens on GitHub, not on my PC.** My laptop no longer needs to be the machine with the credentials — it only needs `git`. Nothing about the deployment depends on my local `node_modules` being in a good mood.
 - **A failing build is a deployment that never starts.** Docusaurus refuses to build on an MDX syntax error, a broken heading anchor or a duplicate route, and the workflow adds its own checks on top — an empty or malformed `sitemap.xml` or RSS feed stops everything. Because all of it runs *before* the transfer, the broken version cannot reach readers.
-- **Only what changed crosses the wire.** `rsync` compares the two sides and transfers the difference. On a site of about 3000 files and 165 MB, publishing an article moves under 2 MB.
+- **Only what changed crosses the wire** — and "what changed" is measured in blocks, not files. On a site of about 3000 files and 165 MB, publishing an article costs a few hundred kilobytes.
 - **The credentials never leave GitHub.** The private key and the server details live as repository secrets. They are injected into a throwaway virtual machine that is destroyed minutes later, and they never appear in the logs.
 - **The site is a function of the repository.** There is exactly one path to production, and it starts with a commit. No file can be live without existing in git — which also means no file can be live that I cannot find again.
 
@@ -198,7 +200,7 @@ cache, never will.
 
 A few decisions in that workflow are not obvious, and each one is there for a reason.
 
-**`--checksum` is what keeps the transfer small.** By default `rsync` decides a file has changed by comparing size and modification time. That is useless here: Docusaurus rewrites every file on every build, so all 3000 timestamps always look brand new, and `rsync` would ship the entire site each time. Comparing content hashes instead means an unchanged file is skipped even though it was just regenerated. It costs a little CPU on both ends and saves nearly everything: 1.76 MB instead of 165 MB, on the run shown above.
+**`--checksum` is what keeps the transfer small.** By default `rsync` decides a file has changed by comparing size and modification time. That is useless here: Docusaurus rewrites every file on every build, so all 3000 timestamps always look brand new, and `rsync` would ship the entire site each time. Comparing content hashes instead means an unchanged file is skipped even though it was just regenerated. It costs a little CPU on both ends and saves nearly everything. The delta algorithm then shrinks what is left a second time, which is how 43 MB of changed files became 287 KB on the wire above.
 
 **`--delete`, but only where it cannot hurt.** `rsync` can mirror the source exactly, removing anything on the far end the build no longer produces. Pointed at the whole web root that would be reckless: mine also holds a small PHP API with live reader data and its `.env`, plus `.well-known/` — the ACME challenge folder my SSL renewal needs, and the `atproto-did` file backing my Bluesky domain handle. None of it exists in the repository, so none of it could be restored.
 

@@ -407,11 +407,20 @@ Aucune dépendance sur un autre brouillon. Publiable dès que les points ci-dess
   du même pipeline. Le nouveau ne le remplace pas : il le cite comme point de départ valable pour un
   hébergement FTP-only. **Décision éditoriale à confirmer** — soit on garde les deux avec le lien
   croisé actuel, soit on réécrit l'ancien pour qu'il pointe explicitement vers le nouveau.
-- ✅ **Chiffres réels intégrés (2026-08-18)** : 61 fichiers sur 3029, 1,76 Mo sur 165,79 Mo,
-  ~4 s pour l'étape de transfert. Mesuré en dry run après le premier vrai déploiement rsync. La
-  sortie `--stats` authentique est dans `files/rsync-stats.txt` et sert de `<Terminal>` en
-  mouvement 2. Pour référence historique : le premier rsync après migration a transféré 758 fichiers
-  et 52,62 Mo — rattrapage unique du build FTP pré-correctifs.
+- ✅ **Chiffres réels intégrés, puis corrigés (2026-08-18)** : le premier jet présentait
+  « 61 fichiers / 1,76 Mo » comme le coût de publication d'un article — **faux**, ces chiffres
+  venaient d'un dry run sans aucun changement de contenu. Les vrais chiffres, issus du déploiement
+  du 18/08 : éditer un article change **413 pages HTML** (l'index de navigation global est embarqué
+  dans `main.js`, donc son hash bouge et toutes les pages le référencent), soit 43,05 Mo de
+  « transferred file size » — mais **287 Ko réellement envoyés**, l'algorithme delta ayant reconnu
+  42,64 Mo de blocs déjà présents. `files/rsync-stats.txt` contient cette sortie authentique.
+  Repères : déploiement sans changement de contenu ≈ 1,76 Mo (churn Pagefind seul) ; déploiement
+  avec article ≈ 3,6 Mo sur les trois passes. Historique : premier rsync après migration =
+  758 fichiers / 52,62 Mo (rattrapage du build FTP pré-correctifs) ; premier `--delete` ciblé =
+  613 orphelins supprimés (487 chunks JS + 126 index Pagefind).
+- ⚠️ **Métrique du résumé de run corrigée (2026-08-18)** : le tableau `$GITHUB_STEP_SUMMARY`
+  affichait `Total transferred file size` (43 Mo) au lieu de `Total bytes sent` (287 Ko). La
+  première mesure la taille des fichiers concernés, pas le coût réseau.
 - ✅ **Erreur factuelle corrigée (2026-08-18)** : l'article affirmait que le build refuse de passer
   sur un lien interne cassé. **Faux sur ce blog** — `docusaurus.config.js` fixe
   `onBrokenLinks: "ignore"`, délibérément, parce que les routes dynamiques `/blog/tags/*` et

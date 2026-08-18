@@ -191,8 +191,10 @@ jobs:
           # `rsync -rn --delete … | grep '^deleting'` lists the candidates without
           # touching anything.
           #
-          # --chmod normalizes modes server-side, so the runner's umask cannot end
-          # up publishing group- or world-writable files.
+          # No --chmod: rrsync (the forced command restricting this key server-side)
+          # refuses any long option outside its whitelist, and --chmod is not in it.
+          # Nothing is lost — without --perms, rsync leaves existing files alone and
+          # creates new ones under the server's own umask, which yields 644/755.
           #
           # admin-data/ is excluded: drafts.json lists every draft and unlisted
           # post. The build still writes it locally, where /admin can use it.
@@ -204,7 +206,6 @@ jobs:
             --checksum
             --human-readable
             --stats
-            --chmod=D755,F644
             -e "ssh -i $HOME/.ssh/deploy_key -p $SSH_PORT -o StrictHostKeyChecking=yes"
           )
 
@@ -249,19 +250,27 @@ jobs:
           done
 
           # Surface the numbers on the run summary rather than leaving them buried
-          # in the step log. "Data" is the health check of the whole pipeline: if it
-          # ever jumps back to tens of megabytes, the build has stopped being
-          # reproducible and every page is being re-uploaded.
+          # in the step log.
+          #
+          # "Sent" is deliberately `Total bytes sent` and not `Total transferred
+          # file size`. The latter is the summed size of every file rsync decided to
+          # update, which is wildly pessimistic: editing one article changes the
+          # global nav index bundled into main.js, hence its content hash, hence all
+          # ~413 HTML pages that reference it — 43 MB of "transferred file size" for
+          # about 290 KB actually crossing the network, because the delta algorithm
+          # recognises the blocks already present on the far end. "Sent" is the real
+          # cost, and the number to watch: if it ever reaches tens of megabytes, the
+          # build has stopped being reproducible.
           stat_of() { grep -oP "(?<=^$2: ).*" "$1" | tail -1 || true; }
 
           {
             echo "### Transfer"
             echo
-            echo "| Pass | Files | Data | Deleted |"
+            echo "| Pass | Files updated | Sent over the wire | Deleted |"
             echo "| --- | --- | --- | --- |"
             for pass in site assets pagefind; do
               log="/tmp/rsync-$pass.log"
-              echo "| $pass | $(stat_of "$log" 'Number of regular files transferred') | $(stat_of "$log" 'Total transferred file size') | $(stat_of "$log" 'Number of deleted files') |"
+              echo "| $pass | $(stat_of "$log" 'Number of regular files transferred') | $(stat_of "$log" 'Total bytes sent') | $(stat_of "$log" 'Number of deleted files') |"
             done
           } >> "$GITHUB_STEP_SUMMARY"
 
