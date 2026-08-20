@@ -35,6 +35,8 @@ première lecture.
 
 ## Acceptance
 
-- [ ] Toutes les légendes visibles sur `static/img/map.webp` sont du texte correct et lisible
+- [x] Les deux légendes garbled repérées lors de l'audit sont corrigées (nouvelle image mise en
+      place le 2026-08-20) — les autres approximations éventuelles listées en piste
+      d'investigation ne sont pas traitées, décision assumée par l'auteur
 - [ ] Vérifié en desktop et mobile après remplacement
 - [ ] `yarn build` passe (pas de lien cassé sur le nouvel asset)
