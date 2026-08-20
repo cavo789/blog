@@ -82,7 +82,7 @@ export default function BlogPostContent({ children }) {
         </>
       )}
 
-      <div ref={contentRef}>
+      <div ref={contentRef} className={styles.postContent}>
         <MDXContent>{children}</MDXContent>
       </div>
 

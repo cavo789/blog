@@ -291,7 +291,7 @@
 [data-theme="dark"] .filterGroupSidebar select:hover,
 [data-theme="dark"] .filterGroupSidebar select:focus {
   border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 2px rgb(37, 194, 160, 0.2);
+  box-shadow: 0 0 0 2px rgb(221, 127, 60, 0.2);
 }
 
 [data-theme="dark"] .timelineMonthLink {
@@ -305,6 +305,6 @@
 
 [data-theme="dark"] .timelineMonthLink.activeMonth,
 [data-theme="dark"] .activeMonth {
-  background-color: rgb(37, 194, 160, 0.15);
+  background-color: rgb(221, 127, 60, 0.15);
   color: var(--ifm-color-primary-lighter);
 }

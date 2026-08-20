@@ -31,14 +31,14 @@ import Card from "@site/src/components/Card";
 import CardBody from "@site/src/components/Card/CardBody";
 import CardImage from "@site/src/components/Card/CardImage";
 
-const HomeCardItem = ({ title, description, url, image, alt }) => (
+const HomeCardItem = ({ title, description, url, image, alt, lazy }) => (
   <Link to={url} className={styles.cardLink}>
     <Card>
       <CardImage
         className={styles.cardImage}
         cardImageUrl={`/img/homepage/${image}`}
         alt={alt || title}
-        lazy={true}
+        lazy={lazy}
       />
       <CardBody
         className="padding-vert--md text--center"
@@ -58,6 +58,7 @@ HomeCardItem.propTypes = {
   url: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   alt: PropTypes.string,
+  lazy: PropTypes.bool.isRequired,
 };
 
 export default function HomeCards() {
@@ -67,8 +68,12 @@ export default function HomeCards() {
         <Translate id="homepage.homeCards.title">Explore the site</Translate>
       </h2>
       <div className={styles.cardsGrid}>
-        {HOME_CARDS.map((card) => (
-          <HomeCardItem key={card.title} {...card} />
+        {HOME_CARDS.map((card, index) => (
+          // Only the very first card sits above the fold on mobile (the grid collapses to a
+          // single column below 600px — see styles.module.css). Lazy-loading it too was adding
+          // a ~10s artificial LCP delay (TODO 0096); every other card is genuinely off-screen
+          // on load, so it keeps lazy-loading.
+          <HomeCardItem key={card.title} {...card} lazy={index !== 0} />
         ))}
       </div>
     </section>

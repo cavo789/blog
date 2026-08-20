@@ -430,7 +430,9 @@ const config = {
         // still one click away via the navbar's own GitHub link.
         title: "Christophe Avonture",
         logo: {
-          alt: "Christophe Avonture",
+          // Decorative: the adjacent navbar `title` above already announces "Christophe
+          // Avonture" to screen readers — a non-empty alt here duplicated it.
+          alt: "",
           src: "img/avatar.webp",
           width: 40,
           height: 40,

@@ -102,3 +102,21 @@
     transform: none;
   }
 }
+
+/*
+ * Line length: the .col--7 content column measures ~87-107 characters per line at 16px/Inter
+ * on desktop (see .todos/DONE/DONE_0102-article-body-line-length-desktop.md), well past the
+ * ~50-75ch comfortable reading range. `ch` (not px) keeps this proportional to the font, and
+ * only plain prose (paragraphs, list items) is constrained — images, tables, code blocks and
+ * Mermaid diagrams inside the article keep the full column width.
+ *
+ * 60ch was chosen empirically, not taken at face value: the CSS `ch` unit is the width of the
+ * "0" glyph, which is wider than the average character in running prose, so `Nch` renders more
+ * than N real characters per line. Measured with the same canvas.measureText technique as the
+ * original audit, `max-width: 60ch` renders ~77-81 real characters/line on real articles —
+ * `80ch` (a literal reading of the ~70-85 target) actually rendered ~103-108.
+ */
+.postContent p,
+.postContent li {
+  max-width: 60ch;
+}

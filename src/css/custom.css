@@ -18,14 +18,18 @@
   /* Hero section background */
   --hero-background-light: #fcfcec;
 
-  /* Green Palette */
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* Amber/terracotta palette — matches the meerkat mascot's fur (static/img/avatar.webp),
+   * replacing the Docusaurus-default green (see .todos/DONE/DONE_0101-*.md). Base hue
+   * H23° S52%, lightness varies per shade; verified >= 4.5:1 text contrast on white for
+   * primary/dark/darker/light (darkest/lighter/lightest are used for borders and decorative
+   * gradients only, not text, so AA text contrast doesn't apply to them). */
+  --ifm-color-primary: #9b5a31;
+  --ifm-color-primary-dark: #8e522d;
+  --ifm-color-primary-darker: #864e2a;
+  --ifm-color-primary-darkest: #724224;
+  --ifm-color-primary-light: #a96135;
+  --ifm-color-primary-lighter: #b06537;
+  --ifm-color-primary-lightest: #c37240;
 
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgb(0, 0, 0, 0.1);
@@ -33,17 +37,21 @@
 }
 
 [data-theme="dark"] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  /* Same amber/terracotta hue as light mode, lifted in lightness+saturation for
+   * legibility on the dark card background (#1b1b1d) — mirrors how the previous
+   * green/teal ramp also shifted hue/saturation between themes. Verified >= 4.5:1 text
+   * contrast on #1b1b1d for primary/dark/darker (darkest is decorative-only, see above). */
+  --ifm-color-primary: #dd7f3c;
+  --ifm-color-primary-dark: #d97228;
+  --ifm-color-primary-darker: #d16c25;
+  --ifm-color-primary-darkest: #b45d20;
+  --ifm-color-primary-light: #e08c4f;
+  --ifm-color-primary-lighter: #e2925a;
+  --ifm-color-primary-lightest: #e7a576;
   --docusaurus-highlighted-code-line-bg: rgb(0, 0, 0, 0.3);
-  /* Pagefind search highlight — derived from dark --ifm-color-primary #25c2a0 */
-  --pagefind-mark-bg: rgb(37, 194, 160, 0.12);
-  --pagefind-section-icon-bg: rgb(37, 194, 160, 0.12);
+  /* Pagefind search highlight — derived from dark --ifm-color-primary #dd7f3c */
+  --pagefind-mark-bg: rgb(221, 127, 60, 0.12);
+  --pagefind-section-icon-bg: rgb(221, 127, 60, 0.12);
 }
 /* stylelint-enable color-no-hex */
 
@@ -502,12 +510,12 @@ article h4 {
 /* 2. Subtle tinted background on matched terms in results.
  *    The plugin forces background: transparent !important — we must
  *    also use !important. rgba values derived from --ifm-color-primary
- *    (#2e8555 light / #25c2a0 dark). Dark values are in the main [data-theme="dark"]
+ *    (#9b5a31 light / #dd7f3c dark). Dark values are in the main [data-theme="dark"]
  *    block above; light defaults are set here.
  */
 [data-theme="light"] {
-  --pagefind-mark-bg: rgb(46, 133, 85, 0.15);
-  --pagefind-section-icon-bg: rgb(46, 133, 85, 0.12);
+  --pagefind-mark-bg: rgb(155, 90, 49, 0.15);
+  --pagefind-section-icon-bg: rgb(155, 90, 49, 0.12);
 }
 
 .pagefindHit-title mark,
