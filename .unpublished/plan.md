@@ -483,3 +483,30 @@ son usage réel actuel). Une entrée `updates:` a été ajoutée au frontmatter.
 `.yaml` équivalents. Non re-vérifié : l'affirmation de l'article comme quoi la config Continue doit
 être dans le dossier home Windows plutôt que côté WSL — laissée telle quelle avec une réserve ajoutée
 dans le texte, Christophe n'a pas encore retesté ce point.
+
+## Nouveau brouillon standalone (créé 2026-08-18) — PWA installable
+
+`docusaurus-pwa` (« From Browser Tab to Home Screen: Making a Docusaurus Blog Installable »).
+Série *Discovering Docusaurus*, `mainTag: docusaurus`, `tags: [docusaurus]` — pas de tag `pwa`
+dédié dans `tags.yml`, à créer si l'article se multiplie un jour (auditer les tags à la
+publication). Raconte tout ce qui a été fait sur ce blog pour l'installabilité PWA (manifeste,
+icônes générées, `@docusaurus/plugin-pwa`, dégradation honnête de la recherche hors ligne, pastille
+d'installation visible) — écrit comme un tutoriel final, sans raconter les essais-erreurs
+(demande explicite de Christophe).
+
+**Aucune dépendance dure ou souple** — ne cite aucun autre brouillon de `.unpublished/` par nom.
+Trois liens internes vers des articles déjà publiés : `/blog/docusaurus-reactions` (endpoint
+d'écriture `api/reactions.php`, cité comme exemple de ce que le service worker ne doit jamais
+mettre en cache), `/blog/docusaurus-docker-own-blog` (emplacement de `static/.htaccess`), et
+`/blog/docusaurus-old-notice` (précédent de montage global dans `Layout`). Libre de se placer où
+le rythme éditorial le suggère — aucune contrainte de séquence avec un autre brouillon.
+
+⚠️ **Image de bannière approximative** : `image: /img/v2/docusaurus_tips.webp` — aucune image
+existante ne correspond vraiment au thème (installation d'app, hors ligne, mobile), c'est la
+meilleure approximation générique parmi les 153 bannières disponibles (déjà réutilisée sur deux
+autres articles de la même série). À remplacer par une bannière dédiée si Christophe en fait
+créer une avant publication — comme cela a été fait pour `publishing_blog.webp` sur un autre
+brouillon récent (voir section « pipeline de déploiement » ci-dessus).
+
+Date de publication `2026-09-01` — un simple placeholder, à ajuster selon le calendrier éditorial
+réel au moment de la publication.

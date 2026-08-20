@@ -1,0 +1,24 @@
+$ curl -sI https://www.avonture.be/manifest.webmanifest
+
+HTTP/2 200
+content-type: application/manifest+json
+cache-control: no-cache, no-store, must-revalidate
+content-length: 700
+
+$ curl -sI https://www.avonture.be/sw.js
+
+HTTP/2 200
+content-type: application/javascript
+cache-control: no-cache, no-store, must-revalidate
+
+$ curl -s https://www.avonture.be/manifest.webmanifest | head -8
+
+{
+  "name": "Christophe Avonture",
+  "short_name": "avonture.be",
+  "description": "Personal blog about Docker, WSL, Python, Quarto, PHP, Joomla, Docusaurus and even more",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2e8555"
+}

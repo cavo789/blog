@@ -62,7 +62,7 @@ export default function RelatedPosts({ count = 3, description = false }) {
       <div className="row">
         {related.map((post) => (
           <PostCard
-            key={post.id}
+            key={post.permalink}
             layout="small"
             post={description ? post : { ...post, description: null }}
           />

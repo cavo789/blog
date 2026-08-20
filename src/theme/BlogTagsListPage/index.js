@@ -44,7 +44,10 @@ export default function BlogTagsListPage({ tags, sidebar }) {
         ThemeClassNames.page.blogTagsListPage,
       )}
     >
-      <PageMetadata title={title} />
+      <PageMetadata
+        title={title}
+        description={`Browse all ${tagsArray.length} topics covered on this blog — Docker, WSL, Bash, PHP, AI and more.`}
+      />
       <SearchMetadata tag="blog_tags_list" />
       <BlogLayout>
         <div className={styles.pageHeader}>

@@ -1,7 +1,7 @@
 # Christophe Avonture - Blog
 
 <div align="center">
-<img width="200" src="https://raw.githubusercontent.com/cavo789/blog/main/static/img/docusaurus.png" />
+<img width="200" src="https://raw.githubusercontent.com/cavo789/blog/main/static/img/meerkat/suricate.webp" />
 </div>
 
 <div align="center">
@@ -61,3 +61,23 @@ If something looks stale or broken only in that installed/standalone context (an
 - Reload the page.
 
 A rebuild alone doesn't force this: existing installs keep running their currently-installed worker until it detects a byte-level change in `sw.js` and a reader accepts the in-app "New version available" reload prompt — the steps above are the manual override when that isn't happening.
+
+## Troubleshooting: dev server stuck on a red "Compiled with problems" screen
+
+If `yarn start` suddenly shows a full-page webpack error instead of the blog — typically
+`Module not found: Error: Can't resolve '@theme/PwaReloadPopup'` — it means a `yarn build` ran
+at the same time `yarn start` was already watching files. Both used to regenerate Docusaurus's
+codegen folder (`.docusaurus/`) in place, with no locking between them; `@docusaurus/plugin-pwa`
+only wires itself up for `NODE_ENV=production`, so a dev-server rebuild that lands mid-build
+can pick up the production plugin registration (theme alias included) without the matching
+production webpack config that would actually resolve it — hence the "can't resolve" error.
+
+Fixed structurally, not just documented: `yarn start` now writes its codegen to its own
+`.docusaurus-dev/` (via `DOCUSAURUS_GENERATED_FILES_DIR_NAME`, see `package.json`), so a
+concurrent `yarn build` — which still uses the default `.docusaurus/` — can no longer race it.
+`yarn clear` removes both folders. If you still hit the red screen (a leftover install predating
+this fix, or a new codegen-sharing bug), the manual override is the same either way:
+
+```bash
+yarn clear && yarn start
+```

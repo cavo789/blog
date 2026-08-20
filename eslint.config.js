@@ -13,6 +13,9 @@ export default [
       // nested copies of the repo, e.g. git worktrees under .claude/worktrees/.
       "**/build/**",
       "**/.docusaurus/**",
+      // `yarn start`'s own copy of the above (kept separate so it can't race a concurrent
+      // `yarn build` — see package.json's `start` script and README.md's troubleshooting).
+      "**/.docusaurus-dev/**",
       "**/node_modules/**",
       "**/*.eli5.json",
       // Generated data blob (yarn icons:bundle) — not hand-written source.

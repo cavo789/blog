@@ -308,6 +308,17 @@ const config = {
       },
     },
     {
+      // Standard (non-Apple-prefixed) equivalent of the tag above, read by
+      // Chrome/Android. Chrome DevTools flags apple-mobile-web-app-capable as
+      // deprecated and asks for this one — but Safari ignores it, so both
+      // tags are kept side by side rather than one replacing the other.
+      tagName: "meta",
+      attributes: {
+        name: "mobile-web-app-capable",
+        content: "yes",
+      },
+    },
+    {
       tagName: "meta",
       attributes: {
         name: "apple-mobile-web-app-title",
@@ -414,7 +425,10 @@ const config = {
       navbar: {
         // auto-hide the navbar when the user will scroll down, show again when scroll up
         hideOnScroll: true,
-        title: "Christophe Avonture (cavo789)",
+        // Kept short on purpose: the full "Christophe Avonture (cavo789)" used to truncate
+        // mid-word against the search icon on narrow mobile viewports. The GitHub handle is
+        // still one click away via the navbar's own GitHub link.
+        title: "Christophe Avonture",
         logo: {
           alt: "Christophe Avonture",
           src: "img/avatar.webp",

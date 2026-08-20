@@ -35,13 +35,19 @@ function start() {
     done
 
     printf "🧹 Clearing Docusaurus cache...\n"
-    if ! yarn docusaurus clear; then
-        printf "❌ 'docusaurus clear' failed, see errors above.\n" >&2
+    # `yarn clear`, not `yarn docusaurus clear` directly — the package.json script also wipes
+    # .docusaurus-dev/ (see below), which the bare CLI command doesn't know about.
+    if ! yarn clear; then
+        printf "❌ 'yarn clear' failed, see errors above.\n" >&2
         return 1
     fi
 
     printf "🚀 Starting Docusaurus on port %s...\n" "${port}"
+    # DOCUSAURUS_GENERATED_FILES_DIR_NAME keeps this dev server's codegen (.docusaurus-dev/)
+    # separate from a `yarn build`'s (.docusaurus/) — sharing one folder let a concurrent
+    # build corrupt an already-running dev server's compile (README.md has the full story).
     HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem \
+        DOCUSAURUS_GENERATED_FILES_DIR_NAME=.docusaurus-dev \
         yarn docusaurus start --host 0.0.0.0 --port "${port}"
 }
 

@@ -7,6 +7,9 @@
 
 # Generated files
 .docusaurus
+# `yarn start`'s own copy of the above, kept separate so a concurrent `yarn build` can never
+# race it while regenerating shared codegen — see package.json's `start` script.
+.docusaurus-dev
 .cache-loader
 
 # Misc

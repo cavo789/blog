@@ -17,7 +17,7 @@ define('SITE_URL',                'https://www.avonture.be');
 // ── CORS ──────────────────────────────────────────────────────────────────────
 $allowedOrigins = [
     SITE_URL,
-    'http://localhost:3000',
+    'https://localhost:3000',
 ];
 
 // Same-origin requests carry no Origin header — allow them unconditionally.

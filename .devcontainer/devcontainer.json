@@ -33,7 +33,7 @@
     "YARN_CACHE_FOLDER": "/home/node/.cache/yarn/v6",
     "HOST_PROJECT_DIR": "${localWorkspaceFolder}"
   },
-  "initializeCommand": "mkdir -p .docusaurus .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
+  "initializeCommand": "mkdir -p .docusaurus .docusaurus-dev .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",
   "postCreateCommand": "yarn install && mkdir -p /home/node/.claude/projects/-opt-docusaurus && ln -sfn /opt/docusaurus/.claude/memory /home/node/.claude/projects/-opt-docusaurus/memory && pre-commit install --config .config/.pre-commit-config.yaml && echo 'source /opt/docusaurus/.devcontainer/scripts/interactive.sh' >> /home/node/.bashrc",
   "remoteUser": "node",
   "updateRemoteUserUID": true,

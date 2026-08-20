@@ -1,6 +1,6 @@
 {
   "extends": "stylelint-config-standard",
-  "ignoreFiles": ["build/**", ".docusaurus/**", "node_modules/**"],
+  "ignoreFiles": ["build/**", ".docusaurus/**", ".docusaurus-dev/**", "node_modules/**"],
   "defaultSeverity": "warning",
   "rules": {
     "color-no-hex": [

@@ -214,7 +214,7 @@ jobs:
 
           remote="$SSH_USER@$SSH_HOST:$REMOTE_PATH"
 
-          # The transfer runs in three passes so that --delete can be used where it
+          # The transfer runs in four passes so that --delete can be used where it
           # is safe and nowhere else. Splitting it costs nothing: each file is still
           # checksummed exactly once.
           #
@@ -237,7 +237,27 @@ jobs:
             --exclude "/pagefind/***" \
             build/ "$remote/" | tee /tmp/rsync-site.log
 
-          # Passes 2 and 3 — assets/ and pagefind/ are 100% generated output with
+          # Pass 2 — api/, an explicit allow-list of the four static files, WITHOUT
+          # --delete and WITHOUT a plain directory sync. `api/` on the live server
+          # also holds .env (gitignored, never in this repo) and the JSON files the
+          # PHP scripts read/write at runtime — reaction counts, typo reports,
+          # tried-it votes, rate-limit state. Those JSON files *are* tracked in this
+          # repo too (as empty placeholders, so a fresh checkout has somewhere for
+          # the scripts to write on first run), which makes a directory-wide sync
+          # actively dangerous: syncing `api/` as a whole would overwrite months of
+          # real reader data with this repo's empty stand-ins on every deploy. An
+          # include-only list is deliberately safer here than an exclude list —
+          # a *new* data file added under api/ later stays invisible to this pass
+          # by default, instead of silently riding along.
+          rsync "${rsync_args[@]}" \
+            --include "reactions.php" \
+            --include "tried-it.php" \
+            --include "typo.php" \
+            --include ".htaccess" \
+            --exclude "*" \
+            api/ "$remote/api/" | tee /tmp/rsync-api.log
+
+          # Passes 3 and 4 — assets/ and pagefind/ are 100% generated output with
           # content-hashed filenames, so anything there that the build no longer
           # produces is dead weight by definition. Pagefind is the reason this
           # matters: it re-chunks its search index on every build, leaving ~59
@@ -268,7 +288,7 @@ jobs:
             echo
             echo "| Pass | Files updated | Sent over the wire | Deleted |"
             echo "| --- | --- | --- | --- |"
-            for pass in site assets pagefind; do
+            for pass in site api assets pagefind; do
               log="/tmp/rsync-$pass.log"
               echo "| $pass | $(stat_of "$log" 'Number of regular files transferred') | $(stat_of "$log" 'Total bytes sent') | $(stat_of "$log" 'Number of deleted files') |"
             done

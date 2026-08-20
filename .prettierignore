@@ -1,5 +1,6 @@
 build/
 .docusaurus/
+.docusaurus-dev/
 node_modules/
 *.eli5.json
 iconBundle.generated.js

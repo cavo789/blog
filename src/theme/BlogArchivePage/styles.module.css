@@ -257,6 +257,27 @@
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
   }
+
+  /* The desktop anchor is a hover-reveal permalink — meaningless on a touchscreen, which
+     left it sitting invisible (opacity: 0) yet still tappable at a cramped 12×23px, off to
+     the side of the heading. On touch, show it permanently, in the normal flow next to the
+     heading text, sized as a real tap target instead of a hover affordance. */
+  .monthAnchor {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    margin-left: 0.4rem;
+    padding: 0.6rem 0.65rem;
+    font-size: 1.05em;
+    border-radius: 6px;
+    transform: none;
+  }
+
+  .monthAnchor:active {
+    background-color: var(--ifm-color-emphasis-200);
+  }
 }
 
 /* --------- Dark Mode Overrides --------- */

@@ -166,3 +166,14 @@ vérifier que la config du plugin les réutilise au lieu d'en régénérer un je
   finding above — mentioning it here so a future reader of the git history understands why a
   file briefly existed and was deleted in the same body of work, rather than reading it as
   churn.
+
+## Addendum (2026-08-20)
+
+Following a UX audit that caught the concrete symptom: added `src/components/OfflineNotice`,
+wired into `src/theme/Root.js`. It does **not** revisit "not done" above — no article gets
+cached — it only replaces the browser's bare `net::ERR_INTERNET_DISCONNECTED` interstitial
+with an in-app message when an offline reader taps a link the shell didn't precache. Works by
+intercepting the link click client-side and checking `caches.match()` before navigating —
+deliberately outside the service worker, so it carries none of the `swCustom` respawn risk
+documented above. Verified offline (Playwright `context.setOffline`): homepage → article click
+now shows the notice and stays on the current page, instead of navigating to a dead request.

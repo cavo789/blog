@@ -46,6 +46,30 @@
   -webkit-box-orient: vertical;
 }
 
+@media (max-width: 600px) {
+  /* Paired with BlogPostItem/Header/Authors' mobile override, which puts two of these side
+     by side on one row instead of stacking them full-width. */
+  .authorImage {
+    --ifm-avatar-photo-size: 2.6rem;
+  }
+
+  .authorDetails {
+    min-width: 0;
+  }
+
+  .authorName {
+    font-size: 1rem;
+    line-height: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .authorTitle {
+    font-size: 0.72rem;
+  }
+}
+
 .author-as-h1 .authorTitle {
   font-size: 1.2rem;
   line-height: 1.6rem;

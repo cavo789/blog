@@ -24,6 +24,7 @@
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import clsx from "clsx";
 import { useHistory } from "@docusaurus/router";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import GroupedList from "./GroupedList";
@@ -468,6 +469,12 @@ export default function BlogGraph() {
 
   return (
     <div className={styles.wrap} ref={wrapRef}>
+      <p className={clsx(styles.intro, "text--center")}>
+        {showCanvas
+          ? "Every published article, plotted by how it links to, shares a series with, or shares tags with the rest of the corpus. Hover a dot to see its neighbors, click to open the article."
+          : "Every published article, grouped by topic below. Tap a title to open it."}
+      </p>
+
       <div className={styles.controls}>
         <label className={styles.selectLabel} htmlFor="blog-graph-maintag">
           Filter by topic

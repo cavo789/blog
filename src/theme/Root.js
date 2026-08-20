@@ -4,6 +4,7 @@ import { useLocation } from "@docusaurus/router";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import KonamiEasterEgg from "@site/src/components/KonamiEasterEgg";
 import MatomoRouteTracker from "@site/src/components/Analytics/MatomoRouteTracker";
+import OfflineNotice from "@site/src/components/OfflineNotice";
 
 /**
  * This Root component allows injecting code globally into the application.
@@ -118,6 +119,7 @@ export default function Root({ children }) {
       {children}
       <MatomoRouteTracker />
       <KonamiEasterEgg />
+      <OfflineNotice />
     </>
   );
 }

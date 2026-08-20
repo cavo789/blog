@@ -2,6 +2,11 @@
   margin: 1.5rem 0;
 }
 
+.intro {
+  color: var(--ifm-color-content-secondary);
+  margin-bottom: 1rem;
+}
+
 .controls {
   display: flex;
   flex-wrap: wrap;

@@ -8,6 +8,22 @@
   gap: 1.5rem;
 }
 
+@media (max-width: 600px) {
+  /* Each author card is wide enough on its own to fill a 390px viewport, so "wrap" never
+     actually gets two side by side — a two-author post (nearly every AI-assisted one) reads
+     as two full-width rows before any article content. Force them to share the row instead;
+     Author/styles.module.css shrinks the avatar/text to fit. */
+  .authorsContainer {
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+  }
+
+  .authorCol {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
 .imageOnlyAuthorRow {
   display: flex;
   flex-flow: row wrap;

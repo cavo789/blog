@@ -26,7 +26,7 @@ define('IP_ARTICLE_MAX',  5);    // max reports per IP per article per 24h
 // ── CORS ──────────────────────────────────────────────────────────────────────
 $allowedOrigins = [
     SITE_URL,
-    'http://localhost:3000',
+    'https://localhost:3000',
 ];
 
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
