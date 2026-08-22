@@ -16,6 +16,8 @@ language: en
 updates:
   - date: 2026-02-04
     note: updated plugins array; show only installed plugins
+  - date: 2026-08-22
+    note: added a Docker-first demo with a pre-seeded history to try before installing
 ---
 ![Autosuggestions in the console using ZSH](/img/v2/zsh.webp)
 
@@ -44,6 +46,40 @@ You can also play with <kbd>UP</kbd> and <kbd>DOWN</kbd> to switch to other comm
 - Suggestions come straight from your Linux HISTORY: no index to build, no configuration, nothing to teach the plugin.
 - The more you use your console, the better the suggestions get — it learns from you and only from you.
 - No more wondering, "Gee, what were the parameters I used for ...".
+
+## Seeing It in Action with Docker
+
+You don't need Oh-My-Zsh already running on your machine to see the plugin work — a throwaway
+container does the job.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below installs Oh-My-Zsh, clones the plugin, enables it in `~/.zshrc`, and — the
+part that matters — pre-seeds a shell history containing `docker compose up --detach`. Type `doc`
+and the exact scenario from the screenshot above appears, with nothing to configure yourself.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/autosuggestions-demo">
+$ docker build -t autosuggestions-demo .
+[+] Building 19.8s (8/8) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it autosuggestions-demo
+🐳 root ~ #
+</Terminal>
+
+Now just type `doc` (don't press <kbd>ENTER</kbd> yet) and the exact scene from the screenshot at
+the top of this article plays out: `docker compose up --detach` fills in as gray, ghosted text
+right after your cursor — read straight from the pre-seeded history. Press <kbd>TAB</kbd> to
+accept it, or <kbd>↑</kbd>/<kbd>↓</kbd> to cycle to the other two `docker compose` commands also
+sitting in that history.
 
 ## Installation
 

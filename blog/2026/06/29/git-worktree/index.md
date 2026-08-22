@@ -9,6 +9,9 @@ tags: [git, linux, bash, zsh]
 date: 2026-06-29
 ai_assisted: true
 blueskyRecordKey: 3mpfvg4xwkk2d
+updates:
+  - date: 2026-08-22
+    note: added a Docker-first demo of the hotfix scenario
 ---
 
 ![git worktree: Work on Two Branches at the Same Time](/img/v2/git_worktree.webp)
@@ -112,6 +115,54 @@ git worktree remove ../my-blog-hotfix
 
 This deletes the folder and unregisters the worktree. The branch itself (`hotfix/invoice-fix`) still exists — you can delete it separately with `git branch -d`.
 
+## Seeing It in Action with Docker
+
+`git` needs no installing — it's already on your machine. What's worth trying risk-free is the
+scenario itself: a throwaway repo, already mid-refactor on a feature branch with uncommitted
+changes, and a VAT calculation bug waiting on `main`. Exactly the Thursday-afternoon setup below,
+minus the stress.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below builds a repo already sitting on `feature/user-notifications` with two
+unstaged files — the same starting point as step 1 below — plus the `gwt` fzf navigator from
+further down, wired via real ZSH autoload. Nothing on your own repos is touched.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/worktree-demo">
+$ docker build -t worktree-demo .
+[+] Building 24.1s (8/8) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it worktree-demo
+🐳 root ~/projects/my-blog # git status
+On branch feature/user-notifications
+Changes not staged for commit:
+	modified:   src/api/notifications.ts
+	modified:   src/components/Notifications.tsx
+</Terminal>
+
+That's step 1 below, already set up. Now run the rest of the scenario for real, exactly as
+written — `git worktree add -b hotfix/invoice-fix ../my-blog-hotfix main`, fix
+`src/billing/invoice.ts` in the new folder, commit, `git worktree remove`, and confirm with `git
+status` that your feature branch never moved. `gwt` is wired too, if you want to try the fzf
+navigator from the "ZSH function" section further down.
+
+<AlertBox variant="note" title="Run step 4's commands one at a time">
+Don't paste the whole block from step 4 in one shot: `vim` is a full-screen editor, so anything
+you paste after `vim src/billing/invoice.ts` gets typed *into vim* instead of run as shell
+commands. Run that line alone, make the edit (see the tip in step 4), save and quit, then paste
+the rest. `git push` works in this container too — the image wires a local bare repo as `origin`
+so there's something real to push to, no GitHub account needed.
+</AlertBox>
+
 ## The hotfix scenario, step by step
 
 Back to Thursday afternoon. Here's the same situation handled with worktrees.
@@ -166,13 +217,26 @@ git push origin hotfix/invoice-fix
 // open PR, merge, done
 </Terminal>
 
+<AlertBox variant="tip" title="The actual VAT fix">
+`calculateVat()` returns `amount * rate` — just the VAT portion, not the invoice total. In vim:
+press `i`, change the line to `return amount * (1 + rate);`, then `Esc` followed by `:wq` to save
+and exit. Only then run the `git add`/`commit`/`push` lines.
+</AlertBox>
+
 ### 5. Clean up the worktree
 
 <Terminal typewriter>
 // Back in the original repo
 git worktree remove ../my-blog-hotfix
-git branch -d hotfix/invoice-fix
+git branch -D hotfix/invoice-fix
 </Terminal>
+
+<AlertBox variant="note" title="Why -D and not -d">
+You're still on `feature/user-notifications` here, which never received the hotfix commit — only
+`origin/hotfix/invoice-fix` did, via the merged PR. `git branch -d` refuses to delete a branch it
+can't see as merged into your *current* branch, and errors with "not fully merged". Since you know
+it's safely merged on the remote, `-D` (force) is the correct call, not a workaround for a mistake.
+</AlertBox>
 
 ### 6. Back to your feature branch — nothing changed
 

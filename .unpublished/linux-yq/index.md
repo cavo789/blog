@@ -31,6 +31,37 @@ There are two tools named `yq`. This article covers [Mike Farah's `yq`](https://
 
 If you have the Go version installed locally (`yq --version` returns something like `yq (https://github.com/mikefarah/yq/) version v4.x`), you're all set. Otherwise, the Docker approach below requires nothing extra.
 
+## Seeing It in Action with Docker
+
+Before installing anything (or even setting up the alias below), try `yq` in a throwaway
+container — the exact `compose.yaml` from this article is already there.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below installs the `yq` binary directly and drops the exact `compose.yaml` in the
+working directory. Nothing to create, paste, or download.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/yq-demo">
+$ docker build -t yq-demo .
+[+] Building 8.7s (7/7) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it yq-demo
+🐳 root ~/demo # yq '.services.web.image' compose.yaml
+nginx:1.25
+</Terminal>
+
+Same file, same query, same result — try the rest of the "Reading values" and "Editing in place"
+sections below directly against it, no setup left to do.
+
 ## Install — or just alias
 
 The simplest approach requires no installation at all. Add this alias to your `~/.zshrc` or `~/.bashrc`:
@@ -77,8 +108,8 @@ yq '.services | keys' compose.yaml
 </Terminal>
 
 ```
-- db
 - web
+- db
 ```
 
 Get all images across services:

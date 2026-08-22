@@ -27,3 +27,8 @@
 
 # AnythingLLM indexing state (local to each machine, holds no secret)
 .anythingllm-indexed
+
+# rumdl (ad hoc `npx rumdl` markdown lint checks) — cache is redirected to
+# /tmp via RUMDL_CACHE_DIR (see .devcontainer/devcontainer.json); this entry
+# is just a safety net should it ever be created here anyway.
+.rumdl_cache/

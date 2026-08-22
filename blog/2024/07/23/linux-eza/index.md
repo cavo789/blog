@@ -16,6 +16,8 @@ updates:
     note: still accurate, no obsolete info
   - date: 2026-07-30
     note: Updated website link from the.eza.website (domain expired) to eza.rocks (current official site).
+  - date: 2026-08-22
+    note: added a Docker-first demo to try before installing
 ---
 ![Let's revisit the ls command thanks to eza](/img/v2/linux_tips.webp)
 
@@ -47,6 +49,43 @@ And then you'll say to me, well, all you have to do is create an alias `alias ls
 Once `ls` is aliased to `eza` with a few flags, this is what a plain `ls` looks like:
 
 ![eza](./images/eza.webp)
+
+## Seeing It in Action with Docker
+
+Before touching your `~/.bashrc`, try the alias in a throwaway container with a small, varied
+folder already set up — a hidden file, a sub-folder or two, files of different sizes — so the
+listing actually has something to show off.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below installs `eza`, sets up the exact `ls` alias from this article, and builds a
+demo folder for you. Nothing changes on your own machine.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/eza-demo">
+$ docker build -t eza-demo .
+[+] Building 14.2s (7/7) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it eza-demo
+🐳 root ~/demo # ls
+Permissions Size User Date Modified Name
+drwxr-xr-x     - root 2026-08-22    docs
+drwxr-xr-x     - root 2026-08-22    src
+.rw-r--r--    0 root 2026-08-22    .env
+.rw-r--r--    8 root 2026-08-22    README.md
+</Terminal>
+
+That's `ls` — really `eza` under the hood, thanks to the alias baked into the image. Icons,
+grouped folders first, human-readable dates: the same result as the screenshot above, without
+having installed anything on your own machine yet.
 
 ## Install eza
 

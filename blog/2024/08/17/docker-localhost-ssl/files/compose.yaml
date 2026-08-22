@@ -3,6 +3,6 @@ services:
     build:
       context: .
     ports:
-      - "80:80"
+      - "%%port=80%%:80"
     volumes:
       - ./src:/usr/local/apache2/htdocs

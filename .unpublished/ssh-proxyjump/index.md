@@ -41,6 +41,53 @@ ssh -J christophe@bastion.example.com christophe@10.0.1.50
 
 `-J` is the flag, `bastion` is the jump host, and `10.0.1.50` is the final destination. Your SSH key is used for both hops if agent forwarding is set up. The bastion never decrypts your traffic to the final destination — it just relays the TCP connection.
 
+## Seeing It in Action with Docker
+
+`bastion.example.com` and `10.0.1.50` above don't resolve anywhere, so there's no way to try the
+real thing without a real network. This container folds a bastion and an internal server into one
+image instead — real `sshd`, real key-based auth, real `-J` and `LocalForward` traffic — so you
+can watch both mechanisms actually work before touching your own `~/.ssh/config`.
+
+<AlertBox variant="tip" title="Why Docker first?">
+Two `sshd` ports (2222 = "bastion", 2223 = "the internal server"), a passwordless keypair, and a
+tiny internal web service on port 8080 — all wired together so `demo-bastion`, `demo-target` and
+`demo-tunnel` behave exactly like the real topology below, just folded into one container.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/proxyjump-demo">
+$ docker build -t proxyjump-demo .
+[+] Building 28.3s (9/9) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it proxyjump-demo
+🐳 root ~ # ssh demo-target hostname
+Warning: Permanently added '[127.0.0.1]:2222' (ED25519) to the list of known hosts.
+Warning: Permanently added '[127.0.0.1]:2223' (ED25519) to the list of known hosts.
+3626fc76d208
+</Terminal>
+
+That hostname came back through a real two-hop `ProxyJump` — `demo-target` in `~/.ssh/config` has
+`ProxyJump demo-bastion`, exactly like `dev-server` further down. Now try `LocalForward`:
+
+<Terminal title="🐳 root ~ #">
+$ ssh -f -N demo-tunnel
+Warning: Permanently added '[127.0.0.1]:2222' (ED25519) to the list of known hosts.
+
+$ curl http://localhost:9090
+&lt;!doctype html&gt;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Internal service&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;
+</Terminal>
+
+Port 9090 on your side of the tunnel now serves the page sitting behind the bastion on port 8080
+— the same principle `tunnel-db-staging` uses below to bring a remote database to `localhost`.
+
 ## Configuring ProxyJump in ~/.ssh/config
 
 Typing the full `-J` flag every time is tedious. Define it once in `~/.ssh/config`:

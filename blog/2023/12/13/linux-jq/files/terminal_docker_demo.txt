@@ -1,0 +1,11 @@
+$ docker build -t jq-demo .
+[+] Building 12.1s (7/7) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it jq-demo
+🐳 root ~/demo # cat sample.json | jq '.results[0].name'
+{
+  "title": "Mademoiselle",
+  "first": "Salomé",
+  "last": "Roy"
+}

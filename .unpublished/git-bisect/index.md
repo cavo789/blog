@@ -24,6 +24,55 @@ Or you could use `git bisect` and find the answer in seven steps.
 
 <!-- truncate -->
 
+## Seeing It in Action with Docker
+
+`git` needs no installing. What's worth trying risk-free is bisect itself, on a repo where you
+already know the answer — so you can watch it get there on its own.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below builds a repo with 12 commits where one, right in the middle, silently flips
+a `+` to a `-` — a real, deterministic bug — plus the test script `git bisect run` needs to hunt it
+down automatically. Nothing on your own repos is touched.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/bisect-demo">
+$ docker build -t bisect-demo .
+[+] Building 8.9s (7/7) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it bisect-demo
+🐳 root ~/demo # ./calculate_total.sh 2 3
+-1
+</Terminal>
+
+`2 + 3` should be `5`, not `-1` — the exact regression this article hunts down. Now let git find
+it, fully automated:
+
+<Terminal title="🐳 root ~/demo #">
+$ git bisect start
+$ git bisect bad
+$ git bisect good v1.0
+$ git bisect run ./bisect-test.sh
+...
+592f1ec2 is the first bad commit
+commit 592f1ec2
+    chore: upgrade remark-gfm to v4
+
+$ git bisect reset
+</Terminal>
+
+Same culprit, same commit message as the "A real scenario" walkthrough below — except this time
+you watched `git bisect run` find it in a handful of automated steps, with no guessing on your
+part.
+
 ## The problem with manual debugging
 
 When a regression appears, the instinct is to look at recent commits and guess which one caused it. For small changes — a one-line fix, a one-file PR — that works fine. For anything larger, it doesn't.

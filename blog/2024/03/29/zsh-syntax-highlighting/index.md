@@ -16,6 +16,8 @@ language: en
 updates:
   - date: 2026-02-04
     note: updated plugins array; show only installed plugins
+  - date: 2026-08-22
+    note: added a Docker-first demo to try before installing
 ---
 ![Syntax highlighting in the console using ZSH](/img/v2/zsh.webp)
 
@@ -48,6 +50,37 @@ That color appears **while you type**, not after the command has failed. You kno
 ## How to use it
 
 In fact, nothing has to be done: there is no configuration file, no option to set, no alias to define. Install the plugin, reload your shell, and the coloring is simply there from the next character you type.
+
+## Seeing It in Action with Docker
+
+No history to seed, no config to write — this plugin needs nothing but itself, which makes it a
+perfect one-command Docker test.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below installs Oh-My-Zsh and the plugin, and enables it in `~/.zshrc` — the exact
+two steps from the "Installation" section, done for you. Nothing on your own machine changes.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/syntax-demo">
+$ docker build -t syntax-demo .
+[+] Building 18.4s (7/7) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it syntax-demo
+🐳 root ~ # head
+</Terminal>
+
+Type `head` and the word turns green as you finish typing it — the command exists. Backspace it,
+type `heat` or `docekr` instead, and it turns red before you even press <kbd>ENTER</kbd>: same
+scene as the two screenshots above, live in your own terminal.
 
 ## Installation
 

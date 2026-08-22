@@ -11,7 +11,11 @@ Load before auditing an article under `blog/` or `.unpublished/`. This skill def
 workflow: which articles to audit, in what order, and how to track progress across sessions.
 
 The target structure every article should converge toward is defined in `blog-post-structure` —
-load it too if the nature of a required restructure is unclear.
+load it too if the nature of a required restructure is unclear. While reading an article's
+`<Terminal>`/`<Snippet>` blocks for Pass 1 below, also note a value the reader would change (a
+port, a container name, a version) hardcoded and repeated across 2+ commands instead of declared
+once with `<Vars>` — `blog-post-structure`'s self-check names this explicitly; a `/reader_review`
+pass is a natural place to catch an older article that predates the component.
 
 ## The principle: Time-to-Value (TTV)
 

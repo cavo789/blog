@@ -6,6 +6,12 @@ import CodeBlock from "@theme/CodeBlock";
 import LogoIcon from "@site/src/components/Blog/LogoIcon";
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import { useVarResolver } from "@site/src/components/Vars/store";
+import {
+  substitutePlainText,
+  substituteChildren,
+} from "@site/src/components/Vars/substitute";
+import VarToken from "@site/src/components/Vars/VarToken";
 import styles from "./styles.module.css";
 
 // Extract language from <code className="language-xyz"> inside children
@@ -446,17 +452,35 @@ export default function Snippet({
     return "plaintext";
   }, [pluginLang, children, filename]);
 
+  // Resolve `%%name=default%%` markers (TODO 0088) before rendering. `code`
+  // (from `source=`/`code=`, including files loaded at build time) is plain
+  // text feeding Prism, so substitution there is a string swap — no visible
+  // "this is yours" underline, which the `children` path below gets for
+  // free; an acceptable v1 trade-off, see Vars/readme.md.
+  const resolve = useVarResolver();
+  const resolvedCode = useMemo(
+    () => (code ? substitutePlainText(code, resolve) : code),
+    [code, resolve],
+  );
+  const resolvedChildren = useMemo(
+    () =>
+      substituteChildren(children, resolve, (name, value, key) => (
+        <VarToken key={key}>{value}</VarToken>
+      )),
+    [children, resolve],
+  );
+
   // Use line-by-line ELI5 renderer when annotations are available and code is a string.
   // Otherwise fall back to Docusaurus CodeBlock (or raw children).
   const codeBlock = useMemo(() => {
-    if (code && eli5 && Object.keys(eli5).length > 0) {
-      return <Eli5CodeBlock code={code} lang={lang} eli5={eli5} />;
+    if (resolvedCode && eli5 && Object.keys(eli5).length > 0) {
+      return <Eli5CodeBlock code={resolvedCode} lang={lang} eli5={eli5} />;
     }
-    if (code) {
-      return <CodeBlock className={`language-${lang}`}>{code}</CodeBlock>;
+    if (resolvedCode) {
+      return <CodeBlock className={`language-${lang}`}>{resolvedCode}</CodeBlock>;
     }
-    return children;
-  }, [code, eli5, lang, children]);
+    return resolvedChildren;
+  }, [resolvedCode, eli5, lang, resolvedChildren]);
 
   const baseName = useMemo(
     () => (typeof filename === "string" ? filename.split("/").pop().toLowerCase() : null),

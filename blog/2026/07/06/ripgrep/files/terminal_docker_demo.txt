@@ -1,0 +1,23 @@
+$ rg "getUser"
+src/UserController.php
+2:function getUser($id) {
+
+src/legacy.php
+4:function getAllUsers() {
+
+$ rgtodo
+src/legacy.php:2:// TODO: cache this lookup
+src/legacy.php:3:// FIXME: N+1 query below
+
+$ rgenv DB_PASSWORD
+.env
+1:DB_PASSWORD=demo-secret
+
+$ rg -C 2 "console.log"
+src/app.js
+2-function refreshToken(token) {
+3:  console.log(token);
+4-}
+7-  for (const item of cart) {
+8:    console.log(item);
+9-  }

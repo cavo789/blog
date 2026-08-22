@@ -15,6 +15,9 @@ tags:
 language: en
 ai_assisted: true
 blueskyRecordKey: 3mnrw7ah2kc2o
+updates:
+  - date: 2026-08-22
+    note: added a Docker-first demo to try before installing
 ---
 
 ![FZF + ripgrep: Interactive Code Search with Live Preview](/img/v2/fzf_ripgrep.webp)
@@ -84,6 +87,52 @@ This article builds on top of <Link to="/blog/linux-fzf-introduction">fzf</Link>
 <AlertBox variant="note" title="batcat on Ubuntu/Debian">
 On some Ubuntu/Debian systems, the binary is named `batcat` instead of `bat`. If that's the case for you, simply replace *bat* with *batcat* in the rest of this article.
 </AlertBox>
+
+## Seeing It in Action with Docker
+
+Before installing `ripgrep`, `fzf` and `bat` on your machine, try `rgf` in a throwaway container
+that already has all three, the function itself wired via real ZSH autoload, and a small demo
+project matching the "Real-world scenarios" section further down: a leaking `DB_PASSWORD`, three
+`TODO`/`FIXME`/`HACK` markers, a `sendEmail` call site, a hardcoded port, and a TypeScript
+interface.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below reproduces `rgf` byte-for-byte from the Snippet further down, plus the
+`fpath`/`autoload` wiring described in Step 3. No VSCode is needed to try it: `rgf` falls back to
+printing `file:line` to the terminal when `code` is not in `$PATH`, which is exactly the case
+inside this container.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/rgf-demo">
+$ docker build -t rgf-demo .
+[+] Building 32.5s (11/11) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it rgf-demo
+🐳 root ~/demo #
+</Terminal>
+
+Now try the exact scenarios from "Real-world scenarios" below, live:
+
+```bash
+rgf "DB_PASSWORD"        # the leaking secret in config/.env
+rgf "TODO|FIXME|HACK"    # all three markers across the demo project
+rgf "sendEmail"          # the call site in notifications.js
+rgf -t ts "interface UserProps"
+```
+
+Each one opens the same interactive list-plus-preview panel as the screenshot at the top of this
+article — navigate with <kbd>↑</kbd>/<kbd>↓</kbd>, filter by typing, press <kbd>Enter</kbd> to
+select. Since there's no VSCode inside the container, `rgf` prints `file:line` to the terminal
+instead of opening an editor — everything else behaves exactly as it would on your own machine.
 
 ## Step 1 — Connect ripgrep to fzf
 

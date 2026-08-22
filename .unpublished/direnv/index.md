@@ -72,6 +72,53 @@ direnv requires explicit approval (`direnv allow`) each time `.envrc` changes. T
 
 That's the entire effect — the install behind it is two commands, covered next.
 
+## Seeing It in Action with Docker
+
+Before hooking direnv into your own `~/.bashrc`, try the exact flow above in a throwaway
+container — the `my-api` project (`.envrc`, `.env`, `compose.yaml`) is already built, deliberately
+left un-allowed so the "blocked" message is the first thing you see.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below installs direnv, hooks it into bash, and builds the `my-api` project from the
+"Docker Compose use case" section further down. Nothing on your own machine changes.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/direnv-demo">
+$ docker build -t direnv-demo .
+[+] Building 11.4s (6/6) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it direnv-demo
+🐳 root ~ # cd my-api
+direnv: error /root/my-api/.envrc is blocked. Run `direnv allow` to approve its content
+</Terminal>
+
+Exactly the "blocked" message from above. Approve it, then leave and come back:
+
+<Terminal title="🐳 root ~/my-api #">
+$ direnv allow
+direnv: loading ~/my-api/.envrc
+direnv: export +APP_DEBUG +APP_PORT +DB_HOST +DB_NAME +DB_PASSWORD +DB_PORT +DB_USER
+
+$ cd ..
+direnv: unloading
+
+$ cd my-api
+direnv: loading ~/my-api/.envrc
+direnv: export +APP_DEBUG +APP_PORT +DB_HOST +DB_NAME +DB_PASSWORD +DB_PORT +DB_USER
+</Terminal>
+
+Loaded on the way in, unloaded on the way out, reloaded the moment you're back — the whole pitch
+of this article, live, before touching your own shell config.
+
 ## Why It Works
 
 - direnv hooks your shell so every `cd` re-checks the current and parent directories for an `.envrc` file and re-evaluates it — no polling, no background daemon.

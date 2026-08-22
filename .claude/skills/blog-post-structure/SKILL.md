@@ -98,6 +98,13 @@ Only now. Prerequisites go **here**, not at the top of the article.
   creates files, it does not patch them.
 - Long implementation files stay collapsed: `<Snippet … defaultOpen={false} />`. The reader
   needs them present, not unfolded in their face.
+- **A value the reader will change** (a host port, a container name, a version) **repeated
+  across two or more commands** → declare it once with `<Vars port="8080" name="mysite" />`
+  right before the first command that uses it, then mark every occurrence with
+  `%%name=default%%` instead of typing the literal value (e.g. `-p %%port=8080%%:80`). Catch
+  this while writing movement 4/5, not after: retrofitting a finished article into markers is
+  much more work than writing them the first time. See `src/components/Vars/readme.md` for the
+  full contract, `blog/2024/08/17/docker-localhost-ssl/index.md` for a worked example.
 
 ### 5. More demos — proof it works on *their* machine
 
@@ -198,5 +205,7 @@ Each of these was measured on a real article of this blog:
 4. Are the deep-dive sections marked as skippable?
 5. Do the last three paragraphs recap and point somewhere next?
 6. Are the 2 to 4 internal `<Link>` still inline in the prose (`yarn links:check <path>`)?
+7. Does the same port/name/version repeat across 2+ commands, hardcoded instead of a `<Vars>`
+   marker? (See movement 4.)
 
 `/reader_review <path>` runs the same checks and puts a number on question 1.

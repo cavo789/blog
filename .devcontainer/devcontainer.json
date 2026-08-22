@@ -31,6 +31,7 @@
   "containerEnv": {
     "GIT_SSH_COMMAND": "ssh -i /home/node/.ssh/id_ed25519",
     "YARN_CACHE_FOLDER": "/home/node/.cache/yarn/v6",
+    "RUMDL_CACHE_DIR": "/tmp/rumdl_cache",
     "HOST_PROJECT_DIR": "${localWorkspaceFolder}"
   },
   "initializeCommand": "mkdir -p .docusaurus .docusaurus-dev .devcontainer/history && touch .devcontainer/history/.bash_history && echo '.bash_history' > .devcontainer/history/.gitignore",

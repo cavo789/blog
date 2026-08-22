@@ -14,6 +14,9 @@ tags:
   - linux
 language: en
 blueskyRecordKey: 3mkhfxskcdk2z
+updates:
+  - date: 2026-08-22
+    note: added a Docker-first demo to try before installing
 ---
 ![Master your ssh command and select the host from a list](/img/v2/sshf.webp)
 
@@ -38,6 +41,39 @@ On the left side, there is a search box (allowing me to type `amazing` to filter
 Once a host is selected, I simply press <kbd>Enter</kbd> to open an SSH terminal session on that host—without having to enter my credentials manually.
 
 Let's get started...
+
+## Seeing It in Action with Docker
+
+Before touching your own `~/.ssh/config`, try the whole TUI in a throwaway container — the exact
+`amazing.conf`/`legacy.conf` files and the `sshf` function from further down are already in place.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below installs `fzf`, `perl` and `openssh-client`, writes the exact SSH config
+files shown further down, and appends the exact `sshf` function to `~/.bashrc`. Nothing on your
+own machine changes, and — since `1.2.3.4` and friends are the same placeholder IPs used
+throughout this article — pressing <kbd>Enter</kbd> on a host won't actually connect anywhere.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/sshf-demo">
+$ docker build -t sshf-demo .
+[+] Building 26.4s (8/8) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it sshf-demo
+🐳 root ~ # sshf
+</Terminal>
+
+The same TUI from the screenshot at the top of this article opens, listing all four hosts across
+both `conf.d` files with their doc-blocks. Type `prod` or `php` to filter, exactly like the
+"Using filtering options" section below — no real server is ever contacted.
 
 ## Install FZF
 

@@ -1,19 +1,29 @@
 import PropTypes from "prop-types";
-import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { Fragment, useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { useMDXComponents } from "@mdx-js/react";
 import clsx from "clsx";
+import { useVarResolver } from "@site/src/components/Vars/store";
+import { substituteChildren } from "@site/src/components/Vars/substitute";
+import VarToken from "@site/src/components/Vars/VarToken";
 import Icon from "./icon.svg";
 import styles from "./styles.module.css";
 
 // headingPrefixMap is built inside the component (via useMDXComponents) and
 // passed here so both copy and animation recover the "# " prefix that MDX strips.
-function getCopyText(children, headingPrefixMap) {
+// `separator` joins *sibling* array items — "\n" by default, because a bare
+// array of Terminal children is one source line per item (see the heading
+// comment below). `substituteChildren` (TODO 0088) wraps the fragments of a
+// single line it split — e.g. "--name " / a VarToken / " -p " — in a
+// Fragment, and that one case needs "" instead: switched right below, when
+// recursing into a Fragment's own children, so a substituted value never
+// gets a spurious line break glued to it (it did — see git history).
+function getCopyText(children, headingPrefixMap, separator = "\n") {
   let text = "";
   if (Array.isArray(children)) {
     children.forEach((child, index) => {
       text += getCopyText(child, headingPrefixMap);
       if (index < children.length - 1) {
-        text += "\n";
+        text += separator;
       }
     });
   } else if (typeof children === "string") {
@@ -21,7 +31,9 @@ function getCopyText(children, headingPrefixMap) {
   } else if (typeof children === "object" && children !== null) {
     const prefix = headingPrefixMap?.get(children.type) ?? "";
     if (children.props?.children) {
-      text += prefix + getCopyText(children.props.children, headingPrefixMap);
+      const childSeparator = children.type === Fragment ? "" : "\n";
+      text +=
+        prefix + getCopyText(children.props.children, headingPrefixMap, childSeparator);
     }
   }
   return text;
@@ -80,10 +92,26 @@ export default function Terminal({
     return map;
   }, [mdxComponents]);
 
-  // Extract lines once from children text content
+  // Resolve any `%%name=default%%` marker (TODO 0088) against the reader's
+  // current values before anything else touches `children` — copy, the
+  // typewriter animation, and the plain render all read the resolved tree
+  // from here on, so a substitution can never accidentally skip one of them.
+  const resolve = useVarResolver();
+  const resolvedChildren = useMemo(
+    () =>
+      substituteChildren(children, resolve, (name, value, key) => (
+        <VarToken key={key}>{value}</VarToken>
+      )),
+    [children, resolve],
+  );
+
+  // Extract lines once from children text content. Deliberately captured only
+  // once per typewriter run, not kept live: if the reader edits a value while
+  // the animation is still typing, the in-flight animation finishes with the
+  // text it started with — resolvedChildren (used once animDone, and by copy)
+  // always reflects the latest edit.
   const animLines = useMemo(
-    () => (typewriter ? getCopyText(children, headingPrefixMap).split("\n") : []),
-    // children and headingPrefixMap are both stable for the page lifetime
+    () => (typewriter ? getCopyText(resolvedChildren, headingPrefixMap).split("\n") : []),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [typewriter],
   );
@@ -171,14 +199,14 @@ export default function Terminal({
   }, [typewriter, animDone, animLines]);
 
   const handleCopy = useCallback(async () => {
-    const textToCopy = getCopyText(children, headingPrefixMap);
+    const textToCopy = getCopyText(resolvedChildren, headingPrefixMap);
     try {
       await navigator.clipboard.writeText(textToCopy);
       setCopied(true);
     } catch (err) {
       console.error("Failed to copy text: ", err);
     }
-  }, [children]);
+  }, [resolvedChildren, headingPrefixMap]);
 
   useEffect(() => {
     if (copied) {
@@ -227,7 +255,7 @@ export default function Terminal({
              * occupies its final height. Prevents page reflow on every typed line.
              */}
             <span className={styles.terminal_ghost} aria-hidden="true">
-              {children}
+              {resolvedChildren}
             </span>
             {/* Animated text overlaid on the ghost */}
             <span className={styles.terminal_overlay}>
@@ -238,7 +266,7 @@ export default function Terminal({
             </span>
           </>
         ) : (
-          children
+          resolvedChildren
         )}
       </pre>
 

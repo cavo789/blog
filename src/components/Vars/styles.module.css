@@ -1,0 +1,336 @@
+/* Inline bar */
+
+.varsbar {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-card-border-radius, 10px);
+  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.06);
+  padding: 1rem 1.15rem 1.05rem;
+  margin: 1.5rem 0;
+}
+
+.varsbarHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.varsbarTitle,
+.varsbarTitleSmall {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ifm-color-emphasis-700);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.varsbarTitle {
+  font-size: 0.8rem;
+}
+
+.varsbarTitleSmall {
+  font-size: 0.72rem;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--ifm-color-success);
+  flex-shrink: 0;
+}
+
+.resetLink {
+  background: none;
+  border: none;
+  color: var(--ifm-color-emphasis-600);
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0;
+}
+
+.resetLink:hover {
+  color: var(--ifm-color-primary);
+}
+
+.varsbarFields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.varsbarFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.8rem;
+  font-size: 0.76rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* One field, reused by both the inline bar and the pinned panel */
+
+.field {
+  flex: 1 1 180px;
+  min-width: 150px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 0.3rem;
+}
+
+.inputWrap {
+  display: flex;
+  align-items: center;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 7px;
+  padding: 0.1rem 0.65rem;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.inputWrap:focus-within {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px var(--ifm-color-primary-contrast-background);
+}
+
+.field.isEdited .inputWrap {
+  border-color: var(--ifm-color-success);
+}
+
+.field input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  color: var(--ifm-font-color-base);
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  outline: none;
+}
+
+.mono {
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.badgeDefault {
+  font-size: 0.65rem;
+  color: var(--ifm-color-emphasis-600);
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 999px;
+  padding: 0.1rem 0.45rem;
+  white-space: nowrap;
+}
+
+/* Pinned trigger — see index.js for why it exists only once the inline bar
+ * has scrolled out of view. Rendered via a portal into document.body so it
+ * floats above any overflow/stacking-context ancestor (same rationale as
+ * Snippet's ELI5 tooltip). */
+
+.fab {
+  position: fixed;
+  /* Bottom-right, same corner as the site's own two widgets — the "Ask my
+   * blog" chat bubble and the meerkat-styled scroll-to-top button — which
+   * stack there at a fixed 60x60px each with a ~1rem gap between them
+   * (measured live: bubble at viewport-bottom 106-166px, scroll-to-top at
+   * 30-90px). 6.5rem cleared the lower one but still overlapped the bubble
+   * — see review feedback with a screenshot. 11.5rem clears both, with the
+   * same ~1rem gap the site's own two widgets already use between each
+   * other. Bottom-left was tried and reverted: the article sidebar's own
+   * post links live there and, being in normal flow inside a tall
+   * scrollable list, intercepted clicks meant for this fixed button —
+   * confirmed by a real click failing in testing, not a guess. */
+  right: 1.25rem;
+  bottom: 11.5rem;
+  /* 60 lost a real click to the article's own sticky table-of-contents
+   * sidebar in testing (its `.toc-highlight` link painted on top despite
+   * being a plain sibling with no explicit z-index of its own — sticky
+   * elements get their own stacking context, and 60 wasn't enough to beat
+   * it). Matches Snippet's ELI5 tooltip, the codebase's own established
+   * "escape every stacking context on the page" value. */
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.fabVisible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.fabToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-font-color-base);
+  border-radius: 999px;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.82rem;
+  box-shadow: 0 4px 14px rgb(0, 0, 0, 0.16);
+  cursor: pointer;
+}
+
+.fabToggle:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+.fabIcon {
+  width: 1.05rem;
+  height: 1.05rem;
+  color: var(--ifm-color-primary);
+  flex-shrink: 0;
+}
+
+.fabLabel {
+  color: var(--ifm-color-emphasis-600);
+}
+
+.fabCheck {
+  width: 0.85rem;
+  height: 0.85rem;
+  color: var(--ifm-color-success);
+}
+
+.chevron {
+  color: var(--ifm-color-emphasis-600);
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.fabPanel {
+  width: 280px;
+  max-width: calc(100vw - 2.5rem);
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-card-border-radius, 10px);
+  box-shadow: 0 4px 14px rgb(0, 0, 0, 0.16);
+  padding: 0.9rem 1rem 1rem;
+  display: none;
+}
+
+.fabOpen .fabPanel {
+  display: block;
+}
+
+.fabPanelIcon {
+  width: 0.85rem;
+  height: 0.85rem;
+  color: var(--ifm-color-primary);
+  flex-shrink: 0;
+}
+
+.fabExplainer {
+  margin: -0.3rem 0 0.85rem;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.fabFields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* One-time teaching callout — shown the first time the trigger appears on a
+ * page view, auto-dismissed. A first-timer has no reason to know a small
+ * port/name pill is (a) meaningful or (b) clickable; see TODO 0088 review
+ * feedback ("pas très visuel", "on ne comprend pas ce que c'est"). */
+.fabHint {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  max-width: 220px;
+  background: var(--ifm-color-primary);
+  color: var(--ifm-button-color);
+  border-radius: 10px;
+  padding: 0.6rem 0.55rem 0.6rem 0.75rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  box-shadow: 0 4px 14px rgb(0, 0, 0, 0.22);
+  animation: fabHintIn 0.25s ease;
+}
+
+@keyframes fabHintIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fabHintIcon {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.fabHintClose {
+  background: none;
+  border: none;
+  color: inherit;
+  opacity: 0.8;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.1rem;
+  margin-left: auto;
+}
+
+.fabHintClose:hover {
+  opacity: 1;
+}
+
+/* Token — a reader-adjustable value inside a <Terminal>/<Snippet> block.
+ * The dotted underline is a permanent affordance ("this value is yours"),
+ * not just a change indicator: without it a substitution is invisible and
+ * the article can silently look like it's lying about what it shows. */
+
+.token {
+  border-bottom: 1.5px dotted var(--ifm-color-primary);
+  border-radius: 2px;
+  padding: 0 1px;
+  transition: background-color 0.5s ease;
+}
+
+.tokenFlash {
+  background-color: var(--ifm-color-primary-contrast-background);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .token,
+  .fab {
+    transition: none;
+  }
+}

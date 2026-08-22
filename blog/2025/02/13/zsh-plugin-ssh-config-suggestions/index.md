@@ -17,6 +17,8 @@ language: en
 updates:
   - date: 2026-02-04
     note: updated plugins array; show only installed plugins
+  - date: 2026-08-22
+    note: added a Docker-first demo to try before installing
 blueskyRecordKey: 3lwgca4zqh22i
 ---
 ![SSH - Autosuggestions with ZSH](/img/v2/ssh.webp)
@@ -54,6 +56,38 @@ The plugin reads the `Host` aliases already declared in your `~/.ssh/config` fil
 It should be really nice to be able to run `ssh MyAmazingApp` and hop, I'm connected on the server.
 
 This is where the `~/.ssh/config` is so helpful (please refer to this <Link to="/blog/linux-ssh-scp#using-the-config-file">article</Link>) but we can go one step further: it would be so great to type `ssh` and by some magic, Linux will show you the list of aliases defined in the `~/.ssh/config` file. Let's install it.
+
+## Seeing It in Action with Docker
+
+No real server is ever contacted by this plugin — it only reads `Host` aliases from a config
+file — which makes it a perfectly safe one-command Docker test.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below installs Oh-My-Zsh and the plugin, enables it in `~/.zshrc`, and writes the
+exact `~/.ssh/config` shown further down. Nothing on your own machine changes, and nothing tries
+to actually connect anywhere.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/ssh-suggest-demo">
+$ docker build -t ssh-suggest-demo .
+[+] Building 20.7s (8/8) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it ssh-suggest-demo
+🐳 root ~ # ssh
+</Terminal>
+
+Type `ssh ` (with the trailing space) and press <kbd>TAB</kbd> — the same four aliases from the
+"Use it" section below (`MyAmazingApp_PROD`, `MyAmazingApp_TEST`, `YourAmazingApp`,
+`LegacyApp`) show up immediately, read straight from the pre-baked `~/.ssh/config`.
 
 ## Installation of the zsh-ssh-config-suggestions plugin
 

@@ -59,6 +59,40 @@ You can edit it before running, or just press `Enter`.
 
 The key difference from a simple alias: navi handles variables interactively, pulling live data (a running container, in this example) into the picker instead of making you type it from memory.
 
+## Seeing It in Action with Docker
+
+Before installing anything, try navi in a throwaway container — the exact `docker.cheat` from the
+"Writing your own cheatsheet" section is already in place, plus a second cheatsheet whose
+variable picker works with no external dependency (no Docker daemon lives inside this container).
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below installs navi and `fzf`, and pre-loads two `.cheat` files — no first-run
+prompt to accept, no repository to clone yourself.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/navi-demo">
+$ docker build -t navi-demo .
+[+] Building 15.8s (9/9) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it navi-demo
+🐳 root ~/demo # navi
+</Terminal>
+
+Type `docker` to browse the exact cheatsheet from further down — the `<container>`/`<image>`
+pickers won't find anything since there's no Docker daemon in this container, but the search,
+descriptions and command text are all real. Then try `head` to reach the self-contained `demo`
+cheatsheet: its `<file>` picker lists the two files actually sitting in `~/demo`, and pressing
+`Enter` runs the completed command end-to-end, live.
+
 ## Install
 
 **With cargo (Rust toolchain required):**

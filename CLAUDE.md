@@ -29,6 +29,23 @@ yarn eli5               # generate ELI5 summaries (requires Ollama)
 **Quality gate before every commit:** `yarn lint && yarn format:check && yarn build`.
 There is no automated test suite for components — testing components means building and reviewing them visually.
 
+### Dev server — never manage it directly
+
+`docker-entrypoint.sh` already starts Docusaurus in the background on container boot
+(`HTTPS=true SSL_CRT_FILE=... SSL_KEY_FILE=... yarn start --host 0.0.0.0 --port 3000 &`), and
+`postStartCommand` in `devcontainer.json` blocks until `https://localhost:3000/` answers. That
+process is what the user's browser is already pointed at.
+
+**Never run `yarn start`, `yarn docusaurus start`, or kill whatever is on port 3000 via the Bash
+tool.** Doing so kills the entrypoint's correctly-configured HTTPS server; a bare re-launch comes
+back as plain HTTP bound to `localhost` only, so the browser's TLS handshake then fails silently
+("site not responding") even though something is listening on the port.
+
+If the dev server genuinely needs a restart (stale cache, crash, port conflict), use the `reset`
+function from `.devcontainer/scripts/interactive.sh` — it restores the exact
+`HTTPS`/`SSL_CRT_FILE`/`SSL_KEY_FILE`/`--host 0.0.0.0` invocation:
+`bash -c 'source .devcontainer/scripts/interactive.sh; reset'`.
+
 ## Architecture
 
 ### Blog content

@@ -17,6 +17,8 @@ review_date: 2026-07-30
 updates:
   - date: 2024-03-31
     note: Added a Keybindings section
+  - date: 2026-08-22
+    note: added a Docker-first demo to try before installing
 ---
 ![Introduction to fzf - Fuzzy Finder](/img/v2/linux_tips.webp)
 
@@ -39,6 +41,47 @@ Let's have a look.
 By pressing <kbd>CTRL</kbd>+<kbd>R</kbd>, you'll natively get a *reverse search* for your history. Start to type a command like `ls` in my example below and Linux will show you the last command used.
 
 ![Using CTRL-R](./images/ctrl_r.webp)
+
+## Seeing It in Action with Docker
+
+Before cloning anything on your machine, spin up a throwaway container with `fzf` already wired
+in and a small playground already built.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below installs `fzf`, enables its key bindings in `bash`, pre-seeds a shell history
+(so <kbd>CTRL</kbd>+<kbd>R</kbd> has something to search) and creates a handful of log files and
+nested folders (so <kbd>CTRL</kbd>+<kbd>T</kbd> and <kbd>ALT</kbd>+<kbd>C</kbd> have something to
+browse). Nothing to prepare yourself.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/fzf-demo">
+$ docker build -t fzf-demo .
+[+] Building 24.6s (9/9) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it fzf-demo
+🐳 root ~/demo #
+</Terminal>
+
+You're already in `/root/demo`. Try the three shortcuts right away:
+
+- Press <kbd>CTRL</kbd>+<kbd>R</kbd> and type `github` — the pre-seeded `git clone
+  https://github.com/junegunn/fzf-git.sh.git` line turns up, exactly like the screenshots below.
+- Press <kbd>CTRL</kbd>+<kbd>T</kbd> and type `run` — the four `run*.sh.log` files in `logs/`
+  appear, filtered live as you type.
+- Press <kbd>ALT</kbd>+<kbd>C</kbd> to fuzzy-jump into `nested/deep/folder` without typing a
+  single `cd`.
+- Run `fzf -m | xargs head -n 5`, filter on `run`, select two or three files with <kbd>TAB</kbd>,
+  press <kbd>ENTER</kbd> — the multi-select scenario from the "Getting a list of files" section
+  below, ready to try without deleting anything real.
 
 ## Installation
 

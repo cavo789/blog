@@ -51,11 +51,13 @@ After a quick search on github.com, I've found a nice free one page html5/css3 t
 
 Let's download the **Sedna** demo site in a temporary folder on our hard disk, unzip the file, rename the default folder name `Sedna-master` to `src` and run the website using Docker:
 
+<Vars port="80" name="static-site" labels={{ port: "Host port", name: "Container name" }} />
+
 <Terminal typewriter>
 $ mkdir -p /tmp/https_localhost && cd $_
 $ wget https://github.com/peterfinlan/Sedna/archive/refs/heads/master.zip
 $ unzip master.zip && rm master.zip && mv Sedna-master src
-$ docker run -d --name static-site -p 80:80 -v ./src:/usr/local/apache2/htdocs httpd:2.4
+$ docker run -d --name %%name=static-site%% -p %%port=80%%:80 -v ./src:/usr/local/apache2/htdocs httpd:2.4
 </Terminal>
 
 Once these commands have been fired, please jump to `http://localhost` and you'll get this:
@@ -71,7 +73,7 @@ The site is running using the http protocol but https is not yet possible. So, l
 Right now, please remove the running container; we'll create it back later on:
 
 <Terminal typewriter>
-$ docker container rm static-site --force
+$ docker container rm %%name=static-site%% --force
 </Terminal>
 
 ### Creation of some files we will need

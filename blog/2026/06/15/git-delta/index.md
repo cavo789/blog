@@ -11,6 +11,9 @@ date: 2026-06-15
 description: Stop squinting at raw git diff outputs. Learn how to install and configure Delta to add syntax highlighting and side-by-side views in under 5 minutes.
 language: en
 blueskyRecordKey: 3mnrw7ah2kc2o
+updates:
+  - date: 2026-08-22
+    note: added a Docker-first demo to try before installing
 ---
 
 ![delta: a Syntax-Highlighted Pager for git diff](/img/v2/git-delta.webp)
@@ -61,6 +64,40 @@ Without word-level diff, each of those scenarios produces a fully-red removed li
 - Navigation — jump between diff hunks with `n` and `N`
 
 The key point: **you don't change a single git command**. You still type `git diff`, `git show`, `git log -p`. Delta intercepts the output automatically.
+
+## Seeing It in Action with Docker
+
+You've just read the "before" diff above. Here's a container where delta is already installed,
+configured, and pointed at a real, unstaged change — so you can see the "after" without touching
+your own `.gitconfig`.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below installs `git` and `git-delta`, writes the full `.gitconfig` block from this
+article, and pre-builds a tiny repo with exactly the kind of one-word change (`+ TOKEN_GRACE_MS`)
+that makes delta's word-level diff worth seeing. Nothing changes on your own machine.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/delta-demo">
+$ docker build -t delta-demo .
+[+] Building 26.7s (8/8) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it delta-demo
+🐳 root ~/demo # git diff
+</Terminal>
+
+`git diff` opens in side-by-side view, syntax-highlighted, with `TOKEN_GRACE_MS` picked out at the
+character level instead of the whole line turning green. Press `q` to close the pager, then try
+`git log -p`, `git show HEAD`, or edit `auth.js` yourself and diff again — the same config applies
+to every command.
 
 ## Install
 

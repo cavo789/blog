@@ -23,6 +23,59 @@ Your local branch tells the story of your thought process. `WIP`, `debug temp`, 
 
 <!-- truncate -->
 
+## Seeing It in Action with Docker
+
+`git` needs no installing. What's worth trying risk-free is the rebase itself — a real editor
+session, on a real repo, where messing it up costs nothing.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below builds the exact "A typical cleanup" scenario further down — 7 commits, one
+feature buried under `wip`/`more wip`/`fix build` noise — and sets `nano` as the editor plus
+`autosquash`/`autostash`, matching the "Useful git config additions" section. Nothing on your own
+repos is touched.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/rebase-demo">
+$ docker build -t rebase-demo .
+[+] Building 11.2s (6/6) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it rebase-demo
+🐳 root ~/demo # git log --oneline
+</Terminal>
+
+```
+fix test
+add tests
+actually working now
+more wip
+wip
+fix build
+feat: add user profile page
+chore: initial project setup
+```
+
+Exactly the 7 messy commits from "A typical cleanup" below, on top of one base commit. Now run
+the real thing:
+
+<Terminal title="🐳 root ~/demo #">
+$ git rebase -i HEAD~7
+</Terminal>
+
+`nano` opens with the 7 `pick` lines. Change the verbs exactly as described further down —
+`fixup` on `fix build`, `wip`, `more wip` and `actually working now`; `pick` stays on `feat: add
+user profile page` and `add tests`; `fixup` on `fix test` — save with <kbd>Ctrl</kbd>+<kbd>O</kbd>,
+exit with <kbd>Ctrl</kbd>+<kbd>X</kbd>. `git log --oneline` afterward shows exactly two clean
+commits, the noise gone for good.
+
 ## The interactive editor
 
 `git rebase -i` opens a text editor showing your recent commits with a one-word instruction in front of each:

@@ -16,6 +16,8 @@ language: en
 updates:
   - date: 2026-02-04
     note: still accurate, no obsolete info
+  - date: 2026-08-22
+    note: added a Docker-first demo to try Oh-My-Zsh before installing it
 ---
 ![How to install Oh-My-ZSH](/img/v2/zsh.webp)
 
@@ -46,6 +48,56 @@ At a glance I know I'm in my `blog` folder, that it's a Git repository, that I'm
 - **Oh-My-Zsh is a framework, not a theme.** It ships hundreds of aliases and functions out of the box, so you get value before configuring anything.
 - **The prompt becomes a dashboard.** Folder, repository, branch and pending-changes count are permanently displayed, which is exactly the state you keep checking manually.
 - **Autocompletion is on another level.** <kbd>TAB</kbd> lists sub-folders, command flags and Git branches, instead of just completing a file name.
+
+## Seeing It in Action with Docker
+
+Before touching your `~/.zshrc`, spin up a throwaway container and play with Oh-My-Zsh for real.
+
+<AlertBox variant="tip" title="Why Docker first?">
+A container lets you feel what Oh-My-Zsh changes — the prompt, the aliases, the daily-use tricks below — without switching your login shell or editing a single file on your machine. Don't like it? Remove the container, nothing lingers.
+</AlertBox>
+
+Here is the Dockerfile I prepared. It installs Oh-My-Zsh unattended and also pre-builds a small
+playground: a deep folder tree to try `cd ...` on, and a git repository with a commit and an
+untracked file so `gst` has something to show:
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/zsh-demo">
+$ docker build -t zsh-demo .
+[+] Building 22.1s (8/8) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it zsh-demo
+🐳 root ~/demo/a/b/c/d/e/f #
+</Terminal>
+
+You land directly inside `/root/demo/a/b/c/d/e/f` — six folders deep, git repo already
+initialized. Try the features from the next section right away:
+
+<Terminal title="🐳 root ~/demo/a/b/c/d/e/f #">
+$ cd ......
+🐳 root ~/demo/a #
+
+$ gst
+On branch main
+Untracked files:
+  notes.txt
+
+$ take /tmp/scratch
+🐳 root /tmp/scratch #
+</Terminal>
+
+`cd ......` (six dots) jumps up five parents in one go. `gst` shows the untracked `notes.txt`
+without you typing `git status` — it works from any depth inside the repo, since Git walks up to
+find `.git` on its own. `take` creates `/tmp/scratch` and drops you inside it. Press <kbd>TAB</kbd>
+after `cd ` to see folder autocompletion in action.
 
 ## Installation
 

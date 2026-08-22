@@ -301,6 +301,30 @@ function mdastToText(node) {
 }
 
 // ---------------------------------------------------------------------------
+// Reader-adjustable values (TODO 0088) — `%%name=default%%`, written
+// directly inside `<Terminal>`/`<Snippet>` text by the author (`%%`, not
+// `{{`, because a bare `{` inside literal MDX children opens a JS expression
+// — see src/components/Vars/substitute.js for the full rationale; this is
+// that same live-component contract, resolved at export time instead of
+// render time). `=`, not `:`, separates the name from its default: this
+// file's own `remarkDirective` (below, for `:::tip` admonitions) treats any
+// bare `word:word` text as a false-positive inline directive — confirmed
+// empirically, a colon-separated marker logged a spurious "unknown
+// directive" warning for every occurrence. The default lives in the marker
+// itself, so resolving it here needs no lookup against a `<Vars>` node
+// elsewhere in the tree: a plain regex swap. Without this, the exported
+// `.md`/`llms.txt` would show the literal marker — invalid input for a
+// reader or an LLM to copy-paste, see the todo's own acceptance criteria.
+// ---------------------------------------------------------------------------
+
+const VAR_MARKER_RE = /%%(\w+)=([^%]*)%%/g;
+
+function resolveVarMarkers(text) {
+  if (typeof text !== "string") return text;
+  return text.replace(VAR_MARKER_RE, (_match, _name, defaultValue) => defaultValue);
+}
+
+// ---------------------------------------------------------------------------
 // String attributes that carry their own inline Markdown, not literal text —
 // AlertBox/Details `title`/`label` routinely embed `` `code` `` (over 30 uses
 // across this corpus), and StepsCard's `steps[].content` is markdown by
@@ -403,7 +427,7 @@ const COMPONENT_RULES = {
     }
     const title =
       typeof attrs.filename === "string" ? [paragraph([strongText(attrs.filename)])] : [];
-    return [...title, codeBlock(code, lang)];
+    return [...title, codeBlock(resolveVarMarkers(code), lang)];
   },
 
   Terminal(node, ctx) {
@@ -412,7 +436,15 @@ const COMPONENT_RULES = {
       typeof attrs.source === "string"
         ? readSourceFile(attrs.source, ctx)
         : mdastToText(node.children);
-    return [codeBlock(code, "bash")];
+    return [codeBlock(resolveVarMarkers(code), "bash")];
+  },
+
+  // Reader-values bar (TODO 0088) — UI only, nothing for the plain-Markdown
+  // mirror to show. The values it declares are already the same defaults
+  // baked into every `%%name=default%%` marker (resolveVarMarkers above), so
+  // dropping this node loses no information.
+  Vars() {
+    return [];
   },
 
   // --- Wrappers whose children already carry the content ------------------

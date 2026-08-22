@@ -12,6 +12,9 @@ tags:
   - linux
 language: en
 review_date: 2026-07-30
+updates:
+  - date: 2026-08-22
+    note: added a Docker-first demo to try before installing
 ---
 <!-- cspell:ignore Salomé -->
 ![The jq utility for Linux](/img/v2/json.webp)
@@ -123,6 +126,32 @@ $ curl --silent https://randomuser.me/api/ | jq '.results[0].name'
 ```
 
 Learn more about [jq filtering](https://jqlang.github.io/jq/tutorial/).
+
+## Seeing It in Action with Docker
+
+Before installing anything, try both commands from above in a throwaway container. It ships `jq`
+and a static snapshot of the `randomuser.me` response used throughout this article, so the demo
+works even without network access — though the live API is still reachable if you want to try it
+for real.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below installs `jq` and drops a ready-to-use `sample.json` in the working
+directory. Nothing to type, download or configure — just pipe it through `jq`.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal source="./files/terminal_docker_demo.txt" typewriter />
+
+Same filter as above, same result, no `curl` even required. Drop the filter and run `cat
+sample.json | jq` alone to see the whole object prettified, or, since the container has network
+access, try the live version too: `curl --silent https://randomuser.me/api/ | jq`.
 
 ## Installing jq
 

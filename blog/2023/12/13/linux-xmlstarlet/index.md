@@ -12,6 +12,9 @@ tags:
   - linux
 language: en
 review_date: 2026-07-30
+updates:
+  - date: 2026-08-22
+    note: added a Docker-first demo to try before installing
 ---
 ![The xmlstarlet utility for Linux](/img/v2/bash.webp)
 
@@ -50,6 +53,40 @@ $ cat "data.xml" | xmlstarlet format --indent-spaces 4
 </Terminal>
 
 <Snippet title="The output of the format action" source="./files/data.part2.xml" />
+
+## Seeing It in Action with Docker
+
+Before installing anything, try both commands above in a throwaway container — `data.xml`, byte
+for byte the same file shown at the top of this article, is already waiting in the working
+directory.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below installs `xmlstarlet` and writes `data.xml` for you. Nothing to create,
+paste or download — just pipe it through `xmlstarlet`.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/xmlstarlet-demo">
+$ docker build -t xmlstarlet-demo .
+[+] Building 9.4s (6/6) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it xmlstarlet-demo
+🐳 root ~/demo # cat data.xml | xmlstarlet sel -t -v "//book[@category='children']/title"
+
+Harry Potter
+</Terminal>
+
+Same file, same filter, same answer — no `mkdir`, no copy-pasting XML into a new file. Try `cat
+data.xml | xmlstarlet format --indent-spaces 4` next to see the beautified version, or change the
+XPath expression to pull a different node.
 
 ## Installing xmlstarlet
 

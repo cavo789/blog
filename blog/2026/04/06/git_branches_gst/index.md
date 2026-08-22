@@ -10,6 +10,9 @@ tags:
   - zsh
 date: 2026-04-06
 blueskyRecordKey: 3misnmd2jqs2f
+updates:
+  - date: 2026-08-22
+    note: added a Docker-first demo of the "wrong branch" trap
 ---
 
 ![Showing the last 3 updated branches when you jump in a git repo](/img/v2/git_branches_status.webp)
@@ -42,6 +45,46 @@ My disk is full of projects and a huge list of repositories. Once the block belo
 *(`*` indicates the active branch)*
 
 I instantly realize, *"Oh yes, I was working on `wip`"*, and can switch to the correct branch. The exact same information shows up with `gst`, the alias I use for `git status`.
+
+## Seeing It in Action with Docker
+
+No install needed for `git` itself — what's worth trying risk-free is the hook. A throwaway
+container below already has the exact "wrong branch" trap from the intro: `main` checked out
+(the oldest of the three), while `wip` and `feature_logging` were both touched more recently.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile appends the exact block below to `~/.zshrc` and builds a repo with three branches
+committed at different dates. Nothing on your own machine or repos is touched.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/gst-demo">
+$ docker build -t gst-demo .
+[+] Building 18.6s (5/5) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it gst-demo
+🐳 root ~ # cd projects/my-blog
+</Terminal>
+
+`chpwd` fires the instant you `cd` in — no extra command typed:
+
+```bash
+=== Recent Local Branches ===
+  feature_logging - 6 weeks ago
+  wip - 2 months ago
+* main - 3 months ago
+```
+
+`main` (checked out, marked `*`) is the *oldest* of the three — the exact trap from the intro.
+Run `gst` next: the same banner appears, immediately followed by the real `git status`.
 
 ## Installation
 

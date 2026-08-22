@@ -11,6 +11,9 @@ date: 2026-07-06
 ai_assisted: true
 language: en
 blueskyRecordKey: 3mpxent26jc2f
+updates:
+  - date: 2026-08-22
+    note: added a Docker-first demo to try before installing
 ---
 
 ![ripgrep — The Search Tool That Changed My WSL2 Workflow](/img/v2/ripgrep.webp)
@@ -126,6 +129,43 @@ What makes ripgrep genuinely better for day-to-day use is its **smart defaults**
 - It searches hidden files only when you explicitly ask for it (`--hidden`).
 
 That last output behavior is underrated. Readable, grouped, colorized results — right away, no configuration required. So cool, no?
+
+## Seeing It in Action with Docker
+
+Before touching your own `~/.zshrc`, try ripgrep in a throwaway container that already ships the
+`~/.ripgreprc` config, the `rgtodo`/`rgenv` functions, and a small fake project built specifically
+to show off the smart defaults: a `vendor/` folder that must stay invisible, TODO/FIXME comments,
+a leaking `DB_PASSWORD`, and a `console.log(token)` call worth flagging.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below reproduces the exact `.ripgreprc`, `.zsh/fns/` functions, and `.zshrc` section
+from this article, then builds the demo project. Nothing changes on your own machine.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/ripgrep-demo">
+$ docker build -t ripgrep-demo .
+[+] Building 21.3s (10/10) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it ripgrep-demo
+🐳 root ~/demo #
+</Terminal>
+
+Now play with the exact scenarios described above, live:
+
+<Terminal source="./files/terminal_docker_demo.txt" typewriter />
+
+Notice `vendor/legacy/User.php` — which also defines `getUser`, on purpose — never shows up in
+any of these searches: the `.gitignore` and the `--glob=!vendor/*` config entry both exclude it,
+exactly as described above. Try `rg --no-ignore "getUser"` to see it reappear.
 
 ## Installation on Ubuntu / WSL2
 

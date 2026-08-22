@@ -92,6 +92,39 @@ Status code distribution:
 The `--no-tui` flag disables the live progress bar so the output fits cleanly in a static code block. In practice, skip it — the live TUI is one of the best parts of oha.
 </AlertBox>
 
+## Seeing It in Action with Docker
+
+You don't need your own Docusaurus dev server running to feel what `oha` does. The container
+below starts a tiny local web page in the background and drops you into a shell where `oha` is
+already installed and pointed at it.
+
+<AlertBox variant="tip" title="Why Docker first?">
+The Dockerfile below installs `oha`, serves a one-page demo site on `http://localhost:8000` via
+Python's `http.server`, and starts both automatically. Nothing to configure — just run the
+command.
+</AlertBox>
+
+<Snippet
+  filename="Dockerfile"
+  source="./files/Dockerfile"
+  defaultOpen={false}
+/>
+
+Build and run it:
+
+<Terminal title="user@machine: ~/oha-demo">
+$ docker build -t oha-demo .
+[+] Building 13.9s (7/7) FINISHED
+ ✔ exporting to image
+
+$ docker run --rm -it oha-demo
+🐳 root ~ # oha -n 200 -c 10 --no-tui http://localhost:8000
+</Terminal>
+
+The exact same report structure as below — success rate, histogram, latency percentiles — against
+a page that lives entirely inside this container. Try cranking `-c` up to see the curve bend, or
+drop `--no-tui` to watch the live progress bar in action.
+
 ## What is oha?
 
 [oha](https://github.com/hatoo/oha) is a small HTTP load generator written in Rust, inspired by [`hey`](https://github.com/rakyll/hey) (itself inspired by Apache Bench). It sends a configurable number of HTTP requests with a configurable number of concurrent workers, displays a live TUI progress bar while running, then prints a full summary: total time, request throughput, a latency histogram, and percentile distribution.
